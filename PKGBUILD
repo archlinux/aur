@@ -4,10 +4,9 @@ pkgdesc="ROS - rqt_gui provides the main to start an instance of the ROS integra
 url='https://wiki.ros.org/rqt_gui'
 
 pkgname='ros-noetic-rqt-gui'
-pkgver='0.5.0'
-_pkgver_patch=0
+pkgver='0.5.2'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -31,8 +30,16 @@ depends=(
 )
 
 _dir="rqt-${pkgver}/rqt_gui"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
-sha256sums=('3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz"
+        "241.patch"::"https://github.com/ros-visualization/rqt/pull/241.patch")
+
+sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb'
+            'ba6a6a30fc27d02ee403c92c1d9735c0be6b8aaf8d216d5b625910960da60b87')
+
+prepare() {
+    cd "rqt-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/241.patch"
+}
 
 build() {
 	# Use ROS environment variables.
