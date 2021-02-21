@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-tilix-dropdown-git
+	pkgdesc = A GNOME Shell extension to launch Tilix (previously known as terminix) in Quake Mode .
+	pkgver = 7+7+g31645e1
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/1515/tilix-quake/
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL
+	makedepends = git
+	depends = gnome-shell
+	depends = tilix
+	provides = gnome-shell-extension-tilix-dropdown
+	source = git+https://github.com/ivoarch/gnome-shell-TilixDropdown.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-tilix-dropdown-git
+
