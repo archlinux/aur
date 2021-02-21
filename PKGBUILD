@@ -30,6 +30,7 @@ build() {
 
 package() {
     cd pwg
-    make install
+    mkdir -p ${pkgdir}/opt/${pkgname}
+    cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
