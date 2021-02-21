@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-bluetooth-git
 	pkgdesc = Switchboard Bluetooth Plug
-	pkgver = 2.3.2.r8.g7a56fd1
+	pkgver = 2.3.4.r13.g5f48a89
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-bluetooth
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -25,4 +25,3 @@ pkgbase = switchboard-plug-bluetooth-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-bluetooth-git
-
