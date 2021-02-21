@@ -1,6 +1,6 @@
 pkgbase = switchboard-plug-user-accounts-git
 	pkgdesc = Switchboard User Accounts Plug
-	pkgver = 2.3.2.r23.g156767a
+	pkgver = 2.3.2.r35.ge4cafb3
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-useraccounts
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = switchboard-plug-user-accounts-git
 	license = GPL3
 	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
+	makedepends = libhandy
 	makedepends = switchboard
 	makedepends = vala
 	depends = accountsservice
@@ -24,11 +25,10 @@ pkgbase = switchboard-plug-user-accounts-git
 	depends = polkit
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
-	depends = libhandy
+	depends = libhandy-1.so
 	provides = switchboard-plug-user-accounts
 	conflicts = switchboard-plug-user-accounts
 	source = switchboard-plug-user-accounts::git+https://github.com/elementary/switchboard-plug-useraccounts.git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-user-accounts-git
-
