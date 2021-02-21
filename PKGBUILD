@@ -14,12 +14,12 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=211.5787.15
+_buildver=211.6085.26
 _veryear=2021
 _verrelease=1
 _verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=3
+pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
@@ -29,12 +29,12 @@ depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
     source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}-${_JBR}.tar.gz"
             'idea-ce-eap.sh')
-    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIC-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" ")
+    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
                 'e555e32b96cc0de501f77c17417e77fb9b98aab5887a204f95be5c993cb3694c')
 else
     source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz"
             'idea-ce-eap.sh')
-    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIC-${_buildver}.tar.gz.sha256" | cut -f1 -d" ")
+    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
                 'e555e32b96cc0de501f77c17417e77fb9b98aab5887a204f95be5c993cb3694c')
 fi
 
