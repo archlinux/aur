@@ -7,7 +7,6 @@ pkgbase = mingw-w64-opencascade
 	license = custom
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-tk
-	depends = mingw-w64-gl2ps
 	depends = mingw-w64-ffmpeg
 	depends = mingw-w64-freeimage
 	depends = mingw-w64-tbb

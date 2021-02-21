@@ -6,7 +6,7 @@ pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation (mingw-w64)
 arch=('any')
 url="https://www.opencascade.org"
 license=('custom')
-depends=('mingw-w64-tk' 'mingw-w64-gl2ps' 'mingw-w64-ffmpeg' 'mingw-w64-freeimage' 'mingw-w64-tbb' 'mingw-w64-rapidjson')
+depends=('mingw-w64-tk' 'mingw-w64-ffmpeg' 'mingw-w64-freeimage' 'mingw-w64-tbb' 'mingw-w64-rapidjson')
 #TODO: 'mingw-w64-vtk'
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -43,38 +43,13 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-      -DUSE_GL2PS=ON \
-      -DUSE_FREEIMAGE=OFF \
+      -DUSE_FREEIMAGE=ON \
       -DUSE_FFMPEG=ON \
       -DUSE_VTK=OFF \
       -DUSE_RAPIDJSON=ON \
       -DUSE_TBB=ON \
       -DBUILD_DOC_Overview=OFF \
-      -DZ3RDPARTY_FREETYPE_LIBRARY=/usr/${_arch}/lib/libfreetype.dll.a \
-      -D3RDPARTY_FREETYPE_DLL_DIR=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FREEIMAGE_DIR=/usr/${_arch} \
-      -D3RDPARTY_FREETYPE_DLL_DIR=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FREEIMAGE_LIBRARY_DIR_freeimage=/usr/${_arch}/lib/ \
       -D3RDPARTY_FREEIMAGE_LIBRARY_freeimage=/usr/${_arch}/lib/libFreeImage.dll.a \
-      -D3RDPARTY_FREEIMAGE_LIBRARY_DIR_freeimage=/usr/${_arch}/lib/ \
-      -D3RDPARTY_FREEIMAGE_DLL_DIR_freeimage=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FREEIMAGE_DLL_freeimage=/usr/${_arch}/bin/libFreeImage.dll \
-      -D3RDPARTY_TBB_DIR=/usr/${_arch} \
-      -D3RDPARTY_TBB_DLL_DIR=/usr/${_arch}/bin/ \
-      -D3RDPARTY_TBB_LIBRARY_DIR=/usr/${_arch}/lib/ \
-      -D3RDPARTY_TBBMALLOC_LIBRARY_DIR=/usr/${_arch}/lib/ \
-      -DZ3RDPARTY_TBBMALLOC_LIBRARY=/usr/${_arch}/lib/libtbbmalloc.dll.a \
-      -D3RDPARTY_TBB_LIBRARY=/usr/${_arch}/lib/libtbb.dll.a \
-      -D3RDPARTY_TCL_DLL_DIR=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FREETYPE_DLL_DIR=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FFMPEG_DLL_DIR_avcodec=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FFMPEG_LIBRARY_avcodec=/usr/${_arch}/lib/libavcodec.dll.a \
-      -D3RDPARTY_FFMPEG_DLL_DIR_avformat=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FFMPEG_LIBRARY_avformat=/usr/${_arch}/lib/libavformat.dll.a \
-      -D3RDPARTY_FFMPEG_DLL_DIR_swscale=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FFMPEG_LIBRARY_swscale=/usr/${_arch}/lib/libswscale.dll.a \
-      -D3RDPARTY_FFMPEG_DLL_DIR_avutil=/usr/${_arch}/bin/ \
-      -D3RDPARTY_FFMPEG_LIBRARY_avutil=/usr/${_arch}/lib/libavutil.dll.a \
       -DINSTALL_DIR_BIN=bin \
       -DINSTALL_DIR_LIB=lib \
       -DINSTALL_DIR_DATA=share/opencascade/data \
