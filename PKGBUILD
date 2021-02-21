@@ -1,7 +1,7 @@
 # Maintainer: Sonu Ishaq <sonuishaq67@gmail.com>
 _pkgname=Deskreen
 pkgname=deskreen
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Turns any device with a web browser to a second screen for your computer"
 arch=('any')
@@ -17,7 +17,7 @@ options=('!strip')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/pavlobu/${pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname}.desktop")
 sha256sums=(
-      'b3cb138326e187929118b5bf7657e853d21f0c306b2cb2352bcb2306a8f5b9a7'  
+      '69ec4833aa8d8aaa55af7e2c879e9c5d079a723a337cbe29e94babb205ffa0d0'  
     '9f7f814e5f9d540c2ea5c07a86e72096b0af1fee7d109b5659a4ac8da1a2cfaa'
 )
 

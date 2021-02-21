@@ -1,6 +1,6 @@
 pkgbase = deskreen
 	pkgdesc = Turns any device with a web browser to a second screen for your computer
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/pavlobu/deskreen
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = deskreen
 	conflicts = deskreen
 	replaces = deskreen
 	options = !strip
-	source = Deskreen-1.0.5.AppImage::https://github.com/pavlobu/deskreen/releases/download/v1.0.5/Deskreen-1.0.5.AppImage
+	source = Deskreen-1.0.6.AppImage::https://github.com/pavlobu/deskreen/releases/download/v1.0.6/Deskreen-1.0.6.AppImage
 	source = deskreen.desktop
-	sha256sums = b3cb138326e187929118b5bf7657e853d21f0c306b2cb2352bcb2306a8f5b9a7
+	sha256sums = 69ec4833aa8d8aaa55af7e2c879e9c5d079a723a337cbe29e94babb205ffa0d0
 	sha256sums = 9f7f814e5f9d540c2ea5c07a86e72096b0af1fee7d109b5659a4ac8da1a2cfaa
 
 pkgname = deskreen
