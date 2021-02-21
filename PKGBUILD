@@ -2,7 +2,7 @@
 
 pkgname=rdm-bin
 pkgver=2021.2
-pkgrel=3
+pkgrel=1
 pkgdesc='Cross-platform open source database management tool for Redis ®'
 arch=('x86_64')
 url="https://rdm.dev/"
@@ -27,10 +27,10 @@ depends=(
   'python-msgpack')
 conflicts=('redis-desktop-manager-bin' 'redis-desktop-manager')
 source=('rdm.desktop'
-        "https://github.com/pidario/rdm-build/releases/download/${pkgver}/rdm"
+        "https://github.com/pidario/rdm-build/releases/download/${pkgver}/rdm-2021.2+5f7ab56"
         'https://raw.githubusercontent.com/uglide/RedisDesktopManager/2021/src/resources/images/rdm.png')
 sha256sums=('5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e'
-            'SKIP'
+            '81e092eeb5790ad94cd69b49a0ce3cfdcb480fdb1ecbd5decfab237e85683cf9'
             'SKIP')
 
 package() {
@@ -42,7 +42,7 @@ package() {
   mkdir -p "${_pixdir}"
   mkdir -p "${_appdir}"
 
-  install -Dm755 "$srcdir/rdm" "${_bindir}/rdm"
+  install -Dm755 "$srcdir/rdm-2021.2+5f7ab56" "${_bindir}/rdm"
   install -Dm644 "$srcdir/rdm.png" "${_pixdir}/rdm.png"
   install -Dm644 "$srcdir/rdm.desktop" "${_appdir}/rdm.desktop"
 }
