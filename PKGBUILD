@@ -8,10 +8,10 @@
 _pkgname=elan
 pkgname=${_pkgname}-lean
 pkgver=0.10.3
-pkgrel=2
-pkgdesc="The Rust toolchain installer"
+pkgrel=3
+pkgdesc="A Lean version manager"
 arch=('x86_64')
-url="https://github.com/rust-lang/rustup.rs"
+url="https://github.com/Kha/elan"
 license=('MIT' 'Apache')
 depends=('curl' 'xz')
 makedepends=('cargo')

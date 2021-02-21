@@ -1,8 +1,8 @@
 pkgbase = elan-lean
-	pkgdesc = The Rust toolchain installer
+	pkgdesc = A Lean version manager
 	pkgver = 0.10.3
-	pkgrel = 2
-	url = https://github.com/rust-lang/rustup.rs
+	pkgrel = 3
+	url = https://github.com/Kha/elan
 	install = post.install
 	arch = x86_64
 	license = MIT
