@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-about-git
-pkgver=2.6.3.r122.g81acab2
+pkgver=2.6.3.r283.g875cb95
 pkgrel=1
 pkgdesc='Switchboard About Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so' 'libgtop' )
-makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-about')
 conflicts=('switchboard-plug-about')
 source=('git+https://github.com/elementary/switchboard-plug-about.git')

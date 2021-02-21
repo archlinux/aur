@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-about-git
 	pkgdesc = Switchboard About Plug
-	pkgver = 2.6.3.r122.g81acab2
+	pkgver = 2.6.3.r283.g875cb95
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-about
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -23,4 +23,3 @@ pkgbase = switchboard-plug-about-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-about-git
-
