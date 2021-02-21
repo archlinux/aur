@@ -11,6 +11,7 @@ pkgbase = kodi-addon-inputstream-ffmpegdirect-any
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = patch
+	makedepends = pkgconf
 	depends = kodi
 	provides = kodi-addon-inputstream-ffmpegdirect-any
 	source = https://github.com/xbmc/inputstream.ffmpegdirect/archive/1.19.2-Matrix.tar.gz
