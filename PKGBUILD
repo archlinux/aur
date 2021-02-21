@@ -74,7 +74,7 @@ sha256sums_aarch64=('SKIP'
                     '0ff47d2cca2d187695027af02a12f15731003274d219668bc5090702e6c38a0a')
 pkgver() {
   cd mozilla-unified
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "87.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
