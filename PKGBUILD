@@ -1,5 +1,5 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
-# Contributor: vnepogodin
+# Maintainer: vnepogodin
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
@@ -9,12 +9,12 @@
 
 pkgname=dragonwolf
 _pkgname=DragonWolf
-pkgver=87.0a1.r635200+.e2521231284c+
+pkgver=r591370+.fdd919d10609+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
-url="https://gitlab.com/dr460nf1r3/dragonwolf-settings"
+url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse icu mozilla-common libevent zlib libjpeg libvpx nss-hg)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xwayland
              rust
@@ -25,29 +25,56 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
+            'libappindicator-gtk3: global menu support for gtk app'
+            'appmenu-gtk-module-git: appmenu for gtk only'
+            'plasma5-applets-window-appmenu: appmenu for plasma only'
             'libpipewire02: Wayland functionality')
 options=(!emptydirs !makeflags !strip)
+_linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
+_settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('librewolf' 'librewolf-wayland-hg')
 provides=('librewolf')
-source=("hg+$_repo#revision=autoland"
-        "dragonwolf.desktop"
-        "git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git"
-        "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
-        "megabar.patch"
-        "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/context-menu.patch"
-        "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/remove_addons.patch")
-        
-sha256sums=('SKIP'
-            '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
-            'SKIP'
-            'SKIP'
-            '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
-            '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-            'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6')
+source_x86_64=("hg+$_repo#revision=autoland"
+               dragonwolf.desktop
+               "git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git"
+               "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
+               megabar.patch
+               "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
+               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
+               unity-menubar.patch)
+source_aarch64=("hg+$_repo#revision=release"
+                dragonwolf.desktop
+                "git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git"
+                "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
+                megabar.patch
+                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
+                unity-menubar.patch
+                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
+                "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
+                build-arm-libopus.patch)
+
+sha256sums_x86_64=('SKIP'
+                   '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
+                   'SKIP'
+                   'SKIP'
+                   '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
+                   'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+                   '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
+                   '6e5b64cef3fba8795c4a400ee59d8deda371f2bbb55f1fc33bc99671bd1f8df8')
+sha256sums_aarch64=('SKIP'
+                    '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
+                    'SKIP'
+                    'SKIP'
+                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
+                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+                    '6e5b64cef3fba8795c4a400ee59d8deda371f2bbb55f1fc33bc99671bd1f8df8'
+                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
+                    '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
+                    '0ff47d2cca2d187695027af02a12f15731003274d219668bc5090702e6c38a0a')
 pkgver() {
   cd mozilla-unified
-  printf "87.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
@@ -61,7 +88,6 @@ prepare() {
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
-mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 #This supposedly speeds up compilation (We test through dogfooding anyway)
 ac_add_options --disable-tests
@@ -70,15 +96,14 @@ ac_add_options --disable-debug
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-# Probably not needed, enabled by default?
+# probably not needed, enabled by default?
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --disable-elf-hack
 ac_add_options --enable-lto
 ac_add_options --enable-linker=lld
 export MOZ_PGO=1
-export CC='clang'
-export CXX='clang++'
+export CC=clang
+export CXX=clang++
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
@@ -108,7 +133,6 @@ ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
-ac_add_options --disable-tests
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 
 # Disables crash reporting, telemetry and other data gathering tools
@@ -122,6 +146,28 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # ac_add_options --enable-linker=gold
 END
 
+if [[ $CARCH == 'aarch64' ]]; then
+  cat >>../mozconfig <<END
+# taken from manjaro build:
+ac_add_options --enable-optimize="-g0 -O2"
+# from ALARM
+# ac_add_options --disable-webrtc
+
+END
+
+  export MOZ_DEBUG_FLAGS=" "
+  export CFLAGS+=" -g0"
+  export CXXFLAGS+=" -g0"
+  export RUSTFLAGS="-Cdebuginfo=0"
+
+  # we should have more than enough RAM on the CI spot instances.
+  # ...or maybe not?
+  export LDFLAGS+=" -Wl,--no-keep-memory"
+  patch -p1 -i ../arm.patch
+  patch -p1 -i ../build-arm-libopus.patch
+
+fi
+
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
@@ -131,10 +177,7 @@ END
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  # patch -p1 -i ../unity-menubar.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1684261
-  # patch -Np1 -i ../rust_build_fix.patch
+  patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
@@ -166,7 +209,6 @@ END
   cp -r ${srcdir}/common/source_files/* ./
 }
 
-
 build() {
   cd mozilla-unified
 
@@ -182,6 +224,14 @@ build() {
   # LLVM ERROR: Function Import: link error
   # CFLAGS="${CFLAGS/-fno-plt/}"
   # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+if [[ $CARCH == 'x86_64' ]]; then
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --disable-elf-hack
+END
+
+fi
 
   ./mach build
 }
@@ -214,27 +264,27 @@ END
 [Global]
 id=io.gitlab.librewolf-community
 version=1.0
-about=DragonWolf
+about=LibreWolf
 
 [Preferences]
-app.distributor="Garuda Linux"
+app.distributor="LibreWolf Community"
 app.distributor.channel=librewolf
 app.partner.librewolf=librewolf
 END
 
   for i in 16 32 48 64 128; do
     install -Dm644 browser/branding/librewolf/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/dragonwolf.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/librewolf.png"
   done
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/dragonwolf.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/librewolf.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
   install -Dm644 browser/branding/librewolf/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dragonwolf-symbolic.png"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
 
-  install -Dm644 ../dragonwolf.desktop \
-    "$pkgdir/usr/share/applications/dragonwolf.desktop"
+  install -Dm644 ../librewolf.desktop \
+    "$pkgdir/usr/share/applications/librewolf.desktop"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf" <<END
