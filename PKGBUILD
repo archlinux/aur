@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-git
-pkgver=2.3.2.r5.ge864189
+pkgver=2.3.2.r31.g92e71f7
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher'
 arch=(x86_64)
@@ -24,7 +24,7 @@ makedepends=(
   vala
 )
 provides=(
-  libwingpanel-3.0.so
+  libwingpanel.so
   wingpanel
 )
 conflicts=(wingpanel)
