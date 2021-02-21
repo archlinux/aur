@@ -5,16 +5,15 @@
 
 pkgname=selinux-refpolicy-git
 _policyname=refpolicy-git
-pkgver=RELEASE_2_20190201.r0.g10e0106e825b
+pkgver=RELEASE_2_20210203.r23.g1167739da188
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs"
 arch=('any')
 url="https://github.com/SELinuxProject/refpolicy/wiki"
 license=('GPL2')
 groups=('selinux')
-makedepends=('git' 'python' 'checkpolicy>=2.8' 'semodule-utils')
-depends=('policycoreutils>=2.8')
-optdepends=('linux-hardened: Linux kernel with SELinux support')
+makedepends=('git' 'python' 'checkpolicy>=3.0' 'semodule-utils')
+depends=('policycoreutils>=3.0')
 install="${pkgname}.install"
 # refpolicy 2.20180701 moved the repository to SELinuxProject Github organization
 # When updating, if makepkg reports "refpolicy is not a clone of https://github.com/SELinuxProject/refpolicy",
