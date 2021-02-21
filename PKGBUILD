@@ -15,7 +15,7 @@ pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse icu mozilla-common libevent zlib libjpeg libvpx nss-hg)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xwayland
              rust
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
@@ -24,10 +24,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English')
+            'hunspell-en_US: Spell checking, American English'
+            'libpipewire02: Wayland functionality')
 options=(!emptydirs !makeflags !strip)
-_linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
-_settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('librewolf' 'librewolf-wayland-hg')
 provides=('librewolf')
@@ -91,6 +90,15 @@ ac_add_options --with-distribution-id=io.gitlab.librewolf-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-libevent
+ac_add_options --with-system-icu
+ac_add_options --with-system-zlib
+ac_add_options --with-system-jpeg
 
 # Features
 ac_add_options --enable-pulseaudio
@@ -202,7 +210,7 @@ version=1.0
 about=DragonWolf
 
 [Preferences]
-app.distributor="LibreWolf Community"
+app.distributor="Garuda Linux"
 app.distributor.channel=librewolf
 app.partner.librewolf=librewolf
 END
