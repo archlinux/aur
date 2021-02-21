@@ -4,7 +4,6 @@ pkgbase = triehash
 	pkgrel = 2
 	url = https://github.com/julian-klode/triehash
 	arch = any
-	groups = 
 	license = MIT
 	depends = perl
 	source = https://github.com/julian-klode/triehash/archive/v0.3.tar.gz
