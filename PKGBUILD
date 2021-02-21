@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-nightlight-git
-pkgver=2.0.4.r9.g9a2241f
+pkgver=2.0.4.r42.gd771eed
 pkgrel=1
 pkgdesc='Winganel Nightlight Indicator'
 arch=(x86_64)
@@ -12,14 +12,16 @@ depends=(
   glib2
   glibc
   gtk3
-  libwingpanel-3.0.so
+  libwingpanel.so
+  libgranite.so
 )
 makedepends=(
   git
   intltool
   meson
   vala
-  wingpanel
+  wingpanel-git
+  granite-git
 )
 provides=(wingpanel-indicator-nightlight)
 conflicts=(wingpanel-indicator-nightlight)
