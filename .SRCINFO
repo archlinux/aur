@@ -1,0 +1,17 @@
+pkgbase = pwg-git
+	pkgdesc = random password generator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/systemb4/pwg
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	provides = pwg
+	conflicts = pwg
+	source = git+https://github.com/systemb4/pwg
+	md5sums = SKIP
+
+pkgname = pwg-git
+
