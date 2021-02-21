@@ -11,7 +11,7 @@ license=('APACHE')
 makedepends=('git' 'go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         ldflags.patch)
-sha256sums=('dc51bb7bd8857f3c99247bf8fa71576bad458eb46b02e55dfd0cf7b8364f2763'
+sha256sums=('42a95498bc858ee55e699bc1418a926c8c9a38ae581535f33f683b634feb2e79'
             '64db3c34767099aab8ec385c0b6796a2745ed66fa35159df0e8108da31e710db')
 
 prepare() {
