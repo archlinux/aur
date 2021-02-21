@@ -1,0 +1,16 @@
+post_install() {
+  echo "
+    >>> Proxifier service can be enabled as follows:
+
+    $ sudo systemctl daemon-reload # Reload the service units
+    $ sudo systemctl start proxifier
+    
+    >>> See the man page, \`man proxifier\` for more information.
+    >>> /usr/local/etc/proxifier.conf can be used for configuring the proxifier.
+"
+}
+
+post_upgrade() {
+  post_install $1
+}
+

@@ -14,7 +14,7 @@ conflicts=("proxifier-for-linux")
 replaces=()
 backup=()
 options=()
-# install=
+install=${pkgname}.install
 source=("$pkgname::git+https://github.com/m0hithreddy/Proxifier-For-Linux")
 noextract=()
 md5sums=('SKIP')
@@ -23,25 +23,25 @@ md5sums=('SKIP')
 # a description of each element in the source array.
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
-    autoreconf -vfi
-    ./configure
-    make all
+  cd "$srcdir/${pkgname}"
+  autoreconf -vfi
+  ./configure
+  make all
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
-    test -d fakeroot || mkdir fakeroot
-    make install DESTDIR=fakeroot
-    cd fakeroot
-    install -Dm755 "usr/local/bin/proxifier" "${pkgdir}/usr/local/bin/proxifier"
-    install -Dm644 "usr/local/etc/proxifier.conf" "${pkgdir}/usr/local/etc/proxifier.conf"
-    install -Dm644 "usr/local/lib/systemd/system/proxifier.service" "${pkgdir}/usr/lib/systemd/system/proxifier.service"
-    install -Dm644 "usr/local/share/man/man1/proxifier.1" "${pkgdir}/usr/share/man/man1/proxifier.1"
+  cd "$srcdir/${pkgname}"
+  test -d fakeroot || mkdir fakeroot
+  make install DESTDIR=fakeroot
+  cd fakeroot
+  install -Dm755 "usr/local/bin/proxifier" "${pkgdir}/usr/local/bin/proxifier"
+  install -Dm644 "usr/local/etc/proxifier.conf" "${pkgdir}/usr/local/etc/proxifier.conf"
+  install -Dm644 "usr/local/lib/systemd/system/proxifier.service" "${pkgdir}/usr/lib/systemd/system/proxifier.service"
+  install -Dm644 "usr/local/share/man/man1/proxifier.1" "${pkgdir}/usr/share/man/man1/proxifier.1"
 }
 
