@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-online-accounts-git
-pkgver=2.0.1.r391.gb1853b7
+pkgver=2.0.1.r420.gbb936d7
 pkgrel=1
 pkgdesc='Switchboard Online Accounts Plug'
 arch=(x86_64)
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=(
   git
-  granite
+  granite-git
   meson
   switchboard
   vala

@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-online-accounts-git
 	pkgdesc = Switchboard Online Accounts Plug
-	pkgver = 2.0.1.r391.gb1853b7
+	pkgver = 2.0.1.r420.gbb936d7
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-onlineaccounts
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL2
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -29,4 +29,3 @@ pkgbase = switchboard-plug-online-accounts-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-online-accounts-git
-
