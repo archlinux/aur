@@ -26,7 +26,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  cargo test --locked
+  cargo test --release --locked
 }
 
 package() {
