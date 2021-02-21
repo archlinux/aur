@@ -37,16 +37,16 @@ conflicts=('librewolf' 'librewolf-wayland-hg')
 provides=('librewolf')
 source_x86_64=("hg+$_repo#revision=autoland"
                dragonwolf.desktop
-               "git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git"
-               "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
+               "git+https://gitlab.com/dr460nf1r3/common.git"
+               "git+https://gitlab.com/dr460nf1r3/settings.git"
                megabar.patch
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                unity-menubar.patch)
 source_aarch64=("hg+$_repo#revision=release"
                 dragonwolf.desktop
-                "git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git"
-                "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
+                "git+https://gitlab.com/dr460nf1r3/common.git"
+                "git+https://gitlab.com/dr460nf1r3/settings.git"
                 megabar.patch
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                 unity-menubar.patch
@@ -80,10 +80,7 @@ pkgver() {
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
-
-  mv ${srcdir}/dragonwolf-common/ ${srcdir}/common
-  mv ${srcdir}/dragonwolf-settings/ ${srcdir}/settings
-
+  
   #
   # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
   # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
@@ -208,7 +205,6 @@ fi
   sed "$_settings_services_sed" -i services/settings/Utils.jsm
   sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
 
-  # Copy branding in place  
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
 }
