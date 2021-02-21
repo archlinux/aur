@@ -40,6 +40,7 @@ optdepends=(
 	# core
 	'python-opengl: client OpenGL accelerated rendering (client)'
 	'python-pycups: Printing'
+	'xf86-video-dummy-xpra-patch: Xdummy with constant-dpi. Recommended by Xpra' 
 
 	# network layer
 	'python-pyaml: alternative packet encoder'

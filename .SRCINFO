@@ -21,6 +21,7 @@ pkgbase = xpra-git
 	depends = libxkbfile
 	optdepends = python-opengl: client OpenGL accelerated rendering (client)
 	optdepends = python-pycups: Printing
+	optdepends = xf86-video-dummy-xpra-patch: Xdummy with constant-dpi. Recommended by Xpra
 	optdepends = python-pyaml: alternative packet encoder
 	optdepends = python-cryptography: encryption
 	optdepends = python-zeroconf: Multicast DNS session publishing (server)
