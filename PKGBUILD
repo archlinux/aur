@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-locale-git
-pkgver=2.5.2.r10.g0ee8275
+pkgver=2.5.3.r7.g6b088dd
 pkgrel=1
 pkgdesc='Switchboard Locale Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('accountsservice' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'ibus'
          'libgee' 'polkit'
          'libswitchboard-2.0.so' 'libgranite.so')
-makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-locale')
 conflicts=('switchboard-plug-locale')
 source=('git+https://github.com/elementary/switchboard-plug-locale.git')

@@ -1,12 +1,12 @@
 pkgbase = switchboard-plug-locale-git
 	pkgdesc = Switchboard Locale Plug
-	pkgver = 2.5.2.r10.g0ee8275
+	pkgver = 2.5.3.r7.g6b088dd
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-locale
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -26,4 +26,3 @@ pkgbase = switchboard-plug-locale-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-locale-git
-
