@@ -1,16 +1,17 @@
 pkgbase = switchboard-plug-keyboard-git
 	pkgdesc = Switchboard Keyboard Plug
-	pkgver = 2.4.1.r120.gbb59a6b
+	pkgver = 2.4.1.r151.g2c6b20e
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-keyboard
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
+	makedepends = libhandy
 	depends = glib2
 	depends = glibc
 	depends = gtk3
@@ -19,7 +20,7 @@ pkgbase = switchboard-plug-keyboard-git
 	depends = libxklavier
 	depends = libxml2
 	depends = ibus
-	depends = libhandy
+	depends = libhandy-1.so
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
 	provides = switchboard-plug-keyboard
@@ -28,4 +29,3 @@ pkgbase = switchboard-plug-keyboard-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-keyboard-git
-
