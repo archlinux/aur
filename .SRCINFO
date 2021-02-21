@@ -9,7 +9,7 @@ pkgbase = nodejs-resume-cli
 	makedepends = jq
 	depends = nodejs
 	noextract = nodejs-resume-cli-3.0.4.tgz
-	source = https://registry.npmjs.org/nodejs-resume-cli/-/nodejs-resume-cli-3.0.4.tgz
+	source = nodejs-resume-cli-3.0.4.tgz::https://registry.npmjs.org/resume-cli/-/resume-cli-3.0.4.tgz
 	sha512sums = 1274d5e87a343cd2e40279034d57f771cfc8580a1f3c71df03b0ac080edc12126ad939b4540ab9120d4c2cd86aa2a47cb44ee56b2072a64090997c9e6f56c8ea
 
 pkgname = nodejs-resume-cli

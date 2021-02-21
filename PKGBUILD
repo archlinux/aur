@@ -10,7 +10,7 @@ url="https://github.com/jsonresume/resume-cli"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
-source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname:7}/-/${pkgname:7}-${pkgver}.tgz")
 noextract=(${pkgname}-${pkgver}.tgz)
 sha512sums=('1274d5e87a343cd2e40279034d57f771cfc8580a1f3c71df03b0ac080edc12126ad939b4540ab9120d4c2cd86aa2a47cb44ee56b2072a64090997c9e6f56c8ea')
 
@@ -27,7 +27,7 @@ package() {
 
    # Remove references to $srcdir
    local tmppackage="$(mktemp)"
-   local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+   local pkgjson="$pkgdir/usr/lib/node_modules/${pkgname:7}/package.json"
    jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
    mv "$tmppackage" "$pkgjson"
    chmod 644 "$pkgjson"
