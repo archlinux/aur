@@ -14,7 +14,7 @@ pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://librewolf-community.gitlab.io/"
+url="https://gitlab.com/dr460nf1r3/dragonwolf-settings"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse icu mozilla-common libevent zlib libjpeg libvpx nss-hg)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xwayland
              rust
@@ -32,8 +32,8 @@ conflicts=('librewolf' 'librewolf-wayland-hg')
 provides=('librewolf')
 source=("hg+$_repo#revision=autoland"
         dragonwolf.desktop
-        "git+https://gitlab.com/dr460nf1r3/common.git"
-        "git+https://gitlab.com/dr460nf1r3/settings.git"
+        "git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git"
+        "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
         megabar.patch
         "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
         "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
