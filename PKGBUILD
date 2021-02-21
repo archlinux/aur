@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-bluetooth-git
-pkgver=2.1.5.r32.g6ec4d8d
+pkgver=2.1.6.r22.gf1d517f
 pkgrel=1
 pkgdesc='Bluetooth indicator for Wingpanel'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url='https://github.com/elementary/wingpanel-indicator-bluetooth'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('bluez' 'glib2' 'glibc' 'gtk3' 'libgee'
-         'libwingpanel-3.0.so')
-makedepends=('git' 'granite' 'intltool' 'meson' 'vala' 'wingpanel')
+         'libwingpanel.so')
+makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala' 'wingpanel-git')
 provides=('wingpanel-indicator-bluetooth')
 conflicts=('wingpanel-indicator-bluetooth')
 source=('git+https://github.com/elementary/wingpanel-indicator-bluetooth.git')
