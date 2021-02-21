@@ -32,6 +32,6 @@ package() {
     cd pwg
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
-    cp -f pwg /bin
     cp -f pwg.1 /usr/local/man/man1
+    cp -f pwg /bin
 }
