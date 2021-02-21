@@ -1,11 +1,14 @@
 pkgname=picard-git
-pkgver=2.5.5.r71.gcb77bcce
+pkgver=2.5.5.r75.g7b8c6561
 pkgrel=1
 pkgdesc="MusicBrainz tagging application"
 arch=('i686' 'x86_64')
 url="https://picard.musicbrainz.org"
 license=('GPL')
-depends=('python-pyqt5' 'python-mutagen' 'python-fasteners')
+depends=('python-pyqt5'
+         'python-mutagen'
+         'python-dateutil'
+         'python-fasteners')
 optdepends=('python-discid: CD-Lookup feature'
             'python-markdown: Scripting documentation'
             'chromaprint: AcoustID integration'

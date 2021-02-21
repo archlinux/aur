@@ -1,6 +1,6 @@
 pkgbase = picard-git
 	pkgdesc = MusicBrainz tagging application
-	pkgver = 2.5.5.r71.gcb77bcce
+	pkgver = 2.5.5.r75.g7b8c6561
 	pkgrel = 1
 	url = https://picard.musicbrainz.org
 	arch = i686
@@ -9,13 +9,14 @@ pkgbase = picard-git
 	makedepends = git
 	depends = python-pyqt5
 	depends = python-mutagen
+	depends = python-dateutil
 	depends = python-fasteners
 	optdepends = python-discid: CD-Lookup feature
 	optdepends = python-markdown: Scripting documentation
 	optdepends = chromaprint: AcoustID integration
 	optdepends = qt5-translations: Translated Qt5 components
 	optdepends = qt5-multimedia: Built‐in media player
-	provides = picard=2.5.5.r71.gcb77bcce
+	provides = picard=2.5.5.r75.g7b8c6561
 	conflicts = picard
 	conflicts = picard-qt
 	conflicts = picard-bzr
