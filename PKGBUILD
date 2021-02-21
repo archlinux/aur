@@ -2,7 +2,7 @@
 # Maintainer:  Marco Schroeder <marco.schroeder96 at gmail dot com>
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=keeperrl-git
-pkgver=r5004
+pkgver=r5155
 pkgrel=1
 pkgdesc="Dungeon Keeper and Dwarf Fortress inspired dungeon simulator built on top of roguelike mechanics."
 arch=('i686' 'x86_64')
