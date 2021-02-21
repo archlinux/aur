@@ -1,0 +1,15 @@
+pkgbase = dotlink-git
+	pkgdesc = Simple dotfiles manager
+	pkgver = r16.0a869dd
+	pkgrel = 1
+	url = https://github.com/joel-porquet/dotlink
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	depends = bash
+	source = dotlink::git+https://github.com/joel-porquet/dotlink
+	md5sums = SKIP
+
+pkgname = dotlink-git
+
