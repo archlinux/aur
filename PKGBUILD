@@ -17,6 +17,6 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-	install -Dm751 zoomx "$pkgdir/usr/bin/zoomx"
+    install -Dm751 zoomx "$pkgdir/usr/bin/zoomx"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
