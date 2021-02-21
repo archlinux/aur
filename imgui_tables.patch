@@ -1,0 +1,14 @@
+diff --unified --recursive --text package.orig/imgui-sfml-2.1/cmake/FindImGui.cmake package.new/imgui-sfml-2.1/cmake/FindImGui.cmake
+--- package.orig/imgui-sfml-2.1/cmake/FindImGui.cmake   2021-02-21 19:58:06.780926546 +0100
++++ package.new/imgui-sfml-2.1/cmake/FindImGui.cmake    2021-02-21 19:58:53.121012311 +0100
+@@ -48,6 +48,10 @@
+ # Transform '#define IMGUI_VERSION "X.Y"' into 'X.Y'
+ string(REGEX REPLACE ".*\"(.*)\".*" "\\1" IMGUI_VERSION "${IMGUI_VERSION}")
+ 
++if(${IMGUI_VERSION} VERSION_GREATER_EQUAL "1.80")
++  list(APPEND IMGUI_SOURCES ${IMGUI_INCLUDE_DIR}/imgui_tables.cpp)
++endif()
++
+ # Check required version
+ if(${IMGUI_VERSION} VERSION_LESS ${ImGui_FIND_VERSION})
+   set(IMGUI_FOUND FALSE)
