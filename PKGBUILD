@@ -3,11 +3,12 @@
 
 pkgname=google-calendar-nativefier
 pkgver=2021.02.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
 license=('MIT')
+depends=('electron')
 makedepends=(
   'gendesk'
   'nodejs-nativefier'
