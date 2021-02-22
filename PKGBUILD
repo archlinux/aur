@@ -1,8 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=prometheus-xmpp-webhook
-pkgver=0.2
-pkgrel=5
+pkgver=0.3
+pkgrel=1
 pkgdesc='XMPP-Webhook built for Prometheus/Grafana Alerts'
 arch=('x86_64')
 url='https://github.com/opthomas-prime/xmpp-webhook'
@@ -22,7 +22,7 @@ sha256sums=('691af96667e6eb627512f038c5f2f7b3928edc586f27aecad37f3957437a3f6a'
             '0ec7e2fb1d5d843174718b922a8bb931098c0c5a7154cf5f50aa43af24717860'
             'e97efa5c6d3f7f4e970a84220cd73fbc0fb8e213623c4c44652f3c57d348e2a4'
             'a2938e74de29c13ee08f5dad3fc8b2c4b618ec90a85ca8e95a4470f87f8af4f7'
-            '15fac0b3f8bc81ff53c6a856c3a8fcd5cddbfd7593a18fd69af2cfad4d98298c')
+            'b4c16717109379fd79cfe6f2fbe50f7398647dc0d697c6ac382972a9b083f1fe')
 
 prepare() {
   patch -p1 xmpp-webhook-${pkgver}/xmpp-webhook.service xmpp-webhook.service.patch
