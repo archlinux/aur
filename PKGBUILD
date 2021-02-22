@@ -4,18 +4,18 @@ _pkgname=nekofetch
 _branch=master
 pkgname=$_pkgname-git
 pkgver=r30.0e8a74b
-pkgrel=2
+pkgrel=3
 pkgdesc="neofetch but with nekos"
 license=('GPL3')
 arch=(any)
-url="https://github.com/propruhh/nekofetch"
+url="https://github.com/proprdev/nekofetch"
 depends=(curl jq jp2a neofetch)
 optdepends=('imagemagick: support for kitty image backend')
 makedepends=(git make)
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-source=("git+https://github.com/propruhh/$_pkgname.git#branch=${_branch}")
+source=("git+$url.git#branch=${_branch}")
 sha256sums=('SKIP')
 
 _makeopts="--directory=$_pkgname"
