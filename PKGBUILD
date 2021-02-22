@@ -1,7 +1,7 @@
 # Maintainer: Nemo <archlinux [at] captnemo.in>
 
 pkgname=karn
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Manage multiple Git identities with ease"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('go')
 options=('!strip' '!emptydirs')
 
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('23a33355ceefe4d1a76a31e551713b21f9054ea462a2a64c349b9bfb84f8698173df80c8b0d1a8a3c491d86df3d0130b8b91ce3aa74e491f9c5fa7b7d20e9e01')
+sha512sums=('d71197b63d92d2fde02cf8f1365c71df08001dde4d0db3f0463f8f02b4587af894bd3ca67ac2cc65278b6995d1a272a215572ea5d48757627f86f2c7deeab7dc')
 
 
 prepare(){

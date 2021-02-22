@@ -1,6 +1,6 @@
 pkgbase = karn
 	pkgdesc = Manage multiple Git identities with ease
-	pkgver = 0.0.5
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/prydonius/karn
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = karn
 	makedepends = go
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/prydonius/karn/archive/v0.0.5.tar.gz
-	sha512sums = 23a33355ceefe4d1a76a31e551713b21f9054ea462a2a64c349b9bfb84f8698173df80c8b0d1a8a3c491d86df3d0130b8b91ce3aa74e491f9c5fa7b7d20e9e01
+	source = https://github.com/prydonius/karn/archive/v0.1.0.tar.gz
+	sha512sums = d71197b63d92d2fde02cf8f1365c71df08001dde4d0db3f0463f8f02b4587af894bd3ca67ac2cc65278b6995d1a272a215572ea5d48757627f86f2c7deeab7dc
 
 pkgname = karn
 
