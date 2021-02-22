@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 21.1.0_devel.135280.3c31364f5e7
+	pkgver = 21.1.0_devel.135504.54cb05b46c5
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = lib32-mesa-minimal-git
 	makedepends = lib32-libx11
 	makedepends = xorgproto
 	makedepends = lib32-gcc-libs
-	makedepends = lib32-libvdpau
 	makedepends = lib32-libelf
 	makedepends = git
 	makedepends = lib32-libglvnd
