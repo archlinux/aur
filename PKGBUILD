@@ -8,6 +8,8 @@ arch=('any')
 url="https://os.mbed.com"
 license=('Apache')
 depends=(
+  'cmake'
+  'ninja'
   'python'
   'python-dotenv'
   'python-click'
