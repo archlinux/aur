@@ -1,8 +1,8 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=vim-recover-git
-pkgver=r180.b95b04f
-pkgrel=3
+pkgver=r203.c84f072
+pkgrel=2
 pkgdesc='A Vim plugin to show a diff, whenever recovering a buffer'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=3068'
@@ -36,5 +36,5 @@ package() {
 
   _licencepath="${pkgdir}/usr/share/licenses/$pkgname/"
   mkdir -p "${_licencepath}"
-  ln -s /usr/share/vim/vim80/doc/uganda.txt "${_licencepath}/LICENSE"
+  sed -n '/^Copyright/,/^$/p' Recover.vim/doc/recoverPlugin.txt | sed '$d' > "${_licencepath}/LICENSE"
 }
