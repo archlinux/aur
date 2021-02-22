@@ -1,9 +1,10 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Jake <aur@ja-ke.tech>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-json-rpc
 pkgver=1.13.0
 pkgrel=1
-pkgdesc="JSON-RPC transport realisation"
+pkgdesc="JSON-RPC 1/2 transport implementation"
 arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
