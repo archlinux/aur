@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/meteyou/mainsail.git#branch=master' 'mainsail-klipper.cfg' 'mainsail-nginx.conf')
 sha256sums=('SKIP'
-            '3ab90887f056957d983aa4c00aa92d0a29f8aad07e410b18751a26a6e73539de'
+            '8cc7f8e97459cc9e529363f63151a205d4a3702a1d20ce864d9f7d7b51a4e1cf'
             '7c86d687ac7b1fb84fc04d1ffcd468a05767a9c9d880ad6d666b2527523495ec')
 
 pkgver() {
