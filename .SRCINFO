@@ -1,0 +1,15 @@
+pkgbase = apache-h5bp-server-configs
+	pkgdesc = Apache HTTP server boilerplate configs
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/h5bp/server-configs-apache
+	install = .install
+	arch = any
+	license = MIT
+	depends = apache
+	provides = apache-h5bp-server-configs
+	source = apache-h5bp-server-configs.4.1.0.tar.gz::https://github.com/h5bp/server-configs-apache/archive/4.1.0.tar.gz
+	b2sums = b0034cf1b74ff5539ecf386a87f2f973f1e122084cdccc797b7e05d8441f4c7df5e33f003367f91b778a3e14b8074c1e2b6662ca28842f4df631b05de12ae8e1
+
+pkgname = apache-h5bp-server-configs
+

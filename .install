@@ -1,0 +1,10 @@
+post_install() {
+  echo 'Start using the h5bp configuration by copying the example HTTPD'
+  echo 'configuration from `/etc/httpd/conf/vhosts/templates/example.com.conf`'
+  echo 'to the `/etc/httpd/conf/vhosts` directory with the desired domain and'
+  echo 'top level name to your liking.'
+}
+
+post_update() {
+  post_install
+}
