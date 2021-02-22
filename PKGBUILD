@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.33.0.r42.g4029a695b5
+pkgver=0.33.0.r79.gc766e47b70
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -29,7 +29,7 @@ depends=(
          'ladspa'
          'lame'
          'lcms2'
-         'lensfun'
+         # 'lensfun'
          'libarchive'
          'libass'
          'libavc1394'
@@ -269,7 +269,7 @@ prepare() {
     '--enable-libgsm'
     '--enable-libiec61883'
     '--enable-libjack'
-    '--enable-liblensfun'
+    '--disable-liblensfun'
     '--enable-libmodplug'
     '--enable-libmp3lame'
     '--enable-libmysofa'
