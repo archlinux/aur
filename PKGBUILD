@@ -1,7 +1,7 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=wine-stable-ubuntu
 pkgver=6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A compatibility layer for running Windows programs (binary for Ubuntu)"
 arch=('x86_64')
 url="https://winehq.org/"
@@ -9,32 +9,55 @@ license=('GPL')
 conflicts=('wine')
 provides=("wine=${pkgver}" "wine-wow64=${pkgver}")
 install=wine.install
-depends=('glibc' 'fontconfig' 'lib32-fontconfig' 'lcms2' 'lib32-lcms2' 'libxml2' 'lib32-libxml2' 'libxcursor' 'lib32-libxcursor' 'libxrandr' 'lib32-libxrandr' 'libxdamage' 'lib32-libxdamage' 'libxi' 'lib32-libxi' 'gettext' 'lib32-gettext' 'freetype2' 'lib32-freetype2' 'glu' 'lib32-glu' 'libsm' 'lib32-libsm' 'gcc-libs' 'lib32-gcc-libs' 'libpcap' 'lib32-libpcap' 'faudio' 'lib32-faudio' 'desktop-file-utils')
+#Depends: libasound2 (>= 1.0.16), libc6 (>= 2.29), libfaudio0 (>= 19.06.07), libgcc-s1 (>= 3.0), libglib2.0-0 (>= 2.12.0), libgphoto2-6 (>= 2.5.10), libgphoto2-port12 (>= 2.5.10), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.4.0), liblcms2-2 (>= 2.2+git20110628), libldap-2.4-2 (>= 2.4.7), libmpg123-0 (>= 1.6.2), libopenal1 (>= 1.14), libpcap0.8 (>= 0.9.8), libpulse0 (>= 0.99.1), libudev1 (>= 183), libusb-1.0-0 (>= 2:1.0.21), libvkd3d1 (>= 1.0), libx11-6, libxext6, libxml2 (>= 2.9.0), ocl-icd-libopencl1 | libopencl1, ocl-icd-libopencl1 (>= 1.0) | libopencl-1.1-1, libasound2-plugins, libncurses6 | libncurses5 | libncurses
+depends=('glibc' 'alsa-lib' 'faudio' 'gcc-libs'
+	 'glib2' 'libgphoto2' 'gst-plugins-base-libs'
+	 'gstreamer' 'lcms2' 'libldap' 'mpg123'
+	 'openal' 'libpcap' 'libpulse' 'udev'
+	 'libusb' 'vkd3d' 'libx11' 'libxext'
+	 'libxml2' 'opencl-icd-loader' 'alsa-plugins'
+	 'ncurses'
+	 'orc' 'libelf' 'gettext' 'desktop-file-utils'
+
+	 'lib32-glibc' 'lib32-alsa-lib' 'lib32-faudio' 'lib32-gcc-libs'
+	 'lib32-glib2' 'lib32-gst-plugins-base-libs'
+	 'lib32-gstreamer' 'lib32-lcms2' 'lib32-libldap' 'lib32-mpg123'
+	 'lib32-openal' 'lib32-libpulse' 'lib32-systemd'
+	 'lib32-libusb' 'lib32-vkd3d' 'lib32-libx11' 'lib32-libxext'
+	 'lib32-libxml2' 'lib32-opencl-icd-loader' 'lib32-alsa-plugins'
+	 'lib32-ncurses'
+	 'lib32-orc' 'lib32-libelf' 'lib32-gettext')
+# - libpcal libpghoto2-port12 lib32-libgphoto2
+
+#Recommends: libcapi20-3, libcups2, libdbus-1-3, libfontconfig1, libfreetype6, libglu1-mesa | libglu1, libgnutls30 | libgnutls28 | libgnutls26, libgsm1, libgssapi-krb5-2, libjpeg62-turbo | libjpeg8, libkrb5-3, libodbc1, libosmesa6, libpng16-16 | libpng12-0, libsane | libsane1, libsdl2-2.0-0, libtiff5, libv4l-0, libxcomposite1, libxcursor1, libxfixes3, libxi6, libxinerama1, libxrandr2, libxrender1, libxslt1.1, libxxf86vm1
 optdepends=(
-  giflib                lib32-giflib
-  libpng                lib32-libpng
-  libldap               lib32-libldap
-  gnutls                lib32-gnutls
-  mpg123                lib32-mpg123
-  openal                lib32-openal
-  v4l-utils             lib32-v4l-utils
-  libpulse              lib32-libpulse
-  alsa-plugins          lib32-alsa-plugins
-  alsa-lib              lib32-alsa-lib
-  libjpeg-turbo         lib32-libjpeg-turbo
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  ncurses               lib32-ncurses
-  opencl-icd-loader     lib32-opencl-icd-loader
-  libxslt               lib32-libxslt
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
-  vkd3d                 lib32-vkd3d
-  sdl2                  lib32-sdl2
-  libgphoto2
-  sane
-  gsm
-  cups
-  samba           dosbox
+libcapi
+libcups		lib32-libcups
+dbus		lib32-dbus
+fontconfig	lib32-fontconfig
+freetype2	lib32-freetype2
+glu		lib32-glu
+gnutls		lib32-gnutls
+gsm		lib32-gsm
+krb5		lib32-krb5
+mesa		lib32-mesa
+libpng		lib32-libpng
+libjpeg6-turbo	lib32-libjpeg6-turbo
+sane		lib32-sane
+sdl2		lib32-sdl2
+libtiff		lib32-libtiff
+v4l-utils	lib32-v4l-utils
+libxcomposite	lib32-libxcomposite
+libxcursor	lib32-libxcursor
+libxfixes	lib32-libxfixes
+libxi		lib32-libxi
+libxinerama	lib32-libxinerama
+libxrandr	lib32-libxrandr
+libxrender	lib32-libxrender
+libxslt		lib32-libxslt
+libxxf86vm	lib32-libxxf86vm
+lib32-libgphoto2
+dosbox
 )
 options=('!emptydirs' '!strip')
 _pkgver="${pkgver}.0"
