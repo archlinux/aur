@@ -48,8 +48,8 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.10
-_minor=16
-_rtver=30
+_minor=17
+_rtver=32
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -71,7 +71,7 @@ _bfq_rev_path="bfq-reverts-all"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v14"
-_bfq_rel="r2K210203"
+_bfq_rel="r2K210214"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -332,12 +332,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('98182625d55a7d8e1ab59e935491826d0cf956613a9cd4db33b249652585acf26263fa5ce46da524adbcb83baa1ba3d6370f4562f415578c7db1b3437ba7e7a2'
+sha512sums=('2d8700ceee0c027597415de2b9fa478a651c6f5074b68d60609a4c46398ac5a854f9323fc07b187caca5294759bf99832d7496c4f4cca222240b07435b27bd60'
             'SKIP'
-            '4e8d80d11310cf1ede9b9662363dc7f71c3f1f72d9bb1ffc7daadc8ba4c92479ba620b9f0eba8ce8bcebb54417dba5d7858bdca287abf590f67c40e81bbc0b98'
+            'fb5f2187907231c101df7dfb3e0df4c3a44dff2e62430db51ffebe1f8a505be8d09d0a0c75e0fdb3f63a5d71151c5f1d5386714aebdbee9f599ff0689b8b5736'
             'SKIP'
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
-            '989d4013d5cb68aa9561afbe08b92ba29c3bdd456eaccdfad74d4f1e7059b3fca0914220cc4e4a700041675b7ae6b0c0342132b359a441f95fd5803b720c8dea'
+            '4b4adee88983665f5e70f263e5eac89a5d4dff09210dc66dc09f45fd8b7b98cc4a3fd054d9850d5a9ffbbe6ff73d11d09b6d3750ebcc6a84619fa0ff1959f11a'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
             'eb12bca374c8709d7e98730a01b406c18c0438983ac0f65c788fa58de6bb3d1558a673f5bb75a594967b71079fb15a29176ef9db2971f42b40c2696c4870e4a7'
             '6a222febcc5a3249fb961320ea6aceccacb94dc0727741c9363054f95b89f5c5cbdf6d25ca8ef3e5eba014e7e1ec403cfe7ba1a380952c362a72f31341e71ff1'
