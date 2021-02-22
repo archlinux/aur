@@ -2,14 +2,15 @@
 
 pkgname=ttf-meguri
 pkgver=20101113a
-pkgrel=6
+pkgrel=7
 pkgdesc="Modified IPA and M+ fonts for Japanese"
 arch=('any')
-url="http://www.geocities.jp/ep3797/modified_fonts_01.html"
+url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
-depends=('fontconfig')
-source=(http://jaist.dl.osdn.jp/users/8/8848/meguri-fonts-${pkgver}.tar.lzma)
-sha256sums=('77599ce97a2ead6e7aa714d05855c790ed4664e88fc79cf6eab9c579eb2e1c09')
+depends=('fontconfig' 'xorg-mkfontscale')
+source=(https://osdn.net/users/utuhiro/pf/utuhiro/dl/meguri-fonts-${pkgver}.tar.lzma)
+md5sums=('fc3352bbea9712ad685ccfc43333e8ad')
+b2sums=('c425d14a4d0455af214e0b04e5a16163129c7802d30e13a0f95eebde0169292e93a2fb4d302db4dfe1dd354196b3aa88821b516d9f918d2b2384347ba308ea53')
 
 package() {
   cd ${srcdir}/meguri-fonts-${pkgver}
