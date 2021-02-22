@@ -1,0 +1,26 @@
+pkgbase = zluda-git
+	pkgdesc = A drop-in replacement for CUDA on Intel GPUs (git version)
+	pkgver = 2.r0.g4d3e37b
+	pkgrel = 1
+	url = https://github.com/vosen/ZLUDA/
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = opencl-headers
+	makedepends = level-zero-headers
+	depends = opencl-icd-loader
+	depends = level-zero-loader
+	provides = zluda
+	conflicts = zluda
+	conflicts = nvidia-utils
+	source = git+https://github.com/vosen/ZLUDA.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zluda-git
+
