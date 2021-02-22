@@ -1,14 +1,14 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=wev-git
-pkgver=1.0.0.r0.gcee3dfb
+pkgver=1.0.0.r2.g54de46d
 pkgrel=1
 pkgdesc='Print wayland events, like xev(1)'
 url='https://git.sr.ht/~sircmpwn/wev'
 license=('MIT')
 provides=('wev')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('wayland' 'wayland-protocols' 'libxkbcommon')
-makedepends=('git' 'scdoc')
+depends=('wayland' 'libxkbcommon')
+makedepends=('git' 'scdoc' 'wayland-protocols')
 source=("${pkgname%-git}::git+$url"
 	"wev-git.patch")
 sha256sums=('SKIP'
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  make
+  make PREFIX=/usr
 }
 
 package() {
