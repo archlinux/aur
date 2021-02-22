@@ -1,14 +1,14 @@
 # Maintainer: DuckSoft <realducksoft@gmail.com>
 # Maintainer: mzz2017 <mzz@tuta.io>
 pkgname=mmp-go-git
-pkgver=20210218.r116.48ffcbc
+pkgver=20210218.r117.92ace24
 pkgrel=1
 pkgdesc="Reuse a single port for multiple Shadowsocks AEAD servers"
 arch=('x86_64')
 url="https://github.com/Qv2ray/mmp-go"
 license=('AGPL3')
 depends=('git' 'glibc')
-makedepends=('go>=2:1.16')
+makedepends=('go')
 provides=('mmp-go')
 conflicts=('mmp-go')
 source=("$pkgname::git+$url")
