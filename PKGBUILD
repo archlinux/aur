@@ -8,8 +8,15 @@ url='https://codeberg.org/dnkl/yambar'
 license=('MIT')
 depends=(
 	'xcb-util-cursor'
+	'pixman' 
+	'xcb-util-wm'
+	'xorgproto'
+	'wayland'{,-protocols} 
+	'fontconfig' 
+	'alsa-lib'
 )
 makedepends=(
+	'git'
 	'cmake'
 	'libmpdclient'
 	'libyaml'
