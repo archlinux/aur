@@ -1,18 +1,18 @@
 pkgbase = abcl
 	pkgdesc = Full implementation of the Common Lisp language in the JVM
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://common-lisp.net/project/armedbear/
 	arch = any
 	license = GPL
 	makedepends = ant
 	makedepends = net-tools
 	depends = sh
-	depends = java-environment<=11
+	depends = java-environment
 	provides = common-lisp
 	source = http://abcl.org/releases/1.8.0/abcl-src-1.8.0.tar.gz
 	source = abcl.sh
-	sha256sums = 6d48ba39f1d94eeb095bd83fb2259cea6321b3dd5095e7cbc47b9eac8f073775
+	sha256sums = 1d871ee2f6bcf991d5a6eff7ea5105ef808610db882604d4df0411e971ad257f
 	sha256sums = 8afb6578b1ac5b25a7b270069e81e1e99da6bfac661eadfc97e61acb43f5f3b0
 
 pkgname = abcl
