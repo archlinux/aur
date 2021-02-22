@@ -8,11 +8,11 @@ _gitname=${pkgname%-git*}
 
 # Qubes v4.0
 pkgver='4.8.5'
-pkgrel=27
+pkgrel=30
 
 # Qubes v4.1
-#pkgver='4.14.0'
-#pkgrel=8
+#pkgver='4.14.1'
+#pkgrel=3
 
 epoch=
 pkgdesc="QubesOS component"
