@@ -1,6 +1,6 @@
 pkgbase = python-mypy-zope
 	pkgdesc = Plugin for mypy to support zope.interface
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://pypi.org/project/mypy-zope/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-mypy-zope
 	depends = mypy
 	depends = python-zope-interface
 	depends = python-zope-schema
-	source = https://files.pythonhosted.org/packages/source/m/mypy-zope/mypy-zope-0.2.10.tar.gz
-	sha256sums = 93792b3f418a1857f1a20977f7257bc37962614d8b3f5757e2b3d8dc11a753fa
+	source = https://files.pythonhosted.org/packages/source/m/mypy-zope/mypy-zope-0.2.11.tar.gz
+	sha256sums = fbf1b8a77d898bc2de65a531e110d3af989f7659aec0d3e48abfe476ca623368
 
 pkgname = python-mypy-zope
 
