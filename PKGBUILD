@@ -26,7 +26,7 @@ pkgver() {
 prepare() {
   cd 'Recover.vim'
   # rename "on-disk version" to something more precise https://github.com/chrisbra/Recover.vim/issues/47
-  patch -p0 <../../fix_nomenclature.patch
+  patch -p0 <"$srcdir/fix_nomenclature.patch"
 }
 
 package() {
