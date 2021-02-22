@@ -264,17 +264,17 @@ END
 
   for i in 16 32 48 64 128; do
     install -Dm644 browser/branding/librewolf/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/librewolf.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/dragonwolf.png"
   done
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/librewolf.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/dragonwolf.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
   install -Dm644 browser/branding/librewolf/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dragonwolf-symbolic.png"
 
-  install -Dm644 ../librewolf.desktop \
-    "$pkgdir/usr/share/applications/librewolf.desktop"
+  install -Dm644 ../dragonwolf.desktop \
+    "$pkgdir/usr/share/applications/dragonwolf.desktop"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf" <<END
