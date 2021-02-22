@@ -1,0 +1,17 @@
+pkgbase = opswatclient-bin
+	pkgdesc = OPSWAT Client for Linux
+	pkgver = 15.4.22.0
+	pkgrel = 1
+	url = https://gears.opswat.com
+	install = INSTALL
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = gtk3
+	depends = curl
+	depends = openssl
+	source = opswatclient_deb-15.4.22.0.tar::https://s3-us-west-2.amazonaws.com/opswat-gears-cloud-clients/linux_installer/latest/opswatclient_deb.tar
+	md5sums = a5aaab7bab4893210f444e6a5871ca1b
+
+pkgname = opswatclient-bin
+

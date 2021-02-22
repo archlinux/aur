@@ -1,0 +1,36 @@
+#pre_install() {}
+    
+post_install() {
+    # Write licensing stuff to the temp file that is used by the service at first start (I guess)
+    __SETUPFILE='/tmp/__met@@cce$$.tmp'
+    echo "LICENSE=${LICENSE}" > "${__SETUPFILE}"
+    echo "SERVER=${SERVER}" >> "${__SETUPFILE}"
+    echo "GROUPID=${GROUPID}" >> "${__SETUPFILE}"
+    chmod 660 "${__SETUPFILE}"
+    
+    # Deal with systemd file
+    ln -s "/usr/lib/systemd/system/opswatclient.service" "/lib/systemd/system/multi-user.target.wants/opswatclient.service"
+    
+    systemctl daemon-reload
+    systemctl start opswatclient.service
+    
+    # create a symlink to tlaxzac so the user can call it in an easier way
+    ln -s "/usr/bin/opswatclient/bin/tlaxzac" "/usr/bin/opswat-client"
+}
+
+#pre_upgrade() {}
+#post_upgrade() {}
+pre_remove() {
+    # check and remove symlinks
+    if [ -f "/usr/bin/opswat-client" ]; then
+        rm "/usr/bin/opswat-client"
+    fi
+    
+    # deal with systemd service
+    if [ -f "/lib/systemd/system/multi-user.target.wants/opswatclient.service" ]; then
+        rm "/lib/systemd/system/multi-user.target.wants/opswatclient.service"
+    fi
+    if [ $(systemctl is-active opswatclient.service) = "active" ]; then 
+        systemctl stop opswatclient.service
+    fi
+}
