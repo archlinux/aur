@@ -1,15 +1,15 @@
 pkgbase = circleci-cli-bin
 	pkgdesc = CircleCI's new command-line application.
-	pkgver = 0.1.14827
+	pkgver = 0.1.14915
 	pkgrel = 1
 	url = https://github.com/CircleCI-Public/circleci-cli
 	arch = x86_64
 	license = MIT
 	provides = circleci-cli
 	conflicts = circleci-cli
-	source = circleci-cli-0.1.14827.tar.gz::https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.14827/circleci-cli_0.1.14827_linux_amd64.tar.gz
+	source = circleci-cli-0.1.14915.tar.gz::https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.14915/circleci-cli_0.1.14915_linux_amd64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/LICENSE
-	sha256sums = cc4c0d7c86bc5603b39982aab667f49ef160dfbb5361d36c6132e31fd237ad77
+	sha256sums = ebdf42047a32b3f44280205c99936dc9880cc08f7a5d5db94b0a0eb5f67dd437
 	sha256sums = 89f336660e1dea7ea005892dc44696fb15544cbffedfbddcd4f6671a735763a9
 
 pkgname = circleci-cli-bin
