@@ -1,6 +1,6 @@
 pkgbase = argonone-c-git
 	pkgdesc = A replacement daemon for Argon One Raspberry Pi cases, written in C.
-	pkgver = r34.6ace165
+	pkgver = r37.b30b87d
 	pkgrel = 2
 	url = https://gitlab.com/DarkElvenAngel/argononed
 	install = install
@@ -10,7 +10,7 @@ pkgbase = argonone-c-git
 	arch = arm
 	license = MIT
 	makedepends = git
-	depends = linux-raspberrypi-latest
+	depends = linux
 	depends = dtc
 	optdepends = bash-completion: CLI command completion in the BASH shell
 	provides = argonone-c

@@ -1,16 +1,15 @@
 # Maintainer: SpacingBat3 <aur@spacingbat3.anonaddy.com>
 pkgname=argonone-c-git
-pkgver=r34.6ace165
+pkgver=r37.b30b87d
 pkgrel=2
 pkgdesc="A replacement daemon for Argon One Raspberry Pi cases, written in C."
 
 _gitauthor=DarkElvenAngel
 _gitname=argononed
-
 arch=('aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://gitlab.com/DarkElvenAngel/argononed"
 license=('MIT')
-depends=('linux-raspberrypi-latest' 'dtc')
+depends=('linux' 'dtc')
 optdepends=('bash-completion: CLI command completion in the BASH shell')
 install=install
 makedepends=('git')
@@ -24,6 +23,15 @@ pkgver() {
 	cd "${srcdir}/${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+prepare() {
+	# Check if we are on Raspberry Pi:
+	if [[ ! -f /boot/config.txt ]]; then
+		echo "ERROR: 'config.txt' not found, are you on Raspberry Pi?"
+		exit 1
+	fi
+}
+
 build() {
 	cd "${srcdir}/${pkgname}"
 	[[ -f "makefile.conf" ]] && make mrproper

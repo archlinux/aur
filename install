@@ -1,3 +1,27 @@
+#!/bin/bash
+_i2chelper(){
+    MODULES="i2c-dev i2c-bcm2708"
+    MODULE_FILE="/etc/modules-load.d/raspberrypi.conf"
+
+    if [[ -a $MODULE_FILE ]]; then
+        for MODULE in $MODULES
+        do
+            echo -n "Check for module ${MODULE}  "
+            if grep -q $MODULE "${MODULE_FILE}"; then
+                echo "FOUND"
+            else
+                echo "${MODULE}" >> $MODULE_FILE 2>/dev/null && echo "ADDED" || { echo "ERROR:  Can't write to file ${MODULE_FILE}"; exit 1; }
+            fi
+        done
+    else
+        echo "INFO:  ${MODULE_FILE} Not Found"
+        for MODULE in $MODULES
+        do
+            echo "${MODULE}" >> $MODULE_FILE 2>/dev/null || { echo "ERROR:  Can't write to file ${MODULE_FILE}"; exit 1; }
+        done
+        echo "INFO:  ${MODULE_FILE} Created Successfully"
+    fi
+}
 _install_overlay(){
     FILE=/boot/config.txt 
     [ -w "$FILE" ] || { echo "ERROR Cannot Write to ${FILE} unable to continue"; exit 1; }
@@ -21,28 +45,12 @@ _start_service(){
     echo -n "Starting Service "
     systemctl start &>/dev/null && echo "Successful" || ( [ $? -eq 124 ] && echo "Timeout" || echo "Failed" )
 }
-## arg 1:  the new package version
-#pre_install() {
-    # do something here
-#}
-
 # arg 1:  the new package version
 post_install() {
+    _i2chelper
     _install_overlay
     _start_service
 }
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-#pre_upgrade() {
-    # do something here
-#}
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-#post_upgrade() {
-    # do something here
-#}
 
 # arg 1:  the old package version
 pre_remove() {
