@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm755  -t "${pkgdir}/usr/local/bin" "${pkgname%-git}"
+	install -Dm755  -t "${pkgdir}/usr/bin" "${pkgname%-git}"
 }
