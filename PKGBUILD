@@ -2,14 +2,15 @@
 
 pkgname=ttf-komatuna
 pkgver=20101113
-pkgrel=6
+pkgrel=7
 pkgdesc="Modified Konatu and M+ fonts for Japanese"
 arch=('any')
-url="http://www.geocities.jp/ep3797/modified_fonts_01.html"
-license=('custom' 'CCPL')
-depends=('fontconfig')
-source=(http://jaist.dl.osdn.jp/users/8/8846/komatuna-fonts-${pkgver}.tar.lzma)
-sha256sums=('969de6b8bb3b9893356d19c09d646f0f5364247ab98b9a437e049ca2ac8241a3')
+url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
+license=('custom' 'CCPL:by-sa')
+depends=('fontconfig' 'xorg-mkfontscale')
+source=(https://osdn.net/users/utuhiro/pf/utuhiro/dl/komatuna-fonts-${pkgver}.tar.lzma)
+md5sums=('2044e5e036b1e6dab2f8426c6e2894e6')
+b2sums=('7a96e4004530748cec78c20af48bf28dabf322e38657adbe92975f8a082c74ad8e58afddb089f63684e40e6f18380ea0110b0718fadb96f707bc50aae73c8536')
 
 package() {
   cd ${srcdir}/komatuna-fonts-${pkgver}
