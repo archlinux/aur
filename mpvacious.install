@@ -1,5 +1,4 @@
 post_install() {
 	echo -e '\033[1mCopy the default mpvacious config file from /etc/mpv/script-opts/subs2srs.conf to ~/.config/mpv/script-opts/subs2srs.conf and edit as necessary.\033[0m'
-
 }
 
