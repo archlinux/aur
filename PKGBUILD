@@ -12,7 +12,7 @@ _pkgname=DragonWolf
 pkgver=r591370+.fdd919d10609+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
-arch=(x86_64 aarch64)
+arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse icu mozilla-common libevent zlib libjpeg libvpx nss-hg)
@@ -35,7 +35,7 @@ _settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('librewolf' 'librewolf-wayland-hg')
 provides=('librewolf')
-source_x86_64=("hg+$_repo#revision=autoland"
+source=("hg+$_repo#revision=autoland"
                dragonwolf.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
@@ -43,18 +43,8 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                unity-menubar.patch)
-source_aarch64=("hg+$_repo#revision=release"
-                dragonwolf.desktop
-                "git+https://gitlab.com/dr460nf1r3/common.git"
-                "git+https://gitlab.com/dr460nf1r3/settings.git"
-                megabar.patch
-                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-                unity-menubar.patch
-                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-                "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
-                build-arm-libopus.patch)
 
-sha256sums_x86_64=('SKIP'
+sha256sums=('SKIP'
                    '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
                    'SKIP'
                    'SKIP'
@@ -62,16 +52,7 @@ sha256sums_x86_64=('SKIP'
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                    '6e5b64cef3fba8795c4a400ee59d8deda371f2bbb55f1fc33bc99671bd1f8df8')
-sha256sums_aarch64=('SKIP'
-                    '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
-                    'SKIP'
-                    'SKIP'
-                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
-                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                    '6e5b64cef3fba8795c4a400ee59d8deda371f2bbb55f1fc33bc99671bd1f8df8'
-                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                    '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '0ff47d2cca2d187695027af02a12f15731003274d219668bc5090702e6c38a0a')
+
 pkgver() {
   cd mozilla-unified
   printf "87.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
@@ -146,27 +127,6 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # ac_add_options --enable-linker=gold
 END
 
-#if [[ $CARCH == 'aarch64' ]]; then
-#  cat >> ../mozconfig <<END
-# taken from manjaro build:
-#ac_add_options --enable-optimize="-g0 -O2"
-# from ALARM
-# ac_add_options --disable-webrtc
-#END
-
-#  export MOZ_DEBUG_FLAGS=" "
-#  export CFLAGS+=" -g0"
-#  export CXXFLAGS+=" -g0"
-#  export RUSTFLAGS="-Cdebuginfo=0"
-
-  # we should have more than enough RAM on the CI spot instances.
-  # ...or maybe not?
-#  export LDFLAGS+=" -Wl,--no-keep-memory"
-#  patch -p1 -i ../arm.patch
-#  patch -p1 -i ../build-arm-libopus.patch
-
-#fi
-
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
@@ -224,13 +184,9 @@ build() {
   # CFLAGS="${CFLAGS/-fno-plt/}"
   # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
-#if [[ $CARCH == 'x86_64' ]]; then
-
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --disable-elf-hack
 END
-
-#fi
 
   ./mach build
 }
