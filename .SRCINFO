@@ -1,6 +1,6 @@
 pkgbase = lc0-client-git
 	pkgdesc = Client for games generation to train Leela Chess Zero.
-	pkgver = 127
+	pkgver = 128
 	pkgrel = 1
 	url = https://lczero.org/
 	arch = i686
