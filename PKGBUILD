@@ -1,36 +1,56 @@
-pkgname=google-calendar-nativefier
-pkgver=0.9.1
-pkgrel=2
-pkgdesc="Electron wrapper for the Google Calendar web application"
-arch=(x86_64)
-license=(MIT)
-url=https://calendar.google.com
-source=($pkgname.png
-        $pkgname.desktop)
-makedepends=(nodejs nodejs-nativefier npm)
-sha256sums=('f1bb8a24f4d009a4ae31a22bedcc9c54224542288a33cd301fa1d1348cbbac09'
-            '05512fbf7028c19cb766ce7c3dff05975670cc2a4bc187928504723b3fee83d9')
+# Maintainer: Alec Mev <alec@mev.earth>
+# Contributor: akaessens
 
-_instname=google-calendar
+pkgname=google-calendar-nativefier
+pkgver=2021.02.22
+pkgrel=1
+pkgdesc='Google Calendar in shared Electron runtime'
+arch=('x86_64')
+url='https://calendar.google.com'
+license=('MIT')
+makedepends=(
+  'gendesk'
+  'nodejs-nativefier'
+)
+install=google-calendar-nativefier.install
+source=("${pkgname}.png")
+sha256sums=('b6ade1c13d0f7cbab5bcba9071463293ea5a8251dd693dde80148dc6b6980b42')
+
+_name='Google Calendar'
+
+prepare() {
+  cat > "${pkgname}" <<EOF
+#!/usr/bin/env bash
+exec electron /usr/share/${pkgname} "\$@"
+EOF
+  gendesk \
+    --pkgname "${pkgname}" \
+    --pkgdesc "${pkgdesc}" \
+    --name "${_name}" \
+    --categories "Network;Office;Calendar;" \
+    -n \
+    -f
+}
 
 build() {
-    nativefier "https://calendar.google.com/" \
-      --icon $pkgname.png \
-      --maximize \
-      --name $_instname \
-      --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" \
-      --internal-urls "(.*?calendar\.google\.com.*?|.*?accounts\.google\.com.*?)" \
-      --single-instance
+  cd "${srcdir}"
+  # https://regex101.com/r/GsAPiQ/1
+  nativefier \
+    --name "${_name}" \
+    --icon "${pkgname}.png" \
+    --internal-urls '^(https?:\/\/)?(calendar|accounts)\.google\.com(\/.*)?$' \
+    --maximize \
+    --single-instance \
+    --verbose \
+    https://calendar.google.com
 }
 
 package() {
-    install -d "$pkgdir"/opt "$pkgdir"/usr/{bin,share/pixmaps}
-    install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_instname.desktop
-
-    cp -rL $_instname-linux-* "$pkgdir"/opt/$pkgname
-    ln -sf /opt/$pkgname/$_instname "$pkgdir"/usr/bin/$_instname
-    ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$_instname.png
-
-    chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
+  mkdir -p "${pkgdir}/usr/share"
+  local _x=`echo "${_name// /}-linux-"*`
+  cp -r "${_x}/resources/app" "${pkgdir}/usr/share/${pkgname}"
+  install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+  install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
+  install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
 }
-

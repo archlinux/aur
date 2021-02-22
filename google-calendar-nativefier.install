@@ -1,0 +1,10 @@
+post_upgrade() {
+  # If the old package version starts with 0
+  if [[ "${2:0:1}" == "0" ]]; then
+    cat <<EOF
+
+Next time you launch Google Calendar you'll need to log in again. If you'd like to avoid that, run "cp -r ~/.config/google-calendar-nativefier-e22938 ~/.config/googlecalendar-nativefier-e22938" (note the missing hyphen).
+
+EOF
+  fi
+}

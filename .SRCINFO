@@ -1,17 +1,15 @@
 pkgbase = google-calendar-nativefier
-	pkgdesc = Electron wrapper for the Google Calendar web application
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgdesc = Google Calendar in shared Electron runtime
+	pkgver = 2021.02.22
+	pkgrel = 1
 	url = https://calendar.google.com
+	install = google-calendar-nativefier.install
 	arch = x86_64
 	license = MIT
-	makedepends = nodejs
+	makedepends = gendesk
 	makedepends = nodejs-nativefier
-	makedepends = npm
 	source = google-calendar-nativefier.png
-	source = google-calendar-nativefier.desktop
-	sha256sums = f1bb8a24f4d009a4ae31a22bedcc9c54224542288a33cd301fa1d1348cbbac09
-	sha256sums = 05512fbf7028c19cb766ce7c3dff05975670cc2a4bc187928504723b3fee83d9
+	sha256sums = b6ade1c13d0f7cbab5bcba9071463293ea5a8251dd693dde80148dc6b6980b42
 
 pkgname = google-calendar-nativefier
 
