@@ -1,7 +1,7 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=wine-stable-ubuntu
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A compatibility layer for running Windows programs (binary for Ubuntu)"
 arch=('x86_64')
 url="https://winehq.org/"
@@ -81,7 +81,7 @@ package() {
 		install -Ddm 755 "$pkgdir"/usr/share/man/"$_man"/man1
 		cp -ax "$pkgdir"/opt/wine-stable-ubuntu/share/man/"$_man"/man1/* "$pkgdir"/usr/share/man/"$_man"/man1/
 	done
-	cp -ax "$pkgdir"/opt/wine-stable-ubuntu/share/wine "$pkgdir"/usr/share/wine
-	rm -rf "$pkgdir"/opt/wine-stable-ubuntu/share
+	ln -s "$pkgdir"/opt/wine-stable-ubuntu/share/wine "$pkgdir"/usr/share/wine
+	rm -rf "$pkgdir"/opt/wine-stable-ubuntu/share/{man,applications}
 	rm -rf "$pkgdir"/usr/share/lintian
 }
