@@ -31,3 +31,15 @@
  
  # optional: multicore rendering
  DEFS += -DUSE_OMP_PARALLEL
+diff --color --unified --recursive --text onscripter-jh/Makefile.Linux onscripter-jh.new/Makefile.Linux
+--- onscripter-jh/Makefile.Linux	2021-02-22 18:04:18.112513668 +0800
++++ onscripter-jh.new/Makefile.Linux	2021-02-22 18:05:19.409515250 +0800
+@@ -57,7 +57,7 @@
+ ifneq ($(filter i686 x86_64,$(ARCH)),)
+ DEFS += -DUSE_SIMD_X86_SSE2
+ else
+-ifneq ($(filter armv7h armv7l,$(ARCH)),)
++ifneq ($(filter armv7h armv7l aarch64,$(ARCH)),)
+ DEFS += -DUSE_SIMD_ARM_NEON
+ EXT_FLAGS += -mfpu=neon
+ endif

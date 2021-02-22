@@ -4,7 +4,7 @@
 pkgname=onscripter-jh
 pkgdesc="An optimized SDL2 port of ONScripter, a game scripting engine"
 pkgver=0.7.6.848ebad
-pkgrel=3
+pkgrel=4
 _commit=848ebadd3fd54b2c
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 # origin upstream is 404 now
@@ -33,7 +33,7 @@ source=("${pkgname}::git+${url}"
         "gcc-simd.patch")
 sha256sums=('SKIP'
             'e9ecb802e327de4e8ab81dc84c294f20e629900472d3d4d703ac1e10c418cfff'
-            'd169f6ec66c70429bce973be76f77c8ae05ecaead30e1586e5f68e284dfc4b94'
+            '1978277c0c21f0e82a154252feb89b27ddcd413970cfa124bd3f66e56a8e8cc8'
             '321776cd8f641f510849edd959ebd0383453a38f1ef8d17c8f36f035f43780cc'
             '7d1fff2e6d652aacada2f979ffdd9c1bfc5e8647e4fa566f14c94d5b6856b4b1')
 
