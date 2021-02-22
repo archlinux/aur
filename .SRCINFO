@@ -1,11 +1,11 @@
 pkgbase = file2key
 	pkgdesc = A simple command that generates a key from a file and a passphrase
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maandree/file2key
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = custom:ISC
 	makedepends = make
 	makedepends = coreutils
 	makedepends = gcc

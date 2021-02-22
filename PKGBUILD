@@ -2,11 +2,11 @@
 
 pkgname=file2key
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple command that generates a key from a file and a passphrase"
 arch=(i686 x86_64)
 url="https://github.com/maandree/file2key"
-license=('GPL3')
+license=('custom:ISC')
 depends=(glibc libkeccak)
 makedepends=(make coreutils gcc glibc libkeccak)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
