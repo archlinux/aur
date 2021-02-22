@@ -6,7 +6,7 @@
 
 pkgname=jcryptool
 pkgver=1.0.3
-pkgrel=3
+pkgrel=1
 pkgdesc="e-learning application for applying and analysing cryptographic algorithms"
 arch=('x86_64')
 url="https://www.cryptool.org/en/jcryptool"
