@@ -1,27 +1,23 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=krandom
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="Keccak-based userspace pseudorandom number generator"
 arch=(i686 x86_64)
 url="https://github.com/maandree/krandom"
-license=('AGPL3')
-depends=(libkeccak argparser glibc)
-makedepends=(libkeccak argparser glibc auto-auto-complete texinfo gcc make coreutils)
-install=krandom.install
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(7aa622a9d456b846f589fd4e47c926559294248db19b30538e5fc550e842bac5)
-
+license=('custom:ISC')
+depends=()
+makedepends=(libkeccak)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(db97f128ecb45d645bc0e54ad8a4cb278f82ef71057d9a8339624156bc1e16ee)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr
+    cd "$srcdir/$pkgname-$pkgver"
+    make PREFIX=/usr
 }
-
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr install DESTDIR="$pkgdir"
+    cd "$srcdir/$pkgname-$pkgver"
+    make PREFIX=/usr install DESTDIR="$pkgdir"
 }
-
