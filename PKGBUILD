@@ -7,18 +7,10 @@ arch=('x86_64')
 url='https://codeberg.org/dnkl/yambar'
 license=('MIT')
 depends=(
-	'alsa-lib'
-	'fontconfig'
-	'pixman'
-	'wayland'
-	'wayland-protocols'
 	'xcb-util-cursor'
-	'xcb-util-wm'
-	'xorgproto'
 )
 makedepends=(
 	'cmake'
-	'git'
 	'libmpdclient'
 	'libyaml'
 	'meson'
@@ -30,7 +22,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${pkgname}/archi
 sha256sums=('9ddf0bd7a708445697b4bf2f1d6d0fe5c29c5c7cd6df6058a739fe89413bd2c7')
 
 prepare() {
-	makepkg -Cc
+	rm -rf "${srcdir}"
+	mkdir -p "${srcdir}"
+	bsdtar -xf "../${pkgname}-${pkgver}.tar.gz" -C "${srcdir}"
 
 	cd yambar
 
