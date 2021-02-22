@@ -84,7 +84,7 @@ prepare() {
   # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
   #
 
-  cat >.mozconfig <<END
+  cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 
 #This supposedly speeds up compilation (We test through dogfooding anyway)
