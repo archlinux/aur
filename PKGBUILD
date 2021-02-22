@@ -2,14 +2,14 @@
 # Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
 pkgname=ftba
 pkgver=202101041428_54016a89dc_release
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb" "ftbapp.desktop")
 sha256sums=('10ab07df233eacc58dd3b43360f631c0c9636afe18b09acb8e90bcec23b8b437'
             '72e6e0b01e790e416ab1ac215b7179f968156d10be5b36fad656a4f084778db6')
 license=("LGPL2")
-depends=("java-runtime=8" "java-runtime=11")
+depends=("java-runtime=8" "java-runtime=11" "avahi") # Crashes without libavahi-common.so.3
 package() {
 	cd "$pkgdir"
 	tar -xzf "$srcdir/data.tar.gz"
