@@ -23,6 +23,7 @@ prepare() {
   sed -i '/User/s/www-data/http/' 'httpd.conf'
   sed -i '/Group/s/www-data/http/' 'httpd.conf'
   sed -i '/ErrorLog/s_logs/error.log_/var/log/httpd/error\_log_' 'httpd.conf'
+  sed -i '/CustomLog/s_logs/access.log_/var/log/httpd/access\_log_' 'httpd.conf'
 
   sed -i '/SSLSessionCache/s_"shmcb:/usr/local/apache2/logs/ssl\_gcache\_data(10485760)"_"shmcb:/run/httpd/ssl\_scache(10485760)"_' 'h5bp/ssl/ssl_engine.conf'
   sed -i '/SSLStaplingCache/s_shmcb:/var/run/ocsp(128000)_shmcb:/run/httpd/ssl\_stapling(128000)_' 'h5bp/ssl/ocsp_stapling.conf'
