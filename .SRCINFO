@@ -1,8 +1,8 @@
 pkgbase = ttf-umeplus
 	pkgdesc = Modified Ume and M+ fonts for Japanese
 	pkgver = 20180604
-	pkgrel = 1
-	url = http://www.geocities.jp/ep3797/modified_fonts_01.html
+	pkgrel = 2
+	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = any
 	license = custom
 	depends = fontconfig

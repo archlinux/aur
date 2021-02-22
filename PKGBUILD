@@ -3,9 +3,9 @@
 
 pkgname=ttf-umeplus
 pkgver=20180604
-pkgrel=1
+pkgrel=2
 pkgdesc="Modified Ume and M+ fonts for Japanese"
-url="http://www.geocities.jp/ep3797/modified_fonts_01.html"
+url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 arch=('any')
 depends=('fontconfig' 'xorg-mkfontscale')
