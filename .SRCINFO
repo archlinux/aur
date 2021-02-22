@@ -1,6 +1,6 @@
 pkgbase = flutter-beta
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
-	pkgver = 1.26.0_17.5.pre
+	pkgver = 1.26.0_17.6.pre
 	pkgrel = 1
 	url = https://flutter.io
 	install = flutter.install
@@ -26,10 +26,10 @@ pkgbase = flutter-beta
 	options = !emptydirs
 	backup = opt/flutter/packages/flutter_test/pubspec.yaml
 	backup = opt/flutter/packages/flutter/pubspec.yaml
-	source = flutter-1.26.0_17.5.pre.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_1.26.0-17.5.pre-beta.tar.xz
+	source = flutter-1.26.0_17.6.pre.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_1.26.0-17.6.pre-beta.tar.xz
 	source = flutter.sh
 	source = flutter.csh
-	sha256sums = e46b0c16f9200a1d63ef3bc9ed57bd9e93defd5a62f9103a4f8ce831cd851aa8
+	sha256sums = 1c37e7d8edf9439f555facb698b6b737e9f2b39b8efa2b039dc7cf363efb5240
 	sha256sums = 1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a
 	sha256sums = 7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f
 
