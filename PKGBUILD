@@ -6,9 +6,8 @@ pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
-url="https://github.com/BlackLight/platypush"
-depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask'
-	'python-dateutil' 'python-frozendict' 'python-bcrypt')
+url="https://git.platypush.tech/platypush/platypush"
+depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-pyjwt')
 optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pybluez: Bluetooth support'
 	'python-gattlib: Low-energy Bluetooth devices support'
@@ -17,7 +16,7 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pyserial: Arduino/serial device support')
 conflicts=('platypush-git')
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BlackLight/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha512sums=('182a7087bbbb01dfc3b4c76439f8cf215b58248b935b2a5924a85753ab4adf5224049935fb7980a03d0a14627ae11301cc43cb06229127f674c1ae828cb3f840')
 
 package() {
