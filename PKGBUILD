@@ -1,3 +1,4 @@
+# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 # Maintainer: vnepogodin
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
@@ -8,7 +9,7 @@
 
 pkgname=dragonwolf
 _pkgname=DragonWolf
-pkgver=r591370+.fdd919d10609+
+pkgver=87.0a1.r635545+.3cbb3c8b2b5e+
 pkgrel=1
 pkgdesc=" 	Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
 arch=(x86_64 aarch64)
@@ -60,20 +61,20 @@ sha256sums_x86_64=('SKIP'
                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                   '78fa48c74865ca311705f60bf589a4f06a552906e8b860302e0fb004272a7394')
+                   '74b490edccd3fdce7c9f9ede50085db669ce43de2778324d400416855cae6295')
 sha256sums_aarch64=('SKIP'
                     '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
                     'SKIP'
                     'SKIP'
                     '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
                     'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                    '78fa48c74865ca311705f60bf589a4f06a552906e8b860302e0fb004272a7394'
+                    '74b490edccd3fdce7c9f9ede50085db669ce43de2778324d400416855cae6295'
                     '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
                     '5d9a0064832c45759328d3c14e4da8cc061d9df5637e8b20e8eb2e1a08983b79')
 pkgver() {
   cd mozilla-unified
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "87.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
