@@ -4,13 +4,13 @@
 pkgname=pyside2
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
 pkgdesc='Enables the use of Qt5 APIs in Python applications'
 depends=(python-shiboken2 qt5-declarative)
-makedepends=(shiboken2 cmake
+makedepends=(shiboken2 cmake python-setuptools
              qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
              qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras
              qt5-quickcontrols2 qt5-serialport qt5-remoteobjects)
@@ -47,4 +47,10 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+# Install egg-info
+  cd $_pkgfqn
+  python setup.py egg_info --build-type=pyside2
+  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
+  cp -r PySide2.egg-info "$pkgdir"/$_pythonpath
 }
