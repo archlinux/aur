@@ -8,18 +8,14 @@
 
 
 ## Helpful internal stuff
-_commit=6463e71605e2c6c2e1fcc67117a1c351ffa4a794
-_major=2
-_minor=26
-_build=4261
-_revision=102
-_mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20210123
+_commit=492e6227de3adec93c1f294b6c68a42b85b4e7db
+_mozcver=2.26.4289.102
+_utdicver=20210222
 _utdicrel=1
-_bldtype=Release
+_buildtype=Release
 
 pkgname='emacs-mozc-ut'
-pkgver=${_mozcver}.${_utdicdate}
+pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 pkgdesc='Mozc module for Emacs bundled with the UT dictionary'
 arch=('i686' 'x86_64')
@@ -51,7 +47,7 @@ build() {
     GYP_DEFINES='document_dir=/usr/share/licenses/mozc'
 
     python build_mozc.py gyp --target_platform=Linux
-    python build_mozc.py build -c ${_bldtype} ${_targets}
+    python build_mozc.py build -c ${_buildtype} ${_targets}
 }
 
 package() {
@@ -60,6 +56,6 @@ package() {
     install -Dm644 ../LICENSE                                           ${pkgdir}/usr/share/licenses/mozc/emacs-mozc
     install -Dm644 data/installer/credits_en.html                       ${pkgdir}/usr/share/licenses/mozc/emacs-mozc-submodules
 
-    install -Dm755 out_linux/${_bldtype}/mozc_emacs_helper              ${pkgdir}/usr/bin/mozc_emacs_helper
+    install -Dm755 out_linux/${_buildtype}/mozc_emacs_helper            ${pkgdir}/usr/bin/mozc_emacs_helper
     install -Dm644 unix/emacs/mozc.el                                   ${pkgdir}/usr/share/emacs/site-lisp/mozc.el
 }
