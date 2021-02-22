@@ -1,6 +1,6 @@
 pkgbase = file2key-libpassphrase
 	pkgdesc = A simple command that generates a key from a file and a passphrase, libpassphrase version
-	pkgver = 3
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/maandree/file2key
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = file2key-libpassphrase
 	depends = libpassphrase
 	provides = file2key
 	conflicts = file2key
-	source = file2key-3.tar.gz::https://github.com/maandree/file2key/archive/3.tar.gz
-	sha256sums = 018b8b2b44a5781d15f464b85e8787492af816d79f3e7af2561901cd7644812b
+	source = file2key-3.1.tar.gz::https://github.com/maandree/file2key/archive/3.1.tar.gz
+	sha256sums = ad44f72710232ac88c72a41bb21ea3341f7f5981c7d954f3f3d3c68f23857c8c
 
 pkgname = file2key-libpassphrase
 
