@@ -1,32 +1,28 @@
 pkgbase = thunderbird-60-bin
-	pkgdesc = Standalone Mail/News reader - 60.x binary version - based on thunderbird-bin
+	pkgdesc = Standalone Mail/News reader - 60.x binary version
 	pkgver = 60.9.1
-	pkgrel = 1
-	url = https://www.mozilla.org/thunderbird
-	install = thunderbird-60-bin.install
+	pkgrel = 2
+	url = https://www.thunderbird.net/
 	arch = x86_64
-	arch = i686
 	license = GPL
 	license = LGPL
 	license = MPL
-	depends = dbus-glib
-	depends = gtk3
 	depends = libxt
-	depends = nss
+	depends = gtk3
+	depends = dbus-glib
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
 	provides = thunderbird=60.9.1
-	conflicts = thunderbird
-	conflicts = thunderbird-bin
-	source = thunderbird-60-bin.desktop
-	source = vendor.js
-	sha512sums = 366b4e0033892cf4bba7ff25ad5d2fc5f8b71da01c0332f5cdb0be0e5d873affe477e02efa02a71caf2933f80c7dafae28064e68019c9946ad26172cf5ad6d5a
-	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/60.9.1/linux-x86_64/en-US/thunderbird-60.9.1.tar.bz2
-	sha512sums_x86_64 = 109ae1a376a6e65ede652c85fda7ebd497b781717cef65d0e0462a4c3d76dcca69163b96acaf1259e347ede8826a647dea3c739c2cf38f214c2628f2b9b7fe19
-	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/60.9.1/linux-i686/en-US/thunderbird-60.9.1.tar.bz2
-	sha512sums_i686 = 707d48e10ce34363a339ce7db40d4a5b3ad2e56401ab335edf916ebf74e46fa3d81364f2cdeedc8f0f5829adbcb1ba56001399bd278a249d71827c93dd171b9a
+	source = https://ftp.mozilla.org/pub/thunderbird/releases/60.9.1/linux-x86_64/en-US/thunderbird-60.9.1.tar.bz2
+	source = https://ftp.mozilla.org/pub/thunderbird/releases/60.9.1/linux-x86_64/en-US/thunderbird-60.9.1.tar.bz2.asc
+	source = thunderbird60.desktop
+	source = thunderbird60.sh
+	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
+	sha512sums = 109ae1a376a6e65ede652c85fda7ebd497b781717cef65d0e0462a4c3d76dcca69163b96acaf1259e347ede8826a647dea3c739c2cf38f214c2628f2b9b7fe19
+	sha512sums = 99eff19bf9eee70edba84c0a68d442dcbb5b988ab8c9b41723217f675c0148b9862133d6844045171d33928ced5fd280c00754fce2e7e93a551ac817dcff3878
+	sha512sums = 91ad768119124cfff7ce387e39a9d98deb66f6804b5b9ec1938ad827f8ec240fc2f160f38feac8a5e435d88d52efcb1159993fd0e58120307622da698bed4eba
+	sha512sums = 5280448b652a4567d0a84843ee5f1e8208def1dd9918dc6208a2688b76636853d1a3f0b414e668907929c3efab8140577d43a0bb3c0d66d830206292ebb958c3
 
 pkgname = thunderbird-60-bin
 
