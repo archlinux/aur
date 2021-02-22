@@ -2,7 +2,7 @@
 # Contributor: mawcomw  <mawcomw@gmail.com>
 
 pkgname=limesurvey
-pkgver=4.4.9+210219
+pkgver=4.4.10+210222
 pkgrel=1
 pkgdesc="The most popular FOSS online survey tool on the web."
 depends=('php7')
@@ -12,7 +12,7 @@ url="https://www.limesurvey.org"
 source=(
 https://download.limesurvey.org/latest-stable-release/limesurvey${pkgver}.zip
 )
-sha256sums=('a7d8b6fe674f0719a1ab48635e27f296de9612e4d0bc2d30f2b2304a51a2a94c')
+sha256sums=('1a8c76667023c30d3455f01993c7421f4ba800e6e0c1179ffa2c9ee1683c1e69')
 
 optdepends=('apache: a supported application server'
 	    'nginx: a supported application server'
