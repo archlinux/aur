@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-json-rpc
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="JSON-RPC transport realisation"
 arch=('any')
@@ -11,8 +11,7 @@ url="https://github.com/pavlov99/json-rpc"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.org/packages/source/j/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-md5sums=('c6ec280ce0812df25df3ec9207f2efcd')
-sha256sums=('a5e53f80699e97754bfd8a29c86138aa144c4e6663fe80c0be5270fc6f177166')
+sha256sums=('def0dbcf5b7084fc31d677f2f5990d988d06497f2f47f13024274cfb2d5d7589')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
