@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abcl-git
-pkgver=r3248.6134fc10
+pkgver=r3546.217ed0f2
 pkgrel=1
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
 url="http://common-lisp.net/project/armedbear/"
 license=('GPL')
-depends=('java-runtime<=11' 'bash')
+depends=('java-runtime' 'bash')
 makedepends=('ant' 'net-tools' 'subversion' 'java-environment>=11')
 provides=('abcl' 'common-lisp')
 conflicts=('abcl')
