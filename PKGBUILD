@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
@@ -13,9 +13,9 @@ license=(custom:MIT)
 source=("https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz"
         "https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-md5sums=(f7aa8a425927cab247563411fc67c5a3 SKIP)
-sha1sums=(977559204dae0f9220e4c6b8ded7537899fd2daf SKIP)
-sha256sums=(181b1f4963cdf264b8068460a64d14c92a627f7138ebecc0f36fce085f4e92dd SKIP)
+md5sums=(21664fb04c9149dea6d68e13e6074276 SKIP)
+sha1sums=(baabba7f0f6009c64ef0c4f7c5f807382cffef5d SKIP)
+sha256sums=(b82e917eb764943b9859c631974f8f0e748b79ae87bb7a944f46c818740e0208 SKIP)
 
 build () {
 	cmake -H"${pkgname}-${pkgver}" -Bbuild \

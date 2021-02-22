@@ -1,6 +1,6 @@
 pkgbase = cog
 	pkgdesc = WPE launcher and webapp container
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/Igalia/cog
 	arch = i686
@@ -16,14 +16,14 @@ pkgbase = cog
 	depends = wpebackend-fdo>=1.6.0
 	depends = libinput
 	conflicts = cog-git
-	source = https://wpewebkit.org/releases/cog-0.8.0.tar.xz
-	source = https://wpewebkit.org/releases/cog-0.8.0.tar.xz.asc
+	source = https://wpewebkit.org/releases/cog-0.8.1.tar.xz
+	source = https://wpewebkit.org/releases/cog-0.8.1.tar.xz.asc
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
-	md5sums = f7aa8a425927cab247563411fc67c5a3
+	md5sums = 21664fb04c9149dea6d68e13e6074276
 	md5sums = SKIP
-	sha1sums = 977559204dae0f9220e4c6b8ded7537899fd2daf
+	sha1sums = baabba7f0f6009c64ef0c4f7c5f807382cffef5d
 	sha1sums = SKIP
-	sha256sums = 181b1f4963cdf264b8068460a64d14c92a627f7138ebecc0f36fce085f4e92dd
+	sha256sums = b82e917eb764943b9859c631974f8f0e748b79ae87bb7a944f46c818740e0208
 	sha256sums = SKIP
 
 pkgname = cog
