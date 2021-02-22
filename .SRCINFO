@@ -1,6 +1,6 @@
 pkgbase = kbs2-bin
 	pkgdesc = A secret manager backed by age
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/woodruffw/kbs2
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = kbs2-bin
 	depends = libx11
 	provides = kbs2
 	conflicts = kbs2
-	source_x86_64 = https://github.com/woodruffw/kbs2/releases/download/v0.2.5/kbs2-linux-v0.2.5.tar.gz
-	sha256sums_x86_64 = ac0d1afac9c25b1d629f62b207ede4cad4b1f5ba1fe8ee3d1e0fc34d6a0a8a8f
+	source_x86_64 = https://github.com/woodruffw/kbs2/releases/download/v0.2.6/kbs2-linux-v0.2.6.tar.gz
+	sha256sums_x86_64 = b7688f042d8906c2bc90dbde275cb31af44d7a812e3979ef7a4b6abd24f50413
 
 pkgname = kbs2-bin
-
