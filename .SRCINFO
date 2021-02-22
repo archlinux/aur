@@ -1,6 +1,6 @@
 pkgbase = tilix-bin
 	pkgdesc = A tiling terminal emulator based on GTK+ 3 (binary distribution)
-	pkgver = 1.9.3
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/gnunn1/tilix
 	arch = x86_64
@@ -19,8 +19,7 @@ pkgbase = tilix-bin
 	provides = tilix
 	conflicts = terminix
 	conflicts = tilix
-	source = tilix-1.9.3.zip::https://github.com/gnunn1/tilix/releases/download/1.9.3/tilix.zip
-	md5sums = 20a632508a68dbfbaf345a20c3068d03
+	source = tilix-1.9.4.zip::https://github.com/gnunn1/tilix/releases/download/1.9.4/tilix-1.9.4_x86_64-linux-gnu.zip
+	md5sums = 7b8e24c0cafb04b070b1167985a9d597
 
 pkgname = tilix-bin
-
