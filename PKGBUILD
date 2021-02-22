@@ -2,13 +2,13 @@
 # Contributor: andmars <andreas.marschall @ unitybox.de>
 # Contributor: SaThaRiel <sathariel74[at] gmail[dot]com>
 pkgname=angband-git
-pkgver=4.2.1.r185.g63d33c737
+pkgver=4.2.1.r209.g622a859c8
 pkgrel=1
 pkgdesc="A roguelike dungeon-exploration game based on Tolkien's books"
 arch=('i686' 'x86_64')
 url="http://rephial.org/"
 license=('GPL2' 'custom')
-depends=('sdl_image' 'sdl_ttf' 'sdl_mixer')
+depends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
 makedepends=('git' 'autogen' 'python-docutils')
 conflicts=('angband' 'angband-svn')
 source=("$pkgname"::'git+https://github.com/angband/angband.git')
@@ -36,8 +36,8 @@ build() {
     --with-configpath=/usr/share/angband \
     --with-libpath=/usr/share/angband \
     --enable-gtk \
-    --enable-sdl \
-    --enable-sdl-mixer
+    --enable-sdl2 \
+    --enable-sdl2-mixer
   make
 }
 
