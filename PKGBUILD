@@ -1,6 +1,6 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=gnome-wallpaper-changer-git
-pkgver=r8.c9d0a09
+pkgver=r9.bde26ef
 pkgrel=1
 pkgdesc='Set Gnome Desktop wallpaper to an image from a provided directory.'
 arch=('any')
