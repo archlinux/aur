@@ -1,7 +1,7 @@
 pkgbase = php-uuid
 	pkgdesc = PHP PECL UUID extension
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/uuid
 	arch = x86_64
 	license = LGPL
