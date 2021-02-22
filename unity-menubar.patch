@@ -5109,10 +5109,13 @@
  #endif /* __nsWindow_h__ */
 --- a/widget/moz.build
 +++ b/widget/moz.build
-@@ -68,6, +68,9 @@ elif toolkit == "cocoa":
+@@ -68,9, +68,9 @@ elif toolkit == "cocoa":
          "nsITouchBarInput.idl",
          "nsITouchBarUpdater.idl",
      ]
+-    EXPORTS += [
+-        "nsINativeMenuService.h",
+-    ]
 +
 +if toolkit in ("cocoa", "gtk"):
 +    EXPORTS += ["nsINativeMenuService.h"]
