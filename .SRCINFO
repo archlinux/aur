@@ -1,6 +1,6 @@
 pkgbase = kdiskmark-git
 	pkgdesc = Simple disk benchmark tool
-	pkgver = 1.6.2.r16.g0efbcec
+	pkgver = 2.1.1.r1.ge7ea532
 	pkgrel = 1
 	url = https://github.com/JonMagon/KDiskMark
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = kdiskmark-git
 	depends = fio
 	depends = hicolor-icon-theme
 	depends = qt5-base
+	depends = kauth
 	provides = kdiskmark
 	source = KDiskMark::git+https://github.com/JonMagon/KDiskMark.git
 	sha256sums = SKIP
 
 pkgname = kdiskmark-git
-
