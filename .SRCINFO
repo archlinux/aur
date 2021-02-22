@@ -1,0 +1,27 @@
+pkgbase = python310-patma-branch
+	pkgdesc = Python 3.10 branch with pattern matching feature (PEP 634)
+	pkgver = 3.10.0a5
+	pkgrel = 1
+	url = https://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	makedepends = sqlite
+	makedepends = bluez-libs
+	makedepends = mpdecimal
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	conflicts = python310
+	options = !makeflags
+	source = git://github.com/brandtbucher/cpython.git#branch=patma
+	sha256sums = SKIP
+
+pkgname = python310-patma-branch
+
