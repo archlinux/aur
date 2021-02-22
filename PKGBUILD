@@ -1,9 +1,9 @@
-# Maintainer: SZanko szanko at protonmail dot com
+# Maintainer: SZanko, szanko at protonmail dot com
 
 _pkgname=shtab
 pkgname=python-${_pkgname}
-pkgver=1.3.4
-pkgrel=4
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="Automagic shell tab completion for Python CLI applications"
 arch=('any')
 url="https://github.com/iterative/shtab"
@@ -13,8 +13,8 @@ depends=(
 	'python-setuptools'
 	'python-pip'
 	)
-source=("https://files.pythonhosted.org/packages/99/63/0100420a832f176285f28cef3aa2bd6ef249dd2e66a00601019630c5f4fe/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('353f2a3a5178cd2df8eb746e7ab26a5039a9989e4386de8fd239d8c1653a8887')
+source=("https://files.pythonhosted.org/packages/ae/b8/d80ecc4cd8d3ac5d776aea4c59c93faff5f3a8c1bc9370c0966708599731/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('3e7880f2778b659f4f01af07ab7b815b2786c257efa8ec52d6057e06a398a103')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
