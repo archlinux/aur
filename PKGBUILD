@@ -2,7 +2,7 @@
 
 pkgname=fish-nvm
 _reponame=nvm.fish
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Node.js version manager lovingly made for Fish"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('fish')
 provides=("${pkgname}=${pkgver}")
 source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('6c37ec9d6c9b507d30bfb0e11a70954b9ac48671a2b0c5bb94837e4996d85f3b5f872c3010121bf40c27b37f627b7131551336ab75a369a9be7c9927504aa53d')
+sha512sums=('ec8e38c325ef1132c390c2536d38a43e012cb153f2756e8b2644571dad761497b26f283808ee9161bb45c023d2fc4bb710e15d85f54be5424604fa8cb4fcb2fc')
 
 package() {
 	cd "${_reponame}-${pkgver}"
