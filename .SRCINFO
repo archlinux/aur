@@ -1,0 +1,16 @@
+pkgbase = persway-git
+	pkgdesc = Small Sway IPC Daemon
+	pkgver = 1.4.1.r55.4a661a4
+	pkgrel = 1
+	url = https://github.com/johnae/persway
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = persway
+	conflicts = persway
+	source = git+https://github.com/johnae/persway.git
+	sha512sums = SKIP
+
+pkgname = persway-git
+
