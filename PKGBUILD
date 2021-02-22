@@ -1,16 +1,18 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer:
+# Contributor: Bastien Traverse <neitsab at esrevart dot net>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=mutagen
 pkgname=python2-mutagen
-pkgver=1.43.0
-pkgrel=3
+pkgver=1.43.1
+pkgrel=1
 arch=('any')
 pkgdesc="An audio metadata tag reader and writer (python2 library)"
 url="https://github.com/quodlibet/mutagen"
 license=('GPL2')
 depends=('python2-setuptools')
 source=("https://github.com/quodlibet/${_name}/releases/download/release-$pkgver/${_name}-$pkgver.tar.gz"{,.sig})
-sha512sums=('66df63705a43befa9cf6688bc8b3acc4fd1559eb28920c105b47a97c35422b5e19527051445daa7aed66facc2e4c14d71058f8560bbd564fecbe56a076491e3f'
+sha256sums=('d873baeb7815311d3420aab0a1d83f050f628228cbc2d6045a14a16460411bc9'
             'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter <reiter.christoph@gmail.com>
 
@@ -24,7 +26,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python2 setup.py build
 }
 
