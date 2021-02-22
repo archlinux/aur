@@ -9,7 +9,7 @@
 
 pkgname=platformio
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio-core/"
@@ -23,7 +23,13 @@ depends=('python-setuptools'
          'python-semantic-version'
          'python-tabulate'
          'python-pyelftools'
-         'python-marshmallow')
+         'python-marshmallow'
+         # "pio home" requirements:
+         'python-aiofiles'
+         'python-json-rpc'
+         'python-starlette'
+         'python-wsproto'
+         'uvicorn')
 optdepends=('python-click-completion: for shell completions'
            'python-shellingham: for shell completions')
 conflicts=('platformio-git')
