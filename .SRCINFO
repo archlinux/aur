@@ -8,7 +8,7 @@ pkgbase = defi-app-bin
 	provides = defi-app
 	conflicts = defi-app
 	options = !strip
-	source = ::https://github.com/DeFiCh/app/releases/download/v2.1.17/
+	source = defi-app-2.1.17.AppImage::https://github.com/DeFiCh/app/releases/download/v2.1.17/defi-app-2.1.17.AppImage
 	sha512sums = e042a6fae936cbd4f92ea2e5b893a5d20f432c96c2b6adf5ee790af7cb22cdd63f92a937b40f4955349df95aeb8df3e2af84b73084dd380a71bfedad9979945f
 
 pkgname = defi-app-bin
