@@ -1,7 +1,7 @@
 pkgbase = apache-h5bp-server-configs
 	pkgdesc = Apache HTTP server boilerplate configs
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h5bp/server-configs-apache
 	install = .install
 	arch = any

@@ -5,7 +5,7 @@
 pkgname=apache-h5bp-server-configs
 _pkgname=server-configs-apache
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Apache HTTP server boilerplate configs"
 arch=('any')
 url="https://github.com/h5bp/server-configs-apache"
