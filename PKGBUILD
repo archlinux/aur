@@ -1,4 +1,3 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 # Maintainer: vnepogodin
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
@@ -11,10 +10,10 @@ pkgname=dragonwolf
 _pkgname=DragonWolf
 pkgver=r591370+.fdd919d10609+
 pkgrel=1
-pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
-arch=(x86_64)
+pkgdesc=" 	Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
+arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
-url="https://librewolf-community.gitlab.io/"
+url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse icu mozilla-common libevent zlib libjpeg libvpx nss-hg)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xwayland
              rust
@@ -35,7 +34,7 @@ _settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('librewolf' 'librewolf-wayland-hg')
 provides=('librewolf')
-source=("hg+$_repo#revision=autoland"
+source_x86_64=("hg+$_repo#revision=autoland"
                dragonwolf.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
@@ -43,31 +42,50 @@ source=("hg+$_repo#revision=autoland"
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                unity-menubar.patch)
+source_aarch64=("hg+$_repo#revision=autoland"
+                dragonwolf.desktop
+                "git+https://gitlab.com/dr460nf1r3/common.git"
+                "git+https://gitlab.com/dr460nf1r3/settings.git"
+                megabar.patch
+                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
+                unity-menubar.patch
+                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
+                "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
+                build-arm-libopus.patch)
 
-sha256sums=('SKIP'
+sha256sums_x86_64=('SKIP'
                    '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
                    'SKIP'
                    'SKIP'
                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                   '6e5b64cef3fba8795c4a400ee59d8deda371f2bbb55f1fc33bc99671bd1f8df8')
-
+                   '78fa48c74865ca311705f60bf589a4f06a552906e8b860302e0fb004272a7394')
+sha256sums_aarch64=('SKIP'
+                    '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
+                    'SKIP'
+                    'SKIP'
+                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
+                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+                    '78fa48c74865ca311705f60bf589a4f06a552906e8b860302e0fb004272a7394'
+                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
+                    '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
+                    '5d9a0064832c45759328d3c14e4da8cc061d9df5637e8b20e8eb2e1a08983b79')
 pkgver() {
   cd mozilla-unified
-  printf "87.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
-  
+
   #
   # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
   # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
   #
 
-  cat >.mozconfig <<END
+  cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 
 #This supposedly speeds up compilation (We test through dogfooding anyway)
@@ -99,15 +117,6 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
 
-# System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-libevent
-ac_add_options --with-system-icu
-ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
-
 # Features
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
@@ -127,6 +136,28 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # ac_add_options --enable-linker=gold
 END
 
+if [[ $CARCH == 'aarch64' ]]; then
+  cat >>../mozconfig <<END
+# taken from manjaro build:
+ac_add_options --enable-optimize="-g0 -O2"
+# from ALARM
+# ac_add_options --disable-webrtc
+
+END
+
+  export MOZ_DEBUG_FLAGS=" "
+  export CFLAGS+=" -g0"
+  export CXXFLAGS+=" -g0"
+  export RUSTFLAGS="-Cdebuginfo=0"
+
+  # we should have more than enough RAM on the CI spot instances.
+  # ...or maybe not?
+  export LDFLAGS+=" -Wl,--no-keep-memory"
+  patch -p1 -i ../arm.patch
+  patch -p1 -i ../build-arm-libopus.patch
+
+fi
+
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
@@ -136,7 +167,7 @@ END
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  # patch -p1 -i ../unity-menubar.patch
+  patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
@@ -184,9 +215,13 @@ build() {
   # CFLAGS="${CFLAGS/-fno-plt/}"
   # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
+if [[ $CARCH == 'x86_64' ]]; then
+
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --disable-elf-hack
 END
+
+fi
 
   ./mach build
 }
@@ -219,7 +254,7 @@ END
 [Global]
 id=io.gitlab.librewolf-community
 version=1.0
-about=LibreWolf
+about=DragonWolf
 
 [Preferences]
 app.distributor="Garuda Linux"

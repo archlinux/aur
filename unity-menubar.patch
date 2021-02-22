@@ -1,7 +1,7 @@
 --- a/browser/base/content/browser-menubar.inc
 +++ b/browser/base/content/browser-menubar.inc
 @@ -5,7 +5,11 @@
- 
+
         <menubar id="main-menubar"
                  onpopupshowing="if (event.target.parentNode.parentNode == this &amp;&amp;
 +#ifdef MOZ_WIDGET_GTK
@@ -14,7 +14,7 @@
              <menu id="file-menu" data-l10n-id="menu-file">
 --- a/browser/base/content/browser.js
 +++ b/browser/base/content/browser.js
-@@ -6427,11 +6427,18 @@ function onViewToolbarsPopupShowing(aEve
+@@ -6231,11 +6231,18 @@ function onViewToolbarsPopupShowing(aEve
    MozXULElement.insertFTLIfNeeded("browser/toolbarContextMenu.ftl");
    let firstMenuItem = aInsertPoint || popup.firstElementChild;
    let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
@@ -25,7 +25,7 @@
      if (!toolbar.hasAttribute("toolbarname")) {
        continue;
      }
- 
+
 +    if (shellShowingMenubar && toolbar.id == "toolbar-menubar") {
 +      continue;
 +    }
@@ -49,7 +49,7 @@
 @@ -158,6 +158,10 @@ void XULPopupElement::GetState(nsString&
    // set this here in case there's no frame for the popup
    aState.AssignLiteral("closed");
- 
+
 +#ifdef MOZ_WIDGET_GTK
 +  nsAutoString nativeState;
 +#endif
@@ -57,7 +57,7 @@
    nsMenuPopupFrame* menuPopupFrame = do_QueryFrame(GetPrimaryFrame());
    if (menuPopupFrame) {
      switch (menuPopupFrame->PopupState()) {
-@@ -181,6 +185,11 @@ void XULPopupElement::GetState(nsString&
+@@ -181,6 +181,11 @@ void XULPopupElement::GetState(nsString&
          break;
      }
    }
@@ -67,21 +67,21 @@
 +  }
 +#endif
  }
- 
+
  nsINode* XULPopupElement::GetTriggerNode() const {
 --- a/dom/xul/moz.build
 +++ b/dom/xul/moz.build
 @@ -83,6 +83,11 @@ LOCAL_INCLUDES += [
- 
+
  include("/ipc/chromium/chromium-config.mozbuild")
- 
+
 +if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
 +    LOCAL_INCLUDES += [
 +        "/widget/gtk",
 +    ]
 +
  FINAL_LIBRARY = "xul"
- 
+
  if CONFIG["CC_TYPE"] in ("clang", "gcc"):
 --- a/layout/build/moz.build
 +++ b/layout/build/moz.build
@@ -93,12 +93,12 @@
 +    LOCAL_INCLUDES += [
 +        "/widget/gtk",
 +    ]
- 
+
  XPCOM_MANIFESTS += [
      "components.conf",
 --- a/modules/libpref/init/all.js
 +++ b/modules/libpref/init/all.js
-@@ -320,6 +320,9 @@ pref("dom.mouseevent.click.hack.use_lega
+@@ -305,6 +305,9 @@ pref("dom.mouseevent.click.hack.use_lega
  // Fastback caching - if this pref is negative, then we calculate the number
  // of content viewers to cache based on the amount of available memory.
  pref("browser.sessionhistory.max_total_viewers", -1);
@@ -107,13 +107,13 @@
 +#endif
  // 0 = false, 1 = true, 2 = autodetect.
  pref("ui.android.mouse_as_touch", 1);
- 
+
 --- a/toolkit/content/xul.css
 +++ b/toolkit/content/xul.css
-@@ -216,6 +216,13 @@ toolbar[type="menubar"] {
+@@ -221,6 +221,13 @@ toolbar[type="menubar"] {
  }
  %endif
- 
+
 +%ifdef MOZ_WIDGET_GTK
 +*|*:root[shellshowingmenubar="true"]
 +toolbar[type="menubar"]:not([customizing="true"]) {
@@ -126,8 +126,8 @@
  }
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -60,6 +60,15 @@ UNIFIED_SOURCES += [
- 
+@@ -59,6 +59,15 @@ UNIFIED_SOURCES += [
+
  SOURCES += [
      "MediaKeysEventSourceFactory.cpp",
 +    "nsDbusmenu.cpp",
@@ -142,7 +142,7 @@
      "nsWindow.cpp",  # conflicts with X11 headers
      "WaylandVsyncSource.cpp",  # conflicts with X11 headers
  ]
-@@ -140,6 +149,7 @@ LOCAL_INCLUDES += [
+@@ -139,6 +139,7 @@ LOCAL_INCLUDES += [
      "/layout/base",
      "/layout/forms",
      "/layout/generic",
@@ -5069,10 +5069,10 @@
 +#endif /* __nsNativeMenuService_h__ */
 --- a/widget/gtk/nsWindow.cpp
 +++ b/widget/gtk/nsWindow.cpp
-@@ -6096,6 +6096,10 @@ void nsWindow::HideWindowChrome(bool aSh
+@@ -6386,6 +6386,10 @@ void nsWindow::HideWindowChrome(bool aSh
    SetWindowDecoration(aShouldHide ? eBorderStyle_none : mBorderStyle);
  }
- 
+
 +void nsWindow::SetMenuBar(UniquePtr<nsMenuBar> aMenuBar) {
 +  mMenuBar = std::move(aMenuBar);
 +}
@@ -5083,31 +5083,29 @@
 --- a/widget/gtk/nsWindow.h
 +++ b/widget/gtk/nsWindow.h
 @@ -39,6 +39,8 @@
- 
+
  #include "IMContextWrapper.h"
- 
+
 +#include "nsMenuBar.h"
 +
  #undef LOG
  #ifdef MOZ_LOGGING
- 
-@@ -177,6 +179,8 @@ class nsWindow final : public nsBaseWidg
+
+@@ -182,6 +182,8 @@ class nsWindow final : public nsBaseWidg
                                    nsIScreen* aTargetScreen = nullptr) override;
    virtual void HideWindowChrome(bool aShouldHide) override;
- 
+
 +  void SetMenuBar(mozilla::UniquePtr<nsMenuBar> aMenuBar);
 +
    /**
     * GetLastUserInputTime returns a timestamp for the most recent user input
     * event.  This is intended for pointer grab requests (including drags).
-@@ -701,6 +705,8 @@ class nsWindow final : public nsBaseWidg
-   static CSDSupportLevel sCSDSupportLevel;
- 
+@@ -721,6 +721,8 @@ class nsWindow final : public nsBaseWidg
    static bool sTransparentMainWindow;
 +
 +  mozilla::UniquePtr<nsMenuBar> mMenuBar;
  };
- 
+
  #endif /* __nsWindow_h__ */
 --- a/widget/moz.build
 +++ b/widget/moz.build
@@ -5115,15 +5113,12 @@
          "nsITouchBarInput.idl",
          "nsITouchBarUpdater.idl",
      ]
--    EXPORTS += [
--        "nsINativeMenuService.h",
--    ]
 +
 +if toolkit in ("cocoa", "gtk"):
 +    EXPORTS += ["nsINativeMenuService.h"]
- 
+
  TEST_DIRS += ["tests", "tests/gtest"]
- 
+
 --- /dev/null
 +++ b/xpcom/ds/NativeMenuAtoms.py
 @@ -0,0 +1,9 @@
@@ -5144,16 +5139,16 @@
  from HTMLAtoms import HTML_PARSER_ATOMS
 +from NativeMenuAtoms import NATIVE_MENU_ATOMS
  import sys
- 
+
  # Static atom definitions, used to generate nsGkAtomList.h.
-@@ -2560,7 +2561,7 @@ STATIC_ATOMS = [
+@@ -2508,7 +2508,7 @@ STATIC_ATOMS = [
      InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
      InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
      # END ATOMS
 -] + HTML_PARSER_ATOMS
 +] + HTML_PARSER_ATOMS + NATIVE_MENU_ATOMS
- 
- 
+
+
  def verify():
 --- a/widget/gtk/components.conf
 +++ b/widget/gtk/components.conf
@@ -5170,17 +5165,19 @@
 +        'headers': ['/widget/gtk/nsNativeMenuService.h'],
 +    },
  ]
- 
+
  if defined('MOZ_X11'):
 --- a/xpfe/appshell/AppWindow.cpp
 +++ b/xpfe/appshell/AppWindow.cpp
-@@ -71,7 +71,7 @@
+@@ -77,7 +77,7 @@
  #  include "mozilla/XULStore.h"
  #endif
- 
+
+ #include "mozilla/dom/DocumentL10n.h"
+
 -#ifdef XP_MACOSX
 +#if defined(XP_MACOSX) || defined(MOZ_WIDGET_GTK)
- #  include "nsINativeMenuService.h"
+ #  include "mozilla/widget/NativeMenuSupport.h"
  #  define USE_NATIVE_MENUS
  #endif
- 
+
