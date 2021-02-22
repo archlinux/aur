@@ -1,10 +1,10 @@
 # Maintainer: Setpill
 pkgname=lnd-bin
 _pkgname=lnd
-pkgver=0.12.0_beta
+pkgver=0.12.1_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
-pkgrel=4
+pkgrel=1
 pkgdesc="Lightning Network Daemon ⚡"
 arch=('x86_64')
 url="https://github.com/lightningnetwork/lnd"
@@ -13,30 +13,50 @@ provides=('lnd' 'lncli')
 conflicts=('lnd' 'lnd-git')
 source=(
     "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/$_pkgname-linux-amd64-v$_pkgver.tar.gz"
-    "$_pkgname-manifest-bitconner-v$_pkgver.txt.clearsigned::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-bitconner-v$_pkgver.txt.asc"
-    "$_pkgname-manifest-guggero-v$_pkgver.txt.clearsigned::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-guggero-v$_pkgver.txt.asc"
-    "$_pkgname-manifest-roasbeef-v$_pkgver.txt.clearsigned::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-roasbeef-v$_pkgver.txt.asc"
+    "$_pkgname-manifest-bitconner-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-bitconner-v$_pkgver.sig"
+    "$_pkgname-manifest-bitconner-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
+    "$_pkgname-manifest-carlakirkcohen-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-carlakirkcohen-v$_pkgver.sig"
+    "$_pkgname-manifest-carlakirkcohen-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
+    "$_pkgname-manifest-guggero-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-guggero-v$_pkgver.sig"
+    "$_pkgname-manifest-guggero-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
+    "$_pkgname-manifest-roasbeef-v$_pkgver.txt.sig::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-roasbeef-v$_pkgver.sig"
+    "$_pkgname-manifest-roasbeef-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-v$_pkgver.txt"
     "$_pkgname-LICENSE-v$_pkgver::https://raw.githubusercontent.com/lightningnetwork/$_pkgname/v$_pkgver/LICENSE"
 )
 sha512sums=(
-    'a8ad69e490522c6dcd9ad95d944651d74f057bcedb64a833c752a178cbb9a95b7cd9eba0d5cf3392b08faa38bd41fbc91c202b35b3534a937628535c3fcf5bec'
+    '39751f93f1e0f1d0d9f9ef188f12ab6d9401d3b7bb48cd191586518c99fe6dad6055afbb32741c1c5f4596181bdb1c1d453e6f1c403694376d19efe1ebdc008f'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
     '9837c5d097a2838cf6dc992cc25b9e94946e401131e13e66a699077c3e2de1b89fb1de71027d46d7230464ebbad3ae8df118d459961b28995677d56fded451ca'
 )
 
+# LND provides manifest signatures from several developers
+# To wit; bitconner, carlakirkcohen, eugene_, guggero and roasbeef
+# To import their keys run
+# curl https://keybase.io/bitconnor/pgp_keys.asc | gpg --import
+# curl https://keybase.io/carlakirkcohen/pgp_keys.asc | gpg --import
+# curl https://keybase.io/eugene_/pgp_keys.asc | gpg --import
+# curl https://keybase.io/guggero/pgp_keys.asc | gpg --import
+# curl https://keybase.io/roasbeef/pgp_keys.asc | gpg --import
+# But of course don't trust this rando AUR comment - verify yourself that the keybase accounts really belong to the developers.
+validpgpkeys=(
+    '9C8D61868A7C492003B2744EE7D737B67FA592C7'
+    '15E7ECF257098A4EF91655EB4CA7FE54A6213C91'
+    'F4FC70F07310028424EFC20A8E4256593F177720'
+    'E4D85299674B2D31FAA1892E372CBD7633C61696'
+)
+
 prepare() {
-    # If you are missing any of these keys, run curl https://keybase.io/$maintainer/pgp_keys.asc | gpg --import
-    # (NB: replace $maintainer with the name of the maintainer that you are missing the pubkey of)
-    # But of course don't trust this rando AUR comment - verify yourself that the keybase accounts really belong to the maintainers.
-    for maintainer in bitconner guggero roasbeef
-    do
-        echo "Verifying signatures for $maintainer"
-        gpg -o- --verify "$_pkgname-manifest-$maintainer-v$_pkgver.txt.clearsigned" \
-            | grep "^[0-9a-f]\{64\}  $_pkgname-linux-amd64-v$__pkgver\(\.tar\.gz\|/lnd\|/lncli\)$" \
-            | sha256sum -c -
-    done
+    # We only check "roasbeef's" manifest here, as they are all the same file
+    cat "$_pkgname-manifest-roasbeef-v$_pkgver.txt" \
+        | grep "^[0-9a-f]\{64\}  $_pkgname-linux-amd64-v$__pkgver\(\.tar\.gz\|/lnd\|/lncli\)$" \
+        | sha256sum -c -
 }
 
 package() {
