@@ -26,7 +26,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English'
             'libappindicator-gtk3: global menu support for gtk app'
             'appmenu-gtk-module-git: appmenu for gtk only'
-            'plasma5-applets-window-appmenu: appmenu for plasma only')
+            'applet-window-appmenu: appmenu for plasma only')
 options=(!emptydirs !makeflags !strip)
 _linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
 _settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
