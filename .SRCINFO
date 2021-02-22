@@ -1,6 +1,6 @@
 pkgbase = krapplet
-	pkgdesc = Password manager based on gnome-keyring
-	pkgver = 0.2.0
+	pkgdesc = A graphical password manager for Linux using gnome-keyring or GPG
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://gitlab.com/hfernh/krapplet
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = krapplet
 	makedepends = python-setuptools
 	depends = python-gobject
 	depends = gtk3
-	depends = python-secretstorage
-	source = https://files.pythonhosted.org/packages/source/k/krapplet/krapplet-0.2.0.tar.gz
-	sha256sums = 24b5fc5a6e5b38524836b7f34b90ee129c814b698ba90e46cd184dad6e776f37
+	optdepends = python-secretstorage: gnome-keyring as storage provider
+	optdepends = python-gnupg: a pass compatible storage provicer based on GPG
+	source = https://files.pythonhosted.org/packages/source/k/krapplet/krapplet-0.3.1.tar.gz
+	sha256sums = 41989cdde07d5b2637d508e5d7d4eaeaebdd376ed04f19f66980125725a6b622
 
 pkgname = krapplet
 
