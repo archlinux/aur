@@ -16,11 +16,10 @@ optdepends=(
 )
 source=(
 	'git+https://gitlab.com/kicad/code/kicad.git'#commit=@KICAD_HASH@
-	'git+https://gitlab.com/kicad/code/kicad-i18n.git'#commit=@I18N_HASH@
 	'kicad-nightly.env'
 )
 sha256sums=(
-	'SKIP' 'SKIP'
+	'SKIP'
 	'fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18'
 )
 
@@ -48,17 +47,6 @@ build()
 		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
 		-DKICAD_DATA=/usr/share/kicad-nightly \
 		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
-	ninja
-
-	cd "$srcdir/kicad-i18n"
-
-	rm -rf build
-	mkdir build
-	cd build
-	cmake .. -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
-		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
-		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly
 	ninja
 }
 
@@ -91,7 +79,4 @@ exec /usr/lib/kicad-nightly/bin/$prog
 EOF
 		chmod +x "$pkgdir/usr/bin/$prog-nightly"
 	done
-
-	cd "$srcdir/kicad-i18n/build"
-	DESTDIR="$pkgdir" ninja install
 }
