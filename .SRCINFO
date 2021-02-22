@@ -1,0 +1,28 @@
+pkgbase = python-mars
+	pkgdesc = A tensor-based unified framework for large-scale data computation which scales Numpy, pandas, Scikit-learn and Python functions
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/mars-project/mars
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python-arrow
+	depends = python-cloudpickle
+	depends = python-gevent
+	depends = python-jinja
+	depends = python-lz4
+	depends = python-numexpr
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-protobuf
+	depends = python-psutil
+	depends = python-requests
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-sqlalchemy
+	source = mars-0.6.4.tar.gz::https://github.com/mars-project/mars/archive/v0.6.4.tar.gz
+	sha512sums = 8b734b6501b464d74d9887c86973a343e2f5047d2c76fa04fe49b3dd0164a04007290f15dfab002d63009a9d5290474c2d708c50238866802c2023c2e00d1075
+
+pkgname = python-mars
+
