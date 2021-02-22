@@ -1,14 +1,14 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='spot'
 pkgname="$_projectname-client-git"
-pkgver='0.1.7.r7.g58a1db7'
+pkgver='0.1.8.r3.g68ce4b9'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xou816/$_projectname"
 license=('MIT')
 depends=('alsa-lib' 'glib2' 'gtk3' 'libhandy' 'libpulse' 'openssl')
-makedepends=('cargo' 'git' 'meson')
+makedepends=('cargo' 'git' 'meson>=0.50.0')
 provides=("$_projectname-client")
 conflicts=("$_projectname-client")
 source=("$pkgname::git+$url")
