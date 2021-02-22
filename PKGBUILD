@@ -20,8 +20,8 @@ prepare() {
 	cd "$_pkgname-$pkgver"
 
   sed -i '/ServerRoot/s_"/usr/local/apache2"_"/etc/httpd"_' 'httpd.conf'
-  sed -i '/User/s/www-data/httpd/' 'httpd.conf'
-  sed -i '/Group/s/www-data/httpd/' 'httpd.conf'
+  sed -i '/User/s/www-data/http/' 'httpd.conf'
+  sed -i '/Group/s/www-data/http/' 'httpd.conf'
   sed -i '/ErrorLog/s_logs/error.log_/var/log/httpd/error\_log_' 'httpd.conf'
 
   sed -i '/SSLSessionCache/s_"shmcb:/usr/local/apache2/logs/ssl\_gcache\_data(10485760)"_"shmcb:/run/httpd/ssl\_scache(10485760)"_' 'h5bp/ssl/ssl_engine.conf'
