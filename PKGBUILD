@@ -1,18 +1,18 @@
-# Maintainer: RedTide <redtid3@gmail.com>
+# Maintainer: redtide <redtid3@gmail.com>
 # Maintainer: Jean Pierre Cimalando <jp-dev@inbox.ru>
 
 _pkgname="sfizz"
 pkgname="${_pkgname}-git"
-pkgver=r2043.fa610c1f
+pkgver=r3055.eab7d6e2
 pkgrel=1
 pkgdesc="SFZ library and LV2 plugin"
 url="https://sfz.tools/sfizz"
 arch=('x86_64')
 license=('custom:BSD-2-Clause' 'custom:ISC')
 makedepends=('git' 'cmake')
-depends=('libsndfile' 'jack' 'libx11' 'libxcb' 'xcb-util' 'xcb-util-cursor' 'xcb-util-keysyms' 'libxkbcommon' 'libxkbcommon-x11' 'fontconfig' 'cairo' 'freetype2')
-provides=('sfizz')
-conflicts=('sfizz')
+depends=('libsndfile' 'jack' 'libx11' 'libxcb' 'xcb-util' 'xcb-util-cursor' 'xcb-util-keysyms' 'libxkbcommon' 'libxkbcommon-x11' 'fontconfig' 'cairo' 'freetype2' 'zenity')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("$pkgname"::"git+https://github.com/sfztools/sfizz#branch=develop")
 sha512sums=('SKIP')
 pkgver() {
