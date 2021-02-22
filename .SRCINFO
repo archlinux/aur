@@ -1,6 +1,6 @@
 pkgbase = feedgnuplot
 	pkgdesc = General purpose pipe-oriented plotting tool
-	pkgver = 1.56
+	pkgver = 1.57
 	pkgrel = 1
 	url = https://github.com/dkogan/feedgnuplot
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = feedgnuplot
 	depends = perl-list-moreutils
 	depends = perl-string-shellquote
 	provides = feedgnuplot
-	source = https://github.com/dkogan/feedgnuplot/archive/v1.56.tar.gz
-	sha256sums = 93943aee58f124cc21f70267fcfba48ec70a8dc112ddcba075afe074b51270bc
+	source = https://github.com/dkogan/feedgnuplot/archive/v1.57.tar.gz
+	b2sums = 4904bef8ef582c7d8639d7f904e40559c6b30ec714499df073ccd4db2a5f54b2b88117436af9005f11ea336d0a473e96a8e31debc1e35c7dea26b229f343c53e
 
 pkgname = feedgnuplot
 
