@@ -1,10 +1,12 @@
 pkgbase = flamegraph-git
 	pkgdesc = Stack trace visualizer
 	pkgver = r316.a258e78
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html
 	arch = any
+	license = Apache
 	license = CDDL
+	license = GPL2
 	makedepends = git
 	depends = perl
 	depends = awk

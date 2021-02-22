@@ -3,11 +3,11 @@
 
 pkgname=flamegraph-git
 pkgver=r316.a258e78
-pkgrel=2
+pkgrel=3
 pkgdesc="Stack trace visualizer"
 arch=('any')
 url='http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html'
-license=('CDDL')
+license=('Apache' 'CDDL' 'GPL2')
 depends=('perl' 'awk')
 makedepends=('git')
 provides=('flamegraph')
@@ -29,6 +29,4 @@ package() {
 	do
 		install -Dm 755 "${script}" "${pkgdir}/usr/bin/${script%.pl}"
 	done
-
-	install -Dm644 docs/cddl1.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
