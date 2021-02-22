@@ -3,7 +3,7 @@
 pkgname=ipfs-sync
 pkgver=0.2.0
 pkgrel=1
-pkgdec="A simple daemon which will watch files on your filesystem, mirror them to MFS, automatically update related pins, and update related IPNS keys."
+pkgdesc="A simple daemon which will watch files on your filesystem, mirror them to MFS, automatically update related pins, and update related IPNS keys."
 url="https://github.com/TheDiscordian/ipfs-sync"
 license=('custom' 'BSD')
 arch=('any')
