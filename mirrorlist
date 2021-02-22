@@ -1,4 +1,4 @@
-# Randomly pick one mirrors below
+# Randomly pick one of the mirrors below
 # - This is GOOD with with Pacman 6+ parallel downloads;
 # - This is BAD with powerpill;
 # - This helps us not overusing one specific mirror;
@@ -29,6 +29,14 @@ Server = https://de-1-mirror.chaotic.cx/$repo/$arch
 # * By: ParanoidBangL (without HTTPS)
 Server = http://de-2-mirror.chaotic.cx/$repo/$arch
 
+# Brussels, Belgium
+# * By: Belnet, the Belgian Education and Research Network
+Server = https://bru-be-mirror.chaotic.cx/$repo/$arch
+
 # Seoul, Korea
 # * By: Ryoichi <t.me/maakpain>
 Server = https://kr-mirror.chaotic.cx/$repo/$arch
+
+# Singapore
+# * By: Nico (End-of-live: 2021-05-22)
+Server = https://sg-mirror.chaotic.cx/$repo/$arch
