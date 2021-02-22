@@ -1,6 +1,6 @@
 pkgbase = nextcloud-systemd-timers
 	pkgdesc = Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry).
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	install = nextcloud-systemd-timers.install
 	arch = any

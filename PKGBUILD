@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
