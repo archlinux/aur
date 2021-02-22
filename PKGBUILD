@@ -4,52 +4,54 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.7.1
-_pkgver=1.7.1
-pkgrel=6
+pkgver=1.8.0rc3
+_pkgver=1.8.0-rc3
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl')
+         'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
+         'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
-        "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
-        "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
-        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
-        "${pkgname}-pybind11::git+https://github.com/seemethere/pybind11.git"
-        "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
         "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+        "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
+        "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
+        "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
         "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
-        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
+        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
+        "${pkgname}-ideep::git+https://github.com/intel/ideep"
+        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
         "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
         "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
-        "${pkgname}-six::git+https://github.com/benjaminp/six.git"
-        "${pkgname}-ideep::git+https://github.com/intel/ideep"
-        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
-        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
-        "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
         "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
-        "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
-        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
+        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
+        "${pkgname}-six::git+https://github.com/benjaminp/six.git"
+        "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
         "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
         "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
-        "${pkgname}-tbb::git+https://github.com/01org/tbb"
+        "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
         "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
-        "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
+        "${pkgname}-tbb::git+https://github.com/01org/tbb"
         "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
-        "${pkgname}-googletest::git+https://github.com/google/googletest.git"
-        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
+        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
-        "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
-        "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
+        "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
+        "${pkgname}-googletest::git+https://github.com/google/googletest.git"
+        "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
+        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
+        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
+        "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         fix_include_system.patch
         use-system-libuv.patch
         use-system-libuv2.patch
@@ -89,8 +91,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '83c81ec6a461110da6ae6182529f58100986b068c5182ca62cd53c648b4e4fb0'
-            '26b1dd596f1e21a011ee18cab939924483d6c6d4d98e543bf76f5a9312d54d67'
+            'SKIP'
+            '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
+            'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
             'e4a96887b41cbdfd4204ce5f16fcb16a23558d23126331794ab6aa30a66f2e0d'
             'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
@@ -133,6 +136,7 @@ prepare() {
   git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
   git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
   git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
+  git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git submodule update --init --recursive
 
   # https://bugs.archlinux.org/task/64981
