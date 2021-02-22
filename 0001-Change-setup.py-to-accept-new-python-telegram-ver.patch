@@ -1,7 +1,7 @@
-From 9d667051c5dc4f60e9ea5e389a7b8bcc15156859 Mon Sep 17 00:00:00 2001
+From 0b4663c21a1dac223872f16473840b9daf446d8b Mon Sep 17 00:00:00 2001
 From: "j.r" <j.r@jugendhacker.de>
 Date: Tue, 29 Dec 2020 14:44:26 +0100
-Subject: [PATCH] Change setup.py to accept new python-telegram ver
+Subject: [PATCH 1/2] Change setup.py to accept new python-telegram ver
 
 ---
  setup.py | 2 +-
@@ -19,5 +19,5 @@ index e1aea71..e98daa1 100644
 +    install_requires=["python-telegram>=0.12.0"],
  )
 -- 
-2.29.2
+2.30.1
 
