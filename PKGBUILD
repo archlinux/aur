@@ -43,8 +43,8 @@ source_x86_64=("hg+$_repo#revision=release"
                unity-menubar.patch)
 source_aarch64=("hg+$_repo#revision=release"
                 librewolf.desktop
-                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
-                "git+https://gitlab.com/${pkgname}-community/settings.git#commit=${_settings_commit}"
+                "git+https://gitlab.com/librewolf-community/browser/common.git"
+                "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
                 megabar.patch
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                 unity-menubar.patch

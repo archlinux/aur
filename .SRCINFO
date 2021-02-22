@@ -71,8 +71,8 @@ pkgbase = librewolf-wayland-hg
 	sha256sums_x86_64 = 78fa48c74865ca311705f60bf589a4f06a552906e8b860302e0fb004272a7394
 	source_aarch64 = hg+https://hg.mozilla.org/mozilla-unified#revision=release
 	source_aarch64 = librewolf.desktop
-	source_aarch64 = git+https://gitlab.com/librewolf-wayland-hg-community/browser/common.git
-	source_aarch64 = git+https://gitlab.com/librewolf-wayland-hg-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+	source_aarch64 = git+https://gitlab.com/librewolf-community/browser/common.git
+	source_aarch64 = git+https://gitlab.com/librewolf-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 	source_aarch64 = megabar.patch
 	source_aarch64 = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/remove_addons.patch
 	source_aarch64 = unity-menubar.patch
