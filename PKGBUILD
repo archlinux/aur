@@ -4,13 +4,13 @@
 pkgbase=python-getdevinfo
 pkgname=('python-getdevinfo')
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A device information gatherer for Linux and macOS."
 arch=('any')
 url="https://www.hamishmb.com/html/downloads.php?program_name=getdevinfo"
 license=('PSF')
 makedepends=('python-setuptools')
-depends=('python')
+depends=('python' 'lshw')
 
 source=("https://www.hamishmb.com/files/Downloads/getdevinfo/${pkgver}/Python/getdevinfo-${pkgver}.tar.gz")
 
