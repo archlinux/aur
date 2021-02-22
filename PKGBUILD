@@ -10,6 +10,8 @@ url="https://github.com/doums/baru"
 license=('MPL2')
 source=("$pkgname-$pkgver::https://github.com/doums/baru/releases/download/v${pkgver}/${_pkgname}")
 depends=('libpulse' 'libnl')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 md5sums=('48ad004ccf0418598c6d86dc6ec94a90')
 
 package() {

@@ -7,6 +7,8 @@ pkgbase = baru-bin
 	license = MPL2
 	depends = libpulse
 	depends = libnl
+	provides = baru
+	conflicts = baru
 	source = baru-bin-0.2.5::https://github.com/doums/baru/releases/download/v0.2.5/baru
 	md5sums = 48ad004ccf0418598c6d86dc6ec94a90
 
