@@ -1,0 +1,12 @@
+pkgbase = libdsp-git
+	pkgdesc = DSP functions without GR overhead
+	pkgver = r20.e6b0075
+	pkgrel = 1
+	url = https://github.com/altillimity/libdsp
+	arch = x86_64
+	license = GPLv3
+	source = libdsp-git::git+https://github.com/altillimity/libdsp.git
+	sha256sums = SKIP
+
+pkgname = libdsp-git
+
