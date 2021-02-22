@@ -1,0 +1,19 @@
+pkgbase = brutha-git
+	pkgdesc = Batch synchronization of music, with FLAC to Ogg Vorbis, optional down-sampling, and straight copy of others
+	pkgver = 1.1.1.r3.g0d00a5b
+	pkgrel = 1
+	url = http://git.p.engu.in/laurentb/brutha/about/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-mutagen
+	depends = sox
+	optdepends = parallel: for parallel runs
+	optdepends = make: for parallel runs
+	optdepends = vorbisgain: for --gain
+	source = git+git://git.p.engu.in/laurentb/brutha
+	md5sums = SKIP
+
+pkgname = brutha-git
+
