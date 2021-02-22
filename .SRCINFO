@@ -1,13 +1,13 @@
 pkgbase = dnsmorph
 	pkgdesc = Domain name permutation engine written in Go
-	pkgver = 1.2.6
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/netevert/dnsmorph
 	arch = any
 	license = MIT
 	makedepends = go
-	source = https://github.com/netevert/dnsmorph/archive/v1.2.6.tar.gz
-	sha256sums = 36ef1e6e4208580475dd0a61c81d3d14e2806e60fa01376ad735b5f236665f6f
+	source = https://github.com/netevert/dnsmorph/archive/v1.2.8.tar.gz
+	sha256sums = ea4836a097cf84d080439f85310a5872e4b545b0d430c5df90e3a2e46d110481
 
 pkgname = dnsmorph
 
