@@ -1,6 +1,6 @@
 # Maintainer: badcasa <sebastian.stueber [at] t-online [dot] de>
 pkgname=isabelle
-pkgver=2020
+pkgver=2021
 pkgrel=1
 pkgdesc="A generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus."
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ package() {
 	$pkgdir/opt/isabelle/bin/isabelle install -d /opt/isabelle $pkgdir/usr/bin
 }
 
-md5sums=('7c69d3aa39116cd4a91ad1592a0431e1'
+md5sums=('9b91f6f78a5d3ab701d07f15404746d2'
          'd33d0dd09e9105f4f043bd5e59458481')
