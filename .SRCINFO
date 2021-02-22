@@ -1,13 +1,13 @@
 pkgbase = python-neotermcolor
 	pkgdesc = Modern ANSII Color formatting for output in terminal
-	pkgver = 2.0.8
-	pkgrel = 2
+	pkgver = 2.0.9
+	pkgrel = 1
 	url = https://github.com/alttch/neotermcolor
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = python-neotermcolor-2.0.8-2.tar.gz::https://github.com/alttch/neotermcolor/archive/0893ac7e18cccbcecf12b80c262ba674d969bd6a.tar.gz
-	sha256sums = e3ce226462a448b8e66744ea513e24545a13900e7567cc2d97f2690769b67cbc
+	source = python-neotermcolor-2.0.9-1.tar.gz::https://github.com/alttch/neotermcolor/archive/01cf24a234ae4abf12a41c1f2fb63117819d8bb7.tar.gz
+	sha256sums = 71b80b0929b32742fe4fb69e4340ff97044e91d13052cd64e82b4bf6d8955e91
 
 pkgname = python-neotermcolor
