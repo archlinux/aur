@@ -1,0 +1,12 @@
+pkgbase = plymouth-theme-bgrt-better-luks
+	pkgdesc = Modified BGRT theme that retains the OEM logo on LUKS passphrase prompt.
+	pkgver = 1
+	pkgrel = 1
+	install = plymouth-theme-bgrt-better-luks.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = bgrt-better-luks.plymouth
+	sha256sums = 53a7e07c1c0422939384a4345ad776cbd15425d242b58fe63895830c2ff2fce8
+
+pkgname = plymouth-theme-bgrt-better-luks
