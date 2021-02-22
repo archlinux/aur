@@ -25,7 +25,7 @@ pkgbase = linux-okhsunrog
 	sha256sums = SKIP
 
 pkgname = linux-okhsunrog
-	pkgdesc = The pf-kernel by okhsunrog (personal build) kernel and modules
+	pkgdesc = The pf-kernel by okhsunrog (personal build). Kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
