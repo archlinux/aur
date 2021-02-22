@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PYTHONPATH="/usr/share/super-slomo/:$PYTHONPATH" 
+exec python /usr/share/super-slomo/video_to_slomo.py --checkpoint /usr/share/super-slomo/model/SuperSloMo.ckpt "$@"
