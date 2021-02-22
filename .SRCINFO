@@ -1,6 +1,6 @@
 pkgbase = geysermc-bin
 	pkgdesc = Geyser is a bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition, closing the gap from those wanting to play true cross-platform.
-	pkgver = 1.1.0.5b76a85
+	pkgver = 1.2.0.SNAPSHOT.f480fbf
 	pkgrel = 1
 	url = https://github.com/GeyserMC/Geyser
 	arch = any

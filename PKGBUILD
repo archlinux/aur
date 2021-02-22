@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 
 pkgname=geysermc-bin
-pkgver=1.1.0.5b76a85
+pkgver=1.2.0.SNAPSHOT.f480fbf
 pkgrel=1
 pkgdesc="Geyser is a bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition, closing the gap from those wanting to play true cross-platform."
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP'
 
 pkgver () {
   cd "${srcdir}"
-  echo "$(cat git.properties | grep version | cut -d= -f2).$(cat git.properties | grep id.abbrev | cut -d= -f2)"
+  echo "$(cat git.properties | grep version | cut -d= -f2).$(cat git.properties | grep id.abbrev | cut -d= -f2)" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package () {
