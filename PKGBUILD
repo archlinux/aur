@@ -1,39 +1,44 @@
-# Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
+# Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
+
 pkgname=python-mbed-tools
-pkgver=0.1.14
-_pkgname=mbed
-_pkgver=108
+pkgver=7.1.2
 pkgrel=1
-pkgdesc="Tool for managing reusable components for C/C++ by mbed"
-url="https://github.com/mbedmicro/mbed"
-depends=('python'
-         'python-pip'
-         'python-colorama'
-         'python-jinja'
-         'python-intelhex'
-         'python-prettytable'
-         'python-pyserial'
-)
-optdepends=()
-license=('Apache')
+pkgdesc='Future command line tool for Mbed OS'
 arch=('any')
-source=("https://github.com/mbedmicro/${_pkgname}/archive/${_pkgname}_lib_rev${_pkgver}.tar.gz")
-sha512sums=('0498919f25f5099d62f6ce19687c1f78d4b33a327ffc2050bb0a68807ecd5f6bacc30c8ea095610e459d00190e934e3b4beb04758532bcfcbf688be8e179c4e0')
+url="https://os.mbed.com"
+license=('Apache')
+depends=(
+  'python'
+  'python-dotenv'
+  'python-click'
+  'python-pdoc'
+  'python-gitpython'
+  'python-tqdm'
+  'python-tabulate'
+  'python-requests'
+  'python-psutil'
+  'python-pyudev'
+  'python-typing_extensions'
+  'python-jinja'
+  'python-pyserial'
+  'python-prettytable'
+  'python-intelhex'
+  'python-future'
+)
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-tools/archive/${pkgver}.tar.gz")
+sha256sums=('17e18585c06c20c456a89615075231108c190763db5367372495f4051d118192')
+provides=('python-mbed-tools')
 
-build() {
-    cd "$srcdir/$_pkgname-mbed_lib_rev$_pkgver"
-
-    # Argcomplete v1.0 is out
-    #sed -i -e 's/argcomplete>=0.8.0,<1.0/argcomplete>=0.8.0,<=1.0/' setup.py
-
-    # Pathlib is in Python3
-    #sed -i -e '/.*pathlib.*/d' setup.py
-
-    python setup.py build
+_remove_windows() {
+  rm -rf "${pkgdir}"/usr/lib/python*/site-packages/mbed_tools/devices/_internal/windows/
 }
 
 package() {
-    cd "$srcdir/$_pkgname-mbed_lib_rev$_pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 
+  cd "mbed-tools-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+  _remove_windows
+  python setup.py clean --all
 }
 
+# vim:set ts=2 sw=2 et:
