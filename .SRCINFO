@@ -27,6 +27,7 @@ pkgbase = platypush-git
 	optdepends = python-gattlib: Low-energy Bluetooth devices support
 	optdepends = python-paramiko: SSH support
 	optdepends = python-pyserial: Arduino/serial device support
+	provides = platypush
 	conflicts = platypush
 	options = !strip
 	source = platypush.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/master/platypush-master.tar.gz
