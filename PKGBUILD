@@ -1,7 +1,7 @@
 # Maintainer: Westofer Raymond <westoferraymond@gmail.com>
 
 pkgname=ytfzf-git
-pkgver=r24.570e68f
+pkgver=r50.6865243
 pkgrel=1
 pkgdesc="A posix script to find and watch youtube videos from the terminal. (With out API)"
 arch=('any')
