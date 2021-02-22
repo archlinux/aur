@@ -8,18 +8,14 @@
 
 
 ## Helpful internal stuff
-_commit=6463e71605e2c6c2e1fcc67117a1c351ffa4a794
-_major=2
-_minor=26
-_build=4261
-_revision=102
-_mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20210123
+_commit=492e6227de3adec93c1f294b6c68a42b85b4e7db
+_mozcver=2.26.4289.102
+_utdicver=20210222
 _utdicrel=1
-_bldtype=Release
+_buildtype=Release
 
 pkgname='ibus-mozc-ut'
-pkgver=${_mozcver}.${_utdicdate}
+pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 pkgdesc='Mozc module for IBus bundled with the UT dictionary'
 arch=('i686' 'x86_64')
@@ -48,10 +44,10 @@ build() {
 
     _targets='renderer/renderer.gyp:mozc_renderer unix/ibus/ibus.gyp:ibus_mozc'
 
-    GYP_DEFINES='document_dir=/usr/share/licenses/mozc ibus_mozc_path=/usr/lib/ibus-mozc/ibus-engine-mozc ibus_mozc_icon_path=/usr/share/ibus-mozc/icons/ibus-mozc.png'
+    GYP_DEFINES='document_dir=/usr/share/licenses/mozc server_dir=/usr/lib/mozc ibus_mozc_path=/usr/lib/ibus-mozc/ibus-engine-mozc ibus_mozc_icon_path=/usr/share/ibus-mozc/icons/ibus-mozc.png'
 
     python build_mozc.py gyp --target_platform=Linux
-    python build_mozc.py build -c ${_bldtype} ${_targets}
+    python build_mozc.py build -c ${_buildtype} ${_targets}
 }
 
 package() {
@@ -60,10 +56,10 @@ package() {
     install -Dm644 ../LICENSE                                           ${pkgdir}/usr/share/licenses/mozc/ibus-mozc
     install -Dm644 data/installer/credits_en.html                       ${pkgdir}/usr/share/licenses/mozc/ibus-mozc-submodules
 
-    install -Dm755 out_linux/${_bldtype}/mozc_renderer                  ${pkgdir}/usr/lib/mozc/mozc_renderer
+    install -Dm755 out_linux/${_buildtype}/mozc_renderer                ${pkgdir}/usr/lib/mozc/mozc_renderer
 
-    install -Dm755 out_linux/${_bldtype}/ibus_mozc                      ${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc
-    install -Dm644 out_linux/${_bldtype}/gen/unix/ibus/mozc.xml         ${pkgdir}/usr/share/ibus/component/mozc.xml
+    install -Dm755 out_linux/${_buildtype}/ibus_mozc                    ${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc
+    install -Dm644 out_linux/${_buildtype}/gen/unix/ibus/mozc.xml       ${pkgdir}/usr/share/ibus/component/mozc.xml
 
     install -Dm644 data/images/unix/ime_product_icon_opensource-32.png  ${pkgdir}/usr/share/ibus-mozc/icons/ibus-mozc.png
     install -Dm644 data/images/unix/ui-tool.png                         ${pkgdir}/usr/share/ibus-mozc/icons/tool.png
