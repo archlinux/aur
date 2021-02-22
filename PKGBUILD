@@ -1,7 +1,7 @@
 # Maintainer: BBaoVanC <bbaovanc@bbaovanc.com>
 pkgname=nekofetch
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="neofetch but with nekos"
 license=('GPL3')
 arch=(any)
