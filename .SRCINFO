@@ -1,7 +1,7 @@
 pkgbase = python-cos-python-sdk-v5
 	pkgdesc = 腾讯云COSV5Python SDK.
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tencentyun/cos-python-sdk-v5
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-cos-python-sdk-v5
 	provides = python-cos-python-sdk-v5-git
 	conflicts = python-cos-python-sdk-v5-git
 	source = python-cos-python-sdk-v5-1.9.4.tar.gz::https://github.com/tencentyun/cos-python-sdk-v5/archive/V1.9.4.tar.gz
-	sha256sums = 618daf0cc727356c9ce42554794f34d53b23357a4d61e4feb598d825809b6a17
+	sha256sums = ac63357744f778199397a7518601112301e398b3f9c8f67d36966b8c6ace9384
 
 pkgname = python-cos-python-sdk-v5
 
