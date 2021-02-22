@@ -1,7 +1,7 @@
 # Maintainer: guangsizhongbin <guangsizhongbin@gmail.com>
 pkgname=ting_en
 pkgver=9.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary software to practice listening english for archlinux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/ting"
@@ -21,4 +21,4 @@ package() {
 
 }
 
-md5sums=('ea895699b4b286efdb55707b826ab624')
+md5sums=('414f9e4e93e07c3647864763f4ea526a')
