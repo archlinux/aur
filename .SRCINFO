@@ -1,25 +1,12 @@
 pkgbase = zoho-mail-desktop
-	pkgdesc = A desktop version of your favorite mailsuite!
-	pkgver = 1.0.0
+	pkgdesc = The desktop version of your favorite mailsuite!
+	pkgver = 1.1.12
 	pkgrel = 1
-	url = https://www.zoho.com/mail
+	url = https://www.zoho.com/mail/
 	arch = x86_64
-	arch = i686
-	license = custom:"Copyright (c) 2018, Zoho Corporation Pvt. Ltd."
-	depends = nss
-	depends = libxtst
-	depends = alsa-lib
-	depends = libxss
-	depends = gtk2
-	depends = gconf
-	provides = libnode
-	provides = libffmpeg
-	options = !strip
-	options = !upx
-	source_x86_64 = https://www.zoho.com/mail/desktop/linux/installer-x64-1.0.0.deb
-	sha256sums_x86_64 = 981bf5cfe72519a210793b4ac02d4beee40bfe651ac873c95b375a8429a37c88
-	source_i686 = https://www.zoho.com/mail/desktop/linux/installer-x86-1.0.0.deb
-	sha256sums_i686 = 8f7c4477099b5bda4ecb74d78591c0a432d5311bd8dc5e379798812f7c1bb1c6
+	license = custom
+	source_x86_64 = https://downloads.zohocdn.com/zmail-desktop/linux/zoho-mail-desktop-x64-v1.1.12.AppImage
+	sha256sums_x86_64 = fb4e7e60f1e06ebb6d3d285e380da7251f74c97b6bc786635648e73fd2cf4762
 
 pkgname = zoho-mail-desktop
 
