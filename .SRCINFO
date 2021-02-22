@@ -1,7 +1,7 @@
 pkgbase = abcl-git
 	pkgdesc = Full implementation of the Common Lisp language in the JVM
 	pkgver = r3546.217ed0f2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://common-lisp.net/project/armedbear/
 	arch = any
 	license = GPL
