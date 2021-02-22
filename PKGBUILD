@@ -1,75 +1,58 @@
-# Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
+# Maintainer: dkasak <dkasak AT termina DOT org DOT uk>
+# Contributor: Sebastian Neef <aur AT gehaxelt DOT IN>
+# Contributor: ocelot <amitchell AT airmail DOT cc>
+
 pkgbase=theharvester-git
 pkgname=theharvester-git
-pkgver=V3.1.r343.g3c4d66d
+pkgver=3.2.3.r18.ga6959ad
 pkgrel=1
-pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
+pkgdesc="An OSINT tool for gathering emails, names, subdomains, IPs and URLs related to a target using public sources."
 arch=('any')
 url="https://github.com/laramies/theHarvester"
 license=('GPL2')
 depends=(
-	'bash'
-	'python'
-	'python-requests'
-	'python-plotly'
-	'python-pytest'
-	'python-texttable'
-	'python-shodan'
-	'python-beautifulsoup4'
-	'python-decorator'
-	'python-censys'
-	'python-gevent'
-	'python-grequests'
-	'python-aiodns'
-	'python-aiohttp'
-	'python-multiprocess'
-	'python-aiosqlite'
-	'python-certifi'
-	'python-netaddr'
-	'python-pyppeteer'
-	'python-pyaml'
-	'python-pycares'
-	'python-retrying'
-	'python-lxml'
-	'python-dnspython'
-	'python-uvloop'
+    'python'
+    'python-aiodns'
+    'python-aiohttp'
+    'python-aiomultiprocess'
+    'python-aiosqlite'
+    'python-beautifulsoup4'
+    'python-certifi'
+    'python-dnspython'
+    'python-netaddr'
+    'python-plotly'
+    'python-pyppeteer'
+    'python-yaml'
+    'python-requests'
+    'python-retrying'
+    'python-shodan'
+    'python-texttable'
+    'python-lxml'
+    'python-uvloop'
 )
-makedepends=('git' 'bash')
+makedepends=('git' 'python-setuptools' 'python-pytest')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install="theHarvester.install"
 source=("$pkgname::git+https://github.com/laramies/theHarvester.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'	
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "$srcdir/$pkgname"
-	cat <<__EOF__ > run.sh
-#!/bin/bash
-PYTHONPATH="\$PYTHONPATH:/opt/$pkgname/" /usr/bin/env python /opt/$pkgname/theHarvester.py "\$@"
-__EOF__
+build() {
+    cd "${srcdir}/${pkgname}"
+    python setup.py build
 }
 
 package() {
-	reponame=theHarvester
-	mkdir -p "$pkgdir/opt/$pkgname/"
-	mkdir -p "$pkgdir/usr/bin"
-	
-	cp -r "$srcdir/$pkgname/$reponame" "$pkgdir/opt/$pkgname"
-	cp -r "$srcdir/$pkgname/tests" "$pkgdir/opt/$pkgname/"
-	cp -r "$srcdir/$pkgname/wordlists" "$pkgdir/opt/$pkgname/"
-	install "$srcdir/$pkgname/api-keys.yaml" "$pkgdir/opt/$pkgname/"
-	install "$srcdir/$pkgname/theHarvester.py" "$pkgdir/opt/$pkgname/"
-	install "$srcdir/$pkgname/run.sh" "$pkgdir/opt/$pkgname/"
-
-	ln -s "/opt/$pkgname/run.sh" "$pkgdir/usr/bin/theharvester"	
+    cd "${srcdir}/${pkgname}"
+    python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
 
-check(){
-	cd "${srcdir}"
-	pytest
+check() {
+    cd "${srcdir}/${pkgname}"
+    pytest
 }

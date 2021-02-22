@@ -1,9 +1,8 @@
 post_install() {
-    echo "IMPORTANT: The location of API keys has changed!"
-    echo "Add your keys to /opt/theharvester-git/api-keys.yaml"
-    echo "	bingapi"
-	echo "	hunter"
-    echo "	intelx"
-	echo "	securitytrails"
-    echo "	shodan"
+    printf '%s\n\n' "IMPORTANT: The location of API keys has changed to /etc/theHarvester/api-keys.yml"
+    printf '%s\n' "APIs requiring keys:"
+    printf '\t- %s\n' "bing" "github" "hunter" \
+                      "intelx" "pentesttools"  \
+                      "projecdiscovery" "securityTrails" \
+                      "shodan" "spyse"
 }
