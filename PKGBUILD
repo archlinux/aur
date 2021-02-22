@@ -8,20 +8,17 @@
 
 
 ## Helpful internal stuff
-_commit=6463e71605e2c6c2e1fcc67117a1c351ffa4a794
-_major=2
-_minor=26
-_build=4261
-_revision=102
-_mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20210123
+_commit=492e6227de3adec93c1f294b6c68a42b85b4e7db
+_mozcver=2.26.4289.102
+_utdicver=20210222
 _utdicrel=1
-_kendate=202012
-_jugyosyodate=202012
-_bldtype=Release
+_utdiclink=27629
+_kenver=202101
+_jugyosyover=202101
+_buildtype=Release
 
 pkgname='mozc-ut-common'
-pkgver=${_mozcver}.${_utdicdate}
+pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('i686' 'x86_64')
@@ -30,15 +27,15 @@ license=('custom')
 depends=('qt5-base')
 makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
-provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicdate}")
+provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/27/27430/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
-        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kendate}.zip"
-        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyodate}.zip")
+        "https://osdn.net/downloads/users/27/${_utdiclink}/mozcdic-ut-${_utdicver}.${_utdicrel}.tar.bz2"
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kenver}.zip"
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyover}.zip")
 sha256sums=('SKIP'
-            'fa4bf67e82a5c276115de85d77311b538bb915aa6b6a59f34d7cb33b8563b320'
-            'f6c15add56af8ded9a5e66c0f6643d79c2f36733a879543528b4313e4e1a1d14'
-            'c6eca7f6da19420ebc3e7d1b05bd15a838a1aa6c7bcf23e43ebd3c22a49cff1b')
+            '0b71c941d96e700a80ca4081113eea7c373247269917bcaf9ace9b66d56c455e'
+            'ee2615602786c0cb0f2b161656dd6bbef690f5f87b1e433f8cf23136375cd871'
+            '57b17c67913a32ceabfb5b78e6211772020b92e6a59606b4251676b108f552ea')
 
 prepare() {
     cd ${pkgname}-git
@@ -51,7 +48,7 @@ prepare() {
     sed -i -e 's/-lc++//' src/gyp/common.gypi
 
     # Add the UT dictionary
-    cat ${srcdir}/mozcdic-ut-${_utdicdate}.${_utdicrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-${_utdicver}.${_utdicrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 
     # Add latest ZIP codes
     PYTHONPATH="${PYTHONPATH}:src/" \
@@ -66,17 +63,17 @@ build() {
     GYP_DEFINES='document_dir=/usr/share/licenses/mozc'
 
     python build_mozc.py gyp --target_platform=Linux
-    python build_mozc.py build -c ${_bldtype} ${_targets}
+    python build_mozc.py build -c ${_buildtype} ${_targets}
 }
 
 package() {    
-    install -Dm644 mozcdic-ut-${_utdicdate}.${_utdicrel}/COPYING        ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
+    install -Dm644 mozcdic-ut-${_utdicver}.${_utdicrel}/COPYING        ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
 
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                           ${pkgdir}/usr/share/licenses/mozc/mozc
-    install -Dm644 data/installer/credits_en.html                       ${pkgdir}/usr/share/licenses/mozc/mozc-submodules
+    install -Dm644 ../LICENSE                                          ${pkgdir}/usr/share/licenses/mozc/mozc
+    install -Dm644 data/installer/credits_en.html                      ${pkgdir}/usr/share/licenses/mozc/mozc-submodules
 
-    install -Dm755 out_linux/${_bldtype}/mozc_server                    ${pkgdir}/usr/lib/mozc/mozc_server
-    install -Dm755 out_linux/${_bldtype}/mozc_tool                      ${pkgdir}/usr/lib/mozc/mozc_tool
+    install -Dm755 out_linux/${_buildtype}/mozc_server                 ${pkgdir}/usr/lib/mozc/mozc_server
+    install -Dm755 out_linux/${_buildtype}/mozc_tool                   ${pkgdir}/usr/lib/mozc/mozc_tool
 }
