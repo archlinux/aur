@@ -44,6 +44,7 @@ pkgbase = wine-stable-ubuntu
 	depends = lib32-libldap
 	depends = lib32-mpg123
 	depends = lib32-openal
+	depends = lib32-libpcap
 	depends = lib32-libpulse
 	depends = lib32-systemd
 	depends = lib32-libusb

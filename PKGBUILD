@@ -22,12 +22,12 @@ depends=('glibc' 'alsa-lib' 'faudio' 'gcc-libs'
 	 'lib32-glibc' 'lib32-alsa-lib' 'lib32-faudio' 'lib32-gcc-libs'
 	 'lib32-glib2' 'lib32-gst-plugins-base-libs'
 	 'lib32-gstreamer' 'lib32-lcms2' 'lib32-libldap' 'lib32-mpg123'
-	 'lib32-openal' 'lib32-libpulse' 'lib32-systemd'
+	 'lib32-openal' 'lib32-libpcap' 'lib32-libpulse' 'lib32-systemd'
 	 'lib32-libusb' 'lib32-vkd3d' 'lib32-libx11' 'lib32-libxext'
 	 'lib32-libxml2' 'lib32-opencl-icd-loader' 'lib32-alsa-plugins'
 	 'lib32-ncurses'
 	 'lib32-orc' 'lib32-libelf' 'lib32-gettext')
-# - libpcal libpghoto2-port12 lib32-libgphoto2
+# - libpghoto2-port12 lib32-libgphoto2
 
 #Recommends: libcapi20-3, libcups2, libdbus-1-3, libfontconfig1, libfreetype6, libglu1-mesa | libglu1, libgnutls30 | libgnutls28 | libgnutls26, libgsm1, libgssapi-krb5-2, libjpeg62-turbo | libjpeg8, libkrb5-3, libodbc1, libosmesa6, libpng16-16 | libpng12-0, libsane | libsane1, libsdl2-2.0-0, libtiff5, libv4l-0, libxcomposite1, libxcursor1, libxfixes3, libxi6, libxinerama1, libxrandr2, libxrender1, libxslt1.1, libxxf86vm1
 optdepends=(
@@ -107,4 +107,8 @@ package() {
 	ln -s "$pkgdir"/opt/wine-stable-ubuntu/share/wine "$pkgdir"/usr/share/wine
 	rm -rf "$pkgdir"/opt/wine-stable-ubuntu/share/{man,applications}
 	rm -rf "$pkgdir"/usr/share/lintian
+	msg2 "Creating symlink to libpcap.so.0.8..."
+	install -dm755 "$pkgdir"/usr/{lib,lib32}
+	ln -s libpcap.so "$pkgdir"/usr/lib32/libpcap.so.0.8
+	ln -s libpcap.so "$pkgdir"/usr/lib/libpcap.so.0.8
 }
