@@ -1,10 +1,10 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2020.04.05
-pkgrel=4
-pkgdesc='The to do list to organize work & life'
-arch=('any')
+pkgver=2021.02.22
+pkgrel=1
+pkgdesc='Todoist in shared Electron runtime'
+arch=('x86_64')
 url='https://todoist.com'
 license=('MIT')
 depends=('electron')
@@ -25,6 +25,7 @@ EOF
     --pkgname "${pkgname}" \
     --pkgdesc "${pkgdesc}" \
     --name "${_name}" \
+    --categories "Network;Office;ProjectManagement;" \
     -n \
     -f
   curl \
@@ -34,9 +35,11 @@ EOF
 
 build() {
   cd "${srcdir}"
+  # https://regex101.com/r/FpfTKB/1
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
+    --internal-urls '/^(https?:\/\/)?(todoist\.com|accounts\.google\.com|www\.facebook\.com|appleid\.apple\.com)(\/.*)?$' \
     --maximize \
     --single-instance \
     --verbose \

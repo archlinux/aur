@@ -1,9 +1,9 @@
 pkgbase = todoist-nativefier
-	pkgdesc = The to do list to organize work & life
-	pkgver = 2020.04.05
-	pkgrel = 4
+	pkgdesc = Todoist in shared Electron runtime
+	pkgver = 2021.02.22
+	pkgrel = 1
 	url = https://todoist.com
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = curl
 	makedepends = gendesk
