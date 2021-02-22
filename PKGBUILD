@@ -1,8 +1,9 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 # Contributor: Ryan Gonzalez <rymg19@gmail.com>
 
-pkgname=python-plac
-pkgver=1.3.1
+_pkgname=plac
+pkgname=python-${_pkgname}
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="The smartest command line arguments parser in the world"
 url="https://pypi.org/project/plac/"
@@ -10,8 +11,8 @@ depends=(python)
 makedepends=(python-setuptools)
 license=(BSD)
 arch=(any)
-source=("https://files.pythonhosted.org/packages/a3/86/ef1da1b9ad0616d07e71c24eef29d56e4d0ec2fbd38e9bcf9eaacaf65342/plac-1.3.1.tar.gz")
-sha256sums=('9ebe589ae371c0f863848cebffbfa1394e814a9b8b5a5a42ea373572d29d856d')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('d598bc4b549282ec3a1fde40ddc4a273e051237b5aa70c44f572306a13c651e8')
 
 
 build() {
