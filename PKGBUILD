@@ -3,16 +3,17 @@
 
 pkgname=sic-image-cli
 _pkgname=sic
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
 license=('MIT')
 conflicts=("$_pkgname")
+depends=('gcc-libs')
 makedepends=('rust' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7f4f5a8d524e083304cafd028fee30b1d17d8b4fce999c5921b179b98432f064663fdaed5bb1ee91a0fc727788265cead06a71ae8f9f064031d8ce8382d3291f')
+sha512sums=('f097aa40f13e926f2486539aa29c4c17c06d84fd4cf29748aa883f51504bb42c8d32a607edcb0b0948c04de7007ad0527ba1cf6d9501ddfbf4321f1ebac4ce45')
 
 build() {
   cd "$_pkgname-$pkgver"
