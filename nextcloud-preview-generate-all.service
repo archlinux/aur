@@ -2,8 +2,8 @@
 Description=Nextcloud; generate previews for all files
 
 [Service]
-User=http
-ExecStart=/usr/bin/php7 -f /usr/share/webapps/nextcloud/occ preview:generate-all
+User=nextcloud
+ExecStart=/usr/bin/php -f /usr/share/webapps/nextcloud/occ preview:generate-all
 
 [Install]
 WantedBy=basic.target
