@@ -2,7 +2,7 @@
 
 _pkgname=diplib
 pkgname="${_pkgname}-git"
-pkgver=r1522.37b06c70
+pkgver=r1887.ff3429f9
 pkgrel=1
 pkgdesc='Quantitative Image Analysis in C++, MATLAB and Python'
 arch=('x86_64')
