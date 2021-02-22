@@ -1,0 +1,15 @@
+pkgbase = ipfs-sync
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/TheDiscordian/ipfs-sync
+	arch = any
+	license = custom
+	license = BSD
+	makedepends = go
+	depends = go-ipfs
+	source = https://github.com/TheDiscordian/ipfs-sync/archive/v0.2.0.tar.gz
+	md5sums = f0feed10329ebd8c25356c57acc6e4e4
+	sha512sums = 628f16111fcde53c11cd96f0f14aedc941a8c0e2668e08e178eee5e1185bd43847d5c378a78c3bfd71c7dff4ce082f3c5b33fe3dc4ce9da6efb6344c9df6de9f
+
+pkgname = ipfs-sync
+
