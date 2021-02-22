@@ -51,7 +51,7 @@ package() {
   done
 
   # skin
-  # needed write permission
+  # write permission is required for sunlogin client to work
   find usr/local/${_pkgname}/res/skin -type f -exec \
       install -Dm666 {} -t ${pkgdir}/opt/${_pkgname}/res/skin \;
 
@@ -75,7 +75,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   ln -sf "/opt/${_pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  #  ugly hack
+  # ugly hack
   sed -i "s#/usr/local/sunlogin\x0#/opt/sunlogin\x0\x0\x0\x0\x0\x0\x0#g" \
           "${pkgdir}/opt/${_pkgname}/bin/${pkgname}"
   sed -i "s#/usr/local/sunlogin/res/icon/%s.ico\x0#/opt/sunlogin/res/icon/%s.ico\x0\x0\x0\x0\x0\x0\x0#g" \
