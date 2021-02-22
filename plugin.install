@@ -1,0 +1,13 @@
+post_install(){
+cat <<INFO
+To use the plugin, add the following to your "mkdocs.yml":
+
+plugins:
+  - theme-jinja2-filters
+
+then create the file "overrides/template_filters.py" in your MkDocs directory
+and add there your definitions. You may find Jinja documentation useful, especially
+https://jinja.palletsprojects.com/en/master/api/#evaluation-context if you need to
+process macros and variables.
+INFO
+}
