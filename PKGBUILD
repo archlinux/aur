@@ -83,7 +83,7 @@ build() {
     export OCAML_TOOLS=n
     unset LDFLAGS
 
-    autoreconf
+    autoreconf --install
     ./configure --prefix=/usr \
                 --sbindir=/usr/bin \
                 --disable-ocamltools \
