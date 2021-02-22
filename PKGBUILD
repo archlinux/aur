@@ -5,8 +5,8 @@
 
 pkgbase=pulseeffects-git
 pkgname=("${pkgbase}" "gst-plugins-${pkgbase}")
-pkgver=5.0.0.r12.gd18451b3
-pkgrel=2
+pkgver=5.0.1.r0.gf2edc36d
+pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
