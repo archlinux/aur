@@ -6,15 +6,22 @@ pkgbase = yambar
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	makedepends = libmpdclient
 	makedepends = libyaml
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
+	depends = alsa-lib
+	depends = fontconfig
+	depends = pixman
+	depends = wayland
+	depends = wayland-protocols
 	depends = xcb-util-cursor
+	depends = xcb-util-wm
+	depends = xorgproto
 	provides = yambar
 	source = yambar-1.6.1.tar.gz::https://codeberg.org/dnkl/yambar/archive/1.6.1.tar.gz
 	sha256sums = 9ddf0bd7a708445697b4bf2f1d6d0fe5c29c5c7cd6df6058a739fe89413bd2c7
 
 pkgname = yambar
-
