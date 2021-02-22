@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.5.r6.g8176dc5
+pkgver=0.9.5.r31.gc74b3ae
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -49,7 +49,7 @@ sha256sums=('SKIP'
             '9b5534921c5bf92a9285ba53b323209e812145c204ac5fed6899b7aad78300ef'
             'c39f526f7e99173bc8f012900f53257537a25e2d8c19e23df630f1fe9a7627ba'
             '3b17ed58b59a4b60d904c60bba52bae7ad685aa8273f6ceaae08a15870c0a9eb'
-            '3a46f7faced877a913506d59757f0af60ad3d5f0bc365c56ed7ecc7aef75c5eb'
+            '87564e301fcd4a539f58d80c0e3a5dd8b3d1ff19c4f74fa6e1b650d294a5bdb8'
             'ce3d62f4c5a1b5c0ccadd15406c7430251d1a42b232721bfbfc747da1b13e3ff'
             '2a80e2cad8de428358647677afa166219589d3338c5f94838146c804a29e2769'
             '2dd996a86beb1dc1fa5e45a14e98daa8fc505c5d1dff94bc5fdb3246a113d5ca'
@@ -61,7 +61,6 @@ pkgver() {
   cd plymouth
   git describe --long | sed 's/-/.r/;s/-/./'
 }
-
 
 prepare() {
 	cd plymouth

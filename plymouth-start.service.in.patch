@@ -2,7 +2,7 @@
 +++ plymouth.patch/systemd-units/plymouth-start.service.in
 @@ -12,3 +12,6 @@
  RemainAfterExit=yes 
- KillMode=none 
+ KillMode=mixed 
  SendSIGKILL=no
 +
 +[Install]
