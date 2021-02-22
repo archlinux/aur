@@ -1,6 +1,6 @@
 pkgbase = file2key
 	pkgdesc = A simple command that generates a key from a file and a passphrase
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/maandree/file2key
 	arch = i686
@@ -10,13 +10,11 @@ pkgbase = file2key
 	makedepends = coreutils
 	makedepends = gcc
 	makedepends = glibc
-	makedepends = libpassphrase
 	makedepends = libkeccak
 	depends = glibc
-	depends = libpassphrase
 	depends = libkeccak
-	source = https://github.com/maandree/file2key/archive/2.tar.gz
-	sha256sums = aa8d50ade18a77a5f721d2c843e089abf5a6ee9aa163821c564db19e0de75ac8
+	source = file2key-3.tar.gz::https://github.com/maandree/file2key/archive/3.tar.gz
+	sha256sums = 018b8b2b44a5781d15f464b85e8787492af816d79f3e7af2561901cd7644812b
 
 pkgname = file2key
 
