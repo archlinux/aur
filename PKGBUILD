@@ -1,16 +1,16 @@
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-vlgothic
-pkgver=20141206
-pkgrel=2
+pkgver=20200720
+pkgrel=1
 pkgdesc="Japanese TrueType fonts from Vine Linux"
 arch=('any')
 url="http://vlgothic.dicey.org/"
 license=('custom')
-depends=('fontconfig')
-_mirror="jaist"
-source=(http://${_mirror}.dl.osdn.jp/vlgothic/62375/VLGothic-${pkgver}.tar.xz)
-sha256sums=('982040db2f9cb73d7c6ab7d9d163f2ed46d1180f330c9ba2fae303649bf8102d')
+depends=('fontconfig' 'xorg-mkfontscale')
+source=(https://osdn.net/dl/vlgothic/VLGothic-${pkgver}.tar.xz)
+md5sums=('50cb22613133aa7e0a2591bbf67d25ed')
+b2sums=('97910117cb9d6b22a9711b132c77c403b242465d40afb2812aa1792c26527c30d1c00f7d2f9c379efe648cc6fb0b2adda351483a0508c88548cdce0e313c51f2')
 
 package() {
   cd ${srcdir}/VLGothic
