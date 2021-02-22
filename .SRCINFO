@@ -1,6 +1,6 @@
 pkgbase = java8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK 8 HotSpot
-	pkgver = 8u275
+	pkgver = 8u282
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = java8-adoptopenjdk
 	makedepends = java-runtime-common
 	makedepends = nss
 	makedepends = xdg-utils
-	source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u275-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u275b01.tar.gz
-	sha256sums = 06fb04075ed503013beb12ab87963b2ca36abe9e397a0c298a57c1d822467c29
+	source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz
+	sha256sums = e6e6e0356649b9696fa5082cfcb0663d4bef159fc22d406e3a012e71fce83a5c
 
 pkgname = jre8-adoptopenjdk-headless
 	pkgdesc = AdoptOpenJDK Java 8 headless runtime environment
@@ -23,12 +23,27 @@ pkgname = jre8-adoptopenjdk-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=8
 	provides = java-runtime-headless-openjdk=8
-	backup = 
+	backup = etc/java-8-adoptopenjdk/amd64/jvm.cfg
+	backup = etc/java-8-adoptopenjdk/calendars.properties
+	backup = etc/java-8-adoptopenjdk/content-types.properties
+	backup = etc/java-8-adoptopenjdk/flavormap.properties
+	backup = etc/java-8-adoptopenjdk/images/cursors/cursors.properties
+	backup = etc/java-8-adoptopenjdk/logging.properties
+	backup = etc/java-8-adoptopenjdk/management/jmxremote.access
+	backup = etc/java-8-adoptopenjdk/management/jmxremote.password
+	backup = etc/java-8-adoptopenjdk/management/management.properties
+	backup = etc/java-8-adoptopenjdk/management/snmp.acl
+	backup = etc/java-8-adoptopenjdk/net.properties
+	backup = etc/java-8-adoptopenjdk/psfont.properties.ja
+	backup = etc/java-8-adoptopenjdk/psfontj2d.properties
+	backup = etc/java-8-adoptopenjdk/security/java.policy
+	backup = etc/java-8-adoptopenjdk/security/java.security
+	backup = etc/java-8-adoptopenjdk/sound.properties
 
 pkgname = jre8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK Java 8 full runtime environment
 	install = install_jre8-adoptopenjdk.sh
-	depends = jre8-adoptopenjdk-headless=8u275-1
+	depends = jre8-adoptopenjdk-headless=8u282-1
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -42,7 +57,7 @@ pkgname = jdk8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK Java 8 development kit
 	install = install_jdk8-adoptopenjdk.sh
 	depends = java-environment-common
-	depends = jre8-adoptopenjdk=8u275-1
+	depends = jre8-adoptopenjdk=8u282-1
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 

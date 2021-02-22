@@ -1,177 +1,172 @@
-# Maintainer: Leeo97one <contact.leeo97one@gmail.com>
-# Based on java8-openjdk
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Leeo97one <contact.leeo97one@gmail.com>
 
-pkgname=('jre8-adoptopenjdk-headless' 'jre8-adoptopenjdk' 'jdk8-adoptopenjdk')
 pkgbase=java8-adoptopenjdk
-_java_ver=8
-_jdk_update=275
-_jdk_build=01
-pkgver=${_java_ver}u${_jdk_update}
-_repo_ver=jdk${pkgver}-b${_jdk_build}
-_targz_ver=${pkgver}b${_jdk_build}
+pkgname=("${pkgbase/java/jre}-headless" "${pkgbase/java/jre}" "${pkgbase/java/jdk}")
+pkgver=8u282
+_jdk_build=08
 pkgrel=1
-pkgdesc="AdoptOpenJDK 8 HotSpot"
-arch=('x86_64')
-url='https://adoptopenjdk.net/'
-license=('custom')
-makedepends=('ca-certificates-utils' 'hicolor-icon-theme'
-             'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
-source=(https://github.com/AdoptOpenJDK/openjdk${_java_ver}-binaries/releases/download/${_repo_ver}/OpenJDK${_java_ver}U-jdk_x64_linux_hotspot_${_targz_ver}.tar.gz)
+pkgdesc="AdoptOpenJDK ${pkgver%u*} HotSpot"
+arch=("x86_64")
+url="https://${pkgbase/java8-/}.net/"
+license=("custom")
+makedepends=("ca-certificates-utils" "hicolor-icon-theme" "java-environment-common" "java-runtime-common" "nss" "xdg-utils")
+source=("https://github.com/AdoptOpenJDK/openjdk${pkgver%u*}-binaries/releases/download/jdk${pkgver}-b${_jdk_build}/OpenJDK${pkgver%u*}U-jdk_x64_linux_hotspot_${pkgver}b${_jdk_build}.tar.gz")
+sha256sums=("e6e6e0356649b9696fa5082cfcb0663d4bef159fc22d406e3a012e71fce83a5c")
 
-sha256sums=('06fb04075ed503013beb12ab87963b2ca36abe9e397a0c298a57c1d822467c29')
-
-_JARCH=amd64
-_jdkname=adoptopenjdk${_java_ver}
-_jvmdir=/usr/lib/jvm/java-8-adoptopenjdk
-_imgdir="${_repo_ver}"
-_nonheadless=(bin/policytool
-              lib/${_JARCH}/libjsound.so
-              lib/${_JARCH}/libjsoundalsa.so
-              lib/${_JARCH}/libsplashscreen.so)
+_nonheadless=(
+  "bin/policytool"
+  "lib/amd64/libjsound.so"
+  "lib/amd64/libjsoundalsa.so"
+  "lib/amd64/libsplashscreen.so"
+)
 
 package_jre8-adoptopenjdk-headless() {
-  pkgdesc='AdoptOpenJDK Java 8 headless runtime environment'
-  depends=('java-runtime-common' 'ca-certificates-utils' 'nss')
-  optdepends=('java-rhino: for some JavaScript support')
-  provides=('java-runtime-headless=8' 'java-runtime-headless-openjdk=8')
-  # Upstream config files that should go to etc and get backup
-  _backup_etc=(etc/java-8-adoptopenjdk/${_JARCH}/jvm.cfg
-               etc/java-8-adoptopenjdk/calendars.properties
-               etc/java-8-adoptopenjdk/content-types.properties
-               etc/java-8-adoptopenjdk/flavormap.properties
-               etc/java-8-adoptopenjdk/images/cursors/cursors.properties
-               etc/java-8-adoptopenjdk/logging.properties
-               etc/java-8-adoptopenjdk/management/jmxremote.access
-               etc/java-8-adoptopenjdk/management/jmxremote.password
-               etc/java-8-adoptopenjdk/management/management.properties
-               etc/java-8-adoptopenjdk/management/snmp.acl
-               etc/java-8-adoptopenjdk/net.properties
-               etc/java-8-adoptopenjdk/psfont.properties.ja
-               etc/java-8-adoptopenjdk/psfontj2d.properties
-               etc/java-8-adoptopenjdk/security/java.policy
-               etc/java-8-adoptopenjdk/security/java.security
-               etc/java-8-adoptopenjdk/sound.properties)
-  backup=(${_backup_etc[@]})
-  install=install_jre8-adoptopenjdk-headless.sh
+  pkgdesc="AdoptOpenJDK Java ${pkgver%u*} headless runtime environment"
+  depends=("java-runtime-common" "ca-certificates-utils" "nss")
+  optdepends=("java-rhino: for some JavaScript support")
+  provides=("java-runtime-headless=${pkgver%u*}" "java-runtime-headless-openjdk=${pkgver%u*}")
+  backup=(
+    "etc/${pkgbase/java/java-}/amd64/jvm.cfg"
+    "etc/${pkgbase/java/java-}/calendars.properties"
+    "etc/${pkgbase/java/java-}/content-types.properties"
+    "etc/${pkgbase/java/java-}/flavormap.properties"
+    "etc/${pkgbase/java/java-}/images/cursors/cursors.properties"
+    "etc/${pkgbase/java/java-}/logging.properties"
+    "etc/${pkgbase/java/java-}/management/jmxremote.access"
+    "etc/${pkgbase/java/java-}/management/jmxremote.password"
+    "etc/${pkgbase/java/java-}/management/management.properties"
+    "etc/${pkgbase/java/java-}/management/snmp.acl"
+    "etc/${pkgbase/java/java-}/net.properties"
+    "etc/${pkgbase/java/java-}/psfont.properties.ja"
+    "etc/${pkgbase/java/java-}/psfontj2d.properties"
+    "etc/${pkgbase/java/java-}/security/java.policy"
+    "etc/${pkgbase/java/java-}/security/java.security"
+    "etc/${pkgbase/java/java-}/sound.properties"
+  )
+  install="install_${pkgname}.sh"
 
-  cd ${_imgdir}/jre
+  cd "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre"
 
-  install -d -m 755 "${pkgdir}${_jvmdir}/jre/"
-  cp -a bin lib "${pkgdir}${_jvmdir}/jre"
+  install -dm755 "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/"
+  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/bin" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre"
+  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/lib" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre"
 
   # Set config files
-  mv "${pkgdir}${_jvmdir}"/jre/lib/management/jmxremote.password{.template,}
-  mv "${pkgdir}${_jvmdir}"/jre/lib/management/snmp.acl{.template,}
+  mv "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/lib/management/jmxremote.password"{.template,}
+  mv "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/lib/management/snmp.acl"{.template,}
 
   # Remove 'non-headless' lib files
-  for f in "${_nonheadless[@]}"; do
-    rm "${pkgdir}${_jvmdir}/jre/${f}"
+  for _file in "${_nonheadless[@]}"; do
+    rm "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/${_file}"
   done
 
   # Man pages
-  pushd "${pkgdir}${_jvmdir}/jre/bin"
-  install -d -m 755 "${pkgdir}"/usr/share/man/{,ja/}man1/
-  for file in *; do
-    if [ -f "${srcdir}/${_imgdir}/man/man1/${file}.1" ]; then
-      install -m 644 "${srcdir}/${_imgdir}/man/man1/${file}.1" \
-        "${pkgdir}/usr/share/man/man1/${file}-${_jdkname}.1"
+  pushd "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/bin"
+  install -dm755 "${pkgdir}/usr/share/man/"{,ja/}"man1/"
+  for _file in *; do
+    if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_file}.1" ]; then
+      install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_file}.1" "${pkgdir}/usr/share/man/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
     fi
-    if [ -f "${srcdir}/${_imgdir}/man/ja/man1/${file}.1" ]; then
-      install -m 644 "${srcdir}/${_imgdir}/man/ja/man1/${file}.1" \
-        "${pkgdir}/usr/share/man/ja/man1/${file}-${_jdkname}.1"
+    if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_file}.1" ]; then
+      install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_file}.1" "${pkgdir}/usr/share/man/ja/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
     fi
   done
   popd
 
   # Link JKS keystore from ca-certificates-utils
-  rm -f "${pkgdir}${_jvmdir}/jre/lib/security/cacerts"
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/jre/lib/security/cacerts"
+  rm -f "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/lib/security/cacerts"
+  ln -sf "/etc/ssl/certs/java/cacerts" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/lib/security/cacerts"
 
   # Install license
-  install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgbase}/"
-  install -m 644 ASSEMBLY_EXCEPTION LICENSE THIRD_PARTY_README \
-                 "${pkgdir}/usr/share/licenses/${pkgbase}"
-  ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgbase}/"
+  install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/ASSEMBLY_EXCEPTION" "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/THIRD_PARTY_README" "${pkgdir}/usr/share/licenses/${pkgbase}"
+  ln -sf "/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Move config files that were set in _backup_etc from ./lib to /etc
-  for file in "${_backup_etc[@]}"; do
-    _filepkgpath=${_jvmdir}/jre/lib/${file#etc/java-8-adoptopenjdk/}
-    install -D -m 644 "${pkgdir}${_filepkgpath}" "${pkgdir}/${file}"
-    ln -sf /${file} "${pkgdir}${_filepkgpath}"
+  for _file in "${backup[@]}"; do
+    _filepkgpath="/usr/lib/jvm/${pkgbase/java/java-}/jre/lib/${_file#etc/${pkgbase/java/java-}/}"
+    install -Dm644 "${pkgdir}${_filepkgpath}" "${pkgdir}/${_file}"
+    ln -sf "/${_file}" "${pkgdir}${_filepkgpath}"
   done
 }
 
 package_jre8-adoptopenjdk() {
-  pkgdesc='AdoptOpenJDK Java 8 full runtime environment'
-  depends=("jre8-adoptopenjdk-headless=${pkgver}-${pkgrel}" 'xdg-utils' 'hicolor-icon-theme')
-  optdepends=('icedtea-web: web browser plugin + Java Web Start'
-              'alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ look and feel - desktop usage'
-              'java8-openjfx: for JavaFX GUI components support')
-  provides=('java-runtime=8' 'java-runtime-openjdk=8')
-  install=install_jre8-adoptopenjdk.sh
+  pkgdesc="AdoptOpenJDK Java ${pkgver%u*} full runtime environment"
+  depends=("${pkgname}-headless=${pkgver}-${pkgrel}" "xdg-utils" "hicolor-icon-theme")
+  optdepends=(
+    "icedtea-web: web browser plugin + Java Web Start"
+    "alsa-lib: for basic sound support"
+    "gtk2: for the Gtk+ look and feel - desktop usage"
+    "java8-openjfx: for JavaFX GUI components support"
+  )
+  provides=("java-runtime=${pkgver%u*}" "java-runtime-openjdk=${pkgver%u*}")
+  install="install_${pkgname}.sh"
 
-  cd ${_imgdir}/jre
+  cd "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre"
 
-  for f in "${_nonheadless[@]}"; do
-    install -D ${f} "${pkgdir}${_jvmdir}/jre/${f}"
+  for _file in "${_nonheadless[@]}"; do
+    install -D "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/${_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/${_file}"
   done
 
   # Man pages
-  pushd "${pkgdir}${_jvmdir}/jre/bin"
-  install -d -m 755 "${pkgdir}"/usr/share/man/{,ja/}man1/
-  for file in *; do
-    install -m 644 "${srcdir}/${_imgdir}/man/man1/${file}.1" \
-      "${pkgdir}/usr/share/man/man1/${file}-${_jdkname}.1"
-    install -m 644 "${srcdir}/${_imgdir}/man/ja/man1/${file}.1" \
-      "${pkgdir}/usr/share/man/ja/man1/${file}-${_jdkname}.1"
+  pushd "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/bin"
+  install -dm755 "${pkgdir}/usr/share/man/"{,ja/}"man1/"
+  for _file in *; do
+    install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_file}.1" \
+      "${pkgdir}/usr/share/man/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
+    install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_file}.1" \
+      "${pkgdir}/usr/share/man/ja/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
   done
   popd
 
   # Install license
-  install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgbase}/"
-  ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgbase}/"
+  ln -sf "/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_jdk8-adoptopenjdk() {
-  pkgdesc='AdoptOpenJDK Java 8 development kit'
-  depends=('java-environment-common' "jre8-adoptopenjdk=${pkgver}-${pkgrel}")
-  provides=('java-environment=8' 'java-environment-openjdk=8')
-  install=install_jdk8-adoptopenjdk.sh
+  pkgdesc="AdoptOpenJDK Java ${pkgver%u*} development kit"
+  depends=("java-environment-common" "${pkgbase/java/jre}=${pkgver}-${pkgrel}")
+  provides=("java-environment=${pkgver%u*}" "java-environment-openjdk=${pkgver%u*}")
+  install="install_${pkgname}.sh"
 
-  cd ${_imgdir}
+  cd "${srcdir}/jdk${pkgver}-b${_jdk_build}"
 
   # Main files
-  install -d -m 755 "${pkgdir}${_jvmdir}"
+  install -dm755 "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
 
-  cp -a include lib "${pkgdir}${_jvmdir}"
+  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/include" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
+  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/lib" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
 
   # 'bin' files
-  pushd bin
+  pushd "${srcdir}/jdk${pkgver}-b${_jdk_build}/bin"
 
   # 'java-rmi.cgi' will be handled separately as it should not be in the PATH and has no man page
-  for b in $(ls | grep -v java-rmi.cgi); do
-    if [ -e ../jre/bin/${b} ]; then
+  for _binary_file in $(ls | grep -v "java-rmi.cgi"); do
+    if [ -e "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/bin/${_binary_file}" ]; then
       # Provide a link of the jre binary in the jdk/bin/ directory
-      ln -s ../jre/bin/${b} "${pkgdir}${_jvmdir}/bin/${b}"
+      ln -s "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/bin/${_binary_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
     else
       # Copy binary to jdk/bin/
-      install -D -m 755 ${b} "${pkgdir}${_jvmdir}/bin/${b}"
+      install -Dm755 ${_binary_file} "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
       # Copy man page
-      if [ -f ../man/man1/${b}.1 ]; then
-        install -D -m 644 ../man/man1/${b}.1 "${pkgdir}/usr/share/man/man1/${b}-${_jdkname}.1"
+      if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_binary_file}.1" ]; then
+        install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_binary_file}.1" "${pkgdir}/usr/share/man/man1/${_binary_file}-${pkgbase/java8-/}${pkgver%u*}.1"
       fi
-      if [ -f ../man/ja/man1/${b}.1 ]; then
-        install -D -m 644 ../man/ja/man1/${b}.1 "${pkgdir}/usr/share/man/ja/man1/${b}-${_jdkname}.1"
+      if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_binary_file}.1" ]; then
+        install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_binary_file}.1" "${pkgdir}/usr/share/man/ja/man1/${_binary_file}-${pkgbase/java8-/}${pkgver%u*}.1"
       fi
     fi
   done
   popd
 
   # Handling 'java-rmi.cgi' separately
-  install -D -m 755 bin/java-rmi.cgi "${pkgdir}${_jvmdir}/bin/java-rmi.cgi"
+  install -Dm755 "${srcdir}/jdk${pkgver}-b${_jdk_build}/bin/java-rmi.cgi" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/java-rmi.cgi"
 
   # link license
-  install -d -m 755 "${pkgdir}/usr/share/licenses/"
-  ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/"
+  ln -sf "/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
