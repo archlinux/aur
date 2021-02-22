@@ -1,0 +1,18 @@
+pkgbase = terminal-dictionary-git
+	pkgdesc = A simple CLI tool that scrapes https://www.thefreedictionary.com/ and returns definitions to words.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Yosuu69/Terminal-Dictionary
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = ruby
+	depends = ruby-nokogiri
+	depends = curl
+	provides = Dictionary
+	conflicts = Dictionary
+	source = git+https://github.com/Yosuu69/Terminal-Dictionary
+	md5sums = SKIP
+
+pkgname = terminal-dictionary-git
+
