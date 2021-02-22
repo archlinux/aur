@@ -1,12 +1,12 @@
 # Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="thrive-launcher-bin"
-pkgver="1.2.6"
+pkgver="1.2.7"
 pkgrel="1"
 arch=("x86_64")
 pkgdesc="Manages downloading Thrive releases."
 url="https://revolutionarygamesstudio.com/"
 source=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v$pkgver/thrive-launcher_${pkgver}_amd64.deb" "https://raw.githubusercontent.com/Revolutionary-Games/Thrive-Launcher/master/LICENSE.md")
-sha256sums=("a139a74ecec5a41a4bb8ddc8b1120face3695002a20831d5fa5c7ecf7bd7ae69" "c123d9ef3ea298ce75469ecf5c2b43e56ae33a7571ac4518fb4ee44c01523f1b")
+sha256sums=("ffd10a2b6169c27853c0554d0a24372b39d64c18b5f2e92cafc7aac7eaa43b86" "c123d9ef3ea298ce75469ecf5c2b43e56ae33a7571ac4518fb4ee44c01523f1b")
 license=("GPL" "MIT")
 depends=("gtk3" "nss" "libxss" "lib32-glibc")
 package() {

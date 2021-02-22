@@ -1,6 +1,6 @@
 pkgbase = thrive-launcher-bin
 	pkgdesc = Manages downloading Thrive releases.
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = thrive-launcher-bin
 	depends = nss
 	depends = libxss
 	depends = lib32-glibc
-	source = https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v1.2.6/thrive-launcher_1.2.6_amd64.deb
+	source = https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v1.2.7/thrive-launcher_1.2.7_amd64.deb
 	source = https://raw.githubusercontent.com/Revolutionary-Games/Thrive-Launcher/master/LICENSE.md
-	sha256sums = a139a74ecec5a41a4bb8ddc8b1120face3695002a20831d5fa5c7ecf7bd7ae69
+	sha256sums = ffd10a2b6169c27853c0554d0a24372b39d64c18b5f2e92cafc7aac7eaa43b86
 	sha256sums = c123d9ef3ea298ce75469ecf5c2b43e56ae33a7571ac4518fb4ee44c01523f1b
 
 pkgname = thrive-launcher-bin
