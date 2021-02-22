@@ -6,7 +6,7 @@ pkgname=onscripter-jh-git
 _gitname=${pkgname%-git}
 pkgdesc="onscripter fork with custom improvements."
 pkgver=2.fa80e64
-pkgrel=1    
+pkgrel=2    
 _ons_version="20140817"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/luhux/onscripter-jh"
@@ -30,7 +30,7 @@ source=("git+${url}"
         "target-optimizing.patch")
 sha256sums=('SKIP'
             '11dab90831eaea86867675abef844f0bdd207545d157b49818b0557a441b8351'
-            'a7f543d1d204d39ca066eea75b10142935a302b10dc9801a2eaa696950083951')
+            'a54b830a7d4527a18e8d8fb03569c755dc525eb5c66d70fdf66b6e06df4b5d20')
 
 pkgver() {
   cd ${srcdir}/${_gitname}
