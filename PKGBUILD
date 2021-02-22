@@ -9,13 +9,13 @@
 
 pkgname=coccinelle-git
 _pkgname=coccinelle
-pkgver=1.0.6.r452.175de16b
-pkgrel=2
+pkgver=1.0.8.r209.0e1f2b1f
+pkgrel=1
 pkgdesc="Provides spatch program used to apply semantic patches"
 arch=('i686' 'x86_64')
 url="http://coccinelle.lip6.fr/"
 license=('GPL2')
-makedepends=('ocaml' 'ocaml-findlib' 'ocaml-num')
+makedepends=('git' 'ocaml' 'ocaml-findlib' 'ocaml-num')
 depends=('pcre' 'python')
 optdepends=('ocaml: OCaml scripting feature'
             'ocaml-findlib: OCaml scripting feature')
