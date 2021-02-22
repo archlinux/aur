@@ -1,6 +1,6 @@
 pkgbase = monado-git
 	pkgdesc = The open source OpenXR runtime.
-	pkgver = r2216.d3ccbce7
+	pkgver = 21.0.0.r69.g1b692c63
 	pkgrel = 1
 	url = https://monado.dev
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = monado-git
 	makedepends = ninja
 	makedepends = shaderc
 	makedepends = meson
+	makedepends = git
 	depends = openxr
 	depends = openhmd
 	depends = vulkan-icd-loader

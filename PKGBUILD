@@ -2,13 +2,13 @@
  
 pkgname="monado-git"
 _dirname="monado"
-pkgver=r2216.d3ccbce7
+pkgver=21.0.0.r69.g1b692c63
 pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
 url='https://monado.dev'
 depends=('openxr' 'openhmd' 'vulkan-icd-loader' 'libgl' 'wayland')
-makedepends=('eigen' 'ninja' 'shaderc' 'meson')
+makedepends=('eigen' 'ninja' 'shaderc' 'meson' 'git')
 optdepends=('libuvc: optical tracking support'
             'opencv: optical tracking support'
             'xr-hardware: udev permissions for popular XR hardware')
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_dirname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
