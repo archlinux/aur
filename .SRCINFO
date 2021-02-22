@@ -1,6 +1,6 @@
 pkgbase = adcli
 	pkgdesc = Active Directory account management tool
-	pkgver = 0.9.0.r14.gfa5c5fb
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/realmd/adcli
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = adcli
 	depends = cyrus-sasl-gssapi
 	depends = krb5
 	depends = openldap
-	source = git+https://gitlab.freedesktop.org/realmd/adcli.git#commit=fa5c5fb4f8e7bcadf3e5a3798bd060720fd35eaa
+	source = git+https://gitlab.freedesktop.org/realmd/adcli.git#commit=9027d9d1aea9db61e37e14c5f9078e89fa39ef5e
 	validpgpkeys = C0F67099B808FB063E2C81117BFB1108D92765AF
 	sha256sums = SKIP
 
 pkgname = adcli
-
