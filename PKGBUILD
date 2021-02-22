@@ -4,7 +4,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=6.14.1
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc"
         'facter-3.14.9.gemspec')
-sha512sums=('52a0d6ccfd9a11781edb2b22bcaffcf077af566e632036ecd4cc00a348847b5804335f5dbeba6b7419ff253d26f03ba84cfa05321e823b44da250d0c2720862d'
+sha512sums=('eb849a4ee95c8f5545e0d92ed9c450ce77ffd327f7d88f320ef99245217ab0f5ecb55bafaef5a97047a5f7559e4f05d06fc4333f76ba0b6418b184e03c705733'
             'SKIP'
             '3341d62606d9426b4f810d873ec93b1c2888032dc5a1eb17afb38382f4f4463489a338d470367e8d129c1103efb9183bb941cc9de56815184f859823c99e91f9')
 validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
@@ -34,7 +34,7 @@ validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  echo 'hiera-eyaml 3.2.0' >> ext/build-scripts/jruby-gem-list.txt
+  echo 'hiera-eyaml 3.2.1' >> ext/build-scripts/jruby-gem-list.txt
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
