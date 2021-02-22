@@ -2,11 +2,12 @@
 
 pkgname=prometheus-xmpp-webhook
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='XMPP-Webhook built for Prometheus/Grafana Alerts'
 arch=('x86_64')
 url='https://github.com/opthomas-prime/xmpp-webhook'
 license=('mit')
+makedepends=('go')
 depends=('glibc')
 optdepends=('grafana: use the webhook with Grafana alerts'
             'alertmanager: use the webhook with Prometheus'
