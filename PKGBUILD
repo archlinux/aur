@@ -2,7 +2,7 @@
 
 pkgname=wingide
 _wingver=7.2.8.0
-_wing_patch_lvl=1 #bump this when adding a patch
+_wing_patch_lvl=0 #bump this when adding a patch
 pkgver=$_wingver.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
