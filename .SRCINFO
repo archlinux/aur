@@ -1,0 +1,37 @@
+pkgbase = linux-okhsunrog
+	pkgdesc = pf-kernel by okhsunrog (personal build)
+	pkgver = 5.11.pf3
+	pkgrel = 2
+	url = https://gitlab.com/post-factum/pf-kernel/-/wikis/README
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = gcc
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = xmlto
+	makedepends = git
+	makedepends = tar
+	makedepends = inetutils
+	makedepends = xz
+	options = !strip
+	source = https://gitlab.com/post-factum/pf-kernel/-/archive/v5.11-pf2/pf-kernel-v5.11-pf2.tar.gz
+	source = config
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-okhsunrog
+	pkgdesc = The pf-kernel by okhsunrog (personal build) kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-okhsunrog-headers
+	pkgdesc = Headers and scripts for building modules for the pf-kernel by okhsunrog (personal build) kernel
+
