@@ -13,8 +13,7 @@ pkgbase = nekofetch
 	depends = neofetch
 	optdepends = imagemagick: support for kitty image backend
 	provides = nekofetch
-	source = https://github.com/propruhh/nekofetch/archive/v1.3.2.tar.gz
+	source = https://github.com/proprdev/nekofetch/archive/v1.3.2.tar.gz
 	sha256sums = e5e82c03385948fb33376d8a453589ebd5a9f2c7856503fbdfd568da9375c4da
 
 pkgname = nekofetch
-
