@@ -3,12 +3,12 @@
 pkgname=quickddit
 _pkgname=Quickddit
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Unofficial reddit client"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://github.com/accumulator/Quickddit.git"
 license=('GPL3')
-depends=(qt5-base qt5-declarative qt5-quickcontrols2 qt5-webengine youtube-dl qqc2-suru-style python-pyotherside)
+depends=(qt5-base qt5-declarative qt5-quickcontrols2 qt5-webengine youtube-dl qqc2-suru-style python-pyotherside qt5-graphicaleffects)
 makedepends=('git')
 source=('git+https://github.com/dano6/Quickddit.git#branch=flavors')
 md5sums=('SKIP')
