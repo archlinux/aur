@@ -1,0 +1,15 @@
+[Unit]
+Description=Moonraker Klipper HTTP Server
+Requires=klipper.service
+After=network.target klipper.service
+
+[Service]
+Type=simple
+User=klipper
+RemainAfterExit=yes
+ExecStart=/usr/bin/python /opt/moonraker/moonraker/moonraker.py -c /etc/klipper/moonraker.conf -n
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
