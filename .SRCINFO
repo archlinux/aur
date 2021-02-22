@@ -1,7 +1,7 @@
 pkgbase = haruhi-dl
 	pkgdesc = Fork of youtube-dl, focused on bringing a fast, steady stream of updates. We'll do our best to merge patches to any site, not only youtube.
-	pkgver = 2021.01.24
-	pkgrel = 4
+	pkgver = 2021.02.22
+	pkgrel = 
 	url = https://haruhi.download
 	arch = any
 	license = custom
