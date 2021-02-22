@@ -1,6 +1,6 @@
 pkgbase = sic-image-cli-git
 	pkgdesc = Accessible image processing and conversion from the terminal (git)
-	pkgver = 0.16.1.r0.g8ed1610
+	pkgver = 0.17.0.r0.g73ff5a2
 	pkgrel = 1
 	url = https://github.com/foresterre/sic
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = sic-image-cli-git
 	makedepends = rust
 	makedepends = git
 	makedepends = nasm
+	depends = gcc-libs
 	provides = sic-image-cli
 	conflicts = sic
 	conflicts = sic-image-cli

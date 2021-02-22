@@ -4,7 +4,7 @@
 
 pkgname=sic-image-cli-git
 _pkgname=sic
-pkgver=0.16.1.r0.g8ed1610
+pkgver=0.17.0.r0.g73ff5a2
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ url="https://github.com/foresterre/sic"
 license=('MIT')
 conflicts=("$_pkgname" "${pkgname%-git}")
 provides=("${pkgname%-git}")
+depends=('gcc-libs')
 makedepends=('rust' 'git' 'nasm')
 source=("git+${url}")
 sha512sums=('SKIP')
