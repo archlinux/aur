@@ -2,15 +2,15 @@
 
 pkgname=ttf-monapo
 pkgver=20170722
-pkgrel=1
+pkgrel=2
 pkgdesc="A Japanese font for viewing Japanese ascii arts properly"
 arch=('any')
-url="http://www.geocities.jp/ep3797/modified_fonts_01.html"
+url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
-depends=('fontconfig')
-_mirror="jaist"
-source=(http://${_mirror}.dl.osdn.jp/users/13/13586/monapo-${pkgver}.tar.bz2)
-sha256sums=('44ef5159ae67f0933f982057227f88973f470ce8452915b410abe99ef7b43d22')
+depends=('fontconfig' 'xorg-mkfontscale')
+source=(https://osdn.net/users/utuhiro/pf/utuhiro/dl/monapo-${pkgver}.tar.bz2)
+md5sums=('f6bdac3e091923b6d726c4d0844ad110')
+b2sums=('1fcb1b0599e9268aa6e004bcf645be997adc340bfe4e192064354e64d830f7d231aa5919ff839dac4ca2f7f1e43a9e85e9aa43ea0153d47d59d658cecce2330e')
 
 package() {
   cd ${srcdir}/monapo-${pkgver}
