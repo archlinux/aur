@@ -1,7 +1,6 @@
 # Maintainer: Fabio Manganiello <info@fabiomanganiello.com>
 
-_pkgname=platypush
-pkgname=${_pkgname}-git
+pkgname=platypush-git
 pkgver=0.13.9.r0.b27c9ee6
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
@@ -17,15 +16,15 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pyserial: Arduino/serial device support')
 conflicts=('platypush')
 options=(!strip)
-source=("${_pkgname}.tar.gz::https://github.com/BlackLight/${_pkgname}/archive/master.tar.gz")
+source=("platypush.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/master/platypush-master.tar.gz")
 sha512sums=('')
 
 package() {
-    cd "${srcdir}/${_pkgname}-master"
+    cd "${srcdir}/platypush-master"
     python3 setup.py install --root="${pkgdir}/" --optimize=1
 
     install -m755 -d "${pkgdir}/usr/lib/systemd/user"
-    install -m644 "${srcdir}/${_pkgname}-master/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
+    install -m644 "${srcdir}/platypush-master/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
 
     echo
     echo
