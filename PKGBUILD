@@ -17,8 +17,8 @@ source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.
 sha256sums=('SKIP'
             '356dc03a6119adc088f3feacc0a7d7f52d2f569e6189b12263b9baf69a47a1d3'
             '120c85c212ec57c1365e3e94f9d38ba9a5d9bd57e76692733e7cd8fe167afff0'
-            'd6b0dbe53e9e53d2dc0bb156ac9bf2700f0daae63436e4889749de1f2e111738'
-            'c532d594c92404820d6cdb8407420a7f9bb65e05d8fdbc2db498f940bb3ffcc3')
+            'd3f13fd0f7d69dd056298b23efe2f020fba0d30f8fc4f11c13c28eec494b52e5'
+            'caa868a447ab94bd3e5f86cdf70e5deeb17b233077d94a424a682dfe49349a96')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
