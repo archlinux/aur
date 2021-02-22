@@ -1,9 +1,9 @@
 # Maintainer: okhsunrog <me@gornushko.com>
 pkgbase=linux-okhsunrog
 pkgdesc="pf-kernel by okhsunrog (personal build)"
-pkgver=5.11.pf3
+pkgver=5.11.pf2
 _product=$pkgbase
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/post-factum/pf-kernel/-/wikis/README"
 license=(GPL2)
