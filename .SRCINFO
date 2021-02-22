@@ -18,6 +18,7 @@ pkgbase = cctv-viewer-git
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
+	depends = ttf-font
 	provides = cctv-viewer
 	source = git+https://github.com/iEvgeny/cctv-viewer.git
 	source = git+https://github.com/iEvgeny/qmlav.git

@@ -20,7 +20,8 @@ depends=('glibc'
          'qt5-multimedia'
          'qt5-quickcontrols'
          'qt5-quickcontrols2'
-         'qt5-graphicaleffects')
+         'qt5-graphicaleffects'
+	 'ttf-font')
 makedepends=(git
             make
             cmake
