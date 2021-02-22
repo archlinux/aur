@@ -1,14 +1,14 @@
 pkgbase = vim-unimpaired
-	pkgdesc = pairs of handy bracket mappings
-	pkgver = 1.2
+	pkgdesc = Pairs of handy bracket mappings for vim
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/tpope/vim-unimpaired
 	arch = any
 	groups = vim-plugins
 	license = custom
 	depends = vim
-	source = vim-unimpaired-1.2.tar.gz::https://github.com/tpope/vim-unimpaired/archive/v1.2.tar.gz
-	sha512sums = 842eeffa05f9dc753f31b8af393e5c38e5d59515384929095ec61a6223aa55c01c203bf6ed92c41c6c099cb82392ee2402404d1ebc2d5213963f94c9443dfce8
+	source = vim-unimpaired-2.0.tar.gz::https://github.com/tpope/vim-unimpaired/archive/v2.0.tar.gz
+	sha512sums = e9c7f265ac343aa5d8aaed8c922209390524c5470d0f06278bfb0fd87fb9bc39eeb802bbe314bb6e7da36166c0091389f3cf32e6480075ee3ae55525e09830a5
 
 pkgname = vim-unimpaired
 
