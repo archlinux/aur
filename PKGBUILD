@@ -32,7 +32,7 @@ package() {
 	cd "$_pkgname-$pkgver"
 	install -d "$pkgdir/etc/httpd/conf"
 	install -Dm644 httpd.conf "$pkgdir/etc/httpd/conf/httpd.conf.example"
-	mv h5bp "$pkgdir/etc/httpd/conf"
-	mv vhosts "$pkgdir/etc/httpd/conf"
+	mv h5bp "$pkgdir/etc/httpd"
+	mv vhosts "$pkgdir/etc/httpd"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
