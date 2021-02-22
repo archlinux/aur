@@ -24,7 +24,7 @@ build() {
 	$srcdir/$_package --appimage-extract
 
         # Correct .desktop
-	sed -e "s/AppRun/${pkgbin}/g" -i "$srcdir/squashfs-root/$pkgbin.desktop"
+	sed -e "s/AppRun/${_pkgbin}/g" -i "$srcdir/squashfs-root/$_pkgbin.desktop"
 }
 
 
