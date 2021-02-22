@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Zoho Mail - Desktop
+Exec=/opt/zoho-mail-desktop/AppRun
+Terminal=false
+Type=Application
+Icon=zoho-mail-desktop
+StartupWMClass=Zoho Mail - Desktop
+Comment=The desktop version of your favorite mailsuite!
+MimeType=x-scheme-handler/mailto;
+Categories=Office;
