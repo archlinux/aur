@@ -1,7 +1,7 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 pkgname=zdkimfilter
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="zDKIM filter for Courier-MTA using the OpenDKIM Project's library."
 arch=('i686' 'pentium4' 'x86_64')
 url='https://www.tana.it/sw/zdkimfilter/'
@@ -30,7 +30,7 @@ options=('debug' '!strip')
 build() {
 
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --with-courier-version=60
+  ./configure --prefix=/usr --with-courier-version=60 --with-openssl --without-gnutls
   make
 
 }
