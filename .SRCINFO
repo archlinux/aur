@@ -1,14 +1,13 @@
 pkgbase = ttf-blogger-sans
-	pkgdesc = Blogger Sans font
+	pkgdesc = Blogger Sans font from https://firstsiteguide.com/
 	pkgver = 1.1
-	pkgrel = 1
-	install = ttf-blogger-sans.install
+	pkgrel = 2
 	arch = any
-	license = Creative Commons Attribution 4.0 - CC BY 4.0
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = http://dl.static.1001fonts.net/niceid/b/l/blogger-sans.zip
-	md5sums = dc82cd62c5c4abd94b4e221f061cfa0f
+	license = custom:CC BY 4.0
+	source = ttf-blogger-sans-1.1.zip::https://firstsiteguide.com/wp-content/uploads/2015/09/BloggerSansWebFontsConvertedFromOTF.zip
+	source = https://creativecommons.org/licenses/by/4.0/legalcode.txt
+	sha512sums = 89af98616c2eb74bce23b644d8e70f6785494af2a16d317fa3b84dec05296a02c1e33be8bad598fafa2dcd5be02889972663366ba9a14321d1e3c1957659ee2f
+	sha512sums = 520e5d53a5aed9c95e8d69ab1d9ef5e91492b141d07f0699dd77d91c292fa12b3fdd05aa01d7567a18e5f6bca28a888f78b117405454b2f24a3bb5ff77384768
 
 pkgname = ttf-blogger-sans
 
