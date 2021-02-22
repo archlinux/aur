@@ -8,7 +8,7 @@ url=https://github.com/amar-laksh/KDE-DolphinServiceMenu-IPFS
 licence=(GPL)
 depends=(curl sed coreutils xdg-utils xclip dolphin)
 makedepends=(git)
-source=(git+https://github.com/amar-laksh/KDE-DolphinServiceMenu-IPFS)
+source=(${pkgname}::git+https://github.com/amar-laksh/KDE-DolphinServiceMenu-IPFS)
 sha256sums=("SKIP")
 pkgver(){
 	cd ${srcdir}/${pkgname}

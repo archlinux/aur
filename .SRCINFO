@@ -12,7 +12,7 @@ pkgbase = kde-dolphin-service-menu-ipfs
 	depends = xdg-utils
 	depends = xclip
 	depends = dolphin
-	source = git+https://github.com/amar-laksh/KDE-DolphinServiceMenu-IPFS
+	source = kde-dolphin-service-menu-ipfs::git+https://github.com/amar-laksh/KDE-DolphinServiceMenu-IPFS
 	sha256sums = SKIP
 
 pkgname = kde-dolphin-service-menu-ipfs
