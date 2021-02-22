@@ -1,8 +1,8 @@
 # Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=python-qiling-git
-pkgver=1.2.r215.g3e31db68
-pkgrel=4
+pkgver=1.2.2.r62.ge4f07cf1
+pkgrel=1
 pkgdesc="An advanced binary emulation framework"
 url='https://qiling.io/'
 arch=('x86_64')
@@ -34,5 +34,11 @@ package() {
 
 check() {
     cd "${srcdir}/${pkgname}/tests"
-    ./test_elf.sh
+    python3 ./test_posix.py && 
+    python3 test_elf_multithread.py &&
+    python3 test_android.py && 
+    python3 ./test_debugger.py && 
+    python3 ./test_uefi.py && 
+    python3 ./test_shellcode.py && 
+    python3 ./test_edl.py
 }

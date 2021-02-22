@@ -1,7 +1,7 @@
 pkgbase = python-qiling-git
 	pkgdesc = An advanced binary emulation framework
-	pkgver = 1.2.r215.g3e31db68
-	pkgrel = 4
+	pkgver = 1.2.2.r62.ge4f07cf1
+	pkgrel = 1
 	url = https://qiling.io/
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = python-qiling-git
 	depends = python-keystone
 	depends = python-pyelftools
 	depends = python-gevent
-	provides = python-qiling=1.2.r215.g3e31db68
+	provides = python-qiling=1.2.2.r62.ge4f07cf1
 	conflicts = python-qiling
 	source = python-qiling-git::git://github.com/qilingframework/qiling.git#branch=dev
 	sha256sums = SKIP
