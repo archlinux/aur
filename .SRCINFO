@@ -33,5 +33,5 @@ pkgname = linux-okhsunrog
 	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-okhsunrog-headers
-	pkgdesc = Headers and scripts for building modules for the pf-kernel by okhsunrog (personal build) kernel
+	pkgdesc = Headers and scripts for building modules for the pf-kernel by okhsunrog (personal build)
 

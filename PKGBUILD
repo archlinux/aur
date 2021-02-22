@@ -80,7 +80,7 @@ _package() {
 
 }
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
