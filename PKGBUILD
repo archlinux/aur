@@ -1,24 +1,24 @@
-# Maintainer: c4tz
+# Maintainer: ivanich
 pkgname=kodi-addon-inputstream-adaptive-any
-pkgver=2.4.6
-pkgrel=2
+pkgver=2.6.7
+pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
-_koditarget=Leia
+_koditarget=Matrix
 _gitname=inputstream.adaptive
-_kodiver=18.9
+_kodiver=19.0
 arch=('any')
 url="https://github.com/peak3d/${_gitname}"
 license=('GPL')
 groups=('kodi')
 makedepends=('cmake' 'git')
 provides=('kodi-addon-inputstream-adaptive')
-conflicts=('kodi-addon-inputstream-adaptive' 'kodi-addon-inputstream-adaptive-18');
+conflicts=('kodi-addon-inputstream-adaptive' 'kodi-addon-inputstream-adaptive-19');
 depends=('kodi')
 source=("https://github.com/peak3d/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('222b7ad879146c62a1fc6016fc70ca1ca57b3b882882ebc54e0b772bf96482e7'
-            'bdf8afa9356b1f815de9984801d3e0d2b46a719e747895b75528f20995c59d2b')
+sha256sums=('353207f5f98bf81ce8d79cec903c28da8c0227d7c7a632692c910d81e59c2dbe'
+            'f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
