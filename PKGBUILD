@@ -1,4 +1,4 @@
-# Maintainer: Piotr Szegda piotrszegda at gmail.com
+# Maintainer: Drew33 public@rembrandt.dev
 
 pkgname=xdg-desktop-portal-kde-git
 _pkgname=xdg-desktop-portal-kde
@@ -8,7 +8,7 @@ pkgdesc='A backend implementation for xdg-desktop-portal that is using Qt/KDE.'
 url='https://github.com/KDE/xdg-desktop-portal-kde'
 license=('GPL')
 arch=('x86_64')
-makedepends=('cmake' 'extra-cmake-modules')
+makedepends=('cmake' 'extra-cmake-modules' 'plasma-wayland-protocols')
 depends=('xdg-desktop-portal')
 source=('git://github.com/KDE/xdg-desktop-portal-kde.git')
 sha1sums=('SKIP')
