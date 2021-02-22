@@ -1,16 +1,14 @@
 # Maintainer: Christian Schritt <christian@devseed.de>
 
-# Repository for PR: https://github.com/cschritt/archlinux-defi-app
-
 pkgname=defi-app-bin
 pkgdesc='DefiChain Wallet AppImage'
-pkgbin=defi-app
+_pkgbin=defi-app
 license=('MIT')
 url='https://github.com/DeFiCh/app'
 pkgver=2.1.17
 pkgrel=0
 arch=('x86_64')
-package="defi-app-${pkgver}.AppImage"
+_package="defi-app-${pkgver}.AppImage"
 options=(!strip)
 provides=('defi-app')
 conflicts=('defi-app')
@@ -24,9 +22,6 @@ build() {
 	# Extract files
 	chmod +x "$srcdir/$package"
 	$srcdir/$package --appimage-extract
-
-	# Correct .desktop
-	sed -e "s/AppRun/${pkgbin}/g" -i "$srcdir/squashfs-root/$pkgbin.desktop"
 }
 
 
