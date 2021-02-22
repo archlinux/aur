@@ -1,6 +1,6 @@
 pkgbase = looking-glass
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
-	pkgver = B2
+	pkgver = B3
 	pkgrel = 1
 	epoch = 2
 	url = https://looking-glass.io/
@@ -8,25 +8,31 @@ pkgbase = looking-glass
 	license = GPL2
 	makedepends = cmake
 	makedepends = sdl2_ttf
-	makedepends = glu
 	makedepends = fontconfig
 	makedepends = spice-protocol
+	makedepends = wayland-protocols
+	makedepends = libxss
 	makedepends = libxi
 	makedepends = obs-studio
-	source = looking-glass-B2.tar.gz::https://looking-glass.io/ci/host/source?id=255
-	sha512sums = a6ddd07f69dacfe8e0322615d9ff95c0ea6257f3bff87f99b18d4b1f6c723cbfcced6f73fb9add2f752782d7a96c8beb153f55f3da170fcddeb726b2a378e0ef
+	source = looking-glass-B3.tar.gz::https://looking-glass.io/ci/host/source?id=551
+	sha512sums = a76e4b373c53bd2cb87d8ab6179da47567ac75c9144c74c6df212e9cb3f4b929be8901163e3b6fc04b54a1ae6a5c10815b7ee921ceab1aa9a3df2cb9b0b82a2c
 
 pkgname = looking-glass
 	pkgdesc = A client application for accessing the LookingGlass IVSHMEM device of a VM
 	depends = sdl2_ttf
-	depends = glu
 	depends = nettle
 	depends = fontconfig
+	depends = libxss
 	depends = libxi
 
 pkgname = looking-glass-module-dkms
 	pkgdesc = A kernel module that implements a basic interface to the IVSHMEM device for when using LookingGlass in VM->VM mode
 	depends = dkms
+
+pkgname = looking-glass-host
+	pkgdesc = Linux host application for pushing frame data to the LookingGlass IVSHMEM device
+	depends = libxcb
+	depends = zlib
 
 pkgname = obs-plugin-looking-glass
 	pkgdesc = Plugin for OBS Studio to stream directly from Looking Glass without having to record the Looking Glass client

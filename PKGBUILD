@@ -3,23 +3,25 @@
 pkgbase=looking-glass
 pkgname=("${pkgbase}"
          "${pkgbase}-module-dkms"
+         "${pkgbase}-host"
          "obs-plugin-${pkgbase}")
 epoch=2
-pkgver=B2
+pkgver=B3
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('cmake' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol' 'libxi' 'obs-studio')
-source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.io/ci/host/source?id=255")
-sha512sums=('a6ddd07f69dacfe8e0322615d9ff95c0ea6257f3bff87f99b18d4b1f6c723cbfcced6f73fb9add2f752782d7a96c8beb153f55f3da170fcddeb726b2a378e0ef')
+makedepends=('cmake' 'sdl2_ttf' 'fontconfig' 'spice-protocol' 'wayland-protocols'
+             'libxss' 'libxi' 'obs-studio')
+source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.io/ci/host/source?id=551")
+sha512sums=('a76e4b373c53bd2cb87d8ab6179da47567ac75c9144c74c6df212e9cb3f4b929be8901163e3b6fc04b54a1ae6a5c10815b7ee921ceab1aa9a3df2cb9b0b82a2c')
 
-_lgdir="looking-glass-B2-0-g76710ef201"
+_lgdir="looking-glass-B3-0-g2973319bff"
 
 build() {
 	cd "${srcdir}/${_lgdir}"
-	for b in {client,obs}; do
+	for b in {client,host,obs}; do
 		pushd "${b}"
 		cmake -DCMAKE_INSTALL_PREFIX=/usr .
 		make
@@ -29,7 +31,7 @@ build() {
 
 package_looking-glass() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig' 'libxi')
+	depends=('sdl2_ttf' 'nettle' 'fontconfig' 'libxss' 'libxi')
 
 	cd "${srcdir}/${_lgdir}/client"
 	make DESTDIR="${pkgdir}" install
@@ -44,6 +46,14 @@ package_looking-glass-module-dkms() {
 		Makefile \
 		dkms.conf \
 		kvmfr.{h,c}
+}
+
+package_looking-glass-host() {
+	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
+	depends=('libxcb' 'zlib')
+
+	cd "${srcdir}/${_lgdir}/host"
+	make DESTDIR="${pkgdir}" install
 }
 
 package_obs-plugin-looking-glass() {
