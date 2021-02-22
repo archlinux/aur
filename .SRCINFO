@@ -1,12 +1,11 @@
 pkgbase = simple-and-soft-cursor
 	pkgdesc = A simple and soft X cursor theme
 	pkgver = 0.2
-	pkgrel = 7
-	url = https://store.kde.org/p/999946/
+	pkgrel = 8
 	arch = any
 	license = GPL
-	source = https://github.com/red-magic/dotfiles/raw/master/themes/cursor-themes/simple-and-soft.tar.xz
-	sha256sums = 6fa72d23cc8c0f7a6a2af2dad57534741e73659e22ad2ca98c146e0de3073433
+	source = https://github.com/red-magic/dotfiles/raw/master/themes/cursor-themes/simple-and-soft-cursor.tar.xz
+	sha256sums = f9ced93e1a2351b0449e8fac13139982ed2919e2c9eb1193d0ad7a02c7393d2c
 
 pkgname = simple-and-soft-cursor
 
