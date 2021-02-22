@@ -13,9 +13,8 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-gattlib: Low-energy Bluetooth devices support'
 	'python-paramiko: SSH support'
 	'python-pyserial: Arduino/serial device support')
-conflicts=('platypush-git')
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha512sums=('a72bc4e0695a99e92c14d2548f1df3acae9064ae6b4118d617e1bf0cb9a42b532377e76259cadf678bf329cd0d8a9b955d76940018087695b6344f8fd2b683ce')
 
 package() {
