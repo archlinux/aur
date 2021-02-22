@@ -19,11 +19,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pk
 sha512sums=('a72bc4e0695a99e92c14d2548f1df3acae9064ae6b4118d617e1bf0cb9a42b532377e76259cadf678bf329cd0d8a9b955d76940018087695b6344f8fd2b683ce')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-v${pkgver}"
     python3 setup.py build install --root="${pkgdir}/" --optimize=1
 
     install -m755 -d "${pkgdir}/usr/lib/systemd/user"
-    install -m644 "${srcdir}/${pkgname}-${pkgver}/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
+    install -m644 "${srcdir}/${pkgname}-v${pkgver}/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
 
     echo
     echo
