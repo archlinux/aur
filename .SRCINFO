@@ -1,24 +1,28 @@
 pkgbase = libvorbis-aotuv-lancer
-	pkgdesc = A fork of libvorbis intended to provide better quality sound at low to medium bitrates, with lancer patches to improve performance
-	pkgver = 1.3.6
-	pkgrel = 0
-	url = https://www.hydrogenaud.io/forums/index.php?showtopic=109766
+	pkgdesc = The Vorbis library with aoTuV and Lancer patches
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://hydrogenaud.io/index.php?topic=115774.0
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = libogg
-	provides = libvorbis=1.3.6
-	provides = libvorbisfile.so
 	provides = libvorbis.so
 	provides = libvorbisenc.so
+	provides = libvorbisfile.so
 	conflicts = libvorbis
 	conflicts = libvorbis-aotuv
-	source = http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.6.tar.gz
-	source = https://freac.org/patches/libvorbis-1.3.6-aotuv-b6.03.patch
-	source = https://freac.org/patches/libvorbis-1.3.6-aotuv-b6.03-lancer.patch
-	sha256sums = 6ed40e0241089a42c48604dc00e362beee00036af2d8b3f46338031c9e0351cb
-	sha256sums = 1efd443bb7a32562f30ae778983e4fd31f07c612e08e49d536429443107bb946
-	sha256sums = cb510d6d7222599eed0df8ea8708eb4cb3371a617e1a07eac83d723185ae1ad9
+	source = https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz
+	source = https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz.asc
+	source = https://freac.org/patches/libvorbis-1.3.7-aotuv-b6.03.patch
+	source = https://freac.org/patches/libvorbis-1.3.7-aotuv-b6.03-lancer.patch
+	source = make-check-fix.patch::https://gitlab.xiph.org/xiph/vorbis/-/commit/4e1155cc77a2c672f3dd18f9a32dbf1404693289.patch
+	validpgpkeys = B7B00AEE1F960EEA0FED66FB9259A8F2D2D44C84
+	sha1sums = 2b415495f89b103138a23da5017a2a00837c6c94
+	sha1sums = dc604e62a7e7ad60eb6fae0960cdf390a382258b
+	sha1sums = ccb4725960467612c627961484065afd19c5f99e
+	sha1sums = ce350ede3f6d11c09515d7e79fd8d1512d450e05
+	sha1sums = ced440582403539d1b8904e003746ef75be36e1d
 
 pkgname = libvorbis-aotuv-lancer
 
