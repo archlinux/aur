@@ -2,7 +2,7 @@
 
 pkgname=znapzend
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A ZFS centric backup tool to create snapshots and send them to backup locations."
 arch=('any')
 url="http://www.znapzend.org/"
@@ -15,6 +15,7 @@ sha256sums=('c0a1ab9df5d6c4936560b5f8f08d393d4e99313da190fa404cd8ee5df420a7ca')
 prepare() {
     cd "${pkgname}-${pkgver}"
     sed -i 's:@BINDIR@:/usr/bin:' "init/znapzend.service.in"
+    sed -i "s:'Mojolicious':'Mojolicious', '< 9.0':"  "cpanfile"
 }
 
 build() {
