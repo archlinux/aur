@@ -16,7 +16,7 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 conflicts=('platypush')
 options=(!strip)
 source=("platypush.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/master/platypush-master.tar.gz")
-sha512sums=('')
+sha512sums=('f32b95c9487c573c7a01b988cbf55bad9e888d35459c263f10ea9d9b42688f48b1d7ca4773cd6db47621f41031a09ce2613057c384bb2a3fce1706123546e19e')
 
 package() {
     cd "${srcdir}/platypush-master"
