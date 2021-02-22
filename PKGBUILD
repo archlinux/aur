@@ -3,9 +3,9 @@
 # Contributor: Phillip Fynan <pfynan@gmail.com>
 # Maintainer: Peter Sutton <peter@foxdogstudios.com>
 
-_pkgver_year=2020
-_pkgver_month=11
-_pkgver_day=07
+_pkgver_year=2021
+_pkgver_month=02
+_pkgver_day=21
 
 pkgname=abcmidi
 pkgver=$_pkgver_year$_pkgver_month$_pkgver_day
@@ -17,8 +17,7 @@ depends=()
 makedepends=()
 source=("https://ifdo.ca/~seymour/runabc/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.zip")
 arch=(x86_64)
-sha256sums=('60dacfc3debc54587048fe3a91c05c33d514532e20445a78f01663768311eb2a')
-
+sha256sums=('47a5837424e0d999e15692147beca804695356a697f5bbb17db0452b47755336')
 
 build() {
     cd "$srcdir"/abcmidi
