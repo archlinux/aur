@@ -8,14 +8,14 @@ url="https://plask.app"
 arch=('x86_64')
 license=('custom')
 depends=('boost-libs' 'expat' 'openmp' 'intel-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
-         'python-numpy' 'python-matplotlib' 'python-lxml' 'python-yaml' 'pyside2')
+         'python-numpy' 'python-matplotlib' 'python-lxml' 'python-yaml' 'pyside2' 'python-mpmath')
 optdepends=('python-h5py: for saving results to files'
             'python-scipy: for scientific tools'
             'python-jedi: for Python hints in GUI'
             'python-paramiko: for remote computation launching'
             'ipython: for interactive shell')
 source=("plask-$pkgver.tar.zst::https://get.plask.app/packages/plask-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('c4ce4d37a5c8111cfcba6509205337fe0600a484111967c6fe0019da5c5ec615')
+sha256sums=('1f5c7d2096a0cc9585d0c89a261ef98d4ecff481d35eeaa6e8236203d9b6cff6')
 noextract=("plask-$pkgver.tar.zst")
 
 package() {
