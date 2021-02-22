@@ -1,0 +1,13 @@
+pkgbase = piknik
+	pkgdesc = Copy/paste anything over the network.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/jedisct1/piknik
+	arch = any
+	license = ISC
+	makedepends = go
+	source = piknik-0.10.1.tar.gz::https://github.com/jedisct1/piknik/archive/0.10.1.tar.gz
+	md5sums = 964ae408ff8b0e254695205f9d978f61
+
+pkgname = piknik
+
