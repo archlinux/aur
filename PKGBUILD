@@ -7,9 +7,8 @@ pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
-url="https://github.com/BlackLight/platypush"
-depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask'
-	'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf')
+url="https://git.platypush.tech/platypush/platypush"
+depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-pyjwt')
 optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pybluez: Bluetooth support'
 	'python-gattlib: Low-energy Bluetooth devices support'
