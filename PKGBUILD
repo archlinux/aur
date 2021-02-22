@@ -1,8 +1,8 @@
 # Maintainer: okhsunrog <me@gornushko.com>
 pkgname=persway-git
 _pkgname=persway
-_pkgver=1.4.1
-pkgver=1.4.1.r55.4a661a4
+_pkgver=0.4.1
+pkgver=0.4.1.r55.4a661a4
 pkgrel=1
 pkgdesc="Small Sway IPC Daemon"
 url="https://github.com/johnae/persway"
