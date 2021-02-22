@@ -1,7 +1,7 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 # Co-maintainer & author of the original software: Gabriel Saillard <gabriel@saillard.dev>
 pkgname='edex-ui'
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support."
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('nodejs-lts-erbium'
 provides=('edex-ui')
 install="edex-ui.install"
 source=("https://github.com/GitSquared/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('61698f7ac2272cafe7843eb48f953eb40e759621aa28432b91b329783e283fb7')
+sha256sums=('8de885afe42b5f76194a96a920da2241d49498afe61491b0dcf3d00015f6b5c0')
 
 build() {
     cd "${pkgname}-${pkgver}"
