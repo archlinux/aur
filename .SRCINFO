@@ -1,23 +1,17 @@
 pkgbase = python-glob2-git
 	pkgdesc = An extended version of Python's builtin glob module that can capture patterns and supports recursive wildcards.
-	pkgver = 0.6.r2.g43abdc5
+	pkgver = 0.7.r1.gef4b58f
 	pkgrel = 1
 	url = https://github.com/miracle2k/python-glob2
 	arch = any
 	license = custom
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
+	provides = python-glob2
+	conflicts = python-glob2
 	source = git+https://github.com/miracle2k/python-glob2
 	md5sums = SKIP
 
 pkgname = python-glob2-git
-	depends = python
-	provides = python-glob2
-	conflicts = python-glob2
-
-pkgname = python2-glob2-git
-	depends = python2
-	provides = python2-glob2
-	conflicts = python2-glob2
 
