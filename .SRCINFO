@@ -1,9 +1,9 @@
 pkgbase = notion-app-nativefier
-	pkgdesc = The all-in-one workspace for your notes, tasks, wikis, and databases
-	pkgver = 2020.04.05
-	pkgrel = 4
+	pkgdesc = Notion in shared Electron runtime
+	pkgver = 2021.02.22
+	pkgrel = 1
 	url = https://www.notion.so
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = curl
 	makedepends = gendesk

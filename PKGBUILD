@@ -1,10 +1,10 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2020.04.05
-pkgrel=4
-pkgdesc='The all-in-one workspace for your notes, tasks, wikis, and databases'
-arch=('any')
+pkgver=2021.02.22
+pkgrel=1
+pkgdesc='Notion in shared Electron runtime'
+arch=('x86_64')
 url='https://www.notion.so'
 license=('MIT')
 depends=('electron')
@@ -25,6 +25,7 @@ EOF
     --pkgname "${pkgname}" \
     --pkgdesc "${pkgdesc}" \
     --name "${_name}" \
+    --categories "Network;Office;ProjectManagement;Utility;TextTools;" \
     -n \
     -f
   curl https://www.notion.so/images/logo-ios.png > "${pkgname}.png"
@@ -32,9 +33,11 @@ EOF
 
 build() {
   cd "${srcdir}"
+  # https://regex101.com/r/FpfTKB/1
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
+    --internal-urls '/^(https?:\/\/)?(www\.notion\.so|accounts\.google\.com|appleid\.apple\.com)(\/.*)?$' \
     --maximize \
     --single-instance \
     --verbose \
