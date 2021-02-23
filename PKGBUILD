@@ -3,8 +3,8 @@
 # Past Contributor: Emerson Almeida <duke.m16@gmail.com>
 
 pkgname=zoho-mail-desktop
-pkgver=1.1.12
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="The desktop version of your favorite mailsuite!"
 arch=('x86_64')
 license=('custom')
