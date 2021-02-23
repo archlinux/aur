@@ -1,8 +1,7 @@
 pkgbase = alsa-plugins-libswresample
 	pkgdesc = Additional ALSA plugins (with libswresample support)
 	pkgver = 1.2.2
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://www.alsa-project.org
 	arch = x86_64
 	license = LGPL2.1
@@ -21,6 +20,8 @@ pkgbase = alsa-plugins-libswresample
 	optdepends = libsamplerate: for rate_samplerate plugin
 	optdepends = libpulse: for conf_pulse, ctl_pulse and pcm_pulse plugins
 	optdepends = speexdsp: for pcm_speex and rate_speexrate plugins
+	provides = alsa-plugins=1.2.2
+	conflicts = alsa-plugins
 	source = https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.2.tar.bz2
 	source = pulse-sysdefault.diff
 	source = https://git.harting.dev/anonfunc/alsa-plugins/commit/9cdbbb9874757b6f8fda7fb4ac2e3fc59da65946.patch

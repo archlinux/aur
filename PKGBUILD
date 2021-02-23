@@ -6,9 +6,10 @@
 
 pkgname=alsa-plugins-libswresample
 _basename=alsa-plugins
+provides=('alsa-plugins=1.2.2')
+conflicts=(alsa-plugins)
 pkgver=1.2.2
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="Additional ALSA plugins (with libswresample support)"
 arch=(x86_64)
 url="https://www.alsa-project.org"
