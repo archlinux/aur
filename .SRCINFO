@@ -1,6 +1,6 @@
 pkgbase = linux-amd
-	pkgver = 5.11.v.0
-	pkgrel = 3
+	pkgver = 5.11.v.1
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = linux-amd
 	makedepends = libelf
 	makedepends = lzop
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.11
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.11.1
 	source = config.x86_64
 	source = linux-amd.preset
 	source = linux.install
@@ -21,7 +21,7 @@ pkgbase = linux-amd
 	source = amdgpu_hdmihotplug.patch
 	source = amdgpu_shutdown.patch
 	sha256sums = SKIP
-	sha256sums = 57a338691913d1c5e5dc6b3983cf41f0e3aac4df87389a464447281066c42c8b
+	sha256sums = e18ebab4455dc1b30fe4125ea86e8792609b613456ac9102b8a04eb1f53f4d91
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 126cd35b1153b69dd8d713f902d09ecc64ce8af2e4fa6f021219a65e62e13875
