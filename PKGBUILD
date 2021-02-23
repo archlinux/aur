@@ -1,9 +1,9 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  JakobDev<jakobdev at gmc dot de>
 
 pkgname=jdtextedit
-pkgver=8.0
+pkgver=8.2
 pkgrel=1
-pkgdesc='A powerful texteditor with a lot of features'
+pkgdesc='Aan advanced text editor'
 arch=('any')
 url="https://gitlab.com/JakobDev/jdTextEdit"
 license=('GPL3')
@@ -15,19 +15,19 @@ depends=('python-pyqt5'
          'python-editorconfig'
          'python-charset-normalizer'
          'python-jdtranslationhelper'
-         'python-pyenchant')
+         'python-pyenchant'
+         'python-setuptools')
 makedepends=('python-setuptools' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/${pkgver}/jdTextEdit-${pkgver}.tar.gz"
         'distribution.json')
-sha256sums=('64f3e72e0f32ae16d72aebffe19de871bfd94f7bc93a8160190cd03934694d7d'
-            'bdb7dd9ca97ac11bbba44e237cf99458e5343cc82f18ac112466ea9539f8477c')
+sha256sums=('8cb18faa11a2551b275a7ac2a8540abe7712ec9ebcd8d63f2805d06dfc786aaf'
+            'c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13')
 
 package() {
   cd "jdTextEdit-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 jdTextEdit/Logo.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length* ($2)-2)}')
-  install -Dm644 ${srcdir}/distribution.json -t "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/jdTextEdit/"
+  install -Dm644 ${srcdir}/distribution.json -t "${pkgdir}/usr/lib/python3.9/site-packages/jdTextEdit/"
   gendesk -f -n --pkgname "${pkgname}" \
           --pkgdesc "$pkgdesc" \
           --name "jdTextEdit" \

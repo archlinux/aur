@@ -1,5 +1,4 @@
 {
     "enableUpdater": false,
-    "dataDirectory": "~/.edit",
-    "aboutMessage": "Use a pacman helper to update this software, as it's currently hosted on AUR and not on any Arch Linux official repository"
+    "aboutMessage": "jdTextEdit was installed with the offical package from AUR"
 }

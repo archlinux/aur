@@ -1,6 +1,6 @@
 pkgbase = jdtextedit
-	pkgdesc = A powerful texteditor with a lot of features
-	pkgver = 8.0
+	pkgdesc = Aan advanced text editor
+	pkgver = 8.2
 	pkgrel = 1
 	url = https://gitlab.com/JakobDev/jdTextEdit
 	arch = any
@@ -16,10 +16,11 @@ pkgbase = jdtextedit
 	depends = python-charset-normalizer
 	depends = python-jdtranslationhelper
 	depends = python-pyenchant
-	source = jdtextedit-8.0.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/8.0/jdTextEdit-8.0.tar.gz
+	depends = python-setuptools
+	source = jdtextedit-8.2.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/8.2/jdTextEdit-8.2.tar.gz
 	source = distribution.json
-	sha256sums = 64f3e72e0f32ae16d72aebffe19de871bfd94f7bc93a8160190cd03934694d7d
-	sha256sums = bdb7dd9ca97ac11bbba44e237cf99458e5343cc82f18ac112466ea9539f8477c
+	sha256sums = 8cb18faa11a2551b275a7ac2a8540abe7712ec9ebcd8d63f2805d06dfc786aaf
+	sha256sums = c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13
 
 pkgname = jdtextedit
 
