@@ -1,7 +1,7 @@
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 
 pkgname=openconnect-sso
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Wrapper script for OpenConnect supporting Azure AD (SAMLv2) authentication"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 optdepends=()
 source=("https://github.com/vlaci/openconnect-sso/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4ebb44ef5f46ca400b171d829570e354a22a3ebea5863b5df7a50e3599aecbfb')
+sha256sums=('ab6887e22fd06a64606e20310292e245776dbd2810f6692b00e5a001a8aa7d9c')
 
 build() {
   cd "$pkgname-$pkgver"
