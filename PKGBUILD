@@ -2,13 +2,14 @@
 
 pkgname=sofia-woodwinds
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sofia Woodwinds Sample Library (VST Plugin)."
 arch=('x86_64')
 url="https://librewave.com/product/sofia-woodwinds/"
 license=('GPL3')
 groups=('pro-audio' 'vst-plugins')
 depends=('libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 source=("Sofia Woodwinds.desktop")
 md5sums=('89546c3c831661ee481253be9204f415')
 

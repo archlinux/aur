@@ -1,12 +1,14 @@
 pkgbase = sofia-woodwinds
 	pkgdesc = Sofia Woodwinds Sample Library (VST Plugin).
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librewave.com/product/sofia-woodwinds/
 	arch = x86_64
 	groups = pro-audio
 	groups = vst-plugins
 	license = GPL3
+	makedepends = xdg-user-dirs
+	makedepends = unzip
 	depends = libcurl-gnutls
 	source = Sofia Woodwinds.desktop
 	md5sums = 89546c3c831661ee481253be9204f415
