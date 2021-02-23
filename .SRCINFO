@@ -1,0 +1,14 @@
+pkgbase = nextcloud-app-whiteboard-integration
+	pkgdesc = Modern collaborative whiteboard
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://apps.nextcloud.com/apps/integration_whiteboard
+	arch = any
+	license = GPL
+	depends = nextcloud
+	options = !strip
+	source = https://github.com/nextcloud/integration_whiteboard/releases/download/v0.0.12/integration_whiteboard-0.0.12.tar.gz
+	sha256sums = e5f8e095e8a4262784a6dd478048dfc135c98a8ac8c2c816c82d9a96914a5cc9
+
+pkgname = nextcloud-app-whiteboard-integration
+
