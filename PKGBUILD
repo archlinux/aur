@@ -1,7 +1,7 @@
 pkgname=songrec
 _pkgname=SongRec
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=1
 provides=('songrec')
 conflicts=('songrec-git')
 pkgdesc='An open-source, unofficial Shazam client for Linux, written in Rust.'
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('cargo' 'rust' 'git')
 depends=('gtk3' 'alsa-lib' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marin-m/songrec/archive/${pkgver}.tar.gz")
-sha256sums=('35aa56406e6ed0da3002396b4c9880094d59bca1cec7bc51a6f91353a60fc0d4')
+sha256sums=('42883abd9914ad592ab8bc0344a75b3470516f01401c2213803bff6020ac1ba0')
 
 build() {
   cd "$_pkgname-$pkgver"
