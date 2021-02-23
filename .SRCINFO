@@ -1,7 +1,7 @@
 pkgbase = tomoyo-tools
 	pkgdesc = TOMOYO Linux 2.6.x userspace tools for Linux kernel 5.1 and later
 	pkgver = 2.6.0.20201111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tomoyo.osdn.jp
 	install = tomoyo-tools.install
 	arch = x86_64
