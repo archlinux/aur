@@ -1,7 +1,8 @@
 # Maintainer: Dylan Delgado <dylan1496 at live dot com>
 # sudo.install, sudo_logsrvd.service and sudo.pam taken from the archlinux/svntogit-packages repo: https://github.com/archlinux/svntogit-packages/tree/master/sudo/trunk
 
-pkgname=sudo
+pkgname=sudo-git
+_pkgname=sudo
 pkgrel=1
 pkgver=SUDO_1_9_0.r543.g5fc6b8c17
 pkgdesc="Give certain users the ability to run some commands as root - git version"
@@ -15,7 +16,7 @@ backup=('etc/pam.d/sudo'
         'etc/sudo.conf'
         'etc/sudo_logsrvd.conf'
         'etc/sudoers')
-install=$pkgname.install
+install=$_pkgname.install
 source=("git://github.com/sudo-project/sudo.git"
         sudo_logsrvd.service
         sudo.pam)
