@@ -12,31 +12,32 @@ license=('AGPL3')
 depends=('nextcloud>=20.0.0')
 makedepends=('npm')
 options=('!strip')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("cospend-nc-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('a1e8ebd40114fb4a3bf4539c8b7b9984afb999811c2969ce5a84c2a7114548872fc93bd3ce16d9fa6dbf132eb982f5f221dcb1f709177e38e594ae958795db06')
-_root="${pkgdir}/usr/share/webapps/nextcloud/apps/cospend"
+_releasename=cospend-nc
+_appname=cospend
+
+prepare() {
+    cd "$srcdir/$_releasename-$pkgver"
+    sed -i 's/sudo rm/rm/' makefile
+    sed -i 's/^GITHUB_TOKEN :=/#GITHUB_TOKEN :=/' makefile
+}
 
 build() {
-    cd "${srcdir}/cospend-nc-${pkgver}"
+    cd "$srcdir/$_releasename-$pkgver"
     make
 }
 
 package() {
-    mkdir -p "${pkgdir}/${_root}"
-    # Copy main files
-    cd "${srcdir}/cospend-nc-${pkgver}"
-    cp -r . "${pkgdir}/${_root}"
-    cd "${pkgdir}/${_root}"
-    rm -rf .git appinfo/signature.json *.swp build .gitignore \
-            .travis.yml .scrutinizer.yml CONTRIBUTING.md \
-            composer.{json,lock,phar} package{,-lock}.json \
-            js/node_modules node_modules src translationfiles \
-            webpack.* .gitlab-ci.yml crowdin.yml tools l10n \
-            makefile screenshots phpunit*xml tests ci vendor/bin
-    # Create translation info
-    cd "${srcdir}/cospend-nc-${pkgver}/l10n/descriptions"
-    ./gen_info.xml.sh
-    install info.xml "${pkgdir}/${_root}/appinfo/"
-    cp -r "${srcdir}/cospend-nc-${pkgver}/l10n" "${pkgdir}/${_root}/l10n"
+    cd "$srcdir/$_releasename-$pkgver"
+    _destdir="$pkgdir/usr/share/webapps/nextcloud/apps"
+    make build_dir=build sign_dir="$_destdir" version="v$pkgver" build_release
+
+    # Remove auxiliary script
+    rm -f "$_destdir/$_appname/l10n/descriptions/gen_info.xml.sh"
+    # Remove references to $srcdir from *.js.map
+    find "$pkgdir" -type f -name "*.js.map" | while read file; do
+        sed -i "s|webpack://$_appname/$srcdir/$_releasename-$pkgver/node_modules|webpack://$_appname/./node_modules|" $file
+    done
 }
 

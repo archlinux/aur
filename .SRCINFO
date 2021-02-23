@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-cospend
 	makedepends = npm
 	depends = nextcloud>=20.0.0
 	options = !strip
-	source = https://github.com/eneiluj/cospend-nc/archive/v1.2.9.tar.gz
+	source = cospend-nc-v1.2.9.tar.gz::https://github.com/eneiluj/cospend-nc/archive/v1.2.9.tar.gz
 	sha512sums = a1e8ebd40114fb4a3bf4539c8b7b9984afb999811c2969ce5a84c2a7114548872fc93bd3ce16d9fa6dbf132eb982f5f221dcb1f709177e38e594ae958795db06
 
 pkgname = nextcloud-app-cospend
