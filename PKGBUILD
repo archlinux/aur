@@ -2,7 +2,7 @@
 # Contributor: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=mopidy-spotify
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Spotify"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/mopidy/$pkgname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('3a02a8efb8497250ad5996efdc12370c81a3e3c3ad0d86b889a5bc5faeaa51f5')
+sha256sums=('623f139703b633f06391cfc4e6d3e63936f0815fac1990bbbb798d6e377ea400')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
