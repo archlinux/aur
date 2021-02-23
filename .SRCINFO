@@ -1,6 +1,6 @@
 pkgbase = gog-shortest-trip-to-earth
 	pkgdesc = a roguelike spaceship simulator featuring exploration, ship management, game-influencing decision-making and real-time tactical battles
-	pkgver = 1.3.2
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://www.gog.com/game/shortest_trip_to_earth
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = gog-shortest-trip-to-earth
 	makedepends = lgogdownloader
 	depends = gtk2
 	depends = bash
-	source = shortest_trip_to_earth_1_3_2.sh::gogdownloader://1911995101/en3installer0
+	source = shortest_trip_to_earth_1_3_4.sh::gogdownloader://1911995101/en3installer0
 	source = Shortest Trip to Earth.desktop
 	source = start-shortest-trip-to-earth.sh
-	sha512sums = 31adc55bef75cc7ad4b188bb97b49bcee9e74fd176f44a9d795a0f44894198ec5e95fdbd2568aa22cafc559d5b0b29d2d3bb848975b3e0336a18aa92d33075ef
+	sha512sums = d404c1f4a0e126611b2b5a0c301ce7105a309e9833d80c6d9a197a7c4800b96edfa617f636b22a4ff03ba1aaf92aad71b3bc314b31e0d723b3ddc7412387a344
 	sha512sums = ec744a0f995ea5d746cf496d54e0a822b7d366c4c6cdff687163ceb0e876b11ee1b8307f19a74b0445414f096160c006537d8d46fc1d40c878bb716e281f93f1
 	sha512sums = a0d8350d6bb2c1778e032052a85932227ee491a863ba7ed82fc09eaefad9bd380a2fdd573a16e049c6a2a277ad4ccb06b14c6287d8a2bc7d9841dd39225aa988
 
