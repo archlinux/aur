@@ -27,6 +27,4 @@ package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 "$pkgdir"/usr/etc/xmedconrc "$pkgdir"/etc/xmedconrc
-  rm "$pkgdir"/usr/etc/xmedconrc
-  rmdir "$pkgdir"/usr/etc
 }
