@@ -2,13 +2,14 @@
 
 pkgname=air-impulse-loader
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AIR Impulse Response Loader (VST Plugin)."
 arch=('x86_64')
 url="https://audio-assault.com/air.php"
 license=('EULA')
 groups=('pro-audio' 'vst-plugins')
 depends=('libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 source=("AIR Impulse Loader.desktop")
 md5sums=('d07c3b4ce6b585e0cdb59a4dce50545c')
 
