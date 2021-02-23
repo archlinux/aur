@@ -1,0 +1,20 @@
+pkgbase = python-domain-connect
+	pkgdesc = Python client library for Domain Connect protocol
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/Domain-Connect/domainconnect_python
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = python-cryptography
+	depends = python-publicsuffixlist
+	depends = python-dnspython
+	depends = python-future
+	depends = python-publicsuffix
+	source = python-domain-connect-0.0.8.tar.gz::https://github.com/Domain-Connect/domainconnect_python/archive/v0.0.8.tar.gz
+	md5sums = cbc7b833f045dc5f28765ff9657d5322
+
+pkgname = python-domain-connect
+
