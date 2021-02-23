@@ -10,7 +10,6 @@ pkgbase = lib32-mesa-minimal+-git
 	makedepends = lib32-libx11
 	makedepends = xorgproto
 	makedepends = lib32-gcc-libs
-	makedepends = lib32-libvdpau
 	makedepends = lib32-libelf
 	makedepends = git
 	makedepends = mesa
