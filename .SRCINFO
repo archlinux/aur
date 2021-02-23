@@ -1,0 +1,16 @@
+pkgbase = tllist-git
+	pkgdesc = A C header file only implementation of a typed linked list
+	pkgver = 1.0.5.r0.gf2d806f
+	pkgrel = 1
+	url = https://codeberg.org/dnkl/tllist
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	provides = tllist
+	conflicts = tllist
+	source = tllist-git::git+https://codeberg.org/dnkl/tllist
+	sha256sums = SKIP
+
+pkgname = tllist-git
+
