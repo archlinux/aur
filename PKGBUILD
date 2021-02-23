@@ -1,13 +1,14 @@
+# Maintainer: Douglas Creager <dcreager@dcreager.net>
 # Maintainer: Genki Sky <alt+archlinux.org@genki.is>
 
 pkgname=libjit-git
-pkgver=1
-pkgrel=4
+pkgver=20200417.942c988
+pkgrel=1
 pkgdesc='Generic just-in-time compiler library'
 arch=('x86_64')
 url='https://www.gnu.org/software/libjit/'
 license=('LGPL')
-makedepends=('git')
+makedepends=('awk' 'bison' 'flex' 'git')
 provides=('libjit')
 conflicts=('libjit')
 source=('git+https://git.savannah.gnu.org/git/libjit.git')
@@ -23,6 +24,11 @@ build() {
     ./bootstrap
     ./configure --prefix=/usr
     make
+}
+
+check() {
+    cd libjit
+    make -k check
 }
 
 package() {
