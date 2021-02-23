@@ -10,10 +10,12 @@ Server = https://random-mirror.chaotic.cx/$repo/$arch
 #Server = https://br-sp-mirror.chaotic.cx/$repo/$arch
 
 # USA
-# * By: GarudaLinux and Fosshost
+# * Texas, By: GarudaLinux and Fosshost
 Server = https://us-tx-mirror.chaotic.cx/$repo/$arch
-# * By: LordKitsuna
+# * Washington, By: LordKitsuna
 Server = https://us-wa-mirror.chaotic.cx/$repo/$arch
+# * Utah, By: Theaus
+Server = https://us-ut-mirror.chaotic.cx/$repo/$arch
 
 # Netherlands
 # * By: Var Bhat and LiteServer
@@ -31,7 +33,7 @@ Server = http://de-2-mirror.chaotic.cx/$repo/$arch
 
 # Brussels, Belgium
 # * By: Belnet, the Belgian Education and Research Network
-Server = https://bru-be-mirror.chaotic.cx/$repo/$arch
+Server = https://be-bru-mirror.chaotic.cx/$repo/$arch
 
 # Seoul, Korea
 # * By: Ryoichi <t.me/maakpain>
