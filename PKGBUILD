@@ -4,7 +4,7 @@
 
 pkgname=plexamp-appimage
 pkgver=3.4.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Modern music client for Plex"
 provides=('plexamp')
 conflicts=('plexamp')
@@ -16,7 +16,7 @@ _filename=Plexamp-${pkgver}.AppImage
 source=(
   https://plexamp.plex.tv/plexamp.plex.tv/desktop/${_filename}
 )
-sha512sums=('f2947888d3541ff257b7485e942173ed673a628bfdc814a900c3840ed3276857fd3ad5ba8f801b9dc579ce8ea0ec27a7c0a6f7b984ed36218796f8619c74aeaa')
+sha512sums=('6a310f421ded1855c3764dfdfe4b6c8f179656c0ed7a600769ec45853744c16efc0bcfbb43e29fe82b876740f6380f36068b465d3c89067de7bd826c70723749')
 
 
 prepare() {
