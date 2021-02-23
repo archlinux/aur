@@ -1,20 +1,12 @@
 pkgbase = bfind
 	pkgdesc = find alternative optimised for finding files rather then listing files
-	pkgver = 2.1.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/maandree/bfind
-	install = bfind.install
 	arch = any
-	license = GPL3
-	makedepends = make
-	makedepends = coreutils
-	makedepends = sed
-	makedepends = texinfo
-	makedepends = gzip
-	makedepends = auto-auto-complete
-	depends = python3
-	source = https://github.com/maandree/bfind/archive/2.1.1.tar.gz
-	sha256sums = 2adf446212950b45c800380273f8f04fc3b2365b3e68ca53ac961966844f4c5e
+	license = custom:ISC
+	source = bfind-3.0.tar.gz::https://github.com/maandree/bfind/archive/3.0.tar.gz
+	sha256sums = d50ac7dd28829e4ae7e5c0ad5509ca2036f87207f898e2b6cd97fa1735ae0104
 
 pkgname = bfind
 
