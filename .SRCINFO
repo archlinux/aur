@@ -1,13 +1,13 @@
 pkgbase = terraform-ls
 	pkgdesc = Terraform Language Server
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/hashicorp/terraform-ls
 	arch = x86_64
 	license = custom:MPL2
 	makedepends = go
-	source = terraform-ls-0.13.0.tar.gz::https://github.com/hashicorp/terraform-ls/archive/v0.13.0.tar.gz
-	sha256sums = 7962a30cad982794ec6976dca130908acbb081355ba57b807ddc7216726080a3
+	source = terraform-ls-0.14.0.tar.gz::https://github.com/hashicorp/terraform-ls/archive/v0.14.0.tar.gz
+	sha256sums = f7e4ed1ecc1d2483775f4e681b770705b16b08ae79ba3a897bdb9ebc71380e3e
 
 pkgname = terraform-ls
 
