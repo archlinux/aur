@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.33.0.57.g1251f7bbf9
+pkgver=v0.33.0.86.g09d7c75bfe
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -148,6 +148,8 @@ fi
 
 build() {
   cd mpv-build
+  # https://github.com/mpv-player/mpv-build/issues/150
+  LDFLAGS+=" $(pkg-config --libs fontconfig harfbuzz fribidi)"
   ./build
 }
 
