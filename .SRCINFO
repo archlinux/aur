@@ -1,7 +1,7 @@
 pkgbase = zluda-git
 	pkgdesc = A drop-in replacement for CUDA on Intel GPUs (git version)
 	pkgver = 2.r0.g4d3e37b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vosen/ZLUDA/
 	arch = x86_64
 	license = Apache
