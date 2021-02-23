@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
 pkgver=10.r5.g5758bc7
-pkgrel=2
+pkgrel=3
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
@@ -25,7 +25,7 @@ package() {
   local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
   install -dm755 "${destdir}"
-  find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|mo)$" -exec\
+  find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|mo|compiled)$" -exec\
      install -Dm 644 {} ${destdir}/{} \;
   install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
