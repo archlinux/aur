@@ -1,7 +1,7 @@
 # Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
 
 pkgname=kicad-nightly
-pkgver=5.99.0_9269_g34d3218f73
+pkgver=5.99.0_9297_g2013a801d1
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -15,12 +15,11 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=34d3218f73
-	'git+https://gitlab.com/kicad/code/kicad-i18n.git'#commit=e89d9a8
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=2013a801d1
 	'kicad-nightly.env'
 )
 sha256sums=(
-	'SKIP' 'SKIP'
+	'SKIP'
 	'fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18'
 )
 
@@ -47,19 +46,7 @@ build()
 		-DKICAD_SCRIPTING_ACTION_MENU=ON \
 		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
 		-DKICAD_DATA=/usr/share/kicad-nightly \
-		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
-		-DBUILD_GITHUB_PLUGIN=ON
-	ninja
-
-	cd "$srcdir/kicad-i18n"
-
-	rm -rf build
-	mkdir build
-	cd build
-	cmake .. -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
-		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
-		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly
+		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
 	ninja
 }
 
@@ -92,7 +79,4 @@ exec /usr/lib/kicad-nightly/bin/$prog
 EOF
 		chmod +x "$pkgdir/usr/bin/$prog-nightly"
 	done
-
-	cd "$srcdir/kicad-i18n/build"
-	DESTDIR="$pkgdir" ninja install
 }
