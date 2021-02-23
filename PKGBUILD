@@ -3,7 +3,7 @@
 
 _gemname=tty-table
 pkgname=ruby-$_gemname
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A flexible and intuitive table generator'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-equatable ruby-necromancer ruby-pastel ruby-tty-screen ruby-s
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3f1bdcca208059e544699b12299958d884af1b6a')
+sha1sums=('a49b1223aaee59a45df54fe92bf918d0ed7911a5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
