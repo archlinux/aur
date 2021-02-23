@@ -1,7 +1,7 @@
 pkgbase = kime-bin
 	pkgdesc = Korean IME
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Riey/kime
 	arch = x86_64
 	license = GPL3
