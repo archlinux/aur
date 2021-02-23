@@ -9,6 +9,7 @@ url="https://www.gvst.co.uk/portpage.htm"
 license=('EULA')
 groups=('pro-audio' 'vst-plugins')
 depends=('glibc' 'libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 
 prepare () {
 	## Extract GVST Plugins Archive
