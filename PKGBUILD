@@ -11,7 +11,7 @@ pkgname=dragonwolf
 _pkgname=DragonWolf
 pkgver=88.0a1.r635697+.20c676649a86+
 pkgrel=1
-pkgdesc=" 	Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
+pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
@@ -33,7 +33,7 @@ options=(!emptydirs !makeflags !strip)
 _linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
 _settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 _repo=https://hg.mozilla.org/mozilla-unified
-conflicts=('librewolf' 'librewolf-wayland-hg')
+conflicts=('librewolf' 'librewolf-wayland-hg' 'librewolf-dev-wayland')
 provides=('librewolf')
 source_x86_64=("hg+$_repo#revision=autoland"
                dragonwolf.desktop
@@ -177,7 +177,7 @@ fi
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  # patch -p1 -i ../unity-menubar.patch
+  patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
