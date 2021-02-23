@@ -13,21 +13,22 @@ pkgname=(
   dotnet-targeting-pack-preview
   aspnet-targeting-pack-preview
 )
-pkgver=5.0.0+100+rc.2.20479.15
-_hostver=5.0.0-rc.2.20475.5
-_runtimever=5.0.0-rc.2.20475.5
-_sdkver=5.0.100-rc.2.20479.15
+pkgver=6.0.0.sdk100+preview.1.21103.13
+_hostver=6.0.0-preview.1.21102.12
+_dotnetruntimever=6.0.0-preview.1.21102.12
+_aspnetruntimever=6.0.0-preview.1.21103.6
+_sdkver=6.0.100-preview.1.21103.13
 pkgrel=2
 arch=(x86_64 armv7h aarch64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
 options=(staticlibs)
-source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/69cb8922-7bb0-4d3a-aa92-8cb885fdd0a6/2fd4da9e026f661caf8db9c1602e7b2f/dotnet-sdk-5.0.100-rc.2.20479.15-linux-x64.tar.gz)
-source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/068ebc6e-4a1d-45ec-a766-733a142f2839/e0da4c731c943ca2b267c15edb565108/dotnet-sdk-5.0.100-rc.2.20479.15-linux-arm.tar.gz)
-source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/b416bc12-1478-4241-bc31-6fe68f8b73b6/582f018a97172f4975973390cf3f58e7/dotnet-sdk-5.0.100-rc.2.20479.15-linux-arm64.tar.gz)
-sha512sums_x86_64=(e705043cdec53827695567eed021c76b100d77416f10cc18d4f5d02950f85bf9ccd7e2c22643f00a883e11b253fb8aa098e4dce008008a0796f913496f97e362)
-sha512sums_armv7h=(22e97c15393a4f986563f5e8b031b49983eb55531170b86594d7caab819b41032393a9b3db4ee96cb88fae3971ba243bb64187606e3a00fc64d2e434d906a637)
-sha512sums_aarch64=(1aab49b2c328c4de8c40e790df99aa327a3aeba5d904696fa151acbfb7b5620ebf3d1e2e9726895d92b6146295840ffe3f2fb7208a81c7b73d2c92c9fcf50dbf)
+source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/579aac9e-53dd-404e-9452-9910bc9be422/1c47683215dd54a3837fc4b338ddb6a6/dotnet-sdk-6.0.100-preview.1.21103.13-linux-x64.tar.gz)
+source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/3b62cfcf-589e-43b3-993b-517c70c93a22/0ecae846884376fecc5de8a4f6d6c927/dotnet-sdk-6.0.100-preview.1.21103.13-linux-arm.tar.gz)
+source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/9143768a-e997-45b5-b818-e5b96ac0c24c/b5c7eb4476e9cdb56deb62d2a26f729d/dotnet-sdk-6.0.100-preview.1.21103.13-linux-arm64.tar.gz)
+sha512sums_x86_64=('86f591c70c73732030210e8e7ce39b7b4e4a680098862e340a4a8726bcb3f981f0748baec0fce8c5c4a8615670a72ab92bfad8d0dc0a305401bbc5864116996a')
+sha512sums_armv7h=('05a5a0f9b3738042eedbce37105ceb95480ca8175d85ec7300c32949ee205a66b5e12583fff9f72d9161af56923842d388e6791f18aa7109a8c823461dd5d8d5')
+sha512sums_aarch64=('fe79c1554bea30039390e6c9efe00623338fdeb1f471d8c74b41d43d38230d383e215859905f4c057bfd1ba027f7f157c4d5d215f961d3663aed60dcbe870add')
 
 package_dotnet-host-preview() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
@@ -56,8 +57,8 @@ package_dotnet-runtime-preview() {
   )
 
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=(dotnet-runtime=${_runtimever%-*} dotnet-runtime-5.0)
-  conflicts=(dotnet-runtime=${_runtimever%-*})
+  provides=(dotnet-runtime=${_dotnetruntimever%-*} dotnet-runtime-6.0)
+  conflicts=(dotnet-runtime=${_dotnetruntimever%-*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -67,8 +68,8 @@ package_dotnet-runtime-preview() {
 package_aspnet-runtime-preview() {
   pkgdesc='The ASP.NET Core runtime (preview, binary)'
   depends=(dotnet-runtime-preview)
-  provides=(aspnet-runtime=${_runtimever%-*} aspnet-runtime-5.0)
-  conflicts=(aspnet-runtime=${_runtimever%-*})
+  provides=(aspnet-runtime=${_aspnetruntimever%-*} aspnet-runtime-6.0)
+  conflicts=(aspnet-runtime=${_aspnetruntimever%-*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -84,7 +85,7 @@ package_dotnet-sdk-preview() {
     netstandard-targeting-pack-2.1
   )
   optdepends=('aspnet-targeting-pack-preview: Build ASP.NET Core applications')
-  provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-5.0)
+  provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-6.0)
   conflicts=(dotnet-sdk=${_sdkver%-*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
@@ -105,8 +106,8 @@ package_dotnet-sdk-preview() {
 package_dotnet-targeting-pack-preview() {
   pkgdesc='The .NET Core targeting pack (preview, binary)'
   depends=(netstandard-targeting-pack-2.1)
-  provides=(dotnet-targeting-pack=${_runtimever%-*} dotnet-targeting-pack-5.0)
-  conflicts=(dotnet-targeting-pack=${_runtimever%-*})
+  provides=(dotnet-targeting-pack=${_dotnetruntimever%-*} dotnet-targeting-pack-6.0)
+  conflicts=(dotnet-targeting-pack=${_dotnetruntimever%-*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-x64,Ref} "${pkgdir}"/usr/share/dotnet/packs/
@@ -116,8 +117,8 @@ package_dotnet-targeting-pack-preview() {
 package_aspnet-targeting-pack-preview() {
   pkgdesc='The ASP.NET Core targeting pack (preview, binary)'
   depends=(dotnet-targeting-pack-preview)
-  provides=(aspnet-targeting-pack=${_runtimever%-*} aspnet-targeting-pack-5.0)
-  conflicts=(aspnet-targeting-pack=${_runtimever%-*})
+  provides=(aspnet-targeting-pack=${_aspnetruntimever%-*} aspnet-targeting-pack-6.0)
+  conflicts=(aspnet-targeting-pack=${_aspnetruntimever%-*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/

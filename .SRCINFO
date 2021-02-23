@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-preview
-	pkgver = 5.0.0+100+rc.2.20479.15
+	pkgver = 6.0.0.sdk100+preview.1.21103.13
 	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -7,30 +7,30 @@ pkgbase = dotnet-core-preview
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/69cb8922-7bb0-4d3a-aa92-8cb885fdd0a6/2fd4da9e026f661caf8db9c1602e7b2f/dotnet-sdk-5.0.100-rc.2.20479.15-linux-x64.tar.gz
-	sha512sums_x86_64 = e705043cdec53827695567eed021c76b100d77416f10cc18d4f5d02950f85bf9ccd7e2c22643f00a883e11b253fb8aa098e4dce008008a0796f913496f97e362
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/068ebc6e-4a1d-45ec-a766-733a142f2839/e0da4c731c943ca2b267c15edb565108/dotnet-sdk-5.0.100-rc.2.20479.15-linux-arm.tar.gz
-	sha512sums_armv7h = 22e97c15393a4f986563f5e8b031b49983eb55531170b86594d7caab819b41032393a9b3db4ee96cb88fae3971ba243bb64187606e3a00fc64d2e434d906a637
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/b416bc12-1478-4241-bc31-6fe68f8b73b6/582f018a97172f4975973390cf3f58e7/dotnet-sdk-5.0.100-rc.2.20479.15-linux-arm64.tar.gz
-	sha512sums_aarch64 = 1aab49b2c328c4de8c40e790df99aa327a3aeba5d904696fa151acbfb7b5620ebf3d1e2e9726895d92b6146295840ffe3f2fb7208a81c7b73d2c92c9fcf50dbf
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/579aac9e-53dd-404e-9452-9910bc9be422/1c47683215dd54a3837fc4b338ddb6a6/dotnet-sdk-6.0.100-preview.1.21103.13-linux-x64.tar.gz
+	sha512sums_x86_64 = 86f591c70c73732030210e8e7ce39b7b4e4a680098862e340a4a8726bcb3f981f0748baec0fce8c5c4a8615670a72ab92bfad8d0dc0a305401bbc5864116996a
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/3b62cfcf-589e-43b3-993b-517c70c93a22/0ecae846884376fecc5de8a4f6d6c927/dotnet-sdk-6.0.100-preview.1.21103.13-linux-arm.tar.gz
+	sha512sums_armv7h = 05a5a0f9b3738042eedbce37105ceb95480ca8175d85ec7300c32949ee205a66b5e12583fff9f72d9161af56923842d388e6791f18aa7109a8c823461dd5d8d5
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/9143768a-e997-45b5-b818-e5b96ac0c24c/b5c7eb4476e9cdb56deb62d2a26f729d/dotnet-sdk-6.0.100-preview.1.21103.13-linux-arm64.tar.gz
+	sha512sums_aarch64 = fe79c1554bea30039390e6c9efe00623338fdeb1f471d8c74b41d43d38230d383e215859905f4c057bfd1ba027f7f157c4d5d215f961d3663aed60dcbe870add
 
 pkgname = dotnet-host-preview
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
 	depends = glibc
 	provides = dotnet-host
-	provides = dotnet-host=5.0.0
+	provides = dotnet-host=6.0.0
 	conflicts = dotnet-host
 
 pkgname = aspnet-runtime-preview
 	pkgdesc = The ASP.NET Core runtime (preview, binary)
 	depends = dotnet-runtime-preview
-	provides = aspnet-runtime=5.0.0
-	provides = aspnet-runtime-5.0
-	conflicts = aspnet-runtime=5.0.0
+	provides = aspnet-runtime=6.0.0
+	provides = aspnet-runtime-6.0
+	conflicts = aspnet-runtime=6.0.0
 
 pkgname = dotnet-runtime-preview
 	pkgdesc = The .NET Core runtime (preview, binary)
-	depends = dotnet-host>=5.0.0
+	depends = dotnet-host>=6.0.0
 	depends = glibc
 	depends = icu
 	depends = krb5
@@ -39,9 +39,9 @@ pkgname = dotnet-runtime-preview
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=5.0.0
-	provides = dotnet-runtime-5.0
-	conflicts = dotnet-runtime=5.0.0
+	provides = dotnet-runtime=6.0.0
+	provides = dotnet-runtime-6.0
+	conflicts = dotnet-runtime=6.0.0
 
 pkgname = dotnet-sdk-preview
 	pkgdesc = The .NET Core SDK (preview, binary)
@@ -50,21 +50,21 @@ pkgname = dotnet-sdk-preview
 	depends = glibc
 	depends = netstandard-targeting-pack-2.1
 	optdepends = aspnet-targeting-pack-preview: Build ASP.NET Core applications
-	provides = dotnet-sdk=5.0.100
-	provides = dotnet-sdk-5.0
-	conflicts = dotnet-sdk=5.0.100
+	provides = dotnet-sdk=6.0.100
+	provides = dotnet-sdk-6.0
+	conflicts = dotnet-sdk=6.0.100
 
 pkgname = dotnet-targeting-pack-preview
 	pkgdesc = The .NET Core targeting pack (preview, binary)
 	depends = netstandard-targeting-pack-2.1
-	provides = dotnet-targeting-pack=5.0.0
-	provides = dotnet-targeting-pack-5.0
-	conflicts = dotnet-targeting-pack=5.0.0
+	provides = dotnet-targeting-pack=6.0.0
+	provides = dotnet-targeting-pack-6.0
+	conflicts = dotnet-targeting-pack=6.0.0
 
 pkgname = aspnet-targeting-pack-preview
 	pkgdesc = The ASP.NET Core targeting pack (preview, binary)
 	depends = dotnet-targeting-pack-preview
-	provides = aspnet-targeting-pack=5.0.0
-	provides = aspnet-targeting-pack-5.0
-	conflicts = aspnet-targeting-pack=5.0.0
+	provides = aspnet-targeting-pack=6.0.0
+	provides = aspnet-targeting-pack-6.0
+	conflicts = aspnet-targeting-pack=6.0.0
 
