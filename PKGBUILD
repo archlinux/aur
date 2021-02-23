@@ -9,6 +9,7 @@ url="https://www.harrisonconsoles.com/site/ava-plugins.html"
 license=('EULA')
 groups=('pro-audio' 'vst-plugins')
 depends=('glibc' 'libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 
 prepare () {
 	## Extract AVA Plugins Archive
