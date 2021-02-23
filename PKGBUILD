@@ -2,7 +2,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=keep
-pkgver=2.10
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A Meta CLI toolkit : Personal shell command keeper"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-setuptools' 'python-click' 'python-requests' 'python-tabulate' 'python-terminaltables' 'python-pygithub')
 source=("https://pypi.io/packages/source/k/keep/keep-$pkgver.tar.gz"
         "$pkgname-LICENSE.md::https://raw.githubusercontent.com/OrkoHunter/keep/master/LICENSE.md")
-sha1sums=('e083ff12532a178c636059f77ecb1c950e3fe317'
+sha1sums=('a7b9bf032bca88418e41654cf84c41734b114efe'
           '07b3e631d4a0653c802d196bfef7dc06a74d9c5c')
 
 package() {
