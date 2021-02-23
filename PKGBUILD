@@ -2,7 +2,7 @@
 
 _pkgname=usb-imager
 pkgname=${_pkgname}-git
-pkgver=1.0.r3.ga39ca8a
+pkgver=1.0
 pkgrel=1
 pkgdesc='GUI-Application to write bootable disk images to USB key.'
 arch=(any)
@@ -25,7 +25,7 @@ depends=(
   'hicolor-icon-theme'
 )
 
-source=("${pkgname}::git+https://gitlab.com/skynet-devel/usb-imager.git#branch=master")
+source=("${pkgname}::git+https://gitlab.com/skynet-devel/usb-imager.git")
 sha256sums=('SKIP')
 
 pkgver() {
