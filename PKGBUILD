@@ -3,11 +3,11 @@ pkgdesc="Bitcoin Cash Node"
 pkgbase=bitcoin-cash
 pkgname=("${pkgbase}" "${pkgbase}-qt")
 pkgver=22.2.0
-pkgrel=0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
 license=('MIT')
-source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.tar.gz
+source=(https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/archive/v${pkgver}/bitcoin-cash-node-v${pkgver}.tar.bz2
         ${pkgbase}.sysusers
         ${pkgbase}.tmpfiles
         ${_bitcoin}.conf
@@ -15,8 +15,7 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         ${_bitcoin}.service
         ${_bitcoin}-reindex.service
         ${_bitcoin}.desktop)
-
-sha256sums=('073d046d881fdd25659d6955e1812e505d3227e4d5d7fe23c929b0a980c1b2c2'
+sha256sums=('7cee4b738b080dd1b4e773f024cbd02bc209c56d3c9e0f85e5bafd06950ad38d'
             '27d0d4cf1a5dbf502db709d1d799baf137ecdfe2d9224ba6e599cad72aa80644'
             '24a17167ac26e2b6076266a7360336c7fa989684dd9732ab0408ef010988e715'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
@@ -29,7 +28,7 @@ backup=('etc/bitcoin/${_bitcoin}.conf'
 makedepends=('boost' 'cmake' 'desktop-file-utils' 'libevent' 'miniupnpc' 'ninja' 'protobuf' 'qrencode' 'qt5-tools' 'zeromq')
 
 build() {
-  cd "$srcdir/bitcoin-cash-node-$pkgver"
+  cd "$srcdir/bitcoin-cash-node-v$pkgver"
 
   msg2 'Building...'
   mkdir -p build
@@ -47,7 +46,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/bitcoin-cash-node-$pkgver"
+  cd "$srcdir/bitcoin-cash-node-v$pkgver"
 
   msg2 'Testing... (skipped)'
   #ninja check
@@ -59,7 +58,7 @@ package_bitcoin-cash() {
   conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-seeder' 'bitcoin-cash-node')
   depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode')
 
-  cd "$srcdir/bitcoin-cash-node-$pkgver"
+  cd "$srcdir/bitcoin-cash-node-v$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname}"
@@ -107,7 +106,7 @@ package_bitcoin-cash-qt() {
   conflicts=('bitcoin-qt' 'bitcoin-cash-node-qt')
   depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode' 'bitcoin-cash')
 
-  cd "$srcdir/bitcoin-cash-node-$pkgver"
+  cd "$srcdir/bitcoin-cash-node-v$pkgver"
 
   msg2 'Installing desktop shortcut...'
   install -Dm644 "$srcdir/bitcoin.desktop" \
