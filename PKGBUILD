@@ -71,7 +71,7 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-uksm
-pkgver=5.11.0
+pkgver=5.11.1
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -105,7 +105,7 @@ done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-            '9d49118bb60c0277ebac5aadd4938eb41561dd3d97c9422832e62d0ffc5c59df'
+            '67807680e13ac10775212046d56c0b48e4d704ec396826b2dddf4930ffb964fb'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
             '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc')
