@@ -1,6 +1,6 @@
 pkgbase = dragonwolf
 	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths.
-	pkgver = 87.0a1.r635545+.3cbb3c8b2b5e+
+	pkgver = 88.0a1.r635697+.20c676649a86+
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
 	arch = x86_64

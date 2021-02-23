@@ -9,7 +9,7 @@
 
 pkgname=dragonwolf
 _pkgname=DragonWolf
-pkgver=87.0a1.r635545+.3cbb3c8b2b5e+
+pkgver=88.0a1.r635697+.20c676649a86+
 pkgrel=1
 pkgdesc=" 	Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
 arch=(x86_64 aarch64)
@@ -74,7 +74,7 @@ sha256sums_aarch64=('SKIP'
                     '5d9a0064832c45759328d3c14e4da8cc061d9df5637e8b20e8eb2e1a08983b79')
 pkgver() {
   cd mozilla-unified
-  printf "87.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "87.0a1.r%s" "$(hg identify -n)"
 }
 
 prepare() {
@@ -107,6 +107,15 @@ export CXX=clang++
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-libevent
+ac_add_options --with-system-icu
+ac_add_options --with-system-zlib
+ac_add_options --with-system-jpeg
 
 # Branding
 ac_add_options --enable-update-channel=nightly
@@ -168,7 +177,7 @@ fi
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  patch -p1 -i ../unity-menubar.patch
+  # patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
