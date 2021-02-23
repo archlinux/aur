@@ -1,0 +1,11 @@
+pkgbase = fzf-sk-symlink
+	pkgdesc = Runs sk if fzf is called
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = skim
+	provides = fzf
+	conflicts = fzf
+	conflicts = fzf-git
+
+pkgname = fzf-sk-symlink
