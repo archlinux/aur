@@ -1,6 +1,6 @@
 pkgbase = nwg-panel
 	pkgdesc = GTK3-based panel for sway window manager
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-panel
 	arch = x86_64
@@ -12,17 +12,17 @@ pkgbase = nwg-panel
 	depends = python-i3ipc
 	depends = python-netifaces
 	depends = python-pyalsa
+	depends = python-psutil
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = light
 	depends = alsa-utils
-	depends = upower
 	depends = playerctl
 	optdepends = bluez: for Bluetooth status
 	optdepends = bluez-utils: for Bluetooth status
 	optdepends = wlr-randr: for non-sway window managers support
-	source = https://github.com/nwg-piotr/nwg-panel/archive/v0.1.3.tar.gz
-	md5sums = d055d0862e57b4712c0d7d806b219220
+	source = https://github.com/nwg-piotr/nwg-panel/archive/v0.1.4.tar.gz
+	md5sums = c7d7ed4082a764346254c0da488ec6c3
 
 pkgname = nwg-panel
 
