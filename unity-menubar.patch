@@ -4476,7 +4476,7 @@
 +#endif /* __nsNativeMenuDocListener_h__ */
 --- /dev/null
 +++ b/widget/gtk/nsNativeMenuService.cpp
-@@ -0,0 +1,503 @@
+@@ -0,0 +1,504 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* vim:expandtab:shiftwidth=4:tabstop=4:
 + */
@@ -4487,6 +4487,7 @@
 +#include "mozilla/Assertions.h"
 +#include "mozilla/Preferences.h"
 +#include "mozilla/UniquePtr.h"
++#include "mozilla/dom/Element.h"
 +#include "nsCOMPtr.h"
 +#include "nsCRT.h"
 +#include "nsGtkUtils.h"
