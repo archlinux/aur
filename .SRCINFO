@@ -61,3 +61,6 @@ pkgname = jdk8-adoptopenjdk
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 
+pkgname = adoptopenjdk8-src
+	pkgdesc = AdoptOpenJDK Java ${pkgver%u*} sources
+

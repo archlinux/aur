@@ -4,11 +4,14 @@ jre8-adoptopenjdk-8u*.pkg.tar.zst
 jre8-adoptopenjdk-8u*.pkg.tar.xz
 jdk8-adoptopenjdk-8u*.pkg.tar.zst
 jdk8-adoptopenjdk-8u*.pkg.tar.xz
+adoptopenjdk8-src-8u*.pkg.tar.zst
+adoptopenjdk8-src-8u*.pkg.tar.xz
 OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz
 java8-adoptopenjdk-8u*.log
-jre8-adoptopenjdk-8u282-1-x86_64.pkg.tar.zst-namcap.log
-jre8-adoptopenjdk-headless-8u282-1-x86_64.pkg.tar.zst-namcap.log
-jdk8-adoptopenjdk-8u282-1-x86_64.pkg.tar.zst-namcap.log
+jre8-adoptopenjdk-8u*.log
+jre8-adoptopenjdk-headless-8u*.log
+jdk8-adoptopenjdk-8u*.log
+adoptopenjdk8-src-8u*.log
 PKGBUILD-namcap.log
 pkg/
 src/

@@ -2,7 +2,7 @@
 # Contributor: Leeo97one <contact.leeo97one@gmail.com>
 
 pkgbase=java8-adoptopenjdk
-pkgname=("${pkgbase/java/jre}-headless" "${pkgbase/java/jre}" "${pkgbase/java/jdk}")
+pkgname=("${pkgbase/java/jre}-headless" "${pkgbase/java/jre}" "${pkgbase/java/jdk}" "${pkgbase/java8-/}8-src")
 pkgver=8u282
 _jdk_build=08
 pkgrel=1
@@ -148,10 +148,10 @@ package_jdk8-adoptopenjdk() {
   for _binary_file in $(ls | grep -v "java-rmi.cgi"); do
     if [ -e "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/bin/${_binary_file}" ]; then
       # Provide a link of the jre binary in the jdk/bin/ directory
-      ln -s "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/bin/${_binary_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
+      ln -s "../jre/bin/${_binary_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
     else
       # Copy binary to jdk/bin/
-      install -Dm755 ${_binary_file} "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
+      install -Dm755 "${_binary_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
       # Copy man page
       if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_binary_file}.1" ]; then
         install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_binary_file}.1" "${pkgdir}/usr/share/man/man1/${_binary_file}-${pkgbase/java8-/}${pkgver%u*}.1"
@@ -169,4 +169,10 @@ package_jdk8-adoptopenjdk() {
   # link license
   install -dm755 "${pkgdir}/usr/share/licenses/"
   ln -sf "/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_adoptopenjdk8-src() {
+  pkgdesc='AdoptOpenJDK Java ${pkgver%u*} sources'
+
+  install -D "${srcdir}/jdk${pkgver}-b${_jdk_build}/src.zip" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/src.zip"
 }
