@@ -3,16 +3,17 @@
 pkgdesc='Dropbox integration into Nextcloud'
 pkgname=('nextcloud-app-integration-dropbox')
 _appname='integration_dropbox'
-pkgver=0.0.17
+pkgver='0.0.18'
 pkgrel=1
 arch=('any')
 license=('AGPL3')
-url="https://github.com/eneiluj/integration_dropbox"
+_repo="eneiluj/integration_dropbox"
+url="https://github.com/${_repo}"
 makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.tar.gz")
-sha512sums=('e931facbcb760ea806ed2931de0ab1eaac1af70ef7df895a8da8692bc1516713e242d355cff5fcfced7af1aacfa628d6d1b9a3041e7c3da059156262b5bf902e')
+sha512sums=('025c3fb49046569a79a56b53a5933ec109015fc224b406846fb8b793531cfc79bdf9def11d67e61eb0fabbd45de2ed3ce03f5f0d67e56fa716b4e017201eef80')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
