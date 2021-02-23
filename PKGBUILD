@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('evcxr_repl')
 source=("https://github.com/google/evcxr/archive/v${pkgver}.tar.gz")
-sha256sums=("ed974b387bee7e4619000a971cabddd423d0f4df9254649e85dee136fd6c4b00")
+sha256sums=("73cc849a602c3b05a2042b2eb95ed8d4a1afe115e25a81ee8bf216d9367d063f")
 
 build() {
   cd "$srcdir/evcxr-$pkgver/$pkgname"
