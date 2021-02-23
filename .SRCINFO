@@ -1,15 +1,15 @@
 pkgbase = otf-source-han-code-jp
 	pkgdesc = Japanese OpenType font for developers. Made by mixing SourceHanSans and SourceCodePro
-	pkgver = 2.011
-	pkgrel = 3
+	pkgver = 2.012
+	pkgrel = 1
 	url = https://github.com/adobe-fonts/source-han-code-jp
 	install = otf-source-han-code-jp.install
 	arch = any
 	license = custom
 	depends = fontconfig
 	depends = xorg-mkfontscale
-	source = https://github.com/adobe-fonts/source-han-code-jp/archive/2.011R.tar.gz
-	md5sums = 830fe735c5a14949e482da78b0c080ad
+	source = https://github.com/adobe-fonts/source-han-code-jp/archive/2.012R.tar.gz
+	md5sums = 1de1386bdcc357d9939d7352234945f9
 
 pkgname = otf-source-han-code-jp
 
