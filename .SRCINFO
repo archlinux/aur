@@ -1,7 +1,7 @@
 pkgbase = libcimply
-	pkgdesc = A simple program to fetch system information written in C
+	pkgdesc = A simple library to get system and user information
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caverym/cimplefetch
 	arch = i686
 	arch = pentium4
