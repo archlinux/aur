@@ -1,6 +1,6 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 pkgname=evcxr_repl
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A Rust REPL based on evcxr"
 arch=('i686' 'x86_64')
