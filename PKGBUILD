@@ -4,7 +4,7 @@
 
 pkgname=zram-init
 
-pkgver=10.9
+pkgver=10.10
 pkgrel=1
 
 pkgdesc='Setup zram-based tmpfs and swap (compressed RAM devices)'
@@ -16,7 +16,7 @@ backup=('etc/modprobe.d/zram.conf')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('99454fa68a3c399308d3fef47c5f337bccf15614e7a1dc8e7f1dce50198c32ad'
+sha256sums=('60ce6b9283e736b57b2e686e942dd0bee3b83902d9b260a138d13114cc6244a3'
             'SKIP')
 validpgpkeys=('123D62DD87E7A81CA090CD65D18FC49C6F3A8EC0')
 
