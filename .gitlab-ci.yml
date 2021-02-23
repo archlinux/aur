@@ -1,0 +1,12 @@
+image: "registry.devseed.de/all-the-things/docker-archlinux"
+
+test:makepkg
+  script:
+    # Test building a source package
+    - sudo -u nobody makepkg -C -S --log --noconfirm
+    # Test building and installing the package
+    - sudo -u nobody makepkg -C -i --log --noconfirm
+
+      #curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+      #grep '"tag_name":' |                                            # Get tag line
+      #sed -E 's/.*"([^"]+)".*/\1/'

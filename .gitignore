@@ -1,0 +1,9 @@
+# ignore everything
+*
+*/
+
+# exclude from ignore
+!PKGBUILD
+!.gitignore
+!.gitlab-ci.yml
+!.SRCINFO
