@@ -11,8 +11,15 @@ license=('GPL')
 depends=('gd')
 makedepends=()
 options=()
-source=( "http://www.mcternan.me.uk/mscgen/software/$pkgname-src-$pkgver.tar.gz" )
-sha256sums=('3c3481ae0599e1c2d30b7ed54ab45249127533ab2f20e768a0ae58d8551ddc23')
+source=("http://www.mcternan.me.uk/mscgen/software/$pkgname-src-$pkgver.tar.gz"
+        "debian-width-never-less-than-zero.patch")
+sha256sums=('3c3481ae0599e1c2d30b7ed54ab45249127533ab2f20e768a0ae58d8551ddc23'
+            '690f8c1bd3a2e0ce7dbfa1297dbc56145427361563c9a0b4b07f044a007a0511')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/debian-width-never-less-than-zero.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

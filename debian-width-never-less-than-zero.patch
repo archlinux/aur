@@ -1,0 +1,11 @@
+--- a/src/gd_out.c    2011-03-05 11:51:50.000000000 +0100
++++ b/src/gd_out.c   2021-02-23 15:23:00.434133429 +0100
+@@ -212,6 +212,6 @@
+      *  the right of the last character for the fixed width
+      *  font.
+      */
+-    return rect[2] - 1;
++    return rect[2] ? rect[2] - 1 : 0;
+ #endif
+ }
+ 
