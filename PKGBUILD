@@ -1,7 +1,7 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_timesheet
 _name=trytond_timesheet
-pkgver=5.8.1
+pkgver=5.8.2
 _pkgdir=5.8
 pkgrel=2
 pkgbase=python-$_name
@@ -12,9 +12,9 @@ license=('GPL3')
 depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('71b6a56aefb8a4578a470d6cd9a6b2ff9561af5eceffc688abea5114adafd3a9')
-sha512sums=('1abd8b377dc016eb4a2090263d2902ce9159f14d9d73dd4c4ae1729e195a78138a03fe6237e9ae8e0d1ceba9084c41394741c6b14a497906bcb2a20996f9f083')
-b2sums=('7f200040115bb066a6d98f3d7213a9f7b046f1c891f7aed85542bf2f7e51816acf2c733dee1e2dcace7ca6e23da80c491f4f05eac9569b836452d7ed3952c8ad')
+sha256sums=('73974cd78b9bf4eeaa88b892b93f2dad48c30527f460322f4e2829fff572f6ad')
+sha512sums=('aa7e191ba41a991343d46b4fde4b2e66d188a2cb7f5f1e227bcab647575ebe5a06684558da95ac99ddf3ef7f88411507e2cd8b5eff1a5983be2991e41b3253c1')
+b2sums=('d8c28c1fae987cc080ccb3ea88499269707ff23436e1509d2272038a26615d7019a87e8c092f3e22d47d9924061fdb6aae9748bcbaf238e05be5ecbd98c9038b')
 
 build() {
   cd $srcdir/$_name-$pkgver
