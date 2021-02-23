@@ -1,0 +1,17 @@
+pkgbase = python-modin
+	pkgdesc = Speed up your Pandas workflows by changing a single line of code
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/modin-project/modin
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-dask
+	depends = python-distributed
+	depends = python-numpy
+	depends = python-pandas
+	source = modin-0.8.3.tar.gz::https://github.com/modin-project/modin/archive/0.8.3.tar.gz
+	sha512sums = 2a00731215c0fb12471de72db7b620e6ac1bcabd2acd876dfd3c355ccef45636552990ba86f176f3d65d43a5ebe852e5f6de7a4d1b5dfe0237ec3ff1100178ad
+
+pkgname = python-modin
+
