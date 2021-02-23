@@ -1,6 +1,6 @@
 pkgbase = sqlectron-gui
 	pkgdesc = A simple and lightweight SQL client with cross database and platform support
-	pkgver = 1.34.0
+	pkgver = 1.35.0
 	pkgrel = 1
 	url = https://sqlectron.github.io/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sqlectron-gui
 	makedepends = npm
 	makedepends = python2
 	depends = electron9
-	source = git+https://github.com/sqlectron/sqlectron-gui.git#tag=v1.34.0
+	source = git+https://github.com/sqlectron/sqlectron-gui.git#tag=v1.35.0
 	source = sqlectron-gui.desktop
 	sha1sums = SKIP
 	sha1sums = b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f

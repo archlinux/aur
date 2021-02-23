@@ -3,7 +3,7 @@
 
 pkgname=sqlectron-gui
 _electron=electron9
-pkgver=1.34.0
+pkgver=1.35.0
 pkgrel=1
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
@@ -40,6 +40,7 @@ prepare() {
 		-e '/"postinstall":/            d' \
 		-e '/"electron":/               d' \
 		-e '/"electron-builder":/       d' \
+		-e '/"electron-devtools-installer":/  d' \
 		-e '/"spawn-auto-restart":/     d' \
 		-e '/"webpack-dev-middleware":/ d' \
 		-e '/"webpack-dev-server":/     d' \
