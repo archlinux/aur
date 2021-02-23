@@ -2,7 +2,7 @@
 
 pkgname=cocoalib
 pkgver=0.99712
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
