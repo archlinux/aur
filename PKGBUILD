@@ -3,35 +3,34 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-lzlib
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="Lzlib is a data compression library providing in-memory LZMA compression and decompression functions (mingw-w64)"
 arch=('any')
 url="https://www.nongnu.org/lzip/lzlib.html"
 license=('2-clause BSD')
 depends=()
-makedepends=('mingw-w64-gcc')
+makedepends=('mingw-w64-configure' 'mingw-w64-make')
 options=('!strip' 'staticlibs' '!buildflags')
 
 source=("http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-${pkgver}.tar.gz")
-sha256sums=('6c5c5f8759d1ab7c4c3c53788ea2d9daad04aeddcf338226893f8ff134914d36')
+sha256sums=('8e5d84242eb52cf1dcc98e58bd9ba8ef1aefa501431abdd0273a22bf4ce337b1')
 
 build() {
   cd "${srcdir}/lzlib-${pkgver}"
   for _arch in $_architectures; do
-    mkdir -p "${srcdir}/build-${_arch}"
-    cp -a "${srcdir}/lzlib-${pkgver}/"* "${srcdir}/build-${_arch}"
-    cd "${srcdir}/build-${_arch}"
-    ./configure CC=${_arch}-gcc --prefix=/usr/${_arch}
-    make
-    ## make check
+    mkdir "build-${_arch}" && pushd "build-${_arch}"
+    ${_arch}-configure
+    ${_arch}-make
+    ## ${_arch}-make check
+    popd
   done
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
   for _arch in ${_architectures}; do
-    cd "${srcdir}/build-${_arch}"
-    DESTDIR="${pkgdir}" make install
+    cd "${srcdir}/lzlib-${pkgver}/build-${_arch}"
+    DESTDIR="${pkgdir}" ${_arch}-make install
   done
 }
