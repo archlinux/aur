@@ -19,8 +19,8 @@ sha256sums=('40e43fbc983e1cfd1ea32c852918ebce88d243f7ed943031696bdc7e01e55784'
 build() {
   cd "$_pkgname"
   npm install
-  npm run build
   export NODE_ENV=production
+  npm run build
   node_modules/.bin/electron-builder --linux dir -p never
 }
 
