@@ -6,7 +6,7 @@ _sdkver="${_sdkShortVer}.0.0"
 _rev='r05'
 pkgname="android-wear-x86-system-image-${_apilevel}"
 pkgver="${_apilevel}_${_sdkver}_${_rev}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Wear OS Intel x86 Atom System Image, API ${_apilevel}"
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
@@ -19,7 +19,7 @@ options=('!strip')
 source=("http://dl.google.com/android/repository/sys-img/android-wear/x86-${_apilevel}_${_rev}.zip"
         "package.xml")
 sha256sums=('7289bc1dbd70ab312e5b936bdfd8944ea4ab9ff7443a77a69d9cab3e8f27d227'
-            'c58d6aec88e77041f6c04b443e8f93bfb29bb49e6caee160bc26f1d5fc949565')
+            '045419cb1e70ba748b9ae40e2abc13027df1594c485c06df478ff4a587aa8e08')
 
 prepare() {
   # Fix permissions
