@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-extensions-sync-git
 pkgver=10.r1.gf78a112
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync all extensions and their configurations across all gnome instances"
 arch=('any')
 url="https://github.com/oae/gnome-shell-extensions-sync"
@@ -37,7 +37,9 @@ package() {
   local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
   install -dm755 "${destdir}"
-  cp -r * "${destdir}"
-  install -Dm644 "schemas/${schema}" \
+  find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|mo|compiled|svg|glade)$" -exec\
+     install -Dm 644 {} ${destdir}/{} \;
+  install -Dm644 "${srcdir}/${pkgname%-git}/dist/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
 }
+
