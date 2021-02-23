@@ -1,9 +1,9 @@
 pkgbase = i3-cinnamon-git
 	pkgdesc = Starts i3 inside a cinnamon session.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://github.com/jbbr/i3-cinnamon/
+	url = https://github.com/jthomaschewski/i3-cinnamon/
 	arch = any
 	license = MIT
 	depends = i3-wm
@@ -11,7 +11,7 @@ pkgbase = i3-cinnamon-git
 	depends = cinnamon-settings-daemon
 	optdepends = gdm: Recommended display manager
 	provides = i3-cinnamon
-	source = git+https://github.com/jbbr/i3-cinnamon
+	source = git+https://github.com/jthomaschewski/i3-cinnamon
 	sha256sums = SKIP
 
 pkgname = i3-cinnamon-git

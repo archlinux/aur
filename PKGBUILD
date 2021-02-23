@@ -1,18 +1,18 @@
-# Maintainer: Janek Thomaschewski <janek@jbbr.net>
+# Maintainer: Janek Thomaschewski <janek@thomaschewski.dev>
 # Contributors: Jesús Castro <x51v4n@gmail.com>, @killajoe, @Snowmobil, @ThomasWeiser (GitHub)
 pkgname=i3-cinnamon-git
 _pkgname=i3-cinnamon
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Starts i3 inside a cinnamon session."
 arch=('any')
-url="https://github.com/jbbr/i3-cinnamon/"
+url="https://github.com/jthomaschewski/i3-cinnamon/"
 license=('MIT')
 depends=('i3-wm' 'cinnamon-session' 'cinnamon-settings-daemon')
 provides=('i3-cinnamon')
 optdepends=('gdm: Recommended display manager')
-source=('git+https://github.com/jbbr/i3-cinnamon')
+source=('git+https://github.com/jthomaschewski/i3-cinnamon')
 sha256sums=('SKIP')
 
 build() {
