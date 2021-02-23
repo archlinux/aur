@@ -47,10 +47,8 @@ build() {
 package() {
         cd "${srcdir}/${pkgname}"
 
-        _unitdir="$(pkg-config --variable=systemdsystemunitdir systemd)"
-
         make USRSBINDIR=/usr/bin SBINDIR=/usr/bin INSTALLDIR="${pkgdir}" install
         install -Dm644 "${srcdir}/tomoyo-auditd.service" \
-                "${pkgdir}/${_unitdir}/tomoyo-auditd.service"
+                "${pkgdir}/usr/lib/systemd/system/tomoyo-auditd.service"
 }
 
