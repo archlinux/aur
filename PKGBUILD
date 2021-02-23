@@ -1,7 +1,7 @@
 # Maintainer: okhsunrog <me@gornushko.com>
 pkgname=emptty-one-entry
-pkgver=0.5.0.r0.e89ca88
-pkgrel=2
+pkgver=0.5.0
+pkgrel=3
 pkgdesc="Dead simple CLI Display Manager on TTY. Only one login entry, auto choose"
 arch=('x86_64')
 url="https://github.com/okhsunrog/emptty"
@@ -17,12 +17,6 @@ conflicts=("${pkgname%-git}")
 backup=('etc/emptty/conf')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --tags --long $(git rev-list --all --max-count=1) \
-        | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
-}
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
