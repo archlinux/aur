@@ -4,7 +4,7 @@ pkgbase = pacproxy
 	pkgrel = 1
 	arch = x86_64
 	license = Apache
-	source = https://github.com/williambailey/pacproxy/releases/download/v.2.0.4/pacproxy_2.0.4_linux_amd64.tar.gz
+	source = pacproxy_2.0.4_linux_amd64.tar.gz::https://github.com/williambailey/pacproxy/releases/download/v.2.0.4/pacproxy_2.0.4_linux_amd64.tar.gz
 	sha256sums = e0836759847a0e69c3625f1fcd87fc324a19f5fb98771ab8da2e545ca82e4975
 
 pkgname = pacproxy
