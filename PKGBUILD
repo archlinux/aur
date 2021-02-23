@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Villavizar Trinidad <evillavizartrinidad@gmail.com>
 pkgname=xbacklight-ctl-git
 _pkgname=xbacklight-ctl
-pkgver=r32.b972c5c
+pkgver=r34.fad45ab
 pkgrel=1
 pkgdesc="Use xbacklight easily from the command line or with keybindings."
 arch=('any')
