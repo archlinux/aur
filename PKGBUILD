@@ -1,13 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kalk-git
-pkgver=V0.1.r79.g1e6254b
-pkgrel=1
+pkgver=v0.2.r3.g9eb1d6d
+pkgrel=2
 pkgdesc="Kalk is a powerful cross-platfrom calculator application built with the Kirigami framework"
 arch=('x86_64')
 url="https://invent.kde.org/plasma-mobile/kalk"
 license=('GPL3')
-depends=('ki18n' 'kconfig' 'kcoreaddons' 'knotifications' 'kirigami2' 'kunitconversion' 'kdbusaddons' 'plasma-framework')
+depends=('ki18n' 'kconfig' 'kcoreaddons' 'knotifications' 'kirigami2' 'kunitconversion'
+         'kdbusaddons' 'plasma-framework' 'gmp' 'mpfr')
 makedepends=('git' 'qt5-tools' 'extra-cmake-modules')
 provides=('kalk')
 conflicts=('kalk')
