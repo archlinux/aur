@@ -1,7 +1,7 @@
 pkgbase = mscgen
 	pkgdesc = Message Sequence Chart Generator
 	pkgver = 0.20
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mcternan.me.uk/mscgen/
 	arch = i686
 	arch = x86_64

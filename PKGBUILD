@@ -3,7 +3,7 @@
 # Contributor: Peter Simons <simons@cryp.to>
 pkgname=mscgen
 pkgver=0.20
-pkgrel=3
+pkgrel=4
 pkgdesc="Message Sequence Chart Generator"
 arch=('i686' 'x86_64')
 url='http://www.mcternan.me.uk/mscgen/'
