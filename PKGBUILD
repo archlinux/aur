@@ -2,8 +2,8 @@
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=xfce4-panel-profiles
-pkgver=1.0.12
-pkgrel=2
+pkgver=1.0.13
+pkgrel=1
 pkgdesc="Simple application to manage Xfce panel layouts"
 arch=('any')
 url="https://git.xfce.org/apps/xfce4-panel-profiles/about/"
@@ -13,15 +13,8 @@ depends=('xfce4-panel' 'python-gobject')
 makedepends=('intltool')
 conflicts=('xfpanel-switch')
 replces=('xfpanel-switch')
-source=("https://archive.xfce.org/src/apps/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
-        'fix_check_desktop_fn.patch')
-sha256sums=('246e459d2d2f3f524968440ed7fddb2a891567ebc05f10a800f7f5821b3452a7'
-            '0f126a008693bf86a8606564cbdafeec50b580eff1a273f60cc4e67dc1830748')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -uNp2 -r- -i ../fix_check_desktop_fn.patch
-}
+source=("https://archive.xfce.org/src/apps/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('bc387c13f94109422dc72b0fcb919b0dc11619ba589d03e492252b0d2513b170')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
