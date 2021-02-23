@@ -1,0 +1,11 @@
+post_install() {
+	echo "To finish installation, run \`emit nvm_install\` from fish"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo "To finish uninstallation, run \`emit nvm_uninstall\` from fish"
+}
