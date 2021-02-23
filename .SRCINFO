@@ -1,7 +1,7 @@
 pkgbase = openvslam-git
 	pkgdesc = A Versatile Visual SLAM Framework
-	pkgver = r428.e069085
-	pkgrel = 2
+	pkgver = r474.9eb280a
+	pkgrel = 1
 	url = https://github.com/xdspacelab/openvslam
 	arch = x86_64
 	license = BSD2
@@ -19,8 +19,10 @@ pkgbase = openvslam-git
 	depends = suitesparse
 	depends = yaml-cpp
 	provides = openvslam
-	source = openvslam-git-r428.e069085::git+https://github.com/xdspacelab/openvslam.git
+	source = openvslam-git-r474.9eb280a::git+https://github.com/xdspacelab/openvslam.git
+	source = patch.diff
 	sha256sums = SKIP
+	sha256sums = 181eb52ad721b4770263474b7c90c7f0a24cc81977a2f6b48f936b2d0559a43e
 
 pkgname = openvslam-git
 

@@ -1,8 +1,8 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=openvslam
 pkgname=${_name}-git
-pkgver=r428.e069085
-pkgrel=2
+pkgver=r474.9eb280a
+pkgrel=1
 pkgdesc="A Versatile Visual SLAM Framework"
 arch=('x86_64')
 url="https://github.com/xdspacelab/openvslam"
@@ -25,8 +25,12 @@ makedepends=(
 	'git'
 )
 provides=('openvslam')
-source=("${pkgname}-${pkgver}::git+https://github.com/xdspacelab/openvslam.git")
-sha256sums=('SKIP')
+source=(
+	"${pkgname}-${pkgver}::git+https://github.com/xdspacelab/openvslam.git"
+	"patch.diff"
+)
+sha256sums=('SKIP'
+            '181eb52ad721b4770263474b7c90c7f0a24cc81977a2f6b48f936b2d0559a43e')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -35,6 +39,10 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	# Fix build on gcc 10
+	git apply "${srcdir}/patch.diff"
+
 	[ ! -d build ] || rm -rf build
 	mkdir build && cd build
 	cmake .. \
