@@ -10,6 +10,7 @@ pkgbase = bazarr
 	depends = python-numpy
 	depends = python-webrtcvad-wheels
 	depends = ffmpeg
+	depends = unrar
 	options = !strip
 	options = staticlibs
 	source = bazarr-0.9.1.tar.gz::https://github.com/morpheus65535/bazarr/archive/v0.9.1.tar.gz

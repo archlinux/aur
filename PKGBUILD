@@ -15,6 +15,7 @@ depends=(
   'python-numpy'
   'python-webrtcvad-wheels'
   'ffmpeg'
+  'unrar'
 )
 
 source=(
