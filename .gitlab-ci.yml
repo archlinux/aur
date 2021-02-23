@@ -1,6 +1,6 @@
 image: "registry.devseed.de/all-the-things/docker-archlinux"
 
-test:makepkg
+test:makepkg:
   script:
     # Test building a source package
     - sudo -u nobody makepkg -C -S --log --noconfirm
