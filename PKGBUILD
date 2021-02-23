@@ -2,7 +2,7 @@
 
 pkgname=zluda
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='A drop-in replacement for CUDA on Intel GPUs'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
@@ -34,10 +34,7 @@ check() {
 }
 
 package() {
-    install -D -m755 ZLUDA/target/release/zluda_with -t "${pkgdir}/usr/bin"
-    install -D -m644 ZLUDA/target/release/libnvcuda.so -t "${pkgdir}/usr/lib"
-    install -D -m644 ZLUDA/target/release/libzluda_redirect.so -t "${pkgdir}/usr/lib"
+    install -D -m644 ZLUDA/target/release/libnvcuda.so "${pkgdir}/usr/lib/libcuda.so.1"
     install -D -m644 ZLUDA/LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s libnvcuda.so "${pkgdir}/usr/lib/libcuda.so"
-    ln -s libnvcuda.so "${pkgdir}/usr/lib/libcuda.so.1"
+    ln -s libcuda.so.1 "${pkgdir}/usr/lib/libcuda.so"
 }
