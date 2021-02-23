@@ -3,7 +3,7 @@
 
 pkgname=sudo-git
 _pkgname=sudo
-pkgrel=1
+pkgrel=2
 pkgver=SUDO_1_9_0.r543.g5fc6b8c17
 pkgdesc="Give certain users the ability to run some commands as root - git version"
 arch=('x86_64')
@@ -25,16 +25,16 @@ sha256sums=('SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 
   ./configure \
     --prefix=/usr \
@@ -56,12 +56,12 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make check
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir" install
 
   # sudo_logsrvd service file (taken from sudo-logsrvd-1.9.0-1.el8.x86_64.rpm)
