@@ -15,13 +15,11 @@ md5sums=('c6c556f72fbe35a4bdb777754e8e41aa')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i "s/PROJECTVERSION/$pkgver/g" setup.py
   python setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i "s/PROJECTVERSION/$pkgver/g" setup.py
   python setup.py install --prefix=/usr --root="$pkgdir"
   mkdir -p "$pkgdir/usr/lib/systemd/system"
   install -Dm644 amdfan/amdfan.service "$pkgdir/usr/lib/systemd/system/"
