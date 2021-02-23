@@ -2,7 +2,7 @@
 pkgname=run-one
 _bzr=70
 pkgver=1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Run just one instance of a command and its args at a time "
 arch=('any')
 url="https://launchpad.net/run-one"
@@ -17,4 +17,4 @@ package() {
   install -Dm644 run-one.1 "$pkgdir/usr/share/man/man1/run-one.1"
 }
 
-sha256sums=('82b58b12b881824e754f9d608d5973226a8bf9f360bcf40c5d66181987bfe7fc')
+sha256sums=('2582ec486ad91dacda511967a87fd80eec6bf924867576477c8f5cd93df3f91a')
