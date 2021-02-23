@@ -4,8 +4,8 @@
 # pkg: git
 
 pkgname=trackma-git
-pkgver=v0.8.4.r35.g981bdac
-pkgrel=2
+pkgver=0.8.4.r35.g981bdac
+pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -44,7 +44,8 @@ pkgver() {
   cd ${pkgname}
   (
     set -o pipefail
-    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags --long 2>/dev/null | sed \
+    	's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
