@@ -2,13 +2,14 @@
 
 pkgname=duality-bass-studio
 pkgver=1.2.5	
-pkgrel=1
+pkgrel=2
 pkgdesc="Duality Bass Studio Bass Amplifier (VST Plugin)."
 arch=('x86_64')
 url="https://audio-assault.com/duality.php"
 license=('EULA')
 groups=('pro-audio' 'vst-plugins')
 depends=('libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 source=("Duality Bass Studio.desktop")
 md5sums=('1bc9374533fb107086be2304f02f44cf')
 
