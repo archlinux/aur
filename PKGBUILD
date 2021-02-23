@@ -2,7 +2,7 @@
 
 _pkgname=Herwig
 pkgname=herwig
-pkgver=7.2.1
+pkgver=7.2.2
 pkgrel=1
 pkgdesc="Herwig is a multi-purpose particle physics event generator."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=("gcc-fortran" "thepeg" "boost-libs" "fastjet" "gsl" "lhapdf")
 makedepends=("sudo" "sed")
 source=("http://www.hepforge.org/archive/${pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('bd1e6a3ba019de290666f75e9514cf29d2b7c7ae60ebcae393adb978761074129a4e6c43355664fb371a2da879623b384697cd6fcfd38e263f2349f2ba1d6ba0')
+sha512sums=('3c0a08281ebea62370e6ed0262b731c7b0358d7aa2ce2e59d6a56c5f486ba31b25c9c9ad9d91476a4ec3c9998c361631a0e2b311b102f9a8b03aeb3fb5de1191')
 
 prepare() {
   pdfs=(MMHT2014nlo68cl MMHT2014lo68cl)
