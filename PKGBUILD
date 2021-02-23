@@ -1,7 +1,7 @@
 # Maintainer: Carlos Galindo < arch -at - cgj.es >
 _appname=notify_push
 pkgname=nextcloud-app-notify_push
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Update notifications for nextcloud clients"
 arch=("x86_64")
@@ -14,7 +14,7 @@ optdepends=('redis: use a local redis instance')
 install=nextcloud-app-notify_push.install
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 source_x86_64=("$pkgname-x86_64.service")
-sha512sums=('311fefd452d1dda490bf27b3296fbab7bf339fc4d8addcb973ebb0cb2210e329b2c7d86352816b3794abce3691b99f38eb03a2275dc5ded657c73d28c9d90f15')
+sha512sums=('c0e62769ae3cfc2f1091a459278a5ae70e69b4b1d49cd60469c51f6cedc7a26402465fe1406cf5ad83f7270a45ed5d0938248e489173783dbe3f20c04c8c8cf1')
 sha512sums_x86_64=('be5b2e0fadaff8578882804a553a0da1c7305510548075dd06125832e88157adad4f15305aa3c6cfad9198bb8123d09706f19cfc77df8606bdd693ab240cb3aa')
 _target=$arch-unknown-linux-gnu
 
