@@ -1,5 +1,11 @@
-/*.tar.xz
-/*.tar.gz
-/*.tar.zst
-/pkg
-/src
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!cli.patch
+!galu1.patch
+!wayland.patch
+!system76-driver.install

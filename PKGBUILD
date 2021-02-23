@@ -1,14 +1,13 @@
-# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
-# Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: ava1ar <mail(at)ava1ar(dot)me>
+# Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.24
+pkgver=20.04.28
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
 license=('GPL')
-install="${pkgname}.install"
 depends=(
   'at'
   'dmidecode'
@@ -37,19 +36,20 @@ optdepends=(
   'system76-power: System76 Power Management'
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service')
+install="$pkgname.install"
 source=(
-  "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
+  "$pkgname-$pkgver::https://github.com/pop-os/system76-driver/archive/$pkgver.tar.gz"
   'galu1.patch'
   'cli.patch'
   'wayland.patch')
-sha1sums=('db49cdcd4197f7c65fa618da4462f42b45c75e9e'
-          'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
-          '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
-          '4825b80d13555742c30d197e4de56638eef162e6')
+sha256sums=('dddf3749f8e5d833f0e10d418bbe4d8670b21d1c19498565028f21d10b11678f'
+            '2ccf53ec0ffdeea00930d218253f5b3db2bdc7d3405e8353caabc36107f3ab26'
+            'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
+            '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3')
 
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "$pkgname-$pkgver"
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
   patch --no-backup-if-mismatch -Np1 -i ${srcdir}/cli.patch
@@ -62,38 +62,40 @@ prepare() {
 }
 
 build() {
-  # Build package
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "$pkgname-$pkgver"
 
   # Install base package
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  export PYTHONHASHSEED=0
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 
   # Install daemons and executables
-  install -m755 -D system76-daemon ${pkgdir}/usr/lib/${pkgname}/system76-daemon
-  install -m755 -D system76-user-daemon ${pkgdir}/usr/lib/${pkgname}/system76-user-daemon
-  install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
+  install -Dm755 system76-daemon -t "$pkgdir/usr/lib/$pkgname"
+  install -m755 system76-user-daemon -t "$pkgdir/usr/lib/$pkgname"
+  install -Dm755 system76-driver-pkexec -t "$pkgdir/usr/bin"
 
   # Install systemd unit files
   # Note: system76-driver* service files shortened to system76*
-  install -m644 -D debian/system76-driver.service ${pkgdir}/usr/lib/systemd/system/system76.service
+  install -Dm644 debian/system76-driver.service \
+    "$pkgdir/usr/lib/systemd/system/system76.service"
 
   # Install scripts and configuration
-  install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
-  install -m755 -D system76-thunderbolt-reload ${pkgdir}/usr/lib/${pkgname}/system76-thunderbolt-reload
-  install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
+  install -m755 system76-nm-restart "$pkgdir/usr/lib/$pkgname"
+  install -m755 system76-thunderbolt-reload -t "$pkgdir/usr/lib/$pkgname"
+  install -Dm644 com.system76.pkexec.system76-driver.policy -t \
+    "$pkgdir/usr/share/polkit-1/actions"
 
   # Install application launchers
-  install -m644 -D system76-user-daemon.desktop ${pkgdir}/etc/xdg/autostart/system76-user-daemon.desktop
+  install -Dm644 system76-user-daemon.desktop -t "$pkgdir/etc/xdg/autostart"
 
   # Create /var/lib/system76-driver directory for brightness settings saving
-  install -m755 -d ${pkgdir}/var/lib/${pkgname}
+  install -dm755 "$pkgdir/var/lib/$pkgname"
 
   # Clean up
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf ${pkgdir}${site_packages}/system76driver/{__pycache__,tests}
+  rm -rf $pkgdir$site_packages/system76driver/{__pycache__,tests}
 }
