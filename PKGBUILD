@@ -3,7 +3,7 @@ pkgbase=gruvbox-material-theme-git
 _pkgbase=gruvbox-material-theme
 pkgname=('gruvbox-material-gtk-theme-git'
          'gruvbox-material-icon-theme-git')
-pkgver=r8.99ce99e2d
+pkgver=r11.9906f4c8
 pkgrel=1
 arch=(any)
 url='https://github.com/sainnhe/gruvbox-material-gtk'
@@ -29,6 +29,10 @@ package_gruvbox-material-gtk-theme-git() {
     install -d "${pkgdir}/usr/share/themes/Gruvbox-Material-Dark"
     cd "${srcdir}/${_pkgbase}/themes/Gruvbox-Material-Dark"
     cp -r ./* "${pkgdir}/usr/share/themes/Gruvbox-Material-Dark/"
+
+    install -d "${pkgdir}/usr/share/themes/Gruvbox-Material-Dark-HIDPI"
+    cd "${srcdir}/${_pkgbase}/themes/Gruvbox-Material-Dark-HIDPI"
+    cp -r ./* "${pkgdir}/usr/share/themes/Gruvbox-Material-Dark-HIDPI/"
 }
 
 package_gruvbox-material-icon-theme-git() {

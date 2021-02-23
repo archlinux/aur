@@ -1,5 +1,5 @@
 pkgbase = gruvbox-material-theme-git
-	pkgver = r8.99ce99e2d
+	pkgver = r11.9906f4c8
 	pkgrel = 1
 	url = https://github.com/sainnhe/gruvbox-material-gtk
 	arch = any
