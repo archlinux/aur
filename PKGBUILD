@@ -2,16 +2,14 @@
 
 pkgname=python-acme-git
 _reponame="certbot"
-pkgver=1.0.0.r23.gceea41c1e
+pkgver=1.12.0.r19.g0f3f07b5c
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/certbot/${_reponame}"
-depends=('python-setuptools' 'python-pyasn1' 'python-cryptography' 'python-pyopenssl'
-	'python-ndg-httpsclient' 'python-pyrfc3339' 'python-pytz' 'python-requests'
-	'python-six' 'python-werkzeug' 'python-mock')
-optdepends=("python-dnspython: local validation of dns-01 challenges")
+depends=('python-setuptools' 'python-cryptography' 'python-josepy' 'python-pyopenssl'
+	'python-pyrfc3339' 'python-pytz' 'python-requests' 'python-requests-toolbelt')
 makedepends=('git')
 provides=("python-acme=${pkgver}")
 conflicts=("python-acme")

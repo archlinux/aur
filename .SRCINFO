@@ -1,24 +1,20 @@
 pkgbase = python-acme-git
 	pkgdesc = ACME protocol implementation for Python
-	pkgver = 1.0.0.r23.gceea41c1e
+	pkgver = 1.12.0.r19.g0f3f07b5c
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
 	license = Apache
 	makedepends = git
 	depends = python-setuptools
-	depends = python-pyasn1
 	depends = python-cryptography
+	depends = python-josepy
 	depends = python-pyopenssl
-	depends = python-ndg-httpsclient
 	depends = python-pyrfc3339
 	depends = python-pytz
 	depends = python-requests
-	depends = python-six
-	depends = python-werkzeug
-	depends = python-mock
-	optdepends = python-dnspython: local validation of dns-01 challenges
-	provides = python-acme=1.0.0.r23.gceea41c1e
+	depends = python-requests-toolbelt
+	provides = python-acme=1.12.0.r19.g0f3f07b5c
 	conflicts = python-acme
 	source = certbot::git+https://github.com/certbot/certbot
 	sha512sums = SKIP
