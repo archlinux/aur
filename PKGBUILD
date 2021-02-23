@@ -12,11 +12,11 @@ pkgver=$_version.$_build
 pkgrel=1
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
 arch=('i686' 'x86_64')
-url="http://www.ganttproject.biz/"
+url="https://www.ganttproject.biz/"
 license=("GPL")
 depends=('jre11-openjdk' 'java11-openjfx' 'hicolor-icon-theme')
 makedepends=('unzip')
-source=("http://dl.ganttproject.biz/$pkgname-$pkgver/$pkgname-$pkgver.zip"
+source=("https://dl.ganttproject.biz/$pkgname-$pkgver/$pkgname-$pkgver.zip"
 	"ganttproject.desktop")
 
 prepare() {
@@ -36,5 +36,5 @@ package() {
 	ln -s "/opt/$pkgname/ganttproject" "$pkgdir/usr/bin/ganttproject"
 }
 
-md5sums=('adcb40b3b9c1298f28a5d72168b9e12d'
-         '5139adddebc92d9da94b8448176d4d21')
+sha256sums=('3e139aa5f2f8ef44af7f278579f5fb09c7cbb5b102e8e1e6abb2e1cf5c3b2160'
+			'7f80539115a2ffa518516671596b7e35659d46c91ac39133cc5accda9dec3862')
