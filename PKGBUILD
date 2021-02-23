@@ -1,7 +1,7 @@
 # Maintainer: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=music21
 pkgname=python-$_pkgname
-pkgver=6.1.0
+pkgver=6.7.0
 pkgrel=1
 pkgdesc="A toolkit for computer-aided musical analysis"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://github.com/cuthbertLab/music21/archive/v${pkgver}.tar.gz")
-sha256sums=('2b389dccf3615c030de89512f176d6d8e09995a3e453371b87fb386cefb000d6')
+sha256sums=('9f95ffa1f18030362454fa11e07c5df01efe3ddf949027b46eab84e9c585f6d2')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
