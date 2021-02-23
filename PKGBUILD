@@ -1,14 +1,21 @@
-# AArch64 kernel for Phicomm N1
-# Original Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
-# Maintainer: Peter Cai <peter at typeblog dot net>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Contributor: Maintainer: Peter Cai <peter at typeblog dot net>
+# Origin Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
 
-buildarch=8
+# dts and config for phicomm-n1 :
+# https://github.com/archlinux-jerry/pkgbuilds/blob/master/linux-phicomm-n1
+
+# PKGBUILD: 
+# https://github.com/archlinuxarm/PKGBUILDs/blob/master/core/linux-aarch64/PKGBUILD
+
+# 02-revert-TEXT_OFFSET-deletion.patch: 
+# https://github.com/SuzukiHonoka/s905d-kernel-precompiled/tree/master/patch
 
 pkgbase=linux-phicomm-n1
-_srcname=linux-4.19
+_srcname=linux-5.10
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=4.19.1
+pkgver=5.10.16
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -16,48 +23,50 @@ license=('GPL2')
 depends=('uboot-tools')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
-        '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
-        '0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
-        '0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch'
-        '0005-usb-dwc2-disable-power_down-on-rockchip-devices.patch'
-        '1000-phicomm-n1-fix-eee.patch'
+source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        'meson-gxl-s905d-phicomm-n1.dts'
         'config'
         'linux.preset'
-        '99-linux.hook')
-md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '8d5da563baab055b8d76c94f5040948a'
-         '649c026be704355946a4f008754f3dc5'
-         '3269181ce2a9d63a85cef0db36d80189'
-         '9dee22229f3dc8ebe2f12077b4577ac6'
-         '40b04a13d7ae9d3dc8971812610362a9'
-         '203a6aa1d775a737d28d2ad4a13a4f1f'
-         'db34af3d4fb1c23a06dc9b57521c3d89'
-         '1fadeca6502c809ada798982be336e37'
-         'f6ee374f560e1b9df6a7de2399027d1b'
-         'd1c40c7367a7081f3b4c03264780f9d4')
+        '60-linux.hook'
+        '90-linux.hook'
+	'01-aegis-crypto.patch'
+	'02-revert-TEXT_OFFSET-deletion.patch')
+
+[[ ${pkgver##*.} != 0 ]] && \
+source+=("http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
+
+md5sums=('753adc474bf799d569dec4f165ed92c3'
+         'caa2dbc19116d818e6d0d46baeca961b'
+         'b5c494212ef9c09cac5bcc68e2af7a14'
+         '30130b4dcd8ad4364ddbfd56c3058d5e'
+         'ce6c81ad1ad1f8b333fd6077d47abdaf'
+         'bdeb5fb852fd92b4e76b4796db500dd4'
+         '692ce80012ad5d95fa0b51cc1c9d179c'
+         '11706f3b300935db9a435535991636b5'
+         '6eb3cfa9872f7c0cbc59e5c17eca854c')
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   # add upstream patch
-  patch -p1 < ../patch-${pkgver}
-
-  # ALARM patches
-  patch -p1 < ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-  patch -p1 < ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-  patch -p1 < ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
-  patch -p1 < ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
-  patch -p1 < ../0005-usb-dwc2-disable-power_down-on-rockchip-devices.patch
-  patch -p1 < ../1000-phicomm-n1-fix-eee.patch
+  [[ ${pkgver##*.} != 0 ]] && \
+  patch -p1 < "../patch-${pkgver}"
 
   cat "${srcdir}/config" > ./.config
 
-  # Amlogic S9xxx TEXT_OFFSET patch
-  sed -i "s/TEXT_OFFSET := 0x00080000/TEXT_OFFSET := 0x01080000/g" arch/arm64/Makefile
-  sed -i "s/#error TEXT_OFFSET must be less than 2MB//g" arch/arm64/kernel/head.S
+  # Fix latest gcc compiling errors with the aegis crypto module.
+  patch -p1 -i "${srcdir}/01-aegis-crypto.patch"
+
+  # Amlogic meson SoC TEXT_OFFSET
+  patch -p1 < "${srcdir}/02-revert-TEXT_OFFSET-deletion.patch"
+
+  # dts for phicomm-n1
+  target_dts="meson-gxl-s905d-phicomm-n1.dts"
+  cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/amlogic/${target_dts}"
+  
+  # Disable USB2 LPM. This works around several broken USB2 LPM implementations found in USB3 devices.
+  # https://isolated.site/2019/03/05/several-patches-im-using-for-running-linux-5-0-on-phicomm-n1/
+  sed -i '/snps,dis_u2_susphy_quirk;/a usb2-lpm-disable;' arch/arm64/boot/dts/amlogic/meson-gxl.dtsi
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
@@ -67,8 +76,13 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
-
+  cd ${_srcname}
+  # use default settings for new options
+  # ADDED BY JUSTIN
+  make olddefconfig
+  # add back newly generated .config for new builds, disabled by default
+  # ADDED BY JUSTIN
+  #cp ./.config ../../config
   # get kernel version
   make prepare
 
@@ -94,19 +108,22 @@ build() {
 
   # build!
   unset LDFLAGS
-  make ${MAKEFLAGS} Image modules dtbs
+  make ${MAKEFLAGS} Image modules
+  # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
+  make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 }
 
 _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('kernel26' "linux=${pkgver}")
+  provides=("linux=${pkgver}" "WIREGUARD-MODULE")
+  replaces=('linux-armv8')
   conflicts=('linux')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=${pkgname}.install
 
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
   KARCH=arm64
 
@@ -115,48 +132,44 @@ _package() {
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware}
-  make INSTALL_MOD_PATH="${pkgdir}" modules_install
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   make INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
-  cp arch/$KARCH/boot/Image "${pkgdir}/boot/zImage"
-  cp ${pkgdir}/boot/dtbs/amlogic/meson-gxl-s905d-p230.dtb "${pkgdir}/boot/dtb.img"
+  cp arch/$KARCH/boot/Image "${pkgdir}/boot/"
 
-  # set correct depmod command for install
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/g" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
-    -i "${startdir}/${pkgname}.install"
+  # make room for external modules
+  local _extramodules="extramodules-${_basekernel}${_kernelname}"
+  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
-  # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"${_kernver}\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  # add real version for building modules and running depmod from hook
+  echo "${_kernver}" |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
   # remove build and source links
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-  # remove the firmware
-  rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
 
-  # Now we call depmod...
-  depmod -b "$pkgdir" -F System.map "$_kernver"
-
-  # move module tree /lib -> /usr/lib
-  mkdir -p "${pkgdir}/usr"
-  mv "$pkgdir/lib" "$pkgdir/usr"
+  # now we call depmod...
+  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${_kernver}|g
+    s|%EXTRAMODULES%|${_extramodules}|g
+  "
+
+  # install mkinitcpio preset file
+  sed "${_subst}" ../linux.preset |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hooks
+  sed "${_subst}" ../60-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 }
 
 _package-headers() {
@@ -164,107 +177,67 @@ _package-headers() {
   provides=("linux-headers=${pkgver}")
   conflicts=('linux-headers')
 
-  install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
+  cd ${_srcname}
+  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-  cd "${srcdir}/${_srcname}"
-  install -D -m644 Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-  install -D -m644 kernel/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-  install -D -m644 .config \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
+  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
+  install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
+  mkdir "${_builddir}/.tmp_versions"
 
-  for i in acpi asm-generic clocksource config crypto drm generated keys linux \
-    math-emu media net pcmcia scsi soc sound trace uapi video xen; do
-    cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
-  done
+  cp -t "${_builddir}" -a include scripts
 
-  # copy arch includes for external modules
-  mkdir -p ${pkgdir}/usr/lib/modules/${_kernver}/build/arch/$KARCH
-  cp -a arch/$KARCH/include ${pkgdir}/usr/lib/modules/${_kernver}/build/arch/$KARCH/
+  install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
+  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
 
-  # copy files necessary for later builds, like nvidia and vmware
-  cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
+  mkdir -p "${_builddir}/arch/arm"
+  cp -t "${_builddir}/arch/arm" -a arch/arm/include
 
-  # fix permissions on scripts dir
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
+  install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
+  install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
-
-  cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-
-  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
-
-  # copy module linker script
-  cp arch/$KARCH/kernel/module.lds "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
-
-  # add dm headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-  cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-
-  # add inotify.h
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
-  cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
-
-  # add wireless headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-  cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-
-  # add dvb headers for external modules
-  # in reference to:
-  # http://bugs.archlinux.org/task/11194
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-  cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-
-  # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
-  # in reference to:
   # http://bugs.archlinux.org/task/13146
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-  cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
+  install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # add dvb headers
-  # in reference to:
   # http://bugs.archlinux.org/task/20402
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
-  cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends"
-  cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
-  cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
+  install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
   # add xfs and shmem for aufs building
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
+  mkdir -p "${_builddir}"/{fs/xfs,mm}
 
   # copy in Kconfig files
-  for i in $(find . -name "Kconfig*"); do
-    mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-    cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
-  done
-
-  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
-
-  # strip scripts directory
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "${binary}")" in
-      *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-      *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-      *application/x-executable*) # Binaries
-        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-    esac
-  done
+  find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
 
   # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,x86,xtensa}
+  local _arch
+  for _arch in "${_builddir}"/arch/*/; do
+    [[ ${_arch} == */${KARCH}/ || ${_arch} == */arm/ ]] && continue
+    rm -r "${_arch}"
+  done
+
+  # remove files already in linux-docs package
+  rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
+
+  # Fix permissions
+  chmod -R u=rwX,go=rX "${_builddir}"
+
+  # strip scripts directory
+  local _binary _strip
+  while read -rd '' _binary; do
+    case "$(file -bi "${_binary}")" in
+      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
+      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
+      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
+      *) continue ;;
+    esac
+    /usr/bin/strip ${_strip} "${_binary}"
+  done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")

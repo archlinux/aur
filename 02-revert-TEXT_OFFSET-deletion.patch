@@ -1,0 +1,328 @@
+From f91b2fb313bc6a6ffa1f8829d0320aa6b5627e91 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:04:18 +0000
+Subject: [PATCH 01/10] revert TEXT_OFFSET deletion 1/10
+
+---
+ drivers/firmware/efi/libstub/arm64-stub.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/firmware/efi/libstub/arm64-stub.c b/drivers/firmware/efi/libstub/arm64-stub.c
+index 22ece1ad6..9154374f9 100644
+--- a/drivers/firmware/efi/libstub/arm64-stub.c
++++ b/drivers/firmware/efi/libstub/arm64-stub.c
+@@ -78,7 +78,7 @@ efi_status_t handle_kernel_image(unsigned long *image_addr,
+ 
+ 	kernel_size = _edata - _text;
+ 	kernel_memsize = kernel_size + (_end - _edata);
+-	*reserve_size = kernel_memsize;
++	*reserve_size = kernel_memsize + TEXT_OFFSET % min_kimg_align();
+ 
+ 	if (IS_ENABLED(CONFIG_RANDOMIZE_BASE) && phys_seed != 0) {
+ 		/*
+@@ -92,7 +92,7 @@ efi_status_t handle_kernel_image(unsigned long *image_addr,
+ 	}
+ 
+ 	if (status != EFI_SUCCESS) {
+-		if (IS_ALIGNED((u64)_text, min_kimg_align())) {
++		if (IS_ALIGNED((u64)_text - TEXT_OFFSET, min_kimg_align())) {
+ 			/*
+ 			 * Just execute from wherever we were loaded by the
+ 			 * UEFI PE/COFF loader if the alignment is suitable.
+@@ -112,7 +112,7 @@ efi_status_t handle_kernel_image(unsigned long *image_addr,
+ 		}
+ 	}
+ 
+-	*image_addr = *reserve_addr;
++	*image_addr = *reserve_addr + TEXT_OFFSET % min_kimg_align();;
+ 	memcpy((void *)*image_addr, _text, kernel_size);
+ 
+ 	return EFI_SUCCESS;
+-- 
+2.25.1
+
+From 685eec5021a1938719339471d033d7dbaef74a38 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:07:02 +0000
+Subject: [PATCH 02/10] revert TEXT_OFFSET deletion 2/10
+
+---
+ drivers/firmware/efi/libstub/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/firmware/efi/libstub/Makefile b/drivers/firmware/efi/libstub/Makefile
+index 8a94388e3..d11f29ae1 100644
+--- a/drivers/firmware/efi/libstub/Makefile
++++ b/drivers/firmware/efi/libstub/Makefile
+@@ -68,6 +68,7 @@ lib-$(CONFIG_ARM64)		+= arm64-stub.o
+ lib-$(CONFIG_X86)		+= x86-stub.o
+ lib-$(CONFIG_RISCV)		+= riscv-stub.o
+ CFLAGS_arm32-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
++CFLAGS_arm64-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
+ 
+ # Even when -mbranch-protection=none is set, Clang will generate a
+ # .note.gnu.property for code-less object files (like lib/ctype.c),
+-- 
+2.25.1
+
+From 2d1f57e3ce94637eeba6dd59f2a2c27edfcebbe9 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:09:12 +0000
+Subject: [PATCH 03/10] revert TEXT_OFFSET deletion 3/10
+
+---
+ arch/arm64/kernel/vmlinux.lds.S | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/kernel/vmlinux.lds.S b/arch/arm64/kernel/vmlinux.lds.S
+index 1bda604f4..87ecbb53c 100644
+--- a/arch/arm64/kernel/vmlinux.lds.S
++++ b/arch/arm64/kernel/vmlinux.lds.S
+@@ -115,7 +115,7 @@ SECTIONS
+ 		*(.dynsym .dynstr .hash .gnu.hash)
+ 	}
+ 
+-	. = KIMAGE_VADDR;
++	. = KIMAGE_VADDR + TEXT_OFFSET;
+ 
+ 	.head.text : {
+ 		_text = .;
+@@ -307,4 +307,4 @@ ASSERT((__entry_tramp_text_end - __entry_tramp_text_start) == PAGE_SIZE,
+ /*
+  * If padding is applied before .head.text, virt<->phys conversions will fail.
+  */
+-ASSERT(_text == KIMAGE_VADDR, "HEAD is misaligned")
++ASSERT(_text == (KIMAGE_VADDR + TEXT_OFFSET), "HEAD is misaligned")
+-- 
+2.25.1
+
+From a77425e2080a41882f327e3aad6fafd4d335ee84 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:10:35 +0000
+Subject: [PATCH 04/10] revert TEXT_OFFSET deletion 4/10
+
+---
+ arch/arm64/kernel/image.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/kernel/image.h b/arch/arm64/kernel/image.h
+index 7bc3ba897..c7d38c660 100644
+--- a/arch/arm64/kernel/image.h
++++ b/arch/arm64/kernel/image.h
+@@ -62,6 +62,7 @@
+  */
+ #define HEAD_SYMBOLS						\
+ 	DEFINE_IMAGE_LE64(_kernel_size_le, _end - _text);	\
++	DEFINE_IMAGE_LE64(_kernel_offset_le, TEXT_OFFSET);	\
+ 	DEFINE_IMAGE_LE64(_kernel_flags_le, __HEAD_FLAGS);
+ 
+ #endif /* __ARM64_KERNEL_IMAGE_H */
+-- 
+2.25.1
+
+From 634c447bd70af8a124d9a67025ce5b2b86c22647 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:14:55 +0000
+Subject: [PATCH 05/10] revert TEXT_OFFSET deletion 5/10
+
+---
+ arch/arm64/kernel/head.S | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm64/kernel/head.S b/arch/arm64/kernel/head.S
+index d8d9caf02..a3c77cc7d 100644
+--- a/arch/arm64/kernel/head.S
++++ b/arch/arm64/kernel/head.S
+@@ -36,7 +36,7 @@
+ 
+ #include "efi-header.S"
+ 
+-#define __PHYS_OFFSET	KERNEL_START
++#define __PHYS_OFFSET	(KERNEL_START - TEXT_OFFSET)
+ 
+ #if (PAGE_OFFSET & 0x1fffff) != 0
+ #error PAGE_OFFSET must be at least 2MB aligned
+@@ -51,7 +51,7 @@
+  *   x0 = physical address to the FDT blob.
+  *
+  * This code is mostly position independent so you call this at
+- * __pa(PAGE_OFFSET).
++ * __pa(PAGE_OFFSET + TEXT_OFFSET).
+  *
+  * Note that the callee-saved registers are used for storing variables
+  * that are useful before the MMU is enabled. The allocations are described
+@@ -73,7 +73,7 @@ _head:
+ 	b	primary_entry			// branch to kernel start, magic
+ 	.long	0				// reserved
+ #endif
+-	.quad	0				// Image load offset from start of RAM, little-endian
++	le64sym	_kernel_offset_le		// Image load offset from start of RAM, little-endian
+ 	le64sym	_kernel_size_le			// Effective size of kernel image, little-endian
+ 	le64sym	_kernel_flags_le		// Informative flags, little-endian
+ 	.quad	0				// reserved
+@@ -378,7 +378,7 @@ SYM_FUNC_START_LOCAL(__create_page_tables)
+ 	 * Map the kernel image (starting with PHYS_OFFSET).
+ 	 */
+ 	adrp	x0, init_pg_dir
+-	mov_q	x5, KIMAGE_VADDR		// compile time __va(_text)
++	mov_q	x5, KIMAGE_VADDR + TEXT_OFFSET	// compile time __va(_text)
+ 	add	x5, x5, x23			// add KASLR displacement
+ 	mov	x4, PTRS_PER_PGD
+ 	adrp	x6, _end			// runtime __pa(_end)
+@@ -470,7 +470,7 @@ SYM_FUNC_END(__primary_switched)
+ 
+ 	.pushsection ".rodata", "a"
+ SYM_DATA_START(kimage_vaddr)
+-	.quad		_text
++	.quad		_text - TEXT_OFFSET
+ SYM_DATA_END(kimage_vaddr)
+ EXPORT_SYMBOL(kimage_vaddr)
+ 	.popsection
+-- 
+2.25.1
+
+From 91f6c8039e9864960d954f33549dbfa2d9db029c Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:15:37 +0000
+Subject: [PATCH 06/10] revert TEXT_OFFSET deletion 6/10
+
+---
+ arch/arm64/kernel/Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/kernel/Makefile b/arch/arm64/kernel/Makefile
+index bbaf0bc4a..fd7dcbde3 100644
+--- a/arch/arm64/kernel/Makefile
++++ b/arch/arm64/kernel/Makefile
+@@ -2,7 +2,8 @@
+ #
+ # Makefile for the linux kernel.
+ #
+-
++CPPFLAGS_vmlinux.lds	:= -DTEXT_OFFSET=$(TEXT_OFFSET)
++AFLAGS_head.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
+ CFLAGS_armv8_deprecated.o := -I$(src)
+ 
+ CFLAGS_REMOVE_ftrace.o = $(CC_FLAGS_FTRACE)
+-- 
+2.25.1
+
+From c81a2d884b9199faa4fc2dc7d4e6296fdd105030 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:16:24 +0000
+Subject: [PATCH 07/10] revert TEXT_OFFSET deletion 7/10
+
+---
+ arch/arm64/include/asm/memory.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/include/asm/memory.h b/arch/arm64/include/asm/memory.h
+index cd61239ba..5d1f91a99 100644
+--- a/arch/arm64/include/asm/memory.h
++++ b/arch/arm64/include/asm/memory.h
+@@ -173,7 +173,7 @@ extern s64			memstart_addr;
+ /* PHYS_OFFSET - the physical address of the start of memory. */
+ #define PHYS_OFFSET		({ VM_BUG_ON(memstart_addr & 1); memstart_addr; })
+ 
+-/* the virtual base of the kernel image */
++/* the virtual base of the kernel image (minus TEXT_OFFSET) */
+ extern u64			kimage_vaddr;
+ 
+ /* the offset between the kernel virtual and physical mappings */
+-- 
+2.25.1
+
+From 9890fc925c738e6a2db01a8b7265a6bbc43322b9 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:17:07 +0000
+Subject: [PATCH 08/10] revert TEXT_OFFSET deletion 8/10
+
+---
+ arch/arm64/include/asm/kernel-pgtable.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/include/asm/kernel-pgtable.h b/arch/arm64/include/asm/kernel-pgtable.h
+index 19ca76ea6..329fb15f6 100644
+--- a/arch/arm64/include/asm/kernel-pgtable.h
++++ b/arch/arm64/include/asm/kernel-pgtable.h
+@@ -86,7 +86,7 @@
+ 			+ EARLY_PGDS((vstart), (vend)) 	/* each PGDIR needs a next level page table */	\
+ 			+ EARLY_PUDS((vstart), (vend))	/* each PUD needs a next level page table */	\
+ 			+ EARLY_PMDS((vstart), (vend)))	/* each PMD needs a next level page table */
+-#define INIT_DIR_SIZE (PAGE_SIZE * EARLY_PAGES(KIMAGE_VADDR, _end))
++#define INIT_DIR_SIZE (PAGE_SIZE * EARLY_PAGES(KIMAGE_VADDR + TEXT_OFFSET, _end))
+ #define IDMAP_DIR_SIZE		(IDMAP_PGTABLE_LEVELS * PAGE_SIZE)
+ 
+ #ifdef CONFIG_ARM64_SW_TTBR0_PAN
+-- 
+2.25.1
+
+From fb0aecac97ed2a7c9a3e94b5b3eb92ce95e9b9f5 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:23:39 +0000
+Subject: [PATCH 09/10] revert TEXT_OFFSET deletion 9/10
+
+---
+ arch/arm64/include/asm/boot.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/include/asm/boot.h b/arch/arm64/include/asm/boot.h
+index 3e7943fd1..c7f67da13 100644
+--- a/arch/arm64/include/asm/boot.h
++++ b/arch/arm64/include/asm/boot.h
+@@ -13,7 +13,8 @@
+ #define MAX_FDT_SIZE		SZ_2M
+ 
+ /*
+- * arm64 requires the kernel image to placed at a 2 MB aligned base address
++ * arm64 requires the kernel image to placed
++ * TEXT_OFFSET bytes beyond a 2 MB aligned base
+  */
+ #define MIN_KIMG_ALIGN		SZ_2M
+ 
+-- 
+2.25.1
+
+From 62b81a1ad22bc9d65777a60778cc9fcaa0b6ec11 Mon Sep 17 00:00:00 2001
+From: root <root@aws.starx.ink>
+Date: Sun, 20 Dec 2020 05:27:16 +0000
+Subject: [PATCH 10/10] revert TEXT_OFFSET deletion 10/10
+
+---
+ arch/arm64/Makefile | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm64/Makefile b/arch/arm64/Makefile
+index 6a87d592b..60626981a 100644
+--- a/arch/arm64/Makefile
++++ b/arch/arm64/Makefile
+@@ -11,6 +11,7 @@
+ # Copyright (C) 1995-2001 by Russell King
+ 
+ LDFLAGS_vmlinux	:=--no-undefined -X
++CPPFLAGS_vmlinux.lds = -DTEXT_OFFSET=$(TEXT_OFFSET)
+ 
+ ifeq ($(CONFIG_RELOCATABLE), y)
+ # Pass --no-apply-dynamic-relocs to restore pre-binutils-2.27 behaviour
+@@ -130,6 +131,9 @@ endif
+ # Default value
+ head-y		:= arch/arm64/kernel/head.o
+ 
++# The byte offset of the kernel image in RAM from the start of RAM.
++TEXT_OFFSET := 0x01080000
++
+ ifeq ($(CONFIG_KASAN_SW_TAGS), y)
+ KASAN_SHADOW_SCALE_SHIFT := 4
+ else
+@@ -140,6 +144,8 @@ KBUILD_CFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
+ KBUILD_CPPFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
+ KBUILD_AFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
+ 
++export	TEXT_OFFSET
++
+ core-y		+= arch/arm64/
+ libs-y		:= arch/arm64/lib/ $(libs-y)
+ libs-$(CONFIG_EFI_STUB) += $(objtree)/drivers/firmware/efi/libstub/lib.a
+-- 
+2.25.1
+

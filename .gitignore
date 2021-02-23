@@ -1,1 +1,6 @@
-*.xz
+linux*.tar.zst
+linux*.tar.xz
+patch*.xz
+*.tar.gz
+src
+pkg*.xz
