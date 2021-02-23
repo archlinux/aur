@@ -1,21 +1,22 @@
 pkgbase = easyabc
-	pkgdesc = graphical music notation editor for the ABC music notation language
-	pkgver = 1.3.7.7
+	pkgdesc = A graphical music notation editor for the ABC music notation language
+	pkgver = 182
 	pkgrel = 1
-	url = http://sourceforge.net/projects/easyabc/
-	arch = i686
-	arch = x86_64
-	arch = ppc
+	url = https://github.com/jwdj/EasyABC
+	arch = any
 	license = GPL
 	makedepends = gendesk
+	makedepends = git
 	depends = python-wxpython
 	depends = python-pyparsing
 	depends = python-pygame
 	depends = abcmidi
 	depends = abcm2ps
 	depends = ghostscript
-	source = http://downloads.sourceforge.net/project/easyabc/EasyABC/1.3.7.7/easyabc_source_code_1.3.7.7.zip
-	sha256sums = 98e775cc196254cdd7f4c07c0426ba713b159b48e8628b52345480d84301d928
+	provides = easyabc
+	conflicts = easyabc
+	source = easyabc::git+https://github.com/jwdj/EasyABC.git
+	md5sums = SKIP
 
 pkgname = easyabc
 
