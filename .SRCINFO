@@ -1,6 +1,6 @@
 pkgbase = usb-imager-git
 	pkgdesc = GUI-Application to write bootable disk images to USB key.
-	pkgver = 1.0
+	pkgver = 1.0.git_latest
 	pkgrel = 1
 	url = https://gitlab.com/skynet-devel/usb-imager
 	arch = any
