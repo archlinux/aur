@@ -1,0 +1,16 @@
+post_upgrade() {
+  if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
+    echo "WARNING: /boot appears to be a separate partition but is not mounted."
+  fi
+  if (( $(vercmp $2 5.5.8-3) < 0 )); then
+    echo    '==> Fallback initramfs is not used, so it is being deleted now.'
+    echo -n '==> Please DO merge your mkinitcpio preset'
+    echo    ' if you have it changed before,'
+    echo    '==> otherwise your device will not boot again.'
+    rm -f boot/initramfs-linux-phicomm-n1-fallback.img
+  fi
+}
+
+post_remove() {
+  rm -f boot/initramfs-linux-phicomm-n1.img
+}

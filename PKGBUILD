@@ -17,6 +17,7 @@ _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
 pkgver=5.10.16
 pkgrel=1
+pkgdesc=${_desc}
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -243,6 +244,7 @@ _package-headers() {
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
+    $(declare -f "_package${_p#$pkgbase}")
     _package${_p#${pkgbase}}
   }"
 done

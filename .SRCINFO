@@ -1,4 +1,5 @@
 pkgbase = linux-phicomm-n1
+	pkgdesc = AArch64 kernel for Phicomm N1
 	pkgver = 5.10.16
 	pkgrel = 1
 	url = http://www.kernel.org/
@@ -35,6 +36,21 @@ pkgbase = linux-phicomm-n1
 	md5sums = 6eb3cfa9872f7c0cbc59e5c17eca854c
 
 pkgname = linux-phicomm-n1
+	pkgdesc = The Linux Kernel and modules - AArch64 kernel for Phicomm N1
+	install = linux-phicomm-n1.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux=5.10.16
+	provides = WIREGUARD-MODULE
+	conflicts = linux
+	replaces = linux-armv8
+	backup = etc/mkinitcpio.d/linux-phicomm-n1.preset
 
 pkgname = linux-phicomm-n1-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for Phicomm N1
+	provides = linux-headers=5.10.16
+	conflicts = linux-headers
 
