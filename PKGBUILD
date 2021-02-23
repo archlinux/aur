@@ -12,7 +12,7 @@ depends=()
 
 source=("https://mirror.openshift.com/pub/openshift-v4/clients/ocp/${pkgver}/openshift-client-linux.tar.gz")
 
-sha256sums=('af367edf30b61876b2c763958796bde30fbc99e14f83ef2e3c4e72b53eb0efcc')
+sha256sums=('aaa300a538e2ddcd40cf0f0760ec5b0eeb7516b8e080dbf2644f7e3039feb17d')
 
 prepare() {
   # generate completion
