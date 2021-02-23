@@ -1,7 +1,7 @@
-# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=romvault
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="RomVault is a tool for managing your ROMs and DATs for emulators, like libretro"
 arch=('i686' 'x86_64')
@@ -10,13 +10,11 @@ license=('custom')
 depends=('mono')
 
 source=(${url}/download/ROMVault_V${pkgver}.zip
-	"https://raw.githubusercontent.com/gjefferyes/RomVault/master/LICENSE"
 	'LICENSE'
 	'romvault.desktop'
 	'romvault.png')
 
-sha256sums=('3853e95288fdf1bae1a34559cd3a1b4d2a311da70c101527d5188f11d8b2bdf1'
-	    '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
+sha256sums=('162c7a295b386066861c4c92c6a0133acaf73e7657e7880d9cbfe377f85187d7'
 	    '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
 	    '5d188d524030b25059db5002df184aed9b21667710876a87f3b7d5a8cb281154'
 	    'd368d14e844f2dd6f5b2d04b31d9a70f0af6f3ec72669f5b6d98b161a8bec1d6')
