@@ -1,0 +1,10 @@
+[Unit]
+Description = Push daemon for Nextcloud clients
+
+[Service]
+Environment = PORT=7867
+ExecStart = /usr/share/webapps/nextcloud/apps/notify_push/bin/x86_64/notify_push /etc/webapps/nextcloud/config/config.php
+User = nextcloud
+
+[Install]
+WantedBy = multi-user.target
