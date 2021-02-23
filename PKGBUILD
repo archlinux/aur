@@ -5,19 +5,17 @@
 
 pkgname=g15stats
 pkgver=1.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A CPU/Mem/Swap/Network monitoring client for G15Daemon."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/g15daemon/"
 license=('GPL')
 depends=('g15daemon' 'libgtop' 'libg15' 'libg15render')
-source=(https://gitlab.com/menelkir/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2
-	https://gitlab.com/menelkir/$pkgname/-/raw/master/contrib/init/$pkgname.service)
-sha256sums=('52b6517fad2ddc721958490b286c3018ed12a40f52f61ec38d8ab7065eb8caf8'
-	  '3110c25367cc75529af76ca9ca6e32a6bda731c57dd145002aab6b853281bccd')
+source=(https://gitlab.com/menelkir/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha512sums=('24c162a54ecc7124dc2326a02bd106a47dec9c843561d443cb60c54325db4c65b2f41c94583727241d5900e7799cb7ffc284df2fe8d2ace8757dc4dbefe7fe5c')
 
 build() {
-  cd $pkgname-v$pkgver
+  cd $pkgname-$pkgver
   ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -26,8 +24,8 @@ build() {
 }
 
 package() {
-  cd $pkgname-v$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
-  install -D -m 644 "${srcdir}/g15stats.service" \
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/init/g15stats.service" \
                     "${pkgdir}/usr/lib/systemd/system/g15stats.service"
 }
