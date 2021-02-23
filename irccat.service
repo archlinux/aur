@@ -1,0 +1,25 @@
+[Unit]
+Description=irccat service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/irccat
+ExecReload=/bin/kill -HUP $MAINPID
+
+DynamicUser=true
+NoNewPrivileges=true
+
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

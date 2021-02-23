@@ -1,0 +1,16 @@
+pkgbase = irccat
+	pkgdesc = cat to IRC
+	pkgver = 0.4.5
+	pkgrel = 3
+	url = https://github.com/irccloud/irccat
+	arch = x86_64
+	license = GPL
+	makedepends = go-pie
+	depends = glibc
+	source = irccat-0.4.5.tar.gz::https://github.com/irccloud/irccat/archive/v0.4.5.tar.gz
+	source = irccat.service
+	sha256sums = 2457519704d6c22ac1a4aeca123bd44cdd6a6b47bd2e756c558d8c1b115fec0a
+	sha256sums = 379eb5beb3b5df39af8257244a1f4c01e2f6d9020ead34334ce9c6664d05c6a9
+
+pkgname = irccat
+
