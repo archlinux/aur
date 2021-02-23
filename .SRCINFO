@@ -1,0 +1,16 @@
+pkgbase = mold-git
+	pkgdesc = Fast linker
+	pkgver = r1662.fd6de2d
+	pkgrel = 1
+	url = https://github.com/rui314/mold
+	arch = x86_64
+	license = unknown
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	depends = mimalloc
+	source = git+https://github.com/rui314/mold
+	sha256sums = SKIP
+
+pkgname = mold-git
+
