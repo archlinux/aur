@@ -1,15 +1,12 @@
 pkgbase = showterm
-	pkgdesc = Allows you to make screen casts of your terminal really easily. Integrates with showterm.io for awesome sharability.
-	pkgver = 0.5.0
-	pkgrel = 1
+	pkgdesc = Allows you to make screen casts of your terminal using showterm.io.
+	pkgver = 0.6.0
+	pkgrel = 2
 	url = http://showterm.io/
 	arch = any
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
-	noextract = showterm-0.5.0.gem
-	source = http://gems.rubyforge.org/gems/showterm-0.5.0.gem
-	sha256sums = 5017c01fe8dbe275bfa7c4dd1c807691a1867c802f09e801be22c0d18b1d57c4
 
 pkgname = showterm
 
