@@ -1,0 +1,17 @@
+pkgbase = untwine-git
+	pkgdesc = Untwine is software to create Entwine Point Tile (EPT) web services from PDAL-readable point cloud data sources.
+	pkgver = r74.48ee6f7
+	pkgrel = 1
+	url = https://github.com/hobu/untwine
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = pdal
+	provides = untwine
+	conflicts = untwine
+	source = untwine::git+https://github.com/hobu/untwine
+	md5sums = SKIP
+
+pkgname = untwine-git
+
