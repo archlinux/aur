@@ -2,7 +2,7 @@
 # Contributor: Manoel Brunnen <manoel.brunnen@gmail.com>
 
 pkgname=xctu
-pkgver=6.4.4
+pkgver=6.5.5
 pkgrel=0
 pkgdesc="Next Generation Configuration Platform for XBee/RF Solutions."
 arch=('i686' 'x86_64')
@@ -12,11 +12,11 @@ depends=('gtk2' 'java-runtime' 'libxtst' 'alsa-lib' 'gconf' 'nss' 'libglvnd' 'li
 options=('!strip')
 # install=$pkgname.install
 if [[ $CARCH == 'i686' ]]; then
-    _setup_file=40002880_V.run
-    md5sums=('61ce815688c1e34847e42b1d9c910503')
+    _setup_file=40002880_AB.run
+    md5sums=('b81d444a279d37392a8578c8bbf5ea1a')
 elif [[ $CARCH == 'x86_64' ]]; then
-    _setup_file=40002881_V.run
-    md5sums=('663bde271ae131a429fe07eb75b73479')
+    _setup_file=40002881_AB.run
+    md5sums=('379afc4b4da77f410615bf834ff9cdfa')
 fi
 source=("http://ftp1.digi.com/support/utilities/$_setup_file"
         'launcher.sh'
@@ -45,6 +45,9 @@ package() {
 
     # Launcher
     install -Dm755 $srcdir/launcher.sh $pkgdir/usr/bin/$pkgname
+
+    # CLI
+    ln -s /opt/xctu/XCTUcmd $pkgdir/usr/bin/XCTUcmd
 
     # Desktop file
     install -Dm644 $srcdir/$pkgname/icon.xpm $pkgdir/usr/share/icons/hicolor/256x256/apps/xctu.xpm
