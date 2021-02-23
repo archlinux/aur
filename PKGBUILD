@@ -2,13 +2,14 @@
 
 pkgname=overtone-wpc
 pkgver=201904
-pkgrel=1
+pkgrel=2
 pkgdesc="OvertoneDSP Workstation Plugin Suite."
 arch=('x86_64')
 url="https://www.overtonedsp.co.uk/download/download_wpc/"
 license=('EULA')
 groups=('pro-audio' 'vst-plugins')
 depends=('glibc' 'libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 
 prepare () {
 	## plugin AVA Plugins Archive

@@ -1,12 +1,14 @@
 pkgbase = overtone-wpc
 	pkgdesc = OvertoneDSP Workstation Plugin Suite.
 	pkgver = 201904
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.overtonedsp.co.uk/download/download_wpc/
 	arch = x86_64
 	groups = pro-audio
 	groups = vst-plugins
 	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
 	depends = glibc
 	depends = libcurl-gnutls
 
