@@ -2,14 +2,14 @@
 # Contributor: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=rememberthemilk
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
 url="https://www.rememberthemilk.com"
 license=('custom:none' 'MIT' 'Apache')
 source=("https://www.rememberthemilk.com/download/linux/debian/pool/main/r/rememberthemilk/rememberthemilk_${pkgver}_amd64.deb")
-sha256sums=('2957546f35c2208f6882cf16aee38a28d8b4f46428e13a897ece89b8c25b5d06')
+sha256sums=('d705b0c9c20108a186b214596437d373081d34ed53fc87fcec08dc7954532715')
 
 # Dependencies listed in deb file that are satisfied by other dependencies: gtk3 libxtst at-spi2-atk libutil-linux
 # Dependencies listed in deb file that are not satisfied by other dependencies
