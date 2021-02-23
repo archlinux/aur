@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=prs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gpgme' 'dbus' 'gtk3')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('c25c159b3087b2bc07c902cab6c92cdeb0299ed2d96041f4a45d2f2cdbd4bedc3db1c54c7ad61ebced60677418b205c82af3573e6dab2bd680adb77abc5495b2')
+sha512sums=('92c435879c947c4e68a88528b4e2994528153049eec6e7e7020adfa86e603b900ef9f21bedebc15df3305705474890c3aa81a22dee21a5605b5a0202084e0fff')
 
 build() {
   cd "$pkgname-v$pkgver"
