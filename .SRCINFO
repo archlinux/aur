@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-integration-github
 	pkgdesc = GitHub integration in Nextcloud
-	pkgver = 0.0.18
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/nextcloud/integration_github
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = integration_github-v0.0.18.tar.gz::https://github.com/nextcloud/integration_github/releases/download/v0.0.18/integration_github-0.0.18.tar.gz
-	sha512sums = 08e136091f40aec3432fae8cf95ee9511380dd271d6fb546acbb6960a1ca240e254f39cb7170b43283f66d2cd68b5c51fd458ee569199123ee18556ffce816bb
+	source = integration_github-v0.0.20.tar.gz::https://github.com/nextcloud/integration_github/releases/download/v0.0.20/integration_github-0.0.20.tar.gz
+	sha512sums = 7de518f0429d6a88942461e2356cf781fc24166957fcaa88b9e16a849c901edbbd20ca40ac502449b02bb017c6e2059ed305d2b8a75bb66fce3a38dee3ddfe75
 
 pkgname = nextcloud-app-integration-github
 
