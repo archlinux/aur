@@ -9,6 +9,7 @@ url="https://www.cutthroughrecordings.com/downloads"
 license=('EULA')
 groups=('pro-audio' 'vst-plugins' 'lv2-plugins')
 depends=('glibc' 'libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 
 package() {	
 	cd $srcdir	
