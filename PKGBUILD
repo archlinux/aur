@@ -3,7 +3,7 @@
 pkgname=fish-nvm
 _reponame=nvm.fish
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node.js version manager lovingly made for Fish"
 arch=('x86_64')
 url="https://github.com/jorgebucaran/${_reponame}"
@@ -20,4 +20,7 @@ package() {
 	install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_completions.d/" completions/*
 	install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_conf.d/" conf.d/*
 	install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_functions.d/" functions/*
+
+	# Event stub
+	/bin/fish -c 'emit nvm_install'
 }

@@ -1,7 +1,7 @@
 pkgbase = fish-nvm
 	pkgdesc = Node.js version manager lovingly made for Fish
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorgebucaran/nvm.fish
 	arch = x86_64
 	license = MIT
