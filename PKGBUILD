@@ -7,7 +7,7 @@ pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/Protostars/KikoPlay"
-depends=('mpv' 'lua' 'qhttpengine')
+depends=('mpv' 'lua53' 'qhttpengine')
 optdepends=('aria2: for downloading')
 source=(
    "https://github.com/Protostars/KikoPlay/archive/$pkgver.zip"
