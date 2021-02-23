@@ -1,54 +1,40 @@
-# Maintainer: Alexander Mcmillan <linuxguy93@gmail.com> 
-# Software Vendor: Harrison Consoles <mixbus@harrisonconsoles.com>
+# Maintainer Alexander Mcmillan <linuxguy93@gmail.com>
 
 pkgname=harrison-xt
-appname=mixbus-plugins
-pkgver=6.0.702
+pkgver=6.2.270
 pkgrel=1
-pkgdesc="Harrison XT LV2 Plugins"
+pkgdesc="Harrison Consoles LV2 XT Plugin Suite."
 arch=('x86_64')
-url="http://harrisonconsoles.com/site/${appname}.html"
-license=('EULA, GPLv2')
-groups=('lv2-plugins' 'pro-audio')
-depends=('glibc' 'xorg-server')
+url="https://harrisonconsoles.com/mixbus-plugins/"
+license=('EULA')
+groups=('pro-audio' 'lv2-plugins')
+depends=('glibc' 'libcurl-gnutls')
+makedepends=('xdg-user-dirs' 'unzip')
 
-prepare() {
-## Setup XT Plugins for installation
-_archive="`xdg-user-dir DOWNLOAD`/Mixbus-$pkgver-Linux-64bit-gcc5.tar"
-if [ -f ${_archive} ]; then
-	ln -srf ${_archive} "$srcdir/`basename ${_archive}`"
-	msg2 "Unpacking Installer..."
-	tar -xf ${_archive}
-	./Mixbus-$pkgver-$(uname -m)-gcc5.run --tar xf
-	tar -xf $srcdir/Mixbus_$(uname -m)-$pkgver.tar
-elif [ -f ${_archive/Mixbus/Mixbus32C} ]; then
-    ln -srf ${_archive/Mixbus/Mixbus32C} "$srcdir/`basename ${_archive/Mixbus/Mixbus32C}`"
-    msg2 "Unpacking Installer..."
-    tar -xf ${_archive/Mixbus/Mixbus32C}
-	./Mixbus32C-$pkgver-$(uname -m)-gcc5.run --tar xf
-    tar -xf $srcdir/Mixbus32C_$(uname -m)-$pkgver.tar
-else
-	msg2 "Please download a copy from https://harrisonconsoles.com/site/${appname}.html. Then put the `basename ${_archive}` in the `xdg-user-dir DOWNLOAD` directory."
-    exit 1
-fi
+## Variables
+_archive=`xdg-user-dir DOWNLOAD`/Mixbus32C-${pkgver}-Linux-64bit-gcc5
+_installer="Mixbus32C-${pkgver}-x86_64-gcc5"
+_app="Mixbus32C_x86_64-$pkgver"
+
+prepare () {
+	## Extract Harrison Plugins Archive
+	ln -srf ${_archive}.tar "$srcdir/`basename ${_archive}`.tar"
+	tar -xvf "$srcdir/`basename ${_archive}`.tar"
+	sh "$srcdir/`basename ${_installer}`.run" --tar xvf
+	tar -xvf "$srcdir/`basename ${_app}`.tar"
 }
 
 package() {
-## Create Base Directory
-mkdir -p ${pkgdir}/usr/lib/lv2
+	## Install LV2 Plugins
+	mkdir -p $pkgdir/usr/lib/lv2/
+	cp -r "$srcdir/`basename ${_app}`/lib/LV2/Harrison.lv2" $pkgdir/usr/lib/lv2/
 
-## Copy Harrison XT Plugins
-for plugin in 3D BC DC DM DS EG EQ GV LC MC ME MG SC SP TG VC; do
-    if [ -f ${srcdir}/Mixbus_$(uname -m)-$pkgver ]; then
-		cp -r ${srcdir}/Mixbus_$(uname -m)-$pkgver/lib/LV2/XT-${plugin}.lv2 ${pkgdir}/usr/lib/lv2
-	elif [ -f ${srcdir}/Mixbus32C_$(uname -m)-$pkgver ]; then
-		cp -r ${srcdir}/Mixbus32C_$(uname -m)-$pkgver/lib/LV2/XT-${plugin}.lv2 ${pkgdir}/usr/lib/lv2
-	fi
-done
-    
-## Package has built successfully message
-msg2 "Package Built Successfully!!"
-
-## License Install Message
-msg2 "Install licenses to ${HOME} to unlock plugins"
+	## Where To Put License Files
+	for _license in xt_3d xt_bc xt_dc xt_dm xt_ds xt_eg xt_eq xt_gv xt_lc xt_mc xt_me xt_mg xt_sc xt_sp xt_tg xt_tp xt_vc; do
+		if [ -f `xdg-user-dir DOWNLOAD`/license_key_harrison_${_license}.txt ]; then
+			install -Dm644 "`xdg-user-dir DOWNLOAD`/license_key_harrison_${_license}.txt" "$pkgdir/usr/local/share/license_key_harrison_${_license}.txt"
+		else
+			echo "Please put license_key_harrison_${_license}.txt in the `xdg-user-dir DOWNLOAD` directory in order to activate XT ${_license^^} plugin."
+		fi
+	done
 }
