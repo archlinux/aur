@@ -3,16 +3,17 @@
 pkgdesc='GitLab integration into Nextcloud'
 pkgname=('nextcloud-app-integration-gitlab')
 _appname='integration_gitlab'
-pkgver=0.0.13
+pkgver='0.0.15'
 pkgrel=1
 arch=('any')
 license=('AGPL3')
-url="https://github.com/nextcloud/integration_gitlab"
+_repo="nextcloud/integration_gitlab"
+url="https://github.com/${_repo}"
 makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.tar.gz")
-sha512sums=('b9fec91925d1cd5ff50aa3eadc035d068dc4568d500cec68b22eb68e269899b9b6f5364ebcab497f41dd661976be1ef9713d3b2d24509a9a4e76562c04612333')
+sha512sums=('881e54cbaff3b579d02ed4eac11179a6d25b924d004afed7973d9cc9efc34199350d613658f243f330f0cdab3e957522bb285e701f2d34b8d11f524d78db8288')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
