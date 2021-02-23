@@ -3,16 +3,17 @@
 pkgdesc='Google integration in Nextcloud'
 pkgname=('nextcloud-app-integration-google')
 _appname='integration_google'
-pkgver=0.1.7
+pkgver='0.1.10'
 pkgrel=1
 arch=('any')
 license=('AGPL3')
-url="https://github.com/nextcloud/integration_google"
+_repo="nextcloud/integration_google"
+url="https://github.com/${_repo}"
 makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.tar.gz")
-sha512sums=('8a1c60399ba9c59b7f80da0f501ae7b4206d0f824fc963cc702cf10e3ae881cfe481df2e89738d4e021f42c280f8108a0820e115c447d98b8172b7704d0e74be')
+sha512sums=('f697fec89c3a1b4d30001307c23b22127b3301542c32d9c874e6256af5b518085685d69cd996da99c3d42d11d44197f18b1c1df240bf6d57c11e668da406255f')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
