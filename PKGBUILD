@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='kclock'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Convergent clock application for Plasma'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('hicolor-icon-theme' 'plasma-framework')
 makedepends=('extra-cmake-modules')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b0d997362a5f56c2efc5c81827c4d0ca0a4110fff237ccf062413b03134c59f4')
+sha256sums=('11f2e11499357e9adf13d2e07b0ba77661e29bea245facd2afc0738920b814bc')
 
 build() {
   cmake -B 'build' -S "${pkgname}-v${pkgver}" \
