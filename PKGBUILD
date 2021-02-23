@@ -7,7 +7,7 @@ url="https://github.com/doron-cohen/antidot"
 license=("MIT")
 arch=("x86_64")
 
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 
 provides=("antidot")
@@ -15,7 +15,7 @@ conflicts=("antidot")
 depends=()
 
 source=("$url/releases/download/v$pkgver/antidot_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('a59ef94837e338a5280dcec7a0b6aa6b662c77f58c23af7c363d35506a0b9811')
+sha256sums=('3027e8a1f79741c5b644cf00e52aa232864ca76a8f813337eab343bc123605ed')
 
 package() {
   install -Dm 0755 "$srcdir/antidot" "$pkgdir/usr/bin/antidot"
