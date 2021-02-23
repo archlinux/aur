@@ -3,7 +3,7 @@
 # Contributor:
 
 pkgname=dhewm3
-pkgver=1.5.1_RC2
+pkgver=1.5.1_RC3
 pkgrel=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
 arch=('i686' 'x86_64')
@@ -40,6 +40,6 @@ package() {
   install -dm755 "$pkgdir/usr/share/dhewm3/d3xp"
 }
 
-md5sums=('d67408a2a34e3a8b9a960b1df00ebaf0'
+md5sums=('7d82ac291dc72e20c428bb0eb1d656ee'
          '300636e2e3ac0566dc6ceb63f121850e'
          '8b834c4c1cd5ccb25b1afe6cb47941a8')
