@@ -1,6 +1,6 @@
 # Maintainer: Amael <nils.van-zuijlen@mailo.com>
 pkgname=pixymon-git
-pkgver=2.r114.1cfbda1
+pkgver=2.r115.55ca01b
 pkgrel=1
 pkgdesc="Configuration utility for Pixy2 camera"
 arch=('x86_64')

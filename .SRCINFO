@@ -1,6 +1,6 @@
 pkgbase = pixymon-git
 	pkgdesc = Configuration utility for Pixy2 camera
-	pkgver = 2.r114.1cfbda1
+	pkgver = 2.r115.55ca01b
 	pkgrel = 1
 	url = pixycam.com
 	arch = x86_64
