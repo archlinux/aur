@@ -1,0 +1,13 @@
+pkgbase = doko-rs
+	pkgdesc = Docker-based development-only dependency manager
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/fengkx/doko-rs/
+	arch = x86_64
+	license = Unlicense
+	depends = docker
+	source = doko-rs-0.1.0.tar.gz::https://github.com/fengkx/doko-rs/releases/download/v0.1.0/doko-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums = 34437f4cb1426a678b5c7604292f22828c2f4376469d7d5f1290978be75f64a2233310fcba42e8a62ca88fa758757bc093a25469692e05d6a166ed8a1734fbb3
+
+pkgname = doko-rs
+
