@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=quicktype
-pkgver=15.0.258
+pkgver=15.0.260
 pkgrel=1
 pkgdesc="Generate types and converters from JSON, Schema, and GraphQL"
 arch=(any)
@@ -24,4 +24,4 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha256sums=('22a8ce651c1eca7fb8f1e64d640c4040d66ccc0b83a97f2791bff299c5f04c2b')
+sha256sums=('57ffeb7f12f3c3476bd7e0213716006b49a8159c20e63fd60cb07eefa4289b6f')
