@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=7.73.0
+pkgver=7.75.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -13,8 +13,7 @@ source=("https://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc})
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 #source=("curl-$pkgver.zip::https://github.com/curl/curl/archive/master.zip")
 
-# Master as of 2020-10-14 (7.73.0 release day)
-_quiche_ref=107a054b73bb4d381931dbc46aecccbb1801d91a
+_quiche_ref=0.7.0
 
 build(){
   rm -rf quiche
@@ -27,7 +26,7 @@ build(){
   git checkout FETCH_HEAD
   git submodule update --init --recursive
 
-  cargo build --release --features pkg-config-meta,qlog
+  cargo build --release --features ffi,pkg-config-meta,qlog
   mkdir deps/boringssl/src/lib
   ln -vnf $(find target/release -name libcrypto.a -o -name libssl.a) deps/boringssl/src/lib/
   cd ..
@@ -76,4 +75,4 @@ package() {
   # libquice is requried
   install -Dm755 quiche/target/release/libquiche.so "${pkgdir}/usr/lib/libquiche.so"
 }
-sha512sums=(86996f7ce537cfc39be18a6a93af0524c7a878d9e003ce0106eb4ff6ce2dea99da1cb9af297b87f93b204b42a3d793198a6e01764aa2a06f5b6fe0623b008f88             SKIP)
+sha512sums=(ebef01be48e05f46f7d0605966d4c66391d5a51f6d102265647522f8f5df61b5440c930bd1b043d56968769869275123122826a9ec7fb3148c72a28ee32ce696             SKIP)
