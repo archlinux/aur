@@ -1,7 +1,7 @@
 # Maintainer: okhsunrog <me@gornushko.com>
 pkgname=emptty-one-entry
 pkgver=0.5.0.r0.e89ca88
-pkgrel=1
+pkgrel=2
 pkgdesc="Dead simple CLI Display Manager on TTY. Only one login entry, auto choose"
 arch=('x86_64')
 url="https://github.com/okhsunrog/emptty"
