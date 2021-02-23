@@ -1,12 +1,13 @@
 # Maintainer: Vasiliy Stelmachenok <cabopust@yandex.ru>
 # Contributor: Pavel Priluckiy <gerallitluis2@gmail.com>
 
-# Sets the "Prefer Maximum Performance" mode in the NVIDIA Settings at system startup.
+# Includes application of the Powermizer-max-performance.patch
+# USE AT YOUR OWN RISK!
 _pref_maximum_performance=
 
 pkgname=nvidia-dkms-performance
 pkgver=460.39
-pkgrel=2
+pkgrel=4
 pkgdesc='NVIDIA driver sources for linux with some optimizations'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -17,18 +18,18 @@ conflicts=('nvidia' 'nvidia-dkms')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia.hook'
-        'nvidia-settings-performance.desktop'
-        'nvidia-dkms-conf.patch'
-        'linux-rt.patch'
-        'nvidia-drm-modeset.patch'
-        'NVreg.patch')
+        '0001-nvidia-dkms-conf.patch'
+        '0002-linux-rt.patch'
+        '0003-nvidia-drm-modeset.patch'
+        '0004-NVreg.patch'
+        '0005-Powermizer-max-performance.patch')
 sha256sums=('07042bd0c2f5c37b455a973f15561450f789590b8650a6ea573c819591d572a9'
             '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
-            '28635a9b0808beebff7e7905ee3e664d895fe23e149d462397c0b429c6f7d091'
             '1bd56d082093db9819b07f42c5414dffd1bcf92946d5f5dab706ed785933e169'
             'cf4ee7cbc4200126ff25d649d11257eb1c7ade4aa0b313f31b56207f9fa73d4b'
             'a9465149c336c8f0bded15a4d473f16156d6da3a9fe4965ebe8a9afba5519c9f'
-            'd24e341f9a0e38f03f4e425e5f59e407604463fc3daee36009ecbd0fefa8b801')
+            'd24e341f9a0e38f03f4e425e5f59e407604463fc3daee36009ecbd0fefa8b801'
+            '9140aa5ea1b7c0704a2606b27a61af42b0309eceebac496704a9e8db18815aa4')
 
 prepare() {
     [ -d "$_pkg" ] && rm -rf "$_pkg"
@@ -36,40 +37,52 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     
-    patch -Np1 -i "${srcdir}/nvidia-dkms-conf.patch"
+    patch -Np1 -i "${srcdir}/0001-nvidia-dkms-conf.patch"
     # Fixing compatibility with the RT (Real-Time) kernel
-    patch -Np1 -i "${srcdir}/linux-rt.patch"
-    # This patch edits the default values of the NVIDIA kernel module parameters, 
-    # and makes the following changes:
-    #
-    # NVreg_UsePageAttributeTable=1 (Default 0) - Activating the better memory management method (PAT). 
-    # The PAT method creates a partition type table at a specific address mapped inside the register
-    # and utilizes the memory architecture and instruction set more efficiently and faster.
-    # If your system can support this feature, it should improve CPU performance. 
-    #
-    # NVreg_EnablePCIeGen3=1 (Default 0) - Enable PCIe Gen 3.x support. 
-    # If the system supports this 8GT high speed bus then enable it with this module option flag.
-    # By default the Nvidia driver is set to use PCIe Gen 2.x for compatibility reasons.
-    #
-    # NVreg_InitializeSystemMemoryAllocations=0 (Default 1) - Disables clearing system memory allocation
-    # before using it for the GPU. Potentially improves performance, but at the cost of increased security risks.
-    # Write "options nvidia NVreg_InitializeSystemMemoryAllocations=1" in /etc/modprobe.d/nvidia.conf, 
-    # if you want to return the default value.
-    #
-    # NVreg_EnableStreamMemOPs=1 (Default 0) - Activates the support for CUDA Stream Memory Operations in user-mode applications.
-    # Note: May be disabled in future versions.
-    # 
-    # If you want to learn more about the NVIDIA driver module parameters, 
-    # you can go to the Gentoo Wiki or view the source code of the nv-reg.h file.
-    patch -Np1 -i "${srcdir}/NVreg.patch"
+    patch -Np1 -i "${srcdir}/0002-linux-rt.patch"
     # Enable nvidia-drm.modeset=1 (DRM KMS) by default.
     # This is necessary for NVIDIA PRIME to work correctly.
     # Note: May cause problems with scaling in console mode.
-    patch -Np1 -i "${srcdir}/nvidia-drm-modeset.patch"
+    patch -Np1 -i "${srcdir}/0003-nvidia-drm-modeset.patch"
+    # This patch edits the default values of the NVIDIA kernel module
+    # parameters, and makes the following changes:
+    #
+    # NVreg_UsePageAttributeTable=1 (Default 0) - Activating the better
+    # memory management method (PAT). The PAT method creates a partition type table
+    # at a specific address mapped inside the register and utilizes the memory architecture
+    # and instruction set more efficiently and faster.
+    # If your system can support this feature, it should improve CPU performance.
+    #
+    # NVreg_EnablePCIeGen3=1 (Default 0) - Enable PCIe Gen 3.x support.
+    # If the system supports this 8GT high speed bus then enable it with this module option flag.
+    # By default the Nvidia driver is set to use PCIe Gen 2.x for compatibility reasons.
+    #
+    # NVreg_InitializeSystemMemoryAllocations=0 (Default 1) - Disables
+    # clearing system memory allocation before using it for the GPU.
+    # Potentially improves performance, but at the cost of increased security risks.
+    # Write "options nvidia NVreg_InitializeSystemMemoryAllocations=1" in /etc/modprobe.d/nvidia.conf,
+    # if you want to return the default value.
+    #
+    # NVreg_EnableStreamMemOPs=1 (Default 0) - Activates the support for
+    # CUDA Stream Memory Operations in user-mode applications.
+    # 
+    # If you want to learn more about the NVIDIA driver module parameters,
+    # you can go to the Gentoo Wiki or view the source code of the nv-reg.h file.
+    patch -Np1 -i "${srcdir}/0004-NVreg.patch"
+    # Sets the default power plan in preference to maximum
+    # performance. This is similar to the power plan settings in nvidia-
+    # settings. The advantage of this method is that it controls the power
+    # plan for each power source, i.e. the driver will be set for maximum
+    # performance when running from the mains and for the battery it
+    # will be set for optimal power savings. It also does not require nvidia-
+    # settings as a dependency and does not use it in any way.
+    if [ -n "$_pref_maximum_performance" ]; then
+        patch -Np1 -i "${srcdir}/0005-Powermizer-max-performance.patch"
+    fi
 }
 
 package() {
-    depends=('dkms' "nvidia-utils>=${pkgver}" 'nvidia-settings' 'libglvnd')
+    depends=('dkms' "nvidia-utils>=${pkgver}" 'libglvnd')
 
     # Nvidia hook for update initramfs after an NVIDIA driver upgrade
     install -D -m644 "${srcdir}/nvidia.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
@@ -80,10 +93,6 @@ package() {
     # Block Nouveau
     install -D -m644 <(printf '%s\n%s\n' 'blacklist nouveau' 'options nouveau modeset=0') \
         "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
-
-    if [ -n "$_pref_maximum_performance" ]; then
-    	install -D -m644 "${srcdir}/nvidia-settings-performance.desktop" -t "${pkgdir}/etc/xdg/autostart"
-    fi
 
     # license
     install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"

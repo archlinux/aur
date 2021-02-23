@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=NVIDIA Settings Performance Profile
-Comment=Pref Maximum performance for your NVIDIA GPU
-Exec=/usr/bin/nvidia-settings -a [gpu:0]/GpuPowerMizerMode=1
-Terminal=false
