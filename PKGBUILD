@@ -7,15 +7,15 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta6.r0.g13b40902a9
-pkgrel=2
+pkgver=9.3.beta7.r0.g8453ffb849
+pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
   python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-sphinx
-  gap flintqs lcalc lrcalc1 arb eclib zn_poly gd python-cvxopt pynac linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
+  gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml libgiac libhomfly libbraiding symmetrica threejs-sage)
 optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
@@ -40,13 +40,17 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         latte-count.patch
         test-optional.patch
         sagemath-singular-4.2.patch
-        sagemath-pari-2.13.patch)
+        sagemath-pari-2.13.patch
+        sagemath-numpy-1.20.patch
+        sagemath-lrcalc2.patch)
 sha256sums=('SKIP'
             '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
             'af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
             '1c971f379a1e1862d4975ce1928e394fd086d8a71a284e1eb8367c67138fc9ea'
-            '187ae145744ed217caf2f7429e62e7c99d419738b841a292b864e4b340ee1122')
+            '187ae145744ed217caf2f7429e62e7c99d419738b841a292b864e4b340ee1122'
+            'edb5457c3b310659aa40170948867a3d183879fc525c3fda68d4a80773c457b8'
+            '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9')
 
 pkgver() {
   cd sage
@@ -57,10 +61,14 @@ prepare(){
   cd sage
 
 # Upstream patches
-# Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
+# Fixes for singular 4.2 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.2.patch
 # Port to PARI 2.13 https://trac.sagemath.org/ticket/30801
   patch -p1 -i ../sagemath-pari-2.13.patch
+# Fix deprecation warnings with numpy 1.20
+  patch -p1 -i ../sagemath-numpy-1.20.patch
+# Replace lrcalc.pyx with a wrapper over lrcalc's python bindings https://trac.sagemath.org/ticket/31355
+  patch -p1 -i ../sagemath-lrcalc2.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
