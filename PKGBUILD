@@ -2,8 +2,8 @@
 
 pkgname=php7-smbclient
 _extname=smbclient
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="PHP bindings for libsmbclient (for php7)."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/eduardok/libsmbclient-php"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('php7' 'smbclient')
 backup=("etc/php7/conf.d/${_extname}.ini")
 source=("https://github.com/eduardok/libsmbclient-php/archive/${pkgver}.tar.gz")
-md5sums=('10a0614a393650cac41724cda327d460')
+sha256sums=('d03401706a57a18cb3d3ffec1a250067482840017f8baab63faa6528eb01b8c1')
 
 build() {
   cd "libsmbclient-php-${pkgver}"
