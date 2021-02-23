@@ -5,7 +5,7 @@
 _langs=(jpn_vert)
 
 pkgbase=tesseract-data-best-jpn_vert-git
-pkgname=($(for l in ${_langs[@]}; do echo tesseract-data-${l}-git; done))
+pkgname=($(for l in ${_langs[@]}; do echo tesseract-data-best-${l}-git; done))
 pkgver=37.e2aad9b
 pkgrel=1
 pkgdesc="Trained language data for tesseract OCR Engine"
@@ -24,9 +24,9 @@ pkgver() {
 
 for l in ${_langs[@]}; do
     eval "
-package_tesseract-data-${l}-git(){
-    provides=('tesseract-data-${l}')
-    conflicts=('tesseract-data-${l}')
+package_tesseract-data-best-${l}-git(){
+    provides=('tesseract-data-best-${l}')
+    conflicts=('tesseract-data-best-${l}')
 
     cd \"\$srcdir/tessdata\"
     mkdir -p \"\$pkgdir/usr/share/tessdata\"
