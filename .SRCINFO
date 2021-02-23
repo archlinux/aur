@@ -1,15 +1,17 @@
 pkgbase = asem51-bin
 	pkgdesc = A two-pass macro assembler for the Intel MCS-51 family of microcontrollers.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plit.de/asem-51/
 	arch = i386
 	arch = x86_64
 	license = custom
 	provides = asem51
 	conflicts = asem51
-	source = http://plit.de/asem-51/asem51_1.3-2_i386.deb
-	md5sums = e504c8ea6d2e26019590e3a45ac2230c
+	source = asem51-1.3.tar.gz::http://plit.de/asem-51/asem51-1.3-ELF.tar.gz
+	source = mcufiles-20080923.zip::http://plit.de/asem-51/mcufiles.zip
+	md5sums = 895fd5e6617f8b21b9f56484f9258c94
+	md5sums = 23eb370c4d674e190a05f33da5704519
 
 pkgname = asem51-bin
 
