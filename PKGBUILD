@@ -1,7 +1,7 @@
 # Maintainer: Artem Senichev <artemsen@gmail.com>
 
 pkgname=swayimg
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Image viewer for Sway/Wayland'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('libjpeg: JPEG images support'
             'libwebp: WebP images support')
 url='https://github.com/artemsen/swayimg'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('f30c1b2a4991178daeb9aee886ee212e')
+md5sums=('45d991f72750d51e36d13db3965e1355')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
