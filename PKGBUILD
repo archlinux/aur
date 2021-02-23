@@ -1,32 +1,34 @@
-# Maintainer: DoTheEvolution <DoTheEvo@gmail.com>
-pkgname="angrysearch"
-pkgver=1.0.1
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: DoTheEvolution <DoTheEvo@gmail.com>
+pkgname=angrysearch
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Instant file search"
-arch=("any")
-url="https://github.com/dotheevo/angrysearch/"
-license=("GPL")
-depends=("python-pyqt5" "libxkbcommon-x11" "xdg-utils")
-optdepends=("python-gobject: desktop notifications support"
-            "xdotool: Thunar & PCmanFM to select file on path open")
-source=("https://github.com/DoTheEvo/ANGRYsearch/archive/v$pkgver.tar.gz")
-sha256sums=("9a550649c3efafb26660860758f2e75702ce96a0a0c50dc34ced2967b51a843f")
+pkgdesc="Linux file search, instant results as you type"
+arch=('any')
+url="https://github.com/DoTheEvo/ANGRYsearch"
+license=('GPL2')
+depends=('python-pyqt5' 'libxkbcommon-x11' 'xdg-utils')
+makedepends=('git')
+optdepends=('python-gobject: desktop notifications support'
+            'xdotool: Thunar & PCmanFM to select file on path open')
+_commit=00d8d0f24a30bbba231605a41add908f36e1ae81
+source=("git+https://github.com/DoTheEvo/ANGRYsearch.git#commit=$_commit")
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/ANGRYsearch"
+    python setup.py --version
+}
+
+build() {
+    cd "$srcdir/ANGRYsearch"
+    python setup.py build
+}
 
 package() {
- cd "ANGRYsearch-$pkgver"
- install -Dm755 angrysearch.py "$pkgdir/usr/share/angrysearch/angrysearch.py"
- install -Dm755 angrysearch_update_database.py "$pkgdir/usr/share/angrysearch/angrysearch_update_database.py"
- install -Dm644 angrysearch.desktop "$pkgdir/usr/share/angrysearch/angrysearch.desktop"
- install -Dm644 angrysearch.svg "$pkgdir/usr/share/angrysearch/angrysearch.svg"
- install -Dm644 scandir.py "$pkgdir/usr/share/angrysearch/scandir.py"
- install -Dm644 resource_file.py "$pkgdir/usr/share/angrysearch/resource_file.py"
- install -Dm644 qdarkstylesheet.qss "$pkgdir/usr/share/angrysearch/qdarkstylesheet.qss"
-
- install -d "$pkgdir/usr/bin"
- install -d "$pkgdir/usr/share/pixmaps"
- install -d "$pkgdir/usr/share/applications"
-
- ln -s "/usr/share/angrysearch/angrysearch.py" "$pkgdir/usr/bin/angrysearch"
- ln -s "/usr/share/angrysearch/angrysearch.svg" "$pkgdir/usr/share/pixmaps"
- ln -s "/usr/share/angrysearch/angrysearch.desktop" "$pkgdir/usr/share/applications"
+    cd "$srcdir/ANGRYsearch"
+    export PYTHONHASHSEED=0
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
