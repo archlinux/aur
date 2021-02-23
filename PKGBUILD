@@ -2,24 +2,24 @@
 
 pkgname=plasma-angelfish
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Web browser for Plasma Mobile"
-url="https://invent.kde.org/plasma-mobile/plasma-angelfish"
+url="https://invent.kde.org/plasma-mobile/angelfish"
 license=('GPL2')
 depends=('qt5-webengine' 'purpose' 'kirigami2')
-makedepends=('extra-cmake-modules')
-source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('ec9f5a2437104f6dd220b0d008806b27def85b4b5882486f99182a9dc5bf23ba28c73b52aa1e35939ad43957a2de22da353591bdde87f6ac4c5684946e2f1752')
+makedepends=('extra-cmake-modules' 'corrosion-git')
+source=("${url}/-/archive/v${pkgver}/angelfish-v${pkgver}.tar.gz")
+sha512sums=('e0695d7cfc5b1f723538e4aa85a85e4ea999d62ae356c0fbd5f4f5d812bef77bc406eafd93e44cceb37efeff15b43722a9ba84685fee102466ff5ad26e9e1391')
 
 build() {
-  cd ${srcdir}/${pkgname}-v${pkgver}
+  cd ${srcdir}/angelfish-v${pkgver}
   cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
   make -C build
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-v${pkgver}
+  cd ${srcdir}/angelfish-v${pkgver}
   make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
