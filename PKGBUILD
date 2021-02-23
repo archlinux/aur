@@ -1,14 +1,14 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=fluent-reader
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _pkgname="${pkgname}-${pkgver}"
 pkgdesc='Modern desktop RSS reader built with Electron, React, and Fluent UI'
 arch=('any')
 url='https://hyliu.me/fluent-reader/'
 license=('BSD')
 depends=('hicolor-icon-theme')
-makedepends=('nodejs' 'node-gyp')
+makedepends=('nodejs' 'node-gyp' 'npm')
 provides=('fluent-reader')
 conflicts=('fluent-reader')
 source=("https://github.com/yang991178/fluent-reader/archive/v${pkgver}.tar.gz"
