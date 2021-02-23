@@ -11,7 +11,7 @@ depends=('gmp' 'boost-libs' 'readline')
 makedepends=('frobby' 'boost')
 source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "cocoa5")
 sha256sums=('eff4432565d0be2ac2e7c7ace7f404dba370eb7d3d71e321bcb8b439489d11d3'
-            'e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3')
+            '77728fcb4204616b77f05fa7801a3a34520ce892decbeb1d588ad9bb6a436a0e')
 
 build() {
   cd "$srcdir/CoCoALib-$pkgver"
