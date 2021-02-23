@@ -8,7 +8,7 @@
 pkgname=libvorbis-aotuv-lancer
 _srcname="${pkgname%-aotuv-lancer}"
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 _aotuv_ver=aotuv-b6.03
 pkgdesc='The Vorbis library with aoTuV and Lancer patches'
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ license=('BSD')
 depends=('libogg')
 conflicts=('libvorbis' 'libvorbis-aotuv')
 provides=(
+  'libvorbis'
   'libvorbis.so'
   'libvorbisenc.so'
   'libvorbisfile.so'

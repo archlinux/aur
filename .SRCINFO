@@ -1,12 +1,13 @@
 pkgbase = libvorbis-aotuv-lancer
 	pkgdesc = The Vorbis library with aoTuV and Lancer patches
 	pkgver = 1.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hydrogenaud.io/index.php?topic=115774.0
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = libogg
+	provides = libvorbis
 	provides = libvorbis.so
 	provides = libvorbisenc.so
 	provides = libvorbisfile.so
