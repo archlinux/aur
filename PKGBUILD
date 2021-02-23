@@ -2,7 +2,7 @@
 
 _pkgname=usb-imager
 pkgname=${_pkgname}-git
-pkgver=1.0.git_latest
+pkgver=1.0.r5.g679e781
 pkgrel=1
 pkgdesc='GUI-Application to write bootable disk images to USB key.'
 arch=(any)
@@ -46,12 +46,13 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -D -m644 'data/applications/usb-imager.desktop' "${pkgdir}/usr/share/applications/usb-imager.desktop"
-  install -D -m644 'data/icons/hicolor/16x16/apps/usb-imager.png' "${pkgdir}/usr/share/icons/hicolor/16x16/apps/usb-imager.png"
-  install -D -m644 'data/icons/hicolor/24x24/apps/usb-imager.png' "${pkgdir}/usr/share/icons/hicolor/24x24/apps/usb-imager.png"
-  install -D -m644 'data/icons/hicolor/32x32/apps/usb-imager.png' "${pkgdir}/usr/share/icons/hicolor/32x32/apps/usb-imager.png"
-  install -D -m644 'data/icons/hicolor/48x48/apps/usb-imager.png' "${pkgdir}/usr/share/icons/hicolor/48x48/apps/usb-imager.png"
-  install -D -m644 'data/icons/hicolor/64x64/apps/usb-imager.png' "${pkgdir}/usr/share/icons/hicolor/64x64/apps/usb-imager.png"
-  install -D -m644 'data/icons/hicolor/72x72/apps/usb-imager.png' "${pkgdir}/usr/share/icons/hicolor/72x72/apps/usb-imager.png"
-  install -D -m644 'data/icons/hicolor/128x128/apps/usb-imager.png' "${pkgdir}/usr/share/icons/hicolor/128x128/apps/usb-imager.png"
+  _path="apps/${_pkgname}.png"
+  install -D -m644 "data/applications/usb-imager.desktop" "${pkgdir}/usr/share/applications/usb-imager.desktop"
+  install -D -m644 "data/icons/hicolor/16x16/${_path}" "${pkgdir}/usr/share/icons/hicolor/16x16/${_path}"
+  install -D -m644 "data/icons/hicolor/24x24/${_path}" "${pkgdir}/usr/share/icons/hicolor/24x24/${_path}"
+  install -D -m644 "data/icons/hicolor/32x32/${_path}" "${pkgdir}/usr/share/icons/hicolor/32x32/${_path}"
+  install -D -m644 "data/icons/hicolor/48x48/${_path}" "${pkgdir}/usr/share/icons/hicolor/48x48/${_path}"
+  install -D -m644 "data/icons/hicolor/64x64/${_path}" "${pkgdir}/usr/share/icons/hicolor/64x64/${_path}"
+  install -D -m644 "data/icons/hicolor/72x72/${_path}" "${pkgdir}/usr/share/icons/hicolor/72x72/${_path}"
+  install -D -m644 "data/icons/hicolor/128x128/${_path}" "${pkgdir}/usr/share/icons/hicolor/128x128/${_path}"
 }
