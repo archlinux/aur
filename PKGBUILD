@@ -61,20 +61,20 @@ sha256sums_x86_64=('SKIP'
                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                   '74b490edccd3fdce7c9f9ede50085db669ce43de2778324d400416855cae6295')
+                   'bdf0dfa80e115e58815f5d668ca957c6cd253f46815391e2f773c6acb68317c7')
 sha256sums_aarch64=('SKIP'
                     '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
                     'SKIP'
                     'SKIP'
                     '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
                     'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                    '74b490edccd3fdce7c9f9ede50085db669ce43de2778324d400416855cae6295'
+                    'bdf0dfa80e115e58815f5d668ca957c6cd253f46815391e2f773c6acb68317c7'
                     '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
                     '5d9a0064832c45759328d3c14e4da8cc061d9df5637e8b20e8eb2e1a08983b79')
 pkgver() {
   cd mozilla-unified
-  printf "87.0a1.r%s" "$(hg identify -n)"
+  printf "88.0a1.r%s" "$(hg identify -n)"
 }
 
 prepare() {
