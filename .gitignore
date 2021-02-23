@@ -5,6 +5,7 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!actions.patch
 !cli.patch
 !galu1.patch
 !wayland.patch
