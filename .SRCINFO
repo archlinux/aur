@@ -1,6 +1,6 @@
 pkgbase = xbacklight-ctl-git
 	pkgdesc = Use xbacklight easily from the command line or with keybindings.
-	pkgver = r31.512d5b7
+	pkgver = r32.b972c5c
 	pkgrel = 1
 	url = https://github.com/EnmanuelVT/xbacklight-ctl.git
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = xbacklight-ctl-git
 	makedepends = git
 	makedepends = gzip
 	depends = xorg-xbacklight
-	depends = libnotify
+	depends = notify-send.sh
 	provides = xbacklight-ctl
 	source = git+https://github.com/EnmanuelVT/xbacklight-ctl.git
 	md5sums = SKIP

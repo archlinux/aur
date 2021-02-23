@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Villavizar Trinidad <evillavizartrinidad@gmail.com>
 pkgname=xbacklight-ctl-git
 _pkgname=xbacklight-ctl
-pkgver=r31.512d5b7
+pkgver=r32.b972c5c
 pkgrel=1
 pkgdesc="Use xbacklight easily from the command line or with keybindings."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/EnmanuelVT/xbacklight-ctl.git"
 license=('GPL')
 groups=()
 depends=('xorg-xbacklight'
-         'libnotify')
+         'notify-send.sh')
 makedepends=('git'
              'gzip')
 optdepends=()
