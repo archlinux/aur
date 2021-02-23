@@ -1,46 +1,30 @@
 # Maintainer: Gauthier B <gogoprog at gmail dot com>
 pkgname=ddsviewer-git
-pkgver=20170420
+pkgver=r19.b3eba50
 pkgrel=1
-pkgdesc="DDS file viewer (DirectDraw Surface)"
-arch=('i686' 'x86_64')
-url="https://github.com/gogoprog/ddsviewer"
-license=('GPL2')
-depends=('sfml')
-makedepends=('git' 'premake')
-optdepends=()
-provides=()
-replaces=()
-backup=()
+epoch=1
+pkgdesc='DDS file viewer (DirectDraw Surface)'
+arch=(i686 x86_64)
+url=https://github.com/gogoprog/ddsviewer
+license=(GPL2)
+depends=(sfml)
+makedepends=(git premake)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+"${url}".git)
+md5sums=('SKIP')
 
-_gitroot="https://github.com/gogoprog/ddsviewer"
-_gitname="ddsviewer"
+pkgver() {
+    cd "${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-    # update/download git files
-    cd ${srcdir}/
-    msg "Connecting to the GIT server..."
-    if [[ -d ${srcdir}/${_gitname} ]] ; then
-        cd ${_gitname}/
-        git stash
-        git pull origin
-        msg "The local files are updated..."
-    else
-        git clone ${_gitroot} ${_gitname}
-    fi
-    # checkout of actual/working branch
-    cd ${srcdir}/${_gitname}
-    git checkout master
-    msg "GIT checkout done."
-
-    cd build
-    msg "Building..."
-    premake4 gmake
-    make clean || return 1
+    cd "${pkgname%-git}/build"
+    premake5 gmake
     make config=release
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/bin/
-    cp ${srcdir}/${_gitname}/build/ddsviewer ${pkgdir}/usr/bin/
+    install -Dm755 "${pkgname%-git}/build/bin/Release/${pkgname%-git}" -t ${pkgdir}/usr/bin
 }
