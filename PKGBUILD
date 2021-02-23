@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 conflicts=(${_name})
 provides=(${_name})
-source=('https://github.com/dkaslovsky/textnote/releases/download/v${pkgver}/textnote_linux_amd64')
+source=("https://github.com/dkaslovsky/textnote/releases/download/v${pkgver}/textnote_linux_amd64")
 sha256sums=('4bfd8bce0b1786a0d48fbb3dbb69e425e798f4531a4d449357108474e26cdd34')
 
 package() {
