@@ -1,0 +1,21 @@
+pkgbase = httpfs2-2gbplus
+	pkgdesc = FUSE-based file system for HTTP access, patched with +2GB file support
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = http://httpfs.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	makedepends = dpkg
+	depends = fuse
+	depends = openssl
+	provides = httpfs2
+	conflicts = httpfs2
+	source = http://downloads.sourceforge.net/project/httpfs/httpfs2/httpfs2-0.1.5.tar.gz
+	source = https://sourceforge.net/p/httpfs/bugs/_discuss/thread/8a4f3458/b43f/attachment/httpfs.diff
+	sha256sums = 01cb4bb38deb344f540da6f1464dc7edbdeb51213ad810b8c9c282c1e17e0fc1
+	sha256sums = da1965ff43662ed1473699e94511d9ae1c493d071eee795cdb5ff22fabeebc56
+
+pkgname = httpfs2-2gbplus
+
