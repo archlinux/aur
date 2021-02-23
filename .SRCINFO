@@ -1,13 +1,16 @@
 pkgbase = system76-driver
 	pkgdesc = Universal driver for System76 computers
 	pkgver = 20.04.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver.install
 	arch = any
 	license = GPL
 	depends = at
 	depends = dmidecode
+	depends = ethtool
+	depends = grub
+	depends = pciutils
 	depends = python>=3.6
 	depends = python-cffi
 	depends = python-dbus
@@ -18,6 +21,8 @@ pkgbase = system76-driver
 	depends = python-systemd
 	depends = python-xlib
 	depends = system76-firmware-daemon
+	depends = usbutils
+	depends = wireless_tools
 	optdepends = firmware-manager: Manage System76 firmware updates
 	optdepends = gtk3: To launch System76 driver and firmware GUI
 	optdepends = pm-utils: For power management features
