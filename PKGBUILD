@@ -54,6 +54,5 @@ package()
   install -D -m644 man/krack.1 "${pkgdir}/usr/share/man1/krack.1"
   install -D -m644 man/krackctl.1 "${pkgdir}/usr/share/man1/krackctl.1"
 
-
   install -D -m644 lib/systemd/system/krack-receive.service "${pkgdir}/usr/lib/systemd/system/krack-receive.service"
 }
