@@ -1,6 +1,6 @@
 pkgbase = bat-extras-git
 	pkgdesc = Bash scripts that integrate bat with various command line tools.
-	pkgver = 2020.10.05.r8.gbb94b33
+	pkgver = 2020.10.05.r13.g165fc69
 	pkgrel = 2
 	url = https://github.com/eth-p/bat-extras
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = bat-extras-git
 	optdepends = shfmt: bash formatting for prettybat script
 	optdepends = rustfmt: Rust formatting for prettybat script
 	optdepends = clang: C / C++ / Objective-C formatting for prettybat script
+	optdepends = python-black: Python formatting for prettybat script
 	provides = bat-extras
 	conflicts = bat-extras
 	source = git+https://github.com/eth-p/bat-extras.git
