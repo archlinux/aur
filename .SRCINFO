@@ -1,0 +1,17 @@
+pkgbase = procpath
+	pkgdesc = A process tree analysis workbench
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://heptapod.host/saajns/procpath
+	arch = any
+	license = LGPL3
+	makedepends = mercurial
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jsonpyth
+	depends = python-pygal
+	source = procpath-1.0.0::hg+https://heptapod.host/saajns/procpath#revision=aea5eb1bc609
+	sha512sums = SKIP
+
+pkgname = procpath
+
