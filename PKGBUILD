@@ -6,7 +6,7 @@
 # General package information
 pkgname=krack
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Krathalan's packaging softwares"
 url="https://git.sr.ht/~krathalan/krack"
 license=("GPL3")
@@ -50,9 +50,9 @@ package()
   install -D -m644 lib/honey "${pkgdir}/usr/lib/krack/honey"
   install -D -m755 lib/receive "${pkgdir}/usr/lib/krack/receive"
 
-  install -D -m644 man/krack-build.1 "${pkgdir}/usr/share/man1/krack-build.1"
-  install -D -m644 man/krack.1 "${pkgdir}/usr/share/man1/krack.1"
-  install -D -m644 man/krackctl.1 "${pkgdir}/usr/share/man1/krackctl.1"
+  install -D -m644 man/krack-build.1 "${pkgdir}/usr/share/man/man1/krack-build.1"
+  install -D -m644 man/krack.1 "${pkgdir}/usr/share/man/man1/krack.1"
+  install -D -m644 man/krackctl.1 "${pkgdir}/usr/share/man/man1/krackctl.1"
 
   install -D -m644 lib/systemd/system/krack-receive.service "${pkgdir}/usr/lib/systemd/system/krack-receive.service"
 }
