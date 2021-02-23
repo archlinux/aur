@@ -2,7 +2,7 @@
 # Co-Maintainer: Solomon Choina <shlomochoina@gmail.com>
 _pkgbase=gplugin
 pkgname="$_pkgbase-hg"
-pkgver=1738.3a324eded447
+pkgver=1764.3075aaa51b17
 pkgrel=1
 pkgdesc="GObject based library that implements a reusable plugin system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ optdepends=('gtk3: for GTK+ support'
             'glib-perl: for perl support')
 provides=("$_pkgbase=0.0.23")
 conflicts=("$_pkgbase")
-source=("$_pkgbase::hg+https://keep.imfreedom.org/gplugin/gplugin#branch=develop")
+source=("$_pkgbase::hg+https://keep.imfreedom.org/gplugin/gplugin#branch=default")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgbase
-  arch-meson build -Dperl=false
+  arch-meson build -Dperl5=false
 }
 
 build() {
