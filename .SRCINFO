@@ -1,7 +1,7 @@
 pkgbase = gpgsync
 	pkgdesc = A tool to let users always have up-to-date public keys for other members of their organization.
-	pkgver = 0.3.5
-	pkgrel = 2
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://github.com/firstlookmedia/gpgsync/
 	arch = any
 	license = GPL3
@@ -13,10 +13,10 @@ pkgbase = gpgsync
 	depends = python-packaging
 	depends = python-dateutil
 	depends = gnupg
-	source = gpgsync-0.3.5.tar.gz::https://github.com/firstlookmedia/gpgsync/archive/v0.3.5.tar.gz
+	source = gpgsync-0.3.6.tar.gz::https://github.com/firstlookmedia/gpgsync/archive/v0.3.6.tar.gz
 	source = gpgsync.service
 	source = gpgsync.timer
-	sha512sums = cb0a634006f200bbdb3104a3a2efd290e7bb4f56800d2d63dc56676a35360182ce10d7c6a5d84a4e6c45ec4dc7ce8216c9ccc526229f1c8176384c9344ab30e9
+	sha512sums = 341dd08853929b50adff5247decb8844dafa0dbe43ccb0541f6578815c78a6019a27daa15d913e43200f2dca4567e215658b357408f1866536729e78c95615b8
 	sha512sums = 26a56775912d680ce34c32c5e24a3dd5826b3ea78c6c3d4295d8da199d881b30c200631fd0a49077c3b4617e4941cbcd57a342e535939ea04fe4e489f15f9d18
 	sha512sums = f4d02c8d001d42db99e1cbc746b92ef41b15c13a3c3ad3e972f570d67f8f4d31b87ba7ee9440fcae190b38ee32d1f46f835a93c845cd6ac982aaea441f1ae8a9
 
