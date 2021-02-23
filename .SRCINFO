@@ -1,0 +1,28 @@
+pkgbase = sudo
+	pkgdesc = Give certain users the ability to run some commands as root - git version
+	pkgver = SUDO_1_9_0.r543.g5fc6b8c17
+	pkgrel = 1
+	url = https://www.sudo.ws/sudo/
+	install = sudo.install
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = libgcrypt
+	depends = pam
+	depends = libldap
+	depends = zlib
+	provides = sudo
+	conflicts = sudo
+	backup = etc/pam.d/sudo
+	backup = etc/sudo.conf
+	backup = etc/sudo_logsrvd.conf
+	backup = etc/sudoers
+	source = git://github.com/sudo-project/sudo.git
+	source = sudo_logsrvd.service
+	source = sudo.pam
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
+
+pkgname = sudo
+
