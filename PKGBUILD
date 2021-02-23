@@ -3,7 +3,7 @@
 pkgname=ava-plugins
 pkgver=$(date +%Y%m%d)
 pkgrel=1
-pkgdesc="Harrison Consoles VST Plugin Suite."
+pkgdesc="Harrison Consoles VST AVA Plugin Suite."
 arch=('x86_64')
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
 license=('EULA')
@@ -30,11 +30,11 @@ package() {
 	install -Dm644 "$srcdir/Harrison_AVA/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
 
 	## Where To Put License Files
-	for license in bf ds legacyq mc me sc vf; do
-		if [ -f `xdg-user-dir DOWNLOAD`/license_key_harrison_ava_$license.txt ]; then
-			install -Dm644 "`xdg-user-dir DOWNLOAD`/license_key_harrison_ava_$license.txt" "$pkgdir/usr/local/share/license_key_harrison_ava_$license.txt"
+	for _license in bf ds legacyq mc me sc vf; do
+		if [ -f `xdg-user-dir DOWNLOAD`/license_key_harrison_ava_${_license}.txt ]; then
+			install -Dm644 "`xdg-user-dir DOWNLOAD`/license_key_harrison_ava_${_license}.txt" "$pkgdir/usr/local/share/license_key_harrison_ava_${_license}.txt"
 		else
-			echo "Please put license_key_harrison_ava_$license.txt in the `xdg-user-dir DOWNLOAD` directory in order to activate AVA ${license^^} plugin."
+			echo "Please put license_key_harrison_ava_${_license}.txt in the `xdg-user-dir DOWNLOAD` directory in order to activate AVA ${_license^^} plugin."
 		fi
 	done
 }
