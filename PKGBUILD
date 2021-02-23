@@ -3,16 +3,17 @@
 pkgdesc='Breeze Dark Theme for Nextcloud based on the Breeze Dark theme made by the KDE Project'
 pkgname=('nextcloud-app-breezedark')
 _appname='breezedark'
-pkgver=20.0.4
+pkgver='21.0.0'
 pkgrel=1
 arch=('any')
 license=('AGPL3')
-url="https://github.com/mwalbeck/nextcloud-breeze-dark"
+_repo="mwalbeck/nextcloud-breeze-dark"
+url="https://github.com/${_repo}"
 makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}.tar.gz")
-sha512sums=('a8dff767e2ffce42895ced04bded7bc45fb71208973110aeae2b0a0fd0feac0c707f9ab765dcebed35572882ec802967e6701fade646caab2e0a9d0c2fabde31')
+sha512sums=('d787d3854aff20199a3dc895fde06ac6407323a81d9843a7fd42874e7b0b9743807c0e514adcf60c18165a39c68784c650d47e5786d4c79cbbcff28e141aca5a')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
