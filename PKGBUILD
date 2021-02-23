@@ -35,9 +35,13 @@ check() {
 
 package() {
     cd "$_appname-$pkgver"
+    mkdir -p "$pkgdir/usr/share/webapps/nextcloud/apps"
     _appdir="$pkgdir/usr/share/webapps/nextcloud/apps/$_appname"
-    mkdir -p "$_appdir"
-    cp -ar lib appinfo README.md "$_appdir"
+    cp -ar . "$_appdir"
+    while read f
+    do
+        rm -rf -- "$_appdir"/$f
+    done < .nextcloudignore
     mkdir -p "$_appdir/bin/$arch"
     install -m 755 -t "$_appdir/bin/$arch/" target/release/notify_push
     install -m 644 -D "$srcdir/$pkgname-$arch.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
