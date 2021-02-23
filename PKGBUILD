@@ -2,7 +2,7 @@
 
 pkgname=overtone-wpc
 pkgver=201904
-pkgrel=2
+pkgrel=3
 pkgdesc="OvertoneDSP Workstation Plugin Suite."
 arch=('x86_64')
 url="https://www.overtonedsp.co.uk/download/download_wpc/"
@@ -46,7 +46,11 @@ package() {
 	done
 
 	## License Files
-	for license in AF-210 DYN-500 EQ-500 PTC-2A PTM-5A RVB-500; do 
-		install -Dm644 "$srcdir/license_key_$license" "$pkgdir/usr/local/share/license_key_$license"
+	for _license in AF-210 DYN-500 EQ-500 PTC-2A PTM-5A RVB-500; do 
+		if [ -f "$srcdir/license_key_${_license}" ]; then
+			install -Dm644 "$srcdir/license_key_${_license}" "$pkgdir/usr/local/share/license_key_${_license}"
+		else
+			echo "Please put license_key_harrison_${_license}.txt in the `xdg-user-dir DOWNLOAD` directory in order to activate OvertoneDSP ${_license^^} plugin."
+		fi
 	done
 }
