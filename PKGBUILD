@@ -1,7 +1,7 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_web_shortener
 _name=trytond_web_shortener
-pkgver=5.8.1
+pkgver=5.8.2
 _pkgdir=5.8
 pkgrel=2
 pkgbase=python-$_name
@@ -12,9 +12,9 @@ license=('GPL3')
 depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c848bb3fd0847b46a1b9612bb916b31962c981360acd2967e6e8dab3f63716ba')
-sha512sums=('f3b21765e006836f305cf5367d2303b80ece30dcf8f2d7128575778123d6613b99e5a6ebc662bb8b8d74eb935e3b19e18698cf434648fdd283e8e6dc9d7d10da')
-b2sums=('105b9684bc0575551d38f89ed3a06958bb11f3c495086c665e4d170f5b5633023e52416c23a5ac98726559f982e711d52c9e826ca33b3fd64dc9b6b01bbe7731')
+sha256sums=('5b348265efc090609342d65339a1895aeafea4baf8db32acece8d8670f3f960e')
+sha512sums=('8c7fe585d0a78c12fe954fdb09ce623c4ca05fa9c8e950f1f569197414b27a2d0bc106870e30a80698d340e2c86f3d9051cf33db72595d8f252a4d6e58f1235c')
+b2sums=('22cc6a1acb43ef7f6900e716f09805ad79657e7f7af2befb5b0cf82310ef44cb344e7330b82907421ceb089a29e4260322120a4142787c60cd186e21cabe23cd')
 
 build() {
   cd $srcdir/$_name-$pkgver
