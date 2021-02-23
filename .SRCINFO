@@ -11,6 +11,7 @@ pkgbase = dtkgui-git
 	makedepends = dtkcore-git
 	makedepends = librsvg
 	makedepends = qt5-x11extras
+	makedepends = gtest
 	depends = dtkcore-git
 	depends = librsvg
 	depends = qt5-x11extras
