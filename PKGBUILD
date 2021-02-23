@@ -1,8 +1,8 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=release.2.0.14.r347.gf443a6fc7
-pkgrel=1
+pkgver=release.2.0.14.r422.gc287087fc
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
@@ -39,7 +39,7 @@ build() {
 package() {
 	cd build
 	make install DESTDIR="$pkgdir"
-	install -Dm644 ../SDL/COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 ../SDL/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	chown -R root:root "$pkgdir"
 }
 
