@@ -2,7 +2,7 @@
 
 _pkgname=ThePEG
 pkgname=thepeg
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Toolkit for High Energy Physics Event Generation"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=("gsl" "fastjet" "lhapdf" "hepmc" "boost")
 optdepends=("rivet" "zlib")
 source=("http://www.hepforge.org/archive/${pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('cdc4a280b048a12b2aa75bf9b848ae28376bae0e5e0d8ddfbd446f36920676dd25c79c232bfdca08ff7e059b11fbc16420fee9923717211798ceb4c560e3d817')
+sha512sums=('70fa179dc1712b27549d1949c6f144cb899c372ec46606ab6b7dbcbf348961562a0a3ed769bdd8f8b8d62c07859a67c5e646ab357a9cbdd0644e557670fe3a3e')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
