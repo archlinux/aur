@@ -1,9 +1,10 @@
 # Maintainer: Carlos Galindo <arch -at- cgj.es>
 
-pkgname=nextcloud-app-phonetrack
-_releasename=phonetrack-oc
+_appname=phonetrack
+_releasename=$_appname-oc
+pkgname=nextcloud-app-$_appname
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Phone tracker and location sharer for Nextcloud"
 arch=('any')
 url="https://gitlab.com/eneiluj/$_releasename"
@@ -30,9 +31,9 @@ package() {
     make build_dir=build sign_dir="$_destdir" version="v$pkgver" appstore
 
     # Remove auxiliary script
-    rm -f "$destdir/phonetrack/l10n/descriptions/gen_info.xml.sh"
+    rm -f "$_destdir/$_appname/l10n/descriptions/gen_info.xml.sh"
     # Remove references to $srcdir from *.js.map
     find "$pkgdir" -type f -name "*.js.map" | while read file; do
-        sed -i "s|webpack://phonetrack/$srcdir/node_modules|webpack://phonetrack/./node_modules|" $file
+        sed -i "s|webpack://$_appname/$srcdir/$_releasename-v$pkgver/node_modules|webpack://$_appname/./node_modules|" $file
     done
 }
