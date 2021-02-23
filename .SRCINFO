@@ -1,0 +1,17 @@
+pkgbase = novafetch-git
+	pkgdesc = Simple tool to get information about your pc
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/UnversedBlood/novafetch
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	provides = novafetch
+	conflicts = novafetch
+	source = git+https://github.com/UnversedBlood/novafetch.git
+	md5sums = SKIP
+
+pkgname = novafetch-git
+
