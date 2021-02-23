@@ -12,13 +12,14 @@ makedepends=('rust')
 checkdepends=()
 optdepends=('redis: use a local redis instance')
 install=nextcloud-app-notify_push.install
-source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-source_x86_64=("$pkgname-x86_64.service")
-sha512sums=('c0e62769ae3cfc2f1091a459278a5ae70e69b4b1d49cd60469c51f6cedc7a26402465fe1406cf5ad83f7270a45ed5d0938248e489173783dbe3f20c04c8c8cf1')
-sha512sums_x86_64=('be5b2e0fadaff8578882804a553a0da1c7305510548075dd06125832e88157adad4f15305aa3c6cfad9198bb8123d09706f19cfc77df8606bdd693ab240cb3aa')
-_target=$arch-unknown-linux-gnu
+source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname.service")
+sha512sums=('c0e62769ae3cfc2f1091a459278a5ae70e69b4b1d49cd60469c51f6cedc7a26402465fe1406cf5ad83f7270a45ed5d0938248e489173783dbe3f20c04c8c8cf1'
+            'b1ca868d3345e7fea82128f6f193141a5401e20611e38fecbe7876e17b172668f11ce8bc9984a10c5582152b899d46606298cc24f721e251c015a5af6bc2a047')
+_target=$CARCH-unknown-linux-gnu
 
 prepare() {
+    sed -i "s/ARCH/$CARCH/" "$pkgname.service"
     cd "$_appname-$pkgver"
     cargo fetch --locked --target $_target
 }
@@ -42,7 +43,6 @@ package() {
     do
         rm -rf -- "$_appdir"/$f
     done < .nextcloudignore
-    mkdir -p "$_appdir/bin/$arch"
-    install -m 755 -t "$_appdir/bin/$arch/" target/release/notify_push
-    install -m 644 -D "$srcdir/$pkgname-$arch.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -m 755 -Dt "$_appdir/bin/$CARCH/" target/release/notify_push
+    install -m 644 -Dt "$pkgdir/usr/lib/systemd/system/" "$srcdir/$pkgname.service"
 }
