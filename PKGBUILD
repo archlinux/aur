@@ -1,6 +1,6 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-current-git
-pkgver=78.7.0+49be63fc71dd
+pkgver=78.8.0+c7366c76404f
 pkgrel=1
 pkgdesc="Private and optimized Firefox fork based on the LTS Release of Firefox."
 arch=('i686' 'x86_64')
