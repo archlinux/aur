@@ -1,0 +1,14 @@
+pkgbase = clifm-colors-git
+	pkgdesc = Some color schemes for CLiFM file manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/leo-arch/clifm-colors
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = clifm
+	source = git+https://github.com/leo-arch/clifm-colors.git
+	sha256sums = SKIP
+
+pkgname = clifm-colors-git
+
