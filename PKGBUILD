@@ -3,22 +3,23 @@
 
 pkgname=lunar-calendar
 pkgver=3.0.0
-pkgrel=1
-pkgdesc="Chinese Lunar calendar widget for Gtk+"
+pkgrel=4
+pkgdesc="a gtk+ calendar widget for chinese lunar library."
 arch=("i686" "x86_64")
-url="http://code.google.com/p/liblunar/"
+url="https://github.com/yetist/lunar-calendar"
 license=('GPL2')
-depends=('gtk3>=3.0.9' 'lunar-date>=2.4.0')
-source=("http://liblunar.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-sha256sums=('8cdbf367250e48774f79a10897126e0e92171b49167959b72554e583999a3294')
+depends=('gtk3' 'lunar-date')
+makedepends=('gtk-doc' 'ninja' 'meson' 'gobject-introspection' 'vala')
+source=("https://github.com/Chao-zhi/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('f3ade207cea7df9a22ac1b711d7b7afd6921a0d21c651170356d9e1720d1bffa')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./configure --prefix=/usr
-    make || return 1
+    meson build -Dprefix=/usr -Denable_gtk_modules=true
+    ninja -C build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install || return 1
+    cd "$srcdir/$pkgname-$pkgver/build"
+    DESTDIR="${pkgdir}" ninja install
 }
