@@ -5,8 +5,8 @@
 
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
-_gitbranch=5.10
-pkgver=5.10.4.r969629.gfa0b6a5c799c
+_gitbranch=5.11
+pkgver=5.11.0..r984326.g14663342e512
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -20,7 +20,8 @@ makedepends=(
 options=('!strip')
 source=(
   "${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
-  config         # the main kernel config files
+  config # the main kernel config files
+  sphinx-workaround.patch # Sphinx 3.5 broke the build again
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -28,7 +29,8 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
-            '8c642f2f61b3e5bc37b9e02678ba5001afbe2996a7514f5466f6e98df42b7095')
+            '5035c141f3215c3ec06490194fbb114e7e49478309c3a7fa9718f815937f1824'
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -36,7 +38,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 pkgver() {
   cd $_srcname
-  printf "%s.%s.%s%s.r%s.g%s" \
+  printf "%s.%s.%s.%s.r%s.g%s" \
     "$(grep '^VERSION = ' Makefile|awk -F' = ' '{print $2}')" \
     "$(grep '^PATCHLEVEL = ' Makefile|awk -F' = ' '{print $2}')" \
     "$(grep '^SUBLEVEL = ' Makefile|awk -F' = ' '{print $2}')" \

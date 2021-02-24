@@ -1,6 +1,6 @@
 pkgbase = linux-hardened-git
 	pkgdesc = Security-Hardened Linux
-	pkgver = 5.10.4.r969629.gfa0b6a5c799c
+	pkgver = 5.11.0..r984326.g14663342e512
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -15,13 +15,15 @@ pkgbase = linux-hardened-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=5.10?signed
+	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=5.11?signed
 	source = config
+	source = sphinx-workaround.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = 8c642f2f61b3e5bc37b9e02678ba5001afbe2996a7514f5466f6e98df42b7095
+	sha256sums = 5035c141f3215c3ec06490194fbb114e7e49478309c3a7fa9718f815937f1824
+	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
 
 pkgname = linux-hardened-git
 	pkgdesc = The Security-Hardened Linux kernel and modules
