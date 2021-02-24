@@ -1,0 +1,19 @@
+pkgbase = schleuder-cli
+	pkgdesc = A command line tool to create and manage schleuder-lists.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://schleuder.org
+	arch = any
+	license = GPL3
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rspec
+	makedepends = git
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-thor
+	options = !emptydirs
+	source = schleuder-cli-0.1.0::git+https://0xacab.org/schleuder/schleuder-cli.git#commit=70c8ac1d0de6a4b3d18f2c525b82a44aaf618f21
+	sha512sums = SKIP
+
+pkgname = schleuder-cli
+
