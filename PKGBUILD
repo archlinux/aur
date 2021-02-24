@@ -8,7 +8,7 @@
 
 pkgname=librewolf-wayland-hg
 _pkgname=Librewolf
-pkgver=r591370+.fdd919d10609+
+pkgver=88.0a1.r59.fdd919d10609+
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -33,7 +33,7 @@ _settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('librewolf')
 provides=('librewolf')
-source_x86_64=("hg+$_repo#revision=release"
+source_x86_64=("hg+$_repo#revision=autoland"
                librewolf.desktop
                "git+https://gitlab.com/librewolf-community/browser/common.git"
                "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
