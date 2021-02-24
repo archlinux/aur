@@ -1,0 +1,25 @@
+
+diff -Naur NVIDIA-Linux-x86_64-340.108-old/kernel/nv-linux.h NVIDIA-Linux-x86_64-340.108-new/kernel/nv-linux.h
+--- NVIDIA-Linux-x86_64-340.108-old/kernel/nv-linux.h	2021-02-23 20:01:52.429999710 +0100
++++ NVIDIA-Linux-x86_64-340.108-new/kernel/nv-linux.h	2021-02-23 14:48:00.163333638 +0100
+@@ -119,7 +119,7 @@
+ #include <asm/tlbflush.h>           /* flush_tlb(), flush_tlb_all()     */
+ #include <linux/cpu.h>              /* CPU hotplug support              */
+ #endif
+-#include <asm/kmap_types.h>         /* page table entry lookup          */
++//#include <asm/kmap_types.h>         /* page table entry lookup          */
+ 
+ #include <linux/pci.h>              /* pci_find_class, etc              */
+ #include <linux/interrupt.h>        /* tasklets, interrupt helpers      */
+--- a/kernel/uvm/nvidia_uvm_linux.h	2019-12-11 17:04:24.000000000 -0500
++++ b/kernel/uvm/nvidia_uvm_linux.h	2021-02-24 06:26:26.237367942 -0500
+@@ -141,7 +141,7 @@
+ #if !defined(NV_VMWARE)
+ #include <asm/tlbflush.h>           /* flush_tlb(), flush_tlb_all()     */
+ #endif
+-#include <asm/kmap_types.h>         /* page table entry lookup          */
++//#include <asm/kmap_types.h>         /* page table entry lookup          */
+ 
+ #include <linux/interrupt.h>        /* tasklets, interrupt helpers      */
+ #include <linux/timer.h>
+
