@@ -1,6 +1,6 @@
 pkgbase = thinkpad-gen7-led-switch
 	pkgdesc = A script to switch Thinkpad logo led.
-	pkgver = 0.99
+	pkgver = 0.100
 	pkgrel = 1
 	url = SKIP
 	arch = i686
