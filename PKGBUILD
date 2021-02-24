@@ -1,8 +1,8 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git
-pkgver=r89.7095bed
-pkgrel=1
+pkgver=r92.dabd7a2
+pkgrel=2
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
 url="https://github.com/emersion/kanshi"
@@ -16,9 +16,12 @@ replaces=()
 backup=()
 options=()
 install=
-source=('kanshi::git+https://github.com/emersion/kanshi.git')
+source=(
+    'kanshi::git+https://github.com/emersion/kanshi.git'
+    'kanshi.service'
+)
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' '204747a0d0e0dd77d0e4f88f229c9c28')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -35,6 +38,8 @@ build() {
 package() {
     # install to $pkgdir
     DESTDIR="$pkgdir/" meson install -C "${srcdir}/build"
+    # install the systemd unit file
+    install -Dm644 kanshi.service -t "$pkgdir/usr/lib/systemd/user"
     # to shut up namcap's warning, even though it's a MIT license
     install -Dm644 "$srcdir/${pkgname%-git}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     # Arch's official Kanshi package installs README, so we do the same

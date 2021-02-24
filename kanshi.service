@@ -1,0 +1,12 @@
+[Unit]
+Description=Dynamic output configuration for Wayland WMs.
+Documentation=https://github.com/emersion/kanshi
+BindsTo=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kanshi
+
+[Install]
+WantedBy=graphical-session.target
