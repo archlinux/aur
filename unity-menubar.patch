@@ -14,7 +14,7 @@
              <menu id="file-menu" data-l10n-id="menu-file">
 --- a/browser/base/content/browser.js
 +++ b/browser/base/content/browser.js
-@@ -6166,11 +6166,18 @@ function onViewToolbarsPopupShowing(aEve
+@@ -6193,11 +6193,18 @@ function onViewToolbarsPopupShowing(aEve
    MozXULElement.insertFTLIfNeeded("browser/toolbarContextMenu.ftl");
    let firstMenuItem = aInsertPoint || popup.firstElementChild;
    let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
@@ -110,7 +110,7 @@
 
 --- a/toolkit/content/xul.css
 +++ b/toolkit/content/xul.css
-@@ -216,6 +216,13 @@ toolbar[type="menubar"] {
+@@ -230,6 +230,13 @@ toolbar[type="menubar"] {
  }
  %endif
 
@@ -5112,13 +5112,10 @@
  #endif /* __nsWindow_h__ */
 --- a/widget/moz.build
 +++ b/widget/moz.build
-@@ -68,9 +68,9 @@ elif toolkit == "cocoa":
+@@ -68,6 +68,9 @@ elif toolkit == "cocoa":
          "nsITouchBarInput.idl",
          "nsITouchBarUpdater.idl",
      ]
--    EXPORTS += [
--        "nsINativeMenuService.h",
--    ]
 +
 +if toolkit in ("cocoa", "gtk"):
 +    EXPORTS += ["nsINativeMenuService.h"]
@@ -5181,6 +5178,6 @@
  
 -#ifdef XP_MACOSX
 +#if defined(XP_MACOSX) || defined(MOZ_WIDGET_GTK)
- #  include "nsINativeMenuService.h"
+ #  include "mozilla/widget/NativeMenuSupport.h"
  #  define USE_NATIVE_MENUS
  #endif
