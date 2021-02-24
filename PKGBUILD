@@ -33,7 +33,7 @@ else
 fi
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=120
+pkgrel=127
 pkgdesc='Linux-tkg with bcachefs'
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
@@ -51,8 +51,8 @@ options=('!strip' 'docs')
         "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config.x86_64" # stock Arch config
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config_hardened.x86_64" # hardened Arch config
-        90-cleanup.hook
-        cleanup
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/90-cleanup.hook"
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/cleanup"
         # ARCH Patches
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         # TkG
@@ -68,6 +68,7 @@ options=('!strip' 'docs')
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0005-glitched-pds.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0006-add-acs-overrides_iommu.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0007-v5.10-fsync.patch"
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0007-v5.10-futex2_interface.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0008-5.10-bcachefs.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-glitched-ondemand-bmq.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-glitched-bmq.patch"
@@ -75,14 +76,16 @@ options=('!strip' 'docs')
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0011-ZFS-fix.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-linux-hardened.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
-	"https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/ryzen-desktop-profile.cfg"
-	"https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/generic-desktop-profile.cfg"
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/ryzen-desktop-profile.cfg"
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/generic-desktop-profile.cfg"
     )
     sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'fc126c14140668cc4bdbc8886fb8bc05ae734c5cf1e20b719b40b36d1dae255a'
+            '97c728530644bc698f523f7f91e416963315a6fb755eb77eb420135e5f179ee5'
             'SKIP'
             '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
             'eb1da1a028a1c967222b5bdac1db2b2c4d8285bafd714892f6fc821c10416341'
+            'SKIP'
+            'SKIP'
             '1e15fc2ef3fa770217ecc63a220e5df2ddbcf3295eb4a021171e7edd4c6cc898'
             '66a03c246037451a77b4d448565b1d7e9368270c7d02872fbd0b5d024ed0a997'
             'f6383abef027fd9a430fd33415355e0df492cdc3c90e9938bf2d98f4f63b32e6'
@@ -98,15 +101,16 @@ options=('!strip' 'docs')
             'fca63d15ca4502aebd73e76d7499b243d2c03db71ff5ab0bf5cf268b2e576320'
             '19661ec0d39f9663452b34433214c755179894528bf73a42f6ba52ccf572832a'
             'b302ba6c5bbe8ed19b20207505d513208fae1e678cf4d8e7ac0b154e5fe3f456'
-            '26b4b7b4832c5eff53bb679a410dd6300b956d4c51763512ebebf4fd99eed873'
+            '47c05c6e7e1280dca137ed2139dac7da0d026a27d5590fd386748d1827288a61'
+            'c5dd103953b8830640538ba30ff511028bd93310f95e4f5587a6ed5e6414a60d'
             '9fad4a40449e09522899955762c8928ae17f4cdaa16e01239fd12592e9d58177'
             'a557b342111849a5f920bbe1c129f3ff1fc1eff62c6bd6685e0972fc88e39911'
             'e308292fc42840a2366280ea7cf26314e92b931bb11f04ad4830276fc0326ee1'
             '49262ce4a8089fa70275aad742fc914baa28d9c384f710c9a62f64796d13e104'
             '105f51e904d80f63c1421203e093b612fc724edefd3e388b64f8d371c0b3a842'
             '7fb1104c167edb79ec8fbdcde97940ed0f806aa978bdd14d0c665a1d76d25c24'
-	    'SKIP'
-	    'SKIP')
+            'SKIP'
+            'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
