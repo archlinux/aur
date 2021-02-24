@@ -1,11 +1,11 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.10.1 Kernel Configuration
+# Linux/um 5.11.0 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=100200
-CONFIG_LD_VERSION=235010000
+CONFIG_LD_VERSION=236000000
 CONFIG_CLANG_VERSION=0
 CONFIG_LLD_VERSION=0
 CONFIG_CC_CAN_LINK=y
@@ -249,17 +249,28 @@ CONFIG_UML_NET_SLIRP=y
 # end of UML Network Devices
 
 # CONFIG_VIRTIO_UML is not set
+CONFIG_ARCH_SUSPEND_POSSIBLE=y
+CONFIG_SUSPEND=y
+CONFIG_SUSPEND_FREEZER=y
+CONFIG_PM_SLEEP=y
+# CONFIG_PM_AUTOSLEEP is not set
+# CONFIG_PM_WAKELOCKS is not set
+CONFIG_PM=y
+# CONFIG_PM_DEBUG is not set
+# CONFIG_WQ_POWER_EFFICIENT_DEFAULT is not set
 
 #
 # General architecture-dependent options
 #
 CONFIG_CRASH_CORE=y
 CONFIG_SET_FS=y
+CONFIG_HAVE_64BIT_ALIGNED_ACCESS=y
 CONFIG_HAVE_ASM_MODVERSIONS=y
 CONFIG_HAVE_ARCH_SECCOMP=y
 CONFIG_HAVE_ARCH_SECCOMP_FILTER=y
 CONFIG_SECCOMP=y
 CONFIG_SECCOMP_FILTER=y
+# CONFIG_SECCOMP_CACHE_DEBUG is not set
 CONFIG_HAVE_VIRT_CPU_ACCOUNTING_GEN=y
 CONFIG_MODULES_USE_ELF_RELA=y
 # CONFIG_COMPAT_32BIT_TIME is not set
@@ -310,6 +321,8 @@ CONFIG_MSDOS_PARTITION=y
 CONFIG_EFI_PARTITION=y
 # end of Partition Types
 
+CONFIG_BLK_PM=y
+
 #
 # IO Schedulers
 #
@@ -356,7 +369,10 @@ CONFIG_NEED_PER_CPU_KM=y
 # CONFIG_ZSMALLOC is not set
 # CONFIG_IDLE_PAGE_TRACKING is not set
 # CONFIG_PERCPU_STATS is not set
-# CONFIG_GUP_BENCHMARK is not set
+
+#
+# GUP_TEST needs to have DEBUG_FS enabled
+#
 # end of Memory Management options
 
 CONFIG_NET=y
@@ -473,7 +489,6 @@ CONFIG_WIRELESS=y
 # CFG80211 needs to be enabled for MAC80211
 #
 CONFIG_MAC80211_STA_HASH_MAX_SIZE=0
-# CONFIG_WIMAX is not set
 # CONFIG_RFKILL is not set
 # CONFIG_NET_9P is not set
 # CONFIG_CAIF is not set
@@ -508,6 +523,7 @@ CONFIG_FW_LOADER=y
 CONFIG_EXTRA_FIRMWARE=""
 # CONFIG_FW_LOADER_USER_HELPER is not set
 # CONFIG_FW_LOADER_COMPRESS is not set
+CONFIG_FW_CACHE=y
 # end of Firmware loader
 
 CONFIG_ALLOW_DEV_COREDUMP=y
@@ -685,10 +701,6 @@ CONFIG_WLAN_VENDOR_ST=y
 CONFIG_WLAN_VENDOR_TI=y
 CONFIG_WLAN_VENDOR_ZYDAS=y
 CONFIG_WLAN_VENDOR_QUANTENNA=y
-
-#
-# Enable WiMAX (Networking options) to see the WiMAX drivers
-#
 # CONFIG_WAN is not set
 # CONFIG_NET_FAILOVER is not set
 # CONFIG_NVM is not set
@@ -706,7 +718,7 @@ CONFIG_LDISC_AUTOLOAD=y
 # CONFIG_TRACE_SINK is not set
 # CONFIG_SERIAL_DEV_BUS is not set
 # CONFIG_VIRTIO_CONSOLE is not set
-# CONFIG_HW_RANDOM is not set
+CONFIG_HW_RANDOM=y
 CONFIG_UML_RANDOM=y
 CONFIG_DEVMEM=y
 # CONFIG_DEVKMEM is not set
@@ -755,6 +767,7 @@ CONFIG_USB_OHCI_LITTLE_ENDIAN=y
 # CONFIG_MEMSTICK is not set
 # CONFIG_NEW_LEDS is not set
 # CONFIG_ACCESSIBILITY is not set
+# CONFIG_RTC_CLASS is not set
 
 #
 # DMABUF options
@@ -816,11 +829,6 @@ CONFIG_IOMMU_SUPPORT=y
 # end of Amlogic SoC drivers
 
 #
-# Aspeed SoC drivers
-#
-# end of Aspeed SoC drivers
-
-#
 # Broadcom SoC drivers
 #
 # end of Broadcom SoC drivers
@@ -834,6 +842,11 @@ CONFIG_IOMMU_SUPPORT=y
 # i.MX SoC drivers
 #
 # end of i.MX SoC drivers
+
+#
+# Enable LiteX SoC Builder specific drivers
+#
+# end of Enable LiteX SoC Builder specific drivers
 
 #
 # Qualcomm SoC drivers
@@ -1322,8 +1335,8 @@ CONFIG_DEBUG_INFO=y
 # CONFIG_DEBUG_INFO_SPLIT is not set
 # CONFIG_DEBUG_INFO_DWARF4 is not set
 # CONFIG_DEBUG_INFO_BTF is not set
+CONFIG_PAHOLE_HAS_SPLIT_BTF=y
 # CONFIG_GDB_SCRIPTS is not set
-CONFIG_ENABLE_MUST_CHECK=y
 CONFIG_FRAME_WARN=1024
 # CONFIG_STRIP_ASM_SYMS is not set
 # CONFIG_READABLE_ASM is not set
