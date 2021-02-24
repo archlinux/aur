@@ -1,7 +1,7 @@
 pkgbase = splatnet2statink
 	pkgdesc = Takes battle data from the SplatNet 2 app and uploads it to stat.ink
-	pkgver = v1.5.7_1_g22563b5
-	pkgrel = 2
+	pkgver = v1.5.8
+	pkgrel = 1
 	url = https://github.com/frozenpandaman/splatnet2statink
 	arch = any
 	license = GPL3

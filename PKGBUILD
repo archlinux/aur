@@ -1,7 +1,7 @@
 # Maintainer: Lucy Poulton <lucy@poulton.xyz> 
 pkgname=splatnet2statink
-pkgver="v1.5.7_1_g22563b5"
-pkgrel=2
+pkgver=v1.5.8
+pkgrel=1
 pkgdesc='Takes battle data from the SplatNet 2 app and uploads it to stat.ink'
 arch=('any')
 url="https://github.com/frozenpandaman/${pkgname}"
