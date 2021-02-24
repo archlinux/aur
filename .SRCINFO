@@ -1,0 +1,16 @@
+pkgbase = ruby-factory_bot
+	pkgdesc = Provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures.
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/thoughtbot/factory_bot
+	arch = any
+	license = MIT
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-activesupport
+	options = !emptydirs
+	source = ruby-factory_bot-6.1.0.tar.gz::https://github.com/thoughtbot/factory_bot/archive/v6.1.0.tar.gz
+	sha512sums = bbb0e6316bdc44a483afba3a8a2e49732900fc5ac93222329514abcebab898f01a2258c77fd16466afcb7ffb5f454bf2b594bd5724aed703e30051cbeea1d243
+
+pkgname = ruby-factory_bot
+
