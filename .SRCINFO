@@ -1,0 +1,15 @@
+pkgbase = ruby-faraday-net_http
+	pkgdesc = Faraday adapter for Net::HTTP
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/lostisland/faraday-net_http
+	arch = any
+	license = MIT
+	makedepends = ruby-rake
+	depends = ruby
+	options = !emptydirs
+	source = ruby-faraday-net_http-1.0.1.tar.gz::https://github.com/lostisland/faraday-net_http/archive/v1.0.1.tar.gz
+	sha512sums = 57a7ea2f452844200119cb9e99ae4bfee5e01b0630b38b4ef4e615dfcc05e1476e3da8511698bf199c62b816b5253fb364ed6cffdc59dcd4e9d706c7f1e6e56b
+
+pkgname = ruby-faraday-net_http
+
