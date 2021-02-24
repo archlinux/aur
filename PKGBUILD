@@ -5,13 +5,16 @@
 
 pkgname=waffle
 pkgver=1.6.2
-pkgrel=4
+pkgrel=5
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
 license=('BSD')
 
-depends=('libx11' 'libxcb' 'wayland' 'systemd' 'bash-completion')
+depends=('libx11' 'libxcb' 'libudev.so' 'libgl' 'libgles')
+optdepends=('libegl: for gbm, surfaceless, x11_egl or wayland support'
+            'libgbm.so: for gbm support'
+            'wayland: for wayland support')
 makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'cmake')
 
 source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
