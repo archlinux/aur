@@ -1,0 +1,6 @@
+kickoff-legacy
+src
+pkg
+
+*.pkg.tar.zst
+*.tar.gz
