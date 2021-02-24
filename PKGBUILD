@@ -1,5 +1,5 @@
 pkgname=status
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc='Simple status thing for using with i3'
 url='https://github.com/sandsmark/status'
@@ -18,4 +18,4 @@ package() {
     cd status-${pkgver}
     install -D -m755 status -t "${pkgdir}/usr/bin"
 }
-sha256sums=('431adedcea47f52698b85d8fdc2cc3a19d1d618949b544cccaa5800d3162685c')
+md5sums=('0d8a55d031d8ba6539c1e875188b668a')
