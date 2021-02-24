@@ -4,7 +4,7 @@ import sys
 
 # Script to update the PKGBUILD to the latest [core]/linux
 
-url = "https://www.archlinux.org/packages/core/x86_64/linux/json/"
+url = "https://archlinux.org/packages/core/x86_64/linux/json/"
 
 data = subprocess.check_output(['curl', '-s', url]).decode()
 info = json.loads(data)
