@@ -1,14 +1,14 @@
 pkgbase = wegstr
 	pkgdesc = Controlling software Wegstr
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://wegstr.com/software
 	arch = any
 	license = unknown
 	depends = java-runtime
-	source = https://wegstr.com/download/Wegstr_v3.1.0.zip
+	source = https://wegstr.com/download/Wegstr_v3.1.1.zip
 	source = wegstr
-	sha256sums = 71d3f53bb90e5a89257abe6b7b8a2eff9d64e31ec717abc2ad890835f31bcdda
+	sha256sums = 8bb03bc810fb57b48e427a9d10e2f1bdcf41530e044d08c9dd7229f1dc77d329
 	sha256sums = 37231a0788e49ea9b6ee447433503b6c38d65c2002e56d5bbff5ad2da43de08c
 
 pkgname = wegstr
