@@ -19,7 +19,7 @@ source=("Makefile"
 	"btintel.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.h?id=refs/tags/v5.10.6"
 	"btbcm.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btbcm.h?id=refs/tags/v5.10.6"
 	"btrtl.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btrtl.h?id=refs/tags/v5.10.6")
-md5sums=('de8b4abad072a47cde4e0bcb69df0035'
+md5sums=('7ee26200839cf70c1dcdc8bebc743e9b'
          '09d09936925500ca8c356a4c1c4b0d3a'
          '01c0bbce4dbc96d3773783b3fa2969a2'
          '4e30ace94e0c3842da7d16c1d8dfded1'
