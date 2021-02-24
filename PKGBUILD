@@ -47,8 +47,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
-_major=5.10
-_minor=18
+_major=5.11
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -62,7 +62,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-nodocs-patches"
-_aufs_ver="20210111"
+_aufs_ver="20210222"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -71,8 +71,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0003-Revert-drm-amd-display-reuse-current-context-instead.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0004-drm-amdgpu-fix-shutdown-with-s0ix.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -204,7 +206,7 @@ _package() {
 
 _package-headers() {
    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-   depends=('linux-aufs')
+   depends=('linux-aufs' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -309,14 +311,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('e9ab577036391692d7237e2d945d8a682afa4bc889f03934db4e1873db26df6404f7ae0cb989986ec64fdb529a3308c6c9c496247596ad43592c1d8fc52e9c46'
+sha512sums=('615ec7d06f6ed78a2b283857b5abb7c161ce80d48a9fd1626ed49ba816b28de0023d6a420f8ef0312931bfeed0ab3f8ec1b489baf0dc99d90a35c58252e76561'
             'SKIP'
-            '56a83c44db0c488e6377bb99baf15604fb5d6b6423e63bd68b4681937ebfaafc5c37a378f05946d2bf9c578a44f18bf70b6f22fed5266d2b7cf7565981c897af'
-            '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            'eb12bca374c8709d7e98730a01b406c18c0438983ac0f65c788fa58de6bb3d1558a673f5bb75a594967b71079fb15a29176ef9db2971f42b40c2696c4870e4a7'
-            '6a222febcc5a3249fb961320ea6aceccacb94dc0727741c9363054f95b89f5c5cbdf6d25ca8ef3e5eba014e7e1ec403cfe7ba1a380952c362a72f31341e71ff1'
-            'd498ccd5790d6ccc2b6679e21d77359b3c90858bef063539c68f2f90808c70f6478565cba81f1e4e32c363ea4cfb07ffc5d3be3c69eca983c426f506b5c0fbf9'
-            '7dcafae06141c7896923f871c6094370b778c8769a1c0f6e637b7d3108f00c492be0fad55e4932f3769e0b7fa69fc076c0ad67cae4d5fc6a4c56b0ec36208fbb')
+            '66a6c773515af9a55438c818290834ea151a491d4a633080a66d29c167d1ae1320551a3c84c5562d2825d5fee480d3c8ace3a84c5121d1fdf5bd7754022d7173'
+            '7783c2b24253a24d650c9955ef818e8c5de097a5413120e42c23fe56303d83ea045eb489cb1fde36a82e7caec344ebafe83756fa43d087937ad4f23d10e01659'
+            '82a868ae1866979aa0282f5bc4dc8c46f407cfb277d4b1cac6cac0d54ef7d7e0b928f79cc8a1bc49421619419293e681f27410040b527c07dca0d6df56c9e98b'
+            'e5529b081edda4dbc354e9d5648da982c210ed8070340816171d3c428886ae614207481ab729559c45cc927c6edcfd1cfde157c84434b737f4b5a163d55c6a29'
+            'c0704d558276d13761b10a82837811217fcb222122a96bd05eecda808b016ba0a8a8b9a1e124323d479a55a218778b29fc34e6dd98d7d5482f14038ce89fad4b'
+            'c8343b8454891d1deeede7e0a76785d653d98c506cdf26b9a1083a2ba16f8012646d80caee7dc4d7f1fa715e9753f5362e9365048b16db8f187369827ab69f01'
+            '715e60d1bd6be9e79deb153210c35b797160df536844840335e6742989ca4d422fb2cbc4ac7544b71675413d9a532901483a26eec28f5addb461a3ae20558aa0'
+            'e0b9b138efd23e71c4f72d766ea2eac0ff3d66978b8380ef8399429f6b24f73ee15eabb26765706d2fa65aa8b25e754b1089b1ecbe47e9b9ac054314ff733147')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
