@@ -13,7 +13,8 @@ note() {
 
 post_install() {
     note "From 9.1r10.0, the client (pulseUi, pulselauncher) requires a service called pulsesecure."
-    note "Run 'sudo systemctl start pulsesecure' before you run the client"
+    note "Run 'sudo systemctl start pulsesecure' before you run the client."
+    note "Run 'sudo systemctl enable pulsesecure' to start the service automatically in boot."
 }
 
 post_upgrade() {
