@@ -5,6 +5,8 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/dyndnsc --loop --config /etc/dyndnsc.conf
 Restart=always
+ProtectSystem=strict
+ProtectHome=true
 
 [Install]
 WantedBy=multi-user.target

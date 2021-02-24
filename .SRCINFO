@@ -1,20 +1,22 @@
 pkgbase = dyndnsc
 	pkgdesc = Dynamic DNS client with support for multiple protocols and services. Compatible with IPv6 dual stack.
-	pkgver = 0.5.1
-	pkgrel = 0
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://pypi.org/project/dyndnsc
 	arch = any
 	license = MIT
-	depends = python-argparse
-	depends = python-ipy
-	depends = python-ndg-httpsclient
+	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-netifaces
-	source = https://pypi.python.org/packages/source/d/dyndnsc/dyndnsc-0.5.1.tar.gz
+	depends = python-dnspython
+	depends = python-daemonocle
+	depends = python-json-logger
+	source = https://github.com/infothrill/python-dyndnsc/archive/0.6.0.zip
 	source = dyndnsc.service
-	md5sums = 55bc511dbc6d9a9d46f89bcfaa70f37c
-	md5sums = 4b2cd825c387494ba77ad78106dd42eb
+	sha256sums = ff0fcd735e96a958fdce51910d962f064c0da6b4b9723e929c1a1e5de2570df0
+	sha256sums = 06e5088696dd2cd6e9af9de51bf0c88e94adadd582cd66620bc260caaf56059c
 
 pkgname = dyndnsc
 
