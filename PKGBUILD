@@ -1,5 +1,5 @@
 pkgname=matebook-applet
-pkgver=2.4.8
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="System tray applet/control app for Huawei Matebook"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=("$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/nekr0z/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('2c819d55d8f02911fcf442076b53b6de2c635d3376d8b5705aab066eb28d8b36')
+sha256sums=('9d8dcc63381b14ea640cfd6a450ef2b847d3a879810a1a15c37ff1dd6129dca4')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

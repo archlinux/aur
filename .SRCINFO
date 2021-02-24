@@ -1,6 +1,6 @@
 pkgbase = matebook-applet
 	pkgdesc = System tray applet/control app for Huawei Matebook
-	pkgver = 2.4.8
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/nekr0z/matebook-applet
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = matebook-applet
 	provides = matebook-applet
 	conflicts = matebook-applet-bin
 	conflicts = matebook-applet-git
-	source = matebook-applet-2.4.8.src.tar.gz::https://github.com/nekr0z/matebook-applet/archive/2.4.8.tar.gz
-	sha256sums = 2c819d55d8f02911fcf442076b53b6de2c635d3376d8b5705aab066eb28d8b36
+	source = matebook-applet-2.5.0.src.tar.gz::https://github.com/nekr0z/matebook-applet/archive/2.5.0.tar.gz
+	sha256sums = 9d8dcc63381b14ea640cfd6a450ef2b847d3a879810a1a15c37ff1dd6129dca4
 
 pkgname = matebook-applet
 
