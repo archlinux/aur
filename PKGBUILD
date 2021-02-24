@@ -8,15 +8,17 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=dragonwolf
-_pkgname=DragonWolf
+_pkgname=dragonwolf
 pkgver=88.0a1.r635697+.20c676649a86+
 pkgrel=1
-pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths."
+pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse icu mozilla-common libevent zlib libjpeg libvpx nss-hg)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xwayland
+depends=(gtk3 mozilla-common libxt mime-types dbus-glib
+         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
+         libvpx libjpeg zlib icu libevent libpipewire02)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
@@ -25,10 +27,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
-            'libappindicator-gtk3: global menu support for gtk app'
-            'appmenu-gtk-module-git: appmenu for gtk only'
-            'plasma5-applets-window-appmenu: appmenu for plasma only'
-            'libpipewire02: Wayland functionality')
+            'libappindicator-gtk3: Global menu support for GTK apps'
+            'appmenu-gtk-module-git: Appmenu for GTK only'
+            'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
 _linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
 _settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
@@ -36,7 +37,7 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('librewolf' 'librewolf-wayland-hg' 'librewolf-dev-wayland')
 provides=('librewolf')
 source_x86_64=("hg+$_repo#revision=autoland"
-               dragonwolf.desktop
+               $_pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
                megabar.patch
@@ -44,7 +45,7 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                unity-menubar.patch)
 source_aarch64=("hg+$_repo#revision=autoland"
-                dragonwolf.desktop
+                $_pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
                 megabar.patch
@@ -54,31 +55,33 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 build-arm-libopus.patch)
 
-sha256sums_x86_64=('SKIP'
-                   '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
+sha512sums_x86_64=('SKIP'
+                   'f5854cffca603cabbf8ea2223e791024627b58a933a117d2fdcc94fe9b80cd762119f9a742158b76a6965376bf9f2a5894e5da79f28fe777675580d94abd11b7'
                    'SKIP'
                    'SKIP'
-                   '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
-                   'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                   '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                   'bdf0dfa80e115e58815f5d668ca957c6cd253f46815391e2f773c6acb68317c7')
-sha256sums_aarch64=('SKIP'
-                    '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
+                   'ec2830e29a392cc258acad31fb7fde9785bcafd49145d15f26b51a4264ac6c6c3ad5447fd6020bb234d45c52caf6bfeef2691b411f684e8b5c51d57fbf1a637f'
+                   '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
+                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
+                   'd57b7e8e34b01abe2a11116e6977e743f225ee797821ac1329a88d6f39992d702a28832cb17331ede87161229deaa30a4db0a96ed4a30e957ca9e55e649e95e5')
+sha512sums_aarch64=('SKIP'
+                    'f5854cffca603cabbf8ea2223e791024627b58a933a117d2fdcc94fe9b80cd762119f9a742158b76a6965376bf9f2a5894e5da79f28fe777675580d94abd11b7'
                     'SKIP'
                     'SKIP'
-                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
-                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                    'bdf0dfa80e115e58815f5d668ca957c6cd253f46815391e2f773c6acb68317c7'
-                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                    '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '5d9a0064832c45759328d3c14e4da8cc061d9df5637e8b20e8eb2e1a08983b79')
+                    'ec2830e29a392cc258acad31fb7fde9785bcafd49145d15f26b51a4264ac6c6c3ad5447fd6020bb234d45c52caf6bfeef2691b411f684e8b5c51d57fbf1a637f'
+                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
+                    'd57b7e8e34b01abe2a11116e6977e743f225ee797821ac1329a88d6f39992d702a28832cb17331ede87161229deaa30a4db0a96ed4a30e957ca9e55e649e95e5'
+                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
+                    '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
+                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
 pkgver() {
   cd mozilla-unified
-  printf "88.0a1.r%s" "$(hg identify -n)"
+  printf "88.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
-  mkdir mozbuild
+  if [[ ! -d mozbuild ]]; then 
+    mkdir mozbuild 
+  fi
   cd mozilla-unified
 
   #
@@ -108,6 +111,16 @@ export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
+# Branding
+ac_add_options --enable-update-channel=nightly
+ac_add_options --with-app-name=${_pkgname}
+ac_add_options --with-app-basename=Librewolf
+ac_add_options --with-branding=browser/branding/librewolf
+ac_add_options --with-distribution-id=io.gitlab.librewolf-community
+ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
+export MOZ_REQUIRE_SIGNING=0
+
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
@@ -116,16 +129,6 @@ ac_add_options --with-system-libevent
 ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
-
-# Branding
-ac_add_options --enable-update-channel=nightly
-ac_add_options --with-app-name=librewolf
-ac_add_options --with-app-basename=DragonWolf
-ac_add_options --with-branding=browser/branding/librewolf
-ac_add_options --with-distribution-id=io.gitlab.librewolf-community
-ac_add_options --with-unsigned-addon-scopes=app,system
-ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=0
 
 # Features
 ac_add_options --enable-pulseaudio
@@ -177,7 +180,7 @@ fi
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  patch -p1 -i ../unity-menubar.patch
+  #patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
@@ -267,9 +270,9 @@ version=1.0
 about=DragonWolf
 
 [Preferences]
-app.distributor="Garuda Linux"
-app.distributor.channel=librewolf
-app.partner.librewolf=librewolf
+app.distributor="LibreWolf Community"
+app.distributor.channel=$_pkgname
+app.partner.librewolf=$_pkgname
 END
 
   for i in 16 32 48 64 128; do
@@ -284,7 +287,7 @@ END
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dragonwolf-symbolic.png"
 
   install -Dm644 ../dragonwolf.desktop \
-    "$pkgdir/usr/share/applications/dragonwolf.desktop"
+    "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf" <<END
@@ -296,10 +299,4 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srf "$pkgdir/usr/bin/librewolf" \
     "$pkgdir/usr/lib/librewolf/librewolf-bin"
-
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/librewolf/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srf "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
 }
