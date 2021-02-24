@@ -2,7 +2,7 @@
 pkgname=pleaser
 _binary=please
 pkgver=0.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="please, a sudo like program with regex support written in rust, get involved!"
 url="https://gitlab.com/edneville/please"
 arch=('any')
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
 source=("https://gitlab.com/edneville/${_binary}/-/archive/v${pkgver}/${_binary}-v${pkgver}.tar.gz")
-sha512sums=('86e2c8886e35c495479772bc1eabbcf3b83147ebffafc31939596c39ffc3606dccc900214bc84803153c9c49c84881935e6d346e9b5e68a93fec1c567c5b061e')
+sha512sums=('dd021dd154a8ab2de87fc84701886056fc6febf6e4ca71800493e1c3cd80a9c4e6f8943aea4621f6add047c73b43818048d101b37029c0eed9198b036362f22a')
 
 prepare() {
   cd please-v${pkgver}
