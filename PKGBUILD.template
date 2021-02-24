@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=5.10.17
-_pkgrel=1
+_pkgver=%PKGVER
+_pkgrel=%PKGREL
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-lts"
@@ -13,8 +13,8 @@ pkgname=("${_pkgname}-versioned-bin"
          "${_versioned_pkgname}-docs-bin")
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
-pkgdesc="The LTS Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://www.kernel.org/"
+pkgdesc="%KERN_PKGDESC | repackaged with a unique package name for each version"
+url="%URL"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -40,9 +40,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('8a1868396e1683996261a2cff5c963357c315ee0bab17eb64216039120da6ecf'
-            '5f878f501d72734f7094af37966dbc4a175190db57deaf92f8b7117afacfbfdf'
-            '0615ed8e4d048c76692beed94121c1d5b92653afe76a95ce3f5c8b74d1131bf5')
+sha256sums=('0358dc97518d1e1dcb8aae3b0a3c9d0e43dd69708cd92ecef22e6e9dd3f9d1c8'
+            'b6f662509ddcaa185f8eef31157cbb1e576efa6453e1a86c440bd3a21e1bc591'
+            '19802a951538749da4d5120ff89d1fc792e4bb8f465c1d3455d3803084e5f922')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -60,33 +60,37 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.10.17-1-lts-bin() {
-  pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
-  depends=(coreutils
-           initramfs
-           kmod)
-  conflicts=("${_pkgname}")
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES
-            WIREGUARD-MODULE)
-  replaces=(wireguard-lts)
+package_linux%PKGVER-%PKGREL-lts-bin() {
+  pkgdesc="%KERN_PKGDESC, version ${KERNNAME}"
+  %KERN_DEPENDS
+  %KERN_CONFLICTS
+  %KERN_OPTDEPENDS
+  %KERN_PROVIDES
+  %KERN_REPLACES
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.10.17-1-lts-headers-bin() {
-  pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
-  conflicts=("${_pkgname}-headers")
+package_linux%PKGVER-%PKGREL-lts-headers-bin() {
+  pkgdesc="%HEADERS_PKGDESC ${KERNNAME}"
+  %HEADERS_DEPENDS
+  %HEADERS_CONFLICTS
+  %HEADERS_OPTDEPENDS
+  %HEADERS_PROVIDES
+  %HEADERS_REPLACES
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.10.17-1-lts-docs-bin() {
-  pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
-  conflicts=("${_pkgname}-docs")
+package_linux%PKGVER-%PKGREL-lts-docs-bin() {
+  pkgdesc="%DOCS_PKGDESC ${KERNNAME}"
+  %DOCS_DEPENDS
+  %DOCS_CONFLICTS
+  %DOCS_OPTDEPENDS
+  %DOCS_PROVIDES
+  %DOCS_REPLACES
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
