@@ -4,7 +4,7 @@
 
 pkgname=waffle-git
 pkgver=1.5.2.3.r287.g0b8e040
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
 url='http://www.waffle-gl.org'
@@ -12,8 +12,11 @@ provides=('waffle')
 conflicts=('waffle')
 license=('BSD')
 
-depends=('libx11' 'libxcb' 'wayland')
-makedepends=('git' 'meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
+depends=('libx11' 'libxcb' 'libudev.so' 'libgl' 'libgles')
+optdepends=('libegl: for gbm, surfaceless, x11_egl or wayland support'
+            'libgbm.so: for gbm support'
+            'wayland: for wayland support')
+makedepends=('git' 'meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'cmake')
 
 source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
 sha256sums=('SKIP')
