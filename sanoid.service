@@ -1,6 +1,0 @@
-[Unit]
-Description=Sanoid
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/sanoid --cron --verbose

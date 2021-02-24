@@ -2,7 +2,7 @@
 
 pkgname=sanoid
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A policy-driven snapshot management tool for ZFS filesystems."
 arch=('any')
 url='https://github.com/jimsalterjrs/sanoid'
@@ -15,13 +15,19 @@ depends=(
 optdepends=('pv: progress bars'
             'lzop: compression'
             'mbuffer: stream buffering')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v$pkgver.tar.gz"
-        'sanoid.service'
-        'sanoid.timer')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v$pkgver.tar.gz"
+)
 
-sha256sums=('63115326695a00dc925d3ec8c307ed2543bb0a2479f2b15be3192bf2c7d50037'
-            'a1f53363c2814a797ed4b19533b31db87e36bf9ffd41487c036570e80f498f76'
-            '73f17479b9fa5ee69e959f390945b3d4f56e615227ccb9770ad10eac05141f1c')
+sha256sums=('63115326695a00dc925d3ec8c307ed2543bb0a2479f2b15be3192bf2c7d50037')
+
+prepare() {
+  # Change /usr/sbin to /usr/bin
+  sed -i 's|/usr/sbin|/usr/bin|g' \
+    "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.timer" \
+    "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.service" \
+    "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid-prune.service"
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -40,6 +46,7 @@ package() {
   install -Dm755 findoid "${pkgdir}/usr/bin/findoid"
 
   # systemd
-  install -D -m 644 "${srcdir}/sanoid.timer" "${pkgdir}/usr/lib/systemd/system/sanoid.timer"
-  install -D -m 644 "${srcdir}/sanoid.service" "${pkgdir}/usr/lib/systemd/system/sanoid.service"
+  install -D -m 644 "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.timer" "${pkgdir}/usr/lib/systemd/system/sanoid.timer"
+  install -D -m 644 "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.service" "${pkgdir}/usr/lib/systemd/system/sanoid.service"
+  install -D -m 644 "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid-prune.service" "${pkgdir}/usr/lib/systemd/system/sanoid-prune.service"
 }
