@@ -2,14 +2,14 @@
 #Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="percona-server-mongodb-bin"
-pkgver="4.4.2_4"
-basever="4.4.2"
-origpkgver="4.4.2-4"
+pkgver="4.4.3_5"
+basever="4.4.3"
+origpkgver="4.4.3-5"
 basedist="focal"
 pkgrel="1"
 pkgdesc="A free, open source drop-in replacement for MongoDB Community Edition but with enterprise-grade functionality."
 arch=("x86_64")
-url="https://www.mongodb.com/"
+url="https://www.percona.com/software/mongodb/percona-server-for-mongodb/"
 license=("SSPLv1")
 depends_aarch64=("libcurl-openssl-1.0")
 provides=("mongodb=$pkgver" "mongodb-tools=$pkgver")
@@ -25,15 +25,15 @@ source_x86_64=(
     "mongodb.tmpfiles"
     "LICENSE")
 
-sha256sums_x86_64=("e72f982b66d2eedb2a48f276b10aab84427bf3866ddecae31e14f64681a7bc74"
-                   "365e2f4076e769d080745874a5527219a0aab03f965364341600b9e9d541d6de"
-                   "ad9d74064dbcb748619c4bea0cf432f878df54aeb189a9cd52cf3775be448483"
-                   "414c394fc8400404c63fab3792a0553795f2eda30257b0d2abbc4d617de1e32b"
-                   "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
-                   "f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850"
-                   "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
-                   "51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac"
-                   "09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27")
+sha256sums_x86_64=('c84bc699eec8c7ed326523f8dc81d699f7f4137bbdfcf5de8b22e23cc598d257'
+                   'b3234289bc79e003d4b3cd13b033875b874704adf8de79b95cfaaf1153500173'
+                   '8d8934c283f143b35c7d29f930d63f576737c704630a21496837cacbf330366d'
+                   '21b0ae9cb4107ae7476fc7e91322ccee1b7442f638d94e64767215c18caccfe0'
+                   '19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e'
+                   'f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850'
+                   '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
+                   '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
+                   '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
 
 backup=("etc/mongodb.conf")
 

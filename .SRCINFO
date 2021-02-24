@@ -1,30 +1,30 @@
 pkgbase = percona-server-mongodb-bin
 	pkgdesc = A free, open source drop-in replacement for MongoDB Community Edition but with enterprise-grade functionality.
-	pkgver = 4.4.2_4
+	pkgver = 4.4.3_5
 	pkgrel = 1
-	url = https://www.mongodb.com/
+	url = https://www.percona.com/software/mongodb/percona-server-for-mongodb/
 	arch = x86_64
 	license = SSPLv1
-	provides = mongodb=4.4.2_4
-	provides = mongodb-tools=4.4.2_4
+	provides = mongodb=4.4.3_5
+	provides = mongodb-tools=4.4.3_5
 	conflicts = mongodb
 	conflicts = mongodb-bin
 	conflicts = mongodb-tools
 	conflicts = mongodb-tools-bin
 	backup = etc/mongodb.conf
-	source_x86_64 = percona-server-mongodb-shell_4.4.2-4.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.2-4/binary/debian/focal/x86_64/percona-server-mongodb-shell_4.4.2-4.focal_amd64.deb
-	source_x86_64 = percona-server-mongodb-tools_4.4.2-4.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.2-4/binary/debian/focal/x86_64/percona-server-mongodb-tools_4.4.2-4.focal_amd64.deb
-	source_x86_64 = percona-server-mongodb-server_4.4.2-4.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.2-4/binary/debian/focal/x86_64/percona-server-mongodb-server_4.4.2-4.focal_amd64.deb
-	source_x86_64 = percona-server-mongodb-mongos_4.4.2-4.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.2-4/binary/debian/focal/x86_64/percona-server-mongodb-mongos_4.4.2-4.focal_amd64.deb
+	source_x86_64 = percona-server-mongodb-shell_4.4.3-5.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.3-5/binary/debian/focal/x86_64/percona-server-mongodb-shell_4.4.3-5.focal_amd64.deb
+	source_x86_64 = percona-server-mongodb-tools_4.4.3-5.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.3-5/binary/debian/focal/x86_64/percona-server-mongodb-tools_4.4.3-5.focal_amd64.deb
+	source_x86_64 = percona-server-mongodb-server_4.4.3-5.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.3-5/binary/debian/focal/x86_64/percona-server-mongodb-server_4.4.3-5.focal_amd64.deb
+	source_x86_64 = percona-server-mongodb-mongos_4.4.3-5.focal_amd64.deb::https://downloads.percona.com/downloads/percona-server-mongodb-LATEST/percona-server-mongodb-4.4.3-5/binary/debian/focal/x86_64/percona-server-mongodb-mongos_4.4.3-5.focal_amd64.deb
 	source_x86_64 = mongodb_x86_64.service
 	source_x86_64 = mongodb.conf
 	source_x86_64 = mongodb.sysusers
 	source_x86_64 = mongodb.tmpfiles
 	source_x86_64 = LICENSE
-	sha256sums_x86_64 = e72f982b66d2eedb2a48f276b10aab84427bf3866ddecae31e14f64681a7bc74
-	sha256sums_x86_64 = 365e2f4076e769d080745874a5527219a0aab03f965364341600b9e9d541d6de
-	sha256sums_x86_64 = ad9d74064dbcb748619c4bea0cf432f878df54aeb189a9cd52cf3775be448483
-	sha256sums_x86_64 = 414c394fc8400404c63fab3792a0553795f2eda30257b0d2abbc4d617de1e32b
+	sha256sums_x86_64 = c84bc699eec8c7ed326523f8dc81d699f7f4137bbdfcf5de8b22e23cc598d257
+	sha256sums_x86_64 = b3234289bc79e003d4b3cd13b033875b874704adf8de79b95cfaaf1153500173
+	sha256sums_x86_64 = 8d8934c283f143b35c7d29f930d63f576737c704630a21496837cacbf330366d
+	sha256sums_x86_64 = 21b0ae9cb4107ae7476fc7e91322ccee1b7442f638d94e64767215c18caccfe0
 	sha256sums_x86_64 = 19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e
 	sha256sums_x86_64 = f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850
 	sha256sums_x86_64 = 47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b
