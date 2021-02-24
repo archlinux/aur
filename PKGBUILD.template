@@ -1,8 +1,8 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.11.1
-_archver=arch1
-_pkgrel=1
+_kernver=%KERNVER
+_archver=%ARCHVER
+_pkgrel=%PKGREL
 _pkgver="${_kernver}.${_archver}"
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_kernver}-${_archver}-${_pkgrel}"
@@ -15,8 +15,8 @@ pkgname=("${_pkgname}-versioned-bin"
          "${_versioned_pkgname}-docs-bin")
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
-pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://git.archlinux.org/linux.git/log/?h=v5.11.1-arch1"
+pkgdesc="%KERN_PKGDESC | repackaged with a unique package name for each version"
+url="%URL"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -62,35 +62,37 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.11.1.arch1-1-bin() {
-  pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
-  depends=(coreutils
-           initramfs
-           kmod)
-  conflicts=("${_pkgname}")
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES
-            WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch
-            wireguard-arch)
+package_linux%PKGVER-%PKGREL-bin() {
+  pkgdesc="%KERN_PKGDESC, version ${KERNNAME}"
+  %KERN_DEPENDS
+  %KERN_CONFLICTS
+  %KERN_OPTDEPENDS
+  %KERN_PROVIDES
+  %KERN_REPLACES
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.11.1.arch1-1-headers-bin() {
-  pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
-  depends=(pahole)
-  conflicts=("${_pkgname}-headers")
+package_linux%PKGVER-%PKGREL-headers-bin() {
+  pkgdesc="%HEADERS_PKGDESC ${KERNNAME}"
+  %HEADERS_DEPENDS
+  %HEADERS_CONFLICTS
+  %HEADERS_OPTDEPENDS
+  %HEADERS_PROVIDES
+  %HEADERS_REPLACES
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.11.1.arch1-1-docs-bin() {
-  pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
-  conflicts=("${_pkgname}-docs")
+package_linux%PKGVER-%PKGREL-docs-bin() {
+  pkgdesc="%DOCS_PKGDESC ${KERNNAME}"
+  %DOCS_DEPENDS
+  %DOCS_CONFLICTS
+  %DOCS_OPTDEPENDS
+  %DOCS_PROVIDES
+  %DOCS_REPLACES
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
