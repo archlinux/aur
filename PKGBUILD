@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.14.arch1.r969226.84c36b7757ed
+pkgver=v5.10.16.arch1.r969246.e2b8120595b8
 _srcver_tag=v5.10.16.arch1
 pkgrel=1
 pkgdesc="Linux"
@@ -84,18 +84,18 @@ makedepends=(
 )
 options=('!strip')
 
-_reponame="bcachefs"
-_repo_url="https://github.com/koverstreet/$_reponame"
+_reponame="linux-bcachefs"
+_repo_url="https://github.com/koverstreet/bcachefs"
 
 _reponame_gcc_patch="kernel_gcc_patch"
-_repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
+_repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
 _gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "git+$_repo_url#branch=master"
-    "git+$_repo_url_gcc_patch"
+    "${_reponame}::git+${_repo_url}#branch=master"
+    "git+${_repo_url_gcc_patch}"
     config # kernel config file
 )
 validpgpkeys=(

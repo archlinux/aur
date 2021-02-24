@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.10.14.arch1.r969226.84c36b7757ed
+	pkgver = v5.10.16.arch1.r969246.e2b8120595b8
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = linux-bcachefs-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = git+https://github.com/koverstreet/bcachefs#branch=master
+	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs#branch=master
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
