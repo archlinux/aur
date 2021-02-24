@@ -4,7 +4,7 @@
 
 pkgbase='concourse'
 pkgname=('concourse' 'concourse-fly-cli' 'concourse-resource-types')
-pkgver=6.7.5
+pkgver=7.0.0
 pkgrel=1
 arch=('x86_64')
 url='https://concourse-ci.org'
@@ -12,8 +12,8 @@ license=('Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz"
         "https://github.com/concourse/concourse/releases/download/v${pkgver}/concourse-${pkgver}-linux-amd64.tgz")
 makedepends=('go-pie' 'yarn')
-sha256sums=('34905a1ab449c8f8ddc7f29f142663a49120cfaa18bbb73744567423cc010f01'
-            '150453b218d25467cd4b8c86a7dc6b8b4a33cc5184fbd913a9ab224667cc3065')
+sha256sums=('d92b2be00d6033988018de11a996e325c2d81ed4963c64c67dedfb74cbb1d7db'
+            'fb6f938e40a97f6a01ca6052eeb71be252612cc0f4feab26c38aba2d2ce77d03')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,7 +23,9 @@ prepare() {
 
   # Change binary asset directory
   sed -e 's#binariesDir = "/usr/local/concourse/bin"#binariesDir = "/usr/lib/cni"#' -i worker/runtime/cni_network.go
+  sed -e 's#"cni-plugins-dir" default:"/usr/local/concourse/bin"#"cni-plugins-dir" default:"/usr/lib/cni"#' -i worker/workercmd/worker_linux.go
   sed -e 's#/usr/local/concourse/bin/init#/usr/lib/concourse/bin/init#' -i worker/runtime/spec/mounts.go
+  sed -e 's#"init-bin"   default:"/usr/local/concourse/bin/init"#"init-bin"   default:"/usr/lib/concourse/bin/init"#' -i worker/workercmd/worker_linux.go
 
   go get github.com/gobuffalo/packr/packr
 
