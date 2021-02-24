@@ -2,7 +2,7 @@
 # Contributor: Julian Daube <joposter (at) gmail (dot) com>
 _pkgname=python-django-js-asset
 pkgname=$_pkgname-git
-pkgver=1.2.2.r8.gfe5cce8
+pkgver=1.2.2.r16.g4659e2f
 pkgrel=1
 pkgdesc="script tag with additional attributes for django.forms.Media"
 
@@ -10,8 +10,7 @@ provides=("$_pkgname")
 url="https://github.com/matthiask/django-js-asset/"
 arch=("any")
 license=("bsd")
-
-source=("$pkgname::git+$url")
+source=("$pkgname::git+https://github.com/matthiask/django-js-asset.git")
 depends=("python-django")
 makedepends=("python-setuptools" "git")
 checkdepends=("python-pytz")
