@@ -1,15 +1,16 @@
 # Maintainer: fengkx <liangkx8237 [At] gmail.com>
 pkgname=doko-rs
 _binname=doko
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 pkgdesc="Docker-based development-only dependency manager"
 arch=("x86_64")
 url="https://github.com/fengkx/doko-rs/"
 license=('Unlicense')
 depends=("docker")
+install="doko.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fengkx/$pkgname/releases/download/v$pkgver/doko-v$pkgver-$arch-unknown-linux-gnu.tar.gz")
-sha512sums=("34437f4cb1426a678b5c7604292f22828c2f4376469d7d5f1290978be75f64a2233310fcba42e8a62ca88fa758757bc093a25469692e05d6a166ed8a1734fbb3")
+sha512sums=("34af028161e64e6e0777b537cefc8b3a7b0d275820c5d798d426fbb4b47612eebb4ed4c3bcc9193fb869060880027ab062c2e912542c9d397b9324e8ba8ddeab")
 
 prepare() {
 	mv -f "doko-v$pkgver-$arch-unknown-linux-gnu" "$pkgname-$pkgver"

@@ -1,0 +1,6 @@
+post_install() {
+	echo "Add below script to ~/.bashrc ~/.zshrc to enable shell completions"
+	echo 'eval "$(doko completion --shell bash)'
+	echo "OR"
+	echo 'eval "$(doko completion --shell zsh)"'
+}
