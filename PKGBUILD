@@ -17,6 +17,7 @@ makedepends=('meson' 'xcb-proto' 'lib32-mesa-libgl' 'lib32-mesa' 'gcc-multilib')
 source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
 sha256sums=('41ff9e042497e482c7294e210ebd9962e937631829a548e5811c637337cec5a5'
             'SKIP')
+validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D')
 
 build() {
 	export CC='gcc -m32'
