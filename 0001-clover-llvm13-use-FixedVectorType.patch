@@ -9,7 +9,7 @@ diff --unified --recursive --text mesa.orig/src/gallium/frontends/clover/llvm/me
 +#if LLVM_VERSION_MAJOR >= 13
 +                  data += std::to_string(((::llvm::FixedVectorType*)type)->getNumElements());
 +#else
-+                  data += std::to_string(((::llvm::VectorType*)type)->getNumElements())
++                  data += std::to_string(((::llvm::VectorType*)type)->getNumElements());
 +#endif
  
              } else {
