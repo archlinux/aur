@@ -1,0 +1,17 @@
+pkgbase = cargo-feature-git
+	pkgdesc = Allows conveniently modify features of crate
+	pkgver = r36.ee38538
+	pkgrel = 1
+	url = https://github.com/Riey/cargo-feature
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = cargo
+	provides = cargo-feature
+	conflicts = cargo-feature
+	source = git+https://github.com/Riey/cargo-feature.git
+	sha256sums = SKIP
+
+pkgname = cargo-feature-git
+
