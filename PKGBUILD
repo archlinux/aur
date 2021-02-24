@@ -1,9 +1,9 @@
 pkgname=vpncloud2
-pkgver=2.0.1
-pkgrel=5
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
-url=""
+url="https://vpncloud.ddswd.de/"
 license=('GPL')
 depends=('libsystemd')
 makedepends=('rust' 'cargo' 'git')
@@ -13,7 +13,7 @@ source=(git+https://github.com/dswd/vpncloud.rs.git#tag=v${pkgver}
 noextract=()
 sha256sums=('SKIP'
             'eb756f1f940838cfe35555ba9e8e07d0e7182a72ace03853256ec5b72b0e8fbf'
-            'b830058582bc276955569add40dd00be0ad2e94de58168494396419c82ed48ce')
+            '1c8be008faa92063a38b8057ead443efb23a186f52b7c8315b0cac80910bd9ea')
 validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
 
 prepare() {
