@@ -36,7 +36,7 @@ index 0b1f693..7de64a1 100644
  %define urlbarSearchButtonWidth calc(16px + 2 * @identityBoxPaddingInline@)
 
  :root {
-@@ -197,13 +197,13 @@
+@@ -278,9 +278,9 @@
  }
 
  #urlbar[breakout][breakout-extend] {
@@ -48,14 +48,18 @@ index 0b1f693..7de64a1 100644
 +  width: 100%;
  }
 
+ @supports -moz-bool-pref("browser.proton.urlbar.enabled") {
+@@ -293,7 +293,7 @@
+
+ @supports not -moz-bool-pref("browser.proton.urlbar.enabled") {
  #urlbar[breakout][breakout-extend] > #urlbar-background {
 -  box-shadow: 0 3px 8px 0 rgba(0,0,0,.15)
 +  box-shadow: 0 1px 4px rgba(0,0,0,.05);
  }
 
  #urlbar[breakout][breakout-extend][open] > #urlbar-background {
-@@ -211,9 +211,9 @@
- }
+@@ -302,9 +302,9 @@
+ } /*** END !proton ***/
 
  #urlbar[breakout][breakout-extend] > #urlbar-input-container {
 -  height: calc(var(--urlbar-toolbar-height) + 2 * @urlbarBreakoutExtend@);
@@ -66,8 +70,8 @@ index 0b1f693..7de64a1 100644
 +  padding-inline: 0;
  }
 
- #urlbar.searchButton[breakout][breakout-extend] > #urlbar-input-container > #urlbar-search-button {
-@@ -231,7 +231,7 @@
+ @supports -moz-bool-pref("browser.proton.urlbar.enabled") {
+@@ -330,7 +330,7 @@
  }
 
  #urlbar[breakout][breakout-extend] > #urlbar-background {
@@ -80,7 +84,7 @@ diff --git a/browser/themes/shared/urlbarView.inc.css b/browser/themes/shared/ur
 index 6b8cac0..54648c6 100644
 --- a/browser/themes/shared/urlbarView.inc.css
 +++ b/browser/themes/shared/urlbarView.inc.css
-@@ -48,8 +48,8 @@
+@@ -80,8 +80,8 @@
    display: block;
    text-shadow: none;
    overflow: clip;
@@ -91,8 +95,8 @@ index 6b8cac0..54648c6 100644
 
    /* Match urlbar-background's border. */
    border-inline: 1px solid transparent;
-@@ -72,7 +72,7 @@
- .urlbarView-row {
+@@ -118,7 +118,7 @@
+   flex-wrap: nowrap;
    fill: currentColor;
    fill-opacity: .6;
 -  padding-block: 3px;
@@ -100,15 +104,15 @@ index 6b8cac0..54648c6 100644
  }
 
  .urlbarView-row-inner {
-@@ -179,6 +179,7 @@
-   background-repeat: no-repeat;
-   background-size: contain;
+@@ -264,6 +264,7 @@
+   object-fit: contain;
+   flex-shrink: 0;
    -moz-context-properties: fill, fill-opacity;
 +  margin-inline-start: 20px;
  }
 
- @media (min-resolution: 2dppx) {
-@@ -204,10 +205,10 @@
+ .urlbarView-row[type=tip] > .urlbarView-row-inner > .urlbarView-favicon {
+@@ -301,10 +302,10 @@
 
  .urlbarView-type-icon {
    position: absolute;
