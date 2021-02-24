@@ -6,7 +6,7 @@
 
 pkgname=ddclient-curl
 pkgver=3.8.3
-_releasenumber='05'
+_releasenumber='07'
 pkgrel=1
 pkgdesc="A fork of ddclient using curl to update dynamic DNS entries for accounts on many dynamic DNS services."
 url="https://github.com/astlinux-project/ddclient-curl"
@@ -16,10 +16,12 @@ backup=('etc/ddclient/ddclient-curl.conf')
 depends=('perl-digest-sha1'
          'iproute2')
 
-source=(https://github.com/astlinux-project/ddclient-curl/releases/download/${pkgver}-${_releasenumber}/ddclient-curl-${pkgver}-${_releasenumber}.tar.gz
-        ddclient-curl.service)
+source=(
+  "ddclient-curl-${pkgver}-${_releasenumber}.tar.gz::https://github.com/astlinux-project/ddclient-curl/archive/${pkgver}-${_releasenumber}.tar.gz"
+  'ddclient-curl.service'
+)
 
-sha512sums=('5947d75c51b3944da969ff68a9b1a6a04dbdf8e757387228e8d71184e1b7302dcd7b397e5b23f24093fe8d83a988d521ea2b2f2e493f5029034159ab53d25f8b'
+sha512sums=('a9a3b947929888dbc5c87067ed584978cfcf6749f0559b619d626eb52c5f6b394f98b5ac0f3c4cd59ed840c562882403e38e90e17819bf70e41aa097b2ed936d'
             '1befe6765b976a2ccb896d8dd22d89f119ab6dfa29eca7316be3d78f6e8ad8046941f08661a65515143a3c650e75e442dc9dccc5fbc102e44787c03d54203e35')
 
 package() {
