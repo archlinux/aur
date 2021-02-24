@@ -8,6 +8,8 @@ pkgbase = mindmaster_cn
 	conflicts = mindmaster
 	conflicts = mindmaster-cn
 	options = !strip
+	source = mindmaster-cn.desktop
+	sha256sums = f2564bd74618688a9e6dd39c71ddeac965cfcc3e3fd9306c1548258097878e5a
 	source_x86_64 = https://www.edrawsoft.cn/2download/x86_64/mindmaster_8.5.2_cn.x86_64.deb
 	sha256sums_x86_64 = 2cda609b477d69fec0bdd8a10a21511f9d1c4fc6cfab2c3789e7cd58c6ff5991
 
