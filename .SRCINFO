@@ -1,0 +1,18 @@
+pkgbase = mpdscrobble-git
+	pkgdesc = A simple Last.fm scrobbler for MPD.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dbeley/mpdscrobble
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-mpd2
+	depends = python-pylast
+	provides = mpdscrobble
+	conflicts = mpdscrobble
+	source = git+https://github.com/dbeley/mpdscrobble
+	md5sums = SKIP
+
+pkgname = mpdscrobble-git
+
