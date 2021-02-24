@@ -1,11 +1,12 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=ulist
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A mailing list service that keeps it simple."
 arch=('x86_64')
 url="https://github.com/wansing/$pkgname"
 license=('GPL')
+depends=('glibc')
 makedepends=('go')
 optdepends=('sqlite')
 source=("$url/archive/v$pkgver.tar.gz")
