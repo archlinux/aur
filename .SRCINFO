@@ -1,0 +1,16 @@
+pkgbase = vim-surround-git
+	pkgdesc = quoting/parenthesizing made simple
+	pkgver = 2.1.r18.gf51a26d
+	pkgrel = 1
+	url = https://github.com/tpope/vim-surround
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-surround
+	conflicts = vim-surround
+	source = vim-surround::git+https://github.com/tpope/vim-surround.git
+	md5sums = SKIP
+
+pkgname = vim-surround-git
+
