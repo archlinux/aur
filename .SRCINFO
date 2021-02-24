@@ -1,6 +1,6 @@
 pkgbase = quilter
 	pkgdesc = Focus on your writing and write beautiful solid stories with the Focus Mode in tow in this Markdown editor.
-	pkgver = 3.2.5
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://github.com/lainsce/quilter
 	install = quilter.install
@@ -16,8 +16,9 @@ pkgbase = quilter
 	depends = discount
 	depends = webkit2gtk
 	depends = gtkspell3
-	source = https://github.com/lainsce/quilter/archive/3.2.5.zip
-	sha256sums = e774731b07f2881edd5b664a3165aba4575cb76479836332fb7f4edc814131ad
+	depends = libhandy
+	source = https://github.com/lainsce/quilter/archive/3.3.4.zip
+	sha256sums = 24b06127972af578b7e4379bddb2218fb0e9f339f76c0274f8719c9b36061122
 
 pkgname = quilter
 
