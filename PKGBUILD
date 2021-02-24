@@ -1,8 +1,8 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=hush3
-pkgver=3.6.1
-pkgrel=3
+pkgver=3.6.2
+pkgrel=1
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libsodium' 'lib32-zlib')
 makedepends=('unzip' 'wget' 'git' 'python' 'rust' 'curl' 'autoconf=2.69')
 conflicts=('hush3-bin')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('09c889e11f7e831cb316879a38cb58c4ea047680cb0f1c7956d3847670299b3e')
+sha256sums=('0b1d9e619b29a6bce737f689b37e44cc27699b679c0f3dfc997ab2cca61da714')
 
 build() {
   tar xzvf v$pkgver.tar.gz
@@ -33,9 +33,10 @@ package() {
   install -Dm755 "${srcdir}/$pkgname/src/komodod" "${pkgdir}/opt/$pkgname/hush-komodod"
   install -Dm755 "${srcdir}/$pkgname/src/komodo-tx" "${pkgdir}/opt/$pkgname/hush-komodo-tx"
 
-  # install required sapling files
+  # install required sapling files and asmap.dat
   install -Dm644 "${srcdir}/$pkgname/sapling-output.params" "${pkgdir}/opt/$pkgname/sapling-output.params"
   install -Dm644 "${srcdir}/$pkgname/sapling-spend.params" "${pkgdir}/opt/$pkgname/sapling-spend.params"
+  install -Dm644 "${srcdir}/$pkgname/contrib/asmap/asmap.dat" "${pkgdir}/opt/$pkgname/asmap.dat"
 
   # install man pages
   install -Dm644 "${srcdir}/$pkgname/doc/man/hush-cli.1" "${pkgdir}/usr/share/man/man1/hush-cli.1"
@@ -55,4 +56,5 @@ package() {
   install -d "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-output.params "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-spend.params "${pkgdir}/usr/share/hush"
+  ln -s /opt/${pkgname}/asmap.dat "${pkgdir}/usr/share/hush"
 }
