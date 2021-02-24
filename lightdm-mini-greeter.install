@@ -1,6 +1,6 @@
 post_install() {
     echo "==>"
-    echo "==> To enabled lightdm-mini-greeter, change the following config files:"
+    echo "==> To enable lightdm-mini-greeter, change the following config files:"
     echo "==>"
     echo "==>  /etc/lightdm/lightdm.conf"
     echo "==>    greeter-session = lightdm-mini-greeter"
