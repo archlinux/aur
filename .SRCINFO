@@ -3,7 +3,6 @@ pkgbase = tint2-minimal-git
 	pkgver = 0.12.1.r44.g1f7f197
 	pkgrel = 1
 	url = https://gitlab.com/o9000/tint2
-	install = tint2-minimal-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL

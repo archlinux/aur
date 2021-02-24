@@ -13,7 +13,6 @@ depends=('gtk2' 'imlib2')
 optdepends=('startup-notification: startup notification support'
 	    'lxappearance: theme tweaker')
 makedepends=('cmake')
-install=${pkgname}.install
 provides=('tint2')
 conflicts=('tint2' 'tint' 'tint2-svn')
 source=("git+https://gitlab.com/o9000/tint2.git")
