@@ -1,6 +1,39 @@
 Version history
 ===============
 
+0.9.36
+------
+
+2021-02-24
+
+Add a whopping 66 multiplayer maps by Flopsy, including Perfect Situation
+
+Fix #413: The new-level button in the editor will now ask for data loss
+before clearing the map and clearing the undo buffer. You can click Save,
+Discard, or Cancel.
+
+Reword the grid tooltip in the editor to clarify that it will affect future
+moves; it will have no immediate effect on the current selection.
+Before: "Grid 2: Rounds tiles' coordinates to multiples of 2."
+Now: "Grid 2: Tiles will move in steps of 2 pixels."
+Thanks to WillLem for feedback and wording.
+
+Support a hidden option (not in the options menu) that allows you to suppress
+the editor's offset of copypasted tiles; this is (16,16) by default.
+(Hidden options are hacks; for the long term, I need to visualize the copying
+in place.) For now, to suppress the offset, put in your user/options.sdl:
+editorCopiedTilesOffset 0
+
+Mouse speed on Linux defaults to 10, not 20. This produces better results
+on my machine when (fast movement frees mouse) is off, the default on Linux.
+I haven't examined the speed on other systems yet.
+
+Update the build docs in doc/build/ about minimum compiler versions.
+
+In the doc/formats/ directory, document replay pointing, terrain lines in
+levels, groups in levels.
+
+
 0.9.35
 ------
 
