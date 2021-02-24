@@ -8,7 +8,6 @@ pkgdesc="Python library for reading and writing Windows shortcut files (.lnk).(0
 url="https://pypi.org/project/pylnk3/"
 arch=('any')
 provides=('python-pylnk3=0.3.0')
-replaces=('python-pylnk3')
 conflicts=('python-pylnk3')
 license=('LGPLv3')
 depends=('python')
