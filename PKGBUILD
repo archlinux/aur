@@ -1,8 +1,9 @@
+# Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts54
 pkgver=5.4.100
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS 5.4 Linux'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -18,6 +19,7 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+  0003-Add-support-for-ZSTD-compressed-kernel.patch
   sphinx-workaround.patch
 )
 validpgpkeys=(
@@ -30,6 +32,7 @@ sha256sums=('795d681aa60822bcf4f2f6c28b4411e1b09d5ca37b85a647967649d1ab3b240a'
             'be2066dd6133357007e8c7da9d5de3194b13409ebbfba8821db1849588fced1e'
             'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
             '4fd74bb2a7101d700fba91806141339d8c9e46a14f8fc1fe276cfb68f1eec0f5'
+            '8b604b7dc447b5f1f6f0b6239d5dd3ec6a5336cba78ac6dcef8f3e59357bd8c0'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e')
 
 export KBUILD_BUILD_HOST=archlinux
