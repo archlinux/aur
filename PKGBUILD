@@ -4,12 +4,14 @@
 pkgname=lens
 pkgdesc='The Kubernetes IDE'
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('MIT')
 url='https://k8slens.dev'
 depends=('alsa-lib' 'gtk3' 'libxss' 'libxtst' 'nss')
 makedepends=('npm' 'nodejs-lts-erbium' 'yarn')
+optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
+            'helm: for Apps section, only useful if your deploy uses helm or plan to use it')
 conflicts=('lens-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
@@ -41,4 +43,9 @@ package() {
   mkdir -p "${pkgdir}"/usr/bin
   ln -sf /usr/share/${pkgname}/kontena-lens \
     "${pkgdir}"/usr/bin/kontena-lens
+
+  # symlink helm binary
+  mkdir -p "${pkgdir}"/usr/share/${pkgname}/resources/helm3
+  ln -sf /usr/bin/helm \
+    "${pkgdir}"/usr/share/${pkgname}/resources/helm3/helm3
 }
