@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
 	pkgver = 5.11.1.arch1
-	pkgrel = 2
+	pkgrel = 1.1
 	url = https://git.archlinux.org/linux.git/log/?h=v5.11.1-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-5.11.1.arch1-2-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-5.11.1.arch1-2-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-5.11.1.arch1-2-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-5.11.1.arch1-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-headers-5.11.1.arch1-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-docs-5.11.1.arch1-1-x86_64.pkg.tar.zst
 	sha256sums = 0358dc97518d1e1dcb8aae3b0a3c9d0e43dd69708cd92ecef22e6e9dd3f9d1c8
 	sha256sums = b6f662509ddcaa185f8eef31157cbb1e576efa6453e1a86c440bd3a21e1bc591
 	sha256sums = 19802a951538749da4d5120ff89d1fc792e4bb8f465c1d3455d3803084e5f922
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.11.1.arch1-2-bin
-	depends = linux5.11.1.arch1-2-bin
+	pkgdesc = Dummy package depending on linux5.11.1.arch1-1-bin
+	depends = linux5.11.1.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.11.1.arch1-2-headers-bin
-	depends = linux5.11.1.arch1-2-headers-bin
+	pkgdesc = Dummy package depending on linux5.11.1.arch1-1-headers-bin
+	depends = linux5.11.1.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.11.1.arch1-2-docs-bin
-	depends = linux5.11.1.arch1-2-docs-bin
+	pkgdesc = Dummy package depending on linux5.11.1.arch1-1-docs-bin
+	depends = linux5.11.1.arch1-1-docs-bin
 
-pkgname = linux5.11.1.arch1-2-bin
-	pkgdesc = The Linux kernel and modules, version 5.11.1-arch1-2
+pkgname = linux5.11.1.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.11.1-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,12 +39,12 @@ pkgname = linux5.11.1.arch1-2-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.11.1.arch1-2-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.11.1-arch1-2
+pkgname = linux5.11.1.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.11.1-arch1-1
 	depends = pahole
 	conflicts = linux-headers
 
-pkgname = linux5.11.1.arch1-2-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.11.1-arch1-2
+pkgname = linux5.11.1.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.11.1-arch1-1
 	conflicts = linux-docs
 
