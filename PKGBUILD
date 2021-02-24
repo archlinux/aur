@@ -47,14 +47,16 @@ _use_current=
 
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
-_major=5.10
-_minor=17
-_rtver=32
+_major=5.11
+_minor=0
+_rtver=7
 _rtpatchver=rt${_rtver}
-pkgver=${_major}.${_minor}.${_rtpatchver}
-_pkgver=${_major}.${_minor}
+#pkgver=${_major}.${_minor}.${_rtpatchver}
+#_pkgver=${_major}.${_minor}
+pkgver=${_major}.${_rtpatchver}
+_pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -71,7 +73,7 @@ _bfq_rev_path="bfq-reverts-all"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v14"
-_bfq_rel="r2K210214"
+_bfq_rel="r2K210223"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -83,8 +85,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0003-Revert-drm-amd-display-reuse-current-context-instead.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0004-drm-amdgpu-fix-shutdown-with-s0ix.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -221,7 +225,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-rt-bfq-dev')
+    depends=('linux-rt-bfq-dev' 'pahole')
     replaces=('linux-rt-bfq-headers')
     conflicts=('linux-rt-bfq-headers')
     provides=('linux-rt-bfq-headers')
@@ -332,17 +336,19 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2d8700ceee0c027597415de2b9fa478a651c6f5074b68d60609a4c46398ac5a854f9323fc07b187caca5294759bf99832d7496c4f4cca222240b07435b27bd60'
+sha512sums=('a567ec133018bb5ec00c60281479b466c26e02137a93a9c690e83997947df02b6fd94e76e8df748f6d70ceb58a19bacc3b1467de10b7a1fad2763db32b3f1330'
             'SKIP'
-            'fb5f2187907231c101df7dfb3e0df4c3a44dff2e62430db51ffebe1f8a505be8d09d0a0c75e0fdb3f63a5d71151c5f1d5386714aebdbee9f599ff0689b8b5736'
+            '4ee686690148c1917eace10876cbea4da7751f6c649e20628f43480d78b018f6794227d80218f142440ff6519e2a51a1a6ead5c5641a3021373d1f017945cedb'
             'SKIP'
-            '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
-            '4b4adee88983665f5e70f263e5eac89a5d4dff09210dc66dc09f45fd8b7b98cc4a3fd054d9850d5a9ffbbe6ff73d11d09b6d3750ebcc6a84619fa0ff1959f11a'
-            '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            'eb12bca374c8709d7e98730a01b406c18c0438983ac0f65c788fa58de6bb3d1558a673f5bb75a594967b71079fb15a29176ef9db2971f42b40c2696c4870e4a7'
-            '6a222febcc5a3249fb961320ea6aceccacb94dc0727741c9363054f95b89f5c5cbdf6d25ca8ef3e5eba014e7e1ec403cfe7ba1a380952c362a72f31341e71ff1'
-            'd498ccd5790d6ccc2b6679e21d77359b3c90858bef063539c68f2f90808c70f6478565cba81f1e4e32c363ea4cfb07ffc5d3be3c69eca983c426f506b5c0fbf9'
-            '539dccfeb894f5b83bbba2f0c672bd696f74914e771b1c85b45e4610df8b766367ce283ac6f0355070d7d8307ee6cf0c99d1df1e5c64d30827adf80dc57c608b')
+            '4dcdc33ed86dac1879432a5d3977ea01daa24e1d62ed89e328125a9ba3f00089248eefdd7bba33336f09bb8299a8f929bd763de55f13b115223e4bd813b0617b'
+            '566285d7e66cf10345cab61d7e3fda4769ab788333d47e7a1b607501fb9dfc880006e80fcd0a7894b7f4e1a4e726106030cecaca582a26d76c4903425cee4238'
+            '7783c2b24253a24d650c9955ef818e8c5de097a5413120e42c23fe56303d83ea045eb489cb1fde36a82e7caec344ebafe83756fa43d087937ad4f23d10e01659'
+            '82a868ae1866979aa0282f5bc4dc8c46f407cfb277d4b1cac6cac0d54ef7d7e0b928f79cc8a1bc49421619419293e681f27410040b527c07dca0d6df56c9e98b'
+            'e5529b081edda4dbc354e9d5648da982c210ed8070340816171d3c428886ae614207481ab729559c45cc927c6edcfd1cfde157c84434b737f4b5a163d55c6a29'
+            'c0704d558276d13761b10a82837811217fcb222122a96bd05eecda808b016ba0a8a8b9a1e124323d479a55a218778b29fc34e6dd98d7d5482f14038ce89fad4b'
+            'c8343b8454891d1deeede7e0a76785d653d98c506cdf26b9a1083a2ba16f8012646d80caee7dc4d7f1fa715e9753f5362e9365048b16db8f187369827ab69f01'
+            '715e60d1bd6be9e79deb153210c35b797160df536844840335e6742989ca4d422fb2cbc4ac7544b71675413d9a532901483a26eec28f5addb461a3ae20558aa0'
+            '3ca7953291430504cf8f20454301885edbe4bee1438358eff56970606f26060300a4ff955bf512fe831555c4b9d332508a8f115245dddf7ab4494177c0e01bda')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
