@@ -1,7 +1,7 @@
 pkgbase = paru
-	pkgdesc = AUR helper based on yay
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgdesc = Feature packed AUR helper
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = i686
 	arch = pentium4
@@ -17,7 +17,7 @@ pkgbase = paru
 	optdepends = asp: downloading repo pkgbuilds
 	optdepends = bat: colored pkgbuild printing
 	backup = etc/paru.conf
-	source = paru-1.2.2.tar.gz::https://github.com/Morganamilo/paru/archive/v1.2.2.tar.gz
-	sha256sums = 63144bdae03e8eaf7d8065e36a252f914f91f6972ad92a32ed03375fc8c3ce90
+	source = paru-1.3.0.tar.gz::https://github.com/Morganamilo/paru/archive/v1.3.0.tar.gz
+	sha256sums = e2222f7fe8f11fcf2fba84e4b217dbe5b1ce7d7656a056f78cc695f10e07465e
 
 pkgname = paru
