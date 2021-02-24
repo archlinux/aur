@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
-	pkgver = 78.7.1
+	pkgver = 78.8.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = x86_64
@@ -50,18 +50,16 @@ pkgbase = icecat
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-bb1c105f4416c2973f394680c2d579918a1da77a.tar.gz
+	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-d5df5618fbf6f6ea0c49b6bfdcb098846d2cd777.tar.gz
 	source = icecat.desktop
 	source = icecat-safe.desktop
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/0adcedc05ce67d53268575f8801c8de872206901/firefox/trunk/0001-Use-remoting-name-for-GDK-application-names.patch
 	source = rust_1.48.patch.gz
-	source = rust_1.50.patch
-	sha256sums = f8fc6889a0d6c7ebec076d90f7fe4804abb6efb03fc086e5d526b325cb1c5c37
+	sha256sums = c1d4249f52805740ddf3a1724da946fa4c412316868f76cb614a1db774f0d8e4
 	sha256sums = e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d
 	sha256sums = 33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208
 	sha256sums = e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442
-	sha256sums = d32c87c4526e897d64453914da43f99366d1d0b7d71e43b4027a6cb5aa274040
-	sha256sums = 12b677de5181466634aff6e68b9a189b21a1b3a7ea1dbf666462602320442c02
+	sha256sums = c7f867ccee684939c9f0a9c30ea69127077bbe43af545a03f09dfbbdc02545a9
 
 pkgname = icecat
 
