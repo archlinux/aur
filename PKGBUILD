@@ -1,13 +1,13 @@
 pkgname=openpomodoro
 provides=("pomodoro")
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A command-line Pomodoro tracker which uses the Open Pomodoro Format'
 arch=('x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/open-pomodoro/openpomodoro-cli"
 makedepends=("go" "git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5f1dda7e2fdfdf9fbdb851449eb40220ac7195cd9354d81923ba50c3ffa2530d')
+sha256sums=('8abd81d99c1a300bfac73c8f447b95e6367f8b27af0ad136fbe6f143ba658782')
 
 build() {
     cd "${srcdir}/${pkgname}-cli-${pkgver}"
