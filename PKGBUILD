@@ -1,19 +1,19 @@
-# Maintainer: Lari Tikkanen <lartza@wippies.com>
+# Maintainer: Lari Tikkanen <lartza@outlook.com>
 
 pkgname=youtube-dl-git
 _gitname="youtube-dl"
-pkgver=2020.11.18.r3.g5c3f7014e
+pkgver=2021.02.22.r6.g1631fca1e
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites (git version)"
 arch=('any')
 url="http://ytdl-org.github.io/youtube-dl/"
 license=('custom')
-depends=('python' 'python-setuptools')
-makedepends=('git' 'pandoc')
+depends=('python')
+makedepends=('git' 'pandoc' 'python-setuptools')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
-            'phantomjs: for openload support')
+            'phantomjs: for some less common extractors to work')
 provides=("youtube-dl")
 conflicts=("youtube-dl")
 source=('git+https://github.com/ytdl-org/youtube-dl.git')
@@ -33,11 +33,13 @@ prepare() {
 build() {
   cd $_gitname
   make pypi-files zsh-completion
+  python setup.py build
 }
 
 package() {
   cd $_gitname
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  export PYTHONHASHSEED=0
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   mv "${pkgdir}/usr/share/bash-completion/completions/youtube-dl.bash-completion" \
      "${pkgdir}/usr/share/bash-completion/completions/youtube-dl"
   install -Dm644 youtube-dl.zsh "${pkgdir}/usr/share/zsh/site-functions/_youtube-dl"
