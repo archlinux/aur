@@ -151,10 +151,8 @@ index d8d9caf02..a3c77cc7d 100644
   *
   * Note that the callee-saved registers are used for storing variables
   * that are useful before the MMU is enabled. The allocations are described
-@@ -73,7 +73,7 @@ _head:
+@@ -65,5 +65,5 @@
  	b	primary_entry			// branch to kernel start, magic
- 	.long	0				// reserved
- #endif
 -	.quad	0				// Image load offset from start of RAM, little-endian
 +	le64sym	_kernel_offset_le		// Image load offset from start of RAM, little-endian
  	le64sym	_kernel_size_le			// Effective size of kernel image, little-endian

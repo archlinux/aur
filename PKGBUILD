@@ -1,5 +1,5 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
-# Contributor: Maintainer: Peter Cai <peter at typeblog dot net>
+# Contributor: Peter Cai <peter at typeblog dot net>
 # Origin Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
 
 # dts and config for phicomm-n1 :
@@ -12,12 +12,11 @@
 # https://github.com/SuzukiHonoka/s905d-kernel-precompiled/tree/master/patch
 
 pkgbase=linux-phicomm-n1
-_srcname=linux-5.10
+_srcname=linux-5.11
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.10.16
+pkgver=5.11.1
 pkgrel=1
-pkgdesc=${_desc}
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -31,20 +30,22 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '60-linux.hook'
         '90-linux.hook'
 	'01-aegis-crypto.patch'
-	'02-revert-TEXT_OFFSET-deletion.patch')
+	'02-revert-TEXT_OFFSET-deletion.patch'
+	'03-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch')
 
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('753adc474bf799d569dec4f165ed92c3'
-         'caa2dbc19116d818e6d0d46baeca961b'
+md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
+         'e21d126e18d32bd49bca6a27efdece0e'
          'b5c494212ef9c09cac5bcc68e2af7a14'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         'bdeb5fb852fd92b4e76b4796db500dd4'
+         '0d0435888ecad675870ecda4045a9d45'
          '692ce80012ad5d95fa0b51cc1c9d179c'
-         '11706f3b300935db9a435535991636b5'
-         '6eb3cfa9872f7c0cbc59e5c17eca854c')
+         '7776c9f718aca4f7fa248f4aa10f5f28'
+         'f66a7ea3feb708d398ef57e4da4815e9'
+         '0e4274c495b4c0cbf41dd3842c87de31')
 
 prepare() {
   cd ${_srcname}
@@ -59,9 +60,14 @@ prepare() {
   patch -p1 -i "${srcdir}/01-aegis-crypto.patch"
 
   # Amlogic meson SoC TEXT_OFFSET
+  # Attention: since kernel 5.10, TEXT_OFFSET support is removed entriely, but it is required for the old BSP uboot to boot the kernel, so just revert it.
+  # [arm64: get rid of TEXT_OFFSET](https://github.com/torvalds/linux/commit/120dc60d0bdbadcad7460222f74c9ed15cdeb73e)
   patch -p1 < "${srcdir}/02-revert-TEXT_OFFSET-deletion.patch"
 
-  # dts for phicomm-n1
+  # Make proc cpuinfo consistent on arm64 and arm
+  patch -p1 < "${srcdir}/03-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch"
+
+  # Dts for Phicomm-N1
   target_dts="meson-gxl-s905d-phicomm-n1.dts"
   cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/amlogic/${target_dts}"
   
@@ -115,7 +121,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux Kernel and modules - ${_desc}"
+  pkgdesc="The Linux kernel and modules - ${_desc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" "WIREGUARD-MODULE")

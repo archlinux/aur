@@ -1,6 +1,5 @@
 pkgbase = linux-phicomm-n1
-	pkgdesc = AArch64 kernel for Phicomm N1
-	pkgver = 5.10.16
+	pkgver = 5.11.1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -16,7 +15,7 @@ pkgbase = linux-phicomm-n1
 	makedepends = dtc
 	depends = uboot-tools
 	options = !strip
-	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz
 	source = meson-gxl-s905d-phicomm-n1.dts
 	source = config
 	source = linux.preset
@@ -24,26 +23,28 @@ pkgbase = linux-phicomm-n1
 	source = 90-linux.hook
 	source = 01-aegis-crypto.patch
 	source = 02-revert-TEXT_OFFSET-deletion.patch
-	source = http://www.kernel.org/pub/linux/kernel/v5.x/patch-5.10.16.xz
-	md5sums = 753adc474bf799d569dec4f165ed92c3
-	md5sums = caa2dbc19116d818e6d0d46baeca961b
+	source = 03-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
+	source = http://www.kernel.org/pub/linux/kernel/v5.x/patch-5.11.1.xz
+	md5sums = d2985a3f16ef1ea3405c04c406e29dcc
+	md5sums = e21d126e18d32bd49bca6a27efdece0e
 	md5sums = b5c494212ef9c09cac5bcc68e2af7a14
 	md5sums = 30130b4dcd8ad4364ddbfd56c3058d5e
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
-	md5sums = bdeb5fb852fd92b4e76b4796db500dd4
+	md5sums = 0d0435888ecad675870ecda4045a9d45
 	md5sums = 692ce80012ad5d95fa0b51cc1c9d179c
-	md5sums = 11706f3b300935db9a435535991636b5
-	md5sums = 6eb3cfa9872f7c0cbc59e5c17eca854c
+	md5sums = 7776c9f718aca4f7fa248f4aa10f5f28
+	md5sums = f66a7ea3feb708d398ef57e4da4815e9
+	md5sums = 0e4274c495b4c0cbf41dd3842c87de31
 
 pkgname = linux-phicomm-n1
-	pkgdesc = The Linux Kernel and modules - AArch64 kernel for Phicomm N1
+	pkgdesc = The Linux kernel and modules - AArch64 kernel for Phicomm N1
 	install = linux-phicomm-n1.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.10.16
+	provides = linux=5.11.1
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -51,6 +52,6 @@ pkgname = linux-phicomm-n1
 
 pkgname = linux-phicomm-n1-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for Phicomm N1
-	provides = linux-headers=5.10.16
+	provides = linux-headers=5.11.1
 	conflicts = linux-headers
 
