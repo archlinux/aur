@@ -1,6 +1,6 @@
 pkgbase = turbovnc
 	pkgdesc = An optimized version of TightVNC
-	pkgver = 2.2.5
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = http://www.turbovnc.org/
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = turbovnc
 	conflicts = tigervnc-svn
 	conflicts = tightvnc
 	replaces = turbovnc-bin
-	source = turbovnc-2.2.5.tar.gz::https://sourceforge.net/projects/turbovnc/files/2.2.5/turbovnc-2.2.5.tar.gz/download
+	source = turbovnc-2.2.6.tar.gz::https://sourceforge.net/projects/turbovnc/files/2.2.6/turbovnc-2.2.6.tar.gz/download
 	source = vncserver.service
-	sha256sums = 821da48c3422e71c5b2cae338058e720078ec74c55c466e5cf90d8e5cc91b2bf
+	sha256sums = 71ff553dbad24f8339e168fe90e09bc2b13c21e453f28276d0e5c9c408bd9de2
 	sha256sums = ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b
 
 pkgname = turbovnc
