@@ -1,6 +1,6 @@
 pkgbase = waffle-git
 	pkgdesc = Library for choosing window system and OpenGL API at runtime (git version)
-	pkgver = 1.5.2.3.r286.gb6d9448
+	pkgver = 1.5.2.3.r287.g0b8e040
 	pkgrel = 1
 	url = http://www.waffle-gl.org
 	arch = x86_64

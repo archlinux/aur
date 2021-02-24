@@ -3,7 +3,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
-pkgver=1.5.2.3.r286.gb6d9448
+pkgver=1.5.2.3.r287.g0b8e040
 pkgrel=1
 pkgdesc='Library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
@@ -26,9 +26,7 @@ pkgver() {
 }
 
 build() {
-  cd $_gitname
-
-  arch-meson build \
+  arch-meson "$_gitname" build \
     --buildtype release \
     -D gbm=enabled \
     -D glx=enabled \
@@ -44,11 +42,8 @@ build() {
 }
 
 package() {
-  cd $_gitname
-
-  DESTDIR="$pkgdir/" ninja -C build install
-  install -m755 -d "$pkgdir"/usr/share/licenses/$pkgname
-  install -m644 "$pkgdir"/usr/share/doc/waffle1/LICENSE.txt \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  DESTDIR="$pkgdir" ninja -C build install
+  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 "$pkgdir/usr/share/doc/waffle1/LICENSE.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-
