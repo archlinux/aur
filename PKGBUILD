@@ -8,6 +8,7 @@ pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netf
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
+makedepends=('python' 'python2')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
 sha512sums=('0fc0c1bf614805ccbf656916c89f175fd2cf26d3acd89c3865615214360953f6a068796280154b5bab5c06bae4b33e1f572ebc0fbff2926cd1af47acc6c86ef2'
