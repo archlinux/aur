@@ -3,7 +3,7 @@
 
 pkgname=rippled
 pkgrel=1
-pkgver=1.6.0
+pkgver=1.7.0
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('x86_64')
 url="https://github.com/ripple/rippled"
@@ -13,7 +13,7 @@ depends=('protobuf' 'boost-libs' 'libarchive')
 makedepends=('git' 'cmake' 'boost' 'clang' 'doxygen')
 source=("$pkgname-$pkgver.zip::https://github.com/ripple/rippled/archive/$pkgver.zip"
         "rippled.service")
-sha256sums=('4956a834bc5a916c15e212b7dc01ade8ccefc405e110d62a9f9ba0576f96a636'
+sha256sums=('6c20b2b3d22fcfeb6adc4da33eb0425afecabbe7deaa3125f7bab479eb5feb79'
             'd2ae0709844499b82fc1def2a30d18428d67adaa6660653362a1053214091c4c')
 
 build() {
