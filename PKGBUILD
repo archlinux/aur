@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='An easy to use game engine/framework for python.'
 arch=('any')
 url="https://pokepetter.github.io/ursina"
-license=('BSD')
+license=('MIT')
 depends=('python-numpy'
                  'panda3d'
                  'python-pillow'
