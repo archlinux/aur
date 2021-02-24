@@ -1,0 +1,17 @@
+pkgbase = lib32-tbb
+	pkgdesc = High level abstract threading library (32-bit)
+	pkgver = 2020.3
+	pkgrel = 1
+	url = https://threadingbuildingblocks.org
+	arch = x86_64
+	license = Apache
+	depends = tbb
+	depends = lib32-gcc-libs
+	provides = lib32-intel-tbb
+	conflicts = lib32-intel-tbb
+	replaces = lib32-intel-tbb
+	source = tbb-2020.3.tar.gz::https://github.com/oneapi-src/oneTBB/archive/v2020.3/lib32-tbb-2020.3.tar.gz
+	sha512sums = ea1ffd22c7234d715b8c46a4e51b40719c7a9b8837ab3166f1da5a2c6061167c2be2126b1d74fd361eec6975b8fce0df26829ca2e7af8029edbb52e40f23d630
+
+pkgname = lib32-tbb
+
