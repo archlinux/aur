@@ -1,7 +1,7 @@
 pkgbase = starnet++-bin
 	pkgdesc = StarNet is a neural network that can remove stars from images in one simple step leaving only background.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/starnet/
 	arch = x86_64
 	license = APACHE
@@ -9,7 +9,7 @@ pkgbase = starnet++-bin
 	source = https://newcontinuum.dl.sourceforge.net/project/starnet/v1.1/StarNet_Linux.tar.gz
 	source = launcher.sh
 	md5sums = 454cfa616bf8ade6a28bf1ada5f27429
-	md5sums = dbf63532bbbdd1d0332307347283a085
+	md5sums = 18f003a03999ae8dd4a65225cab205c7
 
 pkgname = starnet++-bin
 

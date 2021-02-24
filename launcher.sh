@@ -20,6 +20,6 @@ if [ -n "$dst" ] ; then
 fi
 stride=${3:-}
 
-cd /usr/lib/starnet++/
+cd /usr/lib/__PKGNAME__/
 
 ./${color}_starnet++ "$src" "$dst" $stride
