@@ -41,10 +41,3 @@ index 1af88e0..683fc33 100644
  		-- If running in dev mode or standalone mode, put user data in the script path
  		self.userPath = GetScriptPath().."/"
  	else
-@@ -917,4 +917,4 @@ do
- 	end
- end
- 
--return main
-\ No newline at end of file
-+return main
