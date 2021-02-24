@@ -37,5 +37,5 @@ package() {
 	cp -r frontend/{index.html,js} "$TARGET/frontend"
 	chmod +x "$TARGET/main.py"
 	mkdir -p "$pkgdir/usr/bin/"
-	ln -s "$TARGET/main.py" "$pkgdir/usr/bin/process-logger"
+	ln -s "/usr/share/$pkgname/main.py" "$pkgdir/usr/bin/process-logger"
 }
