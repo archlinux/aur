@@ -1,0 +1,13 @@
+pkgbase = assh-bin
+	pkgdesc = make your ssh client smarter
+	pkgver = 2.11.3
+	pkgrel = 1
+	url = https://github.com/moul/assh
+	arch = x86_64
+	license = MIT
+	provides = assh
+	source = https://github.com/moul/assh/releases/download/v2.11.3/assh_linux_amd64
+	sha256sums = cc20837cf3f6cbf461e23815ba075e457162b7b5c5bc50ce7554db699f8b7e49
+
+pkgname = assh-bin
+
