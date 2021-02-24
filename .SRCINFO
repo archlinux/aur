@@ -1,0 +1,13 @@
+pkgbase = gettext-hostname
+	pkgdesc = use gettext's hostname and avoid inetutils
+	pkgver = 2021.02.24.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/gettext-hostname/
+	arch = any
+	license = GPL
+	depends = gettext
+	provides = inetutils
+	conflicts = inetutils
+
+pkgname = gettext-hostname
+
