@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 #XXX: when changing major version (i.e. 1.15 to 1.1X) remeber to updated the occurences in build() and package()
-pkgver=1.15.9
+pkgver=1.15.10
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -41,14 +41,14 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "wesnothd-devel.service"
         "wesnoth-devel.appdata.xml")
 
-md5sums=('2709228549bac1d11ccb0814c2079daa'
-         '719df848ebda176f995051ef9da302c6'
-         '049a22a72074277e53484e3a530d1d69'
-         '251f487241afda73c048b4fb654ceda7'
-         'c5dc8ed0f8ece0b3990bfe367097509c'
-         'd9d4677b083eab179200e34c6dea8899'
-         '93f1afc41c66eb324a45ca26055f1507'
-         'eb0e7466413cd0cdf5ed535146e87f87')
+sha256sums=('e04692d7a48b82a72a25ce895617f248372b01a5675e8356c16d675748a8bc61'
+         '3631b4c1eda6c2099e43272f2a26a8a3e897b9541a395ebeb9a1b8b3753a647d'
+         '196cd09c73c6503b9caef7c47bb61d0243c10e9b15daa6b3aff437f7ad03448a'
+         '98fbd8bafff165c45d0a1eb23a500108e4ce7c8ed32b9abc9bf1c3179e1d3491'
+         'ac69c89e3438d8fd327b5fba013d8eafec61060c5938a3c3baaadb6d85678998'
+         '534097c1d5fcc6b8b54ae04535ed249f8a8f4b000fab39a87a073f54ab89349a'
+         'bbfd14d4c445ca8696ecca8493862d3dd77566b973eb65157f93bd818d161972'
+         '8889c59edd31d2f3d51e2a866034d0515ec0eda5d7cc67743251efaa16d06228')
 
 prepare() {
   cd "$srcdir/wesnoth-$pkgver"
