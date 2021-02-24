@@ -1,15 +1,15 @@
 pkgbase = gitjacker
 	pkgdesc = Leak git repositories from misconfigured websites
-	pkgver = 0.0.2
-	pkgrel = 3
+	pkgver = 0.0.3
+	pkgrel = 1
 	url = https://github.com/liamg/gitjacker
 	arch = x86_64
 	arch = i686
 	license = Unlicense
 	makedepends = go
 	depends = git
-	source = gitjacker-0.0.2.tar.gz::https://github.com/liamg/gitjacker/archive/v0.0.2.tar.gz
-	sha256sums = 429dc9d83921c675cff87f9904c627657df87da7fb61a21ac00c5860828cacad
+	source = gitjacker-0.0.3.tar.gz::https://github.com/liamg/gitjacker/archive/v0.0.3.tar.gz
+	sha256sums = aa5489ceeca425b57edf045c49974a9d27b414da4fcab3bd26c9b5612973b7e5
 
 pkgname = gitjacker
 
