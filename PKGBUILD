@@ -10,7 +10,7 @@ pkgdesc="Dynamic DNS client with support for multiple protocols and services. Co
 arch=('any')
 url="https://pypi.org/project/dyndnsc"
 license=('MIT')
-depends=('python-requests' 'python-setuptools' 'python-netifaces' 'python-dnspython' 'python-daemonocle' 'python-json-logger')
+depends=('python-requests' 'python-setuptools' 'python-netifaces' 'python-dnspython' 'python-daemonocle' 'python-json-logging')
 makedepends=('git' 'python-pip' 'python-wheel')
 provides=('dyndnsc')
 conflicts=('dyndnsc')
@@ -26,7 +26,7 @@ build() {
 
 package() {
     cd "$_pkgbase"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
     # install systemd service file
     install -Dm644 "$srcdir/dyndnsc.service" "$pkgdir/usr/lib/systemd/system/dyndnsc.service"
