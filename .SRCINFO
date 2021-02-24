@@ -1,6 +1,6 @@
 pkgbase = sensible-utils
 	pkgdesc = Utilities for sensible alternative selection
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = http://packages.debian.org/source/sid/sensible-utils
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = sensible-utils
 	checkdepends = ed
 	makedepends = po4a
 	depends = bash
-	source = http://ftp.de.debian.org/debian/pool/main/s/sensible-utils/sensible-utils_0.0.13.tar.xz
-	sha256sums = 8627a530e48066282aa81384dddfb38cf53c8470ae7e633c14d2341418fa6298
+	source = http://ftp.de.debian.org/debian/pool/main/s/sensible-utils/sensible-utils_0.0.14.tar.xz
+	sha256sums = a6ee528bf4122d77acacdb97f20cd0434a12ad3ecd119186a5fcee066844c644
 
 pkgname = sensible-utils
 

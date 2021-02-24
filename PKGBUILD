@@ -1,6 +1,6 @@
-# Maintainer: Pierre Carrier <pierre@gcarrier.fr>
+# Maintainer: Brian BIdulock <bidulock@openss7.org>
 pkgname=sensible-utils
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Utilities for sensible alternative selection"
 arch=('any')
@@ -10,23 +10,26 @@ depends=('bash')
 makedepends=('po4a')
 checkdepends=('ed')
 source=(http://ftp.de.debian.org/debian/pool/main/s/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('8627a530e48066282aa81384dddfb38cf53c8470ae7e633c14d2341418fa6298')
+sha256sums=('a6ee528bf4122d77acacdb97f20cd0434a12ad3ecd119186a5fcee066844c644')
 
 build() {
-  cd $pkgname-$pkgver
+# cd $pkgname-$pkgver
+  cd $pkgname.git
   export -n EDITOR VISUAL
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd $pkgname-$pkgver
+# cd $pkgname-$pkgver
+  cd $pkgname.git
   export -n EDITOR VISUAL
   make -k check
 }
 
 package() {
-  cd $pkgname-$pkgver
+# cd $pkgname-$pkgver
+  cd $pkgname.git
   export -n EDITOR VISUAL
   make DESTDIR="$pkgdir/" install
 }
