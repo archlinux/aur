@@ -106,7 +106,10 @@ check() {
 
     # make sure the binaries that need to be built statically really are
     for binary in snap-exec snap-update-ns snapctl; do
-        LC_ALL=C ldd "$srcdir/go/bin/$binary" 2>&1 | grep -q 'not a dynamic executable'
+        if ! LC_ALL=C ldd "$srcdir/go/bin/$binary" 2>&1 | grep -q 'not a dynamic executable'; then
+            echo "$binary is not a static binary"
+            exit 1
+        fi
     done
 }
 
