@@ -1,7 +1,7 @@
 # Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
-pkgver=1.0.34.gbf7280b5
+pkgver=1.0.40.g9a7fa478
 pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'premake')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=(
-    "git+https://github.com/GTAmodding/re3"
+    "git+https://git.rip/DMCA_FUCKER/re3.git"
     "git+https://github.com/aap/librw.git"
     "git+https://github.com/xiph/ogg.git"
     "git+https://github.com/xiph/opus.git"
@@ -44,7 +44,7 @@ prepare() {
   done
   git submodule update
   patch -uNp1 -i ../crossplatform_fix.patch
-  patch -uNp1 -i ../no_link_with_unnecessary_sndfile.patch
+  #patch -uNp1 -i ../no_link_with_unnecessary_sndfile.patch
 }
 
 build() {
