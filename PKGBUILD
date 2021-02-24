@@ -7,7 +7,7 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.22.r12.g84fc63e6
+pkgver=0.3.22.r46.ge340a44a
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
