@@ -1,0 +1,23 @@
+pkgbase = tint2-minimal-git
+	pkgdesc = Git official release
+	pkgver = 0.12.1.r44.g1f7f197
+	pkgrel = 1
+	url = https://gitlab.com/o9000/tint2
+	install = tint2-minimal-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = gtk2
+	depends = imlib2
+	optdepends = startup-notification: startup notification support
+	optdepends = lxappearance: theme tweaker
+	provides = tint2
+	conflicts = tint2
+	conflicts = tint
+	conflicts = tint2-svn
+	source = git+https://gitlab.com/o9000/tint2.git
+	md5sums = SKIP
+
+pkgname = tint2-minimal-git
+
