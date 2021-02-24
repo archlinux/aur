@@ -8,7 +8,7 @@
 
 pkgname=librewolf-dev-wayland
 _pkgname=Librewolf
-pkgver=87.0b1
+pkgver=87.0b2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.(developer edition)"
 arch=(x86_64 aarch64)
@@ -51,7 +51,7 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 build-arm-libopus.patch)
 
-sha256sums_x86_64=('a3f482ba299779d9b216e6edb64d7a8a9a32d29939c135a6b1840aed458f5dc9'
+sha256sums_x86_64=('9c664f8eb7ec27174db1d45351e254e4ea64b79204d074699fe865135dac9130'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
@@ -59,7 +59,7 @@ sha256sums_x86_64=('a3f482ba299779d9b216e6edb64d7a8a9a32d29939c135a6b1840aed458f
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                    'bdf0dfa80e115e58815f5d668ca957c6cd253f46815391e2f773c6acb68317c7')
-sha256sums_aarch64=('a3f482ba299779d9b216e6edb64d7a8a9a32d29939c135a6b1840aed458f5dc9'
+sha256sums_aarch64=('9c664f8eb7ec27174db1d45351e254e4ea64b79204d074699fe865135dac9130'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
