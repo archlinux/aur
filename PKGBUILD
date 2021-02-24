@@ -3,7 +3,7 @@
 
 pkgbase=pyqt5-3d
 pkgname=(python-pyqt5-3d)
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 pkgdesc="Python bindings for Qt3D"
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=(python-pyqt3d)
 provides=(python-pyqt3d)
 replaces=(python-pyqt3d)
 source=("https://pypi.python.org/packages/source/P/PyQt3D/PyQt3D-$pkgver.tar.gz")
-sha256sums=('26128ee8ed1f0344ba50347af4b9e23c0ba87bc3ae25e2e7c6f145e34d223d1f')
+sha256sums=('e624fcc718f16794fdfceb9206dcab8084cf7a5ac650013ee02303bd6cfd6a46')
 
 build() {
   cd PyQt3D-$pkgver
