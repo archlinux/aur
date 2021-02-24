@@ -1,7 +1,7 @@
 # Maintainer: Kafin <kevinliteon01@hotmail.com>
 
 pkgname=decrediton
-pkgver=1.6.0
+pkgver=1.6.1
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Decrediton is a cross-platform GUI for decred written in node.js using Electron."
@@ -11,7 +11,7 @@ license=('ISC')
 source=("https://github.com/decred/decred-binaries/releases/download/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
         "decred-dcr.svg"
         "${pkgname}.desktop")
-sha256sums=('f0d661a8170226b381cf3d1ae02b83fb4627c9c4eed3deb8f816f72cc5248894'
+sha256sums=('ac8bd550f940250dd90e7eb4236b678f64fa1738db8ce3bd7006c0353c5054c0'
             'a5d4ca6879438bbf02999dbf84f4fb3b0088fbac385f6cbc9722baf1baa7c8aa'
             '5113de3821e1445dc47dc7ea11706614432189d29722f3cd05f5535aed8b6042')
 package() {
