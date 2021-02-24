@@ -1,0 +1,3 @@
+#!/bin/sh
+
+curl -sSL "https://raw.githubusercontent.com/tridactyl/tridactyl/$1/native/current_native_version"

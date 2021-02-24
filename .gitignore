@@ -13,3 +13,6 @@ pkg/
 src/
 
 *.crt
+
+native_main-Linux
+tridactyl.json
