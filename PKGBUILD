@@ -11,6 +11,11 @@ _ispkgbuild="true"
 source "$_where"/customization.cfg # load default configuration from file
 source "$_where"/prepare
 
+if [ -e "$_EXT_CONFIG_PATH" ]; then
+  msg2 "External configuration file $_EXT_CONFIG_PATH will be used and will override customization.cfg values."
+  source "$_EXT_CONFIG_PATH"
+fi
+
 _tkg_initscript
 
 if [[ "$_sub" = rc* ]]; then
@@ -51,8 +56,8 @@ options=('!strip' 'docs')
         "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config.x86_64" # stock Arch config
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config_hardened.x86_64" # hardened Arch config
-        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/90-cleanup.hook"
-        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/cleanup"
+        90-cleanup.hook
+        cleanup
         # ARCH Patches
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         # TkG
@@ -84,8 +89,6 @@ options=('!strip' 'docs')
             'SKIP'
             '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
             'eb1da1a028a1c967222b5bdac1db2b2c4d8285bafd714892f6fc821c10416341'
-            'SKIP'
-            'SKIP'
             '1e15fc2ef3fa770217ecc63a220e5df2ddbcf3295eb4a021171e7edd4c6cc898'
             '66a03c246037451a77b4d448565b1d7e9368270c7d02872fbd0b5d024ed0a997'
             'f6383abef027fd9a430fd33415355e0df492cdc3c90e9938bf2d98f4f63b32e6'
@@ -206,6 +209,13 @@ hackbase() {
 hackheaders() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   provides=("linux-headers=${pkgver}" "${pkgbase}-headers=${pkgver}")
+  case $_basever in
+    54|57|58|59|510)
+    ;;
+    *)
+      depends=('pahole')
+    ;;
+  esac
 
   cd "${srcdir}/${_srcpath}"
   local builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
