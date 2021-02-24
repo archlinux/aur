@@ -9,8 +9,7 @@ url="https://trinity.iota.org/"
 license=('Apache')
 provides=(iota-trinity-wallet)
 options=('!strip')
-depends=('libsecret' 'gtk3' 'libxss' 'nss')
-optdepends=('gnome-keyring: for storing passwords in GNOME keyring')
+depends=('gnome-keyring' 'libsecret' 'gtk3' 'libxss' 'nss')
 
 source_x86_64=("https://github.com/iotaledger/trinity-wallet/releases/download/desktop-$pkgver/trinity-desktop-$pkgver.AppImage"{,.asc})
 sha256sums_x86_64=('65ac26ed2b73492804ec5c5d2a7e76b9bf775142db1c0c2a41ee666e459ea569'
