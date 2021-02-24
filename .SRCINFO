@@ -1,7 +1,7 @@
 pkgbase = worker
 	pkgdesc = A file manager for the X Window System
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.boomerangsworld.de/worker
 	arch = i686
 	arch = x86_64
