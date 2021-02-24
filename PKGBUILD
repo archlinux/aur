@@ -14,11 +14,6 @@ conflicts=(novafetch)
 source=("git+https://github.com/UnversedBlood/novafetch.git")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$_pkgname"
-	printf "0.1.0.r%s%.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
 	cd "$_pkgname"
 	make
