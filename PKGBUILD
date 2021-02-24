@@ -1,7 +1,7 @@
 # Maintainer: Víctor Javier Díaz Garrido <vicdigar at hotmail dot com>
 pkgname=novafetch-git
 _pkgname=novafetch
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Simple tool written in Rust to get information about your pc"
 arch=('x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1)"
+	printf "0.1.0.r%s%.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
