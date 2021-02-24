@@ -1,7 +1,7 @@
 # Contributor: Sebastian Wolf <fatmike303@gmail.com>
 pkgname=advancemame
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial MAME/MESS version with an advanced video support for use with TVs, Arcade monitors, PC monitors and LCD screens. Also includes AdvanceMENU frontend."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.advancemame.it"
@@ -25,6 +25,10 @@ sha256sums=(
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+  # Fix build errors due new gcc 10 default for -fno-common
+  for line in 290 855 856; do
+    sed -i -e "${line}s/^/extern /" src/drivers/cavepgm.c
+  done
   if [ "$CARCH" == 'armv7h' ]; then # Do not link SDL into Raspberry Pi build
     ./configure CFLAGS="-O2 -fno-strict-aliasing -fno-strict-overflow -fsigned-char -fno-stack-protector" --prefix=/usr --disable-sdl --disable-sdl2
   else
