@@ -1,6 +1,6 @@
-pkgbase = gnome-shell-40alfa
+pkgbase = gnome-shell-40
 	pkgdesc = Next generation desktop shell
-	pkgver = 40.alpha.1.1+228+g829a096ba
+	pkgver = 40.alpha.1.1+321+gfcb70ff65
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
@@ -51,5 +51,5 @@ pkgbase = gnome-shell-40alfa
 	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git
 	sha256sums = SKIP
 
-pkgname = gnome-shell-40alfa
+pkgname = gnome-shell-40
 

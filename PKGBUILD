@@ -1,8 +1,8 @@
 # Maintainer: Márcio <marciosr10@gmail.com>
 
-pkgname=gnome-shell-40alfa
+pkgname=gnome-shell-40
 _pkgname=gnome-shell
-pkgver=40.alpha.1.1+228+g829a096ba
+pkgver=40.alpha.1.1+321+gfcb70ff65
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
