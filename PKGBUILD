@@ -3,7 +3,7 @@
 #mindmaster 中文版
 
 pkgname=mindmaster_cn
-pkgver=8.5.1
+pkgver=8.5.2
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
@@ -11,8 +11,8 @@ conflicts=("mindmaster" "mindmaster-cn")
 pkgdesc="多功能，高颜值，易使用的专业思维导图软件"
 license=('Commercial')
 url="https://www.edrawsoft.cn/mindmaster/"
-source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/mindmaster_8.5.1_cn.deb")
-sha256sums_x86_64=("629a0182daa70dbd1d97dd057780f03fd60a8f0445f3c0b50211f3c5c8ed8737")
+source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/mindmaster_8.5.2_cn.x86_64.deb")
+sha256sums_x86_64=("2cda609b477d69fec0bdd8a10a21511f9d1c4fc6cfab2c3789e7cd58c6ff5991")
 
 package() {	
     cd "${pkgdir}"
