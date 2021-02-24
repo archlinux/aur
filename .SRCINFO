@@ -1,0 +1,15 @@
+pkgbase = ruby-hirb
+	pkgdesc = Provides a mini view framework for console applications and uses it to improve ripl(irb)'s default inspect output.
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://tagaholic.me/hirb/
+	arch = any
+	license = MIT
+	makedepends = ruby-rake
+	depends = ruby
+	options = !emptydirs
+	source = ruby-hirb-0.7.3.tar.gz::https://github.com/cldwalker/hirb/archive/v0.7.3.tar.gz
+	sha512sums = 45b0ded2bd4b184b4a07b3b00374a00f1bfdeba64e1a68f0727ffc3f9ee25257114427cd7018fef94f452b1154ad0c5ab48ebdc4f075bee41dcce3824aa33d7f
+
+pkgname = ruby-hirb
+
