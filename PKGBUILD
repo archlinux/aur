@@ -1,29 +1,32 @@
-# Maintainer: zan <zan@420blaze.it>
+# Maintainer: Marc ROGER de CAMPAGNOLLE <fora at mrdc dot fr>
+# Contributor: zan <zan at 420blaze dot it>
 
 pkgname=qt-avif-image-plugin-git
-_name=${pkgname%-git}
-pkgver=r68.6920fe4
+_pkgname=qt-avif-image-plugin
+pkgver=r81.cc58582
 pkgrel=1
-pkgdesc='Qt plug-in to allow Qt and KDE based applications to read/write AVIF images.'
-arch=(x86_64)
-url='https://github.com/novomesk/qt-avif-image-plugin'
-license=(BSD)
-depends=(qt5-base libavif)
-makedepends=(git extra-cmake-modules)
-source=("git+https://github.com/novomesk/qt-avif-image-plugin.git")
+pkgdesc='Qt plug-in to allow Qt and KDE based applications to read/write AVIF images'
+arch=('x86_64')
+url="https://github.com/novomesk/$_pkgname"
+license=('BSD')
+depends=('qt5-base' 'libavif')
+makedepends=(git)
+source=("git+https://github.com/novomesk/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_name
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S $_name
-  cmake --build build
+  cd "$_pkgname"
+  ./build_libqavif_dynamic.sh
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "$srcdir/$_name/LICENSE" "$pkgdir/usr/share/licenses/$_name/LICENSE"
+  cd "$_pkgname"
+  install -Dm755 "$srcdir/$_pkgname/plugins/imageformats/libqavif.so" "$pkgdir/usr/lib/qt/plugins/imageformats/libqavif.so"
+  install -Dm755 -t "$pkgdir/usr/share/kservices5/qimageioplugins/" $srcdir/$_pkgname/share/kservices5/qimageioplugins/*.desktop
+  install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
