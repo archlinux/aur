@@ -1,7 +1,7 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
 arch=('any')
@@ -11,7 +11,7 @@ groups=()
 depends=()
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('nextcloud-app-previewgenerator: pre-generation of previews')
 provides=()
 conflicts=()
 replaces=()
