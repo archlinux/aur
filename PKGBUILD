@@ -1,13 +1,13 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=verthash-miner-bin
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="GPU miner for the Verthash algorithm and Vertcoin"
 arch=('x86_64')
 url="https://github.com/CryptoGraphics/VerthashMiner"
 license=('GPL-3.0')
 source=("https://github.com/CryptoGraphics/VerthashMiner/releases/download/$pkgver/VerthashMiner-$pkgver-CUDA11-linux.tar.gz")
-sha256sums=('a629cf6f229760df342a29829ccf7ca9f717640a50a9eeeddf16bcc7f16b9aba')
+sha256sums=('e451aa55e05a30398728f658d9990caf48b982afc5422d98183dbbde4fd0fa8a')
 provides=('verthash-miner')
 conflicts=('verthash-miner')
 
