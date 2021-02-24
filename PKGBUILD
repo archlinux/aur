@@ -5,7 +5,7 @@
 pkgname=dyndnsc
 _pkgname=python-dyndnsc
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic DNS client with support for multiple protocols and services. Compatible with IPv6 dual stack."
 arch=('any')
 url="https://pypi.org/project/dyndnsc"
