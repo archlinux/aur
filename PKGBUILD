@@ -34,7 +34,7 @@ package() {
 	mkdir -p "$TARGET"
 	cp -r events *.py "$TARGET"
 	mkdir -p "$TARGET/frontend"
-	cp -r frontend/{index.html,js,css} "$TARGET/frontend"
+	cp -r frontend/{index.html,js} "$TARGET/frontend"
 	chmod +x "$TARGET/main.py"
 	mkdir -p "$pkgdir/usr/bin/"
 	ln -s "$TARGET/main.py" "$pkgdir/usr/bin/process-logger"
