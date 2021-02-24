@@ -1,6 +1,6 @@
 pkgbase = plex-media-server-plexpass
 	pkgdesc = The back-end media server component of Plex.
-	pkgver = 1.21.4.4054
+	pkgver = 1.21.4.4079
 	pkgrel = 1
 	url = https://plex.tv/
 	install = plex-media-server.install
@@ -27,14 +27,14 @@ pkgbase = plex-media-server-plexpass
 	sha256sums = c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557
 	sha256sums = b7ff6525a3c7a8be885edc85bb523095f8e25ddb38873127e2a4e97b28f2c7ad
 	sha256sums = 7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a
-	source_x86_64 = https://downloads.plex.tv/plex-media-server-new/1.21.4.4054-bab510e86/redhat/plexmediaserver-1.21.4.4054-bab510e86.x86_64.rpm
-	sha256sums_x86_64 = 4532ddc1dc67fbf94f0952994cd4d14b084fe608d566618507e23787f461f821
-	source_i686 = https://downloads.plex.tv/plex-media-server-new/1.21.4.4054-bab510e86/redhat/plexmediaserver-1.21.4.4054-bab510e86.i686.rpm
-	sha256sums_i686 = 5e019b1136ab22eec29ccad3c88562f6cd36b3eb18e64f05cdaf543fd38de18c
-	source_armv7h = https://downloads.plex.tv/plex-media-server-new/1.21.4.4054-bab510e86/debian/plexmediaserver_1.21.4.4054-bab510e86_armhf.deb
-	sha256sums_armv7h = 4c2559755411e40e86223bb81e3ce40a7a8e8b814eaad9453e4897d47357df56
-	source_aarch64 = https://downloads.plex.tv/plex-media-server-new/1.21.4.4054-bab510e86/debian/plexmediaserver_1.21.4.4054-bab510e86_arm64.deb
-	sha256sums_aarch64 = 9de16983edf5d46a41902662e8b3a1f1e02c911d536910300866770ea34fb0ef
+	source_x86_64 = https://downloads.plex.tv/plex-media-server-new/1.21.4.4079-1b7748a7b/redhat/plexmediaserver-1.21.4.4079-1b7748a7b.x86_64.rpm
+	sha256sums_x86_64 = 2f9a4cf0e83c0fc32b9b3be2077c0b6d4947a5b98651d476b9919e41304e4826
+	source_i686 = https://downloads.plex.tv/plex-media-server-new/1.21.4.4079-1b7748a7b/redhat/plexmediaserver-1.21.4.4079-1b7748a7b.i686.rpm
+	sha256sums_i686 = be19d27b7ed40c2578cd17bfac5bf99fb496db7d1c551d6501dcb29bf4cb33fc
+	source_armv7h = https://downloads.plex.tv/plex-media-server-new/1.21.4.4079-1b7748a7b/debian/plexmediaserver_1.21.4.4079-1b7748a7b_armhf.deb
+	sha256sums_armv7h = 93f5a623e3623babfcd60c3995c03fc66adf6f9db6f7c47250449a83f3d384fd
+	source_aarch64 = https://downloads.plex.tv/plex-media-server-new/1.21.4.4079-1b7748a7b/debian/plexmediaserver_1.21.4.4079-1b7748a7b_arm64.deb
+	sha256sums_aarch64 = ab412aadde6cc13ba04aa16349969542ff980d657bfa21e51668189668d38320
 
 pkgname = plex-media-server-plexpass
 
