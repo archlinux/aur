@@ -27,7 +27,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 replaces=('qt<=4.8.4')
 conflicts=('qt')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("https://download.qt.io/archive/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
+source=("https://ftp.desolve.ru/ftp/viktor/qt4/${_pkgfqn}.tar.gz"
         'qtconfig-qt4.desktop' 'assistant-qt4.desktop' 'designer-qt4.desktop'
         'linguist-qt4.desktop' 'qdbusviewer-qt4.desktop'
         'improve-cups-support.patch'
