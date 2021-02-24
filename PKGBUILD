@@ -13,8 +13,8 @@ depends=(
   'alsa-lib'
   'libglvnd'
   'libx11'
-  'libxcb'
   'libxau'
+  'libxcb'
   'libxdmcp'
 )
 makedepends=('go' 'gendesk')
