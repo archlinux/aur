@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.10.7.arch1
+pkgver=5.10.16.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -22,6 +22,10 @@ source=(
 	"sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch"
 	"sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch" 
 	"sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch"
+	"sys-kernel_arch-sources-g14_files_6006-cpufreq_fix_boost_freq.patch"
+	"sys-kernel_arch-sources-g14_files_6007-HID-asus-Add-support-for-2021-ASUS-N-Key-keyboard.patch"
+	"sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
+	"sys-kernel_arch-sources-g14_files_6009-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,8 +37,11 @@ sha256sums=('SKIP'
             'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
             'e924edb045476201968eb76157a72ddae7dac18932e54f0e3d32eeed98d2b2c6'
             '7c9bff35d0bde9b4250137ea9e5292a103ecbc1fe68a753688541d22be27fa29'
-            'f934eb199172e3a16658eb0c66ee7a0ca37c69a9dd1ee4d20a37f89bd3c53288')
-
+            'f934eb199172e3a16658eb0c66ee7a0ca37c69a9dd1ee4d20a37f89bd3c53288'
+            'a27e273e5cb81deb5a0d5a09d1f596bc821b65825089407ac90ac91eeef698fa'
+            '2edfb8dbb0fe7202191c51a5f645559c5da9f800e8aad2f8a4fd2731092138ff'
+            'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
+            'eec1d016c5f53f1d808701b6c038db2e73a61310713f859d99bf97b9c793cefe')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

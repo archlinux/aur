@@ -1,0 +1,150 @@
+diff --git a/drivers/cpufreq/acpi-cpufreq.c b/drivers/cpufreq/acpi-cpufreq.c
+index 1e4fbb002a31..a5facc6cad16 100644
+--- a/drivers/cpufreq/acpi-cpufreq.c
++++ b/drivers/cpufreq/acpi-cpufreq.c
+@@ -26,6 +26,7 @@
+ #include <linux/uaccess.h>
+ 
+ #include <acpi/processor.h>
++#include <acpi/cppc_acpi.h>
+ 
+ #include <asm/msr.h>
+ #include <asm/processor.h>
+@@ -628,11 +629,57 @@ static int acpi_cpufreq_blacklist(struct cpuinfo_x86 *c)
+ }
+ #endif
+ 
++#ifdef CONFIG_ACPI_CPPC_LIB
++static bool amd_max_boost(unsigned int max_freq,
++			  unsigned int *max_boost)
++{
++	struct cppc_perf_caps perf_caps;
++	u64 highest_perf, nominal_perf, perf_ratio;
++	int ret;
++
++	ret = cppc_get_perf_caps(0, &perf_caps);
++	if (ret) {
++		pr_debug("Could not retrieve perf counters (%d)\n", ret);
++		return false;
++	}
++
++	highest_perf = perf_caps.highest_perf;
++	nominal_perf = perf_caps.nominal_perf;
++
++	if (!highest_perf || !nominal_perf) {
++		pr_debug("Could not retrieve highest or nominal performance\n");
++		return false;
++	}
++
++	perf_ratio = div_u64(highest_perf * SCHED_CAPACITY_SCALE, nominal_perf);
++	if (perf_ratio <= SCHED_CAPACITY_SCALE) {
++		pr_debug("Either perf_ratio is 0, or nominal >= highest performance\n");
++		return false;
++	}
++
++	*max_boost = max_freq * perf_ratio >> SCHED_CAPACITY_SHIFT;
++	if (!*max_boost) {
++		pr_debug("max_boost seems to be zero\n");
++		return false;
++	}
++
++	return true;
++}
++#else
++static bool amd_max_boost(unsigned int max_freq,
++			  unsigned int *max_boost)
++{
++	return false;
++}
++#endif
++
+ static int acpi_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ {
+ 	unsigned int i;
+ 	unsigned int valid_states = 0;
+ 	unsigned int cpu = policy->cpu;
++	unsigned int freq, max_freq = 0;
++	unsigned int max_boost;
+ 	struct acpi_cpufreq_data *data;
+ 	unsigned int result = 0;
+ 	struct cpuinfo_x86 *c = &cpu_data(policy->cpu);
+@@ -779,15 +826,25 @@ static int acpi_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 		    freq_table[valid_states-1].frequency / 1000)
+ 			continue;
+ 
++		freq = perf->states[i].core_frequency * 1000;
+ 		freq_table[valid_states].driver_data = i;
+-		freq_table[valid_states].frequency =
+-		    perf->states[i].core_frequency * 1000;
++		freq_table[valid_states].frequency = freq;
++
++		if (freq > max_freq)
++			max_freq = freq;
++
+ 		valid_states++;
+ 	}
+ 	freq_table[valid_states].frequency = CPUFREQ_TABLE_END;
+ 	policy->freq_table = freq_table;
+ 	perf->state = 0;
+ 
++	if (boot_cpu_data.x86_vendor == X86_VENDOR_AMD &&
++	    amd_max_boost(max_freq, &max_boost)) {
++		policy->cpuinfo.max_boost = max_boost;
++		static_branch_enable(&cpufreq_amd_max_boost);
++	}
++
+ 	switch (perf->control_register.space_id) {
+ 	case ACPI_ADR_SPACE_SYSTEM_IO:
+ 		/*
+diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
+index d0a3525ce27f..b96677f6b57e 100644
+--- a/drivers/cpufreq/cpufreq.c
++++ b/drivers/cpufreq/cpufreq.c
+@@ -2721,6 +2721,9 @@ int cpufreq_boost_enabled(void)
+ }
+ EXPORT_SYMBOL_GPL(cpufreq_boost_enabled);
+ 
++DEFINE_STATIC_KEY_FALSE(cpufreq_amd_max_boost);
++EXPORT_SYMBOL_GPL(cpufreq_amd_max_boost);
++
+ /*********************************************************************
+  *               REGISTER / UNREGISTER CPUFREQ DRIVER                *
+  *********************************************************************/
+diff --git a/include/linux/cpufreq.h b/include/linux/cpufreq.h
+index 9c8b7437b6cd..341cac76d254 100644
+--- a/include/linux/cpufreq.h
++++ b/include/linux/cpufreq.h
+@@ -40,9 +40,14 @@ enum cpufreq_table_sorting {
+ 	CPUFREQ_TABLE_SORTED_DESCENDING
+ };
+ 
++DECLARE_STATIC_KEY_FALSE(cpufreq_amd_max_boost);
++
++#define cpufreq_driver_has_max_boost() static_branch_unlikely(&cpufreq_amd_max_boost)
++
+ struct cpufreq_cpuinfo {
+ 	unsigned int		max_freq;
+ 	unsigned int		min_freq;
++	unsigned int		max_boost;
+ 
+ 	/* in 10^(-9) s = nanoseconds */
+ 	unsigned int		transition_latency;
+diff --git a/kernel/sched/cpufreq_schedutil.c b/kernel/sched/cpufreq_schedutil.c
+index 6931f0cdeb80..541f3db3f576 100644
+--- a/kernel/sched/cpufreq_schedutil.c
++++ b/kernel/sched/cpufreq_schedutil.c
+@@ -159,8 +159,12 @@ static unsigned int get_next_freq(struct sugov_policy *sg_policy,
+ 				  unsigned long util, unsigned long max)
+ {
+ 	struct cpufreq_policy *policy = sg_policy->policy;
+-	unsigned int freq = arch_scale_freq_invariant() ?
+-				policy->cpuinfo.max_freq : policy->cur;
++	unsigned int freq, max_freq;
++
++	max_freq = cpufreq_driver_has_max_boost() ?
++			policy->cpuinfo.max_boost : policy->cpuinfo.max_freq;
++
++	freq = arch_scale_freq_invariant() ? max_freq : policy->cur;
+ 
+ 	freq = map_util_freq(util, freq, max);
+ 

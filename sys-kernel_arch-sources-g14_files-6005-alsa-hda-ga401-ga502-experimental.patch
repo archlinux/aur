@@ -1,30 +1,31 @@
---- a/sound/pci/hda/patch_realtek.c	2020-10-10 19:26:27.026289289 +0200
-+++ b/sound/pci/hda/patch_realtek.c	2020-10-10 19:28:24.502830780 +0200
-@@ -6235,7 +6235,9 @@
+diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
+index 8616c5624870..f0d08502e7ee 100644
+--- a/sound/pci/hda/patch_realtek.c
++++ b/sound/pci/hda/patch_realtek.c
+@@ -6349,6 +6349,8 @@ enum {
  	ALC269VC_FIXUP_ACER_HEADSET_MIC,
  	ALC269VC_FIXUP_ACER_MIC_NO_PRESENCE,
  	ALC289_FIXUP_ASUS_GA401,
--	ALC289_FIXUP_ASUS_GA502,
 +	ALC289_FIXUP_ASUS_GA401_SPK,
 +	ALC289_FIXUP_ASUS_GA401_HP_MIC,
-+	ALC294_FIXUP_ASUS_GA502,
+ 	ALC289_FIXUP_ASUS_GA502,
  	ALC256_FIXUP_ACER_MIC_NO_PRESENCE,
  	ALC285_FIXUP_HP_GPIO_AMP_INIT,
- 	ALC269_FIXUP_CZC_B20,
-@@ -7496,14 +7498,33 @@
+@@ -7616,14 +7618,34 @@ static const struct hda_fixup alc269_fixups[] = {
+ 	},
  	[ALC289_FIXUP_ASUS_GA401] = {
- 		.type = HDA_FIXUP_PINS,
- 		.v.pins = (const struct hda_pintbl[]) {
--			{ 0x19, 0x03a11020 }, /* headset mic with jack detect */
+ 		.type = HDA_FIXUP_FUNC,
+-		.v.func = alc289_fixup_asus_ga401,
++		.v.pins = (const struct hda_pintbl[]) {
 +			{ 0x17, 0x90170130 }, /* bass speaker */
 +			{ 0x19, 0x03a11050 }, /* headphone mic with jack detect */
 +			{ 0x21, 0x03211430 }, /* headphone playback */
- 			{ }
- 		},
-+		.chained = true,
-+		.chain_id = ALC289_FIXUP_ASUS_GA401_SPK
- 	},
--	[ALC289_FIXUP_ASUS_GA502] = {
++			{ }
++ 		},
+ 		.chained = true,
+-		.chain_id = ALC289_FIXUP_ASUS_GA502,
++		.chain_id = ALC289_FIXUP_ASUS_GA401_SPK,
++	},
 +	[ALC289_FIXUP_ASUS_GA401_SPK] = {
 +		.type = HDA_FIXUP_FUNC,
 +		.v.func = alc295_fixup_disable_dac3,
@@ -39,8 +40,8 @@
 +			{ 0x20, AC_VERB_SET_PROC_COEF, 0x5289 },
 +			{ }
 +		},
-+	},
-+	[ALC294_FIXUP_ASUS_GA502] = {
+ 	},
+ 	[ALC289_FIXUP_ASUS_GA502] = {
  		.type = HDA_FIXUP_PINS,
  		.v.pins = (const struct hda_pintbl[]) {
 -			{ 0x19, 0x03a11020 }, /* headset mic with jack detect */
@@ -48,13 +49,12 @@
  			{ }
  		},
  	},
-@@ -7889,7 +7908,7 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
+@@ -7978,7 +8000,7 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
  	SND_PCI_QUIRK(0x1043, 0x1c23, "Asus X55U", ALC269_FIXUP_LIMIT_INT_MIC_BOOST),
  	SND_PCI_QUIRK(0x1043, 0x1ccd, "ASUS X555UB", ALC256_FIXUP_ASUS_MIC),
  	SND_PCI_QUIRK(0x1043, 0x1d4e, "ASUS TM420", ALC256_FIXUP_ASUS_HPE),
 -	SND_PCI_QUIRK(0x1043, 0x1e11, "ASUS Zephyrus G15", ALC289_FIXUP_ASUS_GA502),
-+	SND_PCI_QUIRK(0x1043, 0x1e11, "ASUS Zephyrus G15", ALC294_FIXUP_ASUS_GA502),
++	SND_PCI_QUIRK(0x1043, 0x1e11, "ASUS Zephyrus G15", ALC289_FIXUP_ASUS_GA502),
  	SND_PCI_QUIRK(0x1043, 0x1f11, "ASUS Zephyrus G14", ALC289_FIXUP_ASUS_GA401),
  	SND_PCI_QUIRK(0x1043, 0x1881, "ASUS Zephyrus S/M", ALC294_FIXUP_ASUS_GX502_PINS),
  	SND_PCI_QUIRK(0x1043, 0x3030, "ASUS ZN270IE", ALC256_FIXUP_ASUS_AIO_GPIO2),
-

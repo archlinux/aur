@@ -1,0 +1,107 @@
+From 9a8bf4421fd85356e7f200f720b109f70860c219 Mon Sep 17 00:00:00 2001
+From: Luke D Jones <luke@ljones.dev>
+Date: Fri, 19 Feb 2021 16:28:47 +1300
+Subject: [PATCH] WMI: asus: Reduce G14 and G15 match to min product name
+
+This patch reduces the product match for GA401 series laptops to
+the minimum string required.
+
+The GA401 series of laptops has a lengthy list of product
+variations in the 2020 series and the 2021 series refresh
+is using the same base product ID of GA401.
+
+The same is also true for the GA502 series, and the new GA503
+series which is added in this patch as a variant of the G15.
+
+Signed-off-by: Luke D Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-nb-wmi.c | 57 ++++--------------------------
+ 1 file changed, 6 insertions(+), 51 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-nb-wmi.c b/drivers/platform/x86/asus-nb-wmi.c
+index d41d7ad14be0..f4db67c3eba2 100644
+--- a/drivers/platform/x86/asus-nb-wmi.c
++++ b/drivers/platform/x86/asus-nb-wmi.c
+@@ -427,73 +427,28 @@ static const struct dmi_system_id asus_quirks[] = {
+ 	},
+ 	{
+ 		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA401IH",
++		.ident = "ASUSTeK COMPUTER INC. GA401",
+ 		.matches = {
+ 			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IH"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA401"),
+ 		},
+ 		.driver_data = &quirk_asus_vendor_backlight,
+ 	},
+ 	{
+ 		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA401II",
++		.ident = "ASUSTeK COMPUTER INC. GA502",
+ 		.matches = {
+ 			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA401II"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA502"),
+ 		},
+ 		.driver_data = &quirk_asus_vendor_backlight,
+ 	},
+ 	{
+ 		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA401IU",
++		.ident = "ASUSTeK COMPUTER INC. GA503",
+ 		.matches = {
+ 			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IU"),
+-		},
+-		.driver_data = &quirk_asus_vendor_backlight,
+-	},
+-	{
+-		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA401IV",
+-		.matches = {
+-			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IV"),
+-		},
+-		.driver_data = &quirk_asus_vendor_backlight,
+-	},
+-	{
+-		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA401IVC",
+-		.matches = {
+-			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IVC"),
+-		},
+-		.driver_data = &quirk_asus_vendor_backlight,
+-	},
+-		{
+-		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA502II",
+-		.matches = {
+-			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA502II"),
+-		},
+-		.driver_data = &quirk_asus_vendor_backlight,
+-	},
+-	{
+-		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA502IU",
+-		.matches = {
+-			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA502IU"),
+-		},
+-		.driver_data = &quirk_asus_vendor_backlight,
+-	},
+-	{
+-		.callback = dmi_matched,
+-		.ident = "ASUSTeK COMPUTER INC. GA502IV",
+-		.matches = {
+-			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+-			DMI_MATCH(DMI_PRODUCT_NAME, "GA502IV"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA503"),
+ 		},
+ 		.driver_data = &quirk_asus_vendor_backlight,
+ 	},
+-- 
+2.30.1
+
