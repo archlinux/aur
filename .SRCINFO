@@ -1,0 +1,14 @@
+pkgbase = process-logger
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ITAnalyst-JU/process-logger
+	arch = any
+	license = unknown
+	makedepends = npm
+	depends = python-websockets
+	depends = strace
+	source = process-logger-master.zip::https://github.com/ITAnalyst-JU/process-logger/archive/master.zip
+	md5sums = SKIP
+
+pkgname = process-logger
+
