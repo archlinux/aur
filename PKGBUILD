@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
 pkgver=r396.1f61357
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
@@ -17,7 +17,7 @@ source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.
 sha256sums=('SKIP'
             '356dc03a6119adc088f3feacc0a7d7f52d2f569e6189b12263b9baf69a47a1d3'
             '120c85c212ec57c1365e3e94f9d38ba9a5d9bd57e76692733e7cd8fe167afff0'
-            'd3f13fd0f7d69dd056298b23efe2f020fba0d30f8fc4f11c13c28eec494b52e5'
+            'b733fc3f697f25299720f06bbc10bb6e747609005e7e8f8510a42ed19a7aacc6'
             'caa868a447ab94bd3e5f86cdf70e5deeb17b233077d94a424a682dfe49349a96')
 
 pkgver() {
