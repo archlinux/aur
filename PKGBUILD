@@ -6,13 +6,17 @@
 _pkgbasename=waffle
 pkgname=lib32-${_pkgbasename}
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
 license=('BSD')
-depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' "${_pkgbasename}=${pkgver}")
-makedepends=('meson' 'xcb-proto' 'lib32-mesa-libgl' 'lib32-mesa' 'gcc-multilib')
+
+depends=('lib32-libx11' 'lib32-libxcb' 'lib32-systemd' 'lib32-libgl' 'lib32-libgles' "${_pkgbasename}=${pkgver}")
+optdepends=('lib32-libegl: for gbm, surfaceless, x11_egl or wayland support'
+            'lib32-mesa: for gbm support'
+            'lib32-wayland: for wayland support')
+makedepends=('meson' 'xcb-proto' 'lib32-mesa' 'gcc-multilib' 'cmake')
 
 source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
 sha256sums=('41ff9e042497e482c7294e210ebd9962e937631829a548e5811c637337cec5a5'
