@@ -1,11 +1,11 @@
 pkgbase = ameba
 	pkgdesc = A static code analysis tool for Crystal
-	pkgver = 0.13.3
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/crystal-ameba/ameba
 	arch = x86_64
 	license = MIT
-	makedepends = crystal>=0.29.0
+	makedepends = crystal>=0.35.0
 	makedepends = shards
 	depends = gc
 	depends = gcc-libs
@@ -13,8 +13,8 @@ pkgbase = ameba
 	depends = libyaml
 	depends = make
 	depends = pcre
-	source = https://github.com/crystal-ameba/ameba/archive/v0.13.3.tar.gz
-	sha256sums = e725aa45a701b6f89409a69742ac0c17b9d15af0743b3be013ff1b6b82d685a2
+	source = https://github.com/crystal-ameba/ameba/archive/v0.14.0.tar.gz
+	sha256sums = 1f2a8808874524306aa0189683e94424e6fcc95ef8dd4535a5df192c3a92ae8b
 
 pkgname = ameba
 
