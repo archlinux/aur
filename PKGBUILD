@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.8.2.r0.g8dbce4b
+pkgver=3.8.2.r3.g3bfa3ad
 pkgrel=1
 pkgdesc="A lightweight YouTube client for Linux (CLI/GTK)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'perl-module-build')
 provides=('youtube-viewer' 'youtube-viewer-git')
 conflicts=('youtube-viewer' 'youtube-viewer-git')
 
-depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'perl-gtk3' 'perl-file-sharedir')
+depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'perl-gtk3' 'perl-file-sharedir' 'perl-unicode-linebreak')
 
 optdepends=(
     'ffmpeg: conversions and MKV merging'
@@ -21,7 +21,6 @@ optdepends=(
     'perl-json-xs: faster JSON parsing'
     'perl-lwp-useragent-cached: local cache support'
     'perl-term-readline-gnu: better STDIN support'
-    'perl-unicode-linebreak: print results in a fixed-width format (-W)'
     'mpv: play videos with MPV (recommended)'
     'smplayer: play videos with SMPlayer'
     'vlc: play videos with VLC'
