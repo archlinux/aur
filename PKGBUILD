@@ -3,7 +3,7 @@
 
 pkgbase=pyqt5-purchasing
 pkgname=(python-pyqt5-purchasing)
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 pkgdesc="Python bindings for QtPurchasing"
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=(python-pyqtpurchasing)
 provides=(python-pyqtpurchasing)
 replaces=(python-pyqtpurchasing)
 source=("https://pypi.python.org/packages/source/P/PyQtPurchasing/PyQtPurchasing-$pkgver.tar.gz")
-sha256sums=('721e3f2b7bfe028d7e3210c97a75beb36961ad80e5cc25434abfb59d6e82ab88')
+sha256sums=('3d73410cb302ce7ec5975ceeb4a006fbc23a316d357aa1420c9955acda85ba50')
 
 build() {
   cd PyQtPurchasing-$pkgver
