@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          gst-plugin-pipewire-full-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git
          pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
-pkgver=0.3.22.r12.g84fc63e6
+pkgver=0.3.22.r46.ge340a44a
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -168,7 +168,7 @@ package_gst-plugin-pipewire-full-git() {
 
 package_pipewire-full-vulkan-git() {
   pkgdesc="Vulkan SPA plugin"
-  depends=(vulkan-icd-loader)
+  depends=(pipewire-full-git vulkan-icd-loader)
   provides=(pipewire-vulkan)
   conflicts=(pipewire-vulkan)
   mv vulkan/* "${pkgdir}"
@@ -176,7 +176,7 @@ package_pipewire-full-vulkan-git() {
 
 package_pipewire-full-ffmpeg-git() {
   pkgdesc="FFmpeg SPA plugin"
-  depends=(libavcodec.so libavformat.so)
+  depends=(pipewire-full-git libavcodec.so libavformat.so)
   provides=(pipewire-ffmpeg)
   conflicts=(pipewire-ffmpeg)
   mv ffmpeg/* "${pkgdir}"

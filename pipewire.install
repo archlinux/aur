@@ -1,14 +1,20 @@
 post_install() {
   # Enable socket by default
   systemctl --global enable pipewire.socket
+  systemctl --global enable pipewire-media-session.service
 }
 
 post_upgrade() {
   if (( $(vercmp $2 0.1.6-2) < 0)); then
     systemctl --global enable pipewire.socket
   fi
+
+  if (( $(vercmp $2 0.3.22.r46.ge340a44a-2) < 0)); then
+    systemctl --global enable pipewire-media-session.service
+  fi
 }
 
 pre_remove() {
   systemctl --global disable pipewire.socket
+  systemctl --global disable pipewire-media-session.service
 }
