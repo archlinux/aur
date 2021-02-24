@@ -2,7 +2,7 @@
 pkgname=paru-bin
 pkgver=1.3.0
 pkgrel=1
-pkgdesc='AUR helper based on yay'
+pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
 source_x86_64=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru-v$pkgver-x86_64.tar.zst")
 source_aarch64=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru-v$pkgver-aarch64.tar.zst")
