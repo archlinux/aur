@@ -1,5 +1,5 @@
 pkgbase = novafetch-git
-	pkgdesc = Simple tool to get information about your pc
+	pkgdesc = Simple tool written in Rust to get information about your pc
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/UnversedBlood/novafetch

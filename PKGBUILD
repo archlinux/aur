@@ -1,9 +1,9 @@
 # Maintainer: Víctor Javier Díaz Garrido <vicdigar at hotmail dot com>
 pkgname=novafetch-git
 _pkgname=novafetch
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Simple tool to get information about your pc"
+pkgdesc="Simple tool written in Rust to get information about your pc"
 arch=('x86_64')
 url="https://github.com/UnversedBlood/novafetch"
 license=('GPL3')
