@@ -47,6 +47,7 @@ pkgbase = upbge-git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = embree.patch
+	source = SelectCudaComputeArch.patch
 	source = upbge.desktop
 	md5sums = SKIP
 	md5sums = SKIP
@@ -54,6 +55,7 @@ pkgbase = upbge-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 1cd3132ec4e15df823d336529f5d1d6f
+	md5sums = 4441d9a6db38b85b7dc5c3c9e6872951
 	md5sums = 37ce92c740691f858156511e22b40143
 
 pkgname = upbge-git

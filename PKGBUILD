@@ -7,7 +7,7 @@ pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
 url="https://upbge.org/"
 depends=('embree' 'alembic' 'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme' 'openjpeg'
-		 'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-git' 'openimageio-qfix' 
+		 'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-git' 'openimageio-qfix'
 		 'opencolorio-git' 'opencolorio-qfix' 'potrace' 'openshadinglanguage-qfix'
 		 'openvdb' 'opencollada' 'opensubdiv' 'libtiff' 'libpng' 'python-numpy')
 optdepends=('cuda: CUDA support in Cycles'
@@ -29,6 +29,7 @@ source=('git://github.com/UPBGE/upbge.git' \
 	'blender-translations.git::git://git.blender.org/blender-translations.git' \
 	'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
 	embree.patch \
+	SelectCudaComputeArch.patch \
 	upbge.desktop)
 md5sums=(
 	'SKIP' 
@@ -37,13 +38,21 @@ md5sums=(
 	'SKIP' 
 	'SKIP' 
 	'1cd3132ec4e15df823d336529f5d1d6f'
+	'4441d9a6db38b85b7dc5c3c9e6872951'
 	'37ce92c740691f858156511e22b40143')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
 if [ "$_CUDA_PKG" != "" ]; then
-	_EXTRAOPTS="-DWITH_CYCLES_CUDA_BINARIES=ON \
+	_EXTRAOPTS="$_EXTRAOPTS \
+		-DWITH_CYCLES_CUDA_BINARIES=ON \
 		-DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
+
+	[ -f "/usr/lib/ccache/bin/nvcc-ccache" ] && export CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache
+
+	if _cuda_gcc=$(basename "$(readlink /opt/cuda/bin/gcc)") ; then
+		[ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && export CUDAHOSTCXX=/usr/lib/ccache/bin/"$_cuda_gcc"
+	fi
 fi
 
 # check for optix
@@ -81,6 +90,10 @@ prepare() {
 	git submodule update --init --recursive --remote --depth=1
 	git submodule foreach git checkout master
 	git submodule foreach git pull --rebase --depth=1
+
+	if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
+		git -C "$srcdir/upbge" apply -v "${srcdir}"/SelectCudaComputeArch.patch
+	fi
 
 	if [ "$_EMBREE_PKG" != "" ]; then
 		git apply -v "${srcdir}"/embree.patch
