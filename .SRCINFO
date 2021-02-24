@@ -1,6 +1,6 @@
 pkgbase = librewolf-wayland-hg
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)
-	pkgver = 88.0a1.r635306.b898442a9527+
+	pkgver = r635306.b898442a9527
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64

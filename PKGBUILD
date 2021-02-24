@@ -8,7 +8,7 @@
 
 pkgname=librewolf-wayland-hg
 _pkgname=librewolf-nightly
-pkgver=88.0a1.r635306.b898442a9527+
+pkgver=r635306.b898442a9527
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 aarch64)
@@ -74,7 +74,7 @@ sha512sums_aarch64=('SKIP'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
 pkgver() {
   cd mozilla-unified
-  printf "88.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
