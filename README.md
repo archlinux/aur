@@ -1,6 +1,6 @@
 # percona-server-mongodb-bin
 
-AUR PKGBUILD for Percona's distribution of MongoDB. See
+AUR PKGBUILD for Percona's distribution of MongoDB.
 
 ## Installation
 
