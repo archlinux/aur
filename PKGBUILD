@@ -1,6 +1,6 @@
 # Maintainer: KoNicks <konicksdev@gmail.com>
 pkgname=koffe
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 epoch=
 pkgdesc="simple tool for creating easy to use and offline-friendly arch installers with aur support"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=('koffe.tar.gz')
 noextract=()
-md5sums=('ff2a5e290c5f0cc04866975d937c67c3')
+md5sums=('30498a7f4d56375f27ac8038fbe3767b')
 validpgpkeys=()
 
 package() {
