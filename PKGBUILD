@@ -4,7 +4,7 @@
 # Contributor: David Rubio <david.alejandro.rubio at gmail.com>
 
 pkgname=electron-ozone
-pkgver=11.2.3
+pkgver=11.4.0
 provides=('electron')
 conflicts=('electron')
 _commit=805e442ff873e10735a1ea18021f491597afa885
@@ -16,7 +16,7 @@ url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'minizip'
          'nss' 'snappy' 'openh264')
-makedepends=('git' 'gn<0.1865' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
+makedepends=('git' 'gn-m87' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
              'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'yarn'
              'python2' 'wget' 'yasm' 'python2-setuptools' 'libpipewire02' 'nodejs'
              'clang')
@@ -201,7 +201,7 @@ build() {
     _flags+=('symbol_level=1')
   fi
 
-  gn gen out/Release \
+  gn-m87 gen out/Release \
       --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}" \
       --script-executable=/usr/bin/python2
   ninja -C out/Release electron
