@@ -1,12 +1,12 @@
-# Maintainer: Jerry Xiao <aur@mail.jerryxiao.cc>
 # Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: Jerry Xiao <aur@mail.jerryxiao.cc>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=15
+pkgrel=16
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -14,24 +14,20 @@ makedepends=("nvidia-340xx-utils=${pkgver}" 'linux>=5.5' 'linux-headers>=5.5')
 conflicts=('nvidia')
 license=('custom')
 options=(!strip)
-_us='https://raw.githubusercontent.com/warpme/minimyth2/master/script/nvidia/nvidia-340.108/files'
+# https://github.com/warpme/minimyth2/tree/master/script/nvidia/nvidia-340.108/files
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-  1001.patch::$_us/nvidia-340.108-fix-5.6-kernel-compile.patch
-  1002.patch::$_us/nvidia-340.108-5.7-kernel-reinstate-legacy-support.patch
-  1003.patch::$_us/nvidia-340.108-fix-5.7-kernel-compile.patch
-  1004.patch::$_us/nvidia-340.108-fix-5.8-kernel-compile.patch
-  1005.patch::$_us/nvidia-340.108-fix-5.9-kernel-compile.patch
-  1006.patch::$_us/nvidia-340.108-fix-5.10-kernel-compile.patch
-  1007.patch::${_us/warpme/graysky2/}/nvidia-340.108-fix-5.11-kernel-compile.patch
+  0001-kernel-5.7.patch
+  0002-kernel-5.8.patch
+  0003-kernel-5.9.patch
+  0004-kernel-5.10.patch
+  0005-kernel-5.11.patch
 )
 b2sums=('6538bbec53b10f8d20977f9b462052625742e9709ef06e24cf2e55de5d0c55f1620a4bb21396cfd89ebc54c32f921ea17e3e47eaa95abcbc24ecbd144fb89028'
-        'ffb860a2d4477e7b050b983833e01d08dbaa944f81165bf8bfa5f0746abbdc80328bc5846227d572050a9db90de423538bc47446c616aa32b2fb919d28aa9a37'
-        '804d20661330485f2d5aa75839ff2e8b6a47dff32d49d84a29bb52578441952fbe76e2db36c6e8c6a12f93f2945a28ef5c44398b912a2fe03aa6efaee9120b18'
-        '8da3df49fa57e781be3f8a4c8b6d8c13e52a9eb9970c85658f503d9fbf47383eebb439a8d20d1cc79eff822b856a15ce4f7a5f0c97ddeb14bb2c26e74454f7b5'
-        '784ffa566db853797e9b1d5bc92ec24e8d44b0027b02def4f88b9a3c5a65a7ae392888c93a36f81d9b9b03137ae445c2337008867fd595f8a8c6b4471111723e'
-        'cb2521375317a368d7a5b4766071d0dfb09f359f7521f769e581b083540bfcbaab18f2d1b308d4e668841ef15dbeebcf0495b3cbaa2c9ee1a8b6a35308206e6e'
-        '74eb8f62aa973e58d818ad1c0102a3f914288c210ab117bea568481dbcf944b509b3dce3425f95f7a83b1838d0409497a270aec4509a3112617fe998b19ba410'
-        '6852fcfbf1362f0f2ce13f6e07065212b6d8bc27c79781eeea8fe3e678d7127355425a066595ac1550a85ee52dc2963f944c73a636153c6be0ff89e13c348838')
+        '7150233df867a55f57aa5e798b9c7618329d98459fecc35c4acfad2e9772236cb229703c4fa072381c509279d0588173d65f46297231f4d3bfc65a1ef52e65b1'
+        'b436095b89d6e294995651a3680ff18b5af5e91582c3f1ec9b7b63be9282497f54f9bf9be3997a5af30eec9b8548f25ec5235d969ac00a667a9cddece63d8896'
+        '947cb1f149b2db9c3c4f973f285d389790f73fc8c8a6865fc5b78d6a782f49513aa565de5c82a81c07515f1164e0e222d26c8212a14cf016e387bcc523e3fcb1'
+        '665bf0e1fa22119592e7c75ff40f265e919955f228a3e3e3ebd76e9dffa5226bece5eb032922eb2c009572b31b28e80cd89656f5d0a4ad592277edd98967e68f'
+        'bbea70e129f5a51a06a0c341f731be360f39f6b31a88df39e97c2d8f2daa87dd6c4b3a8becc57f25ad2a26ad567c69208546d907e7334c320796c4140fc78a15')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
@@ -48,7 +44,7 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ $src = 1*.patch ]] || continue
+    [[ $src = 0*.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
