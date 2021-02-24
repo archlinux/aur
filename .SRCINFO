@@ -1,0 +1,16 @@
+pkgbase = vim-auto-pairs-git
+	pkgdesc = Vim plugin, insert or delete brackets, parens, quotes in pair
+	pkgver = 2.0.0.r3.g39f06b8
+	pkgrel = 1
+	url = https://github.com/jiangmiao/auto-pairs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-auto-pairs
+	conflicts = vim-auto-pairs
+	source = vim-auto-pairs::git+https://github.com/jiangmiao/auto-pairs.git
+	md5sums = SKIP
+
+pkgname = vim-auto-pairs-git
+
