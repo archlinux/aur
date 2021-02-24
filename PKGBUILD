@@ -3,7 +3,7 @@
 
 _gemname=rmagick
 pkgname=ruby-rmagick
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="RMagick is an interface between the Ruby programming language and the ImageMagick image processing library"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('ruby' 'imagemagick')
 optdepends=('libmagick6: for ImageMagick 6 support')
 source=("https://rubygems.org/downloads/rmagick-$pkgver.gem")
-sha256sums=('b520b899374ce4cf06e8ad28a8e6d971cf516b67b7647b95dda063c52babe577')
+sha256sums=('dca3355a3536ade4c2c4f64116b1dd743a9d73481fb0b34ce7b571c75fd95011')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
