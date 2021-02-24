@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.35.0
+pkgver=2.35.1
 pkgrel=1
-pkgdesc='Quick little text editor limited by VT100'
+pkgdesc='Quick little editor limited by VT100'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=2d941e0b13188018b0857874ce583303660f3cda") # tag: 2.35.0
+source=("git+$url#commit=ca172718ee818ffc942b4c37286243f631320e56") # tag: 2.35.1
 optdepends=('cxx: for compiling C++'
             'brittany: for formatting Haskell'
             'clang: for formatting C++ code with clang-format'
@@ -17,6 +17,7 @@ optdepends=('cxx: for compiling C++'
             'v: for compiling and formatting V'
             'ghc: for compiling Haskell'
             'ocaml: for compiling and formatting OCaml'
+            'odin: for compiling Odin'
             'autopep8: for formatting Python'
             'scdoc: for writing man pages'
             'asciidoctor: for writing man pages'

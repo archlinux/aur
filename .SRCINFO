@@ -1,6 +1,6 @@
 pkgbase = o
-	pkgdesc = Quick little text editor limited by VT100
-	pkgver = 2.35.0
+	pkgdesc = Quick little editor limited by VT100
+	pkgver = 2.35.1
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = o
 	optdepends = v: for compiling and formatting V
 	optdepends = ghc: for compiling Haskell
 	optdepends = ocaml: for compiling and formatting OCaml
+	optdepends = odin: for compiling Odin
 	optdepends = autopep8: for formatting Python
 	optdepends = scdoc: for writing man pages
 	optdepends = asciidoctor: for writing man pages
@@ -28,7 +29,7 @@ pkgbase = o
 	optdepends = lua-format: for formatting Lua
 	optdepends = lua: for compiling Lua
 	optdepends = tidy: for formatting HTML
-	source = git+https://github.com/xyproto/o#commit=2d941e0b13188018b0857874ce583303660f3cda
+	source = git+https://github.com/xyproto/o#commit=ca172718ee818ffc942b4c37286243f631320e56
 	sha256sums = SKIP
 
 pkgname = o
