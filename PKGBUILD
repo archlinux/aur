@@ -10,19 +10,14 @@ pkgdesc="Dynamic DNS client with support for multiple protocols and services. Co
 arch=('any')
 url="https://pypi.org/project/dyndnsc"
 license=('MIT')
-depends=('python-requests' 'python-setuptools' 'python-netifaces' 'python-dnspython' 'python-daemonocle')
-makedepends=('git' 'python-pip')
+depends=('python-requests' 'python-setuptools' 'python-netifaces' 'python-dnspython' 'python-daemonocle' 'python-json-logger')
+makedepends=('git' 'python-pip' 'python-wheel')
 provides=('dyndnsc')
 conflicts=('dyndnsc')
-source=("git+https://github.com/infothrill/python-dyndnsc.git"
+source=("git+https://github.com/infothrill/$_pkgbase.git"
         'dyndnsc.service')
-md5sums=('SKIP'
-         '530304e7ce3c6463c0d0d053949ad5a9')
-
-pkgver() {
-  cd "$_pkgbase"
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
-}
+sha256sums=('SKIP'
+            '06e5088696dd2cd6e9af9de51bf0c88e94adadd582cd66620bc260caaf56059c')
 
 build() {
     cd "$_pkgbase"

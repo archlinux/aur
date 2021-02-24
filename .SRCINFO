@@ -7,17 +7,19 @@ pkgbase = dyndnsc-git
 	license = MIT
 	makedepends = git
 	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-netifaces
 	depends = python-dnspython
 	depends = python-daemonocle
+	depends = python-json-logger
 	provides = dyndnsc
 	conflicts = dyndnsc
 	source = git+https://github.com/infothrill/python-dyndnsc.git
 	source = dyndnsc.service
-	md5sums = SKIP
-	md5sums = 530304e7ce3c6463c0d0d053949ad5a9
+	sha256sums = SKIP
+	sha256sums = 06e5088696dd2cd6e9af9de51bf0c88e94adadd582cd66620bc260caaf56059c
 
 pkgname = dyndnsc-git
 
