@@ -1,0 +1,16 @@
+pkgbase = vim-sleuth-git
+	pkgdesc = Heuristically set buffer options
+	pkgver = 1.1.r33.gea3f065
+	pkgrel = 1
+	url = https://github.com/tpope/vim-sleuth
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-sleuth
+	conflicts = vim-sleuth
+	source = vim-sleuth::git+https://github.com/tpope/vim-sleuth.git
+	md5sums = SKIP
+
+pkgname = vim-sleuth-git
+
