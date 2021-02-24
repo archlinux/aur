@@ -6,7 +6,7 @@
 _pkgbasename=waffle
 pkgname=lib32-${_pkgbasename}
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
@@ -29,6 +29,7 @@ build() {
 	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
 	arch-meson "${_pkgbasename}-$pkgver" build \
+		--buildtype release \
 		--libdir=/usr/lib32 \
 		-D gbm=enabled \
 		-D glx=enabled \
@@ -39,6 +40,7 @@ build() {
 		-D build-htmldocs=false \
 		-D build-examples=false
 
+	meson configure build
 	ninja -C build
 }
 
