@@ -1,0 +1,14 @@
+pkgbase = python-json-logging
+	pkgdesc = Python logging library to emit JSON log that can be easily indexed and searched
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://github.com/bobbui/json-logging-python
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/bobbui/json-logging-python/archive/1.2.11.zip
+	sha256sums = 9045fb0821e3f92fdea16102f4703d1ae871386c824fca21e36398d03d1ee23f
+
+pkgname = python-json-logging
+
