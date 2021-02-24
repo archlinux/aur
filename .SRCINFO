@@ -1,5 +1,5 @@
 pkgbase = gnucash-asx-fetch
-	pkgdesc = Utility to fetch and add current ASX prices to one or more gnucash files
+	pkgdesc = Utility to fetch and add current ASX prices to one or more gnucash XML files
 	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/bulletmark/gnucash-asx-fetch
