@@ -9,6 +9,8 @@ pkgbase = baru-bin
 	depends = libnl
 	source = baru-bin-0.2.6::https://github.com/doums/baru/releases/download/v0.2.6/baru
 	md5sums = 3025f3e7da1ee02e97cd483b4fa8ba04
+	provides = baru
+	conflicts = baru
 
 pkgname = baru-bin
 
