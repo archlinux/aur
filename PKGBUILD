@@ -3,7 +3,7 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 # After 2.4.4 i686 has no official binary
