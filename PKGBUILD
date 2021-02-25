@@ -2,7 +2,7 @@
 
 pkgname=libgweather-git
 _pkgname=libgweather
-pkgver=40.alpha.r7.g21e87d8f
+pkgver=40.beta.r12.g7a94017f
 pkgrel=1
 pkgdesc="Location and timezone database and weather-lookup library"
 url="https://wiki.gnome.org/Projects/LibGWeather"

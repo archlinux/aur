@@ -1,10 +1,11 @@
 pkgbase = libgweather-git
 	pkgdesc = Location and timezone database and weather-lookup library
-	pkgver = 40.alpha.r7.g21e87d8f
+	pkgver = 40.beta.r12.g7a94017f
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/LibGWeather
 	arch = x86_64
 	license = LGPL
+	makedepends = python-gobject
 	makedepends = gobject-introspection
 	makedepends = vala
 	makedepends = git
