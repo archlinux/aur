@@ -1,7 +1,7 @@
 pkgbase = wordninja-rs
 	pkgdesc = Split English sentence without spaces into words.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chengyuhui/wordninja-rs
 	arch = x86_64
 	license = MIT
