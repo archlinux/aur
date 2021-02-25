@@ -2,7 +2,7 @@
 
 pkgname=sanoid
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A policy-driven snapshot management tool for ZFS filesystems."
 arch=('any')
 url='https://github.com/jimsalterjrs/sanoid'
@@ -23,10 +23,11 @@ sha256sums=('63115326695a00dc925d3ec8c307ed2543bb0a2479f2b15be3192bf2c7d50037')
 
 prepare() {
   # Change /usr/sbin to /usr/bin
+  cd "${srcdir}/sanoid-${pkgver}"
   sed -i 's|/usr/sbin|/usr/bin|g' \
-    "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.timer" \
-    "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.service" \
-    "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid-prune.service"
+    "packages/debian/sanoid.timer" \
+    "packages/debian/sanoid.service" \
+    "packages/debian/sanoid-prune.service"
 }
 
 package() {
@@ -34,7 +35,7 @@ package() {
 
   # Documents
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/sanoid/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/sanoid/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/sanoid/README.md"
 
   # Configs
   install -Dm644 sanoid.conf "${pkgdir}/etc/sanoid/sanoid.conf"

@@ -1,7 +1,7 @@
 pkgbase = sanoid
 	pkgdesc = A policy-driven snapshot management tool for ZFS filesystems.
 	pkgver = 2.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jimsalterjrs/sanoid
 	arch = any
 	license = GPL3
