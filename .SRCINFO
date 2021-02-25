@@ -1,18 +1,15 @@
 pkgbase = shim-efi-git
 	pkgdesc = UEFI shim loader
-	pkgver = 15.r112.dada069
+	pkgver = 15.r190.9c48fc3e
 	pkgrel = 1
 	url = https://github.com/rhboot/shim
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = dos2unix
-	makedepends = gnu-efi-libs-fedora-git
+	makedepends = gnu-efi
 	provides = shim-efi
 	conflicts = shim-efi
-	source = git+https://github.com/rhboot/shim.git
-	source = git+https://github.com/rhboot/edk2.git
-	sha512sums = SKIP
+	source = git+https://github.com/rhboot/shim.git#branch=main
 	sha512sums = SKIP
 
 pkgname = shim-efi-git

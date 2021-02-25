@@ -2,19 +2,17 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-efi-git
-pkgver=15.r112.dada069
+pkgver=15.r190.9c48fc3e
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
 url='https://github.com/rhboot/shim'
 license=('BSD')
-makedepends=('git' 'dos2unix' 'gnu-efi-libs-fedora-git')
+makedepends=('git' 'gnu-efi')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git"
-        'git+https://github.com/rhboot/edk2.git')
-sha512sums=('SKIP'
-            'SKIP')
+source=("git+$url.git#branch=main")
+sha512sums=('SKIP')
 
 pkgver() {
 	cd shim
@@ -23,14 +21,12 @@ pkgver() {
 
 prepare() {
 	cd shim
-	git submodule init
-	git config submodule.edk2.url "$srcdir/edk2"
-	git submodule update
+	sed -e 's/-Werror //g' -i Makefile Make.defaults
 }
 
 build() {
 	cd shim
-	make EFI_PATH=/usr/lib ENABLE_HTTPBOOT=1
+	make
 }
 
 package() {
