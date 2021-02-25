@@ -1,15 +1,15 @@
 pkgbase = git-hub
 	pkgdesc = Git command line interface to GitHub
-	pkgver = 1.1.0
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/sociomantic-tsunami/git-hub
 	arch = any
 	license = GPLv3
-	makedepends = python2-docutils
-	depends = python2
+	makedepends = python-docutils
+	depends = python
 	depends = git
 	depends = bash-completion
-	source = git+https://github.com/sociomantic-tsunami/git-hub.git#tag=v1.1.0
+	source = git+https://github.com/sociomantic-tsunami/git-hub.git#tag=v2.0.3
 	sha1sums = SKIP
 
 pkgname = git-hub
