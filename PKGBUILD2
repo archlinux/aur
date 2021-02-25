@@ -9,7 +9,7 @@
 
 pkgname=dragonwolf
 _pkgname=dragonwolf
-pkgver=88.0a.1r635306
+pkgver=88.0a1.r635697+.20c676649a86+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths"
 arch=(x86_64 aarch64)
@@ -42,36 +42,40 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
                megabar.patch
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
+               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
+               unity-menubar.patch)
 source_aarch64=("hg+$_repo#revision=autoland"
                 $_pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
                 megabar.patch
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
+                unity-menubar.patch
                 "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 build-arm-libopus.patch)
 
 sha512sums_x86_64=('SKIP'
-                   '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
+                   'f5854cffca603cabbf8ea2223e791024627b58a933a117d2fdcc94fe9b80cd762119f9a742158b76a6965376bf9f2a5894e5da79f28fe777675580d94abd11b7'
                    'SKIP'
                    'SKIP'
-                   'd90d0e8d555d32720fd519ec020c8232539cef1f0754cf8c9aa78aa86bbbe3eb1f61748b92e9332d75fb1d933ac543de047e9312740f710b870a64da8caa3eef'
+                   'ec2830e29a392cc258acad31fb7fde9785bcafd49145d15f26b51a4264ac6c6c3ad5447fd6020bb234d45c52caf6bfeef2691b411f684e8b5c51d57fbf1a637f'
                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
-                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061')
+                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
+                   'd57b7e8e34b01abe2a11116e6977e743f225ee797821ac1329a88d6f39992d702a28832cb17331ede87161229deaa30a4db0a96ed4a30e957ca9e55e649e95e5')
 sha512sums_aarch64=('SKIP'
-                    '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
+                    'f5854cffca603cabbf8ea2223e791024627b58a933a117d2fdcc94fe9b80cd762119f9a742158b76a6965376bf9f2a5894e5da79f28fe777675580d94abd11b7'
                     'SKIP'
                     'SKIP'
-                    'd90d0e8d555d32720fd519ec020c8232539cef1f0754cf8c9aa78aa86bbbe3eb1f61748b92e9332d75fb1d933ac543de047e9312740f710b870a64da8caa3eef'
+                    'ec2830e29a392cc258acad31fb7fde9785bcafd49145d15f26b51a4264ac6c6c3ad5447fd6020bb234d45c52caf6bfeef2691b411f684e8b5c51d57fbf1a637f'
                     '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
+                    'd57b7e8e34b01abe2a11116e6977e743f225ee797821ac1329a88d6f39992d702a28832cb17331ede87161229deaa30a4db0a96ed4a30e957ca9e55e649e95e5'
                     'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                     '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
 pkgver() {
   cd mozilla-unified
-  printf "88.0a1.r%s" "$(hg identify -n)"
+  printf "88.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
@@ -174,10 +178,9 @@ fi
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
   patch -p1 -i ../megabar.patch
 
-  # to enable global menubar
-  # set these to true 
-  # browser.proton.enabled
-  # browser.proton.appmenu.enabled 
+  # Debian patch to enable global menubar
+  # disabled for the default build, as it seems to cause issues in some configurations
+  #patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
@@ -240,7 +243,7 @@ package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
 
-  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/librewolf/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
