@@ -1,7 +1,7 @@
 pkgbase = hx-git
 	pkgdesc = Futuristic take on hexdump (git)
-	pkgver = 0.4.0.r0.gb0a844a
-	pkgrel = 2
+	pkgver = 0.4.1.r2.gfa69448
+	pkgrel = 1
 	url = https://github.com/sitkevij/hex
 	arch = x86_64
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = hx-git
 	sha512sums = SKIP
 
 pkgname = hx-git
-
