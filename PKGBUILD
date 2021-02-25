@@ -2,12 +2,12 @@
 pkgname='libgme-vgmplay-git'
 _pkgbase='libgme-vgmplay'
 pkgver=r253.5bdc5d1
-pkgrel=1
+pkgrel=2
 pkgdesc="libgme fork with VGMPlay integrated"
 arch=('x86_64' 'i686')
 url="https://git.lopez-snowhill.net/chris/game_music_emu"
 license=('LGPL')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 conflicts=('libgme')
 provides=('libgme')
 
