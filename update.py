@@ -61,7 +61,6 @@ subprocess.check_call(['updpkgsums'])
 
 if subprocess.check_output(['git', 'diff', 'PKGBUILD']).strip():
     print("linux-versioned-bin is out of date!")
-    subprocess.check_call(['updpkgsums'])
 
     with open('.SRCINFO', 'w') as f:
         f.write(subprocess.check_output(['makepkg', '--printsrcinfo']).decode())
