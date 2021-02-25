@@ -1,21 +1,18 @@
 pkgbase = passman++
 	pkgdesc = Incredibly simple and secure command-line password manager
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/binex-dsk/passmanpp/
 	arch = x86_64
 	license = GPL
 	depends = botan
-	depends = libsodium
 	depends = qt6-base
-	optdepends = gnome-themes-extra: may be necessary for icons to work
-	optdepends = breeze: recommended theme to use for passman++
 	provides = passman
 	conflicts = passman-git
 	conflicts = passman++-devel
 	conflicts = passman++-lts
-	source = https://github.com/binex-dsk/passmanpp/archive/2.0.0.tar.gz
-	md5sums = 22667201a3028a13d1e80dcca72b2547
+	source = https://github.com/binex-dsk/passmanpp/archive/2.0.1.tar.gz
+	md5sums = 594a233a3219a6760e6e7614617d0fee
 
 pkgname = passman++
 
