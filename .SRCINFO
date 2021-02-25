@@ -1,0 +1,19 @@
+pkgbase = croco-gamer-git
+	pkgdesc = A app for Croco OS
+	pkgver = r50.6d7c16b
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/croco-gamer
+	arch = any
+	groups = croco-git
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = xdg-utils
+	depends = alacritty
+	provides = croco-gamer
+	conflicts = croco-gamer
+	source = repo::git+https://gitlab.com/croco-os/applications/croco-gamer.git
+	md5sums = SKIP
+
+pkgname = croco-gamer-git
+
