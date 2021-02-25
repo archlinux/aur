@@ -1,11 +1,11 @@
 # Maintainer: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
 pkgname=lolminer
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial installer for lolMiner: https://github.com/Lolliedieb/lolMiner-releases"
 arch=("x86_64")
 url="https://github.com/Lolliedieb/lolMiner-releases"
-lisense=("GPL")
+license=("GPL")
 depends=("curl" "tar" ) 
 options=('!strip')
 
@@ -14,7 +14,8 @@ prepare(){
     latver=$(curl --silent 'https://api.github.com/repos/Lolliedieb/lolMiner-releases/releases/latest' | grep ".*tag_name.*" | sed -E 's/.*"([^"]+)".*/\1/')
     echo "Downloading lolMiner v$latver"
     mkdir -p lolminer 
-    curl -L "https://github.com/Lolliedieb/lolMiner-releases/releases/download/$latver/lolMiner_v${latver}_Lin64.tar.gz" | tar xzf - --directory "lolminer" --strip-components=1
+    downloadlink=$(curl --silent 'https://api.github.com/repos/Lolliedieb/lolMiner-releases/releases/latest' | grep ".*browser_download_url.*Lin64.*" | sed -E 's/.*"([^"]+)".*/\1/')
+    curl -L "$downloadlink" | tar xzf - --directory "lolminer" --strip-components=1
 }
 
 package(){
