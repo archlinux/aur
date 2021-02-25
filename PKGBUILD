@@ -3,14 +3,14 @@ pkgname=trytond
 pkgver=5.8.4
 _pkgdir=5.8
 pkgrel=1
-pkgdesc="A three-tiers high-level general purpose application platform (server application)"
+pkgdesc=Tryton server
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.6' 'python-lxml' 'python-relatorio>=0.7.0'
          'python-genshi' 'python-dateutil' 'python-polib'
          'python-sql>=0.5' 'python-werkzeug' 'python-wrapt'
-	 'python-passlib')
+         'python-passlib')
 optdepends=('python-psycopg2: support for PostgreSQL database'
   'python-pydot: support for displaying workflow graphs'
   'python-levenshtein'
@@ -45,3 +45,4 @@ package() {
   install -D -m664 "$srcdir/trytond.conf" "$pkgdir/etc/tryton/trytond.conf"
   install -D -m755 "$srcdir/trytond.service" "$pkgdir/usr/lib/systemd/system/trytond.service"
 }
+
