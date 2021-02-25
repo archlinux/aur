@@ -3,7 +3,7 @@
 _pkgname=btcpayserver
 
 pkgname=btcpayserver-git
-pkgver=2.1.49.r1.g45819a7
+pkgver=1.0.6.7.r98.g07da404a2
 pkgrel=1
 epoch=
 pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor."
@@ -11,7 +11,7 @@ arch=("any")
 url="https://github.com/btcpayserver/${_pkgname}"
 license=("MIT")
 groups=()
-depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk" "nbxplorer-git")
+depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk")
 makedepends=("git")
 checkdepends=()
 optdepends=()

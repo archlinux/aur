@@ -1,6 +1,6 @@
 pkgbase = btcpayserver-git
 	pkgdesc = Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor.
-	pkgver = 2.1.49.r1.g45819a7
+	pkgver = 1.0.6.7.r98.g07da404a2
 	pkgrel = 1
 	url = https://github.com/btcpayserver/btcpayserver
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = btcpayserver-git
 	depends = dotnet-host
 	depends = dotnet-runtime
 	depends = dotnet-sdk
-	depends = nbxplorer-git
 	conflicts = btcpayserver
 	source = git+https://github.com/btcpayserver/btcpayserver.git
 	md5sums = SKIP
