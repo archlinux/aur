@@ -1,45 +1,48 @@
 pkgbase = linux-lts-versioned-bin
-	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.10.17
+	pkgdesc = The LTS Linux kernel and modules | repackaged with a unique package name for each version
+	pkgver = 5.10.18
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-5.10.17-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-headers-5.10.17-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-docs-5.10.17-1-x86_64.pkg.tar.zst
-	sha256sums = 8a1868396e1683996261a2cff5c963357c315ee0bab17eb64216039120da6ecf
-	sha256sums = 5f878f501d72734f7094af37966dbc4a175190db57deaf92f8b7117afacfbfdf
-	sha256sums = 0615ed8e4d048c76692beed94121c1d5b92653afe76a95ce3f5c8b74d1131bf5
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-5.10.18-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-headers-5.10.18-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-docs-5.10.18-1-x86_64.pkg.tar.zst
+	sha256sums = c66e41b21f47e11d81224b9211e127c95b4d752f0b261d836b72153e7202ab5a
+	sha256sums = cf6916d8f661b6b45e3879fb807202518211a44675dbb2a8e08ae3ccc6bc2f73
+	sha256sums = 1930969e193431a273f8531c67fea86c1a394defd849297bed80e9c3d6bdc93b
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Dummy package depending on linux5.10.17-1-lts-bin
-	depends = linux5.10.17-1-lts-bin
+	pkgdesc = Dummy package depending on linux5.10.18-1-lts-bin
+	depends = linux5.10.18-1-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.10.17-1-lts-headers-bin
-	depends = linux5.10.17-1-lts-headers-bin
+	pkgdesc = Dummy package depending on linux5.10.18-1-lts-headers-bin
+	depends = linux5.10.18-1-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.10.17-1-lts-docs-bin
-	depends = linux5.10.17-1-lts-docs-bin
+	pkgdesc = Dummy package depending on linux5.10.18-1-lts-docs-bin
+	depends = linux5.10.18-1-lts-docs-bin
 
-pkgname = linux5.10.17-1-lts-bin
-	pkgdesc = The Linux kernel and modules, version 5.10.17-1-lts
+pkgname = linux5.10.18-1-lts-bin
+	pkgdesc = The LTS Linux kernel and modules, version 5.10.18-1-lts
 	depends = coreutils
-	depends = kmod
 	depends = initramfs
+	depends = kmod
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
 	conflicts = linux-lts
+	replaces = wireguard-lts
 
-pkgname = linux5.10.17-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.10.17-1-lts
+pkgname = linux5.10.18-1-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.18-1-lts
 	conflicts = linux-lts-headers
 
-pkgname = linux5.10.17-1-lts-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.10.17-1-lts
+pkgname = linux5.10.18-1-lts-docs-bin
+	pkgdesc = Documentation for the LTS Linux kernel 5.10.18-1-lts
 	conflicts = linux-lts-docs
 
