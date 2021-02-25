@@ -1,0 +1,12 @@
+pkgbase = mc-hydrogen-git
+	pkgdesc = Things of which are too dangerous to put in Lithium.
+	pkgver = 1.16.5.0.2.r28.718f503
+	pkgrel = 1
+	url = https://github.com/CaffeineMC/hydrogen-fabric
+	arch = any
+	license = LGPL
+	makedepends = gradle
+	source = git+https://github.com/CaffeineMC/hydrogen-fabric.git
+	md5sums = SKIP
+
+pkgname = mc-hydrogen-git
