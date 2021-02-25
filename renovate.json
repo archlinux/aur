@@ -13,7 +13,7 @@
   "regexManagers": [
     {
       "fileMatch": ["^PKGBUILD$"],
-      "matchStrings": ["pkgver=v(?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)\\s"]
+      "matchStrings": ["pkgver=(v?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)\\s"]
     }
   ]
 }
