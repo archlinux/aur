@@ -9,7 +9,7 @@ post_upgrade() {
     systemctl --global enable pipewire.socket
   fi
 
-  if (( $(vercmp $2 0.3.22.r46.ge340a44a-2) < 0)); then
+  if (( $(vercmp $2 0.3.22.r61.g7cf07da3-999) < 0)); then
     systemctl --global enable pipewire-media-session.service
   fi
 }
