@@ -1,0 +1,17 @@
+pkgbase = croco-i3-settings
+	pkgver = r2.c20daec
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/settings/croco-i3-settings
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/settings/croco-i3-settings.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-i3-settings
+	pkgdesc = croco Linux i3 settings
+	install = croco-i3-settings.install
+	depends = croco-common-settings
+	provides = croco-desktop-settings
+	conflicts = croco-desktop-settings
+
