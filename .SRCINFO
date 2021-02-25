@@ -1,0 +1,33 @@
+pkgbase = mhwd-croco-git
+	pkgdesc = mhwd-croco(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)
+	pkgver = r11.b17a3eb
+	pkgrel = 1
+	url = https://gitlab.com/croco-linux/applications/mhwd-croco
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = hwinfo
+	source = git+https://gitlab.com/croco-linux/applications/mhwd-croco.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mhwd-croco-git
+	pkgdesc = mhwd-croco(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)
+	install = mhwd.install
+	depends = hwinfo
+	depends = mesa
+	depends = mhwd-db-croco-git
+	depends = pacman
+	depends = mesa-demos
+	depends = vulkan-tools
+	depends = libva-utils
+	depends = vdpauinfo
+	depends = vulkan-icd-loader
+	depends = opencl-icd-loader
+	provides = mhwd
+	provides = mhwd-croco
+	conflicts = mhwd
+	conflicts = mhwd-croco
+	replaces = mhwd-croco
+
