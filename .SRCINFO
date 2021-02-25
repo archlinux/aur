@@ -1,0 +1,18 @@
+pkgbase = showipatlogon
+	pkgdesc = Shows the IP address(es) of your NIC(s) via the /etc/issue file at logon
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Mordillo98/showipatlogon
+	install = showipatlogon.install
+	arch = any
+	depends = net-tools
+	depends = moreutils
+	provides = showipatlogon
+	conflicts = showipatlogon
+	source = https://sourceforge.net/projects/showipatlogon/files/showipatlogon.tar.xz
+	source = showipatlogon.install
+	md5sums = b5046ff17f3ed7fb3e46a53d73d84438
+	md5sums = 5ecbace16850d02bcaf4c1197fc16cb6
+
+pkgname = showipatlogon
+
