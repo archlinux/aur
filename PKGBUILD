@@ -30,5 +30,5 @@ package() {
   install -D -m 644 yadm.1 $pkgdir/usr/share/man/man1/yadm.1
   install -D -m 644 completion/bash/yadm "${pkgdir}/usr/share/bash-completion/completions/yadm"
   install -D -m 644 completion/zsh/_yadm "${pkgdir}/usr/share/zsh/site-functions/_yadm"
-  install -D -m 644 completion/fish/yadm.fish "${pkgdir}/etc/fish/completions/yadm.fish"
+  install -D -m 644 completion/fish/yadm.fish "${pkgdir}/usr/share/fish/vendor_completions.d/yadm.fish"
 }
