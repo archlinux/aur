@@ -1,4 +1,4 @@
-# Maintainer: Winux winuxlinux11@gmail.com
+# Maintainer: Winux <winuxlinux11@gmail.com>
 
 pkgname=btusb-qca-0x3004-dkms
 url=https://aur.archlinux.org/packages/btusb-qca-0x3004-dkms
