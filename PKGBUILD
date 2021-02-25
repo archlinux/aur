@@ -17,7 +17,7 @@ source=("plymouth-zfs.initcpio.hook"
         "plymouth-zfs.initcpio.install"
         "plymouth-zfs.install")
 sha256sums=('4fc0eb84fbd8a62babbd1f85a5db7d467eb1c4178218a40a98853a62f1135176'
-            '7e57b2469613140928198257080e370863d7c5f1cba280a6dc276316ab32f3db'
+            '44e940623bc0fbbfda5aa8f076850c9b1429874c144359b726e8c48c0ddb1a03'
             '0910896056921ebedc1eb910d38b64d8815790f042cb3e9bc07a1a49e31e3b2b')
             
 package() {
