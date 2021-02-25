@@ -6,13 +6,13 @@
 
 pkgname=kibana-xpack
 relpkgname=kibana
-pkgver=7.10.2
+pkgver=7.11.1
 pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
 arch=('any')
-license=('custom:Elastic')
-depends=('nodejs-lts-dubnium')
+license=('custom:Elastic2')
+depends=('nodejs-lts-fermium')
 optdepends=('elasticsearch')
 provides=('kibana')
 conflicts=('kibana')
@@ -22,7 +22,7 @@ source=(https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-${pkgver}
         kibana.service
         tmpfile.conf
         user.conf)
-sha512sums=('aa68f850cc09cf5dcb7c0b48bb8df788ca58eaad38d96141b8e59917fd38b42c728c0968f7cb2c8132c5aaeb595525cdde0859554346c496f53c569e03abe412'
+sha512sums=('5facaac7adced5ac2830158d6a7994d9c32e042c320f250626166a9e86cce3fa4c3e8b92809526492b4d09b0b8623ea2c3bfd02751a8f1387bc3f09a1bee642b'
             'SKIP'
             'be50713d4e4db3a8b2d0d02ec68b56ce1636ffa9a41738b0abf276c562c36ef6118f440f25b220f39302ba23b2351b5a38f961c8693ad03ea19424e4d40409e6'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
@@ -44,7 +44,7 @@ package() {
 
   install -dm 755 "${pkgdir}/usr/share/kibana"
   cp -a * "${pkgdir}/usr/share/kibana"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
   install -dm 750 "${pkgdir}/etc/kibana"
   install -Dm 640 config/kibana.yml -t "${pkgdir}/etc/kibana"
