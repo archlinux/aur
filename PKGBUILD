@@ -27,46 +27,6 @@ if [ -z ${_compiler+x} ]; then
   _compiler=
 fi
 
-#Set compiler optimization for GCC
-#Set '1' to use optimization
-#Set '2' to disable optimization
-#If not set it will build with no optimization
-if [ -z ${_optimization+x} ]; then
-  _optimization=
-fi
-
-#This set lto/pgo value for GCC or CLANG
-#For now LTO/PGO is turn off for CLANG because of build issues
-#Do not eddit unless you know what you are doing
-if [[ $_compiler = "1" ]]; then
-  if [[ $_optimization = "1" ]]; then
-    lto1=false
-    pgo1=generate
-    lto2=true
-    pgo2=use
-  elif [[ $_optimization = "2" ]]; then
-    lto1=false
-    pgo1=off
-    lto2=false
-    pgo2=off
-  else
-    lto1=false
-    pgo1=off
-    lto2=false
-    pgo2=off
-  fi
-elif [[ $_compiler = "2" ]]; then
-  lto1=false
-  pgo1=off
-  lto2=false
-  pgo2=off
-else
-  lto1=false
-  pgo1=off
-  lto2=false
-  pgo2=off
-fi
-
 #######################################
 
 pkgbase=mesa-stable
@@ -136,12 +96,8 @@ fi
   # build with meson
   meson setup build_64/ \
   -D b_ndebug=true \
-  -D b_lto=$lto1 \
-  -D b_pgo=$pgo1 \
   -D buildtype=plain \
   --wrap-mode=nofallback \
-  -Dc_args="-Ofast -m64" \
-  -Dcpp_args="-Ofast -m64" \
   -Dprefix=/usr \
   -D sysconfdir=/etc \
   -Dplatforms=x11,wayland \
@@ -188,17 +144,6 @@ fi
 
   ninja -C build_64/
 
-  # build with meson
-  meson configure build_64/ \
-  -D b_lto=$lto2 \
-  -D b_pgo=$pgo2
-
-  meson configure build_64/
-
-  meson compile -C build_64/
-
-  ninja -C build_64/
-
   # remove build dir if there is one
   if dir build_32; then
     rm -rf -v build_32
@@ -227,15 +172,11 @@ END
   meson setup build_32/ \
   --native-file crossfile.ini \
   -D b_ndebug=true \
-  -D b_lto=$lto1 \
-  -D b_pgo=$pgo1 \
   -D buildtype=plain \
   --wrap-mode=nofallback \
   -Dprefix=/usr \
   -D sysconfdir=/etc \
   --libdir=/usr/lib32 \
-  -Dc_args="-Ofast -m32" \
-  -Dcpp_args="-Ofast -m32" \
   -Dplatforms=x11,wayland \
   -Ddri3=enabled \
   -Ddri-drivers=i915,i965,r100,r200,nouveau \
@@ -273,17 +214,6 @@ END
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
   -Dzstd=enabled
-
-  meson configure build_32/
-
-  meson compile -C build_32/
-
-  ninja -C build_32/
-
-  # build with meson
-  meson configure build_32/ \
-  -D b_lto=$lto2 \
-  -D b_pgo=$pgo2
 
   meson configure build_32/
 
