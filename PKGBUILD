@@ -1,4 +1,4 @@
-# Maintainer: PLYSHKA <leruop@gmail.com>
+# Maintainer: meister1593 <leruop@gmail.com>
 
 pkgname=xidlehook-git
 _pkgname=xidlehook
