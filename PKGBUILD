@@ -1,6 +1,6 @@
 pkgname="launch4j"
 pkgver="3.13"
-pkgrel="3"
+pkgrel="4"
 arch=('x86_64')
 license=('custom')
 pkgdesc="Cross-platform Java executable wrapper"
