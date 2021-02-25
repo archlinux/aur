@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r39732
+pkgver=r39825
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64). - Development version"
 arch=('i686' 'x86_64')
@@ -63,10 +63,10 @@ pkgver() {
 }
 
 build() {
-    cd "${pkgname}/vice"
-    ./autogen.sh 
-    ./configure --prefix=/usr --libdir=/usr/lib --enable-external-ffmpeg
-    make V=0
+	cd "${pkgname}/vice"
+    	./autogen.sh 
+    	./configure --prefix=/usr --libdir=/usr/lib --enable-external-ffmpeg
+	make V=0
 }
 
 package() {
