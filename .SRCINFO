@@ -57,7 +57,7 @@ pkgbase = kopano-core-git
 	optdepends = gperftools
 	provides = kopano-core=10.0.7
 	backup = etc/kopano/*.cfg
-	source = kopano-core-git::git+https://github.com/pietmacom/kopano-core.git#branch=master
+	source = kopano-core-git::git+https://stash.kopano.io/scm/kc/kopanocore.git#branch=master
 	md5sums = SKIP
 
 pkgname = kopano-core-git

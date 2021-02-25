@@ -29,3 +29,8 @@
 
 [2021-01-25]
 * update to kopano 10.0.7
+
+[2021-02-25]
+* patch from git
+* patch from git: cherryPick
+* patch from git: corrosponding branch
