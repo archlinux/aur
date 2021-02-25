@@ -1,8 +1,7 @@
-# Manitainer: GiacoLenzo2109 <GiacoLenzo2109@gmail.com>
-# Contributor: Philip Müller <philm[at]manjaro[dog]org>
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
 
 pkgname=calamares-croco-git
-pkgver=3.2.36.r8590.b8a9c4c3b
+pkgver=3.2.37.r8624.46ab3ac27
 pkgrel=1
 pkgdesc='Distribution-independent installer framework (patched croco version)'
 arch=('i686' 'x86_64')
@@ -21,10 +20,12 @@ makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')
 #         'usr/share/calamares/modules/initcpio.conf'
 #         'usr/share/calamares/modules/unpackfs.conf')
 
-source+=(git+https://github.com/calamares/calamares.git croco-fswhitelist.patch croco-btrfs.patch)
-sha256sums=('SKIP'
-            'dfe2aeb4c8efc887127a4683b01dc677a3906ca968dec4e4b74bdcbf6ac4b948'
-            '39a5f6c79d6c70442e7a289cdc0d3090c2009fe518edecccdd53c0fdeb6fb8e4')
+#source+=(git+https://github.com/calamares/calamares.git croco-fswhitelist.patch croco-btrfs.patch)
+source+=(git+https://github.com/calamares/calamares.git)
+#sha256sums=('SKIP'
+#            'dfe2aeb4c8efc887127a4683b01dc677a3906ca968dec4e4b74bdcbf6ac4b948'
+#            '39a5f6c79d6c70442e7a289cdc0d3090c2009fe518edecccdd53c0fdeb6fb8e4')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/calamares
@@ -42,8 +43,8 @@ prepare() {
         sed -i -e 's/"Install configuration files" OFF/"Install configuration files" ON/' CMakeLists.txt
 
         # patches here
-        patch -p1 -N -i "$srcdir/croco-fswhitelist.patch"
-        patch -p1 -N -i "$srcdir/croco-btrfs.patch"
+        #patch -p1 -N -i "$srcdir/croco-fswhitelist.patch"
+        #patch -p1 -N -i "$srcdir/croco-btrfs.patch"
 }
 
 
