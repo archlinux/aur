@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -19,7 +19,7 @@ arch=('any')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
 )
-md5sums=('c04c3ba68df20b6499ee651dee636425')
+md5sums=('3873fa28ee12ae40ff115019a2edaa5f')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -35,4 +35,3 @@ package() {
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-md5sums=('a5fcd41b9d3e3f7ed40eab6ff79a4854')
