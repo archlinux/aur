@@ -1,0 +1,26 @@
+pkgbase = croco-assistant-git
+	pkgdesc = A assistant app for Croco OS
+	pkgver = r50.6d7c16b
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/croco-assistant
+	arch = any
+	groups = croco-git
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = xdg-utils
+	depends = polkit
+	depends = alacritty
+	depends = micro
+	depends = reflector-simple
+	depends = hblock
+	depends = xorg-xdpyinfo
+	depends = pace
+	depends = pamac
+	provides = croco-assistant
+	conflicts = croco-assistant
+	source = repo::git+https://gitlab.com/croco-os/applications/croco-assistant.git
+	md5sums = SKIP
+
+pkgname = croco-assistant-git
+
