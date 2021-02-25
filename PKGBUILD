@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bookmark-git
-pkgver=0.1.0.r0.gf46e536
-pkgrel=2
+pkgver=0.1.0.r2.g477807a
+pkgrel=1
 pkgdesc="Save URLs from the terminal and open them quickly in the browser (git)"
 arch=('x86_64')
 url="https://github.com/Szymongib/bookmark"
