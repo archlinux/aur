@@ -6,8 +6,8 @@
 _pref_maximum_performance=
 
 pkgname=nvidia-dkms-performance
-pkgver=460.39
-pkgrel=4
+pkgver=460.56
+pkgrel=1
 pkgdesc='NVIDIA driver sources for linux with some optimizations'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -23,10 +23,10 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '0003-nvidia-drm-modeset.patch'
         '0004-NVreg.patch'
         '0005-Powermizer-max-performance.patch')
-sha256sums=('07042bd0c2f5c37b455a973f15561450f789590b8650a6ea573c819591d572a9'
+sha256sums=('6aa33772f6777dfaecf3142d7e01da9689a7206254e81ddbebf3ce6067c214a2'
             '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
             '1bd56d082093db9819b07f42c5414dffd1bcf92946d5f5dab706ed785933e169'
-            'cf4ee7cbc4200126ff25d649d11257eb1c7ade4aa0b313f31b56207f9fa73d4b'
+            '18b7e1cf21834a646d5b6a7cf49daae5d55bc7e1f23fd5a96e05a8aa4a74de57'
             'a9465149c336c8f0bded15a4d473f16156d6da3a9fe4965ebe8a9afba5519c9f'
             'd24e341f9a0e38f03f4e425e5f59e407604463fc3daee36009ecbd0fefa8b801'
             '9140aa5ea1b7c0704a2606b27a61af42b0309eceebac496704a9e8db18815aa4')
@@ -39,6 +39,7 @@ prepare() {
     
     patch -Np1 -i "${srcdir}/0001-nvidia-dkms-conf.patch"
     # Fixing compatibility with the RT (Real-Time) kernel
+    sed -i -e 's|PREEMPT_RT_PRESENT=1|PREEMPT_RT_PRESENT=0|g' kernel/conftest.sh
     patch -Np1 -i "${srcdir}/0002-linux-rt.patch"
     # Enable nvidia-drm.modeset=1 (DRM KMS) by default.
     # This is necessary for NVIDIA PRIME to work correctly.

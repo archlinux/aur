@@ -4,26 +4,8 @@ Date: Tue, 26 Jan 2021 20:18:58 +0300
 Subject: [PATCH] Fixing compatibility with the RT kernel
 
 ---
- kernel/conftest.sh | 4 ++--
  kernel/dkms.conf   | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/kernel/conftest.sh b/kernel/conftest.sh
-index 7479cb2..4d9d46f 100755
---- a/kernel/conftest.sh
-+++ b/kernel/conftest.sh
-@@ -4599,9 +4599,9 @@ case "$5" in
-         fi
- 
-         if test_configuration_option CONFIG_PREEMPT_RT; then
--            PREEMPT_RT_PRESENT=1
-+            PREEMPT_RT_PRESENT=0
-         elif test_configuration_option CONFIG_PREEMPT_RT_FULL; then
--            PREEMPT_RT_PRESENT=1
-+            PREEMPT_RT_PRESENT=0
-         fi
- 
-         if [ "$PREEMPT_RT_PRESENT" != "0" ]; then
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 diff --git a/kernel/dkms.conf b/kernel/dkms.conf
 index 877a01b..26657c3 100644
 --- a/kernel/dkms.conf
