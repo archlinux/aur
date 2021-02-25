@@ -1,0 +1,303 @@
+From a62f0179e61fc5ca3b9c47f7482ce38a85572bdb Mon Sep 17 00:00:00 2001
+From: TotallyNotElite <totallynotelite@gmail.com>
+Date: Mon, 18 Jan 2021 22:56:27 +0100
+Subject: [PATCH] Croco BTRFS patches
+
+---
+ src/modules/fstab/main.py       |  38 +++++++
+ src/modules/grubcfg/main.py     |   2 +-
+ src/modules/initcpiocfg/main.py |   2 +-
+ src/modules/mount/main.py       | 178 ++++++++++++++++++++++++++++++--
+ 4 files changed, 210 insertions(+), 10 deletions(-)
+
+diff --git a/src/modules/fstab/main.py b/src/modules/fstab/main.py
+index 6977ccad1..63352128a 100644
+--- a/src/modules/fstab/main.py
++++ b/src/modules/fstab/main.py
+@@ -206,6 +206,41 @@ class FstabGenerator(object):
+                             dct = self.generate_fstab_line_info(home_entry)
+                             if dct:
+                                 self.print_fstab_line(dct, file=fstab_file)
++                        elif line.endswith(b'path @root'):
++                            rootuser_entry = partition
++                            rootuser_entry["mountPoint"] = "/root"
++                            rootuser_entry["subvol"] = "@root"
++                            dct = self.generate_fstab_line_info(rootuser_entry)
++                            if dct:
++                                self.print_fstab_line(dct, file=fstab_file)
++                        elif line.endswith(b'path @srv'):
++                            srv_entry = partition
++                            srv_entry["mountPoint"] = "/srv"
++                            srv_entry["subvol"] = "@srv"
++                            dct = self.generate_fstab_line_info(srv_entry)
++                            if dct:
++                                self.print_fstab_line(dct, file=fstab_file)
++                        elif line.endswith(b'path @cache'):
++                            cache_entry = partition
++                            cache_entry["mountPoint"] = "/var/cache"
++                            cache_entry["subvol"] = "@cache"
++                            dct = self.generate_fstab_line_info(cache_entry)
++                            if dct:
++                                self.print_fstab_line(dct, file=fstab_file)
++                        elif line.endswith(b'path @log'):
++                            log_entry = partition
++                            log_entry["mountPoint"] = "/var/log"
++                            log_entry["subvol"] = "@log"
++                            dct = self.generate_fstab_line_info(log_entry)
++                            if dct:
++                                self.print_fstab_line(dct, file=fstab_file) 
++                        elif line.endswith(b'path @tmp'):
++                            tmp_entry = partition
++                            tmp_entry["mountPoint"] = "/var/tmp"
++                            tmp_entry["subvol"] = "@tmp"
++                            dct = self.generate_fstab_line_info(tmp_entry)
++                            if dct:
++                                self.print_fstab_line(dct, file=fstab_file)
+                         elif line.endswith(b'path @swap'):
+                             swap_part_entry = partition
+                             swap_part_entry["mountPoint"] = "/swap"
+@@ -326,6 +361,9 @@ def create_swapfile(root_mount_point, root_btrfs):
+     The swapfile-creation covers progress from 0.2 to 0.5
+     """
+     libcalamares.job.setprogress(0.2)
++    swapfile_path = os.path.join(root_mount_point, "var", "cache", "swapfile")
++    with open(swapfile_path, "wb") as f:
++        pass
+     if root_btrfs:
+         # btrfs swapfiles must reside on a subvolume that is not snapshotted to prevent file system corruption
+         swapfile_path = os.path.join(root_mount_point, "swap/swapfile")
+diff --git a/src/modules/grubcfg/main.py b/src/modules/grubcfg/main.py
+index 9e9615a0c..cc017d5a0 100644
+--- a/src/modules/grubcfg/main.py
++++ b/src/modules/grubcfg/main.py
+@@ -98,7 +98,7 @@ def modify_grub_default(partitions, root_mount_point, distributor):
+             break
+ 
+     if have_plymouth:
+-        use_splash = "splash"
++        use_splash = "splash rd.udev.log_priority=3 vt.global_cursor_default=0 systemd.unified_cgroup_hierarchy=1"
+ 
+     cryptdevice_params = []
+ 
+diff --git a/src/modules/initcpiocfg/main.py b/src/modules/initcpiocfg/main.py
+index cdfeadd0f..ca7f96914 100644
+--- a/src/modules/initcpiocfg/main.py
++++ b/src/modules/initcpiocfg/main.py
+@@ -116,7 +116,7 @@ def modify_mkinitcpio_conf(partitions, root_mount_point):
+     btrfs = ""
+     lvm2 = ""
+     hooks = ["base", "udev", "autodetect", "modconf", "block", "keyboard",
+-             "keymap"]
++             "keymap", "consolefont"]
+     modules = []
+     files = []
+     encrypt_hook = False
+diff --git a/src/modules/mount/main.py b/src/modules/mount/main.py
+index 3982176df..27b9f79df 100644
+--- a/src/modules/mount/main.py
++++ b/src/modules/mount/main.py
+@@ -82,12 +82,52 @@ def mount_partition(root_mount_point, partition, partitions):
+     # Finally we remount all of the above on the correct paths.
+     if fstype == "btrfs" and partition["mountPoint"] == '/':
+         has_home_mount_point = False
++        has_rootuser_mount_point = False
++        has_srv_mount_point = False
++        has_cache_mount_point = False
++        has_log_mount_point = False
++        has_tmp_mount_point = False
+         for p in partitions:
+             if "mountPoint" not in p or not p["mountPoint"]:
+                 continue
+             if p["mountPoint"] == "/home":
+                 has_home_mount_point = True
+                 break
++            
++        for p in partitions:
++            if "mountPoint" not in p or not p["mountPoint"]:
++                continue
++            if p["mountPoint"] == "/root":
++                has_rootuser_mount_point = True
++                break
++        
++        for p in partitions:
++            if "mountPoint" not in p or not p["mountPoint"]:
++                continue
++            if p["mountPoint"] == "/srv":
++                has_srv_mount_point = True
++                break
++            
++        for p in partitions:
++            if "mountPoint" not in p or not p["mountPoint"]:
++                continue
++            if p["mountPoint"] == "/var/cache":
++                has_cache_mount_point = True
++                break
++            
++        for p in partitions:
++            if "mountPoint" not in p or not p["mountPoint"]:
++                continue
++            if p["mountPoint"] == "/var/log":
++                has_log_mount_point = True
++                break
++            
++        for p in partitions:
++            if "mountPoint" not in p or not p["mountPoint"]:
++                continue
++            if p["mountPoint"] == "/var/tmp":
++                has_tmp_mount_point = True
++                break
+         needs_swap_subvolume = False
+         swap_choice = global_storage.value( "partitionChoices" )
+         if swap_choice:
+@@ -105,18 +145,140 @@ def mount_partition(root_mount_point, partition, partitions):
+             subprocess.check_call(['btrfs', 'subvolume', 'create',
+                                        root_mount_point + '/@swap'])
+ 
+-        subprocess.check_call(["umount", "-v", root_mount_point])
++        if not has_rootuser_mount_point:
++            subprocess.check_call(['btrfs', 'subvolume', 'create',
++                                   root_mount_point + '/@root'])
++            
++        if not has_srv_mount_point:
++            subprocess.check_call(['btrfs', 'subvolume', 'create',
++                                   root_mount_point + '/@srv'])
++            
++        if not has_cache_mount_point:
++            subprocess.check_call(['btrfs', 'subvolume', 'create',
++                                   root_mount_point + '/@cache'])
++            
++        if not has_log_mount_point:
++            subprocess.check_call(['btrfs', 'subvolume', 'create',
++                                   root_mount_point + '/@log'])
++            
++        if not has_tmp_mount_point:
++            subprocess.check_call(['btrfs', 'subvolume', 'create',
++                                   root_mount_point + '/@tmp'])
+ 
+-        device = partition["device"]
++        subprocess.check_call(["umount", "-v", root_mount_point])
+ 
+         if "luksMapperName" in partition:
+-            device = os.path.join("/dev/mapper", partition["luksMapperName"])
++            libcalamares.utils.mount(
++                "/dev/mapper/{!s}".format(partition["luksMapperName"]),
++                mount_point,
++                fstype,
++                ",".join(
++                    ["subvol=@", partition.get("options", "")]),
++                )
++            if not has_home_mount_point:
++                libcalamares.utils.mount(
++                    "/dev/mapper/{!s}".format(partition["luksMapperName"]),
++                    root_mount_point + "/home",
++                    fstype,
++                    ",".join(
++                        ["subvol=@home", partition.get("options", "")]),
++                    )
++            if not has_rootuser_mount_point:
++                libcalamares.utils.mount(
++                    "/dev/mapper/{!s}".format(partition["luksMapperName"]),
++                    root_mount_point + "/root",
++                    fstype,
++                    ",".join(
++                        ["subvol=@root", partition.get("options", "")]),
++                    )
++            if not has_srv_mount_point:
++                libcalamares.utils.mount(
++                    "/dev/mapper/{!s}".format(partition["luksMapperName"]),
++                    root_mount_point + "/srv",
++                    fstype,
++                    ",".join(
++                        ["subvol=@srv", partition.get("options", "")]),
++                    )
++            if not has_cache_mount_point:
++                libcalamares.utils.mount(
++                    "/dev/mapper/{!s}".format(partition["luksMapperName"]),
++                    root_mount_point + "/var/cache",
++                    fstype,
++                    ",".join(
++                        ["subvol=@cache", partition.get("options", "")]),
++                    )
++            if not has_log_mount_point:
++                libcalamares.utils.mount(
++                    "/dev/mapper/{!s}".format(partition["luksMapperName"]),
++                    root_mount_point + "/var/log",
++                    fstype,
++                    ",".join(
++                        ["subvol=@log", partition.get("options", "")]),
++                    )
++            if not has_tmp_mount_point:
++                libcalamares.utils.mount(
++                    "/dev/mapper/{!s}".format(partition["luksMapperName"]),
++                    root_mount_point + "/var/tmp",
++                    fstype,
++                    ",".join(
++                        ["subvol=@tmp", partition.get("options", "")]),
++                    )
++        else:
++            libcalamares.utils.mount(
++                partition["device"],
++                mount_point,
++                fstype,
++                ",".join(["subvol=@", partition.get("options", "")]),
++                )
++            if not has_home_mount_point:
++                libcalamares.utils.mount(
++                    partition["device"],
++                    root_mount_point + "/home",
++                    fstype,
++                    ",".join(
++                        ["subvol=@home", partition.get("options", "")]),
++                    )
++            if not has_rootuser_mount_point:
++                libcalamares.utils.mount(
++                    partition["device"],
++                    root_mount_point + "/root",
++                    fstype,
++                    ",".join(
++                        ["subvol=@root", partition.get("options", "")]),
++                    )
++            if not has_srv_mount_point:
++                libcalamares.utils.mount(
++                    partition["device"],
++                    root_mount_point + "/srv",
++                    fstype,
++                    ",".join(
++                        ["subvol=@srv", partition.get("options", "")]),
++                    )
++            if not has_cache_mount_point:
++                libcalamares.utils.mount(
++                    partition["device"],
++                    root_mount_point + "/var/cache",
++                    fstype,
++                    ",".join(
++                        ["subvol=@cache", partition.get("options", "")]),
++                    )
++            if not has_log_mount_point:
++                libcalamares.utils.mount(
++                    partition["device"],
++                    root_mount_point + "/var/log",
++                    fstype,
++                    ",".join(
++                        ["subvol=@log", partition.get("options", "")]),
++                    )
++            if not has_tmp_mount_point:
++                libcalamares.utils.mount(
++                    partition["device"],
++                    root_mount_point + "/var/tmp",
++                    fstype,
++                    ",".join(
++                        ["subvol=@tmp", partition.get("options", "")]),
++                    )
+ 
+-        if libcalamares.utils.mount(device,
+-                                    mount_point,
+-                                    fstype,
+-                                    ",".join(["subvol=@", partition.get("options", "")])) != 0:
+-            libcalamares.utils.warning("Cannot mount {}".format(device))
+ 
+         if not has_home_mount_point:
+             if libcalamares.utils.mount(device,
+-- 
+2.30.0
+

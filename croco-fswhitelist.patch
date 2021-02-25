@@ -1,0 +1,88 @@
+From 12c9ef699641c4ead59e92b4a521acf7e835ab59 Mon Sep 17 00:00:00 2001
+From: TotallyNotElite <totallynotelite@gmail.com>
+Date: Mon, 18 Jan 2021 23:34:09 +0100
+Subject: [PATCH] Croco hardcoded FS whitelist
+
+---
+ src/libcalamares/partition/FileSystem.cpp                | 9 +++++++++
+ src/libcalamares/partition/FileSystem.h                  | 2 ++
+ src/modules/partition/gui/CreatePartitionDialog.cpp      | 5 +++--
+ .../partition/gui/EditExistingPartitionDialog.cpp        | 5 +++--
+ 4 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/src/libcalamares/partition/FileSystem.cpp b/src/libcalamares/partition/FileSystem.cpp
+index ad4df31ed..526b6a8ea 100644
+--- a/src/libcalamares/partition/FileSystem.cpp
++++ b/src/libcalamares/partition/FileSystem.cpp
+@@ -13,12 +13,21 @@
+ #include "FileSystem.h"
+ 
+ #include <QObject>
++#include <QSet>
+ 
+ namespace CalamaresUtils
+ {
+ namespace Partition
+ {
+ 
++QSet< FileSystem::Type > croco_allowed_fs( { FileSystem::Btrfs,
++                                              FileSystem::Fat32,
++                                              FileSystem::LinuxSwap,
++                                              FileSystem::Luks,
++                                              FileSystem::Luks2,
++                                              FileSystem::Unformatted,
++                                              FileSystem::Lvm2_PV } );
++
+ QString
+ prettyNameForFileSystemType( FileSystem::Type t )
+ {
+diff --git a/src/libcalamares/partition/FileSystem.h b/src/libcalamares/partition/FileSystem.h
+index 6696f0df9..e72db07ae 100644
+--- a/src/libcalamares/partition/FileSystem.h
++++ b/src/libcalamares/partition/FileSystem.h
+@@ -26,6 +26,8 @@ namespace CalamaresUtils
+ {
+ namespace Partition
+ {
++extern QSet< FileSystem::Type > croco_allowed_fs;
++
+ QString DLLEXPORT prettyNameForFileSystemType( FileSystem::Type t );
+ 
+ /** @brief Returns a machine-readable identifier for the filesystem type
+diff --git a/src/modules/partition/gui/CreatePartitionDialog.cpp b/src/modules/partition/gui/CreatePartitionDialog.cpp
+index 3b51010b8..054bd7847 100644
+--- a/src/modules/partition/gui/CreatePartitionDialog.cpp
++++ b/src/modules/partition/gui/CreatePartitionDialog.cpp
+@@ -106,9 +106,10 @@ CreatePartitionDialog::CreatePartitionDialog( Device* device,
+     int defaultFsIndex = -1;
+     int fsCounter = 0;
+     QStringList fsNames;
+-    for ( auto fs : FileSystemFactory::map() )
++    for ( auto allowed_fs : CalamaresUtils::Partition::croco_allowed_fs )
+     {
+-        if ( fs->supportCreate() != FileSystem::cmdSupportNone && fs->type() != FileSystem::Extended )
++        auto fs = FileSystemFactory::map()[ allowed_fs ];
++        if ( fs->supportCreate() != FileSystem::cmdSupportNone )
+         {
+             fsNames << userVisibleFS( fs );  // This is put into the combobox
+             if ( fs->type() == defaultFSType )
+diff --git a/src/modules/partition/gui/EditExistingPartitionDialog.cpp b/src/modules/partition/gui/EditExistingPartitionDialog.cpp
+index 3de6e0c4c..577607549 100644
+--- a/src/modules/partition/gui/EditExistingPartitionDialog.cpp
++++ b/src/modules/partition/gui/EditExistingPartitionDialog.cpp
+@@ -83,9 +83,10 @@ EditExistingPartitionDialog::EditExistingPartitionDialog( Device* device,
+ 
+     // File system
+     QStringList fsNames;
+-    for ( auto fs : FileSystemFactory::map() )
++    for ( auto allowed_fs : CalamaresUtils::Partition::croco_allowed_fs )
+     {
+-        if ( fs->supportCreate() != FileSystem::cmdSupportNone && fs->type() != FileSystem::Extended )
++        auto fs = FileSystemFactory::map()[ allowed_fs ];
++        if ( fs->supportCreate() != FileSystem::cmdSupportNone )
+         {
+             fsNames << userVisibleFS( fs );  // For the combo box
+         }
+-- 
+2.30.0
+
