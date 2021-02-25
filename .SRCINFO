@@ -1,9 +1,10 @@
 pkgbase = process-logger
+	pkgdesc = A utility for creating human-readable program output logs.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ITAnalyst-JU/process-logger
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = npm
 	depends = python-websockets
 	depends = strace
