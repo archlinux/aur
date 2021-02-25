@@ -1,4 +1,4 @@
-pkgbase = udeler
+pkgbase = udeler-bin
 	pkgdesc = Unofficail installer for Udeler
 	pkgver = 1.0
 	pkgrel = 1

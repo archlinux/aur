@@ -1,5 +1,6 @@
 # Maintainer: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
 pkgname=udeler
+pkgbase=udeler-bin
 pkgver=1.0
 pkgrel=1
 pkgdesc="Unofficail installer for Udeler"
