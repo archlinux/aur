@@ -4,7 +4,7 @@
 
 pkgname=pdfsam
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free open source tool to split and merge pdf documents"
 arch=('any')
 url="https://www.pdfsam.org/"
