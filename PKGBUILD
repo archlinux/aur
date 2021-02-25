@@ -3,7 +3,7 @@
 # This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
 
 pkgname=wee-slack-git
-pkgver=2.6.0.r0.g4aac4bf
+pkgver=2.7.0.r0.gda7a964
 pkgrel=1
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
@@ -29,10 +29,10 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
 
   # Install the plugin script
-  install -Dm644 wee_slack.py "${pkgdir}/usr/lib/weechat/python/wee_slack.py"
+  install -Dm644 wee_slack.py "${pkgdir}/usr/share/weechat/python/wee_slack.py"
 
   # Install the emoji tab completion dictionary
-  install -Dm644 weemoji.json "${pkgdir}/usr/lib/weechat/weemoji.json"
+  install -Dm644 weemoji.json "${pkgdir}/usr/share/weechat/weemoji.json"
 
   # Install the plugin license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
