@@ -5,8 +5,8 @@
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
-pkgver="86.0.2.902.1"
-_pkgver="86.0.2-902.1"
+pkgver="86.0.902.1"
+_pkgver="86.0-902.1"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
 arch=(x86_64)
