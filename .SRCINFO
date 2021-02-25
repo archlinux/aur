@@ -1,20 +1,19 @@
 pkgbase = python-openshift
 	pkgdesc = Python client for the OpenShift API
-	pkgver = 0.11.2
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/openshift/openshift-restclient-python
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
 	depends = python
-	depends = python-dictdiffer
 	depends = python-jinja
-	depends = python-kubernetes>=11
+	depends = python-kubernetes
 	depends = python-string-utils
 	depends = python-ruamel-yaml
 	depends = python-six
-	source = https://github.com/openshift/openshift-restclient-python/archive/v0.11.2.tar.gz
-	sha256sums = c2ba45bac6068dbeacf40986659c4adfb5d249d879e767b1865ddecc65e710d3
+	source = https://github.com/openshift/openshift-restclient-python/archive/v0.12.0.tar.gz
+	sha256sums = 6de497dd9b3ceb17abfec6074bc5758e1901088d41bd923c4f7b2ece29a7d15c
 
 pkgname = python-openshift
 

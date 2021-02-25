@@ -2,20 +2,19 @@
 # Old Maintainer: Giacomo Longo <gabibbo97@gmail.com>
 
 pkgname=python-openshift
-pkgver=0.11.2
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Python client for the OpenShift API"
 url="https://github.com/openshift/openshift-restclient-python"
 license=('APACHE')
 source=("https://github.com/openshift/openshift-restclient-python/archive/v${pkgver}.tar.gz")
-sha256sums=('c2ba45bac6068dbeacf40986659c4adfb5d249d879e767b1865ddecc65e710d3')
+sha256sums=('6de497dd9b3ceb17abfec6074bc5758e1901088d41bd923c4f7b2ece29a7d15c')
 arch=('any')
 makedepends=('python-setuptools')
 depends=(
   'python'
-  'python-dictdiffer'
   'python-jinja'
-  'python-kubernetes>=11'
+  'python-kubernetes'
   'python-string-utils'
   'python-ruamel-yaml'
   'python-six'
