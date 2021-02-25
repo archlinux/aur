@@ -19,7 +19,7 @@ pkgbase = kopano-libvmime-git
 	provides = libvmime=${pkgver}
 	provides = kopano-libvmime=0.9.2k4
 	conflicts = zarafa-libvmime
-	source = kopano-libvmime-git::git+https://github.com/pietmacom/kopano-vmime.git#branch=master
+	source = kopano-libvmime-git::git+https://github.com/Kopano-dev/vmime.git#branch=master
 	md5sums = SKIP
 
 pkgname = kopano-libvmime-git
