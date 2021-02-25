@@ -1,0 +1,21 @@
+pkgbase = croco-boot-options-git
+	pkgdesc = A Boot options utility for Croco OS
+	pkgver = r5.466cbc3
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/croco-boot-options
+	arch = any
+	groups = croco-git
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = xdg-utils
+	depends = grub
+	depends = polkit
+	optdepends = plymouth
+	provides = croco-boot-options
+	conflicts = croco-boot-options
+	source = git+https://gitlab.com/croco-os/applications/croco-boot-options.git
+	md5sums = SKIP
+
+pkgname = croco-boot-options-git
+
