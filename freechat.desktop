@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FreeChat
+GenericName=FreeChat
+Comment=致力于打造macOS和Linux桌面下最好用的微信客户端。
+Exec=/opt/freechat/electron-wechat
+Icon=freechat
+Terminal=false
+StartupNotify=false
+Categories=Network;;

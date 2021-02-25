@@ -1,0 +1,47 @@
+diff --git a/src/controller/main-controller.js b/src/controller/main-controller.js
+index 51c6169..b5d2101 100644
+--- a/src/controller/main-controller.js
++++ b/src/controller/main-controller.js
+@@ -7,6 +7,7 @@ const {
+ } = require('electron');
+ const path = require('path');
+ const CssInjector = require('../js/css-injector');
++const { execSync } = require('child_process');
+ 
+ class MainController {
+     constructor() {
+@@ -28,7 +29,7 @@ class MainController {
+             }
+         })
+ 
+-        this.window.loadURL('https://wx.qq.com/?lang=zh_CN')
++        this.window.loadURL('https://wx.qq.com/?lang=zh_CN&target=t')
+ 
+         this.window.webContents.on('dom-ready', () => {
+             this.window.webContents.insertCSS(CssInjector.login)
+@@ -62,6 +63,25 @@ class MainController {
+             (details) => this.handleRequest(details)
+         )
+ 
++        session.defaultSession.webRequest.onBeforeSendHeaders({urls: [
++            "https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxnewloginpage*",
++            "https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxnewloginpage*",
++        ]},
++            (details, callback) => {
++                let token = execSync('/opt/wechat-uos-token/wechat-uos-token.sh').toString('ascii');
++                if (details.url.indexOf("/cgi-bin/mmwebwx-bin/webwxnewloginpage") > -1) {
++                    details.requestHeaders["extspam"] = token
++                    details.requestHeaders["client-version"] = "2.0.0"
++                    callback({
++                        requestHeaders: details.requestHeaders,
++                    })
++                } else {
++                    callback({});
++                }
++            }
++        )
++
++
+         ipcMain.on('resizeWindow', (event, value) => {
+             if (value === 'desktop') {
+                 this.window.setSize(1000, this.window.getSize()[1], true)
