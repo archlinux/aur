@@ -14,7 +14,6 @@ pkgbase = gnome-shell-extension-dash-to-dock-git
 	conflicts = gnome-shell-extension-dash-to-dock
 	source = gnome-shell-extension-dash-to-dock::git+https://github.com/micheleg/dash-to-dock/
 	md5sums = SKIP
-	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-dash-to-dock-git
 

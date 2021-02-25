@@ -1,4 +1,5 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Maintainer: Amin Vakil <info at aminvakil dot com>
+# Contributor: XZS <d dot f dot fischer at web dot de>
 # Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 # Contributor: Christopher Krooß <didi2002 at web.de>
