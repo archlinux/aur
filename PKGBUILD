@@ -4,7 +4,7 @@
 
 _pkgname=lens
 pkgname=lens-bin
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc='The Kubernetes IDE'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('lens')
 conflicts=('lens')
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://github.com/lensapp/${_pkgname}/releases/download/v${pkgver}/Lens-${pkgver}.${arch}.AppImage"
         "${_pkgname}.desktop")
-sha256sums=('e8cfe9d83e9d473c79edddf1eebdd8c8649604f2e975483cb70a14d4b8f93b0e'
+sha256sums=('94f639b543bb88dd902aa0f1ee537d44c0d6271c1a6fc585726e50e984ce7cf0'
             '3db5b267cededcc73b3e35b89b46fca419e82832b85fa633e4326156cf648d02')
 
 prepare() {
