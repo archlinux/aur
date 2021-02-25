@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=stegano-git
-pkgver=0.4.1.r8.g46fd3fd
+pkgver=stegano.cli.v0.4.5.r17.g26cd46c
 pkgrel=1
 pkgdesc="CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding. (git)"
 arch=('x86_64')
