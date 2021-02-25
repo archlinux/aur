@@ -1,7 +1,8 @@
-# Maintainer: confusedfla <sebi at notsharingmy dot info>
+# Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Contributor: confusedfla <sebi at notsharingmy dot info>
 # Contributor: Eduard Bachmakov <e.bachmakov@gmail.com>
 pkgname=moderntimeline
-pkgver=20150306
+pkgver=20200611
 pkgrel=1
 pkgdesc="Timeline for the moderncv latex class"
 arch=('any')
@@ -10,7 +11,7 @@ license=('GPL')
 depends=('texlive-latexextra')
 install=
 source=("http://mirror.ctan.org/macros/latex/contrib/moderntimeline.zip")
-md5sums=('ee03eee7bc9c1cab2613dde158824ff3')
+sha256sums=('2922d1f8964a5c984dd489b4e98f3bd5cec231ee2ad54f4130243dc53ba36184')
 
 package() {
   cd "$srcdir/moderntimeline"
