@@ -12,7 +12,6 @@ pkgbase = weechat-minimal-git
 	makedepends = source-highlight
 	makedepends = cmake
 	makedepends = pkg-config
-	makedepends = asciidoctor
 	depends = gnutls
 	depends = ncurses
 	depends = curl
@@ -27,6 +26,9 @@ pkgbase = weechat-minimal-git
 	optdepends = aspell
 	optdepends = guile
 	optdepends = python2
+	optdepends = asciidoctor
+	optdepends = php
+	optdepends = v8
 	provides = weechat=2.7.125.gc29b45a0f
 	conflicts = weechat
 	source = git+https://github.com/weechat/weechat.git

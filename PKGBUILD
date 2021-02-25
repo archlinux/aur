@@ -21,13 +21,12 @@ license=('GPL')
 
 depends=('gnutls' 'ncurses' 'curl' 'zlib' 'libgcrypt' 'hicolor-icon-theme')
 makedepends=(
-	'git' 'source-highlight' 'cmake' 'pkg-config' 'asciidoctor'
-	#'php' 'v8'
+	'git' 'source-highlight' 'cmake' 'pkg-config'
 )
 optdepends=(
 	'perl' 'python' 'lua' 'tcl' 'ruby'
-	'aspell' 'guile' 'python2'
-	#'php' 'v8'
+	'aspell' 'guile' 'python2' 'asciidoctor'
+	'php' 'v8'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -67,7 +66,6 @@ build() {
 		-DENABLE_PYTHON2=OFF \
 		-DENABLE_SPELL=OFF \
 		-DENABLE_ENCHANT=OFF \
-		-DENABLE_DEBUG=OFF \
 		-DENABLE_TESTS=OFF
 	make
 }
