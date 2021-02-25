@@ -1,14 +1,14 @@
 # Maintainer: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=ubuntu-backgrounds-groovy
-pkgver=20.10.1
+pkgver=20.10.3
 pkgrel=1
 pkgdesc="The backgrounds included in Ubuntu 20.10 groovy"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
 arch=('any')
 url="http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers"
 source=("${url}/ubuntu-wallpapers_${pkgver}.orig.tar.gz")
-sha256sums=('3db2a2612239cdc06e58035cd8910005f7e75969fcb5aa149712261c8c6f3bac')
+sha256sums=('03582c2ffbdfff7d7e2f5a2b714221ae4aacc59e688306c1edf495ede258269d')
 
 _ubunturelver=20.10
 _ubunturelname=groovy
