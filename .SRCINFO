@@ -1,7 +1,7 @@
 pkgbase = python-cupy
 	pkgdesc = NumPy-like API accelerated with CUDA
-	pkgver = 8.3.0
-	pkgrel = 2
+	pkgver = 8.4.0
+	pkgrel = 1
 	url = https://cupy.dev
 	arch = x86_64
 	license = MIT
@@ -14,9 +14,9 @@ pkgbase = python-cupy
 	depends = python-numpy
 	depends = python-fastrlock
 	optdepends = libcutensor
-	source = https://github.com/cupy/cupy/archive/v8.3.0.tar.gz
+	source = https://github.com/cupy/cupy/archive/v8.4.0.tar.gz
 	source = https://github.com/NVlabs/cub/archive/1.8.0.tar.gz
-	md5sums = f823ac3c58d151a7fb89306296864a2b
+	md5sums = 00eb9edbfb59bb287d68e283657e93ad
 	md5sums = 9203ea2499b56782601fddf8a12e9b08
 
 pkgname = python-cupy
