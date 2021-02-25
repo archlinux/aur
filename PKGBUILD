@@ -3,7 +3,7 @@
 _pkgname=NBXplorer
 
 pkgname=nbxplorer-latest
-pkgver=latest
+pkgver=1
 pkgrel=1
 epoch=
 pkgdesc="A minimalist UTXO tracker for HD wallets."
