@@ -1,14 +1,12 @@
 pkgbase = sofia-sip-fs
 	pkgdesc = An open-source SIP User-Agent library (FreeSWITCH version)
-	pkgver = 1.13.2
+	pkgver = 1.13.3
 	pkgrel = 1
 	url = https://github.com/freeswitch/sofia-sip
 	arch = x86_64
 	license = LGPL
-	source = sofia-sip-1.13.2.tar.gz::https://github.com/freeswitch/sofia-sip/archive/v1.13.2.tar.gz
-	source = 0001-Compatible-with-the-new-version-of-libckeck.patch
-	sha256sums = b9eca9688ce4b28e062daf0933c3bf661fb607e7afafa71bda3e8f07eb88df44
-	sha256sums = 7e52ec8ee1340042982c2d7b5612e37b7140daea5e5b67e2bd392b2c367913de
+	source = sofia-sip-1.13.3.tar.gz::https://github.com/freeswitch/sofia-sip/archive/v1.13.3.tar.gz
+	sha256sums = 6f9cc7ed674e2214809e390728da0df646f94e5b991cff9f393217176de9d7e4
 
 pkgname = sofia-sip-fs
 	depends = glib2
