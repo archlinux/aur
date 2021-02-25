@@ -90,6 +90,36 @@ pkgver() {
 }
 
 _sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
+
+_patchFromGit() {
+    _patchDir="${srcdir}/$(basename $(pwd))-patch.git"
+    if [ ! -e "${_patchDir}" ];
+    then
+	git clone --bare ${1} ${_patchDir}
+    fi
+
+    _sourceBranchName="${_sourceBranch//#*=/}"
+    # Patch From Specific Range
+    if [ ! -z "${3}" ];
+    then
+        git --git-dir="${_patchDir}" format-patch "^${2}" "${3}" --stdout | git apply
+
+    # Patch From Specific Commit
+    elif [ ! -z "${2}" ];
+    then
+	git --git-dir="${_patchDir}" format-patch -1 "${2}" --stdout | git apply
+
+    # Patch From Dedicated Branch
+    elif git --git-dir="${_patchDir}" rev-parse --verify --quiet "${_sourceBranchName}" > /dev/null \
+         && git --git-dir="${_patchDir}" rev-parse --verify --quiet "${_sourceBranchName}-patch" > /dev/null ;
+    then
+	git --git-dir="${_patchDir}" format-patch "^${_sourceBranchName}" "${_sourceBranchName}-patch" --stdout | git apply
+
+    else
+	echo "No Patch Branch Found [${_sourceBranchName}-patch]"
+
+    fi
+}
 # template end;
 
 source+=(
