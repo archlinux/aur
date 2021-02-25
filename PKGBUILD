@@ -1,18 +1,17 @@
 # Maintainer: sseneca <me at ssene dot ca>
 
 pkgname=jellycli
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Terminal music player for Jellyfin."
 arch=('x86_64')
 url='https://github.com/tryffel/jellycli'
-provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 license=('GPL3')
 makedepends=('go' 'git')
 depends=('glibc' 'alsa-lib')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tryffel/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('116d2ac3ccd5cabee931ebb9d8d0e61bb5cf1d27852bac87fb4b0bdec55efcac2d2f0fa6c05542d904a63acdb502e039827a14b89e349928c7bf6069054baff6')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('6e8e68a8d1198c9cece384306191a313d82a1fe49fb888d0183f75cfdfe36bc31f2efd309fc7abe60bbfbaf5f91c7b7c04132e14c33b04c5c209e94ef7f99e52')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -33,8 +32,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-
   install -D "$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
