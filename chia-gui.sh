@@ -1,5 +1,5 @@
 #!/bin/bash
 cd /opt/chia-blockchain
 . ./activate
-cd /opt/chia-blockchain-gui
+cd /opt/chia-blockchain/chia-blockchain-gui
 npm run electron

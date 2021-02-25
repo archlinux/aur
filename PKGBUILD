@@ -2,7 +2,7 @@
 
 pkgname='chia-gui-git'
 pkgver=1.0rc2.r0.g6518b2bf
-pkgrel=1
+pkgrel=2
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Also installs GUI"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://www.chia.net/"
@@ -19,7 +19,7 @@ source=("git+https://github.com/Chia-Network/chia-blockchain.git"
 sha256sums=('SKIP'
             'SKIP'
             '62693edb1a75f2a44b62d1a4f02b1ae755d40eb02dd7faf5f65ea6253e5e3645'
-            'f9f78823f67f79813cca27bb200d5608b5adc2a37c2a7ebd90a6e80e02245ade')
+            '51fe7c07eaf44bab143e8622e163e9e2d1953cae5d6988bdf107fd689a2da0e0')
 
 pkgver() {
 	cd chia-blockchain # using other repo since gui repo doesn't have any tags yet
@@ -27,6 +27,7 @@ pkgver() {
 }
 
 build() {
+	mv chia-blockchain-gui chia-blockchain
 	cd chia-blockchain
 	python3 -m venv venv
 	ln -s venv/bin/activate .
@@ -35,7 +36,7 @@ build() {
 	pip install wheel
 	pip install --extra-index-url https://download.chia.net/simple/ miniupnpc==2.1
 	pip install -e . --extra-index-url https://download.chia.net/simple/
-	cd ../chia-blockchain-gui
+	cd chia-blockchain-gui
 	npm install
 	npm audit fix
 	npm run locale:extract
@@ -44,11 +45,9 @@ build() {
 }
 
 package() {
-	if [ -n "${_install-gui}" ]; then
-	    install -Dm644 chia-blockchain-gui/src/assets/img/circle-cropped.png "$pkgdir"/usr/share/pixmaps/chia.png
-	    install -Dm755 chia-gui.sh "$pkgdir"/usr/bin/chia-gui
-	    install -Dm644 chia-gui.desktop "$pkgdir"/usr/share/applications/chia-gui.desktop
-	fi
+	install -Dm644 chia-blockchain/chia-blockchain-gui/src/assets/img/circle-cropped.png "$pkgdir"/usr/share/pixmaps/chia.png
+	install -Dm755 chia-gui.sh "$pkgdir"/usr/bin/chia-gui
+	install -Dm644 chia-gui.desktop "$pkgdir"/usr/share/applications/chia-gui.desktop
 	mkdir -p "$pkgdir"/opt
 	mv chia-blockchain "$pkgdir"/opt
 }
