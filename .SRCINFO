@@ -1,0 +1,18 @@
+pkgbase = grub-croco
+	pkgdesc = meta pkg for grub
+	pkgver = 2.04
+	pkgrel = 11
+	url = https://www.gnu.org/software/grub/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grub
+	depends = update-grub
+	depends = os-prober-croco
+	depends = efibootmgr
+	depends = memtest86+
+	provides = grub-croco
+	conflicts = grub-croco
+
+pkgname = grub-croco
+
