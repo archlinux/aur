@@ -9,5 +9,9 @@ responsável às penas da lei.
 
 ATENÇÃO!
 
-A versão recomendada do java pela recita é a 8 (Version 8 Update 241).
+Apesar da versão do java recomenda pela receita ser a 11, nos meus testes 
+o programa só abriu quando va versão padrão do java foi a 15.
+
+# sudo archlinux-java set java-15-openjdk
+
 https://www.java.com/pt_BR/download/manual.jsp

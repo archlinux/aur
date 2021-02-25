@@ -1,6 +1,6 @@
 pkgbase = irpf
 	pkgdesc = Programa Oficial da Receita para elaboração do IRPF
-	pkgver = 2020.2.0
+	pkgver = 2021.0.0
 	pkgrel = 1
 	url = http://www.receita.fazenda.gov.br
 	install = irpf.install
@@ -9,18 +9,18 @@ pkgbase = irpf
 	depends = java-environment
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020-2.0.zip
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2021/irpf/arquivos/IRPF2021-1.0.zip
 	source = Copyright
 	source = irpf.png
 	source = irpf.desktop
 	source = irpf.install
 	source = irpf
-	md5sums = 8c324ff9a27b296968b8574a8b25dbb4
-	md5sums = 31c22ff443abed485f9ef65769bb3171
+	md5sums = d7e98077f845b673c86240b397cf12b6
+	md5sums = 0b81ed3a0a6200d2706caf541756d55d
 	md5sums = 43d8c9617118578f03b2c4eeb1c72c57
 	md5sums = 5c3f364ed6e30e8aac69ad4394deabba
-	md5sums = 2ea7481b649f5a12d90fe8d1617814c8
-	md5sums = a56e7e3e4a53dd027224e32b46cf3c7b
+	md5sums = d9ac8023f52d57323acef3aecbe2458b
+	md5sums = a3343e87932f90696d08d0bd015ea89b
 
 pkgname = irpf
 
