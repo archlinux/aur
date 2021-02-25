@@ -1,17 +1,19 @@
 pkgbase = manictime-bin
 	pkgdesc = ManicTime automatically records your computer usage.
-	pkgver = 1.2.2
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://www.manictime.com/linux/download
 	arch = x86_64
-	license = custom:commercial
-	depends = mono
-	depends = libxss
+	license = custom
 	depends = libappindicator-gtk3
-	source = manictime-bin-1.2.2.tar.gz::https://cdn.manictime.com/setup/linux/v1_2_2_0/ManicTime.tar.gz
-	source = manictime.desktop
-	sha256sums = 471ca9653ba189475cdfa8299ca8a3e9c466427f1084891271dd0d6bc29fcbca
-	sha256sums = a93303d5320cc2678a7643a4320b61d3b9577080cfdfae2055f9a4534c65c230
+	depends = libx11
+	depends = glibc
+	depends = libxss
+	depends = gss-ntlmssp
+	depends = krb5
+	options = staticlibs
+	source = manictime-bin-1.3.1.tar.gz::https://cdn.manictime.com/setup/linux/v1_3_1_0/ManicTime.tar.gz
+	sha256sums = 1da4fddd1ed44dc0eb2e1e3d11e4f1f54caca7c61f8be7330147e21be1cee62a
 
 pkgname = manictime-bin
 
