@@ -1,8 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sword-svn
-pkgver=r3722
+pkgver=r3844
 pkgrel=1
+epoch=1
 pkgdesc="Libraries for Bible programs - svn-version"
 arch=('i686' 'x86_64')
 url="http://www.crosswire.org/sword/"
@@ -11,7 +12,7 @@ depends=('curl' 'clucene' 'xapian-core')
 makedepends=('subversion')
 provides=('sword=1.8.1')
 conflicts=('sword=1.8.1')
-source=('sword::svn+https://www.crosswire.org/svn/sword/trunk/')
+source=('sword::svn+https://www.crosswire.org/svn/sword/trunk/#revision=3844')
 sha256sums=('SKIP')
 
 pkgver() {
