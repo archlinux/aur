@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=blueprint64
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 epoch=
 pkgdesc='A general-purpose ROMhacking tool for creating Super Mario 64 ROMhacks.'
@@ -34,9 +34,9 @@ backup=()
 options=()
 install='blueprint64.install'
 changelog=
-source=('https://gitlab.com/blueprint64/blueprint-64/uploads/3d5df9d6530dbece8a9c0588dc76b464/blueprint64-0.17.3.tar.gz')
+source=('https://gitlab.com/blueprint64/blueprint-64/uploads/a7ee6fd3ff2e998f4b1ad875a0f26d68/blueprint64-0.17.4.tar.gz')
 noextract=()
-md5sums=('9cf04aa0eb8a87a5f0da3214103e5dd7')
+md5sums=('934b178bb5f02c2bfa6f2376c443bcd6')
 validpgpkeys=()
 
 build() {
