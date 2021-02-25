@@ -1,0 +1,25 @@
+pkgbase = croco-welcome-git
+	pkgdesc = A Welcome app for Croco OS
+	pkgver = r81.785bb36
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/croco-welcome
+	arch = any
+	groups = croco-git
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = xdg-utils
+	optdepends = xorg-xrandr
+	optdepends = xorg-xinput
+	optdepends = croco-assistant
+	optdepends = croco-network-assistant
+	optdepends = qwikaccess
+	optdepends = croco-gamer
+	optdepends = croco-boot-options
+	provides = croco-welcome
+	conflicts = croco-welcome
+	source = repo::git+https://gitlab.com/croco-os/applications/croco-welcome.git
+	md5sums = SKIP
+
+pkgname = croco-welcome-git
+
