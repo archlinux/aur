@@ -12,7 +12,7 @@ conflicts=($pkgname)
 depends=('net-tools' 'moreutils')
 install=$pkgname.install
 source=('https://sourceforge.net/projects/showipatlogon/files/showipatlogon.tar.xz' 'showipatlogon.install')
-md5sums=('b5046ff17f3ed7fb3e46a53d73d84438'
+md5sums=('81eb335d4354dc3bde51d80c06dcb7e0'
 	 '5ecbace16850d02bcaf4c1197fc16cb6')
 
 package() {
