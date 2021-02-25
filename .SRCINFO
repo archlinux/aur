@@ -1,0 +1,19 @@
+pkgbase = libfragmentzip
+	pkgdesc = A library allowing to download single files from a remote zip archive
+	pkgver = 60
+	pkgrel = 1
+	url = https://github.com/tihmstar/libfragmentzip
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = libgeneral
+	depends = curl
+	depends = libzip
+	depends = zlib
+	provides = libfragmentzip
+	conflicts = libfragmentzip
+	source = https://github.com/tihmstar/libfragmentzip/archive/60.tar.gz
+	md5sums = 99d9d4dc22f424c99b4f7ac1de29672a
+
+pkgname = libfragmentzip
+
