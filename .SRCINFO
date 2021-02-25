@@ -1,6 +1,6 @@
 pkgbase = tuxedo-control-center
 	pkgdesc = A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops.
-	pkgver = 1.0.9
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-control-center
 	install = tuxedo-control-center.install
@@ -11,11 +11,11 @@ pkgbase = tuxedo-control-center
 	depends = nss
 	depends = gtk3
 	options = !strip
-	source = https://rpm.tuxedocomputers.com/opensuse/15.2/x86_64/tuxedo-control-center_1.0.9.rpm
+	source = https://rpm.tuxedocomputers.com/opensuse/15.2/x86_64/tuxedo-control-center_1.0.11.rpm
 	source = tuxedo-control-center.install
-	sha256sums = 971f9ca7892c4267e90f8a7dcd32226d985bb84a481d42bfa4cf4afd4ba1f148
+	sha256sums = 07cd17f9a6721c706dedae7915d2db1ec772461c9a79db599257d1ce1d8d4e21
 	sha256sums = fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3
-	sha512sums = 734ba08c7578b1f0be1074fe89e6436f7b5dcc69c4781e08c3b5eec04d87689b5091d712a4c9dd74511ca48d5310c104ee2bf893a1ca98d54659c86e8b6d4f2d
+	sha512sums = 92322c147cd80307564f294d91c84a9440d70a9ec26a36b47c7f9e0eb53d8cbb45a3b6e2ecfdb476675d5c7f720a886d7b531781427e77b8a9774aeeb14b1236
 	sha512sums = b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a
 
 pkgname = tuxedo-control-center
