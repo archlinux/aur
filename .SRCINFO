@@ -5,7 +5,6 @@ pkgbase = libgeneral
 	url = https://github.com/tihmstar/libgeneral
 	arch = x86_64
 	license = LGPL
-	makedepends = git
 	provides = libgeneral
 	conflicts = libgeneral
 	source = https://github.com/tihmstar/libgeneral/archive/54.tar.gz

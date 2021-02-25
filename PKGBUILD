@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Maintainer: sunflsks <sudhip@nashi.us>
 
 pkgname=libgeneral
 pkgver=54
