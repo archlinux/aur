@@ -7,7 +7,6 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: valgrind requires rebuilt with each major glibc version
 
-pkgbase=glibc
 pkgname=(glibc-minimal-git lib32-glibc-minimal-git)
 pkgver=2.33
 pkgrel=1
