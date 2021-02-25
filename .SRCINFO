@@ -1,0 +1,12 @@
+pkgbase = bluesky-mountain-dark-theme-git
+	pkgdesc = BlueSky-Mountain Dark theme for gtk2/3 and metacity
+	pkgver = f875342
+	pkgrel = 1
+	url = https://github.com/i-mint/bluesky
+	arch = any
+	license = GPL3
+	source = git+https://github.com/i-mint/bluesky
+	sha256sums = SKIP
+
+pkgname = bluesky-mountain-dark-theme-git
+
