@@ -2,7 +2,7 @@
 
 _pkgbase=hid-playstation
 pkgname=${_pkgbase}-dkms
-pkgver=20210207
+pkgver=20210216
 pkgrel=1
 pkgdesc="Sony's official HID driver for the PS5 DualSense controller."
 arch=(any)
@@ -14,7 +14,7 @@ source=(
 	disable-ff-enabled-check.patch
 )
 
-md5sums=('6e4906b4d3d92a20e3db2a4165622aaf'
+md5sums=('22dd365aa2707f9b3e66857432e24dab'
          '6d97239c33773b3f2fc5d497e98a1017'
          'c9585c976df5c262127bfe8b595824b3'
          'b5424fcb24f12a53b4ff18f1b85bcb23'

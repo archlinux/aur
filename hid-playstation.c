@@ -11,8 +11,6 @@
 #include <linux/hid.h>
 #include <linux/idr.h>
 #include <linux/input/mt.h>
-#include <linux/leds.h>
-#include <linux/led-class-multicolor.h>
 #include <linux/module.h>
 
 #include <asm/unaligned.h>
@@ -53,12 +51,6 @@ struct ps_calibration_data {
 	short bias;
 	int sens_numer;
 	int sens_denom;
-};
-
-struct ps_led_info {
-	const char *name;
-	enum led_brightness (*brightness_get)(struct led_classdev *cdev);
-	void (*brightness_set)(struct led_classdev *cdev, enum led_brightness);
 };
 
 /* Seed values for DualShock4 / DualSense CRC32 for different report types. */
@@ -155,7 +147,6 @@ struct dualsense {
 	uint8_t motor_right;
 
 	/* RGB lightbar */
-	struct led_classdev_mc lightbar;
 	bool update_lightbar;
 	uint8_t lightbar_red;
 	uint8_t lightbar_green;
@@ -165,7 +156,6 @@ struct dualsense {
 	bool update_mic_mute;
 	bool mic_muted;
 	bool last_btn_mic_state;
-	struct led_classdev mute_led;
 
 	/* Player leds */
 	bool update_player_leds;
@@ -391,7 +381,7 @@ static int ps_battery_get_property(struct power_supply *psy,
 	uint8_t battery_capacity;
 	int battery_status;
 	unsigned long flags;
-	int ret;
+	int ret = 0;
 
 	spin_lock_irqsave(&dev->lock, flags);
 	battery_capacity = dev->battery_capacity;
@@ -416,7 +406,7 @@ static int ps_battery_get_property(struct power_supply *psy,
 		break;
 	}
 
-	return 0;
+	return ret;
 }
 
 static int ps_device_register_battery(struct ps_device *dev)
@@ -530,71 +520,6 @@ static int ps_get_report(struct hid_device *hdev, uint8_t report_id, uint8_t *bu
 			hid_err(hdev, "CRC check failed for reportID=%d\n", report_id);
 			return -EILSEQ;
 		}
-	}
-
-	return 0;
-}
-
-static int ps_led_register(struct ps_device *ps_dev, struct led_classdev *led,
-		const struct ps_led_info *led_info)
-{
-	int ret;
-
-	led->name = devm_kasprintf(&ps_dev->hdev->dev, GFP_KERNEL,
-			"playstation::%pMR::%s", ps_dev->mac_address, led_info->name);
-
-	if (!led->name)
-		return -ENOMEM;
-
-	led->brightness = 0;
-	led->max_brightness = 1;
-	led->flags = LED_CORE_SUSPENDRESUME;
-	led->brightness_get = led_info->brightness_get;
-	led->brightness_set = led_info->brightness_set;
-
-	ret = devm_led_classdev_register(&ps_dev->hdev->dev, led);
-	if (ret) {
-		hid_err(ps_dev->hdev, "Failed to register LED %s: %d\n", led_info->name, ret);
-		return ret;
-	}
-
-	return 0;
-}
-
-/* Register a DualSense/DualShock4 RGB lightbar represented by a multicolor LED. */
-static int ps_lightbar_register(struct ps_device *ps_dev, struct led_classdev_mc *lightbar_mc_dev,
-	int (*brightness_set)(struct led_classdev *, enum led_brightness))
-{
-	struct hid_device *hdev = ps_dev->hdev;
-	struct mc_subled *mc_led_info;
-	struct led_classdev *led_cdev;
-	int ret;
-
-	mc_led_info = devm_kmalloc_array(&hdev->dev, 3, sizeof(*mc_led_info),
-					 GFP_KERNEL | __GFP_ZERO);
-	if (!mc_led_info)
-		return -ENOMEM;
-
-	mc_led_info[0].color_index = LED_COLOR_ID_RED;
-	mc_led_info[1].color_index = LED_COLOR_ID_GREEN;
-	mc_led_info[2].color_index = LED_COLOR_ID_BLUE;
-
-	lightbar_mc_dev->subled_info = mc_led_info;
-	lightbar_mc_dev->num_colors = 3;
-
-	led_cdev = &lightbar_mc_dev->led_cdev;
-	led_cdev->name = devm_kasprintf(&hdev->dev, GFP_KERNEL, "playstation::%pMR::rgb",
-			ps_dev->mac_address);
-	if (!led_cdev->name)
-		return -ENOMEM;
-	led_cdev->brightness = 255;
-	led_cdev->max_brightness = 255;
-	led_cdev->brightness_set_blocking = brightness_set;
-
-	ret = devm_led_classdev_multicolor_register(&hdev->dev, lightbar_mc_dev);
-	if (ret < 0) {
-		hid_err(hdev, "Cannot register multicolor LED device\n");
-		return ret;
 	}
 
 	return 0;
@@ -836,68 +761,6 @@ err_free:
 	return ret;
 }
 
-static int dualsense_lightbar_set_brightness(struct led_classdev *cdev,
-	enum led_brightness brightness)
-{
-	struct led_classdev_mc *mc_cdev = lcdev_to_mccdev(cdev);
-	struct dualsense *ds = container_of(mc_cdev, struct dualsense, lightbar);
-	unsigned long flags;
-
-	led_mc_calc_color_components(mc_cdev, brightness);
-
-	spin_lock_irqsave(&ds->base.lock, flags);
-	ds->update_lightbar = true;
-	ds->lightbar_red = mc_cdev->subled_info[0].brightness;
-	ds->lightbar_green = mc_cdev->subled_info[1].brightness;
-	ds->lightbar_blue = mc_cdev->subled_info[2].brightness;
-	spin_unlock_irqrestore(&ds->base.lock, flags);
-
-	schedule_work(&ds->output_worker);
-	return 0;
-}
-
-static enum led_brightness dualsense_mute_led_get_brightness(struct led_classdev *led)
-{
-	struct dualsense *ds = container_of(led, struct dualsense, mute_led);
-
-	return ds->mic_muted;
-}
-
-/* The mute LED is treated as read-only. This set call prevents ENOTSUP errors e.g. on unload. */
-static void dualsense_mute_led_set_brightness(struct led_classdev *led, enum led_brightness value)
-{
-
-}
-
-static enum led_brightness dualsense_player_led_get_brightness(struct led_classdev *led)
-{
-	struct hid_device *hdev = to_hid_device(led->dev->parent);
-	struct dualsense *ds = hid_get_drvdata(hdev);
-
-	return !!(ds->player_leds_state & BIT(led - ds->player_leds));
-}
-
-static void dualsense_player_led_set_brightness(struct led_classdev *led, enum led_brightness value)
-{
-	struct hid_device *hdev = to_hid_device(led->dev->parent);
-	struct dualsense *ds = hid_get_drvdata(hdev);
-	unsigned long flags;
-	unsigned int led_index;
-
-	spin_lock_irqsave(&ds->base.lock, flags);
-
-	led_index = led - ds->player_leds;
-	if (value == LED_OFF)
-		ds->player_leds_state &= ~BIT(led_index);
-	else
-		ds->player_leds_state |= BIT(led_index);
-
-	ds->update_player_leds = true;
-	spin_unlock_irqrestore(&ds->base.lock, flags);
-
-	schedule_work(&ds->output_worker);
-}
-
 static void dualsense_init_output_report(struct dualsense *ds, struct dualsense_output_report *rp,
 		void *buf)
 {
@@ -1064,7 +927,7 @@ static int dualsense_parse_report(struct ps_device *ps_dev, struct hid_report *r
 	input_report_abs(ds->gamepad, ABS_RZ, ds_report->rz);
 
 	value = ds_report->buttons[0] & DS_BUTTONS0_HAT_SWITCH;
-	if (value > ARRAY_SIZE(ps_gamepad_hat_mapping))
+	if (value >= ARRAY_SIZE(ps_gamepad_hat_mapping))
 		value = 8; /* center */
 	input_report_abs(ds->gamepad, ABS_HAT0X, ps_gamepad_hat_mapping[value].x);
 	input_report_abs(ds->gamepad, ABS_HAT0Y, ps_gamepad_hat_mapping[value].y);
@@ -1241,6 +1104,16 @@ static int dualsense_reset_leds(struct dualsense *ds)
 	return 0;
 }
 
+static void dualsense_set_lightbar(struct dualsense *ds, uint8_t red, uint8_t green, uint8_t blue)
+{
+	ds->update_lightbar = true;
+	ds->lightbar_red = red;
+	ds->lightbar_green = green;
+	ds->lightbar_blue = blue;
+
+	schedule_work(&ds->output_worker);
+}
+
 static void dualsense_set_player_leds(struct dualsense *ds)
 {
 	/*
@@ -1269,19 +1142,7 @@ static struct ps_device *dualsense_create(struct hid_device *hdev)
 	struct dualsense *ds;
 	struct ps_device *ps_dev;
 	uint8_t max_output_report_size;
-	int i, ret;
-
-	static const struct ps_led_info mute_led_info = {
-		"micmute", dualsense_mute_led_get_brightness, dualsense_mute_led_set_brightness
-	};
-
-	static const struct ps_led_info player_leds_info[] = {
-		{ "led1", dualsense_player_led_get_brightness, dualsense_player_led_set_brightness },
-		{ "led2", dualsense_player_led_get_brightness, dualsense_player_led_set_brightness },
-		{ "led3", dualsense_player_led_get_brightness, dualsense_player_led_set_brightness },
-		{ "led4", dualsense_player_led_get_brightness, dualsense_player_led_set_brightness },
-		{ "led5", dualsense_player_led_get_brightness, dualsense_player_led_set_brightness }
-	};
+	int ret;
 
 	ds = devm_kzalloc(&hdev->dev, sizeof(*ds), GFP_KERNEL);
 	if (!ds)
@@ -1362,21 +1223,7 @@ static struct ps_device *dualsense_create(struct hid_device *hdev)
 	if (ret)
 		goto err;
 
-	ret = ps_lightbar_register(ps_dev, &ds->lightbar, dualsense_lightbar_set_brightness);
-	if (ret)
-		goto err;
-
-	ret = ps_led_register(ps_dev, &ds->mute_led, &mute_led_info);
-	if (ret)
-		goto err;
-
-	for (i = 0; i < ARRAY_SIZE(player_leds_info); i++) {
-		const struct ps_led_info *led_info = &player_leds_info[i];
-
-		ret = ps_led_register(ps_dev, &ds->player_leds[i], led_info);
-		if (ret < 0)
-			goto err;
-	}
+	dualsense_set_lightbar(ds, 0, 0, 128); /* blue */
 
 	ret = ps_device_set_player_id(ps_dev);
 	if (ret) {
