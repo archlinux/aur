@@ -1,7 +1,7 @@
 pkgbase = alusus
 	pkgdesc = ALUSUS PROGRAMMING LANGUAGE - لغة الأسس البرمجية
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 3
 	url = https://alusus.org/
 	arch = x86_64
 	license = custom
@@ -9,6 +9,8 @@ pkgbase = alusus
 	makedepends = python-pip
 	makedepends = cmake
 	makedepends = git
+	source = alusus::git+https://github.com/Alusus/Alusus.git
+	md5sums = SKIP
 
 pkgname = alusus
 
