@@ -19,16 +19,20 @@ prepare() {
 
 build() {
   cd "$pkgname"-"$pkgver"
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
+  go mod init main
+  go mod tidy
+
+  cd golaunch
+  go build -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
     -ldflags "-extldflags $LDFLAGS" \
-    -o $pkgname ./golaunch
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
+    ./golaunch.go
+
+  cd ../godesktop
+  go build -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
     -ldflags "-extldflags $LDFLAGS" \
-    -o godesktop ./godesktop
+    ./godesktop.go
 }
 
 package() {
