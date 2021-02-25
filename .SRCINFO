@@ -1,0 +1,28 @@
+pkgbase = mhwd-db-croco-git
+	pkgdesc = mhwd-db-croco(manjaro's mhwd-db backported to archlinux with additional features and limited to only dkms drivers)
+	pkgver = r17.e3f7adf
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/mhwd-db-croco
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = hwinfo
+	source = git+https://gitlab.com/croco-os/applications/mhwd-db-croco.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mhwd-db-croco-git
+	pkgdesc = mhwd-db-croco(manjaro's mhwd-db backported to archlinux with additional features and limited to only dkms drivers)
+	install = mhwd-db.install
+	arch = any
+	depends = mhwd-nvidia
+	depends = mhwd-ati
+	depends = mhwd-amdgpu
+	depends = mhwd-nvidia-390xx
+	provides = mhwd-db
+	provides = mhwd-db-croco
+	conflicts = mhwd-db
+	conflicts = mhwd-db-croco
+	replaces = mhwd-db-croco
+
