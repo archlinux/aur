@@ -26,4 +26,5 @@ package() {
   cd "${pkgname%-git}"
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 systemd-service/mpdscrobble.service "$pkgdir/usr/lib/systemd/user/${pkgname%-git}.service"
 }
