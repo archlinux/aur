@@ -16,9 +16,8 @@
 ## Valid numbers between: 0 to 42
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 42 => native
-## 我个人的恶趣味，就是选择 native，自动优化，当然各位根据自己的实际情况做出选择也是可以的
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=42
+  _microarchitecture=0
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -39,16 +38,6 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=n
 fi
 
-## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
-## Set variable "use_ns" to: n to disable (stock Xanmod)
-##                           y to enable (stock Archlinux)
-## By the way, This is important for people who using Skype and Wechat UOS, if 'NO', these apps could using.
-## 如果你使用 skype 或者 wechatUOS，请选择这个补丁
-## 否则，软件无法启动
-if [ -z ${use_ns+x} ]; then
-  use_ns=y
-fi
-
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -64,14 +53,13 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-# 我觉得还是选上，这样给大家微调的空间
-_makenconfig=y
+#_makenconfig=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.10.16
-_major=5.10
+pkgver=5.11.1
+_major=5.11
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -89,9 +77,9 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
-        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
+        'sphinx-workaround.patch'
         '0002-UKSM.patch'
-        '0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-5.10.patch')
+        "0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-${_major}.patch")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -103,13 +91,13 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12'
-            'e1c108a65a34c1ed2474a8296a517025fcb26c018bf1b4c02bc12b42487de000'
-            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991'
-            '9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a'
-            '078837287607800f948e0e26e6a8ba874d856fd37e0063e8975bb562268546c4')
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
+            'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
+            '363373e827e31f1d457e490e84fbe85ed67d7bf63f43da446405c9a9cdd5f067'
+            'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
+            '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
+            '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc'
+            '7d8375f80012443a6d507eaaa913a6c8e4d8b7789b2523cceef9c5214a7650c5')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -153,11 +141,6 @@ prepare() {
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
-  fi
-
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
   # Let's user choose microarchitecture optimization in GCC
