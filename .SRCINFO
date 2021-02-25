@@ -6,6 +6,7 @@ pkgbase = plymouth-zfs
 	arch = any
 	license = MIT
 	depends = plymouth
+	depends = ttf-dejavu
 	optdepends = zfs-linux-git: support for the default linux kernel
 	optdepends = zfs-linux-lts-git: support for the lts kernel
 	optdepends = zfs-linux-hardened-git: support for the hardened kernel

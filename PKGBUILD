@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc="initcpio hook to support native zfs encryption for plymouth"
 arch=('any')
 license=('MIT')
-depends=('plymouth')
+depends=('plymouth'
+	 'ttf-dejavu')
 optdepends=('zfs-linux-git: support for the default linux kernel'
             'zfs-linux-lts-git: support for the lts kernel'
             'zfs-linux-hardened-git: support for the hardened kernel'
