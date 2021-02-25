@@ -1,6 +1,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protomail.com>
 
 _pkgname=NBXplorer
+_pkgname_lc=${_pkgname_lc}
 
 pkgname=nbxplorer-git
 pkgver=2.1.49.r1.g45819a7
@@ -57,22 +58,22 @@ package()
 
     [Service]
     Type=oneshot
-    ExecStart=/usr/bin/nbxplorer
+    ExecStart=/usr/bin/${_pkgname_lc}
     RemainAfterExit=yes
     Restart=on-failure
 
     [Install]
-    WantedBy=multi-user.target" > ${srcdir}/${_pkgname}/nbxplorer.service
+    WantedBy=multi-user.target" > ${srcdir}/${_pkgname}/${_pkgname_lc}.service
     
     # Put the installation at the right place.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
-    # Symlinking run.sh to /usr/bin/nbxplorer.
-    ln -rTsf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
-    chmod 755 ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
+    # Symlinking run.sh to /usr/bin/${_pkgname_lc}.
+    ln -rTsf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
+    chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
     
     # Install the systemd service.
-    install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/nbxplorer.service ${pkgdir}/usr/lib/systemd/system/
+    install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}.service ${pkgdir}/usr/lib/systemd/system/
     
     # Install the documentation.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
