@@ -1,0 +1,20 @@
+pkgbase = blobby-volley-git
+	pkgdesc = Official continuation of the famous Blobby Volley 1.x arcade game
+	pkgver = 1.0.r266.g2198980
+	pkgrel = 1
+	url = https://github.com/danielknobe/blobbyvolley2
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = zip
+	depends = physfs
+	depends = sdl2
+	provides = blobby2
+	conflicts = blobby2
+	source = git+https://github.com/danielknobe/blobbyvolley2
+	sha512sums = SKIP
+
+pkgname = blobby-volley-git
+
