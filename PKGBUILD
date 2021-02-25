@@ -6,14 +6,15 @@
 
 pkgname=pgpool-ii
 _pkgname=pgpool-II
-pkgver=4.1.1
-pkgrel=3
+pkgver=4.2.1
+pkgrel=0
 pkgdesc="Middleware that works between PostgreSQL servers and a PostgreSQL database client."
 arch=()
 url="http://www.pgpool.net"
 arch=(i686 x86_64)
 license=(custom)
 depends=(openssl postgresql-libs)
+makedepends=(clang llvm postgresql)
 options=(!libtool)
 replaces=(pgpool)
 backup=(etc/conf.d/$pkgname)
@@ -53,7 +54,7 @@ package() {
   cd $srcdir/$_pkgname-$pkgver/src/sql/pgpool-recovery
   sudo make && sudo make install
 }
-md5sums=('108ac1486e8a6548af7ab67e9f6d8a36'
+md5sums=('7dcc1abc9f8ed886daf4bf95acc430e2'
          '6f1996c211e6f512289565e162752b04'
          '74e1450ec40a5915341d7901736aca45'
          'b11938850095c777c80238ed878e158d')
