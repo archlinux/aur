@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='neotermcolor'
 pkgname="python-$_projectname"
-pkgver='2.0.9'
-_commit='01cf24a234ae4abf12a41c1f2fb63117819d8bb7'
+pkgver='2.0.10'
+_commit='f4993d2590a2bfe6d89d075a38ede39e7dd0b896'
 pkgrel='1'
 pkgdesc='Modern ANSII Color formatting for output in terminal'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('71b80b0929b32742fe4fb69e4340ff97044e91d13052cd64e82b4bf6d8955e91')
+sha256sums=('c79266768e10e80c32114bf9c9dfa5e3cf471c95f7eaf3cc268aeb44ff4f97e8')
 
 _sourcedirectory="$_projectname-$_commit"
 
