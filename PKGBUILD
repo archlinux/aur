@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=17
+pkgrel=18
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
