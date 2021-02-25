@@ -11,7 +11,7 @@
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
 _pkgname=weechat
-pkgname=${_pkgname}-git
+pkgname=${_pkgname}-minimal-git
 pkgver=2.7.125.gc29b45a0f
 pkgrel=1
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'

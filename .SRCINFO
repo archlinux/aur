@@ -1,4 +1,4 @@
-pkgbase = weechat-git
+pkgbase = weechat-minimal-git
 	pkgdesc = Fast, light and extensible IRC client (curses UI). Development version.
 	pkgver = 2.7.125.gc29b45a0f
 	pkgrel = 1
@@ -32,5 +32,5 @@ pkgbase = weechat-git
 	source = git+https://github.com/weechat/weechat.git
 	sha512sums = SKIP
 
-pkgname = weechat-git
+pkgname = weechat-minimal-git
 
