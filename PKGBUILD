@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ctree-git
-pkgver=1.0.0.r0.g68cc90e
+pkgver=1.0.0.r5.g433efe4
 pkgrel=1
 pkgdesc="A Christmas tree right from your terminal (git)"
 arch=('x86_64')
