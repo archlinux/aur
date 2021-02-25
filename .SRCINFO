@@ -1,6 +1,6 @@
 pkgbase = python-basictools
 	pkgdesc = Safran FE helper tools
-	pkgver = 1.1
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://gitlab.com/DRTI/basic-tools
 	arch = x86_64
@@ -8,15 +8,11 @@ pkgbase = python-basictools
 	makedepends = python-setuptools
 	makedepends = cython
 	makedepends = eigen
-	depends = python-matplotlib
-	depends = python-scikit-sparse
-	depends = python-pyamg
 	depends = python-pyparsing
-	depends = python-mpi4py
 	depends = python-sympy
-	depends = vtk
-	source = https://gitlab.com/DRTI/basic-tools/-/archive/v1.1/basic-tools-v1.1.tar.bz2
-	sha256sums = 7e4354044714c5a5d815e000109940fbb7dd4edce3140a8b51bcc04ee720c333
+	depends = python-scipy
+	source = https://gitlab.com/DRTI/basic-tools/-/archive/v1.5/basic-tools-v1.5.tar.bz2
+	sha256sums = 6a51099667287fce53e1def5c4128cd7652535f9ac264153476ffd22111d31fa
 
 pkgname = python-basictools
 
