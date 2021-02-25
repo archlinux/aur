@@ -1,7 +1,7 @@
 # Maintainer: Patrick Oppenlander <patrick.oppenlander@gmail.com>
 
 pkgname=cairo-minimal
-pkgver=1.17.2+25+gaee96d175
+pkgver=1.17.4
 pkgrel=1
 pkgdesc="A vector graphics library - build with minimal dependencies"
 url="https://cairographics.org/"
@@ -10,7 +10,7 @@ license=(LGPL MPL)
 depends=(libpng fontconfig pixman glib2 lzo)
 provides=(cairo)
 replaces=(cairo)
-_commit=aee96d175d8349945a6d1948a56abd4b4ec6ad84
+_commit=156cd3eaaebfd8635517c2baf61fcf3627ff7ec2
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=$_commit")
 sha1sums=('SKIP')
 
