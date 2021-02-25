@@ -6,6 +6,7 @@ pkgdesc="BlueSky-Mountain Dark theme for gtk2/3 and metacity"
 arch=('any')
 url="https://github.com/i-mint/bluesky"
 license=('GPL3')
+makedepends=('git')
 source=("git+$url")
 sha256sums=('SKIP')
 

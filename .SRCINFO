@@ -5,6 +5,7 @@ pkgbase = bluesky-mountain-dark-theme-git
 	url = https://github.com/i-mint/bluesky
 	arch = any
 	license = GPL3
+	makedepends = git
 	source = git+https://github.com/i-mint/bluesky
 	sha256sums = SKIP
 
