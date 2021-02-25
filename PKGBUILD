@@ -69,16 +69,6 @@ fi
 
 #######################################
 
-#Build lib32 package
-#Set 'y' to build lib32
-#Set 'n' to not build lib32
-#Default is set to empty
-if [ -z ${_lib32+x} ]; then
-  _lib32=
-fi
-
-#######################################
-
 pkgbase=mesa-stable
 pkgname=("${pkgbase}" "lib32-${pkgbase}")
 pkgver=20.3.4
