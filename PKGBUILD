@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lfs-git
-pkgver=0.5.1.r0.gdb844c0
-pkgrel=2
+pkgver=0.5.1.r6.g84dd2fe
+pkgrel=1
 pkgdesc="Get information on your mounted disks (git)"
 arch=('x86_64')
 url="https://github.com/Canop/lfs"
