@@ -55,9 +55,10 @@ pkgbuild = template.substitute(
 pkgbuild = '\n'.join(line for line in pkgbuild.splitlines() if not line.endswith('=()'))
 Path('PKGBUILD').write_text(pkgbuild + '\n')
 
+subprocess.check_call(['updpkgsums'])
+
 if subprocess.check_output(['git', 'diff', 'PKGBUILD']).strip():
     print("linux-lts-versioned-bin is out of date!")
-    subprocess.check_call(['updpkgsums'])
 
     with open('.SRCINFO', 'w') as f:
         f.write(subprocess.check_output(['makepkg', '--printsrcinfo']).decode())
