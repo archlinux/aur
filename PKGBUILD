@@ -3,7 +3,7 @@
 
 pkgname=nodejs-resume-cli
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line tool for JSON Resume"
 arch=(any)
 url="https://github.com/jsonresume/resume-cli"

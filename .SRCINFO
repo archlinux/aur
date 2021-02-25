@@ -1,7 +1,7 @@
 pkgbase = nodejs-resume-cli
 	pkgdesc = The command line tool for JSON Resume
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsonresume/resume-cli
 	arch = any
 	license = MIT
