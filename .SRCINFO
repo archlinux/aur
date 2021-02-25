@@ -1,6 +1,6 @@
 pkgbase = dbus-nosystemd
 	pkgdesc = Freedesktop.org message bus system
-	pkgver = 1.12.18
+	pkgver = 1.12.20
 	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	install = dbus-nosystemd.install
@@ -21,8 +21,8 @@ pkgbase = dbus-nosystemd
 	optdepends = dbus-openrc: dbus openrc initscript
 	optdepends = dbus-docs: documentation
 	provides = dbus-core
-	provides = dbus=1.12.18
-	provides = libdbus=1.12.18
+	provides = dbus=1.12.20
+	provides = libdbus=1.12.20
 	provides = libdbus-1.so
 	conflicts = dbus-core
 	conflicts = dbus
@@ -34,7 +34,7 @@ pkgbase = dbus-nosystemd
 	replaces = libdbus
 	replaces = dbus-eudev
 	replaces = dbus-x11
-	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=a0926ef86f413f18202ffa19cb1433b6ba00ac36
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#tag=dbus-1.12.20
 	source = 30-dbus.sh
 	source = dbus.rc
 	md5sums = SKIP
