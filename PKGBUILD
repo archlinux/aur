@@ -1,14 +1,14 @@
-# Maintainer: Simon Gardling <titaniumtown@gmail.com>
+# Maintainer: Ignacy Kuchciński <ignacykuchcinski@gmail.com>
 
 pkgname=sysprof-git
 _pkgname=sysprof
-pkgver=3.36.0+29+g32185d8
+pkgver=3.39.92+22+g9e823c5
 pkgrel=1
 pkgdesc="Kernel based performance profiler"
 url="https://wiki.gnome.org/Apps/Sysprof"
 license=(GPL)
 arch=(x86_64)
-depends=(gtk3 polkit libdazzle)
+depends=(glib2-git gtk3 polkit libdazzle)
 makedepends=(yelp-tools git meson)
 groups=(gnome-extra)
 source=("git+https://gitlab.gnome.org/GNOME/sysprof.git")
