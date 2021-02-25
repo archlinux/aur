@@ -10,6 +10,7 @@ pkgbase = mingw-w64-mesa-git
 	makedepends = python-mako
 	depends = mingw-w64-dlfcn
 	depends = mingw-w64-llvm
+	depends = mingw-w64-libsystre
 	provides = mingw-w64-mesa
 	conflicts = mingw-w64-mesa
 	options = staticlibs
