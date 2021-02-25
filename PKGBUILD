@@ -1,7 +1,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protomail.com>
 
 _pkgname=NBXplorer
-_pkgname_lc=${_pkgname_lc}
+_pkgname_lc=$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
 
 pkgname=nbxplorer-git
 pkgver=2.1.49.r1.g45819a7
