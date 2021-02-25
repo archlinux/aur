@@ -1,6 +1,6 @@
 pkgbase = mednaffe
 	pkgdesc = front-end (GUI) for mednafen emulator
-	pkgver = 0.8.9.1
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/AmatCoder/mednaffe
 	arch = i686

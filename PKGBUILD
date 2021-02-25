@@ -2,7 +2,7 @@
 # Contributor: casa <sympho08@yandex.ru>
 
 pkgname=mednaffe
-pkgver=0.8.9.1
+pkgver=0.9.1
 _commit=1d87c53c66d1cbd2017c6d3ca0c61c0486d3787d
 pkgrel=1
 pkgdesc="front-end (GUI) for mednafen emulator"
