@@ -1,7 +1,7 @@
 # Maintainer: Winux winuxlinux11@gmail.com
 
 pkgname=btusb-qca-0x3004-dkms
-url=https://aur.archlinux/btusb-qca-0x3004-dkms
+url=https://aur.archlinux.org/packages/btusb-qca-0x3004-dkms
 pkgver=0.8
 pkgrel=1
 pkgdesc="patch btusb so it works on QCA devices with id 0x3004 (DKMS version)"
