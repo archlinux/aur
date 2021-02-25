@@ -1,8 +1,8 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=emote
-pkgver=1.4.0
-_pkgref=be2939f3bf2944b4e2f96a719c302ebbfb5632d6
+pkgver=2.0.0
+_pkgref=c6be700ab1af53ddd94d1935bc84e6c16fcdf931
 pkgrel=1
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"

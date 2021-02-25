@@ -1,6 +1,6 @@
 pkgbase = emote
 	pkgdesc = Emoji Picker for Linux written in GTK3
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/tom-james-watson/Emote
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = emote
 	depends = noto-fonts-emoji
 	depends = xdotool
 	source = setup.py
-	source = https://github.com/tom-james-watson/Emote/archive/be2939f3bf2944b4e2f96a719c302ebbfb5632d6.tar.gz
+	source = https://github.com/tom-james-watson/Emote/archive/c6be700ab1af53ddd94d1935bc84e6c16fcdf931.tar.gz
 	sha512sums = 83b6697b96882d3854c0f64a208571bfeec3e6324790e5508a6bd32092c5d462e86fa676c561111d98cce8058f1730303658612427b66daac086236e3e365316
 	sha512sums = SKIP
 
