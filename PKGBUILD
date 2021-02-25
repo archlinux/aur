@@ -67,7 +67,7 @@ package()
     
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-    dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/NBXplorer.csproj\" -- $@" > ${srcdir}/${_pkgname}/run.sh
+    dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- $@" > ${srcdir}/${_pkgname}/run.sh
     
     # Put the installation at the right place.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
