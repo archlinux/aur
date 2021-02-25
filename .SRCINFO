@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mesa-git
 	pkgdesc = An open-source implementation of the OpenGL specification (mingw-w64)
-	pkgver = 20.3.0_devel.128398.95ee0ba41f0
+	pkgver = 21.1.0_devel.135746.9af40b824d3
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = any
