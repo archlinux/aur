@@ -1,0 +1,27 @@
+pkgbase = croco-kde-settings
+	pkgver = r54.95147ad
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/settings/croco-kde-settings
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/settings/croco-kde-settings.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-kde
+	pkgdesc = kde settings
+	install = croco-kde.install
+	depends = kvantum-qt5
+	depends = croco-icons
+	depends = nerd-fonts-fantasque-sans-mono
+	depends = ttf-fira-sans
+	depends = plasma5-applets-window-buttons
+	depends = plasma5-applets-window-appmenu
+	depends = plasma5-applets-window-title
+	depends = bigsur-dark
+	depends = whitesur-kde-theme-git
+	depends = mcmojave-cursors
+	provides = croco-desktop-settings
+	conflicts = croco-desktop-settings
+	conflicts = kvantum-theme-sweet
+
