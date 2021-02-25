@@ -1,7 +1,7 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 
 pkgname=lightly-qt
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A modern style for qt applications"
 url="https://github.com/Luwx/Lightly"
@@ -12,7 +12,7 @@ makedepends=(cmake extra-cmake-modules kdecoration qt5-declarative qt5-x11extras
 source=(
     "${pkgname}-${pkgver}::https://github.com/Luwx/Lightly/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('c2ba37366953de0e333cf14ee4c0827112cd7dd2d268a6356212f8d85310749a')
+sha256sums=('a50a9e5796886853222d9b442974e1d659905bbad85ee5c7f536aa7f6fbf3261')
 
 build() {
     cd Lightly-${pkgver}
