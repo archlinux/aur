@@ -1,0 +1,4 @@
+*.pkg.tar
+guzuta-git/
+pkg/
+src/
