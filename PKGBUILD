@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-gazebo-sitl-git
-pkgver=r33.a6cc333
+pkgver=r34.e72ecf5
 pkgrel=1
 pkgdesc="Gazebo plugin for Ardupilot's SITL."
 arch=('x86_64')
@@ -11,12 +11,19 @@ optdepends=('ardupilot-sitl')
 makedepends=('cmake')
 provides=('ardupilot-gazebo-sitl')
 _pkgname=ardupilot-gazebo-stil
-source=("${_pkgname}::git+https://github.com/khancyr/ardupilot_gazebo.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/khancyr/ardupilot_gazebo.git"
+        "xacro.patch"::"https://github.com/khancyr/ardupilot_gazebo/pull/42.patch")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$_pkgname"
+    patch --forward --strip=1 --input="${srcdir}/xacro.patch"
 }
 
 build() {
