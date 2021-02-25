@@ -23,4 +23,6 @@ package() {
   chmod +x /$pkgdir/opt/$pkgname/pre_remove-showipatlogon.sh
   chmod +x /$pkgdir/opt/$pkgname/SETTINGS
   chmod +x /$pkgdir/opt/$pkgname/create-welcome
+  chmod +x /$pkgdir/opt/$pkgname/showipatlogon.boot
+  chmod +x /$pkgdir/opt/$pkgname/showipatlogon.postboot
 }
