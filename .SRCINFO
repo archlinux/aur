@@ -10,6 +10,7 @@ pkgbase = bottles
 	depends = hicolor-icon-theme
 	depends = dconf
 	depends = python
+	depends = libhandy
 	source = bottles-2.1.2.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2.1.2.tar.gz
 	sha256sums = SKIP
 
