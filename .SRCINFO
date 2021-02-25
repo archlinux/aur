@@ -1,0 +1,15 @@
+pkgbase = plymouth-theme-croco
+	pkgver = r2.7389d96
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/plymouth-theme-croco
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/plymouth-theme-croco.git#branch=master
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-croco
+	pkgdesc = plymouth-theme-croco
+	install = plymouth.install
+	depends = 
+
