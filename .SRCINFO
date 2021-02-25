@@ -1,14 +1,13 @@
 pkgbase = python-freqtrade-git
 	pkgdesc = Free, open source crypto trading bot
-	pkgver = 0.14.3.r10509.g4e5f8478
+	pkgver = 0.14.3.r10536.g1f30c3d7
 	pkgrel = 1
 	url = https://github.com/freqtrade/freqtrade
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = git
-	depends = python-sqlalchemy
 	depends = python-cachetools
 	depends = python-arrow
 	depends = python-requests
@@ -40,6 +39,7 @@ pkgbase = python-freqtrade-git
 	depends = python-certifi
 	depends = python-aiohttp
 	depends = python-pytables
+	depends = python-apscheduler
 	provides = python-freqtrade
 	source = python-freqtrade-git::git://github.com/freqtrade/freqtrade.git#branch=develop
 	sha256sums = SKIP
