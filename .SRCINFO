@@ -1,0 +1,29 @@
+pkgbase = croco-zsh-config
+	pkgdesc = Zsh configuration for Croco OS
+	pkgver = r14.66867fc
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/settings/croco-zsh-config
+	install = croco-zsh-config.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fzf
+	depends = croco-starship-prompt
+	depends = ttf-meslo-nerd-font-powerlevel10k
+	depends = zsh
+	depends = zsh-autosuggestions
+	depends = zsh-completions
+	depends = zsh-history-substring-search
+	depends = zsh-syntax-highlighting
+	depends = awesome-terminal-fonts
+	depends = pkgfile
+	depends = powerline-fonts
+	provides = manjaro-zsh-config
+	conflicts = grml-zsh-config
+	conflicts = manjaro-zsh-config
+	replaces = manjaro-zsh-config
+	source = git+https://gitlab.com/croco-os/themes-and-settings/settings/croco-zsh-config.git
+	md5sums = SKIP
+
+pkgname = croco-zsh-config
+
