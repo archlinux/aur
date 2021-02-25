@@ -4,6 +4,6 @@ pkgname=nfauthenticationkey-browser-chromium
 pkgver=1
 pkgrel=1
 arch=('any')
-pkgdesc="a meta packge, wich provides nfauthenticationk-browser and depends on chromium"
+pkgdesc="a meta package, wich provides nfauthenticationk-browser and depends on the Chromium browser"
 depends=('chromium')
 provides=("nfauthenticationkey-browser=1")
