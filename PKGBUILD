@@ -45,7 +45,7 @@ package() {
   done
 }
 package_01_locate() {
-  msg2 'Locating extension...'
+  echo 'Locating extension...'
   cd "$(find -name 'metadata.json' -execdir test -e extension.js \; \
     -printf '%C@ %h\n' | sort -nr | sed 's/^.* //;q' )"
   extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
@@ -53,7 +53,7 @@ package_01_locate() {
 }
 
 package_02_install() {
-  msg2 'Installing extension code...'
+  echo 'Installing extension code...'
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
     -exec install -Dm644 -t "$destdir" '{}' +
 }
@@ -63,7 +63,7 @@ package_09_media() {
 }
 
 package_10_locale() {
-  msg2 'Installing translations...'
+  echo 'Installing translations...'
   (
     cd locale
     for locale in */
@@ -78,7 +78,7 @@ then
 fi
 
 package_10_schemas() {
-  msg2 'Installing schemas...'
+  echo 'Installing schemas...'
   find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
 }
 depends[125]=gnome-shell
