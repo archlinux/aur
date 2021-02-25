@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-mavros-msgs
 	pkgdesc = ROS - mavros_msgs defines messages for MAVROS.
-	pkgver = 1.0.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://wiki.ros.org/mavros_msgs
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ros-noetic-mavros-msgs
 	depends = ros-noetic-geometry-msgs
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-geographic-msgs
-	source = ros-noetic-mavros-msgs-1.0.0.tar.gz::https://github.com/mavlink/mavros/archive/1.0.0.tar.gz
-	sha256sums = 08c911a3e92990e260ab25715b6605303b1ac52a8de0e3b0f504bcfab6390b0d
+	source = ros-noetic-mavros-msgs-1.6.0.tar.gz::https://github.com/mavlink/mavros/archive/1.6.0.tar.gz
+	sha256sums = 8ab5b1cc851b27dbea9abbe67a7da9262afddf057d6316938745772666fa4d3d
 
 pkgname = ros-noetic-mavros-msgs
 
