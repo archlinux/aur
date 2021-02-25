@@ -1,0 +1,14 @@
+pkgbase = python-git-plus
+	pkgdesc = Git plus is a set of git utilities
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/tkrajina/git-plus
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = git-plus-0.4.6.tar.gz::https://github.com/tkrajina/git-plus/archive/v0.4.6.tar.gz
+	sha256sums = ef50b2aaaed0403c32c8bd3fdfd91b1a76e3e367d8b48d4564e1f0ad13c31747
+
+pkgname = python-git-plus
+

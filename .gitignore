@@ -1,0 +1,6 @@
+*.pkg.tar.zst
+git-plus-*.tar.gz
+*-build.log
+*-package.log
+src
+pkg
