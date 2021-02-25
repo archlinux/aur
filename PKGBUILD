@@ -5,12 +5,12 @@
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch-xpack
-pkgver=7.10.2
+pkgver=7.11.1
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
-license=('custom:Elastic')
+license=('custom:Elastic2')
 depends=('java-runtime-headless' 'systemd')
 provides=('elasticsearch')
 conflicts=('elasticsearch')
@@ -27,7 +27,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha512sums=('f50cee763b58545a755d932c7559b622cfe3d889c24edccadfcaf3b9386bb47f21332ba895fdf48232369316ccd247470d8cce3d401276e727d3ceab23409450'
+sha512sums=('d778c7dc3db08c329d4ca7607dc18a0b9147f9d282fd139f0f5495e0eeba3f3632e69ba6bf3635cdccfba18355c6ddf3305cba86f9e09282d357625881c730bf'
             'SKIP'
             '52556e0709590f0e15039d89b64c08c9bbeb0c61d29e3cd5a4471744968c882eb559081db1c89e846fa33d50b31e2fe9ba46d7e7e2cf5d4a23e78bc97a50c853'
             '8280cfd911c1762a1cba67a72bf01c593dbcec00ab02b5f7ca2ef05dbcbae835f2d0e20f3143b0f601e233708e7a60148a1b2087aaff0e0b239361ca4792409f'
@@ -66,7 +66,7 @@ package() {
 
   cd "$srcdir"
   install -Dvm644 usr/share/elasticsearch/LICENSE.txt \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
   find etc/elasticsearch/ -type f -exec \
     install -Dm644 {} "$pkgdir/"{} \;
 
