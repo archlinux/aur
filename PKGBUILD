@@ -14,11 +14,11 @@ pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and 
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
-depends=(gtk3 mozilla-common libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
+depends=(gtk3 libxt mime-types dbus-glib
+         ffmpeg nss ttf-font libpulse xorg-server-xwayland
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
-             rust
+             rust mozilla-common
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
