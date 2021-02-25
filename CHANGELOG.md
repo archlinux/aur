@@ -1,3 +1,48 @@
+<a name="3.0.3"></a>
+## [3.0.3](https://gitlab.com/langurmonkey/gaiasky/tree/3.0.2) (2021-02-25)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.0.2...3.0.3)
+
+### Bug Fixes
+- controller image fetch crash 
+- getDistanceTo() with star group object, goToObject() with no angle 
+- setSimulationTime() crash 
+- move wikiname to celestial body, remove unused parameters, prepare star to be loaded directly 
+- use proper values for depth test 
+- post-process bugs (sorting, etc.) 
+- check the wrong catalog type 'catalog-lod' 
+- use local descriptors when server descriptor fails to recognize a catalog 
+- button sizes adapt to content (fixes [#353](https://gitlab.com/langurmonkey/gaiasky/issues/353)) [#353](https://gitlab.com/langurmonkey/gaiasky/issues/353) 
+- bug introduced in 40b99a2 - star cores not applied alpha - fixes [#352](https://gitlab.com/langurmonkey/gaiasky/issues/352) [#352](https://gitlab.com/langurmonkey/gaiasky/issues/352) 
+- move temp folder into data folder - partially fixes [#350](https://gitlab.com/langurmonkey/gaiasky/issues/350) [#350](https://gitlab.com/langurmonkey/gaiasky/issues/350) 
+- local catalog numbers work when no internet connection available 
+- update jamepad and gdx-controllers versions due to macOS crash 
+
+### Build System
+- exclude appimage files from install media 
+- remove branding from installer strings 
+- move to gdx-controllers 2.1.0, macos tests pending 
+- genearte md5 and sha256 of appimage package 
+- add appimage build 
+- update docs repository pointer 
+- update bundled jre version to 15.0.2 
+- complete move to Shenandonah GC 
+- use Shenandonah GC instead of G1, minor fixes 
+- upgrade to libgdx 1.9.14 
+
+### Features
+- improvements to catalog generation (hashmap to treemap, rename params, accept multiple string ids per column, etc.) 
+- add search suggestions to search dialog - fixes [#351](https://gitlab.com/langurmonkey/gaiasky/issues/351) [#351](https://gitlab.com/langurmonkey/gaiasky/issues/351) 
+- remember 'show hidden' preference in file chooser 
+
+### Performance Improvements
+- remove runtime limiting magnitude 
+
+### Style
+- cosmetic changes to octree generator 
+- renamed some variables, add some extra code comments 
+- tweak some parameters in star renderer 
+
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://gitlab.com/langurmonkey/gaiasky/tree/3.0.1) (2021-01-21)
 [Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.0.1...3.0.2)
