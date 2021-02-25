@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='google-messages'
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A native-like OS X, Windows, & Linux desktop app for Google Messages"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
