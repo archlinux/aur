@@ -1,6 +1,6 @@
 pkgbase = php-kore-git
 	pkgdesc = kore php functions
-	pkgver = r9.3bf8429
+	pkgver = r15.cbcdb6e
 	pkgrel = 1
 	url = https://github.com/krakjoe/kore
 	arch = i686

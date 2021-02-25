@@ -1,7 +1,7 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
 pkgname=php-kore-git
-pkgver=r9.3bf8429
+pkgver=r15.cbcdb6e
 pkgrel=1
 pkgdesc="kore php functions"
 arch=('i686' 'x86_64')
