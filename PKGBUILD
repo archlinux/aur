@@ -2,7 +2,7 @@
 
 pkgname=qownnotes
 pkgver=21.2.5
-tag="5163e9fb141ff754a9dac2a69ed2bdf269192880"
+tag="12e9c54b03f26e9d73b9236ebec17c313a046eb5"
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
