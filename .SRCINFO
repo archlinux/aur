@@ -1,0 +1,15 @@
+pkgbase = croco-setup-assistant
+	pkgver = r2.67ad3a3
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/croco-setup-assistant
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/applications/croco-setup-assistant.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-setup-assistant
+	pkgdesc = Croco OS setup assistant
+	depends = yad
+	depends = wget
+
