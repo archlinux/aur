@@ -1,5 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
   "packageRules": [
     {
       "matchDatasources": ["github-releases"],
@@ -10,9 +13,7 @@
   "regexManagers": [
     {
       "fileMatch": ["^PKGBUILD$"],
-      "matchStrings": ["pkgver=(?<currentValue>.*?)\n"],
-      "depNameTemplate": "pkgbuild",
-      "datasourceTemplate": "github-releases"
+      "matchStrings": ["pkgver=(?<currentValue>.*) # (?<datasource>.*?)/(?<depName>.*?)\\s"]
     }
   ]
 }
