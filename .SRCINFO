@@ -1,0 +1,27 @@
+pkgbase = croco-common-settings
+	pkgver = r40.187953a
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/settings/croco-common-settings
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/settings/croco-common-settings.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-common-settings
+	pkgdesc = Croco OS Linux common settings
+	install = croco-common-settings.install
+	depends = croco-icons
+	depends = croco-browser-settings
+	depends = croco-hooks
+	depends = haveged
+	depends = irqbalance
+	depends = systemd-swap
+	depends = nohang-git
+	depends = prelockd-git
+	depends = memavaild-git
+	depends = ananicy-git
+	depends = profile-sync-daemon
+	depends = preload
+	optdepends = performance-tweaks
+
