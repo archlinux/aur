@@ -1,0 +1,28 @@
+From 06bd99a56c635c9b9246144dc256f537c6441232 Mon Sep 17 00:00:00 2001
+From: kevall474 <kevall474@tuta.io>
+Date: Wed, 24 Feb 2021 15:30:04 -0500
+Subject: [PATCH] 4200
+
+---
+ src/gallium/frontends/clover/llvm/metadata.hpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/gallium/frontends/clover/llvm/metadata.hpp b/src/gallium/frontends/clover/llvm/metadata.hpp
+index e3e58a32ff9..b15783266bd 100644
+--- a/src/gallium/frontends/clover/llvm/metadata.hpp
++++ b/src/gallium/frontends/clover/llvm/metadata.hpp
+@@ -129,7 +129,11 @@ namespace clover {
+                      break;
+                }
+                if (type->isVectorTy())
+-                  data += std::to_string(((::llvm::VectorType*)type)->getNumElements());
++#if LLVM_VERSION_MAJOR >= 13
++                  data += std::to_string(((::llvm::FixedVectorType*)type)->getNumElements());
++#else
++                  data += std::to_string(((::llvm::VectorType*)type)->getNumElements());
++#endif
+
+             } else {
+                ::llvm::raw_string_ostream os { data };
+--
+2.30.1

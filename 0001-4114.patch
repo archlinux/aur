@@ -1,0 +1,28 @@
+From 82467de5bb895052993fb892cd4b34ee757fdcab Mon Sep 17 00:00:00 2001
+From: kevall474 <kevall474@tuta.io>
+Date: Wed, 24 Feb 2021 15:34:45 -0500
+Subject: [PATCH] 4114
+
+---
+ src/gallium/frontends/clover/llvm/invocation.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/gallium/frontends/clover/llvm/invocation.cpp b/src/gallium/frontends/clover/llvm/invocation.cpp
+index 536e952b100..3a8d9c8e929 100644
+--- a/src/gallium/frontends/clover/llvm/invocation.cpp
++++ b/src/gallium/frontends/clover/llvm/invocation.cpp
+@@ -249,7 +249,11 @@ namespace {
+ 
+       c->getInvocation().setLangDefaults(c->getLangOpts(),
+                                 compat::ik_opencl, ::llvm::Triple(target.triple),
++#if LLVM_VERSION_MAJOR >= 12
++                                c->getPreprocessorOpts().Includes,
++#else
+                                 c->getPreprocessorOpts(),
++#endif
+                                 get_language_version(opts, device_clc_version));
+ 
+       c->createDiagnostics(new clang::TextDiagnosticPrinter(
+-- 
+2.30.1
+
