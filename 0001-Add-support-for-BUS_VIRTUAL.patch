@@ -1,7 +1,7 @@
-From 4c28cc386d3cc5293b91b1b2384f03517e95f2a2 Mon Sep 17 00:00:00 2001
+From c0eaf576f68b2a34136a7c1c3977ff8531d37504 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
-Subject: [PATCH 01/12] Add support for BUS_VIRTUAL
+Subject: [PATCH 01/11] Add support for BUS_VIRTUAL
 
 This is needed to support IPTS devices through the iptsd userspace
 daemon. It exposes the touchscreen / stylus as uinput, since the parsing
@@ -32,7 +32,7 @@ index 5acdbac..cb5ca6d 100755
          assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
          assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index 9f2657b..7be5247 100644
+index d57ef2d..17571b6 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
 @@ -130,6 +130,8 @@ bus_from_str (const char *str)
@@ -101,5 +101,5 @@ index 9e5b02f..3883341 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 -- 
-2.30.0
+2.30.1
 

@@ -1,7 +1,7 @@
-From 77fab263bc722c9f800c29ca3cf3504be5a439be Mon Sep 17 00:00:00 2001
+From 02df4e0f272dff001ee280ab93e8e1c4600375ff Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
-Subject: [PATCH 02/12] Add support for Intel Management Engine bus
+Subject: [PATCH 02/11] Add support for Intel Management Engine bus
 
 Add support for devices connected via the Intel Management Engine (MEI).
 This is required to support IPTS based devices, such as (among others)
@@ -27,7 +27,7 @@ index cb5ca6d..466b18a 100755
          assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
          assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index 7be5247..37ffd37 100644
+index 17571b6..4c6df4e 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
 @@ -132,6 +132,8 @@ bus_from_str (const char *str)
@@ -96,5 +96,5 @@ index 3883341..352bc43 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 -- 
-2.30.0
+2.30.1
 

@@ -1,7 +1,7 @@
-From 816fc952863e780af66606aef526f29af0446633 Mon Sep 17 00:00:00 2001
+From 0b12a623e70d877fa6bf1df615d06229f7b2eb83 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:13 +0200
-Subject: [PATCH 06/12] data: Add Microsoft Surface pro 7
+Subject: [PATCH 06/11] data: Add Microsoft Surface pro 7
 
 ---
  data/surface-pro7.tablet | 14 ++++++++++++++
@@ -29,5 +29,5 @@ index 0000000..7961379
 +Touch=true
 +Buttons=0
 -- 
-2.30.0
+2.30.1
 
