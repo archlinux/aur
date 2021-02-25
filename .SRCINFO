@@ -1,0 +1,10 @@
+pkgbase = nfauthenticationkey-browser-brave
+	pkgdesc = a meta package, wich provides nfauthenticationkey-browser and depends on the brave browser
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = brave
+	provides = nfauthenticationkey-browser=1
+
+pkgname = nfauthenticationkey-browser-brave
+
