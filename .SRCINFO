@@ -1,6 +1,6 @@
 pkgbase = color_blinder-git
 	pkgdesc = Simulate different kinds of color blindness with a set of images (git)
-	pkgver = 1.0.2.r0.g14bd892
+	pkgver = 1.0.2.r2.gc8679ac
 	pkgrel = 1
 	url = https://gitlab.com/dns2utf8/color_blinder
 	arch = x86_64

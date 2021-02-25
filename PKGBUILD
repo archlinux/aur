@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=color_blinder-git
-pkgver=1.0.2.r0.g14bd892
+pkgver=1.0.2.r2.gc8679ac
 pkgrel=1
 pkgdesc="Simulate different kinds of color blindness with a set of images (git)"
 arch=('x86_64')
