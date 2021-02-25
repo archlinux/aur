@@ -8,7 +8,7 @@ pkgname=('croco-settings-manager-git' 'croco-settings-manager-kcm-git'
 pkgver=r16.011593f
 #_commit=e085b661c3c97e8aa39a5b49896a88a95d84caf9
 pkgrel=1
-pkgdesc="Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+pkgdesc="Croco Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/croco-linux/applications/croco-settings-manager"
 license=("GPL")
@@ -64,7 +64,7 @@ provides=('croco-settings-manager')
 }
 
 package_croco-settings-manager-kcm-git() {
-  pkgdesc="Garuda Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+  pkgdesc="Croco Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
   depends=('croco-settings-manager' 'kcmutils' 'kconfigwidgets')
   provides=('croco-settings-manager-kcm')
   conflicts=('croco-settings-manager-kcm')
@@ -78,7 +78,7 @@ package_croco-settings-manager-kcm-git() {
 }
 
 package_croco-settings-manager-notifier-git() {
-  pkgdesc="Garuda Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+  pkgdesc="Croco Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
   depends=('croco-settings-manager')
   provides=('croco-settings-manager-notifier')
   conflicts=('croco-settings-manager-notifier')
@@ -96,7 +96,7 @@ package_croco-settings-manager-notifier-git() {
 }
 
 package_croco-settings-manager-knotifier-git() {
-  pkgdesc="Garuda Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
+  pkgdesc="Croco Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
   depends=('croco-settings-manager' 'knotifications')
   provides=('croco-settings-manager-knotifier')
   conflicts=('croco-settings-manager-knotifier')

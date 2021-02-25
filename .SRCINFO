@@ -1,5 +1,5 @@
 pkgbase = croco-settings-manager-git
-	pkgdesc = Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Croco Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	pkgver = r16.011593f
 	pkgrel = 1
 	url = https://gitlab.com/croco-linux/applications/croco-settings-manager
@@ -34,7 +34,7 @@ pkgname = croco-settings-manager-git
 	replaces = croco-settings-manager
 
 pkgname = croco-settings-manager-kcm-git
-	pkgdesc = Garuda Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Croco Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	depends = croco-settings-manager
 	depends = kcmutils
 	depends = kconfigwidgets
@@ -43,14 +43,14 @@ pkgname = croco-settings-manager-kcm-git
 	replaces = croco-settings-manager-kcm
 
 pkgname = croco-settings-manager-notifier-git
-	pkgdesc = Garuda Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Croco Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	depends = croco-settings-manager
 	provides = croco-settings-manager-notifier
 	conflicts = croco-settings-manager-notifier
 	replaces = croco-settings-manager-notifier
 
 pkgname = croco-settings-manager-knotifier-git
-	pkgdesc = Garuda Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgdesc = Croco Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	depends = croco-settings-manager
 	depends = knotifications
 	provides = croco-settings-manager-knotifier
