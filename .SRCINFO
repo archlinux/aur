@@ -1,0 +1,10 @@
+pkgbase = nfauthenticationkey-browser-google-chrome
+	pkgdesc = a meta package, wich provides nfauthenticationkey-browser and depends on chrome
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = google-chrome
+	provides = nfauthenticationkey-browser=1
+
+pkgname = nfauthenticationkey-browser-google-chrome
+
