@@ -15,7 +15,7 @@ pkgbase = filmulator
 	depends = libarchive
 	depends = libraw
 	depends = librtprocess
-	depends = qt5-declarative
+	depends = qt5-quickcontrols2
 	source = filmulator-gui-0.11.0.tar.gz::https://github.com/CarVac/filmulator-gui/archive/v0.11.0.tar.gz
 	sha512sums = 8e7d0b57d53bab21d79085646d46fd6f85c025108cc27640368d2762be4c8c662886f868fb865ad7096ef7073ccb0daac9bec7f9adda8c22225a945f8ff9c307
 
