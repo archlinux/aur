@@ -2,7 +2,7 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.119.1
+pkgver=1.120.2
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
@@ -21,9 +21,9 @@ _librepo='https://u.tlauncher.ru/repo/libraries'
 # _librepo='https://tlaun.ch/repo/libraries'
 # _librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
 
-_bootstrap_version='1.11.0'
-_bootstrap_checksum='ecc7fa58ff6eec659f138cbf248e0c33b0d5d803b0b7e471fd042c514de6a7e5'
-_launcher_checksum='e54c9f5f11ab92c4652d58ed0451e6ab45a2bb3fedd362dd2d804f626bf8a446'
+_bootstrap_version='1.11.2'
+_bootstrap_checksum='e04f195ab2bdb4768e3d325a01d9fd5c2f92a964fca584943e787419e2e37369'
+_launcher_checksum='572409cfb2ad686e124b0602a113c5afa7143ec4caecd0fd981c4b69a14910fd'
 
 source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
@@ -45,6 +45,12 @@ source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/${_branch}/bootstrap/$
         "${_librepo}/org/apache/logging/log4j/log4j-core/2.14.0/log4j-core-2.14.0.jar"
         "${_librepo}/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
         "${_librepo}/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
+        "${_librepo}/org/apache/httpcomponents/fluent-hc/4.5.13/fluent-hc-4.5.13.jar"
+        "${_librepo}/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar"
+        "${_librepo}/org/nanohttpd/nanohttpd/2.3.1/nanohttpd-2.3.1.jar"
+        "${_librepo}/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar"
+        "${_librepo}/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"
+        "${_librepo}/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"
 
         'minecraft.256x256.png'
         'minecraft.192x192.png'
@@ -77,6 +83,12 @@ sha256sums=("${_bootstrap_checksum}"
             'f04ee9c0ac417471d9127b5880b96c3147249f20674a8dbb88e9949d855382a8'
             '6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218'
             'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8'
+            'f883b6b027d5e05c53e48e4fe3548715c52dbd590ffa3f52d039574f1a4d0728'
+            '6fe9026a566c6a5001608cf3fc32196641f6c1e5e1986d1037ccdbd5f31ef743'
+            'de864c47818157141a24c9acb36df0c47d7bf15b7ff48c90610f3eb4e5df0e58'
+            'e06e89d40943245fcfa39ec537cdbfce3762aecde8f9c597780d2b00c2b43424'
+            'daddea1ea0be0f56978ab3006b8ac92834afeefbd9b7e4e6316fca57df0fa636'
+            'e599d5318e97aa48f42136a2927e6dfa4e8881dff0e6c8e3109ddbbff51d7b7d'
 
             '23909ccb5a61f607f355743cdf553799e033fcaac16538b27f1cb0a80aa7faa3'
             '1d5c9f54a06e6a803c6e69093e3cf429c8a9092b94f61ac693993f3f6c1261a7'
@@ -122,4 +134,10 @@ package() {
   install -Dm0644 "${srcdir}/log4j-core-2.14.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-core/2.14.0/log4j-core-2.14.0.jar"
   install -Dm0644 "${srcdir}/nstweaker-1.0.jar" "${pkgdir}/opt/tlauncher/lib/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
   install -Dm0644 "${srcdir}/java-statsd-client-3.1.0.jar" "${pkgdir}/opt/tlauncher/lib/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
+  install -Dm0644 "${srcdir}/fluent-hc-4.5.13.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/httpcomponents/fluent-hc/4.5.13/fluent-hc-4.5.13.jar"
+  install -Dm0644 "${srcdir}/httpclient-4.5.13.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar"
+  install -Dm0644 "${srcdir}/nanohttpd-2.3.1.jar" "${pkgdir}/opt/tlauncher/lib/org/nanohttpd/nanohttpd/2.3.1/nanohttpd-2.3.1.jar"
+  install -Dm0644 "${srcdir}/httpcore-4.4.13.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar"
+  install -Dm0644 "${srcdir}/commons-logging-1.2.jar" "${pkgdir}/opt/tlauncher/lib/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"
+  install -Dm0644 "${srcdir}/commons-codec-1.11.jar" "${pkgdir}/opt/tlauncher/lib/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"
 }
