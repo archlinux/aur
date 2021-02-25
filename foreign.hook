@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Foreign/AUR package notification
+When = PostTransaction
+Exec = /usr/bin/bash -c "/usr/bin/pacman -Qm || /usr/bin/echo '=> No foreign/AUR packages found.'"

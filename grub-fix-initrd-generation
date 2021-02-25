@@ -1,0 +1,160 @@
+#!/bin/bash
+#
+# A workaround for grub-mkconfig's initrd line generation problem on some distros.
+# This modifies two files, see their names (in "local file=...") in the functions below.
+#
+# NOTE: to restore old behavior, simply reinstall packages 'grub' and 'os-prober'.
+
+_log2() {
+    echo "$@" >&2
+}
+
+_logfile() {
+    echo "$@" >> $log
+}
+
+_log() {
+    _log2 "$@"
+    _logfile "$@"
+}
+
+_die() {
+    _log "Error: $@"
+    rm -f $lock
+    exit 1
+}
+
+_check_file_existence() {
+    local file="$1"
+    local pkg="$2"
+    if [ ! -r "$file" ] ; then
+        case "$pkg" in
+            grub)
+                _die "file '$file' from package '$pkg' does not exist." \
+                     "Note: if you have used grub-customizer, you may need to reinstall grub, but be careful!"
+                ;;
+            os-prober)
+                _die "file '$file' from package '$pkg' does not exist."
+                ;;
+        esac
+    fi
+}
+
+_backup() {
+    local file="$1"
+    local pkg="$2"
+    _check_file_existence "$file" "$pkg"
+    rm -f $file.bak       || _die "$file.bak: delete failed."
+    cp -a $file $file.bak || _die "$file: backup failed."
+    chmod -x $file.bak    || _die "$file.bak: chmod failed."
+}
+
+_show_result() {
+    local file="$1"
+    local diffs="$(diff $file $file.bak)"
+
+    if [ "$diffs" != "" ] ; then
+        changed=yes
+        _logfile "$prompt: Changes for $file:"
+        _logfile "$diffs"
+        _logfile "$prompt: Backup to $file.bak."
+        _log2 "$prompt: $file changed. See file $log."
+    else
+        _logfile "$prompt: $file not changed."
+    fi
+}
+
+_grub_mod1() {
+    local file=/etc/grub.d/30_os-prober  # from package 'grub'
+    _backup $file grub
+    sed -i $file \
+        -e "s|\(echo \${LINUX} \| cut -d ':' -f 5\)\`|\1 \| tr '^' ' '\`|"
+    _show_result $file
+}
+
+_grub_mod2() {
+    local file=/etc/grub.d/10_linux  # from package 'grub'
+    _backup $file grub
+    sed -i $file \
+        -e "s|s, with OS |s, on |" \
+        -e 's|"Loading OS |"Loading kernel |' \
+        -e 's|^  OS="${GRUB_DISTRIBUTOR} OS"$|  OS="${GRUB_DISTRIBUTOR}"|'
+    _show_result $file
+}
+
+_grub_mod3() {
+    # Make sure GRUB_DISTRIBUTOR is taken from /etc/lsb-release:DISTRIB_ID.
+
+    local lsb=/etc/lsb-release
+    test -r $lsb || {
+        _log "$warning: package lsb-release is not installed."
+        return
+    }
+    local name="$(grep "^DISTRIB_ID=" $lsb | cut -d '=' -f 2 | tr -d '"' | tr -d "'")"
+    test -n "$name" || {
+        _log "$warning: $lsb does not contain a value for DISTRIB_ID."
+        return
+    }
+    local file=/etc/default/grub  # from package 'grub'
+
+    _backup $file grub
+    if [ -n "$(grep "^GRUB_DISTRIBUTOR=" $file)" ] ; then
+        sed -i $file -e "s|^GRUB_DISTRIBUTOR=.*|GRUB_DISTRIBUTOR=\"$name\"|"
+    else
+        echo "GRUB_DISTRIBUTOR=\"$name\"" >> $file
+    fi
+    _show_result $file
+}
+
+_grub_mods() {
+    _grub_mod1  # this is related to _os_prober_mod !
+    _grub_mod2
+    _grub_mod3
+}
+
+_os_prober_mod() {
+    if [ -x /usr/bin/os-prober ] ; then
+        local file=/usr/lib/linux-boot-probes/mounted/40grub2  # from package 'os-prober'
+        _backup $file os-prober
+        sed -i $file \
+            -e 's|initrd="\$(echo "\$2"|shift; initrd="\$(echo "\$\@"|' \
+            -e 's|initrd="/boot\$initrd"|initrd=($initrd); initrd=\${initrd[@]/#//boot}|'
+        _show_result $file
+    fi
+}
+
+Main() {
+    local in_pkg=grub-tools
+    local progname=grub-fix-initrd-generation
+    local lock=/var/log/$progname.lck
+    local log=/var/log/$progname.log
+    local prompt="===> INFO"
+    local warning="===> WARNING"
+    local changed=no
+
+    if [ -r $lock ] ; then
+        _log2 "$progname is already running!"
+        return
+    fi
+    if [ $EUID -ne 0 ] ; then
+        _log2 "Elevated privileges required!"
+        return 1
+    fi
+    touch $lock
+
+    rm -f $log
+
+    _log2 "$prompt: $in_pkg / $progname:"
+    _grub_mods
+    _os_prober_mod
+
+    rm -f $lock
+
+    if [ "$changed" = "yes" ] ; then
+        /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
+    else
+        _log2 "No changes."
+    fi
+}
+
+Main "$@"

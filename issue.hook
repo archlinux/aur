@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = filesystem
+
+[Action]
+Description = Add Croco specifc config.
+When = PostTransaction
+Exec = /bin/sh -c "sed -i 's|Arch|Croco|g' /etc/issue /usr/share/factory/etc/issue" 

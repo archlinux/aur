@@ -1,0 +1,21 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Operation = Upgrade
+Type = Package
+Target = linux*
+Target = linux-lts
+Target = linux-zen
+Target = linux-hardened
+Target = amd-ucode
+Target = intel-ucode
+Target = usr/lib/modules/*/vmlinuz
+Target = boot/vmlinuz*
+Target = *dkms*
+Target = nvidia-dkms
+
+[Action]
+Description = mkinitcpio and grub update after transaction.
+When = PostTransaction
+Depends = grub
+Exec = /bin/sh -c "mkinitcpio -P && /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg"

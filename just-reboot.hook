@@ -1,0 +1,19 @@
+#/etc/pacman.d/hooks/just-reboot.hook
+
+#2018.07.17
+#
+#--if vital pkgs are changed,
+#--then suggests to reboot
+
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = linux*
+Target = systemd*
+
+[Action]
+Description = Checking for kernel changes...
+When = PostTransaction
+Exec = /usr/bin/notify-send "Vital OS packages are changed.\nReboot is recommended."

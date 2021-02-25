@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = filesystem
+
+[Action]
+Description = Add Croco specifc config.
+When = PostTransaction
+Exec = /bin/sh -c "sed -i 's|systemd||g' /etc/nsswitch.conf && sed -i 's|hosts:.*|hosts: files mymachines myhostname mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns wins|g' /etc/nsswitch.conf" 

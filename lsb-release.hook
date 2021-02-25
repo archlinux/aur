@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = lsb-release
+
+[Action]
+Description = Add Croco OS specifc config.
+When = PostTransaction
+Exec = /bin/sh -c "sed -i -e 's,DISTRIB_ID=.*,DISTRIB_ID=Croco,' -e 's,DISTRIB_RELEASE=.*,DISTRIB_RELEASE=14.12,' -e 's,DISTRIB_DESCRIPTION=.*,DISTRIB_DESCRIPTION=\"Croco OS\",' /etc/lsb-release"

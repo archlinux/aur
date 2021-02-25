@@ -1,0 +1,37 @@
+pkgbase = croco-hooks
+	pkgdesc = additions and enhancements to croco.
+	pkgver = 0.0.1
+	pkgrel = 30
+	install = croco-hooks.sh
+	arch = any
+	license = GPL
+	depends = pacman
+	depends = pacman-contrib
+	depends = chaotic-mirrorlist
+	depends = nss-mdns
+	depends = rebuild-detector
+	source = just-reboot.hook
+	source = mkinitcpio-grub-update.hook
+	source = lsb-release.hook
+	source = os-release.hook
+	source = orphans.hook
+	source = pacnew-check.hook
+	source = foreign.hook
+	source = issue.hook
+	source = nsswitch.hook
+	source = grub-fix-initrd-generation.hook
+	source = grub-fix-initrd-generation
+	md5sums = d1c93d328cd5f3a0791390a66d62ca55
+	md5sums = d48b7bf271c8cb8a37f4c13777aae09e
+	md5sums = d94e41ee0b47a1a864abe23468773b6d
+	md5sums = 857cd16880445e022a911463e1b4b76d
+	md5sums = f7aef70544b2f4ce5423de2c77a57232
+	md5sums = e5274c70d324eb139960f3a6e8e99a19
+	md5sums = e0f95c27949d32c8e05bc2d5b07605a6
+	md5sums = b554d500e01b768fe2f07f97ea91930b
+	md5sums = 3d67e3587221018eacc5d04a0eb464eb
+	md5sums = cc5954d4d78e8289bc1990b0aaaf3157
+	md5sums = 865891564d21ac40db26f22a56bf68df
+
+pkgname = croco-hooks
+

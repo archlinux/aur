@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Checking for .pacnew and .pacsave files...
+When = PostTransaction
+Exec = /usr/bin/bash -c 'pacfiles=$(pacdiff -o); if [[ -n "$pacfiles" ]]; then echo -e "\e[1m.pac* files found:\e[0m\n$pacfiles\n\e[1mPlease check and merge\e[0m"; fi'
+#/etc/pacman.d/hooks/pacnew-check.hook

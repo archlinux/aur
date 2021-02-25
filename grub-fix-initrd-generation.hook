@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = grub
+Target = os-prober
+
+[Action]
+Description = Fix 'grub' and 'os-prober' after upgrading either of them.
+When = PostTransaction
+Depends = grub
+Depends = os-prober
+Exec = /usr/bin/grub-fix-initrd-generation
