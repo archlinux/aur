@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.7.1.r40.g79acc09
+pkgver=3.7.1.r41.g72c6296
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -13,10 +13,8 @@ makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git"
-        "0001-packaging-archlinux-Use-libliftoff-s-new-pkg-config-.patch"
-        "0002-fix-wlserver-update-wlr_headless_backend_create-call.patch")
+        "0001-fix-wlserver-update-wlr_headless_backend_create-call.patch")
 sha512sums=('SKIP'
-            '7876353d4e7f4f81083dede3d77dc778e65a87dd8ae021e3976d4999431f6a30ab305c79f13d4ff9280ad2bae294525f45bf791b65b7e2af3efa65a76397a4cf'
             'c79e380f2307744de7fff7d719da6b5ecdaf8daf03771acb2c4bf1770e34692876fa37ce5efc8441dee9d8d386a17331f6991fe635730c59012faaba7db4b50b')
 
 
@@ -33,8 +31,7 @@ prepare() {
 
     cd "$srcdir/$_pkgname"
 
-    patch -Np1 < "$srcdir/0001-packaging-archlinux-Use-libliftoff-s-new-pkg-config-.patch"
-    patch -Np1 < "$srcdir/0002-fix-wlserver-update-wlr_headless_backend_create-call.patch"
+    patch -Np1 < "$srcdir/0001-fix-wlserver-update-wlr_headless_backend_create-call.patch"
 }
 
 build() {
