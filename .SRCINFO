@@ -1,7 +1,7 @@
 pkgbase = ocaml-ffmpeg-git
 	pkgdesc = OCaml bindings to the FFmpeg library
-	pkgver = r323.1273a5e
-	pkgrel = 2
+	pkgver = 0.4.1.r120.3b1b6c7
+	pkgrel = 1
 	url = https://github.com/savonet/ocaml-ffmpeg
 	arch = i686
 	arch = x86_64
