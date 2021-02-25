@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=('libvgm-player-git' 'libvgm-emu-git' 'libvgm-utils-git' 'libvgm-audio-git' 'libvgm-common-git' 'vgm2wav-git' 'vgmplayer-git')
 pkgbase=libvgm-git
-pkgver=r451.05f8d7a
+pkgver=r468.e925bad
 pkgrel=1
 pkgdesc="Library for decoding and playing VGM files"
 arch=(x86_64 i686)
