@@ -1,0 +1,18 @@
+pkgbase = croco-librewolf
+	pkgdesc = Metapkg for Librewolf and extensions
+	pkgver = 20210201
+	pkgrel = 1
+	url = https://www.crocoos.org
+	arch = any
+	license = GPL3
+	depends = librewolf
+	depends = librewolf-extension-dark-reader
+	depends = librewolf-extension-localcdn
+	optdepends = librewolf-extension-plasma-integration
+	optdepends = librewolf-extension-gnome-shell-integration
+	optdepends = librewolf-extension-xdm-browser-monitor
+	optdepends = librewolf-extension-bitwarden
+	provides = croco-firefox
+
+pkgname = croco-librewolf
+
