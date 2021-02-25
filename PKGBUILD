@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=junit-system-rules
 pkgver=1.19.0
-_commit=f4782ebfd72c08bd3f00aa04ad20fe499c5463b4 # signed commit corresponding to tag "system-rules-$pkgver"
+_commit=f4782ebfd72c08bd3f00aa04ad20fe499c5463b4 # git rev-parse "system-rules-$pkgver^{}"
 pkgrel=7
 pkgdesc='A collection of JUnit rules for testing code that uses java.lang.System'
 arch=('any')
@@ -17,7 +17,7 @@ validpgpkeys=('F4AF40991AECE57728B0034F9ECE1F68817F4996') # Stefan Birkner <mail
 
 pkgver() {
 	cd "$pkgname"
-	git describe --tags | sed 's/^system-rules-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags | sed 's/^system-rules-//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
