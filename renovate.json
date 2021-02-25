@@ -3,14 +3,16 @@
   "packageRules": [
     {
       "matchDatasources": ["github-releases"],
-      "matchPackageNames": ["lDeFiCh/app"],
+      "matchPackageNames": ["DeFiCh/app"],
       "automerge": false
     }
   ],
   "regexManagers": [
     {
       "fileMatch": ["^PKGBUILD$"],
-      "matchStrings": ["pkgver=(?<currentValue>.*?)\n"]
+      "matchStrings": ["pkgver=(?<currentValue>.*?)\n"],
+      "depNameTemplate": "pkgbuild",
+      "datasourceTemplate": "github-releases"
     }
   ]
 }
