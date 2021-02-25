@@ -13,7 +13,7 @@ options=(!strip)
 provides=('defi-app')
 conflicts=('defi-app')
 source=("${_package}::${url}/releases/download/${pkgver}/${_package}")
-sha512sums=('e042a6fae936cbd4f92ea2e5b893a5d20f432c96c2b6adf5ee790af7cb22cdd63f92a937b40f4955349df95aeb8df3e2af84b73084dd380a71bfedad9979945f')
+sha512sums=('f844129129ba54b0c86c075f6b213797ffd76479b8d250966e88d9d053a4d8f53faf0d252b4c211a8b80ee84340fbdee5dd17c109a47496ece221dde3c58192f')
 
 build() {
 	# Extract files
