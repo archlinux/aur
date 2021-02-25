@@ -1,0 +1,24 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_install() {
+post_upgrade
+}
+
+post_upgrade() {
+  echo -n "Updating font cache... "
+  mkfontscale /usr/share/fonts/TTF /usr/share/fonts/OTF /usr/share/fonts/misc > /dev/null 2>&1
+  mkfontdir /usr/share/fonts/TTF /usr/share/fonts/OTF /usr/share/fonts/misc > /dev/null 2>&1
+  fc-cache -s >/dev/null
+  echo "Done."
+  glib-compile-schemas usr/share/glib-2.0/schemas
+  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+  /bin/sh -c 'dconf update'
+}
+
+# vim: ts=2 sw=2 et:

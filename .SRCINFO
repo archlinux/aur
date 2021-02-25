@@ -1,0 +1,25 @@
+pkgbase = croco-gnome-settings
+	pkgver = r77.94ad064
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/settings/croco-gnome-settings
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/settings/croco-gnome-settings.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-gnome-settings
+	pkgdesc = Croco OS GNOME settings
+	install = croco-gnome-settings.install
+	depends = croco-common-settings
+	depends = kvantum-qt5
+	depends = nerd-fonts-fantasque-sans-mono
+	depends = qt5ct
+	depends = yaru-sound-theme
+	provides = croco-desktop-settings
+	conflicts = croco-desktop-settings
+	conflicts = sweet-theme-dark
+	conflicts = sweet-theme-git
+	conflicts = kvantum-theme-sweet-git
+	conflicts = xcursor-sweet
+
