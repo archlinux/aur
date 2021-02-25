@@ -36,7 +36,7 @@ pkgver()
 build()
 {
     cd ${srcdir}/${_pkgname}/
-    git checkout tags/${pkgver}
+    git checkout tags/$(git describe --tags --abbrev=0)
     ./build.sh
 }
 
