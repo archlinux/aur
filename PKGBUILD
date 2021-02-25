@@ -1,6 +1,6 @@
 # Maintainer: hiromi-mi <hiromi hyphen mi at cat dot zaq dot jp>
 pkgname=python-qulacs
-pkgver=0.1.10.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Simulate quantum circuits for Python"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('cmake' 'gcc' 'python-setuptools' 'git')
 checkdepends=('python-numpy')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qulacs/qulacs/archive/v${pkgver}.tar.gz")
-sha512sums=('2eef707bcd6a6fca763ef5f11a662661123ae622cc4aa1e5b78a849260b1fa3d36c7f0b8379641763504ede6aadc397f1df501d83b150a4d43d56bb4aa21ca14')
+sha512sums=('d7141ccaaf05b9267ebd24c3fd493a94f6c131677a5fbd34ef674d5305b20a66977f250e2ef0e88ab6ae52967e490d58bfda9abe42c46af217d244b343155ada')
 
 build() {
     cd "qulacs-$pkgver"
@@ -26,5 +26,5 @@ package() {
 
 check() {
     cd "qulacs-$pkgver"
-    python python/test/test_qulacs.py
+    PYTHONPATH="." python python/test/test_qulacs.py
 }
