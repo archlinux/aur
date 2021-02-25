@@ -1,6 +1,6 @@
 pkgbase = openbox-git
 	pkgdesc = Highly configurable and lightweight X11 window manager
-	pkgver = 3.5.2.76.g9e8813e1
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = http://openbox.org
 	arch = x86_64
@@ -21,15 +21,15 @@ pkgbase = openbox-git
 	depends = librsvg
 	depends = libsm
 	optdepends = plasma-workspace: for the KDE/Openbox xsession
-	optdepends = python2-xdg: for the openbox-xdg-autostart script
-	provides = openbox=3.5.2.76.g9e8813e1
+	optdepends = python-pyxdg: for the openbox-xdg-autostart script
+	provides = openbox=3.6.1
 	provides = libobrender.so
 	conflicts = openbox
 	backup = etc/xdg/openbox/menu.xml
 	backup = etc/xdg/openbox/rc.xml
 	backup = etc/xdg/openbox/autostart
 	backup = etc/xdg/openbox/environment
-	source = openbox-git::git://git.openbox.org/dana/openbox.git
+	source = openbox-git::git+https://github.com/Mikachu/openbox.git
 	md5sums = SKIP
 
 pkgname = openbox-git

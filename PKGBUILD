@@ -8,7 +8,7 @@
 # Contributor: Lauri JÃ¤ntti <janttilauri@gmail.com>
 
 pkgname=openbox-git
-pkgver=3.5.2.76.g9e8813e1
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='Highly configurable and lightweight X11 window manager'
 arch=('x86_64' 'i686')
@@ -19,12 +19,13 @@ conflicts=(${pkgname%-*})
 depends=('startup-notification' 'libxml2' 'libxinerama' 'libxrandr'
          'libxcursor' 'pango' 'imlib2' 'librsvg' 'libsm')
 optdepends=('plasma-workspace: for the KDE/Openbox xsession'
-            'python2-xdg: for the openbox-xdg-autostart script')
+            'python-pyxdg: for the openbox-xdg-autostart script')
 groups=('lxde' 'lxde-gtk3' 'lxqt')
 backup=('etc/xdg/openbox/menu.xml' 'etc/xdg/openbox/rc.xml'
         'etc/xdg/openbox/autostart' 'etc/xdg/openbox/environment')
 makedepends=(docbook-to-man git)
-source=($pkgname::git://git.openbox.org/dana/${pkgname%-*}.git)
+#source=($pkgname::git://git.openbox.org/dana/${pkgname%-*}.git)
+source=($pkgname::git+https://github.com/Mikachu/${pkgname%-*}.git)
 md5sums=('SKIP')
 
 pkgver() {
