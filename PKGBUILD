@@ -7,6 +7,9 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: valgrind requires rebuilt with each major glibc version
 
+# WARNING: if you dont do the toolchail build order properly, you will completely bork your system
+# WARNING: you will also not be able to arch-chroot into the system if the toolchain build order is not done properly
+
 pkgname=(glibc-minimal-git lib32-glibc-minimal-git)
 pkgver=2.33
 pkgrel=1
