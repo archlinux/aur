@@ -41,15 +41,13 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
                megabar.patch
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-               unity-menubar.patch)
+               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
 source_aarch64=("hg+$_repo#revision=autoland"
                 $_pkgname.desktop
                 "git+https://gitlab.com/librewolf-community/browser/common.git"
                 "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
                 megabar.patch
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-                unity-menubar.patch
                 "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 build-arm-libopus.patch)
@@ -60,15 +58,13 @@ sha512sums_x86_64=('SKIP'
                    'SKIP'
                    'd90d0e8d555d32720fd519ec020c8232539cef1f0754cf8c9aa78aa86bbbe3eb1f61748b92e9332d75fb1d933ac543de047e9312740f710b870a64da8caa3eef'
                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
-                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
-                   'dd4d639127941a4f64186c9508d6e76bddc4eef8b0a1bbb64bd370430078057c126ca433cddcb8b55a70e426aa9611bfb893ad273f3f45aac593c1c54bbb6829')
+                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061')
 sha512sums_aarch64=('SKIP'
                     '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                     'SKIP'
                     'SKIP'
                     'd90d0e8d555d32720fd519ec020c8232539cef1f0754cf8c9aa78aa86bbbe3eb1f61748b92e9332d75fb1d933ac543de047e9312740f710b870a64da8caa3eef'
                     '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
-                    'dd4d639127941a4f64186c9508d6e76bddc4eef8b0a1bbb64bd370430078057c126ca433cddcb8b55a70e426aa9611bfb893ad273f3f45aac593c1c54bbb6829'
                     'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                     '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
@@ -175,9 +171,10 @@ fi
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
   patch -p1 -i ../megabar.patch
 
-  # Debian patch to enable global menubar
-  # disabled for the default build, as it seems to cause issues in some configurations
-  patch -p1 -i ../unity-menubar.patch
+  # to enable global menubar
+  # set these to true 
+  # browser.proton.enabled
+  # browser.proton.appmenu.enabled 
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
