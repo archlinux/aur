@@ -16,7 +16,7 @@ source=(
   fastlane
 )
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('c9ef7ebde39487fb88a9141c5b1b66f383bb9a8f'
+sha1sums=('24bc1bad2be1780b7509440d79db3dad7e63a13b'
           '77df078e0af5365d7a9d406e46eb5719801c46a6')
 
 package() {
