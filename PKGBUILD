@@ -6,7 +6,7 @@
 pkgname=kwin-unredirect
 pkgver=5.21.1
 pkgrel=1
-pkgdesc='KWin compositor with redirection patch from Sporif'
+pkgdesc='KWin compositor with unredirect patch from Sporif'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
