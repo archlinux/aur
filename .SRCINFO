@@ -1,0 +1,60 @@
+pkgbase = croco-tools-git
+	pkgdesc = Development tools for croco Linux
+	pkgver = r18.38b258e
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/tools/croco-tools
+	arch = x86_64
+	arch = i686
+	groups = croco-tools
+	license = GPL
+	makedepends = git
+	makedepends = docbook2x
+	source = croco-tools::git+https://gitlab.com/croco-os/tools/croco-tools.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-tools-base-git
+	pkgdesc = Development tools for croco Linux (base tools)
+	depends = openssh
+	depends = rsync
+	depends = haveged
+	depends = os-prober
+	depends = gnupg
+	depends = pacman-mirrorlist>=20160301
+	optdepends = croco-tools-pkg: croco Linux package tools
+	optdepends = croco-tools-iso: croco Linux iso tools
+	optdepends = croco-tools-yaml: croco Linux yaml tools
+	provides = croco-tools-base=0.15.6
+	conflicts = croco-tools-base
+	backup = etc/croco-tools/croco-tools.conf
+
+pkgname = croco-tools-pkg-git
+	pkgdesc = Development tools for croco Linux (packaging tools)
+	depends = namcap
+	depends = croco-tools-base-git
+	provides = croco-tools-pkg=0.15.6
+	conflicts = croco-tools-pkg
+	conflicts = devtools
+
+pkgname = croco-tools-iso-git
+	pkgdesc = Development tools for croco Linux (ISO tools)
+	depends = dosfstools
+	depends = libisoburn
+	depends = squashfs-tools
+	depends = croco-tools-yaml-git
+	depends = mkinitcpio
+	depends = mktorrent
+	depends = grub
+	depends = git
+	optdepends = virtualbox: quickly test isos
+	optdepends = snapd: for snapd support
+	provides = croco-tools-iso=0.15.6
+	conflicts = croco-tools-iso
+
+pkgname = croco-tools-yaml-git
+	pkgdesc = Development tools for croco Linux (yaml tools)
+	depends = croco-tools-base-git
+	depends = calamares-tools
+	depends = ruby-kwalify
+	provides = croco-tools-yaml=0.15.6
+	conflicts = croco-tools-yaml
+

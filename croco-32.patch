@@ -1,0 +1,70 @@
+--- a/croco-tools/lib/util.sh	2017-11-01 14:15:59.293276152 -0400
++++ b/croco-tools/lib/util.sh	2017-12-31 12:45:22.599475136 -0500
+@@ -66,7 +66,7 @@ get_pac_mirrors_conf(){
+     local conf="$tmp_dir/pacman-mirrors-$1.conf"
+     cp "${DATADIR}/pacman-mirrors.conf" "$conf"
+     sed -i "$conf" \
+-        -e "s|Branch = stable|Branch = $1|"
++        -e "s|Branch = x32-stable|Branch = $1|"
+ 
+     echo "$conf"
+ }
+@@ -201,7 +201,7 @@ set_branch(){
+ }
+ 
+ init_common(){
+-    [[ -z ${target_branch} ]] && target_branch='stable'
++    [[ -z ${target_branch} ]] && target_branch='x32-stable'
+ 
+     [[ -z ${target_arch} ]] && target_arch=$(uname -m)
+ 
+@@ -749,7 +749,7 @@ is_valid_arch_iso(){
+ 
+ is_valid_branch(){
+     case $1 in
+-        'stable'|'testing'|'unstable') return 0 ;;
++        'x32-stable'|'x32-testing'|'x32-unstable') return 0 ;;
+         *) return 1 ;;
+     esac
+ }
+--- a/croco-tools/lib/util-iso.sh	2017-11-01 14:15:59.269942128 -0400
++++ b/croco-tools/lib/util-iso.sh	2017-12-31 12:58:11.425522151 -0500
+@@ -221,7 +221,7 @@ gen_iso_fn(){
+     fi
+     [[ ${initsys} == 'openrc' ]] && vars+=("${initsys}")
+     vars+=("${dist_release}")
+-    vars+=("${target_branch}")
++    vars+=("${target_branch/x32-/}")
+     vars+=("${target_arch}")
+     for n in ${vars[@]};do
+         name=${name:-}${name:+-}${n}
+diff --git a/croco-tools/data/pacman-mirrors.conf b/croco-tools/data/pacman-mirrors.conf
+index 7141548..e33e526 100644
+--- a/croco-tools/data/pacman-mirrors.conf
++++ b/croco-tools/data/pacman-mirrors.conf
+@@ -2,8 +2,8 @@
+ ## /etc/pacman-mirrors.conf
+ ##
+ 
+-## Branch Pacman should use (stable, testing, unstable)
+-Branch = stable
++## Branch Pacman should use (x32-stable, x32-testing, x32-unstable)
++Branch = x32-stable
+ 
+ ## Generation method
+ ## 1) rank   - rank mirrors depending on their access time
+
+diff --git a/croco-tools/data/croco-tools.conf b/croco-tools/data/croco-tools.conf
+index 52f5866..05b20d1 100644
+--- a/croco-tools/data/croco-tools.conf
++++ b/croco-tools/data/croco-tools.conf
+@@ -3,7 +3,7 @@
+ ######################################################
+ 
+ # default target branch
+-# target_branch=stable
++# target_branch=x32-stable
+ 
+ # default taget arch: auto detect
+ # target_arch=$(uname -m)
+
