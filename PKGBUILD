@@ -9,9 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('dkms')
 makedepends=('linux-headers')
-provides=('btusb-qca-0x3004')
 conflicts=('btusb-qca-0x3004')
-replaces=('btusb-qca-0x3004')
 source=("Makefile"
 	"dkms.conf"
 	"btusb.patch"
