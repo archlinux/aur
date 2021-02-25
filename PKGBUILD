@@ -1,8 +1,8 @@
-# Maintainer: Simon Gardling <titaniumtown@gmail.com>
+# Maintainer: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
 
 pkgname=gnome-shell-git
 _pkgname=gnome-shell
-pkgver=3.37.1+80+g71b3b03b2
+pkgver=40.beta+8+g85d0f8706
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
