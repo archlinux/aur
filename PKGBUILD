@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname='libgme-vgmplay-git'
-pkgbase='libgme-vgmplay'
+_pkgbase='libgme-vgmplay'
 pkgver=r253.5bdc5d1
 pkgrel=1
 pkgdesc="libgme fork with VGMPlay integrated"
@@ -30,12 +30,12 @@ md5sums=(
 )
 
 pkgver() {
-	cd "$srcdir/${pkgbase}"
+	cd "$srcdir/${_pkgbase}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/${pkgbase}"
+    cd "$srcdir/${_pkgbase}"
     git submodule init
     git config submodule.vgmplay.url "${srcdir}/vgmplay"
     git submodule update
@@ -46,7 +46,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/${pkgbase}"
+    cd "$srcdir/${_pkgbase}"
     rm -rf build
     mkdir build
     cd build
@@ -61,6 +61,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/${pkgbase}/build"
+    cd "$srcdir/${_pkgbase}/build"
     make DESTDIR="$pkgdir/" install
 }
