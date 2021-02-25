@@ -1,0 +1,20 @@
+pkgbase = reflector-simple
+	pkgdesc = Simple GUI wrapper for 'reflector'.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/endeavouros-team/PKGBUILDS/raw/master/reflector-simple
+	arch = any
+	license = GPL
+	depends = bash
+	depends = yad
+	depends = reflector
+	depends = whois
+	depends = geoip
+	depends = bind
+	source = reflector-simple
+	source = reflector-simple.desktop
+	sha512sums = 788319605396818f4932cb04ad4faf1fcff4a5fee87f0f78a507f6960f393dc7eca635fd95655f18c1de72ae5cac4e3894bb089f024fc2271cee3bedad0d44ba
+	sha512sums = 2def334909a5bbe3c6f82043f62a0f3f3c6747b7813ad9154f43e70c303301e079f8e81ea41b306f1b6f8a8e37afd535686b2e4642fb6b9357d97a7fad1e0d0a
+
+pkgname = reflector-simple
+
