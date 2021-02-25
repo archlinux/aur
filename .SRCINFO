@@ -1,0 +1,12 @@
+pkgbase = croco-common-settings-git
+	pkgver = r40.187953a
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/settings/croco-common-settings
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/settings/croco-common-settings.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-common-settings-git
+

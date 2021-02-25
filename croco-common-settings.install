@@ -1,0 +1,56 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_install() {
+  systemctl enable haveged
+  systemctl enable systemd-swap
+  systemctl enable irqbalance
+  systemctl enable nohang-desktop
+  systemctl enable memavaild
+  systemctl enable prelockd
+  systemctl enable ananicy
+  systemctl enable grub-btrfs.path
+  systemctl enable fstrim.timer
+  systemctl enable btrfs-scrub@-.timer
+  systemctl enable preload
+}
+
+post_upgrade() {
+  msg "Attempting to enable services..."
+  systemctl is-active haveged >/dev/null || systemctl enable haveged
+  systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
+  systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
+  systemctl is-active nohang-desktop >/dev/null || systemctl enable nohang-desktop
+  systemctl is-active memavaild >/dev/null || systemctl enable memavaild
+  systemctl is-active prelockd >/dev/null || systemctl enable prelockd
+  systemctl is-active ananicy >/dev/null || systemctl enable ananicy
+  systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
+  systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
+  systemctl is-active btrfs-scrub@-.timer >/dev/null || systemctl enable btrfs-scrub@-.timer
+  systemctl is-active preload >/dev/null || systemctl enable preload
+  echo ""
+  msg "services should now be enabled."
+  echo ""
+  echo -n "Updating font cache... "
+  echo ""
+  mkfontscale /usr/share/fonts/TTF /usr/share/fonts/OTF /usr/share/fonts/misc > /dev/null 2>&1
+  mkfontdir /usr/share/fonts/TTF /usr/share/fonts/OTF /usr/share/fonts/misc > /dev/null 2>&1
+  fc-cache -s >/dev/null
+  echo ""
+  echo "done"
+  echo ""
+  glib-compile-schemas usr/share/glib-2.0/schemas
+  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+  /bin/sh -c 'dconf update'
+  echo ""
+  chmod 750 /etc/sudoers.d
+  echo "Permissions fixed."
+  echo ""
+}
+
+# vim: ts=2 sw=2 et:
