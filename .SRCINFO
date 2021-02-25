@@ -1,0 +1,15 @@
+pkgbase = standard-test-roles
+	pkgdesc = Standard Test Interface Ansible roles
+	pkgver = 4.10
+	pkgrel = 1
+	url = https://fedoraproject.org/wiki/Changes/InvokingTestsAnsible
+	arch = any
+	license = MIT
+	depends = openssh
+	depends = qemu
+	depends = python-fmf
+	source = https://releases.pagure.org/standard-test-roles/standard-test-roles-4.10.tar.gz
+	sha512sums = b8746dccfe9cb997d851b6cdf6aeae9740d6e9f489ec3cbed0df896164ac00b43f6d4621d1b8eae43964bfb5b85dc5ca83b7e87c27d959bd764d3cbcb55f6dab
+
+pkgname = standard-test-roles
+
