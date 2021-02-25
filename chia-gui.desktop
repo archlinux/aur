@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Chia
+Comment=A new blockchain and smart transaction platform that is easier to use, more efficient, and secure.
+Exec=chia-gui %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/chia.png
+Categories=Finance;P2P;Network;

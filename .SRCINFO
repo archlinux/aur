@@ -1,0 +1,31 @@
+pkgbase = chia-git-gui
+	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Also installs GUI
+	pkgver = 1.0rc2.r0.g6518b2bf
+	pkgrel = 1
+	url = https://www.chia.net/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = cmake
+	depends = git
+	depends = python
+	depends = npm
+	depends = nodejs
+	provides = chia
+	provides = chia-gui
+	conflicts = chia
+	conflicts = chia-gui
+	options = !strip
+	source = git+https://github.com/Chia-Network/chia-blockchain.git
+	source = git+https://github.com/Chia-Network/chia-blockchain-gui.git
+	source = chia-gui.desktop
+	source = chia-gui.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 62693edb1a75f2a44b62d1a4f02b1ae755d40eb02dd7faf5f65ea6253e5e3645
+	sha256sums = f9f78823f67f79813cca27bb200d5608b5adc2a37c2a7ebd90a6e80e02245ade
+
+pkgname = chia-git-gui
+
