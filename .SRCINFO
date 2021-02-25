@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 5.10.16.arch1
+	pkgver = 5.11.1.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.10.16-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.11.1-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,15 +20,17 @@ pkgbase = linux-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.10.16-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.1-arch1
 	source = config
+	source = sphinx-workaround.patch
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 47a5c0cbe4f75e77fe64953b516a6a9f277c1dfb812e31edf5cb25feb1b3819a
+	sha256sums = d8d5d11c80424985642b0eea6ace3256b5a1e5e69d637104523460a5ebdda202
+	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
 	sha256sums = b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77
 	sha256sums = 1c621f67bbf9efef610d1b2d1afd727fca9ceaa298f807bd0348b59ec6ce9562
 
@@ -46,6 +48,7 @@ pkgname = linux-vfio
 
 pkgname = linux-vfio-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
 
 pkgname = linux-vfio-docs
 	pkgdesc = Documentation for the Linux kernel
