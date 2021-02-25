@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=verco-git
-pkgver=5.5.1.r0.g287c5f9
-pkgrel=2
+pkgver=5.5.1.r17.g7691261
+pkgrel=1
 pkgdesc="Simple Git/Hg tui client focused on keyboard shortcuts (git)"
 arch=('x86_64')
 url="https://github.com/matheuslessarodrigues/verco"
