@@ -3,14 +3,14 @@
 
 pkgname=paintstorm-bin
 pkgver=2.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional software for digital painting"
 arch=('x86_64')
 url="http://www.paintstormstudio.com"
 license=('Commercial')
 depends=('gtk2' 'freeglut' 'ftgl' 'libcurl-gnutls'  'glew1.13')
 source=("https://paintstormstudio.com/Paintstorm_linux_v${pkgver}.run.tar.gz")
-sha256sums=('84855fc8b405bd4a5de8303020d2fbbec9a31ce837bb5baaef67c4f6cec012d5')
+sha256sums=('8782e377af92ef32a8c39e366b1f67c9ce0d22ae69136aad57056179d1288ba0')
 provides=('paintstorm')
 conflicts=('paintstorm')
 install="${pkgname}.install"
