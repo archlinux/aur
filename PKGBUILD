@@ -3,7 +3,7 @@
 
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet')
-pkgver=v0.21.0.beta.r34.g13405137
+pkgver=0.21.0.beta.r66.gdff2198f
 pkgrel=1
 pkgdesc="btcd an alternative full node Bitcoin implementation written in Go and btcwallet a secure Bitcoin wallet daemon written in Go "
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
