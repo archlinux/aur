@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.10
-_major=5.10
+_srcname=linux-5.11
+_major=5.11
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=15
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,19 +30,21 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
+  0002-Revert-drm-amd-display-reuse-current-context-instead.patch
+  0003-drm-amdgpu-fix-shutdown-with-s0ix.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('4c179da64ec40ed5876a403889d511631dac6c536fcc0dc6b4fc68f785e00f07028285bf05db1256d6a91cc2a0174bf7fe3a9f26f89ade025ff3e570615f9b7a'
+b2sums=('65807ff9b09c818188deafcfba3a48c9275e9681b920364f2cd4c63d616611ce0533ea3a2e4a1f40afd9d601e173ff3f2e2747ad6f9eae0379a1a6a95a3cc72e'
         'SKIP'
-        '7cf58513bf2266697843f6d91fbb214268ad511e110a4e2b66bc0db84ecb4df724a7d65f641eee5837f4d88c1371ec8b313ee8aaa1d1f0260709eae2e3af32b3'
+        'a585aa07b5e577bddc8c54086900be6ef768ee71687bcafdb770eef40a3c5aa24ce40ca49d4231645ce3fa2787f8527f68cd5c9fb1f0947c511c759cba957471'
         'SKIP'
-        '74b6ea3f314aa8291c9e2c3b5763f9b0c8aabbc0e714e30529f557955a7a315b44b0cd2f2d665ffe3ba48e7df71274c5901d3891ed395191ceb6ca88f69cdb1a'
-        'a72505887e56d422b837454babd6990f12f6581138192331b2646a58ec87cc43a2630577b84312d79fedfb1a343e6ecdd9420ab4efe07ccb5ad792e95450430e'
-        '858e46f4ad443499ab7853bc69fd31bd48f99e348e866dbcb226ac7e802f27df5bd2afeb6335bf9d845185f059657e9aa7f08ae49b0097c18b972002a1f6d673')
+        'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
+        'eab8a07469cff83526e5fef59d72d9c2c539432c161298cb61a09c25d55528e495b4d9dd0ff527d3e5900b8adb3f973f6601ea35837f04bf0c2794eaf04bc6ad'
+        'a2fd5b8241da9fbc1e027b65685d496b382f2834948eb50bb8dacad21485a72a63ef56cb9a935a0d99b44424e922e3b40afde226dc26ab1ddfba87c447c7308f'
+        'eda7eed7972c5688119d28050a0af7fb9f36356ca629bec55e9fdb2666630cac484d3260da29a973bcf0867d6f108a2b5f8daa98a3e02244ea9c4b56c2a53e94')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -72,25 +74,16 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
 
-  # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
-  # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
-  # partition ... this was introduced by FS#66260, see:
+  # disable CONFIG_DEBUG_INFO at build time otherwise memory usage blows up and
+  # can easily overwhelm a system with 32 GB of memory using a tmpfs build.
+  # introduced by FS#66260, see:
   # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_CGROUP_BPF=y/# CONFIG_CGROUP_BPF is not set/' \
-      -i -e 's/CONFIG_BPF_LSM=y/# CONFIG_BPF_LSM is not set/' \
-      -i -e 's/CONFIG_USERMODE_DRIVER=y/# CONFIG_BPF_PRELOAD is not set/' \
-      -i -e '/CONFIG_BPF_PRELOAD=y/d' \
-      -i -e '/CONFIG_BPF_PRELOAD_UMD=m/d' \
-      -i -e '/CONFIG_BPF_STREAM_PARSER=y/g' \
-      -i -e 's/CONFIG_BPF_LIRC_MODE2=y/# CONFIG_BPF_LIRC_MODE2 is not set/' \
-      -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
-      -i -e '/# CONFIG_DEBUG_INFO_REDUCED is not set/d' \
-      -i -e '/# CONFIG_DEBUG_INFO_COMPRESSED is not set/d' \
-      -i -e '/# CONFIG_DEBUG_INFO_SPLIT is not set/d' \
-      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' \
-      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' \
-      -i -e '/# CONFIG_GDB_SCRIPTS is not set/d' \
-      -i -e 's/CONFIG_BPF_KPROBE_OVERRIDE=y/# CONFIG_BPF_KPROBE_OVERRIDE is not set/' ./.config
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --disable CONFIG_CGROUP_BPF
+  scripts/config --disable CONFIG_BPF_LSM
+  scripts/config --disable CONFIG_BPF_PRELOAD
+  scripts/config --disable CONFIG_BPF_LIRC_MODE2
+  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
   if [[ -n "$_modprobeddb" ]]; then
     #msg "Running Steven Rostedt's make localmodconfig now"
@@ -104,7 +97,7 @@ prepare() {
     fi
     make LSMOD="$_useit" localmodconfig
   fi
-  
+
   make olddefconfig
  # make nconfig
 
