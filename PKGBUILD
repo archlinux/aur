@@ -7,7 +7,7 @@ pkgdesc="A DSP library for telephony (FreeSWITCH version)"
 arch=('x86_64')
 url="https://github.com/freeswitch/spandsp"
 license=('LGPL' 'GPL')
-makedepends=('gawk' 'sox' 'fftw' 'doxygen' 'netpbm')
+makedepends=('gawk' 'doxygen')
 source=("git+https://github.com/freeswitch/$_pkgname")
 sha256sums=('SKIP')
 
@@ -19,14 +19,14 @@ pkgver() {
 build() {
   cd "$_pkgname"
   ./autogen.sh
-  ./configure --prefix=/usr --disable-static --enable-tests --enable-doc
+  ./configure --prefix=/usr --disable-static --enable-doc
   make -C src
 }
-
-check() {
-  cd "$_pkgname"
-  make check
-}
+#
+#check() {
+#  cd "$_pkgname"
+#  make check
+#}
 
 package_spandsp-fs() {
   depends=('libtiff')

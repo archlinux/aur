@@ -7,10 +7,7 @@ pkgbase = spandsp-fs
 	license = LGPL
 	license = GPL
 	makedepends = gawk
-	makedepends = sox
-	makedepends = fftw
 	makedepends = doxygen
-	makedepends = netpbm
 	source = git+https://github.com/freeswitch/spandsp
 	sha256sums = SKIP
 
