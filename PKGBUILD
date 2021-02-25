@@ -1,7 +1,7 @@
 # Maintainer: Georg Graßnick <dev.grassnick at mailbox dot org>
 
 pkgname=ymuse
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon"
 arch=(x86_64)
@@ -13,11 +13,23 @@ makedepends=("go")
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz"
 	"ymuse.desktop"
+	"gotk3.patch"
 )
 sha512sums=(
-	"25e3233641fe23001b08e49f37765d091c71564c43284c10faacbba77fe327322daf56d58fffec0f0324a50e096f76b0cc0591fa01e3428f6af7e59cb6a8003f"
+	"3beefe0582df71f06c1da9e27d9daf3c8abc259c7d153ec645f571e89eef4339d114317eafc7f0cbf302053355347c0865e50d02df684180704d4cfa8789b8e8"
 	"dbf124b2be06036faecb0a5af76b6b44bfdfcd7461c69807a6fcfb3008131072412387e888d9c6777ef9549aa2ae1fafb296d904a9b525dff4b09cc36400a6ff"
+	"10aeae92246376ea4e90ba0180e4c677b32dfd831d54722bf8fa9a7ed4c6d54882f87befda3973482dcf9af081e6a5ec9d0d50167c171d14f2b4ab64326a75ca"
 )
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+
+	# Use newer version
+	# The included gotk3 version does does not support recent go releases
+	# See https://github.com/gotk3/gotk3/issues/726
+	patch -p1 < ../gotk3.patch
+}
+
 
 build() {
 	cd "${pkgname}-${pkgver}"
