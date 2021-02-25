@@ -1,0 +1,13 @@
+diff --git a/os-probes/mounted/common/90linux-distro b/os-probes/mounted/common/90linux-distro
+index 144320f..d5158cf 100755
+--- a/os-probes/mounted/common/90linux-distro
++++ b/os-probes/mounted/common/90linux-distro
+@@ -111,7 +111,7 @@ if ls "$dir"/lib*/ld*.so* >/dev/null 2>/dev/null; then
+ 		long="Caldera OpenLinux"
+ 	elif [ -e "$dir/etc/frugalware-release" ]; then
+ 		short="Frugalware Linux"
+-		long="$(cat "$dir/etc/frugalware-release")"
++		long="$(cat $dir/etc/frugalware-release) - $(ls $dir/boot/vmlinuz-*|sed -n 's|.*vmlinuz-||;$ p')"
+ 	elif [ -e "$dir/etc/kdemar-release" ]; then
+ 		short="K-DEMar"
+ 		long="$(printf "K-DEMar GNU/Linux (%s)\n" "$(cat "$dir/etc/kdemar-release")")"

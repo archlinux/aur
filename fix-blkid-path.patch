@@ -1,0 +1,49 @@
+--- os-prober-1.77/common.sh	2018-08-10 21:23:18.000000000 +0200
++++ os-prober-1.77.new/common.sh	2019-05-13 11:35:39.198711136 +0200
+@@ -116,18 +116,18 @@
+ 		fstype=$(lsblk --nodeps --noheading --output FSTYPE -- "$1" || true)
+ 		[ -z "$fstype" ] || { echo "$fstype"; return; }
+ 	fi
+-	if type blkid >/dev/null 2>&1; then
+-		fstype=$(blkid -o value -s TYPE "$1" 2>/dev/null || true)
++	if type /sbin/blkid >/dev/null 2>&1; then
++		fstype=$(/sbin/blkid -o value -s TYPE "$1" 2>/dev/null || true)
+ 		[ -z "$fstype" ] || { echo "$fstype"; return; }
+ 	fi
+ 	echo "NOT-DETECTED"
+ }
+ 
+ is_dos_extended_partition() {
+-	if type blkid >/dev/null 2>&1; then
++	if type /sbin/blkid >/dev/null 2>&1; then
+ 		local output
+ 
+-		output="$(blkid -o export $1)"
++		output="$(/sbin/blkid -o export $1)"
+ 
+ 		# old blkid (util-linux << 2.24) errors out on extended p.
+ 		if [ "$?" = "2" ]; then
+@@ -178,9 +178,9 @@
+ 
+ find_label () {
+ 	local output
+-	if type blkid >/dev/null 2>&1; then
++	if type /sbin/blkid >/dev/null 2>&1; then
+ 		# Hopefully everyone has blkid by now
+-		output="$(blkid -o device -t LABEL="$1")" || return 1
++		output="$(/sbin/blkid -o device -t LABEL="$1")" || return 1
+ 		echo "$output" | head -n1
+ 	elif [ -h "/dev/disk/by-label/$1" ]; then
+ 		# Last-ditch fallback
+@@ -192,9 +192,9 @@
+ 
+ find_uuid () {
+ 	local output
+-	if type blkid >/dev/null 2>&1; then
++	if type /sbin/blkid >/dev/null 2>&1; then
+ 		# Hopefully everyone has blkid by now
+-		output="$(blkid -o device -t UUID="$1")" || return 1
++		output="$(/sbin/blkid -o device -t UUID="$1")" || return 1
+ 		echo "$output" | head -n1
+ 	elif [ -h "/dev/disk/by-uuid/$1" ]; then
+ 		# Last-ditch fallback

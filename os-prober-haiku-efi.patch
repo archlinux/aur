@@ -1,0 +1,48 @@
+diff --git a/os-probes/mounted/x86/83haiku b/os-probes/mounted/x86/83haiku
+index 6de7a1d..4bbe71b 100755
+--- a/os-probes/mounted/x86/83haiku
++++ b/os-probes/mounted/x86/83haiku
+@@ -7,6 +7,12 @@ partition="$1"
+ mpoint="$2"
+ type="$3"
+ 
++# This script looks for legacy BIOS bootloaders only. Skip if running UEFI
++if [ -d /sys/firmware/efi ] && [ ! -f /var/lib/partman/ignore_uefi ]; then
++	debug "Skipping legacy bootloaders on UEFI system"
++	exit 1
++fi
++
+ # Weed out stuff that doesn't apply to us
+ case "$type" in
+ 	befs|befs_be) debug "$partition is a BeFS partition" ;;
+diff --git a/os-probes/mounted/x86/efi/30haiku b/os-probes/mounted/x86/efi/30haiku
+new file mode 100755
+index 0000000..25687a5
+--- /dev/null
++++ b/os-probes/mounted/x86/efi/30haiku
+@@ -0,0 +1,25 @@
++#!/bin/sh
++# Detects Haiku on BeFS partitions.
++
++. /usr/share/os-prober/common.sh
++
++efi="$1"
++
++found=
++for boot in $(item_in_dir boot "$efi"); do
++	haikuefi=$(item_in_dir haikux64.efi "$efi/$boot")
++	if [ -n "$haikuefi" ]; then
++		long="Haiku EFI Boot Mgr"
++		short=Haiku
++		path="$boot/$haikuefi"
++		found=true
++		break
++	fi
++done
++
++
++if [ -n "$found" ]; then
++	label="$(count_next_label "$short")"
++	result "${path}:${long}:${label}"
++fi
++exit 0
