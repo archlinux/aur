@@ -4,7 +4,7 @@
 
 pkgname=weechat-notify-send
 pkgver=0.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A WeeChat script that sends highlight and message notifications through notify-send"
 url='https://github.com/s3rvac/weechat-notify-send'
 arch=('any')
@@ -22,7 +22,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Install the plugin script
-  install -Dm644 notify_send.py ${pkgdir}/usr/lib/weechat/python/notify_send.py
+  install -Dm644 notify_send.py ${pkgdir}/usr/share/weechat/python/notify_send.py
 
   # Install the plugin license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
