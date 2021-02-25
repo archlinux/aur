@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -18,7 +18,7 @@ optdepends=('libappindicator-gtk3: indicator support'
 arch=('x86_64')
 license=('GPL3')
 source=("https://github.com/Riey/kime/releases/download/v${pkgver}/kime_latest_v${pkgver}.tar.zst")
-md5sums=('62961eb2076700036ec5aa54aedf327a')
+md5sums=('23d41f07eae6a8acb6dc7e945038ddd1')
 
 package() {
     install -Dm755 kime-check -t "${pkgdir}/usr/bin"
@@ -35,7 +35,8 @@ package() {
     install -Dm644 kime_engine.h -t "${pkgdir}/usr/include"
     install -Dm644 kime_engine.hpp -t "${pkgdir}/usr/include"
     install -Dm644 default_config.yaml -T "${pkgdir}/etc/xdg/kime/config.yaml"
-    install -Dm644 icons/kime-eng-64x64.png -t "${pkgdir}/usr/share/kime/icons"
-    install -Dm644 icons/kime-han-64x64.png -t "${pkgdir}/usr/share/kime/icons"
+    for i in icons/*; do
+        install -Dm644 "$i" -t "${pkgdir}/usr/share/kime/icons"
+    done
 }
 
