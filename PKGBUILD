@@ -3,7 +3,7 @@
 pkgname=wordninja-rs
 _pkgname=wordninja
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Split English sentence without spaces into words."
 url="https://github.com/chengyuhui/wordninja-rs"
 makedepends=('cargo')
@@ -16,7 +16,7 @@ sha256sums=('62f71d7204da91574de8ea56646b8b525ff179b477ca4782fabe1b27a097dc0c')
 
 build() {
   cd "$_pkgname-$pkgver"
-  cargo build --release
+  RUSTUP_TOOLCHAIN=stable cargo build --release
 }
 
 package() {
