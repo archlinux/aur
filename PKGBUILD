@@ -4,12 +4,12 @@
 # Contributor: David Rubio <david.alejandro.rubio at gmail.com>
 
 pkgname=electron-ozone
-pkgver=11.4.0
+pkgver=11.3.0
 provides=('electron')
 conflicts=('electron')
-_commit=805e442ff873e10735a1ea18021f491597afa885
+_commit=1631fc9b0c0d84283105a669c98bbeb8bab39109
 _chromiumver=87.0.4280.141
-pkgrel=2
+pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
 url='https://electronjs.org/'
