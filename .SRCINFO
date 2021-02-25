@@ -1,5 +1,5 @@
 pkgbase = trytond
-	pkgdesc = A three-tiers high-level general purpose application platform (server application)
+	pkgdesc = Tryton server
 	pkgver = 5.8.4
 	pkgrel = 1
 	url = http://www.tryton.org/
