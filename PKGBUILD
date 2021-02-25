@@ -286,7 +286,7 @@ END
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$_pkgname/librewolf "\$@"
+exec /usr/lib/$_pkgname/$_pkgname "\$@"
 END
 
   # Replace duplicate binary with wrapper
