@@ -5,4 +5,5 @@ Name=LUG-Helper
 StartupNotify=true
 Terminal=false
 Type=Application
+Categories=Game
 
