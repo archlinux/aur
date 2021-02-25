@@ -30,7 +30,7 @@ validpgpkeys=()
 pkgver()
 {
     cd ${srcdir}/${_pkgname}/
-    printf "%s" "$(git describe --long | sed "s/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g")"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build()
