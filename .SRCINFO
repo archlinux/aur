@@ -1,0 +1,13 @@
+pkgbase = croco-wallpapers
+	pkgdesc = wallpaper collection
+	pkgver = r3.eb2d0fd
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/artwork/croco-wallpapers
+	arch = any
+	license = GPLv3
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/artwork/croco-wallpapers.git
+	sha256sums = SKIP
+
+pkgname = croco-wallpapers
+
