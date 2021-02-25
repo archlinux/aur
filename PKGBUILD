@@ -1,6 +1,6 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=ec
-pkgver=0.1.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A desk calculator with vectors and quotations'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('ec')
 
 source=("${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('afe0d0d3432135569bef0c3ff3e8cb3d195434cd66de1c66c849279f1c383e89')
+sha256sums=('53e4d8e8995f827734c2b7d613b8980ed2b61ab4709dffd1b8f081ff650a7cf0')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
