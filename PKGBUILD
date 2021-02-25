@@ -1,7 +1,7 @@
 # Maintainer: Thomas van Maaren <thomas.v.maaren@outlook.com>
 pkgname=zobrollo
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=3
 pkgdesc="A 2d minimalistic top-view racing game"
 arch=('x86_64')
 url="https://www.kznarsk.xyz/zobrollo"

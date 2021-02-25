@@ -1,13 +1,13 @@
 pkgbase = zobrollo
 	pkgdesc = A 2d minimalistic top-view racing game
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 3
 	url = https://www.kznarsk.xyz/zobrollo
 	arch = x86_64
 	license = GPL
 	depends = allegro
 	depends = ttf-dejavu
-	source = zobrollo-0.1.2.tar.gz::https://www.kznarsk.xyz/zobrollo/build/zobrollo-0.1.2.tar.gz
+	source = zobrollo-0.2.0.tar.gz::https://www.kznarsk.xyz/zobrollo/build/zobrollo-0.2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = zobrollo
