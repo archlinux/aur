@@ -4,6 +4,6 @@ pkgname=nfauthenticationkey-browser-brave
 pkgver=1
 pkgrel=1
 arch=('any')
-pkgdesc="a meta package, wich provides nfauthenticationkey-browser and depends on the brave browser"
+pkgdesc="a meta package, wich provides nfauthenticationkey-browser and depends on the Brave browser"
 depends=('brave')
 provides=("nfauthenticationkey-browser=1")
