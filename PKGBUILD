@@ -3,23 +3,22 @@
 
 pkgname=youtube-dlp
 _gitname=yt-dlp
-pkgver=2021.02.15
-_gitpkgver="2021.02.15"
+pkgver=2021.02.24
+_gitpkgver="2021.02.24"
 pkgrel=1
 pkgdesc="Fork of youtube-dlc - download videos from youtube.com or other video platforms"
 arch=('any')
-url="https://github.com/pukkandan/yt-dlp"
+url="https://github.com/yt-dlp/yt-dlp"
 license=('Unlicense')
 depends=('python')
-makedepends=('git' 'pandoc' 'python-setuptools' 'glibc')
+makedepends=('git' 'glibc' 'pandoc' 'python-setuptools')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
             'python-pycryptodome: for hlsnative downloader')
 source=("https://github.com/pukkandan/${_gitname}/archive/${_gitpkgver}.tar.gz")
-provides=('youtube-dlc')
-conflicts=('youtube-dlc')
-sha256sums=('7b5c89798ddab730c36631e42001873d8d3ecf74803c48faa29149569d09f457')
+provides=('yt-dlp')
+sha256sums=('8b1ce45eaa0cb3bc144b47d2423c8164d08dbe6eb3b0d26357f9e6f8ad24ec59')
 
 prepare() {
   cd ${_gitname}-${_gitpkgver}
@@ -29,7 +28,7 @@ prepare() {
 
 build() {
   cd ${_gitname}-${_gitpkgver}
-  make PREFIX="${pkgdir}/usr" README.txt youtube-dlc.1 bash-completion zsh-completion fish-completion
+  make PREFIX="${pkgdir}/usr" README.txt yt-dlp.1 bash-completion zsh-completion fish-completion
   export PYTHONHASHSEED=0
   python setup.py build
 }
@@ -39,8 +38,8 @@ package() {
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # Completions fix
-  mv "${pkgdir}/usr/share/bash-completion/completions/youtube-dlc"{.bash-completion,}
-  install -Dm644 youtube-dlc.zsh "${pkgdir}/usr/share/zsh/site-functions/_youtube-dlc"
+  mv "${pkgdir}/usr/share/bash-completion/completions/yt-dlp"{.bash-completion,}
+  install -Dm644 yt-dlp.zsh "${pkgdir}/usr/share/zsh/site-functions/_youtube-dlc"
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
