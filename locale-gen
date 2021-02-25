@@ -1,32 +1,42 @@
-#!/bin/sh --
-# locale-gen: generate system locales
+#!/bin/sh
 
-if [ ! -d /etc/locales ]; then
-    printf '/etc/locales: no such directory\n' >&2
-    exit 1
+set -e
+
+LOCALEGEN=/etc/locale.gen
+LOCALES=/usr/share/i18n/locales
+if [ -n "$POSIXLY_CORRECT" ]; then
+  unset POSIXLY_CORRECT
 fi
 
-localegen() {
-    printf '%s: generating locale\n' "$1"."$2" >&2
 
-    localedef -i "$1" -f "$2" -c "$1"."$2"
+[ -f $LOCALEGEN -a -s $LOCALEGEN ] || exit 0;
 
-    case $? in
-        4) printf '%s: invalid locale\n' "$1"."$2" >&2
-    esac
+# Remove all old locale dir and locale-archive before generating new
+# locale data.
+rm -rf /usr/lib/locale/* || true
+
+umask 022
+
+is_entry_ok() {
+  if [ -n "$locale" -a -n "$charset" ] ; then
+    true
+  else
+    echo "error: Bad entry '$locale $charset'"
+    false
+  fi
 }
 
-for locale in /etc/locales/*; do
-    if [ -f "$locale" ]; then
-        if [ -s "$locale" ]; then
-            while read -r charset; do
-
-                # This will run for empty lines.  Doing this means we can
-                # ensure at least a UTF-8 based locale is generated.
-                localegen "${locale##*/}" "${charset:-UTF-8}"
-            done < "$locale"
-        else
-            localegen "${locale##*/}" UTF-8
-        fi
-    fi
-done
+echo "Generating locales..."
+while read locale charset; do \
+	case $locale in \#*) continue;; "") continue;; esac; \
+	is_entry_ok || continue
+	echo -n "  `echo $locale | sed 's/\([^.\@]*\).*/\1/'`"; \
+	echo -n ".$charset"; \
+	echo -n `echo $locale | sed 's/\([^\@]*\)\(\@.*\)*/\2/'`; \
+	echo -n '...'; \
+        if [ -f $LOCALES/$locale ]; then input=$locale; else \
+        input=`echo $locale | sed 's/\([^.]*\)[^@]*\(.*\)/\1\2/'`; fi; \
+	localedef -i $input -c -f $charset -A /usr/share/locale/locale.alias $locale; \
+	echo ' done'; \
+done < $LOCALEGEN
+echo "Generation complete."
