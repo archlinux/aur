@@ -1,0 +1,17 @@
+pkgbase = udeler
+	pkgdesc = Unofficail installer for Udeler
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/FaisalUmair/udemy-downloader-gui
+	arch = x86_64
+	license = GPL
+	depends = wget
+	depends = imagemagick
+	options = !strip
+	source = udeler.desktop
+	source = udeler.png
+	sha256sums = 3b31100d6a2a4c2914e6d8e27fa46ab832e3ead4f05503b2278ec66e96913c52
+	sha256sums = 7fc27879ee96d966375390dee238e8fb3841437e17fa69b1a6f1fb65b3a7af46
+
+pkgname = udeler
+
