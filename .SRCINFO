@@ -1,7 +1,7 @@
 pkgbase = thunderbird-60-bin
 	pkgdesc = Standalone Mail/News reader - 60.x binary version
 	pkgver = 60.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.thunderbird.net/
 	arch = x86_64
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = thunderbird-60-bin
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 109ae1a376a6e65ede652c85fda7ebd497b781717cef65d0e0462a4c3d76dcca69163b96acaf1259e347ede8826a647dea3c739c2cf38f214c2628f2b9b7fe19
 	sha512sums = 99eff19bf9eee70edba84c0a68d442dcbb5b988ab8c9b41723217f675c0148b9862133d6844045171d33928ced5fd280c00754fce2e7e93a551ac817dcff3878
-	sha512sums = 91ad768119124cfff7ce387e39a9d98deb66f6804b5b9ec1938ad827f8ec240fc2f160f38feac8a5e435d88d52efcb1159993fd0e58120307622da698bed4eba
+	sha512sums = f73e5ebb5104ec3cb915e45662b25b43500d495a7be3d0a396c1016489370e97005753e481670ad17e09203eb20feb398a91df35a54e30a4acf79c75621747ef
 	sha512sums = 5280448b652a4567d0a84843ee5f1e8208def1dd9918dc6208a2688b76636853d1a3f0b414e668907929c3efab8140577d43a0bb3c0d66d830206292ebb958c3
 
 pkgname = thunderbird-60-bin
