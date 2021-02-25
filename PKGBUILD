@@ -12,9 +12,16 @@ depends=(
   'perl-capture-tiny'
   'perl-config-inifiles'
 )
-optdepends=('pv: progress bars'
-            'lzop: compression'
-            'mbuffer: stream buffering')
+optdepends=(
+  'pv: progress bars'
+  'mbuffer: stream buffering'
+  'gzip: compression'
+  'pigz: compression'
+  'zstd: compression'
+  'lz4: compression'
+  'xz: compression'
+  'lzop: compression'
+)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v$pkgver.tar.gz"
 )
