@@ -6,8 +6,8 @@ After=network-online.target
 [Service]
 User=http
 Group=http
-ExecStart=/usr/bin/caddy2 run --environ
-ExecReload=/usr/bin/caddy2 reload
+ExecStart=/usr/bin/caddy run --environ
+ExecReload=/usr/bin/caddy reload
 WorkingDirectory=/srv/http
 PrivateTmp=true
 ProtectHome=true
