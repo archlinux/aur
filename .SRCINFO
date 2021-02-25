@@ -1,0 +1,16 @@
+pkgbase = vim-markdown-git
+	pkgdesc = Markdown Vim Mode
+	pkgver = r504.8e5d86f
+	pkgrel = 1
+	url = https://github.com/plasticboy/vim-markdown
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-markdown
+	conflicts = vim-markdown
+	source = git+https://github.com/plasticboy/vim-markdown.git
+	sha256sums = SKIP
+
+pkgname = vim-markdown-git
+
