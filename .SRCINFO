@@ -1,0 +1,14 @@
+pkgbase = croco-icons
+	pkgver = r2.85cbd60
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/artwork/croco-icons
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/artwork/croco-icons.git#branch=master
+	sha256sums = SKIP
+
+pkgname = croco-icons
+	pkgdesc = croco-icons
+	depends = 
+
