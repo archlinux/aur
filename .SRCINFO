@@ -1,0 +1,18 @@
+pkgbase = grub-theme-croco-custom
+	pkgdesc = Croco OS grub theme
+	pkgver = r1
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/grub-theme-croco-custom
+	arch = any
+	license = GPL
+	makedepends = git
+	source = grub-theme::git+https://gitlab.com/croco-os/themes-and-settings/grub-theme-croco-custom.git
+	sha256sums = SKIP
+
+pkgname = grub-theme-croco-custom
+	install = croco-theme.install
+	depends = grub
+	depends = grub-theme-croco-live
+	depends = grub-theme-croco-live-common
+	conflicts = grub-theme-croco
+
