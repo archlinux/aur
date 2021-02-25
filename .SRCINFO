@@ -1,6 +1,6 @@
 pkgbase = nbxplorer-latest
 	pkgdesc = A minimalist UTXO tracker for HD wallets.
-	pkgver = VERSION
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/dgarage/NBXplorer
 	arch = any
