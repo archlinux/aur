@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cns-git
-pkgver=0.1.1.r0.g478c82a
+pkgver=0.1.1.r4.g48a462c
 pkgrel=1
 pkgdesc="Search through rust crates without leaving the terminal (git)"
 arch=('x86_64')
