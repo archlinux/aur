@@ -1,8 +1,8 @@
-# Maintainer: Simon Gardling <titaniumtown@gmail.com>
+# Maintainer: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=40.alpha.1.1+222+gee3d26f22
+pkgver=40.beta+16+g3bbfaa03b
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
