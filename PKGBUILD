@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('cargo' 'rust' 'git')
 depends=('gtk3' 'alsa-lib' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marin-m/songrec/archive/${pkgver}.tar.gz")
-sha256sums=('42883abd9914ad592ab8bc0344a75b3470516f01401c2213803bff6020ac1ba0')
+sha256sums=('9489414adcfffc024592b8555983f830634667ae19523b41d84ca3e3511fbcc0')
 
 build() {
   cd "$_pkgname-$pkgver"
