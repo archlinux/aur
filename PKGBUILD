@@ -16,7 +16,6 @@ _giturl="git+https://github.com/micheleg/dash-to-dock/"
 license=('GPL')
 depends=('dconf' 'gnome-shell')
 makedepends=('intltool')
-sha256sums=('SKIP')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
