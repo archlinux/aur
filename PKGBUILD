@@ -92,8 +92,8 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12'
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
+            'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
             '363373e827e31f1d457e490e84fbe85ed67d7bf63f43da446405c9a9cdd5f067'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
