@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Udeler
 Comment=Udemy Downloader GUI from GitHub
-Exec=/opt/udeler/udeler.appimage
+Exec=/opt/udeler-bin/udeler.appimage
 Icon=udeler
 Encoding=UTF-8
 Terminal=false
