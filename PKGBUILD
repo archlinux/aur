@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ali-git
-pkgver=0.5.4.r0.ge7108d2
-pkgrel=2
+pkgver=0.5.4.r3.g1d5e69e
+pkgrel=1
 pkgdesc="Generate HTTP load and plot the results in real-time (git)"
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
