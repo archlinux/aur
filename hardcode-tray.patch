@@ -1,0 +1,16 @@
+diff --unified --recursive --text package.old/Hardcode-Tray-4.3/data/database/signal.json package.new/Hardcode-Tray-4.3/data/database/signal.json
+--- package.old/Hardcode-Tray-4.3/data/database/signal.json	2018-02-22 14:43:14.000000000 -0500
++++ package.new/Hardcode-Tray-4.3/data/database/signal.json	2021-02-23 00:44:02.707356772 -0500
+@@ -1,10 +1,10 @@
+ {
+     "name": "Signal",
+     "app_path": [
+-        "/opt/Signal/"
++        "/usr/lib/signal-desktop/"
+     ],
+     "icons_path": [
+-        "/opt/Signal/resources/"
++        "/usr/lib/signal-desktop/resources/"
+     ],
+     "binary": "app.asar",
+     "script": "electron",

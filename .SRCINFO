@@ -1,7 +1,7 @@
 pkgbase = hardcode-tray
 	pkgdesc = Fixes Hardcoded Tray Icons
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bil-elmoussaoui/Hardcode-Tray
 	arch = i686
 	arch = x86_64
