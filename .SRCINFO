@@ -1,14 +1,14 @@
 pkgbase = baru-bin
 	pkgdesc = A system monitor written in Rust and C
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/doums/baru
 	arch = x86_64
 	license = MPL2
 	depends = libpulse
 	depends = libnl
-	source = baru-bin-0.2.5::https://github.com/doums/baru/releases/download/v0.2.5/baru
-	md5sums = 48ad004ccf0418598c6d86dc6ec94a90
+	source = baru-bin-0.2.6::https://github.com/doums/baru/releases/download/v0.2.6/baru
+	md5sums = 3025f3e7da1ee02e97cd483b4fa8ba04
 
 pkgname = baru-bin
 
