@@ -1,15 +1,15 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=weechat-matrix
 pkgver=0.2.0
-_tag=16d8e979166aec92cb55cd7e946e84606fffa8f4 # git show-ref "$pkgver"
+_tag=16d8e979166aec92cb55cd7e946e84606fffa8f4 # git rev-parse "$pkgver"
 pkgrel=3
-pkgdesc='Weechat Matrix protocol script written in Python'
+pkgdesc='WeeChat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
 license=('ISC')
-depends=('python-atomicwrites' 'python-attrs' 'python-future' 'python-logbook' 'python-matrix-nio'
-         'python-pygments' 'python-pyopenssl' 'python-webcolors')
-makedepends=('git' 'python-dephell')
+depends=('python' 'python-atomicwrites' 'python-attrs' 'python-future' 'python-logbook'
+         'python-matrix-nio' 'python-pygments' 'python-pyopenssl' 'python-webcolors' 'weechat')
+makedepends=('git' 'python-dephell' 'python-setuptools')
 checkdepends=('python-hypothesis' 'python-pytest')
 optdepends=('python-aiohttp: matrix_sso_helper support'
             'python-magic: matrix_upload support'
