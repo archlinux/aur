@@ -14,7 +14,7 @@ arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
 _giturl="git+https://github.com/micheleg/dash-to-dock/"
 license=('GPL')
-depends=('dconf')
+depends=('dconf' 'gnome-shell')
 makedepends=('intltool')
 
 makedepends+=('git')
@@ -24,8 +24,8 @@ do
   typeset -n array="${integ}sums"
   array+=('SKIP')
 done
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
+provides=("$_gitname")
+conflicts=("$_gitname")
 pkgver() {
   cd ${_gitname:-$pkgname}
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
