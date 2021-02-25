@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=t-rec-git
-pkgver=0.5.0.r0.g59fdd28
+pkgver=0.5.0.r5.g6d792a3
 pkgrel=1
 pkgdesc="Blazingly fast terminal recorder (git)"
 arch=('x86_64')
