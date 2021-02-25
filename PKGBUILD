@@ -30,7 +30,7 @@ fi
 #Set compiler optimization for GCC
 #Set '1' to use optimization
 #Set '2' to disable optimization
-#If not set is will build with no optimization
+#If not set it will build with no optimization
 if [ -z ${_optimization+x} ]; then
   _optimization=
 fi
@@ -62,9 +62,9 @@ elif [[ $_compiler = "2" ]]; then
   pgo2=off
 else
   lto1=false
-  pgo1=generate
-  lto2=true
-  pgo2=use
+  pgo1=off
+  lto2=false
+  pgo2=off
 fi
 
 #######################################
