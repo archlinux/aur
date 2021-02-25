@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-git
 _pkgname=dotter
-pkgver=0.11.2.r0.gc23c210
+pkgver=0.12.0a.r7.g9f7b59f
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust (git)"
 arch=('x86_64')
