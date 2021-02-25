@@ -1,0 +1,15 @@
+pkgbase = python-iopath
+	pkgdesc = Lightweight I/O abstraction providing a common interface across storage backends
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/facebookresearch/iopath
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-tqdm
+	depends = python-portalocker
+	source = https://files.pythonhosted.org/packages/07/e3/5d16bd5056730737e5d11deafb89e7e7435afa9c8bf8748f94019f1d2260/iopath-0.1.4.tar.gz
+	md5sums = 3266a755ce0115b3bc9899bc6b2c9ff6
+
+pkgname = python-iopath
+
