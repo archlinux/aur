@@ -1,6 +1,6 @@
 pkgbase = tpm2-pkcs11-git
 	pkgdesc = PKCS#11 interface for Trusted Platform Module 2.0 hardware
-	pkgver = 1.4.0.r101.2d83133
+	pkgver = 1.5.0.r23.77b1188
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pkcs11
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = tpm2-pkcs11-git
 	makedepends = git
 	makedepends = autoconf-archive
 	makedepends = cmocka
+	makedepends = python-setuptools
 	depends = libyaml
 	depends = openssl
 	depends = python
