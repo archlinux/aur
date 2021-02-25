@@ -2,20 +2,18 @@ _install_update_msg() {
 cat <<EOF
 
 
-WeeChat is unable to source plugin scripts from outside of the process
-owner's configuration directory. Because of this limitation, this package
-**DOES NOT** make the plugin available to WeeChat without additional end
-user interaction.
+To autoload wee-slack on start up, each user will need to symlink the plugin to
+the correct autoload folder:
 
-Each user who wants to enable this plugin should create a symlink in the in
-the configuration directory for their user (by default, ~/.weechat):
+    \$ ln -s /usr/share/weechat/python/wee_slack.py ~/.weechat/python/autoload/
 
-    \$ ln -s /usr/lib/weechat/weemoji.json ~/.weechat/weemoji.json
-    \$ ln -s /usr/lib/weechat/python/wee_slack.py ~/.weechat/python/
 
-To load the script on start up, you'll also need to symlink it into the autoload folder:
+Previous versions of this package recommended creating symlinks in your local
+~/.weechat directory. These are no longer necessary, and their removal is
+recommended:
 
-    \$ ln -s /usr/lib/weechat/python/wee_slack.py ~/.weechat/python/autoload/
+    \$ rm -f ~/.weechat/weemoji.json
+    \$ rm -f ~/.weechat/python/wee_slack.py
 
 
 EOF
