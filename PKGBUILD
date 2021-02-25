@@ -1,9 +1,8 @@
 # Maintainer: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
 pkgname=udeler
-pkgbase=udeler-bin
 pkgver=1.0
 pkgrel=1
-pkgdesc="Unofficail installer for Udeler"
+pkgdesc="Unofficail binary installer for Udeler"
 arch=("x86_64")
 url="https://github.com/FaisalUmair/udemy-downloader-gui"
 license=("GPL")

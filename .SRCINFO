@@ -1,5 +1,5 @@
-pkgbase = udeler-bin
-	pkgdesc = Unofficail installer for Udeler
+pkgbase = udeler
+	pkgdesc = Unofficail binary installer for Udeler
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/FaisalUmair/udemy-downloader-gui
