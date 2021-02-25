@@ -1,6 +1,6 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
-pkgname='chia-git-gui'
+pkgname='chia-gui-git'
 pkgver=1.0rc2.r0.g6518b2bf
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Also installs GUI"
