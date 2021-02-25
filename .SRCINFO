@@ -1,0 +1,20 @@
+pkgbase = xidlehook-git
+	pkgdesc = xautolock rewrite in Rust, with a few extra features
+	pkgver = 0.9.1.r24.g4221aa8
+	pkgrel = 1
+	url = https://gitlab.com/jD91mZM2/xidlehook
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = libxss
+	makedepends = python
+	depends = libpulse
+	provides = xidlehook
+	conflicts = xidlehook
+	source = git+https://gitlab.com/jD91mZM2/xidlehook
+	sha256sums = SKIP
+
+pkgname = xidlehook-git
+
