@@ -1,0 +1,81 @@
+diff --git a/gme/Vgm_Emu.cpp b/gme/Vgm_Emu.cpp
+index 8616f00..dac6003 100644
+--- a/gme/Vgm_Emu.cpp
++++ b/gme/Vgm_Emu.cpp
+@@ -18,6 +18,11 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA */
+ 
+ #include "blargg_source.h"
+ 
++#ifdef BLARGG_NAMESPACE
++#define blargg_to_utf8 BLARGG_NAMESPACE::blargg_to_utf8
++#define blargg_to_wide BLARGG_NAMESPACE::blargg_to_wide
++#endif
++
+ // FM emulators are internally quieter to avoid 16-bit overflow
+ double const fm_gain           = 3.0;
+ double const rolloff           = 0.990;
+diff --git a/gme/blargg_common.h b/gme/blargg_common.h
+index 79fd28b..b2f05f0 100644
+--- a/gme/blargg_common.h
++++ b/gme/blargg_common.h
+@@ -105,29 +105,8 @@ we strip it out unless BLARGG_LEGACY is true. */
+ 	#define BLARGG_DEPRECATED(      text )
+ #endif
+ 
+-/* BOOST::int8_t, BOOST::int32_t, etc.
+-I used BOOST since I originally was going to allow use of the boost library
+-for prividing the definitions. If I'm defining them, they must be scoped or
+-else they could conflict with the standard ones at global scope. Even if
+-HAVE_STDINT_H isn't defined, I can't assume the typedefs won't exist at
+-global scope already. */
+-#if defined (HAVE_STDINT_H) || \
+-		UCHAR_MAX != 0xFF || USHRT_MAX != 0xFFFF || UINT_MAX != 0xFFFFFFFF
+-	#include <stdint.h>
+-	#define BOOST
+-#else
+-	struct BOOST
+-	{
+-		typedef signed char        int8_t;
+-		typedef unsigned char     uint8_t;
+-		typedef short             int16_t;
+-		typedef unsigned short   uint16_t;
+-		typedef int               int32_t;
+-		typedef unsigned int     uint32_t;
+-		typedef __int64           int64_t;
+-		typedef unsigned __int64 uint64_t;
+-	};
+-#endif
++#include <stdint.h>
++#define BOOST
+ 
+ /* My code is not written with exceptions in mind, so either uses new (nothrow)
+ OR overrides operator new in my classes. The former is best since clients
+@@ -221,11 +200,8 @@ BLARGG_DEPRECATED( typedef unsigned int blargg_ulong; )
+ 
+ #ifdef _WIN32
+ typedef wchar_t blargg_wchar_t;
+-#elif defined(HAVE_STDINT_H)
+-#include <stdint.h>
+-typedef uint16_t blargg_wchar_t;
+ #else
+-typedef unsigned short blargg_wchar_t;
++typedef uint16_t blargg_wchar_t;
+ #endif
+ 
+ inline size_t blargg_wcslen( const blargg_wchar_t* str )
+@@ -240,4 +216,14 @@ blargg_wchar_t* blargg_to_wide( const char* );
+ 
+ BLARGG_NAMESPACE_END
+ 
++template <typename T, size_t N>
++constexpr size_t blargg_countof(T const (&)[N]) noexcept
++{
++    return N;
++}
++
++#ifndef _countof
++#define _countof blargg_countof
++#endif
++
+ #endif
+
