@@ -1,0 +1,31 @@
+pkgbase = croco-live
+	pkgdesc = croco Linux live session
+	pkgver = r3.19f1cf0
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/tools/croco-tools-livecd
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/tools/croco-tools-livecd.git
+	sha256sums = SKIP
+
+pkgname = croco-live-base
+	pkgdesc = croco Linux live base scripts
+	depends = croco-tools-base>=0.13
+	conflicts = croco-livecd-base
+	replaces = croco-livecd-base
+
+pkgname = croco-live-systemd
+	pkgdesc = croco Linux live systemd units
+	depends = systemd
+	depends = croco-live-base
+	depends = reflector
+	conflicts = croco-livecd-systemd
+
+pkgname = croco-live-skel
+	pkgdesc = croco Linux live session autostart items
+
+pkgname = croco-live-portable-efi
+	pkgdesc = croco Linux live session portable efi settings
+	depends = grub
+
