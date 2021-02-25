@@ -1,0 +1,38 @@
+pkgbase = optimus-manager-openrc-git
+	pkgdesc = Management utility to handle GPU switching for Optimus laptops (Git version)
+	pkgver = 1.3.1.r64.g28bdc14
+	pkgrel = 1
+	url = https://github.com/mmdmine/optimus-manager
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python3
+	depends = python-setuptools
+	depends = python-dbus
+	depends = mesa-demos
+	depends = xorg-xrandr
+	depends = python-py3nvml
+	depends = python-psutil
+	depends = openrc
+	depends = elogind
+	optdepends = bbswitch: alternative power switching method
+	optdepends = acpi_call: alternative power switching method
+	optdepends = xf86-video-intel: provides the Xorg intel driver
+	provides = optimus-manager=1.3.1.r64.g28bdc14
+	conflicts = optimus-manager
+	conflicts = optimus-manager-git
+	backup = etc/optimus-manager/xorg-integrated-gpu.conf
+	backup = etc/optimus-manager/xorg-nvidia-gpu.conf
+	backup = etc/optimus-manager/xsetup-integrated.sh
+	backup = etc/optimus-manager/xsetup-nvidia.sh
+	backup = etc/optimus-manager/xsetup-hybrid.sh
+	backup = etc/optimus-manager/nvidia-enable.sh
+	backup = etc/optimus-manager/nvidia-disable.sh
+	backup = var/lib/optimus-manager/persistent/startup_mode
+	source = git+https://github.com/mmdmine/optimus-manager.git
+	sha256sums = SKIP
+
+pkgname = optimus-manager-openrc-git
+	install = optimus-manager.install
+
