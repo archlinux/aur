@@ -4997,7 +4997,6 @@
 +#include "mozilla/Attributes.h"
 +#include "nsCOMPtr.h"
 +#include "nsDataHashtable.h"
-+#include "nsINativeMenuService.h"
 +#include "nsTArray.h"
 +
 +#include <gdk/gdk.h>
@@ -5110,18 +5109,6 @@
  };
  
  #endif /* __nsWindow_h__ */
---- a/widget/moz.build
-+++ b/widget/moz.build
-@@ -68,6 +68,9 @@ elif toolkit == "cocoa":
-         "nsITouchBarInput.idl",
-         "nsITouchBarUpdater.idl",
-     ]
-+
-+if toolkit in ("cocoa", "gtk"):
-+    EXPORTS += ["nsINativeMenuService.h"]
- 
- TEST_DIRS += ["tests", "tests/gtest"]
- 
 --- /dev/null
 +++ b/xpcom/ds/NativeMenuAtoms.py
 @@ -0,0 +1,9 @@
