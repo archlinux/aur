@@ -1,0 +1,14 @@
+diff -rwu src.a/ghidra/Ghidra/Debug/Debugger/src/main/java/ghidra/app/plugin/core/debug/gui/objects/components/DebuggerAttachDialog.java src.b/ghidra/Ghidra/Debug/Debugger/src/main/java/ghidra/app/plugin/core/debug/gui/objects/components/DebuggerAttachDialog.java
+--- src.a/ghidra/Ghidra/Debug/Debugger/src/main/java/ghidra/app/plugin/core/debug/gui/objects/components/DebuggerAttachDialog.java	2021-02-24 16:37:05.143609634 +0100
++++ src.b/ghidra/Ghidra/Debug/Debugger/src/main/java/ghidra/app/plugin/core/debug/gui/objects/components/DebuggerAttachDialog.java	2021-02-24 16:40:22.762581221 +0100
+@@ -134,7 +134,9 @@
+ 	public long getPid(TargetAttachable<? extends Object> proc) {
+ 		String name = proc.getName();
+ 		name = name.substring(1, name.length() - 1);
+-		long pid = Long.parseLong(name, 16);
++		// TEMPFIX - Attaching with GDB doesn't work
++		// https://github.com/NationalSecurityAgency/ghidra/issues/2735
++		long pid = Long.parseLong(name, 10);
+ 		return pid;
+ 	}
+ 

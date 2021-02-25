@@ -1,0 +1,22 @@
+diff -rwu src.a/ghidra/Ghidra/Debug/Debugger-agent-gdb/src/main/java/agent/gdb/model/impl/GdbModelTargetSession.java src.b/ghidra/Ghidra/Debug/Debugger-agent-gdb/src/main/java/agent/gdb/model/impl/GdbModelTargetSession.java
+--- src.a/ghidra/Ghidra/Debug/Debugger-agent-gdb/src/main/java/agent/gdb/model/impl/GdbModelTargetSession.java	2021-02-25 03:43:08.827242183 +0100
++++ src.b/ghidra/Ghidra/Debug/Debugger-agent-gdb/src/main/java/agent/gdb/model/impl/GdbModelTargetSession.java	2021-02-25 03:33:59.530692000 +0100
+@@ -50,6 +50,9 @@
+ 		GdbEventsListenerAdapter {
+ 	protected static final String GDB_PROMPT = "(gdb)";
+ 
++	protected static final TargetAttachKindSet SUPPORTED_KINDS = TargetAttachKindSet.of( //
++			TargetAttachKind.BY_OBJECT_REF, TargetAttachKind.BY_ID);
++
+ 	protected final GdbModelImpl impl;
+ 	protected String display = "GNU gdb (GDB)";
+ 
+@@ -77,6 +80,8 @@
+ 			ACCESSIBLE_ATTRIBUTE_NAME, accessibility == TargetAccessibility.ACCESSIBLE, //
+ 			PROMPT_ATTRIBUTE_NAME, GDB_PROMPT, //
+ 			DISPLAY_ATTRIBUTE_NAME, display, //
++			FOCUS_ATTRIBUTE_NAME, this, //
++			SUPPORTED_ATTACH_KINDS_ATTRIBUTE_NAME, SUPPORTED_KINDS, //
+ 			TargetMethod.PARAMETERS_ATTRIBUTE_NAME, TargetCmdLineLauncher.PARAMETERS, //
+ 			UPDATE_MODE_ATTRIBUTE_NAME, TargetUpdateMode.FIXED //
+ 		), "Initialized");
