@@ -1,0 +1,16 @@
+pkgbase = ruby-database_cleaner-core
+	pkgdesc = Strategies for cleaning databases. Can be used to ensure a clean slate for testing.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/DatabaseCleaner/database_cleaner
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ruby-rake
+	depends = ruby
+	options = !emptydirs
+	source = ruby-database_cleaner-core-2.0.1::git+https://github.com/DatabaseCleaner/database_cleaner.git#tag=v2.0.1
+	sha512sums = SKIP
+
+pkgname = ruby-database_cleaner-core
+
