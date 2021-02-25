@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Chia
-Comment=Connect to the BitcoinHD P2P Network
-Exec=chia-gui %u
-Terminal=false
-Type=Application
-Icon=/usr/share/pixmaps/chia.png
-Categories=Office;Finance;P2P;Network;
