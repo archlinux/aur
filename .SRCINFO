@@ -1,36 +1,24 @@
 pkgbase = virtualbox-modules-lts
-	pkgver = 6.1.10
-	pkgrel = 2.1
+	pkgver = 6.1.18
+	pkgrel = 10
 	url = http://virtualbox.org
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = linux-lts>=5.4
-	makedepends = linux-lts<5.5
-	makedepends = linux-lts-headers>=5.4
-	makedepends = linux-lts-headers<5.5
-	makedepends = virtualbox-host-dkms>=6.1.10
-	makedepends = virtualbox-guest-dkms>=6.1.10
+	makedepends = linux-lts>=5.10
+	makedepends = linux-lts<5.11
+	makedepends = linux-lts-headers>=5.10
+	makedepends = linux-lts-headers<5.11
+	makedepends = virtualbox-host-dkms>=6.1.18
 
 pkgname = virtualbox-host-modules-lts
 	pkgdesc = Virtualbox host kernel modules for LTS Kernel
-	depends = linux-lts>=5.4
-	depends = linux-lts<5.5
+	depends = linux-lts>=5.10
+	depends = linux-lts<5.11
 	provides = VIRTUALBOX-HOST-MODULES-LTS
 	conflicts = virtualbox-modules
 	conflicts = virtualbox-host-modules
 	conflicts = virtualbox-host-dkms
 	replaces = virtualbox-modules
 	replaces = virtualbox-host-modules
-
-pkgname = virtualbox-guest-modules-lts
-	pkgdesc = Virtualbox guest kernel modules for LTS Kernel
-	depends = linux-lts>=5.4
-	depends = linux-lts<5.5
-	provides = VIRTUALBOX-GUEST-MODULES-LTS
-	conflicts = virtualbox-archlinux-modules
-	conflicts = virtualbox-guest-modules
-	conflicts = virtualbox-guest-dkms
-	replaces = virtualbox-archlinux-modules
-	replaces = virtualbox-guest-modules
 
