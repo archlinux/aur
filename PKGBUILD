@@ -1,4 +1,5 @@
-# Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Nathan Owe <ndowens04+AUR @ gmail.com>
@@ -12,6 +13,7 @@ license=('custom')
 depends=('python2')
 changelog=Changelog
 source=("${url}files/documents/1462/49543/${pkgname}-${pkgver}.tar.gz")
+source=("http://deb.debian.org/debian/pool/main/c/cvs2svn/${pkgname}_${pkgver}.orig.tar.gz")
 sha256sums=('6409d118730722f439760d41c08a5bfd05e5d3ff4a666050741e4a5dc2076aea')
 
 prepare() {

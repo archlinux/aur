@@ -7,7 +7,7 @@ pkgbase = cvs2svn
 	arch = any
 	license = custom
 	depends = python2
-	source = http://cvs2svn.tigris.org/files/documents/1462/49543/cvs2svn-2.5.0.tar.gz
+	source = http://deb.debian.org/debian/pool/main/c/cvs2svn/cvs2svn_2.5.0.orig.tar.gz
 	sha256sums = 6409d118730722f439760d41c08a5bfd05e5d3ff4a666050741e4a5dc2076aea
 
 pkgname = cvs2svn
