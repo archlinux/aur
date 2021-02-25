@@ -1,6 +1,6 @@
 pkgbase = python-ax-platform
 	pkgdesc = Adaptive Experimentation Platform
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://ax.dev
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = python-ax-platform
 	depends = python-scikit-learn
 	depends = python-plotly
 	depends = python-typeguard
-	source = python-ax-platform-0.1.19::https://github.com/facebook/Ax/archive/0.1.19.tar.gz
-	sha256sums = 24a68870286a10e856ce726b86df55ea76da23e681940301b04ae4884b197642
+	source = python-ax-platform-0.1.20::https://github.com/facebook/Ax/archive/v0.1.20.tar.gz
+	sha256sums = be40948a6dcd38b9ab3fe182d66d8a234cd016acdced1cf424730a84692b79cb
 
 pkgname = python-ax-platform
 
