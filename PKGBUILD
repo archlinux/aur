@@ -4,7 +4,7 @@
 
 pkgname=zoho-mail-desktop
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The desktop version of your favorite mailsuite!"
 arch=('x86_64')
 license=('custom')
@@ -29,5 +29,8 @@ package() {
   
   mkdir -p "${pkgdir}/usr/share/applications/"
   cp "../zoho-mail-desktop.desktop" "${pkgdir}/usr/share/applications/"
+  
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "${pkgdir}/opt/zoho-mail-desktop/AppRun" "${pkgdir}/usr/bin/zoho-mail-desktop"
   }
   

@@ -1,7 +1,7 @@
 pkgbase = zoho-mail-desktop
 	pkgdesc = The desktop version of your favorite mailsuite!
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.zoho.com/mail/
 	arch = x86_64
 	license = custom
