@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=4.0.9.1
+pkgver=4.0.9.2
 pkgrel=1
 pkgdesc='Litecoin wallet'
 arch=(any)
@@ -28,21 +28,24 @@ depends=(
   zbar
 )
 makedepends=(python-requests)
-source=(electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/$pkgver)
-b2sums=(2c328f9fc433f39b11aa2bfc4e397b75aadd07adc66576ae985c5b41b32d663df80bb67dafbbce210f3581f6fb43e666070d090bf189eb4907efd07d306fc945)
+source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
+validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
+b2sums=(
+  b16b32ce554be66700074418e5c139e2152b79f0c84d312940aa4915a3d16f6a3ea490810060db97b32e1f0fcb72c29012260304e1bcaef75f392fe9f2e9b680
+  SKIP
+)
 
 prepare() {
-  sed -i -r 's/sh.*(electrum.*)"/\1/' electrum-ltc-$pkgver/electrum-ltc.desktop
+  sed -i -r 's/sh.*(electrum.*)"/\1/' Electrum-LTC-$pkgver/electrum-ltc.desktop
 }
 
 build() {
-  cd electrum-ltc-$pkgver
-  contrib/pull_locale
+  cd Electrum-LTC-$pkgver
   ./setup.py build
 }
 
 package() {
-  cd electrum-ltc-$pkgver
+  cd Electrum-LTC-$pkgver
   ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
