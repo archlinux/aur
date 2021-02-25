@@ -1,0 +1,33 @@
+pkgbase = kwin-unredirect
+	pkgdesc = KWin compositor with redirection patch from Sporif
+	pkgver = 5.21.1
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop/
+	install = kwin-unredirect.install
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = kdoctools
+	makedepends = krunner
+	depends = kscreenlocker
+	depends = xcb-util-cursor
+	depends = plasma-framework
+	depends = kcmutils
+	depends = kwayland-server
+	depends = breeze
+	depends = qt5-script
+	depends = pipewire
+	depends = libqaccessibilityclient
+	depends = lcms2
+	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
+	provides = kwin
+	conflicts = kwin
+	source = https://download.kde.org/stable/plasma/5.21.1/kwin-5.21.1.tar.xz
+	source = unredirect.patch
+	sha256sums = SKIP
+	sha256sums = 42fcd07ad64c101260878ec756d27189620ac36fddbff83ac6a0c2119ebbd5df
+
+pkgname = kwin-unredirect
+

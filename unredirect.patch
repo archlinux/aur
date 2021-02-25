@@ -1,0 +1,793 @@
+diff --git a/composite.cpp b/composite.cpp
+index c529f398e..ce5b0bd08 100644
+--- a/composite.cpp
++++ b/composite.cpp
+@@ -109,11 +109,16 @@ Compositor::Compositor(QObject* workspace)
+     : QObject(workspace)
+     , m_state(State::Off)
+     , m_selectionOwner(nullptr)
++    , forceUnredirectCheck(false)
+     , m_scene(nullptr)
+ {
+     connect(options, &Options::configChanged, this, &Compositor::configChanged);
+     connect(options, &Options::animationSpeedChanged, this, &Compositor::configChanged);
+ 
++    connect(&unredirectTimer, &QTimer::timeout, this, &Compositor::delayedCheckUnredirect);
++    connect(options, &Options::unredirectFullscreenChanged, this, &Compositor::delayedCheckUnredirect);
++    unredirectTimer.setSingleShot(true);
++
+     // 2 sec which should be enough to restart the compositor.
+     static const int compositorLostMessageDelay = 2000;
+ 
+@@ -705,6 +710,54 @@ bool Compositor::isActive()
+     return m_state == State::On;
+ }
+ 
++void Compositor::checkUnredirect()
++{
++    checkUnredirect(false);
++}
++
++// force is needed when the list of windows changes (e.g. a window goes away)
++void Compositor::checkUnredirect(bool force)
++{
++    if (!isActive() || !m_scene->overlayWindow() || m_scene->overlayWindow()->window() == 0 || !options->isUnredirectFullscreen())
++        return;
++    if (force)
++        forceUnredirectCheck = true;
++    if (!unredirectTimer.isActive())
++        unredirectTimer.start(0);
++}
++
++void Compositor::delayedCheckUnredirect()
++{
++    if (!isActive() || !m_scene->overlayWindow() || m_scene->overlayWindow()->window() == 0 || !(options->isUnredirectFullscreen() || sender() == options))
++        return;
++    QList<Toplevel*> list;
++    bool changed = forceUnredirectCheck;
++    foreach (X11Client * c, Workspace::self()->clientList())
++        list.append(c);
++    foreach (Unmanaged * c, Workspace::self()->unmanagedList())
++        list.append(c);
++    foreach (Toplevel * c, list) {
++        if (c->updateUnredirectedState()) {
++            changed = true;
++            break;
++        }
++    }
++    // no desktops, no Deleted ones
++    if (!changed)
++        return;
++    forceUnredirectCheck = false;
++    // Cut out parts from the overlay window where unredirected windows are,
++    // so that they are actually visible.
++    const QSize &s = screens()->size();
++    QRegion reg(0, 0, s.width(), s.height());
++    foreach (Toplevel * c, list) {
++        if (c->unredirected())
++            reg -= c->frameGeometry();
++    }
++    m_scene->overlayWindow()->setShape(reg);
++    addRepaint(reg);
++}
++
+ WaylandCompositor::WaylandCompositor(QObject *parent)
+     : Compositor(parent)
+ {
+diff --git a/composite.h b/composite.h
+index a904fd114..d15632156 100644
+--- a/composite.h
++++ b/composite.h
+@@ -50,6 +50,13 @@ public:
+      */
+     void scheduleRepaint();
+ 
++    /**
++     * Checks for possibly unredirectable windows.
++     */
++    void checkUnredirect();
++    void checkUnredirect(bool force);
++    void delayedCheckUnredirect();
++
+     /**
+      * Toggles compositing, that is if the Compositor is suspended it will be resumed
+      * and if the Compositor is active it will be suspended.
+@@ -138,6 +145,8 @@ private:
+     QTimer m_releaseSelectionTimer;
+     QList<xcb_atom_t> m_unusedSupportProperties;
+     QTimer m_unusedSupportPropertyTimer;
++    QTimer unredirectTimer;
++    bool forceUnredirectCheck;
+     Scene *m_scene;
+     int m_framesToTestForSafety = 3;
+     QMap<RenderLoop *, AbstractOutput *> m_renderLoops;
+diff --git a/deleted.cpp b/deleted.cpp
+index a93fa8da5..13cdbc633 100644
+--- a/deleted.cpp
++++ b/deleted.cpp
+@@ -297,5 +297,10 @@ void Deleted::removeTransientFor(Deleted *parent)
+     m_transientFor.removeAll(parent);
+ }
+ 
++bool Deleted::shouldUnredirect() const
++{
++    return false;
++}
++
+ } // namespace
+ 
+diff --git a/deleted.h b/deleted.h
+index 3d545894c..a99aa5b33 100644
+--- a/deleted.h
++++ b/deleted.h
+@@ -168,6 +168,8 @@ public:
+     bool isOutline() const override {
+         return m_wasOutline;
+     }
++protected:
++    bool shouldUnredirect() const override;
+ 
+ private Q_SLOTS:
+     void mainClientClosed(KWin::Toplevel *client);
+diff --git a/effects.cpp b/effects.cpp
+index 13a30abc0..c862f668e 100644
+--- a/effects.cpp
++++ b/effects.cpp
+@@ -627,6 +627,7 @@ void EffectsHandlerImpl::setActiveFullScreenEffect(Effect* e)
+     }
+     const bool activeChanged = (e == nullptr || fullscreen_effect == nullptr);
+     fullscreen_effect = e;
++    m_compositor->checkUnredirect();
+     emit activeFullScreenEffectChanged();
+     if (activeChanged) {
+         emit hasActiveFullScreenEffectChanged();
+diff --git a/inputpanelv1client.h b/inputpanelv1client.h
+index 2491c46d5..25c6418bd 100644
+--- a/inputpanelv1client.h
++++ b/inputpanelv1client.h
+@@ -35,6 +35,7 @@ public:
+     bool isResizable() const override { return false; }
+     bool isMovable() const override { return false; }
+     bool isMovableAcrossScreens() const override { return false; }
++    bool shouldUnredirect() const override { return false; }
+     bool acceptsFocus() const override { return false; }
+     void closeWindow() override {}
+     bool takeFocus() override { return false; }
+diff --git a/internal_client.cpp b/internal_client.cpp
+index a01da4b52..55a72396b 100644
+--- a/internal_client.cpp
++++ b/internal_client.cpp
+@@ -572,4 +572,9 @@ void InternalClient::updateInternalWindowGeometry()
+     commitGeometry(clientRectToFrameRect(m_internalWindow->geometry()));
+ }
+ 
++bool InternalClient::shouldUnredirect() const
++{
++    return false;
++}
++
+ }
+diff --git a/internal_client.h b/internal_client.h
+index 187c78f32..13097a299 100644
+--- a/internal_client.h
++++ b/internal_client.h
+@@ -33,6 +33,7 @@ public:
+     QPoint clientContentPos() const override;
+     QSize minSize() const override;
+     QSize maxSize() const override;
++    bool shouldUnredirect() const override;
+     QRect transparentRect() const override;
+     NET::WindowType windowType(bool direct = false, int supported_types = 0) const override;
+     double opacity() const override;
+diff --git a/kcmkwin/kwincompositing/compositing.ui b/kcmkwin/kwincompositing/compositing.ui
+index 398043fa0..24e20f2a3 100644
+--- a/kcmkwin/kwincompositing/compositing.ui
++++ b/kcmkwin/kwincompositing/compositing.ui
+@@ -323,6 +323,18 @@ Alternatively, you might want to use the XRender backend instead.</string>
+      </item>
+     </widget>
+    </item>
++   <item row="14" column="1">
++    <widget class="QCheckBox" name="kcfg_unredirectFullscreen">
++     <property name="toolTip">
++      <string>Applications do not have to set any hint to suspend compositing when the window is full-screen.
++              This delivers lower latency and has no delay when compared to the other option.
++              Some people have reported crashes under Intel, but I am not sure if this is the case.</string>
++     </property>
++     <property name="text">
++      <string>Suspend compositor for full-screen windows</string>
++     </property>
++    </widget>
++   </item>
+   </layout>
+  </widget>
+  <customwidgets>
+diff --git a/kcmkwin/kwincompositing/kwincompositing_setting.kcfg b/kcmkwin/kwincompositing/kwincompositing_setting.kcfg
+index 7278d09b7..d2fa506f3 100644
+--- a/kcmkwin/kwincompositing/kwincompositing_setting.kcfg
++++ b/kcmkwin/kwincompositing/kwincompositing_setting.kcfg
+@@ -79,6 +79,10 @@
+            <default>LatencyMedium</default>
+        </entry>
+ 
++       <entry name="unredirectFullscreen" key="UnredirectFullscreen" type="Bool">
++           <default>true</default>
++       </entry>
++
+     </group>
+ 
+ </kcfg>
+diff --git a/kcmkwin/kwinrules/rulesmodel.cpp b/kcmkwin/kwinrules/rulesmodel.cpp
+index a3ad8ade0..aaf04ee16 100644
+--- a/kcmkwin/kwinrules/rulesmodel.cpp
++++ b/kcmkwin/kwinrules/rulesmodel.cpp
+@@ -639,6 +639,11 @@ void RulesModel::populateRuleList()
+                          RulePolicy::ForceRule, RuleItem::Boolean,
+                          i18n("Block compositing"), i18n("Appearance & Fixes"),
+                          QIcon::fromTheme("composite-track-on")));
++
++    addRule(new RuleItem(QLatin1String("allowunredirect"),
++                         RulePolicy::ForceRule, RuleItem::Boolean,
++                         i18n("Allow unredirect"), i18n("Appearance & Fixes"),
++                         QIcon::fromTheme("composite-track-on")));
+ }
+ 
+ 
+diff --git a/kwin.kcfg b/kwin.kcfg
+index 7485efc7f..af496d6d2 100644
+--- a/kwin.kcfg
++++ b/kwin.kcfg
+@@ -239,6 +239,9 @@
+             <min>4</min>
+             <max>6</max>
+         </entry>
++        <entry name="UnredirectFullscreen" type="Bool">
++            <default>false</default>
++        </entry>
+         <entry name="GLPlatformInterface" type="String">
+             <default>glx</default>
+         </entry>
+diff --git a/layers.cpp b/layers.cpp
+index a82fed2b8..bf384ad2e 100644
+--- a/layers.cpp
++++ b/layers.cpp
+@@ -715,6 +715,9 @@ QList<Toplevel *> Workspace::xStackingOrder() const
+     if (m_xStackingDirty) {
+         const_cast<Workspace*>(this)->updateXStackingOrder();
+     }
++    if (m_compositor) {
++        const_cast<Workspace*>(this)->m_compositor->checkUnredirect();
++    }
+     return x_stacking;
+ }
+ 
+diff --git a/layershellv1client.h b/layershellv1client.h
+index 7c3e0cceb..8769a4145 100644
+--- a/layershellv1client.h
++++ b/layershellv1client.h
+@@ -47,6 +47,7 @@ public:
+ protected:
+     Layer belongsToLayer() const override;
+     bool acceptsFocus() const override;
++    bool shouldUnredirect() const override { return false; }
+     void requestGeometry(const QRect &rect) override;
+ 
+ private:
+diff --git a/options.cpp b/options.cpp
+index 52030f142..fd695c741 100644
+--- a/options.cpp
++++ b/options.cpp
+@@ -58,6 +58,7 @@ Options::Options(QObject *parent)
+     , m_compositingMode(Options::defaultCompositingMode())
+     , m_useCompositing(Options::defaultUseCompositing())
+     , m_hiddenPreviews(Options::defaultHiddenPreviews())
++    , m_unredirectFullscreen(Options::defaultUnredirectFullscreen())
+     , m_glSmoothScale(Options::defaultGlSmoothScale())
+     , m_xrenderSmoothScale(Options::defaultXrenderSmoothScale())
+     , m_glStrictBinding(Options::defaultGlStrictBinding())
+@@ -554,6 +555,20 @@ void Options::setHiddenPreviews(int hiddenPreviews)
+     emit hiddenPreviewsChanged();
+ }
+ 
++void Options::setUnredirectFullscreen(bool unredirectFullscreen)
++{
++    //if (GLPlatform::instance()->driver() == Driver_Intel)
++        //unredirectFullscreen = false; // bug #252817
++    if (m_unredirectFullscreen == unredirectFullscreen) {
++        return;
++    }
++    //if (GLPlatform::instance()->driver() == Driver_Intel) { // write back the value
++        //KConfigGroup(m_settings->config(), "Compositing").writeEntry("UnredirectFullscreen", false);
++    //}
++    m_unredirectFullscreen = unredirectFullscreen;
++    emit unredirectFullscreenChanged();
++}
++
+ void Options::setGlSmoothScale(int glSmoothScale)
+ {
+     if (m_glSmoothScale == glSmoothScale) {
+@@ -911,6 +926,8 @@ void Options::reloadCompositingSettings(bool force)
+     else if (hps == 6)
+         previews = HiddenPreviewsAlways;
+     setHiddenPreviews(previews);
++    
++    setUnredirectFullscreen(config.readEntry("UnredirectFullscreen",Options::defaultUnredirectFullscreen()));
+ 
+     auto interfaceToKey = [](OpenGLPlatformInterface interface) {
+         switch (interface) {
+@@ -1062,4 +1079,9 @@ bool Options::isUseCompositing() const
+     return m_useCompositing || kwinApp()->platform()->requiresCompositing();
+ }
+ 
++bool Options::isUnredirectFullscreen() const
++{
++    return m_unredirectFullscreen && !kwinApp()->platform()->requiresCompositing();
++}
++
+ } // namespace
+diff --git a/options.h b/options.h
+index e692a676e..262314259 100644
+--- a/options.h
++++ b/options.h
+@@ -179,6 +179,7 @@ class KWIN_EXPORT Options : public QObject
+     Q_PROPERTY(int compositingMode READ compositingMode WRITE setCompositingMode NOTIFY compositingModeChanged)
+     Q_PROPERTY(bool useCompositing READ isUseCompositing WRITE setUseCompositing NOTIFY useCompositingChanged)
+     Q_PROPERTY(int hiddenPreviews READ hiddenPreviews WRITE setHiddenPreviews NOTIFY hiddenPreviewsChanged)
++    Q_PROPERTY(bool unredirectFullscreen READ isUnredirectFullscreen WRITE setUnredirectFullscreen NOTIFY unredirectFullscreenChanged)
+     /**
+      * 0 = no, 1 = yes when transformed,
+      * 2 = try trilinear when transformed; else 1,
+@@ -564,6 +565,7 @@ public:
+     HiddenPreviews hiddenPreviews() const {
+         return m_hiddenPreviews;
+     }
++    bool isUnredirectFullscreen() const;
+     // OpenGL
+     // 0 = no, 1 = yes when transformed,
+     // 2 = try trilinear when transformed; else 1,
+@@ -657,6 +659,7 @@ public:
+     void setCompositingMode(int compositingMode);
+     void setUseCompositing(bool useCompositing);
+     void setHiddenPreviews(int hiddenPreviews);
++    void setUnredirectFullscreen(bool unredirectFullscreen);
+     void setGlSmoothScale(int glSmoothScale);
+     void setXrenderSmoothScale(bool xrenderSmoothScale);
+     void setGlStrictBinding(bool glStrictBinding);
+@@ -739,6 +742,9 @@ public:
+     static HiddenPreviews defaultHiddenPreviews() {
+         return HiddenPreviewsShown;
+     }
++    static bool defaultUnredirectFullscreen() {
++        return true;
++    }
+     static int defaultGlSmoothScale() {
+         return 2;
+     }
+@@ -833,6 +839,7 @@ Q_SIGNALS:
+     void compositingModeChanged();
+     void useCompositingChanged();
+     void hiddenPreviewsChanged();
++    void unredirectFullscreenChanged();
+     void glSmoothScaleChanged();
+     void xrenderSmoothScaleChanged();
+     void glStrictBindingChanged();
+@@ -878,6 +885,7 @@ private:
+     CompositingType m_compositingMode;
+     bool m_useCompositing;
+     HiddenPreviews m_hiddenPreviews;
++    bool m_unredirectFullscreen;
+     int m_glSmoothScale;
+     bool m_xrenderSmoothScale;
+     // Settings that should be auto-detected
+diff --git a/rules.cpp b/rules.cpp
+index a75b7775d..97dddfa71 100644
+--- a/rules.cpp
++++ b/rules.cpp
+@@ -64,6 +64,7 @@ Rules::Rules()
+     , noborderrule(UnusedSetRule)
+     , decocolorrule(UnusedForceRule)
+     , blockcompositingrule(UnusedForceRule)
++    , allowunredirectrule(UnusedForceRule)
+     , fsplevelrule(UnusedForceRule)
+     , fpplevelrule(UnusedForceRule)
+     , acceptfocusrule(UnusedForceRule)
+@@ -162,6 +163,7 @@ void Rules::readFromSettings(const RuleSettings *settings)
+         decocolorrule = UnusedForceRule;
+ 
+     READ_FORCE_RULE(blockcompositing,);
++    READ_FORCE_RULE(allowunredirect,);
+     READ_FORCE_RULE(fsplevel,);
+     READ_FORCE_RULE(fpplevel,);
+     READ_FORCE_RULE(acceptfocus,);
+@@ -243,6 +245,7 @@ void Rules::write(RuleSettings *settings) const
+     };
+     WRITE_FORCE_RULE(decocolor, Decocolor, colorToString);
+     WRITE_FORCE_RULE(blockcompositing, Blockcompositing,);
++    WRITE_FORCE_RULE(allowunredirect, Allowunredirect,);
+     WRITE_FORCE_RULE(fsplevel, Fsplevel,);
+     WRITE_FORCE_RULE(fpplevel, Fpplevel,);
+     WRITE_FORCE_RULE(acceptfocus, Acceptfocus,);
+@@ -288,6 +291,7 @@ bool Rules::isEmpty() const
+            && noborderrule == UnusedSetRule
+            && decocolorrule == UnusedForceRule
+            && blockcompositingrule == UnusedForceRule
++           && allowunredirectrule == UnusedForceRule
+            && fsplevelrule == UnusedForceRule
+            && fpplevelrule == UnusedForceRule
+            && acceptfocusrule == UnusedForceRule
+@@ -602,6 +606,7 @@ APPLY_RULE(fullscreen, FullScreen, bool)
+ APPLY_RULE(noborder, NoBorder, bool)
+ APPLY_FORCE_RULE(decocolor, DecoColor, QString)
+ APPLY_FORCE_RULE(blockcompositing, BlockCompositing, bool)
++APPLY_FORCE_RULE(allowunredirect, AllowUnredirect, bool)
+ APPLY_FORCE_RULE(fsplevel, FSP, int)
+ APPLY_FORCE_RULE(fpplevel, FPP, int)
+ APPLY_FORCE_RULE(acceptfocus, AcceptFocus, bool)
+@@ -677,6 +682,7 @@ bool Rules::discardUsed(bool withdrawn)
+     DISCARD_USED_SET_RULE(noborder);
+     DISCARD_USED_FORCE_RULE(decocolor);
+     DISCARD_USED_FORCE_RULE(blockcompositing);
++    DISCARD_USED_FORCE_RULE(allowunredirect);
+     DISCARD_USED_FORCE_RULE(fsplevel);
+     DISCARD_USED_FORCE_RULE(fpplevel);
+     DISCARD_USED_FORCE_RULE(acceptfocus);
+@@ -814,6 +820,7 @@ CHECK_RULE(FullScreen, bool)
+ CHECK_RULE(NoBorder, bool)
+ CHECK_FORCE_RULE(DecoColor, QString)
+ CHECK_FORCE_RULE(BlockCompositing, bool)
++CHECK_FORCE_RULE(AllowUnredirect, bool)
+ CHECK_FORCE_RULE(FSP, int)
+ CHECK_FORCE_RULE(FPP, int)
+ CHECK_FORCE_RULE(AcceptFocus, bool)
+diff --git a/rules.h b/rules.h
+index 7ffa0789f..b63a6ca75 100644
+--- a/rules.h
++++ b/rules.h
+@@ -67,6 +67,7 @@ public:
+     bool checkNoBorder(bool noborder, bool init = false) const;
+     QString checkDecoColor(QString schemeFile) const;
+     bool checkBlockCompositing(bool block) const;
++    bool checkAllowUnredirect(bool allow) const;
+     int checkFSP(int fsp) const;
+     int checkFPP(int fpp) const;
+     bool checkAcceptFocus(bool focus) const;
+@@ -162,6 +163,7 @@ public:
+     bool applyNoBorder(bool& noborder, bool init) const;
+     bool applyDecoColor(QString &schemeFile) const;
+     bool applyBlockCompositing(bool& block) const;
++    bool applyAllowUnredirect(bool& allow) const;
+     bool applyFSP(int& fsp) const;
+     bool applyFPP(int& fpp) const;
+     bool applyAcceptFocus(bool& focus) const;
+@@ -251,6 +253,8 @@ private:
+     ForceRule decocolorrule;
+     bool blockcompositing;
+     ForceRule blockcompositingrule;
++    bool allowunredirect;
++    ForceRule allowunredirectrule;
+     int fsplevel;
+     int fpplevel;
+     ForceRule fsplevelrule;
+diff --git a/rulesettings.kcfg b/rulesettings.kcfg
+index 0cb10da7e..02cab1487 100644
+--- a/rulesettings.kcfg
++++ b/rulesettings.kcfg
+@@ -328,6 +328,15 @@
+       <default code="true">Rules::UnusedForceRule</default>
+     </entry>
+ 
++    <entry name="allowunredirect" type="Bool">
++      <label>Full-screen unredirection</label>
++      <default>false</default>
++    </entry>
++    <entry name="allowunredirectrule" type="Int">
++      <label>Full-screen unredirection rule type</label>
++      <default code="true">Rules::UnusedForceRule</default>
++    </entry>
++
+     <entry name="fsplevel" type="Int">
+       <label>Focus stealing prevention</label>
+       <default>0</default>
+diff --git a/toplevel.cpp b/toplevel.cpp
+index b85b6e689..836cc98cc 100644
+--- a/toplevel.cpp
++++ b/toplevel.cpp
+@@ -25,6 +25,8 @@
+ 
+ #include <QDebug>
+ 
++#include <unistd.h>
++
+ namespace KWin
+ {
+ 
+@@ -291,6 +293,7 @@ bool Toplevel::setupCompositing()
+     effect_window = new EffectWindowImpl(this);
+ 
+     Compositor::self()->scene()->addToplevel(this);
++    Compositor::self()->checkUnredirect(true);
+ 
+     return true;
+ }
+@@ -299,6 +302,7 @@ void Toplevel::finishCompositing(ReleaseReason releaseReason)
+ {
+     if (kwinApp()->operationMode() == Application::OperationModeX11 && damage_handle == XCB_NONE)
+         return;
++    Compositor::self()->checkUnredirect(true);
+     if (effect_window->window() == this) { // otherwise it's already passed to Deleted, don't free data
+         discardWindowPixmap();
+         delete effect_window;
+@@ -827,5 +831,45 @@ QMargins Toplevel::frameMargins() const
+     return QMargins();
+ }
+ 
++bool Toplevel::updateUnredirectedState()
++{
++    assert(compositing());
++    bool should = options->isUnredirectFullscreen() && shouldUnredirect() && !unredirectSuspend &&
++                  !shape() && !hasAlpha() && opacity() == 1.0 &&
++                  !static_cast<EffectsHandlerImpl*>(effects)->activeFullScreenEffect();
++    if (should) {
++      if (Screens::self()->count()<2) {
++        usleep(50000);
++      }
++    }
++    if (should == unredirect)
++        return false;
++    static QElapsedTimer lastUnredirect;
++    static const qint64 msecRedirectInterval = 100;
++    if (!lastUnredirect.hasExpired(msecRedirectInterval)) {
++        QTimer::singleShot(msecRedirectInterval, Compositor::self(), static_cast<void (Compositor::*)()>(&Compositor::checkUnredirect));
++        return false;
++    }
++    lastUnredirect.start();
++    unredirect = should;
++    if (unredirect) {
++        qCDebug(KWIN_CORE) << "Unredirecting:" << this;
++        xcb_composite_unredirect_window(connection(), frameId(), XCB_COMPOSITE_REDIRECT_MANUAL);
++    } else {
++        qCDebug(KWIN_CORE) << "Redirecting:" << this;
++        xcb_composite_redirect_window(connection(), frameId(), XCB_COMPOSITE_REDIRECT_MANUAL);
++        discardWindowPixmap();
++    }
++    return true;
++}
++
++void Toplevel::suspendUnredirect(bool suspend)
++{
++    if (unredirectSuspend == suspend)
++        return;
++    unredirectSuspend = suspend;
++    Compositor::self()->checkUnredirect();
++}
++
+ } // namespace
+ 
+diff --git a/toplevel.h b/toplevel.h
+index 572bef0e7..e5a52a712 100644
+--- a/toplevel.h
++++ b/toplevel.h
+@@ -454,6 +454,9 @@ public:
+     bool hasAlpha() const;
+     virtual bool setupCompositing();
+     virtual void finishCompositing(ReleaseReason releaseReason = ReleaseReason::Release);
++    bool updateUnredirectedState();
++    bool unredirected() const;
++    void suspendUnredirect(bool suspend);
+     Q_INVOKABLE void addRepaint(const QRect& r);
+     Q_INVOKABLE void addRepaint(const QRegion& r);
+     Q_INVOKABLE void addRepaint(int x, int y, int w, int h);
+@@ -719,6 +722,7 @@ protected:
+     void copyToDeleted(Toplevel* c);
+     void disownDataPassedToDeleted();
+     void deleteEffectWindow();
++    virtual bool shouldUnredirect() const = 0;
+     void setDepth(int depth);
+     QRect m_frameGeometry;
+     QRect m_clientGeometry;
+@@ -747,6 +751,8 @@ private:
+     QByteArray resource_class;
+     ClientMachine *m_clientMachine;
+     xcb_window_t m_wmClientLeader;
++    bool unredirect;
++    bool unredirectSuspend; // when unredirected, but pixmap is needed temporarily
+     bool m_damageReplyPending;
+     QRegion opaque_region;
+     xcb_xfixes_fetch_region_cookie_t m_regionCookie;
+@@ -1005,6 +1011,11 @@ inline QByteArray Toplevel::resourceClass() const
+     return resource_class; // it is always lowercase
+ }
+ 
++inline bool Toplevel::unredirected() const
++{
++    return unredirect;
++}
++
+ inline const ClientMachine *Toplevel::clientMachine() const
+ {
+     return m_clientMachine;
+diff --git a/unmanaged.cpp b/unmanaged.cpp
+index 3e9a0e0c7..a12e5d068 100644
+--- a/unmanaged.cpp
++++ b/unmanaged.cpp
+@@ -189,5 +189,35 @@ bool Unmanaged::setupCompositing()
+     return true;
+ }
+ 
++bool Unmanaged::shouldUnredirect() const
++{
++    // the pixmap is needed for the login effect, a nicer solution would be the login effect increasing
++    // refcount for the window pixmap (which would prevent unredirect), avoiding this hack
++    if (resourceClass() == "ksplashx"
++            || resourceClass() == "ksplashsimple"
++            || resourceClass() == "ksplashqml"
++            )
++        return false;
++    // it must cover whole display or one xinerama screen, and be the topmost there
++    const int desktop = VirtualDesktopManager::self()->current();
++    // TODO: this mess o-o
++    if (frameGeometry() == workspace()->clientArea(FullArea, frameGeometry().center(), desktop)
++            || frameGeometry() == workspace()->clientArea(ScreenArea, frameGeometry().center(), desktop)) {
++        QList<Toplevel*> stacking = workspace()->xStackingOrder();
++        for (int pos = stacking.count() - 1;
++                pos >= 0;
++                --pos) {
++            Toplevel* c = stacking.at(pos);
++            if (c == this)   // is not covered by any other window, ok to unredirect
++                return true;
++            // TODO: check if this works
++            if (c->frameGeometry().intersects(bufferGeometry()))
++                return false;
++        }
++        abort();
++    }
++    return false;
++}
++
+ } // namespace
+ 
+diff --git a/unmanaged.h b/unmanaged.h
+index bb8d2a20b..0716cef9a 100644
+--- a/unmanaged.h
++++ b/unmanaged.h
+@@ -43,6 +43,9 @@ public:
+ public Q_SLOTS:
+     void release(ReleaseReason releaseReason = ReleaseReason::Release);
+ 
++ protected:
++    bool shouldUnredirect() const override;
++
+ private:
+     ~Unmanaged() override; // use release()
+     // handlers for X11 events
+diff --git a/workspace.cpp b/workspace.cpp
+index d701525b6..d95cb8b58 100644
+--- a/workspace.cpp
++++ b/workspace.cpp
+@@ -552,6 +552,11 @@ X11Client *Workspace::createClient(xcb_window_t w, bool is_mapped)
+         connect(c, &X11Client::blockingCompositingChanged, compositor, &X11Compositor::updateClientCompositeBlocking);
+     }
+     connect(c, &X11Client::clientFullScreenSet, ScreenEdges::self(), &ScreenEdges::checkBlocking);
++    connect(c, &X11Client::activeChanged, m_compositor, static_cast<void (Compositor::*)()>(&Compositor::checkUnredirect));
++    // THIS ONE PLEASE
++    connect(c, &X11Client::fullScreenChanged, m_compositor, static_cast<void (Compositor::*)()>(&Compositor::checkUnredirect));
++    connect(c, &X11Client::geometryChanged, m_compositor, static_cast<void (Compositor::*)()>(&Compositor::checkUnredirect));
++    connect(c, &X11Client::geometryShapeChanged, m_compositor, static_cast<void (Compositor::*)()>(&Compositor::checkUnredirect));
+     if (!c->manage(w, is_mapped)) {
+         X11Client::deleteClient(c);
+         return nullptr;
+@@ -1985,6 +1990,9 @@ void Workspace::desktopResized()
+     if (effects) {
+         static_cast<EffectsHandlerImpl*>(effects)->desktopResized(geom.size());
+     }
++
++    // best guess.
++    m_compositor->checkUnredirect(true);
+ }
+ 
+ void Workspace::saveOldScreenSizes()
+diff --git a/x11client.cpp b/x11client.cpp
+index 960fc24c4..68f72d5a2 100644
+--- a/x11client.cpp
++++ b/x11client.cpp
+@@ -1596,6 +1596,9 @@ void X11Client::internalShow()
+         m_decoInputExtent.map();
+         updateHiddenPreview();
+     }
++    if (Compositor::self()->isActive()) {
++        Compositor::self()->checkUnredirect();
++    }
+     emit windowShown(this);
+ }
+ 
+@@ -1611,6 +1614,9 @@ void X11Client::internalHide()
+         updateHiddenPreview();
+     addWorkspaceRepaint(visibleRect());
+     workspace()->clientHidden(this);
++    if (Compositor::self()->isActive()) {
++        Compositor::self()->checkUnredirect();
++    }
+     emit windowHidden(this);
+ }
+ 
+@@ -1629,6 +1635,9 @@ void X11Client::internalKeep()
+     updateHiddenPreview();
+     addWorkspaceRepaint(visibleRect());
+     workspace()->clientHidden(this);
++    if (Compositor::self()->isActive()) {
++        Compositor::self()->checkUnredirect();
++    }
+ }
+ 
+ /**
+@@ -2896,6 +2905,10 @@ void X11Client::move(int x, int y, ForceGeometry_t force)
+     updateGeometryBeforeUpdateBlocking();
+     screens()->setCurrent(this);
+     workspace()->updateStackingOrder();
++    if (Compositor::self()->isActive()) {
++        // TODO: there was a todo here but I don't know
++        Compositor::self()->checkUnredirect();
++    }
+     // client itself is not damaged
+     if (oldBufferGeometry != bufferGeometry()) {
+         emit bufferGeometryChanged(this, oldBufferGeometry);
+@@ -4920,4 +4933,35 @@ void X11Client::updateWindowPixmap()
+     }
+ }
+ 
++// TODO THIS
++bool X11Client::shouldUnredirect() const
++{
++    if (isActiveFullScreen()) {
++        if (!rules()->checkAllowUnredirect(true)) return false;
++        QList<Toplevel*> stacking = workspace()->xStackingOrder();
++        for (int pos = stacking.count() - 1;
++                pos >= 0;
++                --pos) {
++            Toplevel* c = stacking.at(pos);
++            if (c == this) {   // is not covered by any other window, ok to unredirect
++                //printf("yes.\n");
++                return true;
++            }
++            if (c->frameGeometry().intersects(frameGeometry())) {
++                // check whether this is an invisible floating icon at the top left corner
++                if (c->frameGeometry()==QRect(0,0,32,32)) {
++                  //printf("yes via hack.\n");
++                  return true;
++                }
++                //printf("no. this: %d %d %d %d. other: %d %d %d %d.\n",geometry().x(),geometry().y(),geometry().width(),geometry().height(),c->geometry().x(),c->geometry().y(),c->geometry().width(),c->geometry().height());
++                return false;
++            }
++        }
++        //printf("ABORT\n");
++        abort();
++    }
++    return false;
++}
++
++
+ } // namespace
+diff --git a/x11client.h b/x11client.h
+index d3081bba5..9f62326e5 100644
+--- a/x11client.h
++++ b/x11client.h
+@@ -317,6 +317,7 @@ private:
+     bool motionNotifyEvent(xcb_window_t w, int state, int x, int y, int x_root, int y_root);
+ 
+ protected:
++    bool shouldUnredirect() const override;
+     void addDamage(const QRegion &damage) override;
+     bool belongsToSameApplication(const AbstractClient *other, SameApplicationChecks checks) const override;
+     void doSetActive() override;
+diff --git a/xdgshellclient.h b/xdgshellclient.h
+index 7d783fdf6..d0cf9f33a 100644
+--- a/xdgshellclient.h
++++ b/xdgshellclient.h
+@@ -63,6 +63,7 @@ public:
+     virtual void installPlasmaShellSurface(KWaylandServer::PlasmaShellSurfaceInterface *shellSurface) = 0;
+ 
+ protected:
++    bool shouldUnredirect() const override { return false; }
+     void requestGeometry(const QRect &rect) override;
+ 
+     virtual XdgSurfaceConfigure *sendRoleConfigure() const = 0;
