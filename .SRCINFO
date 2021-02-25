@@ -1,0 +1,52 @@
+pkgbase = croco-settings-manager-git
+	pkgdesc = Croco OS System Settings Tool
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/croco-settings-manager
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = qt5-tools
+	makedepends = knotifications
+	makedepends = kconfigwidgets
+	makedepends = kcmutils
+	depends = icu
+	depends = qt5-base>=5.12.3
+	depends = hwinfo
+	depends = kitemmodels
+	depends = kauth
+	depends = kcoreaddons
+	depends = ckbcomp
+	depends = xdg-utils
+	optdepends = croco-settings-manager-notifier: qt-based
+	optdepends = croco-settings-manager-knotifier: knotifications-based
+	conflicts = kcm-msm
+	source = git+https://gitlab.com/croco-os/applications/croco-settings-manager.git
+	sha256sums = SKIP
+
+pkgname = croco-settings-manager
+	provides = croco-settings-manager
+	conflicts = croco-settings-manager
+
+pkgname = croco-settings-manager-kcm
+	pkgdesc = Croco OS System Settings Tool (KCM for Plasma 5)
+	depends = croco-settings-manager
+	depends = kcmutils
+	depends = kconfigwidgets
+	replaces = kcm-msm
+
+pkgname = croco-settings-manager-notifier
+	pkgdesc = Croco OS System Settings Tool (Notifier)
+	depends = croco-settings-manager
+	provides = croco-settings-manager-kde-notifier
+	conflicts = croco-settings-manager-kde-notifier
+
+pkgname = croco-settings-manager-knotifier
+	pkgdesc = Croco OS System Settings Tool (Notifier for Plasma 5)
+	depends = croco-settings-manager
+	depends = knotifications
+	conflicts = croco-settings-manager-notifier
+	replaces = croco-settings-manager-kde-notifier
+
