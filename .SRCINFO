@@ -1,7 +1,7 @@
 pkgbase = fhc-git
 	pkgdesc = Fast HTTP Checker (git)
-	pkgver = 0.4.0.r2.g22815c5
-	pkgrel = 2
+	pkgver = 0.4.0.r4.ga4220fe
+	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/fhc
 	arch = x86_64
 	license = GPL3
@@ -13,4 +13,3 @@ pkgbase = fhc-git
 	sha512sums = SKIP
 
 pkgname = fhc-git
-
