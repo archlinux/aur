@@ -9,7 +9,7 @@
 
 pkgname=anki-git
 pkgver=r5745.f58eb80d9
-pkgrel=2
+pkgrel=3
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
@@ -82,10 +82,10 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    
+
     # Disable foring a specific bazel version to build with
-    rm .bazelversion 
-    
+    rm .bazelversion
+
     #patch -p1 <"$srcdir"/0001-Move-aqt_data-to-sys.prefix-share.patch
     #patch -p1 <"$srcdir"/0002-Remove-bad-build-steps-from-makefiles.patch
     #patch -p1 <"$srcdir"/0003-Compile-.py-s-before-building-wheel.patch
@@ -119,7 +119,7 @@ package() {
     cd "$pkgname"
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps bazel-bin/pylib/anki/anki-*.whl bazel-bin/qt/aqt/aqt-*.whl
 
-    install -Dm755 qt/runanki "$pkgdir"/usr/bin/anki
-    install -Dm644 qt/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
-    install -Dm644 qt/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+    install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
+    install -Dm644 qt/linux/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+    install -Dm644 qt/linux/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
 }
