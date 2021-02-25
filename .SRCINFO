@@ -1,0 +1,17 @@
+pkgbase = paleofetch-croco
+	pkgdesc = neofetch, but written in C
+	pkgver = r185.f5340ca
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/paleofetch-croco
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = libx11
+	provides = paleofetch-croco
+	conflicts = paleofetch-croco
+	source = paleofetch-croco::git+https://gitlab.com/croco-os/applications/paleofetch-croco.git
+	sha256sums = SKIP
+
+pkgname = paleofetch-croco
+
