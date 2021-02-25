@@ -1,11 +1,10 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
-# POST-INSTALLATION INSTRUCTIONS
-#
+# This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
 
 pkgname=weechat-notify-send
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A WeeChat script that sends highlight and message notifications through notify-send"
 url='https://github.com/s3rvac/weechat-notify-send'
 arch=('any')
