@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=eva-git
-pkgver=0.2.7.r9.gd310979
-pkgrel=2
+pkgver=0.2.7.r18.g3f52f6f
+pkgrel=1
 pkgdesc="a calculator REPL, similar to bc(1)"
 arch=('x86_64')
 url="https://github.com/NerdyPepper/eva"
