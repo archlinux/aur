@@ -3,7 +3,7 @@
 pkgname=lets-bin
 _pkgname=lets
 
-pkgver=0.0.23
+pkgver=0.0.29
 pkgrel=1
 arch=("x86_64" "i686")
 pkgdesc="CLI task runner for developers - a better alternative to make"
@@ -19,5 +19,6 @@ package() {
     install -Dm755 "$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
 }
 
-md5sums_x86_64=('de601d9ae760ee2723a862ca01ed56eb')
-md5sums_i686=('e540eb399a01868b33854d755c5c2527')
+md5sums_x86_64=('4fce1314c11995753cc6b7fcc1bdf487')
+md5sums_i686=('80639f109520cd3f904378c22aa35892')
+
