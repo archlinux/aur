@@ -1,8 +1,8 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=anbox-launchers-git
-pkgver=r14.7d9530f
-pkgrel=7
+pkgver=r15.0448156
+pkgrel=1
 pkgdesc="Add Anbox App Launchers to Anbox Category in Desktop Menu."
 arch=('any')
 url="https://github.com/ahmubashshir/anbox-launchers"
