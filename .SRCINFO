@@ -1,0 +1,20 @@
+pkgbase = croco-boot-repair-git
+	pkgdesc = A Grub repair utility for Croco OS
+	pkgver = r7.a128fab
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/applications/croco-boot-repair
+	arch = any
+	groups = croco-git
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = xdg-utils
+	depends = grub
+	depends = polkit
+	provides = croco-boot-repair
+	conflicts = croco-boot-repair
+	source = git+https://gitlab.com/croco-os/applications/croco-boot-repair.git
+	md5sums = SKIP
+
+pkgname = croco-boot-repair-git
+
