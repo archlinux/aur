@@ -1,0 +1,12 @@
+pkgbase = calamares-branding-croco-git
+	pkgver = r2.7389d96
+	pkgrel = 1
+	url = https://gitlab.com/croco-os/themes-and-settings/calamares-branding-croco
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gitlab.com/croco-os/themes-and-settings/calamares-branding-croco.git#branch=master
+	sha256sums = SKIP
+
+pkgname = calamares-branding-croco-git
+
