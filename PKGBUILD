@@ -1,7 +1,7 @@
 # Maintainer: Franek Madej <franek.madej@gmail.com>
 # Completion changes and optdepends by Artemis
 pkgname=yadm-git
-pkgver=2.0.1.r0.g5aa1a7b
+pkgver=3.0.2.r0.ga5b1067
 pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
@@ -28,6 +28,6 @@ package() {
   cd $srcdir/$pkgname
   install -D -m 755 yadm $pkgdir/usr/bin/yadm
   install -D -m 644 yadm.1 $pkgdir/usr/share/man/man1/yadm.1
-	install -D -m 644 completion/yadm.bash_completion "${pkgdir}/usr/share/bash-completion/completions/yadm"
-	install -D -m 644 completion/yadm.zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_yadm"
+  install -D -m 644 completion/bash/yadm "${pkgdir}/usr/share/bash-completion/completions/yadm"
+  install -D -m 644 completion/zsh/_yadm "${pkgdir}/usr/share/zsh/site-functions/_yadm"
 }
