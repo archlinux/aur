@@ -312,7 +312,7 @@ package_mesa-rc(){
             "mesa-libgl")
 
   # compiling mesa and installing to "$pkgdir"
-  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C mesa-$versiontag/build_64/ install
+  DESTDIR="${pkgdir}" ninja -C mesa-$versiontag/build_64/ install
 
   # remove script file from /usr/bin
   rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
@@ -335,7 +335,7 @@ package_lib32-mesa-rc(){
              "lib32-mesa-vdpau" "lib32-opengl-driver" "lib32-opencl-driver" "lib32-mesa-libgl")
 
   # compiling mesa and installing to "$pkgdir"
-  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C mesa-$versiontag/build_32/ install
+  DESTDIR="${pkgdir}" ninja -C mesa-$versiontag/build_32/ install
 
   #Remove files provided by standard mesa build
   rm -rf -v "$pkgdir"/etc
