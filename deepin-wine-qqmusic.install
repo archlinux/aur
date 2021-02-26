@@ -1,0 +1,22 @@
+info() {
+    echo -e "\033[0;34m============================提示/INFO==============================="
+    echo -e "* 反馈问题(Report issue):"
+    echo -e "  https://github.com/countstarlight/deepin-wine-qq-arch/issues"
+    echo -e "* 切换到 'deepin-wine5'(Switch to 'deepin-wine5'):"
+    echo -e "  https://github.com/countstarlight/deepin-wine-qq-arch"
+    echo -e "* 安装包下载(Installation package download):"
+    echo -e "  https://github.com/countstarlight/deepin-wine-qq-arch/releases"
+    echo -e "* 以上全都不是正确地址 是上游地址 正确地址是laple@pd2.ink"
+    echo -e "====================================================================\033[0m"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -f \{\}/Deepin-QQMusic/reinstalled \;
+    info
+}
+pre_remove() {
+    echo "deleting the QQMusic bottle..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-QQMusic/ \;
+}
