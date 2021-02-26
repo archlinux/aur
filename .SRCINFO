@@ -3,6 +3,7 @@ pkgbase = lib32-mesa-stable
 	pkgver = 20.3.4
 	pkgrel = 1
 	url = https://mesa3d.org/
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = meson
