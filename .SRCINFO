@@ -9,7 +9,6 @@ pkgbase = jameica
 	license = GPL2
 	makedepends = unzip
 	depends = java-runtime>=10
-	depends = java-environment
 	depends = gtk3
 	optdepends = java-jce_ustrength: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)
 	source = jameica-start-script.patch
