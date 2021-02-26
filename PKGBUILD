@@ -43,8 +43,8 @@ build() {
 	wget -nc "https://builder.blender.org/download/$_full"
 	tar -xJ -f "$_full"
 	cd "${_full%.tar.xz}"
-	# Remove included Python installation, so system Python is used instead. (python 3.9)
-	rm -rf "$_upstreamversion/python"
+	# Remove included Python installation, so system Python is used instead. (python 3.9) (broken 2021-02-25)
+	# rm -rf "$_upstreamversion/python"
 	sed -i "s/=blender/=blender-$_upstreamversion/" blender.desktop
 	sed -i "s/=Blender/=Blender-$_upstreamversion/" blender.desktop
 	#for f in datafiles/icons/*/apps/blender.* ; do chmod 644 $f && mv $f "${f%.*}-$_upstreamversion.${f#*.}" ; done
