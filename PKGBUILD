@@ -5,7 +5,7 @@
 name=desktop-notifier
 pkgname="python-${name}"
 provides=("${pkgname}")
-pkgver=1.1.2
+pkgver=3.2.2
 pkgrel=1
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 makedepends=('python-setuptools')
 depends=(
-    'python>=3.6'
+    'python'
     'python-dbus-next'
     'python-packaging'
     'python-wheel')
