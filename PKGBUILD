@@ -32,7 +32,7 @@ pkgver()
 {
     cd ${srcdir}/${_pkgname}/
     version = git describe --tags --abbrev=0
-    printf ${version:1}
+    printf "%s" ${version:1}
 }
 
 build()
