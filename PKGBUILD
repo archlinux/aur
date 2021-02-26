@@ -61,7 +61,7 @@ pkgbase=linux-xanmod-cacule-uksm-cjktty
 pkgver=5.11.1
 _major=5.11
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.xanmod.org/"
@@ -93,7 +93,7 @@ done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-            '363373e827e31f1d457e490e84fbe85ed67d7bf63f43da446405c9a9cdd5f067'
+            'ef0f0d9bc504a77c7e11c07899b12193854bafaa8c8354ab08e6005bf3b68e7f'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
             '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc'
