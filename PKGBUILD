@@ -16,7 +16,7 @@ replaces=('julia-vim-git')
 provides=('julia-vim' 'vim-julia')
 license=('MIT')
 install=vim-julia.install
-source=('git://github.com/JuliaLang/julia-vim.git')
+source=('git+https://github.com/JuliaLang/julia-vim.git')
 md5sums=('SKIP')
 
 pkgver() {

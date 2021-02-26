@@ -12,7 +12,7 @@ pkgbase = vim-julia-git
 	provides = julia-vim
 	provides = vim-julia
 	replaces = julia-vim-git
-	source = git://github.com/JuliaLang/julia-vim.git
+	source = git+https://github.com/JuliaLang/julia-vim.git
 	md5sums = SKIP
 
 pkgname = vim-julia-git
