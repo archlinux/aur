@@ -28,6 +28,7 @@ build() {
     -D spectre=disabled \
     -D tee=enabled \
     -D quartz=disabled \
+    -D symbol-lookup=disabled \
     -D tests=disabled
   meson compile -C build
 }
