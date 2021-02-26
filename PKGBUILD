@@ -1,7 +1,7 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=python-imaplib2-git
 pkgver=r146.e969a3f
-pkgrel=1
+pkgrel=2
 pkgdesc="Threaded Python IMAP4 client"
 arch=("any")
 url="https://github.com/jazzband/imaplib2"
