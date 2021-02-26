@@ -20,7 +20,7 @@ pkgbase = solarus-bin
 	conflicts = solarus
 	conflicts = solarus-run
 	conflicts = solarus-git
-	source = https://gitlab.com/solarus-games/solarus/-/jobs/1029181599/artifacts/download
+	source = 1029181599::https://gitlab.com/solarus-games/solarus/-/jobs/1029181599/artifacts/download
 	md5sums = 0ad717c177de97cfc98e9d86cd809752
 
 pkgname = solarus-bin

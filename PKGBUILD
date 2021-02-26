@@ -18,7 +18,7 @@ depends=('glm'
          'sdl2>=2.0.6'
          'sdl2_image'
          'sdl2_ttf')
-source=("https://gitlab.com/solarus-games/solarus/-/jobs/1029181599/artifacts/download")
+source=("1029181599::https://gitlab.com/solarus-games/solarus/-/jobs/1029181599/artifacts/download")
 provides=('solarus')
 conflicts=('solarus' 'solarus-run' 'solarus-git')
 package() {
