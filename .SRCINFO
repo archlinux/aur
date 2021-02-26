@@ -1,11 +1,14 @@
 pkgbase = jaxx
 	pkgdesc = Cross-platform Blockchain Wallet
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jaxx.io/
 	arch = x86_64
 	license = custom
-	optdepends = fuse2: Running AppImages properly
+	depends = nss
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = fuse2
 	options = !strip
 	source = https://download-liberty.jaxx.io/Jaxx.Liberty-2.6.0.AppImage
 	source = jaxx.png
