@@ -1,6 +1,6 @@
 pkgbase = bbcli
 	pkgdesc = inoffical Bitbucket.org command line tool
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/craftamap/bb
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = bbcli
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/craftamap/bb/archive/v0.2.1/bbcli-0.2.1.tar.gz
-	sha256sums = 28b733d6c646b7a1cc1c989e30c7f21037030a254296210e2eed9beae3dc31b9
+	source = https://github.com/craftamap/bb/archive/v0.3.0/bbcli-0.3.0.tar.gz
+	sha256sums = c0e12e9029cffcc4d37505cccebe4d85288338314beaa772de4bd94fa783b609
 
 pkgname = bbcli
 
