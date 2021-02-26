@@ -2,7 +2,7 @@
 Description = Push daemon for Nextcloud clients
 
 [Service]
-Environment = PORT=7867
+Environment = PORT=7867 BIND=127.0.0.1
 ExecStart = /usr/share/webapps/nextcloud/apps/notify_push/bin/ARCH/notify_push /etc/webapps/nextcloud/config/config.php
 User = nextcloud
 

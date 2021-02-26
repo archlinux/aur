@@ -2,7 +2,7 @@
 _appname=notify_push
 pkgname=nextcloud-app-notify_push
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Update notifications for nextcloud clients"
 arch=("x86_64")
 url="https://github.com/nextcloud/notify_push"
@@ -15,7 +15,7 @@ install=nextcloud-app-notify_push.install
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.service")
 sha512sums=('9b489eccf1495b6f7a41085440f5caf4cbddff7720af339d52a69138cce83b866650dc2a300bdf83bc840fbefc9d70af3b2b6b615e6014725936bf0bbb41f94d'
-            'c950c1db096b34bc888db81e4de17eb529398c5f64193313305bb07c5f61d99a42d775f27e10f7fbe444a8a253431c919ff99ad62d94ed4b131536658025f873')
+            '1fe68df3a84770dfc708f1ad8fdf8077e45ea08e5312a5efbe5c4baa310bd4f926e793825c259a31398dc29dbf76ec47943d60aa386f9d64d880737be4004c16')
 _target=$CARCH-unknown-linux-gnu
 
 prepare() {
