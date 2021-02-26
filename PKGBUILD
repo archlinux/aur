@@ -2,7 +2,7 @@
 
 pkgname=mon2cam-bash-git
 _pkgname=mon2cam
-pkgver=r31.07e4838
+pkgver=r33.0b424b2
 pkgrel=1
 pkgdesc="Workaround for multi-monitor Discord screensharing"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 makedepends=('git')
 provides=('mon2cam')
 conflicts=('mon2cam')
-source=("git+$url")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {

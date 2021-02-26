@@ -1,6 +1,6 @@
 pkgbase = mon2cam-bash-git
 	pkgdesc = Workaround for multi-monitor Discord screensharing
-	pkgver = r31.07e4838
+	pkgver = r33.0b424b2
 	pkgrel = 1
 	url = https://github.com/Meister1593/Mon2Cam
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mon2cam-bash-git
 	depends = v4l2loopback-dkms
 	provides = mon2cam
 	conflicts = mon2cam
-	source = git+https://github.com/Meister1593/Mon2Cam
+	source = mon2cam::git+https://github.com/Meister1593/Mon2Cam
 	sha256sums = SKIP
 
 pkgname = mon2cam-bash-git
