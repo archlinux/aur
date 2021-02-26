@@ -1,0 +1,15 @@
+pkgbase = wait4x-bin
+	pkgdesc = Waiting for a port to enter into specify state
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/atkrad/wait4x
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	provides = wait4x
+	conflicts = wait4x
+	source = wait4x-bin-0.4.0::https://github.com/atkrad/wait4x/releases/download/v0.4.0/wait4x-linux-amd64
+	sha256sums = 1a802405923fe6fd49fb5d463c6ff7fac77a5b64cb5fb31de2a2e5edf50cff6a
+
+pkgname = wait4x-bin
+
