@@ -47,7 +47,6 @@ pkgbase = lib32-mesa-rc
 	makedepends = lib32-lm_sensors
 	makedepends = lib32-libunwind
 	makedepends = lib32-vulkan-icd-loader
-	makedepends = lib32-ocl-icd
 	makedepends = lib32-llvm
 	makedepends = lib32-llvm-libs
 	makedepends = lib32-glibc

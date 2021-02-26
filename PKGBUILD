@@ -42,7 +42,7 @@ makedepends=('meson' 'ninja' 'bison' 'lib32-flex' 'python' 'python-mako' 'python
              'lib32-wayland' 'lib32-libxml2' 'lib32-libx11' 'lib32-libvdpau' 'lib32-libelf' 'lib32-libglvnd' 'lib32-ncurses'
              'lib32-libva' 'lib32-libxrandr' 'lib32-expat' 'lib32-libdrm' 'lib32-libxvmc' 'lib32-libepoxy' 'lib32-libxv'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-zstd' 'lib32-lm_sensors' 'lib32-libunwind'
-             'lib32-vulkan-icd-loader' 'lib32-ocl-icd' 'lib32-llvm' 'lib32-llvm-libs' 'lib32-glibc' 'gcc' 'lib32-gcc-libs')
+             'lib32-vulkan-icd-loader' 'lib32-llvm' 'lib32-llvm-libs' 'lib32-glibc' 'gcc' 'lib32-gcc-libs')
 depends=('lib32-libdrm' 'lib32-libxcb' 'lib32-wayland' 'python' 'libclc' 'lib32-libx11' 'lib32-libxshmfence' 'lib32-zstd' 'lib32-libelf'
          'lib32-llvm-libs' 'lib32-expat' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libunwind' 'lib32-lm_sensors' 'lib32-libglvnd'
          'lib32-vulkan-icd-loader' 'lib32-llvm' 'lib32-clang' 'lib32-gcc-libs' 'gcc' 'glslang' 'vulkan-mesa-layers' 'opencl-mesa' 'mesa')
