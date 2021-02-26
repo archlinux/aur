@@ -1,0 +1,36 @@
+# Colors
+note() {
+    printf "${BLUE}==>${ALL_OFF}${BOLD} NOTE:${ALL_OFF} ${1}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+GREEN="${BOLD}$(tput setaf 2)"
+
+
+_NAME=netbox
+post_install() {
+    echo ""
+    note "Follow the instructions on http://netbox.readthedocs.io/en/latest/installation/netbox/"
+    note "to finish the configuration, and enable and start the systemd service: "
+    note "    systemctl enable --now netbox.service"
+    note ""
+    note "Tweak the netbox and gunicorn configuration in "
+    note "/etc/netbox/configuration.py and /etc/netbox/gunicorn.py"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    note "To end the migration, use the following commands:"
+    note "    /opt/netbox/manage.py migrate"
+    note "    /opt/netbox/manage.py collectstatic --noinput"
+    echo ""
+}
+
+post_remove() {
+    rm -fr /run/${_NAME}
+	userdel -f ${_NAME}
+}
+
