@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201302w
 	pkgdesc = Epson printer driver (XP-212, XP-213, XP-215, XP-217)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
