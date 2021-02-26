@@ -1,7 +1,7 @@
 # Maintainer: Chris Icenhour <chris@randomlinux.com>
 
 pkgname=python-freqtrade-git
-pkgver=0.14.3.r10536.g1f30c3d7
+pkgver=0.14.3.r10545.gcc12919e
 pkgrel=1
 pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
