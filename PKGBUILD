@@ -8,18 +8,18 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=dragonwolf
-_pkgname=dragonwolf
-pkgver=88.0a.1r635306
+_pkgname=librewolf
+pkgver=88.01a.1r635306
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
-url="https://gitlab.com/dr460nf1r3/settings/"
+url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
+         ffmpeg nss ttf-font libpulse
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
-             rust mozilla-common
+             rust mozilla-common xorg-server-xwayland
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -31,19 +31,19 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
-_linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
-_settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+_linux_commit=e123b80f7df1ad9043435f345c426717ca323579
+_settings_commit=c5c75a39dd91a8772255a78493853be6553262b2
 _repo=https://hg.mozilla.org/mozilla-unified
-conflicts=('librewolf' 'librewolf-wayland-hg' 'librewolf-dev-wayland')
+conflicts=('librewolf')
 provides=('librewolf')
 source_x86_64=("hg+$_repo#revision=autoland"
-               $_pkgname.desktop
+               $pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
 source_aarch64=("hg+$_repo#revision=autoland"
-                $_pkgname.desktop
+                $pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
@@ -52,13 +52,13 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 build-arm-libopus.patch)
 
 sha512sums_x86_64=('SKIP'
-                   '10d3635e7c141665f5770225ece453d8f584ca8b2f6fc1ea8e7f3809af65235a0d2f9a9548aa92deafc27a39e132fbd33c965a4c68215ddf0a08fb17dd36d0d6'
+                   '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                    'SKIP'
                    'SKIP'
                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061')
 sha512sums_aarch64=('SKIP'
-                    '10d3635e7c141665f5770225ece453d8f584ca8b2f6fc1ea8e7f3809af65235a0d2f9a9548aa92deafc27a39e132fbd33c965a4c68215ddf0a08fb17dd36d0d6'
+                    '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                     'SKIP'
                     'SKIP'
                     '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
@@ -71,8 +71,8 @@ pkgver() {
 }
 
 prepare() {
-  if [[ ! -d mozbuild ]]; then 
-    mkdir mozbuild 
+  if [[ ! -d mozbuild ]];then
+      mkdir mozbuild
   fi
   cd mozilla-unified
 
@@ -83,22 +83,18 @@ prepare() {
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-#This supposedly speeds up compilation (We test through dogfooding anyway)
+# This supposedly speeds up compilation (We test through dogfooding anyway)
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-# probably not needed, enabled by default?
-ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-lto
-ac_add_options --enable-linker=lld
-export MOZ_PGO=1
-export CC=clang
-export CXX=clang++
+export CC='clang'
+export CXX='clang++'
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
@@ -106,12 +102,13 @@ export RANLIB=llvm-ranlib
 # Branding
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-app-name=${_pkgname}
-ac_add_options --with-app-basename=Librewolf
+ac_add_options --with-app-basename=DragonWolf
 ac_add_options --with-branding=browser/branding/librewolf
-ac_add_options --with-distribution-id=io.gitlab.librewolf-community
+ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
+export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -161,15 +158,21 @@ END
   patch -p1 -i ../arm.patch
   patch -p1 -i ../build-arm-libopus.patch
 
+else
+
+  cat >>../mozconfig <<END
+# probably not needed, enabled by default?
+ac_add_options --enable-optimize
+END
 fi
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
   # To enable global menubar
-  # set these to true 
+  # Set these to true
   # browser.proton.enabled
-  # browser.proton.appmenu.enabled 
+  # browser.proton.appmenu.enabled
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
@@ -217,22 +220,83 @@ build() {
   # CFLAGS="${CFLAGS/-fno-plt/}"
   # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
-if [[ $CARCH == 'x86_64' ]]; then
+  # Do 3-tier PGO
+  echo "Building instrumented browser..."
+
+if [[ $CARCH == 'aarch64' ]]; then
 
   cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate
+END
+
+else
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
+
+fi
+
+  ./mach build
+
+  echo "Profiling instrumented browser..."
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata \
+    JARLOG_FILE="$PWD/jarlog" \
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+    ./mach python build/pgo/profileserver.py
+
+  if [[ ! -s merged.profdata ]]; then
+    echo "No profile data produced."
+    return 1
+  fi
+
+  if [[ ! -s jarlog ]]; then
+    echo "No jar log produced."
+    return 1
+  fi
+
+  echo "Removing instrumented browser..."
+  ./mach clobber
+
+  echo "Building optimized browser..."
+
+if [[ $CARCH == 'aarch64' ]]; then
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --enable-linker=lld
+END
+
+else
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 END
 
 fi
 
   ./mach build
+
+  echo "Building symbol archive..."
+  ./mach buildsymbols
 }
 
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
+  mv "$pkgdir"/usr/lib/{librewolf,$_pkgname}
+  rm "$pkgdir"/usr/bin/librewolf
 
-  _vendorjs="$pkgdir/usr/lib/librewolf/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
@@ -249,19 +313,19 @@ END
   # cd ${srcdir}/settings
   # git checkout ${_settings_commit}
   cd ${srcdir}/mozilla-unified
-  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/librewolf/
+  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${_pkgname}/
 
-  _distini="$pkgdir/usr/lib/librewolf/distribution/distribution.ini"
+  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
-id=io.gitlab.librewolf-community
+id=archlinux
 version=1.0
-about=DragonWolf
+about=$_pkgname for Arch Linux
 
 [Preferences]
-app.distributor="LibreWolf Community"
-app.distributor.channel=$_pkgname
-app.partner.librewolf=$_pkgname
+app.distributor=archlinux
+app.distributor.channel=$pkgname
+app.partner.archlinux=archlinux
 END
 
   for i in 16 32 48 64 128; do
@@ -275,23 +339,23 @@ END
   install -Dm644 browser/branding/librewolf/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dragonwolf-symbolic.png"
 
-  install -Dm644 ../dragonwolf.desktop \
-    "$pkgdir/usr/share/applications/dragonwolf.desktop"
+  install -Dm644 ../$pkgname.desktop \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
-exec /usr/lib/librewolf/librewolf "\$@"
+exec /usr/lib/$pkgname/librewolf "\$@"
 END
 
-  # Also install a wrapper for dragonwolf
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/dragonwolf" <<END
+  # Install a wrapper for dragonwolf binary
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec /usr/lib/librewolf/librewolf "\$@"
+exec /usr/lib/$_pkgname/librewolf "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/librewolf" \
-    "$pkgdir/usr/lib/librewolf/librewolf-bin"
+  ln -srf "$pkgdir/usr/bin/$_pkgname" \
+    "$pkgdir/usr/lib/$_pkgname/librewolf-bin"
 }
