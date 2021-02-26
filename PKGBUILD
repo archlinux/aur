@@ -15,11 +15,11 @@ pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 mozilla-common libxt mime-types dbus-glib
+depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
-             rust
+             rust mozilla-common
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -40,31 +40,27 @@ source_x86_64=("hg+$_repo#revision=autoland"
                $_pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
-               megabar.patch
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
 source_aarch64=("hg+$_repo#revision=autoland"
                 $_pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
-                megabar.patch
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                 "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 build-arm-libopus.patch)
 
 sha512sums_x86_64=('SKIP'
-                   'f5854cffca603cabbf8ea2223e791024627b58a933a117d2fdcc94fe9b80cd762119f9a742158b76a6965376bf9f2a5894e5da79f28fe777675580d94abd11b7'
+                   '10d3635e7c141665f5770225ece453d8f584ca8b2f6fc1ea8e7f3809af65235a0d2f9a9548aa92deafc27a39e132fbd33c965a4c68215ddf0a08fb17dd36d0d6'
                    'SKIP'
                    'SKIP'
-                   'd90d0e8d555d32720fd519ec020c8232539cef1f0754cf8c9aa78aa86bbbe3eb1f61748b92e9332d75fb1d933ac543de047e9312740f710b870a64da8caa3eef'
                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061')
 sha512sums_aarch64=('SKIP'
-                    'f5854cffca603cabbf8ea2223e791024627b58a933a117d2fdcc94fe9b80cd762119f9a742158b76a6965376bf9f2a5894e5da79f28fe777675580d94abd11b7'
+                    '10d3635e7c141665f5770225ece453d8f584ca8b2f6fc1ea8e7f3809af65235a0d2f9a9548aa92deafc27a39e132fbd33c965a4c68215ddf0a08fb17dd36d0d6'
                     'SKIP'
                     'SKIP'
-                    'd90d0e8d555d32720fd519ec020c8232539cef1f0754cf8c9aa78aa86bbbe3eb1f61748b92e9332d75fb1d933ac543de047e9312740f710b870a64da8caa3eef'
                     '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
                     'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                     '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
@@ -170,11 +166,7 @@ fi
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
-  # Disable (some) megabar functionality
-  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -p1 -i ../megabar.patch
-
-  # to enable global menubar
+  # To enable global menubar
   # set these to true 
   # browser.proton.enabled
   # browser.proton.appmenu.enabled 
@@ -283,11 +275,17 @@ END
   install -Dm644 browser/branding/librewolf/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dragonwolf-symbolic.png"
 
-  install -Dm644 ../dragonwolf.desktop \
+  install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf" <<END
+#!/bin/sh
+exec /usr/lib/librewolf/librewolf "\$@"
+END
+
+  # Also install a wrapper for dragonwolf
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/dragonwolf" <<END
 #!/bin/sh
 exec /usr/lib/librewolf/librewolf "\$@"
 END
