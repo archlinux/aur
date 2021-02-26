@@ -1,7 +1,7 @@
 pkgbase = boinc-manager-web-git
 	pkgdesc = Web Client for BOINC
 	pkgver = r163.24e3847
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/adamradocz/boinc-manager
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = boinc-manager-web-git
 	source = boinc-manager-web.sysusers
 	source = boinc-manager-web.tmpfiles
 	sha512sums = SKIP
-	sha512sums = 9d3a6f81eb1186aa7c65e7d95cf55493e4a1bdd58b0d3e3b0ac77e0f2d2fdf4156dd666706e3750f5c794b7cba9a5744fc36f549649f00d529b76390bef1a4f6
+	sha512sums = e552a69ad2249b5ace2915c6715ec93901f151314c344e916b04d82cbfcfc528f6046740b9dd110131ffa5c184c8e49ab3b1caf9f5ad5d73a0e0d10f4c90ba35
 	sha512sums = fcf078f5be903f377c7c78921521de5d9a7a4df9e5086ddd18e6e4baef3cfb653781c2a98509304628d754878d13ce0455c6e53a6074978e40460bae909d3be4
 	sha512sums = 6139d5c155b0bede2deb6b21d9161cb3d877ca5a12981325439bb048035dab3704182c4f958b7af7a56f25e86b190f03ed11936558e38231f35136d1e6a77862
 

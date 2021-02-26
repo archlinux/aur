@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=boinc-manager-web
-Environment="XDG_CONFIG_HOME=/var/lib/boinc-manager-web
+Environment="XDG_CONFIG_HOME=/var/lib/boinc-manager-web"
 ExecStart=/usr/bin/dotnet /usr/lib/boinc-manager-web/BoincManagerWeb.dll --urls=http://localhost:4001/
 Restart=on-abort
 TimeoutSec=20
