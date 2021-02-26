@@ -1,5 +1,5 @@
 pkgbase = mesa-rc
-	pkgdesc = An open-source implementation of the OpenGL specification. (64-bit) (rc release)
+	pkgdesc = An open-source implementation of the OpenGL specification. (rc release)
 	pkgver = 21.0.0_rc5
 	pkgrel = 1
 	url = https://mesa3d.org/
@@ -46,7 +46,6 @@ pkgbase = mesa-rc
 	makedepends = lm_sensors
 	makedepends = libunwind
 	makedepends = vulkan-icd-loader
-	makedepends = ocl-icd
 	makedepends = llvm
 	makedepends = clang
 	makedepends = llvm-libs
