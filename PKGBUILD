@@ -1,13 +1,13 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 _pkgname=camouflage
 pkgname=$_pkgname-git
-pkgver=2.0.0.r5.gc0dd8e6
+pkgver=2.0.1.r0.g737948b
 pkgrel=1
 pkgdesc="a mux websocket over TLS proxy, experimental version"
 arch=('x86_64')
 license=('MPL')
 depends=()
-makedepends=('go>=2:1.15' 'git')
+makedepends=('go>=2:1.16' 'git')
 url='https://github.com/Sherlock-Holo/camouflage'
 source=(
 	"git+https://github.com/Sherlock-Holo/camouflage"
