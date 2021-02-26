@@ -1,0 +1,53 @@
+pkgbase = linux-cjktty
+	pkgdesc = Linux
+	pkgver = 5.11.1.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.11.1-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.1-arch1
+	source = config
+	source = sphinx-workaround.patch
+	source = 0001-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-5.11.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	sha256sums = SKIP
+	sha256sums = d8d5d11c80424985642b0eea6ace3256b5a1e5e69d637104523460a5ebdda202
+	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
+	sha256sums = 7d8375f80012443a6d507eaaa913a6c8e4d8b7789b2523cceef9c5214a7650c5
+
+pkgname = linux-cjktty
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-cjktty-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
+
+pkgname = linux-cjktty-docs
+	pkgdesc = Documentation for the Linux kernel
+
