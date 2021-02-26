@@ -1,7 +1,7 @@
 pkgbase = dlang-digger
 	pkgdesc = A tool to build D and bisect old D versions
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CyberShadow/Digger
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,8 @@ pkgbase = dlang-digger
 	makedepends = libphobos-devel
 	makedepends = dtools
 	depends = git
-	backup = etc/digger.ini
 	source = git+https://github.com/CyberShadow/Digger.git#tag=v3.0.6
-	source = digger.ini
 	sha256sums = SKIP
-	sha256sums = 8077a00ca2c6b41ec2a8175a2fb7114787d076627d49f9374ddbbd2394ed9e8f
 
 pkgname = dlang-digger
 

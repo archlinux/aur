@@ -3,7 +3,7 @@
 
 pkgname=dlang-digger
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to build D and bisect old D versions'
 arch=('i686' 'x86_64')
 groups=('dlang')
@@ -13,15 +13,8 @@ depends=('git')
 makedepends=('dmd>=2.067.0-1' 'libphobos-devel' 'dtools')
 source=(
     "git+https://github.com/CyberShadow/Digger.git#tag=v${pkgver//_/-}"
-    'digger.ini'
 )
-sha256sums=(
-    'SKIP'
-    '8077a00ca2c6b41ec2a8175a2fb7114787d076627d49f9374ddbbd2394ed9e8f'
-)
-backup=(
-    'etc/digger.ini'
-)
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/Digger"
