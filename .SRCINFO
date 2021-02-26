@@ -1,7 +1,7 @@
 pkgbase = pem-heart-signature
 	pkgdesc = Software for digitally signing and verifying files with CenCert qualified certificate
 	pkgver = 3.9.13.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cencert.pl/do-pobrania/oprogramowanie-do-podpisu/
 	arch = x86_64
 	license = proprietary

@@ -2,7 +2,7 @@
 
 pkgname=pem-heart-signature
 pkgver=3.9.13.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Software for digitally signing and verifying files with CenCert qualified certificate'
 arch=(x86_64)
 url='https://www.cencert.pl/do-pobrania/oprogramowanie-do-podpisu/'
@@ -15,8 +15,6 @@ package() {
 		install -d "$pkgdir"/opt/pemheart_signer/{bin,data,db,doc,etc,lib}
 		install -d "$pkgdir"/opt/pemheart_signer/data/{file-manager,gconf,images,menu,mime}
 		install -d "$pkgdir"/opt/pemheart_signer/db/tsl
-		install -d "$pkgdir"/opt/pemheart_signer/doc/
-		install -d "$pkgdir"/opt/pemheart_signer/etc/
 		install -d "$pkgdir"/opt/pemheart_signer/lib/{pkcs11,platforms}
 		cp -a opt/pemheart_signer/* "$pkgdir"/opt/pemheart_signer/
 
