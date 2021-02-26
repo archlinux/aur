@@ -1,0 +1,7 @@
+# makepkg
+/src/
+/pkg/
+*.tar.*
+
+#
+/bucklespring
