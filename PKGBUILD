@@ -2,7 +2,7 @@
 pkgname=amfora-favicons-git
 pkgver=1.8.0.r7.ge7c59f1
 pkgrel=1
-pkgdesc="Terminal browser for the Gemini protocol"
+pkgdesc="Terminal browser for the Gemini protocol, patched for favicon.txt support"
 arch=("x86_64")
 url="https://github.com/makeworld-the-better-one/amfora"
 license=("GPL3")
