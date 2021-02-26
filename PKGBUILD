@@ -96,7 +96,7 @@ export RANLIB=llvm-ranlib
 # Branding
 ac_add_options --enable-update-channel=aurora
 ac_add_options --with-app-name=librewolf-dev
-ac_add_options --with-app-basename=${_pkgname}
+ac_add_options --with-app-basename='${_pkgname}'
 ac_add_options --with-branding=browser/branding/librewolf
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
