@@ -1,0 +1,14 @@
+pkgbase = instatus-out
+	pkgdesc = Monitor services in your menu bar
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://instatus.com/out
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	source = https://github.com/instatushq/out/releases/download/v1.0.6/instatus-out_1.0.6_amd64.deb
+	sha512sums = c7afae493a8bf2242923f60df70bd4a8227cac86f2d130fb177a3b9361382872194376ff4a1cda724484346b461f8bef2fd73a5db68402b204be9ca3005d34cb
+
+pkgname = instatus-out
+
