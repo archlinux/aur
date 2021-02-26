@@ -3,8 +3,6 @@
 # Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 # Contributor: Christopher Krooß <didi2002 at web.de>
-# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
-# You may find it convenient to file issues and pull requests there.
 
 _srcname=dash-to-dock
 pkgname=gnome-shell-extension-dash-to-dock-git
