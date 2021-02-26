@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD polkit Policy Configuration 1.0//EN"
+"http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
+<policyconfig>
+	<vendor>inpulse-to-talk</vendor>
+	<vendor_url>https://github.com/zevv/bucklespring</vendor_url>
+
+	<action id="nl.zevv.bucklespring.run">
+		<message>Prevent running the inpulse-to-talk daemon</message>
+		<icon_name>keyboard</icon_name>
+		<defaults>
+			<!-- Any program (in a session) can run the daemon, with the root password -->
+			<allow_any>no</allow_any>
+			<allow_inactive>no</allow_inactive>
+			<allow_active>auth_admin_keep</allow_active>
+		</defaults>
+		<annotate key="org.freedesktop.policykit.exec.path">/usr/bin/buckle</annotate>
+	</action>
+
+</policyconfig>

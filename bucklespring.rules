@@ -1,0 +1,10 @@
+// vim: ft=javascript
+
+// Allow any user on the "wheel" group to run this deamon
+// Note that this is a keylogger, do not give permissions to this program lightly
+polkit.addRule(function(action, subject) {
+	if (action.id == "nl.zevv.bucklespring.run" &&
+		subject.isInGroup("wheel")) {
+		return polkit.Result.YES;
+	}
+});
