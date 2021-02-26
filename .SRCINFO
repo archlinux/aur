@@ -1,7 +1,7 @@
 pkgbase = freechat-uos
 	pkgdesc = 致力于打造macOS和Linux桌面下最好用的微信客户端。(添加UOS补丁)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/eNkru/freechat
 	arch = x86_64
 	license = MIT
@@ -12,12 +12,10 @@ pkgbase = freechat-uos
 	source = https://github.com/JoveYu/PKGBUILD/releases/download/0.0.1/wechat-uos-token.tar.gz
 	source = uos.patch
 	source = freechat.desktop
-	source = libuosdevicea.so
 	md5sums = 0213ce4ef07b329b811af3498d851967
-	md5sums = 52226b5b73054d2d53fed7e97568aa6f
+	md5sums = 561878f3933e289360ac860bdc1e3889
 	md5sums = 5e4390b5227c9ecb2706fdcb927a943f
 	md5sums = 64faa178571d2f8871b3e021024dc009
-	md5sums = 818918ee0ab27afeeba0f4b2edb72fb6
 
 pkgname = freechat-uos
 
