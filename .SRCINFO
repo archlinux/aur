@@ -1,6 +1,6 @@
 pkgbase = yabridgectl
 	pkgdesc = Optional utility to help set up and manage yabridge
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/robbert-vdh/yabridge
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = yabridgectl
 	provides = yabridgectl
 	conflicts = yabridge-bin
 	conflicts = yabridgectl-git
-	source = https://github.com/robbert-vdh/yabridge/archive/3.0.0.tar.gz
-	sha256sums = 693bc7b2650bc6fc59fa95a724b2cc41e2b26e94614a2d3b0ce53454e411f58d
+	source = https://github.com/robbert-vdh/yabridge/archive/3.0.1.tar.gz
+	sha256sums = aab098c1c870128e8b26c216238b9b49d975fa304062bfa5a6b4cf534a75bd97
 
 pkgname = yabridgectl
 
