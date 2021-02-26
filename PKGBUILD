@@ -3,7 +3,7 @@
 _pkgname=btcpayserver
 
 pkgname=btcpayserver-git
-pkgver=1.0.6.7.r98.g07da404a2
+pkgver=latest_tag
 pkgrel=1
 epoch=
 pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor."
@@ -26,12 +26,6 @@ source=("git+${url}.git")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
-
-pkgver()
-{
-    cd ${srcdir}/${_pkgname}/
-    printf "%s" "$(git describe --long | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g")"
-}
 
 build()
 {
