@@ -2,7 +2,7 @@
 
 _pkgname=usb-imager
 pkgname=${_pkgname}-git
-pkgver=1.0.r5.g679e781
+pkgver=1.0.git_latest
 pkgrel=1
 pkgdesc='GUI-Application to write bootable disk images to USB key.'
 arch=(any)
@@ -20,7 +20,6 @@ depends=(
   'python-importlib_resources'
   'python-gobject'
   'pyside2'
-  'pyside2-tools'
   'hicolor-icon-theme'
 )
 

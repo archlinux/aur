@@ -1,6 +1,6 @@
 pkgbase = usb-imager-git
 	pkgdesc = GUI-Application to write bootable disk images to USB key.
-	pkgver = 1.0.r5.g679e781
+	pkgver = 1.0.git_latest
 	pkgrel = 1
 	url = https://gitlab.com/skynet-devel/usb-imager
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = usb-imager-git
 	depends = python-importlib_resources
 	depends = python-gobject
 	depends = pyside2
-	depends = pyside2-tools
 	depends = hicolor-icon-theme
 	source = usb-imager-git::git+https://gitlab.com/skynet-devel/usb-imager.git
 	sha256sums = SKIP
