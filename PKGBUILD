@@ -7,8 +7,8 @@
 
 _pkgbase=autofs
 pkgname=${_pkgbase}-no-locking
-pkgver=5.1.6
-pkgrel=2
+pkgver=5.1.7
+pkgrel=1
 pkgdesc='A kernel-based automounter for Linux (disable mount locking, allows recursive auto-mounting)'
 arch=('x86_64')
 url='https://www.kernel.org/pub/linux/daemons/autofs/'
@@ -27,7 +27,7 @@ backup=('etc/autofs/auto.master'
         'etc/autofs/autofs_ldap_auth.conf'
         'etc/default/autofs')
 source=("https://www.kernel.org/pub/linux/daemons/${_pkgbase}/v5/${_pkgbase}-${pkgver}.tar."{xz,sign})
-sha256sums=('dddee3d9b7388ce6cb7432832dfade25b07ef68ad48dcce01cf247b26a10caef'
+sha256sums=('a36b268611b79b07051749870ba540b139938efc84bc0293244c483e94f9ced7'
             'SKIP')
 validpgpkeys=('CD0A6E3CBB6768800B0736A8E7677380F54FD8A9') # Ian Kent
 
