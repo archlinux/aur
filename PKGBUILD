@@ -2,7 +2,7 @@
 
 pkgname=wasm-pack
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Your favorite rust -> wasm workflow tool!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/rustwasm/wasm-pack"
@@ -15,7 +15,7 @@ sha384sums=('b01cdf34ea43e0fed215f53084cdec33a090d0e69e97017b35d4c1967872c420da2
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release
+    cargo build --release --target-dir "$(pwd)/target"
 }
 
 package() {

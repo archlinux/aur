@@ -1,7 +1,7 @@
 pkgbase = wasm-pack
 	pkgdesc = Your favorite rust -> wasm workflow tool!
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustwasm/wasm-pack
 	arch = i686
 	arch = x86_64
