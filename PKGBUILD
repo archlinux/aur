@@ -1,6 +1,6 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
 
-pkgname=(boinc-manager-web)
+pkgname=(boinc-manager-web-git)
 pkgver=r163.24e3847
 pkgrel=1
 pkgdesc='Web Client for BOINC'
