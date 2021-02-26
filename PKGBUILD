@@ -3,8 +3,8 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
-pkgver=2.2.8
-pkgrel=2
+pkgver=2.2.9
+pkgrel=1
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
