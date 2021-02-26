@@ -18,7 +18,7 @@ depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss ttf-font libpulse
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
-             rust mozilla-common xorg-server-xwayland
+             rust mozilla-common xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -40,8 +40,7 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "git+https://gitlab.com/librewolf-community/browser/common.git"
                "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-               xvfb-run)
+               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
 source_aarch64=("hg+$_repo#revision=autoland"
                 $pkgname.desktop
                 "git+https://gitlab.com/librewolf-community/browser/common.git"
@@ -49,16 +48,14 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                 "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
-                build-arm-libopus.patch
-                xvfb-run)
+                build-arm-libopus.patch)
 
 sha512sums_x86_64=('SKIP'
                    '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                    'SKIP'
                    'SKIP'
                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
-                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
-                   '73c8ead9fba6815dabfec0a55b3a53f01169f6f2d14ac4a431e53b2d96028672dbd6b50a3314568847b37b1e54ea4fc02bdf677feabb3b2697af55e2e5331810')
+                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061')
 sha512sums_aarch64=('SKIP'
                     '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                     'SKIP'
@@ -66,8 +63,8 @@ sha512sums_aarch64=('SKIP'
                     '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
                     'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                     '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
-                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
-                    '73c8ead9fba6815dabfec0a55b3a53f01169f6f2d14ac4a431e53b2d96028672dbd6b50a3314568847b37b1e54ea4fc02bdf677feabb3b2697af55e2e5331810')
+                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
+
 pkgver() {
   cd mozilla-unified
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
@@ -246,7 +243,7 @@ fi
   ./mach package
   LLVM_PROFDATA=llvm-profdata \
     JARLOG_FILE="$PWD/jarlog" \
-    ../xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
   if [[ ! -s merged.profdata ]]; then
