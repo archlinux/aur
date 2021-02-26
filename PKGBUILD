@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.11
-_minor=1
+_minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,10 +78,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0003-Revert-drm-amd-display-reuse-current-context-instead.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0004-drm-amdgpu-fix-shutdown-with-s0ix.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-Revert-drm-amd-display-reuse-current-context-instead.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0003-drm-amdgpu-fix-shutdown-with-s0ix.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -326,15 +325,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('615ec7d06f6ed78a2b283857b5abb7c161ce80d48a9fd1626ed49ba816b28de0023d6a420f8ef0312931bfeed0ab3f8ec1b489baf0dc99d90a35c58252e76561'
+sha512sums=('16090ec6dea7a8c417ca7483b296902c9b55b423482ad8a881dffcaae76411806bc9502373efd6a51b0acefec3a44c19c5a7d42c5b76c1321183a4798a5959d3'
             'SKIP'
             '4dcdc33ed86dac1879432a5d3977ea01daa24e1d62ed89e328125a9ba3f00089248eefdd7bba33336f09bb8299a8f929bd763de55f13b115223e4bd813b0617b'
             '566285d7e66cf10345cab61d7e3fda4769ab788333d47e7a1b607501fb9dfc880006e80fcd0a7894b7f4e1a4e726106030cecaca582a26d76c4903425cee4238'
             '7783c2b24253a24d650c9955ef818e8c5de097a5413120e42c23fe56303d83ea045eb489cb1fde36a82e7caec344ebafe83756fa43d087937ad4f23d10e01659'
-            '82a868ae1866979aa0282f5bc4dc8c46f407cfb277d4b1cac6cac0d54ef7d7e0b928f79cc8a1bc49421619419293e681f27410040b527c07dca0d6df56c9e98b'
-            'e5529b081edda4dbc354e9d5648da982c210ed8070340816171d3c428886ae614207481ab729559c45cc927c6edcfd1cfde157c84434b737f4b5a163d55c6a29'
-            'c0704d558276d13761b10a82837811217fcb222122a96bd05eecda808b016ba0a8a8b9a1e124323d479a55a218778b29fc34e6dd98d7d5482f14038ce89fad4b'
-            'c8343b8454891d1deeede7e0a76785d653d98c506cdf26b9a1083a2ba16f8012646d80caee7dc4d7f1fa715e9753f5362e9365048b16db8f187369827ab69f01'
+            'ca5221913f4ecfbae290ff86414b435e2db51b13bb11a57f9e4827a857e4090c9e73b7a66206bfb0ea86516fa33d21b26b0dd00114d7fe0ccde68fd26128b95d'
+            'e43a76c372137442259ee9d080877dafd5258e813626d4bc32ce660f6cf5005de7fa683f5624705bbbb0844a4aded4e41bf0b15af0ce0fdc2198d57c57dabe81'
+            '7e5e5522abc3a0a658c2e9c4b1487a4fad7494c54c1b3f6fc17dbb408b7d8601534a9d89e87fde05383ca73623ed69c620a7652fea91241cb779a01618daa711'
             '715e60d1bd6be9e79deb153210c35b797160df536844840335e6742989ca4d422fb2cbc4ac7544b71675413d9a532901483a26eec28f5addb461a3ae20558aa0'
             'cd33e54563792be4e43cf36eca1b56fb1a6bd9df9553af5629904956c9c33752ae7c7919d1260c27b9a78e2bcde7acb08556cbe48d651ad9ed53437b785db31b')
 
