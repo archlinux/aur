@@ -1,41 +1,57 @@
 pkgbase = xmltv
 	pkgdesc = Set of utilities to download tv listings and format them in xml
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xmltv.org/wiki/
 	arch = any
 	license = GPL
-	depends = perl-archive-zip
-	depends = perl-datetime
-	depends = perl-date-manip
+	depends = perl-date-manip>=5.42
 	depends = perl-file-slurp
-	depends = perl-datetime-format-strptime
-	depends = perl-datetime-locale
-	depends = perl-http-cache-transparent
-	depends = perl-http-response-encoding
-	depends = perl-html-tree
-	depends = perl-io-stringy
-	depends = perl-lingua-en-numbers-ordinate
-	depends = perl-lingua-preferred
-	depends = perl-soap-lite
-	depends = perl-term-progressbar
-	depends = perl-term-readkey
-	depends = perl-timedate
-	depends = perl-tk-tablematrix
-	depends = perl-unicode-string
-	depends = perl-unicode-utf8simple
-	depends = perl-www-mechanize
-	depends = perl-xml-dom
-	depends = perl-xml-libxml
-	depends = perl-xml-libxslt
-	depends = perl-xml-simple
-	depends = perl-xml-twig
-	depends = perl-xml-writer
-	depends = perl-parse-recdescent
-	depends = perl-cgi
-	depends = perl-xml-treepp
-	depends = perl-datetime-format-iso8601
 	depends = perl-json
+	depends = perl-libwww>=5.65
+	depends = perl-term-readkey
+	depends = perl-xml-libxml
+	depends = perl-xml-parser>=2.34
+	depends = perl-xml-treepp
+	depends = perl-xml-twig>=3.28
+	depends = perl-xml-writer>=0.60
+	depends = perl-archive-zip
+	depends = perl-cgi
+	depends = perl-data-dump
+	depends = perl-timedate
+	depends = perl-timedate
+	depends = perl-datetime-format-iso8601
+	depends = perl-datetime-format-sqlite
+	depends = perl-datetime-format-strptime
+	depends = perl-datetime-timezone
+	depends = perl-dbd-sqlite
+	depends = perl-dbi
+	depends = perl-digest-sha1
+	depends = perl-file-homedir
+	depends = perl-file-which
+	depends = perl-html-parser
+	depends = perl-html-tree
+	depends = perl-http-cache-transparent
+	depends = perl-http-cookies
+	depends = perl-http-message
+	depends = perl-io-stringy
+	depends = perl-list-moreutils
+	depends = perl-lwp-protocol-https
+	depends = perl-lwp-useragent-determined
+	depends = perl-soap-lite>=0.67
+	depends = perl-time-piece
+	depends = perl-tk
+	depends = perl-tk-tablematrix
+	depends = perl-uri
+	depends = perl-xml-dom
+	depends = perl-xml-libxslt
+	optdepends = perl-file-chdir: testing grabbers
+	optdepends = perl-json-xs: faster JSON handling
+	optdepends = perl-lingua-preferred: helps with multilingual listings
+	optdepends = perl-perlio-gzip: can make tv_imdb a bit faster
+	optdepends = perl-term-progressbar: displays pretty progress bars
+	optdepends = perl-unicode-string: improved character handling in tv_to_latex
+	optdepends = perl-uri-escape-xs: faster URI handling
 	source = xmltv-1.0.0.tar.gz::https://github.com/XMLTV/xmltv/archive/v1.0.0.tar.gz
 	sha256sums = 2dd2cfb3571ca01afb2ddd568d0d6b1a8c5684fd2cbe11729d72aea3a20db5d9
 
