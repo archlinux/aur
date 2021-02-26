@@ -1,7 +1,7 @@
 # Maintainer: Patrick Drechsler <socialcoding at pdrechsler dot de>
 
 pkgname=mobsh-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Smooth git handover during remote mob programming"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('mobsh')
 conflicts=('mobsh' 'mob')
 
 source_x86_64=("$url/releases/download/v${pkgver}/mob_v${pkgver}_linux_amd64.tar.gz")
-md5sums_x86_64=("65415235cbb38a06c9b6c5aa1f541f7d")
+md5sums_x86_64=("6ca7da7943edc09b5c1e097cdec1eefb")
 
 package() {
     install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
