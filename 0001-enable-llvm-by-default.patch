@@ -1,0 +1,66 @@
+From 557c5a6420d2ffe70f569a32ee7417f14e14c567 Mon Sep 17 00:00:00 2001
+From: kevall474 <kevall474@tuta.io>
+Date: Wed, 24 Feb 2021 15:09:34 -0500
+Subject: [PATCH] enable llvm by default
+
+---
+ src/amd/compiler/aco_ir.cpp  | 5 +++++
+ src/amd/vulkan/radv_debug.h  | 1 +
+ src/amd/vulkan/radv_device.c | 3 +++
+ 3 files changed, 9 insertions(+)
+
+diff --git a/src/amd/compiler/aco_ir.cpp b/src/amd/compiler/aco_ir.cpp
+index a258447b662..7c9619d7937 100644
+--- a/src/amd/compiler/aco_ir.cpp
++++ b/src/amd/compiler/aco_ir.cpp
+@@ -47,9 +47,14 @@ static void init_once()
+ {
+    debug_flags = parse_debug_string(getenv("ACO_DEBUG"), aco_debug_options);
+ 
++   debug_flags |= aco::DEBUG_NO_OPT;
++   debug_flags |= aco::DEBUG_NO_SCHED;
++
+    #ifndef NDEBUG
+    /* enable some flags by default on debug builds */
+    debug_flags |= aco::DEBUG_VALIDATE_IR;
++   debug_flags |= aco::DEBUG_NO_OPT;
++   debug_flags |= aco::DEBUG_NO_SCHED;
+    #endif
+ }
+ 
+diff --git a/src/amd/vulkan/radv_debug.h b/src/amd/vulkan/radv_debug.h
+index 2c559d8c125..9383dfe7787 100644
+--- a/src/amd/vulkan/radv_debug.h
++++ b/src/amd/vulkan/radv_debug.h
+@@ -70,6 +70,7 @@ enum {
+ 	RADV_PERFTEST_PS_WAVE_32      = 1 << 5,
+ 	RADV_PERFTEST_GE_WAVE_32      = 1 << 6,
+ 	RADV_PERFTEST_DFSM            = 1 << 7,
++	RADV_PERFTEST_ACO             = 1 << 8,
+ };
+ 
+ bool
+diff --git a/src/amd/vulkan/radv_device.c b/src/amd/vulkan/radv_device.c
+index 9a82094a1ff..6c96e9ce1df 100644
+--- a/src/amd/vulkan/radv_device.c
++++ b/src/amd/vulkan/radv_device.c
+@@ -574,6 +574,7 @@ static const struct debug_control radv_perftest_options[] = {
+ 	{"pswave32", RADV_PERFTEST_PS_WAVE_32},
+ 	{"gewave32", RADV_PERFTEST_GE_WAVE_32},
+ 	{"dfsm", RADV_PERFTEST_DFSM},
++  {"aco", RADV_PERFTEST_ACO},
+ 	{NULL, 0}
+ };
+ 
+@@ -716,6 +717,8 @@ VkResult radv_CreateInstance(
+ 	instance->debug_flags = parse_debug_string(getenv("RADV_DEBUG"),
+ 						   radv_debug_options);
+ 
++  instance->debug_flags |= RADV_DEBUG_LLVM;
++
+ 	const char *radv_perftest_str = getenv("RADV_PERFTEST");
+ 	instance->perftest_flags = parse_debug_string(radv_perftest_str,
+ 						      radv_perftest_options);
+-- 
+2.30.1
+
