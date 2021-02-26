@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201306j
 	pkgdesc = Epson printer driver (EP-906F, EP-806AB, EP-806AW, EP-806AR, EP-306)
 	pkgver = 1.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
