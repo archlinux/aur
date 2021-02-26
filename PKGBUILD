@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.3.6.r0.510a351
+pkgver=1.3.6.r18.4532c25
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -21,57 +21,59 @@ source=('git+https://github.com/evilsocket/opensnitch.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
-	export GOPATH="$srcdir/gopath"
-	go clean -modcache
+  export GOPATH="$srcdir/gopath"
+  go clean -modcache
 
-	cd "$srcdir/${pkgname%-git}"
-	sed -i 's|local/bin|bin|g' "daemon/${pkgname%-git}d.service"
+  cd "$srcdir/${pkgname%-git}"
+  sed -i 's|local/bin|bin|g' "daemon/${pkgname%-git}d.service"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
 
-	pushd daemon
-	export GOPATH="$srcdir/gopath"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
-	go get github.com/golang/protobuf/protoc-gen-go
-	make
-	popd
+  pushd proto
+  export GOPATH="$srcdir/gopath"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
+  export PATH=${PATH}:${GOPATH}/bin
+  go get github.com/golang/protobuf/protoc-gen-go
+  make
+  popd
 
-	# Clean mod cache for makepkg -C
-	go clean -modcache
+  pushd daemon
+  make
+  popd
 
-	pushd proto
-	make
-	popd
+  # Clean mod cache for makepkg -C
+  go clean -modcache
 
-	pushd ui
-	python setup.py build
-	popd
+  pushd ui
+  pyrcc5 -o opensnitch/resources_rc.py opensnitch/res/resources.qrc
+  python setup.py build
+  popd
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	pushd ui
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	popd
+  cd "$srcdir/${pkgname%-git}"
+  pushd ui
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  popd
 
-	install -d "$pkgdir/etc/${pkgname%-git}d/rules"
-	install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
-	install -Dm644 "daemon/${pkgname%-git}d.service" -t \
-		"$pkgdir/usr/lib/systemd/system"
-	install -Dm644 daemon/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
-	install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
-	install -Dm644 "debian/${pkgname%-git}.logrotate" \
-		"$pkgdir/etc/logrotate.d/${pkgname%-git}"
+  install -d "$pkgdir/etc/${pkgname%-git}d/rules"
+  install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
+  install -Dm644 "daemon/${pkgname%-git}d.service" -t \
+    "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 daemon/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
+  install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
+  install -Dm644 "debian/${pkgname%-git}.logrotate" \
+    "$pkgdir/etc/logrotate.d/${pkgname%-git}"
 }
