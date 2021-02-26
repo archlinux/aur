@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-stylus-photo-px660-series
 	pkgdesc = Epson printer driver (Stylus Photo PX660)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
