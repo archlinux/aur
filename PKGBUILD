@@ -53,5 +53,5 @@ package() {
     #    ln -s /usr/share/java/swt.jar "$pkgdir/opt/jameica/lib/swt/linux/swt.jar"
     #fi
     find "$pkgdir/opt/jameica" -type f -exec chmod 644 {} +
-    install -Dm 644 "$srcdir"/jameica.desktop "$pkgdir"/usr/share/applications
+    install -Dm 644 "$srcdir"/jameica.desktop "$pkgdir"/usr/share/applications/jameica.desktop
 }
