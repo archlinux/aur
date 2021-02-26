@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-px-503a-203-series
 	pkgdesc = Epson printer driver (PX-203, PX-503A, PX-603F)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
