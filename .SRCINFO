@@ -1,6 +1,6 @@
 pkgbase = campdown
 	pkgdesc = Bandcamp track and album downloader
-	pkgver = 1.48
+	pkgver = 1.49
 	pkgrel = 1
 	url = https://github.com/catlinman/campdown/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = campdown
 	depends = python-requests
 	depends = python-docopt
 	replaces = python-campdown
-	source = https://files.pythonhosted.org/packages/source/c/campdown/campdown-1.48.tar.gz
-	sha256sums = 8bfad3d42bab05e0d7b3e9c68fe1e589d9fcd498d0d4d7711aa5fc4f9210c432
+	source = campdown-1.49.tar.gz::https://github.com/catlinman/campdown/archive/1.49.tar.gz
+	sha256sums = 08b0271cc96431b4e1c20f6ab8cce21c48886d6e8212a5f9717ff84d2c3694d8
 
 pkgname = campdown
 

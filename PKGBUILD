@@ -1,7 +1,7 @@
 # Maintainer: Jokler <jokler.contact@gmail.com>
 
 pkgname=campdown
-pkgver=1.48
+pkgver=1.49
 pkgrel=1
 pkgdesc="Bandcamp track and album downloader"
 arch=(any)
@@ -10,8 +10,8 @@ replaces=("python-campdown")
 license=(MIT)
 depends=("python-mutagen" "python-requests" "python-docopt")
 makedepends=("python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("8bfad3d42bab05e0d7b3e9c68fe1e589d9fcd498d0d4d7711aa5fc4f9210c432")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/catlinman/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=("08b0271cc96431b4e1c20f6ab8cce21c48886d6e8212a5f9717ff84d2c3694d8")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
