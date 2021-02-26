@@ -1,9 +1,10 @@
 pkgbase = gfeeds
 	pkgdesc = An RSS/Atom feed reader for GNOME
 	pkgver = 0.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gabmus.gitlab.io/gnome-feeds
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = meson
 	makedepends = gobject-introspection

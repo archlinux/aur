@@ -4,9 +4,9 @@
 pkgname=gfeeds
 _pkgname=gnome-feeds
 pkgver=0.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An RSS/Atom feed reader for GNOME'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gabmus.gitlab.io/${_pkgname}"
 license=('GPL3')
 depends=('appstream' 'python-html5lib' 'webkit2gtk' 'python-gobject' 'python-pillow' 'python-feedparser' 'python-listparser' 'python-lxml' 'python-readability-lxml' 'libhandy' 'python-dateutil' 'python-pytz' 'python-beautifulsoup4' 'python-pygments')
