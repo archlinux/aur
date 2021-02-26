@@ -1,0 +1,22 @@
+pkgbase = rqlite-git
+	pkgdesc = A lightweight, distributed relational database, which uses SQLite as its storage engine
+	pkgver = ec2b6a0
+	pkgrel = 1
+	url = http://www.rqlite.com/
+	arch = x86_64
+	arch = aarch64
+	makedepends = go
+	provides = rqlite
+	source = git+https://github.com/rqlite/rqlite.git
+	source = rqlite.service
+	source = rqlite@.service
+	source = rqlite.sysusers
+	source = rqlite.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 9c9ad1d9a625c398dffe70f730c3bcdf43f7bff6ff22c334f5aab5dc3e575367
+	sha256sums = df018e53174b8c31ad57751da6b86cfaa91a1891fc5dd755d0cfc2ec65a5fa04
+	sha256sums = c0132b51d5c28517545fb58ce4aa67b6e860020d662aa8317ecb6aab0264829a
+	sha256sums = 43c1094a6fdd04c18df738fdc85250f0cbcb87b2f8f23320f42f4ca0656f43fc
+
+pkgname = rqlite-git
+

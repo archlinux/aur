@@ -1,0 +1,27 @@
+[Unit]
+Description=rqlite Daemon Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=rqlite
+Group=rqlite
+ExecStart=/usr/bin/rqlited -http-addr 0.0.0.0:4001 -raft-addr 0.0.0.0:4002 -disco-id %i $STATE_DIRECTORY
+Restart=always
+# security
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=yes
+StateDirectory=rqlite
+StateDirectoryMode=0750
+ConfigurationDirectory=rqlite
+ConfigurationDirectoryMode=0750
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
