@@ -1,0 +1,19 @@
+pkgbase = elfparser-git
+	pkgdesc = Provides basic information and static analysis of an ELF binary.
+	pkgver = r7.39d21ca
+	pkgrel = 1
+	url = https://github.com/jacob-baines/elfparser
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	makedepends = gcc
+	depends = boost
+	provides = elfparser-git
+	conflicts = elfparser-git
+	source = elfparser-git::git+https://github.com/jacob-baines/elfparser.git
+	md5sums = SKIP
+
+pkgname = elfparser-git
+
