@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201201w
 	pkgdesc = Epson printer driver (XP-302, XP-303, XP-305, XP-306, XP-402, XP-403, XP-405, XP-406)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
