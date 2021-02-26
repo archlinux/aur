@@ -79,8 +79,8 @@ package()
     
     # Install the systemd service.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}.service ${pkgdir}/usr/lib/systemd/system/
-    systemctl enable bitcoind.service
-    systemctl enable ${_pkgname_lc}.service
+    sudo systemctl enable bitcoind.service
+    sudo systemctl enable ${_pkgname_lc}.service
     
     # Install the documentation.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
