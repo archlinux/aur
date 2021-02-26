@@ -2,7 +2,7 @@
 
 pkgname=gsc
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="All-sky catalog of positions and magnitudes for ~19 million stars and other objects"
 url=""http://gsss.stsci.edu/Catalogs/GSC/GSC1/GSC1.htm
 license=(GPL2)
@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd ${srcdir}
-  for file in $(find N* -type f); do
+  for file in $(find [NS]* -type f); do
     install -v -m 644 -D ${file} "${pkgdir}/usr/share/GSC/${file#source/}"
   done
   install -v -m 755 -D src/gsc.exe "${pkgdir}/usr/share/GSC/bin/gsc"

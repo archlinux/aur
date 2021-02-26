@@ -1,7 +1,7 @@
 pkgbase = gsc
 	pkgdesc = All-sky catalog of positions and magnitudes for ~19 million stars and other objects
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gsss.stsci.edu/Catalogs/GSC/GSC1/GSC1.htm
 	arch = i686
 	arch = x86_64
