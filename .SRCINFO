@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-extensions-sync-git
 	pkgdesc = Sync all extensions and their configurations across all gnome instances
-	pkgver = 10.r1.gf78a112
-	pkgrel = 2
+	pkgver = 10.r4.g631b43a
+	pkgrel = 1
 	url = https://github.com/oae/gnome-shell-extensions-sync
 	install = gnome-shell-extension-extensions-sync.install
 	arch = any
