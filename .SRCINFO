@@ -8,7 +8,7 @@ pkgbase = usb-imager-git
 	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools>=40.9.0
-	depends = dbus
+	depends = dbus-x11
 	depends = udisks2
 	depends = python-importlib_resources
 	depends = python-gobject
