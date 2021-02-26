@@ -1,6 +1,6 @@
 # Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
 pkgname=ovras
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
@@ -15,7 +15,7 @@ optdepends=("dbus: media player support"
             "xorg-server: send keyboard keys"
             "pulseaudio: pulse audio support")
 source=("https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz")
-sha256sums=("4f9fca842d13e939c844c7ed94a14706194254b09f49b2ce5a30e6a7510d62ab")
+sha256sums=("f13ad517845f6837b32e3bc5bca7b2c695957328b31a685129929712d865316b")
 
 build() {
     cd "OpenVR-AdvancedSettings-$pkgver"
@@ -48,10 +48,6 @@ build() {
     else
         echo "Pulse features enabled."
     fi
-
-    # Turn off warnings as errors
-    sed -i 's/QMAKE_CXXFLAGS += -Werror//' build_scripts/qt/compilers/gcc.pri
-    sed -i 's/QMAKE_CXXFLAGS += -Werror//' build_scripts/qt/compilers/clang.pri
 
     qmake PREFIX="$pkgdir/opt/" $_additionalOptions
     make
