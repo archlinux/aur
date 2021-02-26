@@ -48,6 +48,7 @@ package()
     mkdir -p ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/lib/
     mkdir -p ${pkgdir}/usr/lib/systemd/system/
+    mkdir -p ${pkgdir}/etc/systemd/system/multi-user.target.wants/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
     
@@ -74,7 +75,7 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
     # Symlinking run.sh to /usr/bin/${_pkgname_lc}.
-    ln -s ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
+    ln -sf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
     
     # Install the systemd service and enable necessary services.
