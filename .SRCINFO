@@ -1,21 +1,7 @@
 pkgbase = vtflib-git
 	pkgdesc = Library to handle Valve's Texture Format
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/Silverlan/VTFLib
-	arch = any
-	license = GPL
-	makedepends = cmake
-	depends = libtxc_dxtn
-	source = git+https://github.com/panzi/VTFLib.git
-	md5sums = SKIP
-
-pkgname = vtflib-git
-
-pkgbase = vtflib-git
-	pkgdesc = Library to handle Valve's Texture Format
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Silverlan/VTFLib
 	arch = any
 	license = GPL

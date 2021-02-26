@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vtflib-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to handle Valve's Texture Format"
 arch=('any')
 url="https://github.com/Silverlan/VTFLib"
