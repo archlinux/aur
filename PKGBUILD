@@ -4,7 +4,7 @@ _pkgname=NBXplorer
 _pkgname_lc=$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
 
 pkgname=nbxplorer-git
-pkgver=2.1.49.r1.g45819a7
+pkgver=latest_tag
 pkgrel=1
 epoch=
 pkgdesc="A minimalist UTXO tracker for HD wallets."
@@ -27,12 +27,6 @@ source=("git+${url}.git")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
-
-pkgver()
-{
-    cd ${srcdir}/${_pkgname}/
-    printf "%s" "$(git describe --long | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g")"
-}
 
 build()
 {
