@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201212w
 	pkgdesc = Epson printer driver (WF-3010, WF-3520, WF-3530, WF-3540)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
