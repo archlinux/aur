@@ -2,11 +2,9 @@
 
 
 pkgname="emulicious-bin"
-_name="emulicious"
-_exec="emulicious"
 _genericname="Emulator"
 pkgver=2021.01.30
-pkgrel=5
+pkgrel=6
 pkgdesc="Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator"
 # sms is backwards compatible to sg1000
 _mimetype="application/x-gameboy-rom;application/x-gameboy-color-rom;application/x-sms-rom;application/x-sg1000-rom;application/x-gamegear-rom;application/x-msx-rom"
@@ -41,8 +39,8 @@ package() {
   install -Dm644 "${srcdir}/LICENSE-JInput.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-JInput"
   cp -r "${srcdir}/Highlighters/" "${srcdir}/MSX/" "${srcdir}/KeyPresets/" "${pkgdir}/usr/share/${pkgname}/"
   install -Dm644 "${srcdir}/Emulicious.jar" "${srcdir}/WhatsNew.txt" "${srcdir}/Expressions.txt" "${srcdir}/ReadMe.txt" "${srcdir}/"*.ports  "${pkgdir}/usr/share/${pkgname}/"
-  install -Dm755 "${srcdir}/emulicious.sh" "${pkgdir}/usr/bin/${_name}"
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
+  install -Dm755 "${srcdir}/emulicious.sh" "${pkgdir}/usr/bin/emulicious"
+  install -Dm644 "emulicious.desktop" "${pkgdir}/usr/share/applications/emulicious.desktop"
   install -Dm644 "${srcdir}/${pkgname}_256x256.png" "${pkgdir}/usr/share//icons/hicolor/256x256/apps/${pkgname}.png"
   # generate all other icon sizes
   for i in 16 24 32 48 64 72 96 128;do
