@@ -1,7 +1,7 @@
 pkgbase = emacs-icicles
 	pkgdesc = an emacs library that enhances minibuffer completion
 	pkgver = 2020.01.04
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = http://www.emacswiki.org/emacs/Icicles
 	arch = any
@@ -45,8 +45,8 @@ pkgbase = emacs-icicles
 	sha256sums = 1511dd455ea7304d652a5c74f96c832bd4edbec8059fd1f72936976438a23457
 	sha256sums = f87478240b50b2d92f413ef80bbac31dc9751713f6e91298f9c1440495ac3333
 	sha256sums = 0a40d6a7e8387e021806d1a91d1d652da0c03cd84d9ba513ecb8f963ead5399b
-	sha256sums = a9dc54af6b0ee0fac5c398dd62eb6531a50efbcd8f393ad004e2f3ce7f910fe5
-	sha256sums = bee8da5d06615b92d2dbc917564f34dbf532e09eec631dca9c535d81623766b3
+	sha256sums = d96fc7b00b458dc474938da46a239debd143e60b2bd43da92a79ff8f9d85d2d2
+	sha256sums = 5eb32ec4fc4fcaea69493c71b56fb4ff49b17463a0c7b9ddbb7217f17635ad91
 	sha256sums = 2ada538c479057f27487fbdf91d026365d6fc781b8cdc35bc9fe70c87398b926
 	sha256sums = 711f49803e9f74e4ddda7de8e470b5f83de3a0ab7c57b6d250db186701e99989
 
