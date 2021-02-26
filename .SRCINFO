@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rqt-plot
 	pkgdesc = ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D plot using different plotting backends.
-	pkgver = 0.4.9
+	pkgver = 0.4.13
 	pkgrel = 1
 	url = https://wiki.ros.org/rqt_plot
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = ros-melodic-rqt-plot
 	depends = python-rospkg
 	depends = python-matplotlib
 	depends = python-numpy
-	source = ros-melodic-rqt-plot-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_plot/archive/0.4.9.tar.gz
-	sha256sums = f133af1febcb43d82214508a3a6eb51fdf848fe5353f3c6c7f5825cea3f84ead
+	source = ros-melodic-rqt-plot-0.4.13.tar.gz::https://github.com/ros-visualization/rqt_plot/archive/0.4.13.tar.gz
+	sha256sums = 137f2b2c4751074b7d2ff0556e94c4ace6fe7e51f0392fbea985cad6e00e544a
 
 pkgname = ros-melodic-rqt-plot
 
