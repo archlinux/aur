@@ -89,7 +89,7 @@ _major=5.11
 _branch=5.x
 xanmod=2
 pkgrel=1
-pkgdesc='Linux Xanmod'
+pkgdesc='Linux Xanmod Cacule UKSM'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 

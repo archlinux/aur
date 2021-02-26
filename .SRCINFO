@@ -1,5 +1,5 @@
 pkgbase = linux-manjaro-xanmod-cacule-uksm
-	pkgdesc = Linux Xanmod
+	pkgdesc = Linux Xanmod Cacule UKSM
 	pkgver = 5.11.1
 	pkgrel = 1
 	url = http://www.xanmod.org/
