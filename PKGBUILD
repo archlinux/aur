@@ -82,7 +82,7 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
-pkgbase=linux-manjaro-xanmod-uksm
+pkgbase=linux-manjaro-xanmod-cacule-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.11.1
 _major=5.11

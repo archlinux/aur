@@ -1,4 +1,4 @@
-pkgbase = linux-manjaro-xanmod-uksm
+pkgbase = linux-manjaro-xanmod-cacule-uksm
 	pkgdesc = Linux Xanmod
 	pkgver = 5.11.1
 	pkgrel = 1
@@ -32,7 +32,7 @@ pkgbase = linux-manjaro-xanmod-uksm
 	sha256sums = 272a4ea69af64f5978015483d8c2d47e58572dd0aa87d8dd1a90cc4284e6b2f4
 	sha256sums = 6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc
 
-pkgname = linux-manjaro-xanmod-uksm
+pkgname = linux-manjaro-xanmod-cacule-uksm
 	pkgdesc = The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support). Ashmem and binder are enabled
 	depends = coreutils
 	depends = linux-firmware
@@ -47,7 +47,7 @@ pkgname = linux-manjaro-xanmod-uksm
 	conflicts = 
 	replaces = 
 
-pkgname = linux-manjaro-xanmod-uksm-headers
+pkgname = linux-manjaro-xanmod-cacule-uksm-headers
 	pkgdesc = Header files and scripts for building modules for linux-manjaro-xanmod kernel
 	provides = 
 	conflicts = 
