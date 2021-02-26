@@ -45,7 +45,6 @@ build()
 package()
 {
     # Assure that the folders exist.
-    mkdir -p ${pkgdir}/etc/systemd/system/multi-user.target.wants/
     mkdir -p ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/lib/
     mkdir -p ${pkgdir}/usr/lib/systemd/system/
