@@ -5,7 +5,6 @@ pkgbase = qweather-git
 	url = https://github.com/bit-shift-io/qweather
 	arch = any
 	license = GPL3
-	makedepends = binutils
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-svg
