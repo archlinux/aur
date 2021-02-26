@@ -1,10 +1,11 @@
 pkgbase = audiobook-git
 	pkgdesc = A simple audio book reader. Written in QT/QML and C++.
-	pkgver = r118.3406c49
+	pkgver = r122.deb9c63
 	pkgrel = 1
 	url = https://github.com/bit-shift-io/audiobook
 	arch = any
 	license = GPL3
+	makedepends = binutils
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
