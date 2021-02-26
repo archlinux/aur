@@ -1,10 +1,11 @@
 pkgbase = qweather-git
 	pkgdesc = A simple weather application. Using BOM Australia weather provider. Written in QT/QML and C++.
-	pkgver = r76.e81d73d
+	pkgver = r81.a02063b
 	pkgrel = 1
 	url = https://github.com/bit-shift-io/qweather
 	arch = any
 	license = GPL3
+	makedepends = binutils
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-svg
