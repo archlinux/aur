@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-stylus-photo-px810fw-series
 	pkgdesc = Epson printer driver (Artisan 710, 810 / Stylus Photo PX710W, PX810FW, TX710W, TX810FW)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
