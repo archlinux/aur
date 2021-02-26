@@ -75,13 +75,13 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
     # Symlinking run.sh to /usr/bin/${_pkgname_lc}.
-    ln -sfi ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
+    ln -sf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
     
     # Install the systemd service and enable necessary services.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}.service ${pkgdir}/usr/lib/systemd/system/
-    ln -sfi ${pkgdir}/usr/lib/systemd/system/bitcoind.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/
-    ln -sfi ${pkgdir}/usr/lib/systemd/system/${_pkgname_lc}.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/
+    ln -sf ${pkgdir}/usr/lib/systemd/system/bitcoind.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/
+    ln -sf ${pkgdir}/usr/lib/systemd/system/${_pkgname_lc}.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/
     
     # Install the documentation.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
