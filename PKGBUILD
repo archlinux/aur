@@ -39,7 +39,7 @@ license=('MIT')
 makedepends=('meson' 'ninja' 'bison' 'flex' 'python' 'python-mako' 'python-appdirs' 'python-evdev' 'lua' 'polly' 'valgrind'
              'xorgproto' 'wayland-protocols' 'glslang' 'libclc' 'elfutils' 'libarchive' 'libconfig' 'compiler-rt' 'libxcb'
              'wayland' 'libxml2' 'libx11' 'libvdpau' 'libelf' 'libglvnd' 'ncurses' 'libva' 'libxrandr' 'expat' 'libdrm' 'libxvmc'
-             'libepoxy' 'libxv' 'libxshmfence' 'libxxf86vm' 'libxdamage' 'zstd' 'lm_sensors' 'libunwind' 'vulkan-icd-loader' 'ocl-icd'
+             'libepoxy' 'libxv' 'libxshmfence' 'libxxf86vm' 'libxdamage' 'zstd' 'lm_sensors' 'libunwind' 'vulkan-icd-loader'
              'llvm' 'clang' 'llvm-libs' 'glibc' 'gcc' 'gcc-libs' 'libomxil-bellagio')
 depends=('libdrm' 'libxcb' 'wayland' 'python' 'libclc' 'clang' 'libx11' 'libxshmfence' 'zstd' 'libelf' 'llvm-libs' 'expat' 'libxxf86vm'
          'libxdamage' 'libomxil-bellagio' 'libunwind' 'lm_sensors' 'libglvnd' 'vulkan-icd-loader' 'llvm' 'clang' 'gcc-libs' 'gcc'

@@ -46,7 +46,6 @@ pkgbase = mesa-stable
 	makedepends = lm_sensors
 	makedepends = libunwind
 	makedepends = vulkan-icd-loader
-	makedepends = ocl-icd
 	makedepends = llvm
 	makedepends = clang
 	makedepends = llvm-libs
