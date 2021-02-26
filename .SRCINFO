@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-nx420
 	pkgdesc = Epson printer driver (ME Office 560W / Stylus NX420, SX420W, TX420W, SX425W)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
