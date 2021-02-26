@@ -16,7 +16,7 @@ makedepends=(
 )
 
 depends=(
-  'dbus'
+  'dbus-x11'
   'udisks2'
   'python-importlib_resources'
   'python-gobject'
