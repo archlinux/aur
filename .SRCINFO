@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201202w
 	pkgdesc = Epson printer driver (XP-102, XP-103, XP-202, XP-203, XP-206, XP-205, XP-207, XP-30, XP-33)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
