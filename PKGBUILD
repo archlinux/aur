@@ -44,6 +44,7 @@ build()
 package()
 {
     # Assure that the folders exist.
+    mkdir -p ${pkgdir}/etc/systemd/system/multi-user.target.wants/
     mkdir -p ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/lib/
     mkdir -p ${pkgdir}/usr/lib/systemd/system/
@@ -66,15 +67,20 @@ package()
     [Install]
     WantedBy=multi-user.target" > ${srcdir}/${_pkgname}/${_pkgname}.service
     
+    # Modify run.sh to state the absolute path of the .csproj.
+    echo -e "#!/bin/bash
+    dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- $@" > ${srcdir}/${_pkgname}/run.sh
+    
     # Put the installation at the right place.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
     # Symlinking run.sh to /usr/bin/${_pkgname}.
-    ln -rTsf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
+    ln -sf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname}
     
-    # Install the systemd service.
+    # Install the systemd service and enable necessary services.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.service ${pkgdir}/usr/lib/systemd/system/
+    ln -sf ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/
     
     # Install the documentation.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
