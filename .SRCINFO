@@ -1,6 +1,6 @@
 pkgbase = coinmon
 	pkgdesc = Cryptocurrency price monitoring tool
-	pkgver = 0.0.27
+	pkgver = 0.0.28
 	pkgrel = 2
 	url = https://github.com/bichenkk/coinmon
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = coinmon
 	makedepends = npm
 	depends = nodejs
 	depends = jq
-	noextract = coinmon-0.0.27.tgz
-	source = https://registry.npmjs.org/coinmon/-/coinmon-0.0.27.tgz
-	sha512sums = 68ec43cb7a0052ee682a98dbf99ad080eb93fb204fc5b68e73808c2c3f9cf2e2b20db02875fff45de7b9df156286a790b63bdd097b33a009cc36d2a277efccac
+	noextract = coinmon-0.0.28.tgz
+	source = https://registry.npmjs.org/coinmon/-/coinmon-0.0.28.tgz
+	sha512sums = 8c046ac23d2ec937db72c4ebdc80e868623a657515f1ef2a563c3e2da441ba3be382c896ca92707b37b9219cb4fec8cd10a969b7007b1838e6ba986d0739e014
 
 pkgname = coinmon
 

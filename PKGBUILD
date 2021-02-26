@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=coinmon
-pkgver=0.0.27
+pkgver=0.0.28
 pkgrel=2
 pkgdesc='Cryptocurrency price monitoring tool'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs' 'jq')
 makedepends=('npm')
 source=("https://registry.npmjs.org/coinmon/-/coinmon-$pkgver.tgz")
 noextract=("${source[@]##*/}")
-sha512sums=('68ec43cb7a0052ee682a98dbf99ad080eb93fb204fc5b68e73808c2c3f9cf2e2b20db02875fff45de7b9df156286a790b63bdd097b33a009cc36d2a277efccac')
+sha512sums=('8c046ac23d2ec937db72c4ebdc80e868623a657515f1ef2a563c3e2da441ba3be382c896ca92707b37b9219cb4fec8cd10a969b7007b1838e6ba986d0739e014')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production coinmon-$pkgver.tgz
