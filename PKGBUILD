@@ -1,7 +1,7 @@
-# Maintainer: Daniel Borowski <hurricanepootis@protonmail.com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=minecraft-legacy-launcher
 pkgver=1.6.93.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Legacy Java Launcher"
 arch=(x86_64)
 url="https://bugs.mojang.com/browse/MCL-11993"

@@ -1,7 +1,7 @@
 pkgbase = minecraft-legacy-launcher
 	pkgdesc = Minecraft Legacy Java Launcher
 	pkgver = 1.6.93.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bugs.mojang.com/browse/MCL-11993
 	arch = x86_64
 	license = All rights reserved
@@ -20,7 +20,7 @@ pkgbase = minecraft-legacy-launcher
 	md5sums = f2171107e6b1f8a3483c5e3ed5d1229e
 	md5sums = cd561eab1fd1fddae58fb8205a00f54f
 	md5sums = 0b104e3049346908bf559cab602071e3
-	md5sums = 614d4443cc2c9ae7b451687cf6666faf
+	md5sums = 8e597d8b7aece38a9ee3bb7cf965a31d
 
 pkgname = minecraft-legacy-launcher
 
