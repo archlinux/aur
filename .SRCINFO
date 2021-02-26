@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201105w
 	pkgdesc = Epson printer driver (Stylus NX330, NX430, SX430W, SX435W, SX440W, SX445W, TX430W, TX435W)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
