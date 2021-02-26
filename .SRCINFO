@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-ep-803a-903f-series
 	pkgdesc = Epson printer driver (EP-803A, EP-803AW, EP-903A, EP-903F, EP-774A)
 	pkgver = 1.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
