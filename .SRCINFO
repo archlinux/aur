@@ -1,0 +1,38 @@
+pkgbase = linux-chromium44
+	pkgdesc = Chromium OS 4.4
+	pkgver = 4.4.250
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/third_party/kernel
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = git+https://chromium.googlesource.com/chromiumos/third_party/kernel#branch=release-R89-13729.B-chromeos-4.4
+	source = config
+	source = sphinx-workaround.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-chromium44
+	pkgdesc = The Chromium OS 4.4 kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	replaces = virtualbox-guest-modules-arch
+
+pkgname = linux-chromium44-headers
+	pkgdesc = Headers and scripts for building modules for the Chromium OS 4.4 kernel
+
