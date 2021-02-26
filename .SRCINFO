@@ -1,13 +1,12 @@
 pkgbase = boinc-manager-web-git
 	pkgdesc = Web Client for BOINC
 	pkgver = r163.24e3847
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adamradocz/boinc-manager
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = dotnet-sdk>=3
-	makedepends = yarn
 	makedepends = git
 	depends = aspnet-runtime
 	source = boinc-manager::git+https://github.com/adamradocz/boinc-manager

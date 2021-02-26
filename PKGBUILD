@@ -2,12 +2,12 @@
 
 pkgname=(boinc-manager-web-git)
 pkgver=r163.24e3847
-pkgrel=2
+pkgrel=3
 pkgdesc='Web Client for BOINC'
 arch=('x86_64' 'aarch64')
 url='https://github.com/adamradocz/boinc-manager'
 license=('GPL3')
-makedepends=('dotnet-sdk>=3' 'yarn' 'git')
+makedepends=('dotnet-sdk>=3' 'git')
 depends=('aspnet-runtime')
 source=("boinc-manager::git+https://github.com/adamradocz/boinc-manager"
         'boinc-manager-web.service'
@@ -25,22 +25,12 @@ pkgver() {
 
 build(){
 	cd boinc-manager/BoincManagerWeb
-
-	# yarn install
+	# Fetch dependencies
 	dotnet restore BoincManagerWeb.csproj
-
 	# Disable dotnet telemetry
 	export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
+	# Build the thing
 	dotnet publish "BoincManagerWeb.csproj" -c Release --no-restore -o "$PWD/publish"
-	#dotnet build --configuration Release
-	# Ideally, this would be run in package() with the --output variable pointing
-	# to "$pkgdir"/usr/lib/jellyfin, but this step fails in fakeroot.
-	# The makepkg output looks like
-	#   Restore completed in 56.84 ms for /aur/jellyfin-git/src/jellyfin/Jellyfin.Server/Jellyfin.Server.csproj.
-	#   ==> ERROR: A failure occurred in package().
-	# without indicating any sort 
-	#dotnet publish --configuration Release --output "$PWD"/publish
 	# Clean up the runtimes folder (keep linux-*)
 	rm -rfv publish/runtimes/{alpine-*,osx*,tizen-*,win*}
 }
