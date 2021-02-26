@@ -1,0 +1,20 @@
+#!/hint/bash
+
+post_install() {
+    echo "You can launch & stop the SSH-Daemon via the desktop entry."
+    echo "Permission is checked through group membership in the sys group."
+    echo "You can add yourself with:"
+    echo "gpasswd -a YOURNAME sys"
+    echo ""
+    post_upgrade
+}
+
+post_upgrade() {
+    if systemctl is-enabled sshd.service --quiet
+    then
+        echo "The sshd service is currently enabled and thus started at boot."
+        echo "The purpose of this package is to start it on demand, consider disabling it with:"
+        echo "systemctl disable sshd"
+        echo ""
+    fi
+}

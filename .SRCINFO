@@ -1,0 +1,29 @@
+pkgbase = sshd-launcher
+	pkgdesc = sudoers & desktop file to launch sshd on demand
+	pkgver = 1
+	pkgrel = 1
+	install = sshd-launcher.install
+	arch = any
+	license = GPL
+	depends = sudo
+	depends = openssh
+	depends = systemd
+	source = sshd.sudoers
+	source = sshd.desktop
+	source = icon-16.svg::https://raw.githubusercontent.com/Fatih20/easyssh/icon-redesign/data/icons/16/com.github.muriloventuroso.easyssh.svg
+	source = icon-24.svg::https://raw.githubusercontent.com/Fatih20/easyssh/icon-redesign/data/icons/24/com.github.muriloventuroso.easyssh.svg
+	source = icon-32.svg::https://raw.githubusercontent.com/Fatih20/easyssh/icon-redesign/data/icons/32/com.github.muriloventuroso.easyssh.svg
+	source = icon-48.svg::https://raw.githubusercontent.com/Fatih20/easyssh/icon-redesign/data/icons/48/com.github.muriloventuroso.easyssh.svg
+	source = icon-64.svg::https://raw.githubusercontent.com/Fatih20/easyssh/icon-redesign/data/icons/64/com.github.muriloventuroso.easyssh.svg
+	source = icon-128.svg::https://raw.githubusercontent.com/Fatih20/easyssh/icon-redesign/data/icons/128/com.github.muriloventuroso.easyssh.svg
+	sha256sums = 53b7556e84182119ba1a549b3dc5bb10e943e862afbc7947bc8f12cf8ee4152a
+	sha256sums = 90d25814121bc7c0902612a40046ae7013a06cf44c6e10b643fa66e33cbb111d
+	sha256sums = b76a6c3f9e54a339e549aa99adffb9ecf033bb9b53b29397c4ee4be4c2634808
+	sha256sums = b70c81698b988f31d68eeeb3b5b84c8ea0ea71df38976dabd358fc5dd6538642
+	sha256sums = f6357aae89abae45453aa0e86326d9e98b485b27f9366a326193152b0139d706
+	sha256sums = 49a34642d55efecbc44587aaa430abb6aa4d1f3985ab3a07296a6af3ece383eb
+	sha256sums = 11f6f56090d1efe41bc46e3ebfa1dc5c67e7903d873ea2e737ae6bbca7b9ad2b
+	sha256sums = c55b5869b2cb949587229ab3ccef190bc543124de7e333741612eb47c74960aa
+
+pkgname = sshd-launcher
+

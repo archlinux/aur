@@ -1,0 +1,30 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SSH-Daemon
+Name[de]=SSH-Dämon
+GenericName=Allow Remote Shell Access
+GenericName[de]=Fernzugriff per Terminal gestatten
+Comment=Allow others to access your computer via a terminal
+Comment[de]=Anderen Fernzugriff in Form eines Terminal gestatten
+Icon=sshd-launcher
+Exec=/usr/bin/sudo /usr/bin/systemctl start sshd.service
+StartupNotify=false
+Terminal=false
+Categories=System;
+Actions=Stop;Restart;Reload
+
+[Desktop Action Stop]
+Name=Stop SSH-Daemon
+Name[de]=SSH-Dämon beenden
+Exec=/usr/bin/sudo /usr/bin/systemctl stop sshd.service
+
+[Desktop Action Restart]
+Name=Restart SSH-Daemon
+Name[de]=SSH-Dämon neu starten
+Exec=/usr/bin/sudo /usr/bin/systemctl restart sshd.service
+
+[Desktop Action Reload]
+Name=Reload SSH-Daemon
+Name[de]=Konfiguration neu einlesen
+Exec=/usr/bin/sudo /usr/bin/systemctl reload sshd.service

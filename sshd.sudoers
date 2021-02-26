@@ -1,0 +1,11 @@
+# allow starting SSHD on demand (instead of letting it run all the time)
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl start sshd
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl start sshd.service
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl stop sshd
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl stop sshd.service
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl restart sshd
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl restart sshd.service
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl reload sshd
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl reload sshd.service
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl reload-or-restart sshd
+%sys ALL=(root)  NOPASSWD: /usr/bin/systemctl reload-or-restart sshd.service
