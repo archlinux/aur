@@ -1,0 +1,4 @@
+amfora-favicons/
+pkg/
+src/
+*.pkg.tar.zst

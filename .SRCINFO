@@ -1,0 +1,16 @@
+pkgbase = amfora-favicons-git
+	pkgdesc = Terminal browser for the Gemini protocol
+	pkgver = 1.8.0.r7.ge7c59f1
+	pkgrel = 1
+	url = https://github.com/makeworld-the-better-one/amfora
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	provides = amfora
+	conflicts = amfora
+	source = git+https://github.com/lovetocode999/amfora-favicons.git
+	md5sums = SKIP
+
+pkgname = amfora-favicons-git
+
