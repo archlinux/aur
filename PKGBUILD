@@ -1,8 +1,8 @@
 # Maintainer: Mohammad Abdolirad <m.abdolirad@gmail.com>
 
 pkgname=wait4x
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Waiting for a port to enter into specify state"
 arch=('x86_64' 'x86' 'aarch64' 'armhf' 'ppc64le' 's390x' 'armv7')
 url="https://github.com/atkrad/wait4x"
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atkrad/wait4x/archive/v${pkgver}.tar.gz")
-sha256sums=('50add18f5e726160ae7656d71b9ed736d9ff386bc0b6fe95824e00359eeb52ff')
+sha256sums=('45b6249fb3dddb516e1d8ae7e08f5b56cf3f5caada1631aaac40c3f695bb6f6b')
 
 build() {
 	local _commit
