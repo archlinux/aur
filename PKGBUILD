@@ -1,14 +1,14 @@
 pkgname=smartied
 pkgver=0.2
-pkgrel=9
+pkgrel=10
 arch=('x86_64')
 url="https://cgit.ctu.cx/smartied/"
 license=( 'GPL-3' )
 depends=( 'glibc' 'libmodbus' )
 makedepends=( 'nim' 'nimble' 'git' )
-_commit="3628a20c097af535c784b0f4debed86e800a0c82"
+_commit="2b880d01e41a3db58a807890eb402d15e631e342"
 source=("${pkgname}-${_commit}.tar.gz::https://cgit.ctu.cx/${pkgname}/snapshot/${pkgname}-${_commit}.tar.gz")
-sha256sums=('7f39aaa97394b82f68b7cb5c0ba9cc55ebe8a308faf7fe7d4f59a15b6e70b682')
+sha256sums=('b247be285cbe71b160090ed85698673493be6b1b8d576101d2e5e66fd7bad50e')
 
 build() {
   cd "$srcdir/${pkgname}-${_commit}/"
