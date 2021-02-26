@@ -21,7 +21,7 @@ pkgbase = cairo-git
 	depends = glib2
 	depends = pixman
 	provides = cairo
-	conflicts = lib32-cairo
+	conflicts = cairo
 	source = git+https://gitlab.freedesktop.org/cairo/cairo.git
 	sha256sums = SKIP
 

@@ -14,7 +14,7 @@ depends=(lzo zlib libpng fontconfig freetype2 libx11 libxext libxrender libxcb
          glib2 pixman)
 makedepends=(valgrind git meson)
 provides=(cairo)
-conflicts=(lib32-cairo)
+conflicts=(cairo)
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git")
 sha256sums=('SKIP')
 
@@ -27,7 +27,7 @@ build() {
   arch-meson cairo build \
     -D spectre=disabled \
     -D tee=enabled \
-    -D quartz=disable \
+    -D quartz=disabled \
     -D tests=disabled
   meson compile -C build
 }
