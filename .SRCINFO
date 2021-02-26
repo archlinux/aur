@@ -1,0 +1,15 @@
+pkgbase = pem-heart-signature
+	pkgdesc = Software for digitally signing and verifying files with CenCert qualified certificate
+	pkgver = 3.9.13.25
+	pkgrel = 1
+	url = https://www.cencert.pl/do-pobrania/oprogramowanie-do-podpisu/
+	arch = x86_64
+	license = proprietary
+	depends = ncurses5-compat-libs
+	depends = ccid
+	depends = opensc
+	source = https://www.cencert.pl/wp-content/software/PH-3.9.13.25.tgz
+	sha256sums = 52c22ab0d8ac5336aec5ad088ac9b589e74055a0a563041187472a52ec2658a8
+
+pkgname = pem-heart-signature
+
