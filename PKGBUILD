@@ -10,17 +10,21 @@ arch=(x86_64)
 license=(custom)
 url="https://www.runescape.com/"
 depends=(
-    cairo
-    gcc-libs
-    gdk-pixbuf2
-    gtk2
-    libcap
-    libsm
-    libx11
-    libxxf86vm
-    openssl
-    pango
-    sdl2
+    cairo       # libcairo2
+    gcc-libs    # libgcc1
+    gdk-pixbuf2 # libgdk-pixbuf2.0-0
+    glib2       # libglib2.0-0
+    glibc       # libc6
+    gtk2        # libgtk2.0-0
+    libcap      # libcap2-bin
+    libglvnd    # libopengl0, libegl1
+    libsm       # libsm6
+    libx11      # libx11-6
+    libxxf86vm  # libxxf86vm1
+    openssl     # libssl1.1
+    pango       # libpango-1.0-0, libpangocairo-1.0-0
+    sdl2        # libsdl2-2.0-0
+    zlib        # zlib1g
 )
 source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
         "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
