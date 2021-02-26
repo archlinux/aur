@@ -1,5 +1,5 @@
 pkgbase = gtk3-no_deadkeys_underline
-	pkgdesc = Like gtk3 in extra but with a patch to disable dead keys having and underline below them while typing
+	pkgdesc = Like gtk3 in extra but with a patch to disable dead keys having an underline below them while typing
 	pkgver = 3.24.26
 	pkgrel = 1
 	epoch = 1
