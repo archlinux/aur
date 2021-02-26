@@ -1,6 +1,6 @@
 # Maintainer: 苏业钦 <hougelangley1987@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux510
+# https://gitlab.manjaro.org/packages/core/linux511
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -28,7 +28,7 @@
 ## 从我个人的使用情况上来看，选择 native 其实比针对性的选择处理器代号带来的性能提升更加明显，在这里而我推荐大家选择42
 ## 默认我给大家已经选择好了
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=42
+  _microarchitecture=99
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -59,9 +59,10 @@ fi
 ## Set variable "use_ns" to: n to disable (stock Xanmod)
 ##                           y to enable (stock Archlinux)
 ## 这里我不知道为什么作者默认选择 disable，因为这个功能不选择不少私有软件的无法启动的，比方说 Skype 和统信的微信，推荐大家默认启用
-if [ -z ${use_ns+x} ]; then
-  use_ns=y
-fi
+#if [ -z ${use_ns+x} ]; then
+#  use_ns=y
+#fi
+## 这个补丁已经没有用了
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -81,18 +82,18 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
-pkgbase=linux-manjaro-xanmod-cacule-uksm
+pkgbase=linux-manjaro-xanmod-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.10.16
-_major=5.10
+pkgver=5.11.1
+_major=5.11
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="e4a38645e668890a6b8e0df893a27a36e6c711d4" # 5.10.16-1
+__commit="2baf9050c4d9887fcde0d015811f81059c215959" # 5.11.1-1
 
 license=(GPL2)
 makedepends=(
@@ -102,17 +103,17 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux510-${__commit}.tar.gz"
+        "https://gitlab.manjaro.org/packages/core/linux511/-/archive/${__commit}/linux511-${__commit}.tar.gz"
         '0002-UKSM.patch')
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12'
-            'e1c108a65a34c1ed2474a8296a517025fcb26c018bf1b4c02bc12b42487de000'
-            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            '27e38a35e3ac088ce368027f612a18ae88abd320f1f5d1f32425869e6bcfa2a0'
-            '9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a') 
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
+            'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
+            'ef0f0d9bc504a77c7e11c07899b12193854bafaa8c8354ab08e6005bf3b68e7f'
+            'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
+            '272a4ea69af64f5978015483d8c2d47e58572dd0aa87d8dd1a90cc4284e6b2f4'
+            '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc') 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -161,14 +162,15 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux510-$__commit/0103-futex.patch  # remove conflicting one
+  rm ../linux511-$__commit/0103-futex.patch  # remove conflicting one 这个补丁已经有了
+  rm ../linux511-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch  # remove Reversed (or previously applied) patch detected!  Skipping patch. 这个补丁已经没有用了。
   local _patch
-  for _patch in ../linux510-$__commit/*; do
+  for _patch in ../linux511-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux510-$__commit/$_patch"
+      patch -Np1 < "../linux511-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux510-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux511-$__commit/0513-bootsplash.gitpatch"
   scripts/config --enable CONFIG_BOOTSPLASH
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -195,10 +197,10 @@ prepare() {
     scripts/config --enable CONFIG_CACHY_SCHED
   fi
 
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  fi
+  #if [ "$use_ns" = "n" ]; then
+  #  msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+  #  scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  #fi
     
   msg2 "add anbox support"
   scripts/config --enable CONFIG_ASHMEM
