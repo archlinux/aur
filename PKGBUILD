@@ -14,7 +14,7 @@ _buildver=${_prerelease}_${_buildno}
 
 
 # upstream git commit
-_commit="b0218262a972"
+_commit="b0cee4e62f50"
 # use the first 7 digits for the Arch build version
 _commit=$(echo ${_commit} | cut -c1-7)
 
@@ -24,7 +24,7 @@ pkgver=${_majorver}_${_commit}
 
 pkgrel=1
 # must stick to use epoch as the old upstream broke version comparisons
-epoch=58
+epoch=59
 
 # Virtual threads (fibers) and continuations for the JVM
 # Early-Access JVM prototype - don't use in production
@@ -52,7 +52,7 @@ provides=(
 #source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
 source=("https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/${epoch}/jdk-${_majorver}-loom-linux.tar.gz")
 
-sha256sums=('5443579dcba7def5edd64f25fb67a8bba4581f6f1239e888a5caf595b8a681fc')
+sha256sums=('5f6b15d80bbeaa27c2f4d1b27b7da3108a4be6c3f190769328c80bc468550baf')
 
 _eaname=java-openjdk-loom-ea
 _jvmdir=/usr/lib/jvm/${_eaname}
