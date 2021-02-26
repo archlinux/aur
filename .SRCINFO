@@ -1,0 +1,36 @@
+pkgbase = lua-luaopus
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jprjr/luaopus
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = opus
+	source = https://github.com/jprjr/luaopus/releases/download/v1.0.0/luaopus-1.0.0.tar.gz
+	md5sums = 3d20560275bd713da0d0da5736c75c64
+
+pkgname = lua-luaopus
+	pkgdesc = Lua bindings for libFLAC
+	depends = opus
+	depends = lua
+
+pkgname = lua51-luaopus
+	pkgdesc = Lua bindings for libFLAC for Lua 5.1
+	depends = opus
+	depends = lua51
+
+pkgname = lua52-luaopus
+	pkgdesc = Lua bindings for libFLAC for Lua 5.2
+	depends = opus
+	depends = lua52
+
+pkgname = lua53-luaopus
+	pkgdesc = Lua bindings for libFLAC for Lua 5.3
+	depends = opus
+	depends = lua53
+
