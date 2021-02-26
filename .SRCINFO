@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros-control-boilerplate
 	pkgdesc = ROS - Simple simulation interface and template for setting up a hardware interface for ros_control.
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/davetcoleman/ros_control_boilerplate
 	arch = i686
 	arch = x86_64
@@ -40,8 +40,8 @@ pkgbase = ros-melodic-ros-control-boilerplate
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-controller-manager
 	depends = ros-melodic-trajectory-msgs
-	source = ros-melodic-ros-control-boilerplate-0.5.0.tar.gz::https://github.com/PickNikRobotics/ros_control_boilerplate/archive/0.5.0.tar.gz
-	sha256sums = dbb892aa54b2457763ee2d5457cc21cb4e202dbc3e3a0cf7f14cc31f08f72562
+	source = ros-melodic-ros-control-boilerplate-0.5.1.tar.gz::https://github.com/PickNikRobotics/ros_control_boilerplate/archive/0.5.1.tar.gz
+	sha256sums = 7f513e48d5a8fb97eea86cfe4bb5a3e163f4fbc3072e171aba6a2d23612437e6
 
 pkgname = ros-melodic-ros-control-boilerplate
 
