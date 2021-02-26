@@ -7,7 +7,7 @@ pkgbase = qvtf-git
 	license = GPL
 	makedepends = cmake
 	depends = libtxc_dxtn
-	depends = vtflib-git
+	depends = libvtflib-git
 	source = git+https://github.com/HurricanePootis/qvtf.git
 	md5sums = SKIP
 
