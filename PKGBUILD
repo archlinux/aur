@@ -75,7 +75,7 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
     # Symlinking run.sh to /usr/bin/${_pkgname_lc}.
-    ln -sf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
+    ln -sfT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
     
     # Install the systemd service.
