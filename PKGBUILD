@@ -9,7 +9,7 @@
 _srcname=dash-to-dock
 pkgname=gnome-shell-extension-dash-to-dock-git
 pkgver=69.r11.g7a2c87b
-pkgrel=2
+pkgrel=3
 pkgdesc="move the dash out of the overview transforming it in a dock"
 arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
@@ -37,5 +37,5 @@ build() {
 package() {
   cd "${_srcname}"
   make
-  make install
+  make DESTDIR=${pkgdir} install
 }
