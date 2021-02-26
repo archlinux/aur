@@ -1,0 +1,12 @@
+[Unit]
+Description=Web Client for BOINC
+After=network.target
+
+[Service]
+User=boinc-manager-web
+ExecStart=/usr/bin/dotnet /usr/lib/boinc-manager-web/BoincManagerWeb.dll
+Restart=on-abort
+TimeoutSec=20
+
+[Install]
+WantedBy=multi-user.target

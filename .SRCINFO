@@ -1,0 +1,22 @@
+pkgbase = boinc-manager-web
+	pkgdesc = Web Client for BOINC
+	pkgver = r163.24e3847
+	pkgrel = 1
+	url = https://github.com/adamradocz/boinc-manager
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk>=3
+	makedepends = yarn
+	makedepends = git
+	depends = aspnet-runtime
+	source = boinc-manager::git+https://github.com/adamradocz/boinc-manager
+	source = boinc-manager-web.service
+	source = boinc-manager-web.sysusers
+	source = boinc-manager-web.tmpfiles
+	sha512sums = SKIP
+	sha512sums = f77c14fbf0d3096f8d73569d60a4617108ea81b745b67f9b7d7d94342a0c8f7915a9c21fe6c409b64636f6e5b218215a0a1d79cb29c6113ba5c62ff877041abc
+	sha512sums = fcf078f5be903f377c7c78921521de5d9a7a4df9e5086ddd18e6e4baef3cfb653781c2a98509304628d754878d13ce0455c6e53a6074978e40460bae909d3be4
+	sha512sums = 6139d5c155b0bede2deb6b21d9161cb3d877ca5a12981325439bb048035dab3704182c4f958b7af7a56f25e86b190f03ed11936558e38231f35136d1e6a77862
+
+pkgname = boinc-manager-web
+
