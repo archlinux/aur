@@ -2,9 +2,9 @@
 
 pkgname=(boinc-manager-web-git)
 pkgver=r163.24e3847
-pkgrel=1
+pkgrel=2
 pkgdesc='Web Client for BOINC'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/adamradocz/boinc-manager'
 license=('GPL3')
 makedepends=('dotnet-sdk>=3' 'yarn' 'git')
@@ -14,7 +14,7 @@ source=("boinc-manager::git+https://github.com/adamradocz/boinc-manager"
         'boinc-manager-web.sysusers'
         'boinc-manager-web.tmpfiles')
 sha512sums=('SKIP'
-            'f77c14fbf0d3096f8d73569d60a4617108ea81b745b67f9b7d7d94342a0c8f7915a9c21fe6c409b64636f6e5b218215a0a1d79cb29c6113ba5c62ff877041abc'
+            '9d3a6f81eb1186aa7c65e7d95cf55493e4a1bdd58b0d3e3b0ac77e0f2d2fdf4156dd666706e3750f5c794b7cba9a5744fc36f549649f00d529b76390bef1a4f6'
             'fcf078f5be903f377c7c78921521de5d9a7a4df9e5086ddd18e6e4baef3cfb653781c2a98509304628d754878d13ce0455c6e53a6074978e40460bae909d3be4'
             '6139d5c155b0bede2deb6b21d9161cb3d877ca5a12981325439bb048035dab3704182c4f958b7af7a56f25e86b190f03ed11936558e38231f35136d1e6a77862')
 
@@ -24,22 +24,23 @@ pkgver() {
 }
 
 build(){
-	# Build jellyfin-web
 	cd boinc-manager/BoincManagerWeb
 
-	yarn install
+	# yarn install
+	dotnet restore BoincManagerWeb.csproj
 
 	# Disable dotnet telemetry
 	export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-	dotnet build --configuration Release
+	dotnet publish "BoincManagerWeb.csproj" -c Release --no-restore -o "$PWD/publish"
+	#dotnet build --configuration Release
 	# Ideally, this would be run in package() with the --output variable pointing
 	# to "$pkgdir"/usr/lib/jellyfin, but this step fails in fakeroot.
 	# The makepkg output looks like
 	#   Restore completed in 56.84 ms for /aur/jellyfin-git/src/jellyfin/Jellyfin.Server/Jellyfin.Server.csproj.
 	#   ==> ERROR: A failure occurred in package().
-	# without indicating any sort of failure.
-	dotnet publish --configuration Release --output "$PWD"/publish
+	# without indicating any sort 
+	#dotnet publish --configuration Release --output "$PWD"/publish
 	# Clean up the runtimes folder (keep linux-*)
 	rm -rfv publish/runtimes/{alpine-*,osx*,tizen-*,win*}
 }
