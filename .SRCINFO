@@ -1,6 +1,6 @@
 pkgbase = xmltv
 	pkgdesc = Set of utilities to download tv listings and format them in xml
-	pkgver = 0.6.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://xmltv.org/wiki/
 	arch = any
@@ -36,8 +36,8 @@ pkgbase = xmltv
 	depends = perl-xml-treepp
 	depends = perl-datetime-format-iso8601
 	depends = perl-json
-	source = xmltv-0.6.3.tar.gz::https://github.com/XMLTV/xmltv/archive/v0.6.3.tar.gz
-	sha256sums = 8de66873e9dc7d20bcd01b85cf96632e724f78202a05cefd0af22254d829b737
+	source = xmltv-1.0.0.tar.gz::https://github.com/XMLTV/xmltv/archive/v1.0.0.tar.gz
+	sha256sums = 2dd2cfb3571ca01afb2ddd568d0d6b1a8c5684fd2cbe11729d72aea3a20db5d9
 
 pkgname = xmltv
 
