@@ -78,9 +78,8 @@ package()
     ln -sf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname}
     
-    # Install the systemd service and enable necessary services.
+    # Install the systemd service.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.service ${pkgdir}/usr/lib/systemd/system/
-    ln -sf ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service ${pkgdir}/etc/systemd/system/multi-user.target.wants/
     
     # Install the documentation.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
