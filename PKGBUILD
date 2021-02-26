@@ -1,51 +1,45 @@
 pkgname=librepo
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
-depends=('curl' 'glib2' 'gpgme' 'libxml2' 'openssl' 'zchunk>=0.9.11')
-makedepends=('cmake' 'python')
+depends=('curl>=7.52.0' 'glib2' 'gpgme' 'libxml2' 'openssl' 'zchunk>=0.9.11')
+makedepends=('cmake>=3.13' 'python')
 checkdepends=('check' 'python-flask' 'python-gpgme' 'python-nose'
               'python-pyxattr' 'python-requests')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('52521f10eb5aa0cabcf65cae540039c5')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	rm -rf build
-	mkdir build
-}
+md5sums=('52dd2f4d9108a92f221bde3279bb75f1')
 
 build() {
-	cd "$pkgname-$pkgver"/build
+	cd "$pkgname-$pkgver"
 
-	cmake -DCMAKE_BUILD_TYPE=Release \
-	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
+	cmake -B build \
+	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG' \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_INSTALL_LIBDIR=lib \
-	      -DPYTHON_DESIRED=3 \
 	      -DENABLE_DOCS=OFF \
-	      -DENABLE_PYTHON_TESTS=ON \
-	      -DWITH_ZCHUNK=ON \
-	      ..
+	      -DENABLE_PYTHON=ON \
+	      -DWITH_ZCHUNK=ON
 
-	make
+	make -C build
 }
 
 check() {
-	cd "$pkgname-$pkgver"/build
-	make ARGS="-V" test
+	cd "$pkgname-$pkgver"
+
+	make -C build ARGS="-V" test
 }
 
 package() {
-	cd "$pkgname-$pkgver"/build
+	cd "$pkgname-$pkgver"
 
-	make DESTDIR="$pkgdir/" install
+	make -C build DESTDIR="$pkgdir/" install
 
-	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
