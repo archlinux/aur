@@ -1,0 +1,10 @@
+[Unit]
+Description=Application to reset many MS wireless mice models to stop excessive wheel scrolling
+After=sleep.target
+
+[Service]
+ExecStart=/usr/bin/resetmsmice
+Type=oneshot
+
+[Install]
+WantedBy=sleep.target
