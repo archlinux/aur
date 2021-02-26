@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-stylus-tx550w-series
 	pkgdesc = Epson printer driver (Stylus NX510, NX515, SX510W, SX515W, TX550W)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
