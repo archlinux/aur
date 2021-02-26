@@ -2,7 +2,7 @@
 
 pkgname=xssproxy
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Forward freedesktop.org idle inhibition service calls to Xss."
 arch=('x86_64')
 url="https://github.com/timakro/xssproxy"
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" bindir="/usr/bin" man1dir="/usr/share/man1" install
+  make DESTDIR="$pkgdir" bindir="/usr/bin" man1dir="/usr/share/man/man1" install
 }
