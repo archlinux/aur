@@ -3,7 +3,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 _pkgbase=pygobject
-pkgbase=pygobject
+pkgbase=$_pkgbase-git
 pkgname=(python-gobject-git pygobject-devel-git)
 pkgver=3.34.0+8+g15ae6328
 pkgrel=2
