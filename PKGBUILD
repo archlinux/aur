@@ -44,7 +44,7 @@ optdepends=(
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
 source=(
-  "$pkgname-$pkgver::https://github.com/pop-os/system76-driver/archive/$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/pop-os/system76-driver/archive/$pkgver.tar.gz"
   'galu1.patch'
   'cli.patch'
   'wayland.patch'
