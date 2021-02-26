@@ -2,12 +2,12 @@
 
 pkgname=kops
 pkgver=1.19.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
 license=('Apache')
-makedepends=('go'
+makedepends=('go>=1.15'
              'git')
 
 build() {
