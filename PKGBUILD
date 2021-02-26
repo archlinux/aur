@@ -1,7 +1,7 @@
 # Maintainer: Tim Yang <protonmail = timdyang>
 
 pkgname=tuxi-git
-pkgver=r238.e88264d
+pkgver=r254.03ab53c
 pkgrel=1
 pkgdesc="A CLI tool that scrapes Google search results and SERPs to provide instant and concise answers"
 arch=(any)

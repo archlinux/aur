@@ -1,6 +1,6 @@
 pkgbase = tuxi-git
 	pkgdesc = A CLI tool that scrapes Google search results and SERPs to provide instant and concise answers
-	pkgver = r238.e88264d
+	pkgver = r254.03ab53c
 	pkgrel = 1
 	url = https://github.com/Bugswriter/tuxi
 	arch = any
