@@ -1,10 +1,10 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 pkgname=whirlpool-gui-bin
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop GUI for Whirlpool by Samourai-Wallet."
 arch=('x86_64')
-url="https://github.com/Samourai-Wallet/whirlpool-gui/"
+url="https://code.samourai.io/whirlpool/whirlpool-gui"
 license=('custom:Unlicense')
 depends=('dbus' 'glib2' 'hicolor-icon-theme' 'java-runtime' 'nss')
 source=("whirlpool-gui-$pkgver.deb::https://code.samourai.io/whirlpool/whirlpool-gui/uploads/89c3ec67c2fedd83aa604a5cf14cce41/whirlpool-gui_${pkgver}_amd64.deb"
