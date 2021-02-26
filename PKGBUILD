@@ -30,7 +30,7 @@ validpgpkeys=()
 
 pkgver()
 {
-    cd ${srcdir}/${\_pkgname}/
+    cd ${srcdir}/${_pkgname}/
     git describe --tags --abbrev=0
 }
 
