@@ -1,17 +1,18 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
-# Maintainer: Saeed Rasooli <saeed.gnu@gmail.com>
+# Contributor: Saeed Rasooli <saeed.gnu@gmail.com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 _pkgbase=pygobject
 pkgbase=pygobject
-pkgname=(python-gobject-git python2-gobject-git pygobject-devel-git)
+pkgname=(python-gobject-git pygobject-devel-git)
 pkgver=3.34.0+8+g15ae6328
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Bindings for GLib/GObject/GIO/GTK+"
 url="https://wiki.gnome.org/Projects/PyGObject"
 arch=(x86_64)
 license=(LGPL)
 depends=(gobject-introspection-runtime)
-makedepends=(python-cairo python2-cairo gobject-introspection git gnome-common)
+makedepends=(python-cairo gobject-introspection git gnome-common)
 optdepends=('cairo: Cairo bindings')
 source=("git+https://gitlab.gnome.org/GNOME/pygobject.git")
 sha256sums=('SKIP')
@@ -31,7 +32,6 @@ _build() (
 )
 
 build() {
-	_build 2
 	_build 3
 }
 
@@ -42,18 +42,6 @@ package_python-gobject-git() {
 
 	cd $_pkgbase
 	python3 setup.py install --prefix="/usr/" --root="$pkgdir"
-	mv "$pkgdir/usr/include/pygobject-3.0/pygobject.h" "$srcdir/devel"
-	mv "$pkgdir/usr/lib/pkgconfig/pygobject-3.0.pc" "$srcdir/devel"
-}
-
-package_python2-gobject-git() {
-	pkgdesc="${pkgdesc/Python/Python2}"
-	depends=("pygobject-devel=$pkgver" python2)
-	provides=("python2-gobject=$pkgver")
-	conflicts=("python2-gobject")
-
-	cd $_pkgbase
-	python2 setup.py install --prefix="/usr/" --root="$pkgdir"
 	mv "$pkgdir/usr/include/pygobject-3.0/pygobject.h" "$srcdir/devel"
 	mv "$pkgdir/usr/lib/pkgconfig/pygobject-3.0.pc" "$srcdir/devel"
 }
