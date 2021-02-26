@@ -1,0 +1,134 @@
+diff --git a/imaplib2/imaplib2.py b/imaplib2/imaplib2.py
+index 1fd47d2..eb25881 100755
+--- a/imaplib2/imaplib2.py
++++ b/imaplib2/imaplib2.py
+@@ -67,7 +67,6 @@ if bytes != str:
+ else:
+     import Queue as queue
+     string_types = basestring
+-    threading.TIMEOUT_MAX = 9223372036854.0
+ 
+ select_module = select
+ 
+@@ -192,7 +191,7 @@ class Request(object):
+     def get_response(self, exc_fmt=None):
+         self.callback = None
+         if __debug__: self.parent._log(3, '%s:%s.ready.wait' % (self.name, self.tag))
+-        self.ready.wait(threading.TIMEOUT_MAX)
++        self.ready.wait()
+ 
+         if self.aborted is not None:
+             typ, val = self.aborted
+@@ -545,7 +544,16 @@ class IMAP4(object):
+ 
+             ssl_version =  TLS_MAP[self.tls_level][self.ssl_version]
+ 
+-            self.sock = ssl.wrap_socket(self.sock, self.keyfile, self.certfile, ca_certs=self.ca_certs, cert_reqs=cert_reqs, ssl_version=ssl_version)
++            if getattr(ssl, 'HAS_SNI', False):
++                ctx = ssl.SSLContext(ssl_version)
++                ctx.verify_mode = cert_reqs
++                if self.ca_certs is not None:
++                    ctx.load_verify_locations(self.ca_certs)
++                if self.certfile or self.keyfile:
++                    ctx.load_cert_chain(self.certfile, self.keyfile)
++                self.sock = ctx.wrap_socket(self.sock, server_hostname=self.host)
++            else:
++                self.sock = ssl.wrap_socket(self.sock, self.keyfile, self.certfile, ca_certs=self.ca_certs, cert_reqs=cert_reqs, ssl_version=ssl_version)
+             ssl_exc = ssl.SSLError
+             self.read_fd = self.sock.fileno()
+         except ImportError:
+@@ -1391,7 +1399,7 @@ class IMAP4(object):
+             self.commands_lock.release()
+             if need_event:
+                 if __debug__: self._log(3, 'sync command %s waiting for empty commands Q' % name)
+-                self.state_change_free.wait(threading.TIMEOUT_MAX)
++                self.state_change_free.wait()
+                 if __debug__: self._log(3, 'sync command %s proceeding' % name)
+ 
+         if self.state not in Commands[name][CMD_VAL_STATES]:
+@@ -1441,7 +1449,7 @@ class IMAP4(object):
+             self.ouq.put(rqb)
+             return rqb
+ 
+-        # Must setup continuation expectancy *before* ouq.put 
++        # Must setup continuation expectancy *before* ouq.put
+         crqb = self._request_push(name=name, tag='continuation')
+ 
+         self.ouq.put(rqb)
+@@ -2636,7 +2644,7 @@ if __name__ == '__main__':
+             run('id', ())
+             run('id', ("(name imaplib2)",))
+             run('id', ("version", __version__, "os", os.uname()[0]))
+- 
++
+         for cmd,args in test_seq2:
+             if (cmd,args) != ('uid', ('SEARCH', 'SUBJECT', 'IMAP4 test')):
+                 run(cmd, args)
+diff --git a/imaplib2/imaplib2.py3 b/imaplib2/imaplib2.py3
+index 9de6702..5070724 100755
+--- a/imaplib2/imaplib2.py3
++++ b/imaplib2/imaplib2.py3
+@@ -16,7 +16,7 @@ Public functions: Internaldate2Time
+ 
+ __all__ = ("IMAP4", "IMAP4_SSL", "IMAP4_stream",
+            "Internaldate2Time", "ParseFlags", "Time2Internaldate",
+-           "Mon2num", "MonthNames", "InternalDate")
++           "Mon2num", "MonthNames", "InternalDate", "__version__")
+ 
+ __version__ = "3.06"
+ __release__ = "3"
+@@ -183,7 +183,7 @@ class Request(object):
+     def get_response(self, exc_fmt=None):
+         self.callback = None
+         if __debug__: self.parent._log(3, '%s:%s.ready.wait' % (self.name, self.tag))
+-        self.ready.wait(threading.TIMEOUT_MAX)
++        self.ready.wait()
+ 
+         if self.aborted is not None:
+             typ, val = self.aborted
+@@ -493,7 +493,17 @@ class IMAP4(object):
+ 
+             ssl_version =  TLS_MAP[self.tls_level][self.ssl_version]
+ 
+-            self.sock = ssl.wrap_socket(self.sock, self.keyfile, self.certfile, ca_certs=self.ca_certs, cert_reqs=cert_reqs, ssl_version=ssl_version)
++            if getattr(ssl, 'HAS_SNI', False):
++                ctx = ssl.SSLContext(ssl_version)
++                ctx.verify_mode = cert_reqs
++                if self.ca_certs is not None:
++                    ctx.load_verify_locations(self.ca_certs)
++                if self.certfile or self.keyfile:
++                    ctx.load_cert_chain(self.certfile, self.keyfile)
++                self.sock = ctx.wrap_socket(self.sock, server_hostname=self.host)
++            else:
++                self.sock = ssl.wrap_socket(self.sock, self.keyfile, self.certfile, ca_certs=self.ca_certs, cert_reqs=cert_reqs, ssl_version=ssl_version)
++
+             ssl_exc = ssl.SSLError
+             self.read_fd = self.sock.fileno()
+         except ImportError:
+@@ -1317,7 +1327,7 @@ class IMAP4(object):
+             self.commands_lock.release()
+             if need_event:
+                 if __debug__: self._log(3, 'sync command %s waiting for empty commands Q' % name)
+-                self.state_change_free.wait(threading.TIMEOUT_MAX)
++                self.state_change_free.wait()
+                 if __debug__: self._log(3, 'sync command %s proceeding' % name)
+ 
+         if self.state not in Commands[name][CMD_VAL_STATES]:
+@@ -1370,7 +1380,7 @@ class IMAP4(object):
+             self.ouq.put(rqb)
+             return rqb
+ 
+-        # Must setup continuation expectancy *before* ouq.put 
++        # Must setup continuation expectancy *before* ouq.put
+         crqb = self._request_push(name=name, tag='continuation')
+ 
+         self.ouq.put(rqb)
+@@ -2554,7 +2564,7 @@ if __name__ == '__main__':
+             run('id', ())
+             run('id', ("(name imaplib2)",))
+             run('id', ("version", __version__, "os", os.uname()[0]))
+- 
++
+         for cmd,args in test_seq2:
+             if (cmd,args) != ('uid', ('SEARCH', 'SUBJECT', 'IMAP4 test')):
+                 run(cmd, args)
