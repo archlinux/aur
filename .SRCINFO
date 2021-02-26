@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201106w
 	pkgdesc = Epson printer driver (ME Office 940FW / Stylus NX635, SX535WD / Stylus Office BX535WD, BX630FW, BX635FWD / WorkForce 545, 645)
 	pkgver = 1.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
