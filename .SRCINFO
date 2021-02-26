@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201213w
 	pkgdesc = Epson printer driver (WP-M4011, WP-M4015, WP-M4095, WP-M4521, WP-M4525, WP-M4595)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
