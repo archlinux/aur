@@ -1,13 +1,13 @@
 pkgbase = cppncss
 	pkgdesc = various measurements by statically analyzing C++ source code
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cppncss.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = java-environment>=5
-	source = http://downloads.sourceforge.net/project/cppncss/cppncss/1.0.3/cppncss-1.0.3.tar.gz
+	source = https://downloads.sourceforge.net/project/cppncss/cppncss/1.0.3/cppncss-1.0.3.tar.gz
 	source = cppncss.sh
 	md5sums = 1f064bf6e2e6ba7bd4d8a6a7bde8b364
 	md5sums = 4e4708a0ed13cbc80d53162fec99236c

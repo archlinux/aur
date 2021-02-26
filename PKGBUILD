@@ -1,13 +1,13 @@
 # Contributor: A. Klitzing <andre () incubo () de>
 pkgname=cppncss
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="various measurements by statically analyzing C++ source code"
 arch=('i686' 'x86_64')
 url="http://cppncss.sourceforge.net"
 license=('BSD')
 depends=('java-environment>=5')
-source=(http://downloads.sourceforge.net/project/cppncss/cppncss/$pkgver/cppncss-$pkgver.tar.gz $pkgname.sh)
+source=(https://downloads.sourceforge.net/project/cppncss/cppncss/$pkgver/cppncss-$pkgver.tar.gz $pkgname.sh)
 
 package()
 {
