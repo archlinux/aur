@@ -1,14 +1,14 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.98
+pkgver=5.10.19
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf cpio perl tar xz
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
@@ -17,8 +17,6 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  sphinx-workaround.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -27,14 +25,12 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('83a248d6fbe388f133769d736f36b754767abc9d66f1c034b537ad778fbd46b1'
+sha256sums=('27e7bbb0de7f0acc29c3c2e0a70c9a5fafc5fcf250993ce48713f809862ab4d6'
             'SKIP'
-            'be2066dd6133357007e8c7da9d5de3194b13409ebbfba8821db1849588fced1e'
-            'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
-            '4fd74bb2a7101d700fba91806141339d8c9e46a14f8fc1fe276cfb68f1eec0f5'
-            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
-            '6ebc19f8cdd608a97f8fa6a0a815ac142b88e18dd476bc2851b2771e3aa9522d'
-            '50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336')
+            '7195cd958f8ab5b097ec0bae05b026022fab17e4ffd4e8bd8ace974e94369359'
+            '757e6de2a76284cd86f443d8a9830e775291ba01d9d339cff9b9b3e4b205b7b3'
+            'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
+            '1c621f67bbf9efef610d1b2d1afd727fca9ceaa298f807bd0348b59ec6ce9562')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -76,7 +72,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  
   cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
@@ -90,7 +87,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -165,6 +162,10 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
