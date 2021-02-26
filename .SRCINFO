@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-duplicatefinder
 	pkgdesc = Duplicate files finder for Nextcloud servers
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/PaulLereverend/NextcloudDuplicateFinder
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = duplicate-finder-0.0.4.tar.gz::https://github.com/PaulLereverend/NextcloudDuplicateFinder/releases/download/0.0.4/duplicatefinder.tar.gz
-	sha512sums = 63f7836ec55b9fe65541ff4929632de526778223330c695a35a34303110fc3b09f32eaa777293e4c1b6d9848af66fa2ddd1c5e6c25e8e85eb6d2d9fe01109a0b
+	source = duplicate-finder-0.0.5.tar.gz::https://github.com/PaulLereverend/NextcloudDuplicateFinder/releases/download/0.0.5/duplicatefinder.tar.gz
+	sha512sums = b2b61ebbaaff252c6e8cf9246281df797359b4b7f6443eee59de3ad5dc3f41cf66ccaf5598c3e71e31e8f09cdd933ad52bfb1d31ff4e48bf16872f6b4f49a087
 
 pkgname = nextcloud-app-duplicatefinder
 
