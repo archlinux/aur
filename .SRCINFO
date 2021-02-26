@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-stylus-office-tx510fn-series
 	pkgdesc = Epson printer driver (ME Office 650FN / Stylus Office BX320FN, TX510FN, TX515FN / WorkForce 310)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
