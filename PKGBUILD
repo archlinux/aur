@@ -7,16 +7,18 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=librewolf-dev-wayland
-_pkgname=Librewolf
-pkgver=87.0b2
+_pkgname="Librewolf Developer Edition"
+pkgver=87.0b3
 pkgrel=1
-pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.(developer edition)"
+pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (developer edition)"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xwayland
-             rust
+depends=(gtk3 libxt mime-types dbus-glib
+         ffmpeg nss ttf-font libpulse
+         libvpx libjpeg zlib icu libevent libpipewire02)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils
+             rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -25,53 +27,47 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
             'libappindicator-gtk3: global menu support for gtk app'
-            'appmenu-gtk-module-git: appmenu for gtk only'
-            'applet-window-appmenu: appmenu for plasma only')
+            'appmenu-gtk-module: appmenu for gtk only'
+            'plasma5-applets-window-appmenu: appmenu for plasma only')
 options=(!emptydirs !makeflags !strip)
-_linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
-_settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+_linux_commit=e123b80f7df1ad9043435f345c426717ca323579
+_settings_commit=c5c75a39dd91a8772255a78493853be6553262b2
 conflicts=('librewolf')
 provides=('librewolf')
 source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-               librewolf.desktop
+               librewolf-dev.desktop
                "git+https://gitlab.com/librewolf-community/browser/common.git"
                "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
-               megabar.patch
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-               unity-menubar.patch)
+               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
 source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-                librewolf.desktop
+                librewolf-dev.desktop
                 "git+https://gitlab.com/librewolf-community/browser/common.git"
                 "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
-                megabar.patch
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-                unity-menubar.patch
                 "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 build-arm-libopus.patch)
 
-sha256sums_x86_64=('9c664f8eb7ec27174db1d45351e254e4ea64b79204d074699fe865135dac9130'
-                   '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+sha512sums_x86_64=('f1c610192e1e540bd7691d41b8d20e227cf9042b57fe4c1a3b823bcf8c1b9ff49a18e0702bd6959645d098dff17a97dc01fb27f99d86ab27d3eb9b3234ac14f2'
+                   '034fc826af3c4c55f81471636da58fbfaf5b1ba49e159cd66c41a3431f60789d206770cb0d490b3712a63b96ca8013719fceb7004697d02be6aa98ca41bdcaa5'
                    'SKIP'
                    'SKIP'
-                   '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
-                   'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                   '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                   'bdf0dfa80e115e58815f5d668ca957c6cd253f46815391e2f773c6acb68317c7')
-sha256sums_aarch64=('9c664f8eb7ec27174db1d45351e254e4ea64b79204d074699fe865135dac9130'
-                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+                   '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
+                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061')
+sha512sums_aarch64=('f1c610192e1e540bd7691d41b8d20e227cf9042b57fe4c1a3b823bcf8c1b9ff49a18e0702bd6959645d098dff17a97dc01fb27f99d86ab27d3eb9b3234ac14f2'
+                    '034fc826af3c4c55f81471636da58fbfaf5b1ba49e159cd66c41a3431f60789d206770cb0d490b3712a63b96ca8013719fceb7004697d02be6aa98ca41bdcaa5'
                     'SKIP'
                     'SKIP'
-                    '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
-                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                    'bdf0dfa80e115e58815f5d668ca957c6cd253f46815391e2f773c6acb68317c7'
-                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                    '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '5d9a0064832c45759328d3c14e4da8cc061d9df5637e8b20e8eb2e1a08983b79')
+                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
+                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
+                    '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
+                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
 
 prepare() {
-  mkdir mozbuild
+  if [[ ! -d mozbuild ]];then
+      mkdir mozbuild
+  fi
   cd firefox-${pkgver%b*}
 
   #
@@ -81,35 +77,41 @@ prepare() {
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-#This supposedly speeds up compilation (We test through dogfooding anyway)
+# This supposedly speeds up compilation (We test through dogfooding anyway)
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-# probably not needed, enabled by default?
-ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-lto
-ac_add_options --enable-linker=lld
-export MOZ_PGO=1
-export CC=clang
-export CXX=clang++
+export CC='clang'
+export CXX='clang++'
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-update-channel=aurora
-ac_add_options --with-app-name=librewolf
-ac_add_options --with-app-basename=Librewolf
+ac_add_options --with-app-name=librewolf-dev
+ac_add_options --with-app-basename=${_pkgname}
 ac_add_options --with-branding=browser/branding/librewolf
-ac_add_options --with-distribution-id=io.gitlab.librewolf-community
+ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
+#export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-libevent
+ac_add_options --with-system-icu
+ac_add_options --with-system-zlib
+ac_add_options --with-system-jpeg
 
 # Features
 ac_add_options --enable-pulseaudio
@@ -150,18 +152,21 @@ END
   patch -p1 -i ../arm.patch
   patch -p1 -i ../build-arm-libopus.patch
 
+else
+
+  cat >>../mozconfig <<END
+# probably not needed, enabled by default?
+ac_add_options --enable-optimize
+END
 fi
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
-  # Disable (some) megabar functionality
-  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -p1 -i ../megabar.patch
-
-  # Debian patch to enable global menubar
-  # disabled for the default build, as it seems to cause issues in some configurations
-  patch -p1 -i ../unity-menubar.patch
+  # To enable global menubar
+  # Set these to true
+  # browser.proton.enabled
+  # browser.proton.appmenu.enabled
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
@@ -208,22 +213,83 @@ build() {
   # CFLAGS="${CFLAGS/-fno-plt/}"
   # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
-if [[ $CARCH == 'x86_64' ]]; then
+  # Do 3-tier PGO
+  echo "Building instrumented browser..."
+
+if [[ $CARCH == 'aarch64' ]]; then
 
   cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate
+END
+
+else
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
+
+fi
+
+  ./mach build
+
+  echo "Profiling instrumented browser..."
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata \
+    JARLOG_FILE="$PWD/jarlog" \
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+    ./mach python build/pgo/profileserver.py
+
+  if [[ ! -s merged.profdata ]]; then
+    echo "No profile data produced."
+    return 1
+  fi
+
+  if [[ ! -s jarlog ]]; then
+    echo "No jar log produced."
+    return 1
+  fi
+
+  echo "Removing instrumented browser..."
+  ./mach clobber
+
+  echo "Building optimized browser..."
+
+if [[ $CARCH == 'aarch64' ]]; then
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --enable-linker=lld
+END
+
+else
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 END
 
 fi
 
   ./mach build
+
+  echo "Building symbol archive..."
+  ./mach buildsymbols
 }
 
 package() {
   cd firefox-${pkgver%b*}
   DESTDIR="$pkgdir" ./mach install
+  mv "$pkgdir"/usr/lib/{librewolf,librewolf-dev}
+  rm "$pkgdir"/usr/bin/librewolf
 
-  _vendorjs="$pkgdir/usr/lib/librewolf/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/librewolf-dev/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
@@ -240,19 +306,19 @@ END
   # cd ${srcdir}/settings
   # git checkout ${_settings_commit}
   cd ${srcdir}/firefox-${pkgver%b*}
-  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/librewolf/
+  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/librewolf-dev/
 
-  _distini="$pkgdir/usr/lib/librewolf/distribution/distribution.ini"
+  _distini="$pkgdir/usr/lib/librewolf-dev/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
-id=io.gitlab.librewolf-community
+id=archlinux
 version=1.0
-about=LibreWolf
+about=$_pkgname for Arch Linux
 
 [Preferences]
-app.distributor="LibreWolf Community"
-app.distributor.channel=librewolf
-app.partner.librewolf=librewolf
+app.distributor=archlinux
+app.distributor.channel=librewolf-dev
+app.partner.archlinux=archlinux
 END
 
   for i in 16 32 48 64 128; do
@@ -266,23 +332,17 @@ END
   install -Dm644 browser/branding/librewolf/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
 
-  install -Dm644 ../librewolf.desktop \
-    "$pkgdir/usr/share/applications/librewolf.desktop"
+  install -Dm644 ../librewolf-dev.desktop \
+    "$pkgdir/usr/share/applications/librewolf-dev.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf-dev" <<END
 #!/bin/sh
-exec /usr/lib/librewolf/librewolf "\$@"
+exec /usr/lib/librewolf-dev/librewolf "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/librewolf" \
-    "$pkgdir/usr/lib/librewolf/librewolf-bin"
-
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/librewolf/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srf "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
+  ln -srf "$pkgdir/usr/bin/librewolf-dev" \
+    "$pkgdir/usr/lib/librewolf-dev/librewolf-bin"
 }
