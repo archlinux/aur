@@ -3,14 +3,14 @@
 
 _pkgname=libadwaita
 pkgname=$_pkgname-git
-pkgver=1.1.0.r.g0a3ec43
-pkgrel=1
+pkgver=1.1.0.r.g699c5ea
+pkgrel=2
 pkgdesc="Library full of GTK+ widgets for mobile phones"
 url="https://gitlab.gnome.org/exalm/$_pkgname"
 license=(LGPL)
 arch=(i686 x86_64 armv7h aarch64)
 depends=(gtk4)
-makedepends=(git glade gobject-introspection meson vala)
+makedepends=(git gobject-introspection meson vala)
 checkdepends=(xorg-server-xvfb)
 source=("git+$url")
 provides=($_pkgname)
