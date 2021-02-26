@@ -35,7 +35,8 @@ depends=(
     'python-sqlalchemy>=1.3'
     'python-survey>=3.2.2'          'python-survey<4.0'
     'python-watchdog>=2.0'
-    'python-systemd')
+    'python-systemd'
+    'python-wheel')
 optdepends=('maestral-qt: Qt interface for the maestral daemon')
 md5sums=('8ef48fc9f9ba853b3253b8962cc18cde'
          '25d1041b158c1b1ea42d7290c9c0f91d')

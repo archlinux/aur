@@ -28,6 +28,7 @@ pkgbase = maestral
 	depends = python-survey<4.0
 	depends = python-watchdog>=2.0
 	depends = python-systemd
+	depends = python-wheel
 	optdepends = maestral-qt: Qt interface for the maestral daemon
 	provides = maestral
 	conflicts = maestral-git
