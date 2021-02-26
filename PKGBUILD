@@ -44,7 +44,7 @@ makedepends=('meson' 'ninja' 'bison' 'flex' 'python' 'python-mako' 'python-appdi
 depends=('libdrm' 'libxcb' 'wayland' 'python' 'libclc' 'clang' 'libx11' 'libxshmfence' 'zstd' 'libelf' 'llvm-libs' 'expat' 'libxxf86vm'
          'libxdamage' 'libomxil-bellagio' 'libunwind' 'lm_sensors' 'libglvnd' 'vulkan-icd-loader' 'llvm' 'clang' 'gcc-libs' 'gcc'
          'glslang')
-depends+=('libsensors.so' 'libexpat.so' 'libvulkan.so')
+#depends+=('libsensors.so' 'libexpat.so' 'libvulkan.so')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
            'mesa-rc' 'mesa-git')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'vulkan-driver' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
