@@ -1,7 +1,7 @@
 # Maintainer: lmartinez
 pkgname=fnott-git
 pkgver=1.0.1.r2.g5845372
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard-driven and lightweight Wayland notification daemon"
 arch=('x86_64')
 url="https://codeberg.org/dnkl/fnott"
@@ -27,4 +27,5 @@ build() {
 package() {
   cd "$pkgname"
   DESTDIR="$pkgdir/" ninja -C build install
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
