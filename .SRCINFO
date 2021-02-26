@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-stylus-nx110-series
 	pkgdesc = Epson printer driver (Stylus NX110, NX115, SX110, SX115, TX110, TX111, TX112, TX113, TX115, TX117, TX119)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
