@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=runjs-bin
-pkgver=1.13.1
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="RunJS is an JavaScript playground that auto-evaluates your code as you type and outputs the results to a console pane"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("nss" "libxss" "libnotify" "libsecret" "libappindicator-gtk3" "util-lin
 provides=("runjs")
 conflicts=("runjs" "runjs-git")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/runjs_${pkgver}_amd64.deb")
-sha256sums=("0c8e4edae2590563acd532f2145b32bc36c20a5b7c46f83cb55a54de59626f48")
+sha256sums=("f5fdb6ae70382c4386eeb69f58c1ae4865845e311dc23214e41f85ccaed59e15")
 
 prepare() {
   bsdtar xf data.tar.xz
