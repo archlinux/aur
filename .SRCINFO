@@ -1,4 +1,4 @@
-pkgbase = pygobject
+pkgbase = pygobject-git
 	pkgdesc = Python Bindings for GLib/GObject/GIO/GTK+
 	pkgver = 3.34.0+8+g15ae6328
 	pkgrel = 2
