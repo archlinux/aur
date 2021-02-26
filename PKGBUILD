@@ -1,21 +1,14 @@
 # Maintainer: Mohammad Abdolirad <m.abdolirad@gmail.com>
+
 pkgname=wait4x
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Waiting for a port to enter into specify state"
 arch=('x86_64' 'x86' 'aarch64' 'armhf' 'ppc64le' 's390x' 'armv7')
 url="https://github.com/atkrad/wait4x"
-license=('MIT')
-depends=(
-  'glibc'
-)
-makedepends=(
-  'go'
-  'git'
-)
-optdepends=(
-  'sudo'
-)
+license=('Apache')
+depends=('glibc')
+makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atkrad/wait4x/archive/v${pkgver}.tar.gz")
 sha256sums=('50add18f5e726160ae7656d71b9ed736d9ff386bc0b6fe95824e00359eeb52ff')
 
@@ -38,6 +31,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
-	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
 }

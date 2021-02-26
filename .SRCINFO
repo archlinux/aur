@@ -1,7 +1,7 @@
 pkgbase = wait4x
 	pkgdesc = Waiting for a port to enter into specify state
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atkrad/wait4x
 	arch = x86_64
 	arch = x86
@@ -10,11 +10,10 @@ pkgbase = wait4x
 	arch = ppc64le
 	arch = s390x
 	arch = armv7
-	license = MIT
+	license = Apache
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	optdepends = sudo
 	source = wait4x-0.4.0.tar.gz::https://github.com/atkrad/wait4x/archive/v0.4.0.tar.gz
 	sha256sums = 50add18f5e726160ae7656d71b9ed736d9ff386bc0b6fe95824e00359eeb52ff
 
