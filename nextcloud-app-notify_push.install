@@ -8,5 +8,5 @@ post_install() {
 
 post_upgrade() {
     echo 'You may want to restart nextcloud-app-notify_push.service'
-    echo 'and re-check your setup with `occ notify_push:setup https://your.nextcloud.com/push`'
+    echo 'and re-check your setup with `occ notify_push:self-check`'
 }
