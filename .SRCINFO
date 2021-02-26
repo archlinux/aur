@@ -1,0 +1,18 @@
+pkgbase = pcmn-git
+	pkgdesc = Simple declarative package management for Arch Linux
+	pkgver = v1.0.0.r0.1a525de0c29e
+	pkgrel = 1
+	url = https://gitlab.com/nfraprado/pcmn
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pacman
+	depends = python
+	depends = yay
+	provides = pcmn
+	conflicts = pcmn
+	source = pcmn::git+https://gitlab.com/nfraprado/pcmn.git#branch=master
+	md5sums = SKIP
+
+pkgname = pcmn-git
+
