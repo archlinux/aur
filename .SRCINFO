@@ -1,0 +1,16 @@
+pkgbase = vgmtools-git
+	pkgdesc = A collection of tools for the VGM file format
+	pkgver = r99.1f8a5eb
+	pkgrel = 1
+	url = https://github.com/vgmrips/vgmtools
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = zlib
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/vgmrips/vgmtools.git
+	md5sums = SKIP
+
+pkgname = vgmtools-git
+
