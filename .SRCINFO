@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201112j
 	pkgdesc = Epson printer driver (EP-804A, EP-804AR, EP-804AW, EP-904A, EP-904F)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
