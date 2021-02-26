@@ -18,7 +18,6 @@ pkgbase = jameica
 	validpgpkeys = 7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70
 	sha1sums = 7c1cf5a2584b18bc3682475faeb1a045e3cd7328
 	sha1sums = 0664650342635fa5b0a9413dc8c22a65053ef234
-	sha1sums = 39c008050c7f90f3fde05b849cba80559207bdb5
 	sha1sums = e0ca3ab514a3ea7d94804aa2827cdf43a5abb410
 	source_i686 = https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux-2.10.0.zip
 	source_i686 = https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux-2.10.0.zip.asc
