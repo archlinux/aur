@@ -6,7 +6,7 @@
 # Maintainer: Wesofer Raymond <wesetoferraymond@gmail.com>
 pkgname=logseq-desktop-bin
 _pkgname=logseq-desktop
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -15,7 +15,7 @@ license=('AGPL3')
 provides=("${pkgname}")
 source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
       "${_pkgname}.desktop")
-md5sums=('dd6f767a1c13c0b61f68e67abddd8204'
+md5sums=('ada32db5549c019c29253cc1a4388ce8'
          '7f1ac5c621059b3959a318882acf990e')
 
 #prepare() {
