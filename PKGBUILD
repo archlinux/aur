@@ -14,11 +14,11 @@ md5sums=('SKIP')
 
 build() {
 	cd VTFLib
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
 	make -j`nproc`
 }
 
 package() {
 	cd "$srcdir/VTFLib"
-	make install
+	make install DESTDIR="$pkgdir"
 }
