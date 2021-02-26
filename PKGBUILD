@@ -1,25 +1,18 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.6.4  # Don’t forget to update CHANGELOG.md
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'fcft')
-makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
+makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')
 checkdepends=('check')
-source=(https://codeberg.org/dnkl/foot/archive/${pkgver}.tar.gz
-        https://codeberg.org/dnkl/tllist/archive/1.0.5.tar.gz)
-sha256sums=('73142dcb7d0223ca740f880d372084b6dfdd56700c375709b3166bcaf32e034c'
-            'b0f32c9b2c2015c8d8dd068fd4e8b586aa91ca1670badc274ec962559ee0aadd')
+source=(https://codeberg.org/dnkl/foot/archive/${pkgver}.tar.gz)
+sha256sums=('73142dcb7d0223ca740f880d372084b6dfdd56700c375709b3166bcaf32e034c')
 
 build() {
   cd foot
-
-  mkdir -p subprojects
-  pushd subprojects
-  ln -sf ../../tllist .
-  popd
 
   # makepkg uses -O2 by default, but we *really* want -O3
   # -Wno-missing-profile since we're not exercising everything when doing PGO builds
