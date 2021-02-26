@@ -80,14 +80,14 @@ prepare(){
 
 build(){
 if [[ $_compiler = "1" ]]; then
-  export CC='gcc -m64'
-  export CXX='g++ -m64'
+  export CC='gcc'
+  export CXX='g++'
 elif [[ $_compiler = "2" ]]; then
-  export CC='clang -m64'
-  export CXX='clang++ -m64'
+  export CC='clang'
+  export CXX='clang++'
 else
-  export CC='gcc -m64'
-  export CXX='g++ -m64'
+  export CC='gcc'
+  export CXX='g++'
 fi
 
   cd mesa-$versiontag
