@@ -6,6 +6,7 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
+_srcname=dash-to-dock
 pkgname=gnome-shell-extension-dash-to-dock-git
 pkgver=69.r11.g7a2c87b
 pkgrel=1
@@ -14,87 +15,27 @@ arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
 _giturl="git+https://github.com/micheleg/dash-to-dock/"
 license=('GPL')
-depends=('dconf' 'gnome-shell')
-makedepends=('intltool')
+depends=('gnome-shell')
+makedepends=('git')
+conflicts=('gnome-shell-extension-dash-to-dock')
+provides=('gnome-shell-extension-dash-to-dock')
+source=("git+https://github.com/micheleg/${_srcname}.git")
+sha256sums=('SKIP')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
-for integ in $(get_integlist)
-do
-  typeset -n array="${integ}sums"
-  array+=('SKIP')
-done
-provides=("$_gitname")
-conflicts=("$_gitname")
 pkgver() {
-  cd ${_gitname:-$pkgname}
+  cd "${_srcname}"
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
   [ ${PIPESTATUS[0]} -eq 0 ] || \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$_gitname"
+  cd "${_srcname}"
   make VERSION="$pkgver" _build
 }
 
 package() {
-  for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
-  do
-    $function
-  done
-}
-package_01_locate() {
-  echo 'Locating extension...'
-  cd "$(find -name 'metadata.json' -execdir test -e extension.js \; \
-    -printf '%C@ %h\n' | sort -nr | sed 's/^.* //;q' )"
-  extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  destdir="$pkgdir/usr/share/gnome-shell/extensions/$extname"
-}
-
-package_02_install() {
-  echo 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
-    -exec install -Dm644 -t "$destdir" '{}' +
-}
-
-package_09_media() {
-  cp -r --no-preserve=ownership,mode media "$destdir"
-}
-
-package_10_locale() {
-  echo 'Installing translations...'
-  (
-    cd locale
-    for locale in */
-    do
-      install -Dm644 -t "$pkgdir/usr/share/locale/$locale/LC_MESSAGES" "$locale/LC_MESSAGES"/*.mo
-    done
-  )
-}
-if [ -z "$install" ]
-then
-  install=gschemas.install
-fi
-
-package_10_schemas() {
-  echo 'Installing schemas...'
-  find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
-}
-depends[125]=gnome-shell
-
-package_20_version() {
-  local compatibles=($(\
-    find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec cat '{}' \; | \
-    tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
-  unset depends[125]
+  cd "${_srcname}"
+  make
+  make install
 }
