@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-workforce-320-sx218
 	pkgdesc = Epson printer driver (ME Office 520, 620F / Stylus NX220, SX218, TX220, TX228 / Stylus Office BX305F, BX305FW, TX320F, TX325F / WorkForce 320, 323, 325)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
