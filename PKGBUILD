@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=9.0.219
+pkgver=9.0.259
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -76,7 +76,7 @@ prepare() {
     -vv --fail-on-unused-args \
     --args='is_clang=false
             is_asan=false
-            use_gold=false
+            use_gold=true
             is_component_build=true
             is_debug=false
             is_official_build=false
