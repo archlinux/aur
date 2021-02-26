@@ -49,19 +49,19 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa' 'vu
            'mesa-rc' 'mesa-git')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'vulkan-driver' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
           'opengl-driver' 'opencl-driver' 'mesa-libgl')
-source=('https://archive.mesa3d.org/mesa-$pkgver.tar.xz'
-        'LICENSE')
-md5sums=('SKIP'
-         'SKIP')
+source=("https://archive.mesa3d.org/mesa-$pkgver.tar.xz"
+        "LICENSE")
+md5sums=("SKIP"
+         "SKIP")
 if [[ $_llvm = "y" ]]; then
-  source+=('0001-enable-llvm-by-default.patch')
-  md5sums+=('SKIP') #0001-enable-llvm-by-default.patch
+  source+=("0001-enable-llvm-by-default.patch")
+  md5sums+=("SKIP") #0001-enable-llvm-by-default.patch
 fi
 # clover patch for llvm 12.0.0 and 13.0.0. Not commited in master branch for now
-source+=('0001-4114.patch'
-         '0001-4200.patch')
-md5sums+=('SKIP'
-          'SKIP')
+source+=("0001-4114.patch"
+         "0001-4200.patch")
+md5sums+=("SKIP"
+          "SKIP")
 
 prepare(){
   cd mesa-$pkgver
