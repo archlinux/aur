@@ -31,7 +31,8 @@ validpgpkeys=()
 pkgver()
 {
     cd ${srcdir}/${_pkgname}/
-    git describe --tags --abbrev=0
+    version = git describe --tags --abbrev=0
+    printf ${version:1}
 }
 
 build()
