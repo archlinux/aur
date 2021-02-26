@@ -2,7 +2,7 @@
 
 pkgname=lceda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.4.7
+pkgver=6.4.17
 pkgrel=1
 pkgdesc="免费、强大、易用的在线电路设计软件"
 arch=('x86_64')
@@ -14,27 +14,29 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/${_pkgname}-linux-x64-${pkgver}.zip"
         "LICENSE")
-sha256sums=('63b2db0aa0f5d7c29185cde687bbf4a77343e55bf38c637a65b7346d458aee83'
+sha256sums=('b81e77ecd6305ac73b728b51d8a7be8cb5e7eb6a9d9af2550b26b2ce427b32bd'
             '686f681d913d7f943bb5aac66cc902f2eb251e7a20fda43412c048d6134b3592')
 
 package() {
   
   install -dm755 ${pkgdir}/opt/${_pkgname}
-  unzip -q lceda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
+  unzip lceda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
   
   # icon
-  install -dm755 ${pkgdir}/usr/share/icons/hicolor/
-  for icon in 16 32 48 64 128 256;
+  local _icon
+  for _icon in 16 32 48 64 128 256;
   do
-    install -Dm644 ${pkgdir}/opt/${_pkgname}/icon/${icon}x${icon}/${_pkgname}.png \
-    ${pkgdir}/usr/share/icons/hicolor/${icon}x${icon}/apps/${_pkgname}.png
+    install -Dm644 ${pkgdir}/opt/${_pkgname}/icon/${_icon}x${_icon}/${_pkgname}.png \
+                   ${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${_pkgname}.png
   done
   rm -rf ${pkgdir}/opt/${_pkgname}/icon
 
   # desktop entry
-  install -Dm644 ${pkgdir}/opt/${_pkgname}/LCEDA.dkt ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  install -Dm644 ${pkgdir}/opt/${_pkgname}/LCEDA.dkt \
+                 ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
-  sed -i 's|/lceda-linux-x64/icon/128x128/lceda.png|lceda|g' ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  sed -i 's|/lceda-linux-x64/icon/128x128/lceda.png|lceda|g' \
+                                  ${pkgdir}/usr/share/applications/${_pkgname}.desktop
   sed -i 's|/lceda-linux-x64/||g' ${pkgdir}/usr/share/applications/${_pkgname}.desktop
   rm -rf ${pkgdir}/opt/${_pkgname}/LCEDA.dkt
 
