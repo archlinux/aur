@@ -11,6 +11,7 @@ pkgbase = btcpayserver-git
 	depends = dotnet-host
 	depends = dotnet-runtime
 	depends = dotnet-sdk
+	depends = nbxplorer-git
 	conflicts = btcpayserver
 	source = git+https://github.com/btcpayserver/btcpayserver.git
 	md5sums = SKIP
