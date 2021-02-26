@@ -1,9 +1,8 @@
 # Maintainer: Robbert van der Helm <mail@robbertvanderhelm.nl>
 
 pkgname=yabridge
-pkgver=3.0.0
-_tmp_commit=c29bc59059b5d5000ce1f660a42bdb624b5925c9
-pkgrel=3
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
@@ -13,17 +12,11 @@ optdepends=('yabridgectl: utility for setting up and managing yabridge')
 makedepends=('meson' 'ninja')
 options=('!strip')
 install=yabridge.install
-# TODO: Revert on the next release, this commit is exactly the same as 3.0.0
-#       with a workaround for a regression in Wine 6.2 that would cause compile
-#       errors
-# source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
-source=("https://github.com/robbert-vdh/yabridge/archive/$_tmp_commit.tar.gz")
-sha256sums=('4a8b6a7931e8d71e0d9ad0d8a1f85c1a20e04bdc7569cff4c8ab2b760247b850')
+source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
+sha256sums=('aab098c1c870128e8b26c216238b9b49d975fa304062bfa5a6b4cf534a75bd97')
 
 build() {
-  # TODO: Revert
-  # cd "$pkgname-$pkgver"
-  cd "$pkgname-$_tmp_commit"
+  cd "$pkgname-$pkgver"
 
   # Meson won't apply any new options or update wraps if they already exist, so
   # if we're building from a dirty src/ directory we'll just nuke any cached
@@ -69,9 +62,7 @@ build() {
 }
 
 package() {
-  # TODO: Revert
-  # cd "$pkgname-$pkgver/build"
-  cd "$pkgname-$_tmp_commit/build"
+  cd "$pkgname-$pkgver/build"
 
   install -dm755 "${pkgdir}"/usr/bin
   install yabridge-{host,group}.exe{,.so} "${pkgdir}"/usr/bin
