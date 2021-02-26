@@ -232,7 +232,7 @@ package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
 
-  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/librewolf/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
@@ -275,8 +275,8 @@ END
   install -Dm644 browser/branding/librewolf/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dragonwolf-symbolic.png"
 
-  install -Dm644 ../$_pkgname.desktop \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 ../dragonwolf.desktop \
+    "$pkgdir/usr/share/applications/dragonwolf.desktop"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/librewolf" <<END
