@@ -1,7 +1,7 @@
 # Maintainer: Hydral <nathan.dacunha.nd@gmail.com>
 
 pkgname=solarus-bin
-pkgver=1.7.0.dev.1012772922
+pkgver=1.7.0.dev.1029181599
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A lightweight, free and open-source game engine for Action-RPGs"
@@ -18,7 +18,7 @@ depends=('glm'
          'sdl2>=2.0.6'
          'sdl2_image'
          'sdl2_ttf')
-source=("https://gitlab.com/solarus-games/solarus/-/jobs/1012772922/artifacts/download")
+source=("https://gitlab.com/solarus-games/solarus/-/jobs/1029181599/artifacts/download")
 provides=('solarus')
 conflicts=('solarus' 'solarus-run' 'solarus-git')
 package() {
@@ -26,4 +26,4 @@ package() {
 	cd $srcdir
 	mv staging/* $pkgdir/usr
 }
-md5sums=('9686344c040a7077597dc8a20f7e80fd')
+md5sums=('0ad717c177de97cfc98e9d86cd809752')
