@@ -2,17 +2,17 @@
 # Contributor: Dicebot <public@dicebot.lv>
 
 pkgname=dlang-digger
-pkgver=2.4
-pkgrel=2
-pkgdesc="A tool to build D and bisect old D versions"
+pkgver=3.0.6
+pkgrel=1
+pkgdesc='A tool to build D and bisect old D versions'
 arch=('i686' 'x86_64')
 groups=('dlang')
-url="https://github.com/CyberShadow/Digger"
+url='https://github.com/CyberShadow/Digger'
 license=('custom')
 depends=('git')
-makedepends=('dmd>=2.067.0-1' 'dmd<2.072.0-1' 'libphobos-devel' 'dtools')
+makedepends=('dmd>=2.067.0-1' 'libphobos-devel' 'dtools')
 source=(
-    "git+https://github.com/CyberShadow/Digger.git#tag=${pkgver//_/-}"
+    "git+https://github.com/CyberShadow/Digger.git#tag=v${pkgver//_/-}"
     'digger.ini'
 )
 sha256sums=(
