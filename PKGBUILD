@@ -1,7 +1,7 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210201.1
+pkgver=20210226.1
 pkgrel=1
 pkgdesc="Built with nativefier (electron), seemed to Windows version."
 arch=("x86_64")
