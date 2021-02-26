@@ -2,7 +2,7 @@
 pkgname=freechat-uos
 url="https://github.com/eNkru/freechat"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="致力于打造macOS和Linux桌面下最好用的微信客户端。(添加UOS补丁)"
 arch=("x86_64")
 license=("MIT")
@@ -14,11 +14,13 @@ source=(
     "https://github.com/JoveYu/PKGBUILD/releases/download/0.0.1/wechat-uos-token.tar.gz"
     "uos.patch"
     "freechat.desktop"
+    "libuosdevicea.so"
 )
 md5sums=('0213ce4ef07b329b811af3498d851967'
          '52226b5b73054d2d53fed7e97568aa6f'
          '5e4390b5227c9ecb2706fdcb927a943f'
-         '64faa178571d2f8871b3e021024dc009')
+         '64faa178571d2f8871b3e021024dc009'
+         '818918ee0ab27afeeba0f4b2edb72fb6')
 
 build() {
     cd "${srcdir}"/freechat-$pkgver
@@ -28,6 +30,7 @@ build() {
 }
 
 package() {
+    install -Dm755 "${srcdir}"/libuosdevicea.so "${pkgdir}"/usr/lib/license/libuosdevicea.so
     install -Dm644 "${srcdir}"/freechat.desktop "${pkgdir}"/usr/share/applications/freechat.desktop
     install -Dm644 "${srcdir}"/freechat-$pkgver/build/icons/12x12.png "${pkgdir}"/usr/share/icons/hicolor/12x12/apps/freechat.png
     install -Dm644 "${srcdir}"/freechat-$pkgver/build/icons/16x16.png "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/freechat.png
