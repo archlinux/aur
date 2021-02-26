@@ -1,4 +1,4 @@
-# Maintainer: nitsky <david@yamnitsky.com>
+# Maintainer: nitsky
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('Apache-2.0')
 pkgdesc="Fast, multi-platform web server with automatic HTTPS"
