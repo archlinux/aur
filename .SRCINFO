@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201203w
 	pkgdesc = Epson printer driver (ME-303, ME-400, XP-300, XP-400)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
