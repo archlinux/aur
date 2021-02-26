@@ -28,6 +28,12 @@ noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
+pkgver()
+{
+    cd ${srcdir}/${\_pkgname}/
+    git describe --tags --abbrev=0
+}
+
 build()
 {
     cd ${srcdir}/${_pkgname}/
