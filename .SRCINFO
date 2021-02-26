@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-workforce-840-series
 	pkgdesc = Epson printer driver (Stylus Office BX925FWD / WorkForce 840)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
