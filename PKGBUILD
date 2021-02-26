@@ -3,12 +3,12 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
 license=('GPL2')
-depends=('git' 'python-pyqt5' 'hicolor-icon-theme')
+depends=('git' 'python-qtpy' 'python-pyqt5' 'hicolor-icon-theme')
 makedepends=('asciidoc' 'docbook-xsl' 'rsync' 'xmlto' 'python-sphinx')
 optdepends=('python-pygments: syntax highlighting'
             'python-pyinotify: for inotify support'
