@@ -3,14 +3,14 @@
 
 pkgname=otf-libertinus
 _pkgname="${pkgname#*-}"
-pkgver=7.031
+pkgver=7.040
 pkgrel=1
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
 license=('OFL')
 url="https://github.com/alerque/$_pkgname"
 source=("$url/releases/download/v$pkgver/${_pkgname^}-$pkgver.tar.xz")
-sha256sums=('32cdd2cbd9927b9bda1d500c50faefffa0e1d989b4fbb3ea010dc3efd4495eb0')
+sha256sums=('7fe9f022722d1c1cc67dc2c28a110b3bb55bae3575196160d2422c89333b3850')
 
 package() {
 	cd "${_pkgname^}-$pkgver"
