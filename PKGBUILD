@@ -2,7 +2,7 @@
 
 pkgname=(mmixware{,-docs,-src})
 pkgver=20160804
-pkgrel=1
+pkgrel=2
 pkgdesc="MMIX assembler and simulator"
 arch=('i686' 'x86_64')
 url="http://mmix.cs.hm.edu/"
@@ -10,15 +10,14 @@ license=('custom')
 makedepends=('texlive-core')
 source=("http://mmix.cs.hm.edu/src/mmix-$pkgver.tgz"
         LICENSE)
-sha256sums=('fad8e64fddf2d75cbcd5080616b47e11a2d292a428cdb0c12e579be680ecdee9'
-            '62d0fc588ebbbc531699c94860bec447a77b94fa5078787e354b1a0593bcdb75')
+b2sums=('8bbde51921fe23f016e35bd51346e6445d530815e5e87bff44cf17e081c6b8e55dd6bd24f1ce1621851d2eac309fa44d71aa33d93d3ddfce5213c6643181d38c'
+        'bb974d6a345c83dab1f874a0288f4bde646d2f4db1aee7761c0c6a515012ceaf52b7be41037086a239176a16921c136626a5c36baa3d67e8c5d7c7efca562cfb')
 noextract=("mmix-${pkgver}.tgz")
 
 prepare() {
   mkdir "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver"
 
-  bsdtar -xf "../mmix-$pkgver.tgz"
+  bsdtar -C "$pkgname-$pkgver" -xf "../mmix-$pkgver.tgz"
 }
 
 build() {
@@ -26,7 +25,7 @@ build() {
 
   unset MAKEFLAGS
   make {mmixal,mmix-{arith,config,doc,io,mem,pipe,sim},mmmix,mmotype}.pdf
-  make all
+  make CFLAGS="$CFLAGS -Wl,-allow-multiple-definition" all
 }
 
 package_mmixware() {
