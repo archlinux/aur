@@ -1,0 +1,25 @@
+pkgbase = fuzzel
+	pkgdesc = Application launcher for wlroots based Wayland compositors
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://codeberg.org/dnkl/fuzzel
+	changelog = CHANGELOG.md
+	arch = x86_64
+	arch = aarch64
+	license = mit
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = tllist>=1.0.1
+	depends = libxkbcommon
+	depends = wayland
+	depends = pixman
+	depends = cairo
+	depends = librsvg
+	depends = libpng
+	depends = fcft>=2.0.0
+	source = https://codeberg.org/dnkl/fuzzel/archive/1.5.1.tar.gz
+	sha256sums = 8a7394a32664638c91e865d63cf5d5a34d8caf4594854ed4867afae1a6f38eb7
+
+pkgname = fuzzel
+
