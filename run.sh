@@ -57,20 +57,20 @@ msg()
 	echo -e "${ECHO_LEVEL[$1]}\033[1;37m$2\033[0m"
 }
 
-SwitchToDeepinWine()
+SwitchToOriginalWine()
 {
     PACKAGE_MANAGER="yay"
-    DEEPIN_WINE_DEPENDS="deepin-wine5"
+    ORIGINAL_WINE_DEPENDS="wine wine-mono wine-gecko xorg-xwininfo lib32-alsa-lib lib32-alsa-plugins lib32-libpulse lib32-openal lib32-mpg123 lib32-gnutls"
     msg 0 "Checking dependency.."
     if ! [ -x "$(command -v yay)" ]; then
-        if ! [ -x "$(command -v yaourt)" ]; then
-            msg 1 "Sorry, but you need to install 'yay' or 'yaourt' before that." >&2
+        if ! [ -x "$(command -v pacman)" ]; then
+            msg 1 "Sorry, but.. is this really archlinux???" >&2
             exit 1
         else
-            $PACKAGE_MANAGER="yaourt"
+            $PACKAGE_MANAGER="pacman"
         fi
     fi
-    for p in ${DEEPIN_WINE_DEPENDS}; do
+    for p in ${ORIGINAL_WINE_DEPENDS}; do
         if pacman -Qs $p > /dev/null ; then
             msg 0 "$p is installed, skip ..."
         else
@@ -83,7 +83,7 @@ SwitchToDeepinWine()
     $START_SHELL_PATH $BOTTLENAME $APPVER "$EXEC_PATH" -r
     #msg 0 "Reversing the patch ..."
     #patch -p1 -R -d  ${WINEPREFIX} < $ARCHIVE_FILE_DIR/reg.patch
-    echo "5" > $WINEPREFIX/deepin
+    echo "5" > $WINEPREFIX/originalwine
     rm -f $WINEPREFIX/reinstalled
     msg 0 "Done."
     exit 0
@@ -91,10 +91,10 @@ SwitchToDeepinWine()
 
 OpenWinecfg()
 {
-    if [ -f "$WINEPREFIX/deepin" ]; then
-        env WINEPREFIX=$WINEPREFIX deepin-wine5 winecfg
-    else
+    if [ -f "$WINEPREFIX/originalwine" ]; then
         env WINEPREFIX=$WINEPREFIX winecfg
+    else
+        env WINEPREFIX=$WINEPREFIX deepin-wine5 winecfg
     fi
 }
 
@@ -122,19 +122,14 @@ HelpApp()
 {
 	echo " Extra Commands:"
 	echo " winecfg        Open winecfg"
-	echo " -d/--deepin    Switch to 'deepin-wine5'"
+	echo " -o/--original  Switch to original wine"
 	echo " -h/--help      Show program help info"
 }
 
-if [ -f "$WINEPREFIX/deepin" ]; then
-    if [ "$(cat $WINEPREFIX/deepin)" = "5" ]; then
-        export APPRUN_CMD="deepin-wine5"
-    else
-        rm $WINEPREFIX/deepin
+if [ -f "$WINEPREFIX/originalwine" ]; then
         export APPRUN_CMD="wine"
-    fi
 else
-    export APPRUN_CMD="wine"
+    export APPRUN_CMD="deepin-wine5"
 fi
 
 if [ -z $1 ]; then
@@ -145,8 +140,8 @@ case $1 in
 	"winecfg")
 		OpenWinecfg
 		;;
-	"-d" | "--deepin")
-		SwitchToDeepinWine
+	"-o" | "--originalwine")
+		SwitchToOriginalWine
 		;;
 	"-h" | "--help")
 		HelpApp
