@@ -11,6 +11,7 @@ pkgbase = nbxplorer-git
 	depends = dotnet-host
 	depends = dotnet-runtime
 	depends = dotnet-sdk
+	provides = nbxplorer
 	conflicts = nbxplorer
 	source = git+https://github.com/dgarage/NBXplorer.git
 	md5sums = SKIP

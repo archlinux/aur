@@ -16,7 +16,7 @@ depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotne
 makedepends=("git")
 checkdepends=()
 optdepends=()
-provides=()
+provides=(${_pkgname_lc})
 conflicts=("nbxplorer")
 replaces=()
 backup=()
@@ -54,13 +54,13 @@ package()
     # Create the systemd service.
     echo -e "[Unit]
     Description=${pkgdesc}
+    Requires=bitcoind.service
     After=bitcoind.service
-    After=network.target
+    After=network-online.target
 
     [Service]
     Type=oneshot
     ExecStart=/usr/bin/${_pkgname_lc}
-    RemainAfterExit=yes
     Restart=on-failure
 
     [Install]
