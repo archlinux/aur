@@ -1,15 +1,15 @@
 pkgbase = zram-init
 	pkgdesc = Setup zram-based tmpfs and swap (compressed RAM devices)
-	pkgver = 10.10
+	pkgver = 10.11
 	pkgrel = 1
 	url = https://github.com/vaeth/zram-init
 	arch = any
 	license = GPL2
 	backup = etc/modprobe.d/zram.conf
-	source = zram-init-10.10.tar.gz::https://github.com/vaeth/zram-init/archive/v10.10.tar.gz
-	source = https://github.com/vaeth/zram-init/releases/download/v10.10/zram-init-10.10.tar.gz.asc
+	source = zram-init-10.11.tar.gz::https://github.com/vaeth/zram-init/archive/v10.11.tar.gz
+	source = https://github.com/vaeth/zram-init/releases/download/v10.11/zram-init-10.11.tar.gz.asc
 	validpgpkeys = 123D62DD87E7A81CA090CD65D18FC49C6F3A8EC0
-	sha256sums = 60ce6b9283e736b57b2e686e942dd0bee3b83902d9b260a138d13114cc6244a3
+	sha256sums = dd5c5ea136b92c4aba118b8ac92ab312d9bb4d55b533c257ffb5de50c7ed9a4d
 	sha256sums = SKIP
 
 pkgname = zram-init
