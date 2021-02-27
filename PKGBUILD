@@ -23,16 +23,16 @@ depends=(bluedevil
          plasma-firewall
          plasma-nm
          plasma-workspace-wallpapers
-	 plasma-pa
-	 plasma-sdk
+         plasma-pa
+         plasma-sdk
          plasma-systemmonitor
          plasma-thunderbolt
          plasma-vault
-	 kwayland-integration
-	 kwallet-pam
-	 kgamma5
-	 sddm-kcm
-	 breeze-gtk
+         kwayland-integration
+         kwallet-pam
+         kgamma5
+         sddm-kcm
+         breeze-gtk
          powerdevil
          discover
          xdg-desktop-portal-kde
