@@ -1,0 +1,10 @@
+pkgbase = rpcs3-udev
+	pkgdesc = udev rules to allow RPCS3 to communicate with DualShock 3 and 4 controllers.
+	pkgver = r1
+	pkgrel = 1
+	url = https://wiki.rpcs3.net/index.php?title=Help:Controller_Configuration
+	arch = any
+	license = CCPL:by-sa-4.0
+
+pkgname = rpcs3-udev
+
