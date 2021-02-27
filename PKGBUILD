@@ -1,13 +1,13 @@
 # Maintainer: Tobias Frilling <tobias@frilling-online.de>
 pkgname=nq-git
-pkgver=0.3.1.r0.gc09c3a7
+pkgver=0.3.1.r6.g8165cee
 pkgrel=1
 pkgdesc="Unix command line queue utility"
 arch=('x86_64') 
-url="https://github.com/chneukirchen/nq"
+url="https://github.com/leahneukirchen/nq"
 license=('custom')
 depends=('bash')
-makedepends=('git')
+makedepends=('git' 'perl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
@@ -25,7 +25,7 @@ build() {
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-	make -k check
+	PATH=/usr/bin/core_perl:$PATH make -k check
 }
 
 package() {
