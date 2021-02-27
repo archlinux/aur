@@ -1,6 +1,6 @@
 pkgname=rscrevolution
 _pkgname=RSCRevolution
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="The most developed, longest running, most active and the only FREE OldSchool RuneScape Classic Private Server."
 arch=('any')
