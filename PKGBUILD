@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=video-trimmer
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Trim videos quickly"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'gst-plugins-good' 'ffmpeg')
 makedepends=('meson' 'rust')
 checkdepends=('appstream')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('2609a3d6065c6f0057fc090daa81ca66c19d9d6c938c4314f99fff8d17c2205e')
+sha256sums=('5209cf2df903ed26c5c3471819c98da69a2a0d7fc7727578495fd3055d84e24c')
 
 build() {
 	arch-meson "$pkgname-v$pkgver" build
