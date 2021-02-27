@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('breeze-icons' 'gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
   'libyaml'  'libsamplerate' 'alsa-lib' 'fftw')
 makedepends=(
-  'cmake ' 'python' 'gettext' 'gtksourceview3' 'sed'
+  'cmake' 'python' 'gettext' 'gtksourceview3' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx' 'python-sphinx-intl'
   'ladspa' 'lv2' 'suil' 'ruby-sass')
 optdepends=('portaudio: portaudio backend'
