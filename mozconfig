@@ -48,7 +48,6 @@ ac_add_options --with-system-nss
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
-ac_add_options --with-system-png
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-icu
@@ -79,5 +78,5 @@ ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-profiling
 ac_add_options --disable-signmar
-
+ac_add_options --disable-elf-hack
 # vim:set ft=sh:

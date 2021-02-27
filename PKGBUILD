@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-classic-git
-pkgver=56.3+713628aa85e7
+pkgver=56.5+4b21280e2030
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=(git://github.com/MrAlex94/Waterfox#branch=classic
         waterfox-classic.desktop
         vendor.js)
 sha512sums=('SKIP'
-            'd5e30e4bcabc7c609d3d5e4defb4a466fd457099f4a4cad986694396f7ec16936d79e06ee9465de070fd98e5f5be562b8c2cb475e3dc669e30f585318ab66751'
+            'e2c5eb295022284e7b1193e6057e0125bf010fc34076e7641da4566b2209160f5cb3585dd0424cbc0417093c3e544d47777ed58b1894eb4dc61267bd3807ae6c'
             'de2ae1fa6d515da03026277ff30ee23935922ed26baa296334fbc088da9e924f0755dd123150c26a3b272f03198d0b283371852e0e1b9f3f6ff80cbbf1846dee'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
             
