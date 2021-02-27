@@ -1,0 +1,15 @@
+pkgbase = otf-public-sans
+	pkgdesc = A strong, neutral typeface for interfaces, text, and headings.
+	pkgver = 1.008
+	pkgrel = 1
+	epoch = 4
+	url = https://public-sans.digital.gov/
+	arch = any
+	license = OFL
+	source = otf-public-sans-4:1.008-1-LICENSE.md::https://raw.github.com/uswds/public-sans/master/LICENSE.md
+	source = https://github.com/uswds/public-sans/releases/download/v1.008/public-sans-v1.008.zip
+	sha256sums = 00acc4a89658f2c26f17d608f37f909ad087ade21b02759f4c221526371cf9eb
+	sha256sums = 12c5880048ad3f62f8b6f868142cb8b694029a037b6886788ce587babe026874
+
+pkgname = otf-public-sans
+
