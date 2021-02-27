@@ -78,7 +78,7 @@ diff --git a/arch/arm64/kernel/vmlinux.lds.S b/arch/arm64/kernel/vmlinux.lds.S
 index 1bda604f4..87ecbb53c 100644
 --- a/arch/arm64/kernel/vmlinux.lds.S
 +++ b/arch/arm64/kernel/vmlinux.lds.S
-@@ -115,7 +115,7 @@ SECTIONS
+@@ -123,7 +123,7 @@ SECTIONS
  		*(.dynsym .dynstr .hash .gnu.hash)
  	}
  
@@ -87,7 +87,7 @@ index 1bda604f4..87ecbb53c 100644
  
  	.head.text : {
  		_text = .;
-@@ -307,4 +307,4 @@ ASSERT((__entry_tramp_text_end - __entry_tramp_text_start) == PAGE_SIZE,
+@@ -315,4 +315,4 @@ ASSERT((__entry_tramp_text_end - __entry_tramp_text_start) == PAGE_SIZE,
  /*
   * If padding is applied before .head.text, virt<->phys conversions will fail.
   */
@@ -158,7 +158,7 @@ index d8d9caf02..a3c77cc7d 100644
  	le64sym	_kernel_size_le			// Effective size of kernel image, little-endian
  	le64sym	_kernel_flags_le		// Informative flags, little-endian
  	.quad	0				// reserved
-@@ -378,7 +378,7 @@ SYM_FUNC_START_LOCAL(__create_page_tables)
+@@ -363,7 +363,7 @@ SYM_FUNC_START_LOCAL(__create_page_tables)
  	 * Map the kernel image (starting with PHYS_OFFSET).
  	 */
  	adrp	x0, init_pg_dir
@@ -167,7 +167,7 @@ index d8d9caf02..a3c77cc7d 100644
  	add	x5, x5, x23			// add KASLR displacement
  	mov	x4, PTRS_PER_PGD
  	adrp	x6, _end			// runtime __pa(_end)
-@@ -470,7 +470,7 @@ SYM_FUNC_END(__primary_switched)
+@@ -455,7 +455,7 @@ SYM_FUNC_END(__primary_switched)
  
  	.pushsection ".rodata", "a"
  SYM_DATA_START(kimage_vaddr)
@@ -302,7 +302,7 @@ index 6a87d592b..60626981a 100644
  
  ifeq ($(CONFIG_RELOCATABLE), y)
  # Pass --no-apply-dynamic-relocs to restore pre-binutils-2.27 behaviour
-@@ -130,6 +131,9 @@ endif
+@@ -140,6 +140,9 @@
  # Default value
  head-y		:= arch/arm64/kernel/head.o
  
@@ -312,7 +312,7 @@ index 6a87d592b..60626981a 100644
  ifeq ($(CONFIG_KASAN_SW_TAGS), y)
  KASAN_SHADOW_SCALE_SHIFT := 4
  else
-@@ -140,6 +144,8 @@ KBUILD_CFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
+@@ -153,6 +153,8 @@ KBUILD_CFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
  KBUILD_CPPFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
  KBUILD_AFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
  

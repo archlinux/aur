@@ -15,26 +15,26 @@ pkgbase=linux-phicomm-n1
 _srcname=linux-5.11
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 arch=('aarch64')
-url="http://www.kernel.org/"
+url="https://www.kernel.org/"
 license=('GPL2')
 depends=('uboot-tools')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'meson-gxl-s905d-phicomm-n1.dts'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
-	'01-aegis-crypto.patch'
+	'01-aegis-crypto-gcc10.patch'
 	'02-revert-TEXT_OFFSET-deletion.patch'
-	'03-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch')
+	'03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch')
 
 [[ ${pkgver##*.} != 0 ]] && \
-source+=("http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
+source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
          'e21d126e18d32bd49bca6a27efdece0e'
@@ -42,10 +42,10 @@ md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
-         '692ce80012ad5d95fa0b51cc1c9d179c'
-         '7776c9f718aca4f7fa248f4aa10f5f28'
-         'f66a7ea3feb708d398ef57e4da4815e9'
-         '0e4274c495b4c0cbf41dd3842c87de31')
+         'e25f537f53ffe2850318ed541f0b3460'
+         'd891085afff175033cd2cfc3c8241759'
+         '7a18066683f3351b2bbd2653db783f80'
+         '4f2437097d20455c71d1b1866469d6be')
 
 prepare() {
   cd ${_srcname}
@@ -57,7 +57,7 @@ prepare() {
   cat "${srcdir}/config" > ./.config
 
   # Fix latest gcc compiling errors with the aegis crypto module.
-  patch -p1 -i "${srcdir}/01-aegis-crypto.patch"
+  patch -p1 -i "${srcdir}/01-aegis-crypto-gcc10.patch"
 
   # Amlogic meson SoC TEXT_OFFSET
   # Attention: since kernel 5.10, TEXT_OFFSET support is removed entriely, but it is required for the old BSP uboot to boot the kernel, so just revert it.
@@ -65,7 +65,7 @@ prepare() {
   patch -p1 < "${srcdir}/02-revert-TEXT_OFFSET-deletion.patch"
 
   # Make proc cpuinfo consistent on arm64 and arm
-  patch -p1 < "${srcdir}/03-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch"
+  patch -p1 < "${srcdir}/03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch"
 
   # Dts for Phicomm-N1
   target_dts="meson-gxl-s905d-phicomm-n1.dts"

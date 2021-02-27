@@ -3,4 +3,8 @@ linux*.tar.xz
 patch*.xz
 *.tar.gz
 src
+pkg
 pkg*.xz
+*.sh
+TODO
+lost+found/
