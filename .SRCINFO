@@ -1,7 +1,7 @@
 pkgbase = darling-dkms
 	pkgdesc = Kernel module for Darling.
 	pkgver = 0.1.20200331.testing
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/darlinghq/darling
 	install = darling-dkms.install
 	arch = i686

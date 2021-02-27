@@ -3,7 +3,7 @@
 
 pkgname=darling-dkms
 pkgver=0.1.20200331.testing
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for Darling."
 arch=('i686' 'x86_64')
 url="https://github.com/darlinghq/darling"
