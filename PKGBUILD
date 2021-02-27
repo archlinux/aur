@@ -1,17 +1,17 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=ec
-pkgver=0.3.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A desk calculator with vectors and quotations'
 arch=('x86_64')
 url='https://git.sr.ht/~subsetpark/ec'
-depends=('janet')
+depends=('janet' 'pkg-config' 'libedit')
 license=('BSD3')
 provides=('ec')
 
 source=("${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('61fddcabbdcc54eb8f3a77d037a340ca66e0f1b9b6846585e682d6fcffece9d8')
+sha256sums=('6661cd2f9ba2800b843be6ba5db068365906f37d650d24e995b26b51ec3b4cb5')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
