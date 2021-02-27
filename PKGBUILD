@@ -4,15 +4,15 @@
 
 pkgname='perl-set-scalar'
 pkgver='1.29'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="basic set operations"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/Set-Scalar'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAVIDO/Set-Scalar-1.29.tar.gz')
+url='https://metacpan.org/release/Set-Scalar'
+source=('https://search.cpan.org/CPAN/authors/id/D/DA/DAVIDO/Set-Scalar-1.29.tar.gz')
 md5sums=('4af73c0d6f562d1eddd4ebf6014ac67f')
 sha512sums=('ee77f72a237ed7d3f0467395009b00163c33e095fe5e8bdc971c8cd0eee8dbc825c83ab486e6f54ed6c1aedf1539cde9d9b1a54b8be703d5dc01ee48017ce45c')
 _distdir="Set-Scalar-1.29"
