@@ -1,6 +1,6 @@
 pkgbase = mpdscrobble-git
 	pkgdesc = A simple Last.fm scrobbler for MPD.
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/dbeley/mpdscrobble
 	arch = any
