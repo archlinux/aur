@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=libcrafter-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Libcrafter is a high level library for C++ designed to create and decode network packets"
 arch=(x86_64)
 url="https://github.com/pellegre/libcrafter"
@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 build() {
 	ls
-	cd "$pkgname/libcrafter"
+	cd "libcrafter/libcrafter"
 	ls
 	./autogen.sh
 	make
@@ -20,7 +20,7 @@ build() {
 
 
 package() {
-	cd "$pkgname/libcrafter"
+	cd "libcrafter/libcrafter"
 	make DESTDIR="$pkgdir" install
 	ldconfig -n "$pkgdir"
 }
