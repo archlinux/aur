@@ -10,8 +10,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/Object-Destroyer'
-source=('http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Object-Destroyer-2.01.tar.gz')
+url='https://metacpan.org/release/Object-Destroyer'
+source=('https://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Object-Destroyer-2.01.tar.gz')
 md5sums=('092ab6314bc5dc366ba2437a9739e194')
 sha512sums=('ee507d8e2e7d0661c6e1a0842f95495a36d79087083d7aa870233b854face37914c796bbe009782cf08e98696ea6a4da0f55b7e4007a2463b42f16329e3a26c3')
 _distdir="Object-Destroyer-2.01"
