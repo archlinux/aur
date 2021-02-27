@@ -1,6 +1,6 @@
 pkgbase = mokee-repo-git
 	pkgdesc = The Multiple Git Repository Tool from the Android Open Source Project
-	pkgver = 2.12.0.r0.g320d90b
+	pkgver = 2.12.2.r0.g00c811d
 	pkgrel = 1
 	url = https://github.com/mokee/git-repo
 	arch = any
