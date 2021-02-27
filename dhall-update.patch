@@ -1,0 +1,28 @@
+From da45d3dce3cafb6d91167d61e9e019bb664d1b16 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Fri, 5 Feb 2021 06:32:41 +0000
+Subject: [PATCH] Update serde_dhall requirement from 0.9.0 to 0.10.0
+
+Updates the requirements on [serde_dhall](https://github.com/Nadrieril/dhall-rust) to permit the latest version.
+- [Release notes](https://github.com/Nadrieril/dhall-rust/releases)
+- [Changelog](https://github.com/Nadrieril/dhall-rust/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/Nadrieril/dhall-rust/compare/serde_dhall-v0.9.0...serde_dhall-v0.10.0)
+
+Signed-off-by: dependabot[bot] <support@github.com>
+---
+ Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 5bf6c8a..65fcbb6 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -27,7 +27,7 @@ serde_json = "1.0.42"
+ failure = "0.1.6"
+ serde = "1.0.103"
+ serde_derive = "1.0.103"
+-serde_dhall = "0.9.0"
++serde_dhall = "0.10.0"
+ pyo3 = "0.12.3"
+ 
+ [lib]
