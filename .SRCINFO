@@ -1,0 +1,15 @@
+pkgbase = heather
+	pkgdesc = Lady Heather's Disciplined Oscillator Control Program.
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.ke5fx.com/heather/readme.htm
+	arch = any
+	makedepends = gcc
+	makedepends = unzip
+	depends = libx11
+	provides = heather=5.0.0
+	source = http://www.ke5fx.com/heather/heatherx11.zip
+	md5sums = c2994e5d375b907259a8668d6e39af45
+
+pkgname = heather
+
