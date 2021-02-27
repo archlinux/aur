@@ -30,7 +30,7 @@ build() {
 
 package_firmware-manager-git() {
 	pkgdesc="GTK application for managing system and device firmware."
-	depends+=('libfirmwaremanager' 'polkit')
+	depends+=('libfirmwaremanager-git' 'polkit')
 	provides=("${pkgname%-git}" "${pkgname%-git}-virtual")
 	conflicts=("${pkgname%-git}")
 	install="${pkgname%-git}.install"
