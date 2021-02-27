@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-lts54
 	pkgdesc = Linux Xanmod LTS
-	pkgver = 5.4.100
-	pkgrel = 2
+	pkgver = 5.4.101
+	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -14,13 +14,13 @@ pkgbase = linux-xanmod-lts54
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.4.100-xanmod1/patch-5.4.100-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/5.4.101-xanmod1/patch-5.4.101-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
 	sha256sums = SKIP
-	sha256sums = eb4ab03a82c99ca94df13a514b3b7cf4fa9885464407d75178139ec9a1476741
+	sha256sums = b59bb77eb1c1700a46ff86b73ed6d271d32f5c41eb6ef5084cde8cfc3918fd53
 	sha256sums = 03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134
 
 pkgname = linux-xanmod-lts54
