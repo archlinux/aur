@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod-git
-pkgver=0.0.0.r18.g040975b
-pkgrel=1
+pkgver=0.0.0.r19.gbfee9d8
+pkgrel=2
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
