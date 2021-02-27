@@ -1,7 +1,7 @@
 pkgbase = drill-search
 	pkgdesc = Search files without indexing, but clever crawling
 	pkgver = 2.1.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://drill.software
 	arch = x86_64
 	license = GPL2
