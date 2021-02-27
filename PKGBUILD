@@ -1,7 +1,7 @@
 # Maintainer: Xavier Cho <mysticfallband@gmail.com>
 
 pkgname=upbge-git
-pkgver=108113.aab4f29b25f
+pkgver=108238.a287d2f9b7e
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -135,7 +135,7 @@ package() {
 	install -D -m644 "$srcdir"/upbge.desktop \
 		"$pkgdir"/usr/share/applications/upbge.desktop
 	install -D -m644 "$srcdir"/upbge/release/freedesktop/icons/scalable/apps/upbge.svg \
-		"$pkgdir"/usr/share/icons/hicolor/scalable/apps/upbge,svg
+		"$pkgdir"/usr/share/icons/hicolor/scalable/apps/upbge.svg
 
 	if [ -e "$pkgdir"/usr/share/upbge/*/scripts/addons/cycles/lib/ ] ; then
 		# make sure the cuda kernels are not stripped
