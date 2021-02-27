@@ -1,29 +1,28 @@
-# Contributor: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=sndup-linux-git
-pkgver=2
-pkgrel=2
+pkgver=r6.aa62c5f
+pkgrel=1
 pkgdesc="A client to upload audio files to the sndup.net autdio sharing service."
 arch=('any')
-url="http://github.com/stormdragon2976/sndup-linux"
+url="http://git.2mb.codes/~stormdragon2976/sndup-linux"
 license=('WTFPL')
 depends=('bash' 'curl')
 makedepends=('git')
 optdepends=('yad: for a GUI'
-'fbcmd: Post url to Facebook'
-'texapp: Post url to App.net'
-'ttytter: Post url to Twitter'
 'xclip: Automatically copy links to the clipboard')
 
-_gitroot="git://github.com/stormdragon2976/sndup-linux.git"
-_gitname="sndup-linux"
-source=(git://github.com/stormdragon2976/sndup-linux.git)
+source=(git+https://git.2mb.codes/~stormdragon2976/sndup-linux)
 md5sums=('SKIP')
 
+pkgver()
+{
+  cd "sndup-linux"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+ 
 package()
  {
-  msg "Starting to build the package..."
-
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/sndup-linux"
   install -d "$pkgdir/usr/bin"
 install -d "$pkgdir/usr/share/licenses/${pkgname}"
   install -m755 "sndup" "$pkgdir/usr/bin"

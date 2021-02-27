@@ -1,19 +1,16 @@
 pkgbase = sndup-linux-git
 	pkgdesc = A client to upload audio files to the sndup.net autdio sharing service.
-	pkgver = 2
-	pkgrel = 2
-	url = http://github.com/stormdragon2976/sndup-linux
+	pkgver = r6.aa62c5f
+	pkgrel = 1
+	url = http://git.2mb.codes/~stormdragon2976/sndup-linux
 	arch = any
 	license = WTFPL
 	makedepends = git
 	depends = bash
 	depends = curl
 	optdepends = yad: for a GUI
-	optdepends = fbcmd: Post url to Facebook
-	optdepends = texapp: Post url to App.net
-	optdepends = ttytter: Post url to Twitter
 	optdepends = xclip: Automatically copy links to the clipboard
-	source = git://github.com/stormdragon2976/sndup-linux.git
+	source = git+https://git.2mb.codes/~stormdragon2976/sndup-linux
 	md5sums = SKIP
 
 pkgname = sndup-linux-git
