@@ -1,6 +1,6 @@
 pkgbase = apache-spark
 	pkgdesc = Apache Spark is a unified analytics engine for large-scale data processing.
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 0
 	url = http://spark.apache.org
 	install = apache-spark.install
