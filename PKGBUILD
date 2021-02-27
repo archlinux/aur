@@ -16,6 +16,7 @@ optdepends=('libunrar: for rar compressed comics' \
             'p7zip: for 7z compressed comics' \
             'unrar: for rar compressed comics' \
             'unzip: for zip compressed comics' \
+            'lhasa: for lha compressed comics' \
             'mupdf-tools: for PDF comics')
 provides=("mcomix")
 conflicts=("mcomix" "mcomix-git")

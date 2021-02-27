@@ -14,6 +14,7 @@ pkgbase = mcomix-gtk3-git
 	optdepends = p7zip: for 7z compressed comics
 	optdepends = unrar: for rar compressed comics
 	optdepends = unzip: for zip compressed comics
+	optdepends = lhasa: for lha compressed comics
 	optdepends = mupdf-tools: for PDF comics
 	provides = mcomix
 	conflicts = mcomix
