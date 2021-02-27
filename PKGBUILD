@@ -98,15 +98,10 @@ cat >crossfile.ini <<END
 llvm-config = '/usr/bin/llvm-config32'
 END
 
-  # remove build dir if there is one
-  if dir build_32; then
-    rm -rf -v build_32
-  fi
+  rm -rf -v build_32
 
-  # create build dir
   mkdir -p -v build_32
 
-  # build with meson
   meson setup build_32/ \
   --native-file crossfile.ini \
   -D b_ndebug=true \
