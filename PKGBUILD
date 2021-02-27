@@ -2,7 +2,7 @@
 # Contributor: luelistan <archlinux-aur-git@max-weller.de>
 
 pkgname=dhtest
-pkgver=2c6a9c3ef96e570b213fb9592bed1aae28c9d7cd
+pkgver=988afec50c596245947d8a478cf8f7112f5ca662
 pkgrel=1
 pkgdesc="A DHCP client simulation on linux"
 arch=("x86_64")
@@ -11,7 +11,7 @@ url="https://github.com/saravana815/dhtest"
 license=('GPL2')
 
 source=("https://github.com/saravana815/dhtest/archive/${pkgver}.tar.gz")
-sha256sums=("39d30b14333cb8bb7b5b74eafaef6dab5c56cf69bddb81c76be3f69f50ca4a8b")
+sha256sums=("a9ac727d30ce86df62720f2b493779f44633c5ab67390f24caa043a86c4f4bae")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
