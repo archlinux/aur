@@ -2,8 +2,8 @@
 
 pkgname=wonderpen-appimage
 _pkgname=wonderpen
-pkgver=1.8.1
-_pkgver=5462
+pkgver=1.8.3
+_pkgver=5520
 pkgrel=1
 pkgdesc="A professional writing software with markdown support"
 arch=("x86_64")
@@ -14,7 +14,7 @@ conflicts=('wonderpen')
 options=(!strip)
 source=("https://file.atom.oldj.net/WonderPen/${pkgver%.*}/WonderPen_linux_${pkgver}(${_pkgver}).AppImage"
         'wonderpen.sh')
-sha256sums=('961253ee375c697084cd9055176feebc4f375a82b401ac704a0bafca5e6de400'
+sha256sums=('99ffaf0d713be342b4916891eec71db0cab6f6f1bbf3b6ab6b8698f85ef5196a'
             'e9d4b90a89dad8de88c49346fff51e3813a7f1503ab3d058b87cf647d0946a10')
 noextract=('wonderpen.AppImage')
 _filename="WonderPen_linux_${pkgver}(${_pkgver}).AppImage"
