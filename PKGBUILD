@@ -11,7 +11,7 @@ _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
 url="https://www.freerdp.com/"
@@ -55,7 +55,7 @@ build() {
         -DWITH_CHANNELS=ON \
         -DWITH_CLIENT_CHANNELS=ON \
         -DWITH_SERVER_CHANNELS=ON \
-        -DWITH_VAAPI=ON \
+        -DWITH_VAAPI=OFF \
         -DCHANNEL_URBDRC_CLIENT=ON \
         -Wno-dev \
         -B build \

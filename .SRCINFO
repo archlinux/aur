@@ -1,7 +1,7 @@
 pkgbase = freerdp-gstfree
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP)
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freerdp.com/
 	arch = x86_64
 	license = Apache
