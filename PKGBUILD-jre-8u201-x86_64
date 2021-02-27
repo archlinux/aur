@@ -2,8 +2,8 @@
 # Feedback is appreciated
 
 pkgname=xmage
-pkgver=1.4.48V1
-pkgrel=1
+pkgver=1.4.48V2
+pkgrel=0
 _java_version=8u201
 _java_dir=jre1.8.0_201
 
@@ -19,13 +19,13 @@ source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png'
 	'http://xmage.today/java/jre-8u201-linux-x64.tar.gz'
 )
-sha256sums=("cdb2a2465283f129ff756385a13647638ef7e554d6cfa570c3149ea00a2d5278" 
+sha256sums=("f48ede09bccdb6bb103e62500fd0889e38012ee0facb89dcad9681d40a2645cf" 
 	"SKIP"
 	"SKIP"
 	'12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352'
 )
 
-#makedepends=('detox')
+makedepends=('detox')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
 install="${pkgname}.install"
 
@@ -34,7 +34,7 @@ package() {
 	cd "${srcdir}"
 
 	# clean up filenames
-	#detox -r -v ./* &> /dev/null
+	detox -r -v ./* &> /dev/null
 
 	msg2 "changing file format of included scripts..."
 	awk '{ sub("\r$", ""); print }' mage-client/startClient.sh > mage-client/startClient-unix.sh
