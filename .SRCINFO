@@ -6,6 +6,7 @@ pkgbase = qt-jpegxl-image-plugin-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = make
 	depends = qt5-base
 	depends = libjpeg-xl
 	source = git+https://github.com/novomesk/qt-jpegxl-image-plugin.git
