@@ -2,7 +2,7 @@
 
 pkgname=obsidian-insider
 _pkgname=obsidian
-_appimagver=0.11.3
+_appimagver=0.11.4
 _appimage="${_pkgname}-${_appimagver}.asar.gz"
 pkgver=${_appimagver//-/_}
 pkgrel=1
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('38d18cc7f3c6aacaba37aecb2c27754ad6562be121d23d6eeeeeccfb85234d04'
             '8cd2bac969bf0b394c5766a26985759ec5bc6d6cf5ce0316920dce095d964041'
-            '0685d0de087c9335ec3fa651fcf8e23364bce12a4d0e5df15490bdfd9c8ca3da')
+            'a6d3401a9a2513c85fb6530c350df35f69312dbe667d5a30deadb2683dd1c907')
 
 package() {
     # Go to source directory
