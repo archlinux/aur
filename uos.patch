@@ -15,7 +15,7 @@ index 51c6169..b5d2101 100644
          })
  
 -        this.window.loadURL('https://wx.qq.com/?lang=zh_CN')
-+        this.window.loadURL('https://wx.qq.com/?lang=zh_CN&target=t')
++        this.window.loadURL('https://wx2.qq.com/?lang=zh_CN&target=t')
  
          this.window.webContents.on('dom-ready', () => {
              this.window.webContents.insertCSS(CssInjector.login)
@@ -31,7 +31,7 @@ index 51c6169..b5d2101 100644
 +                let token = execSync('/opt/wechat-uos-token/wechat-uos-token.sh').toString('ascii');
 +                if (details.url.indexOf("/cgi-bin/mmwebwx-bin/webwxnewloginpage") > -1) {
 +                    details.requestHeaders["extspam"] = token
-+                    details.requestHeaders["client-version"] = "2.0.0"
++                    details.requestHeaders["client-version"] = "8.0.0"
 +                    callback({
 +                        requestHeaders: details.requestHeaders,
 +                    })

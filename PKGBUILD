@@ -2,7 +2,7 @@
 pkgname=freechat-uos
 url="https://github.com/eNkru/freechat"
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="致力于打造macOS和Linux桌面下最好用的微信客户端。(添加UOS补丁)"
 arch=("x86_64")
 license=("MIT")
@@ -18,7 +18,7 @@ source=(
 )
 md5sums=('0213ce4ef07b329b811af3498d851967'
          '561878f3933e289360ac860bdc1e3889'
-         '5e4390b5227c9ecb2706fdcb927a943f'
+         '6e375ad87c9dbdc367a81fa70cae3e5e'
          '64faa178571d2f8871b3e021024dc009')
 
 build() {
