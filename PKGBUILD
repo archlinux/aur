@@ -286,8 +286,7 @@ fi
 package() {
   cd firefox-${pkgver%b*}
   DESTDIR="$pkgdir" ./mach install
-  mv "$pkgdir"/usr/lib/{librewolf,librewolf-dev}
-  rm "$pkgdir"/usr/bin/librewolf
+  mv "$pkgdir"/usr/lib/librewolf-dev/{librewolf-dev,librewolf}
 
   _vendorjs="$pkgdir/usr/lib/librewolf-dev/browser/defaults/preferences/vendor.js"
 
