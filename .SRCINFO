@@ -1,9 +1,8 @@
 pkgbase = firmware-manager-git
 	pkgdesc = Generic framework and GTK UI for firmware updates from system76-firmware and fwupd
-	pkgver = 0.1.2.r1.g171dce8
+	pkgver = 0.1.2.r2.g44cc265
 	pkgrel = 2
 	url = https://github.com/pop-os/firmware-manager
-	install = firmware-manager.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -12,9 +11,6 @@ pkgbase = firmware-manager-git
 	depends = gtk3
 	depends = openssl
 	depends = libgudev
-	depends = polkit
-	optdepends = fwupd
-	optdepends = system76-firmware-daemon
 	provides = firmware-manager
 	conflicts = firmware-manager
 	source = git+https://github.com/pop-os/firmware-manager.git
@@ -25,4 +21,23 @@ pkgbase = firmware-manager-git
 	sha256sums = fb8395e19bfd54f756dad1d073135c5b41caa2ad27ee0621350fba50b2e7363b
 
 pkgname = firmware-manager-git
+	pkgdesc = GTK application for managing system and device firmware.
+	install = firmware-manager.install
+	depends = dbus
+	depends = gtk3
+	depends = openssl
+	depends = libgudev
+	depends = libfirmwaremanager
+	depends = polkit
+	provides = firmware-manager
+	provides = firmware-manager-virtual
+	conflicts = firmware-manager
+
+pkgname = libfirmware-manager-git
+	pkgdesc = Shared library for C which provides the firmware manager as a GTK widget.
+	optdepends = fwupd
+	optdepends = system76-firmware-daemon
+	provides = libfirmware-manager
+	provides = libfirmware_manager.so
+	conflicts = libfirmware-manager
 
