@@ -1,0 +1,20 @@
+pkgbase = cffi-lua
+	pkgdesc = A portable C FFI for Lua, based on libffi
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/q66/cffi-lua
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = pkgconf
+	depends = libffi
+	depends = lua
+	source = https://github.com/q66/cffi-lua/archive/v0.2.1.tar.gz
+	sha256sums = c30080d6309167f86d1a96d3ee33f33ef52e884052b7feac140b8c52db10ad7a
+
+pkgname = cffi-lua
+
