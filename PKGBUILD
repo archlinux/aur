@@ -1,6 +1,6 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=rndsig
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="The ultimate email signature randomiser."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('bash')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("${url}")
-sha512sums=('4f995c83c076ddc8db1889fd35cc1602c58ef799218a56aa3b1269e3b1d49e1399e4d9aa4eed0848245d1d4059121d1eff0d13c08ec8d1ec695b85e89c62e4a2')
+sha512sums=('9e2a6a2bf2b6190e9ea2de67e93f790d164ff0078ddab7090a28b8dda5f85e6ac9df5e585c6fb6db8a73c6320363955ef0aa94dbdc1f0c28b37565186de98d92')
 
 package()
  {
