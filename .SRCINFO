@@ -1,12 +1,12 @@
 pkgbase = ocaml-mm
 	pkgdesc = OCaml multimedia library
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/savonet/ocaml-mm
 	arch = i686
 	arch = x86_64
 	license = custom:LGPL2.1 with linking exception
-	makedepends = ocaml-findlib
+	makedepends = dune
 	depends = ocaml
 	depends = ocaml-alsa
 	depends = ocaml-ao
@@ -18,8 +18,8 @@ pkgbase = ocaml-mm
 	depends = ocaml-theora
 	depends = ffmpeg
 	options = !strip
-	source = https://github.com/savonet/ocaml-mm/releases/download/0.5.0/ocaml-mm-0.5.0.tar.gz
-	sha512sums = 8c252471430496aa9df70986bfbcc79b927367879b926de3fb0f02f6998752dd321b3956a9a2eb238af78740fdd5f406d7a16e616a72030b1e131163c0f4482c
+	source = https://github.com/savonet/ocaml-mm/archive/v0.5.1.tar.gz
+	sha256sums = d03ed076bd084d19a9a747d129066c579b15915db9400d50e161ec09e03bf069
 
 pkgname = ocaml-mm
 
