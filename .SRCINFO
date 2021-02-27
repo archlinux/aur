@@ -1,0 +1,16 @@
+pkgbase = goocanvas3
+	pkgdesc = A cairo canvas widget for GTK+
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GooCanvas
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = python-gobject
+	depends = gtk3
+	conflicts = goocanvas
+	source = https://download.gnome.org/sources/goocanvas/3.0/goocanvas-3.0.0.tar.xz
+	sha256sums = 670a7557fe185c2703a14a07506156eceb7cea3b4bf75076a573f34ac52b401a
+
+pkgname = goocanvas3
+
