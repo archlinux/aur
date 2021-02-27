@@ -3,7 +3,7 @@ pkgbase = perli
 	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/mklement0/perli
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = perl>=5.6.2
 	optdepends = rlwrap: provide command-line editing support

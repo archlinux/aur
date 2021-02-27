@@ -3,7 +3,7 @@ pkgname=perli
 pkgver=0.1.5
 pkgrel=1
 pkgdesc="Multi-platform Perl REPL"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/mklement0/perli"
 license=('MIT')
 depends=('perl>=5.6.2')
