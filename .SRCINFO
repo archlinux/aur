@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-system76
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with System76 patches)
 	pkgver = 3.38.4
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL2
@@ -39,7 +39,7 @@ pkgbase = gnome-control-center-system76
 	depends = libhandy
 	depends = gsound
 	depends = colord-gtk
-	depends = firmware-manager
+	depends = libfirmware-manager
 	depends = libs76-hidpi-widget
 	optdepends = system-config-printer: Printer settings
 	optdepends = gnome-user-share: WebDAV file sharing
@@ -47,6 +47,7 @@ pkgbase = gnome-control-center-system76
 	optdepends = rygel: media sharing
 	optdepends = openssh: remote login
 	provides = gnome-control-center
+	provides = firmware-manager-virtual
 	conflicts = gnome-control-center
 	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=796549a7ed697da368efe8386f530ee482a2de06
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git

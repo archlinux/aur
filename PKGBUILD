@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=3.38.4
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -12,7 +12,7 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd grilo libibus
          cheese libgudev bolt udisks2 libhandy gsound colord-gtk
-         firmware-manager libs76-hidpi-widget)
+         libfirmware-manager libs76-hidpi-widget)
 makedepends=(docbook-xsl modemmanager git python meson)
 checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
 optdepends=('system-config-printer: Printer settings'
@@ -20,7 +20,7 @@ optdepends=('system-config-printer: Printer settings'
             'gnome-remote-desktop: screen sharing'
             'rygel: media sharing'
             'openssh: remote login')
-provides=("$_pkgname")
+provides=("$_pkgname" 'firmware-manager-virtual')
 conflicts=("$_pkgname")
 _commit=796549a7ed697da368efe8386f530ee482a2de06  # tags/3.38.4^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
