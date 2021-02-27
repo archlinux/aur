@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-lzlib
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A library providing in-memory LZMA compression and decompression functions (mingw-w64)"
 arch=('any')
 url="https://www.nongnu.org/lzip/lzlib.html"

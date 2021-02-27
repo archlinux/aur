@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-lzlib
 	pkgdesc = A library providing in-memory LZMA compression and decompression functions (mingw-w64)
 	pkgver = 1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nongnu.org/lzip/lzlib.html
 	arch = any
 	license = 2-clause BSD
