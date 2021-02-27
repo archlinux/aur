@@ -3,7 +3,7 @@
 pkgbase=moc_notify-git
 pkgname=$pkgbase
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 _gitname=moc_notify
 _gittag="v${pkgver}"
 
@@ -28,7 +28,7 @@ source=("moc_notify-git.install" "git+${url}.git?signed#tag=${_gittag}")
 sha256sums=('dc8acfa99a68825cc74e9659f2f5e03802a336705cd5e080504cd4fc88743f01' 'SKIP')
 
 
-validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
+validpgpkeys=('95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1')
 
 
 build() {
