@@ -9,6 +9,7 @@ license=("MIT")
 makedepends=("yarn")
 depends=("bubblewrap")
 provides=("freechat")
+conflicts=("wechat-uos")
 source=(
     "https://github.com/eNkru/freechat/archive/v$pkgver.zip"
     "https://github.com/JoveYu/PKGBUILD/releases/download/0.0.2/wechat-uos-token.tar.gz"

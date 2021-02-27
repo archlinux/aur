@@ -8,6 +8,7 @@ pkgbase = freechat-uos
 	makedepends = yarn
 	depends = bubblewrap
 	provides = freechat
+	conflicts = wechat-uos
 	source = https://github.com/eNkru/freechat/archive/v1.0.0.zip
 	source = https://github.com/JoveYu/PKGBUILD/releases/download/0.0.2/wechat-uos-token.tar.gz
 	source = uos.patch
