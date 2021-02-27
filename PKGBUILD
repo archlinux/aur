@@ -33,10 +33,10 @@ package() {
                     "${pkgdir}/usr/share/mime/packages/"
     
     install -Dm644 "${srcdir}/mindmaster-cn.desktop" "${pkgdir}/opt/${_pkgname}/mindmaster.desktop"
-    ln -sf "${pkgdir}/opt/${_pkgname}/mindmaster.desktop" "${pkgdir}/usr/share/applications/mindmaster.desktop"
-    ln -sf "${pkgdir}/opt/${_pkgname}/MindMaster" "${pkgdir}/usr/bin/mindmaster"
-    ln -sf "${pkgdir}/opt/${_pkgname}/mindmaster.png" "${pkgdir}/usr/share/icons/mindmaster.png"
-    ln -sf "${pkgdir}/opt/${_pkgname}/emmx.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/emmx.svg"
-    ln -sf "${pkgdir}/opt/${_pkgname}/mindmaster.xml" "${pkgdir}/usr/share/mime/packages/mindmaster.xml"
+    ln -sf "/opt/${_pkgname}/mindmaster.desktop" "${pkgdir}/usr/share/applications/mindmaster.desktop"
+    ln -sf "/opt/${_pkgname}/MindMaster" "${pkgdir}/usr/bin/mindmaster"
+    ln -sf "/opt/${_pkgname}/mindmaster.png" "${pkgdir}/usr/share/icons/mindmaster.png"
+    ln -sf "/opt/${_pkgname}/emmx.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/emmx.svg"
+    ln -sf "/opt/${_pkgname}/mindmaster.xml" "${pkgdir}/usr/share/mime/packages/mindmaster.xml"
 }
 
