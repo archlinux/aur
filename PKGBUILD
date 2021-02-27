@@ -1,53 +1,24 @@
-# Maintainer: Milo Mirate <mmirate@gmx.com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Milo Mirate <mmirate@gmx.com>
+
 pkgname=pipe2imap-git
-pkgver=20120529
+pkgver=r2.477d4c7
 pkgrel=1
 pkgdesc="Appends a message from stdin to an IMAP mailbox."
 arch=('any')
-url="https://github.com/mikecardwell/pipe2imap"
+url="https://gitlab.com/mikecardwell/pipe2imap"
 license=('GPL')
-groups=()
 depends=('perl-imap-client')
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+source=(git+https://gitlab.com/mikecardwell/pipe2imap.git)
+md5sums=('SKIP')
 
-_gitroot="https://github.com/mikecardwell/pipe2imap.git"
-_gitname="pipe2imap"
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # NO BUILD HERE, IT'S JUST A PERL SCRIPT
-  #
+pkgver() {
+  cd pipe2imap
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  install -Dm755 pipe2imap.pl "$pkgdir/usr/bin/pipe2imap.pl"
+  cd pipe2imap
+  install -Dm755 pipe2imap.pl "$pkgdir/usr/bin/pipe2imap"
 }
-
-# vim:set ts=2 sw=2 et:

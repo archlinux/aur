@@ -1,12 +1,14 @@
 pkgbase = pipe2imap-git
 	pkgdesc = Appends a message from stdin to an IMAP mailbox.
-	pkgver = 20120529
+	pkgver = r2.477d4c7
 	pkgrel = 1
-	url = https://github.com/mikecardwell/pipe2imap
+	url = https://gitlab.com/mikecardwell/pipe2imap
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = perl-imap-client
+	source = git+https://gitlab.com/mikecardwell/pipe2imap.git
+	md5sums = SKIP
 
 pkgname = pipe2imap-git
 
