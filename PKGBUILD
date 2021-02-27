@@ -293,8 +293,7 @@ fi
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
-  mv "$pkgdir"/usr/lib/{librewolf,$pkgname}
-  rm "$pkgdir"/usr/bin/librewolf
+  mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname,librewolf}
 
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
