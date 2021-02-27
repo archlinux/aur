@@ -2,13 +2,13 @@
 
 pkgname=setzer-git
 _gitname=Setzer
-pkgver=r314.9faed55
+pkgver=r876.e9c96fa
 pkgrel=1
 pkgdesc="LaTeX editor written in Python with Gtk"
 arch=('i686' 'x86_64')
 url="https://github.com/cvfosammmm/Setzer"
 license=('GPL3')
-depends=('gtk3' 'gtksourceview3' 'poppler-glib' 'texlive-core' 'gspell' 'python-pyxdg')
+depends=('gtk3' 'gtksourceview3' 'poppler-glib' 'texlive-core' 'gspell' 'python-pyxdg' 'python-pdfminer')
 makedepends=('git' 'meson')
 source=("git+https://github.com/cvfosammmm/Setzer")
 md5sums=('SKIP')
