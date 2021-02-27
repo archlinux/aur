@@ -1,0 +1,10 @@
+post_upgrade() {
+    echo 
+    echo "Remove ~/.deepinwine/Deepin-KGMusic to generate a new bottle."
+    echo 
+}
+
+post_remove() {
+    echo "Deleting existing KGMusic bottles..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-KGMusic/ \;
+}

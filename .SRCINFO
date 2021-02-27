@@ -1,0 +1,21 @@
+pkgbase = com.kugou.spark
+	pkgdesc = Kugou Music Client on Deepin Wine 5 (from Spark Store)
+	pkgver = 9.1.44.23567spark1
+	pkgrel = 1
+	url = http://www.kugou.com/
+	install = kugou.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = noto-fonts-cjk
+	depends = deepin-wine-helper
+	source = https://cdn.jerrywang.top/store/music/com.kugou.spark/com.kugou.spark_9.1.44.23567spark1_i386.deb
+	sha512sums = 59076d8afc1f5adb7a30b7fd96988c2deb5a9500d79aa486ea2c4e6bba798c676d8824664d54ebe43e728b65cdbf2c76efe04fcf67dbba7a94bd98c765ffc0d3
+
+pkgname = com.kugou.spark
+
