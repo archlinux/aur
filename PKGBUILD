@@ -2,7 +2,7 @@
 
 pkgname=hush3-bin
 _pkgname=hush3
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
@@ -11,9 +11,9 @@ license=('GPL3')
 depends=('libsodium' 'lib32-zlib')
 makedepends=('wget' 'git' 'curl')
 conflicts=('hush3')
-source=("$_pkgname-$pkgver.tar.gz::https://git.hush.is/attachments/3f62bccc-259b-4f7a-83c3-a7ede68c9034"
+source=("$_pkgname-$pkgver.tar.gz::https://git.hush.is/attachments/40414690-81e5-463d-9bd3-904e572ea599"
         "$url/raw/branch/master/LICENSE")
-sha256sums=('4bc02cc740878d6fb604ae56b02890a0100a8355fa398d7ecc8b666d2f8ab57a'
+sha256sums=('0d5ebf9170af4946841577e8fa092adfdd8bf18be1eb8de06f8dd4be1ec44a57'
             '6eae06cda3a8320e607ac0ee96cbdfc52b977463151ff4d5b119a26ee0cf666d')
 
 package() {
