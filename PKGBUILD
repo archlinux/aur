@@ -34,7 +34,7 @@ package() {
     DESTDIR="$pkgdir" ${_arch}-make install
     install -Dm755 minilzip.exe "$pkgdir"/usr/${_arch}/bin/minilzip.exe
     install -Dm755 liblz.so.${pkgver} "$pkgdir"/usr/${_arch}/bin/liblz.dll
-    rm liblz.so*
+    rm "$pkgdir"/usr/${_arch}/lib/liblz.so*
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
