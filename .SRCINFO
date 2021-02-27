@@ -1,6 +1,6 @@
 pkgbase = bforartists
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://bforartists.de/
 	arch = i686
@@ -37,10 +37,10 @@ pkgbase = bforartists
 	optdepends = openimagedenoise: Intel Open Image Denoise support in compositing
 	provides = bforartists
 	conflicts = bforartists
-	source = https://github.com/Bforartists/Bforartists/archive/v2.7.0.tar.gz
+	source = https://github.com/Bforartists/Bforartists/archive/v2.8.0.tar.gz
 	source = usd_python.patch
 	source = embree.patch
-	sha256sums = 6a132465ec2e50e4b77a908e14e295f4808fff7e9035f4d30ae0ef3ec03c0405
+	sha256sums = 39ccc4f7d2086b6e4433c9d3ed8c2b8ed633f139903b71c0b795baaa13d0bae0
 	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
 	sha256sums = dd04c10b6a9c78849608eebfd1f2a5f2a280b7413a24a7f0337d67bceab90cb4
 
