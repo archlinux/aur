@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=ttf-lxgw-wenkai
-pkgver=0.204
+pkgver=0.205
 pkgrel=1
 pkgdesc="An open-source Chinese font derived from Fontworks' Klee One."
 arch=('any')
@@ -19,8 +19,8 @@ for file in "${_fontfiles[@]}"; do
 done
 
 sha256sums=('e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602'
-            '8082749857438fb21bf3c0bc718e5f79e812c571cb8b7b831b2e28ae72aa401e'
-            'cca5ef5751ebf217386e5cbb198a460359a160b2e132f0fa31809f34692bf221')
+            '425d72dafd63648021721b03f2723db59214118c7f388b6e996f9e932b75fe4c'
+            '50a9faa4d3e74b96eaad8e2b71a292fa0f23394e2c4898f0b2789e36ed183e2f')
 
 package() {
     for file in "${_fontfiles[@]}"; do
