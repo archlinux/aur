@@ -4,33 +4,33 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=fox-devel
-pkgver=1.7.73
+pkgver=1.7.74
 pkgrel=1
 pkgdesc="Free Objects for X: GUI Toolkit for C++, development version."
-arch=('x86_64')
+arch=(x86_64)
 url="http://www.fox-toolkit.org/"
-license=('LGPL' 'custom')
-depends=('glu' 'libsm' 'libtiff' 'libxcursor' 'libxft' 'libxi' 'libxrandr')
-makedepends=('mesa')
-provides=("fox-devel=${pkgver}")
+license=(LGPL 'custom')
+depends=(glu libsm libtiff libxcursor libxft libxi libxrandr)
+makedepends=(mesa)
 source=("http://www.fox-toolkit.org/ftp/fox-${pkgver}.tar.gz")
-sha512sums=('b52d104366433af0a8855d54deb89480fddf636fcc0e40cfd17a8f159e75b2d2ed55281a2dd81049aa1d48f7594de7a007a1147a378117661ff9f0c032517bae')
+sha512sums=('910cd6c9d4922e526391a80266d9586b0a63b15754413692b462f7f785d9d822cc8eb7b77afd34aa8437f77310909414084442198c454e4b748878343d48e16a')
 
 build() {
   cd "fox-${pkgver}"
-  ./configure   --prefix=/usr \
-                --enable-static=no \
-                --enable-release \
-                --with-xft=yes \
-                --with-opengl=yes \
-                --with-xim \
-                --with-xshm \
-                --with-shape \
-                --with-xcursor \
-                --with-xrender \
-                --with-xrandr \
-                --with-xfixes \
-                --with-xinput
+  ./configure \
+    --prefix=/usr \
+    --enable-static=no \
+    --enable-release \
+    --with-xft=yes \
+    --with-opengl=yes \
+    --with-xim \
+    --with-xshm \
+    --with-shape \
+    --with-xcursor \
+    --with-xrender \
+    --with-xrandr \
+    --with-xfixes \
+    --with-xinput
   make
 }
 
