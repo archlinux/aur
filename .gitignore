@@ -1,0 +1,5 @@
+FBNeo/
+*.pkg.tar.xz
+pkg/
+src/
+
