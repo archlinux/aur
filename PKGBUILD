@@ -4,11 +4,11 @@ _name=FotoKilof
 
 pkgname=${_name,,}
 pkgver=3.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
 makedepends=('python-setuptools')
-depends=('imagemagick' 'python-configparser' 'python-tkcolorpicker')
+depends=('imagemagick' 'tk')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
