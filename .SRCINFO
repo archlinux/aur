@@ -1,15 +1,13 @@
 pkgbase = python-google
 	pkgdesc = Google search from Python
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MarioVilas/googlesearch
-	arch = x86_64
-	license = BSD-3-Clause
-	makedepends = python
+	arch = any
+	license = BSD
 	makedepends = python-setuptools
-	depends = python
 	depends = python-beautifulsoup4
-	source = python-google-3.0.0::https://github.com/MarioVilas/googlesearch/archive/v3.0.0.tar.gz
+	source = python-google-3.0.0.tar.gz::https://github.com/MarioVilas/googlesearch/archive/v3.0.0.tar.gz
 	sha256sums = 9fd814876322b84f7f73499f3bd96b4da7533904e7f00c6dea2e262a467889d1
 
 pkgname = python-google
