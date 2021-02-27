@@ -6,7 +6,7 @@ pkgdesc="An MCP2210 python driver."
 arch=(x86_64)
 url="https://jeremyherbert.github.io/mcp2210-python/"
 license=('')
-depends=('python' 'python-distribute' 'python-docutils')
+depends=('python' 'python-distribute' 'python-docutils' 'python-hidapi')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 
 _gitroot='https://github.com/jeremyherbert/mcp2210-python.git'
