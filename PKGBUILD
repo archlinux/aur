@@ -11,11 +11,11 @@ arch=("any")
 url="https://github.com/btcpayserver/${_pkgname}"
 license=("MIT")
 groups=()
-depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk" "lnd" "nbxplorer-git")
+depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk" "lnd" "nbxplorer-git" "postgresql")
 makedepends=("git")
 checkdepends=()
 optdepends=()
-provides=()
+provides=(${_pkgname})
 conflicts=("btcpayserver")
 replaces=()
 backup=()
@@ -53,14 +53,15 @@ package()
     # Create the systemd service.
     echo -e "[Unit]
     Description=${pkgdesc}
+    Requires=bitcoind.service
+    Requires=nbxplorer.service
     After=bitcoind.service
     After=nbxplorer.service
-    After=network.target
+    After=network-online.target
 
     [Service]
     Type=oneshot
     ExecStart=/usr/bin/${_pkgname}
-    RemainAfterExit=yes
     Restart=on-failure
 
     [Install]
