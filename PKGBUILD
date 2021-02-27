@@ -1,50 +1,47 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Brian Turek <brian.turek@gmail.com>
+# Contributor: Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn-git
-pkgver=1.8.9.dev.r5.g8802a1f
+pkgver=1.8.13.dev.r73.gf9918d2
 pkgrel=1
-pkgdesc='NetworkManager VPN plugin for OpenVPN - git checkout'
-arch=('i686' 'x86_64')
-license=('GPL')
-url='http://www.gnome.org/projects/NetworkManager/'
-depends=('libnm-gtk' 'openvpn' 'libsecret' 'libnma')
-makedepends=('git' 'intltool' 'python')
-provides=('networkmanager-openvpn')
+pkgdesc="NetworkManager VPN plugin for OpenVPN"
+url="https://wiki.gnome.org/Projects/NetworkManager"
+arch=(x86_64)
+license=(GPL)
+depends=(libnm libsecret openvpn)
+makedepends=(libnma intltool python git)
+optdepends=('libnma: GUI support')
 conflicts=('networkmanager-openvpn')
-source=('git+https://gitlab.gnome.org/GNOME/network-manager-openvpn.git')
+provides=('networkmanager-openvpn')
+source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd network-manager-openvpn/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		printf '%s.r%s.g%s' \
-			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git rev-parse --short HEAD)"
-	else
-		printf '0.r%s.g%s' \
-			"$(git rev-list --count master)" \
-			"$(git rev-parse --short HEAD)"
-	fi
+  cd NetworkManager-openvpn
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-build() {
-	cd network-manager-openvpn/
 
-	./autogen.sh
-	./configure --prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--libexecdir=/usr/lib/networkmanager \
-		--enable-more-warnings=yes \
-		--disable-static
-	make
+prepare() {
+  cd NetworkManager-openvpn
+  intltoolize --automake --copy
+  autoreconf -fvi
+}
+
+build() {
+  cd NetworkManager-openvpn
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --libexecdir=/usr/lib --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
 package() {
-	cd network-manager-openvpn/
-
-	make DESTDIR="${pkgdir}" install
+  cd NetworkManager-openvpn
+  make DESTDIR="$pkgdir" install dbusservicedir=/usr/share/dbus-1/system.d
+  echo 'u nm-openvpn - "NetworkManager OpenVPN"' |
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
 
+# vim:set sw=2 et:
