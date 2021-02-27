@@ -1,29 +1,27 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: robertfoster
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-duppy
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="OCaml asynchronous scheduler and monad for server-oriented programming"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-duppy"
 license=('LGPL2.1')
-depends=('ocaml' 'ocaml-pcre' 'ocaml-ssl')
-makedepends=('ocaml-findlib')
+depends=('ocaml' 'ocaml-pcre')
+makedepends=('dune')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-duppy/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('1c855123679a16ad73941b3f7d5ba5667a6e8fc79898b666f59ff1ca01c7c6374c935d66214518fa0ee2b18a7acb14062c7f5bfb296377e37f018bf4f42f8de3')
+source=("https://github.com/savonet/ocaml-duppy/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  ./configure
-  make
+  dune build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
+  dune install --prefix "${pkgdir}/usr" \
+    --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 }
+
+sha256sums=('e5674cb25d53e0f871106489067422e6e9daa4225cc0669bdeab11b6e7cb2fbc')
