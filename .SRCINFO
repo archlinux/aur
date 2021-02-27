@@ -7,13 +7,12 @@ pkgbase = ocaml-alsa
 	arch = x86_64
 	license = GPL2
 	makedepends = dune
-	makedepends = git
 	depends = ocaml
 	depends = alsa-lib
 	options = !strip
 	options = !makeflags
 	source = https://github.com/savonet/ocaml-alsa/archive/0.3.0.tar.gz
-	md5sums = abe2eed424387f316e09d90886c3dde1
+	sha256sums = b0fd83b4b3a8e77a1d56d23f9864f1d44f32607369e37528fd4350b1d67222ed
 
 pkgname = ocaml-alsa
 

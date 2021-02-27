@@ -9,18 +9,19 @@ arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-alsa"
 license=('GPL2')
 depends=('ocaml' 'alsa-lib')
-makedepends=('dune' 'git')
+makedepends=('dune')
 options=('!strip' '!makeflags')
 source=("https://github.com/savonet/${pkgname}/archive/${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    dune build
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  dune build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    dune install --prefix "${pkgdir}/usr" \
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  dune install --prefix "${pkgdir}/usr" \
     --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 }
-md5sums=('abe2eed424387f316e09d90886c3dde1')
+
+sha256sums=('b0fd83b4b3a8e77a1d56d23f9864f1d44f32607369e37528fd4350b1d67222ed')
