@@ -2,7 +2,7 @@
 #
 
 pkgname=srmd-ncnn-vulkan
-pkgver=20200818
+pkgver=20210210
 pkgrel=1
 pkgdesc="SRMD super resolution implemented with ncnn library"
 url="https://github.com/nihui/srmd-ncnn-vulkan"

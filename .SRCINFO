@@ -1,6 +1,6 @@
 pkgbase = srmd-ncnn-vulkan
 	pkgdesc = SRMD super resolution implemented with ncnn library
-	pkgver = 20200818
+	pkgver = 20210210
 	pkgrel = 1
 	url = https://github.com/nihui/srmd-ncnn-vulkan
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = srmd-ncnn-vulkan
 	depends = vulkan-icd-loader
 	depends = vulkan-driver
 	conflicts = srmd-ncnn-vulkan-git
-	source = git://github.com/nihui/srmd-ncnn-vulkan.git#tag=20200818
+	source = git://github.com/nihui/srmd-ncnn-vulkan.git#tag=20210210
 	sha256sums = SKIP
 
 pkgname = srmd-ncnn-vulkan
