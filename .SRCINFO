@@ -1,7 +1,7 @@
 pkgbase = fotokilof
 	pkgdesc = GUI for ImageMagick
-	pkgver = 3.5.3
-	pkgrel = 4
+	pkgver = 3.5.7
+	pkgrel = 1
 	url = https://github.com/TeaM-TL/FotoKilof
 	arch = any
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = fotokilof
 	depends = imagemagick
 	depends = python-configparser
 	depends = python-tkcolorpicker
-	source = https://files.pythonhosted.org/packages/source/F/FotoKilof/FotoKilof-3.5.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/F/FotoKilof/FotoKilof-3.5.7.tar.gz
 	source = 0001-fix-character-in-setup.py-entrypoint-gui_script.patch
 	source = fotokilof.desktop
-	sha256sums = 3d40b432488b4ca350ff63ea8e99928b519c8930ec95ced0e0bfe2e3bf104f0f
+	sha256sums = a869a0bdb88cc1f4c5dab0a43bf8e5268c455a07b833f88504d4511aef940163
 	sha256sums = e0d3b71864705c1dce83f89d674015b7fb5f17c18470c2b78e1635de48a518e6
 	sha256sums = 8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2
 
