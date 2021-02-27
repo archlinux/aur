@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
@@ -22,7 +22,8 @@ depends=('qt5-base'
 	'libqtxdg'
 	'lzo'
 	'libxinerama'
-	'libsasl')
+	'libsasl'
+	'x11vnc')
 optdepends=('kldap: KDE support')
 makedepends=('git' 'gcc' 'cmake' 'qt5-tools' 'procps-ng' 'kldap')
 source=("git+${url}/veyon.git#tag=v${pkgver}")
@@ -46,6 +47,7 @@ build() {
         -DCMAKE_INSTALL_DATA_DIR=/usr/share/ \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_VEYON_X11VNC_EXTERNAL=ON \
+        -DWITH_PCH=OFF \
         -DSYSTEMD_SERVICE_INSTALL_DIR=/usr/lib/systemd/system/ \
         -DCMAKE_BUILD_TYPE=release \
 	../"${pkgname}"
