@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
 pkgver=r242.a3b493d
-pkgrel=1
+pkgrel=2
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
