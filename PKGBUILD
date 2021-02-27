@@ -1,16 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
-pkgname=firmware-manager
+pkgname=('firmware-manager' 'libfirmware-manager')
+pkgbase=firmware-manager
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
-depends=('dbus' 'gtk3' 'openssl' 'libgudev' 'polkit')
+depends=('dbus' 'gtk3' 'openssl' 'libgudev')
 makedepends=('rust')
-optdepends=('fwupd' 'system76-firmware-daemon')
-install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'com.system76.FirmwareManager.policy'
         "$pkgname.sh")
@@ -19,16 +18,32 @@ sha256sums=('5bde56704ef8542f84ab9a8d6739cbfbcfcaaa26e089421fe0a527c5c9013f8d'
             'fb8395e19bfd54f756dad1d073135c5b41caa2ad27ee0621350fba50b2e7363b')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgbase-$pkgver"
 	make prefix=/usr
 }
 
-package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install prefix=/usr
+package_firmware-manager() {
+	pkgdesc="GTK application for managing system and device firmware."
+	depends+=('libfirmwaremanager' 'polkit')
+	provides=("$pkgname-virtual")
+	install="$pkgname.install"
+
+	cd "$pkgbase-$pkgver"
+	make DESTDIR="$pkgdir/" install-bin prefix=/usr
+	make DESTDIR="$pkgdir/" install-notify prefix=/usr
+	make DESTDIR="$pkgdir/" install-icons prefix=/usr
 
 	install -Dm644 "$srcdir/com.system76.FirmwareManager.policy" -t \
 		"$pkgdir/usr/share/polkit-1/actions"
 
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+}
+
+package_libfirmware-manager() {
+	pkgdesc="Shared library for C which provides the firmware manager as a GTK widget."
+	optdepends=('fwupd' 'system76-firmware-daemon')
+	provides=('libfirmware_manager.so')
+
+	cd "$pkgbase-$pkgver"
+	make DESTDIR="$pkgdir/" install-ffi prefix=/usr
 }
