@@ -6,7 +6,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=thunderbird-beta-i18n
-pkgver=85.0b3
+pkgver=86.0b3
 pkgrel=1
 url='http://www.mozilla.com/'
 arch=('any')
@@ -147,70 +147,70 @@ source=(
   "thunderbird-beta-i18n-$pkgver-zh-TW.xpi::$_url/zh-TW.xpi"
 )
 sha256sums=(
-  '942b9221f5a4822a1b49311844168478b3e9b6c5db515286c20f3e714ef802d9'
-  '0c8116dc7183f9158c517b10991a5c72cce2b44786a2432e2b724eeaaf24365c'
-  '43873fd6d49e8abc3086d5dcb4c5ad7fab52f9bdde3757348de015b7a40ea26b'
-  'f834ffde16c3c1ee9a4f702fc0cd8978115d331426c260baa6357b1a803171ff'
-  'cce52fd9507d62cc7e54aedb3d82f396d74d8cfbac55fb30c9726e7e3cc382c5'
-  '722c8c52d682d83a30f4cd5d0cdd7ccca9e2bbc272bc277288758d4ab02306e9'
-  '1374429be45ccf66c174fff12e7053a01546fbffdeb343e7ab5dc7dc8f8d8f90'
-  'bceb1d24d27f61e70b3579bf7a9e13be1a46a43208719d591482c78bd44d29f9'
-  '9efd76e86e173df5bd806fc66b2aef6f7716aa72bf9812f6342d41132342bbc0'
-  '50211634905a5bcaf2cd09120ffe09eb14623ccf8908a4bde870c26e2739b92b'
-  '7871f07d5b82fe33e44f0ad4b5d16260b96d04b98160bebcc101284f471c15be'
-  'd6c8902209905da1a02cea1587610abf158a9e287e7760d124a5ea427a5f3cbf'
-  '4ddf15ef093519694ce823f26e4ba2c5ec167756a9218097d11f1da1dddf7cca'
-  '68ffabc1ffc64e32c4268598ba3abce5b495655fe96977980c3027f048ef09d0'
-  '65d049bbd090b201f0d50a82809082f41cfc92b89398a9f8d817dd2b8862da15'
-  '57ce6149ad4d390aa910b8459ffabc20ae93e02086eb2f821eedca90b68b8802'
-  'f4257c7378711aa450937bca9cfb0f45b631b9f8f7beabbe746aed4a03892cff'
-  '5cd90a8ac19a941b4da943fffce97de4ef08c202ddd725c5aa6f6c72054b2e6c'
-  '7f5b68354312549f8aee6ff79033235a5fef72bbfe244f2f11de9ecaa00f5d2f'
-  '7df6544db76e7672e52db6168f8070dcc01265ad370d7f63cb73ca7a192ca1f8'
-  'ca20bcc3c4992f7c1e729c77f8e36da1c3a5b41de9e1398e43bfb764be59d02b'
-  'caa5918cf5ce030bc76f51bbb4cc4c761f19d36e721da59c1ed3d88ba325aab6'
-  '61eafe9e0f6de0b468c3d1114cf24384901849d5d12d31a2fab52e31a3aa5bcb'
-  '40c689726d1dd7bac25866f8867e1468424f1d347c251f5cd9998b5fa7c7bcf5'
-  'f47b38d3897696ec0a1772ba02ecd2380655b393c088bac745a0e134af5c8499'
-  'c650e2f90b465ca497ca9141762caa340afc0a76bce14d3a25ad08b87373d209'
-  'd3138391c4d087b89e22bf30427b2f9439b5f97e3f154e26cfb57cea9cf9c3b4'
-  '267f4146d64b2825f840ccc88af3ea3f9aa8d3817865c4c3298128b2f55c311f'
-  'd9c93a7aa4e8115074873748920c545793cf91cb930a17d704725b4d9e0adc97'
-  '067d38b880bedb46999aa655c16bfc7379338778b772bb73631fd4c8fd2070ec'
-  'dd9532f2ba0510108217706969aa0a84ed498296075742935da77d7afc0d4698'
-  '422091d61e843ae81dd3f171098f62bcd93a8ecf65f3b859ded455197001a644'
-  'e72b45d74549d912c1c50c4919fc7b9adbf42d0aa252a551791e3b72c48193aa'
-  'aff280f150c0c3939076869f101b5083ab6759e57b0ddbae2c96963559b4ac23'
-  '9f4cdfc0aa0bc38cebac6d0827b974a90e8821e62a411dc008463dfed3b1c73c'
-  'b4c793d3a10599b78d8f4023d72e2586a64fea1cbe041840a100b888871fc7a5'
-  '1d5ef93b7bc331f830df6fdbd47ae0620356322da8af2079908409c6313f773f'
-  '14b7c70888715fa34d7b45303d76884a749571ef6169530da097971ad1ef60b8'
-  '65d7110b2b0d21dc6efd0bd041ff1d639b4a914a4e71933570c7650544113366'
-  '24da6540efce89a2d631ef8efa655aa8e542c4373cbb511b7a4c5382fd20a756'
-  '0f4740286b336f4cd5cd025e6aa870f008fd45a53eecba23b50f4aa42fe47964'
-  '85f737077bc78fb973163fcf5ee73b879a7e299e81d65f06c7f76b54357b3a0c'
-  '30d9092d6ad7a779ff6bf9009bbc003b65cfd5000746097c1021024eff333f6b'
-  '923ed6ed690e647a80b3cc7c39955fce03d9188574851ec1b902672180cfb8cc'
-  '56afb3c939560cab4b0de2162b8d40abfb09eb5924152d0788e021708dda0fc9'
-  'a287a43b6602f71617018363c64b364a9c13204c56cd8c4acacba0e68ee308f6'
-  'dff36e816cce911040ed9ea57bdba5608ee42108c55b94c35224de09512e4aac'
-  '855f1d4fe561c3cfb0e209ef63a7894d63bf42c2adb160158ced35b556280b85'
-  'df5e7d7bfe9871e840ab7e8294f81644754f76d9628e95d2708866671a549a8c'
-  '371978cacbaf540a9596a0eb4ca28329f8878a1f01ca14c1da07f5820c1f7083'
-  '6bdb70689c71e63f8c0048dd1c2d53b6bff45585fd39c17f8c0ae6683b12e0f7'
-  'c63cc3f3c83d71d32a6dc3919639e116402a6e54f3e4f4336cfd92dfae727deb'
-  'bb299433ab992ab6bfbb43d32d236079a9443e7a1b682b39be948825452365d7'
-  '074726286c13cd5f2e5a0ddfbe72fe5c4bf4e807962a6319caf76a119307b83b'
-  '602c7001fac7148500e223ba07f0248299d05a5eae08de987a3cd51c75abaecc'
-  'fa09066bbe506cd10f56c8c177b08777a3664aa757f6b10f183340a5d468a8dd'
-  '7e1035d764d8daaf2e82ae3446a69bd2bbde5fa64de0bd01ef8407a74e031c1c'
-  'bdab6de2a911397e2fa7667bec362ae1b9b4ee899beea72ad011fa7c8727ee64'
-  '7c99a241f7a73c9febb25f732b4c1fb7d79406b3be5aa8cd171d7c75fd85ed7f'
-  'a5c77b368a80dff92e01cb0e33e9823a777e81902f86dff304104b2eccb540da'
-  'c37770401f26194be92269744f6926436666c2eb9dfa59af72644c551a5a739d'
-  'cae34909d3c21738dadee32fb981e7812f494066c741c589ffb30ec51c8b1d6f'
-  '1a8f6d398026851b89cb065d6f77904704554db1ce0d26c3d1d8f083ad7b7b2a'
-  'b98cd24aa117dbe18f038a3b7729ced3e5b56ccace954db77634a1576d0f5b1e')
+  '7ebc5c21d02a4f31b632d050aef28c064e5f8bd1196e9793b90e6c0c0a1bcf76'
+  '1ab5c9632d603e9153f952e83d07f7cac5f0b2964bf21c1fa8806c7c69cbdf04'
+  'ecde3048a6f14ea9533c8091e24bf8cdde502b8c0419f43a90e5c91b3b428787'
+  'c0c0b082375f2061aa6cbb4fb0d34fe41cc474e10902789451823f515c07c882'
+  'a2b530a909843a7737c03e68466d4e8b8f52970e0589825d21df547554d7e587'
+  '8e04fc5d3cb774462452f7424354f4d8a2becad57775371b740d9ca02226d975'
+  '619324b809d82c423589ae30e1c5ed91d1263940a07e83d69a577018cbdd19c9'
+  'ee41e8658b9fc080d04341c9e94b4a9637e33d68feb8f2dd91308e9c158dfbc2'
+  'e6446da9bbc0d4fcce5ebcc1d34bdcc87305bdffa3ef6c65860cd36ac29dcff5'
+  'a394f5f2ec2afe8c0ffb43dcde198caa9667c03f07ba39e9cae0c4378371c127'
+  'b91fafa5552414ec8f6237ee7c91a0d2d7091e84a4b5398e91493ecb65cb0f7e'
+  '6e01ae08d9b6d2d4b567e620be9c9b9f952b97bf55815a0b70161136a862b3b1'
+  '56c7834b4dd00d6a37ae02fcde00f554eb742d6a950fb534744432f4f841953b'
+  '8d4dde1f06ffde6ae47815473a576b431b21cb0ea7561f2cee7c27b445ccdeb4'
+  'e97c8cfee84ab3e056b28ee291d29bec1b111d55a93b3a2745677b63883f9838'
+  'f65ca4d49ab1d7be0986585bb6e2cb5223932a006d92746584f09c34218b953c'
+  'c863d40aa89bce2c917701fe7ee208a3dd351c19a3ab62c22d74a1254ecf93a3'
+  'c085974668e1c7b1fca6892cc102f0859c9329135e652a10a34a21f3255d411c'
+  '995399679bd03bd74d09711cb095ad78c16a2a50f089cf4e59282683eb1a5786'
+  'c5567bbd57805aff05c0ce23cca2c2d6c6ee347cc51d47da7ba12f5195712fdb'
+  'e37cbd74ad5b75482dbd85032e9b41cbaf32100098df244c91f38caa0bcecb1b'
+  '011add9748a56728e951b7bc70a0817bce0779fffef0f06a49557bc79fd35116'
+  '0d740bab2096eb9a6afe05cd1e6e7614ad860638274d2ba4a0a89fb3215e42b7'
+  '2648e714de8d231a6489c8f28d1724de50c445c18ec7da58b0fc79077edc7ea6'
+  'b9d64053494038dedb112f088d91a41a7c467886ff3eee50939a4a7e97e8510e'
+  'd3f6682031121fe2ce1f44644b55793634dcb8eb708712e3f10e7f1f8fe811f6'
+  'fd1ca146e3a9280df9b0f1e49172c5144138f3923050908e0a678ee7ed410aec'
+  'f810c90ef4e5566309123f71d1930c17f4da786d62651e18a90e34c0478a64bf'
+  '955b0d344a527509682c58ccd312f4dd020b1aadcefcf9f87622216c914cf588'
+  'd9e4f77d8d92e213c421d09ae80eb28421554ebda71dd127c760ae049e693d63'
+  'b2a96bc0da7a4de0e04648f951370f98217a9e3c1f683617a7025190a323d1fc'
+  'ad3f8af987de703263c40712dfb30b699b24be6e3a17f3b2f5f25ed666fee05f'
+  '1b57e2d6413aa6b85ed42f2ee6593ea43b67c4047c1c66d0fdfc2663870efbac'
+  '09606bae157ef8e344e48a9f350654308ebda19d35c2bc0d83608ef86b205dbc'
+  '159115f12b64f15e348a1b9d102f00ab69a1d8793b72a6e657f9e4335d9b5d91'
+  '2e5aead8edcef0a8188a12192bb455484a099317f3e2a1cb16b307b901323d49'
+  '6a92510b518d0292f55db09456f2d9a6d178d262eae13595c3f0bd9a189cffc2'
+  '76426809fa0cd06853369b5b69bbac8cde0593e873da5d756d21fd512b56db58'
+  '6bcbe2602f079f3ddf411ce1ae8272eea1539ae16d6a3f001d32c9c54cba4a71'
+  '39c313d2eb555a04ba6513f5f406fbb51ed42a47c8a8eaa3275e4f2f68182d9d'
+  'b419026a73dee66bb5f1e08a4253b398ca75a3ef6d905b44aea0e9bc26b56fc3'
+  '9cafad4fd9f5ad3ddd7e6816f4989780d6da43847b060b5d9f7229336d1a8fba'
+  '0dd76109ceaae486323db40e5a0d5f67d2d8473d364cde6ab1ec0679defe3c78'
+  'fd187b27cc9d467cc75e5c1859567abfddf5a6a529549b0d7e57b3fc3f3b27ff'
+  '8db45d5b8a79fbb4f46384d257f2759c6f7a8ed66ee37543146094850853e5b3'
+  '62f3f86f3ac99c05b2372fc87c2b4a115cd759bc8f109bdb7b9c9c87aa6dfd6a'
+  'c7cde406a2ba86f7b7cdef62870fda1a4265c23fc68802a71f2d2078e560804f'
+  '6b6d28b874a1998563aee8ec4404d0359b156236f6ae73ed65138ed03541ac60'
+  '294472e8d0dc7f1e181608c175694c99792d02c9648e4b3ec396cffce242dbef'
+  '5853d0ea9cda994c989ec584c94595cb0e7d1a68c23da5791f1ba4fbb3fab8a1'
+  '970e66c27f845af0240e5c090729efb26815a0b824745eb41bb02df147208689'
+  '76f1a699a1301dbf3a8e7082032db3239f414c6de577f302159a1074ae9b844a'
+  '8bb87be74b7048527cf8d5aabb68de4745a0199acc7befa60b1cfa5d5b488b46'
+  '13da471037104f06a3b3a766e18e42b5511e9172a4371c6d9b7d705430aba65f'
+  'a945aad4a77967f9929c6a9cabc3d66880e4c3aee83b88fc6002380458ab7428'
+  'dd295331a57326d0b10b011235d3096596f1f731fb020221e5bf80e9aa9e3d4f'
+  'e3eb0de93571453fd29898214d4a65ff7fb8eef58f4389d18166a81edfdd8202'
+  '188bbc34e1b26aefabb1dcf37275eb67105c4490d24ad43e600a1497415d517e'
+  '8c02abfbe36d08bd0fc2cc5b293d27659a66497428aa7e2e87bf3aa23a3267a3'
+  '1bb51dc6e920aff9f9c3e1e66ba46aef5d895ce5b36c3a5d47272500214d1106'
+  '48359a3a175a94d770750653c8c8c3a52fabb14d72961d68aa71c8f5a27e04d8'
+  '744b513d176cb215d52777796610b1d5a75a9e1bf53d8431d27a5f9d8d37d782'
+  '7392b60a45f22f737a040f4036f7431d2b9d51af31f2e04445c3b96a9fd37341'
+  'd7a18b86fc3b5ad662453795ba35cdceb1a0989f44ff28cf458a5a7b8a137871')
 
 # Don't extract anything
 noextract=(${source[@]%%::*})
@@ -219,7 +219,7 @@ noextract=(${source[@]%%::*})
 package_thunderbird-beta-i18n-af() {
   pkgdesc="Afrikaans language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-af.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-af@thunderbird.mozilla.org.xpi"
 }
@@ -227,7 +227,7 @@ package_thunderbird-beta-i18n-af() {
 package_thunderbird-beta-i18n-ar() {
   pkgdesc="Arabic language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ar.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ar@thunderbird.mozilla.org.xpi"
 }
@@ -235,7 +235,7 @@ package_thunderbird-beta-i18n-ar() {
 package_thunderbird-beta-i18n-ast() {
   pkgdesc="Asturian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ast.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ast@thunderbird.mozilla.org.xpi"
 }
@@ -243,7 +243,7 @@ package_thunderbird-beta-i18n-ast() {
 package_thunderbird-beta-i18n-be() {
   pkgdesc="Belarusian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-be.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-be@thunderbird.mozilla.org.xpi"
 }
@@ -251,7 +251,7 @@ package_thunderbird-beta-i18n-be() {
 package_thunderbird-beta-i18n-bg() {
   pkgdesc="Bulgarian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-bg.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-bg@thunderbird.mozilla.org.xpi"
 }
@@ -259,7 +259,7 @@ package_thunderbird-beta-i18n-bg() {
 package_thunderbird-beta-i18n-br() {
   pkgdesc="Breton language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-br.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-br@thunderbird.mozilla.org.xpi"
 }
@@ -267,7 +267,7 @@ package_thunderbird-beta-i18n-br() {
 package_thunderbird-beta-i18n-ca() {
   pkgdesc="Catalan language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ca.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ca@thunderbird.mozilla.org.xpi"
 }
@@ -275,7 +275,7 @@ package_thunderbird-beta-i18n-ca() {
 package_thunderbird-beta-i18n-cak() {
   pkgdesc="Kaqchikel language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-cak.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-cak@thunderbird.mozilla.org.xpi"
 }
@@ -283,7 +283,7 @@ package_thunderbird-beta-i18n-cak() {
 package_thunderbird-beta-i18n-cs() {
   pkgdesc="Czech language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-cs.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-cs@thunderbird.mozilla.org.xpi"
 }
@@ -291,7 +291,7 @@ package_thunderbird-beta-i18n-cs() {
 package_thunderbird-beta-i18n-cy() {
   pkgdesc="Welsh language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-cy.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-cy@thunderbird.mozilla.org.xpi"
 }
@@ -299,7 +299,7 @@ package_thunderbird-beta-i18n-cy() {
 package_thunderbird-beta-i18n-da() {
   pkgdesc="Danish language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-da.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-da@thunderbird.mozilla.org.xpi"
 }
@@ -307,7 +307,7 @@ package_thunderbird-beta-i18n-da() {
 package_thunderbird-beta-i18n-de() {
   pkgdesc="German language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-de.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-de@thunderbird.mozilla.org.xpi"
 }
@@ -315,7 +315,7 @@ package_thunderbird-beta-i18n-de() {
 package_thunderbird-beta-i18n-dsb() {
   pkgdesc="Sorbian, Lower language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-dsb.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-dsb@thunderbird.mozilla.org.xpi"
 }
@@ -323,7 +323,7 @@ package_thunderbird-beta-i18n-dsb() {
 package_thunderbird-beta-i18n-el() {
   pkgdesc="Greek language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-el.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-el@thunderbird.mozilla.org.xpi"
 }
@@ -331,7 +331,7 @@ package_thunderbird-beta-i18n-el() {
 package_thunderbird-beta-i18n-en-ca() {
   pkgdesc="English (Canada) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-en-CA.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-en-CA@thunderbird.mozilla.org.xpi"
 }
@@ -339,7 +339,7 @@ package_thunderbird-beta-i18n-en-ca() {
 package_thunderbird-beta-i18n-en-gb() {
   pkgdesc="English (Great Britain) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-en-GB.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-en-GB@thunderbird.mozilla.org.xpi"
 }
@@ -347,7 +347,7 @@ package_thunderbird-beta-i18n-en-gb() {
 package_thunderbird-beta-i18n-en-us() {
   pkgdesc="English language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-en-US.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-en-US@thunderbird.mozilla.org.xpi"
 }
@@ -355,7 +355,7 @@ package_thunderbird-beta-i18n-en-us() {
 package_thunderbird-beta-i18n-es-ar() {
   pkgdesc="Spanish (Argentina) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-es-AR.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-es-AR@thunderbird.mozilla.org.xpi"
 }
@@ -363,7 +363,7 @@ package_thunderbird-beta-i18n-es-ar() {
 package_thunderbird-beta-i18n-es-es() {
   pkgdesc="Spanish (Spain) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-es-ES.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-es-ES@thunderbird.mozilla.org.xpi"
 }
@@ -371,7 +371,7 @@ package_thunderbird-beta-i18n-es-es() {
 package_thunderbird-beta-i18n-et() {
   pkgdesc="Estonian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-et.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-et@thunderbird.mozilla.org.xpi"
 }
@@ -379,7 +379,7 @@ package_thunderbird-beta-i18n-et() {
 package_thunderbird-beta-i18n-eu() {
   pkgdesc="Basque language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-eu.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-eu@thunderbird.mozilla.org.xpi"
 }
@@ -387,7 +387,7 @@ package_thunderbird-beta-i18n-eu() {
 package_thunderbird-beta-i18n-fi() {
   pkgdesc="Finnish language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-fi.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-fi@thunderbird.mozilla.org.xpi"
 }
@@ -395,7 +395,7 @@ package_thunderbird-beta-i18n-fi() {
 package_thunderbird-beta-i18n-fr() {
   pkgdesc="French language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-fr.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-fr@thunderbird.mozilla.org.xpi"
 }
@@ -403,7 +403,7 @@ package_thunderbird-beta-i18n-fr() {
 package_thunderbird-beta-i18n-fy-nl() {
   pkgdesc="Frisian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-fy-NL.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-fy-NL@thunderbird.mozilla.org.xpi"
 }
@@ -411,7 +411,7 @@ package_thunderbird-beta-i18n-fy-nl() {
 package_thunderbird-beta-i18n-ga-ie() {
   pkgdesc="Irish language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ga-IE.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ga-IE@thunderbird.mozilla.org.xpi"
 }
@@ -419,7 +419,7 @@ package_thunderbird-beta-i18n-ga-ie() {
 package_thunderbird-beta-i18n-gd() {
   pkgdesc="Gaelic, Scottish language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-gd.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-gd@thunderbird.mozilla.org.xpi"
 }
@@ -427,7 +427,7 @@ package_thunderbird-beta-i18n-gd() {
 package_thunderbird-beta-i18n-gl() {
   pkgdesc="Galician language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-gl.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-gl@thunderbird.mozilla.org.xpi"
 }
@@ -435,7 +435,7 @@ package_thunderbird-beta-i18n-gl() {
 package_thunderbird-beta-i18n-he() {
   pkgdesc="Hebrew language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-he.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-he@thunderbird.mozilla.org.xpi"
 }
@@ -443,7 +443,7 @@ package_thunderbird-beta-i18n-he() {
 package_thunderbird-beta-i18n-hr() {
   pkgdesc="Croatian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-hr.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-hr@thunderbird.mozilla.org.xpi"
 }
@@ -451,7 +451,7 @@ package_thunderbird-beta-i18n-hr() {
 package_thunderbird-beta-i18n-hsb() {
   pkgdesc="Sorbian, Upper language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-hsb.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-hsb@thunderbird.mozilla.org.xpi"
 }
@@ -459,7 +459,7 @@ package_thunderbird-beta-i18n-hsb() {
 package_thunderbird-beta-i18n-hu() {
   pkgdesc="Hungarian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-hu.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-hu@thunderbird.mozilla.org.xpi"
 }
@@ -467,7 +467,7 @@ package_thunderbird-beta-i18n-hu() {
 package_thunderbird-beta-i18n-hy-am() {
   pkgdesc="Armenian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-hy-AM.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-hy-AM@thunderbird.mozilla.org.xpi"
 }
@@ -475,7 +475,7 @@ package_thunderbird-beta-i18n-hy-am() {
 package_thunderbird-beta-i18n-id() {
   pkgdesc="Indonesian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-id.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-id@thunderbird.mozilla.org.xpi"
 }
@@ -483,7 +483,7 @@ package_thunderbird-beta-i18n-id() {
 package_thunderbird-beta-i18n-is() {
   pkgdesc="Icelandic language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-is.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-is@thunderbird.mozilla.org.xpi"
 }
@@ -491,7 +491,7 @@ package_thunderbird-beta-i18n-is() {
 package_thunderbird-beta-i18n-it() {
   pkgdesc="Italian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-it.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-it@thunderbird.mozilla.org.xpi"
 }
@@ -499,7 +499,7 @@ package_thunderbird-beta-i18n-it() {
 package_thunderbird-beta-i18n-ja() {
   pkgdesc="Japanese language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ja.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ja@thunderbird.mozilla.org.xpi"
 }
@@ -507,7 +507,7 @@ package_thunderbird-beta-i18n-ja() {
 package_thunderbird-beta-i18n-ka() {
   pkgdesc="Georgian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ka.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ka@thunderbird.mozilla.org.xpi"
 }
@@ -515,7 +515,7 @@ package_thunderbird-beta-i18n-ka() {
 package_thunderbird-beta-i18n-kab() {
   pkgdesc="Kabyle language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-kab.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-kab@thunderbird.mozilla.org.xpi"
 }
@@ -523,7 +523,7 @@ package_thunderbird-beta-i18n-kab() {
 package_thunderbird-beta-i18n-kk() {
   pkgdesc="Kazakh language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-kk.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-kk@thunderbird.mozilla.org.xpi"
 }
@@ -531,7 +531,7 @@ package_thunderbird-beta-i18n-kk() {
 package_thunderbird-beta-i18n-ko() {
   pkgdesc="Korean language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ko.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ko@thunderbird.mozilla.org.xpi"
 }
@@ -539,7 +539,7 @@ package_thunderbird-beta-i18n-ko() {
 package_thunderbird-beta-i18n-lt() {
   pkgdesc="Lithuanian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-lt.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-lt@thunderbird.mozilla.org.xpi"
 }
@@ -547,7 +547,7 @@ package_thunderbird-beta-i18n-lt() {
 package_thunderbird-beta-i18n-ms() {
   pkgdesc="Malay language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ms.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ms@thunderbird.mozilla.org.xpi"
 }
@@ -555,7 +555,7 @@ package_thunderbird-beta-i18n-ms() {
 package_thunderbird-beta-i18n-nb-no() {
   pkgdesc="Norwegian Bokmål language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-nb-NO.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-nb-NO@thunderbird.mozilla.org.xpi"
 }
@@ -563,7 +563,7 @@ package_thunderbird-beta-i18n-nb-no() {
 package_thunderbird-beta-i18n-nl() {
   pkgdesc="Dutch language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-nl.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-nl@thunderbird.mozilla.org.xpi"
 }
@@ -571,7 +571,7 @@ package_thunderbird-beta-i18n-nl() {
 package_thunderbird-beta-i18n-nn-no() {
   pkgdesc="Norwegian Nynorsk language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-nn-NO.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-nn-NO@thunderbird.mozilla.org.xpi"
 }
@@ -579,7 +579,7 @@ package_thunderbird-beta-i18n-nn-no() {
 package_thunderbird-beta-i18n-pa-in() {
   pkgdesc="Punjabi language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-pa-IN.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-pa-IN@thunderbird.mozilla.org.xpi"
 }
@@ -587,7 +587,7 @@ package_thunderbird-beta-i18n-pa-in() {
 package_thunderbird-beta-i18n-pl() {
   pkgdesc="Polish language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-pl.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-pl@thunderbird.mozilla.org.xpi"
 }
@@ -595,7 +595,7 @@ package_thunderbird-beta-i18n-pl() {
 package_thunderbird-beta-i18n-pt-br() {
   pkgdesc="Portuguese (Brazil) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-pt-BR.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-pt-BR@thunderbird.mozilla.org.xpi"
 }
@@ -603,7 +603,7 @@ package_thunderbird-beta-i18n-pt-br() {
 package_thunderbird-beta-i18n-pt-pt() {
   pkgdesc="Portuguese (Portugal) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-pt-PT.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-pt-PT@thunderbird.mozilla.org.xpi"
 }
@@ -611,7 +611,7 @@ package_thunderbird-beta-i18n-pt-pt() {
 package_thunderbird-beta-i18n-rm() {
   pkgdesc="Romansh language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-rm.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-rm@thunderbird.mozilla.org.xpi"
 }
@@ -619,7 +619,7 @@ package_thunderbird-beta-i18n-rm() {
 package_thunderbird-beta-i18n-ro() {
   pkgdesc="Romanian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ro.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ro@thunderbird.mozilla.org.xpi"
 }
@@ -627,7 +627,7 @@ package_thunderbird-beta-i18n-ro() {
 package_thunderbird-beta-i18n-ru() {
   pkgdesc="Russian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-ru.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-ru@thunderbird.mozilla.org.xpi"
 }
@@ -635,7 +635,7 @@ package_thunderbird-beta-i18n-ru() {
 package_thunderbird-beta-i18n-sk() {
   pkgdesc="Slovak language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-sk.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-sk@thunderbird.mozilla.org.xpi"
 }
@@ -643,7 +643,7 @@ package_thunderbird-beta-i18n-sk() {
 package_thunderbird-beta-i18n-sl() {
   pkgdesc="Slovenian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-sl.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-sl@thunderbird.mozilla.org.xpi"
 }
@@ -651,7 +651,7 @@ package_thunderbird-beta-i18n-sl() {
 package_thunderbird-beta-i18n-sq() {
   pkgdesc="Albanian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-sq.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-sq@thunderbird.mozilla.org.xpi"
 }
@@ -659,7 +659,7 @@ package_thunderbird-beta-i18n-sq() {
 package_thunderbird-beta-i18n-sr() {
   pkgdesc="Serbian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-sr.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-sr@thunderbird.mozilla.org.xpi"
 }
@@ -667,7 +667,7 @@ package_thunderbird-beta-i18n-sr() {
 package_thunderbird-beta-i18n-sv-se() {
   pkgdesc="Swedish language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-sv-SE.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-sv-SE@thunderbird.mozilla.org.xpi"
 }
@@ -675,7 +675,7 @@ package_thunderbird-beta-i18n-sv-se() {
 package_thunderbird-beta-i18n-th() {
   pkgdesc="Thai language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-th.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-th@thunderbird.mozilla.org.xpi"
 }
@@ -683,7 +683,7 @@ package_thunderbird-beta-i18n-th() {
 package_thunderbird-beta-i18n-tr() {
   pkgdesc="Turkish language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-tr.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-tr@thunderbird.mozilla.org.xpi"
 }
@@ -691,7 +691,7 @@ package_thunderbird-beta-i18n-tr() {
 package_thunderbird-beta-i18n-uk() {
   pkgdesc="Ukrainian language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-uk.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-uk@thunderbird.mozilla.org.xpi"
 }
@@ -699,7 +699,7 @@ package_thunderbird-beta-i18n-uk() {
 package_thunderbird-beta-i18n-uz() {
   pkgdesc="Uzbek language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-uz.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-uz@thunderbird.mozilla.org.xpi"
 }
@@ -707,7 +707,7 @@ package_thunderbird-beta-i18n-uz() {
 package_thunderbird-beta-i18n-vi() {
   pkgdesc="Vietnamese language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-vi.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-vi@thunderbird.mozilla.org.xpi"
 }
@@ -715,7 +715,7 @@ package_thunderbird-beta-i18n-vi() {
 package_thunderbird-beta-i18n-zh-cn() {
   pkgdesc="Chinese (China) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-zh-CN.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-zh-CN@thunderbird.mozilla.org.xpi"
 }
@@ -723,7 +723,7 @@ package_thunderbird-beta-i18n-zh-cn() {
 package_thunderbird-beta-i18n-zh-tw() {
   pkgdesc="Chinese (Taiwan) language pack for Thunderbird Beta"
   # Not assigning upper bound here due to https://bugs.archlinux.org/task/48252
-  depends=("thunderbird>=85.0b0")
+  depends=("thunderbird>=86.0b0")
   install -Dm644 thunderbird-beta-i18n-$pkgver-zh-TW.xpi \
     "$pkgdir/usr/share/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/langpack-zh-TW@thunderbird.mozilla.org.xpi"
 }
