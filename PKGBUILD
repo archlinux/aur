@@ -16,7 +16,6 @@ md5sums=("c2994e5d375b907259a8668d6e39af45")
 build() {
   unzip -n "${srcdir}/heatherx11.zip"
   cd ${srcdir}/heatherx11/
-  make clean
   make
 }
 
