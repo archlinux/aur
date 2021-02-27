@@ -12,7 +12,7 @@
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
 _product=thunderbird
-pkgver=83.0b3
+pkgver=87.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -77,7 +77,7 @@ source=("${pkgname}.desktop")
 # No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
-sha256sums=('e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827')
+sha256sums=('9f368f9b74665c1dd6629b30a68dcd01524ea363aae657d97ee319864ea21a9e')
 sha256sums_i686=($(_dist_checksum "${_arch32}")
                  'SKIP')
 sha256sums_x86_64=($(_dist_checksum "${_arch64}")
