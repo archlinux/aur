@@ -6,7 +6,7 @@ pkgver=3.3.1
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
-url="https://github.com/${pkgname%%-git}/${pkgname}"
+url="https://github.com/${pkgname%%-cli}/${pkgname}"
 license=('BSD')
 depends=('python-colorclass' 
 	 'python-terminaltables' 
