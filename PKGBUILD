@@ -1,11 +1,10 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: Det <nimetonmaili g-mail>
-# Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Based on [extra]'s thunderbird by Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=84.0
-pkgver=${_pkgver}b3
+_pkgver=87.0
+pkgver=${_pkgver}b1
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org - Bleeding edge version'
 url='https://www.mozilla.org/thunderbird/'
@@ -22,9 +21,12 @@ depends=(
 makedepends=(
   unzip zip diffutils python python-setuptools yasm nasm mesa imake libpulse
   inetutils xorg-server-xvfb autoconf2.13 rust clang llvm gtk2 cbindgen nodejs
-  gawk perl findutils
+  gawk perl findutils libotr
 )
-optdepends=('libcanberra: sound support')
+optdepends=(
+  'libcanberra: sound support'
+  'libotr: OTR support for active one-to-one chats'
+)
 options=(!emptydirs !makeflags)
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta-bin')
@@ -70,6 +72,7 @@ build() {
 }
 
 package() {
+
   cd $_pkgname-$_pkgver
   DESTDIR="$pkgdir" ./mach install
 
@@ -100,9 +103,9 @@ END
     "$pkgdir/usr/lib/$pkgname/thunderbird-bin"
 }
 
-sha256sums=('55ffd4ed6d4e828aded35d7ccc024b60e29b2631a1f06a318c3be995e51c0e48'
+sha256sums=('9846c7a42553051c52a0df587d14c7d16577036a3680f664041ba951b424435d'
             'SKIP'
             'd7aa1bd77f74c255446eec4171e4360c7a6215dac1d29c8ee71ec1f2a03bda3d'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
             'bc3aae2cc00dc9806f54606f98d967366a2ba7223f6a3ad1c658a653ebff5569'
-            'bf77cebf208318f60ab50b3982e7cf257f0f37b486e3b6d6b208ee64205270da')
+            '7b4d87f55bf23798023421e6918d314a5c81b7d80084afd8a59581d0bf55fe4d')
