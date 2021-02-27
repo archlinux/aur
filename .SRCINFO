@@ -1,6 +1,6 @@
 pkgbase = pslab-desktop
 	pkgdesc = PSLab Desktop App
-	pkgver = 2.1.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://pslab.io
 	arch = x86_64
@@ -8,13 +8,11 @@ pkgbase = pslab-desktop
 	makedepends = git
 	makedepends = npm
 	depends = electron
-	depends = python-pslab-git
+	depends = python-pslab
 	provides = pslab-desktop
 	conflicts = pslab-desktop-latest
-	source = https://github.com/fossasia/pslab-desktop/archive/v2.1.0.tar.gz
-	source = pslab.sh
-	sha256sums = c9ca59a8fef8aaa2ff5e716b4eccdd27f249c92f9a4acefef0fb4215c3e99b6b
-	sha256sums = 840e44427a4c582bfd0b6be431187cd77c85acf44b44514ea7d61143824bca1b
+	source = https://github.com/fossasia/pslab-desktop/releases/download/v2.6.0/pslab-2.6.0.tar.xz
+	sha256sums = c0a366bf0fc627f1ad9ca80e0663a89975070121d116235cff84318e4be46306
 
 pkgname = pslab-desktop
 
