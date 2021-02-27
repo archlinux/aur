@@ -7,6 +7,7 @@ pkgbase = nbxplorer-git
 	license = MIT
 	makedepends = git
 	depends = aspnet-runtime
+	depends = bitcoin-cli
 	depends = bitcoin-daemon
 	depends = dotnet-host
 	depends = dotnet-runtime
