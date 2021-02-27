@@ -2,7 +2,7 @@
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=1.0.0.alpha.12.0.1.r.g9e09e8f4f
+pkgver=1.0.0.alpha.12.0.1.r.g64cd86954
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('breeze-icons' 'gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
   'libyaml'  'libsamplerate' 'alsa-lib' 'fftw')
 makedepends=(
-  'python' 'gettext' 'gtksourceview3' 'sed'
+  'cmake ' 'python' 'gettext' 'gtksourceview3' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx' 'python-sphinx-intl'
   'ladspa' 'lv2' 'suil' 'ruby-sass')
 optdepends=('portaudio: portaudio backend'
