@@ -1,7 +1,7 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r24.5586390
+pkgver=r26.1cda1eb
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c. Downside: only Linux"
 arch=("any")
@@ -13,6 +13,7 @@ optdepends=(
   "libx11: Resolution output"
   "libxrandr: Refresh rate in Resolution output"
 )
+provides=("flashfetch=${pkgver}")
 source=("git+https://github.com/LinusDierheimer/fastfetch.git")
 sha256sums=("SKIP")
 
@@ -33,4 +34,5 @@ build()
 package() {
     cd ${srcdir}/fastfetch
     install -D "build/fastfetch" "${pkgdir}/usr/bin/fastfetch"
+    install -D "build/flashfetch" "${pkgdir}/usr/bin/flashfetch"
 }
