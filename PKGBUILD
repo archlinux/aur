@@ -13,19 +13,15 @@ install=raccoon.install
 source=('raccoon.desktop'
         'https://github.com/onyxbits/Raccoon/raw/master/artwork/icon.svg'
         "$pkgname-$pkgver.tar.gz::https://github.com/onyxbits/raccoon4/archive/v$pkgver.tar.gz"
-        "raccoon.install"
-        "build-on-linux.patch")
+        "raccoon.install")
 noextract=('${pkgname}-${pkgver}.jar')
 sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a0e29be63840bc7f614e360d17b51f877ff2bf2fda938da8fa13e3f9248647'
             'f63e94b86f5b111b8833d53767b0f6eada48426e1b0e30df0137bed455c80ec37087f656e2f0cac9386f4d25441686df82c988252120fc335028d2885b8653f6'
             'beb264f64229998963f8284d0c6b77e04b568fab108102d3648c4898349043c0e1405c25015f4897ea8f6e6afef80be48539483d46da31d3c2f2ff45bf057046'
-            '0e095c7cb167fd049968ba9e7c5acf51c3454aca884fd3106209d9ba92cd434c22c1398996f58238e98c692d7b0a635c6e6fb60782ba0dcb79cd837fe9ed7bba'
-            '075799f7d222a90bf8818b824be251e48224fbf083c88bfcbabc5828e2eb287a43c6fc71210100e9c5cca6ea10a8c942a9564aee4f150bbf83bcc5d3c088aaf4')
+            '0e095c7cb167fd049968ba9e7c5acf51c3454aca884fd3106209d9ba92cd434c22c1398996f58238e98c692d7b0a635c6e6fb60782ba0dcb79cd837fe9ed7bba')
 
 prepare() {
-    cd "$srcdir/raccoon4-$pkgver"
-    patch build.gradle ../build-on-linux.patch
-    sed -i "s/targetCompatibility = 1.7//g" build.gradle
+    sed -i "s/targetCompatibility = 1.7//g" "$srcdir/raccoon4-$pkgver"/build.gradle
 }
 
 build() {
