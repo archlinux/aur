@@ -2,7 +2,7 @@
 
 _pkgname=heather
 pkgname=$_pkgname
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Lady Heather's Disciplined Oscillator Control Program."
 arch=(any)
