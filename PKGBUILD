@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.4.2
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -23,7 +23,7 @@ makedepends=('coreutils'
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'jitsi-meet-desktop.desktop')
-sha256sums=('974c4a8d91b7ea93baaaefbaa4344da44e9590162ae73a70156c4c714265822f'
+sha256sums=('a79493bc982173e40124995e921b7d7f074205e5fc9a395fc6b4d15a39c7eb98'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 prepare() {
@@ -38,7 +38,8 @@ prepare() {
 
 build() {
   cd jitsi-meet-electron-${pkgver}/
-  npm run pack
+  npm run build
+  npx electron-builder --dir
 }
 
 package() {
