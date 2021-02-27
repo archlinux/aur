@@ -1,0 +1,16 @@
+pkgbase = fbneo-git
+	pkgdesc = Emulator for Arcade Games & Select Consoles. Based on FinalBurn and MAME.
+	pkgver = v1.0.0.0.563.g07550be26
+	pkgrel = 1
+	url = https://github.com/finalburnneo/FBNeo
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = sdl2_image
+	replaces = fbneo
+	source = git+https://github.com/finalburnneo/FBNeo.git
+	sha256sums = SKIP
+
+pkgname = fbneo-git
+
