@@ -1,12 +1,11 @@
 pkgbase = matterhorn-bin
 	pkgdesc = A terminal-based chat client for MatterMost
 	pkgver = 50200.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matterhorn-chat/matterhorn
 	arch = x86_64
 	license = BSD
 	depends = gmp
-	depends = libffi6
 	depends = ncurses5-compat-libs
 	depends = zlib
 	provides = matterhorn
