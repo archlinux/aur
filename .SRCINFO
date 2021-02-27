@@ -1,0 +1,14 @@
+pkgbase = perli
+	pkgdesc = Multi-platform Perl REPL
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/mklement0/perli
+	arch = x86_64
+	license = MIT
+	depends = perl>=5.6.2
+	optdepends = rlwrap: provide command-line editing support
+	source = https://github.com/mklement0/perli/archive/v0.1.5.tar.gz
+	sha256sums = ff5c6582c2839e230035db07716f5bcaa3725e8520e1f36089664e5d5b1f338b
+
+pkgname = perli
+
