@@ -21,11 +21,11 @@ fi
 #######################################
 
 pkgname=vulkan-tools-git
+pkgdesc='Vulkan Utilities and Tools (git version)'
 pkgver=1.2.170.2021_02_26.7204.88ea55de
 pkgrel=1
 arch=(x86_64)
-url="https://github.com/KhronosGroup/Vulkan-Tools"
-pkgdesc="Vulkan Utilities and Tools (git) (64bit)"
+url='https://github.com/KhronosGroup/Vulkan-Tools'
 license=('custom')
 depends=('gcc-libs' 'libxcb' 'vulkan-icd-loader')
 makedepends=('git' 'cmake' 'python' 'vulkan-headers' 'libx11' 'wayland' 'glslang' 'spirv-tools' 'make' 'extra-cmake-modules' 'clang' 'gcc' 'gcc-libs' 'ninja')
