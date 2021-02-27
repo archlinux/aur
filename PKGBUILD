@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: ValHue <vhuelamo at gmail dot com>
 pkgname=cover-thumbnailer-git
 pkgver=0.10.0.r8.gefb375d
