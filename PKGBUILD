@@ -1,7 +1,7 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 pkgname=google-drive-ocamlfuse
-pkgver=0.7.22
+pkgver=0.7.24
 pkgrel=1
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ makedepends=(
 )
 options=('staticlibs')
 source=("https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('2acc53fbaf4008486908d32acadc582e3ab60eed1724b2a4f922f8a0076c3c4e')
+sha256sums=('68a58babc485e9dca8d5080b822dd04a0001af807323f91c316d7d11a45f6071')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
