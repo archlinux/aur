@@ -91,15 +91,10 @@ fi
 
   cd mesa-$pkgver
 
-  # remove build dir if there is one
-  if dir build_64; then
-    rm -rf -v build_64
-  fi
+  rm -rf -v build_64
 
-  # create build dir
   mkdir -p -v build_64
 
-  # build with meson
   meson setup build_64/ \
   -D b_ndebug=true \
   -D buildtype=plain \
