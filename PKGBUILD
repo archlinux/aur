@@ -1,8 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-public-sans
 pkgver=1.008
-pkgrel=1
-epoch=4
+pkgrel=3
 pkgdesc='A strong, neutral typeface for interfaces, text, and headings.'
 arch=('any')
 url='https://public-sans.digital.gov/'
