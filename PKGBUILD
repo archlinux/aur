@@ -2,10 +2,8 @@
 # Maintainer: basxto <archlinux basxto de>
 
 pkgname=sameboy-git
-_genericname="Emulator"
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
-_mimetype="application/x-gameboy-rom;application/x-gameboy-color-rom"
-pkgver=1413.8ad08c1b
+pkgver=1452.ec2661ac
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
@@ -13,14 +11,12 @@ license=(MIT)
 provides=(sameboy)
 depends=(sdl2 hicolor-icon-theme)
 # Upstream suggests using clang, but gcc is supported on Linux: https://github.com/LIJI32/SameBoy/issues/164#issuecomment-486464194
-makedepends=(rgbds make git gendesk libicns imagemagick)
+makedepends=(rgbds make git)
 source=(git+https://github.com/LIJI32/SameBoy)
 sha1sums=('SKIP')
 
 prepare(){
-	gendesk -f -n
 	sed -i 's/-Werror//' SameBoy/Makefile
-	icns2png -x "${srcdir}/SameBoy/Cocoa/AppIcon.icns" -o "${srcdir}"
 }
 
 pkgver(){
@@ -29,26 +25,20 @@ pkgver(){
 }
 
 build(){
-	cd SameBoy
-	make sdl CONF=release DATA_DIR=/usr/share/games/sameboy/
+	make -C SameBoy sdl CONF=release PREFIX=/usr/
 }
 
 package(){
-	# copy existing icon sizes
-	for i in 16 32 256 512 1024;do
-		install -d "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/"
-		install -Dm644 "${srcdir}/AppIcon_${i}x${i}x32.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${provides[0]}.png"
-	done
-	# generate all other icon sizes
-	for i in 24 48 64 72 96 128;do
-		install -d "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/"
-		magick convert "${srcdir}/AppIcon_256x256x32.png" -resize ${i}x${i} "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${provides[0]}.png"
-	done
-	install -Dm644 "${provides[0]}.desktop" "${pkgdir}/usr/share/applications/${provides[0]}.desktop"
 	cd SameBoy
-	install -Dm755 build/bin/SDL/sameboy "$pkgdir/usr/bin/sameboy"
-	find build/bin/SDL -type f -not -executable | while read f; do
-		install -Dm644 "$f" "$pkgdir/usr/share/games/sameboy/${f#build/bin/SDL/}"
-	done
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sameboy-git/LICENSE"
+
+	make install CONF=release PREFIX=/usr/ DESTDIR="${pkgdir}"
+	# desktop file is missing from make install
+	install -Dm644 FreeDesktop/${provides[0]}.desktop "${pkgdir}/usr/share/applications/${provides[0]}.desktop"
+	# mimetype icons don't belong here
+	# that could lead to file conflicts
+	find "${pkgdir}" -name 'x-gameboy*-rom.png' -delete
+	find "${pkgdir}" -name mimetypes -delete
+	# move license to the correct path for arch
+	install -d "${pkgdir}"/usr/share/licenses/${pkgname}/
+	mv "${pkgdir}"/usr/share/${provides[0]}/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
