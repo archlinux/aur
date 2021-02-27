@@ -1,7 +1,7 @@
 # Maintainer: Cam Webb <cw@camwebb.info>
 
 pkgname=slacka
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A lightweight CLI client for Slack, in Gawk"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/camwebb/slacka"
 license=('Unlicense')
 depends=('gawk' 'gawk-json' 'curl')
 source=("$pkgname-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('2eee7b3a99c4344d07c8a470aedada0f')
+md5sums=('f47368361f5b89f15931692c9e975864')
 
 package() {
 

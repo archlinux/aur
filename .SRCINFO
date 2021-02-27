@@ -1,6 +1,6 @@
 pkgbase = slacka
 	pkgdesc = A lightweight CLI client for Slack, in Gawk
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/camwebb/slacka
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = slacka
 	depends = gawk
 	depends = gawk-json
 	depends = curl
-	source = slacka-1.0.0.tar.gz::https://github.com/camwebb/slacka/archive/v1.0.0.tar.gz
-	md5sums = 2eee7b3a99c4344d07c8a470aedada0f
+	source = slacka-1.0.1.tar.gz::https://github.com/camwebb/slacka/archive/v1.0.1.tar.gz
+	md5sums = f47368361f5b89f15931692c9e975864
 
 pkgname = slacka
 
