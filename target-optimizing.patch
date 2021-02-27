@@ -17,5 +17,17 @@
 +endif
 +
  # optional: force screen width for PDA
- #DEFS += -DPDA_WIDTH=640
+ #DEFS += -DPDA_WIDTH=640cd
  
+diff --color --unified --recursive --text onscripter-jh/Makefile.Linux onscripter-jh.new/Makefile.Linux
+--- onscripter-jh/Makefile.Linux	2021-02-22 18:12:31.623850620 +0800
++++ onscripter-jh.new/Makefile.Linux	2021-02-22 18:13:09.442802982 +0800
+@@ -61,7 +61,7 @@
+ ifneq ($(filter i686 x86_64,$(ARCH)),)
+ DEFS += -DUSE_SIMD_X86_SSE2
+ else
+-ifneq ($(filter armv7h armv7l,$(ARCH)),)
++ifneq ($(filter armv7h armv7l aarch64,$(ARCH)),)
+ DEFS += -DUSE_SIMD_ARM_NEON
+ EXT_FLAGS += -mfpu=neon
+ endif
