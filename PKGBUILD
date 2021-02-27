@@ -4,7 +4,7 @@
 _pkgname=deja-dup
 pkgname=$_pkgname-git
 pkgver=42.4+142+g39e801e8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple backup tool, that hides the complexity of backing up the Right Way and uses duplicity as the backend"
 arch=('any')
 url="https://wiki.gnome.org/Apps/DejaDup"
