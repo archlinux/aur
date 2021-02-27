@@ -1,10 +1,19 @@
 post_upgrade() {
-    echo 
-    echo "Remove ~/.deepinwine/Deepin-KGMusic to generate a new bottle."
-    echo 
+    info
+    echo "You can remove ~/.deepinwine/Deepin-KGMusic to generate a new bottle."
 }
 
 post_remove() {
     echo "Deleting existing KGMusic bottles..."
     find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-KGMusic/ \;
 }
+
+info() {
+    echo -e "* (若有任何问题发生，请在此反馈它！)Any issues, please report it there!"
+    echo -e "  https://github.com/Lapis-Apple/com.kugou.spark.arch/issues"
+}
+
+post_install() {
+    info
+}
+
