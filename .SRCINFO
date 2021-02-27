@@ -1,0 +1,25 @@
+pkgbase = mod-app-git
+	pkgdesc = Desktop application of the MOD interface and backend, natively integrated in the OS
+	pkgver = 0.0.1.r155.gf2f1c2f
+	pkgrel = 1
+	url = https://github.com/moddevices/mod-app
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = jack2
+	depends = lilv
+	depends = lv2
+	depends = python
+	depends = python-pyqt5
+	depends = hicolor-icon-theme
+	provides = mod-app
+	conflicts = mod-app
+	source = mod-app-git::git+https://github.com/moddevices/mod-app.git
+	source = mod-host::git+https://github.com/moddevices/mod-host.git
+	source = mod-ui::git+https://github.com/moddevices/mod-ui.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mod-app-git
+
