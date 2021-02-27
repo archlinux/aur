@@ -1,13 +1,13 @@
 pkgname=libretro-db-tools
-pkgver=1.8.6
+pkgver=1.9.0
 pkgdesc='A collection of tools for RetroArch database format (RDB) manipulation'
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/libretro/RetroArch/tree/master/libretro-db"
 license=('GPL3')
-_commit='36802f713312dc16c93a7765cd4a1b0883db5a61'
+_commit='5e551dd92b79d8127e66939835ea3c2a140c4078'
 source=("$pkgname-$pkgver.zip::https://github.com/libretro/RetroArch/archive/${_commit}.zip")
-sha256sums=('1e0c9f4644ba37ed23964b39a61a9519cd155c14ee45fef2f80a652628e74050')
+sha256sums=('dd024815c92c8b68ead4268d1590fe49779f259bd1301aa2e17b53d6b1c7bfd0')
 
 build() {
   cd "${srcdir}/RetroArch-${_commit}/libretro-db"
