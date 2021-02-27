@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.11.1.arch1
+pkgver=5.11.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -134,7 +134,7 @@ prepare() {
     for MyPatch in "${PatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
-        patch -Np1 -i "$srcdir/$MyPatch"
+        git apply -v -p1 "$srcdir/$MyPatch"
     done
 
     msg2 "Setting config..."
