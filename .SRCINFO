@@ -1,0 +1,26 @@
+pkgbase = mod-ui-git
+	pkgdesc = UI for the MOD software, HTML5 webserver interface and commnicates with mod-host
+	pkgver = 0.99.8.r3148.g13435b8b
+	pkgrel = 1
+	url = https://github.com/moddevices/mod-ui
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-pyserial
+	depends = python-pystache
+	depends = python-tornado
+	depends = python-pycrypto
+	depends = python-aggdraw
+	depends = jack2
+	depends = lilv
+	depends = lv2
+	provides = mod-ui
+	conflicts = mod-ui
+	source = git+https://github.com/moddevices/mod-ui.git
+	md5sums = SKIP
+
+pkgname = mod-ui-git
+
