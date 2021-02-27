@@ -1,14 +1,14 @@
 pkgbase = wpilib-utility
 	pkgdesc = Standalone FRC Robot Project Builder
-	pkgver = 2019.4.2
+	pkgver = 2021.2.2
 	pkgrel = 3
 	url = https://github.com/wpilibsuite/vscode-wpilib
 	arch = x86_64
 	license = custom:FIRST
 	provides = wpilib-utility
-	source = wpilib-utility-2019.4.2.tar.gz::https://github.com/wpilibsuite/vscode-wpilib/releases/download/v2019.4.2/wpilibutility-linux.tar.gz
+	source = wpilib-utility-2021.2.2.tar.gz::https://github.com/wpilibsuite/vscode-wpilib/releases/download/v2021.2.2/wpilibutility-linux.tar.gz
 	source = wpilib-utility.desktop
-	md5sums = c9f91f4c2864934c2180f594ba6f5c08
+	md5sums = 6ac435258eb7c3f38bf49ac4c4ba8a53
 	md5sums = 08845bf8556c697ab7de3daf16c9487b
 
 pkgname = wpilib-utility
