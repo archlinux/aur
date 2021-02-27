@@ -1,0 +1,24 @@
+From afd72820946f544790c6f70d90ba50eb29f1c6e1 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Wed, 9 Sep 2020 10:16:36 +0200
+Subject: [PATCH] asyncio: wait for POLLOUT on sender in can_connect
+
+matches login in thread, because POLLOUT will only be set if connection is allowed
+---
+ zmq/tests/asyncio/_test_asyncio.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/zmq/tests/asyncio/_test_asyncio.py b/zmq/tests/asyncio/_test_asyncio.py
+index 335913f3..d631e900 100644
+--- a/zmq/tests/asyncio/_test_asyncio.py
++++ b/zmq/tests/asyncio/_test_asyncio.py
+@@ -463,7 +463,8 @@ def go():
+             port = server.bind_to_random_port(iface)
+             client.connect("%s:%i" % (iface, port))
+             msg = [b"Hello World"]
+-            yield from server.send_multipart(msg)
++            if (yield from server.poll(1000, zmq.POLLOUT)):
++                yield from server.send_multipart(msg)
+             if (yield from client.poll(1000)):
+                 rcvd_msg = yield from client.recv_multipart()
+                 self.assertEqual(rcvd_msg, msg)

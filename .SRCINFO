@@ -1,0 +1,20 @@
+pkgbase = python2-pyzmq
+	pkgdesc = Python2 bindings for zeromq, written in Cython
+	pkgver = 19.0.2
+	pkgrel = 1
+	url = http://www.zeromq.org/bindings:python
+	arch = x86_64
+	license = LGPL
+	checkdepends = python2-nose
+	checkdepends = python2-tornado
+	checkdepends = python2-pytest
+	checkdepends = cython2
+	depends = zeromq
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/p/pyzmq/pyzmq-19.0.2.tar.gz
+	source = asyncio-wait-for-POLLOUT-on-sender-in-can_connect.patch
+	md5sums = 200abc1a75bdcfff7adf61304f46f55e
+	md5sums = 0a2106785a843c3f99411515b03f42a9
+
+pkgname = python2-pyzmq
+
