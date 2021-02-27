@@ -3,7 +3,7 @@
 pkgname=('lua-luaopus' 'lua51-luaopus' 'lua52-luaopus' 'lua53-luaopus')
 _pkgbase='luaopus'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url='https://github.com/jprjr/luaopus'
 license=('MIT')
@@ -28,7 +28,7 @@ build() {
 }
 
 package_lua-luaopus() {
-    pkgdesc="Lua bindings for libFLAC"
+    pkgdesc="Lua bindings for libopus"
     depends+=('lua')
 
     make -C build-lua-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
@@ -37,7 +37,7 @@ package_lua-luaopus() {
 }
 
 package_lua51-luaopus() {
-    pkgdesc="Lua bindings for libFLAC for Lua 5.1"
+    pkgdesc="Lua bindings for libopus for Lua 5.1"
     depends+=('lua51')
 
     make -C build-lua51-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
@@ -45,7 +45,7 @@ package_lua51-luaopus() {
 }
 
 package_lua52-luaopus() {
-    pkgdesc="Lua bindings for libFLAC for Lua 5.2"
+    pkgdesc="Lua bindings for libopus for Lua 5.2"
     depends+=('lua52')
 
     make -C build-lua52-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
@@ -53,7 +53,7 @@ package_lua52-luaopus() {
 }
 
 package_lua53-luaopus() {
-    pkgdesc="Lua bindings for libFLAC for Lua 5.3"
+    pkgdesc="Lua bindings for libopus for Lua 5.3"
     depends+=('lua53')
 
     make -C build-lua53-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
