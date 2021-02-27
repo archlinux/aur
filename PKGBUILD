@@ -6,17 +6,17 @@
 _pkgname=boost
 _pkg_arch=x86
 _android_arch=x86
-_android_toolchain=x86_64-linux-android$_android_platform
+_android_toolchain=i686-linux-android$_android_platform
+_andoird_toolchain_dir=$_android_arch
 _android_platform=24 # https://developer.android.com/about/dashboards/
+_android_target=$_android_toolchain
 _android_prefix=/opt/android-libs/$_pkg_arch
 _android_ndk_path=/opt/android-ndk
-_android_platform_arch=arch-x86
-_android_platform_dir=android-$_android_platform/${_android_platform_arch}
 _boost_arch=x86
 _boost_address_model=32
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=1.74.0
+pkgver=1.75.0
 _boostver=${pkgver//./_}
 pkgrel=1
 url='https://www.boost.org/'
@@ -30,7 +30,7 @@ conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2
         no-versioned-shlibs.patch)
-sha256sums=('83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1'
+sha256sums=('953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb'
             'd82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23')
 
 prepare() {
@@ -42,16 +42,16 @@ build() {
   local _stagedir="${srcdir}/stagedir"
   local jobs="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
   local target_flags=" \
-    --target=$_android_toolchain \
-    --gcc-toolchain=$_android_ndk_path/toolchains/$_android_toolchain-4.9/prebuilt/linux-x86_64 \
-    --sysroot=$_android_ndk_path/platforms/$_android_platform_dir/usr"
+    --target=$_android_target \
+    --gcc-toolchain=$_android_ndk_path/toolchains/$_andoird_toolchain_dir-4.9/prebuilt/linux-x86_64 \
+    --sysroot=$_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr"
   local common_flags=" \
     $target_flags \
     -isystem $_android_ndk_path/sources/android/support/include \
     -isystem $_android_ndk_path/sources/cxx-stl/llvm-libc++/include \
     -isystem $_android_ndk_path/sources/cxx-stl/llvm-libc++abi/include \
-    -isystem $_android_ndk_path/sysroot/usr/include \
-    -isystem $_android_ndk_path/sysroot/usr/include/$_android_toolchain \
+    -isystem $_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include \
+    -isystem $_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/$_android_toolchain \
     -fexceptions \
     -no-canonical-prefixes \
     -D__ANDROID_API__=$_android_platform \
@@ -62,6 +62,7 @@ build() {
     $target_flags \
     -fexceptions \
     $_android_ndk_path/sources/cxx-stl/llvm-libc++/libs/$_android_arch/libc++_shared.so \
+    -B$_android_ndk_path/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/$_android_toolchain/$_android_platform \
     -nostdlib++"
 
   cd ${_pkgname}_${_boostver}
