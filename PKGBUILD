@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
 pkgver=2.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -42,7 +42,7 @@ build() {
     patch -d"${srcdir}/urbackup-client-${pkgver}.0" -p0 < "${srcdir}/md5-bytes.patch"
 
     cd "${srcdir}/urbackup-client-${pkgver}.0"
-    ./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --sysconfdir=/etc
+    ./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --sysconfdir=/etc --enable-embedded-cryptopp
     make
 }
 
