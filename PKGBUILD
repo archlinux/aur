@@ -1,6 +1,6 @@
-# Maintainer: Codist <countstarlight@gmail.com>
-# Maintainer: taotieren <admin@taotieren.com>
 # Maintainer: Lapis Apple <laple@pd2.ink>
+# Contributor: Codist <countstarlight@gmail.com>
+# Contributor: taotieren <admin@taotieren.com>
 pkgname=deepin-wine-qqmusic
 pkgver=17.73.10.0010
 debpkgver=17.73deepin10
