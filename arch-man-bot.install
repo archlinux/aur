@@ -1,0 +1,3 @@
+post_install() {
+	echo "Please edit the unitfile to add your token for the bot"
+}

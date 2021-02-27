@@ -1,0 +1,21 @@
+pkgbase = arch-man-bot-git
+	pkgdesc = Telegram bot for in-line search of man-pages
+	pkgver = r8.6b20f92
+	pkgrel = 1
+	url = https://t.me/archmanbot
+	install = arch-man-bot.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-pytelegrambotapi
+	provides = arch-man-bot
+	conflicts = arch-man-bot
+	source = arch-man-bot::git+https://github.com/alcortazzo/arch-man-bot.git
+	source = systemd-credential-pass.patch
+	source = arch-man-bot.service
+	sha512sums = SKIP
+	sha512sums = fbda678674f8ad212151f327d6b827844a61d0c103e8f14138d674464acb812bc4da435796f65c036c87fada9008e74aa0d6c3c417fb70b83897587f7d183928
+	sha512sums = 33c98561c766ca7cbe524b148e04e17061b3966ed99e991e5178958149adc817d2d83a62d87b673343fd972da81d5e5aaf900b747eaef4c1e808d782584294a9
+
+pkgname = arch-man-bot-git
+
