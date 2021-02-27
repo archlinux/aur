@@ -1,0 +1,19 @@
+pkgbase = gog-tangledeep
+	pkgdesc = Trapped in underground villages with no memory of the world at the surface, you must survive an ever-changing labyrinth to discover what lies above.
+	pkgver = 1.36b
+	pkgrel = 1
+	url = https://www.gog.com/game/tangledeep
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	noextract = tangledeep_1_36b_43839.sh
+	noextract = tangledeep.desktop
+	source = tangledeep_1_36b_43839.sh::gog://tangledeep_1_36b_43839.sh
+	source = tangledeep.desktop
+	sha256sums = 7a4767cb94200302cdd1b517a13b5bdb73df6672ba3ac7f517a9bbc4c38b0d1e
+	sha256sums = 13b1809ed2232f90fece7e46dae5d7f1d0dd983e0997501316f9e57703553fd4
+
+pkgname = gog-tangledeep
+
