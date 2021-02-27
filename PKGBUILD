@@ -3,7 +3,7 @@
 pkgbase=xbmpwall-git
 pkgname=$pkgbase
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 
 _gitname=xbmpwall
 _gittag="v${pkgver}"
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             '6200014b0bad8ecdea1eb6eb242ebb0d42758634f93d065243034a42933cc343'
             )
 
-validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
+validpgpkeys=('95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1')
 
 prepare() {
   git clone --single-branch --depth=1 "https://github.com/dkeg/bitmap-walls.git"

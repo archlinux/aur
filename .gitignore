@@ -1,5 +1,7 @@
 *.xz
 *.xz.sig
+*.zst
+*.zst.sig
 src
 pkg
 xbmpwall
