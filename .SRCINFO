@@ -1,0 +1,18 @@
+pkgbase = python-mcp2210-python-git
+	pkgdesc = An MCP2210 python driver.
+	pkgver = 75e3c35
+	pkgrel = 1
+	url = https://jeremyherbert.github.io/mcp2210-python/
+	arch = x86_64
+	license = 
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-distribute
+	depends = python-docutils
+	source = mcp2210-python::git+https://github.com/jeremyherbert/mcp2210-python.git
+	md5sums = SKIP
+
+pkgname = python-mcp2210-python-git
+
