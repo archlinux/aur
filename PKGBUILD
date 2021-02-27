@@ -84,12 +84,7 @@ prepare() {
 
 build() {
   cd ${_srcname}
-  # use default settings for new options
-  # ADDED BY JUSTIN
-  make olddefconfig
-  # add back newly generated .config for new builds, disabled by default
-  # ADDED BY JUSTIN
-  #cp ./.config ../../config
+
   # get kernel version
   make prepare
 
