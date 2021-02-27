@@ -1,7 +1,7 @@
 # Maintainer: Parham <parham at tuta dot io>
 
 pkgname=icu4j
-pkgver=67.1
+pkgver=68.2
 pkgrel=1
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
@@ -23,13 +23,13 @@ noextract=("${pkgname}-${pkgver//./_}.jar"
            "${pkgname}-charset-${pkgver//./_}-src.jar"
            "${pkgname}-localespi-${pkgver//./_}.jar"
            "${pkgname}-localespi-${pkgver//./_}-src.jar")
-sha256sums=('c4eb904caf5fba968a2f1a3b8aef14df801e9329b21697209ca30bfcf153867d'
-            '2313076465b7f6aca318fca5523956db9272e30a0524c0749b435952417197d3'
-            'f6ac585fd0913c2e12b156831b9755e5b9a09e77f013738db79e677f08180076'
-            '0ad414c75ec928943392a4d684f29b1f322dec13b32c9480c4eadb5fa091cb28'
-            '567b5377d70ce9cf902499c40ac3dde58316c2fe7938f41def7d45c3871bfae5'
-            'ef65382254ce991bc250e7106df61e1c9af648cee693e9c2262895f1c7498f3c'
-            '773f823b843c92a117ab66f6b9f47c08bb5a90fa52ad7b55c4d4b028c5fd212d'
+sha256sums=('9bd7bf869a44ba8aeb0cddd7e6616e88cd4795ba5bfce2230447cb0e185a646c'
+            '994b357616ddaf5ab9aa493caf1d213401071eb6d865bc2ad49e943c544d6884'
+            'b02680befb4cabca9ab3637025496362f312da8a215097f749d7e432ea0889b4'
+            'de161cbface844b66e0577e794332af2fbca65a7cb1e4c286da145598decdc51'
+            'ea5e9c413ba8ed36583d661f9a6a66819952eccdb1898ef122aefe9d837fbc4c'
+            '07d1b869732c44d564048bddebb4a632b87aa3ed999c328971bef915982f3f6d'
+            'fdc6668d5ee97a45903e65d5d87c799dc2864b40ad1b3242f485f27f230776ec'
             'SKIP')
 
 package() {
