@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: robertfoster
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-fdkaac
@@ -12,17 +13,18 @@ depends=('ocaml' 'libfdk-aac')
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-fdkaac/archive/${pkgver}.tar.gz")
-sha256sums=('0de28749e1435839ead013c385c6b963b88b57770e362e067139c2fd67a52e5f')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    dune build
+  dune build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    dune install --prefix "${pkgdir}/usr" \
+  dune install --prefix "${pkgdir}/usr" \
     --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 }
+
+sha256sums=('0de28749e1435839ead013c385c6b963b88b57770e362e067139c2fd67a52e5f')
