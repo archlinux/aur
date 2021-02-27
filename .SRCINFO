@@ -1,6 +1,6 @@
 pkgbase = platypush
 	pkgdesc = Universal multi-platform command executor and automation manager
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = platypush
 	optdepends = python-paramiko: SSH support
 	optdepends = python-pyserial: Arduino/serial device support
 	options = !strip
-	source = platypush-v0.20.0.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/v0.20.0/platypush-v0.20.0.tar.gz
-	sha512sums = 8fb6037bd57a971e92fd93d8886653af525b4a009413cd8c9ec0a8a33ada625b7feb956eba5f2a5bb8664dde9e26de77e4546fd9a38e52c7496c76decc60ae7f
+	source = platypush-v0.20.1.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/v0.20.1/platypush-v0.20.1.tar.gz
+	sha512sums = 9452eee68363394b126ea71f502569e4f3c8c911bc3f207aed0a322baf7ca25d15dfcd88ecc92707b83829e83739b9c440b20153ee7af9006d47c9ce5d860582
 
 pkgname = platypush
 
