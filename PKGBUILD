@@ -1,9 +1,9 @@
-# Maintainer: Aleksandr <contact via dot aur>
+# Maintainer: Aleksandr <contact at via dot aur>
 # Contributor: Anthony Ruhier <anthony.ruhier@gmail.com>
 
 pkgname=netbox-git
 pkgver=v2.10.4.r28.b1cd634ab
-pkgrel=1
+pkgrel=2
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/netbox-community/netbox.git"
