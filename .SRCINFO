@@ -1,6 +1,6 @@
 pkgbase = setzer-git
 	pkgdesc = LaTeX editor written in Python with Gtk
-	pkgver = r314.9faed5
+	pkgver = r876.e9c96fa
 	pkgrel = 1
 	url = https://github.com/cvfosammmm/Setzer
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = setzer-git
 	makedepends = meson
 	depends = gtk3
 	depends = gtksourceview3
-    depends = poppler-glib
-    depends = texlive-core
-    depends = gspell
-    depends = python-pyxdg
+	depends = poppler-glib
+	depends = texlive-core
+	depends = gspell
+	depends = python-pyxdg
+	depends = python-pdfminer
 	source = git+https://github.com/cvfosammmm/Setzer
 	md5sums = SKIP
 
 pkgname = setzer-git
-
