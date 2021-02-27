@@ -1,7 +1,7 @@
 pkgbase = waybar-livestatus
 	pkgdesc = Tiny waybar module to fetch new alerts from livestatus.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/cyrinux/waybar-livestatus
 	arch = x86_64
 	license = ISC
@@ -10,10 +10,10 @@ pkgbase = waybar-livestatus
 	depends = glibc
 	depends = otf-font-awesome
 	optdepends = mako: to get popup notifications,
-	source = waybar-livestatus-1.1.0-src.tar.gz::https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.0/waybar-livestatus-1.1.0-src.tar.gz
-	source = waybar-livestatus-1.1.0-src.tar.gz.asc::https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.0/waybar-livestatus-1.1.0-src.tar.gz.asc
+	source = waybar-livestatus-1.1.1-src.tar.gz::https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.1/waybar-livestatus-1.1.1-src.tar.gz
+	source = waybar-livestatus-1.1.1-src.tar.gz.asc::https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.1/waybar-livestatus-1.1.1-src.tar.gz.asc
 	validpgpkeys = 4F7BC1FD97170A79267686A6FC9B1319726657D3
-	sha256sums = a4bca063de87c292793ebf36f6430fa92b459e96fb58bda6b84efe4f8a3a39ca
+	sha256sums = d4d575758774099f845c2dcdadb8ecd03d27ce60f55b0da98cfdbf1f80fc0beb
 	sha256sums = SKIP
 
 pkgname = waybar-livestatus
