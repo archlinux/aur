@@ -2,7 +2,7 @@
 
 pkgname=gopro-utils-git
 _pkgname=gopro-utils
-pkgver=r40.1857777
+pkgver=r41.e0a6514
 pkgrel=1
 pkgdesc="Tools to parse metadata from GoPro Hero 5 & 6 cameras"
 arch=('x86_64' 'i686')
@@ -21,12 +21,10 @@ build() {
   cd "$srcdir/"
   export GOPATH=`pwd`
   go get github.com/mlouielu/gopro-utils/bin/gopro2json
-  go build github.com/mlouielu/gopro-utils/bin/gopro2json
   go get github.com/mlouielu/gopro-utils/bin/gopro2gpx
-  go build github.com/mlouielu/gopro-utils/bin/gopro2gpx
 }
 
 package() {
-  install -Dm755 "$srcdir/gopro2gpx" "$pkgdir/usr/bin/gopro2gpx"
-  install -Dm755 "$srcdir/gopro2json" "$pkgdir/usr/bin/gopro2json"
+  install -Dm755 "$srcdir/bin/gopro2gpx" "$pkgdir/usr/bin/gopro2gpx"
+  install -Dm755 "$srcdir/bin/gopro2json" "$pkgdir/usr/bin/gopro2json"
 }
