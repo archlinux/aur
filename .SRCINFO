@@ -1,7 +1,7 @@
 pkgbase = deja-dup-git
 	pkgdesc = Simple backup tool, that hides the complexity of backing up the Right Way and uses duplicity as the backend
 	pkgver = 42.4+132+g190890de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/DejaDup
 	arch = any
 	license = GPL

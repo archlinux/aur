@@ -1,9 +1,9 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 _pkgname=deja-dup
 pkgname=$_pkgname-git
-pkgver=42.4+132+g190890de
+pkgver=42.4+142+g39e801e8
 pkgrel=1
 pkgdesc="Simple backup tool, that hides the complexity of backing up the Right Way and uses duplicity as the backend"
 arch=('any')
