@@ -2,7 +2,7 @@
 
 pkgname=license
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to easily add a license to your project"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/license/"
@@ -16,7 +16,6 @@ optdepends=(
 sha256sums=("a6534c942a98d7709674508ce6c29cd76d1deec060bcc9b2de219160a042af1e")
 
 build() {
-    tar -xf $pkgver.tar.gz
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --release --locked --all-features
     scdoc < doc/license.scd > license.1

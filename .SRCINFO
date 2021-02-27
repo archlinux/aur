@@ -1,7 +1,7 @@
 pkgbase = license
 	pkgdesc = A tool to easily add a license to your project
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~zethra/license/
 	arch = x86_64
 	arch = i686
