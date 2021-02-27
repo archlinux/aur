@@ -1,7 +1,7 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=python-imaplib2-git
 pkgver=r146.e969a3f
-pkgrel=2
+pkgrel=3
 pkgdesc="Threaded Python IMAP4 client"
 arch=("any")
 url="https://github.com/jazzband/imaplib2"
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
     "SKIP"
-    "ece9954cde619ada9a46a2c8a23479b2"
+    "c06e73313173edf6311c803111cbd9b9"
     "e4fef5ad967bc93be04ba3dd325c7cae"
 )
 
