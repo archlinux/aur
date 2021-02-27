@@ -100,7 +100,7 @@ prepare() {
     fi
 
   cd mesa
-  patch --forward --strip=1 --input="${srcdir}/8543 clover: Fix build with llvm-12.patch"
+  patch --forward --strip=1 --input="${srcdir}/8543 clover Fix build with llvm-12.patch"
   patch --forward --strip=1 --input="${srcdir}/0001-clover-llvm13-use-FixedVectorType.patch"
 }
 
