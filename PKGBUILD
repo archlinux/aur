@@ -134,7 +134,7 @@ prepare() {
     for MyPatch in "${PatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
-        git apply -v -p1 "$srcdir/$MyPatch"
+        patch -Np1 -i "$srcdir/$MyPatch"
     done
 
     msg2 "Setting config..."
