@@ -1,14 +1,14 @@
 pkgname=ctucx-gallery
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://cgit.ctu.cx/gallery/"
 license=('GPL-3')
 depends=('glibc' 'imagemagick')
 makedepends=( 'nim' 'nimble' )
-_commit="b961946a4f5a82274e94a21933bf7bb1dd59f78e"
+_commit="d048a405c822d40e4a3d15fb2f9aa0f08a03cae1"
 source=("${pkgname}-${_commit}.tar.gz::https://cgit.ctu.cx/gallery/snapshot/gallery-${_commit}.tar.gz")
-sha256sums=('4f4ca5fbd3e25b8f92928ac9aa9d036e3ef2009a367af7c957a79df6ba7fc730')
+sha256sums=('0b5f4da36b7e6ad78d01c31872a4d47f4b5114ac83532033e59ce084bd42fc0e')
 
 build() {
   cd $srcdir/gallery-${_commit}
