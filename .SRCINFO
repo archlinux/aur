@@ -25,7 +25,7 @@ pkgbase = onscripter-jh-git
 	source = target-optimizing.patch
 	sha256sums = SKIP
 	sha256sums = 11dab90831eaea86867675abef844f0bdd207545d157b49818b0557a441b8351
-	sha256sums = a54b830a7d4527a18e8d8fb03569c755dc525eb5c66d70fdf66b6e06df4b5d20
+	sha256sums = 4d624bcc1cc196d81c00bf4b7112228cc8c516bf61a80ce65144c4d0c43bd830
 
 pkgname = onscripter-jh-git
 

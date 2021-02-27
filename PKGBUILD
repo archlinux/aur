@@ -30,7 +30,7 @@ source=("git+${url}"
         "target-optimizing.patch")
 sha256sums=('SKIP'
             '11dab90831eaea86867675abef844f0bdd207545d157b49818b0557a441b8351'
-            'a54b830a7d4527a18e8d8fb03569c755dc525eb5c66d70fdf66b6e06df4b5d20')
+            '4d624bcc1cc196d81c00bf4b7112228cc8c516bf61a80ce65144c4d0c43bd830')
 
 pkgver() {
   cd ${srcdir}/${_gitname}
