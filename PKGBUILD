@@ -1,16 +1,16 @@
 
 pkgname=mingw-w64-dlfcn
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A wrapper for dlfcn to the Win32 API (mingw-w64)"
 arch=(any)
 url="https://github.com/dlfcn-win32/dlfcn-win32"
-license=('LGPL')
+license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/dlfcn-win32/dlfcn-win32/archive/v${pkgver}.tar.gz")
-sha256sums=('f18a412e84d8b701e61a78252411fe8c72587f52417c1ef21ca93604de1b9c55')
+sha256sums=('24c69d43ddc9243fd2639a07495a7e0714278e8d3d0e124afdbab892dbb4a92d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
 
