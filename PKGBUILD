@@ -1,32 +1,28 @@
 # Maintainer: Márcio Sousa Rocha <marciosr10@gmail.com>
-# Baseado no PKGBUILD feito por Lara Maia <lara@craft.net.br>
  
 pkgname=irpf
 pkgver=2021.1.1
-pkgrel=1
+pkgrel=2
 license=('custom')
  
 arch=(any)
 pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
-url='http://www.receita.fazenda.gov.br'
+url='https://www.receita.fazenda.gov.br'
  
-
 source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2021/irpf/arquivos/IRPF2021-1.1.zip
 	Copyright
 	$pkgname.png
 	$pkgname.desktop
-	$pkgname.install
 	$pkgname)
  
 md5sums=('67320c8ad6df804e73a292ee093f5e61'
          '0b81ed3a0a6200d2706caf541756d55d'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
-         'd9ac8023f52d57323acef3aecbe2458b'
          'a3343e87932f90696d08d0bd015ea89b')
- #java-environment
-depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
-install=$pkgname.install
+ 
+depends=('java-runtime' 'hicolor-icon-theme' 'sh')
+
  
  
 package() {
