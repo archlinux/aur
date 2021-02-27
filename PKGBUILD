@@ -47,7 +47,7 @@ sha512sums=('SKIP'
 #
 
 if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
+    MESA_WHICH_LLVM=1
 fi
 
 case $MESA_WHICH_LLVM in
@@ -69,8 +69,8 @@ case $MESA_WHICH_LLVM in
         ;;
     4)
         # extra/llvm
-        makedepends+=(lib32-llvm=11.0.0)
-        depends+=(lib32-llvm-libs=11.0.0)
+        makedepends+=(lib32-llvm=11.1.0)
+        depends+=(lib32-llvm-libs=11.1.0)
         ;;
     *)
 esac
