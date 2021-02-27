@@ -44,7 +44,7 @@ build() {
         -D vc4=false \
 	-D vmwgfx=false \
 	-D amdgpu=true \
-	-D radeon=true \
+	-D radeon=false \
 	-D intel=false \
 	-D nouveau=false \
 	-D man-pages=false
