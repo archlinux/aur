@@ -13,6 +13,7 @@ makedepends=()
 optdepends=()
 backup=("etc/rocketchat/${pkgname}.conf")
 CFLAGS=-std=gnu11
+options=("!strip")
 
 install="${pkgname}.install"
 source=("rocketchat-${pkgver}.tar::https://releases.rocket.chat/${pkgver}/download"

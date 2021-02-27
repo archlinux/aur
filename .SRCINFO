@@ -13,6 +13,7 @@ pkgbase = rocketchat-server
 	depends = curl
 	depends = python2
 	depends = gcc
+	options = !strip
 	backup = etc/rocketchat/rocketchat-server.conf
 	source = rocketchat-3.10.1.tar::https://releases.rocket.chat/3.10.1/download
 	source = rocketchat-server.install
