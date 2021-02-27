@@ -54,12 +54,11 @@ package()
     # Create the systemd service.
     echo -e "[Unit]
     Description=${pkgdesc}
-    Requires=bitcoind.service
-    After=bitcoind.service
     After=network-online.target
 
     [Service]
     Type=oneshot
+    ExecStartPre=/usr/bin/bitcoind -daemon
     ExecStart=/usr/bin/${_pkgname_lc}
     Restart=on-failure
 
