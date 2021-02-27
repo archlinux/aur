@@ -1,4 +1,3 @@
-
 #_                   _ _ _  _ _____ _  _
 #| | _______   ____ _| | | || |___  | || |
 #| |/ / _ \ \ / / _` | | | || |_ / /| || |_
@@ -27,10 +26,11 @@ pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Tools'
 license=('custom')
-depends=('gcc-libs' 'libxcb' 'vulkan-icd-loader')
-makedepends=('git' 'cmake' 'python' 'vulkan-headers' 'libx11' 'wayland' 'glslang' 'spirv-tools' 'make' 'extra-cmake-modules' 'clang' 'gcc' 'gcc-libs' 'ninja')
+makedepends=('git' 'cmake' 'python' 'vulkan-headers' 'libx11' 'wayland' 'glslang' 'spirv-tools' 'make' 'extra-cmake-modules'
+             'clang' 'llvm' 'llvm-libs' 'gcc' 'gcc-libs' 'ninja')
+depends=('gcc-libs' 'llvm-libs' 'libxcb' 'vulkan-icd-loader')
 conflicts=('vulkan-tools')
-provides=('vulkan-tools')
+provides=('vulkan-tools' 'vulkan-tools-git')
 source=('Vulkan-Tools::git+https://github.com/KhronosGroup/Vulkan-Tools.git')
 md5sums=('SKIP')
 
@@ -39,7 +39,7 @@ pkgver(){
  echo 1.2.170.$(date -I | sed 's/-/_/' | sed 's/-/_/').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build() {
+build(){
 if [[ $_compiler = "1" ]]; then
   export CC="gcc"
   export CXX="g++"
@@ -74,8 +74,7 @@ fi
   ninja -C build/
 }
 
-package() {
-
+package(){
   DESTDIR="$pkgdir" ninja -C Vulkan-Tools/build/ install
 
   # install licence
