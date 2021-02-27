@@ -20,8 +20,7 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "${pkgdir}/usr/src/darling-mach-0.1/lkm/tools/tests/libMicro/OPENSOLARIS.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "${pkgdir}/usr/src/darling-mach-0.1/lkm/security/conf/copyright.nai" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	install -D -m644 "/usr/src/darling-mach-0.1/lkm/tools/tests/libMicro/OPENSOLARIS.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "/usr/src/darling-mach-0.1/lkm/security/conf/copyright.nai" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
 }
-sha512sums_x86_64=('22672152f3a4a6b36213532b601208b8ade06657cde78bb2a76d700ac3c46af75086be5e2bdbf3d1e860735e5a1b2594c45ad32038cbd99aa68ea82532c98f5f')
