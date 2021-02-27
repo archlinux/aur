@@ -2,7 +2,8 @@
 # edrawmax 中文版
 
 pkgname=edrawmax-cn
-pkgver=10.5.0
+_pkgname=EdrawMax-10
+pkgver=10.5.3
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
@@ -13,21 +14,20 @@ url="https://www.edrawsoft.cn/edrawmax/"
 source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/edrawmax-10-5-cn.deb")
 sha256sums_x86_64=('SKIP')
 
+prepare() {
+    ar -x *.deb
+	mkdir -p ${pkgname}
+    tar -xf "${srcdir}/data.tar.xz" -C "${pkgname}"
+}
 package() {	
-    cd "${pkgdir}"
-    tar xf "${srcdir}/data.tar.xz"
+    export LC_ALL="zh_CN.UTF-8"
     
-    mkdir -pv ${pkgdir}/usr/bin
-    mkdir -pv ${pkgdir}/usr/share/icons
-    mkdir -pv ${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes
-    mkdir -pv ${pkgdir}/usr/share/mime/packages
+    cp -r ${srcdir}/${pkgname}/* ${pkgdir}
     
-    ln -f -s /opt/EdrawMax-10/EdrawMax "${pkgdir}/usr/bin/EdrawMax"
+    install -Dm644 ${srcdir}/${pkgname}/opt/${_pkgname}/edrawmax.desktop "${pkgdir}/usr/share/applications/edrawmax.desktop"
+    install -Dm644 ${srcdir}/${pkgname}/opt/${_pkgname}/EdrawMax "${pkgdir}/usr/bin/EdrawMax"
+    install -Dm644 ${srcdir}/${pkgname}/opt/${_pkgname}/edrawmax.png "${pkgdir}/usr/share/icons/edrawmax.png"
+    install -Dm644 ${srcdir}/${pkgname}/opt/${_pkgname}/eddx.svg "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/eddx.svg"
+    install -Dm644 ${srcdir}/${pkgname}/opt/${_pkgname}/edrawmax.xml "${pkgdir}/usr/share/mime/packages/edrawmax.xml"
     
-    ln -f -s /opt/EdrawMax-10/edrawmax.png "${pkgdir}/usr/share/icons/edrawmax.png"
-    
-    ln -f -s /opt/EdrawMax-10/eddx.svg "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/eddx.svg"
-    
-    ln -f -s /opt/EdrawMax-10/edrawmax.xml "${pkgdir}/usr/share/mime/packages/edrawmax.xml"
-        
 }
