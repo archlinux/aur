@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-source-switcher
-pkgver=0.2.7
+pkgver=0.2.8
 _obsver=26.1.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a source that switches between a list of sources"
@@ -15,7 +15,7 @@ makedepends=(
   'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
 )
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-source-switcher#commit=e8a59589d998add06976c31f8f2320d3e3618a2f"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-source-switcher#commit=8f3e3e0e5ddec052ebf2536507118b155e4987ad"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
   "fix_python_binary_loading.patch"
 )
