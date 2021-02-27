@@ -1,6 +1,6 @@
 pkgbase = ctucx-gallery
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cgit.ctu.cx/gallery/
 	arch = x86_64
 	license = GPL-3
@@ -8,8 +8,8 @@ pkgbase = ctucx-gallery
 	makedepends = nimble
 	depends = glibc
 	depends = imagemagick
-	source = ctucx-gallery-d048a405c822d40e4a3d15fb2f9aa0f08a03cae1.tar.gz::https://cgit.ctu.cx/gallery/snapshot/gallery-d048a405c822d40e4a3d15fb2f9aa0f08a03cae1.tar.gz
-	sha256sums = 4f4ca5fbd3e25b8f92928ac9aa9d036e3ef2009a367af7c957a79df6ba7fc730
+	source = ctucx-gallery-61683e35da184be1eed8d3a70eaf6e86ec58c941.tar.gz::https://cgit.ctu.cx/gallery/snapshot/gallery-61683e35da184be1eed8d3a70eaf6e86ec58c941.tar.gz
+	sha256sums = 5c51402437ae81e8bf1dc1a4a13d2a9d5fce04d64fc5b614c79d5806d6f245d4
 
 pkgname = ctucx-gallery
 
