@@ -85,5 +85,5 @@ package() {
 
   install -d "$pkgdir/usr/lib/systemd/system"
   install -m644 {arp,eb,ip,ip6}tables.service "$pkgdir/usr/lib/systemd/system"
-  install -Dm755 iptables-{legacy,nft}-flush "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
+#  install -Dm755 iptables-{legacy,nft}-flush "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
 }
