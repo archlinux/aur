@@ -1,7 +1,7 @@
 # Maintainer: Alexander Nicholi <me@nicholatian.com>
 pkgname=neopolitan
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='A new city of code on a cosmopolitan foundation.'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
 	fi
 	for _subproj in ${_subprojects}; do
 		cd "${_subproj}"
-		${_make} -j$(($(nproc) * 2))
+		${_make} -j$(($(nproc) * 2)) release
 		cd ..
 	done
 }
