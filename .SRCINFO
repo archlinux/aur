@@ -1,6 +1,6 @@
 pkgbase = sfizz-git
 	pkgdesc = SFZ library and LV2 plugin
-	pkgver = r3055.eab7d6e2
+	pkgver = r3128.e830ca13
 	pkgrel = 1
 	url = https://sfz.tools/sfizz
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = sfizz-git
 	depends = fontconfig
 	depends = cairo
 	depends = freetype2
+	depends = pango
 	depends = zenity
 	provides = sfizz
 	conflicts = sfizz
