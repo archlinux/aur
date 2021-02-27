@@ -1,6 +1,6 @@
 pkgbase = obs-media-controls
 	pkgdesc = Add Media Controls Dock to OBS
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/exeldro/obs-media-controls
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = obs-media-controls
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
 	depends = obs-studio
-	source = obs-media-controls-0.3.1::git+https://github.com/exeldro/obs-media-controls#commit=3900b7ec521a9d6b4d184bd5982308a3a7ed4dd3
+	source = obs-media-controls-0.3.2::git+https://github.com/exeldro/obs-media-controls#commit=8e12f52e70156ac4506cee782d48b13693e9828b
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
 	source = fix_python_binary_loading.patch
 	sha256sums = SKIP
