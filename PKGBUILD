@@ -1,6 +1,6 @@
 # Maintainer: Alexander Nicholi <me@nicholatian.com>
 pkgname=slick
-pkgver=1.3.1
+pkgver=1.3.4
 pkgrel=1
 epoch=
 pkgdesc='Slick makefiles'
@@ -11,7 +11,7 @@ depends=()
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/aquefir/$pkgname/archive/mk-v$pkgver.tar.gz" 'aquefir.sh')
-sha1sums=('2dcc7acaed0cbc6d439dcb3b094c6e71dbf54521' 'SKIP')
+sha1sums=('SKIP' 'SKIP')
 
 build() {
   cd "$srcdir/$pkgname-mk-v$pkgver"
@@ -36,4 +36,5 @@ package() {
   if [ "$(uname -s)" != 'Darwin' ]; then
     $_install -m755 -T "../aquefir.sh" "${pkgdir}/etc/profile.d/aquefir.sh"
   fi
+  PREFIX="${pkgdir}/opt/aq/lib/slick" util/install.sh;
 }
