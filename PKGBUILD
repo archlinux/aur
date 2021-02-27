@@ -1,7 +1,5 @@
 # Maintainer: Andrew Kozik <andrewkoz at live dot com>
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
 pkgname=mingw-w64-lzlib
 pkgver=1.12
 pkgrel=1
@@ -16,6 +14,8 @@ source=(http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-${pkgver}.tar
 validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
 sha256sums=('8e5d84242eb52cf1dcc98e58bd9ba8ef1aefa501431abdd0273a22bf4ce337b1'
             'SKIP')
+
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "$srcdir"/lzlib-${pkgver}
@@ -33,5 +33,10 @@ package() {
     cd "$srcdir"/lzlib-${pkgver}/build-${_arch}
     DESTDIR="$pkgdir" ${_arch}-make install
     install -Dm755 minilzip.exe "$pkgdir"/usr/${_arch}/bin/minilzip.exe
+    install -Dm755 liblz.so.${pkgver} "$pkgdir"/usr/${_arch}/bin/liblz.dll
+    rm liblz.so*
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
