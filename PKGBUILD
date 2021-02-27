@@ -54,30 +54,30 @@ sha512sums=('SKIP'
 #
 
 if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
+    MESA_WHICH_LLVM=1
 fi
 
 case $MESA_WHICH_LLVM in
     1)
         # aur lone_wolf-llvm-git
-        makedepends+=('lib32-llvm-minimal-git')
-        depends+=('lib32-llvm-libs-minimal-git')
+        makedepends+=('llvm-minimal-git')
+        depends+=('llvm-libs-minimal-git')
         ;;
     2)
         # aur llvm-git
         # depending on aur-lib32-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-lib32-llvm-git')
-        depends+=('aur-lib32-llvm-libs-git')
+        makedepends+=('aur-llvm-git')
+        depends+=('aur-llvm-libs-git')
         ;;
     3)
         # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('lib32-llvm-git')
-        depends+=('lib32-llvm-libs-git')
+        makedepends+=('llvm-git')
+        depends+=('llvm-libs-git')
         ;;
     4)
         # extra/llvm
-        makedepends+=(lib32-llvm=11.0.0)
-        depends+=(lib32-llvm-libs=11.0.0)
+        makedepends+=(llvm=11.1.0)
+        depends+=(llvm-libs=11.1.0)
         ;;
     *)
 esac
