@@ -1,0 +1,20 @@
+post_install() {
+	# Enable automatic start of USB Gadget
+	systemctl enable pinephone-usb-gadget
+	
+	# Try setting up USB networking directly; if it doesn't work (i.e. the NM
+	# connection file isn't created), then we're probably creating an image and
+	# need a systemd service running on first boot to setup USB networking
+	/usr/sbin/pinephone-setup-usb-network
+	if [ ! -e /etc/NetworkManager/system-connections/USB.nmconnection ]; then
+		systemctl enable pinephone-setup-usb-network
+	fi
+}
+
+pre_remove() {
+	# Remove USB gadget network connection
+	nmcli connection delete USB
+
+	# Disable automatic start of USB gadget
+	systemctl disable pinephone-usb-gadget
+}
