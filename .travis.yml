@@ -51,7 +51,7 @@ archlinux:
   - unset CC CXX
   - yay -S --noconfirm gegl-git
   - unset CC CXX
-  - timeout 40m makepkg -s --noconfirm > >(ts -s '[%.T]'); _makepkg_return=$?
+  - timeout 40m makepkg -s --nocheck --noconfirm > >(ts -s '[%.T]'); _makepkg_return=$?
 # Update PKGBUILD and push changes to AUR
   - ./update.PKGBUILD
   - |
