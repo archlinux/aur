@@ -1,6 +1,6 @@
 pkgbase = clash-tun
 	pkgdesc = Clash Tun Scripts for Linux
-	pkgver = 20210125.r580.d1c280a
+	pkgver = 20210227.r593.57ee9a2
 	pkgrel = 1
 	url = https://github.com/h0cheung/kr328-clash-setup-scripts
 	arch = any
