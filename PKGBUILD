@@ -1,18 +1,18 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname=notestorm
 pkgname=notestorm-git
-pkgver=r12.76f7e5d
+pkgver=r14.6beca18
 pkgrel=1
 pkgdesc="Extremely powerful and easy note taking app for the CLI written in bash"
 arch=('any')
-url="https://gitlab.com/stormdragon2976/$_pkgname"
+url="https://git.2mb.codes/~stormdragon2976/$_pkgname"
 license=('GPL')
 depends=('bash' 'dialog' 'w3m')
 makedepends=('git')
 optdepends=('gnupg: Encrypted notes support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git")
+source=("git+${url}")
 md5sums=("SKIP")
 
 pkgver()
