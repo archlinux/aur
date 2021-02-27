@@ -1,0 +1,9 @@
+# source
+/cawbird-git/
+
+# build
+/src/
+/pkg/
+
+# package
+/cawbird-git-*.pkg.tar*
