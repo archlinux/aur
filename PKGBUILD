@@ -40,7 +40,7 @@ _name=alice-vision
 _fragment="#branch=develop"
 
 pkgname=${_name}-git
-pkgver=2.3.1.r82.ge80604eaf
+pkgver=2.4.0.r0.g38d899f54
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -54,11 +54,10 @@ depends+=('glu' 'glfw-x11') # geogram deps.
 makedepends+=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sphinx' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 source+=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "geogram::git+https://github.com/alicevision/geogram.git"
-        "FindOpenGV.cmake.patch"
         )
 sha256sums+=('SKIP'
             'SKIP'
-            '2740fc6890a62f74367df357e132dc95bcd276528d828d51d66c4689e183ceec')
+)
 
 
 pkgver() {
@@ -75,8 +74,6 @@ prepare() {
 #  git config submodule.src/dependencies/osi_clp.url
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
-  #patch FindOpenGV.cmake to use Eigen3 instear of Eigen
-  git apply -v "$srcdir"/FindOpenGV.cmake.patch
 }
 
 

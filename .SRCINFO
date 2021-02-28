@@ -1,6 +1,6 @@
 pkgbase = alice-vision-git
 	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
-	pkgver = 2.3.1.r82.ge80604eaf
+	pkgver = 2.4.0.r0.g38d899f54
 	pkgrel = 1
 	url = https://alicevision.github.io/
 	arch = i686
@@ -41,11 +41,9 @@ pkgbase = alice-vision-git
 	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
 	source = alice-vision-git::git+https://github.com/alicevision/AliceVision.git#branch=develop
 	source = geogram::git+https://github.com/alicevision/geogram.git
-	source = FindOpenGV.cmake.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2740fc6890a62f74367df357e132dc95bcd276528d828d51d66c4689e183ceec
 
 pkgname = alice-vision-git
 
