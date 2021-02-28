@@ -1,8 +1,0 @@
-post_install() {
-	# libtool: warning: remember to run 'libtool --finish /usr/lib/gstreamer-1.0'
-	libtool --finish /usr/lib/gstreamer-1.0
-}
-
-post_upgrade() {
-	post_install
-}

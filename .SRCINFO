@@ -3,7 +3,6 @@ pkgbase = gst-plugin-jamesdsp-git
 	pkgver = r26.ccddd23
 	pkgrel = 3
 	url = https://github.com/Audio4Linux/gst-plugin-jamesdsp
-	install = gst-plugin-jamesdsp.install
 	arch = x86_64
 	license = GPL2
 	makedepends = git

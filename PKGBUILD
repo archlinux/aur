@@ -10,7 +10,6 @@ depends=('gst-plugins-base-libs' 'libsamplerate' 'libsndfile')
 makedepends=('git')
 provides=("${pkgname%-git}" 'libgstjdspfx')
 conflicts=("${pkgname%-git}" 'libgstjdspfx' 'gst-plugin-viper4linux' 'gst-plugin-viperfx')
-install="${pkgname%-git}.install"
 source=('git+https://github.com/Audio4Linux/gst-plugin-jamesdsp.git')
 sha256sums=('SKIP')
 
