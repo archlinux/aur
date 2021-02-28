@@ -1,6 +1,6 @@
 pkgbase = mopidy-local
 	pkgdesc = Mopidy extension for local media playback
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/mopidy/mopidy-local
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = mopidy-local
 	conflicts = mopidy-local-sqlite
 	replaces = mopidy-local-images
 	replaces = mopidy-local-sqlite
-	source = mopidy-local-3.2.0.tar.gz::https://github.com/mopidy/mopidy-local/archive/v3.2.0.tar.gz
-	md5sums = 1b4ba628214108386b1c9ab99c76219d
+	source = mopidy-local-3.2.1.tar.gz::https://github.com/mopidy/mopidy-local/archive/v3.2.1.tar.gz
+	md5sums = 1396cd8ad256c8965fe639a40b6ef5a2
 
 pkgname = mopidy-local
 
