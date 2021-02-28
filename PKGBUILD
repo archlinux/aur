@@ -2,9 +2,10 @@
 # Contributor: tuftedocelot@fastmail.fm
 # Contributor: flu
 
+# TODO: Change to using PyPI links for sources
 pkgname=mopidy-tunein
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from TuneIn"
 arch=("any")
 url="https://github.com/kingosticks/mopidy-tunein"
@@ -16,10 +17,10 @@ depends=(
     "python-pykka"
     "python-requests"
 )
-source=("https://github.com/kingosticks/mopidy-tunein/archive/v${pkgver}.tar.gz")
-sha256sums=("442aedb87b65ed61cad3eb8dd01f16ebf9f62fae4a6dd948ded73f1604ee8de2")
+source=("https://pypi.io/packages/source/M/Mopidy-TuneIn/Mopidy-TuneIn-${pkgver}.tar.gz")
+sha256sums=("910a96552d239bfaee6ef3635cf9018f7ef733ac311cd0b11f27334dbd56c107")
 
 package() {
-    cd "mopidy-pandora-${pkgver}"
+    cd "Mopidy-TuneIn-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
