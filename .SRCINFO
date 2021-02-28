@@ -1,10 +1,11 @@
 pkgbase = offlineimap3-git
 	pkgdesc = Read/sync your IMAP mailboxes (python3)
 	pkgver = r2718.1e7ef9e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OfflineIMAP/offlineimap3
 	arch = any
 	license = GPL2
+	makedepends = asciidoc
 	depends = python-imaplib2-git
 	depends = python-rfc6555
 	optdepends = python-gssapi: for Kerberos authentication
