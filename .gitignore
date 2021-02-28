@@ -6,5 +6,5 @@
 !PKGBUILD
 !.SRCINFO
 !ventoy
+!ventoyweb
 !sanitize.patch
-!ventoy.install
