@@ -2,7 +2,7 @@
 
 pkgname=mopidy-local
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for local media playback"
 arch=('any')
 url="https://github.com/mopidy/mopidy-local"
@@ -15,7 +15,7 @@ replaces=('mopidy-local-images' 'mopidy-local-sqlite')
 provides=('mopidy-local-images' 'mopidy-local-sqlite')
 makedepends=('python3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/mopidy-local/archive/v${pkgver}.tar.gz")
-md5sums=('1396cd8ad256c8965fe639a40b6ef5a2')
+sha256sums=('9f1b11db5cd47089f822b9dbf91f9e375377526308e2e072513ceee669c2ec21')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
