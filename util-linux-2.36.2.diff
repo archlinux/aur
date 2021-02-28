@@ -19,9 +19,9 @@ to programs, like this:
     make
 
 
-diff -urN util-linux-2.36/include/Makemodule.am util-linux-2.36-AES/include/Makemodule.am
---- util-linux-2.36/include/Makemodule.am	2020-07-01 14:42:48.218685213 +0300
-+++ util-linux-2.36-AES/include/Makemodule.am	2020-08-09 21:59:17.982217314 +0300
+diff -urN util-linux-2.36.2/include/Makemodule.am util-linux-2.36.2-AES/include/Makemodule.am
+--- util-linux-2.36.2/include/Makemodule.am	2021-02-12 13:32:01.735988774 +0200
++++ util-linux-2.36.2-AES/include/Makemodule.am	2021-02-23 18:30:59.347218450 +0200
 @@ -47,6 +47,7 @@
  	include/procutils.h \
  	include/pt-bsd.h \
@@ -30,9 +30,9 @@ diff -urN util-linux-2.36/include/Makemodule.am util-linux-2.36-AES/include/Make
  	include/pt-mbr-partnames.h \
  	include/pt-gpt-partnames.h \
  	include/pt-sgi.h \
-diff -urN util-linux-2.36/include/xgetpass.h util-linux-2.36-AES/include/xgetpass.h
---- util-linux-2.36/include/xgetpass.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/include/xgetpass.h	2020-08-09 21:59:17.983217323 +0300
+diff -urN util-linux-2.36.2/include/xgetpass.h util-linux-2.36.2-AES/include/xgetpass.h
+--- util-linux-2.36.2/include/xgetpass.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/include/xgetpass.h	2021-02-23 18:30:59.347218450 +0200
 @@ -0,0 +1,6 @@
 +#ifndef UTIL_LINUX_XGETPASS_H
 +#define UTIL_LINUX_XGETPASS_H
@@ -40,20 +40,20 @@ diff -urN util-linux-2.36/include/xgetpass.h util-linux-2.36-AES/include/xgetpas
 +extern char *xgetpass(int pfd, const char *prompt);
 +
 +#endif /* UTIL_LINUX_XGETPASS_H */
-diff -urN util-linux-2.36/lib/Makemodule.am util-linux-2.36-AES/lib/Makemodule.am
---- util-linux-2.36/lib/Makemodule.am	2020-07-22 11:06:46.904692361 +0300
-+++ util-linux-2.36-AES/lib/Makemodule.am	2020-08-09 21:59:17.983217323 +0300
-@@ -24,6 +24,7 @@
+diff -urN util-linux-2.36.2/lib/Makemodule.am util-linux-2.36.2-AES/lib/Makemodule.am
+--- util-linux-2.36.2/lib/Makemodule.am	2021-02-12 13:32:01.736988771 +0200
++++ util-linux-2.36.2-AES/lib/Makemodule.am	2021-02-23 18:30:59.347218450 +0200
+@@ -34,6 +34,7 @@
  	lib/strutils.c \
  	lib/timeutils.c \
  	lib/ttyutils.c \
 +	lib/xgetpass.c \
- 	lib/exec_shell.c \
  	lib/strv.c \
  	lib/sha1.c \
-diff -urN util-linux-2.36/lib/xgetpass.c util-linux-2.36-AES/lib/xgetpass.c
---- util-linux-2.36/lib/xgetpass.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/lib/xgetpass.c	2020-08-09 21:59:17.983217323 +0300
+ 	lib/signames.c
+diff -urN util-linux-2.36.2/lib/xgetpass.c util-linux-2.36.2-AES/lib/xgetpass.c
+--- util-linux-2.36.2/lib/xgetpass.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/lib/xgetpass.c	2021-02-23 18:30:59.347218450 +0200
 @@ -0,0 +1,64 @@
 +/*
 + * A function to read the passphrase either from the terminal or from
@@ -119,9 +119,9 @@ diff -urN util-linux-2.36/lib/xgetpass.c util-linux-2.36-AES/lib/xgetpass.c
 +	if(p) p[y] = 0;
 +	return p;
 +}
-diff -urN util-linux-2.36/libmount/src/Makemodule.am util-linux-2.36-AES/libmount/src/Makemodule.am
---- util-linux-2.36/libmount/src/Makemodule.am	2020-07-22 11:06:46.915692298 +0300
-+++ util-linux-2.36-AES/libmount/src/Makemodule.am	2020-08-09 21:59:17.984217331 +0300
+diff -urN util-linux-2.36.2/libmount/src/Makemodule.am util-linux-2.36.2-AES/libmount/src/Makemodule.am
+--- util-linux-2.36.2/libmount/src/Makemodule.am	2021-02-12 13:32:01.742988749 +0200
++++ util-linux-2.36.2-AES/libmount/src/Makemodule.am	2021-02-23 18:30:59.347218450 +0200
 @@ -27,7 +27,10 @@
  if LINUX
  libmount_la_SOURCES += \
@@ -134,9 +134,9 @@ diff -urN util-linux-2.36/libmount/src/Makemodule.am util-linux-2.36-AES/libmoun
  	libmount/src/context_veritydev.c \
  	libmount/src/context_mount.c \
  	libmount/src/context_umount.c \
-diff -urN util-linux-2.36/libmount/src/aes.c util-linux-2.36-AES/libmount/src/aes.c
---- util-linux-2.36/libmount/src/aes.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/libmount/src/aes.c	2020-08-09 21:59:17.984217331 +0300
+diff -urN util-linux-2.36.2/libmount/src/aes.c util-linux-2.36.2-AES/libmount/src/aes.c
+--- util-linux-2.36.2/libmount/src/aes.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/libmount/src/aes.c	2021-02-23 18:30:59.348218457 +0200
 @@ -0,0 +1,299 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -437,9 +437,9 @@ diff -urN util-linux-2.36/libmount/src/aes.c util-linux-2.36-AES/libmount/src/ae
 +
 +    state_out(out_blk, b0);
 +}
-diff -urN util-linux-2.36/libmount/src/aes.h util-linux-2.36-AES/libmount/src/aes.h
---- util-linux-2.36/libmount/src/aes.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/libmount/src/aes.h	2020-08-09 21:59:17.985217339 +0300
+diff -urN util-linux-2.36.2/libmount/src/aes.h util-linux-2.36.2-AES/libmount/src/aes.h
+--- util-linux-2.36.2/libmount/src/aes.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/libmount/src/aes.h	2021-02-23 18:30:59.348218457 +0200
 @@ -0,0 +1,97 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -538,9 +538,9 @@ diff -urN util-linux-2.36/libmount/src/aes.h util-linux-2.36-AES/libmount/src/ae
 +// if their parameters have not changed.
 +
 +#endif  // _AES_H
-diff -urN util-linux-2.36/libmount/src/context.c util-linux-2.36-AES/libmount/src/context.c
---- util-linux-2.36/libmount/src/context.c	2020-07-22 11:06:46.916692291 +0300
-+++ util-linux-2.36-AES/libmount/src/context.c	2020-08-09 21:59:17.986217348 +0300
+diff -urN util-linux-2.36.2/libmount/src/context.c util-linux-2.36.2-AES/libmount/src/context.c
+--- util-linux-2.36.2/libmount/src/context.c	2021-02-12 13:32:01.743988745 +0200
++++ util-linux-2.36.2-AES/libmount/src/context.c	2021-02-23 18:30:59.348218457 +0200
 @@ -102,7 +102,6 @@
  	mnt_unref_fs(cxt->fs);
  	mnt_unref_fs(cxt->fs_template);
@@ -558,9 +558,9 @@ diff -urN util-linux-2.36/libmount/src/context.c util-linux-2.36-AES/libmount/sr
  	fl = cxt->flags;
  
  	mnt_unref_fs(cxt->fs);
-diff -urN util-linux-2.36/libmount/src/context_loopdev1.c util-linux-2.36-AES/libmount/src/context_loopdev1.c
---- util-linux-2.36/libmount/src/context_loopdev1.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/libmount/src/context_loopdev1.c	2020-08-09 21:59:17.987217356 +0300
+diff -urN util-linux-2.36.2/libmount/src/context_loopdev1.c util-linux-2.36.2-AES/libmount/src/context_loopdev1.c
+--- util-linux-2.36.2/libmount/src/context_loopdev1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/libmount/src/context_loopdev1.c	2021-02-23 18:30:59.349218465 +0200
 @@ -0,0 +1,1525 @@
 +/*
 + * Copyright (C) 2011 Karel Zak <kzak@redhat.com>
@@ -2087,9 +2087,9 @@ diff -urN util-linux-2.36/libmount/src/context_loopdev1.c util-linux-2.36-AES/li
 +	cxt->loopdev_fd = -1;
 +	return 0;
 +}
-diff -urN util-linux-2.36/libmount/src/context_umount.c util-linux-2.36-AES/libmount/src/context_umount.c
---- util-linux-2.36/libmount/src/context_umount.c	2020-07-22 11:06:46.916692291 +0300
-+++ util-linux-2.36-AES/libmount/src/context_umount.c	2020-08-09 21:59:17.987217356 +0300
+diff -urN util-linux-2.36.2/libmount/src/context_umount.c util-linux-2.36.2-AES/libmount/src/context_umount.c
+--- util-linux-2.36.2/libmount/src/context_umount.c	2021-02-02 17:41:37.989357326 +0200
++++ util-linux-2.36.2-AES/libmount/src/context_umount.c	2021-02-23 18:30:59.349218465 +0200
 @@ -384,11 +384,12 @@
   */
  static int is_associated_fs(const char *devname, struct libmnt_fs *fs)
@@ -2141,10 +2141,10 @@ diff -urN util-linux-2.36/libmount/src/context_umount.c util-linux-2.36-AES/libm
  			mnt_context_enable_loopdel(cxt, FALSE);
  	}
  
-diff -urN util-linux-2.36/libmount/src/optmap.c util-linux-2.36-AES/libmount/src/optmap.c
---- util-linux-2.36/libmount/src/optmap.c	2020-07-22 11:06:46.918692280 +0300
-+++ util-linux-2.36-AES/libmount/src/optmap.c	2020-08-09 21:59:17.988217365 +0300
-@@ -168,10 +168,19 @@
+diff -urN util-linux-2.36.2/libmount/src/optmap.c util-linux-2.36.2-AES/libmount/src/optmap.c
+--- util-linux-2.36.2/libmount/src/optmap.c	2021-02-02 17:41:37.991357313 +0200
++++ util-linux-2.36.2-AES/libmount/src/optmap.c	2021-02-23 18:30:59.349218465 +0200
+@@ -172,10 +172,19 @@
     { "x-",      MNT_MS_XCOMMENT,   MNT_NOHLPS | MNT_PREFIX },              /* persistent comments (utab) */
     { "X-",      MNT_MS_XFSTABCOMM, MNT_NOHLPS | MNT_NOMTAB | MNT_PREFIX }, /* fstab only comments */
  
@@ -2166,9 +2166,9 @@ diff -urN util-linux-2.36/libmount/src/optmap.c util-linux-2.36-AES/libmount/src
  
     { "nofail",  MNT_MS_NOFAIL, MNT_NOMTAB },               /* Do not fail if ENOENT on dev */
  
-diff -urN util-linux-2.36/libmount/src/rmd160.c util-linux-2.36-AES/libmount/src/rmd160.c
---- util-linux-2.36/libmount/src/rmd160.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/libmount/src/rmd160.c	2020-08-09 21:59:17.988217365 +0300
+diff -urN util-linux-2.36.2/libmount/src/rmd160.c util-linux-2.36.2-AES/libmount/src/rmd160.c
+--- util-linux-2.36.2/libmount/src/rmd160.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/libmount/src/rmd160.c	2021-02-23 18:30:59.349218465 +0200
 @@ -0,0 +1,532 @@
 +/* rmd160.c  -	RIPE-MD160
 + *	Copyright (C) 1998 Free Software Foundation, Inc.
@@ -2702,9 +2702,9 @@ diff -urN util-linux-2.36/libmount/src/rmd160.c util-linux-2.36-AES/libmount/src
 +    rmd160_final( &hd );
 +    memcpy( outbuf, hd.buf, 20 );
 +}
-diff -urN util-linux-2.36/libmount/src/rmd160.h util-linux-2.36-AES/libmount/src/rmd160.h
---- util-linux-2.36/libmount/src/rmd160.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/libmount/src/rmd160.h	2020-08-09 21:59:17.988217365 +0300
+diff -urN util-linux-2.36.2/libmount/src/rmd160.h util-linux-2.36.2-AES/libmount/src/rmd160.h
+--- util-linux-2.36.2/libmount/src/rmd160.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/libmount/src/rmd160.h	2021-02-23 18:30:59.349218465 +0200
 @@ -0,0 +1,9 @@
 +#ifndef RMD160_H
 +#define RMD160_H
@@ -2715,9 +2715,9 @@ diff -urN util-linux-2.36/libmount/src/rmd160.h util-linux-2.36-AES/libmount/src
 +#endif /*RMD160_H*/
 +
 +
-diff -urN util-linux-2.36/libmount/src/sha512.c util-linux-2.36-AES/libmount/src/sha512.c
---- util-linux-2.36/libmount/src/sha512.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/libmount/src/sha512.c	2020-08-09 21:59:17.988217365 +0300
+diff -urN util-linux-2.36.2/libmount/src/sha512.c util-linux-2.36.2-AES/libmount/src/sha512.c
+--- util-linux-2.36.2/libmount/src/sha512.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/libmount/src/sha512.c	2021-02-23 18:30:59.350218472 +0200
 @@ -0,0 +1,432 @@
 +/*
 + *  sha512.c
@@ -3151,9 +3151,9 @@ diff -urN util-linux-2.36/libmount/src/sha512.c util-linux-2.36-AES/libmount/src
 +    memset(&ctx, 0, sizeof(ctx));
 +}
 +#endif
-diff -urN util-linux-2.36/libmount/src/sha512.h util-linux-2.36-AES/libmount/src/sha512.h
---- util-linux-2.36/libmount/src/sha512.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/libmount/src/sha512.h	2020-08-09 21:59:17.988217365 +0300
+diff -urN util-linux-2.36.2/libmount/src/sha512.h util-linux-2.36.2-AES/libmount/src/sha512.h
+--- util-linux-2.36.2/libmount/src/sha512.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/libmount/src/sha512.h	2021-02-23 18:30:59.350218472 +0200
 @@ -0,0 +1,45 @@
 +/*
 + *  sha512.h
@@ -3200,9 +3200,9 @@ diff -urN util-linux-2.36/libmount/src/sha512.h util-linux-2.36-AES/libmount/src
 +/* no sha384_write(), use sha512_write() */
 +/* no sha384_final(), use sha512_final(), result in ctx->sha_out[0...47]  */
 +extern void __loDev_sha384_hash_buffer(unsigned char *, int, unsigned char *, int);
-diff -urN util-linux-2.36/sys-utils/Makemodule.am util-linux-2.36-AES/sys-utils/Makemodule.am
---- util-linux-2.36/sys-utils/Makemodule.am	2020-07-22 11:06:47.010691743 +0300
-+++ util-linux-2.36-AES/sys-utils/Makemodule.am	2020-08-09 21:59:17.988217365 +0300
+diff -urN util-linux-2.36.2/sys-utils/Makemodule.am util-linux-2.36.2-AES/sys-utils/Makemodule.am
+--- util-linux-2.36.2/sys-utils/Makemodule.am	2021-02-12 13:32:01.829988432 +0200
++++ util-linux-2.36.2-AES/sys-utils/Makemodule.am	2021-02-23 18:30:59.350218472 +0200
 @@ -259,7 +259,7 @@
  if BUILD_LOSETUP
  sbin_PROGRAMS += losetup
@@ -3212,7 +3212,7 @@ diff -urN util-linux-2.36/sys-utils/Makemodule.am util-linux-2.36-AES/sys-utils/
  losetup_LDADD = $(LDADD) libcommon.la libsmartcols.la
  losetup_CFLAGS = $(AM_CFLAGS) -I$(ul_libsmartcols_incdir)
  
-@@ -358,6 +358,8 @@
+@@ -359,6 +359,8 @@
  
  swapon_SOURCES = \
  	sys-utils/swapon.c \
@@ -3221,7 +3221,7 @@ diff -urN util-linux-2.36/sys-utils/Makemodule.am util-linux-2.36-AES/sys-utils/
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-@@ -374,6 +376,7 @@
+@@ -375,6 +377,7 @@
  
  swapoff_SOURCES = \
  	sys-utils/swapoff.c \
@@ -3229,9 +3229,9 @@ diff -urN util-linux-2.36/sys-utils/Makemodule.am util-linux-2.36-AES/sys-utils/
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-diff -urN util-linux-2.36/sys-utils/loop.c util-linux-2.36-AES/sys-utils/loop.c
---- util-linux-2.36/sys-utils/loop.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/sys-utils/loop.c	2020-08-09 21:59:17.988217365 +0300
+diff -urN util-linux-2.36.2/sys-utils/loop.c util-linux-2.36.2-AES/sys-utils/loop.c
+--- util-linux-2.36.2/sys-utils/loop.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/sys-utils/loop.c	2021-02-23 18:30:59.350218472 +0200
 @@ -0,0 +1,221 @@
 +/*
 + *  loop.c
@@ -3454,9 +3454,9 @@ diff -urN util-linux-2.36/sys-utils/loop.c util-linux-2.36-AES/sys-utils/loop.c
 +	loopinfo->lo_encrypt_type = 18; /* LO_CRYPT_CRYPTOAPI */
 +	return(loop_set_status64_ioctl(fd, loopinfo));
 +}
-diff -urN util-linux-2.36/sys-utils/loop.h util-linux-2.36-AES/sys-utils/loop.h
---- util-linux-2.36/sys-utils/loop.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/sys-utils/loop.h	2020-08-09 21:59:17.989217373 +0300
+diff -urN util-linux-2.36.2/sys-utils/loop.h util-linux-2.36.2-AES/sys-utils/loop.h
+--- util-linux-2.36.2/sys-utils/loop.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/sys-utils/loop.h	2021-02-23 18:30:59.350218472 +0200
 @@ -0,0 +1,87 @@
 +/*
 + *  loop.h
@@ -3545,10 +3545,10 @@ diff -urN util-linux-2.36/sys-utils/loop.h util-linux-2.36-AES/sys-utils/loop.h
 +extern int try_cryptoapi_loop_interface(int, struct loop_info64 *, char *);
 +
 +#endif
-diff -urN util-linux-2.36/sys-utils/losetup.8 util-linux-2.36-AES/sys-utils/losetup.8
---- util-linux-2.36/sys-utils/losetup.8	2020-07-22 11:06:47.016691708 +0300
-+++ util-linux-2.36-AES/sys-utils/losetup.8	2020-08-09 21:59:17.989217373 +0300
-@@ -1,210 +1,200 @@
+diff -urN util-linux-2.36.2/sys-utils/losetup.8 util-linux-2.36.2-AES/sys-utils/losetup.8
+--- util-linux-2.36.2/sys-utils/losetup.8	2021-02-12 13:32:01.832988422 +0200
++++ util-linux-2.36.2-AES/sys-utils/losetup.8	2021-02-23 18:30:59.350218472 +0200
+@@ -1,217 +1,200 @@
 -.TH LOSETUP 8 "November 2015" "util-linux" "System Administration"
 +.TH LOSETUP 8 "2012-09-24" "Linux" "MAINTENANCE COMMANDS"
  .SH NAME
@@ -3643,6 +3643,13 @@ diff -urN util-linux-2.36/sys-utils/losetup.8 util-linux-2.36-AES/sys-utils/lose
 -file.
 -.B This setup may be dangerous, can cause data loss, corruption and overwrites.
 -Use \fB\-\-nooverlap\fR with \fB\-\-find\fR during setup to avoid this problem.
+-.sp
+-The loop device setup is not an atomic operation when used with \fB\-\-find\fP, and
+-.B losetup
+-does not protect this operation by any lock.  The number of attempts is
+-internally restricted to a maximum of 16.  It is recommended to use for example
+-.BR flock (1)
+-to avoid a collision in heavily parallel use cases.
 -
 +to detach loop devices and to query the status of a loop device. If only the
 +\fIloop_device\fP argument is given, the status of the corresponding loop
@@ -3937,9 +3944,9 @@ diff -urN util-linux-2.36/sys-utils/losetup.8 util-linux-2.36-AES/sys-utils/lose
 +Original version: Theodore Ts'o <tytso@athena.mit.edu>
 +AES support: Jari Ruusu
 +.fi
-diff -urN util-linux-2.36/sys-utils/losetup1.c util-linux-2.36-AES/sys-utils/losetup1.c
---- util-linux-2.36/sys-utils/losetup1.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.36-AES/sys-utils/losetup1.c	2020-08-09 21:59:17.989217373 +0300
+diff -urN util-linux-2.36.2/sys-utils/losetup1.c util-linux-2.36.2-AES/sys-utils/losetup1.c
+--- util-linux-2.36.2/sys-utils/losetup1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.36.2-AES/sys-utils/losetup1.c	2021-02-23 18:30:59.351218479 +0200
 @@ -0,0 +1,1281 @@
 +/* Taken from Ted's losetup.c - Mitch <m.dsouza@mrc-apu.cam.ac.uk> */
 +/* Added vfs mount options - aeb - 960223 */
@@ -5222,9 +5229,9 @@ diff -urN util-linux-2.36/sys-utils/losetup1.c util-linux-2.36-AES/sys-utils/los
 +	}
 +	return res;
 +}
-diff -urN util-linux-2.36/sys-utils/mount.8 util-linux-2.36-AES/sys-utils/mount.8
---- util-linux-2.36/sys-utils/mount.8	2020-07-22 11:06:47.019691690 +0300
-+++ util-linux-2.36-AES/sys-utils/mount.8	2020-08-09 21:59:17.990217381 +0300
+diff -urN util-linux-2.36.2/sys-utils/mount.8 util-linux-2.36.2-AES/sys-utils/mount.8
+--- util-linux-2.36.2/sys-utils/mount.8	2021-02-12 13:32:01.835988410 +0200
++++ util-linux-2.36.2-AES/sys-utils/mount.8	2021-02-23 18:30:59.351218479 +0200
 @@ -823,6 +823,11 @@
  sections.
  .RE
@@ -5237,7 +5244,7 @@ diff -urN util-linux-2.36/sys-utils/mount.8 util-linux-2.36-AES/sys-utils/mount.
  .TP
  .BR "\-\-options\-mode " \fImode
  Controls how to combine options from
-@@ -2653,13 +2658,19 @@
+@@ -2663,13 +2668,19 @@
  .B "mount \-t ext4 /tmp/disk.img /mnt"
  .sp
  .RE
@@ -5259,9 +5266,9 @@ diff -urN util-linux-2.36/sys-utils/mount.8 util-linux-2.36-AES/sys-utils/mount.
  Since Linux 2.6.25 auto-destruction of loop devices is supported,
  meaning that any loop device allocated by
  .B mount
-diff -urN util-linux-2.36/sys-utils/mount.c util-linux-2.36-AES/sys-utils/mount.c
---- util-linux-2.36/sys-utils/mount.c	2020-07-22 11:06:47.019691690 +0300
-+++ util-linux-2.36-AES/sys-utils/mount.c	2020-08-09 21:59:17.990217381 +0300
+diff -urN util-linux-2.36.2/sys-utils/mount.c util-linux-2.36.2-AES/sys-utils/mount.c
+--- util-linux-2.36.2/sys-utils/mount.c	2021-02-12 13:32:01.835988410 +0200
++++ util-linux-2.36.2-AES/sys-utils/mount.c	2021-02-23 18:30:59.352218487 +0200
 @@ -36,6 +36,7 @@
  #include "c.h"
  #include "env.h"
@@ -5348,9 +5355,9 @@ diff -urN util-linux-2.36/sys-utils/mount.c util-linux-2.36-AES/sys-utils/mount.
  	if (all) {
  		/*
  		 * A) Mount all
-diff -urN util-linux-2.36/sys-utils/swapoff.c util-linux-2.36-AES/sys-utils/swapoff.c
---- util-linux-2.36/sys-utils/swapoff.c	2020-07-22 11:06:47.021691678 +0300
-+++ util-linux-2.36-AES/sys-utils/swapoff.c	2020-08-09 21:59:17.990217381 +0300
+diff -urN util-linux-2.36.2/sys-utils/swapoff.c util-linux-2.36.2-AES/sys-utils/swapoff.c
+--- util-linux-2.36.2/sys-utils/swapoff.c	2021-02-02 17:41:38.084356716 +0200
++++ util-linux-2.36.2-AES/sys-utils/swapoff.c	2021-02-23 18:30:59.352218487 +0200
 @@ -1,4 +1,9 @@
  #include <stdio.h>
 +#include <sys/types.h>
@@ -5448,9 +5455,9 @@ diff -urN util-linux-2.36/sys-utils/swapoff.c util-linux-2.36-AES/sys-utils/swap
  	}
  
  	mnt_free_iter(itr);
-diff -urN util-linux-2.36/sys-utils/swapon.8 util-linux-2.36-AES/sys-utils/swapon.8
---- util-linux-2.36/sys-utils/swapon.8	2020-07-22 11:06:47.021691678 +0300
-+++ util-linux-2.36-AES/sys-utils/swapon.8	2020-08-09 21:59:17.990217381 +0300
+diff -urN util-linux-2.36.2/sys-utils/swapon.8 util-linux-2.36.2-AES/sys-utils/swapon.8
+--- util-linux-2.36.2/sys-utils/swapon.8	2021-02-02 17:41:38.084356716 +0200
++++ util-linux-2.36.2-AES/sys-utils/swapon.8	2021-02-23 18:30:59.352218487 +0200
 @@ -69,6 +69,22 @@
  .I /proc/swaps
  or
@@ -5474,9 +5481,9 @@ diff -urN util-linux-2.36/sys-utils/swapon.8 util-linux-2.36-AES/sys-utils/swapo
  
  .SH OPTIONS
  .TP
-diff -urN util-linux-2.36/sys-utils/swapon.c util-linux-2.36-AES/sys-utils/swapon.c
---- util-linux-2.36/sys-utils/swapon.c	2020-07-22 11:06:47.022691673 +0300
-+++ util-linux-2.36-AES/sys-utils/swapon.c	2020-08-09 21:59:17.991217390 +0300
+diff -urN util-linux-2.36.2/sys-utils/swapon.c util-linux-2.36.2-AES/sys-utils/swapon.c
+--- util-linux-2.36.2/sys-utils/swapon.c	2021-02-02 17:41:38.085356709 +0200
++++ util-linux-2.36.2-AES/sys-utils/swapon.c	2021-02-23 18:30:59.352218487 +0200
 @@ -8,6 +8,8 @@
  #include <unistd.h>
  #include <sys/types.h>
