@@ -2,10 +2,10 @@
 
 pkgname=lmdb-git
 pkgver=0.9.28.r22254.ga44706f64
-pkgrel=1
+pkgrel=2
 pkgdesc="Extraordinarily fast, memory-efficient database"
 arch=('i686' 'x86_64')
-url="https://www.openldap.org/software/repo.html"
+url="https://symas.com/lmdb/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')
@@ -39,7 +39,10 @@ check() {
 package() {
   cd "openldap/libraries/liblmdb"
 
-  make DESTDIR="$pkgdir" prefix="/usr" install
+  make \
+    DESTDIR="$pkgdir" \
+    prefix="/usr" \
+    install
 
   sed -e "s|@PKGVER@|$pkgver|" -i "$srcdir/lmdb.pc"
   install -Dm644 "$srcdir/lmdb.pc" -t "$pkgdir/usr/lib/pkgconfig"
