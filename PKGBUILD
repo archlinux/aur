@@ -59,7 +59,7 @@ package()
     After=network.target
 
     [Service]
-    Type=oneshot
+    Type=simple
     Environment=DOTNET_CLI_HOME=/tmp/
     ExecStart=/usr/bin/${_pkgname_lc}
     Restart=on-failure
