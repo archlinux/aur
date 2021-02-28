@@ -1,0 +1,30 @@
+diff --git a/offlineimap/imapserver.py b/offlineimap/imapserver.py
+index bd377f7..be557e6 100644
+--- a/offlineimap/imapserver.py
++++ b/offlineimap/imapserver.py
+@@ -215,8 +215,8 @@ class IMAPServer:
+             authz = self.user_identity
+ 
+         retval = NULL.join((authz, authc, passwd))
+-        logsafe_retval = NULL.join((authz, authc, '(passwd hidden for log)'))
+-        self.ui.debug('imap', '__plainhandler: returning %s' % logsafe_retval)
++        self.ui.debug('imap', '__plainhandler: returning %s %s '
++                      '(passwd hidden for log)' % (authz, authc))
+         return retval
+ 
+     def __xoauth2handler(self, response):
+diff --git a/offlineimap/ui/Curses.py b/offlineimap/ui/Curses.py
+index 03f4d26..dfad308 100644
+--- a/offlineimap/ui/Curses.py
++++ b/offlineimap/ui/Curses.py
+@@ -583,6 +583,10 @@ class Blinkenlights(UIBase, CursesUtil):
+         finally:
+             self.unlock()
+             self.inputhandler.input_release()
++
++        # We need a str password
++        if isinstance(password, bytes):
++            return password.decode(encoding='utf-8')
+         return password
+ 
+     def setupwindows(self, resize=False):
