@@ -6,11 +6,11 @@
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
 
 pkgname=diorite-git
-pkgver=4.20.0.r2.gc133fb6
-pkgrel=1
+pkgver=4.20.0.r3.ge537d6f
+pkgrel=2
 pkgdesc="A utility and widget library for Nuvola Player project based on GLib, GIO, and GTK"
 arch=(x86_64)
-url="https://tiliado.eu/diorite"
+url="https://tiliado.eu/diorite/"
 license=(BSD)
 depends=(gtk3 libgee sqlite libx11 gobject-introspection)
 makedepends=(git vala)

@@ -1,8 +1,8 @@
 pkgbase = diorite-git
 	pkgdesc = A utility and widget library for Nuvola Player project based on GLib, GIO, and GTK
-	pkgver = 4.20.0.r2.gc133fb6
-	pkgrel = 1
-	url = https://tiliado.eu/diorite
+	pkgver = 4.20.0.r3.ge537d6f
+	pkgrel = 2
+	url = https://tiliado.eu/diorite/
 	arch = x86_64
 	license = BSD
 	makedepends = git
