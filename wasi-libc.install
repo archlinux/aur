@@ -1,0 +1,3 @@
+post_install() {
+  echo "Use this lib with clang --target=wasm32-unknown-wasi --sysroot /opt/wasi-libc"
+}

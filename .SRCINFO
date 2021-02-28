@@ -1,0 +1,19 @@
+pkgbase = wasi-libc-git
+	pkgdesc = libc for WebAssembly programs built on top of WASI system calls (from git repo)
+	pkgver = r208.2b7e73a
+	pkgrel = 1
+	install = wasi-libc.install
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = llvm
+	depends = clang
+	provides = wasi-libc
+	conflicts = wasi-libc
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/WebAssembly/wasi-libc.git#branch=main
+	md5sums = SKIP
+
+pkgname = wasi-libc-git
+
