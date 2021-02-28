@@ -1,11 +1,12 @@
 pkgbase = mopidy-local
 	pkgdesc = Mopidy extension for local media playback
 	pkgver = 3.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mopidy/mopidy-local
 	arch = any
 	license = APACHE
 	makedepends = python3
+	makedepends = python-setuptools
 	depends = mopidy>=3.0
 	depends = python-setuptools
 	depends = python-uritools
