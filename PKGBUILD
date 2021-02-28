@@ -1,4 +1,5 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: robertfoster
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-vorbis
 pkgver=0.7.1
@@ -10,20 +11,22 @@ license=('GPL2')
 depends=('ocaml' 'libvorbis' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-vorbis/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('341b6f36265c181d3f5da107cbdd8963')
+source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    ./configure
-    make
+  ./configure
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
+  make install
 }
+
+sha256sums=('26c6bf9d5c3ed3c737fde4caf473d0b65e170f4806ad9ea25beb9723c8da0d6d')
+
