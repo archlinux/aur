@@ -5,7 +5,7 @@
 
 pkgname=waffle
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
@@ -13,9 +13,13 @@ license=('BSD')
 
 depends=('libx11' 'libxcb' 'libudev.so' 'libgl' 'libgles')
 optdepends=('libegl: for gbm, surfaceless, x11_egl or wayland support'
-            'libgbm.so: for gbm support'
+            'mesa: for gbm support'
             'wayland: for wayland support')
-makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'cmake')
+
+# XXX: systemd is a bit of a hack, in particular:
+# The Arch packaging splits the libudev.so in one package, with the build
+# aka headers/pkg-config in another.
+makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'cmake' 'systemd')
 
 source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
 sha256sums=('30e47bb78616e5deab1b94fd901c629a42b6ec3bf693c668217d4d5fd9b62219'
