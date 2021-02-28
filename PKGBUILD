@@ -2,13 +2,13 @@
 
 pkgname=aixlog
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only C++ logging library"
 arch=(any)
 url="https://github.com/badaix/aixlog"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/aixlog/archive/v${pkgver}.tar.gz")
-sha256sums=('1d9d344448493c1e74e0baa5e76fc175b9e4497012d6d17591ca49c2e511fbe8')
+sha256sums=('c32b2b2e7ed2632fab53aba01f731fce1e7b150fe7d08bccdafc250e5cb836a8')
 
 package() {
     cd "${pkgname}-${pkgver}"
