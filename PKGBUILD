@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='2931a6b5a2ab4a1e8a2690b807005685'
-_referid='7e8656e2d76240ef8923609655d70fb6'
+_downloadid='75e93671c322457183eb5642d96605ee'
+_referid='a479b83a85f54a8eba4c26acaa878235'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -62,7 +62,7 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=16.2.8
+pkgver=17.0
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -78,14 +78,14 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('29c8a9d044d4b595ab499ca14452607ce5e5e5065a9c2be3a55bf8ff35eadd5d')
-	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
+	sha256sums=('67bec4d4609ec6b00c97a0faccde9188842bc502b7efd8fc89c4436a3cf44d51')
+	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('688d0f2355d1c82f991d0298fe2cbec05364baa527052533ffebd2615bdb7eb0')
-	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
+	sha256sums=('031a7412013643b2e17ef7f3fe1911895d9ac7ea84a006b4ac15f4577f203ef9')
+	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
 _archive=${_archive_name}.zip
@@ -118,7 +118,7 @@ package()
 	msg2 "Extracting from bundle..."
 	msg "Please wait, this take a while..."
 	cd "${srcdir}" || exit
-	bsdtar x -f ${_installer_binary} -C "${pkgdir}/opt/${_pkgname}"
+	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
@@ -131,9 +131,11 @@ package()
 	install -Dm666 share/log-conf.xml "${pkgdir}/opt/${_pkgname}/configs/log-conf.xml"
 	install -Dm666 share/default_cm_config.bin "${pkgdir}/opt/${_pkgname}/DolbyVision/config.bin"
 	install -Dm644 share/DaVinciResolve.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}.desktop"
-	install -Dm644 share/DaVinciResolvePanelSetup.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-Panels.desktop"
+#	install -Dm644 share/DaVinciControlPanelSetup.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-Panels.desktop"
 	install -Dm644 share/DaVinciResolveInstaller.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-Installer.desktop"
 	install -Dm644 share/DaVinciResolveCaptureLogs.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-CaptureLogs.desktop"
+	install -Dm644 share/blackmagicraw-player.desktop "${pkgdir}/usr/share/applications/blackmagicraw-player.desktop"
+	install -Dm644 share/blackmagicraw-speedtest.desktop "${pkgdir}/usr/share/applications/blackmagicraw-speedtest.desktop"
 	install -Dm644 share/DaVinciResolve.directory "${pkgdir}/usr/share/desktop-directories/${resolve_app_name}.directory"
 	install -Dm644 share/DaVinciResolve.menu "${pkgdir}/etc/xdg/menus/${resolve_app_name}.menu"
 
