@@ -1,7 +1,7 @@
 pkgbase = micronucleus-git
 	pkgdesc = ATTiny usb bootloader with a strong emphasis on bootloader compactness
 	pkgver = 2.04.r6.g4d2481d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/micronucleus/micronucleus
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = micronucleus-git
 	makedepends = git
 	depends = libusb-compat
 	provides = micronucleus
+	conflicts = micronucleus
 	options = !makeflags
 	source = git+https://github.com/micronucleus/micronucleus
 	sha1sums = SKIP
