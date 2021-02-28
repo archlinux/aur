@@ -8,10 +8,10 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=dragonwolf
-_pkgname=librewolf
-pkgver=88.01a.1r635306
+_pkgname=DragonWolf
+pkgver=r635306.b898442a9527
 pkgrel=1
-pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths"
+pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
@@ -34,8 +34,6 @@ options=(!emptydirs !makeflags !strip)
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _settings_commit=c5c75a39dd91a8772255a78493853be6553262b2
 _repo=https://hg.mozilla.org/mozilla-unified
-conflicts=('librewolf')
-provides=('librewolf')
 source_x86_64=("hg+$_repo#revision=autoland"
                $pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
@@ -52,19 +50,20 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 build-arm-libopus.patch)
 
 sha512sums_x86_64=('SKIP'
-                   '935b11eab928db642d3706b0c446a0169ef8ff5ed10e59b27123cf4784db5e2cb241d5820b9267022aa1acc2ccba939c7139da056d67c9cbbe7a0be6010ba189'
+                   '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                    'SKIP'
                    'SKIP'
                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061')
 sha512sums_aarch64=('SKIP'
-                    '935b11eab928db642d3706b0c446a0169ef8ff5ed10e59b27123cf4784db5e2cb241d5820b9267022aa1acc2ccba939c7139da056d67c9cbbe7a0be6010ba189'
+                    '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                     'SKIP'
                     'SKIP'
                     '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
                     'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                     '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
+
 pkgver() {
   cd mozilla-unified
   printf "88.0a1.r%s" "$(hg identify -n)"
@@ -101,9 +100,9 @@ export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-update-channel=nightly
-ac_add_options --with-app-name=${_pkgname}
-ac_add_options --with-app-basename=DragonWolf
-ac_add_options --with-branding=browser/branding/librewolf
+ac_add_options --with-app-name=${pkgname}
+ac_add_options --with-app-basename='${_pkgname}'
+ac_add_options --with-branding=browser/branding/dragonwolf
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
@@ -170,7 +169,7 @@ fi
   patch -p1 -i ../remove_addons.patch
 
   # To enable global menubar
-  # Set these to true
+  # Set these to true: 
   # browser.proton.enabled
   # browser.proton.appmenu.enabled
 
@@ -293,10 +292,9 @@ fi
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
-  mv "$pkgdir"/usr/lib/{librewolf,$_pkgname}
-  rm "$pkgdir"/usr/bin/librewolf
+  mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname,$pkgname}
 
-  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
@@ -306,56 +304,50 @@ pref("intl.locale.requested", "");
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Don't disable extensions in the application directory
-// done in librewolf.cfg
+// done in dragonwolf.cfg
 // pref("extensions.autoDisableScopes", 11);
 END
 
   # cd ${srcdir}/settings
   # git checkout ${_settings_commit}
   cd ${srcdir}/mozilla-unified
-  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${_pkgname}/
+  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
 
-  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
+  _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
-id=archlinux
+id=garudalinux
 version=1.0
-about=$_pkgname for Arch Linux
+about=$_pkgname for Garuda Linux
 
 [Preferences]
-app.distributor=archlinux
+app.distributor=garudalinux
 app.distributor.channel=$pkgname
-app.partner.archlinux=archlinux
+app.partner.garudalinux=garudalinux
 END
 
   for i in 16 32 48 64 128; do
-    install -Dm644 browser/branding/librewolf/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/dragonwolf.png"
+    install -Dm644 browser/branding/${pkgname}/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/dragonwolf.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dm644 browser/branding/librewolf/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dragonwolf-symbolic.png"
+  install -Dm644 browser/branding/${pkgname}/default16.png \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.png"
 
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
-#!/bin/sh
-exec /usr/lib/$pkgname/librewolf "\$@"
-END
-
-  # Install a wrapper for dragonwolf binary
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$_pkgname/librewolf "\$@"
+exec /usr/lib/$pkgname/$pkgname "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$_pkgname" \
-    "$pkgdir/usr/lib/$_pkgname/librewolf-bin"
+  ln -srf "$pkgdir/usr/bin/$pkgname" \
+    "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
 }

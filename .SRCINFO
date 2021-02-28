@@ -1,6 +1,6 @@
 pkgbase = dragonwolf
-	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths
-	pkgver = 88.01a.1r635306
+	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled.
+	pkgver = r635306.b898442a9527
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = dragonwolf
 	makedepends = rust
 	makedepends = mozilla-common
 	makedepends = xorg-server-xwayland
+	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
 	makedepends = mercurial
 	makedepends = clang
@@ -55,8 +56,6 @@ pkgbase = dragonwolf
 	optdepends = libappindicator-gtk3: Global menu support for GTK apps
 	optdepends = appmenu-gtk-module-git: Appmenu for GTK only
 	optdepends = plasma5-applets-window-appmenu: Appmenu for Plasma only
-	provides = librewolf
-	conflicts = librewolf
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
@@ -90,4 +89,3 @@ pkgbase = dragonwolf
 	sha512sums_aarch64 = 6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35
 
 pkgname = dragonwolf
-
