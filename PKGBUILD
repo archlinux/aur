@@ -3,7 +3,7 @@
 
 pkgname=sameboy-git
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
-pkgver=1452.ec2661ac
+pkgver=1468.c6ea5720
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
@@ -30,10 +30,9 @@ build(){
 
 package(){
 	cd SameBoy
-
+	# make install missed creation of this folder *shrugs
+	install -d "${pkgdir}"/usr/share/applications/
 	make install CONF=release PREFIX=/usr/ DESTDIR="${pkgdir}"
-	# desktop file is missing from make install
-	install -Dm644 FreeDesktop/${provides[0]}.desktop "${pkgdir}/usr/share/applications/${provides[0]}.desktop"
 	# mimetype icons don't belong here
 	# that could lead to file conflicts
 	find "${pkgdir}" -name 'x-gameboy*-rom.png' -delete
