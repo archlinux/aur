@@ -39,13 +39,13 @@ package() {
   
   install -d "$pkgdir"/usr/share/$pkgname
 
-  cp -R auxil    "$pkgver"/usr/share/$pkgname/
-  cp -R catalogs "$pkgver"/usr/share/$pkgname/
-  cp -R fifos    "$pkgver"/usr/share/$pkgname/
-  cp -R fits     "$pkgver"/usr/share/$pkgname/
-  cp -R gallery  "$pkgver"/usr/share/$pkgname/
-  cp -R help     "$pkgver"/usr/share/$pkgname/
-  cp -R lo       "$pkgver"/usr/share/$pkgname/
+  cp -R auxil    "$pkgdir"/usr/share/$pkgname/
+  cp -R catalogs "$pkgdir"/usr/share/$pkgname/
+  cp -R fifos    "$pkgdir"/usr/share/$pkgname/
+  cp -R fits     "$pkgdir"/usr/share/$pkgname/
+  cp -R gallery  "$pkgdir"/usr/share/$pkgname/
+  cp -R help     "$pkgdir"/usr/share/$pkgname/
+  cp -R lo       "$pkgdir"/usr/share/$pkgname/
 
   install -Dm644 $pkgname.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
 
