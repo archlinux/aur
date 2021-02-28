@@ -1,0 +1,19 @@
+pkgbase = python-arxiv
+	pkgdesc = Python wrapper for the arXiv API: http://arxiv.org/help/api/
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/lukasschwab/arxiv.py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-feedparser
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/a/arxiv/arxiv-0.5.3.tar.gz
+	sha256sums = 9010cf132bcfb67c07bd363c49d519365310f92ac9da1a06509f712798265987
+
+pkgname = python-arxiv
+	depends = python
+	depends = python-feedparser
+	depends = python-requests
+
