@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r396.1f61357
+pkgver=r412.bf48744
 pkgrel=2
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -10,14 +10,15 @@ depends=(klipper
          python-tornado
          python-pillow
          python-pyserial
+         python-lmdb
          libgpiod)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.conf' 'moonraker.service' 'tmpfiles.conf' 'moonraker-klipper.cfg')
 sha256sums=('SKIP'
-            '356dc03a6119adc088f3feacc0a7d7f52d2f569e6189b12263b9baf69a47a1d3'
+            '7be8b6dff8daee271bf9623fefa91b35b3fe9c34d12e14e33fa84b25bb885c25'
             '120c85c212ec57c1365e3e94f9d38ba9a5d9bd57e76692733e7cd8fe167afff0'
-            'b733fc3f697f25299720f06bbc10bb6e747609005e7e8f8510a42ed19a7aacc6'
+            '7b908a1c3e0b56523d27db5283e2f546f93051fe855cc949635fafa37ba2f416'
             'caa868a447ab94bd3e5f86cdf70e5deeb17b233077d94a424a682dfe49349a96')
 
 pkgver() {
@@ -29,7 +30,6 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
 
-  install -dm755 "$pkgdir/etc/moonraker"
   install -Dm644 "$srcdir/moonraker.conf" "$pkgdir/etc/klipper/moonraker.conf"
   install -Dm644 "$srcdir/moonraker.service" "$pkgdir/usr/lib/systemd/system/moonraker.service"
   install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/moonraker.conf"
