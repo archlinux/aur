@@ -3,7 +3,7 @@
 
 pkgname=darling-dkms
 pkgver=0.1.20210224.testing
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for Darling."
 arch=('x86_64')
 url="https://github.com/darlinghq/darling"
@@ -19,8 +19,10 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/" \
+                    "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-	install -D -m644 "${pkgdir}/usr/src/darling-mach-0.1/lkm/tools/tests/libMicro/OPENSOLARIS.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "${pkgdir}/usr/src/darling-mach-0.1/lkm/security/conf/copyright.nai" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	ln -sf "/usr/src/darling-mach-0.1/lkm/tools/tests/libMicro/OPENSOLARIS.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	ln -sf "/usr/src/darling-mach-0.1/lkm/security/conf/copyright.nai" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
 }
