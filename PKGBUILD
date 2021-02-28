@@ -40,7 +40,7 @@ build() {
     -D doc-pdf=disabled \
     -D doc-html=disabled \
     -D tests=disabled
-  meson compile -C build
+  ninja $NINJAFLAGS  -C build
 }
 
 #check() {
@@ -55,7 +55,7 @@ package_fontconfig-minimal-git() {
   install=fontconfig.install
   backup=(etc/fonts/fonts.conf)
 
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
