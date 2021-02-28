@@ -1,0 +1,13 @@
+pkgbase = python-file-read-backwards
+	pkgdesc = Memory efficient way of reading files line-by-line from the end of file
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/RobinNil/file_read_backwards
+	arch = any
+	license = MIT
+	depends = python
+	source = python-file-read-backwards-2.0.0.tar.gz::https://github.com/RobinNil/file_read_backwards/archive/v2.0.0.tar.gz
+	md5sums = 38ee664ca2083ecf59fd09f4211c5406
+
+pkgname = python-file-read-backwards
+
