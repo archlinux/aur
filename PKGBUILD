@@ -53,9 +53,11 @@ package()
     # Create the systemd service.
     echo -e "[Unit]
     Description=${pkgdesc}
+    Requires=bitcoind.service
     Requires=nbxplorer.service
+    After=bitcoind.service
     After=nbxplorer.service
-    After=network-online.target
+    After=network.target
 
     [Service]
     Type=oneshot
