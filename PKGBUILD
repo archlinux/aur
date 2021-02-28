@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=libcrafter-git
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Libcrafter is a high level library for C++ designed to create and decode network packets"
 arch=(x86_64)
 url="https://github.com/pellegre/libcrafter"
@@ -22,5 +22,5 @@ build() {
 package() {
 	cd "libcrafter/libcrafter"
 	make DESTDIR="$pkgdir" install
-	mv "$pkgdir/usr/local/lib" "$pkdir/usr/lib"
+	mv "$pkgdir/usr/local/lib" "$pkgdir/usr/lib"
 }
