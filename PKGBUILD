@@ -1,9 +1,9 @@
 # Maintainer: lmartinez
 pkgname=tllist
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A typed linked list C header file only library"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://codeberg.org/dnkl/tllist"
 license=('MIT')
 makedepends=('git' 'meson' 'ninja')
