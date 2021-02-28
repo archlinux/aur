@@ -1,15 +1,16 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r32.0617b59
+pkgver=r33.7248daa
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c. Downside: only Linux"
 arch=("any")
 url="https://github.com/LinusDierheimer/fastfetch#README"
 license=("MIT")
-depends=("pciutils")
+depends=()
 makedepends=("cmake")
 optdepends=(
+  "pciutils: GPU output"
   "libx11: Resolution output"
   "libxrandr: Refresh rate in Resolution output"
 )
