@@ -19,13 +19,13 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.14.r3347.8a2f672e
+pkgver=2.0.14.r3354.08f530bd
 pkgrel=1
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
 license=('GPL')
-makedepends=('go-pie' 'perl' 'docker')
+makedepends=('go-pie' 'perl' 'docker' 'git')
 depends=('glibc')
 source=("git+$url.git"
         "psiphon.conf"
