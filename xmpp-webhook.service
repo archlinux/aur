@@ -1,0 +1,26 @@
+[Unit]
+Description=XMPP-Webhook
+After=network.target
+
+[Service]
+User=xmppwebhook
+Group=xmppwebhook
+Type = simple
+EnvironmentFile=/etc/xmpp-webhook.env
+ExecStart=/usr/bin/xmpp-webhook
+Restart=always
+RestartSec=30s
+NoNewPrivileges=true
+PrivateUsers=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectControlGroups=yes
+ProtectKernelTunables=true
+ProtectKernelModules=yes
+LockPersonality=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
