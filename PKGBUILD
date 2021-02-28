@@ -2,12 +2,12 @@
 
 pkgname=bcrawl-git
 _pkgname=bcrawl
-pkgver=0.22.a0.2631.gdd55c3d1e3
+pkgver=0.22.a0.4846.gcf420f87c6
 pkgrel=1
 pkgdesc='Continuation of X-Crawl fork of Dungeon Crawl Stone Soup roguelike with new content (Git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/b-crawl/bcrawl'
-depends=('lua51' 'sdl2_image' 'sqlite' 'glu' 'ttf-dejavu')
+depends=('lua51' 'sdl2_image' 'sqlite' 'glu' 'ttf-dejavu' 'freetype2')
 makedepends=('git' 'flex' 'gendesk' 'mesa')
 optdepends=('advancecomp: for recompressing the tilesheets'
             'pngcrush: for recompressing the tilesheets')
