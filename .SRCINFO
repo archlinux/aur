@@ -1,0 +1,21 @@
+pkgbase = netperf-git
+	pkgdesc = Benchmarking tool for many different types of networking
+	pkgver = 2.7.0.r48.g3bc455b
+	pkgrel = 1
+	url = https://hewlettpackard.github.io/netperf/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = libsmbios
+	depends = lksctp-tools
+	provides = netperf
+	conflicts = netperf
+	source = git+https://github.com/HewlettPackard/netperf.git
+	source = remove_duplicate_variable_definitions.patch::https://github.com/HewlettPackard/netperf/commit/c6a2e17fe35f0e68823451fedfdf5b1dbecddbe3.patch
+	sha256sums = SKIP
+	sha256sums = beff59413888ab2961804a195ff68fe5db92183736fedb3bc20bfbba424c2384
+
+pkgname = netperf-git
+
