@@ -18,9 +18,8 @@ sha512sums=('SKIP')
 #validpgpkeys=('0E51E7F06EF719FBD072782A5F56E5AFA63CCD33') #"Craig Cornelius (For use with ICU releases) <ccornelius@google.com>"
 
 pkgver() {
-  cd "icu"
-  # cutting off 'foo-' prefix that presents in the git tag
-  git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
