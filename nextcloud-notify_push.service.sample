@@ -1,0 +1,12 @@
+[Unit]
+Description = Push daemon for Nextcloud clients
+
+[Service]
+Environment = PORT=7867 BIND=127.0.0.1
+ExecStart = /usr/share/nextcloud-notify_push/notify_push /srv/nextcloud/config/config.php
+# Either set both to the same users your PHP server is running as, or set environment variables as described in the README.md
+User = 
+Group =
+
+[Install]
+WantedBy = multi-user.target

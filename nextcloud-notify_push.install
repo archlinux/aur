@@ -1,0 +1,14 @@
+post_install() {
+    echo 'Remember to finish the setup for notify_push:'
+    echo ''
+    echo 'Create, enable and start nextcloud-app-notify_push.service'
+    echo '(Sample available at /usr/lib/share/nextcloud-notify_push/nextcloud-app-notify_push.service.sample)'
+    echo 'Setup your reverse proxy (see /usr/share/nextcloud-notify_push/README.md)'
+    echo 'Install the notify_push app on your Nextcloud instance'
+    echo 'Run the setup with `occ notify_push:setup https://your.nextcloud.com/push`.'
+}
+
+post_upgrade() {
+    echo 'You may want to check nextcloud-app-notify_push.service.sample for changes, apply them'
+    echo 'and re-check your setup with `occ notify_push:self-test`'
+}
