@@ -20,8 +20,8 @@ pkgbase = lib32-cairo-git
 	depends = lib32-glib2
 	depends = lib32-pixman
 	depends = cairo
-	provides = lib32-cairo-git
-	conflicts = lib32-cairo-git
+	provides = lib32-cairo
+	conflicts = lib32-cairo
 	source = git+https://gitlab.freedesktop.org/cairo/cairo.git
 	sha256sums = SKIP
 

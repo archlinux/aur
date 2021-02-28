@@ -13,8 +13,8 @@ depends=(lib32-zlib lib32-libpng lib32-fontconfig lib32-freetype2 lib32-libx11
          lib32-libxext lib32-libxrender lib32-libxcb lib32-glib2 lib32-pixman
          cairo)
 makedepends=(valgrind git meson)
-provides=(lib32-cairo-git)
-conflicts=(lib32-cairo-git)
+provides=(lib32-cairo)
+conflicts=(lib32-cairo)
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git")
 sha256sums=('SKIP')
 
