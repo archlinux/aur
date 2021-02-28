@@ -2,7 +2,7 @@
 procname-master = flyspray
 plugins = php7
 master = true
-socket = /run/uwsgi/%n.sock
+socket = /run/%n/%n.sock
 stats = /run/%n/%n-stats.sock
 uid = flyspray
 gid = flyspray
