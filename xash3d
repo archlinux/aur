@@ -1,0 +1,9 @@
+#!/bin/sh
+. /etc/conf.d/xash3d
+
+if [ ! -d "$XASH3D_GAMEDIR" ]; then
+    echo "$XASH3D_GAMEDIR not found"
+    exit 1
+fi
+
+/usr/local/lib/xash3d/xash3d "$@"
