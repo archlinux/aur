@@ -1,6 +1,6 @@
 pkgbase = xidlehook-git
 	pkgdesc = xautolock rewrite in Rust, with a few extra features
-	pkgver = 0.9.1.r24.g4221aa8
+	pkgver = 0.9.1.r25.gbe3faea
 	pkgrel = 1
 	url = https://gitlab.com/jD91mZM2/xidlehook
 	arch = x86_64

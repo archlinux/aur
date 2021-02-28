@@ -2,7 +2,7 @@
 
 pkgname=xidlehook-git
 _pkgname=xidlehook
-pkgver=0.9.1.r24.g4221aa8
+pkgver=0.9.1.r25.gbe3faea
 pkgrel=1
 pkgdesc="xautolock rewrite in Rust, with a few extra features"
 url="https://gitlab.com/jD91mZM2/xidlehook"
