@@ -1,0 +1,31 @@
+pkgbase = fontconfig-minimal-git
+	pkgdesc = Library for configuring and customizing font access
+	pkgver = 2.13.91+48+gfcb0420
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/fontconfig/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = gperf
+	makedepends = python-lxml
+	makedepends = python-six
+	makedepends = json-c
+	makedepends = expat
+	makedepends = freetype2
+	optdepends = docbook-utils: docs
+	optdepends = docbook-sgml: docs
+	source = git+https://gitlab.freedesktop.org/fontconfig/fontconfig.git
+	source = fontconfig.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fontconfig-minimal-git
+	install = fontconfig.install
+	depends = expat
+	depends = libfreetype.so
+	provides = libfontconfig.so
+	provides = fontconfig
+	conflicts = fontconfig
+	backup = etc/fonts/fonts.conf
+
