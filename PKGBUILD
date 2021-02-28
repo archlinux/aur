@@ -1,5 +1,6 @@
 # vim:set ts=2 sw=2 et:
 # Maintainer graysky <graysky AT archlinux DOT us>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
@@ -18,23 +19,23 @@
 
 pkgbase=kodi-git
 pkgname=(
-  "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
+  "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57035.fe9b5698096
+pkgver=r57129.ce595fb1671
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
-  'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'glew'
+  'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
   'gperf' 'hicolor-icon-theme' 'java-runtime' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
-  'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'python-pycryptodomex' 'python-pillow' 'python-pybluez' 'python-simplejson'
-  'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
-  'upower' 'giflib' 'rapidjson' 'ghostscript' 'git' 'meson' 'gtest'
+  'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
+  'python-pycryptodomex' 'python-pillow' 'python-pybluez'
+  'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
+  'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -42,6 +43,7 @@ makedepends=(
 )
 
 _gitname='xbmc'
+_codename=Matrix
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -58,7 +60,7 @@ _sse_workaround=1
 _libdvdcss_version="1.4.2-Leia-Beta-5"
 _libdvdnav_version="6.0.0-Leia-Alpha-3"
 _libdvdread_version="6.0.0-Leia-Alpha-3"
-_ffmpeg_version="4.3.1-Matrix-Beta1"
+_ffmpeg_version="4.3.1-$_codename-Beta1"
 _fmt_version="6.1.2"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
@@ -76,7 +78,8 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
-  cheat-sse-build.patch
+  'cheat-sse-build.patch'
+  '0001-allow-separate-windowing-binaries-being-launched-fro.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -84,10 +87,10 @@ noextract=(
   "libdvdread-$_libdvdread_version.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz"
   "fmt-$_fmt_version.tar.gz"
+  "spdlog-$_spdlog_version.tar.gz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
-  "spdlog-$_spdlog_version.tar.gz"
 )
 b2sums=('SKIP'
         '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
@@ -99,7 +102,8 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '69024d77e6e7a5036e24729e337b17680dc3735cb1d209058a88b980989826fe56ff113c1177410106e0f70d827fa82603372277e3bc1aa4d12ffe5bb979af96'
         'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
+        '9745854bab7e7ddf1cb816e536f303513d8792b5431c62d042894e6d2e702939bc1f9a965e7c59207cca832a297cc3c187c9435fc6e3029a3ddc0b13d11c7451')
 
 pkgver() {
   cd "$_gitname"
@@ -107,19 +111,18 @@ pkgver() {
 }
 
 prepare() {
-  [[ -d kodi-build-x11 ]] && rm -rf kodi-build-x11
-  mkdir kodi-build-x11
-  [[ -d kodi-build-wayland ]] && rm -rf kodi-build-wayland
-  mkdir kodi-build-wayland
-  [[ -d kodi-build-gbm ]] && rm -rf kodi-build-gbm
-  mkdir kodi-build-gbm
+  [[ -d kodi-build ]] && rm -rf kodi-build
+  mkdir "$srcdir/kodi-build"
 
   cd "$_gitname"
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+
+  patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
 }
 
 build() {
-  export PATH="$srcdir/path:$PATH"
+  cd kodi-build
+
   ### Optionally uncomment and setup to your liking
   # export CFLAGS+=" -march=native"
   # export CXXFLAGS="${CFLAGS}"
@@ -128,68 +131,51 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
     -DUSE_LTO=$(nproc)
+    -DAPP_RENDER_SYSTEM=gl
+    -DENABLE_LDGOLD=OFF
     -DENABLE_EVENTCLIENTS=ON
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_FMT=ON
+    -DENABLE_INTERNAL_SPDLOG=ON
     -DENABLE_INTERNAL_CROSSGUID=ON
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
-    -DENABLE_INTERNAL_SPDLOG=ON
     -DENABLE_MYSQLCLIENT=ON
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz"
     -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz"
+    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
-    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
   )
 
   echo "building kodi-x11"
-  cd "$srcdir/kodi-build-x11"
-  _args+=(
-    -DCORE_PLATFORM_NAME=x11
-    -DAPP_RENDER_SYSTEM=gl
-  )
-
-  cmake "${_args[@]}" ../xbmc
+  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=x11 ../"$_gitname"
   make
-  make preinstall
 
   echo "building kodi-wayland"
-  cd "$srcdir/kodi-build-wayland"
-  _args+=(
-    -DCORE_PLATFORM_NAME=wayland
-    -DAPP_RENDER_SYSTEM=gl
-  )
-
-  cmake "${_args[@]}" ../xbmc
+  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=wayland ../"$_gitname"
   make
-  make preinstall
 
   echo "building kodi-gbm"
-  cd "$srcdir/kodi-build-gbm"
-  _args+=(
-    -DCORE_PLATFORM_NAME=gbm
-    -DAPP_RENDER_SYSTEM=gl
-  )
-
-  cmake "${_args[@]}" ../xbmc
+  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=gbm ../"$_gitname"
   make
-  make preinstall
 }
 
 # kodi
 # components: kodi
 
-package_kodi-git() {
+package_kodi-git-common() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
-    'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
-    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
-    'KODI-GIT-BIN' 'libplist'
+    'bluez-libs' 'curl' 'desktop-file-utils' 'hicolor-icon-theme' 'lcms2'
+    'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs' 'libplist'
+    'libpulse' 'libva' 'libxslt' 'lirc' 'mariadb-libs' 'mesa' 'python'
+    'python-pillow' 'python-pycryptodomex' 'python-simplejson' 'shairplay'
+    'smbclient' 'taglib' 'tinyxml'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -198,18 +184,16 @@ package_kodi-git() {
     'pulseaudio: PulseAudio support'
     'upower: Display battery level'
   )
-  provides=('xbmc' "kodi=${pkgver}")
-  conflicts=('xbmc' 'kodi')
-  replaces=('xbmc')
+  provides=("kodi-common=${pkgver}")
+  conflicts=('kodi-common')
+  replaces=('kodi-common')
 
   _components=(
     'kodi'
     'kodi-bin'
   )
 
-  export PATH="$srcdir/path:$PATH"
-
-  cd kodi-build-x11
+  cd kodi-build
   # install eventclients
   for _cmp in ${_components[@]}; do
   DESTDIR="$pkgdir" /usr/bin/cmake \
@@ -217,8 +201,8 @@ package_kodi-git() {
      -P cmake_install.cmake
   done
 
-  # remove x11 binaries
-  rm "$pkgdir/usr/lib/kodi/"{kodi-x11,kodi-xrandr}
+  # remove windowing specific binaries
+  rm -f "$pkgdir/usr/lib/kodi/"{kodi-x11,kodi-xrandr,kodi-wayland,kodi-gbm}
 }
 
 # kodi-x11
@@ -226,17 +210,13 @@ package_kodi-git() {
 
 package_kodi-git-x11() {
   pkgdesc="x11 kodi binary"
-  provides=('KODI-GIT-BIN' "kodi-x11=${pkgver}")
-  conflicts=('kodi-x11')
-  replaces=('kodi-bin')
+  provides=("kodi=${pkgver}")
+  replaces=('kodi')
   depends=(
-    'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
-    'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libvdpau' 'libxrandr'
-    'libxslt' 'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'libplist'
-    'tinyxml' "$pkgbase"
+    'kodi-git-common' 'libva-vdpau-driver' 'libxrandr'
   )
 
-  cd kodi-build-x11
+  cd kodi-build
   install -Dm755 kodi-x11 "$pkgdir/usr/lib/kodi/kodi-x11"
   install -Dm755 kodi-xrandr "$pkgdir/usr/lib/kodi/kodi-xrandr"
 }
@@ -246,16 +226,14 @@ package_kodi-git-x11() {
 
 package_kodi-git-wayland() {
   pkgdesc="wayland kodi binary"
-  provides=('KODI-GIT-BIN' "kodi-wayland=${pkgver}")
+  provides=("kodi=${pkgver}")
   conflicts=('kodi-wayland')
+  replaces=('kodi')
   depends=(
-    'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
-    'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
-    'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'tinyxml'
-    'waylandpp' "$pkgbase"
+    'kodi-git-common' 'libxkbcommon' 'waylandpp'
   )
 
-  cd kodi-build-wayland
+  cd kodi-build
   install -Dm755 kodi-wayland "$pkgdir/usr/lib/kodi/kodi-wayland"
 }
 
@@ -264,27 +242,28 @@ package_kodi-git-wayland() {
 
 package_kodi-git-gbm() {
   pkgdesc="gbm kodi binary"
-  provides=('KODI-GIT-BIN' "kodi-gbm=${pkgver}")
+  provides=("kodi=${pkgver}")
   conflicts=('kodi-gbm')
+  replaces=('kodi')
   depends=(
-    'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
-    'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'
-    'libxslt' 'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'libplist'
-    'tinyxml' "$pkgbase"
+    'kodi-git-common' 'libxkbcommon'
   )
 
-  cd kodi-build-gbm
+  cd kodi-build
   install -Dm755 kodi-gbm "$pkgdir/usr/lib/kodi/kodi-gbm"
 }
 
 # kodi-eventclients
-# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-kodi-send
+# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-kodi-send
 
 package_kodi-git-eventclients() {
   pkgdesc="Kodi Event Clients (master branch)"
   provides=("kodi-eventclients=${pkgver}")
   conflicts=('kodi-eventclients')
-  optdepends=('python: most eventclients are implemented in python')
+  optdepends=(
+    'kodi-git: local machine eventclient use'
+    'python: most eventclients are implemented in python'
+  )
 
   _components=(
     'kodi-eventclients-common'
@@ -292,9 +271,7 @@ package_kodi-git-eventclients() {
     'kodi-eventclients-kodi-send'
   )
 
-  export PATH="$srcdir/path:$PATH"
-
-  cd kodi-build-x11
+  cd kodi-build
   # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
@@ -316,7 +293,7 @@ package_kodi-git-tools-texturepacker() {
     'kodi-tools-texturepacker'
   )
 
-  cd kodi-build-x11
+  cd kodi-build
   # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
@@ -326,31 +303,20 @@ package_kodi-git-tools-texturepacker() {
 }
 
 # kodi-dev
-# components: kodi-addon-dev kodi-audio-dev kodi-eventclients-dev kodi-game-dev
-#             kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev
-#             kodi-screensaver-dev kodi-visualization-dev
+# components: kodi-addon-dev kodi-eventclients-dev
 
 package_kodi-git-dev() {
   pkgdesc="Kodi dev files (master branch)"
-  depends=("$pkgbase")
+  depends=('kodi-git-common')
   provides=("kodi-dev=${pkgver}")
   conflicts=('kodi-dev')
 
   _components=(
     'kodi-addon-dev'
-    'kodi-audio-dev'
     'kodi-eventclients-dev'
-    'kodi-game-dev'
-    'kodi-inputstream-dev'
-    'kodi-peripheral-dev'
-    'kodi-pvr-dev'
-    'kodi-screensaver-dev'
-    'kodi-visualization-dev'
   )
 
-  export PATH="$srcdir/path:$PATH"
-
-  cd kodi-build-x11
+  cd kodi-build
   # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
