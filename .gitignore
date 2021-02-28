@@ -1,0 +1,10 @@
+*.xz
+*.xz.sig
+*.zst
+*.zst.sig
+pkg
+src
+clean.sh
+checksum.sh
+*.part
+chkuuid
