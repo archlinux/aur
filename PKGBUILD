@@ -12,7 +12,7 @@
 # If unsure, try the system electron first, and fallback to this package if system won't work.
 
 pkgname=jitsi-meet-electron
-pkgver=2.4.2
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application powered by Electron. Uses npm version of electron"
 arch=('any')
@@ -28,10 +28,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=(
-    'd4ce7836a838be92d6484813737c424074a7747fd1b7eed9fbc061c4b2cd10cf'
-    '974c4a8d91b7ea93baaaefbaa4344da44e9590162ae73a70156c4c714265822f'
-)
+sha256sums=('d4ce7836a838be92d6484813737c424074a7747fd1b7eed9fbc061c4b2cd10cf'
+            'a79493bc982173e40124995e921b7d7f074205e5fc9a395fc6b4d15a39c7eb98')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -51,9 +49,6 @@ package() {
     mkdir -p -- "$pkgdir"/usr/bin
     ln -s -- '../share/jitsi-meet-electron/jitsi-meet' "$pkgdir"/usr/bin/jitsi-meet-electron
 
-    local icon_size; for icon_size in 16 24 32 48 64 96 128 256 512; do
-    install -Dm644 -- "./resources/icons/icon_${icon_size}x${icon_size}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${pkgname}.png"
-    done
+    install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
 
