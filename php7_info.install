@@ -1,0 +1,7 @@
+post_install() {
+    echo 'You need to uncomment `extension iconv` in /etc/php7 in order to run phpDocumentor2'
+}
+
+post_upgrade() {
+    echo 'You need to uncomment `extension iconv` in /etc/php7 in order to run phpDocumentor2'
+}
