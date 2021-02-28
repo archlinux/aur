@@ -292,7 +292,6 @@ fi
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
-  mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname,$pkgname}
 
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
