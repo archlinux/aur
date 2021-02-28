@@ -1,12 +1,13 @@
 pkgbase = rpm-tools-git
 	pkgdesc = RPM Package Manager
 	pkgver = r17189.gf9b90179b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpm.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = python
 	depends = glibc
 	depends = elfutils
 	depends = file

@@ -2,13 +2,13 @@
 
 pkgname=rpm-tools-git
 pkgver=r17189.gf9b90179b
-pkgrel=1
+pkgrel=2
 pkgdesc="RPM Package Manager"
 arch=('i686' 'x86_64')
 url="https://rpm.org/"
 license=('GPL')
 depends=('glibc' 'elfutils' 'file' 'libarchive' 'libcap' 'lmdb' 'lua' 'nss' 'popt' 'zstd')
-makedepends=('git')
+makedepends=('git' 'python')
 provides=('rpm-tools' 'rpmextract')
 conflicts=('rpm-tools' 'rpmextract')
 source=("git+https://github.com/rpm-software-management/rpm.git"
