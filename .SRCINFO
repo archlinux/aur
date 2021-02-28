@@ -64,23 +64,26 @@ pkgbase = librewolf-nightly
 	source_x86_64 = hg+https://hg.mozilla.org/mozilla-unified#revision=autoland
 	source_x86_64 = librewolf-nightly.desktop
 	source_x86_64 = git+https://gitlab.com/librewolf-community/browser/common.git
-	source_x86_64 = git+https://gitlab.com/librewolf-community/settings.git#commit=c5c75a39dd91a8772255a78493853be6553262b2
+	source_x86_64 = git+https://gitlab.com/vnepogodin/librewolf-settings.git
 	source_x86_64 = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/e123b80f7df1ad9043435f345c426717ca323579/remove_addons.patch
 	source_x86_64 = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/e123b80f7df1ad9043435f345c426717ca323579/context-menu.patch
+	source_x86_64 = 0001-Use-remoting-name-for-GDK-application-names.patch
 	sha512sums_x86_64 = SKIP
 	sha512sums_x86_64 = 7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e
 	sha512sums_x86_64 = SKIP
 	sha512sums_x86_64 = SKIP
 	sha512sums_x86_64 = 8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921
 	sha512sums_x86_64 = a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061
+	sha512sums_x86_64 = afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea
 	source_aarch64 = hg+https://hg.mozilla.org/mozilla-unified#revision=autoland
 	source_aarch64 = librewolf-nightly.desktop
 	source_aarch64 = git+https://gitlab.com/librewolf-community/browser/common.git
-	source_aarch64 = git+https://gitlab.com/librewolf-community/settings.git#commit=c5c75a39dd91a8772255a78493853be6553262b2
+	source_aarch64 = git+https://gitlab.com/vnepogodin/librewolf-settings.git
 	source_aarch64 = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/e123b80f7df1ad9043435f345c426717ca323579/remove_addons.patch
 	source_aarch64 = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/e123b80f7df1ad9043435f345c426717ca323579/context-menu.patch
 	source_aarch64 = arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/e123b80f7df1ad9043435f345c426717ca323579/arm.patch
 	source_aarch64 = build-arm-libopus.patch
+	source_aarch64 = 0001-Use-remoting-name-for-GDK-application-names.patch
 	sha512sums_aarch64 = SKIP
 	sha512sums_aarch64 = 7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e
 	sha512sums_aarch64 = SKIP
@@ -89,6 +92,7 @@ pkgbase = librewolf-nightly
 	sha512sums_aarch64 = a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061
 	sha512sums_aarch64 = 179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9
 	sha512sums_aarch64 = 6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35
+	sha512sums_aarch64 = afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea
 
 pkgname = librewolf-nightly
 
