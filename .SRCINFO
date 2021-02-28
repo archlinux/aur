@@ -1,0 +1,28 @@
+pkgbase = apm-community
+	pkgdesc = Atom package manager
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/atom/apm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libsecret
+	depends = nodejs>=10
+	depends = npm
+	depends = python
+	provides = nodejs-atom-package-manager
+	conflicts = nodejs-atom-package-manager
+	replaces = nodejs-atom-package-manager
+	options = !emptydirs
+	source = apm-community-2.6.1.tar.gz::https://github.com/atom-community/apm/archive/2.6.1-atomic.1.0.tar.gz
+	source = apm.js
+	source = no-scripts.patch
+	source = use-system-npm.patch
+	source = git-utils.patch
+	sha512sums = edaffed317b83dfdd99a3de4d483d67f667bd82c9f478760e2960fbbed2e56cc08fbf8e494fb2e933f80cb98adc13954ac30d52d46a3606ae2211f0d830fe52e
+	sha512sums = c02c18e00c378fc968cd593bfed3ff0636a2786fa9ef212547efc30c54576f55dc94ac503b827ec79283c5deb87a22a7046565d8c630d55ed20d0ad020f8a77f
+	sha512sums = a962ecc1557bcfe92c8d771a44c3bbbd72d0bf9c81285662ef26a1f99f3604efcca0307e7edb59eb99c2cbc83db4ab844f0db0532ca990581eff28e50c42acd6
+	sha512sums = de912b3da4f0433be1d960e849dbaf664b6b0d9366b9b8fb784e79f4d5ea35a24cc76c11c9f662b615a66b14ac92c1009d6b85e2c02395d87e27b15daaaa59b8
+	sha512sums = bf9f4023bfbdc7240e5ed8a87bc9097eb7a57b2bae44f1044098eb380b15ff8a12f92347b99b6754c6adb537b8310d1f47bdfd3e60db411e4d69d575ce70b2a6
+
+pkgname = apm-community
