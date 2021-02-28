@@ -1,29 +1,31 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: robertfoster
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-samplerate
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="OCaml bindings for libsamplerate"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-samplerate"
 license=('LGPL2.1')
 depends=('ocaml' 'libsamplerate')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-samplerate/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d1d893965ba6f4e83054574447da9e00')
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    ./configure
-    make
+  dune build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
+
+sha256sums=('2c5cdfc490770ae77d383a6ccb3cee153b8303aab41da42882b175a0850f49a3')
