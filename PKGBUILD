@@ -1,11 +1,12 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
-conflicts=('kime')
-provides=('kime')
+# official binary have kime-window
+conflicts=('kime' 'kime-window')
+provides=('kime' 'kime-window')
 optdepends=('libappindicator-gtk3: indicator support'
             'gtk2: gtk2 support'
             'gtk3: gtk3 support'
@@ -18,11 +19,11 @@ optdepends=('libappindicator-gtk3: indicator support'
 arch=('x86_64')
 license=('GPL3')
 source=("https://github.com/Riey/kime/releases/download/v${pkgver}/kime_latest_v${pkgver}.tar.zst")
-md5sums=('23d41f07eae6a8acb6dc7e945038ddd1')
+md5sums=('9cbc0dd5b36384559d2f3dff4dfa3542')
 
 package() {
     install -Dm755 kime-check -t "${pkgdir}/usr/bin"
-    install -Dm755 kime-indicator -t "${pkgdir}/usr/bin"
+    install -Dm755 kime-window -t "${pkgdir}/usr/bin"
     install -Dm755 kime-xim -t "${pkgdir}/usr/bin"
     install -Dm755 kime-wayland -t "${pkgdir}/usr/bin"
     install -Dm755 libkime-gtk2.so -T "${pkgdir}/usr/lib/gtk-2.0/2.10.0/immodules/im-kime.so"
@@ -35,6 +36,9 @@ package() {
     install -Dm644 kime_engine.h -t "${pkgdir}/usr/include"
     install -Dm644 kime_engine.hpp -t "${pkgdir}/usr/include"
     install -Dm644 default_config.yaml -T "${pkgdir}/etc/xdg/kime/config.yaml"
+    for d in *.desktop; do
+        install -Dm644 "$d" -t "${pkgdir}/usr/share/applications"
+    done
     for i in icons/*; do
         install -Dm644 "$i" -t "${pkgdir}/usr/share/kime/icons"
     done
