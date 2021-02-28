@@ -1,0 +1,34 @@
+#!/hint/bash
+
+post_install() {
+    check_chromium
+    welcome_message
+}
+
+post_upgrade() {
+    check_chromium
+    if ! [ -f /opt/bbb-recorder/.env ]
+    then
+        welcome_message
+    fi
+}
+
+welcome_message() {
+    post_upgrade
+    echo ""
+    echo ">>> Prior to usage, you must create the configuration file:"
+    echo ">>> /opt/bbb-recorder/.env"
+    echo ""
+    echo ">>> You can take the file /opt/bbb-recorder/.env.example"
+    echo ""
+}
+
+check_chromium() {
+    if ! [ -f /usr/bin/chromium ]; then
+        echo ""
+        echo "This package calls /usr/bin/chromium, which does not exist on you system!"
+        echo "Install the chromium package, or place a symlink with that exact name to a chromium based browser."
+        echo "Or instead you can also change the prepare() function in the PKGBUILD when building this package."
+        echo ""
+    fi
+}
