@@ -3,11 +3,11 @@
 # Contributor: Alexander Bantyev <balsoft@yandex.ru>
 
 pkgname=qomp-git
-pkgver=1.4.r5.ge70259a
-pkgrel=1
+pkgver=1.4.r7.gcb19e84
+pkgrel=2
 pkgdesc="Quick(Qt) Online Music Player"
 arch=(i686 x86_64)
-url="https://qomp.sourceforge.net/"
+url="https://github.com/qomp/qomp"
 license=(GPL2)
 depends=(taglib qt5-base qt5-x11extras
          qt5-multimedia qt5-xmlpatterns
