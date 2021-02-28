@@ -5,7 +5,7 @@ post_install() {
 
 	echo ">>> DKMS: Module add, build, and install"
 
-    line=$(dkms status -m $MODNAME)
+	line=$(dkms status -m $MODNAME)
 		dkms add -m $MODNAME -v $MODVER
 	fi
 
@@ -33,4 +33,3 @@ pre_remove() {
 	depmod -a
 
 }
-sha512sums_x86_64=('22672152f3a4a6b36213532b601208b8ade06657cde78bb2a76d700ac3c46af75086be5e2bdbf3d1e860735e5a1b2594c45ad32038cbd99aa68ea82532c98f5f')
