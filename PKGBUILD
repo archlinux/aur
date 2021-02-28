@@ -17,7 +17,7 @@ url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss ttf-font libpulse
          libvpx libjpeg zlib icu libevent libpipewire02)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils
+makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
@@ -88,14 +88,12 @@ prepare() {
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-# This supposedly speeds up compilation (We test through dogfooding anyway)
-ac_add_options --disable-tests
-ac_add_options --disable-debug
-
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
+ac_add_options --with-ccache
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 export CC='clang'
 export CXX='clang++'
 export AR=llvm-ar
@@ -126,9 +124,11 @@ ac_add_options --with-system-jpeg
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
+ac_add_options --disable-warnings-as-errors
 ac_add_options --disable-crashreporter
+ac_add_options --disable-tests
+ac_add_options --disable-debug
 ac_add_options --disable-updater
-ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
@@ -337,11 +337,9 @@ END
     install -Dm644 browser/branding/librewolf/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/librewolf.png"
   done
-  install -Dm644 browser/branding/official/content/about-logo.png \
+  install -Dm644 browser/branding/librewolf/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/librewolf.png"
-
-  # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dm644 browser/branding/librewolf/default16.png \
+  install -Dm644 browser/branding/librewolf/identity-icons-brand.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
 
   install -Dm644 ../$pkgname.desktop \
