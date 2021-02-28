@@ -4,6 +4,7 @@
 pkgname=ocaml-alsa
 pkgver=0.3.0
 pkgrel=3
+_commit=8ffe8abc1cb4907c6be801c5af32a41defaefe54
 pkgdesc="OCaml ALSA bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-alsa"
