@@ -1,10 +1,10 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=mroonga
-pkgver=10.11
+pkgver=11.00
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB bundled Mroonga package)."
-mariadbver=10.4.17
+mariadbver=10.4.18
 MYSQL_VERSION=mariadb-${mariadbver}
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
@@ -14,7 +14,8 @@ source=(http://packages.groonga.org/source/mroonga/mroonga-$pkgver.tar.gz
         https://downloads.mariadb.org/f/${MYSQL_VERSION}/source/${MYSQL_VERSION}.tar.gz
         mariadb.service
         mariadb-post.sh
-        mariadb-tmpfile.conf)
+        mariadb-tmpfile.conf
+        0001-Enable-to-build-with-latest-MariaDB.patch)
 makedepends=('cmake' 'openssl' 'systemd' 'zlib' 'zstd' 'libaio' 'libxml2' 'pcre' 'jemalloc' 'lz4' 'boost' 'snappy')
 conflicts=('libmariadbclient' 'mariadb-clients' 'mytop' 'mariadb' 'mysql' 'libmysqlclient' 'mysql-clients')
 depends=('perl' 'inetutils' 'libaio' 'libxml2' 'pcre' 'groonga' 'groonga-normalizer-mysql')
@@ -26,6 +27,9 @@ prepare() {
     cd $srcdir
     mkdir -p $srcdir/mariadb-$mariadbver/storage/mroonga
     mv $srcdir/mroonga-${pkgver}/* $srcdir/mariadb-$mariadbver/storage/mroonga
+
+    (cd $srcdir/mariadb-$mariadbver
+    patch -p1 < $srcdir/0001-Enable-to-build-with-latest-MariaDB.patch)
 }
 
 build() {
@@ -110,13 +114,15 @@ package() {
     install -Dm644 ../mariadb.service "$pkgdir"/usr/lib/systemd/system/mysqld.service
     install -Dm644 ../mariadb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mysql.conf
 }
-sha1sums=('5052c5b15c0732ce81e59020c698f3c10f3c58f9'
-          '49d8ec417ce3e38836dad891f61e72493bb59f3b'
+sha1sums=('08116a6e846012cb607b454549235dee5a6254c8'
+          '82454d8f04c8728ba9df3cefd25747da7dfc25bb'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
-          'c2a86c745002923234f9d6d79b3b462d5ab55e8d')
-sha256sums=('00427a67f9d50179f6604fa6c583bdf4dabe22dd69852ea788d2a9402fbd9469'
-            'a7b104e264311cd46524ae546ff0c5107978373e4a01cf7fd8a241454548d16e'
+          'c2a86c745002923234f9d6d79b3b462d5ab55e8d'
+          '9c50d0da8fff4665c295530946e43b6be0d93fe5')
+sha256sums=('5f0359285dc87d7293c3158d6055c71578c7914a849065d570e4fb74cb7c1114'
+            '330d9e8273002fc92f0f3f3f9b08157a3cab1265a0f114adeb6235e4283a0d3e'
             '2c60dfdc866078a8402d6e18d538e6a1deaa70e1b2410bee5eb209a314d7daa7'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
-            '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd')
+            '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
+            'a3fb0136defbfcc90619ef94fd1e17725ea4cde9e166de5e25d7f070a2348920')

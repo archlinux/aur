@@ -1,0 +1,30 @@
+From 3adc5bbe51d1671a7fbfb4a29df85281697168e0 Mon Sep 17 00:00:00 2001
+From: Tomohiro KATO <tomop@teamgedoh.net>
+Date: Thu, 25 Feb 2021 15:46:49 +0900
+Subject: [PATCH] Enable to build with latest MariaDB (#394)
+
+GitHub: fix #392.
+
+"restore_auto_increment" require one argument since mariadb-server 10.3.28, 10.4.18, and 10.5.9.
+See: https://github.com/MariaDB/server/commit/75e7132fca1c4634d4aa8d18d386c55932a5e1b6
+---
+ ha_mroonga.hpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/storage/mroonga/ha_mroonga.hpp b/storage/mroonga/ha_mroonga.hpp
+index b9fe2cd07..de2ba5950 100644
+--- a/storage/mroonga/ha_mroonga.hpp
++++ b/storage/mroonga/ha_mroonga.hpp
+@@ -387,7 +387,11 @@ typedef uint mrn_alter_table_flags;
+    ((MYSQL_VERSION_ID >= 100320 && MYSQL_VERSION_ID < 100400) || \
+     (MYSQL_VERSION_ID >= 100410))
+ #  define MRN_HANDLER_RESTORE_AUTO_INCREMENT_OVERRIDE mrn_override
+-#  define MRN_HANDLER_HAVE_RESTORE_AUTO_INCREMENT_NO_ARGUMENT
++#  if ((MYSQL_VERSION_ID >= 100320 && MYSQL_VERSION_ID < 100328) || \
++       (MYSQL_VERSION_ID >= 100410 && MYSQL_VERSION_ID < 100418) || \
++       (MYSQL_VERSION_ID >= 100500 && MYSQL_VERSION_ID < 100509))
++#    define MRN_HANDLER_HAVE_RESTORE_AUTO_INCREMENT_NO_ARGUMENT
++#  endif
+ #  define MRN_HANDLER_RELEASE_AUTO_INCREMENT_OVERRIDE mrn_override
+ #else
+ #  define MRN_HANDLER_RESTORE_AUTO_INCREMENT_OVERRIDE
