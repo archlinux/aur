@@ -315,10 +315,8 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // pref("extensions.autoDisableScopes", 11);
 END
 
-  # cd ${srcdir}/settings
-  # git checkout ${_settings_commit}
   cd ${srcdir}/mozilla-unified
-  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
+  cp -r ${srcdir}/librewolf-settings/* ${pkgdir}/usr/lib/${pkgname}/
 
   _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
