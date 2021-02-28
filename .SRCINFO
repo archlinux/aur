@@ -1,0 +1,17 @@
+pkgbase = ruby-mustache-sinatra
+	pkgdesc = Mustache support for Sinatra applications
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mustache/mustache-sinatra
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-mustache<=0.99.8
+	noextract = mustache-sinatra-1.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mustache-sinatra-1.0.1.gem
+	sha1sums = 1e162107723bca69a7bb1fcc1f82868d495802c6
+
+pkgname = ruby-mustache-sinatra
+
