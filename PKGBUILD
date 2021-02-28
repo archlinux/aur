@@ -2,12 +2,13 @@
 
 pkgname=ponomar-git
 pkgver=r918.59c46fd3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Ponomar is a fully-functional program suite for the Orthodox Church"
 arch=('any')
 url="https://github.com/typiconman/ponomar.git"
 license=('GPL-3.0')
 depends=('java-runtime' 'texinfo')
+optdepends=('otf-churchslavonic')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=("${pkgname%-git}")
