@@ -1,0 +1,31 @@
+pkgbase = lua-luawav
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/jprjr/luawav
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	source = https://github.com/jprjr/luawav/releases/download/v1.2.0/luawav-1.2.0.tar.gz
+	md5sums = 9600f8689f6c0a574c542c477b0d5a7b
+
+pkgname = lua-luawav
+	pkgdesc = Lua library for reading and writing WAV files
+	depends = lua
+
+pkgname = lua51-luawav
+	pkgdesc = Lua library for reading and writing WAV files - Lua 5.1
+	depends = lua51
+
+pkgname = lua52-luawav
+	pkgdesc = Lua library for reading and writing WAV files - Lua 5.2
+	depends = lua52
+
+pkgname = lua53-luawav
+	pkgdesc = Lua library for reading and writing WAV files - Lua 5.3
+	depends = lua53
+
