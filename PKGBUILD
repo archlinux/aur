@@ -24,7 +24,7 @@ build() {
 
 package_firmware-manager() {
 	pkgdesc="GTK application for managing system and device firmware."
-	depends+=('libfirmwaremanager' 'polkit')
+	depends+=('libfirmware-manager' 'polkit')
 	provides=("$pkgname-virtual")
 	install="$pkgname.install"
 

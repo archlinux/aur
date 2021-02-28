@@ -24,7 +24,7 @@ pkgname = firmware-manager
 	depends = gtk3
 	depends = openssl
 	depends = libgudev
-	depends = libfirmwaremanager
+	depends = libfirmware-manager
 	depends = polkit
 	provides = firmware-manager-virtual
 
