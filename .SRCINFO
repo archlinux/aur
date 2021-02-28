@@ -1,8 +1,8 @@
 pkgbase = twin-git
 	pkgdesc = A text-mode window environment
-	pkgver = 0.8.0.r38.g9e3707a
+	pkgver = 0.9.0.r2.gd7a8318
 	pkgrel = 1
-	url = http://sourceforge.net/projects/twin/
+	url = https://sourceforge.net/projects/twin/
 	arch = x86_64
 	arch = i686
 	arch = arm

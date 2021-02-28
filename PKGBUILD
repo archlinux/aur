@@ -1,13 +1,13 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 
 pkgname=twin-git
-pkgver=0.8.0.r38.g9e3707a
+pkgver=0.9.0.r2.gd7a8318
 pkgrel=1
 pkgdesc="A text-mode window environment"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="http://sourceforge.net/projects/twin/"
+url="https://sourceforge.net/projects/twin/"
 license=(GPL2 LGPL2.1)
 depends=(gpm libxpm)
 makedepends=(git)
