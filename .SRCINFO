@@ -1,6 +1,6 @@
 pkgbase = nemu
 	pkgdesc = ncurses interface for QEMU
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/nemuTUI/nemu
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = nemu
 	depends = sqlite
 	depends = udev
 	depends = libusb
-	source = nemu-2.5.0.tar.bz2::https://github.com/nemuTUI/nemu/archive/v2.5.0.tar.gz
+	source = nemu-2.5.1.tar.bz2::https://github.com/nemuTUI/nemu/archive/v2.5.1.tar.gz
 	source = https://bitbucket.org/PascalRD/nemu/raw/1e73a64638ef804f0e241e89aeb31305eb4f602d/LICENSE
-	sha256sums = ca4d8db264dedb0440155329edf6720183dc597f06594967ae7248364ed077ee
+	sha256sums = 7968ae5eed2e028d74c5fd66ceb978e5eb605f0823cc451d5cc187ca83fee9ba
 	sha256sums = 0853b096d8bc114f9e17a36939192982eb4440a15a00bb375a45bd6d27cd3210
 
 pkgname = nemu
