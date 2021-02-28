@@ -1,7 +1,7 @@
 pkgbase = python-vyper-git
 	pkgdesc = Pythonic Smart Contract Language for the EVM
 	pkgver = 0.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vyperlang/vyper
 	arch = x86_64
 	license = Apache-2.0
@@ -11,6 +11,7 @@ pkgbase = python-vyper-git
 	depends = python-asttokens
 	depends = python-pycryptodome
 	depends = python-semantic-version
+	depends = python-setuptools
 	provides = vyper
 	provides = vyper-serve
 	provides = vyper-lll
