@@ -11,7 +11,7 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'kwayland' 'rlottie-tdesktop' 'kwayland')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'kwayland' 'rlottie-tdesktop' 'kwayland' 'libtg_owt')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         wide-messages.patch
