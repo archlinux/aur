@@ -4,33 +4,33 @@
 
 _gemname=gollum
 pkgname=$_gemname
-pkgver=5.1.2
-pkgrel=2
+pkgver=5.2.1
+pkgrel=1
 pkgdesc='A simple, Git-powered wiki.'
 arch=(any)
 url='http://github.com/gollum/gollum'
 license=(MIT)
 depends=(ruby
+         ruby-gemojione
          ruby-gollum-lib
          'ruby-kramdown'
          'ruby-kramdown-parser-gfm>=1.1'
          'ruby-kramdown-parser-gfm<1.2'
+         ruby-mustache-sinatra
+         ruby-octicons
+         ruby-rss
+         ruby-sass
          ruby-sinatra
          ruby-sinatra-contrib
-         'ruby-mustache<1'
-         ruby-useragent
-         ruby-gemojione
-         'ruby-octicons<9'
          'ruby-sprockets<4'
-         ruby-sass
-         'ruby-uglifier<4'
          ruby-sprockets-helpers
-         ruby-rss)
+         ruby-uglifier
+         ruby-useragent)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('27a01b258debadd90ddf7ea447462867f9b3f2a4')
+sha1sums=('36101111b447adf2662acdd7124f37f51ab3431b')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
