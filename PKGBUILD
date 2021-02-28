@@ -4,8 +4,8 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.5.0.r63.g309e422
-pkgrel=3
+pkgver=v0.5.1.r115.g0cdc589
+pkgrel=1
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/InfinityGhost/OpenTabletDriver"
@@ -16,7 +16,7 @@ makedepends=('git' 'dotnet-sdk-5.0')
 provides=("opentabletdriver")
 conflicts=("opentabletdriver")
 install="notes.install"
-source=('git+https://github.com/InfinityGhost/OpenTabletDriver'
+source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
         'git+https://github.com/OpenTabletDriver/OpenTabletDriver-udev'
         "$_spkgname"
         "$_spkgname-gui"
