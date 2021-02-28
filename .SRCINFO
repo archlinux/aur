@@ -1,0 +1,20 @@
+pkgbase = lmdb-git
+	pkgdesc = Extraordinarily fast, memory-efficient database
+	pkgver = 0.9.28.r22254.ga44706f64
+	pkgrel = 1
+	url = https://www.openldap.org/software/repo.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = lmdb
+	conflicts = lmdb
+	options = staticlibs
+	source = git+https://git.openldap.org/openldap/openldap.git
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/lmdb/trunk/lmdb.pc
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lmdb-git
+
