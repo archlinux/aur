@@ -1,8 +1,8 @@
 pkgbase = ames
 	pkgdesc = Update anki cards with desktop audio and images
 	pkgver = 0.1.1
-	pkgrel = 1
-	url = https://github.com/Ajatt-Tools/ames
+	pkgrel = 2
+	url = https://github.com/eshrh/ames
 	install = ames.install
 	arch = any
 	license = GPL3
