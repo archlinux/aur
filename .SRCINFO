@@ -1,15 +1,15 @@
 pkgbase = eudic
 	pkgdesc = Proprietary English dictionary software for linux
-	pkgver = 12.5.0
-	pkgrel = 3
+	pkgver = 12.5.3
+	pkgrel = 1
 	url = https://www.eudic.net/v4/en/app/eudic
 	arch = x86_64
 	license = unknown
 	depends = hicolor-icon-theme
 	depends = qt5-speech
 	depends = qt5-webkit
-	source = eudic-12.5.0.deb::https://static.frdic.com/pkg/eudic.deb?v=2021-02-06
-	sha256sums = 20a2780110aa4024c3dd002415c6cc45b9ba61b209c8745baf2f2f861772b111
+	source = eudic-12.5.3.deb::https://static.frdic.com/pkg/eudic.deb?v=2021-02-06
+	sha256sums = f1a32e271918b00a80ab3a751ac759ae011569d2875b1b91a495967abc79b801
 
 pkgname = eudic
 
