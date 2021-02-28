@@ -338,7 +338,7 @@ END
   install -Dm644 browser/branding/librewolf/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/librewolf.png"
   install -Dm644 browser/branding/librewolf/identity-icons-brand.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.svg"
 
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
