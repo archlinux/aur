@@ -1,12 +1,12 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
-optdepends=('libappindicator-gtk3: indicator support'
+optdepends=('kime-window: window support'
             'gtk2: gtk2 support'
             'gtk3: gtk3 support'
             'gtk4: gtk4 support'
@@ -14,8 +14,9 @@ optdepends=('libappindicator-gtk3: indicator support'
             'qt6-base: qt6 support'
             'libxcb: xim support'
             'cairo: xim support')
-makedepends=('cargo' 'clang' 'llvm' 'cmake' 'ninja' 'cairo' 'libxcb' 'libappindicator-gtk3')
+makedepends=('cargo' 'clang' 'llvm' 'cmake' 'cairo' 'libxcb')
 arch=('any')
+license=('GPL3')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
 )
@@ -35,3 +36,4 @@ package() {
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
+md5sums=('803f15db3c0af9a2645e20295272f2d2')
