@@ -1,0 +1,13 @@
+pkgbase = pwngrid
+	pkgdesc = This is the source code of the API server for http://pwnagotchi.ai
+	pkgver = 1.10.3
+	pkgrel = 1
+	url = https://github.com/evilsocket/pwngrid
+	arch = x86_64
+	license = GPL3
+	depends = libpcap
+	source = pwngrid-1.10.3.tar.gz::https://github.com/evilsocket/pwngrid/archive/v1.10.3.tar.gz
+	md5sums = 250eccce3cfe5745fe1d4aac7e75bb5b
+
+pkgname = pwngrid
+
