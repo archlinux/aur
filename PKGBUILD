@@ -18,8 +18,11 @@ sha512sums=('SKIP')
 #validpgpkeys=('0E51E7F06EF719FBD072782A5F56E5AFA63CCD33') #"Craig Cornelius (For use with ICU releases) <ccornelius@google.com>"
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "icu"
+
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
