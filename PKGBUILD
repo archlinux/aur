@@ -20,20 +20,22 @@
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
 pkgver=2.0.14.r3354.08f530bd
-pkgrel=2
+pkgrel=3
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
 license=('GPL')
-makedepends=('go-pie' 'perl' 'docker' 'git' 'fakeroot')
+makedepends=('go-pie' 'perl' 'docker' 'git')
 depends=('glibc')
 source=("git+$url.git"
         "psiphon.conf"
-        "psiphon.service")
+        "psiphon.service"
+         "Dockerfile.patch")
 backup=('etc/psiphon.conf' 'usr/lib/systemd/user/psiphon.service')
 md5sums=('SKIP'
          'c1ec9a446e89495501b8375d2682aa49'
-         'a6d6b01633a39325abbdb3597c50a4cc')
+         'a6d6b01633a39325abbdb3597c50a4cc'
+         '2a2474d64b2c4de819976b5f6bfa5c0f')
 
 pkgver() {
   cd $_pkgname
@@ -53,15 +55,19 @@ prepare(){
       >&2 echo "Docker service is not started. Please start it."
       exit 1
     fi
+    patch --forward --strip=1 --input="Dockerfile.patch"
 }
 
 build() {
   cd "$_pkgname/ConsoleClient"
 
-  docker build --no-cache=true -t psiclient .
+  docker build --no-cache=true -t psiclient \
+  --build-arg USER_ID=$(id -u) \
+  --build-arg GROUP_ID=$(id -g) \
+  --build-arg USERNAME=$USER .
   docker images
   cd .. && \
-  fakeroot docker run \
+  docker run \
   --rm \
   -v $PWD:/go/src/github.com/Psiphon-Labs/psiphon-tunnel-core \
   psiclient \

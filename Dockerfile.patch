@@ -1,0 +1,15 @@
+--- src/psiphon-tunnel-core/ConsoleClient/Dockerfile	2021-02-28 19:40:10.668878099 +0100
++++ Dockerfile	2021-02-28 19:41:34.661148599 +0100
+@@ -33,3 +33,12 @@
+ RUN go get github.com/pwaller/goupx
+ 
+ WORKDIR $GOPATH/src/github.com/Psiphon-Labs/psiphon-tunnel-core/ConsoleClient
++
++
++ARG USER_ID
++ARG GROUP_ID
++ARG USERNAME
++
++RUN addgroup --gid $GROUP_ID $USERNAME
++RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID $USERNAME
++USER $USERNAME

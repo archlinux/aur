@@ -1,7 +1,7 @@
 pkgbase = psiphon-tunnel-core-git
 	pkgdesc = Psiphon Tunnelling Proxy
 	pkgver = 2.0.14.r3354.08f530bd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	arch = x86_64
 	license = GPL
@@ -15,9 +15,11 @@ pkgbase = psiphon-tunnel-core-git
 	source = git+https://github.com/Psiphon-Labs/psiphon-tunnel-core.git
 	source = psiphon.conf
 	source = psiphon.service
+	source = Dockerfile.patch
 	md5sums = SKIP
 	md5sums = c1ec9a446e89495501b8375d2682aa49
 	md5sums = a6d6b01633a39325abbdb3597c50a4cc
+	md5sums = 2a2474d64b2c4de819976b5f6bfa5c0f
 
 pkgname = psiphon-tunnel-core-git
 
