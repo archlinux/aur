@@ -60,6 +60,7 @@ package()
 
     [Service]
     Type=oneshot
+    Environment=DOTNET_CLI_HOME=/tmp/
     ExecStart=/usr/bin/${_pkgname_lc}
     Restart=on-failure
 
