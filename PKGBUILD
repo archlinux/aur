@@ -129,4 +129,7 @@ package() {
     # Need to do that differently (like in the bbb-recorder-git.install script).
     # It even seems that the namespaceing for users is not needed.
     rm "$pkgdir"/opt/bbb-recorder/namespace_checker.sh
+
+    install -dm755 "$pkgdir"/usr/share/licenses/bbb-recorder/
+    mv "$pkgdir"/opt/bbb-recorder/LICENSE "$pkgdir"/usr/share/licenses/bbb-recorder/
 }
