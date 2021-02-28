@@ -1,4 +1,4 @@
-# Maintainer: tPenguinLTG <tpenguinltg at hotmail dot com>
+# Maintainer: tPenguinLTG <tpenguinltg at disroot dot org>
 pkgname=se
 pkgver=3.0.1
 pkgrel=1
