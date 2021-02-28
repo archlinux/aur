@@ -2,7 +2,7 @@
 
 pkgbase=chkuuid-git
 pkgname=$pkgbase
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 _gitname=chkuuid
 _gittag="v${pkgver}"
