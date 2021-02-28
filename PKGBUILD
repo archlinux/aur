@@ -15,13 +15,13 @@ options=('!strip' '!makeflags')
 source=("https://github.com/savonet/${pkgname}/archive/${_commit}.tar.gz")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_commit}"
 
   dune build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_commit}"
 
   DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
 
