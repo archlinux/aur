@@ -38,7 +38,7 @@ depends=(
     'python-systemd'
     'python-wheel')
 optdepends=('maestral-qt: Qt interface for the maestral daemon')
-md5sums=('8ef48fc9f9ba853b3253b8962cc18cde'
+md5sums=('b358fbd8a7eaed48951bcf7564c417ae'
          '25d1041b158c1b1ea42d7290c9c0f91d')
 
 # prepare() {
