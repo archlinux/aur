@@ -1,7 +1,7 @@
 # Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Beej Jorgensen <beej@beej.us>
 pkgname=umoria
-pkgver=5.7.13
+pkgver=5.7.14
 pkgrel=1
 pkgdesc="Rogue-like dungeon crawler"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
 )
 install=${pkgname}.install
 sha512sums=('281275858ce39b5fe07f856e4e126f80fa6a864ada259d1d30c8d97e4dc853ffa6efa805bc1950ab2abd49d1cf0b4f54d60384ffa67f70fa93845628ece145e8'
-            '3a577d9dded3e9a1d6e13e3ab4f87afc38549603e3510e4d778eef65d9251b2feb3f9718709e5f0b19a589259c1de6cc10f6d5eeeee057651fa920393d9ac985')
+            '5c99ed314a29684d2fc18a1429fb7609553a78fd053eac8d61189e0af8c72777d481910153514dfe544a8939be24ed9725fc2b31e89e5d6e26f0b1df5ad4c3e0')
 
 prepare() {
   cd "$srcdir/${pkgname}-$pkgver"
