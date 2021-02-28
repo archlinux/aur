@@ -2,7 +2,7 @@
 
 pkgname=ameba
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A static code analysis tool for Crystal"
 arch=('x86_64')
 url='https://github.com/crystal-ameba/ameba'
@@ -18,7 +18,7 @@ sha256sums=(
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make PREFIX="${pkgdir}/usr" install
+  make PREFIX="${pkgdir}/usr" CRFLAGS=--release install
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
