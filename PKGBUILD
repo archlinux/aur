@@ -6,10 +6,9 @@ pkgdesc="A client to upload audio files to the sndup.net autdio sharing service.
 arch=('any')
 url="http://git.2mb.codes/~stormdragon2976/sndup-linux"
 license=('WTFPL')
-depends=('bash' 'curl')
+depends=('bash' 'curl' 'xidel')
 makedepends=('git')
-optdepends=('yad: for a GUI'
-'xclip: Automatically copy links to the clipboard')
+optdepends=('xclip: Copy links to the clipboard')
 
 source=(git+https://git.2mb.codes/~stormdragon2976/sndup-linux)
 md5sums=('SKIP')

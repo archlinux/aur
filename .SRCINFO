@@ -8,8 +8,8 @@ pkgbase = sndup-linux-git
 	makedepends = git
 	depends = bash
 	depends = curl
-	optdepends = yad: for a GUI
-	optdepends = xclip: Automatically copy links to the clipboard
+	depends = xidel
+	optdepends = xclip: Copy links to the clipboard
 	source = git+https://git.2mb.codes/~stormdragon2976/sndup-linux
 	md5sums = SKIP
 
