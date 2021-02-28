@@ -1,19 +1,19 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Gerhard Brauer <gerhard.brauer@web.de>
 # Contributor: Aitor <aitor.iturri@gmail.com>
 
 pkgname=libcdk
-_pkgver=5.0-20190303
+_pkgver=5.0-20210109
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Curses Development Kit - widget library, enhanced version'
-arch=('x86_64' 'i686')
-url='http://invisible-island.net/cdk/'
-license=('BSD')
+arch=(x86_64 i686)
+url="https://invisible-island.net/cdk/"
+license=('custom:BSD-like')
 options=('!emptydirs')
 source=("${pkgname}.${pkgver}.tar.gz::ftp://ftp.invisible-island.net/cdk/cdk-${_pkgver}.tgz")
-sha256sums=('adad7870988d44b95df57722ab8dffc587d035183eb6b12a9500ebed4d8dba25')
+sha256sums=('c416c987bf77b4f1b2703d7c5e433ba9458c8be5266bf454cbf801ad87e72936')
 
 build() {
   cd "cdk-${_pkgver}"
