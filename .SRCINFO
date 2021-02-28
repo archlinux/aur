@@ -10,8 +10,8 @@ pkgbase = popsift
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
-	makedepends = cuda>=7.0
 	makedepends = expac
+	makedepends = cuda>=7.0
 	source = popsift::git+https://github.com/alicevision/popsift.git
 	sha256sums = SKIP
 
@@ -24,6 +24,5 @@ pkgname = popsift
 
 pkgname = popsift-libs
 	depends = boost-libs>=1.55
-	depends = libcudart.so
 	provides = popsift-libs=1.0.0
 
