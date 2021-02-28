@@ -2,7 +2,7 @@
 pkgname=electrum-personal-server-git
 _gitname=electrum-personal-server
 _pkgname=electrum-personal-server
-pkgver=eps.v0.1.6.r9.ga8f6f44
+pkgver=eps.v0.2.1.1.r24.g5e26f20
 pkgrel=1
 pkgdesc="Electrum Personal Server"
 arch=('any')
