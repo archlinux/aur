@@ -9,6 +9,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/mop-tracker/mop'
 license=('MIT')
 makedepends=('git' 'go')
+conflicts=('mop')
 options=('!strip' '!emptydirs')
 source=("${_pkgname}"::"git+https://github.com/mop-tracker/${_pkgname}.git")
 sha256sums=('SKIP')

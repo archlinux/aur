@@ -11,6 +11,7 @@ pkgbase = mop-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	conflicts = mop
 	options = !strip
 	options = !emptydirs
 	source = mop::git+https://github.com/mop-tracker/mop.git
