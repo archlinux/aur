@@ -7,10 +7,10 @@
 
 pkgname=diorite
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility and widget library for Nuvola Player project based on GLib, GIO, and GTK"
 arch=(x86_64)
-url="https://tiliado.eu/diorite"
+url="https://tiliado.eu/diorite/"
 license=(BSD)
 depends=(gtk3 libgee sqlite libx11 gobject-introspection)
 makedepends=(vala python-pyparsing)
