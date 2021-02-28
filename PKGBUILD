@@ -20,12 +20,12 @@
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
 pkgver=2.0.14.r3354.08f530bd
-pkgrel=1
+pkgrel=2
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
 license=('GPL')
-makedepends=('go-pie' 'perl' 'docker' 'git')
+makedepends=('go-pie' 'perl' 'docker' 'git' 'fakeroot')
 depends=('glibc')
 source=("git+$url.git"
         "psiphon.conf"
@@ -61,12 +61,12 @@ build() {
   docker build --no-cache=true -t psiclient .
   docker images
   cd .. && \
-  docker run \
+  fakeroot docker run \
   --rm \
   -v $PWD:/go/src/github.com/Psiphon-Labs/psiphon-tunnel-core \
   psiclient \
-  /bin/bash -c './make.bash linux' \
-  ; cd -
+  /bin/bash -c './make.bash linux 64' \
+  ; exit; cd -
 }
 
 package() {
