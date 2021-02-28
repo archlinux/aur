@@ -1,7 +1,7 @@
 pkgbase = viper4linux-gui
 	pkgdesc = Official UI for Viper4Linux
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Audio4Linux/Viper4Linux-GUI
 	arch = x86_64
 	license = GPL3

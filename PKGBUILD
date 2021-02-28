@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=viper4linux-gui
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Official UI for Viper4Linux"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/Viper4Linux-GUI"
@@ -15,7 +15,7 @@ sha256sums=('b3cb390394b573a69c55169637bf21c827984165b8965a6033ed9cfc5e148c0f'
 
 build() {
 	cd "Viper4Linux-GUI-$pkgver"
-	qmake
+	qmake V4L_Frontend.pro
 	make PREFIX=/usr
 }
 
