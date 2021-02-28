@@ -5,8 +5,8 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname="mozjpeg"
-pkgver=4.0.0
-pkgrel=3
+pkgver=4.0.3
+pkgrel=1
 pkgdesc="JPEG image codec with accelerated baseline decoding and superior encoding"
 url="https://github.com/mozilla/mozjpeg"
 license=("BSD")
@@ -14,7 +14,7 @@ arch=("i686" "x86_64" "armv7h")
 depends=("glibc" "libpng")
 makedepends=("nasm" "cmake")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('e2bc33ab65d18d5b26baf842b1ca128fea30387a')
+sha1sums=('8e9272a8ec1429638febd6897664c575bdd50ecb')
 
 provides=("libjpeg" "libjpeg.so" "turbojpeg" "libjpeg-turbo")
 conflicts=("libjpeg" "mozjpeg-git" "turbojpeg" "libjpeg-turbo")
