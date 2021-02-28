@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Speed Dreams 2 (SVN)
+Comment=The Open Racing Car Simulator Fork (SVN version)
+Exec=/usr/bin/speed-dreams-2
+Icon=speed-dreams-2.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Game;
