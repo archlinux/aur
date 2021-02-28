@@ -12,7 +12,7 @@ pkgbase = python-desktop-notifier
 	depends = python-wheel
 	provides = python-desktop-notifier
 	source = https://github.com/SamSchott/desktop-notifier/archive/v3.2.2.tar.gz
-	md5sums = 76bf657fdf6dec5518c607396919d196
+	md5sums = 7391be4aeb4b97bdeaac7a2904153357
 
 pkgname = python-desktop-notifier
 

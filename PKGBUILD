@@ -18,7 +18,7 @@ depends=(
     'python-dbus-next'
     'python-packaging'
     'python-wheel')
-md5sums=('76bf657fdf6dec5518c607396919d196')
+md5sums=('7391be4aeb4b97bdeaac7a2904153357')
 
 build() {
     cd "${srcdir}/${name}-${pkgver}"
