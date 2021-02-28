@@ -2,9 +2,9 @@
 pkgname=tllist-git
 _pkgname=${pkgname%-git}
 pkgver=1.0.5.r0.gf2d806f
-pkgrel=1
+pkgrel=2
 pkgdesc="A C header file only implementation of a typed linked list"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://codeberg.org/dnkl/tllist"
 license=('MIT')
 makedepends=('git' 'meson')
