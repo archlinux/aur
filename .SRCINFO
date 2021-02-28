@@ -1,6 +1,6 @@
 pkgbase = miniaudio-git
 	pkgdesc = Single file audio playback and capture library.
-	pkgver = 2049.17b3605
+	pkgver = 2431.d06d498
 	pkgrel = 1
 	url = https://github.com/dr-soft/miniaudio
 	arch = any

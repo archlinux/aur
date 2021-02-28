@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=miniaudio-git
-pkgver=2049.17b3605
+pkgver=2431.d06d498
 pkgrel=1
 pkgdesc='Single file audio playback and capture library.'
 arch=('any')
