@@ -1,7 +1,7 @@
 pkgbase = prometheus-xmpp-webhook
 	pkgdesc = XMPP-Webhook built for Prometheus/Grafana Alerts
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/opthomas-prime/xmpp-webhook
 	install = prometheus-xmpp-webhook.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = prometheus-xmpp-webhook
 	source = prometheus-xmpp-webhook-0.4.0.tar.gz::https://github.com/opthomas-prime/xmpp-webhook/archive/v0.4.0.tar.gz
 	sha256sums = 691af96667e6eb627512f038c5f2f7b3928edc586f27aecad37f3957437a3f6a
 	sha256sums = 0ec7e2fb1d5d843174718b922a8bb931098c0c5a7154cf5f50aa43af24717860
-	sha256sums = ddbb9495a26ff4e8962b9066da8d66ef2df4dd6c65abb5c187fa97cb0cf2d738
+	sha256sums = cb25a498d9beb927ab630db346651a7427fea128f0cc8194dd6f31b631f5abaf
 	sha256sums = 93988b8370da08caad5c941323a2ceec50aede3c790a20327fc26cd3d2b740a6
 	sha256sums = 5820e933ebcfdbee1ef87008db003ca81de71d777daf0f99fba52e9ffe3839b5
 
