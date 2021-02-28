@@ -1,24 +1,31 @@
 pkgbase = standardnotes-desktop
 	pkgdesc = A standard notes app with an un-standard focus on longevity, portability, and privacy.
-	pkgver = 3.4.10
+	pkgver = 3.5.18
 	pkgrel = 2
 	url = https://standardnotes.org/
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = npm
 	makedepends = node-gyp
 	makedepends = git
 	makedepends = jq
+	makedepends = python2
+	makedepends = yarn
 	depends = electron
 	conflicts = sn-bin
 	source = git://github.com/standardnotes/desktop.git
-	source = git://github.com/sn-extensions/extensions-manager.git
-	source = git://github.com/sn-extensions/batch-manager.git
+	source = git://github.com/standardnotes/web.git#commit=687b53263f379466294a320e62204bfcada997cb
+	source = git://github.com/sn-extensions/extensions-manager.git#commit=206c1da0a4bcd2389a052863de03251b103b7335
+	source = git://github.com/sn-extensions/batch-manager.git#commit=3897593b98fe46505a8bf8a8e22fd64319dc5900
+	source = webpack.patch
 	source = standardnotes-desktop.desktop
 	source = standardnotes-desktop.js
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 1d0d499efda1a39f55ef5fff6f8cdbca96337ad98f4ef9c65e2078c934ea9f3b
 	sha256sums = 8045c3baa6a3f5e0a20387913599eafb2d8c6e843745f38f34daea1ab44e73e7
 	sha256sums = 2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5
 
