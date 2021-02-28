@@ -10,8 +10,8 @@ pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
 url="https://github.com/JimmXinu/${_pkgname}"
 license=('Apache')
-depends=('python' 'python-beautifulsoup4' 'python-chardet' 'python-cloudscraper' 'python-html5lib'
-         'python-html2text')
+_deps=('beautifulsoup4' 'chardet' 'cloudscraper' 'html5lib' 'html2text')
+depends=("${_deps[@]/#/python-}")
 makedepends=('git')
 optdepends=('python-pillow: support for converting/resizing story images and covers')
 provides=("${pkgname%-git}")

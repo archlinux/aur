@@ -6,7 +6,6 @@ pkgbase = fanficfare-git
 	arch = any
 	license = Apache
 	makedepends = git
-	depends = python
 	depends = python-beautifulsoup4
 	depends = python-chardet
 	depends = python-cloudscraper
