@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-hlsdk
-pkgver=r431.e67d115d
+pkgver=r480.a7103c1c
 pkgrel=1
 pkgdesc="Half-Life SDK from original Xash3D engine"
 arch=('i686' 'x86_64')
@@ -17,30 +17,30 @@ _args="--enable-goldsrc-support \
 --enable-voicemgr"
 
 if [ $CARCH == "x86_64" ]; then
-    _args+=" --libdir=/usr/lib32"
+  _args+=" --libdir=/usr/lib32"
 else
-    _args+=" --libdir=/usr/lib"
+  _args+=" --libdir=/usr/lib"
 fi
 
 pkgver() {
-    cd $srcdir/$pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $srcdir/$pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd $srcdir/$pkgname
-    git submodule init && git submodule update
-    ./waf configure ${_args}
+  cd $srcdir/$pkgname
+  git submodule init && git submodule update
+  ./waf configure ${_args}
 }
 
 build() {
-    cd $srcdir/$pkgname
-    ./waf build
+  cd $srcdir/$pkgname
+  ./waf build
 }
 
 package() {
-    cd $srcdir/$pkgname/
-    ./waf install --destdir="$pkgdir/usr/lib"
+  cd $srcdir/$pkgname/
+  ./waf install --destdir="$pkgdir/usr/lib"
 }
 
 md5sums=('SKIP')
