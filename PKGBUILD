@@ -2,31 +2,36 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=ts
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
+_debrevision="dfsg1"
+_debfullrev="dfsg1-1"
 pkgdesc="A Unix batch system where the tasks spooled run one after the other"
 arch=('i686' 'x86_64')
 url="http://vicerveza.homeunix.net/~viric/soft/ts/"
 license=('GPL2')
-source=("http://vicerveza.homeunix.net/~viric/soft/ts/${pkgname}-${pkgver}.tar.gz")
-md5sums=('c7589cdc28115d8925794d713ff72dba')
+source=(
+  "http://deb.debian.org/debian/pool/main/t/task-spooler/task-spooler_${pkgver}+${_debrevision}.orig.tar.xz"
+  "http://deb.debian.org/debian/pool/main/t/task-spooler/task-spooler_${pkgver}+${_debfullrev}.debian.tar.xz"
+)
+md5sums=(
+  '6cd744c43f36d432f303957d60474570'
+  '943491a4775c81d020e12c9ba2ca42ea'
+)
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	sed -i 's|$(PREFIX)/man/man1|$(PREFIX)/share/man/man1|g' Makefile
-	sed -i 's/$(CC) $(LDFLAGS) -o ts/$(CC) $(LDFLAGS) -o tsp/' Makefile
-	sed -i 's/$(INSTALL) ts/$(INSTALL) tsp/' Makefile
-	sed -i 's/\(^\|\s\)ts/\1tsp/' ts.1
+  cd "$srcdir/$pkgname-$pkgver"
+  patch < ../debian/patches/tsp.patch
+  patch < ../debian/patches/manpage.patch
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make
+  cd "$srcdir/$pkgname-$pkgver"
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make PREFIX="$pkgdir/usr" install
-	install -D --mode=0644 TRICKS "$pkgdir/usr/share/doc/tsp/TRICKS"
-	mv "$pkgdir/usr/share/man/man1/ts.1" "$pkgdir/usr/share/man/man1/tsp.1.gz"
+  cd "$srcdir/$pkgname-$pkgver"
+  make PREFIX="$pkgdir/usr" install
+  install -D --mode=0644 TRICKS "$pkgdir/usr/share/doc/tsp/TRICKS"
 }
