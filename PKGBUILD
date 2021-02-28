@@ -212,7 +212,7 @@ build() {
 # Good luck!
    --without-gconf
    --without-gsettings
-   --with-nativecomp
+   --with-native-compilation
    --with-pgtk
   )
 
@@ -268,7 +268,7 @@ fi
 
 ################################################################################
 
-  ./configure --with-nativecomp CC='clang' "${_conf[@]}"
+  ./configure --with-native-compilation CC='clang' "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
   # compiling. Less time recompiling. Yay! But you may
