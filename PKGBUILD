@@ -20,7 +20,7 @@ license=('GPL3')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
 )
-md5sums=('3873fa28ee12ae40ff115019a2edaa5f')
+md5sums=('803f15db3c0af9a2645e20295272f2d2')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -36,4 +36,3 @@ package() {
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-md5sums=('803f15db3c0af9a2645e20295272f2d2')
