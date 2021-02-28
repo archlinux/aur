@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-x11gestures
 	install = gnome-shell-extension-x11gestures.install
 	arch = any
 	license = GPL
+	depends = gnome-shell
 	depends = touchegg
 	noextract = x11gestures@joseexposito.github.io.zip
 	source = https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/1/x11gestures@joseexposito.github.io.zip
