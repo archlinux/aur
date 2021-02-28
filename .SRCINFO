@@ -1,7 +1,7 @@
 pkgbase = trezor-bridge-bin
 	pkgdesc = Communication daemon for TREZOR
 	pkgver = 2.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trezor.io/
 	install = trezor-bridge-bin.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = trezor-bridge-bin
 	depends = systemd
 	provides = trezor-bridge
 	provides = trezord
+	provides = trezor-udev
 	conflicts = trezord-git
 	conflicts = trezord-go
 	conflicts = trezor-udev

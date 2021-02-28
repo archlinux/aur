@@ -4,14 +4,14 @@
 
 pkgname=trezor-bridge-bin
 pkgver=2.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Communication daemon for TREZOR"
 arch=('i686' 'x86_64')
 url="https://trezor.io/"
 license=('LGPL3')
 depends=('systemd')
 makedepends=()
-provides=('trezor-bridge' 'trezord')
+provides=('trezor-bridge' 'trezord' 'trezor-udev')
 conflicts=('trezord-git' 'trezord-go' 'trezor-udev' 'trezor-suite-appimage')
 options=()
 install="${pkgname}.install"
