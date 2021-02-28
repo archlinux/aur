@@ -66,7 +66,7 @@ build() {
   -v $PWD:/go/src/github.com/Psiphon-Labs/psiphon-tunnel-core \
   psiclient \
   /bin/bash -c './make.bash linux 64' \
-  ; exit; cd -
+  ; cd -
 }
 
 package() {
