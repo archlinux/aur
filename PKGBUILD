@@ -3,7 +3,7 @@
 _name=pyre-check
 _py=py3
 pkgname=pyre-check-bin
-pkgver=0.0.59
+pkgver=0.0.60
 pkgrel=1
 pkgdesc="Performant type-checking for Python"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 provides=('pyre-check')
 makedepends=('python-pip')
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-none-manylinux1_x86_64.whl")
-sha256sums=('6ce1922c3255c8ba7d62dd07b27be6b4555b4e05304f32e8c6771a9f60b4adb1')
+sha256sums=('76de7d42ffaecc4e6400968d9c8ca8279678c522609a4a5e51eb8e9a303a9202')
 
 package() {
 	_python_version=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")

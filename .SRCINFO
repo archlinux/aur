@@ -1,6 +1,6 @@
 pkgbase = pyre-check-bin
 	pkgdesc = Performant type-checking for Python
-	pkgver = 0.0.59
+	pkgver = 0.0.60
 	pkgrel = 1
 	url = https://pyre-check.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pyre-check-bin
 	makedepends = python-pip
 	depends = python
 	provides = pyre-check
-	source = https://files.pythonhosted.org/packages/py3/p/pyre-check/pyre_check-0.0.59-py3-none-manylinux1_x86_64.whl
-	sha256sums = 6ce1922c3255c8ba7d62dd07b27be6b4555b4e05304f32e8c6771a9f60b4adb1
+	source = https://files.pythonhosted.org/packages/py3/p/pyre-check/pyre_check-0.0.60-py3-none-manylinux1_x86_64.whl
+	sha256sums = 76de7d42ffaecc4e6400968d9c8ca8279678c522609a4a5e51eb8e9a303a9202
 
 pkgname = pyre-check-bin
 
