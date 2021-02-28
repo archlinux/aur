@@ -1,7 +1,7 @@
 # Maintainer: Vojko Pribudić <dmanthing@gmail.com>
 
 pkgname=expressvpn-gui
-pkgver=0.4.7
+pkgver=0.5
 pkgrel=1
 pkgdesc='Unofficial linux GUI for expressvpn CLI (Qt)'
 arch=('x86_64')
