@@ -1,8 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: f3fora <f3 dot foradori at gmail dot com>
 
 pkgname=python-rmrl
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="reMarkable Rendering Library"
 arch=(any)
 url="https://github.com/rschroll/rmrl/"
@@ -10,9 +11,9 @@ license=('GPL')
 depends=('python-pdfrw' 'python-reportlab' 'python-svglib')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/r/rmrl/rmrl-$pkgver.tar.gz"
-        "xdg.py::https://raw.githubusercontent.com/srstevenson/xdg/5.0.1/src/xdg/__init__.py")
-sha256sums=('8c8e757af5ca3eb7475f56803f7f37256fe4c5cad3a9ea5ad7534b2ebd172447'
-            '93a5ba17785c5e00d24ebd0e148d36470076c03fa16cf7e9a113a7d8fb1bceba')
+    "xdg.py::https://raw.githubusercontent.com/srstevenson/xdg/5.0.1/src/xdg/__init__.py")
+sha256sums=('ea7def68841e21a0f716a71dcb809ee9460a6876253601fe0e51bbcc69e7414f'
+    '93a5ba17785c5e00d24ebd0e148d36470076c03fa16cf7e9a113a7d8fb1bceba')
 
 build() {
     cd "$srcdir"/rmrl-$pkgver
