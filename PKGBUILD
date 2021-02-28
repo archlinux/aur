@@ -1,7 +1,7 @@
 # Maintainer: blacktemplar (blacktemplar@a1.net)
 pkgname=vyper-git
 _pkgname=vyper
-pkgver=v0.1.0_beta.9
+pkgver=v0.2.11
 pkgrel=1
 pkgdesc="Pythonic Smart Contract Language for the EVM"
 arch=('any')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git tag | tail -n1 | sed 's/\([^-]*-g\)/r\1/;s/-/_/g'
+  git tag --sort=version:refname | tail -n1 | sed 's/\([^-]*-g\)/r\1/;s/-/_/g'
 }
 
 package(){
