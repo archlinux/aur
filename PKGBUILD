@@ -42,8 +42,8 @@ fi
 
 _name=alice-vision
 pkgname=${_name}
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
@@ -55,12 +55,10 @@ makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-l
 source=("${pkgname}_${pkgver}.tgz::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
-        "FindOpenGV.cmake.patch"
 )
-sha256sums=('40a4e753197cccf0cf00ca74a4bbcf610d5bd4fc2b908abd19f6b060602206f7'
+sha256sums=('39dcf4bb0a7cb1d0ba234b4ec2de6d245a83ac21846585de3156b37b82d3066b'
             'SKIP'
-            'SKIP'
-            '2740fc6890a62f74367df357e132dc95bcd276528d828d51d66c4689e183ceec')
+            'SKIP')
 
 prepare() {
   cd "${srcdir}"/AliceVision-${pkgver}
@@ -69,8 +67,6 @@ prepare() {
   cp -r "${srcdir}"/nanoflann src/dependencies/nanoflann
   #fix missing submodule warning.
   mkdir src/dependencies/osi_clp/CoinUtils
-  #patch FindOpenGV.cmake to use Eigen3 instear of Eigen
-  patch -Np1 -i "$srcdir"/FindOpenGV.cmake.patch
 }
 
 
