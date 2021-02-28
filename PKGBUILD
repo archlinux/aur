@@ -34,12 +34,12 @@ prepare() {
 
 build() {
   arch-meson fontconfig build \
-    -D doc=false \
-    -D doc-txt=false \
-    -D doc-man=false \
-    -D doc-pdf=false \
-    -D doc-html=false \
-    -D tests=false
+    -D doc=disabled \
+    -D doc-txt=disabled \
+    -D doc-man=disabled \
+    -D doc-pdf=disabled \
+    -D doc-html=disabled \
+    -D tests=disabled
   meson compile -C build
 }
 
@@ -55,7 +55,6 @@ package_fontconfig-minimal-git() {
   install=fontconfig.install
   backup=(etc/fonts/fonts.conf)
 
-  cd fontconfig
   DESTDIR="$pkgdir" meson install -C build
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
