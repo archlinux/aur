@@ -1,0 +1,30 @@
+pkgbase = rpm-tools-git
+	pkgdesc = RPM Package Manager
+	pkgver = r17189.gf9b90179b
+	pkgrel = 1
+	url = https://rpm.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = elfutils
+	depends = file
+	depends = libarchive
+	depends = libcap
+	depends = lmdb
+	depends = lua
+	depends = nss
+	depends = popt
+	depends = zstd
+	provides = rpm-tools
+	provides = rpmextract
+	conflicts = rpm-tools
+	conflicts = rpmextract
+	source = git+https://github.com/rpm-software-management/rpm.git
+	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/rpm-tools/trunk/rpmextract.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rpm-tools-git
+
