@@ -1,7 +1,7 @@
 pkgbase = gitin
 	pkgdesc = Commit/branch/workdir explorer for git
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isacikgoz/gitin
 	arch = x86_64
 	license = BSD
