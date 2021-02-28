@@ -12,10 +12,6 @@ source=("https://github.com/ereborstudios/smaug/releases/download/v${pkgver}/sma
 noextract=()
 sha512sums=('1676c17e7a582e9a83738735751608cb402c9225928715c30c53c0589d1e0e4e043c4629446635700de7e2ea614e3c76fef431057a6f62f807c36140122e16ca')
 
-pkgver() {
-  git describe --tags main | cut -d- -f1 | sed 's/^v//'
-}
-
 package() {
   cd $srcdir
   install -Dm755 "${pkgname}-linux" "${pkgdir}/usr/bin/${pkgname}"
