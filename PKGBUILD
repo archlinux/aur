@@ -4,10 +4,10 @@
 
 pkgname=qomp
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Quick(Qt) Online Music Player"
 arch=(i686 x86_64)
-url="https://qomp.sourceforge.net/"
+url="https://github.com/qomp/qomp"
 license=(GPL2)
 depends=(taglib qt5-base qt5-x11extras
          qt5-multimedia qt5-xmlpatterns
