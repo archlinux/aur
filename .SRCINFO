@@ -1,0 +1,16 @@
+pkgbase = gswitch-git
+	pkgdesc = Script and service to easily switch between eGPU and internal graphics
+	pkgver = r40.8534934
+	pkgrel = 1
+	url = https://github.com/karli-sjoberg/gswitch
+	arch = any
+	license = BSD 3-Clause License Revised
+	makedepends = git
+	depends = bash>=4.0
+	provides = gswitch
+	conflicts = gswitch
+	source = gswitch-git::git+https://github.com/karli-sjoberg/gswitch
+	md5sums = SKIP
+
+pkgname = gswitch-git
+
