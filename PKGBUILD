@@ -1,5 +1,5 @@
 # Contributor: Jamie Beardslee
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>, Mingde (Matthew) Zeng <matthewzmd@posteo.net>
 
 pkgname=emacs-application-framework-git
 pkgver=r1836.0314c06
