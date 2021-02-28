@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('ocaml' 'speex' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-speex/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
