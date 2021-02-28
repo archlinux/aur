@@ -1,7 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-pkgname=mop-git
-pkgver=v0.2.0.r89.g570a5d6
+_pkgname=mop
+pkgname=${_pkgname}-git
+pkgver=195.570a5d6
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,27 +10,35 @@ url='https://github.com/mop-tracker/mop'
 license=('MIT')
 makedepends=('git' 'go')
 options=('!strip' '!emptydirs')
-_gourl="github.com/mop-tracker/mop"
-
-prepare() {
-  GOPATH="${srcdir}" go get -fix -v -x ${_gourl}
-}
+source=("${_pkgname}"::"git+https://github.com/mop-tracker/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/src/${_gourl}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${_pkgname}"
+  go mod init github.com/mop-tracker/${_pkgname}
+  go mod tidy
 }
 
 build() {
-  GOPATH="${srcdir}" go install -v -gcflags "all=-trimpath=${srcdir}" \
-    -asmflags "all=-trimpath=${srcdir}" -x ${_gourl}/cmd/mop
+  cd "${_pkgname}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  _LDFLAGS="-X main.version=$(git rev-list --count HEAD) -X main.branch=master -X main.commit=$(git rev-parse HEAD) -extldflags ${LDFLAGS}"
+  go build -o mop -ldflags="${_LDFLAGS}" "./cmd/..."
 }
 
 package() {
   # binary
-  install -D -m755 "${srcdir}/bin/mop" "${pkgdir}/usr/bin/mop"
+  install -D -m755 "${srcdir}/${_pkgname}/mop" "${pkgdir}/usr/bin/mop"
 
   # docs
-  install -D -m644 "${srcdir}/src/${_gourl}/README.md" \
+  install -D -m644 "${srcdir}/${_pkgname}/README.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
