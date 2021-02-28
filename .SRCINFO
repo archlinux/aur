@@ -1,6 +1,6 @@
 pkgbase = gowitness
 	pkgdesc = a golang, web screenshot utility using Chrome Headless
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/sensepost/gowitness
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = gowitness
 	license = GPL3
 	makedepends = go
 	depends = chromium
-	source = gowitness-2.3.1.tar.gz::https://github.com/sensepost/gowitness/archive/2.3.1.tar.gz
-	sha256sums = 8095cb0857a8e5546705dc5d2e344361c9be8b8a0cf56c89089b0a1301848812
+	source = gowitness-2.3.2.tar.gz::https://github.com/sensepost/gowitness/archive/2.3.2.tar.gz
+	sha256sums = c3541d36ff3cb88f7e5022a7dd67b0dd33461b99c7f344a0fa90de95696137ed
 
 pkgname = gowitness
 
