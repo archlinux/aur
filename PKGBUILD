@@ -1,8 +1,8 @@
 # Maintainer: Enes Hecan <nshecan@gmail.com>
 
 pkgname='whatsapp-for-linux'
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.4
+pkgrel=0
 pkgdesc="An unofficial WhatsApp desktop application for linux"
 url="https://github.com/eneshecan/whatsapp-for-linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 provides=('whatsapp-for-linux')
 conflicts=('whatsapp-for-linux')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('050daeec0d37cc40db6c7abcf36d386e')
+md5sums=('3bf9c9e762c13ae85af616c537de9588')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
