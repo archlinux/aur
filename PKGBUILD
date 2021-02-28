@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=be7d4710850020de55bce930c83fa80347c02fc3
+_arch_config_commit=7398961ba1f96e302ee0977895f6b53babf67a52
 _bmqversion=5.11-r0
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
@@ -43,26 +43,24 @@ source=(
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
   "0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/sphinx-workaround.patch"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=09c2db93ed0eb09d84273c16e830156e2307e345"
-  "0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch::https://git.archlinux.org/linux.git/patch/?id=256a94104013ecb3cc8b1ed5604d201a10126a6e"
-  "0003-Revert-drm-amd-display-reuse-current-context-instead.patch::https://git.archlinux.org/linux.git/patch/?id=d7bab9454d82f65ece35819015ffc85b485b6025"
-  "0004-drm-amdgpu-fix-shutdown-with-s0ix.patch::https://git.archlinux.org/linux.git/patch/?id=2f9e39653193621bac38a1ef3da56796d5921474"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=2aef6c5fe88b92e9f611ec0b04ab8e023e943cd8"
+  "0002-Revert-drm-amd-display-reuse-current-context-instead.patch::https://git.archlinux.org/linux.git/patch/?id=66128e7bf7011076ebe47fa5d4b18faad8244c5d"
+  "0003-drm-amdgpu-fix-shutdown-with-s0ix.patch::https://git.archlinux.org/linux.git/patch/?id=04ec031772dd6faf64506c739ce7073b0f91310b"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('a585aa07b5e577bddc8c54086900be6ef768ee71687bcafdb770eef40a3c5aa24ce40ca49d4231645ce3fa2787f8527f68cd5c9fb1f0947c511c759cba957471'
+b2sums=('62f47c769998fa713cda9024a4ecbe7ba2140acde629082630c2c0b076b4e941b0a1e82f7d2b7cd4ed6e84759ea93de78e212ecbe1341d9055091d26d83286dc'
         'SKIP'
         'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
         '0658ad7ebad50244742a928b0c2e8ce090a55c5ba342b5c5ebd7ea079efdaf7e280effbb609856d975a067f84d9b6be95f6ccce3e647e96de9cd9ba6f29113e0'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         'db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb'
-        'ef535b3b169d479703794d3fff87c3ff7d12ea04e58c306e98354e18da1364d483980ba47403ebc3ec517fce2bd3b039454d0daef2ab3efbe70c2811c67c7e45'
-        '7979c88b3b9bb985ee6a851f25145045a1b0d264a18af3c8ca791bc890fabf84f8c38e2dec4eab859ab45a92396168286d631d0f0626552e9ee6687683b6b9ff'
-        '10bbfe958a8528fce93c6fc61e1efc8fa87c7e3d19488b37c8df1532bcb68e1764525a05ca892225b7415bbfd2a935fab14d6facc4b27dd951aff0921e9a4749'
-        'd35a30cb5a4521bb19194508eb0ac2a086a83893615ad17ae31e1f5727a508eda21d8f7fd176e2f872eaf4a1505c33d72e2731fd53d126b2b4f26b4dc7da0bca')
+        '060669dd9bca4eb3949ec9166e3be9403ad69b4670b5693089e2df91f35e420c75b9516d4843fe610c91dc3326f4c6e23fa3ebf8f052465fd4b0f48e261ec44b'
+        '95a2ed8aa9609a2b5427804dfebba92a1caeb1f24cecba4c0b4c32f646c9e77b672195e1b2958ee52ade9160704d32c7130a6c5e94b6c39a401ab1b286f31a8f'
+        'c8bca11b7edba88cc246cc641265bb7edaf7c4b0363921165f98ebfb4263a2501bbd65e16666c763a9ed8ba6211a24c34d2cc801c95ab2cbcc6880b5a9d07e05')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
