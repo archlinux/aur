@@ -1,6 +1,6 @@
 pkgbase = optimus-manager-git
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops (Git version)
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
@@ -12,15 +12,16 @@ pkgbase = optimus-manager-git
 	depends = python-dbus
 	depends = mesa-demos
 	depends = xorg-xrandr
-	depends = python-py3nvml
-	depends = python-psutil
 	optdepends = bbswitch: alternative power switching method
 	optdepends = acpi_call: alternative power switching method
 	optdepends = xf86-video-intel: provides the Xorg intel driver
-	provides = optimus-manager=1.3
+	provides = optimus-manager=1.4
 	conflicts = optimus-manager
-	backup = etc/optimus-manager/xorg-integrated-gpu.conf
-	backup = etc/optimus-manager/xorg-nvidia-gpu.conf
+	backup = etc/optimus-manager/xorg/integrated-mode/integrated-gpu.conf
+	backup = etc/optimus-manager/xorg/nvidia-mode/integrated-gpu.conf
+	backup = etc/optimus-manager/xorg/nvidia-mode/nvidia-gpu.conf
+	backup = etc/optimus-manager/xorg/hybrid-mode/integrated-gpu.conf
+	backup = etc/optimus-manager/xorg/hybrid-mode/nvidia-gpu.conf
 	backup = etc/optimus-manager/xsetup-integrated.sh
 	backup = etc/optimus-manager/xsetup-nvidia.sh
 	backup = etc/optimus-manager/xsetup-hybrid.sh

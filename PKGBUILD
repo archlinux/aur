@@ -1,7 +1,7 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 
 pkgname=optimus-manager-git
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
 arch=('any')
@@ -9,14 +9,16 @@ url="https://github.com/Askannz/optimus-manager"
 license=('MIT')
 conflicts=("optimus-manager")
 provides=("optimus-manager=$pkgver")
-depends=('python3' 'python-setuptools' 'python-dbus' 'mesa-demos' 'xorg-xrandr'
-         'python-py3nvml' 'python-psutil')
+depends=('python3' 'python-setuptools' 'python-dbus' 'mesa-demos' 'xorg-xrandr')
 optdepends=('bbswitch: alternative power switching method'
             'acpi_call: alternative power switching method'
             'xf86-video-intel: provides the Xorg intel driver')
 makedepends=('python-setuptools' 'git')
-backup=('etc/optimus-manager/xorg-integrated-gpu.conf'
-        'etc/optimus-manager/xorg-nvidia-gpu.conf'
+backup=('etc/optimus-manager/xorg/integrated-mode/integrated-gpu.conf'
+        'etc/optimus-manager/xorg/nvidia-mode/integrated-gpu.conf'
+        'etc/optimus-manager/xorg/nvidia-mode/nvidia-gpu.conf'
+        'etc/optimus-manager/xorg/hybrid-mode/integrated-gpu.conf'
+        'etc/optimus-manager/xorg/hybrid-mode/nvidia-gpu.conf'
 
         'etc/optimus-manager/xsetup-integrated.sh'
         'etc/optimus-manager/xsetup-nvidia.sh'
@@ -54,12 +56,17 @@ package() {
   install -Dm644 optimus-manager.conf "$pkgdir/usr/share/optimus-manager.conf"
   
   install -Dm644 systemd/logind/10-optimus-manager.conf "$pkgdir/usr/lib/systemd/logind.conf.d/10-optimus-manager.conf"
+  install -Dm755 systemd/suspend/optimus-manager.py "$pkgdir/usr/lib/systemd/system-sleep/optimus-manager.py"
+  
   
   install -Dm644 login_managers/sddm/20-optimus-manager.conf "$pkgdir/etc/sddm.conf.d/20-optimus-manager.conf"
   install -Dm644 login_managers/lightdm/20-optimus-manager.conf  "$pkgdir/etc/lightdm/lightdm.conf.d/20-optimus-manager.conf"
   
-  install -Dm644 config/xorg-integrated-gpu.conf "$pkgdir/etc/optimus-manager/xorg-integrated-gpu.conf"
-  install -Dm644 config/xorg-nvidia-gpu.conf "$pkgdir/etc/optimus-manager/xorg-nvidia-gpu.conf"
+  install -Dm644 config/xorg/integrated-mode/integrated-gpu.conf "$pkgdir/etc/optimus-manager/xorg/integrated-mode/integrated-gpu.conf"
+  install -Dm644 config/xorg/nvidia-mode/nvidia-gpu.conf "$pkgdir/etc/optimus-manager/xorg/nvidia-mode/nvidia-gpu.conf"
+  install -Dm644 config/xorg/nvidia-mode/integrated-gpu.conf "$pkgdir/etc/optimus-manager/xorg/nvidia-mode/integrated-gpu.conf"
+  install -Dm644 config/xorg/hybrid-mode/integrated-gpu.conf "$pkgdir/etc/optimus-manager/xorg/hybrid-mode/integrated-gpu.conf"
+  install -Dm644 config/xorg/hybrid-mode/nvidia-gpu.conf "$pkgdir/etc/optimus-manager/xorg/hybrid-mode/nvidia-gpu.conf"
   
   install -Dm755 config/xsetup-nvidia.sh "$pkgdir/etc/optimus-manager/xsetup-nvidia.sh"
   install -Dm755 config/xsetup-hybrid.sh "$pkgdir/etc/optimus-manager/xsetup-hybrid.sh"
