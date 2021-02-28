@@ -1,16 +1,26 @@
 pkgbase = ruby-puma
 	pkgdesc = A Ruby/Rack web server built for concurrency
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://puma.io/
-	arch = any
+	arch = x86_64
 	license = BDS-3-CLAUSE
 	makedepends = git
+	makedepends = ruby-bundler
+	makedepends = ruby-minitest
+	makedepends = ruby-minitest-proveit
+	makedepends = ruby-minitest-retry
+	makedepends = ruby-minitest-stub-const
+	makedepends = ruby-rack
 	makedepends = ruby-rake
+	makedepends = ruby-rake-compiler
+	makedepends = ruby-rdoc
 	depends = ruby
+	depends = ruby-nio4r
+	depends = ruby-sd_notify
 	options = !emptydirs
-	source = ruby-puma-5.2.1::git+https://github.com/puma/puma.git#tag=v5.2.1
-	sha512sums = SKIP
+	source = ruby-puma-5.2.1.tar.gz::https://github.com/puma/puma/archive/v5.2.1/puma-v5.2.1.tar.gz
+	sha512sums = 8ec1a351badd68ce6559eb99592e3f4d836ca49406749a6c2cd9162c443eadf3b4cf24ceb6c92e0e27057217f6487ff9923888ff4a1590f8cf9061d06ec16e52
 
 pkgname = ruby-puma
 
