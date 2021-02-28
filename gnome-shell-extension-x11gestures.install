@@ -1,0 +1,10 @@
+post_install() {
+    cat << EOF
+    
+[gnome-shell-extension-x11gestures] Remember to start and enable touchegg:
+    $ sudo systemctl enable touchegg
+    $ sudo systemctl start touchegg
+
+EOF
+
+}

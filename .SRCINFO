@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-x11gestures
+	pkgdesc = Enable GNOME Shell multi-touch gestures on X11
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/JoseExposito/gnome-shell-extension-x11gestures
+	install = gnome-shell-extension-x11gestures.install
+	arch = any
+	license = GPL
+	depends = touchegg
+	noextract = x11gestures@joseexposito.github.io.zip
+	source = https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/1/x11gestures@joseexposito.github.io.zip
+	sha256sums = 8389378b48f67e2510db582da4dfa3d97a5653f224a2695f32c740577c44bf51
+
+pkgname = gnome-shell-extension-x11gestures
+
