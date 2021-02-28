@@ -1,0 +1,18 @@
+pkgbase = a7xpg
+	pkgdesc = Old school chase action game 'A7Xpg'
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://www.asahi-net.or.jp/~cs8k-cyu/windows/a7xpg_e.html
+	arch = x86_64
+	license = custom
+	depends = libbulletml
+	depends = gcc-d
+	depends = sdl
+	depends = sdl_mixer
+	source = http://ftp.debian.org/debian/pool/main/a/a7xpg/a7xpg_0.11.dfsg1.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/a/a7xpg/a7xpg_0.11.dfsg1-10.debian.tar.xz
+	md5sums = b6c5d00863220d3a833cfbc97e3f7e24
+	md5sums = 21a2cd76a70d99a48fd9bf81b0aff5c7
+
+pkgname = a7xpg
+
