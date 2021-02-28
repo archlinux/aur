@@ -1,17 +1,18 @@
 pkgbase = ocaml-alsa
 	pkgdesc = OCaml ALSA bindings
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/savonet/ocaml-alsa
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = ocaml-findlib
 	makedepends = dune
 	depends = ocaml
 	depends = alsa-lib
 	options = !strip
 	options = !makeflags
-	source = https://github.com/savonet/ocaml-alsa/archive/8ffe8abc1cb4907c6be801c5af32a41defaefe54.tar.gz
+	source = https://github.com/savonet/ocaml-alsa/archive/.tar.gz
 	sha256sums = fda8ba6dcfcf25b9aa402a1fe13f7d829e28c4436258bf8da6cf3bf43f3c3bb1
 
 pkgname = ocaml-alsa
