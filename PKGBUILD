@@ -2,7 +2,7 @@
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=redasm-beta
-_pkgver=3.0.0-beta3
+_pkgver=3.0.0-beta4
 pkgver=${_pkgver//-/.}
 pkgrel=1
 url="https://github.com/REDasmOrg/REDasm"

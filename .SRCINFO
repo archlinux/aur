@@ -1,6 +1,6 @@
 pkgbase = redasm-beta
 	pkgdesc = The OpenSource Disassembler
-	pkgver = 3.0.0.beta3
+	pkgver = 3.0.0.beta4
 	pkgrel = 1
 	url = https://github.com/REDasmOrg/REDasm
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = redasm-beta
 	depends = qt5-base
 	provides = redasm
 	conflicts = redasm
-	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v3.0.0-beta3
+	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v3.0.0-beta4
 	source = git+https://github.com/REDasmOrg/REDasm-Library.git
 	source = git+https://github.com/REDasmOrg/REDasm-Plugins.git
 	source = git+https://github.com/REDasmOrg/REDasm-Loaders.git
