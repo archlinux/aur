@@ -2,10 +2,11 @@ pkgname=grapejuice-git
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
 pkgver=2.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
+makedepends=('git')
 depends=(
     'python-pip'
     'python-gobject'
