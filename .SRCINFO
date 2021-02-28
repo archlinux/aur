@@ -1,12 +1,12 @@
 pkgbase = firn-bin
 	pkgdesc = Static site generator for org-mode
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/theiceshelf/firn
 	arch = x86_64
 	license = EPL
-	source = firn-bin-0.0.12::https://github.com/theiceshelf/firn/releases/download/v0.0.12/firn-linux.zip
-	md5sums = 58d968867ebb65805cdb01acf6d84eaf
+	source = firn-bin-0.0.13::https://github.com/theiceshelf/firn/releases/download/v0.0.13/firn-linux.zip
+	md5sums = 900cd458802922e8dcb0c9df0c7f41a4
 
 pkgname = firn-bin
 
