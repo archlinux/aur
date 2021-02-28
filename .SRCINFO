@@ -21,6 +21,7 @@ pkgbase = telegram-desktop-wide
 	depends = xxhash
 	depends = libdbusmenu-qt5
 	depends = rlottie-tdesktop
+	depends = kwayland
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
