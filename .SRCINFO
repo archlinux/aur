@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-status-area-horizontal-spacing
 	pkgdesc = This is a GNOME shell extension that reduces the horizontal spacing between status area icons (top-right of the panel: volume indicator, etc).
-	pkgver = 2.4.2
-	pkgrel = 0
+	pkgver = 2.6
+	pkgrel = 1
 	url = https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-extension
 	arch = any
 	license = unknow
 	depends = gnome-shell
-	source = git+https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-extension.git#tag=v2.4.2
+	source = git+https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-extension.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-status-area-horizontal-spacing
