@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Lubosz <lubosz at gmail dot com>
 pkgname=planner-git
-pkgver=0.14.6.r159.d8906b1
-pkgrel=1
+pkgver=0.14.6.r166.de43d65
+pkgrel=2
 pkgdesc="A project management tool for planning, scheduling and tracking projects."
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Planner"
 license=('GPL')
 depends=('libgnomecanvas' 'gnome-vfs' 'libxslt' 'pygtk')
 makedepends=('git' 'gnome-common' 'rarian')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'libplanner-1.so')
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/GNOME/planner.git')
 sha256sums=('SKIP')
@@ -29,14 +29,22 @@ build() {
 	export PYTHON=/usr/bin/python2
 	export CFLAGS=-Wno-error
 
-	./autogen.sh --prefix=/usr --disable-update-mimedb
-	./configure
-	make prefix=/usr
+	NOCONFIGURE=1 ./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--disable-python \
+		--disable-gtk-doc \
+		--disable-dotnet \
+		--disable-update-mimedb \
+		--disable-eds-backend \
+		--disable-eds \
+		--disable-static
+	make
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" prefix=/usr install
+	make DESTDIR="$pkgdir/" install
 
 	# Remove conflicting files
 	cd "$pkgdir/usr/share/mime"

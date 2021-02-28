@@ -1,7 +1,7 @@
 pkgbase = planner-git
 	pkgdesc = A project management tool for planning, scheduling and tracking projects.
-	pkgver = 0.14.6.r159.d8906b1
-	pkgrel = 1
+	pkgver = 0.14.6.r166.de43d65
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Planner
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = planner-git
 	depends = libxslt
 	depends = pygtk
 	provides = planner
+	provides = libplanner-1.so
 	conflicts = planner
 	source = git+https://gitlab.gnome.org/GNOME/planner.git
 	sha256sums = SKIP
