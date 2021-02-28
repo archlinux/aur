@@ -2,9 +2,9 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Based on the PKGBUILD created by Zeph <zeph33@gmail.com>
 
-pkgname=('pamac-aur-git') #'pamac-aur-tray-appindicator-git')
+pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=10.0.4.r0.ga61817b
+pkgver=10.0.4.r4.ga08d9ae
 _pkgver=10.0.4
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
