@@ -1,4 +1,4 @@
-# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Maintainer: Stephan Springer <buzo+arch (at) Lini (dot) de>
 # Contributor: Kostis Karantias <kkarantias [at] gmail [dot] com>
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Bastien Traverse <firstname at lastname dot email>
@@ -16,12 +16,12 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
 url="https://popcorntime.app/"
 license=('GPL3')
-depends=('nss' 'ttf-font' 'libxss' 'gtk2' 'gtk3')
+depends=('nss' 'ttf-font' 'libxss' 'gtk3')
 makedepends=('unzip')
 provides=('popcorntime' 'popcorntime-ce')
 conflicts=('popcorntime' 'popcorntime-ce')
