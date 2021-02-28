@@ -40,7 +40,7 @@ build() {
     -D doc-pdf=disabled \
     -D doc-html=disabled \
     -D tests=disabled
-  ninja $NINJAFLAGS  -C build
+  ninja $NINJAFLAGS -C build
 }
 
 #check() {
