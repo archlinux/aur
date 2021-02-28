@@ -2,7 +2,7 @@
 
 pkgname=xash3d-fwgs-git
 pkgver=r1354.3b192ca
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom GoldSrc engine implementation"
 arch=('x86_64')
 url="http://xash.su/"
@@ -12,6 +12,8 @@ depends_x86_64=('lib32-freetype2' 'lib32-fontconfig' 'lib32-libpulse' 'lib32-sdl
 makedepends=('make' 'binutils' 'python')
 makedepends_i686=('gcc' 'gcc-libs')
 makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
+provides=('xash3d')
+conflicts=('xash3d-hlsdk' 'xash3d-git')
 source=("$pkgname::git+https://github.com/FWGS/xash3d-fwgs" xash3d xash3d.conf)
 backup=('etc/conf.d/xash3d')
 md5sums=('SKIP' '0c88bd258675e48990e14b2a60cbac5c' 'fe2b8c7e787544f382176cde5013824f')
