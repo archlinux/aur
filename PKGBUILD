@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='da9adbd6ebff4287a41d04653bafa6fb' # dr 16.1b3
-_referid='d68638d848fe45639be3b601cdd3e677'
+_downloadid='a4cb18497c244216bfa00821ea221edd' # dr 16.1b3
+_referid='6e6dfbd0bd974a6d96096aed7a4dbb73'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -17,16 +17,14 @@ _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         Safari/537.36"
 
 _reqjson="{ \
-    \"platform\": \"Linux\", \
-    \"country\": \"us\", \
     \"firstname\": \"Arch\", \
     \"lastname\": \"Linux\", \
     \"email\": \"someone@archlinux.org\", \
     \"phone\": \"202-555-0194\", \
+    \"country\": \"us\", \
     \"state\": \"New York\", \
     \"city\": \"AUR\", \
-    \"hasAgreedToTerms\": true, \
-    \"product\": \"Desktop Video ${pkgver} SDK\" \
+    \"product\": \"DaVinci Resolve Studio\" \
 }"
 
 _reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
@@ -64,7 +62,7 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve-studio-beta
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=17.0b8
+pkgver=17.0b10
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -80,13 +78,13 @@ if [ ${pkgname} == "davinci-resolve-studio-beta" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('abbcf2538ab4838143e644790aa2a23961cdfa6df9709c130da24dad9910408c')
+	sha256sums=('2ba87b301c303cbc3850a17c90181b6b403464b3a9e8683ad86120a6bb4c85b8')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('ce03adef3a8052562f8f039e007f861c338fec8fe5b8d0dbeb64b59cf9aaf974')
+	sha256sums=('ac6059a4c6163fc1fd4e5fb176befc0dfb9536142137c18d2810676b71144778')
 	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 fi
 
