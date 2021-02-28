@@ -1,12 +1,12 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=1.2.0.r0.190b46e
+pkgver=1.2.0.r1.eff6051
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
-optdepends=('libappindicator-gtk3: indicator support'
+optdepends=('kime-window: indicator, hanja, emoji support'
             'gtk2: gtk2 support'
             'gtk3: gtk3 support'
             'gtk4: gtk4 support'

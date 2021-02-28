@@ -1,6 +1,6 @@
 pkgbase = kime-git
 	pkgdesc = Korean IME
-	pkgver = 1.2.0.r0.190b46e
+	pkgver = 1.2.0.r1.eff6051
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = kime-git
 	makedepends = cmake
 	makedepends = cairo
 	makedepends = libxcb
-	optdepends = libappindicator-gtk3: indicator support
+	optdepends = kime-window: indicator, hanja, emoji support
 	optdepends = gtk2: gtk2 support
 	optdepends = gtk3: gtk3 support
 	optdepends = gtk4: gtk4 support
