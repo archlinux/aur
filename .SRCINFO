@@ -1,0 +1,24 @@
+pkgbase = ponomar-git
+	pkgdesc = Ponomar is a fully-functional program suite for the Orthodox Church
+	pkgver = r918.59c46fd3c
+	pkgrel = 1
+	url = https://github.com/typiconman/ponomar.git
+	install = ponomar.install
+	arch = any
+	license = GPL-3.0
+	depends = java-runtime
+	depends = texinfo
+	provides = ponomar
+	conflicts = ponomar
+	replaces = ponomar
+	source = ponomar::git+https://github.com/typiconman/ponomar.git
+	source = ponomar.desktop
+	source = ponomar.sh
+	source = ponomar.png
+	md5sums = SKIP
+	md5sums = e45995e6c6cb6122bb36ca9cf53c6641
+	md5sums = 47b1fb0d4be2af9f867a52747bb7b703
+	md5sums = d8b4f7dd400cd7240ec63c8bcaddaec6
+
+pkgname = ponomar-git
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Ponomar Project
+Comment=Ponomar Project
+Exec=ponomar
+Icon=ponomar.png
+Type=Application
+Terminal=false
+Categories=Office;

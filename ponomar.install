@@ -1,0 +1,23 @@
+# Colors
+note() {
+    printf "${BLUE}==>${ALL_OFF}${BOLD} NOTE:${ALL_OFF} ${1}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+GREEN="${BOLD}$(tput setaf 2)"
+
+
+post_install() {
+  echo ""
+  note "You can find more information on the following resources:"
+  note "    https://ponomar.net"
+  note "    https://github.com/typiconman/ponomar/"
+  echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
