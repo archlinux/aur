@@ -1,14 +1,15 @@
-# Maintainer: Miguel de Val-Borro <miguel.deval [at] gmail [dot] com>
+# Contributor: Miguel de Val-Borro <miguel.deval [at] gmail [dot] com>
 # Contributor: Matteo Paoluzzi <duwath [at] gmail [dot] com>
 # Contributor: jmf <jmf [at] mesecons [dot] net>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xephem
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="http://www.clearskyinstitute.com/xephem/xephem.html"
-license=('custom')
+license=('custom:MIT')
 depends=('libxmu' 'openmotif' 'perl' 'openssl')
 source=("http://www.clearskyinstitute.com/xephem/$pkgname-$pkgver.tgz"
 	"http://www.clearskyinstitute.com/xephem/contrib/xephem-3.7.7_openssl.patch"
@@ -34,23 +35,23 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}/GUI/$pkgname
-  install -Dm755  ${srcdir}/${pkgname}-${pkgver}/GUI/$pkgname/xephem "$pkgdir"/usr/bin/$pkgname
+  install -Dm755  "$srcdir"/${pkgname}-${pkgver}/GUI/$pkgname/xephem "$pkgdir"/usr/bin/$pkgname
   
   install -d "$pkgdir"/usr/share/$pkgname
 
-  cp -R auxil    ${pkgdir}/usr/share/$pkgname/
-  cp -R catalogs ${pkgdir}/usr/share/$pkgname/
-  cp -R fifos    ${pkgdir}/usr/share/$pkgname/
-  cp -R fits     ${pkgdir}/usr/share/$pkgname/
-  cp -R gallery  ${pkgdir}/usr/share/$pkgname/
-  cp -R help     ${pkgdir}/usr/share/$pkgname/
-  cp -R lo       ${pkgdir}/usr/share/$pkgname/
+  cp -R auxil    "$pkgver"/usr/share/$pkgname/
+  cp -R catalogs "$pkgver"/usr/share/$pkgname/
+  cp -R fifos    "$pkgver"/usr/share/$pkgname/
+  cp -R fits     "$pkgver"/usr/share/$pkgname/
+  cp -R gallery  "$pkgver"/usr/share/$pkgname/
+  cp -R help     "$pkgver"/usr/share/$pkgname/
+  cp -R lo       "$pkgver"/usr/share/$pkgname/
 
   install -Dm644 $pkgname.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
 
   install -d "$pkgdir"/usr/share/X11/app-defaults
   echo "XEphem.ShareDir: /usr/share/xephem" > "$pkgdir"/usr/share/X11/app-defaults/XEphem
   
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/Copyright \
-	  "$pkgdir"/usr/share/licenses/$pkgname/Copyright
+  install -Dm644 "$srcdir"/${pkgname}-${pkgver}/Copyright \
+	  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

@@ -1,11 +1,11 @@
 pkgbase = xephem
 	pkgdesc = The Serious Interactive Astronomical Software Ephemeris
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.clearskyinstitute.com/xephem/xephem.html
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:MIT
 	depends = libxmu
 	depends = openmotif
 	depends = perl
