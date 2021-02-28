@@ -1,6 +1,6 @@
 pkgname=ctucx-gallery
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://cgit.ctu.cx/gallery/"
 license=('GPL-3')
@@ -17,5 +17,4 @@ build() {
 
 package() {
   install -Dm755 ${srcdir}/gallery-${_commit}/gallery ${pkgdir}/usr/bin/ctucx-gallery
-  install -Dm755 ${srcdir}/gallery-${_commit}/sample.config ${pkgdir}/etc/ctucx-${pkgname}.conf
 }

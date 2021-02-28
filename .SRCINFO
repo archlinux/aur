@@ -1,6 +1,6 @@
 pkgbase = ctucx-gallery
 	pkgver = 0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cgit.ctu.cx/gallery/
 	arch = x86_64
 	license = GPL-3
