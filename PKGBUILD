@@ -1,32 +1,32 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: robertfoster
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-cry
 pkgver=0.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="OCaml native module for icecast/shoutcast source protocol(s)"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-cry"
 license=('GPL')
 depends=('ocaml' 'ocaml-ssl')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'dune')
 options=(!libtool !strip zipman !makeflags staticlibs)
-source=("https://github.com/savonet/ocaml-cry/archive/${pkgver}.tar.gz")
-sha512sums=('43de3513ee2a0f5e5ad496f48137519de270f836081870b48768e45146a4aab84ad7a0781eac56f7b69ce8724a7fd49e7f9fd9d2d771f133aeef2db96d7254af')
+source=("${url}/archive/${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    dune build
+  dune build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    dune install --prefix "${pkgdir}/usr" \
-    --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
 
-    # Install LICENSE
-    mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-    awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
+
+sha256sums=('7b03e88479cc9a5e48729af954168e21e4159ffc61281cde04e108b2fb9e299b')
