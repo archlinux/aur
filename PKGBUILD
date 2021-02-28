@@ -1,29 +1,31 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: robertfoster
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-soundtouch
-pkgver=0.1.8
-pkgrel=3
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="OCaml bindings for the soundtouch audio library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-soundtouch"
 license=('LGPL2.1')
 depends=('ocaml' 'soundtouch')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'dune')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-soundtouch/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f88084c05ef822bea3ccbde9e01700a6')
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    ./configure
-    make
+  dune build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
+
+sha256sums=('53fff10a6a509bc0d08e240117d03594217403f7cc45ebfd4077ade551980485')
