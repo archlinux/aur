@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=watchit
+Exec=electron /opt/watchit/app.asar %U
+Terminal=false
+Type=Application
+Icon=watchit
+StartupWMClass=watchit
+Comment=Watch movies everywhere
+Categories=Video;
