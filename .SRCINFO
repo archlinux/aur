@@ -1,6 +1,6 @@
 pkgbase = atom-editor-git
 	pkgdesc = Hackable text editor for the 21st Century - git channel
-	pkgver = 1.35.0.r2223.g924b06347
+	pkgver = 1.56.0.dev.r365.g924b06347
 	pkgrel = 1
 	url = https://atom.io/
 	arch = x86_64
