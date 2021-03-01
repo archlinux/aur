@@ -1,0 +1,15 @@
+pkgbase = humble-tangledeep-legend-of-shara
+	pkgdesc = DLC for the tangledeep game.
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.humblebundle.com/store/tangledeep-legend-of-shara
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom
+	depends = tangledeep
+	source = Tangledeep_LegendOfShara_Keyfile.zip::humble://Tangledeep_LegendOfShara_Keyfile.zip
+	sha256sums = 0c61be9bc404e28a02c5b08284a2ec3f4b2c97402b939c2214a522bb3b029adc
+
+pkgname = humble-tangledeep-legend-of-shara
+
