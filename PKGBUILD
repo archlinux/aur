@@ -5,7 +5,7 @@
 
 _name=atom
 pkgname=atom-editor-git
-pkgver=1.56.0.dev.r365.g924b06347
+pkgver=1.56.0.dev.r53.g3d5c83be9
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century - git channel'
 arch=('x86_64')
@@ -30,9 +30,18 @@ source=("git+https://github.com/atom/atom.git"
         'symbols-view-use-system-ctags.patch'
         'use-system-apm.patch'
         'use-system-electron.patch')
-==== BASE ====
-sha256sums=('SKIP')
-==== BASE ====
+sha256sums=('SKIP'
+            '6218ecf9a767e80f70a4b07abaefcf63a3d615200ff27b2dbc7bb36eacd8e87f'
+            '530b46d31df0f5e8f5881e1608a66fe75d549092a6db2e72ba3ad69c48714153'
+            'b739d15a3b0964b979b4007a15451358bd5cea6f157ffdd475869907e8943f6c'
+            '2894cce31935d45291c5fe4c625473bb83fc51e1b899f162aa6b419491c7ace1'
+            'e3c30c03006d23a72f07fa77f4309b16a6059af1179343033a87f74f50124076'
+            'e321fdfe880cd465918dd1dbb90e4c7d46fc5310f20666eddf0a41cbca4f8ac8'
+            '40d783794d62f12f3c429c624a84265871c7ed95f4120c9db800348896dd5437'
+            'a09439c2a908ca174ff3be1f0d85071d12c792ae19748e36fe601e372d6d925b'
+            '3c68e6b3751313e1d386e721f8f819fb051351fb2cf8e753b1d773a0f475fef8'
+            '08ae0c93b5ec7eb7d90c65d5d2adbaca538482fba902ed1f8414024db0d21854'
+            '0f809f3d2fb21e83ede312660c9169e239c874b0d7ed39e1c15301f6ce1ea056')
 
 pkgver() {
     cd ${_name}
