@@ -1,0 +1,19 @@
+pkgbase = xkb-altgr-weur
+	pkgdesc = Keyboard layout based on letter frequencies for 11 Western European languages (English, Danish, Dutch, Finnish, French, German, Italian, Norwegian, Portugese, Spanish and Swedish)
+	pkgver = 1
+	pkgrel = 1
+	url = https://choam.eu/altgr-intl/#weur
+	install = xkb-altgr-weur.install
+	arch = any
+	license = custom
+	depends = xkeyboard-config
+	depends = perl
+	source = https://choam.eu/altgr-intl/altgr-weur
+	source = xkb-altgr-weur.hook
+	source = xkb-altgr-weur
+	md5sums = 88583bd46333be954972888e042000fd
+	md5sums = 68322ffd940f7bec47dae3e4e392eb68
+	md5sums = a8fed725a256ce48f99068b5ce00e375
+
+pkgname = xkb-altgr-weur
+

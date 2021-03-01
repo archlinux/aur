@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = xkeyboard-config
+
+[Action]
+Description = Install altgr-weur keyboard layout
+Exec = /usr/bin/xkb-altgr-weur install
+When = PostTransaction
+Depends = perl

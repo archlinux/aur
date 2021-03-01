@@ -1,0 +1,29 @@
+# Inspired by https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=xkb-qwerty-fr
+# Maintainer: Joël Porquet-Lupine <joel@porquet.org>
+
+_pkgname=altgr-weur
+pkgname=xkb-altgr-weur
+pkgver=1
+pkgrel=1
+pkgdesc="Keyboard layout based on letter frequencies for 11 Western European
+languages (English, Danish, Dutch, Finnish, French, German, Italian, Norwegian,
+Portugese, Spanish and Swedish)"
+arch=('any')
+url="https://choam.eu/altgr-intl/#weur"
+license=('custom')
+depends=('xkeyboard-config' 'perl')
+install=${pkgname}.install
+source=("https://choam.eu/altgr-intl/${_pkgname}"
+        "${pkgname}.hook"
+        "${pkgname}"
+        )
+md5sums=('88583bd46333be954972888e042000fd'
+        '68322ffd940f7bec47dae3e4e392eb68'
+        'a8fed725a256ce48f99068b5ce00e375')
+
+package() {
+    cd "${srcdir}"
+    install -D -m 755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    install -D -m 644 ${pkgname}.hook ${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook
+    install -D -m 644 ${_pkgname} ${pkgdir}/usr/share/X11/xkb/symbols/${_pkgname}
+}

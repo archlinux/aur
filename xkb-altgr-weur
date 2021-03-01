@@ -1,0 +1,165 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+sub process_variant
+{
+	my ($input, $output, $layout, $variant, $cmd) = @_;
+
+	my $line;
+	my $level;
+	my $match;
+
+	open (IN, $input) || return 0;
+	open (OUT, ">$output") || return 0;
+
+	$level = 0;
+	$match = 0;
+	while ($line = <IN>) {
+		if (($line =~ m/<layoutList>/) && ($level eq 0)) { $level++ }
+		if (($line =~ m/<layout>/) && ($level eq 1)) { $level++; }
+
+		if (($line =~ m/<name>$layout<\/name>/) && ($level eq 2)) { $match = 1 }
+
+		if (($line =~ m/<variantList>/) && ($level eq 2)) { $level++ }
+
+		if ($level eq 3) {
+            # Remove command
+            if (($cmd eq "remove") && ($line =~ m/<variant>/)) {
+                # read completely next variant (concat on same line)
+                while ($line !~ m/<\/variant>/) {
+                    my $line_cat;
+                    unless ($line_cat = <IN>) { last } else { $line .= $line_cat }
+                }
+                # correct entry, drop entire line
+                if ($line =~ m/<name>$variant<\/name>/) { $line = '' }
+            }
+            # Add command
+            if (($cmd eq "add") && $match) {
+                # some stuff can be written on the same line after tag, so
+                # remove only tag in $line and still print $line after insertion
+                $line =~ s/<variantList>//;
+                $line =~ s/\n//;
+                print OUT "<variantList>\n";
+
+                print OUT "<variant>\n$variant</variant>\n";
+                $level++;
+            }
+        }
+
+        # Print current line
+		print OUT $line;
+
+		if (($line =~ m/<\/variantList>/) && ($level eq 3)) { $level-- }
+		if (($line =~ m/<\/layout>/) && ($level eq 2)) {
+            $level--;
+            $match = 0;
+        }
+	}
+
+	close(OUT);
+	close(IN);
+
+	return 1;
+}
+
+sub process_xml
+{
+	my ($file, $variant, $variant_xml, $cmd) = @_;
+
+	my $temp = "$file.temp";
+
+	if ( ! -f "$file") { return 0 }
+
+	&process_variant($file, $temp, "us", $variant, "remove") || die("Error configuring '$file'!");
+
+    if ($cmd eq "install") {
+        &process_variant($temp, $file, "us", $variant_xml, "add") || die("Error configuring '$file'!");
+        unlink($temp);
+    }
+    elsif ($cmd eq "uninstall") {
+        unlink($file) && rename($temp, $file);
+    }
+
+	return 1;
+}
+
+my $XKB = "/usr/share/X11/xkb";
+
+my $VARIANT = "altgr-weur";
+my $VARIANT_XML = <<'END_XML';
+<configItem>
+<name>altgr-weur</name>
+<description>English (Western European AltGr dead keys)</description>
+<languageList>
+<iso639Id>dan</iso639Id>
+<iso639Id>nld</iso639Id>
+<iso639Id>eng</iso639Id>
+<iso639Id>fin</iso639Id>
+<iso639Id>fra</iso639Id>
+<iso639Id>deu</iso639Id>
+<iso639Id>ita</iso639Id>
+<iso639Id>nor</iso639Id>
+<iso639Id>por</iso639Id>
+<iso639Id>spa</iso639Id>
+<iso639Id>swe</iso639Id>
+</languageList>
+</configItem>
+END_XML
+
+my ($cmd) = @ARGV;
+$cmd //= "help";    # Default value if undefined
+
+# Deal with symbols file
+if ($cmd eq "install") {
+    # Check that our file exists
+    if ( !-f "$XKB/symbols/$VARIANT") {
+        die("Error: file '$XKB/symbols/$VARIANT' not found!\n");
+    }
+
+    # Remove existing backup file if any
+    if (-f "$XKB/symbols/us.$VARIANT.bak") {
+        unlink("$XKB/symbols/us.qwerty-fr");
+    }
+
+    # Make a backup of "us" file
+    `cp "$XKB/symbols/us" "$XKB/symbols/us.$VARIANT.bak"`;
+
+    # Concat backup "us" file with our file into new "us" file
+    `cat "$XKB/symbols/us.$VARIANT.bak" "$XKB/symbols/$VARIANT" > "$XKB/symbols/us"`;
+}
+elsif ($cmd eq "uninstall")
+{
+    # Restore existing backup file if any
+    if (-f "$XKB/symbols/us.$VARIANT.bak") {
+        rename("$XKB/symbols/us.$VARIANT.bak", "$XKB/symbols/us");
+    }
+}
+else
+{
+    die("usage: $0 install|uninstall\n");
+}
+
+# Deal with evdev
+if (-f "$XKB/rules/evdev.extra.xml") {
+    &process_xml("$XKB/rules/evdev.extras.xml", $VARIANT, $VARIANT_XML, $cmd);
+
+    #https://bugs.launchpad.net/ubuntu/+source/gnome-control-center/+bug/1029979
+    &process_xml("$XKB/rules/evdev.xml", $VARIANT, $VARIANT_XML, $cmd);
+}
+elsif (-f "$XKB/rules/evdev.xml") {
+    &process_xml("$XKB/rules/evdev.xml", $VARIANT, $VARIANT_XML, $cmd);
+}
+
+# Deal with base
+if (-f "$XKB/rules/base.extras.xml") {
+    &process_xml("$XKB/rules/base.extras.xml", $VARIANT, $VARIANT_XML, $cmd);
+}
+elsif (-f "$XKB/rules/base.xml") {
+    &process_xml("$XKB/rules/base.xml", $VARIANT, $VARIANT_XML, $cmd);
+}
+elsif (-f "$XKB/base.xml") {
+    &process_xml("$XKB/base.xml", $VARIANT, $VARIANT_XML, $cmd);
+}
+
