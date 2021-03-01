@@ -1,15 +1,15 @@
 pkgbase = gconf
 	pkgdesc = An obsolete configuration database system
 	pkgver = 3.2.6+11+g07808097
-	pkgrel = 9
+	pkgrel = 10
 	url = https://projects-old.gnome.org/gconf/
 	install = gconf.install
 	arch = x86_64
 	license = LGPL
+	makedepends = git
 	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
-	makedepends = git
 	makedepends = gnome-common
 	depends = libxml2
 	depends = polkit
