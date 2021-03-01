@@ -1,0 +1,22 @@
+pkgbase = st-genghis-git
+	pkgdesc = Simple virtual terminal emulator for X.
+	pkgver = 0.8.4.r29.e77746b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/genghispirate/st
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	optdepends = dmenu: feed urls to dmenu
+	provides = st
+	conflicts = st
+	options = zipman
+	source = git://github.com/genghispirate/st
+	sha1sums = SKIP
+
+pkgname = st-genghis-git
+
