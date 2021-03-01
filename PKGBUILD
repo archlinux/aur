@@ -2,7 +2,7 @@
 
 pkgname=mmg
 pkgver=5.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Anisotropic tetrahedral remesher and moving mesh generator'
 url="http://www.mmgtools.org/"
 license=('GPL')
