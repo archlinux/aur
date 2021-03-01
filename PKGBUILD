@@ -1,7 +1,7 @@
 # Maintainer: Kacper Zybała <zyperpl at gmail dot com>
 
 pkgname=ldtk
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/deepnight/ldtk"
 license=('MIT')
 makedepends=('haxe' 'git' 'nodejs' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deepnight/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d22b38342ae4e43f9779c37f6600b846d82a9376171836488553b2fbf9951af5')
+sha256sums=('cc0d7e19c093b9b298c36301aeecb25c1d5a11259d7feb5c5ae98747433bcba8')
 options=('!strip' 'emptydirs' '!makeflags')
 
 build() {
