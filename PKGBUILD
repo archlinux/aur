@@ -1,7 +1,7 @@
 # Maintainer: Jean Pierre Cimalando <jp-dev@inbox.ru>
 pkgname=smf-dsp-git
 _pkgname=smf-dsp
-pkgver=0.0.0.r242.g97a3b30
+pkgver=0.0.0.r283.gf080e27
 pkgrel=1
 epoch=
 pkgdesc="Advanced MIDI file player, including various chip music synths"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/jpcima/smf-dsp"
 license=('Boost')
 groups=()
-depends=('sdl2' 'sdl2_image' 'libsoundio' 'jack' 'alsa-lib' 'libuv' 'icu' 'xdg-utils')
+depends=('sdl2' 'sdl2_image' 'libsoundio' 'jack' 'alsa-lib' 'libuv' 'glib2' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 checkdepends=()
 optdepends=()
