@@ -1,0 +1,19 @@
+pkgbase = minecraft-server-manager
+	pkgdesc = Manager for multiple Minecraft servers using unit files and a control script
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/HoodedDeath/minecraft-server-manager
+	install = minecraft-server-manager.install
+	arch = any
+	license = MIT
+	depends = docker
+	depends = bash
+	depends = coreutils
+	depends = mcrcon
+	conflicts = minecraft-server
+	backup = etc/minecraft
+	source = minecraft-server-manager-1.3.tar.gz::https://github.com/HoodedDeath/minecraft-server-manager/archive/v1.3.tar.gz
+	sha256sums = 95aacbc021fe508bb1e3854a5747cdff819910639b5f73b662613434554c3e36
+
+pkgname = minecraft-server-manager
+
