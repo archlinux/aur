@@ -5,13 +5,13 @@
 # Contributor: Luis Henrique <lmello.009@gmail.com>
 
 pkgname=ngspice-git
-pkgver=r6966.0ca66abd3
+pkgver=r7276.598751eb8
 pkgrel=1
 pkgdesc='Mixed-level/Mixed-signal circuit simulator based on Spice3f5, Ciber1b1, and Xspice.'
 url='http://ngspice.sourceforge.net'
 license=('BSD')
 arch=('i686' 'x86_64')
-depends=('libxaw' 'libedit' 'gcc-libs')
+depends=('libxaw' 'fftw' 'libxft')
 source=("${pkgname}"::"git+https://git.code.sf.net/p/ngspice/ngspice#branch=master"
         "manual.pdf"::"http://ngspice.sourceforge.net/docs/ngspice-manual.pdf")
 conflicts=("ngspice")
