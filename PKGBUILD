@@ -51,7 +51,7 @@ _major=5.11
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -64,18 +64,21 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
 # To use linux-bfq-dev smoothly apply bfq-reverts before bfq-dev patch.
 # Otherwise the kernel will not compile.
-_bfq_rev_path="bfq-reverts-all"
-_bfq_rev_patch="0001-bfq-reverts.patch"
-_bfq_path="bfq-dev-lucjan"
-_bfq_ver="v14"
-_bfq_rel="r2K210223"
-_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
+#_bfq_rev_path="bfq-reverts-all"
+#_bfq_rev_patch="0001-bfq-reverts.patch"
+#_bfq_path="bfq-dev-lucjan"
+#_bfq_ver="v14"
+#_bfq_rel="r2K210223"
+#_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
+_bfq_path="bfq-lucjan"
+_bfq_rel="r2K210228"
+_bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
@@ -327,8 +330,7 @@ done
 
 sha512sums=('16090ec6dea7a8c417ca7483b296902c9b55b423482ad8a881dffcaae76411806bc9502373efd6a51b0acefec3a44c19c5a7d42c5b76c1321183a4798a5959d3'
             'SKIP'
-            '4dcdc33ed86dac1879432a5d3977ea01daa24e1d62ed89e328125a9ba3f00089248eefdd7bba33336f09bb8299a8f929bd763de55f13b115223e4bd813b0617b'
-            '566285d7e66cf10345cab61d7e3fda4769ab788333d47e7a1b607501fb9dfc880006e80fcd0a7894b7f4e1a4e726106030cecaca582a26d76c4903425cee4238'
+            '44e69b33f7a4ed0fc00769bfd76b0de63715bef970bfee4fd367f6effec127a8efa30248effe362b55682a801a7b66f462376946b1e4ad119c178e95a2262893'
             '7783c2b24253a24d650c9955ef818e8c5de097a5413120e42c23fe56303d83ea045eb489cb1fde36a82e7caec344ebafe83756fa43d087937ad4f23d10e01659'
             'ca5221913f4ecfbae290ff86414b435e2db51b13bb11a57f9e4827a857e4090c9e73b7a66206bfb0ea86516fa33d21b26b0dd00114d7fe0ccde68fd26128b95d'
             'e43a76c372137442259ee9d080877dafd5258e813626d4bc32ce660f6cf5005de7fa683f5624705bbbb0844a4aded4e41bf0b15af0ce0fdc2198d57c57dabe81'
