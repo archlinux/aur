@@ -1,12 +1,12 @@
 # Maintainer: Tobias Gerold <tobias at g3ro dot eu>
 pkgname=shiftfs-dkms
-pkgver=20200804
-pkgrel=2
+pkgver=20210301
+pkgrel=1
 pkgdesc="kernel module that provides a kernel filesystem for uid/gid shifting; dkms version for custom kernels"
 arch=('x86_64')
-url="https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/tree/fs/shiftfs.c"
+url="https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/tree/fs/shiftfs.c?h=master-next"
 license=('GPL2')
-source=("https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/plain/fs/shiftfs.c"
+source=("shiftfs.c::https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/plain/fs/shiftfs.c?h=master-next"
 dkms.conf
 Makefile)
 sha512sums=('SKIP'
