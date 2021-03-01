@@ -5,7 +5,7 @@
 pkgname=mksh-git
 _pkgname=mksh
 _pkgver=R56c
-pkgver=56.r3204.1474437
+pkgver=r3550.e945681a
 pkgrel=1
 pkgdesc='The MirBSD Korn Shell - an enhanced version of the public domain ksh (development version)'
 url='https://www.mirbsd.org/mksh.htm'
@@ -17,8 +17,12 @@ conflicts=('mksh' 'mksh-static' 'mksh-static-git')
 install=mksh.install
 source=('mksh::git+http://github.com/MirBSD/mksh#branch=master'
         'https://www.mirbsd.org/TaC-mksh.txt')
+md5sums=('SKIP'
+         '66cdcde14239f6a3a070dd11d01d1891')
+sha256sums=('SKIP'
+            '8a53fe4d643fb7341e6c94653d63d3d813d8d849fc1d9dfe5dc49ab2fb48aee9')
 sha512sums=('SKIP'
-         '14ec4ad9822e4c93bd036ba71fb6e1e77e9c36cbcea18c0c72e90f18d132382ef9a2a430425b93a4aa2693bfb4ca9ceeb0a86a99652075c1692d89b6a92ddce8')
+            '860cee206fe96c4cd9a36a62d39d323994b233d13c022f8ac2fa57fe2b7f40c320239c90ef991688f182f8dd31e6962245009a8ba92d9b7a111105859253829a')
 
 pkgver() {
   cd "$_pkgname"
