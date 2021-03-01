@@ -1,6 +1,6 @@
 pkgbase = kodi-git
 	pkgver = r57129.ce595fb1671
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -154,7 +154,7 @@ pkgname = kodi-git-gbm
 
 pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
-	optdepends = kodi-git: local machine eventclient use
+	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
 	provides = kodi-eventclients=r57129.ce595fb1671
 	conflicts = kodi-eventclients

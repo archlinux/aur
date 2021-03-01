@@ -23,7 +23,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 pkgver=r57129.ce595fb1671
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -261,7 +261,7 @@ package_kodi-git-eventclients() {
   provides=("kodi-eventclients=${pkgver}")
   conflicts=('kodi-eventclients')
   optdepends=(
-    'kodi-git: local machine eventclient use'
+    'kodi: local machine eventclient use'
     'python: most eventclients are implemented in python'
   )
 
