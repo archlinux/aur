@@ -63,6 +63,7 @@ package() {
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644  "$srcdir/manual.pdf" "$pkgdir/usr/share/doc/$pkgname/manual.pdf"
 
+  install -D -m644 ngspice.pc "$pkgdir/usr/lib/pkgconfig/ngspice.pc"
   install -Dm755 src/.libs/libngspice.so.0.0.0 "$pkgdir/usr/lib/libngspice.so.0.0.0"
   ln -s "libngspice.so.0.0.0" "$pkgdir/usr/lib/libngspice.so.0"
   ln -s "libngspice.so.0.0.0" "$pkgdir/usr/lib/libngspice.so"
