@@ -1,14 +1,15 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	makedepends = git
-	makedepends = crystal=0.35.1
+	makedepends = crystal<0.36.0
 	makedepends = shards>=0.11.0
+	makedepends = libyaml
 	depends = gc
 	depends = libevent
 	depends = pcre
