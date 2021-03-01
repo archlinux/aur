@@ -1,8 +1,8 @@
 pkgbase = cinelerra-cv-git
 	pkgdesc = Professional video editing and compositing environment - Community version
 	pkgver = 2.3.r385.g7d0e8ede
-	pkgrel = 1
-	url = https://github.com/cinelerra-gg/cinelerra-cv/
+	pkgrel = 2
+	url = https://github.com/cinelerra-cv-team/cinelerra-cv/
 	arch = x86_64
 	license = GPL
 	makedepends = git

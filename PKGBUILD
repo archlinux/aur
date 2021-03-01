@@ -7,7 +7,7 @@
 
 pkgname=cinelerra-cv-git
 pkgver=2.3.r385.g7d0e8ede
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional video editing and compositing environment - Community version"
 arch=(x86_64)
 url="https://github.com/cinelerra-cv-team/cinelerra-cv/"
