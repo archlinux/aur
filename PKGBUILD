@@ -5,7 +5,7 @@
 pkgname=mindmaster_cn
 _pkgname=MindMaster-8
 pkgver=8.5.2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 options=(!strip)
 conflicts=("mindmaster" "mindmaster-cn")
@@ -18,13 +18,12 @@ source=("mindmaster-cn.desktop")
 sha256sums=('SKIP')
 
 prepare() {
-    export LC_ALL="zh_CN.UTF-8"
     ar -x *.deb
 	mkdir -p ${pkgname}
     tar -xf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgname}"
 }
 package() {	
-    export LC_ALL="zh_CN.UTF-8"
+    export LC_CTYPE="zh_CN.UTF-8"
     mv  ${srcdir}/${pkgname}/* ${pkgdir}
     
     install -dm755 "${pkgdir}/usr/bin/" \
