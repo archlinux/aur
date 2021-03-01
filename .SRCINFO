@@ -1,0 +1,35 @@
+pkgbase = theos-cctools-aarch64-git
+	pkgdesc = Apple cctools port for Linux (theos,ios,aarch64)
+	pkgver = r262.3051881
+	pkgrel = 1
+	url = https://github.com/tpoechtrager/cctools-port
+	arch = x86_64
+	license = custom:APSL
+	makedepends = git
+	depends = theos
+	depends = clang>=3.4
+	depends = llvm
+	depends = util-linux-libs
+	depends = libbsd
+	depends = tapi
+	depends = uuid
+	depends = xar-tpoechtrage
+	provides = aarch64-apple-darwin-binutils
+	provides = theos-ios-toolchain
+	provides = theos-cctools
+	provides = theos-cctools-aarch64
+	provides = aarch64-apple-darwin-binutils-git
+	provides = theos-ios-toolchain-git
+	provides = theos-cctools-git
+	conflicts = aarch64-apple-darwin-binutils
+	conflicts = theos-ios-toolchain
+	conflicts = theos-cctools
+	conflicts = theos-cctools-aarch64
+	conflicts = aarch64-apple-darwin-binutils-git
+	conflicts = theos-ios-toolchain-git
+	conflicts = theos-cctools-git
+	source = git+https://github.com/tpoechtrager/cctools-port.git
+	md5sums = SKIP
+
+pkgname = theos-cctools-aarch64-git
+
