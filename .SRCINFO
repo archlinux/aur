@@ -1,6 +1,6 @@
 pkgbase = xfsprogs-git
 	pkgdesc = Utilities for managing the XFS filesystem
-	pkgver = 4.20.0.r0.g413a0f0d
+	pkgver = 5.11.0.rc1.r0.g533034dc
 	pkgrel = 1
 	url = https://xfs.org
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = xfsprogs-git
 	provides = xfsprogs
 	conflicts = xfsprogs
 	options = staticlibs
-	source = git+https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git
+	source = git+https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git#branch=for-next
 	sha256sums = SKIP
 
 pkgname = xfsprogs-git

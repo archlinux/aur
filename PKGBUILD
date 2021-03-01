@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xfsprogs-git
-pkgver=4.20.0.r0.g413a0f0d
+pkgver=5.11.0.rc1.r0.g533034dc
 pkgrel=1
 pkgdesc="Utilities for managing the XFS filesystem"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('xfsprogs')
 conflicts=('xfsprogs')
 options=('staticlibs')
-source=("git+https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git")
+source=("git+https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git#branch=for-next")
 sha256sums=('SKIP')
 
 
@@ -38,7 +38,11 @@ build() {
 package() {
   cd "xfsprogs-dev"
 
-  make DIST_ROOT="$pkgdir" PKG_ROOT_SBIN_DIR="/usr/bin" install install-dev
+  make \
+    DIST_ROOT="$pkgdir" \
+    PKG_ROOT_SBIN_DIR="/usr/bin" \
+    install \
+    install-dev
   chown -R root:root "$pkgdir"
 
   # add hack as we cannot set rootlibdir
