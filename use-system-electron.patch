@@ -1,3 +1,22 @@
+From b482cc7b1a4c97e39f2643dba92b5a7dfdde0bcd Mon Sep 17 00:00:00 2001
+From: solaraquarion <shlomochoina@gmail.com>
+Date: Sun, 28 Feb 2021 18:50:11 -0500
+Subject: [PATCH 2/3] use system electron
+
+---
+ package.json                            |  1 -
+ script/build                            | 64 ++-----------------------
+ script/lib/generate-startup-snapshot.js |  8 ++--
+ script/package.json                     |  2 -
+ src/compile-cache.js                    |  2 +-
+ src/module-cache.js                     |  2 +-
+ src/package-manager.js                  |  2 +-
+ src/task-bootstrap.js                   |  2 +-
+ static/index.js                         |  4 +-
+ 9 files changed, 12 insertions(+), 75 deletions(-)
+
+diff --git a/package.json b/package.json
+index 79f105c99..4df7b2753 100644
 --- a/package.json
 +++ b/package.json
 @@ -12,7 +12,6 @@
@@ -8,39 +27,33 @@
    "dependencies": {
      "@atom/nsfw": "1.0.26",
      "@atom/source-map-support": "^0.3.4",
+diff --git a/script/build b/script/build
+index 7e2ae319c..9ae039c60 100755
 --- a/script/build
 +++ b/script/build
-@@ -33,7 +33,7 @@
+@@ -37,7 +37,7 @@ const argv = yargs
    .wrap(yargs.terminalWidth())
    .argv
  
 -const checkChromedriverVersion = require('./lib/check-chromedriver-version')
-+// const checkChromedriverVersion = require('./lib/check-chromedriver-version')
++//const checkChromedriverVersion = require('./lib/check-chromedriver-version')
  const cleanOutputDirectory = require('./lib/clean-output-directory')
  const codeSignOnMac = require('./lib/code-sign-on-mac')
  const codeSignOnWindows = require('./lib/code-sign-on-windows')
-@@ -66,12 +66,12 @@
- const CONFIG = require('./config')
+@@ -62,7 +62,7 @@ process.on('unhandledRejection', function (e) {
+   process.exit(1)
+ })
  
- // Used by the 'github' package for Babel configuration
 -process.env.ELECTRON_VERSION = CONFIG.appMetadata.electronVersion
-+// process.env.ELECTRON_VERSION = CONFIG.appMetadata.electronVersion
++//process.env.ELECTRON_VERSION = CONFIG.appMetadata.electronVersion
  
- let binariesPromise = Promise.resolve()
+ async function transpile() {
+   const { spawn, Thread, Worker } = require(`${CONFIG.scriptRunnerModulesPath}/threads`)
+@@ -98,68 +98,10 @@ async function transpile() {
+   await Thread.terminate(transpilePegJsPaths)
+ }
  
- if (!argv.existingBinaries) {
--  checkChromedriverVersion()
-+  // checkChromedriverVersion()
-   cleanOutputDirectory()
-   copyAssets()
-   transpilePackagesWithCustomTranspilerPaths()
-@@ -90,74 +90,5 @@
- 
- if (!argv.generateApiDocs) {
-   binariesPromise
--    .then(packageApplication)
-     .then(packagedAppPath => generateStartupSnapshot(packagedAppPath).then(() => packagedAppPath))
--    .then(async packagedAppPath => {
+-async function singAndCreateInstaller(packagedAppPath) {
 -      switch (process.platform) {
 -        case 'darwin': {
 -          if (argv.codeSign) {
@@ -95,23 +108,22 @@
 -      }
 -
 -      return Promise.resolve(packagedAppPath)
--    }).then(packagedAppPath => {
--      if (argv.compressArtifacts) {
--        compressArtifacts(packagedAppPath)
--      } else {
--        console.log('Skipping artifacts compression. Specify the --compress-artifacts option to compress Atom binaries (and symbols on macOS)'.gray)
--      }
+-}
 -
--      if (argv.install != null) {
--        installApplication(packagedAppPath, argv.install)
--      } else {
--        console.log('Skipping installation. Specify the --install option to install Atom'.gray)
--      }
--    })
- }
+-
+ async function build() {
+ 
+   if (!argv.existingBinaries) {
+-    checkChromedriverVersion()
++   // checkChromedriverVersion()
+     await cleanOutputDirectory()
+     await copyAssets()
+     await transpile()
+diff --git a/script/lib/generate-startup-snapshot.js b/script/lib/generate-startup-snapshot.js
+index 41d2b7281..b05cbbd26 100644
 --- a/script/lib/generate-startup-snapshot.js
 +++ b/script/lib/generate-startup-snapshot.js
-@@ -286,17 +286,14 @@
+@@ -288,17 +288,14 @@ module.exports = function(packagedAppPath) {
          CONFIG.executableName
        );
      } else {
@@ -127,17 +139,19 @@
        { env: Object.assign({}, process.env, { ELECTRON_RUN_AS_NODE: 1 }) }
      );
 -
-+    /*
++/*
      console.log('Generating startup blob with mksnapshot');
      childProcess.spawnSync(process.execPath, [
        path.join(
-@@ -338,5 +335,6 @@
+@@ -340,5 +337,6 @@ module.exports = function(packagedAppPath) {
          destinationPath
        );
      }
 +    */
    });
  };
+diff --git a/script/package.json b/script/package.json
+index d2aa282a9..013a9e46b 100644
 --- a/script/package.json
 +++ b/script/package.json
 @@ -12,9 +12,7 @@
@@ -145,11 +159,13 @@
      "colors": "1.1.2",
      "donna": "1.0.16",
 -    "electron-chromedriver": "^9.0.0",
-     "electron-link": "^0.4.3",
+     "electron-link": "npm:@aminya/electron-link@^0.6.3",
 -    "electron-mksnapshot": "^9.0.2",
      "electron-packager": "^15.0.0",
      "eslint": "^5.16.0",
      "eslint-config-prettier": "^4.2.0",
+diff --git a/src/compile-cache.js b/src/compile-cache.js
+index 2e35760ff..1f1b296a4 100644
 --- a/src/compile-cache.js
 +++ b/src/compile-cache.js
 @@ -138,7 +138,7 @@ exports.install = function(resourcesPath, nodeRequire) {
@@ -161,9 +177,11 @@
          name: null
        };
      }
+diff --git a/src/module-cache.js b/src/module-cache.js
+index a63b3bbb3..66eb4972e 100644
 --- a/src/module-cache.js
 +++ b/src/module-cache.js
-@@ -270,7 +270,7 @@
+@@ -270,7 +270,7 @@ function resolveModulePath(relativePath, parentModule) {
  function registerBuiltins(devMode) {
    if (
      devMode ||
@@ -172,9 +190,11 @@
    ) {
      const fs = require('fs-plus');
      const atomJsPath = path.join(cache.resourcePath, 'exports', 'atom.js');
+diff --git a/src/package-manager.js b/src/package-manager.js
+index 4e1bd5a29..775916ad6 100644
 --- a/src/package-manager.js
 +++ b/src/package-manager.js
-@@ -949,7 +949,7 @@
+@@ -949,7 +949,7 @@ module.exports = class PackageManager {
    isBundledPackagePath(packagePath) {
      if (
        this.devMode &&
@@ -183,9 +203,11 @@
      ) {
        return false;
      }
+diff --git a/src/task-bootstrap.js b/src/task-bootstrap.js
+index 1edbce8fa..1ff6271ec 100644
 --- a/src/task-bootstrap.js
 +++ b/src/task-bootstrap.js
-@@ -3,7 +3,7 @@
+@@ -3,7 +3,7 @@ const [compileCachePath, taskPath] = process.argv.slice(2);
  
  const CompileCache = require('./compile-cache');
  CompileCache.setCacheDirectory(compileCachePath);
@@ -194,6 +216,8 @@
  
  const setupGlobals = function() {
    global.attachEvent = function() {};
+diff --git a/static/index.js b/static/index.js
+index 75be58393..546cab9bd 100644
 --- a/static/index.js
 +++ b/static/index.js
 @@ -40,7 +40,7 @@
@@ -214,3 +238,6 @@
  
      const ModuleCache = useSnapshot
        ? snapshotResult.customRequire('../src/module-cache.js')
+-- 
+2.30.1
+
