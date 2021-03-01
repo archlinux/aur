@@ -4,7 +4,7 @@
 pkgname=edrawmax-cn
 _pkgname=EdrawMax-10
 pkgver=10.5.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 options=(!strip)
 conflicts=("edrawmax")
@@ -15,13 +15,12 @@ source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/edrawmax-10-5-cn.deb")
 sha256sums_x86_64=('SKIP')
 
 prepare() {
-    export LC_ALL="zh_CN.UTF-8"
     ar -x *.deb
 	mkdir -p ${pkgname}
     tar -xf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgname}"
 }
 package() {	
-    export LC_ALL="zh_CN.UTF-8"
+    export LC_CTYPE="zh_CN.UTF-8"
     
     mv  ${srcdir}/${pkgname}/* ${pkgdir}
 

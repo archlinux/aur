@@ -1,7 +1,7 @@
 pkgbase = edrawmax-cn
 	pkgdesc = 强大的办公绘图、工程绘图、图文编辑、彩页设计软件
 	pkgver = 10.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.edrawsoft.cn/edrawmax/
 	arch = x86_64
 	license = Commercial
