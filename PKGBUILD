@@ -4,12 +4,12 @@
 
 pkgname="invoiceninja"
 pkgver=5.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
 url="https://www.invoiceninja.com"
 license=("custom")
 arch=("any")
-depends=("php" "php-gd")
+depends=("php" "php-gd" "php-tidy")
 makedepends=("composer")
 optdepends=("mariadb: database"
             "apache: web server"

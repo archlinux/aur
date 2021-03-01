@@ -1,13 +1,14 @@
 pkgbase = invoiceninja
 	pkgdesc = Invoices, Expenses and Tasks built with Laravel and Flutter
 	pkgver = 5.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.invoiceninja.com
 	arch = any
 	license = custom
 	makedepends = composer
 	depends = php
 	depends = php-gd
+	depends = php-tidy
 	optdepends = mariadb: database
 	optdepends = apache: web server
 	optdepends = nginx: web server
