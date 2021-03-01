@@ -4,18 +4,18 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgbase=buildbot
-pkgname=(buildbot buildbot-worker buildbot-docs
+pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 pkgver=2.10.1
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
-              python-moto python-parameterized python-mock python-subunit
+              python-moto python-docker python-parameterized python-mock python-subunit
               openssh chromium)
 makedepends=(python-twisted python-jinja python-zope-interface
              python-sqlalchemy-migrate python-dateutil python-txaio
@@ -26,11 +26,13 @@ makedepends=(python-twisted python-jinja python-zope-interface
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "subunit-tests.diff")
+        "subunit-tests.diff"
+        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
 sha256sums=('33beb2428dea4bee638d8b2b6088c3b59fe0495a53bb332acea6bdb96f0a8a7e'
             'SKIP'
             'SKIP'
-            'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55')
+            'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55'
+            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -58,6 +60,9 @@ prepare() {
   # traceback instead of traceback2, and causing a difference. See
   # https://github.com/testing-cabal/testtools/pull/299 for more defailts.
   patch -Np1 -i ../subunit-tests.diff
+
+  cd "$srcdir"/buildbot-contrib
+  patch -Np1 -i ../buildbot-contrib-systemd-common.patch
 }
 
 build() {
@@ -128,7 +133,7 @@ export PYTHONHASHSEED=0
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   # include setuptools as plugins are enumerated via pkg_resources
-  depends=(python-twisted python-jinja python-zope-interface
+  depends=(buildbot-common python-twisted python-jinja python-zope-interface
            python-sqlalchemy-migrate python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-setuptools)
   optdepends=(
@@ -166,7 +171,7 @@ package_buildbot() {
 
 package_buildbot-worker() {
   pkgdesc='Buildbot worker daemon'
-  depends=(python-twisted python-future)
+  depends=(buildbot-common python-twisted python-future)
 
   cd buildbot-$pkgver/worker
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -182,6 +187,14 @@ package_buildbot-docs() {
   for kind in html singlehtml ; do
     cp -dr --no-preserve=ownership _build/$kind "$pkgdir"/usr/share/doc/buildbot/$kind
   done
+}
+
+package_buildbot-common() {
+  pkgdesc='Contributed scripts for Buildbot'
+
+  cd buildbot-contrib
+  install -Dm644 common/contrib/systemd/sysusers.d/buildbot.conf -t "$pkgdir"/usr/lib/sysusers.d/
+  install -Dm644 common/contrib/systemd/tmpfiles.d/buildbot.conf -t "$pkgdir"/usr/lib/tmpfiles.d/
 }
 
 package_python-buildbot-www() {
