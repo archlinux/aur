@@ -1,17 +1,18 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Taijian <taijian@posteo.de>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=adwaita-qt-git
-pkgver=1.2.0.r0.g60b1abf
+pkgver=1.2.0.r13.g7ca96d9
 pkgrel=1
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell (Qt5).'
 arch=('x86_64')
 url="https://github.com/FedoraQt/adwaita-qt"
 license=('GPL')
 depends=('qt5-base')
-makedepends=('cmake' 'git' 'qt5-base' 'qt5-x11extras')
+makedepends=('cmake' 'git' 'qt5-x11extras')
 optdepends=('qgnomeplatform: apply GNOME settings to Qt apps')
 conflicts=('adwaita-qt-common' "${pkgname%-git}" 'adwaita-qt5')
-provides=('adwaita-qt-common' "${pkgname%-git}" 'adwaita-qt5')
+provides=('adwaita-qt-common' "${pkgname%-git}=1.2.0" 'adwaita-qt5')
 source=("${pkgname%-git}::git+${url}.git")
 sha512sums=('SKIP')
 
@@ -35,4 +36,3 @@ package() {
     make DESTDIR="$pkgdir" install
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" ../README.md
 }
-# vim:set ts=4 sw=4 et:
