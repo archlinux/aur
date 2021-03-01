@@ -1,11 +1,12 @@
-# Maintainer : Vassilis Palassopoulos <palasso [at] gmail [dot] com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor : Vassilis Palassopoulos <palasso [at] gmail [dot] com>
 
 pkgname=ecere-sdk-git
-pkgver=0.44.11.r8.gbb5c404
+pkgver=0.44.15.r1049.gbd87e691
 pkgrel=1
 pkgdesc="A SDK for building cross-platform GUI and graphics apps using the eC language"
 arch=('i686' 'x86_64')
-url="http://ecere.org/"
+url="https://ecere.org/"
 license=('BSD')
 depends=('libxrender' 'libgl' 'giflib' 'libjpeg' 'libpng' 'sqlite' 'alsa-lib' 'ttf-font')
 optdepends=('upx: support for compressing built binaries')
@@ -13,7 +14,7 @@ makedepends=('git')
 provides=('ecere-sdk')
 conflicts=('ecere-sdk')
 options=('!strip' 'staticlibs')
-source=("$pkgname::git://github.com/ecere/ecere-sdk.git")
+source=("$pkgname::git+https://github.com/ecere/ecere-sdk.git")
 md5sums=('SKIP')
 
 pkgver() {
