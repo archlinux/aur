@@ -1,6 +1,6 @@
 pkgbase = pacroller
 	pkgdesc = Unattended upgrade for archlinux
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/isjerryxiao/pacroller
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pacroller
 	optdepends = needrestart
 	backup = etc/pacroller/config.json
 	backup = etc/pacroller/known_output_override.py
-	source = pacroller::git+https://github.com/isjerryxiao/pacroller#tag=0.1.1
+	source = pacroller::git+https://github.com/isjerryxiao/pacroller#tag=0.1.2
 	md5sums = SKIP
 
 pkgname = pacroller
