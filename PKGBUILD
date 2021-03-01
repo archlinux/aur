@@ -4,9 +4,9 @@
 
 pkgname='python-grpcio-tools'
 pkgver=1.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python protobuf generator for GRPC"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://grpc.io/"
 license=('Apache' )
 _pkgname=grpcio-tools
