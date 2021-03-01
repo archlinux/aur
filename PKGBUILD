@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="monica-git"
-pkgver=v2.19.1.r201.gb9ee79366
+pkgver=v2.19.1.r262.g124a063fd
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
@@ -16,6 +16,7 @@ optdepends=("mariadb: database"
 source=("git+https://github.com/monicahq/monica.git")
 sha256sums=("SKIP")
 backup=("etc/webapps/monica/config.env")
+options=("!strip")
 
 pkgver(){
  cd "monica"

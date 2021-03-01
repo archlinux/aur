@@ -1,6 +1,6 @@
 pkgbase = monica-git
 	pkgdesc = Personal CRM. Remember everything about your friends, family and business relationships
-	pkgver = v2.19.1.r201.gb9ee79366
+	pkgver = v2.19.1.r262.g124a063fd
 	pkgrel = 1
 	url = https://www.monicahq.com/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = monica-git
 	optdepends = apache: web server
 	optdepends = nginx: web server
 	optdepends = redis: cache and session driver
+	options = !strip
 	backup = etc/webapps/monica/config.env
 	source = git+https://github.com/monicahq/monica.git
 	sha256sums = SKIP
