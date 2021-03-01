@@ -2,12 +2,12 @@ pkgbase = pyanidb
 	pkgdesc = PyAniDB is a client for AniDB's UDP API.
 	pkgver = 0.2.1
 	pkgrel = 1
-	url = http://cgit.jvnv.net/pyanidb/
+	url = https://cgit.jvnv.net/pyanidb/
 	arch = any
 	license = GPL
 	depends = python
 	optdepends = python-pyxattr
-	source = http://archive.jvnv.net/pyanidb-0.2.1.tar.gz
+	source = https://archive.jvnv.net/pyanidb-0.2.1.tar.gz
 	md5sums = c9cae78392b49b37d769f1ebc34eb007
 
 pkgname = pyanidb
