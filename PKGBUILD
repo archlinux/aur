@@ -1,10 +1,11 @@
 # Maintainer: Mubashshir <ahmubashshir at gmail dot com>
 # Inspired by: aur/anbox-image-gapps
 # shellcheck shell=bash disable=SC2034,SC2164,SC2154
+# pkg: git
 
 pkgname=anbox-image-nocsd-gapps
-pkgver=r2.73432ce6
-pkgrel=2
+pkgver=r3.8a987d8f
+pkgrel=1
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
