@@ -19,7 +19,7 @@ pkgbase = linux-gc
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.2.tar.sign
 	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/7398961ba1f96e302ee0977895f6b53babf67a52/trunk/config
-	source = prjc_v5.11-r0.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.11/prjc_v5.11-r0.patch
+	source = prjc_v5.11-r1.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.11/prjc_v5.11-r1.patch
 	source = enable_additional_cpu_optimizations-20201113.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20201113.tar.gz
 	source = 0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/7398961ba1f96e302ee0977895f6b53babf67a52/trunk/sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=2aef6c5fe88b92e9f611ec0b04ab8e023e943cd8
@@ -31,7 +31,7 @@ pkgbase = linux-gc
 	b2sums = 62f47c769998fa713cda9024a4ecbe7ba2140acde629082630c2c0b076b4e941b0a1e82f7d2b7cd4ed6e84759ea93de78e212ecbe1341d9055091d26d83286dc
 	b2sums = SKIP
 	b2sums = e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e
-	b2sums = 0658ad7ebad50244742a928b0c2e8ce090a55c5ba342b5c5ebd7ea079efdaf7e280effbb609856d975a067f84d9b6be95f6ccce3e647e96de9cd9ba6f29113e0
+	b2sums = 3b923fa385d648f8fbe0299d9d4bbf6c21d11c155c45733b8ef5e24d138ce3289fe9f2feb5c1526edc3ea721f6d48fde09b0597afb634aae77b5bdf86b647e8c
 	b2sums = 7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127
 	b2sums = db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb
 	b2sums = 060669dd9bca4eb3949ec9166e3be9403ad69b4670b5693089e2df91f35e420c75b9516d4843fe610c91dc3326f4c6e23fa3ebf8f052465fd4b0f48e261ec44b
