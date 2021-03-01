@@ -2,7 +2,7 @@
 # Contributor: orhun <orhunparmaksiz@gmail.com>
 
 pkgname=silver
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A cross-shell customizable powerline-like prompt with icons"
 arch=('x86_64')
