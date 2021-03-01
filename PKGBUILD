@@ -3,8 +3,8 @@
 # Contributor: Amr Okasha <okasha at gmail>
 
 pkgname=ccstudio
-_semver=10.1.1
-_bldver=00004
+_semver=10.2.0
+_bldver=00009
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -69,7 +69,7 @@ package() {
     find $srcdir/$_installpath/ccs/eclipse/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.cpp.profile/.data/.settings/org.eclipse.equinox.p2.artifact.repository.prefs -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.cpp.profile/.data/.settings/org.eclipse.equinox.p2.metadata.repository.prefs -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/plugins/com.ti.ccstudio.base_10.1.0.02013/properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
+    find $srcdir/$_installpath/ccs/eclipse/plugins/com.ti.ccstudio.base_*/properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/*/*.xml -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/362/data/timestamps* -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/362/data/cache.timestamps -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
@@ -112,8 +112,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('f596e3e71805561e0e522fabdc14162e3e9f0a04cacdd02e057f7004fc248997'
-    'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
-    '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
-    'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a'
-)
+sha256sums=('d83b01f7622d1be180f1853461facc2ce445e743477193f41c9a2821f0c45b20'
+            'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
+            '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
+            'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
