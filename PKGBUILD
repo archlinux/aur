@@ -1,7 +1,7 @@
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
 
 pkgname=pdftilecut
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="pdftilecut lets you sub-divide a PDF page(s) into smaller pages"
 url="https://github.com/oxplot/pdftilecut"
