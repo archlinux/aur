@@ -1,12 +1,13 @@
 pkgbase = aws2-wrap
 	pkgdesc = Simple script to export current AWS SSO credentials or run a sub-process with them
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linaro-its/aws2-wrap
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = aws-cli
+	depends = python-psutil
 	source = https://files.pythonhosted.org/packages/source/a/aws2-wrap/aws2-wrap-1.1.7.tar.gz
 	sha256sums = a25be206f47be23c8eb01b081e476ce44deb2b6cb44c6a5179019e00b16b6762
 
