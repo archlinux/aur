@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-proj
-pkgver=7.2.1
+pkgver=8.0.0
 pkgrel=1
 arch=('any')
 pkgdesc="Cartographic Projections library (mingw-w64)"
@@ -11,7 +11,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('MIT')
 url="https://proj.org/"
 source=("https://github.com/OSGeo/PROJ/releases/download/${pkgver}/proj-${pkgver}.tar.gz")
-sha256sums=('b384f42e5fb9c6d01fe5fa4d31da2e91329668863a684f97be5d4760dbbf0a14')
+sha256sums=('aa5d4b934450149a350aed7e5fbac880e2f7d3fa2f251c26cb64228f96a2109e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
