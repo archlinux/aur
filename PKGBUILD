@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
 provides=('st')
-url=https://github.com/quoteme/st
+url=https://github.com/flyingpeakock/st
 _patches=( https://raw.githubusercontent.com/flyingpeakock/st/main/patch-$pkgver.diff )
 source=(https://dl.suckless.org/st/st-$pkgver.tar.gz
         "${_patches[@]}"
