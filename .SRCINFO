@@ -1,0 +1,15 @@
+pkgbase = guile-semver
+	pkgdesc = Guile library for Semantic Versioning
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://ngyro.com/software/guile-semver.html
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = guile
+	source = https://files.ngyro.com/guile-semver/guile-semver-0.1.1.tar.gz
+	sha256sums = 4f790919375feb204a8ea2eda92a291d9bb4de4c8eb1c6776784589a86253781
+
+pkgname = guile-semver
+
