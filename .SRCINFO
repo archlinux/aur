@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-glm
 	pkgdesc = C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification. (mingw-w64 symlinks)
 	pkgver = 0.9.x
-	pkgrel = 3
+	pkgrel = 4
 	url = http://glm.g-truc.net
 	arch = any
 	license = GPL
