@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch-git
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 0.91.r32.c1f6d09
+	pkgver = 4.0_next7.r194.145caa2
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any

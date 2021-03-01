@@ -1,8 +1,9 @@
-# Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
-# Contributor: Mark Wagie <mark.wagie@tutanota.com>
+# Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
+# Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=steamtinkerlaunch-git
-pkgver=0.91.r32.c1f6d09
+pkgver=4.0_next7.r194.145caa2
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -33,7 +34,7 @@ sha1sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "%s.r%s.%s" \
-		"$(grep 'PROGVERS=' stl | head -n1 | cut -d\" -f2 | sed 's/^v//')" \
+		"$(grep 'PROGVERS=' stl | head -n1 | cut -d\" -f2 | sed 's/^v//' | sed 's/-/_/g')" \
 		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -41,6 +42,8 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 stl -t "$pkgdir/usr/bin"
 
-	install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
-	cp -r *.md sbs tweaks "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -d "$pkgdir/usr/share/stl"
+  cp -r categories lang misc regs reshadepresets tweaks "$pkgdir/usr/share/stl"
+
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
