@@ -1,6 +1,6 @@
 pkgbase = minecraft-launcher
 	pkgdesc = Official Minecraft Launcher
-	pkgver = 2.2.1867
+	pkgver = 887
 	pkgrel = 1
 	url = https://mojang.com/
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = minecraft-launcher
 	optdepends = flite: narrator support
 	provides = minecraft-launcher-beta
 	conflicts = minecraft-launcher-beta
-	source = https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_2.2.1867.tar.gz
+	source = https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_887.tar.gz
 	source = minecraft-launcher.desktop
 	source = https://launcher.mojang.com/download/minecraft-launcher.svg
-	sha256sums = 5e19e3459015fb28bc54df588b6613320281d953bc2f394a28a95465637eeabe
+	sha256sums = a7d75ef47c8e940a56c8fad0c9a68f41df8d5df85df18377c53e3da5749c645c
 	sha256sums = 677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7
 	sha256sums = 35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71
 
