@@ -16,7 +16,7 @@ For whatever reason, the software does not build if the port used by `bitcoind` 
 1. `nano ~/.btcpayserver/Main/settings.config` Uncomment the SQLite database line. Alternatively, a different can be used instead.
 
 ### nginx
-1. `sudo nano /etc/nginx/nginx.conf`
+1. `sudo nano /etc/nginx/nginx.conf` and cofigure your nginx server as a reverse proxy to the btcpayserver http server.
 
 ## Required services
 1. `sudo systemctl start bitcoind.service`
