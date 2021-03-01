@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-normalize
 	pkgdesc = Audio normalization using ffmpeg.
-	pkgver = 1.20.2
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/slhck/ffmpeg-normalize
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ffmpeg-normalize
 	depends = python-tqdm
 	depends = python-colorama
 	conflicts = ffmpeg-normalize-git
-	source = https://github.com/slhck/ffmpeg-normalize/archive/v1.20.2.tar.gz
-	sha512sums = b4830aa2cf1faf2895ad0ba827efeaeec6f05d9e3d829eace8ce284c617900778e3a901f234e09ad6558ac36c91d1569565aad94169ffb8593275594d48092d6
+	source = ffmpeg-normalize-1.21.0.tar.gz::https://github.com/slhck/ffmpeg-normalize/archive/v1.21.0.tar.gz
+	sha512sums = b5f902749e6fc4f0bceb8558b7951d0de2958d20637f4e91bfe506a5da7671f6c5060fa9ab61903c6f7f4c95dfad0ebcbf59dc068470144bcbf56772bbedbe75
 
 pkgname = ffmpeg-normalize
 

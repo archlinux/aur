@@ -2,7 +2,7 @@
 # Contributor:  Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=ffmpeg-normalize
-pkgver=1.20.2
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
@@ -11,8 +11,8 @@ license=(MIT)
 depends=(ffmpeg python-tqdm python-colorama)
 makedepends=(python-setuptools)
 conflicts=("${pkgname}-git")
-source=("$url/archive/v${pkgver}.tar.gz")
-sha512sums=('b4830aa2cf1faf2895ad0ba827efeaeec6f05d9e3d829eace8ce284c617900778e3a901f234e09ad6558ac36c91d1569565aad94169ffb8593275594d48092d6')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
+sha512sums=('b5f902749e6fc4f0bceb8558b7951d0de2958d20637f4e91bfe506a5da7671f6c5060fa9ab61903c6f7f4c95dfad0ebcbf59dc068470144bcbf56772bbedbe75')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -25,4 +25,5 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
