@@ -1,0 +1,14 @@
+pkgbase = gssg-git
+	pkgdesc = Gemini static site generator
+	pkgver = 0.1.747b6b41
+	pkgrel = 1
+	url = https://git.sr.ht/~gsthnz/gssg
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	source = git+https://git.sr.ht/~gsthnz/gssg
+	sha256sums = SKIP
+
+pkgname = gssg-git
+
