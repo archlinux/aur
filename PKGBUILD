@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Build iso images, create live usb drives, install on usb drives."
 arch=('any')
@@ -14,12 +14,11 @@ optdepends=('devtools: for building ZFS packages'
             'pacman-contrib: for building ZFS packages'
             'qemu: virtual machine for aui_run')
 conflicts=('archuseriso')
-install=archuseriso.install
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('9494516cf64b95458cc5587e63a005b9db7e50b5d781fddc3389c95cc03ba626'
+sha256sums=('c343c84db165880ebfcc53c93d60da14618e3460a5455d39820c1ec01a324536'
             'SKIP')
-b2sums=('cce50afa1e38a64fae256190551e9839a4c7d411f6602f0ce557cf4a6e5f2097d01297ae77407501b1cd29679efc6ec91c0b0f501217927ca8a3a8b5afe7704f'
+b2sums=('8f182e155220432a11e9fd4386fe2afd05c7b1ef7eb3fad1290f3413dcb5e813548209da9f366c1cf8a2274a06c5e17b0090171a82ce043582f8b1ec1700c579'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
