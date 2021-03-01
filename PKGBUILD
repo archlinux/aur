@@ -6,42 +6,66 @@
 #   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
 
 pkgname=guix
-pkgver=1.1.0
-pkgrel=2
-pkgdesc="A purely functional package manager for the GNU system"
+pkgver=1.2.0
+pkgrel=1
+pkgdesc='A purely functional package manager for the GNU system'
 arch=('x86_64' 'i686' 'armv7h')
-url="https://www.gnu.org/software/guix/"
+url='https://guix.gnu.org'
 license=('GPL3')
 options=('!strip')
 makedepends=(
+  'guile-ssh>=0.13.0'
+  'guile-zstd'
+  'guile-semver'
   'bash-completion'
   'fish'
-  'guile-json3'
-  'guile-ssh>=0.10.2'
   'help2man'
   'po4a')
 depends=(
   'guile>=2.2.4'
-  'guile-gcrypt'
-  'guile-git-lib'
-  'guile-sqlite3'
+  'guile-gcrypt>=0.1.0'
+  'guile-sqlite3>=0.1.0'
+  'guile-zlib'
+  'guile-lzlib'
+  'guile-avahi'
+  'guile-git-lib>=0.3.0'
+  'guile-json>=4.3.0'
   'sqlite>=3.6.19'
   'bzip2'
   'gnutls'
-  'libgcrypt'
-  'lzlib'
-  'zlib')
+  'libgcrypt')
 optdepends=(
   'bash-completion: to enable bash programmable completion'
-  'guile-json3: to import packages from cpan, gem, pypi'
-  'guile-ssh: to offload builds to other machines')
+  'guile-ssh: to offload builds to other machines'
+  'guile-zstd: to use and publish zstd substitutes'
+  'guile-semver: to use the crate importer')
 source=(
-  "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+  "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
+  'guix-1.2.0-json-cve-swh.patch'
+  'guix-1.2.0-json-crate.patch'
+  'guix-1.2.0-guile-json-4.5.patch'
+  'guix-1.2.0-revert-verify-swh-certificate.patch')
 install="${pkgname}.install"
 sha256sums=(
-  '5c59106ff4ac497c6097686834b0c914109cf5e44eb6b94ebce818923043640f'
-  '0416a733ba9b4410897d744a24388a43ba11bd8c427c7d08e649c8875119333d')
+  '5ecdf7ced25b1fb0ca7c57e794b7b60c8a7adcb15261dec2af37925c838c6d74'
+  'e278e3aba3fe9acd35aa6586933d940f0c847ccfb6d1370cb5c4f754732d2fb6'
+  '39fba6b74fcc97155f0e81c603d3e0a0dcc17ce8070faa47dec5bd637383aedd'
+  '1b62d816090305ce5e5742813341409aa7b68157cc1c3cfc0b0fff3a583d2762'
+  '837def9c966f14e29291dfac6c8c642d8b64eda46458605bef6416a155d5ba4e'
+  '921c6fd2849c38d93e1f23e5d1f582889e2fc705c1827702bddecede3344088b')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	local source_file
+	for source_file in "${source[@]}"; do
+		case "${source_file}" in
+			*.patch)
+				patch -p1 < "${srcdir}/${source_file}"
+				;;
+		esac
+	done
+}
 
 build() {
 	local bash_completion_dir="$(pkg-config --variable=completionsdir bash-completion)"

@@ -1,38 +1,50 @@
 pkgbase = guix
 	pkgdesc = A purely functional package manager for the GNU system
-	pkgver = 1.1.0
-	pkgrel = 2
-	url = https://www.gnu.org/software/guix/
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://guix.gnu.org
 	install = guix.install
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	license = GPL3
+	makedepends = guile-ssh>=0.13.0
+	makedepends = guile-zstd
+	makedepends = guile-semver
 	makedepends = bash-completion
 	makedepends = fish
-	makedepends = guile-json3
-	makedepends = guile-ssh>=0.10.2
 	makedepends = help2man
 	makedepends = po4a
 	depends = guile>=2.2.4
-	depends = guile-gcrypt
-	depends = guile-git-lib
-	depends = guile-sqlite3
+	depends = guile-gcrypt>=0.1.0
+	depends = guile-sqlite3>=0.1.0
+	depends = guile-zlib
+	depends = guile-lzlib
+	depends = guile-avahi
+	depends = guile-git-lib>=0.3.0
+	depends = guile-json>=4.3.0
 	depends = sqlite>=3.6.19
 	depends = bzip2
 	depends = gnutls
 	depends = libgcrypt
-	depends = lzlib
-	depends = zlib
 	optdepends = bash-completion: to enable bash programmable completion
-	optdepends = guile-json3: to import packages from cpan, gem, pypi
 	optdepends = guile-ssh: to offload builds to other machines
+	optdepends = guile-zstd: to use and publish zstd substitutes
+	optdepends = guile-semver: to use the crate importer
 	options = !strip
-	source = https://ftp.gnu.org/gnu/guix/guix-1.1.0.tar.gz
-	source = https://ftp.gnu.org/gnu/guix/guix-1.1.0.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/guix/guix-1.2.0.tar.gz
+	source = https://ftp.gnu.org/gnu/guix/guix-1.2.0.tar.gz.sig
+	source = guix-1.2.0-json-cve-swh.patch
+	source = guix-1.2.0-json-crate.patch
+	source = guix-1.2.0-guile-json-4.5.patch
+	source = guix-1.2.0-revert-verify-swh-certificate.patch
 	validpgpkeys = 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
-	sha256sums = 5c59106ff4ac497c6097686834b0c914109cf5e44eb6b94ebce818923043640f
-	sha256sums = 0416a733ba9b4410897d744a24388a43ba11bd8c427c7d08e649c8875119333d
+	sha256sums = 5ecdf7ced25b1fb0ca7c57e794b7b60c8a7adcb15261dec2af37925c838c6d74
+	sha256sums = e278e3aba3fe9acd35aa6586933d940f0c847ccfb6d1370cb5c4f754732d2fb6
+	sha256sums = 39fba6b74fcc97155f0e81c603d3e0a0dcc17ce8070faa47dec5bd637383aedd
+	sha256sums = 1b62d816090305ce5e5742813341409aa7b68157cc1c3cfc0b0fff3a583d2762
+	sha256sums = 837def9c966f14e29291dfac6c8c642d8b64eda46458605bef6416a155d5ba4e
+	sha256sums = 921c6fd2849c38d93e1f23e5d1f582889e2fc705c1827702bddecede3344088b
 
 pkgname = guix
 
