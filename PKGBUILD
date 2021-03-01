@@ -8,7 +8,7 @@ url="http://www.mmgtools.org/"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('scotch' 'vtk')
-makedepends=('cmake' 'netcdf' 'proj')
+makedepends=('cmake' 'netcdf' 'proj' 'qt5-base' 'glew' 'python' 'libogg' 'libtheora')
 provides=('mmg3d')
 conflicts=('mmg3d')
 replaces=('mmg3d')
@@ -23,7 +23,8 @@ build () {
     -DLIBMMG2D_SHARED=ON \
     -DLIBMMG3D_SHARED=ON \
     -DLIBMMGS_SHARED=ON \
-    -DLIBMMG_SHARED=ON
+    -DLIBMMG_SHARED=ON \
+    -DUSE_ELAS=OFF
 
   make
 }
