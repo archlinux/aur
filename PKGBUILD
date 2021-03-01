@@ -4,41 +4,49 @@
 
 pkgname=marsyas
 pkgver=0.5.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Music Analysis, Retrieval and Synthesis for Audio Signals"
 arch=('x86_64')
 url="http://marsyas.info"
 license=('GPL2')
 groups=('pd-externals' 'pro-audio' 'vamp-plugins')
-depends=('alsa-lib' 'gcc-libs' 'glibc' 'lame' 'libjack.so' 'libmad'
-'libvorbisfile.so')
-makedepends=('cmake' 'doxygen' 'extra-cmake-modules' 'pd' 'qt5-base'
-'qt5-declarative' 'libvamp-sdk.so')
+depends=('gcc-libs' 'glibc' 'lame' 'libmad')
+makedepends=('alsa-lib' 'cmake' 'doxygen' 'extra-cmake-modules' 'jack'
+'libvorbis' 'pd' 'qt5-base' 'qt5-declarative' 'vamp-plugin-sdk')
 optdepends=('pd: for ibt_pd external'
             'qt5-base: for MarGrid2, MarLpc, MarPhasevocoder, MarPlayer and marsyas-inspector'
             'qt5-declarative: for marsyas-inspector'
-            'libvamp-sdk.so: for vamp plugin')
+            'vamp-plugin-sdk: for vamp plugin')
 provides=('libmarsyas.so')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/version-$pkgver.tar.gz")
-sha512sums=('0ff8943028753c70d409e78a8c5487da2006b7599c8909c0e0050433a6e7051f32b3c5f31fe833085a479d0486e4c96c5f4a4bd63ac00ee68b89dee941aebc9a')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/version-$pkgver.tar.gz"
+  "${pkgname}-0.5.0-qpainterpath.patch"
+  "${pkgname}-0.5.0-vamp_include_dirs.patch"
+  "${pkgname}-0.5.0-pd_extension.patch"
+)
+sha512sums=('0ff8943028753c70d409e78a8c5487da2006b7599c8909c0e0050433a6e7051f32b3c5f31fe833085a479d0486e4c96c5f4a4bd63ac00ee68b89dee941aebc9a'
+            'a1a61964f3588b58ee95c16b70a1641b13032c07ec1fba030a9f5fa62c9f355f0c67a147dcdd04d70b0ef5d3a513fbe07341e73abeab3cce82cdfa65385fe22e'
+            '29d6a67195241d67b16da9afe522741cbdbfda84183f40f205d50d133bb8ebbcfebff01f011351851660bd59c6bb8cf629316de6345801caf6e0a41c7eeb354c'
+            '028329689ba460266b673a88d4ac316dd1077f93c6f2a5b3283961a457bf34fca64222b62f24d5478436c53a4868bd2a7337ffc1802089a2d829b3707ea48c6d')
 
 prepare() {
   mv -v "${pkgname}-version-${pkgver}" "${pkgname}-${pkgver}"
   cd "${pkgname}-${pkgver}"
-  # fixing build of vamp plugins
-  sed -e 's|"MarSystemTemplateBasic.h"|<marsyas/marsystems/MarSystemTemplateBasic.h>|' \
-      -e 's|"MarSystemTemplateAdvanced.h"|<marsyas/marsystems/MarSystemTemplateAdvanced.h>|' \
-      -i src/mvamp/MarsyasIBT.h
-  # fixing build of pd external
-  sed -e 's|= atom_getsymbol(argv+1)->s_name|= const_cast<char*>(atom_getsymbol(argv+1)->s_name)|' \
-      -i src/marsyas_pd/ibt_pd.cpp
-  sed -e 's/--export-dynamic/-export-dynamic/g' \
-      -i src/marsyas_pd/CMakeLists.txt
+  # add missing include for QPainterPath (offered upstream):
+  # https://github.com/marsyas/marsyas/issues/77
+  patch -Np1 -i ../"${pkgname}-0.5.0-qpainterpath.patch"
+  # fix include dirs for vamp plugins (offered upstream):
+  # https://github.com/marsyas/marsyas/issues/79
+  patch -Np1 -i ../"${pkgname}-0.5.0-vamp_include_dirs.patch"
+
+  # fixing build of pd external (offered upstream):
+  # https://github.com/marsyas/marsyas/issues/81
+  patch -Np1 -i ../"${pkgname}-0.5.0-pd_extension.patch"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  # disabling build of python module, as it's python2 only:
+  # disable build of python module, as it is python2 only:
   # https://github.com/marsyas/marsyas/issues/71
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_RPATH=ON \
@@ -54,6 +62,7 @@ build() {
 }
 
 package() {
+  depends+=('libasound.so' 'libjack.so' 'libvorbisfile.so')
   cd "${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install -C build
   # pd external
@@ -67,4 +76,6 @@ package() {
     -t "${pkgdir}/usr/share/doc/${pkgname}"
   # rename sfinfo https://bugs.archlinux.org/task/60787
   mv -v "${pkgdir}/usr/bin/sfinfo" "${pkgdir}/usr/bin/${pkgname}-sfinfo"
+  # rename record: https://bugs.archlinux.org/task/69837
+  mv -v "${pkgdir}/usr/bin/record" "${pkgdir}/usr/bin/${pkgname}-record"
 }

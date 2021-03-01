@@ -1,0 +1,12 @@
+diff -ruN a/src/mvamp/CMakeLists.txt b/src/mvamp/CMakeLists.txt
+--- a/src/mvamp/CMakeLists.txt	2015-02-27 05:13:13.000000000 +0100
++++ b/src/mvamp/CMakeLists.txt	2021-03-01 12:03:46.386472537 +0100
+@@ -14,7 +14,7 @@
+ 
+ add_library(mvamp SHARED ${MVamp_SOURCES})
+ 
+-include_directories(${VAMP_INCLUDE_DIR})
++include_directories(${VAMP_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../marsyas/marsystems/)
+ 
+ # In case we build the static version of Marsyas, we need to link
+ # to that specific archive library. Also linking some additional libs/frameworks

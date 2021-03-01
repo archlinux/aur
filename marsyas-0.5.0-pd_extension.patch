@@ -1,0 +1,26 @@
+diff --git c/src/marsyas_pd/CMakeLists.txt w/src/marsyas_pd/CMakeLists.txt
+index 02eb7f68..458a2b21 100755
+--- c/src/marsyas_pd/CMakeLists.txt
++++ w/src/marsyas_pd/CMakeLists.txt
+@@ -38,7 +38,7 @@ if(MARSYAS_MACOSX)
+ 	SET_TARGET_PROPERTIES(ibt_pd PROPERTIES SUFFIX ".pd_darwin")
+ elseif(MARSYAS_LINUX)
+ 	#define --export-dynamic -shared
+-	TARGET_LINK_LIBRARIES(ibt_pd ${MARSYAS_LIBRARY} "--export-dynamic -shared")
++	TARGET_LINK_LIBRARIES(ibt_pd ${MARSYAS_LIBRARY} "-export-dynamic -shared")
+ 	#define so extension as .pd_linux in Linux 
+ 	SET_TARGET_PROPERTIES(ibt_pd PROPERTIES SUFFIX ".pd_linux")
+ elseif(MARSYAS_WIN32)	
+diff --git c/src/marsyas_pd/ibt_pd.cpp w/src/marsyas_pd/ibt_pd.cpp
+index 7a362831..19fba7d4 100755
+--- c/src/marsyas_pd/ibt_pd.cpp
++++ w/src/marsyas_pd/ibt_pd.cpp
+@@ -197,7 +197,7 @@ ibt_pd_new (t_symbol *s, int argc, t_atom *argv)
+     else if (!strcmp(firstarg->s_name, "@outPathName") && argc > 1)
+     {
+       post("ibt_pd %s: %s", firstarg->s_name, atom_getsymbol(argv+1)->s_name);
+-      x->outPathName = atom_getsymbol(argv+1)->s_name;
++      x->outPathName = const_cast<char*>(atom_getsymbol(argv+1)->s_name);
+       argc -= 2; argv += 2;
+     }
+     else if (!strcmp(firstarg->s_name, "@stateRecovery") && argc > 1)
