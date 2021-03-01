@@ -56,7 +56,7 @@ package()
     
     # Create nbxplorer-start.sh.
     echo -e "#!/bin/bash
-    tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc}\";bash -i" > ${srcdir}/${_pkgname}/${_pkgname_lc}-start.sh
+    tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname_lc}-start.sh
     
     # Create nbxplorer-stop.sh.
     echo -e "#!/bin/bash
