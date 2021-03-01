@@ -1,0 +1,67 @@
+From 5b75228b51c3422644468050debbc495f5195585 Mon Sep 17 00:00:00 2001
+From: BlackEagle <ike.devolder@gmail.com>
+Date: Thu, 25 Feb 2021 15:24:21 +0100
+Subject: [PATCH] allow separate windowing binaries being launched from kodi
+ wrapper
+
+Signed-off-by: BlackEagle <ike.devolder@gmail.com>
+---
+ tools/Linux/kodi.sh.in | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/tools/Linux/kodi.sh.in b/tools/Linux/kodi.sh.in
+index 108c0b0..38a49e0 100644
+--- a/tools/Linux/kodi.sh.in
++++ b/tools/Linux/kodi.sh.in
+@@ -28,6 +28,7 @@ LIBDIR="@libdir@"
+ APP_BINARY=$LIBDIR/${bin_name}/@APP_BINARY@
+ CRASHLOG_DIR=${CRASHLOG_DIR:-$HOME}
+ KODI_DATA=${KODI_DATA:-"${HOME}/.${bin_name}"} # mapped to special://home/
++WINDOWING=${WINDOWING:-"auto"}
+ 
+ # Workaround for high CPU load with nvidia GFX
+ export __GL_YIELD=USLEEP
+@@ -43,13 +44,39 @@ do
+             LIBDIR="$2"
+             shift; shift
+             ;;
++        --windowing)
++            WINDOWING="$2"
++            echo "$SAVED_ARGS" | sed "s/--windowing[ ]*$2//g"
++            shift; shift
++            ;;
+         *)
+             shift
+             ;;
+     esac
+ done
+ 
+-KODI_BINARY=${APP_BINARY}
++# Note: by default only one of those binaries exists
++# To be able to select a different one, if has to be compiled specifically
++# Your distribution might provide extra packages for those
++if [ "$WINDOWING" = "auto" ]; then
++    # Wayland
++    if [ -n "$WAYLAND_DISPLAY" ] && [ -x $LIBDIR/${bin_name}/${bin_name}-wayland ]; then
++        KODI_BINARY=$LIBDIR/${bin_name}/${bin_name}-wayland
++    # X11
++    elif echo $DISPLAY | grep -qE ":[0-9]+" && [ -x $LIBDIR/${bin_name}/${bin_name}-x11 ]; then
++        KODI_BINARY=$LIBDIR/${bin_name}/${bin_name}-x11
++    # GBM/DRM
++    elif [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ -x $LIBDIR/${bin_name}/${bin_name}-gbm ]; then
++        KODI_BINARY=$LIBDIR/${bin_name}/${bin_name}-gbm
++    # Default kodi.bin
++    else
++        KODI_BINARY=${APP_BINARY}
++    fi
++elif [ -n "$WINDOWING" ]; then
++    KODI_BINARY=$LIBDIR/${bin_name}/${bin_name}-${WINDOWING}
++else
++    KODI_BINARY=${APP_BINARY}
++fi
+ 
+ if [ ! -x ${KODI_BINARY} ]; then
+     echo "Error: ${KODI_BINARY} not found"
+-- 
+2.30.1
+
