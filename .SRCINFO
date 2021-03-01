@@ -1,7 +1,7 @@
 pkgbase = barnard-git
 	pkgdesc = A command line mumble client.
 	pkgver = r90.c9876db
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/bmmcginty/barnard
 	install = barnard-git.install
@@ -10,7 +10,7 @@ pkgbase = barnard-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = go-pie
+	makedepends = go
 	depends = openal
 	depends = opus
 	source = barnard::git+https://github.com/bmmcginty/barnard.git
