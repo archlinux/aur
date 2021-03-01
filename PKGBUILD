@@ -2,7 +2,7 @@
 
 pkgname=duplicacy
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'i686')
 url="https://duplicacy.com/"
@@ -18,7 +18,9 @@ prepare() {
   mkdir -p "src/github.com/gilbertchen"
   ln -sf "$srcdir/$pkgname-$pkgver" "src/github.com/gilbertchen/$pkgname"
 
-  GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go get -d -v
+  GO111MODULE=auto GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go get -d -v
+  cd "$srcdir/$pkgname-$pkgver/$pkgname/src/github.com/ncw/swift"
+  git checkout tags/v1.0.53
 }
 
 build() {
