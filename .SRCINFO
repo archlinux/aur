@@ -1,7 +1,7 @@
 pkgbase = wordlists
 	pkgdesc = Download a great set of wordlists. In /usr/share/wordlists
 	pkgver = 0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/5amu/wordlists
 	arch = any
 	license = MIT

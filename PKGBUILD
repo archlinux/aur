@@ -2,7 +2,7 @@
 
 pkgname=wordlists
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Download a great set of wordlists. In /usr/share/wordlists"
 url="https://github.com/5amu/wordlists"
 license=('MIT' 'GPLv2')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 package() {
+    install -dm755 $pkgdir/usr/share/wordlists/
     mkdir -p $pkgdir/usr/share/wordlists/dirbuster
     cp -r $srcdir/dirbuster-kali-1.0-1kali4/*.txt $pkgdir/usr/share/wordlists/dirbuster
     # No license here
