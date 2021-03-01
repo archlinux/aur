@@ -1,6 +1,6 @@
 pkgbase = sox-noise-git
 	pkgdesc = Noise generator GUI powered by Sound eXchange (SoX).
-	pkgver = 0.0.2.post2+gd84ad26
+	pkgver = 0.0.3.post2+g94f7ca4
 	pkgrel = 1
 	url = https://github.com/Thann/sox-noise
 	arch = any

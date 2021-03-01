@@ -3,7 +3,7 @@
 # Upstream: https://github.com/Thann/sox-noise
 
 pkgname=sox-noise-git
-pkgver=0.0.2.post2+gd84ad26
+pkgver=0.0.3.post2+g94f7ca4
 pkgrel=1
 pkgdesc='Noise generator GUI powered by Sound eXchange (SoX).'
 arch=('any')
@@ -25,4 +25,7 @@ package() {
   cd "$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  if [ -f "mime.sxn.xml" ]; then
+    install -D -m644 mime.sxn.xml "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+  fi
 }
