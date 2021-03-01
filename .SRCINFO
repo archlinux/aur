@@ -1,0 +1,18 @@
+pkgbase = humble-tangledeep
+	pkgdesc = Trapped in underground villages with no memory of the world at the surface, you must survive an ever-changing labyrinth to discover what lies above.
+	pkgver = 1.36b
+	pkgrel = 1
+	url = https://www.humblebundle.com/store/tangledeep
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	noextract = tangledeep.desktop
+	source = Tangledeep_136b_LinuxUniversal.zip::humble://Tangledeep_136b_LinuxUniversal.zip
+	source = tangledeep.desktop
+	sha256sums = a5f6da0742e7189d27c902cc8e040a9f6db4758f8ec08707840241c4bf409d7b
+	sha256sums = 13b1809ed2232f90fece7e46dae5d7f1d0dd983e0997501316f9e57703553fd4
+
+pkgname = humble-tangledeep
+
