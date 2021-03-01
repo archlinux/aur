@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=btdex
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Decentralized cryptocurrency exchange system running on the Burstcoin blockchain'
 arch=('any')
