@@ -12,7 +12,7 @@ pkgdesc="DLC for the ${_dlcparent} game."
 arch=('i686' 'pentium4' 'x86_64')
 url="https://www.gog.com/game/${_pkgname}s"
 license=('custom')
-depends=("gog-${_dlcparent}")
+depends=("${_dlcparent}")
 makedepends=('p7zip')
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh")
 # don't download anything via makepkg
