@@ -1,0 +1,20 @@
+pkgbase = gemserv
+	pkgdesc = A Gemini server written in Rust.
+	pkgver = v0.4.5
+	pkgrel = 1
+	url = https://git.sr.ht/~int80h/gemserv
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	depends = gcc-libs
+	source = gemserv-v0.4.5.tar.gz::https://git.sr.ht/~int80h/gemserv/archive/v0.4.5.tar.gz
+	sha256sums = 7aeb5edc8af6ebefc2331aebc0c360798711c2fb16ee9cbde8c5c4f9502c491f
+
+pkgname = gemserv
+
