@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-imgui
+	pkgdesc = Bloat-free Graphical User interface for C++ (mingw-w64)
+	pkgver = 1.81
+	pkgrel = 1
+	url = https://github.com/ocornut/imgui
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/ocornut/imgui/archive/v1.81.tar.gz
+	sha256sums = f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb
+
+pkgname = mingw-w64-imgui
+
