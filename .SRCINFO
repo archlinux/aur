@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-tinyobjloader
+	pkgdesc = Tiny but powerful single file wavefront obj loader (mingw-w64)
+	pkgver = 2.0.0rc7
+	pkgrel = 1
+	url = https://github.com/tinyobjloader/tinyobjloader
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/tinyobjloader/tinyobjloader/archive/v2.0.0rc7.tar.gz
+	sha256sums = f0246420235933d23715dd7d61e08d8b92ca896b5476dbef556d8b6270a275a3
+
+pkgname = mingw-w64-tinyobjloader
+
