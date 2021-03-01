@@ -10,7 +10,7 @@ For whatever reason, the software does not build if the port used by `bitcoind` 
 1. `nano /etc/bitcoin/bitcoin.conf` Uncomment "prune=550". Set "rpcuser=" and "rpcpassword=" how you like. You will need those values later.
 
 ### nbxplorer
-1. `nano ~/.nbxplorer/Main/settings.config` Set "btc.rpc.auth=" according to the prior set values separated by a colon in the bitcoind configuration file.
+1. `nano ~/.nbxplorer/Main/settings.config` Set "btc.rpc.auth=" according to the prior set values in the bitcoind configuration file.
 
 ### btcpayserver
 1. `nano ~/.btcpayserver/Main/settings.config` Uncomment the SQLite database line. Alternatively, a different can be used instead.
