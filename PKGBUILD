@@ -2,7 +2,7 @@
 
 pkgname=fdns
 pkgver=0.9.64.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
 license=(GPL2)
@@ -13,9 +13,16 @@ optdepends=('apparmor: support for apparmor profiles'
     'firejail: seamless integration support'
     'systemd: run fdns as a systemd service')
 validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
-source=("https://github.com/netblue30/fdns/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc})
+source=("https://github.com/netblue30/fdns/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
+    "resolver.seccomp.patch::https://github.com/netblue30/fdns/commit/76fc538ce6e7e29307429c77bcce6a0e69c8f6fa")
 sha256sums=('1ecfb371748df2654f1ce9d14dde3f2f9266a50a9dbcff51122fb941ccc07236'
-            'SKIP')
+            'SKIP'
+            '0979216a81f4f9b824bf7bcafbd541f14ec064703eb38126fd1e100dc8dbe574')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -Np1 < ../resolver.seccomp.patch # Update for kernel 5.11
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
