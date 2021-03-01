@@ -1,6 +1,6 @@
 pkgbase = silver-git
 	pkgdesc = A cross-shell customizable powerline-like prompt with icons (git)
-	pkgver = 1.1.0.r62.g4d44b8b
+	pkgver = 2.0.0.r0.g40b0e60
 	pkgrel = 2
 	url = https://github.com/reujab/silver
 	arch = x86_64

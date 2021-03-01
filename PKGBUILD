@@ -3,7 +3,7 @@
 # Contributor: reujab <reujab@gmail.com>
 
 pkgname=silver-git
-pkgver=1.1.0.r62.g4d44b8b
+pkgver=2.0.0.r0.g40b0e60
 pkgrel=2
 pkgdesc="A cross-shell customizable powerline-like prompt with icons (git)"
 arch=('x86_64')
