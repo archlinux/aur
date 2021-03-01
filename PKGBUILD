@@ -9,7 +9,7 @@ _target_triplet=aarch64-apple-darwin
 pkgname=theos-cctools-aarch64-git
 pkgdesc="Apple cctools port for Linux (theos,ios,aarch64)"
 pkgver=r262.3051881
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://github.com/tpoechtrager/cctools-port"
 license=(custom:APSL)
@@ -21,10 +21,10 @@ depends=(
   llvm
   util-linux-libs
   #
-  libbsd          # aarch64-apple-darwin-vtool -> /usr/lib/libbsd.so.0
-  tapi            # .tdb stubs
-  uuid            # ld64 -random_uuid support
-  xar-tpoechtrage # ld64 -bitcode_bundle support
+  libbsd              # aarch64-apple-darwin-vtool -> /usr/lib/libbsd.so.0
+  tapi-git            # .tdb stubs
+  uuid                # ld64 -random_uuid support
+  xar-tpoechtrage-git # ld64 -bitcode_bundle support
   #
 )
 makedepends=(git)
