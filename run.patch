@@ -1,0 +1,7 @@
+3c3
+< base_dir="$(cd "$(dirname "$0")" && pwd -P)"
+---
+> base_dir="/opt/omnisharp-roslyn-bundled"
+12,13d11
+< chmod 755 "${mono_cmd}"
+< 

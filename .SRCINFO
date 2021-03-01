@@ -1,0 +1,18 @@
+pkgbase = omnisharp-roslyn-bundled
+	pkgdesc = LSP server for C# - version with bundled mono
+	pkgver = 1.37.6
+	pkgrel = 1
+	url = https://github.com/OmniSharp/omnisharp-roslyn
+	arch = x86_64
+	license = MIT
+	provides = omnisharp-roslyn
+	conflicts = omnisharp-roslyn
+	noextract = omnisharp-linux.tar.gz
+	options = !strip
+	source = omnisharp-linux.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.37.6/omnisharp-linux-x64.tar.gz
+	source = run.patch
+	sha256sums = 49b8600ea956d586defed72e74743d56f8de99126c154f7d700a4c06bea69970
+	sha256sums = 984052cf95ca95940c3beb9b14d05bdd0c1e207ea7cac455c347e2978e0319b1
+
+pkgname = omnisharp-roslyn-bundled
+
