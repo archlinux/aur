@@ -67,6 +67,6 @@ package() {
   local docdir="$shrdir/doc/st"
   make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
   install $installopts "$licdir" "$_sourcedir/LICENSE"
-  install $installopts "$docdir" "$_sourcedir/README"
+  install $installopts "$docdir" "$_sourcedir/README.md"
   install $installopts "$shrdir/st" "$_sourcedir/st.info"
 }
