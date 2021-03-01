@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.2.11.1
+pkgver=2.2.12.0
 pkgrel=2
 pkgdesc="A library for reading and writing images. (mingw-w64)"
 url="http://www.openimageio.org/"
@@ -23,16 +23,15 @@ depends=(
 	"mingw-w64-opencv"
 	"mingw-w64-ffmpeg"
 	"mingw-w64-hdf5"
-	"mingw-w64-robin-map"
 	"mingw-w64-libraw"
 	"mingw-w64-libheif"
 )
-makedepends=("mingw-w64-cmake")
+makedepends=("mingw-w64-cmake" "mingw-w64-robin-map")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"120170e8517d8911f52b0fb56f14eb56aad88edd72cc9e4b2e35c74025293b7d"
+	"6010b0642b5bf9c045c397a0f0a7efec232fdaffb49984d449073d006e9004a6"
 	"9afbed7e3f989dba04a8bb784af24dda26b362f13d4b5933c56bed68289ee352"
 )
 source=(
