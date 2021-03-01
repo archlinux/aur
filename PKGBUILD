@@ -33,7 +33,6 @@ pkgver() {
 build() {
   cd $_pkgname
   bash 'do'
-
 }
 
 package() {
