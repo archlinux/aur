@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
-_pkgname=symbiflow-arch-defs
-pkgbase="$_pkgname-nightly-bin"
+_pkgbase=symbiflow-arch-defs
+pkgbase="$_pkgbase-nightly-bin"
 _buildnum=142
 _builddate=20210203-000107
 _commit=4f62d7ae
@@ -11,18 +11,18 @@ pkgdesc="Documentation of various FPGA architectures - latest binary snapshot"
 arch=(any)
 url="https://github.com/SymbiFlow/symbiflow-arch-defs"
 license=('ISC')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-_baseurl="https://storage.googleapis.com/$_pkgname/artifacts/prod/foss-fpga-tools/$_pkgname/continuous/install/$_buildnum/$_builddate"
+provides=("$_pkgbase")
+conflicts=("$_pkgbase")
+_baseurl="https://storage.googleapis.com/$_pkgbase/artifacts/prod/foss-fpga-tools/$_pkgbase/continuous/install/$_buildnum/$_builddate"
 _devices=(xc7a50t xc7a100t xc7a200t xc7z010 xc7z020)
-source=("https://raw.githubusercontent.com/SymbiFlow/$_pkgname/$_commit/COPYING"
+source=("https://raw.githubusercontent.com/SymbiFlow/$_pkgbase/$_commit/COPYING"
         "fix_xc7_carry.py.patch"
         "synth.tcl.patch"
         "wrappers.patch"
         "synth.tcl-disable-abc9.patch"
-        "$_baseurl/$_pkgname-install-$_commit.tar.xz")
+        "$_baseurl/$_pkgbase-install-$_commit.tar.xz")
 for _d in "${_devices[@]}"; do
-	source+=("$_baseurl/$_pkgname-${_d}_test-$_commit.tar.xz")
+	source+=("$_baseurl/$_pkgbase-${_d}_test-$_commit.tar.xz")
 done
 noextract=("${source[@]##*/}")
 sha256sums=('0726ddf229165179fe21da0c97884eeddf88be32dcfc13abf9b2eced0dbafad6'
@@ -41,7 +41,7 @@ pkgname=("$pkgbase-toolchain" "${_devices[@]/#/$pkgbase-device-}")
 
 _extract_tarball() {
 	install -dm755 "$pkgdir/usr"
-	bsdtar -C "$pkgdir/usr" -xof "$_pkgname-$1-$_commit.tar.xz"
+	bsdtar -C "$pkgdir/usr" -xof "$_pkgbase-$1-$_commit.tar.xz"
 	chmod -R g-ws "$pkgdir"
 
 	install -Dm644 "$srcdir/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -51,8 +51,8 @@ _package-toolchain() {
 	pkgdesc="Scripts to invoke the SymbiFlow toolchain"
 	depends=('vtr>8.0.0' 'yosys' 'yosys-symbiflow-plugins' 'python' 'python-constraint' 'python-xc-fasm' 'prjxray')
 	optdepends=("${_devices[@]/#/$pkgbase-device-}")
-	provides=("$_pkgname-toolchain")
-	conflicts=("$_pkgname-toolchain")
+	provides=("$_pkgbase-toolchain")
+	conflicts=("$_pkgbase-toolchain")
 
 	_extract_tarball "install"
 
@@ -66,13 +66,13 @@ _package-toolchain() {
 	patch -d "$pkgdir/usr/share/symbiflow/scripts/xc7/" -p1 < "$srcdir/synth.tcl.patch"
 	patch -d "$pkgdir/usr/share/symbiflow/scripts/xc7/" -p1 < "$srcdir/synth.tcl-disable-abc9.patch"
 
-	sed -i "s#source \"[^\"]*/env\"#source /usr/lib/$_pkgname/env#" "$pkgdir"/usr/bin/*
+	sed -i "s#source \"[^\"]*/env\"#source /usr/lib/$_pkgbase/env#" "$pkgdir"/usr/bin/*
 	sed -i 's#SHARE_DIR_PATH=.*#SHARE_DIR_PATH=/usr/share/symbiflow/#' "$pkgdir/usr/bin/env"
 	sed -i -E 's/^\s*VPR_OPTIONS=(".*")$/read -ra VPR_OPTIONS <<<\1/' "$pkgdir/usr/bin/vpr_common"
 
-	install -dm755 "$pkgdir/usr/lib/$_pkgname"
+	install -dm755 "$pkgdir/usr/lib/$_pkgbase"
 	chmod a-x "$pkgdir/usr/bin/env" "$pkgdir/usr/bin/vpr_common"
-	mv "$pkgdir/usr/bin/env" "$pkgdir/usr/bin/vpr_common" "$pkgdir/usr/lib/$_pkgname"
+	mv "$pkgdir/usr/bin/env" "$pkgdir/usr/bin/vpr_common" "$pkgdir/usr/lib/$_pkgbase"
 }
 
 eval "package_$pkgbase-toolchain() {
@@ -83,8 +83,8 @@ eval "package_$pkgbase-toolchain() {
 for _device in "${_devices[@]}"; do
 	eval "package_$pkgbase-device-$_device() {
 		pkgdesc='SymbiFlow device definitions for $_device'
-		provides=('$_pkgname-device-$_device')
-		conflicts=('$_pkgname-device-$_device')
+		provides=('$_pkgbase-device-$_device')
+		conflicts=('$_pkgbase-device-$_device')
 
 		_extract_tarball '${_device}_test'
 	}"
