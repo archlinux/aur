@@ -12,6 +12,8 @@ arch=('i686' 'pentium4' 'x86_64')
 url="https://www.gog.com/game/${_pkgname}"
 license=('custom')
 makedepends=('p7zip')
+provides=('tangledeep')
+conflicts=('humble-tangledeep')
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh"
         "${_pkgname}.desktop")
 # don't download anything via makepkg
