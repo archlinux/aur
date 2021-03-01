@@ -83,9 +83,6 @@ package() {
   ((DISABLE_CUDA)) || optdepends+=( 'cuda: (libcudart.so) for depth map computation' )
   DESTDIR="${pkgdir}" ninja -C build install
 
-# fix conflict with openmvg
-  rm "${pkgdir}"/usr/lib/libvlsift.a
-
 # install custom licenses.
   cd "${pkgdir}"/usr/share
   install -dm755 licenses/${_name}/
