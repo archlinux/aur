@@ -2,18 +2,17 @@
 
 pkgname=ldid-git
 pkgver=2.1.2.r10.d4a4dbe
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool used for ad-hoc codesigning iOS binaries - saurik official"
 arch=(x86_64)
 url="https://git.saurik.com/${pkgname//-/.}"
 license=(AGPL3)
 depends=(
-  clang
   libplist
-  libxml2
+  # libxml2
   openssl
 )
-makedepends=(git)
+makedepends=(git clang)
 provides=(${pkgname%-git}{,2{,-git}})
 conflicts=(${provides[*]})
 # https://stackoverflow.com/questions/10909976/why-do-seemingly-empty-files-and-strings-produce-md5sums
@@ -42,20 +41,22 @@ build(){
 cd "$srcdir/${pkgname%-git}"
 cat <<"EOM" >Makefile
 #
-CC:=clang
-CXX:=clang++
-CFLAGS:=$(CFLAGS) $(shell pkg-config --cflags libplist-2.0,libxml-2.0,libcrypto)
+CC:=/bin/false
+CXX:=/bin/false
+CFLAGS:=$(CFLAGS) $(shell pkg-config --cflags libplist-2.0,libcrypto) # libxml-2.0
 #
+default: ldid
+ldid: CC:=clang++
+ldid: LDLIBS:=$(shell pkg-config --libs libplist-2.0,libcrypto) # libxml-2.0
+ldid: ldid.o lookup2.o
+#
+%.o: CC:=clang
+%.o: CXX:=clang++
 ldid.o: ldid.cpp
 lookup2.o: lookup2.c
 #
-ldid: LDLIBS:=$(shell pkg-config --libs libplist-2.0,libxml-2.0,libcrypto)
-ldid: ldid.o lookup2.o
-@TAB@$(CXX) $(LDFLAGS)  $^ $(LOADLIBES) $(LDLIBS) -o $@
-#
 EOM
-sed -i s/@TAB@/$'\t'/g Makefile
-make ldid
+make
 }
 
 package(){
