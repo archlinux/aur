@@ -2,7 +2,7 @@
 
 pkgname=ldid-git
 pkgver=2.1.2.r10.d4a4dbe
-pkgrel=2
+pkgrel=3
 pkgdesc="a tool used for ad-hoc codesigning iOS binaries - saurik official"
 arch=(x86_64)
 url="https://git.saurik.com/${pkgname//-/.}"
@@ -16,7 +16,7 @@ makedepends=(git clang)
 provides=(${pkgname%-git}{,2{,-git}})
 conflicts=(${provides[*]})
 # https://stackoverflow.com/questions/10909976/why-do-seemingly-empty-files-and-strings-produce-md5sums
-source=('empty')
+source=(file:///dev/null)
 md5sums=('d41d8cd98f00b204e9800998ecf8427e')
 
 prepare(){

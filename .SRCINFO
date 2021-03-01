@@ -1,7 +1,7 @@
 pkgbase = ldid-git
 	pkgdesc = a tool used for ad-hoc codesigning iOS binaries - saurik official
 	pkgver = 2.1.2.r10.d4a4dbe
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.saurik.com/ldid.git
 	arch = x86_64
 	license = AGPL3
@@ -15,7 +15,7 @@ pkgbase = ldid-git
 	conflicts = ldid
 	conflicts = ldid2
 	conflicts = ldid2-git
-	source = empty
+	source = file:///dev/null
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
 
 pkgname = ldid-git
