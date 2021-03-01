@@ -25,8 +25,8 @@ sha256sums_aarch64=('65671f9854fe04815a4a849e6cdd5b1701fa04627cd2acc68cfd1de2561
 
 package_dogecoin-qt-bin() {
 	pkgdesc="Dogecoin is a peer-to-peer network based digital currency - Qt Interface"
-	conflicts=(dogecoin-qt)
 	provides=(dogecoin-qt)
+	conflicts=(dogecoin-qt)
 	depends=(libx11 fontconfig freetype2)
 
 	install -Dm755 $pkgbase-$pkgver/bin/dogecoin-qt $pkgdir/usr/bin/dogecoin-qt
