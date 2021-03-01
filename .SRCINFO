@@ -1,0 +1,18 @@
+pkgbase = ipxgw-git
+	pkgdesc = DOSBox IPXNET to real IPX network gateway
+	pkgver = r20.dd9db85
+	pkgrel = 1
+	url = https://github.com/jsalin/ipxgw
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libpcap
+	depends = sdl
+	depends = sdl_net
+	provides = ipxgw
+	conflicts = ipxgw
+	source = ipxgw-git::git+https://github.com/jsalin/ipxgw.git
+	md5sums = SKIP
+
+pkgname = ipxgw-git
+
