@@ -32,5 +32,5 @@ package() {
 
   cd $srcdir
   install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -D -m644 "$srcdir/${pkgname}_$_pkgver/qsstv/icons/${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -D -m644 "$srcdir/${pkgname}_$_pkgver/icons/${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 }
