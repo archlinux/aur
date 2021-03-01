@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=21.33
+pkgver=21.34
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -12,13 +12,12 @@ optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('86b7eb84423cb0b36241351b59a507da795173cc2d52db00dad0b8f88da70dc9')
+sha256sums=('7493c8b597937b92810789790958663437193b27f28eb107b2059eab6fcca9ed')
 
 prepare() {
   cd $pkgname
   #sed -i 's+libchamplain+champlain+g' Makefile
   chmod o+r images/color-mode.jpg
-  sed -i '125s+^+# +' Makefile
 }
 
 build() {
@@ -28,7 +27,7 @@ build() {
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps  install 
+  make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install 
   sed -i 's+/usr/share/fotoxx/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
   sed -i 's+Icon=fotoxx.png+Icon=fotoxx+' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
