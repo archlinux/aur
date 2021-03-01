@@ -1,18 +1,18 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
-pkgver=r209.a4a1363
-pkgrel=2
+pkgver=r424.db04167
+pkgrel=1
 epoch=1
 pkgdesc="A cross-platform soundboard in QtQuick"
 arch=('any')
 url="https://github.com/Soundux/Soundux"
 license=('GPL3')
-depends=('pulseaudio' 'qt5-base' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-quickcontrols2')
-makedepends=('qt5-tools' 'git' 'cmake' 'ninja')
+depends=('pulseaudio' 'webkit2gtk')
+makedepends=('git' 'cmake' 'ninja')
 conflicts=('soundux')
 provides=('soundux')
 source=("git+https://github.com/Soundux/Soundux.git" "soundux.desktop")
-sha256sums=('SKIP' '27e29e44ad3eacce0ac20a31653da437cd27cc2d165d19804430df9da7bab4fd')
+sha256sums=('SKIP' '9ba572406c69e23c43ae419fde2bcefb4eade15e4e8ed9c082324b11d7e35184')
 
 pkgver() {
   cd "${srcdir}/Soundux"
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}/Soundux"
   git submodule update --init --recursive
-  mkdir build
+  mkdir -p build
   cd build
   cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
   ninja
@@ -32,9 +32,14 @@ build() {
 
 package() {
   # install binary
-  install -Dm 755 "${srcdir}/Soundux/build/soundux" "${pkgdir}/usr/bin/soundux"
+  install -Dm 755 "${srcdir}/Soundux/build/soundux" "${pkgdir}/opt/soundux/soundux"
+  mkdir -p "${pkgdir}/usr/bin/"
+  ln -sf "${pkgdir}/opt/soundux/soundux" "${pkgdir}/usr/bin/soundux"
+  # install dist
+  mkdir -p "${pkgdir}/opt/soundux/dist"
+  cp -r "${srcdir}/Soundux/build/dist"/* "${pkgdir}/opt/soundux/dist"
   # install icon
-  install -Dm 664 "${srcdir}/Soundux/icon.png" "${pkgdir}/usr/share/pixmaps/soundux.png"
+  install -Dm 664 "${srcdir}/Soundux/assets/icon.png" "${pkgdir}/usr/share/pixmaps/soundux.png"
   # install desktop file
   install -Dm 644 "${srcdir}/soundux.desktop" "${pkgdir}/usr/share/applications/soundux.desktop"
 }
