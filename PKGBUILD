@@ -2,7 +2,7 @@
 
 _pkgname=rescrobbled
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r3.07f6034
+pkgver=0.3.0.r0.g0aff874
 pkgrel=1
 pkgdesc="Music scrobbler daemon using the MPRIS D-Bus interface."
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -29,12 +29,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release --locked
+  cargo build --release --locked --all-features --target-dir=target
 }
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cargo test --release --locked
+  cargo test --release --locked --all-features
 }
 
 package() {
