@@ -1,6 +1,6 @@
 pkgbase = wait4x
 	pkgdesc = Waiting for a port to enter into specify state
-	pkgver = 0.5.0
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/atkrad/wait4x
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = wait4x
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = wait4x-0.5.0.tar.gz::https://github.com/atkrad/wait4x/archive/v0.5.0.tar.gz
-	sha256sums = 45b6249fb3dddb516e1d8ae7e08f5b56cf3f5caada1631aaac40c3f695bb6f6b
+	source = wait4x-0.5.4.tar.gz::https://github.com/atkrad/wait4x/archive/v0.5.4.tar.gz
+	sha256sums = 3f2dfa9dd3d67623bbd3c80624f3aac769717c7f0c53a63b1c24655137fe672d
 
 pkgname = wait4x
 
