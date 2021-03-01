@@ -1,12 +1,12 @@
 pkgbase = tijolo-git
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
 	pkgver = HEAD
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = crystal>=0.35.1
+	makedepends = crystal<0.36
 	makedepends = shards>=0.11.0
 	depends = gc
 	depends = libevent
@@ -15,6 +15,7 @@ pkgbase = tijolo-git
 	depends = nerd-fonts-jetbrains-mono
 	depends = libgit2
 	depends = editorconfig-core-c
+	depends = ttf-font-awesome>=5.15
 	conflicts = tijolo
 	source = tijolo-git::git+https://github.com/hugopl/tijolo.git
 	sha256sums = SKIP
