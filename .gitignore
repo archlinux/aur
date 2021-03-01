@@ -4,3 +4,4 @@
 mercure-*_x86_64
 mercure-*_i686
 *.tar.xz
+*.tar.zst
