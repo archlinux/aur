@@ -86,6 +86,7 @@ build() {
 		-DMTS_ENABLE_EMBREE:BOOL=OFF \
 		-DCMAKE_INSTALL_PREFIX:PATH="$pkgdir"
 
+	ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
 	ninja -C "$srcdir/build" mkdoc
 }
 
