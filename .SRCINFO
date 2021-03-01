@@ -1,0 +1,16 @@
+pkgbase = guile-zlib
+	pkgdesc = Guile bindings for zlib
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://notabug.org/guile-zlib/guile-zlib
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = guile
+	depends = zlib
+	source = guile-zlib-0.0.1.tar.gz::https://notabug.org/guile-zlib/guile-zlib/archive/0.0.1.tar.gz
+	sha256sums = f1100be6dd31b02983cf498155bf11155ca833421f99698f29e5694317335fb1
+
+pkgname = guile-zlib
+
