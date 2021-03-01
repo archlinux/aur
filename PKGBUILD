@@ -4,7 +4,7 @@ ENABLE_FLATPAK=0
 ENABLE_SNAPD=0
 
 pkgname=duino-coin
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 
 pkgdesc="is a cryptocurrency that can also be mined with AVR boards."

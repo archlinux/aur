@@ -1,13 +1,13 @@
 pkgbase = duino-coin
 	pkgdesc = is a cryptocurrency that can also be mined with AVR boards.
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/revoxhere/duino-coin
 	arch = x86_64
 	license = MIT
 	optdepends = python: needed for actually running the PC_Miner
 	optdepends = python-pip: needed for dependencies in the Miner
-	source = duino-coin-2.1.tar.gz::https://github.com/revoxhere/duino-coin/archive/2.1.tar.gz
+	source = duino-coin-2.2.tar.gz::https://github.com/revoxhere/duino-coin/archive/2.2.tar.gz
 	sha256sums = 891968c2661a30d047dbe92aef58378d706ca3eceb15b00a689c9fbaa05a9c72
 
 pkgname = duino-coin
