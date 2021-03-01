@@ -1,3 +1,11 @@
+2021-03-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.4.3-1:
+    Added mab, mabadd and mabrm commands (#2183).
+    Further decreased chance of Steam PICS restarts to cause idling temporarily unavailable.
+    Misc corrections in regards to error-handling of our STD plugin.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-02-10 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.3.2-1:
     Fixed IPC not starting in latest docker release of 5.0.3.1.
