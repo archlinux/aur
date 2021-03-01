@@ -333,7 +333,7 @@ END
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
   install -Dm644 browser/branding/librewolf/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
 
   install -Dm644 ../librewolf-dev.desktop \
     "$pkgdir/usr/share/applications/librewolf-dev.desktop"
