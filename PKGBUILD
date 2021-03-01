@@ -2,8 +2,8 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.14
-pkgrel=2
+pkgver=0.0.15
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
 url=https://rpcs3.net
@@ -23,12 +23,11 @@ source=(
     git+https://github.com/KhronosGroup/glslang.git
     git+https://github.com/KhronosGroup/SPIRV-Headers.git
     git+https://github.com/KhronosGroup/SPIRV-Tools.git
-    git+https://github.com/kobalicek/asmjit.git
+    git+https://github.com/asmjit/asmjit.git
     git+https://github.com/libusb/libusb.git
     git+https://github.com/wolfSSL/wolfssl.git
     git+https://github.com/tcbrindle/span.git
     git+https://github.com/zeux/pugixml.git
-    9541.patch::https://patch-diff.githubusercontent.com/raw/RPCS3/rpcs3/pull/9541.patch
 )
 
 md5sums=('SKIP'
@@ -46,8 +45,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         '1f1ae64f976cafb0c25b689df6ffb72c')
+         'SKIP')
 
 prepare() {
     cd "$pkgname"
@@ -68,9 +66,6 @@ prepare() {
     git config submodule."3rdparty/span".url ../span
     git config submodule."3rdparty/pugixml".url ../pugixml
     git submodule update
-
-    # Fix compilation with post-release commit
-    patch -Np1 -i "$srcdir/9541.patch"
 }
 
 build() {
