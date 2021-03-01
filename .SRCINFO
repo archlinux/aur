@@ -1,0 +1,21 @@
+pkgbase = sysmontask
+	pkgdesc = System monitor with the compactness and usefulness of Windows task manager to allow higher control and monitoring
+	pkgver = 1.1.1_beta
+	pkgrel = 1
+	url = https://github.com/KrispyCamel4u/SysMonTask
+	arch = any
+	license = MIT
+	makedepends = tar
+	makedepends = xz
+	depends = python
+	depends = python-psutil>=5.8
+	depends = gtk3
+	depends = zenity
+	depends = python-gobject
+	depends = python-xxhash
+	provides = sysmontask
+	conflicts = sysmontask
+	source = https://github.com/KrispyCamel4u/SysMonTask/releases/download/v1.1.1_beta/sysmontask_1.1.1-ubuntu20.10-beta-a_all.deb
+	sha256sums = 2546abed806fc0522448e02c7bc5d21c4a6b7ee97078c013673fad5df58a30d7
+
+pkgname = sysmontask
