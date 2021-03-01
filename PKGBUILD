@@ -80,7 +80,7 @@ build() {
   # Use system ctags
   cd node_modules/symbols-view
   patch -Np1 -i "${srcdir}"/symbols-view-use-system-ctags.patch
-  rm -r vendor
+  rm -r lib/ctags-config vendor
   cd ../..
 
   # Use system git
