@@ -1,0 +1,14 @@
+pkgbase = python-rocksdb
+	pkgdesc = Python bindings for RocksDB
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/twmht/python-rocksdb
+	arch = any
+	license = BSD
+	license = License
+	makedepends = python
+	makedepends = python-pip
+	depends = rocksdb
+
+pkgname = python-rocksdb
+
