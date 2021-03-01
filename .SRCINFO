@@ -1,6 +1,6 @@
 pkgbase = dav1d-git-optimized
 	pkgdesc = AV1 cross-platform Decoder, focused on speed and correctness -- latest git version compiled with optimizations
-	pkgver = r1617.baa9237
+	pkgver = r1627.f06148e
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/dav1d
 	arch = x86_64
@@ -15,11 +15,9 @@ pkgbase = dav1d-git-optimized
 	source = git+https://code.videolan.org/videolan/dav1d.git
 	source = http://download.opencontent.netflix.com.s3.amazonaws.com/AV1/Sparks/Sparks-5994fps-AV1-10bit-1920x1080-film-grain-synthesis-2013kbps.obu
 	source = 0001-1112.patch
-	source = 0002-1160.patch
 	sha256sums = SKIP
 	sha256sums = e56e20de5bfad7ec073d3e53ea6c760d0b11ed143f087b1bc32230e4840fea87
-	sha256sums = 83807b996384f147cea3702a1a7fcd4accfc04c3937fea11d0f74b615c37f8d2
-	sha256sums = de289262c9d4e1964e7b9130a5619c6501e82a074794ced6d7da7922630973f3
+	sha256sums = SKIP
 
 pkgname = dav1d-git-optimized
 

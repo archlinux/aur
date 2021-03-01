@@ -1,4 +1,4 @@
-From efd27b6182c04072e1cc4b80b24aa28e78d6bfea Mon Sep 17 00:00:00 2001
+From 3ab60cb9a868286bdeee77636ad4a271432df204 Mon Sep 17 00:00:00 2001
 From: "Nathan E. Egge" <unlord@xiph.org>
 Date: Mon, 21 Dec 2020 15:38:02 -0500
 Subject: [PATCH 1/7] Add bpc suffix to mc functions
@@ -11,7 +11,7 @@ Subject: [PATCH 1/7] Add bpc suffix to mc functions
  4 files changed, 343 insertions(+), 343 deletions(-)
 
 diff --git a/src/x86/mc_avx2.asm b/src/x86/mc_avx2.asm
-index dda8234f..e77a6474 100644
+index 6a1ab057..b45aabea 100644
 --- a/src/x86/mc_avx2.asm
 +++ b/src/x86/mc_avx2.asm
 @@ -110,7 +110,7 @@ cextern resize_filter
@@ -174,7 +174,7 @@ index dda8234f..e77a6474 100644
      add                  wq, base_reg
      jmp                  wq
  %ifidn %1, put
-@@ -4026,10 +4026,10 @@ cglobal prep_8tap_scaled, 4, 14, 16, 128, tmp, src, ss, w, h, mx, my, dx, dy
+@@ -4025,10 +4025,10 @@ cglobal prep_8tap_scaled, 4, 14, 16, 128, tmp, src, ss, w, h, mx, my, dx, dy
  %endmacro
  
  %macro BILIN_SCALED_FN 1
@@ -187,7 +187,7 @@ index dda8234f..e77a6474 100644
  %endmacro
  
  %if WIN64
-@@ -4114,11 +4114,11 @@ MC_8TAP_SCALED prep
+@@ -4113,11 +4113,11 @@ MC_8TAP_SCALED prep
      paddd               m%1, m0, m%2
  %endmacro
  
@@ -201,7 +201,7 @@ index dda8234f..e77a6474 100644
  .loop:
      psrad                m7, 13
      psrad                m0, 13
-@@ -4128,12 +4128,12 @@ cglobal warp_affine_8x8t, 0, 14, 0, tmp, ts
+@@ -4127,12 +4127,12 @@ cglobal warp_affine_8x8t, 0, 14, 0, tmp, ts
      mova         [tmpq+tsq*0], xm7
      vextracti128 [tmpq+tsq*2], m7, 1
      dec                 r4d
@@ -217,7 +217,7 @@ index dda8234f..e77a6474 100644
                                     beta, filter, tmp1, delta, my, gamma
  %if WIN64
      sub                 rsp, 0xa0
-@@ -4390,9 +4390,9 @@ ALIGN function_align
+@@ -4389,9 +4389,9 @@ ALIGN function_align
      add               tmp2q, %1*32
  %endmacro
  
@@ -230,7 +230,7 @@ index dda8234f..e77a6474 100644
      tzcnt                wd, wm
      movifnidn            hd, hm
      movsxd               wq, dword [r6+wq*4]
-@@ -4420,9 +4420,9 @@ cglobal avg, 4, 7, 3, dst, stride, tmp1, tmp2, w, h, stride3
+@@ -4419,9 +4419,9 @@ cglobal avg, 4, 7, 3, dst, stride, tmp1, tmp2, w, h, stride3
  
  %define W_AVG_INC_PTR AVG_INC_PTR
  
@@ -243,7 +243,7 @@ index dda8234f..e77a6474 100644
      tzcnt                wd, wm
      movifnidn            hd, hm
      vpbroadcastw         m4, r6m ; weight
-@@ -4470,9 +4470,9 @@ cglobal w_avg, 4, 7, 6, dst, stride, tmp1, tmp2, w, h, stride3
+@@ -4469,9 +4469,9 @@ cglobal w_avg, 4, 7, 6, dst, stride, tmp1, tmp2, w, h, stride3
      add               tmp1q, %1*32
  %endmacro
  
@@ -256,7 +256,7 @@ index dda8234f..e77a6474 100644
      tzcnt                wd, wm
      movifnidn            hd, hm
      mov               maskq, maskmp
-@@ -4513,9 +4513,9 @@ cglobal mask, 4, 8, 6, dst, stride, tmp1, tmp2, w, h, mask, stride3
+@@ -4512,9 +4512,9 @@ cglobal mask, 4, 8, 6, dst, stride, tmp1, tmp2, w, h, mask, stride3
      packuswb            m%1, m1
  %endmacro
  
@@ -269,7 +269,7 @@ index dda8234f..e77a6474 100644
      tzcnt                wd, wm
      movifnidn            hd, hm
      movifnidn         maskq, maskmp
-@@ -4630,15 +4630,15 @@ ALIGN function_align
+@@ -4629,15 +4629,15 @@ ALIGN function_align
      jg .w32
      RET
  
@@ -289,7 +289,7 @@ index dda8234f..e77a6474 100644
      jmp                  wq
  .w2:
      vpbroadcastd        xm2, [maskq+2*2]
-@@ -4741,9 +4741,9 @@ ALIGN function_align
+@@ -4740,9 +4740,9 @@ ALIGN function_align
      jg .w32_loop
      RET
  
@@ -302,7 +302,7 @@ index dda8234f..e77a6474 100644
      mov                 r6d, wd
      tzcnt                wd, wd
      mov                  hd, hm
-@@ -4867,7 +4867,7 @@ ALIGN function_align
+@@ -4866,7 +4866,7 @@ ALIGN function_align
      jl .w32_loop0
      RET
  
@@ -311,7 +311,7 @@ index dda8234f..e77a6474 100644
                               bottomext, rightext
      ; we assume that the buffer (stride) is larger than width, so we can
      ; safely overwrite by a few bytes
-@@ -5054,7 +5054,7 @@ cglobal emu_edge, 10, 13, 1, bw, bh, iw, ih, x, y, dst, dstride, src, sstride, \
+@@ -5053,7 +5053,7 @@ cglobal emu_edge, 10, 13, 1, bw, bh, iw, ih, x, y, dst, dstride, src, sstride, \
  .end:
      RET
  
@@ -320,7 +320,7 @@ index dda8234f..e77a6474 100644
                             dst_w, h, src_w, dx, mx0
      sub          dword mx0m, 4<<14
      sub        dword src_wm, 8
-@@ -5192,9 +5192,9 @@ cglobal resize, 6, 14, 16, dst, dst_stride, src, src_stride, \
+@@ -5191,9 +5191,9 @@ cglobal resize, 6, 14, 16, dst, dst_stride, src, src_stride, \
      jg .loop_y
      RET
  
@@ -333,7 +333,7 @@ index dda8234f..e77a6474 100644
      tzcnt                wd, wm
      mov                 r6d, r7m ; sign
      movifnidn            hd, hm
-@@ -5398,9 +5398,9 @@ cglobal w_mask_420, 4, 8, 14, dst, stride, tmp1, tmp2, w, h, mask, stride3
+@@ -5397,9 +5397,9 @@ cglobal w_mask_420, 4, 8, 14, dst, stride, tmp1, tmp2, w, h, mask, stride3
      jg .w128_loop
      RET
  
@@ -346,7 +346,7 @@ index dda8234f..e77a6474 100644
      tzcnt                wd, wm
      mov                 r6d, r7m ; sign
      movifnidn            hd, hm
-@@ -5571,9 +5571,9 @@ cglobal w_mask_422, 4, 8, 11, dst, stride, tmp1, tmp2, w, h, mask, stride3
+@@ -5570,9 +5570,9 @@ cglobal w_mask_422, 4, 8, 11, dst, stride, tmp1, tmp2, w, h, mask, stride3
      jg .w128_loop
      RET
  
@@ -1324,7 +1324,7 @@ index edbd1865..8b38daa7 100644
 GitLab
 
 
-From da299eb148a2a799411132166d32613d15586578 Mon Sep 17 00:00:00 2001
+From 10b12fff1df60f403a2eb1a7025b10679619f85e Mon Sep 17 00:00:00 2001
 From: "Nathan E. Egge" <unlord@xiph.org>
 Date: Mon, 21 Dec 2020 00:38:05 -0500
 Subject: [PATCH 2/7] x86: mc: Add AVX2 implementation of 8tap put/prep for
@@ -2954,7 +2954,7 @@ index 00000000..ea6cfdbf
 GitLab
 
 
-From 07a3064c9ebd0827177706e135f25cc8a6c25399 Mon Sep 17 00:00:00 2001
+From 9622bbfd5a5a0ef1ee94a1b28f1a9ab62e5f3031 Mon Sep 17 00:00:00 2001
 From: "Nathan E. Egge" <unlord@xiph.org>
 Date: Sat, 26 Dec 2020 21:38:58 -0500
 Subject: [PATCH 3/7] Enable AVX2 8tap put/prep HBD assembly
@@ -2965,15 +2965,13 @@ Subject: [PATCH 3/7] Enable AVX2 8tap put/prep HBD assembly
  2 files changed, 21 insertions(+), 18 deletions(-)
 
 diff --git a/src/meson.build b/src/meson.build
-index f9f5c120..ff62a9d8 100644
+index 25729217..e499da2f 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -208,8 +208,9 @@ if is_asm_enabled
- 
-         if dav1d_bitdepths.contains('16')
-             libdav1d_sources_asm += files(
+@@ -212,6 +212,7 @@ if is_asm_enabled
                  'x86/cdef16_avx2.asm',
                  'x86/cdef16_sse.asm',
+                 'x86/looprestoration16_avx2.asm',
 +                'x86/mc16_avx2.asm',
              )
          endif
@@ -3040,7 +3038,7 @@ index 468069c5..fcfed9be 100644
 GitLab
 
 
-From 68aa4049fe160b318f0f037b0f5514aefea8a69b Mon Sep 17 00:00:00 2001
+From 3f3572bc6c91a51223756ac2baaf6e7616d09b2d Mon Sep 17 00:00:00 2001
 From: "Nathan E. Egge" <unlord@xiph.org>
 Date: Sat, 26 Dec 2020 06:21:44 -0500
 Subject: [PATCH 4/7] x86: mc: Add AVX2 implementation of avg/w_avg/mask for
@@ -3281,7 +3279,7 @@ index ea6cfdbf..7b4f9cdf 100644
 GitLab
 
 
-From 6ba57502ac82b00d1441a36d4e12814eafd37982 Mon Sep 17 00:00:00 2001
+From 2bb19d9fdffbfd43a89059a855352c7e5155df1c Mon Sep 17 00:00:00 2001
 From: "Nathan E. Egge" <unlord@xiph.org>
 Date: Sun, 27 Dec 2020 04:11:21 -0500
 Subject: [PATCH 5/7] Enable AVX2 avg/w_avg/mask HBD assembly
@@ -3319,7 +3317,7 @@ index fcfed9be..70798047 100644
 GitLab
 
 
-From c18338526a06c14409333e7d6ed34ae60a6dff46 Mon Sep 17 00:00:00 2001
+From fefedec18cb7561549b1bf16d82ab89f74519020 Mon Sep 17 00:00:00 2001
 From: "Nathan E. Egge" <unlord@xiph.org>
 Date: Sun, 27 Dec 2020 17:25:54 -0500
 Subject: [PATCH 6/7] x86: mc: Add AVX2 implementation of blend/blend_h/blend_v
@@ -3744,7 +3742,7 @@ index 7b4f9cdf..ee56da2e 100644
 GitLab
 
 
-From 8770797232201d6e0e4106e799b6d76865feff77 Mon Sep 17 00:00:00 2001
+From 31784170aecfa8bf8d9d0cefe537fbec89212460 Mon Sep 17 00:00:00 2001
 From: "Nathan E. Egge" <unlord@xiph.org>
 Date: Sun, 27 Dec 2020 21:13:15 -0500
 Subject: [PATCH 7/7] Enable AVX2 blend/blend_h/blend_v HBD assembly

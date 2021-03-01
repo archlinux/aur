@@ -3,7 +3,7 @@
 
 _testvideo=Sparks-5994fps-AV1-10bit-1920x1080-film-grain-synthesis-2013kbps.obu
 pkgname=dav1d-git-optimized
-pkgver=r1617.baa9237
+pkgver=r1627.f06148e
 pkgrel=1
 license=('BSD')
 pkgdesc='AV1 cross-platform Decoder, focused on speed and correctness -- latest git version compiled with optimizations'
@@ -14,12 +14,10 @@ conflicts=('dav1d' 'dav1d-git')
 makedepends=('meson' 'git' 'nasm')
 source=('git+https://code.videolan.org/videolan/dav1d.git'
         "http://download.opencontent.netflix.com.s3.amazonaws.com/AV1/Sparks/$_testvideo"
-        '0001-1112.patch'
-        '0002-1160.patch')
+        '0001-1112.patch')
 sha256sums=('SKIP'
             'e56e20de5bfad7ec073d3e53ea6c760d0b11ed143f087b1bc32230e4840fea87'
-            '83807b996384f147cea3702a1a7fcd4accfc04c3937fea11d0f74b615c37f8d2'
-            'de289262c9d4e1964e7b9130a5619c6501e82a074794ced6d7da7922630973f3')
+            'SKIP')
 
 pkgver () {
     cd dav1d
@@ -29,7 +27,6 @@ pkgver () {
 prepare () {
     cd dav1d
     patch -Np1 -i ${srcdir}/0001-1112.patch
-    patch -Np1 -i ${srcdir}/0002-1160.patch
 }
 
 build () {
