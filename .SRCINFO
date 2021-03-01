@@ -9,7 +9,7 @@ pkgbase = ttf-special-elite
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = special-elite.zip::http://www.fontsquirrel.com/fonts/download/special-elite
-	md5sums = c1d88fab4e4db838c74c7ee69eef39e9
+	md5sums = 04a11b490b351e5ed27a46a81c12e316
 
 pkgname = ttf-special-elite
 
