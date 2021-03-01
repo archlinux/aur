@@ -1,7 +1,7 @@
 
 
 pkgname=lychee
-pkgver=4.0.8
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Lychee is an easy to use and great looking photo-management-system."
 arch=('any')
@@ -14,7 +14,7 @@ options=('!strip' emptydirs)
 backup=('etc/webapps/lychee/apache.example.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v$pkgver.tar.gz"
 	'apache.example.conf')
-sha256sums=('09cdb40d9ad1370ab70b98bd4705f70c535de1680e88f74886494bc3b8725d6d'
+sha256sums=('19a9bb9330ae9d7c4acb61031c1bda568aa4375606576a081a3c0966b8bbd0a8'
             '0a68524551049320c6a58177baeb4592041970b3892ae0eeca405a3f75706701')
 
 pkgver() {
