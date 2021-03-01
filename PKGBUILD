@@ -1,9 +1,9 @@
-# Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
+# Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
+# Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
