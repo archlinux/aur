@@ -1,31 +1,20 @@
-From 53b8342d6e4f89e63f2e7a31481fc52b2868224b Mon Sep 17 00:00:00 2001
-From: solaraquarion <shlomochoina@gmail.com>
-Date: Sun, 28 Feb 2021 19:14:47 -0500
-Subject: [PATCH 3/3] use system apm
-
----
- script/lib/run-apm-install.js |  2 +-
- src/package-manager.js        | 14 +-------------
- 2 files changed, 2 insertions(+), 14 deletions(-)
-
-diff --git a/script/lib/run-apm-install.js b/script/lib/run-apm-install.js
-index f582ff471..72bec210c 100644
 --- a/script/lib/run-apm-install.js
 +++ b/script/lib/run-apm-install.js
-@@ -9,7 +9,7 @@ module.exports = function(packagePath, ci, stdioOptions) {
+@@ -8,10 +8,7 @@
+   const installEnv = Object.assign({}, process.env);
    // Set resource path so that apm can load metadata related to Atom.
    installEnv.ATOM_RESOURCE_PATH = CONFIG.repositoryRootPath;
- 
+-  // Set our target (Electron) version so that node-pre-gyp can download the
+-  // proper binaries.
+-  installEnv.npm_config_target = CONFIG.appMetadata.electronVersion;
 -  childProcess.execFileSync(CONFIG.getApmBinPath(), [ci ? 'ci' : 'install'], {
 +  childProcess.execFileSync('apm', [ci ? 'ci' : 'install'], {
      env: installEnv,
      cwd: packagePath,
      stdio: stdioOptions || 'inherit'
-diff --git a/src/package-manager.js b/src/package-manager.js
-index 775916ad6..a75b84ea4 100644
 --- a/src/package-manager.js
 +++ b/src/package-manager.js
-@@ -194,19 +194,7 @@ module.exports = class PackageManager {
+@@ -194,19 +194,7 @@
        return configPath || this.apmPath;
      }
  
@@ -46,6 +35,3 @@ index 775916ad6..a75b84ea4 100644
    }
  
    // Public: Get the paths being used to look for packages.
--- 
-2.30.1
-
