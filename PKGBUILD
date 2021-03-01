@@ -1,25 +1,52 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
-pkgname=invoiceninja
-pkgver=5.0.3
+pkgname="invoiceninja"
+pkgver=5.1.11
 pkgrel=1
-pkgdesc='Invoices, Expenses and Tasks built with Laravel and Flutter'
-arch=('any')
-url='https://www.invoiceninja.com'
-license=('custom')
-depends=('php')
-optdepends=('mariadb')
-source=("invoiceninja-$pkgver.tar.gz::https://github.com/invoiceninja/invoiceninja/archive/v${pkgver}.tar.gz"
-        "invoiceninja.tmpfiles")
-sha512sums=('9e5f08320647e7500f237bd44b24df6a45601862ee4f7df7df071276adadfb98d2d3c37d0467ef71853382a281fe3b7b54729934148fa1866817cdfc2d8167da'
-            '552cbcc62451182fcc1d04417338c72d0486b02f55ee3e6df89187e81b78cb9ba46ae4e9b9dc9b67a91933850c3aa024e79de7572063e0a58ae5c93090ca1770')
+pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
+url="https://www.invoiceninja.com"
+license=("custom")
+arch=("any")
+depends=("php" "php-gd")
+makedepends=("composer")
+optdepends=("mariadb: database"
+            "apache: web server"
+            "nginx: web server"
+            "redis: cache and session driver"
+            "phantomjs: pdf creation")
+source=("$pkgname-$pkgver::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=("90d9a68b1fe8f71b154231f8ee75b18ddcc45ad75de3f20274a373456e55463a")
+backup=("etc/webapps/$pkgname/config.env")
+options=("!strip")
 
-package() {
-  mkdir -p "${pkgdir}/usr/share/webapps"
-  cp -r "${srcdir}/invoiceninja-${pkgver}" "${pkgdir}/usr/share/webapps/invoiceninja"
-  install -D "${srcdir}/invoiceninja-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "${srcdir}/invoiceninja.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/invoiceninja.conf"
+prepare(){
+ cd "$pkgname-$pkgver"
+ sed -i ".env.example" \
+     -e "s|PHANTOMJS_PDF_GENERATION=false|PHANTOMJS_PDF_GENERATION=false\n#PHANTOMJS_BIN_PATH=/usr/bin/phantomjs|"
 }
 
-# vim: ts=2 sw=2 et:
+package(){
+ cd "$pkgname-$pkgver"
+ composer install --no-interaction --no-suggest --no-dev --ignore-platform-reqs
+
+ install -d "$pkgdir/usr/share/webapps/$pkgname"
+ cp -r * "$pkgdir/usr/share/webapps/$pkgname"
+
+ install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ install -D -o http -g http -m 600 ".env.example" "$pkgdir/etc/webapps/$pkgname/config.env"
+ ln -s "/etc/webapps/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
+
+ install -d "$pkgdir/var/cache/"
+ mv "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache" "$pkgdir/var/cache/$pkgname"
+ ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
+ chown -R http: "$pkgdir/var/cache/$pkgname"
+ chmod 750 "$pkgdir/var/cache/$pkgname"
+
+ install -d "$pkgdir/var/lib/"
+ mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
+ ln -s "/var/lib/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/storage"
+ chown -R http: "$pkgdir/var/lib/$pkgname"
+ chmod 750 "$pkgdir/var/lib/$pkgname"
+}
