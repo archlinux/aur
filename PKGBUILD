@@ -6,7 +6,7 @@
 
 _name=atom
 pkgname=atom-editor-git
-pkgver=1.35.0.r2223.g924b06347
+pkgver=1.56.0.dev.r365.g924b06347
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century - git channel'
 arch=('x86_64')
@@ -46,6 +46,13 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd ${_name}
+     atom_version=$(node -e 'console.log(require("./package").version)')
+    # To strip ".dev" from the package version, comment out the line above, and uncomment the line below.
+    # atom_version=$(node -e 'console.log(require("./package").version)' | grep -o '[0-9.]*')
+    atom_version_base_commit=$(git log --oneline | grep $atom_version | grep -o "[0-f]* ")
+    # If the command on the line above doesn't find a "base" commit on `master` branch for the current Atom version,
+    # then the latest commit on `master` branch will be tagged instead, and revisions (".r") in the package version will be "0".
+    git tag -f $atom_version $atom_version_base_commit
     # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
