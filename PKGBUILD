@@ -1,17 +1,17 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 pkgname=hosts-update
-pkgver=1.37
-pkgrel=2
+pkgver=1.38
+pkgrel=1
 pkgdesc='Injects the mvps blocklist to /etc/hosts to prevent thousands of parasites, hijackers and unwanted adware/spyware/privacy websites from working.'
 arch=('any')
 depends=('curl')
 license=('GPL')
 url="https://github.com/graysky2/hosts-update"
-source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
 replaces=('hosts_update')
 conflicts=('hosts_update')
 backup=('etc/hosts.local')
-sha256sums=('6159d82faa221085cd516f0e1402b18bee67dab9b1ad55224a51b24cf1c1e842')
+sha256sums=('9a0fdb028beaf9fa4c2ec5f1a0030fcfe1a996ea42b874b944ec07885ca0f2ba')
 install=readme.install
 
 build() {
