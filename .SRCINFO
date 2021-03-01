@@ -1,6 +1,6 @@
 pkgbase = scc
 	pkgdesc = Sloc, Cloc and Code: a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go
-	pkgver = 2.13.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/boyter/scc
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = scc
 	license = Unlicense
 	makedepends = go
 	depends = glibc
-	source = scc-2.13.0::https://github.com/boyter/scc/archive/v2.13.0.tar.gz
-	sha256sums = 11e2e44ef25ef848de1b380c94cb096ed77d3d590466c99c9f1b5c2dc99609c2
+	source = scc-3.0.0::https://github.com/boyter/scc/archive/v3.0.0.tar.gz
+	sha256sums = 01b903e27add5180f5000b649ce6e5088fa2112e080bfca1d61b1832a84a0645
 
 pkgname = scc
 
