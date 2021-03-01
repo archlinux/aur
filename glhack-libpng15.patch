@@ -1,0 +1,11 @@
+--- win/gl/gl_image.c.old	2012-01-19 04:01:26.000000000 -0500
++++ win/gl/gl_image.c	2012-01-19 04:03:04.000000000 -0500
+@@ -486,7 +486,7 @@
+   /* set error handling since we are using the setjmp/longjmp method
+    * (this is the normal method of doing things with libpng).
+    */
+-  if (setjmp(png_ptr->jmpbuf))
++  if (setjmp(png_jmpbuf(png_ptr)))
+   {
+     sdlgl_warning("Problem within LibPNG (unknown)\n");
+     goto failed;
