@@ -2,8 +2,8 @@
 
 pkgname=ahoviewer-git
 _pkgname=ahoviewer
-pkgver=1.6.5.127.g518c20c
-pkgrel=2
+pkgver=1.6.5.134.g3e83f81
+pkgrel=1
 pkgdesc='A GTK2 image viewer, manga reader, and booru browser.'
 arch=('i686' 'x86_64')
 url='http://github.com/ahodesuka/ahoviewer'
@@ -14,6 +14,11 @@ makedepends=('meson')
 provides=('ahoviewer')
 source=('git://github.com/ahodesuka/ahoviewer')
 md5sums=('SKIP')
+
+prepare() {
+    cd $srcdir/ahoviewer
+    sh version.sh
+}
 
 pkgver() {
   cd $_pkgname
