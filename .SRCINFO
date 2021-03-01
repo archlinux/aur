@@ -37,6 +37,7 @@ pkgbase = steamtinkerlaunch-git
 	optdepends = usbutils: optional for a quick VR HMD presence check
 	optdepends = jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions
 	optdepends = rsync: optional for backing up steamuser files from proton games
+	optdepends = openssl: optional for generating a random hex string for Non-Steam games
 	provides = steamtinkerlaunch
 	conflicts = steamtinkerlaunch
 	source = git+https://github.com/frostworx/steamtinkerlaunch.git
