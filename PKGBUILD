@@ -9,7 +9,7 @@ _target_triplet=aarch64-apple-darwin
 pkgname=theos-cctools-aarch64-git
 pkgdesc="Apple cctools port for Linux (theos,ios,aarch64)"
 pkgver=r262.3051881
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/tpoechtrager/cctools-port"
 license=(custom:APSL)
@@ -29,8 +29,11 @@ depends=(
 )
 makedepends=(git)
 # "theos-git" optionally depends on "theos-ios-toolchain"
-provides=( "$_target_triplet"-binutils     theos-ios-toolchain     theos-cctools     theos-cctools-aarch64
-           "$_target_triplet"-binutils-git theos-ios-toolchain-git theos-cctools-git                      )
+provides=(
+  theos-ios-toolchain{,-git}
+  "$_target_triplet"-binutils{,-git}
+  theos-cctools-aarch64
+)
 conflicts=(${provides[*]})
 source=("git+https://github.com/tpoechtrager/cctools-port.git")
 md5sums=('SKIP')
