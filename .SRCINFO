@@ -1,7 +1,7 @@
 pkgbase = ventoy-bin
 	pkgdesc = A new multiboot USB solution (Binary)
 	pkgver = 1.0.36
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.ventoy.net/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ventoy-bin
 	sha256sums = 4d3da8b7e1464e11e7325c5693fe92d6d086007f794c5de8c101e2661d494c58
 	sha256sums = 1ad5d314e02b84127a5a59f3871eb1d28617218cad07cde3eeddcac391473000
 	sha256sums = c3d4463a878a89d96e5f0bc4e1a43e48f27af5965bd4c977567695d7cf91fe5f
-	sha256sums = 30238ab336160993b7ddc3987b3bf1671ad981b5a82043199f174a05f275cf1a
+	sha256sums = 8c90f9625fdad2d792dc43fae4b601f239d2b5ee187d91d7d59d4f06ea6a427e
 
 pkgname = ventoy-bin
 
