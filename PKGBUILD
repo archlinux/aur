@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r1565.a3b9594
+pkgver=r1572.5917a96
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64')
@@ -35,10 +35,12 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/grumpycoders/LuaJIT.git'
         'git+https://github.com/luvit/luv.git'
         'git+https://github.com/keplerproject/lua-compat-5.3.git'
+        'git+https://github.com/nothings/stb.git'
         'pcsx-redux.sh'
         'pcsx-redux.desktop'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -77,6 +79,7 @@ prepare() {
   git config submodule.third_party/libcester.url "$srcdir/libcester"
   git config submodule.third_party/luajit.url "$srcdir/LuaJIT"
   git config submodule.third_party/luv.url "$srcdir/luv"
+  git config submodule.third_party/stb.url "$srcdir/stb"
 
   git submodule update third_party/imgui \
                        third_party/imgui_club \
@@ -90,7 +93,8 @@ prepare() {
                        third_party/ELFIO \
                        third_party/libcester \
                        third_party/luajit \
-                       third_party/luv
+                       third_party/luv \
+                       third_party/stb
 
   cd third_party/luv
   git submodule init
