@@ -42,6 +42,7 @@ pkgname = linux-mainline
 
 pkgname = linux-mainline-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
+	depends = pahole
 
 pkgname = linux-mainline-docs
 	pkgdesc = Documentation for the Linux Mainline kernel
