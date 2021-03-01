@@ -3,7 +3,7 @@
 
 pkgname=gitlab-glab-bin
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An open source GitLab CLI tool written in Go"
 arch=(x86_64)
@@ -30,4 +30,9 @@ package() {
 	install -D bin/glab "${pkgdir}/usr/bin/glab"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	# Shell completions
+	bin/glab completion -s bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/glab"
+	bin/glab completion -s zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_glab"
+	bin/glab completion -s fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/glab.fish"
 }
