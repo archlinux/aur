@@ -2,7 +2,7 @@
 
 pkgname=ttf-special-elite
 pkgver=2011.04.18
-pkgrel=1
+pkgrel=2
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="A typewriter-like font."
 arch=('any')
