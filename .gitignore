@@ -1,0 +1,7 @@
+pkg
+src
+Projecteur
+
+*.tar.gz
+*.tar.xz
+*.tar.zst
