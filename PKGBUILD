@@ -56,7 +56,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_rtpatchver}
 _pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -67,14 +67,17 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
-# To use linux-rt-bfq-dev smoothly apply bfq-reverts before bfq-dev patch.
+# To use linux-bfq-dev smoothly apply bfq-reverts before bfq-dev patch.
 # Otherwise the kernel will not compile.
-_bfq_rev_path="bfq-reverts-all"
-_bfq_rev_patch="0001-bfq-reverts.patch"
-_bfq_path="bfq-dev-lucjan"
-_bfq_ver="v14"
-_bfq_rel="r2K210223"
-_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
+#_bfq_rev_path="bfq-reverts-all"
+#_bfq_rev_patch="0001-bfq-reverts.patch"
+#_bfq_path="bfq-dev-lucjan"
+#_bfq_ver="v14"
+#_bfq_rel="r2K210223"
+#_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
+_bfq_path="bfq-lucjan"
+_bfq_rel="r2K210228"
+_bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
@@ -82,7 +85,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
@@ -340,8 +343,7 @@ sha512sums=('a567ec133018bb5ec00c60281479b466c26e02137a93a9c690e83997947df02b6fd
             'SKIP'
             '4ee686690148c1917eace10876cbea4da7751f6c649e20628f43480d78b018f6794227d80218f142440ff6519e2a51a1a6ead5c5641a3021373d1f017945cedb'
             'SKIP'
-            '4dcdc33ed86dac1879432a5d3977ea01daa24e1d62ed89e328125a9ba3f00089248eefdd7bba33336f09bb8299a8f929bd763de55f13b115223e4bd813b0617b'
-            '566285d7e66cf10345cab61d7e3fda4769ab788333d47e7a1b607501fb9dfc880006e80fcd0a7894b7f4e1a4e726106030cecaca582a26d76c4903425cee4238'
+            '44e69b33f7a4ed0fc00769bfd76b0de63715bef970bfee4fd367f6effec127a8efa30248effe362b55682a801a7b66f462376946b1e4ad119c178e95a2262893'
             '7783c2b24253a24d650c9955ef818e8c5de097a5413120e42c23fe56303d83ea045eb489cb1fde36a82e7caec344ebafe83756fa43d087937ad4f23d10e01659'
             '82a868ae1866979aa0282f5bc4dc8c46f407cfb277d4b1cac6cac0d54ef7d7e0b928f79cc8a1bc49421619419293e681f27410040b527c07dca0d6df56c9e98b'
             'e5529b081edda4dbc354e9d5648da982c210ed8070340816171d3c428886ae614207481ab729559c45cc927c6edcfd1cfde157c84434b737f4b5a163d55c6a29'
