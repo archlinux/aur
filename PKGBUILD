@@ -3,7 +3,7 @@
 pkgname=nextcloud20
 _pkgname=nextcloud
 pkgver=20.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
 url="https://nextcloud.com"
@@ -22,13 +22,12 @@ optdepends=('php7-apache: to use the Apache web server'
 options=('!strip')
 backup=('etc/webapps/nextcloud/apache.example.conf'
         'etc/webapps/nextcloud/config/config.php')
-validpgpkeys=('28806A878AE423A28372792ED75899B9A724937A') # Nextcloud Security <security@nextcloud.com>
+#validpgpkeys=('28806A878AE423A28372792ED75899B9A724937A') # Nextcloud Security <security@nextcloud.com>
 conflicts=('nextcloud')
-source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"{,.asc}
+source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"
         'apache.example.conf'
         'nextcloud.hook')
 sha256sums=('85746a4bda87bf754be5834cdb6489c365dc847653bab8ff3afccdaac3b356b5'
-            'SKIP'
             '30a8ad62b0dc9523ca7f0387b1f0483d196c1e011ec7e3a5b98e7d33c721d4bf'
             'b8794c6b357c762f6d4e6f099d8073bd465d6cd87d6d07341568d9509720e6e8')
 
