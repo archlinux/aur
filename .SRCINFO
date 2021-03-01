@@ -1,0 +1,16 @@
+pkgbase = guile-lzlib
+	pkgdesc = Guile bindings for lzlib
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://notabug.org/guile-lzlib/guile-lzlib
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = guile
+	depends = lzlib
+	source = guile-lzlib-0.0.2.tar.gz::https://notabug.org/guile-lzlib/guile-lzlib/archive/0.0.2.tar.gz
+	sha256sums = 8623db77d447e7b9ffbfcbc288390e706a6b1a89b1171daed60874cfec7e4f87
+
+pkgname = guile-lzlib
+
