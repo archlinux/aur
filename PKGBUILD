@@ -1,11 +1,11 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-stalker
-pkgver=3.4.10
-pkgrel=3
+pkgver=7.1.0
+pkgrel=1
 pkgdesc='IPTV Stalker PVR client addon for Kodi'
-_koditarget=Leia
+_koditarget=Matrix
 _gitname=pvr.stalker
-_kodiver=18.9
+_kodiver=19.0
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
@@ -16,8 +16,8 @@ depends=('kodi')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('03eb428f21d6b8526b6671278b60ac6dc5a761a515af27172d8ac5c814cc3f65'
-            'bdf8afa9356b1f815de9984801d3e0d2b46a719e747895b75528f20995c59d2b'
+sha256sums=('bce055008d0ae7212924f41753970e3176a218f6a45bd76b202463a43be3d192'
+            'f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2'
             )
 
 prepare() {
