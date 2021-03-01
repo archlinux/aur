@@ -2,7 +2,7 @@
 
 pkgname=optimus-manager
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Management utility to handle GPU switching for Optimus laptops"
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
@@ -63,7 +63,6 @@ package() {
   install -Dm644 config/xorg/hybrid-mode/integrated-gpu.conf "$pkgdir/etc/optimus-manager/xorg/hybrid-mode/integrated-gpu.conf"
   install -Dm644 config/xorg/hybrid-mode/nvidia-gpu.conf "$pkgdir/etc/optimus-manager/xorg/hybrid-mode/nvidia-gpu.conf"
   
-  install -Dm755 config/xsetup-intel.sh "$pkgdir/etc/optimus-manager/xsetup-intel.sh"
   install -Dm755 config/xsetup-nvidia.sh "$pkgdir/etc/optimus-manager/xsetup-nvidia.sh"
   install -Dm755 config/xsetup-hybrid.sh "$pkgdir/etc/optimus-manager/xsetup-hybrid.sh"
   install -Dm755 config/xsetup-integrated.sh "$pkgdir/etc/optimus-manager/xsetup-integrated.sh"
