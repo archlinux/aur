@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-mythtv
 	pkgdesc = MythTV PVR client addon for Kodi
-	pkgver = 5.10.16
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = http://janbar.github.io/pvr.mythtv/
 	arch = armv7h
@@ -10,9 +10,9 @@ pkgbase = kodi-addon-pvr-mythtv
 	makedepends = cmake
 	makedepends = kodi-platform
 	makedepends = kodi-dev
-	depends = kodi>=18.0
-	source = https://github.com/janbar/pvr.mythtv/archive/5.10.16-Leia.tar.gz
-	sha256sums = fef27e73009f095a22e4843e48455a343a4fe095ae9692b9fa96ffac7fb0844c
+	depends = kodi-common>=19.0
+	source = https://github.com/janbar/pvr.mythtv/archive/7.3.0-Matrix.tar.gz
+	sha256sums = fa741677fc2d58689111d18c8eb1114115f4c33bc99267bb761f225e82fdc588
 
 pkgname = kodi-addon-pvr-mythtv
 
