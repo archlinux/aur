@@ -1,0 +1,42 @@
+--- meshroom.orig/meshroom/ui/app.py	2021-03-01 16:44:31.268547600 +0000
++++ meshroom/meshroom/ui/app.py	2021-03-01 16:49:33.466725600 +0000
+@@ -284,7 +284,6 @@
+             return md
+         return markdown(md)
+ 
+-    @Property(QJsonValue, constant=True)
+     def systemInfo(self):
+         import platform
+         import sys
+@@ -292,8 +291,8 @@
+             'platform': '{} {}'.format(platform.system(), platform.release()),
+             'python': 'Python {}'.format(sys.version.split(" ")[0])
+         }
++    systemInfo = Property(QJsonValue, fget=systemInfo, constant=True)
+ 
+-    @Property("QVariantList", constant=True)
+     def licensesModel(self):
+         """
+         Get info about open-source licenses for the application.
+@@ -315,6 +314,7 @@
+                 "onlineUrl": "https://raw.githubusercontent.com/alicevision/AliceVision/develop/COPYING.md"
+             }
+         ]
++    licensesModel = Property("QVariantList", fget=licensesModel, constant=True)
+ 
+     recentProjectFilesChanged = Signal()
+     recentProjectFiles = Property("QVariantList", _recentProjectFiles, notify=recentProjectFilesChanged)
+--- meshroom.orig/meshroom/ui/reconstruction.py	2021-03-01 16:44:31.313764800 +0000
++++ meshroom/meshroom/ui/reconstruction.py	2021-03-01 16:50:33.238323700 +0000
+@@ -249,10 +249,10 @@
+             self._undistortedImagePath = os.path.join(self._activeNode_PrepareDenseScene.node.output.value, filename)
+         self.denseSceneParamsChanged.emit()
+ 
+-    @Property(type=QObject, constant=True)
+     def attribute(self):
+         """ Get the underlying Viewpoint attribute wrapped by this Viewpoint. """
+         return self._viewpoint
++    attribute = Property(QObject, fget=attribute, constant=True)
+ 
+     @Property(type="QVariant", notify=initialParamsChanged)
+     def initialIntrinsics(self):
