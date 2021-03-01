@@ -2,7 +2,7 @@
 # Contributor: RobbeR49 <robertsna@gmail.com>
 
 pkgname=gmusicbrowser-git
-pkgver=1.1.99.1.r0.g60d4b6f
+pkgver=1.1.99.1.r32.g8f84c7c
 pkgrel=2
 pkgdesc="Open-source jukebox for large collections of mp3/ogg/flac files, written in perl."
 arch=(any)
@@ -19,11 +19,11 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'gst-plugins-base: vorbis support'
             'gst-plugins-good: flac support'
             'gst-plugins-ugly: mp3 support'
-            'perl-gtk2-trayicon: tray icon support'
-            'perl-gtk2-webkit: alternative web-based plugin support'
-            'perl-gnome2-wnck: titlebar plugin support'
+            'libappindicator-gtk3: tray icon support'
+            'webkit2gtk: alternative web-based plugin support'
+            'libwnck3: titlebar plugin support'
             'perl-html-parser: support for accented characters in lyrics plugin'
-            'perl-gtk2-notify: support for notify plugin')
+            'libnotify: support for notify plugin')
 provides=(gmusicbrowser)
 conflicts=(gmusicbrowser)
 source=("git+https://github.com/squentin/gmusicbrowser.git")
