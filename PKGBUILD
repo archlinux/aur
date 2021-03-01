@@ -2,8 +2,8 @@
 # PKGBUILD/install/wrapper all shamelessly ripped off from [community]/dwarffortress
 
 pkgname=arcanefortune-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A game of empire building, diplomacy, conquest, construction, and deconstruction"
 arch=('x86_64')
 url="https://arcanefortune.com"
@@ -16,7 +16,7 @@ install=arcanefortune.install
 source=("${url}/releases/arcane_fortune_v${pkgver//./_}_linux.zip"
         arcane_fortune)
 
-sha512sums=('639ca6e102af94281f9ee5fe3588ca7954b773fc41ca5a4d05db5abd4d72943d9380698ed3cc9313f05677016e2cf595d7f09c089bfb9172fec95de18f08c68b'
+sha512sums=('3245fc4869ab296106f3d5df119d3304dd3ded8fca229ddd1b52e993730e5a554710272143961175a46ff861ecbba4496620fc8d89cf56e0c0431e81a1ebe289'
             '0773b7a90dc0d4740c1696efa57ef419d8d14b0756d95da92a088c8772c390f8dcb0ccba702f332e497c45eada62aacd24cf7b40e11eb195d5c8b031fca72ffc')
 
 package() {
