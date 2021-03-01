@@ -4,7 +4,7 @@
 
 pkgbase=openxcom-extended-git
 pkgname=('openxcom-extended-git' 'openxcom-extended-docs-git')
-pkgver=6.5.7_r11050.0467b8cf7
+pkgver=6.9.7_r11408.74a61e2f6
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
 arch=('i686' 'x86_64')
@@ -27,6 +27,8 @@ pkgver() {
 
 prepare() {
   mkdir -p openxcom-extended/build
+  sed -i 's:openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man6):openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man6):' openxcom-extended/docs/CMakeLists.txt
+
 }
 
 build() {
