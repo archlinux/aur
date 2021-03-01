@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
-license=('MIT')
+license=('BSD3')
 source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz")
 sha256sums=('3edd30d4f4bb0a37278b72578e7e60bc72045a8e6704179e2f4738e35bc12931')
 
