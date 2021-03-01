@@ -4,7 +4,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname='refind-git'
-pkgver=0.12.0.3.r710.gcdce85e
+pkgver=0.13.1.4.r754.g99771d8
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
@@ -14,15 +14,16 @@ depends=('bash' 'dosfstools' 'efibootmgr')
 makedepends=('git' 'gnu-efi-libs')
 optdepends=('gptfdisk: for finding non-vfat ESP with refind-install'
             'imagemagick: for refind-mkfont'
+            'mokutil: for Machine Owner Key enrollment'
             'openssl: for generating local certificates with refind-install'
             'preloader-signed: pre-signed Secure Boot shim loader'
             'python: for refind-mkdefault'
+            'sbsigntools: for EFI binary signing with refind-install'
             'sudo: for privilege elevation in refind-install and refind-mkdefault'
             'shim-signed: pre-signed Secure Boot shim loader'
-            'sbsigntools: for EFI binary signing with refind-install')
-conflicts=("${pkgname%-git}" "refind-efi")
-replaces=('refind-efi-git')
-provides=("${pkgname%-git}=${pkgver}" "refind-efi=${pkgver}")
+)
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 # the drivers don't build with many jobs
 options=('!makeflags')
 source=('refind::git+https://git.code.sf.net/p/refind/code#branch=master')
@@ -36,7 +37,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname%-git}/"
-	# removing the path prefix from the css reference, so that the css can live in the same directory
+	# remove the path prefix from the css reference, so that the css can live in the same directory
 	sed -e 's|../Styles/||g' -i "docs/${pkgname%-git}/"*.html
 	# hardcode RefindDir, so that refind-install can find refind_x64.efi
 	sed -e 's|RefindDir=\"\$ThisDir/refind\"|RefindDir="/usr/share/refind/"|g' -i refind-install
@@ -54,9 +55,9 @@ package() {
 	# the install target calls refind-install, therefore we install things manually
 
 	# efi binaries
-	install -vDm 0644 refind/*.efi -t "${pkgdir}/usr/share/${pkgname%-git}"
-	install -vDm 0644 drivers_*/*.efi -t "${pkgdir}/usr/share/refind/drivers_${_arch}"
-	install -vDm 0644 gptsync/*.efi -t "${pkgdir}/usr/share/${pkgname%-git}/tools_${_arch}"
+	install -vDm 0644 refind/*"${_arch}.efi" -t "${pkgdir}/usr/share/${pkgname%-git}"
+	install -vDm 0644 "drivers_${_arch}/"*"${_arch}.efi" -t "${pkgdir}/usr/share/${pkgname%-git}/drivers_${_arch}"
+	install -vDm 0644 gptsync/*"${_arch}.efi" -t "${pkgdir}/usr/share/${pkgname%-git}/tools_${_arch}"
 	# sample config
 	install -vDm 0644 "${pkgname%-git}.conf-sample" -t "${pkgdir}/usr/share/${pkgname%-git}"
 	# keys
@@ -64,7 +65,7 @@ package() {
 	# keysdir
 	install -vdm 0700 "${pkgdir}/etc/refind.d/keys"
 	# fonts
-	install -vDm 0644 fonts/*.png -t "${pkgdir}/usr/share/${pkgname}/fonts"
+	install -vDm 0644 fonts/*.png -t "${pkgdir}/usr/share/${pkgname%-git}/fonts"
 	# icons
 	install -vDm 0644 icons/*.png -t "${pkgdir}/usr/share/${pkgname%-git}/icons"
 	install -vDm 0644 icons/svg/*.svg -t "${pkgdir}/usr/share/${pkgname%-git}/icons/svg"
