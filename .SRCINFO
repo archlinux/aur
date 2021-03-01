@@ -1,0 +1,18 @@
+pkgbase = upload
+	pkgdesc = A simple tool for uploading files to the internet
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Zebreus/upload
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = ruby-ronn
+	depends = openssl
+	depends = gcc-libs
+	source = git+https://github.com/Zebreus/upload.git#tag=v0.3
+	md5sums = SKIP
+
+pkgname = upload
+
