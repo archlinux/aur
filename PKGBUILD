@@ -2,7 +2,7 @@
 # Contributor: Ben Westover <kwestover [dot] kw [at] gmail [dot] com>
 
 pkgbase=dogecoin
-pkgname=('dogecoin-cli' 'dogecoin-qt-bin' 'dogecoin-tx')
+pkgname=('dogecoin-cli-bin' 'dogecoin-qt-bin' 'dogecoin-tx-bin')
 pkgver=1.14.3
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -24,30 +24,36 @@ sha256sums_armv7h=('e572d5af93f8ff4a5178e1edbbc151410f311097a17a619c43ca92de0ef4
 sha256sums_aarch64=('65671f9854fe04815a4a849e6cdd5b1701fa04627cd2acc68cfd1de2561f70e5')
 
 package_dogecoin-qt-bin() {
-	pkgdesc="Dogecoin is a peer-to-peer network based digital currency - Qt (Based on Binary Package)"
-	depends=(boost-libs libevent qt5-base miniupnpc qrencode protobuf zeromq)
+	pkgdesc="Dogecoin is a peer-to-peer network based digital currency - Qt Interface"
+	conflicts=(dogecoin-qt)
+	provides=(dogecoin-qt)
+	depends=(libx11 fontconfig freetype2)
 
 	install -Dm755 $pkgbase-$pkgver/bin/dogecoin-qt $pkgdir/usr/bin/dogecoin-qt
 	install -Dm644 $pkgbase-$pkgver/share/man/man1/dogecoin-qt.1 $pkgdir/usr/share/man/man1/dogecoin-qt.1
 	install -Dm644 bitcoin128.png $pkgdir/usr/share/pixmaps/dogecoin128.png
-	install -Dm644 COPYING $pkgdir/usr/share/licenses/dogecoin-qt/COPYING
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/dogecoin-qt-bin/COPYING
 	install -Dm644 dogecoin-qt.desktop $pkgdir/usr/share/applications/dogecoin-qt.desktop
 }
 
-package_dogecoin-cli() {
+package_dogecoin-cli-bin() {
 	pkgdesc="Dogecoin is a peer-to-peer network based digital currency - RPC client"
-	depends=(boost-libs libevent)
+	provides=(dogecoin-cli)
+	conflicts=(dogecoin-cli)
+	depends=(gcc-libs)
 
 	install -Dm755 $pkgbase-$pkgver/bin/dogecoin-cli $pkgdir/usr/bin/dogecoin-cli
 	install -Dm644 $pkgbase-$pkgver/share/man/man1/dogecoin-cli.1 $pkgdir/usr/share/man/man1/dogecoin-cli.1
-	install -Dm644 COPYING $pkgdir/usr/share/licenses/dogecoin-cli/COPYING
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/dogecoin-cli-bin/COPYING
 }
 
-package_dogecoin-tx() {
+package_dogecoin-tx-bin() {
 	pkgdesc="Dogecoin is a peer-to-peer network based digital currency - Transaction tool"
-	depends=(boost-libs openssl)
+	provides=(dogecoin-tx)
+	conflicts=(dogecoin-tx)
+	depends=(gcc-libs)
 
 	install -Dm755 $pkgbase-$pkgver/bin/dogecoin-tx $pkgdir/usr/bin/dogecoin-tx
 	install -Dm644 $pkgbase-$pkgver/share/man/man1/dogecoin-tx.1 $pkgdir/usr/share/man/man1/dogecoin-tx.1
-	install -Dm644 COPYING $pkgdir/usr/share/licenses/dogecoin-tx/COPYING
+	install -Dm644 COPYING $pkgdir/usr/share/licenses/dogecoin-tx-bin/COPYING
 }
