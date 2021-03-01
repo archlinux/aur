@@ -2,8 +2,8 @@
 
 pkgname=isync-config-patched
 _pkgname=isync
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="IMAP and MailDir mailbox synchronizer - with xdg-compliant config location"
 arch=('x86_64')
 url="http://isync.sourceforge.net"
@@ -14,7 +14,7 @@ provides=('isync')
 source=(https://downloads.sourceforge.net/project/isync/isync/$pkgver/$_pkgname-$pkgver.tar.gz
         https://downloads.sourceforge.net/project/isync/isync/$pkgver/$_pkgname-$pkgver.tar.gz.asc
         isync-xdgconfig.diff)
-md5sums=('bf60773c0ec03f132aac546df9cc7b87'
+md5sums=('c0c9899c2ff629e4e6de429c394b2613'
          'SKIP'
          '554e0cf7302565f1a76a88e16e4cdb2a')
 validpgpkeys=('96DD32BFBF9FAB04B0D95305AA283E0B2F1BB1D1'
