@@ -1,15 +1,15 @@
 pkgbase = jfa-go
 	pkgdesc = A web app for managing users on Jellyfin
-	pkgver = 0.2.8
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/hrfee/jfa-go
 	arch = x86_64
 	license = MIT
-	makedepends = go>=1.14
+	makedepends = go>=1.16
 	makedepends = python>=3.6.0-1
 	makedepends = nodejs
 	makedepends = npm
-	source = jfa-go::git+https://github.com/hrfee/jfa-go.git#tag=v0.2.8
+	source = jfa-go::git+https://github.com/hrfee/jfa-go.git#tag=v0.3.1
 	md5sums = SKIP
 
 pkgname = jfa-go
