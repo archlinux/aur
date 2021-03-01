@@ -1,4 +1,4 @@
-[Rules for EVE Launcher]
+[Rule for EVE Launcher]
 Description=Rules for EVE Launcher
 clientmachine=localhost
 clientmachinematch=0

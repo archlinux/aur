@@ -1,7 +1,7 @@
 #Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=8
+pkgrel=9
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -29,6 +29,7 @@ source=("evelauncher.desktop"
         "evelauncher.sh"
         "evelauncher.sh.in"
         "evelauncher.sh.real"
+        "evelauncher.sh.real.patch"
         "evesetup.shlib"
         "everegedit.desktop"
         "evewine"
@@ -53,7 +54,7 @@ source=("evelauncher.desktop"
         "eve-transl5.12-ru.tar.gz"
         "eve-transl5.12-zh.tar.gz"
         "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
-        "https://github.com/doitsujin/dxvk/releases/download/v1.7.3/dxvk-1.7.3.tar.gz"
+        "https://github.com/doitsujin/dxvk/releases/download/v1.8/dxvk-1.8.tar.gz"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
 
 noextract=('eve-transl5.12-de.tar.gz'
@@ -64,6 +65,11 @@ noextract=('eve-transl5.12-de.tar.gz'
            'eve-transl5.12-zh.tar.gz'
            'https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run')
 
+prepare() {
+        rm ${srcdir}/evelauncher.sh.real
+        cp ${BUILDDIR:-..}/evelauncher.sh.real ${srcdir}
+        patch -p1 -i ${srcdir}/evelauncher.sh.real.patch
+}
 package() {
         install -d "${pkgdir}/opt/${pkgname}/bin"
         install -d "${pkgdir}/opt/${pkgname}/doc"
@@ -74,10 +80,10 @@ package() {
         install -d "${pkgdir}/usr/share/icons"
         sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${srcdir}/evelauncher.sh"
         sed -i 2\ s,[0-9].*\",${pkgver}\", "${srcdir}/evelauncher.lua"
-        sed -i s,SETUPDIR=\"\",SETUPDIR=\"/opt/${pkgname}\", "${srcdir}/evelauncher.sh"
         for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
             cmd=eve$cmd
             if [ -f "${srcdir}/$cmd" ] ;then
+                sed -i s,SETUPDIR=\"\",SETUPDIR=\"/opt/${pkgname}\", "${srcdir}/$cmd"
                 sed -i s,./evesetup.shlib,/opt/${pkgname}/lib/evesetup.shlib, "${srcdir}/$cmd"
                 install "${srcdir}/$cmd" "${pkgdir}/opt/${pkgname}/bin"
             else
@@ -97,9 +103,9 @@ package() {
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
-        cp -r ${srcdir}/dxvk-1.7.3/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        cp -r ${srcdir}/dxvk-1.7.3/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        echo "1.7.3" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
+        cp -r ${srcdir}/dxvk-1.8/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        cp -r ${srcdir}/dxvk-1.8/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        echo "1.8" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
         rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
@@ -128,21 +134,22 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '29b6f2cda542c8f3f3845fb3e1ff3e9ac2a645d389c1618bdac5fa69947a2b4b'
             '77b8a8d1cde800956dadf8abf35287c34b3c844c40dfa8f89ed01ca2cde345fb'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            'f73da35da493d8f756692746e5c75a5674a10b7f2cd87fc563bebcf11e027e16'
+            '740b8642e409524a07100fe1ce7806bef67d3f4642afa7f0841ace7290c01576'
+            'fdb777d7f728681055f2038c9b04d153a131086665ca189814b013655465fc22'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
-            'dd8686f109be618c5b582ec143ba01c6d0da5771f809e169914ee8cd09d1ef29'
+            '66dd912ceb3073e6e210d7addc7d284fb5bdf2b746ac723c8b57ead19ffe75b4'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
             'c83beba543663b926d28d0eda98f1035cd73327da50f718a487763d300415a24'
-            'fe5680d61fd3ab3286c94ddb40776a08c5c5009755c521da4c76cfd618938004'
+            '355e2d287c77ec4313792548b66de8a751e1f8489b2bf9e734ce6b967c6a36d5'
             '30b6440b842c19df64892cc560c274a7cc4f5de910a9f81e12dd0d76da561474'
             'ebdeaa2a143b8d247d94b4a57a45065c299253c074f5d741870a78dd384c29f0'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
-            '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
-            'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
+            '609c021ee09ced450b1aeda9c3dd586ebfbc17d2bdccbb4be69de70d661d12c8'
+            'c53c6f09a0d2d12a4360bc4283d6259de1f47cfc29f708fdd9b960aab30af4ef'
             '8bb6f2a364e12a8e300eece2c051d7f1fb02d935ed455b2a839a0b3a6c0f891e'
             'd1364de23e651e2f187d53e9064d76d8d69b63dc9eaba9e65c99964cb39cecd9'
-            '9a21c7e3847c1fa99342ec1b602fbb1943b24bc50cc85acc169a5aba9d3a180e'
-            'f36128ad1594178a9f86416bbb66b71267415ae0b2bf0c8f9f947d3ec92ad9d0'
+            'a12addb72c7f84fc1e2e921e02c9bef2cc52b94148c85506ae7cb682f0e9ef13'
+            '4e9083c96ada9c607b12fc1be77db595a6932d01d7c6b224a3c546aa98f37b32'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '980d68abd6f4a662b69efd19145112e88f349044fa1ed5cb6d0a840a92cb42e4'
@@ -152,5 +159,5 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '1a83a791b5a189823f71cdfb1e0c0e15139ff7f563bfb3eac70a5fa4ad9ebc22'
             '5ffd6578dfbb9bf1647fbae819e3ddae0722c2613779c122d86963123470359f'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
-            'e4c2444256b7ad63455fa6329638e3f42900ec7462dc9c26da56187a2040aba0'
+            'e84f7ac494ac7f5013976744470899226d145e29617c407ff52870055bda476e'
             '98ccf4b9932d7fb74896461f764c61921592a73089e3fcb4063fe7836c6a0bca')

@@ -116,8 +116,6 @@ check_wine() {
 				'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
 				/v winemenubuilder /f >/dev/null
 		fi
-	else
-		desktop_msg "Info: Wine environment test skipped."
 	fi
 }
 

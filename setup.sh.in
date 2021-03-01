@@ -24,10 +24,10 @@ bootstrap_install() {
 	install -m 0644 "./evelauncher.kwinrule" "$docdir"
 	install -m 0644 "./evelauncher.lua" "$docdir"
 	sed -i s,./eve-transl,$libdir/eve-transl, ./evelauncher.sh
-	sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
 	for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
 		cmd=eve$cmd
 		if [ -f "./$cmd" ] ;then
+			sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./$cmd
 			sed -i s,./evesetup.shlib,$libdir/evesetup.shlib, ./$cmd
 			install "./$cmd" "$bindir/"
 		else
