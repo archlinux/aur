@@ -1,12 +1,12 @@
 pkgbase = shiftfs
 	pkgdesc = kernel module that provides a kernel filesystem for uid/gid shifting; version for default Arch kernel
-	pkgver = 20200804
+	pkgver = 20210301
 	pkgrel = 1
-	url = https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/tree/fs/shiftfs.c
+	url = https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/tree/fs/shiftfs.c?h=master-next
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
-	source = https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/plain/fs/shiftfs.c
+	source = shiftfs.c::https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/plain/fs/shiftfs.c?h=master-next
 	source = dkms.conf
 	source = Makefile
 	sha512sums = SKIP
