@@ -1,6 +1,6 @@
 # Maintainer: David Beley <dbeley@protonmail.com>
 pkgname=mpdscrobble-git
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
