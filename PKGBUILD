@@ -4,10 +4,10 @@ pkgver=1.3.9
 pkgrel=1
 pkgdesc="Accept email on behalf of real sendmail"
 arch=('any')
-url="http://acme.com/software/mini_sendmail/"
+url="https://acme.com/software/mini_sendmail/"
 license=('custom')
 makedepends=('make' 'gcc')
-source=("http://acme.com/software/mini_sendmail/mini_sendmail-${pkgver}.tar.gz")
+source=("https://acme.com/software/mini_sendmail/mini_sendmail-${pkgver}.tar.gz")
 md5sums=('0769b6d3ba64fa77a52a90c8866fc4ed')
 
 prepare() {
