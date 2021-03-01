@@ -9,7 +9,7 @@ arch=('i686' 'pentium4' 'x86_64')
 url="https://www.humblebundle.com/store/${_pkgname}"
 license=('custom')
 provides=('tangledeep')
-conflicts=('humble-tangledeep')
+conflicts=('gog-tangledeep')
 source=("Tangledeep_136b_LinuxUniversal.zip::humble://Tangledeep_136b_LinuxUniversal.zip"
         "${_pkgname}.desktop")
 # don't download anything via makepkg
