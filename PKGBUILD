@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.12.1
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -53,10 +53,6 @@ _list_toolchains() {
 package ()
 {
   cd "$srcdir"
-
-  echo ">>> Tip: to avoid waiting for compression, build an uncompresed tar archive:"
-  echo ">>>     PKGEXT='.pkg.tar' makepkg"
-  echo
 
   mkdir -p $pkgdir/$_installdir
   echo ">>> Running installer...."
@@ -164,5 +160,5 @@ package ()
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
 
-sha256sums=('3a74dafdd3b54cb46a8c9d5db01ef0dc5766fb39f4cfd85bcb6ba88d13a1a63a'
+sha256sums=('c410c9e49438e87425822ba87bfafa01c244694718fff8c48c762bed9a786a5e'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
