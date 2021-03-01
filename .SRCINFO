@@ -1,7 +1,7 @@
 pkgbase = timerdown
 	pkgdesc = A simple python & pyQT5 app to turn off your Linux PC in X minutes or X hours, or at specified time.
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Pyntux/TimerDown
 	arch = any
 	license = GPL3
