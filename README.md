@@ -13,10 +13,10 @@ For whatever reason, the software does not build if the port used by `bitcoind` 
 1. `nano ~/.nbxplorer/Main/settings.config` Set "btc.rpc.auth=" according to the prior set values in the bitcoind configuration file.
 
 ### btcpayserver
-1. `nano ~/.btcpayserver/Main/settings.config` Uncomment the SQLite database line. Alternatively, a different can be used instead.
+1. `nano ~/.btcpayserver/Main/settings.config` Uncomment the SQLite database line. Alternatively, a different database can be used instead.
 
 ### nginx
-1. `sudo nano /etc/nginx/nginx.conf` and cofigure your nginx server as a reverse proxy to the btcpayserver http server.
+1. `sudo nano /etc/nginx/nginx.conf` and configure your nginx server as a reverse HTTP proxy to the btcpayserver HTTP server.
 
 ## Required services
 1. `sudo systemctl start bitcoind.service`
@@ -24,5 +24,5 @@ For whatever reason, the software does not build if the port used by `bitcoind` 
 
 
 ## Usage
-* Start: `btcpayserver-start`
-* Stop: `btcpayserver-stop`
+* Start: `nbxplorer-start;btcpayserver-start`
+* Stop: `nbxplorer-stop;btcpayserver-stop`
