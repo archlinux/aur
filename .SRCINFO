@@ -1,17 +1,17 @@
 pkgbase = ngspice-git
 	pkgdesc = Mixed-level/Mixed-signal circuit simulator based on Spice3f5, Ciber1b1, and Xspice.
-	pkgver = r6966.0ca66abd3
+	pkgver = r7276.598751eb8
 	pkgrel = 1
 	url = http://ngspice.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = libxaw
-	depends = libedit
-	depends = gcc-libs
+	depends = fftw
+	depends = libxft
 	provides = ngspice
 	conflicts = ngspice
-	source = ngspice-git::git+https://git.code.sf.net/p/ngspice/ngspice#branch=pre-master
+	source = ngspice-git::git+https://git.code.sf.net/p/ngspice/ngspice#branch=master
 	source = manual.pdf::http://ngspice.sourceforge.net/docs/ngspice-manual.pdf
 	sha256sums = SKIP
 	sha256sums = SKIP
