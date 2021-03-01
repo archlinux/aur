@@ -3,7 +3,7 @@
 
 pkgname=lanshare
 pkgver=1.2.1
-pkgrel=7
+pkgrel=8
 pkgdesc="LAN Share is a cross platform local area network file transfer application, built using Qt GUI framework."
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="https://github.com/abdularis/LAN-Share"
@@ -16,6 +16,7 @@ prepare() {
   cd "$srcdir/LAN-Share-$pkgver/packaging/linux/debian"
   sed -i "/Path=.*/d" LANShare.desktop 
   sed -i "s^Exec=.*^Exec=/usr/bin/LANShare^" LANShare.desktop 
+  sed -i "s/Name\[en_US\]=.*/Name\[en_US\]=LANShare/" LANShare.desktop
 }
 
 build() {
@@ -30,5 +31,5 @@ package() {
 
   cd "$srcdir/LAN-Share-$pkgver/packaging/linux/debian"
   install -D LANShare.desktop  "$pkgdir"/usr/share/applications/LANShare.desktop
-  install -D lanshare-icon.png "$pkgdir"/usr/share/icons/lanshare-icon.png
+  install -D lanshare-icon.png "$pkgdir"/usr/share/pixmaps/lanshare-icon.png
 }
