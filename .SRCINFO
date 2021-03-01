@@ -1,0 +1,16 @@
+pkgbase = guile-zstd
+	pkgdesc = GNU Guile bindings to the zstd compression library
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://notabug.org/guile-zstd/guile-zstd
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = guile
+	depends = zstd
+	source = guile-zstd-0.1.1.tar.gz::https://notabug.org/guile-zstd/guile-zstd/archive/v0.1.1.tar.gz
+	sha256sums = 6e57ef524f20cab79ca5fd62366c5435f71cf652f582fc1e7d62585e90d499c5
+
+pkgname = guile-zstd
+
