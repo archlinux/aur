@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-raytracinginvulkan
+	pkgdesc = Implementation of Peter Shirley's Ray Tracing In One Weekend book (mingw-w64)
+	pkgver = r6
+	pkgrel = 1
+	url = https://github.com/GPSnoopy/RayTracingInVulkan
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-stb-git
+	depends = mingw-w64-vulkan-icd-loader
+	depends = mingw-w64-glfw
+	depends = mingw-w64-boost
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = git+https://github.com/GPSnoopy/RayTracingInVulkan.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-raytracinginvulkan
+
