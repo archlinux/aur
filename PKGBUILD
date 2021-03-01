@@ -23,7 +23,7 @@ _srcver=br-1.6.3
 _srcname=proton-bridge-"$_srcver"
 
 pkgver="$_pkgver""$_rev"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -42,7 +42,6 @@ sha256sums=('e1565f8f3e175c27e61500cb8b13d768769b2eee4d83e0265d135d0d97e4acea'
 
 prepare() {
     cd "${srcdir}"/"$_srcname"/
-    sed -i 's/BRIDGE_APP_VERSION?=.*/BRIDGE_APP_VERSION?=1.5.7-git/' Makefile
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
     make build-nogui
