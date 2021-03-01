@@ -1,0 +1,17 @@
+pkgbase = php-maxminddb
+	pkgdesc = MaxMind DB reader module for php
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/maxmind/MaxMind-DB-Reader-php
+	arch = x86_64
+	arch = i686
+	license = Apache-2.0
+	depends = php
+	depends = libmaxminddb
+	provides = php-maxminddb=1.10.0-1
+	backup = etc/php/conf.d/maxminddb.ini
+	source = https://github.com/maxmind/MaxMind-DB-Reader-php/archive/v1.10.0.tar.gz
+	sha256sums = fae72701e2823a690a27a3c4abb0afeaaaca93fda7795cd00a2b7722d4196b86
+
+pkgname = php-maxminddb
+
