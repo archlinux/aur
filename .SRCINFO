@@ -1,7 +1,7 @@
 pkgbase = fedora-firefox-wayland-bin
 	pkgdesc = Fedora's firefox build with wayland enabled by default
 	pkgver = 86.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
