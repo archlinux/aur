@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdk-pixbuf2
-pkgver=2.40.0
+pkgver=2.42.2
 pkgrel=1
 pkgdesc='An image loading library (mingw-w64)'
 arch=('any')
@@ -13,8 +13,7 @@ makedepends=(
   'python') # python is required to run glib-mkenums
 depends=(
   'mingw-w64-crt'
-  'mingw-w64-glib2>=2.37.6'
-  'mingw-w64-jasper'
+  'mingw-w64-glib2>=2.56.0'
   'mingw-w64-libpng'
   'mingw-w64-libjpeg-turbo'
   'mingw-w64-libtiff')
@@ -23,7 +22,7 @@ source=(
   "https://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz"
   'gdk-pixbuf2-gen-thumbnailer-wine.patch')
 sha256sums=(
-  '1582595099537ca8ff3b99c6804350b4c058bb8ad67411bbaae024ee7cead4e6'
+  '83c66a1cfd591d7680c144d2922c5955d38b4db336d7cd3ee109f7bcf9afef15'
   '69dd65e803a7a0d752536478864b19d77423affff2921aea5d076dd5916594f6')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -55,9 +54,7 @@ build() {
       -Dinstalled_tests=false \
       -Dbuiltin_loaders=all \
       -Drelocatable=true \
-      -Djasper=true \
-      -Dx11=false \
-      -Dgir=false \
+      -Dintrospection=disabled \
       -Dman=false
     ninja
     cd ..

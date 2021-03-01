@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gdk-pixbuf2
 	pkgdesc = An image loading library (mingw-w64)
-	pkgver = 2.40.0
+	pkgver = 2.42.2
 	pkgrel = 1
 	url = http://www.gtk.org
 	arch = any
@@ -11,17 +11,16 @@ pkgbase = mingw-w64-gdk-pixbuf2
 	makedepends = mingw-w64-wine
 	makedepends = python
 	depends = mingw-w64-crt
-	depends = mingw-w64-glib2>=2.37.6
-	depends = mingw-w64-jasper
+	depends = mingw-w64-glib2>=2.56.0
 	depends = mingw-w64-libpng
 	depends = mingw-w64-libjpeg-turbo
 	depends = mingw-w64-libtiff
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/gdk-pixbuf/2.40/gdk-pixbuf-2.40.0.tar.xz
+	source = https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz
 	source = gdk-pixbuf2-gen-thumbnailer-wine.patch
-	sha256sums = 1582595099537ca8ff3b99c6804350b4c058bb8ad67411bbaae024ee7cead4e6
+	sha256sums = 83c66a1cfd591d7680c144d2922c5955d38b4db336d7cd3ee109f7bcf9afef15
 	sha256sums = 69dd65e803a7a0d752536478864b19d77423affff2921aea5d076dd5916594f6
 
 pkgname = mingw-w64-gdk-pixbuf2
