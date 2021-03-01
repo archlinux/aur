@@ -1,0 +1,22 @@
+pkgbase = kime-window
+	pkgdesc = window daemon for kime
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Riey/kime-window
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = clang
+	makedepends = llvm
+	makedepends = libappindicator-gtk3
+	makedepends = gtk3
+	makedepends = unicode-cldr-annotations
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = kime-window
+	conflicts = kime-window
+	source = kime-window-0.1.0.tar.gz::https://github.com/Riey/kime-window/archive/v0.1.0.tar.gz
+	md5sums = 2fba6f3d57262fd51206fb5f416efaa6
+
+pkgname = kime-window
+
