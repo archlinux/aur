@@ -56,7 +56,7 @@ package()
     
     # Create btcpayserver-start.sh.
     echo -e "#!/bin/bash
-    tmux new-session -s ${_pkgname} -d \"${_pkgname}\";bash -i" > ${srcdir}/${_pkgname}/${_pkgname}-start.sh
+    tmux new-session -s ${_pkgname} -d \"${_pkgname};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname}-start.sh
     
     # Create btcpayserver-stop.sh.
     echo -e "#!/bin/bash
