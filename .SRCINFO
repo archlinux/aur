@@ -1,7 +1,7 @@
 pkgbase = libcrafter-git
 	pkgdesc = Libcrafter is a high level library for C++ designed to create and decode network packets
 	pkgver = 1.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/pellegre/libcrafter
 	arch = x86_64
 	license = BSD
