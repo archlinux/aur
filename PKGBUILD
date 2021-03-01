@@ -1,10 +1,10 @@
 # Maintainer: Andreas Kurth <archlinux@akurth.net>
 pkgname='bender'
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Dependency management tool for hardware design projects"
 arch=('x86_64')
-url="https://github.com/fabianschuiki/${pkgname}"
+url="https://github.com/pulp-platform/${pkgname}"
 license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust')
