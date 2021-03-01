@@ -1,13 +1,13 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname=jfa-go-git
 _pkgname=jfa-go
-pkgver=r221.ffc6257
-pkgrel=2
+pkgver=r495.bd05a4b
+pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=("x86_64")
 url="https://github.com/hrfee/jfa-go"
 license=('MIT')
-makedepends=('go>=1.14' 'python>=3.6.0-1' 'nodejs' 'npm' 'git')
+makedepends=('go>=1.16' 'python>=3.6.0-1' 'nodejs' 'npm' 'git')
 checkdepends=()
 optdepends=()
 provides=("jfa-go")
@@ -29,20 +29,20 @@ pkgver() {
 
 prepare() {
     cd ${pkgname}
-    make configuration npm email version
-    export GOPATH="$(go env GOPATH)"
+    make configuration npm email
     go get github.com/swaggo/swag/cmd/swag
-    "${GOPATH}"/bin/swag init -g main.go
 }
 
 build() {
 	cd ${pkgname}
-	make typescript compile
+    export GOPATH="$(go env GOPATH)"
+	make typescript bundle-css
+    "${GOPATH}"/bin/swag init -g main.go
+    make copy external-files compile
 }
 
 package() {
     cd ${pkgname}
-    make copy
     install -d "$pkgdir"/opt
     make install DESTDIR="$pkgdir"/opt
     mkdir -p "$pkgdir"/usr/bin
