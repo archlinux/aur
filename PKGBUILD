@@ -2,7 +2,7 @@
 
 pkgname=vpn-unlimited
 pkgver=8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Unlimited client application"
 arch=("x86_64")
 url="https://www.vpnunlimitedapp.com"
@@ -23,7 +23,7 @@ depends=(
   "gcc-libs>=4.4.15" "zlib>=1.2.0" "openvpn" "openresolv" "lzo>=2.0" "iproute2"
   "net-tools" "c-ares>=1.10.0" "lsb-release" "strongswan>=5.8.1"
   "qt5-webengine>=5.2.1" "curl>=7.68.0" "libnghttp2>=1.39.2" "libidn2>=2.3.0"
-  "libssh2>=1.9.0" "libpsl>=0.21.0" "openssl>=1.1.1.d" "krb5>=1.17.1"
+  "libssh2>=1.9.0" "libpsl>=0.21.0" "openssl-1.0" "krb5>=1.17.1"
   "e2fsprogs>=1.45.5" "zstd>=1.4.4" "libunistring>=0.9.10" "keyutils>=1.6.1"
   "pkcs11-helper>=1.26.0" "wireguard-tools"
 )
