@@ -7,7 +7,7 @@ _srcname=linux-5.11
 _major=5.11
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=1
+_minor=2
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,21 +30,17 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Revert-drm-amd-display-reuse-current-context-instead.patch
-  0003-drm-amdgpu-fix-shutdown-with-s0ix.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('65807ff9b09c818188deafcfba3a48c9275e9681b920364f2cd4c63d616611ce0533ea3a2e4a1f40afd9d601e173ff3f2e2747ad6f9eae0379a1a6a95a3cc72e'
+b2sums=('1938fd59c78243c3487a0b9f8acf748497a5605f91d0247b8a83a227751f68f69dcb0fad1db56ec0c6c610cac89f67e0bf39bc0bb95f37dcc9da009f1f37c9e5'
         'SKIP'
-        'a585aa07b5e577bddc8c54086900be6ef768ee71687bcafdb770eef40a3c5aa24ce40ca49d4231645ce3fa2787f8527f68cd5c9fb1f0947c511c759cba957471'
+        '62f47c769998fa713cda9024a4ecbe7ba2140acde629082630c2c0b076b4e941b0a1e82f7d2b7cd4ed6e84759ea93de78e212ecbe1341d9055091d26d83286dc'
         'SKIP'
         'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
-        'eab8a07469cff83526e5fef59d72d9c2c539432c161298cb61a09c25d55528e495b4d9dd0ff527d3e5900b8adb3f973f6601ea35837f04bf0c2794eaf04bc6ad'
-        'a2fd5b8241da9fbc1e027b65685d496b382f2834948eb50bb8dacad21485a72a63ef56cb9a935a0d99b44424e922e3b40afde226dc26ab1ddfba87c447c7308f'
-        'eda7eed7972c5688119d28050a0af7fb9f36356ca629bec55e9fdb2666630cac484d3260da29a973bcf0867d6f108a2b5f8daa98a3e02244ea9c4b56c2a53e94')
+        'eab8a07469cff83526e5fef59d72d9c2c539432c161298cb61a09c25d55528e495b4d9dd0ff527d3e5900b8adb3f973f6601ea35837f04bf0c2794eaf04bc6ad')
 
 
 export KBUILD_BUILD_HOST=archlinux
