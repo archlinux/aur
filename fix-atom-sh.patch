@@ -159,8 +159,8 @@ index 768ab72b9..8a564c1a1 100755
    fi
 +  ) &
  fi
- 
+
  # Exits this process when Atom is used as $EDITOR
--- 
+--
 2.30.1
 

@@ -1,4 +1,4 @@
-#!/usr/bin/electron5
+#!/usr/bin/electron6
 
 const name = "atom";
 

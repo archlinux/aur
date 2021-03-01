@@ -6,7 +6,7 @@
 _name=atom
 pkgname=atom-editor-git
 pkgver=1.56.0.dev.r53.g3d5c83be9
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century - git channel'
 arch=('x86_64')
 url="https://atom.io/"
@@ -31,9 +31,9 @@ source=("git+https://github.com/atom/atom.git"
         'use-system-apm.patch'
         'use-system-electron.patch')
 sha256sums=('SKIP'
-            '6218ecf9a767e80f70a4b07abaefcf63a3d615200ff27b2dbc7bb36eacd8e87f'
+            '6ae4f78667a8735d24ba11a47f1ee374f65325a3d604bcd221d56e27e16ddad4'
             '530b46d31df0f5e8f5881e1608a66fe75d549092a6db2e72ba3ad69c48714153'
-            'b739d15a3b0964b979b4007a15451358bd5cea6f157ffdd475869907e8943f6c'
+            '5c0b189b842b88cd76b287a1def3c877ce63c2dc34cb972644e1eeb8bb5f4b3d'
             '2894cce31935d45291c5fe4c625473bb83fc51e1b899f162aa6b419491c7ace1'
             'e3c30c03006d23a72f07fa77f4309b16a6059af1179343033a87f74f50124076'
             'e321fdfe880cd465918dd1dbb90e4c7d46fc5310f20666eddf0a41cbca4f8ac8'
@@ -101,11 +101,6 @@ build() {
 
   cd script
   npm install
-
-  cd script-runner
-  npm install
-
-  cd ..
   # Set ELECTRON_VERSION (see use-system-electron.patch)
   env \
     ELECTRON_RUN_AS_NODE=1 \
