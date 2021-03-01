@@ -2,7 +2,7 @@
 pkgname=getax
 pkgver=2020
 _update=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the tax reporting of physical people in the canton of Geneva, Switzerland."
 url="http://www.getax.ch/support/"
 depends=(
@@ -36,7 +36,5 @@ package() {
 	install -m755 "${srcdir}"/${pkgname} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-sha256sums=(
-	'b51646296b5753d4302459cde311b5d21b936ff8a802fde44d93dc9abb2021aa'
-	'a474ed38201b0abc1459ff0ffa37a1fb0e947a135a18e08cb00acadad23488be'
-)
+sha256sums=('babb8b0d23687084e21aed756123eb408896dc26e7275f40095eaa86845ade00'
+            'a474ed38201b0abc1459ff0ffa37a1fb0e947a135a18e08cb00acadad23488be')

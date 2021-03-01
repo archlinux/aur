@@ -1,7 +1,7 @@
 pkgbase = getax
 	pkgdesc = Application for the tax reporting of physical people in the canton of Geneva, Switzerland.
 	pkgver = 2020
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.getax.ch/support/
 	arch = x86_64
 	license = unknown
@@ -10,7 +10,7 @@ pkgbase = getax
 	depends = webkitgtk2
 	source = getax-2020-1.0.tar.gz::https://www.getax.ch/getaxpp/2020/getax2020.tar.gz
 	source = getax
-	sha256sums = b51646296b5753d4302459cde311b5d21b936ff8a802fde44d93dc9abb2021aa
+	sha256sums = babb8b0d23687084e21aed756123eb408896dc26e7275f40095eaa86845ade00
 	sha256sums = a474ed38201b0abc1459ff0ffa37a1fb0e947a135a18e08cb00acadad23488be
 
 pkgname = getax
