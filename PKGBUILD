@@ -12,7 +12,7 @@ arch=("any")
 url="https://github.com/dgarage/${_pkgname}"
 license=("MIT")
 groups=()
-depends=("aspnet-runtime" "bitcoin-cli" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk")
+depends=("aspnet-runtime" "bitcoin-cli" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk" "tmux")
 makedepends=("git")
 checkdepends=()
 optdepends=()
@@ -47,39 +47,31 @@ package()
     # Assure that the folders exist.
     mkdir -p ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/lib/
-    mkdir -p ${pkgdir}/usr/lib/systemd/system/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
-    
-    # Create the systemd service.
-    echo -e "[Unit]
-    Description=${pkgdesc}
-    Requires=bitcoind.service
-    After=bitcoind.service
-    After=network.target
-
-    [Service]
-    Type=simple
-    Environment=DOTNET_CLI_HOME=/tmp/
-    ExecStart=/usr/bin/${_pkgname_lc}
-    Restart=on-failure
-
-    [Install]
-    WantedBy=multi-user.target" > ${srcdir}/${_pkgname}/${_pkgname_lc}.service
     
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
     dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- $@" > ${srcdir}/${_pkgname}/run.sh
     
+    # Create nbxplorer-start.sh.
+    echo -e "#!/bin/bash
+    tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc}\";bash -i" > ${srcdir}/${_pkgname}/${_pkgname_lc}-start.sh
+    
+    # Create nbxplorer-stop.sh.
+    echo -e "#!/bin/bash
+    tmux kill-session -t ${_pkgname_lc}" > ${srcdir}/${_pkgname}/${_pkgname_lc}-stop.sh
+    
     # Put the installation at the right place.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
-    # Symlinking run.sh to /usr/bin/${_pkgname_lc}.
+    # Symlinking the scripts.
     ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
-    
-    # Install the systemd service.
-    install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}.service ${pkgdir}/usr/lib/systemd/system/
+    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}-start.sh ${pkgdir}/usr/bin/${_pkgname_lc}-start
+    chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-start
+    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}-stop.sh ${pkgdir}/usr/bin/${_pkgname_lc}-stop
+    chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-stop
     
     # Install the documentation.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
