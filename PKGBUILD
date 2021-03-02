@@ -1,17 +1,24 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=webkitgtk-bin
-pkgver=1.0
-pkgrel=2
+epoch=3
+pkgver=2.4.11
+pkgrel=22
 pkgdesc="Legacy Web content engine for GTK+ 3 (precompiled)."
-provides=('webkitgtk=3:2.4.11' 'webkitgtk2=3:2.4.11')
-arch=('x86_64')
+provides=("webkitgtk=${epoch}:${pkgver}")
+conflicts=("webkitgtk")
+arch=("x86_64")
 url="https://webkitgtk.org/"
-license=('custom')
-depends=(libxt libxslt sqlite libsoup 'enchant>=2.2' libgl geoclue2 gst-plugins-base-libs
-         libsecret libwebp harfbuzz-icu 'icu>=61' gst-plugins-base gst-plugins-good gst-libav)
+license=("custom")
+depends=("enchant>=2.2" "geoclue2" "gst-plugins-base-libs" "gtk3" "harfbuzz-icu" "libgl" "libsecret" "libwebp" "libxslt" "libxt")
+optdepends=(
+  "gst-libav: nonfree media decoding"
+  "gst-plugins-base: free media decoding"
+  "gst-plugins-good: media decoding"
+  "gtk2: Netscape plugin support"
+)
 options=(!emptydirs)
-source=('precompiled.tar.gz::https://dl.dropboxusercontent.com/s/aiw75lcurs35e7r/webkitgtk-bin.tar.gz')
-sha256sums=('1aaeee74467d90dfaef57d23a434efd9b9b3f703dc8a689ada888b9e7c0717e0')
+source=("https://github.com/frealgagu/archlinux.webkitgtk/releases/download/${epoch}_${pkgver}-${pkgrel}/webkitgtk-${epoch}.${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+sha256sums=("fb3b9c010705912d9dc48925547297a466dc367d3aa8535a4bcfd0d63bbed0ae")
 
 package() {
   cp -Rfp $srcdir/usr $pkgdir/

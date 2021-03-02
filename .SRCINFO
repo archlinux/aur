@@ -1,30 +1,30 @@
 pkgbase = webkitgtk-bin
 	pkgdesc = Legacy Web content engine for GTK+ 3 (precompiled).
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 2.4.11
+	pkgrel = 22
+	epoch = 3
 	url = https://webkitgtk.org/
 	arch = x86_64
 	license = custom
-	depends = libxt
-	depends = libxslt
-	depends = sqlite
-	depends = libsoup
 	depends = enchant>=2.2
-	depends = libgl
 	depends = geoclue2
 	depends = gst-plugins-base-libs
+	depends = gtk3
+	depends = harfbuzz-icu
+	depends = libgl
 	depends = libsecret
 	depends = libwebp
-	depends = harfbuzz-icu
-	depends = icu>=61
-	depends = gst-plugins-base
-	depends = gst-plugins-good
-	depends = gst-libav
+	depends = libxslt
+	depends = libxt
+	optdepends = gst-libav: nonfree media decoding
+	optdepends = gst-plugins-base: free media decoding
+	optdepends = gst-plugins-good: media decoding
+	optdepends = gtk2: Netscape plugin support
 	provides = webkitgtk=3:2.4.11
-	provides = webkitgtk2=3:2.4.11
+	conflicts = webkitgtk
 	options = !emptydirs
-	source = precompiled.tar.gz::https://dl.dropboxusercontent.com/s/aiw75lcurs35e7r/webkitgtk-bin.tar.gz
-	sha256sums = 1aaeee74467d90dfaef57d23a434efd9b9b3f703dc8a689ada888b9e7c0717e0
+	source = https://github.com/frealgagu/archlinux.webkitgtk/releases/download/3_2.4.11-22/webkitgtk-3.2.4.11-22-x86_64.pkg.tar.zst
+	sha256sums = fb3b9c010705912d9dc48925547297a466dc367d3aa8535a4bcfd0d63bbed0ae
 
 pkgname = webkitgtk-bin
 
