@@ -1,6 +1,6 @@
 pkgbase = numworks-omega-git
 	pkgdesc = A simulator for the Numworks graphic calculator (Omega firmware)
-	pkgver = 1.20.0.E14.r787.g41554caf2
+	pkgver = 1.20.0.E14.r806.ga25ebc516
 	pkgrel = 1
 	url = https://getomega.dev
 	arch = x86_64
@@ -13,10 +13,8 @@ pkgbase = numworks-omega-git
 	provides = numworks-omega
 	conflicts = numworks-omega
 	source = numworks-omega-git::git+https://github.com/Omega-Numworks/Omega.git#branch=omega-dev
-	source = git+https://github.com/Omega-Numworks/Omega-Atom.git
+	source = git+https://github.com/Omega-Numworks/Omega-Atomic.git
 	source = git+https://github.com/Omega-Numworks/Omega-RPN.git
-	source = git+https://github.com/Omega-Numworks/Omega-Themes.git
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

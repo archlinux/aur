@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-omega-git
-pkgver=1.20.0.E14.r787.g41554caf2
+pkgver=1.20.0.E14.r806.ga25ebc516
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Omega firmware)"
 arch=('x86_64')
@@ -17,11 +17,9 @@ options=()
 install=
 changelog=
 source=("$pkgname::git+https://github.com/Omega-Numworks/Omega.git#branch=omega-dev"
-	"git+https://github.com/Omega-Numworks/Omega-Atom.git"
-	"git+https://github.com/Omega-Numworks/Omega-RPN.git"
-	"git+https://github.com/Omega-Numworks/Omega-Themes.git")
+	"git+https://github.com/Omega-Numworks/Omega-Atomic.git"
+	"git+https://github.com/Omega-Numworks/Omega-RPN.git")
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          'SKIP')
 
@@ -34,9 +32,8 @@ prepare() {
 	cd "$pkgname"
 
 	git submodule init
-	git config submodule."apps/atom".git.url $srcdir/Omega-Atom
+	git config submodule."apps/atomic".git.url $srcdir/Omega-Atomic
 	git config submodule."apps/rpn".git.url $srcdir/Omega-RPN
-	git config submodule."themes".git.url $srcdir/Omega-Themes
 	git submodule update
 
 	gendesk -f -n --pkgname "${pkgname%-git}" --pkgdesc "$pkgdesc" --name "Numworks Omega" --icon "${pkgname%-git}" --exec "${pkgname%-git}" --categories "Education;Emulator"
