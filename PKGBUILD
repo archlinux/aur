@@ -22,11 +22,6 @@ build() {
   make
 }
 
-check() {
-  # Can't check anything, since tests needs tijolo own project repo to execute.
-  true
-}
-
 package() {
   cd "$srcdir/tijolo-$pkgver"
   make install DESTDIR="${pkgdir}"
