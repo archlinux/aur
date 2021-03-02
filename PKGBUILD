@@ -5,11 +5,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=88.0.4324.182
+pkgver=89.0.4389.72
 pkgrel=1
 _pkgname=chromium
 _launcher_ver=7
-_gcc_patchset=3
+_gcc_patchset=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -19,24 +19,26 @@ conflicts=(chromium)
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git' 'libva'
-                             'clang' 'lld' 'gn' 'java-runtime-headless'
-             'python2-setuptools')
+makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs'
+            'java-runtime-headless' 'python2' 'python2-setuptools')
 optdepends=(
-            'libva: hardware-accelerated video decode [experimental]'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        add-dependency-on-opus-in-webcodecs.patch
+        add-ctime-for-std-time.patch
         chromium-glibc-2.33.patch
-        subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
-sha256sums=('30411fc3ec2d33df4c5cad41f21affa3823c80f7dbd394f6d68f9a1e81015b81'
+        use-oauth2-client-switches-as-default.patch)
+sha256sums=('946a0b65aad10e0f77a539103892099b7238310c733f25b41d58b76f6ac0bc4f'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
+            '359d2847e775d8cf6f4e0b12c94c8f2718f0fd562427859c596ce1c3711dbd8e'
+            'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
+            '102e0c976c0d7fd1fbe2f2978ec621499a97b62457b3fde4daf84f026d1a53a7'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
-            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -67,9 +69,10 @@ depends+=(${_system_libs[@]})
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys.
+#
+# Starting with Chromium 89 (2021-03-02) the OAuth2 credentials have been left
+# out: https://archlinux.org/news/chromium-losing-sync-support-in-early-march/
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
-_google_default_client_id=413772536636.apps.googleusercontent.com
-_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -84,17 +87,20 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
+  # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
+  # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
+  # runtime -- this allows signing into Chromium without baked-in values
+  patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
+
   # https://crbug.com/1164975
   patch -Np1 -i ../chromium-glibc-2.33.patch
 
   # Upstream fixes
-  patch -Np1 -d third_party/skia <../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
+  patch -Np1 -i ../add-dependency-on-opus-in-webcodecs.patch
+  patch -Np1 -i ../add-ctime-for-std-time.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../patches/chromium-87-openscreen-include.patch
-  patch -Np1 -i ../patches/chromium-88-CompositorFrameReporter-dcheck.patch
-  patch -Np1 -i ../patches/chromium-88-ideographicSpaceCharacter.patch
-  patch -Np1 -i ../patches/chromium-88-AXTreeFormatter-include.patch
+  patch -Np1 -i ../patches/chromium-89-quiche-dcheck.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
@@ -115,7 +121,7 @@ prepare() {
       -delete
   done
 
-  python2 build/linux/unbundle/replace_gn_files.py \
+  ./build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
 }
 
@@ -139,6 +145,7 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
+    'chrome_pgo_phase=0' # unsupported instrumentation profile format version
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
@@ -151,12 +158,8 @@ build() {
     'use_custom_libcxx=false'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
-    'use_vaapi=true'
     'enable_nacl=false'
     "google_api_key=\"${_google_api_key}\""
-    "google_default_client_id=\"${_google_default_client_id}\""
-    "google_default_client_secret=\"${_google_default_client_secret}\""
-    'symbol_level=0'
     # from ArchARM to build with distcc, uncomment if you build with distcc
     #'is_cfi=false'
     #'use_gold=false'
@@ -181,7 +184,7 @@ build() {
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
-  gn gen out/Release --args="${_flags[*]}" --script-executable=python2
+  gn gen out/Release --args="${_flags[*]}"
   ninja -C out/Release chrome chrome_sandbox
 }
 
