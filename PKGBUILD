@@ -1,13 +1,13 @@
 # Maintainer: silentnoodle <lonnqvistben at gmail dot com>
 pkgname=yam
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="Game manager for F95zone"
 arch=('x86_64')
 url="https://github.com/MillenniumEarl/YAM"
 license=('MIT')
 source=("https://github.com/MillenniumEarl/YAM/releases/download/v${pkgver}/YAM-${pkgver}.AppImage")
-sha256sums=('1ab1e01246720ff62fca7149e9bb919c011a0ae496cbaebaf09d8c5d3e9798c1')
+sha256sums=('a718e8c3dc036b777dd3e05cc0cee2693a4893e86161619aee922dff1d13707b')
 
 prepare() {
   chmod +x "YAM-${pkgver}.AppImage"
