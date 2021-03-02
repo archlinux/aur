@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-core-info
 pkgname=$_pkgname-git
-pkgver=1.9.0.r16.g48d954c
+pkgver=1.9.0.r19.g6a5a169
 pkgrel=1
 epoch=1
 pkgdesc="Libretro core info files"
@@ -22,10 +22,14 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd $_pkgname
+	make update
+}
+
 package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	make DESTDIR="$pkgdir" install
-	# copy license
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname COPYING
 }
