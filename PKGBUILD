@@ -1,4 +1,5 @@
-# Maintainer: Marcel O'Neil <marcel@marceloneil.com>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 _pkgname=hadolint
 pkgname=hadolint-git
