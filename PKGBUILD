@@ -2,36 +2,29 @@
 # Contributor: marlock
 
 pkgname=android-udev-git
-pkgver=20200613.r0.ge5bc06e
+pkgver=20210302.r0.gfc2ad70
 pkgrel=1
 pkgdesc='Udev rules to connect Android devices to your linux box'
 arch=('any')
 url="https://github.com/M0Rf30/android-udev-rules"
 license=('GPL3')
-source=('android-udev::git+https://github.com/M0Rf30/android-udev-rules.git')
+source=("${pkgname%-git}::git+https://github.com/M0Rf30/android-udev-rules.git")
 depends=('systemd' 'libmtp')
 makedepends=('git')
-conflicts=('android-udev')
-provides=('android-udev')
-install='android-udev.install'
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 
 package() {
-  cd android-udev
-  # Creating system folders
-  mkdir -p $pkgdir/usr/lib/udev/rules.d/
-  mkdir -p $pkgdir/usr/lib/sysusers.d
-  mkdir -p $pkgdir/usr/share/android/
+  cd "${pkgname%-git}"
 
-  # Installing rules and confs
-  cp 51-android.rules $pkgdir/usr/lib/udev/rules.d/51-android.rules
-  cp android-udev.conf $pkgdir/usr/lib/sysusers.d
-
-  # Setting permissions
-  chmod a+r $pkgdir/usr/lib/udev/rules.d/51-android.rules
+  install -Dm 644 51-android.rules \
+    "${pkgdir}"/usr/lib/udev/rules.d/51-android.rules
+  install -Dm 644 android-udev.conf \
+    "${pkgdir}"/usr/lib/sysusers.d/android-udev.conf
 }
 
 pkgver() {
-  cd android-udev
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
