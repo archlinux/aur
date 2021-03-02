@@ -1,6 +1,6 @@
 pkgbase = lact-git
 	pkgdesc = AMDGPU Controller application
-	pkgver = r122.1d96364
+	pkgver = r125.4d61971
 	pkgrel = 1
 	url = https://github.com/ilyazzz/LACT
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = lact-git
 	makedepends = git
 	depends = gtk3
 	depends = hwids
+	backup = etc/lact.json
 	source = git+https://github.com/ilyazzz/LACT.git
 	source = lactd.service
 	source = lact.desktop
@@ -17,3 +18,4 @@ pkgbase = lact-git
 	sha512sums = dbd7b6fd2041da1f7272503d99d598d061a7f56e8aed74d92d013b01d9d7282f4ff66b3d180779ec16f9293d789c5082472633cfb1e0705a699895d12fa713b9
 
 pkgname = lact-git
+
