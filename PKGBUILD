@@ -54,7 +54,7 @@ source=("evelauncher.desktop"
         "eve-transl5.12-ru.tar.gz"
         "eve-transl5.12-zh.tar.gz"
         "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
-        "https://github.com/doitsujin/dxvk/releases/download/v1.8/dxvk-1.8.tar.gz"
+        "https://github.com/doitsujin/dxvk/releases/download/v1.8.1/dxvk-1.8.1.tar.gz"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
 
 noextract=('eve-transl5.12-de.tar.gz'
@@ -103,9 +103,9 @@ package() {
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
-        cp -r ${srcdir}/dxvk-1.8/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        cp -r ${srcdir}/dxvk-1.8/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        echo "1.8" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
+        cp -r ${srcdir}/dxvk-1.8.1/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        cp -r ${srcdir}/dxvk-1.8.1/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        echo "1.8.1" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
         rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
@@ -159,5 +159,5 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '1a83a791b5a189823f71cdfb1e0c0e15139ff7f563bfb3eac70a5fa4ad9ebc22'
             '5ffd6578dfbb9bf1647fbae819e3ddae0722c2613779c122d86963123470359f'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
-            'e84f7ac494ac7f5013976744470899226d145e29617c407ff52870055bda476e'
+            '756a09c46f8279ade84456e3af038f64613a51e00a2d4cfffa4c91c10ede60e8'
             '98ccf4b9932d7fb74896461f764c61921592a73089e3fcb4063fe7836c6a0bca')
