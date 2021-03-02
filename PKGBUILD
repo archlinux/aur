@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=farver
-_cranver=2.0.3
+_cranver=2.1.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r)
-makedepends=('gcc>=4.3')
 optdepends=(r-testthat r-covr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9d77facf8989c9f49f3d625ec4ddccb1')
+sha256sums=('e5c8630607049f682fb3002b99ca4f5e7c6b94f8b2a4342df594e7853b77cef4')
 
 build() {
   cd "${srcdir}"
