@@ -1,0 +1,17 @@
+pkgbase = yasp-git
+	pkgdesc = A basic slot machine program for linux
+	pkgver = v1.0.2.r0.g2cfb594
+	pkgrel = 1
+	url = https://github.com/AsayuGit/YetAnotherSlotProject
+	arch = any
+	license = GPL2
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	provides = yasp
+	conflicts = yasp
+	source = git+https://github.com/AsayuGit/YetAnotherSlotProject.git
+	md5sums = SKIP
+
+pkgname = yasp-git
+
