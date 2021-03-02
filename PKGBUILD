@@ -2,7 +2,7 @@
 # Contributor: pappy@a_s_c_e_l_i_o_n.c_o_m
 
 pkgname=dbeaver-ce
-pkgver=7.3.5
+pkgver=21.0.0
 pkgrel=1
 pkgdesc="Free Universal SQL Client for Developers and Database Administrators (Community Edition)"
 arch=('x86_64')
@@ -13,13 +13,15 @@ makedepends=('maven' 'java-runtime<15')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
 install="${pkgname}.install"
+provides=(dbeaver-ce)
+conflicts=(dbeaver-ce-bin)
 
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/serge-rider/dbeaver/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
         "${pkgname}.hook")
-sha256sums=('64ea39b57f106d0d37b1df8fce63d4c8f73cfe588eb6ffe9d2a215fb77e82d44'
+sha256sums=('3924947380b5da47beb7494a5b82744a1fc183a838f912314f3e6f6089df2fb6'
             'a53bcfa37f71e96fdc0ba3df6748d147f29fcb3bc7f35ffad9d876f3e2b072aa'
             'ba3c2248960b2b5c6eafa227ec9bd1223e21287a991cd3b912f0b0a984666c80'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'

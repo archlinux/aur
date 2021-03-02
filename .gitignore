@@ -1,6 +1,7 @@
 *.tar.gz
 *.tar.xz
+*.tar.zst
+*.sha256
 *-git/
 src/
 pkg/
-*.sha256
