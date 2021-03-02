@@ -1,14 +1,14 @@
 pkgbase = lua-language-server
 	pkgdesc = Lua Language Server coded by Lua
-	pkgver = 1.15.0
-	pkgrel = 2
+	pkgver = 1.17.1
+	pkgrel = 1
 	url = https://github.com/sumneko/lua-language-server
 	arch = x86_64
 	license = MIT
 	makedepends = ninja
 	makedepends = git
 	depends = lua
-	source = lua-language-server::git+https://github.com/sumneko/lua-language-server.git#tag=1.15.0
+	source = lua-language-server::git+https://github.com/sumneko/lua-language-server.git#tag=1.17.1
 	source = 0001-Fix-build.patch
 	source = wrapper
 	sha256sums = SKIP

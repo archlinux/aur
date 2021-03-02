@@ -2,8 +2,8 @@
 # Contributor: Mohammad AlSaleh <CE.Mohammad.AlSaleh at gmail dot com>
 
 pkgname=lua-language-server
-pkgver=1.15.0
-pkgrel=2
+pkgver=1.17.1
+pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
 url='https://github.com/sumneko/lua-language-server'
