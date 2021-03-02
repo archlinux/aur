@@ -14,8 +14,10 @@ Server = https://random-mirror.chaotic.cx/$repo/$arch
 Server = https://us-tx-mirror.chaotic.cx/$repo/$arch
 # * Washington, By: LordKitsuna
 Server = https://us-wa-mirror.chaotic.cx/$repo/$arch
-# * Utah, By: Theaus
+# * Utah, By: The-aus
 Server = https://us-ut-mirror.chaotic.cx/$repo/$arch
+# * Los Angeles - CA, By: IRC-Nerds
+Server = https://us-ca-mirror.chaotic.cx/$repo/$arch
 
 # Netherlands
 # * By: Var Bhat and LiteServer
