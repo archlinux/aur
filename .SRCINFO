@@ -1,0 +1,18 @@
+pkgbase = libretro-genesis-plus-gx-wide-git
+	pkgdesc = Widescreen modification of Genesis Plus GX
+	pkgver = r1530.fbbac38
+	pkgrel = 1
+	url = https://github.com/libretro/Genesis-Plus-GX-Wide
+	arch = x86_64
+	groups = libretro
+	license = custom
+	makedepends = git
+	depends = libretro-core-info
+	depends = glibc
+	provides = libretro-genesis-plus-gx-wide
+	conflicts = libretro-genesis-plus-gx-wide
+	source = libretro-genesis-plus-gx-wide::git+https://github.com/libretro/Genesis-Plus-GX-Wide.git
+	md5sums = SKIP
+
+pkgname = libretro-genesis-plus-gx-wide-git
+
