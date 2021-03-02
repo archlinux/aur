@@ -1,8 +1,8 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=mercure
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='Server-sent live updates: protocol and reference implementation'
 arch=('x86_64')
 url='https://mercure.rocks'
@@ -13,7 +13,7 @@ source=('mercure.service')
 source_x86_64=("mercure-${pkgver}_x86_64::https://github.com/dunglas/mercure/releases/download/v${pkgver}/mercure_${pkgver}_Linux_x86_64.tar.gz")
 
 sha256sums=('277572c9cbc93b74b368aec4fd40a8a9542d220e74b14383ef68e24630b2a4dc')
-sha256sums_x86_64=('ec1553a94c3df9f61a1176c8a984682c65689337334e0e8e734017da66413e10')
+sha256sums_x86_64=('046d9e3374ddf3d52563a33ecadc2e9f85e18f6a397559a28210d6ddfc329aa6')
 
 package(){
   install -Dm 755 mercure "$pkgdir/usr/bin/mercure"
