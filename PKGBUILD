@@ -1,7 +1,7 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher
 pkgver=887
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
 url="https://mojang.com/"
@@ -17,7 +17,7 @@ https://launcher.mojang.com/download/minecraft-launcher.svg
 )
 sha256sums=(
 'a7d75ef47c8e940a56c8fad0c9a68f41df8d5df85df18377c53e3da5749c645c'
-'677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7'
+'431040831069a1ea867cb7c6f708e3c8f5788fb3d3e41d068f8afbef60cfafbd'
 '35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
 )
 
@@ -28,17 +28,9 @@ build() {
 }
 
 package () {
-
   cd "$pkgdir"
 
-  mkdir -p "opt"
-  mkdir -p "usr/bin"
-
   install -Dm644 "$srcdir/minecraft-launcher.svg"    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/minecraft-launcher.svg"
-
   install -Dm644 "$srcdir/minecraft-launcher.desktop"    "$pkgdir/usr/share/applications/minecraft-launcher.desktop"
-
-  cp -Rv "$srcdir/minecraft-launcher" "$pkgdir/opt/$pkgname"
-  ln -s "/opt/$pkgname/minecraft-launcher" "$pkgdir/usr/bin/$pkgname"
-
+  install -Dm755 "$srcdir/minecraft-launcher/minecraft-launcher" "$pkgdir/usr/bin/minecraft-launcher"
 }
