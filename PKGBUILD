@@ -8,7 +8,7 @@
 
 pkgname=librewolf-dev-wayland
 _pkgname="Librewolf Developer Edition"
-pkgver=87.0b3
+pkgver=87.0b4
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (developer edition)"
 arch=(x86_64 aarch64)
@@ -31,8 +31,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'plasma5-applets-window-appmenu: appmenu for plasma only')
 options=(!emptydirs !makeflags !strip)
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
-conflicts=('librewolf')
-provides=('librewolf')
 source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                librewolf-dev.desktop
                "git+https://gitlab.com/librewolf-community/browser/common.git"
@@ -50,14 +48,14 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 build-arm-libopus.patch
                 0001-Use-remoting-name-for-GDK-application-names.patch)
 
-sha512sums_x86_64=('f1c610192e1e540bd7691d41b8d20e227cf9042b57fe4c1a3b823bcf8c1b9ff49a18e0702bd6959645d098dff17a97dc01fb27f99d86ab27d3eb9b3234ac14f2'
+sha512sums_x86_64=('15cbff7a3df828f180cc3a20cf68cb1aa1885722edf565725e1444a08ed1724bf7d73f27db25bc3a92b58ecd61b48efe1dc0b348171329f9d0436a566492d480'
                    '034fc826af3c4c55f81471636da58fbfaf5b1ba49e159cd66c41a3431f60789d206770cb0d490b3712a63b96ca8013719fceb7004697d02be6aa98ca41bdcaa5'
                    'SKIP'
                    'SKIP'
                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                    'afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea')
-sha512sums_aarch64=('f1c610192e1e540bd7691d41b8d20e227cf9042b57fe4c1a3b823bcf8c1b9ff49a18e0702bd6959645d098dff17a97dc01fb27f99d86ab27d3eb9b3234ac14f2'
+sha512sums_aarch64=('15cbff7a3df828f180cc3a20cf68cb1aa1885722edf565725e1444a08ed1724bf7d73f27db25bc3a92b58ecd61b48efe1dc0b348171329f9d0436a566492d480'
                     '034fc826af3c4c55f81471636da58fbfaf5b1ba49e159cd66c41a3431f60789d206770cb0d490b3712a63b96ca8013719fceb7004697d02be6aa98ca41bdcaa5'
                     'SKIP'
                     'SKIP'
