@@ -1,9 +1,10 @@
-# Maintainer: Gyara <laxect39 at gamil dot com>
+# Maintainer: Gyara <laxect39@gmail.com>
+# Maintainer: Nanozuki <pt.wenhan@gmail.com>
 
 pkgname=dantalian-rs
 _realname="${pkgname%-rs}"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A nfo file generator for your anime. Source from Bangumi."
 url="https://github.com/nanozuki/dantalian"
 makedepends=('cargo')
