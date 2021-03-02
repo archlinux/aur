@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-extensions-sync-git
-pkgver=12.r0.gdeb1dfa
+pkgver=12.r1.ga147409
 pkgrel=1
 pkgdesc="Sync all extensions and their configurations across all gnome instances"
 arch=('any')
