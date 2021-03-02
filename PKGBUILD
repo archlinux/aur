@@ -1,27 +1,30 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=sysmontask
-pkgver=1.1.1_beta
-pkgrel=1
 _gitname=SysMonTask
-pkgdesc="System monitor with the compactness and usefulness of Windows task manager to allow higher control and monitoring"
+pkgver=1.1.1_beta
+pkgrel=2
+pkgdesc="System Monitor With UI Like Windows"
 arch=('any')
-url="https://github.com/KrispyCamel4u/$_gitname"
+url="https://github.com/KrispyCamel4u/SysMonTask"
 license=('MIT')
-depends=('python' 'python-psutil>=5.8' 'gtk3' 'zenity' 'python-gobject' 'python-xxhash')
-makedepends=('tar' 'xz')
-conflicts=('sysmontask')
-provides=('sysmontask')
+depends=('python' 'python-psutil>=5.8' 'python-gobject' 'python-cairo'
+         'libwnck3' 'gtk3' 'zenity')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('d7d184678886e46efc51ea2c890e0496c0871e0674b804dc4b3cb2027a74f13b')
 
-source=("${url}/releases/download/v${pkgver}/sysmontask_1.1.1-ubuntu20.10-beta-a_all.deb")
-sha256sums=('2546abed806fc0522448e02c7bc5d21c4a6b7ee97078c013673fad5df58a30d7')
+build() {
+	cd "$_gitname-$pkgver"
+	python setup.py build
+}
 
 package() {
-  cd "${pkgdir}"
-  # this extracts all into the pkgdir
-  tar xf "${srcdir}/data.tar.xz"
-  # adjust for arch linux
-  mkdir -p usr/lib/python3.9
-  mv usr/lib/python3/dist-packages usr/lib/python3.9/site-packages
-  rm -r usr/lib/python3
+	cd "$_gitname-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
+	mv "$pkgdir/usr/share/doc/$pkgname/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname"
 }
- 
