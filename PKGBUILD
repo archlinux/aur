@@ -3,7 +3,7 @@
 pkgname=clifm-colors-git
 _pkgname=clifm-colors
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Some color schemes for CLiFM file manager"
 arch=(any)
 url="https://github.com/leo-arch/clifm-colors"
@@ -15,6 +15,6 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$_pkgname"
-  mkdir -p "$pkgdir/etc/clifm"
-  cp -r colors "$pkgdir/etc/clifm"
+  mkdir -p "$pkgdir/usr/share/clifm"
+  cp -r colors "$pkgdir/usr/share/clifm"
 }
