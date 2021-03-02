@@ -8,12 +8,12 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 42
+## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 42 => native
+## Good option if your package is for one machine: 99 => native
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -34,21 +34,7 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## Enable Cachy CPU scheduler by default https://github.com/xanmod/linux/blob/5.8/Documentation/scheduler/sched-Cachy.rst
-## Set variable "use_cachy" to: n to disable (stock Xanmod)
-##                              y to enable
-if [ -z ${use_cachy+x} ]; then
-  use_cachy=n
-fi
-
-## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
-## Set variable "use_ns" to: n to disable (stock Xanmod)
-##                           y to enable (stock Archlinux)
-if [ -z ${use_ns+x} ]; then
-  use_ns=n
-fi
-
-# Compile ONLY used modules to VASTLYreduce the number of modules built
+# Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
@@ -66,8 +52,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-git
-pkgver=5.9.r951309.5409fb1b83b1
-_branch=5.9
+pkgver=5.11.2.xanmod1.r0.g39be9f695492
 xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod - git version'
@@ -81,24 +66,15 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
-source=("git+https://github.com/xanmod/linux.git#branch=$_branch"
-        choose-gcc-optimization.sh
-        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
+source=("git+https://github.com/xanmod/linux.git"
+        choose-gcc-optimization.sh)
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-# Archlinux patches
-_commits=""
-for _patch in $_commits; do
-    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
-done
-    
-
 sha256sums=('SKIP'
-            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
-            '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
+            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -106,7 +82,7 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 pkgver() {
   cd linux 
-  printf "${_branch}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -115,7 +91,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
@@ -144,18 +120,6 @@ prepare() {
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
-  fi
-
-  if [ "$use_cachy" = "y" ]; then
-    msg2 "Enabling Cachy CPU scheduler by default (also NUMA and grouping for tasks, which are not compatible with Cachy)..."
-    scripts/config --disable CONFIG_NUMA
-    scripts/config --disable FAIR_GROUP_SCHED
-    scripts/config --enable CONFIG_CACHY_SCHED
-  fi
-
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
   # Let's user choose microarchitecture optimization in GCC
@@ -227,14 +191,15 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd linux
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -303,6 +268,8 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  msg2 "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
