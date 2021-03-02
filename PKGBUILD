@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=mathjaxr
-_cranver=1.2-0
+_cranver=1.4-0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(r)
 optdepends=(r-js)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('e7d58b89ac2380ee651aad0b312bb3a9ed732467f99452f6dbd5c8ead7e8e1f9')
+sha256sums=('ba57378236d593a39c5839054adc5473526de0c8f05b7eeb87c99438496ddc67')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
