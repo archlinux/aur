@@ -1,6 +1,6 @@
 pkgbase = rpcs3-git
 	pkgdesc = A Sony PlayStation 3 emulator
-	pkgver = 0.0.14.11518.6ae1f1b02
+	pkgver = 0.0.15.11854.d0edd44a6
 	pkgrel = 1
 	url = https://github.com/RPCS3/rpcs3
 	arch = x86_64
