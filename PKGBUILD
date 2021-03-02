@@ -31,14 +31,14 @@ validpgpkeys=()
 
 build() {
 	
-	# extraction
+	# Extraction
 	mkdir -p "${srcdir}/output"
 	tar -xvf "${srcdir}/data.tar.xz" -C "${srcdir}/output"
 }
 
 package() {
 
-	# Installiation
+	# Installation
 	cp -r "${srcdir}/output/"* "${pkgdir}"
 
 	# Desktop launcher
@@ -48,6 +48,7 @@ package() {
 	install -Dm644 "$srcdir/freezer-bin.desktop" "$pkgdir/usr/share/applications/freezer.desktop"
 	install -dm755 "$pkgdir/$HOME/Desktop/"
 	cp -r "${srcdir}"/freezer-bin.desktop "${pkgdir}"$HOME/Desktop
+	ln -sf /opt/Freezer/freezer /usr/local/bin/freezer
 
 }
 md5sums=('SKIP'
