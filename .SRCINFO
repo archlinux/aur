@@ -1,7 +1,7 @@
 pkgbase = love07
 	pkgdesc = An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences.
 	pkgver = 0.7.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://love2d.org/
 	install = love07.install
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = love07
 	depends = sdl
 	depends = shared-mime-info
 	depends = libgl
+	depends = glu
+	depends = libmng
 	source = https://github.com/love2d/love/releases/download/0.7.2/love-0.7.2-linux-src.tar.gz
 	source = https://raw.githubusercontent.com/love2d/love/0.7.2/license.txt
 	source = https://raw.githubusercontent.com/love2d/love/0.7.2/platform/unix/app.svg
@@ -36,4 +38,3 @@ pkgbase = love07
 	sha256sums = 5b72ae3818ada71ec7fd69c2a27126dc5c759257e1ff203639655c389a24ccb1
 
 pkgname = love07
-

@@ -8,12 +8,12 @@
 
 pkgname=love07
 pkgver=0.7.2
-pkgrel=6
+pkgrel=7
 pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences."
 arch=('i686' 'x86_64')
 url="http://love2d.org/"
 license=('zlib')
-depends=('desktop-file-utils' 'devil' 'freetype2' 'hicolor-icon-theme' 'libmodplug' 'libvorbis' 'luajit' 'mpg123' 'openal' 'physfs' 'sdl' 'shared-mime-info' 'libgl')
+depends=('desktop-file-utils' 'devil' 'freetype2' 'hicolor-icon-theme' 'libmodplug' 'libvorbis' 'luajit' 'mpg123' 'openal' 'physfs' 'sdl' 'shared-mime-info' 'libgl' 'glu' 'libmng')
 install=$pkgname.install
 source=("https://github.com/love2d/love/releases/download/0.7.2/love-0.7.2-linux-src.tar.gz"
         "https://raw.githubusercontent.com/love2d/love/0.7.2/license.txt"
