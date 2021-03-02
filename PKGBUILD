@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=11.0.1
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
