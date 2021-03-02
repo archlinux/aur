@@ -25,7 +25,7 @@ pkgbase = linux-xanmod-uksm
 	sha256sums = 322b6928336fdcf0e4dd84d0bb4fab791cf8c32548ae7ab8f79646a13cbdd5a0
 	sha256sums = e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a
 	sha256sums = 74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73
-	sha256sums = 6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc
+	sha256sums = f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58
 
 pkgname = linux-xanmod-uksm
 	pkgdesc = The Linux kernel and modules with Xanmod patches
