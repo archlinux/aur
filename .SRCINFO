@@ -1,17 +1,19 @@
 pkgbase = r-ggsignif
 	pkgdesc = Significance Brackets for 'ggplot2'
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggsignif
 	arch = any
 	license = GPL3
 	depends = r
-	depends = r-ggplot2>=2.0.0
+	depends = r-ggplot2>=3.3.3
 	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/ggsignif_0.6.0.tar.gz
-	md5sums = 3de312c4f569045b04b368db9e9d8ea1
+	optdepends = r-spelling
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggsignif_0.6.1.tar.gz
+	sha256sums = 506e684071332dac62005c709833d419f4944a85478e2f4395f218ac314f5e66
 
 pkgname = r-ggsignif
 
