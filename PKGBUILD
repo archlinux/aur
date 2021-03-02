@@ -20,7 +20,7 @@ install=
 changelog=
 source=("Freezer-$pkgver.AppImage::$url/0:/PC/$pkgver/Freezer-$pkgver.AppImage" "freezer.desktop" "https://i.imgur.com/ztam2vH.png")
 noextract=("Freezer-$pkgver.AppImage")
-md5sums=('f5db3117da256d358d15e65105de02e9'
+md5sums=('92c0d3e0e2285dabd9a296c6d3f7009c'
     '59bc9ed8c52d157647c7f78f980ca49e'
     '3a8057d8fe5a0aa93f04f45e3a77a352')
 
