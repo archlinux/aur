@@ -1,3 +1,4 @@
 #!/bin/sh
 
-/opt/cytoscape/cytoscape.sh $@
+export PATH="/usr/lib/jvm/java-11-openjdk/bin:$PATH"
+exec /opt/cytoscape/cytoscape.sh $@
