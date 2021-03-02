@@ -15,8 +15,12 @@ pkgbase = sdrpp-git
 	depends = soapysdr
 	depends = libiio
 	depends = libad9361
-	depends = portaudio
+	depends = rtaudio
 	depends = rtl-sdr
+	depends = airspy-git
+	depends = airspyhf-git
+	source = git+https://github.com/AlexandreRouma/SDRPlusPlus
+	md5sums = SKIP
 
 pkgname = sdrpp-git
 

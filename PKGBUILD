@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/AlexandreRouma/SDRPlusPlus"
 license=('GPL')
 groups=()
-depends=("fftw" "glfw" "glew" "libvolk" "soapysdr" "libiio" "libad9361" "portaudio" "rtl-sdr")
+depends=("fftw" "glfw" "glew" "libvolk" "soapysdr" "libiio" "libad9361" "rtaudio" "rtl-sdr" "airspy-git" "airspyhf-git")
 makedepends=("gcc" "make" "cmake")
 checkdepends=()
 optdepends=()
@@ -19,14 +19,10 @@ backup=()
 options=()
 install=
 changelog=
-source=()
+source=('git+https://github.com/AlexandreRouma/SDRPlusPlus')
 noextract=()
-md5sums=()
+md5sums=('SKIP')
 validpgpkeys=()
-
-prepare() {
-	git clone https://github.com/AlexandreRouma/SDRPlusPlus
-}
 
 build() {
 	cd "SDRPlusPlus"
@@ -39,4 +35,9 @@ build() {
 package() {
 	cd "SDRPlusPlus/build"
 	make DESTDIR="$pkgdir/" install
+}
+
+pkgver() {
+  	cd "SDRPlusPlus"
+  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
