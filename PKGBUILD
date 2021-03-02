@@ -65,7 +65,7 @@ package_fontconfig-minimal-git() {
   DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
+#  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 
   # Split -docs
 #  mkdir -p "$srcdir/doc/usr/share/man"
