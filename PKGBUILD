@@ -2,7 +2,7 @@
 
 pkgname=libvm68k-git
 pkgver=2.alpha.4.r83.gd1c38e6
-pkgrel=2
+pkgrel=3
 pkgdesc="M68000 ISA virtual machine components implemented in C++ "
 arch=('i686' 'x86_64')
 depends=()
@@ -24,8 +24,8 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
-	autoreconf
-	./configure --prefix=/usr
+	#autoreconf
+	./configure --prefix=/usr --with-gnu-ld
 	make
 }
 

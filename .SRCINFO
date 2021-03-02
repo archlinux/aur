@@ -1,7 +1,7 @@
 pkgbase = libvm68k-git
 	pkgdesc = M68000 ISA virtual machine components implemented in C++
 	pkgver = 2.alpha.4.r83.gd1c38e6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vx68k.org/vx68k
 	arch = i686
 	arch = x86_64
