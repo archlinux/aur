@@ -11,6 +11,7 @@ pkgbase = linux-manjaro-xanmod-cacule-uksm
 	makedepends = bc
 	makedepends = libelf
 	makedepends = cpio
+	makedepends = patch
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
