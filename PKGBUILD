@@ -8,7 +8,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          pipewire-full-jack-git pipewire-full-pulse-git
          gst-plugin-pipewire-full-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.22.r89.g0e2a153b
+pkgver=0.3.22.r92.g97cc2760
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -66,7 +66,9 @@ package_pipewire-full-git() {
               'pipewire-full-alsa-git: ALSA support'
               'pipewire-full-jack-git: JACK support'
               'pipewire-full-pulse-git: PulseAudio support'
-              'gst-plugin-pipewire-full-git: GStreamer support')
+              'gst-plugin-pipewire-full-git: GStreamer support'
+              'ofono: ofono Bluetooth HFP support'
+              'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
   provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire alsa-card-profiles
              pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
