@@ -1,0 +1,335 @@
+Package:     lilo
+Subject:     fix for manpage lilo.conf.5
+Author:      Bjarni Ingi Gislason <bjarniig at rhi.hi.is>
+Bug-Debian:  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=902711
+Forwarded:   yes
+Last-Update: 2018-09-09
+
+Fix the warning: (macro BI): only 1 argument, but more are expected.
+---
+
+diff -urN s08/man/lilo.conf.5 s09/man/lilo.conf.5
+--- s08/man/lilo.conf.5	2016-07-15 22:02:52.000000000 +0200
++++ s09/man/lilo.conf.5	2018-09-09 15:41:31.019967938 +0200
+@@ -141,7 +141,7 @@
+ From a text file with all the information about 'bmp-colors', 'bmp-table' 
+ and 'bmp-timer' options together with the 'bitmap' option are stored in 
+ the special LILO  header of the bitmap image file by the
+-.BI "lilo -E"
++.B lilo \-E
+ command. Another way works without these special header information: All
+ the information about 'bmp-colors', 'bmp-table' and 'bmp-timer' options
+ together with the 'bitmap' option are stored in the configuration file.
+@@ -158,7 +158,7 @@
+ then "none" is assumed.  The list entries are separated by commas, with no
+ spaces.
+ .TP
+-.BI "bmp-retain"
++.B bmp-retain
+ Option applies to all 'image=' and 'other=' sections.
+ (See COMMON OPTIONS, below.)
+ .TP
+@@ -206,7 +206,7 @@
+     boot = /dev/disk/by-id/ata-SAMSUNG_SV1604N_S01FJ10X999999
+ .fi
+ .TP
+-.BI "change-rules"
++.B change-rules
+ Defines boot-time changes to partition type numbers (`hiding').
+ .IP
+ .nf
+@@ -235,7 +235,7 @@
+ See section "Partition type change rules" of html/user_21-5.html inside 
+ the old documentation for more details.
+ .TP
+-.BI "compact"
++.B compact
+ Tries to merge read requests for adjacent sectors into a single 
+ read request. This drastically reduces load time and keeps the map file
+ smaller. Using `compact' is especially recommended when booting
+@@ -299,7 +299,7 @@
+ .sp
+ probably only useful for floppy disks and loopback devices,
+ because for hard disks the
+-.BI lba32
++.B lba32
+ disk addressing option ignores disk geometry.
+ .sp
+ Developers who have implemented a disk driver for a new block storage
+@@ -337,12 +337,12 @@
+ .I /etc/disktab
+ if `disktab' is omitted. The use of disktabs is discouraged.
+ .TP
+-.BI "el-torito-bootable-CD"
++.B el-torito-bootable-CD
+ Flag second stage loader to terminate disk emulation when booting
+ from an El Torito Bootable CD. This option is used by the
+ \fBmkrescue\fP utility when the "\-\-iso" switch is specified.
+ .TP
+-.BI "fix-table"
++.B fix-table
+ This allows lilo to adjust 3D addresses in partition tables. Each 
+ partition entry contains a 3D (cylinder/head/sector) and a linear 
+ address of the first and the last sector of the partition. If a 
+@@ -364,14 +364,14 @@
+ Operation is identical to \fBbackup=\fP above, except an existing backup
+ file is unconditionally overwritten if it exists.
+ .TP
+-.BI "geometric"
++.B geometric
+ Force disk addressing which is compatible with older versions of LILO. 
+ Geometric addressing uses cylinder/head/sector addresses, and is limited to
+ disk cylinders up to 1023.  If inaccessible cylinders are referenced,
+ diagnostics will be issued at boot-install time, rather than boot-time. 
+ With a newer BIOS, use of 'lba32' is recommended.
+ .TP
+-.BI "ignore-table"
++.B ignore-table
+ tells lilo to ignore corrupt partition tables. 
+ .TP
+ .BI "install=" <user-interface>
+@@ -389,7 +389,7 @@
+ (Prior to LILO version 22.3, `install=' specified the user interface as
+ a file in the `/boot' directory.)
+ .TP
+-.BI "large-memory"
++.B large-memory
+ Normally any initial ramdisk (initrd) loaded with a kernel is loaded as
+ high in memory as possible, but never above 15Mb.  This is due to a BIOS
+ limitation on older systems.  On newer systems, this option enables using
+@@ -403,7 +403,7 @@
+ kernel documentation for the kernel command line parameter
+ "mem=" for limiting the memory used by the kernel.)
+ .TP
+-.BI "lba32"
++.B lba32
+ Generate 32-bit Logical Block Addresses instead of cylinder/head/sector 
+ addresses. If the BIOS supports packet addressing, then packet calls will be
+ used to access the disk. This allows booting from any partition on disks
+@@ -415,7 +415,7 @@
+ all post-1998 systems.  Beginning with LILO version 22, 'lba32' is the
+ default disk addressing scheme.
+ .TP
+-.BI "linear"
++.B linear
+ Generate 24-bit linear sector addresses instead of cylinder/head/sector 
+ (geometric) addresses. Linear addresses are translated at run time to
+ geometric addresses, and are limited to cylinders <= 1023. When using
+@@ -426,12 +426,12 @@
+ recent BIOS (post-1998).  The 'linear' option is considered obsolete,
+ and its use is strongly discouraged.
+ .TP
+-.BI "lock"
++.B lock
+ Enables automatic recording of boot command lines as the defaults 
+ for the following boots. This way, lilo "locks" on a choice until it is 
+ manually overridden.
+ .TP
+-.BI "mandatory"
++.B mandatory
+ The per-image password option `mandatory' (see below) applies to all images.
+ .TP
+ .BI "map=" <map-file>
+@@ -497,7 +497,7 @@
+ message file is changed or moved.  'message=' and 'bitmap=' are mutually
+ exclusive.
+ .TP
+-.BI "nodevcache"
++.B nodevcache
+ (22.8)
+ Disables pre-loading of the internal device cache. May be needed for
+ Linux distributions which use non-standard device naming conventions;
+@@ -513,7 +513,7 @@
+ The keyboard detection codes cannot detect the presence or absence of
+ a newer USB keyboard.
+ .TP
+-.BI "noraid"
++.B noraid
+ Disables the automatic marking of disk volumes which are components of
+ RAID arrays as \fBinaccessible\fP.  This allows the user to edit the \fBdisk=\fP
+ / \fBinaccessible\fP declarations into the configuration file himself.  Without
+@@ -521,10 +521,10 @@
+ confusing situations at boot-time, and possible failure to boot.  The use
+ of this keyword is generally not necessary.
+ .TP
+-.BI "nowarn"
++.B nowarn
+ Disables warnings about possible future dangers.
+ .TP
+-.BI "optional"
++.B optional
+ The per-image option `optional' (see below) applies to all images.
+ .TP
+ .BI "password=" <password>
+@@ -533,7 +533,7 @@
+ protected at the default level `mandatory', which is a level higher than
+ `restricted'.
+ .TP
+-.BI "prompt"
++.B prompt
+ Automatic booting (see `delay' above) will not take place unless a locked or
+ pre-stored ("lilo \-R") command line is present. Instead, the boot
+ loader will issue the 
+@@ -568,7 +568,7 @@
+ one way to have it written. Use of \fImbr\fP is the other way to force
+ writing to the MBR of device 0x80.
+ .TP
+-.BI "restricted"
++.B restricted
+ The per-image password option `restricted' (see below) applies to all images.
+ .TP
+ .BI "serial=" <parameters>
+@@ -606,13 +606,13 @@
+ .sp
+ Example: "serial=0,2400n8" initializes COM1 with the default parameters.
+ .TP
+-.BI "single-key"
++.B single-key
+ This option specifies that boot images or 'other's are to be selected and
+ launched with a single keystroke.  Selection is based upon the first
+ character of each name, which must be unique.  This option should not be
+ used with the menu or bitmap user interface ("install=").
+ .TP
+-.BI "static-BIOS-codes"
++.B static-BIOS-codes
+ Causes the operation of the boot installer and boot loader to bypass the
+ use of Volume-ID information, and to revert to a mode of operation of
+ versions of LILO from 22.4 backward.  With Volume-ID booting (22.5 and later),
+@@ -632,7 +632,7 @@
+ In general, this option should
+ never be used, except as a bug workaround.
+ .TP
+-.BI "suppress-boot-time-BIOS-data"
++.B suppress-boot-time-BIOS-data
+ This global option suppresses the boot-time real mode collection of BIOS data
+ on systems which hang on certain BIOS calls.  It is equivalent to using the
+ boot-time switch 'nobd'.
+@@ -649,7 +649,7 @@
+ If no key is pressed for the specified time, the default image is 
+ automatically booted. The default timeout is infinite.
+ .TP
+-.BI "unattended"
++.B unattended
+ (22.6) Alters the operation of the "timeout" parameter in a manner which
+ is useful on
+ noisy serial lines.  Each typed (or noise) character restarts the "timeout"
+@@ -765,13 +765,13 @@
+ zero indicates that no RAM disk should be created. If this variable is 
+ omitted, the RAM disk size configured into the boot image is used.
+ .TP
+-.BI "read-only"
++.B read-only
+ This specifies that the root file system should be mounted read-only.
+ It may be specified as a global option.
+ Typically, the system startup procedure re-mounts the root 
+ file system read-write later (e.g. after fsck'ing it).
+ .TP
+-.BI "read-write"
++.B read-write
+ This specifies that the root file system should be mounted read-write.
+ It may be specified as a global option.
+ .TP
+@@ -868,7 +868,7 @@
+ Note that /sbin/lilo must be re-run if a partition table mapped referenced
+ with `table' is modified.
+ .TP
+-.BI "change"
++.B change
+ This keyword starts a section which describes how primary partition IDs are
+ changed, and how primary partitions are activated and deactivated.  If
+ .B change
+@@ -924,7 +924,7 @@
+ interfere with floppy disk BIOS device codes; "boot-as=" is then used as a
+ local option to override "master-boot" as necessary.
+ .TP
+-.BI "master-boot"
++.B master-boot
+ This flag (LILO version 22.5) indicates a DOS/Windows or other
+ system which will only boot from BIOS device 0x80, the "C:" drive, or BIOS
+ device 0, the A: drive. When this
+@@ -959,7 +959,7 @@
+ This option is largely
+ rendered obsolete by "boot-as=", introduced with LILO version 22.5.
+ .TP
+-.BI "unsafe"
++.B unsafe
+ Do not access the boot sector at map creation time. This disables 
+ some sanity checks, including a partition table check. If the boot 
+ sector is on a fixed-format floppy disk device, using UNSAFE avoids the 
+@@ -975,7 +975,7 @@
+ .BR image= " and " other=
+ cases, the following options apply.
+ .TP
+-.BI "bypass"
++.B bypass
+ No password is required to boot this image. Used to indicate that the global
+ password does not apply to this `image=' or `other='.  See 'password=' below.
+ .TP
+@@ -987,7 +987,7 @@
+ .BI "alias=" <name>
+ A second name for the same entry can be used by specifying an alias.
+ .TP
+-.BI "bmp-retain"
++.B "bmp-retain
+ The bitmap graphic (install=bmp) is retained when control is passed to the
+ loaded kernel image, or other= bootloader; i.e., the screen is not
+ blanked to alphanumeric mode before starting the kernel.  This feature is
+@@ -999,19 +999,19 @@
+ command line if the current image is booted. This is useful when 
+ experimenting with kernels which may crash before allowing interaction 
+ with the system. If using the
+-.BI fallback
++.B fallback
+ option, the next reboot (e.g. 
+ triggered by a manual reset or by a watchdog timer) will load a 
+ different (supposedly stable) kernel. The command line stored by the fallback 
+ mechanism is cleared by removing or changing the default command line 
+ with the
+-.IR "-R"
++.I \-R
+ option, which should be a part of the boot startup scripts.
+ .TP
+-.BI "lock"
++.B lock
+ (See above.)
+ .TP
+-.BI "optional"
++.B optional
+ Omit the image if it is not available at map creation time.
+ It may be specified as a global option.
+ This is useful to specify test kernels that are not always present.
+@@ -1032,11 +1032,11 @@
+ will be issued telling you to re-run \fIlilo \-p\fP to force re-creation of the
+ password cache file.
+ .TP
+-.BI "mandatory"
++.B mandatory
+ A password is required to boot this image. This is the default. May be used
+ on a single `image=' or `other=' to override a different global setting.
+ .TP
+-.BI "nokbdisable"
++.B nokbdisable
+ (22.7.2)
+ The specified descriptor is not bootable if the IBM-PC keyboard is not present.
+ This option is really only useful if the "serial=" boot terminal is in use.
+@@ -1046,17 +1046,17 @@
+ .I nokbdefault
+ above.
+ .TP
+-.BI "restricted"
++.B restricted
+ A password is only required to boot the image if kernel parameters
+ are specified on the command line (e.g. 'single').  May be used
+ on a single `image=' or `other=' to override a different global setting.
+ .TP
+-.BI "vmwarn"
++.B vmwarn
+ If booting under a virtual monitor such as VMware(tm), the image with this
+ label will cause a cautionary warning to be issued at boot time, and user
+ intervention will be required to continue or to abort the boot process.
+ .TP
+-.BI "vmdisable"
++.B vmdisable
+ If booting under a virtual monitor, the image with this label will not be
+ displayed as a boot option.  The image is only bootable in real mode.  See
+ .I vmdefault

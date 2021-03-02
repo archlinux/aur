@@ -1,7 +1,7 @@
 pkgbase = lilo
 	pkgdesc = A bootloader for Linux
 	pkgver = 24.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://alioth.debian.org/projects/lilo/
 	install = lilo.install
 	arch = i686
@@ -16,8 +16,24 @@ pkgbase = lilo
 	backup = etc/lilo.conf
 	source = https://alioth-archive.debian.org/releases/lilo/Lilo/24.2/lilo-24.2.tar.gz
 	source = lilo.conf
+	source = 01_makefile-adds.patch
+	source = 03_keytab-lilo.8-debian-based.patch
+	source = 05_readme.disk-change.patch
+	source = 06_notinteractive.patch
+	source = 08_small-typos-in-manpages.patch
+	source = 09_fix-manpage-lilo-conf-5.patch
+	source = 10_fix-manpage-lilo-conf-5.patch
+	source = 11_fix-gcc-10.patch
 	md5sums = fe5e8c9754cee342b958b5fcbbb6eb51
-	md5sums = ca2d8cd9b63f11444861939b42df29c1
+	md5sums = c828942206c191242875d9b5fbeae094
+	md5sums = 3e9380373e16b930c079ad31376468d9
+	md5sums = 684ca1867c5a8ad7f6ba44f0fd92ce52
+	md5sums = 51703dc2a3784974a49d498599f3da04
+	md5sums = 4ef1ffaa647531de21b689591b38d6bd
+	md5sums = 2f0a159a767e118a76f8ffa0c7dce48f
+	md5sums = 96cfca0c181b116de256e990752f5af0
+	md5sums = fd26557bc2d704105369c5ad6e3cc38e
+	md5sums = 112a98527481c4d9ec8e76a0bd30af8e
 
 pkgname = lilo
 

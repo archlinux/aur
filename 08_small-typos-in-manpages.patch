@@ -1,0 +1,30 @@
+Package:     lilo
+Subject:     fix small typos in manpages
+Author:      Joachim Wiedorn <joodebian at joonet.de>
+Last-Update: 2016-07-15
+---
+
+diff -urN s07/man/lilo.conf.5 s08/man/lilo.conf.5
+--- s07/man/lilo.conf.5	2013-06-07 21:17:39.000000000 +0200
++++ s08/man/lilo.conf.5	2016-07-15 22:02:52.497917216 +0200
+@@ -736,7 +736,7 @@
+ This is typically used to specify hardware parameters that can't be
+ entirely auto-detected or for which probing may be dangerous. Multiple
+ kernel parameters are separated by a blank space, and the string must be
+-enclosed in double quotes.  A local append= appearing withing an image=
++enclosed in double quotes.  A local append= appearing within an image=
+ section overrides any
+ global append= appearing in the global section of the configuration file.
+ The append option may be used only once per "image="
+diff -urN s07/man/mkrescue.8 s08/man/mkrescue.8
+--- s07/man/mkrescue.8	2011-04-09 11:56:16.000000000 +0200
++++ s08/man/mkrescue.8	2016-07-15 22:03:07.990171776 +0200
+@@ -84,7 +84,7 @@
+ arbitrary kernel file and initial ramdisk file to be used on the created
+ boot floppy.
+ Be sure you know what you are doing before you use these options.
+-If no inital ramdisk is needed with a particular kernel, then you MUST
++If no initial ramdisk is needed with a particular kernel, then you MUST
+ specify \fB--initrd ""\fP, meaning a null pathname.
+ 
+ .TP

@@ -1,0 +1,32 @@
+Package:     lilo
+Subject:     add autoauto and diag1.img to makefile
+Author:      Joachim Wiedorn <joodebian at joonet.de>
+Forwarded:   no
+Last-Update: 2011-05-06
+
+---
+
+diff -urN s00/make.vars s01/make.vars
+--- s00/make.vars	2011-04-09 16:59:26.000000000 +0200
++++ s01/make.vars	2011-05-06 17:25:55.864706382 +0200
+@@ -71,7 +71,7 @@
+ 
+ CONFIG=-DBDATA -DDSECS=3 -DEVMS -DIGNORECASE -DLVM -DNOKEYBOARD -DONE_SHOT \
+     -DPASS160 -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVERSION -DVIRTUAL \
+-    -DMDPRAID -DDEVMAPPER
++    -DMDPRAID -DDEVMAPPER -DAUTOAUTO
+    
+ # set the following if you wish LILO.COM to be installed
+ DOS_DIR=/dosC/boot
+diff -urN s00/src/Makefile s01/src/Makefile
+--- s00/src/Makefile	2011-04-09 16:59:26.000000000 +0200
++++ s01/src/Makefile	2011-05-06 17:25:55.882961287 +0200
+@@ -47,7 +47,7 @@
+ #
+ # everything needed to run, just short of installation
+ #
+-all:	lilo bootsect.b
++all:	lilo bootsect.b diag1.img
+ 
+ #
+ # everything above plus the statically linked version

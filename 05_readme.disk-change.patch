@@ -1,0 +1,24 @@
+Package:     lilo
+Subject:     readme.disk for Debian based systems
+Author:      Joachim Wiedorn <joodebian at joonet.de>
+Forwarded:   no
+Last-Update: 2010-11-11
+
+---
+
+diff -urN v06/readme/README.disk v07/readme/README.disk
+--- v06/readme/README.disk	2001-01-04 06:04:37.000000000 +0100
++++ v07/readme/README.disk	2010-07-03 09:32:51.596354341 +0200
+@@ -7,9 +7,9 @@
+ 
+ Creating the floppy
+ ===================
+-Change into the LILO source code directory.  Insert a formatted floppy
+-disk into the A: drive (/dev/fd0).  Type the command "make floppy". 
+-After the files have assembled, the bootable floppy disk will be created.
++Change into the /usr/lib/lilo directory.  Insert a formatted floppy
++disk into the A: drive (/dev/fd0).  Type the command "make". A bootable
++floppy disk will be created.
+ 
+ Running the diagnostic
+ ======================

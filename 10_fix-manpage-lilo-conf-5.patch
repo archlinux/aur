@@ -1,0 +1,309 @@
+Package:     lilo
+Subject:     fix manpage lilo.conf.5
+Author:      Bjarni Ingi Gislason <bjarniig at rhi.hi.is>
+Bug-Debian:  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=919741
+Forwarded:   no
+Last-Update: 2019-12-10
+---
+
+diff -urN s09/man/lilo.conf.5 s10/man/lilo.conf.5
+--- s09/man/lilo.conf.5	2018-09-09 16:29:07.000000000 +0200
++++ s10/man/lilo.conf.5	2019-12-10 23:29:54.262691441 +0100
+@@ -74,8 +74,8 @@
+ to use lilo, and the interaction with other operating systems,
+ see html/user_21-5.html inside the old documentation.)
+ .LP
+-When booting, the boot loader will issue its 
+-.I "boot:"
++When booting, the boot loader will issue its
++.B boot:
+ prompt and wait for you to enter the label of the kernel (and any
+ options) which you wish to boot. At any time you may hit [Tab] to
+ see a list of kernel/other labels.
+@@ -140,7 +140,7 @@
+ One way is the use of header information in the bitmap image (*.bmp) file:
+ From a text file with all the information about 'bmp-colors', 'bmp-table' 
+ and 'bmp-timer' options together with the 'bitmap' option are stored in 
+-the special LILO  header of the bitmap image file by the
++the special LILO header of the bitmap image file by the
+ .B lilo \-E
+ command. Another way works without these special header information: All
+ the information about 'bmp-colors', 'bmp-table' and 'bmp-timer' options
+@@ -200,7 +200,7 @@
+ is for the root options.
+ .sp
+ If your boot device is a hard disk you need a special ID, which is supported
+-by udev. You find the right ID in the directory /dev/disks/by-id, i. e.:
++by udev. You find the right ID in the directory /dev/disk/by-id, i.e.:
+ .IP
+ .nf
+     boot = /dev/disk/by-id/ata-SAMSUNG_SV1604N_S01FJ10X999999
+@@ -255,7 +255,7 @@
+ When `delay' is non-zero, the boot loader will wait for an interrupt for the 
+ specified interval. If an interrupt is received, or
+ is already waiting, the \fBboot:\fP
+-prompt will be be issued, and no automatic boot will take place. The setting
++prompt will be issued, and no automatic boot will take place. The setting
+ of CAPS LOCK or SCROLL LOCK, or any of the
+ keys ALT, CTRL, or SHIFT, when held down, are taken as interrupts.
+ 
+@@ -317,16 +317,16 @@
+ .sp
+ In cases where there is no
+ kernel partition information available, such as on loopback devices,
+-the 'disk=' specification may include paritition start information;
++the 'disk=' specification may include partition start information;
+ viz.,
+ .sp
+ .nf
+        disk=/dev/loop0
+             bios=0x80			# use this BIOS code
+             max-partitions=7		# declare partitionable
+-            paritition=/dev/loop1
++            partition=/dev/loop1
+                  start=63		# offset from sector 0
+-            paritition=/dev/loop2
++            partition=/dev/loop2
+                  start=102400		# offset from sector 0
+ .fi
+ .sp
+@@ -376,7 +376,7 @@
+ .TP
+ .BI "install=" <user-interface>
+ Selects the user interface which will be seen at boot time.  One of the
+-following three options may be specified:  \fBtext\fP, \fBmenu\fP, or
++following three options may be specified: \fBtext\fP, \fBmenu\fP, or
+ \fBbmp\fP. The traditional LILO interface is `text'; but `menu' is now the
+ default, unless the configuration file contains the `bitmap='
+ specification.  The \fItext\fP interface is strictly a command-line
+@@ -391,9 +391,9 @@
+ .TP
+ .B large-memory
+ Normally any initial ramdisk (initrd) loaded with a kernel is loaded as
+-high in memory as possible, but never above 15Mb.  This is due to a BIOS
++high in memory as possible, but never above 15\~MB.  This is due to a BIOS
+ limitation on older systems.  On newer systems, this option enables using
+-memory above 15Mb (up to a kernel imposed limit, around 768Mb) for
++memory above 15\~MB (up to a kernel imposed limit, around 768\~MB) for
+ passing the initrd to the kernel.  The presence of this option merely
+ indicates that your system does not have the old BIOS limitation.
+ 
+@@ -452,7 +452,7 @@
+ title replaces the default "LILO Boot Menu" title string. If
+ .I menu
+ is not installed as the boot loader (see
+-.I "install="
++.B install=
+ option), then this line has no effect.
+ .TP
+ .BI "menu-scheme=" <color-scheme>
+@@ -474,7 +474,7 @@
+ \fBB\fPlue, \fBG\fPreen, \fBC\fPyan, \fBR\fPed,
+ \fBM\fPagenta, \fBY\fPellow, and \fBW\fPhite: upper case for
+ intense (fg only), lower case for dim.
+-Legal color-scheme strings would be
++Valid color-scheme strings would be
+ .sp
+ .nf
+     menu-scheme=Wm     intense white on magenta
+@@ -483,7 +483,7 @@
+ .fi
+ .sp
+ If
+-.I "menu"
++.B menu
+ is not installed as the boot loader, then this line has no effect.
+ .TP
+ .BI "message=" <message-file>
+@@ -528,8 +528,8 @@
+ The per-image option `optional' (see below) applies to all images.
+ .TP
+ .BI "password=" <password>
+-The per-image option `password=...' (see below) applies to all images. This
+-option may prevent unattended booting, if the default image is `password='
++The per-image option `password=.\|.\|.\&' (see below) applies to all images.
++This option may prevent unattended booting, if the default image is `password='
+ protected at the default level `mandatory', which is a level higher than
+ `restricted'.
+ .TP
+@@ -585,20 +585,20 @@
+     <port>[,<bps>[<parity>[<bits>]]]
+ .fi
+ .sp
+-<port>:  the number of the serial port, zero-based. 0 corresponds to
++<port>: the number of the serial port, zero-based. Zero (0) corresponds to
+ COM1 alias /dev/ttyS0, etc. All four ports can be used (if present).
+ .sp
+-<bps>:  the baud rate of the serial port. The following baud rates are 
+-supported: 110, 150, 300, 600, 1200, 2400(default), 4800, 9600, plus the 
+-extended rates 19200, 38400, and 57600(56000).  115200 is allowed, but may
+-not work with all COMx port hardware.
+-.sp
+-<parity>:  the parity used on the serial line. The boot loader ignores input 
+-parity and strips the 8th bit. The following (upper or lower case) 
+-characters are used to describe the parity:  "n" for no parity, "e" 
++<bps>: the baud rate of the serial port. The following baud rates are
++supported: 110, 150, 300, 600, 1200, 2400 (default), 4800, 9600, plus the
++extended rates 19200, 38400, and 57600 (56000).
++The rate 115200 is allowed, but may not work with all COMx port hardware.
++.sp
++<parity>: the parity used on the serial line. The boot loader ignores input
++parity and strips the 8th bit. The following (upper or lower case)
++characters are used to describe the parity: "n" for no parity, "e"
+ for even parity and "o" for odd parity.
+ .sp
+-<bits>:  the number of bits in a character. Only 7 and 8 bits are 
++<bits>: the number of bits in a character. Only 7 and 8 bits are
+ supported. Default is 8 if parity is "none", 7 if parity is "even" 
+ or "odd". 
+ .sp
+@@ -658,7 +658,10 @@
+ .TP
+ .BI "verbose=" <number>
+ Turns on lots of progress reporting. Higher numbers give more verbose
+-output. If  \-v  is additionally specified on the lilo command line,
++output.
++If
++.B \-v
++is additionally specified on the lilo command line,
+ the level is increased accordingly. The maximum verbosity level is 5.
+ .TP
+ .BI "vmdefault=" <name>
+@@ -712,19 +715,19 @@
+ .BI "addappend=" <string>
+ The kernel parameters of this string are concatenated to the
+ parameter(s) from an
+-.B "append="
++.B append=
+ option (see below).
+ The string of addappend must be enclosed within double quotes. 
+ Usually, the previous
+-.B "append="
+-will set parameters common to all kernels by appearing in the global 
++.B append=
++will set parameters common to all kernels by appearing in the global
+ section of the configuration file and
+-.B "addappend="
++.B addappend=
+ will be used to add local parameter(s) to an individual image.
+ The addappend option may be used only once per "image=" section.
+ .sp
+-If the string is a very long line, this line can be divided 
+-in more lines using "\\" as last character of a line, e.g.
++If the string is a very long line, this line can be divided
++in more lines using "\e" as last character of a line, e.g.,
+ .sp
+ .nf
+     addappend="noapic acpi=off pci=usepirqmask \\
+@@ -746,13 +749,14 @@
+      append="mem=96M hd=576,64,32 console=ttyS1,9600"
+ .fi
+ .sp
+-If the string is a very long line, this line can be divided in more lines 
+-using "\\" as last character of a line. See example of addappend option.
++If the string is a very long line, this line can be divided in more lines
++using "\e" as last character of a line. See example of addappend option.
+ .TP
+ .BI "initrd=" <name>
+ Specifies the initial ramdisk image to be loaded with the kernel.  The
+ image will contain modules needed at boot time, such as network and scsi
+-drivers. See man pages for \fImkinitrd(8)\fP.
++drivers. See man pages for
++.BR mkinitrd (8).
+ .TP
+ .BI "literal=" <string>
+ Like `append', but removes all other options (e.g. setting of the root
+@@ -761,8 +765,8 @@
+ this option cannot be set in the global options section.
+ .TP
+ .BI "ramdisk=" <size>
+-This specifies the size (e.g., "4096k") of the optional RAM disk. A value of 
+-zero indicates that no RAM disk should be created. If this variable is 
++This specifies the size (e.g. "4096k") of the optional RAM disk. A value of
++zero indicates that no RAM disk should be created. If this variable is
+ omitted, the RAM disk size configured into the boot image is used.
+ .TP
+ .B read-only
+@@ -781,7 +785,8 @@
+ If the special name
+ .B current
+ is used, the root device is set to the device on which the root file
+-system is currently mounted. If the root has been changed with  \-r ,
++system is currently mounted. If the root has been changed with
++.BR \-r ,
+ the respective device is used. If the variable `root' is omitted,
+ the root device setting contained in the running kernel image is used.
+ Warning: This can induce to an unbootable system!
+@@ -800,7 +805,7 @@
+      root="UUID=5472fd8e-9089-4256-bcaa-ceab4f01a439"
+ .fi
+ .sp
+-Note:  The command line
++Note: The command line
+ .I root=
+ parameter passed to the kernel will be: 'root=LABEL=MyDisk'; i.e., without
+ the quotation marks. If the
+@@ -838,7 +843,9 @@
+ If this variable is omitted, the VGA mode setting contained in the 
+ kernel image is used. (And that is set at compile time using the
+ SVGA_MODE variable in the kernel Makefile, and can later be changed with
+-the rdev(8) program.)
++the
++.BR rdev (8)
++program.)
+ 
+ .SH "ALTERNATE SYSTEM (other=)"
+ .LP
+@@ -872,8 +879,8 @@
+ This keyword starts a section which describes how primary partition IDs are
+ changed, and how primary partitions are activated and deactivated.  If
+ .B change
+-is omitted, change rules are generated as though the 
+-.I "automatic"
++is omitted, change rules are generated as though the
++.B automatic
+ keyword were specified. The keyword
+ .B change
+ alone, without any rules following, will suppress automatic change-rules.
+@@ -987,7 +994,7 @@
+ .BI "alias=" <name>
+ A second name for the same entry can be used by specifying an alias.
+ .TP
+-.B "bmp-retain
++.B bmp-retain
+ The bitmap graphic (install=bmp) is retained when control is passed to the
+ loaded kernel image, or other= bootloader; i.e., the screen is not
+ blanked to alphanumeric mode before starting the kernel.  This feature is
+@@ -1005,7 +1012,7 @@
+ different (supposedly stable) kernel. The command line stored by the fallback 
+ mechanism is cleared by removing or changing the default command line 
+ with the
+-.I \-R
++.B \-R
+ option, which should be a part of the boot startup scripts.
+ .TP
+ .B lock
+@@ -1048,7 +1055,7 @@
+ .TP
+ .B restricted
+ A password is only required to boot the image if kernel parameters
+-are specified on the command line (e.g. 'single').  May be used
++are specified on the command line (e.g.\& 'single').  May be used
+ on a single `image=' or `other=' to override a different global setting.
+ .TP
+ .B vmwarn
+@@ -1061,9 +1068,10 @@
+ displayed as a boot option.  The image is only bootable in real mode.  See
+ .I vmdefault
+ above.
+-
+-.LP
+-
+ .SH "SEE ALSO"
+-lilo(8), mkinitrd(8), mknod(1), mkrescue(8), rdev(8).
++.BR lilo (8),
++.BR mkinitrd (8),
++.BR mknod (1),
++.BR mkrescue (8),
++.BR rdev (8).
+ 

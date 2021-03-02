@@ -1,0 +1,19 @@
+Package:     lilo
+Subject:     keytab-lilo.8 for Debian-based systems
+Author:      Joachim Wiedorn <joodebian at joonet.de>
+Forwarded:   no
+Last-Update: 2011-01-28
+
+---
+
+diff -urN v03/man/keytab-lilo.8 v04/man/keytab-lilo.8
+--- v03/man/keytab-lilo.8	2010-06-28 22:41:18.000000000 +0200
++++ v04/man/keytab-lilo.8	2010-07-03 09:21:19.560354947 +0200
+@@ -100,3 +100,7 @@
+ .BR lilo (8),
+ .BR keytables (5),
+ .BR gzip (1)
++
++.B lilo
++comes with extensive documentation which can be found in
++/usr/share/doc/lilo-doc/ on Debian-based systems.

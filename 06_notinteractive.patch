@@ -1,0 +1,22 @@
+Package:     lilo
+Subject:     notinteractive for debian
+Author:      Joachim Wiedorn <joodebian at joonet.de>
+Forwarded:   no
+Last-Update: 2011-05-06
+
+---
+
+diff -urN s05/src/device.c s06/src/device.c
+--- s05/src/device.c	2011-04-09 17:03:29.000000000 +0200
++++ s06/src/device.c	2011-05-06 17:37:44.716712084 +0200
+@@ -846,7 +846,9 @@
+ "This caution does not apply to Windows 95 or 98, or to NT data disks.\n"
+ 				, vm->name, MAJOR(dev), MINOR(dev), dev);
+ 					
+-					
++    if (test)
++       return 0;
++
+     ret = yesno("\nIs the above disk an NT boot disk? ", 1);
+ 
+     if (ret && fatal) {
