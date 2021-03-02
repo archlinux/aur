@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=MatrixModels
-_cranver=0.4-1
+_cranver=0.5-0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.0.1')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('65b3ab56650c62bf1046a3eb1f1e19a0')
+sha256sums=('a87faf1a185219f79ea2307e6787d293e1d30bf3af9398e8cfe1e079978946ed')
 
 build() {
   cd "${srcdir}"
