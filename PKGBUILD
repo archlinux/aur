@@ -97,7 +97,7 @@ __commit="546c83f060687c8c83fda71b2a32e7acad5c42ce" # 5.11.2-1
 
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf cpio
+  xmlto kmod inetutils bc libelf cpio patch
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
 )
 options=('!strip')
