@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mark Mind
+Exec=mark-mind %U
+Terminal=false
+Type=Application
+Icon=mind
+StartupWMClass=Mark Mind
+X-AppImage-Version=1.1.9
+Comment=an mind map and outliner software
+Categories=Utility;

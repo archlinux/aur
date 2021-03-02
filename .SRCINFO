@@ -1,0 +1,19 @@
+pkgbase = mark-mind
+	pkgdesc = Mark Mind — Next generation mind map editor
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://github.com/MarkMindLtd/Mark-Mind
+	arch = any
+	license = MIT
+	makedepends = coreutils
+	provides = mark-mind
+	conflicts = mark-mind
+	replaces = mark-mind
+	options = !strip
+	source = Mark-Mind-1.1.9.AppImage::https://github.com/MarkMindLtd/Mark-Mind/releases/download/v1.1.9/Mark.Mind-1.1.9.AppImage
+	source = mark-mind.desktop
+	sha256sums = b1bfeb234778cb53c1c40d25ea72a01e3aa238f3badb1555caac7f44593ec59e
+	sha256sums = e726247f694723f9c8cec971efa8eabe321b4341df06c0de6157581ecb285764
+
+pkgname = mark-mind
+
