@@ -1,6 +1,6 @@
 # Maintainer: tooraj taraz <tooraj.info@gmail.com>
 pkgname=skywalker
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 depends=(libpcap)
 makedepends=(rust cargo)
