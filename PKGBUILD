@@ -7,9 +7,8 @@ pkgbase=pipewire-full-git
 pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          pipewire-full-jack-git pipewire-full-pulse-git
          gst-plugin-pipewire-full-git
-         pipewire-full-vulkan-git pipewire-full-ffmpeg-git
-         pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
-pkgver=0.3.22.r46.ge340a44a
+         pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
+pkgver=0.3.22.r89.g0e2a153b
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -38,10 +37,7 @@ build() {
     -D docs=true \
     -D vulkan=true \
     -D ffmpeg=true \
-    -D bluez5-backend-hsp-native=true \
-    -D bluez5-backend-hfp-native=true \
-    -D bluez5-backend-ofono=true \
-    -D bluez5-backend-hsphfpd=false \
+    -D bluez5-backend-hsphfpd=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -63,18 +59,18 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-full-git() {
-  depends=(rtkit
-           libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
-           libsystemd.so)
+  depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
+           libudev.so libasound.so libsystemd.so libbluetooth.so libsbc.so
+           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-full-docs-git: Documentation'
               'pipewire-full-alsa-git: ALSA support'
               'pipewire-full-jack-git: JACK support'
               'pipewire-full-pulse-git: PulseAudio support'
-              'gst-plugin-pipewire-full-git: GStreamer support'
-              'pipewire-full-bluez5-git: Bluetooth audio support'
-              'pipewire-full-bluez5-hsphfpd-git: Bluetooth audio support (using hsphfpd for HSP/HFP support)')
+              'gst-plugin-pipewire-full-git: GStreamer support')
   provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire alsa-card-profiles)
+  conflicts=(pipewire alsa-card-profiles
+             pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
+  replaces=(pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
   backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
@@ -86,24 +82,6 @@ package_pipewire-full-git() {
   install -Dm644 "$_pkgbase/COPYING" "$pkgdir/usr/share/licenses/$_pkgbase/COPYING"
 
   cd "$pkgdir"
-
-  _pick bluez5 usr/lib/spa-0.2/bluez5
-
-
-  # Rebuild with different options
-  cd "$srcdir"
-
-  meson configure build \
-    -D bluez5-backend-hsp-native=false \
-    -D bluez5-backend-hfp-native=false \
-    -D bluez5-backend-ofono=false \
-    -D bluez5-backend-hsphfpd=true
-  meson compile -C build
-  DESTDIR="$pkgdir" meson install -C build --only-changed
-
-  cd "$pkgdir"
-
-  _pick bluez5-hsphfpd usr/lib/spa-0.2/bluez5
 
   _pick docs usr/share/doc
 
@@ -151,7 +129,7 @@ package_pipewire-full-jack-git() {
 
 package_pipewire-full-pulse-git() {
   pkgdesc+=" - PulseAudio replacement"
-  depends=(pipewire-full-git pipewire-bluez5 libpulse)
+  depends=(pipewire-full-git libpulse)
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
@@ -180,25 +158,4 @@ package_pipewire-full-ffmpeg-git() {
   provides=(pipewire-ffmpeg)
   conflicts=(pipewire-ffmpeg)
   mv ffmpeg/* "${pkgdir}"
-}
-
-package_pipewire-full-bluez5-git() {
-  pkgdesc+=" - BlueZ 5 SPA plugin"
-  depends=(pipewire-full-git
-           libdbus-1.so libbluetooth.so libsbc.so
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
-  optdepends=('ofono: HFP support')
-  provides=(pipewire-bluez5)
-  conflicts=(pipewire-bluez5)
-  mv bluez5/* "${pkgdir}"
-}
-
-package_pipewire-full-bluez5-hsphfpd-git() {
-  pkgdesc+=" - BlueZ 5 SPA plugin, using hsphfpd for HSP/HFP support"
-  depends=(pipewire-full-git hsphfpd
-           libdbus-1.so libbluetooth.so libsbc.so
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
-  provides=(pipewire-bluez5)
-  conflicts=(pipewire-bluez5)
-  mv bluez5-hsphfpd/* "${pkgdir}"
 }
