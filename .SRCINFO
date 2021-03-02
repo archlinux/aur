@@ -1,6 +1,6 @@
 pkgbase = rke-bin
 	pkgdesc = Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere.
-	pkgver = 1.2.4
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/rancher/rke
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = rke-bin
 	license = Apache
 	provides = rke
 	conflicts = rke
-	source = rke-v1.2.4::https://github.com/rancher/rke/releases/download/v1.2.4/rke_linux-amd64
-	sha256sums = 77d2dc6af0d9388cba7dddea9ce3339d8e99618a32da68d043018ef63840bc6f
+	source = rke-v1.2.6::https://github.com/rancher/rke/releases/download/v1.2.6/rke_linux-amd64
+	sha256sums = 6d4a44931cf2fddbac742b24a4172ecf41ab199eee047cb8fa598e15e45fff8c
 
 pkgname = rke-bin
 
