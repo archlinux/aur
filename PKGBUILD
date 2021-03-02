@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r1572.5917a96
+pkgver=r1586.20a0c00
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64')
@@ -28,7 +28,6 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/grumpycoders/uC-sdk.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/fmtlib/fmt.git'
-        'git+https://github.com/skypjack/uvw.git'
         'git+https://github.com/nodejs/http-parser.git'
         'git+https://github.com/serge1/ELFIO.git'
         'git+https://github.com/exoticlibraries/libcester.git'
@@ -40,7 +39,6 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'pcsx-redux.desktop'
         )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -73,7 +71,6 @@ prepare() {
   git config submodule.third_party/uC-sdk.url "$srcdir/uC-sdk"
   git config submodule.third_party/googletest.url "$srcdir/googletest"
   git config submodule.third_party/fmt.url "$srcdir/fmt"
-  git config submodule.third_party/uvw.url "$srcdir/uvw"
   git config submodule.third_party/http-parser.url "$srcdir/http-parser"
   git config submodule.third_party/ELFIO.url "$srcdir/ELFIO"
   git config submodule.third_party/libcester.url "$srcdir/libcester"
@@ -88,7 +85,6 @@ prepare() {
                        third_party/uC-sdk \
                        third_party/googletest \
                        third_party/fmt \
-                       third_party/uvw \
                        third_party/http-parser \
                        third_party/ELFIO \
                        third_party/libcester \
