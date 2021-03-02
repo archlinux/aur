@@ -3,7 +3,7 @@
 
 pkgname=nottetris2
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Basically it's a little like tetris except with a twist."
 arch=('any')
 url="http://stabyourself.net/nottetris2/"
@@ -12,8 +12,8 @@ depends=('love07')
 _gamepkg="${pkgname}-linux.zip"
 source=(${pkgname}.sh
 	${pkgname}.desktop
-	http://stabyourself.net/dl.php?file=nottetris2/${_gamepkg})
-sha1sums=('c967b132cf0f5647bd4cf6f744edabacff7846e7'
+	https://stabyourself.net/dl.php?file=nottetris2/${_gamepkg})
+sha1sums=('390774029be6f1e41595224eeedf3da4a693d5da'
           'd745399c1d55c35e83b103126fcf291e46e0b160'
           '604801636a94147dccfdbe73489a68cbd68a88ac')
 
