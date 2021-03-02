@@ -3,8 +3,8 @@
 _pkgbase='rapiddisk'
 pkgname="$_pkgbase-dkms"
 _vermajor=7
-_verminor=0
-_verrevision=1
+_verminor=1
+_verrevision=0
 pkgver=${_vermajor}.${_verminor}.${_verrevision}
 pkgrel=1
 pkgdesc="Advanced Linux RAM Drive and Caching kernel modules"
@@ -16,16 +16,16 @@ depends=('dkms'
          'cryptsetup')
 makedeps=('jansson')
 install=${pkgname}.install
-_gitcommit=ceda17a
+_gitcommit=880e30f
 source=("git+https://github.com/pkoutoupis/rapiddisk#commit=${_gitcommit}"
-              kernel5.9up.patch)
+              kernel510up.patch)
 
 md5sums=('SKIP'
-         '0cd1fea21139e264531b9d5a911ebaea')
+         '0e0db9eb63ae169b3a57e55a256e064b')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}"
-  patch -Np1 -i "${srcdir}/kernel5.9up.patch"
+  patch -Np1 -i "${srcdir}/kernel510up.patch"
 }
 
 build() {
