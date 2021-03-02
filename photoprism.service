@@ -1,0 +1,15 @@
+[Unit]
+Description=Photoprism
+Documentation=https://docs.photoprism.org
+After=network-online.target
+
+[Service]
+User=photoprism
+# EnvironmentFile=/etc/systemd/system/photoprism.service.env
+# ExecStartPre=
+ExecStart=/usr/bin/photoprism start
+Restart=always
+RestartSec=15s
+
+[Install]
+WantedBy=multi-user.target
