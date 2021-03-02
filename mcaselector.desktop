@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=MCA Selector
+Comment=An external tool to export or delete selected chunks and regions from a world save of Minecraft Java Edition.
+GenericName=An external tool to export or delete selected chunks and regions from a world save of Minecraft Java Edition.
+Exec=/usr/bin/mcaselector
+Terminal=false
+Type=Application
+Icon=mcaselector
+Categories=Utility;
+StartupWMClass=MCA Selector
+StartupNotify=true
