@@ -1,7 +1,7 @@
 pkgbase = pigpio
 	pkgdesc = A C and Python library and system service for controlling GPIOs on a Raspberry Pi
-	pkgver = 78
-	pkgrel = 2
+	pkgver = 79
+	pkgrel = 1
 	url = http://abyz.me.uk/rpi/pigpio/
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = pigpio
 	depends = python
 	provides = python-pigpio
 	conflicts = python-pigpio
-	source = pigpio-78.tar.gz::https://github.com/joan2937/pigpio/archive/v78.tar.gz
-	sha256sums = ef4a4dc7ca8ca2f97fbdb9fd75586f61be7222d0f6c14e58af6c9192ad42f682
+	source = pigpio-79.tar.gz::https://github.com/joan2937/pigpio/archive/v79.tar.gz
+	sha256sums = c5337c0b7ae888caf0262a6f476af0e2ab67065f7650148a0b21900b8d1eaed7
 
 pkgname = pigpio
 
