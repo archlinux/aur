@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proaudio-meta
-pkgver=2020.05.24
+pkgver=2021.03.02
 pkgrel=1
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
@@ -17,7 +17,6 @@ depends=("jack2"
          "jack_capture"
          "ardour"
          "lmms"
-         "pulseeffects"
          "helm-synth"
          "zynaddsubfx"
          "surge"
