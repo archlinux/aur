@@ -1,6 +1,6 @@
 pkgbase = dbeaver-ce-bin
 	pkgdesc = Free Universal SQL Client for Developers and Database Administrators (Community Edition)
-	pkgver = 7.3.5
+	pkgver = 21.0.0
 	pkgrel = 1
 	url = http://dbeaver.io/
 	install = dbeaver-ce.install
@@ -11,13 +11,15 @@ pkgbase = dbeaver-ce-bin
 	depends = gtk-update-icon-cache
 	optdepends = dbeaver-plugin-office: export data in Microsoft Office Excel format
 	optdepends = dbeaver-plugin-svg-format: save diagrams in SVG format
-	noextract = dbeaver-ce-7.3.5-linux.gtk.x86_64.tar.gz
+	provides = dbeaver-ce
+	conflicts = dbeaver-ce
+	noextract = dbeaver-ce-21.0.0-linux.gtk.x86_64.tar.gz
 	source = dbeaver-ce.desktop
 	source = dbeaver-ce.install
 	sha256sums = afb8749c8d73d7feb1227af554de4a1ffff7358f4241db8f6df87063d999ffac
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_x86_64 = https://dbeaver.io/files/7.3.5/dbeaver-ce-7.3.5-linux.gtk.x86_64.tar.gz
-	sha256sums_x86_64 = 0201b550a05f612ff90d6138ac807ba6d3cf7138d4baa2e59d8cdab8c6babce7
+	source_x86_64 = https://dbeaver.io/files/21.0.0/dbeaver-ce-21.0.0-linux.gtk.x86_64.tar.gz
+	sha256sums_x86_64 = 3b3761acba5447d7693ef643a2f85264162b168595363b3e629751e8997a7285
 
 pkgname = dbeaver-ce-bin
 

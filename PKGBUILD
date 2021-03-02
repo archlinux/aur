@@ -1,7 +1,7 @@
 # Maintainer: Vitor Rodrigues <vitor.rodrigues@gmail.com>
 
 pkgname=dbeaver-ce-bin
-pkgver=7.3.5
+pkgver=21.0.0
 pkgrel=1
 pkgdesc="Free Universal SQL Client for Developers and Database Administrators (Community Edition)"
 arch=('x86_64')
@@ -11,11 +11,14 @@ depends=('java-runtime>=11' 'gtk3' 'gtk-update-icon-cache')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
 install=dbeaver-ce.install
+provides=(dbeaver-ce)
+conflicts=(dbeaver-ce)
+
 source=(dbeaver-ce.desktop dbeaver-ce.install)
 source_x86_64=(https://dbeaver.io/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('afb8749c8d73d7feb1227af554de4a1ffff7358f4241db8f6df87063d999ffac'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('0201b550a05f612ff90d6138ac807ba6d3cf7138d4baa2e59d8cdab8c6babce7')
+sha256sums_x86_64=('3b3761acba5447d7693ef643a2f85264162b168595363b3e629751e8997a7285')
 
 noextract=("dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz")
 
