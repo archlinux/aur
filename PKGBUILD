@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=chill
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='Standalone port of ionice to Go'
+pkgdesc='nice and ionice as a single utility'
 arch=(x86_64)
 url='https://github.com/xyproto/chill'
 license=(GPL2)
 makedepends=(git go)
-source=("git+$url#commit=9b89660af84fa340a49c54db0f79fae96f209874") # tag: v1.0.0
+source=("git+$url#commit=8917528605ab571c8a7c2f49b51cb2dc54590e90") # tag: v1.2.0
 sha256sums=('SKIP')
 
 build() {
