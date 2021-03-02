@@ -1,14 +1,14 @@
 # Maintainer: Peter Tseng <pht24 weird-squiggly-symbol cornell dot edu>
+# Contributor: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=lockjaw
 pkgver=046
 pkgrel=7
 pkgdesc="Free and highly customizable implementation of Tetris"
 arch=('i686' 'x86_64')
-url="http://www.pineight.com/lj"
+url="https://www.pineight.com/lj"
 license=('GPL')
 depends=('allegro4')
-install=
 
 # WARNING!!! This is not the original URL of the Lockjaw source code!
 # The original website has removed its copy of the Lockjaw, so I was forced to use alternative means.
@@ -19,7 +19,7 @@ install=
 # Unfortunately I realize that these claims aren't really verifiable by an outside party,
 # at least without access to the original sources.
 # Alas, this is the best I am able to offer you for the time being...
-source=(https://sites.google.com/site/xaelous/40l/lj${pkgver}-src.zip \
+source=("https://sites.google.com/site/xaelous/40l/lj${pkgver}-src.zip" \
 lj.dat \
 sound.dat \
 ljbg.jpg \
@@ -49,7 +49,7 @@ sha256sums=('376519ad8ee97bfc19d79218b57abfb7fab96789c29999fa387ff7801619d4d9'
             'c2617585eb1d6f92c8ddf834b6a896fabb8eee85173f1ac8bea6c966ccee83ca')
 
 build() {
-    cd $srcdir
+    cd "${srcdir}"
     # Allegro gives us jpgalleg now... but the name in the makefile is wrong!
     sed -i "s/jpgal/jpgalleg/" makefile
     # It appears aldumb.h doesn't exist anymore, so we'll just not use it.
@@ -64,19 +64,19 @@ build() {
 }
 
 package() {
-    cd $srcdir
+    cd "${srcdir}"
     # Unfortunately, makefile doesn't have make install, so...
-    mkdir -m 755 -p $pkgdir/opt/lockjaw
+    mkdir -m 755 -p "${pkgdir}/opt/lockjaw"
 
     # Copy all this stuff over.
-    install -D -m644 *.dat *.bmp *.jpg bgm* README.html $pkgdir/opt/lockjaw
-    install -D -m755 lj $pkgdir/opt/lockjaw
-    mkdir $pkgdir/opt/lockjaw/docs
-    install -m644 docs/* $pkgdir/opt/lockjaw/docs
-    touch $pkgdir/opt/lockjaw/installed.ini
+    install -D -m644 *.dat *.bmp *.jpg bgm* README.html "${pkgdir}/opt/lockjaw"
+    install -D -m755 lj "${pkgdir}/opt/lockjaw"
+    mkdir "${pkgdir}/opt/lockjaw/docs"
+    install -m644 docs/* "${pkgdir}/opt/lockjaw/docs"
+    touch "${pkgdir}/opt/lockjaw/installed.ini"
 
     # Install desktop, launcher sh script.
-    install -D -m755 $pkgname.sh $pkgdir/usr/bin/$pkgname
-    install -D -m644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-    install -D -m644 $pkgname.xpm $pkgdir/usr/share/pixmaps/$pkgname.xpm
+    install -D -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -D -m644 "${pkgname}.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
 }
