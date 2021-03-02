@@ -1,14 +1,14 @@
 pkgbase = inky
 	pkgdesc = Editor for ink: inkle's narrative scripting language
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = http://www.inklestudios.com/ink
 	arch = x86_64
 	license = MIT
-	source = inky-0.11.0.zip::https://github.com/inkle/inky/releases/download/0.11.0/Inky_linux.zip
-	source = inky-0.11.0.png::https://github.com/inkle/inky/raw/0.11.0/resources/Icon1024.png
+	source = inky-0.12.0.zip::https://github.com/inkle/inky/releases/download/0.12.0/Inky_linux.zip
+	source = inky-0.12.0.png::https://github.com/inkle/inky/raw/0.12.0/resources/Icon1024.png
 	source = inky.desktop
-	sha512sums = 1c4699e702c7bfd3f624cd5692004d137f0c9302b16b6bd41e2e6e7ce18acb31bf29859070965c788176512f2d2bc04fe4dc246dc965596beff091d8eaf5019c
+	sha512sums = 4e0df08651f3575f6c93afc06cbf8e491af472641705d1b793aca451bf0fc8ab03ddeb50261f367705a5c7d499fd853e3c07bb1b8e71964235846e01fa23b4b3
 	sha512sums = 4f465c45c1c61ede58db0a36682f575b7d755c9c28b0261a7892045813986d12f77d3d5c8881d9c476e07ca5169ed163c89f56a8a4049c6f0337db6cab3275e5
 	sha512sums = 84fd0f87bfdf5e1fd6df5f9e253e3aa71373b9ad28a1d027522eceb6cf94a9a370ef239bfe0738ce64efabb3685945fc40c054265418b0a639e26e4213211481
 
