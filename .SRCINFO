@@ -1,6 +1,6 @@
 pkgbase = xbacklight-ctl-git
 	pkgdesc = Use xbacklight easily from the command line or with keybindings.
-	pkgver = r34.fad45ab
+	pkgver = r35.087fc4a
 	pkgrel = 1
 	url = https://github.com/EnmanuelVT/xbacklight-ctl.git
 	arch = any
