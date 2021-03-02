@@ -5,7 +5,7 @@
 _wacomEnabled=yes
 pkgname=hgsreceiver-bin
 pkgver=7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="HP remote RGS receiver"
 arch=('x86_64')
 url="https://h30670.www3.hp.com/portal/swdepot/displayProductInfo.do?productNumber=RGS-LR"
@@ -14,11 +14,11 @@ depends=('lib32-glu' 'dmidecode')
 #makedepends=('')
 options=('emptydirs')
 noextract=()
-source=("file://RGS_Linux_64_Sender_and_Receiver_v7.7_L64934-001.tar.gz")
-md5sums=('3bb5751a61424f2fff3d5e43a1578eb8')
+source=("file://RGS_Linux_64_Receiver_v7.7.2_M27900-001.tar.gz")
+md5sums=('c521b72fbb79610a7e985b7629aea73d')
 
 prepare() {
-bsdtar xf RGS_Linux_64_Sender_and_Receiver_v7.7_L64934-001.tar.gz
+bsdtar xf RGS_Linux_64_Receiver_v7.7.2_M27900-001.tar.gz
 bsdtar xf rhel6/receiver/*.rpm
 }
 
