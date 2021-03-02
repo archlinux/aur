@@ -15,21 +15,21 @@ provides=('libvm68k')
 conflicts=('libvm68k')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  gitdescr="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
-  echo "${gitdescr##release/}"
+	cd "$srcdir/${pkgname%-git}"
+	gitdescr="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+	echo "${gitdescr##release/}"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}"
 
-  autoreconf
-  ./configure --prefix=/usr
-  make
+	autoreconf
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libvm68k"
-  make DESTDIR="$pkgdir" install
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libvm68k"
+	make DESTDIR="$pkgdir" install
 }
