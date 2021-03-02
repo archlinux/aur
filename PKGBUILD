@@ -2,7 +2,7 @@
 
 pkgname=raven-reader
 pkgver=1.0.46
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/mrgodhani/raven-reader"
 license=('MIT')
@@ -27,7 +27,7 @@ package() {
 
 	cp -pR ${srcdir}/squashfs-root/* ${pkgdir}/opt/$pkgname/
 	mv -uf ${pkgdir}/opt/$pkgname/usr/share/icons ${pkgdir}/usr/share/
-	mv -uf $pkgname.desktop ${pkgdir}/usr/share/applications/
+	cp -f $pkgname.desktop ${pkgdir}/usr/share/applications/
 
 	chmod -R 755 ${pkgdir}/opt/$pkgname/{locales,resources,swiftshader}
 	chmod -R 755 ${pkgdir}/usr
