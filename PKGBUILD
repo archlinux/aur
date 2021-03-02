@@ -1,7 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=doggo
-pkgver=0.2.5
-pkgrel=1
+pkgver=0.3.0
+pkgrel=2
 pkgdesc='Command-line DNS Client for Humans.'
 arch=('x86_64')
 url="https://github.com/mr-karan/doggo/archive/"
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('go')
 source=("$url/v$pkgver.tar.gz")
 conflicts=('doggo-git')
-sha256sums=('aeb03ffb77602d812dbd6aa6ae83d2c22755bb548ece419748ffc1e2d1d53372')
+sha256sums=('df9f2cd120094dd613ea85c65e0cc5817b6feaac7ddc6e51808d94db0f62b7fd')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -23,7 +23,8 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build/$pkgname ./cmd/...
+  BUILD_DATE=$(date '+%Y-%m-%d %H:%M:%S')
+  go build -o build/$pkgname -ldflags="-X 'main.buildVersion=${pkgver}' -X 'main.buildDate=${BUILD_DATE}'" ./cmd/doggo/cli/
 }
 
 package() {
