@@ -1,7 +1,7 @@
 # Maintainer: Pyntux <pyntux@gmail.com>
 
 pkgname=timerdown-git
-pkgver=82c2d001f
+pkgver=r104.g0555199
 pkgrel=1
 pkgdesc="A simple python & pyQT5 app to turn off your Linux PC in "X" minutes or "X" hours, or at specified time."
 url="https://github.com/Pyntux/TimerDown"
@@ -22,9 +22,8 @@ pkgver() {
 package() {
   cd "${pkgname%-*}"
   install -d "$pkgdir"/usr/{bin,share/timerdown,share/applications}
-  cp -r {resources.py,timerdown.ico,TimerDown.py} "$pkgdir/usr/share/${pkgname%-*}"
+  cp -r {icons,timerdown.ico} "$pkgdir/usr/share/${pkgname%-*}"
+  cp -r {TimerDown.py,} "$pkgdir/usr/bin/${pkgname%-*}"
   cp -r {TimerDown.desktop,} "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
-  echo "#!/bin/sh
-python /usr/share/timerdown/TimerDown.py" >> "$pkgdir/usr/bin/${pkgname%-*}"
   chmod +x "$pkgdir/usr/bin/${pkgname%-*}"
 }
