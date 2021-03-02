@@ -8,6 +8,7 @@ pkgbase = yarr-git
 	license = MIT
 	makedepends = go
 	makedepends = make
+	makedepends = git
 	source = git+git://github.com/nkanaev/yarr
 	source = git+git://github.com/nkanaev/gofeed
 	sha1sums = SKIP

@@ -9,7 +9,7 @@ url='https://github.com/nkanaev/yarr'
 license=('MIT')
 source=('git+git://github.com/nkanaev/yarr' 'git+git://github.com/nkanaev/gofeed')
 depends=()
-makedepends=('go' 'make')
+makedepends=('go' 'make' 'git')
 sha1sums=('SKIP' 'SKIP')
 
 pkgver() {
