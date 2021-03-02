@@ -1,0 +1,12 @@
+--- a/module/rapiddisk-cache.c	2021-03-02 19:30:16.144916580 +0100
++++ b/module/rapiddisk-cache.c	2021-03-02 19:29:27.466795080 +0100
+@@ -46,7 +46,9 @@
+ #include <linux/version.h>
+ #include <linux/seq_file.h>
+ #include <linux/hardirq.h>
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(5,9,0)
+ #include <asm/kmap_types.h>
++#endif
+ #include <linux/dm-io.h>
+ #include <linux/device-mapper.h>
+ #include <linux/bio.h>
