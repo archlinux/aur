@@ -1,7 +1,7 @@
 pkgbase = stm32flash
 	pkgdesc = Open source flash program for the STM32 ARM processors using the ST serial bootloader over UART or I2C
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/stm32flash/
 	arch = i686
 	arch = x86_64
