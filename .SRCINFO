@@ -19,9 +19,13 @@ pkgbase = lib32-fontconfig-git
 	provides = lib32-fontconfig
 	conflicts = lib32-fontconfig
 	source = git+https://gitlab.freedesktop.org/fontconfig/fontconfig
+	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/172.patch
+	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/138.patch
 	source = fontconfig-32.hook
 	sha256sums = SKIP
-	sha256sums = d97c0c5b88023da5a2acf64cf560265390a9365305c43b8e86b4f89348e727b3
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lib32-fontconfig-git
 

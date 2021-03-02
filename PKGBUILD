@@ -16,11 +16,14 @@ conflicts=(lib32-fontconfig)
 depends=(lib32-expat lib32-freetype2 $_pkgbasename)
 makedepends=(git autoconf-archive gperf python-lxml python-six lib32-json-c)
 install=lib32-fontconfig.install
-#_commit=5f5ec5676c61b9773026a9335c9b0dfa73a73353  # master
 source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig"
+	"https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/172.patch"
+	"https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/138.patch"
         fontconfig-32.hook)
 sha256sums=('SKIP'
-            'd97c0c5b88023da5a2acf64cf560265390a9365305c43b8e86b4f89348e727b3')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 # a nice page to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
@@ -33,7 +36,9 @@ pkgver() {
 
 prepare() {
   cd $_pkgbasename
-  NOCONFIGURE=1 ./autogen.sh
+  
+   patch -Np1 -i ../138.patch
+   patch -Np1 -i ../172.patch
 }
 
 build() {
@@ -43,15 +48,15 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-  ./configure --prefix=/usr \
+  arch-meson fontconfig build \
     --libdir=/usr/lib32 \
-    --sysconfdir=/etc \
-    --with-templatedir=/etc/fonts/conf.avail \
-    --with-xmldir=/etc/fonts \
-    --localstatedir=/var \
-    --disable-static \
-    --with-default-fonts=/usr/share/fonts \
-    --with-add-fonts=/usr/local/share/fonts
+    -D doc=disabled \
+    -D doc-txt=disabled \
+    -D doc-man=disabled \
+    -D doc-pdf=disabled \
+    -D doc-html=disabled \
+    -D tests=disabled
+    ninja $NINJAFLAGS -C build
   make
 }
 
@@ -62,7 +67,8 @@ build() {
 
 package() {
   cd $_pkgbasename
-  make DESTDIR="$pkgdir" install
+  
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
 
   rm -r "$pkgdir"/{etc,usr/{include,share}}
   find "$pkgdir/usr/bin" -not -type d -not -name fc-cache -delete
