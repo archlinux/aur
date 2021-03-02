@@ -2,13 +2,13 @@
 # Former Maintainer: bemasher <bemasher@gmail.com>
 
 pkgname=rtlamr
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="An rtl-sdr receiver for Itron ERT compatible smart meters operating in the 900MHz ISM band."
 arch=('any')
 url="https://github.com/bemasher/rtlamr"
 source=("https://github.com/bemasher/rtlamr/archive/v${pkgver}.tar.gz")
-md5sums=('8d47164413f6b6ca2aa188fb2a164f63')
+md5sums=('eaf1d3de2284bc672c76eca5cef47ed4')
 license=('AGPL3')
 depends=('go' 'rtl-sdr')
 options=('!strip' '!emptydirs')
