@@ -30,13 +30,13 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go build -x
+  GO111MODULE=auto GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go build -x
 }
 
 check() {
   cd "$pkgname-$pkgver/$pkgname"
 
-  GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go test -v -x
+  GO111MODULE=auto GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go test -v -x
 }
 
 package() {
