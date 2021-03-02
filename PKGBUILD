@@ -32,8 +32,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip)
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _repo=https://hg.mozilla.org/mozilla-unified
-conflicts=('librewolf')
-provides=('librewolf')
 source_x86_64=("hg+$_repo#revision=autoland"
                $pkgname.desktop
                "git+https://gitlab.com/librewolf-community/browser/common.git"
