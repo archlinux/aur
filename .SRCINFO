@@ -9,6 +9,7 @@ pkgbase = itext-rups-bin
 	depends = bash
 	depends = java-runtime
 	depends = hicolor-icon-theme
+	provides = itext-rups
 	source = itext-rups.sh
 	source = itext-rups.desktop
 	source = https://github.com/itext/i7j-rups/releases/download/7.1.14/iText7-RUPS-7.1.14-only-jars.zip
