@@ -1,0 +1,20 @@
+pkgbase = libvm68k-git
+	pkgdesc = M68000 ISA virtual machine components implemented in C++
+	pkgver = 2.alpha.4.r83.gd1c38e6
+	pkgrel = 1
+	url = https://www.vx68k.org/vx68k
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = autoconf
+	makedepends = automake
+	provides = libvm68k
+	conflicts = libvm68k
+	source = libvm68k::git+https://bitbucket.org/kazssym/libvm68k.git
+	sha256sums = SKIP
+
+pkgname = libvm68k-git
+
