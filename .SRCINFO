@@ -1,14 +1,14 @@
 pkgbase = librewolf-extension-noscript
 	pkgdesc = Extension for Librewolf which disables javascript
-	pkgver = 11.2
+	pkgver = 11.2.3
 	pkgrel = 1
 	url = https://noscript.net/
 	arch = any
 	groups = librewolf-addons
 	license = GPL2
 	makedepends = unzip
-	noextract = noscript-11.2.xpi
-	source = noscript-11.2.xpi::https://addons.mozilla.org/firefox/downloads/file/3715504/
+	noextract = noscript-11.2.3.xpi
+	source = noscript-11.2.3.xpi::https://addons.mozilla.org/firefox/downloads/file/3715504/
 	sha256sums = 4258bcd0bcdfc8ecb231d250e3adf1c477a1a672ede74a5cd10ba05a5381babb
 	b2sums = ef34820c9e839c0eb8f1ed10c30c907d2eae1e1029dbc30c63a6f866969c99982c889a00995daf4f6df9f081a362070a6753215b101145cc1bf41dfba99051a6
 
