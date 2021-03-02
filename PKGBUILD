@@ -2,8 +2,8 @@
 
 pkgname=phonic-git
 _name=phonic
-pkgver=0.0.8
-pkgrel=3
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="A GTK audiobook player targeted at mobile Linux."
 url="https://bitbucket.org/hackersgame/phonic"
 depends=('python' 'gtk3' 'sox')

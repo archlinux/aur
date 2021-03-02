@@ -1,7 +1,7 @@
 pkgbase = phonic-git
 	pkgdesc = A GTK audiobook player targeted at mobile Linux.
-	pkgver = 0.0.8
-	pkgrel = 3
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://bitbucket.org/hackersgame/phonic
 	arch = any
 	license = GPL3
