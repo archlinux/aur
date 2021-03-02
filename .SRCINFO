@@ -1,0 +1,21 @@
+pkgbase = vx68k-git
+	pkgdesc = Virtual X68000 - emulator of Sharp X68000 implemented in C++
+	pkgver = 2.alpha.1.r15.gdba943d
+	pkgrel = 1
+	url = https://www.vx68k.org/vx68k
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = autoconf
+	makedepends = automake
+	depends = libvm68k
+	provides = vx68k
+	conflicts = vx68k
+	source = vx68k::git+https://bitbucket.org/kazssym/vx68k.git
+	sha256sums = SKIP
+
+pkgname = vx68k-git
+
