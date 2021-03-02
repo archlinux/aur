@@ -1,0 +1,34 @@
+pkgbase = lib32-spirv-tools-git
+	pkgdesc = API and commands for processing SPIR-V modules. (64-bit) (git version)
+	pkgver = 2020.7.2021_03_02.2969.0bd920eb9
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/SPIRV-Tools.git
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = python
+	makedepends = ninja
+	makedepends = clang
+	makedepends = llvm
+	makedepends = llvm-libs
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = lib32-clang
+	makedepends = lib32-llvm
+	makedepends = lib32-llvm-libs
+	makedepends = lib32-gcc-libs
+	makedepends = spirv-tools
+	depends = lib32-gcc-libs
+	depends = lib32-llvm-libs
+	depends = spirv-tools
+	provides = lib32-spirv-tools
+	provides = lib32-spirv-tools-git
+	source = SPIRV-Tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git
+	md5sums = SKIP
+
+pkgname = lib32-spirv-tools-git
+
