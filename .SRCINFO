@@ -1,0 +1,19 @@
+pkgbase = postgrespp-git
+	pkgdesc = postgres++ is an asynchronous c++ libpq wrapper that aims to make libpq easier to use.
+	pkgver = 0.2.2.r4.g3488107
+	pkgrel = 1
+	url = https://github.com/tghosgor/postgrespp
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = postgresql-libs
+	depends = postgresql-libs
+	depends = boost
+	source = git+https://github.com/tghosgor/postgrespp.git
+	md5sums = SKIP
+
+pkgname = postgrespp-git
+
