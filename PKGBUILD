@@ -8,7 +8,7 @@ pkgdesc='iText RUPS is a tool to view PDF structure in a Swing GUI.'
 arch=('any')
 url='https://github.com/MitMaro/git-interactive-rebase-tool'
 license=('GPL3')
-depends=('java-environment')
+depends=(bash java-runtime hicolor-icon-theme)
 makedepends=('imagemagick')
 sha256sums=('c9b4e4c2b77b89c1e01354d059ea6abf0ea34fff0b33ad50d349ad875cb93d6a'
             'c213befd1132bebcbc588a7ef52c0089682767618317bd09128668d3550218b3'
