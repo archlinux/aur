@@ -26,9 +26,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
-            'libappindicator-gtk3: global menu support for gtk app'
-            'appmenu-gtk-module: appmenu for gtk only'
-            'plasma5-applets-window-appmenu: appmenu for plasma only')
+            'libappindicator-gtk3: Global menu support for GTK apps'
+            'appmenu-gtk-module: Appmenu for GTK only'
+            'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
