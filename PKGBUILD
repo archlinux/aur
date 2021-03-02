@@ -1,3 +1,4 @@
+# Maintainer: Marc-Olivier Barre <mobarre-archlinux@snarchi.io>
 # Maintainer: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libindi-gpsd
