@@ -1,12 +1,14 @@
 pkgbase = python-managesieve
 	pkgdesc = A managesieve client for remotely managing sieve scripts
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/htgoebel/managesieve
 	arch = any
 	license = GPL3
 	license = PSF
+	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	source = python-managesieve-0.6.tar.gz::https://gitlab.com/htgoebel/managesieve/-/archive/v0.6/managesieve-v0.6.tar.gz
 	b2sums = 0b626f2e641e5535c264f9d84e53a41b08fdb9ca853e00ba202ae8fd6beb0ef66ad56d8293bc8b4253d99b5f57c0cde87d8ab0fcf207bb83668eef355b156047
