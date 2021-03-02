@@ -1,15 +1,15 @@
 pkgbase = hadolint-git
-	pkgdesc = Dockerfile linter written in Haskell
-	pkgver = r257.85789f3
+	pkgdesc = Dockerfile linter, validate inline bash, written in Haskell
+	pkgver = r891.f0ef28b
 	pkgrel = 1
-	url = http://hadolint.lukasmartinelli.ch/
+	url = Dockerfile linter, validate inline bash, written in Haskell
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = stack
 	makedepends = libgmp-static
 	provides = hadolint
-	source = git+https://github.com/lukasmartinelli/hadolint.git
+	source = git+https://github.com/hadolint/hadolint.git
 	sha256sums = SKIP
 
 pkgname = hadolint-git

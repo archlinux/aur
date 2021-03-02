@@ -3,12 +3,12 @@
 
 _pkgname=hadolint
 pkgname=hadolint-git
-pkgver=r257.85789f3
+pkgver=r891.f0ef28b
 pkgrel=1
-pkgdesc='Dockerfile linter written in Haskell'
-url='http://hadolint.lukasmartinelli.ch/'
+pkgdesc='Dockerfile linter, validate inline bash, written in Haskell'
+url='Dockerfile linter, validate inline bash, written in Haskell'
 license=('GPL')
-source=('git+https://github.com/lukasmartinelli/hadolint.git')
+source=('git+https://github.com/hadolint/hadolint.git')
 sha256sums=('SKIP')
 arch=('any')
 makedepends=('git' 'stack' 'libgmp-static')
