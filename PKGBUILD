@@ -2,11 +2,12 @@
 
 pkgname=libvm68k-git
 pkgver=2.alpha.4.r83.gd1c38e6
-pkgrel=1
+pkgrel=2
 pkgdesc="M68000 ISA virtual machine components implemented in C++ "
 arch=('i686' 'x86_64')
 depends=()
 makedepends=('git' 'make' 'pkg-config')
+checkdepends=('cppunit')
 url="https://www.vx68k.org/vx68k"
 license=('GPL3')
 source=(${pkgname%-git}::git+https://bitbucket.org/kazssym/libvm68k.git)
@@ -26,6 +27,11 @@ build() {
 	autoreconf
 	./configure --prefix=/usr
 	make
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	make check
 }
 
 package() {
