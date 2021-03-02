@@ -1,6 +1,6 @@
 pkgbase = r-cli
 	pkgdesc = Helpers for Developing Command Line Interfaces
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cli
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = r-cli
 	optdepends = r-prettycode
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/cli_2.3.0.tar.gz
-	sha256sums = 5898154204c948a9deabe97fd7b6a531fc1c829f2b3bc27a9cb601ddd6e80b89
+	source = https://cran.r-project.org/src/contrib/cli_2.3.1.tar.gz
+	sha256sums = 516ce2de54b4a58afa943f31dfdd925e532b67cf5f91aec355e255637b2406ca
 
 pkgname = r-cli
 
