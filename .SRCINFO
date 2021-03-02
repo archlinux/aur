@@ -1,16 +1,16 @@
-pkgbase = libcrafter-git
+pkgbase = libcrafer-git
 	pkgdesc = Libcrafter is a high level library for C++ designed to create and decode network packets
 	pkgver = 1.0
-	pkgrel = 10
-	url = https://github.com/pellegre/libcrafter
+	pkgrel = 11
+	url = https://github.com/TETRX/local-dns-dump
 	arch = x86_64
-	license = BSD
+	license = GPL
 	makedepends = git
 	makedepends = make
+	makedepends = gcc>=10
 	makedepends = autoconf
-	makedepends = gcc
-	source = git+https://github.com/pellegre/libcrafter#branch=master
+	source = git+https://github.com/TETRX/local-dns-dump#branch=master
 	md5sums = SKIP
 
-pkgname = libcrafter-git
+pkgname = libcrafer-git
 
