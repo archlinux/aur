@@ -34,5 +34,6 @@ pkgname = linux-xanmod-cacule
 	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-xanmod-cacule-headers
-	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
+	pkgdesc = Headers and scripts for building modules for the Linux Xanmod. Branch with Cacule scheduler by Hamad Marri kernel
+	depends = pahole
 
