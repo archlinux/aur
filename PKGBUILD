@@ -1,25 +1,35 @@
 # Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
+# Maintainer: Kyle Laker <kyle+aur@laker.email>
 pkgname=python-readchar
-pkgver=2.0.0
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Python library to read characters and key strokes"
 arch=("any")
 url="https://github.com/magmax/python-readchar"
-license=("custom:MIT")
+license=("MIT")
 depends=("python")
-makedepends=("python-setuptools")
-source=("https://github.com/magmax/python-readchar/archive/$pkgver.tar.gz"
+makedepends=("python-setuptools" "flake8")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/magmax/python-readchar/archive/v$pkgver.tar.gz"
         "LICENSE")
-md5sums=('cdc776bd6105c3795a4fc65054b635e3'
+md5sums=('f7ee27cbdea3de2477e8a1bc20678a09'
          '6fe7ddd14c619721d6db734a05d7d423')
 
+prepare() {
+    cd "${srcdir}/$pkgname-$pkgver"
+
+    # Fix the tests getting included in the package
+    sed -i' ' -e's/"tests"/"tests*"/' setup.py
+}
+
 build() {
-    cd "$pkgname-$pkgver"
+    cd "${srcdir}/$pkgname-$pkgver"
+
     python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "${srcdir}/$pkgname-$pkgver"
+
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
