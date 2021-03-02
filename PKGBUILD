@@ -55,12 +55,11 @@ build() {
     -D doc-html=disabled \
     -D tests=disabled
     ninja $NINJAFLAGS -C build
-  make
 }
 
 #check() {
 #  cd $_pkgbasename
-#  make -k check
+#  meson test -C build
 #}
 
 package() {
