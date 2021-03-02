@@ -1,23 +1,19 @@
+# Por falta de tempo, alguns programas podem estar desatualizados. Mas aqueles que desejam co-manter são bem-vindos.
+# A Bricsys não fornece um link permanente, mesmo que você entre em contato.
+# Para usar, faça o download em https://www.bricsys.com/protected/download.do e coloque-o na pasta do PKGBUILD.
+
 pkgname=bricscad-pt_br
-pkgver=20.2.07
+pkgver=20.2.11
 pkgrel=1
 pkgdesc="É uma alternativa de CAD DWG número, oferecendo um recurso completo e reconhecível, conjunto para usuários profissionais. BricsCAD lê e grava o formato DWG e oferece alta compatibilidade com o AutoCAD"
 arch=("x86_64")
 url="https://www.bricsys.com"
 license=('Custom:bricscad')
 depends=(lib32-glibc  cairo lib32-fontconfig libcups lib32-freetype2 lib32-gtk2)
-#optdepends=()
 
 # To download you must be logged in. The official website has no permanent link.
-source=("file://BricsCAD-V20.2.07-1-pt_BR.x86_64.rpm")
+source=("file://BricsCAD-V20.2.11-1-pt_BR.x86_64.rpm")
 
-#validpgpkeys=()
-
-# build() {
-	# cd "$pkgname-$pkgver"
-	# ./configure --prefix=/usr
-	# makepkg
-# }
 
 package() {
 	cp -dr --no-preserve=ownership ./usr "${pkgdir}"/
@@ -56,6 +52,7 @@ if [ -x "`which update-mime-database 2>/dev/null`" ]; then update-mime-database 
 if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 
 }
-md5sums=('29e8dc66897ae5840e4ab3658c6fa933')
-sha512sums=('beeab769abbda8fa19136173f8e7c0fa426bd5f0fdebe8909b2a5269501bd2a9c1d5e796d737746af0d708b3abcd598ccbdb3a2643c65c5b38c87e75ab2e86b8')
-
+# MD5 Provido pela propria BricsCAD
+md5sums=('19ac20550567e2cbb3a6021c6b0f8987')
+sha512sums=('69c1393bd43d1353d31dec012294e046595b900f4f689adc112efa12cf3af92dacfb9b8b0aff1fb48d82895eb1d72fb8300c5b7fcc75e1145c434bc0fd6d0877')
+b2sums=('44c70c2f8d49fe4991e644bd94c3aa0b33f22af7a9ec343b185a0b168f61c1430b264a2cea80ab7722bd9d4f6e4bbb30da44ca06647f58cd057288240484420c')

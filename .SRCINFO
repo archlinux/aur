@@ -1,6 +1,6 @@
 pkgbase = bricscad-pt_br
 	pkgdesc = É uma alternativa de CAD DWG número, oferecendo um recurso completo e reconhecível, conjunto para usuários profissionais. BricsCAD lê e grava o formato DWG e oferece alta compatibilidade com o AutoCAD
-	pkgver = 20.2.07
+	pkgver = 20.2.11
 	pkgrel = 1
 	url = https://www.bricsys.com
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = bricscad-pt_br
 	depends = libcups
 	depends = lib32-freetype2
 	depends = lib32-gtk2
-	source = file://BricsCAD-V20.2.07-1-pt_BR.x86_64.rpm
-	md5sums = 29e8dc66897ae5840e4ab3658c6fa933
-	sha512sums = beeab769abbda8fa19136173f8e7c0fa426bd5f0fdebe8909b2a5269501bd2a9c1d5e796d737746af0d708b3abcd598ccbdb3a2643c65c5b38c87e75ab2e86b8
+	source = file://BricsCAD-V20.2.11-1-pt_BR.x86_64.rpm
+	md5sums = 19ac20550567e2cbb3a6021c6b0f8987
+	sha512sums = 69c1393bd43d1353d31dec012294e046595b900f4f689adc112efa12cf3af92dacfb9b8b0aff1fb48d82895eb1d72fb8300c5b7fcc75e1145c434bc0fd6d0877
+	b2sums = 44c70c2f8d49fe4991e644bd94c3aa0b33f22af7a9ec343b185a0b168f61c1430b264a2cea80ab7722bd9d4f6e4bbb30da44ca06647f58cd057288240484420c
 
 pkgname = bricscad-pt_br
 
