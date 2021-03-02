@@ -1,21 +1,21 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=snappymail
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="modern PHP webmail client"
 arch=('any')
 license=('AGPL3')
 url="https://github.com/the-djmaze/snappymail"
 depends=('php-fpm')
-makedepends=('nodejs' 'yarn' 'gulp' 'php' 'brotli')
+makedepends=('nodejs' 'yarn' 'gulp' 'php' 'brotli' 'rollup')
 optdepends=('mariadb: storage backend for contacts'
             'php-pgsql: storage backend for contacts'
             'php-sqlite: storage backend for contacts')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-b2sums=('d48558d28ad93c27baddc9101b38a60541a32f849d8da20d1fe7eeceaf1b96dd53d182b277ead4f085ec04dfed0b3a8b974fcbbb0e0e250cab0f1465e533dfce'
+b2sums=('154fb878da228134384e1d5c0f4616ac06ea239efce1ef885714ee303dd06bdc58f0441896f8e548df76b358d5816922c479324af995404c31967e95b7a1d832'
         'e020b2d4bc694ca056f5c15b148c69553ab610b5e1789f52543aa65e098f8097a41709b5b0fc22a6a01088a9d3f14d623b1b6e9ae2570acd4f380f429301c003'
         '2536e11622895322cc752c6b651811b2122d3ae60099fe609609d7b45ba1ed00ea729c23f344405078698d161dbf9bcaffabf8eff14b740acdce3c681c513318')
 
@@ -29,11 +29,6 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   yarn install
-
-  # temporary workaround
-  # TODO: examine rollup package from AUR as make dependency
-  export PATH="$(yarn global bin):$PATH"
-  yarn global add rollup
 
   # build snappymail
   php release.php --aur
@@ -60,7 +55,7 @@ package() {
   # data files
   cp -r "$srcdir/build/data" "$pkgdir/var/lib/snappymail"
 
-  # sysusers
+  # systemd configuration
   install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
