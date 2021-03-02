@@ -1,7 +1,7 @@
 pkgbase = pg_ulid
 	pkgdesc = Experimental PostgreSQL extension for generating ULIDs
 	pkgver = r4.63c3a88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iCyberon/pg_ulid
 	arch = x86_64
 	license = MIT
