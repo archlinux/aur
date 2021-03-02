@@ -1,13 +1,13 @@
 # Maintainer: Guillaume Dolle  <dev at gdolle.com>
 pkgname=spack
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
 license=('MIT')
 depends=('python' 'polkit')
-optdepends=( 'env-modules-tcl' 'lmod' ) 
+optdepends=( 'env-modules-tcl' 'lmod' )
 source=(spack-${pkgver}.tar.gz::https://github.com/spack/spack/archive/v${pkgver}.tar.gz
         spack.sysusers
         spack.tmpfiles
@@ -15,12 +15,12 @@ source=(spack-${pkgver}.tar.gz::https://github.com/spack/spack/archive/v${pkgver
         spack.pkrules
         spack.sh
         spack.csh)
-sha256sums=('064b2532c70916c7684d4c7c973416ac32dd2ea15f5c392654c75258bfc8c6c2'
+sha256sums=('SKIP'
             'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
             'db0cc4a4ab32e6ee2e5c32898c69a0f0ce05b4e3c605beb024b5463c46e3710f'
             '884ea4009335a0e0b1a0332a8d954aaedd47b16c48e27bd91e29be5c6d64e651'
             '7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356'
-            'bae7372b6347801746547174607f442a7af7352541945083d596916ac61e04ea'
+            'SKIP'
             '091234fbca78d638ae63867cac0178be574e057dae478ea86fd2a583ecc86499')
 _spackroot=/opt/spack
 _spackcfg=etc/spack/defaults/config.yaml
@@ -58,6 +58,5 @@ package() {
   install -Dm 644 ${pkgname}.pkaction ${pkgdir}/usr/share/polkit-1/actions/org.archlinux.pkexec.spack.policy
   # Fix mode to match polkit.
   install -d -o root -g 102 -m 750 ${pkgdir}/usr/share/polkit-1/rules.d
-
 }
 
