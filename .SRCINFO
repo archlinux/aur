@@ -1,7 +1,7 @@
 pkgbase = gpdfx-ng-git
-	pkgdesc = gpdfx-ng is a GTK application written in Python using the Poppler library to render the PDF.
+	pkgdesc = A graphical tool to extract parts of a PDF as a PDF. Successor of gpdfx
 	pkgver = r22.c42ef90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yishilin14/gpdfx-ng
 	arch = any
 	license = GPL3
@@ -11,7 +11,8 @@ pkgbase = gpdfx-ng-git
 	depends = python-cairo
 	depends = poppler-glib
 	depends = texlive-core
-	source = git+https://github.com/yishilin14/gpdfx-ng
+	depends = gtk3
+	source = gpdfx-ng::git+https://github.com/yishilin14/gpdfx-ng#branch=master
 	md5sums = SKIP
 
 pkgname = gpdfx-ng-git
