@@ -1,6 +1,6 @@
 pkgbase = qtile-plasma-git
 	pkgdesc = A flexible, tree-based layout for Qtile
-	pkgver = v1.5.4.r1.g957e002
+	pkgver = v1.5.5.r1.g4b57f31
 	pkgrel = 1
 	url = https://github.com/numirias/qtile-plasma
 	arch = any
