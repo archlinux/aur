@@ -2,29 +2,22 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt-git
-pkgver=2019.8.r384.g705e8cca0b
+pkgver=3002.4.r1541.gac4ecad325
 pkgrel=1
 pkgdesc='A remote execution and communication system built on zeromq'
 url='https://github.com/saltstack/salt'
 arch=('any')
 license=('APACHE')
-makedepends=('git' 'gcc')
-depends=('python2'
-         'python2-yaml'
-         'python2-jinja'
-         'python2-tornado'
-         'python2-msgpack'
-         'python2-crypto'
-         'python2-m2crypto'
-         'python2-psutil'
-         'python2-pyzmq'
-         'python2-requests'
-         'python2-futures'
-         'python2-markupsafe')
-optdepends=('python2-pysodium: Required for RAET transport method'
-            'python2-mako: Parser for salt states'
-            'python2-pygit2: gitfs support'
-            'virt-what: Improve results of the virtual grain'
+makedepends=('git' 'gcc' 'python-setuptools')
+depends=('python'
+         'python-distro'
+         'python-yaml'
+         'python-jinja'
+         'python-msgpack'
+         'python-pycryptodomex'
+         'python-pyzmq'
+         'python-requests')
+optdepends=('virt-what: Improve results of the virtual grain'
             'dmidecode: decode SMBIOS/DMI tables')
 backup=('etc/salt/master'
         'etc/salt/minion')
@@ -42,7 +35,7 @@ pkgver() {
 package() {
   cd ${pkgname}
 
-  python2 setup.py --salt-transport=both install --root=${pkgdir}/ --optimize=1
+  python setup.py --salt-transport=both install --root=${pkgdir}/ --optimize=1
 
   install -Dm644 ${srcdir}/${pkgname}/pkg/arch/salt-master.service ${pkgdir}/usr/lib/systemd/system/salt-master.service
   install -Dm644 ${srcdir}/${pkgname}/pkg/arch/salt-syndic.service ${pkgdir}/usr/lib/systemd/system/salt-syndic.service
