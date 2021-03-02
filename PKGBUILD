@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='shaderwriter-git'
 pkgver=v1.0.0.r5.g4cbf830
-pkgrel=1
+pkgrel=2
 pkgdesc='Library used to write shaders from C++, and export them in either GLSL, HLSL or SPIR-V.'
 
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 
 provides=('shaderwriter')
 makedepends=('cmake' 'git')
-conflicts=('shaderwriter')
+conflicts=('shaderwriter-stable')
 
 source=('git+https://github.com/DragonJoker/ShaderWriter.git')
 sha256sums=('SKIP')
@@ -30,12 +30,22 @@ prepare() {
 
 build() {
     cd 'ShaderWriter'
-    cmake . -DCMAKE_BUILD_TYPE=Release -DPROJECTS_USE_PRECOMPILED_HEADERS=OFF -DSDW_BUILD_EXPORTER_HLSL=OFF -DSDW_BUILD_GLSL=ON -DSDW_BUILD_EXPORTER_SPIRV=ON -DSDW_BUILD_STATIC_EXPORTERS=OFF -DSDW_BUILD_STATIC_SDW=OFF -DSDW_GENERATE_SOURCE=OFF -DSDW_BUILD_VULKAN_LAYER=OFF -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+    cmake . \
+	    -DCMAKE_BUILD_TYPE=Release \
+	    -DPROJECTS_USE_PRECOMPILED_HEADERS=OFF \
+	    -DSDW_BUILD_EXPORTER_HLSL=OFF \
+	    -DSDW_BUILD_GLSL=ON \
+	    -DSDW_BUILD_EXPORTER_SPIRV=ON \
+	    -DSDW_BUILD_STATIC_EXPORTERS=OFF \
+	    -DSDW_BUILD_STATIC_SDW=OFF \
+	    -DSDW_GENERATE_SOURCE=OFF \
+	    -DSDW_BUILD_VULKAN_LAYER=OFF \
+	    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
     cmake --build .
 }
 
 package() {
     cd 'ShaderWriter'
     cmake --build . --target install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/shaderwriter-git/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/shaderwriter/LICENSE"
 }

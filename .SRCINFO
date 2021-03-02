@@ -1,14 +1,14 @@
 pkgbase = shaderwriter-git
 	pkgdesc = Library used to write shaders from C++, and export them in either GLSL, HLSL or SPIR-V.
 	pkgver = v1.0.0.r5.g4cbf830
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DragonJoker/ShaderWriter.git
 	arch = any
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	provides = shaderwriter
-	conflicts = shaderwriter
+	conflicts = shaderwriter-stable
 	source = git+https://github.com/DragonJoker/ShaderWriter.git
 	sha256sums = SKIP
 
