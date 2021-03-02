@@ -1,12 +1,12 @@
 pkgbase = haskell-godaddy
 	pkgdesc = Command-line interface to configure a domain managed by Godaddy.
-	pkgver = 0.0.0.3
+	pkgver = 0.0.0.4
 	pkgrel = 1
 	url = https://github.com/ibizaman/haskell-godaddy
 	arch = any
 	license = GPL3
-	source = https://github.com/ibizaman/haskell-godaddy/releases/download/0.0.0.3/godaddy.zip
-	sha512sums = 84714626498fc41ebc01fcbb522149032324c93e44cc8300d1bdb2f68aef19468a8ff9c9d5554c834ea0073a430125ddd3da2ecaa240621510bc9a0395b2b3b4
+	source = https://github.com/ibizaman/haskell-godaddy/releases/download/0.0.0.4/godaddy.zip
+	sha512sums = 85813480df96e4153878019b4456ad02ef7f5ea1193d0f16e51e96e37df7e393fd5a962fc75ea9c0ebd60ccff92bce7c441121bd144a3d79b363c06d200d7fa2
 
 pkgname = haskell-godaddy
 
