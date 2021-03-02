@@ -6,10 +6,9 @@ pkgbase = usb-imager-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python
 	makedepends = python-setuptools>=40.9.0
+	depends = python
 	depends = udisks2
-	depends = python-importlib_resources
 	depends = python-gobject
 	depends = pyside2
 	depends = hicolor-icon-theme

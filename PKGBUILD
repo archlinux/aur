@@ -11,13 +11,12 @@ license=(GPL3)
 
 makedepends=(
   'git'
-  'python'
   'python-setuptools>=40.9.0'
 )
 
 depends=(
+  'python'
   'udisks2'
-  'python-importlib_resources'
   'python-gobject'
   'pyside2'
   'hicolor-icon-theme'
