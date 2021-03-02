@@ -13,13 +13,13 @@ pkgdesc="An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats."
 arch=('x86_64')
 depends=('zlib')
 makedepends=('p7zip')
-url="http://koreader.rocks/"
+url="https://koreader.rocks/"
 license=('AGPL3')
 _filename="koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage"
 noextract=("$_filename")
 options=('!strip')
 install=${pkgname}.install
-source=("http://ota.koreader.rocks/koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage")
+source=("https://ota.koreader.rocks/koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage")
 sha512sums=('9a1c478734ee5a86a7adc589be97225776c24b9b95e76f546b993a16d982f74e2207be93c3b748b48b4c010fec8f8ec7829a6be96d8f215c9ae07fb3235193f2')
 
 prepare() {
