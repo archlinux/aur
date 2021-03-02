@@ -2,7 +2,7 @@
 # PKGBUILD-Credit: https://aur.archlinux.org/account/teprrr
 
 pkgname=portfolio-performance-bin
-pkgver=0.50.4
+pkgver=0.51.0
 pkgrel=1
 pkgdesc="A simple tool to calculate the overall performance of an investment portfolio."
 arch=('x86_64')
@@ -28,6 +28,6 @@ package() {
 }
 
 
-sha512sums=('137f1abcf48a3947ecca1fb838ba8d4030a386910dcb2970ac918414ec757aa8f2c64f9594861970bb56f74a5f269fedaf0b0b2ece5ea17161bbdcef54922f1c'
+sha512sums=('afe49b90fe1dfc81f0c983870f3134c01708a70e5ab6e7389b6c09384da9278a4985c6a460b415a1861a8142a90ad51d812b0f9589188d294f2a05e81263d3bb'
             '177215db98deb3999d04ed097e880fe3cd0dc529051e3bf6aaf5f00f06aed08d1bbca77f298623a50376a71a256d0c41d3c86b17b70241dbe9c06f96a8eb4e63'
             'a3ae95fe94bf738c53d99557b6136b599f80fbfdd2bd52db4ad0a02b261b375979cfa7ee332afe0467ea0e00eb27767b2bf27c69048ae8df0e890a148437ce86')
