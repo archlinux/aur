@@ -1,6 +1,6 @@
 pkgbase = swi-prolog-devel
 	pkgdesc = Prolog environment (development version)
-	pkgver = 8.3.19
+	pkgver = 8.3.20
 	pkgrel = 1
 	url = https://www.swi-prolog.org/
 	arch = x86_64
@@ -31,8 +31,8 @@ pkgbase = swi-prolog-devel
 	optdepends = java-runtime: for using Prolog from Java
 	provides = swi-prolog
 	conflicts = swi-prolog
-	source = https://www.swi-prolog.org/download/devel/src/swipl-8.3.19.tar.gz
-	sha256sums = 381d38a752f319a578628638c840b6bfd8167644fe0f6e86c7debecfb347e747
+	source = https://www.swi-prolog.org/download/devel/src/swipl-8.3.20.tar.gz
+	sha256sums = 8f4ba079fdcbd4ba46b992a5f7d9aa4b33416187a848cebbc90ba401bcd39535
 
 pkgname = swi-prolog-devel
 
