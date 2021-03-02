@@ -1,5 +1,5 @@
 *.js
 *.log
-*.pkg.tar.xz
 *.pkg.tar.zst
 *.tar.gz
+*.sig
