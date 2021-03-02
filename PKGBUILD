@@ -42,8 +42,6 @@ prepare() {
 }
 
 build() {
-  cd $_pkgbasename
-
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
