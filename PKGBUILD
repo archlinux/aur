@@ -2,12 +2,12 @@
 
 pkgname=pg_ulid
 pkgver=r4.63c3a88
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental PostgreSQL extension for generating ULIDs'
 arch=('x86_64')
 url="https://github.com/iCyberon/pg_ulid"
 license=('MIT')
-depends=(postgresql)
+depends=(postgresql glibc)
 makedepends=(go git)
 source=("$pkgname::git+https://github.com/iCyberon/pg_ulid.git"
         "$pkgname.patch")
@@ -25,8 +25,9 @@ prepare() {
   # patch makefile
   patch --input="$srcdir/$pkgname.patch"
 
-  # download go dependency
-  go get github.com/oklog/ulid
+  # download go dependencies
+  go mod init github.com/iCyberon/pg_ulid/m
+  go mod tidy
 }
 
 build() {

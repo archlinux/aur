@@ -8,6 +8,7 @@ pkgbase = pg_ulid
 	makedepends = go
 	makedepends = git
 	depends = postgresql
+	depends = glibc
 	source = pg_ulid::git+https://github.com/iCyberon/pg_ulid.git
 	source = pg_ulid.patch
 	sha512sums = SKIP
