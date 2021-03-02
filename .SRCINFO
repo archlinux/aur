@@ -1,6 +1,6 @@
 pkgbase = r-delayedarray
 	pkgdesc = A unified framework for working transparently with on-disk and in-memory array-like datasets
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/DelayedArray.html
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = r-delayedarray
 	optdepends = r-knitr
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedArray_0.16.1.tar.gz
-	sha256sums = 6dd0a32d5edce34b6797127064c42c3410725524ca5cb9176c67070561fee5b4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedArray_0.16.2.tar.gz
+	sha256sums = a07283936fcc791ae6f196f236fd1098ce87c9fdd06e69f3ec4e851d4a929726
 
 pkgname = r-delayedarray
 
