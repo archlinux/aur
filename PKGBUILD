@@ -2,7 +2,7 @@
 
 pkgname=duplicacy
 pkgver=2.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'i686')
 url="https://duplicacy.com/"
@@ -25,7 +25,11 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver/$pkgname"
-
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   GOPATH="$srcdir/$pkgname-$pkgver/$pkgname" go build -x
 }
 
