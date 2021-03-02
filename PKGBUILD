@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
 pkgver=r424.db04167
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A cross-platform soundboard in QtQuick"
 arch=('any')
@@ -34,7 +34,7 @@ package() {
   # install binary
   install -Dm 755 "${srcdir}/Soundux/build/soundux" "${pkgdir}/opt/soundux/soundux"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -sf "${pkgdir}/opt/soundux/soundux" "${pkgdir}/usr/bin/soundux"
+  ln -sf /opt/soundux/soundux "${pkgdir}/usr/bin/soundux"
   # install dist
   mkdir -p "${pkgdir}/opt/soundux/dist"
   cp -r "${srcdir}/Soundux/build/dist"/* "${pkgdir}/opt/soundux/dist"
