@@ -1,13 +1,13 @@
 pkgbase = python-pygresql
 	pkgdesc = PyGreSQL is an open-source Python module that interfaces to a PostgreSQL database.
-	pkgver = 5.2.1
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = https://pygresql.org/
 	arch = x86_64
 	license = PostgreSQL
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/c3/eb/11c612ca025554cb3da0dd05114deebb529f609991d7d2f7983331d70c63/PyGreSQL-5.2.1.tar.gz
-	sha256sums = 94cc40538f4e460ca419e07a8ddfb26cf3c291df5d10728c4922135f9703faeb
+	source = https://files.pythonhosted.org/packages/79/e5/05f941e588d48d0b742850b74e991b29502f1e46194bbf5449e5632388ee/PyGreSQL-5.2.2.tar.gz
+	sha256sums = 114f60dc486bf4967aad14dc3adde5e4f60a35eea1eb8f7b8f0ae15c21b6f4a5
 
 pkgname = python-pygresql
 
