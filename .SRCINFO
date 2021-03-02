@@ -1,7 +1,7 @@
 pkgbase = trojan-r-git
 	pkgdesc = Lightweight and blazing fast Trojan-GFW/Trojan-Go implementation
 	pkgver = 0.1.0.r15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p4gefau1t/trojan-r
 	arch = aarch64
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = trojan-r-git
 	source = trojan-r::git+https://github.com/p4gefau1t/trojan-r
 	source = trojan-r@.service
 	b2sums = SKIP
-	b2sums = 2760c08b1049d2813e9c649c67ead4366583015b04f13fd9f67987d537e6d526801ec5555056a49398a17be4e031ff525f76cffe8de76c215371848263ba7cda
+	b2sums = 7ca5980b41e4b69b883a58197c43e0106f8a17f74783a1e8316e7ecdd6442a562a948065d0a476e29aaba44ec07a7f3c9321e292d807df16a985ef9ddd9a4e64
 
 pkgname = trojan-r-git
 
