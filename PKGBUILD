@@ -2,7 +2,7 @@
 
 pkgname=senpai-irc-git
 _pkgname=senpai-irc
-pkgver=r132.a370adb
+pkgver=r166.fce8215
 pkgrel=1
 pkgdesc='TUI IRC Client Created by ~taiite'
 url=https://ellidri.org/senpai/
@@ -34,11 +34,11 @@ build () {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -o build "./cmd/irc"
+	go build -o build "./cmd/senpai"
 }
 
 package () {
 	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/${_pkgname}/build/irc" "${pkgdir}/usr/bin/senpai-irc"
+	cp "${srcdir}/${_pkgname}/build/senpai" "${pkgdir}/usr/bin/senpai-irc"
 }
 
