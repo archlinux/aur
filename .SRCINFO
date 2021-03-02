@@ -1,11 +1,10 @@
 pkgbase = apostrophe
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.2.0.3
-	pkgrel = 3
+	pkgver = 2.3
+	pkgrel = 1
 	url = https://somas.pages.gitlab.gnome.org/apostrophe
 	arch = any
 	license = GPL3
-	checkdepends = appstream
 	makedepends = meson
 	makedepends = gobject-introspection
 	depends = webkit2gtk
@@ -17,10 +16,11 @@ pkgbase = apostrophe
 	depends = python-gobject
 	depends = python-cairo
 	depends = otf-fira-mono
+	depends = libhandy
 	optdepends = texlive-latexextra: for the pdftex module
 	optdepends = mathjax: for formula preview
-	source = https://gitlab.gnome.org/somas/apostrophe/-/archive/v2.2.0.3/apostrophe-v2.2.0.3.tar.gz
-	sha256sums = 79b7aa4913eceaf3a81baa23fe1071ae462b17f6b0f77d8e69f3d554474b4cab
+	source = https://gitlab.gnome.org/somas/apostrophe/-/archive/v2.3/apostrophe-v2.3.tar.gz
+	sha256sums = 944ee2d83c05afac148e1b819c213274f544c23e5338088271e967a6e83a09d2
 
 pkgname = apostrophe
 
