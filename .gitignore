@@ -1,7 +1,6 @@
 pkg/
 src/
-M-AIR-Edit_LINUX_V*.tar.gz
-M-AIR-Edit_LINUX_X64_V*.tar.gz
+M-AIR-Edit_LINUX_*.tar.gz
 m-air-edit-bin-*.pkg.tar.xz
 m-air-edit-bin-*.pkg.tar.zst
 m-air-edit-bin-*.src.tar.gz
