@@ -1,24 +1,21 @@
 pkgbase = numworks-omega
 	pkgdesc = A simulator for the Numworks graphic calculator (Omega firmware)
-	pkgver = 1.20.3.E14
+	pkgver = 1.21.0.E15
 	pkgrel = 1
-	url = https://getomega.web.app
+	url = https://getomega.dev
 	arch = x86_64
 	license = custom:CC-BY-NC-SA
 	makedepends = freetype2
-	makedepends = imagemagick
 	makedepends = gendesk
 	depends = gcc-libs
 	depends = libxext
 	depends = libjpeg-turbo
-	source = numworks-omega-1.20.3.E14.tar.gz::https://github.com/Omega-Numworks/Omega/archive/O1.20.3-E14.tar.gz
+	source = numworks-omega-1.21.0.E15.tar.gz::https://github.com/Omega-Numworks/Omega/archive/O1.21.0-E15.tar.gz
 	source = https://github.com/Omega-Numworks/Omega-Atom/archive/8f710a9d3fa4daedde14ba489e418dbac5d590c5.tar.gz
-	source = https://github.com/Omega-Numworks/Omega-RPN/archive/279ec6333ab15e08988dff66eea01c6fdaee4ea0.tar.gz
-	source = https://github.com/Omega-Numworks/Omega-Themes/archive/48fc1cc72739ad766abbf161d78c2f98cf2f797d.tar.gz
-	md5sums = 42b7ff0178ecb91bdf6756daaf812288
+	source = https://github.com/Omega-Numworks/Omega-RPN/archive/67d66295b0a5a9bc5daf52412db9ae2ac87bbf57.tar.gz
+	md5sums = 974f3cb5aa2e481563e93e8ae3ffb1e5
 	md5sums = 9253b9e172b7838d1de2e5d1d2e70a2d
-	md5sums = 61e0c0d58ea5b99c1abb22cf69db04fb
-	md5sums = 49971dccb8e581c1f5f114a8fb5926e6
+	md5sums = ed2e66171fbfa495d897bc6b2ac8b549
 
 pkgname = numworks-omega
 
