@@ -97,7 +97,9 @@ __commit="2baf9050c4d9887fcde0d015811f81059c215959" # 5.11.1-1
 
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf cpio patch
+  xmlto kmod inetutils bc libelf cpio make patch autoconf automake
+  binutils bison fakeroot flex gcc gettext grep groff gzip libtool m4
+  pkgconf sed which texinfo
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
 )
 options=('!strip')
