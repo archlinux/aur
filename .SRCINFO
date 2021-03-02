@@ -1,11 +1,12 @@
 pkgbase = jfa-go-bin
 	pkgdesc = A web app for managing users on Jellyfin
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrfee/jfa-go
 	arch = x86_64
 	arch = aarch64
 	arch = armv6h
+	arch = armv7h
 	license = MIT
 	provides = jfa-go
 	conflicts = jfa-go
@@ -15,6 +16,8 @@ pkgbase = jfa-go-bin
 	sha256sums_aarch64 = ef04eac31e88281ed029fecff16cdcff0dba7edb7eca9ba5fe2671dcb3c76842
 	source_armv6h = https://github.com/hrfee/jfa-go/releases/download/v0.3.1/jfa-go_0.3.1_Linux_armv6.tar.gz
 	sha256sums_armv6h = 73109d88f53115e01e2184d94ec582ae166ba56b062c1d35952e06c7a848ef2b
+	source_armv7h = https://github.com/hrfee/jfa-go/releases/download/v0.3.1/jfa-go_0.3.1_Linux_armv6.tar.gz
+	sha256sums_armv7h = 73109d88f53115e01e2184d94ec582ae166ba56b062c1d35952e06c7a848ef2b
 
 pkgname = jfa-go-bin
 
