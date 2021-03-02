@@ -1,5 +1,5 @@
 # Maintainer: 
-pkgname=libcrafer-git
+pkgname=libcrafter-git
 pkgver=1.0
 pkgrel=11
 pkgdesc="Libcrafter is a high level library for C++ designed to create and decode network packets"
