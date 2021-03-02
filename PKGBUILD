@@ -4,7 +4,7 @@
 
 pkgname=sdrangel-git
 _pkgname=${pkgname%-git}
-pkgver=4.14.3.r0.81da7b35b
+pkgver=6.6.0.r6.ef1419d66
 pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,8 @@ license=('GPL3')
 depends=('pkg-config' 'log4cpp' 'opencv' 'fftw' 'ffmpeg'
          'cm256cc' 'dsdcc' 'pulseaudio' 'lz4' 'nanomsg'
          'limesuite'
-         'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-websockets') # QT5
+         'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-websockets' 'qt5-quick3d'
+         'qt5-charts' 'qt5-serialport' 'qt5-declarative' 'qt5-location' 'qt5-speech') # QT5
 makedepends=('git' 'cmake' 'airspy' 'bladerf' 'hackrf' 'rtl-sdr' 'boost')
 optdepends=('ffmpeg: DATV demodulator'
             'libmirisdr4: SDRPlay support'
