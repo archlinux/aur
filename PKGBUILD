@@ -11,7 +11,7 @@ license=('GPL')
 source=('git+https://github.com/lukasmartinelli/hadolint.git')
 sha256sums=('SKIP')
 arch=('any')
-makedepends=('git' 'stack' 'gmp')
+makedepends=('git' 'stack' 'ghc-static')
 provides=('hadolint')
 
 pkgver() {
