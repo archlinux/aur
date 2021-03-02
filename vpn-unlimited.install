@@ -1,0 +1,23 @@
+post_install() {
+  echo "Enabling and starting vpn-unlimited-daemon.service ..."
+  systemctl daemon-reload
+  systemctl enable vpn-unlimited-daemon.service
+  systemctl start vpn-unlimited-daemon.service
+}
+
+post_upgrade() {
+  echo "Restarting vpn-unlimited-daemon.service ..."
+  systemctl daemon-reload
+  systemctl restart vpn-unlimited-daemon.service
+}
+
+pre_remove() {
+  echo "Stopping and disabling vpn-unlimited-daemon.service ..."
+  systemctl stop vpn-unlimited-daemon.service
+  systemctl disable vpn-unlimited-daemon.service
+}
+
+post_remove() {
+  echo "Running systemctl daemon-reload ..."
+  systemctl daemon-reload
+}

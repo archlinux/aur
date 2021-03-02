@@ -2,7 +2,7 @@
 
 pkgname=vpn-unlimited
 pkgver=8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="VPN Unlimited client application"
 arch=("x86_64")
 url="https://www.vpnunlimitedapp.com"
@@ -55,3 +55,5 @@ package() {
   find "${pkgdir}/usr/share" -type d -name aclocal -prune -exec rm -rf {} +
   find "${pkgdir}/usr/lib" -type f -name "*.so*" -exec chmod +x {} +
 }
+
+install=vpn-unlimited.install
