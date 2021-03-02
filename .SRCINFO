@@ -1,6 +1,6 @@
 pkgbase = senpai-irc-git
 	pkgdesc = TUI IRC Client Created by ~taiite
-	pkgver = r132.a370adb
+	pkgver = r166.fce8215
 	pkgrel = 1
 	url = https://ellidri.org/senpai/
 	arch = x86_64
