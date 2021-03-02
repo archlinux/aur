@@ -16,9 +16,7 @@ _architectures="x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir/RayTracingInVulkan"
-  curl -L https://github.com/GPSnoopy/RayTracingInVulkan/pull/39.patch | patch -p1
-  curl -L https://github.com/GPSnoopy/RayTracingInVulkan/pull/40.patch | patch -p1
-  curl -L https://github.com/GPSnoopy/RayTracingInVulkan/pull/41.patch | patch -p1
+  curl -L https://github.com/GPSnoopy/RayTracingInVulkan/pull/45.patch | patch -p1
   curl -L https://github.com/GPSnoopy/RayTracingInVulkan/pull/42.patch | patch -p1
   curl -L https://github.com/GPSnoopy/RayTracingInVulkan/pull/43.patch | patch -p1
 }
