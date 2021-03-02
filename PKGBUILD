@@ -5,7 +5,7 @@
 # Contributor: sumt <sumt at sci dot fi>
 
 pkgname=palemoon-gtk3-bin
-pkgver=29.0.1
+pkgver=29.1.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(palemoon.desktop)
 source_x86_64=("https://linux.palemoon.org/datastore/release/palemoon-$pkgver.linux-x86_64-gtk3.tar.xz"{,.sig})
 # link to latest tarball: http://linux.palemoon.org/download/mainline/
 sha256sums=('6fa2786e1828684a6783d340690f75382d1dcd02ce8533dad4f3f4f8b076dad7')
-sha256sums_x86_64=('ecb2e263b80755dc1c582d1b1f27bff189ddc810351d3bea564903647bc207c7'
+sha256sums_x86_64=('e062cac9a86a38ae16f8952f34a56dfa73dbc8a334c1eb6af2792e5e393398cc'
                    'SKIP')
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
               '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC') # Moonchild, see https://forum.palemoon.org/viewtopic.php?f=1&t=7176
