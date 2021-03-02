@@ -2,7 +2,7 @@
 # Contributor: Tim Brown <stimut@gmail.com>
 
 pkgname=google-cloud-sdk-app-engine-python-extras
-pkgver=329.0.0
+pkgver=330.0.0
 pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides extra libraries for the Python runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
@@ -16,7 +16,7 @@ depends=(
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha256sums=('b63bce3fc353fb1f8040f373e0b84ac53c69c2ff6429aed779fb41520d3a8a52')
+sha256sums=('7d1ec98742a7170224a4f5236e93aad63ef1dd1b1404b9ffa3cec5e9a125d898')
 
 package() {
   # Install the component manifest file
