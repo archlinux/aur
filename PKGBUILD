@@ -63,8 +63,6 @@ build() {
 #}
 
 package() {
-  cd $_pkgbasename
-  
   DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
 
   rm -r "$pkgdir"/{etc,usr/{include,share}}
