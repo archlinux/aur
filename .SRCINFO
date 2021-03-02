@@ -1,8 +1,8 @@
 pkgbase = python2-pykeepass
 	pkgdesc = Python library to interact with keepass databases (supports KDBX3 and KDBX4)
-	pkgver = 3.2.1
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = https://github.com/pschmitt/pykeepass
+	url = https://github.com/libkeepass/pykeepass
 	arch = any
 	license = GPL3
 	makedepends = python2-setuptools
@@ -11,8 +11,8 @@ pkgbase = python2-pykeepass
 	depends = python2-pycryptodomex
 	depends = python2-construct
 	depends = python2-argon2
-	source = https://files.pythonhosted.org/packages/source/p/pykeepass/pykeepass-3.2.1.tar.gz
-	sha256sums = b3e07eb2dd3aeb1dfa1a2d2d17be77066ee560c1e770f1c72d7ea5608117d284
+	source = https://files.pythonhosted.org/packages/source/p/pykeepass/pykeepass-4.0.0.tar.gz
+	sha256sums = 1b41b3277ea4e044556e1c5a21866ea4dfd36e69a4c0f14272488f098063178f
 
 pkgname = python2-pykeepass
 	depends = python2
