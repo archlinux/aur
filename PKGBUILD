@@ -10,6 +10,7 @@ conflicts=('bottles')
 depends=(
   'python'
   'hicolor-icon-theme'
+  'libhandy'
   'appstream-glib'
 )
 makedepends=(
