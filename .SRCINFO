@@ -1,6 +1,6 @@
 pkgbase = r-dicekriging
 	pkgdesc = Kriging Methods for Computer Experiments
-	pkgver = 1.5.8
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DiceKriging
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = r-dicekriging
 	optdepends = r-doparallel
 	optdepends = r-testthat
 	optdepends = r-numderiv
-	source = https://cran.r-project.org/src/contrib/DiceKriging_1.5.8.tar.gz
-	md5sums = f5ed77040bed6c6feed5f26aea4be5bf
+	source = https://cran.r-project.org/src/contrib/DiceKriging_1.6.0.tar.gz
+	sha256sums = ab5d1332809f2bb16d156ed234b102eb9fbd6de792e4291f9f6ea4652215cb49
 
 pkgname = r-dicekriging
 

@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=DiceKriging
-_cranver=1.5.8
+_cranver=1.6.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2 GPL3)
 depends=(r)
 optdepends=(r-rgenoud r-foreach r-doparallel r-testthat r-numderiv)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('f5ed77040bed6c6feed5f26aea4be5bf')
+sha256sums=('ab5d1332809f2bb16d156ed234b102eb9fbd6de792e4291f9f6ea4652215cb49')
 
 build() {
   cd "${srcdir}"
