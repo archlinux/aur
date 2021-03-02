@@ -1,7 +1,7 @@
 # Maintainer: Jack Lupino <electricalmemory83720x0@protonmail.com>
 pkgname=freezer-appimage
-pkgver='1.1.16'
-pkgrel=3
+pkgver='1.1.17'
+pkgrel=4
 pkgdesc="An unofficial client for Deezer (AppImage version)"
 arch=('x86_64')
 url="https://files.freezer.life"
