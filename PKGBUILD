@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='ashes-git'
 pkgver=r529.503e18e5
-pkgrel=2
+pkgrel=3
 pkgdesc='Drop-in replacement for Vulkan shared library, for older hardware compatibility'
 
 arch=('any')
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd 'Ashes'
-    cmake . \ 
+    cmake . \
         -DASHES_BUILD_SAMPLES=OFF \
 	-DASHES_BUILD_TEMPLATES=OFF \
 	-DASHES_BUILD_SW_SAMPLES=OFF \

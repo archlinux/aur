@@ -1,7 +1,7 @@
 pkgbase = ashes-git
 	pkgdesc = Drop-in replacement for Vulkan shared library, for older hardware compatibility
 	pkgver = r529.503e18e5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DragonJoker/Ashes
 	arch = any
 	license = MIT
