@@ -9,14 +9,14 @@
 
 pkgname=dragonwolf
 _pkgname=DragonWolf
-pkgver=r635306.b898442a9527
+pkgver=88.0a1.r636493+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
-url="https://librewolf-community.gitlab.io/"
+url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse
+         ffmpeg nss-hg ttf-font libpulse
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
