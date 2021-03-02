@@ -1,8 +1,8 @@
 # Maintainer: Mario Hros <m-aur@k3a.me>
 
 pkgname=carbonapi
-pkgver=0.14.2.1
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Replacement graphite API server written in Go"
 arch=(i686 x86_64)
 url='https://github.com/go-graphite/carbonapi'
@@ -14,7 +14,7 @@ _gopkg=github.com/go-graphite/$pkgname
 source=($pkgname-$pkgver.tar.gz::https://$_gopkg/archive/$pkgver.tar.gz
 		carbonapi.yaml
 		carbonapi.service)
-sha256sums=('5edbd568eb6bdbabaef803df6ebf2b762f2acba809160515c9f83afa0acc6020'
+sha256sums=('7a73d9fc098aaff6cc2c8585043425ac15e8c1446b5ad15753f6ee998ef5f25a'
             'cef6f2fb6702d32ce84765615ec8208f8d03f9d540f177e904f47c61e5ea1215'
             '9d24333dfefc199957a2efa4779f69a9ad01f78bbff97c35dbacbb160b9bec50')
 
