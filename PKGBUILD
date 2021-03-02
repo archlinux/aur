@@ -2,17 +2,17 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=doomretro
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc='The classic, refined DOOM source port'
 arch=('x86_64' 'aarch64')
 url='http://doomretro.com'
 license=('GPL3')
-depends=('sdl2_image' 'sdl2_mixer')
+depends=('sdl2_image' 'sdl2_mixer' 'glibc')
 makedepends=('cmake')
 optdepends=('timidity++: for music playback')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bradharding/doomretro/archive/v$pkgver.tar.gz")
-sha512sums=('a61f1c878ea84789b65f1f24d307dfc30eae433ae2dd31b361c8e62b81899866afec6c915d4b9dd8d28d83ab4ca928de5018328aec7e65055e9141e8a0e00a9d')
+sha512sums=('f88e0c59164dd524a971eee39b880a371f731fa45d1c73aa2216dd10df09f429c71c8001d010dd46fc95127ec0e193202481e6c5ccbcf1c721642b33f977706d')
 
 prepare() {
   mkdir -p build
