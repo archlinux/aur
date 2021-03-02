@@ -1,14 +1,14 @@
 pkgbase = kite
 	pkgdesc = Installer for Kite, the AI Coding Assistant for Python and JavaScript
-	pkgver = 2.20201119.0
+	pkgver = 2.20210225.0
 	pkgrel = 1
 	url = https://www.kite.com/
 	install = kite.install
 	arch = x86_64
 	license = custom
 	depends = libxss
-	source = https://kitedownloadss.b-cdn.net/linux/2.20201119.0/kite-installer
-	md5sums = e23629e3a039d489e692d7b50cabb94f
+	source = https://kitedownloadss.b-cdn.net/linux/2.20210225.0/kite-installer
+	md5sums = 2512cd541030f0cacfe87cb79688ff5b
 
 pkgname = kite
 
