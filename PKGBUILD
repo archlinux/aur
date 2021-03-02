@@ -114,8 +114,8 @@ package_lib32-spirv-tools-git(){
   # install licence
   install -Dm644 "${srcdir}"/SPIRV-Tools/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  #cd "${pkgdir}/usr/bin"
-  #for i in $(find . -type f); do mv ${i} ${i}-32; done
-  #mv spirv-lesspipe.sh-32 spirv-lesspipe-32.sh
-  #sed 's|spirv-dis|spirv-dis-32|g' -i spirv-lesspipe-32.sh
+  cd "${pkgdir}/usr/bin"
+  for i in $(find . -type f); do mv ${i} ${i}-32; done
+  mv spirv-lesspipe.sh-32 spirv-lesspipe-32.sh
+  sed 's|spirv-dis|spirv-dis-32|g' -i spirv-lesspipe-32.sh
 }
