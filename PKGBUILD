@@ -5,7 +5,7 @@ _arch=armv7l
 _kernel_arch=arm
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-linux-api-headers
-pkgver=5.10.15
+pkgver=5.10.17
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
@@ -14,7 +14,7 @@ license=(GPL2)
 makedepends=(rsync)
 options=(!strip)
 source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.{xz,sign})
-sha256sums=('d85287bcf1d51c4d0a32380ac0a5b2b487b321058a6923617f1613fbd10e6e01'
+sha256sums=('e84e623ce8bb2446ec026b62eafa3b18480aa6fb6ae9c86cd8f18651324d4814'
             'SKIP')
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -31,7 +31,6 @@ build() {
 
 package() {
   cd linux-$pkgver
-
   make INSTALL_HDR_PATH="$pkgdir/usr/$_target/sys-root/usr" ARCH=$_kernel_arch V=0 headers_install
 
   # clean-up unnecessary files generated during install
