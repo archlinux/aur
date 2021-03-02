@@ -18,7 +18,7 @@ pkgbase = anyremote
 	optdepends = pngout: upload icons to JSR-82 compatible phone
 	optdepends = wmctrl
 	optdepends = imagemagick
-	source = http://downloads.sourceforge.net/sourceforge/anyremote/anyremote-6.7.3.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/anyremote/anyremote-6.7.3.tar.gz
 	md5sums = fd87404e8f820e9b4756c38c930c8367
 
 pkgname = anyremote

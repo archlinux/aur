@@ -19,7 +19,7 @@ optdepends=('ganyremote: GTK frontend'
             'wmctrl'
             'imagemagick')
 install=anyremote.install
-source=(http://downloads.sourceforge.net/sourceforge/anyremote/$pkgname-$pkgver.tar.gz)
+source=(https://downloads.sourceforge.net/sourceforge/anyremote/$pkgname-$pkgver.tar.gz)
 md5sums=('fd87404e8f820e9b4756c38c930c8367')
 
 build() {
