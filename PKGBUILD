@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
 pkgver=r242.a3b493d
-pkgrel=2
+pkgrel=3
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -31,11 +31,6 @@ pkgver() {
 	# r1581.2b039da      # else fallback
 }
 
-prepare() {
-	cd "${srcdir}/${_dirname}"
-	touch registration.yaml
-}
-
 build(){
 	cd "${srcdir}/${_dirname}"
 	export npm_config_jobs=$(echo "$MAKEFLAGS" | sed -E 's/.*-?-j(obs)? ?([[:digit:]]+).*/\2/')
@@ -60,5 +55,4 @@ package() {
 	install -Dm 644 "${srcdir}/${_basename}.service" "${pkgdir}/usr/lib/systemd/system/${_basename}.service"
 
 	install -Dvm 640 sample.config.yaml "${pkgdir}/etc/${_basename}/config.yaml"
-	install -Dvm 640 registration.yaml "${pkgdir}/etc/${_basename}/registration.yaml"
 }

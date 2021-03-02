@@ -1,6 +1,14 @@
 post_install() {
 	cat <<- 'EOF'
 		after editing /etc/mx-puppet-discord/config.yaml, generate a registration file using:
-		# node /usr/lib/node_modules/mx-puppet-discord/build/index.js -c /etc/mx-puppet-discord/config.yaml -r -f /etc/mx-puppet-discord/registration.yaml
+		# node /usr/lib/node_modules/mx-puppet-discord/build/index.js -c /etc/mx-puppet-discord/config.yaml -r -f /root/registration.yaml
+		# chmod 640 /root/registration.yaml
+		# chown root:mx-puppet-discord /root/registration.yaml
+		# mv /root/registration.yaml /etc/mx-puppet-discord/registration.yaml
+
+		the instruction have been slightly altered from upstream to prevent shared secrets to be made world-readable on creation
+
+		if synapse runs in the same machine, to grant it permission to access the registration file, all one needs is to add it to the mx-puppet-discord group:
+		# usermod -aG mx-puppet-discord synapse
 	EOF
 }

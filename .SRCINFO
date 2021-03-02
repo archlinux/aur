@@ -1,7 +1,7 @@
 pkgbase = mx-puppet-discord-git
 	pkgdesc = This is a Matrix bridge for Discord
 	pkgver = r242.a3b493d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matrix-discord/mx-puppet-discord
 	install = mx-puppet-discord.install
 	arch = x86_64
