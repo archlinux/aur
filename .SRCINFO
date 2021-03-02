@@ -1,0 +1,11 @@
+pkgbase = efistub-standalone
+	pkgdesc = /usr/lib/systemd/boot/efi/*.efi.stub files
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = unknown
+	source = linuxx64.efi.stub
+	sha512sums = 72cea85ee90c15bad1730c83a35467b0bba2e522d598f7f406d0954bb49b5d84a7a9f9326c2ae1efd4eae6fb17e0d3ffaf5390398160562a3f8f005786118376
+
+pkgname = efistub-standalone
+
