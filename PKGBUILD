@@ -2,10 +2,10 @@
 
 pkgname=mylar3
 pkgver=0.4.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Comic book download automation for usenet and torrents."
 arch=('any')
-url="https://gitlab.com/mylar3/mylar3/"
+url="https://github.com/mylar3/mylar3"
 license=('GPL3')
 depends=(
   'python'
@@ -36,7 +36,7 @@ source=("mylar3-${pkgver}.tar.gz::https://github.com/mylar3/mylar3/archive/v${pk
         'mylar3.tmpfiles'
         'mylar3.sysusers')
 
-sha256sums=('cf750c27d240c9bacbe13125acadb019671c0cc3cd8a2021e589d072006e92e9'
+sha256sums=('d4b173b233b0bb1a7119f9d2144244d49a633d94761dc6e1e7362702c5319716'
             'bfe7c28f5c773b77e6bc0014bd4473de2f4650d049cfedb177aedef74187c932'
             'e39441d41acd5d66b63631872e06f8e5425bf0725044e5c3843626d4a090eba5'
             'e26cad50c8c8501fa12e2e2b2443f57aaf309e28f28d6dd4944958f9cb20f3cd')
