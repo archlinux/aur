@@ -20,7 +20,7 @@ fi
 #######################################
 
 pkgname=lib32-spirv-tools-git
-pkgdesc='API and commands for processing SPIR-V modules. (64-bit) (git version)'
+pkgdesc='API and commands for processing SPIR-V modules. (32-bit) (git version)'
 pkgver=2020.7.2021_03_02.2969.0bd920eb9
 pkgrel=1
 arch=('i686' 'x86_64')
