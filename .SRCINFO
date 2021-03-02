@@ -1,0 +1,23 @@
+pkgbase = haskell-language-docker
+	pkgdesc = Dockerfile parser, pretty-printer and embedded DSL
+	pkgver = 9.1.3
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/language-docker
+	arch = x86_64
+	license = GPL3
+	makedepends = happy
+	makedepends = alex
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-hunit
+	depends = haskell-quickcheck
+	depends = haskell-data-default-class
+	depends = haskell-hspec
+	depends = haskell-megaparsec
+	depends = haskell-prettyprinter
+	depends = haskell-split
+	source = https://hackage.haskell.org/packages/archive/language-docker/9.1.3/language-docker-9.1.3.tar.gz
+	sha512sums = 07444ce6c0e1b0b934f004e361e02238085065b1ca346a6a413cb543155be632d7b385b4779ab063a3bf1e65ed47b456d2d954fa05cd683ef9bc284d6aaa325f
+
+pkgname = haskell-language-docker
+
