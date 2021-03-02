@@ -1,6 +1,6 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = stm32cubeide
 	depends = glibc
 	depends = libusb
 	options = !strip
-	source = local://en.st-stm32cubeide_1.5.1_9029_20201210_1234_amd64.sh.zip
+	source = local://en.st-stm32cubeide_1.6.0_9614_20210223_1703_amd64.sh.zip
 	source = 99-jlink.rules.patch
 	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
-	sha256sums = 9b7edb4c93be799aa8bca643cb93befc6393fcd60f705c9f630da13860cef207
+	sha256sums = 003ba2abbeda8c9178254460452e58dc34a73de26a0b9cc9645db7290e83c86b
 	sha256sums = 0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3
 	sha256sums = SKIP
 

@@ -2,9 +2,9 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.5.1
-_pkgver_ext=1.5.1_9029_20201210_1234
-_pkg_file_name=en.st-stm32cubeide_1.5.1_9029_20201210_1234_amd64.sh.zip
+pkgver=1.6.0
+_pkgver_ext=1.6.0_9614_20210223_1703
+_pkg_file_name=en.st-stm32cubeide_1.6.0_9614_20210223_1703_amd64.sh.zip
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
@@ -31,7 +31,7 @@ fi
 source=("local://${_pkg_file_name}"
 	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
-sha256sums=('9b7edb4c93be799aa8bca643cb93befc6393fcd60f705c9f630da13860cef207'
+sha256sums=('003ba2abbeda8c9178254460452e58dc34a73de26a0b9cc9645db7290e83c86b'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP')
 
@@ -85,7 +85,7 @@ END
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=STM32CubeIDE
-Comment=STM32CubeIDE 1.5.1
+Comment=STM32CubeIDE 1.6.0
 GenericName=STM32CubeIDE
 Exec=env GDK_BACKEND=x11 stm32cubeide %F
 Icon=stm32cubeide
@@ -99,9 +99,6 @@ END
 	msg2 'Instalation of license file'
 	install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -D -o root -g root -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/dm00218346.pdf"
-
-	msg2 'Prevent automatical '${pkgname}'.desktop file replacement by not functional one'
-	rm ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_*/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template
 }
 
 #
