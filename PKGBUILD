@@ -1,11 +1,11 @@
 # Maintainer: c4tz
 pkgname=kodi-addon-pvr-zattoo
-pkgver=18.1.21
+pkgver=19.7.4
 pkgrel=1
 pkgdesc='Zattoo PVR Plugin for Kodi'
-_koditarget=Leia
+_koditarget=Matrix
 _gitname=pvr.zattoo
-_kodiver=18.9
+_kodiver=19.0
 arch=('any')
 url="https://github.com/rbuehlma/${_gitname}"
 license=('GPL')
@@ -17,8 +17,8 @@ depends=('kodi' 'kodi-addon-script-module-inputstreamhelper')
 source=("https://github.com/rbuehlma/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('19de7bc58bcf37bbcff5ad2cb2f095cb15a4217f9abec5c9ff30d0489dab89d2'
-            'bdf8afa9356b1f815de9984801d3e0d2b46a719e747895b75528f20995c59d2b')
+sha256sums=('3ea4c8affb3d34947d09df8abbe708430b07f35c6d042463593438eadbfb6b45'
+            'f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
