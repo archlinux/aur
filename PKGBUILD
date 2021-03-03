@@ -1,6 +1,6 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=cosbrowser
-pkgver=1.5.3
+pkgver=2.5.5
 pkgrel=1
 epoch=
 pkgdesc="腾讯云COS工具"
@@ -32,7 +32,7 @@ source=(
 	"https://cos5.cloud.tencent.com/cosbrowser/releases/cosbrowser-latest-linux.zip"
 	"https://raw.githubusercontent.com/tencentyun/qcloud-documents/master/product/管理与支持/政策与规范/腾讯云隐私声明.md")
 noextract=()
-sha256sums=('70b730eca02fbe0720a94e06b99ba6d7b5ff465c0dc75fb488393e0e67295fc8'
+sha256sums=('SKIP'
             'SKIP')
 validpgpkeys=()
 
