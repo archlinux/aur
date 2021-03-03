@@ -6,6 +6,7 @@ pkgbase = python-pytorch-complex-git
 	arch = any
 	license = unknown
 	makedepends = git
+	makedepends = python-setuptools
 	makedepends = python-pytorch
 	makedepends = python-pytest
 	depends = python>=3.7
