@@ -14,7 +14,7 @@ depends=('absl-py'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f392f4161920ac38bb44368f0d95d03a14cd908e852b65a589ca3765c4d11a80')
+sha256sums=('77a14765eb2adcb5fd1b2550bfce01f95b2f23f3af858330975d6fa808775c19')
 
 build() {
     cd "$pkgname-$pkgver"
