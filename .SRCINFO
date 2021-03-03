@@ -1,0 +1,15 @@
+pkgbase = ghcid-static-git
+	pkgdesc = GHCi based bare bones IDE
+	pkgver = 0.8.7.r31.gb18ad16
+	pkgrel = 1
+	url = https://github.com/ndmitchell/ghcid
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cabal-install
+	depends = gmp
+	provides = ghcid
+	source = git+https://github.com/ndmitchell/ghcid.git
+	sha256sums = SKIP
+
+pkgname = ghcid-static-git
