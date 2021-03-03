@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='spot'
 pkgname="$_projectname-client"
-pkgver='0.1.8'
+pkgver='0.1.9'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('alsa-lib' 'glib2' 'gtk3' 'libhandy' 'libpulse' 'openssl')
 makedepends=('cargo' 'meson>=0.50.0')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('61a14eff406f18e397cf99bee810b60acc34129e1310c239ceee7b2501edfeb0')
+sha256sums=('39499aa48cffb5d1f1352affa362c014f9c29570648cc59ff2ba1dde5d2372cd')
 
 _sourcedirectory="$_projectname-$pkgver"
 _builddirectory='build'
