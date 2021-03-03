@@ -1,0 +1,14 @@
+pkgbase = plasma-applets-doityourselfbar
+	pkgdesc = KDE Plasma panel applet for creating text-based widgets
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/wsdfhjxc/do-it-yourself-bar
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	source = plasma-applets-doityourselfbar-1.2.tar.gz::https://github.com/wsdfhjxc/do-it-yourself-bar/archive/1.2.tar.gz
+	sha512sums = 5954c349347c958e5c73f703ff695c4f32b643ac8fb7611059408a27a0999f10142f1b42ae4c9ac170473d5819e454ca7e0df1136a229e93a82c0197a0e22049
+
+pkgname = plasma-applets-doityourselfbar
+
