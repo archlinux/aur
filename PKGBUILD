@@ -1,6 +1,6 @@
 #! /bin/bash
 pkgname="pacman-auto-update"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 arch=("any")
 install="${pkgname}.install"
