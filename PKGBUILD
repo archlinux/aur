@@ -2,7 +2,7 @@
 
 pkgname="emojicode"
 pkgver=1.0.beta.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -35,7 +35,7 @@ build() {
     cd "${srcdir}/${pkgname}-1.0-beta.2"
 
     # ugh
-    sed -i 's/8.0/9.0/' Compiler/CMakeLists.txt
+    sed -i 's/8.0//' Compiler/CMakeLists.txt
 
     mkdir -p build
     cd build
