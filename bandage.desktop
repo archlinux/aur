@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Bandage
+Comment=Bioinformatics Application for Navigating De novo Assembly Graphs Easily
+Keywords=de novo;assembly;
+Exec=/usr/bin/Bandage
+Icon=bandage
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Bioinformatics
