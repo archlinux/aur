@@ -1,9 +1,10 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
+# Maintainer: DuckSoft <realducksoft@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
@@ -19,21 +20,19 @@ source=(
     "vpoint_vmess_freedom.json"
     "xray.service"
     "xray@.service"
-    "location_asset.patch"
+#    "location_asset.patch"
 )
-sha512sums=(
-    '87635b769dbbada039f64265afacad184990839eb260b44177ab198047272b4daa32da6a898da70a8a8c7de4f1469ebcda816d0c1c7fb3e59702700fd5616bb7'
-    '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
-    '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
-    '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
-    '1d31e11c3a11090ee2616adfcf77a4a1013793c8f63a41e5293d07e889e34f85223b9f5a0791b649f22ecc5e18e12182b5b074e61aa36f5cd6de523f3c64f95d'
-    '6582aa9bf988acb2660a7172282768c217ad8335a55ccee916d7786c227bc62cc973d7d6d3b5632260c69eec98c15804c2b52cdd91c5f395d3a0fe36519586b4'
-    '3fc64f9980fb9d5ceedf6c77fa88abcbf9c3ca15189de7f4e5e319d525591d7049676b8a89e9ef1341ed3ba198041539db4fe37338bab4df9f9b7594f77b36b6'
-)
+sha512sums=('c1da6f7e8efdf5653b98eb9ce52ac6d841598e75d77c46f856291a279591307f60169e3d0e30278ff8aba35cf955c4e8b7e4c22d78f717398b5a01d61aaa5701'
+            '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
+            '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
+            '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
+            '1d31e11c3a11090ee2616adfcf77a4a1013793c8f63a41e5293d07e889e34f85223b9f5a0791b649f22ecc5e18e12182b5b074e61aa36f5cd6de523f3c64f95d'
+            '6582aa9bf988acb2660a7172282768c217ad8335a55ccee916d7786c227bc62cc973d7d6d3b5632260c69eec98c15804c2b52cdd91c5f395d3a0fe36519586b4')
+#            '3fc64f9980fb9d5ceedf6c77fa88abcbf9c3ca15189de7f4e5e319d525591d7049676b8a89e9ef1341ed3ba198041539db4fe37338bab4df9f9b7594f77b36b6'
 
-prepare() {
-    patch "${srcdir}"/"Xray-core-${pkgver}"/common/platform/others.go "${srcdir}"/location_asset.patch
-}
+#prepare() {
+#    patch "${srcdir}"/"Xray-core-${pkgver}"/common/platform/others.go "${srcdir}"/location_asset.patch
+#}
 
 build() {
     cd "${srcdir}"/"Xray-core-${pkgver}"
