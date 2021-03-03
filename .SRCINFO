@@ -7,7 +7,7 @@ pkgbase = electron-markdownify
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	depends = electron4
+	depends = electron8
 	source = electron-markdownify::git+https://github.com/amitmerchant1990/electron-markdownify.git
 	sha256sums = SKIP
 
