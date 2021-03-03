@@ -2,9 +2,9 @@
 
 pkgname=python-pyeit-git
 pkgver=1.0.0.r58.g92c5524
-pkgrel=2
+pkgrel=3
 _name=pyEIT
-pkgdesc="An open source Python REST API framework designed for human beings."
+pkgdesc="Python based toolkit for Electrical Impedance Tomography"
 arch=('any')
 url="https://github.com/liubenyuan/pyEIT"
 license=('BSD')

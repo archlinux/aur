@@ -1,7 +1,7 @@
 pkgbase = python-pyeit-git
-	pkgdesc = An open source Python REST API framework designed for human beings.
+	pkgdesc = Python based toolkit for Electrical Impedance Tomography
 	pkgver = 1.0.0.r58.g92c5524
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/liubenyuan/pyEIT
 	arch = any
 	license = BSD
