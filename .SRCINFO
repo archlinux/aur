@@ -1,4 +1,4 @@
-pkgbase = spirv-llvm-translator-git
+pkgbase = spirv-llvm-translator-rc
 	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR (rc release)
 	pkgver = 12.0.0rc2
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = spirv-llvm-translator-git
 	source = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/llvm_release_120.zip
 	md5sums = SKIP
 
-pkgname = spirv-llvm-translator-git
+pkgname = spirv-llvm-translator-rc
 
