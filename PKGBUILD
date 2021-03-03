@@ -1,6 +1,6 @@
 # Maintainer: Hans Kramer <kramer@b1-systems.de>
 
-pkgname=linrad
+pkgname=linrad-latest
 pkgver=latest
 pkgrel=1
 pkgdesc="Software defined radio receiver for x11, latest code from sourceforge.net"
