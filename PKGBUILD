@@ -1,7 +1,7 @@
 # Maintainer: Lutz Freitag <aur.lutz@gottliebtfreitag.de>
 
 pkgname=qrqma-git
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='A C++ implementaion of Jinja templates'
 url='https://github.com/nerdmaennchen/qrqma'
@@ -9,7 +9,7 @@ arch=('any')
 license=('ISC')
 makedepends=('git' 'cmake')
 provides=('qrqma')
-source=("git+https://github.com/nerdmaennchen/qrqma.git#tag=0.9.3")
+source=("git+https://github.com/nerdmaennchen/qrqma.git#tag=0.9.4")
 sha256sums=('SKIP')
 
 pkgver() {
