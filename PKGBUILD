@@ -2,8 +2,8 @@
 # Set it to compile with openblas-lapack
 
 pkgname=cpl
-pkgver=7.1.2
-pkgrel=2
+pkgver=7.1.3
+pkgrel=1
 pkgdesc="ESO Common Pipeline Library"
 url="https://www.eso.org/sci/software/cpl/index.html"
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-source=(ftp://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/cpl-7.1.2.tar.gz)
-sha256sums=('b6d20752420e2333e86d9a08c24a08057351a9fef97c32f5894e63fbfece463a')
+source=(ftp://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/cpl-${pkgver}.tar.gz)
+sha256sums=('04109613819b97273045102bd7acf52d13ee7f9217779f17ae2a170c491965c5')
 
 
 build() {
