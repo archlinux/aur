@@ -4,7 +4,7 @@
 # Contributor: James Miller <james@pocketrent.com>
 
 pkgname=hhvm
-pkgver=4.97.0
+pkgver=4.99.0
 pkgrel=1
 
 pkgdesc="A virtual machine for executing programs written in Hack."
@@ -63,5 +63,5 @@ package() {
 
     # No idea how to prevent the /tmp directory from being generated yet, so we'll have to do this
     cd "$pkgdir"
-    rm -fr tmp/
+    rm -fr build/
 }
