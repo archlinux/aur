@@ -1,17 +1,24 @@
 # Maintainer: Anty0 <anty150 at gmail dot com>
 
+
+# Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
+_upstreamver='0.12'
+_upstreamver_regex='^[0-9]+\.[0-9]+$'
+_source_type='github-tags'
+_repo='rr-/urwid_readline'
+
+
 pkgname='python-urwid_readline'
 _pkgname='urwid_readline'
-pkgver='0.12'
+pkgver="${_upstreamver}"
 pkgrel=1
 pkgdesc="Text input widget for urwid that supports readline shortcuts"
-url="https://github.com/rr-/urwid_readline"
-depends=('python'
-    'python-urwid')
+url="https://github.com/${_repo}"
+depends=('python' 'python-urwid')
 makedepends=('cython' 'python-setuptools')
 license=('mit')
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-source=("https://github.com/rr-/urwid_readline/archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('f9688392c0bdeb00732b6f3c01cfd269b6f8fcc2553bec92947aa71af5ebd864')
 
 build() {
