@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=callaudiod-git
-pkgver=0.0.4.r4.g585f3da
+pkgver=0.1.0.r0.g007b341
 pkgrel=1
 pkgdesc="Call audio routing daemon"
 arch=(i686 x86_64 armv7h aarch64)
