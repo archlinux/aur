@@ -1,4 +1,5 @@
-# Maintainer : Felix Golatofski <contact@xdfr.de>
+# Maintainer : Uwe Grasshoff <aurpackages@crazyideas.dee>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Red_Squirrel <evangelion87d@gmail.com>
 # Contributor: Xavier114fch <xavier114fch@gmail.com>
 # Contributor: nachoig      <areta@outlook.com.br>
@@ -9,18 +10,19 @@
 # $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
 
 pkgname=libreoffice-fresh-rpm
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('x86_64')
 url='https://www.libreoffice.org'
 license=('LGPL')
 depends=('glibc>=2.5' 'gtk2>=2.10.4' 'xorg-server')
+conflicts=('libreoffice-fresh' 'libreoffice-base')
 makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 arch_mod='x86_64';
-sha256sums=('13ce1cd73eac4a004647075118ec41c92a2f0f47dc013011990b3db03c76d3fe')
+sha256sums=('62adf2252ba8b1fa93cfb99b339b75ba6c23669ba730c40cff176a13b46acb83')
 source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 
 prepare() { ## prepare function
@@ -108,3 +110,4 @@ for a in $(ls -d */); do  ## loop for all directories found
 done;
 
 }
+ 
