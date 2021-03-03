@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=0.37dev.r4250.gd11ad228
+pkgver=2.0.0dev.r6030.ga03aeddd
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - mcode back-end'
@@ -10,7 +10,13 @@ license=('GPLv2')
 
 provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-llvm-git')
-makedepends=('gcc-ada' 'git')
+makedepends=('git')
+depends=('gcc-ada')
+checkdepends=('python-pytest' 'python-pydecor' 'python-pyvhdlmodel')
+optdepends=(
+	'python-pydecor: for pyGHDL'
+	'python-pyvhdlmodel: for pyGHDL.dom'
+)
 
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
@@ -29,7 +35,7 @@ pkgver() {
 	#local _gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
 	# Revision number
 	local _gitrev=`git rev-list --count HEAD`
-	# Short hash oatest commit
+	# Short hash of latest commit
 	local _githash=`git rev-parse --short HEAD`
 
 	#echo $_distver.git$_gitver;
@@ -39,7 +45,6 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
-	# Note : Add --enable-openieee to use free (but not complete) implementation of IEEE VHDL libs
 	./configure \
 		--prefix=/usr/ \
 		--enable-libghdl \
@@ -47,6 +52,15 @@ build() {
 
 	make
 
+}
+
+check() {
+	cd "${srcdir}/ghdl"
+
+	mkdir include
+	ln -s ../src/grt/vpi_user.h include/
+
+	make test
 }
 
 package() {
