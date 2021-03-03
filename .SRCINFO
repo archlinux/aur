@@ -1,0 +1,15 @@
+pkgbase = gitea-tea-git
+	pkgdesc = Painless self-hosted Git service..
+	pkgver = v0.6.0.r19.ge96cfdb
+	pkgrel = 1
+	url = https://gitea.io
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	source = git+https://gitea.com/gitea/tea.git
+	sha256sums = SKIP
+
+pkgname = gitea-tea-git
+
