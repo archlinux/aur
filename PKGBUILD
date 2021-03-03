@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=1.0dev.r4995.g43263a95
+pkgver=2.0.0dev.r6030.ga03aeddd
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -12,12 +12,13 @@ license=('GPLv2')
 
 provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-llvm-git' 'ghdl-mcode-git')
-makedepends=('gcc-ada' 'git')
+makedepends=('git')
+depends=('gcc-ada')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=9.3.0
-_islver=0.22.1
+_gccver=10.2.0
+_islver=0.23
 
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
@@ -26,8 +27,8 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1'
-	'1a668ef92eb181a7c021e8531a3ca89fd71aa1b3744db56f68365ab0a224c5cd'
+	'b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+	'c58922c14ae7d0791a77932f377840890f19bc486b653fa64eba7f1026fb214d'
 )
 
 pkgver() {
