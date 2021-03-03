@@ -2,7 +2,7 @@
 
 pkgname=sponge-vanilla
 _pkgver=1.12.2
-_build=7.2.3
+_build=7.3.0
 pkgver="${_pkgver}_${_build}"
 pkgrel=1
 pkgdesc="SpongeVanilla is the SpongeAPI implementation for Vanilla Minecraft."
@@ -14,7 +14,7 @@ optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 backup=('etc/conf.d/sponge-vanilla')
 install="${pkgname}.install"
-source=("${pkgname}.${pkgver}.jar"::"https://github.com/SpongePowered/SpongeVanilla/releases/download/v7.2.3/spongevanilla-1.12.2-7.2.3.jar"
+source=("${pkgname}.${pkgver}.jar"::"https://repo.spongepowered.org/maven/org/spongepowered/spongevanilla/${_pkgver}-${_build}/spongevanilla-${_pkgver}-${_build}.jar"
 	"${pkgname}-backup.service"
 	"${pkgname}-backup.timer"
 	"${pkgname}.service"
