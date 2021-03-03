@@ -1,0 +1,890 @@
+diff -ur sextractor-2.25.0.orig/man/Makefile.am sextractor-2.25.0/man/Makefile.am
+--- sextractor-2.25.0.orig/man/Makefile.am	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/man/Makefile.am	2020-11-04 18:17:56.611830537 +0100
+@@ -26,5 +26,5 @@
+ #
+ #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+-dist_man_MANS = sex.1 sex.x
++dist_man_MANS = sex.1
+ 
+Only in sextractor-2.25.0.orig/man: sex.x
+diff -ur sextractor-2.25.0.orig/src/assoc.h sextractor-2.25.0/src/assoc.h
+--- sextractor-2.25.0.orig/src/assoc.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/assoc.h	2020-11-05 15:41:37.404981610 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				assoc.h
+ *
+diff -ur sextractor-2.25.0.orig/src/astrom.h sextractor-2.25.0/src/astrom.h
+--- sextractor-2.25.0.orig/src/astrom.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/astrom.h	2020-11-05 15:41:41.613027361 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				astrom.h
+ *
+diff -ur sextractor-2.25.0.orig/src/back.h sextractor-2.25.0/src/back.h
+--- sextractor-2.25.0.orig/src/back.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/back.h	2020-11-05 15:41:44.425057934 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				back.h
+ *
+diff -ur sextractor-2.25.0.orig/src/bpro.h sextractor-2.25.0/src/bpro.h
+--- sextractor-2.25.0.orig/src/bpro.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/bpro.h	2020-11-05 15:41:46.649082177 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				bpro.h
+ *
+diff -ur sextractor-2.25.0.orig/src/catout.c sextractor-2.25.0/src/catout.c
+--- sextractor-2.25.0.orig/src/catout.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/catout.c	2020-11-04 15:53:21.431460487 +0100
+@@ -1000,7 +1000,7 @@
+       break;
+ 
+     case ASCII_SKYCAT:
+-      fprintf(ascfile, skycattail);
++      fprintf(ascfile, "%s", skycattail);
+       if (!prefs.pipe_flag)
+         fclose(ascfile);
+       break;
+diff -ur sextractor-2.25.0.orig/src/check.h sextractor-2.25.0/src/check.h
+--- sextractor-2.25.0.orig/src/check.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/check.h	2020-11-05 15:41:48.881106712 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				check.h
+ *
+diff -ur sextractor-2.25.0.orig/src/clean.c sextractor-2.25.0/src/clean.c
+--- sextractor-2.25.0.orig/src/clean.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/clean.c	2020-11-05 16:43:20.905049726 +0100
+@@ -46,6 +46,7 @@
+ 
+ static LONG		*cleanvictim;
+ 
++objliststruct   *cleanobjlist;
+ 
+ /******************************* initclean **********************************
+ PROTO   void initclean(void)
+diff -ur sextractor-2.25.0.orig/src/clean.h sextractor-2.25.0/src/clean.h
+--- sextractor-2.25.0.orig/src/clean.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/clean.h	2020-11-05 16:45:16.238291234 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				clean.h
+ *
+@@ -33,7 +34,7 @@
+ 
+ /*------------------------------- variables ---------------------------------*/
+ 
+-objliststruct	*cleanobjlist;		/* laconic, isn't it? */
++extern objliststruct	*cleanobjlist;		/* laconic, isn't it? */
+ 
+ /*------------------------------- functions ---------------------------------*/
+ 
+diff -ur sextractor-2.25.0.orig/src/define.h sextractor-2.25.0/src/define.h
+--- sextractor-2.25.0.orig/src/define.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/define.h	2020-11-05 17:08:58.941704214 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				define.h
+ *
+@@ -167,7 +168,7 @@
+ #define	QCALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)calloc((size_t)(nel),sizeof(typ)))) \
+ 		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+@@ -177,7 +178,7 @@
+ #define	QMALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)malloc((size_t)(nel)*sizeof(typ)))) \
+ 		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+@@ -187,7 +188,7 @@
+ #define	QMALLOC16(ptr, typ, nel) \
+ 		{if (posix_memalign((void **)&ptr, 16, (size_t)(nel)*sizeof(typ))) \
+ 		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+@@ -197,7 +198,7 @@
+ #define	QREALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)realloc(ptr, (size_t)(nel)*sizeof(typ))))\
+ 		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+@@ -208,7 +209,7 @@
+ 		{if (ptrin) \
+                   {if (!(ptrout = (typ *)malloc((size_t)(nel)*sizeof(typ)))) \
+ 		     { \
+-		     sprintf(gstr, #ptrout " (" #nel "=%lld elements) " \
++		     sprintf(gstr, #ptrout " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		     error(EXIT_FAILURE,"Could not allocate memory for ",gstr);\
+diff -ur sextractor-2.25.0.orig/src/extract.h sextractor-2.25.0/src/extract.h
+--- sextractor-2.25.0.orig/src/extract.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/extract.h	2020-11-05 16:40:14.567040126 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				extract.h
+ *
+@@ -36,9 +37,6 @@
+ typedef	enum		{COMPLETE, INCOMPLETE, NONOBJECT, OBJECT}
+ 				status;	/* Extraction status */
+ 
+-/*--------------------------------- variables -------------------------------*/
+-PIXTYPE		*dumscan;
+-
+ /*------------------------------- structures --------------------------------*/
+ /* Temporary object parameters during extraction */
+ typedef struct structinfo
+diff -ur sextractor-2.25.0.orig/src/fft.h sextractor-2.25.0/src/fft.h
+--- sextractor-2.25.0.orig/src/fft.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/fft.h	2020-11-05 17:09:19.593929943 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				fft.h
+ *
+@@ -40,7 +41,7 @@
+ #define	QFFTWF_MALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)fftwf_malloc((size_t)(nel)*sizeof(typ)))) \
+ 		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+diff -ur sextractor-2.25.0.orig/src/field.h sextractor-2.25.0/src/field.h
+--- sextractor-2.25.0.orig/src/field.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/field.h	2020-11-05 15:42:21.837468945 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				field.h
+ *
+diff -ur sextractor-2.25.0.orig/src/filter.h sextractor-2.25.0/src/filter.h
+--- sextractor-2.25.0.orig/src/filter.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/filter.h	2020-11-05 16:00:23.481451076 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				filter.h
+ *
+@@ -43,7 +44,7 @@
+   struct structbpann	*bpann;
+   }	filterstruct;
+ 
+-filterstruct	*thefilter;
++extern filterstruct	*thefilter;
+ 
+ /*------------------------------- functions ---------------------------------*/
+ void		convolve(picstruct *, PIXTYPE *, int y),
+diff -ur sextractor-2.25.0.orig/src/fits/fitscat.h sextractor-2.25.0/src/fits/fitscat.h
+--- sextractor-2.25.0.orig/src/fits/fitscat.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/fits/fitscat.h	2020-11-05 13:50:18.676162190 +0100
+@@ -333,6 +333,4 @@
+ 		warning(char *msg1, char *msg2);
+ 
+ 
+-int		bswapflag;
+-
+ #endif
+diff -ur sextractor-2.25.0.orig/src/fits/fitscat_defs.h sextractor-2.25.0/src/fits/fitscat_defs.h
+--- sextractor-2.25.0.orig/src/fits/fitscat_defs.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/fits/fitscat_defs.h	2020-11-05 17:21:37.441962003 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				fitscat_defs.h
+ *
+@@ -85,9 +86,6 @@
+ typedef	unsigned char	BYTE;			/* a byte */
+ typedef	int		LONG;			/* for DEC-Alpha... */
+ 	
+-/*----------------------------- Internal constants --------------------------*/
+-char		gstr[MAXCHAR];
+-
+ /*----------------------------- External constants --------------------------*/
+ 
+ extern int	bswapflag;		/* != 0 if bytes are swapped/IEEE */
+@@ -125,8 +123,8 @@
+ 
+ #define	QCALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)calloc((size_t)(nel),sizeof(typ)))) \
+-		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   { char gstr[MAXCHAR] ;\
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+@@ -135,8 +133,8 @@
+ 
+ #define	QMALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)malloc((size_t)(nel)*sizeof(typ)))) \
+-		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   { char gstr[MAXCHAR] ;\
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+@@ -145,8 +143,8 @@
+ 
+ #define	QREALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)realloc(ptr, (size_t)(nel)*sizeof(typ))))\
+-		   { \
+-		   sprintf(gstr, #ptr " (" #nel "=%lld elements) " \
++		   { char gstr[MAXCHAR] ;\
++		   sprintf(gstr, #ptr " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		   error(EXIT_FAILURE, "Could not allocate memory for ", gstr);\
+@@ -156,8 +154,8 @@
+ #define QMEMCPY(ptrin, ptrout, typ, nel) \
+ 		{if (ptrin) \
+                   {if (!(ptrout = (typ *)malloc((size_t)(nel)*sizeof(typ)))) \
+-		     { \
+-		     sprintf(gstr, #ptrout " (" #nel "=%lld elements) " \
++		     { char gstr[MAXCHAR] ;\
++		     sprintf(gstr, #ptrout " (" #nel "=%ld elements) " \
+ 			"at line %d in module " __FILE__ " !", \
+ 			(size_t)(nel)*sizeof(typ), __LINE__); \
+ 		     error(EXIT_FAILURE,"Could not allocate memory for ",gstr);\
+diff -ur sextractor-2.25.0.orig/src/flag.h sextractor-2.25.0/src/flag.h
+--- sextractor-2.25.0.orig/src/flag.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/flag.h	2020-11-05 15:42:33.733599698 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				flag.h
+ *
+diff -ur sextractor-2.25.0.orig/src/globals.h sextractor-2.25.0/src/globals.h
+--- sextractor-2.25.0.orig/src/globals.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/globals.h	2020-11-05 15:23:40.821224641 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				globals.h
+ *
+@@ -30,13 +31,13 @@
+ 
+ /*----------------------- miscellaneous variables ---------------------------*/
+ 
+-sexcatstruct		thecat;
+-picstruct		thefield1,thefield2, thewfield1,thewfield2;
+-objstruct		flagobj;
+-obj2struct		flagobj2;
++extern sexcatstruct		thecat;
++extern picstruct		thefield1,thefield2, thewfield1,thewfield2;
++extern objstruct		flagobj;
++extern obj2struct		flagobj2;
+ extern obj2struct	outobj2;
+-float			ctg[37], stg[37];
+-char			gstr[MAXCHAR];
++extern float			ctg[37], stg[37];
++extern char			gstr[MAXCHAR];
+ 
+ /*------------------------------- functions ---------------------------------*/
+ extern void	alloccatparams(void),
+diff -ur sextractor-2.25.0.orig/src/growth.h sextractor-2.25.0/src/growth.h
+--- sextractor-2.25.0.orig/src/growth.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/growth.h	2020-11-05 15:42:42.177692510 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				growth.h
+ *
+diff -ur sextractor-2.25.0.orig/src/header.c sextractor-2.25.0/src/header.c
+--- sextractor-2.25.0.orig/src/header.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/header.c	2020-11-04 18:39:04.072382059 +0100
+@@ -63,7 +63,7 @@
+     {
+ /*- Skip previous ENDs in multi-FITS extension headers */
+     for (i=frameno-1; i--;)
+-      while (fgets(str, MAXCHAR, file)
++      while (fgets(str, sizeof(str), file)
+ 		&& strncmp(str,"END ",4)
+ 		&& strncmp(str,"END\n",4));
+     memset(str, ' ', 80);
+diff -ur sextractor-2.25.0.orig/src/header.h sextractor-2.25.0/src/header.h
+--- sextractor-2.25.0.orig/src/header.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/header.h	2020-11-05 15:42:47.217747908 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				header.h
+ *
+diff -ur sextractor-2.25.0.orig/src/image.h sextractor-2.25.0/src/image.h
+--- sextractor-2.25.0.orig/src/image.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/image.h	2020-11-05 15:42:50.277781541 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				image.h
+ *
+diff -ur sextractor-2.25.0.orig/src/interpolate.h sextractor-2.25.0/src/interpolate.h
+--- sextractor-2.25.0.orig/src/interpolate.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/interpolate.h	2020-11-05 15:42:52.945810866 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				interpolate.h
+ *
+diff -ur sextractor-2.25.0.orig/src/key.h sextractor-2.25.0/src/key.h
+--- sextractor-2.25.0.orig/src/key.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/key.h	2020-11-05 15:42:56.309847842 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				key.h
+ *
+diff -ur sextractor-2.25.0.orig/src/ldactoasc.c sextractor-2.25.0/src/ldactoasc.c
+--- sextractor-2.25.0.orig/src/ldactoasc.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/ldactoasc.c	2020-11-05 13:52:00.613278447 +0100
+@@ -41,6 +41,8 @@
+ #define		SYNTAX  "ldactoasc catalog\n"
+ extern const char	notokstr[];
+ 
++int bswapflag ;
++
+ /********************************** main ************************************/
+ int	main(int argc, char *argv[])
+ 
+diff -ur sextractor-2.25.0.orig/src/ldactoasc.h sextractor-2.25.0/src/ldactoasc.h
+--- sextractor-2.25.0.orig/src/ldactoasc.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/ldactoasc.h	2020-11-05 17:14:35.545374422 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				ldactoasc.h
+ *
+@@ -61,10 +62,6 @@
+ 
+ /*------------ Set defines according to machine's specificities -------------*/
+ 
+-#if 0
+-#define	NO_ENVVAR
+-#endif
+-
+ /*--------------------- in case of missing constants ------------------------*/
+ 
+ #ifndef         SEEK_SET
+diff -ur sextractor-2.25.0.orig/src/main.c sextractor-2.25.0/src/main.c
+--- sextractor-2.25.0.orig/src/main.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/main.c	2020-11-05 16:38:40.650026991 +0100
+@@ -38,6 +38,9 @@
+ #include	"define.h"
+ #include	"globals.h"
+ #include	"prefs.h"
++#include	"psf.h"
++#include	"filter.h"
++#include	"som.h"
+ #include "pattern.h"
+ #define		SYNTAX \
+ EXECUTABLE " <image> [<image2>][-c <configuration_file>][-<keyword> <value>]\n" \
+@@ -48,6 +51,28 @@
+ extern const char       notokstr[];
+ extern keystruct	objkey[];
+ 
++int bswapflag ;
++sexcatstruct  thecat;
++picstruct thefield1,thefield2, thewfield1,thewfield2;
++objstruct flagobj;
++obj2struct flagobj2;
++char gstr[MAXCHAR];
++float ctg[37], stg[37];
++prefstruct              prefs;
++int      plistexist_value, plistexist_dvalue, plistexist_cdvalue,
++        plistexist_flag, plistexist_wflag, plistexist_dthresh, plistexist_var,
++        plistexist_dgeo,
++        plistoff_value, plistoff_dvalue, plistoff_cdvalue,
++        plistoff_flag[MAXFLAG], plistoff_wflag, plistoff_dthresh, plistoff_var,
++        plistoff_dgeox, plistoff_dgeoy, plistsize;
++psfstruct        *psf,*thedpsf,*thepsf;
++psfitstruct      *thepsfit,*thedpsfit;
++PIXTYPE          *checkmask;
++filterstruct     *thefilter;
++somstruct        *thesom;
++int idummy ;
++
++
+ /********************************** main ************************************/
+ int	main(int argc, char *argv[])
+ 
+@@ -58,6 +83,10 @@
+ 		**argkey, **argval,
+ 		*pstr;
+ 
++   unsigned short ashort =1 ;
++   bswapflag = *((char *)&ashort) ;
++
++
+ setlinebuf(stdout);
+  if (argc<2)
+     {
+diff -ur sextractor-2.25.0.orig/src/neurro.h sextractor-2.25.0/src/neurro.h
+--- sextractor-2.25.0.orig/src/neurro.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/neurro.h	2020-11-05 15:43:04.321935902 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				neurro.h
+ *
+diff -ur sextractor-2.25.0.orig/src/param.h sextractor-2.25.0/src/param.h
+--- sextractor-2.25.0.orig/src/param.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/param.h	2020-11-05 15:43:08.313979781 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				param.h
+ *
+diff -ur sextractor-2.25.0.orig/src/paramprofit.h sextractor-2.25.0/src/paramprofit.h
+--- sextractor-2.25.0.orig/src/paramprofit.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/paramprofit.h	2020-11-05 15:43:11.706017063 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				paramprofit.h
+ *
+diff -ur sextractor-2.25.0.orig/src/pattern.h sextractor-2.25.0/src/pattern.h
+--- sextractor-2.25.0.orig/src/pattern.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/pattern.h	2020-11-05 15:43:17.950085690 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				pattern.h
+ *
+diff -ur sextractor-2.25.0.orig/src/photom.h sextractor-2.25.0/src/photom.h
+--- sextractor-2.25.0.orig/src/photom.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/photom.h	2020-11-05 15:43:26.574180476 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				photom.h
+ *
+diff -ur sextractor-2.25.0.orig/src/plist.h sextractor-2.25.0/src/plist.h
+--- sextractor-2.25.0.orig/src/plist.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/plist.h	2020-11-05 16:00:12.365329066 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				plist.h
+ *
+@@ -47,7 +48,7 @@
+ 
+ /*-------------------------------- globals ----------------------------------*/
+ 
+-int	plistexist_value, plistexist_dvalue, plistexist_cdvalue,
++extern int	plistexist_value, plistexist_dvalue, plistexist_cdvalue,
+ 	plistexist_flag, plistexist_wflag, plistexist_dthresh, plistexist_var,
+ 	plistexist_dgeo,
+ 	plistoff_value, plistoff_dvalue, plistoff_cdvalue,
+diff -ur sextractor-2.25.0.orig/src/preflist.h sextractor-2.25.0/src/preflist.h
+--- sextractor-2.25.0.orig/src/preflist.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/preflist.h	2020-11-05 16:37:01.620961488 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				preflist.h
+ *
+@@ -39,7 +40,7 @@
+ #endif
+ 
+ /*-------------------------------- initialization ---------------------------*/
+- int	idummy;
++extern int	idummy;
+ 
+  pkeystruct key[] =
+  {
+diff -ur sextractor-2.25.0.orig/src/prefs.c sextractor-2.25.0/src/prefs.c
+--- sextractor-2.25.0.orig/src/prefs.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/prefs.c	2020-11-05 14:20:00.967662245 +0100
+@@ -396,6 +396,7 @@
+   }
+ 
+ 
++extern int bswapflag ;
+ /********************************* preprefs **********************************/
+ /*
+ Set number of threads and endianity.
+diff -ur sextractor-2.25.0.orig/src/prefs.h sextractor-2.25.0/src/prefs.h
+--- sextractor-2.25.0.orig/src/prefs.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/prefs.h	2020-11-05 15:59:10.644651633 +0100
+@@ -254,7 +254,7 @@
+   int		nthreads;			/* Number of active threads */
+   }	prefstruct;
+ 
+-  prefstruct		prefs;
++extern  prefstruct		prefs;
+ 
+ /*-------------------------------- protos -----------------------------------*/
+ extern int	cistrcmp(char *cs, char *ct, int mode);
+diff -ur sextractor-2.25.0.orig/src/profit.c sextractor-2.25.0/src/profit.c
+--- sextractor-2.25.0.orig/src/profit.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/profit.c	2020-11-05 17:18:08.503690732 +0100
+@@ -1999,7 +1999,7 @@
+ 		*kernelt, *pixin,*pixin0, *mask,*maskt, *pixinout,
+ 		*dpixin,*dpixin0, *dpixout,*dpixout0, *dx,*dy,
+ 		*dgeoxpix0,*dgeoypix0, *dgeoxpix,*dgeoypix,
+-		xcin,xcout,ycin,ycout, xsin,ysin, xin,yin, x,y, val,
++		xcin,xcout,ycin,ycout, xsin,ysin, xin,yin, val,
+ 		invpixstep;
+    int		*start,*startt, *nmask,*nmaskt, *modnaxisn,
+ 		i,j,k,n,t,w,
+@@ -2263,7 +2263,7 @@
+    psfstruct	*psf;
+    float      *mask,*maskt, *ppix;
+    float       dx,dy, r,r2,rmin,rmin2,rmax,rmax2,rsig,invrsig2;
+-   int          width,height,npix,offset, psfwidth,psfheight,psfnpix,
++   int          width,height,npix,offset, psfwidth,psfheight,
+                 cpwidth, cpheight,hcpwidth,hcpheight, i,j,x,y;
+ 
+   if (!(psf=profit->psf))
+@@ -2271,7 +2271,6 @@
+ 
+   psfwidth = profit->modnaxisn[0];
+   psfheight = profit->modnaxisn[1];
+-  psfnpix = psfwidth*psfheight;
+   width = profit->modnaxisn[0];
+   height = profit->modnaxisn[1];
+   npix = width*height;
+@@ -2610,7 +2609,6 @@
+ float profit_spiralindex(profitstruct *profit)
+   {
+    objstruct	*obj;
+-   obj2struct	*obj2;
+    float	*dx,*dy, *fdx,*fdy, *gdx,*gdy, *gdxt,*gdyt, *pix,
+ 		fwhm, invtwosigma2, hw,hh, ohw,ohh, x,y,xstart, tx,ty,txstart,
+ 		gx,gy, r2, spirindex, invsig, val, sep;
+@@ -2620,7 +2618,6 @@
+   npix = profit->objnaxisn[0]*profit->objnaxisn[1];
+ 
+   obj = profit->obj;
+-  obj2 = profit->obj2;
+ /* Compute simple derivative vectors at a fraction of the object scale */
+   fwhm = profit->guessradius * 2.0 / 4.0;
+   if (fwhm < 2.0)
+@@ -3462,7 +3459,6 @@
+ 		parfitenum parfittype,
+ 		float priorcen, float priorsig)
+   {
+-   double	dtemp;
+    float	*paramptr;
+    int		index;
+ 
+@@ -3633,8 +3629,7 @@
+ 		xmmin,maxmx, maxmmin;
+    float	*x,*xmin,*xmax;
+    parfitenum	*fittype;
+-   int		*fflag,
+-		f,f1,f2, p,p1,p2, nfree, nparam, nmin,nmax;
++   int		f,f1,f2, p,p1,p2, nfree, nparam, nmin,nmax;
+ 
+   nparam = profit->nparam;
+   fittype = profit->parfittype;
+@@ -3978,7 +3973,7 @@
+   {
+    double	xscale, yscale, saspect, ctheta,stheta, flux, scaling, bn, n,
+ 		dx1cout,dx2cout, ddx1[36],ddx2[36];
+-   float	posin[PROFIT_MAXEXTRA], posout[2], dnaxisn[2],
++   float	posin[2+PROFIT_MAXEXTRA], posout[2], dnaxisn[2],
+ 		*pixin, *pixin2, *pixout,
+ 		fluxfac, amp,cd11,cd12,cd21,cd22, dx1,dx2,
+ 		x1,x10,x2, x1cin,x2cin, x1cout,x2cout, x1max,x2max, x1in,x2in,
+@@ -4657,7 +4652,7 @@
+ 			start, fac;
+    int			linecount[2+PROFIT_MAXEXTRA],
+ 			*naxisn,
+-			i,j,n, ival, nlines, kwidth,width, badpixflag, naxis;
++			i,j,n, ival, nlines, kwidth,width, naxis;
+ 
+   naxis = prof->naxis;
+   naxisn = prof->naxisn;
+@@ -4691,7 +4686,6 @@
+   kwidth = prof->kernelwidth[0];
+   nlines = prof->kernelnlines;
+ /* First step: interpolate along NAXIS1 from the data themselves */
+-  badpixflag = 0;
+   pixin = prof->pix+start;
+   pixout = prof->kernelbuf;
+   for (j=nlines; j--;)
+diff -ur sextractor-2.25.0.orig/src/psf.h sextractor-2.25.0/src/psf.h
+--- sextractor-2.25.0.orig/src/psf.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/psf.h	2020-11-05 16:01:19.958070960 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				psf.h
+ *
+@@ -104,9 +105,9 @@
+   }	psfitstruct;
+ 
+ /*----------------------------- Global variables ----------------------------*/
+-psfstruct	*psf,*thedpsf,*thepsf;
+-psfitstruct	*thepsfit,*thedpsfit;
+-PIXTYPE		*checkmask;
++extern psfstruct	*psf,*thedpsf,*thepsf;
++extern psfitstruct	*thepsfit,*thedpsfit;
++extern PIXTYPE		*checkmask;
+ 
+ /*-------------------------------- functions --------------------------------*/
+ extern void	compute_pos(int *pnpsf,int *pconvflag,int *pnpsfflag,
+diff -ur sextractor-2.25.0.orig/src/retina.h sextractor-2.25.0/src/retina.h
+--- sextractor-2.25.0.orig/src/retina.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/retina.h	2020-11-05 17:14:47.937509936 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				retina.h
+ *
+@@ -38,8 +39,6 @@
+   struct structbpann	*bpann;	/* The neural network */
+   }     retistruct;
+ 
+-retistruct	*theretina;
+-
+ /*------------------------------- functions ---------------------------------*/
+ 
+ retistruct	*getretina(char *filename);
+diff -ur sextractor-2.25.0.orig/src/scan.c sextractor-2.25.0/src/scan.c
+--- sextractor-2.25.0.orig/src/scan.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/scan.c	2020-11-05 16:57:30.726222764 +0100
+@@ -46,6 +46,7 @@
+ #include	"image.h"
+ #include	"plist.h"
+ #include	"weight.h"
++#include	"clean.h"
+ 
+ /****************************** scanimage ************************************
+ PROTO   void scanimage(picstruct *field, picstruct *dfield, picstruct *ffield,
+@@ -83,7 +84,7 @@
+    PIXTYPE		thresh, relthresh, cdnewsymbol, cdwthresh,wthresh,
+ 			*scan,*dscan,*cdscan,*dwscan,*dwscanp,*dwscann,
+ 			*cdwscan,*cdwscanp,*cdwscann,*wscand,
+-			*scant, *wscan,*wscann,*wscanp, *dgeoscanx, *dgeoscany;
++			*scant, *wscan,*wscann,*wscanp, *dgeoscanx, *dgeoscany, *dumscan;
+    FLAGTYPE		*pfscan[MAXFLAG];
+    status		cs, ps, *psstack;
+    int			*start, *end, ymax;
+@@ -778,13 +779,11 @@
+    objliststruct	objlistout, *objlist2;
+    static objstruct	obj;
+    objstruct		*cobj;
+-   pliststruct		*pixel;
+    static int		id_parent;
+    int 			i,j,n;
+ 
+   cfield = dfield? dfield: field;
+ 
+-  pixel = objlist->plist;
+   objlistout.obj = NULL;
+   objlistout.plist = NULL;
+   objlistout.nobj = objlistout.npix = 0;
+diff -ur sextractor-2.25.0.orig/src/sexhead.h sextractor-2.25.0/src/sexhead.h
+--- sextractor-2.25.0.orig/src/sexhead.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/sexhead.h	2020-11-05 15:44:00.070548644 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				sexhead.h
+ *
+diff -ur sextractor-2.25.0.orig/src/sexhead1.h sextractor-2.25.0/src/sexhead1.h
+--- sextractor-2.25.0.orig/src/sexhead1.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/sexhead1.h	2020-11-05 16:37:27.453239429 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				sexhead1.h
+ *
+@@ -26,7 +27,7 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-int	idummy;
++extern int	idummy;
+ double	ddummy;
+ 
+ keystruct	headkey1[] = {
+diff -ur sextractor-2.25.0.orig/src/sexheadsc.h sextractor-2.25.0/src/sexheadsc.h
+--- sextractor-2.25.0.orig/src/sexheadsc.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/sexheadsc.h	2020-11-05 15:44:05.994613759 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				sexheadsc.h
+ *
+diff -ur sextractor-2.25.0.orig/src/som.h sextractor-2.25.0/src/som.h
+--- sextractor-2.25.0.orig/src/som.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/som.h	2020-11-05 16:35:02.567681244 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				som.h
+ *
+@@ -70,7 +71,7 @@
+   float		stderror;		/* Global reduced error */
+   }	somstruct;
+ 
+-somstruct	*thesom;
++extern somstruct	*thesom;
+ 
+ /*---------------------------------- protos --------------------------------*/
+ 
+diff -ur sextractor-2.25.0.orig/src/threads.h sextractor-2.25.0/src/threads.h
+--- sextractor-2.25.0.orig/src/threads.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/threads.h	2020-11-05 15:44:16.018723943 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				threads.h
+ *
+diff -ur sextractor-2.25.0.orig/src/types.h sextractor-2.25.0/src/types.h
+--- sextractor-2.25.0.orig/src/types.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/types.h	2020-11-05 15:44:20.770776180 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				types.h
+ *
+diff -ur sextractor-2.25.0.orig/src/wcs/poly.c sextractor-2.25.0/src/wcs/poly.c
+--- sextractor-2.25.0.orig/src/wcs/poly.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/wcs/poly.c	2020-11-05 17:13:20.772556746 +0100
+@@ -736,16 +736,14 @@
+  ***/
+ void	poly_initortho(polystruct *poly, double *data, int ndata)
+   {
+-   double	*basis, *coeff, *invec,*invect0,*invect,*invect02,*invect2,
++   double	*basis, *invect0,*invect,*invect02,*invect2,
+ 		*rdiag, *deortho,
+ 		scale,s, dval;
+-   int		c,i,j,m,n, ndmc, ndim,ncoeff;
++   int		c,i,j, ndmc, ncoeff;
+ 
+ /* Prepare the vectors and counters */
+-  ndim = poly->ndim;
+   ncoeff = poly->ncoeff;
+   basis = poly->basis;
+-  coeff = poly->coeff;
+ 
+ /* Allocate memory for orthonormalization matrix and vector */
+   QCALLOC(poly->deorthomat, double, ncoeff*ncoeff);
+@@ -754,9 +752,6 @@
+ 
+ /* Do a QR decomposition of input vector set */
+ /* Vectors are stored as rows to speed up the Householder transformation */
+-  n = ncoeff;
+-  m = ndata;
+-  invec = data;
+   for (c=0; c<ncoeff; c++)
+     {
+     ndmc = ndata - c;
+diff -ur sextractor-2.25.0.orig/src/wcscelsys.h sextractor-2.25.0/src/wcscelsys.h
+--- sextractor-2.25.0.orig/src/wcscelsys.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/wcscelsys.h	2020-11-05 15:44:23.514806341 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				wcscelsys.h
+ *
+diff -ur sextractor-2.25.0.orig/src/weight.h sextractor-2.25.0/src/weight.h
+--- sextractor-2.25.0.orig/src/weight.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/weight.h	2020-11-05 15:44:27.154846349 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				weight.h
+ *
+diff -ur sextractor-2.25.0.orig/src/winpos.h sextractor-2.25.0/src/winpos.h
+--- sextractor-2.25.0.orig/src/winpos.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/winpos.h	2020-11-05 15:44:31.694896252 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				winpos.h
+ *
+diff -ur sextractor-2.25.0.orig/src/xml.c sextractor-2.25.0/src/xml.c
+--- sextractor-2.25.0.orig/src/xml.c	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/xml.c	2020-11-04 16:20:59.063700657 +0100
+@@ -696,7 +696,7 @@
+ 		name, ucd);
+       break;
+     case P_STRING:
+-      sprintf(value, (char *)key[i].ptr);
++      sprintf(value, "%s",(char *)key[i].ptr);
+       fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\" arraysize=\"*\""
+ 	" ucd=\"%s\" value=\"%s\"/>\n",
+ 	name, ucd, *value? value: " ");
+@@ -705,13 +705,13 @@
+       n = *(key[i].nlistptr);
+       if (n)
+         {
+-        sprintf(value, ((char **)key[i].ptr)[0]);
++        sprintf(value, "%s", ((char **)key[i].ptr)[0]);
+         fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\""
+ 		" arraysize=\"*\" ucd=\"%s\" value=\"%s",
+ 		name, ucd, *value? value: " ");
+         for (j=1; j<n; j++)
+           {
+-          sprintf(value, ((char **)key[i].ptr)[j]);
++          sprintf(value, "%s", ((char **)key[i].ptr)[j]);
+           fprintf(file, ",%s", *value? value: " ");
+           }
+         fprintf(file, "\"/>\n");
+@@ -722,7 +722,7 @@
+ 		name, ucd);
+       break;
+     case P_KEY:
+-      sprintf(value, key[i].keylist[*((int *)key[i].ptr)]);
++      sprintf(value, "%s", key[i].keylist[*((int *)key[i].ptr)]);
+       fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\" arraysize=\"*\""
+ 	" ucd=\"%s\" value=\"%s\"/>\n",
+ 	name, ucd, value);
+@@ -731,13 +731,13 @@
+       n = *(key[i].nlistptr);
+       if (n)
+         {
+-        sprintf(value, key[i].keylist[((int *)key[i].ptr)[0]]);
++        sprintf(value, "%s", key[i].keylist[((int *)key[i].ptr)[0]]);
+         fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\""
+ 		" arraysize=\"*\" ucd=\"%s\" value=\"%s",
+ 		name, ucd, value);
+         for (j=1; j<n; j++)
+           {
+-          sprintf(value, key[i].keylist[((int *)key[i].ptr)[j]]);
++          sprintf(value, "%s", key[i].keylist[((int *)key[i].ptr)[j]]);
+           fprintf(file, ",%s", value);
+           }
+         fprintf(file, "\"/>\n");
+diff -ur sextractor-2.25.0.orig/src/xml.h sextractor-2.25.0/src/xml.h
+--- sextractor-2.25.0.orig/src/xml.h	2018-02-08 11:13:59.000000000 +0100
++++ sextractor-2.25.0/src/xml.h	2020-11-05 15:44:37.954965054 +0100
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				xml.h
+ *
+

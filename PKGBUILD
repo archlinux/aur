@@ -4,7 +4,7 @@
 pkgname=astromatic-sextractor
 _pkgname=sextractor
 pkgver=2.25.0
-pkgrel=4
+pkgrel=5
 pkgdesc="builds a catalogue of objects from an astronomical image (build from source) "
 url="http://www.astromatic.net/software/sextractor"
 arch=('x86_64')
@@ -15,13 +15,20 @@ provides=()
 conflicts=('sextractor-bin')
 replaces=('sextractor-bin')
 backup=()
-source=(https://github.com/astromatic/sextractor/archive/${pkgver}.tar.gz)
-sha1sums=('3ed53d55c0c77cd98a38bff1bde1b0d6fc625c18')
+source=(https://github.com/astromatic/sextractor/archive/${pkgver}.tar.gz
+	gcc10.patch)
+sha1sums=('3ed53d55c0c77cd98a38bff1bde1b0d6fc625c18'
+          '25ce0219cc1f605f9bf79347b04c098b44f4accf')
 
+prepare() {
+	cd $srcdir/${_pkgname}-${pkgver}
+	patch --forward --strip=1 --input="${srcdir}/gcc10.patch"
+}
 
 build() {
 
 	_COPTS="--enable-openblas --with-openblas-incdir=/usr/include"
+	#export CFLAGS="-fcommon"
 
 	cd $srcdir/${_pkgname}-${pkgver}
 	sh autogen.sh
