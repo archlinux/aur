@@ -23,8 +23,13 @@ pkgver() {
 
 package() {
   cd krunner-appmenu
+  
   mkdir -p "$pkgdir"/usr/share/kservices5
-  cp appmenurunner.desktop "$pkgdir"/usr/share/kservices5/
+  cp plasma-runner-krunner_appmenu.desktop "$pkgdir"/usr/share/kservices5/
+  
   mkdir -p "$pkgdir"/usr/bin
   cp krunner_appmenu.py "$pkgdir"/usr/bin/
+  
+  mkdir -p "$pkgdir"/etc/xdg/autostart
+  sed "s|@PROJECTDIR@|/usr/bin|" krunner_appmenu_autostart.desktop.in > "$pkgdir"/etc/xdg/autostart/krunner_appmenu_autostart.desktop
 }

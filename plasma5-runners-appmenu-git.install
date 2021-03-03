@@ -1,3 +1,3 @@
 post_install() {
-	echo "Please add /usr/bin/krunner_appmenu.py to your autostart items."
+	echo "Note that by default, /usr/bin/krunner_appmenu.py will be autostarted."
 }
