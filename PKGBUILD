@@ -6,13 +6,13 @@
 
 pkgname=oxygen-sounds
 pkgdesc='KDE Oxygen sound pack'
-pkgver=5.20.5
+pkgver=5.21.2
 pkgrel=1
 arch=('any')
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
 source=("https://download.kde.org/stable/plasma/$pkgver/oxygen-$pkgver.tar.xz"{,.sig})
-sha256sums=('19a74245a6a58f015813b9a7a72cc26622c016975d55bfb548db36d0239ad298'
+sha256sums=('386be06089400f8aa42902a05542faff5e6d9e7e9a7e5f712f180c96272ea57a'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E') # Jonathan Riddell <jr@jriddell.org>
 
