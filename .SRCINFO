@@ -1,0 +1,14 @@
+pkgbase = updaurpkg-git
+	pkgdesc = Simple tool to automatize checking for upstream updates of arch linux user repository packages
+	pkgver = 2.83fa34a
+	pkgrel = 1
+	url = https://github.com/Anty0/updaurpkg
+	arch = any
+	license = GPL
+	provides = updaurpkg
+	conflicts = updaurpkg
+	source = git://github.com/Anty0/updaurpkg
+	sha512sums = SKIP
+
+pkgname = updaurpkg-git
+
