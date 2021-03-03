@@ -1,9 +1,10 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
+# Maintainer: DuckSoft <realducksoft@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
@@ -21,14 +22,12 @@ source=(
     "xray.service"
     "xray@.service"
 )
-sha512sums=(
-    '60e6bbde2644a373ef9352c56ba37a8b466d8c2ae795112e68e2024d2faf1531f2a589dc537abdda10a31d3216bfa2094affaf28983275ac2cd740645725cf62'
-    '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
-    '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
-    '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
-    'f5ea93fab3a108ee30bbf9ac6f611df0397809f0c63c6bdb79dde60a49c3be175b4c915bd4d26313fbd2703b73f3a28f3e158352c521d1173baac219df73300d'
-    '7c96cbea8d8e34d2458c3aeb31b03e9f322e3774193e0458f003f2336c7ff39b65a94840942f09b7c5e96287c74cdd8b7b96717e38ff230161ad887d34a86d8f'
-)
+sha512sums=('949451fdf72cbe51e8e44fd59ec98ae8c9e6bdcbab6b446af9b15cdf8b10eed2eefdbe861df3c1d52e3bacbe706148ed371b5f753d3a4325f4ebe886af32068d'
+            '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
+            '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
+            '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
+            'f5ea93fab3a108ee30bbf9ac6f611df0397809f0c63c6bdb79dde60a49c3be175b4c915bd4d26313fbd2703b73f3a28f3e158352c521d1173baac219df73300d'
+            '7c96cbea8d8e34d2458c3aeb31b03e9f322e3774193e0458f003f2336c7ff39b65a94840942f09b7c5e96287c74cdd8b7b96717e38ff230161ad887d34a86d8f')
 
 package() {
     cd "${srcdir}"
@@ -38,3 +37,4 @@ package() {
     install -Dm644 *.json -t "${pkgdir}"/etc/xray/
     install -Dm755 xray -t "${pkgdir}"/usr/bin/
 }
+
