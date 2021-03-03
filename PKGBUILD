@@ -1,4 +1,5 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Matt C <matt@xhec.us>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Author: CubeTheThird <cubethethird@gmail.com>
 
 _pkgname=icu
