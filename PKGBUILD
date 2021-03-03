@@ -2,7 +2,7 @@
 
 _name=auditok
 pkgname=python-auditok
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=2
 pkgdesc="An audio/acoustic activity detection and audio segmentation tool."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=("python-pydub: read audio files in popular audio formats (ogg, mp3, 
 	"python-numpy: used for math operations instead of standard python if available.")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('ce305a5c18fd2a472c103400a9a3b76a')
+sha256sums=('46c512e287b2e13df4819774166af32b236d754afbe6b0dc87281b233e5ae688')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
