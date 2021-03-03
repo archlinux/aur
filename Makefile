@@ -9,7 +9,6 @@ versions:
 	@echo "  $(LATEST_VER)"
 
 upgrade:
-	rm -f tla2json.jar
 	perl -pi -e 's/^pkgver=.+/pkgver=$(LATEST_VER)/' PKGBUILD
 	bash -c 'sed -i -e "/^sha256sums.*/,+1c $$(makepkg -g | perl -0777 -pe "chop; s/\n/\\\n/g")" PKGBUILD'
 	make post

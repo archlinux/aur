@@ -1,4 +1,4 @@
 *.pkg.*
 pkg
 src
-tla2json.jar
+tla2json*.jar
