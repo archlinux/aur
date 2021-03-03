@@ -1,0 +1,16 @@
+pkgbase = electron-qq
+	pkgdesc = A cross-plantform QQ made with Electron
+	pkgver = 1.2.5
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = electron
+	source = https://ipfs.io/ipfs/Qmb7nrd6f2jR4TVfpnCVj8RUwRHA2bAUrxwQDdYaML4CaJ/app.asar
+	source = 512x512.png
+	source = electron-qq.desktop
+	md5sums = 3406e156cabb7879933ecb0479f63898
+	md5sums = f6edfa276c96b746048458413b8c26ce
+	md5sums = 43e1a2cfd1456d1fb977c9c07d5e7777
+
+pkgname = electron-qq
+
