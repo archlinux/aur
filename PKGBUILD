@@ -27,7 +27,7 @@ md5sums=('SKIP'
 build(){
   cd llvm-project-$pkgver.src/llvm
 
-  #rm -rf build
+  rm -rf build
 
   cmake -H. -G Ninja -Bbuild \
   -DCMAKE_BUILD_TYPE=Release \
