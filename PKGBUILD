@@ -2,7 +2,7 @@
 
 _pkgname="dofi"
 pkgname="dofi-manager-git"
-pkgver=0.1.2.r0.g9961d68
+pkgver=0.1.3.r0.gcce1d91
 pkgrel=1
 pkgdesc="A simple dotfile manager"
 arch=("x86_64")
@@ -25,6 +25,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 "target/release/dofi" "$pkgdir/usr/bin/dofi"
-  install -Dm644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/dofi.fish"
+  install -Dm644 "share/completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/dofi.fish"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
