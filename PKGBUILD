@@ -1,7 +1,7 @@
 # Maintainer: Timo Tabertshofer <timo.tabertshofer@gmail.com>
 pkgname=rpiplay-git
 _pkgname=rpiplay
-pkgver=1.2.r199.5563bf4
+pkgver=1.2.r201.4a65c7b
 pkgrel=1
 pkgdesc="An open-source AirPlay mirroring service"
 arch=(x86_64)
