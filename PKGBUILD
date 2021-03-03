@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=cursewords
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Terminal-based crossword puzzle solver"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/thisisparker/cursewords"
 license=('AGPL3')
 depends=('python' 'python-blessed' 'python-puzpy')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('d599fca05fc4ca61ef06f5c5ab743cb72eebfc1831bc88f108289cba513eba69b6e9b889b9d520ee195714d06c033b9e39c15a5d40ab7bf19a6cba3ee5b0bfc3')
+sha512sums=('45975dd4af34e8f50d8fd51d6d1b1890e0b8bf9edd9213589f6d64ba79c4b9e7b9ac8d41602e8b6d1f014e4b793224ff0b266885da14b3c6ad5531495a89a98b')
 
 build() {
   cd "${pkgname}-${pkgver}"
