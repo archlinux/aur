@@ -8,6 +8,7 @@ pkgbase = fortune-mod-mingju-git
 	license = custom
 	makedepends = git
 	makedepends = fortune-mod
+	makedepends = opencc
 	depends = fortune-mod
 	provides = fortune-mod-mingju
 	conflicts = fortune-mod-mingju

@@ -8,7 +8,7 @@ pkgdesc="Chinese mingju for fortune-mod"
 url="https://github.com/xuchunyang/${_srcname}"
 license=("custom")
 depends=('fortune-mod')
-makedepends=('git' 'fortune-mod')
+makedepends=('git' 'fortune-mod' 'opencc')
 provides=('fortune-mod-mingju')
 conflicts=('fortune-mod-mingju')
 groups=('fortune-mods')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd ${_srcname}
+  opencc -i ${_srcname}.json -o ${_srcname}.json -c t2s
   sed -e 's/"},{"/\n%\n/g; s/contents":"//g; s/","source":"/\n ──── /g; s/]/\n%\n/' < ${_srcname}.json | tr -d '"{}[' > ${_srcname}
   strfile ${_srcname} ${_srcname}.dat
 }
