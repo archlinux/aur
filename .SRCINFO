@@ -18,7 +18,7 @@ pkgbase = spirv-llvm-translator-rc
 	depends = llvm-libs
 	provides = spirv-llvm-translator
 	conflicts = spirv-llvm-translator
-	conflicts = spirv-llvm-translator-rc
+	conflicts = spirv-llvm-translator-git
 	source = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/llvm_release_120.zip
 	md5sums = SKIP
 
