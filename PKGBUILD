@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=4.2.0
-_commit=b812c3ad9dbfd3ca6763794dbb129a2499687677
+pkgver=4.3.0
+_commit=a675d9089d2e0e1c2aace78ba8beceab0e4fa859
 _db_version=6.2.23
 _db_sha256_hash=47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7
 pkgrel=1
@@ -12,13 +12,16 @@ url='https://z.cash/'
 license=('MIT')
 depends=('boost-libs' 'libevent' 'zeromq')
 makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'utf8cpp' 'wget')
-checkdepends=('python-pyblake2' 'python-pyzmq' 'python-requests' 'python-simplejson')
+checkdepends=('python-pyblake2' 'python-pyzmq' 'python-requests'
+              'python-simplejson')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "https://download.oracle.com/berkeley-db/db-${_db_version}.tar.gz"
+        'atomic.patch'
         'use-system-rust.patch'
         'zcashd.service')
 sha256sums=('SKIP'
             "${_db_sha256_hash}"
+            'bf675ba984eb26f8df47fabe59901e66e4fffe980591c5705c08cc878f52acbd'
             '119e787cb22f2941ead286d2621fae7d6c4de6216e24615eb3c0f875e7a2547f'
             '7b0919ac447824199aff8c17b5a5799b46414818c6aed314506c5295d0ce9ccd')
 
@@ -28,6 +31,7 @@ prepare() {
     # Set gitattributes on src/clientversion.cpp
     git archive --format=tar ${_commit} -- src/clientversion.cpp | tar -xf -
 
+    patch -Np1 -i ../atomic.patch
     patch -Np1 -i ../use-system-rust.patch
 }
 
