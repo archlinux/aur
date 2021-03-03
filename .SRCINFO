@@ -1,0 +1,52 @@
+pkgbase = lib32-llvm-rc
+	pkgver = 12.0.0rc2
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = lib32-libffi
+	makedepends = lib32-zlib
+	makedepends = python
+	makedepends = gcc-multilib
+	makedepends = lib32-libxml2
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc2/llvm-project-12.0.0rc2.src.tar.xz
+	md5sums = SKIP
+
+pkgname = lib32-llvm-rc
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit) (rc release)
+	depends = lib32-llvm-libs
+	depends = llvm
+	provides = lib32-llvm
+	conflicts = lib32-llvm
+	conflicts = lib32-llvm-git
+
+pkgname = lib32-llvm-libs-rc
+	pkgdesc = Low Level Virtual Machine (runtime library) (32-bit) (rc release)
+	depends = lib32-libffi
+	depends = lib32-zlib
+	depends = lib32-ncurses
+	depends = lib32-libxml2
+	depends = lib32-gcc-libs
+	provides = lib32-llvm-libs
+	conflicts = lib32-llvm-libs
+	conflicts = lib32-llvm-libs-git
+
+pkgname = lib32-mlir-rc
+	pkgdesc = Multi-Level Intermediate Representation (32-bit) (rc release)
+	depends = lib32-llvm
+	depends = lib32-llvm-libs
+	depends = mlir
+	provides = lib32-mlir
+	conflicts = lib32-mlir-git
+
+pkgname = lib32-clang-rc
+	pkgdesc = C language family frontend for LLVM (32-bit) (rc release)
+	depends = lib32-llvm-libs
+	depends = gcc-multilib
+	provides = lib32-clang
+	conflicts = lib32-clang
+	conflicts = lib32-clang-git
+
