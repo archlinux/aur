@@ -18,8 +18,7 @@ optdepends=("tar: needed in order to create world backups"
 backup=('etc/conf.d/travertine')
 install="${pkgname}.install"
 _subserver=proxy
-# https://papermc.io/api/v2/projects/travertine/versions/${mcver}/builds/${pkgver}/downloads/travertine-${mcver}-${pkgver}.jar
-source=("${pkgname}.${pkgver}.jar"::"https://papermc.io/ci/job/Travertine/${pkgver}/artifact/Travertine-Proxy/bootstrap/target/Travertine.jar"
+source=("${pkgname}.${pkgver}.jar"::"https://papermc.io/api/v2/projects/travertine/versions/${mcver}/builds/${pkgver}/downloads/travertine-${mcver}-${pkgver}.jar"
 	"${pkgname}-backup@.service"
 	"${pkgname}-backup.timer"
 	"${pkgname}@.service"
