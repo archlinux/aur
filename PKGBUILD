@@ -10,6 +10,7 @@ license=('MIT')
 provides=('dafny')
 conflicts=('dafny')
 depends=('dotnet-runtime')
+options=('staticlibs')
 source=(dafny-${pkgver}.zip::https://github.com/dafny-lang/dafny/releases/download/v${pkgver}/dafny-${pkgver}-x64-ubuntu-16.04.zip)
 sha256sums=('c1ff4dd849d8be35cbbf0b404403b454b5c2badab4efccc0480e63cf015ce91b')
 

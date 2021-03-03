@@ -8,6 +8,7 @@ pkgbase = dafny-bin
 	depends = dotnet-runtime
 	provides = dafny
 	conflicts = dafny
+	options = staticlibs
 	source = dafny-3.0.0.zip::https://github.com/dafny-lang/dafny/releases/download/v3.0.0/dafny-3.0.0-x64-ubuntu-16.04.zip
 	sha256sums = c1ff4dd849d8be35cbbf0b404403b454b5c2badab4efccc0480e63cf015ce91b
 
