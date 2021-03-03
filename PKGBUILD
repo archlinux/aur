@@ -1,7 +1,7 @@
 # Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
 pkgname='volatility3'
-pkgver=1.0.0.beta.1
+pkgver=1.0.1
 pkgrel=1
 arch=('any')
 license=('custom')
