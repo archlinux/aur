@@ -9,7 +9,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=88.0a1.r636493+
+pkgver=88.0a1.r636925+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
@@ -102,7 +102,7 @@ export RANLIB=llvm-ranlib
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-app-basename='${_pkgname}'
-ac_add_options --with-branding=browser/branding/firedragon
+ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
@@ -293,6 +293,10 @@ package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
 
+  install -Dvm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/usr/lib/$pkgname/distribution/$pkgname.profile"
+  install -Dvm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/usr/lib/$pkgname/distribution/$pkgname-common.profile"
+  install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/lib/$pkgname/distribution/$pkgname.psd"
+  
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END
