@@ -1,6 +1,6 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=galene
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=("https://github.com/jech/$pkgname/archive/$pkgname-$pkgver.tar.gz"
         'galene.service'
         'galene.sysusers'
         'galene.tmpfiles')
-sha256sums=('e1048c0bf62efb0ef8e2b34c79fdf339b6e3f29c4647237ab6ef4fa6e8ab0591'
+sha256sums=('559abc183719ce635bb6e4ae9190f68b2191ed0394e620d729709f54d4ece3bb'
             'b4027e852f6e3a19a1a8dcf6a28f86c5a93fdd00bd3641b3421b18af23b25cb0'
             'a1b933ff4034cce2da2607e81df547acd7efa6f4236c18fec144047f50361f84'
             '85680da8ab202280b92b6dd32e920906570fb8070db06b2ef0275462d0f5a16d')
