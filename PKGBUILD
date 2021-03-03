@@ -3,16 +3,17 @@
 pkgdesc='Plugin for Nextcloud to create hashes of files'
 pkgname=('nextcloud-app-checksum')
 _appname='checksum'
-pkgver=1.0.1
+pkgver='1.1.1'
 pkgrel=1
 arch=('any')
 license=('GPL3')
-url="https://github.com/westberliner/checksum"
+_repo="westberliner/checksum"
+url="https://github.com/${_repo}"
 makedepends=()
 depends=('nextcloud')
 options=('!strip')
-source=("${_appname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_appname}.tar.gz")
-sha512sums=('ed25f232e1909b306229c559935281c15af10fafe0d912f1d98ad038da244e48b233d6b98da69d4dbfb690a6c74e33da76d79725dfb409eddf6ca9bace29f17e')
+source=("${_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}.tar.gz")
+sha512sums=('919e8d6a40264372513229fdd3f227c9c1c75c536c427c60af537817a816b3feb13eb5c48c3663f4582f33d9d33587b940b313e74afab6d49ec5dd406889d881')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
