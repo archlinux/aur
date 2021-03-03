@@ -1,31 +1,35 @@
 # Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 # Original Maintainer: Luca P <meti at lplab.net>
 
-pkgname=hss
+pkgname='hss'
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
-pkgdesc="Interactive ssh client for multiple servers."
-url="https://github.com/six-ddc/hss"
+pkgdesc='Interactive ssh client for multiple servers.'
+url='https://github.com/six-ddc/hss'
 license=('GPL')
 depends=(readline)
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/six-ddc/hss/archive/v${pkgver}.tar.gz"
-    "cppflags.patch::https://github.com/six-ddc/hss/commit/70b8e897a750856e1aa2d747f29fb94d085dfe26.patch"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    "cppflags.patch::https://patch-diff.githubusercontent.com/raw/six-ddc/hss/pull/13.patch"
 )
-sha256sums=('60481274403c551f5b717599c813d619877a009832c4a8a84fcead18e39382fa'
-            '0175c430d05faf8a09b02c6192496bcf71f3b2d0f2152ded8472ac5f7a5fb239')
+sha512sums=('7dbf4beda10fdf0a7f6c54748c9f5731c61ab98c9ea2575f6b6d64fe5db510ea2f131ff5af89f7a244cfab23b195c662b4cc8a7cbd775cb7d3a327473c3f2b13'
+            'bf2015f8dc4270c9a1d5f5e878634592bea99a6b773b62995ae8ef35265280e3980fc1e6486358e22958822da748d8bee4933d08b9ff886b33a64a24f9162ef9')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+prepare() {
+  cd "${pkgname}-${pkgver}"
 
   patch -p1 -i ../cppflags.patch
+}
 
-  make
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  make all
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   make INSTALL_BIN="${pkgdir}/usr/bin" install
 }
