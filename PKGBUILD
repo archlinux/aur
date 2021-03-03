@@ -2,7 +2,7 @@
 pkgname=red-bin
 pkgver=0.6.4
 pkgrel=1
-pkgdesc="Red is a next-generation programming language strongly inspired by Rebo"
+pkgdesc="Red is a next-generation programming language strongly inspired by Rebol"
 arch=('i686' 'x86_64')
 url="https://www.red-lang.org"
 license=('custom:BSD-3-Clause' 'custom:BSL-1.0')

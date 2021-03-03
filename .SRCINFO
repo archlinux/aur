@@ -1,5 +1,5 @@
 pkgbase = red-bin
-	pkgdesc = Red is a next-generation programming language strongly inspired by Rebo
+	pkgdesc = Red is a next-generation programming language strongly inspired by Rebol
 	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://www.red-lang.org
