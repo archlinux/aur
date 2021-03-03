@@ -3,7 +3,7 @@
 pkgname=perl-app-cpm
 _lastauthor=S/SK/SKAJI
 _pkgname=App-cpm
-pkgver=0.997002
+pkgver=0.997003
 pkgrel=1
 pkgdesc='a fast CPAN module installer'
 arch=('any')
@@ -26,7 +26,7 @@ depends=(
 )
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('19de1224b5c86d566eb0b85767775efb5bbab82ce98ee8c44f8843f26aabbbab')
+sha256sums=('3262f95ba38074834f0a80e6592d7025d9c6ef562a5e60b2d5039c73f1fa3469')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
