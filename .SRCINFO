@@ -1,6 +1,6 @@
 pkgbase = denemo-git
 	pkgdesc = A music score editor
-	pkgver = 2.4.0.r114.g4dcc8e6b1
+	pkgver = 2.5.1.r11060.198f7a3c2
 	pkgrel = 1
 	epoch = 1
 	url = http://www.denemo.org

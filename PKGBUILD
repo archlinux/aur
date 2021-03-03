@@ -6,7 +6,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=denemo-git
-pkgver=2.4.0.r114.g4dcc8e6b1
+pkgver=2.5.1.r11060.198f7a3c2
 pkgrel=1
 epoch=1
 pkgdesc="A music score editor"
@@ -23,7 +23,8 @@ provides=("${pkgname%-git}")
 
 pkgver() {
   cd ${pkgname%-git}	
-  git describe --tags | cut -c2- | sed 's+-+.r+' |tr - .
+  printf %s.r%s.%s $(awk -F, '/AC_INIT/ {print $2}' configure.ac | tr -d \[ | tr -d \]) \
+	 $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
