@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libspng-git
-pkgver=0.5.0.r172.g71e8c89
+pkgver=0.6.2.r2.g1cf2b38
 pkgrel=1
 pkgdesc="C library for reading and writing PNG format files with a focus on security and ease of use"
 arch=(i686 x86_64 armv7h aarch64)
