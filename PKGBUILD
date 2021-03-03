@@ -10,7 +10,7 @@ _sha256='8d16e500d6d3d0e28c06ec77c5bca55c6270db97091c53ff32873725d2f7f6d2'
 
 pkgname=phpdoc-phar
 pkgver=${_releaseVersion}
-pkgrel=1
+pkgrel=2
 pkgdesc='“Dependency-less” Phar version of phpDocumentor2. Works with PHP 7 only. Currently upstream does not provide PHP 8 support in regular releases.'
 
 url='https://www.phpdoc.org/'
@@ -43,5 +43,5 @@ pkgver() {
 package() {
     cd "$srcdir"
     install -Dm 644 "${_fileName}" $pkgdir/usr/share/phpdoc/phpdoc.phar
-    install -Dm 755 "../php7_starter.sh" $pkgdir/usr/bin/phpdoc
+    install -Dm 755 "php7_starter.sh" $pkgdir/usr/bin/phpdoc
 }

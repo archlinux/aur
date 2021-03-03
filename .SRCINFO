@@ -1,7 +1,7 @@
 pkgbase = phpdoc-phar
 	pkgdesc = “Dependency-less” Phar version of phpDocumentor2. Works with PHP 7 only. Currently upstream does not provide PHP 8 support in regular releases.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.phpdoc.org/
 	install = php7_info.install
 	arch = any
