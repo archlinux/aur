@@ -1,0 +1,4 @@
+pkg/
+src/
+surface-uefi-firmware/
+*.tar*
