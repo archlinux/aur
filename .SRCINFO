@@ -1,6 +1,6 @@
 pkgbase = zsync2-git
 	pkgdesc = A file transfer program that's able to connect to rsync servers
-	pkgver = 2.0.0
+	pkgver = 2.0.0pre
 	pkgrel = 1
 	url = https://github.com/AppImage/zsync2
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
 
 pkgname=zsync2-git
-pkgver=2.0.0
+pkgver=2.0.0pre
 pkgrel=1
 pkgdesc="A file transfer program that's able to connect to rsync servers"
 arch=("x86_64")
