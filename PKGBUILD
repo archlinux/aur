@@ -5,7 +5,7 @@
 # Contributer: sowieso <sowieso@dukun.de>
 
 pkgname=bungeecord
-pkgver=1532
+pkgver=1549
 pkgrel=6
 pkgdesc="BungeeCord is a sophisticated proxy and API designed mainly to teleport players between multiple Minecraft servers."
 arch=('any')
@@ -51,7 +51,7 @@ package() {
 
         install -D ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('4d97ea8f661e1b1295ce1a36eb3b022b'
+md5sums=('SKIP'
          '5a8269dd7e7f29b5b66ec867867da6c3'
          '360e85e09794e41552bf257f4e655507'
          'de4e626d540090bc211349725eba4071'
