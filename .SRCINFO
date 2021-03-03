@@ -1,0 +1,18 @@
+pkgbase = python-pysat-git
+	pkgdesc = A toolkit for SAT-based prototyping in Python
+	pkgver = 0.1.6.dev6.r16.g58a7658
+	pkgrel = 1
+	url = https://github.com/pysathq/pysat
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pysat=0.1.6.dev6.r16.g58a7658
+	conflicts = python-pysat
+	source = git+https://github.com/pysathq/pysat.git
+	sha256sums = SKIP
+
+pkgname = python-pysat-git
+
