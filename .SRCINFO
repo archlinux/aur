@@ -1,7 +1,7 @@
 pkgbase = pycharm-professional-edition
 	pkgdesc = Python IDE for Professional Developers. Professional Edition
 	pkgver = 2020.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jetbrains.com/pycharm/
 	arch = any
 	license = custom
@@ -11,10 +11,8 @@ pkgbase = pycharm-professional-edition
 	options = !strip
 	source = https://download.jetbrains.com/python/pycharm-professional-2020.3.3.tar.gz
 	source = pycharm-professional.desktop
-	source = charm.desktop
 	sha256sums = b526c73554a297b509565f0c218bce64f4f63072766d2ca9d4fb1a7efb0dfbfb
-	sha256sums = a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291
-	sha256sums = c2b35cb217ca2ce31ccb7afe13fd7234ea65ac24c611c24e3e668a7f9b5f02fb
+	sha256sums = 718e049d2a54afff457e4c507047bd3948bbf407c3d738c913cda9256c304521
 
 pkgname = pycharm-professional-edition
 	depends = giflib

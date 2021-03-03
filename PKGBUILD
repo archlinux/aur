@@ -6,7 +6,7 @@ pkgname=(pycharm-professional-edition pycharm-professional-edition-jre)
 _pkgname=pycharm-professional
 pkgver=2020.3.3
 _buildver=2020.3.3
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 url='https://www.jetbrains.com/pycharm/'
@@ -15,10 +15,9 @@ license=('custom')
 options=(!strip)
 source=("https://download.jetbrains.com/python/${_pkgname}-$pkgver.tar.gz"
         "pycharm-professional.desktop"
-        "charm.desktop")
+		)
 sha256sums=('b526c73554a297b509565f0c218bce64f4f63072766d2ca9d4fb1a7efb0dfbfb'
-            'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
-            'c2b35cb217ca2ce31ccb7afe13fd7234ea65ac24c611c24e3e668a7f9b5f02fb')
+            '718e049d2a54afff457e4c507047bd3948bbf407c3d738c913cda9256c304521')
 makedepends=('python-setuptools' 'cython')
         
 pycharm_folder="pycharm-$pkgver"
@@ -70,19 +69,19 @@ package_pycharm-professional-edition() {
   cd "$srcdir"
   
   install -d "$pkgdir"/{opt/$pkgname,usr/bin}
-  mv "${pycharm_folder}"/* "$pkgdir"/opt/$pkgbase
+  mv "${pycharm_folder}"/* "$pkgdir"/opt/$pkgname
   
   # https://youtrack.jetbrains.com/issue/IDEA-185828
   # chmod +x "$pkgdir"/opt/$pkgbase/plugins/maven/lib/maven3/bin/mvn
   
   ln -s /opt/$pkgname/bin/pycharm.sh "$pkgdir"/usr/bin/$pkgname
-  install -D -m644 "$srcdir"/charm.desktop "$pkgdir"/usr/share/applications/charm.desktop
+  install -D -m644 "$srcdir"/pycharm-professional.desktop "$pkgdir"/usr/share/applications/"${_pkgname}".desktop
   install -D -m644 "$pkgdir"/opt/$pkgbase/bin/pycharm.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
   
   install -d -m755 "$pkgdir"/usr/share/icons/hicolor/{128x128,scalable}/apps/
   
-  install -D -m644 "$pkgdir"/opt/$pkgname/bin/pycharm.png "$pkgdir"/usr/share/icons/hicolor/scalable/apps/"$pkgname".png
-  install -D -m644 "$pkgdir"/opt/$pkgname/bin/pycharm.svg "$pkgdir"/usr/share/icons/hicolor/128x128/apps/"$pkgname".svg
+  install -D -m644 "$pkgdir"/opt/$pkgname/bin/pycharm.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/"$pkgname".png
+  install -D -m644 "$pkgdir"/opt/$pkgname/bin/pycharm.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/"$pkgname".svg
 
   # workaround FS#40934
   sed -i 's|lcd|on|'  "$pkgdir"/opt/$pkgname/bin/*.vmoptions
