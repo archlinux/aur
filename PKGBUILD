@@ -2,7 +2,7 @@
 
 pkgdesc='Duplicate files finder for Nextcloud servers'
 pkgname=('nextcloud-app-duplicatefinder')
-pkgver='0.0.5'
+pkgver='0.0.6'
 pkgrel=1
 arch=('any')
 license=('AGPL3')
@@ -12,7 +12,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("duplicate-finder-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/duplicatefinder.tar.gz")
-sha512sums=('b2b61ebbaaff252c6e8cf9246281df797359b4b7f6443eee59de3ad5dc3f41cf66ccaf5598c3e71e31e8f09cdd933ad52bfb1d31ff4e48bf16872f6b4f49a087')
+sha512sums=('d3e95471650af7e50d74b09f3a636dce24d73a845e21760ebd61975b3362a153a94bfd32c36a8f438c2cdaef4527fd98061447a456b3beca7976ccf4c704e8f9')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
