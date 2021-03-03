@@ -1,0 +1,24 @@
+pkgbase = calindori
+	pkgdesc = Calendar for Plasma Mobile
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/calindori
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kcalendarcore
+	depends = kirigami2
+	depends = kdbusaddons
+	depends = knotifications
+	depends = kservice
+	depends = kpeople
+	depends = qt5-svg
+	source = https://invent.kde.org/plasma-mobile/calindori/-/archive/v1.4/calindori-v1.4.tar.gz
+	sha256sums = ec7481958e3b378cf2b0e36b98892b642b2f267b727fc3770754540de3c365cc
+
+pkgname = calindori
+
