@@ -1,14 +1,17 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
+# Maintainer: Paul Irofti <paul@irofti.net>
 _modulename=scholarly
 pkgname=python-$_modulename
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Retrieve author and publication information from Google Scholar in a friendly, Pythonic way"
 arch=(any)
 url="https://github.com/OrganicIrradiation/scholarly"
 license=('Unlicense')
 groups=()
-depends=('python-arrow' 'python-beautifulsoup4' 'python-bibtexparser' 'python-requests')
+depends=('python-arrow' 'python-beautifulsoup4' 'python-bibtexparser'
+	'python-requests' 'python-dotenv' 'python-free_proxy'
+	'python-fake-useragent' 'python-selenium' 'python-stem')
 makedepends=('python-setuptools' 'python-numpy')
 provides=()
 conflicts=()
