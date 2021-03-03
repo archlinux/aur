@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kora-icon-theme
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
@@ -17,7 +17,7 @@ optdepends=(
     "adwaita-icon-theme: fallback Adwaita icon theme for Gnome Desktop")
 install="$pkgname.install"
 source=("https://github.com/bikass/kora/archive/v$pkgver.tar.gz")
-sha256sums=("07894acf50d6b6fe0f62f3fa9767117b816586c3a4b227c6c8ab911ff04c3c42")
+sha256sums=("31ebec5a82c32ac05e301b51651164c511cde5f0d250a9f91d63494f0cf2fe50")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
