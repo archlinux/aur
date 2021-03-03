@@ -17,8 +17,8 @@ source=(
     "https://dl.bintray.com/ptilouk/superflu-riteurnz/zip/superflu-riteurnz-v1.0.0-xmas2020demo-data.zip"
 )
 
-md5sums=('35c37491cd9979ff87221ac4d471b388'
-         'b8c2f5db362be3300df588e114d5a98a')
+sha256sums=('5c4b3f23734defbca2bc5e23275f8b7481749c7385eec2d33514bf031362070d'
+            '9a81f77d860ff7e04d63c16c295dd472d2269c1e824d53d55b3d4d4fe8e3087b')
 
 build() {
     ls
