@@ -1,7 +1,7 @@
 pkgbase = standardnotes-desktop
 	pkgdesc = A standard notes app with an un-standard focus on longevity, portability, and privacy.
-	pkgver = 3.5.18
-	pkgrel = 2
+	pkgver = 3.6.1
+	pkgrel = 1
 	url = https://standardnotes.org/
 	arch = x86_64
 	arch = aarch64
@@ -12,12 +12,13 @@ pkgbase = standardnotes-desktop
 	makedepends = jq
 	makedepends = python2
 	makedepends = yarn
+	makedepends = nvm
 	depends = electron
 	conflicts = sn-bin
 	source = git://github.com/standardnotes/desktop.git
-	source = git://github.com/standardnotes/web.git#commit=687b53263f379466294a320e62204bfcada997cb
-	source = git://github.com/sn-extensions/extensions-manager.git#commit=206c1da0a4bcd2389a052863de03251b103b7335
-	source = git://github.com/sn-extensions/batch-manager.git#commit=3897593b98fe46505a8bf8a8e22fd64319dc5900
+	source = git://github.com/standardnotes/web.git#commit=f007459c350107f00ba771bc923da77bf6d31b6e
+	source = git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2
+	source = git://github.com/sn-extensions/batch-manager.git#commit=2d1ba6ac9f09193e40c4241a70605ecb3c15d3c7
 	source = webpack.patch
 	source = standardnotes-desktop.desktop
 	source = standardnotes-desktop.js
@@ -25,7 +26,7 @@ pkgbase = standardnotes-desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 1d0d499efda1a39f55ef5fff6f8cdbca96337ad98f4ef9c65e2078c934ea9f3b
+	sha256sums = a0b2b5e95750b5c58fd65bbe7e9797b8560d1fa61b5d0164e160cdd74ecc883d
 	sha256sums = 8045c3baa6a3f5e0a20387913599eafb2d8c6e843745f38f34daea1ab44e73e7
 	sha256sums = 2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5
 

@@ -2,19 +2,20 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.5.18
-pkgrel=2
+pkgver=3.6.1
+pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
 depends=('electron')
-makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn')
+makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
+_nodeversion=14.16.0
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=687b53263f379466294a320e62204bfcada997cb"
-        "git://github.com/sn-extensions/extensions-manager.git#commit=206c1da0a4bcd2389a052863de03251b103b7335"
-        "git://github.com/sn-extensions/batch-manager.git#commit=3897593b98fe46505a8bf8a8e22fd64319dc5900"
+        "git://github.com/standardnotes/web.git#commit=f007459c350107f00ba771bc923da77bf6d31b6e"
+        "git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2"
+        "git://github.com/sn-extensions/batch-manager.git#commit=2d1ba6ac9f09193e40c4241a70605ecb3c15d3c7"
         'webpack.patch'
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
@@ -22,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '1d0d499efda1a39f55ef5fff6f8cdbca96337ad98f4ef9c65e2078c934ea9f3b'
+            'a0b2b5e95750b5c58fd65bbe7e9797b8560d1fa61b5d0164e160cdd74ecc883d'
             '8045c3baa6a3f5e0a20387913599eafb2d8c6e843745f38f34daea1ab44e73e7'
             '2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5')
 
@@ -35,7 +36,7 @@ prepare() {
   git config submodule.batch-manager.url $srcdir/batch-manager
   git submodule update
 
-  cp .env.js.sample .env.js
+  cp .env.sample .env
 
   # Set system Electron version for ABI compatibility
   sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
@@ -47,19 +48,20 @@ prepare() {
 
 build() {
   cd $srcdir/$_pkgname/
-  # use temporary npm cache - https://wiki.archlinux.org/index.php/Node.js_package_guidelines
-  npm install --cache "${srcdir}/npm-cache"
-  npm install --prefix ./web --cache "${srcdir}/npm-cache"
-  npm run bundle
-  npm install
-  npm --prefix ./app install ./app
-  npx rimraf app/dist/
-  npx webpack --config webpack.prod.js
+  export npm_config_cache="${srcdir}/npm_cache"
+  source /usr/share/nvm/init-nvm.sh
+  nvm install ${_nodeversion} && nvm use ${_nodeversion}
+
+  yarn --cwd ./web install
+  yarn --cwd ./web run bundle:desktop
+  yarn --cwd ./app install
+  yarn install
+  yarn run webpack --config webpack.prod.js
 
   if [[ ${CARCH} == "aarch64" ]]; then
-    npx electron-builder build --arm64 --linux --dir
+    yarn run electron-builder --linux --arm64 -c.linux.target=dir --publish=never
   elif [[ ${CARCH} == "x86_64" ]]; then
-    npx electron-builder build --x64 --linux --dir
+    yarn run electron-builder --linux --x64 -c.linux.target=dir --publish=never
   fi
 }
 
