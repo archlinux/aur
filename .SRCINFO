@@ -16,8 +16,10 @@ pkgbase = libreoffice-fresh-rpm
 	optdepends = gst-plugins-good
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-ugly
-	source = https://download.documentfoundation.org/libreoffice/stable/7.0.0/rpm/x86_64/LibreOffice_7.0.0_Linux_x86-64_rpm.tar.gz
-	sha256sums = 13ce1cd73eac4a004647075118ec41c92a2f0f47dc013011990b3db03c76d3fe
+	conflicts = libreoffice-fresh
+	conflicts = libreoffice-base
+	source = https://download.documentfoundation.org/libreoffice/stable/7.1.0/rpm/x86_64/LibreOffice_7.1.0_Linux_x86-64_rpm.tar.gz
+	sha256sums = 62adf2252ba8b1fa93cfb99b339b75ba6c23669ba730c40cff176a13b46acb83
 
 pkgname = libreoffice-fresh-rpm
 
