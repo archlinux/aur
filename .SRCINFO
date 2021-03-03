@@ -1,0 +1,15 @@
+pkgbase = graphmod-git
+	pkgdesc = Present the module dependencies of a program as a 'dot' graph
+	pkgver = 1.4.r38.g08302b2
+	pkgrel = 1
+	url = https://github.com/yav/graphmod
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = stack
+	depends = gmp
+	provides = graphmod
+	source = git+https://github.com/yav/graphmod.git
+	md5sums = SKIP
+
+pkgname = graphmod-git
