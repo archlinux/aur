@@ -1,6 +1,6 @@
 pkgname=xmr-stak-rx
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified All-in-one Monero miner (no cuda)"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
@@ -19,6 +19,7 @@ build() {
     cd build
     cmake .. \
 	-DCUDA_ENABLE=OFF \
+	-DMICROHTTPD_ENABLE=OFF \
 	-DCMAKE_BUILD_TYPE=Plain
     make VERBOSE=1
 }
