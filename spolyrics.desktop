@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Spolyrics
+Comment=Displays the lyrics to the currently playing song
+Exec=spolyrics
+Categories=Audio
+Terminal=false
