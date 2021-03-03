@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-live
-pkgver=3.0.0
+pkgver=3.0.6
 epoch=1
 _vdrapi=2.4.6
 pkgrel=1
@@ -16,10 +16,10 @@ optdepends=('vdr-epgsearch: Manage searchtimers'
             'ffmpeg: Transcoding video streams')
 install="$pkgname.install"
 _plugname=${pkgname//vdr-/}
-source=("$pkgname-$pkgver.tar.gz::https://github.com/MarkusEh/vdr-plugin-live/archive/v3.0.0.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/MarkusEh/vdr-plugin-live/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('12fc0dc77d894124d61b62101106a9c2e4c75277163b90ea796a82e0eb5a8441'
+sha256sums=('b7a877db61e35a3d4ea2a13506c62543afaa6498bcc1cf96456cd914e8fe043c'
             'a14466937a4c618341ca3120bf353ca5b207dda0aca3b605532d3500415d7fea')
 
 build() {
