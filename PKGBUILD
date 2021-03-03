@@ -1,7 +1,8 @@
 # Maintainer: robertfoster
+# Co-Maintainer: toni
 
 pkgname=ndpi-git
-pkgver=1057.6e62367
+pkgver=r3017.0f8a9948
 pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
@@ -9,28 +10,30 @@ url="http://www.ntop.org/products/ndpi/"
 license=('GPL3')
 provides=('ndpi')
 conflicts=('ndpi')
-source=('ndpi::git+https://github.com/ntop/nDPI.git')
+source=("${pkgname%-git}::git+https://github.com/ntop/nDPI.git#branch=dev")
 makedepends=('git')
 
 pkgver() {
-  cd ndpi
-  echo $(git rev-list --count dev).$(git rev-parse --short dev)
+  cd "${srcdir}/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {                                                                                                                                                                    
-   cd ndpi
-   ./autogen.sh
-   ./configure --prefix=/usr --with-pic --includedir=/usr/include --libdir=/usr/lib
-   make
-}
- package() {
-   cd ndpi
-   make DESTDIR="${pkgdir}/" install
-   mv $pkgdir/usr/include/libndpi-*/libndpi $pkgdir/usr/include
-   rm -r $pkgdir/usr/include/libndpi-*
-   sed -i 's|\/libndpi-2.*.*||g' $pkgdir/usr/lib/pkgconfig/libndpi.pc
-   sed -i 's=#include "../lib/third_party/include/libcache.h"=#include "libcache.h"=' $pkgdir/usr/include/libndpi/ndpi_typedefs.h
-   cp -p src/lib/third_party/include/libcache.h $pkgdir/usr/include/libndpi
+build() {
+  cd "${srcdir}/${pkgname%-git}"
+  CPPFLAGS="${CPPFLAGS} ${CFLAGS}"
+  ./autogen.sh
+  ./configure --prefix=/usr \
+    --with-pic \
+    --includedir=/usr/include \
+    --libdir=/usr/lib
+  make
 }
 
-md5sums=('SKIP')
+package() {
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR="${pkgdir}" install
+  ln -sf /usr/include/ndpi \
+    "${pkgdir}/usr/include/libndpi"
+}
+
+sha256sums=('SKIP')
