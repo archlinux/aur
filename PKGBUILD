@@ -3,7 +3,7 @@
 _name=auditok
 pkgname=python-auditok
 pkgver=0.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="An audio/acoustic activity detection and audio segmentation tool."
 arch=('any')
 url="https://github.com/amsehili/auditok"
