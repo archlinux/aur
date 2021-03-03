@@ -1,5 +1,5 @@
 # Maintainer: robertfoster
-# Co-Maintainer: toni
+# Maintainer: Toni Uhlig <matzeton@googlemail.com>
 
 pkgname=ndpi-git
 pkgver=r3017.0f8a9948
