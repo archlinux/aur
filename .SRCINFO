@@ -1,16 +1,16 @@
 pkgbase = cardano-wallet
 	pkgdesc = HTTP server & command-line for managing UTxOs and HD wallets in Cardano.
-	pkgver = 20210112
+	pkgver = 20210304
 	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-wallet
 	arch = any
 	license = Apache
 	makedepends = cabal-install-bin
 	makedepends = ghc-8.6=8.6.5
-	source = https://github.com/input-output-hk/cardano-wallet/archive/v2021-01-12.zip
+	source = https://github.com/input-output-hk/cardano-wallet/archive/v2021-03-04.zip
 	source = arch-ghc.patch
-	sha256sums = 6d0862bef1841735ca165e760ef7e56b9c00ec3f06e3f688fb30440ceb88208d
-	sha256sums = 20999e088367d17af437b4843c6c011acf19b82141dff1e3a11d58f66411b86b
+	sha256sums = 84fcf0aee57d575c35a29b12d084019df5e0e7bee968d4db92ebdb2fa32c933a
+	sha256sums = 4212a64f158529417cb06eaeaffb893fa41457fbe5edd310242f9aec54f2e2ff
 
 pkgname = cardano-wallet
 
