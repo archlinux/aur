@@ -1,0 +1,61 @@
+pkgbase = llvm-rc
+	pkgver = 12.0.0rc2
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = ocaml
+	makedepends = ocaml-ctypes
+	makedepends = ocaml-findlib
+	makedepends = python-setuptools
+	makedepends = python-psutil
+	makedepends = python-sphinx
+	makedepends = python-recommonmark
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc2/llvm-project-12.0.0rc2.src.tar.xz
+	source = llvm-config.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = llvm-rc
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (rc release)
+	depends = llvm-libs
+	depends = perl
+	provides = llvm
+	conflicts = llvm
+	conflicts = llvm-git
+
+pkgname = llvm-libs-rc
+	pkgdesc = LLVM runtime libraries (rc release)
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+	depends = libxml2
+	provides = llvm-libs
+	conflicts = llvm-libs
+	conflicts = llvm-libs-git
+
+pkgname = llvm-ocaml-rc
+	pkgdesc = OCaml bindings for LLVM (rc release)
+	depends = llvm
+	depends = ocaml
+	depends = ocaml-ctypes
+	provides = llvm-ocaml
+	conflicts = llvm-ocaml
+	conflicts = llvm-ocaml-git
+
+pkgname = mlir-rc
+	pkgdesc = Multi-Level Intermediate Representation (rc release)
+	depends = llvm
+	depends = llvm-libs
+	provides = mlir
+	conflicts = mlir-git
+
