@@ -3,8 +3,8 @@
 # Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=aspcud
-pkgver=1.9.4
-pkgrel=4
+pkgver=1.9.5
+pkgrel=1
 pkgdesc='Solver for package dependencies'
 arch=('x86_64')
 url='https://potassco.org/aspcud'
