@@ -1,7 +1,7 @@
 pkgbase = intel-hybrid-codec-driver
 	pkgdesc = Libva support for partially hardware accelerated encode and decode on Haswell and newer
 	pkgver = 2.0.0.r169.edead0c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://01.org/linuxmedia/vaapi
 	install = intel-hybrid-codec-driver.install
 	arch = x86_64
