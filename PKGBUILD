@@ -2,7 +2,7 @@
 
 _pkgname=xiny
 pkgname=$_pkgname-git
-pkgver=v0.3.1.r13.g9b2a8db
+pkgver=0.3.3.r1.gabe0aea
 pkgrel=1
 pkgdesc='A simple command line tool for converting between various units of measurement'
 url='https://github.com/bcicen/XinY'
