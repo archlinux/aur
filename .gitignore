@@ -1,6 +1,7 @@
 pkg/
 src/
 M-AIR-Edit_LINUX_*.tar.gz
+M-AIR-Edit_RASPI_*.tar.gz
 m-air-edit-bin-*.pkg.tar.xz
 m-air-edit-bin-*.pkg.tar.zst
 m-air-edit-bin-*.src.tar.gz

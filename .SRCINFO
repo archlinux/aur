@@ -1,9 +1,10 @@
 pkgbase = m-air-edit-bin
 	pkgdesc = Remote control program for MIDAS M-AIR mixers
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.midasconsoles.com/downloads.html
 	arch = x86_64
+	arch = armv7h
 	license = custom:MUSIC Group End User License Agreement
 	depends = libxext
 	depends = alsa-lib
@@ -20,6 +21,8 @@ pkgbase = m-air-edit-bin
 	sha256sums = 597c3f089725e321c93b639a255f7a9cfbb8208915c22bb5c29b48f51546d74a
 	source_x86_64 = https://mediadl.musictribe.com/download/software/midas/M-AIR/M-AIR-Edit_LINUX_1.6.tar.gz
 	sha256sums_x86_64 = e52539aa6d278ab126ca0b6eec79d138eac9bb1885a1121c41fb2130e6929a5f
+	source_armv7h = https://mediadl.musictribe.com/download/software/midas/M-AIR/M-AIR-Edit_RASPI_1.6.tar.gz
+	sha256sums_armv7h = 3959c86afc8e4ff5ebc2ac00b5cb7041164e7a7a666cfeb96df6d618329a8e51
 
 pkgname = m-air-edit-bin
 
