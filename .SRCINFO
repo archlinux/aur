@@ -1,0 +1,36 @@
+pkgbase = gun-git
+	pkgdesc = PoC of tunneling traffic via gRPC CDNs
+	pkgver = 0.2.0.r8.g3c4c562
+	pkgrel = 1
+	url = https://github.com/Qv2ray/gun
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = gcc-libs
+	source = gun::git+https://github.com/Qv2ray/gun
+	b2sums = SKIP
+
+pkgname = gun-proxy-git
+	pkgdesc = PoC of tunneling traffic via gRPC CDNs
+	arch = x86_64
+	arch = aarch64
+	provides = gun-proxy
+	conflicts = gun-proxy
+
+pkgname = gun-sip003-git
+	pkgdesc = PoC of tunneling traffic via gRPC CDNs (Shadowsocks SIP003 Plugin)
+	arch = x86_64
+	arch = aarch64
+	optdepends = shadowsocks-rust: shadowsocks sip003 host
+	optdepends = shadowsocks-libev: shadowsocks sip003 host
+	provides = gun-sip003
+	conflicts = gun-sip003
+
+pkgname = gun-docs-git
+	pkgdesc = PoC of tunneling traffic via gRPC CDNs (Documentations)
+	arch = any
+	provides = gun-docs
+	conflicts = gun-docs
+
