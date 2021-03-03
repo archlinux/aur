@@ -1,7 +1,7 @@
 pkgbase = runitor-bin
 	pkgdesc = A command runner with healthchecks.io integration
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bdd/runitor
 	arch = x86_64
 	license = 0BSD
