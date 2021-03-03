@@ -2,8 +2,8 @@
 
 _name=electron-beta
 pkgname=electron-beta-bin
-_ver="12.0.0-beta.27"
-pkgver=12.0.0.beta.27
+_ver="12.0.0-beta.31"
+pkgver=12.0.0.beta.31
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies"
 arch=('x86_64')
