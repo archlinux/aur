@@ -19,23 +19,21 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.14.r3354.08f530bd
-pkgrel=3
+pkgver=2.0.10.r3020.a9bed696
+pkgrel=1
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
 license=('GPL')
-makedepends=('go-pie' 'perl' 'docker' 'git')
+makedepends=('go-pie' 'perl')
 depends=('glibc')
 source=("git+$url.git"
         "psiphon.conf"
-        "psiphon.service"
-         "Dockerfile.patch")
+        "psiphon.service")
 backup=('etc/psiphon.conf' 'usr/lib/systemd/user/psiphon.service')
 md5sums=('SKIP'
          'c1ec9a446e89495501b8375d2682aa49'
-         'a6d6b01633a39325abbdb3597c50a4cc'
-         '2a2474d64b2c4de819976b5f6bfa5c0f')
+         'a6d6b01633a39325abbdb3597c50a4cc')
 
 pkgver() {
   cd $_pkgname
@@ -45,39 +43,40 @@ pkgver() {
   printf "%s.r%s.%s" "$TAG" "$REVISION" "$COMMIT"
 }
 
-prepare(){
-    if ! groups ${USER} | grep &>/dev/null '\bdocker\b'; then
-      >&2 echo "The user ${USER} does not belong to the docker group. Please add it."
-      exit 1
-    fi
-
-    if ! systemctl is-active docker | grep &>/dev/null '\bactive\b'; then
-      >&2 echo "Docker service is not started. Please start it."
-      exit 1
-    fi
-    patch --forward --strip=1 --input="Dockerfile.patch"
-}
-
 build() {
   cd "$_pkgname/ConsoleClient"
 
-  docker build --no-cache=true -t psiclient \
-  --build-arg USER_ID=$(id -u) \
-  --build-arg GROUP_ID=$(id -g) \
-  --build-arg USERNAME=$USER .
-  docker images
-  cd .. && \
-  docker run \
-  --rm \
-  -v $PWD:/go/src/github.com/Psiphon-Labs/psiphon-tunnel-core \
-  psiclient \
-  /bin/bash -c './make.bash linux 64' \
-  ; cd -
+  # This errors but seems to fix building
+  go get || true
+  
+  # Copied from the README file
+  BUILDDATE=$(date --iso-8601=seconds)
+  BUILDREPO=$(git config --get remote.origin.url)
+  BUILDREV=$(git rev-parse --short HEAD)
+  GOVERSION=$(go version | perl -ne '/go version (.*?) / && print $1')
+  DEPENDENCIES=$(echo -n "{" && go list -f '{{range $dep := .Deps}}{{printf "%s\n" $dep}}{{end}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | xargs -I pkg bash -c 'cd $GOPATH/src/pkg && echo -n "\"pkg\":\"$(git rev-parse --short HEAD)\","' | sed 's/,$/}/')
+
+  LDFLAGS="\
+-X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildDate=$BUILDDATE \
+-X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildRepo=$BUILDREPO \
+-X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildRev=$BUILDREV \
+-X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.goVersion=$GOVERSION \
+-X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.dependencies=$DEPENDENCIES \
+-s -w
+"
+
+  # TODO: Figure out how to do the stripping?
+  # https://wiki.archlinux.org/index.php/Go_package_guidelines#Flags_and_build_options
+
+  go build \
+    -trimpath \
+    -ldflags "$LDFLAGS" \
+    -o $_pkgname .
 }
 
 package() {
-  cd "$_pkgname/ConsoleClient/bin/linux/"
-  install -Dm755 ${_pkgname}-x86_64 "$pkgdir"/usr/bin/$_pkgname
+  cd "$_pkgname/ConsoleClient"
+  install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
   install -Dm644 "$srcdir/psiphon.conf" "$pkgdir/etc/psiphon.conf"
   install -Dm644 "$srcdir/psiphon.service" "$pkgdir/usr/lib/systemd/user/psiphon.service"
 }
