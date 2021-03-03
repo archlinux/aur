@@ -1,6 +1,6 @@
 pkgbase = cndl-git
 	pkgdesc = A flask-like webserver for C++
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/gottliebtfreitag/cndl
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = cndl-git
 	makedepends = cmake
 	depends = simplyfile
 	provides = cndl
-	source = git+https://github.com/nerdmaennchen/cndl.git#tag=1.1
+	source = git+https://github.com/nerdmaennchen/cndl.git#tag=1.1.1
 	sha256sums = SKIP
 
 pkgname = cndl-git
