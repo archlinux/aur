@@ -7,11 +7,10 @@
 _pkgname=qemu-user-static
 pkgdesc='A generic and open source machine emulator, statically linked'
 pkgver=5.2
-pkgadditver="+dfsg-6"
 pkgrel=3
 
 pkgname=$_pkgname-bin
-arch=('x86_64' 'i686' 'aarch64')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.qemu.org"
 license=('GPL2' 'LGPL2.1')
 depends=('binfmt-qemu-static')
@@ -19,45 +18,36 @@ makedepends=()
 provides=("$_pkgname" "qemu-user")
 conflicts=("$_pkgname" "qemu-user")
 
-_debsrc="${_pkgname}_${pkgver}"
-if [ "$CARCH" = 'x86_64' ]; then
-  # Add pkgadditver="something" to override for specific arch
-  _debsrc=${_debsrc}${pkgadditver}"_amd64.deb"
-  _csum=SKIP
-elif [ "$CARCH" = 'i686' ]; then
-  _debsrc=${_debsrc}${pkgadditver}"_i386.deb"
-  _csum=SKIP
-elif [ "$CARCH" = 'aarch64' ]; then
-  _debsrc=${_debsrc}${pkgadditver}"_arm64.deb"
-  _csum=SKIP
-else
-  _debsrc=${_debsrc}${pkgadditver}"_$CARCH.deb"
-  _csum=SKIP
-fi
+pkgadditver="+dfsg-6"
+case $CARCH in
+	# Add pkgadditver="something" to override for specific arch
+	"x86_64") _debarch="amd64" ;;
+	"i686") _debarch="i386" ;;
+	"aarch64") _debarch="arm64" ;;
+	"armv7h") _debarch="armhf" ;;
+	"armv6h") _debarch="armel" ;;
+	*) _debarch="$CARCH"
+esac
 
-source=(
-  "$_debsrc::https://deb.debian.org/debian/pool/main/q/qemu/$_debsrc"
-)
-sha256sums=(
-  "$_csum"
-)
+source=("https://deb.debian.org/debian/pool/main/q/qemu/${_pkgname}_${pkgver}${pkgadditver}_${_debarch}.deb")
+sha256sums=("SKIP")
 
 prepare() {
-  rm -Rf build
-  mkdir build
+	rm -Rf build
+	mkdir build
 }
 
 build() {
-  cd build
-  tar -xJf ../data.tar.xz -C .
+	cd build
+	tar -xJf ../data.tar.xz -C .
 }
 
 package() {
-  cd build
+	cd build
 
-  mkdir -p "$pkgdir"/usr/bin/
-  cp usr/bin/qemu-*-static "$pkgdir"/usr/bin/
+	mkdir -p "$pkgdir"/usr/bin/
+	cp usr/bin/qemu-*-static "$pkgdir"/usr/bin/
 
-  mkdir -p "$pkgdir"/usr/share/man/man1
-  cp usr/share/man/man1/qemu-*-static.1.gz "$pkgdir"/usr/share/man/man1/
+	mkdir -p "$pkgdir"/usr/share/man/man1
+	cp usr/share/man/man1/qemu-*-static.1.gz "$pkgdir"/usr/share/man/man1/
 }

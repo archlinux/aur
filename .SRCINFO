@@ -6,6 +6,8 @@ pkgbase = qemu-user-static-bin
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = GPL2
 	license = LGPL2.1
 	depends = binfmt-qemu-static
@@ -13,7 +15,7 @@ pkgbase = qemu-user-static-bin
 	provides = qemu-user
 	conflicts = qemu-user-static
 	conflicts = qemu-user
-	source = qemu-user-static_5.2+dfsg-6_amd64.deb::https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-6_amd64.deb
+	source = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-6_amd64.deb
 	sha256sums = SKIP
 
 pkgname = qemu-user-static-bin
