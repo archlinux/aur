@@ -41,6 +41,7 @@ pkgbase = matrix-mirage-git
 	depends = python-dbus
 	depends = python-hsluv
 	depends = python-pycryptodome
+	depends = python-simpleaudio
 	source = git://github.com/mirukana/mirage.git#branch=dev
 	sha256sums = SKIP
 
