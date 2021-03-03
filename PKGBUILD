@@ -19,11 +19,3 @@ package() {
     cd "${pkgname%-*}"
     make install DESTDIR="$pkgdir"
 }
-# package() {
-#   cd "${pkgname%-*}"
-#   install -d "$pkgdir"/usr/{bin,share/timerdown,share/applications}
-#   cp -r {icons,timerdown.ico} "$pkgdir/usr/share/${pkgname%-*}"
-#   cp -r {TimerDown.py,} "$pkgdir/usr/bin/${pkgname%-*}"
-#   cp -r {TimerDown.desktop,} "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
-#   chmod +x "$pkgdir/usr/bin/${pkgname%-*}"
-# }
