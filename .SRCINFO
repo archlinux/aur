@@ -1,0 +1,21 @@
+pkgbase = lib32-openmp-rc
+	pkgdesc = LLVM OpenMP Runtime Library (32-bit) (rc release)
+	pkgver = 12.0.0rc2
+	pkgrel = 1
+	url = https://openmp.llvm.org/
+	arch = i686
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = ninja
+	depends = lib32-glibc
+	depends = lib32-libelf
+	depends = lib32-libffi
+	depends = openmp
+	provides = lib32-openmp
+	conflicts = lib32-openmp-git
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc2/llvm-project-12.0.0rc2.src.tar.xz
+	md5sums = SKIP
+
+pkgname = lib32-openmp-rc
+
