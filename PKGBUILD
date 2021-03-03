@@ -1,4 +1,4 @@
-# Maintainer: Falk Alexander Seidl <fa@terminal.run>
+# Maintainer: Ícar N. S. <icar dot nin at pm dot me>
 
 pkgname=setzer-git
 _gitname=Setzer
