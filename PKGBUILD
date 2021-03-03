@@ -1,11 +1,11 @@
 # Maintainer: c4tz
 pkgname=kodi-addon-pvr-waipu
-pkgver=0.2.4
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Waipu.tv PVR Plugin for Kodi'
-_koditarget=Leia
+_koditarget=Matrix
 _gitname=pvr.waipu
-_kodiver=18.9
+_kodiver=19.0
 arch=('any')
 url="https://github.com/flubshi/${_gitname}"
 license=('GPL')
@@ -17,8 +17,8 @@ depends=('kodi' 'kodi-addon-script-module-inputstreamhelper')
 source=("https://github.com/flubshi/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('264d964caac5e9eea91eb3449d6b50c6c77c68bed7b0e3d635461ea6ab904995'
-            'bdf8afa9356b1f815de9984801d3e0d2b46a719e747895b75528f20995c59d2b')
+sha256sums=('0e5599d5646ecce5b331e3a802bec9fc433c4431b22ff66857be422ec1f4e460'
+            'f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
