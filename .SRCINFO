@@ -1,0 +1,14 @@
+pkgbase = nextcloud-app-video-converter
+	pkgdesc = Video converter app for Nextcloud
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/PaulLereverend/NextcloudVideo_Converter
+	arch = any
+	license = AGPL3
+	depends = nextcloud
+	options = !strip
+	source = video_converter-v1.0.1.tar.gz::https://github.com/PaulLereverend/NextcloudVideo_Converter/releases/download/1.0.1/video_converter.tar.gz
+	sha512sums = 1bfd3bfeb71ae030640c83f2095273327a56ecc32f6d6f10b46ee2ee7ebb992f444483837ef350ac780740969f2062272da4bdd35f3a2f58be8eb00eb144ea4d
+
+pkgname = nextcloud-app-video-converter
+
