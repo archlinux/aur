@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=whalebird-desktop-git
-pkgver=4.3.4
+pkgver=4.3.4+r44+gac14090c
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client (git)'
 arch=(i686 x86_64)
