@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-kaldiio-git
-pkgver=2.17.0.r252
+pkgver=2.17.2.r257
 pkgrel=1
 pkgdesc='Pure Python module for reading and writing kaldi ark files'
 arch=('any')

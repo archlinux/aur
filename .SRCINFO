@@ -1,11 +1,12 @@
 pkgbase = python-kaldiio-git
 	pkgdesc = Pure Python module for reading and writing kaldi ark files
-	pkgver = 2.17.0.r252
+	pkgver = 2.17.2.r257
 	pkgrel = 1
 	url = https://github.com/nttcslab-sp/kaldiio
 	arch = any
 	license = custom:NTT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = python-pytorch-complex-git
 	depends = python-numpy
