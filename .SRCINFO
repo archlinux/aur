@@ -1,4 +1,4 @@
-pkgbase = linrad
+pkgbase = linrad-latest
 	pkgdesc = Software defined radio receiver for x11, latest code from sourceforge.net
 	pkgver = latest
 	pkgrel = 1
