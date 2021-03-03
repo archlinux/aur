@@ -1,0 +1,18 @@
+pkgbase = linrad
+	pkgdesc = Software defined radio receiver for x11, latest code from sourceforge.net
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.sm5bsz.com/linuxdsp/linrad.htm
+	arch = x86_64
+	license = custom
+	makedepends = nasm
+	makedepends = autoconf
+	depends = portaudio
+	depends = libxext
+	depends = libusb-compat
+	provides = linrad
+	source = svn+https://svn.code.sf.net/p/linrad/code
+	sha512sums = SKIP
+
+pkgname = linrad
+
