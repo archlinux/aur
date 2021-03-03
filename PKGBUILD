@@ -2,7 +2,7 @@
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=sysvinit
-pkgver=2.98
+pkgver=2.99
 pkgrel=2
 pkgdesc='Linux System V Init'
 url='http://savannah.nongnu.org/projects/sysvinit'
@@ -12,7 +12,7 @@ provides=('sysvinit')
 depends=('glibc' 'procps-ng>=3.3.9')
 conflicts=('systemd-sysvcompat')
 source=("http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-${pkgver}.tar.xz")
-sha256sums=('7b2c3ffaf19eaf1ca80268762f85f9e4eb8e3c973213d49f9802605b72caa7dc')
+sha256sums=('b05c3677bb698afe64c997968b00c49b2a9bd320ce963523230ee7ea41197757')
 
 
 build()

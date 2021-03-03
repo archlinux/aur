@@ -1,6 +1,6 @@
 pkgbase = sysvinit
 	pkgdesc = Linux System V Init
-	pkgver = 2.98
+	pkgver = 2.99
 	pkgrel = 2
 	url = http://savannah.nongnu.org/projects/sysvinit
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = sysvinit
 	depends = procps-ng>=3.3.9
 	provides = sysvinit
 	conflicts = systemd-sysvcompat
-	source = http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-2.98.tar.xz
-	sha256sums = 7b2c3ffaf19eaf1ca80268762f85f9e4eb8e3c973213d49f9802605b72caa7dc
+	source = http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-2.99.tar.xz
+	sha256sums = b05c3677bb698afe64c997968b00c49b2a9bd320ce963523230ee7ea41197757
 
 pkgname = sysvinit
