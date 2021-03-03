@@ -12,6 +12,7 @@ pkgbase = sbsimple
 	depends = efitools
 	depends = sbsigntools
 	depends = zenity
+	depends = efibootmgr
 	optdepends = grub
 	source = git+https://github.com/djandries/sbsimple
 	sha256sums = SKIP
