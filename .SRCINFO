@@ -20,6 +20,6 @@ pkgbase = electron-beta-bin
 	provides = electron
 	provides = electron-beta
 	source = https://github.com/electron/electron/releases/download/v12.0.0-beta.31/electron-v12.0.0-beta.31-linux-x64.zip
-	md5sums = 33bd4e9cfb86e509cc5cb422256931eb
+	md5sums = 8edfea097a7577920c00ab7be3b78e34
 
 pkgname = electron-beta-bin

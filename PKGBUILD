@@ -16,7 +16,7 @@ provides=('electron' 'electron-beta')
 conflicts=()
 replaces=()
 source=("https://github.com/electron/electron/releases/download/v${_ver}/electron-v${_ver}-linux-x64.zip")
-md5sums=('33bd4e9cfb86e509cc5cb422256931eb')
+md5sums=('8edfea097a7577920c00ab7be3b78e34')
 
 package() {
   cd $srcdir
