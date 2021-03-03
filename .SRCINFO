@@ -1,6 +1,6 @@
 pkgbase = python-or-tools
 	pkgdesc = Google's Operations Research tools
-	pkgver = 8.1
+	pkgver = 8.2
 	pkgrel = 1
 	url = https://github.com/google/or-tools
 	arch = x86_64
@@ -15,12 +15,13 @@ pkgbase = python-or-tools
 	makedepends = python-wheel
 	makedepends = python-pip
 	makedepends = git
-	depends = python>=3.5
+	depends = python>=3.6
 	depends = swig
 	depends = python-protobuf
+	optdepends = cplex: CPLEX solver support
 	options = !emptydirs
-	source = https://github.com/google/or-tools/archive/v8.1.tar.gz
-	sha384sums = a42a075761ee4411e5d3d55eff36c4e01b1e3a9f6bcca720c2189c9fb5181ee48b3d18a0424a304ef70a6f289f6d1bee
+	source = https://github.com/google/or-tools/archive/v8.2.tar.gz
+	sha384sums = e5fdd4b5a40442fdafe48e677d8c45dc27d64f70bb42d508dd90e4ca64fed54be5954b3a29b9c460552287911d45bacd
 
 pkgname = python-or-tools
 
