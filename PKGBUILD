@@ -48,7 +48,7 @@ package() {
 	install -Dm644 "$srcdir/freezer-bin.desktop" "$pkgdir/usr/share/applications/freezer.desktop"
 	install -dm755 "$pkgdir/$HOME/Desktop/"
 	cp -r "${srcdir}"/freezer-bin.desktop "${pkgdir}"$HOME/Desktop
-	ln -sf /opt/Freezer/freezer /usr/local/bin/freezer
+	sudo ln -sf /opt/Freezer/freezer /usr/local/bin/freezer
 
 }
 md5sums=('SKIP'
