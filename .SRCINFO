@@ -1,13 +1,13 @@
 pkgbase = g15daemon
 	pkgdesc = A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/menelkir/g15daemon
 	arch = x86_64
 	license = GPL
 	depends = libg15render>=3.0
 	source = https://gitlab.com/menelkir/g15daemon/-/archive/3.0/g15daemon-3.0.tar.bz2
-	sha512sums = 761deaa4be4f0ef7fb17f660862afc47de60a0341428642e1da059bf80f50bd213297618ec3b66acf100192ebbb944122e19795da93064a30b5d2ba9e8a2abc5
+	sha512sums = 06dcb460584ef5d8051e1cbf36785be5385eea2ea431abc845ccbb7dde204acf2a1ca4c2905bb36cdd38128b6b54a1b9c6bc7ec93b6aa2c40cf36f4576bb471a
 
 pkgname = g15daemon
 
