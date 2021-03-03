@@ -1,0 +1,13 @@
+pkgbase = runitor-git
+	pkgdesc = A command runner with healthchecks.io integration
+	pkgver = v0.7.0.r0.g6569ad8
+	pkgrel = 1
+	url = https://github.com/bdd/runitor
+	arch = x86_64
+	license = 0BSD
+	makedepends = go
+	source = runitor-git::git://github.com/bdd/runitor.git
+	sha512sums = SKIP
+
+pkgname = runitor-git
+
