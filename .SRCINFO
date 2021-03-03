@@ -1,13 +1,13 @@
 pkgbase = libg15render
 	pkgdesc = A small graphics library optimised for drawing on an LCD
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://gitlab.com/menelkir/libg15render
 	arch = x86_64
 	license = GPL
 	depends = libg15
-	source = https://gitlab.com/menelkir/libg15render/-/archive/1.3.1/libg15render-1.3.1.tar.bz2
-	sha512sums = e3152798e577e89f24c8f0d6206127b2fdf2d23e0c2fce754972266c45374d1fb3905f3364cbbc6785668e1ea9bcd1ebf72597c8b62d5f5d39cfbcafed4751d1
+	source = https://gitlab.com/menelkir/libg15render/-/archive/3.0/libg15render-3.0.tar.bz2
+	sha512sums = 5ee541a6d5b9f48642f038bca496e918cfe16febae125648b8a387667cde13f914a2ac293dff56d99ccbf337d7c65a52d3b7feda1788b47ecdbb756d870259b2
 
 pkgname = libg15render
 
