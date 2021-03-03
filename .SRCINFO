@@ -1,7 +1,7 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = Commercial
@@ -10,7 +10,6 @@ pkgbase = stm32cubeide
 	depends = java-runtime
 	depends = jlink-software-and-documentation
 	depends = stlink
-	depends = ncurses5-compat-libs
 	depends = glibc
 	depends = libusb
 	options = !strip
