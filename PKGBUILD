@@ -23,7 +23,7 @@ optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'llvm: referenced by some clang headers')
 conflicts=('clang-analyzer' 'clang-tools-extra' 'clang' 'clang-git')
 replaces=('clang-analyzer' 'clang-tools-extra')
-provides=("clang-analyzer" "clang-tools-extra" 'clang')
+provides=('clang-analyzer' 'clang-tools-extra' 'clang')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$versiontag/llvm-project-$pkgver.src.tar.xz")
 md5sums=('SKIP')
 
