@@ -2,12 +2,12 @@
 
 pkgname=pantalaimon
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
 url='https://github.com/matrix-org/pantalaimon'
 license=('Apache')
-depends=('python' 'libolm' 'python-matrix-nio<0.16' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1' 'python-future')
+depends=('python' 'libolm' 'python-matrix-nio' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1' 'python-future')
 source=("https://github.com/matrix-org/pantalaimon/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
 sha256sums=('6698ca453113f6c5081c6893cdf8fa541961c1c455e1983e9e53ae3989322da0'
@@ -15,6 +15,7 @@ sha256sums=('6698ca453113f6c5081c6893cdf8fa541961c1c455e1983e9e53ae3989322da0'
 
 build() {
         cd "${pkgname}-${pkgver}"
+	sed -i -e 's/matrix-nio\[e2e\] >= 0.14, < 0.17/matrix-nio\[e2e\] >= 0.14/g' setup.py
 }
 
 package() {
