@@ -1,4 +1,4 @@
-pkgbase = electron-lark
+pkgbase = electron_lark
 	pkgdesc = [CN] 使用 Electron 封装的网页版飞书 Feishu (原 Lark) 客户端, Linux 下可用
 	pkgver = 1.0.3
 	pkgrel = 1
@@ -9,10 +9,10 @@ pkgbase = electron-lark
 	provides = electron-lark
 	provides = lark
 	provides = feishu
-	source = https://github.com/Ericwyn/electron-lark/releases/download/V1.0.3/electron-lark_1.0.3_amd64.deb
+	source = https://github.com/Ericwyn/electron-lark/releases/download/V1.0.3/electron_lark_1.0.3_amd64.deb
 	source = LICENSE
 	sha256sums = e353faa5e604e81e25f3ffe434da14433387893507fb5a795c5bcea338976f7e
 	sha256sums = 9ff448c71e670bdfd1b55c08cb377d49d3371d6442df5cf2aee30febb38ef292
 
-pkgname = electron-lark
+pkgname = electron_lark
 

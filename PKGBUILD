@@ -1,6 +1,6 @@
 # Maintainer: WhriedPlanck
 
-pkgname=electron-lark
+pkgname=electron_lark
 pkgver=1.0.3
 pkgrel=1
 pkgdesc="[CN] 使用 Electron 封装的网页版飞书 Feishu (原 Lark) 客户端, Linux 下可用"
