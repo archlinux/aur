@@ -2,16 +2,16 @@
 
 _pkgname=terraform
 pkgname=terraform-git
-pkgver=v0.12.0.alpha4.r789.g4200b0b2c5
+pkgver=v0.15.0.alpha20210210.r173.ge9c7f37b8c
 pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
 arch=('x86_64')
 provides=('terraform')
 conflicts=('terraform')
-license=('MPL')
+license=('MPL2')
 makedepends=('git' 'go-pie')
-source=(${_pkgname}::"git+https://github.com/hashicorp/terraform.git#branch=master")
+source=(${_pkgname}::"git+https://github.com/hashicorp/terraform.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,5 +34,4 @@ build() {
 package() {
   cd src/github.com/hashicorp/"${_pkgname}"
   install -Dm755 terraform-binary "$pkgdir/usr/bin/terraform"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
