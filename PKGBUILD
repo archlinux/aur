@@ -2,24 +2,25 @@
 
 pkgname=astromatic-swarp
 _pkgname=swarp
-pkgver=2.38.0
-pkgrel=2
+pkgver=2.41.5
+pkgrel=1
 pkgdesc="resamples and co-adds together FITS images using any arbitrary astrometric projection defined in the WCS standard."
 url="http://www.astromatic.net/software/swarp"
 arch=('x86_64')
 license=('GPL')
-depends=('astromatic-sextractor')
+depends=('astromatic-sextractor' 'cfitsio')
 optdepends=()
 makedepends=()
 provides=()
 conflicts=()
 replaces=()
 backup=()
-source=(http://www.astromatic.net/download/swarp/swarp-${pkgver}.tar.gz)
-sha1sums=('fe21463a64f225224267e7408468a33aeec5b7e9')
+source=(https://github.com/astromatic/swarp/archive/${pkgver}.tar.gz)
+sha1sums=('038178ca49edda647217a7986652b396e2a6543e')
 
 build() {
   cd $srcdir/${_pkgname}-${pkgver}
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }

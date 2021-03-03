@@ -1,13 +1,14 @@
 pkgbase = astromatic-swarp
 	pkgdesc = resamples and co-adds together FITS images using any arbitrary astrometric projection defined in the WCS standard.
-	pkgver = 2.38.0
-	pkgrel = 2
+	pkgver = 2.41.5
+	pkgrel = 1
 	url = http://www.astromatic.net/software/swarp
 	arch = x86_64
 	license = GPL
 	depends = astromatic-sextractor
-	source = http://www.astromatic.net/download/swarp/swarp-2.38.0.tar.gz
-	sha1sums = fe21463a64f225224267e7408468a33aeec5b7e9
+	depends = cfitsio
+	source = https://github.com/astromatic/swarp/archive/2.41.5.tar.gz
+	sha1sums = 038178ca49edda647217a7986652b396e2a6543e
 
 pkgname = astromatic-swarp
 
