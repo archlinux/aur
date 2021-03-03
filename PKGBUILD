@@ -5,8 +5,9 @@
 # Contributer: sowieso <sowieso@dukun.de>
 
 pkgname=travertine
-pkgver=157
+pkgver=175
 pkgrel=2
+mcver=1.16
 pkgdesc="A fork of Waterfall to add 1.7, and other, protocol support."
 arch=('any')
 url="https://papermc.io/"
@@ -17,7 +18,7 @@ optdepends=("tar: needed in order to create world backups"
 backup=('etc/conf.d/travertine')
 install="${pkgname}.install"
 _subserver=proxy
-
+# https://papermc.io/api/v2/projects/travertine/versions/${mcver}/builds/${pkgver}/downloads/travertine-${mcver}-${pkgver}.jar
 source=("${pkgname}.${pkgver}.jar"::"https://papermc.io/ci/job/Travertine/${pkgver}/artifact/Travertine-Proxy/bootstrap/target/Travertine.jar"
 	"${pkgname}-backup@.service"
 	"${pkgname}-backup.timer"
