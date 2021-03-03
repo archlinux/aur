@@ -1,6 +1,6 @@
 # Maintainer: h_cheung <mail@h-cheung.cf>
 pkgname=clash-tun
-pkgver=20210227.r593.57ee9a2
+pkgver=20210303.r595.7b5abb0
 pkgrel=1
 pkgdesc="Clash Tun Scripts for Linux"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('go' 'git')
 depends=('glibc')
 backup=(etc/clash-tun/env)
 options=()
-source=("git+https://github.com/comzyh/clash#branch=add-water"
+source=("git+https://github.com/comzyh/clash#branch=tun-dev"
 		"git+https://github.com/h0cheung/clash-tun-scripts"
 		"https://raw.githubusercontent.com/comzyh/clash/master/LICENSE")
 md5sums=('SKIP'
