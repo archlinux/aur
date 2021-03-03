@@ -51,7 +51,7 @@ package() {
 
         install -D ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('38f59366695d82c7c8c1299fe3d7da5b'
+md5sums=('SKIP'
          '75c5371cd975a49f9dc615699bafaf1d'
          '5adb94aa0f9386f4fa4864762d955df1'
          '46dfbd02f7b07d4a07af07d94374ef3b'
