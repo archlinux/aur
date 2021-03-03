@@ -2,7 +2,7 @@
 
 pkgname=python-pyeit-git
 pkgver=1.0.0.r58.g92c5524
-pkgrel=1
+pkgrel=2
 _name=pyEIT
 pkgdesc="An open source Python REST API framework designed for human beings."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/liubenyuan/pyEIT"
 license=('BSD')
 depends=('python-numpy' 'python-scipy' 'python-pandas' 'python-matplotlib')
 makedepends=('git' 'python-setuptools')
-optdepends=('python-vispy' 'python-xarray' 'python-distmesh')
+optdepends=('python-vispy' 'python-xarray')
 conflicts=('python-pyeit')
 provides=('python-pyeit')
 
