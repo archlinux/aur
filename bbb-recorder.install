@@ -13,6 +13,13 @@ post_upgrade() {
     fi
 }
 
+post_remove() {
+    if [ -e /opt/bbb-recorder/.env ]
+    then
+        echo "Configuration file /opt/bbb-recorder/.env is left and can be removed."
+    fi
+}
+
 welcome_message() {
     post_upgrade
     echo ""
