@@ -2,15 +2,15 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=tntdb
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="C++-class-library for easy access to databases (only sqlite support)"
 url="http://www.tntnet.org"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('cxxtools' 'sqlite')
 source=("http://www.tntnet.org/download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('31d16243566fe226119e40e194119b44')
+sha256sums=('48cefd354acf2579c80b77d789d67f8b8162f1a02a3c2fb8157a9a32dc332859')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
