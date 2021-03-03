@@ -2,7 +2,7 @@
 
 pkgname=nanosaur
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
 arch=(x86_64)
 url="https://github.com/jorio/Nanosaur"
@@ -13,12 +13,10 @@ depends=(sdl2 glu hicolor-icon-theme)
 makedepends=(cmake git)
 source=("$pkgname::git+https://github.com/jorio/Nanosaur.git#tag=v$pkgver"
         "git+https://github.com/jorio/Pomme.git"
-        "git+https://github.com/jorio/Quesa.git"
         LICENSE
         "$pkgname.desktop"
         "$pkgname.sh")
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         'ff25be6bd681b6d54b7ae97f81611bf601fad532ac413c90f2d683e252ada8015da1a24cf830b90d6d3c78463505d55044b58b457351fdae56f14fe2ab9ca754'
         'a58f80a565d56b634a3ca70867779c469755828c44c26261553b3d7e663d32204318ef29500596668e1de2c4a16068200430820f3dd2c459da1d8265ebe5b78f'
@@ -28,7 +26,6 @@ prepare() {
   cd "$pkgname"
   git submodule init
   git config submodule.Pomme.url ../Pomme
-  git config submodule.Quesa.url ../Quesa
   git submodule update
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
