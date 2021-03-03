@@ -1,13 +1,13 @@
 # Maintainer: vltr <rkuesters@gmail.com>
 pkgname=citus-git
-pkgver=7.3.devel.1729.r8e2c72c0
+pkgver=10.1.devel.4660.r857beb36f
 pkgrel=1
 pkgdesc="Scalable PostgreSQL for multi-tenant and real-time workloads"
 url="https://github.com/citusdata/citus"
 arch=('any')
 license=('AGPL-3.0')
 depends=('postgresql')
-makedepends=('postgresql-libs' git)
+makedepends=('postgresql-libs' git llvm)
 install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/citusdata/citus")
 sha1sums=('SKIP')
