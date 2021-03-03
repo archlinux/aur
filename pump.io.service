@@ -1,0 +1,12 @@
+[Unit]
+Description=Pump.io - stream server that does most of what people really want from a social network
+After=syslog.target network.target 
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pump
+Environment=NODE_ENV=production
+User=pumpio
+
+[Install]
+WantedBy=multi-user.target
