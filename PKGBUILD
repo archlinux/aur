@@ -5,8 +5,9 @@
 # Contributer: sowieso <sowieso@dukun.de>
 
 pkgname=waterfall
-pkgver=370
+pkgver=403
 pkgrel=2
+mcver=1.16
 pkgdesc="A fork of BungeeCord to improve performance and stability."
 arch=('any')
 url="https://papermc.io/"
@@ -18,7 +19,7 @@ backup=('etc/conf.d/waterfall')
 install="${pkgname}.install"
 _subserver=proxy
 
-source=("${pkgname}.${pkgver}.jar"::"https://papermc.io/ci/job/Waterfall/${pkgver}/artifact/Waterfall-Proxy/bootstrap/target/Waterfall.jar"
+source=("${pkgname}.${pkgver}.jar"::"https://papermc.io/api/v2/projects/waterfall/versions/${mcver}/builds/${pkgver}/downloads/waterfall-${mcver}-${pkgver}.jar"
 	"${pkgname}-backup@.service"
 	"${pkgname}-backup.timer"
 	"${pkgname}@.service"
@@ -51,7 +52,7 @@ package() {
 
         install -D ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('9fb8c15d63a878ec9f11c8cbc6b69bac'
+md5sums=('SKIP'
          '4c718e2d8aab760d4e2c2d66d262485e'
          'e43edd4fa467326c2fd7606fb336350c'
          'd2b077821aa4bb08236a2ff110dd5d6a'
