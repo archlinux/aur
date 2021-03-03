@@ -21,6 +21,7 @@ _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
 pkgver=2.0.10.r3020.a9bed696
 pkgrel=1
+epoch=1
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
