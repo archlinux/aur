@@ -1,13 +1,13 @@
 pkgbase = spigot-plugin-luckperms
 	pkgdesc = An advanced permissions plugin for Bukkit/Spigot, BungeeCord and Sponge.
-	pkgver = 5.1.84+b1143
+	pkgver = 5.2.126+b1292
 	pkgrel = 1
 	url = https://github.com/lucko/LuckPerms
 	arch = any
 	license = MIT
 	depends = craftbukkit>=1.8.0
-	noextract = LuckPerms-Bukkit-5.1.84.jar
-	source = https://ci.lucko.me/job/LuckPerms/1143/artifact/bukkit/build/libs/LuckPerms-Bukkit-5.1.84.jar
+	noextract = LuckPerms-Bukkit-5.2.126.jar
+	source = https://ci.lucko.me/job/LuckPerms/1292/artifact/bukkit/loader/build/libs/LuckPerms-Bukkit-5.2.126.jar
 	sha256sums = SKIP
 
 pkgname = spigot-plugin-luckperms
