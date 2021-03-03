@@ -6,7 +6,7 @@
 # Bay Trail M   (BYT)	vp8enc
 # Broadwell     (BRW)	vp9dec vp9enc
 # Braswell      (BSW)	vp8enc vp9dec
-#  
+#
 #
 # The libva-intel-driver package isn't compiled with support for loading this driver
 # so in order to use this driver's features with non hybrid codecs either
@@ -27,8 +27,12 @@ license=('MIT')
 depends=('libva' 'libcmrt')
 optdepends=('libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs')
 makedepends=('git')
-source=("$_gitname::$_gitroot")
-sha256sums=('SKIP')
+source=("$_gitname::$_gitroot"
+        'gcc10-fix.patch'
+        'vadriverinit-fix.patch')
+sha256sums=('SKIP'
+            '90c01a1771f90007b001057edd4ada66751e54ccc380b3d87672694ab7ea92cb'
+            '5359cfa322403bad1a20dc55de290c5f5c2f8d56afeba9c4a84dfc35cc89ec8b')
 
 pkgver() {
  cd ${srcdir}/$_gitname
@@ -37,6 +41,8 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${_gitname}
+  patch -p1 -i ${srcdir}/gcc10-fix.patch
+  patch -p1 -i ${srcdir}/vadriverinit-fix.patch
   autoreconf -v --install
 }
 

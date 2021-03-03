@@ -11,7 +11,11 @@ pkgbase = intel-hybrid-codec-driver
 	depends = libcmrt
 	optdepends = libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs
 	source = intel-hybrid-driver::git+https://github.com/01org/intel-hybrid-driver.git
+	source = gcc10-fix.patch
+	source = vadriverinit-fix.patch
 	sha256sums = SKIP
+	sha256sums = 90c01a1771f90007b001057edd4ada66751e54ccc380b3d87672694ab7ea92cb
+	sha256sums = 5359cfa322403bad1a20dc55de290c5f5c2f8d56afeba9c4a84dfc35cc89ec8b
 
 pkgname = intel-hybrid-codec-driver
 
