@@ -268,7 +268,7 @@ fi
 
 ################################################################################
 
-  ./configure --with-native-compilation CC='clang' "${_conf[@]}"
+  ./configure CC='clang' "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
   # compiling. Less time recompiling. Yay! But you may
