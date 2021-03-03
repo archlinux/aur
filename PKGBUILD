@@ -38,5 +38,8 @@ package() {
 		cp "$FILE" "$pkgdir/usr/share/sbsimple/$FILE"
 	done
 
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	cp ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 	chmod -R 755 "$pkgdir/usr/share/sbsimple"
 }
