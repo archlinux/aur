@@ -3,7 +3,7 @@ Description=Mercure - Server-sent live updates
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/mercure
+ExecStart=/usr/bin/mercure start
 User=mercure
 Group=mercure
 RuntimeDirectory=mercure

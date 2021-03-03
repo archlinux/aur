@@ -2,7 +2,7 @@
 
 pkgname=mercure
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Server-sent live updates: protocol and reference implementation'
 arch=('x86_64')
 url='https://mercure.rocks'
