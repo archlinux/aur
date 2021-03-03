@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
-	pkgver = 4.9.2
-	pkgrel = 6
+	pkgver = 4.9.3
+	pkgrel = 1
 	url = https://www.filebot.net/
 	install = filebot.install
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = filebot
 	provides = filebot
 	conflicts = filebot47
 	conflicts = filebot-git
-	source = https://get.filebot.net/filebot/FileBot_4.9.2/FileBot_4.9.2-aur.tar.xz
+	source = https://get.filebot.net/filebot/FileBot_4.9.3/FileBot_4.9.3-aur.tar.xz
 	source = filebot.sh
-	md5sums = 8417980b971ad2099066216b815f50af
+	md5sums = 1208009b140fd70dce2b14f92efb539a
 	md5sums = 9b7ba1e301b3f4c8b9a751d6a00414ea
 
 pkgname = filebot
