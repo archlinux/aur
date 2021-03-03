@@ -2,13 +2,13 @@
 
 pkgname=mixramp
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A utility to analyse sound files and print out the volume profile of the start and end. The idea is to embed those profiles in metadata so players can do intelligent mixing between tracks. Supports FLAC, OGG and MP3."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/mixramp/"
 license=('GPL')
 depends=('audiofile')
-optdepends=('python2-eyed3: writer for mp3 tags'
+optdepends=('python-eyed3: writer for mp3 tags'
             'mpg123: mp3 decoder, needed to perform mixramp analysis'
             'flac: decoder and writer for flac tags'
             'vorbis-tools: decoder and writer for ogg/vorbis tags'
