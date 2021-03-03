@@ -6,7 +6,7 @@ pkgname=(pycharm-professional-edition pycharm-professional-edition-jre)
 _pkgname=pycharm-professional
 pkgver=2020.3.3
 _buildver=2020.3.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 url='https://www.jetbrains.com/pycharm/'
@@ -43,7 +43,7 @@ package_pycharm-professional-edition() {
   backup=("opt/$pkgname/bin/pycharm.vmoptions" "opt/${pkgname}/bin/pycharm64.vmoptions" "opt/${pkgname}/bin/idea.properties")
   depends=('giflib' 'libxtst' 'python' 'libxslt' 'libxss' 'nss')
   optdepends=(
-    'pycharm-professional-edition-jre: JetBrains custom JRE (Recommended)' 'java-environment: Required if intellij-idea-ultimate-edition-jre is not installed'
+    'pycharm-professional-edition-jre: JetBrains custom JRE (Recommended)' 'java-environment: Required if pycharm-professional-edition-jre is not installed'
     'libdbusmenu-glib: For global menu support'
   )
   optdepends+=(
@@ -81,7 +81,8 @@ package_pycharm-professional-edition() {
   
   install -d -m755 "$pkgdir"/usr/share/icons/hicolor/{128x128,scalable}/apps/
   
-  install -D -m644 "$pkgdir"/opt/$pkgname/bin/pycharm.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/"$pkgname".svg
+  install -D -m644 "$pkgdir"/opt/$pkgname/bin/pycharm.png "$pkgdir"/usr/share/icons/hicolor/scalable/apps/"$pkgname".png
+  install -D -m644 "$pkgdir"/opt/$pkgname/bin/pycharm.svg "$pkgdir"/usr/share/icons/hicolor/128x128/apps/"$pkgname".svg
 
   # workaround FS#40934
   sed -i 's|lcd|on|'  "$pkgdir"/opt/$pkgname/bin/*.vmoptions

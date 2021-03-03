@@ -1,7 +1,7 @@
 pkgbase = pycharm-professional-edition
 	pkgdesc = Python IDE for Professional Developers. Professional Edition
 	pkgver = 2020.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/pycharm/
 	arch = any
 	license = custom
@@ -24,7 +24,7 @@ pkgname = pycharm-professional-edition
 	depends = libxss
 	depends = nss
 	optdepends = pycharm-professional-edition-jre: JetBrains custom JRE (Recommended)
-	optdepends = java-environment: Required if intellij-idea-ultimate-edition-jre is not installed
+	optdepends = java-environment: Required if pycharm-professional-edition-jre is not installed
 	optdepends = libdbusmenu-glib: For global menu support
 	optdepends = python2: Python 2 support
 	optdepends = ipython2: For enhanced interactive Python shell v2 inside Pycharm
