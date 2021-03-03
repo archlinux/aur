@@ -1,4 +1,5 @@
 # Maintainer: Modelmat <modelmat@outlook.com.au>
+# Comaintainer: gilcu3 <gilcu3 [at] gmail [dot] com>
 
 # Usage:
 #  This package provides a configuration file in /etc/psiphon.conf
@@ -19,8 +20,8 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.10.r3020.a9bed696
-pkgrel=1
+pkgver=2.0.14.r3354.08f530bd
+pkgrel=2
 epoch=1
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
@@ -47,15 +48,20 @@ pkgver() {
 build() {
   cd "$_pkgname/ConsoleClient"
 
-  # This errors but seems to fix building
-  go get || true
+  # this fixes build in current go version, official package is built with go 1.14
+  go env -w GO111MODULE=off
+  
   
   # Copied from the README file
+  EXE_BASENAME="psiphon-tunnel-core"
+  BUILDINFOFILE="${EXE_BASENAME}_buildinfo.txt"
   BUILDDATE=$(date --iso-8601=seconds)
   BUILDREPO=$(git config --get remote.origin.url)
   BUILDREV=$(git rev-parse --short HEAD)
   GOVERSION=$(go version | perl -ne '/go version (.*?) / && print $1')
-  DEPENDENCIES=$(echo -n "{" && go list -f '{{range $dep := .Deps}}{{printf "%s\n" $dep}}{{end}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | xargs -I pkg bash -c 'cd $GOPATH/src/pkg && echo -n "\"pkg\":\"$(git rev-parse --short HEAD)\","' | sed 's/,$/}/')
+  # DEPENDENCIES=$(echo -n "{" && go list -f '{{range $dep := .Deps}}{{printf "%s\n" $dep}}{{end}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | xargs -I pkg bash -c 'cd $GOPATH/src/pkg && echo -n "\"pkg\":\"$(git rev-parse --short HEAD)\","' | sed 's/,$/}/')
+  DEPENDENCIES=$(echo -n "{" && GOOS=$1 go list -tags "${BUILD_TAGS}" -f '{{range $dep := .Deps}}{{printf "%s\n" $dep}}{{end}}' | GOOS=$1 xargs go list -tags "${BUILD_TAGS}" -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | xargs -I pkg bash -c 'cd $GOPATH/src/$0 && if echo -n "$0" | grep -vEq "^github.com/Psiphon-Labs/psiphon-tunnel-core/" ; then echo -n "\"$0\":\"$(git rev-parse --short HEAD)\"," ; fi' pkg | sed 's/,$//' | tr -d '\n' && echo -n "}")
+  
 
   LDFLAGS="\
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildDate=$BUILDDATE \
@@ -65,19 +71,38 @@ build() {
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.dependencies=$DEPENDENCIES \
 -s -w
 "
+  echo -e "${BUILDDATE}\n${BUILDREPO}\n${BUILDREV}\n" > $BUILDINFOFILE
+
+  echo "Variables for ldflags:"
+  echo " Build date: ${BUILDDATE}"
+  echo " Build repo: ${BUILDREPO}"
+  echo " Build revision: ${BUILDREV}"
+  echo " Go version: ${GOVERSION}"
+  echo " Dependencies: ${DEPENDENCIES}"
+  echo ""
+	
+  
+  if [ ! -d bin ]; then
+    mkdir bin
+  fi
+  
+  echo "...Building linux-x86_64"
+  GOOS=linux GOARCH=amd64 go build -v -x -ldflags "$LDFLAGS" -tags "${BUILD_TAGS}" -trimpath -buildmode=pie -o $_pkgname
+  RETVAL=$?
+  if [ $RETVAL != 0 ]; then
+    echo "....gox failed, exiting"
+    exit $RETVAL
+  fi
+  unset RETVAL
 
   # TODO: Figure out how to do the stripping?
   # https://wiki.archlinux.org/index.php/Go_package_guidelines#Flags_and_build_options
 
-  go build \
-    -trimpath \
-    -ldflags "$LDFLAGS" \
-    -o $_pkgname .
 }
 
 package() {
-  cd "$_pkgname/ConsoleClient"
-  install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
+  cd $_pkgname/ConsoleClient/
+  install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/psiphon.conf" "$pkgdir/etc/psiphon.conf"
   install -Dm644 "$srcdir/psiphon.service" "$pkgdir/usr/lib/systemd/user/psiphon.service"
 }
