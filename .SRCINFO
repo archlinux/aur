@@ -1,0 +1,23 @@
+pkgbase = python-pyeit-git
+	pkgdesc = An open source Python REST API framework designed for human beings.
+	pkgver = 1.0.0.r58.g92c5524
+	pkgrel = 1
+	url = https://github.com/liubenyuan/pyEIT
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-matplotlib
+	optdepends = python-vispy
+	optdepends = python-xarray
+	optdepends = python-distmesh
+	provides = python-pyeit
+	conflicts = python-pyeit
+	source = pyEIT::git+https://github.com/liubenyuan/pyEIT.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-pyeit-git
+
