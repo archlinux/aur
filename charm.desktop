@@ -1,9 +1,10 @@
 [Desktop Entry]
-Type=Application
-Name=Charm
-Icon=pycharm
-Exec=charm %f
+Name=Pycharm Professional Edition
+Comment=Python IDE for Professional Developers
+Exec=pycharm-professional-edition %u
+Icon=pycharm-professional-edition
 MimeType=text/x-python;application/x-ipynb+json
-NoDisplay=true
 Terminal=false
-StartupNotify=true
+StartupWMClass=jetbrains-idea
+Type=Application
+Categories=Development;IDE;
