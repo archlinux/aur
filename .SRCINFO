@@ -14,5 +14,5 @@ pkgbase = linrad-latest
 	source = svn+https://svn.code.sf.net/p/linrad/code
 	sha512sums = SKIP
 
-pkgname = linrad
+pkgname = linrad-latest
 
