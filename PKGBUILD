@@ -23,7 +23,7 @@ depends=('glm'
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://gitlab.com/solarus-games/solarus/-/jobs/$_jobId/artifacts/download")
 provides=('solarus')
-conflicts=('solarus' 'solarus-run' 'solarus-git')
+conflicts=('solarus')
 b2sums=('c52a43b858890595a525efe4b5ec71c21c991abe87cdf1dae591d3fc916d433b04e246727452a0719590635730654cdf1126279b5e673df42547fbfbc2e4233d')
 
 package() {

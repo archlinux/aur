@@ -19,8 +19,6 @@ pkgbase = solarus-bin
 	depends = sdl2_ttf
 	provides = solarus
 	conflicts = solarus
-	conflicts = solarus-run
-	conflicts = solarus-git
 	source = solarus-bin-1.7.0.dev.1045101871.zip::https://gitlab.com/solarus-games/solarus/-/jobs/1045101871/artifacts/download
 	b2sums = c52a43b858890595a525efe4b5ec71c21c991abe87cdf1dae591d3fc916d433b04e246727452a0719590635730654cdf1126279b5e673df42547fbfbc2e4233d
 
