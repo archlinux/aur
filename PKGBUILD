@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.11.2
-pkgver=5.11.v.2
+gitver=v5.11.3
+pkgver=5.11.v.3
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -20,20 +20,16 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 	'linux.install'
 	# patch from our gentoo overlords
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
-        # AMDgpu HDMI hotplug patch
-        'amdgpu_hdmihotplug.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '39d9a8da178692e1217ee29fb81ec9faf3b26deb1202ceb4c65c3c7346b4d583'
+            '6027c5417f63778698dd74ebd90db2924c5332d9126e733386b78840dad94400'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
             '126cd35b1153b69dd8d713f902d09ecc64ce8af2e4fa6f021219a65e62e13875'
-            #AMDgpu patch
-            'abbb23f55cd25941d5487084c627f601bfa0ca63e329d580cc5a472b4638aeaa'
            )
 
 _kernelname=${pkgbase#linux}
