@@ -1,4 +1,5 @@
 Setzer/
 pkg/
-setzer-git-*.pkg.tar.zst
+*.pkg.tar.zst
 src/
+*.tar.gz

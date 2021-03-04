@@ -1,7 +1,7 @@
 pkgbase = setzer-git
 	pkgdesc = LaTeX editor written in Python with Gtk
-	pkgver = r876.e9c96fa
-	pkgrel = 2
+	pkgver = v0.4.1
+	pkgrel = 1
 	url = https://github.com/cvfosammmm/Setzer
 	arch = any
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = setzer-git
 	depends = gettext
 	depends = xdg-utils
 	depends = python-cairo
-	source = git+https://github.com/cvfosammmm/Setzer
-	md5sums = SKIP
+	source = https://github.com/cvfosammmm/Setzer/archive/v0.4.1.tar.gz
+	md5sums = 768b02949d35b83007a5388d8e8ae8af
 
 pkgname = setzer-git
