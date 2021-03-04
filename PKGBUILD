@@ -1,7 +1,7 @@
 # Maintainer: <Zayac ZayacTheEngineer@protonmail.com>
 
 pkgname=lazywal-cli
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Animated wallpaper manager written in shell script"
 arch=('any')
