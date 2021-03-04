@@ -9,15 +9,15 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Krypton (17), Leia (18), Matrix (19) and git master (99). Do so in  #
-# the following line.                                                         #
+# between Leia (18), Matrix (19) and git master (99). Do so in the following  #
+# line.                                                                       #
 #                                                                             #
 ###############################################################################
 
-API=18
+API=19
 
 pkgname=kodi-addon-pvr-vdr-vnsi-git
-pkgver=r614.4909f69
+pkgver=r699.c040951
 pkgrel=1
 pkgdesc='VDR VNSI PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
@@ -31,7 +31,6 @@ source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git")
 md5sums=('SKIP')
 
 case "$API" in
-  17)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Krypton" ;;
   18)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Leia" ;;
   19)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Matrix" ;;
   99)  ;;
