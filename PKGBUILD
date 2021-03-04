@@ -31,10 +31,8 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
         'LICENSE'
-        '8543 clover Fix build with llvm-12.patch'
         '0001-clover-llvm13-use-FixedVectorType.patch')
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -100,7 +98,6 @@ prepare() {
     fi
 
   cd mesa
-  patch --forward --strip=1 --input="${srcdir}/8543 clover Fix build with llvm-12.patch"
   patch --forward --strip=1 --input="${srcdir}/0001-clover-llvm13-use-FixedVectorType.patch"
 }
 
