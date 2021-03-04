@@ -6,7 +6,6 @@ pkgbase = cargo-workspaces
 	arch = i686
 	arch = x86_64
 	license = MIT
-	license = APACHE
 	makedepends = cargo
 	depends = gcc-libs
 	source = cargo-workspaces-0.2.17.tar.gz::https://github.com/pksunkara/cargo-workspaces/archive/v0.2.17/cargo-workspaces-v0.2.17.tar.gz

@@ -8,7 +8,7 @@ url="https://github.com/pksunkara/cargo-workspaces"
 depends=('gcc-libs')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
-license=('MIT' 'APACHE')
+license=('MIT')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pksunkara/cargo-workspaces/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
 sha512sums=('39278596ab6d926871559030d142a44adb74b252e839b1065cbd4b3071e5764112e67c67fc64e28d4c2ba91690c6836eb8ce020b1980ccdb15deebaae2a14676')
 
