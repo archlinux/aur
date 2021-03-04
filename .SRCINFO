@@ -1,5 +1,5 @@
 pkgbase = soundux
-	pkgdesc = A cross-platform soundboard in QtQuick
+	pkgdesc = A cross-platform soundboard
 	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/Soundux/Soundux

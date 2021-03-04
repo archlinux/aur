@@ -2,7 +2,7 @@
 pkgname=soundux
 pkgver=0.2
 pkgrel=1
-pkgdesc="A cross-platform soundboard in QtQuick"
+pkgdesc="A cross-platform soundboard"
 arch=('any')
 url="https://github.com/Soundux/Soundux"
 license=('GPL3')
