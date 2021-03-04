@@ -9,15 +9,15 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Krypton (17), Leia (18), Matrix (19) and git master (99). Do so in  #
-# the following line.                                                         #
+# between Leia (18), Matrix (19) and git master (99). Do so in the following  #
+# line.                                                                       #
 #                                                                             #
 ###############################################################################
 
-API=18
+API=19
 
 pkgname=kodi-addon-pvr-hts-git
-pkgver=r803.3993a8a
+pkgver=r969.70c6340
 pkgrel=1
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
@@ -31,7 +31,6 @@ source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git")
 md5sums=('SKIP')
 
 case "$API" in
-  17)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Krypton" ;;
   18)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Leia" ;;
   19)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Matrix" ;;
   99)  ;;
