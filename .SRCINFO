@@ -1,11 +1,11 @@
 pkgbase = postfinger
 	pkgdesc = captures Postfix configuration for reporting errors
-	pkgver = 1.30
+	pkgver = 1.31
 	pkgrel = 1
-	url = https://ftp.wl0.org/SOURCES/postfinger
+	url = https://github.com/ford--prefect/postfinger
 	arch = any
 	license = GPL
-	source = https://ftp.wl0.org/SOURCES/postfinger
+	source = https://github.com/ford--prefect/postfinger/raw/main/postfinger
 	md5sums = 7ae1d8089869e6b883c3b338939df27d
 
 pkgname = postfinger
