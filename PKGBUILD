@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.11
-_minor=2
+_minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,9 +72,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-Revert-drm-amd-display-reuse-current-context-instead.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0003-drm-amdgpu-fix-shutdown-with-s0ix.patch"
+        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -311,13 +309,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('16090ec6dea7a8c417ca7483b296902c9b55b423482ad8a881dffcaae76411806bc9502373efd6a51b0acefec3a44c19c5a7d42c5b76c1321183a4798a5959d3'
+sha512sums=('dccb2f5a186052a7e8a46293564d6c727ffeeebde31d764135020ac9a65bd51e2ee7d94ac1defcebce7cc73ace3e9620f88a236207e7f15c7d576038ed27adee'
             'SKIP'
             '9d38c5672d6e6a08c02e6713b58e03898acdef3f75bb1a96ecd657606d29a69a8cf81bff18af0f56dd75311c5d61c330bbd89a3165bc0e5c6b48b37172716fc9'
             '7783c2b24253a24d650c9955ef818e8c5de097a5413120e42c23fe56303d83ea045eb489cb1fde36a82e7caec344ebafe83756fa43d087937ad4f23d10e01659'
-            'ca5221913f4ecfbae290ff86414b435e2db51b13bb11a57f9e4827a857e4090c9e73b7a66206bfb0ea86516fa33d21b26b0dd00114d7fe0ccde68fd26128b95d'
-            'e43a76c372137442259ee9d080877dafd5258e813626d4bc32ce660f6cf5005de7fa683f5624705bbbb0844a4aded4e41bf0b15af0ce0fdc2198d57c57dabe81'
-            '7e5e5522abc3a0a658c2e9c4b1487a4fad7494c54c1b3f6fc17dbb408b7d8601534a9d89e87fde05383ca73623ed69c620a7652fea91241cb779a01618daa711'
+            'b8ffb47a465c1c71694d7e3522c81ccadfb59288c52253afb8fda8c7c4c64b2f98ec82c0dbae9b7c8e89d78deaf64cbadb45b8653173f43e838eefbbfe78c86a'
             '715e60d1bd6be9e79deb153210c35b797160df536844840335e6742989ca4d422fb2cbc4ac7544b71675413d9a532901483a26eec28f5addb461a3ae20558aa0'
             '73df4f1e1cc34854795a41741280241b4d2247404880812e023d0a401007b9ed18b890eaf4eee3c75fa6791fd7dcf130f41f641098aa7104357c6b8ad17f9bee')
 
