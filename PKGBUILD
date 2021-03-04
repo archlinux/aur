@@ -1,6 +1,6 @@
 # Maintainer: Gavin D. Howard <yzena.tech@gmail.com>
 pkgname=bc-gh
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,10 +10,10 @@ provides=('bc=1.07.1-3')
 conflicts=('bc=1.07.1-3')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/gavinhoward/bc/releases/download/$pkgver/bc-$pkgver.tar.xz"
         "$pkgname-$pkgver.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/$pkgver/bc-$pkgver.tar.xz.sig")
-sha512sums=('098bcbe0abc323b295bd46bcf8af00e69898ef560108b660964fb2dfdf6d114a17f051dde0fff06f06aa97f4cee086275eb5dc937166034d795d5cb3da999fca'
-            '904a47bc565218d8243920f5c3c6b8a45a9f9914766fbba63730f926e7a08c3fbc28c2adcc23a3e08a4b1939375a5d766270415675afb7f9fe7b245ae498be1c')
-sha256sums=('b6328ad691c71d1ae910dc3d45fe4b35faddd15f79b07b482e21b1766c89dda4'
-            '585bf520d50bd6094573aef5ba223c642f5a77e8e643e9c015ca2b111e01d4e4')
+sha512sums=('dfdd8023453406d9f681e04da7acaad4459e632fded0f2edb2b51607438a27074935af6db4b3580120daf56e6b52283275d0c2c809380caa164957f1901e9dde'
+            'aeb0ac35e5b99f101fcf04e57659712a378c22da138ff405866baf4c41963af111b2128fc23aeb672ef0a928948ec9f4eeb9eea51781cb20a24cba7fd92af09a')
+sha256sums=('b9fde063b32d4f0c3bab9d069aa8ac4d7d804ce5bebb54d7a2e574e70309bc93'
+            '0fe5f256396f0e81d686a728ccf106094f577669877d05e1d82161f5de1d0ede')
 validpgpkeys=('E2A30324A4465A4D5882692EC08038BDF280D33E')
 CFLAGS="-flto -O3 $CFLAGS"
 
