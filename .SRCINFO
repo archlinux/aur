@@ -1,5 +1,5 @@
 pkgbase = soundux-git
-	pkgdesc = A cross-platform soundboard in QtQuick
+	pkgdesc = A cross-platform soundboard
 	pkgver = r424.db04167
 	pkgrel = 2
 	epoch = 1
