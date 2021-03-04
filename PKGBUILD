@@ -2,8 +2,8 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cadquery-git
-pkgver=2.1RC1.r35.gccf56e6
-pkgrel=1
+pkgver=2.1.r65.g0325474
+pkgrel=2
 pkgdesc="A parametric CAD scripting framework based on PythonOCC built from git"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
@@ -32,12 +32,6 @@ pkgver() {
 prepare() {
   cd cadquery
   
-  # drop text() entirely since it appears to be broken in ocp with the latest version of opencascade
-  curl https://github.com/greyltc/cadquery/commit/48bab8ad9e176590f67980a263262b4c6b0b3198.patch | patch -p1
-
-  # loosen volume check restrictions
-  curl https://github.com/greyltc/cadquery/commit/3fdf585e640bbee0e41cfd1c3ba817e28e132937.patch | patch -p1
-  curl https://github.com/greyltc/cadquery/commit/a0ecf8ec23003859654087ba16343621aaecb8f3.patch | patch -p1
 }
 
 build() {
