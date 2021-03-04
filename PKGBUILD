@@ -1,5 +1,5 @@
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
-# Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
+# Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk>
 
 pkgbase=python-seqlearn-git
 pkgname=('python-seqlearn-git' 'python2-seqlearn-git')
