@@ -3,21 +3,8 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-###############################################################################
-# INSTRUCTIONS                                                                #
-# ------------                                                                #
-#                                                                             #
-# API changes between different Kodi versions make it necessary to specify    #
-# the version of Kodi you want to build this package for. You can choose      #
-# between Krypton (17), Leia (18), Matrix (19) and git master (99). Do so in  #
-# the following line.                                                         #
-#                                                                             #
-###############################################################################
-
-API=18
-
 pkgname=kodi-platform-git
-pkgver=r57.e8574b8
+pkgver=r61.809c5e9
 pkgrel=1
 pkgdesc='Kodi platform support library'
 arch=('armv7h' 'i686' 'x86_64')
@@ -29,16 +16,6 @@ provides=('kodi-platform')
 conflicts=('kodi-platform')
 source=("${pkgname}::git+https://github.com/xbmc/kodi-platform.git")
 md5sums=('SKIP')
-
-# Corresponding commit IDs are taken from
-# https://github.com/xbmc/xbmc/blob/$BRANCH/[project/]cmake/addons/depends/common/kodi-platform/kodi-platform.txt
-case "$API" in
-  17)  source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=c8188d826" ;;
-  18)  source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=e8574b883" ;;
-  19)  ;;
-  99)  ;;
-  *)   echo "Unknown API version. Follow instructions in PKGBUILD." && false
-esac
 
 pkgver() {
   cd "$pkgname"
