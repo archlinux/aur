@@ -1,6 +1,6 @@
 pkgbase = eiskaltdcpp
 	pkgdesc = EiskaltDC++ is a cross-platform program that uses the Direct Connect (DC aka NMDC) and Advanced Direct Connect (ADC) protocols. It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with all common DC hub software.
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 2
 	url = https://github.com/eiskaltdcpp/eiskaltdcpp/
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = eiskaltdcpp
 	makedepends = perl-json-rpc
 	conflicts = eiskaltdcpp-git
 	options = !emptydirs
-	source = eiskaltdcpp-2.4.1.tar.gz::https://github.com/eiskaltdcpp/eiskaltdcpp/archive/v2.4.1.tar.gz
-	sha256sums = 818f9622ac28d3cf1ae58af0a01e25af702781822b6edeb99c9d05d408a4798f
+	source = eiskaltdcpp-2.4.2.tar.gz::https://github.com/eiskaltdcpp/eiskaltdcpp/archive/v2.4.2.tar.gz
+	sha256sums = 2ed853a57c57aab0e87fdea273a01707184ee425a2aaf9fcd2e0a32c57a2de2c
 
 pkgname = eiskaltdcpp-core
 	pkgdesc = EiskaltDC++ Core
@@ -34,14 +34,14 @@ pkgname = eiskaltdcpp-core
 	depends = attr
 	depends = miniupnpc
 	depends = pcre
-	provides = eiskaltdcpp-core=2.4.1
+	provides = eiskaltdcpp-core=2.4.2
 	provides = eiskaltdcpp
 	conflicts = eiskaltdcpp-core-git
 
 pkgname = eiskaltdcpp-qt
 	pkgdesc = Qt5-based DC and ADC client for EiskaltDC++ core.
-	depends = eiskaltdcpp-core=2.4.1
-	depends = eiskaltdcpp-data=2.4.1
+	depends = eiskaltdcpp-core=2.4.2
+	depends = eiskaltdcpp-data=2.4.2
 	depends = aspell
 	depends = qt5-script
 	depends = qt5-multimedia
@@ -52,8 +52,8 @@ pkgname = eiskaltdcpp-qt
 
 pkgname = eiskaltdcpp-gtk
 	pkgdesc = GTK3-based DC and ADC client for EiskaldDC++ core.
-	depends = eiskaltdcpp-core=2.4.1
-	depends = eiskaltdcpp-data=2.4.1
+	depends = eiskaltdcpp-core=2.4.2
+	depends = eiskaltdcpp-data=2.4.2
 	depends = gtk3
 	depends = libnotify
 	provides = eiskaltdcpp-gtk
@@ -61,7 +61,7 @@ pkgname = eiskaltdcpp-gtk
 
 pkgname = eiskaltdcpp-daemon
 	pkgdesc = DC and ADC daemon for EiskaltDC++ core.
-	depends = eiskaltdcpp-core=2.4.1
+	depends = eiskaltdcpp-core=2.4.2
 	depends = jsoncpp
 	provides = eiskaltdcpp-daemon
 	conflicts = eiskaltdcpp-daemon-git
@@ -69,7 +69,7 @@ pkgname = eiskaltdcpp-daemon
 pkgname = eiskaltdcpp-cli
 	pkgdesc = CLI interface for EiskaltDC++ Daemon.
 	arch = any
-	depends = eiskaltdcpp-daemon=2.4.1
+	depends = eiskaltdcpp-daemon=2.4.2
 	depends = perl-json
 	depends = perl-json-rpc
 	provides = eiskaltdcpp-cli

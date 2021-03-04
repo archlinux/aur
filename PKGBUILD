@@ -10,7 +10,7 @@ pkgname=("${pkgbase}-core"
          "${pkgbase}-cli"
          "${pkgbase}-data"
          )
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=2
 pkgdesc="EiskaltDC++ is a cross-platform program that uses the Direct Connect (DC aka NMDC) and Advanced Direct Connect (ADC) protocols. It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with all common DC hub software."
 license=('GPL3')
@@ -19,7 +19,7 @@ url="https://github.com/eiskaltdcpp/eiskaltdcpp/"
 conflicts=('eiskaltdcpp-git')
 options=(!emptydirs)
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/${pkgbase}/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('818f9622ac28d3cf1ae58af0a01e25af702781822b6edeb99c9d05d408a4798f')
+sha256sums=('2ed853a57c57aab0e87fdea273a01707184ee425a2aaf9fcd2e0a32c57a2de2c')
 makedepends=('cmake'
              'lua'
              'libidn'
