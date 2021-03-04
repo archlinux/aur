@@ -31,7 +31,7 @@ validpgpkeys=()
 pkgver()
 {
     cd ${srcdir}/${_pkgname}/
-    version=$(git describe --tags --abbrev=0)
+    version=$(git describe --tags --abbrev=0) | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
     printf "%s" ${version:1}
 }
 
