@@ -10,6 +10,7 @@ pkgbase = linrad-svn
 	depends = portaudio
 	depends = libxext
 	depends = libusb-compat
+	depends = svn
 	provides = linrad
 	source = svn+https://svn.code.sf.net/p/linrad/code
 	sha512sums = SKIP
