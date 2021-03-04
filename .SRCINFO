@@ -1,6 +1,6 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 2
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = python-onnxruntime
 	makedepends = python-setuptools
 	makedepends = nlohmann-json
 	makedepends = chrono-date
+	makedepends = boost
 	depends = nsync
 	depends = re2
 	depends = flatbuffers
 	depends = python-numpy
 	depends = python-onnx
 	depends = python-protobuf
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.6.0
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.7.0
 	source = git+https://gitlab.com/libeigen/eigen.git
-	source = git+https://github.com/google/gemmlowp.git
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/dcleblanc/SafeInt.git
 	source = git+https://github.com/martinmoene/optional-lite.git
@@ -31,8 +31,7 @@ pkgbase = python-onnxruntime
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = 978d01b73610aa75fe2c02046f8bce4d26b35a7e0d499bebbb067ba7397388b4bb50280ddd1ae639207478a395c577a343f41c3e2954a1ca7155c98fa91a2cf8
+	sha512sums = 90e67eb144770734b488bf8ac5ad0dc955d2d860d9ed1c32285ffe913e72d27a3ac5b27588f41042fa4008533234e6cf4740c600f2b3fdce90ef8a3f853827eb
 
 pkgname = python-onnxruntime
 
