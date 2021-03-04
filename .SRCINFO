@@ -1,0 +1,21 @@
+pkgbase = vim-devicons-git
+	pkgdesc = Adds file type icons to Vim plugins
+	pkgver = 0.11.0.r123.g4d14cb8
+	pkgrel = 1
+	url = https://github.com/ryanoasis/vim-devicons
+	install = vim-devicons-git.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = nerd-fonts: standalone glyphs; any nerd-font package will suffice
+	optdepends = ttf-nerd-fonts
+	optdepends = otf-nerd-fonts
+	provides = vim-devicons
+	conflicts = vim-devicons
+	source = git+https://github.com/ryanoasis/vim-devicons
+	md5sums = SKIP
+
+pkgname = vim-devicons-git
+

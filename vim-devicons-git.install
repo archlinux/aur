@@ -1,0 +1,4 @@
+post_install()  {
+  printf ":: If you are using vim, you must set your encoding to UTF-8.\n"
+  printf ":: You can do this with 'set encoding=UTF-8'\n"
+}
