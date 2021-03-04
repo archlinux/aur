@@ -1,0 +1,23 @@
+pkgbase = odyssey
+	pkgdesc = Advanced multi-threaded PostgreSQL connection pooler and request router
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/yandex/odyssey
+	install = odyssey.install
+	arch = x86_64
+	license = custom:BSD
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = postgresql
+	depends = openssl
+	backup = etc/odyssey/odyssey.conf
+	source = git+https://github.com/yandex/odyssey.git
+	source = odyssey.conf
+	source = tmpfile_odyssey.conf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = odyssey
+

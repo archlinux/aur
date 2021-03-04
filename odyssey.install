@@ -1,0 +1,30 @@
+# Description: post-install script for odyssey
+# Contributor: Marc Rechté <mrechte@gmail.com>
+
+
+# arg 1: new package version
+post_install() {
+    # create odyssey user
+    if [ -z "`grep '^odyssey:' /etc/passwd`" ]; then
+        useradd -m -s /bin/bash odyssey
+    fi
+
+    # ownership to odyssey configuration
+    chown odyssey: /etc/odyssey/odyssey.conf
+    
+    # Create temp directory now
+    systemd-tmpfiles --create /etc/tmpfiles.d/odyssey.conf
+}
+
+
+# arg 1: new package version
+# arg 2: old package version
+post_upgrade() {
+    post_install $1
+}
+
+
+# arg 1: old package version
+pre_remove() {
+    userdel odysssey
+}
