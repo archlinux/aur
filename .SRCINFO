@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-prosody-nightly-bin
 	pkgdesc = Jitsi Meet Prosody Plugins nightly binary
-	pkgver = 1.0.4715
+	pkgver = 1.0.4756
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = jitsi-meet-prosody-nightly-bin
 	provides = jitsi-meet-prosody-nightly
 	conflicts = jitsi-meet-prosody-nightly
 	options = !strip
-	source = https://download.jitsi.org/unstable/jitsi-meet-prosody_1.0.4715-1_all.deb
-	sha256sums = ebc857725ec7a39b91ea156abd672f5deb20cd4c4e217d003552d0e1dec5bb55
+	source = https://download.jitsi.org/unstable/jitsi-meet-prosody_1.0.4756-1_all.deb
+	sha256sums = 8a7d0093d1b8be7065fd90f5d659da02240c628209f5ce942e531c821cc6734a
 
 pkgname = jitsi-meet-prosody-nightly-bin
 
