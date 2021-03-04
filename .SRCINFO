@@ -1,0 +1,16 @@
+pkgbase = muwrap-git
+	pkgdesc = Text word wrapping utility for the command line
+	pkgver = r19.228a0b2
+	pkgrel = 1
+	url = https://github.com/c2d7fa/muwrap
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nim
+	provides = muwrap
+	conflicts = muwrap
+	source = muwrap::git+https://github.com/c2d7fa/muwrap.git
+	md5sums = SKIP
+
+pkgname = muwrap-git
+
