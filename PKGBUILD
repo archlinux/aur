@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=bupstash
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="a tool for encrypted backups"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libsodium' 'gcc-libs') # pkgconf covered by base-devel
 makedepends=('cargo' 'pandoc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('37462bd024d1ade4fd0fefe2200d2e561bba61f2ad78390e5acea94ff3389c3b7aae33547ce438cb294d4cea93465e90291081e7859cb4f1b2ee69bf3f927c97')
+sha512sums=('6f6d5183fac662113df6f7d4b568dd2ed0cbdb7c87474afee183e800269bfb14ec514952b17e43ca8b10be18e7a8a4428f1bf0caa143c5fb4b08aee2b2f48bcb')
 
 build() {
   cd "$pkgname-$pkgver"
