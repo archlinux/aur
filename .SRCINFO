@@ -1,7 +1,7 @@
 pkgbase = roadrunner
 	pkgdesc = High-performance PHP application server, load-balancer and process manager written in Golang
 	pkgver = 1.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://roadrunner.dev/
 	arch = x86_64
 	license = MIT
