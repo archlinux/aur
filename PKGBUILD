@@ -6,6 +6,9 @@ pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language - official binaries of Stable, RC, and Nightly'
 arch=('x86_64')
 provides=(julia-trinity)
+depends=(cblas fftw hicolor-icon-theme libgit2 libunwind libutf8proc openblas
+         suitesparse mbedtls openlibm pcre2 llvm10-libs)
+makedepends=(cmake gcc-fortran gmp python llvm10)
 conflicts=(julia julia-git julia-nightly-bin julia-bin julia-beta-bin)
 url='https://julialang.org/'
 licenses=('MIT')
