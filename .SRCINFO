@@ -1,6 +1,6 @@
 pkgbase = graylog
 	pkgdesc = Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://www.graylog.org/
 	install = graylog.install
@@ -11,10 +11,10 @@ pkgbase = graylog
 	optdepends = elasticsearch
 	optdepends = mongodb
 	backup = etc/graylog/server/server.conf
-	source = https://packages.graylog2.org/releases/graylog/graylog-4.0.2.tgz
+	source = https://packages.graylog2.org/releases/graylog/graylog-4.0.3.tgz
 	source = graylog-tmpfiles.conf
 	source = graylog.service
-	sha256sums = 3608eb4d51530b1822a36a7f4ac37e9e0d8c793c1bea0d4b8586adf6fed99e03
+	sha256sums = 47cec7c71609fe063f3f86a885f8b594d5d5a88fa92fe43dc19c24dc33e044eb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
