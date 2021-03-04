@@ -1,7 +1,7 @@
 # Maintainer: Linus Probert <linus.probert@gmail.com>
 pkgname=blightmud
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A terminal mud client written in rust"
 arch=('x86_64' 'i686')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver
-	cargo build --release
+	cargo build --release --locked --target-dir=target
 }
 
 package() {
