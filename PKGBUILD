@@ -4,9 +4,9 @@ pkgname='python-imgtool'
 _name="imgtool"
 pkgdesc="MCUboot's image signing and key management"
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 arch=('any')
-url='https://pypi.org/project/${_name}/'
+url='https://pypi.org/project/imgtool/'
 license=('Apache')
 depends=('python>=3.6')
 #makedepends=()
