@@ -1,7 +1,7 @@
 # Maintainer: Oliver Breitwieser <oliver@breitwieser.eu>
 
 pkgname=asfa
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='share files by upload via ssh and generation of a non-guessable link'
 arch=('x86_64')
