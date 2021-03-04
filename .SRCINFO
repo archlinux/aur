@@ -1,0 +1,16 @@
+pkgbase = python-mkdocs-roamlinks-plugin-git
+	pkgdesc = MkDocs plugin to automagically generate relative links between markdown pages
+	pkgver = v_020.r6.gf038aad
+	pkgrel = 1
+	url = https://github.com/Jackiexiao/mkdocs-roamlinks-plugin
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = mkdocs
+	provides = python-mkdocs-roamlinks-plugin
+	source = git+https://github.com/Jackiexiao/mkdocs-roamlinks-plugin
+	sha256sums = SKIP
+
+pkgname = python-mkdocs-roamlinks-plugin-git
+
