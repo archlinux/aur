@@ -1,22 +1,23 @@
 pkgbase = psiphon-tunnel-core-git
 	pkgdesc = Psiphon Tunnelling Proxy
 	pkgver = 2.0.14.r3354.08f530bd
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = go-pie
 	makedepends = perl
+	makedepends = git
 	depends = glibc
 	backup = etc/psiphon.conf
 	backup = usr/lib/systemd/user/psiphon.service
 	source = git+https://github.com/Psiphon-Labs/psiphon-tunnel-core.git
 	source = psiphon.conf
 	source = psiphon.service
-	md5sums = SKIP
-	md5sums = c1ec9a446e89495501b8375d2682aa49
-	md5sums = a6d6b01633a39325abbdb3597c50a4cc
+	sha256sums = SKIP
+	sha256sums = c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa
+	sha256sums = d0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa
 
 pkgname = psiphon-tunnel-core-git
 

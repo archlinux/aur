@@ -1,3 +1,4 @@
+# Contributor: Modelmat <modelmat@outlook.com.au>
 # Maintainer: Modelmat <modelmat@outlook.com.au>
 # Comaintainer: gilcu3 <gilcu3 [at] gmail [dot] com>
 
@@ -21,21 +22,21 @@
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
 pkgver=2.0.14.r3354.08f530bd
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Psiphon Tunnelling Proxy'
-arch=('x86_64')
+arch=($CARCH)
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
-license=('GPL')
-makedepends=('go-pie' 'perl')
+license=('GPL3')
+makedepends=('go-pie' 'perl' 'git')
 depends=('glibc')
 source=("git+$url.git"
         "psiphon.conf"
         "psiphon.service")
 backup=('etc/psiphon.conf' 'usr/lib/systemd/user/psiphon.service')
-md5sums=('SKIP'
-         'c1ec9a446e89495501b8375d2682aa49'
-         'a6d6b01633a39325abbdb3597c50a4cc')
+sha256sums=('SKIP'
+         'c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa'
+         'd0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa')
 
 pkgver() {
   cd $_pkgname
@@ -59,11 +60,10 @@ build() {
   BUILDREPO=$(git config --get remote.origin.url)
   BUILDREV=$(git rev-parse --short HEAD)
   GOVERSION=$(go version | perl -ne '/go version (.*?) / && print $1')
-  # DEPENDENCIES=$(echo -n "{" && go list -f '{{range $dep := .Deps}}{{printf "%s\n" $dep}}{{end}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | xargs -I pkg bash -c 'cd $GOPATH/src/pkg && echo -n "\"pkg\":\"$(git rev-parse --short HEAD)\","' | sed 's/,$/}/')
   DEPENDENCIES=$(echo -n "{" && GOOS=$1 go list -tags "${BUILD_TAGS}" -f '{{range $dep := .Deps}}{{printf "%s\n" $dep}}{{end}}' | GOOS=$1 xargs go list -tags "${BUILD_TAGS}" -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | xargs -I pkg bash -c 'cd $GOPATH/src/$0 && if echo -n "$0" | grep -vEq "^github.com/Psiphon-Labs/psiphon-tunnel-core/" ; then echo -n "\"$0\":\"$(git rev-parse --short HEAD)\"," ; fi' pkg | sed 's/,$//' | tr -d '\n' && echo -n "}")
   
 
-  LDFLAGS="\
+  PKG_LDFLAGS="\
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildDate=$BUILDDATE \
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildRepo=$BUILDREPO \
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildRev=$BUILDREV \
@@ -71,23 +71,18 @@ build() {
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.dependencies=$DEPENDENCIES \
 -s -w
 "
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
   echo -e "${BUILDDATE}\n${BUILDREPO}\n${BUILDREV}\n" > $BUILDINFOFILE
 
-  echo "Variables for ldflags:"
-  echo " Build date: ${BUILDDATE}"
-  echo " Build repo: ${BUILDREPO}"
-  echo " Build revision: ${BUILDREV}"
-  echo " Go version: ${GOVERSION}"
-  echo " Dependencies: ${DEPENDENCIES}"
-  echo ""
-	
-  
   if [ ! -d bin ]; then
     mkdir bin
   fi
   
-  echo "...Building linux-x86_64"
-  GOOS=linux GOARCH=amd64 go build -v -x -ldflags "$LDFLAGS" -tags "${BUILD_TAGS}" -trimpath -buildmode=pie -o $_pkgname
+  GOOS=linux GOARCH=amd64 go build -v -x -buildmode=pie -trimpath -ldflags "-linkmode external ${PKG_LDFLAGS}" -tags "${BUILD_TAGS}" -o $_pkgname
   RETVAL=$?
   if [ $RETVAL != 0 ]; then
     echo "....gox failed, exiting"
