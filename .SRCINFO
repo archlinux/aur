@@ -1,7 +1,7 @@
 pkgbase = spolyrics
 	pkgdesc = Displays the lyrics to the currently playing song
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glebliutsko/spolyrics
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = spolyrics
 	depends = python-lyricsgenius
 	source = https://github.com/glebliutsko/spolyrics/releases/download/1.0.2/spolyrics-1.0.2-py3-none-any.whl
 	source = spolyrics.desktop
-	md5sums = 5c10acae4e78675e77bc08d475dc46b6
+	md5sums = 9b793eaeb100fa14be9d4fc7f9af3817
 	md5sums = 7d831c4e18ffe6484d5817d250032b2d
 
 pkgname = spolyrics
