@@ -19,9 +19,14 @@ pre_install() {
 	addRoutingTable piavpnFwdrt
 }
 
+post_install() {
+	echo "You need to start the daemon with `sudo systemctl start piavpn.service`"
+	echo "Also run `sudo systemctl enable piavpn.service` to make it automatically start at boot"
+}
+
 pre_remove() {
-	systemctl stop piavpn
-	systemctl disable piavpn
+	systemctl stop piavpn.service
+	systemctl disable piavpn.service
 }
 
 post_remove() {
@@ -39,7 +44,7 @@ post_upgrade() {
 	fi
 	systemctl daemon-reload
 	if systemctl is-active piavpn >/dev/null; then
-		systemctl restart piavpn
+		systemctl restart piavpn.service
 		echo ":: Don't forget to reconnect to your vpn if needed"
 	fi
 }
