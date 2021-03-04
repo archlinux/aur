@@ -3,7 +3,7 @@
 pkgname=setzer-git
 _gitname=Setzer
 pkgver=v0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LaTeX editor written in Python with Gtk"
 arch=('any')
 url="https://github.com/cvfosammmm/Setzer"
@@ -22,4 +22,5 @@ build() {
 package() {
     cd "${srcdir}/${_gitname}-${pkgver:1}"
     DESTDIR="${pkgdir}" ninja -C _build install
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
