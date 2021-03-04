@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=suricata-nfqueue
 _pkgname=suricata
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="An open source mature, fast and robust network IDS and IPS"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ backup=('etc/suricata/suricata.yaml'
 source=(https://www.openinfosecfoundation.org/download/${_pkgname}-${pkgver}.tar.gz{,.sig}
         suricata-update.{service,timer})
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
-sha256sums=('e7a1798fe59c1d213f752feefbf8bb54168f9fa56235cf3380347c696ecdb1ae'
+sha256sums=('5e4647a07cb31b5d6d0049972a45375c137de908a964a44e2d6d231fa3ad4b52'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
