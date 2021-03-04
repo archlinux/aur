@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 pkgname=vim-wpgtk-git
 pkgver=r16.84735c3
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim colorscheme for wpgtk"
 arch=('any')
 url="https://github.com/deviantfero/wpgtk.vim"
@@ -9,7 +9,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 optdepends=('vim-airline'
-            'vim-lightline'
+            'vim-lightline-git'
             'neovim-airline'
             'neovim-lightline')
 makedepends=('git')

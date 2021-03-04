@@ -1,7 +1,7 @@
 pkgbase = vim-wpgtk-git
 	pkgdesc = Vim colorscheme for wpgtk
 	pkgver = r16.84735c3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deviantfero/wpgtk.vim
 	arch = any
 	groups = vim-plugins
@@ -9,7 +9,7 @@ pkgbase = vim-wpgtk-git
 	makedepends = git
 	depends = vim-plugin-runtime
 	optdepends = vim-airline
-	optdepends = vim-lightline
+	optdepends = vim-lightline-git
 	optdepends = neovim-airline
 	optdepends = neovim-lightline
 	source = vim-wpgtk-git::git+https://github.com/deviantfero/wpgtk.vim
