@@ -8,6 +8,7 @@ pkgbase = sddm-config-editor-git
 	license = APACHE
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = cmake
 	depends = qt5-quickcontrols
 	depends = sddm
 	depends = polkit
