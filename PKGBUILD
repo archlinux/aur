@@ -1,6 +1,6 @@
 # Maintainer: Xuanrui Qi <xuanrui@xuanruiwork>
 pkgname=rebuild-initramfs-dracut
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A helper script to rebuild initramfs images using dracut"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 groups=()
 depends=("dracut")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xuanruiqi/${pkgname}-arch/archive/${pkgver}.tar.gz")
-sha256sums=('880f88ef37518ab3f01fa7ba95ddc136d198be8baacc01fbdfd8d0bd278d92dd')
+sha256sums=('0a55fda6c3ba779000f333d53713417bc8ddc34bf0d93f953c966aebb0f0061c')
 
 package() {
   cd "${srcdir}/${pkgname}-arch-${pkgver}"
