@@ -3,7 +3,7 @@
 pkgname=setzer-git
 _gitname=Setzer
 pkgver=r876.e9c96fa
-pkgrel=1
+pkgrel=2
 pkgdesc="LaTeX editor written in Python with Gtk"
 arch=('any')
 url="https://github.com/cvfosammmm/Setzer"
