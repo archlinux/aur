@@ -1,6 +1,6 @@
 pkgbase = megasync-bin
 	pkgdesc = Easy automated syncing between your computers and your MEGA cloud drive
-	pkgver = 4.3.8
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://mega.nz
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = megasync-bin
 	depends = libraw
 	depends = double-conversion
 	optdepends = sni-qt: fix systray issue on KDE and LXQt
-	provides = megasync=4.3.8
+	provides = megasync=4.4.0
 	conflicts = megasync
-	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megasync-4.3.8-1-x86_64.pkg.tar.zst
-	sha256sums = 7b3adc8cf17435e8bf93d0f51f42057ed621259181a04ca55e7162336eb01937
+	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megasync-4.4.0-1-x86_64.pkg.tar.zst
+	sha256sums = df80baeec7c0b534fa8120dda6041a6ffe2a59b4d7281abf82be938334d93da7
 
 pkgname = megasync-bin
 
