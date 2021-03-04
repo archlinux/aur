@@ -2,17 +2,17 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/certbot/certbot"
-depends=('python-setuptools' 'python-pyopenssl' 'python-pyrfc3339' 'python-pytz' 'python-requests'
-         'python-six' 'python-josepy' 'python-requests-toolbelt')
+depends=('python-cryptography' 'python-josepy' 'python-pyopenssl' 'python-pyrfc3339' 'python-pytz'
+         'python-requests' 'python-requests-toolbelt' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('1503fd1c1fb021520f1d2f35416f1cde0c7fc84fb52e808a127aea2260d1e4c1ec6427deb2384e726d18b1f9bed786100db4b45184a2de116cd35bc698e38336')
+sha512sums=('0c516b7f46fac0be16b8462281f4ea58213d80a0a1ef5cafa96868babd19dc1dbe408a063100c8737fbd409b918a4e2f020d89611bfe20becdcefad11a818a3c')
 
 build() {
   cd acme-$pkgver
