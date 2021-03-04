@@ -1,7 +1,7 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 
 pkgname=vasisualy-git
-pkgver=r85.20210115
+pkgver=r110.20210302
 pkgrel=1
 pkgdesc="Vasisualy is a simple Russian voice assistant written on python 3 for GNU/Linux and Windows."
 arch=('i686' 'x86_64')
@@ -9,16 +9,17 @@ url="https://github.com/Oknolaz/vasisualy"
 license=('GPL3')
 depends=('python>3' 'rhvoice' 'speech-dispatcher' 'python-pyqt5' 'python-vlc'
          'python-shell' 'python-pyowm' 'python-mss' 'python-wikipedia'
-         'python-geocoder' 'python-googletrans' 'python-lxml'
+         'python-geocoder' 'python-translate' 'python-lxml'
          'python-beautifulsoup4' 'python-qt-material' 'python-speechrecognition')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::'git+https://github.com/Oknolaz/vasisualy.git'
-        'vasisualy-pi' 'vasisualy-qt')
+        ${pkgname}-pi::'git+https://github.com/Oknolaz/vasisualy-pi.git'
+        ${pkgname}-files::'git+https://github.com/Oknolaz/vasisualy-additional-files.git')
 sha256sums=('SKIP'
-            'd3a24f37d7c5012d33f52a7042ea4ae022d61f4e5f55a25e5e1515d63f4eecef'
-            '0e477f3fca6b51af6822c1c67e2e48e2d1b1c95b608025b64c9d9132e0c8aea3')
+            'SKIP'
+            'SKIP')
 
 pkgver() {
 	cd $pkgname
@@ -32,21 +33,31 @@ pkgver() {
 
 package()
 {
-    site_pkg=$(python -c "import site; print(site.getsitepackages()[0])")
+    #site_pkg=$(python -c "import site; print(site.getsitepackages()[0])")
+    site_pkg="usr/share"
     modulename=${pkgname%-git}
+    modulename_pi=${pkgname%-git}-pi
 
-    cd $srcdir
+    cd ${pkgname}-files
+    install -Dm0755 "vasisualy"    "${pkgdir}/usr/bin/vasisualy"
+    install -Dm0755 "vasisualy-pi" "${pkgdir}/usr/bin/vasisualy-pi"
+    install -Dm0755 "vasisualy.desktop" "${pkgdir}/usr/share/applications/vasisualy.desktop"
 
-    install -Dm0644 "vasisualy-pi" "${pkgdir}/usr/bin/vasisualy-pi"
-    install -Dm0644 "vasisualy-qt" "${pkgdir}/usr/bin/vasisualy-qt"
-
-    cd $pkgname
-
-    install -Dm0644 "vasisualy-pi.py" "${pkgdir}/${site_pkg}/${modulename}/vasisualy-pi.py"
-    install -Dm0644 "vasisualy-qt.py" "${pkgdir}/${site_pkg}/${modulename}/vasisualy-qt.py"
+    cd $srcdir/$pkgname
+    install -Dm0755 "main.py" "${pkgdir}/${site_pkg}/${modulename}/main.py"
     cp -R "assets" "${pkgdir}/${site_pkg}/${modulename}"
-    cp -R "music" "${pkgdir}/${site_pkg}/${modulename}"
-    cp -R "ui" "${pkgdir}/${site_pkg}/${modulename}"
-
+    cp -R "core"   "${pkgdir}/${site_pkg}/${modulename}"
+    cp -R "music"  "${pkgdir}/${site_pkg}/${modulename}"
+    cp -R "skills" "${pkgdir}/${site_pkg}/${modulename}"
+    cp -R "ui"     "${pkgdir}/${site_pkg}/${modulename}"
+    install -Dm0644 "ui/vas.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/vasisualy.png"
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${modulename}/LICENSE"
+
+    cd $srcdir/${pkgname}-pi
+    install -Dm0755 "main.py" "${pkgdir}/${site_pkg}/${modulename_pi}/main.py"
+    cp -R "assets" "${pkgdir}/${site_pkg}/${modulename_pi}"
+    cp -R "core"   "${pkgdir}/${site_pkg}/${modulename_pi}"
+    cp -R "music"  "${pkgdir}/${site_pkg}/${modulename_pi}"
+    cp -R "skills" "${pkgdir}/${site_pkg}/${modulename_pi}"
+    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${modulename_pi}/LICENSE"
 }
