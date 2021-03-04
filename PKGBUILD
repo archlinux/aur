@@ -7,8 +7,9 @@ pkgbase=pipewire-full-git
 pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          pipewire-full-jack-git pipewire-full-pulse-git
          gst-plugin-pipewire-full-git
+         pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.22.r92.g97cc2760
+pkgver=0.3.23.r5.ge89e87ba
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -60,17 +61,18 @@ _ver=${pkgver:0:3}
 
 package_pipewire-full-git() {
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
-           libudev.so libasound.so libsystemd.so libbluetooth.so libsbc.so
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+           libudev.so libasound.so libsystemd.so libbluetooth.so 
+           libsbc.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-full-docs-git: Documentation'
               'pipewire-full-alsa-git: ALSA support'
               'pipewire-full-jack-git: JACK support'
+              'pipewire-full-jack-client-git: JACK device/client'
               'pipewire-full-pulse-git: PulseAudio support'
               'gst-plugin-pipewire-full-git: GStreamer support'
               'ofono: ofono Bluetooth HFP support'
               'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
-  provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire alsa-card-profiles
+  provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
+  conflicts=(pipewire pipewire-media-session alsa-card-profiles
              pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
   replaces=(pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
   backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
@@ -89,12 +91,13 @@ package_pipewire-full-git() {
 
   _pick jack etc/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
-  _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
+
+  _pick jack-client usr/lib/spa-0.2/jack
 
   _pick vulkan usr/lib/spa-0.2/vulkan
 
@@ -122,7 +125,7 @@ package_pipewire-full-alsa-git() {
 
 package_pipewire-full-jack-git() {
   pkgdesc+=" - JACK support"
-  depends=(pipewire-full-git libpipewire-$_ver.so bash libjack.so)
+  depends=(pipewire-full-git libpipewire-$_ver.so bash)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
   backup=(etc/pipewire/jack.conf)
@@ -144,6 +147,14 @@ package_gst-plugin-pipewire-full-git() {
   provides=(gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
   mv gst/* "$pkgdir"
+}
+
+package_pipewire-full-jack-client-git() {
+  pkgdesc="JACK client SPA plugin"
+  depends=(pipewire-full-git libjack.so)
+  provides=(pipewire-jack-client)
+  conflicts=(pipewire-jack-client)
+  mv jack-client/* "${pkgdir}"
 }
 
 package_pipewire-full-vulkan-git() {
