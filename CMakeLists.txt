@@ -76,3 +76,5 @@ add_compile_definitions(LINUX USE_SMPEG USE_FONTCONFIG USE_OGG_VORBIS USE_CDROM 
 
 add_executable(onscripter onscripter_main.cpp ${HEADERS} ${SOURCES})
 target_link_libraries(onscripter SDL::SDL ${SDL_SOUND_LIBRARIES} ${SDL_IMAGE_LIBRARIES} ${SDL_MIXER_LIBRARIES} ${SDL_TTF_LIBRARIES} ${SMPEG_LIBRARY} ${LUA_LIBRARIES} ${BZIP2_LIBRARIES} Fontconfig::Fontconfig ${JPEG_LIBRARIES})
+
+install(TARGETS onscripter DESTINATION bin)
