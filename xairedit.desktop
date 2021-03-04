@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=X-AIR Edit
 Comment=Remote control for Behringer X Air mixers
-Icon=x-air-edit
-Exec=X-AIR-Edit
-TryExec=X-AIR-Edit
+Icon=xairedit
+Exec=xairedit
+TryExec=xairedit
 Terminal=false
 Type=Application
 Categories=Audio;Mixer;AudioVideo;

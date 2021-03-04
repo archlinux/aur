@@ -1,9 +1,8 @@
 pkgbase = xairedit
 	pkgdesc = Remote control program for Behringer X-AIR mixers
-	pkgver = 1.5
-	pkgrel = 3
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://www.behringer.com/downloads.html
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = custom:MUSIC Group End User License Agreement
@@ -14,14 +13,10 @@ pkgbase = xairedit
 	depends = mesa-libgl
 	source = https://eurocom.musictribe.com/assets/EULA_2012-09-12.pdf
 	source = xairedit.desktop
-	source = x-air-edit.png
 	sha256sums = 3321aa0b3e208133094665281a6fc2ca001628858cd1a6388185eac93569fca8
-	sha256sums = 41320beaeb7f6c50270481eac17866e942f2f4e0853f63d477d2e45e8c8fd49b
-	sha256sums = 9f52ae75d8826890448dcac1be09dcb9f7e01d1feba46c2dfaf2e6150f2d4b58
-	source_i686 = https://mediadl.musictribe.com/download/software/behringer/XAIR/X-AIR-Edit_LINUX_V1.5.tar.gz
-	sha256sums_i686 = 0e6be5513505c725ac38a7febaf80e4e140cce7161609dd90ca203c0827362bc
-	source_x86_64 = https://mediadl.musictribe.com/download/software/behringer/XAIR/X-AIR-Edit_LINUX_X64_V1.5.tar.gz
-	sha256sums_x86_64 = 3733b829ed07319f786add8654619e70bc9e7bbcad41b6d11bf6cd93e5ffe3c5
+	sha256sums = b57f9fcfe157cd880104948834c88a2983a1d12ee0ab7786737a281178fe4ed7
+	source_x86_64 = https://mediadl.musictribe.com/download/software/behringer/XAIR/X-AIR-Edit_LINUX_1.6.tar.gz
+	sha256sums_x86_64 = 8eac387f03fb38dc11b36422cdca997d7a8881849fcd2b452579a82756aaeff9
 
 pkgname = xairedit
 
