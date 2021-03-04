@@ -1,0 +1,20 @@
+pkgbase = python-plumb
+	pkgdesc = Connect systems via many brokers such as Kafka, AWS SQS, RabbitMQ and more
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://pypi.org/project/plumb
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-boto3
+	depends = python-botocore
+	depends = python-confluent_kafka
+	depends = python-dateutil
+	depends = python-pika
+	depends = python-redis
+	source = https://files.pythonhosted.org/packages/source/p/plumb/plumb-1.2.5.tar.gz
+	sha256sums = 05ec1666dae8dffb78bdfe469a3cb5df12b4209e445e3cee193c0f24ec0bce5e
+
+pkgname = python-plumb
+
