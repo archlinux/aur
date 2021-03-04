@@ -73,7 +73,7 @@ pkgname = eiskaltdcpp-cli
 	depends = perl-json
 	depends = perl-json-rpc
 	provides = eiskaltdcpp-cli
-	conflicts = -cli-git
+	conflicts = eiskaltdcpp-cli-git
 
 pkgname = eiskaltdcpp-data
 	pkgdesc = EiskaltDC++ common data files.

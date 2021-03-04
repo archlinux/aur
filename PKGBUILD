@@ -141,7 +141,7 @@ package_eiskaltdcpp-cli() {
            'perl-json-rpc'
            )
   provides=("${pkgbase}-cli")
-  conflicts=("${name}-cli-git")
+  conflicts=("${pkgbase}-cli-git")
 
   make -C build/eiskaltdcpp-cli DESTDIR="${pkgdir}" install
 }
