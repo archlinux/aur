@@ -35,7 +35,7 @@ build() {
     -DBUILD_TESTING=OFF
     cmake --build build
 }
-11
+
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
