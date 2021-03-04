@@ -7,7 +7,7 @@ pkgdesc="Software defined radio receiver for x11, latest code from sourceforge.n
 arch=('x86_64')
 url="http://www.sm5bsz.com/linuxdsp/linrad.htm"
 license=('custom')
-depends=('portaudio' 'libxext' 'libusb-compat')
+depends=('portaudio' 'libxext' 'libusb-compat' 'svn')
 makedepends=('nasm' 'autoconf')
 provides=('linrad')
 # checkout latest code
