@@ -1,2 +1,6 @@
-ceb2txt-git/
-*.pkg.tar.xz
+*
+
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.diff
