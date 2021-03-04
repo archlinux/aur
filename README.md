@@ -17,7 +17,7 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 
 ### btcpayserver
 1. `nano ~/.btcpayserver/Main/settings.config` and uncomment the SQLite database line. Alternatively, a different database can be used instead.
-2. `nano ~/.btcpayserver/Main/settings.config` and append the output of `openssl x509 -noout -fingerprint -sha256 -inform pem -in ~/.lnd/tls.cert` to the file line `BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;certthumbprint=`. Alternatively, use this file line `BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;allowinsecure=true`.
+2. `nano ~/.btcpayserver/Main/settings.config` and append the output of `openssl x509 -noout -fingerprint -sha256 -inform pem -in ~/.lnd/tls.cert` to the file line `BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=/home/USERNAME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;certthumbprint=`. Alternatively, use this file line `BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=/home/USERNAME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;allowinsecure=true`.
 
 ### nginx
 1. `sudo nano /etc/nginx/nginx.conf` and configure your nginx server as a reverse HTTP proxy to the btcpayserver HTTP server.
