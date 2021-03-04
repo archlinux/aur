@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=11.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://freefilesync.org"
@@ -22,7 +22,6 @@ depends_i686=(
     lib32-libx11
     lib32-pango
 )
-makedepends=(expect)
 source=(
     dlagent
     "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux.tar.gz"

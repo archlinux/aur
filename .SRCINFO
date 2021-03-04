@@ -1,13 +1,12 @@
 pkgbase = freefilesync-bin
 	pkgdesc = Folder comparison and synchronization
 	pkgver = 11.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freefilesync.org
 	install = .install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = expect
 	depends = gtk2
 	depends = libxxf86vm
 	provides = freefilesync
