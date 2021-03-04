@@ -1,0 +1,16 @@
+pkgbase = cargo-workspaces
+	pkgdesc = Cargo plugin for managing cargo workspaces and their crates
+	pkgver = 0.2.17
+	pkgrel = 1
+	url = https://github.com/pksunkara/cargo-workspaces
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	depends = gcc-libs
+	source = cargo-workspaces-0.2.17.tar.gz::https://github.com/pksunkara/cargo-workspaces/archive/v0.2.17/cargo-workspaces-v0.2.17.tar.gz
+	sha512sums = 39278596ab6d926871559030d142a44adb74b252e839b1065cbd4b3071e5764112e67c67fc64e28d4c2ba91690c6836eb8ce020b1980ccdb15deebaae2a14676
+
+pkgname = cargo-workspaces
+
