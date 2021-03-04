@@ -1,15 +1,15 @@
 pkgbase = slick
 	pkgdesc = Slick makefiles
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/aquefir/slick
 	arch = any
 	license = BSD
 	provides = slick
 	conflicts = slick
-	source = https://github.com/aquefir/slick/archive/mk-v1.3.4.tar.gz
+	source = https://github.com/aquefir/slick/archive/mk-v1.3.5.tar.gz
 	source = aquefir.sh
-	sha1sums = SKIP
+	sha1sums = f11d7c5858bea52f67c830e62242535e32ef534a
 	sha1sums = SKIP
 
 pkgname = slick
