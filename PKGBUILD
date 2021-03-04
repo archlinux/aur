@@ -1,8 +1,8 @@
-# Maintainer: Mike Mogenson <michael.mogenson@gmail.com>
+# Maintainer: Jordan Cannon <LiteracyFanatic@gmail.com>
 
 _pkgname=pureline
 pkgname=bash-pureline-git
-pkgver=r119.19ef111
+pkgver=r202.5fdae57
 pkgrel=1
 pkgdesc="A simple but powerful Powerline style prompt for the Bash shell written in Bash script"
 url="https://github.com/chris-marsh/pureline"
@@ -22,7 +22,8 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  install -D -m644 -t "$pkgdir/usr/share/$_pkgname/"            pureline
-  install -D -m644 -t "$pkgdir/usr/share/$_pkgname/configs/"    configs/*.conf
-  install -D -m644 -t "$pkgdir/usr/share/licenses/$_pkgname/"   LICENSE.md
+  install -D -m644 -t "$pkgdir/usr/share/$_pkgname/" pureline
+  install -D -m644 -t "$pkgdir/usr/share/$_pkgname/configs/" configs/*.conf
+  install -D -m644 -t "$pkgdir/usr/share/$_pkgname/segments/" segments/*
+  install -D -m644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE.md
 }
