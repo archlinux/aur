@@ -1,0 +1,17 @@
+pkgbase = pipes-rs-git
+	pkgdesc = An over-engineered rewrite of pipes.sh in Rust
+	pkgver = v1.3.0.r1.g2f78811
+	pkgrel = 1
+	url = https://github.com/CookieCoder15/pipes-rs
+	arch = any
+	license = MIT
+	license = APACHE
+	makedepends = git
+	makedepends = cargo
+	provides = pipes-rs
+	conflicts = bash-pipes
+	source = pipes-rs-git::git://github.com/CookieCoder15/pipes-rs.git
+	sha256sums = SKIP
+
+pkgname = pipes-rs-git
+
