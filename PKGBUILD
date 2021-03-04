@@ -25,7 +25,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo "5.15.2-$(git rev-parse --short HEAD)"
+  echo "5.15.2[$(git rev-parse --short HEAD)]"
 }
 
 prepare() {
