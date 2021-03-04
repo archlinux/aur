@@ -1,6 +1,6 @@
-pkgbase = linrad-latest
+pkgbase = linrad-svn
 	pkgdesc = Software defined radio receiver for x11, latest code from sourceforge.net
-	pkgver = latest
+	pkgver = 988
 	pkgrel = 1
 	url = http://www.sm5bsz.com/linuxdsp/linrad.htm
 	arch = x86_64
@@ -14,5 +14,5 @@ pkgbase = linrad-latest
 	source = svn+https://svn.code.sf.net/p/linrad/code
 	sha512sums = SKIP
 
-pkgname = linrad-latest
+pkgname = linrad-svn
 

@@ -1,7 +1,7 @@
 # Maintainer: Hans Kramer <kramer@b1-systems.de>
 
-pkgname=linrad-latest
-pkgver=latest
+pkgname=linrad-svn
+pkgver=988
 pkgrel=1
 pkgdesc="Software defined radio receiver for x11, latest code from sourceforge.net"
 arch=('x86_64')
@@ -15,6 +15,10 @@ source=(svn+https://svn.code.sf.net/p/linrad/code)
 
 sha512sums=('SKIP')
 
+pkgver() {
+cd ${srcdir}/code
+svn info --show-item revision
+}
 
 prepare() {
     cd "code/trunk"
