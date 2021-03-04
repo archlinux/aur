@@ -5,9 +5,9 @@ license=('MIT')
 pkgdesc="A secure JavaScript and TypeScript runtime."
 pkgname=deno-bin
 pkgrel=1
-pkgver=1.7.5
+pkgver=1.8.0
 provides=('deno')
-sha256sums_x86_64=('4e2eece7efb110359205b8a0ce5f7ca672cbba8a6a717510866925c2238d8f49')
+sha256sums_x86_64=('2a1de4d82f56a220f182834a9c44917437d0311b9023e28b70bd0ca515fd87a4')
 source_x86_64=("$pkgname-$pkgver.zip::https://github.com/denoland/deno/releases/download/v${pkgver}/deno-x86_64-unknown-linux-gnu.zip")
 url='https://deno.land/'
 
