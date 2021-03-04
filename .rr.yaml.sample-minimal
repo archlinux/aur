@@ -1,3 +1,11 @@
+rpc:
+	listen: tcp://127.0.0.1:6001
+
+server:
+	command: "php worker.php"
+
 http:
-	address:         ":8080"
-	workers.command: "php psr-worker.php"
+	address: "0.0.0.0:8080"
+
+logs:
+	level: error

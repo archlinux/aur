@@ -1,8 +1,9 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-pkgver=1.9.2
-pkgrel=3
+_dirname=${pkgname}-binary
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -10,21 +11,22 @@ license=(MIT)
 depends=("php>=7.3")
 makedepends=("go>=1.13")
 source=(
-	"https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
+	"https://github.com/spiral/$_dirname/archive/v$pkgver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
-	"02-build_version_time.patch"
 )
 sha256sums=(
-	"b49f082391380ac66e1e90f147594d7c3772a3b9eddb042f04b338083ae40e33"
-	SKIP
+	"2faf5e5176aefcddf15c6ee66a73e182b51edf4aad50ff53155a83b786b5e216"
 	SKIP
 	SKIP
 )
 options=("!buildflags")
 
-# Won't allow installing of both patched and original version.
-conflicts=("roadrunner-leo-patched")
+prepare() {
+	export GOPATH="$srcdir"/gopath
+	cd "$_dirname-$pkgver"
+	go mod download
+}
 
 build() {
 	export GOPATH="$srcdir"/gopath
@@ -32,20 +34,18 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	cd "$pkgname-$pkgver"
-	patch -p1 < $srcdir/02-build_version_time.patch
-	go mod download
-	make
-}
-
-check() {
-	export GOPATH="$srcdir"/gopath
-	cd "$pkgname-$pkgver"
-	make test
+	cd "$_dirname-$pkgver"
+	CGO_ENABLED=0 go build \
+		-trimpath \
+		-ldflags "-s\
+		 -X github.com/spiral/roadrunner-binary/v2/cli.Version=${pkgver}\
+		 -X github.com/spiral/roadrunner-binary/v2/cli.BuildTime=$(date +%FT%T%z)" \
+		-o ./rr \
+		./main.go
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_dirname-$pkgver"
 	install -Dt "$pkgdir/usr/bin/" -m755 rr
 	install -Dt "$pkgdir/usr/share/$pkgname/" -m644 "$srcdir/.rr.yaml.sample-full"
 	install -Dt "$pkgdir/usr/share/$pkgname/" -m644 "$srcdir/.rr.yaml.sample-minimal"
