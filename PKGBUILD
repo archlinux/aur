@@ -2,13 +2,14 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=3.3.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/${pkgname%%-cli}/${pkgname}"
 license=('BSD')
-depends=('python-colorclass' 
+depends=('python-colorclass'
+	 'python-future' 
 	 'python-terminaltables' 
 	 'python-requests' 
 	 'python-yaml')
@@ -18,7 +19,7 @@ replaces=('linode-cli-dev')
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-cli}/${pkgname}/archive/${pkgver}.tar.gz"
 	no-python2.patch)
-sha256sums=('bf697cb36b885ce88c6565682ac3a575579022d52d0548bb50b70bb7e9514b81'
+sha256sums=('f759d4f1ca7f486ffcba9544f9c6ba9abc7505e94ec1122354139c406056deb1'
             '7a3f1e454ffac21db74ad1e1b8575f4246566fb25966b89a2e30fa8215dd8c13')
 
 prepare() {
