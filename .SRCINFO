@@ -1,0 +1,25 @@
+pkgbase = zedfree
+	pkgdesc = Zed! Encrypted containers manager
+	pkgver = 2020.4
+	pkgrel = 1
+	url = http://www.primx.eu
+	install = zedfree.install
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = GPL
+	depends = dbus
+	depends = glib2
+	depends = libldap
+	depends = libxml2
+	depends = libxslt
+	depends = qt5-base
+	options = !strip
+	options = !emptydirs
+	source_i686 = https://www.zedencrypt.com/file/get/-/item_key/13802-21-0a970608
+	sha512sums_i686 = d01c969c9bb0d5b0a5c667b1bfbb0aead1cb5687af0b508ac0e69fa69165497e39ec3b96885bda766862ee9a06a30191ed7efe2758e95b077a4ee03a2a75073b
+	source_x86_64 = https://www.zedencrypt.com/file/get/-/item_key/13802-22-1d9a6a64
+	sha512sums_x86_64 = f5d39435b86181cbfa6e56b6716de2e3cd1072d270eb01f5eb59c2090e75193030f6d01c4cfa8472800a9cc28576e2f04ea1994f12fd721ebb4785cf6997e066
+
+pkgname = zedfree
+
