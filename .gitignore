@@ -1,3 +1,7 @@
-*.tar.gz
-*.tar.gz.sig
-*.tar.xz
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.diff
