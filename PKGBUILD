@@ -25,9 +25,7 @@ noextract=(
 "$_name-1.6.0-rc1-linux-x86_64.tar.gz"
 "$_name-latest-linux64.tar.gz"
     )
-sha256sums=('f190c938dd6fed97021953240523c9db448ec0a6760b574afd4e9924ab5615f1'
-            '72847bd2b4d4db9d5970512f79fd5a7f76ad56cf0f2ea5a80eff032364b19c8b'
-            '99067f2045669cf4fa0009216637d52c9155223cb511aff458f243bc6d11f06e'
+sha256sums=('SKIP' 'SKIP' 'SKIP'
             '85aff59221938dd83aa3808910fb455c64f3f0936604bfaad7b8d27c01e3a7ed'
             '0310782968fe0ba2910e8a4fc3920ab58c0b8f91c66a66f6cff82cd0d6d31612'
             'aab27b427cb21108d831f2d9ddc89ce0948f7e8cb82e4bb2dc1bc82c6676224f'
