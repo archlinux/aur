@@ -13,7 +13,7 @@ pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen graphviz xmltoman jack2
+makedepends=(git meson doxygen graphviz xmltoman
              alsa-lib gst-plugins-base-libs sbc rtkit dbus sdl2
              ncurses libsndfile bluez-libs libldac libopenaptx
              libfdk-aac)
@@ -34,6 +34,7 @@ build() {
   rm -rf build || true
   arch-meson $_pkgbase build \
     -D docs=true \
+    -D jack=false \
     -D bluez5-backend-hsphfpd=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
@@ -57,7 +58,7 @@ _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
-           libudev.so libasound.so libsystemd.so libjack.so libbluetooth.so 
+           libudev.so libasound.so libsystemd.so libbluetooth.so
            libsbc.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
               'pipewire-common-alsa-git: ALSA support'
