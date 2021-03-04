@@ -9,8 +9,14 @@ url="https://github.com/AppImage/zsync2"
 license=("custom:Artistic")
 depends=(curl)
 makedepends=(cmake git gnutls openssl zlib)
-source=(git+$url.git)
-b2sums=('SKIP')
+source=(git+$url.git
+        git+https://github.com/Taywee/args.git
+        git+https://github.com/AppImage/cpr.git
+        git+https://github.com/google/googletest.git)
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
   cd ${pkgname/-git/}
@@ -22,7 +28,11 @@ pkgver() {
 
 prepare() {
   cd ${pkgname/-git/}
-  git submodule update --init
+  git submodule init
+  git config submodule.lib/args.url   "$srcdir"/args
+  git config submodule.lib/cpr.url    "$srcdir"/cpr
+  git config submodule.lib/gtest.url  "$srcdir"/googletest
+  git submodule update
 }
 
 build() {
