@@ -14,13 +14,13 @@ pkgver=5.15.2 # If you want to update periodically - use changeling script (AUR)
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=("i686" "x86_64")
-url="https://github.com/Geo25rey/qtwayland.git"
+url="https://github.com/Geo25rey/qt5-wayland.git"
 license=("GPL3" "LGPL")
 depends=("qt5-declarative" "libxcomposite" "wayland")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git://github.com/Geo25rey/qtwayland.git")
+source=("git://github.com/Geo25rey/qt5-wayland.git")
 sha256sums=("SKIP")
 
 pkgver() {

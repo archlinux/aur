@@ -2,7 +2,7 @@ pkgbase = qt5-wayland-bugfixport-git
 	pkgdesc = A cross-platform application and UI framework (QtWayland)
 	pkgver = 5.15.2
 	pkgrel = 1
-	url = https://github.com/Geo25rey/qtwayland.git
+	url = https://github.com/Geo25rey/qt5-wayland.git
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = qt5-wayland-bugfixport-git
 	depends = wayland
 	provides = qt5-wayland
 	conflicts = qt5-wayland
-	source = git://github.com/Geo25rey/qtwayland.git
+	source = git://github.com/Geo25rey/qt5-wayland.git
 	sha256sums = SKIP
 
 pkgname = qt5-wayland-bugfixport-git
