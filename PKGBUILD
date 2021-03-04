@@ -2,18 +2,18 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 _pkgname=pixel-saver
 pkgname=gnome-shell-extension-$_pkgname-git
-pkgver=1.20.r10.gcceefae
+pkgver=1.24.r7.g2c63d8c
 pkgrel=1
 pkgdesc="Saves pixels by fusing activity bar and title bar in a natural way"
 arch=('any')
-url="https://github.com/deadalnix/pixel-saver"
+url="https://github.com/pixel-saver/pixel-saver"
 license=('MIT')
 depends=('gnome-shell' 'xorg-xprop')
 makedepends=('git')
 provides=('gnome-shell-extension-pixel-saver')
 conflicts=('gnome-shell-extension-pixel-saver')
 install=$_pkgname.install
-source=(git+https://github.com/deadalnix/pixel-saver)
+source=(git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
