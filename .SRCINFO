@@ -1,0 +1,14 @@
+pkgbase = focusatwill-appimage
+	pkgdesc = Focus@Will combines neuroscience and music to boost productivity.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://focusatwill.com/
+	arch = x86_64
+	provides = focusatwill
+	conflicts = focusatwill
+	options = !strip
+	source = https://faw-desktop.s3.amazonaws.com/focusatwill-2.0.0.AppImage
+	sha512sums = af50f014738ae2128fd219ed5783da5a33bc82f272c60de14d93f70f1e55fe0b54ea133e223610e8456153c585357a0acb6202463f54b7d793e8b6b771a18d6d
+
+pkgname = focusatwill-appimage
+
