@@ -5,14 +5,15 @@
 _pkgname=rtags
 pkgname=${_pkgname}-clang-git
 pkgver=2.38
-pkgrel=2
-pkgdesc='A client/server application that indexes C/C++ code'
+pkgrel=3
+pkgdesc='A client/server application that indexes C/C++ code, build against clang-git'
 arch=('i686' 'x86_64')
 _url='https://github.com/Andersbakken'
 url="${_url}/rtags"
 license=('GPL3')
 depends=('bash' 'clang-git')
-conflicts=("${_pkgname}-git")
+conflicts=("${_pkgname}-git" "${_pkgname}")
+provides=("${_pkgname}")
 makedepends=('cmake' 'git' 'llvm-git' 'zlib')
 optdepends=('bash-completion: for bash completion' 'zlib')
 source=("git+${_url}/rtags.git#tag=v${pkgver}"
