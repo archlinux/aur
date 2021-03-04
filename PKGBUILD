@@ -3,6 +3,7 @@
 pkgname=ipfs-cluster-bin
 pkgver=0.13.1
 pkgrel=1
+epoch=1
 pkgdesc="ipfs-cluster-service, ipfs-cluster-ctl, ipfs-cluster-follow"
 arch=('x86_64')
 url=https://github.com/ipfs/ipfs-cluster

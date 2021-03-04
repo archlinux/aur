@@ -2,6 +2,7 @@ pkgbase = ipfs-cluster-bin
 	pkgdesc = ipfs-cluster-service, ipfs-cluster-ctl, ipfs-cluster-follow
 	pkgver = 0.13.1
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/ipfs/ipfs-cluster
 	arch = x86_64
 	license = custom:MIT,
