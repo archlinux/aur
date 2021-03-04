@@ -1,4 +1,6 @@
-*.pkg.*
-*.tar.gz
-pkg/
-src/
+*
+
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.diff
