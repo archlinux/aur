@@ -1,31 +1,24 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss-git
 _name=${pkgname#python-}
-pkgver=0.1.9.r21.2f9ebdf
+pkgver=0.1.9.r44.0f25670
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
 license=('BSD')
-depends=('python' 'tpm2-tss' 'libtss2-esys.so' 'libtss2-fapi.so' 'libtss2-rc.so' 'libtss2-tctildr.so')
-makedepends=('git' 'python-setuptools' 'swig')
-checkdepends=('ibm-sw-tpm2' 'python-cryptography')
+depends=('python' 'python-cffi' 'tpm2-tss' 'libtss2-esys.so')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
+checkdepends=('ibm-sw-tpm2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=('tpm2-pytss-git')
-source=("git+$url.git" 'git+https://github.com/tpm2-software/tpm2-swig.git')
-sha512sums=('SKIP' 'SKIP')
+source=("git+$url.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${_name%-git}"
 	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "${_name%-git}"
-	git submodule init
-	git config submodule.tpm2_pytss/swig.url "$srcdir/tpm2-swig"
-	git submodule update
 }
 
 build() {
@@ -34,8 +27,8 @@ build() {
 }
 
 check() {
-	cd "${_name%-git}"
-	python -B setup.py test
+	cd "${_name%-git}"/build/lib.*
+	python -B -m unittest
 }
 
 package() {
