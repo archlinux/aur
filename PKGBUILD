@@ -1,6 +1,6 @@
 pkgname=twitch-git
 _pkgname=Twitch-git
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unofficial Twitch desktop application."
 arch=('any')
