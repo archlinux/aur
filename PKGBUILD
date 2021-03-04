@@ -2,7 +2,7 @@
 
 _pkgname=labwc
 pkgname=labwc-git
-pkgver=r326.15a7910
+pkgver=r338.db4249d
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version)'
 url="https://github.com/johanmalm/labwc"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  arch-meson ../build
+  arch-meson -Dman-pages=disabled ../build
   ninja -v -C ../build
 }
 
