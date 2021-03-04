@@ -1,0 +1,15 @@
+pkgbase = cue-bin
+	pkgdesc = Validate and define text-based and dynamic configuration
+	pkgver = 0.3.0_beta.5
+	pkgrel = 1
+	url = https://github.com/cuelang/cue
+	arch = x86_64
+	license = Apache
+	provides = cue
+	conflicts = cuelang-bin
+	conflicts = cuelang-cue-git
+	source = https://github.com/cuelang/cue/releases/download/v0.3.0-beta.5/cue_0.3.0-beta.5_Linux_x86_64.tar.gz
+	sha256sums = f1ccf4fae2079ecb825e7bf9694f053088a3651c92c1399fdaa0a8d8104f47d5
+
+pkgname = cue-bin
+
