@@ -2,7 +2,7 @@
 # Contributor: Wesley Moore <wes@wezm.net>
 
 pkgname=gitui
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Blazing fast terminal-ui for git written in Rust'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libgit2' 'libxcb')
 conflicts=('gitui-git')
 makedepends=('cargo' 'python') # xcb crate needs python
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ba32583bb6afc3adac8fe78d8ce10fd127b2fe4f62bc24b301d1ffbfb838bf98')
+sha256sums=('061536ecd2c9f9f52d4aecaece86e1e3c6fd1b88f25ce11483a783b800b9ec9e')
 
 build() {
   cd "$pkgname-$pkgver"
