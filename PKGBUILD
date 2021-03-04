@@ -1,6 +1,7 @@
 # Contributor: André Silva <emulatorman@parabola.nu>
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor: Bastian Germann
 
 pkgname=linux-libre-firmware
 pkgver=1.4
