@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
-	pkgver = 1.53.2
+	pkgver = 1.54.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = x86_64
@@ -26,14 +26,14 @@ pkgbase = visual-studio-code-bin
 	source = visual-studio-code-url-handler.desktop
 	sha256sums = 0deefcb638e06c35a52e7e9fb8e19b2dc393f01e5c1c122d2938cddeb22cf8de
 	sha256sums = be3d123aacd575d8f836728266eb421ea70399d713d1fc30378dbc5602b519fb
-	source_x86_64 = code_x64_1.53.2.tar.gz::https://vscode-update.azurewebsites.net/1.53.2/linux-x64/stable
-	sha256sums_x86_64 = 23c93a7bf6ceed346f9f2034b4630d8d497dcc3f4b9cce6b67f08f8d272e1530
-	source_i686 = code_ia32_1.53.2.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-ia32/stable
+	source_x86_64 = code_x64_1.54.0.tar.gz::https://vscode-update.azurewebsites.net/1.54.0/linux-x64/stable
+	sha256sums_x86_64 = ddfffd1205d39896fb4774a5957b48c576264c1c13aebde7d55aa7ae5e5a3013
+	source_i686 = code_ia32_1.54.0.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-ia32/stable
 	sha256sums_i686 = 64360439cc2fa596838062f7e6f9757b79d4b775a564f18bad6cbad154bf850c
-	source_aarch64 = code_arm64_1.53.2.tar.gz::https://vscode-update.azurewebsites.net/1.53.2/linux-arm64/stable
-	sha256sums_aarch64 = 4480cfff309323ee4ffadfdbc1e5ac3245c1798fa43cc81968e7a5c28c8583e2
-	source_armv7h = code_armhf_1.53.2.tar.gz::https://vscode-update.azurewebsites.net/1.53.2/linux-armhf/stable
-	sha256sums_armv7h = 801d83a449ec0b5822c46d8c79b6c7e99df01472f3a0a3fd6ffbf97cf862b85d
+	source_aarch64 = code_arm64_1.54.0.tar.gz::https://vscode-update.azurewebsites.net/1.54.0/linux-arm64/stable
+	sha256sums_aarch64 = ed031d7fffe1e0933f8395fd0b15fc98587d104d2b786a05b436edb47677077c
+	source_armv7h = code_armhf_1.54.0.tar.gz::https://vscode-update.azurewebsites.net/1.54.0/linux-armhf/stable
+	sha256sums_armv7h = d51d9690afb4c98b3d7440d3d0949d9526d7451ab853ab0c68ea17f1342252b2
 
 pkgname = visual-studio-code-bin
 
