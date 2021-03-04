@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=plasma-phonebook-git
-pkgver=r163.869a837
+pkgver=r212.000cb19
 pkgrel=1
 pkgdesc="Phone book for Plasma Mobile"
 arch=('x86_64')
@@ -16,24 +16,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  install -d build
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${pkgname%-git}/build"
-  cmake ..
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
+  make -C build
 }
 
 package() {
-  cd "${pkgname%-git}/build"
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
