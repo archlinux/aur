@@ -53,6 +53,7 @@ pkgname = pipewire-common-git
 	provides = alsa-card-profiles
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
+	conflicts = pipewire-media-session
 	conflicts = alsa-card-profiles
 	conflicts = pipewire-common-bluez5-git
 	conflicts = pipewire-common-bluez5-hsphfpd-git

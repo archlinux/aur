@@ -67,7 +67,7 @@ package_pipewire-common-git() {
               'ofono: ofono HFP support'
               'hsphfpd: hsphfpd HSP/HFP support')
   provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire alsa-card-profiles
+  conflicts=(pipewire pipewire-media-session alsa-card-profiles
              pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
              pipewire-common-ffmpeg-git)
   replaces=(pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
