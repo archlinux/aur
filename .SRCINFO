@@ -1,7 +1,7 @@
 pkgbase = codelite
 	pkgdesc = Cross platform C/C++/PHP and Node.js IDE written in C++
-	pkgver = 15.0
-	pkgrel = 2
+	pkgver = 15.0.1
+	pkgrel = 1
 	url = http://www.codelite.org/
 	arch = i686
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = codelite
 	optdepends = gdb: debugger
 	optdepends = valgrind: debugger
 	noextract = wxgui.zip
-	source = codelite-15.0.tar.gz::https://github.com/eranif/codelite/archive/15.0.tar.gz
+	source = codelite-15.0.1.tar.gz::https://github.com/eranif/codelite/archive/15.0.1.tar.gz
 	source = http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-	md5sums = 1c54744ab0c9b5732087687ab17ab49d
+	md5sums = 8083ffd34ab83fcfa74c3f442026c845
 	md5sums = 20f3428eb831c3ff2539a7228afaa3b4
 
 pkgname = codelite

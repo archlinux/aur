@@ -20,7 +20,7 @@
 #
 
 _pkgname=codelite
-_pkgver=15.0
+_pkgver=15.0.1
 #_commit=d19d21e702fa0de1c6649c8a63096f30ee90cf9d
 
 pkg_ident="${pkgver//_/-}"
@@ -31,7 +31,7 @@ pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
 
 pkgname=${_pkgname}
 pkgver=${_pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
@@ -67,7 +67,7 @@ source=(
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('1c54744ab0c9b5732087687ab17ab49d'
+md5sums=('8083ffd34ab83fcfa74c3f442026c845'
          '20f3428eb831c3ff2539a7228afaa3b4'
          )
 noextract=('wxgui.zip')
