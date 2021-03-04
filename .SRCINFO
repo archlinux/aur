@@ -1,0 +1,14 @@
+pkgbase = python-exif
+	pkgdesc = Read and modify image EXIF metadata
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://gitlab.com/TNThieding/exif
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-plum
+	source = https://files.pythonhosted.org/packages/source/e/exif/exif-1.2.0.tar.gz
+	sha256sums = a2dc1928993291ba10932a611a416eacedb72755898344b2827fb0afec68f40b
+
+pkgname = python-exif
+
