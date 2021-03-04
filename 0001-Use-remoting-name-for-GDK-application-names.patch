@@ -1,18 +1,6 @@
-From 83f234464554c7f4393cd1dbdeb3a68d3ae0ccae Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Mon, 25 Mar 2019 20:30:11 +0100
-Subject: [PATCH] Use remoting name for GDK application names
-
----
- toolkit/xre/nsAppRunner.cpp | 6 +-----
- widget/gtk/nsAppShell.cpp   | 7 +++----
- 2 files changed, 4 insertions(+), 9 deletions(-)
-
-diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index 984b998133bd..b6c9f013940c 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-int XREMain::XRE_mainStartup(bool* aExitFlag) {
+@@ -4285,11 +4285,7 @@ int XREMain::XRE_mainStartup(bool* aExitFlag) {
    // consistently.
  
    // Set program name to the one defined in application.ini.
@@ -25,10 +13,9 @@ int XREMain::XRE_mainStartup(bool* aExitFlag) {
  
    // Initialize GTK here for splash.
  
-diff --git a/widget/gtk/nsAppShell.cpp b/widget/gtk/nsAppShell.cpp
-index 0daa78fdbbad..49038d0bb1c8 100644
 --- a/widget/gtk/nsAppShell.cpp
 +++ b/widget/gtk/nsAppShell.cpp
+@@ -24,6 +24,7 @@
  #  include "WakeLockListener.h"
  #endif
  #include "gfxPlatform.h"
@@ -36,18 +23,20 @@ index 0daa78fdbbad..49038d0bb1c8 100644
  #include "ScreenHelperGTK.h"
  #include "HeadlessScreenHelper.h"
  #include "mozilla/widget/ScreenManager.h"
- nsresult nsAppShell::Init() {
-     // option when program uses gdk_set_program_class().
-     //
-     // See https://bugzilla.gnome.org/show_bug.cgi?id=747634
--    nsAutoString brandName;
--    mozilla::widget::WidgetUtils::GetBrandShortName(brandName);
--    if (!brandName.IsEmpty()) {
--      gdk_set_program_class(NS_ConvertUTF16toUTF8(brandName).get());
-+    if (gAppData) {
-+      gdk_set_program_class(gAppData->remotingName);
+@@ -153,13 +154,9 @@ nsresult nsAppShell::Init() {
+       // See https://bugzilla.gnome.org/show_bug.cgi?id=747634
+       //
+       // Only bother doing this for the parent process, since it's the one
+-      // creating top-level windows. (At this point, a child process hasn't
+-      // received the list of registered chrome packages, so the
+-      // GetBrandShortName call would fail anyway.)
+-      nsAutoString brandName;
+-      mozilla::widget::WidgetUtils::GetBrandShortName(brandName);
+-      if (!brandName.IsEmpty()) {
+-        gdk_set_program_class(NS_ConvertUTF16toUTF8(brandName).get());
++      // creating top-level windows.
++      if (gAppData) {
++        gdk_set_program_class(gAppData->remotingName);
+       }
      }
    }
- 
--- 
-2.24.0

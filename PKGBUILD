@@ -34,18 +34,18 @@ _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _repo=https://hg.mozilla.org/mozilla-unified
 source_x86_64=("hg+$_repo#revision=autoland"
                $pkgname.desktop
-               "git+https://gitlab.com/librewolf-community/browser/common.git"
+               "git+https://gitlab.com/vnepogodin/librewolf-common.git"
                "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
-               "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-               "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
+               remove_addons.patch
+               context-menu.patch
                0001-Use-remoting-name-for-GDK-application-names.patch)
 source_aarch64=("hg+$_repo#revision=autoland"
                 $pkgname.desktop
-                "git+https://gitlab.com/librewolf-community/browser/common.git"
+                "git+https://gitlab.com/vnepogodin/librewolf-common.git"
                 "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
-                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-                "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
+                remove_addons.patch
+                context-menu.patch
+                arm.patch
                 build-arm-libopus.patch
                 0001-Use-remoting-name-for-GDK-application-names.patch)
 
@@ -53,18 +53,18 @@ sha512sums_x86_64=('SKIP'
                    '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                    'SKIP'
                    'SKIP'
-                   '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
-                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
-                   'afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea')
+                   '667d9127f4d88ab06bf2cf3693c8dbbf79051b341fbf561f0ba746b26a9670d65d0b9130e77bf4c12cc4d2f89d75286e03292c84bd396147a1c639ddc32daab3'
+                   'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
+                   '9e5c064938029332e5a72d0c214e62dd8cfe11ad304ecbbc8ea6dda8f85536f13b8b42b9a1798d084f6846302fe4df5e197ecc9efeff6e186d6bffe333760706')
 sha512sums_aarch64=('SKIP'
                     '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                     'SKIP'
                     'SKIP'
-                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
-                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
-                    '179d922764a959c3eccd1ff98e16c629516d04c9a3a8fe6d199f8de88ad7163a026e4415836728a01a89703f1f31247addcead2da2b341b1849e4627a742c5b9'
+                    '667d9127f4d88ab06bf2cf3693c8dbbf79051b341fbf561f0ba746b26a9670d65d0b9130e77bf4c12cc4d2f89d75286e03292c84bd396147a1c639ddc32daab3'
+                    'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
+                    '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
-                    'afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea')
+                    '9e5c064938029332e5a72d0c214e62dd8cfe11ad304ecbbc8ea6dda8f85536f13b8b42b9a1798d084f6846302fe4df5e197ecc9efeff6e186d6bffe333760706')
 
 pkgver() {
   cd mozilla-unified
@@ -175,7 +175,6 @@ fi
 
   # To enable global menubar
   # Set these to true
-  # browser.proton.enabled
   # browser.proton.appmenu.enabled
 
   # Disabling Pocket
