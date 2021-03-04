@@ -2,8 +2,8 @@
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=11.6
-pkgrel=4
+pkgver=11.8
+pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://freefilesync.org"
@@ -29,15 +29,13 @@ source=(
     FreeFileSync.desktop
     RealTimeSync.desktop
     freefilesync-mime.xml
-    install.exp
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "f8a0edb87dd3f6c3cbeb491c5dc6a121a162c207c3d4298fa3856ae3b331d7a0"
+    "21c14955e73d51c6d2029f39d6b26678479864d74739c10067e00f449a463e18"
     "cf4fc81793572cc3e757e8ac26ce20807ce9c731eef0e96c046038075e2e3ecf"
     "810403667792b732768e7be442f43244c4297df6c4b5decb6d07e04ef13f545a"
     "30d938d1f385ea5c660fc4080d36391267a6e9c01939bd1eb535c5857af256f8"
-    "22314c6b42a322abba9f8ebde255e011219748b3b6a2543962f07da76f778cf1"
 )
 options=(!strip)
 install=".install"
@@ -46,11 +44,14 @@ DLAGENTS=("https::$PWD/dlagent $url %u %o")
 package() {
     install -d "$pkgdir/opt/$_pkgname"
 
-    # invalidate sudo cache to prevent installer from making changes to the system
-    sudo -k 2>/dev/null
+    # extract installer archive from installer binary
+    tail -c +38360 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
 
-    # run installer
-    ./install.exp "$srcdir/FreeFileSync_${pkgver}_Install.run" "$pkgdir/opt/$_pkgname"
+    # extract inner archive from installer archive
+    tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" FreeFileSync.tar.gz -C "$srcdir"
+
+    # extract inner archive
+    tar -xzf "$srcdir/FreeFileSync.tar.gz" -C "$pkgdir/opt/$_pkgname"
     chown -R root:root "$pkgdir/opt/$_pkgname"
 
     # documentation

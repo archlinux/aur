@@ -1,8 +1,0 @@
-#!/usr/bin/expect -f
-log_user 0
-spawn [lindex $argv 0] --directory [lindex $argv 1] --noshortcuts
-expect "Accept the FreeFileSync license terms?"
-send "y\r"
-expect "Install FreeFileSync into"
-send "y\r"
-expect eof
