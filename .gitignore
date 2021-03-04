@@ -1,4 +1,6 @@
-pkg/
-src/
-QGnomePlatform
-*.pkg.tar*
+*
+
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.diff
