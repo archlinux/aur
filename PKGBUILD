@@ -1,7 +1,7 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=xdg-desktop-portal-wlr-git
-pkgver=v0.1.0.r32.gcf3e026
+pkgver=v0.2.0.r1.g07154bb
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url=https://github.com/emersion/xdg-desktop-portal-wlr
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
 conflicts=("${pkgname%-git}")
-depends=(xdg-desktop-portal pipewire)
+depends=(xdg-desktop-portal pipewire iniparser)
 makedepends=(git meson wayland-protocols wayland)
 optdepends=(
   "libpipewire02: For Chromium WebRTC desktop screencast (see project GitHub page)"
