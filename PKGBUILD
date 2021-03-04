@@ -1,8 +1,8 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-qt5integration-git
-pkgver=5.1.5.r12.g3ce68d5
-pkgrel=2
+pkgver=5.1.5.r18.g8a3a073
+pkgrel=1
 pkgdesc='Qt platform theme integration plugins for DDE'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/qt5integration"
