@@ -1,8 +1,8 @@
-# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
+# Maintainer: PumpkinCheshire <sollyonzou at gmail dot com>
 # Contributor: Kyle Laker <kyle+aur at laker dot email>
 
 pkgname=marp-cli
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="A CLI interface for Marp and Marpit based converters"
 arch=('any')
@@ -11,16 +11,17 @@ license=('MIT')
 makedepends=('npm' 'jq')
 optdepends=('chromium: PDF/PPTX/image conversion'
     'google-chrome: PDF/PPTX/image conversion')
+depends=('nodejs')
 provides=('marp-cli')
 conflicts=('marp-cli-bin')
 replaces=('marp')
 options=('!strip')
 source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 
-# I may need to extract it for install license.
+# I may need to extract it for installing license.
 #noextract=("${pkgname}-${pkgver}.tgz")
 
-sha256sums=('42497466ce3f2bf37aed540ea811bbe8f2adbdf8cd6396916b438a1fca2a4c4c')
+sha256sums=('3f2d480c3b737ad44d99a3a8bbd1ff70ce50be45e0a41d41d81119e534c5251f')
 
 package() {
     npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"

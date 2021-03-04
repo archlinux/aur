@@ -1,20 +1,21 @@
 pkgbase = marp-cli
 	pkgdesc = A CLI interface for Marp and Marpit based converters
-	pkgver = 0.23.1
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://github.com/marp-team/marp-cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
+	depends = nodejs
 	optdepends = chromium: PDF/PPTX/image conversion
 	optdepends = google-chrome: PDF/PPTX/image conversion
 	provides = marp-cli
 	conflicts = marp-cli-bin
 	replaces = marp
 	options = !strip
-	source = https://registry.npmjs.org/@marp-team/marp-cli/-/marp-cli-0.23.1.tgz
-	sha256sums = 42497466ce3f2bf37aed540ea811bbe8f2adbdf8cd6396916b438a1fca2a4c4c
+	source = https://registry.npmjs.org/@marp-team/marp-cli/-/marp-cli-0.23.2.tgz
+	sha256sums = 3f2d480c3b737ad44d99a3a8bbd1ff70ce50be45e0a41d41d81119e534c5251f
 
 pkgname = marp-cli
 
