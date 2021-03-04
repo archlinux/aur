@@ -1,14 +1,14 @@
 pkgbase = rndstr
 	pkgdesc = Generate random strings in shell
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/kugland/rndstr
 	arch = any
 	license = MIT
 	depends = bash
 	depends = bc
-	source = rndstr-1.0.1.tar.gz::https://github.com/kugland/rndstr/archive/1.0.1.tar.gz
-	sha256sums = 164a8d6dd71bf56746704851219e886558e339afb01832a286a9b3d309686927
+	source = rndstr-1.0.2.tar.gz::https://github.com/kugland/rndstr/archive/1.0.2.tar.gz
+	sha256sums = be1c9a70031c3baa3e3a5d04f76d4a01b3918aae8945d499e3f95b81440692bd
 
 pkgname = rndstr
 
