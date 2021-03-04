@@ -13,7 +13,7 @@ pkgbase = qt5-wayland-bugfixport-git
 	depends = wayland
 	provides = qt5-wayland
 	conflicts = qt5-wayland
-	source = https://github.com/Geo25rey/qtwayland.git
+	source = git://github.com/Geo25rey/qtwayland.git
 	sha256sums = SKIP
 
 pkgname = qt5-wayland-bugfixport-git

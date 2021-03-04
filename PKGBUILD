@@ -20,7 +20,7 @@ depends=("qt5-declarative" "libxcomposite" "wayland")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://github.com/Geo25rey/qtwayland.git")
+source=("git://github.com/Geo25rey/qtwayland.git")
 sha256sums=("SKIP")
 
 pkgver() {
