@@ -31,24 +31,24 @@ http
         default off;
         https on;
     }
-    
+
     map $http_upgrade $proxy_connection
     {
         default upgrade;
         "" close;
     }
-    
+
     server
     {
         listen          443 ssl;
         server_name     subdomain.domain.me;
-        
+
         # SSL
         include /etc/letsencrypt/options-ssl-nginx.conf;
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
         ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.me/privkey.pem;
         ssl_certificate /etc/letsencrypt/live/subdomain.domain.me/fullchain.pem;
-        
+
         location /
         {
             # Proxy
