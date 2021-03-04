@@ -7,7 +7,7 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.22.r61.g7cf07da3
+pkgver=0.3.23.r5.ge89e87ba
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -34,6 +34,7 @@ build() {
   rm -rf build || true
   arch-meson $_pkgbase build \
     -D docs=true \
+    -D bluez5-backend-hsphfpd=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -56,14 +57,16 @@ _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
-           libudev.so libasound.so libsystemd.so libbluetooth.so libsbc.so
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+           libudev.so libasound.so libsystemd.so libjack.so libbluetooth.so 
+           libsbc.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
               'pipewire-common-alsa-git: ALSA support'
               'pipewire-common-jack-git: JACK support'
               'pipewire-common-pulse-git: PulseAudio support'
-              'gst-plugin-pipewire-common-git: GStreamer support')
-  provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
+              'gst-plugin-pipewire-common-git: GStreamer support'
+              'ofono: ofono HFP support'
+              'hsphfpd: hsphfpd HSP/HFP support')
+  provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire alsa-card-profiles
              pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
              pipewire-common-ffmpeg-git)
@@ -85,7 +88,6 @@ package_pipewire-common-git() {
 
   _pick jack etc/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
-  _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
@@ -114,7 +116,7 @@ package_pipewire-common-alsa-git() {
 
 package_pipewire-common-jack-git() {
   pkgdesc+=" - JACK support"
-  depends=(pipewire-common-git libpipewire-$_ver.so bash libjack.so)
+  depends=(pipewire-common-git libpipewire-$_ver.so bash)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
   backup=(etc/pipewire/jack.conf)
