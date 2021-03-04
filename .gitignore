@@ -1,6 +1,7 @@
-python-validity/
-pkg/
-src/
-*.xz
-*.gz
-*.zst
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.diff
