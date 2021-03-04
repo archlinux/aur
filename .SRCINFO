@@ -1,22 +1,20 @@
 pkgbase = nbtexplorer
 	pkgdesc = Minecraft NBT Editor for editing player and world files.
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaquadro/NBTExplorer
-	arch = i686
-	arch = x86_64
-	license = unknown
-	makedepends = unzip
+	arch = any
+	license = MIT
+	makedepends = msbuild
 	depends = mono
-	provides = nbtexplorer
-	source = https://github.com/jaquadro/NBTExplorer/releases/download/v2.8.0-win/NBTExplorer-2.8.0.zip
+	options = !strip
+	source = https://github.com/jaquadro/NBTExplorer/archive/v2.8.0-win.zip
 	source = nbtexplorer
 	source = nbtexplorer.png
 	source = nbtexplorer.desktop
-	md5sums = 50a9db91f83c6c09f064385e50760a25
-	md5sums = 49ae5eca65fe9ee7f546e7f518e98621
-	md5sums = ae0ef756dcb6f660e245a8b6bdc381d3
-	md5sums = 62170849669e8c833c5929070eadd0f7
+	sha256sums = a73b19d448db612f5bb1d947b5105ab3a5bce78abd1de975f6d91f5299ec6df4
+	sha256sums = 71ab50b6d72b30402f9c1796c43b7541308cec89ae07761e10d68ab81138492b
+	sha256sums = f14cc58c71f0c8afef75f5b31ec441835aa7c8702530f469679215ae9c94e4c2
+	sha256sums = d3390cc6b5a61d27cd24da8f0fa19d33e941bd626a633b364105ba23c2f13ae6
 
 pkgname = nbtexplorer
-
