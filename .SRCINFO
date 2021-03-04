@@ -1,14 +1,14 @@
 pkgbase = dnsperf
 	pkgdesc = Tools that measure performance of authoritative Domain Name services
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://www.dns-oarc.net/tools/dnsperf
 	arch = x86_64
 	license = Apache
 	depends = bind
-	source = https://www.dns-oarc.net/files/dnsperf/dnsperf-2.4.1.tar.gz
-	sha256sums = 3debcc95c2e70b5fe866b0f1eacf3d0f586fff2f3083e97247420b2f08e772e5
-	sha512sums = a2c426cf06eac13d96c32a07fb1051a61510067fd287929861fd5c4b159f12396c774f193ba5ce89ea0c9a81396c0db60a22919bad17c4cc3fbae06a8bfb640f
+	source = https://www.dns-oarc.net/files/dnsperf/dnsperf-2.4.2.tar.gz
+	sha256sums = be1782ada2bc735b1d3538ed2fa8fb52d917eb32538c2f0612ae60c024101c31
+	sha512sums = 1ffecf7ca1dd531c42fcae828fd88aa2078c73ee09b643de09ed438647bf204f9cbd3dbc6e6757a0bb05786ce5400a556998c502fe83f2f6fc4c3eae02247fb1
 
 pkgname = dnsperf
 
