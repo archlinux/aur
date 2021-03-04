@@ -2,7 +2,7 @@
 pkgname='python-pystemd'
 _name="${pkgname#python-}"
 pkgver='0.8'
-pkgrel=1
+pkgrel=2
 pkgdesc='A thin Cython-based wrapper on top of libsystemd, focused on exposing the dbus API via sd-bus in an automated and easy to consume way.'
 arch=('any')
 url='https://github.com/facebookincubator/pystemd'
