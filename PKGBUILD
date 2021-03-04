@@ -1,22 +1,23 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: Sebastian Voecking <voeck@web.de>
 
-# NOTE: config.sh detects during the build which libraries (gtk, qt5, ...) are available
+# NOTE: config.sh detects during the build which libraries (gtk, ...) are available
 
 pkgbase=mp-5
 #pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
 pkgname=(mp-5-gtk mp-5-nc)
-pkgver=5.46
+pkgver=5.47
 pkgrel=1
 arch=('x86_64')
 url="https://triptico.com/software/mp.html"
 license=('Unlicense')
 #'mp_doccer' 'perl-grutatxt'
-makedepends=('gtk3' 'ncurses' 'qt5-base')
+#makedepends=('gtk3' 'ncurses' 'qt5-base')
+makedepends=('gtk3' 'ncurses')
 options=(!makeflags)
 #source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp/mp-$pkgver.tar.gz")
 source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp-5.tar.gz")
-md5sums=('95f98feb4e911978135d8d78e250303a')
+md5sums=('0512640c5dc7cdc7336d3b63e4c34c08')
 
 prepare() {
   # Patch hard-coded install paths
