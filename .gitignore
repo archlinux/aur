@@ -1,6 +1,6 @@
-open-fprintd/
-pkg/
-src/
-*.xz
-*.gz
-*.zst
+*
+
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.diff
