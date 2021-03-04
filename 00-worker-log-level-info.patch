@@ -1,0 +1,22 @@
+diff --git a/plugins/server/plugin.go b/plugins/server/plugin.go
+index 95e593b..476f85d 100644
+--- a/plugins/server/plugin.go
++++ b/plugins/server/plugin.go
+@@ -241,7 +241,7 @@ func (server *Plugin) collectEvents(event interface{}) {
+ 			server.log.Debug(strings.TrimRight(string(we.Payload.([]byte)), " \n\t"))
+ 		case events.EventWorkerStderr:
+ 			// TODO unsafe byte to string convert
+-			server.log.Debug(strings.TrimRight(string(we.Payload.([]byte)), " \n\t"))
++			server.log.Info(strings.TrimRight(string(we.Payload.([]byte)), " \n\t"))
+ 		}
+ 	}
+ }
+@@ -255,7 +255,7 @@ func (server *Plugin) collectWorkerLogs(event interface{}) {
+ 			server.log.Debug(strings.TrimRight(string(we.Payload.([]byte)), " \n\t"))
+ 		case events.EventWorkerStderr:
+ 			// TODO unsafe byte to string convert
+-			server.log.Debug(strings.TrimRight(string(we.Payload.([]byte)), " \n\t"))
++			server.log.Info(strings.TrimRight(string(we.Payload.([]byte)), " \n\t"))
+ 		}
+ 	}
+ }
