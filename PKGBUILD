@@ -2,7 +2,7 @@
 
 _pkgname='insomnia'
 pkgname="${_pkgname}-bin"
-pkgver=2020.5.2
+pkgver=2021.1.0
 pkgrel=1
 pkgdesc='API Client and Design Platform for GraphQL and REST'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_url_source}/releases/download/core@${pkgver}/${_pkgname^}.Core-${pkgver}.deb"
         "${_pkgname}-${pkgver}-license::${_url_source}/raw/core@${pkgver}/LICENSE")
-sha256sums=('8441ba6087be1c1ce11a2999ec1f675eb0c68ec39d53550d2c530dd98032470e'
+sha256sums=('dd3df7e2df8e8dee8b3b3501a9008aeb0749ff8322e162e65b9bdc1e283cce3e'
             'cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9')
 
 package() {
