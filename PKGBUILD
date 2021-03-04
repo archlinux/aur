@@ -1,8 +1,8 @@
+# Maintainer: David Runge <dvzrv@archlinux.org>
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
-# Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-pkgver=5.10.16.30.arch1
+pkgver=5.11.2.9.arch1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
@@ -14,11 +14,14 @@ options=('!strip')
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"
   config
+  sphinx-workaround.patch  # Sphinx 3.5 broke the build again
 )
 sha512sums=('SKIP'
-            '6eb7f30c3bfa35e5e2f8b4c733cf6db20a7d1209074805697f6fe5f600882b2d481dbf6ee5b3014ab1b2b773a44977c01674fa15d97d8c636e0d36607ffdfe37')
+            '8ae844fea84cec1f8349d1365725b7e27b86f63bfbc72b65446c40c0c5212ac625383e1641b3c8fbe2ada55d511881573ae0489b5a3c2b1f59dc1770b459e81e'
+            '93c03382b6678ce5e94a5d06e6737965629d7dc49d16e968d225e664d88f07a12abe0e04908f1cdaa75ff1cde88783cae9f0794d1075bc65bc7baeff392e0ae2')
 b2sums=('SKIP'
-        'b7169c9031f421ff73461e7a3afccd682dfebdc115f626f65cb236ccf727d622e83d35ce6bed8412d922562618943b1951cacee92907aa506add855290cc1e7f')
+        'aba2bbf351c963b1e59e24713779b22241c3fd43fa7774196e70d4df113c227f9c9862a4b192397b62a19a696d1dc5bc842aa1694c02b4051137cd1f10fc181d'
+        'db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
@@ -91,6 +94,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd "${pkgbase}"
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
