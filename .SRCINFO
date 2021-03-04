@@ -1,11 +1,10 @@
 pkgbase = ruby-database_cleaner-active_record
 	pkgdesc = Strategies for cleaning databases using ActiveRecord. Can be used to ensure a clean state for testing.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DatabaseCleaner/database_cleaner-active_record
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = ruby-bundler
 	makedepends = ruby-rake
 	makedepends = ruby-rspec
