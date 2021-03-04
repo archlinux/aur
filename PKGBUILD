@@ -60,7 +60,7 @@ _flags=(
     -Dexamples=false
     -Dxdg-foreign=disabled
     -Db_ndebug=true
-    -Dw_error=false
+    -Dwerror=false
 )
 
 build() {
