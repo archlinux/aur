@@ -5,7 +5,7 @@ pkgbase=linux-usermode
 pkgname=('linux-usermode' 'linux-usermode-modules')
 _kernelname=-usermodelinux
 _major=5.11
-_minor=2
+_minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -20,7 +20,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
         'config'
         '70-uml.hook')
 
-sha256sums=('904a5b3cbaf5264ef8da6c7a5445fa7ea19168ad77fb83a7cc1b8ba95d52d0a0'
+sha256sums=('3558c70bb3805763c250df3b2c29225cedfce849483afd4ecba27e29ecb1cbfe'
             'SKIP'
             'c7d999f09ab43c85270bdb1d92b07d3b075fec5d4bd287a281aa1991ee8b90c1'
             '05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c')
