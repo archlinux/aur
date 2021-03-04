@@ -31,8 +31,8 @@ validpgpkeys=()
 pkgver()
 {
     cd ${srcdir}/${_pkgname}/
-    version=$(git describe --tags --abbrev=0) | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
-    printf "%s" ${version:1}
+    version=$(git describe --tags --abbrev=0)
+    printf "%s" ${version:1} | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build()
@@ -49,22 +49,22 @@ package()
     mkdir -p ${pkgdir}/usr/lib/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
-    
+
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
     dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- $@" > ${srcdir}/${_pkgname}/run.sh
-    
+
     # Create nbxplorer-start.sh.
     echo -e "#!/bin/bash
     tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname_lc}-start.sh
-    
+
     # Create nbxplorer-stop.sh.
     echo -e "#!/bin/bash
     tmux kill-session -t ${_pkgname_lc}" > ${srcdir}/${_pkgname}/${_pkgname_lc}-stop.sh
-    
+
     # Put the installation at the right place.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
-    
+
     # Symlinking the scripts.
     ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
@@ -72,10 +72,10 @@ package()
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-start
     ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}-stop.sh ${pkgdir}/usr/bin/${_pkgname_lc}-stop
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-stop
-    
+
     # Install the documentation.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
-    
+
     # Install the license.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/
 }
