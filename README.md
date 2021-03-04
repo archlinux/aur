@@ -1,7 +1,7 @@
 # Installation
 ## Necessary configuration
 ### bitcoind
-1. `nano /etc/bitcoin/bitcoin.conf` and uncomment "prune=550". Set "rpcuser=" and "rpcpassword=" how you like. You will need those values later.
+1. `sudo nano /etc/bitcoin/bitcoin.conf` and uncomment "prune=550". Set "rpcuser=" and "rpcpassword=" how you like. You will need those values later.
 
 ### nbxplorer
 1. `nano ~/.nbxplorer/Main/settings.config` and set "btc.rpc.auth=" according to the prior set values in the bitcoin configuration file.
