@@ -1,6 +1,6 @@
 pkgbase = python-seqlearn-git
 	pkgdesc = A sequence classification toolkit for Python.
-	pkgver = 20141124
+	pkgver = r89.32d4bfa
 	pkgrel = 1
 	url = http://larsmans.github.io/seqlearn/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = python-seqlearn-git
 	license = custom: Copyright 2013-2014 Lars Buitinck / University of Amsterdam and contributors
 	makedepends = git
 	options = !emptydirs
-	source = git://github.com/larsmans/seqlearn.git
+	source = git+https://github.com/larsmans/seqlearn.git
 	md5sums = SKIP
 
 pkgname = python-seqlearn-git
