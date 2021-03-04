@@ -1,12 +1,12 @@
 pkgbase = plymouth-theme-arch-solarized-git
 	pkgdesc = A Plymouth theme with a solarized-dark arch linux logo.
-	pkgver = r14.f1749f6
+	pkgver = r16.af2e98c
 	pkgrel = 1
-	url = https://github.com/kylesferrazza/plymouth-theme-arch-solarized/
+	url = https://gitlab.com/kylesferrazza/plymouth-theme-arch-solarized/
 	arch = any
 	makedepends = git
 	depends = plymouth
-	source = plymouth-theme-arch-solarized::git+https://github.com/kylesferrazza/plymouth-theme-arch-solarized.git
+	source = plymouth-theme-arch-solarized::git+https://gitlab.com/kylesferrazza/plymouth-theme-arch-solarized.git
 	sha256sums = SKIP
 
 pkgname = plymouth-theme-arch-solarized-git

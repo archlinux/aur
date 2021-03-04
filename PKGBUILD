@@ -3,14 +3,14 @@
 _themename=arch-solarized
 _pkgname="plymouth-theme-${_themename}"
 pkgname="${_pkgname}-git"
-pkgver=r14.f1749f6
+pkgver=r16.af2e98c
 pkgrel=1
 pkgdesc='A Plymouth theme with a solarized-dark arch linux logo.'
 arch=('any')
-url="https://github.com/kylesferrazza/${_pkgname}/"
+url="https://gitlab.com/kylesferrazza/${_pkgname}/"
 depends=('plymouth')
 makedepends=('git')
-source=($_pkgname::"git+https://github.com/kylesferrazza/${_pkgname}.git")
+source=($_pkgname::"git+https://gitlab.com/kylesferrazza/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
