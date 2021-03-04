@@ -2,7 +2,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=libspectrum
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="ZX Spectrum emulator support library."
 arch=('i686' 'x86_64')
@@ -21,4 +21,4 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
-md5sums=('5f6f55887394db5ddf3fd98c6dd42e55')
+md5sums=('a675e8b812f6029e6f7c780f8461b254')
