@@ -3,20 +3,20 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-firmware
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc='Firmware files for Linux-libre'
 arch=('any')
 url='https://jxself.org/firmware'
 license=('GPL2')
-makedepends=('arm-none-eabi-gcc')
+makedepends=('arm-none-eabi-gcc' 'avr-libc' 'cmake' 'dfu-util' 'wget')
 options=('!buildflags')
 provides=('linux-firmware')
 conflicts=('linux-firmware'
            'linux-firmware-git')
 source=("https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz"
         "https://jxself.org/firmware/${pkgname}-${pkgver}.tar.lz.asc")
-sha512sums=('d827ec7024b4900dcdf6af8cdd4e72b02596d0ade5c2262460cd573785300498e6aa655b9a59cd22e38a6a787826a564ae33acfac52e68df1d082445e66f18df'
+sha512sums=('3b4c8afb63c55f05df0b2686459c6bb2c0cb56db8384d5527506ff4a14b8de80e1a3037a9b57cccccd6953d869c6a71a6500c4c7b735253ea0b57c79854d9457'
             'SKIP')
 validpgpkeys=('F611A908FFA165C699584ED49D0DB31B545A3198')
 
