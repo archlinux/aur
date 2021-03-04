@@ -1,12 +1,12 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=gtkttk
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="ttk theme that gives to your Tk applications a native GTK+ look and feel."
 url="https://github.com/Geballin/gtkTtk"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('tcl' 'tk' 'gtk2' 'gtk-engines' 'ttk-theme-chooser')
+depends=('tcl' 'tk' 'gtk2' 'gtk-engines' 'ttk-theme-chooser' 'gdk-pixbuf-xlib')
 optdepends=()
 makedepends=(make gcc tcl)
 conflicts=()
