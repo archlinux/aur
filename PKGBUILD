@@ -3,7 +3,7 @@
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=protonmail-bridge
-pkgver=1.6.3
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -17,22 +17,18 @@ optdepends=(
 )
 conflicts=('protonmail-bridge-bin')
 options=('!emptydirs' '!strip')
-source=("git://github.com/ProtonMail/proton-bridge.git"
+# Source to compile to a specific tag
+#source=("git://github.com/ProtonMail/proton-bridge.git#tag=br-${pkgver}"
+#        "protonmail-bridge.desktop")
+# Source to compile to a specific commit
+source=("git://github.com/ProtonMail/proton-bridge.git#commit=c0a8877018f59b8796cf40ed98917f7747a1a"
         "protonmail-bridge.desktop")
 sha256sums=('SKIP'
             '226bc140ec5c34cfdff42b33058d045446a4006518d2660db932c7f51632b48a')
 
 prepare() {
     cd ${srcdir}/proton-bridge/
-#    export CGO_CPPFLAGS="${CPPFLAGS}"
-#    export CGO_CFLAGS="${CFLAGS}"
-#    export CGO_CXXFLAGS="${CXXFLAGS}"
-#    export CGO_LDFLAGS="${LDFLAGS}"
-#    export QMAKE_CXXFLAGS=$QMAKE_CXXFLAGS" -fno-sized-deallocation"
     export PATH=$PATH:$(go env GOPATH)/bin/
-    git checkout "br-${pkgver}"
-    # fix versioning in source 
-    # sed -i s/1.4.0-git/1.4.5-git/g Makefile
     make clean
     make build
 }
