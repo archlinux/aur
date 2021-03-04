@@ -1,16 +1,16 @@
 # Maintainer: Denton Liu <liu.denton@gmail.com>
 pkgname=crewlink
-pkgver=1.2.1
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Free, open, Among Us Proximity Chat'
 arch=('x86_64')
-url='https://github.com/zbanks/CrewLink'
+url='https://github.com/TheGreatMcPain/CrewLink'
 license=('GPL3')
 makedepends=('yarn')
 optdepends=('sudo: crewlink-launcher support')
-source=("https://github.com/zbanks/CrewLink/archive/v$pkgver.tar.gz"
+source=("https://github.com/TheGreatMcPain/CrewLink/archive/v$pkgver.tar.gz"
         crewlink-launcher)
-sha256sums=('d3734df31d4e203f37f6fce0aeb2ab1303ee8b5435cd57ce56fd1362f6560cb6'
+sha256sums=('ba9e87301b386474ce6cab942e4afffcb7fb725e3ee5ce55a766d7146d00ffd6'
             '264849ad57fab753f9991399c39dbfb07e8996e0440b6f77d6e3470e38f71de6')
 
 build() {
