@@ -7,9 +7,9 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.2.3
+pkgver=4.2.4
 secp256k1ver=0.20.9
-pkgrel=3
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -29,6 +29,7 @@ depends=(
   'python-dnspython'
   'python-ecdsa'
   'python-jsonrpclib-pelix'
+  'python-pathvalidate'
   'python-protobuf'
   'python-pyaes'
   'python-pyqt5'
@@ -57,16 +58,13 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
-        "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz"
-        "fix-proxy-bypass.patch")
-sha256sums=('1a7d3ff1ae4d71f1f50782cdf1c82db72c330561f77ee13b7f3e1e6b687c7aa6'
-            '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8'
-            '79791aa81e1b74b848b6704a167a7749d33564ff757f31e735d0797aeefbdc33')
+        "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz")
+sha256sums=('9c481397ba29d9f4cec8742db789ecf7c2ecf73cfe6b43db1c1cfafb3be37631'
+            '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8')
 
 prepare() {
   rmdir "Electron-Cash-${pkgver}/contrib/secp256k1"
   ln -s "${PWD}/secp256k1-${secp256k1ver}" "Electron-Cash-${pkgver}/contrib/secp256k1"
-  patch -Np1 -d "Electron-Cash-${pkgver}" < fix-proxy-bypass.patch
 }
 
 build() {
