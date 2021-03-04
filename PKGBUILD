@@ -24,6 +24,7 @@ depends=(
     'xcb-util-image'
     'xcb-util-wm'
     'xcb-util-renderutil'
+    'xorg-xwayland'
 )
 makedepends=(
     'meson'
@@ -50,15 +51,12 @@ _flags=(
     --buildtype=plain
     -Dlogind=disabled
     -Dlogind-provider=elogind
-    -Dlibseat=disabled
     -Dxcb-errors=enabled
     -Dxcb-icccm=enabled
     -Dxcb-xkb=enabled
     -Dxwayland=enabled
     -Dx11-backend=enabled
-    -Dexamples=false
     -Dxdg-foreign=disabled
-    -Db_ndebug=false
     -Dwerror=false
     -Db_sanitize=address,undefined
 )
