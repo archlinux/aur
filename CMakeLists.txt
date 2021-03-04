@@ -74,22 +74,35 @@ find_library(SMPEG_LIBRARY
 
 add_compile_definitions(LINUX USE_SMPEG USE_FONTCONFIG USE_OGG_VORBIS USE_CDROM USE_LUA)
 
+set(ALL_LIBS
+	SDL::SDL
+	${SDL_SOUND_LIBRARIES}
+	${SDL_IMAGE_LIBRARIES}
+	${SDL_MIXER_LIBRARIES}
+	${SDL_TTF_LIBRARIES}
+	${SMPEG_LIBRARY}
+	${LUA_LIBRARIES}
+	${BZIP2_LIBRARIES}
+	Fontconfig::Fontconfig
+	${JPEG_LIBRARIES}
+)
+
 add_executable(onscripter onscripter_main.cpp ${HEADERS} ${SOURCES})
-target_link_libraries(onscripter SDL::SDL ${SDL_SOUND_LIBRARIES} ${SDL_IMAGE_LIBRARIES} ${SDL_MIXER_LIBRARIES} ${SDL_TTF_LIBRARIES} ${SMPEG_LIBRARY} ${LUA_LIBRARIES} ${BZIP2_LIBRARIES} Fontconfig::Fontconfig ${JPEG_LIBRARIES})
+target_link_libraries(onscripter ${ALL_LIBS})
 install(TARGETS onscripter DESTINATION bin)
 
 add_executable(sardec sardec.cpp ${HEADERS} ${SOURCES})
-target_link_libraries(sardec SDL::SDL ${SDL_SOUND_LIBRARIES} ${SDL_IMAGE_LIBRARIES} ${SDL_MIXER_LIBRARIES} ${SDL_TTF_LIBRARIES} ${SMPEG_LIBRARY} ${LUA_LIBRARIES} ${BZIP2_LIBRARIES} Fontconfig::Fontconfig ${JPEG_LIBRARIES})
+target_link_libraries(sardec ${ALL_LIBS})
 install(TARGETS onscripter DESTINATION bin)
 
 add_executable(nsadec nsadec.cpp ${HEADERS} ${SOURCES})
-target_link_libraries(nsadec SDL::SDL ${SDL_SOUND_LIBRARIES} ${SDL_IMAGE_LIBRARIES} ${SDL_MIXER_LIBRARIES} ${SDL_TTF_LIBRARIES} ${SMPEG_LIBRARY} ${LUA_LIBRARIES} ${BZIP2_LIBRARIES} Fontconfig::Fontconfig ${JPEG_LIBRARIES})
+target_link_libraries(nsadec ${ALL_LIBS})
 install(TARGETS onscripter DESTINATION bin)
 
 add_executable(sarconv sarconv.cpp ${HEADERS} ${SOURCES})
-target_link_libraries(sarconv SDL::SDL ${SDL_SOUND_LIBRARIES} ${SDL_IMAGE_LIBRARIES} ${SDL_MIXER_LIBRARIES} ${SDL_TTF_LIBRARIES} ${SMPEG_LIBRARY} ${LUA_LIBRARIES} ${BZIP2_LIBRARIES} Fontconfig::Fontconfig ${JPEG_LIBRARIES})
+target_link_libraries(sarconv ${ALL_LIBS})
 install(TARGETS onscripter DESTINATION bin)
 
 add_executable(nsaconv nsaconv.cpp ${HEADERS} ${SOURCES})
-target_link_libraries(nsaconv SDL::SDL ${SDL_SOUND_LIBRARIES} ${SDL_IMAGE_LIBRARIES} ${SDL_MIXER_LIBRARIES} ${SDL_TTF_LIBRARIES} ${SMPEG_LIBRARY} ${LUA_LIBRARIES} ${BZIP2_LIBRARIES} Fontconfig::Fontconfig ${JPEG_LIBRARIES})
+target_link_libraries(nsaconv ${ALL_LIBS})
 install(TARGETS onscripter DESTINATION bin)
