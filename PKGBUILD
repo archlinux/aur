@@ -3,7 +3,7 @@
 
 pkgname=gambit-c-git
 pkgver=4.9.3.r1317.gcb11ee41
-pkgrel=1
+pkgrel=2
 pkgdesc="Scheme R5RS interpreter and compiler (via C) - git version"
 arch=('i686' 'x86_64')
 url="http://gambitscheme.org"
@@ -12,7 +12,7 @@ depends=('bash')
 makedepends=('git')
 provides=('gambit-c')
 conflicts=('gambit-c')
-options=('!makeflags' 'staticlibs')
+options=('staticlibs')
 source=(gambit-scheme::git+https://github.com/gambit/gambit.git)
 md5sums=('SKIP')
 
@@ -25,8 +25,9 @@ build() {
   cd gambit-scheme
   CFLAGS=`echo " $CFLAGS " | sed -e "s/ -O1 / /g" -e "s/ -O2 / /g" -e "s/ -O3 / /g"`
   CXXFLAGS=`echo " $CXXFLAGS " | sed -e "s/ -O1 / /g" -e "s/ -O2 / /g" -e "s/ -O3 / /g"`
-  ./configure \
-      --prefix=/usr \
+  ./configure
+  make
+  ./configure --prefix=/usr \
       --docdir=/usr/share/gambit-c \
       --infodir=/usr/share/info \
       --libdir=/usr/lib/gambit-c \
