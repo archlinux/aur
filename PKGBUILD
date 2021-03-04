@@ -7,7 +7,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=android.4.2.3.0.r28.g496418f74
+pkgver=4.2.4.r3.g977b23c4a
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -26,6 +26,7 @@ depends=(
   'python-dnspython'
   'python-ecdsa'
   'python-jsonrpclib-pelix'
+  'python-pathvalidate'
   'python-protobuf'
   'python-pyaes'
   'python-pyqt5'
