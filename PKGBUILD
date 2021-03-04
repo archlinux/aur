@@ -14,13 +14,18 @@
 #
 
 _pkgname=codelite
-_commit=34fed7b8599e0cc62c2cd3b836c3c972ddcebeb6
+_pkgver=15.0.1
+_commit=202f8cba062626712c4a1d381aea4f55e1e206dc
 
-pkg_name_ver="${_pkgname}-${_commit}"
-#pkg_name_ver="${_pkgname}-${pkgver//_/-}"
+pkg_ident="${_pkgver//_/-}"
+pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
+
+#pkg_ident="${_commit}"
+#pkg_name_ver="${_pkgname}-${_commit}"
+
 
 pkgname=${_pkgname}-unstable
-pkgver=14.0.4
+pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
@@ -36,6 +41,7 @@ depends=('wxgtk3'
           'ncurses'
           'xterm' 'wget' 'curl'
           'python2'
+          'python'
         )
 optdepends=('graphviz: callgraph visualization'
              'clang: compiler'
@@ -46,28 +52,19 @@ optdepends=('graphviz: callgraph visualization'
 conflicts=('codelite')
 
 
-#source=(
-#    https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz
-#    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-#  )
-
-
-#source=(
-#    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz"
-#    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-#  )
-
-
-
 source=(
-    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${_commit}.tar.gz"
+    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${pkg_ident}.tar.gz"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('2976daeaa7410569df2a0784113123e6'
+md5sums=('8083ffd34ab83fcfa74c3f442026c845'
          '20f3428eb831c3ff2539a7228afaa3b4')
 
 noextract=('wxgui.zip')
+
+#
+#
+#
 
 #if [[ "$CARCH" == 'i686' ]]; then
 #  source+=(http://repos.codelite.org/wxCrafterLibs/ArchLinux/32/wxCrafter.so)
@@ -83,7 +80,6 @@ BUILD_DIR="_build"
 #
 #
 #
-
 prepare()
 {
   cd "${srcdir}/${pkg_name_ver}"
@@ -91,6 +87,9 @@ prepare()
 }
 
 
+#
+#
+#
 build()
 {
 cd "${srcdir}/${pkg_name_ver}"
@@ -99,6 +98,8 @@ CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
 
 # cmake find_package() will try env var WX_CONFIG as wx-config tool path before checking its builtin hardcoded naming conbinations for wx-config tool
+#WX_CONFIG="wx-config"
+#WX_CONFIG="wx-config-gtk2"
 WX_CONFIG="wx-config-gtk3"
 export WX_CONFIG
 
@@ -110,6 +111,9 @@ make -C "${BUILD_DIR}"
 
 }
 
+#
+#
+#
 package()
 {
 cd "${srcdir}/${pkg_name_ver}"
