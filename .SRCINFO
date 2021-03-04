@@ -15,6 +15,7 @@ pkgbase = wlroots-nosystemd-minimal-git
 	depends = xcb-util-image
 	depends = xcb-util-wm
 	depends = xcb-util-renderutil
+	depends = xorg-xwayland
 	provides = libwlroots.so
 	provides = wlroots
 	provides = wlroots-git

@@ -24,6 +24,7 @@ depends=(
     'xcb-util-image'
     'xcb-util-wm'
     'xcb-util-renderutil'
+    'xorg-xwayland'
 )
 makedepends=(
     'meson'
