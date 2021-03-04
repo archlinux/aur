@@ -1,5 +1,5 @@
 pkg
 src
-v*tar.gz
+jump-*tar.gz
 jump-*.pkg.tar.xz
 jump-*.pkg.tar.zst

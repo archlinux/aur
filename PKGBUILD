@@ -9,7 +9,7 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go")
 conflicts=("jump-git")
-source=("https://github.com/gsamokovarov/jump/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gsamokovarov/jump/archive/v${pkgver}.tar.gz")
 sha256sums=('f005f843fc65b7be1d4159da7d4c220eef0229ecec9935c6ac23e4963eef645e')
 
 build() {
