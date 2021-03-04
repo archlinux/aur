@@ -1,0 +1,13 @@
+pkgbase = python-imgtool
+	pkgdesc = MCUboot's image signing and key management
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://pypi.org/project/${_name}/
+	arch = any
+	license = Apache
+	depends = python>=3.6
+	source = https://files.pythonhosted.org/packages/source/i/imgtool/imgtool-1.7.1.tar.gz
+	sha256sums = 88c94036417653703bf6c7071d07316adf8386fcb517fafe672fd487217aabdd
+
+pkgname = python-imgtool
+
