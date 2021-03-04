@@ -13,11 +13,11 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v.${pkgver}.tar.gz")
 md5sums=('bdf61ef1575513c70e3036b7aa4ace80')
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}-v.${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}-v.${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
