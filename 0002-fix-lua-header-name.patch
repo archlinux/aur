@@ -1,0 +1,25 @@
+From 70cb003a7f2d3648f23c22572eb0c117f79ee4de Mon Sep 17 00:00:00 2001
+From: Coelacanthus <coelacanthus@outlook.com>
+Date: Thu, 4 Mar 2021 14:18:51 +0800
+Subject: [PATCH 2/2] fix-lua-header-name
+
+---
+ LUAHandler.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/LUAHandler.h b/LUAHandler.h
+index 53bc602..f197307 100644
+--- a/LUAHandler.h
++++ b/LUAHandler.h
+@@ -24,7 +24,7 @@
+ #if !defined(__LUA_HANDLER_H__) && defined(USE_LUA)
+ #define __LUA_HANDLER_H__
+ 
+-#include <lua.hpp>
++#include <lua5.1/lua.hpp>
+ 
+ class ONScripter;
+ class ScriptHandler;
+-- 
+2.30.1
+

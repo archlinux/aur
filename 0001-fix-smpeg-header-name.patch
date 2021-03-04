@@ -1,0 +1,25 @@
+From 7fe1cfc106438634409edf1c26a29044424297d4 Mon Sep 17 00:00:00 2001
+From: Coelacanthus <coelacanthus@outlook.com>
+Date: Thu, 4 Mar 2021 14:09:13 +0800
+Subject: [PATCH 1/2] fix smpeg header name
+
+---
+ ONScripter.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ONScripter.h b/ONScripter.h
+index ce8b348..5a3c538 100644
+--- a/ONScripter.h
++++ b/ONScripter.h
+@@ -32,7 +32,7 @@
+ #include <SDL_ttf.h>
+ #include <SDL_mixer.h>
+ #if defined(USE_SMPEG)
+-#include <smpeg.h>
++#include <smpeg/smpeg.h>
+ #endif    
+ 
+ #define DEFAULT_VIDEO_SURFACE_FLAG (SDL_SWSURFACE)
+-- 
+2.30.1
+
