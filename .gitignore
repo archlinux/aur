@@ -1,3 +1,6 @@
-fprintd-clients*
-pkg/
-src/
+*
+
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!*.diff
