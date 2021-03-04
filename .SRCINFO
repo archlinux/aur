@@ -1,12 +1,11 @@
 pkgbase = kirigami-addons-git
 	pkgdesc = Add-ons for the Kirigami framework
-	pkgver = r19.a445f08
+	pkgver = r25.2fb3fb1
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/kirigami-addons
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = ki18n
 	depends = kirigami2
