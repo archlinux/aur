@@ -20,7 +20,7 @@ source=(
     "${pkgname}.desktop"
 )
 sha256sums=('SKIP'
-            '7b497e7d3d74c2f3ebf1634fe0b576603099c372f7787a21646976d76e0e0995'
+            '652b94614a6371c227ccf5a034e7ea98e937a0f350723f50ea40d03724c799a4'
 )
 
 prepare() {
