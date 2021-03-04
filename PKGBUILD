@@ -7,7 +7,7 @@ _pref_maximum_performance=
 
 pkgname=nvidia-dkms-performance
 pkgver=460.56
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA driver sources for linux with some optimizations'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -93,7 +93,7 @@ package() {
 
     # Block Nouveau
     install -D -m644 <(printf '%s\n%s\n' 'blacklist nouveau' 'options nouveau modeset=0') \
-        "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
+        "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
 
     # license
     install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
