@@ -1,6 +1,6 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = qt6-base-headless
 	optdepends = shared-mime-info: Freedesktop.org Shared MIME Info
 	provides = qt6-base
 	conflicts = qt6-base
-	source = https://download.qt.io/official_releases/qt/6.0/6.0.1/submodules/qtbase-everywhere-src-6.0.1.tar.xz
-	sha256sums = 8d2bc1829c1479e539f66c2f51a7e11c38a595c9e8b8e45a3b45f3cb41c6d6aa
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.2/submodules/qtbase-everywhere-src-6.0.2.tar.xz
+	sha256sums = 991a0e4e123104e76563067fcfa58602050c03aba8c8bb0c6198347c707817f1
 
 pkgname = qt6-base-headless
 
