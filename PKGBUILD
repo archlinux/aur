@@ -1,17 +1,19 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Thaodan <me@thaodan.de>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 # Contributor: Vladimir Panteleev <arch-pkg at thecybershadow dot net>
 
-pkgname=rtags
+_pkgname=rtags
+pkgname=${_pkgname}-clang-git
 pkgver=2.38
-pkgrel=1
+pkgrel=2
 pkgdesc='A client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
 _url='https://github.com/Andersbakken'
 url="${_url}/rtags"
 license=('GPL3')
-depends=('bash' 'clang')
-conflicts=("${pkgname}-git")
-makedepends=('cmake' 'git' 'llvm' 'zlib')
+depends=('bash' 'clang-git')
+conflicts=("${_pkgname}-git")
+makedepends=('cmake' 'git' 'llvm-git' 'zlib')
 optdepends=('bash-completion: for bash completion' 'zlib')
 source=("git+${_url}/rtags.git#tag=v${pkgver}"
         "git+${_url}/rct.git"
@@ -24,7 +26,7 @@ sha256sums=('SKIP'
             '56bf4f3e8208ea142c61ed6f80b4907f15e2bab8d690763cff8fb15f893ad16d')
 
 prepare() {
-  cd "${pkgname}"
+  cd "${_pkgname}"
   git submodule init
   git config submodule.src/rct.url "${srcdir}"/rct
   git config submodule.src/selene.url "${srcdir}"/Selene
@@ -33,13 +35,13 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${_pkgname}"
   cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${_pkgname}"
   make DESTDIR="${pkgdir}/" install
   install -D --mode=644 "${srcdir}"/rdm.service \
     "${pkgdir}"/usr/lib/systemd/user/rdm.service
@@ -48,9 +50,9 @@ package() {
 
   # Remove after https://github.com/Andersbakken/rtags/pull/1213 is
   # merged and appears in a tagged release
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   install -D --mode=644 LICENSE.txt \
-    "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    "${pkgdir}"/usr/share/licenses/"${_pkgname}"/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
