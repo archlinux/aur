@@ -1,8 +1,8 @@
 pkgbase = dpc++
 	pkgdesc = Data Parallel C++
-	pkgver = 2020.12
+	pkgver = 2021.WW10
 	pkgrel = 1
-	url = https://github.com/intel/llvm/releases/tag/2020-12
+	url = https://github.com/intel/llvm/releases/tag/2021-WW10
 	arch = x86_64
 	license = Apache License v2.0 with LLVM Exceptions
 	makedepends = python
@@ -12,7 +12,7 @@ pkgbase = dpc++
 	depends = ocl-icd
 	depends = ncurses
 	depends = zlib
-	source = llvm::git+https://github.com/intel/llvm#tag=2020-12
+	source = llvm::git+https://github.com/intel/llvm#tag=2021-WW10
 	sha256sums = SKIP
 
 pkgname = dpc++
