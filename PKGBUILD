@@ -1,20 +1,21 @@
 # Maintainer: basxto <archlinux basxto de>
 
 
-pkgname="emulicious-bin"
-_genericname="Emulator"
+pkgname='emulicious-bin'
+_genericname='Emulator'
 pkgver=2021.02.28
-pkgrel=1
-pkgdesc="Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator"
+pkgrel=2
+pkgdesc='Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator'
 # sms is backwards compatible to sg1000
-_mimetype="application/x-gameboy-rom;application/x-gameboy-color-rom;application/x-sms-rom;application/x-sg1000-rom;application/x-gamegear-rom;application/x-msx-rom"
-url="https://emulicious.net"
+_mimetype='application/x-gameboy-rom;application/x-gameboy-color-rom;application/x-sms-rom;application/x-sg1000-rom;application/x-gamegear-rom;application/x-msx-rom'
+url='https://emulicious.net'
 license=('custom', 'BSD')
+provides=('emulicious')
 arch=('any')
 depends=('java-environment' 'sh' 'hicolor-icon-theme')
 makedepends=('java-environment-common' 'gendesk' 'dos2unix' 'imagemagick')
-source=("$pkgname-$pkgver.zip::https://emulicious.net/download/emulicious/?wpdmdl=205" "emulicious.sh")
-sha256sums=('01914a8ba66858e3fc68c8e7ebbdcf197d320a15a5daf8a4ad5c86e54a609ca7'
+source=("$pkgname-$pkgver.zip::https://emulicious.net/download/emulicious/?wpdmdl=205" 'emulicious.sh')
+sha256sums=('52c9c798624fe6c811f8ad14da60d95e1f3cdf13db155ddaf8afd7d27f752b7b'
             '3f9442376a7a8ba93ff5490826bcd5b5b81c5c62b3a6ec48bcd586a0e42fca66')
 
 prepare() {
@@ -39,12 +40,12 @@ package() {
   install -Dm644 "${srcdir}/LICENSE-JInput.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-JInput"
   cp -r "${srcdir}/Highlighters/" "${srcdir}/MSX/" "${srcdir}/KeyPresets/" "${pkgdir}/usr/share/${pkgname}/"
   install -Dm644 "${srcdir}/Emulicious.jar" "${srcdir}/WhatsNew.txt" "${srcdir}/Expressions.txt" "${srcdir}/ReadMe.txt" "${srcdir}/"*.ports  "${pkgdir}/usr/share/${pkgname}/"
-  install -Dm755 "${srcdir}/emulicious.sh" "${pkgdir}/usr/bin/emulicious"
-  install -Dm644 "emulicious.desktop" "${pkgdir}/usr/share/applications/emulicious.desktop"
-  install -Dm644 "${srcdir}/${pkgname}_256x256.png" "${pkgdir}/usr/share//icons/hicolor/256x256/apps/${pkgname}.png"
+  install -Dm755 "${srcdir}/emulicious.sh" "${pkgdir}/usr/bin/${provides[0]}"
+  install -Dm644 "emulicious.desktop" "${pkgdir}/usr/share/applications/${provides[0]}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}_256x256.png" "${pkgdir}/usr/share//icons/hicolor/256x256/apps/${provides[0]}.png"
   # generate all other icon sizes
   for i in 16 24 32 48 64 72 96 128;do
     install -d "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/"
-    magick convert "${srcdir}/${pkgname}_256x256.png" -resize ${i}x${i} "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    magick convert "${srcdir}/${pkgname}_256x256.png" -resize ${i}x${i} "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/${provides[0]}.png"
   done
 }
