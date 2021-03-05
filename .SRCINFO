@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-nextpvr
 	pkgdesc = NextPVR PVR client addon for Kodi
-	pkgver = 3.3.21
+	pkgver = 8.2.1
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.nextpvr
 	arch = x86_64
@@ -10,12 +10,11 @@ pkgbase = kodi-addon-pvr-nextpvr
 	makedepends = kodi-platform
 	makedepends = git
 	makedepends = kodi-dev
-	makedepends = tinyxml
 	depends = kodi
-	source = kodi-addon-pvr-nextpvr-3.3.21.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/3.3.21-Leia.tar.gz
-	source = kodi-18.8_Leia.tar.gz::https://github.com/xbmc/xbmc/archive/18.8-Leia.tar.gz
-	sha256sums = 1f5576070a0bf076d1f28cdd547bc4ff134861c18a71cff7fd036eaacc357707
-	sha256sums = 6deb28f725880b1ab6c5920b55ef1190a79b0684ffb30b6e13b199d23a0af296
+	source = kodi-addon-pvr-nextpvr-8.2.1.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/8.2.1-Matrix.tar.gz
+	source = kodi-19.0_Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/19.0-Matrix.tar.gz
+	sha256sums = ebe2b1f96b49c08c5960a6f75da6cb3cfc0cc30d6fafe43b77d2f2249915b752
+	sha256sums = f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2
 
 pkgname = kodi-addon-pvr-nextpvr
 
