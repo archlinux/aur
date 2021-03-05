@@ -1,7 +1,7 @@
 # Maintainer: Pyntux <pyntux@gmail.com>
 
 pkgname=timerdown-git
-pkgver=r105.gda7d9a8
+pkgver=r115.g4d47411
 pkgrel=1
 pkgdesc="A simple python & pyQT5 app to turn off your Linux PC in "X" minutes or "X" hours, or at specified time."
 url="https://github.com/Pyntux/TimerDown"
