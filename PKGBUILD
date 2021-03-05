@@ -3,7 +3,7 @@
 replaces=('pepper')
 pkgname=crown
 pkgver=0.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/dbartolini/crown"
@@ -21,9 +21,10 @@ source=("https://github.com/dbartolini/crown/releases/download/v$pkgver/$pkgname
         "crown.desktop"
         "icons.tar.gz"
         )
-sha256sums=('469d2115381b559dddac1b364c9a2bffc068cfcacbede70ae6fec22dd2a7d9e2'
+sha256sums=('d4f38bc39f70b0589d769bee334b1d0f9b579f28193340ce6fe83184e3b64b8a'
             'a03e46e40bf1a08aecb97dfea2d22e3f7b61ab906a3f24e329a98fd6fb1a9b1d'
-            'e8950a977117d524b56c5103126938430d787dbada535c9efaba266666ad3624')
+            'e8950a977117d524b56c5103126938430d787dbada535c9efaba266666ad3624'
+            '375b5408a928ed0b752c43f9cb52209a81223f788ae26f991987bcb4341f5847')
 
 package() {
     install -d "$pkgdir"/opt
