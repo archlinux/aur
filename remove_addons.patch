@@ -1,17 +1,18 @@
 diff --git a/browser/extensions/moz.build b/browser/extensions/moz.build
-index 0eb3c53e76..ed7c31d725 100644
+index 269dcb2..ed7c31d 100644
 --- a/browser/extensions/moz.build
 +++ b/browser/extensions/moz.build
-@@ -4,4 +4,8 @@
- # License, v. 2.0. If a copy of the MPL was not distributed with this
+@@ -5,10 +5,7 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
--DIRS += ["doh-rollout", "formautofill", "screenshots", "webcompat", "report-site-issue"]
-+DIRS += [
-+    "formautofill",
-+    "screenshots",
-+    "pictureinpicture",
-+]
+ DIRS += [
+-    "doh-rollout",
+     "formautofill",
+     "screenshots",
+-    "webcompat",
+-    "report-site-issue",
+     "pictureinpicture",
+ ]
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
 index 496379c..dd6f359 100644
 --- a/browser/locales/Makefile.in
