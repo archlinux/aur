@@ -1,0 +1,22 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    RED="${BOLD}\e[1;31m"
+	local mesg=$1; shift
+	printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+    msg "Included are profiles for Firejail and profile-sync-daemon,"
+    echo ""
+    msg "which you can symlink from /usr/lib/plasmafox/distribution"
+    echo ""
+    msg "to /etc/firejail and /usr/share/psd/browsers respectively."
+    echo ""
+    msg "Enjoy the Firedragon 🔥🐉"
+    echo ""
+}

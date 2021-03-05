@@ -34,6 +34,7 @@ options=(!emptydirs !makeflags !strip)
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _settings_commit=c5c75a39dd91a8772255a78493853be6553262b2
 _repo=https://hg.mozilla.org/mozilla-unified
+install=firedragon.install
 source_x86_64=("hg+$_repo#revision=autoland"
                $pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
@@ -102,7 +103,7 @@ export RANLIB=llvm-ranlib
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-app-basename='${_pkgname}'
-ac_add_options --with-branding=browser/branding/${pkgname}
+ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
@@ -166,7 +167,7 @@ END
 fi
 
   # Remove some pre-installed addons that might be questionable
-  patch -p1 -i ../remove_addons.patch
+  # patch -p1 -i ../remove_addons.patch 
 
   # To enable global menubar
   # Set these to true: 
