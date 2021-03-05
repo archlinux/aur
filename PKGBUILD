@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Basic system information fetcher, written in Rust"
 
@@ -10,6 +10,7 @@ url="https://github.com/grtcdr/macchina"
 license=('MIT')
 
 depends=('gcc-libs' 'glibc')
+optdepends=('wmctrl: window manager support')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
