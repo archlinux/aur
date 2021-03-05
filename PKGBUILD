@@ -49,6 +49,7 @@ prepare() {
 package() {
 
   install -d ${pkgdir}/opt/${pkgname}
+  install -d ${pkgdir}/usr/bin
 
   cp -rv $srcdir/${_name}st ${pkgdir}/opt/${pkgname}
   cp -rv $srcdir/${_name}rc ${pkgdir}/opt/${pkgname}
