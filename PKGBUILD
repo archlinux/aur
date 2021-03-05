@@ -1,24 +1,25 @@
-# Maintainer Fabien Dubosson <fabien.dubosson@gmail.com>
+# Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
+
+# Contributors:
+# Pierre-Yves Savioz <savioz.py@net-c.com>
+# Stéphane Donnet <donnet.stephane@gmail.com>
 
 pkgname="vstax"
-_year="2019"
-pkgver="${_year}_1.0.10"
-pkgrel="277"
+_year="2020"
+pkgver="${_year}_1.0.6"
+pkgrel="300"
 pkgdesc="Software to fill the tax forms of the canton of Valais, Switzerland"
 url="http://www.vs.ch/vstax"
 license=('unknown')
-arch=('i686' 'x86_64')
-depends=('java-runtime=8' 'shared-mime-info' 'desktop-file-utils')
+arch=('x86_64')
+depends=('java-runtime' 'shared-mime-info' 'desktop-file-utils')
 install="vstax.install"
 changelog="ChangeLog"
-[ "${CARCH}" = "i686" ] && _CARCH='i386'
-[ "${CARCH}" = "x86_64" ] && _CARCH='amd64'
-source=("https://sftp.vs.ch/${pkgname}/${_year}/${pkgname}${pkgver}-${pkgrel}_${_CARCH}.deb"
-        'archlinux.patch')
-sha256sums=('c1430720b16220b6035ee0505e728b9e84ff3a637fac8b74b318a19fb4126c12'
-            'c6109f2b3768a0f6920f98fd6ccf0b3c7b9ffe701c404ca24536b3344cc900f9')
+source=("https://sftp.vs.ch/${pkgname}/${_year}/${pkgname}${pkgver}-${pkgrel}_amd64.deb"
+        "archlinux.patch")
+sha256sums=('199f33cadaae8055057a3173eab23d9e080f3d4c54644543729f62b5e54fe9b6'
+            '5fa3c2e9e62b8b13fc511543b5895da9568983bcae9a48b25036360ea3742029')
 
-[ "${CARCH}" = "x86_64" ] && sha256sums[0]='b721c74a21552ef348e586be12bcd6b29ae295f26a592363bbcf6f0da1d30447'
 
 prepare() {
     cd "${srcdir}/"
@@ -56,6 +57,3 @@ package() {
     # Remove the included java environment
     rm -Rf "${pkgdir}/usr/share/java/${_appname}/jre"
 }
-
-# vim:set ts=4 sw=4 et:
-

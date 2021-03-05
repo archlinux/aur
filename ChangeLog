@@ -1,8 +1,15 @@
+2021-03-05 Fabien Dubosson <fabien.dubosson@gmail.com>:
+
+	* 2020_1.0.6-300:
+	New upstream release
+	The version 2020 seems to work at least from Java 8 up to Java 15, so
+	removing the code to deal with java versions.
+
 2020-06-07 Glassey Nicolas <nicolas@glassey.dev>:
 
 	* 2019_1.0.10-277:
-	Java 8 is necessary as Java <7 doesn't have all the features needed, and 	java >9 has incompatible classloaders.
-	It should work on JDK and JRE alike.
+	Java 8 is necessary as Java <7 doesn't have all the features needed, and
+	java >9 has incompatible classloaders. It should work on JDK and JRE alike.
 	This means that jre-8 or jdk-8 are now a dependency.
 
 2020-03-15 Glassey Nicolas <nicolas@glassey.dev>:
