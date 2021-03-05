@@ -1,0 +1,15 @@
+pkgbase = fish-abbreviation-tips
+	pkgdesc = Alias abbreviation tips for fish shell
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/gazorby/fish-abbreviation-tips
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	checkdepends = fish-fishtape
+	depends = fish
+	source = fish-abbreviation-tips-0.5.1.tar.gz::https://github.com/gazorby/fish-abbreviation-tips/archive/0.5.1.tar.gz
+	sha512sums = d3266df9559ea76ac8459304f9a2d9d5223a53418bca606d5dc4f7d11d36ca10ec3725dee7d0744f873e11f6c546bac6006917097836a9d0c2fcc4bf6acb7874
+
+pkgname = fish-abbreviation-tips
+
