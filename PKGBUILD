@@ -18,6 +18,8 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/starship/starship/rele
 sha256sums=('934efae5dd74ff8443850fe140e4ea415f6f919f42798b665fb4144bd415dd5c')
 
 package() {
+    echo "[WARN]: starship has moved to [community]. Please switch to the official package."
+    echo "[WARN]: This package will eventually be deleted from AUR."
     install -Dm755 "starship" "$pkgdir/usr/bin/starship"
 #    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
