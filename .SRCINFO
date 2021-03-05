@@ -1,0 +1,14 @@
+pkgbase = python-termplotlib
+	pkgdesc = Plotting on the command line
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/nschloe/termplotlib
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/t/termplotlib/termplotlib-0.3.4.tar.gz
+	sha256sums = b1ebe3b31ac554db249c2b4cf042b7ba5363f49eeb36c4d1c5e4f15db9fc20ea
+
+pkgname = python-termplotlib
+
