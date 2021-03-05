@@ -3,7 +3,7 @@
 
 pkgname=lib32-suitesparse
 _pkgbase=suitesparse
-pkgver=5.8.1
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (32-bit)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
@@ -15,7 +15,7 @@ license=('GPL')
 options=('staticlibs')
 source=($_pkgbase-$pkgver.tar.gz::"https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v$pkgver.tar.gz"
         "suitesparse-no-demo.patch")
-sha512sums=('3d986157acd39968216880c2de30c54d72e0addd7318a04948c1b842ad9c876bcde32f292504d4540a4baa998a368dfc0db000606a2d00f61760a92d5b8c1cb8'
+sha512sums=('d0b7de23d769b4537a9deac7a7c42408f29ddaa66e2c4be2c4b6465a6e8b60f7705db8b2a8de89808208a2fdd8e6ac8e25e54a0429952b16a1b22ce2e4469475'
             'f7bfd7fd8d8defd1e7dc1afdb05ed9fe32ab144b82052a6863b96b8c423521aca9560d093c82aca02da493473d5cda90482fd084f528b90f33590fae2cf5e4d9')
 
 prepare() {
