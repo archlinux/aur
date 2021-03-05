@@ -2,11 +2,11 @@
 
 pkgname=fastd-git
 arch=("x86_64")
-pkgver=19.6.gc095ce9b4db8
+pkgver=21.35.g6d7799c762e0
 pkgrel=1
 pkgdesc="Fast and secure tunneling daemon (git version)"
 makedepends=('meson')
-depends=('libcap' 'libuecc>=6' 'libsodium' 'json-c' 'openssl')
+depends=('libcap' 'libuecc>=6' 'libsodium' 'json-c' 'openssl' 'libmnl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 url="https://github.com/NeoRaider/fastd/"
