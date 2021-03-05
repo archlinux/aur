@@ -1,3 +1,9 @@
+## 11.0.0 (2021-03-04)
+
+* This release adds support for retrying decryption with a different password for the already downloaded payload.
+* Encrypted content with a custom password no longer generate a url that indicates that a custom password is used.
+* Various UI tweaks for the new material UI design, please note that this is still in progress and if you've got design skills, please help out!
+
 ## 10.2.0 (2021-01-31)
 
 * New UI framework: Bootstrap/Reactstrap has been switched out for the more modern MaterialUI, big thanks to @jesperorb doing this in #703.
