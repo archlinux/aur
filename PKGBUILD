@@ -1,7 +1,7 @@
 # vim:set ts=2 sw=2 et:
 # Maintainer graysky <graysky AT archlinux DOT us>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
 # Contributor: Ralf Barth <archlinux dot org at haggy dot org>
@@ -23,7 +23,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 pkgver=r57105.42cf74bc2c6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -44,6 +44,7 @@ makedepends=(
 
 _gitname='xbmc'
 _codename=Matrix
+
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -62,10 +63,11 @@ _libdvdnav_version="6.0.0-Leia-Alpha-3"
 _libdvdread_version="6.0.0-Leia-Alpha-3"
 _ffmpeg_version="4.3.1-$_codename-Beta1"
 _fmt_version="6.1.2"
+_spdlog_version="1.5.0"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="1.11.0"
-_spdlog_version="1.5.0"
+_libudfread_version="1.1.0"
 
 source=(
   "git://github.com/xbmc/xbmc.git#branch=$_codename"
@@ -78,6 +80,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
+  "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
   '0001-allow-separate-windowing-binaries-being-launched-fro.patch'
 )
@@ -91,6 +94,7 @@ noextract=(
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
+  "libudfread-$_libudfread_version.tar.gz"
 )
 b2sums=('SKIP'
         '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
@@ -102,6 +106,7 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '69024d77e6e7a5036e24729e337b17680dc3735cb1d209058a88b980989826fe56ff113c1177410106e0f70d827fa82603372277e3bc1aa4d12ffe5bb979af96'
         'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
+        'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
         '9745854bab7e7ddf1cb816e536f303513d8792b5431c62d042894e6d2e702939bc1f9a965e7c59207cca832a297cc3c187c9435fc6e3029a3ddc0b13d11c7451')
 
@@ -115,13 +120,14 @@ prepare() {
   mkdir "$srcdir/kodi-build"
 
   cd "$_gitname"
+
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
   patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
 }
 
 build() {
-  cd kodi-build
+  cd "$srcdir/kodi-build"
 
   ### Optionally uncomment and setup to your liking
   # export CFLAGS+=" -march=native"
@@ -131,7 +137,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
     -DUSE_LTO=$(nproc)
-    -DAPP_RENDER_SYSTEM=gl
     -DENABLE_LDGOLD=OFF
     -DENABLE_EVENTCLIENTS=ON
     -DENABLE_INTERNAL_FFMPEG=ON
@@ -140,6 +145,7 @@ build() {
     -DENABLE_INTERNAL_CROSSGUID=ON
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
+    -DENABLE_INTERNAL_UDFREAD=ON
     -DENABLE_MYSQLCLIENT=ON
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
@@ -150,11 +156,9 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
+    -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
+    -DAPP_RENDER_SYSTEM=gl
   )
-
-  echo "building kodi-x11"
-  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=x11 ../"$_gitname"
-  make
 
   echo "building kodi-wayland"
   cmake "${_args[@]}" -DCORE_PLATFORM_NAME=wayland ../"$_gitname"
@@ -163,19 +167,23 @@ build() {
   echo "building kodi-gbm"
   cmake "${_args[@]}" -DCORE_PLATFORM_NAME=gbm ../"$_gitname"
   make
+
+  # build x11 version last that will make it fallback in the launcher script
+  echo "building kodi-x11"
+  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=x11 ../"$_gitname"
+  make
 }
 
 # kodi
 # components: kodi
-
 package_kodi-matrix-git-common() {
   pkgdesc="A software media player and entertainment hub for digital media (Matrix branch)"
   depends=(
-    'bluez-libs' 'curl' 'desktop-file-utils' 'hicolor-icon-theme' 'lcms2'
-    'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs' 'libplist'
-    'libpulse' 'libva' 'libxslt' 'lirc' 'mariadb-libs' 'mesa' 'python'
-    'python-pillow' 'python-pycryptodomex' 'python-simplejson' 'shairplay'
-    'smbclient' 'taglib' 'tinyxml'
+    'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme'
+    'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
+    'libplist' 'libpulse' 'libva' 'libxslt' 'lirc' 'mariadb-libs' 'mesa'
+           'python-pillow' 'python-pycryptodomex' 'python-simplejson'
+    'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -207,7 +215,6 @@ package_kodi-matrix-git-common() {
 
 # kodi-x11
 # components: kodi-bin
-
 package_kodi-matrix-git-x11() {
   pkgdesc="x11 kodi binary"
   provides=("kodi=${pkgver}")
@@ -223,7 +230,6 @@ package_kodi-matrix-git-x11() {
 
 # kodi-wayland
 # components: kodi-bin
-
 package_kodi-matrix-git-wayland() {
   pkgdesc="wayland kodi binary"
   provides=("kodi=${pkgver}")
@@ -239,7 +245,6 @@ package_kodi-matrix-git-wayland() {
 
 # kodi-gbm
 # components: kodi-bin
-
 package_kodi-matrix-git-gbm() {
   pkgdesc="gbm kodi binary"
   provides=("kodi=${pkgver}")
@@ -255,7 +260,6 @@ package_kodi-matrix-git-gbm() {
 
 # kodi-eventclients
 # components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-kodi-send
-
 package_kodi-matrix-git-eventclients() {
   pkgdesc="Kodi Event Clients (Matrix branch)"
   provides=("kodi-eventclients=${pkgver}")
@@ -304,7 +308,6 @@ package_kodi-matrix-git-tools-texturepacker() {
 
 # kodi-dev
 # components: kodi-addon-dev kodi-eventclients-dev
-
 package_kodi-matrix-git-dev() {
   pkgdesc="Kodi dev files (Matrix branch)"
   depends=('kodi-matrix-git-common')
