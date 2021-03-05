@@ -1,7 +1,7 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=lc0
-pkgver=0.26.2
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
 		       specifically those of the LeelaChessZero project."
@@ -11,7 +11,7 @@ url="https://lczero.org/"
 license=('GPL3')
 
 depends=('ocl-icd' 'zlib' 'opencl-driver')
-makedepends=('meson' 'eigen' 'opencl-headers')
+makedepends=('meson' 'eigen' 'opencl-headers' 'openblas-cblas-git')
 checkdepends=('gtest')
 optdepends=("cudnn: Neural network library for use with nvidia GPUs")
 
@@ -22,9 +22,9 @@ source=("$pkgname"
 	"lczero-common-master.tar.gz::https://github.com/LeelaChessZero/lczero-common/archive/master.tar.gz"
 	"$_weights::https://www.comp.nus.edu.sg/~sergio-v/t40/256x20/256x20-t40-1541.pb.gz")
 md5sums=('8ef8809da2c627dd2472859b157bb408'
-         '4d2b78aa66b3f99d4cf8e8de0e9e6d6c'
-         'e8eda64758da58c6a82126b9dc7c69ff'
-         'SKIP')
+         '7d25819d8d277cd78ef730279e338abe'
+         'f0111da33207c6941ff06f268fba675f'
+         '59da4859de827d3cd75866c40920f8a0')
 noextract=('$_weights')
 
 prepare() {

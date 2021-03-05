@@ -1,6 +1,6 @@
 pkgbase = lc0
 	pkgdesc = UCI-compliant chess engine designed to play chess via neural network, specifically those of the LeelaChessZero project.
-	pkgver = 0.26.2
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://lczero.org/
 	install = lc0.install
@@ -10,19 +10,20 @@ pkgbase = lc0
 	makedepends = meson
 	makedepends = eigen
 	makedepends = opencl-headers
+	makedepends = openblas-cblas-git
 	depends = ocl-icd
 	depends = zlib
 	depends = opencl-driver
 	optdepends = cudnn: Neural network library for use with nvidia GPUs
 	noextract = $_weights
 	source = lc0
-	source = lc0-0.26.2.tar.gz::https://github.com/LeelaChessZero/lc0/archive/v0.26.2.tar.gz
+	source = lc0-0.27.0.tar.gz::https://github.com/LeelaChessZero/lc0/archive/v0.27.0.tar.gz
 	source = lczero-common-master.tar.gz::https://github.com/LeelaChessZero/lczero-common/archive/master.tar.gz
 	source = weights_sergio-v_256x20-T40-1541.pb.gz::https://www.comp.nus.edu.sg/~sergio-v/t40/256x20/256x20-t40-1541.pb.gz
 	md5sums = 8ef8809da2c627dd2472859b157bb408
-	md5sums = 4d2b78aa66b3f99d4cf8e8de0e9e6d6c
-	md5sums = e8eda64758da58c6a82126b9dc7c69ff
-	md5sums = SKIP
+	md5sums = 7d25819d8d277cd78ef730279e338abe
+	md5sums = f0111da33207c6941ff06f268fba675f
+	md5sums = 59da4859de827d3cd75866c40920f8a0
 
 pkgname = lc0
 
