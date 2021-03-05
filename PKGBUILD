@@ -1,18 +1,17 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgbase=meteoio
 pkgname=('meteoio' 'meteoio-examples' 'meteoio-docs')
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Make data access easy and safe for numerical simulations in environmental sciences"
 arch=('x86_64')
 url="https://models.slf.ch/p/meteoio/"
 license=('LGPL3')
 makedepends=('cmake' 'doxygen')
-source=("https://models.slf.ch/p/meteoio/downloads/get/MeteoIO-$pkgver-src.tar.gz" exclude_random_numbers.patch)
+source=("https://models.slf.ch/p/meteoio/downloads/get/MeteoIO-$pkgver-src.tar.gz")
 
 prepare() {
   cd "MeteoIO-$pkgver-src"
-  patch -p1 < "$srcdir/exclude_random_numbers.patch"
 }
 
 build() {
@@ -48,5 +47,4 @@ package_meteoio-docs() {
   cp -r * "$pkgdir/usr/share/doc/meteoio"
 }
 
-sha256sums=('4a74896b678bb1b4c9a2248582df76ad2025e6f66aa176049500557f041a98da'
-            '77a043c0f6e5c9d52884e8e149a031aff8ade2d3f86455bf6815db59198103ba')
+sha256sums=('681424f55e0f7d1e39871834a84c74f832e689029732930e219755d85f570d6f')
