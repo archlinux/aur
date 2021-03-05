@@ -20,8 +20,8 @@ pre_install() {
 }
 
 post_install() {
-	echo "You need to start the daemon with `sudo systemctl start piavpn.service`"
-	echo "Also run `sudo systemctl enable piavpn.service` to make it automatically start at boot"
+	echo "You need to start the daemon with 'sudo systemctl start piavpn.service'"
+	echo "Also run 'sudo systemctl enable piavpn.service' to make it automatically start at boot"
 }
 
 pre_remove() {
