@@ -3,7 +3,7 @@
 pkgname=tootle
 pkgver=1.0
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK3 client for Mastodon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bleakgrey/tootle"
