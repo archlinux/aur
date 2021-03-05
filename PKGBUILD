@@ -5,7 +5,7 @@
 _gemname=gollum
 pkgname=$_gemname
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, Git-powered wiki.'
 arch=(any)
 url='http://github.com/gollum/gollum'
@@ -24,7 +24,7 @@ depends=(ruby
          ruby-sinatra-contrib
          'ruby-sprockets<4'
          ruby-sprockets-helpers
-         ruby-uglifier
+         'ruby-uglifier>=4.2'
          ruby-useragent)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)

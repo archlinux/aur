@@ -1,7 +1,7 @@
 pkgbase = gollum
 	pkgdesc = A simple, Git-powered wiki.
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/gollum/gollum
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = gollum
 	depends = ruby-sinatra-contrib
 	depends = ruby-sprockets<4
 	depends = ruby-sprockets-helpers
-	depends = ruby-uglifier
+	depends = ruby-uglifier>=4.2
 	depends = ruby-useragent
 	noextract = gollum-5.2.1.gem
 	options = !emptydirs
