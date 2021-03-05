@@ -1,13 +1,13 @@
-From 54c4e5ae42627a450d15d126302ecc5509ba1e26 Mon Sep 17 00:00:00 2001
+From f785a5c37288394e6e74308bf35c38dcfa665201 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 16 Dec 2020 01:40:01 +0100
+Date: Mon, 22 Feb 2021 18:08:28 +0100
 Subject: [PATCH] UKSM for 5.11
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
  Documentation/vm/uksm.txt   |   61 +
  fs/exec.c                   |    1 +
- fs/proc/meminfo.c           |    5 +-
+ fs/proc/meminfo.c           |    4 +
  include/linux/ksm.h         |   43 +-
  include/linux/mm_types.h    |    3 +
  include/linux/mmzone.h      |    3 +
@@ -24,7 +24,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  mm/mmap.c                   |   37 +
  mm/uksm.c                   | 5614 +++++++++++++++++++++++++++++++++++
  mm/vmstat.c                 |    3 +
- 19 files changed, 6539 insertions(+), 27 deletions(-)
+ 19 files changed, 6539 insertions(+), 26 deletions(-)
  create mode 100644 Documentation/vm/uksm.txt
  create mode 100644 include/linux/sradix-tree.h
  create mode 100644 include/linux/uksm.h
@@ -111,21 +111,20 @@ index 5d4d52039..86f9f6526 100644
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
 diff --git a/fs/proc/meminfo.c b/fs/proc/meminfo.c
-index d6fc74619..7b929bbd2 100644
+index d6fc74619..e173b259f 100644
 --- a/fs/proc/meminfo.c
 +++ b/fs/proc/meminfo.c
-@@ -108,7 +108,10 @@ static int meminfo_proc_show(struct seq_file *m, void *v)
+@@ -108,6 +108,10 @@ static int meminfo_proc_show(struct seq_file *m, void *v)
  #endif
  	show_val_kb(m, "PageTables:     ",
  		    global_node_page_state(NR_PAGETABLE));
--
 +#ifdef CONFIG_UKSM
 +	show_val_kb(m, "KsmZeroPages:     ",
 +		    global_zone_page_state(NR_UKSM_ZERO_PAGES));
 +#endif
+ 
  	show_val_kb(m, "NFS_Unstable:   ", 0);
  	show_val_kb(m, "Bounce:         ",
- 		    global_zone_page_state(NR_BOUNCE));
 diff --git a/include/linux/ksm.h b/include/linux/ksm.h
 index 161e8164a..f0dbdf3c9 100644
 --- a/include/linux/ksm.h
@@ -504,7 +503,7 @@ index 000000000..bb8651f53
 +#endif /* !CONFIG_UKSM */
 +#endif /* __LINUX_UKSM_H */
 diff --git a/kernel/fork.c b/kernel/fork.c
-index e39846a73..aaab0f873 100644
+index d66cd1014..5e0081886 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -588,7 +588,7 @@ static __latent_entropy int dup_mmap(struct mm_struct *mm,
@@ -1012,10 +1011,10 @@ index 000000000..ab21e6309
 +	return 0;
 +}
 diff --git a/mm/Kconfig b/mm/Kconfig
-index 5f4846c7d..40bf1a135 100644
+index f730605b8..89d11e029 100644
 --- a/mm/Kconfig
 +++ b/mm/Kconfig
-@@ -352,6 +352,32 @@ config KSM
+@@ -317,6 +317,32 @@ config KSM
  	  See Documentation/vm/ksm.rst for more information: KSM is inactive
  	  until a program has madvised that an area is MADV_MERGEABLE, and
  	  root has set /sys/kernel/mm/ksm/run to 1 (if CONFIG_SYSFS is set).
@@ -1063,7 +1062,7 @@ index b6cd2fffa..abe1ab4d4 100644
  obj-$(CONFIG_SLAB) += slab.o
  obj-$(CONFIG_SLUB) += slub.o
 diff --git a/mm/ksm.c b/mm/ksm.c
-index 50d1d6dd1..a10d21de2 100644
+index 9694ee2c7..63af6a528 100644
 --- a/mm/ksm.c
 +++ b/mm/ksm.c
 @@ -858,17 +858,6 @@ static int unmerge_ksm_pages(struct vm_area_struct *vma,
@@ -6953,7 +6952,7 @@ index 000000000..e4732c00b
 +#endif
 +
 diff --git a/mm/vmstat.c b/mm/vmstat.c
-index 6b9369fd9..24cb8a8ff 100644
+index f8942160f..95d6d9267 100644
 --- a/mm/vmstat.c
 +++ b/mm/vmstat.c
 @@ -1216,6 +1216,9 @@ const char * const vmstat_text[] = {
