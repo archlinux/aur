@@ -1,7 +1,7 @@
 pkgbase = vasisualy-git
 	pkgdesc = Vasisualy is a simple Russian voice assistant written on python 3 for GNU/Linux and Windows.
 	pkgver = r110.20210302
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Oknolaz/vasisualy
 	arch = i686
 	arch = x86_64

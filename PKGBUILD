@@ -2,7 +2,7 @@
 
 pkgname=vasisualy-git
 pkgver=r110.20210302
-pkgrel=1
+pkgrel=2
 pkgdesc="Vasisualy is a simple Russian voice assistant written on python 3 for GNU/Linux and Windows."
 arch=('i686' 'x86_64')
 url="https://github.com/Oknolaz/vasisualy"
@@ -59,5 +59,6 @@ package()
     cp -R "core"   "${pkgdir}/${site_pkg}/${modulename_pi}"
     cp -R "music"  "${pkgdir}/${site_pkg}/${modulename_pi}"
     cp -R "skills" "${pkgdir}/${site_pkg}/${modulename_pi}"
+    cp -R "ui"     "${pkgdir}/${site_pkg}/${modulename_pi}"
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${modulename_pi}/LICENSE"
 }
