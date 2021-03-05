@@ -9,7 +9,6 @@ url="https://github.com/influxdata/influxdb-client-python/"
 license=('MIT')
 depends=('python' 'python-dateutil' 'python-six' 'python-pytz' 'python-rx' 'python-certifi' 'python-urllib3')
 makedepends=('python-setuptools')
-checkdepends=('python-nose' 'python-pluggy' 'python-py' 'python-coverage' 'python-nose-random' 'python-pytest' 'python-httpretty' 'python-psutil' 'influxdb')
 optdepends=('influxdb')
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb-client-python/archive/v$pkgver.tar.gz)
@@ -18,11 +17,6 @@ sha512sums=('bb27cddb84c40fde88a2cc4be04434258d5edd17707bc4721591a5a886327c5dd29
 build() {
   cd "$srcdir/influxdb-client-python-$pkgver"
   python setup.py build
-}
-
-
-check() {
-  cd "$srcdir/influxdb-client-python-$pkgver/influxdb"
 }
 
 package() {
