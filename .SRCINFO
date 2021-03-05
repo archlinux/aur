@@ -14,6 +14,7 @@ pkgbase = ncspot-git
 	depends = openssl
 	depends = libpulse
 	optdepends = portaudio: PortAudio backend
+	optdepends = ueberzug: cover drawing in terminal
 	provides = ncspot
 	conflicts = ncspot
 	source = git+https://github.com/hrkfdn/ncspot.git
