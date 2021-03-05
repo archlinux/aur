@@ -6,7 +6,7 @@ pkgbase = git-credential-1password-dev-git
 	arch = x86_64
 	license = ISC
 	makedepends = git
-	makedepends = go>=1.15
+	makedepends = go>=1.16
 	makedepends = make
 	depends = git
 	depends = 1password-cli
