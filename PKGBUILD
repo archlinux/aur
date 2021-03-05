@@ -1,5 +1,5 @@
 pkgname=tlstunnel-git
-pkgver=r65.c5d8549b091a
+pkgver=r66.f7d73a65b508
 pkgrel=1
 pkgdesc='A TLS reverse proxy'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '8d55cc467d36555b97aa6238724bcb02a96e5f0406c40885d0d743c9bbcb5690'
+  '7d08417e0c6bdf3bdcb7dfc8b091405a65c7c82a0aa58a9ea195f3061fb4da3f'
   '0e42fca2bc63f60add7d33e6545375cddce7156c0d6efd057ccac121b7221c23'
 )
 
