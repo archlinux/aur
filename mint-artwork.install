@@ -4,7 +4,6 @@ post_install() {
   glib-compile-schemas /usr/share/glib-2.0/schemas
 
   #gsettings reset-recursively org.cinnamon
-  #dconf reset -f /
 
   systemctl restart lightdm
 }
