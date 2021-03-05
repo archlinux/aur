@@ -1,6 +1,6 @@
 pkgbase = lens
 	pkgdesc = The Kubernetes IDE
-	pkgver = 4.1.3
+	pkgver = 4.1.4
 	pkgrel = 1
 	url = https://k8slens.dev
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = lens
 	optdepends = kubectl: Kubernetes control, can be downloaded from settings
 	optdepends = helm: for Apps section, only useful if your deploy uses helm or plan to use it
 	conflicts = lens-bin
-	source = lens-4.1.3.tar.gz::https://github.com/lensapp/lens/archive/v4.1.3.tar.gz
+	source = lens-4.1.4.tar.gz::https://github.com/lensapp/lens/archive/v4.1.4.tar.gz
 	source = lens.desktop
-	sha256sums = 6635d7befc99d9e3b17f8184b32ac87ebe4d141d8b27a44a64888c9c28bc8793
+	sha256sums = 71ee2566b0435f4fe80b9aef1ef66e6e031e5700fd1fe5aa63f9060999f02fc4
 	sha256sums = 3db5b267cededcc73b3e35b89b46fca419e82832b85fa633e4326156cf648d02
 
 pkgname = lens
