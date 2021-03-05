@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxm-git
-pkgver=v0.0.12.r0.gb54c33e
+pkgver=v0.0.13.r0.g0ed3eda
 pkgrel=1
 pkgdesc="Generic C-implementation of modular support"
 arch=('any')
