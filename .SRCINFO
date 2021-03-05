@@ -1,13 +1,13 @@
 pkgbase = gmni-git
 	pkgdesc = A Gemini client
-	pkgver = r100.e1d4e9a
+	pkgver = r139.925d9e3
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/gmni
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = scdoc
-	depends = openssl
+	depends = bearssl
 	source = gmni::git+https://git.sr.ht/~sircmpwn/gmni
 	md5sums = SKIP
 
