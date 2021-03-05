@@ -1,6 +1,6 @@
 pkgbase = warpinator
 	pkgdesc = Allows simple local network file sharing
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/backport/w/warpinator
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = warpinator
 	optdepends = ufw: Configure firewall rules
 	conflicts = lm-warp
 	conflicts = warpinator-git
-	source = warpinator_1.1.1.tar.xz::http://packages.linuxmint.com/pool/backport/w/warpinator/warpinator_1.1.1+ulyssa.tar.xz
-	sha256sums = 1598955eadf8ee8b1bf2c30ab1370e5a2713535c72805bdf1f6ebc4c6c4ecfd8
+	source = warpinator_1.1.2.tar.xz::http://packages.linuxmint.com/pool/backport/w/warpinator/warpinator_1.1.2+ulyssa.tar.xz
+	sha256sums = ef3cd1546b7ff68af0161eaf30241b49f72118ea1754a2eb63939eee0f4bb58f
 
 pkgname = warpinator
 
