@@ -1,7 +1,7 @@
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgname=clazy-git
-pkgver=r1747.cc2466f
+pkgver=r2320.e77c6056
 pkgrel=1
 pkgdesc='Static C++ code checker'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ optdepends=('clazy-mkspec: to use clazy from qmake')
 makedepends=(git cmake make gcc)
 provides=(clazy)
 conflicts=(clazy)
-source=("git://anongit.kde.org/clazy.git")
+source=("git+https://invent.kde.org/sdk/clazy.git")
 sha256sums=('SKIP')
 
 pkgver() {
