@@ -1,10 +1,13 @@
 pkgbase = duplicacy-web
 	pkgdesc = Cross-platform cloud backup tool with a web GUI
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://duplicacy.com/
 	arch = x86_64
+	arch = i686
 	arch = arm
+	arch = aarch64
+	arch = armv7
 	license = custom
 	source = duplicacy-web@.service
 	source = duplicacy-web.service
@@ -12,10 +15,16 @@ pkgbase = duplicacy-web
 	sha256sums = f169ca1196a3d99661b5fdf9b61d18c3f7a1341f6d90c1411874a9ebfecce10a
 	sha256sums = 33325dd4c621676af89c4f6c27105fb16e0b9b00e962e6496f7d532f907646bf
 	sha256sums = f6da608f2babc6db66aed83e0ba7e1ce130680b15d2dbe01019cb01c88abc7db
-	source_x86_64 = duplicacy-web::https://acrosync.com/duplicacy-web/duplicacy_web_linux_x64_1.4.1
-	sha256sums_x86_64 = c6e310ef2b538105b55fbe9daa18aef6c2219dce3da4cbf2cf68a16124b783fd
-	source_arm = duplicacy-web::https://acrosync.com/duplicacy-web/duplicacy_web_linux_arm_1.4.1
-	sha256sums_arm = fa5d50b453ac65e44a8778b06fbe46bf83ba6d425975d915f83d88591e581d74
+	source_x86_64 = duplicacy-web::https://acrosync.com/duplicacy-web/duplicacy_web_linux_x64_1.5.0
+	sha256sums_x86_64 = 1a28c214493c69c1a7e65dfc985e95cacda246935ca5e2541e2014cc8e2a9678
+	source_i686 = duplicacy-web::https://acrosync.com/duplicacy-web/duplicacy_web_linux_i386_1.5.0
+	sha256sums_i686 = 1a28c214493c69c1a7e65dfc985e95cacda246935ca5e2541e2014cc8e2a9678
+	source_arm = duplicacy-web::https://acrosync.com/duplicacy-web/duplicacy_web_linux_arm_1.5.0
+	sha256sums_arm = 1a28c214493c69c1a7e65dfc985e95cacda246935ca5e2541e2014cc8e2a9678
+	source_aarch64 = duplicacy-web::https://acrosync.com/duplicacy-web/duplicacy_web_linux_arm64_1.5.0
+	sha256sums_aarch64 = 1a28c214493c69c1a7e65dfc985e95cacda246935ca5e2541e2014cc8e2a9678
+	source_armv7 = duplicacy-web::https://acrosync.com/duplicacy-web/duplicacy_web_linux_armv7_1.5.0
+	sha256sums_armv7 = 1a28c214493c69c1a7e65dfc985e95cacda246935ca5e2541e2014cc8e2a9678
 
 pkgname = duplicacy-web
 
