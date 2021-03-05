@@ -1,6 +1,6 @@
 pkgbase = mosdns-bin
 	pkgdesc = Plug-in configured DNS forwarder/server
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/IrineSistiana/mosdns/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = mosdns-bin
 	conflicts = mosdns
 	conflicts = mosdns-git
 	backup = etc/mosdns/config.yaml
-	source = mosdns-bin-1.6.1.zip::https://github.com/IrineSistiana/mosdns/releases/download/v1.6.1/mosdns-linux-amd64.zip
-	sha256sums = bb31052d27f1eb4785f2624fe207776c4a9e627ff00ffd323adfbeb46a8a6c1a
+	source = mosdns-bin-1.6.2.zip::https://github.com/IrineSistiana/mosdns/releases/download/v1.6.2/mosdns-linux-amd64.zip
+	sha256sums = ada7a2a2d21b371ff9a7a60cf2694ec8316a9da93c1f8d9ea69f6f6f2322bed7
 
 pkgname = mosdns-bin
 
