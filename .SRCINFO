@@ -1,13 +1,19 @@
 pkgbase = vim-fzf-git
 	pkgdesc = Vim plugin that integrates fzf, the fuzzy file finder
-	pkgver = r327.f39c92b
+	pkgver = r429.02a192e
 	pkgrel = 1
 	url = https://github.com/junegunn/fzf.vim
 	arch = any
+	groups = vim-plugins
 	license = MIT
 	makedepends = git
-	depends = vim
+	depends = vim-plugin-runtime
 	depends = fzf
+	optdepends = bat: syntax-highlighted preview support
+	optdepends = git-delta: formatting git diff output with certain commands
+	optdepends = perl: Tags and Helptags support
+	optdepends = ripgrep: Rg command support
+	optdepends = the_silver_searcher: Ag command support
 	source = git+https://github.com/junegunn/fzf.vim
 	md5sums = SKIP
 
