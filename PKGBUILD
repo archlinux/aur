@@ -5,7 +5,7 @@ provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
 pkgver=88.0a1.r636925+
 pkgrel=1
-pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
+pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled - binary version"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
@@ -21,6 +21,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs)
+replaces=('dragonwolf')
+install=firedragon-bin.install
 _uploadpath_x86_64="https://builds.garudalinux.org/repos/chaotic-aur/x86_64/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 source_x86_64=("${_uploadpath_x86_64}")
 sha256sums_x86_64=('96b8af46787a6341b0767b6b5bfb289a3ad58c707bd992b019b56f640aa000ba')
