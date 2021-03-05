@@ -1,7 +1,7 @@
 pkgbase = neovide
 	pkgdesc = No Nonsense Neovim Client in Rust
-	pkgver = 0.6.0
-	pkgrel = 8
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/Kethku/neovide
 	arch = x86_64
 	license = MIT
@@ -18,10 +18,8 @@ pkgbase = neovide
 	optdepends = vulkan-intel: vulkan support for intel
 	provides = neovide
 	conflicts = neovide-git
-	source = neovide-0.6.0.tar.gz::https://github.com/Kethku/neovide/archive/0.6.0.tar.gz
-	source = 0001-Remove-unnecessary-braces-around-if-condition.patch
+	source = neovide-0.7.0.tar.gz::https://github.com/Kethku/neovide/archive/0.7.0.tar.gz
 	sha256sums = 4daaad6ff527c299b9fa3db677bc1320b9596efbc27853ed730a57df6c1568fd
-	sha256sums = 53c28f4f6d9f0dee319188d1dc733ace0500f8c616941110936967e962e605dc
 
 pkgname = neovide
 
