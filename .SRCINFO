@@ -1,11 +1,11 @@
 pkgbase = webmusic-nginx
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cgit.ctu.cx/webmusic-nginx/
 	arch = x86_64
 	license = GPL-3
-	source = webmusic-nginx-fff8c358ca194b9b87881054bb596d9b4a3727bb.tar.gz::https://cgit.ctu.cx/webmusic-nginx/snapshot/webmusic-nginx-fff8c358ca194b9b87881054bb596d9b4a3727bb.tar.gz
-	sha256sums = 7cf958a20e2177d428d3124ab3b47b70bd4cde821feca564a05d3d3c28423581
+	source = webmusic-nginx-c96ceb864636c6c7dc388dfcc0f3f3e66f27ce44.tar.gz::https://cgit.ctu.cx/webmusic-nginx/snapshot/webmusic-nginx-c96ceb864636c6c7dc388dfcc0f3f3e66f27ce44.tar.gz
+	sha256sums = fec0b266d1450fae9c51700103eccdbfd66e874ec24e5f73a89e55556884ee27
 
 pkgname = webmusic-nginx
 

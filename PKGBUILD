@@ -1,12 +1,12 @@
 pkgname=webmusic-nginx
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://cgit.ctu.cx/webmusic-nginx/"
 license=( 'GPL-3' )
-_commit="fff8c358ca194b9b87881054bb596d9b4a3727bb"
+_commit="c96ceb864636c6c7dc388dfcc0f3f3e66f27ce44"
 source=("${pkgname}-${_commit}.tar.gz::https://cgit.ctu.cx/${pkgname}/snapshot/${pkgname}-${_commit}.tar.gz")
-sha256sums=('7cf958a20e2177d428d3124ab3b47b70bd4cde821feca564a05d3d3c28423581')
+sha256sums=('fec0b266d1450fae9c51700103eccdbfd66e874ec24e5f73a89e55556884ee27')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/webapps/
