@@ -6,8 +6,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=denemo
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A music score editor"
 arch=('x86_64')
 url="http://www.denemo.org"
@@ -18,7 +18,7 @@ makedepends=('intltool' 'git')
 noextract=(${pkgname}-${pkgver}.tar.gz)
 validpgpkeys=('C66734FA5D60E4DDD882EF81AE6F83BB6C574235') # Jeremiah Benham, AE6F83BB6C574235
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('edd62c26ce362be77f558860cc72fbbc68128310ca9a38e8f44db5e73ec0b390'
+sha256sums=('07a19b04bfe8ff3d1e993f88c3a5ef5a602c242988c12182c95d439210f27c16'
             'SKIP')
 
 prepare() {
