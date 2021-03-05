@@ -1,7 +1,7 @@
 pkgbase = filius
 	pkgdesc = Network simulation program
-	pkgver = 1.10.4
-	pkgrel = 2
+	pkgver = 1.11.0
+	pkgrel = 0
 	url = http://www.lernsoftware-filius.de
 	arch = any
 	license = GPL
