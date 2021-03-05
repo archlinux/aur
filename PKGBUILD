@@ -8,7 +8,7 @@
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
-pkgver=455.50.07
+pkgver=455.50.10
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
@@ -20,11 +20,11 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("${_pkg}.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linux"
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers'
-        'kernel-5.6.patch')
-sha512sums=('3bff763e5b4acbbbb85e3b93da24d3d94111d98d0baf0c52dbf486a909b821a642f8274f80c3c48ed37e42a89d81465969cc4997c2df2ece6860ed21ca112a72'
+        'kernel-5.11.patch')
+sha512sums=('90410c92956ed4c120d6b26e18ca09f2df437cf1a5232b11095c04b3bf1d931abda918ff0faffd3be88a54c6f3ca710c37ef2643573034a0a0dde0031510c90a'
             'de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            'a622f4d784103d58f30c584976060ba499f794a0852c469da202314842495bdfbbcae8a510b534eec4477590a1181cae1b98d239a54a60ef2bd752b6ca8ebd1b')
+            '6409fdc44f441be1bdf30bd78de35f49ed3970a9496e265ac9f45db9760bdcb0736ecb5a7342e97b57c62c0f69b403f52e7ca69b2360e64a559a44fe0a809896')
 
 create_links() {
     # create soname links
@@ -39,10 +39,9 @@ create_links() {
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
-
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
-    #patch -Np1 -i ../kernel-5.6.patch
+    patch -Np1 -i ../kernel-5.11.patch
 
     # Fixing regex pattern for Module.symvers
     sed -i "s/${TAB}vmlinux/${TAB}*vmlinux/g" kernel/conftest.sh
