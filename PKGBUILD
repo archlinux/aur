@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.7.2.r2316.b6f2acfe
+pkgver=0.8.1.r189.g87bf761d
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -10,13 +10,13 @@ arch=("i686" "x86_64")
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "qtkeychain-qt5" "boost-libs" "libsodium" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "libnice" "libolm" "spdlog" "tweeny" "lmdbxx")
+depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "qtkeychain-qt5" "boost-libs" "libsodium" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "libnice" "libolm" "spdlog" "tweeny")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json" "boost")
 
 provides=("nheko")
 conflicts=("nheko")
 
-source=($pkgname::git://github.com/Nheko-Reborn/nheko.git#branch=master)
+source=($pkgname::git+https://github.com/Nheko-Reborn/nheko.git#branch=master)
 md5sums=("SKIP")
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    printf "0.7.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -35,7 +35,7 @@ build() {
 
     # build with more cores than the default
     export CMAKE_BUILD_PARALLEL_LEVEL=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
-    cmake -H. -Bbuild -DHUNTER_ENABLED=OFF -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_MTXCLIENT=ON -DCMAKE_INSTALL_PREFIX=.deps/usr -DCMAKE_BUILD_TYPE=Release
+    cmake -H. -Bbuild -DHUNTER_ENABLED=OFF -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_MTXCLIENT=ON -DUSE_BUNDLED_LMDBXX=ON -DCMAKE_INSTALL_PREFIX=.deps/usr -DCMAKE_BUILD_TYPE=Release
     cmake --build build --config Release
 }
 

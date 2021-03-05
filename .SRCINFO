@@ -1,6 +1,6 @@
 pkgbase = nheko-git
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.7.2.r2316.b6f2acfe
+	pkgver = 0.8.1.r189.g87bf761d
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = i686
@@ -34,10 +34,9 @@ pkgbase = nheko-git
 	depends = libolm
 	depends = spdlog
 	depends = tweeny
-	depends = lmdbxx
 	provides = nheko
 	conflicts = nheko
-	source = nheko-git::git://github.com/Nheko-Reborn/nheko.git#branch=master
+	source = nheko-git::git+https://github.com/Nheko-Reborn/nheko.git#branch=master
 	md5sums = SKIP
 
 pkgname = nheko-git
