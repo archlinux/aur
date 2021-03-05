@@ -31,6 +31,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
+replaces=('dragonwolf')
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _settings_commit=c5c75a39dd91a8772255a78493853be6553262b2
 _repo=https://hg.mozilla.org/mozilla-unified
