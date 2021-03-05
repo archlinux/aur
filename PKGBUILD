@@ -1,4 +1,4 @@
-# Maintainer: Justin Coffman <jcoffman@stlrwind.io>
+# Maintainer: Connor Sheridan <conwsh@protonmail.com>
 
 pkgname=stimmtausch-git
 pkgver=r246.575a286
