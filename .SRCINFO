@@ -1,6 +1,6 @@
 pkgbase = xtensa-esp32s2-elf-gcc-bin
 	pkgdesc = ESP32-S2 Toolchain
-	pkgver = 8.4.0_esp32s2_2020r3
+	pkgver = 8.4.0_esp32s2_2020r4
 	pkgrel = 1
 	url = https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html
 	arch = x86_64

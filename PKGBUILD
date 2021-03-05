@@ -1,5 +1,5 @@
 pkgname=xtensa-esp32s2-elf-gcc-bin
-pkgver=8.4.0_esp32s2_2020r3
+pkgver=8.4.0_esp32s2_2020r4
 pkgrel=1
 pkgdesc="ESP32-S2 Toolchain"
 arch=('x86_64')
@@ -17,5 +17,7 @@ package() {
   cp -a * $pkgdir/usr
   rm -rf $pkgdir/usr/include
   rm -rf $pkgdir/usr/share
+  rm -rf $pkgdir/usr/share
+  rm -rf $pkgdir/usr/lib/ldscripts/elf32xtensa.* # TODO: this conflicts with xtensa-esp32s2
   rm -rf $pkgdir/usr/lib/libcc1.so*
 }
