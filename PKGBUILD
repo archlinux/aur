@@ -58,10 +58,10 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.11.1
+pkgver=5.11.3
 _major=5.11
 _branch=5.x
-xanmod=2
+xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.xanmod.org/"
@@ -93,10 +93,10 @@ done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-            'ef0f0d9bc504a77c7e11c07899b12193854bafaa8c8354ab08e6005bf3b68e7f'
+            '41635dd87f8b77c370339f148e4a6888714c016624abe6189c5020f2da4487e6'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
-            '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc'
+            'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58'
             '7d8375f80012443a6d507eaaa913a6c8e4d8b7789b2523cceef9c5214a7650c5')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
