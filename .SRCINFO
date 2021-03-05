@@ -9,9 +9,9 @@ pkgbase = python-randomfiletree
 	depends = python
 	provides = randomfiletree
 	source = https://files.pythonhosted.org/packages/source/R/RandomFileTree/RandomFileTree-1.2.0.tar.gz
-	source = LICENSE::https://github.com/klieret/RandomFileTree/blob/master/LICENSE.txt
+	source = LICENSE::https://raw.githubusercontent.com/klieret/RandomFileTree/master/LICENSE.txt
 	sha256sums = 3a92e12ecbf093dc6b3fc1405c69030ed32db3a8a4a71f28724bd347f4c49afc
-	sha256sums = 4c69748fa3fad8b70a1668be2513ff515a332077a88e38a47aaf15ce54138692
+	sha256sums = 4da4a2f04603fcd10ee2868810e9863c0a55165f42a969bd8c31b42ec7e058f7
 
 pkgname = python-randomfiletree
 
