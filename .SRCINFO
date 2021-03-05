@@ -1,0 +1,18 @@
+pkgbase = python-mpmath-git
+	pkgdesc = Python library for arbitrary-precision floating-point arithmetic - git version
+	pkgver = 1.2.1.r18.g1bb25a4
+	pkgrel = 1
+	url = http://mpmath.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	depends = python-gmpy2
+	provides = python-mpmath
+	conflicts = python-mpmath
+	source = git://github.com/fredrik-johansson/mpmath
+	source = mpmath-sage-detection.patch::https://github.com/fredrik-johansson/mpmath/commit/84ca137f.patch
+	sha256sums = SKIP
+	sha256sums = 16b91c3b2197fce6a0e1a431aa3ad6a5854ec4985bdc479f37382d79e35adb35
+
+pkgname = python-mpmath-git
+
