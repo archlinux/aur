@@ -1,7 +1,7 @@
 pkgname=gamerworld-bin
 _pkgname=GamerWorld-bin
 pkgver=1.2.0
-pkgrel=6
+pkgrel=7
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1

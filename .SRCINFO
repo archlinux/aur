@@ -1,7 +1,7 @@
 pkgbase = gamerworld-bin
 	pkgdesc = Play games all in one place
 	pkgver = 1.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitlab.com/gamerworld/application
 	arch = x86_64
 	arch = arm7h
