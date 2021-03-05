@@ -5,9 +5,9 @@ pkgver=2.3.8
 pkgrel=5
 pkgdesc="Software and firmware for an open source hacker multi-tool that talks to electronic stuff"
 url="http://dangerousprototypes.com/docs/Bus_Pirate"
-arch=('any')
+arch=('x86_64')
 license=('CC-0' 'GPL')
-depends=('qt5-base' 'python2')
+depends=('qt5-base' 'python2' 'python-pyserial')
 install=$pkgname.install
 source=("https://github.com/greyltc/Bus_Pirate/archive/v${pkgver}.tar.gz" "25_busBirate.rules")
 
@@ -53,6 +53,9 @@ package() {
   ln -s /opt/${pkgname}/package/BPv4-firmware/pirate-loader-v4-source/pirate-loader_lnx ${pkgdir}/usr/bin/pirate-loader
   ln -s /opt/${pkgname}/scripts/BusPirateGUI/BusPirateGui ${pkgdir}/usr/bin/bus-pirate-gui
   ln -s /opt/${pkgname}/scripts/powertools/SPISniffer/linux-version/spisniffer ${pkgdir}/usr/bin/spi-sniffer
+
+  msg2 "Get into your bus pirate's terminal interface like this:"
+  msg2 "python -m serial.tools.miniterm /dev/bus_pirate1 115200 --eol LF"
 }
 
 # vim:set ts=2 sw=2 et:
