@@ -18,11 +18,6 @@ conflicts=("$_pkgname-dev-git" "$_pkgname-bin" "$_pkgname-git")
 source=("git+https://$_gourl.git#tag=v1.0.0")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd $srcdir/$_pkgname
   VERSION=$pkgver make credential-helper
