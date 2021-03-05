@@ -20,10 +20,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@11.0.4 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@12.0.0 electron-context-menu@2.5.0 electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in GoogleDuo-linux-*/ ; do mv "${dir}" "GoogleDuo" ;done
-    rm -rf "$srcdir/application/GoogleDuo/resources/app/node_modules"
 }
 
 package() {
