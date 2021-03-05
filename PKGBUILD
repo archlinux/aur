@@ -48,33 +48,38 @@ prepare() {
 
 package() {
 
-  mkdir -p ${pkgdir}/usr/bin/
-  ln -s $srcdir/${_name}st/bin/julia ${pkgdir}/usr/bin/juliast
-  ln -s $srcdir/${_name}rc/bin/julia ${pkgdir}/usr/bin/juliarc
-  ln -s $srcdir/${_name}nt/bin/julia ${pkgdir}/usr/bin/juliant
+  install -d ${pkgdir}/opt/${pkgname}
 
-  cd $srcdir/${_name}nt
+  cp -rv $srcdir/${_name}st ${pkgdir}/opt/${pkgname}
+  cp -rv $srcdir/${_name}rc ${pkgdir}/opt/${pkgname}
+  cp -rv $srcdir/${_name}nt ${pkgdir}/opt/${pkgname}
+
+  ln -s ${pkgdir}/opt/${pkgname}/${_name}st/bin/julia ${pkgdir}/usr/bin/juliast
+  ln -s ${pkgdir}/opt/${pkgname}/${_name}rc/bin/julia ${pkgdir}/usr/bin/juliarc
+  ln -s ${pkgdir}/opt/${pkgname}/${_name}nt/bin/julia ${pkgdir}/usr/bin/juliant
+
+  cd ${pkgdir}/opt/${pkgname}/${_name}nt
   mkdir -p ${pkgdir}/usr/share/licenses/${_name}
 
   install -d "$pkgdir/usr/share/doc"  # julia-docs
-  cp -r "$srcdir/${_name}nt/share/doc" "$pkgdir/usr/share/doc/${_name}"
+  cp -rv "${pkgdir}/opt/${pkgname}/${_name}nt/share/doc" "$pkgdir/usr/share/doc/${_name}"
   
   install -Dm644 LICENSE.md \
     ${pkgdir}/usr/share/licenses/${_name}/LICENSE.md
   
-  sed -i '2s/Julia/Julia\ Stable/g' $srcdir/${_name}st/share/applications/julia.desktop
-  sed -i '2s/Julia/Julia\ RC/g' $srcdir/${_name}rc/share/applications/julia.desktop
-  sed -i '2s/Julia/Julia\ Nightly/g' $srcdir/${_name}nt/share/applications/julia.desktop
-  sed -i '4s/julia/juliast/g' $srcdir/${_name}st/share/applications/julia.desktop
-  sed -i '4s/julia/juliarc/g' $srcdir/${_name}rc/share/applications/julia.desktop
-  sed -i '4s/julia/juliant/g' $srcdir/${_name}nt/share/applications/julia.desktop
-  mv $srcdir/${_name}st/share/applications/julia.desktop $srcdir/${_name}st/share/applications/juliast.desktop
-  mv $srcdir/${_name}rc/share/applications/julia.desktop $srcdir/${_name}st/share/applications/juliarc.desktop
-  mv $srcdir/${_name}nt/share/applications/julia.desktop $srcdir/${_name}st/share/applications/juliant.desktop
+  sed -i '2s/Julia/Julia\ Stable/g' ${pkgdir}/opt/${pkgname}/${_name}st/share/applications/julia.desktop
+  sed -i '2s/Julia/Julia\ RC/g' ${pkgdir}/opt/${pkgname}/${_name}rc/share/applications/julia.desktop
+  sed -i '2s/Julia/Julia\ Nightly/g' ${pkgdir}/opt/${pkgname}/${_name}nt/share/applications/julia.desktop
+  sed -i '4s/julia/juliast/g' ${pkgdir}/opt/${pkgname}/${_name}st/share/applications/julia.desktop
+  sed -i '4s/julia/juliarc/g' ${pkgdir}/opt/${pkgname}/${_name}rc/share/applications/julia.desktop
+  sed -i '4s/julia/juliant/g' ${pkgdir}/opt/${pkgname}/${_name}nt/share/applications/julia.desktop
+  mv ${pkgdir}/opt/${pkgname}/${_name}st/share/applications/julia.desktop ${pkgdir}/opt/${pkgname}/${_name}st/share/applications/juliast.desktop
+  mv ${pkgdir}/opt/${pkgname}/${_name}rc/share/applications/julia.desktop ${pkgdir}/opt/${pkgname}/${_name}st/share/applications/juliarc.desktop
+  mv ${pkgdir}/opt/${pkgname}/${_name}nt/share/applications/julia.desktop ${pkgdir}/opt/${pkgname}/${_name}st/share/applications/juliant.desktop
 
-  cp -r $srcdir/${_name}st/share/applications ${pkgdir}/usr/share/
-  cp -r $srcdir/${_name}rc/share/applications ${pkgdir}/usr/share/
-  cp -r $srcdir/${_name}nt/share/applications ${pkgdir}/usr/share/
+  cp -r ${pkgdir}/opt/${pkgname}/${_name}st/share/applications ${pkgdir}/usr/share/
+  cp -r ${pkgdir}/opt/${pkgname}/${_name}rc/share/applications ${pkgdir}/usr/share/
+  cp -r ${pkgdir}/opt/${pkgname}/${_name}nt/share/applications ${pkgdir}/usr/share/
 
   rm -rf $pkgdir/usr/share/icons/hicolor/scalable
   for i in 16 32 128 256 512
