@@ -56,7 +56,7 @@ package() {
   cd $srcdir/${_name}nt
   mkdir -p ${pkgdir}/usr/share/licenses/${_name}
 
-  install -d "$srcdir/${_name}nt/share/doc"  # julia-docs
+  install -d "$pkgdir/usr/share/doc"  # julia-docs
   cp -r "$srcdir/${_name}nt/share/doc" "$pkgdir/usr/share/doc/${_name}"
   
   install -Dm644 LICENSE.md \
