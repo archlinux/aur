@@ -1,0 +1,16 @@
+pkgbase = fish-fastdir-git
+	pkgdesc = Fast directory navigation for fish
+	pkgver = r6.4f616a6
+	pkgrel = 1
+	url = https://github.com/danhper/fish-fastdir
+	arch = any
+	groups = fish-plugins
+	license = unknown
+	makedepends = git
+	depends = fish
+	provides = fish-fastdir
+	source = fish-fastdir-git::git+https://github.com/danhper/fish-fastdir
+	sha256sums = SKIP
+
+pkgname = fish-fastdir-git
+
