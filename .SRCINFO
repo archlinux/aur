@@ -1,0 +1,14 @@
+pkgbase = setwall-bin
+	pkgdesc = Set your wallpaper on Wayland or X11.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/fosskers/rs-setwall
+	arch = x86_64
+	license = MIT
+	provides = setwall
+	options = strip
+	source = https://github.com/fosskers/rs-setwall/releases/download/v1.1.0/setwall-1.1.0-x86_64.tar.gz
+	sha256sums = 39ebe34c1969e4b60f3f12bafcafb8d476b520404007d8481f34841e8a2fb15e
+
+pkgname = setwall-bin
+
