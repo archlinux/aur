@@ -1,5 +1,5 @@
 _npmname=nativefier
-_npmver=42.2.1
+_npmver=42.4.0
 pkgname=nodejs-nativefier
 pkgver=$_npmver
 pkgrel=1
@@ -11,7 +11,7 @@ depends=('nodejs' 'unzip')
 makedepends=('jq' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha1sums=('27af76f14baef9ae240aa093517b381bef668ea0')
+sha1sums=('49b4f4462fd9c60822a29176643ca1ac194fbba5')
 noextract=("$_npmname-$_npmver.tgz")
 
 package() {
