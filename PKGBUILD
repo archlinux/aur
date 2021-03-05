@@ -2,12 +2,12 @@
 pkgname=lowdown
 pkgdesc='Markdown translator producing HTML5 and roff documents in the ms and man formats'
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 license=(custom:BSD)
 url=https://kristaps.bsd.lv/lowdown/
 arch=(i686 x86_64)
-depends=(glibc)
-makedepends=(libdiff libmd)
+depends=(glibc libmd)
+makedepends=(libdiff)
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('5a45dba3f1bf5c959687cd4aa04b5ac7cce2e6f7f5c14ef442d433ca78a24c86ffc66593ae5ff37aa89a6e7f34fcab51f767c552e2a90139f3f989d0d21bdf0f')
 
