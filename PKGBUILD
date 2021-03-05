@@ -84,16 +84,16 @@ _makenconfig=y
 
 pkgbase=linux-manjaro-xanmod-cacule-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.1
+pkgver=5.11.3
 _major=5.11
 _branch=5.x
-xanmod=2
+xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod Cacule UKSM'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="2baf9050c4d9887fcde0d015811f81059c215959" # 5.11.1-1
+__commit="486a2392d4ffd9b93bc3127629e3da2c9e3b6f1b" # 5.11.3-1
 
 license=(GPL2)
 makedepends=(
@@ -112,10 +112,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-            'ef0f0d9bc504a77c7e11c07899b12193854bafaa8c8354ab08e6005bf3b68e7f'
+            '41635dd87f8b77c370339f148e4a6888714c016624abe6189c5020f2da4487e6'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
-            '272a4ea69af64f5978015483d8c2d47e58572dd0aa87d8dd1a90cc4284e6b2f4'
-            '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc') 
+            '8e48c5d019a8dafcc1d68b225a09251e811a8e4c0bef073f3cb60a8032f32001'
+            'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58') 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
