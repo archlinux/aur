@@ -5,7 +5,7 @@ pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.10
 _minor=19
-_clr=1030
+_clr=1032
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=34330
+_clear_version=34350
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=cdce2a1fb0451dff502f84f5e2f7aec4c6be9bf9b3df1b96e0a2b3e3a6a095f1
-_config_hash_clear_version=34330
+_config_hash=9d1d5d8a59e081b98f2b0fe420ef1cf79e9ff5f12094ac990e3006a875c427c6
+_config_hash_clear_version=34350
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('c8b2b4a335dd29534742eef1cc687021277120fda3dd0c361b51ecfcb6a4dc2dbbb250809f04e2e8a706565837da33fdd2dfca09b3e1ec93f2fbc8d1b71590b1'
-        '957122880cd933778695138c6c437173763ab899de217cd9019be596fbd25b43c2308386f4b1f18ed3f328cb0cb01e3166f16887516eec0ef726cf0f51b0c84f'
-        '97b9800fdd3b77a01e06e13d9d10417aaa920318ad82843e9ff58f535d9e48a0137dd6caed829645726b8840dda2ae5723deb97ec7cacecd5cd58aee62115c21')
+b2sums=('0e8e7418fbc1589ed3709af314b4703afb9b09cf28069060ea974d6d309604efc7e294c67d67d3ca69020d6c401c43c075870590d3d592bed7e5913e037d2194'
+        '6ed03568baa95c05430335df6167cb8556ab25b1cdaa25c05f17af3fe14439e0de2613c91d78c1ec25eb0c372a171e54ad96080d863af038cac219dc56428cb1'
+        '1efee77db60a4ae0795ad9d8baa9b51018d836a7bf993061de0bf3e26654de94be3d7b6afa1a9df189c02474134a0fc17d41956d9268b2e6cad0a3f7a242bdc3')
