@@ -1,7 +1,7 @@
 pkgbase = messages-bin
 	pkgdesc = Unnofficial messages desktop app.
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.com/androidmessages/application
 	arch = x86_64
 	arch = arm7h

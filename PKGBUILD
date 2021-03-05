@@ -1,7 +1,7 @@
 pkgname=messages-bin
 _pkgname=Messages-bin
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
