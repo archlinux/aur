@@ -1,8 +1,9 @@
 # Maintainer: Matteo Salonia <saloniamatteo@protonmail.com>
 
 pkgname=saluto-lightdm-theme-dwm
+_pkgname=Saluto
 pkgver=3.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Saluto: Litarvan LightDM Theme Fork, with added support for DWM"
 arch=('any')
 url="https://github.com/Demonstrandum/Saluto"
@@ -18,6 +19,12 @@ md5sums=(
 	'c7a7e64586bebde20886cc731bf2d38c' # dwm-vue.diff
 	'8f007861efc61ced5abf9ee74030afb9' # dwm.png
 )
+
+pkgver() {
+  cd "${_pkgname}"
+  _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 source=(
 	"git+https://github.com/Demonstrandum/Saluto"
