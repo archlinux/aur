@@ -1,0 +1,18 @@
+pkgbase = git-credential-1password-bin
+	pkgdesc = Git credential.helper using 1Password for storage
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/develerik/git-credential-1password
+	arch = x86_64
+	license = ISC
+	depends = git
+	depends = 1password-cli
+	provides = git-credential-1password
+	conflicts = git-credential-1password-dev-git
+	conflicts = git-credential-1password
+	conflicts = git-credential-1password-git
+	source = https://github.com/develerik/git-credential-1password/releases/download/v1.0.0/git-credential-1password_1.0.0_Linux_x86_64.tar.gz
+	sha256sums = cda07f7ce0df5d8ceb911d580e1b7a6d54b56842e7dae01d67415465eb75715a
+
+pkgname = git-credential-1password-bin
+
