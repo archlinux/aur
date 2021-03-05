@@ -1,8 +1,9 @@
 # Maintainer: Matteo Salonia <saloniamatteo@protonmail.com>
 
 pkgname=artix-silence-grub-theme-git
+_pkgname=arch-silence
 pkgver=1.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Artix Silence: Grub Theme, Fork of arch-silence"
 arch=('any')
 url="https://github.com/fghibellini/arch-silence"
@@ -21,6 +22,12 @@ source=(
 	"git+https://github.com/fghibellini/arch-silence"
 	"artix-logo.png"
 )
+
+pkgver() {
+  cd "${_pkgname}"
+  _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	# Replace Arch logo with Artix logo
