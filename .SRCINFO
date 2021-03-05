@@ -1,0 +1,18 @@
+pkgbase = python-meshplex
+	pkgdesc = A wrapper around protocol buffers.
+	pkgver = 0.15.13
+	pkgrel = 1
+	url = https://github.com/nschloe/meshplex
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-meshio
+	depends = python-numpy
+	optdepends = python-matplotlib
+	optdepends = python-vtk
+	source = https://files.pythonhosted.org/packages/source/m/meshplex/meshplex-0.15.13.tar.gz
+	sha256sums = b5ba5d7b142c743d955457a16fda84e504910fee2cff518939c3e89a842107f9
+
+pkgname = python-meshplex
+
