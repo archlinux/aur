@@ -1,6 +1,6 @@
 post_install() {
   echo "### cfddns ###"
   echo "1. Edit /etc/cfddns/cfddns.yml"
-  echo "2. Add FQDN in /etc/cfddns/domains separated by lines"
+  echo "2. Add FQDN in /etc/cfddns/domains, 1 domain for each line"
   echo "3. systemctl enable --now cfddns"
 }
