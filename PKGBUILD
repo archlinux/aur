@@ -44,7 +44,7 @@
 
 pkgname=zoneminder
 pkgver=1.34.23
-pkgrel=2
+pkgrel=3
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
@@ -100,7 +100,10 @@ prepare () {
     
     # Temporary fix for CakePHP (courtesy of @compgamer89 on AUR)
     # Relevant commit: https://github.com/ZoneMinder/zoneminder/commit/2fa0fbe448058f2826dadc44572a822af2a177d5
-    git cherry-pick 2fa0fbe448058f2826dadc44572a822af2a177d5
+    #
+    # A fix for the fix: added the '--no-commit' argument to prevent build errors on systems where a git identity
+    # is not configured (e.g. in Docker or chroot environments) as suggested by @wuestengecko on AUR
+    git cherry-pick 2fa0fbe448058f2826dadc44572a822af2a177d5 --no-commit
 
     # Download and move extra PHP plugins into place
     git submodule update --init --recursive
