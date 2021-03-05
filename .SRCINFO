@@ -1,6 +1,6 @@
 pkgbase = tdesktop-x64
 	pkgdesc = Third party Telegram Desktop client with various enhancements
-	pkgver = 2.6.0.1
+	pkgver = 2.6.1.2
 	pkgrel = 1
 	url = https://github.com/TDesktop-x64/tdesktop
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = tdesktop-x64
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = tdesktop-x64
 	conflicts = telegram-desktop
-	source = https://github.com/KspLite/tdesktop-x64-AUR/releases/download/v2.6.0.1/tdesktop-x64-2.6.0.1-full.tar.gz
-	sha512sums = f13c768f6b1f8992db2e82cf4b972e2e98e8c4a6accfba694367848392d3b795ee1aaa6544f70b3d552bf4e9a69c3dd1a4b36e1c489b66f642b712407b9671a3
+	source = https://github.com/KspLite/tdesktop-x64-AUR/releases/download/v2.6.1.2/tdesktop-x64-2.6.1.2-full.tar.gz
+	sha512sums = 1644e133c5f6270a00944884b2407380facdb841d9d4bbf8baafc21e40068bc6a549686ad364ffe15556fbe8d5f187e7b3300bf10cc86e89ac6562f7fd5983e6
 
 pkgname = tdesktop-x64
 
