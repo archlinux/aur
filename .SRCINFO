@@ -1,8 +1,9 @@
 pkgbase = firedragon-bin
-	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled.
-	pkgver = 88.0a1.r636925+
+	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled - binary version
+	pkgver = 88.0a1.r637369+
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
+	install = firedragon-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = MPL
@@ -32,10 +33,9 @@ pkgbase = firedragon-bin
 	optdepends = plasma5-applets-window-appmenu: Appmenu for Plasma only
 	provides = firedragon
 	conflicts = firedragon
+	replaces = dragonwolf
 	options = !emptydirs
-	source_x86_64 = https://builds.garudalinux.org/repos/chaotic-aur/x86_64/firedragon-88.0a1.r636925+-1-x86_64.pkg.tar.zst
-	source_x86_64 = https://builds.garudalinux.org/repos/chaotic-aur/x86_64/firedragon-88.0a1.r636925+-1-x86_64.pkg.tar.zst.sig
+	source_x86_64 = https://builds.garudalinux.org/repos/chaotic-aur/x86_64/firedragon-88.0a1.r637369+-1-x86_64.pkg.tar.zst
 	sha256sums_x86_64 = 96b8af46787a6341b0767b6b5bfb289a3ad58c707bd992b019b56f640aa000ba
-	sha256sums_x86_64 = SKIP
 
 pkgname = firedragon-bin
