@@ -7,7 +7,7 @@
 # Contributor: Michael Seiwald <michael@mseiwald.at>
 
 pkgname=davical
-pkgver=1.1.9.3
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="A server for calendar sharing"
 arch=('any')
@@ -24,7 +24,7 @@ install="$pkgname.install"
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/repository/archive.tar.bz2?ref=r${pkgver}"
         httpd-davical.conf
         README.archlinux)
-sha512sums=('adeb1ef8631eb8474db04e8ec86d6aae1ddd8d9e8b0820215067f7003147cfb67f69d0fb4ae25d8e9c4b988307095e8cd9a2c78b1b384d30fc285ae64ddede7d'
+sha512sums=('82ffeb1e6158c6d4eada2eacf9c5bbab8c84a94e52aa34ceb610057b8a8bdfe255dcceb29257b460b4458f25a98f8f67ae011711eff28537fafe387a1ef24b1d'
             'b4466049d9ba116cdbe3951a7a4cf004a423b59f197f78765151c656cf4f16f30a2bcc302bd643be0548818a67611654f95deb95113fa7f581394af78cb17109'
             'd7ffe40a87e4752f1cd148bcc0a39285d81d9a717357207a114c1fc8384431ac07e673c84fd152865d47a1291b2c00dfd95237a973f3b6069a97ba5d0940ca84')
 
