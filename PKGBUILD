@@ -57,7 +57,10 @@ package() {
   mkdir -p ${pkgdir}/usr/share/licenses/${_name}
   install -Dm644 LICENSE.md \
     ${pkgdir}/usr/share/licenses/${_name}/LICENSE.md
-
+  
+  install -Dm644 "$srcdir/${_name}nt/share/doc"  # julia-docs
+  cp -r "$srcdir/${_name}nt/share/doc" "$pkgdir/usr/share/doc/${_name}"
+  
   sed -i '2s/Julia/Julia\ Stable/g' $srcdir/${_name}st/share/applications/julia.desktop
   sed -i '2s/Julia/Julia\ RC/g' $srcdir/${_name}rc/share/applications/julia.desktop
   sed -i '2s/Julia/Julia\ Nightly/g' $srcdir/${_name}nt/share/applications/julia.desktop
