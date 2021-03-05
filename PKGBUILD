@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
 pkgname=sakura-frp
-pkgver=0.35.1_sakura_2          
+pkgver=0.35.1_sakura_2.1
 pkgrel=1
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h' 'arm')
@@ -23,12 +23,12 @@ md5sums=('SKIP'
          '4fb2a7fdc3abaa441385e7598d60362a'
          'f0a1b91d07a50785b2500b16c730bf9a'
          '37b14750055c7c04ce7c3e80fa3894d3')
-md5sums_x86_64=('0c80b4991cc9a42069ba9a53dfe15deb')
-md5sums_i686=('2fedfcea711c838cde95012a0e0eab36')
-md5sums_aarch64=('5ba2317ce44dcb21a01882bdcb310b67')
-md5sums_armv6h=('6d108667efde1d77aec1f0ef1171f080')
-md5sums_armv7h=('6d108667efde1d77aec1f0ef1171f080')
-md5sums_arm=('6d108667efde1d77aec1f0ef1171f080')
+md5sums_x86_64=('9892b70acbb15c3802ebb833203630bc')
+md5sums_i686=('6063859c1067a8cfda2de355c3029793')
+md5sums_aarch64=('a84d974eac06638dcf03e1d5f21eda74')
+md5sums_armv6h=('eb829c7b7d9a45e1466e389033d32c49')
+md5sums_armv7h=('eb829c7b7d9a45e1466e389033d32c49')
+md5sums_arm=('eb829c7b7d9a45e1466e389033d32c49')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}-* ${pkgdir}/usr/bin/${pkgname}c
