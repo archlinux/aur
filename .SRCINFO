@@ -1,0 +1,31 @@
+pkgbase = mint-artwork
+	pkgdesc = Linux Mint Artwork and Resources.
+	pkgver = 1.4.8
+	pkgrel = 1
+	epoch = 0
+	url = http://packages.linuxmint.com/pool/main/m/mint-artwork
+	install = mint-artwork.install
+	changelog = CHANGELOG
+	arch = any
+	groups = cinnamon
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = lightdm-settings
+	depends = lightdm-slick-greeter
+	depends = mint-backgrounds-ulyssa
+	depends = mint-x-icons
+	depends = mint-y-icons
+	depends = mint-themes
+	conflicts = lightdm-gtk-greeter
+	conflicts = lightdm-gtk-greeter-settings
+	options = !strip
+	options = libtool
+	options = staticlibs
+	options = !zipman
+	options = !ccache
+	backup = etc/lightdm/lightdm-gtk-greeter.conf
+	source = mint-artwork_1.4.8.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_1.4.8.tar.xz
+	md5sums = 448872990652d07b8fc7418fe914cb28
+
+pkgname = mint-artwork
+
