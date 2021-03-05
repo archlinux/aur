@@ -4,7 +4,7 @@
 _pkgname=augustus
 pkgname=$_pkgname-game-git
 pkgdesc="An enhanced re-implementation of Caesar III (Original copy required)"
-pkgver=r2924.e061e632
+pkgver=r3127.fe833c2b
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Keriew/augustus"
@@ -43,8 +43,8 @@ package() {
 
     # Install additional folders to /opt
     install -m 775 -d "${pkgdir}/opt/${_pkgname}-game"
-    install -m 775 -d "${pkgdir}/opt/${_pkgname}-game/mods"
+    install -m 775 -d "${pkgdir}/opt/${_pkgname}-game/assets"
     install -m 775 -d "${pkgdir}/opt/${_pkgname}-game/res/maps"
-    cp -r "$srcdir/${_pkgname}/mods"  "${pkgdir}/opt/${_pkgname}-game/"
+    cp -r "$srcdir/${_pkgname}/assets" "${pkgdir}/opt/${_pkgname}-game/"
     cp -r "$srcdir/${_pkgname}/res/maps" "${pkgdir}/opt/${_pkgname}-game/res/"
 }
