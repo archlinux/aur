@@ -3,8 +3,8 @@
 pkgname=python-meshplex
 _name=meshplex
 pkgver=0.15.13
-pkgrel=1
-pkgdesc="A wrapper around protocol buffers."
+pkgrel=2
+pkgdesc="Compute interesting points, areas, and volumes in triangular and tetrahedral meshes."
 arch=('any')
 url="https://github.com/nschloe/meshplex"
 license=('GPL')

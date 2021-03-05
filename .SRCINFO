@@ -1,7 +1,7 @@
 pkgbase = python-meshplex
-	pkgdesc = A wrapper around protocol buffers.
+	pkgdesc = Compute interesting points, areas, and volumes in triangular and tetrahedral meshes.
 	pkgver = 0.15.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/meshplex
 	arch = any
 	license = GPL
