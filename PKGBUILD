@@ -2,15 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=stegano
-pkgver=0.4.1
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding."
 arch=('x86_64')
 url="https://github.com/steganogram/stegano-rs"
 license=('GPL3')
+depends=('bzip2')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1f5dd7bf0200848c914f271807f6313cf32495a2b0cfcf95f9ad99f1c9a85f3e31aa0b8275e30fdfb0d20945aee1a35707cadb9e751129c501d8b7357d0e99e8')
+sha512sums=('a7f828972a1df9d399386112dc4f8e673cbc0fee926b0460ac3de62e9af5c6449049d39bdf6a7c31d612a7fea789e087fb2d887e58de4e6b613133505d544037')
 
 build() {
   cd "$pkgname-rs-$pkgver/$pkgname-cli"
