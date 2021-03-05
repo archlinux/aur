@@ -12,13 +12,11 @@ makedepends=(cmake git gnutls openssl zlib)
 source=(git+$url.git
         git+https://github.com/Taywee/args.git
         git+https://github.com/AppImage/cpr.git
-        git+https://github.com/google/googletest.git
-        http2.patch)
+        git+https://github.com/google/googletest.git)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        '2306c159a0575442902efdf7304a989709baf2206cf87bfd9865595679f2d42e135c40513f651c6e15e9f30a87f1983ab6b2bf172b5090dc62af0f03ab198cb3')
+        'SKIP')
 
 pkgver() {
   cd ${pkgname/-git/}
@@ -35,9 +33,6 @@ prepare() {
   git config submodule.lib/cpr.url    "$srcdir"/cpr
   git config submodule.lib/gtest.url  "$srcdir"/googletest
   git submodule update
-
-  # https://github.com/AppImage/zsync2/pull/57
-  git apply "$srcdir"/http2.patch
 }
 
 build() {
