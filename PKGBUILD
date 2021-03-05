@@ -2,9 +2,9 @@
 
 _pkgbase=symbiflow-arch-defs
 pkgbase="$_pkgbase-nightly-bin"
-_buildnum=142
-_builddate=20210203-000107
-_commit=4f62d7ae
+_buildnum=174
+_builddate=20210304-000051
+_commit=098fe2e8
 pkgver="${_builddate%%-*}.$_buildnum.$_commit"
 pkgrel=1
 pkgdesc="Documentation of various FPGA architectures - latest binary snapshot"
@@ -30,12 +30,12 @@ sha256sums=('0726ddf229165179fe21da0c97884eeddf88be32dcfc13abf9b2eced0dbafad6'
             '8102bbf8169e37e305f73515a3764d216daad725d20ad38f1e363990c9493b59'
             'fe688bb3b9264990106376551c902da84f8e63f5ad16ade474abd2a755a4d3e9'
             '9822a26f45ac0bfa556f1f3d550aad03225802740c21d0fa8c750c2358a76e04'
-            'd06710aa18fddc8ffafdb97d5c9955ad17ae510bc00bb662b6d3048502c08d76'
-            'd7952d3295de3a1ce23afec5992bc4a8b0e167b79ce661e4f3a0f7f02e0320ff'
-            '531a19369dd442287d919f8cdcf552ac308da4d80358bca9ea259e9c0ccfd302'
-            '5bf1e6053244f467e6124d33cb760843b47a3c6903b6275295f676731bb5a516'
-            'f38916e81ba0046b7c4c6bcbda4a2b820c4e611755ea56d10847df04b5bff475'
-            '481eaa727cab89409b130d61ae2e277cba71703279dcb0a13576c4b684fc2d80')
+            '3666a1e02906ecdc7f3205fc01b6f0e46681a20a903c080a1cbebdf09157e035'
+            'dda1cedbaf9a46fdb029b61ad03a9670916909ffe4b2997bb828df5528fb463b'
+            '0177cca192dd051924b370606d219590741ee16cc71e765064a67c71e273ff3b'
+            'e365ff3b00461616a10b85529898dd9412218b5a701820a43476ee2e8d1a8d66'
+            'a4cbc72348d804f973c0084996985b072db71f93658a239d2b58a4105b43bb1d'
+            '2a59e113d3da634826ffca19bfa51fb9279340012581af206aef1b242625fbc2')
 
 pkgname=("$pkgbase-toolchain" "${_devices[@]/#/$pkgbase-device-}")
 
