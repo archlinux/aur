@@ -18,6 +18,7 @@ pkgbase = mint-artwork
 	depends = mint-themes
 	conflicts = lightdm-gtk-greeter
 	conflicts = lightdm-gtk-greeter-settings
+	conflicts = mint-sounds
 	options = !strip
 	options = libtool
 	options = staticlibs
