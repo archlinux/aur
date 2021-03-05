@@ -1,7 +1,7 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact-git
-pkgver=r145.c961924
-pkgrel=1
+pkgver=r147.4bc76dc
+pkgrel=2
 license=("MIT")
 pkgdesc="AMDGPU Controller application"
 url="https://github.com/ilyazzz/LACT"
@@ -9,8 +9,9 @@ makedepends=("rust" "git")
 depends=("gtk3" "hwids")
 arch=("any")
 backup=('etc/lact.json')
-source=("git+https://github.com/ilyazzz/LACT.git")
-sha512sums=("SKIP")
+source=("git+https://github.com/ilyazzz/LACT.git" "lactd.service" "lact.desktop")
+sha512sums=("SKIP"
+     "SKIP" "SKIP")
 
 pkgver() {
   cd LACT
@@ -23,9 +24,9 @@ build() {
 }
 
 package() {
-    cd LACT
     install -Dm644 lactd.service "${pkgdir}"/usr/lib/systemd/system/lactd.service
     install -Dm644 lact.desktop "${pkgdir}"/usr/share/applications/lact.desktop
+    cd LACT
     install -Dm755 target/release/daemon "${pkgdir}"/usr/bin/lact-daemon
     install -Dm755 target/release/gui "${pkgdir}"/usr/bin/lact-gui
 }
