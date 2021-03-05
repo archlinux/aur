@@ -1,3 +1,13 @@
+2021-03-05 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.9.6-1
+	Upstream does not provide a proper source distribution anymore
+	So we include git sub-modules of the dependencies as they were tagged
+	at the time of release
+	Vendored JUCE 6.0.7 since the official repos lag behind in
+	packaging JUCE 6.
+	VST2 plugin was replaced by VST3 version by upstream
+
 2019-09-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.4-5

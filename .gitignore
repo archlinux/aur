@@ -1,6 +1,11 @@
-src/
-pkg/
-dexed-*.tar.gz
-dexed-*.pkg.tar.xz
-dexed-*.src.tar.gz
 .AURINFO
+dexed-*.pkg.tar.xz
+dexed-*.pkg.tar.zst
+dexed-*.src.tar.gz
+dexed-*.tar.gz
+juce-*-linux.zip
+pkg/
+src/
+surgesynthteam_tuningui-*.tar.gz
+tuning-library-*.tar.gz
+vst3sdk-*.tar.gz
