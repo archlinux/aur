@@ -3,14 +3,15 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom-git
-pkgver=r157.ad18a5b
+pkgver=r332.b9955db
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater, latest git version'
 arch=('armv6h' 'armv7h' 'aarch64')
 url='http://github.com/raspberrypi/rpi-eeprom'
 license=('custom')
 depends=('python')
-optdepends=('raspberrypi-firmware' 'raspberrypi-userland-aarch64')
+optdepends=('raspberrypi-firmware')
+provides=('rpi-eeprom')
 conflicts=('rpi-eeprom')
 backup=('etc/default/rpi-eeprom-update')
 source=("git+https://github.com/raspberrypi/rpi-eeprom.git")
@@ -23,7 +24,6 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/rpi-eeprom/firmware/vl805" "${pkgdir}/usr/bin/vl805"
   install -Dm755 "${srcdir}/rpi-eeprom/rpi-eeprom-config" "${pkgdir}/usr/bin/rpi-eeprom-config"
   install -Dm755 "${srcdir}/rpi-eeprom/rpi-eeprom-update" "${pkgdir}/usr/bin/rpi-eeprom-update"
   sed -i 's/#!\/bin\/sh/#!\/bin\/sh\nPATH=\"$PATH:\/opt\/vc\/bin\"\n/g' "${pkgdir}/usr/bin/rpi-eeprom-update"
