@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.12.968912.044a48f420b9
+pkgver=5.12.983137.c915ef890d5d
 _product="${pkgbase%-git}"
 _kernel_rel=5.12
 _branch=drm-next-${_kernel_rel}
@@ -13,7 +13,7 @@ arch=(x86_64)
 url='https://gitlab.freedesktop.org/drm/amd'
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
