@@ -1,7 +1,7 @@
 # Maintainer: kugland <kugland at gmail dot com>
 
 pkgname=ngrok-tunnel-docker
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Use ngrok securely using docker"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(bash docker)
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kugland/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('90a2dd7f988eb6c9496fa6e8e1a409a7c665748b848894bbf0538c52314413d0')
+sha256sums=('186af6da894f204c763206d5057084c460a301c14feea277803acebd20e07ac5')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
