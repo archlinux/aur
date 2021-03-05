@@ -1,0 +1,4 @@
+/empress-*-build.log*
+/empress-*-prepare.log*
+/empress-*.tar.gz
+/*.pkg.tar.zst
