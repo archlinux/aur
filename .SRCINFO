@@ -1,6 +1,6 @@
 pkgbase = jed-snapshot
 	pkgdesc = A freely available text editor - Latest development version
-	pkgver = 0.99.20.145
+	pkgver = 0.99.20.147
 	pkgrel = 1
 	url = http://www.jedsoft.org/snapshots/
 	install = jed-snapshot.install
@@ -9,8 +9,8 @@ pkgbase = jed-snapshot
 	license = GPL
 	makedepends = libxext
 	makedepends = libxt
-	source = http://www.jedsoft.org/snapshots/jed-pre0.99.20-145.tar.gz
-	sha256sums = 9c01ff1bb0e3e549d595307fa2fca98da3d2298d704efa2a5737d15c7eb9ea36
+	source = http://www.jedsoft.org/snapshots/jed-pre0.99.20-147.tar.gz
+	sha256sums = 8270ce53c4d69f77889212e6a11e63391f29168b56c05f149ec214f1d583c066
 
 pkgname = jed-snapshot
 	depends = gpm
