@@ -4,3 +4,4 @@
 !PKGBUILD
 !pipewire-git.install
 !pipewire-pulse.install
+!pipewire-media-session.install
