@@ -6,7 +6,6 @@ pkgbase = eleventy
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = jq
 	depends = nodejs
 	noextract = eleventy-0.11.1.tar.gz
 	source = eleventy-0.11.1.tar.gz::https://github.com/11ty/eleventy/archive/v0.11.1.tar.gz
