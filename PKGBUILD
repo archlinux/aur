@@ -10,8 +10,8 @@ arch=('any')
 depends=('go-ipfs')
 makedepends=('go')
 source=(https://github.com/TheDiscordian/ipfs-sync/archive/v${pkgver}.tar.gz)
-md5sums=('bf021e511aa20f3197fdcea33515adb4')
-sha512sums=("161d9ab96e6825dc47937e6f39c4b7c9422c8cce6f3c31ec7f7ffeae4e892fa49b100ad883f456f4fc90b64a6203d4a6f956af3b73878501ee0dd43cb53c58f2")
+md5sums=('8ccd2f5ed3e7bd57c64bf94c1ef72196')
+sha512sums=("42eba4c442732da4b6e83fbf14bbf550e43f9699a0a939b5de0558cf5804cd7a647cdce72293a53076f09c8788e9e218b4050c9367736c909c6491ccd679aac3")
 
 package() {
 	cd ${pkgname}-${pkgver}/
