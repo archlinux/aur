@@ -3,7 +3,7 @@
 replaces=('pepper')
 pkgname=crown
 pkgver=0.42.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/dbartolini/crown"
@@ -39,7 +39,7 @@ package() {
     # .desktop and icons
     install -D -m644 crown.desktop "${pkgdir}/usr/share/applications/crown.desktop"
     for _res in 512x512 256x256 128x128 64x64 48x48 32x32 16x16; do
-        install -D -m644 $pkgname/icons/$_res/apps/crown.png "${pkgdir}/usr/share/icons/hicolor/$_res/apps/"
+        install -D -m644 icons/$_res/apps/crown.png "${pkgdir}/usr/share/icons/hicolor/$_res/apps/crown.png"
     done
-    install -D -m644 $pkgname/icons/crown.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+    install -D -m644 icons/crown.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/crown.svg"
 }
