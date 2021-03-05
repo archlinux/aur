@@ -8,7 +8,7 @@ provides=('python-twitter')
 conflicts=('python-twitter')
 
 pkgver=3.5
-pkgrel=3
+pkgrel=4
 
 arch=('any')
 license=('Apache')
@@ -19,6 +19,7 @@ depends=(
    )
 makedepends=(
     "python-setuptools"
+    "python-pytest-runner"
 )
 
 source=("https://github.com/bear/python-twitter/archive/v${pkgver}.tar.gz")

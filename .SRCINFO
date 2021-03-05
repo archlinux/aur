@@ -1,11 +1,12 @@
 pkgbase = python-twitter3
 	pkgdesc = A Python wrapper around the Twitter API
 	pkgver = 3.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bear/python-twitter
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-pytest-runner
 	depends = python-requests-oauthlib
 	depends = python-future
 	provides = python-twitter
