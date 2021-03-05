@@ -22,10 +22,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs)
 _uploadpath_x86_64="https://builds.garudalinux.org/repos/chaotic-aur/x86_64/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
-_uploadpath_sig_x86_64="https://builds.garudalinux.org/repos/chaotic-aur/x86_64/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig"
-source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums_x86_64=('96b8af46787a6341b0767b6b5bfb289a3ad58c707bd992b019b56f640aa000ba'
-                   'SKIP')
+source_x86_64=("${_uploadpath_x86_64}")
+sha256sums_x86_64=('96b8af46787a6341b0767b6b5bfb289a3ad58c707bd992b019b56f640aa000ba')
 
 package() {
   # Yep, that's somewhat redundant. But it works.
