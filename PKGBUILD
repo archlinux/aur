@@ -112,7 +112,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-            '322b6928336fdcf0e4dd84d0bb4fab791cf8c32548ae7ab8f79646a13cbdd5a0'
+            'b26e7e18de6ad7e3b39da923a4ca7b449fa530dd282a79289e2ea91002deeb8f'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '8e48c5d019a8dafcc1d68b225a09251e811a8e4c0bef073f3cb60a8032f32001'
             'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58') 
