@@ -1,11 +1,12 @@
 # Maintainer: Julian DeMille <jtdemille@demilletech.net>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Jimmy Aguilar <spacibba@aol.com>
+# Contributor: Fabian Brosda <fabi3141@gmx.de>
 
 pkgname=cl-alexandria-git
 _pkgname=${pkgname#cl-}
 _pkgname=${_pkgname%-git}
-pkgver=r261.521e9a0
+pkgver=r264.f35e232
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -17,6 +18,8 @@ url="https://common-lisp.net/project/alexandria/"
 license=('custom')
 source=('git+https://gitlab.common-lisp.net/alexandria/alexandria.git')
 md5sums=('SKIP')
+makedepends=('git')
+depends=('common-lisp' 'cl-asdf')
 conflicts=('cl-alexandria')
 provides=('cl-alexandria')
 
