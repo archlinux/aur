@@ -1,15 +1,15 @@
 # Maintainer: Charles Cabergs me@cacharle.xyz
 pkgbase=norminette-old
 pkgname=norminette-old
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Previous non open source version of school 42's norminette (C code linter)"
 arch=('any')
-url='https://github.com/42Paris/norminette'
+url='https://github.com/cacharle/norminette'
 # license=''
 depends=('ruby')
 makedepends=('git' 'ruby-bundler')
-source=("$pkgname"::'git+https://github.com/42Paris/norminette.git')
+source=("$pkgname"::'git+https://github.com/cacharle/norminette.git')
 md5sums=('SKIP')
 
 build() {

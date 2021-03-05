@@ -1,13 +1,13 @@
 pkgbase = norminette-old
 	pkgdesc = Previous non open source version of school 42's norminette (C code linter)
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://github.com/42Paris/norminette
+	url = https://github.com/cacharle/norminette
 	arch = any
 	makedepends = git
 	makedepends = ruby-bundler
 	depends = ruby
-	source = norminette-old::git+https://github.com/42Paris/norminette.git
+	source = norminette-old::git+https://github.com/cacharle/norminette.git
 	md5sums = SKIP
 
 pkgname = norminette-old
