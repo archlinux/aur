@@ -1,9 +1,9 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=dexed
-_juce_version=6.0.1
+_juce_version=6.0.7
 pkgname="${_pkgname}-git"
-pkgver=0.9.5.r9.g7026151
+pkgver=0.9.6.r0.g11ae4d7
 pkgrel=1
 pkgdesc="A software synth closely modelled on the Yamaha DX7 (git version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=("${_pkgname}::git+https://github.com/asb2m10/dexed.git"
         'git+https://github.com/surge-synthesizer/surgesynthteam_tuningui.git'
         'dexed.desktop')
 sha256sums=('SKIP'
-            'dcaac2c8a9f752ffd8d65325cea9224421f018786c229b46fdbc0cba180c5737'
+            '05f794e8cf94acb06a622484a3644743e27fdc4de590dff1c77f2f360dad2415'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -36,7 +36,7 @@ pkgver() {
 
   #local ver=$(cpp -dM Source/Dexed.h | grep '^#define DEXED_ID' | cut -d '"' -f 2)
   #echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-  echo $(git describe --tags | sed -E -e 's/-([0-9]+)-/-r\1-/' -e 's/^v//' -e 's/-/./g')
+  echo $(git describe --tags --long | sed -E -e 's/-([0-9]+)-/-r\1-/' -e 's/^v//' -e 's/-/./g')
 }
 
 prepare() {
@@ -50,7 +50,7 @@ prepare() {
 
   mkdir -p assets
   ln -sf "${srcdir}/JUCE" assets
-  ./scripts/projuce-lin.sh
+  ./assets/JUCE/Projucer --resave Dexed.jucer
 }
 
 build() {
