@@ -20,7 +20,7 @@ Server = https://us-ut-mirror.chaotic.cx/$repo/$arch
 Server = https://us-ca-mirror.chaotic.cx/$repo/$arch
 
 # Netherlands
-# * By: Var Bhat and LiteServer
+# * By: Var Bhat
 Server = https://nl-mirror.chaotic.cx/$repo/$arch
 
 # Burgos, Spain
@@ -44,3 +44,11 @@ Server = https://kr-mirror.chaotic.cx/$repo/$arch
 # Singapore
 # * By: Nico (End-of-live: 2021-05-22)
 Server = https://sg-mirror.chaotic.cx/$repo/$arch
+
+# Bulgaria
+# * By: Sudo Man <github.com/sakrayaami>
+Server = https://bg-mirror.chaotic.cx/$repo/$arch
+
+# Toronto, Canada
+# By freebird54
+Server = https://ca-mirror.chaotic.cx/$repo/$arch
