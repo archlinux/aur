@@ -1,5 +1,5 @@
-# Maintainer: Justin Coffman <jcoffman@sysguard.io>
-# Contributor: Justin Coffman <jcoffman@sysguard.io>
+# Maintainer: Connor Sheridan <conwsh@protonmail.com>
+# Contributor: Connor Sheridan <conwsh@protonmail.com>
 
 pkgname=tinyfugue
 pkgver=5.0
