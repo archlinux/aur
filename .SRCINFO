@@ -1,0 +1,14 @@
+pkgbase = upctl
+	pkgdesc = UpCloud CLI.
+	pkgver = v0.1.7
+	pkgrel = 1
+	url = https://upcloud.com
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = https://github.com/UpCloudLtd/upctl/archive/vv0.1.7.tar.gz
+	sha256sums = SKIP
+
+pkgname = upctl
+
