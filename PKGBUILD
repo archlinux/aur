@@ -49,7 +49,9 @@ prepare() {
 package() {
 	# Creating the necessary directories
 	install -d ${pkgdir}/usr
+  install -d ${pkgdir}/etc
 	install -d ${pkgdir}/usr/bin
+  install -d ${pkgdir}/usr/share/applications
 	install -d ${pkgdir}/usr/share/${pkgname}
 	install -d ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-stable
 	install -d ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-rc
@@ -84,12 +86,12 @@ package() {
   sed -i '4s/julia/julia-stable/g' ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop
   sed -i '4s/julia/julia-rc/g' ${pkgdir}/usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop
   sed -i '4s/julia/julia-nightly/g' ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop
-  cp -rv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julias-stable.desktop
+  cp -rv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-stable.desktop
   cp -rv ${pkgdir}/usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-rc.desktop
   cp -rv ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-nightly.desktop
   	
   # Cleaning up and installing icons
-  cp -r etc ${pkgdir}
+  cp -r $srcdir/${_name}-stable/etc ${pkgdir}
   rm -rf $pkgdir/usr/share/icons/hicolor/scalable
   for i in 16 32 128 256 512
   do
