@@ -1,0 +1,26 @@
+pkgbase = xtensa-esp32s2-elf-gcc-bin
+	pkgdesc = ESP32-S2 Toolchain
+	pkgver = 8.4.0_esp32s2_2020r3
+	pkgrel = 1
+	url = https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = glibc
+	depends = gcc
+	depends = git
+	depends = make
+	depends = ncurses
+	depends = flex
+	depends = bison
+	depends = gperf
+	depends = python2-pyserial
+	depends = python2-cryptography
+	depends = python2-pyparsing
+	options = !strip
+	options = staticlibs
+	source = https://github.com/espressif/crosstool-NG/releases/download/esp-2020r3/xtensa-esp32s2-elf-gcc8_4_0-esp-2020r3-linux-amd64.tar.gz
+	sha256sums = 40fafa47045167feda0cd07827db5207ebfeb4a3b6b24475957a921bc92805ed
+
+pkgname = xtensa-esp32s2-elf-gcc-bin
+
