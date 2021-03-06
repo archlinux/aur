@@ -2,21 +2,21 @@
 
 _name=dvc
 pkgname=$_name-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects as a binary"
 arch=('x86_64')
 url="https://github.com/iterative/dvc"
 license=('APACHE')
 conflicts=('dvc')
-depends=('python')
+depends=('python' 'libarchive')
 #makedepends=('rpm-tools')
 optdepends=(
 	'zsh-completions'
 	'bash-completion'
 )
 source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-1.x86_64.rpm")
-sha256sums=('b0a9d2645c8c030684e45d8f672e75051535fd62224b1182c820b8bc72fec6fa')
+sha256sums=('20cb1db2a25e8c227637d4a666ecae778ba23642bf78715d50b61ba109dab7e2')
 
 
 package() {
