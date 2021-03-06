@@ -3,20 +3,23 @@
 pkgname='python-apprise'
 _name=${pkgname#python-}
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
 url="https://github.com/caronc/apprise"
 license=('MIT')
-depends=('python-decorator'
-         'python-requests'
-         'python-requests-oauthlib'
-         'python-oauthlib'
-         'python-urllib3'
-         'python-six'
-         'python-click'
-         'python-markdown'
-         'python-yaml')
+depends=(
+  'python-babel'
+  'python-decorator'
+  'python-requests'
+  'python-requests-oauthlib'
+  'python-oauthlib'
+  'python-urllib3'
+  'python-six'
+  'python-click'
+  'python-markdown'
+  'python-yaml'
+)
 
 makedepends=('python-setuptools')
 
