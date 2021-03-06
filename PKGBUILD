@@ -12,7 +12,8 @@ license=('custom')
 depends=('vim-plugin-runtime')
 makedepends=('git')
 groups=('vim-plugins')
-replaces=('vim-a')
+provides=('vim-a')
+conflicts=('vim-a' 'neovim-a')
 source=("$pkgname::git+$url"
          "LICENSE")
 sha256sums=('SKIP'
