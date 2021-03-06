@@ -1,7 +1,8 @@
 pkgbase = smartied
+	pkgdesc = smarthome server
 	pkgver = 0.2
-	pkgrel = 12
-	url = https://cgit.ctu.cx/smartied/
+	pkgrel = 13
+	url = https://cgit.ctu.cx/smartied
 	arch = x86_64
 	license = GPL-3
 	makedepends = nim
@@ -9,8 +10,8 @@ pkgbase = smartied
 	makedepends = git
 	depends = glibc
 	depends = libmodbus
-	source = smartied-a9f304c83c93780ebb8772bd250bf53fc2b157a6.tar.gz::https://cgit.ctu.cx/smartied/snapshot/smartied-a9f304c83c93780ebb8772bd250bf53fc2b157a6.tar.gz
-	sha256sums = 1127878f7224e895b5cd5a6c7d8625a80ebbe27da1f1694103108eb53b86fc0f
+	source = smartied-7abfbb2009484506e51c6d67446e24405fda5161.tar.gz::https://cgit.ctu.cx/smartied/snapshot/smartied-7abfbb2009484506e51c6d67446e24405fda5161.tar.gz
+	sha256sums = ba28fd3b194244a6178eab204d4960d33da5968b3b00c8f3cdfef789aaa96256
 
 pkgname = smartied
 
