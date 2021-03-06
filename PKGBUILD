@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.5.1.r121.486c8ca
+pkgver=1.5.1.r144.7fa3fe8
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -55,7 +55,6 @@ package() {
 
 	# device access
 	install -Dm644 -t "$pkgdir"/usr/lib/udev/rules.d/ extra/linux/71-liquidctl.rules
-	install -Dm644 extra/linux/modules-load.conf "$pkgdir"/usr/lib/modules-load.d/liquidctl.conf
 
 	# completions
 	install -Dm644 extra/completions/liquidctl.bash "$pkgdir"/usr/share/bash-completion/completions/liquidctl
