@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/kitabisa/ssb"
 license=('Apache2.0')
 depends=('go')
-source=("https://github.com/kitabisa/ssb/releases/download/v0.0.2/ssb_0.0.2_linux_amd64.tar.gz")
+source=("https://github.com/kitabisa/ssb/releases/download/v0.1.1/ssb_0.1.1_linux_amd64.tar.gz")
 md5sums=('SKIP')
 
 package() 
