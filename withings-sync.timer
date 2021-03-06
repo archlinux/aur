@@ -1,0 +1,11 @@
+[Unit]
+Description=withings-sync timer
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=1min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

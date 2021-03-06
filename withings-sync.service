@@ -1,0 +1,12 @@
+[Unit]
+Description=withings-sync job
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/withings-sync/withings-sync.conf
+ExecStart=/usr/bin/withings-sync --gu ${GARMIN_USER} --gp ${GARMIN_PW}
+
+[Install]
+WantedBy=default.target
+
