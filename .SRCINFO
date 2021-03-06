@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
-	pkgver = 1.13.15
-	pkgrel = 3
+	pkgver = 1.13.16
+	pkgrel = 1
 	url = https://wiki.ros.org/rviz
 	arch = i686
 	arch = x86_64
@@ -76,8 +76,8 @@ pkgbase = ros-melodic-rviz
 	depends = sip4
 	depends = python-sip4
 	depends = boost1.69
-	source = ros-melodic-rviz-1.13.15.tar.gz::https://github.com/ros-visualization/rviz/archive/1.13.15.tar.gz
-	sha256sums = 9ba3faa1db07cdb068cb11b121cbe749dba558c8986e6fbbc75fda7b0aad9299
+	source = ros-melodic-rviz-1.13.16.tar.gz::https://github.com/ros-visualization/rviz/archive/1.13.16.tar.gz
+	sha256sums = 427f9ffbfd0d5d2f18d075e7d305a0bd1dcc89e5c29ec06ac4e7d52e5b5349f2
 
 pkgname = ros-melodic-rviz
 
