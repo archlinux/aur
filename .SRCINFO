@@ -1,7 +1,7 @@
 pkgbase = dustrac
 	pkgdesc = Dust Racing 2D is a traditional top-down car racing game including a level editor
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://juzzlin.github.io/DustRacing2D/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = dustrac
 	makedepends = cmake
 	depends = openal
 	depends = libvorbis
-	depends = qt5-base
+	depends = qt5-tools
+	depends = glu
 	source = https://github.com/juzzlin/DustRacing2D/archive/2.1.1.tar.gz
 	sha256sums = e028a49ad427fb0527b2bf05dad72404cc2d20883da1d330cb1319246bdc423a
 
