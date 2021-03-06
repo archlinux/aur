@@ -2,7 +2,7 @@
 
 pkgname=python-torf
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module to create, parse and edit torrent files and magnet links'
 arch=('any')
 url='https://github.com/rndusr/torf/'
@@ -25,5 +25,5 @@ check() {
 
 package() {
     cd "torf-${pkgver}"
-    python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+    PYTHONHASHSEED='0' python setup.py install --root="$pkgdir" --skip-build --optimize='1'
 }
