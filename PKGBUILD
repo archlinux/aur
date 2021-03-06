@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.11.2.arch1
+pkgver=5.11.3.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -98,7 +98,7 @@ source=(
     "git+$_repo_url_gcc_patch"
     config # kernel config file
     sphinx-workaround.patch # # Sphinx 3.5 broke the build again
-    0009-prjc_v5.11-r0.patch
+    0009-prjc_v5.11-r1.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -108,9 +108,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'c35a3e8cac8edaa8cb2d6867652e5b4a3390698e53039582858ce00f846c35b108e7d1f7498a3bb383294ddc3d07a8e93d883dd6d5a4283afd1c1ffe23d62ed4'
+            'c5ac811f6ec683dc52e6f2f026404cc4e18e083b04feb74535c791773565b0c56bed1a96da166669674d90b9db2ad11474073b4c08d0067cf17614c3477c8060'
             '93c03382b6678ce5e94a5d06e6737965629d7dc49d16e968d225e664d88f07a12abe0e04908f1cdaa75ff1cde88783cae9f0794d1075bc65bc7baeff392e0ae2'
-            '34f0adf9ed1ec09df8e19f6fa64c5d93fc8896afeb9825771f01caaad663f8505b089571321b2cc76a7b95e755bd09df695682b587ee0dc89ab4f3463e0982aa'
+            '7d1ef268fb7b946a3e16c3f3402a3334a32df940eccf5dd2d637671f80e16599228eb13fd889f863dc33ea78a2c62027491c6fba6a44b3e68bf3c66f222adcd6'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -128,7 +128,7 @@ prepare() {
     PatchesArray=(
         $_reponame_gcc_patch/$_gcc_patch_name
         sphinx-workaround.patch
-        0009-prjc_v5.11-r0.patch
+        0009-prjc_v5.11-r1.patch
         0005-glitched-pds.patch
     )
     for MyPatch in "${PatchesArray[@]}"
