@@ -1,7 +1,7 @@
 # Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 
 pkgname=electron-nightly-npm
-pkgver=13.0.0.nightly.20210219
+pkgver=14.0.0.nightly.20210305
 pkgrel=1
 url='https://electronjs.org/'
 pkgdesc="Build cross platform desktop apps with web technologies"
@@ -22,4 +22,5 @@ package() {
 	mv "bin/electron" "bin/electron-nightly"
 	ln -s "./node_modules/electron-nightly/dist/" "./lib/electron-nightly"
 }
+
 
