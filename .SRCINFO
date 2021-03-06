@@ -1,0 +1,23 @@
+pkgbase = uvm-python-git
+	pkgdesc = Port of SystemVerilog Universal Verification Methodology (UVM) 1.2 to Python and cocotb
+	pkgver = r1174.26acd2b
+	pkgrel = 1
+	url = https://github.com/tpoikela/uvm-python
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = python-wheel
+	depends = python
+	depends = python-setuptools
+	depends = python-cocotb
+	optdepends = iverilog: for simulating verilog designs
+	optdepends = verilator: for simulating verilog designs
+	optdepends = gtkwave: for visualizing waveforms
+	provides = uvm-python
+	conflicts = uvm-python
+	options = !emptydirs
+	source = git+https://github.com/tpoikela/uvm-python
+	md5sums = SKIP
+
+pkgname = uvm-python-git
+
