@@ -1,7 +1,7 @@
 pkgbase = whirlpool-gui-bin
 	pkgdesc = Desktop GUI for Whirlpool by Samourai-Wallet.
 	pkgver = 0.10.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://code.samourai.io/whirlpool/whirlpool-gui
 	arch = x86_64
 	license = custom:Unlicense

@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 pkgname=whirlpool-gui-bin
 pkgver=0.10.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop GUI for Whirlpool by Samourai-Wallet."
 arch=('x86_64')
 url="https://code.samourai.io/whirlpool/whirlpool-gui"
