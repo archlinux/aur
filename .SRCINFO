@@ -1,7 +1,8 @@
 pkgbase = fritzbox-exporter
+	pkgdesc = prometheus exporter for lte fritzboxes
 	pkgver = 0.1
 	pkgrel = 0
-	url = https://cgit.ctu.cx/fritzbox-exporter/
+	url = https://cgit.ctu.cx/fritzbox-exporter
 	arch = x86_64
 	license = GPL-3
 	makedepends = nim
