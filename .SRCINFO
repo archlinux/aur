@@ -1,7 +1,7 @@
 pkgbase = rime-flypy
 	pkgdesc = 小鹤音形 rime 挂接文件
-	pkgver = 10.7.5
-	pkgrel = 2
+	pkgver = 10.7.6
+	pkgrel = 1
 	url = http://flypy.com/
 	arch = any
 	license = custom
@@ -9,8 +9,8 @@ pkgbase = rime-flypy
 	backup = usr/share/rime-data/flypy_sys.txt
 	backup = usr/share/rime-data/flypy_top.txt
 	backup = usr/share/rime-data/flypy_user.txt
-	source = rime-flypy-10.7.5.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v10.7.5.tar.gz
-	md5sums = 3594ece80d13399b9d0a324cd8c095f4
+	source = rime-flypy-10.7.6.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v10.7.6.tar.gz
+	md5sums = 057466ff6267c88fef5acdfee904a447
 
 pkgname = rime-flypy
 
