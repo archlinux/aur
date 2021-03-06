@@ -1,7 +1,7 @@
 # Maintainer: Evan Zhang <aur AT evanzhang.ca>
 
 pkgname=abeluna
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple GUI to-do/task manager with CalDAV support."
 arch=('any')

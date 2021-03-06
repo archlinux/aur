@@ -1,6 +1,6 @@
 pkgbase = abeluna
 	pkgdesc = A simple GUI to-do/task manager with CalDAV support.
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Ninjaclasher/abeluna
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = abeluna
 	depends = python-caldav
 	depends = libnotify
 	depends = python-setuptools
-	source = abeluna-1.0.4.tar.gz::https://github.com/Ninjaclasher/abeluna/archive/1.0.4.tar.gz
+	source = abeluna-1.1.0.tar.gz::https://github.com/Ninjaclasher/abeluna/archive/1.1.0.tar.gz
 	md5sums = dffb31b2a0771f267d20540d23aa6914
 
 pkgname = abeluna
