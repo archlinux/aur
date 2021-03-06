@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-wp-user-avatar
-pkgver=2.2.9
+pkgver=2.2.11
 pkgrel=1
 pkgdesc="Change user profile picture"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/wp-user-avatar.${pkgver}.zip")
-sha512sums=('9e15473f5c614703d31966378a4977f916cda43cca661b1aa64b8d7397a1f49ac5b1e68182d59c3d97e383b2db40fdaf0130ae9b76fba97d4ca3b8a4b0d36d33')
+sha512sums=('9db7971791eb5468278956115862722f9bcb6bcf86cfc9ed669571901ff6c1ec3c844710f66af426561eb5a10add45f159d662493005f909db35789c36057778')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
