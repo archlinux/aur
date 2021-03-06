@@ -1,7 +1,7 @@
 pkgbase = freenitori
 	pkgdesc = Open source, general purpose Discord utility.
 	pkgver = 1.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freenitori.jp/
 	arch = x86_64
 	license = GPL

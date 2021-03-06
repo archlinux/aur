@@ -2,7 +2,7 @@
 
 pkgname=freenitori
 pkgver=1.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source, general purpose Discord utility."
 arch=("x86_64")
 url="https://${pkgname}.jp/"
@@ -33,7 +33,8 @@ package() {
   cd "FreeNitori"
   install -Dm755 "build/freenitori" "${pkgdir}/usr/bin/freenitori"
   install -Dm755 "build/nitorictl" "${pkgdir}/usr/bin/nitorictl"
-  install -Dm644 "assets/nitori.conf" "${pkgdir}/etc/${pkgname}/nitori.conf"
+  ./build/freenitori || true
+  install -Dm644 "nitori.conf" "${pkgdir}/etc/${pkgname}/nitori.conf"
   cd ..
   install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
