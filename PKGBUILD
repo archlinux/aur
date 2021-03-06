@@ -3,12 +3,12 @@
 
 pkgname=darling-dkms
 pkgver=0.1.20210224.testing
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for Darling."
 arch=('x86_64')
 url="https://github.com/darlinghq/darling"
 license=('GPL')
-groups=('')
+groups=('darling-bin')
 depends=('dkms')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
