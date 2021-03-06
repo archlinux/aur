@@ -7,7 +7,7 @@ pkgbase = sqls-bin
 	license = MIT
 	depends = git
 	depends = go
-	conflicts = sqls
+	conflicts = sqls-git
 	source = sqls-bin-0.2.14.tar.gz::https://github.com/lighttiger2505/sqls/releases/download/v0.2.14/sqls_0.2.14_Linux_x86_64.tar.gz
 	sha256sums = SKIP
 

@@ -10,7 +10,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/lighttiger2505/sqls/release
 arch=('x86_64')
 sha256sums=('SKIP')
 depends=('git' 'go')
-conflicts=('sqls')
+conflicts=('sqls-git')
 
 package() {
     cd $srcdir
