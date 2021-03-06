@@ -10,6 +10,7 @@ arch=('any')
 license=('MPL-2.0')
 conflicts=('stylua-bin')
 sha256sums=('SKIP')
+depends=('git' 'rust')
 
 pkgver() {
   cd "${pkgname}"
