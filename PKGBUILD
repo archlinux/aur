@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-pyqt5')
 makedepends=('git')
 provides=("${pkgname%-*}")
-conflicts=("${pkgname%-git}")
+conflicts=("timerdown-git")
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 

@@ -8,7 +8,7 @@ pkgbase = timerdown
 	makedepends = git
 	depends = python-pyqt5
 	provides = timerdown
-	conflicts = timerdown
+	conflicts = timerdown-git
 	source = timerdown::git+https://github.com/Pyntux/TimerDown.git#tag=v0.3.1
 	sha256sums = SKIP
 
