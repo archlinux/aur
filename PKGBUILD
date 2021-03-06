@@ -2,14 +2,15 @@
 
 pkgname=hackernews_tui
 _gitname=hackernews-TUI
-pkgver=0.1.1
+pkgver=0.1.2
+_pkgsubver="-1"
 pkgrel=1
 pkgdesc="A Terminal UI to browse hacker news."
 arch=("x86_64")
 url="https://github.com/aome510/hackernews-TUI"
 license=('MIT')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/aome510/hackernews-TUI/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/aome510/hackernews-TUI/archive/v$pkgver${_pkgsubver}.tar.gz")
 sha512sums=("aa89e46da73dac55105928997c1bb85d88f9e2f07e52cd3233ec165e64dc5910167c2bce8709060e569df3adabc0c1a910593a406839194e90be05a46ea51630")
 
 build() {
