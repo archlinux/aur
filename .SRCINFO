@@ -3,11 +3,10 @@ pkgbase = quicknav
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/MrDogeBro/quicknav
-	arch = x86_64
+	arch = any
 	license = MIT
-	provides = quicknav
-	options = strip
-	source = https://github.com/MrDogeBro/quicknav/releases/download/v0.1.0/quicknav-0.1.0-x86_64.tar.gz
+  depends = rust
+	source = quicknav.tgz::https://github.com/MrDogeBro/quicknav/archive/v0.1.0.tar.gz
 	sha256sums = f6626af4f1fcd7b791b8d7806ed8dd8489062eae2984352ee19b3e1d0466880c
 
 pkgname = quicknav
