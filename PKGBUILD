@@ -1,5 +1,5 @@
 # Maintainer: MrDogeBro <MrDogeBro@users.noreply.github.com>
-pkgname=quicknav-bin
+pkgname=quicknav
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A way to quickly navigate your filesystem from the command line."
