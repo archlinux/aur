@@ -1,13 +1,14 @@
 pkgbase = sh-elf-binutils-casio
 	pkgdesc = GNU binary utilities for the Casio calculators SuperH processors.
 	pkgver = 2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = zlib
+	depends = binutils
 	depends = flex
+	depends = zlib
 	options = !libtool
 	options = !buildflags
 	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.tar.bz2
