@@ -1,20 +1,18 @@
 pkgbase = clion-eap
 	pkgdesc = C/C++ IDE. 30-day evaluation.
-	pkgver = 211.6085.16
+	pkgver = 211.6305.15
 	pkgrel = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = rsync
-	noextract = CLion-211.6085.16.tar.gz
+	noextract = CLion-211.6305.15.tar.gz
 	options = !strip
-	source = https://download.jetbrains.com/cpp/CLion-211.6085.16.tar.gz
+	source = https://download.jetbrains.com/cpp/CLion-211.6305.15.tar.gz
 	source = jetbrains-clion-eap.desktop
-	source = clion_symlink.patch
-	sha256sums = 08fa28c7943620d550290e2213c01c5a75220897bb6c341123f0442ef4b6a2d5
+	sha256sums = c7487bdbcb267ef0a115a2dc35adfdca407c2cc788f492dd8d0735df451ac3a8
 	sha256sums = e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0
-	sha256sums = 0b8a0f338bcc069589cb9f666cde56d31a4acf9b44dc45e26e37967584e01380
 
 pkgname = clion-eap
 	depends = libdbusmenu-glib

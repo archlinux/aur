@@ -9,7 +9,7 @@ pkgbase=clion-eap
 pkgname=(clion-eap clion-eap-jre clion-eap-cmake clion-eap-gdb clion-eap-lldb)
 _pkgname=clion
 _dlname=CLion
-pkgver=211.6085.16
+pkgver=211.6305.15
 _dlver=$pkgver
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -19,11 +19,9 @@ url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
 makedepends=('rsync')
 source=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz"
-        "jetbrains-${pkgbase}.desktop"
-        "clion_symlink.patch")
-sha256sums=('08fa28c7943620d550290e2213c01c5a75220897bb6c341123f0442ef4b6a2d5'
-            'e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0'
-            '0b8a0f338bcc069589cb9f666cde56d31a4acf9b44dc45e26e37967584e01380')
+        "jetbrains-${pkgbase}.desktop")
+sha256sums=('c7487bdbcb267ef0a115a2dc35adfdca407c2cc788f492dd8d0735df451ac3a8'
+            'e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0')
 noextract=("${_dlname}-${_dlver}.tar.gz")
 
 build() {
@@ -33,7 +31,6 @@ build() {
            -C "${srcdir}/opt/${pkgbase}"
 
     cd "${srcdir}/opt/${pkgbase}"
-    patch -p1 -i "${srcdir}/clion_symlink.patch"
     rm -f bin/libyjpagent-linux.so bin/fsnotifier
 }
 
