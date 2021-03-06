@@ -5,11 +5,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=89.0.4389.72
-pkgrel=2
+pkgver=89.0.4389.82
+pkgrel=1
 _pkgname=chromium
 _launcher_ver=7
-_gcc_patchset=6
+_gcc_patchset=7
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -17,7 +17,7 @@ license=('BSD')
 provides=(chromium=$pkgver)
 conflicts=(chromium)
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs'
              'java-runtime-headless' 'python2' 'python2-setuptools')
@@ -29,16 +29,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         add-dependency-on-opus-in-webcodecs.patch
-        don-t-crash-on-reentrant-RunMoveLoop-call.patch
-        add-ctime-for-std-time.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('946a0b65aad10e0f77a539103892099b7238310c733f25b41d58b76f6ac0bc4f'
+sha256sums=('df4914407b68afdc6449cb8e3f1b08d110eb8689ac41f86490e337fa4d1be379'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            '359d2847e775d8cf6f4e0b12c94c8f2718f0fd562427859c596ce1c3711dbd8e'
+            'f8b1558f6c87b33423da854d42f0f69d47885a96d6bf6ce7f26373e93d47442f'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
-            '615f5fefc94da605957edb34b6c000f32953fb5ff6ffb321f062dab8e0fef9d3'
-            '102e0c976c0d7fd1fbe2f2978ec621499a97b62457b3fde4daf84f026d1a53a7'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -99,11 +95,10 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../add-dependency-on-opus-in-webcodecs.patch
-  patch -Np1 -i ../don-t-crash-on-reentrant-RunMoveLoop-call.patch
-  patch -Np1 -i ../add-ctime-for-std-time.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-89-quiche-dcheck.patch
+  patch -Np1 -i ../patches/chromium-89-AXTreeSerializer-include.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
