@@ -1,6 +1,6 @@
 pkgbase = rscrevolution
 	pkgdesc = The most developed, longest running, most active and the only FREE OldSchool RuneScape Classic Private Server.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	arch = any
 	license = N/A
