@@ -18,12 +18,7 @@ source=("$pkgname-$pkgver.zip::https://invent.kde.org/graphics/okular/-/archive/
 sha512sums=('c12167bb391bc0372a94b986aad9b50429a9658cdb41ea5d923a63dfaca27d5ae6608c9569e0ecdf0595f3fe945dfa967f585a68dde06815906799e49cffd1e9'
             '90f3ce005333e0656af89be331515cbaea306c89fedd28a3d32d95cffeff79aeb3dc0c7a49bcfbde24d1d66c6dd0fc6295fe60f3aab0c695634639b8c3fb1dbe')
 
-# 三个函数的位置都是$src-dir
 prepare() {
-#unzip $pkgname-$pkgver.zip
-# 自动解压了
-#	echo ================================
-#mv okular-$pkgver $pkgname-$pkgver
 	patch -p0 okular-$pkgver/part/pageview.cpp pageview_colemak.patch
 	mkdir build
 }
