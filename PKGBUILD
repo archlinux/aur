@@ -1,15 +1,16 @@
-# Maintainer: Christoph Drexler <chrdr at gmx dot at>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="http://www.grisbi.org"
 license=('GPL')
 depends=('gtk3' 'libgsf')
 optdepends=('libofx: for OFX support')
-makedepends=('git' 'intltool')
+makedepends=('git' 'intltool' 'imagemagick')
 provides=('grisbi')
 conflicts=('grisbi-git')
 replaces=('grisbi')
