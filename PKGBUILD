@@ -2,7 +2,7 @@
 
 _npmname=mjml
 pkgname=nodejs-$_npmname
-pkgver=4.8.1
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="The only framework that makes responsive-email easy"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('ef7679927dbc1c41604570e15a0cf8f2ccbafc2536fdd03845e0abc41dedfe8f')
+sha256sums=('f15ce32f54775a0b412863e1e1e556e1c1dab91d6b6cdc4472b5949f255524fe')
 
 package() {
   npm install \
