@@ -1,7 +1,7 @@
 pkgbase = forgit-git
 	pkgdesc = Utility tool powered by fzf for using git interactively
 	pkgver = r273.c57c9f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wfxr/forgit
 	install = forgit-git.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = forgit-git
 	depends = fzf
 	optdepends = zsh: supported shell
 	optdepends = fish: supported shell
-	optdepends = delta: human readable diffs
+	optdepends = git-delta: human readable diffs
 	optdepends = diff-so-fancy: human readable diffs
 	optdepends = bat: syntax highlighting for .gitignore
 	optdepends = emoji-cli: emoji support for git log

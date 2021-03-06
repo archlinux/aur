@@ -2,7 +2,7 @@
 pkgname=forgit-git
 _pkgname=${pkgname%-git}
 pkgver=r273.c57c9f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
 url="https://github.com/wfxr/forgit"
@@ -11,7 +11,7 @@ groups=('fish-plugins' 'zsh-plugins')
 depends=('bash' 'fzf')
 optdepends=('zsh: supported shell'
             'fish: supported shell'
-            'delta: human readable diffs'
+            'git-delta: human readable diffs'
             'diff-so-fancy: human readable diffs'
             'bat: syntax highlighting for .gitignore'
             'emoji-cli: emoji support for git log')
