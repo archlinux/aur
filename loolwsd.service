@@ -1,13 +1,24 @@
 [Unit]
-Description=loolwsd as a service
+Description=Collabora Online WebSocket Daemon
+After=network.target
 
 [Service]
+EnvironmentFile=-/etc/sysconfig/loolwsd
+ExecStart=/usr/bin/loolwsd --version --o:sys_template_path=/var/lib/lool/systemplate --o:child_root_path=/var/lib/lool/child-roots --o:file_server_root_path=/usr/share/loolwsd
+KillSignal=SIGINT
+TimeoutStopSec=120
 User=lool
-Group=lool
-ExecStart=/usr/bin/loolwsd --o:sys_template_path=/var/lib/libreoffice-online/systemplate --o:child_root_path=/var/lib/libreoffice-online/jails --o:file_server_root_path=/usr/share/loolwsd
-ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
-Restart=on-failure
+KillMode=control-group
+Restart=always
+LimitNOFILE=infinity:infinity
+
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lool /var/log
+
+ProtectHome=yes
+PrivateTmp=yes
+ProtectControlGroups=yes
+CapabilityBoundingSet=CAP_FOWNER CAP_CHOWN CAP_MKNOD CAP_SYS_CHROOT CAP_SYS_ADMIN
 
 [Install]
 WantedBy=multi-user.target

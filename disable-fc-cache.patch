@@ -1,8 +1,0 @@
---- a/test/Makefile.am	2020-10-12 11:40:10.877977970 +0200
-+++ b/test/Makefile.am	2020-10-12 20:52:37.447455858 +0200
-@@ -310,5 +310,4 @@
- 	@echo
- 	@echo "Running build-time unit tests.  For more thorough testing, please run 'make check'."
- 	@echo
--	@fc-cache "@LO_PATH@"/share/fonts/truetype
- 	@UNITTEST=1 ${top_builddir}/test/unittest

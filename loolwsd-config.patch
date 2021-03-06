@@ -5,7 +5,7 @@
      else if (args[0] == "update-system-template")
      {
 -        const char command[] = "loolwsd-systemplate-setup /opt/lool/systemplate " LO_PATH " >/dev/null 2>&1";
-+        const char command[] = "loolwsd-systemplate-setup /var/lib/libreoffice-online/systemplate " LO_PATH " >/dev/null 2>&1";
++        const char command[] = "loolwsd-systemplate-setup /var/lib/lool/systemplate " LO_PATH " >/dev/null 2>&1";
          std::cout << "Running the following command:" << std::endl
                    << command << std::endl;
 

@@ -1,9 +1,11 @@
-
 post_install() {
-     loolconfig update-system-template
-     setcap cap_fowner,cap_mknod,cap_sys_chroot=ep /usr/bin/loolforkit
+  loolwsd-systemplate-setup /var/lib/lool/systemplate /usr/lib/libreoffice >/dev/null 2>&1
+  loolwsd-generate-proof-key >/dev/null 2>&1
+  setcap cap_fowner,cap_chown,cap_mknod,cap_sys_chroot=ep /usr/bin/loolforkit
+  setcap cap_sys_admin=ep /usr/bin/loolmount
+  echo "Do your edits into /etc/loolwsd/loolwsd.xml for further customizations"
 }
 
 post_upgrade() {
-    post_install
+  post_install
 }

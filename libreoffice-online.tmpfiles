@@ -1,6 +1,6 @@
-d /var/lib/cache/libreoffice-online 0750
-d /var/log/libreoffice-online 0750
-d /var/lib/libreoffice-online 0750
-Z /var/lib/cache/libreoffice-online - lool lool
-Z /var/log/libreoffice-online - lool lool
-Z /var/lib/libreoffice-online - lool lool
+d /var/lib/cache/lool 0750
+d /var/log/lool 0750
+d /var/lib/lool 0750
+Z /var/lib/cache/lool - lool lool
+Z /var/log/lool - lool lool
+Z /var/lib/lool - lool lool
