@@ -38,7 +38,7 @@ prepare() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/sanoid-${pkgver}"
 
   # Documents
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/sanoid/LICENSE"
@@ -54,7 +54,7 @@ package() {
   install -Dm755 findoid "${pkgdir}/usr/bin/findoid"
 
   # systemd
-  install -D -m 644 "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.timer" "${pkgdir}/usr/lib/systemd/system/sanoid.timer"
-  install -D -m 644 "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid.service" "${pkgdir}/usr/lib/systemd/system/sanoid.service"
-  install -D -m 644 "${srcdir}/sanoid-${pkgver}/packages/debian/sanoid-prune.service" "${pkgdir}/usr/lib/systemd/system/sanoid-prune.service"
+  install -D -m 644 "packages/debian/sanoid.timer" "${pkgdir}/usr/lib/systemd/system/sanoid.timer"
+  install -D -m 644 "packages/debian/sanoid.service" "${pkgdir}/usr/lib/systemd/system/sanoid.service"
+  install -D -m 644 "packages/debian/sanoid-prune.service" "${pkgdir}/usr/lib/systemd/system/sanoid-prune.service"
 }
