@@ -1,0 +1,23 @@
+pkgbase = termpdf.py-git
+	pkgdesc = A graphical pdf (and epub, cbz, ...) reader that works inside the kitty terminal
+	pkgver = r0.gf697237
+	pkgrel = 1
+	url = https://github.com/dsanson/termpdf.py
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pymupdf
+	depends = python-pdfrw
+	depends = python-pyperclip
+	depends = python-pybtex
+	depends = python-pynvim
+	depends = python-roman
+	depends = python-pagelabels
+	provides = termpdf.py
+	conflicts = termpdf.py
+	source = git+https://github.com/dsanson/termpdf.py.git
+	md5sums = SKIP
+
+pkgname = termpdf.py-git
+
