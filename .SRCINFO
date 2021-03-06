@@ -1,15 +1,15 @@
 pkgbase = odpscmd
-	pkgdesc = Aliyun ODPS Command Line Tool
-	pkgver = 0.35.1
+	pkgdesc = Alibaba Cloud MaxCompute(ODPS) Command Line Tool
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = http://odps.aliyun.com
 	arch = any
 	license = APACHE
 	makedepends = unzip
 	depends = java-runtime
-	source = https://github.com/aliyun/aliyun-odps-console/releases/download/v0.35.1/odpscmd_public.zip
+	source = https://github.com/aliyun/aliyun-odps-console/releases/download/v0.36.0/odpscmd_public.zip
 	source = odpscmd
-	md5sums = 63af51bebfde31efcef48e5dbe937489
+	md5sums = e4a6396d08b211faf48bc9b2c3876e09
 	md5sums = a94bb8679669e70a77aa0212ba8767c3
 
 pkgname = odpscmd
