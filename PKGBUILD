@@ -18,6 +18,7 @@ python-ezdxf
 checkdepends=(
 python-pytest
 python-typing_extensions
+python-nptyping
 ipython
 )
 
@@ -31,7 +32,6 @@ pkgver() {
 
 prepare() {
   cd cadquery
-  
 }
 
 build() {
