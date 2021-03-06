@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-headless
 	pkgdesc = Complete solution to record, convert and stream audio and video; optimised for server (headless) systems
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -22,6 +22,7 @@ pkgbase = ffmpeg-headless
 	depends = libdav1d.so
 	depends = libdrm
 	depends = libmodplug
+	depends = librav1e.so
 	depends = libtheora
 	depends = libva
 	depends = libvorbisenc.so
@@ -50,8 +51,8 @@ pkgbase = ffmpeg-headless
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = https://ffmpeg.org/releases/ffmpeg-4.3.1.tar.xz
-	sha256sums = ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb
+	source = https://ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
+	sha256sums = 46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb
 
 pkgname = ffmpeg-headless
 

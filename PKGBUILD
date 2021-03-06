@@ -6,7 +6,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -25,6 +25,7 @@ depends=(
   libdav1d.so
   libdrm
   libmodplug
+  librav1e.so
   libtheora
   libva
   libvorbisenc.so
@@ -60,7 +61,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb')
+sha256sums=('46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -76,7 +77,10 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --disable-amf \
     --disable-avisynth \
+    --disable-cuda-llvm \
+    --enable-lto \
     --disable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -100,7 +104,7 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --disable-libpulse \
-    --disable-librav1e \
+    --enable-librav1e \
     --disable-libsoxr \
     --enable-libspeex \
     --disable-libsrt \
@@ -119,7 +123,6 @@ build() {
     --enable-libxvid \
     --disable-nvdec \
     --disable-nvenc \
-    --disable-omx \
     --enable-shared \
     --enable-version3 \
     --enable-vaapi \
