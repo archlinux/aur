@@ -2,8 +2,8 @@
 
 pkgbase=libjpeg-xl-git
 pkgname=('libjpeg-xl-git' 'libjpeg-xl-doc-git')
-pkgver=0.3.r0.g35ad23d
-pkgrel=2
+pkgver=0.3.3.r0.g65825c8
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -78,13 +78,13 @@ check() {
 
 package_libjpeg-xl-git() {
     depends=('brotli')
-    optdepends=('gdk-pixbuf2: for gdk-pixbuf plugin'
+    optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'giflib: for CLI tools'
                 'gimp: for gimp plugin'
                 'libjpeg-turbo: for CLI tools'
                 'libpng: for CLI tools'
                 'openexr: for CLI tools')
-    provides=('libjpeg-xl')
+    provides=('libjpeg-xl' 'libjxl' 'libjxl-git' 'libjxl.so')
     conflicts=('libjpeg-xl')
     
     make -C build DESTDIR="$pkgdir" install
@@ -92,9 +92,9 @@ package_libjpeg-xl-git() {
 }
 
 package_libjpeg-xl-doc-git() {
-    pkgdesc="$(sed 's/\((git version)\)/(documentation) \1/' <<< "$pkgdesc")"
+    pkgdesc="$(sed 's/\((git\)/(documentation) \1/' <<< "$pkgdesc")"
     arch=('any')
-    provides=('libjpeg-xl-doc')
+    provides=('libjpeg-xl-doc' 'libjxl-doc' 'libjxl-doc-git')
     conflicts=('libjpeg-xl-doc')
     
     mkdir -p "${pkgdir}/usr/share/doc"
