@@ -1,0 +1,16 @@
+pkgbase = code-proposed-api
+	pkgdesc = Enable microsoft proposed api in Code OSS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://visualstudio.com/vscode
+	install = code-proposed-api.install
+	arch = any
+	license = unknown
+	depends = code
+	source = code-proposed-api.hook
+	source = product_json_enable_proposed_api.patch
+	md5sums = c9adf07e9a55d545e9c29808018b4037
+	md5sums = e4ea01755e0404aa6ef4de5c20e4ec1d
+
+pkgname = code-proposed-api
+

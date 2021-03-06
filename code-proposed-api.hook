@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/code/product.json
+
+[Action]
+Description = Patching product.json...
+Exec = /usr/bin/bash -c "[ -f /usr/lib/code/product.json ] && /usr/bin/patch /usr/lib/code/product.json </usr/lib/code/product_json_enable_proposed_api.patch || echo 'Failed to patch product.json. This package is only tested in [community/code 1.53.2-1].'"
+When = PostTransaction
