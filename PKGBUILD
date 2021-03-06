@@ -2,7 +2,7 @@
 
 pkgname=freenitori
 pkgver=1.12.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source, general purpose Discord utility."
 arch=("x86_64")
 url="https://${pkgname}.jp/"
@@ -11,7 +11,7 @@ depends=()
 makedepends=("go" "make" "bash")
 backup=("etc/${pkgname}/nitori.conf")
 source=(
-  "git+https://git.randomchars.net/RandomChars/FreeNitori.git"
+  "git+https://git.randomchars.net/FreeNitori/FreeNitori.git"
   "${pkgname}.service"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"

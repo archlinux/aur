@@ -1,7 +1,7 @@
 pkgbase = freenitori
 	pkgdesc = Open source, general purpose Discord utility.
 	pkgver = 1.12.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freenitori.jp/
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = freenitori
 	makedepends = make
 	makedepends = bash
 	backup = etc/freenitori/nitori.conf
-	source = git+https://git.randomchars.net/RandomChars/FreeNitori.git
+	source = git+https://git.randomchars.net/FreeNitori/FreeNitori.git
 	source = freenitori.service
 	source = freenitori.sysusers
 	source = freenitori.tmpfiles
