@@ -49,8 +49,8 @@ _path=(
 
 _flags=(
     --buildtype=plain
-    -Dlogind=disabled
-    -Dlogind-provider=elogind
+    -Dlogind=auto
+    -Dlogind-provider=auto
     -Dxcb-errors=enabled
     -Dxcb-icccm=enabled
     -Dxcb-xkb=enabled
