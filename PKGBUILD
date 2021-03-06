@@ -2,9 +2,9 @@
 
 pkgname=python-flatbencode
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, safe and non-recursive implementation of Bittorrent bencoding'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/acatton/flatbencode/'
 license=('MIT')
 depends=('python')
@@ -25,6 +25,6 @@ check() {
 
 package() {
     cd "flatbencode-${pkgver}"
-    python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+    PYTHONHASHSEED='0' python setup.py install --root="$pkgdir" --skip-build --optimize='1'
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
