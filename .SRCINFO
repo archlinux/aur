@@ -1,7 +1,7 @@
 pkgbase = gerbolyze
 	pkgdesc = A high-resolution image-to-PCB converter
-	pkgver = 2.0.5
-	pkgrel = 2
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = https://gerbolyze.jaseg.net/
 	arch = any
 	license = AGPL
@@ -19,7 +19,7 @@ pkgbase = gerbolyze
 	depends = python-click
 	depends = python-pcb-tools
 	depends = python-pcb-tools-extension
-	source = gerbolyze-2.0.5::git+https://github.com/jaseg/gerbolyze.git#tag=v2.0.5
+	source = gerbolyze-2.0.6::git+https://github.com/jaseg/gerbolyze.git#tag=v2.0.6
 	sha256sums = SKIP
 
 pkgname = gerbolyze

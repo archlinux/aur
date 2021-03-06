@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=gerbolyze
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="A high-resolution image-to-PCB converter"
 arch=('any')
 url="https://gerbolyze.jaseg.net/"
