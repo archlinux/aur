@@ -305,9 +305,9 @@ package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
 
-  install -Dvm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/usr/lib/$pkgname/distribution/$pkgname.profile"
-  install -Dvm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/usr/lib/$pkgname/distribution/$pkgname-common.profile"
-  install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/lib/$pkgname/distribution/$pkgname.psd"
+  install -Dvm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/etc/firejail/$pkgname.profile"
+  install -Dvm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/etc/firejail/$pkgname-common.profile"
+  install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
   
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
