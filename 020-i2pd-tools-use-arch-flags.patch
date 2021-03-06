@@ -1,7 +1,6 @@
-diff -Naurp a/Makefile b/Makefile
---- a/Makefile	2019-10-06 02:33:04.000000000 +0000
-+++ b/Makefile	2019-10-06 02:33:49.865700346 +0000
-@@ -7,7 +7,7 @@ CXX ?= g++
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@ CXX ?= g++
  FLAGS = -Wall -std=c++11 -Wno-misleading-indentation
  
  ifeq ($(UNAME),Linux)
@@ -10,7 +9,7 @@ diff -Naurp a/Makefile b/Makefile
  else ifeq ($(UNAME),Darwin)
  	FLAGS += -g
  else ifeq ($(UNAME),FreeBSD)
-@@ -19,8 +19,7 @@ else
+@@ -16,8 +16,7 @@ else
  endif
  
  INCFLAGS = -I/usr/include/i2pd
@@ -20,8 +19,8 @@ diff -Naurp a/Makefile b/Makefile
  LIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
  
  ifeq ($(UNAME),Linux)
-@@ -83,7 +82,7 @@ $(I2PD_LIB):
- 	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
+@@ -75,7 +74,7 @@ regaddralias: regaddralias.o
+ .SUFFIXES: .c .cc .C .cpp .o
  
  %.o: %.cpp
 -	$(CXX) -o $@ -c $(CXXFLAGS) $(INCFLAGS) $<

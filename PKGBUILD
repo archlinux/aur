@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=i2pd-tools-git
-pkgver=r192.g84dcb08
+pkgver=r210.g86234df
 pkgrel=1
 pkgdesc='Tools for I2P (git version)'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=('git+https://github.com/PurpleI2P/i2pd-tools.git'
         '010-i2pd-tools-use-shared-lib.patch'
         '020-i2pd-tools-use-arch-flags.patch')
 sha256sums=('SKIP'
-            '54d228514c60ea3c805520693cad3dc09fb3bdb52fe437619a69be3655d52c90'
-            '6ac88fa5262ae43a225e89090fc0fc039af46f8afc04faba83c9eea9bb23486c')
+            'bddc47db8dd1976504038253c3565b72d06507572f1e428de7af4eb27dea54b0'
+            '237df04a9137c0f7db6bc1d9afde2616e332aeb62fb62f6998c48a05c2aab759')
 
 prepare() {
     patch -d i2pd-tools -Np1 -i "${srcdir}/010-i2pd-tools-use-shared-lib.patch"
@@ -24,8 +24,7 @@ prepare() {
 }
 
 pkgver() {
-    cd i2pd-tools
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.g%s' "$(git -C i2pd-tools rev-list --count HEAD)" "$(git -C i2pd-tools rev-parse --short HEAD)"
 }
 
 build() {
@@ -33,17 +32,12 @@ build() {
 }
 
 package() {
-    cd i2pd-tools
-    
     local _tool
     while read -r -d '' _tool
     do
-        _tool="${_tool##*/}"
-        _tool="${_tool%.cpp}"
-        install -D -m755 "${_tool}" "${pkgdir}/usr/bin/i2pd-${_tool}"
-    done < <(find -maxdepth 1 -type f -name '*.cpp' ! -name 'vanitygen.cpp' -print0)
+        install -D -m755 "$_tool" "${pkgdir}/usr/bin/i2pd-${_tool##*/}"
+    done < <(find i2pd-tools -maxdepth 1 -type f -executable -print0)
     
-    install -D -m755 vain "${pkgdir}/usr/bin/i2pd-vain"
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m755 i2pd-tools/vain "${pkgdir}/usr/bin/i2pd-vain"
+    install -D -m644 i2pd-tools/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
