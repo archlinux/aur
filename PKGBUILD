@@ -2,7 +2,7 @@
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix-git
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="An IPTV streaming application"
 arch=(any)
@@ -17,14 +17,12 @@ b2sums=(SKIP)
 
 pkgver() {
 	cd ${pkgname/-git}
-	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd ${pkgname/-git}
+	sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
 	make
 }
 
