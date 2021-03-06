@@ -204,7 +204,7 @@ fi
   sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
 
   rm -f ${srcdir}/common/source_files/mozconfig
-  cp -r ${srcdir}/common/source_files/* ./
+  cp -r ${srcdir}/librewolf-common/source_files/* ./
 }
 
 build() {
