@@ -1,6 +1,6 @@
 pkgbase = sodalite
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
-	pkgver = 0.19.3
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://www.github.com/hnicke/sodalite
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = sodalite
 	depends = python-watchdog
 	depends = python-click
 	backup = etc/sodalite.conf
-	source = sodalite-0.19.3.tar.gz::https://github.com/hnicke/sodalite/archive/v0.19.3.tar.gz
+	source = sodalite-0.19.4.tar.gz::https://github.com/hnicke/sodalite/archive/v0.19.4.tar.gz
 	sha256sums = 7ea356b50b15dc66f070de736e3abf9f05787e8706ce07f481c43604191d7b7f
 
 pkgname = sodalite
