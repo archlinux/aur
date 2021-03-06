@@ -1,8 +1,8 @@
 # Maintainer: Westofer Raymond <westoferraymond@gmail.com>
 
 pkgname=ytfzf-git
-pkgver=r78.07339d2
-pkgrel=1
+pkgver=r228.1cd5d69
+pkgrel=2
 pkgdesc="A posix script to find and watch youtube videos from the terminal. (With out API)"
 arch=('any')
 url="https://github.com/pystardust/ytfzf"
@@ -28,5 +28,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm755  -t "${pkgdir}/usr/bin" "${pkgname%-git}"
+	make DESTDIR="$pkgdir/" install
 }
