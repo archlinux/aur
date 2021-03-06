@@ -1,7 +1,7 @@
  # Maintainer: poncho
 pkgname=kappa-launcher-git
 _pkgname=kappa-launcher
-pkgver=r88.f3d925c
+pkgver=r89.49b9d8e
 pkgrel=1
 pkgdesc="Twitch launcher using rofi"
 arch=('any')
@@ -32,4 +32,6 @@ package() {
   cd $srcdir/$_pkgname
   install -d $pkgdir/usr/bin
   install -m755 kpl $pkgdir/usr/bin
+  install -d $pkgdir/etc/kpl
+  install -m755 config $pkgdir/etc/kpl
 }
