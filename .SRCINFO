@@ -1,7 +1,8 @@
 pkgbase = webmusic-nginx
+	pkgdesc = nginx generated index files optimized for music
 	pkgver = 0.1
 	pkgrel = 3
-	url = https://cgit.ctu.cx/webmusic-nginx/
+	url = https://cgit.ctu.cx/webmusic-nginx
 	arch = x86_64
 	license = GPL-3
 	source = webmusic-nginx-eed52e44922c9b8cc8dd04b026eb5efa6a9bf8ef.tar.gz::https://cgit.ctu.cx/webmusic-nginx/snapshot/webmusic-nginx-eed52e44922c9b8cc8dd04b026eb5efa6a9bf8ef.tar.gz
