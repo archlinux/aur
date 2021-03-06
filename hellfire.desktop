@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Hellfire
 Comment=Expansion pack to the 1996 Diablo
-Exec=devilutionx --theoquest --bardtest --barbariantest
+Exec=devilutionx
 Icon=hellfire-devilutionX.png
 Terminal=false
 Type=Application

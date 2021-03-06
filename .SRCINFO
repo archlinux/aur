@@ -1,7 +1,7 @@
 pkgbase = devilutionx-hellfire-git
 	pkgdesc = Diablo & Hellfire devolved
 	pkgver = 1.1.0.r1150.g7368778c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diasurgical/devilutionX
 	arch = i686
 	arch = pentium4
@@ -24,7 +24,7 @@ pkgbase = devilutionx-hellfire-git
 	source = hellfire.desktop
 	sha256sums = SKIP
 	sha256sums = 696de98c061387e2aee25dc9c9c5bedf468e53dab23ac37ee8afa8408fe5e424
-	sha256sums = 8c15c30c7818b4e7bb59b4505c6afc0fafd9e6410e97bf36b833e8d395820300
+	sha256sums = 6cde730dbfcae24c3fb3d0202a763e29c3149c4fea5dfcab07ba26ed63b255df
 
 pkgname = devilutionx-hellfire-git
 

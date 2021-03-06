@@ -2,7 +2,7 @@
 pkgname=devilutionx-hellfire-git
 _pkgname=devilutionX
 pkgver=1.1.0.r1150.g7368778c
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo & Hellfire devolved"
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/diasurgical/devilutionX"
@@ -16,7 +16,7 @@ source=('git+https://github.com/diasurgical/devilutionX.git'
         'hellfire.desktop')
 sha256sums=('SKIP'
         '696de98c061387e2aee25dc9c9c5bedf468e53dab23ac37ee8afa8408fe5e424'
-        '8c15c30c7818b4e7bb59b4505c6afc0fafd9e6410e97bf36b833e8d395820300')
+        '6cde730dbfcae24c3fb3d0202a763e29c3149c4fea5dfcab07ba26ed63b255df')
 
 # update the package version to the current git version
 pkgver() {
