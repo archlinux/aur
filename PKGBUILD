@@ -3,12 +3,12 @@
 
 pkgname=darling-bin
 pkgver=0.1.20210224.testing
-pkgrel=1
+pkgrel=2
 pkgdesc="Darling. MacOS emulation layer for Linux"
 arch=('x86_64')
 url="https://github.com/darlinghq/darling"
 license=('GPL')
-groups=('')
+groups=('darling-bin')
 depends=('arm-linux-gnueabihf-glibc>=2.31' 'darling-dkms' 'fuse2')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install

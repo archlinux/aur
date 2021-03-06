@@ -1,11 +1,11 @@
 pkgbase = darling-bin
 	pkgdesc = Darling. MacOS emulation layer for Linux
 	pkgver = 0.1.20210224.testing
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/darlinghq/darling
 	install = darling-bin.install
 	arch = x86_64
-	groups = 
+	groups = darling-bin
 	license = GPL
 	depends = arm-linux-gnueabihf-glibc>=2.31
 	depends = darling-dkms
