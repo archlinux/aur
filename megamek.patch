@@ -1,17 +1,17 @@
-From cb58aa6c53d3c2725858292e2c94e0fbcd8f7727 Mon Sep 17 00:00:00 2001
-From: f43nd1r <lukas.morawietz@gmail.com>
-Date: Fri, 28 Feb 2020 04:42:37 +0100
-Subject: [PATCH] patch
+From fced44682cd09a83f4590253f8426eded3582458 Mon Sep 17 00:00:00 2001
+From: f43nd1r <account+github@faendir.com>
+Date: Sat, 6 Mar 2021 14:25:11 +0100
+Subject: [PATCH 1/1] patch
 
 ---
- .../src/megamek/common/MechSummaryCache.java  | 24 +++++++++----------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ megamek/src/megamek/common/MechSummaryCache.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/megamek/src/megamek/common/MechSummaryCache.java b/megamek/src/megamek/common/MechSummaryCache.java
-index 8c71ab0106..0fee072c44 100644
+index 5332ce17e5..ee559fb3a0 100644
 --- a/megamek/src/megamek/common/MechSummaryCache.java
 +++ b/megamek/src/megamek/common/MechSummaryCache.java
-@@ -125,7 +125,7 @@ public class MechSummaryCache {
+@@ -112,7 +112,7 @@ public class MechSummaryCache {
       * @return The path to the directory containing the unit cache.
       */
      public static File getUnitCacheDir() {
@@ -20,3 +20,5 @@ index 8c71ab0106..0fee072c44 100644
      }
  
      public boolean isInitialized() {
+-- 
+2.30.1

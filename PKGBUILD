@@ -1,6 +1,6 @@
 # Maintainer:F43nd1r <support@faendir.com>
 pkgname=megameklab
-pkgver=0.46.1
+pkgver=0.48.0
 pkgrel=1
 epoch=
 pkgdesc="Customize mechs for a MegaMek game."
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
             'SKIP'
             '7b3615680c9892099ab6e7b675e8e22baf9680d12a58050d46d71537a7fe0372'
             'ca4459489d3c188b7418f7b596290accec61e2b190a58f4d0fd7593911d87597'
-            '48642023e264f90a5831a9a9e91eda2bf33881d7d60f40979ff4e689c485714e'
-            'f1c3fd91d5e142dc1d800a8228ac66c4bc847a2b87a70b352845a2931b7392e6')
+            '7a5949eacb26b612b784211c5067d1042e86232b180a9f41530f2d6ecb4a4cc3'
+            'c3d19a1933b36d29caf577c31f10683f2c99c0501fe3f23de678fcedae69f373')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"

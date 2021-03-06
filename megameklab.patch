@@ -1,30 +1,33 @@
-From 4b8c23714401e1d807d8c5646f9a0634a57736be Mon Sep 17 00:00:00 2001
-From: f43nd1r <lukas.morawietz@gmail.com>
-Date: Fri, 28 Feb 2020 03:48:19 +0100
-Subject: [PATCH] patch
+From 9463feb1f8b14650bf748863d2bcee3567c59cfb Mon Sep 17 00:00:00 2001
+From: f43nd1r <account+github@faendir.com>
+Date: Sat, 6 Mar 2021 14:37:36 +0100
+Subject: [PATCH 1/1] patch
 
 ---
- build.gradle                         |  2 +-
- mmconf/log4j.xml                     |  2 +-
- src/megameklab/com/MegaMekLab.java   |  4 ++--
- src/megameklab/com/util/CConfig.java | 11 +++++++----
- 4 files changed, 11 insertions(+), 8 deletions(-)
+ build.gradle                             |  4 ++--
+ mmconf/log4j.xml                         |  4 ++--
+ src/megameklab/com/MegaMekLab.java       |  6 +++---
+ src/megameklab/com/util/CConfig.java     | 11 +++++++----
+ gradle/wrapper/gradle-wrapper.properties | 2 +-
+ 5 files changed, 15 insertions(+), 12 deletions(-)
 
 diff --git a/build.gradle b/build.gradle
-index 174fa991..fd3ec200 100644
+index 769c4cfd..f3f99a03 100644
 --- a/build.gradle
 +++ b/build.gradle
 @@ -31,7 +31,7 @@ ext {
      mmlBranchTag = mmlBranch.equals('master')? '' : '-' + mmlBranch
      
      // Allows setting a dependency on a different MM branch.
--    mmBranch = 'stable'
-+    mmBranch = 'master'
-     mmBranchTag = mmBranch.equals('master')? '' : '-' + mmBranch
+-    mmBranch = 'master'
+-    mmBranchTag = mmBranch.equals('master')? '' : '-' + mmBranch
++    mmBranch = 'stable'
++    mmBranchTag = mmBranch.equals('stable')? '' : '-' + mmBranch
      
      mmDir = '../megamek'
+ }
 diff --git a/mmconf/log4j.xml b/mmconf/log4j.xml
-index 3e7b221b..3021859c 100644
+index 3e7b221b..d4a45eaf 100644
 --- a/mmconf/log4j.xml
 +++ b/mmconf/log4j.xml
 @@ -5,7 +5,7 @@
@@ -37,33 +40,29 @@ index 3e7b221b..3021859c 100644
          <param name="MaxFileSize" value="10MB"/>
          <param name="MaxBackupIndex" value="5"/>
 diff --git a/src/megameklab/com/MegaMekLab.java b/src/megameklab/com/MegaMekLab.java
-index 636ed977..01d11e6d 100644
+index 36caa504..69728a1d 100644
 --- a/src/megameklab/com/MegaMekLab.java
 +++ b/src/megameklab/com/MegaMekLab.java
-@@ -45,7 +45,7 @@ public class MegaMekLab {
-     	System.setProperty("apple.laf.useScreenMenuBar", "true");
-         System.setProperty("com.apple.mrj.application.apple.menu.about.name","MegaMekLab");
- 
--        String logFileName = "./logs/megameklablog.txt";
-+        String logFileName = "/var/log/megameklab/megameklab.log";
-         Locale.setDefault(Locale.US);
- 
-         //Taharqa: I am not sure why this is here, so I am commenting it
-@@ -162,7 +162,7 @@ public class MegaMekLab {
-                                      final String logFileName) {
-         if (logs) {
-             try {
--                File logPath = new File("./logs/");
-+                File logPath = new File("/var/log/megameklab/");
-                 if (!logPath.exists()) {
-                     logPath.mkdir();
-                 }
+@@ -70,11 +70,11 @@ public class MegaMekLab {
+     private static void redirectOutput() {
+         try {
+             System.out.println("Redirecting output to megameklablog.txt"); //$NON-NLS-1$
+-            File logDir = new File("logs");
++            File logDir = new File("/var/log/megameklab/");
+             if (!logDir.exists()) {
+                 logDir.mkdir();
+             }
+-            final String logFilename = "logs" + File.separator + "megameklablog.txt";
++            final String logFilename = "/var/log/megameklab/megameklab.log";
+             MegaMek.resetLogFile(logFilename);
+             PrintStream ps = new PrintStream(
+                     new BufferedOutputStream(
 diff --git a/src/megameklab/com/util/CConfig.java b/src/megameklab/com/util/CConfig.java
-index 283b0a8d..70f9d045 100644
+index d0d7a20f..27b6744e 100644
 --- a/src/megameklab/com/util/CConfig.java
 +++ b/src/megameklab/com/util/CConfig.java
-@@ -31,9 +31,10 @@ import java.util.Properties;
- public class CConfig {
+@@ -61,9 +61,10 @@ public class CConfig {
+     }
  
      // VARIABLES
 -    public static final String CONFIG_DIR = "./mmconf";
@@ -76,17 +75,28 @@ index 283b0a8d..70f9d045 100644
  
      public static final String CONFIG_WEAPONS = "Weapons";
      public static final String CONFIG_AMMO = "Ammo";
-@@ -84,7 +85,9 @@ public class CConfig {
+@@ -122,7 +123,9 @@ public class CConfig {
      public CConfig() {
          
          if(!new File(CONFIG_DIR).exists()) {
 -            new File(CONFIG_DIR).mkdir();
 +            if(!new File(CONFIG_DIR).mkdirs()) {
-+              throw new RuntimeException("Failed to create directory "+ CONFIG_DIR);
++                throw new RuntimeException("Failed to create directory "+ CONFIG_DIR);
 +            }
          }
          
          config = setDefaults();
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+index ef9a9e05..442d9132 100644
+--- a/gradle/wrapper/gradle-wrapper.properties
++++ b/gradle/wrapper/gradle-wrapper.properties
+@@ -1,5 +1,5 @@
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.6-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.8.3-bin.zip
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
 -- 
-2.25.1
+2.30.1
 

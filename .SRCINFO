@@ -1,6 +1,6 @@
 pkgbase = megameklab
 	pkgdesc = Customize mechs for a MegaMek game.
-	pkgver = 0.46.1
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://github.com/MegaMek/megamek
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = megameklab
 	makedepends = git
 	makedepends = tar
 	depends = java-runtime>=8
-	source = megameklab::git+https://github.com/MegaMek/megameklab#tag=v0.46.1
-	source = megamek::git+https://github.com/MegaMek/megamek#tag=v0.46.1
+	source = megameklab::git+https://github.com/MegaMek/megameklab#tag=v0.48.0
+	source = megamek::git+https://github.com/MegaMek/megamek#tag=v0.48.0
 	source = megameklab.desktop
 	source = megameklab.sh
 	source = megameklab.patch
@@ -18,8 +18,8 @@ pkgbase = megameklab
 	sha256sums = SKIP
 	sha256sums = 7b3615680c9892099ab6e7b675e8e22baf9680d12a58050d46d71537a7fe0372
 	sha256sums = ca4459489d3c188b7418f7b596290accec61e2b190a58f4d0fd7593911d87597
-	sha256sums = 48642023e264f90a5831a9a9e91eda2bf33881d7d60f40979ff4e689c485714e
-	sha256sums = f1c3fd91d5e142dc1d800a8228ac66c4bc847a2b87a70b352845a2931b7392e6
+	sha256sums = 7a5949eacb26b612b784211c5067d1042e86232b180a9f41530f2d6ecb4a4cc3
+	sha256sums = c3d19a1933b36d29caf577c31f10683f2c99c0501fe3f23de678fcedae69f373
 
 pkgname = megameklab
 
