@@ -1,7 +1,8 @@
 pkgbase = smartie-pwa
+	pkgdesc = smarthome web-gui
 	pkgver = 0.1
 	pkgrel = 6
-	url = https://cgit.ctu.cx/smartie-pwa/
+	url = https://cgit.ctu.cx/smartie-pwa
 	arch = x86_64
 	license = GPL-3
 	makedepends = yarn
