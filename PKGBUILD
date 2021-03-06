@@ -5,12 +5,12 @@
 
 pkgname=yabasic
 pkgver=2.89.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
 license=('MIT')
 url="http://www.yabasic.de/"
-depends=('libx11' 'ncurses')
+depends=('libx11' 'ncurses' 'libffi')
 makedepends=('libxt')
 source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
 sha256sums=('93c426402a6cccbca8b448960eb1bcefc44cdb0a92abb2385bd8fa67651bdd88')
