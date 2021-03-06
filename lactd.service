@@ -6,4 +6,4 @@ After=multi-user.target
 ExecStart=/usr/bin/lact-daemon
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
