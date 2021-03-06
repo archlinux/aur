@@ -1,54 +1,39 @@
-# Maintainer: Darks <l.gatin@protonmail.com>
+# Maintainer: Darks <darks@middleearth.fr>
+
 _basename="gint"
-_branch="master"
 pkgname="${_basename}-git"
-pkgver=r222.589c25c
+pkgver=2.3.1.r0.g7e1becb
 pkgrel=1
 pkgdesc='Alternative library and kernel for add-in development on fx-9860G and fx-CG50'
 url='https://gitea.planet-casio.com/Lephenixnoir/gint'
 arch=('i686' 'x86_64')
 depends=('fxsdk' 'sh-elf-gcc-casio' 'python-pillow')
 makedepends=('git')
-source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git#branch=${_branch}")
-options=("!strip")
+source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git")
 sha256sums=("SKIP")
+options=("!strip")
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$srcdir/${pkgname}"
-  #git checkout compat
 
   # Ensure clean builds
-  [[ -d fx-build ]] && rm -rf fx-build
-  mkdir fx-build
-  [[ -d cg-build ]] && rm -rf cg-build
-  mkdir cg-build
+  fxsdk build-fx -c
+  fxsdk build-cg -c
 }
 
 build() {
-  # Build for fx9860g
-  cd "$srcdir/${pkgname}/fx-build"
-  ../configure --target=fx9860g
-  make
-
-  # Build for fx-cg50
-  cd "$srcdir/${pkgname}/cg-build"
-  ../configure --target=fxcg50
-  make
+  cd "$srcdir/${pkgname}"
+  fxsdk build-fx
+  fxsdk build-cg
 }
 
 package() {
-  _prefix=$(sh-elf-gcc --print-search-dirs | sed -rn "s#install: (.+)/#\1#p")
-
-  # Install for fx9860g
-  cd "$srcdir/${pkgname}/fx-build"
-  make PREFIX="$pkgdir${_prefix}" install
-  
-  # Install for fx-cg50
-  cd "$srcdir/${pkgname}/cg-build"
-  make PREFIX="$pkgdir${_prefix}" install
+  cd "$srcdir/${pkgname}"
+  fxsdk build-fx DESTDIR="$pkgdir" install
+  fxsdk build-cg DESTDIR="$pkgdir" install
 }
