@@ -16,7 +16,7 @@ arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse
+         ffmpeg nss-hg ttf-font libpulse whoogle-git
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
