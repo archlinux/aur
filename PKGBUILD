@@ -10,7 +10,7 @@ license=('AGPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/Ninjaclasher/abeluna/archive/"$pkgver".tar.gz
 )
-md5sums=('dffb31b2a0771f267d20540d23aa6914')
+md5sums=('2560ebb2449bc085a48ad8383ef26a42')
 depends=(
 	'python-gobject'
 	'python-humanize'
