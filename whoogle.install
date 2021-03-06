@@ -9,4 +9,5 @@ post_install() {
 post_upgrade() {
     systemctl daemon-reload
     systemctl restart whoogle
+    echo "Restarted Whoogle systemd service."
 }

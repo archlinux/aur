@@ -2,7 +2,7 @@
 
 pkgname=whoogle-git
 pkgver=0.3.1_r247.ge912b8f
-pkgrel=1
+pkgrel=2
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -30,8 +30,8 @@ build() {
 }
 
 package() {
- install -dm0755 "$pkgdir/lib/systemd/system/"
- install -m0644 "$srcdir/whoogle.service" "$pkgdir/lib/systemd/system/whoogle.service"
+ install -dm0755 "$pkgdir/usr/lib/systemd/system/"
+ install -m0644 "$srcdir/whoogle.service" "$pkgdir/usr/lib/systemd/system/whoogle.service"
  install -dm0755 "$pkgdir/opt/whoogle-search"
  cp -r "$srcdir/whoogle-search/venv" "$pkgdir/opt/whoogle-search"
 }
