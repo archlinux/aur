@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
 pkgver=2.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
@@ -21,16 +21,15 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	# Disable building of other packages
-	sed -i '112,116d' package.json
+	sed -i '101,105d' package.json
 	sed -i 's/tar.bz2/dir/g' package.json
-	sed -i 's/macos --linux --windows --publish never/linux --publish never/g' \
-		package.json
+	sed -i 's/linux --windows/linux/g' package.json
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 	yarn install --cache-folder "$srcdir/yarn-cache"
-	yarn dist
+	yarn dist:others
 }
 
 package() {
