@@ -7,6 +7,7 @@ pkgbase = sqls
 	license = MIT
 	depends = git
 	depends = go
+	conflicts = sqls-bin
 	source = sqls::git+https://github.com/lighttiger2505/sqls.git
 	sha256sums = SKIP
 
