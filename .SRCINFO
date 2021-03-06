@@ -1,7 +1,7 @@
 pkgbase = sh-elf-gcc-casio
 	pkgdesc = The GNU Compiler Collection for the Casio calculators SuperH processors.
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64

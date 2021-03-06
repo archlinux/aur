@@ -3,7 +3,7 @@
 _target="sh-elf"
 pkgname=${_target}-gcc-casio
 pkgver=10.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -48,9 +48,4 @@ package() {
 
   # Remove unwanted files
   rm -rf "${pkgdir}/usr/share/"
-
-  # Strip it manually
-  strip ${pkgdir}/usr/bin/* 2>/dev/null || true
-  find ${pkgdir}/usr/lib -type f -exec /usr/bin/${_target}-strip \
-    --strip-unneeded {} \; 2>/dev/null || true
 }
