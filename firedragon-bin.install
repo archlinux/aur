@@ -11,12 +11,11 @@ post_install() {
 }
 
 post_upgrade() {
-    msg "Included are profiles for Firejail and profile-sync-daemon,"
+    msg "Included are profiles for Firejail and profile-sync-daemon."
     echo ""
-    msg "which you can symlink from /usr/lib/plasmafox/distribution"
-    echo ""
-    msg "to /etc/firejail and /usr/share/psd/browsers respectively."
+    msg "To use psd add firedragon to ~/.config/psd/psd.conf"
     echo ""
     msg "Enjoy the Firedragon 🔥🐉"
     echo ""
 }
+
