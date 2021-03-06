@@ -1,4 +1,4 @@
-pkgbase = sqls
+pkgbase = sqls-git
 	pkgdesc = SQL language server written in Go.
 	pkgver = 0.2.14.r0.g4cea80a
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = sqls
 	depends = git
 	depends = go
 	conflicts = sqls-bin
-	source = sqls::git+https://github.com/lighttiger2505/sqls.git
+	source = sqls-git::git+https://github.com/lighttiger2505/sqls.git
 	sha256sums = SKIP
 
-pkgname = sqls
+pkgname = sqls-git
 

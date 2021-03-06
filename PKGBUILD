@@ -1,6 +1,6 @@
 # Maintainer: mnabila nblid48[at]gmail[dot]com
 
-pkgname=sqls
+pkgname=sqls-git
 pkgver=0.2.14.r0.g4cea80a
 pkgrel=1
 pkgdesc="SQL language server written in Go."
