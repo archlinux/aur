@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=3.38.4
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -11,8 +11,9 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3
          libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd grilo libibus
-         cheese libgudev bolt udisks2 libhandy gsound colord-gtk
-         libfirmware-manager libs76-hidpi-widget)
+         cheese libgudev bolt udisks2 libhandy gsound colord-gtk libfirmware-manager
+#         libs76-hidpi-widget
+         )
 makedepends=(docbook-xsl modemmanager git python meson)
 checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
 optdepends=('system-config-printer: Printer settings'
@@ -27,13 +28,12 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_co
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
         'git+https://gitlab.gnome.org/GNOME/libhandy.git'
         '0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
-        'pop-hidpi.patch'
+#        'pop-hidpi.patch'
         'system76-firmware.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'a038b6d1c5c8dd5e80c1b6e24d650d616d1434486c5e86b270694b540449e3f3'
-            'f5e165d638d795c21249fe3c169b75b197d32135eb16f108a3f35e3884c8c2bf'
             '33fc2be90935fa9b913cccde12677d7234763821d47d71edf3586034d7eece2d')
 
 pkgver() {
@@ -49,7 +49,7 @@ prepare() {
   git submodule update
 
   patch -Np1 -i ../0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch
-  patch -Np1 -i ../pop-hidpi.patch
+#  patch -Np1 -i ../pop-hidpi.patch
   patch -Np1 -i ../system76-firmware.patch
 }
 
