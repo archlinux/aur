@@ -1,17 +1,18 @@
 pkgbase = fxsdk-git
 	pkgdesc = Tools to program for the Casio fx9860 calculators
-	pkgver = r83.0db7ae9
+	pkgver = 2.3.1.r2.g5ef6497
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	makedepends = git
 	makedepends = gcc
+	depends = cmake
 	optdepends = gint-git: alternative library and kernel for add-in development on fx-9860G and fx-CG50
 	optdepends = mkg3a: a tool to create Casio FX-CG addon files.
 	provides = fxsdk
 	provides = fxconv
 	provides = fxg1a
-	source = fxsdk-git::git+https://gitea.planet-casio.com/Lephenixnoir/fxsdk.git
+	source = fxsdk-git::git+https://gitea.planet-casio.com/Lephenixnoir/fxsdk.git#branch=cmake_arch_flags
 	sha256sums = SKIP
 
 pkgname = fxsdk-git
