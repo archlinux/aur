@@ -1,30 +1,45 @@
-# Maintainer: Tommy Li <ttoo74@gmail.com>
-pkgname=python-sacremoses
-_name=${pkgname#python-}
-pkgver=0.0.19
-pkgrel=1
-pkgdesc="Python port of Moses tokenizer, truecaser and normalizer"
-arch=(any)
-url="https://github.com/alvations/sacremoses"
-license=('LGPL')
-depends=("python" "python-six" "python-joblib" "python-tqdm")
-makedepends=()
-checkdepends=()
-optdepends=()
-options=()
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('4220bf1474b2d735b6d7e2b27e839ac110cf0f9b4fc244fd649707dd738e3430')
+# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Contributor: Tommy Li <ttoo74@gmail.com>
 
-prepare() {
-	cd "$_name-$pkgver"
-}
+_pkgname=sacremoses
+pkgname=python-sacremoses
+pkgver=0.0.35
+pkgrel=2
+pkgdesc='Python port of Moses tokenizer, truecaser and normalizer'
+arch=('any')
+url='https://github.com/alvations/sacremoses'
+license=(MIT)
+depends=(
+  python-click
+  python-joblib
+  python-regex
+  python-six
+  python-tqdm
+)
+makedepends=(
+  python-setuptools
+)
+checkdepends=(
+  python-pytest
+)
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/alvations/sacremoses/archive/${pkgver}.tar.gz"
+        "LICENSE::https://raw.githubusercontent.com/alvations/sacremoses/master/LICENSE")
+sha512sums=('403331bb455aefc5adcebacf8030442ee75422ea5f6f0bd7b583b0ee3c45c948d0488e7779a08542b4a48c256494d1ca4dc8442e23f1d69440a3d4d471b819a8'
+            '4569780a565b1d4408aecee79bb0ebd5fb18008707e47e66e524806b7ed35ce342f4be8636d2fe0bc0f1ceee0eac2a0ec518c7c0a7199b1ec0e1f6326bc38fda')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  PYTHONPATH=build/lib pytest -v
 }
 
 package() {
-	cd "$_name-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+# vim:set ts=2 sw=2 et:
