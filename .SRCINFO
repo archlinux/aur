@@ -1,6 +1,6 @@
 pkgbase = firedragon-bin
 	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled - binary version
-	pkgver = 88.0a1.r637369+
+	pkgver = 88.0a1.r637287+
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon-bin.install
@@ -35,7 +35,7 @@ pkgbase = firedragon-bin
 	conflicts = firedragon
 	replaces = dragonwolf
 	options = !emptydirs
-	source_x86_64 = https://builds.garudalinux.org/repos/chaotic-aur/x86_64/firedragon-88.0a1.r637369+-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://builds.garudalinux.org/repos/chaotic-aur/x86_64/firedragon-88.0a1.r637287+-1-x86_64.pkg.tar.zst
 	sha256sums_x86_64 = 96b8af46787a6341b0767b6b5bfb289a3ad58c707bd992b019b56f640aa000ba
 
 pkgname = firedragon-bin
