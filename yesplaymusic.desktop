@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YesPlayMusic
+Exec=electron /usr/share/yesplaymusic.asar %U
+Terminal=false
+Type=Application
+Icon=yesplaymusic
+StartupWMClass=YesPlayMusic
+Comment=A third party music application for Netease Music
+Categories=Music;
