@@ -1,6 +1,6 @@
 pkgbase = mediaelch-git
 	pkgdesc = MediaElch is a MediaManager for Kodi
-	pkgver = 2.8.6.r27.g57cd4fdf
+	pkgver = 2.8.6.r89.gc9837603
 	pkgrel = 1
 	url = https://www.mediaelch.de/mediaelch/
 	arch = x86_64
