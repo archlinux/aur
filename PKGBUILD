@@ -2,6 +2,7 @@ pkgname=ctucx-gallery
 pkgver=0.1
 pkgrel=5
 arch=('x86_64')
+pkgdesc="gallery as static-site-generator"
 url="https://cgit.ctu.cx/gallery/"
 license=('GPL-3')
 depends=('glibc' 'imagemagick')

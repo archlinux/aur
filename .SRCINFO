@@ -1,4 +1,5 @@
 pkgbase = ctucx-gallery
+	pkgdesc = gallery as static-site-generator
 	pkgver = 0.1
 	pkgrel = 5
 	url = https://cgit.ctu.cx/gallery/
