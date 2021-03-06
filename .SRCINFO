@@ -1,7 +1,7 @@
 pkgbase = python-numpy-stl
 	pkgdesc = Library to make working with STL files (and 3D objects in general) fast and easy
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WoLpH/numpy-stl/
 	arch = x86_64
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = python-numpy-stl
 	depends = python
 	depends = python-numpy
 	depends = python-utils
-	source = numpy-stl-v2.15.1.tar.gz::https://github.com/WoLpH/numpy-stl/archive/v2.15.1.tar.gz
-	sha256sums = 70dc77b70220cb4b814bc724f44b87410a1bb139069e268246cb1a3772b22600
+	source = numpy-stl-v2.15.1-2.tar.gz::https://github.com/WoLpH/numpy-stl/archive/v2.15.1.tar.gz
+	sha256sums = ab64a7a06c28bd47a1db1768cb2b1b486b383d5e07daad6e3ee555ab22485419
 
 pkgname = python-numpy-stl
 
