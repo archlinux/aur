@@ -1,0 +1,15 @@
+pkgbase = php74-memcache
+	pkgdesc = Memcache module for PHP
+	pkgver = 4.0.5.2
+	pkgrel = 1
+	url = https://pecl.php.net/package/memcache
+	arch = x86_64
+	license = PHP
+	checkdepends = memcached
+	depends = php74
+	backup = etc/php74/conf.d/memcache.ini
+	source = https://pecl.php.net/get/memcache-4.0.5.2.tgz
+	sha256sums = 7b7667813baea003671f174bbec849e43ff235a8ea4ab7e36c3a0380c2a9ed63
+
+pkgname = php74-memcache
+
