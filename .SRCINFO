@@ -1,6 +1,6 @@
 pkgbase = man-pages-pl-git
 	pkgdesc = Polish man pages (Git version)
-	pkgver = r13529.9ccb5ef407
+	pkgver = r13822.5f218d4c15
 	pkgrel = 1
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	arch = any
