@@ -2,11 +2,11 @@
 
 # select the desired cuda architecture(s)
 # default is to build for all (takes a very long time to build)
-_cuda_archs='5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX'
+_cuda_archs='5.2;5.3;6.0;6.1;6.2;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX;8.6;8.6+PTX'
 
 pkgbase=caffe2-git
 pkgname=('caffe2-git' 'caffe2-cuda-git')
-pkgver=0.8.2.r28489.gc5b4f60fc24
+pkgver=0.8.2.r34171.gdbbe0a2105b
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework'
@@ -14,53 +14,58 @@ arch=('x86_64')
 url='https://caffe2.ai/'
 license=('BSD')
 depends=('google-glog' 'protobuf' 'openmp' 'python' 'python-numpy' 'python-protobuf'
-         'python-yaml' 'blas' 'lapack' 'gflags' 'numactl' 'intel-mkl' 'opencv' 'libuv')
+         'python-typing_extensions' 'python-yaml' 'blas' 'lapack' 'gflags' 'numactl'
+         'intel-mkl' 'opencv' 'libuv')
 optdepends=('python-flask' 'graphviz' 'python-hypothesis' 'python-matplotlib'
             'python-pydot' 'python-nvd3' 'python-yaml' 'python-requests'
             'python-scikit-image' 'python-scipy' 'python-setuptools'
             'python-future' 'python-tornado' 'python-six' 'python-lmdb')
-makedepends=('git' 'cmake' 'gtest' 'snappy' 'cuda' 'cudnn' 'nccl' 'pybind11')
+makedepends=('git' 'cmake' 'gtest' 'snappy' 'cuda' 'cudnn' 'nccl' 'pybind11' 'qt5-base')
 conflicts=('python-pytorch')
 options=('!emptydirs')
-source=("git+https://github.com/pytorch/pytorch.git"
-        'git+https://github.com/pybind/pybind11'
-        'git+https://github.com/NVlabs/cub'
-        'git+https://github.com/eigenteam/eigen-git-mirror'
-        'git+https://github.com/google/googletest'
-        'git+https://github.com/google/benchmark'
-        'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf'
-        'git+https://github.com/Yangqing/ios-cmake'
-        'git+https://github.com/Maratyszcza/NNPACK'
-        'git+https://github.com/facebookincubator/gloo'
-        'git+https://github.com/Maratyszcza/pthreadpool'
-        'git+https://github.com/Maratyszcza/FXdiv'
-        'git+https://github.com/Maratyszcza/FP16'
-        'git+https://github.com/Maratyszcza/psimd'
-        'git+https://github.com/facebook/zstd'
-        'cpuinfo-pytorch'::'git+https://github.com/pytorch/cpuinfo'
-        'git+https://github.com/PeachPy/enum34'
-        'git+https://github.com/Maratyszcza/PeachPy'
-        'git+https://github.com/benjaminp/six'
-        'git+https://github.com/onnx/onnx'
-        'git+https://github.com/onnx/onnx-tensorrt'
-        'git+https://github.com/shibatch/sleef'
-        'git+https://github.com/intel/ideep'
+source=('git+https://github.com/pytorch/pytorch.git'
+        'git+https://github.com/pybind/pybind11.git'
+        'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
+        'git+https://github.com/eigenteam/eigen-git-mirror.git'
+        'git+https://github.com/google/googletest.git'
+        'git+https://github.com/google/benchmark.git'
+        'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
+        'git+https://github.com/Yangqing/ios-cmake.git'
+        'git+https://github.com/Maratyszcza/NNPACK.git'
+        'git+https://github.com/facebookincubator/gloo.git'
+        'git+https://github.com/Maratyszcza/pthreadpool.git'
+        'git+https://github.com/Maratyszcza/FXdiv.git'
+        'git+https://github.com/Maratyszcza/FP16.git'
+        'git+https://github.com/Maratyszcza/psimd.git'
+        'git+https://github.com/facebook/zstd.git'
+        'cpuinfo-pytorch'::'git+https://github.com/pytorch/cpuinfo.git'
+        'git+https://github.com/PeachPy/enum34.git'
+        'git+https://github.com/Maratyszcza/PeachPy.git'
+        'git+https://github.com/benjaminp/six.git'
+        'git+https://github.com/onnx/onnx.git'
+        'git+https://github.com/onnx/onnx-tensorrt.git'
+        'git+https://github.com/shibatch/sleef.git'
+        'git+https://github.com/intel/ideep.git'
         'git+https://github.com/NVIDIA/nccl.git'
-        'git+https://github.com/google/gemmlowp'
-        'git+https://github.com/pytorch/QNNPACK'
-        'git+https://github.com/intel/ARM_NEON_2_x86_SSE'
-        'git+https://github.com/pytorch/fbgemm'
-        'git+https://github.com/houseroad/foxi'
-        'git+https://github.com/01org/tbb'
-        'git+https://github.com/facebookincubator/fbjni'
-        'git+https://github.com/google/XNNPACK'
-        'git+https://github.com/fmtlib/fmt'
-        'git+https://github.com/pytorch/tensorpipe'
+        'git+https://github.com/google/gemmlowp.git'
+        'git+https://github.com/pytorch/QNNPACK.git'
+        'git+https://github.com/intel/ARM_NEON_2_x86_SSE.git'
+        'git+https://github.com/pytorch/fbgemm.git'
+        'git+https://github.com/houseroad/foxi.git'
+        'git+https://github.com/01org/tbb.git'
+        'git+https://github.com/facebookincubator/fbjni.git'
+        'git+https://github.com/google/XNNPACK.git'
+        'git+https://github.com/fmtlib/fmt.git'
+        'git+https://github.com/pytorch/tensorpipe.git'
+        'git+https://github.com/pytorch/kineto.git'
         'git+https://github.com/asmjit/asmjit.git'
         'git+https://github.com/01org/mkl-dnn.git'
         'git+https://github.com/emil-e/rapidcheck.git'
+        'git+https://github.com/libuv/libuv.git'
+        'git+https://github.com/google/libnop.git'
         '010-caffe2-fix-include-system-path.patch'
-        '020-caffe2-use-system-libuv.patch')
+        '020-caffe2-use-system-libuv.patch'
+        '030-caffe2-disable-non-x86_64.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -98,13 +103,16 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '85cee13362fb5c7b0e9b087a78a35afa82ae3e2e644be4a89f6e5261ed4e15ef'
-            '2ca3a48a563d2523740609bd3fa83de2e325291ab58ebf6563b540302b074753')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'c68ddbd539e2a8ef3a1874a65e9c6701fc9d136b592be095b953cdcab38815fd'
+            'cfe57df7a34de8d9fe14b2499d8a211d0670f8a9cb7c999110577fb1626b4b03'
+            '7385ac0742f00245c3bd7560e33648566a25b950964806c55b6c3eaee25981ac')
 
 prepare() {
     # submodules which clone dir coincides with the submodule name
     local _submodule_list=('pybind11'
-                           'cub'
                            'googletest'
                            'benchmark'
                            'protobuf'
@@ -133,6 +141,7 @@ prepare() {
     done
     
     # submodules which clone dir does not coincide with the submodule name
+    git -C pytorch config --local submodule.third_party/cub.url "${srcdir}/cub-nvlabs"
     git -C pytorch config --local submodule.third_party/eigen.url "${srcdir}/eigen-git-mirror"
     git -C pytorch config --local submodule.third_party/protobuf.url "${srcdir}/protobuf-protocolbuffers"
     git -C pytorch config --local submodule.third_party/NNPACK_deps/pthreadpool.url "${srcdir}/pthreadpool"
@@ -166,35 +175,32 @@ prepare() {
     git -C pytorch/third_party/ideep config --local submodule.tests/rapidcheck.url "${srcdir}/rapidcheck"
     git -C pytorch/third_party/ideep submodule update
     
+    # tensorpipe submodules
+    git -C pytorch/third_party/tensorpipe submodule init
+    git -C pytorch/third_party/tensorpipe config --local submodule.third_party/pybind11.url "${srcdir}/pybind11"
+    git -C pytorch/third_party/tensorpipe config --local submodule.third_party/libuv.url "${srcdir}/libuv"
+    git -C pytorch/third_party/tensorpipe config --local submodule.third_party/googletest.url "${srcdir}/googletest"
+    git -C pytorch/third_party/tensorpipe config --local submodule.third_party/libnop.url "${srcdir}/libnop"
+    git -C pytorch/third_party/tensorpipe submodule update
+    
     patch -d pytorch -Np1 -i "${srcdir}/010-caffe2-fix-include-system-path.patch"
     patch -d pytorch -Np1 -i "${srcdir}/020-caffe2-use-system-libuv.patch"
+    patch -d pytorch -Np1 -i "${srcdir}/030-caffe2-disable-non-x86_64.patch"
 }
 
 pkgver() {
-    local _version
-    local _revision
-    local _shorthash
-    _version="$(head -n1 pytorch/caffe2/VERSION_NUMBER)"
-    _revision="$( git -C pytorch rev-list  --count HEAD)"
-    _shorthash="$(git -C pytorch rev-parse --short HEAD)"
-    
-    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+    printf '%s.r%s.g%s' "$(head -n1 pytorch/caffe2/VERSION_NUMBER)" \
+                        "$(git -C pytorch rev-list --count HEAD)" \
+                        "$(git -C pytorch rev-parse --short HEAD)"
 }
 
 build() {
-    local _common_opts=('..'
-                        '-DBLAS:STRING=Eigen'
-                        '-DBUILD_BINARY:BOOL=ON'
+    local _common_opts=('-DBUILD_BINARY:BOOL=ON'
                         '-DBUILD_CUSTOM_PROTOBUF:BOOL=OFF'
                         '-DBUILD_SHARED_LIBS:BOOL=ON'
                         '-DCMAKE_BUILD_TYPE:STRING=None'
-                        '-DCMAKE_INSTALL_LIBDIR:PATH=lib'
                         '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
                         '-DCMAKE_SKIP_INSTALL_RPATH:BOOL=YES'
-                        '-DCXX_AVX2_FOUND:BOOL=FALSE'
-                        '-DCXX_AVX_FOUND:BOOL=FALSE'
-                        '-DC_AVX2_FOUND:BOOL=FALSE'
-                        '-DC_AVX_FOUND:BOOL=FALSE'
                         '-DUSE_GFLAGS:BOOL=ON'
                         '-DUSE_GLOG:BOOL=ON'
                         '-DUSE_OPENCV:BOOL=ON'
@@ -208,11 +214,13 @@ build() {
         -DCUDA_HOST_COMPILER:FILEPATH='/opt/cuda/bin/gcc' \
         -DCUDA_NVCC_FLAGS:STRING='-Xfatbin -compress-all' \
         -DTORCH_CUDA_ARCH_LIST="$_cuda_archs" \
+        -DNCCL_INCLUDE_DIR:PATH='/usr/include' \
         -DUSE_CUDA:BOOL='ON' \
         -DUSE_CUDNN:BOOL='ON' \
         -DUSE_METAL:BOOL='OFF' \
         -DUSE_NCCL:BOOL='ON' \
         -DUSE_SYSTEM_NCCL:BOOL='ON'
+    
     ## fix: avoid a second compilation in package()
     sed -i 's/^preinstall:[[:space:]]all/preinstall:/' build-cuda/Makefile
     make -C build-cuda
@@ -226,25 +234,29 @@ _package_common() {
     make -C "$1" DESTDIR="$pkgdir" install
     
     # remove unneeded files
-    rm -f  "$pkgdir"/usr/include/*.h*
-    rm -rf "$pkgdir"/usr/share/ATen
+    rm "$pkgdir"/usr/include/*.h*
     local _dir
     local _file
     while read -r -d '' _dir
     do
         rm -r "$_dir"
-    done < <(find "${pkgdir}/usr"/{include,share/doc} -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*' ! -name 'c10*' \
-                 ! -name 'TH*' ! -name 'torch' ! -name 'tensorpipe' -print0)
+    done < <(find "${pkgdir}/usr"/{include,share/doc} -mindepth 1 -maxdepth 1 -type d ! -name 'ATen*' ! -name 'caffe*' \
+                 ! -name 'c10*' ! -name 'TH*' ! -name '*torch*' -print0)
     while read -r -d '' _dir
     do
         rm -r "$_dir"
-    done < <(find "${pkgdir}/usr"/{lib,share}/cmake -mindepth 1 -maxdepth 1 -type d ! -name 'Caffe*' ! -name 'Torch' \
-                 ! -name 'tensorpipe' -print0)
+    done < <(find "${pkgdir}/usr"/{lib,share}/cmake -mindepth 1 -maxdepth 1 -type d ! -name 'ATen*' ! -name 'Caffe*' \
+                 ! -name 'Torch*' -print0)
     while read -r -d '' _file
     do
         rm "$_file"
     done < <(find -L "${pkgdir}/usr/lib" -mindepth 1 -maxdepth 1 -type f ! -name '*c10*.so*' ! -name '*caffe*' \
-                 ! -name '*shm*' ! -name '*torch*.so*' ! -name '*tensorpipe*' -print0)
+                 ! -name '*shm*' ! -name '*torch*.so*' -print0)
+    while read -r -d '' _file
+    do
+        rm "$_file"
+    done < <(find -L "${pkgdir}/usr/lib/pkgconfig" -mindepth 1 -maxdepth 1 -type f ! -name '*c10*' ! -name '*caffe*' \
+                 ! -name '*shm*' ! -name '*torch*' -print0)
     
     # license
     install -D -m644 pytorch/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
