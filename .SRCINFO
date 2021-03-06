@@ -1,6 +1,6 @@
 pkgbase = python-waller
 	pkgdesc = Python curses utility to cycle between desktop wallpapers
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/codeswhite/waller
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-waller
 	makedepends = python-setuptools
 	depends = python
 	depends = xorg-xrandr
-	source = https://files.pythonhosted.org/packages/source/w/waller/waller-0.3.5.tar.gz
-	sha256sums = 5ee8ac7466db1eb03ad49444048988fe522c80063851c4f3ece52d346ccbb2e5
+	source = https://files.pythonhosted.org/packages/source/w/waller/waller-0.3.6.tar.gz
+	sha256sums = d7d46ab3be33d3d6bbd03d4e6d556d0657f2c7c909643f71adf4872632117a9f
 
 pkgname = python-waller
 	depends = python
