@@ -1,0 +1,21 @@
+pkgbase = libretro-bk-git
+	pkgdesc = BK-0010/0011/Terak 8510a core
+	pkgver = r116.993bee8
+	pkgrel = 1
+	url = https://github.com/libretro/bk-emulator
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = custom
+	provides = libretro-bk
+	conflicts = libretro-bk
+	source = libretro-bk::git+https://github.com/libretro/bk-emulator.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/bk_libretro.info
+	sha512sums = SKIP
+	sha512sums = cf504d30f55069be4152d9e07c4c808655dc78a5de21a7f4621e06a4e9911347272943e6cb8ce98075ec75f8348fa98554646b09a2e7afd3e5751129d21a26c4
+
+pkgname = libretro-bk-git
+
