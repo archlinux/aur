@@ -10,5 +10,5 @@ pkgbase = quicknav
 	source = https://github.com/MrDogeBro/quicknav/releases/download/v0.1.0/quicknav-0.1.0-x86_64.tar.gz
 	sha256sums = f6626af4f1fcd7b791b8d7806ed8dd8489062eae2984352ee19b3e1d0466880c
 
-pkgname = quicknav-bin
+pkgname = quicknav
 
