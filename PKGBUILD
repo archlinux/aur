@@ -1,6 +1,6 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=verthash-miner
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="GPU miner for the Verthash algorithm and Vertcoin"
 arch=('x86_64')
