@@ -56,7 +56,7 @@ _flags=(
     -Dxcb-xkb=enabled
     -Dxwayland=enabled
     -Dx11-backend=enabled
-    -Dxdg-foreign=disabled
+    -Dxdg-foreign=enabled
     -Dwerror=false
     -Db_sanitize=address,undefined
 )
