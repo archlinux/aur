@@ -1,6 +1,6 @@
 #maintener alecromski
 pkgname=ssb
-pkgver=v0.0.2
+zsh:1: command not found: q
 pkgrel=1
 pkgdesc="Secure Shell Bruteforcer — A faster & simpler way to bruteforce SSH server."
 arch=('any')
