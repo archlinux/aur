@@ -1,4 +1,4 @@
-pkgbase = stylua
+pkgbase = stylua-git
 	pkgdesc = An opinionated code formatter for Lua 5.1 and Luau, built using full-moon.
 	pkgver = 0.5.0.r13.g81b2ae2
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = stylua
 	depends = git
 	depends = rust
 	conflicts = stylua-bin
-	source = stylua::git+https://github.com/JohnnyMorganz/StyLua.git
+	source = stylua-git::git+https://github.com/JohnnyMorganz/StyLua.git
 	sha256sums = SKIP
 
-pkgname = stylua
+pkgname = stylua-git
 
