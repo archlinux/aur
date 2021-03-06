@@ -1,7 +1,7 @@
 # Maintainer: Watanabe Fumihiko <random@chars.jp>
 
 pkgname=freenitori
-pkgver=1.9.9
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="Open source, general purpose Discord utility."
 arch=("x86_64")
