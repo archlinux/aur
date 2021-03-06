@@ -1,0 +1,14 @@
+pkgbase = python-pagelabels
+	pkgdesc = Python library to manipulate PDF page numbers and labels.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/lovasoa/pagelabels-py
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-pdfrw
+	source = pagelabels-py-1.2.0.tar.gz::https://github.com/lovasoa/pagelabels-py/archive/v1.2.0.tar.gz
+	sha256sums = 409d98befa60938e059ed3a52ad9782f0b2ce32e794d54a79a9db0e6367c9ac8
+
+pkgname = python-pagelabels
+
