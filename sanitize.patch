@@ -6,8 +6,8 @@ Let me do some optimisations.
 If you are interested to improve this patch, welcome to mail me.
 
 diff -ru old/tool/ventoy_lib.sh new/tool/ventoy_lib.sh
---- tool/ventoy_lib.sh	2021-03-06 14:25:30.556838345 +0100
-+++ tool/ventoy_lib.sh	2021-03-06 14:34:05.195619694 +0100
+--- tool/ventoy_lib.sh	2021-03-06 14:54:04.163817366 +0100
++++ tool/ventoy_lib.sh	2021-03-06 14:56:07.053667242 +0100
 @@ -29,7 +29,7 @@
  }
  
@@ -17,11 +17,10 @@ diff -ru old/tool/ventoy_lib.sh new/tool/ventoy_lib.sh
  }
  
  vtoy_gen_uuid() {
-@@ -51,31 +51,6 @@
- }
+@@ -52,30 +52,6 @@
  
  check_tool_work_ok() {
--    
+     
 -    if echo 1 | hexdump > /dev/null; then
 -        vtdebug "hexdump test ok ..."
 -    else
@@ -49,9 +48,18 @@ diff -ru old/tool/ventoy_lib.sh new/tool/ventoy_lib.sh
      vtdebug "tool check success ..."
      ventoy_true
  }
+@@ -264,7 +240,7 @@
+     else
+     vtdebug "format disk by fdisk ..."
+     
+-fdisk $DISK >>./log.txt 2>&1 <<EOF
++fdisk $DISK >>/var/log/ventoy.log 2>&1 <<EOF
+ o
+ n
+ p
 diff -ru old/tool/VentoyWorker.sh new/tool/VentoyWorker.sh
---- tool/VentoyWorker.sh	2021-03-06 14:26:14.606708540 +0100
-+++ tool/VentoyWorker.sh	2021-03-06 14:32:46.595773149 +0100
+--- tool/VentoyWorker.sh	2021-03-06 14:53:26.603866863 +0100
++++ tool/VentoyWorker.sh	2021-03-06 14:55:52.493675465 +0100
 @@ -96,7 +96,7 @@
  if check_tool_work_ok; then
      vtdebug "check tool work ok"
@@ -62,8 +70,8 @@ diff -ru old/tool/VentoyWorker.sh new/tool/VentoyWorker.sh
  fi
  
 diff -ru old/Ventoy2Disk.sh new/Ventoy2Disk.sh
---- Ventoy2Disk.sh	2021-03-06 14:26:32.776656820 +0100
-+++ Ventoy2Disk.sh	2021-03-06 14:32:12.305842867 +0100
+--- Ventoy2Disk.sh	2021-03-06 14:52:52.703911700 +0100
++++ Ventoy2Disk.sh	2021-03-06 14:55:45.943684011 +0100
 @@ -32,46 +32,4 @@
  echo '**********************************************'
  echo ''
@@ -113,8 +121,8 @@ diff -ru old/Ventoy2Disk.sh new/Ventoy2Disk.sh
 -fi
 +./tool/VentoyWorker.sh $*
 diff -ru old/VentoyWeb.sh new/VentoyWeb.sh
---- VentoyWeb.sh	2021-03-06 14:26:59.896581493 +0100
-+++ VentoyWeb.sh	2021-03-06 14:30:24.926073772 +0100
+--- VentoyWeb.sh	2021-03-06 14:54:25.383789486 +0100
++++ VentoyWeb.sh	2021-03-06 14:56:01.253668661 +0100
 @@ -15,12 +15,6 @@
      echo ""
  }
