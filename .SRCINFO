@@ -1,22 +1,20 @@
 pkgbase = procexp
-	pkgdesc = Graphical process explorer for Linux.
-	pkgver = 1.7.289
+	pkgdesc = Graphical process explorer for Linux
+	pkgver = 20200715
 	pkgrel = 1
-	url = http://sourceforge.net/projects/procexp/
-	install = procexp.install
+	url = https://github.com/wolfc01/procexp
 	arch = any
-	license = GPL2
-	depends = util-linux
-	depends = python2-pyqwt
-	depends = python2
-	depends = python2-pyqt4
-	depends = python2-configobj
-	depends = tcpdump
+	license = GPL3
+	depends = ethtool
 	depends = polkit
-	optdepends = ethtool: obtain ethernet cards statistics
-	options = docs
-	source = http://downloads.sourceforge.net/project/procexp/bin_v1/procexp_1.7.289-0ubuntu1_all.deb
-	md5sums = 5ce96fd6a5772f4e371ab863f032450f
+	depends = python-configobj
+	depends = python-pyqt5
+	depends = pyqt-qwt
+	depends = tcpdump
+	source = procexp-ebd5d47d4e457d3776754eda9068ced7e31fc3e8.tar.gz::https://github.com/wolfc01/procexp/archive/ebd5d47d4e457d3776754eda9068ced7e31fc3e8.tar.gz
+	source = procexp.patch
+	sha256sums = ac5541e5bdd6ba82e9fda11f78c98cbfbf6d0dc887c276cc5a10c80ce4972799
+	sha256sums = 19d93a5cd060a58f69df92e948cc67850c92d0f974594ff255c59216d03bd543
 
 pkgname = procexp
 

@@ -1,0 +1,105 @@
+diff --unified --recursive --text procexp-20200715.orig/aboutui.py procexp-20200715.new/aboutui.py
+--- procexp-20200715.orig/aboutui.py	2020-07-15 08:14:09.000000000 +1200
++++ procexp-20200715.new/aboutui.py	2021-03-06 15:09:50.551561415 +1300
+@@ -15,13 +15,13 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA
+ 
+-from PyQt5 import QtGui, uic
++from PyQt5 import QtGui, QtWidgets, uic
+ import os
+ 
+ def doAboutWindow():
+   """Make an about window"""
+   icon = os.path.dirname(__file__) + "/ui/icon.png"
+-  dialog = QtGui.QDialog()
++  dialog = QtWidgets.QDialog()
+   about = uic.loadUi(os.path.join(os.path.dirname(__file__), "./ui/about.ui"), baseinstance=dialog)
+   about.label.setPixmap(QtGui.QPixmap(icon))
+   dialog.exec_()
+diff --unified --recursive --text procexp-20200715.orig/colorlegend.py procexp-20200715.new/colorlegend.py
+--- procexp-20200715.orig/colorlegend.py	2020-07-15 08:14:09.000000000 +1200
++++ procexp-20200715.new/colorlegend.py	2021-03-06 15:09:03.571487336 +1300
+@@ -15,12 +15,12 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA
+ 
+-from PyQt5 import QtGui, uic
++from PyQt5 import QtWidgets, uic
+ import os
+ 
+ def doColorHelpLegend():
+   """Make a color legend window"""
+-  dialog = QtGui.QDialog()
++  dialog = QtWidgets.QDialog()
+   myui = uic.loadUi(os.path.join(os.path.dirname(__file__), "./ui/helplegend.ui"), baseinstance=dialog)
+   dialog.setModal(True)
+   dialog.exec_()
+Only in procexp-20200715.new/plotobjects: __pycache__
+Only in procexp-20200715.new/procreader: __pycache__
+diff --unified --recursive --text procexp-20200715.orig/procreader/reader.py procexp-20200715.new/procreader/reader.py
+--- procexp-20200715.orig/procreader/reader.py	2020-07-15 08:14:09.000000000 +1200
++++ procexp-20200715.new/procreader/reader.py	2021-03-06 15:01:42.880714429 +1300
+@@ -191,8 +191,8 @@
+         ethtoolerror = True
+       
+       if data[0] is not None:
+-        for line in data[0].split("\n"):
+-          if line.find("Speed") != -1:
++        for line in data[0].split(b"\n"):
++          if line.find(b"Speed") != -1:
+             try:
+               speed = int(line.split(":")[1].split("Mb/s")[0])
+             except:
+diff --unified --recursive --text procexp-20200715.orig/procreader/tcpip_stat.py procexp-20200715.new/procreader/tcpip_stat.py
+--- procexp-20200715.orig/procreader/tcpip_stat.py	2020-07-15 08:14:09.000000000 +1200
++++ procexp-20200715.new/procreader/tcpip_stat.py	2021-03-06 14:34:07.328205942 +1300
+@@ -83,7 +83,9 @@
+   def start(self):
+     """start measuring"""
+     if self._started == False:
+-      self._fifo = "/tmp/procexp_"+str(uuid.uuid4())
++      home = os.environ["HOME"]
++      fifopath = os.path.join(home,".cache","procexp")
++      self._fifo = os.path.join(fifopath,"procexp_"+str(uuid.uuid4()))
+       os.mkfifo(self._fifo)
+       rootproxy.doContinuousCommand(["tcpdump", "-U" , "-l", "-q", "-nn", "-t", "-i",  "any"], self._fifo)
+       self._started = True
+Only in procexp-20200715.new: __pycache__
+diff --unified --recursive --text procexp-20200715.orig/rootproxy/__init__.py procexp-20200715.new/rootproxy/__init__.py
+--- procexp-20200715.orig/rootproxy/__init__.py	2020-07-15 08:14:09.000000000 +1200
++++ procexp-20200715.new/rootproxy/__init__.py	2021-03-06 15:17:56.885706642 +1300
+@@ -34,12 +34,16 @@
+   global procroot
+   global started
+   
+-  ptoc_filename = "/tmp/ptoc"+str(uuid.uuid4()) #ParentTOChild
+-  ctop_filename = "/tmp/ctop"+str(uuid.uuid4()) #ChildTOParent
++  home = os.environ["HOME"]
++  fifopath = os.path.join(home,".cache","procexp")
++  access_rights = 0o755
++  ptoc_filename = os.path.join(fifopath,"ptoc"+str(uuid.uuid4())) #ParentTOChild
++  ctop_filename = os.path.join(fifopath,"ctop"+str(uuid.uuid4())) #ChildTOParent
+   
++  os.makedirs(fifopath, access_rights, exist_ok=True)
+   os.mkfifo(ptoc_filename) #ParentToChild
+   os.mkfifo(ctop_filename) #ChildTOParent
+-  
++
+   if asRoot:
+     thisFile = __file__
+     thisFile = thisFile.replace(".pyc", ".py")
+Only in procexp-20200715.new/rootproxy: __pycache__
+diff --unified --recursive --text procexp-20200715.orig/utils/procutils.py procexp-20200715.new/utils/procutils.py
+--- procexp-20200715.orig/utils/procutils.py	2020-07-15 08:14:09.000000000 +1200
++++ procexp-20200715.new/utils/procutils.py	2021-03-06 14:34:07.328205942 +1300
+@@ -47,7 +47,7 @@
+   errorbox = QtWidgets.QMessageBox()
+   errorbox.setText("Unhandled exception:\n"+msg)
+   errorbox.exec_()
+-  file("/tmp/procexp.log","ab").write(msg+"\n")
++  file("/var/log/procexp.log","ab").write(msg+"\n")
+   
+ # sys.excepthook = logUnhandledException
+ 
+Only in procexp-20200715.new/utils: __pycache__
