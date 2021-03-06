@@ -36,5 +36,5 @@ package() {
     cd ${srcdir}/fastfetch
     install -D "build/fastfetch" "${pkgdir}/usr/bin/fastfetch"
     install -D "build/flashfetch" "${pkgdir}/usr/bin/flashfetch"
-    install -D "completions/bash" "${pkgdire}/usr/share/bash-completion/completions/fastfetch"
+    install -D "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/fastfetch"
 }
