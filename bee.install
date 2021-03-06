@@ -1,0 +1,51 @@
+pre_install() {
+    if ! getent passwd bee >/dev/null; then
+        useradd -r -d /var/lib/bee -s /sbin/nologin -c 'Bee user' -U bee
+    fi
+
+    if getent passwd bee-clef >/dev/null; then
+        usermod -a -G bee-clef bee >/dev/null
+    fi
+
+    if ! test -d /var/lib/bee; then
+        mkdir -p /var/lib/bee
+        chmod 0750 /var/lib/bee
+        chown -R bee:bee /var/lib/bee
+    fi
+
+    if ! test -f /var/lib/bee/password; then
+        tr </dev/urandom -dc _A-Z-a-z-0-9 2>/dev/null | head -c32 >/var/lib/bee/password
+        chmod 0600 /var/lib/bee/password
+        chown bee:bee /var/lib/bee/password
+    fi
+}
+
+post_install() {
+    if ! test -f /var/lib/bee/keys/libp2p.key; then
+        /usr/bin/bee init --config /etc/bee/bee.yaml >/dev/null
+        chown -R bee:bee /var/lib/bee/keys
+    fi
+
+    # Allow group members (bee user) to use clef's socket
+    if test -S /var/lib/bee-clef/clef.ipc; then
+        chmod 660 /var/lib/bee-clef/clef.ipc
+    fi
+
+    echo "
+Logs:   journalctl -f -u bee.service
+Config: /etc/bee/bee.yaml
+
+Bee has SWAP enabled and by default is using slock.it goerli ethereum endpoint.
+It is recommended to use external signer with bee.
+Check documentation for more info:
+- SWAP https://docs.ethswarm.org/docs/installation/manual#swap-bandwidth-incentives
+- External signer https://docs.ethswarm.org/docs/installation/bee-clef
+
+After you finish configuration run 'sudo bee-get-addr'.
+        "
+}
+
+post_remove() {
+    userdel bee >/dev/null 2>&1 || true
+    groupdel bee >/dev/null 2>&1 || true
+}

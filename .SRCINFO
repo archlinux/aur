@@ -1,0 +1,18 @@
+pkgbase = swarm-bee-bin
+	pkgdesc = Swarm client implemented in Go, basic building block for Swarm Network
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://swarm.ethereum.org/
+	install = bee.install
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = bash
+	optdepends = bee-clef: external signer for bee
+	backup = etc/bee/bee.yaml
+	source = https://github.com/ethersphere/bee/releases/download/v0.5.2/bee_0.5.2_amd64.deb
+	source = https://raw.githubusercontent.com/ethersphere/bee/master/LICENSE
+	sha512sums = c89d4dadb4d4cccf1621e5ec67fd1eef8a103af251a98497fee9b96cda419b2433604a634c71f743a3ba0de056ef69d6357fad32193aa78765a8abc70e6add37
+	sha512sums = 63cb4eacde7f6f664dc42f07fd2b46dab7c72a621b57ef60481f0f3484445073c8c11310c38a6b85c801be64bc38a6e4c38186ffe0b2abd188d2a6ec6e03a9ab
+
+pkgname = swarm-bee-bin
+
