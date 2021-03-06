@@ -1,6 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -4,7 +4,7 @@ CXX ?= g++
+@@ -9,7 +9,7 @@ CXX ?= g++
  FLAGS = -Wall -std=c++11 -Wno-misleading-indentation
  
  ifeq ($(UNAME),Linux)
@@ -9,18 +9,19 @@
  else ifeq ($(UNAME),Darwin)
  	FLAGS += -g
  else ifeq ($(UNAME),FreeBSD)
-@@ -16,8 +16,7 @@ else
+@@ -21,8 +21,8 @@ else
  endif
  
  INCFLAGS = -I/usr/include/i2pd
 -CXXFLAGS = $(FLAGS)
 -LDFLAGS = 
 +CXXFLAGS += $(FLAGS)
++LDFLAGS +=
  LIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
  
  ifeq ($(UNAME),Linux)
-@@ -75,7 +74,7 @@ regaddralias: regaddralias.o
- .SUFFIXES: .c .cc .C .cpp .o
+@@ -83,7 +83,7 @@ $(I2PD_LIB):
+ 	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
  
  %.o: %.cpp
 -	$(CXX) -o $@ -c $(CXXFLAGS) $(INCFLAGS) $<

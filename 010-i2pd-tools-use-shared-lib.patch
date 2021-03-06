@@ -1,17 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -1,10 +1,5 @@
- UNAME = $(shell uname -s)
- 
--I2PD_PATH = i2pd
--I2PD_LIB = libi2pd.a
--
--LIBI2PD_PATH = $(I2PD_PATH)/libi2pd
--LIBI2PD_CLIENT_PATH = $(I2PD_PATH)/libi2pd_client
- CXX ?= g++
- FLAGS = -Wall -std=c++11 -Wno-misleading-indentation
- 
-@@ -20,10 +15,10 @@ else
+@@ -20,10 +20,10 @@ else
  	BOOST_SUFFIX = -mt
  endif
  
@@ -24,7 +13,7 @@
  
  ifeq ($(UNAME),Linux)
  	LIBS += -lrt -lpthread
-@@ -41,63 +36,57 @@ else
+@@ -41,39 +41,39 @@ else
  	LDFLAGS += -s -Wl,-Bstatic -static-libgcc -static-libstdc++
  endif
  
@@ -76,24 +65,16 @@
  	$(CXX) -o regaddralias regaddralias.o $(LDFLAGS) $(LIBS)
  
  .SUFFIXES:
- .SUFFIXES: .c .cc .C .cpp .o
+@@ -82,7 +82,7 @@ regaddralias: regaddralias.o $(I2PD_LIB)
+ $(I2PD_LIB):
+ 	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
  
--$(I2PD_LIB):
--	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
--
 -%.o: %.cpp $(I2PD_LIB)
 +%.o: %.cpp
  	$(CXX) -o $@ -c $(CXXFLAGS) $(INCFLAGS) $<
  
  count:
- 	wc *.c *.cc *.C *.cpp *.h *.hpp
- 
--clean-i2pd:
--	$(MAKE) -C $(I2PD_PATH) clean
--
- clean-obj:
- 	rm -f $(wildcard *.o)
- 
+@@ -97,7 +97,7 @@ clean-obj:
  clean-bin:
  	rm -f b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo vain
  
