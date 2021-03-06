@@ -23,7 +23,6 @@ build()
 package()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    chmod +x data/usr/bin/odio
     python setup.py install --root="${pkgdir}" --optimize=1
 
 }
