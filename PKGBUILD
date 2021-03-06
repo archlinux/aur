@@ -16,6 +16,6 @@ md5sums=('4209b7f93bd7b1471f46b2ff9a26e830')
 
 package()
 {
-    cd $srcdir/$pkgname-master
+    cd ${srcdir}/${pkgname}-${_zipname}
     make ROOTPATH="$pkgdir" install
 }
