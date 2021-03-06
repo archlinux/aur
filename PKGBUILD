@@ -1,10 +1,10 @@
 pkgname=fheroes2
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://ihhub.github.io/fheroes2/"
-license=('GPL')
+license=('GPL2')
 depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf' 'tinyxml')
 makedepends=('gettext')
 conflicts=('fheroes2-git' 'fheroes2-svn')
