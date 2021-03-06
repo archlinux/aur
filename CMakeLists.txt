@@ -93,16 +93,16 @@ install(TARGETS onscripter DESTINATION bin)
 
 add_executable(sardec sardec.cpp ${HEADERS} ${SOURCES})
 target_link_libraries(sardec ${ALL_LIBS})
-install(TARGETS onscripter DESTINATION bin)
+install(TARGETS sardec DESTINATION bin)
 
 add_executable(nsadec nsadec.cpp ${HEADERS} ${SOURCES})
 target_link_libraries(nsadec ${ALL_LIBS})
-install(TARGETS onscripter DESTINATION bin)
+install(TARGETS nsadec DESTINATION bin)
 
 add_executable(sarconv sarconv.cpp ${HEADERS} ${SOURCES})
 target_link_libraries(sarconv ${ALL_LIBS})
-install(TARGETS onscripter DESTINATION bin)
+install(TARGETS sarconv DESTINATION bin)
 
 add_executable(nsaconv nsaconv.cpp ${HEADERS} ${SOURCES})
 target_link_libraries(nsaconv ${ALL_LIBS})
-install(TARGETS onscripter DESTINATION bin)
+install(TARGETS nsaconv DESTINATION bin)
