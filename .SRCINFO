@@ -8,7 +8,7 @@ pkgbase = pdf-compress
 	depends = ghostscript
 	depends = imagemagick
 	source = pdf-compress-0.6::https://www.timedicer.co.uk/programs/pdf-compress.sh
-	sha256sums = SKIP
+	sha256sums = 88eed80fe28e6fdf111accf1d4b1d22836f75ec53b103b614b6fbb539f926ab7
 
 pkgname = pdf-compress
 
