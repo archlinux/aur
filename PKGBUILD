@@ -1,6 +1,6 @@
-pkgname='holo'
-pkgver=2.2
-pkgrel=2
+pkgname=holo
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Minimalistic configuration management'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='http://holocm.org'
@@ -15,6 +15,7 @@ makedepends=('go' 'perl' 'git' 'openssh')
 provides=(
     # required for holo-build packages that have a holo-$PLUGIN dependency when there are files below /usr/share/holo/$PLUGIN/
     "holo-files=${pkgver}"
+    "holo-generators=${pkgver}"
     "holo-run-scripts=${pkgver}"
     "holo-ssh-keys=${pkgver}"
     "holo-users-groups=${pkgver}"
@@ -32,7 +33,7 @@ backup=(
     'etc/holorc.d/95-holo-run-scripts'
 )
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('56b8c47e8b872155fc50f1de972260189416fc7e0c9b6478ba81eed14eeaf72f')
+sha256sums=('9175bb015569f0f7e0398c7a29419a2be97d102d42b157b14b7339c39a424f49')
 
 options=('!strip') # binaries are already stripped inside the Makefile
 
