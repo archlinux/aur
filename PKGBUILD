@@ -10,7 +10,7 @@ makedepends=('git' 'awk' )
 depends=('python-binaryornot' 'python-urwid' 'python-yaml' 'python-pyperclip' 'python-pygments' 'python-watchdog' 'python-click')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hnicke/sodalite/archive/v$pkgver.tar.gz")
 backup=('etc/sodalite.conf')
-sha256sums=(7ea356b50b15dc66f070de736e3abf9f05787e8706ce07f481c43604191d7b7f)
+sha256sums=(1b111f6c517de39b726dcc2c0b888cf845edb0b82b356b3d171a1cefa5b475f5)
 
 
 
