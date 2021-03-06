@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=yirl-git
-pkgver=r1726.c761d73
+pkgver=r1812.ffee57e
 pkgrel=1
 pkgdesc='Modular Game Engine'
 
@@ -17,7 +17,7 @@ pkgver() {
 	 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-makedepends=(gcc make mercurial autoconf)
+makedepends=(gcc make autoconf)
 # hopefully I should be able to remove glib2 and add sdl2-mixer soon
 depends=(lua json-c sdl2 sdl2_image sdl2_ttf sdl2_mixer glib2)
 
@@ -38,6 +38,7 @@ build() {
 	 make
 	 cd ..
 	 make quickjs-2020-03-16
+	 make sdl-gpu-build
 	 make
 }
 
