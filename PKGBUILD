@@ -3,7 +3,7 @@
 pkgname=fkill
 _npmname=fkill-cli
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fabulously kill processes. Cross-platform."
 arch=('any')
 url="https://github.com/sindresorhus/fkill-cli"
@@ -41,4 +41,6 @@ package() {
 	chmod 644 "$pkgjson"
 
 	install -Dm644 "$srcdir/package/license" -t "$pkgdir/usr/share/licenses/$pkgname"
+
+	rm -rf "$pkgdir/usr/lib/node_modules/root"
 }

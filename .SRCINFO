@@ -1,7 +1,7 @@
 pkgbase = fkill
 	pkgdesc = Fabulously kill processes. Cross-platform.
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sindresorhus/fkill-cli
 	arch = any
 	license = MIT
