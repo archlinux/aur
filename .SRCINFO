@@ -1,7 +1,8 @@
 pkgbase = serial2tcp
+	pkgdesc = serial to tcp/ip bridge
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://cgit.ctu.cx/serial2tcp/
+	url = https://cgit.ctu.cx/serial2tcp
 	arch = x86_64
 	license = GPL-3
 	makedepends = nim
