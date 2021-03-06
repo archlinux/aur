@@ -12,7 +12,7 @@ backup=('usr/share/rime-data/flypy_sys.txt'
         'usr/share/rime-data/flypy_top.txt'
         'usr/share/rime-data/flypy_user.txt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v$pkgver.tar.gz")
-md5sums=('057466ff6267c88fef5acdfee904a447')
+md5sums=('198ddbc055f62136d96e96a4edd8a63d')
 
 
 package() {
