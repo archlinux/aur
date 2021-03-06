@@ -1,7 +1,7 @@
 pkgbase = whoogle-git
 	pkgdesc = A self-hosted, ad-free, privacy-respecting metasearch engine
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benbusby/whoogle-search
 	install = whoogle.install
 	arch = x86_64

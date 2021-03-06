@@ -2,7 +2,7 @@
 
 pkgname=whoogle-git
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -12,7 +12,7 @@ makedepends=(git)
 source=("git+$url.git"
         whoogle.service)
 sha256sums=('SKIP'
-            'e803c743ab610beea9d2d780b0b06ee452952faf6d580fce1b94845f11e41c27')
+            '4b70638665c6d8865bae898b1c32636dfdadee26c53b068fcfc51c051a74d0d8')
 install=whoogle.install
 
 build() {
@@ -20,9 +20,12 @@ build() {
   python3 -m venv venv
   source venv/bin/activate
   pip install -r requirements.txt
+  
 }
 
 package() {
- install -Dvm644 "$srcdir/whoogle.service" "$pkgdir/lib/systemd/system/whoogle.service"
- cp -r "$srcdir/whoogle-search" "$pkgdir/opt/"
+ install -dm0755 "$pkgdir/lib/systemd/system/"
+ install -m0644 "$srcdir/whoogle.service" "$pkgdir/lib/systemd/system/whoogle.service"
+ install -dm0755 "$pkgdir/opt/whoogle-search"
+ cp -r "$srcdir/whoogle-search/venv" "$pkgdir/opt/whoogle-search"
 }
