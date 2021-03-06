@@ -4,35 +4,37 @@
 pkgname=python-rebulk
 _name=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=2
-pkgdesc="Define simple search patterns in bulk to perform advanced matching on any string. "
-arch=("any")
-url="https://github.com/Toilal/rebulk"
+pkgrel=3
+pkgdesc='Define simple search patterns in bulk to perform advanced matching on any string.'
+arch=('any')
+url='https://github.com/Toilal/rebulk'
 license=('MIT')
-depends=(
-  'python'
-)
-optdepends=(
-  'python-regex'
-)
+depends=('python')
 makedepends=(
   'python-setuptools'
+  'python-pytest-runner'
 )
-options=(!emptydirs)
+checkdepends=('python-pylint')
+optdepends=('python-regex')
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('025d191c11abf9174c6aff0006579624047d3371a654333c4bf7a4b421552cdc')
 
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-#source=("rebulk-${pkgver}.tar.gz::https://github.com/Toilal/rebulk/archive/v${pkgver}.tar.gz")
-
-sha512sums=('a1e3ed157b262a2bbe214a01a0959372989eb354dae8ac185b2142564f7ec41e20e2e6e380f85aef14679b42d2d6a54a37076c0ebe47da2444ac2f71bcded9db')
+build() {
+  cd "${_name}-${pkgver}"
+  python setup.py build
+}
 
 check() {
-  cd "${srcdir}/rebulk-${pkgver}"
-  python setup.py test
+  cd "${_name}-${pkgver}"
+  pytest
 }
 
 package() {
-  cd "${srcdir}/rebulk-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  cd "${_name}-${pkgver}"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
