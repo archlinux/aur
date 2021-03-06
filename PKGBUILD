@@ -1,7 +1,7 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r44.923faa6
+pkgver=r45.16af140
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c. Downside: only Linux"
 arch=("any")
@@ -36,4 +36,5 @@ package() {
     cd ${srcdir}/fastfetch
     install -D "build/fastfetch" "${pkgdir}/usr/bin/fastfetch"
     install -D "build/flashfetch" "${pkgdir}/usr/bin/flashfetch"
+    install -D "completions/bash" "${pkgdire}/usr/share/bash-completion/completions/fastfetch"
 }
