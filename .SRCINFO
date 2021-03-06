@@ -1,0 +1,17 @@
+pkgbase = whoogle-git
+	pkgdesc = A self-hosted, ad-free, privacy-respecting metasearch engine
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/benbusby/whoogle-search
+	install = whoogle.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git+https://github.com/benbusby/whoogle-search.git
+	source = whoogle.service
+	sha256sums = SKIP
+	sha256sums = 4b70638665c6d8865bae898b1c32636dfdadee26c53b068fcfc51c051a74d0d8
+
+pkgname = whoogle-git

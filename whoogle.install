@@ -1,0 +1,8 @@
+post_install() {
+  systemctl enable --now whoogle
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl restart whoogle
+}

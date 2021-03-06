@@ -1,0 +1,15 @@
+[Unit]
+Description=Whoogle
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/whoogle-search
+ExecStart=/opt/whoogle-search/bin/python3 -um app --host 0.0.0.0 --port 5000
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=3
+SyslogIdentifier=whoogle
+
+[Install]
+WantedBy=multi-user.target
