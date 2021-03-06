@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.11.2
+pkgver=5.11.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=7398961ba1f96e302ee0977895f6b53babf67a52
+_arch_config_commit=bc9da6eb1bd1fe5a7dda36ab5dad94382b9eaf0b
 _bmqversion=5.11-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
@@ -43,24 +43,20 @@ source=(
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
   "0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/sphinx-workaround.patch"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=2aef6c5fe88b92e9f611ec0b04ab8e023e943cd8"
-  "0002-Revert-drm-amd-display-reuse-current-context-instead.patch::https://git.archlinux.org/linux.git/patch/?id=66128e7bf7011076ebe47fa5d4b18faad8244c5d"
-  "0003-drm-amdgpu-fix-shutdown-with-s0ix.patch::https://git.archlinux.org/linux.git/patch/?id=04ec031772dd6faf64506c739ce7073b0f91310b"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=cfa0842775b4311122b42dc3e9157ee24dfb36f4"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('62f47c769998fa713cda9024a4ecbe7ba2140acde629082630c2c0b076b4e941b0a1e82f7d2b7cd4ed6e84759ea93de78e212ecbe1341d9055091d26d83286dc'
+b2sums=('9451bda48221ea58096682a4ce107194580a6fcaccb15d62b881c2ba8eddadbd46b010b20e2fa8e723674de0d29dd0a12749c9245db39b521659bc6cf2f270c5'
         'SKIP'
-        'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
+        '38e023e6dc5fc0c6663f7d973fd521dcac44c54cf971d12e1d7f688ed1f323d076816a7c3888a7b9f44d1fef8d4a85787738bba05febc23b2145021b8f2a0750'
         '3b923fa385d648f8fbe0299d9d4bbf6c21d11c155c45733b8ef5e24d138ce3289fe9f2feb5c1526edc3ea721f6d48fde09b0597afb634aae77b5bdf86b647e8c'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         'db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb'
-        '060669dd9bca4eb3949ec9166e3be9403ad69b4670b5693089e2df91f35e420c75b9516d4843fe610c91dc3326f4c6e23fa3ebf8f052465fd4b0f48e261ec44b'
-        '95a2ed8aa9609a2b5427804dfebba92a1caeb1f24cecba4c0b4c32f646c9e77b672195e1b2958ee52ade9160704d32c7130a6c5e94b6c39a401ab1b286f31a8f'
-        'c8bca11b7edba88cc246cc641265bb7edaf7c4b0363921165f98ebfb4263a2501bbd65e16666c763a9ed8ba6211a24c34d2cc801c95ab2cbcc6880b5a9d07e05')
+        'b17ed743962e6a68ad037fbfd8cca64aa64b8c2149fe45589957ff26b3176b79a555fc10654af4c61726efaf56e72ee0ef078e6dbc00e852d56d30161acde026')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
