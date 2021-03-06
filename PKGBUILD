@@ -1,6 +1,6 @@
 # Maintainer: Luiz Ribeiro <luizribeiro@gmail.com>, Tom Wambold <tom5760@gmail.com>
 pkgname=oauth2_proxy
-pkgver=6.1.1
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="A reverse proxy that provides authentication with Google, Github or other providers."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ backup=('etc/oauth2_proxy.cfg')
 install=oauth2_proxy.install
 source=("https://github.com/oauth2-proxy/oauth2-proxy/archive/v$pkgver.tar.gz"
         'oauth2_proxy.service')
-md5sums=('fa11fbcb9e81a0fcdb8dcfc1c274993d'
+md5sums=('9b43432bf65b337090a76e789306bd12'
          'd74991327448729ed64c1369724f7857')
 
 build() {
