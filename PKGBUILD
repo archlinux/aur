@@ -45,7 +45,7 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('8ff8d7585010407fcd1f7c85e595ca6db4344c753cdaaed9e6031656f3286e06')
+sha256sums=('7e6580e8dee78fb3a3dacf4d55f02c7f8b44dac1785275bb7d937e59f57f295b')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
