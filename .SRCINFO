@@ -1,6 +1,6 @@
 pkgbase = gint-git
 	pkgdesc = Alternative library and kernel for add-in development on fx-9860G and fx-CG50
-	pkgver = r222.589c25c
+	pkgver = 2.3.1.r0.g7e1becb
 	pkgrel = 1
 	url = https://gitea.planet-casio.com/Lephenixnoir/gint
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = gint-git
 	depends = sh-elf-gcc-casio
 	depends = python-pillow
 	options = !strip
-	source = gint-git::git+https://gitea.planet-casio.com/Lephenixnoir/gint.git#branch=master
+	source = gint-git::git+https://gitea.planet-casio.com/Lephenixnoir/gint.git
 	sha256sums = SKIP
 
 pkgname = gint-git
