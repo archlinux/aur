@@ -6,13 +6,13 @@ pkgver=1.7
 pkgrel=1
 pkgdesc="A bash script alarm clock."
 arch=('any')
-url="http://www.someplacedumb.net"
+url="http://www.someplacedumb.net/content/progs/index.html#shalarm"
 license=('custom:"FreeBSD"')
 depends=(bash coreutils)
 optdepends=('mplayer')
-_zipname=master
-source=("$_zipname.zip::https://github.com/jahendrie/shalarm/archive/$_zipname.zip")
-md5sums=('SKIP')
+_zipname=8d44470c4dfba9484d5fabc1aacaa309bdfe8f2c
+source=("${pkgname}_${pkgver}-${pkgrel}.zip::https://github.com/jahendrie/shalarm/archive/$_zipname.zip")
+md5sums=('4209b7f93bd7b1471f46b2ff9a26e830')
 
 package()
 {
