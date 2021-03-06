@@ -2,7 +2,7 @@
 
 _pyname=pslab-python
 pkgname=python-pslab
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Core library for PSlab desktop"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 provides=("$_pyname")
 options=(!emptydirs)
 source=(https://github.com/fossasia/$_pyname/archive/v$pkgver.tar.gz)
-sha512sums=('47e5c955c212ad54fed948ca742cd4a134451fa234b4ecac61c210be6ce9f013e06390feae1e066988662caeb342387a3498df3ba0c7ec6eab667ffaaa7e92ef')
+sha512sums=('d379c288cc65319675b2d36ef94e91b0186f88f80c4882af173a4df6f9c79343f437e00446f7c54cd49f8b7c66745d60d3969584269ff63d24fc7ea786b38dce')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
