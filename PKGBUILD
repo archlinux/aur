@@ -10,7 +10,7 @@ arch=(any)
 url="https://github.com/beardypig/pymp4"
 license=('Apache') #2.0
 depends=(python "python-construct<2.9")
-makedepends=(python-setuptools)
+makedepends=(git python-setuptools)
 checkdepends=(python-pytest python-wheel)
 source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)
 md5sums=('SKIP')

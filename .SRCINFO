@@ -7,6 +7,7 @@ pkgbase = python-pymp4
 	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-wheel
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-construct<2.9
