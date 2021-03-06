@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cobang
-pkgver=0.6.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A QR code scanner desktop app for Linux"
 arch=('any')
 url="https://github.com/hongquan/CoBang"
 license=('GPL3')
-depends=('gst-python' 'python-gobject' 'gst-plugin-gtk' 'libnm'
+depends=('gst-python' 'python-gobject' 'gst-plugin-gtk' 'gst-plugins-good' 'libnm'
          'python-pillow' 'python-logbook' 'python-single-version' 'zbar'
          'python-kiss-headers')
-makedepends=('meson' 'gobject-introspection' 'python-setuptools' 'python-babel-glade')
-#checkdepends=('apstream-util')
+makedepends=('meson' 'gobject-introspection')
+#checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1fc5e99897c5cfae3353a05d34eb871e584a284e2abec9a80735726076bc5c6c')
+sha256sums=('0bab1d3a89cd3f0ac1ed8948ae358385adc4ad7b716d38cecdf6ace9895a5dc8')
 
 build() {
 	arch-meson CoBang-$pkgver build
@@ -24,12 +24,5 @@ build() {
 #}
 
 package() {
-	export PYTHONHASHSEED=0
 	DESTDIR="$pkgdir" meson install -C build
-
-	cd CoBang-$pkgver
-	for l in fil id it lo ms my nl th vi; do # kh missing
-		install -Dm644 "po/$l/LC_MESSAGES/$pkgname.mo" -t \
-			"$pkgdir/usr/share/locale/$l/LC_MESSAGES"
-	done
 }
