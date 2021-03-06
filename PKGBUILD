@@ -51,4 +51,3 @@ package() {
   install -Dm644 README "$pkgdir"/usr/share/doc/alephone/README
   install -m644 docs/*.html "$pkgdir"/usr/share/doc/alephone
 }
-
