@@ -33,7 +33,7 @@ package() {
 	 cp -rv * "$pkgdir/usr/share/sukeban/"
 	 mkdir -p "$pkgdir/usr/bin/"
 	 echo "#!/bin/sh" > "$pkgdir/usr/bin/sukeban"
-	 echo "yirl-loader --default-tcc-path --binary-root-path /usr/share/yirl/ -d /usr/share/sukeban/ -L" >> "$pkgdir/usr/bin/sukeban"
+	 echo "yirl-loader --binary-root-path /usr/share/yirl/ -d /usr/share/sukeban/ -L" >> "$pkgdir/usr/bin/sukeban"
 	 chmod +x "$pkgdir/usr/bin/sukeban"
 	 mkdir -p "$pkgdir/usr/share/applications"
 	 cp sukeban.desktop "$pkgdir/usr/share/applications/"
