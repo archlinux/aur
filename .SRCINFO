@@ -1,0 +1,19 @@
+pkgbase = python-construct-288
+	pkgdesc = A powerful declarative parser/builder for binary data
+	pkgver = 2.8.8
+	pkgrel = 1
+	url = https://construct.readthedocs.org/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-numpy
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-construct=2.8.8-1
+	conflicts = python-construct
+	source = python-construct-288-2.8.8.tar.gz::https://github.com/construct/construct/archive/v2.8.8.tar.gz
+	sha512sums = 6c6e695f677d6eec11668131bc248d4a6bc1a9efca0a5cd5519212bf9ab5c1944153be95ae99070ccb96a52aa24db2c3ca123d71afccc875b1965fbe0884177e
+
+pkgname = python-construct-288
+
