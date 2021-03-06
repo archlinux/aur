@@ -2,12 +2,12 @@
 pkgname=python-simpleaudio
 _name=${pkgname#python-}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple audio playback Python extension"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/hamiltron/py-simple-audio"
 license=('custom')
-depends=('python')
+depends=('python' 'alsa-lib')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('691c88649243544db717e7edf6a9831df112104e1aefb5f6038a5d071e8cf41d')
