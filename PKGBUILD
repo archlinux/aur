@@ -1,36 +1,31 @@
+# Maintainer: lmartinez-mirror
 # Contributor: Aaron Griffin <aaron@archlinux.org>
-# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
-
-pkgname=vim-a
-pkgver=2.18
-_scriptid=7218
-_docid=6347
-pkgrel=10
-pkgdesc="alternate files in vim quickly (.c -> .h etc)"
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+pkgname=vim-a-git
+pkgver=2.18.r88.gdca99f8
+pkgrel=1
+pkgdesc="vim plugin for switching between header and source files quickly"
 arch=('any')
-url="http://www.vim.org/scripts/script.php?script_id=31"
+# Uses nacitar's fork, which incorporates several bug fixes and pull requests
+url="https://github.com/nacitar/a.vim"
 license=('custom')
-depends=(vim)
+depends=('vim-plugin-runtime')
+makedepends=('git')
 groups=('vim-plugins')
-source=(https://www.vim.org/scripts/download_script.php?src_id=$_scriptid
-        https://www.vim.org/scripts/download_script.php?src_id=$_docid LICENSE)
-md5sums=('6570438244f71e19be1e1b84a5a6c1ec'
-         '0fcef5054b1617fa8217c9bd0bede338'
-         '6f4ce554c0e43d79e1532c7ba0bf63fe')
+replaces=('vim-a')
+source=("$pkgname::git+$url"
+         "LICENSE")
+sha256sums=('SKIP'
+           'fa5cd5adcfc6a34910fc9f580b7d9a31b1c7ff958268c24f58fb0e9664c60246')
 
-build() {
-	cd ${srcdir}
-
-	mv download_script.php?src_id=$_scriptid a.vim
-	mv download_script.php?src_id=$_docid alternate.txt
+pkgver()  {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
-	cd ${srcdir}
-
-	installpath="${pkgdir}/usr/share/vim/vimfiles"
-
-	install -D -m644 a.vim $installpath/plugin/a.vim
-	install -D -m644 alternate.txt $installpath/doc/alternate.txt
-	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "$pkgname"
+  install -Dm 644 plugin/a.vim "$pkgdir/usr/share/vim/vimfiles/plugin/a.vim"
+  install -Dm 644 doc/alternate.txt "$pkgdir/usr/share/vim/vimfiles/doc/alternate.txt"
+  install -Dm 644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
