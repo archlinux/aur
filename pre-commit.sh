@@ -18,7 +18,7 @@ if [ -n "$(git diff PKGBUILD | grep '^+md5sums')" ]; then
 fi
 
 # Generate the .SRCINFO file based on the PKGBUILD file
-mksrcinfo
+makepkg --printsrcinfo > .SRCINFO
 
 # Check if the .SRCINFO file was created/changed
 if [ -n "$(git status --short | grep ' .SRCINFO$')" ]; then
