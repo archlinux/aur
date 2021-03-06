@@ -1,7 +1,7 @@
 pkgbase = sodalite
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
 	pkgver = 0.19.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/hnicke/sodalite
 	arch = any
 	license = GPL
