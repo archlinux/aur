@@ -1,6 +1,6 @@
 pkgbase = libjpeg-xl
 	pkgdesc = JPEG XL image format reference implementation
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = libjpeg-xl
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = highway
-	source = git+https://gitlab.com/wg1/jpeg-xl.git#tag=v0.3.2
+	source = git+https://gitlab.com/wg1/jpeg-xl.git#tag=v0.3.3
 	source = git+https://github.com/google/brotli.git
 	source = git+https://github.com/lvandeve/lodepng.git
 	source = git+https://github.com/mm2/Little-CMS.git
@@ -49,14 +49,17 @@ pkgbase = libjpeg-xl
 
 pkgname = libjpeg-xl
 	depends = brotli
-	optdepends = gdk-pixbuf2: for gdk-pixbuf plugin
+	optdepends = gdk-pixbuf2: for gdk-pixbuf loader
 	optdepends = giflib: for CLI tools
 	optdepends = gimp: for gimp plugin
 	optdepends = libjpeg-turbo: for CLI tools
 	optdepends = libpng: for CLI tools
 	optdepends = openexr: for CLI tools
+	provides = libjxl
+	provides = libjxl.so
 
 pkgname = libjpeg-xl-doc
 	pkgdesc = JPEG XL image format reference implementation (documentation)
 	arch = any
+	provides = libjxl-doc
 
