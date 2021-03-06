@@ -1,8 +1,7 @@
 [Trigger]
 Operation = Remove
 Type = File
-Target = /usr/share/memtest86-efi/bootia32.efi
-Target = /usr/share/memtest86-efi/bootx64.efi
+Target = usr/share/memtest86-efi/*.efi
 
 [Action]
 Description = Removing MemTest86 EFI from ESP

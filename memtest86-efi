@@ -16,8 +16,9 @@ CONFFILE="$CONFDIR/memtest86-efi.conf"
 # shellcheck source=/etc/memtest86-efi/memtest86-efi.conf
 source "$CONFFILE" || exit $CODE_FATAL
 shopt -s extglob
-[[ "$(uname -m)" == "i686" ]]   && ARCH="ia32"
-[[ "$(uname -m)" == "x86_64" ]] && ARCH="x64"
+[[ "$(uname -m)" == "i686" ]]    && ARCH="ia32"
+[[ "$(uname -m)" == "x86_64" ]]  && ARCH="x64"
+[[ "$(uname -m)" == "aarch64" ]] && ARCH="aa64"
 
 warn() {
 	echo -e "${CB}${CE}This script is unofficial, written by an AUR (Arch User Repository) user. Use it at YOUR OWN RISK.${CR}"
@@ -57,8 +58,8 @@ _common_install() {
 
 	echo -e "MemTest86 is installed into ${CB}$efidir/${CR} directory."
 	mkdir -pv "$efidir"
-	cp -v "$MEMTEST86_PATH/"!(*.efi) "$efidir/" # Move files in memtest ESP directory
-	cp -v "$MEMTEST86_PATH/boot$ARCH.efi" "$efidir/$efifile" # Copy and rename .efi file
+	cp -rv "$MEMTEST86_PATH/"!(*.efi) "$efidir/" # Move files in memtest ESP directory
+	cp -v  "$MEMTEST86_PATH/boot$ARCH.efi" "$efidir/$efifile" # Copy and rename .efi file
 }
 
 _write_grub_cfg() {
@@ -195,7 +196,7 @@ install() {
 	sed -i "s|@CHOICE@|$choice|g"       "$CONFFILE"
 	sed -i "s|install=0|install=1|g"    "$CONFFILE"
 
-	echo -e "\nMemTest86 has been installed in ESP."
+	echo "MemTest86 has been installed in ESP."
 }
 
 update() {
@@ -214,7 +215,7 @@ update() {
 		;;
 	esac
 
-	echo -e "\nMemTest86 has been updated in ESP."
+	echo "MemTest86 has been updated in ESP."
 }
 
 remove() {
@@ -267,7 +268,7 @@ remove() {
 	sed -i "s|$choice|@CHOICE@|g"       "$CONFFILE"
 	sed -i "s|install=1|install=0|g"    "$CONFFILE"
 
-	echo -e "\nMemTest86 has been removed from ESP."
+	echo "MemTest86 has been removed from ESP."
 }
 
 status() {
