@@ -10,7 +10,7 @@ pkgbase = python-pymp4
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	depends = python-construct<2.9
+	depends = python-construct=2.8.8
 	source = pymp4::git+https://github.com/beardypig/pymp4.git#tag=1.2.0
 	md5sums = SKIP
 
