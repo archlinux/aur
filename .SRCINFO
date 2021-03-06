@@ -1,6 +1,6 @@
 pkgbase = devilutionx-hellfire-git
 	pkgdesc = Diablo & Hellfire devolved
-	pkgver = 1.1.0.r978.g5d2af51d
+	pkgver = 1.1.0.r1150.g7368778c
 	pkgrel = 1
 	url = https://github.com/diasurgical/devilutionX
 	arch = i686

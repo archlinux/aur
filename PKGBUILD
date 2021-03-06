@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=devilutionx-hellfire-git
 _pkgname=devilutionX
-pkgver=1.1.0.r978.g5d2af51d
+pkgver=1.1.0.r1150.g7368778c
 pkgrel=1
 pkgdesc="Diablo & Hellfire devolved"
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
