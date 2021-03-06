@@ -2,7 +2,7 @@
 
 pkgname=fineftp-server
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="FineFTP is a minimal FTP server library for Windows and Unix flavors"
 arch=('any')
 url="https://github.com/continental/fineftp-server"
@@ -24,6 +24,7 @@ build() {
 
 package() {
     cd $pkgname-$pkgver
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd _build
     DESTDIR="$pkgdir" make install
 }
