@@ -1,6 +1,6 @@
 pkgbase = python-djvulibre
 	pkgdesc = A set of Python bindings for the DjVuLibre library
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = http://jwilk.net/software/python-djvulibre
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python-djvulibre
 	makedepends = cython
 	depends = djvulibre
 	depends = python
-	source = https://pypi.io/packages/source/p/python-djvulibre/python-djvulibre-0.8.5.tar.gz
-	sha256sums = 8ec85cbb86fa09c02478f0d58cd69cca3a789e2e786851362ba20879dedd14b0
+	source = https://pypi.io/packages/source/p/python-djvulibre/python-djvulibre-0.8.6.tar.gz
+	sha256sums = 3b2eb9aca99a5168d84ddca5dac7886134719cc846604bcff880d224f0ad3a21
 
 pkgname = python-djvulibre
 
