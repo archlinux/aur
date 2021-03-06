@@ -1,4 +1,4 @@
-pkgbase = quicknav-bin
+pkgbase = quicknav
 	pkgdesc = A way to quickly navigate your filesystem from the command line.
 	pkgver = 0.1.0
 	pkgrel = 1
