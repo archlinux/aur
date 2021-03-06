@@ -1,0 +1,19 @@
+post_install() {
+    systemctl --system daemon-reload
+    systemctl --system enable linux-status
+    systemctl --system start linux-status
+}
+
+pre_remove() {
+    systemctl --system stop linux-status.service
+    systemctl --system disable linux-status.service
+    systemctl --system daemon-reload
+}
+
+pre_upgrade() {
+    pre_remove "$1"
+}
+
+post_upgrade() {
+    post_install "$1"
+}
