@@ -1,7 +1,7 @@
  # Maintainer: poncho
 pkgname=kappa-launcher-git
 _pkgname=kappa-launcher
-pkgver=r86.3adcb34
+pkgver=r88.f3d925c
 pkgrel=1
 pkgdesc="Twitch launcher using rofi"
 arch=('any')
