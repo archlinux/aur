@@ -1,27 +1,31 @@
-# Maintainer:
+# Maintainer :
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+
 pkgname=python-simpleaudio
-_name=${pkgname#python-}
 pkgver=1.0.4
-pkgrel=2
-pkgdesc="A simple audio playback Python extension"
+pkgrel=3
+pkgdesc='A simple audio playback Python extension'
 arch=('x86_64')
-url="https://github.com/hamiltron/py-simple-audio"
-license=('custom')
-depends=('python' 'alsa-lib')
+url='https://github.com/hamiltron/py-simple-audio/'
+license=('MIT')
+depends=('alsa-lib' 'python')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('691c88649243544db717e7edf6a9831df112104e1aefb5f6038a5d071e8cf41d')
+source=("https://github.com/hamiltron/py-simple-audio/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('843f208fd9c2f644cfd5c2c6f795259c53846681fb4df662ab3e5cf2ec8aba28')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+    cd "py-simple-audio-${pkgver}"
+    python setup.py build
+}
+
+check() {
+    cd "py-simple-audio-${pkgver}"
+    python setup.py test
 }
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+    cd "py-simple-audio-${pkgver}"
+    PYTHONHASHSEED='0' python setup.py install --root="$pkgdir" --optimize='1' --skip-build
+    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
