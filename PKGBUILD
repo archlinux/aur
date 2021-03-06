@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=SceneSwitcher
 pkgname=obs-advanced-scene-switcher
-pkgver=1.9.1
+pkgver=1.10
 _obsver=26.1.2
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
@@ -21,7 +21,7 @@ source=(
   "fix_python_binary_loading.patch"
 )
 sha256sums=(
-  '0d99d4ca1a4da14e1d1a2181fc197a033314042c0a5697c74fc4c9e42bf00df9'
+  '02d3edd59549a35a0163f207447d1030bfee8b7192acff29886e831f866db01a'
   'bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897'
   'bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd'
 )
