@@ -1,7 +1,7 @@
 pkgbase = alephone
 	pkgdesc = A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software
-	pkgver = 1.2.1_20150620
-	pkgrel = 3
+	pkgver = 1.3.1_20200904
+	pkgrel = 2
 	url = https://alephone.lhowon.org/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = alephone
 	makedepends = boost
 	makedepends = mesa
 	makedepends = icoutils
-	depends = sdl_ttf
-	depends = sdl_image
-	depends = sdl_net
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sdl2_net
 	depends = smpeg
 	depends = libmad
 	depends = glu
@@ -24,10 +24,8 @@ pkgbase = alephone
 	optdepends = alephone-infinity: original data for Marathon Infinity
 	optdepends = alephone-marathon: M1A1 data converted for AlephOne
 	optdepends = alephone-marathon2: original data for Marathon 2: Durandal
-	source = https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20150620/AlephOne-20150620.tar.bz2
-	source = alephone-update-old-ffmpeg-enums.patch
-	sha256sums = c0f360dfb74a6264f95d375103a74000930cf0439ffb0464f915f5379443e133
-	sha256sums = 2c83da1a751e677d8a980e27e3df684943f7b6b883aca5b047a11783232d4324
+	source = https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20200904/AlephOne-20200904.tar.bz2
+	sha256sums = 90227ab6ddac86af8b18eeee22dfc4b66ebe083979f36f709cb7349c6e1d938d
 
 pkgname = alephone
 
