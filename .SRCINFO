@@ -1,0 +1,18 @@
+pkgbase = guarda-appimage
+	pkgdesc = a secure, easy-to-use open source multi-platform cryptocurrency wallet
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://guarda.com/
+	arch = x86_64
+	license = GPLv3
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = guarda-1.0.12.AppImage
+	options = !strip
+	source_x86_64 = guarda-1.0.12.AppImage::https://guarda.com/apps/Guarda-1.0.12.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/guardaco/guarda-android-wallets/master/LICENSE
+	sha256sums_x86_64 = fe8da8d1316a63b469c92ab588fe9e6324173247ff9772e67d9a5ba3ac9edc55
+	sha256sums_x86_64 = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+
+pkgname = guarda-appimage
+
