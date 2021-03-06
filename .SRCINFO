@@ -1,15 +1,15 @@
 pkgbase = trilium-server-bin
 	pkgdesc = A hierarchical note taking application built on modern technologies (server only).
-	pkgver = 0.45.7
+	pkgver = 0.45.10
 	pkgrel = 1
 	url = https://github.com/zadam/trilium
 	arch = x86_64
 	license = AGPL3
 	depends = libxss
 	depends = nss
-	source = https://github.com/zadam/trilium/releases/download/v0.45.7/trilium-linux-x64-server-0.45.7.tar.xz
+	source = https://github.com/zadam/trilium/releases/download/v0.45.10/trilium-linux-x64-server-0.45.10.tar.xz
 	source = trilium-server
-	sha512sums = 29bb544c9ec374925253e52d3302a4ad025d93606521a6610f508975c621ac6abb17df65f1c103fdd071e76def49dcf7333665c06724ecb0a34723c2e3cea0e2
+	sha512sums = 1cba02fc439c3058dbd2f91aef8eb435a709172b00b7ca3072b98fd0a04b3edf4f8dbc4c28f6c4243bd85b2b821249a354b77bd2c439708cb0d63947da907def
 	sha512sums = 758b923c312ff039a2653d9743e5f3d5bb74f57f83c0fc837a4d17f263437c419d3bd975d86f2067e80dbb579b6599fea428edd3ead47d25b09765cf5f54174c
 
 pkgname = trilium-server-bin
