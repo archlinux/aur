@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Postman Agent
+Comment=The Postman agent overcomes the Cross Object Resource Sharing (CORS) limitations of browsers, and facilitates API request sending from your browser version of Postman.
+Path=/usr/share/postman-agent
+Exec=electron /usr/share/postman-agent %U
+Icon=postman-agent
+Type=Application
+StartupNotify=true
+Categories=Development;Utility;
