@@ -8,7 +8,7 @@ pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
 pkgver=4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -75,7 +75,7 @@ package() {
   install -Dm644 "${srcdir}/lxd.socket" "${pkgdir}/usr/lib/systemd/system/lxd.socket"
 
   # logs
-  install -dm755 "${pkgdir}/var/log/lxd"
+  install -dm700 "${pkgdir}/var/log/lxd"
 
   # documentation
   mkdir -p "${pkgdir}/usr/share/doc/lxd"
