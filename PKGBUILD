@@ -7,14 +7,14 @@
 
 pkgname=doomsday
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 conflicts=('doomsday-bin')
 provides=('assimp')
-depends=('hicolor-icon-theme' 'qt5-x11extras' 'sdl2_mixer' 'fluidsynth' 'lib32-fluidsynth' 'openal' 'libxrandr' 'minizip')
+depends=('hicolor-icon-theme' 'qt5-x11extras' 'sdl2_mixer' 'lib32-fluidsynth' 'openal' 'libxrandr' 'minizip')
 makedepends=('imagemagick' 'cmake' 'xorg-server-devel' 'assimp' 'python')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
