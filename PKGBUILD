@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=neovim-git
-pkgver=0.4.0.r2116.geee0668818
+pkgver=0.4.0.r2972.g3fbff98cf
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=('python2-neovim: for Python 2 plugin support (see :help provider-pyt
             'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
 source=("${pkgname}::git+https://github.com/neovim/neovim.git")
 sha256sums=('SKIP')
-provides=("neovim=${pkgver}")
+provides=("neovim=${pkgver}" 'vim-plugin-runtime')
 conflicts=('neovim')
 install=neovim-git.install
 options=(!strip)
