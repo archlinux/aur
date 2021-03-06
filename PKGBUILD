@@ -8,7 +8,7 @@ url='https://github.com/morganamilo/paru'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JohnnyMorganz/StyLua/releases/download/v$pkgver/stylua-$pkgver-linux.zip")
 arch=('any')
 license=('MPL-2.0')
-conflicts=('stylua')
+conflicts=('stylua-git')
 sha256sums=('aafff74f270c6d2cca0e7d10cd17a754ecb445a927983d1be9cf60085541b475')
 
 package() {
