@@ -1,11 +1,14 @@
+#Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+#Contributor: Mike Swanson
+
 pkgname=woof-git
-pkgver=3.1.0.r32.05aa665
+pkgver=3.1.0.r51.b891f49
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
-depends=('hicolor-icon-theme' 'sdl2' 'sdl2_net' 'sdl2_mixer')
+depends=('hicolor-icon-theme' 'sdl2_net' 'sdl2_mixer' 'sdl2_image')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
