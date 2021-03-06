@@ -1,0 +1,30 @@
+diff --git a/src/Makefile b/src/Makefile
+index 5d39188..369831d 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -19,9 +19,9 @@ clean:
+ 
+ minitab.scm: grammar.scm lalr.scm
+ 	rm -f minitab.scm
+-	if which scheme > /dev/null; then \
+-		echo "Using Chez Scheme to build parser..."; \
+-		scheme grammar.scm > grammar.log; \
++	if which guile > /dev/null; then \
++		echo "Using Guile to build parser..."; \
++		guile grammar.scm > grammar.log; \
+ 	elif which petite > /dev/null; then \
+ 		echo "Using petite to build parser..."; \
+ 		petite grammar.scm > grammar.log; \
+@@ -39,9 +39,9 @@ minitab.scm: grammar.scm lalr.scm
+ 			echo "Using mzscheme (< v4) to build parser..."; \
+ 			mzscheme -f grammar.scm > grammar.log; \
+ 		fi; \
+-	elif which guile > /dev/null; then \
+-		echo "Using guile to build parser..."; \
+-		guile grammar.scm > grammar.log; \
++	elif which scheme > /dev/null; then \
++		echo "Using Chez Scheme to build parser..."; \
++		scheme grammar.scm > grammar.log; \
+ 	else \
+ 		echo "Please install either Chez Scheme, Petite Scheme, Racket, MzScheme, or Guile to build the parser!"; \
+ 		false; \
