@@ -17,7 +17,6 @@ conflicts=('chatterino')
 install=$pkgname.install
 source=("git://github.com/Chatterino/chatterino2"
         "git://github.com/communi/libcommuni"
-        "git://github.com/pajlada/humanize"
         "git://github.com/jiakuan/qBreakpad"
         "git://github.com/mohabouje/WinToast"
         "git://github.com/pajlada/settings"
@@ -27,7 +26,6 @@ source=("git://github.com/Chatterino/chatterino2"
         "git://github.com/Chatterino/qtkeychain"
         "git://github.com/ziocleto/websocketpp")
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -47,7 +45,6 @@ prepare () {
     cd "$srcdir/$_pkgname"
     git submodule init
     git config submodule.libcommuni $srcdir/$_pkgname/lib/libcommuni
-    git config submodule.humanize $srcdir/$_pkgname/lib/humanize
     git config submodule.qBreakpad $srcdir/$_pkgname/lib/qBreakpad
     git config submodule.WinToast $srcdir/$_pkgname/lib/WinToast
     git config submodule.settings $srcdir/$_pkgname/lib/settings
