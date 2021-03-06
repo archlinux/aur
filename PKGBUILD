@@ -7,6 +7,7 @@ pkgdesc="Python library to manipulate PDF page numbers and labels."
 arch=("x86_64")
 url="https://github.com/lovasoa/pagelabels-py"
 license=("GPL3")
+makedepends=("python-setuptools")
 depends=("python" "python-pdfrw")
 provides=("python-pagelabels")
 conflicts=("python-pagelabels")

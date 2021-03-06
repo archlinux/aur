@@ -5,6 +5,7 @@ pkgbase = python-pagelabels
 	url = https://github.com/lovasoa/pagelabels-py
 	arch = x86_64
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pdfrw
 	provides = python-pagelabels
