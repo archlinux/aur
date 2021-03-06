@@ -1,8 +1,12 @@
 post_install() {
-  systemctl enable --now whoogle
+    systemctl enable --now whoogle
+    echo ""
+    echo "Enabled the Whoogle systemd service."
+    echo "Visit localhost:5000 to start searching!"
+    echo ""
 }
 
 post_upgrade() {
-  systemctl daemon-reload
-  systemctl restart whoogle
+    systemctl daemon-reload
+    systemctl restart whoogle
 }
