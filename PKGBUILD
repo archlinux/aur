@@ -1,7 +1,7 @@
 pkgname=gnome-shell-extension-hide-activities-git
 _pkgname=${pkgname%-git}
 pkgver=master.r11.2180572
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GNOME Shell extension to hide the Activities button from the status bar"
 arch=('any')
 url="https://github.com/zeten30/HideActivities"
@@ -25,6 +25,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   install -d "$pkgdir/${_extdir}"
-  ls -l
   unzip "*.zip" -d "$pkgdir/${_extdir}"
 }
