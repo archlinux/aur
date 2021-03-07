@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=rio
+Comment=Plan9's Rio Window Manager
+Exec=rio
+Type=XSession
+X-LightDM-DesktopName=rio
+DesktopNames=rio
+Keywords=wm;windowmanager;window;manager;rio;plan9;
