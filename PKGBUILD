@@ -2,14 +2,14 @@
 
 pkgname=elettra
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Encryption utility by Julia Identity"
 arch=(i686 x86_64)
 license=('custom')
-url="http://www.winstonsmith.info/julia/elettra/"
+url="https://www.winstonsmith.info/julia/elettra/"
 depends=('libmcrypt' 'mhash' 'zlib')
 makedepends=('cmake')
-source=(http://www.winstonsmith.info/julia/elettra/elettra-src.tar.gz)
+source=(https://www.winstonsmith.info/julia/elettra/elettra-src.tar.gz)
 md5sums=('8ece5fdfccea33001ac8d4f61080b2fe')
 sha1sums=('f198264d9fc66c9c97cfe70bbe1c592b710f9e73')
 
