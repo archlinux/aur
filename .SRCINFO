@@ -1,6 +1,6 @@
 pkgbase = python-weblate_schemas
 	pkgdesc = Schemas used in Weblate
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/WeblateOrg/weblate_schemas
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-weblate_schemas
 	makedepends = python-setuptools
 	depends = python
 	depends = python-jsonschema
-	source = https://github.com/WeblateOrg/weblate_schemas/archive/0.5.tar.gz
-	sha256sums = bf5a610a7d6498bb76b29b9690c3dc69d659780c167e40f7ba2beedec4afcef1
+	source = https://github.com/WeblateOrg/weblate_schemas/archive/0.6.tar.gz
+	sha256sums = bcc78efc57bc128c7aa48de0db1022ef84bcd8ab74ca960ddf2327fdfe302078
 
 pkgname = python-weblate_schemas
 
