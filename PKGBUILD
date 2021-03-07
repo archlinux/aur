@@ -5,7 +5,7 @@
 
 _pkgname=lab
 pkgname=$_pkgname-git
-pkgver=0.18.0.r1.gb7be1c1
+pkgver=0.20.0.r37.g3ffb5d9
 _branch=master
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab (git $_branch branch)"
@@ -41,6 +41,7 @@ build () {
         .
     ./lab completion bash > completion.bash
     ./lab completion zsh > completion.zsh
+    ./lab completion fish > completion.fish
 }
 
 package() {
@@ -49,4 +50,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/lab"
     install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_lab"
+    install -Dm644 completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/lab.fish"
 }
