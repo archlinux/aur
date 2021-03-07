@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-oesenc-git
-pkgver=4.0.5.r117.ga6e904c
+pkgver=4.0.5.r229.g5594ae3
 pkgrel=1
 pkgdesc="O-charts.org plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ depends=('opencpn')
 conflicts=('opencpn-plugin-oesenc')
 makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/oesenc.html"
-source=("$pkgname::git+https://github.com/bdbcat/oesenc_pi.git" "CMakeLists.patch")
+source=("$pkgname::git+https://github.com/bdbcat/oesenc_pi.git" "GetArch.cmake.patch")
 sha1sums=('SKIP'
-          'ef99cd55434a26699a6a35a78bbcd357719ac430')
+          '4610b7215572c45ad0f8e696a1920053bdee32ad')
 
 pkgver() {
   cd $pkgname
@@ -23,16 +23,15 @@ pkgver() {
 
 build() {
   cd $pkgname
-  patch --strip=1 --binary -i $srcdir/CMakeLists.patch
+  patch --strip=1 --binary -i $srcdir/GetArch.cmake.patch
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
-  make
+  make pkg
 }
 
 package() {
   cd "$pkgname/build"
   DESTDIR="$pkgdir" make install
-  mkdir -p $pkgdir/etc/udev/rules.d
-  install -m 644 $srcdir/$pkgname/buildlinux/oeserverd/98-sglock.rules $pkgdir/etc/udev/rules.d/
+  mv $pkgdir/usr/etc $pkgdir/
 }

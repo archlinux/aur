@@ -1,0 +1,16 @@
+diff --git a/cmake/GetArch.cmake b/cmake/GetArch.cmake
+index 0a5d7b1..97a8f9a 100644
+--- a/cmake/GetArch.cmake
++++ b/cmake/GetArch.cmake
+@@ -30,6 +30,11 @@ function (GetArch)
+         set(ARCH "aarch64")
+       endif ()
+     endif ()
++    if (EXISTS /etc/arch-release)
++      if (ARCH STREQUAL "arm64")
++        set(ARCH "aarch64")
++      endif ()
++    endif ()
+   else (NOT WIN32)
+     # Should really be i386 since we are on win32. However, it's x86_64 for now,
+     # see #2027
