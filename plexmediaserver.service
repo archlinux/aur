@@ -1,6 +1,6 @@
 [Unit]
 Description=Plex Media Server
-After=network.target
+After=network.target network-online.target
 
 [Service]
 # In this file, set LANG and LC_ALL to en_US.UTF-8 on non-English systems to avoid mystery crashes.
