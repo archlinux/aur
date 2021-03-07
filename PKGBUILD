@@ -2,8 +2,8 @@
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-pg8000
-pkgver=1.17.0
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
@@ -12,11 +12,9 @@ makedepends=(python-setuptools)
 checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp)
-source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc}
-        scram.diff)
-sha256sums=('14198c5afeb289106e40ee6e5e4c0529c5369939f6ca588a028b371a75fe20dd'
-            'SKIP'
-            '71cccb7b33863dc94f93251b8f7cbff93e9505e120e7b9213c4ede2feb4a8e1c')
+source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc})
+sha256sums=('35baf2c8bf5445e85f516449474b547dbbd0e08c0baa3a6b20aa355a92eb72da'
+            'SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
@@ -27,9 +25,6 @@ prepare() {
   # Remove upper bounds of dependencies
   sed --in-place=.orig -r 's#,?<[0-9.]+,?##;s#==([0-9.]+)#>=\1#' setup.py
   diff -u setup.py{.orig,} || true
-
-  # Partial backport of https://github.com/tlocke/pg8000/commit/18eee18f7525bf3026339d206790d4d5843cf055
-  patch -Np1 -i ../scram.diff
 }
 
 build() {
