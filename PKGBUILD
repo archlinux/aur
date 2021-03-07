@@ -3,7 +3,7 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gmrun
-pkgver=1.0w
+pkgver=1.1w
 pkgrel=1
 pkgdesc="A simple program which provides a run program window"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/wdlkmpx/gmrun"
 license=('GPL')
 depends=('gtk3' 'popt')
 source=($pkgname-$pkgver.tar.gz::https://github.com/wdlkmpx/gmrun/archive/$pkgver.tar.gz)
-md5sums=('e2f776e412b0dc17f7f5b5c2e595bda1')
+md5sums=('fc2e7535dda6b3d7455bfea49329fa13')
 backup=('etc/gmrunrc')
 
 build() {
