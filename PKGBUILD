@@ -13,7 +13,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=('discord-rpc-extension')
-conflicts=('discord-rpc-extension-bin' 'discord-rpc-extension-no-tray-git' 'discord-rpc-extension-no-tray-git')
+conflicts=('discord-rpc-extension-bin' 'discord-rpc-extension-git' 'discord-rpc-extension-no-tray-git')
 replaces=()
 backup=()
 options=()
@@ -25,5 +25,6 @@ md5sums=('ba0fc2de6b212bc7a0ec15140869d035')
 validpgpkeys=()
 
 package() {
-	cp "$srcdir/server_linux_no_tray_debug" "$pkgdir/discord-rpc-extension"
+	install -Dm755 "$srcdir/server_linux_no_tray_debug" "$pkgdir/usr/bin/discord-rpc-extension"
 }
+
