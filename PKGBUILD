@@ -4,7 +4,7 @@
 pkgname=victoriametrics
 _capname=VictoriaMetrics
 pkgver=1.55.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64')
 url="https://victoriametrics.github.io"
@@ -40,5 +40,5 @@ check() {
 package() {
   install -Dm 755 "${srcdir}/${_capname}-${pkgver}"/bin/victoria-metrics -t "${pkgdir}"/usr/bin/
   install -Dm 644 victoriametrics.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 victoriametrics.default -t "${pkgdir}"/etc/default/victoriametrics
+  install -Dm 644 victoriametrics.default "${pkgdir}"/etc/default/victoriametrics
 }

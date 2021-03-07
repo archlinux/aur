@@ -1,7 +1,7 @@
 pkgbase = victoriametrics
 	pkgdesc = Fast, cost-effective and scalable time series database
 	pkgver = 1.55.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://victoriametrics.github.io
 	arch = x86_64
 	license = Apache
