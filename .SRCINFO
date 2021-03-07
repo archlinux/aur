@@ -8,7 +8,7 @@ pkgbase = kelpdot-bin
 	provides = kelpdot
 	options = strip
 	source = https://github.com/Woomy4680-exe/kelp/releases/download/2.1.0/kelpdot-aur.tar.gz
-	sha256sums = e4a65e476c0b8c3fac5dcaa3e8d94bb54efb0fef7c8d79ab9e4c7f66b4a33825
+	sha256sums = daaae75a9a60258ce22af113272b43369e172ad006e69274f3c331a30244a381
 
 pkgname = kelpdot-bin
 
