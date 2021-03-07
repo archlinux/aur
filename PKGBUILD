@@ -2,18 +2,30 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=2.2.3.r0.gb3f42a4
+pkgver=2.4.0.r0.g5e31bef
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
-depends=('clutter-gtk' 'clutter-gst' 'xplayer-plparser-git'
+depends=(
+    'clutter-gtk' 'clutter-gst' 'xplayer-plparser-git'
     'desktop-file-utils' 'iso-codes' 'yelp-xsl'
     'libpeas' 'gsettings-desktop-schemas' 'dbus-glib'
-    'python2-gobject' 'gst-plugins-base' 'gst-plugins-good'
-    'xapps')
-makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala')
-optdepends=('gst-libav: Extra media codec support')
+    'python-gobject' 'gst-plugins-base' 'gst-plugins-good'
+    'xapps'
+)
+makedepends=(
+    'git'
+    'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala' 'python-xdg'
+    'python-pylint' 'lirc' 'zeitgeist' 'grilo'
+)
+optdepends=(
+    'gst-libav: Extra media codec support'
+    'python2-xdg: Subtitle downloader plugin'
+    'lirc: Infrared remote control plugin'
+    'zeitgeist: Zeitgeist interface plugin'
+    'grilo: Grilo plugins'
+)
 provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/xplayer'
@@ -40,4 +52,3 @@ package(){
     cd ${srcdir}/${pkgname}
     make DESTDIR="$pkgdir/" install
 }
-
