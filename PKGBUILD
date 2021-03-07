@@ -2,8 +2,8 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-preshed
 _origpkgname=preshed
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.5
+pkgrel=1
 pkgdesc="Cython hash table that trusts the keys are pre-hashed"
 arch=("x86_64")
 url="https://github.com/explosion/preshed"
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python" "python-cymem" "python-murmurhash")
 makedepends=("cython" "python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/preshed/archive/v$pkgver.tar.gz")
-md5sums=("8a08bfdfecf33985f799e3aac102b14f")
+md5sums=('e67a9275b76e3633130a17b504a253e9')
 
 package() {
     cd "$_origpkgname-$pkgver"
