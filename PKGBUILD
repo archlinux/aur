@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/TheDarkBug/${pkgname/-git/}"
 license=('GPL3')
 makedepends=("gcc")
-source=("$pkgname"::'git+https://github.com/TheDarkBug/${pkgname/-git/}.git')
+source=("$pkgname"::'git+https://github.com/TheDarkBug/uwufetch.git')
 sha256sums=("SKIP")
 
 pkgver() {
