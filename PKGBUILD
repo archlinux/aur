@@ -2,11 +2,11 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname='vdr-skindesigner'
-pkgver=1.2.8.5
+pkgver=1.2.14
 _vdrapi=2.4.6
 pkgrel=2
 pkgdesc="Highly customizable native true color skin for the Video Disc Recorder"
-url="https://projects.vdr-developer.org/projects/plg-skindesigner"
+url="https://gitlab.com/kamel5/skindesigner"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('git' 'librsvg' 'ttf-opensans' 'unzip' "vdr-api=${_vdrapi}" 'wget')
@@ -15,13 +15,13 @@ optdepends=('vdr-scraper2vdr: To display scraped images in various EPG views (re
 conflicts=(skindesigner-{blackhole,holo,metrixhd,nopacity,shady,shady_kiss,skinelchi,tryouts})
 replaces=(skindesigner-{blackhole,holo,metrixhd,nopacity,shady,shady_kiss,skinelchi,tryouts})
 _plugname=${pkgname//vdr-/}
-source=("http://projects.vdr-developer.org/git/vdr-plugin-skindesigner.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2"
+source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/kamel5/skindesigner/-/archive/$pkgver/skindesigner-$pkgver.tar.bz2"
         '99-skindesigner.conf'
         "50-$_plugname.conf")
 install="$pkgname.install"
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 options=('!emptydirs')
-sha256sums=('947065141abc73f31c2cb79d49753c78f41c26079f1e602863c9488f7a99f221'
+sha256sums=('151bff9c489edb900769abad299ca50c1778cb9e3b2c71858142a26b6b50c4d7'
             '25c1359cb6c61c3e7ebd6738fce6c21fa21f62ea4f274a522c30015210c3f4e5'
             'dcd2381d49d79bbfbf9cd2a7bdd5ec24c1fc2c00b4e8e58b68c9afc874f6650e')
 
@@ -31,13 +31,13 @@ sha256sums=('947065141abc73f31c2cb79d49753c78f41c26079f1e602863c9488f7a99f221'
 #}
 
 build() {
-  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
+  cd "${srcdir}/$_plugname-$pkgver"
 #  export DEFINES="-D__STL_CONFIG_H"
   make
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
+  cd "${srcdir}/$_plugname-$pkgver"
   make DESTDIR="$pkgdir" PREFIX='/usr' install
 
   mkdir -p "$pkgdir/var/lib/vdr/plugins/skindesigner/"
