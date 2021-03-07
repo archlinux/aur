@@ -16,7 +16,12 @@ options=(!emptydirs)
 source=('git+https://github.com/achiku/jungle.git')
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-  cd "$srcdir/jungle"
+  cd "$srcdir/${pkgname%-git}"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
