@@ -1,5 +1,5 @@
 pkgbase = python-flask-gssapi
-	pkgdesc = HTTP Negotiate (GSSAPI) authentication for Flask
+	pkgdesc = GSSAPI (HTTP Negotiate) authentication for Flask
 	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/cour4g3/flask-gssapi
