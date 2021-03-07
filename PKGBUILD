@@ -1,3 +1,4 @@
+# Maintainer: thisischrys <thisischrys+aur at gmail dot com>
 # Maintainer: Nitroretro <nitroretro@protonmail.com>
 
 # Based on the `minecraft-server` AUR package by:
