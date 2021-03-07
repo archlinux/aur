@@ -9,6 +9,7 @@ pkgbase = discord-rpc-extension-no-tray-bin
 	conflicts = discord-rpc-extension-bin
 	conflicts = discord-rpc-extension-git
 	conflicts = discord-rpc-extension-no-tray-git
+	options = !strip
 	source = discord-rpc-extension-no-tray-bin-0.1.2.zip::https://github.com/lolamtisch/Discord-RPC-Extension/releases/download/0.1.2/linux_no_tray.zip
 	sha256sums = 440ddc7545f1075af63c08115495d5c39c01611172af0455f8f0c9537e300ccd
 
