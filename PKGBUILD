@@ -2,7 +2,7 @@
 
 pkgname=whoogle-git
 pkgver=0.3.1_r247.ge912b8f
-pkgrel=3
+pkgrel=4
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -22,11 +22,14 @@ pkgver() {
 }
 
 build() {
+  # Following official instructions
   cd whoogle-search
   python3 -m venv venv
   source venv/bin/activate
   pip install -r requirements.txt
   
+  # Cleanup unsed
+  rm -r .git .github docs test .dockerignore .gitignore .replit .travis.yml app.json docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
 }
 
 package() {
