@@ -1,23 +1,33 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=3.14.4.1401
+pkgver=3.14.5.1404
+_rls_tag=v3.14.5
 pkgrel=1
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL')
-depends=('xml-security-c')
-makedepends=('cmake' 'xsd' 'xxd')
-source=("https://installer.id.ee/media/ubuntu/pool/main/libd/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('b272500cee0ce90ffe804b355adb3ba487ae3ecb6cf683aa8193e8b7e3a5436b')
+depends=('xml-security-c' 'minizip')
+makedepends=('cmake' 'xsd' 'xxd' 'git')
+source=("$pkgname-$pkgver::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=$_rls_tag"
+        "open-eid-cmake::git+https://github.com/open-eid/cmake.git")
+sha256sums=("SKIP" "SKIP")
+validpgpkeys=(
+    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma
+)
 
 prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
     [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
     mkdir "$pkgname-build"
+
+    git submodule init
+    git config submodule.cmake.url $srcdir/open-eid-cmake
+    git submodule update
 }
 
 build() {
-    cd "$pkgname-build"
+    cd "$srcdir/$pkgname-$pkgver/$pkgname-build"
     export BUILD_NUMBER=${pkgver##*.}
     cmake .. -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
              -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
@@ -25,15 +35,16 @@ build() {
              -DCMAKE_INSTALL_PREFIX="/usr" \
              -DCMAKE_INSTALL_LIBDIR="lib" \
              -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
-             -DSWIG_EXECUTABLE="" \
-             -DBoost_INCLUDE_DIR="" \
-             -DMINIZIP_INCLUDE_DIR="" \
-             -DPODOFO_INCLUDE_DIR="" \
-             -DLIBDIGIDOC_INCLUDE_DIR=""
+             -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=TRUE \
+             -DCMAKE_DISABLE_FIND_PACKAGE_LibDigiDoc=TRUE \
+             -DCMAKE_DISABLE_FIND_PACKAGE_PoDoFo=TRUE \
+             -DCMAKE_DISABLE_FIND_PACKAGE_SWIG=TRUE \
+             -DCMAKE_DISABLE_FIND_PACKAGE_Boost=TRUE \
+             -DCMAKE_DISABLE_FIND_PACKAGE_JNI=TRUE
     make
 }
 
 package() {
-    cd "$pkgname-build"
+    cd "$srcdir/$pkgname-$pkgver/$pkgname-build"
     make DESTDIR="$pkgdir/" install
 }
