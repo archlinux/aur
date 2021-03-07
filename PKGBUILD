@@ -26,7 +26,6 @@ package() {
 cd "${srcdir}"
 
 # install licence
-#install -m644 -D rhel6/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 install -m644 -D rhel7-sled12/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 # hack needed to register advance features 
