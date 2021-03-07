@@ -1,5 +1,5 @@
 pkgbase = saluto-lightdm-theme-dwm
-	pkgdesc = Saluto: Litarvan LightDM Theme Fork, with added support for DWM
+	pkgdesc = Saluto: Litarvan LightDM Theme Fork, with added support for DWM and 9wm
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/Demonstrandum/Saluto
@@ -13,15 +13,17 @@ pkgbase = saluto-lightdm-theme-dwm
 	conflicts = saluto-lightdm-theme
 	conflicts = saluto-lightdm-theme-git
 	source = git+https://github.com/Demonstrandum/Saluto
+	source = dwm-9wm.diff
 	source = dwm.desktop
-	source = dwm-lightdm.diff
-	source = dwm-vue.diff
+	source = 9wm.desktop
 	source = dwm.png
+	source = 9wm.png
 	md5sums = SKIP
+	md5sums = 14d9664d047ee55374b9cdf3aaba4e64
 	md5sums = 4b077e28d1dcde5ead555d6f433da37b
-	md5sums = 6db4d11c5632c5b41bad0ac1b3b581b1
-	md5sums = c7a7e64586bebde20886cc731bf2d38c
+	md5sums = 07949190c746cf5227629051ce512338
 	md5sums = 8f007861efc61ced5abf9ee74030afb9
+	md5sums = 25396090b1aa912bb31facb1ab8dc03a
 
 pkgname = saluto-lightdm-theme-dwm
 

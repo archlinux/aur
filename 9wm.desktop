@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=9wm
+Comment=Window Manager based on rio
+Exec=9wm
+Type=XSession
+X-LightDM-DesktopName=9wm
+DesktopNames=9wm
+Keywords=wm;windowmanager;window;manager;rio;

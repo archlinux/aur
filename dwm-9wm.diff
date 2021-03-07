@@ -1,0 +1,61 @@
+# Patch made by Salonia Matteo <saloniamatteo@protonmail.com>
+# Made for saluto-lightdm-theme-dwm
+# Apply to Saluto/src/lightdm.js and to Saluto/src/components/SelectItem.vue
+--- lightdm.js
++++ lightdm.js
+@@ -19,7 +19,7 @@ if (window.lightdm_debug) {
+ 
+     window.lightdm = {
+         is_authenticated: false,
+-        hostname: 'malorum',
++        hostname: 'arch',
+         authentication_user: undefined,
+         default_session: 'plasma-shell',
+         can_suspend: true,
+@@ -47,22 +47,23 @@ if (window.lightdm_debug) {
+             {
+                 name: 'xmonad',
+                 key: 'xmonad'
+-            }
++            },
++            {
++		name: 'dwm',
++		key: 'dwm'
++	    },
++            {
++		name: '9wm',
++		key: '9wm'
++	    }
+         ],
+         users: [{
+-            display_name: 'Marcus Tullius Cicero',
+-            username: 'cicero',
+-            image: 'cicero'
+-        }, {
+-            display_name: 'John Doe',
+-            username: 'johnd'
++            display_name: 'User',
++            username: 'username'
+         }],
+         languages: [{
+             name: 'American English',
+             code: 'en_US.utf8'
+-        }, {
+-            name: 'Français',
+-            code: 'fr_FR.utf8'
+         }],
+         language: 'American English',
+         start_authentication: (username) => {
+--- components/SelectItem.vue
++++ components/SelectItem.vue
+@@ -72,6 +72,10 @@ export default {
+                     icon = "liri";
+                 } else if (key.indexOf("i3") > -1) {
+                     icon = "i3";
++                } else if (key.indexOf("dwm") > -1) {
++                    icon = "dwm";
++                } else if (key.indexOf("9wm") > -1) {
++                    icon = "9wm";
+                 } else if (key.indexOf("xmonad") > -1) {
+                     icon = "xmonad";
+                 } else if (key.indexOf("budgie") > -1 || key.indexOf("solus") > -1) {
