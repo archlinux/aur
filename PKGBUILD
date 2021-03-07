@@ -6,7 +6,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.5.2_7.8.1.737-9"
+_ver="1.5.2_7.8.1.737-10"
 _minecraft_ver_latest="1.15.2"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
@@ -49,7 +49,7 @@ noextract=("forge-${_pkgver}.jar")
 sha512sums=('65493fb60089b3b9ffafb4f9ff67b0e5a13e762eaa003c153e0350902c458d1aa2aaaa04dbcc019c67be5ce00bc754de5202a9b3a9c24abf0c5a874b729e39e4'
             '1f2be6a311f879c1f2ab0dd90ed779860ce67e690ef80629fe4a97a8b561bf77ae07d3916baf1c02dc9e682f43420dd8263b0b5cb4d1ab0a9c31e10b70aa8e52'
             '7aa5da0281ca6d3b17324a7395f84e67dc6254f02a550e7c8eb279ae7efb6bd33cb962a8e449fa9709dce15b142ba8305d82d33bfd3bb5b69f16aeaa70ac875d'
-            'fa7e2fe7a718cd027bbd556485625bc75e3ea388ead21675ae3cc19ed4da2b3d7e402cd31bcfc7e097928fd263809c19109e3f2b277bb115cf499ee717320dc7'
+            'bf05444d97b595c8357c88cefb2b9275e0fd5ac7fa3310b4ce2cd33833c90c5c8b1e77044052841ebb58d740ee4fca3720fe41c7c292c320306cfaf93c1ffd64'
             '6784f4de15e6c1d05dbf6078b6611a152932daa687653c4d0dc0330cff8ecbf89f169a4f8913bef3ad16fe098afd68262f38ee0b969fd9363e4c2ef59ad6462e'
             '0e235e2408b41ea6f1e5d2fc1fd879678b878c76547252130659d044f10be233493455d3e8c6d205d23d4e0faf007dacc5eba4f720d658228bf2d458b97be77e'
             '8b1af5bf172ce6558da9f388227c73557fe07c25e706d003b8bca677f6f72d3e38b12a7c34eefca2c3ddfdd554cfa06cbc1b6e8537b3e1dcc2322c2212bddc32'
