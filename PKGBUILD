@@ -3,7 +3,7 @@
 pkgname='python-apprise'
 _name=${pkgname#python-}
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
 url="https://github.com/caronc/apprise"
@@ -31,6 +31,7 @@ sha256sums=('156e60b77e72a1756bdbe8621810c9ff98c515f2299f667db0337c69ca0ee052')
 
 package() {
   cd apprise-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
