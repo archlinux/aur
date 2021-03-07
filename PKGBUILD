@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A cross-platform soundboard"
 arch=('any')
