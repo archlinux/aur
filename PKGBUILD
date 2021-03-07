@@ -68,7 +68,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.11.3
-pkgrel=2
+pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -78,7 +78,7 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.11-ck${_ckpatchversion}"
-_gcc_more_v=20210306
+_gcc_more_v=20210307
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -93,7 +93,7 @@ validpgpkeys=(
 b2sums=('9451bda48221ea58096682a4ce107194580a6fcaccb15d62b881c2ba8eddadbd46b010b20e2fa8e723674de0d29dd0a12749c9245db39b521659bc6cf2f270c5'
         'SKIP'
         'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
-        '378c0b006aac679456f285b1e3c84eeed5480cb1560c8fbd08b0b0f83f02ae7c6b32c3ebb807f0336b77951f69df486ae2d8ef5a2308b4712002f5f6d2169f9e'
+        'd1ac1359b60731e34538b90cf174340f00130a514123ca06171484f7e93b9185e35a1b73980bb8c54077c6f49117ddbcf59d887104915f2ec29f8c542bdcba59'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         '59c8f4d66eeeb5b3f84b17ab81431804ac9334e97cdbf99ff3dd77803ee3af55908d3d3ba0e957093418a7c5805e423ac78dd398ffb64ba6577aa69bfb9cfbe1')
 
