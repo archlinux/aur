@@ -7,7 +7,8 @@ pkgbase = kelpdot-bin
 	license = MIT
 	provides = kelpdot
 	options = strip
-	source = https://github.com/Woomy4680-exe/kelp/releases/download/2.0.3/kelpdot-2.0.3-x86_64.tar.gz
-	sha256sums = 1bbe4c96976a4864f03c1b47c3d071a4d4080ca940e4726326c7f33645602260
+	source = https://github.com/Woomy4680-exe/kelp/releases/download//kelpdot-aur.tar.gz
+	sha256sums = d3c66ddcf1b698d2587aff25bf0d2a1b14bafb1ed419d4ae450d3715d9662bde
 
 pkgname = kelpdot-bin
+
