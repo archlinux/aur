@@ -6,14 +6,19 @@ pkgrel=1
 pkgdesc="小鹤音形 rime 挂接文件"
 arch=('any')
 url="http://flypy.com/"
-license=('custom')
+license=('unknown')
 depends=('rime-lua-hook')
+optdepends=('ibus-rime: input support'
+            'fcitx-rime: input support'
+            'fcitx5-rime: input support')
 backup=('usr/share/rime-data/flypy_sys.txt'
         'usr/share/rime-data/flypy_top.txt'
         'usr/share/rime-data/flypy_user.txt')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v$pkgver.tar.gz")
-md5sums=('198ddbc055f62136d96e96a4edd8a63d')
-
+source=("$pkgname-$pkgver.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v$pkgver.tar.gz"
+        "$pkgname.install")
+md5sums=('198ddbc055f62136d96e96a4edd8a63d'
+         'c0d624f4fab9d81cab0b77dd205cf598')
+install="$pkgname.install"
 
 package() {
     cd "${srcdir}"/"rime-flypy-${pkgver}"/

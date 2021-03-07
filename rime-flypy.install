@@ -1,0 +1,10 @@
+post_install() {
+    echo -e "Please enable this input scheme through the 'default.custom.yaml' file in the user configuration directory and redeploy rime to take effect. For example:\n"
+    echo -e "\tpatch:"
+    echo -e "\t  schema_list:"
+    echo -e "\t    - schema: flypy"
+}
+
+post_upgrade() {
+    echo -e "Please redeploy rime to take effect."
+}

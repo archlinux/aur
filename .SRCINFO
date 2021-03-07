@@ -3,14 +3,20 @@ pkgbase = rime-flypy
 	pkgver = 10.7.6
 	pkgrel = 1
 	url = http://flypy.com/
+	install = rime-flypy.install
 	arch = any
-	license = custom
+	license = unknown
 	depends = rime-lua-hook
+	optdepends = ibus-rime: input support
+	optdepends = fcitx-rime: input support
+	optdepends = fcitx5-rime: input support
 	backup = usr/share/rime-data/flypy_sys.txt
 	backup = usr/share/rime-data/flypy_top.txt
 	backup = usr/share/rime-data/flypy_user.txt
 	source = rime-flypy-10.7.6.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v10.7.6.tar.gz
+	source = rime-flypy.install
 	md5sums = 198ddbc055f62136d96e96a4edd8a63d
+	md5sums = c0d624f4fab9d81cab0b77dd205cf598
 
 pkgname = rime-flypy
 
