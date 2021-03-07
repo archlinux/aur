@@ -9,8 +9,9 @@ pkgbase = discord-rpc-extension-bin
 	conflicts = discord-rpc-extension-git
 	conflicts = discord-rpc-extension-no-tray-bin
 	conflicts = discord-rpc-extension-no-tray-git
-	source = https://github.com/lolamtisch/Discord-RPC-Extension/releases/download/0.1.2/linux.zip
-	md5sums = 7fc7e8943ca7ab317d57b8b907e18b47
+	options = !strip
+	source = discord-rpc-extension-bin-0.1.2.zip::https://github.com/lolamtisch/Discord-RPC-Extension/releases/download/0.1.2/linux.zip
+	sha256sums = 91db83b55d458c046a3157a6a61a38ed6529914f458f9e93b589034f01647c6b
 
 pkgname = discord-rpc-extension-bin
 
