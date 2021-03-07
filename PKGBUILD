@@ -1,6 +1,6 @@
 # Maintainer: Cyrusmg <aur@kulovany.net>
 pkgname=eobcanka
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="eObcanka software for Czech Citizen Portal"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
@@ -24,5 +24,5 @@ post_install ()
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('287d82c9c256cf09234dcfa5c5b92049')
+md5sums=('9fb0bff180fa0b00a6de4c4b878311d9')
 
