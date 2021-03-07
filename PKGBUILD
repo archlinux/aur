@@ -2,13 +2,13 @@
 
 pkgname=st-syaoran-git
 _dir=st-syaoran
-pkgver=0.8.4.r28.57c0827
+pkgver=0.8.4.r36.f2c9a3b
 pkgrel=1
 pkgdesc="This is my st (suckless/simple terminal) build."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/st-syaoran.git"
 license=('MIT')
-depends=(ttf-liberation)
+depends=(ttf-liberation libxft-bgra-git)
 makedepends=(make ncurses libxext git)
 provides=(st)
 conflicts=(st)

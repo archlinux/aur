@@ -1,6 +1,6 @@
 pkgbase = st-syaoran-git
 	pkgdesc = This is my st (suckless/simple terminal) build.
-	pkgver = 0.8.4.r28.57c0827
+	pkgver = 0.8.4.r36.f2c9a3b
 	pkgrel = 1
 	url = https://gitlab.com/justanoobcoder/st-syaoran.git
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = st-syaoran-git
 	makedepends = libxext
 	makedepends = git
 	depends = ttf-liberation
+	depends = libxft-bgra-git
 	provides = st
 	conflicts = st
 	source = git+https://gitlab.com/justanoobcoder/st-syaoran.git
