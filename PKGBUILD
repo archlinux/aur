@@ -18,7 +18,7 @@ pkgver() {
   echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-sources=(
+source=(
 	"git+https://github.com/Demonstrandum/Saluto"
 	"dwm-9wm-rio.diff"
 	"9wm.desktop"
@@ -39,7 +39,6 @@ md5sums=(
 	'8f007861efc61ced5abf9ee74030afb9' # dwm.png
 	'83ee56f2f1d4bab75bb6c0f13a9f10d9' # rio.png
 )
-
 
 prepare() {
 	# Add logos
