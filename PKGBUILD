@@ -2,26 +2,26 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-tvguideng
-pkgver=0.3.1
+pkgver=0.3.2
 _vdrapi=2.4.6
-pkgrel=3
+pkgrel=1
 pkgdesc="highly customizable 2D EPG viewer plugin."
-url="http://projects.vdr-developer.org/projects/plg-tvguideng"
+url="https://gitlab.com/kamel5/tvguideng"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=("vdr-api=$_vdrapi" 'vdr-skindesigner')
 _plugname=${pkgname//vdr-/}
-source=("http://projects.vdr-developer.org/git/vdr-plugin-$_plugname.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/kamel5/tvguideng/-/archive/$pkgver/tvguideng-$pkgver.tar.bz2")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('f6e6040886ba075e19072a29df6e50d9')
+sha256sums=('3ae296cbeb0328bf11c8f3fa230bf5e786523e2ce6a2f166d2693d50827a13cc')
 
 build() {
-  cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
+  cd "$srcdir/$_plugname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
+  cd "$srcdir/$_plugname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
