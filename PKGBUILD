@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://h30670.www3.hp.com/portal/swdepot/displayProductInfo.do?productNumber=RGS-LR"
 license=('custom:"HP"')
 depends=('lib32-glu' 'dmidecode')
+conflicts=('ZCentral_RB-bin')
 #makedepends=('')
 options=('emptydirs')
 noextract=()
