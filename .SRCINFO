@@ -7,6 +7,7 @@ pkgbase = gnome-shell-screenshot-dbus-emulator
 	license = ISC
 	makedepends = go
 	makedepends = make
+	makedepends = git
 	depends = glibc
 	source = gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz::https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator/releases/download/0.1.0/gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz
 	source = gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz.asc::https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator/releases/download/0.1.0/gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz.asc
