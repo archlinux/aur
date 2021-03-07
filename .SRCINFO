@@ -1,10 +1,10 @@
 pkgbase = gnome-shell-screenshot-dbus-emulator
 	pkgdesc = Gnome Shell Screenshot DBus Emulation.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator
 	arch = x86_64
-	license = ISC
+	license = MIT
 	makedepends = go
 	makedepends = make
 	makedepends = git
