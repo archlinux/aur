@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-extension-hide-activities-git
-	pkgdesc = A simple GNOME Shell extenstion to hide the Activities button from the status bar
+	pkgdesc = A simple GNOME Shell extension to hide the Activities button from the status bar
 	pkgver = master.r11.2180572
 	pkgrel = 1
 	url = https://github.com/zeten30/HideActivities
