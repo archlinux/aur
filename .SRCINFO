@@ -42,7 +42,6 @@ pkgbase = matrix-mirage
 	depends = python-hsluv
 	depends = python-pycryptodome
 	depends = python-simpleaudio
-	conflicts = mirage
 	conflicts = mirage-matrix
 	conflicts = matrix-mirage-git
 	source = git://github.com/mirukana/mirage.git#tag=v0.7.1
