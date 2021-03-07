@@ -47,10 +47,7 @@ _makenconfig=
 #  30. Intel Cooper Lake (MCOOPERLAKE)
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Generic-x86-64-v2 (GENERIC_CPU2) (NEW)
-#  34. Generic-x86-64-v3 (GENERIC_CPU3) (NEW)
-#  35. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
-#  36. Native optimizations autodetected by GCC (MNATIVE) (NEW)
+#  33. Native optimizations autodetected by GCC (MNATIVE) (NEW)
 
 _subarch=
 
@@ -67,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.3
-pkgrel=4
+pkgver=5.11.4
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -90,10 +87,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('9451bda48221ea58096682a4ce107194580a6fcaccb15d62b881c2ba8eddadbd46b010b20e2fa8e723674de0d29dd0a12749c9245db39b521659bc6cf2f270c5'
+b2sums=('6d1cf5f10442c3d7c849f89d27eb92704d1b5c0b449d1ab8b332a373387a0f9cdf971c1ab0d83b3c911aad18c097908bd73c7c478da238da7b6396a434df7816'
         'SKIP'
         'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
-        'db117e652c3b73d50c4a9b7b35faac89ef0d68e1b72d878ffd149d16d1127638b02144f38130ebcbc90a951871477f01f2430b3f42fdba7297f57ab96cc174c0'
+        'e1daf14455f2fda1610be7ef0bcee630c9735ef32b2d879483a312f66490d990afd5179d203ee5d6678127ff358961b9c00292719df041339cdbaa7167da3e87'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         '59c8f4d66eeeb5b3f84b17ab81431804ac9334e97cdbf99ff3dd77803ee3af55908d3d3ba0e957093418a7c5805e423ac78dd398ffb64ba6577aa69bfb9cfbe1')
 
