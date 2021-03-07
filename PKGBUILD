@@ -1,4 +1,4 @@
-# Maintainer: Leon <adigitoleo@protonmail.com>
+# Maintainer: Leon <aur@adigitoleo.dissimulo.com>
 pkgname=python-bytecode-git
 _shortname="${pkgname%-git}"
 pkgver=0.11.0.r22.g7aa2df5
