@@ -13,7 +13,6 @@ depends=('python'
          'python-botocore'
          'python-click')
 makedepends=('git' 'python-setuptools')
-options=(!emptydirs)
 source=('git+https://github.com/achiku/jungle.git')
 md5sums=('SKIP')
 

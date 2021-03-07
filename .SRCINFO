@@ -12,7 +12,6 @@ pkgbase = jungle-git
 	depends = python-boto3
 	depends = python-botocore
 	depends = python-click
-	options = !emptydirs
 	source = git+https://github.com/achiku/jungle.git
 	md5sums = SKIP
 
