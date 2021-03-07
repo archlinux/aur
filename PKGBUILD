@@ -1,7 +1,7 @@
 # Maintainer: Henil <henil2911 + aur at gmail <.> com>
 pkgname=zellij-git
 _pkgname=zellij
-pkgver=r310.4d69c5c
+pkgver=r371.845478f
 _pkgver=0.1
 pkgrel=1
 epoch=
@@ -22,6 +22,7 @@ sha256sums=(SKIP)
 
 build() {
     cd "$srcdir/$_pkgname"
+    bash ./build-all.sh
     cargo build --locked --release --target-dir target
 }
 
