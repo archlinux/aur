@@ -1,6 +1,6 @@
 pkgbase = zstd-cmake
 	pkgdesc = Zstandard - Fast real-time compression algorithm (with cmake files)
-	pkgver = 1.4.8
+	pkgver = 1.4.9
 	pkgrel = 1
 	url = https://www.zstd.net/
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = zstd-cmake
 	depends = zlib
 	depends = xz
 	depends = lz4
-	provides = zstd=1.4.8
-	provides = zstd-static=1.4.8
+	provides = zstd=1.4.9
+	provides = zstd-static=1.4.9
 	conflicts = zstd
 	conflicts = zstd-static
 	conflicts = zstd-git
 	options = staticlibs
-	source = https://github.com/facebook/zstd/releases/download/v1.4.8/zstd-1.4.8.tar.gz
-	sha256sums = 32478297ca1500211008d596276f5367c54198495cf677e9439f4791a4c69f24
+	source = https://github.com/facebook/zstd/releases/download/v1.4.9/zstd-1.4.9.tar.gz
+	sha256sums = 29ac74e19ea28659017361976240c4b5c5c24db3b89338731a6feb97c038d293
 
 pkgname = zstd-cmake
 
