@@ -2,8 +2,8 @@
 
 pkgname=saluto-lightdm-theme-dwm
 _pkgname=Saluto
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.0.r162.df23021
+pkgrel=1
 pkgdesc="Litarvan LightDM Theme Fork, with added support for 9wm, dwm, and rio"
 arch=('any')
 url="https://github.com/Demonstrandum/Saluto"
@@ -51,11 +51,26 @@ prepare() {
 	[ $(which doas) ] && rootcmd=doas || rootcmd=sudo
 
 	# Check if desktop files exist
-	[[ -f "/usr/share/xsessions/dwm.desktop" ]] && printf "dwm desktop file already exists, skipping...\n" || printf "dwm desktop file DOES NOT exist, creating...\n"; $rootcmd mv dwm.desktop /usr/share/xsessions/dwm.desktop
+	if [ -f "/usr/share/xsessions/dwm.desktop" ]; then
+		printf "dwm desktop file already exists, skipping...\n"
+	else
+		printf "dwm desktop file DOES NOT exist, creating...\n"
+		$rootcmd mv dwm.desktop /usr/share/xsessions/dwm.desktop
+	fi
 
-	[[ -f "/usr/share/xsessions/9wm.desktop" ]] && printf "9wm desktop file already exists, skipping...\n" || printf "9wm desktop file DOES NOT exist, creating...\n"; $rootcmd mv 9wm.desktop /usr/share/xsessions/9wm.desktop
+	if [ -f "/usr/share/xsessions/9wm.desktop" ]; then
+		printf "9wm desktop file already exists, skipping...\n"
+	else
+		printf "9wm desktop file DOES NOT exist, creating...\n"
+		$rootcmd mv 9wm.desktop /usr/share/xsessions/9wm.desktop
+	fi
 
-	[[ -f "/usr/share/xsessions/rio.desktop" ]] && printf "rio desktop file already exists, skipping...\n" || printf "rio desktop file DOES NOT exist, creating...\n"; $rootcmd mv rio.desktop /usr/share/xsessions/rio.desktop
+	if [ -f "/usr/share/xsessions/rio.desktop" ]; then
+		printf "rio desktop file already exists, skipping...\n"
+	else
+		printf "rio desktop file DOES NOT exist, creating...\n"
+		$rootcmd mv rio.desktop /usr/share/xsessions/rio.desktop
+	fi
 
 	# Patch files
 	cd "$srcdir/Saluto/src"
@@ -66,8 +81,14 @@ prepare() {
 }
 
 package() {
-	# Install saluto
-	cd "$srcdir/Saluto" && sh install.sh
+
+	cd "$srcdir/Saluto"
+
+	# Fix author's mistake
+	sed -i "s/^cd \.\/dist/cd \.\.\/dist/" install.sh
+
+	# Install Saluto
+	sh install.sh
 
 	# Use doas instead of sudo, if installed
 	[ $(which doas) ] && rootcmd=doas || rootcmd=sudo
