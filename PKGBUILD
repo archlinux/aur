@@ -1,4 +1,6 @@
 # Maintainer: Christoph Brill <aur@christophbrill.de>
+# Contributors:
+# Biswa96 <nathbappai@gmail.com>
 
 pkgbase=cairomm16
 pkgname=(cairomm16 cairomm16-docs)
@@ -10,6 +12,7 @@ arch=(x86_64)
 license=(LGPL MPL)
 depends=(cairo libsigc++3)
 makedepends=(git mm-common)
+checkdepends=(boost fontconfig)
 _commit=9db4b39bfe50e183130b89824a3556da09cd51cb  # tags/v1.16.0^0
 source=("git+https://anongit.freedesktop.org/git/cairomm#commit=$_commit")
 sha256sums=('SKIP')
