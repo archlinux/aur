@@ -2,7 +2,7 @@
 # Maintainer: trippsc2 <46848743+trippsc2@users.noreply.github.com>
 pkgname=alttpr-opentracker
 _reponame=OpenTracker
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='An open-source cross-platform tracking app for A Link to the Past Randomizer.'
 arch=('x86_64')

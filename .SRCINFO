@@ -1,6 +1,6 @@
 pkgbase = alttpr-opentracker
 	pkgdesc = An open-source cross-platform tracking app for A Link to the Past Randomizer.
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/trippsc2/OpenTracker
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = alttpr-opentracker
 	makedepends = gendesk
 	optdepends = qusb2snes-git
 	options = staticlibs
-	source = alttpr-opentracker::git+https://github.com/trippsc2/OpenTracker#tag=1.7.0
+	source = alttpr-opentracker::git+https://github.com/trippsc2/OpenTracker#tag=1.8.0
 	sha256sums = SKIP
 
 pkgname = alttpr-opentracker
