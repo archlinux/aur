@@ -1,16 +1,16 @@
 pkgbase = dijo-bin
 	pkgdesc = Scriptable, curses-based, digital habit tracker
-	pkgver = 0.2.5
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/NerdyPepper/dijo
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
-	provides = dijo=0.2.5
+	provides = dijo=0.2.7
 	conflicts = dijo-git
-	source = dijo-0.2.5-x86_64::https://github.com/NerdyPepper/dijo/releases/download/v0.2.5/dijo-x86_64-linux
-	source = LICENSE-0.2.5::https://raw.githubusercontent.com/NerdyPepper/dijo/v0.2.5/LICENSE
-	sha256sums = eec90e2a136b8be372bb455c310d38035b77f0602a550dea383cc49ac526f2b4
+	source = dijo-0.2.7-x86_64::https://github.com/NerdyPepper/dijo/releases/download/v0.2.7/dijo-x86_64-linux
+	source = LICENSE-0.2.7::https://raw.githubusercontent.com/NerdyPepper/dijo/v0.2.7/LICENSE
+	sha256sums = 319069fde6b430a75ce270cd0d53c08351b0f7abfe2c5d52a9b488927ee09005
 	sha256sums = a5bbba07d9db1df1dcb7b7f9cf4e2de3f82baad797ae644a595d95c7b9a7f1ce
 
 pkgname = dijo-bin
