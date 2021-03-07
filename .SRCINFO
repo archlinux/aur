@@ -1,0 +1,13 @@
+pkgbase = packettracer7
+	pkgdesc = Network design and emulation software for Cisco's Networking Academy instructors and students (version 7.x)
+	pkgver = 7.3.1
+	pkgrel = 1
+	url = https://www.netacad.com/courses/packet-tracer
+	arch = x86_64
+	license = custom
+	depends = qt5-webengine
+	source = local://PacketTracer_731_amd64.deb
+	sha256sums = c39802d15dd61d00ba27fb8c116da45fd8562ab4b49996555ad66b88deace27f
+
+pkgname = packettracer7
+
