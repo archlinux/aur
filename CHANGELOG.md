@@ -1,3 +1,7 @@
+## 11.1.0 (2021-03-07)
+
+Add logic that unregisters old service workers added by Create React App template. Fixes #787
+
 ## 11.0.0 (2021-03-04)
 
 * This release adds support for retrying decryption with a different password for the already downloaded payload.
