@@ -1,12 +1,12 @@
 # Maintainer: piernov <piernov@piernov.org
 
 pkgname=metronome-mod_auth_pam
-pkgver=r4.1f84d9a
+pkgver=r5.c5573e7
 pkgrel=1
 pkgdesc='PAM authentication for Metronome'
 arch=('i686' 'x86_64')
 url='https://code.google.com/p/prosody-modules/wiki/mod_auth_pam'
-depends=('lua51-pam' 'metronome-hg')
+depends=('lua51-pam' 'metronome-git')
 makedepends=('git')
 source=("metronome-mod_auth_pam::git+git://github.com/piernov/prosody-mod_auth_pam.git")
 sha1sums=('SKIP')
