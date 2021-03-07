@@ -1,7 +1,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron9
-pkgver=9.4.3
+pkgver=9.4.4
 _commit=ca82414364002efa665ffa7427e267adf76ed1f3
 _chromiumver=83.0.4103.122
 pkgrel=1
@@ -52,8 +52,7 @@ sha256sums=('SKIP'
             '675fb3d6276cce569a641436465f58d5709d1d4a5f62b7052989479fd4aaea24'
             '50687079426094f2056d1f4806dc30fc8d6bad16190520e57ba087ec5db1d778'
             '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
-            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
-           )
+            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2')
 
 _system_libs=('ffmpeg'
               'flac'
