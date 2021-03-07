@@ -76,19 +76,13 @@ prepare() {
 	cd "$srcdir/Saluto/src"
 	patch -p0 -i dwm-9wm-rio.diff
 
-	# Make sure "node-sass" version 4 is installed
-	npm install "node-sass@^4.0.0"
+	# Make sure node dependencies are installed
+	npm install "node-sass@^4.0.0" "simple-keyboard"
 }
 
 package() {
-
-	cd "$srcdir/Saluto"
-
-	# Fix author's mistake
-	sed -i "s/^cd \.\/dist/cd \.\.\/dist/" install.sh
-
 	# Install Saluto
-	sh install.sh
+	cd "$srcdir/Saluto" && sh install.sh
 
 	# Use doas instead of sudo, if installed
 	[ $(which doas) ] && rootcmd=doas || rootcmd=sudo
