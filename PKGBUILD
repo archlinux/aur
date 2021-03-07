@@ -2,14 +2,21 @@
 
 pkgname=rtl8761b-fw
 pkgver=20200816
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtek bluetooth firmware for RTL8761B based devices"
 arch=('any')
 url="https://github.com/Realtek-OpenSource/android_hardware_realtek"
 license=('unknown')
-source=("https://raw.githubusercontent.com/Realtek-OpenSource/android_hardware_realtek/rtk1395/bt/rtkbt/Firmware/BT/rtl8761b_fw")
-sha512sums=('53f6cac0f001cbcb2fe461d00a8d5f68bdb28a620251954f4c3e5036a61a8aae23b863b31cbaed4233cf4e94b558ccd4ee8f965eeab43101406dc3646dc2be43')
+source=(
+  "https://raw.githubusercontent.com/Realtek-OpenSource/android_hardware_realtek/rtk1395/bt/rtkbt/Firmware/BT/rtl8761b_fw"
+  "https://raw.githubusercontent.com/Realtek-OpenSource/android_hardware_realtek/rtk1395/bt/rtkbt/Firmware/BT/rtl8761b_config"
+)
+sha512sums=(
+  '53f6cac0f001cbcb2fe461d00a8d5f68bdb28a620251954f4c3e5036a61a8aae23b863b31cbaed4233cf4e94b558ccd4ee8f965eeab43101406dc3646dc2be43'
+  '4ce44ea672cc328b0c0c8070355bceba875e4fdbfae05193077b78022c980d1bade01fc7ba96165eca36ad11ffa8dc396b5a9f44a64e2a4f3adc717480b5959b'
+)
 
 package() {
   install -Dm644 rtl8761b_fw "$pkgdir/usr/lib/firmware/rtl_bt/rtl8761b_fw.bin"
+  install -Dm644 rtl8761b_config "$pkgdir/usr/lib/firmware/rtl_bt/rtl8761b_config.bin"
 }
