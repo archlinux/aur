@@ -10,7 +10,7 @@ depends=('python'
          'python-boto3'
          'python-botocore'
          'python-click')
-makedepends=()
+makedepends=('git' 'python-setuptools')
 provides=()
 conflicts=()
 replaces=()
