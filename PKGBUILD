@@ -1,21 +1,21 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com
 # Contributor: serp <serp256 at gmail dot com>
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
-pkgver='5.3.0'
-pkgrel='4'
+pkgver='5.4.0'
+pkgrel='1'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
-depends=('libev' 'ocaml>=4.02.0' 'ocaml-mmap>=1.1.0' 'ocaml-ocplib-endian' 'ocaml-result' 'ocaml-seq' 'ocaml-migrate-parsetree>=1.5.0' 'ocaml-ppx_tools_versioned>=5.3.0' 'ocaml-react>=1.0.0')
-makedepends=('cppo>=1.1.0' 'dune>=1.8.0')
+depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-luv' 'ocaml-mmap>=1.1.0' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0' 'ocaml-result' 'ocaml-seq')
+makedepends=('cppo>=1.1.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('38ce928378a07b685f4606b60cbe37c26ef93ccb3e808c218e7d34ece9e659ad')
+sha256sums=('8c5f5ff040d0ffcc9a6d73eb0501c61827ccf3fc99aeb077bc68a1915fe88b03')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -28,17 +28,17 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	LWT_DISCOVER_ARGUMENTS='--use-libev true' dune build -p "$_projectname,${_projectname}_ppx,${_projectname}_react" --verbose
+	LWT_DISCOVER_ARGUMENTS='--use-libev true' dune build --release --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest -p "$_projectname,${_projectname}_ppx,${_projectname}_react" --verbose
+	dune runtest --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
