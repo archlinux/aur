@@ -18,7 +18,13 @@ check() {
   cargo test --release
 }
 
+build() {
+  cd $pkgname-$pkgver
+  cargo build --release
+}
+
 package() {
   cd $pkgname-$pkgver
-  cargo install --path .
+  install -D target/release/paswitch-rs -t "$pkgdir"/usr/bin
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/paswitch-rs
 }
