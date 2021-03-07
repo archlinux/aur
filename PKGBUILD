@@ -1,8 +1,9 @@
 # Maintainer: Éric Gillet <e+aur5250@linuxw.info>
 
 pkgname=jungle-git
-pkgver=1.1.11
+pkgver=1.0.0.r3.gfb63f84
 pkgrel=1
+epoch=1
 pkgdesc="AWS operations by cli should be simpler"
 arch=('any')
 url='https://github.com/achiku/jungle'
