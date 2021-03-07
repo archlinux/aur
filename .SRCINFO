@@ -1,6 +1,6 @@
 pkgbase = python-pytest-httpserver
 	pkgdesc = Pytest plugin for testing http clients without contacting the real http server
-	pkgver = 0.3.6
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/csernazs/pytest-httpserver/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-pytest-httpserver
 	makedepends = python-wheel
 	depends = python
 	depends = python-werkzeug
-	source = https://github.com/csernazs/pytest-httpserver/archive/0.3.6/pytest-httpserver-0.3.6.tar.gz
-	sha256sums = abb85bc7be0f84c923c3db2e892bbabb1ed055d8c0c6e45daa5e6b246dc338ea
+	source = https://github.com/csernazs/pytest-httpserver/archive/0.3.8/pytest-httpserver-0.3.8.tar.gz
+	sha256sums = 85994286ed85b16491b6918b1df77c85d31169b83bcdc8d6a52cd6f26cbfa133
 
 pkgname = python-pytest-httpserver
 
