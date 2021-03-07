@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 _pkgname=Flask-GSSAPI
 pkgname=python-flask-gssapi
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="GSSAPI (HTTP Negotiate) authentication for Flask"
 url="https://github.com/cour4g3/flask-gssapi"
@@ -9,7 +9,7 @@ arch=(any)
 license=(custom:MIT)
 depends=(python-flask python-gssapi)
 makedepends=(git python-setuptools)
-_commit=35e586e8907bc4692c249daa8a6e65c7754906fa
+_commit=78bf74f4f7f6c2bca834259b362153c89c6fdf25
 source=("git+https://github.com/cour4g3/flask-gssapi#commit=$_commit")
 sha256sums=('SKIP')
 

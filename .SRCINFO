@@ -1,6 +1,6 @@
 pkgbase = python-flask-gssapi
 	pkgdesc = GSSAPI (HTTP Negotiate) authentication for Flask
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/cour4g3/flask-gssapi
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-flask-gssapi
 	makedepends = python-setuptools
 	depends = python-flask
 	depends = python-gssapi
-	source = git+https://github.com/cour4g3/flask-gssapi#commit=35e586e8907bc4692c249daa8a6e65c7754906fa
+	source = git+https://github.com/cour4g3/flask-gssapi#commit=78bf74f4f7f6c2bca834259b362153c89c6fdf25
 	sha256sums = SKIP
 
 pkgname = python-flask-gssapi
