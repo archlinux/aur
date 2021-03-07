@@ -4,7 +4,7 @@ pkgver=1.1.11
 pkgrel=1
 pkgdesc="AWS operations by cli should be simpler"
 arch=('any')
-url="AWS operations by cli should be simpler"
+url='https://github.com/achiku/jungle'
 license=('MIT')
 depends=('python' 
          'python-boto3'
