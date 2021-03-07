@@ -1,0 +1,9 @@
+post_install(){
+ echo 'You need to add your user to the "input" group, i.e. by running
+
+    usermod -aG input USER
+
+After that you need to logout to apply changes.
+Sample files can be found under /usr/share/keysound/audio'
+}
+

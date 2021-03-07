@@ -1,0 +1,15 @@
+pkgbase = keysound-git
+	pkgdesc = A keyboard sound software for Linux
+	pkgver = r193.10f3798
+	pkgrel = 1
+	url = https://github.com/fgheng/keysound
+	install = keysound.install
+	arch = x86_64
+	license = MIT
+	depends = libpulse
+	optdepends = sdl2: SDL2 backend
+	source = git+https://github.com/fgheng/keysound
+	sha256sums = SKIP
+
+pkgname = keysound-git
+
