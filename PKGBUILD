@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=s
-pkgver=0.5.14
+pkgver=0.5.15
 pkgrel=1
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c32eedf6a4080cbe221c902cf7f63b1668b3927edfc448d963d69ed66c8ec2fb')
+sha256sums=('d697da32c050d026983a9696d14dace8926838eef9f491937a4f14215b674c6a')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/zquestz"
@@ -20,9 +20,6 @@ build() {
 
   mv "$pkgname-$pkgver" "$GOPATH/src/github.com/zquestz/s"
   cd "$GOPATH/src/github.com/zquestz/s"
-
-  go get -u github.com/FiloSottile/gvt
-  $GOBIN/gvt restore
 
   go build .
 }
