@@ -1,6 +1,6 @@
 pkgbase = ctrecordings-plugin-collection
 	pkgdesc = Cut Through Recordings Plugin Collection.
-	pkgver = 20210223
+	pkgver = 20210306
 	pkgrel = 1
 	url = https://www.cutthroughrecordings.com/downloads
 	arch = x86_64
