@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="thriftbroker"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.17
+pkgver=0.4.18
 pkgrel=1
 pkgdesc="The SWC-DB ThriftBroker Application"
 arch=("x86_64")
@@ -19,7 +19,6 @@ license=('GPLv3')
 
 
 depends=(
-  'swcdb-env'
   'swcdb-lib-fs'
   'swcdb-lib'
   'swcdb-lib-thrift'
