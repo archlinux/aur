@@ -1,4 +1,4 @@
-# Maintainer: Samuel Bernardo <samuelbernardo at lip dot pt>
+# Maintainer: Samuel Bernardo <samuel at lip dot pt>
 
 pkgbase=oidc-agent
 pkgname=('oidc-agent')
