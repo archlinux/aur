@@ -24,5 +24,5 @@ date=$(echo "$release" | jq -r .published_at | cut -dT -f1)
 echo -e "## $version ($date)\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
 
 git add .SRCINFO CHANGELOG.md PKGBUILD
-git commit -m "Publish yopass $version"
+git commit -m "Publish yopass $version" -v
 git push origin master
