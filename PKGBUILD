@@ -91,7 +91,7 @@ package() {
 	$rootcmd sed -i "s/^greeter-session = [a-zA-Z]*\-[a-zA-Z0-9]*\-greeter/greeter-session = lightdm-webkit2-greeter/g" /etc/lightdm/lightdm.conf
 
 	# Enable XSessions directories
-	$rootcmd sed -i "s/^#sessions-directory=.*/sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions/g" /etc/lightdm/lightdm.conf
+	$rootcmd sed -i "s/^#sessions-directory=.*/sessions-directory=\/usr\/share\/lightdm\/sessions:\/usr\/share\/xsessions\/g" /etc/lightdm/lightdm.conf
 
 	# Choose "saluto" as webkit2 greeter
 	$rootcmd sed -i "s/webkit_theme[ \t]*= [a-zA-Z0-9]*/webkit_theme        = saluto/" /etc/lightdm/lightdm-webkit2-greeter.conf
