@@ -1,4 +1,4 @@
-# Maintainer: Leon <adigitoleo@protonmail.com>
+# Maintainer: Leon <aur@adigitoleo.dissimulo.com>
 pkgname=python-enaml-git
 _shortname="${pkgname%-git}"
 pkgver=0.12.0.r10.g3e58a3c2
