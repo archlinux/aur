@@ -1,0 +1,12 @@
+iff --git a/mupen64plus-input-raphnetraw-1.1.0/src/plugin_front.c b/mupen64plus-input-raphnetraw-1.1.0/src/plugin_front.c
+index 28bbac7..7549ef4 100644
+--- a/mupen64plus-input-raphnetraw-1.1.0/src/plugin_front.c
++++ b/mupen64plus-input-raphnetraw-1.1.0/src/plugin_front.c
+@@ -40,7 +40,6 @@
+ #include <math.h>
+
+ #define M64P_PLUGIN_PROTOTYPES 1
+-#include "config.h"
+ #include "m64p_common.h"
+ #include "m64p_config.h"
+ #include "m64p_plugin.h"

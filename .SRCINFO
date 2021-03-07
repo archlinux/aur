@@ -1,0 +1,21 @@
+pkgbase = mupen64plus-input-raphnetraw
+	pkgdesc = raphnetraw: Direct N64 controller access plugin for mupen64plus
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.raphnet-tech.com/products/raphnetraw/index.php
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = mupen64plus-git
+	depends = hidapi
+	provides = mupen64plus-input-raphnetraw
+	conflicts = mupen64plus-input-raphnetraw
+	source = https://www.raphnet-tech.com/downloads/mupen64plus-input-raphnetraw-1.1.0.tar.gz
+	source = fix-build.patch
+	source = 0001-Remove-SDL_PumpEvents.patch
+	sha256sums = 32ea9fd14fc71720b131ddc0a17393e3dd052778d91d6b78e49652950d635245
+	sha256sums = 3422fc7253a8d1b347e2f1af1c82a87fd18631764d8b2b5ed566b0efadd12ea8
+	sha256sums = a2116ef3343c1d67f03877fd8a8bb0cc59560ebd36410e8cb46d59fde28436d9
+
+pkgname = mupen64plus-input-raphnetraw
+
