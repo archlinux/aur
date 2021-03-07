@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-complex-git
 	pkgdesc = Python class for PyTorch-ComplexTensor (workaround for missing Pytorch Class)
-	pkgver = 0.2.0.r94
+	pkgver = 0.2.1.r96
 	pkgrel = 1
 	url = https://github.com/kamo-naoyuki/pytorch_complex
 	arch = any
