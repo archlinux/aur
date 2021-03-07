@@ -4,7 +4,7 @@
 pkgname=python-rebulk
 _name=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=4
+pkgrel=3
 pkgdesc='Define simple search patterns in bulk to perform advanced matching on any string.'
 arch=('any')
 url='https://github.com/Toilal/rebulk'
@@ -31,6 +31,7 @@ check() {
 
 package() {
   cd "${_name}-${pkgver}"
+  export PYTHONHASHSEED=0
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
