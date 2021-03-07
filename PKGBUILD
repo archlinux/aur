@@ -2,6 +2,8 @@
 # Shamelessly ripped off from the a7xpg PKGBUILD, also in the AUR
 # Contributor: delta48 <dark.magician.48[at]gmail[dot]com>
 # added just a few touches to make it compile again
+# Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
+# dito
 
 pkgname=parsec47
 pkgver=0.2
@@ -12,21 +14,17 @@ url="http://www.asahi-net.or.jp/~cs8k-cyu/windows/p47_e.html"
 license=('custom')
 depends=('sdl_mixer' 'libbulletml')
 makedepends=('gdc')
-source=("http://abagames.sakura.ne.jp/windows/p47_0_2.zip"
-	"http://ftp.de.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.dfsg1-6.debian.tar.gz")
-md5sums=('9d90057a269591fe992b7ed44de2d29f'
-         '98d19456f1bf69709b20dbf9fd175ab5')
+source=("http://deb.debian.org/debian/pool/main/p/parsec47/parsec47_0.2.dfsg1.orig.tar.gz"
+   "http://ftp.de.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.dfsg1-9.debian.tar.xz")
+md5sums=('9405d210176d7bfaa447bf069f07afc2'
+         '41d517c11bdce829c8036b122bee8570')
+
 
 prepare() {
   cd $srcdir/p47
-
-  _patchdir="../debian/patches"
-  cat $_patchdir/series | egrep -v '^#|^\ #' | sed "s:^:$_patchdir/:" | xargs -n1 patch -p1 -i
-
-  sed -i 's:/games::g' ./src/abagames/p47/BarrageManager.d
-  sed -i 's:/games::g' ./src/abagames/util/sdl/{Sound,Texture}.d
-  sed -i 's:gdmd-v1:gdmd:' Makefile
-  sed -i 's:gdc-v1:gdc:' Makefile
+  for i in $(cat ../debian/patches/series); do
+    patch -p1 <../debian/patches/$i
+  done
 }
 
 build() {
@@ -41,7 +39,7 @@ package() {
   install -D -m755 $pkgname $pkgdir/usr/bin/$pkgname
 
   # Install other resources
-  find {images,large,largemove,middle,middlebackmove,middlemove,middlesub,middlesub_lock,morph,morph_lock,small,smallmove,smallsidemove,small_lock,sounds} -type f -exec install -Dm644 {} $pkgdir/usr/share/$pkgname/{} \;
+  find {images,large,largemove,middle,middlebackmove,middlemove,middlesub,middlesub_lock,morph,morph_lock,small,smallmove,smallsidemove,small_lock,sounds} -type f -exec install -Dm644 {} $pkgdir/usr/share/games/$pkgname/{} \;
 
   # Install man page and debian copyright notice
   install -D -m644 ../debian/$pkgname.6 $pkgdir/usr/share/man/man6/$pkgname.6

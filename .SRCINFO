@@ -9,10 +9,10 @@ pkgbase = parsec47
 	makedepends = gdc
 	depends = sdl_mixer
 	depends = libbulletml
-	source = http://abagames.sakura.ne.jp/windows/p47_0_2.zip
-	source = http://ftp.de.debian.org/debian/pool/main/p/parsec47/parsec47_0.2.dfsg1-6.debian.tar.gz
-	md5sums = 9d90057a269591fe992b7ed44de2d29f
-	md5sums = 98d19456f1bf69709b20dbf9fd175ab5
+	source = http://deb.debian.org/debian/pool/main/p/parsec47/parsec47_0.2.dfsg1.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/p/parsec47/parsec47_0.2.dfsg1-9.debian.tar.xz
+	md5sums = 9405d210176d7bfaa447bf069f07afc2
+	md5sums = 41d517c11bdce829c8036b122bee8570
 
 pkgname = parsec47
 
