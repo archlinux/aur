@@ -4,7 +4,7 @@
 
 pkgname=cawbird-git
 _pkgname=cawbird
-pkgver=1.3.2.r76.g825a7825
+pkgver=1.3.2.r87.g5940a5f8
 pkgrel=1
 pkgdesc="A fork of the Corebird GTK Twitter client that continues to work with Twitter "
 arch=('i686' 'x86_64')
@@ -15,12 +15,8 @@ optdepends=('noto-fonts-emoji: Emoji support')
 makedepends=('vala' 'git' 'meson' 'intltool')
 provides=('corebird')
 conflicts=('corebird' 'corebird-git' 'corebird-non-streaming-git')
-source=("${pkgname}::git+https://github.com/IBBoard/cawbird.git"
-        'consumer_k.dat'
-        'consumer_s.dat')
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP')
+source=("${pkgname}::git+https://github.com/IBBoard/cawbird.git")
+sha1sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -28,15 +24,15 @@ pkgver() {
 
 }
 
-prepare() {
-  cd "$pkgname"
-  cp -t data/ "$srcdir/consumer_k.dat" "$srcdir/consumer_s.dat"
-}
-
 build() {
   cd ${pkgname}
 
-  meson builddir --prefix=/usr -D VIDEO=yes -D SPELLCHECK=yes
+  meson builddir \
+        --prefix=/usr \
+        -D VIDEO=yes \
+        -D SPELLCHECK=yes \
+        -D consumer_key_base64=YUVNOE14dE5xMVdHRzl2emo5SzNNSlNUeg== \
+        -D consumer_secret_base64=c0J0cmc2clNJTFN6bHlSbFNXc2J1MmdvWWk3b0FzTGZHOGI4OG5QRzB3Tmx1Y0ZtOHQ=
   ninja -C builddir
 }
 

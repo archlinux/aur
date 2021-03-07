@@ -1,6 +1,6 @@
 pkgbase = cawbird-git
 	pkgdesc = A fork of the Corebird GTK Twitter client that continues to work with Twitter
-	pkgver = 1.3.2.r76.g825a7825
+	pkgver = 1.3.2.r87.g5940a5f8
 	pkgrel = 1
 	url = https://github.com/ibboard/cawbird/
 	arch = i686
@@ -19,10 +19,6 @@ pkgbase = cawbird-git
 	conflicts = corebird-git
 	conflicts = corebird-non-streaming-git
 	source = cawbird-git::git+https://github.com/IBBoard/cawbird.git
-	source = consumer_k.dat
-	source = consumer_s.dat
-	sha1sums = SKIP
-	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = cawbird-git
