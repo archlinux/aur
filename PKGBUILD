@@ -59,7 +59,7 @@ prepare() {
 
 	# Patch files
 	cd "$srcdir/Saluto/src"
-	patch -i dwm-9wm-rio.diff
+	patch -p0 -i dwm-9wm-rio.diff
 
 	# Make sure "node-sass" version 4 is installed
 	npm install "node-sass@^4.0.0"
