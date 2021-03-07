@@ -1,6 +1,6 @@
 pkgbase = socalabs-bin
 	pkgdesc = Socalabs VST Plugins (Stable Branch)
-	pkgver = 20210205
+	pkgver = 20210306
 	pkgrel = 1
 	url = http://www.semanticaudio.co.uk
 	arch = x86_64
