@@ -1,6 +1,6 @@
 pkgbase = libshout-idjc
 	pkgdesc = Libshout library plus some extensions for IDJC.
-	pkgver = 2.4.5
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = http://idjc.sourceforge.net/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = libshout-idjc
 	depends = speex
 	depends = openssl
 	options = !emptydirs
-	source = https://downloads.sourceforge.net/project/libshoutidjc.idjc.p/libshout-idjc-2.4.5.tar.gz
-	md5sums = 2b48bb9cf71182ac6683448e097c1ec4
+	source = https://downloads.sourceforge.net/project/libshoutidjc.idjc.p/libshout-idjc-2.4.4.tar.gz
+	sha256sums = 8bcfb805b4a440929244e588b018b5f466724a5d922a1dc1522253dfdf433fe5
 
 pkgname = libshout-idjc
 

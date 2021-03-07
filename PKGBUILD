@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=libshout-idjc
-pkgver=2.4.5
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="Libshout library plus some extensions for IDJC."
 arch=('i686' 'x86_64')
@@ -22,4 +22,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('2b48bb9cf71182ac6683448e097c1ec4')
+sha256sums=('8bcfb805b4a440929244e588b018b5f466724a5d922a1dc1522253dfdf433fe5')
