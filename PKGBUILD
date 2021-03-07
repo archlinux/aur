@@ -1,47 +1,38 @@
 # Maintainer: Curve <curve.platin at gmail.com>
-# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
-# Contributor: Michael Hansen <zrax0111 gmail com>
 # Contributor: Francisco Magalhães <franmagneto gmail com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Curve <curve.platin at gmail.com>
 
 pkgname=vscode-transparent-insiders
-_pkgname=code
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - based on insiders commit'
-# Important: Remember to check https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites for target node version
-# NodeJS versioning cheatsheet:
-#   - carbon: 8
-#   - dubnium: 10
-#   - ?: 11 (not in repos)
-#   - erbium: 12
-# Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron9
-_commit=52838cf6799cc448e738677ec37e86cf62a5bd89
-pkgver=1.54.0
-pkgrel=3
-arch=('x86_64')
+_pkgname=code
+_electron=electron
+_commit=04770364fdc1bebeca9d1a257df2cacce06b35d6
+pkgver=1.55.0_insiders
+pkgrel=1
+arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
+makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-fermium')
 conflicts=('code')
 provides=('code')
 install='code-transparent.install'
 source=("$_pkgname::git+$url.git#commit=$_commit"
-        'code.js'
-        'code.sh'
-        'product_json.diff'
-        'transparent.diff'
-        'fix-first-window-not-transparent.diff')
+        "${_pkgname}.js"
+        "${_pkgname}.sh"
+        "transparency.diff"
+        "product_json.diff"
+        "code-liveshare.diff")
 sha512sums=('SKIP'
-            '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
-            '0e75ee88274cbaf48c59ef6f363f6b8ac2ea83f8b17a61155008db773b709a1f0233754fa63a136ec0417313ba90a7eb17db000ec22a38ca8840d8ba6c47cab1'
+            'a97cbc79d76d2dad2ced74d66fa57b9a0aa3d82767d420b520bbaaf007c03ac60d61134668895ab4a8bd38951974c42afc59c03105ccc892742b34fee9b2c509'
+            '9bd93ec7ba946c005d3a12ea71ae2903593d17d3e4dcf55b4a5b612ebc82237338f0aaec59613eb77f355b0116aeb31320d0d32cd993233f140479ced44dfdbf'
+            '3d950836294e2ceb57851a2903c0789deff29e60c76a89d3615d450d19ac27c84f5a1a85166d47a3bb2cbe0617836d81172b3b529e70a17f7a928e8ba9133abf'
             '108f97f6a1cc5f12e23525ee288c375f961c4aaf1ef598d20618349386e9b6b5514143066876de1eff279235faecaaf5a8f8a54cfe46ea98d5e4e667b584193c'
-            'ae7fc5d2d1851bf9353c3f531a4de05cc5b41496468e908776b7a17cf85e889c601b94499bd6165efb902578af1ebf37443a03881f98d8c6120cb4f8667d8fe7'
-            'e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e')
-
+            'a9f2f3e07f8ffe9def036cb2aa6d587444ea1cf9d9e1b29637b3d86ccf98e3ee2c50d219405155449c06654f753a296a820b11bdab48928baf25043217f149a0')
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
 # for his architecture
@@ -69,23 +60,16 @@ prepare() {
   # Change electron binary name to the target electron
   sed -i "s|exec electron |exec $_electron |" ../code.sh
 
-  # This patch no longer contains proprietary modifications.
-  # See https://github.com/Microsoft/vscode/issues/31168 for details.
   patch -p0 < ../product_json.diff
-
-  # enable window transparency
-  patch -p1 <../transparent.diff
-
-  # fixes sometimes the first code window is not transparent
-  # https://aur.archlinux.org/packages/code-transparent/#comment-775691
-  # https://github.com/electron/electron/issues/16809
-  patch -p1 <../fix-first-window-not-transparent.diff
+  patch -p1 <../transparency.diff
 
   # Set the commit and build date
   local _commit=$(git rev-parse HEAD)
   local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
   sed -e "s/@COMMIT@/$_commit/" -e "s/@DATE@/$_datestamp/" -i product.json
 
+  patch -p1 -i "${srcdir}/code-liveshare.diff"
+  
   # Build native modules for system electron
   local _target=$(</usr/lib/$_electron/version)
   sed -i "s/^target .*/target \"${_target//v/}\"/" .yarnrc

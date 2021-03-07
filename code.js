@@ -11,7 +11,7 @@ const fd = fs.openSync("/proc/self/comm", fs.constants.O_WRONLY);
 fs.writeSync(fd, name);
 fs.closeSync(fd);
 
-// Remove first command line argument (/usr/lib/code/code.js). - We call the CLI file first
+// Remove first command line argument (/usr/lib/code-git/code-git.js). - We call the CLI file first
 process.argv.splice(0, 1);
 
 // Set application paths.

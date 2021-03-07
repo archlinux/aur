@@ -1,0 +1,78 @@
+diff --git a/src/main.js b/src/main.js
+index 7203aec3f5..2843d21cc7 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -212,6 +212,9 @@ function configureCommandlineSwitchesSync(cliArgs) {
+ 		}
+ 	});
+ 
++	app.commandLine.appendSwitch('enable-transparent-visuals');
++	app.disableHardwareAcceleration();
++
+ 	// Support JS Flags
+ 	const jsFlags = getJSFlags(cliArgs);
+ 	if (jsFlags) {
+diff --git a/src/vs/code/electron-main/app.ts b/src/vs/code/electron-main/app.ts
+index b3832d12ec..570c13f515 100644
+--- a/src/vs/code/electron-main/app.ts
++++ b/src/vs/code/electron-main/app.ts
+@@ -409,6 +409,7 @@ export class CodeApplication extends Disposable {
+ 	}
+ 
+ 	async startup(): Promise<void> {
++		await new Promise((resolve) => setTimeout(resolve, 500));
+ 		this.logService.debug('Starting VS Code');
+ 		this.logService.debug(`from: ${this.environmentMainService.appRoot}`);
+ 		this.logService.debug('args:', this.environmentMainService.args);
+diff --git a/src/vs/platform/windows/electron-main/window.ts b/src/vs/platform/windows/electron-main/window.ts
+index 0eebc9dc8b..13f0e12638 100644
+--- a/src/vs/platform/windows/electron-main/window.ts
++++ b/src/vs/platform/windows/electron-main/window.ts
+@@ -140,7 +140,8 @@ export class CodeWindow extends Disposable implements ICodeWindow {
+ 				height: this.windowState.height,
+ 				x: this.windowState.x,
+ 				y: this.windowState.y,
+-				backgroundColor: this.themeMainService.getBackgroundColor(),
++				transparent: true,
++				backgroundColor: '#00000000' || this.themeMainService.getBackgroundColor(),
+ 				minWidth: WindowMinimumSize.WIDTH,
+ 				minHeight: WindowMinimumSize.HEIGHT,
+ 				show: !isFullscreenOrMaximized,
+diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
+index 272f767d2e..4addb159f3 100644
+--- a/src/vs/workbench/common/theme.ts
++++ b/src/vs/workbench/common/theme.ts
+@@ -6,19 +6,12 @@
+ import { localize } from 'vs/nls';
+ import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground, treeIndentGuidesStroke, errorForeground } from 'vs/platform/theme/common/colorRegistry';
+ import { IColorTheme } from 'vs/platform/theme/common/themeService';
+-import { Color } from 'vs/base/common/color';
++import { Color, RGBA } from 'vs/base/common/color';
+ 
+ // < --- Workbench (not customizable) --- >
+ 
+ export function WORKBENCH_BACKGROUND(theme: IColorTheme): Color {
+-	switch (theme.type) {
+-		case 'dark':
+-			return Color.fromHex('#252526');
+-		case 'light':
+-			return Color.fromHex('#F3F3F3');
+-		default:
+-			return Color.fromHex('#000000');
+-	}
++	return new Color(new RGBA(0, 0, 0, 0));
+ }
+ 
+ // < --- Tabs --- >
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts b/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
+index c8cb4eb5ee..7841dae572 100644
+--- a/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
+@@ -418,6 +418,7 @@ export class TerminalInstance extends Disposable implements ITerminalInstance {
+ 			macOptionIsMeta: config.macOptionIsMeta,
+ 			macOptionClickForcesSelection: config.macOptionClickForcesSelection,
+ 			rightClickSelectsWord: config.rightClickBehavior === 'selectWord',
++			allowTransparency: true,
+ 			fastScrollModifier: 'alt',
+ 			fastScrollSensitivity: editorOptions.fastScrollSensitivity,
+ 			scrollSensitivity: editorOptions.mouseWheelScrollSensitivity,

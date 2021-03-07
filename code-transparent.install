@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# MEMO: https://wiki.archlinux.org/index.php/PKGBUILD#install
 post_install() {
   echo '
 Troubleshooting
