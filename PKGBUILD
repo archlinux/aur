@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-net-https-any'
-pkgver='0.10'
+pkgver='0.12'
 pkgrel='1'
 pkgdesc="Simple HTTPS class using whichever underlying SSL module is available"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-tie-ixhash' 'perl-uri')
 makedepends=()
 url='http://search.cpan.org/dist/Net-HTTPS-Any'
-source=('http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/Net-HTTPS-Any-0.10.tar.gz')
-md5sums=('c1994a273ef82e346254528d2bc8344e')
-sha512sums=('7b18b9503b68a18994293aabde637ed03d11b960fcedebba1cf23d8a71ef88a0dcc077f4642c4f55beea69106e95f734feac4724de81e285827298ba0f6b39fa')
-_distdir="Net-HTTPS-Any-0.10"
+source=('http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/Net-HTTPS-Any-0.12.tar.gz')
+md5sums=('7aeffff7ebda0fb8a85afb01bf05bd49')
+sha512sums=('e14b0b39df0cc1f6f14a56cfe7ed536c372d2bdc6ab66bffbd1c28ef33d8854919f19dddee32cb3a5239507653379c982022f32bc28a50071c1cb691b9d77be9')
+_distdir="Net-HTTPS-Any-0.12"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
