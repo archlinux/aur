@@ -1,0 +1,25 @@
+From 90d0aca155c9f3fd89afbab6442c91a513bfcd94 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 7 Mar 2021 18:24:32 +0100
+Subject: [PATCH 2/2] Use pthread library from MinGW
+
+---
+ src/interfaces/libpq/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/interfaces/libpq/Makefile b/src/interfaces/libpq/Makefile
+index d4919970f8..ec30bfeb9e 100644
+--- a/src/interfaces/libpq/Makefile
++++ b/src/interfaces/libpq/Makefile
+@@ -66,7 +66,7 @@ OBJS += \
+ 	win32.o
+ 
+ ifeq ($(enable_thread_safety), yes)
+-OBJS += pthread-win32.o
++# OBJS += pthread-win32.o
+ endif
+ endif
+ 
+-- 
+2.30.1
+

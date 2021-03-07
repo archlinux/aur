@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-postgresql
 	pkgdesc = Sophisticated object-relational DBMS (mingw-w64)
-	pkgver = 12.1
+	pkgver = 13.2
 	pkgrel = 1
 	url = https://www.postgresql.org
 	arch = any
@@ -17,12 +17,12 @@ pkgbase = mingw-w64-postgresql
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://ftp.postgresql.org/pub/source/v12.1/postgresql-12.1.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v13.2/postgresql-13.2.tar.bz2
 	source = 0001-Use-.dll.a-as-extension-for-import-libraries.patch
-	source = 0002-use-mingw-pthread.patch
-	sha256sums = a09bf3abbaf6763980d0f8acbb943b7629a8b20073de18d867aecdb7988483ed
-	sha256sums = 1012ccd145b3191d7b3f3362961decc31f42c0dd349e9150e435ed464417d460
-	sha256sums = fadddea99386132cc81f5c38b51c36621ede4d3ccb66f4cc26a540c0c9b62bd6
+	source = 0002-Use-pthread-library-from-MinGW.patch
+	sha256sums = 5fd7fcd08db86f5b2aed28fcfaf9ae0aca8e9428561ac547764c2a2b0f41adfc
+	sha256sums = 6119ad2418ce9995acf13b0f095ffa521250bae18cd387083c04e92b6ff22814
+	sha256sums = 55c636400087482f896530e80f07706fff6c5c5b5654955d71944f035940e6a5
 
 pkgname = mingw-w64-postgresql
 

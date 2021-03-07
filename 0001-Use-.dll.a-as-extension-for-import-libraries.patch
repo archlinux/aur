@@ -1,8 +1,18 @@
+From ffc33301366f141f16519fc4999944c93d1e4a61 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 7 Mar 2021 18:22:06 +0100
+Subject: [PATCH 1/2] Use .dll.a as extension for import libraries
+
+---
+ src/Makefile.shlib   |  2 +-
+ src/backend/Makefile | 24 ++++++++++++------------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
+
 diff --git a/src/Makefile.shlib b/src/Makefile.shlib
-index 373d73c..f1941d4 100644
+index 29a7f6d38c..106139e929 100644
 --- a/src/Makefile.shlib
 +++ b/src/Makefile.shlib
-@@ -86,7 +86,7 @@ else
+@@ -85,7 +85,7 @@ else
  # Naming convention for dynamically loadable modules
  shlib		= $(NAME)$(DLSUFFIX)
  endif
@@ -12,10 +22,10 @@ index 373d73c..f1941d4 100644
  ifndef soname
  # additional flags for backend modules
 diff --git a/src/backend/Makefile b/src/backend/Makefile
-index b03d5e5..e1b8755 100644
+index 9706a95848..21d43c072b 100644
 --- a/src/backend/Makefile
 +++ b/src/backend/Makefile
-@@ -69,11 +69,11 @@ endif
+@@ -72,11 +72,11 @@ endif
  ifeq ($(PORTNAME), cygwin)
  
  postgres: $(OBJS)
@@ -30,7 +40,7 @@ index b03d5e5..e1b8755 100644
  	touch $@
  
  endif # cygwin
-@@ -82,11 +82,11 @@ ifeq ($(PORTNAME), win32)
+@@ -85,11 +85,11 @@ ifeq ($(PORTNAME), win32)
  LIBS += -lsecur32
  
  postgres: $(OBJS) $(WIN32RES)
@@ -45,7 +55,7 @@ index b03d5e5..e1b8755 100644
  	touch $@
  
  endif # win32
-@@ -195,12 +195,12 @@ distprep:
+@@ -198,12 +198,12 @@ distprep:
  install: all installdirs install-bin
  ifeq ($(PORTNAME), cygwin)
  ifeq ($(MAKE_DLL), true)
@@ -60,7 +70,7 @@ index b03d5e5..e1b8755 100644
  endif
  endif
  	$(MAKE) -C catalog install-data
-@@ -260,12 +260,12 @@ ifeq ($(MAKE_EXPORTS), true)
+@@ -263,12 +263,12 @@ ifeq ($(MAKE_EXPORTS), true)
  endif
  ifeq ($(PORTNAME), cygwin)
  ifeq ($(MAKE_DLL), true)
@@ -75,7 +85,7 @@ index b03d5e5..e1b8755 100644
  endif
  endif
  	$(MAKE) -C catalog uninstall-data
-@@ -284,10 +284,10 @@ endif
+@@ -287,10 +287,10 @@ endif
  clean:
  	rm -f $(LOCALOBJS) postgres$(X) $(POSTGRES_IMP)
  ifeq ($(PORTNAME), cygwin)
@@ -88,3 +98,6 @@ index b03d5e5..e1b8755 100644
  endif
  
  distclean: clean
+-- 
+2.30.1
+
