@@ -1,7 +1,7 @@
 # Maintainer: naruto522ru <itachi522ru@gmail.com>
 _name=shadowsocks2
 pkgname=go-shadowsocks2
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Modern Shadowsocks in Go (stable version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=(
 )
 conflicts=(shadowsocks-go-git)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('db915214583a273b01658f62b49638438180cc8e7997e6dfe5919bd4e46047c2')
+sha256sums=('b4e9396b121eec140aede426450fb579e67e6ba8b905f91ed022e41233a11456')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
- mkdir -p "${pkgdir}"/usr/bin
- install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/${_name}" "${pkgdir}"/usr/bin
+  mkdir -p "${pkgdir}"/usr/bin
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/${_name}" "${pkgdir}"/usr/bin
 }
