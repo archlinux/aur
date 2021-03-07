@@ -1,20 +1,11 @@
 pkgbase = qupath-bin
 	pkgdesc = An open, powerful, flexible, extensible software platform for whole slide image analysis.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qupath.github.io
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = gendesk
-	depends = freetype2
-	depends = java-runtime
-	depends = libjpeg-turbo
-	depends = libnet
-	depends = libtiff
-	depends = libxml2
-	depends = libxrender
-	depends = libxtst
-	depends = sqlite
 	provides = qupath=0.2.3
 	conflicts = qupath
 	options = !strip
