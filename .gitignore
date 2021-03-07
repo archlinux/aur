@@ -1,9 +1,3 @@
-*.src.tar.*
-*.pkg.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-*.tar.xz
-src
-pkg
+*.tar*
+src/
+pkg/
