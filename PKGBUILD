@@ -1,10 +1,11 @@
+# Maintainer: Yoan Blanc <yoan@dosimple.ch>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=python2-pycryptodomex
-pkgver=3.9.9
-pkgrel=2
+pkgver=3.10.1
+pkgrel=1
 pkgdesc='A self-contained Python package of low-level cryptographic primitives'
 arch=('x86_64')
 url='https://www.pycryptodome.org/'
@@ -12,7 +13,7 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.org/packages/source/p/pycryptodomex/pycryptodomex-$pkgver.tar.gz")
-sha512sums=('68a59cd537c1745db0082979716f0ba0508bb9d82d7129d42931056b5927f27ada1b92f88cc7c4d3954a02cd724a88c0e60fa38a5d8d7c73baa6541d332ff8a9')
+sha512sums=('0ffd37e75caf6472529bbc231c7e74290267094eb3a6013a55d32dc6e11313017bb8161bdfef6c96e911e788b837caa445a9e1fe3e17e5e0254c139378f2a5e6')
 
 build() {
     cd "$srcdir"/pycryptodomex-$pkgver
