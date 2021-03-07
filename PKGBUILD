@@ -19,14 +19,15 @@ md5sums=('c521b72fbb79610a7e985b7629aea73d')
 
 prepare() {
 bsdtar xf RGS_Linux_64_Receiver_v7.7.2_M27900-001.tar.gz
-bsdtar xf rhel6/receiver/*.rpm
+bsdtar xf rhel7-sled12/receiver/*.rpm
 }
 
 package() {
 cd "${srcdir}"
 
 # install licence
-install -m644 -D rhel6/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#install -m644 -D rhel6/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+install -m644 -D rhel7-sled12/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 # hack needed to register advance features 
 # N.B. rgsmbiosreader does not work under KVM/QEMU/OVMF bios, nor kernel greater than 4.4.44
