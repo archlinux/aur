@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-periphery
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A pure Python 2/3 library for peripheral I/O (GPIO, LED, PWM, SPI, I2C, MMIO, Serial) in Linux"
 url="https://github.com/vsergeev/python-periphery"
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vsergeev/python-periphery/archive/v$pkgver.tar.gz")
-sha512sums=('2012896890c8eb8599d54f7f9266a2acfb1386d917101f79607b20a3f9ff82d3588ea092c5137be401d1321c2358e272aaa345bf6fc327b0613f49c04923af4e')
+sha512sums=('d90b32980e391bf762037ca92967ebe8544a387a52f53f9867ea862586668c39e750c44b43da4f7daf7a3456ab7065899f580c4c2fbbb1ed12fb9c016e2fe284')
 
 build() {
   cd python-periphery-$pkgver
