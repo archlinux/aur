@@ -15,7 +15,7 @@ arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse
+         ffmpeg nss-hg ttf-font libpulse
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
@@ -32,6 +32,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip)
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _repo=https://hg.mozilla.org/mozilla-unified
+install=librewolf-nightly.install
 source_x86_64=("hg+$_repo#revision=autoland"
                $pkgname.desktop
                "git+https://gitlab.com/vnepogodin/librewolf-common.git"
@@ -103,7 +104,10 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
+export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+
+export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -123,6 +127,18 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 ac_add_options --disable-updater
+ac_add_options --enable-strip
+ac_add_options --disable-gpsd
+ac_add_options --disable-synth-speechd
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-debug-js-modules
+ac_add_options --disable-cdp
+ac_add_options --disable-trace-logging
+ac_add_options --disable-rust-tests
+ac_add_options --disable-ipdl-tests
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-webspeech
+ac_add_options --disable-webspeechtestbackend
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
