@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aarchup-git
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/inglor/aarchup"
@@ -17,7 +17,6 @@ md5sums=('SKIP')
 conflicts=('aarchup')
 provides=('aarchup')
 optdepends=('auracle: AUR support(--aur)')
-install=aarchup.install
 
 pkgver() {
   cd ${pkgname%-git}
