@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://github.com/explosion/murmurhash"
 license=("MIT")
 depends=("python" "cython" "python-pytest")
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools" "python-wheel" "python-pip")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/murmurhash/archive/v$pkgver.tar.gz")
 md5sums=("1a5e4f267d06150301b640803a4e3325")
 
