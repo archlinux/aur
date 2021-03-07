@@ -1,6 +1,6 @@
 pkgbase = weblate
 	pkgdesc = Web based localization tool with tight version control integration
-	pkgver = 4.5
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://github.com/WeblateOrg/weblate
 	install = weblate.install
@@ -39,15 +39,16 @@ pkgbase = weblate
 	depends = python-sentry_sdk
 	depends = python-setuptools
 	depends = python-siphashc
-	depends = python-social-auth-core>=4.0.3
+	depends = python-social-auth-core>=4.1.0
 	depends = python-social-auth-app-django
-	depends = translate-toolkit
+	depends = translate-toolkit>=3.3.3
 	depends = python-translation-finder
 	depends = python-user-agents
 	depends = python-weblate_schemas
 	depends = python-weblate-language-data
 	depends = python-waitress
 	depends = python-cssselect
+	depends = python-ahocorasick
 	depends = systemd
 	optdepends = python-psycopg2: postgres support
 	optdepends = python-mysqlclient: MySQL support
@@ -56,14 +57,14 @@ pkgbase = weblate
 	optdepends = git-review: gerrit support
 	backup = etc/webapps/weblate/settings.py
 	backup = etc/celery/weblate.conf
-	source = https://github.com/WeblateOrg/weblate/releases/download/weblate-4.5/Weblate-4.5.tar.xz
+	source = https://github.com/WeblateOrg/weblate/releases/download/weblate-4.5.1/Weblate-4.5.1.tar.xz
 	source = sysusers-weblate.conf
 	source = tmpfiles-weblate.conf
 	source = weblate.service
 	source = celery-weblate.conf
 	source = celery-weblate.service
 	source = logrotate-celery
-	sha256sums = 78396086c6db04ff9aa19933e42d9371a984100ec99021ecf73b6976685ec566
+	sha256sums = f086b10a2a8462a2312d53d81ec1a416ff2c9cc0a57c36a9bf6f426bb9ed33d1
 	sha256sums = 115c69062ac231d71596ce6b7d4afd0c6ea9b934f50de062c58315b2ef007137
 	sha256sums = 094525f9bf6e40f96c58e089fc596319f557a4a20bd1b23f426352f94fa43dad
 	sha256sums = 065247e8a96f6db16c0d08b919e53cd5e04d71a2be94f2ff949dd726dee06394
