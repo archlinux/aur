@@ -1,6 +1,6 @@
 --- a/drivers/input/serio/i8042-x86ia64io.h
 +++ b/drivers/input/serio/i8042-x86ia64io.h
-@@ -776,6 +776,30 @@
+@@ -780,6 +780,30 @@
  			DMI_MATCH(DMI_BOARD_VENDOR, "PK"),
  		},
  	},
