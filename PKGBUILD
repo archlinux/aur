@@ -3,11 +3,11 @@
 pkgbase='konsave'
 pkgname=('konsave')
 pkgver='1.1.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI program that will let you save and apply your KDE Plasma customizations with just one command!"
-url="https://github.com/chakki-works/seqeval"
+url="https://github.com/Prayag2/konsave"
 depends=('python' 'python-pyaml')
-makedepends=('python' 'python-setuptools')
+makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Prayag2/konsave/archive/v$pkgver.tar.gz")
