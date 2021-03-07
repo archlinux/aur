@@ -1,6 +1,6 @@
 pkgbase = pdfhandoutcrop
 	pkgdesc = A tool to crop pdf handout with multiple pages per sheet
-	pkgver = 0.99.1
+	pkgver = 0.99.2
 	pkgrel = 1
 	url = https://cges30901.github.io/pdfhandoutcrop/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pdfhandoutcrop
 	depends = python-pypdf2
 	depends = python-pyqt5
 	depends = python-pymupdf
-	source = https://files.pythonhosted.org/packages/source/p/pdfhandoutcrop/pdfhandoutcrop-0.99.1.tar.gz
-	sha256sums = 085e0b6658cff780dd9c65c06b70cd65a08bfc49d9234c6e13086e1cf861a078
+	source = https://files.pythonhosted.org/packages/source/p/pdfhandoutcrop/pdfhandoutcrop-0.99.2.tar.gz
+	sha256sums = e0cff97e28660cf733a621de402142dd42fd0628d8925943853b07ba8e2b5c6f
 
 pkgname = pdfhandoutcrop
 
