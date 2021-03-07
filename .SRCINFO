@@ -1,6 +1,6 @@
 pkgbase = swcdb-lib
 	pkgdesc = The SWC-DB library
-	pkgver = 0.4.17
+	pkgver = 0.4.18
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -15,7 +15,7 @@ pkgbase = swcdb-lib
 	makedepends = swcdb-lib-core
 	depends = swcdb-lib-core
 	provides = libswcdb.so
-	source = swcdb-lib-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
+	source = swcdb-lib-0.4.18-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.18
 	sha256sums = SKIP
 
 pkgname = swcdb-lib
