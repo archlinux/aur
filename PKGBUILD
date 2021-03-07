@@ -34,9 +34,9 @@ makedepends=(
 options=('!strip')
 _srcname=linux-${pkgver}
 _arch_config_commit=bc9da6eb1bd1fe5a7dda36ab5dad94382b9eaf0b
-_bmqversion=5.11-r1
+_bmqversion=5.11-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
-_gcc_more_v='20201113'
+_gcc_more_v='20210307'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
@@ -53,8 +53,8 @@ validpgpkeys=(
 b2sums=('9451bda48221ea58096682a4ce107194580a6fcaccb15d62b881c2ba8eddadbd46b010b20e2fa8e723674de0d29dd0a12749c9245db39b521659bc6cf2f270c5'
         'SKIP'
         '38e023e6dc5fc0c6663f7d973fd521dcac44c54cf971d12e1d7f688ed1f323d076816a7c3888a7b9f44d1fef8d4a85787738bba05febc23b2145021b8f2a0750'
-        '3b923fa385d648f8fbe0299d9d4bbf6c21d11c155c45733b8ef5e24d138ce3289fe9f2feb5c1526edc3ea721f6d48fde09b0597afb634aae77b5bdf86b647e8c'
-        '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
+        'e3cc85db32795721d39962dfd3b72ac923b89da8a9125ef0e12ba199b3606cec9a2d99392c0b0f195b1557a25be2370be1efe3bab9a9e0c2e89e2e92eb86eccb'
+        'e1daf14455f2fda1610be7ef0bcee630c9735ef32b2d879483a312f66490d990afd5179d203ee5d6678127ff358961b9c00292719df041339cdbaa7167da3e87'
         'db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb'
         'b17ed743962e6a68ad037fbfd8cca64aa64b8c2149fe45589957ff26b3176b79a555fc10654af4c61726efaf56e72ee0ef078e6dbc00e852d56d30161acde026')
 
