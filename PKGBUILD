@@ -2,10 +2,10 @@
 # Contributor: Frederick Gnodtke <frederick@gnodtke.net>
 
 pkgname=onivim2-git
-pkgver=1775.8a1739ec0
+pkgver=1952.4431f88b6
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/onivim/oni2'
 license=('custom:OutrunLabsEULA')
 makedepends=('git' 'esy' 'ragel' 'nodejs' 'wget' 'bzip2' 'esy' 'fontconfig' 'fuse2' 'git' 'glu' 'gtk3' 'harfbuzz'
@@ -60,6 +60,6 @@ package() {
   # fix permissions
   find "${pkgdir}" -type f -exec chmod 644 {} \;
   chmod 755 "${pkgdir}"/opt/onivim2/AppRun \
-    "${pkgdir}"/opt/onivim2/usr/bin/{Oni2*,node,rg,rls} \
+    "${pkgdir}"/opt/onivim2/usr/bin/{Oni2*,node,rg} \
     "${pkgdir}"/opt/onivim2/usr/lib/*
 }
