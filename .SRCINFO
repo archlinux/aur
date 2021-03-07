@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-de-git
 	pkgdesc = Fortune Cookies in German, from the Debian project
-	pkgver = 0.34.r381.g42e9b8b
-	pkgrel = 2
+	pkgver = 0.34.r382.gd11792e
+	pkgrel = 1
 	url = https://salsa.debian.org/debian/fortunes-de
 	arch = any
 	groups = fortune-mods
