@@ -2,7 +2,7 @@
 
 pkgbase=gtkmm4
 pkgname=(gtkmm4 gtkmm4-docs)
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="C++ bindings for GTK+ 4"
 url="https://www.gtkmm.org/"
@@ -12,7 +12,7 @@ depends=(gtk4 glibmm268 cairomm16 pangomm248 atkmm236)
 makedepends=(git mm-common glibmm268-docs cairomm16-docs pangomm248-docs atkmm236-docs meson)
 checkdepends=(xorg-server-xvfb)
 options=(!emptydirs)
-_commit=e208083ad18cacd3d7f8d6aeb50f3784f905d991  # tags/4.0.0^0
+_commit=22dd11de529a0cb09568d8432dd58cfd8693163f  # tags/4.0.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gtkmm.git#commit=$_commit")
 sha256sums=('SKIP')
 

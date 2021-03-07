@@ -1,6 +1,6 @@
 pkgbase = gtkmm4
 	pkgdesc = C++ bindings for GTK+ 4
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://www.gtkmm.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = gtkmm4
 	depends = pangomm248
 	depends = atkmm236
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/gtkmm.git#commit=e208083ad18cacd3d7f8d6aeb50f3784f905d991
+	source = git+https://gitlab.gnome.org/GNOME/gtkmm.git#commit=22dd11de529a0cb09568d8432dd58cfd8693163f
 	sha256sums = SKIP
 
 pkgname = gtkmm4
