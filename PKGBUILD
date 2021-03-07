@@ -16,8 +16,8 @@ backup=('usr/share/rime-data/flypy_sys.txt'
         'usr/share/rime-data/flypy_user.txt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v$pkgver.tar.gz"
         "$pkgname.install")
-md5sums=('198ddbc055f62136d96e96a4edd8a63d'
-         'c0d624f4fab9d81cab0b77dd205cf598')
+sha256sums=('39fe1b7d1bdb0a79522fbd21c73ff8bdcd44b0e55d21f3476f877b1b7fcf8d76'
+            '07487dba48d81c42c647fae3449c0a52fdcee9edc890c65961122b5304b824eb')
 install="$pkgname.install"
 
 package() {
