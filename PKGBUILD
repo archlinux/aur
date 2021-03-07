@@ -1,4 +1,4 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron9
 pkgver=9.4.3
