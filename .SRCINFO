@@ -1,6 +1,6 @@
 pkgbase = libdispatch-git
 	pkgdesc = Support for concurrent code execution on multicore hardware, includes libblocksruntime
-	pkgver = 2021.02.02.a.r0.g1c303fa
+	pkgver = 2021.03.05.a.r0.g34f383d
 	pkgrel = 1
 	url = https://apple.github.io/swift-corelibs-libdispatch/
 	arch = i686

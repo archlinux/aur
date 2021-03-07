@@ -3,7 +3,7 @@
 
 _basename=libdispatch
 pkgname="$_basename-git"
-pkgver=2021.02.02.a.r0.g1c303fa
+pkgver=2021.03.05.a.r0.g34f383d
 pkgrel=1
 pkgdesc="Support for concurrent code execution on multicore hardware, includes libblocksruntime"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
