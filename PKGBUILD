@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dijo
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Scriptable, curses-based, digital habit tracker"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3c52a1be40f93a42768dbde6df1d9258732b73052bfed7dc181671c875a3040b')
+sha256sums=('d82ce7adb19e5206e014f0a895fe3ed361f32088048116e9d33aea37f3cccb00')
 
 build() {
     cd $pkgname-$pkgver

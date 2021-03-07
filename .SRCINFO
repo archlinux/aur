@@ -1,14 +1,14 @@
 pkgbase = dijo
 	pkgdesc = Scriptable, curses-based, digital habit tracker
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/NerdyPepper/dijo
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = dijo-0.2.6.tar.gz::https://github.com/NerdyPepper/dijo/archive/v0.2.6.tar.gz
-	sha256sums = 3c52a1be40f93a42768dbde6df1d9258732b73052bfed7dc181671c875a3040b
+	source = dijo-0.2.7.tar.gz::https://github.com/NerdyPepper/dijo/archive/v0.2.7.tar.gz
+	sha256sums = d82ce7adb19e5206e014f0a895fe3ed361f32088048116e9d33aea37f3cccb00
 
 pkgname = dijo
 
