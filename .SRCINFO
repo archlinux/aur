@@ -1,6 +1,6 @@
 pkgbase = rvxx-amp
 	pkgdesc = RVXX Aggressive Guitar Amplifier (VST Plugin).
-	pkgver = 20210226
+	pkgver = 20210306
 	pkgrel = 1
 	url = https://audio-assault.com/rvxx.php
 	arch = x86_64
