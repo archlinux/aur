@@ -1,0 +1,13 @@
+pkgbase = amazon-fonts
+	pkgdesc = Complete set of all Amazon fonts (Bookerly, Amazon Ember)
+	pkgver = Mar2020
+	pkgrel = 1
+	url = https://developer.amazon.com/en-US/alexa/branding/echo-guidelines/identity-guidelines/typography
+	arch = any
+	license = custom:Amazon Type Library Usage Guidelines
+	makedepends = unzip
+	source = https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/branding/Amazon_Typefaces_Complete_Font_Set_Mar2020.zip
+	sha256sums = 8b97a86c91630e4c3e6163a1ce75d35ef093037e6d0eabcb273dbd6fe5c35b11
+
+pkgname = amazon-fonts
+
