@@ -1,0 +1,26 @@
+[Unit]
+Description=Fast, cost-effective and scalable time series database
+Documentation=https://victoriametrics.github.io/
+After=network.target
+
+[Service]
+DynamicUser=true
+LogsDirectory=victoriametrics
+StateDirectory=victoriametrics
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+
+User=victoriametrics
+Group=victoriametrics
+EnvironmentFile=/etc/default/victoriametrics
+ExecStart=/usr/bin/victoria-metrics -storageDataPath /var/lib/victoriametrics $ARGS
+LimitNOFILE=65536
+LimitNPROC=32000
+
+[Install]
+WantedBy=multi-user.target
