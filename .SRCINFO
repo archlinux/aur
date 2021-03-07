@@ -9,14 +9,22 @@ pkgbase = qdigidoc4
 	makedepends = cmake
 	makedepends = qt5-tools
 	makedepends = qt5-translations
+	makedepends = git
 	depends = libdigidocpp>=3.14.4
 	depends = opensc
 	depends = pcsclite
 	depends = qt5-svg
 	depends = hicolor-icon-theme
 	optdepends = ccid: smart card support
-	source = https://installer.id.ee/media/ubuntu/pool/main/q/qdigidoc4/qdigidoc4_4.2.7.85.orig.tar.xz
-	sha256sums = 22109c1408c403dac53a0d9f19d15f8648817854752a0f1237f3db522cd05ddb
+	source = qdigidoc4-4.2.7.85::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=v4.2.7
+	source = open-eid-cmake::git+https://github.com/open-eid/cmake.git
+	source = open-eid-common::git+https://github.com/open-eid/qt-common.git
+	source = open-eid-extensions::git+https://github.com/open-eid/digidoc-extensions.git
+	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = qdigidoc4
 
