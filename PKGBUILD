@@ -1,13 +1,13 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pipes-rs-git
-pkgver=v1.3.0.r1.g2f78811
+pkgver=v1.3.0.r7.gde5258d
 pkgrel=1
 arch=('any')
 pkgdesc='An over-engineered rewrite of pipes.sh in Rust'
 license=('MIT' 'APACHE')
 makedepends=('git' 'cargo')
-conflicts=('bash-pipes')
+conflicts=()
 provides=('pipes-rs')
 url='https://github.com/CookieCoder15/pipes-rs'
 source=("$pkgname"::"git://github.com/CookieCoder15/pipes-rs.git")
