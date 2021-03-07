@@ -29,7 +29,7 @@ build() {
   pip install -r requirements.txt
   
   # Cleanup unsed
-  rm -r .git .github docs test .dockerignore .gitignore .replit .travis.yml app.json docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
+  rm -r .git .github docs test .dockerignore .gitignore .replit .travis.yml docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
 }
 
 package() {
