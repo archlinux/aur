@@ -1,6 +1,6 @@
 pkgbase = python-cocotbext-eth
 	pkgdesc = Ethernet interface modules for cocotb
-	pkgver = 0.1.4
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-eth
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-cocotbext-eth
 	makedepends = python-setuptools
 	depends = python-cocotb
 	depends = python-cocotbext-axi
-	source = cocotbext-eth-0.1.4.tar.gz::https://github.com/alexforencich/cocotbext-eth/archive/v0.1.4.tar.gz
-	sha256sums = 30a5e0c13d3b61d65fd12b91f808c08875ee441fdb064d42c71428f034134ced
+	source = cocotbext-eth-0.1.6.tar.gz::https://github.com/alexforencich/cocotbext-eth/archive/v0.1.6.tar.gz
+	sha256sums = 3b180f4e5354e0e1ac42b5b8632ef6547e6fe4a45cb477bd4fa8a532406c3f2b
 
 pkgname = python-cocotbext-eth
 
