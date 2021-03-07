@@ -1,4 +1,5 @@
-# Maintainer: Éric Gillet <eric+aur@linuxw.info>
+# Maintainer: Éric Gillet <e+aur5250@linuxw.info>
+
 pkgname=jungle-git
 pkgver=1.1.11
 pkgrel=1
