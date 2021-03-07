@@ -11,16 +11,16 @@ source=("$pkgname"::'git+https://github.com/TheDarkBug/uwufetch.git')
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/${pkgname/-git/}"
+	cd "$srcdir/${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname/-git/}"
+	cd "$srcdir/${pkgname}"
 	make build
 }
 
 package() {
-	cd "$srcdir/${pkgname/-git/}"
+	cd "$srcdir/${pkgname}"
 	install -D "uwufetch" "$pkgdir/usr/bin/uwufetch"
 }
