@@ -1,6 +1,6 @@
 pkgbase = whatsapp-for-linux
 	pkgdesc = An unofficial WhatsApp desktop application for linux
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 0
 	url = https://github.com/eneshecan/whatsapp-for-linux
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = whatsapp-for-linux
 	depends = gst-libav
 	provides = whatsapp-for-linux
 	conflicts = whatsapp-for-linux
-	source = whatsapp-for-linux-1.1.4.tar.gz::https://github.com/eneshecan/whatsapp-for-linux/archive/v1.1.4.tar.gz
-	md5sums = 3bf9c9e762c13ae85af616c537de9588
+	source = whatsapp-for-linux-1.1.5.tar.gz::https://github.com/eneshecan/whatsapp-for-linux/archive/v1.1.5.tar.gz
+	md5sums = 5c8d6f27c1825a1cdcb89a8557d0a041
 
 pkgname = whatsapp-for-linux
 
