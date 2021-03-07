@@ -1,13 +1,13 @@
 pkgbase = quicknav
 	pkgdesc = A way to quickly navigate your filesystem from the command line.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrDogeBro/quicknav
-	arch = any
+	arch = x86_64
 	license = MIT
   depends = rust
-	source = quicknav.tgz::https://github.com/MrDogeBro/quicknav/archive/v0.1.0.tar.gz
-	sha256sums = f6626af4f1fcd7b791b8d7806ed8dd8489062eae2984352ee19b3e1d0466880c
+  source = quicknav-v0.1.0.tar.gz::https://github.com/MrDogeBro/quicknav/archive/v0.1.0.tar.gz
+	sha256sums = bfda57e4709fe35a32bb51d83ed4eb8f81c94d8b56a222b971400032b871ce10
 
 pkgname = quicknav
 
