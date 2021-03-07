@@ -2,7 +2,7 @@
 
 _pkgname=labwc
 pkgname=labwc-git
-pkgver=r338.db4249d
+pkgver=0.1.0.r6.g6ece805
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version)'
 url="https://github.com/johanmalm/labwc"
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
