@@ -10,8 +10,8 @@ arch=('x86_64')
 url="https://get.adobe.com/flashplayer/"
 license=('custom' 'LGPL')
 options=('!strip')
-source=("flash_player_npapi_linux_$pkgver.x86_64.tar.gz::https://fpdownload.adobe.com/get/flashplayer/pdc/$pkgver/flash_player_npapi_linux.x86_64.tar.gz"
-        "flash_player_ppapi_linux_$pkgver.x86_64.tar.gz::https://fpdownload.adobe.com/get/flashplayer/pdc/$pkgver/flash_player_ppapi_linux.x86_64.tar.gz")
+source=("flash_player_npapi_linux_$pkgver.x86_64.tar.gz::https://web.archive.org/web/20210126102538if_/https://fpdownload.adobe.com/get/flashplayer/pdc/$pkgver/flash_player_npapi_linux.x86_64.tar.gz"
+        "flash_player_ppapi_linux_$pkgver.x86_64.tar.gz::https://web.archive.org/web/20210116212416if_/https://fpdownload.adobe.com/get/flashplayer/pdc/$pkgver/flash_player_ppapi_linux.x86_64.tar.gz")
 noextract=("${source[@]%%::*}")
 sha256sums=('a90f2edb98231896331c61a81017f390e180015f90193865e3295319cf636c35'
             '99fcc780897be55bac7d11c0204ba7a3d5e7dc1f1aed75d5e7b5ad28c0b2ff5d')
