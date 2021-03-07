@@ -1,14 +1,16 @@
 # Maintainer: Christoph Brill <aur@christophbrill.de>
+# Contributors:
+# beedaddy <martin@brodbeck-online.de>
 
 pkgbase=glibmm268
 pkgname=(glibmm268 glibmm268-docs)
 pkgver=2.68.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for GLib"
 url="https://www.gtkmm.org/"
 arch=(x86_64)
 license=(LGPL)
-depends=(glib2 libsigc++)
+depends=(glib2 libsigc++3)
 makedepends=(git mm-common perl-xml-parser clang meson)
 checkdepends=(glib-networking)
 options=(!emptydirs)

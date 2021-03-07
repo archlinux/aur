@@ -1,7 +1,7 @@
 pkgbase = glibmm268
 	pkgdesc = C++ bindings for GLib
 	pkgver = 2.68.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gtkmm.org/
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = glibmm268
 	makedepends = clang
 	makedepends = meson
 	depends = glib2
-	depends = libsigc++
+	depends = libsigc++3
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/glibmm.git#commit=d9f2c206de7f91efec783ed389481037e80c62b0
 	sha256sums = SKIP
