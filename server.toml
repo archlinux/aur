@@ -1,0 +1,8 @@
+bindaddress = "127.0.0.1:8443"
+# ldapbindaddress = "127.0.0.1:3636"
+db_path = "/var/lib/kanidmd/kanidm.db"
+# tls_ca = "/var/lib/kanidmd/ca.pem"
+# tls_cert = "/var/lib/kanidmd/cert.pem"
+# tls_key = "/var/lib/kanidmd/key.pem"
+# log_level = "
+
