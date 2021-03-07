@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-torchaudio-git
 _pkgname=audio
-pkgver=r579.5e54c770
+pkgver=r762.7b85f1c3
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('x86_64')
@@ -9,11 +9,13 @@ url="https://github.com/pytorch/audio"
 license=('BSD')
 depends=('python' 'sox' 'python-pytorch')
 optdepends=('python-kaldi-io')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'cmake' 'ninja')
 provides=('python-torchaudio')
 conflicts=('python-torchaudio')
-source=("git+$url")
-sha256sums=('SKIP')
+source=("git+$url"
+        "git+https://github.com/kaldi-asr/kaldi.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver () {
   cd "${_pkgname}"
@@ -22,6 +24,12 @@ pkgver () {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+}
+
+prepare() {
+  cd "${_pkgname}"
+  git config submodule.kaldi.url "$srcdir/kaldi"
+  git submodule update third_party/kaldi/submodule
 }
 
 build() {
