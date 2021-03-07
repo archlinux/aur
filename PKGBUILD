@@ -3,7 +3,7 @@
 _py="python2"
 _eggname="bintrees"
 pkgname=${_py}-${_eggname}
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Package provides Binary-, RedBlack- and AVL-Trees in Python and Cython."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=("cython2: usage of C implementation")
 options=(!emptydirs)
 source=(${_eggname}-v${pkgver}.tar.gz::https://github.com/mozman/bintrees/archive/v${pkgver}.tar.gz)
 provides=('python2-bintrees')
-sha256sums=('2fe53a7c4650b61557372b923a98da2219c2742286aa7395d9275b2297a1e05c')
+sha256sums=('8e17a8d6fcfb0ec9dae611583f1d2879a84a62db58e1e533b414bbf8c4e929d7')
 
 package() {
   cd "${srcdir}/${_eggname}-${pkgver}"
