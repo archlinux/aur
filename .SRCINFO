@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-screenshot-dbus-emulator
 	pkgdesc = Gnome Shell Screenshot DBus Emulation.
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = gnome-shell-screenshot-dbus-emulator
 	makedepends = make
 	makedepends = git
 	depends = glibc
-	source = gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz::https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator/releases/download/0.1.0/gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz
-	source = gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz.asc::https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator/releases/download/0.1.0/gnome-shell-screenshot-dbus-emulator-0.1.0-src.tar.gz.asc
+	source = gnome-shell-screenshot-dbus-emulator-0.1.1-src.tar.gz::https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator/releases/download/0.1.1/gnome-shell-screenshot-dbus-emulator-0.1.1-src.tar.gz
+	source = gnome-shell-screenshot-dbus-emulator-0.1.1-src.tar.gz.asc::https://github.com/cyrinux/gnome-shell-screenshot-dbus-emulator/releases/download/0.1.1/gnome-shell-screenshot-dbus-emulator-0.1.1-src.tar.gz.asc
 	validpgpkeys = 4F7BC1FD97170A79267686A6FC9B1319726657D3
-	sha256sums = 90b76f440e56fe01f6c4617b4ef258c840b7cfc8c66f3ad44f22e855269f5350
+	sha256sums = 698c277b1134b71e97d2114049c38041a08271d99518aa0fb137fb91b2fec551
 	sha256sums = SKIP
 
 pkgname = gnome-shell-screenshot-dbus-emulator
