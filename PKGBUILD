@@ -2,7 +2,7 @@
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch-git
 pkgver=r60.262b9ff
-pkgrel=2
+pkgrel=3
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
 url="https://github.com/TheDarkBug/${pkgname/-git/}"
@@ -25,8 +25,6 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	install -D "uwufetch" "$pkgdir/usr/bin/uwufetch"
-	cd "$srcdir/$pkgname/res"
-	for i in *; do
-			install -D $i "$pkgdir/usr/lib/uwufetch/$i"
-	done
+	install -d "$pkgdir/usr/lib/uwufetch"
+	install res/* "$pkgdir/usr/lib/uwufetch"
 }
