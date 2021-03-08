@@ -12,10 +12,10 @@ pkgbase = grace
 	depends = netcdf
 	depends = fftw
 	options = staticlibs
-	source = ftp://plasma-gate.weizmann.ac.il/pub/grace/src/grace5/grace-5.1.25.tar.gz
+	source = ftp://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/grace-5.1.25.tar.gz
 	source = grace-fftw3.patch
-	md5sums = c0482b1f18b113192946a96f5ff35a4d
-	md5sums = 0c61460189e4d19713e59a84c28f23c2
+	sha512sums = 9ea68483af1dfc98d217ae730b7a51b66deae5aaa8dfda29d5a3337ed4b5728b45aa03f561bf7d4173e73d6af8dee03cbabd95c0c8dd36999303c89451a3728a
+	sha512sums = 6d9190a1a51bd411e067bd02910e60b3612df48bee2002d5f33c97ecca38bbc5d79538e73b2e743eda234f2921fe59ebfd855efe56097c3692a72593ddd10611
 
 pkgname = grace
 
