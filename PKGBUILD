@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.8.2.r13.g5d5736b5
+pkgver=0.5.8.3.r49.gde0f1e9e
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -17,7 +17,8 @@ depends=('python-gobject' 'python-yaml' 'python-dbus' 'gtk3'
          'mesa-demos' 'python-dbus' 'python-distro' 'python-magic-ahupp'
          'python-lxml')
 makedepends=('git' 'meson')
-#checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm')
+#checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm'
+#              'gnome-desktop' 'pciutils' 'xorg-xrandr')
 optdepends=(
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
   'vulkan-icd-loader: Vulkan support'
@@ -31,7 +32,8 @@ optdepends=(
   'python-evdev: for controller detection'
   'python-pypresence: Discord RPC and Rich Presence'
   'gamemode: Allows games to request a temporary set of optimisations'
-  "mangohud: Display the games' FPS + other information")
+  "mangohud: Display the games' FPS + other information"
+  "lib32-mangohud: Display the games' FPS + other information")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')

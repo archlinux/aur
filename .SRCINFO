@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.8.2.r13.g5d5736b5
+	pkgver = 0.5.8.3.r49.gde0f1e9e
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -38,6 +38,7 @@ pkgbase = lutris-git
 	optdepends = python-pypresence: Discord RPC and Rich Presence
 	optdepends = gamemode: Allows games to request a temporary set of optimisations
 	optdepends = mangohud: Display the games' FPS + other information
+	optdepends = lib32-mangohud: Display the games' FPS + other information
 	provides = lutris
 	conflicts = lutris
 	source = git+https://github.com/lutris/lutris.git
