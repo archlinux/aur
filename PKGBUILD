@@ -1,46 +1,63 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Contributor:: Justin Dray <justin@dray.be>
-# Contributor:: Daniel Egeberg <daniel.egeberg@gmail.com>
+# Contributor: Justin Dray <justin@dray.be>
+# Contributor: Daniel Egeberg <daniel.egeberg@gmail.com>
+# Helpful URL: http://services.sonarr.tv/v1/releases
 
-pkgname="sonarr-develop"
-pkgver=2.0.0.5343
+pkgname='sonarr-develop'
+pkgver=3.0.5.1146
 pkgrel=1
-pkgdesc="TV download automation for usenet and torrents."
+pkgdesc='TV download automation for usenet and torrents.'
 arch=(any)
-url="http://www.sonarr.tv"
+url='http://www.sonarr.tv'
 license=('GPL3')
-depends=('mono' 'libmediainfo' 'sqlite')
-optdepends=('sabnzbd: usenet downloader'
-            'nzbget: usenet downloader'
-            'transmission-cli: torrent downloader (CLI and daemon)'
-            'transmission-gtk: torrent downloader (GTK+)'
-            'transmission-qt: torrent downloader (Qt)'
-            'deluge: torrent downloader'
-            'rtorrent: torrent downloader'
-            'jackett: torrent indexer proxy')
+
+depends=(
+  'mono'
+  'libmediainfo'
+  'sqlite'
+)
+
+optdepends=(
+  'sabnzbd: usenet downloader'
+  'nzbget: usenet downloader'
+  'transmission-cli: torrent downloader (CLI and daemon)'
+  'transmission-gtk: torrent downloader (GTK+)'
+  'transmission-qt: torrent downloader (Qt)'
+  'deluge: torrent downloader'
+  'rtorrent: torrent downloader'
+  'jackett: torrent indexer proxy'
+)
 
 provides=('sonarr')
-conflicts=('sonarr'
-           'sonarr-phantom')
 
-source=("https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.${pkgver}.mono.tar.gz"
-        "sonarr.service"
-        "sonarr.sysusers"
-        "sonarr.tmpfiles")
+conflicts=(
+  'sonarr'
+  'sonarr-phantom'
+)
+
+source=(
+  "https://download.sonarr.tv/v3/develop/${pkgver}/Sonarr.develop.${pkgver}.linux.tar.gz"
+  'sonarr.service'
+  'sonarr.sysusers'
+  'sonarr.tmpfiles'
+  'package_info'
+)
 
 noextract=()
-sha256sums=('5d9b861664a87ae4123f7cbb41db480745e73a553145e2ab90a0ed7cb2bc4813'
-            '9b9cf3618d481189e707180c1b3a791fe2fef3bc0ce2cfd8408b04b2153f3371'
+sha256sums=('2ad81f7a1a595cb5e57408dec74c4f59bdc28ade9521e42cacfa1de66fc5f95e'
+            'b95d8e15c59e24e355a5098e322f3200f81dbcc8bb183c1767e1eeb42fa0cada'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
-            'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
+            '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
+            'a6b37e75143a309b1d8c163c3f90f7f0275fd730015c3f74e3ad27c278b1ae90')
 
 package() {
-  cd "$srcdir"
+  rm -rf "${srcdir}/Sonarr/Sonarr.Update"
+  install -d -m 755 "${pkgdir}/usr/lib/sonarr/bin"
+  cp -dpr --no-preserve=ownership "${srcdir}/Sonarr/"* "${pkgdir}/usr/lib/sonarr/bin"
 
-  install -d -m 755 "${pkgdir}/var/lib/sonarr"
-
-  install -d -m 755 "${pkgdir}/usr/lib/sonarr"
-  cp -dpr --no-preserve=ownership "${srcdir}/NzbDrone/"* "${pkgdir}/usr/lib/sonarr"
+  # Disable built in updater.
+  install -D -m 644 "${srcdir}/package_info" "${pkgdir}/usr/lib/sonarr"
+  echo "PackageVersion=${pkgver}-${pkgrel}" >> "${pkgdir}/usr/lib/sonarr/package_info"
 
   install -D -m 644 "${srcdir}/sonarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/sonarr.conf"
   install -D -m 644 "${srcdir}/sonarr.service" "${pkgdir}/usr/lib/systemd/system/sonarr.service"

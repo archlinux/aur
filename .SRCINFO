@@ -1,6 +1,6 @@
 pkgbase = sonarr-develop
 	pkgdesc = TV download automation for usenet and torrents.
-	pkgver = 2.0.0.5343
+	pkgver = 3.0.5.1146
 	pkgrel = 1
 	url = http://www.sonarr.tv
 	arch = any
@@ -19,14 +19,16 @@ pkgbase = sonarr-develop
 	provides = sonarr
 	conflicts = sonarr
 	conflicts = sonarr-phantom
-	source = https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.2.0.0.5343.mono.tar.gz
+	source = https://download.sonarr.tv/v3/develop/3.0.5.1146/Sonarr.develop.3.0.5.1146.linux.tar.gz
 	source = sonarr.service
 	source = sonarr.sysusers
 	source = sonarr.tmpfiles
-	sha256sums = 5d9b861664a87ae4123f7cbb41db480745e73a553145e2ab90a0ed7cb2bc4813
-	sha256sums = 9b9cf3618d481189e707180c1b3a791fe2fef3bc0ce2cfd8408b04b2153f3371
+	source = package_info
+	sha256sums = 2ad81f7a1a595cb5e57408dec74c4f59bdc28ade9521e42cacfa1de66fc5f95e
+	sha256sums = b95d8e15c59e24e355a5098e322f3200f81dbcc8bb183c1767e1eeb42fa0cada
 	sha256sums = cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e
-	sha256sums = a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8
+	sha256sums = 7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411
+	sha256sums = a6b37e75143a309b1d8c163c3f90f7f0275fd730015c3f74e3ad27c278b1ae90
 
 pkgname = sonarr-develop
 
