@@ -1,6 +1,6 @@
 pkgbase = ezau-git
 	pkgdesc = EVTC Zipper And Uploader
-	pkgver = r11.790d787
+	pkgver = r40.4918d36
 	pkgrel = 1
 	url = https://gitlab.com/dunj3/ezau
 	arch = x86_64

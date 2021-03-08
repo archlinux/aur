@@ -1,7 +1,7 @@
 # Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=ezau-git
 _pkgname=ezau
-pkgver=r11.790d787
+pkgver=r40.4918d36
 pkgrel=1
 pkgdesc="EVTC Zipper And Uploader"
 arch=("x86_64")
