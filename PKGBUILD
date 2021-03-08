@@ -4,7 +4,7 @@
 # Helpful URL: http://services.sonarr.tv/v1/releases
 
 pkgname='sonarr-develop'
-pkgver=3.0.5.1146
+pkgver=3.0.5.1150
 pkgrel=1
 pkgdesc='TV download automation for usenet and torrents.'
 arch=(any)
@@ -44,7 +44,7 @@ source=(
 )
 
 noextract=()
-sha256sums=('2ad81f7a1a595cb5e57408dec74c4f59bdc28ade9521e42cacfa1de66fc5f95e'
+sha256sums=('a6cb553b5f7a0f806bd25fd0480fea2e41e3ea1c5438b1e19c7fcb08d3f3e971'
             'b95d8e15c59e24e355a5098e322f3200f81dbcc8bb183c1767e1eeb42fa0cada'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
