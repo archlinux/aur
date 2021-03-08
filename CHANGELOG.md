@@ -1,3 +1,9 @@
+## 11.1.1 (2021-03-08)
+
+Fixes issue where rendering fails in Firefox private mode due to the fact that the serviceWorker API is not available.
+
+#802 Update yopass cli to use the new consolidated URLs
+
 ## 11.1.0 (2021-03-07)
 
 Add logic that unregisters old service workers added by Create React App template. Fixes #787
