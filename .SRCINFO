@@ -1,7 +1,7 @@
 pkgbase = valhalla
 	pkgdesc = Routing engine for OpenStreetMap.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
 	license = custom:MIT

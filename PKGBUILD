@@ -2,7 +2,7 @@
 
 pkgname=valhalla
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
@@ -15,10 +15,6 @@ sha256sums=('SKIP')
 prepare() {
   cd "$pkgname-$pkgver"
   git submodule update --init --recursive
-}
-
-build() {
-  cd "$pkgname-$pkgver"
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
@@ -35,7 +31,11 @@ build() {
     -DENABLE_BENCHMARKS=OFF \
     -DENABLE_TESTS=OFF
 
-  cmake --build build -- "${MAKEFLAGS}"
+}
+
+build() {
+  cd "$pkgname-$pkgver/build"
+  make
 }
 
 # no tests built but ctest does not fail
@@ -46,7 +46,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  cmake --build build -- DESTDIR="$pkgdir/" install
+  make -C build DESTDIR="$pkgdir/" install
   rm -rf "$pkgdir/usr/share/doc/"{libvalhalla-dev,libvalhalla0,python-valhalla}
 
   install -Dm644 COPYING README.md CHANGELOG.md -t "$pkgdir/usr/share/licenses/$pkgname"
