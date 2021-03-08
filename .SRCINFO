@@ -1,0 +1,17 @@
+pkgbase = ffmpeg-progress-yield
+	pkgdesc = Run an ffmpeg command with its progress yielded.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/slhck/ffmpeg-progress-yield
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = python-tqdm
+	depends = python-colorama
+	conflicts = ffmpeg-progress-yield-git
+	source = ffmpeg-progress-yield-0.0.3.tar.gz::https://github.com/slhck/ffmpeg-progress-yield/archive/v0.0.3.tar.gz
+	sha512sums = a24d80c2589292e1324080c793187757e09697512420017327be8e6cb713c903b9407764bec7aaaa74cf749848790cfd4ddf7534ae9b80df94540515590ee91d
+
+pkgname = ffmpeg-progress-yield
+
