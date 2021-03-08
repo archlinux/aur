@@ -1,6 +1,6 @@
 pkgbase = k40whisperer
 	pkgdesc = Control software for the stock K40 Laser controller
-	pkgver = 0.55
+	pkgver = 0.56
 	pkgrel = 1
 	url = https://www.scorchworks.com/K40whisperer/k40whisperer.html
 	install = k40whisperer.install
@@ -12,16 +12,14 @@ pkgbase = k40whisperer
 	depends = python-lxml
 	depends = python-pyusb
 	depends = python-pillow
+	depends = python-pyclipper
 	depends = tk
-	optdepends = python-pyclipper
-	source = https://www.scorchworks.com/K40whisperer/K40_Whisperer-0.55_src.zip
+	source = https://www.scorchworks.com/K40whisperer/K40_Whisperer-0.56_src.zip
 	source = 97-ctc-lasercutter.rules
 	source = k40whisperer.install
-	source = k40_whisperer.py.patch
-	sha256sums = 1ef91a35e52c73ab699e5c9685b47e735bba3a53eef257a9eb4016ae7b77496d
+	sha256sums = 7646a7610e99f2f9cb7e086c6a6813d1a5171cb0ea3e20d1f7c981bd513a3706
 	sha256sums = 19b490100927a74a4db8c6332b8a995eb1d1dc24c31467c03e3d8ac62759b508
 	sha256sums = 5d32866a044ce3239881eacd01720b95285031a003a79056644d30e728fcee19
-	sha256sums = 6f61cbd2d5ee32bd601965f7b56f2b42de5a152ec4a33a5949066220982e30c9
 
 pkgname = k40whisperer
 
