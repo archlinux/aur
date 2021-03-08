@@ -1,0 +1,27 @@
+pkgbase = binutils-2.35.2
+	pkgdesc = A set of programs to assemble and manipulate binary and object files. Version 2.35.2.
+	pkgver = 2.35.2
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	groups = base-devel
+	license = GPL
+	makedepends = elfutils
+	depends = elfutils
+	depends = glibc
+	depends = zlib
+	provides = binutils=2.35.2
+	conflicts = binutils-multilib
+	conflicts = binutils
+	replaces = binutils-multilib
+	options = staticlibs
+	options = !distcc
+	options = !ccache
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.35.2.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.35.2.tar.xz.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha256sums = dcd5b0416e7b0a9b24bed76cd8c6c132526805761863150a26d016415b8bdc7b
+	sha256sums = a8c541025b77cd932355f7abaa679c34c41f503cccdb8eab8145f2e1a1fb2efd
+
+pkgname = binutils-2.35.2
+
