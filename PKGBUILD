@@ -4,6 +4,7 @@ pkgver=0.3.r62.766dc3c
 pkgrel=1
 pkgdesc="A simple script to download mods from a CurseForge Minecraft modpack."
 arch=('any')
+url="https://github.com/portablejim/curseDownloader"
 license=('GPL3')
 depends=('python>=3.4'
          'python-appdirs'

@@ -2,6 +2,7 @@ pkgbase = curse-downloader-git
 	pkgdesc = A simple script to download mods from a CurseForge Minecraft modpack.
 	pkgver = 0.3.r62.766dc3c
 	pkgrel = 1
+	url = https://github.com/portablejim/curseDownloader
 	arch = any
 	license = GPL3
 	makedepends = git
