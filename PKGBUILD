@@ -1,6 +1,6 @@
 # Maintainer: Will Daly <will.e.daly@gmail.com>
 pkgname=devlog
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Command-line tool for tracking your day-to-day software development work."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nano')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wedaly/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('9aad336f4e978d11c60f31fa7c471bb63083215335405df7339da3dd929d1799df0549d42c69739c7e49fefaad7eee7539215feb8828b35a2bef6001ff481b41')
+sha512sums=('5784b8e8aa4832a9e1e8f6c0ec6e93f23dd120d26badd2e446522dde7d3f5988db62a26516fe11cfbeeb5e44239ca9980d51f782b3728ae39fe2ddfa4cc63f17')
 
 build() {
   cd "$pkgname-$pkgver"
