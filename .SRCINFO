@@ -1,0 +1,17 @@
+pkgbase = modhammer-edersonferreira-git
+	pkgdesc = A Twitch's Mod tool to do actions in a list of channels
+	pkgver = 1.1.r1.def8648
+	pkgrel = 1
+	url = https://github.com/edersonferreira/modhammer
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = modhammer
+	conflicts = modhammer
+	source = git+https://github.com/edersonferreira/modhammer
+	md5sums = SKIP
+
+pkgname = modhammer-edersonferreira-git
+
