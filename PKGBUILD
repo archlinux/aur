@@ -10,7 +10,7 @@ __pkgname=uutils-coreutils
 pkgver=8.32_0.0.4
 _pkgver=8.32
 __pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished'
 arch=('x86_64')
 license=('GPL3')
@@ -23,9 +23,9 @@ makedepends=('rust' 'cargo' 'python-sphinx')
 source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"{,.sig}
         "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz")
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
+sha512sums=('1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1133bbf10bd41468d6a1f31142e6caa81d16ae68fa3e6e84075c253613a145'
             'SKIP'
-            'SKIP')
+            '5d5719a0362a20c3a5ee85683c436a1bfcf5b8bf922ebe60c58f620b93d3bdf67c658a987cb8281b160442bd98cb7b4b00bacd9e3814d1b0ae3b6dd1cd43ec83')
 
 prepare() {
   cd $_pkgname-$_pkgver
@@ -47,7 +47,7 @@ build() {
       --prefix=/usr \
       --libexecdir=/usr/lib \
       --with-openssl \
-      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,hashsum,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,realpath,relpath,rm,rmdir,seq,shred,shuf,sleep,stat,stdbuf,sum,sync,tac,tee,timeout,touch,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes"
+      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,hashsum,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,realpath,relpath,rm,rmdir,seq,shred,shuf,sleep,stat,stdbuf,sum,sync,tac,tee,timeout,touch,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes,md5sum,sha1sum,sha224sum,sha256sum,sha384sum,sha512sum"
   make
 }
 
