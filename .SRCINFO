@@ -1,6 +1,6 @@
 pkgbase = zapret-git
 	pkgdesc = Bypass deep packet inspection.
-	pkgver = r26.6d5090b
+	pkgver = r32.4016534
 	pkgrel = 1
 	url = https://github.com/bol-van/zapret
 	arch = x86_64
