@@ -1,0 +1,19 @@
+pkgbase = kde1-kgoldrunner-git
+	pkgdesc = Historical copy of kgoldrunner for KDE 1, adapted to compile on modern systems
+	pkgver = 1.r12.1f4800f
+	pkgrel = 1
+	url = https://invent.kde.org/sandsmark/kde1-kgoldrunner
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kgoldrunner
+	conflicts = kde1-kgoldrunner
+	source = git+https://invent.kde.org/sandsmark/kde1-kgoldrunner.git
+	md5sums = SKIP
+
+pkgname = kde1-kgoldrunner-git
+
