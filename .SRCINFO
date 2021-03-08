@@ -8,7 +8,7 @@ pkgbase = logseq-desktop-bin
 	provides = logseq-desktop-bin
 	source = https://github.com/logseq/logseq/releases/download/0.0.11/logseq-linux-x64-0.0.11.zip
 	source = logseq-desktop.desktop
-	md5sums = bc0fb8a74c16ab3dacfd63e065588e41
+	md5sums = 01f8099a2fa6f35defb8a9f92ce3977a
 	md5sums = 7f1ac5c621059b3959a318882acf990e
 
 pkgname = logseq-desktop-bin

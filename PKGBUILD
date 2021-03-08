@@ -15,7 +15,7 @@ license=('AGPL3')
 provides=("${pkgname}")
 source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
       "${_pkgname}.desktop")
-md5sums=('bc0fb8a74c16ab3dacfd63e065588e41'
+md5sums=('01f8099a2fa6f35defb8a9f92ce3977a'
          '7f1ac5c621059b3959a318882acf990e')
 
 #prepare() {
