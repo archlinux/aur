@@ -2,11 +2,12 @@
 
 pkgname=pkcrack
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An algorithm for breaking the PkZip cipher that was devised by Eli Biham and Paul Kocher."
 arch=('i686' 'x86_64')
 url="https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html"
 license=('custom')
+conflicts=('libextractor')
 depends=('glibc')
 source=("https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/pkcrack-${pkgver}.tar.gz"
         "LICENSE")
