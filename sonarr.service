@@ -1,3 +1,6 @@
+# Be sure to use `systemctl edit sonarr` to modify this service with an override.conf because
+# direct changes will be overwritten by package updates.
+
 [Unit]
 Description=Sonarr Service
 Wants=network-online.target
