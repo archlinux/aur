@@ -1,0 +1,17 @@
+pkgbase = epsonscan2-non-free-plugin
+	pkgdesc = Plugins for Epson Scan 2
+	pkgver = 1.0.0.4
+	pkgrel = 1
+	url = http://support.epson.net/linux/en/epsonscan2.php
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = xxd
+	depends = epsonscan2
+	source_i686 = https://download2.ebz.epson.net/epsonscan2/common/deb/x86/epsonscan2-bundle-6.6.2.3.i686.deb.tar.gz
+	sha512sums_i686 = 52323244db52eb8fde3a24b381ee66581f5c7fcc979dd62598ff1103062b5e478d35b36c828ea09a411bb5e0a8bae6f9131e8d81e9c8cc7810215a7c6cef9681
+	source_x86_64 = https://download2.ebz.epson.net/epsonscan2/common/deb/x64/epsonscan2-bundle-6.6.2.3.x86_64.deb.tar.gz
+	sha512sums_x86_64 = 7adede8b56305c70695b6832b3a8cf7ab442f679c2ea52d508c60fcaeeadf04b2eb67960d678630b9d090253afc11147ceb82e06d0777184c8faf61109a2b886
+
+pkgname = epsonscan2-non-free-plugin
+
