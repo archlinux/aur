@@ -1,5 +1,6 @@
 /gnupg-*.tgz
 /php-gnupg-*.pkg.tar.xz
+/php-gnupg-*.pkg.tar.zst
 /php-gnupg-*.src.tar.gz
 /pkg/
 /src/

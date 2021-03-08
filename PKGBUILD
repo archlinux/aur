@@ -2,8 +2,8 @@
 
 pkgname=php-gnupg
 _extname=gnupg
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0RC2
+pkgrel=1
 pkgdesc="PHP extension for gnupg/gpgme."
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/${_extname}"
@@ -12,7 +12,7 @@ depends=('php>=5.1.3' 'gpgme')
 backup=("etc/php/conf.d/${_extname}.ini")
 install="php-${_extname}.install"
 source=("https://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-md5sums=('2354cb56168d8ea0f643e548e139d013')
+md5sums=('4dc04235897c955cdb143e549570c689')
 
 build() {
   cd "${_extname}-${pkgver}"
