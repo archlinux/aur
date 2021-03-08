@@ -1,6 +1,6 @@
 # Maintainer: Colin Adler <colin@coder.com>
-# Maintainer: Anmol Sethi <anmol@coder.com>
 # Maintainer: Ash <ash@coder.com>
+# Maintainer: Joe Previte <joe@coder.com>
 
 pkgname=code-server
 pkgver=3.8.1
