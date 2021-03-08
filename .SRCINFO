@@ -1,6 +1,6 @@
 pkgbase = hikarujs
 	pkgdesc = A static site generator that generates routes based on directories naturally.
-	pkgver = 1.7.1
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://hikaru.alynx.one/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = hikarujs
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs>=10.13.0
-	noextract = hikarujs-1.7.1.tgz
-	source = https://registry.npmjs.org/hikarujs/-/hikarujs-1.7.1.tgz
-	sha512sums = 84a8d9d67cafe85177aec82e683f83d9b4021614df4c7aef2ebd970d0f95f4b14f47d975806364b9141a852f8ba1de590b075077bf91acfc062a97a7ff2fa118
+	noextract = hikarujs-1.7.3.tgz
+	source = https://registry.npmjs.org/hikarujs/-/hikarujs-1.7.3.tgz
+	sha512sums = 28aa6a63d893057773c7c9459060bea71833f1831c17dad607a60cdf310abee0de44c8ba55e83080705d4404b6119df87460d75d7d5c0186abac65a375b5be60
 
 pkgname = hikarujs
 
