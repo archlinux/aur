@@ -1,6 +1,6 @@
 _pipname=yamk
 pkgname="python-${_pipname}"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Yet another make"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/spapanik/yamk"
 license=('MIT')
 depends=('python-tomlkit')
 source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha512sums=('23df47d69d222444727ffee1942ba54ea12c3a01871a4e1ad2c3c5fe4276d01c7704f9e9ef6300fa2bc3fe5d94c55cd294b4ae4426a935805e72e7aacc24d598')
+sha512sums=('0484408f2c71a3d770977ca794b4046d01944d167aece9172fd5c1def5af5cb2034a3566bc28828d41e54e535817c3ea51f3e63fcef7e80355e2d02f29a3ec77')
 
 build() {
 	cd "${srcdir}"/${_pipname}-${pkgver}
