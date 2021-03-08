@@ -8,7 +8,7 @@ pkgver=3.0.5.1150
 pkgrel=1
 pkgdesc='TV download automation for usenet and torrents.'
 arch=(any)
-url='http://www.sonarr.tv'
+url='https://sonarr.tv/'
 license=('GPL3')
 
 depends=(
