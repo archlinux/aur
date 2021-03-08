@@ -1,23 +1,23 @@
-# Maintainer: foi <foi@live.ru>
+# Maintainer: Anatol Pomozov
 
 pkgname=osquery-bin
-pkgver=4.0.2
+pkgver=4.6.0
 pkgrel=1
-pkgdesc="osquery is an operating system instrumentation framework."
-arch=('x86_64')
-url="https://osquery.io/"
-license=('Apache License 2.0')
-depends=('glibc' 'bash' 'zlib')
-conflicts=('osquery-git' 'kolide-git')
-sha256sums=('b32f052250908eefabdd582e07aa5e206ab1899762d728bc1a17dae5151070b4')
-source=("https://osquery-packages.s3.amazonaws.com/linux/osquery-${pkgver}_${pkgrel}.linux_x86_64.tar.gz")
+pkgdesc='SQL powered operating system instrumentation, monitoring, and analytics'
+arch=(x86_64)
+url='https://osquery.io'
+license=(Apache, GPL2)
+depends=(zlib)
+makedepends=()
+conflicts=(osquery)
+provides=(osquery)
+replaces=(osquery)
+source=(https://pkg.osquery.io/linux/osquery-${pkgver}_1.linux_x86_64.tar.gz)
+sha1sums=('b73dee6155477c26d77420387fdfd65c9cc73c0b')
 
 package() {
-  cp -r etc "$pkgdir/"
-  cp -r usr "$pkgdir/"
-  cp -r var "$pkgdir/"
-}
-
-post_install() {
-  systemctl daemon-reload
+  rm -r etc/init.d
+  cp -r etc $pkgdir
+  cp -r usr/local $pkgdir/usr
+  cp -r var $pkgdir
 }
