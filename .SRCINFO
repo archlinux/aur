@@ -1,6 +1,6 @@
 pkgbase = r-rgl
 	pkgdesc = 3D Visualization Using OpenGL
-	pkgver = 0.105.13
+	pkgver = 0.105.22
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rgl
 	arch = i686
@@ -34,8 +34,8 @@ pkgbase = r-rgl
 	optdepends = libpng
 	optdepends = freetype2
 	optdepends = pandoc
-	source = https://cran.r-project.org/src/contrib/rgl_0.105.13.tar.gz
-	sha256sums = 8be8893706bfda21cdab88d41a5608aa8d7c6f8809ff3e78a4cf92db87ad4a6a
+	source = https://cran.r-project.org/src/contrib/rgl_0.105.22.tar.gz
+	sha256sums = 7f0675f6c9c1a65d06482f6ec4ae84b58301c2cdc3238066806d5e543dbcc9f8
 
 pkgname = r-rgl
 
