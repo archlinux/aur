@@ -10,8 +10,8 @@ __pkgname=uutils-coreutils
 pkgver=8.32_0.0.4
 _pkgver=8.32
 __pkgver=0.0.4
-pkgrel=3
-pkgdesc='GNU Coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished'
+pkgrel=4
+pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
 license=('GPL3')
 url='https://www.gnu.org/software/coreutils/'
@@ -47,25 +47,25 @@ build() {
       --prefix=/usr \
       --libexecdir=/usr/lib \
       --with-openssl \
-      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,hashsum,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,realpath,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes,md5sum,sha1sum,sha224sum,sha256sum,sha384sum,sha512sum" # not replacing stat, touch as that gave error output
+      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,realpath,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes" # not replacing stat, touch as that gave error output
   make
 }
 
 package() {
-  # Install uutils-coreutils
+  # Install uutils-coreutils, skip the buggy parts
   cd $_pkgname-$__pkgver
   make \
     DESTDIR="$pkgdir" \
     PREFIX=/usr \
     MANDIR=/share/man/man1 \
-    PROG_PREFIX= \
+    SKIP_UTILS='stat touch' \ 
     install
 
   # Install GNU coreutils over the uutils-coreutils
   cd $srcdir && cd $_pkgname-$_pkgver
   make DESTDIR="$pkgdir" install
   
-  # Clean conflicts
+  # Clean conflicts, Arch ships these in other apps
   cd $pkgdir/usr/bin
   rm groups hostname kill more uptime
 }
