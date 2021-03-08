@@ -1,0 +1,22 @@
+pkgbase = kakoune.cr-git
+	pkgdesc = command-line tool for Kakoune
+	pkgver = r33.14367a5
+	pkgrel = 1
+	url = https://github.com/alexherbo2/kakoune.cr
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	depends = crystal
+	depends = shards
+	depends = jq
+	optdepends = fzf: fzf integration
+	optdepends = bat: fzf integration
+	optdepends = fd: fzf integration
+	optdepends = ripgrep: fzf integration
+	provides = kakoune.cr
+	conflicts = kakoune.cr
+	source = git+https://github.com/alexherbo2/kakoune.cr
+	sha256sums = SKIP
+
+pkgname = kakoune.cr-git
+
