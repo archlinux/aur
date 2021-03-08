@@ -1,6 +1,6 @@
 pkgbase = notcurses
 	pkgdesc = Blingful TUI/character graphics library
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://nick-black.com/dankwiki/index.php/Notcurses
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = notcurses
 	depends = ncurses
 	depends = ffmpeg
 	depends = libunistring
-	source = https://github.com/dankamongmen/notcurses/archive/v2.2.2.tar.gz
-	sha256sums = f6e31e2662aad880373e45f23f4056c5fd254627b57084d71da2430df20f0488
+	source = https://github.com/dankamongmen/notcurses/archive/v2.2.3.tar.gz
+	sha256sums = 007b13c3b67de5c86b0004d29b414c0e8bd1c80a7bf00f208423cb1db5fd9e62
 
 pkgname = notcurses
 
