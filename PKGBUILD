@@ -1,7 +1,7 @@
 # Maintainer: Egor Tensin <Egor.Tensin@gmail.com>
 pkgname=linux-status
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple Linux status web page'
 arch=(any)
 url='https://github.com/egor-tensin/linux-status'
@@ -12,7 +12,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=(SKIP)
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir"
+
+    install -D -m 0644 -t "$pkgdir/usr/share/doc/linux-status" "../README.Arch"
+
+    cd "$pkgname-$pkgver"
 
     install -D -m 0644 -t "$pkgdir/usr/share/linux-status" LICENSE.txt
 
