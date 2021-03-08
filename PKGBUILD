@@ -45,14 +45,6 @@ provides=('uefi-shell')
 
 install="${_pkgname}.install"
 
-declare -A _submod_path
-_submod_path["CryptoPkg/Library/OpensslLib/openssl"]="openssl"
-_submod_path["SoftFloat"]="softfloat"
-_submod_path["UnitTestFrameworkPkg/Library/CmockaLib/cmocka"]="cmocka"
-_submod_path["MdeModulePkg/Universal/RegularExpressionDxe/oniguruma"]="oniguruma"
-_submod_path["MdeModulePkg/Library/BrotliCustomDecompressLib/brotli"]="brotli"
-_submod_path["BaseTools/Source/C/BrotliCompress/brotli"]="brotli"
-
 source=(
 	"${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
 	"brotli::git+https://github.com/google/brotli"
@@ -84,6 +76,14 @@ _setup_env_vars() {
 
 _prepare_tianocore_sources() {
 	cd "${_UDK_DIR}/"
+
+	declare -A _submod_path
+	_submod_path["CryptoPkg/Library/OpensslLib/openssl"]="openssl"
+	_submod_path["SoftFloat"]="softfloat"
+	_submod_path["UnitTestFrameworkPkg/Library/CmockaLib/cmocka"]="cmocka"
+	_submod_path["MdeModulePkg/Universal/RegularExpressionDxe/oniguruma"]="oniguruma"
+	_submod_path["MdeModulePkg/Library/BrotliCustomDecompressLib/brotli"]="brotli"
+	_submod_path["BaseTools/Source/C/BrotliCompress/brotli"]="brotli"
 
 	msg "Updating submodules"
 	git submodule init
