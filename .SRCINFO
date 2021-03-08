@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-ck
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.4.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.4.tar.sign
 	source = config
-	source = enable_additional_cpu_optimizations-20210307.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210307.tar.gz
+	source = enable_additional_cpu_optimizations-20210308.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210308.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.11/5.11-ck1/patch-5.11-ck1.xz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -23,7 +23,7 @@ pkgbase = linux-ck
 	b2sums = 6d1cf5f10442c3d7c849f89d27eb92704d1b5c0b449d1ab8b332a373387a0f9cdf971c1ab0d83b3c911aad18c097908bd73c7c478da238da7b6396a434df7816
 	b2sums = SKIP
 	b2sums = 387d7fecc6a6ef1290e42683c200923b438bdb0c2ad6fd1b31d65e21110405f0b4abb6cd995276f741b14682fa3774d14bd7190746599d7898a49a5324f7b3ca
-	b2sums = e1daf14455f2fda1610be7ef0bcee630c9735ef32b2d879483a312f66490d990afd5179d203ee5d6678127ff358961b9c00292719df041339cdbaa7167da3e87
+	b2sums = 8fb2ccecc11fbf024e443c0adc1aef764aee69b222041501959e3f29be8ea9bc2d017c040a5844974e6b59f8a14c020f7dda5d29a30039f5d4465affba15fe71
 	b2sums = 81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5
 	b2sums = 59c8f4d66eeeb5b3f84b17ab81431804ac9334e97cdbf99ff3dd77803ee3af55908d3d3ba0e957093418a7c5805e423ac78dd398ffb64ba6577aa69bfb9cfbe1
 
