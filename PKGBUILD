@@ -1,8 +1,9 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: lesto <lestofante88@gmail.com>
+# Contributor: F. Rødseth <xyproto@archlinux.org>
 
 pkgname=processing
 pkgver=3.5.4
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -20,7 +21,7 @@ source=("https://github.com/$pkgname/$pkgname/archive/$pkgname-0$((266+${pkgver#
         build.xml
         errormessage.patch)
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
-            '1417308bf43bec2a8d178b84043a3e8a498fa164f3bf7d7668ba17cf96de1282'
+            'fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             '9f4050475b3363eb5e966fa891caea0391b3dcc2cdb68245f1a053b0d7ffb220'
             '3c49143a129c6b3655586bce9f175ee145ab388b78ad4615d6c0b80563ba6f26')
 
