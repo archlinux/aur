@@ -6,6 +6,7 @@ pkgbase = xtrace
 	arch = x86_64
 	license = GPL
 	makedepends = autoconf
+	makedepends = automake
 	makedepends = make
 	depends = glibc
 	optdepends = xorg-xauth
