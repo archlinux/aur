@@ -1,12 +1,12 @@
 diff --git a/setup.py b/setup.py
-index 2a2dd9f..921e594 100644
+index f153bad..5b5f671 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -32,6 +32,6 @@ setuptools.setup(
+@@ -35,6 +35,6 @@ setuptools.setup(
      },
      include_package_data=True,
      zip_safe=False,
 -    install_requires=install_requires,
 +    install_requires=[],
-     python_requires='>=3.6',
+     python_requires=">=3.6",
  )
