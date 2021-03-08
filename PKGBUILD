@@ -2,7 +2,7 @@
 
 pkgname=or-tools
 pkgver=8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
 url="https://github.com/google/or-tools"
@@ -30,8 +30,8 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-    cmake --build build -- "${MAKEFLAGS}"
+    cd "$pkgname-$pkgver/build"
+    make
 }
 
 # https://github.com/google/or-tools/issues/2395
