@@ -3,7 +3,7 @@
 pkgname=alttpr-opentracker-git
 _pkgname=alttpr-opentracker
 _reponame=OpenTracker
-pkgver=1.8.1.r1.3ffc833
+pkgver=1.8.2.r1.67c9cc3
 pkgrel=1
 pkgdesc="An open-source cross-platform tracking app for A Link to the Past Randomizer."
 arch=('x86_64')
