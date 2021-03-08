@@ -4,7 +4,7 @@ pkgname=dialect
 _author=gi-lom
 _gitname=dialect
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A translation app for GNOME based on Google Translate'
 arch=(any)
 url=https://github.com/gi-lom/dialect
@@ -17,6 +17,9 @@ depends=(
   python-gobject
   python-googletrans
   python-gtts
+  python-h2
+  python-httpx
+  python-langdetect
 )
 makedepends=(
   gobject-introspection
