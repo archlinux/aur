@@ -1,19 +1,13 @@
 pkgbase = latexdraw
-	pkgdesc = A vector drawing editor for LaTeX (Java Swing/JavaFX)
+	pkgdesc = A vector drawing editor for LaTeX (JavaFX)
 	pkgver = 4.0.3
-	pkgrel = 1
-	url = https://github.com/latexdraw/latexdraw
+	pkgrel = 4
+	url = http://latexdraw.sourceforge.net
 	arch = x86_64
 	license = GPL3
 	makedepends = dpkg
 	makedepends = java-environment>=14
 	makedepends = maven
-	depends = freetype2
-	depends = giflib
-	depends = java-runtime>=14
-	depends = lcms2
-	depends = libjpeg-turbo
-	depends = libnet
 	source = latexdraw-4.0.3.tar.gz::https://github.com/latexdraw/latexdraw/archive/4.0.3.tar.gz
 	sha512sums = a2b5a7438c43fab1cb840e4eb521dab78369fb5ee78ebb138d6b6e8f8bf07d51d62ca54d3689ee82dd57e1dfb34e2773cc439fdb1221aaf0614d2ba6d161566c
 
