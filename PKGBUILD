@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=xmlparsedata
-_cranver=1.0.4
+_cranver=1.0.5
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('r>=3.0.0')
 optdepends=(r-covr r-testthat r-xml2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('387b13c25bea9ddc0a39b817c17c199b86ab9acafa328daae2233a9ca577fb9c')
+sha256sums=('766034ab5e9728609bd240c9954d23ca0cdb881a98a31b9d3e1c8767c7b7cbb0')
 
 build() {
   cd "${srcdir}"
