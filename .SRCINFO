@@ -1,7 +1,7 @@
 pkgbase = prime_server
 	pkgdesc = Non-blocking server API for distributed computing and SOA based on zeromq.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kevinkreiser/prime_server
 	arch = x86_64
 	license = custom
