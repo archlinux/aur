@@ -1,20 +1,17 @@
 pkgbase = receitanet
 	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.23
+	pkgver = 1.24
 	pkgrel = 1
 	url = http://www.receita.fazenda.gov.br
-	install = receitanet.install
 	arch = any
 	license = custom
-	depends = java-environment
+	depends = java-runtime
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.23-1.noarch.rpm
+	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.24-1.noarch.rpm
 	source = Copyright
-	source = receitanet.install
-	md5sums = 809ce5fe168e44594f8421687e3a1e06
+	md5sums = 57e8b9488b3c03059690a0dbc1e32f16
 	md5sums = 0482abdccc0286f64ed66981fcca8975
-	md5sums = 339dcd1387350f6eb9ebb9f944f6b616
 
 pkgname = receitanet
 
