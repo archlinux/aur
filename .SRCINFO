@@ -1,0 +1,17 @@
+pkgbase = mel
+	pkgdesc = Delete sensitive files in panic situations
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://gitlab.com/twann4/mel
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-setuptools
+	depends = python>=3
+	depends = python-colorama
+	provides = mel
+	source = git+https://gitlab.com/twann4/mel.git
+	md5sums = SKIP
+
+pkgname = mel
+
