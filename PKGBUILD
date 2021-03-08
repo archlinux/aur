@@ -1,5 +1,5 @@
 pkgname=bincalc
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc='Command line calculator for bit fiddling (showing bits, showing as floats, etc.)'
 url='https://github.com/sandsmark/bincalc'
@@ -8,7 +8,7 @@ license=('GPL2')
 makedepends=(gcc)
 depends=(gmp)
 source=("https://github.com/sandsmark/bincalc/archive/${pkgver}.tar.gz")
-sha256sums=('cf3ddb4ba420475dc95587b5b3c729159b1a7a6d2f8cbe41b9dc09d921f64876')
+sha256sums=('dc3a11c19461d8313067dbbcca593cb85a92004500549a36ee3e4788b0d511b6')
 
 build() {
     cd bincalc-${pkgver}
