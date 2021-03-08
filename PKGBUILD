@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('libssh2>=1.6.0' 'openssl>=1.0.2.d' 'openssl>=1.0.2.d' 'perl>=5.6.0' 'zlib>=1.2.8')
 makedepends=()
 url='https://metacpan.org/release/Net-SSH2'
-source=("http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/Net-SSH2-$pkgver.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Net-SSH2-$pkgver.tar.gz")
 sha512sums=('bd0453fa3c971111114f17f3972c0d98726020230ef4d5a21ccd102158d427b46ba3b508f95cf9119f2f207b7c2592adb06184db9cb0d7c69de854e7aa7c6851')
 _distdir="Net-SSH2-$pkgver"
 

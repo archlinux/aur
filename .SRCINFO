@@ -13,7 +13,7 @@ pkgbase = perl-net-ssh2
 	depends = perl>=5.6.0
 	depends = zlib>=1.2.8
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/Net-SSH2-0.72.tar.gz
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Net-SSH2-0.72.tar.gz
 	sha512sums = bd0453fa3c971111114f17f3972c0d98726020230ef4d5a21ccd102158d427b46ba3b508f95cf9119f2f207b7c2592adb06184db9cb0d7c69de854e7aa7c6851
 
 pkgname = perl-net-ssh2
