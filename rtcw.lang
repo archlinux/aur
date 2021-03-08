@@ -1,0 +1,27 @@
+#!/bin/bash
+if [ -e /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3 ]; then
+    rm /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3
+fi
+if [ -e /opt/return_to_castle_wolfenstein/main/language.cfg ]; then
+    rm /opt/return_to_castle_wolfenstein/main/language.cfg
+fi
+PS3="Please enter your choice: "
+echo "Please select your preferred language."
+select language in deutsch english español français italiano; do
+    if [[ $language == deutsch ]]; then
+        ln -s /opt/return_to_castle_wolfenstein/main/de_pak3.pk3 /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3
+        ln -s /opt/return_to_castle_wolfenstein/main/de_language.cfg /opt/return_to_castle_wolfenstein/main/language.cfg
+    elif [[ $language == english ]]; then
+        ln -s /opt/return_to_castle_wolfenstein/main/en_pak3.pk3 /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3
+    elif [[ $language == español ]]; then
+        ln -s /opt/return_to_castle_wolfenstein/main/es_pak3.pk3 /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3
+        ln -s /opt/return_to_castle_wolfenstein/main/es_language.cfg /opt/return_to_castle_wolfenstein/main/language.cfg
+    elif [[ $language == français ]]; then
+        ln -s /opt/return_to_castle_wolfenstein/main/fr_pak3.pk3 /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3
+        ln -s /opt/return_to_castle_wolfenstein/main/fr_language.cfg /opt/return_to_castle_wolfenstein/main/language.cfg
+    elif [[ $language == italiano ]]; then
+        ln -s /opt/return_to_castle_wolfenstein/main/it_pak3.pk3 /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3
+        ln -s /opt/return_to_castle_wolfenstein/main/it_language.cfg /opt/return_to_castle_wolfenstein/main/language.cfg
+    fi
+    break
+done

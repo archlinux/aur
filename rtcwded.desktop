@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Return to Castle Wolfenstein: server
+Comment=Set up a dedicated RTCW server
+Path=/opt/return_to_castle_wolfenstein/
+Exec=/opt/return_to_castle_wolfenstein/iowolfded.ARCH
+Icon=rtcwmp-id.png
+Terminal=true
+Type=Application
+X-DCOP-ServiceType=Multi
+X-KDE-StartupNotify=true
+Categories=Game;FPS;

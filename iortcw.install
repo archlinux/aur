@@ -1,0 +1,14 @@
+## arg 1:  the new package version
+post_install() {
+    echo execute sudo rtcw.lang to select your preferred language.
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    if [ -e /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3 ]; then
+        rm /opt/return_to_castle_wolfenstein/main/sp_pak3.pk3
+    fi
+    if [ -e /opt/return_to_castle_wolfenstein/main/language.cfg ]; then
+        rm /opt/return_to_castle_wolfenstein/main/language.cfg
+    fi
+}
