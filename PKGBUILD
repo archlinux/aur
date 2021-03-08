@@ -7,38 +7,25 @@
 
 _pkgname=elinks
 pkgname=${_pkgname}-git
-pkgver=0.13.1481.rf86be659
-pkgrel=2
+pkgver=v0.14.0.r49.gf351fbcf
+pkgrel=1
 pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version."
 arch=("i686" "x86_64")
-url="http://elinks.or.cz"
+url="https://github.com/rkd77/elinks"
 provides=(${_pkgname})
 license=('GPL')
 conflicts=(${_pkgname})
-depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'lua51' 'libidn' 'gc' 'tre')
-source=("git+http://repo.or.cz/elinks.git"
-        "lua_strlen_fix.patch")
-md5sums=('SKIP'
-         'b0ea32b03eb8775d122c723a29e0db1e')
-
-# 0.13 does not have a tag.
-_relcommit="976f06ddf8d014fdfeee33a261e4f42eb4601e3b"
-_relname="0.13"
+depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'lua51' 'libidn' 'gc' 'tre' 'zlib')
+source=("git+https://github.com/rkd77/elinks")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  echo "${_relname}.$(git rev-list --count "${_relcommit}..HEAD").r$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${_pkgname}"
-
-  for f in lua_strlen_fix.patch; do
-    msg2 "applying $f..."
-    patch -p1 <"${srcdir}/$f"
-  done
-
-  msg2 "starting build..."
 
   [ -x configure ] || sh autogen.sh
   ./configure --prefix=/usr --mandir=/usr/share/man \
