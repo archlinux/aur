@@ -9,7 +9,7 @@ Name=Real Time Trains
 Comment=Live Timtabling data for Britain's Railways
 
 # Exec
-Exec=rtt
+Exec=realtimetrains
 
 # Term
 Terminal=false
