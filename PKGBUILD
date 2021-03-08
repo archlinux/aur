@@ -1,13 +1,13 @@
 # Maintainer: gileri <twiked at gmail d(0)t com>
 pkgname=pyosmium-git
-pkgver=2.15.3.r0.gfb4ce3a
+pkgver=3.1.3.r4.g78b09cf
 pkgrel=1
 pkgdesc="Python bindings for libosmium"
 url="http://osmcode.org/pyosmium"
 arch=('x86_64' 'i686')
 license=('custom')
 depends=('boost' 'libosmium' 'python' 'protozero')
-makedepends=('pybind11' 'python-setuptools' 'cmake' 'boost-libs')
+makedepends=('git' 'pybind11' 'python-setuptools' 'cmake' 'boost-libs')
 optdepends=()
 conflicts=('pyosmium')
 provides=('pyosmium')
