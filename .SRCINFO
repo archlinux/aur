@@ -1,0 +1,21 @@
+pkgbase = nsfminer-git
+	pkgdesc = Ethereum miner with OpenCL and CUDA support derived from ethminer. RTX 30 series compatible.
+	pkgver = r14556.a1b3e8623
+	pkgrel = 1
+	url = https://github.com/no-fee-ethereum-mining/nsfminer
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = perl
+	makedepends = python
+	makedepends = git
+	depends = pth
+	depends = cuda
+	depends = mesa
+	provides = nsfminer
+	source = git+https://github.com/no-fee-ethereum-mining/nsfminer.git
+	sha256sums = SKIP
+
+pkgname = nsfminer-git
+
