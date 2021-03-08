@@ -1,5 +1,5 @@
 pkgbase = rtcw-data-gog
-	pkgdesc = Return to Castle Wolfenstein - extract required game data from gog windows installer
+	pkgdesc = Return to Castle Wolfenstein - extracts required game data from the gog windows installer
 	pkgver = 1.41
 	pkgrel = 1
 	url = https://www.gog.com/game/return_to_castle_wolfenstein

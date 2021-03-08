@@ -5,7 +5,7 @@ _pkgname=return_to_castle_wolfenstein
 pkgver=1.41
 _build=2.0.0.2
 pkgrel=1
-pkgdesc="Return to Castle Wolfenstein - extract required game data from gog windows installer"
+pkgdesc="Return to Castle Wolfenstein - extracts required game data from the gog windows installer"
 arch=('any')
 url="https://www.gog.com/game/${_pkgname}"
 license=('custom')
@@ -27,7 +27,9 @@ prepare() {
     icotool -x -o . app/goggame-1441704976.ico
     icotool -x -o . *.ico
     patch --binary -p1 < "${srcdir}/rtcw-help.patch"
-    rm "${srcdir}/app/Docs/Help/index.htm.orig"
+    if [ -e "${srcdir}/app/Docs/Help/index.htm.orig" ]; then
+        rm "${srcdir}/app/Docs/Help/index.htm.orig"
+    fi
 }
 
 package() {
