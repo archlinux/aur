@@ -2,7 +2,7 @@
 pkgname=cue-bin
 pkgver=0.3.0_beta.5
 _pkgver="0.3.0-beta.5"
-pkgrel=1
+pkgrel=2
 pkgdesc="Validate and define text-based and dynamic configuration"
 url="https://github.com/cuelang/cue"
 arch=(x86_64)
@@ -18,4 +18,10 @@ package() {
   install -Dm755 cue ${pkgdir}/usr/bin/cue
   install -d ${pkgdir}/usr/share/doc/cue
   cp -r doc/* ${pkgdir}/usr/share/doc/cue
+  zsh_completion_dir=${pkgdir}/usr/share/zsh/site-functions
+  mkdir -p ${zsh_completion_dir}
+  ./cue completion zsh > ${zsh_completion_dir}/_cue
+  bash_completion_dir=${pkgdir}/usr/share/bash-completion/completions
+  mkdir -p ${bash_completion_dir}
+  ./cue completion bash > ${bash_completion_dir}/_cue
 }

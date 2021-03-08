@@ -1,7 +1,7 @@
 pkgbase = cue-bin
 	pkgdesc = Validate and define text-based and dynamic configuration
 	pkgver = 0.3.0_beta.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cuelang/cue
 	arch = x86_64
 	license = Apache
