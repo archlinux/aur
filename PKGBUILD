@@ -2,7 +2,7 @@
 
 pkgname=('lua-luaogg' 'lua51-luaogg' 'lua52-luaogg' 'lua53-luaogg')
 _pkgbase='luaogg'
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/jprjr/luaogg'
@@ -11,7 +11,7 @@ depends=('libogg')
 makedepends=('cmake' 'lua' 'lua51' 'lua52' 'lua53')
 source=("https://github.com/jprjr/luaogg/releases/download/v${pkgver}/luaogg-${pkgver}.tar.gz")
 
-md5sums=('08c493bb0e9a0f21de51cf502ee5888f')
+md5sums=('1869b6a28246e1a0ae166601cdf43e5b')
 
 build() {
 
