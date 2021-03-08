@@ -1,5 +1,5 @@
 diff --git a/build/pkgs/singular/checksums.ini b/build/pkgs/singular/checksums.ini
-index 55751d3429..9c6990e353 100644
+index 55751d3429..ff4ab29cbe 100644
 --- a/build/pkgs/singular/checksums.ini
 +++ b/build/pkgs/singular/checksums.ini
 @@ -1,4 +1,5 @@
@@ -7,17 +7,17 @@ index 55751d3429..9c6990e353 100644
 -sha1=5c6b6c3d2b5ebaca164967eec67e59ebb4e6142f
 -md5=cb50d64ab1b2b49a0c3f519e5c87639e
 -cksum=4294037094
-+sha1=95b5930125a097089e22c07884159e99facc7acb
-+md5=5d18fcfcd078f4876c5d0e2637c5f334
-+cksum=3775772497
++sha1=3f85ab3e099928af4f1a44693ad425e4861d1b21
++md5=cd8ee869421ca225b4c469a0ea74c5ee
++cksum=3689677991
 +upstream_url=ftp://jim.mathematik.uni-kl.de/pub/Math/Singular/SOURCES/4-2-0/singular-VERSION.tar.gz
 diff --git a/build/pkgs/singular/package-version.txt b/build/pkgs/singular/package-version.txt
-index dc3219d462..4e849c9e97 100644
+index dc3219d462..78a1780baf 100644
 --- a/build/pkgs/singular/package-version.txt
 +++ b/build/pkgs/singular/package-version.txt
 @@ -1 +1 @@
 -4.1.1p2.p0
-+4.2.0p0
++4.2.0p1
 diff --git a/build/pkgs/singular/patches/configure-no-ntl-header-check.patch b/build/pkgs/singular/patches/configure-no-ntl-header-check.patch
 index 3109e57f4b..b4ec33fc05 100644
 --- a/build/pkgs/singular/patches/configure-no-ntl-header-check.patch
@@ -684,7 +684,7 @@ index 49a42e2786..53750a6341 100644
          return self(self._s(left) * self._s(right))
  
 diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
-index 3eaf12e6ad..1864fd1d37 100644
+index 88ea467d9e..7a9f224e9c 100644
 --- a/src/sage/interfaces/singular.py
 +++ b/src/sage/interfaces/singular.py
 @@ -191,13 +191,21 @@ The 1x1 and 2x2 minors::
@@ -730,7 +730,7 @@ index 3eaf12e6ad..1864fd1d37 100644
      sage: I.groebner()
      f^48-2554*f^42-15674*f^36+12326*f^30-12326*f^18+15674*f^12+2554*f^6-1,
 diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
-index 0fea70ad25..b8a848312e 100644
+index bf03efe222..8a9b771f26 100644
 --- a/src/sage/libs/singular/function.pyx
 +++ b/src/sage/libs/singular/function.pyx
 @@ -938,7 +938,7 @@ cdef class Converter(SageObject):
@@ -865,7 +865,7 @@ index 43e93b823f..1bd3696c73 100644
          -1
          sage: degree_lowest_rational_function(r,b)
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 38bf2b01d1..0e3b3d7a86 100644
+index 130d8317a7..8e76b06313 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
 @@ -154,7 +154,7 @@ when the system has no solutions over the rationals.
@@ -948,7 +948,7 @@ index 38bf2b01d1..0e3b3d7a86 100644
  
          ALGORITHM:
  
-@@ -2699,7 +2697,7 @@ class MPolynomialIdeal_singular_repr(
+@@ -2698,7 +2696,7 @@ class MPolynomialIdeal_singular_repr(
              return out
          elif algorithm == 'singular':
              from sage.libs.singular.function_factory import ff
@@ -957,7 +957,7 @@ index 38bf2b01d1..0e3b3d7a86 100644
  
              hp = hilbPoly(self)
              t = ZZ['t'].gen()
-@@ -4011,7 +4009,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4010,7 +4008,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
              sage: J.groebner_basis.set_cache(gb)
              sage: ideal(J.transformed_basis()).change_ring(P).interreduced_basis()  # testing trac 21884
@@ -966,7 +966,7 @@ index 38bf2b01d1..0e3b3d7a86 100644
  
          Giac's gbasis over `\QQ` can benefit from a probabilistic lifting and
          multi threaded operations::
-@@ -4114,9 +4112,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4113,9 +4111,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: P.<a,b,c> = PolynomialRing(ZZ,3)
              sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
              sage: I.groebner_basis()
@@ -980,10 +980,10 @@ index 38bf2b01d1..0e3b3d7a86 100644
               10*b*c + 12*c^2 - b - 4*c,
               a + 2*b + 2*c - 1]
 diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index 836afdcdcd..4129c2c8fd 100644
+index b3bb733d7a..831113a5c9 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-@@ -1349,7 +1349,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
+@@ -1337,7 +1337,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
              sage: R = IntegerModRing(15)['x,y']
              sage: singular(R)
              polynomial ring, over a ring (with zero-divisors), global ordering
@@ -1062,7 +1062,7 @@ index 37f131b585..d9c33d9c2b 100644
              //        block   1 : ordering dp
              //                  : names    x y
 diff --git a/src/sage/schemes/curves/projective_curve.py b/src/sage/schemes/curves/projective_curve.py
-index 434a4c51d7..3ec210bf8d 100644
+index 2a9772da51..4c84a932bc 100644
 --- a/src/sage/schemes/curves/projective_curve.py
 +++ b/src/sage/schemes/curves/projective_curve.py
 @@ -2000,7 +2000,7 @@ class ProjectivePlaneCurve_finite_field(ProjectivePlaneCurve_field):

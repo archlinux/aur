@@ -69,7 +69,7 @@ index a62b9e8e19..d920acf8b5 100644
          N = len(pts)
          yvec = np.zeros(N, dtype=np.complex128)
 diff --git a/src/sage/calculus/riemann.pyx b/src/sage/calculus/riemann.pyx
-index 0bbc550712..c31a0b80ca 100644
+index 0bbc550712..c8569895dc 100644
 --- a/src/sage/calculus/riemann.pyx
 +++ b/src/sage/calculus/riemann.pyx
 @@ -255,13 +255,13 @@ cdef class Riemann_Map:
@@ -90,25 +90,27 @@ index 0bbc550712..c31a0b80ca 100644
          if self.exterior:
              xmax = (1/cps).real.max()
              xmin = (1/cps).real.min()
-@@ -606,7 +606,7 @@ cdef class Riemann_Map:
+@@ -605,8 +605,7 @@ cdef class Riemann_Map:
+             (-1.56...e-05+0.989694...j)
              sage: m.riemann_map(0.4)
              (0.73324...+3.2...e-06j)
-             sage: import numpy as np
+-            sage: import numpy as np
 -            sage: m.riemann_map(np.complex(-3, 0.0001))
 +            sage: m.riemann_map(complex(-3, 0.0001))
              (1.405757...e-05+8.06...e-10j)
          """
  
-@@ -692,7 +692,7 @@ cdef class Riemann_Map:
+@@ -691,8 +690,7 @@ cdef class Riemann_Map:
+             (0.486319...-4.90019052...j)
              sage: m.inverse_riemann_map(0.25 - 0.3*I)
              (0.1653244...-0.180936...j)
-             sage: import numpy as np
+-            sage: import numpy as np
 -            sage: m.inverse_riemann_map(np.complex(-0.2, 0.5))
 +            sage: m.inverse_riemann_map(complex(-0.2, 0.5))
              (-0.156280...+0.321819...j)
          """
          if self.exterior:
-@@ -974,7 +974,7 @@ cdef class Riemann_Map:
+@@ -974,7 +972,7 @@ cdef class Riemann_Map:
                  for i in xrange(pts - 1):
                      temp[i] = self.inverse_riemann_map(
                          (i * 1.0) / (pts * 1.0) * exp(I * angle) * linescale)
@@ -248,24 +250,18 @@ index 77a3a18913..9ca8ab3153 100644
  
          Test underscores as digit separators (PEP 515,
 diff --git a/src/sage/rings/real_mpfi.pyx b/src/sage/rings/real_mpfi.pyx
-index 24c652f995..c1695462b7 100644
+index 6308866863..a87d9903dd 100644
 --- a/src/sage/rings/real_mpfi.pyx
 +++ b/src/sage/rings/real_mpfi.pyx
-@@ -233,11 +233,11 @@ TESTS:
- Comparisons with numpy types are right (see :trac:`17758` and :trac:`18076`)::
- 
-     sage: import numpy
+@@ -235,7 +235,7 @@ TESTS::
+     True
+     sage: numpy.int8('2') == RIF(2)
+     True
 -    sage: RIF(0,1) < numpy.float('2')
 +    sage: RIF(0,1) < float('2')
-     True
--    sage: RIF(0,1) <= numpy.float('1')
-+    sage: RIF(0,1) <= float('1')
-     True
--    sage: RIF(0,1) <= numpy.float('0.5')
-+    sage: RIF(0,1) <= float('0.5')
-     False
-     sage: RIF(2) == numpy.int8('2')
-     True
+     Traceback (most recent call last):
+     ...
+     TypeError: unsupported operand parent(s) for <: ...
 diff --git a/src/sage/structure/coerce.pyx b/src/sage/structure/coerce.pyx
 index 4e174df8c9..1f6e251386 100644
 --- a/src/sage/structure/coerce.pyx
