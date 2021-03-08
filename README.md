@@ -21,3 +21,11 @@ makepkg --printsrcinfo > .SRCINFO
 5. Push changes to `aur`: `git push aur`
 	- If you don't have this set up, run `git remote add aur ssh://aur@aur.archlinux.org/code-server.git`
 	- Run `git push aur`
+
+### New Maintainers
+
+If a new maintainer joins the project, please add them to the top of `PKGBUILD`
+
+### Removing Old Maintainers
+
+Instead of removing them completely, change their title from "Maintainer" to "Contributor".
