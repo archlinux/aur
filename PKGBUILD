@@ -1,7 +1,7 @@
 # Maintainer: Darkpelz <lukeh@outlook.my>
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch-git
-pkgver=r60.262b9ff
+pkgver=r75.0725a9c
 pkgrel=3
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
