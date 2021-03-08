@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 _pkgname=probe-cli
 pkgname=ooniprobe-cli
-pkgver=3.5.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Next generation OONI Probe CLI'
 arch=('x86_64')
@@ -10,7 +10,16 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/ooni/probe-cli/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('56e419033715e1b2b61a82661f724148bab8fec4a28b2566a10e0a3051b3bade')
+sha256sums=('27f0eec380825f236f7ab3aff22dd29d7090ef47d1ce1ccb1e728e0b846b30ce')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  # need to fetch files before we can build
+  # internal/engine/resourcesmanager/asn.mmdb.gz
+  # internal/engine/resourcesmanager/country.mmdb.gz
+  # checksums are verified by code
+  go run ./internal/cmd/getresources
+}
 
 build() {
   cd "$_pkgname-$pkgver"
