@@ -4,7 +4,7 @@
 # Based on package by: Denis Saintilma <1068des@gmail.com>
 
 pkgname=tautulli
-pkgver=2.6.6
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v
         'tautulli.service'
         'tautulli.sysusers')
 
-sha256sums=('983d48e7d5b0edd8ee334d751a3ead908a7f70df5050d56da88536118a4c9362'
+sha256sums=('569774893875d6bb247895cbe3f505f33ab001238756c23cdb86f8ebf28f6e42'
             'a054b8abfabb44d35a97642050286751f77d22e22f3d00077960b370051aa4f4'
             '8363c0de54806e43e59cfde564ff57a49883895cfc0e725282889658a224624a'
             'e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8')
