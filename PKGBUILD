@@ -3,8 +3,8 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 
 pkgname=wgrib2
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
 url="https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/"
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 makedepends=('gcc-fortran' 'tar')
 source=("https://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/$pkgname.tgz.v$pkgver")
 noextract=("$pkgname.tgz.v$pkgver")
-md5sums=('8d73b994c435f2ac6b1396c037b86836')
+md5sums=('ab1300f19bb6aca0eb7878de3e1ecf88')
 
 prepare() {
   # workaround bsdtar nonzero exit code: https://bugs.archlinux.org/task/44701
