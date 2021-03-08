@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=kpt
-pkgver=0.37.1
+pkgver=0.38.1
 pkgrel=1
 pkgdesc='Toolkit to manage, manipulate, customize, and apply Kubernetes Resource configurations'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=('asciinema: ttl command')
 install=kpt.install
 source=("https://github.com/GoogleContainerTools/kpt/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ecf036d385c473cbfd90602c2356bae8310c39e32f9bf539127054d8f68dbbe4')
+sha256sums=('9313cc49a6957e294f560049d41765ee6ee8e56fe6cf62c2bbddb67777bac0df')
 
 build() {
   cd "${pkgname}-${pkgver}"
