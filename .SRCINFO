@@ -1,6 +1,6 @@
 pkgbase = hypershare-git
 	pkgdesc = Small, interactive HTTP server with a TUI.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/48ca/hypershare
 	arch = i686
