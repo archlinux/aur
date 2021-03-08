@@ -1,24 +1,33 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
+# Maintainer: Plaunarome <plaunarome@protonmail.com>
 
-_addon_name=firefox_multi_account_containers
-_addon_version=7.3.0
-_addon_id=782160
-_addon_filename="${_addon_name}-${_addon_version}-fx.xpi"
-_gecko_id="@testpilot-containers"
-
+_name="multi-account-containers"
 pkgname=firefox-extension-multi-account-containers
-pkgver=${_addon_version}
-pkgrel=1
-pkgdesc="Browser extension that separates website storage into tab-specific Containers"
-arch=('any')
-url="https://github.com/mozilla/multi-account-containers"
-license=('MPL2')
-depends=("firefox")
-source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
-noextract=("${_addon_filename}")
-sha256sums=('4784cbd5de44d65f4cc014949dcbd315503f4913dfa7b3124b8d84c49515666a')
+pkgver=7.3.0
+pkgrel=2
+pkgdesc="Keep parts of your online life separated into color-coded tabs"
+arch=("any")
+url="https://github.com/mozilla/${_name}"
+license=("MPL2")
+groups=("firefox-addons")
+makedepends=("npm")
+source=("${url}/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
+sha512sums=('4048a4fcf802ac2bffbd89f5fe3718ced81c2f666c05c5bf2e2839d7d63958b270fadfbe80753a84353385cc9c5435dbcaaed1e021fda18b2a15a95ee17e070f')
+
+build() {
+	cd "${_name}-${pkgver}"
+	npm install --legacy-peer-deps
+
+	cd src
+	../node_modules/web-ext/bin/web-ext build --filename "${pkgname}.zip" --overwrite-dest
+}
+
+check() {
+	cd "${_name}-${pkgver}"
+	npm test
+}
 
 package() {
-    cd "${srcdir}"
-    install -Dm644 "${_addon_filename}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_gecko_id}.xpi"
+	install -D --mode 644 -- "${_name}-${pkgver}/src/web-ext-artifacts/${pkgname}.zip" \
+		"${pkgdir}/usr/lib/firefox/browser/extensions/@testpilot-containers.xpi"
 }
