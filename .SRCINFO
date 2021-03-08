@@ -12,7 +12,6 @@ pkgbase = nbxplorer-git
 	depends = dotnet-runtime
 	depends = dotnet-sdk
 	depends = tmux
-	optdepends = bitcoin-cli: Interact with your Bitcoin node.
 	provides = nbxplorer
 	conflicts = nbxplorer
 	source = git+https://github.com/dgarage/NBXplorer.git
