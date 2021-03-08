@@ -2,7 +2,7 @@
 # Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=python-pulsectl
 _name=${pkgname#python-}
-pkgver=21.3.2
+pkgver=21.3.4
 pkgrel=1
 epoch=1
 pkgdesc="Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 conflicts=('python-pulse-control')
 replaces=('python-pulse-control')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9e44b157ae6adfb950dd3dfd5bcbdc188a5b0d49ce576a551ef33945e43fdcda')
+sha256sums=('faa8b9336237565990298f20870e13dd1678a4586847ca5a7ff2abf10752f356')
 
 build() {
 	cd "$_name-$pkgver"
