@@ -1,6 +1,6 @@
 pkgbase = dialect
 	pkgdesc = A translation app for GNOME based on Google Translate
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/gi-lom/dialect
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = dialect
 	depends = python-gobject
 	depends = python-googletrans
 	depends = python-gtts
-	source = dialect-v1.1.1.tar.gz::https://github.com/gi-lom/dialect/archive/1.1.1.tar.gz
-	sha256sums = 2b6df837409236322fbf395fc87c06d3b739099f3eced46ecfa52a0b5cb92dea
+	source = dialect-v1.2.0.tar.gz::https://github.com/gi-lom/dialect/archive/1.2.0.tar.gz
+	sha256sums = aec9e987d2e3f807602ffe96363314701efa572f6ece68de34a8590eacd9ed25
 
 pkgname = dialect
 

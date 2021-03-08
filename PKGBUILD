@@ -3,7 +3,7 @@
 pkgname=dialect
 _author=gi-lom
 _gitname=dialect
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A translation app for GNOME based on Google Translate'
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(
   meson
 )
 source=("$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('2b6df837409236322fbf395fc87c06d3b739099f3eced46ecfa52a0b5cb92dea')
+sha256sums=('aec9e987d2e3f807602ffe96363314701efa572f6ece68de34a8590eacd9ed25')
 
 prepare() {
   cd $_gitname-$pkgver
