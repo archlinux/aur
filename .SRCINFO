@@ -1,14 +1,14 @@
 pkgbase = pgcenter
 	pkgdesc = Command-line admin tool for observing and troubleshooting Postgres
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/lesovsky/pgcenter
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = go
 	makedepends = git
-	source = pgcenter-0.7.0.tar.gz::https://github.com/lesovsky/pgcenter/archive/v0.7.0.tar.gz
-	sha256sums = d19ba987ef3f9ee182af3c5990a2ac5075033e3175e28f058dc977602c4e9d53
+	source = pgcenter-0.8.0.tar.gz::https://github.com/lesovsky/pgcenter/archive/v0.8.0.tar.gz
+	sha256sums = e805ae8def90ef29d62bdb99af11881a7d9e88240b4e89034012d74c9c6fa395
 
 pkgname = pgcenter
 
