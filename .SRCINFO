@@ -1,5 +1,5 @@
 pkgbase = qupath-bin
-	pkgdesc = An open, powerful, flexible, extensible software platform for whole slide image analysis.
+	pkgdesc = Bioimage analysis & digital pathology
 	pkgver = 0.2.3
 	pkgrel = 2
 	url = https://qupath.github.io
