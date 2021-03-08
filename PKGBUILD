@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.5.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -31,6 +31,10 @@ package() {
     "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" \
+    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm 644 "autocomplete/s-completion.bash" \
     "${pkgdir}/usr/share/bash-completion/completions/s"
+  install -Dm644 "autocomplete/s.fish" \
+    "${pkgdir}/usr/share/fish/vendor-completions.d/s.fish"
 }
