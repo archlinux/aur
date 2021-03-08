@@ -7,28 +7,17 @@ Previously maintained by [KSXGitHub](https://github.com/KSXGitHub)
 
 ## Updating
 
-If there are no breaking changes with the release, updating the package is as
-simple as updating `pkgver` in `PKGBUILD` to the new version. Make sure
-to run `updpkgsums` to update the sha256 sums.
+Make sure you run these commands on an Arch machine. If you're a Coder employee, we suggest using your dogfooding environment.
 
-After updating, run this command on an Arch machine to update the `.SRCINFO`.
-This is the file that is used by the AUR to show package info.
-
+1. Update the `pkgver` in `PKGBUILD` to the latest version
+1. Run `updpkgsums` to update the sha256 sums
+	- If you don't have it installed, run `sudo pacman -S pacman-contrib`
+1. Update the `.SRCINFO` by running:
 ```bash
+# This is the file that is used by the AUR to show package info.
 makepkg --printsrcinfo > .SRCINFO
 ```
-
-Then, just push to the AUR git repo. You'll have to maintain two remotes in
-your `.git/config`. Mine is setup as so
-
-```
-[remote "origin"]
-	url = git@github.com:/cdr/code-server-aur.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
-[remote "aur"]
-	url = ssh://aur@aur.archlinux.org/code-server.git
-	fetch = +refs/heads/*:refs/remotes/aur/*
-```
-
-Then it's as simple as `git push` to push to GitHub and `git push aur` to
-update the AUR.
+1. Push changes to GitHub
+1. Push changes to `aur`
+	- If you don't have this set up, run `git remote add aur ssh://aur@aur.archlinux.org/code-server.git`
+	- Run `git push aur`
