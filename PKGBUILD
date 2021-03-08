@@ -93,7 +93,7 @@ pkgdesc='Linux Xanmod Cacule UKSM'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="486a2392d4ffd9b93bc3127629e3da2c9e3b6f1b" # 5.11.3-1
+__commit="64ac2d94a8363307f1f4673d4c2dfb982c786d12" # 5.11.4-1
 
 license=(GPL2)
 makedepends=(
