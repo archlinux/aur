@@ -3,7 +3,7 @@
 
 pkgname=processing
 pkgver=3.5.4
-pkgrel=5
+pkgrel=6
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -60,7 +60,7 @@ prepare() {
 build() {
   cd "$pkgname/build"
 
-  ant build
+  JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ant build
 }
 
 package() {

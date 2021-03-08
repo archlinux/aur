@@ -1,7 +1,7 @@
 pkgbase = processing
 	pkgdesc = Programming environment for creating images, animations and interactions
 	pkgver = 3.5.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.processing.org/
 	install = openjdkmsg.install
 	arch = x86_64
