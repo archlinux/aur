@@ -11,7 +11,6 @@ makedepends=('meson' 'boost' 're2c' 'xxd' 'asciidoctor')
 #checkdepends=('gawk')
 source=("${pkgname}::git+https://gitlab.com/emilua/emilua.git#tag=v${pkgver}"
 	"boost.http::git+https://github.com/BoostGSoC14/boost.http.git#commit=07ba4ef67fc1488bf789008b43550526931ab412"
-	"fmt::git+https://github.com/fmtlib/fmt.git#commit=19bd751020a1f3c3363b2eb67a039852f139a8d3"
 	"trial.protocol::git+https://github.com/breese/trial.protocol.git#commit=cd0055431ec42f30c53b295411ee00cade8b9b5e"
 	"CLI11::git+https://github.com/CLIUtils/CLI11.git#commit=13becaddb657eacd090537719a669d66d393b8b2")
 md5sums=('SKIP'
@@ -25,7 +24,6 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 	git submodule init
 	git config submodule.boost.http.url "${srcdir}/boost.http"
-	git config submodule.fmt.url "${srcdir}/fmt"
 	git config submodule.trial.protocol.url "${srcdir}/trial.protocol"
 	git config submodule.CLI11.url "${srcdir}/CLI11"
 	git submodule update
