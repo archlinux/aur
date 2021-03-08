@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Notion
+Comment=Notion
+Exec=Notion
+Icon=/usr/share/pixmaps/Notion.png
+Terminal=false
+Categories=Productivity;Notion;Nativefier;
