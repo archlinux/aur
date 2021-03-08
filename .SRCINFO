@@ -1,8 +1,8 @@
 pkgbase = nixfmt
 	pkgdesc = A formatter for Nix code
 	pkgver = 0.4.0
-	pkgrel = 3
-	url = https://nixfmt.serokell.io/
+	pkgrel = 4
+	url = https://github.com/serokell/nixfmt
 	arch = x86_64
 	license = MPL2
 	makedepends = cabal-install

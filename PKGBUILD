@@ -1,9 +1,9 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=nixfmt
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A formatter for Nix code "
-url="https://nixfmt.serokell.io/"
+url="https://github.com/serokell/nixfmt"
 license=("MPL2")
 arch=('x86_64')
 makedepends=('cabal-install')
@@ -20,6 +20,8 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p "${pkgdir}/usr/lib"
   install -m 755 -D "$(find . -name "nixfmt" -type f)" "${pkgdir}/usr/bin/nixfmt"
+  install -m 755 -D "$(find . -name "libHSnixfmt*.so" -type f)" "${pkgdir}/usr/lib/"
   install -m 644 -D LICENSE "${pkgdir}/usr/share/licenses/nixfmt/LICENSE"
 }
