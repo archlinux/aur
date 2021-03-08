@@ -49,7 +49,7 @@ _1k_HZ_ticks=
 pkgbase=linux-next-git
 pkgver=20210305.r0.g4641b32307b3
 _srcname=linux-next
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -63,7 +63,6 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches-v2/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
 
@@ -305,5 +304,4 @@ done
 
 sha512sums=('SKIP'
             'a37860b6b2eb0aadcd394416789d3e81da85058c1a6acaca808543fc99d132fa9c3ece1d64bb53c9c2ea0fc01ff96fdece46c6c83a71ac2c6f885e4b674bce82'
-            '715e60d1bd6be9e79deb153210c35b797160df536844840335e6742989ca4d422fb2cbc4ac7544b71675413d9a532901483a26eec28f5addb461a3ae20558aa0'
             '468cbc36942b3e08c2d1f6a98465a819ff2aeafb43a95425405430a4af14babfa48bf1728cf03847f46fad4d21584c9f91eb19d6cd99c43121793373dececfa4')
