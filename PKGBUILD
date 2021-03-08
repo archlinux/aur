@@ -1,6 +1,6 @@
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 pkgname=v2rayxplus
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 epoch=0
 pkgdesc="v2rayXPlus"
@@ -26,9 +26,9 @@ source=('v2rayxplus.desktop'
         "${pkgname}-${pkgver}.zip::https://gitlab.com/xiayesuifeng/${pkgname}/-/jobs/artifacts/${pkgver}/download?job=run-build")
 noextract=()
 md5sums=('9dc2795fd51f2f0e3e1749b100e1ac2d'
-        'e357d8f75b9d2577bacb8a7d2c5d184a'
-        'dcda30000c17f717c6e1b9e4c82416a1'
-        'SKIP')
+         'e357d8f75b9d2577bacb8a7d2c5d184a'
+         'dcda30000c17f717c6e1b9e4c82416a1'
+         '74cac77e9deaa7c6d8917035e9fe5de6')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
