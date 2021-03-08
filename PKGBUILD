@@ -16,7 +16,6 @@ source=("${pkgname}::git+https://gitlab.com/emilua/emilua.git#tag=v${pkgver}"
 md5sums=('SKIP'
 	 'SKIP'
 	 'SKIP'
-	 'SKIP'
 	 'SKIP')
 #validpgpkeys=()
 
