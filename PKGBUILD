@@ -59,8 +59,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.16.arch1.r969246.e2b8120595b8
-_srcver_tag=v5.10.16.arch1
+pkgver=v5.10.21.arch1.r969261.4062aabf8d0e
+_srcver_tag=v5.10.21.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -97,6 +97,7 @@ source=(
     "${_reponame}::git+${_repo_url}#branch=master"
     "git+${_repo_url_gcc_patch}"
     config # kernel config file
+    arch_patches.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -104,7 +105,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '93c88efcb310d99bbbbb4f47dfa8892e0021ababafd9b56d55f4fd8c8249f68f286ca4fca3ac090ca5b7695cd20f88cf630503631dcd345d8d1822723e843048')
+            '046bf14cdb70d1290a9dd6d125d4499447e88147764fad2dd0a3c10253e56f1632f030f7893a59a7a0f86ce025b3be4bf68c2d2410ac2ca344b6b63b4be5c21c'
+            '05ec92046b9b48802b8c3afa550574a46893c90aeb552dca49445d1ef94dbb2a2f39d3d919c65d41f95859cea8bb641e042b20720a1a527cd067965dff84aea7')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -118,20 +120,25 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
-    git merge --no-edit --no-commit FETCH_HEAD
-    
-    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    #git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    #git fetch upstream_stable ${_srcver_tag//.arch*/}
+    #msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
+    #git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    #git fetch arch_stable "${_srcver_tag_arch%.*}-${_srcver_tag_arch##*.}"
     #git merge --no-edit --no-commit FETCH_HEAD
     
-
-    # https://github.com/graysky2/kernel_gcc_patch
-    msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
-    patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
+    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
+    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    git fetch upstream_stable ${_srcver_tag//.arch*/}
+    git merge --no-edit --no-commit FETCH_HEAD
+    
+    PatchesArray=(
+        $_reponame_gcc_patch/$_gcc_patch_name
+        arch_patches.patch
+    )
+    for MyPatch in "${PatchesArray[@]}"
+    do
+        msg2 "Applying patch $MyPatch..."
+        patch -Np1 -i "$srcdir/$MyPatch"
+    done
     
     msg2 "Setting config..."
     cp ../config .config
@@ -219,6 +226,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel $_pkgdesc_extra"
+    depends=(pahole)
 
     cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
