@@ -1,6 +1,6 @@
 # Maintainer: ml <mlævisu.li>
 pkgname=helm-2to3
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('helm')
 makedepends=('go')
 groups=('helm-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('526265263794e939e87ded4a20723edc3473f1166500e6ca7e3744eff8a25dc1')
+sha256sums=('19106d88802f2c73d8b4f49c1f718f2dd95fdedf1697af8d09448bd94ec38455')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
