@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='DWARF optimization and duplicate removal tool'
 pkgname=dwz
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 url=https://sourceware.org/git/dwz.git
 arch=(x86_64)
