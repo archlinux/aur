@@ -1,10 +1,11 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
+# Contributor: b.r
 # Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Shawn Dellysse <sdellysse@radford.edu>
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=27
+pkgrel=28
 _md5=3a3ecac0922f964bb1c4be617e8dec37
 
 pkgdesc="Red Hat Icons from Fedora 10"
@@ -12,17 +13,24 @@ arch=('any')
 url="https://fedorahosted.org/bluecurve/"
 license=('GPL')
 groups=('redhat-artwork')
-makedepends=('python' 'perl-xml-simple')
+makedepends=('python' 'perl-xml-simple' 'intltool')
 optdepends=('gnome-icon-theme: for inheriting missing icons')
 options=(!emptydirs)
 
 source=("https://src.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.bz2/${_md5}/$pkgname-$pkgver.tar.bz2")
 md5sums=("$_md5")
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  msg2 "Run autoreconf & autoupdate (allows more architecture)"
+  autoreconf -fi
+  autoupdate
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 "Call upstream make"
+  msg2 "Run make"
 
   ./configure --prefix="$pkgdir/usr"
   make
@@ -37,7 +45,7 @@ build() {
   sed -i 's/name="Bluecurve"/name="Bluecurve8"/' Bluecurve8/Bluecurve.cursortheme
   mv Bluecurve8/Bluecurve.cursortheme Bluecurve8/Bluecurve8.cursortheme
 
-  msg2 "Remove now useless Make files"
+  msg2 "Remove now useless Makefiles"
 
   for theme in Bluecurve8 Bluecurve-inverse LBluecurve LBluecurve-inverse; do
     find . -type f -name "Makefile*" -exec rm {} \;
