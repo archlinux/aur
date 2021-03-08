@@ -1,12 +1,13 @@
 pkgbase = icecream-git
 	pkgdesc = takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines.
-	pkgver = r1959.e39103f
+	pkgver = r2165.186d900
 	pkgrel = 1
 	url = http://en.opensuse.org/Icecream
 	install = icecream.install
 	arch = x86_64
 	license = GPL2
 	makedepends = docbook2x
+	makedepends = asciidoc
 	depends = bash
 	depends = libcap-ng
 	depends = libarchive

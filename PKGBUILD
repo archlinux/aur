@@ -5,12 +5,12 @@
 
 _pkgname=icecream
 pkgname=icecream-git
-pkgver=r1959.e39103f
+pkgver=r2165.186d900
 pkgrel=1
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
-makedepends=('docbook2x')
+makedepends=('docbook2x' 'asciidoc')
 depends=('bash' 'libcap-ng' 'libarchive' 'lzo' 'zstd')
 provides=('icecream')
 optdepends=('icecream-sundae: A commandline monitor for Icecream'
