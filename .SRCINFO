@@ -1,0 +1,18 @@
+pkgbase = yandex-mail-nativefier
+	pkgdesc = Electron wrapper for the Yandex Mail web application
+	pkgver = 1
+	pkgrel = 1
+	url = https://mail.yandex.ru
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	makedepends = unzip
+	source = yandex-mail-nativefier.png
+	source = yandex-mail-nativefier.desktop
+	sha256sums = 1ea7c73755992387e9fd8309532ccbb6f3c945d6b96739caffda2128ac0afb86
+	sha256sums = feaaee4ec9794e11b954f395029a20144d378c764351a046738415a13a43d186
+
+pkgname = yandex-mail-nativefier
+

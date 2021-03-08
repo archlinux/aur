@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Yandex Mail
+Comment=Yandex Mail
+Exec=YandexMail
+Icon=/usr/share/pixmaps/YandexMail.png
+Terminal=false
+Categories=Productivity;Mail;Yandex;Nativefier;
