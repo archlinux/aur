@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=epsonscan2
-pkgver=6.6.2.2
+pkgver=6.6.2.3
 _pkgver="${pkgver}-1"
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
@@ -10,9 +10,9 @@ url="http://support.epson.net/linux/en/epsonscan2.php"
 license=('GPL3')
 depends=('boost-libs' 'libharu' 'qt5-singlecoreapplication' 'rapidjson' 'sane')
 makedepends=('boost' 'cmake')
-optdepends=('epsonscan2-non-free-plugin-bin: Support for scanning via wireless network')
+optdepends=('epsonscan2-non-free-plugin: OCR support and wireless scanning')
 source=("http://support.epson.net/linux/src/scanner/${pkgname}/${pkgname}-${_pkgver}.src.tar.gz")
-sha512sums=('f939694d625b5fe8575d040ff8276c069b563deb04b96007eefabc443893bcf9876948b596d738116e8c515aa8a8fcb24e20d1b348b9b0cc4e2236d705f5c252')
+sha512sums=('e07cfbf20a6a1e9244c4cf4447a0c4b1b967b5aa30f697eaefec7f8ee4e847c1dcf0f8bade428802cee830205bb1d159bad417dd652773ab01d520d82915a3cd')
 
 prepare() {
   [[ -d build ]] && rm -r build; mkdir build
@@ -38,4 +38,8 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname}-${_pkgver}/desktop/rpm/i686/${pkgname}.desktop" \
                  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  install -d ${pkgdir}/usr/lib/sane ; cd ${pkgdir}/usr/lib/sane
+  ln -s ../epsonscan2/libsane-epsonscan2.so libsane-epsonscan2.so.1
+  ln -s ../epsonscan2/libsane-epsonscan2.so libsane-epsonscan2.so.1.0.0
 }
