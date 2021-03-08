@@ -9,8 +9,8 @@ _pkgname=coreutils
 __pkgname=uutils-coreutils
 pkgver=8.32_0.0.4
 _pkgver=8.32
-__pkgver=0.0.3
-pkgrel=1
+__pkgver=0.0.4
+pkgrel=4
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
 license=('GPL3')
@@ -27,19 +27,6 @@ sha512sums=('1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1
             'SKIP'
             '5d5719a0362a20c3a5ee85683c436a1bfcf5b8bf922ebe60c58f620b93d3bdf67c658a987cb8281b160442bd98cb7b4b00bacd9e3814d1b0ae3b6dd1cd43ec83')
 
-prepare() {
-  cd $_pkgname-$_pkgver
-  # apply patch from the source array (should be a pacman feature)
-  local filename
-  for filename in "${source[@]}"; do
-    if [[ "$filename" =~ \.patch$ ]]; then
-      msg2 "Applying patch ${filename##*/}"
-      patch -p1 -N -i "$srcdir/${filename##*/}"
-    fi
-  done
-  :
-}
-
 build() {
   # Build GNU coreutils without the stable uutils programs counterparts
   cd $_pkgname-$_pkgver
@@ -47,7 +34,7 @@ build() {
       --prefix=/usr \
       --libexecdir=/usr/lib \
       --with-openssl \
-      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,realpath,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes" # not replacing stat, touch as that gave error output
+      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,realpath,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes"
   make
 }
 
@@ -55,12 +42,11 @@ package() {
   # Install uutils-coreutils, skip the buggy parts
   cd $_pkgname-$__pkgver
   make \
-    DESTDIR="$pkgdir" \
-    PREFIX=/usr \
-    MANDIR=/share/man/man1 \
-    SKIP_UTILS='stat touch' \ 
-    PROG_PREFIX= \
-    install
+      DESTDIR="$pkgdir" \
+      PREFIX=/usr \
+      MANDIR=/share/man/man1 \
+      PROG_PREFIX= \
+      install
 
   # Install GNU coreutils over the uutils-coreutils
   cd $srcdir && cd $_pkgname-$_pkgver
