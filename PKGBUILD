@@ -57,7 +57,9 @@ package() {
   make \
     DESTDIR="$pkgdir" \
     PREFIX=/usr \
-    MANDIR=/share/man/man1 \ 
+    MANDIR=/share/man/man1 \
+    SKIP_UTILS='stat touch' \ 
+    PROG_PREFIX= \
     install
 
   # Install GNU coreutils over the uutils-coreutils
