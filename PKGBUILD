@@ -1,36 +1,29 @@
-# Maintainer: Zhang.j.k <zhangjk67 at gmail dian com>
+# Maintainer: Brody <archfan at brodix dot de>
+# Contributor: Zhang.j.k <zhangjk67 at gmail dian com>
+# vim: ts=2 sw=2 et:
 
-pkgbase='konsave'
-pkgname=('konsave')
-pkgver='1.1.3'
-pkgrel=3
-pkgdesc="A CLI program that will let you save and apply your KDE Plasma customizations with just one command!"
-url="https://github.com/Prayag2/konsave"
+pkgname=konsave
+pkgver=1.1.5
+pkgrel=1
+pkgdesc="Save and apply your KDE Plasma customizations with just one command!"
+url="https://github.com/Prayag2/${pkgname}"
 depends=('python' 'python-pyaml')
 makedepends=('python-setuptools-scm')
 license=('GPL3')
 arch=('any')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Prayag2/konsave/archive/v$pkgver.tar.gz")
-md5sums=("SKIP")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('33ed39c308151b087b0b078ddfc9d01341fede22e24882d95dc3d8e045a96999')
 
 prepare() {
-  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
 }
 
 build() {
-    cd "${srcdir}/${pkgbase}-${pkgver}"
-    python setup.py build
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  python setup.py build
 }
-
-# check() {
-#     cd "${srcdir}/${pkgbase}-${pkgver}"
-#     python setup.py pytest
-# }
 
 package() {
-    cd "${srcdir}/${pkgbase}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
-
-
-

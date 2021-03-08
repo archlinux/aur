@@ -1,20 +1,4 @@
-*.tar.zst
 pkg/
 src/
-k/
-
-# ignore everything
-*
-!.gitignore
-
-# except PKGBUILD needed files
-!PKGBUILD
-!*.install
-!ChangeLog
-!.SRCINFO
-
-# common wing-man files
-!*.diff
-!*.patch
-
-!README.md
+*.tar*
+*.log

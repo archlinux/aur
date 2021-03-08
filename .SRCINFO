@@ -1,15 +1,15 @@
 pkgbase = konsave
-	pkgdesc = A CLI program that will let you save and apply your KDE Plasma customizations with just one command!
-	pkgver = 1.1.3
-	pkgrel = 3
+	pkgdesc = Save and apply your KDE Plasma customizations with just one command!
+	pkgver = 1.1.5
+	pkgrel = 1
 	url = https://github.com/Prayag2/konsave
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-pyaml
-	source = konsave-1.1.3.tar.gz::https://github.com/Prayag2/konsave/archive/v1.1.3.tar.gz
-	md5sums = SKIP
+	source = konsave-1.1.5.tar.gz::https://github.com/Prayag2/konsave/archive/v1.1.5.tar.gz
+	sha256sums = 33ed39c308151b087b0b078ddfc9d01341fede22e24882d95dc3d8e045a96999
 
 pkgname = konsave
 
