@@ -2,7 +2,7 @@
 
 pkgname=abseil-cpp
 pkgver=20200923.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Abseil Common Libraries (C++)"
 # check occasionally arch support status
 # https://github.com/abseil/abseil-cpp/blob/master/absl/random/internal/platform.h#L54
@@ -30,8 +30,8 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-    cmake --build build
+    cd "$pkgname-$pkgver/build"
+    make
 }
 
 # time test failes
