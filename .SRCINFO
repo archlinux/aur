@@ -1,6 +1,6 @@
 pkgbase = kweather-git
 	pkgdesc = Weather application for Plasma Mobile
-	pkgver = v0.2.r30.g1f0a79b
+	pkgver = 0.4.r39.g19bcec1
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kweather
 	arch = x86_64

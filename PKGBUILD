@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kweather-git
-pkgver=v0.2.r30.g1f0a79b
+pkgver=0.4.r39.g19bcec1
 pkgrel=1
 pkgdesc="Weather application for Plasma Mobile"
 arch=(x86_64)
@@ -22,18 +22,11 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  install -d build
-}
-
 build() {
-  cd "${pkgname%-git}/build"
-  cmake ..
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
+  make -C build
 }
 
 package() {
-  cd "${pkgname%-git}/build"
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
