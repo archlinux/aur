@@ -1,0 +1,10 @@
+--- a/app/Docs/Help/index.htm	2015-02-20 16:34:26.000000000 +0000
++++ b/app/Docs/Help/index.htm	2021-03-04 23:44:51.000000000 +0000
+@@ -12,7 +12,7 @@
+ 
+   <frameset frameborder="0" border="0" framespacing="0" cols="179,*">
+     <frame marginwidth="0" marginheight="0" src="_borders/left.htm" scrolling="yes" name="side" target="text">
+-	<frame marginwidth="0" marginheight="0" src="default.htm" scrolling="auto" name="text" target="text">
++	<frame marginwidth="0" marginheight="0" src="Default.htm" scrolling="auto" name="text" target="text">
+ 
+   </frameset>

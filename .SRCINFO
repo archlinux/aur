@@ -1,0 +1,19 @@
+pkgbase = rtcw-data-gog
+	pkgdesc = Return to Castle Wolfenstein - extract required game data from gog windows installer
+	pkgver = 1.41
+	pkgrel = 1
+	url = https://www.gog.com/game/return_to_castle_wolfenstein
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	provides = rtcw-data
+	conflicts = rtcw-data-cd
+	noextract = setup_return_to_castle_wolfenstein_2.0.0.2.exe
+	source = setup_return_to_castle_wolfenstein_2.0.0.2.exe::gog://setup_return_to_castle_wolfenstein_2.0.0.2.exe
+	source = rtcw-help.patch
+	sha256sums = ffadfd2e2101d5dddbf1a91a9f65fe50a9b2c148e71dc51fca0ddf0f907d484e
+	sha256sums = 1a5b1e54772333b7e736ba3138277094390820590408efbaa431e52655feed90
+
+pkgname = rtcw-data-gog
+
