@@ -84,7 +84,7 @@ _makenconfig=y
 
 pkgbase=linux-manjaro-xanmod-cacule-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.3
+pkgver=5.11.4
 _major=5.11
 _branch=5.x
 xanmod=1
