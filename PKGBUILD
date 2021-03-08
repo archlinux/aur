@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=gx52
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A GTK application designed to provide control for the LEDs and MFD of Logitech X52 and X52 Pro H.O.T.A.S."
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=()
 install="$pkgname.install"
 source=("https://gitlab.com/leinardi/gx52/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         '60-gx52.rules')
-sha256sums=('2925a7fb2495b786d27585c5891b525f138c8a5197f4e3b6dfdb5f3635de38cd'
+sha256sums=('07439c2b55c9f6ab33f014a32cc7fbd6dfcbf4ff71f314b1a4cb9f8210416b00'
             '8239c7529f939f12455a3db5c000e76df9bb77c84f4ed9092ae731c5a1b3ab90')
 
 build() {
