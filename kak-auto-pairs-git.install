@@ -3,4 +3,6 @@ post_install() {
 	echo If you use a custom autoload directory, do not forget to create a \
 	symbolic link inside the directory to /usr/share/kak/rc/addons.
 	echo
+	echo "To use auto-pairs, run 'require-module auto-pairs' followed by" \
+		"'auto-pairs-enable'."
 }
