@@ -1,4 +1,5 @@
 # Maintainer: Plaunarome <plaunarome@protonmail.com>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=ecwolf
 pkgver=1.3.3
