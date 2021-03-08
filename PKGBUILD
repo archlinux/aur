@@ -1,5 +1,5 @@
 # Maintainer: Colin Adler <colin@coder.com>
-# Maintainer: Ash <ash@coder.com>
+# Maintainer: Asher <ash@coder.com>
 # Maintainer: Joe Previte <joe@coder.com>
 
 pkgname=code-server
