@@ -1,1 +1,2 @@
-u sonarr - "Sonarr daemon" /var/lib/sonarr
+u sonarr - - /var/lib/sonarr
+g sonarr -

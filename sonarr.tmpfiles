@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/sonarr 0755 sonarr sonarr
+Z /var/lib/sonarr - sonarr sonarr
+L /var/log/sonarr - - - - /var/lib/sonarr/logs/

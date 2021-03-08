@@ -1,4 +1,5 @@
-NzbDrone.master.*.mono.tar.gz
-pkg
-sonarr-*.pkg.tar.xz
-src
+*.xz
+*.gz
+*.log
+/src/
+/pkg/

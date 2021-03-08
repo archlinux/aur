@@ -1,15 +1,17 @@
+# Be sure to use `systemctl edit sonarr` to modify this service with an override.conf because
+# direct changes will be overwritten by package updates.
+
 [Unit]
 Description=Sonarr Service
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
+Type=simple
 User=sonarr
 Group=sonarr
-ExecStart=/usr/bin/sonarr -nobrowser -data=/var/lib/sonarr
-Type=simple
-TimeoutStopSec=20
-KillMode=process
-Restart=always
+ExecStart=/usr/bin/mono --debug /usr/lib/sonarr/bin/Sonarr.exe -nobrowser -data=/var/lib/sonarr
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
