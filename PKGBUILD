@@ -1,7 +1,7 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio
 _pkgname=FamiStudio
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -24,10 +24,10 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/${pkgver}.tar.gz"
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('17385bb44be2f97efc7854bc4dfa0940'
+md5sums=('965e09e9e9358e64715aeb5702825e8d'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('2d658ce14044300b89665854b98bac0d738a20dda2f3795b27874a248e7fcbc4'
+sha256sums=('f5674ebdb45cc80b981f37d3053e59dd8ce95a2d567daee9f24105ef75dbede0'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
@@ -42,16 +42,15 @@ build() {
 
     find -name \*.so -delete
 
-    cd NotSoFatso && ./build_linux.sh && cd ..
-    cp NotSoFatso/libNotSoFatso.so ${_pkgname}/
+    cd ThirdParty/NotSoFatso && ./build_linux.sh && cd -
+    cp ThirdParty/NotSoFatso/libNotSoFatso.so FamiStudio/
 
-    cd NesSndEmu && ./build_linux.sh && cd ..
-    cp NesSndEmu/libNesSndEmu.so ${_pkgname}/
+    cd ThirdParty/NesSndEmu && ./build_linux.sh && cd -
+    cp ThirdParty/NesSndEmu/libNesSndEmu.so FamiStudio/
 
-    if [ -d ShineMp3 ]; then
-        cd ShineMp3 && ./build_linux.sh && cd ..
-        cp ShineMp3/libShineMp3.so ${_pkgname}/
-    fi
+    cd ThirdParty/ShineMp3 && ./build_linux.sh && cd -
+    cp ThirdParty/ShineMp3/libShineMp3.so FamiStudio/
+
 
     touch ${_pkgname}/libopenal32.so ${_pkgname}/librtmidi.so
 #     ln -s /usr/lib/libopenal.so ${_pkgname}/libopenal32.so
