@@ -4,7 +4,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=arxiv-collector
-pkgver=0.3.5
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Small script to collect LaTeX sources for upload to the arXiv"
 arch=(any)
@@ -13,7 +13,7 @@ license=('BSD')
 depends=(texlive-core)
 makedepends=(python-setuptools)
 source=("https://github.com/djsutherland/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e574e4db8f53f138397c0e815eb1203a02fc5503c9246b9821ff3fe14dbfea5d')
+sha256sums=('4fdb51c9db0d8641fc65cde3c085df14af67bfb8a149a3f267057ba5d81fe72b')
 
 build() {
 	cd "$pkgname-$pkgver"
