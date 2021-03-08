@@ -1,17 +1,20 @@
 pkgbase = rmfuse
 	pkgdesc = FUSE access to the reMarkable Cloud
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/rschroll/rmfuse/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-pyfuse3
 	depends = python-bidict
 	depends = python-rmcl
 	depends = python-rmrl
-	source = https://files.pythonhosted.org/packages/source/r/rmfuse/rmfuse-0.1.1.tar.gz
-	sha256sums = 358454373e505a56b8645b7f15d42f0ec118ccf28d3e3e8f4530210ddb67cf22
+	optdepends = python-pyfuse3: for FUSE3 (recommended)
+	optdepends = python-llfuse: for FUSE2
+	source = https://files.pythonhosted.org/packages/source/r/rmfuse/rmfuse-0.2.0.tar.gz
+	source = xdg.py::https://raw.githubusercontent.com/srstevenson/xdg/5.0.1/src/xdg/__init__.py
+	sha256sums = 0a9bcbe1e24f0bacedeb947007e7363d6d082bb72e26bea042d6c7ccddb12d91
+	sha256sums = 93a5ba17785c5e00d24ebd0e148d36470076c03fa16cf7e9a113a7d8fb1bceba
 
 pkgname = rmfuse
 
