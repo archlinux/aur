@@ -3,7 +3,7 @@
 pkgbase=python-gspread
 pkgname=('python-gspread' 'python2-gspread')
 _pkgname=gspread
-pkgver=3.1.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Google Spreadsheets Python API"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/burnash/gspread"
 license=('Custom:MIT')
 depends=('python-requests' 'python2-requests')
 source=("https://github.com/burnash/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('8d1072bdd45fe2287cbc5bbc5fd6d6f615343898fca811687d0ebe6dea266ded7fd795693067d423e9a55cc83ebc5a12a38ab70db9b61cec65e8f766dbead0b2')
+sha512sums=('43a22f0931791d108780004eab8d4c8c8a4d1284b47a531cedcb54d356ed41b6c155a1bbd53cb3084dd468308fa9bfcf9ce36ce26906ccc9167de172574d0ed4')
 
 prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"

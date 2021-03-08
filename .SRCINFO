@@ -1,14 +1,14 @@
 pkgbase = python-gspread
 	pkgdesc = Google Spreadsheets Python API
-	pkgver = 3.1.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/burnash/gspread
 	arch = any
 	license = Custom:MIT
 	depends = python-requests
 	depends = python2-requests
-	source = https://github.com/burnash/gspread/archive/v3.1.0.tar.gz
-	sha512sums = 8d1072bdd45fe2287cbc5bbc5fd6d6f615343898fca811687d0ebe6dea266ded7fd795693067d423e9a55cc83ebc5a12a38ab70db9b61cec65e8f766dbead0b2
+	source = https://github.com/burnash/gspread/archive/v3.7.0.tar.gz
+	sha512sums = 43a22f0931791d108780004eab8d4c8c8a4d1284b47a531cedcb54d356ed41b6c155a1bbd53cb3084dd468308fa9bfcf9ce36ce26906ccc9167de172574d0ed4
 
 pkgname = python-gspread
 	depends = python-requests
