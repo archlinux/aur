@@ -1,11 +1,12 @@
 pkgbase = python-marisa-trie
 	pkgdesc = Static memory-efficient & fast Trie-like structures for Python (based on marisa-trie C++ library)
 	pkgver = 0.7.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pytries/marisa-trie
 	arch = any
 	license = MIT
 	makedepends = cython
+	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
