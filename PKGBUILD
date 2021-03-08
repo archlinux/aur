@@ -1,8 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint-config-standard
-pkgver=20.0.0
-pkgrel=5
+pkgver=21.0.0
+pkgrel=1
 pkgdesc='Standard shareable config for stylelint'
 arch=('any')
 url=https://github.com/stylelint/stylelint-config-standard
