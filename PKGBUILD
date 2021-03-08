@@ -43,7 +43,7 @@ package_pulseeffects-legacy-git() {
                 'rubberband: pitch shifting'
                 'zam-plugins: maximizer'
                 'yelp: in-app help')
-    provides=("${pkgname%-git}" 'pulseeffects')
+	provides=("${pkgname%-git}" 'pulseeffects')
 	conflicts=("${pkgname%-git}" 'pulseeffects')
 
 	DESTDIR="$pkgdir" meson install -C build
@@ -54,7 +54,7 @@ package_gst-plugins-pulseeffects-legacy-git() {
 	pkgdesc+=" - gstreamer plugins"
 	depends=('gst-plugins-base' 'gstreamer' 'libebur128' 'rnnoise'
 	         'libsamplerate' 'libsndfile' 'zita-convolver')
-    provides=("${pkgname%-git}"
+	provides=("${pkgname%-git}"
               'gst-plugins-pulseeffects'
               'libgstpernnoise.so'
               'libgstpecrystalizer.so'
