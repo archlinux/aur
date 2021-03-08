@@ -1,6 +1,6 @@
 # Maintainer: Patryk Jeziorowski <patryk.jeziorowski@gmx.com>
 pkgname=canal-cli
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Canal Command Line Interface"
 arch=(x86_64)
@@ -23,4 +23,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/canal"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('0002dced6634adb6e601e0fe6d33c051')
+md5sums=('5d77607d29308c083daa2d0efa5a4d1b')
