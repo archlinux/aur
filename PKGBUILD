@@ -14,7 +14,8 @@ groups=()
 depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk" "lnd" "nbxplorer-git" "tmux")
 makedepends=("git")
 checkdepends=()
-optdepends=("certbot: Creates SSL certificates."
+optdepends=("apache: HTTP server"
+"certbot: Creates SSL certificates."
 "nginx: HTTP server"
 "mariadb: Database"
 "postgresql: Database"

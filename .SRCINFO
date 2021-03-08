@@ -14,6 +14,7 @@ pkgbase = btcpayserver-git
 	depends = lnd
 	depends = nbxplorer-git
 	depends = tmux
+	optdepends = apache: HTTP server
 	optdepends = certbot: Creates SSL certificates.
 	optdepends = nginx: HTTP server
 	optdepends = mariadb: Database
