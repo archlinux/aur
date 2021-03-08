@@ -13,7 +13,7 @@ __pkgver=0.0.4
 pkgrel=4
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL3' 'MIT')
 url='https://www.gnu.org/software/coreutils/'
 _url='https://github.com/uutils/coreutils'
 depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl')
@@ -28,7 +28,7 @@ sha512sums=('1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1
             '5d5719a0362a20c3a5ee85683c436a1bfcf5b8bf922ebe60c58f620b93d3bdf67c658a987cb8281b160442bd98cb7b4b00bacd9e3814d1b0ae3b6dd1cd43ec83')
 
 build() {
-  # Build GNU coreutils without the stable uutils programs counterparts
+  # Build GNU coreutils without the stable uutils programs counterparts leaving out: stat, touch
   cd $_pkgname-$_pkgver
   ./configure \
       --prefix=/usr \

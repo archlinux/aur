@@ -1,10 +1,11 @@
 pkgbase = coreutils-hybrid
-	pkgdesc = GNU Coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished
+	pkgdesc = GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy
 	pkgver = 8.32_0.0.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
 	license = GPL3
+	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	makedepends = python-sphinx
@@ -20,8 +21,8 @@ pkgbase = coreutils-hybrid
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-8.32.tar.xz.sig
 	source = uutils-coreutils-0.0.4.tar.gz::https://github.com/uutils/coreutils/archive/0.0.4.tar.gz
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
-	sha256sums = 4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha512sums = 1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1133bbf10bd41468d6a1f31142e6caa81d16ae68fa3e6e84075c253613a145
+	sha512sums = SKIP
+	sha512sums = 5d5719a0362a20c3a5ee85683c436a1bfcf5b8bf922ebe60c58f620b93d3bdf67c658a987cb8281b160442bd98cb7b4b00bacd9e3814d1b0ae3b6dd1cd43ec83
 
 pkgname = coreutils-hybrid
