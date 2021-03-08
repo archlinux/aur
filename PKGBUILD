@@ -1,13 +1,13 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Lua execution engine"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/emilua/emilua"
 license=('boost')
-depends=('luajit' 'openssl' 'ncurses')
-makedepends=('meson' 'boost' 're2c' 'xxd')
+depends=('luajit' 'fmt' 'openssl' 'ncurses')
+makedepends=('meson' 'boost' 're2c' 'xxd' 'asciidoctor')
 #checkdepends=('gawk')
 source=("${pkgname}::git+https://gitlab.com/emilua/emilua.git#tag=v${pkgver}"
 	"boost.http::git+https://github.com/BoostGSoC14/boost.http.git#commit=07ba4ef67fc1488bf789008b43550526931ab412"
