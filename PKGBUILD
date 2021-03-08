@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.21.73
+pkgver=1.21.74
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -54,14 +54,17 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch" "chromium-no-history2.patch")
-arch_revision=3a82378691710ede4ec4ea7a701773747767d41c
-for Patches in \
-    add-dependency-on-opus-in-webcodecs.patch \
-    add-ctime-for-std-time.patch \
-    chromium-glibc-2.33.patch \
-    use-oauth2-client-switches-as-default.patch
+arch_revision=7dabfd6f8cafa95fcbc254938abf3f21fef3deae
+Patches="
+        add-dependency-on-opus-in-webcodecs.patch
+        don-t-crash-on-reentrant-RunMoveLoop-call.patch
+        add-ctime-for-std-time.patch
+        chromium-glibc-2.33.patch
+        use-oauth2-client-switches-as-default.patch
+        "
+for arch_patch in $Patches
 do
-  source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
+  source+=("${arch_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patch}?h=packages/chromium&id=${arch_revision}")
 done
 
 sha256sums=('SKIP'
@@ -76,6 +79,7 @@ sha256sums=('SKIP'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             'd7775ffcfc25eace81b3e8db23d62562afb3dbb5904d3cbce2081f3fe1b3067d'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
+            '615f5fefc94da605957edb34b6c000f32953fb5ff6ffb321f062dab8e0fef9d3'
             '102e0c976c0d7fd1fbe2f2978ec621499a97b62457b3fde4daf84f026d1a53a7'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
@@ -163,7 +167,6 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # Upstream fixes
   # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
   # runtime -- this allows signing into Chromium without baked-in values
@@ -174,6 +177,7 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../../add-dependency-on-opus-in-webcodecs.patch
+  patch -Np1 -i ../../don-t-crash-on-reentrant-RunMoveLoop-call.patch
   patch -Np1 -i ../../add-ctime-for-std-time.patch
 
   # Fixes for building with libstdc++ instead of libc++

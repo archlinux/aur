@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.21.73
+	pkgver = 1.21.74
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -29,10 +29,10 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.21.73
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.21.74
 	source = chromium::git+https://github.com/chromium/chromium.git
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	source = git+https://github.com/brave/brave-core.git#tag=v1.21.73
+	source = git+https://github.com/brave/brave-core.git#tag=v1.21.74
 	source = git+https://github.com/brave/adblock-rust.git
 	source = brave-launcher
 	source = brave-browser.desktop
@@ -40,10 +40,11 @@ pkgbase = brave
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-89-patchset-7/chromium-89-patchset-7.tar.xz
 	source = chromium-no-history.patch
 	source = chromium-no-history2.patch
-	source = add-dependency-on-opus-in-webcodecs.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-dependency-on-opus-in-webcodecs.patch?h=packages/chromium&id=3a82378691710ede4ec4ea7a701773747767d41c
-	source = add-ctime-for-std-time.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-ctime-for-std-time.patch?h=packages/chromium&id=3a82378691710ede4ec4ea7a701773747767d41c
-	source = chromium-glibc-2.33.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-glibc-2.33.patch?h=packages/chromium&id=3a82378691710ede4ec4ea7a701773747767d41c
-	source = use-oauth2-client-switches-as-default.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/use-oauth2-client-switches-as-default.patch?h=packages/chromium&id=3a82378691710ede4ec4ea7a701773747767d41c
+	source = add-dependency-on-opus-in-webcodecs.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-dependency-on-opus-in-webcodecs.patch?h=packages/chromium&id=7dabfd6f8cafa95fcbc254938abf3f21fef3deae
+	source = don-t-crash-on-reentrant-RunMoveLoop-call.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/don-t-crash-on-reentrant-RunMoveLoop-call.patch?h=packages/chromium&id=7dabfd6f8cafa95fcbc254938abf3f21fef3deae
+	source = add-ctime-for-std-time.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-ctime-for-std-time.patch?h=packages/chromium&id=7dabfd6f8cafa95fcbc254938abf3f21fef3deae
+	source = chromium-glibc-2.33.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-glibc-2.33.patch?h=packages/chromium&id=7dabfd6f8cafa95fcbc254938abf3f21fef3deae
+	source = use-oauth2-client-switches-as-default.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/use-oauth2-client-switches-as-default.patch?h=packages/chromium&id=7dabfd6f8cafa95fcbc254938abf3f21fef3deae
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -56,6 +57,7 @@ pkgbase = brave
 	sha256sums = ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e
 	sha256sums = d7775ffcfc25eace81b3e8db23d62562afb3dbb5904d3cbce2081f3fe1b3067d
 	sha256sums = b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121
+	sha256sums = 615f5fefc94da605957edb34b6c000f32953fb5ff6ffb321f062dab8e0fef9d3
 	sha256sums = 102e0c976c0d7fd1fbe2f2978ec621499a97b62457b3fde4daf84f026d1a53a7
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
