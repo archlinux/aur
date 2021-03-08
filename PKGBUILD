@@ -1,5 +1,5 @@
 pkgname=python-orient
-pkgver=1.4.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Python bindings for OrientDB"
 arch=('any')
@@ -9,7 +9,7 @@ groups=()
 depends=('python')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/p/pyorient/pyorient-${pkgver}.tar.gz)
-sha256sums=('520ab495419a7f27d5815594df09a08b0921ef6a9ac2b11d7df69387a7e597d6')
+sha256sums=('6f5c657a4a13bcc5e6875850c6b51fedf2fccd15a86ff1fef6cdedb546feb1ce')
 
 build() {
   cd "$srcdir"/pyorient-${pkgver}
