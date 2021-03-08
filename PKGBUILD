@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=sdltrs
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="TRS-80 Model I/III/4/4P emulator"
@@ -10,19 +10,19 @@ license=('BSD')
 depends=('hicolor-icon-theme' 'sdl2')
 makedepends=('cmake')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('7a9dd7b97caa46520a9d70b9aaed21d01d8d8483a2d768ef2a39111ff241c45d49f01132553c455e40f6e548966ded83d60fa224f7f951623b9cb7acfe8b49f5')
+sha512sums=('e5f616ab09e7fd01ede7571172ccd81c5f2dcb3fffb39b7cdf97c9a18302263f1fb764d7c5401672fce9e5bf3c78f2a60a32cc40df6921cba28fb15436b7b4a1')
 
 build() {
-  [[ -d build ]] && rm -r build
+  [[ -d builddir ]] && rm -r builddir
   cmake $pkgname-$pkgver \
-        -Bbuild \
+        -Bbuilddir \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build
+  cmake --build builddir
 }
 
 package() {
-  cd build
+  cd builddir
   make DESTDIR="$pkgdir" install
 
   install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
