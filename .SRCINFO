@@ -1,14 +1,14 @@
 pkgbase = canal-cli
 	pkgdesc = Canal Command Line Interface
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/trycanal/cli
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = https://github.com/trycanal/cli/archive/v0.0.5.tar.gz
-	md5sums = f05e50bba4b6ea7e307f518db52e8509
+	source = https://github.com/trycanal/cli/archive/v0.0.6.tar.gz
+	md5sums = 0002dced6634adb6e601e0fe6d33c051
 
 pkgname = canal-cli
 
