@@ -3,7 +3,7 @@
 
 pkgname=gashell
 _pkgname=GAShell
-pkgver=0.92
+pkgver=0.921
 pkgrel=1
 pkgdesc="A bash script that generates and securely manages/stores Google Authenticator codes."
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('GNU V3')
 depends=('sed' 'oath-toolkit' 'openssl' 'zbar' 'curl')
 provides=('gashell')
 source=(https://github.com/TechtonicSoftware/$_pkgname/archive/$pkgver.tar.gz)
-sha256sums=('95420fe025ad5c8961f23257beb19fba1735307f220fa4b0b390659f1eb823c9')
+sha256sums=('5e7b77e2576b82e56e73d8741ac7173e1e78b44fa9b414bb76ff2016ea4c0193')
 
 package() {
     mkdir -p "$pkgdir/usr/share/$pkgname/";
