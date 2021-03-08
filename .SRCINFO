@@ -1,0 +1,15 @@
+pkgbase = fcgu-keyring
+	pkgdesc = FCGU PGP keyring
+	pkgver = 20210308
+	pkgrel = 1
+	url = https://gitlab.com/fabis_cafe/fcgu-keyring
+	install = fcgu-keyring.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = archlinux-keyring
+	source = git+https://gitlab.com/fabis_cafe/fcgu-keyring.git#commit=71814796bd77eedd603c99df3d33281b97aee178
+	sha512sums = SKIP
+
+pkgname = fcgu-keyring
+
