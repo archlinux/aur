@@ -29,12 +29,12 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    cargo build --release --locked
+    cargo build --release --locked --features "im-discord im-matrix"
 }
 
 check() {
     cd "${_pkgname}"
-    cargo test --release --locked
+    cargo test --release --locked --features "im-discord im-matrix"
 }
 
 package() {
