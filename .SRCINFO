@@ -1,0 +1,18 @@
+pkgbase = google-sheets-nativefier
+	pkgdesc = Electron wrapper for the Google Sheets web application
+	pkgver = 1
+	pkgrel = 1
+	url = https://sheets.google.com
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	makedepends = unzip
+	source = google-sheets-nativefier.png
+	source = google-sheets-nativefier.desktop
+	sha256sums = 0f785ccbb8d20eb21d81ac60cc85a0c84a84872dbaa9ca1563b3cbc093db399a
+	sha256sums = fe9f908b7adb52f844762e2c3741802dc9b3bf13f9f059d9c819f562f988a624
+
+pkgname = google-sheets-nativefier
+

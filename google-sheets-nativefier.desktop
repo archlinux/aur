@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Google Sheets
+Comment=With Google Sheets, you can write, edit, and collaborate wherever you are. For Free. 
+Exec=GoogleSheets
+Icon=/usr/share/pixmaps/GoogleSheets.png
+Terminal=false
+Categories=Productivity;Sheets;Google;Nativefier;
