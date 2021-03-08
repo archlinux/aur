@@ -1,7 +1,7 @@
 pkgbase = google-sheets-nativefier
 	pkgdesc = Electron wrapper for the Google Sheets web application
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sheets.google.com
 	arch = x86_64
 	license = MIT
