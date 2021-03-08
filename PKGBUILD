@@ -11,11 +11,15 @@ arch=("any")
 url="https://github.com/btcpayserver/${_pkgname}"
 license=("MIT")
 groups=()
-depends=("aspnet-runtime" "bitcoin-cli" "bitcoin-daemon" "certbot-nginx" "dotnet-host" "dotnet-runtime" "dotnet-sdk" "lnd" "nbxplorer-git" "nginx" "sqlite" "tmux")
+depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk" "lnd" "nbxplorer-git" "tmux")
 makedepends=("git")
 checkdepends=()
-optdepends=("mariadb: Alternative database to sqlite."
-"postgresql: Alternative database to sqlite.")
+optdepends=("bitcoin-cli: Interact with your Bitcoin node."
+"certbot: Creates SSL certificates."
+"nginx: HTTP server"
+"mariadb: Database"
+"postgresql: Database"
+"sqlite: Database")
 provides=(${_pkgname})
 conflicts=("btcpayserver")
 replaces=()

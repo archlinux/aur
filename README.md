@@ -4,24 +4,25 @@
 1. `sudo nano /etc/bitcoin/bitcoin.conf` and uncomment "prune=550". Set "rpcuser=" and "rpcpassword=" how you like. You will need those values later.
 2. `sudo nano /etc/bitcoin/bitcoin.conf` and add the following to the `[main]` block which is at the end of the file.
 ```
+whitelist=127.0.0.1
 zmqpubrawblock=tcp://127.0.0.1:28332
 zmqpubrawtx=tcp://127.0.0.1:28333
 ```
 
 ### lnd
 1. Start lnd.
-2. `lncli create` and create you necessary wallet.
+2. `lncli create` and create your necessary wallet.
 
 ### nbxplorer
-1. `nano ~/.nbxplorer/Main/settings.config` and set "btc.rpc.auth=" according to the prior set values in the bitcoin configuration file.
+1. `nano ~/.nbxplorer/Main/settings.config` and set "btc.rpc.auth=" according to the priorly set values in the bitcoin configuration file.
 
 ### btcpayserver
 1. `nano ~/.btcpayserver/Main/settings.config` and uncomment the SQLite database line. Alternatively, a different database can be used instead.
 2. `nano ~/.btcpayserver/Main/settings.config` and append the output of `openssl x509 -noout -fingerprint -sha256 -inform pem -in ~/.lnd/tls.cert` to the file line `BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=/home/USERNAME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;certthumbprint=`. Alternatively, use this file line `BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=/home/USERNAME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;allowinsecure=true`.
 
 ### nginx
-1. `sudo nano /etc/nginx/nginx.conf` and configure your nginx server as a reverse HTTP proxy to the btcpayserver HTTP server.
-2. Additional headers are needed as otherwise the website will show an error that HTTPS is not used.
+* You can use any HTTP server which supports reverse proxying. Instructions are given for nginx.
+1. `sudo nano /etc/nginx/nginx.conf` and configure your nginx server as a reverse HTTP proxy to the btcpayserver HTTP server. Additional headers are needed as otherwise the website will show an error that HTTPS is not used. You also need to create SSL keys.
 ```
 http
 {
