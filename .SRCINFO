@@ -1,7 +1,7 @@
 pkgbase = linux-okhsunrog
 	pkgdesc = pf-kernel by okhsunrog (personal build)
 	pkgver = 5.11.pf3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/post-factum/pf-kernel/-/wikis/README
 	arch = x86_64
 	license = GPL2
