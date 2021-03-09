@@ -6,7 +6,7 @@ pkgbase = kubefwd-bin
 	arch = x86_64
 	license = apache
 	source = kubefwd-1.18.0.tar.gz::https://github.com/txn2/kubefwd/releases/download/1.18.0/kubefwd_Linux_x86_64.tar.gz
-	sha256sums = 3ebcd98f3bdcd121d6b11a2ac2000b5b6cfd9bf3a300868586a5e16fc22d3b11
+	sha256sums = c0426de226feb0148d68ccddb8afb06aa06e708468d399ddc212ba80c3d7505c
 
 pkgname = kubefwd-bin
 
