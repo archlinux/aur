@@ -3,30 +3,32 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-opus
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="OCaml bindings for Opus audio codec"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-opus"
 license=('GPL2')
 depends=('ocaml' 'opus' 'ocaml-ogg')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-opus/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  ./configure
-  make
+  
+  dune build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
+  
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('c12f71dba30a678244816a5367f2093ff3cda47461044916d1d3642144395f05')
+sha256sums=('5d70a87816062d5c9fe56888df11beebafd6342de7cbe68bcbbd9c00ec84b9ab')
+
+
