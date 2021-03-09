@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Upterm
-GenericName=Terminal
-Comment=A terminal emulator for the 21st century
-Icon=upterm
-Exec=upterm
-Categories=GTK;System;TerminalEmulator;
-StartupNotify=true
