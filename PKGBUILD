@@ -4,11 +4,11 @@
 # Contributor: Curve <curve.platin at gmail.com>
 
 pkgname=vscode-transparent-git
-pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - based on insiders commit'
+pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - compiles from main'
 _pkgname=code
 _electron=electron
-pkgver=1.55.0_insiders
-pkgrel=1
+pkgver=1.53.0.r76027.gd045bc6ed1d
+pkgrel=2
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
