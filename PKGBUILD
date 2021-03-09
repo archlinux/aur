@@ -3,7 +3,7 @@
 
 pkgname=receitanet
 pkgver=1.24
-pkgrel=1
+pkgrel=2
 license=('custom')
 
 arch=(any)
@@ -45,4 +45,5 @@ package() {
 	echo 'java -jar /usr/share/receitanet/receitanet.jar' >> "$pkgdir"/usr/bin/receitanet
 	
 	chmod 755 "$pkgdir"/usr/bin/receitanet
+
 }
