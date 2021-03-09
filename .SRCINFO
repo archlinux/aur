@@ -1,6 +1,6 @@
 pkgbase = visp
 	pkgdesc = A modular library for visual tracking and visual servoing
-	pkgver = 3.1.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://visp.inria.fr
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = visp
 	optdepends = xorg-server: used for the image display
 	optdepends = libx11: used for the image display
 	optdepends = gtk2: used for the image display
-	optdepends = libxml2: parse XML files for camera and model-based tracker parameters
+	optdepends = pugixml: Light-weight, simple and fast XML parser for C++ with XPath support
 	optdepends = ogre: for 3D Rendering
 	optdepends = ois: for System Input (keyboard, pad, ...)
 	optdepends = soqt: interfacing coin with qt
@@ -30,8 +30,8 @@ pkgbase = visp
 	optdepends = opencv: provides image converters, a renderer, a feature point tracker and point matching classes
 	optdepends = zbar: used to read QR codes
 	optdepends = libdmtx: used to read Data Matrix bar codes
-	source = http://gforge.inria.fr/frs/download.php/latestfile/475/visp-3.1.0.tar.gz
-	md5sums = 8964aa54c9c3b18773f10c54da042780
+	source = https://github.com/lagadic/visp/archive/v3.4.0.tar.gz
+	md5sums = 41c1a92473ecacfa646306f2b6cae240
 
 pkgname = visp
 

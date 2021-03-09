@@ -1,6 +1,7 @@
+# Maintainer: Nxxx <nx dot tardis at gmail dot com>
 # Maintainer: Thibaud Hulin <thibaud.hulin.cl.atgmail.com>
 pkgname=visp
-pkgver=3.1.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A modular library for visual tracking and visual servoing"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ optdepends=(
 	'xorg-server: used for the image display'
         'libx11: used for the image display'
 	'gtk2: used for the image display'
-	'libxml2: parse XML files for camera and model-based tracker parameters'
+	'pugixml: Light-weight, simple and fast XML parser for C++ with XPath support'
 	'ogre: for 3D Rendering'
 	'ois: for System Input (keyboard, pad, ...)'
 	'soqt: interfacing coin with qt'
@@ -30,8 +31,8 @@ optdepends=(
 	'opencv: provides image converters, a renderer, a feature point tracker and point matching classes'
         'zbar: used to read QR codes'
 	'libdmtx: used to read Data Matrix bar codes')
-source=("http://gforge.inria.fr/frs/download.php/latestfile/475/${pkgname}-$pkgver.tar.gz")
-md5sums=('8964aa54c9c3b18773f10c54da042780')
+source=("https://github.com/lagadic/visp/archive/v$pkgver.tar.gz")
+md5sums=('41c1a92473ecacfa646306f2b6cae240')
 
 build() {
 	cd "${srcdir}/${pkgname}-$pkgver"
