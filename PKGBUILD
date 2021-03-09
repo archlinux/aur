@@ -1,13 +1,13 @@
 # Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=r2038.838092e2
+pkgver=r2188.36385acc
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software - PRE ALPHA"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
-depends=('libusb' 'libcec' 'protobuf' 'python' 'qt5-serialport' 'avahi')
+depends=('libusb' 'libcec' 'protobuf' 'python' 'qt5-serialport' 'qt5-x11extras' 'avahi')
 optdepends=('xorg-server: X11 grabbing')
 makedepends=('cmake')
 provides=("hyperion")
