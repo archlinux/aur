@@ -13,8 +13,8 @@ options=("!strip" "staticlibs")
 provides=("${_pkgname}" "${_pkgname}-git")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 
-source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-amd64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-arm64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_arm64.deb")
 
 prepare() {
     mkdir data
