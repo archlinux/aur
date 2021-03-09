@@ -1,8 +1,8 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
-# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 
 pkgname=python-nose-timer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Timer plugin for nosetests'
 arch=(any)
