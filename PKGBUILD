@@ -1,29 +1,51 @@
-pkgname=haskell-pandoc-crossref-bin
-_pkgname=pandoc-crossref
+pkgname=pandoc-crossref-static-git
+_pkgname="${pkgname%-static-git}"
 pkgver=0.3.12.0c
-_pandoc_pkgver=2.14.2
+_pandoc_ver=2.14.2
 pkgrel=1
-pkgdesc="Pandoc filter for cross-references - executable only"
-url="https://hackage.haskell.org/package/${_pkgname}"
+pkgdesc="Pandoc filter for cross-references (static build)"
+url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL2")
 arch=('x86_64')
 conflicts=("pandoc-crossref")
-provides=("pandoc-crossref")
+provides=("$_pkgname=$pkgver")
 replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
-depends=("pandoc-bin>=${_pandoc_pkgver}")
+depends=("pandoc=$_pandoc_ver")
+makedepends=('stack' 'pandoc')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
-source=(
-    "pandoc-crossref-${pkgver}.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/pandoc-crossref-Linux.tar.xz"
-)
-sha256sums=('90d058d6dffa109a31418301c8e56e41d116bd6f444e9cdacf2840434f6edb7f')
+pkgver() {
+    cd "$pkgname"
+    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$pkgname"
+    sed -i "s/pandoc-\([1-9]\+\.\)\{3\}[1-9]\+/pandoc-$_pandoc_ver/" stack.yaml
+}
+
+check() {
+    cd "$pkgname"
+
+    stack test
+}
+
+build() {
+    cd "$pkgname"
+
+    stack setup
+    stack build \
+        --install-ghc \
+        --ghc-options='-fdiagnostics-color=always' \
+        --flag 'pandoc:embed_data_files' \
+        --fast
+    pandoc -s -t man docs/index.md -o pandoc-crossref.1
+}
 
 package() {
-    cd "${srcdir}"
-
-    # To avoid having to download over a gigabyte of haskell makedepends (400-ish for ghc, plus 750 in libs), we
-    # just yoink the binary from static compiled binary distributed by pandoc:
-    mkdir -p "${pkgdir}/usr/bin"
-    cp pandoc-crossref "${pkgdir}/usr/bin/"
-    mkdir -p "${pkgdir}/usr/share/man/man1/"
-    cp pandoc-crossref.1 "${pkgdir}/usr/share/man/man1/"
+    cd "$pkgname"
+    stack install --local-bin-path "$pkgdir/usr/bin"
+    install -Dm644 pandoc-crossref.1 \
+        "${pkgdir}"/usr/share/man/man1/pandoc-crossref.1
 }
