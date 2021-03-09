@@ -10,6 +10,7 @@ url="http://support.epson.net/linux/en/epsonscan2.php"
 license=('custom')
 depends=('epsonscan2')
 makedepends=('xxd')
+replaces=('epsonscan2-non-free-plugin-bin')
 source_i686=("https://download2.ebz.epson.net/epsonscan2/common/deb/x86/epsonscan2-bundle-${_epsonscan2_ver}.i686.deb.tar.gz")
 source_x86_64=("https://download2.ebz.epson.net/epsonscan2/common/deb/x64/epsonscan2-bundle-${_epsonscan2_ver}.x86_64.deb.tar.gz")
 sha512sums_i686=('52323244db52eb8fde3a24b381ee66581f5c7fcc979dd62598ff1103062b5e478d35b36c828ea09a411bb5e0a8bae6f9131e8d81e9c8cc7810215a7c6cef9681')
