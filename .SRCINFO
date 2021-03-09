@@ -1,7 +1,7 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 20210215+0.3.2
-	pkgrel = 2
+	pkgver = 20210215+0.4
+	pkgrel = 1
 	url = https://pokemonrevolution.net
 	install = archlinux.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pokemon-revolution-online-bin
 	depends = opengl-driver
 	optdepends = gtk2: required for the Unity ScreenSelector plugin
 	conflicts = pokemon-revolution-online
-	source = git+https://gitlab.com/fabis_cafe/pro_assets_lin_desktop.git#tag=0.3.2
+	source = git+https://gitlab.com/fabis_cafe/pro_assets_lin_desktop.git#tag=0.4
 	source = PROClient_linux-20210215.zip::https://ddl.pokemonrevolution.net/PROClient_linux.zip
 	sha256sums = SKIP
 	sha256sums = eb68484c94b929beb438ea78feee83566d7c8c204d83eec83facef4a75cf66b5
