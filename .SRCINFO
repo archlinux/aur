@@ -1,0 +1,15 @@
+pkgbase = zipwalk
+	pkgdesc = A cli tool to parse damaged zip files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sky-bro/zipwalk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = zlib
+	source = git+https://github.com/sky-bro/zipwalk.git
+	sha256sums = SKIP
+
+pkgname = zipwalk
+
