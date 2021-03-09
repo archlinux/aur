@@ -1,14 +1,17 @@
 pkgbase = oasis
 	pkgdesc = Helps you follow friends and discover new ones on Secure Scuttlebutt (SSB).
 	pkgver = 2.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fraction/oasis
+	install = oasis.install
 	arch = any
 	license = AGPL3
 	makedepends = npm
 	noextract = oasis-2.17.0.tgz
 	source = https://github.com/fraction/oasis/archive/v2.17.0.tar.gz
+	source = oasis.install
 	md5sums = 25ffb6dbc852c1f2ded2c24ce333c352
+	md5sums = 530a21b91ca2d7340ede2fd91fc3dbeb
 
 pkgname = oasis
 
