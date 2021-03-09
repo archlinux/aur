@@ -68,7 +68,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=21
+_minor=22
 _srcname=linux-${_major}
 _clr=${_major}.19-1032
 pkgbase=linux-clear
@@ -80,7 +80,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20200615'
+_gcc_more_v='20210309'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -150,6 +150,7 @@ prepare() {
         # Device Drivers
         scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
                        --enable DELL_SMBIOS_SMM \
+                       --enable NET_VENDOR_AQUANTIA \
                        --module PATA_JMICRON \
                        --enable-after SOUND SOUND_OSS_CORE \
                        --enable SND_OSSEMUL \
@@ -180,8 +181,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v10.1+_kernel_v5.8+.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
+        echo "Patching to enable GCC optimization for other uarchs..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-gcc-v10-and-kernel-5.8+.patch"
         fi
 
     ### Get kernel version
@@ -353,9 +354,9 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '5e91d90fbcfb3d7c3a7a950b8738253250fe461fd23c1cedf5beb990c422ba18'
+            'a24279f21f69cdbf69f99f483fab39c024a88e1ef55e00a953f55a653402df5c'
             'SKIP'
-            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
+            '8fa4ef2c3b392c410c3f74f9b4ab89683b7fca8cac70b96e2bf532a952e46d0b'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
             '261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865')
 
