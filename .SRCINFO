@@ -1,16 +1,16 @@
 pkgbase = unified-remote-server
 	pkgdesc = Unified Remote Server
-	pkgver = 3.9.0.2465
-	pkgrel = 2
+	pkgver = 3.10.0.2467
+	pkgrel = 1
 	url = http://www.unifiedremote.com/
 	install = unified-remote-server.install
 	arch = x86_64
 	license = freeware
 	depends = glibc
 	depends = gcc-libs
-	source = https://www.unifiedremote.com/static/builds/server/linux-x64/2465/urserver-3.9.0.2465.deb
+	source = https://www.unifiedremote.com/static/builds/server/linux-x64/2467/urserver-3.10.0.2467.deb
 	source = urserver.service
-	sha256sums = a84c7af9a30e90b5ae477fc91912f5655f14c211d2084702823ff061f5b0dfc3
+	sha256sums = d3bea100a775d198a182b28cc70274abcaa2f24de0bdb2650df90a283a11a0a9
 	sha256sums = 2a2a6118aa028a4ca38638845d1b8d408d57332f3b88c02ff00d5c7f5321428a
 
 pkgname = unified-remote-server
