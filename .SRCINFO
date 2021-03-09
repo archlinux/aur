@@ -1,6 +1,6 @@
 pkgbase = gamenetworkingsockets-git
 	pkgdesc = Reliable & unreliable messages over UDP. Robust message fragmentation & reassembly. Encryption.
-	pkgver = 1.1.0.89.g1748a3b
+	pkgver = 1.2.0.158.g332da08
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/GameNetworkingSockets
 	arch = x86_64

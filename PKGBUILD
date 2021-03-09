@@ -3,7 +3,7 @@
 # Upstream: https://github.com/ValveSoftware/GameNetworkingSockets
 
 pkgname=('gamenetworkingsockets-git')
-pkgver=1.1.0.89.g1748a3b
+pkgver=1.2.0.158.g332da08
 pkgrel=1
 pkgdesc="Reliable & unreliable messages over UDP. Robust message fragmentation & reassembly. Encryption."
 arch=('x86_64')
@@ -33,5 +33,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -D -m644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 "build/src/libGameNetworkingSockets.so" -t "$pkgdir/usr/lib"
+  install -Dm 644 "build/bin/libGameNetworkingSockets.so" -t "$pkgdir/usr/lib"
 }
