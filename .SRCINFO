@@ -1,0 +1,17 @@
+pkgbase = haskell-dependent-sum-template
+	pkgdesc = Template Haskell code to generate instances of classes in dependent-sum package
+	pkgver = 0.1.0.3
+	pkgrel = 1
+	url = https://github.com/obsidiansystems/dependent-sum
+	arch = x86_64
+	license = custom:PublicDomain
+	makedepends = ghc
+	makedepends = haskell-constraints-extras
+	depends = ghc-libs
+	depends = haskell-dependent-sum
+	depends = haskell-th-extras
+	source = https://hackage.haskell.org/packages/archive/dependent-sum-template/0.1.0.3/dependent-sum-template-0.1.0.3.tar.gz
+	sha256sums = c8eb17d3fa9966182e041836abefce2e7e42e30d3b01463a254fb7cf806ca4df
+
+pkgname = haskell-dependent-sum-template
+
