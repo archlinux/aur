@@ -1,13 +1,13 @@
 pkgbase = tfswitch
 	pkgdesc = A command line tool to switch between different versions of terraform.
-	pkgver = 0.10.1010
+	pkgver = 0.11.1071
 	pkgrel = 1
 	url = https://github.com/warrensbox/terraform-switcher
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/warrensbox/terraform-switcher/archive/0.10.1010.tar.gz
-	sha256sums = e3455b75fdc8e51187aea68f14837af0e873cf7f3827800df9c2e89c5425cd53
+	source = https://github.com/warrensbox/terraform-switcher/archive/0.11.1071.tar.gz
+	sha256sums = 715bbfb5c8b7c8e098ddeee45efe774f6c2cced22a69d5301d37ddbbaaebf671
 
 pkgname = tfswitch
 
