@@ -3,9 +3,9 @@
 pkgname=clight
 _gitname=Clight
 pkgver=4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/FedeDP/${_gitname}"
 license=('GPL')
 backup=(etc/default/clight.conf)
