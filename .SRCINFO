@@ -1,0 +1,13 @@
+pkgbase = nature-wallpapers-git
+	pkgdesc = A collection of nature wallpapers
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/winux1/nature-wallpapers.git/
+	arch = any
+	license = CCPL:by-nc-sa
+	makedepends = git
+	source = git+https://gitlab.com/winux1/nature-wallpapers.git/
+	md5sums = SKIP
+
+pkgname = nature-wallpapers-git
+
