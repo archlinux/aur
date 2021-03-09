@@ -1,18 +1,16 @@
 pkgbase = webilder-gtk-patched
 	pkgdesc = Deliver stunning wallpapers directly from Flickr and Webshots. Desktop-independent patched version
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webilder.org
-	install = webilder-gtk-patched.install
 	arch = any
 	license = BSD
+	makedepends = git
 	makedepends = python2-setuptools
-	depends = desktop-file-utils
+	depends = pygtk
 	depends = python2-pillow
 	provides = webilder
-	conflicts = webilder-applet
-	conflicts = webilder-gnome
-	source = git://github.com/thesamet/webilder.git#commit=f1add30cebfe8e95c918b1a0ba0ea06299d33821
+	source = webilder-0.7.3::git+https://github.com/thesamet/webilder.git#commit=f1add30cebfe8e95c918b1a0ba0ea06299d33821
 	source = setup.py
 	md5sums = SKIP
 	md5sums = 6ef2767889aeb8c99719e67a72693e19
