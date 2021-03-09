@@ -1,7 +1,7 @@
 pkgbase = insomnia-designer-bin
 	pkgdesc = Collaborative API Design Tool for designing, testing and managing OpenAPI specifications
 	pkgver = 2020.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://insomnia.rest
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = insomnia-designer-bin
 	depends = libsecret
 	depends = libxss
 	depends = libxslt
-	depends = nodejs
 	depends = nss
 	depends = xdg-utils
 	provides = insomnia-designer

@@ -3,13 +3,13 @@
 _pkgname='Insomnia-Designer'
 pkgname="${_pkgname,,}-bin"
 pkgver=2020.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Collaborative API Design Tool for designing, testing and managing OpenAPI specifications'
 arch=('x86_64')
 url='https://insomnia.rest'
 _url_source='https://github.com/Kong/insomnia'
 license=('MIT')
-depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxslt' 'nodejs' 'nss' 'xdg-utils')
+depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxslt' 'nss' 'xdg-utils')
 provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}")
 source=("${_url_source}/releases/download/designer@${pkgver}/${_pkgname/-/.}-${pkgver}.deb"
