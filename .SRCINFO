@@ -1,0 +1,18 @@
+pkgbase = auto-sub
+	pkgdesc = A tool to batch add subtitles, chapters, tags, attachments to media files. Uses FFmpeg in backend
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/demon-rem/auto-sub
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ffmpeg
+	provides = auto-sub
+	conflicts = auto-sub
+	source = auto-sub_0.0.1.gz::https://github.com/demon-rem/auto-sub/releases/download/0.0.1/auto-sub_0.0.1_linux_x86_64.gz
+	source = auto-sub::git+https://github.com/demon-rem/auto-sub
+	sha256sums = 14fdd8fcb05d0b58e2630b64342157fc4d541759aa9fc3364c22763ec8b980b7
+	sha256sums = SKIP
+
+pkgname = auto-sub
+
