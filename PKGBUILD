@@ -22,6 +22,6 @@ build() {
 }
 package() {
          cd "$srcdir/build"
-         sudo make DESTDIR="$pkgdir/" install
+         make DESTDIR="$pkgdir/" install
 }
 
