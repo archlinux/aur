@@ -11,7 +11,7 @@ makedepends=(
 	'git'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('a8f7958f42ed207811a65d31b2177c92')
+md5sums=('687b8a8bff508c3ba8d2ac1e1e95cbdb')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
