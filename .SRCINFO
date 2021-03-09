@@ -6,7 +6,6 @@ pkgbase = shim-efi-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = gnu-efi
 	provides = shim-efi
 	conflicts = shim-efi
 	options = !buildflags
