@@ -1,0 +1,17 @@
+pkgbase = wcp-git
+	pkgdesc = wcp is an experiment in re-implementing something like the standard cp file copy tool. The goal is to be as fast as possible, and provide the best possible progress bar, by counting up the total copy size in parallel with running the copy.
+	pkgver = 0.0.0.r0.e102349
+	pkgrel = 1
+	url = https://github.com/wheybags/wcp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = wcp
+	conflicts = wcp
+	source = wcp-git::git+https://github.com/wheybags/wcp
+	sha256sums = SKIP
+
+pkgname = wcp-git
+
