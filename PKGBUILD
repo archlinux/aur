@@ -1,12 +1,13 @@
-# Maintainer Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
 # Credit: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gstreamer0.10-ffmpeg
 _pkgname=gst-ffmpeg
 pkgver=0.10.13
-pkgrel=10
+pkgrel=11
 pkgdesc="Gstreamer FFMpeg Plugin"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gstreamer0.10-base>=0.10.36-11' 'bzip2')
 makedepends=('pkgconfig' 'yasm' 'sdl' 'git' 'gtk-doc')
@@ -20,6 +21,7 @@ sha256sums=('76fca05b08e00134e3cb92fa347507f42cbd48ddb08ed3343a912def187fbb62'
 prepare() {
   cd ${_pkgname}-${pkgver}
   patch -Np1 -i ../h264_qpel_mmx.patch
+  find . -type f -print0 | xargs -0 sed -i 's/ORC_TARGET_ALTIVEC_ALTIVEC/ORC_TARGET_POWERPC_ALTIVEC/g'
 }
 
 build() {
