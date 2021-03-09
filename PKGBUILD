@@ -1,6 +1,6 @@
 pkgname=nodejs-nightly
-_pkgver=16.0.0-nightly20210307d63b717044
-pkgver=16.0.0.nightly20210307d63b717044
+_pkgver=16.0.0-nightly202103097f54dd4f07
+pkgver=16.0.0.nightly202103097f54dd4f07
 pkgrel=1
 pkgdesc='Nightly version of nodejs evented I/O for V8 javascript'
 arch=('x86_64')
