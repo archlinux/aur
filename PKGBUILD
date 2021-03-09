@@ -1,7 +1,7 @@
 # Maintainer: Kian Kasad (kian at kasad.com)
 pkgname=chirp-daily-latest
 _pkgname=chirp-daily
-pkgver=20210212
+pkgver=20210307
 pkgrel=1
 pkgdesc="Latest build for GUI tool for programming ham radios"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('hamradio-menus')
 options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
-sha1sums=(975bc871d06db1e2a393d78a426b896a949f890c)
+sha1sums=(cafd260ffaeeb8be517c8879568dc0b3d9ac53f2)
 source=("https://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/chirp-daily-$pkgver.tar.gz")
 
 build() {
