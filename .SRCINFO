@@ -1,7 +1,7 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
 	pkgver = 89.0.4389.82
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
@@ -54,12 +54,14 @@ pkgbase = chromium-no-extras
 	source = https://github.com/foutrelis/chromium-launcher/archive/v7/chromium-launcher-7.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-89-patchset-7/chromium-89-patchset-7.tar.xz
 	source = add-dependency-on-opus-in-webcodecs.patch
+	source = x11-ozone-fix-two-edge-cases.patch
 	source = chromium-glibc-2.33.patch
 	source = use-oauth2-client-switches-as-default.patch
 	sha256sums = df4914407b68afdc6449cb8e3f1b08d110eb8689ac41f86490e337fa4d1be379
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
 	sha256sums = f8b1558f6c87b33423da854d42f0f69d47885a96d6bf6ce7f26373e93d47442f
 	sha256sums = b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121
+	sha256sums = 9e4743bdeaf5b668659ad53400e3977006916aac3a7ba045bbc750b7b4cbf274
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
 
