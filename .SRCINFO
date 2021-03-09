@@ -1,6 +1,6 @@
 pkgbase = linux-timemachine-git
 	pkgdesc = Rsync-based OSX-like time machine for atomic and resumable local and remote backups
-	pkgver = 1.1
+	pkgver = v1.2.r0.g19d6e9a
 	pkgrel = 1
 	url = https://github.com/cytopia/linux-timemachine
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = linux-timemachine-git
 	makedepends = git
 	depends = rsync
 	optdepends = openssh: backup to remote (SCP) locations
-	source = linux-timemachine-git-1.1::git+https://github.com/cytopia/linux-timemachine.git
+	source = linux-timemachine-git::git+https://github.com/cytopia/linux-timemachine.git
 	sha256sums = SKIP
 
 pkgname = linux-timemachine-git
