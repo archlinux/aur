@@ -2,7 +2,7 @@
 
 pkgname=aumix
 pkgver=2.9.1
-pkgrel=9
+pkgrel=10
 pkgdesc="A color text mode sound mixer with GPM support"
 arch=('x86_64' 'i686')
 license=('GPL')
@@ -23,6 +23,7 @@ build() {
   cd "$srcdir"
   cp -a aumix-$pkgver aumix-gtk-$pkgver
 
+  CFLAGS="$CFLAGS -fcommon"
   cd "$srcdir"/aumix-$pkgver
   msg "No X11 build"
   ./configure --prefix=/usr --mandir=/usr/share/man --without-gtk --without-gtk1 \
