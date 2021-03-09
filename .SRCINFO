@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-notify_push
 	pkgdesc = Update notifications for nextcloud clients
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/nextcloud/notify_push
 	install = nextcloud-app-notify_push.install
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nextcloud-app-notify_push
 	makedepends = rust
 	depends = nextcloud>=21
 	optdepends = redis: use a local redis instance
-	source = notify_push-0.1.5.tar.gz::https://github.com/nextcloud/notify_push/archive/v0.1.5.tar.gz
+	source = notify_push-0.1.6.tar.gz::https://github.com/nextcloud/notify_push/archive/v0.1.6.tar.gz
 	source = nextcloud-app-notify_push.service
-	sha512sums = 9b489eccf1495b6f7a41085440f5caf4cbddff7720af339d52a69138cce83b866650dc2a300bdf83bc840fbefc9d70af3b2b6b615e6014725936bf0bbb41f94d
+	sha512sums = 34ba5e824bc2628718b8ab008c4dfb08875bedac19d9752f147c10815f438cd0f8fb408c1ec366519af11c3202ba43b1e6d1383ec5707b0393363f205f19d250
 	sha512sums = 1fe68df3a84770dfc708f1ad8fdf8077e45ea08e5312a5efbe5c4baa310bd4f926e793825c259a31398dc29dbf76ec47943d60aa386f9d64d880737be4004c16
 
 pkgname = nextcloud-app-notify_push
