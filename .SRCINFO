@@ -1,0 +1,26 @@
+pkgbase = ansible-lint-git
+	pkgdesc = Checks playbooks for practices and behaviour that could potentially be improved.
+	pkgver = r1332.dd4bf59
+	pkgrel = 1
+	url = https://github.com/ansible/ansible-lint
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools_scm
+	depends = python
+	depends = python-ruamel-yaml
+	depends = python-pyaml
+	depends = python-rich
+	depends = python-packaging
+	depends = python-wcmatch
+	depends = python-enrich
+	optdepends = yamllint: check for yaml syntax mistakes
+	optdepends = ansible: check playbooks
+	provides = ansible-lint
+	conflicts = ansible-lint
+	source = git+https://github.com/ansible/ansible-lint.git
+	sha256sums = SKIP
+
+pkgname = ansible-lint-git
+
