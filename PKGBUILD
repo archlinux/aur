@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=nftables-geoip-db
 pkgver=2.1
-pkgrel=7
+pkgrel=8
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
 license=('BSD' 'GPL')
@@ -13,7 +13,7 @@ _geoip_date=`date +%Y-%m`
 # create a file named geoip.license.key which contains MaxMind License key in following format:
 # _maxmind_key=XXXX
 
-source geoip.license.key
+[[ -f geoip.license.key ]] && source geoip.license.key
 if [[ -z "${_maxmind_key}" ]]; then
     url="https://db-ip.com/db/download/ip-to-country-lite"
     source="dbip-country-lite-${_geoip_date}.csv.gz::https://download.db-ip.com/free/dbip-country-lite-${_geoip_date}.csv.gz"
