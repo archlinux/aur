@@ -7,7 +7,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.15.1
+pkgver=5.15.2
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('any')
@@ -67,7 +67,7 @@ source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkg
         "0001-Support-pkg-config-under-Android.patch"
         "0002-Force-64-bit-atomics-usage.patch"
         "0003-Remove-undeclared-method-in-QtNative.patch")
-md5sums=('ab16c28f4f9e6db8299096312decdbc4'
+md5sums=('e1447db4f06c841d8947f0a6ce83a7b5'
          '6af9dcc450ae6c69d8fddccf0680d84a'
          'f17efcb3d46afefd9d2c011301fd53c5'
          'b5e5c0d979b0f6a4dd90f32ce999965b')
