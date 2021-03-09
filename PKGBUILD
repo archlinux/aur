@@ -1,29 +1,30 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-portaudio
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="OCaml bindings for portaudio"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-portaudio"
 license=('LGPL2.1')
 depends=('ocaml' 'portaudio')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-portaudio/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('c504a0d47c1aa834b774b9c668b65691')
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    ./configure
-    make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  
+  dune build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
+
+sha256sums=('8968c3749c9a1f1d09bd7ceb970c068ded0eb8f6b77d9002227182c97a4a044e')
