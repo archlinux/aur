@@ -25,5 +25,5 @@ build() {
 #         make DESTDIR="$pkgdir/" install
 # }
 package() {
-  make -C build install
+  sudo make -C build install
 }
