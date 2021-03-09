@@ -1,11 +1,11 @@
 pkgbase = leaf-git
 	pkgdesc = A lightweight and fast proxy utility tries to include any useful features.
 	pkgver = 0.2.11.r13.g5b1582f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eycorsican/leaf
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = custom:Apache-2.0
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs

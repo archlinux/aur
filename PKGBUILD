@@ -1,11 +1,11 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=leaf-git
 pkgver=0.2.11.r13.g5b1582f
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and fast proxy utility tries to include any useful features."
 arch=(x86_64 aarch64)
 url="https://github.com/eycorsican/leaf"
-license=('GPL')
+license=('custom:Apache-2.0')
 depends=(gcc-libs)
 makedepends=(git cargo)
 provides=(leaf)
