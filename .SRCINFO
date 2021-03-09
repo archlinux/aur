@@ -7,6 +7,7 @@ pkgbase = ansible-lint-git
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = git
+	makedepends = python-setuptools
 	makedepends = python-setuptools_scm
 	depends = python
 	depends = python-ruamel-yaml
