@@ -2,7 +2,7 @@
 # Contributor: MCMic <come@chilliet.eu>
 
 pkgname=wyrmsun
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
@@ -18,14 +18,15 @@ depends=(
 makedepends=('boost' 'cmake' 'glu')
 source=("wyrmsun-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v${pkgver}.tar.gz" 
         "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz")
-md5sums=('b8406d4999418c858b67733a05d02393'
-         '3d10c81aaf4ba3313e4881c460229768')
+md5sums=('2242badbed6e96c1fdf32a040abe730a'
+         'd450f68291155bbe39a697e6df2a8f9c')
 
 build() {
   cd ${srcdir}/Wyrmgus-${pkgver}
   cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DOpenGL_GL_PREFERENCE=GLVND \
+    -DWITH_GEOJSON=OFF \
   ;
   cmake --build . --target stratagus_main
 

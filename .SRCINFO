@@ -1,6 +1,6 @@
 pkgbase = wyrmsun
 	pkgdesc = Real-time strategy game based on history, mythology and fiction
-	pkgver = 4.1.3
+	pkgver = 4.1.4
 	pkgrel = 1
 	url = http://andrettin.github.io/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = wyrmsun
 	depends = qt5-multimedia
 	depends = sdl_mixer
 	depends = tolua++
-	source = wyrmsun-4.1.3.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v4.1.3.tar.gz
-	source = wyrmgus-4.1.3.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v4.1.3.tar.gz
-	md5sums = b8406d4999418c858b67733a05d02393
-	md5sums = 3d10c81aaf4ba3313e4881c460229768
+	source = wyrmsun-4.1.4.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v4.1.4.tar.gz
+	source = wyrmgus-4.1.4.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v4.1.4.tar.gz
+	md5sums = 2242badbed6e96c1fdf32a040abe730a
+	md5sums = d450f68291155bbe39a697e6df2a8f9c
 
 pkgname = wyrmsun
 
