@@ -1,3 +1,8 @@
+# Maintainer: Gesh <gesh@gesh.uni.cx>
+# Contributor: Ashwin Vishnu <9155111+ashwinvis@users.noreply.github.com>
+# Contributor: Ashwin Vishnu <ashwinvis+gh@protonmail.com>
+# Contributor: Doron Behar <doron.behar@gmail.com>
+
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.3.12.0c
