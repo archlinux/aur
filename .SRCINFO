@@ -1,0 +1,29 @@
+pkgbase = haskell-lsp-types-git
+	pkgdesc = Haskell library for the Microsoft Language Server Protocol, data types
+	pkgver = 1.1.1.0.r417.gcd5708b
+	pkgrel = 1
+	url = https://github.com/haskell/lsp
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-aeson
+	depends = haskell-data-default
+	depends = haskell-dependent-sum
+	depends = haskell-dependent-sum-template
+	depends = haskell-hashable
+	depends = haskell-hslogger
+	depends = haskell-lens
+	depends = haskell-network-uri
+	depends = haskell-rope-utf16-splay
+	depends = haskell-scientific
+	depends = haskell-some
+	depends = haskell-temporary
+	depends = haskell-unordered-containers
+	provides = haskell-lsp-types
+	conflicts = haskell-lsp-types
+	source = git+https://github.com/haskell/lsp.git
+	sha256sums = SKIP
+
+pkgname = haskell-lsp-types-git
+
