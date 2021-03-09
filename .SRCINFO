@@ -1,0 +1,17 @@
+pkgbase = haskell-dependent-sum
+	pkgdesc = Dependent sum type
+	pkgver = 0.7.1.0
+	pkgrel = 1
+	url = https://github.com/obsidiansystems/dependent-sum
+	arch = x86_64
+	license = custom:PublicDomain
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-constraints-extras
+	depends = haskell-some
+	source = https://hackage.haskell.org/packages/archive/dependent-sum/0.7.1.0/dependent-sum-0.7.1.0.tar.gz
+	sha256sums = 81cb55907f321f62bea095ae72e9711095c4cb7378fa66fbabc483a9f61b462a
+
+pkgname = haskell-dependent-sum
+
