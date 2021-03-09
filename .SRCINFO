@@ -1,0 +1,32 @@
+pkgbase = haskell-lsp-test-git
+	pkgdesc = Functional test framework for LSP servers.
+	pkgver = 1.1.1.0.r417.gcd5708b
+	pkgrel = 1
+	url = https://github.com/haskell/lsp
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	makedepends = uusi
+	makedepends = haskell-hspec
+	depends = ghc-libs
+	depends = haskell-diff
+	depends = haskell-glob
+	depends = haskell-aeson
+	depends = haskell-aeson-pretty
+	depends = haskell-ansi-terminal
+	depends = haskell-async
+	depends = haskell-conduit
+	depends = haskell-conduit-parse
+	depends = haskell-data-default
+	depends = haskell-lens
+	depends = haskell-lsp-types-git
+	depends = haskell-parser-combinators
+	depends = haskell-some
+	depends = haskell-unordered-containers
+	provides = haskell-lsp-test
+	conflicts = haskell-lsp-test
+	source = git+https://github.com/haskell/lsp.git
+	sha256sums = SKIP
+
+pkgname = haskell-lsp-test-git
+
