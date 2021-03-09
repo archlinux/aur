@@ -2,7 +2,7 @@
 
 pkgname=archivy
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
 arch=('any')
 url="https://github.com/archivy/archivy"
@@ -18,7 +18,7 @@ optdepends=('elasticsearch')
 source=("git+https://github.com/archivy/archivy#tag=v$pkgver"
         "00-do-not-pin-requirements.patch")
 sha256sums=('SKIP'
-            '339f305aded981272230193c446307c2731477edf49e9ec6ea684351e5e62b8b')
+            '538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4')
 
 prepare() {
     cd "$srcdir/$pkgname"
