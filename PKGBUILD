@@ -2,31 +2,30 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-vorbis
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="OCaml bindings to lbvorbis"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-vorbis"
 license=('GPL2')
 depends=('ocaml' 'libvorbis' 'ocaml-ogg')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  ./configure
-  make
+  
+  dune build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
+  
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('26c6bf9d5c3ed3c737fde4caf473d0b65e170f4806ad9ea25beb9723c8da0d6d')
-
+sha256sums=('a7b43889d4a1dbcbe56e399e88b2e34eaba0db171abad80f90b297f20b1ed7e3')
