@@ -4,11 +4,12 @@
 _pkgname=bucklespring
 pkgname=bucklespring-libinput-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc="Nostalgia bucklespring keyboard sound, sampled from IBM's Model-M. libinput version"
 arch=('i686' 'x86_64')
 url='https://github.com/zevv/bucklespring'
 license=('MIT')
+conflicts=('bucklespring' 'bucklespring-git')
 depends=('openal' 'alure' 'libxtst' 'libinput')
 makedepends=('git')
 source=(
