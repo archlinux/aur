@@ -7,7 +7,6 @@ pkgbase = runrestic
 	license = GPL3
 	checkdepends = python-pytest
 	depends = restic
-	depends = python
 	depends = python-toml
 	depends = python-jsonschema
 	depends = python-requests

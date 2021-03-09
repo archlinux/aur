@@ -7,11 +7,11 @@ pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes
 arch=(any)
 url='https://github.com/sinnwerkstatt/runrestic'
 license=('GPL3')
-depends=('restic'
-         'python'
-         'python-toml'
-         'python-jsonschema'
-         'python-requests')
+depends=(
+  'restic'
+  'python-toml'
+  'python-jsonschema'
+  'python-requests')
 
 checkdepends=('python-pytest')
 
