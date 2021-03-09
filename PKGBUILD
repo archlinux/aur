@@ -3,30 +3,30 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-flac
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="OCaml bindings to libFLAC"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-flac"
 license=('GPL')
 depends=('ocaml' 'flac' 'ocaml-ogg')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-flac/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  ./configure
-  make
+  rm -rf examples
+  dune build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
+  
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-md5sums=('72acb898a4e313b3e73e5c04b0664d8e')
+sha256sums=('7957d7bf9464bb9690cd78ade7f80c3ea36fb05e8cc20b6fc97b2d2d1862b4ac')
