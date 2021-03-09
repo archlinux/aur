@@ -6,14 +6,15 @@
 
 name=cloudcompare
 #_fragment="#branch="
+options=('!strip') # strip would also remove plugins, for some reason
 pkgname=${name}-git
-pkgver=2.10.2.r857.ga33ffe93
+pkgver=2.10.2.r906.gb55fa745
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl')
+depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl' 'opencascade' 'gdal')
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 conflicts=('cloudcompare')
@@ -48,15 +49,12 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr
         -DCMAKE_INSTALL_LIBDIR=lib
         -DCMAKE_BUILD_TYPE=Release
-        -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
-        -DCOMPILE_CC_CORE_LIB_WITH_TBB=ON
-        -DWITH_FFMPEG_SUPPORT:BOOL=ON
-        -DFFMPEG_INCLUDE_DIR:PATH=/usr/include
-        -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib
+        -DCCCORELIB_USE_CGAL=ON
+        -DCCCORELIB_USE_TBB=ON
         -DPOISSON_RECON_WITH_OPEN_MP:BOOL=ON
-        -DPLUGIN_EXAMPLE_GL:BOOL=ON
-        -DPLUGIN_EXAMPLE_IO:BOOL=ON
-        -DPLUGIN_EXAMPLE_STANDARD:BOOL=ON
+        -DPLUGIN_EXAMPLE_GL:BOOL=OFF # no need to bundle examples
+        -DPLUGIN_EXAMPLE_IO:BOOL=OFF
+        -DPLUGIN_EXAMPLE_STANDARD:BOOL=OFF
         -DPLUGIN_GL_QEDL:BOOL=ON
         -DPLUGIN_GL_QSSAO:BOOL=ON
         -DPLUGIN_IO_QADDITIONAL:BOOL=ON
@@ -69,8 +67,9 @@ build() {
         -DPLUGIN_IO_QPDAL:BOOL=ON
         -DPLUGIN_IO_QPHOTOSCAN:BOOL=ON
         -DPLUGIN_IO_QRDB:BOOL=OFF # requires rdblib (package for AUR from http://www.riegl.com/products/software-packages/rdblib/)
-        -DPLUGIN_STANDARD_QANIMATION:BOOL=ON
-        -DPLUGIN_STANDARD_QBROOM:BOOL=ON
+        -DPLUGIN_IO_QSTEP=ON # requires opencascade
+        -DOPENCASCADE_INC_DIR="/usr/include/opencascade"
+        -DOPENCASCADE_LIB_DIR="/usr/lib"
         -DPLUGIN_STANDARD_QCANUPO:BOOL=ON # requires dlib
         -DDLIB_ROOT:PATH="/usr" # required by qcanupo plugin
         -DPLUGIN_STANDARD_QCOMPASS:BOOL=ON
@@ -82,6 +81,7 @@ build() {
         -DPLUGIN_STANDARD_QCSF:BOOL=ON
         -DPLUGIN_STANDARD_QFACETS:BOOL=ON # requires shapelib
         -DOPTION_USE_SHAPE_LIB:BOOL=ON
+        -DOPTION_USE_GDAL=ON
         -DPLUGIN_STANDARD_QHOUGH_NORMALS:BOOL=ON
         -DPLUGIN_STANDARD_QHPR:BOOL=ON
         -DPLUGIN_STANDARD_QM3C2:BOOL=ON
@@ -91,7 +91,18 @@ build() {
         -DPLUGIN_STANDARD_QRANSAC_SD:BOOL=ON
         -DPLUGIN_STANDARD_QSRA:BOOL=ON
         -DOPTION_USE_DXF_LIB:BOOL=ON # required by qsra plugin
+        -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
+        -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=ON
+        -DPLUGIN_STANDARD_QANIMATION=ON
+        -DPLUGIN_STANDARD_QBROOM=ON
+        -DPLUGIN_STANDARD_QCANUPO=ON
+        -DPLUGIN_STANDARD_QCOLORIMETRIC_SEGMENTER=OFF # giving troubles with wrong return type
+        -DPLUGIN_STANDARD_QJSONRPC=ON
+        -DPLUGIN_STANDARD_QMPLANE=OFF # truoubles due to missing import
         -DEIGEN_ROOT_DIR=/usr/include/eigen3
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++
+        
+        
   )
   msg2 "Build Cork lib"
   make -C "${srcdir}/${name}-cork" CXXFLAGS="$CXXFLAGS -DSUPPORT_TOPO_STREAM_OPERATORS"
