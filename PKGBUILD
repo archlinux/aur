@@ -8,7 +8,7 @@ name=cloudcompare
 #_fragment="#branch="
 options=('!strip') # strip would also remove plugins, for some reason
 pkgname=${name}-git
-pkgver=2.10.2.r906.gb55fa745
+pkgver=2.10.2.r907.g2a4dd249
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -94,13 +94,14 @@ build() {
         -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
         -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=ON
         -DPLUGIN_STANDARD_QANIMATION=ON
+        -DQANIMATION_WITH_FFMPEG_SUPPORT=ON
         -DPLUGIN_STANDARD_QBROOM=ON
         -DPLUGIN_STANDARD_QCANUPO=ON
-        -DPLUGIN_STANDARD_QCOLORIMETRIC_SEGMENTER=OFF # giving troubles with wrong return type
+        -DPLUGIN_STANDARD_QCOLORIMETRIC_SEGMENTER=ON
         -DPLUGIN_STANDARD_QJSONRPC=ON
-        -DPLUGIN_STANDARD_QMPLANE=OFF # truoubles due to missing import
+        -DPLUGIN_STANDARD_QMPLANE=ON
         -DEIGEN_ROOT_DIR=/usr/include/eigen3
-        -DCMAKE_CXX_COMPILER=/usr/bin/clang++
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ # using clang, which is needed to compile with cgal
         
         
   )
