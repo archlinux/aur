@@ -12,11 +12,11 @@ source=("git+https://github.com/mlvzk/discocss")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "discocss"
+  cd discocss
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "discocss"
+	cd discocss
 	install -Dm775 discocss "${pkgdir}"/usr/bin/discocss
 }
