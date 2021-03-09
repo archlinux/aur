@@ -2,7 +2,7 @@
 
 pkgname='empress'
 pkgver='1.1.3'
-pkgrel=1
+pkgrel=2
 pkgdesc='A D-Bus MPRIS daemon for controlling media players.'
 arch=('i686' 'x86_64')
 url='https://github.com/ray-kast/empress'
@@ -11,7 +11,7 @@ makedepends=('git' 'cargo')
 provides=('empress')
 conflicts=('empress')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9337568d5627057564a55b4c662c7d18a13e87324fb9fd379f21198de925fc7d')
+sha256sums=('88f7c26ea8b1da49125fbabcfedc73ceb81b00d88e101a41769cb2bd397da13b')
 
 prepare() {
   cd "$pkgname-$pkgver"
