@@ -1,10 +1,9 @@
 pkgbase = clightd
 	pkgdesc = Bus interface to change screen brightness and capture frames from webcam.
 	pkgver = 5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FedeDP/Clightd
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = cmake
