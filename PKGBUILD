@@ -1,6 +1,6 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=python-wasmtime
-pkgver=0.22.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Python 3 extension for interface with Wasmtime/Cranelift."
 arch=('x86_64' 'aarch64')

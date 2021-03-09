@@ -1,6 +1,6 @@
 pkgbase = python-wasmtime
 	pkgdesc = Python 3 extension for interface with Wasmtime/Cranelift.
-	pkgver = 0.22.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasmtime-py
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-wasmtime
 	depends = python-wheel
 	depends = wasmtime
 	options = !emptydirs
-	source = python-wasmtime-0.22.0::git+https://github.com/bytecodealliance/wasmtime-py.git#tag=0.22.0
+	source = python-wasmtime-0.24.0::git+https://github.com/bytecodealliance/wasmtime-py.git#tag=0.24.0
 	sha384sums = SKIP
 
 pkgname = python-wasmtime
