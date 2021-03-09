@@ -1,0 +1,13 @@
+pkgbase = discocss-git
+	pkgdesc = A tiny Discord CSS injector
+	pkgver = v0.1.0.r1.g764db56
+	pkgrel = 1
+	url = https://github.com/mlvzk/discocss
+	arch = any
+	license = MPL2
+	makedepends = git
+	source = git+https://github.com/mlvzk/discocss
+	md5sums = SKIP
+
+pkgname = discocss-git
+
