@@ -3,8 +3,8 @@
 _pkgname=QuPath
 pkgname=qupath
 pkgver=0.2.3
-pkgrel=1
-pkgdesc="An open, powerful, flexible, extensible software platform for whole slide image analysis."
+pkgrel=2
+pkgdesc='Bioimage analysis & digital pathology'
 arch=('x86_64')
 url="https://qupath.github.io"
 license=('GPL')
@@ -20,8 +20,8 @@ prepare() {
   gendesk -f -n --pkgname ${pkgname} \
     --pkgdesc "${pkgdesc}" \
     --categories "Graphics;MedicalSoftware;Science;" \
-    --icon "${pkgname}" \
-    --exec "qupath"
+    --icon "/opt/${pkgname}/lib/${_pkgname}-${pkgver}.png" \
+    --exec "${pkgname}"
 }
 
 build() {
