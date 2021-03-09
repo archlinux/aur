@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=4
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -76,7 +76,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _bfq_path="bfq-lucjan"
 _bfq_rel="r2K210228"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
-_gcc_path="cpu-patches-sep"
+_gcc_path="cpu-patches-v2-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -89,7 +89,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v5-sep/0002-Revert-drm-amd-display-reuse-current-context-instead.patch"
         "${_lucjanpath}/arch-patches-v5-sep/0003-drm-amdgpu-fix-shutdown-with-s0ix.patch"
-        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
 
@@ -341,12 +340,11 @@ sha512sums=('16090ec6dea7a8c417ca7483b296902c9b55b423482ad8a881dffcaae76411806bc
             'd587465e421ada44bb5df52a9a5df140f539c53eae004108881482d7f04c62454924e299f09dd6c09d56031b7cb78683360a707ce9426ad96a9193163e8221b9'
             'SKIP'
             '44e69b33f7a4ed0fc00769bfd76b0de63715bef970bfee4fd367f6effec127a8efa30248effe362b55682a801a7b66f462376946b1e4ad119c178e95a2262893'
-            '7783c2b24253a24d650c9955ef818e8c5de097a5413120e42c23fe56303d83ea045eb489cb1fde36a82e7caec344ebafe83756fa43d087937ad4f23d10e01659'
+            'd4bd0a49d18cea1fb7d2a3d64a2b9e2f18a56071446959b0a12b9234acce86ce1de0124b90357f39cffff744a7e6a8efd98377e9e7ba5eaef0371645833ab49d'
             'ca5221913f4ecfbae290ff86414b435e2db51b13bb11a57f9e4827a857e4090c9e73b7a66206bfb0ea86516fa33d21b26b0dd00114d7fe0ccde68fd26128b95d'
             'e43a76c372137442259ee9d080877dafd5258e813626d4bc32ce660f6cf5005de7fa683f5624705bbbb0844a4aded4e41bf0b15af0ce0fdc2198d57c57dabe81'
             '7e5e5522abc3a0a658c2e9c4b1487a4fad7494c54c1b3f6fc17dbb408b7d8601534a9d89e87fde05383ca73623ed69c620a7652fea91241cb779a01618daa711'
-            '715e60d1bd6be9e79deb153210c35b797160df536844840335e6742989ca4d422fb2cbc4ac7544b71675413d9a532901483a26eec28f5addb461a3ae20558aa0'
-            '447d2e2309c9653de5453598774c24cdd330384e783127929551e54744b9e87ee0c58385b5b0aee332022569a8dbbc1aba978035e17ca0da54ca7939f7f48d69')
+            'f4fc02678f98b68f9b4dcc0c812a8a72174e0b5334029f153a726737467c1846f953444ebb3b5d4bc082b9bc946c9b7250868251cda3f2179a0d76d03ce0b683')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
