@@ -1,0 +1,15 @@
+pkgbase = gensio-git
+	pkgdesc = General Stream I/O
+	pkgver = git
+	pkgrel = 0
+	url = https://sourceforge.net/projects/ser2net/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	provides = gensio
+	conflicts = gensio
+	source = git+https://github.com/cminyard/gensio.git
+	sha256sums = SKIP
+
+pkgname = gensio-git
+
