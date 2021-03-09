@@ -4,9 +4,9 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-latest
-pkgver=2.0.5.112
-pkgrel=2
-_date=2021-01-20
+pkgver=2.0.5.113
+pkgrel=1
+_date=2021-03-07
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
 url='http://duplicati.com'
@@ -19,7 +19,7 @@ source=(
 	duplicati.service
 	duplicati.sysusers
 	duplicati-cli)
-sha256sums=('61f84d13ec0f20023922f01a5d61ad77c4a724d88763b8e393fb81ac8ceb6607'
+sha256sums=('94e970b850e0f43d23fa0cc195152b531d67f8d258682a366f6192a105ca7c27'
             '2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403'
             '499eb63532bcad50b897c0874b723eebc6693816fcb9626532f367b5ff51da70'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'

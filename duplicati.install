@@ -31,6 +31,16 @@ cat << EOF
 EOF
 fi
 
+if [ $(vercmp $2 2.0.5.113-1) -lt 0 ]; then
+cat << EOF
+  * In versions 2.0.5.113 and above, the Telegram backend has been removed, and
+  * the SSH backend has increased its encryption algorithm requirements, which may
+  * break backups. See https://github.com/duplicati/duplicati/releases/tag/v2.0.5.113-2.0.5.113_canary_2021-03-07
+  * for details, and downgrade to an earlier version if necessary.
+
+EOF
+fi
+
 cat << EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
