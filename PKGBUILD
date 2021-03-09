@@ -3,13 +3,13 @@
 _pkgname='insomnia'
 pkgname="${_pkgname}-bin"
 pkgver=2021.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='API Client and Design Platform for GraphQL and REST'
 arch=('x86_64')
 url='https://insomnia.rest'
 _url_source='https://github.com/Kong/insomnia'
 license=('MIT')
-depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxslt' 'nodejs' 'nss' 'xdg-utils')
+depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxslt' 'nss' 'xdg-utils')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_url_source}/releases/download/core@${pkgver}/${_pkgname^}.Core-${pkgver}.deb"

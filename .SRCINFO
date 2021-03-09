@@ -1,7 +1,7 @@
 pkgbase = insomnia-bin
 	pkgdesc = API Client and Design Platform for GraphQL and REST
 	pkgver = 2021.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://insomnia.rest
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = insomnia-bin
 	depends = libsecret
 	depends = libxss
 	depends = libxslt
-	depends = nodejs
 	depends = nss
 	depends = xdg-utils
 	provides = insomnia
