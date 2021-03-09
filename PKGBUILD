@@ -12,12 +12,12 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}"
     printf ""${pkgver%.r*}".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   install -d "${pkgdir}/usr/share/backgrounds/nature-wallpapers"
   install -m644 *.jpg "${pkgdir}/usr/share/backgrounds/nature-wallpapers/"
 }
