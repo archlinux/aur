@@ -1,6 +1,6 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wineprefix
-	pkgver = 3.0.7
+	pkgver = 3.0.8
 	pkgrel = 1
 	url = https://usebottles.com
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = bottles
 	depends = libhandy
 	depends = gtk3
 	depends = python-gobject
-	source = bottles-3.0.7.tar.gz::https://github.com/bottlesdevs/Bottles/archive/3.0.7.tar.gz
-	sha256sums = 37367f89afcd0ddf4a7ad6bcfbdeb2248df20a85dda9e1fbcef80e91b831b958
+	source = bottles-3.0.8.tar.gz::https://github.com/bottlesdevs/Bottles/archive/3.0.8.tar.gz
+	sha256sums = 4ef3bf613c50991c3d126fb9878bce60ce223a80756e9de3834660aa63c2f1c
 
 pkgname = bottles
 
