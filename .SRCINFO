@@ -1,8 +1,8 @@
 pkgbase = linux-ath-dfs
 	pkgdesc = Linux
-	pkgver = 5.10.16.arch1
+	pkgver = 5.11.4.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.10.16-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.11.4-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,13 +20,13 @@ pkgbase = linux-ath-dfs
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.10.16-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.4-arch1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 3c7dd28936a8c88ba6e007af5fd087b4dc0439b2b24a1f5cc3bf0fe154efa862
+	sha256sums = a170761e0fe136a08f03ce932adbf5b81f0408b0c8144f43624e1036921e4636
 
 pkgname = linux-ath-dfs
 	pkgdesc = The Linux kernel and modules
@@ -42,6 +42,7 @@ pkgname = linux-ath-dfs
 
 pkgname = linux-ath-dfs-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
 
 pkgname = linux-ath-dfs-docs
 	pkgdesc = Documentation for the Linux kernel
