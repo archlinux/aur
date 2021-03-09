@@ -6,7 +6,7 @@ pkgver=4.0.2
 pkgrel=2
 pkgdesc='yEnc package optimized for use within SABnzbd.'
 arch=('any')
-url='https://github.com/sabnzbd/sabyenc'
+url='https://pypi.org/project/sabyenc3/'
 license=('lgplv3')
 
 makedepends=('python-setuptools')
