@@ -1,12 +1,13 @@
 pkgbase = gimx-git
 	pkgdesc = Game Input Multiplexer
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blog.gimx.fr
 	arch = any
 	license = GPLv3
 	makedepends = wxgtk2
 	makedepends = gettext
+	depends = wxgtk2
 	depends = ncurses
 	depends = xterm
 	depends = xdg-utils

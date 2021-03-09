@@ -2,12 +2,12 @@
 # Contributor: gimx package: Stefan Mayer <stevijo.mayer at gmail dot com>
 pkgname=gimx-git
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Game Input Multiplexer'
 arch=('any')
 url='https://blog.gimx.fr'
 license=('GPLv3')
-depends=('ncurses' 'xterm' 'xdg-utils' 'curl' 'openssl' 'libx11' 'libxi' 'mhash' 'bluez-libs')
+depends=('wxgtk2' 'ncurses' 'xterm' 'xdg-utils' 'curl' 'openssl' 'libx11' 'libxi' 'mhash' 'bluez-libs')
 makedepends=('wxgtk2' 'gettext')
 conflicts=('gimx')
 source=('git+https://github.com/matlo/gimx.git#tag=v8.0'
