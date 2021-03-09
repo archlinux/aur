@@ -1,8 +1,8 @@
 # Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 
 pkgname=atom-editor-beta-bin
-_pkgver="1.55.0-beta0"
-pkgver=1.55.0beta0
+_pkgver="1.56.0-beta0"
+pkgver=1.56.0beta0
 pkgrel=1
 pkgdesc="A hackable text editor for the 21st Century"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('atom')
 conflicts=('atom')
 source=("https://github.com/atom/atom/releases/download/v${_pkgver}/atom-amd64.tar.gz"
         "https://raw.githubusercontent.com/atom/atom/master/resources/linux/atom.desktop.in")
-md5sums=('84de52cf56493fc8698e6000944853ce'
+md5sums=('fb59ccd807cb0416f5f802908acc2005'
          'edd7c80254eae752065ec9fd17915752')
 
 package() {
