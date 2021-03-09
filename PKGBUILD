@@ -1,11 +1,13 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
+gitname=contractor
 pkgname=contractor-git
-pkgver=0.3.4.r3.79d8168
+pkgver=0.3.4.r230.73372b4
 pkgrel=1
 pkgdesc=' A desktop-wide extension service'
 arch=(x86_64)
-url=https://github.com/elementary/contractor
+url="https://github.com/elementary/${gitname}"
 license=(GPL3)
 groups=(pantheon-unstable)
 depends=(
@@ -17,9 +19,9 @@ makedepends=(
   meson
   vala
 )
-provides=(contractor)
-conflicts=(contractor)
-source=(git+https://github.com/elementary/contractor.git)
+provides=(${gitname} ${pkgname})
+conflicts=(${gitname})
+source=("git+${url}.git")
 sha256sums=(SKIP)
 
 pkgver() {
