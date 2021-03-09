@@ -6,7 +6,7 @@ Type=simple
 User=mautrix-facebook
 Group=mautrix-facebook
 WorkingDirectory=/var/lib/mautrix-facebook/
-ExecStart=/usr/bin/python -m mautrix-facebook -c /etc/synapse/mautrix-facebook/config.yaml \
+ExecStart=/usr/bin/python -m mautrix_facebook -c /etc/synapse/mautrix-facebook/config.yaml \
           -r /etc/synapse/mautrix-facebook/registration.yaml
 Restart=always
 RestartSec=3

@@ -12,7 +12,7 @@ Quick Setup:
   section and the auth server.
 
 3. Generate the registration:
- sudo python -m mautrix-facebook -g -c /etc/synapse/mautrix-facebook/config.yaml \
+ sudo python -m mautrix_facebook -g -c /etc/synapse/mautrix-facebook/config.yaml \
 	  -r /etc/synapse/mautrix-facebook/registration.yaml
 
 4. Add the registration file to Synapse's homeserver.yaml:
@@ -23,8 +23,5 @@ Quick Setup:
 5. Restart synapse
  sudo systemctl restart synapse
 
-6. Create/update the database:
- sudo mautrix-facebook-db-upgrade
-
-7. Start the bridge:
+6. Start the bridge:
  sudo systemctl start mautrix-facebook
