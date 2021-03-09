@@ -1,7 +1,7 @@
 pkgbase = python-detectron2
 	pkgdesc = FAIR's next-generation platform for object detection and segmentation
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/facebookresearch/detectron2
 	arch = x86_64
 	license = Apache
