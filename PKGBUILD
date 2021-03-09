@@ -1,7 +1,8 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
+# Contributor:  TwoLeaves < ohneherren at gmail dot com >
 
 pkgname=libretro-mame2010-git
-pkgver=412.14b557b
+pkgver=431.beb9e51
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Late 2010 version of MAME (0.139) for libretro. Compatible with MAME 0.139 romsets. (Arcade)"
@@ -25,9 +26,13 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  export PTR64=1
-  make -f Makefile "VRENDER=soft" -j4 buildtools PTR64=1
-  make -f Makefile "VRENDER=soft" -j4 PTR64=1
+  case ${CARCH} in
+    i686) makeargs="VRENDER=soft FORCE_DRC_C_BACKEND=1" ;;
+    x86_64) makeargs="VRENDER=soft FORCE_DRC_C_BACKEND=1 PTR64=1" ;;
+    arm|armv6h|armv7h|aarch64) makeargs="ARM_ENABLED=1" ;;
+  esac
+  make -j4 buildtools ${makeargs}
+  make -j4  ${makeargs}
 }
 
 package() {
