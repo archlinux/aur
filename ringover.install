@@ -1,0 +1,16 @@
+post_install()
+{
+  echo "Link to the binary"
+  ln -sfv /opt/Ringover/ringover /usr/bin/ringover
+}
+
+post_upgrade()
+{
+  post_install
+}
+
+post_remove()
+{
+  echo "Delete the link to the binary"
+  rm -fv /usr/bin/ringover
+}
