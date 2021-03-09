@@ -1,7 +1,7 @@
 # Maintainer: bin <bin@datacowboy.cf>
 pkgname="ktx_software-git"
 _pkgname="ktx_software"
-pkgver=4.0.0.beta6.r2.gce766b78
+pkgver=4.0.0.beta7
 pkgrel=1
 pkgdesc="KTX (Khronos Texture) Library and Tools"
 arch=("i686" "pentium4" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
