@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
@@ -31,9 +31,9 @@ backup=()
 options=()
 install=
 changelog=
-source=('parallel-launcher-2.1.1.tar.gz')
+source=('parallel-launcher-2.1.3.tar.gz')
 noextract=()
-md5sums=('49c9cacbb3a2d96a37b5825608412fa6')
+md5sums=('eaa5f72bce7fe33ec36869cdd61415dc')
 validpgpkeys=()
 
 build() {
