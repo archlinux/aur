@@ -1,6 +1,6 @@
 pkgbase = libretro-prosystem-git
 	pkgdesc = libretro implementation of ProSystem. (Atari 7800)
-	pkgver = 192.58a0a64
+	pkgver = 210.b4f454d
 	pkgrel = 1
 	url = https://github.com/libretro/prosystem-libretro
 	arch = i686
