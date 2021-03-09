@@ -2,9 +2,9 @@
 
 pkgname=electron9
 pkgver=9.4.4
-_commit=ca82414364002efa665ffa7427e267adf76ed1f3
+_commit=f981f3a7c41767fa5ec13cbc8e2242129db96e7a
 _chromiumver=83.0.4103.122
-pkgrel=1
+pkgrel=2
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
