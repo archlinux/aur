@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.70.git.4.g24b51055
+pkgver=2.70.git.8.ge4c50ed8
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ conflicts=('asymptote')
 provides=('asymptote')
 source=('git+https://github.com/vectorgraphics/asymptote.git' remove_include.patch)
 sha256sums=('SKIP'
-            '3f72eab932e4713a58fbfafba8e24df362f23d29cb75db94204c8280246f024e')
+            'c6ca358d02ab0a5e32ff27a62768cf793ac3b345bfde43391276066e59b993f1')
 
 pkgver() {
   cd ${pkgname%-git}
