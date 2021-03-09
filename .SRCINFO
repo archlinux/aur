@@ -1,6 +1,6 @@
 pkgbase = f5vpn
 	pkgdesc = VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 16.0
-	pkgver = 7210.2020.0826.1
+	pkgver = 7211.2021.0107.1
 	pkgrel = 2
 	url = https://support.f5.com/csp/article/K32311645#link_04_05
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = f5vpn
 	md5sums = 130ef2376ad4581cc91a11814c00d948
 	sha256sums = a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1
 	sha256sums = 3ecd8a10941a7d81b9d16aecdf6ac9caa1f957e32a2d2c65bde5181abd1fcb73
-	source_x86_64 = linux_f5vpn-7210.2020.0826.1-2.x86_64.rpm::https://vpn.brown.edu/public/download/linux_f5vpn.x86_64.rpm
-	md5sums_x86_64 = 5af405dab017b026034d8d05fcd435e8
-	sha256sums_x86_64 = 73df13f9c3c89094a9302095dfb06aef00fccc277d2ce8c4d75a2ebc57a573e1
+	source_x86_64 = linux_f5vpn-7211.2021.0107.1-2.x86_64.rpm::https://connect.healthsystem.virginia.edu/public/download/linux_f5vpn.x86_64.rpm
+	md5sums_x86_64 = 0430b76071d95dabdc7cfdefe176edf9
+	sha256sums_x86_64 = 08a6f7fe3dc2b5bf40b6df1930c81697e4dbcbbbaa7ffe1bae5a45c0db25d77e
 
 pkgname = f5vpn
 
