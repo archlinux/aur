@@ -4,9 +4,9 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.7
+_nginxver=1.19.8
 pkgdesc="Fancy indexes module for the nginx web server"
 arch=('x86_64')
 url="https://github.com/aperezdc/ngx-fancyindex"
@@ -15,7 +15,7 @@ depends=("nginx-mainline>=${_nginxver}")
 source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('7ae4dd020c41d3a5e1e6a8578fcc60e508e3e27e7668e845ddc87a05a775b50e'
+sha256sums=('308919b1a1359315a8066578472f998f14cb32af8de605a3743acca834348b05'
             'SKIP'
             '238bd5521d6c9b55780e6871339a7ea79508b9a6758ad2fa4451f2dfe26d94c9')
 
