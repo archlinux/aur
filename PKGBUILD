@@ -20,43 +20,40 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.11.3
+pkgver=5.11.4
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=bc9da6eb1bd1fe5a7dda36ab5dad94382b9eaf0b
+_arch_config_commit=7c5e1a5001d76fd164a5dabcf339f4c673c53bc9
 _bmqversion=5.11-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
-_gcc_more_v='20210307'
+_gcc_more_v=20210309
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
-  "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/sphinx-workaround.patch"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=cfa0842775b4311122b42dc3e9157ee24dfb36f4"
+  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f7dc668c11baa9261f50a6f15c15696a404cfcef"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('9451bda48221ea58096682a4ce107194580a6fcaccb15d62b881c2ba8eddadbd46b010b20e2fa8e723674de0d29dd0a12749c9245db39b521659bc6cf2f270c5'
+b2sums=('6d1cf5f10442c3d7c849f89d27eb92704d1b5c0b449d1ab8b332a373387a0f9cdf971c1ab0d83b3c911aad18c097908bd73c7c478da238da7b6396a434df7816'
         'SKIP'
-        '38e023e6dc5fc0c6663f7d973fd521dcac44c54cf971d12e1d7f688ed1f323d076816a7c3888a7b9f44d1fef8d4a85787738bba05febc23b2145021b8f2a0750'
+        '387d7fecc6a6ef1290e42683c200923b438bdb0c2ad6fd1b31d65e21110405f0b4abb6cd995276f741b14682fa3774d14bd7190746599d7898a49a5324f7b3ca'
         'e3cc85db32795721d39962dfd3b72ac923b89da8a9125ef0e12ba199b3606cec9a2d99392c0b0f195b1557a25be2370be1efe3bab9a9e0c2e89e2e92eb86eccb'
-        'e1daf14455f2fda1610be7ef0bcee630c9735ef32b2d879483a312f66490d990afd5179d203ee5d6678127ff358961b9c00292719df041339cdbaa7167da3e87'
-        'db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb'
-        'b17ed743962e6a68ad037fbfd8cca64aa64b8c2149fe45589957ff26b3176b79a555fc10654af4c61726efaf56e72ee0ef078e6dbc00e852d56d30161acde026')
+        '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
+        'cdd31bb1303b1e1e3e0362fc424fc433c14d5bbf4722fc5bd4f46e00c08f8bfb5ed80c724808afbc473eab7b361f597ac8401d6b16ed02d0c3b1335bc85396ec')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -84,21 +81,39 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
 
-  # disable CONFIG_DEBUG_INFO=y at build time introduced in this commit
+  # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
+  # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
+  # partition ... this was introduced by FS#66260, see:
   # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
-      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --disable CONFIG_CGROUP_BPF
+  scripts/config --disable CONFIG_BPF_LSM
+  scripts/config --disable CONFIG_BPF_PRELOAD
+  scripts/config --disable CONFIG_BPF_LIRC_MODE2
+  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
+
+  # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
+  scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
+
+  # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
+  scripts/config --disable CONFIG_LATENCYTOP
+  scripts/config --disable CONFIG_SCHED_DEBUG
+
+  # FS#66613
+  # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
+  scripts/config --disable CONFIG_KVM_WERROR
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
 
-  # non-interactively apply ck1 default options
+  # non-interactively apply gc default options
   # this isn't redundant if we want a clean selection of subarch below
   make olddefconfig
 
   # https://github.com/graysky2/kernel_gcc_patch
-  echo "Applying enable_additional_cpu_optimizations-${_gcc_more_v}..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
+  # make sure to apply after olddefconfig to allow the next section
+  echo "Patching to enable GCC optimization for other uarchs..."
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-gcc-v10-and-kernel-5.8+.patch"
 
   make oldconfig
 
@@ -154,9 +169,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -238,8 +250,6 @@ _package-headers() {
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
