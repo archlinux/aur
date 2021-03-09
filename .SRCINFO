@@ -1,0 +1,17 @@
+pkgbase = haskell-constraints-extras
+	pkgdesc = Utility package for constraints
+	pkgver = 0.3.0.2
+	pkgrel = 1
+	url = https://github.com/obsidiansystems/constraints-extras
+	arch = x86_64
+	license = custom: BSD3
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-aeson
+	depends = haskell-constraints
+	source = https://hackage.haskell.org/packages/archive/constraints-extras/0.3.0.2/constraints-extras-0.3.0.2.tar.gz
+	sha256sums = dac7cdd1e7bdaebdfe57550da84298f57cf2f41b3573ac39dd077f6c1a2d73d8
+
+pkgname = haskell-constraints-extras
+
