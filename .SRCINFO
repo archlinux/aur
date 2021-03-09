@@ -1,7 +1,7 @@
 pkgbase = moonwm-git
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
 	pkgver = 6.2.r1911.0966cd7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = moonwm-git
 	depends = picom
 	depends = polkit-gnome
 	depends = redshift
+	depends = skippy-xd
 	depends = wmname
 	depends = xfce4-power-manager
 	depends = xorg-setxkbmap
