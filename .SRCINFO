@@ -1,7 +1,7 @@
 pkgbase = linux-timemachine-git
 	pkgdesc = Rsync-based OSX-like time machine for atomic and resumable local and remote backups
-	pkgver = v1.2.r0.g19d6e9a
-	pkgrel = 1
+	pkgver = 1.2.r0.g19d6e9a
+	pkgrel = 2
 	url = https://github.com/cytopia/linux-timemachine
 	arch = any
 	license = MIT
