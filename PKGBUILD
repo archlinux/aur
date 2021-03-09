@@ -4,22 +4,21 @@
 
 pkgbase=jellyfin
 pkgname=(jellyfin jellyfin-web jellyfin-server)
-pkgver=10.6.4
+pkgver=10.7.0
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-makedepends=('dotnet-sdk>=3' 'yarn' 'git' 'python2')
+makedepends=('dotnet-sdk>=5' 'yarn' 'git')
 source=("jellyfin-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
         "jellyfin-web-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v$pkgver.tar.gz"
         'jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
-backup=('etc/conf.d/jellyfin')
-sha512sums=('54fd370bedc5e809c8f6e0491c94696ef61430dd7e69691b4cfd70a90863d6921dbf4bccc056b9b21547b5b9411b0235c2fc30d61947c128633c762a38e5ac6e'
-            'ae71befc3d959efd10c769e9f542849d6b9461299231e008d88e7fcff5d2369f5b88789eacddabdf98c5f7d54f526e3f2b6a3ac3bb3b73ca6ea29c54d0c83954'
+sha512sums=('14695eb6ea03d62620293d0cdd86035dfdf023afba14e0ef6c301e6985d9a8e021a250e0ee1f91517a29039279b61404331e7ed354674d6be52654debda01919'
+            '44e3e3b6fe517edb77c10c4953671fdbe945d38d8f3937eacb293fd26e692082baf501697064ee8b2f7d3b01a51df8ccc2ece1d0c4657217c12855c2f0f21788'
             '2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0'
             '99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b'
             '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
@@ -55,7 +54,8 @@ package_jellyfin() {
 
 package_jellyfin-server() {
   pkgdesc="Jellyfin server component"
-  depends=('dotnet-runtime>=3' 'aspnet-runtime>=3' 'ffmpeg' 'sqlite')
+  depends=('dotnet-runtime>=5' 'aspnet-runtime>=5' 'ffmpeg' 'sqlite')
+  backup=('etc/conf.d/jellyfin')
 
   mkdir -p "$pkgdir"/usr/lib
   cp -dr --no-preserve='ownership' jellyfin-$pkgver/publish "$pkgdir"/usr/lib/jellyfin
