@@ -4,13 +4,13 @@ pkgname=deskreen
 pkgver=1.0.11
 pkgrel=1
 pkgdesc="Turns any device with a web browser to a second screen for your computer"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/pavlobu/deskreen"
 license=('AGPL3')
-provides=(${pkgname})
-conflicts=(${pkgname})
-replaces=(${pkgname})
-depends=()
+provides=()
+conflicts=()
+replaces=()
+depends=('gtk3' 'llvm' 'nss')
 makedepends=('coreutils')
 backup=()
 options=('!strip')
@@ -22,31 +22,31 @@ sha256sums=(
 )
 
 prepare() {
-    chmod u+x ${srcdir}/${_pkgname}-${pkgver}.AppImage
+    chmod u+x "${srcdir}"/${_pkgname}-${pkgver}.AppImage
 
-    ${srcdir}/${_pkgname}-${pkgver}.AppImage --appimage-extract
+    "${srcdir}"/${_pkgname}-${pkgver}.AppImage --appimage-extract
 }
 
 package() {
-    find ${srcdir}/squashfs-root/locales/ -type d -exec chmod 755 {} +
-    find ${srcdir}/squashfs-root/resources/ -type d -exec chmod 755 {} +
+    find "${srcdir}"/squashfs-root/locales/ -type d -exec chmod 755 {} +
+    find "${srcdir}"/squashfs-root/resources/ -type d -exec chmod 755 {} +
 
-    install -d ${pkgdir}/opt/${pkgname}
-    cp -r ${srcdir}/squashfs-root/* ${pkgdir}/opt/${pkgname}
+    install -d "${pkgdir}"/opt/${pkgname}
+    cp -r "${srcdir}"/squashfs-root/* "${pkgdir}"/opt/${pkgname}
 
     # remove broken or unused files and directories
-    rm -r ${pkgdir}/opt/${pkgname}/usr/
-    rm ${pkgdir}/opt/${pkgname}/AppRun
-    rm ${pkgdir}/opt/${pkgname}/${pkgname}.desktop
-    rm ${pkgdir}/opt/${pkgname}/${pkgname}.png
+    rm -r "${pkgdir}"/opt/${pkgname}/usr/
+    rm "${pkgdir}"/opt/${pkgname}/AppRun
+    rm "${pkgdir}"/opt/${pkgname}/${pkgname}.desktop
+    rm "${pkgdir}"/opt/${pkgname}/${pkgname}.png
 
-    find ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
+    find "${srcdir}"/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
 
-    install -d ${pkgdir}/usr/share/icons
-    cp -r ${srcdir}/squashfs-root/usr/share/icons/hicolor ${pkgdir}/usr/share/icons/hicolor
+    install -d "${pkgdir}"/usr/share/icons
+    cp -r "${srcdir}"/squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/hicolor
 
-    install -d ${pkgdir}/usr/bin
-    ln -s ../../opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    install -d "${pkgdir}"/usr/bin
+    ln -s ../../opt/${pkgname}/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 
-    install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 }
