@@ -1,7 +1,7 @@
 pkgbase = ssldump
 	pkgdesc = SSLv3/TLS network protocol analyzer (from 2002)
 	pkgver = 0.9b3
-	pkgrel = 15
+	pkgrel = 16
 	url = http://ssldump.sourceforge.net/
 	arch = x86_64
 	license = custom

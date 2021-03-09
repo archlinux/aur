@@ -6,7 +6,7 @@
 
 pkgname=ssldump
 pkgver=0.9b3
-pkgrel=15
+pkgrel=16
 pkgdesc="SSLv3/TLS network protocol analyzer (from 2002)"
 url="http://ssldump.sourceforge.net/"
 license=('custom')
@@ -23,8 +23,9 @@ validpgpkeys=('465E8A2B9258E9CACE651DC3DE7F04469508CFA7')
 prepare() {
   cd $pkgname-$pkgver
   patch -Np0 -i ../openssl-0.9.8.patch
-  sed -i 's/libpcap.a/libpcap.so/g' configure
   sed -i 's/BINDIR=@sbindir@/BINDIR=@bindir@/' Makefile.in
+  sed -i 's/libpcap.a/libpcap.so/g' configure
+  sed -i 's|#include <net/bpf.h>|#include <pcap/bpf.h>|' base/pcap-snoop.c
 }
 
 build() {
