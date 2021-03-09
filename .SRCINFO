@@ -1,0 +1,35 @@
+pkgbase = haskell-hie-bios-git
+	pkgdesc = Set up a GHC API session
+	pkgver = 0.7.4.r2.gb5402c9
+	pkgrel = 1
+	url = https://github.com/mpickering/hie-bios
+	arch = x86_64
+	license = BSD
+	checkdepends = cabal-install
+	makedepends = ghc
+	makedepends = haskell-hspec-expectations
+	makedepends = haskell-tasty
+	makedepends = haskell-tasty-expected-failure
+	makedepends = haskell-tasty-hunit
+	depends = ghc-libs
+	depends = haskell-aeson
+	depends = haskell-base16-bytestring
+	depends = haskell-conduit
+	depends = haskell-conduit-extra
+	depends = haskell-cryptohash-sha1
+	depends = haskell-extra
+	depends = haskell-file-embed
+	depends = haskell-hslogger
+	depends = haskell-optparse-applicative
+	depends = haskell-temporary
+	depends = haskell-unix-compat
+	depends = haskell-unordered-containers
+	depends = haskell-vector
+	depends = haskell-yaml
+	provides = haskell-hie-bios
+	conflicts = haskell-hie-bios
+	source = git+https://github.com/mpickering/hie-bios.git
+	sha256sums = SKIP
+
+pkgname = haskell-hie-bios-git
+
