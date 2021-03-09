@@ -1,0 +1,28 @@
+pkgbase = lua-xml2lua
+	pkgdesc = use xml in lua
+	pkgver = 1.4_5
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7l
+	makedepends = luarocks
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = lua
+	source = https://github.com/manoelcampos/xml2lua/archive/v1.4-5.tar.gz
+	md5sums = d3b394fc6bf1a9f139b6f6f87f2bc7f2
+
+pkgname = lua51-xml2lua
+	pkgdesc = use xml in lua for Lua 5.1
+
+pkgname = lua52-xml2lua
+	pkgdesc = use xml in lua for Lua 5.2
+
+pkgname = lua53-xml2lua
+	pkgdesc = use xml in lua for Lua 5.3
+
+pkgname = lua-xml2lua
+	pkgdesc = use xml in lua for Lua 5.4
+
