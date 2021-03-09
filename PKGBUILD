@@ -331,3 +331,5 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
+# vim:set ts=8 sts=2 sw=2 et:
