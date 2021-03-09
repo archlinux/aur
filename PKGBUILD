@@ -5,7 +5,7 @@
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=0.2.r548.gb3a4f746a
+pkgver=0.2.2.r796.gfbc02cbc5
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
@@ -23,12 +23,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/vlang"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/vlang"
-  touch cmd/tools/.disable_autorecompilation
+  # Weekly tags are considered older than semantic tags that are older than
+  # them, so to prevent version resolution problems we exclude weekly tags.
+  git describe --long --tags --exclude "weekly*" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -38,9 +35,6 @@ build() {
   # CFLAGS and LDFLAGS to ensure successful compilation.
   CFLAGS="" LDFLAGS="" prod=1 make
 
-  # We have to manually compile this tool before executing it since we disable
-  # automatic compilation in prepare()
-  ./v cmd/tools/vbuild-tools.v
   # vpm and vdoc fail to compile with "unsupported linker option" when LDFLAGS
   # is set
   LDFLAGS="" ./v build-tools
@@ -57,4 +51,6 @@ package() {
   cp -a vlib "$pkgdir/usr/lib/vlang/"
   cp v.mod "$pkgdir/usr/lib/vlang/"
   ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
+
+  touch "$pkgdir/usr/lib/vlang/cmd/tools/.disable_autorecompilation"
 }
