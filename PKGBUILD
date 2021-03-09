@@ -3,8 +3,8 @@
 
 pkgname=python-defcon
 _pkgname=defcon
-pkgver=0.7.2
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=('any')
 url="https://github.com/robotools/$_pkgname"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-unicodedata2')
 optdepends=('python-fontpens' 'python-lxml')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('1967eaa23dcc8e1cbe3bd130aae4d9ddb72027b62d3e23eeb640065cfbd6d8d1')
+sha256sums=('cab2d983b138f8afbdf18738dea9267887f123e75b4bc3fcb2ae9c9a463c1209')
 
 build() {
     cd "$_pkgname-$pkgver"
