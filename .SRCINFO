@@ -1,7 +1,7 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
 	pkgver = 5.11.4.lqx2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = linux-lqx
 	makedepends = libelf
 	makedepends = cpio
 	makedepends = python
+	makedepends = pahole
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.sign
@@ -34,8 +35,8 @@ pkgname = linux-lqx
 pkgname = linux-lqx-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Liquorix kernel
 	depends = linux-lqx
+	depends = pahole
 
 pkgname = linux-lqx-docs
 	pkgdesc = Documentation for the Linux Liquorix kernel
 	depends = linux-lqx
-

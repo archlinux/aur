@@ -59,12 +59,12 @@ _lqxpatchrel=11
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.11.4.lqx2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
 license=(GPL2)
-makedepends=(bc kmod libelf cpio python)
+makedepends=(bc kmod libelf cpio python pahole)
 if [ -n "$_htmldocs_enable" ]; then
     makedepends+=(xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick)
 fi
@@ -230,7 +230,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-lqx')
+    depends=('linux-lqx' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
