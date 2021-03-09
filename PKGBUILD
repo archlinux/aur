@@ -1,7 +1,7 @@
 # Maintainer: Winux <winuxlinux11@gmail.com>
 
 pkgname=nature-wallpapers-git
-pkgver=1.0
+pkgver=1.0.r2.c2f1d46
 pkgrel=1
 pkgdesc="A collection of nature wallpapers"
 arch=(any)
