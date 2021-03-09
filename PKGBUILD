@@ -1,7 +1,7 @@
 # Maintainer : Daniel Chesters <daniel.chesters@gmail.com>
 
 pkgname=wcp-git
-pkgver=0.0.0.r0.e102349
+pkgver=r86.e102349
 pkgrel=1
 pkgdesc="wcp is an experiment in re-implementing something like the standard cp file copy tool. The goal is to be as fast as possible, and provide the best possible progress bar, by counting up the total copy size in parallel with running the copy."
 url="https://github.com/wheybags/wcp"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  echo "0.0.0.r0.$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
