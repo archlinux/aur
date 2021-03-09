@@ -2,14 +2,14 @@
 
 pkgname=clight-git
 _gitname=Clight
-pkgver=r799.b4ef9be
+pkgver=r802.ef958f2
 pkgrel=1
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms. Devel version."
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
 license=('GPL')
 backup=(etc/default/clight.conf)
-depends=('systemd>=237' 'popt' 'libconfig' 'gsl' 'clightd-git' 'libmodule>=5.0.0')
+depends=('systemd-libs' 'popt' 'libconfig' 'gsl' 'clightd-git' 'libmodule>=5.0.0' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'bash-completion')
 optdepends=('geoclue2: to retrieve user location through geoclue2.'
             'upower: to save energy by managing ac states increasing timeouts while on battery.'
