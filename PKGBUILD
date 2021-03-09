@@ -1,18 +1,18 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=flexc++
-pkgver=2.07.09
+pkgver=2.09.00
 pkgrel=1
 pkgdesc="C++ scanner generator"
 arch=('i686' 'x86_64')
 url="https://fbb-git.gitlab.io/flexcpp/"
 license=('GPL')
 # Versions taken from the 'required' file in sources
-depends=('libbobcat>=4.01.00')
-makedepends=('icmake>=8.00.04' 'yodl>=3.06.00')
+depends=('libbobcat>=5.04.01')
+makedepends=('icmake>=9.03.01' 'yodl>=4.02.02')
 optdepends=()
 source=("https://gitlab.com/fbb-git/flexcpp/-/archive/${pkgver}/flexcpp-${pkgver}.tar.gz")
-md5sums=('dd7b86931fc8bbe2873fb0b71fe3c903')
+md5sums=('51bfa989e7fa0fd7d53b6995838286eb')
 
 build() {
   cd "$srcdir/flexcpp-${pkgver}/flexc++"
