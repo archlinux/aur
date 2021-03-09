@@ -1,0 +1,13 @@
+diff --git a/utils/Makefile b/utils/Makefile
+index 5d2a9ab0..a6fc47c0 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -7,7 +7,7 @@ endif
+ 
+ BINS=
+ ifneq ($(OS),Windows_NT)
+-BINS+=ds4tool sixaddr bdaddr hcirevision
++BINS+=ds4tool sixaddr hcirevision
+ OUT=$(BINS)
+ else
+ OUT=ds4tool.exe sixaddr.exe

@@ -1,0 +1,38 @@
+diff --git a/core/Makefile b/core/Makefile
+index e058d3ef..8bbd2f86 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -42,13 +42,8 @@ CPPFLAGS += `xml2-config --cflags`
+ LDLIBS += `xml2-config --libs`
+ 
+ ifneq ($(PDCURSES),1)
+-ifneq ($(OS),Windows_NT)
+-CPPFLAGS +=  `ncursesw5-config --cflags`
+-LDLIBS += `ncursesw5-config --libs`
+-else
+ CPPFLAGS +=  `ncursesw6-config --cflags`
+ LDLIBS += `ncursesw6-config --libs`
+-endif
+ else
+ CFLAGS += -DPDCURSES
+ LDLIBS += -lpdcursesw
+@@ -106,4 +101,4 @@ uninstall:
+ 	-rmdir $(prefix)
+ 
+ really-clean: clean uninstall
+-endif
+\ No newline at end of file
++endif
+diff --git a/core/display.c b/core/display.c
+index 575b29e9..f8fee3b8 100644
+--- a/core/display.c
++++ b/core/display.c
+@@ -8,7 +8,7 @@
+ #ifdef PDCURSES
+ #include <cursesw.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include "display.h"
