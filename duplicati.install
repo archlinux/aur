@@ -1,9 +1,9 @@
 post_install() {
-  systemd-sysusers duplicati.conf
-  mkdir -p /var/lib/duplicati
-  chown -R duplicati:duplicati /var/lib/duplicati
-  
-cat << EOF
+    systemd-sysusers duplicati.conf
+    mkdir -p /var/lib/duplicati
+    chown -R duplicati:duplicati /var/lib/duplicati
+
+    cat <<EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
     - to start duplicati manually:           systemctl --user start duplicati
@@ -12,12 +12,12 @@ EOF
 }
 
 post_upgrade() {
-  systemd-sysusers duplicati.conf
-  mkdir -p /var/lib/duplicati
-  chown -R duplicati:duplicati /var/lib/duplicati
+    systemd-sysusers duplicati.conf
+    mkdir -p /var/lib/duplicati
+    chown -R duplicati:duplicati /var/lib/duplicati
 
-if [ $(vercmp $2 2.0.2.10-1) -lt 0 ]; then
-cat << EOF
+    if [ $(vercmp $2 2.0.2.10-1) -lt 0 ]; then
+        cat <<EOF
   * In versions prior to 2.0.2.10-1, the system version of duplicati.service
   * started Duplicati.Server.exe as root. It now runs as user duplicati.
   * Please move your old duplicati database from
@@ -29,19 +29,19 @@ cat << EOF
   *    User=root
   *    Group=root
 EOF
-fi
+    fi
 
-if [ $(vercmp $2 2.0.5.113-1) -lt 0 ]; then
-cat << EOF
+    if [ $(vercmp $2 2.0.5.113-1) -lt 0 ]; then
+        cat <<EOF
   * In versions 2.0.5.113 and above, the Telegram backend has been removed, and
   * the SSH backend has increased its encryption algorithm requirements, which may
   * break backups. See https://github.com/duplicati/duplicati/releases/tag/v2.0.5.113-2.0.5.113_canary_2021-03-07
   * for details, and downgrade to an earlier version if necessary.
 
 EOF
-fi
+    fi
 
-cat << EOF
+    cat <<EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
     - to reload user systemd modules:        systemctl --user daemon-reload

@@ -13,12 +13,12 @@ url='http://duplicati.com'
 license=('LGPL')
 install=duplicati.install
 source=(
-	https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}.zip
+    https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}.zip
         # https://updates.duplicati.com/${_branch}/duplicati-${pkgver}_${_branch}_${_date}.zip # duplicati.com seems to be blocked in Russia, see https://aur.archlinux.org/packages/duplicati-latest/#comment-746652
-	duplicati-user.service
-	duplicati.service
-	duplicati.sysusers
-	duplicati-cli)
+    duplicati-user.service
+    duplicati.service
+    duplicati.sysusers
+    duplicati-cli)
 sha256sums=('94e970b850e0f43d23fa0cc195152b531d67f8d258682a366f6192a105ca7c27'
             '2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403'
             '499eb63532bcad50b897c0874b723eebc6693816fcb9626532f367b5ff51da70'
@@ -29,17 +29,17 @@ depends=('gtk-sharp-2' 'mono')
 optdepends=('notify-sharp: for tray notifications')
 
 package() {
-  # Install the service.
-  install -Dm644 duplicati.service  "${pkgdir}/usr/lib/systemd/system/duplicati.service"
-  install -Dm644 duplicati-user.service  "${pkgdir}/usr/lib/systemd/user/duplicati.service"
-  install -Dm644 "$srcdir/duplicati.sysusers" "$pkgdir/usr/lib/sysusers.d/duplicati.conf"
-  rm duplicati.service duplicati-user.service
+    # Install the service.
+    install -Dm644 duplicati.service "${pkgdir}/usr/lib/systemd/system/duplicati.service"
+    install -Dm644 duplicati-user.service "${pkgdir}/usr/lib/systemd/user/duplicati.service"
+    install -Dm644 "$srcdir/duplicati.sysusers" "$pkgdir/usr/lib/sysusers.d/duplicati.conf"
+    rm duplicati.service duplicati-user.service
 
-  # Install the program.
-  rm *.zip
-  mkdir -p "${pkgdir}/opt/duplicati-latest"
-  cp -r . "${pkgdir}/opt/duplicati-latest"
+    # Install the program.
+    rm *.zip
+    mkdir -p "${pkgdir}/opt/duplicati-latest"
+    cp -r . "${pkgdir}/opt/duplicati-latest"
 
-  mkdir -p "${pkgdir}/usr/bin"
-  install -D -m755 duplicati-cli "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/bin"
+    install -D -m755 duplicati-cli "${pkgdir}/usr/bin"
 }
