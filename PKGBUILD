@@ -12,7 +12,7 @@ source=("git+https://github.com/mlvzk/discocss")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/discocss"
+  cd "discocss"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
