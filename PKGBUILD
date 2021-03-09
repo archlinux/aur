@@ -36,7 +36,7 @@ build() {
 
 package() {
     cd "${pkgname%-git}"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    make PREFIX=/usr DESTDIR="${pkgdir}" install install-scripts
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/moonwm/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/moonwm/README.md"
 }
