@@ -1,17 +1,18 @@
-# Contributor: 3ED <kas1987@o2.pl>
+# Contributor: 3ED <krzysztofas (a) protonmail>
 
-arch=('i686' 'x86_64')
-license=('GPL2 or later')
 pkgname=bash-completion-xmms2
 pkgver=20051023
-pkgrel=2
+pkgrel=3
 pkgdesc="bash-completion for xmms2"
 depends=('bash-completion' 'xmms2')
+arch=('i686' 'x86_64')
+license=('GPL2')
 source=(http://aspellfr.free.fr/xmms2/xmms2_completion)
 url="http://aspellfr.free.fr/"
-md5sums=('d9e716f0038a48b486fddaa30609f2ca')
+sha512sums=('256bff1d751cc68348c8010cf2f028642829cd20d487862b6aae78d8791ca04bed426746e358a4165b3f27593bbfe5861e5f9b70fd8e53e72bb1262d97d3f22f')
 
-build() {
-  mkdir -pv $startdir/pkg/etc/bash_completion.d
-  install -v -m 644 $startdir/src/xmms2_completion $startdir/pkg/etc/bash_completion.d/xmms2
+package() {
+  install -Dm644 \
+	"$srcdir/xmms2_completion" \
+	"$pkgdir/usr/share/bash-completion/completions/xmms2"
 }
