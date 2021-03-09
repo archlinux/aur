@@ -1,0 +1,5 @@
+post_install() {
+    echo 'A systemd service file is available, run:'
+    echo 'systemctl --user start oasis'
+    echo 'It can be accessed on http://localhost:4515'
+}
