@@ -1,0 +1,26 @@
+pkgbase = leftwm-theme-git
+	pkgdesc = Theme manager for LeftWM
+	pkgver = r18.7718850
+	pkgrel = 1
+	epoch = 2
+	url = https://github.com/leftwm/leftwm-theme
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	makedepends = git
+	depends = leftwm
+	depends = openssl
+	depends = gcc-libs
+	depends = zlib
+	optdepends = dmenu: default launcher
+	optdepends = feh: used to set background images
+	optdepends = lemonbar: light weight bar
+	optdepends = polybar: light weight bar
+	provides = leftwm-theme
+	conflicts = leftwm-theme
+	source = leftwm-theme-git::git+https://github.com/leftwm/leftwm-theme.git
+	md5sums = SKIP
+
+pkgname = leftwm-theme-git
+
