@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libtiff
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Library for manipulation of TIFF images (android)"
 arch=('any')
@@ -18,7 +18,7 @@ depends=("android-${_android_arch}-libjpeg-turbo"
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-sha256sums=('5d29f32517dadb6dbcd1255ea5bbc93a2b54b94fbf83653b4d65c7d6775b8634')
+md5sums=('2bbf6db1ddc4a59c89d6986b368fc063')
 
 build() {
     cd "${srcdir}/tiff-${pkgver}"
