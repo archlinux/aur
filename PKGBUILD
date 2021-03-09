@@ -7,7 +7,7 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
-pkgver=18.2.1
+pkgver=18.2.2
 pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -39,7 +39,7 @@ source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$pkgname
         "$pkgname.sysusers"
         "$pkgname.logrotated"
         "$pkgname.tmpfile")
-sha256sums=('1fe600afbc683ddb693ea9946c8d3278bbaf7c50b1425f2ba5c108b3ff54145b'
+sha256sums=('c7a3da64e30d1ac428ae2cf4723d3a2b799ae88768341084ce8a2e3e424ae163'
             'fc2e42f79e1672cc25b9b8ad2ba99616fbba0047641c986d30718655d0e7d4d8'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
