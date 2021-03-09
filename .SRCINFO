@@ -1,6 +1,6 @@
 pkgbase = python-matrx
 	pkgdesc = A Python package for the rapid development and evaluation of human-agent teaming concepts.
-	pkgver = 2.0.4
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://www.matrx-software.com/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-matrx
 	depends = python-flask-cors
 	depends = python-docutils
 	depends = python-pygments
-	source = https://files.pythonhosted.org/packages/source/m/matrx/matrx-2.0.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/matrx/matrx-2.0.8.tar.gz
 	sha512sums = 08f7f2ba16f97893d9252ed5b111b0a1fe413ddba207b29e84b743a9943c5a6ea51124d0bbfdc78dd050ff3e32bb70b33bcddf1dba997ef61b12089c2a5e8ee4
 
 pkgname = python-matrx
