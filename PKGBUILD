@@ -2,11 +2,11 @@
 
 pkgname=kodi-prevent-xscreensaver
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep xscreensaver from coming while Kodi is running."
 arch=(any)
 url="https://github.com/graysky2/kodi-prevent-xscreensaver"
-depends=('xscreensaver' 'kodi>=18')
+depends=('xscreensaver')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/kodi-prevent-xscreensaver/archive/v1.16.tar.gz")
 install=readme.install
