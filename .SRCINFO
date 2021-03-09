@@ -1,18 +1,19 @@
 pkgbase = ocaml-speex
 	pkgdesc = OCaml bindings to libspeex
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-speex
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = dune
 	makedepends = ocaml-findlib
 	depends = ocaml
 	depends = speex
 	depends = ocaml-ogg
 	options = !strip
-	source = https://github.com/savonet/ocaml-speex/releases/download/v0.3.0/ocaml-speex-0.3.0.tar.gz
-	sha256sums = dbe8835520bb6033bef9e3307e4b58d7f9c61e288b903ee1a3b63ff7fb213035
+	source = https://github.com/savonet/ocaml-speex/archive/v0.4.0.tar.gz
+	sha256sums = 7cc69b5e549781cca2f4c7ec30faba313390f6dd5e3d056fd55f29ea71b9133f
 
 pkgname = ocaml-speex
 
