@@ -1,6 +1,6 @@
 pkgbase = python-gluoncv
 	pkgdesc = A Deep Learning Toolkit for Computer Vision
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://gluon-cv.mxnet.io
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-gluoncv
 	depends = python-requests
 	depends = python-scipy
 	depends = python-tqdm
-	source = python-gluoncv-0.9.0.tar.gz::https://github.com/dmlc/gluon-cv/archive/v0.9.0.tar.gz
-	sha512sums = 5e43c91b9e21a511de844fa96877087e01bbce9f90c29c2ffe11d90249f64ff474297baee507703b64c97ad81f2c803692fae9c8b1cf490d552a6f0317b0926c
+	source = python-gluoncv-0.10.0.tar.gz::https://github.com/dmlc/gluon-cv/archive/v0.10.0.tar.gz
+	sha512sums = 68128d501e591d6e35c3468cb6e900f8447fb5e16752fe0a33a94fceb40bc301d9d0d57495efdd5b31151103568b5fa79cb27df5af43ada5cfe321b27a9ceef4
 
 pkgname = python-gluoncv
 
