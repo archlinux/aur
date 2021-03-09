@@ -1,8 +1,7 @@
 v0.1.1
 ======
 
-- Removed dependency to GTK (in preparation to the GTK4 release as it removed some
-of the API being used)
-- Hopefully fixed a potential crash fix when the source was being removed while
-running
-- Some minor fixes..
+- create own thread with it's own main loop. let us not assume OBS comes with one, and if it does, try not to interfere with it.
+- always copy the video buffer. this comes with a performance penalty, but pipewire versions >= 0.21 seem to have issue if we don't.
+- don't leak the bus watch handle. this could have led to "too many files open" error in case of many stop/starts.
+
