@@ -1,14 +1,14 @@
 pkgbase = gridtracker
 	pkgdesc = Companion program for WSJT-X for mapping contacts
-	pkgver = 1.20.0927
+	pkgver = 1.21.0307
 	pkgrel = 1
 	url = https://gridtracker.org/grid-tracker/
 	arch = x86_64
 	license = BSD
 	depends = nwjs-bin>=0.48.0
 	replaces = gridtracker-bin
-	source = https://gitlab.com/gridtracker.org/gridtracker/-/archive/v1.20.0927/gridtracker-v1.20.0927.tar.gz
-	md5sums = c1e61eb7114f3285e16d925a2eaeadff
+	source = https://gitlab.com/gridtracker.org/gridtracker/-/archive/v1.21.0307/gridtracker-v1.21.0307.tar.gz
+	sha256sums = 448ef6bd0a661c8e3d09fe4128afd1dc61530d2a48913da0dab664b81e9f7547
 
 pkgname = gridtracker
 
