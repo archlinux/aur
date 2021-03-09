@@ -20,10 +20,8 @@ build() {
         -Wno-dev
     make -C build
 }
-# package() {
-#         cd "$srcdir/$pkgname-$pkgver"
-#         make DESTDIR="$pkgdir/" install
-# }
 package() {
-  sudo make -C build install
+         cd "$srcdir/build"
+         sudo make DESTDIR="$pkgdir/" install
 }
+
