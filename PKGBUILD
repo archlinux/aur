@@ -1,15 +1,15 @@
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=dep
 pkgver=0.5.4
-pkgrel=5
-pkgdesc="Go dependency management tool"
+pkgrel=6
+pkgdesc="Deprecated Go dependency management tool"
 arch=('x86_64')
 url='https://golang.github.io/dep/'
 license=('BSD')
-makedepends=('go' 'git')
+makedepends=('gcc-go' 'git') # build fails with `go` if you know better solution let me know in comments
 optdepends=('git: fetch git sources')
-checkdepends=('mercurial' 'bzr' 'subversion')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golang/dep/archive/v${pkgver}.tar.gz")
 sha256sums=('929c8f759838f98323211ba408a831ea80d93b75beda8584b6d950f393a3298a')
 
@@ -28,12 +28,6 @@ build(){
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go install ./cmd/...
 }
-
-# check(){
-#   cd src/github.com/golang/dep
-#   mkdir -p "${srcdir}/build-cache"
-#   DEPCACHEDIR="${srcdir}/build-cache" go test ./...
-# }
 
 package(){
   install -Dm755 bin/dep "${pkgdir}/usr/bin/dep"
