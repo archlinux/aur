@@ -2,30 +2,30 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ogg
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="OCaml binding to libogg"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ogg"
 license=('LGPL2.1')
 depends=('ocaml' 'libogg')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  ./configure
-  make
+  
+  dune build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-  make install
+  
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('717b8d316e098f242c4c9e7a4cd1bd08ea39a2a328870e498acaddba361a6bbe')
+sha256sums=('2f21b52d6237704c98fff618af3a9faf2adfbf2cbcff0aa08297dc6f101b2fa2')
