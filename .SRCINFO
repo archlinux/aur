@@ -1,0 +1,19 @@
+pkgbase = flux
+	pkgdesc = Lightweight scripting language for querying databases (like InfluxDB) and working with data
+	pkgver = 0.106.0
+	pkgrel = 1
+	url = https://github.com/influxdata/flux
+	arch = i686
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	source = git+https://github.com/influxdata/flux#tag=v0.106.0
+	sha512sums = SKIP
+
+pkgname = flux
+
