@@ -9,7 +9,7 @@ license=('custom')
 depends=('perl' 'zlib' 'libidn')
 provides=('blast+')
 conflicts=('blast+')
-source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-$pkgver+-x64-linux.tar.gz")
+source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/ncbi-blast-$pkgver+-x64-linux.tar.gz")
 sha256sums=('f428fb91a6a455fc3ec926c60798c182c5e2145a52761cca21a816d804443f98')
 
 package() {
