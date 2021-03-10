@@ -2,7 +2,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com
 _npmname=cz-conventional-changelog
 pkgname=nodejs-cz-conventional-changelog
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Commitizen plugin for conventional changelogs commit messages"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs>=10' 'nodejs-commitizen')
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha512sums=('c80631786a558b6ee1a888a51b59e1e00f419f1e09dcebfe797cb89282f776bad1f883bd19a58fb0a8e2936d21b7ad3c02caa2f1340f7f499cce111ec80b4cce')
+sha512sums=('538eba7c8cd4e54db67844b995336235b67e77c75f70772cb07e28ed0b1d59a09c46cfdf7883c2c4a6125a460136ce669f2eccbc47f0a532d68ef6e6f7885e73')
 
 package() {
     npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
