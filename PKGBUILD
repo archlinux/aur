@@ -3,8 +3,8 @@
 pkgorg='stack-of-tasks'
 _pkgname='eiquadprog'
 pkgname=("${_pkgname}" "${_pkgname}-docs")
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Quadratic Programing solver with eigen"
 arch=('any')
 url="https://github.com/${pkgorg}/${_pkgname}"
