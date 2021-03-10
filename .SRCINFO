@@ -1,6 +1,6 @@
 pkgbase = fahcontrol-git
-	pkgdesc = Folding@home Client Advanced Control GUI - git version
-	pkgver = r82.91e9fe6
+	pkgdesc = Folding@home Client Advanced Control GUI (git)
+	pkgver = r89.7016206
 	pkgrel = 1
 	url = https://foldingathome.org
 	arch = any
@@ -18,4 +18,3 @@ pkgbase = fahcontrol-git
 	md5sums = 81c1953f5c7cfb981ba1b7bf6a046f88
 
 pkgname = fahcontrol-git
-
