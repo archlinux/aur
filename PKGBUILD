@@ -6,7 +6,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced
 pkgver=4.3.3.10
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
@@ -30,7 +30,6 @@ source=(
 )
 noextract=()
 md5sums=('SKIP' 'SKIP')
-validpgpkeys=('SKIP' 'SKIP')
 
 build() {
 	cd qBittorrent*
