@@ -1,6 +1,6 @@
 pkgbase = frhelper
 	pkgdesc = Proprietary French dictionary software for linux
-	pkgver = 12.5.0
+	pkgver = 12.5.3
 	pkgrel = 1
 	url = https://www.eudic.net/v4/fr/app/frhelper
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = frhelper
 	depends = qt5-speech
 	depends = qt5-webkit
 	provides = eudic-fr
-	source = frhelper-12.5.0.deb::https://static.frdic.com/pkg/frhelper.deb?v=2021-02-06
-	sha256sums = 03b3a6125788014a654626e982f914d2d1f31599b651475d47ae7be4f9336ce3
+	source = frhelper-12.5.3.deb::https://static.frdic.com/pkg/frhelper.deb?v=2021-02-06
+	sha512sums = 95ca8e7b198859215ae7b8cafc67a86c0d9aec45fca64fa6898df25d6254930a53f3543ed27cd73a6bc72d5f0a7965cf603a18b8d52840aedf258a52f2d62199
 
 pkgname = frhelper
 
