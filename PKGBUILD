@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clight-git
-pkgver=4.4.r3.g0f27079
+pkgver=4.4.r4.g05e27e7
 pkgrel=1
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display
          gamma temperature, dim your screen and set your dpms."
@@ -13,7 +13,8 @@ makedepends=('git' 'cmake' 'bash-completion')
 optdepends=('geoclue: to retrieve user location through geoclue.'
             'upower: to save energy by increasing timeouts between captures while on battery
              and to autocalibrate keyboard backlight.'
-            'bash-completion: to add support for bash automatic completion.')
+            'bash-completion: to add support for bash automatic completion.'
+            'clight-gui: Clight GUI written in Qt.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/default/${pkgname%-git}.conf")
