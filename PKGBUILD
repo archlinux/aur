@@ -2,14 +2,14 @@
 # Contributor: felix
 
 pkgbase=lua-gumbo-git
-pkgname=(lua-gumbo-git lua52-gumbo-git lua51-gumbo-git)
-pkgver=0.4+350+g54ebc5b
+pkgname=(lua-gumbo-git lua53-gumbo-git lua52-gumbo-git lua51-gumbo-git)
+pkgver=0.5+39+g4ec8e03
 pkgrel=1
 pkgdesc='Lua HTML5 parser and DOM API'
 arch=(i686 x86_64)
 url="https://craigbarnes.gitlab.io/lua-gumbo/"
 license=('Apache')
-makedepends=(git lua lua52 lua51)
+makedepends=(git lua lua53 lua52 lua51)
 source=(git+https://gitlab.com/craigbarnes/lua-gumbo.git)
 md5sums=(SKIP)
 
@@ -34,8 +34,13 @@ _package_ver() {
 }
 
 package_lua-gumbo-git() {
-    provides=('lua53-gumbo-git')
+    provides=('lua54-gumbo-git')
     depends=(lua)
+    _package_ver lua54
+}
+
+package_lua53-gumbo-git() {
+    depends=(lua53)
     _package_ver lua53
 }
 

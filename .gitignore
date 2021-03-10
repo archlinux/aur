@@ -1,4 +1,4 @@
 /lua-gumbo
 /pkg
 /src
-*.tar.[gx]z
+*.tar.zst
