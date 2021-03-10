@@ -1,0 +1,17 @@
+pkgbase = as-tree-git
+	pkgdesc = Print a list of paths as a tree of paths
+	pkgver = 0.12.0.r6.g0036c20
+	pkgrel = 1
+	url = https://github.com/jez/as-tree
+	arch = x86_64
+	license = custom:BOML
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	provides = as-tree
+	conflicts = as-tree
+	source = git+https://github.com/jez/as-tree
+	sha256sums = SKIP
+
+pkgname = as-tree-git
+
