@@ -1,5 +1,5 @@
 post_install() {
-   echo "Installing the module 8821cu"
+   echo "Installing the module 8189es"
    depmod -a
    modprobe 8189es
 }
@@ -9,7 +9,7 @@ post_upgrade() {
 }
 
 post_remove() {
-   echo "Module removal 8821cu"
-   rmmod 8821cu
+   echo "Module removal 8189es"
+   rmmod 8189es
    depmod -a
 }

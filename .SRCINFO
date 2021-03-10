@@ -1,7 +1,7 @@
 pkgbase = rtl8189es-git
 	pkgdesc = RTL8189ES / RTL8189ETV modules
-	pkgver = 03ac413
-	pkgrel = 2
+	pkgver = 57.03ac413
+	pkgrel = 1
 	url = https://github.com/jwrdegoede/rtl8189ES_linux
 	install = rtl8189es-git.install
 	arch = i686
@@ -12,12 +12,11 @@ pkgbase = rtl8189es-git
 	makedepends = git
 	makedepends = make
 	makedepends = linux-headers
-	depends = linux=5.11.2-1
 	conflicts = rtl8189es-git
-	source = git+https://github.com/jwrdegoede/rtl8189ES_linux#tag=03ac413
+	source = git+https://github.com/jwrdegoede/rtl8189ES_linux#tag=57.03ac413
 	source = rtl8189es-git.install
 	md5sums = SKIP
-	md5sums = 7fd21525fa3f7748f9c46eca6900d264
+	md5sums = 8a04c4c6a69a34393694aa0a14fb4853
 
 pkgname = rtl8189es-git
 

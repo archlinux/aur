@@ -1,26 +1,30 @@
 pkgname=rtl8189es-git
 _pkgbase=${pkgname%-*-*}
-pkgver="03ac413"
-pkgrel=2
+pkgver=57.03ac413
+pkgrel=1
 pkgdesc="RTL8189ES / RTL8189ETV modules"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/jwrdegoede/rtl8189ES_linux"
 license=('GPL2')
-kernelver=5.11.2-1
-depends=('linux'=$kernelver)
+#depends=('linux'=$kernelver)
 makedepends=('git' 'make' 'linux-headers')
 conflicts=("${_pkgbase}")
 source=("git+${url}#tag=$pkgver"
         "$pkgname.install")
 install=$pkgname.install
-md5sums=('SKIP' '7fd21525fa3f7748f9c46eca6900d264')
+md5sums=('SKIP' '8a04c4c6a69a34393694aa0a14fb4853')
 procs_num=$(nproc)
 
 _extramodules=$(cat `find /usr/lib/modules/extramodules* -type 'f' -name 'version'`)
 
+pkgver() {
+  cd ${srcdir}/rtl8189ES_linux
+  echo "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
+}
+
 build() {
   cd ${srcdir}/rtl8189ES_linux
-   if [ ${CARCH} == "armv6h" -o ${CARCH} == "armv7h" ]; then
+  if [ ${CARCH} == "armv6h" -o ${CARCH} == "armv7h" ]; then
      ARCH="arm"
   else
      ARCH=${CARCH}
