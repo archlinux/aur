@@ -1,13 +1,13 @@
 pkgbase = websocat-bin
 	pkgdesc = Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/vi/websocat/
 	arch = x86_64
 	license = MIT
 	conflicts = websocat-git
 	conflicts = websocat
-	source = https://github.com/vi/websocat/releases/download/v1.6.0/websocat_amd64-linux
+	source = https://github.com/vi/websocat/releases/download/v1.7.0/websocat_amd64-linux
 	sha256sums = cec0d7d05252dcadb09a5afb8851cf9f3a8997bba44334eee5f7db70ca72aa0b
 
 pkgname = websocat-bin

@@ -1,7 +1,7 @@
 # Maintainer: Cyril Levis <pkgbuilds AT levis DOT name>
 
 pkgname=websocat-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions"
 arch=("x86_64")
