@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('1371ac6f537cec4fc61581dbb6ceb143df08f20e24f884fa148068008864b054')
 
 build() {
-	cmake -B build -S "$pkgname-$pkgver" \
+	cmake -B build -S Clight-$pkgver \
 		-G "Unix Makefiles" \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
