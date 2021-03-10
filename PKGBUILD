@@ -7,18 +7,18 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=checkpolicy
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="SELinux policy compiler"
 arch=('i686' 'x86_64')
 url='https://github.com/SELinuxProject/selinux'
 license=('GPL2')
 groups=('selinux')
-makedepends=('libsepol>=3.1')
+makedepends=('libsepol>=3.2')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/selinux/releases/download/20200710/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('dfc7707070520c93b14fbbdfdbe081364d806bf28e3e79e10318c2594c77bbb2')
+source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('9b1c81fa86fe3867842164448d90c8e7ea94b2987497809c65d4caa87a5c5bc8')
 
 build() {
   cd "${pkgname}-${pkgver}"
