@@ -1,6 +1,6 @@
 # Maintainer: Mautamu mautam@usa.com
 pkgname=leftwm-theme-git
-pkgver=r18.7718850
+pkgver=r31.e133c21
 pkgrel=1
 epoch=2
 pkgdesc="Theme manager for LeftWM"
