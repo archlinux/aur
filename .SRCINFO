@@ -1,13 +1,13 @@
 pkgbase = avdump3-bin
 	pkgdesc = AniDB video/audio codec identification utility (command line version)
 	pkgver = 8188_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.anidb.net/Avdump3
 	arch = any
 	license = MIT
 	license = unknown
 	makedepends = unzip
-	depends = dotnet-runtime
+	depends = dotnet-runtime>=3.1
 	provides = avdump3
 	conflicts = avdump3
 	noextract = avdump3_8188_beta.zip
