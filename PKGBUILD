@@ -4,19 +4,18 @@
 # Contributor: Daniel Menelkir <menelkir at itroll dot org>
 
 pkgname=g15stats
-pkgver=1.9.8
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="A CPU/Mem/Swap/Network monitoring client for G15Daemon."
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/g15daemon/"
+url="https://gitlab.com/menelkir/g15stats"
 license=('GPL')
 depends=('g15daemon' 'libgtop' 'libg15' 'libg15render')
 source=(https://gitlab.com/menelkir/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha512sums=('24c162a54ecc7124dc2326a02bd106a47dec9c843561d443cb60c54325db4c65b2f41c94583727241d5900e7799cb7ffc284df2fe8d2ace8757dc4dbefe7fe5c')
+sha512sums=('8641f1df6910c244be9e695c6f4976e15dbaddc92a641ffbce1f75ef440c94e7a9424bf678d43e2c0cc3241ebf8e03a2fc1c78042746cb60dee2b68e312a2b7d')
 
 build() {
   cd $pkgname-$pkgver
-  ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var
