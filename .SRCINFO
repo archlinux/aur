@@ -19,6 +19,8 @@ pkgbase = minetest-git
 	makedepends = postgresql
 	makedepends = spatialindex
 	makedepends = sqlite
+	makedepends = jsoncpp
+	makedepends = gmp
 	source = git+https://github.com/minetest/minetest.git
 	source = git+https://github.com/minetest/irrlicht.git
 	source = git+https://github.com/minetest/minetest_game.git
@@ -46,6 +48,8 @@ pkgname = minetest-git
 	depends = spatialindex
 	depends = sqlite
 	depends = xdg-utils
+	depends = jsoncpp
+	depends = gmp
 	provides = minetest
 	conflicts = minetest
 
@@ -59,6 +63,8 @@ pkgname = minetest-server-git
 	depends = luajit
 	depends = postgresql-libs
 	depends = spatialindex
+	depends = jsoncpp
+	depends = gmp
 	provides = minetest-server
 	conflicts = minetest-server
 

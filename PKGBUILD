@@ -11,7 +11,7 @@ epoch=1
 url=https://www.minetest.net
 license=(GPL)
 arch=(i686 x86_64)
-makedepends=(cmake curl freetype2 git hicolor-icon-theme hiredis leveldb libvorbis luajit openal postgresql spatialindex sqlite)
+makedepends=(cmake curl freetype2 git hicolor-icon-theme hiredis leveldb libvorbis luajit openal postgresql spatialindex sqlite jsoncpp gmp)
 source=(git+https://github.com/minetest/minetest.git
 		git+https://github.com/minetest/irrlicht.git
 		git+https://github.com/minetest/minetest_game.git
@@ -62,7 +62,7 @@ build() {
 
 package_minetest-git() {
 	pkgdesc='Multiplayer infinite-world block sandbox game (git)'
-	depends=(curl desktop-file-utils freetype2 hicolor-icon-theme libvorbis luajit minetest-common-git openal postgresql-libs spatialindex sqlite xdg-utils)
+	depends=(curl desktop-file-utils freetype2 hicolor-icon-theme libvorbis luajit minetest-common-git openal postgresql-libs spatialindex sqlite xdg-utils jsoncpp gmp)
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
@@ -74,7 +74,7 @@ package_minetest-git() {
 
 package_minetest-server-git() {
 	pkgdesc='Server of infinite-world block sandbox game (git)'
-	depends=(minetest-common leveldb curl sqlite hiredis luajit postgresql-libs spatialindex)
+	depends=(minetest-common leveldb curl sqlite hiredis luajit postgresql-libs spatialindex jsoncpp gmp)
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
