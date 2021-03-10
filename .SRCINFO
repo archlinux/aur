@@ -1,15 +1,13 @@
 pkgbase = ting-es
 	pkgdesc = Daily Spanish Listening software from eusoft
 	pkgver = 9.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eudic.net/v4/es/app/ting
 	arch = x86_64
 	license = unknown
-	makedepends = asar
 	depends = electron7
-	options = !strip
 	source = ting-es-9.3.2.deb::https://static.frdic.com/pkg/ting_es/ting_es.deb
-	sha512sums = 5987a52a9e47b32e9b934508b054e79a2f4a7eeddeee234447a12ee3dbe53fded2eefba3d8895438aedbc2e94cdc3b003b177d40496991c542c318fa10269bb7
+	sha512sums = aabfcd6ed07459148c31ec0acd7ca172508118425b1f82d6a6df42a114cf549adf22c7393ff2bbcf12a8b97ee3e58bd7bb81ba1488edc5dbe48ce1e14f0c2687
 
 pkgname = ting-es
 
