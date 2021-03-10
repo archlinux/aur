@@ -1,6 +1,6 @@
 pkgbase = python-spacy
 	pkgdesc = Free open-source library for Natural Language Processing in Python
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://spacy.io/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = python-spacy
 	makedepends = cython
 	depends = python-catalogue
 	depends = python-cymem
+	depends = python-jinja
 	depends = python-murmurhash
 	depends = python-numpy
 	depends = python-pathlib
@@ -25,8 +26,8 @@ pkgbase = python-spacy
 	depends = python-typer
 	depends = python-ujson
 	depends = python-wasabi
-	source = https://files.pythonhosted.org/packages/source/s/spacy/spacy-3.0.3.tar.gz
-	sha256sums = a8204780c5f3ab4afc75e6345ee173c67d928beab81fa887895f5dc94cb670ab
+	source = https://files.pythonhosted.org/packages/source/s/spacy/spacy-3.0.4.tar.gz
+	sha256sums = 9c995dac3e9f8812499b8a390725e9a376206071357a3adb156f87377071707d
 
 pkgname = python-spacy
 
