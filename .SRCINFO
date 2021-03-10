@@ -1,0 +1,16 @@
+pkgbase = vim-plantuml-syntax-git
+	pkgdesc = Vim syntax for PlantUML
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/aklt/plantuml-syntax
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	depends = plantuml
+	source = git+https://github.com/aklt/plantuml-syntax
+	md5sums = SKIP
+
+pkgname = vim-plantuml-syntax-git
+
