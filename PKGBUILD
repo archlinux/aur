@@ -2,18 +2,21 @@
 
 _lang=fr
 pkgname=ting-${_lang}
-pkgver=9.2.1
+pkgver=9.3.2
 pkgrel=1
 _llang=French
 pkgdesc="Daily ${_llang} Listening software from eusoft"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/ting"
 license=('unknown')
-makedepends=('asar')
 depends=('electron7')
-options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_${_lang}/ting_${_lang}.deb")
-sha512sums=('3e0ea70c774d780f07e058dc17c84e26cae28f989a1856605c7aa7cc721c9ef8e7d5b9f2205680148bfc4e2f1ede2fa0cf7314d840630c89b343a9741fee92df')
+sha512sums=('6d731368f0a454c3e017290cbb57367d7918c5d6c4a13b3b247a92d743130189612d08359d93d6deeb3099b2f25f785677564086356c4c493f34679ff733c338')
+
+# sometime use curl to download source deb, throws 404 not found. 
+# user other UA instead of origion one fixed it.
+# https://wiki.archlinux.org/index.php/Nonfree_applications_package_guidelines#Custom_DLAGENT
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare() {
     cd $srcdir
@@ -21,21 +24,21 @@ prepare() {
     tar -xvf data.tar.xz  -C build/
     cd build
     dir_name=$(ls opt/)
-    asar extract opt/${dir_name}/resources/app.asar ${pkgname}
+    mv opt/${dir_name}/resources/app.asar ${pkgname}.asar 
 }
 
 package() {
     cd $srcdir/build
     
     mv usr/ ${pkgdir}/usr
-    mkdir -p ${pkgdir}/usr/share/eusoft/${pkgname}
-    mv  ${pkgname} ${pkgdir}/usr/share/eusoft/
+    mkdir -p ${pkgdir}/usr/share/eusoft-${pkgname}
+    mv  ${pkgname}.asar ${pkgdir}/usr/share/eusoft-${pkgname}/${pkgname}.asar
     sed -i "3c Exec=${pkgname} %U" ${pkgdir}/usr/share/applications/ting_${_lang}.desktop
     
     # link executable
     mkdir -p ${pkgdir}/usr/bin/
     echo """#!/usr/bin/bash
-/usr/lib/electron7/electron /usr/share/eusoft/${pkgname}
+electron7 /usr/share/eusoft-${pkgname}/${pkgname}.asar
 """> ${pkgdir}/usr/bin/${pkgname}
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
 
