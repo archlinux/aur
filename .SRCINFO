@@ -1,0 +1,22 @@
+pkgbase = prometheus-slurm-exporter
+	pkgdesc = Prometheus exporter for slurm metrics
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://github.com/vpenso/prometheus-slurm-exporter
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	backup = etc/conf.d/prometheus-slurm-exporter
+	source = prometheus-slurm-exporter-0.17.tar.gz::https://github.com/vpenso/prometheus-slurm-exporter/archive/0.17.tar.gz
+	source = prometheus-slurm-exporter.conf
+	source = prometheus-slurm-exporter.service
+	source = prometheus-slurm-exporter.sysusers
+	source = gpus.patch
+	b2sums = 9a80941f55d550ab5d6551b81d4398fd1cbd227d632337b8b3ac5a62593e0bd60974087de9adadc4d9806416522ab276c51c7c6381f7571290ef619a889a102d
+	b2sums = a709e377eb2f63acda614c7db973e1df212c2e35caeff303f607afdf82675e8f3a2a4c630b9bc9b8495976b28a7755062b5f28cf78ee72c4aadffaa0703132dc
+	b2sums = a760ee6c1af298ccc77a2b4bc09e8d3442141d6b42e0d4b3e374731edddeb4c6eac3882b7abab3718e736f2c770084dd5f7455e296b19e69665a3934bc9afaea
+	b2sums = 66f53e52502dc528f9ed20de9f45a1e23d884cb70f870024a3248e5965be598f88e8a9fa463ee93d7d7bd2a44acf7417a158f43d571f794c0f0a12385c9e9e28
+	b2sums = 2eb4c885bd70cab03c766ecfe9d51421847071cb247b69a1b769f7272f57cd13ce817fdd97bfc94460ad4a83c8313a08f9ea68b97812068c562bba168d4d4738
+
+pkgname = prometheus-slurm-exporter
+
