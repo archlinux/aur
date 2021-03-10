@@ -12,9 +12,9 @@ pkgbase = youtubemusic-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = youtube-git
-	source_x86_64 = https://gitlab.com/youtube-music/binaries/-/raw/master/YoutubeMusic-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/youtube-music/binaries/1.0.3-1/-/raw/master/YoutubeMusic-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/youtube-music/binaries/-/raw/master/YoutubeMusic-linux-arm64.tar.gz
+	source_aarch64 = https://gitlab.com/youtube-music/binaries/1.0.3-1/-/raw/master/YoutubeMusic-linux-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = youtubemusic-bin
