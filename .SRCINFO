@@ -1,7 +1,7 @@
 pkgbase = texlive-aastex6
 	pkgdesc = Package for preparing papers in American Astronomical Society (AAS) journals
-	pkgver = 6.3
-	pkgrel = 2
+	pkgver = 6.3.1
+	pkgrel = 1
 	url = http://journals.aas.org/authors/aastex.html
 	install = texlive-aastex6.install
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = texlive-aastex6
 	depends = texlive-core
 	depends = texlive-publishers
 	provides = texlive-aastex6
-	source = https://journals.aas.org/wp-content/uploads/2019/06/aastex63.cls
+	source = https://journals.aas.org/wp-content/uploads/2021/02/aastex631.cls
 	source = https://journals.aas.org/wp-content/uploads/2019/06/aasjournal.bst
-	sha1sums = 6b02c31b19a8713526212d7dd524a776ecfcbf7e
+	sha1sums = fb9659c616c735cd05f494103e1594e19c944519
 	sha1sums = 88fda6521f0c8cf4d4fb77dfb572e7005c90206b
 
 pkgname = texlive-aastex6
