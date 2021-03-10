@@ -1,0 +1,17 @@
+pkgbase = d-din
+	pkgdesc = Package for the D-DIN font family
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/d-din
+	arch = any
+	license = custom:OFL
+	makedepends = unzip
+	source = https://fontlibrary.org/assets/downloads/d-din/39fc8c3de156292478f87c2ff0b96df2/d-din.zip
+	md5sums = 39fc8c3de156292478f87c2ff0b96df2
+
+pkgname = otf-d-din
+	pkgdesc = Package for the D-DIN font family OTF
+
+pkgname = ttf-d-din
+	pkgdesc = Package for the D-DIN font family TTF
+
