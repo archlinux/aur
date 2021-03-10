@@ -1,6 +1,6 @@
 # Maintainer: laserK <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
 pkgname=stm32cubemx
-pkgver=6.1.1
+pkgver=6.2.0
 pkgrel=1
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
@@ -20,27 +20,27 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("https://sw-center.st.com/packs/resource/library/stm32cube_mx_v${pkgver//./}.zip"
+source=("https://sw-center.st.com/packs/resource/library/stm32cube_mx_v${pkgver//./}-lin.zip"
  	"LICENSE"
  	"stm32cubemx.desktop"
  	"stm32cubemx.sh")
 noextract=()
-sha512sums=('7ba0c4606897f7ef6777264c2371e6ae7e2a935fac5a01f46b2a6635c6ae9f7234b37c863bd640d658a46155135ec8dbf3e4315ca7736218dc310a9241181d3c'
+sha512sums=('ede05b0134637cbb6a18aed8e9088733b7549071ba30515c8b3364bfb63fe6b554a1b7c9c10f5e78e6f26f63d5cef83fc1bdfeec8567b7f9479c78684c5171e6'
             'ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397'
             '56bff32e35f8eb09ae4df94e4e885aaf9349c687ce9f4901ddd11c83b69a32b19d99ab8dbd90c6679e86e7213c4d41640e52ab0d80b8fc4640a1bc5df9a3af32'
-            '9cc2dcb57e48e7039fb833c410e4638155fd14793c6daa7a00e1d1445162e7e26690c3303b6f052fff643123bc246be345da8624b18ee2805ddde75280512eec')
+            '99ed513b6813135a3e4ee8f2a9c6e061b4fb5edddbcffcd81eca6ee8ac7fe23f804870a4aa168d83bb6902cde41f28cab0a4fa65e467ce25eb6240f701672694')
 validpgpkeys=()
 
 package() {
    cd "${srcdir}"
 	mkdir -p "${pkgdir}/opt/stm32cubemx"
-	cp -r "${srcdir}/." "${pkgdir}/opt/stm32cubemx"
+	cp -r "${srcdir}/MX/." "${pkgdir}/opt/stm32cubemx"
    install -Dm 755 "${srcdir}/stm32cubemx.sh" "${pkgdir}/usr/bin/${pkgname}"
 	#icon and desktop file
-	convert "${srcdir}/help/STM32CubeMX.ico[17]" "${srcdir}/${pkgname}.png"
-	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	convert "${srcdir}/MX/help/STM32CubeMX.ico[17]" "${srcdir}/MX/${pkgname}.png"
+	install -Dm 644 "${srcdir}/MX/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	
 	#license
-	install -Dm 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 644 "${srcdir}/MX/help/software_license_agreement.pdf" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.pdf"
 }
