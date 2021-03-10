@@ -1,0 +1,14 @@
+pkgbase = python-pwnscripts
+	pkgdesc = Simple pwntools QoL scripts
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/152334H/pwnscripts
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-pwntools
+	source = https://files.pythonhosted.org/packages/source/p/pwnscripts/pwnscripts-0.6.0.tar.gz
+	sha256sums = 36d2b751f1a3bfdb8010fab14174b2a9d24f733635dda9b76f4e102466fc4876
+
+pkgname = python-pwnscripts
+
