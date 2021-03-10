@@ -1,6 +1,6 @@
 pkgbase = lib32-openmp-rc
 	pkgdesc = LLVM OpenMP Runtime Library (32-bit) (rc release)
-	pkgver = 12.0.0rc2
+	pkgver = 12.0.0rc3
 	pkgrel = 1
 	url = https://openmp.llvm.org/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = lib32-openmp-rc
 	depends = openmp
 	provides = lib32-openmp
 	conflicts = lib32-openmp-git
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc2/llvm-project-12.0.0rc2.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc3/llvm-project-12.0.0rc3.src.tar.xz
 	md5sums = SKIP
 
 pkgname = lib32-openmp-rc
