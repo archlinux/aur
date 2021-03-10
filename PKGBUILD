@@ -10,11 +10,7 @@ depends=('perl' 'zlib' 'libidn')
 provides=('blast+')
 conflicts=('blast+')
 source=("https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-$pkgver+-x64-linux.tar.gz")
-md5sum=("3c7338de3ec14eaa1c50842f28e3a1de")
-
-# prepare() {
-#   tar -zxvpf ncbi-blast-$pkgver+-x64-linux.tar.gz
-# }
+md5sums=('3c7338de3ec14eaa1c50842f28e3a1de')
 
 package() {
   install -d "$pkgdir"/usr/bin

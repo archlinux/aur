@@ -11,6 +11,7 @@ pkgbase = blast+-latest-bin
 	provides = blast+
 	conflicts = blast+
 	source = https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.11.0+-x64-linux.tar.gz
+	md5sums = 3c7338de3ec14eaa1c50842f28e3a1de
 
 pkgname = blast+-latest-bin
 
