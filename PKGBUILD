@@ -15,7 +15,7 @@ pkgdesc="Enlightenment window manager - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs'
+depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs' 'libexif'
          'xorg-server-xwayland' 'bluez' 'pulseaudio' 'connman' 'bc')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'ccache')
 optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
