@@ -1,6 +1,6 @@
 pkgbase = apostrophe
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://somas.pages.gitlab.gnome.org/apostrophe
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = apostrophe
 	depends = libhandy
 	optdepends = texlive-latexextra: for the pdftex module
 	optdepends = mathjax: for formula preview
-	source = https://gitlab.gnome.org/somas/apostrophe/-/archive/v2.3/apostrophe-v2.3.tar.gz
-	sha256sums = 944ee2d83c05afac148e1b819c213274f544c23e5338088271e967a6e83a09d2
+	source = https://gitlab.gnome.org/somas/apostrophe/-/archive/v2.4/apostrophe-v2.4.tar.gz
+	sha256sums = c5c7d1a98cbdb850f61294357a30215d086ec20bd494319e29e64ea3197301c7
 
 pkgname = apostrophe
 
