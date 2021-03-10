@@ -52,6 +52,9 @@ zfs_decrypt_fs() {
           ! eval pivy-zfs unlock "${encryptionroot}"; do
             sleep 2
         done
+        # do an implicit re-key after unlock, so that the exchange we had with
+        # the yubikey is not replayable
+        pivy-zfs rekey "${encryptionroot}"
     fi
 
     # loop until we get the correct password or key is unlocked by another vector (SSH for instance)
