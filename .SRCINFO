@@ -1,0 +1,12 @@
+pkgbase = nature-wallpapers
+	pkgdesc = Collection of nature wallpapers
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/winux1/nature-wallpapers/
+	arch = any
+	license = unknown
+	source = nature-wallpapers-v1.0.tar.gz::https://gitlab.com/winux1/nature-wallpapers/-/archive/v1.0/nature-wallpapers-v1.0.tar.gz
+	md5sums = aeebbaf81bfcde5accff1e788c124606
+
+pkgname = nature-wallpapers
+
