@@ -1,6 +1,6 @@
 # Maintainer: replicadse <haw@voidpointergroup.com>
 pkgname=senile
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 epoch=
 pkgdesc='collecting ToDo statements from files/directories as JSON format'
@@ -31,5 +31,5 @@ check() {
 
 package() {
   #install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
-  cargo +nightly install $pkgname --no-track --all-features --version=$pkgver
+  cargo +nightly install $pkgname --no-track --all-features --version=$pkgver --force
 }
