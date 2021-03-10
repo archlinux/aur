@@ -1,19 +1,17 @@
 pkgbase = keeweb-git
 	pkgdesc = Desktop password manager compatible with KeePass databases. (develop branch)
-	pkgver = 1.15.7+53+gd0fdada9
+	pkgver = 1.17.0+3+gf8ec47bf
 	pkgrel = 1
 	url = https://keeweb.info
 	arch = any
 	license = MIT
 	makedepends = asar
 	makedepends = git
-	makedepends = libsass>=3.5.5
-	makedepends = nodejs>=8.15.0
+	makedepends = libsass
 	makedepends = npm
-	makedepends = python2
 	depends = electron
 	depends = org.freedesktop.secrets
-	optdepends = xdotool: for auto-type
+	depends = libusb
 	provides = keeweb
 	provides = keeweb-desktop
 	conflicts = keeweb
