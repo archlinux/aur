@@ -17,7 +17,7 @@ optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
 	    'zfs-utils: ZFS encrypted pool/fs support (pivy-zfs)'
             'pam: PAM plugin (pam_pivy.so)')
 makedepends=(pkgconf cryptsetup zfs-utils json-c pam)
-sha256sums=('c78b9420751cd70c4b6cf2d437110c71452cbd6c8c44c5338c29ed7d80cba26c'
+sha256sums=('dbabe4001bfc204ea82bff22fd40cc5526f74398fb067af6816ac3c7025664dd'
             '44b5a004a06ffe214df2810bb2d58a3ecb2bdcf1c892411a8d574afac935f678'
             'c32b008a730ddc8661e4b0542408b30d46868ee66890612b7f1cbc84803eaf57'
             'f91aad0c8fb9cbc67c910ad6dcffb401a819b4fd122007ea7f978638db044cf6'
