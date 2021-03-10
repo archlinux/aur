@@ -1,0 +1,15 @@
+pkgbase = as-tree-bin
+	pkgdesc = Print a list of paths as a tree of paths
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/jez/as-tree
+	arch = x86_64
+	license = custom:BOML
+	depends = gcc-libs
+	source = as-tree-0.12.0.zip::https://github.com/jez/as-tree/releases/download/0.12.0/as-tree-0.12.0-linux.zip
+	source = LICENSE.md
+	sha256sums = adb3fa37c49bb137b772379a4c5e07c3ac9609871cd3058c376e32f9fb9ee434
+	sha256sums = 8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004
+
+pkgname = as-tree-bin
+
