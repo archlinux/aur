@@ -3,10 +3,10 @@
 # Maintainer: Zorin Arch (ZorinArch)
 
 pkgname=pamac-tray-icon-plasma
-pkgver=0.1.2
-pkgrel=2
-_commit='4c1d846750741b60239d4f5865d5bab987604611'
-sha256sums=('41e897d5e7fb0757f4e929de20c9a7326041a6a5d147499173999856732a2feb')
+pkgver=0.1.3
+pkgrel=1
+_commit='e39571330664045a145ab3a15c0a1a925527cd4d'
+sha256sums=('637e061f4c78e54951dc575fc55e9e2c2fd0e53b9ca6eb65b23bd0f6cf1654c6')
 
 url="https://gitlab.com/LordTermor/$pkgname"
 
