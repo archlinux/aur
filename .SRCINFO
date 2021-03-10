@@ -1,7 +1,7 @@
 pkgbase = youtube-git
 	pkgdesc = Unnofficial Youtube desktop application
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://gitlab.com/youtube-desktop/application
 	arch = any
 	license = GPL
