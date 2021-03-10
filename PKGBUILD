@@ -1,41 +1,34 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=git-chglog
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='git CHANGELOG generator'
 url="https://github.com/git-chglog/git-chglog"
 arch=(x86_64)
 license=(MIT)
 depends=(git)
-makedepends=(go-pie dep)
-source=($pkgname-$pkgver.tar.gz::https://github.com/git-chglog/git-chglog/archive/${pkgver}.tar.gz)
-sha512sums=('1ce04dd88ce2350b6a9146ba28a6fe4740e35d44f052f28904f090b5cc409a1f0975c7e3e63b24452228dc51b66add2d993c30f36d1e582c71286504eeb30f66')
-
-prepare(){
-  mkdir -p gopath/src/github.com/$pkgname
-  ln -rTsf $pkgname-$pkgver gopath/src/github.com/$pkgname/$pkgname
-  export GOPATH="$srcdir"/gopath
-}
+makedepends=(go)
+source=($pkgname-$pkgver.tar.gz::https://github.com/git-chglog/git-chglog/archive/v${pkgver}.tar.gz)
+sha512sums=('675f40babb0784bebabbfb39dc292189becb5b712bffd89ddc019c29d485de4bd1ac811fb86cc96db3a665080a18c732b2ea4e8860009bb10727f29ed197d1db')
 
 build() {
-  export GOPATH="$srcdir/gopath"
-  cd gopath/src/github.com/$pkgname/$pkgname
-  go install \
-    -gcflags "all=-trimpath=$GOPATH" \
-    -asmflags "all=-trimpath=$GOPATH" \
-    -ldflags "-extldflags ${LDFLAGS}" \
-    -v ./...
+  cd "${pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o ${pkgname} ./cmd/git-chglog
 }
 
 check() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/$pkgname/$pkgname
+  cd "${pkgname}-${pkgver}"
   go test ./...
 }
 
 package() {
-  export GOPATH="$srcdir/gopath"
-  install -Dm755 $GOPATH/bin/$pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
