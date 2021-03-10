@@ -11,8 +11,8 @@ depends=('lowdown' 'cpio')
 url='https://www.romanzolotarev.com'
 source=("${url}/bin/${pkgname}${pkgver}"
         "${url}/bin/Markdown.pl")
-md5sums=("abf6c59327e7649a85cffaf95b904def"
-         "7ec2474d8650b25bba541fb4b7c43186")
+sha1sums=("53a8a94c50f4798434c05050606dd306cf9602f2"
+          "3ff20882221ba2ea73fc11e640ee0c4e1fb39bbf")
 
 build() {
 	cd "$srcdir/$distdir"
