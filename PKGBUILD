@@ -1,8 +1,7 @@
 pkgname=rtl8821cu-git
 _pkgbase=rtl8821cu
-commit="e54b8f4"
 _pkgver="5.8.1.7"
-pkgver=${_pkgver}.${commit}
+pkgver=5.8.1.7.99.e54b8f4
 pkgrel=1
 pkgdesc="Linux Driver for USB WiFi Adapters that use the RTL8811CU, RTL8821CU and RTL8731AU Chipsets"
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,7 +20,7 @@ _extramodules=$(cat `find /usr/lib/modules/extramodules* -type 'f' -name 'versio
 
 pkgver() {
    cd ${srcdir}/8821cu
-   printf '%s' ${_pkgver} "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   printf '%s' ${_pkgver} "." "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
 }
 
 build() {
