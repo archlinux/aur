@@ -1,7 +1,7 @@
 pkgbase = uwufetch-git
 	pkgdesc = A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace.
-	pkgver = r93.79f5085
-	pkgrel = 2
+	pkgver = 1.0.r0.g79f5085
+	pkgrel = 1
 	url = https://github.com/TheDarkBug/uwufetch
 	arch = any
 	license = GPL3
