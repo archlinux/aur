@@ -12,7 +12,7 @@ source=("https://github.com/ruslang02/discord-qt/releases/download/v$pkgver/$_bi
         "discord-qt.desktop"
         "discord-qt.png")
 md5sums=('97e5e456818d8eccfb4a8ffd03c5a532'
-         'c1afce90bb8f9bd26f13315fefb2463e'
+         '7a4c8b31ceeecd7ab12ae38e1301abaf'
          'c2bde1f15baed51a37001fc8ee08316f')
 provides=('discord-qt')
 conflicts=('discord-qt')
@@ -25,5 +25,5 @@ package() {
   install -Dm644 "${srcdir}/discord-qt.desktop" "${pkgdir}/usr/share/applications/discord-qt.desktop"
   install -Dm644 "${srcdir}/discord-qt.png" "${pkgdir}/opt/discord-qt/discord-qt.png"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "${pkgdir}/opt/discord-qt/${_bin}" "${pkgdir}/usr/bin/Discord-Qt"
+  ln -s "/opt/discord-qt/${_bin}" "${pkgdir}/usr/bin/discord-qt"
 }

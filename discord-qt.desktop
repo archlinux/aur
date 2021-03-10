@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=DiscordQt
-Exec=/usr/bin/Discord-Qt %F
+Exec=/usr/bin/discord-qt %F
 Icon=/opt/discord-qt/discord-qt.png
 Comment=Discord running on Qt and Node.JS
 Terminal=false
