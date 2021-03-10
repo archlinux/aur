@@ -1,22 +1,25 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: y5nw <y5nw@outlook.com>
+# Previous Maintainer: katt <magunasu.b97@gmail.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Konsta Kokkinen <kray@tsundere.fi>
 
 pkgbase=minetest-git
 pkgname=(minetest-git minetest-server-git minetest-common-git)
-pkgver=5.3.0.r399.g4caf156be
+pkgver=5.4.0.r31.g75eb28b95
 pkgrel=1
 epoch=1
 url=https://www.minetest.net
 license=(GPL)
 arch=(i686 x86_64)
-makedepends=(cmake curl freetype2 git hicolor-icon-theme hiredis irrlicht leveldb libvorbis luajit openal postgresql spatialindex sqlite)
+makedepends=(cmake curl freetype2 git hicolor-icon-theme hiredis leveldb libvorbis luajit openal postgresql spatialindex sqlite)
 source=(git+https://github.com/minetest/minetest.git
+		git+https://github.com/minetest/irrlicht.git
 		git+https://github.com/minetest/minetest_game.git
 		minetest.service
 		sysusers.d
 		tmpfiles.d)
 sha256sums=('SKIP'
+			'SKIP'
 			'SKIP'
 			'2d80b4ff925770bdf3d857debb2ad11227cc9b022eb01a358b18f8d5f2641a5c'
 			'e4166d639b35efda2cd72269208184ab1e72c54541344cd202ff2005c90b9433'
@@ -27,7 +30,13 @@ pkgver() {
 }
 
 build() {
+	cmake -B build-irrlicht -S "irrlicht" \
+		-DBUILD_SHARED_LIBS=0
+	make -C build-irrlicht
+
 	cmake -B build-client -S "${pkgbase%-git}" \
+		-DIRRLICHT_INCLUDE_DIR="$srcdir/irrlicht/include" \
+		-DIRRLICHT_LIBRARY="$srcdir/build-irrlicht/lib/Linux/libIrrlicht.a" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=1 \
 		-DENABLE_GETTEXT=1 \
@@ -39,6 +48,8 @@ build() {
 	make -C build-client
 
 	cmake -B build-server -S "${pkgbase%-git}" \
+		-DIRRLICHT_INCLUDE_DIR="$srcdir/irrlicht/include" \
+		-DIRRLICHT_LIBRARY="$srcdir/build-irrlicht/lib/Linux/libIrrlicht.a" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=0 \
 		-DBUILD_SERVER=1 \
@@ -51,7 +62,7 @@ build() {
 
 package_minetest-git() {
 	pkgdesc='Multiplayer infinite-world block sandbox game (git)'
-	depends=(curl desktop-file-utils freetype2 hicolor-icon-theme irrlicht libvorbis luajit minetest-common-git openal postgresql-libs spatialindex sqlite xdg-utils)
+	depends=(curl desktop-file-utils freetype2 hicolor-icon-theme libvorbis luajit minetest-common-git openal postgresql-libs spatialindex sqlite xdg-utils)
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
