@@ -4,8 +4,8 @@ _name=futurerestore
 _fork=marijuanARM
 _forkpkgname=$_name-${_fork,,}
 pkgname=$_forkpkgname-git
-pkgver=r192.6ccc6816
-pkgrel=2
+pkgver=r195.55db758b
+pkgrel=1
 pkgdesc="iOS upgrade and downgrade tool utilizing SHSH blobs - marijuanARM's fork - git version"
 arch=('x86_64')
 url="https://github.com/$_fork/$_name"
@@ -18,13 +18,11 @@ source=("git+$url.git"
         'git+https://github.com/tihmstar/tsschecker.git'
         'git+https://github.com/marijuanARM/idevicerestore.git'
         'git+https://github.com/tihmstar/jssy.git'
-        "$_name-0001-Ensure-CUSTOM_LOGGING-refers-to-a-file.patch"
         'idevicerestore-0001-configure.ac-check-for-pthreads.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6b50f455cfa5a60fcb77d9db55ce48186774b5cf9c5f04ad5fc911b8df7e047e'
             '7a1ac46309eab59763186fdb91e456bd77f703b0fe59fec968e0001349c24d78')
 
 pkgver() {
@@ -40,10 +38,6 @@ prepare() {
   git config submodule.external/tsschecker.url "$srcdir/tsschecker"
   git config submodule.external/idevicerestore.url "$srcdir/idevicerestore"
   git submodule update
-
-  for p in "$srcdir"/$_name-*.patch; do
-    patch -Np1 -i "$p"
-  done
 
   cd external/tsschecker
   git submodule init
