@@ -1,11 +1,12 @@
 # Maintainer : fuero <fuerob@gmail.com>
 # Co-Mantainer: Jeff Henson <jeff@henson.io>
 # Co-Mantainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Contributor: Josef Vybíhal <josef.vybihal at gmail dot com>
 
 pkgname=govmomi
 pkgdesc='A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).'
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/vmware/${pkgname}"
 license=('Apache')
 arch=('x86_64')
@@ -37,6 +38,12 @@ package () {
   cd "${pkgname}-${pkgver}"
 
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -d "${pkgdir}/usr/share/${pkgname}"
+  cp -dr --no-preserve='ownership' "scripts/" "${pkgdir}/usr/share/${pkgname}/"
+
+  install -d "${pkgdir}/usr/share/bash-completion/completions"
+  ln -s "/usr/share/${pkgname}/scripts/govc_bash_completion" "${pkgdir}/usr/share/bash-completion/completions/govc"
 
   for i in govc vcsim; do
     cd "${i}"
