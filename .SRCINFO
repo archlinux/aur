@@ -1,6 +1,6 @@
 pkgbase = openra-dr-git
 	pkgdesc = A Dark Reign-inspired mod of OpenRA
-	pkgver = 435.git.7d2601e
+	pkgver = 436.git.9f61987
 	pkgrel = 1
 	url = https://github.com/drogoganor/DarkReign
 	install = openra-dr.install
