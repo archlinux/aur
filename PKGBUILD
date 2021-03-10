@@ -17,7 +17,7 @@ license=('MPL2')
 groups=()
 conflicts=()
 provides=()
-makedepends=('boost' 'cmake' 'git' 'expac')
+makedepends=('boost' 'cmake' 'git')
 makedepends+=('cuda>=7.0')
 checkdepends=('wget')
 source=("${_name}::git+https://github.com/alicevision/popsift.git")
@@ -51,9 +51,7 @@ build() {
 
 package_popsift() {
   pkgdesc+=" [development headers and static libs]"
-  _cuda_version=$(expac -Q '%v' cuda)
-  _cuda_version=${_cuda_version%-[0-9]*}
-  depends=('boost' "popsift-libs=${pkgver}" "cuda${_cuda_version:+=$_cuda_version}")
+  depends=('boost' "popsift-libs=${pkgver}")
   optdepend=('cuda: for static cudart library')
   options=('staticlibs')
   make -C "$srcdir/build_static" DESTDIR="${pkgdir}" install
