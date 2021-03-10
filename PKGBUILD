@@ -9,7 +9,7 @@
 
 _pkgname=pyparted
 pkgname=python-${_pkgname}
-pkgver=3.11.6
+pkgver=3.11.7
 pkgrel=1
 pkgdesc="Python module for GNU parted"
 url="https://github.com/dcantrell/pyparted"
@@ -19,7 +19,7 @@ makedepends=('pkg-config' 'python>=3.5' 'parted>=3.0')
 conflicts=('pyparted-git')
 replaces=('pyparted')
 source=("https://github.com/dcantrell/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('6be03c0e44d474088ad5e432fdea077a8f1379877d09c1ff234e38b58067b5d2538fe3607af747bb8c917e3118766d528e07bdce1837e9d5a0ab908b9731173c')
+sha512sums=('41018989c21aab577cd1d51f521128d072b346afb9dcdcc27490cdbc2ed4382a854e4bd16780da72a0a95bbd521f14ee0e7f02816f34656cbae734d43a4f0b83')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
