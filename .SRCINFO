@@ -1,12 +1,12 @@
 pkgbase = gminer-bin
 	pkgdesc = Multi currency GPU miner
-	pkgver = 2.45
+	pkgver = 2.47
 	pkgrel = 1
 	url = https://github.com/develsoftware/GMinerRelease
 	arch = x86_64
 	options = !strip
-	source = gminer-2.45.tar.xz::https://github.com/develsoftware/GMinerRelease/releases/download/2.45/gminer_2_45_linux64.tar.xz
-	sha256sums = 1806b0b913606e93e19901ca1f1f20d9b31824882dcf5acab8c27190e6b89722
+	source = gminer-2.47.tar.xz::https://github.com/develsoftware/GMinerRelease/releases/download/2.47/gminer_2_47_linux64.tar.xz
+	sha256sums = 6a366a1f0dc6d8335435e491b80bc979677dedc5b28c37b8e72984a59ea105fa
 
 pkgname = gminer-bin
 
