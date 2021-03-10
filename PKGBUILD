@@ -2,7 +2,7 @@
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clight
 pkgver=4.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clight"
@@ -12,7 +12,8 @@ makedepends=('git' 'cmake' 'bash-completion')
 optdepends=('geoclue: to retrieve user location through geoclue.'
             'upower: to save energy by increasing timeouts between captures while on battery
              and to autocalibrate keyboard backlight.'
-            'bash-completion: to add support for bash automatic completion.')
+            'bash-completion: to add support for bash automatic completion.'
+            'clight-gui: Clight GUI written in Qt.')
 backup=("etc/default/$pkgname.conf")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
