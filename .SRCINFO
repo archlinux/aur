@@ -1,6 +1,6 @@
 pkgbase = pmbootstrap-git
-	pkgdesc = Sophisticated chroot/build/flash tool to develop and install postmarketOS
-	pkgver = 1.21.0.r0.gae21bc86
+	pkgdesc = Sophisticated chroot/build/flash tool to develop and install postmarketOS (git)
+	pkgver = 1.29.2.r11.gaf2b2b59
 	pkgrel = 1
 	url = https://postmarketos.org
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = pmbootstrap-git
 	md5sums = SKIP
 
 pkgname = pmbootstrap-git
-

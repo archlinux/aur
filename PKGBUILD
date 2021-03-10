@@ -1,16 +1,16 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 pkgname=pmbootstrap-git
-pkgver=1.21.0.r0.gae21bc86
+pkgver=1.29.2.r11.gaf2b2b59
 pkgrel=1
-pkgdesc='Sophisticated chroot/build/flash tool to develop and install postmarketOS'
+pkgdesc='Sophisticated chroot/build/flash tool to develop and install postmarketOS (git)'
 arch=(any)
-url='https://postmarketos.org'
+url=https://postmarketos.org
 license=(GPL)
 depends=(python-setuptools)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+'https://gitlab.com/postmarketOS/pmbootstrap.git')
+source=(git+https://gitlab.com/postmarketOS/pmbootstrap.git)
 md5sums=(SKIP)
 
 pkgver() {
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	cd "${pkgname%-git}"
-	python setup.py install -O1 --root="$pkgdir"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
