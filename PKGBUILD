@@ -3,17 +3,23 @@ pkgname=bombadillo-git
 _pkgname=bombadillo
 _source=https://tildegit.org/sloum/bombadillo.git
 pkgver=r462.757305d
-pkgrel=3
+pkgrel=4
 pkgdesc="A non-web client for the terminal, supporting Gopher, Gemini and much more."
 arch=('x86_64')
 url="https://tildegit.org/sloum/bombadillo.git"
 license=('GPL')
-makedepends=('go' 'git' 'desktop-file-utils')
+makedepends=('go' 'git')
 depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+${_source}")
-md5sums=('SKIP')
+source=("${_pkgname}"::"git+${_source}" "remove-update-desktop-database.patch")
+md5sums=('SKIP'
+         '181db34d11c1986d541ed8a134402f5a')
+
+prepare() {
+  cd "$_pkgname"
+  patch --forward --strip=1 --input="${srcdir}/remove-update-desktop-database.patch"
+}
 
 pkgver() {
 	cd "$_pkgname"

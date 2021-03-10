@@ -1,0 +1,11 @@
+diff --unified --recursive --text bombadillo/Makefile bombadillo-patched/Makefile
+--- bombadillo/Makefile	2021-03-10 22:29:17.908090997 +0100
++++ bombadillo-patched/Makefile	2021-03-10 22:33:40.791403403 +0100
+@@ -35,7 +35,6 @@
+ 	install -m 0644 ./bombadillo.desktop ${DESTDIR}${DATAROOTDIR}/applications
+ 	install -d ${DESTDIR}${DATAROOTDIR}/pixmaps
+ 	install -m 0644 ./bombadillo-icon.png ${DESTDIR}${DATAROOTDIR}/pixmaps
+-	-update-desktop-database 2> /dev/null
+ else
+ 	@echo "* Skipping protocol handler associations and desktop file creation for non-linux system *"
+ endif
