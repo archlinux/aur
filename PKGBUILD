@@ -54,13 +54,13 @@ package_popsift() {
   _cuda_version=$(expac -Q '%v' cuda)
   _cuda_version=${_cuda_version%-[0-9]*}
   depends=('boost' "popsift-libs=${pkgver}" "cuda${_cuda_version:+=$_cuda_version}")
+  optdepend=('cuda: for static cudart library')
   options=('staticlibs')
   make -C "$srcdir/build_static" DESTDIR="${pkgdir}" install
 }
 
 package_popsift-libs() {
-  depends=('boost-libs>=1.55') # 'libcudart.so')
-  optdepend=('cuda: for static cudart library')
+  depends=('boost-libs>=1.55' 'libcudart.so')
   provides=("popsift-libs=${pkgver}")
   cd 
   make -C "${srcdir}/build_shared" DESTDIR="${pkgdir}" install
