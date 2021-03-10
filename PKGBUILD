@@ -18,31 +18,22 @@
 #   - replace setools 3.3.8 with setools3-libs and install setools then.
 
 pkgname=setools
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64')
 url="https://github.com/SELinuxProject/setools/wiki"
 license=('GPL' 'LGPL')
-depends=('libsepol>=2.8' 'libselinux>=2.8' 'python' 'python-networkx>=2.0' 'python-setuptools')
+depends=('libsepol>=3.2' 'libselinux>=3.2' 'python' 'python-networkx>=2.0' 'python-setuptools')
 optdepends=('python-pyqt5: needed for graphical tools'
             'qt5-tools: display apol help with Qt Assistant')
 makedepends=('cython' 'python-tox')
 checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
-        '0001-Disable-deprecated-function-warnings-to-fix-build-wi.patch')
-sha256sums=('315df3ae0eb29b399123c5e3330480c5d1c0da038671c9fd62a439c49a6f9105'
-            '95973be9faf3380986b0cf5969b9e28d1ba4d8eea7d78e24786c49871977cd40')
-
-prepare() {
-  cd "${pkgname}"
-  # Fix compatibility issues with Cython 0.29.21 and Python 3.9
-  # https://github.com/SELinuxProject/setools/issues/54
-  patch -Np1 -i ../0001-Disable-deprecated-function-warnings-to-fix-build-wi.patch
-}
+source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('f3786677e40b7f16a226f48f233dcf835e700739614a7dbed2ff61cc9607814e')
 
 build() {
   cd "${pkgname}"
