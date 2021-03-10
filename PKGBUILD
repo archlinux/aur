@@ -10,8 +10,8 @@
 pkgname=libclc-rc
 pkgdesc='Library requirements of the OpenCL C programming language (rc release)'
 url='https://libclc.llvm.org/'
-pkgver=12.0.0rc2
-versiontag=12.0.0-rc2
+pkgver=12.0.0rc3
+versiontag=12.0.0-rc3
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
