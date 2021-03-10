@@ -1,4 +1,4 @@
 /*.tar.zst
-/ocm-linux-amd64
+/ocm-linux-amd64*
 /pkg
 /src
