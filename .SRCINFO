@@ -1,6 +1,6 @@
 pkgbase = authelia
 	pkgdesc = The Cloud ready multi-factor authentication portal for your Apps.
-	pkgver = 4.26.2
+	pkgver = 4.27.0
 	pkgrel = 1
 	url = https://github.com/authelia/authelia
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = authelia
 	conflicts = authelia-bin
 	conflicts = authelia-git
 	backup = etc/authelia/configuration.yml
-	source = authelia-4.26.2.tar.gz::https://github.com/authelia/authelia/archive/v4.26.2.tar.gz
-	sha256sums = f31de57b899e649b79394800e84d5c08a804853fa131a8ba7b7e45049f4680b0
+	source = authelia-4.27.0.tar.gz::https://github.com/authelia/authelia/archive/v4.27.0.tar.gz
+	sha256sums = cd11156c5a3383f1475b03a71bbdfdd07b749c9a4591a38d53f1c415aca50cc4
 
 pkgname = authelia
 
