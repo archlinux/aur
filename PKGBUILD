@@ -11,10 +11,10 @@
 
 pkgname=megasync-nopdfium
 pkgver=4.4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
-provides=(megasync)
+provides=(megasync=$pkgver)
 conflicts=(megasync)
 url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
