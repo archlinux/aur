@@ -7,7 +7,7 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.23.r5.ge89e87ba
+pkgver=0.3.23.r53.g485bae5e
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -33,9 +33,13 @@ build() {
   # make AUR helper happy
   rm -rf build || true
   arch-meson $_pkgbase build \
-    -D docs=true \
-    -D jack=false \
-    -D bluez5-backend-hsphfpd=true \
+    -D docs=enabled \
+    -D systemd-system-service=disabled \
+    -D audiotestsrc=disabled \
+    -D jack=disabled \
+    -D videotestsrc=disabled \
+    -D volume=disabled \
+    -D vulkan=disabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -68,11 +72,7 @@ package_pipewire-common-git() {
               'ofono: ofono HFP support'
               'hsphfpd: hsphfpd HSP/HFP support')
   provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire pipewire-media-session alsa-card-profiles
-             pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
-             pipewire-common-ffmpeg-git)
-  replaces=(pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
-            pipewire-common-ffmpeg-git)
+  conflicts=(pipewire pipewire-media-session alsa-card-profiles)
   backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
