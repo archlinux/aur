@@ -1,18 +1,19 @@
 pkgbase = bombadillo-git
 	pkgdesc = A non-web client for the terminal, supporting Gopher, Gemini and much more.
 	pkgver = r462.757305d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tildegit.org/sloum/bombadillo.git
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	makedepends = git
-	makedepends = desktop-file-utils
 	depends = glibc
 	provides = bombadillo
 	conflicts = bombadillo
 	source = bombadillo::git+https://tildegit.org/sloum/bombadillo.git
+	source = remove-update-desktop-database.patch
 	md5sums = SKIP
+	md5sums = 181db34d11c1986d541ed8a134402f5a
 
 pkgname = bombadillo-git
 
