@@ -1,8 +1,8 @@
 pkgbase = trafshow
 	pkgdesc = Full screen network monitoring
 	pkgver = 5.2.3
-	pkgrel = 6
-	url = http://soft.risp.ru/trafshow/index_en.shtml
+	pkgrel = 7
+	url = https://fossies.org/linux/misc/old/
 	arch = i686
 	arch = x86_64
 	license = netbsd

@@ -3,10 +3,10 @@
 # Contributor: gunnar <tomtinn@gmail.com>
 pkgname=trafshow
 pkgver=5.2.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Full screen network monitoring"
 arch=('i686' 'x86_64')
-url="http://soft.risp.ru/trafshow/index_en.shtml"
+url="https://fossies.org/linux/misc/old/"
 license=('netbsd')
 depends=('libpcap' 'ncurses')
 source=(http://fossies.org/linux/misc/old/${pkgname}-$pkgver.tgz trafshow.patch) 
