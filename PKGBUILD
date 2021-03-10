@@ -1,19 +1,17 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=jdupes-git
-pkgver=1.11.1+18+g8b65531
+pkgver=1.19.1+12+gd583576
 pkgrel=1
-pkgdesc="jdupes is a program for identifying duplicate files residing within specified directories"
+pkgdesc="Is a program for identifying duplicate files residing within specified directories"
 arch=('i686' 'x86_64')
-url="https://github.com/jbruchon/jdupes/"
+url="https://github.com/jbruchon/jdupes"
 license=('MIT')
 depends=('glibc')
 provides=('jdupes')
 conflicts=('jdupes')
-source=("${pkgname}::git+https://github.com/jbruchon/jdupes.git"
-        "LICENSE")
-sha256sums=('SKIP'
-            'ff95e2262ce1dd788e66c6c8763354e350a46044b8532d92146b7b03a319481a')
+source=("${pkgname}::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -22,7 +20,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make ENABLE_BTRFS=1
+  make ENABLE_BTRFS=1 ENABLE_DEDUPE=1 STATIC_DEDUPE_H=1
 }
 
 package(){
