@@ -2,9 +2,9 @@
 
 pkgname=nginx-mainline-mod-traffic-accounting-git
 pkgver=r99.43c9b9d
-pkgrel=1
+pkgrel=2
 
-_nginxver=1.19.7
+_nginxver=1.19.8
 _modname="traffic-accounting-nginx-module"
 
 pkgdesc='Monitor the incoming and outgoing traffic metrics in realtime for NGINX (module for mainline nginx) (Git version)'
@@ -18,7 +18,7 @@ source=(
 	"git+https://github.com/Lax/$_modname.git"
 )
 
-sha256sums=('7ae4dd020c41d3a5e1e6a8578fcc60e508e3e27e7668e845ddc87a05a775b50e'
+sha256sums=('308919b1a1359315a8066578472f998f14cb32af8de605a3743acca834348b05'
             'SKIP')
 
 pkgver() {

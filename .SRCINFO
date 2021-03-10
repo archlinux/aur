@@ -8,10 +8,10 @@ pkgbase = nginx-mainline-mod-traffic-accounting-git
 	arch = aarch64
 	arch = armv7
 	license = BSD
-	depends = nginx-mainline=1.19.7
-	source = https://nginx.org/download/nginx-1.19.7.tar.gz
+	depends = nginx-mainline=1.19.8
+	source = https://nginx.org/download/nginx-1.19.8.tar.gz
 	source = git+https://github.com/Lax/traffic-accounting-nginx-module.git
-	sha256sums = 7ae4dd020c41d3a5e1e6a8578fcc60e508e3e27e7668e845ddc87a05a775b50e
+	sha256sums = 308919b1a1359315a8066578472f998f14cb32af8de605a3743acca834348b05
 	sha256sums = SKIP
 
 pkgname = nginx-mainline-mod-traffic-accounting-git
