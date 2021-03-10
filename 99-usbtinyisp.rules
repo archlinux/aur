@@ -1,0 +1,2 @@
+# USBtinyISP: https://learn.adafruit.com/usbtinyisp/avrdude
+SUBSYSTEMS=="usb", ATTR{product}=="USBtiny", ATTR{idVendor}=="1781", ATTR{idProduct}=="0c9f", GROUP="users", MODE="0666"
