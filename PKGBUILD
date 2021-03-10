@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.5.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,28 +18,41 @@ depends=('electron'
          'nss')
 makedepends=('coreutils'
              'git'
-             'npm')
+             'npm'
+             'python2'
+             'png++'
+             'libxtst'
+             'nvm'
+             )
 
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'jitsi-meet-desktop.desktop')
-sha256sums=('a79493bc982173e40124995e921b7d7f074205e5fc9a395fc6b4d15a39c7eb98'
+sha256sums=('2fa79baed7d8568e354432f27d53a2eb24d8fd5fa68ac132a85722fe02baa9c8'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 prepare() {
+  export npm_config_cache="$srcdir/npm_cache"
+  _npm_prefix=$(npm config get prefix)
+  npm config delete prefix
+  source /usr/share/nvm/init-nvm.sh
+  nvm install 14 && nvm use 14
+
   cd jitsi-meet-electron-${pkgver}/
 
   sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
 
   export npm_config_cache="${srcdir}/npm_cache"
   npm install
-  npm audit fix
+  # npm audit fix
 }
 
 build() {
   cd jitsi-meet-electron-${pkgver}/
   npm run build
   npx electron-builder --dir
+  npm config set prefix ${_npm_prefix}
+  nvm unalias default
 }
 
 package() {
