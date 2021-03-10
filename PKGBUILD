@@ -2,7 +2,7 @@
 pkgname=(otf-d-din ttf-d-din)
 pkgbase=d-din
 _fontname="d-din"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc='Package for the D-DIN font family'
@@ -19,12 +19,12 @@ validpgpkeys=()
 
 package_otf-d-din() {
 	pkgdesc+=' OTF'
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL-1.1.txt
 	install -Dm644 -t "$pkgdir/usr/share/fonts/${_fontname}-otf" *.otf
 }
 
 package_ttf-d-din() {
 	pkgdesc+=' TTF'
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL-1.1.txt
 	install -Dm644 -t "$pkgdir/usr/share/fonts/${_fontname}-ttf" *.ttf
 }
