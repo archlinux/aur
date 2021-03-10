@@ -1,7 +1,7 @@
 pkgbase = youtubemusic-bin
 	pkgdesc = Youtube Music is a unofficial client to play your music.
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://gitlab.com/youtube-music/application
 	arch = x86_64
 	arch = arm7h
