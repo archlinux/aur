@@ -1,6 +1,6 @@
 pkgbase = aura
 	pkgdesc = A secure package manager for Arch Linux and the AUR
-	pkgver = 3.2.3
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://github.com/fosskers/aura
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = aura
 	conflicts = aura-git
 	options = strip
 	backup = etc/aura.conf
-	source = aura-3.2.3.tar.gz::https://github.com/fosskers/aura/archive/v3.2.3.tar.gz
-	sha256sums = 343841cec6fa9c689a61e22abf98d9166572264183b18f5aa3bf236a2595a493
+	source = aura-3.2.4.tar.gz::https://github.com/fosskers/aura/archive/v3.2.4.tar.gz
+	sha256sums = 8d6d58396a7d42e870f709a87f0ae944b49ef48ceb2282399382099e30146ac9
 
 pkgname = aura
 
