@@ -21,7 +21,7 @@ fi
 
 pkgname=vulkan-tools-git
 pkgdesc='Vulkan Utilities and Tools (git version)'
-pkgver=1.2.170.2021_02_26.7204.88ea55de
+pkgver=1.2.172.2021_03_10.7206.461b33cf
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Tools'
@@ -36,7 +36,7 @@ md5sums=('SKIP')
 
 pkgver(){
  cd Vulkan-Tools
- echo 1.2.170.$(date -I | sed 's/-/_/' | sed 's/-/_/').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+ echo 1.2.172.$(date -I | sed 's/-/_/' | sed 's/-/_/').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build(){

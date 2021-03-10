@@ -1,6 +1,6 @@
 pkgbase = vulkan-tools-git
 	pkgdesc = Vulkan Utilities and Tools (git version)
-	pkgver = 1.2.170.2021_02_26.7204.88ea55de
+	pkgver = 1.2.172.2021_03_10.7206.461b33cf
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-Tools
 	arch = x86_64
