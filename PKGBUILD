@@ -18,7 +18,7 @@ provides=('discord-qt')
 conflicts=('discord-qt')
 depends=('qt5-base' 'qt5-svg' 'libbsd' 'libgcrypt' 'lzo')
 arch=('x86_64')
-options=('!strip' '!emptydirs')
+options=('!strip')
 
 package() {
   install -Dm755 "${srcdir}/${_bin}" "${pkgdir}/opt/discord-qt/${_bin}"
