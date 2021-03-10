@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=lightcord-git
-pkgver=r401.75bc92d
+pkgver=r437.6bd9c0a
 pkgrel=1
 pkgdesc="A simple - customizable - Discord Client"
 arch=('x86_64')
@@ -24,9 +24,9 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP')
+         '7c420cb31a9ef6d3a63cddcc1f235823'
+         '738e1aa6aff38e2ced608999d58ff5d7'
+         'f1ace6f149a3d778bfb789d10181d877')
 
 build() {
   cd "$pkgname" 
