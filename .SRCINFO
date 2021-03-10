@@ -1,6 +1,6 @@
 pkgbase = python-nbsphinx
 	pkgdesc = Jupyter Notebook Tools for Sphinx
-	pkgver = 0.8.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = http://nbsphinx.rtfd.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-nbsphinx
 	depends = jupyter-nbconvert
 	depends = jupyter-nbformat
 	depends = python-sphinx
-	source = https://github.com/spatialaudio/nbsphinx/archive/0.8.0.tar.gz
-	sha256sums = 5a5269b456dfdc101d072a93e910481a41bceefb1926dc1c751927d7872308b2
+	source = python-nbsphinx-0.8.2.tar.gz::https://github.com/spatialaudio/nbsphinx/archive/0.8.2.tar.gz
+	sha256sums = e0f409d1ab466f291243712ed49e9f03e7843470f012a925c4d421edd5db9277
 
 pkgname = python-nbsphinx
 

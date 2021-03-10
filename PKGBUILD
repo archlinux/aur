@@ -1,5 +1,8 @@
+# Maintainer:  Liam Timms <timms5000@gmail.com>
+# contributor:  Michel Zou
+
 pkgname=python-nbsphinx
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Jupyter Notebook Tools for Sphinx"
 url="http://nbsphinx.rtfd.org/"
@@ -7,8 +10,8 @@ arch=(any)
 license=('MIT')
 depends=('python-docutils' 'python-jinja' 'jupyter-nbconvert' 'jupyter-nbformat' 'python-sphinx')
 makedepends=('python-setuptools')
-source=("https://github.com/spatialaudio/nbsphinx/archive/${pkgver}.tar.gz")
-sha256sums=('5a5269b456dfdc101d072a93e910481a41bceefb1926dc1c751927d7872308b2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/spatialaudio/nbsphinx/archive/${pkgver}.tar.gz")
+sha256sums=('e0f409d1ab466f291243712ed49e9f03e7843470f012a925c4d421edd5db9277')
 
 build() {
   cd "${srcdir}"/nbsphinx-$pkgver
