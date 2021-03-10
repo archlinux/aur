@@ -10,8 +10,8 @@
 pkgname=polly-rc
 pkgdesc='High-level loop and data-locality optimizer and optimization infrastructure for LLVM (rc release)'
 url='https://polly.llvm.org/'
-pkgver=12.0.0rc2
-versiontag=12.0.0-rc2
+pkgver=12.0.0rc3
+versiontag=12.0.0-rc3
 pkgrel=1
 arch=('x86_64')
 license=('custom:Apache 2.0 with LLVM Exception')
