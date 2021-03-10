@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/jez/as-tree"
 license=('custom:BOML')
 depends=('gcc-libs')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.zip::$url/releases/download/$pkgver/$_pkgname-$pkgver-linux.zip"
         "LICENSE.md")
 sha256sums=('adb3fa37c49bb137b772379a4c5e07c3ac9609871cd3058c376e32f9fb9ee434'
