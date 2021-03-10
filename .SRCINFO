@@ -1,0 +1,24 @@
+pkgbase = python2-tornado
+	pkgdesc = open source version of the scalable, non-blocking web server and tools
+	pkgver = 5.1.1
+	pkgrel = 3
+	url = https://www.tornadoweb.org/
+	arch = x86_64
+	license = Apache
+	checkdepends = python2-pycurl
+	checkdepends = python2-mock
+	checkdepends = python2-twisted
+	checkdepends = python2-trollius
+	checkdepends = python2-monotonic
+	makedepends = python2-setuptools
+	depends = python2-futures
+	depends = python2-singledispatch
+	depends = python2-backports-abc
+	optdepends = python2-monotonic: enable support for a monotonic clock
+	optdepends = python2-pycurl: for tornado.curl_httpclient
+	optdepends = python2-twisted: for tornado.platform.twisted
+	source = python2-tornado-5.1.1.tar.gz::https://github.com/tornadoweb/tornado/archive/v5.1.1.tar.gz
+	sha512sums = b35fa0687ede6e672c35ca82fcc01dbb2ae9d8a7f2e4a65b6e07aa5a8eca861a22d775101172b7e33564951d193e5f11887021a3d762bee88668b9ac0069ab46
+
+pkgname = python2-tornado
+
