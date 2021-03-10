@@ -1,0 +1,11 @@
+post_install() {
+  echo "Registering iscan plugins and firmwares"
+  iscan-registry --add interpreter usb 0x04b8 0x083f \
+    /usr/lib/iscan/libesint7E
+}
+
+pre_remove() {
+  echo "Unregistering iscan plugins and firmwares"
+  iscan-registry --remove interpreter usb 0x04b8 0x083f \
+    /usr/lib/iscan/libesint7E
+}
