@@ -1,8 +1,8 @@
 pkgbase = linux-test-project
-	pkgdesc = A collection of tools for testing the Linux kernel and related features
-	pkgver = 20180515
+	pkgdesc = Collection of tools for testing the Linux kernel and related features
+	pkgver = 20210121
 	pkgrel = 1
-	url = http://linux-test-project.github.io/
+	url = https://linux-test-project.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -11,11 +11,10 @@ pkgbase = linux-test-project
 	depends = gawk
 	depends = libcap
 	depends = libtirpc
-	depends = python2
-	depends = libaio
+	depends = python
 	depends = numactl
-	source = https://github.com/linux-test-project/ltp/releases/download/20180515/ltp-full-20180515.tar.bz2
-	md5sums = e104b70ae4b0d7f7e728ef5345242d2c
+	source = https://github.com/linux-test-project/ltp/releases/download/20210121/ltp-full-20210121.tar.xz
+	sha256sums = 72b0a063f0d48efaaa93ed403d56662ac2b1dd3f74ecb5c6e5b3900791fa6c29
 
 pkgname = linux-test-project
 
