@@ -1,13 +1,13 @@
 pkgbase = age
 	pkgdesc = A simple, modern and secure file encryption tool
-	pkgver = 1.0.0.beta7
+	pkgver = 1.0.0rc.1
 	pkgrel = 1
 	url = https://github.com/FiloSottile/age
 	arch = x86_64
 	license = BSD
 	makedepends = go
-	source = age-1.0.0.beta7.tar.gz::https://github.com/FiloSottile/age/archive/v1.0.0-beta7.tar.gz
-	sha256sums = 0ff39751464a5660360575023c9912558f267263f18b10058c27764a3a6806ed
+	source = age-1.0.0rc.1.tar.gz::https://github.com/FiloSottile/age/archive/v1.0.0-rc.1.tar.gz
+	sha256sums = 2ef0839b0e2e79435c037662c67df675b4ebc50d7bf001079d24b0bdf1d0c098
 
 pkgname = age
 
