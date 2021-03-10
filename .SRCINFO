@@ -1,0 +1,17 @@
+pkgbase = py3status-github-notifications
+	pkgdesc = Python module for py3status to keep track of your Github notifications.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mcgillij/py3status-github-notifications
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = py3status
+	depends = python-pygithub
+	depends = awesome-terminal-fonts
+	source = https://github.com/mcgillij/py3status-github-notifications/releases/download/0.1.0/py3status-github-notifications-0.1.0.tar.gz
+	md5sums = ee0630a9c072ec3b47f4a81e7e82d8c5
+
+pkgname = py3status-github-notifications
+
