@@ -1,45 +1,40 @@
-# Maintainer: Federico Di Pierro <nierro92@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
+# Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd-git
-_gitname=clightd
-pkgver=r372.adb439b
+pkgver=5.2.r2.gadb439b
 pkgrel=1
-pkgdesc="Bus interface to change screen brightness and capture frames from webcam. Devel version."
-arch=('any')
-url="https://github.com/FedeDP/${_gitname}"
+pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
+arch=('i686' 'x86_64' 'aarch64')
+url="https://github.com/FedeDP/Clightd"
 license=('GPL')
-depends=('systemd>=221' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit' 'ddcutil>=0.9.5' 'libmodule>=5.0.0' 'libjpeg-turbo' 'libusb' 'libdrm' 'wayland')
+depends=('systemd-libs>=237' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit'
+         'ddcutil>=0.9.5' 'libmodule>=5.0.0' 'libjpeg-turbo' 'libusb' 'libdrm' 'wayland')
 makedepends=('git' 'cmake')
-optdepends=('clight-git: user service to automagically change screen backlight matching ambient brightness.')
-provides=('clightd')
-conflicts=('clightd')
-source=("git://github.com/FedeDP/${_gitname}.git")
-sha256sums=("SKIP")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/FedeDP/Clightd.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${_gitname}"
-    mkdir -p build
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_gitname}/build"
-    cmake \
-        -G "Unix Makefiles" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_LIBEXECDIR=lib/"$_gitname" \
-        -DCMAKE_BUILD_TYPE="Release" \
-        -DENABLE_DDC=1 -DENABLE_GAMMA=1 -DENABLE_DPMS=1 -DENABLE_SCREEN=1 -DENABLE_YOCTOLIGHT=1 \
-        ..
-    make
+	cmake -B build -S "${pkgname%-git}" \
+		-G "Unix Makefiles" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBEXECDIR=lib/"${pkgname%-git}" \
+		-DENABLE_DDC=1 \
+		-DENABLE_GAMMA=1 \
+		-DENABLE_DPMS=1 \
+		-DENABLE_SCREEN=1 \
+		-DENABLE_YOCTOLIGHT=1 \
+		-Wno-dev
+	make -C build
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/build"
-    make DESTDIR="$pkgdir" install
+	make -C build DESTDIR="$pkgdir" install
 }
