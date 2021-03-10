@@ -2,7 +2,7 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=dehelper
-pkgver=12.5.0
+pkgver=12.5.3
 _date=2021-02-06
 _lang=de
 _flang=German
@@ -18,7 +18,7 @@ depends=(
          )
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha256sums=('668d61ac54e7abfee6d7a054cca5bc5695e736c8f7bf981f70e8bddee5bda291')
+sha512sums=('a8bc1f04975dee9242f17bca9db57db735d9b29655418b17d8a3e52ecf72baf2d004f40ad9c41c8a1c1ed2d044cdd403005d947d992cd70e471ecf5c16ba20a6')
 
 prepare() {
   mkdir -p build
@@ -27,8 +27,8 @@ prepare() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/eusoft/${pkgname}
-  mv build/usr/share/eusoft/* ${pkgdir}/usr/share/eusoft/${pkgname}
+  mkdir -p ${pkgdir}/usr/share/eusoft-${pkgname}
+  mv build/usr/share/eusoft-${pkgname}/* ${pkgdir}/usr/share/eusoft-${pkgname}
   
   
   cp -pr build/usr/share/* ${pkgdir}/usr/share/ 
@@ -36,20 +36,20 @@ package() {
 
   # link executable
   mkdir ${pkgdir}/usr/bin/
-  ln -s /usr/share/eusoft/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -s /usr/share/eusoft-${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # desktop enrty
-  sed -i "s|/usr/share/eusoft/AppRun|${pkgname}|g" ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  sed -i "s|/usr/share/eusoft-${pkgname}/AppRun|${pkgname}|g" ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
   
   # qt plugin path
-  sed -i '4c Prefix = /usr/lib/qt/' ${pkgdir}/usr/share/eusoft/${pkgname}/qt.conf
+  sed -i '4c Prefix = /usr/lib/qt/' ${pkgdir}/usr/share/eusoft-${pkgname}/qt.conf
   
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/gstreamer-1.0/
-  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/lib/
-  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/plugins/
-  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/*.so.*
-  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/AppRun
+  rm -rf ${pkgdir}/usr/share/eusoft-${pkgname}/gstreamer-1.0/
+  rm -rf ${pkgdir}/usr/share/eusoft-${pkgname}/lib/
+  rm -rf ${pkgdir}/usr/share/eusoft-${pkgname}/plugins/
+  rm -rf ${pkgdir}/usr/share/eusoft-${pkgname}/*.so.*
+  rm -rf ${pkgdir}/usr/share/eusoft-${pkgname}/AppRun
   
 }
 # vim: ts=2 sw=2 et:
