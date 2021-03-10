@@ -10,7 +10,7 @@ pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')
 url="https://gitlab.freedesktop.org/pipewire/wireplumber"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'lua53')
 makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire')
 checkdepends=('pipewire-alsa' 'pipewire-jack' 'pipewire-pulse')
 provides=('libwireplumber-0.3.so')
@@ -23,13 +23,14 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  # Once it supports Lua 5.4, please readd "--wrap-mode nodownload"
   meson --prefix='/usr' \
-        --buildtype plain \
-        -D b_lto=true \
-        -D b_pie=true \
-        -Dintrospection=enabled \
-        build
+    --buildtype plain \
+    --wrap-mode nodownload \
+    -D b_lto=true \
+    -D b_pie=true \
+    -D introspection=enabled \
+    -D system-lua=true \
+    build
   ninja -C build
 }
 
