@@ -1,7 +1,7 @@
 # Maintainer: Rafal Bolanowski <robin92pl@gmail.com>
 pkgname=subconvert
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie subtitles converter"
 arch=('any')
 url="https://github.com/mgoral/subconvert/"
@@ -26,6 +26,5 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir" LN_S="ln --symbolic --relative" install
 }
-
