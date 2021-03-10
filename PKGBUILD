@@ -4,13 +4,14 @@
 
 pkgname='perl-mojolicious'
 pkgver='9.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Real-time web framework"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.16.0')
 makedepends=()
+optdepends=('perl-cpanel-json-xs>=4.09: Faster JSON encoding and decoding')
 url='https://metacpan.org/release/Mojolicious'
 source=("https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-${pkgver}.tar.gz")
 md5sums=('ba0bafb5a2ba2ceb2037ebf126514350')
