@@ -1,7 +1,7 @@
 # Maintainer: Winux <winuxlinux11@gmail.com>
 
 pkgname=nature-wallpapers-git
-pkgver=r5.2c476ed
+pkgver=1.0
 pkgrel=1
 pkgdesc="Collection of nature wallpapers"
 arch=(any)
@@ -9,7 +9,6 @@ url="https://gitlab.com/winux1/nature-wallpapers.git/"
 license=('unknown')
 makedepends=('git')
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
