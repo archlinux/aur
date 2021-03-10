@@ -2,13 +2,14 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-efi-git
-pkgver=15.r204.758b795a
+pkgver=15.r224.4033d1fd
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
 url='https://github.com/rhboot/shim'
 license=('BSD')
 makedepends=('git')
+checkdepends=('xxd')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!buildflags')
@@ -34,6 +35,11 @@ prepare() {
 build() {
 	cd shim
 	make
+}
+
+check() {
+	cd shim
+	make test
 }
 
 package() {
