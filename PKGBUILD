@@ -3,12 +3,12 @@
 
 pkgname=evolution-decsync
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DecSync Plugin for Evolution. It syncs contact and calendars to a directory, which can be shared with syncthing or rsync"
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL)
 url="https://github.com/39aldo39/Evolution-DecSync"
-depends=(libgee json-glib evolution-data-server evolution libdecsync)
+depends=(json-c evolution-data-server evolution libdecsync)
 makedepends=(meson ninja)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/39aldo39/Evolution-DecSync/archive/v${pkgver}.tar.gz")
 sha256sums=('98defcfd8af9b7a3248e7f2b674975b83e66abee08e949a598815189ea83a4dc')
