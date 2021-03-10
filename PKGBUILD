@@ -1,6 +1,6 @@
 # Maintainer: Noah Vogt <noahjosua.vogt@gmail.com>
 pkgname=tibasicc-git
-pkgver=1.r1.gae0e4e1
+pkgver=1.1
 pkgrel=1
 pkgdesc="TI-BASIC (de-)compiler written in C++ with a decent preprocessor"
 arch=("x86_64")
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-*}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -24,10 +24,9 @@ build() {
 
 package() {
 	cd tibasicc
-    cp build-etc/tibasicc-uninstall.hook /usr/share/libalpm/hooks/
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    sudo make install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
