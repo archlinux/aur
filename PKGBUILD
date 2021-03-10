@@ -1,5 +1,5 @@
 # Maintainer: lmartinez-mirror
-pkgname=vim-plantuml-syntax-git
+pkgname=vim-plantuml-git
 pkgver=0.2.0.r48.geb3df30
 pkgrel=1
 pkgdesc="Vim syntax for PlantUML"
