@@ -1,10 +1,10 @@
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
 
-pkgbase=python-uproot
-pkgname=(python-uproot python-uproot-docs)
 _pkgname=uproot
-pkgver=3.12.0
-pkgrel=2
+pkgbase="python-${_pkgname}"
+pkgname=("${pkgbase}" "${pkgbase}-docs")
+pkgver=3.14.4
+pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
 makedepends=('python-setuptools')
@@ -18,30 +18,35 @@ url="https://github.com/scikit-hep/${_pkgname}"
 license=('BSD')
 
 source=("${_pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('70e0885c1d30fa49525ab4140ece52aa27f74e86fbb2f189052ff17b802b45b9')
+sha256sums=('3f1666115704bf1caaf19f55a39f6e7b6dd51077f4d3bdbf9c473cab6928094d')
+
+get_pyver () {
+    python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}3-${pkgver}"
     python setup.py build
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}3-${pkgver}"
     python setup.py pytest
 }
 
 package_python-uproot() {
-    optdepends+=('python-uproot-docs: docs')
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    optdepends+=("${pkgbase}-docs: docs")
+    cd "${srcdir}/${_pkgname}3-${pkgver}"
 
     python setup.py install --root="${pkgdir}/" --optimize=1
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "/usr/lib/python$(get_pyver)/site-packages/uproot3" "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/uproot"
 }
 
 package_python-uproot-docs() {
     depends=('python-sphinx')
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}3-${pkgver}"
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D README.rst "${pkgdir}/usr/share/${pkgname}/README.rst"
