@@ -1,4 +1,6 @@
 # Maintainer: JoseDR120 <josedrgerena720@gmail.com>
+# Use the download link from github is faster.
+# https://github.com/atom/atom/releases/download/v{pkgver}/atom-amd64.deb
  
 pkgname=atom-editor-bin
 pkgver=1.55.0
@@ -13,7 +15,7 @@ depends=('git' 'gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'desktop-file-util
 optdepends=('gvfs')
 conflicts=('atom' 'atom-editor' 'atom-editor-git' 'atom-editor-git-tagged' 'apm' 'atom-notracking')
 install=$pkgname.install
-source=("atom-amd64-v${pkgver}.deb::https://atom-installer.github.com/v${pkgver}/atom-amd64.deb"
+source=("atom-amd64-v${pkgver}.deb::https://github.com/atom/atom/releases/download/v${pkgver}/atom-amd64.deb"
          "LICENSE::https://raw.githubusercontent.com/atom/atom/v${pkgver}/LICENSE.md"
          atom-editor-bin.install
          startupwmclass.patch)
