@@ -1,0 +1,14 @@
+pkgbase = senile
+	pkgdesc = collecting ToDo statements from files/directories as JSON format
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/replicadse/senile
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = rustup
+	makedepends = cargo
+	provides = senile
+
+pkgname = senile
+
