@@ -1,16 +1,31 @@
 pkgbase = wireplumber-git
-	pkgdesc = PipeWire modular Session & Policy Manager
-	pkgver = 0.2.0+74.g80dc7723fc
+	pkgdesc = Session / policy manager implementation for PipeWire
+	pkgver = 0.3.0.r247.gab04334
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/pipewire/wireplumber
 	arch = x86_64
 	license = MIT
-	makedepends = hotdoc
-	depends = pipewire
-	provides = wireplumber=0.2.0
-	conflicts = wireplumber
-	source = https://gitlab.freedesktop.org/pipewire/wireplumber.git
-	sha256sums = SKIP
+	checkdepends = pipewire-alsa
+	checkdepends = pipewire-jack
+	checkdepends = pipewire-pulse
+	makedepends = cmake
+	makedepends = cpptoml
+	makedepends = glib2
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = pipewire
+	depends = gcc-libs
+	depends = glibc
+	provides = libwireplumber-0.3.so
+	source = git+https://gitlab.freedesktop.org/pipewire/wireplumber.git
+	sha512sums = SKIP
 
 pkgname = wireplumber-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = libgobject-2.0.so
+	depends = libpipewire-0.3.so
 
