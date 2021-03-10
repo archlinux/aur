@@ -2,18 +2,18 @@
 
 _pkgname=vala
 pkgname=${_pkgname}0.40
-pkgver=0.40.24
+pkgver=0.40.25
 pkgrel=1
 pkgdesc='Compiler for the GObject type system (0.40 long term support branch)'
 url='https://wiki.gnome.org/Projects/Vala'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('LGPL')
 depends=('glib2' 'gtk-doc' 'graphviz' 'ttf-font' 'pkg-config' 'gcc')
 makedepends=('libxslt' 'vala' 'help2man' 'autoconf-archive')
 checkdepends=('dbus' 'libx11' 'gobject-introspection')
 provides=(libvala-${pkgver%.*}.so libvaladoc-${pkgver%.*}.so)
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('a51ccb5504766071e0d85626f749bb93e1222261388f434252e9e36e0407b1c7')
+sha256sums=('870fc7af58bbcfc82de6d11a96308a7bec6c180484ec431ce5bee68c2653b7df')
 
 build() {
   cd "${_pkgname}-${pkgver}"
