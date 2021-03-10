@@ -10,7 +10,7 @@ license=('ISC')
 arch=('any')
 depends=('sh' 'lowdown' 'cpio')
 provides=('ssg')
-conflicts=('ssg5')
+conflicts=('ssg5' 'ssg6' 'ssg7')
 source=("${url}/bin/${pkgname}${pkgver}"
         "${url}/bin/Markdown.pl")
 sha1sums=("53a8a94c50f4798434c05050606dd306cf9602f2"
