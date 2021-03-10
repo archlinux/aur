@@ -1,4 +1,4 @@
-diff -aur trafshow-5.2.3/Makefile.in trafshow-5.2.3.patched/Makefile.in
+unchanged:
 --- trafshow-5.2.3/Makefile.in	2004-06-15 08:29:14.000000000 +0000
 +++ trafshow-5.2.3.patched/Makefile.in	2009-11-05 12:46:47.274533717 +0000
 @@ -73,9 +73,9 @@
@@ -14,7 +14,7 @@ diff -aur trafshow-5.2.3/Makefile.in trafshow-5.2.3.patched/Makefile.in
  
  clean:
  	rm -f $(CLEANFILES)
-diff -aur trafshow-5.2.3/config.sub trafshow-5.2.3.patched/config.sub
+unchanged:
 --- trafshow-5.2.3/config.sub	2004-01-28 08:00:38.000000000 +0000
 +++ trafshow-5.2.3.patched/config.sub	2009-11-05 12:34:51.358774674 +0000
 @@ -164,6 +164,9 @@
@@ -27,7 +27,7 @@ diff -aur trafshow-5.2.3/config.sub trafshow-5.2.3.patched/config.sub
  	# Object if more than one company name word.
  	*-*-*)
  		echo Invalid configuration \`$1\': machine \`$basic_machine\' not recognized 1>&2
-diff -aur trafshow-5.2.3/session.c trafshow-5.2.3.patched/session.c
+unchanged:
 --- trafshow-5.2.3/session.c	2006-01-08 05:58:08.000000000 +0000
 +++ trafshow-5.2.3.patched/session.c	2009-11-05 12:34:51.361276949 +0000
 @@ -40,7 +40,7 @@
@@ -39,3 +39,91 @@ diff -aur trafshow-5.2.3/session.c trafshow-5.2.3.patched/session.c
  #error the fcntl argument to turn ON/OFF non-blocking I/O is unknown
  #endif
  
+unchanged:
+--- trafshow-5.2.3/trafshow.c	2006-03-14 04:58:07.000000000 -0300
++++ trafshow-5.2.3.patched/trafshow.c	2021-02-25 19:50:26.045330218 -0300
+@@ -58,7 +58,7 @@
+ static void vers();
+ static void usage();
+ static pcap_if_t *pcap_matchdev(pcap_if_t *dp, const char *name);
+-static int pcap_init(PCAP_HANDLER **ph_list, pcap_if_t *dp);
++static int pcap_initialize(PCAP_HANDLER **ph_list, pcap_if_t *dp);
+ static void *pcap_feed(void *arg); /* PCAP_HANDLER *ph */
+ #ifdef	HAVE_PCAP_GET_SELECTABLE_FD
+ static void *pcap_feed2(void *arg); /* PCAP_HANDLER *ph */
+@@ -172,7 +172,7 @@
+ 	}
+ 
+ 	/* initialize list of pcap handlers */
+-	if ((op = pcap_init(&ph_list, dev_list)) < 1) {
++	if ((op = pcap_initialize(&ph_list, dev_list)) < 1) {
+ 		fprintf(stderr, "No packet capture device available (no permission?)\n");
+ 		exit(1);
+ 	}
+@@ -298,7 +298,7 @@
+ }
+ 
+ static int
+-pcap_init(ph_list, dp)
++pcap_initialize(ph_list, dp)
+ 	PCAP_HANDLER **ph_list;
+ 	pcap_if_t *dp;
+ {
+unchanged:
+--- trafshow-5.2.3/domain_resolver.c	2006-01-08 02:59:23.000000000 -0300
++++ trafshow-5.2.3.patched/domain_resolver.c	2021-02-25 20:06:44.286697300 -0300
+@@ -380,7 +380,7 @@
+ 	if ((curr->name = strdup(name)) == 0) {
+ 		int save_errno = errno;
+ 		free(curr);
+-		save_errno = errno;
++		errno = save_errno;
+ 		return 0;
+ 	}
+ 	/* make all lowercase */
+unchanged:
+--- trafshow-5.2.3/show_dump.c	2006-03-14 05:58:30.000000000 -0300
++++ trafshow-5.2.3.patched/show_dump.c	2021-02-25 20:16:09.733634011 -0300
+@@ -333,7 +333,7 @@
+ 		clearerr(file_netflow); /* tail file */
+ 		while (fgets(buf, sizeof(buf), file_netflow) != 0) {
+ 			buf[sizeof(buf)-1] = '\0';
+-			if ((cp = strpbrk(buf, "\r\n")) != '\0')
++			if ((cp = strpbrk(buf, "\r\n")) != NULL)
+ 				*cp = '\0';
+ 			printw("%s\n", buf);
+ 			redraw_lines++;
+only in patch2:
+unchanged:
+--- trafshow-5.2.3/configure.in	2006-03-14 01:58:36.000000000 -0300
++++ trafshow-5.2.3.patch/configure.in	2021-02-26 20:31:54.772907536 -0300
+@@ -120,18 +120,18 @@
+ AC_CACHE_VAL(ac_cv_have_curses,
+ 	ac_cv_save_CFLAGS="$CFLAGS"
+ 	ac_cv_save_LIBS="$LIBS"
+-	LIBS="-lslang $ac_cv_save_LIBS"
+-	AC_TRY_LINK([#include <slcurses.h>],[initscr();],
+-	ac_cv_have_curses="slang",
+-		LIBS="-lncurses $ac_cv_save_LIBS"
++	LIBS="-lncurses $ac_cv_save_LIBS"
++	AC_TRY_LINK([#include <ncurses.h>], [initscr();],
++	ac_cv_have_curses="ncurses",
++		CFLAGS="-I/usr/include/ncurses $ac_cv_save_CFLAGS"
+ 		AC_TRY_LINK([#include <ncurses.h>], [initscr();],
+-		ac_cv_have_curses="ncurses",
+-			CFLAGS="-I/usr/include/ncurses $ac_cv_save_CFLAGS"
+-			AC_TRY_LINK([#include <ncurses.h>], [initscr();],
+-			ac_cv_have_curses="n_curses",
+-				LIBS="-lcurses $ac_cv_save_LIBS"
+-				AC_TRY_LINK([#include <curses.h>], [initscr();],
+-				ac_cv_have_curses="curses",
++		ac_cv_have_curses="n_curses",
++			LIBS="-lcurses $ac_cv_save_LIBS"
++			AC_TRY_LINK([#include <curses.h>], [initscr();],
++			ac_cv_have_curses="curses",
++				LIBS="-lslang $ac_cv_save_LIBS"
++				AC_TRY_LINK([#include <slcurses.h>],[initscr();],
++				ac_cv_have_curses="slang",
+ 					ac_cv_have_curses="none"
+ 				)
+ 			)
