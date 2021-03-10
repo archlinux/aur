@@ -1,4 +1,4 @@
-From 6a0c3f9c0698ce3c305db3f5226cc8e4cf657ac5 Mon Sep 17 00:00:00 2001
+From fda341d9bd3c1584e8573b2674c0ca0add759164 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 21:03:19 +0100
 Subject: [PATCH 2/2] Makefile: prepend to build flags
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] Makefile: prepend to build flags
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile_plugin.common b/Makefile_plugin.common
-index d9eeb99..6e82c64 100644
+index b631102..943533b 100644
 --- a/Makefile_plugin.common
 +++ b/Makefile_plugin.common
 @@ -37,9 +37,9 @@
@@ -22,8 +22,8 @@ index d9eeb99..6e82c64 100644
 +LDFLAGS := $(shell yosys-config --ldflags) $(LDFLAGS)
 +LDLIBS := $(shell yosys-config --ldlibs) $(LDLIBS)
  PLUGINS_DIR = $(DESTDIR)$(shell yosys-config --datdir)/plugins
+ DATA_DIR = $(DESTDIR)$(shell yosys-config --datdir)
  
- OBJS := $(SOURCES:cc=o)
 -- 
-2.30.0
+2.30.2
 

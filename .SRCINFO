@@ -15,8 +15,8 @@ pkgbase = yosys-symbiflow-plugins-git
 	source = 0001-Makefile-respect-DESTDIR.patch
 	source = 0002-Makefile-prepend-to-build-flags.patch
 	sha256sums = SKIP
-	sha256sums = 679178fe4d27b97b53eabdf5309473eef8002bc8901f1985d92d1f4d8d294be5
-	sha256sums = 5e24155e7a91c1e205ad7adf9637f2d2f73c77e3ff9a2769b75d3f5992866222
+	sha256sums = a9244e22e16246fa51a3e09132f6cba79a2dd1a5417d45c1e269a60df0bb1eba
+	sha256sums = 9c59cdd274f733c8ba009150d3f70f9b488400acc9b92813d92547155974fd3f
 
 pkgname = yosys-symbiflow-plugins-git
 

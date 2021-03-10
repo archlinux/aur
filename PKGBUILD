@@ -2,7 +2,7 @@
 
 _pkgname=yosys-symbiflow-plugins
 pkgname="$_pkgname-git"
-pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r235.g2894db2
+pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r257.g3b0e967
 pkgrel=1
 pkgdesc="Plugins for Yosys developed as part of the SymbiFlow project."
 arch=(x86_64)
@@ -17,8 +17,8 @@ source=("git+$url.git"
         "0001-Makefile-respect-DESTDIR.patch"
         "0002-Makefile-prepend-to-build-flags.patch")
 sha256sums=('SKIP'
-            '679178fe4d27b97b53eabdf5309473eef8002bc8901f1985d92d1f4d8d294be5'
-            '5e24155e7a91c1e205ad7adf9637f2d2f73c77e3ff9a2769b75d3f5992866222')
+            'a9244e22e16246fa51a3e09132f6cba79a2dd1a5417d45c1e269a60df0bb1eba'
+            '9c59cdd274f733c8ba009150d3f70f9b488400acc9b92813d92547155974fd3f')
 
 pkgver() {
 	cd "$_pkgname"
