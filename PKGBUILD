@@ -1,5 +1,5 @@
 pkgname=nncp
-pkgver=6.0.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
@@ -9,14 +9,14 @@ makedepends=(go)
 #source=("git://git.cypherpunks.ru/nncp.git#commit=$_commit")
 source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
         "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.sig")
-sha256sums=('42fe8aa54520b3a1abb50d661bbba6a141ce4e749b4816b0d4c6845d67465916'
+sha256sums=('272ceded69fff3b3787672973199481ac610b753bb82c22eecec45fc05da40fe'
             'SKIP')
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
 
 build() {
   cd $pkgname-$pkgver
 
-	export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
