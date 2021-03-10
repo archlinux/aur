@@ -1,0 +1,12 @@
+diff -Nurwa cardano-addresses-3.2.0/cabal.project cardano-addresses-3.2.0-ghc8.6/cabal.project
+--- cardano-addresses-3.2.0/cabal.project
++++ cardano-addresses-3.2.0-ghc8.6/cabal.project
+@@ -2,7 +2,7 @@
+ 
+ index-state: 2020-10-15T08:46:53Z
+ 
+-with-compiler: ghc-8.6.5
++with-compiler: /opt/ghc-8.6/bin/ghc-8.6.5
+ 
+ packages:
+     core/
