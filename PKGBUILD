@@ -5,10 +5,12 @@ pkgname=ssg
 pkgver=6
 pkgrel=1
 pkgdesc='static site generator written on POSIX shell'
-arch=('any')
-license=('ISC')
-depends=('lowdown' 'cpio')
 url='https://www.romanzolotarev.com'
+license=('ISC')
+arch=('any')
+depends=('sh' 'lowdown' 'cpio')
+provides=('ssg')
+conflicts=('ssg5')
 source=("${url}/bin/${pkgname}${pkgver}"
         "${url}/bin/Markdown.pl")
 sha1sums=("53a8a94c50f4798434c05050606dd306cf9602f2"
