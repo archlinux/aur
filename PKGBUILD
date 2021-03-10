@@ -5,7 +5,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=glances-git
-pkgver=3.1.4.r39.g9f8a8120
+pkgver=3.1.6.1.r30.gd201e647
 pkgrel=1
 pkgdesc='CLI curses-based monitoring tool'
 arch=(any)
@@ -27,12 +27,16 @@ sha512sums=('SKIP'
             '49f0d185a37a5c5837e5beb463770c943ede40b2f1b8405e338129e897e97d9fc58373a8586fabc506266e6343cfea3c91b9787ac6832cc97a1ab63d6ad058d4')
 
 pkgver() {
+    git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
     cd "${pkgname%-git}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    python setup.py build
 }
 
 package() {
     cd "${pkgname%-git}"
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 "${srcdir}"/glances.service -t "${pkgdir}"/usr/lib/systemd/system
 }
