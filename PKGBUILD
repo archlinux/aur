@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-transition-table
-pkgver=0.1.4
+pkgver=0.1.5
 _obsver=26.1.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a Transition Table to the tools menu"
@@ -15,7 +15,7 @@ makedepends=(
   'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
 )
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-transition-table#commit=4c1413822bb65ba63fb5aa8ce147b021a15a637c"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-transition-table#commit=6c235f2d2ef46d54c1067492c2ec874ff2d5f54e"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
   "fix_python_binary_loading.patch"
 )
