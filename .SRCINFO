@@ -13,7 +13,7 @@ pkgbase = rtl8189es-git
 	makedepends = make
 	makedepends = linux-headers
 	conflicts = rtl8189es-git
-	source = git+https://github.com/jwrdegoede/rtl8189ES_linux#tag=57.03ac413
+	source = git+https://github.com/jwrdegoede/rtl8189ES_linux
 	source = rtl8189es-git.install
 	md5sums = SKIP
 	md5sums = 8a04c4c6a69a34393694aa0a14fb4853

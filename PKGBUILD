@@ -9,7 +9,7 @@ license=('GPL2')
 #depends=('linux'=$kernelver)
 makedepends=('git' 'make' 'linux-headers')
 conflicts=("${_pkgbase}")
-source=("git+${url}#tag=$pkgver"
+source=("git+${url}"
         "$pkgname.install")
 install=$pkgname.install
 md5sums=('SKIP' '8a04c4c6a69a34393694aa0a14fb4853')
@@ -19,7 +19,7 @@ _extramodules=$(cat `find /usr/lib/modules/extramodules* -type 'f' -name 'versio
 
 pkgver() {
   cd ${srcdir}/rtl8189ES_linux
-  echo "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
+  printf '%s' "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
 }
 
 build() {
