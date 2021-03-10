@@ -2,18 +2,16 @@
 
 _lang=en
 pkgname=ting-${_lang}
-pkgver=9.3.1
+pkgver=9.3.2
 pkgrel=1
 _llang=English
 pkgdesc="Daily ${_llang} Listening software from eusoft"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/ting"
 license=('unknown')
-makedepends=('asar')
 depends=('electron7')
-options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_${_lang}/ting_${_lang}.deb")
-sha512sums=('324aef42a1f5600919c0c8cc92dd3f437445b4da78c6a2fac28d731a7ddaff648b4874c0cf20223b8c6008bbf159a6ec9c278a8bb442d8faadb6a0a6f3ac68b8')
+sha512sums=('b620d47deffabd2c648d8b5730cc786efc20a95894138f2695c84c227e073ab9c6516bbf7a299558a32380d5097490c0260c77e94a154be4c36bdb84342b3a1e')
 
 prepare() {
     cd $srcdir
@@ -21,21 +19,21 @@ prepare() {
     tar -xvf data.tar.xz  -C build/
     cd build
     dir_name=$(ls opt/)
-    asar extract opt/${dir_name}/resources/app.asar ${pkgname} 
+    mv opt/${dir_name}/resources/app.asar ${pkgname}.asar 
 }
 
 package() {
     cd $srcdir/build
     
     mv usr/ ${pkgdir}/usr
-    mkdir -p ${pkgdir}/usr/share/eusoft/${pkgname}
-    mv  ${pkgname} ${pkgdir}/usr/share/eusoft/
+    mkdir -p ${pkgdir}/usr/share/eusoft-${pkgname}
+    mv  ${pkgname}.asar ${pkgdir}/usr/share/eusoft-${pkgname}/${pkgname}.asar
     sed -i "3c Exec=${pkgname} %U" ${pkgdir}/usr/share/applications/ting_${_lang}.desktop
     
     # link executable
     mkdir -p ${pkgdir}/usr/bin/
     echo """#!/usr/bin/bash
-/usr/lib/electron7/electron /usr/share/eusoft/${pkgname}
+electron7 /usr/share/eusoft-${pkgname}/${pkgname}.asar
 """> ${pkgdir}/usr/bin/${pkgname}
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
 
