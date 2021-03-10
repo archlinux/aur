@@ -1,7 +1,7 @@
 pkgbase = popsift
 	pkgdesc = Realtime GPU implementation of SIFT, 25 fps on HD images on recent graphic cards. (DOI: 10.1145/3204949.3208136)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://alicevision.github.io/
 	arch = i686
 	arch = x86_64
