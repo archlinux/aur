@@ -1,10 +1,10 @@
 pkgname=rtl8189es-dkms-git
 _pkgbase=${pkgname%-*-*}
-pkgver="03ac413"
+pkgver=57.03ac413
 pkgrel=1
 pkgdesc="RTL8189ES / RTL8189ETV modules (DKMS)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/jwrdegoede/rtl8189ES_linux"
+url="https://github.com/jwrdegoede/rtl8189ES_linux.git"
 license=('GPL2')
 depends=('dkms' 'bc') #'linux-headers'
 makedepends=('git')
@@ -12,7 +12,12 @@ conflicts=("${_pkgbase}")
 source=("git+${url}" 
         "dkms.conf")
 md5sums=('SKIP'
-         '9f3d65da70934f34f5b9eebf10387d4b')
+         '55768e22479838074a6985f08796739d')
+
+pkgver() {
+  cd ${srcdir}/rtl8189ES_linux
+  printf '%s' "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd ${srcdir}/rtl8189ES_linux
