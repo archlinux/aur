@@ -2,7 +2,7 @@
 # Co-Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=autenticacao-gov-pt-pki
-pkgver=20200512
+pkgver=20210310
 pkgrel=1
 pkgdesc="PKI Certificates for Cartao de Cidadao / Autenticacao.gov (Portugal eID)"
 arch=('any')
@@ -50,7 +50,7 @@ source=("autenticacao-gov-pt-pki.install"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200015.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200016.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200017.cer")
-sha512sums=('e4641faec40cd628497114a1fef8cb81aa3022b9213405f24d796f220d0f001c4661c64bc7d8451776733cb1905b8761ef56ab7617a8dd628e99eb4313f45975'
+sha512sums=('5b9605e353db6bdad497010a332e1bea516c8b3f136ddb8c06fb987ac5a59fce91880e9bba09b594da725228ffb14694321ac1fcb90431d7a28a2dea61ed47a6'
             '0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dcc0df5fbecd5490b8cdbb546fd736e937abc3bbef5280ff4eb6dc852338ed1'
             '69f06ef7bc70dfce8fd11ca2335c51c3185f5b97d0778183142527d818f131939e27c002f9a52a06b7992a319e3ab04fd954caf7d6cde3dd08e1e782be9a19cd'
             '9569371e5a455923570ea77085e3b09a27d4c7353d4bfc8e0af0a3a30e9321c04c74bbb88c0f221b12efd2cbaa88c04c45e82f893844a5ce6a71ac4324f4eeb7'

@@ -5,10 +5,10 @@ post_upgrade() {
 }
 
 post_install() {
-	update-ca-trust
+	trust extract-compat
 }
 
 pre_remove() {
-	update-ca-trust
+	trust extract-compat
 }
 
