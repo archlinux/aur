@@ -3,8 +3,8 @@
 pkgorg='gepetto'
 _pkgname='example-robot-data'
 pkgname=("${_pkgname}" "${_pkgname}-docs")
-pkgver=3.7.0
-pkgrel=3
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples. "
 arch=('any')
 url="https://github.com/$pkgorg/$pkgname"
