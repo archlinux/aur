@@ -3,7 +3,7 @@
 _pkgname=hass-circadian_lighting
 pkgname=home-assistant-circadian_lighting
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom component for Home Assistant, to adjust lights based on daylight"
 arch=(any)
 url="https://github.com/claytonjn/hass-circadian_lighting"
@@ -16,7 +16,7 @@ sha512sums=('c89885f39d16e05ee6c77769f7c759d069a2a3e72e16f78c56fdd8e370c0c3447f8
 package() {
     cd "$_pkgname-$pkgver"
 
-    find "custom_components" -type f -exec install -vDm 644 {} "${pkgdir}/var/lib/hass/"{} \;
+    find "custom_components" -type f -exec install -vDm 644 {} "${pkgdir}/var/lib/private/hass/"{} \;
 
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
