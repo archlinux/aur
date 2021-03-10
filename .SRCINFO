@@ -1,6 +1,6 @@
 pkgbase = python-ironicclient
 	pkgdesc = Python client library for Ironic
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://docs.openstack.org/python-ironicclient/
 	arch = any
@@ -29,8 +29,7 @@ pkgbase = python-ironicclient
 	depends = python-dogpile.cache
 	depends = python-appdirs
 	depends = python-pbr
-	source = https://github.com/openstack/python-ironicclient/archive/4.5.0.tar.gz
-	sha512sums = 46fb44e84c74a6a4720601b3873cdfbfdfb9a905520f53954e4ee4c8a107c77d0bfd50a71f23ed3ae0754e59ec63d1f00de1c52d3f7348d484034f05ca6d2d17
+	source = https://github.com/openstack/python-ironicclient/archive/4.6.0.tar.gz
+	sha512sums = 14bf8d6691b8beef421c1f152952e23a588dc975382845662013cf5140d1532a6418aa50a5a315ff37985660c037952c9d646eefb10b4486b92aa5cf7d97aba4
 
 pkgname = python-ironicclient
-
