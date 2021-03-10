@@ -1,8 +1,8 @@
 # Maintainer: Mathias Walters <waltersm@protonmail.com>
 
 pkgname=maptool-bin
-_pkgname=MapTool
-pkgver=1.7.0
+_pkgname=maptool
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -11,15 +11,19 @@ license=('AGPL3')
 optdepends=('gvfs: access virtual filesystem')
 provides=('maptool')
 conflicts=('maptool')
-source=("https://github.com/RPTools/maptool/releases/download/${pkgver}/maptool-${pkgver}.deb")
-sha256sums=('4862e46e263dd1ca82a1d3916d55a85b8f0b493097ba1795e4599e8323049f2c')
+source=("https://github.com/RPTools/maptool/releases/download/${pkgver}/maptool_${pkgver}-amd64.deb")
+sha256sums=('7c366f975a097a7506453632aa6829f24986e9671a46355ec288fb6ac14e6626')
 
 package() {
 
-	tar -C "${pkgdir}" -xf data.tar.xz
+	# extract .deb contents into directory structure
+	tar -C ${pkgdir} -xf data.tar.xz
 
-	install -Dm644 "${pkgdir}/opt/${_pkgname}/app/COPYING.AFFERO" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 "${pkgdir}/opt/${_pkgname}/app/COPYING.LESSER" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 "${pkgdir}/opt/${_pkgname}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	# put things in expected places
+	install -d ${pkgdir}/usr/bin
+	install -d ${pkgdir}/etc
+	install -Dm644 ${pkgdir}/opt/${_pkgname}/lib/${_pkgname}-MapTool.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+	ln -s /opt/${_pkgname}/bin/MapTool ${pkgdir}/usr/bin/MapTool
+	ln -s /opt/${_pkgname}/lib/app/MapTool.cfg ${pkgdir}/etc/MapTool.cfg
 
 }
