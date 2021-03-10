@@ -13,6 +13,7 @@ pkgbase = bottles
 	depends = libhandy
 	depends = gtk3
 	depends = python-gobject
+	depens = wine
 	source = bottles-3.0.8.tar.gz::https://github.com/bottlesdevs/Bottles/archive/3.0.8.tar.gz
 	sha256sums = 4ef3bf613c50991c3d126fb9878bce60ce223a80756e9de3834660aa63c2f1c
 
