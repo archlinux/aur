@@ -1,3 +1,4 @@
+# Contributor: bin <bin at datacowboy dot cf>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Pedro Lara Campos <root@pedrohlc.com>
@@ -10,7 +11,7 @@ pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')
 url="https://gitlab.freedesktop.org/pipewire/wireplumber"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'lua53')
+depends=('glib2' 'lua53')
 makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire')
 checkdepends=('pipewire-alsa' 'pipewire-jack' 'pipewire-pulse')
 provides=('libwireplumber-0.3.so')
@@ -23,11 +24,8 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  meson --prefix='/usr' \
-    --buildtype plain \
-    --wrap-mode nodownload \
-    -D b_lto=true \
-    -D b_pie=true \
+  arch-meson --wrap-mode nodownload \
+    -D doc=disabled \
     -D introspection=enabled \
     -D system-lua=true \
     build
@@ -47,4 +45,3 @@ package() {
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -vDm 644 {NEWS,README}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
