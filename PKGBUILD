@@ -2,7 +2,7 @@
 
 pkgname=fstabfmt
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Format /etc/fstab files'
 arch=(x86_64)
 url='https://github.com/xyproto/fstabfmt'
@@ -18,4 +18,5 @@ build() {
 
 package() {
   install -Dm755 $pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

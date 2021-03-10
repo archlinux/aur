@@ -1,7 +1,7 @@
 pkgbase = fstabfmt
 	pkgdesc = Format /etc/fstab files
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/fstabfmt
 	arch = x86_64
 	license = BSD3
