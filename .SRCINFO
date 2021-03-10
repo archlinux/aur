@@ -1,6 +1,6 @@
 pkgbase = eshelper
 	pkgdesc = Proprietary Spanish dictionary software for linux
-	pkgver = 12.5.0
+	pkgver = 12.5.3
 	pkgrel = 1
 	url = https://www.eudic.net/v4/es/app/eshelper
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = eshelper
 	depends = qt5-speech
 	depends = qt5-webkit
 	provides = eudic-es
-	source = eshelper-12.5.0.deb::https://static.frdic.com/pkg/eshelper.deb?v=2021-02-06
-	sha256sums = 8c69998d0e82355650a50e586965b9149c3b60ca5a7b5cbdbf43d17c3a67ddfa
+	source = eshelper-12.5.3.deb::https://static.frdic.com/pkg/eshelper.deb?v=2021-02-06
+	sha256sums = 345d3e0a5323275551e2f0313b590e63268ddc7d36517eedb870213d5e9bbbcf
 
 pkgname = eshelper
 
