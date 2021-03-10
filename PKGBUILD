@@ -1,7 +1,7 @@
 pkgname=youtube-bin
 _pkgname=Youtube-bin
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
