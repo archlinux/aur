@@ -31,7 +31,7 @@ prepare() {
   git config submodule.extensions.url $srcdir/open-eid-extensions
   git submodule update
   # https://github.com/open-eid/DigiDoc4-Client/issues/912
-  git cherry-pick eac49c04eec64b407996577bfafcb786b7ef47d0
+  git cherry-pick -n eac49c04eec64b407996577bfafcb786b7ef47d0
 }
 
 build() {
