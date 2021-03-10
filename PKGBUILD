@@ -2,8 +2,8 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 
 pkgname=librewolf-ublock-origin
-pkgver=1.33.2
-_commit=e13bf4d6d626eae726e09067b2e143bb6271c81f
+pkgver=1.34
+_commit=af980c5c062768811497902ff50483288e57fa6a
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
@@ -23,6 +23,6 @@ build() {
 
 package() {
   cd uBlock/dist/build
-  install -Dm644 uBlock0.firefox.xpi \
+  install -Dm644 ublock0.firefox.signed.xpi \
     "$pkgdir"/usr/lib/librewolf/browser/extensions/uBlock0@raymondhill.net.xpi
 }
