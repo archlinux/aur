@@ -1,12 +1,12 @@
 _pkgname="kst"
 pkgname="${_pkgname}-git"
 pkgrel=1
-pkgver=2.0.8r3413.9cd43659
+pkgver=2.0.8r3416.6e92ce01
 pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
 license=('GPL')
-depends=('hdf5<1.12.0' 'gsl' 'qt5-base' 'qt5-svg' 'muparser' 'python-scipy>=0.9' 'python-numpy>=1.6' 'cfitsio' 'python-pyside2')
+depends=('hdf5' 'gsl' 'qt5-base' 'qt5-svg' 'muparser' 'python-scipy>=0.9' 'python-numpy>=1.6' 'cfitsio' 'python-pyside2')
 optdepends=(
   'getdata: provides support for files in the Dirfile format'
   'libmatio: provides support for Matlab binary files'
@@ -33,7 +33,8 @@ build() {
   -Dkst_python_prefix=/usr/lib/python \
   -Dkst_install_prefix=/usr \
   -Dkst_qt5=ON \
-  -Dkst_merge_files=ON
+  -Dkst_merge_files=ON \
+  -DCMAKE_CXX_FLAGS="-DH5_USE_110_API"
 }
 prepare(){
 	cd "${srcdir}/${_pkgname}-plot"
