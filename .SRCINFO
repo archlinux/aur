@@ -1,0 +1,15 @@
+pkgbase = python-pyan3
+	pkgdesc = pyan is a Python module that performs static analysis of Python code to determine a call dependency graph between functions and methods.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Technologicat/pyan
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-jinja
+	source = https://files.pythonhosted.org/packages/source/p/pyan3/pyan3-1.2.0.tar.gz
+	sha256sums = 36b49b678820e882de7271fb8a18789d57cd1e284f0314bdecd587f02c049a19
+
+pkgname = python-pyan3
+
