@@ -9,12 +9,12 @@ license=('custom')
 depends=('perl' 'zlib' 'libidn')
 provides=('blast+')
 conflicts=('blast+')
-source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-x64-linux.tar.gz")
+source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-$pkgver+-x64-linux.tar.gz")
 noextract=("ncbi-blast-$pkgver+-x64-linux.tar.gz")
 md5sum=("3c7338de3ec14eaa1c50842f28e3a1de")
 
 prepare() {
-  tar zxvpf ncbi-blast-$pkgver+-x64-linux.tar.gz 
+  tar -zxvpf ncbi-blast-$pkgver+-x64-linux.tar.gz
 }
 
 package() {
