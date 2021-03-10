@@ -1,6 +1,6 @@
 pkgbase = rtl8821cu-git
 	pkgdesc = Linux Driver for USB WiFi Adapters that use the RTL8811CU, RTL8821CU and RTL8731AU Chipsets
-	pkgver = 5.8.1.799e54b8f4
+	pkgver = 5.8.1.7.e54b8f4
 	pkgrel = 1
 	url = https://github.com/morrownr/8821cu
 	install = rtl8821cu-git.install
@@ -11,7 +11,6 @@ pkgbase = rtl8821cu-git
 	makedepends = git
 	makedepends = make
 	makedepends = linux-headers
-	depends = linux=5.11.2-1
 	conflicts = rtl8821cu
 	conflicts = rtl8821cu-dkms-git
 	source = git+https://github.com/morrownr/8821cu
