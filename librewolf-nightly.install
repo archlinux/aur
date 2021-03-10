@@ -2,16 +2,16 @@ msg() {
     ALL_OFF="\e[1;0m"
     BOLD="\e[1;1m"
     RED="${BOLD}\e[1;31m"
-	local mesg=$1; shift
-	printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
-}
-
-post_install() {
-	post_upgrade
+    local mesg=$1; shift
+    printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
 }
 
 post_upgrade() {
-	msg "Included are profiles for Firejail and profile-sync-daemon."
+    post_install
+}
+
+post_install() {
+    msg "Included are profiles for Firejail and profile-sync-daemon."
     echo ""
     msg "To use psd add librewolf to ~/.config/psd/psd.conf"
 }
