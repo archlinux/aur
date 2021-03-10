@@ -14,7 +14,7 @@ optdepends=('geoclue: to retrieve user location through geoclue.'
             'upower: to save energy by increasing timeouts between captures while on battery
              and to autocalibrate keyboard backlight.'
             'bash-completion: to add support for bash automatic completion.'
-            'clight-gui: Clight GUI written in Qt.')
+            'clight-gui-git: Clight GUI written in Qt.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/default/${pkgname%-git}.conf")
