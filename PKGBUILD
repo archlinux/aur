@@ -3,7 +3,7 @@
 pkgname=utsu-bin
 _debname=utsu
 _debarch=amd64
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A cross-platform vocal synthesis frontend"
 arch=('x86_64')
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/titinko/utsu/releases/download/v${pkgver}/${_debname}_${pkgver}_${_debarch}.deb")
 noextract=("utsu_${pkgver}_${_debarch}.deb")
-md5sums=('6fae6a210892ace46f08ab2716ddd5d1')
+md5sums=('866374f2a14fbd3d67426dff1cb965b8')
 validpgpkeys=()
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = utsu-bin
 	pkgdesc = A cross-platform vocal synthesis frontend
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/titinko/utsu
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = utsu-bin
 	depends = xdg-utils
 	depends = zlib
 	provides = utsu
-	noextract = utsu_0.4.3_amd64.deb
-	source = https://github.com/titinko/utsu/releases/download/v0.4.3/utsu_0.4.3_amd64.deb
-	md5sums = 6fae6a210892ace46f08ab2716ddd5d1
+	noextract = utsu_0.4.4_amd64.deb
+	source = https://github.com/titinko/utsu/releases/download/v0.4.4/utsu_0.4.4_amd64.deb
+	md5sums = 866374f2a14fbd3d67426dff1cb965b8
 
 pkgname = utsu-bin
 
