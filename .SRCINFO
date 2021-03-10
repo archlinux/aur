@@ -1,0 +1,16 @@
+pkgbase = coreutils-rust
+	pkgdesc = Rust reimplementation of coreutils
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/uutils/coreutils/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = coreutils
+	conflicts = coreutils
+	replaces = coreutils
+	source = coreutils-rust-0.0.4.tar.gz::https://github.com/uutils/coreutils/archive/0.0.4.tar.gz
+	sha512sums = 5d5719a0362a20c3a5ee85683c436a1bfcf5b8bf922ebe60c58f620b93d3bdf67c658a987cb8281b160442bd98cb7b4b00bacd9e3814d1b0ae3b6dd1cd43ec83
+
+pkgname = coreutils-rust
+
