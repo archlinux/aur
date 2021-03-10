@@ -5,12 +5,17 @@ pkgbase = ssg
 	url = https://www.romanzolotarev.com
 	arch = any
 	license = ISC
+	depends = sh
 	depends = lowdown
 	depends = cpio
+	provides = ssg
+	conflicts = ssg5
+	conflicts = ssg6
+	conflicts = ssg7
 	source = https://www.romanzolotarev.com/bin/ssg6
 	source = https://www.romanzolotarev.com/bin/Markdown.pl
-	md5sums = abf6c59327e7649a85cffaf95b904def
-	md5sums = 7ec2474d8650b25bba541fb4b7c43186
+	sha1sums = 53a8a94c50f4798434c05050606dd306cf9602f2
+	sha1sums = 3ff20882221ba2ea73fc11e640ee0c4e1fb39bbf
 
 pkgname = ssg
 
