@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.23.r5.ge89e87ba
+pkgver=0.3.23.r53.g485bae5e
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -35,10 +35,9 @@ build() {
   # make AUR helper happy
   rm -rf build || true
   arch-meson $_pkgbase build \
-    -D docs=true \
-    -D vulkan=true \
-    -D ffmpeg=true \
-    -D bluez5-backend-hsphfpd=true \
+    -D docs=enabled \
+    -D ffmpeg=enabled \
+    -D test=enabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -72,9 +71,7 @@ package_pipewire-full-git() {
               'ofono: ofono Bluetooth HFP support'
               'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
   provides=(pipewire pipewire-media-session alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire pipewire-media-session alsa-card-profiles
-             pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
-  replaces=(pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
+  conflicts=(pipewire pipewire-media-session alsa-card-profiles)
   backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
