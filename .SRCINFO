@@ -1,0 +1,14 @@
+pkgbase = python-libcsearcher
+	pkgdesc = Python wrapper for libc-database.
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/IZAY01/LibcSearcher
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/L/LibcSearcher/LibcSearcher-1.1.5.tar.gz
+	sha256sums = 302246d0e5bcb0aa1c464f65ef349c85f82520120d45ca5a58d3445d45833f76
+
+pkgname = python-libcsearcher
+
