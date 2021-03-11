@@ -1,7 +1,7 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=mkinitcpio-firmware
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Optional firmware for the default linux kernel to get rid of the annoying 'WARNING: Possibly missing firmware for module:' messages"
 arch=("any")
