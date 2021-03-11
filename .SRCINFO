@@ -1,6 +1,6 @@
 pkgbase = uniflash
 	pkgdesc = Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets.
-	pkgver = 6.1.0.2829
+	pkgver = 6.2.0.3059
 	pkgrel = 1
 	url = http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = uniflash
 	depends = libudev0-shim
 	depends = libusb-compat
 	optdepends = python2: The SimpleLink CC31xx/CC32xx families require Python2.7
-	noextract = uniflash_sl.6.1.0.2829.run
+	noextract = uniflash_sl.6.2.0.3059.run
 	options = !strip
-	source = uniflash_sl.6.1.0.2829.run::http://software-dl.ti.com/ccs/esd/uniflash/uniflash_sl.6.1.0.2829.run
+	source = uniflash_sl.6.2.0.3059.run::http://software-dl.ti.com/ccs/esd/uniflash/uniflash_sl.6.2.0.3059.run
 	source = 62-msp430uif.rules
-	sha256sums = 49300260bd9f36180c49d810530232ecb5911f5621f8254d0325eaed6fc035bb
+	sha256sums = fb32d6383798710e996adee74a6e51d10c3fc97a9233c4ad27bb39472a914cab
 	sha256sums = e6fc064be173031f3a845f937b2dd7bd6742125e2bcb18f943968dde27b10cfb
 
 pkgname = uniflash
