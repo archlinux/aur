@@ -1,7 +1,7 @@
 pkgbase = plasma5-runners-poki-launcher
 	pkgdesc = An application launcher that shows recently used apps first
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~zethra/poki-launcher/
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = plasma5-runners-poki-launcher
 	makedepends = rust
 	makedepends = cargo
 	source = plasma5-runners-poki-launcher-0.6.0.tar.gz::https://git.sr.ht/~zethra/poki-launcher/archive/0.6.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 5697de9abbf58634586c35baf212b1a71f7a3f8b63263ffa388aca91a2a90e9e
 
 pkgname = plasma5-runners-poki-launcher
 

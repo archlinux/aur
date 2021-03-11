@@ -2,23 +2,23 @@
 
 pkgname=plasma5-runners-poki-launcher
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An application launcher that shows recently used apps first"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/poki-launcher/"
 license=('GPL-3.0')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~zethra/poki-launcher/archive/$pkgver.tar.gz")
 makedepends=('rust' 'cargo')
-sha256sums=("SKIP")
+sha256sums=("5697de9abbf58634586c35baf212b1a71f7a3f8b63263ffa388aca91a2a90e9e")
 
 build() {
-    cd "poki-launcher-$pkgver/poki-krunner"
+    cd "poki-launcher-$pkgver"
 
     cargo build --bin poki-krunner --release --locked
 }
 
 check() {
-    cd "poki-launcher-$pkgver/poki-krunner"
+    cd "poki-launcher-$pkgver"
 
     cargo test --bin poki-krunner --release --locked
 }
