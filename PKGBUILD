@@ -3,6 +3,7 @@
 pkgname=quake3e-git
 pkgver=2020.08.08.r43.g521c2fbf
 pkgrel=1
+provides=('quake3')
 pkgdesc="Improved Quake III Arena Engine"
 url="https://github.com/ec-/Quake3e"
 license=('GPL')
