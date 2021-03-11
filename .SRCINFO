@@ -1,7 +1,7 @@
 pkgbase = assh-bin
 	pkgdesc = make your ssh client smarter
 	pkgver = 2.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moul/assh
 	arch = x86_64
 	arch = i686
