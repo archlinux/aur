@@ -2,7 +2,7 @@
 
 pkgname=poki-launcher
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An application launcher that shows recently used apps first"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/poki-launcher/"
