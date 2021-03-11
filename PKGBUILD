@@ -25,7 +25,7 @@ replaces=('dragonwolf')
 install=firedragon-bin.install
 _uploadpath_x86_64="https://builds.garudalinux.org/repos/chaotic-aur/x86_64/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 source_x86_64=("${_uploadpath_x86_64}")
-sha256sums_x86_64=('96b8af46787a6341b0767b6b5bfb289a3ad58c707bd992b019b56f640aa000ba')
+sha256sums_x86_64=('d51333d8bf1aea82aabb934703c33e04bd28899d235bf2b8f407b148441ee6f9')
 
 package() {
   # Yep, that's somewhat redundant. But it works.
