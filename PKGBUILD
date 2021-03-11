@@ -1,13 +1,14 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=web-ext
-pkgver=5.5.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
 license=('MPL2')
-depends=('nodejs')
+# See upstream package.json
+depends=('nodejs>=12.0.0')
 makedepends=('npm' 'node-gyp')
 replaces=('nodejs-web-ext')
 provides=('nodejs-web-ext')
@@ -15,17 +16,11 @@ conflicts=('nodejs-web-ext')
 # to speed up the build
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
-source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz"
-        "skip-if-non-git-repo.diff")
-sha256sums=('1c1951b003cbabb82c5a09dbf23567d3ae4374de8e40cb2de8c087b60f629405'
-            'f7333b0c2b204a178f48f4b243bccfda84a274c3eea0f056c93d5696a889f14f')
+source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
+sha256sums=('432bf216035360b957fc06daba8588678a03e8b85d6a0b7c2304e3ca7ffc3490')
 
 prepare() {
   cd "$srcdir"
-
-  pushd $pkgname-$pkgver
-  patch -Np1 -i ../skip-if-non-git-repo.diff
-  popd
 
   # -build for running webpack and tests, and the original for actual packaging
   cp -r $pkgname-$pkgver{,-build}
