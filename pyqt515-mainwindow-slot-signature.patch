@@ -1,0 +1,10 @@
+--- subconvert-2.1.0/subconvert/gui/MainWindow.py
++++ subconvert-2.1.0/subconvert/gui/MainWindow.py
+@@ -383,6 +383,7 @@
+         else:
+             currentTab.changeVideoPath(videoPath)
+ 
++    @pyqtSlot()
+     @pyqtSlot(bool)
+     @pyqtSlot(int)
+     @pyqtSlot(str)

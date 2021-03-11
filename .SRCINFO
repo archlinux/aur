@@ -1,7 +1,7 @@
 pkgbase = subconvert
 	pkgdesc = Movie subtitles converter
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mgoral/subconvert/
 	arch = any
 	license = GPL3
@@ -13,7 +13,9 @@ pkgbase = subconvert
 	depends = mplayer
 	depends = gettext>=0.19
 	source = https://github.com/mgoral/subconvert/archive/2.1.0.tar.gz
+	source = pyqt515-mainwindow-slot-signature.patch
 	sha1sums = c583da37dc9b7ec0807d2e5058c2db8d4abe5e62
+	sha1sums = 13c93e585d0677e2e7c5e284e8d2fda351ea507c
 
 pkgname = subconvert
 
