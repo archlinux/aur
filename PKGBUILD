@@ -2,12 +2,12 @@
 #
 pkgname="neovim-rpc-api-explorer"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Java application used to explore NeoVim RPC API, useful for remote plugin development"
 url="https://www.ensarsarajcic.com/neovim-java"
 arch=("any")
 license=("MIT")
-depends=("java-environment" "java-openjfx")
+depends=("java-environment=11" "java-openjfx=11")
 noextract=("api-explorer-$pkgver.jar")
 source=(
 	"https://github.com/esensar/neovim-java/releases/download/${pkgver}/api-explorer-${pkgver}.jar"
@@ -32,9 +32,7 @@ package() {
 
     install -Dm755 "$srcdir/api-explorer-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 
-    printf "#!/usr/bin/env bash\nexec java -jar --module-path=\"/usr/lib/jvm/java-11-openjfx/lib\" --add-modules=\"javafx.base,javafx.controls,javafx.fxml\" api-explorer-${pkgver}.jar" > "$srcdir/$pkgname"
-
-    printf "[Desktop Entry]\nType=Application\nVersion=${pkgver}\nName=Neovim RPC API Explorer\nComment=%s\nPath=/usr/bin\nExec=${pkgname} %%u\nIcon=neovim\nTerminal=false\nCategories=Development;Java" "$pkgdesc" > "$srcdir/$pkgname.desktop"
+    printf "#!/usr/bin/env bash\nexec java -jar --module-path=\"/usr/lib/jvm/java-11-openjfx/lib\" --add-modules=\"javafx.base,javafx.controls,javafx.fxml\" /usr/share/java/$pkgname/$pkgname.jar" > "$srcdir/$pkgname"
 
     echo -e "$_api_explorer_desktop" | tee "$srcdir/$pkgname.desktop"
 

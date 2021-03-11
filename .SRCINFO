@@ -1,12 +1,12 @@
 pkgbase = neovim-rpc-api-explorer
 	pkgdesc = Java application used to explore NeoVim RPC API, useful for remote plugin development
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ensarsarajcic.com/neovim-java
 	arch = any
 	license = MIT
-	depends = java-environment
-	depends = java-openjfx
+	depends = java-environment=11
+	depends = java-openjfx=11
 	noextract = api-explorer-0.2.3.jar
 	source = https://github.com/esensar/neovim-java/releases/download/0.2.3/api-explorer-0.2.3.jar
 	source = https://raw.githubusercontent.com/esensar/neovim-java/0.2.3/LICENSE
