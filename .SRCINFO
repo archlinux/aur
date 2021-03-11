@@ -1,12 +1,11 @@
 pkgbase = android-x86-64-libwebp
 	pkgdesc = WebP library and conversion tools (android)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/speed/webp/
 	arch = any
 	license = BSD
 	makedepends = android-configure
-	makedepends = dh-autoreconf
 	depends = android-x86-64-libjpeg-turbo
 	depends = android-x86-64-libpng
 	depends = android-x86-64-libtiff
