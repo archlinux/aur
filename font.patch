@@ -1,0 +1,15 @@
+--- a/Main.cpp	2021-03-01 21:39:08.883391639 +0000
++++ b/Main.cpp	2021-03-01 21:40:48.769454085 +0000
+@@ -122,9 +122,9 @@
+ static std::string MakeEquationStr(double *params) {
+     std::stringstream ss;
+     bool isFirst = true;
+-    SIGN_OR_SKIP(0, "x\u00b2");
+-    SIGN_OR_SKIP(1, "y\u00b2");
+-    SIGN_OR_SKIP(2, "t\u00b2");
++    SIGN_OR_SKIP(0, "x^2");
++    SIGN_OR_SKIP(1, "y^2");
++    SIGN_OR_SKIP(2, "t^2");
+     SIGN_OR_SKIP(3, "xy");
+     SIGN_OR_SKIP(4, "xt");
+     SIGN_OR_SKIP(5, "yt");
