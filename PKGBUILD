@@ -10,7 +10,7 @@ depends=('jlink-software-and-documentation')
 optdepends=()
 conflicts=()
 replaces=('embedded-studio')
-url="https://www.segger.com/products/development-tools/embedded-studio/"
+url="https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html#installing-ses-nordic-edition"
 license=('Commercial')
 options=(!strip)
 
