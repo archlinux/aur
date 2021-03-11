@@ -1,10 +1,11 @@
 pkgbase = msitools
 	pkgdesc = Set of programs to inspect and build Windows Installer (.MSI) files
 	pkgver = 0.101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/msitools
 	arch = i686
 	arch = x86_64
+	license = LGPL
 	license = GPL
 	makedepends = intltool
 	makedepends = vala

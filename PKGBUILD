@@ -3,11 +3,11 @@
 
 pkgname=msitools
 pkgver=0.101
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of programs to inspect and build Windows Installer (.MSI) files"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/msitools"
-license=('GPL')
+license=('LGPL' 'GPL')
 depends=('libgsf' 'gcab')
 makedepends=('intltool' 'vala' 'meson' 'gobject-introspection')
 source=(http://ftp.gnome.org/pub/GNOME/sources/msitools/${pkgver}/${pkgname}-${pkgver}.tar.xz)
@@ -27,6 +27,6 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 copyright "$pkgdir/usr/share/licenses/$pkgname/copyright"
 }
 
