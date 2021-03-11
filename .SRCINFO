@@ -1,0 +1,14 @@
+pkgbase = python-liac-arff
+	pkgdesc = read and write ARFF files in Python
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/renatopp/liac-arff
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/6e/43/73944aa5ad2b3185c0f0ba0ee6f73277f2eb51782ca6ccf3e6793caf209a/liac-arff-2.5.0.tar.gz
+	sha256sums = 3220d0af6487c5aa71b47579be7ad1d94f3849ff1e224af3bf05ad49a0b5c4da
+
+pkgname = python-liac-arff
+
