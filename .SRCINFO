@@ -1,0 +1,15 @@
+pkgbase = python-apng
+	pkgdesc = A Python module to deal with APNG files.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/eight04/pyAPNG
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pillow
+	source = pyAPNG-0.3.4::https://github.com/eight04/pyAPNG/archive/v0.3.4.tar.gz
+	sha256sums = 8982a12d8e3d7244a59e3543db6152bea16c25d03fa66a32d1dacd32b193bf8d
+
+pkgname = python-apng
+
