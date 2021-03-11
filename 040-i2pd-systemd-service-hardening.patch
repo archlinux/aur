@@ -1,6 +1,6 @@
 --- a/contrib/i2pd.service
 +++ b/contrib/i2pd.service
-@@ -32,5 +32,31 @@ LimitNOFILE=4096
+@@ -33,5 +33,31 @@ LimitNOFILE=4096
  # To enable write of coredump uncomment this
  #LimitCORE=infinity
  
