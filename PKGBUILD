@@ -1,6 +1,6 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://lokinet.org"
 license=('GPL3')
 depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite')
 makedepends=('git' 'cmake')
-conflicts=('lokimq')
+conflicts=('oxen-mq')
 install='lokinet.install'
 backup=('etc/conf.d/lokinet')
 source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
@@ -20,7 +20,7 @@ source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver
         'lokinet-resume.service'
         'lokinet.sysusers'
         'lokinet.tmpfiles')
-sha256sums=('6d6909f6304fbcfdf1fe5ef0d088fe5f22a2399304c0088b72c608e1b424214a'
+sha256sums=('9737bc8e9915a1377c348d8ae3fc1270351e084361f7991e6f7d423c29e3362e'
             'SKIP'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
             '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
@@ -43,7 +43,6 @@ build() {
 		-DCMAKE_C_FLAGS="$CFLAGS" \
 		-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 		-DNATIVE_BUILD=OFF \
-		-DSTATIC_LINK_RUNTIME=OFF \
 		-DUSE_NETNS=OFF \
 		-DUSE_AVX2=OFF \
 		-DXSAN=OFF \
@@ -51,7 +50,7 @@ build() {
 		-DDOWNLOAD_SODIUM=OFF \
 		-DSUBMODULE_CHECK=OFF \
 		-DWITH_SYSTEMD=ON \
-		-DFORCE_LOKIMQ_SUBMODULE=ON \
+		-DFORCE_OXENMQ_SUBMODULE=ON \
 		-DBUILD_SHARED_LIBS=ON \
 		-Wno-dev \
 		..
