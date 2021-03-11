@@ -1,14 +1,14 @@
 pkgbase = lightcord-bin
 	pkgdesc = A simple - customizable - Discord Client
-	pkgver = dev
-	pkgrel = 4
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/Lightcord/Lightcord
 	arch = x86_64
 	license = MIT
 	optdepends = libappindicator-gtk3
 	provides = lightcord
 	conflicts = lightcord-git
-	source = lightcord-bin-dev.zip::https://lightcord.org/api/v1/gh/releases/Lightcord/Lightcord/dev/lightcord-linux-x64.zip
+	source = lightcord-bin-0.1.5.zip::https://lightcord.org/api/v1/gh/releases/Lightcord/Lightcord/0.1.5/lightcord-linux-x64.zip
 	source = Lightcord.desktop
 	source = https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png
 	source = https://raw.githubusercontent.com/Lightcord/Lightcord/master/LICENSE

@@ -1,7 +1,7 @@
 # Maintainer: nephitejnf <nephitejnf@gmail.com>
 pkgname=lightcord-bin
-pkgver=dev
-pkgrel=4
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="A simple - customizable - Discord Client"
 arch=("x86_64")
 url="https://github.com/Lightcord/Lightcord"
