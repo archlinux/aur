@@ -3,13 +3,15 @@
 
 pkgname=sync_gateway-community-bin
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manages access and synchronization between Couchbase Lite and Couchbase Server - Community Edition (CE)"
 url="https://github.com/couchbase/sync_gateway"
 arch=('x86_64')
 license=('custom:Couchbase Community Edition License')
 provides=('sync_gateway')
 conflicts=('sync_gateway-git')
+install="sync_gateway.install"
+
 source=(
 	"https://packages.couchbase.com/releases/couchbase-sync-gateway/${pkgver}/couchbase-sync-gateway-community_${pkgver}_x86_64.deb"
 	'sync_gateway.service'
