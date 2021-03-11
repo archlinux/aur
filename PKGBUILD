@@ -13,7 +13,7 @@ depends=(
     "upd72020x-fw"     # xhc_pic
 )
 optdepends=(
-  "mkinitpcio: build the initramfs"
+  "mkinitcpio: build the initramfs"
   "linux: default linux preset"
   "linux-firmware: default linux firmware"
 )

@@ -8,7 +8,7 @@ pkgbase = mkinitcpio-firmware
 	depends = aic94xx-firmware
 	depends = wd719x-firmware
 	depends = upd72020x-fw
-	optdepends = mkinitpcio: build the initramfs
+	optdepends = mkinitcpio: build the initramfs
 	optdepends = linux: default linux preset
 	optdepends = linux-firmware: default linux firmware
 
