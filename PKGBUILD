@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=promscale
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An open source analytical platform for Prometheus metrics"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers.conf"
         "$pkgname.conf")
-b2sums=('9bd2556cf789c56b2c6e4397ab6d45e5ea653cd67cfe5fd2e433ed978f792d6a07a60252e0d2e9e64898c7d6eda6d7185534f9bd7ec744095c0cd70f1fc21bee'
+b2sums=('8a2cdf2d252f22b7e89cca27c54687ecd43ab636b5719812005a1796957ea729eb210cb585014e449c434d17ccea85ed6b4894f34caec59262516b54a7977159'
         '23a357e2fd252d1f6c1cd8d3cd4174bdd27d0ae5035f5afd08ac377405868ad0cc5d782fb5a73fcfdbd7169361e2c4b639aa096ebfe2d9adf95ffc1e26caa3b1'
         '2fae9c07cd255528a1c87062650956b857caa8a3c656b59e85d740f527433f510a8fe18025e03480d9145673e6dd03867d60ead5a48044353262105a173cbbfd'
         '44b673203d0d2fa3af9f7e9bce8c6aefd61f14cde9dff2a261132ab99f2433940f37a9b70c49a234689a4277b7240ec411a38b9708001f49114a960d0770d7ed')
