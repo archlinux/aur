@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('fdcc2cd2603c68f68e5c8f15b86918384aecd241806c42be45579cec7c4c6650'
+sha256sums=('1d76e17ae67b192feb9893a52492bcd86e0127ba0e15bba523c12cfc733db6de'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
