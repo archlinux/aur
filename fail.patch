@@ -1,0 +1,11 @@
+diff --unified --recursive --text src/llvm-hs-pure-9.0.0/llvm-hs-pure.cabal new/llvm-hs-pure-9.0.0/llvm-hs-pure.cabal
+--- src/llvm-hs-pure-9.0.0/llvm-hs-pure.cabal	2001-09-08 19:46:40.000000000 -0600
++++ new/llvm-hs-pure-9.0.0/llvm-hs-pure.cabal	2021-03-11 08:36:06.855261981 -0700
+@@ -31,7 +31,6 @@
+     base >= 4.9 && < 5,
+     attoparsec >= 0.13,
+     bytestring >= 0.10 && < 0.11,
+-    fail,
+     transformers >= 0.3 && < 0.6,
+     mtl >= 2.1,
+     template-haskell >= 2.5.0.0,
