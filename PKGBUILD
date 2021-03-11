@@ -68,15 +68,15 @@ package() {
 		
 
 	# Copying source directories to /usr/
-  cp -rv $srcdir/${_name}-stable ${pkgdir}/usr/share/${pkgname}/${_name}-stable
-  cp -rv $srcdir/${_name}-rc ${pkgdir}/usr/share/${pkgname}/${_name}-rc
-  cp -rv $srcdir/${_name}-nightly ${pkgdir}/usr/share/${pkgname}/${_name}-nightly
+  cp -rfv $srcdir/${_name}-stable ${pkgdir}/usr/share/${pkgname}/${_name}-stable
+  cp -rfv $srcdir/${_name}-rc ${pkgdir}/usr/share/${pkgname}/${_name}-rc
+  cp -rfv $srcdir/${_name}-nightly ${pkgdir}/usr/share/${pkgname}/${_name}-nightly
   	
   	
   # Symlinking and renaming binaries
-	ln -sv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/bin/julia ${pkgdir}/usr/bin/julia-stable
-	ln -sv ${pkgdir}/usr/share/${pkgname}/${_name}-rc/bin/julia ${pkgdir}/usr/bin/julia-rc
-	ln -sv ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/bin/julia ${pkgdir}/usr/bin/julia-nightly
+	ln -sfv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/bin/julia ${pkgdir}/usr/bin/julia-stable
+	ln -sfv ${pkgdir}/usr/share/${pkgname}/${_name}-rc/bin/julia ${pkgdir}/usr/bin/julia-rc
+	ln -sfv ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/bin/julia ${pkgdir}/usr/bin/julia-nightly
 	
 	
 	# Creating the desktop application shortcuts
@@ -86,12 +86,12 @@ package() {
   sed -i '4s/julia/julia-stable/g' ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop
   sed -i '4s/julia/julia-rc/g' ${pkgdir}/usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop
   sed -i '4s/julia/julia-nightly/g' ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop
-  cp -rv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-stable.desktop
-  cp -rv ${pkgdir}/usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-rc.desktop
-  cp -rv ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-nightly.desktop
+  cp -rfv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-stable.desktop
+  cp -rfv ${pkgdir}/usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-rc.desktop
+  cp -rfv ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-nightly.desktop
   	
   # Cleaning up and installing icons
-  cp -r $srcdir/${_name}-stable/etc ${pkgdir}
+  cp -rf $srcdir/${_name}-stable/etc ${pkgdir}
   rm -rf $pkgdir/usr/share/icons/hicolor/scalable
   for i in 16 32 128 256 512
   do
