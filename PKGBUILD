@@ -7,7 +7,7 @@ pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
 pkgver=0.3.23.r53.g485bae5e
-pkgrel=1
+pkgrel=2
 pkgdesc='Low-latency audio/video router and processor (git) (32 bit client libraries)'
 url=https://pipewire.org
 license=(LGPL2.1)
@@ -30,10 +30,17 @@ build() {
     arch-meson ${_pkgbase} build \
         --libdir /usr/lib32 \
         -D docs=disabled \
+        -D man=disabled \
+        -D systemd-system-service=disabled \
         -D tests=disabled \
+        -D audiotestsrc=disabled \
         -D bluez5=disabled \
         -D jack=disabled \
         -D sdl2=disabled \
+        -D jack=disabled \
+        -D videotestsrc=disabled \
+        -D volume=disabled \
+        -D vulkan=disabled \
         -D udevrulesdir=/usr/lib/udev/rules.d
     meson compile -C build
 }
