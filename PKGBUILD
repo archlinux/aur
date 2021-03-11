@@ -2,9 +2,9 @@
 gccver=92
 pkgname=arm-none-eabi-bin-$gccver-complete
 pkgver=9_2019_q4_major
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes newlib, includes GDB)"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 depends=('glibc')
 optdepend=('python2')
 provides=("gcc-arm-none-eabi" "gcc-arm-none-eabi-$gccver"

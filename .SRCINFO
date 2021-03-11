@@ -1,9 +1,10 @@
 pkgbase = arm-none-eabi-bin-92-complete
 	pkgdesc = GNU Tools ARM Embedded Processors (binary distribution, includes newlib, includes GDB)
 	pkgver = 9_2019_q4_major
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
 	arch = x86_64
+	arch = i686
 	license = custom
 	depends = glibc
 	provides = gcc-arm-none-eabi
