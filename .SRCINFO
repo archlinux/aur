@@ -1,14 +1,14 @@
 pkgbase = blasfeo
 	pkgdesc = Basic linear algebra subroutines for embedded optimization
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/giaf/blasfeo
 	arch = i686
 	arch = x86_64
 	license = BSD 2-Clause
 	makedepends = cmake
-	source = https://github.com/giaf/blasfeo/archive/0.1.1.tar.gz
-	sha256sums = a52169306dfcc43d0aa41b031b98f1d63a4fd0ec7e8139bf95f14dc270ec3b72
+	source = https://github.com/giaf/blasfeo/archive/0.1.2.tar.gz
+	sha256sums = 079c9c90db1249aac59fa649c42667d46f4d458049e5986762035388f22fc005
 
 pkgname = blasfeo
 
