@@ -1,7 +1,7 @@
 # Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 
 pkgname=electron-nightly-npm
-pkgver=14.0.0.nightly.20210308
+pkgver=14.0.0.nightly.20210309
 pkgrel=1
 url='https://electronjs.org/'
 pkgdesc="Build cross platform desktop apps with web technologies"
