@@ -1,14 +1,14 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=lightcord-git
-pkgver=r437.6bd9c0a
+pkgver=0.1.5.r4.g6bd9c0a
 pkgrel=1
 pkgdesc="A simple - customizable - Discord Client"
 arch=('x86_64')
 url="https://github.com/Lightcord/Lightcord"
 license=('MIT')
 depends=()
-optdepends=('picom: transparency support')
+optdepends=()
 makedepends=('npm' 'nodejs' 'git')
 provides=('lightcord')
 conflicts=('lightcord-bin')
@@ -20,7 +20,7 @@ source=("$pkgname::git://github.com/Lightcord/Lightcord.git"
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP'
@@ -29,13 +29,12 @@ md5sums=('SKIP'
          'f1ace6f149a3d778bfb789d10181d877')
 
 build() {
-  cd "$pkgname" 
-  npm run devInstall 
-  npm run build
+    cd "$pkgname"
+    npm run devInstall
+    npm run build
 }
 
 package() {
-    # taken from lightcord-bin
     # Create the folder structure
     install -d "$pkgdir"/opt/lightcord
     install -d "$pkgdir"/usr/share/pixmaps
@@ -51,5 +50,3 @@ package() {
     # Create symlink
     ln -s /opt/lightcord/lightcord "$pkgdir"/usr/bin/lightcord
 }
-
-
