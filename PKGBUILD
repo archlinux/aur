@@ -11,7 +11,7 @@ depends=('python2' 'gettext')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('86aaf19dbbfea3e75508edc705f4a0d178cd46d4869ecced2edc779867541683')
+sha256sums=('055fda2dafad0b775f17a6f460da592aa4535ef9a9748214c9ca1a90c088877d')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
