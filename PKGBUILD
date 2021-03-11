@@ -2,18 +2,20 @@
 
 _pkgname=python-pycpa
 pkgname=$_pkgname-git
-pkgver=20200909
+pkgver=20210311
 pkgrel=1
 pkgdesc="Pragmatic Python implementation of Compositional Performance Analysis (aka the SymTA/S approach provided by Symtavision) used for research in worst-case timing analysis."
 arch=('any')
 makedepends=('git')
 replaces=('python-pycpa-hg')
-depends=('python' 'python-matplotlib' 'python-pygraphviz' 'simpy' 'python-setuptools' 'python-nose' 'python-tornado')
+depends=('python' 'python-matplotlib' 'python-pygraphviz' 'python-setuptools')
+optdepends=('python2-twisted: for RPC interface'
+            'python2-simpy: for simulation module')
 provides=('python-pycpa')
-url="https://bitbucket.org/pycpa/pycpa/"
+url="https://github.com/IDA-TUBS/pycpa.git"
 license=('MIT')
 
-source=("git+https://bitbucket.org/pycpa/pycpa")
+source=("git+https://github.com/IDA-TUBS/pycpa.git")
 md5sums=("SKIP")
 
 build() {
