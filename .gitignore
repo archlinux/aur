@@ -1,7 +1,3 @@
-# Created by https://www.gitignore.io/api/archlinuxpackages
-# Edit at https://www.gitignore.io/?templates=archlinuxpackages
-
-### ArchLinuxPackages ###
 *.tar
 *.tar.*
 *.jar
@@ -15,5 +11,3 @@
 
 pkg/
 src/
-
-# End of https://www.gitignore.io/api/archlinuxpackages
