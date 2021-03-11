@@ -1,0 +1,20 @@
+pkgbase = wordbook
+	pkgdesc = An offline dictionary app for GNOME
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fushinari/Wordbook
+	arch = any
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = espeak-ng
+	depends = gtk3
+	depends = libhandy
+	depends = python
+	depends = python-gobject
+	depends = python-wn
+	source = wordbook-v0.2.0.tar.gz::https://github.com/fushinari/wordbook/archive/0.2.0.tar.gz
+	sha256sums = 5df0441728114b26a5e586d7e42d3773dae41e0f1bdeb9380d1330fdf1aa3443
+
+pkgname = wordbook
+
