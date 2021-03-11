@@ -1,0 +1,17 @@
+pkgbase = soil2-git
+	pkgdesc = A tiny C library used primarily for uploading textures into OpenGL.
+	pkgver = 1.20.r14.g8d14c71
+	pkgrel = 1
+	url = https://github.com/SpartanJ/SOIL2
+	arch = x86_64
+	license = Public Domain
+	makedepends = git
+	makedepends = premake
+	makedepends = sdl2
+	provides = soil2
+	conflicts = soil2
+	source = git+https://github.com/SpartanJ/SOIL2.git
+	sha512sums = SKIP
+
+pkgname = soil2-git
+
