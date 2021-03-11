@@ -1,0 +1,14 @@
+pkgbase = docker-backup-bin
+	pkgdesc = A tool to create & restore complete, self-contained backups of Docker containers
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/muesli/docker-backup
+	arch = x86_64
+	license = MIT
+	provides = docker-backup
+	conflicts = docker-backup
+	source_x86_64 = https://github.com/muesli/docker-backup/releases/download/v0.2.3/docker-backup_0.2.3_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7b4b1f336834a8855cb676c7442b844cfc13582b9429168023cfe893154e7d00
+
+pkgname = docker-backup-bin
+
