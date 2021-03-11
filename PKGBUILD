@@ -1,5 +1,5 @@
 pkgname=php-inotify
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Inotify bindings for PHP 5 and PHP 7."
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('PHP')
 depends=('php')
 backup=('etc/php/conf.d/inotify.ini')
 source=(http://pecl.php.net/get/inotify-$pkgver.tgz)
-sha256sums=('d044a89d26bbaa110f34f182b1c92ab5eb09768096bacf3d837d7e49ac045107')
+sha256sums=('c71b78644c0115579cc794f58e78441441751d78040b9d9d1a223d3e9c2d723d')
 
 build() {
   cd "$srcdir/inotify-$pkgver"
