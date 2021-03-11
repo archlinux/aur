@@ -1,7 +1,7 @@
 pkgname=twitch-bin
 _pkgname=Twitch-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -15,10 +15,9 @@ conflicts=("twitch-git")
 sha256sums_x86_64=('SKIP')
 sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
-source_x86_64=("https://gitlab.com/twitch-application/binaries/-/raw/master/Twitch-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/twitch-application/binaries/-/raw/master/Twitch-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/twitch-application/binaries/-/raw/master/Twitch-linux-arm64.tar.gz")
-
+source_x86_64=("https://gitlab.com/twitch-application/binaries/1.0.3-2/-/raw/master/Twitch-linux-x64.tar.gz")
+source_armv7h=("https://gitlab.com/twitch-application/binaries/1.0.3-2/-/raw/master/Twitch-linux-armv7l.tar.gz")
+source_aarch64=("https://gitlab.com/twitch-application/binaries/1.0.3-2/-/raw/master/Twitch-linux-arm64.tar.gz")
 
 package() {
     for dir in Twitch-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
