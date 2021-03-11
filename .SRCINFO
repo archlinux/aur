@@ -8,6 +8,7 @@ pkgbase = ktrl-git
 	makedepends = git
 	makedepends = rust
 	provides = ktrl
+	backup = etc/ktrl/cfg.ron
 	source = ktrl-git::git+https://github.com/ItayGarin/ktrl.git
 	source = ktrl.service
 	source = ktrl.sysusers

@@ -20,6 +20,7 @@ sha256sums=(
     '3f091de9b6e7fae41edaec2c911d1b28dad95f6905137241216e312e4381bd7e'
     'f24bb2af5edc0e8b6143b7b27291638c1a98ab9738cb7f78870f3d1a99d0c799'
 )
+backup=('etc/ktrl/cfg.ron')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
