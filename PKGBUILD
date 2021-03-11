@@ -1,7 +1,7 @@
 # Maintainer: kballen <ken@kballentine.net>
 
 pkgname=pulseaudio-module-xrdp
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="PulseAudio modules for xrdp"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neutrinolabs/${pkgname}/archive/v${pkgver}.tar.gz"
         "git+https://github.com/pulseaudio/pulseaudio.git"
         "xrdp-script.conf")
-sha256sums=('11ebe426a93b3a22eeffe460ec643cabe33061757b6b2db5fa8807b2788e1e30'
+sha256sums=('2fdda7b21293941dd671ee2a3557b904e3137eec062f4655a247fe60a4f7b0d1'
             'SKIP'
             '4c6e9c0b1eaf66ea6b8574570d89b292b8554d318ad324f3763f837013b9f44f')
 
