@@ -1,0 +1,13 @@
+pkgbase = python-crossrefapi
+	pkgdesc = Python Library that implements the endpoints of the Crossref API
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/fabiobatalha/crossrefapi
+	arch = x86_64
+	license = BSD
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/c/crossrefapi/crossrefapi-1.5.0.tar.gz
+	sha512sums = d6c6250e1c009e1cc960236a11b6fee9c64fe990c8cd879eca52684702a202f14668774d9a9959dc10c7a958908b4e7977fca0d989479817c303da0aa4839fbe
+
+pkgname = python-crossrefapi
+
