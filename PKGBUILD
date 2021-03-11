@@ -3,7 +3,7 @@
 pkgname=python-managesieve
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A managesieve client for remotely managing sieve scripts"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools' 'python-pip')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-b2sums=('180519a91b9bf33a32035cec1a96c27fe487fcbf21b751aec0870ab63a2ede2bdbca9aab202ef0e10e55633a06d2fbeadce2116aebde04721f40e5c60aca62bf')
+b2sums=('26e86574e26e50b8aba458b3ea1e87bc4b1ef8422db99b737eb17b93686d2bd99ce74096fd2770b3a415d275b1f2ba448a2620c8027801f3d97402593322050f')
 
 build() {
   cd "$_pkgname-v$pkgver"
