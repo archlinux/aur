@@ -1,7 +1,7 @@
 pkgbase = bibutils
 	pkgdesc = Bibliography format interconversion
 	pkgver = 6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/p/bibutils/home/Bibutils
 	arch = i686
 	arch = x86_64
