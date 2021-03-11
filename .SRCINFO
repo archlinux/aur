@@ -1,6 +1,6 @@
 pkgbase = lib32-pipewire-git
 	pkgdesc = Low-latency audio/video router and processor (git) (32 bit client libraries)
-	pkgver = 0.3.22.r12.g84fc63e6
+	pkgver = 0.3.23.r53.g485bae5e
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgname = lib32-pipewire-git
 pkgname = lib32-pipewire-jack-git
 	pkgdesc = Low-latency audio/video router and processor (git) (32 bit client libraries) (JACK support) (git) (32 bit)
 	depends = lib32-pipewire
-	depends = lib32-pipewire-git=0.3.22.r12.g84fc63e6
+	depends = lib32-pipewire-git=0.3.23.r53.g485bae5e
 	depends = lib32-jack2
 	provides = lib32-pipewire-jack
 	conflicts = lib32-pipewire-jack
@@ -46,7 +46,7 @@ pkgname = lib32-pipewire-jack-git
 pkgname = lib32-gst-plugin-pipewire-git
 	pkgdesc = Multimedia graph framework - pipewire plugin (git) (32 bit)
 	depends = lib32-pipewire
-	depends = lib32-pipewire-git=0.3.22.r12.g84fc63e6
+	depends = lib32-pipewire-git=0.3.23.r53.g485bae5e
 	depends = lib32-gst-plugins-base-libs
 	provides = lib32-gst-plugin-pipewire
 	conflicts = lib32-gst-plugin-pipewire

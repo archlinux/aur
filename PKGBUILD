@@ -6,7 +6,7 @@
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.22.r12.g84fc63e6
+pkgver=0.3.23.r53.g485bae5e
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (git) (32 bit client libraries)'
 url=https://pipewire.org
@@ -29,9 +29,10 @@ build() {
 
     arch-meson ${_pkgbase} build \
         --libdir /usr/lib32 \
-        -D docs=false \
-        -D tests=false \
-        -D bluez5=false \
+        -D docs=disabled \
+        -D tests=disabled \
+        -D bluez5=disabled \
+        -D jack=disabled \
         -D sdl2=disabled \
         -D udevrulesdir=/usr/lib/udev/rules.d
     meson compile -C build
@@ -61,10 +62,6 @@ package_lib32-pipewire-git() {
 
     cd "$pkgdir"
 
-    _pick "$srcdir"/install/usr/lib32/spa-${_spaver}/jack
-    mkdir -p "$srcdir"/jack
-    mv "$pkgdir"/usr "$srcdir"/jack/
-
     _pick "$srcdir"/install/usr/lib32/libpipewire-${_ver}.so*
     _pick "$srcdir"/install/usr/lib32/pipewire-${_ver}/libpipewire-module-*.so
     _pick "$srcdir"/install/usr/lib32/pkgconfig
@@ -76,7 +73,6 @@ package_lib32-pipewire-jack-git() {
     depends=(lib32-pipewire lib32-pipewire-git=$pkgver lib32-jack2)
     provides=(lib32-pipewire-jack)
     conflicts=(lib32-pipewire-jack)
-    mv "$srcdir"/jack/* "$pkgdir"/
     _pick "$srcdir"/install/usr/lib32/pipewire-${_ver}/jack
 }
 
