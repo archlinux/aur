@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=179
+_minor=180
 _srcname=linux-${_major}
 _clr=${_major}.177-198
 pkgbase=linux-clear-lts2018
@@ -73,7 +73,7 @@ url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20200615'
+_gcc_more_v='20210309'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -132,6 +132,7 @@ prepare() {
         # Device Drivers
         scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
                        --enable DELL_SMBIOS_SMM \
+                       --enable NET_VENDOR_AQUANTIA \
                        --module PATA_JMICRON \
                        --enable-after SOUND SOUND_OSS_CORE \
                        --enable SND_OSSEMUL \
@@ -160,8 +161,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch"
+        echo "Patching to enable GCC optimization for other uarchs..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-gcc-v10-and-kernel-4.19-v5.4.patch"
         fi
 
     ### Get kernel version
@@ -321,9 +322,9 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '80239b14597ee8e9b059470414f923af464396c3233461830f3789a831ba1e44'
+            '1a04316b0bd18796743494060bc47dd784eb8a034fe86a686625570c81cb5f47'
             'SKIP'
-            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90')
+            '8fa4ef2c3b392c410c3f74f9b4ab89683b7fca8cac70b96e2bf532a952e46d0b')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
