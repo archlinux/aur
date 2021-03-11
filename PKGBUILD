@@ -13,7 +13,6 @@ optdepends=()
 makedepends=('cmake' 'git' 'vtk')
 _name=yolo_mark
 provides=('yolo-mark')
-conflicts=('')
 source=("git+https://github.com/AlexeyAB/yolo_mark.git")
 md5sums=('SKIP')
 
