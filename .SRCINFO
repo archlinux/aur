@@ -1,7 +1,7 @@
 pkgbase = moonraker-git
 	pkgdesc = HTTP frontend for Klipper 3D printer firmware
 	pkgver = r461.7c89756
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arksine/moonraker
 	arch = any
 	license = GPLv3
@@ -14,6 +14,7 @@ pkgbase = moonraker-git
 	depends = libgpiod
 	provides = moonraker
 	conflicts = moonraker
+	backup = etc/klipper/moonraker.conf
 	source = git+https://github.com/Arksine/moonraker.git#branch=master
 	source = moonraker.conf
 	source = moonraker.service
