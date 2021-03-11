@@ -1,0 +1,19 @@
+pkgbase = python-papers-cli
+	pkgdesc = A Python package to keep your PDF library organized
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/perrette/papers
+	arch = x86_64
+	license = MIT
+	depends = poppler
+	depends = python-bibtexparser
+	depends = python-scholarly
+	depends = python-rapidfuzz
+	depends = python-six
+	depends = python-unidecode
+	depends = python-crossrefapi
+	source = https://files.pythonhosted.org/packages/source/p/papers-cli/papers-cli-v1.0.tar.gz
+	sha512sums = 39997a178bf9733839f657135b91168aa002a96f09b27cde616a5b13c3f73a6ad452923034d19451e53504fa10e0fb9d5006199fa7c073fc83db14a5e0befd78
+
+pkgname = python-papers-cli
+
