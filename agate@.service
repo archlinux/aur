@@ -8,7 +8,13 @@ Type=simple
 User=agate
 EnvironmentFile=/etc/agate/%i
 ExecStart=/usr/bin/agate $CONTENT $CERT $ADDR $HOSTNAME $LANG $OTHERS
+
 Restart=always
+RestartSec=1
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gemini
 
 [Install]
 WantedBy=multi-user.target
