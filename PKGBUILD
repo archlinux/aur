@@ -36,4 +36,6 @@ package() {
     ln -s /opt/quake3e/quake3e.ded.x64 $pkgdir/usr/bin/quake3e.ded
     install -D -m 644 quake3e.desktop $pkgdir/usr/share/applications/quake3e.desktop
     install -D -m 644 quake3e.png $pkgdir/usr/share/pixmaps/quake3e.png
+    # To be compatible with mods
+    ln -s /opt/quake3e $pkgdir/opt/quake3
     }
