@@ -1,5 +1,5 @@
 # Maintainer: Giovanni Cortes <giovanni@giovannicortes.com>
-pkgname=brother-dcpl2540dw-cups-bin
+pkgname=brother-dcp-l2540dw-cups-bin
 pkgver=3.2.0
 pkgrel=1
 pkgdesc="CUPS wrapper for Brother DCP-L2540DW(T) printer"
