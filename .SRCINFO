@@ -3,7 +3,7 @@
 pkgbase = php-xapian
 	pkgdesc = PHP bindings for Xapian
 	pkgver = 1.4.14
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://xapian.org/docs/bindings/php/
 	arch = armv7h
