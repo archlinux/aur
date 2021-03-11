@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.23.r53.g485bae5e
+pkgver=0.3.23.r62.g22f6e8e3
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -38,6 +38,8 @@ build() {
     -D docs=enabled \
     -D ffmpeg=enabled \
     -D test=enabled \
+    -D libcamera=disabled \
+    -D vulkan=enabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
