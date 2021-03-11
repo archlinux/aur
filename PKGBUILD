@@ -4,7 +4,7 @@
 
 pkgname=zram-init
 
-pkgver=10.11
+pkgver=10.12
 pkgrel=1
 
 pkgdesc='Setup zram-based tmpfs and swap (compressed RAM devices)'
@@ -12,11 +12,13 @@ arch=('any')
 url="https://github.com/vaeth/$pkgname"
 license=('GPL2')
 
-backup=('etc/modprobe.d/zram.conf')
+depends=('bash')
 
+changelog=ChangeLog
+backup=('etc/modprobe.d/zram.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('dd5c5ea136b92c4aba118b8ac92ab312d9bb4d55b533c257ffb5de50c7ed9a4d'
+sha256sums=('82b206efb3f0679a7f98a409a4b3805c57c66099cd54edf96d8d1aefe3fe132f'
             'SKIP')
 validpgpkeys=('123D62DD87E7A81CA090CD65D18FC49C6F3A8EC0')
 

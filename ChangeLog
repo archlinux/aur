@@ -1,0 +1,206 @@
+# ChangeLog for zram-init:
+
+*zram-init-10.12:
+	Martin Väth <martin at mvath.de>:
+	- Make the options -M and -2 work. Thanks to GimmeHardware for the
+	  report. See https://github.com/vaeth/zram-init/issues/34
+
+*zram-init-10.11:
+	Kriss:
+	- Fix typo introduced in 10.10
+
+*zram-init-10.10:
+	Martin Väth <martin at mvath.de>:
+	- Let mlim (-S) actually be in megabytes as documented (not in bytes).
+	  See https://github.com/vaeth/zram-init/issues/32.
+
+*zram-init-10.9:
+	Martin Väth <martin at mvath.de>:
+	- Workaround for zsh completion heuristics for init.d scripts.
+	  Thanks to Holger Hoffstätte <holger at applied-asynchrony.com>.
+	  See https://github.com/vaeth/zram-init/issues/31.
+
+*zram-init-10.8:
+	Martin Väth <martin at mvath.de>:
+	- Fix zsh completion https://github.com/vaeth/zram-init/issues/31
+
+*zram-init-10.7:
+	Kriss (https://github.com/Kr1ss-XD):
+	- Fix installing the localized manpages
+
+*zram-init-10.6:
+	Sebastiaan (https://github.com/SharkWipf):
+	- Fix writeback settings
+
+	Martin Väth <martin at mvath.de>:
+	- Improve comments in conf.d, see
+	  https://github.com/vaeth/zram-init/issues/28
+
+*zram-init-10.5:
+	Martin Väth <martin at mvath.de>:
+	- Add SPDX-License-Identifier
+
+*zram-init-10.4:
+	Martin Väth <martin at mvath.de>:
+	- New option -B to change default block size for ext2, ext4
+	- Support setting default block size, inode ratio/number in openrc
+
+*zram-init-10.3:
+	Mattéo Rossillol‑‑Laruelle <beatussum at protonmail.com>:
+	- Fix locales directory in Makefile
+
+	Jan Palus <atler at pid-linux.org>:
+	- Avoid shell calculation
+
+*zram-init-10.2:
+	Martin Väth <martin at mvath.de>:
+	- Yet another docu fix: update conf.d comments
+
+*zram-init-10.1:
+	Mattéo Rossillol‑‑Laruelle <beatussum at protonmail.com>:
+	- Fixes in docu
+
+	Martin Väth <martin at mvath.de>:
+	- Fixes in docu
+	- German manpage
+
+*zram-init-10.0:
+	Mattéo Rossillol‑‑Laruelle <beatussum at protonmail.com>:
+	- XFS support
+	- i18n support
+	- French translation
+
+	Martin Väth <martin at mvath.de>:
+	- Fallback if gettext is not available
+	- Makefile: Separate into make | make install, shebang conversion
+	- Makefile: make most installs optional
+	- German translation
+
+*zram-init-9.1:
+	xdch57:
+	- manpage
+
+*zram-init-9.0:
+	Martin Väth <martin at mvath.de>:
+	- Support writeback of incompressible/idle pages and writeback_limit
+	- Finally suppress the annoying output of the logger path
+
+*zram-init-8.2:
+	Edlund Scott <at sredlund>:
+	- Fix variable typos and shell style
+
+	Martin Väth <martin at mvath.de>:
+	- Add defaults where half of memory is used for zram, see
+	  https://github.com/vaeth/zram-init/issues/16
+	  Thanks to Scott Edlund for the suggestion and code snippets.
+	- Log errors, see https://github.com/vaeth/zram-init/issues/14
+	  Thanks to Scott Edlund for the suggestion.
+
+*zram-init-8.1:
+	Florian Gamböck <mail at floga.de>:
+	- Correctly resolve args*
+
+*zram-init-8.0:
+	Martin Väth <martin at mvath.de>:
+	- Support zstd (default, help text, zsh completion)
+
+*zram-init-7.1:
+	ko-zu:
+	- Fix missing newline for backing_dev
+
+	Martin Väth <martin at mvath.de>:
+	- Unify output functions
+
+*zram-init-7.0_p1:
+	Pablo Cholaky <waltercool at slash.cl>:
+	- Fix zram_var_tmp.service to be analogous to zram_tmp.service
+	  due to conflicts with systemd-hostnamed PrivateTmp=yes, see
+	  https://github.com/vaeth/zram-init/pull/11
+
+*zram-init-7.0:
+	Martin Väth <martin at mvath.de>:
+	- Support discard also for swap
+	- Support mem_limit
+	- Support backup_dev
+
+*zram-init-6.1.2:
+	Martin Väth <martin at mvath.de>:
+	- systemd unit files: /usr/sbin/zram-init -> /sbin/zram-init
+
+*zram-init-6.1.1:
+	Martin Väth <martin at mvath.de>:
+	- Fix README concerning the installation of systemd unit files
+
+*zram-init-6.1.0:
+	Martin Väth <martin at mvath.de>:
+	- Re-add device after zramctl --reset
+
+*zram-init-6.0.0:
+	Martin Väth <martin at mvath.de>:
+	- Add/remove devices if kernel supports it, see
+	  https://github.com/vaeth/zram-init/issues/9
+	- Add argument sanity checks
+	- Add optional timeouts after modprobe and adding devices
+
+*zram-init-5.0.0:
+	Martin Väth <martin at mvath.de>:
+	- Require >=push-v2.0 to provide a more descriptive error message
+
+*zram-init-4.0.0:
+	Martin Väth <martin at mvath.de>:
+	- New options -K -M -2 -Z for generic argument passing; usage requires
+	  push.sh being in $PATH, see https://github.com/vaeth/push/
+	- New options -L (label) -U (uuid)
+	- Rename option -L -> -l
+	- Reformulate zsh completion help texts
+
+*zram-init-3.8.1:
+	Martin Väth <martin at mvath.de>:
+	- Fix getopts usage
+
+*zram-init-3.8:
+	Martin Väth <martin at mvath.de>:
+	- Update description in comments
+	- Fix if -s or -a miss. Support btrfs. Support dir - (non-mounting)
+
+*zram-init-3.7:
+	Martin Väth <martin at mvath.de>:
+	- Some Bourne shell compatibility
+
+*zram-init-3.6:
+	Stuart <itoffshore at users.noreply.github.com>:
+	- add sensible defaults for /tmp
+
+*zram-init-3.5:
+	Martin Väth <martin at mvath.de>:
+	- Use zramctl if available
+
+*zram-init-3.4:
+	Martin Väth <martin at mvath.de>:
+	- set -u
+
+*zram-init-3.3:
+	Martin Väth <martin at mvath.de>:
+	- Remove redundant sh quoting
+
+*zram-init-3.2:
+	Martin Väth <martin at mvath.de>:
+	- Support/default to discard for ext4
+
+*zram-init-3.1:
+	Martin Väth <martin at mvath.de>:
+	- Use openrc-run instead of deprecated runscript
+
+*zram-init-3.0:
+	Martin Väth <martin at mvath.de>:
+	- new options -D (device number), -s (stream number), -a (algorithm)
+
+*zram-init-2.8:
+	Thomas Kear <thomas.kear at gmail.com>:
+	- new option -n (inode count)
+
+*zram-init-2.7:
+	Martin Väth <martin at mvath.de>:
+	- Support umounting
+	- New options -c -m -o (ownership, mode, mount options)
+	  Thanks to Sven Eden
