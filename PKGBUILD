@@ -8,7 +8,7 @@ pkgname=('pipewire-git'
          'pipewire-media-session-git'
          'alsa-card-profiles-git'
          )
-pkgver=0.3.23.7.gb40397d9
+pkgver=0.3.23.62.g22f6e8e3
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -33,6 +33,7 @@ makedepends=('git'
              'libldac'
              'libopenaptx'
              'libfdk-aac'
+             'libcamera-git'
              )
 checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
@@ -60,10 +61,11 @@ build() {
 
   arch-meson ../pipewire \
     -D udevrulesdir=/usr/lib/udev/rules.d \
-    -D docs=true \
-    -D jack=false \
-    -D gstreamer=false \
-    -D ffmpeg=true \
+    -D docs=enabled \
+    -D jack=disabled \
+    -D gstreamer=disabled \
+    -D gstreamer-device-provider=disabled \
+    -D ffmpeg=enabled \
 
   ninja
 }
@@ -96,6 +98,7 @@ package_pipewire-git() {
            'libsndfile.so'
            'libsystemd.so'
            'libudev.so'
+           'libcamera-git'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
