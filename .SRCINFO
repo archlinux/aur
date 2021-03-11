@@ -1,7 +1,7 @@
 pkgbase = retry-git
 	pkgdesc = A retry command for bash
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/felipou/6fbec22c4e04d3adfae5
 	arch = any
 	license = unknown
