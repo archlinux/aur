@@ -6,12 +6,12 @@
 pkgname=sunflower
 _pkgver=0.4-62
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=(any)
 license=(GPL3)
 url="https://sunflower-fm.org"
-depends=(gtk3 vte3 python-gobject python-chardet librsvg)
+depends=(gtk3 vte3 python-gobject python-chardet python-cairo librsvg)
 makedepends=(libnotify)
 optdepends=('libnotify'
             'python-mutagen: audio-metadata support'
