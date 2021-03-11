@@ -6,18 +6,18 @@ pkgbase=holland
 pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql' 
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
 license=('BSD' 'GPL2')
 options=('emptydirs')
 makedepends=('python-setuptools' 'python-sphinx')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/holland-backup/holland/archive/${pkgver}.tar.gz"
-        "${pkgbase}-backup.github.com-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/holland-backup/holland/archive/v${pkgver}.tar.gz"
+        "${pkgbase}-backup.github.com-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${pkgver}.tar.gz"
         "holland.logrotate")
-sha256sums=('836337c243b2dff5ff6a3ce0b647f123ab24697a5de8ac8ae8b7839aa23dff68'
-            '3edc6c4d3ecca3bb7c5fdec8e7b17ef71f6d48d7b0c8e33de8306a8650556a90'
+sha256sums=('9f2be8fbdba0849cbd3b2d3b8c47d82f538ef21e251d8c3304c87067722e1a8b'
+            'b051f92d078d87e03429fb74d367d4f69da4064c3e7ccb91852f94e30d3b52af'
             '6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995')
 
 prepare() {
