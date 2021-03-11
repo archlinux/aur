@@ -2,7 +2,7 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-cli-git
-pkgver=2.19.7
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI - beta'
 arch=('i686' 'x86_64')
