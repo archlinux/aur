@@ -1,7 +1,7 @@
 pkgbase = iscan-plugin-cx4400
 	pkgdesc = EPSON Image Scan! plugin for Epson scanners (Stylus CX4400)
 	pkgver = 2.30.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = iscan-plugin-cx4400.install
 	arch = i686
