@@ -2,7 +2,7 @@
 # Contributor: yescalona <yescalona[at]ug[dot]uchile[dot]cl>
 # Contributor : soeren <nonick[at]posteo[dot]de>
 pkgname=blast+-bin
-pkgver=2.10.1
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="New suite of BLAST tools that utilizes the NCBI C++ Toolkit"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('perl' 'zlib' 'libidn')
 provides=('blast+')
 conflicts=('blast+')
 source=(https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-x64-linux.tar.gz)
-sha256sums=('8a96f7fac4a5541b6dfcaff4d67d3979ce450aa330b02c3ca2179ca95af096e7')
+sha256sums=('93454cbdf5ba6f541745f31155efd9ba48bc6249fe3659b0aeaea4af62e62b58')
 
 package() {
   install -d "$pkgdir"/usr/bin
