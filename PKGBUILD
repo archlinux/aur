@@ -1,5 +1,5 @@
 pkgname=mtg
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64' 'armv7h' 'aarch64') # possibly others?
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '6b2d2f424f75016ae158c278919fe9622fc983e2c038b44328975944518a2ce7'     
+    '5088e0a229f13f94b2214461661cb94dabd17c9a60bd66329c408f75c9b97bbc'     
     '271a8765990b46a305b3aebeb08ee1ef63d22d889190ba2c84b50b35b304f6b5'
 )
 
@@ -30,4 +30,3 @@ package() {
     install -Dm644 "${srcdir}/mtg@.service" "${pkgdir}/usr/lib/systemd/system/mtg@.service"
     install -Dm644 "${srcdir}/example.conf" "${pkgdir}/etc/mtg/example.conf"
 }
-
