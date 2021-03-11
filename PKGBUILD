@@ -1,7 +1,7 @@
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=pleaser
 _binary=please
-pkgver=0.3.24
+pkgver=0.3.25
 pkgrel=1
 pkgdesc="please, a sudo like program with regex support written in rust, get involved!"
 url="https://gitlab.com/edneville/please"
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
 source=("https://gitlab.com/edneville/${_binary}/-/archive/v${pkgver}/${_binary}-v${pkgver}.tar.gz")
-sha512sums=('c2c55238efdc520c7550e9fa4a1bb58adf25807011efae9e71f2a1ecbad7bd9044e4ea3af5b3204c37b8dac642f33b1adbc14a6422dc433fc719d8564a7f763b')
+sha512sums=('f33a6350669ce5386e830fe2bc089e879856dd0c36f68033e94967b6598db35282978d4613aa9592d71cd2b1b401fa44cdb8783ed7581a9cf7b19cca49cc6d6a')
 
 prepare() {
   cd please-v${pkgver}
