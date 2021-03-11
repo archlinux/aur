@@ -1,35 +1,44 @@
 # Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
 
-pkgname='singularity-container'
-pkgver='3.7.1'
-pkgrel='1'
-pkgdesc='Container platform focused on supporting "Mobility of Compute".'
-arch=('i686' 'x86_64')
+_pkgname=singularity
+pkgname=singularity-container
+pkgver=3.7.2
+pkgrel=1
+pkgdesc='Application containers for Linux'
+arch=('x86_64')
 url='https://www.sylabs.io/singularity/'
 license=('BSD')
-makedepends=('go' 'dep')
-depends=('squashfs-tools' 'libseccomp')
-source=("https://github.com/sylabs/singularity/releases/download/v${pkgver}/singularity-${pkgver}.tar.gz")
-noextract=("singularity-${pkgver}.tar.gz")
-sha256sums=('82d2c65063560195ec34551931be3c325b95e8e2009e92755fd7daad346e083c')
-
-prepare() {
-  export GOPATH="${srcdir}/singularity"
-  mkdir -p "${GOPATH}/src/github.com/sylabs"
-  tar -zxf singularity-${pkgver}.tar.gz -C "${GOPATH}/src/github.com/sylabs"
-}
+makedepends=(
+  go
+)
+depends=(
+  cryptsetup
+  libseccomp
+  squashfs-tools
+)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hpcng/singularity/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('36916222e26fb934404f0766e0ff368edac36d7fc31ca571f5f609466609066b')
 
 build() {
-  export GOPATH="${srcdir}/singularity"
-  cd "${GOPATH}/src/github.com/sylabs/singularity"
-  ./mconfig --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin -V ${pkgver}
-  cd builddir
-  make
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  cd "${_pkgname}"
+  ./mconfig \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    -P release-stripped \
+    -V ${pkgver} \
+    -v
+  make -C builddir
 }
 
 package() {
-  export GOPATH="${srcdir}/singularity"
-  cd "${GOPATH}/src/github.com/sylabs/singularity/builddir"
-  make DESTDIR="${pkgdir}" install man
+  make -C "${_pkgname}/builddir" DESTDIR="${pkgdir}" install man
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim:set ts=2 sw=2 et:
 
