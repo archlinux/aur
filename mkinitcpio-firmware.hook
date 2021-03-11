@@ -9,4 +9,4 @@ Target = mkinitcpio-firmware
 Description = Updating linux initcpios...
 Depends = mkinitcpio
 When = PostTransaction
-Exec = mkinitcpio -P
+Exec = /usr/bin/mkinitcpio -P
