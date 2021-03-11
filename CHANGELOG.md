@@ -1,3 +1,7 @@
+## 11.1.2 (2021-03-11)
+
+#812 Fixes bug where secret would be downloaded from the browser twice.   
+
 ## 11.1.1 (2021-03-08)
 
 Fixes issue where rendering fails in Firefox private mode due to the fact that the serviceWorker API is not available.
