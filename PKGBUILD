@@ -5,7 +5,7 @@
 
 pkgname=phc-intel
 _phcver=0.3.2
-pkgver=$_phcver.12.36
+pkgver=$_phcver.12.37
 pkgrel=1
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature"
 url="https://gitlab.com/linux-phc/phc-intel"
@@ -14,10 +14,10 @@ license=('GPL')
 depends=('dkms')
 provides=('linux-phc')
 backup=('etc/default/phc-intel')
-_commit_hash='d5193766eda1e4797fd2a66d3ea50d5bc7b65ff1'
+_commit_hash='fed0c5b98b73b7076da1909f929a7145795743be'
 source=("https://gitlab.com/linux-phc/phc-intel/-/archive/$_commit_hash/phc-intel-$_commit_hash.tar.gz"
         phc-intel.{default,sh,sleep,system-sleep} dkms.conf)
-sha256sums=('8375c3855b39da7beac286fe5348189f7dcb023aa9c60f5f19b88ead09e4d255'
+sha256sums=('1c95cc41acbf19b1385fea4d42797c67e175322d1d542c3c55022ae93e850142'
             'ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3'
             'b526f3e8e66f6495531f13f2e6867d3a07b2ec7a7c3b8aa061f22be1cd6e770f'
             '569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef'
