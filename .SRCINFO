@@ -1,0 +1,15 @@
+pkgbase = mkinitcpio-firmware
+	pkgdesc = Optional firmware for the default linux kernel to get rid of the annoying 'WARNING: Possibly missing firmware for module:' messages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mkinitcpio-firmware
+	arch = any
+	license = GPL
+	depends = aic94xx-firmware
+	depends = wd719x-firmware
+	depends = upd72020x-fw
+	optdepends = mkinitpcio: build the initramfs
+	optdepends = linux: default linux preset
+	optdepends = linux-firmware: default linux firmware
+
+pkgname = mkinitcpio-firmware
