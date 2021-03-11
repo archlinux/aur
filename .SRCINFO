@@ -1,0 +1,17 @@
+pkgbase = piston-cli-git
+	pkgdesc = A universal shell supporting 36+ languages, in terminal code editor with syntax highlight, code compiler (36+ languages). It can run code from pastebin links and files too.
+	pkgver = r71.094d30a
+	pkgrel = 1
+	url = https://github.com/Shivansh-007/piston-cli.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pip
+	provides = piston-cli
+	conflicts = piston-cli
+	source = git+https://github.com/Shivansh-007/piston-cli.git
+	sha256sums = SKIP
+
+pkgname = piston-cli-git
+
