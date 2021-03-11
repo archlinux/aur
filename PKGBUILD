@@ -2,7 +2,7 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-cli
-pkgver=2.19.7
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ makedepends=('cmake')
 provides=('eddie-cli')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-cli.install
-source=('https://github.com/AirVPN/Eddie/archive/2.19.7.tar.gz')
-sha1sums=('ebee44625022a097963db9eeae193a411e347190')
+source=('https://github.com/AirVPN/Eddie/archive/2.20.0.tar.gz')
+sha1sums=('c059e1e2ffc4ee16c86de9ac79ec037ba6ec5e65')
 
 case "$CARCH" in
     i686) _pkgarch="x86"
