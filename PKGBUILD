@@ -10,7 +10,7 @@ url='https://balena.io/'
 _github_url="https://github.com/balena-io/balena-cli"
 license=('APACHE')
 depends=('nodejs>=10.20.0' 'nodejs<14.0.0' 'gawk' 'sed' 'make')
-makedepends=('npm' 'python2' 'jq' 'coffeescript' 'git' 'node-gyp')
+makedepends=('npm<7.0.0' 'python2' 'jq' 'coffeescript' 'git' 'node-gyp')
 optdepends=('python2: balena preload'
     'openssh: balena ssh'
     'linux-aufs: balena preload/build/deploy --build'
