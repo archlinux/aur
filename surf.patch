@@ -1,0 +1,41 @@
+diff -upr surf-1.0.6.orig/Makefile.in surf-1.0.6/Makefile.in
+--- surf-1.0.6.orig/Makefile.in	2021-03-11 20:15:21.526463425 +0100
++++ surf-1.0.6/Makefile.in	2021-03-11 20:18:49.824063612 +0100
+@@ -496,8 +496,10 @@ installdirs mostlyclean-generic distclea
+ maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+ 
+ 
+-@CUPS_TRUE@surf: $(LOCAL_OBJECTS) $(GTKGUI_OBJ)
+-@CUPS_TRUE@	$(CXX) $(LOCAL_OBJECTS) $(GTKGUI_OBJ) -o surf $(LDFLAGS) -lXmu -lXext -lXt @X_PRE_LIBS@ @X_LIBS@ -lX11 @X_EXTRA_LIBS@ $(LIBS) -lfl @GTK_LIBS@ -lcups
++@CUPS_TRUE@@GUI_TRUE@surf: $(LOCAL_OBJECTS) $(GTKGUI_OBJ)
++@CUPS_TRUE@@GUI_TRUE@	$(CXX) $(LOCAL_OBJECTS) $(GTKGUI_OBJ) -o surf $(LDFLAGS) -lXmu -lXext -lXt @X_PRE_LIBS@ @X_LIBS@ -lX11 @X_EXTRA_LIBS@ $(LIBS) -lfl @GTK_LIBS@ -lcups
++@CUPS_TRUE@@GUI_FALSE@surf: $(LOCAL_OBJECTS)
++@CUPS_TRUE@@GUI_FALSE@	$(CXX) $(LOCAL_OBJECTS) -o surf $(LDFLAGS) $(LIBS) -lfl -lcups
+ @CUPS_FALSE@@GUI_TRUE@surf: $(LOCAL_OBJECTS) $(GTKGUI_OBJ)
+ @CUPS_FALSE@@GUI_TRUE@	$(CXX) $(LOCAL_OBJECTS) $(GTKGUI_OBJ) -o surf $(LDFLAGS) -lXmu -lXext -lXt @X_PRE_LIBS@ @X_LIBS@ -lX11 @X_EXTRA_LIBS@ $(LIBS) -lfl @GTK_LIBS@
+ @CUPS_FALSE@@GUI_FALSE@surf: $(LOCAL_OBJECTS)
+diff -upr surf-1.0.6.orig/src/def.h surf-1.0.6/src/def.h
+--- surf-1.0.6.orig/src/def.h	2021-03-11 20:15:21.509796951 +0100
++++ surf-1.0.6/src/def.h	2021-03-11 20:16:13.329195822 +0100
+@@ -83,7 +83,9 @@ enum {red,green,blue}; 					/* sk */
+ 
+ #define MIN(a,b)	( ((a)<(b))?(a):(b) )
+ #ifndef min
+-#define min(a,b)	( ((a)<(b))?(a):(b) )
++static inline int min(int a, int b) { return MIN(a,b); }
++static inline float min(float a, float b) { return MIN(a,b); }
++static inline double min(double a, double b) { return MIN(a,b); }
+ #endif
+ 
+ #ifdef MAX
+@@ -92,7 +94,9 @@ enum {red,green,blue}; 					/* sk */
+ 
+ #define MAX(a,b)	( ((a)<(b))?(b):(a) )
+ #ifndef max
+-#define max(a,b)	( ((a)<(b))?(b):(a) )
++static inline int max(int a, int b) { return MAX(a,b); }
++static inline float max(float a, float b) { return MAX(a,b); }
++static inline double max(double a, double b) { return MAX(a,b); }
+ #endif
+ 
+ 

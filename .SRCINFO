@@ -1,0 +1,17 @@
+pkgbase = surf-geometry
+	pkgdesc = Visualization of real algebraic geometry
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://surf.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = gtk
+	conflicts = surf
+	source = https://downloads.sourceforge.net/surf/surf-1.0.6.tar.gz
+	source = surf.patch
+	sha1sums = b901a4640c5fe321d9161bcbd99cf93141be59d9
+	sha1sums = c3e05a36413281ac1581585aad18f44381fa2472
+
+pkgname = surf-geometry
+
