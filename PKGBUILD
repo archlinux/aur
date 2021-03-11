@@ -2,7 +2,7 @@
 
 pkgname=bucklespring-git
 _gitname=bucklespring
-pkgver=20161009
+pkgver=20210311
 pkgrel=1
 pkgdesc="Nostalgia bucklespring keyboard sound, sampled from IBM's Model-M"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url="http://github.com/zevv/bucklespring"
 license=('MIT')
 depends=('openal' 'alure' 'libxtst')
 makedepends=('git')
+conflicts=('bucklespring')
 source=('git+https://github.com/zevv/bucklespring')
 sha1sums=('SKIP')
 
