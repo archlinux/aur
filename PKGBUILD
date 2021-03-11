@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
-pkgver=2.21.2
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('ec2753db95697c63031dca5e66f79cd920d09f08e17b794f78a05cf13bedbcc4'
+sha256sums=('fdcc2cd2603c68f68e5c8f15b86918384aecd241806c42be45579cec7c4c6650'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
@@ -21,16 +21,15 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	# Disable building of other packages
-	sed -i '102,106d' package.json
+	sed -i '107,111d' package.json
 	sed -i 's/tar.bz2/dir/g' package.json
-	sed -i 's/linux --windows/linux/g' package.json
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 	yarn install --cache-folder "$srcdir/yarn-cache"
-	yarn tsc
-	yarn dist:others
+	yarn compile
+	yarn build:linux
 }
 
 package() {
