@@ -5,17 +5,17 @@
 pkgbase=lib32-pipewire
 _pkgbase=pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
-pkgver=0.3.22
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor (32-bit client libraries)"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
-makedepends=(git meson valgrind jack2 lib32-jack2 libpulse lib32-libpulse
+makedepends=(git meson valgrind lib32-jack2 libpulse lib32-libpulse
              alsa-lib lib32-alsa-lib gstreamer lib32-gstreamer
              gst-plugins-base lib32-gst-plugins-base rtkit 
              lib32-dbus libsndfile lib32-libsndfile)
-_commit=22d563720a7f6ba7bdf59950f8c14488d80dfa95  # tags/0.3.22
+_commit=68f6c75caed047af32320ab4de0c06457457be54  # tags/0.3.23
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -38,6 +38,7 @@ build() {
     -D docs=false \
     -D tests=false \
     -D bluez5=false \
+    -D jack=false \
     -D sdl2=disabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
@@ -67,9 +68,6 @@ package_lib32-pipewire() {
 
   DESTDIR="$srcdir/install" meson install -C build
 
-  _pick "$srcdir"/install/usr/lib32/spa-$_spaver/jack
-  mv $pkgdir/usr $srcdir/jack
-
   _pick "$srcdir"/install/usr/lib32/libpipewire-$_ver.so*
   _pick "$srcdir"/install/usr/lib32/alsa-lib/*
   _pick "$srcdir"/install/usr/lib32/pipewire-$_ver/libpipewire-module-*.so
@@ -81,7 +79,6 @@ package_lib32-pipewire-jack() {
   pkgdesc+=" (JACK support)"
   depends=(lib32-pipewire=$pkgver lib32-jack2)
   _pick "$srcdir"/install/usr/lib32/pipewire-$_ver/jack/*
-  mv "$srcdir"/jack/lib32/spa-$_spaver "$pkgdir"/usr/lib32/spa-$_spaver
 }
 
 package_lib32-gst-plugin-pipewire() {
