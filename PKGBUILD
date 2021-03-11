@@ -2,12 +2,12 @@
 
 pkgname=gophervr
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3-D interface to Gopherspace"
 arch=('i686' 'x86_64')
-url="http://gopher.floodgap.com/gopher/gw?gopher://gopher.floodgap.com:70/1/gophervr"
+url="https://gopher.floodgap.com/gopher/gw?gopher://gopher.floodgap.com:70/1/gophervr"
 license=('GPL')
-depends=('lesstif')
+depends=('openmotif')
 makedepends=('curl' 'tar' 'imake' 'patch' 'unzip')
 optdepends=('xterm: for telnet connections'
             'inetutils: for telnet connections'
