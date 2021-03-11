@@ -1,0 +1,12 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = mkinitcpio-firmware
+
+[Action]
+Description = Updating linux initcpios...
+Depends = mkinitcpio
+When = PostTransaction
+Exec = mkinitcpio -P
