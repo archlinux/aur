@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 2.5.4.r1.gadc8d6a6d
+	pkgver = 2.6.1.r33.gb24cba99e
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = telegram-desktop-git
 	depends = libdbusmenu-qt5
 	depends = kwayland
 	depends = gtk3
+	depends = glibmm
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
