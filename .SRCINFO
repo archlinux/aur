@@ -1,0 +1,12 @@
+pkgbase = python-svdtools
+	pkgdesc = svdpatch.py
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/stm32-rs/svdtools
+	arch = any
+	license = UNKNOWN
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-svdtools
+
