@@ -1,14 +1,14 @@
 pkgbase = python-wn
 	pkgdesc = Stand-alone WordNet API
-	pkgver = 0.5.1
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/goodmami/wn
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = wn-v0.5.1.tar.gz::https://files.pythonhosted.org/packages/52/29/fd9cbb78e70ad451fdd84f0ebcbf4575f18c3dba8f89e4014d796cd79477/wn-0.5.1.tar.gz
-	sha256sums = 5fffc3c747ef96d69676a0034165738f72690fdbfa27a83f644fb8e5d7bd11d9
+	source = wn-v0.6.1.tar.gz::https://files.pythonhosted.org/packages/95/f3/47ba0d59da763379fa1ee99ebb65ab132c63e3f9186b8f016c8d1b6a8278/wn-0.6.1.tar.gz
+	sha256sums = d82c0c20b1fc870c63c51da0410267617d24b8969c3306647684796a0f1aa808
 
 pkgname = python-wn
 

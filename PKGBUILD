@@ -4,7 +4,7 @@
 pkgname=python-wn
 _author=goodmami
 _gitname=wn
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Stand-alone WordNet API"
 arch=('any')
@@ -12,8 +12,8 @@ url='https://github.com/goodmami/wn'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("$_gitname-v$pkgver.tar.gz::https://files.pythonhosted.org/packages/52/29/fd9cbb78e70ad451fdd84f0ebcbf4575f18c3dba8f89e4014d796cd79477/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('5fffc3c747ef96d69676a0034165738f72690fdbfa27a83f644fb8e5d7bd11d9')
+source=("$_gitname-v$pkgver.tar.gz::https://files.pythonhosted.org/packages/95/f3/47ba0d59da763379fa1ee99ebb65ab132c63e3f9186b8f016c8d1b6a8278/${_gitname}-${pkgver}.tar.gz")
+sha256sums=('5135ac500533787d5924e948a9c5df71382444ec25a2264d36ca7a2e0497dc55')
 
 build() {
     cd $_gitname-$pkgver
