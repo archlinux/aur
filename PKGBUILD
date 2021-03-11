@@ -5,7 +5,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libwebp
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebP library and conversion tools (android)"
 arch=('any')
 url="https://developers.google.com/speed/webp/"
@@ -15,7 +15,7 @@ depends=("android-${_android_arch}-libjpeg-turbo"
          "android-${_android_arch}-libtiff"
          "android-${_android_arch}-giflib")
 options=(!strip !buildflags staticlibs !emptydirs)
-makedepends=('android-configure' 'dh-autoreconf')
+makedepends=('android-configure')
 source=("https://github.com/webmproject/libwebp/archive/v${pkgver}.tar.gz")
 md5sums=('d0df15b4235d024652841f2f926f72b4')
 
