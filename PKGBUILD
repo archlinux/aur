@@ -1,26 +1,35 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=docker-backup
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
-pkgdesc="A tool to create & restore complete, self-contained backups of Docker containers"
-arch=('x86_64' 'i686')
-url="https://github.com/muesli/docker-backup"
+pkgdesc=" tool to create & restore complete, self-contained backups of Docker containers"
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/muesli/${pkgname}"
 license=('MIT')
 makedepends=('go')
-options=('!strip' '!emptydirs' '!makeflags')
-source=("$pkgname-$pkgver::git+https://github.com/muesli/docker-backup#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('578c371e3ea7d976f96e05404603af76d8a137b90374010d0ec60c7048be2d9b')
 
 build() {
-    export GO111MODULE=on
-    cd "$srcdir"/$pkgname-$pkgver
-    go build
+    cd "$pkgname-$pkgver"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    go build \
+        -ldflags "-X main.Version=$pkgver" \
+        -o "$pkgname" .
 }
 
 package() {
-    # Install binary
-    install -Dm755 "$pkgname-$pkgver/docker-backup" "$pkgdir/usr/bin/docker-backup"
+    cd "$pkgname-$pkgver"
+
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
