@@ -1,0 +1,82 @@
+--- xxHash.orig/Makefile	2021-03-11 21:46:58.129999604 +0100
++++ xxHash/Makefile	2021-03-11 21:47:17.273332927 +0100
+@@ -49,11 +49,7 @@
+ UNAME := $(shell uname)
+ 
+ # Define *.exe as extension for Windows systems
+-ifneq (,$(filter Windows%,$(OS)))
+ EXT =.exe
+-else
+-EXT =
+-endif
+ 
+ # OS X linker doesn't support -soname, and use different extension
+ # see: https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/DynamicLibraryDesignGuidelines.html
+@@ -63,8 +59,8 @@
+ 	SHARED_EXT_VER = $(LIBVER).$(SHARED_EXT)
+ 	SONAME_FLAGS = -install_name $(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR) -compatibility_version $(LIBVER_MAJOR) -current_version $(LIBVER)
+ else
+-	SONAME_FLAGS = -Wl,-soname=libxxhash.$(SHARED_EXT).$(LIBVER_MAJOR)
+-	SHARED_EXT = so
++	SONAME_FLAGS = -shared -Wl,--out-implib,libxxhash.dll.a -o libxxhash.$(SHARED_EXT).$(LIBVER_MAJOR)
++	SHARED_EXT = dll
+ 	SHARED_EXT_MAJOR = $(SHARED_EXT).$(LIBVER_MAJOR)
+ 	SHARED_EXT_VER = $(SHARED_EXT).$(LIBVER)
+ endif
+@@ -119,9 +115,7 @@
+ 	$(AR) $(ARFLAGS) $@ $^
+ 
+ $(LIBXXH): LDFLAGS += -shared
+-ifeq (,$(filter Windows%,$(OS)))
+ $(LIBXXH): CFLAGS += -fPIC
+-endif
+ ifeq ($(DISPATCH),1)
+ $(LIBXXH): xxh_x86dispatch.c
+ endif
+@@ -444,11 +438,13 @@
+ .PHONY: install
+ install: lib libxxhash.pc xxhsum  ## install libraries, CLI, links and man page
+ 	@echo Installing libxxhash
++	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(BINDIR)
+ 	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(LIBDIR)
+ 	$(Q)$(INSTALL_DATA) libxxhash.a $(DESTDIR)$(LIBDIR)
+-	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(LIBDIR)
+-	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
+-	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
++	$(Q)$(INSTALL_PROGRAM) libxxhash.dll.a $(DESTDIR)$(BINDIR)
++	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(BINDIR)
++	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT_MAJOR)
++	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT)
+ 	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(INCLUDEDIR)   # includes
+ 	$(Q)$(INSTALL_DATA) xxhash.h $(DESTDIR)$(INCLUDEDIR)
+ 	$(Q)$(INSTALL_DATA) xxh3.h $(DESTDIR)$(INCLUDEDIR) # for compatibility, will be removed in v0.9.0
+@@ -460,10 +456,10 @@
+ 	$(Q)$(INSTALL_DATA) libxxhash.pc $(DESTDIR)$(PKGCONFIGDIR)/
+ 	@echo Installing xxhsum
+ 	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(BINDIR)/ $(DESTDIR)$(MANDIR)/
+-	$(Q)$(INSTALL_PROGRAM) xxhsum $(DESTDIR)$(BINDIR)/xxhsum
+-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh32sum
+-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh64sum
+-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh128sum
++	$(Q)$(INSTALL_PROGRAM) xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
++	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
++	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
++	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
+ 	@echo Installing man pages
+ 	$(Q)$(INSTALL_DATA) xxhsum.1 $(DESTDIR)$(MANDIR)/xxhsum.1
+ 	$(Q)ln -sf xxhsum.1 $(DESTDIR)$(MANDIR)/xxh32sum.1
+@@ -481,10 +477,10 @@
+ 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh3.h
+ 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh_x86dispatch.h
+ 	$(Q)$(RM) $(DESTDIR)$(PKGCONFIGDIR)/libxxhash.pc
+-	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh32sum
+-	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh64sum
+-	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh128sum
+-	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxhsum
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
+ 	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh32sum.1
+ 	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh64sum.1
+ 	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh128sum.1

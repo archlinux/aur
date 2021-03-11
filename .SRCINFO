@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-xxhash
+	pkgdesc = Extremely fast non-cryptographic hash algorithm (mingw-w64)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://cyan4973.github.io/xxHash/
+	arch = any
+	license = GPL2
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = git
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/Cyan4973/xxHash.git#tag=94e5f23e736f2bb67ebdf90727353e65344f9fc0
+	source = mingw-Makefile.patch
+	sha256sums = SKIP
+	sha256sums = c40bd594773be56a44f709405d3623d8f0c0d15d3bb78e891577d33ca3d82c56
+
+pkgname = mingw-w64-xxhash
+
