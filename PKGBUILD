@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=460.39
-pkgrel=3
-_goodkver=5.10
-_badkver=5.11
+pkgver=460.56
+pkgrel=1
+_goodkver=5.11
+_badkver=5.12
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 #_pf_headers=$(pacman -Qqo ${_SYSSRC})
@@ -12,7 +12,7 @@ _extramodules=extramodules-$_modver
 pkgdesc="NVIDIA drivers for linux-pf."
 arch=('x86_64')
 url="http://www.nvidia.com/"
-makedepends=("linux-pf-headers>=${_goodkver}" "linux-pf-headers<${_badkver}")
+makedepends=("linux-pf-headers>=${_goodkver}" "linux-pf-headers<${_badkver}" 'pahole')
 depends=("linux-pf>=${_goodkver}" "linux-pf<${_badkver}" "nvidia-utils=${pkgver}")
 
 conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
@@ -23,7 +23,7 @@ license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
        )
-md5sums=('50d161eadf5744947438d26a91440296')
+md5sums=('9da939690af57e6da56b1f4d25c47462')
 
 
 
