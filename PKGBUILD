@@ -2,7 +2,7 @@
 
 _pkgname=jalv
 pkgname="${_pkgname}-git"
-pkgver=1.6.5.r481.367e3cb
+pkgver=1.6.7.r530.08ca5ba
 pkgrel=1
 pkgdesc="A simple but fully featured LV2 host for Jack (git version)"
 arch=('i686' 'x86_64')
@@ -39,9 +39,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf configure \
-    --prefix=/usr \
-    --no-qt4
+  python waf configure --prefix=/usr
   python waf build $MAKEFLAGS
 }
 
