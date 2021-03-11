@@ -1,0 +1,14 @@
+pkgbase = brother-dcp-l2540dw-lpr-bin
+	pkgdesc = LPR driver for Brother DCP-L2540DW(T) printer
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=mx&lang=es&prod=dcpl2540dw_us_as&os=128&flang=English
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf101715/dcpl2540dwlpr-3.2.0-1.i386.deb
+	md5sums = 5b55df0c98fccc0175a87d3332a95667
+
+pkgname = brother-dcp-l2540dw-lpr-bin
+
