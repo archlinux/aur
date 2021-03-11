@@ -3,7 +3,7 @@
 _pkgbase=ipt-netflow
 pkgname=ipt-netflow-dkms-git
 pkgver=v2.5.1.r12.3cdadee
-pkgrel=1
+pkgrel=2
 url=https://github.com/aabc/ipt-netflow
 pkgdesc="High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel"
 arch=('i686' 'x86_64')
@@ -15,10 +15,6 @@ source=("${_pkgbase}::git+${url}.git"
         'Makefile.in.patch'
         'dkms.conf'
         'modprobe.conf')
-md5sums=('SKIP'
-         '16a7e2f47c0ce1fb202bec3dd69c9d95'
-         '1791b26249eff8ad354855f209dd9b2c'
-         'ce5b763e857a38dab5f22ad77e0c248e')
 
 pkgver() {
     cd "${srcdir}/${_pkgbase%-git}"
@@ -72,3 +68,7 @@ package() {
 	install -D -o root -g root -m 0755 libip6t_NETFLOW.so "$pkgdir/usr/lib/iptables/libip6t_NETFLOW.so"
 }
 
+md5sums=('SKIP'
+         '67fd2b5b39e68efbddeabeec2a71b1d5'
+         '1791b26249eff8ad354855f209dd9b2c'
+         'ce5b763e857a38dab5f22ad77e0c248e')

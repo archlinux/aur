@@ -1,7 +1,7 @@
 pkgbase = ipt-netflow-dkms-git
 	pkgdesc = High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel
 	pkgver = v2.5.1.r12.3cdadee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aabc/ipt-netflow
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ipt-netflow-dkms-git
 	source = dkms.conf
 	source = modprobe.conf
 	md5sums = SKIP
-	md5sums = 16a7e2f47c0ce1fb202bec3dd69c9d95
+	md5sums = 67fd2b5b39e68efbddeabeec2a71b1d5
 	md5sums = 1791b26249eff8ad354855f209dd9b2c
 	md5sums = ce5b763e857a38dab5f22ad77e0c248e
 
