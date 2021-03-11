@@ -1,8 +1,8 @@
-# Maintainer: Aleksandr Boiko <4le34n at gmail dot com>
+# Maintainer: Aleksandr Boiko <contact at via dot aur>
 
 _pkgbase=ipt-netflow
 pkgname=ipt-netflow-dkms-git
-pkgver=r338.edbdb98
+pkgver=v2.5.1.r12.3cdadee
 pkgrel=1
 url=https://github.com/aabc/ipt-netflow
 pkgdesc="High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel"
@@ -22,7 +22,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgbase%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
