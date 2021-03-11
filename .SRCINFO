@@ -1,20 +1,19 @@
 pkgbase = sysmontask
 	pkgdesc = System Monitor With UI Like Windows
-	pkgver = 1.1.1_beta
-	pkgrel = 2
+	pkgver = 1.1.1_beta_b
+	pkgrel = 1
 	url = https://github.com/KrispyCamel4u/SysMonTask
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-psutil>=5.8
+	depends = python-psutil
 	depends = python-gobject
 	depends = python-cairo
 	depends = libwnck3
 	depends = gtk3
-	depends = zenity
-	source = sysmontask-1.1.1_beta.tar.gz::https://github.com/KrispyCamel4u/SysMonTask/archive/v1.1.1_beta.tar.gz
-	sha256sums = d7d184678886e46efc51ea2c890e0496c0871e0674b804dc4b3cb2027a74f13b
+	source = sysmontask-1.1.1_beta_b.tar.gz::https://github.com/KrispyCamel4u/SysMonTask/archive/v1.1.1_beta_b.tar.gz
+	sha256sums = 88e5a4b7c9a4c4a82e26c990f7df0f31d29c5b39a6e4fad9688566d2dc9cd1fc
 
 pkgname = sysmontask
 
