@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     # Arch implements the latest release, for this reason the version has to be up to date!
-    curl -s 'https://oligarchy.co.uk/xapian/?C=M;O=D' | grep -oh '>[0-9]*\.[0-9]*\.[0-9]*\/<' |  grep -oh '[0-9]*\.[0-9]*\.[0-9]*' | head -n 1
+    curl -s 'https://oligarchy.co.uk/xapian/?C=N;O=D' | grep -oh '>[0-9]*\.[0-9]*\.[0-9]*\/<' |  grep -oh '[0-9]*\.[0-9]*\.[0-9]*' | head -n 1
 }
 
 build() {
