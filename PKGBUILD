@@ -1,7 +1,7 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=litestream
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Streaming S3 replication for SQLite.'
 arch=('x86_64')
 url='https://github.com/benbjohnson/litestream'
@@ -27,10 +27,10 @@ build() {
   go build -o build ./cmd/...
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  go test ./...
-}
+# check() {
+#   cd "$pkgname-$pkgver"
+#   go test ./...
+# }
 
 package() {
   cd "$pkgname-$pkgver"
