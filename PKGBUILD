@@ -3,7 +3,7 @@
 pkgname=docker-backup
 pkgver=0.2.3
 pkgrel=1
-pkgdesc=" tool to create & restore complete, self-contained backups of Docker containers"
+pkgdesc="A tool to create & restore complete, self-contained backups of Docker containers"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/muesli/${pkgname}"
 license=('MIT')
