@@ -1,4 +1,4 @@
 *.tar.xz
 pkg/
 src/
-sqls/
+sqls-git/
