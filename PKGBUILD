@@ -2,7 +2,7 @@
 # Contributor: Gwenn Gueguen <gwenn+aur@demisel.net>
 
 pkgname=lcmc
-pkgver=1.7.17
+pkgver=1.7.18
 pkgrel=1
 pkgdesc="Linux Cluster Management Console"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=("LCMC.jar::https://sourceforge.net/projects/lcmc/files/LCMC-${pkgver}.ja
 noextract=(LCMC.jar)
 install=lcmc.install
 
-sha1sums=('3654baa97a87081a86cb96a6e21f95c7c8fad3ff'
-          'SKIP'
+sha1sums=('3ba7ade5285ad06dbf1b45f82e05c706d659caad'
+          '8ea007908875e7fc38efa5e0bae50f2edee6a745'
           '7177ab9f9a6d6e877443d834b55f81a58d69ef34'
           '84f8ab9b450c9e51d828435f12e72cfc851af0cf'
           '583f30b90058efb742a9ecc8e7f33e5e98048341'
