@@ -1,15 +1,18 @@
 pkgbase = resetmsmice
 	pkgdesc = Application to reset many MS wireless mice models to stop excessive wheel scrolling (only needed if dual booting with Windows)
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/resetmsmice/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gtk2
 	depends = libusb
 	source = http://downloads.sourceforge.net/resetmsmice/resetmsmice-1.1.3.tar.gz
+	source = resetmsmice.sysusers
 	source = resetmsmice.service
 	sha512sums = 6bd36e31d53be778d9712a69356a1556075292ce45b4bfad835521da8e335ec585e4c9a2405fcabbb9528994fdf934b95ac98459c7431d83b5753ce139646d81
+	sha512sums = 6d2bd0aaeedbec183eb05e7ebd096c3c7c488a2bf0ea4194564772bcd07d9fffb00e267603b3cd75243eb0628480a04132425be355aa14f78d035fc1be940b6b
 	sha512sums = c25a8b04f313efce4e9b70024e5ade312845ea3c599ddc7abc470843fe62de75f0cf12ff3f8506e25d732de4a0f0484f400ede6b2d997c5b28f73588dcc0190d
 
 pkgname = resetmsmice
