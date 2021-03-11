@@ -1,7 +1,7 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=flexo-git
 pkgrel=1
-pkgver=1.0.6.r4.g95d4407
+pkgver=1.1.0.r1.g4a47024
 pkgdesc="A central pacman cache"
 # TODO we haven't tested yet if this package can be built on ARM architectures.
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url='https://github.com/nroi/flexo'
 license=('MIT')
 provides=("flexo")
 makedepends=('cargo' 'git')
-depends=('curl')
+depends=('curl' 'pacman-contrib')
 backup=('etc/flexo/flexo.toml')
 install="${pkgname%-git}.install"
 source=('git+https://github.com/nroi/flexo.git'
@@ -41,4 +41,5 @@ package() {
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/flexo.conf"
   install -Dm644 "${pkgname%-git}/${pkgname%-git}/conf/flexo.toml" "$pkgdir/etc/flexo/flexo.toml"
   install -Dm755 "${pkgname%-git}/${pkgname%-git}/target/release/flexo" "$pkgdir/usr/bin/flexo"
+  install -Dm755 "${pkgname%-git}/flexo_purge_cache" "$pkgdir/usr/bin/flexo_purge_cache"
 }
