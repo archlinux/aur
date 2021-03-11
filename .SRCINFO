@@ -1,33 +1,33 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = The LTS Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.10.21
-	pkgrel = 1
+	pkgver = 5.10.22
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-5.10.21-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-headers-5.10.21-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-docs-5.10.21-1-x86_64.pkg.tar.zst
-	sha256sums = 55a659c81f501fdf69573ef5c182c576eeab71c82d215193c442475dc2eef623
-	sha256sums = db2404edab7765148cd40937380def8d61925496013db5b5c5a0f49f87ff992c
-	sha256sums = a7a3e45596a45109bd78407ffcdfa613e87859678283eb49ffaee38c703cdbdd
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-5.10.22-2-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-headers-5.10.22-2-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-docs-5.10.22-2-x86_64.pkg.tar.zst
+	sha256sums = 2b1c85cba97fbe4e6c1d0b0dc9373ecf76736a1f8ce2544304bce4deb8c7d4d0
+	sha256sums = 5a251dcb14d5d90bb0413442de05eaaad33bf6c5e85f25ba9f9d8ae3e6867850
+	sha256sums = b82ed8ecc779e15c5221d620395120d003030d23c4fd3636f1145c979edb052e
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Dummy package depending on linux5.10.21-1-lts-bin
-	depends = linux5.10.21-1-lts-bin
+	pkgdesc = Dummy package depending on linux5.10.22-2-lts-bin
+	depends = linux5.10.22-2-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.10.21-1-lts-headers-bin
-	depends = linux5.10.21-1-lts-headers-bin
+	pkgdesc = Dummy package depending on linux5.10.22-2-lts-headers-bin
+	depends = linux5.10.22-2-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.10.21-1-lts-docs-bin
-	depends = linux5.10.21-1-lts-docs-bin
+	pkgdesc = Dummy package depending on linux5.10.22-2-lts-docs-bin
+	depends = linux5.10.22-2-lts-docs-bin
 
-pkgname = linux5.10.21-1-lts-bin
-	pkgdesc = The LTS Linux kernel and modules, version 5.10.21-1-lts
+pkgname = linux5.10.22-2-lts-bin
+	pkgdesc = The LTS Linux kernel and modules, version 5.10.22-2-lts
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -38,11 +38,11 @@ pkgname = linux5.10.21-1-lts-bin
 	conflicts = linux-lts
 	replaces = wireguard-lts
 
-pkgname = linux5.10.21-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.21-1-lts
+pkgname = linux5.10.22-2-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.22-2-lts
 	conflicts = linux-lts-headers
 
-pkgname = linux5.10.21-1-lts-docs-bin
-	pkgdesc = Documentation for the LTS Linux kernel 5.10.21-1-lts
+pkgname = linux5.10.22-2-lts-docs-bin
+	pkgdesc = Documentation for the LTS Linux kernel 5.10.22-2-lts
 	conflicts = linux-lts-docs
 
