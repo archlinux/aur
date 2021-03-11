@@ -1,0 +1,15 @@
+pkgbase = ktrl-git
+	pkgdesc = Keyboard programming daemon
+	pkgver = r165.55f7697
+	pkgrel = 1
+	url = https://github.com/ItayGarin/ktrl
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	provides = ktrl
+	source = ktrl-git::git+https://github.com/ItayGarin/ktrl.git
+	sha1sums = SKIP
+
+pkgname = ktrl-git
+
