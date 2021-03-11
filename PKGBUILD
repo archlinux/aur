@@ -1,7 +1,7 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 _pkgname=confy
 pkgname=confy-git
-pkgver=0.5.3.r3.g263515d
+pkgver=0.5.4.r2.g456a787
 pkgrel=1
 pkgdesc="Conferences schedule viewer for GNOME"
 arch=('x86_64' 'aarch64')
@@ -14,12 +14,12 @@ source=("git+https://git.sr.ht/~fabrixxm/confy")
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "${srcdir}/confy"
+  cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    arch-meson "$_pkgname" build
+    arch-meson build "$_pkgname"
     ninja -C build
 }
 
