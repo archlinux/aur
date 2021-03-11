@@ -1,11 +1,11 @@
-# Maintainer:  Giovanni Santini "ItachiSan" <giovannisantini93@yahoo.it>
+# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Previous maintainer:  agnotek <agnostic.sn [at]gmail.com>
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin-dev
-pkgver=2.5.6
+pkgver=2.6.1
 pkgrel=1
-_dev=1 # If it is a dev-only version, set this to 1
+_dev=0 # If it is a dev-only version, set this to 1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, developement version"
 # Last i686 beta: 2.1.22
 # Checked via: curl -iL https://telegram.org/dl/desktop/linux32?beta=1
@@ -23,13 +23,14 @@ makedepends=(
     chrpath
 )
 optdepends=(
-    'libappindicator-gtk2: to hide Telegram in the tray bar for GTK2-based desktop environment'
-    'libappindicator-gtk3: to hide Telegram in the tray bar for GTK3-based desktop environment'
+    'libappindicator-gtk2: to hide Telegram in the tray bar in GTK2-based desktop environment'
+    'libappindicator-gtk3: to hide Telegram in the tray bar in GTK3-based desktop environment'
     'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
 conflicts=(telegram-desktop telegram-desktop-bin)
 provides=(telegram-desktop)
 replaces=(telegram-bin)
+
 # Sources
 source=(
 	"$pkgname.desktop"
@@ -44,11 +45,10 @@ else
 	_devsuffix=""
 fi
 
-# Official TDesktop releases website
 source_x86_64=("https://updates.tdesktop.com/tlinux/tsetup.${pkgver}${_devsuffix}.tar.xz")
-# If the site is blocked, you can relie on GitHub
+# If your ISP blocks the official Telegram Desktop sources, GitHub works as alternative
 #source_x86_64=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup.${pkgver}${_devsuffix}.tar.xz")
-# Sources for i686 builds
+# Old 32-bit sources:
 #source_i686=('https://updates.tdesktop.com/tlinux32/tsetup32.'${pkgver}${_devsuffix}'.tar.xz')
 #source_i686=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup32.${pkgver}${_devsuffix}.tar.xz")
 
@@ -62,7 +62,7 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032'
             '871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76'
             'a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d')
-sha256sums_x86_64=('29f04d6d39d9ef5bffff3e8aaf9c88c0fad4e7cd44a44fbf123ad04b67673599')
+sha256sums_x86_64=('df5466c03a6e886d27ff5e2f00ce0eb35b87da679437a5c2115a331b876828e0')
 # Some installation information
 install="$pkgname.install"
 
