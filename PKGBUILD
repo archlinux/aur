@@ -1,13 +1,13 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=opencamlib-git
-pkgver=2019.07.4.g983a416
+pkgver=2019.07.17.g653ef7f
 pkgrel=1
 pkgdesc="Multi-Purpose CNC Toolpath Library"
 arch=('i686' 'x86_64')
 url="https://github.com/aewallin/opencamlib"
 license=('LGPL')
-makedepends=('boost' 'cmake' 'doxygen')
+makedepends=('boost' 'cmake' 'doxygen' 'git')
 depends=('python' 'boost')
 provides=('opencamlib')
 conflicts=('opencamlib')

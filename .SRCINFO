@@ -9,6 +9,7 @@ pkgbase = opencamlib-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = git
 	depends = python
 	depends = boost
 	provides = opencamlib
