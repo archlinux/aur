@@ -2,4 +2,5 @@ pkg/
 src/
 couchbase-sync-gateway-community_*_x86_64.deb
 *.tar.gz
+*.tar.zst
 *.tar.xz

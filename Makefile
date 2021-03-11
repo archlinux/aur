@@ -7,4 +7,4 @@ srcinfo: .SRCINFO
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src *.tar.xz couchbase-sync-gateway-community_*_x86_64.deb
+	rm -rf pkg src *.tar.xz *.tar.zst couchbase-sync-gateway-community_*_x86_64.deb
