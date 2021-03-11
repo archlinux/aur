@@ -1,0 +1,5 @@
+u ktrl 961 "Ktrl Daemon" /var/lib/ktrl
+g uinput 961
+m ktrl input
+m ktrl uinput
+m ktrl audio

@@ -1,5 +1,5 @@
 pkgbase = ktrl-git
-	pkgdesc = Keyboard programming daemon
+	pkgdesc = A Supercharged Keyboard Programming Daemon
 	pkgver = r165.55f7697
 	pkgrel = 1
 	url = https://github.com/ItayGarin/ktrl
@@ -9,7 +9,11 @@ pkgbase = ktrl-git
 	makedepends = rust
 	provides = ktrl
 	source = ktrl-git::git+https://github.com/ItayGarin/ktrl.git
-	sha1sums = SKIP
+	source = ktrl.service
+	source = ktrl.sysusers
+	sha256sums = SKIP
+	sha256sums = 3f091de9b6e7fae41edaec2c911d1b28dad95f6905137241216e312e4381bd7e
+	sha256sums = f24bb2af5edc0e8b6143b7b27291638c1a98ab9738cb7f78870f3d1a99d0c799
 
 pkgname = ktrl-git
 

@@ -1,0 +1,14 @@
+[Unit]
+Description=ktrl
+
+[Service]
+User=ktrl
+ExecPreStart=/bin/sh -c 'mkdir -p %L/ktrl && chown ktrl: -R %L/ktrl'
+ExecStart=/usr/bin/ktrl \
+  --assets /usr/share/ktrl/assets \
+  --cfg /etc/ktrl/cfg.ron \
+  --log %L/ktrl/ktrl.log \
+  -d %i
+  
+[Install]
+WantedBy=multi-user.target
