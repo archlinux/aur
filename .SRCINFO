@@ -1,6 +1,6 @@
 pkgbase = librealsense
 	pkgdesc = Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300) and the T265 tracking camera.
-	pkgver = v2.41.0
+	pkgver = v2.42.0
 	pkgrel = 1
 	url = https://github.com/IntelRealSense/librealsense
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = librealsense
 	depends = glfw-x11
 	depends = gtk3
 	depends = libusb
-	source = git+https://github.com/IntelRealSense/librealsense#commit=4f37f2ef0874c1716bce223b20e46d00532ffb04
-	source = https://realsense-hw-public.s3.amazonaws.com/Releases/RS4xx/FW/D4XX_FW_Image-5.12.10.0.bin
+	source = git+https://github.com/IntelRealSense/librealsense#commit=bc0910f8ba3c33307ff247a29dd2b9e9ef1b269d
+	source = https://realsense-hw-public.s3.amazonaws.com/Releases/RS4xx/FW/D4XX_FW_Image-5.12.11.0.bin
 	source = https://realsense-hw-public.s3.amazonaws.com/Releases/SR300/FW/SR3XX_FW_Image-3.26.1.0.bin
 	source = https://realsense-hw-public.s3.amazonaws.com/Releases/TM2/FW/target/0.2.0.951/target-0.2.0.951.mvcmd
-	source = https://realsense-hw-public.s3.amazonaws.com/Releases/L5xx/FW/L5XX_FW_Image-1.5.3.0.bin
+	source = https://realsense-hw-public.s3.amazonaws.com/Releases/L5xx/FW/L5XX_FW_Image-1.5.4.1.bin
 	sha256sums = SKIP
-	sha256sums = c44731a31ffc76a1acb4cb34aef57e4ec5372fa70f58a73cab04294683308b10
+	sha256sums = c22dd34ff8a4abfc410e5e6a9cfc44bcdf6dc99c1d6a1200709c51f88ac7b8a3
 	sha256sums = c4ac2144df13c3a64fca9d16c175595c903e6e45f02f0f238630a223b07c14d1
 	sha256sums = 0265fd111611908b822cdaf4a3fe5b631c50539b2805d2f364c498aa71c007c0
-	sha256sums = 187e281fb02cdc8e441fc433850ebebef01d9d9318654ec5c7499404590d1fa3
+	sha256sums = 1abbea33f15586c4276c5a747907c9613fbf0c1b6d2e632ac08f69bf0ec05604
 
 pkgname = librealsense
 
