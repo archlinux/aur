@@ -1,13 +1,14 @@
 pkgbase = qt5-wayland-bugfixport-git
 	pkgdesc = A cross-platform application and UI framework (QtWayland)
-	pkgver = 5.15.2
-	pkgrel = 1
+	pkgver = 5.15.2[e3879c17]
+	pkgrel = 2
 	url = https://github.com/Geo25rey/qt5-wayland.git
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = LGPL
 	makedepends = git
+	makedepends = vulkan-headers
 	depends = qt5-declarative
 	depends = libxcomposite
 	depends = wayland

@@ -10,14 +10,14 @@
 
 _pkgname=qt5-wayland
 pkgname=$_pkgname-bugfixport-git
-pkgver=5.15.2 # If you want to update periodically - use changeling script (AUR) from aur with cron
-pkgrel=1
+pkgver=5.15.2[e3879c17]
+pkgrel=2
 pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=("i686" "x86_64")
 url="https://github.com/Geo25rey/qt5-wayland.git"
 license=("GPL3" "LGPL")
 depends=("qt5-declarative" "libxcomposite" "wayland")
-makedepends=("git")
+makedepends=("git" "vulkan-headers")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git://github.com/Geo25rey/qt5-wayland.git")
