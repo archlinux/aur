@@ -1,0 +1,17 @@
+pkgbase = ledcapture-git
+	pkgdesc = Flashes keyboard leds on incoming/outgoing network packets
+	pkgver = r4.3822a88
+	pkgrel = 1
+	url = https://github.com/danhab99/ledcapture
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-pyshark
+	depends = python-netifaces
+	provides = ledcapture
+	conflicts = ledcapture
+	source = git+https://github.com/danhab99/ledcapture.git
+	md5sums = SKIP
+
+pkgname = ledcapture-git
+
