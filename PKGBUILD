@@ -5,10 +5,10 @@
 pkgname=python-svdtools
 pkgver=0.1.12
 pkgrel=1
-pkgdesc="svdpatch.py"
+pkgdesc=" Python package to handle vendor-supplied, often buggy SVD files."
 arch=(any)
 url="https://github.com/stm32-rs/svdtools"
-license=(UNKNOWN)
+license=('MIT', 'APACHE')
 makedepends=("python" "python-pip")
 build() {
   pip install --no-deps --target="svdtools" svdtools==0.1.12
