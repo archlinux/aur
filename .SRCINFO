@@ -1,6 +1,6 @@
 pkgbase = eddie-ui
 	pkgdesc = Eddie - VPN tunnel - UI
-	pkgver = 2.19.7
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-ui.install
@@ -20,8 +20,8 @@ pkgbase = eddie-ui
 	conflicts = airvpn
 	conflicts = airvpn-beta-bin
 	conflicts = airvpn-git
-	source = https://github.com/AirVPN/Eddie/archive/2.19.7.tar.gz
-	sha1sums = ebee44625022a097963db9eeae193a411e347190
+	source = https://github.com/AirVPN/Eddie/archive/2.20.0.tar.gz
+	sha1sums = c059e1e2ffc4ee16c86de9ac79ec037ba6ec5e65
 
 pkgname = eddie-ui
 
