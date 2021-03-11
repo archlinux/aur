@@ -8,13 +8,13 @@ name=cloudcompare
 #_fragment="#branch="
 options=('!strip') # strip would also remove plugins, for some reason
 pkgname=${name}-git
-pkgver=2.10.2.r907.g2a4dd249
+pkgver=2.10.2.r912.g39679fc6
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl' 'opencascade' 'gdal')
+depends=('cgal' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl' 'opencascade' 'gdal')
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 conflicts=('cloudcompare')
@@ -70,8 +70,7 @@ build() {
         -DPLUGIN_IO_QSTEP=ON # requires opencascade
         -DOPENCASCADE_INC_DIR="/usr/include/opencascade"
         -DOPENCASCADE_LIB_DIR="/usr/lib"
-        -DPLUGIN_STANDARD_QCANUPO:BOOL=ON # requires dlib
-        -DDLIB_ROOT:PATH="/usr" # required by qcanupo plugin
+        -DPLUGIN_STANDARD_QCANUPO:BOOL=ON 
         -DPLUGIN_STANDARD_QCOMPASS:BOOL=ON
         -DPLUGIN_STANDARD_QCORK:BOOL=ON # require mpir, cork (cork-git is not enough)
         -DMPIR_INCLUDE_DIR:PATH=/usr/include # required by qcork plugin
