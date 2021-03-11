@@ -4,7 +4,7 @@
 pkgname=php-xapian
 pkgver="$(curl -s 'https://oligarchy.co.uk/xapian/?C=N;O=D' | grep -oh '>[0-9]*\.[0-9]*\.[0-9]*\/<' |  grep -oh '[0-9]*\.[0-9]*\.[0-9]*' | head -n 1)"
 epoch=1
-pkgrel=2
+pkgrel=4
 pkgdesc="PHP bindings for Xapian"
 arch=(
     'armv7h'
