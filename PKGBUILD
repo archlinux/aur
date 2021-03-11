@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at m2x+dev>
 
 pkgname=uecide
-pkgver=0.11.8
+pkgver=0.11.9
 pkgrel=1
 pkgdesc='Universal Embedded Computing IDE'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('apache-ant' 'jdk8-openjdk')
 depends=('java-environment>8')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname^^}/${pkgname^^}/archive/${pkgver}.tar.gz")
-b2sums=('f09e647fbf04088c98a2d6babc1ae22bd349ec39eba8a6971b277b780236c9d37fd346bb5d24fd882abfbce7f97a3c1c39d90be9fb688c263c45e47f28f343e0')
+b2sums=('c13f6958d3de5b6fde510ed6a0353cfc54a8fe8b8d6f8949b011b2b033e70e3fffcd3ab2ff3864a70180848ab97709c7f5f10b62e0e750d85dbe83feabe10c9c')
 
 build() {
 	cd "${pkgname^^}-$pkgver"
