@@ -1,7 +1,7 @@
 # Maintainer: mnabila nblid48[at]gmail[dot]com
 
 pkgname=sqls-bin
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="SQL language server written in Go."
 url="https://github.com/lighttiger2505/sqls"
