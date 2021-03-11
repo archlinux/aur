@@ -1,18 +1,16 @@
 pkgbase = singularity-container
-	pkgdesc = Container platform focused on supporting "Mobility of Compute".
-	pkgver = 3.7.1
+	pkgdesc = Application containers for Linux
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://www.sylabs.io/singularity/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = go
-	makedepends = dep
-	depends = squashfs-tools
+	depends = cryptsetup
 	depends = libseccomp
-	noextract = singularity-3.7.1.tar.gz
-	source = https://github.com/sylabs/singularity/releases/download/v3.7.1/singularity-3.7.1.tar.gz
-	sha256sums = 82d2c65063560195ec34551931be3c325b95e8e2009e92755fd7daad346e083c
+	depends = squashfs-tools
+	source = singularity-container-3.7.2.tar.gz::https://github.com/hpcng/singularity/releases/download/v3.7.2/singularity-3.7.2.tar.gz
+	sha256sums = 36916222e26fb934404f0766e0ff368edac36d7fc31ca571f5f609466609066b
 
 pkgname = singularity-container
 
