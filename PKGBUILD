@@ -3,12 +3,12 @@
 
 pkgname=unityhub
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 url="https://unity.com/"
 arch=('x86_64')
 license=('custom')
-depends=('gtk2' 'nss' 'p7zip' 'tar' 'cpio' 'zip' 'libxss' 'libxtst')
+depends=('gtk2' 'nss' 'p7zip' 'gconf' 'cpio' 'zip' 'libxss' 'libxtst')
 source=("${pkgname}-${pkgver}.AppImage::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage")
 PKGEXT='.pkg.tar'
 sha256sums=('SKIP')
