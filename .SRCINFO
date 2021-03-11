@@ -1,11 +1,13 @@
 pkgbase = opentodolist
 	pkgdesc = Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices.
-	pkgver = 3.31.2
+	pkgver = 3.32.0
 	pkgrel = 1
 	url = https://opentodolist.rpdev.net/
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = cmake
+	depends = ninja
 	depends = qt5-base
 	depends = qt5-tools
 	depends = qt5-quickcontrols2
@@ -16,7 +18,7 @@ pkgbase = opentodolist
 	depends = noto-fonts
 	provides = opentodolist
 	conflicts = opentodolist
-	source = opentodolist::git+https://gitlab.com/rpdev/opentodolist.git#commit=7a14a02ee66c1588187f5802f3148b410f2e91f3
+	source = opentodolist::git+https://gitlab.com/rpdev/opentodolist.git#commit=f3fa7a18476fe97b13901e6e1f44cf662df30e91
 	md5sums = SKIP
 
 pkgname = opentodolist
