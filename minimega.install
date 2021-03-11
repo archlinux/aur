@@ -1,0 +1,31 @@
+post_install() {
+  if [[ $(cat /proc/1/comm) == "systemd" ]]; then
+    systemctl daemon-reload &> /dev/null
+  fi
+
+  if ! getent group minimega &> /dev/null ; then
+      echo "Adding minimega group."
+      groupadd --system minimega
+  else
+      echo "minimega group already exists."
+  fi
+
+  chgrp -R minimega /opt/minimega
+  chgrp -R minimega /usr/share/doc/minimega
+}
+
+pre_remove() {
+  if [[ $(cat /proc/1/comm) == "systemd" ]]; then
+    echo "Stopping minimega and miniweb services..."
+
+    for unit in miniweb minimega; do
+      systemctl stop $unit 2>&1
+    done
+  fi
+}
+
+post_remove() {
+  if [[ $(cat /proc/1/comm) == "systemd" ]]; then
+    systemctl daemon-reload &> /dev/null
+  fi
+}

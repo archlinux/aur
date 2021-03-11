@@ -1,0 +1,20 @@
+pkgbase = minimega
+	pkgdesc = a distributed VM management tool
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://minimega.org
+	install = minimega.install
+	arch = x86_64
+	license = GPL3
+	depends = qemu
+	depends = openvswitch
+	depends = ntfs-3g
+	depends = libpcap
+	depends = dosfstools
+	optdepends = dnsmasq
+	provides = minimega
+	source = https://github.com/activeshadow/minimega/archive/2.7.1.tar.gz
+	sha256sums = 9efa0d9d0b1e80ea5d4ec11ad292aacc88d8489277a667991407d9ca5e5fe3de
+
+pkgname = minimega
+

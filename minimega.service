@@ -1,0 +1,31 @@
+[Unit]
+Description=minimega Service
+After=multi-user.target
+
+[Service]
+EnvironmentFile=-/etc/default/minimega
+Environment="MM_BASE=/tmp/minimega"
+Environment="MM_FILEPATH=/tmp/minimega/files"
+Environment="MM_PORT=9000"
+Environment="MM_DEGREE=2"
+Environment="MM_CONTEXT=minimega"
+Environment="MM_LOGLEVEL=info"
+Environment="MM_LOGFILE=/var/log/minimega.log"
+ExecStart=/opt/minimega/bin/minimega -nostdin \
+  -base=${MM_BASE} \
+  -filepath=${MM_FILEPATH} \
+  -port=${MM_PORT} \
+  -degree=${MM_DEGREE} \
+  -context=${MM_CONTEXT} \
+  -level=${MM_LOGLEVEL} \
+  -logfile=${MM_LOGFILE}
+ExecStartPost=/bin/sleep 1
+ExecStartPost=/bin/chgrp -R minimega ${MM_BASE}
+ExecStartPost=/bin/chmod g+w ${MM_BASE}/minimega
+ExecStop=/opt/minimega/bin/minimega -e quit
+WorkingDirectory=/opt/minimega
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
