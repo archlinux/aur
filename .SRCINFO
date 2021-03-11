@@ -1,7 +1,7 @@
 pkgbase = redis-desktop-manager
 	pkgdesc = Open source cross-platform Redis Desktop Manager based on Qt 5
-	pkgver = 2021.2
-	pkgrel = 2
+	pkgver = 2021.3
+	pkgrel = 1
 	url = https://redisdesktop.com/
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = redis-desktop-manager
 	depends = libssh2
 	depends = python
 	conflicts = redis-desktop-manager-bin
-	source = rdm::git://github.com/uglide/RedisDesktopManager.git#tag=2021.2
+	source = rdm::git://github.com/uglide/RedisDesktopManager.git#tag=2021.3
 	source = rdm.desktop
 	sha256sums = SKIP
 	sha256sums = 9ca6cfe0fc1a050552ec2fa009a2d517de3b049ff6f379f0fda849e4dbca3f68
