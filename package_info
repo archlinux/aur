@@ -3,4 +3,4 @@ PackageAuthor=[sonarr-phantom](https://aur.archlinux.org/packages/sonarr-phantom
 UpdateMethod=External
 UpdateMethodMessage=flag [sonarr-phantom](https://aur.archlinux.org/packages/sonarr-phantom/) [out-of-date](https://aur.archlinux.org/pkgbase/sonarr-phantom/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
 Branch=phantom-develop
-PackageGlobalMessage=Warn: This package has reached the end of its life, please migrate to the sonarr or sonarr-develop AUR package.
+PackageGlobalMessage=Error: This package has reached the end of its life, please migrate to the sonarr or sonarr-develop AUR package.
