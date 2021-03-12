@@ -2,15 +2,17 @@
 
 _pyname=corner
 pkgname=python-${_pyname}
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Make some beautiful corner plots of samples'
-url="https://pypi.python.org/pypi/$_pyname/"
-depends=('python-matplotlib' 'python-pytest' 'python-nose' 'python-pandas' 'python-setuptools-scm' 'python-wheel')
+url="https://corner.readthedocs.io"
+depends=('python-matplotlib>=2.1' 'python-nose' 'python-pandas')
+makedepends=('python-setuptools-scm')
+optdepends=('python-scipy' 'python-arviz>=0.9' 'python-black' 'python-isort' 'python-toml')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('38f04719d1ab21d10e532f6d368ad22a')
+md5sums=('4fc5208462aa3e4ba83f1e874382e287')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
