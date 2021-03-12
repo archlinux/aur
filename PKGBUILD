@@ -1,8 +1,8 @@
 #Maintainer: Machina <machinax@protonmail.com>
 pkgname='python-name-that-hash'
 _module='name-that-hash'
-pkgver=1.2.0
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 pkgdesc="The Modern Hash Identifcation System"
 url="https://github.com/HashPals/Name-That-Hash"
 makedepends=('python-setuptools')
@@ -10,7 +10,7 @@ depends=('python' 'python-click' 'python-rich')
 license=('(L)GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-md5sums=('1d024706cb97a22df3e76be2779980c0')
+md5sums=('d4e70b2bbc2fedc7f591b9047fd6641d')
 
 build() 
 {
