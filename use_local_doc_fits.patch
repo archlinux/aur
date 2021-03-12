@@ -1,0 +1,11 @@
+--- a/docs/interpolation.rst	2018-07-02 21:32:42.390297000 +0800
++++ b/docs/interpolation.rst	2021-01-15 12:43:57.605251446 +0800
+@@ -118,7 +118,7 @@
+ 
+     # Get the data
+     from astropy.io import fits
+-    hdulist = fits.open('https://lambda.gsfc.nasa.gov/data/map/dr3/skymaps/5yr//wmap_band_imap_r9_5yr_K_v3.fits')
++    hdulist = fits.open('wmap_band_imap_r9_5yr_K_v3.fits')
+ 
+     # Set up the HEALPix projection
+     from astropy_healpix import HEALPix

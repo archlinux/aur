@@ -1,41 +1,46 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-astropy-healpix
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.5
+_pyname=astropy_healpix
+_pname=${pkgbase#python-}
+pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgver=0.6
 pkgrel=1
 pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
 url="http://astropy-healpix.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-astropy' 'python-astropy-helpers' 'python-sphinx-astropy')
-checkdepends=('python-pytest-astropy'
-#             'python-healpy'
-              'python-hypothesis')
+makedepends=('python-setuptools-scm' 'python-extension-helpers' 'python-numpy' 'python-sphinx-astropy' 'python-astropy')
+checkdepends=('python-pytest-doctestplus' 'python-hypothesis')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        'fix_deprecation_warning.patch')
-md5sums=('8e474c70da122ff44cb4743176936391'
-         '71e532a1fed7a57d4ccf0d3e41035dd8')
+        "https://lambda.gsfc.nasa.gov/data/map/dr3/skymaps/5yr//wmap_band_imap_r9_5yr_K_v3.fits"
+        'fix_deprecation_warning.patch'
+        'use_local_doc_fits.patch')
+md5sums=('95e4b5e7d57bd3756d2086516f68e9d5'
+         'f183da2392e37b9b424e9866d7bca559'
+         '71e532a1fed7a57d4ccf0d3e41035dd8'
+         '65c75d9f8ada192e20aabf0064ac32bf')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i -e '/auto_use/s/True/False/' setup.cfg
-#   patch -Np1 -i "${srcdir}/fix_deprecation_warning.patch"
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    cp ${srcdir}/wmap_band_imap_r9_5yr_K_v3.fits docs
+    patch -Np1 -i "${srcdir}/use_local_doc_fits.patch"
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build --use-system-libraries --offline
+    python setup.py build
 
     msg "Building Docs"
-    python setup.py build_docs
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
+    PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py test
+    pytest "build/lib.linux-${CARCH}-${_pyver}"
 }
 
 package_python-astropy-healpix() {
@@ -45,7 +50,7 @@ package_python-astropy-healpix() {
 
     install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
+    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
 
 package_python-astropy-healpix-doc() {

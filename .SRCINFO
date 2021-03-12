@@ -1,21 +1,26 @@
 pkgbase = python-astropy-healpix
 	pkgdesc = BSD-licensed HEALPix for Astropy
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = http://astropy-healpix.readthedocs.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
+	checkdepends = python-pytest-doctestplus
 	checkdepends = python-hypothesis
-	makedepends = python-setuptools
-	makedepends = python-astropy
-	makedepends = python-astropy-helpers
+	makedepends = python-setuptools-scm
+	makedepends = python-extension-helpers
+	makedepends = python-numpy
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/a/astropy-healpix/astropy-healpix-0.5.tar.gz
+	makedepends = python-astropy
+	source = https://files.pythonhosted.org/packages/source/a/astropy_healpix/astropy_healpix-0.6.tar.gz
+	source = https://lambda.gsfc.nasa.gov/data/map/dr3/skymaps/5yr//wmap_band_imap_r9_5yr_K_v3.fits
 	source = fix_deprecation_warning.patch
-	md5sums = 8e474c70da122ff44cb4743176936391
+	source = use_local_doc_fits.patch
+	md5sums = 95e4b5e7d57bd3756d2086516f68e9d5
+	md5sums = f183da2392e37b9b424e9866d7bca559
 	md5sums = 71e532a1fed7a57d4ccf0d3e41035dd8
+	md5sums = 65c75d9f8ada192e20aabf0064ac32bf
 
 pkgname = python-astropy-healpix
 	depends = python>=3.6
