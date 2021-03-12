@@ -1,14 +1,6 @@
---- Makefile.in	2021-03-09 17:37:29.164390854 +1100
-+++ Makefile.in.new	2021-03-09 18:31:33.620014982 +1100
-@@ -1,14 +1,14 @@
- # Edit Makefile.in and run ./configure
- 
--KVERSION = @KVERSION@
--KDIR = @KDIR@
--KINSTDIR = $(shell dirname @KDIR@)
-+KVERSION = $(shell uname -r)
-+KDIR = /usr/lib/modules/$(KVERSION)/build
-+KINSTDIR = /usr/lib/modules/$(KVERSION)
+--- Makefile.in	2021-03-12 16:28:37.452396326 +1100
++++ Makefile.in.new	2021-03-12 16:26:07.202836507 +1100
+@@ -6,9 +6,9 @@
  KOPTS = @KOPTS@
  IPTABLES_CFLAGS = @IPTABLES_CFLAGS@
  IPTABLES_MODULES = @IPTABLES_MODULES@
@@ -20,41 +12,12 @@
  SNMPCONF = /etc/snmp/snmpd.conf
  SNMPLINE = dlmod netflow $(SNMPTGSO)
  CC = gcc
-@@ -22,24 +22,24 @@
- 
- ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat_def.h compat.h Makefile
- 	@echo Compiling $(shell ./version.sh) for kernel $(KVERSION)
--	make -C $(KDIR) M=$(CURDIR) modules CONFIG_DEBUG_INFO=y
-+	make -C $(KDIR) M=$(PWD) modules CONFIG_DEBUG_INFO=y
- 	@touch $@
- compat_def.h: gen_compat_def
- 	./gen_compat_def > $@
- sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
- 	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
- 	@echo Compiling for kernel $(KVERSION)
--	make -C $(KDIR) M=$(CURDIR) modules C=1
-+	make -C $(KDIR) M=$(PWD) modules C=1
- 	@touch ipt_NETFLOW.ko
- coverity:
- 	coverity-submit -v
- 
- minstall: | ipt_NETFLOW.ko
- 	@echo " *"
--	make -C $(KDIR) M=$(CURDIR) modules_install INSTALL_MOD_PATH=$(DESTDIR)
-+	make -C $(KDIR) M=$(PWD) modules_install INSTALL_MOD_PATH=$(DESTDIR)
- 	$(DEPMOD)
- mclean:
--	make -C $(KDIR) M=$(CURDIR) clean
-+	make -C $(KDIR) M=$(PWD) clean
- lclean:
- 	-rm -f *.so *_sh.o
- clean: mclean lclean
 @@ -98,7 +98,7 @@
  	echo " *"; \
  	fi
  	@if [ "@DKMSINSTALL@" = dinstall ]; then ./install-dkms.sh --uninstall; fi
 -	-rm -f $(DESTDIR)$(KINSTDIR)/extra/ipt_NETFLOW.ko
-+	-rm -f $(DESTDIR)$(KINSTDIR)/kernel/misc/ipt_NETFLOW.ko
++	-rm -f $(DESTDIR)$(KINSTDIR)/misc/ipt_NETFLOW.ko
  
  Makefile: Makefile.in configure
  	./configure --make ${CARGS}
