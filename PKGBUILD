@@ -14,4 +14,5 @@ md5sums=(4dd5237ab928507ffb7070b3412869a7)
 package() {
 	tar -zxf data.tar.gz -C "${pkgdir}"
 	mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
+	mv "${pkgdir}/opt/xilinx" "${pkgdir}/opt/Xilinx"
 }
