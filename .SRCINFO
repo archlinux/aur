@@ -9,6 +9,7 @@ pkgbase = dmenu-jadecell-git
 	makedepends = git
 	makedepends = make
 	makedepends = libxinerama
+	depends = ttf-joypixels
 	provides = dmenu
 	conflicts = dmenu
 	source = git+https://gitlab.com/jadecell/dmenu.git
