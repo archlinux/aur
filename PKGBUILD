@@ -2,8 +2,8 @@
 # Co-Maintainer: Bradley Garrod <bradleybredgarrod@gmail.com>
 
 pkgname=gitlab-glab-bin
-pkgver=1.15.0
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 epoch=
 pkgdesc="An open source GitLab CLI tool written in Go"
 arch=(x86_64)
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("$url/releases/download/v${pkgver}/glab_${pkgver}_Linux_x86_64.tar.gz")
 noextract=()
-sha256sums=('d3d64912442c5f5d95679b41a8014a0bb29de789d3efd271b34efca9f5f33af6')
+sha256sums=('7a9b55465631b8aa25a434cd335cdccb6dadca31d842da0d82dc89be6e35d93b')
 validpgpkeys=()
 
 package() {
