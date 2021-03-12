@@ -1,14 +1,16 @@
 pkgbase = wppfzf
 	pkgdesc = Browse and download images from reddit with fzf
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/channel-42/wppfzf
 	arch = any
 	groups = misc
 	license = GPL3
+	depends = python
+	depends = wget
 	depends = fzf
-	depends = ueberzug
 	depends = bash
+	depends = ueberzug
 	source = https://github.com/channel-42/wppfzf/archive/v0.1.0.tar.gz
 	md5sums = ef6561e2c7ec658108ccbf6f406ae96a
 

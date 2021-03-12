@@ -2,15 +2,13 @@
 # Maintainer: corusm <dev@corusm.de>
 pkgname=wppfzf
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse and download images from reddit with fzf"
 arch=('any')
 url="https://github.com/channel-42/wppfzf"
 license=('GPL3')
 groups=('misc')
-depends=('fzf'
-         'ueberzug'
-         'bash')
+depends=('python' 'wget' 'fzf' 'bash' 'ueberzug')
 source=("https://github.com/channel-42/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('ef6561e2c7ec658108ccbf6f406ae96a')
 
