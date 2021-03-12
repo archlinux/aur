@@ -2,40 +2,41 @@
 
 
 pkgname=dirsearch-git
+_name="${pkgname%-git}"
 
-pkgver() { git -C "${pkgname%-git}" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
+pkgver() { git -C "$_name" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
 pkgver=0.4.1.alpha.r183.ae36ca7
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
 arch=('any')
-url="https://github.com/maurosoria/${pkgname%-git}"
+url="https://github.com/maurosoria/$_name"
 license=('GPL2')
 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_name")
+conflicts=("$_name")
 
-depends=('python')
 makedepends=('git')
+depends=('python')
 
 changelog=CHANGELOG.md
-backup=("usr/lib/${pkgname%-git}/default.conf")
+backup=("usr/lib/$_name/default.conf")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 
 prepare() {
-  cd "${pkgname%-git}"
-  rm -r {logs,reports}
+  cd "$_name"
+  rm -r logs reports
   sed -i 's/^\(save-logs-home\s*=\s*\)False/\1True/' default.conf
 }
 
 package() {
-  cd "${pkgname%-git}"
-  install -dm755 "$pkgdir/usr"/{bin,"lib/${pkgname%-git}"}
-  cp -a --no-preserve=o db lib thirdparty default.conf dirsearch.py "$pkgdir/usr/lib/${pkgname%-git}/"
-  install -Dm644 *.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
-  ln -s "/usr/lib/${pkgname%-git}/${pkgname%-git}.py" "$pkgdir/usr/bin/${pkgname%-git}"
+  cd "$_name"
+  install -dm755 "$pkgdir/usr"/{bin,"lib/$_name"}
+  cp -a --no-preserve=o db lib thirdparty default.conf dirsearch.py "$pkgdir/usr/lib/$_name/"
+  install -Dm644 *.md -t"$pkgdir/usr/share/doc/$_name/"
+  ln -s "/usr/lib/$_name/$_name.py" "$pkgdir/usr/bin/$_name"
 }
 
 
