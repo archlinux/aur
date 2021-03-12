@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd "$_pkgname/build"
-  ls -al
+
   install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 }
