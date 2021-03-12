@@ -17,13 +17,51 @@ depends=(gtk3 sdl2 sfml assimp glew glm spirv-headers)
 makedepends=(git cmake python)
 
 source=("git+https://github.com/dfranx/SHADERed.git#tag=v$pkgver"
+        "git+https://github.com/dfranx/ImGuiColorTextEdit"
+        "git+https://github.com/dfranx/SPIRV-VM.git"
+        "git+https://github.com/dfranx/ShaderExpressionParser"
+        "git+https://github.com/dfranx/SpvGenTwo"
+        "git+https://github.com/dfranx/assimp.git"
+        "git+https://github.com/KhronosGroup/glslang"
+        "git+https://github.com/dfranx/imgui.git"
+        "git+https://github.com/jtilly/inih"
+        "git+https://github.com/zeux/pugixml"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers"
+        "git+https://github.com/KhronosGroup/SPIRV-Tools.git"
         "SHADERed.sh")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'e501a371996c373988bd74733f288c8caa6b44d88439c5d52b18e14b4766420c')
+
+prepare() {
+  cd SHADERed
+  git submodule init
+  git config submodule.'libs/ImGuiColorTextEdit'.url "$srcdir/ImGuiColorTextEdit"
+  git config submodule.'libs/SPIRV-VM'.url "$srcdir/SPIRV-VM"
+  git config submodule.'libs/ShaderExpressionParser'.url "$srcdir/ShaderExpressionParser"
+  git config submodule.'libs/SpvGenTwo'.url "$srcdir/SpvGenTwo"
+  git config submodule.'libs/assimp'.url "$srcdir/assimp"
+  git config submodule.'libs/glslang'.url "$srcdir/glslang"
+  git config submodule.'libs/imgui'.url "$srcdir/imgui"
+  git config submodule.'libs/inih'.url "$srcdir/inih"
+  git config submodule.'libs/pugixml'.url "$srcdir/pugixml"
+  git config submodule.'libs/spirv-headers'.url "$srcdir/SPIRV-Headers"
+  git config submodule.'libs/spirv-tools'.url "$srcdir/SPIRV-Tools"
+  git submodule update
+}
 
 build() {
   cd SHADERed/
-  git submodule update --init --recursive
   cmake .
   make
 }
