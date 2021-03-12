@@ -1,6 +1,6 @@
 pkgbase = r-lava
 	pkgdesc = Latent Variable Models
-	pkgver = 1.6.8.1
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lava
 	arch = any
@@ -31,8 +31,8 @@ pkgbase = r-lava
 	optdepends = r-testthat
 	optdepends = r-visnetwork
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/lava_1.6.8.1.tar.gz
-	sha256sums = 6d243fc86c67c78ff4763502d84ff2f0889c2e55d1a59afefb7a762887473ffa
+	source = https://cran.r-project.org/src/contrib/lava_1.6.9.tar.gz
+	sha256sums = 034d628a22061cf811e7ac9a9210d91e12fec146250da3ad6fbb7ef4f372b11d
 
 pkgname = r-lava
 
