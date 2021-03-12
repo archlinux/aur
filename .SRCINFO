@@ -1,6 +1,6 @@
 pkgbase = gst-plugin-pipewire-git
 	pkgdesc = Multimedia graph framework - pipewire plugin (git)
-	pkgver = 0.3.18.104.gd99ac615
+	pkgver = 0.3.23.62.g22f6e8e3
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64

@@ -5,7 +5,7 @@
 
 pkgname=gst-plugin-pipewire-git
 _pkgbase=pipewire
-pkgver=0.3.18.104.gd99ac615
+pkgver=0.3.23.62.g22f6e8e3
 _ver=${pkgver:0:3}
 pkgrel=1
 pkgdesc='Multimedia graph framework - pipewire plugin (git)'
@@ -25,9 +25,18 @@ pkgver() {
 
 build() {
     arch-meson ${_pkgbase} build \
-        -D docs=false \
-        -D bluez5=false \
-        -D jack=false -Dpipewire-jack=false \
+        -D docs=disabled \
+        -D man=disabled \
+        -D systemd-system-service=disabled \
+        -D audiotestsrc=disabled \
+        -D videotestsrc=disabled \
+        -D bluez5=disabled \
+        -D ffmpeg=disabled \
+        -D libcamera=disabled \
+        -D jack=disabled -D pipewire-jack=disabled \
+        -D sdl2=disabled \
+        -D volume=disabled \
+        -D vulkan=disabled \
         -D udevrulesdir=/usr/lib/udev/rules.d
     ninja -C build src/gst/libgstpipewire.so
 }
