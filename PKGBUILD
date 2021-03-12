@@ -16,7 +16,7 @@ license=("MIT")
 depends=(gtk3 sdl2 sfml assimp glew glm spirv-headers)
 makedepends=(git cmake python)
 
-source=("git+https://github.com/dfranx/SHADERed.git#commit=d05da43"
+source=("git+https://github.com/dfranx/SHADERed.git#tag=v$pkgver"
         "SHADERed.sh")
 sha256sums=('SKIP'
             'e501a371996c373988bd74733f288c8caa6b44d88439c5d52b18e14b4766420c')
