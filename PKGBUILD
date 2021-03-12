@@ -1,3 +1,4 @@
+# Maintainer: Yacob Zitouni <yacob.zitouni@gmail.com>
 pkgname=('projectctr-makerom')
 pkgver=0.17
 pkgrel=1
