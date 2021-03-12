@@ -1,4 +1,4 @@
-# Maintainer: Kenee Patel  <patelkenee2804 + aur at gmail <.> com>
+# Maintainer: SuperMazingCoder  <supermazingcoder + aur at gmail <.> com>
 pkgname=piston-cli-git
 _pkgname=piston-cli
 pkgver=r71.094d30a
