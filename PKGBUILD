@@ -33,7 +33,7 @@ source=(${pkgname}-${pkgver}-${_tag}.tar.gz::https://github.com/jitsi/jitsi-vide
         tmpfiles.conf)
 noextract=()
 sha256sums=('9c9a55deb8f7834a67a59803d3b8d61fed698529479a34e21bd2e530cee86a7c'
-            '9fea96be644658b95e3bddcdc9415df3817567736cc69d0b2b3cb1b318864f97'
+            '43037b9c00d09dafeb17758427093f4abaea10190cdd67f7047d008726c8cdef'
             'bb5db01df7dbfb67a400b0be114f29b2cc5cfc37cddea24b9b706c7a6c15e8af'
             '2b7679218752c0435a1496306b447d72aafaf5b671b6eef63e58c83a67638ced'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
