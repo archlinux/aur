@@ -1,5 +1,5 @@
 pkgname=dpdk-lts
-pkgver=19.11
+pkgver=19.11.6
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
@@ -13,10 +13,11 @@ source=(
     "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
 sha256sums=(
-    '467133968843677bb1c276bb74a3458aa7c002cc21e295c51e3bd65497b112ab'
+    '97ee27bb98f5e38bdaa3762345817a56f821b016bb2f518cf0aade4fdffde9f4'
 )
 
 prepare() {
+  mv dpdk-stable-$pkgver dpdk-$pkgver
   cd dpdk-$pkgver
   make T=x86_64-native-linuxapp-gcc config
 
