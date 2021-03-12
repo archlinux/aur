@@ -1,6 +1,6 @@
 pkgbase = fatrace
 	pkgdesc = Reports file access events from all running processes.
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/martinpitt/fatrace
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = fatrace
 	license = GPL
 	depends = python
 	depends = powertop
-	source = https://github.com/martinpitt/fatrace/archive/0.16.1.tar.gz
-	sha256sums = eda65fe8fcaddb601ffe38d9584654cc014ff16200c11ea8dacae3de0be8935d
+	source = https://github.com/martinpitt/fatrace/archive/0.16.2.tar.gz
+	sha256sums = 300b5ab4aa89f62e556e5e0aaf5cfbec638a7185f428419afa8bd6d23a16a207
 
 pkgname = fatrace
 
