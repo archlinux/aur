@@ -1,7 +1,7 @@
 pkgbase = isso
 	pkgdesc = A commenting python server similar to Disqus
 	pkgver = 0.12.5
-	pkgrel = 1
+	pkgrel = 3
 	url = http://posativ.org/isso/
 	install = isso.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = isso
 	depends = python-misaka
 	depends = python-itsdangerous
 	depends = python-six
+	depends = python-flask-caching
 	depends = python-cffi
 	depends = sqlite
 	depends = python-setuptools
