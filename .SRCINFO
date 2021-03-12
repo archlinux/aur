@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.10.21.arch1.r969261.4062aabf8d0e
+	pkgver = v5.10.23.arch1.r969267.63924135a103
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 046bf14cdb70d1290a9dd6d125d4499447e88147764fad2dd0a3c10253e56f1632f030f7893a59a7a0f86ce025b3be4bf68c2d2410ac2ca344b6b63b4be5c21c
+	sha512sums = dece85aae8326c62294c68b55ebf95dc48b1f4b457a61ec26d2aa3821ee19256b46bd99c556657c6b0fe1b6c4a8000444912230e09d6b5c7e6854080fb353e96
 	sha512sums = 05ec92046b9b48802b8c3afa550574a46893c90aeb552dca49445d1ef94dbb2a2f39d3d919c65d41f95859cea8bb641e042b20720a1a527cd067965dff84aea7
 
 pkgname = linux-bcachefs-git

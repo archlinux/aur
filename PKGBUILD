@@ -59,8 +59,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.21.arch1.r969261.4062aabf8d0e
-_srcver_tag=v5.10.21.arch1
+pkgver=v5.10.23.arch1.r969267.63924135a103
+_srcver_tag=v5.10.23.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -89,7 +89,7 @@ _repo_url="https://github.com/koverstreet/bcachefs"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
+_gcc_patch_name="more-uarches-for-gcc-v11-and-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -105,7 +105,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '046bf14cdb70d1290a9dd6d125d4499447e88147764fad2dd0a3c10253e56f1632f030f7893a59a7a0f86ce025b3be4bf68c2d2410ac2ca344b6b63b4be5c21c'
+            'dece85aae8326c62294c68b55ebf95dc48b1f4b457a61ec26d2aa3821ee19256b46bd99c556657c6b0fe1b6c4a8000444912230e09d6b5c7e6854080fb353e96'
             '05ec92046b9b48802b8c3afa550574a46893c90aeb552dca49445d1ef94dbb2a2f39d3d919c65d41f95859cea8bb641e042b20720a1a527cd067965dff84aea7')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -139,7 +139,7 @@ prepare() {
         msg2 "Applying patch $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
     done
-    
+
     msg2 "Setting config..."
     cp ../config .config
     
