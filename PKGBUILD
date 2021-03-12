@@ -25,4 +25,5 @@ build() {
 package() {
   cd $srcdir/Firewalk
   make DESTDIR="$pkgdir" install 
+  install -Dm644 $srcdir/Firewalk/man/firewalk.8   $pkgdir/usr/share/man/man8/firewalk.8
 }
