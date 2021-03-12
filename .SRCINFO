@@ -1,0 +1,14 @@
+pkgbase = plex-ass-scanner-git
+	pkgdesc = Plex Absolute Series Scanner
+	pkgver = r1043.9d24e60
+	pkgrel = 1
+	url = https://github.com/ZeroQI/Absolute-Series-Scanner
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = plex-media-server
+	source = plex-ass-scanner-git::git+https://github.com/ZeroQI/Absolute-Series-Scanner
+	sha512sums = SKIP
+
+pkgname = plex-ass-scanner-git
+
