@@ -2,12 +2,12 @@
 
 pkgname=ntpsec
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.ntpsec.org/"
 license=('custom')
-depends=('avahi' 'libbsd' 'libseccomp' 'python')
+depends=('avahi' 'libbsd' 'python')
 makedepends=('asciidoc' 'pps-tools' 'w3m' 'binutils')
 optdepends=('gnuplot: for ntpviz'
             'libevent: for ntpdig'
@@ -45,7 +45,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  ./waf configure --prefix /usr --sbindir=/usr/bin --enable-debug-gdb --enable-seccomp \
+  ./waf configure --prefix /usr --sbindir=/usr/bin --enable-debug-gdb \
         --refclock=all --enable-doc --htmldir=/usr/share/doc/ntpsec \
         --enable-leap-smear
   ./waf build
