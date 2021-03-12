@@ -1,0 +1,20 @@
+pkgbase = gi-docgen
+	pkgdesc = Documentation generator for GObject-based libraries
+	pkgver = 2021.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/ebassi/gi-docgen
+	arch = any
+	license = GPL
+	makedepends = meson
+	makedepends = ninja
+	depends = python-markdown>=3
+	depends = python-markupsafe>=1
+	depends = python-pygments>=2
+	depends = python-jinja>=2
+	depends = python-toml>=0
+	depends = python-typogrify>=2
+	source = https://gitlab.gnome.org/ebassi/gi-docgen/-/archive/2021.2/gi-docgen-2021.2.tar.bz2
+	sha512sums = 1fd0e43781b0984d5431c73aac4ea759b9ea977d09db7588ca43aafa1b22d55efdaf528f097b4feade9ba87c042d268b7c283f2677b9d49d91302e95683e4088
+
+pkgname = gi-docgen
+
