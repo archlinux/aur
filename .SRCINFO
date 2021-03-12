@@ -1,7 +1,7 @@
 pkgbase = ipt-netflow-dkms-git
 	pkgdesc = High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel
 	pkgver = v2.5.1.r12.3cdadee
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/aabc/ipt-netflow
 	arch = i686
 	arch = x86_64
