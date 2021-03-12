@@ -1,0 +1,15 @@
+post_install() {
+    echo "Run 'sudo /var/lib/adguardhome/AdGuardHome -s run' to manually start AdGuardHome."
+    echo "Run 'sudo /var/lib/adguardhome/AdGuardHome -s install' to install AdGuardHome's as a service."
+    echo "Then run 'systemctl enable AdGuardHome' to make it automatically start."
+    echo "Once AdGuardHome is running, go to http://localhost:3000 to configure it."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm -rf /var/lib/adguardhome
+    rm /etc/systemd/system/AdGuardHome.service
+}

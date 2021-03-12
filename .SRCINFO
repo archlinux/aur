@@ -1,14 +1,30 @@
 pkgbase = adguardhome-bin
-	pkgdesc = Network-wide ads and trackers blocking DNS server (bin version)
-	pkgver = 0.100.9
-	pkgrel = 2
+	pkgdesc = Network-wide ads and trackers blocking DNS server (binary version).
+	pkgver = 0.105.2
+	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardHome
+	install = adguardhome-bin.install
+	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
 	license = GPL
-	source = https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
-	source = AdGuardHome.service
-	sha256sums = e1b28d38cc345de971a14a373025ea72da1145fe27199e2c94a9c7fab92d433b
-	sha256sums = 4464cd7c833827a1b615aaeba262be103282d8b274f22c4d7a74e45f568c1224
+	provides = adguardhome-bin
+	conflicts = adguardhome
+	source_i686 = AdGuardHome-0.105.2.tar.gz::https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.105.2/AdGuardHome_linux_386.tar.gz
+	sha256sums_i686 = 62bd99ef3e02cf8f50fa3a4c5f680d3c8ccff7124c7597e073b0ca3f601058af
+	source_x86_64 = AdGuardHome-0.105.2.tar.gz::https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.105.2/AdGuardHome_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8b89b9e2d1483f3830adb4b5166db47c733d10fb288c57003c5eb7f899c7eabe
+	source_aarch64 = AdGuardHome-0.105.2.tar.gz::https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.105.2/AdGuardHome_linux_arm64.tar.gz
+	sha256sums_aarch64 = 62bd99ef3e02cf8f50fa3a4c5f680d3c8ccff7124c7597e073b0ca3f601058af
+	source_armv5h = AdGuardHome-0.105.2.tar.gz::https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.105.2/AdGuardHome_linux_armv5.tar.gz
+	sha256sums_armv5h = d5cb77590d4b1a12747c0203b59a5d6176f41cc3feec7a35d51aaf044f4881f9
+	source_armv6h = AdGuardHome-0.105.2.tar.gz::https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.105.2/AdGuardHome_linux_armv6.tar.gz
+	sha256sums_armv6h = 98a1f09b44ac1011b6b9f015d2b04787603b4e875a1cf1dd1823b93bb53c34ce
+	source_armv7h = AdGuardHome-0.105.2.tar.gz::https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.105.2/AdGuardHome_linux_armv7.tar.gz
+	sha256sums_armv7h = 92347fecc69c38fe58cd96fe2d9565ca92ef03f947c223ee938ae44c5ed5fdb8
 
 pkgname = adguardhome-bin
 
