@@ -1,0 +1,25 @@
+From 75e74794ecfd8cf5f0ba0086eca59ab6041e18c5 Mon Sep 17 00:00:00 2001
+From: Christoph Haag <christoph.haag@collabora.com>
+Date: Fri, 12 Mar 2021 12:29:02 +0100
+Subject: [PATCH] Add #include <stdarg.h> to strtools_public.cpp
+
+Required for va_start and va_end
+---
+ src/vrcommon/strtools_public.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/vrcommon/strtools_public.cpp b/src/vrcommon/strtools_public.cpp
+index 3193f7e..10b8419 100644
+--- a/src/vrcommon/strtools_public.cpp
++++ b/src/vrcommon/strtools_public.cpp
+@@ -10,6 +10,7 @@
+ #include <functional>
+ #include <locale>
+ #include <codecvt>
++#include <stdarg.h>
+ 
+ #if defined( _WIN32 )
+ #include <windows.h>
+-- 
+2.30.2
+

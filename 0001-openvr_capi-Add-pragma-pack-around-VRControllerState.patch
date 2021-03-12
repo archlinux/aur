@@ -1,4 +1,4 @@
-From cef0756d3c26317c453132ddfad08cb814c339d5 Mon Sep 17 00:00:00 2001
+From 833a92c6f00c2178436008c1e1a7d6614165a56a Mon Sep 17 00:00:00 2001
 From: Christoph Haag <christoph.haag@collabora.com>
 Date: Wed, 8 Aug 2018 01:06:29 +0200
 Subject: [PATCH] openvr_capi: Add pragma pack around VRControllerState_t.
@@ -9,10 +9,10 @@ See https://github.com/ValveSoftware/SteamVR-for-Linux/issues/35
  1 file changed, 8 insertions(+)
 
 diff --git a/headers/openvr_capi.h b/headers/openvr_capi.h
-index 6feb2c6..d263914 100644
+index 13c71fc..3c32c59 100644
 --- a/headers/openvr_capi.h
 +++ b/headers/openvr_capi.h
-@@ -2051,6 +2051,11 @@ typedef struct VRControllerAxis_t
+@@ -2202,6 +2202,11 @@ typedef struct VRControllerAxis_t
  	float y;
  } VRControllerAxis_t;
  
@@ -24,7 +24,7 @@ index 6feb2c6..d263914 100644
  typedef struct VRControllerState_t
  {
  	uint32_t unPacketNum;
-@@ -2058,6 +2063,9 @@ typedef struct VRControllerState_t
+@@ -2209,6 +2214,9 @@ typedef struct VRControllerState_t
  	uint64_t ulButtonTouched;
  	struct VRControllerAxis_t rAxis[5]; //struct vr::VRControllerAxis_t[5]
  } VRControllerState_t;
@@ -32,8 +32,8 @@ index 6feb2c6..d263914 100644
 +#pragma pack( pop )
 +#endif
  
- typedef struct VRBoneTransform_t
+ typedef struct CameraVideoStreamFrameHeader_t
  {
 -- 
-2.25.1
+2.30.2
 

@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.14.15.r1.ge3d3756
+pkgver=1.16.8.r0.g4c85abc
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
@@ -16,12 +16,16 @@ source=("git+https://github.com/ValveSoftware/openvr.git"
         '0002-samples-cmake-Remove-OpenVR-paths-check.patch'                                # samples/cmake: Remove OpenVR paths check.
         '0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch'                   # Use correct C++11 definition for vsprintf_s https://github.com/ValveSoftware/openvr/pull/594
         'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1178.patch' # Add ability to build with system installed jsoncpp
+        'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1524.patch' # fix broken 1.6.8 build https://github.com/ValveSoftware/openvr/issues/1525
+        '0001-Add-include-stdarg.h-to-strtools_public.cpp.patch'                            # missing include for va_start and va_end
         )
 md5sums=('SKIP'
-         '79543abcb2f86a8dcfcc942dc32c4090'
+         '4aa6ee8199d86dde2a563b4495f41a53'
          'd3dc9d20967362a2e92e3fb1c7f82b57'
          'e68ff412ff73b1ca75f8b17ab6c7069a'
-         'bd5a473153106325233f00b3f35c46d8')
+         'bd5a473153106325233f00b3f35c46d8'
+         '30e13170804c6d6756d74fa1ee7bdcb0'
+         'ac790ec12a558931895504f1ca92c364')
 
 install_examples=false
 
@@ -38,7 +42,9 @@ prepare() {
     "../0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch" \
     "../0002-samples-cmake-Remove-OpenVR-paths-check.patch" \
     "../0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch" \
-    "../1178.patch"
+    "../1178.patch" \
+    "../1524.patch" \
+    "../0001-Add-include-stdarg.h-to-strtools_public.cpp.patch"
   do
     echo "Applying $i"
     git apply "$i"
