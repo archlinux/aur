@@ -5,42 +5,52 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=inkcut
 epoch=
-pkgver=2.1.0
+pkgver=2.1.3
 pkgrel=00
 pkgdesc='An application for controlling 2D plotters, cutters, engravers, and CNC machines.'
 arch=(any)
 url=https://github.com/codelv/inkcut/
 license=(custom:GPLv3)
-depends=(python python-enaml python-pycups python-pyqt5 python-pyserial python-lxml python-jsonpickle python-pyqtgraph python-enamlx python-qtconsole python-qt5reactor python-twisted)
+depends=(python python-qtconsole python-enamlx python-pycups python-lxml python-qt-reactor python-pyqtgraph python-twisted python-pyserial python-enaml python-jsonpickle)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
-sha384sums=(SKIP)
-source+=(https://files.pythonhosted.org/packages/f5/f2/76b5ff7cba74764d18fa0b0ca57a4009c35d6f227fe8f6dd95ea52647947/inkcut-2.1.0-py2.py3-none-any.whl)
-sha384sums+=(f66ec4d46d21270a588b9647494d0475075dae5e12f2c1c18c1abfb45187ad997d07ca7df666568cb3a009b810a9b98e)
-noextract=(inkcut-2.1.0-py2.py3-none-any.whl)
+md5sums=(SKIP)
+noextract=()
+source+=(https://files.pythonhosted.org/packages/82/01/e462c1ca492e43001b505838c90d5a77a435fea325da9bc4da6cdfc08126/inkcut-2.1.3-py2.py3-none-any.whl)
+md5sums+=(1ff4a45ba6c51f2c5c2cfebbe2f8afa8)
+noextract+=(inkcut-2.1.3-py2.py3-none-any.whl)
 source+=(LICENSE)
-sha384sums+=(4f601fed19eafc4d21f8f514b614ce87d150bc22c5eef55a2d82819b7e444635420281e80712b9595a0d0a7fa5e9095d)
+md5sums+=(d32239bcb673463ab874e80d47fae504)
+
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
         tr ' ' '\n' | grep -Pv '^(PKGBUILD_EXTRAS)?$' | head -1
 }
 
-if [[ $(_first_source) =~ ^git+ ]]; then
-    provides+=("${pkgname%-git}")
-    conflicts+=("${pkgname%-git}")
+_vcs="$(grep -Po '^[a-z]+(?=\+)' <<< "$(_first_source)")"
+if [[ "$_vcs" ]]; then
+    makedepends+=("$(pkgfile --quiet /usr/bin/$_vcs)")
+    provides+=("${pkgname%-$_vcs}")
+    conflicts+=("${pkgname%-$_vcs}")
 fi
 
 _is_wheel() {
     [[ $(_first_source) =~ \.whl$ ]]
 }
 
+if [[ _is_wheel &&
+      $(basename "$(_first_source)" | rev | cut -d- -f1 | rev) =~ ^manylinux ]]; then
+    options=(!strip)  # https://github.com/pypa/manylinux/issues/119
+fi
+
 _dist_name() {
-    basename "$(_first_source)" |
-      sed 's/\(\.tar\.gz\|\.tgz\|\.tar\.bz2\|\.zip\|\.git\)$//'
+    find "$srcdir" -mindepth 1 -maxdepth 1 -type d -printf '%f
+' |
+        grep -v '^_tmpenv$'
 }
 
 if [[ $(_first_source) =~ ^git+ ]]; then
@@ -59,7 +69,7 @@ fi
 
 _build() {
     if _is_wheel; then return; fi
-    cd "$srcdir/$(_dist_name)"
+    cd "$srcdir"
     # See Arch Wiki/PKGBUILD/license.
     # Get the first filename that matches.
     local test_name
@@ -70,11 +80,20 @@ _build() {
             fi
         done
     fi
+    # Use the latest version of pip, as Arch's version is historically out of
+    # date(!) and newer versions do fix bugs (sometimes).
+    python -mvenv --clear --system-site-packages _tmpenv
+    _tmpenv/bin/pip --quiet install -U pip
     # Build the wheel (which we allow to fail) only after fetching the license.
-    /usr/bin/pip wheel -v --no-deps --wheel-dir="$srcdir" \
-        --global-option=--no-user-cfg \
-        --global-option=build --global-option=-j"$(nproc)" . ||
-        true
+    # In order to isolate from ~/.pydistutils.cfg, we need to set $HOME to a
+    # temporary directory, and thus first $XDG_CACHE_HOME back to its real
+    # location, so that pip inserts the wheel in the wheel cache.  We cannot
+    # use --global-option=--no-user-cfg instead because that fully disables
+    # wheels, causing a from-source build of build dependencies such as
+    # numpy/scipy.
+    XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}" HOME=_tmpenv \
+        _tmpenv/bin/pip wheel -v --no-deps --wheel-dir="$srcdir" \
+        "./$(_dist_name)" || true
 }
 
 build() { _build; }
@@ -90,9 +109,20 @@ _check() {
 _package() {
     cd "$srcdir"
     # pypa/pip#3063: pip always checks for a globally installed version.
-    /usr/bin/pip --quiet install --root="$pkgdir" \
+    python -mvenv --clear --system-site-packages _tmpenv
+    _tmpenv/bin/pip install --prefix="$pkgdir/usr" \
         --no-deps --ignore-installed --no-warn-script-location \
         "$(ls ./*.whl 2>/dev/null || echo ./"$(_dist_name)")"
+    if [[ -d "$pkgdir/usr/bin" ]]; then  # Fix entry points.
+        for f in "$pkgdir/usr/bin/"*; do
+            if [[ $(head -n1 "$f") = "#!$(readlink -f _tmpenv)/bin/python" ]]; then
+                sed -i '1c#!/usr/bin/python' "$f"
+            fi
+        done
+    fi
+    if [[ -d "$pkgdir/usr/etc" ]]; then
+        mv "$pkgdir/usr/etc" "$pkgdir/etc"
+    fi
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
@@ -101,3 +131,9 @@ _package() {
 package() { _package; }
 
 . "$(dirname "$BASH_SOURCE")/PKGBUILD_EXTRAS"
+
+# Remove makedepends already in depends (which may have been listed for the
+# first build, but autodetected on the second.
+makedepends=($(printf '%s\n' "${makedepends[@]}" |
+               grep -Pwv "^($(IFS='|'; echo "${depends[*]}"))$"))
+:  # Apparently ending with makedepends assignment sometimes fails.
