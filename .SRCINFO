@@ -1,7 +1,7 @@
 pkgbase = firewalk
 	pkgdesc = An active reconnaissance network security tool
 	pkgver = 5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://packetfactory.openwall.net/projects/firewalk/
 	arch = i686
 	arch = x86_64
