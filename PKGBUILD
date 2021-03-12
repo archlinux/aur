@@ -15,7 +15,7 @@ md5sums=('27d65a6caf3d071c04ff0fe4753d327d'
 package() {
   cd "${srcdir}"
   # Hacky way to get the actual download URL
-  game_url=$(curl -s -XPOST "http://ateliersento.itch.io/after-school/file/125815?after_download_lightbox=true" | grep -Po '"url":.*?[^\\]",' | cut -c8- | rev |cut -c3- | rev | sed 's/\\\//\//g')
+  game_url=$(curl -s -XPOST "https://ateliersento.itch.io/after-school/file/125815?after_download_lightbox=true" | grep -Po '"url":.*?[^\\]",' | cut -c8- | rev |cut -c3- | rev | sed 's/\\\//\//g')
   curl -o after_school.zip ${game_url}
   unzip -o after_school.zip
   
