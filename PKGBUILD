@@ -7,11 +7,12 @@ pkgdesc="A universal shell supporting 36+ languages, in terminal code editor wit
 arch=('any')
 url="https://github.com/Shivansh-007/piston-cli.git"
 license=('MIT')
-depends=(	'python-pygments'
-			'python-requests'
-			'python-prompt_toolkit'
-			'python-rich'
-			'python-argparse'
+depends=(
+	'python-pygments'
+	'python-requests'
+	'python-prompt_toolkit'
+	'python-rich'
+	'python-argparse'
 )
 makedepends=('git' 'python-setuptools')
 optdepends=()
