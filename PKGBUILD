@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com
 
 pkgname=cajviewer-appimage
-pkgver=201202
+pkgver=210224
 pkgrel=1
 pkgdesc="CAJViewer for Linux"
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=("!strip")
 provides=('cajviewer')
 conflicts=('cajviewer')
 source=("https://download.cnki.net/${_pkgname}")
-sha512sums=("11e15423817cd117270d144ac6e5eef0257e44511aa477ec9b54d4389298d6c3784e2ae8dab577f23bebe5ea2ca4ca2a5d6fec0f5c5680c3e63801ad3b06a1c3")
+sha512sums=("94ff061b97302ae5cf389dc70b039aff5b2ea9e67f543aee3b24ec40f89e00cca5a218741086329c54f897791309fdacb46ef76020e509b3ac1fb9b2c106ae4e")
 
 _installdir=/opt/appimages
 _installname=cajviewer
