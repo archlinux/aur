@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shlink"
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="The definitive self-hosted URL shortener"
 url="https://shlink.io"
@@ -16,7 +16,7 @@ optdepends=("mariadb: database"
             "apache: web server"
             "nginx: web server")
 source=("https://github.com/shlinkio/shlink/releases/download/v$pkgver/$pkgname${pkgver}_php8.0_dist.zip")
-sha256sums=("b96d38b7bc6e033b94dacfd56ed5f672dc9aa2420d5496d4d5fb008d85d89d65")
+sha256sums=("f78cc93bc732ebfa257bf8e78f46db0dff785e8fb49aeec327f3be25c139bf5c")
 install="$pkgname.install"
 options=("!strip")
 
