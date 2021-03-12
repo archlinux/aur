@@ -7,9 +7,9 @@ pkgname=mailwizard-git
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long "$(git rev-list -1 HEAD .)" | sed 's/^v//;s/-/.r/;s/-/./'
 }
-pkgver=r752.f11281c
+pkgver=2.0.5.r0.ga2142eb
 pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'

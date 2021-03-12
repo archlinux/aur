@@ -1,5 +1,14 @@
                 History (newest first)
 
+20200720 v2.0.5
+
+- in case of symlink getmail rc files, don't overwrite them.
+- export MWNOTMUCHNEW=0, to suppress notmuch call
+- if getmail rc's and mbsyncrc overlap emails, don't fetch from account twice
+- create procmail rc file template for emails and commented use in getmail rc
+- color fix
+- fix in tests
+
 20200720 v2.0.4
 
 - fix the case with getmail path for MDA_external
