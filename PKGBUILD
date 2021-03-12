@@ -1,8 +1,8 @@
 # Maintainer: Unmellow <name2020@googlemail.commerce>
 _pkgname=asuka
 pkgname=asuka-git
-pkgver=r47.1c6d9ad
-pkgrel=2
+pkgver=r59.a72dbd3
+pkgrel=1
 pkgdesc="a Gemini Project client written in Rust with NCurses."
 arch=("x86_64" "i686")
 url="https://git.sr.ht/~julienxx/asuka"
@@ -21,6 +21,10 @@ pkgver() {
 
 build() {
   cd $_pkgname
+  if !(rustup update) then
+  rustup toolchain install stable && rustup default stable
+  fi
+
   cargo build --release
 }
 
