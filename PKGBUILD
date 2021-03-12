@@ -4,8 +4,8 @@
 
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
-pkgver=2.6.0
-pkgrel=3
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -31,11 +31,9 @@ provides=("${pkgname}rammer")
 options=('!strip')
 _pkg_file_name="en.${pkgname//prog/prg}-lin_v${pkgver//./-}.zip"
 source=("local://${_pkg_file_name}"
-        "${pkgname}.xdotool"
-        "${pkgname}.xvfb")
-sha256sums=('e34a0257f77a399dd66ffd5283c976c8ac10a794951386a0bd6fb15152d54710'
-            '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005'
-            '301e38bde6ec8fb460077b1f087e6a121e02ede20a1f633eadd5f16279db2c36')
+        "${pkgname}.xdotool")
+sha256sums=('f380a177829d5f3e71673c14d29ba494deb6671fad83fb5d32d9b96d5fd348b8'
+            '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
       
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 if [ ! -f ${PWD}/${_pkg_file_name} ]; then
@@ -49,10 +47,23 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 	fi
 fi
 
-prepare () {
-  mkdir -p build
+prepare() {
+  cat > ${pkgname}.xvfb <<'END'
+#!/usr/bin/sh
+
+echo ' '
+echo 'please wait for minutes ......'
+echo ' '
+
+./SetupSTM32CubeProgrammer-2.7.0.linux &
+xdotool stm32cubeprog.xdotool ${1}
+END
 
   chmod u+x Setup${_pkgname}-${pkgver}.linux ${pkgname}.xvfb
+}
+
+build() {
+  mkdir -p build
 
   xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" -w 0 ./${pkgname}.xvfb ${srcdir}/build
 

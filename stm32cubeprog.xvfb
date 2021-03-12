@@ -1,9 +1,0 @@
-#!/usr/bin/sh
-
-echo ' '
-echo 'please wait for minutes ......'
-echo ' '
-
-./SetupSTM32CubeProgrammer-2.6.0.linux &
-xdotool stm32cubeprog.xdotool ${1}
-
