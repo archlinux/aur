@@ -2,7 +2,7 @@
 
 pkgname=teams-insiders
 pkgver=1.4.00.4855
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365 - Insiders Version"
 arch=('x86_64')
 url="https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders"
