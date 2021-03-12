@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=19b199d8f45d7b8dadb2d008394c50603f067328
+_arch_config_commit=f25586f538a8d14ea9f366f15d2d3bab56ae4e97
 _bmqversion=5.11-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210309

@@ -19,7 +19,7 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.6.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.6.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/19b199d8f45d7b8dadb2d008394c50603f067328/trunk/config
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/f25586f538a8d14ea9f366f15d2d3bab56ae4e97/trunk/config
 	source = prjc_v5.11-r2.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.11/prjc_v5.11-r2.patch
 	source = more-uarches-20210309.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210309.tar.gz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=6c577162954bbd921da824ff7c3614ffc5cef6f6
