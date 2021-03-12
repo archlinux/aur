@@ -15,13 +15,13 @@ license=("BSD")
 
 
 build() {
-  cd $startdir/src/Firewalk
-  patch -p1 < $startdir/firewalk-gcc3.4.patch
+  cd $srcdir/Firewalk
+  patch -p1 < $srcdir/firewalk-gcc3.4.patch
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd $startdir/src/Firewalk
+  cd $srcdir/Firewalk
   make DESTDIR="$pkgdir" install 
 }
