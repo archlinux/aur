@@ -1,7 +1,7 @@
 # Maintainer: Pedro Lucas Porcellis <porcellis@eletrotupi.com>
 _npmname=percollate
 pkgname=nodejs-percollate
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Percollate is a command-line tool that turns web pages into beautifully formatted PDF, EPUB, or HTML files."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('9cb50a56e13e94fc5fa0732cbce76e9c0537aeda1655dcf729c6e449bcad64f8')
+sha256sums=('1a92c328516384749e61a01d60eb618ea1ce055265303c812c4ab5a8023cfc1f')
 options=(!strip)
 
 package() {
