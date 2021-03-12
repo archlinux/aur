@@ -1,6 +1,6 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)
-	pkgver = 21.01
+	pkgver = 21.03
 	pkgrel = 1
 	url = https://www.citrix.com/downloads/workspace-app/linux/
 	install = citrix-client.install
@@ -44,12 +44,12 @@ pkgbase = icaclient
 	md5sums = 1f214f6f456f59afd1a3275580f4240e
 	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
 	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-21.01.tar.gz::http://downloads.citrix.com/19130/linuxx64-21.1.0.14.tar.gz?__gda__=1612112682_ca99ce8e1874c7df7dc95deda4914abe
-	sha256sums_x86_64 = ca88a1abc93970a0141adcd5613d95116ffbbfd0573e744e5b3846a35778a906
-	source_i686 = icaclient-x86-21.01.tar.gz::http://downloads.citrix.com/19130/linuxx86-21.1.0.14.tar.gz?__gda__=1612112681_5171ee2719ac9c830cba624dd956d4bf
-	sha256sums_i686 = 258ff73cd82e081b308850a3acd49471a26a08e197b649205f26a6c8472ebdd6
-	source_armv7h = icaclient-armhf-21.01.tar.gz::http://downloads.citrix.com/19130/linuxarmhf-21.1.0.14.tar.gz?__gda__=1612112683_f76461565985068f38f0c58db130f1cc
-	sha256sums_armv7h = 13c463ec0f482c34219c19461b6a3d7243076a79c55d0ffe8fe3b404e3d9f745
+	source_x86_64 = icaclient-x64-21.03.tar.gz::http://downloads.citrix.com/19171/linuxx64-21.3.0.38.tar.gz?__gda__=1615526705_b19a13a8eabcb0bcea57861e5dc934e3
+	sha256sums_x86_64 = ec0faaed2855af0a939f4f549a73108cca1de5febde8bcb14e890644fb7e9700
+	source_i686 = icaclient-x86-21.03.tar.gz::http://downloads.citrix.com/19171/linuxx86-21.3.0.38.tar.gz?__gda__=1615526704_6aa22c44bd10e21d56d1aef3d9b88359
+	sha256sums_i686 = c38a82da2458882f88f55ec53ca09f11f50d2b4f1f2084436d251445c649d686
+	source_armv7h = icaclient-armhf-21.03.tar.gz::http://downloads.citrix.com/19171/linuxarmhf-21.3.0.38.tar.gz?__gda__=1615526705_5fb6d6f2a1c43a4efb479649fd8e7096
+	sha256sums_armv7h = 737b0c8a2e9f451f25e7a8f21e619cd4c4a3d05091bb94912d0305e08d79ca99
 
 pkgname = icaclient
 
