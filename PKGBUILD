@@ -49,7 +49,6 @@ prepare() {
 package() {
 	# Creating the necessary directories
 	install -dm755 ${pkgdir}/usr
-  install -dm755 ${pkgdir}/etc
 	install -dm755 ${pkgdir}/usr/bin
   install -dm755 ${pkgdir}/usr/share/applications
 	install -dm755 ${pkgdir}/usr/share/${pkgname}
@@ -91,7 +90,7 @@ package() {
   ln -sfv /usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-nightly.desktop
   	
   # Cleaning up and installing icons
-  cp -rf $srcdir/${_name}-stable/etc ${pkgdir}/etc
+  cp -rfv $srcdir/${_name}-stable/etc ${pkgdir}
   rm -rf $pkgdir/usr/share/icons/hicolor/scalable
   for i in 16 32 128 256 512
   do
