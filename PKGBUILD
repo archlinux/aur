@@ -3,12 +3,11 @@
 
 pkgname=ttf-manaspace
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Secret of Mana Font converted to TTF"
 arch=('any')
 url="https://www.zone38.net/font/"
 license=('custom')
-install=ttf.install
 source=(https://www.zone38.net/font/manaspc_ger.zip)
 md5sums=('f9f00e48dce0cf5a8fae97654d8a0419')
 
