@@ -1,7 +1,7 @@
 pkgbase = expressvpn-gui
 	pkgdesc = Unofficial linux GUI for expressvpn CLI (Qt)
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/vojko.pribudic/expressvpn-gui
 	arch = x86_64
 	license = custom
