@@ -1,7 +1,8 @@
-# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Maintainer: iRet <iRet at a22 dot in>
+# Contributor: XavierCLL <xavier.corredor.llano at gmail dot com>
 
 pkgname=spotify-ripper
-pkgver=2.14
+pkgver=2.16
 pkgrel=1
 pkgdesc='Command-line ripper for Spotify, with a workaround for playlist emptying'
 arch=('any')
@@ -14,12 +15,12 @@ optdepends=('flac: Rip songs to lossless FLAC encoding' 'opus-tools: Rip songs t
 makedepends=('python-setuptools' 'libspotify')
 source=("https://github.com/scaronni/spotify-ripper/archive/${pkgver}.tar.gz"
         "setup.py" "requirements.txt")
-md5sums=('347411bf137546432443f143f21221bd'
-         '2c3e897ce5cf74e0cf2db5cbf1890371'
+md5sums=('0d0931086d5ed6a18c7559b44a377eaa'
+         'a7dc7a6632aa88143eec50545694f6f0'
          '433ec722cffccd32c7e31807262f1128')
 
 package() {
-    cd $pkgname-*
+    cd $pkgname-$pkgver
     
     # fix imports
     cp ../setup.py .
