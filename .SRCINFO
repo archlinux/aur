@@ -1,0 +1,18 @@
+pkgbase = groovy3
+	pkgdesc = Programming language based on Java, inspired by Python, Ruby and Smalltalk - testing installation of Groovy 3.x
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = http://groovy-lang.org/
+	arch = any
+	license = Apache
+	makedepends = gendesk
+	depends = bash
+	depends = java-environment
+	optdepends = groovy-docs: html and pdf documentation for Groovy
+	provides = groovy
+	conflicts = groovy
+	source = https://dl.bintray.com/groovy/maven/apache-groovy-binary-3.0.7.zip
+	sha256sums = b9e2041cb83a963922f6761a0b037c5784670616632142b8d7002b7c3a96b7f5
+
+pkgname = groovy3
+
