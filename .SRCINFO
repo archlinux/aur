@@ -1,6 +1,6 @@
 pkgbase = gallery-dl-git
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites (git)
-	pkgver = 1.17.0.r9.g780bac4c
+	pkgver = 1.17.0.r14.g10c279f2
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = gallery-dl-git
 	depends = python-requests
 	optdepends = ffmpeg: Convert Pixiv Ugoira to WebM
 	optdepends = youtube-dl: Download videos
+	optdepends = python-pysocks: SOCKS support
 	provides = gallery-dl
 	conflicts = gallery-dl
 	source = git+https://github.com/mikf/gallery-dl.git
