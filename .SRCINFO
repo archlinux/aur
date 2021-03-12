@@ -15,7 +15,9 @@ pkgbase = teams-insiders
 	optdepends = org.freedesktop.secrets
 	noextract = teams-insiders_1.4.00.4855_amd64.deb
 	source = https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/teams-insiders_1.4.00.4855_amd64.deb
+	source = teams-insiders.patch
 	sha256sums = 36f7055f1cc7d4ec6dee040a49798cd18c8b0bb4e519372230561ef06302cc7e
+	sha256sums = 02c815cd33684efec7ef2ad38ff95539f222223a0c6b9b73c28a959123e59ad1
 
 pkgname = teams-insiders
 
