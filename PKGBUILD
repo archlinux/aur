@@ -8,7 +8,7 @@ license=('unknown')
 sha256sums=('SKIP')
 
 _gitname=projectctr
-source=("$_gitname::git+https://github.com/3DSGuy/Project_CTR.git")
+source=("$_gitname::git+https://github.com/3DSGuy/Project_CTR.git#tag=makerom-v0.17")
 
 build() {
     cd "$srcdir/$_gitname/makerom"

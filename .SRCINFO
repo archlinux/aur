@@ -6,7 +6,7 @@ pkgbase = projectctr-makerom
 	arch = i686
 	arch = x86_64
 	license = unknown
-	source = projectctr::git+https://github.com/3DSGuy/Project_CTR.git
+	source = projectctr::git+https://github.com/3DSGuy/Project_CTR.git#tag=makerom-v0.17
 	sha256sums = SKIP
 
 pkgname = projectctr-makerom
