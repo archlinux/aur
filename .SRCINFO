@@ -1,0 +1,24 @@
+pkgbase = rapidwright
+	pkgdesc = Build Customized FPGA Implementations for Vivado
+	pkgver = 2020.2.2_beta
+	pkgrel = 1
+	url = http://www.rapidwright.io/
+	arch = any
+	license = custom
+	makedepends = java-environment
+	makedepends = gradle
+	depends = java-runtime
+	depends = jython
+	source = rapidwright-2020.2.2_beta.tar.gz::https://github.com/Xilinx/RapidWright/archive/v2020.2.2-beta.tar.gz
+	source = rapidwright_data-2020.2.2_beta.zip::https://github.com/Xilinx/RapidWright/releases/download/v2020.2.2-beta/rapidwright_data.zip
+	source = rapidwright_jars-2020.2.2_beta.zip::https://github.com/Xilinx/RapidWright/releases/download/v2020.2.2-beta/rapidwright_jars.zip
+	source = fix-jar-build-issues.patch
+	source = invoke_rapidwright
+	sha256sums = 7c9d6d878de6789a69cf0be62e1f4c7a4027ccb3dd239dd900820c33502aa8bc
+	sha256sums = 209034844725477742d1c484a171c3930b6df1a057d24dd423484429365f0907
+	sha256sums = f098785a7146a47892bf5af835202178b3bc34545571f8d1018dbf0eee2c19c8
+	sha256sums = e4f4e416882f33e0b5c9674cc5575782209895d47b719d2df45a4d5fd179dc1f
+	sha256sums = a0c2f5577cd955cb81aec2839c3c060dc78c6ee48dc99406f67cc902e98f644f
+
+pkgname = rapidwright
+

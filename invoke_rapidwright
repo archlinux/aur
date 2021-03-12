@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -eu
+
+[[ "$#" -ne 0 ]] || { echo "Usage: $0 <class entry point> <arguments to entry point ...>" >&2; exit 1; }
+
+CP=
+
+for jar in /usr/share/java/rapidwright/*.jar; do
+	CP=$CP:$jar
+done
+
+CP=$CP:/opt/jython/jython.jar
+export RAPIDWRIGHT_PATH=/usr/share/rapidwright
+
+exec java -cp "$CP" "$@"

@@ -1,0 +1,50 @@
+From 38c640c5c6845e296d6dc69e74866cf7cb25fccc Mon Sep 17 00:00:00 2001
+From: Tim Dunham <tdunham@grc.internal>
+Date: Thu, 2 Apr 2020 10:29:50 -0400
+Subject: [PATCH 1/2] fix jar build issues
+
+---
+ build.gradle | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build.gradle b/build.gradle
+index 9d9a7fb..60cac47 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -1,11 +1,11 @@
+ apply plugin: 'java'
+-jar.enabled = false
++jar.enabled = true
+ 
+ project.buildDir = 'bin'
+ 
+ sourceSets {
+   main {
+-    java.outputDir = file('bin')
++    java.outputDir = file('compiled')
+     java {
+       srcDirs = ['src']
+     }    
+
+From 37f67dffe3edab848a792d1aa019dfeb1a929959 Mon Sep 17 00:00:00 2001
+From: Tim Dunham <tdunham@grc.internal>
+Date: Fri, 3 Apr 2020 06:46:56 -0400
+Subject: [PATCH 2/2] change compilation directory
+
+---
+ build.gradle | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.gradle b/build.gradle
+index 60cac47..c3dc20c 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -5,7 +5,7 @@ project.buildDir = 'bin'
+ 
+ sourceSets {
+   main {
+-    java.outputDir = file('compiled')
++    java.outputDir = file('bin/compiled')
+     java {
+       srcDirs = ['src']
+     }    
