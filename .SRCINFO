@@ -1,0 +1,22 @@
+pkgbase = ghostery-dawn-bin
+	pkgdesc = Privacy aware web browser from Ghostery (binary release). Beta release for early access.
+	pkgver = 2021.03
+	pkgrel = 1
+	url = https://www.ghostery.com/products/ghostery-browser/
+	install = install
+	arch = x86_64
+	license = MPL2
+	depends = dbus-glib
+	depends = gtk2
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	provides = ghostery-dawn
+	conflicts = ghostery-dawn
+	source = https://github.com/ghostery/user-agent-desktop/releases/download/2021-03-11/Ghostery-2021.03.en-US.linux-x86_64.tar.bz2
+	source = https://raw.githubusercontent.com/ghostery/user-agent-desktop/master/LICENSE
+	sha256sums = 81b02d93b0f3e3d308dd305a772646ff8b738d1803d8b665e6ee3f3bcd3091ae
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+
+pkgname = ghostery-dawn-bin
+

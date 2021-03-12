@@ -1,0 +1,12 @@
+post_install() {
+  cat <<EOF
+
+Note that the browser Ghostery Dawn is still in Beta.
+
+To use the builtin ad-free search (Ghostery Glow), a subscription is needed.
+If you want to try it out, you can get one for free by signing up for the beta:
+
+  https://www.ghostery.com/products/ghostery-browser/
+
+EOF
+}
