@@ -1,7 +1,7 @@
 pkgbase = android-wear-x86-system-image-28
 	pkgdesc = Wear OS Intel x86 Atom System Image, API 28
 	pkgver = 28_9.0.0_r05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = android-wear-x86-system-image-28
 	source = http://dl.google.com/android/repository/sys-img/android-wear/x86-28_r05.zip
 	source = package.xml
 	sha256sums = 7289bc1dbd70ab312e5b936bdfd8944ea4ab9ff7443a77a69d9cab3e8f27d227
-	sha256sums = 045419cb1e70ba748b9ae40e2abc13027df1594c485c06df478ff4a587aa8e08
+	sha256sums = d9366cc9863053a6146d41a5cff12cc5d713759fd59c5dbf465bbe36fa417f3e
 
 pkgname = android-wear-x86-system-image-28
 
