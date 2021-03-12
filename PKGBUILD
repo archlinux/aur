@@ -1,4 +1,5 @@
-# Maintainer: Yeqin Su <hougelangley1987@gmail.com>
+# Maintainer: zhullyb <zhullyb@outlook.com>
+# Contributor: Yeqin Su <hougelangley1987@gmail.com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
@@ -58,7 +59,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.11.3
+pkgver=5.11.4
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -93,7 +94,7 @@ done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-            '41635dd87f8b77c370339f148e4a6888714c016624abe6189c5020f2da4487e6'
+            '57636cb49e9cd617946e2b24a8f77fa9c36e72b2f91f8ad6132f2a7765982085'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
             '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
             'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58'
