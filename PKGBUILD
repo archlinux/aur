@@ -16,12 +16,12 @@ source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   install -Dm 755 sponsorblock_minimal.lua "$pkgdir/usr/lib/mpv/sponsorblock-minimal.lua"
 }
 
