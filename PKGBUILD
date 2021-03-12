@@ -23,7 +23,7 @@ source_armv7h=("${_pkgname}-${pkgver}.tar.gz::${_releaseurl}/${_pkgname}_linux_a
 
 sha256sums_i686=('62bd99ef3e02cf8f50fa3a4c5f680d3c8ccff7124c7597e073b0ca3f601058af')
 sha256sums_x86_64=('8b89b9e2d1483f3830adb4b5166db47c733d10fb288c57003c5eb7f899c7eabe')
-sha256sums_aarch64=('62bd99ef3e02cf8f50fa3a4c5f680d3c8ccff7124c7597e073b0ca3f601058af')
+sha256sums_aarch64=('4f3ecccc4cd3042efcd648425a58b29c1fa2c0910dfc8cd17acdb0fab3031d7b')
 sha256sums_armv5h=('d5cb77590d4b1a12747c0203b59a5d6176f41cc3feec7a35d51aaf044f4881f9')
 sha256sums_armv6h=('98a1f09b44ac1011b6b9f015d2b04787603b4e875a1cf1dd1823b93bb53c34ce')
 sha256sums_armv7h=('92347fecc69c38fe58cd96fe2d9565ca92ef03f947c223ee938ae44c5ed5fdb8')
