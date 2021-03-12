@@ -1,0 +1,18 @@
+pkgbase = swayfire-git
+	pkgdesc = Sway/I3 inspired tiling window manager for Wayfire.
+	pkgver = r32.f364d51
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = meson
+	depends = wayfire
+	depends = wlroots
+	depends = wf-config
+	provides = swayfire
+	conflicts = swayfire
+	source = swayfire-git::git+https://github.com/Javyre/swayfire#branch=master
+	md5sums = SKIP
+
+pkgname = swayfire-git
+
