@@ -1,14 +1,14 @@
 pkgbase = doggo
 	pkgdesc = Command-line DNS Client for Humans.
-	pkgver = 0.3.6
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/mr-karan/doggo
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	conflicts = doggo-git
-	source = https://github.com/mr-karan/doggo/archive//v0.3.6.tar.gz
-	sha256sums = ae381cd46426110c381e8c83cfc8e8696042b15e301c4877345c5ded8c3889d7
+	source = https://github.com/mr-karan/doggo/archive//v0.3.8.tar.gz
+	sha256sums = 3ecafb7133cb1f1b4039f566d030953d7d0490ff6e3be5098ab9495d5a5836f8
 
 pkgname = doggo
 

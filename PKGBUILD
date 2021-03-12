@@ -1,6 +1,6 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=doggo
-pkgver=0.3.6
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='Command-line DNS Client for Humans.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('go')
 source=("${url}/archive//v${pkgver}.tar.gz")
 conflicts=('doggo-git')
-sha256sums=('ae381cd46426110c381e8c83cfc8e8696042b15e301c4877345c5ded8c3889d7')
+sha256sums=('3ecafb7133cb1f1b4039f566d030953d7d0490ff6e3be5098ab9495d5a5836f8')
 
 prepare(){
   cd "$pkgname-$pkgver"
