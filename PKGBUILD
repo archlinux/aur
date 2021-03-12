@@ -105,8 +105,8 @@ package() {
   
   # Required folders
   install -d "$pkgdir/$dir/Engine/DerivedDataCache"
-  install -d "$pkgdir/$dir/Engine/Intermediate"
-  install -d "$pkgdir/$dir/Engine/Saved"
+  # install -d "$pkgdir/$dir/Engine/Intermediate"
+  # install -d "$pkgdir/$dir/Engine/Saved"
   
   # Content
   mv FeaturePacks "$pkgdir/$dir/FeaturePacks"
