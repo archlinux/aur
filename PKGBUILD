@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.11.4.arch1
+pkgver=5.11.6.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -89,7 +89,7 @@ _repo_url="https://git.archlinux.org/linux"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
+_gcc_patch_name="more-uarches-for-gcc-v11-and-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
@@ -107,7 +107,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '2b40021d5fc2091b08bb51a370fe633bb131fa84d8dd7013978e044f0aba1bd19b3992001b816198309c1f0484e38b893424daa6ba9d76feee2ce707dab9f3a3'
+            'e22a1be1e7332bbb1db8b94bf76d05f66302a8b73cf38bce3647969f76b38e5d46e40e3f6b7e4cf02ca1e43bfc812cd7e1c45094d1995eeef98a21508d0e5681'
             '7d1ef268fb7b946a3e16c3f3402a3334a32df940eccf5dd2d637671f80e16599228eb13fd889f863dc33ea78a2c62027491c6fba6a44b3e68bf3c66f222adcd6'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
@@ -116,7 +116,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    cd $_reponame
+    cd "$srcdir/$_reponame"
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
