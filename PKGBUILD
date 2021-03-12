@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=curtail
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
@@ -11,16 +11,16 @@ makedepends=('meson')
 conflicts=('imcompressor')
 replaces=('imcompressor')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('70bcf700c29c6b324b0943a70d21fc4d55f403150de524b9e558e10b78f541c3')
+sha256sums=('bb00badaace6e81291add96ef383cc0ae6f4aef675587eccdef875522c3b08a6')
 
 build() {
 	arch-meson "Curtail-$pkgver" build
 	meson compile -C build
 }
 
-#check() {
-#	meson test -C build
-#}
+check() {
+	meson test -C build
+}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
