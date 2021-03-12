@@ -1,0 +1,15 @@
+pkgbase = winamp2
+	pkgdesc = Winamp 2.95 audio player with Milkdrop v1.04, FLAC v1.1.2, APE v3.99, MPC v0.99f
+	pkgver = 2.95
+	pkgrel = 1
+	url = http://www.nullsoft.com
+	arch = any
+	license = unknown
+	makedepends = imagemagick
+	makedepends = p7zip
+	depends = wine
+	source = winamp295rc_full_milkdrop_flac_ape_mpc.zip::https://a.pomf.cat/wmyhzm.zip
+	sha512sums = 7dd253b9aa0a6066ffd1332f01ca2620ad2f9951769aaf8fec07264ea7214f2718e8aa9dd780cb20d7d0e996f6a31b025ec66930e4e4ad78de54e4d9bdeec58d
+
+pkgname = winamp2
+
