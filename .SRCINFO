@@ -1,6 +1,6 @@
 pkgbase = r-xfun
 	pkgdesc = Miscellaneous Functions by Yihui Xie
-	pkgver = 0.21
+	pkgver = 0.22
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xfun
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = r-xfun
 	optdepends = r-remotes
 	optdepends = r-pak
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/xfun_0.21.tar.gz
-	sha256sums = 648e171881e2cd14be482c15b3407bfdadbcdf7dc82a969b680223eb02d212a3
+	source = https://cran.r-project.org/src/contrib/xfun_0.22.tar.gz
+	sha256sums = 3e717b0eb8100f01c84e2d69c2618f9e54b801a44eef5a2ce4c030c123b8a347
 
 pkgname = r-xfun
 
