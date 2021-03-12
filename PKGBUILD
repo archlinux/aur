@@ -4,17 +4,15 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.5.6
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt-git'
-             'libxcb')
-optdepends=('ttf-opensans: default Open Sans font family')
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
@@ -50,7 +48,6 @@ source=(
     "lib_ui::git+https://github.com/desktop-app/lib_ui.git"
     "lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
     "lz4::git+https://github.com/lz4/lz4.git"
-    "materialdecoration::git+https://github.com/desktop-app/materialdecoration.git"
     "nimf::git+https://github.com/hamonikr/nimf.git"
     "QR::git+https://github.com/nayuki/QR-Code-generator"
     "qt5ct::git+https://github.com/desktop-app/qt5ct.git"
@@ -60,7 +57,6 @@ source=(
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -121,7 +117,6 @@ prepare() {
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
-    git config submodule.Telegram/ThirdParty/materialdecoration.url "$srcdir/materialdecoration"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
     git config submodule.Telegram/ThirdParty/QR.url "$srcdir/QR"
     git config submodule.Telegram/ThirdParty/qt5ct.url "$srcdir/qt5ct"
@@ -144,8 +139,6 @@ prepare() {
     # Official package patches
     cd cmake
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
-    # change the changelog path from '../changelog.txt' to '../../changelog.txt'
-    sed -i 's/\.\.\/changelog/\.\.\/\.\.\/changelog/g' "$srcdir/tdesktop/Telegram/CMakeLists.txt"
 }
 
 build() {
@@ -155,6 +148,12 @@ build() {
     # -DTDESKTOP_API_ID=17349
     # -DTDESKTOP_API_HASH=344583e45741c457fe1862106095a5eb
     # export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
+    # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
+    # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
+    # Thanks @primeos!
+    # Optional flags:
+    # -DTDESKTOP_DISABLE_GTK_INTEGRATION=1 \
+    # -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=1 \
     cmake . \
         -B build \
         -G Ninja \
@@ -163,8 +162,6 @@ build() {
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
         -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop" \
-        -DTDESKTOP_DISABLE_GTK_INTEGRATION=1 \
-        -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=1 \
         -DDESKTOP_APP_SPECIAL_TARGET=""
     ninja -C build
 }
