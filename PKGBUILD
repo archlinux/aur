@@ -6,7 +6,7 @@
 
 pkgname=heimdall-git
 _pkgname=Heimdall
-pkgver=1.4.2.r7.ga2cfdaa
+pkgver=1.4.2.r9.g92be54f
 pkgrel=1
 pkgdesc="Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices"
 arch=("i686" "x86_64")
@@ -18,7 +18,7 @@ optdepends=("android-udev: Udev rules to connect Android devices to your linux b
 conflicts=("heimdall")
 provides=("heimdall")
 source=(
-	"$_pkgname::git+https://gitlab.com/BenjaminDobell/Heimdall.git"
+	"$_pkgname::git+https://github.com/Benjamin-Dobell/Heimdall"
 	"heimdall.desktop"
 )
 sha256sums=(
