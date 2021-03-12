@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-swiglpk
-pkgver=4.65.1
-pkgrel=5
+pkgver=5.0.3
+pkgrel=1
 pkgdesc='A Python interface to the GLPK optimization solver.'
 arch=('any')
 url='https://github.com/biosustain/swiglpk'
@@ -11,7 +11,7 @@ depends=('python' 'glpk')
 makedepends=('swig' 'python-setuptools')
 conflicts=('python-swiglpk-git')
 source=("https://github.com/biosustain/swiglpk/archive/${pkgver}.tar.gz")
-md5sums=('1870f23fb67b60263ef1f7b343ab657b')
+md5sums=('53c8175cab624cf6b6b6f2ba004abc0d')
 
 prepare() {
 	cd "${srcdir}/swiglpk-${pkgver}"
