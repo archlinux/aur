@@ -1,6 +1,6 @@
 pkgbase = mem
 	pkgdesc = A colorized memory inspector for terminals and consoles
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://bitbucket.org/Hrafnahnef/mem
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = mem
 	depends = ncurses
 	depends = glibc
 	depends = gcc-libs
-	source = https://bitbucket.org/Hrafnahnef/mem/downloads/mem-1.0.tar.zst
-	source = https://bitbucket.org/Hrafnahnef/mem/downloads/mem-1.0.tar.zst.sig
+	source = https://bitbucket.org/Hrafnahnef/mem/downloads/mem-1.1.tar.zst
+	source = https://bitbucket.org/Hrafnahnef/mem/downloads/mem-1.1.tar.zst.sig
 	validpgpkeys = AD5582360F6A567CA5356535610CE1A9A5BD39C9
-	md5sums = 2a54e2e5ea5072efceb559c0e27e7c18
-	md5sums = e75230a3ba846531c13821ae9a44cb5d
+	md5sums = 610262136db28ee5469ab18411d52d36
+	md5sums = 2f59da06c849db0a630dfb7cd125a99e
 
 pkgname = mem
 
