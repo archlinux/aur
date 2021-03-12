@@ -1,8 +1,8 @@
 # Maintainer: ReneganRonin <renegan.ronin@gmail.com>
 _name=julia
 pkgname=${_name}-trinity
-pkgver=20210305
-pkgrel=2
+pkgver=20210312
+pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language - official binaries of Stable, RC, and Nightly'
 arch=('x86_64')
 provides=(julia-trinity)
@@ -48,14 +48,14 @@ prepare() {
 
 package() {
 	# Creating the necessary directories
-	install -d ${pkgdir}/usr
-  install -d ${pkgdir}/etc
-	install -d ${pkgdir}/usr/bin
-  install -d ${pkgdir}/usr/share/applications
-	install -d ${pkgdir}/usr/share/${pkgname}
-	install -d ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-stable
-	install -d ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-rc
-	install -d ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-nightly
+	install -dm755 ${pkgdir}/usr
+  install -dm755 ${pkgdir}/etc
+	install -dm755 ${pkgdir}/usr/bin
+  install -dm755 ${pkgdir}/usr/share/applications
+	install -dm755 ${pkgdir}/usr/share/${pkgname}
+	install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-stable
+	install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-rc
+	install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-nightly
 	
 	
 	# Installing licenses
@@ -74,9 +74,9 @@ package() {
   	
   	
   # Symlinking and renaming binaries
-	ln -sfv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/bin/julia ${pkgdir}/usr/bin/julia-stable
-	ln -sfv ${pkgdir}/usr/share/${pkgname}/${_name}-rc/bin/julia ${pkgdir}/usr/bin/julia-rc
-	ln -sfv ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/bin/julia ${pkgdir}/usr/bin/julia-nightly
+	ln -sfv /usr/share/${pkgname}/${_name}-stable/bin/julia ${pkgdir}/usr/bin/julia-stable
+	ln -sfv /usr/share/${pkgname}/${_name}-rc/bin/julia ${pkgdir}/usr/bin/julia-rc
+	ln -sfv /usr/share/${pkgname}/${_name}-nightly/bin/julia ${pkgdir}/usr/bin/julia-nightly
 	
 	
 	# Creating the desktop application shortcuts
@@ -86,12 +86,12 @@ package() {
   sed -i '4s/julia/julia-stable/g' ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop
   sed -i '4s/julia/julia-rc/g' ${pkgdir}/usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop
   sed -i '4s/julia/julia-nightly/g' ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop
-  cp -rfv ${pkgdir}/usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-stable.desktop
-  cp -rfv ${pkgdir}/usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-rc.desktop
-  cp -rfv ${pkgdir}/usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-nightly.desktop
+  ln -sfv /usr/share/${pkgname}/${_name}-stable/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-stable.desktop
+  ln -sfv /usr/share/${pkgname}/${_name}-rc/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-rc.desktop
+  ln -sfv /usr/share/${pkgname}/${_name}-nightly/share/applications/julia.desktop ${pkgdir}/usr/share/applications/julia-nightly.desktop
   	
   # Cleaning up and installing icons
-  cp -rf $srcdir/${_name}-stable/etc ${pkgdir}
+  cp -rf $srcdir/${_name}-stable/etc ${pkgdir}/etc
   rm -rf $pkgdir/usr/share/icons/hicolor/scalable
   for i in 16 32 128 256 512
   do
