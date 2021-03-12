@@ -18,7 +18,7 @@ _protobuf_ver=3.12.4
 _onnx_tag=1.8.1
 _graphsurgeonver=0.4.5
 _uffver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://github.com/NVIDIA/TensorRT/'
@@ -50,7 +50,7 @@ sha256sums=('d3a1f478e304b48878604fac70ce7920fece71f9cac62f925c9c59c197f5d087'
             'ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
             'e6153bf43c248fb3ed843e41f6b722ff8c3507ad48fe105bfa129b8641741ecf'
-            'aa48e7ef94618ad5983aef8773704a21260fe52bc0ebf16afeecebca1bd79316')
+            'dd7f4c0ef01baab251886ba01ae59c54b24c7d2fbd7076c50ed3339bf81275a5')
 
 prepare() {
     # tensorrt git submodules

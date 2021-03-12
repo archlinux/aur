@@ -1,7 +1,7 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
 	pkgver = 7.2.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/TensorRT/
 	arch = x86_64
 	license = custom:NVIDIA-SLA
@@ -47,7 +47,7 @@ pkgbase = tensorrt
 	sha256sums = ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b
 	sha256sums = ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac
 	sha256sums = e6153bf43c248fb3ed843e41f6b722ff8c3507ad48fe105bfa129b8641741ecf
-	sha256sums = aa48e7ef94618ad5983aef8773704a21260fe52bc0ebf16afeecebca1bd79316
+	sha256sums = dd7f4c0ef01baab251886ba01ae59c54b24c7d2fbd7076c50ed3339bf81275a5
 
 pkgname = tensorrt
 	depends = cuda=11.1

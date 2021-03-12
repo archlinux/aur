@@ -38,7 +38,7 @@
 +         -DEXT_PATH="$EXT_PATH" \
 +         -DCUDA_INCLUDE_DIRS='/opt/cuda/include' \
 +         -DTENSORRT_ROOT="$ROOT_PATH" \
-+         -DTENSORRT_BUILD="${ROOT_PATH}/build/out" \
++         -DTENSORRT_BUILD="${ROOT_PATH}/build/" \
 +         -DPY_INCLUDE="/usr/include/python${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION}" \
 +         -DPY_CONFIG_INCLUDE="/usr/include/python${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION}" \
 +         -Wno-dev
