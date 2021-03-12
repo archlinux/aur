@@ -2,8 +2,8 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.4.93.51.arch1
-pkgrel=2
+pkgver=5.4.102.53.arch1
+pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
@@ -17,10 +17,10 @@ source=(
   'sphinx-workaround.patch'
 )
 sha512sums=('SKIP'
-            'a5e1f0cabc725ddf69fdc3d1de119990e75b55d60df969cc212e0f5d32a5d70f062ad8a2223c75f5c20c5cf3ee452ea5558efa1d210c9d386113ded4179af176'
+            '2a2f9c403fbedeaa7106921b8a5915495f9c54edf8a8f8b4b2789e4cbe7cfc1bbf54fe70a5438099cc4fa1c4ee26ccaa664551fe9b7ef5dcbfb2e1886423ffa9'
             '8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58')
 b2sums=('SKIP'
-        '7f3a6110152080d4211f6ead514e325f23521c5d19867a765aec4a326993884780363f9ac7e6ae3c73d53c24f3e17cb0293d3446ade6152552724c5d5e4fb363'
+        '247e3084eb64db424f9a13eeeda43c40c728384d2e61133b7fa22b9764bfdb4c95e321387406e67fab671b5970bf399383734662178257dca49bb2367821a9b7'
         '657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
