@@ -1,7 +1,7 @@
 # Maintainer: Dmitri Kourennyi <dkour at mykolab dot com>
 # Contributor: Eric Schulte <[firstname] dot [lastname] at gmx dot com>
 pkgname=feedgnuplot
-pkgver=1.57
+pkgver=1.58
 pkgrel=1
 pkgdesc="General purpose pipe-oriented plotting tool"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('perl' 'gnuplot' 'perl-list-moreutils' 'perl-string-shellquote')
 provides=('feedgnuplot')
 source=("https://github.com/dkogan/feedgnuplot/archive/v${pkgver}.tar.gz")
-b2sums=("4904bef8ef582c7d8639d7f904e40559c6b30ec714499df073ccd4db2a5f54b2b88117436af9005f11ea336d0a473e96a8e31debc1e35c7dea26b229f343c53e")
+b2sums=("0a57d44658661ebc167d3dbcf6000f5dfee0d1dcd22185129a915180611e2588d719fbd7b268869373eff4e5d95ca4660a295dc02431ea27ba7578b7999a07e8")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}" || exit
