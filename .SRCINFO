@@ -1,15 +1,12 @@
 pkgbase = ttf-whiterabbit
 	pkgdesc = White Rabbit font
 	pkgver = 1.0
-	pkgrel = 2
-	url = http://www.squaregear.net/fonts/whitrabt.shtml
-	install = ttf-whiterabbit.install
+	pkgrel = 3
+	url = https://www.squaregear.net/fonts/whitrabt.html
 	arch = any
 	license = GPL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = whitrabt.ttf
-	sha1sums = 69703ad9d651dd4ca30e1644662cdadd7f02e5b2
+	source = https://squaregear.net/fonts/whitrabt.zip
+	md5sums = 5c8786a00321748795ade1ad8bb659be
 
 pkgname = ttf-whiterabbit
 

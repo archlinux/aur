@@ -2,18 +2,18 @@
 
 pkgname=ttf-whiterabbit
 pkgver=1.0
-source=('whitrabt.ttf')
-sha1sums=('69703ad9d651dd4ca30e1644662cdadd7f02e5b2')
-pkgrel=2
-depends=('fontconfig' 'xorg-font-utils')
+pkgrel=3
 pkgdesc="White Rabbit font"
 arch=('any')
-install=$pkgname.install
 license=('GPL')
-url='http://www.squaregear.net/fonts/whitrabt.shtml'
+url='https://www.squaregear.net/fonts/whitrabt.html'
+source=(https://squaregear.net/fonts/whitrabt.zip)
+md5sums=('5c8786a00321748795ade1ad8bb659be')
 
 package()
 {
-  mkdir -p $pkgdir/usr/share/fonts/TTF
-  cp $srcdir/../whitrabt.ttf $pkgdir/usr/share/fonts/TTF
+  cd ${srcdir}
+
+  install -d ${pkgdir}/usr/share/fonts/TTF
+  install *.ttf ${pkgdir}/usr/share/fonts/TTF
 }
