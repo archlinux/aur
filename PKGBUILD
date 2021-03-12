@@ -5,7 +5,7 @@
 
 pkgname=mailwizard
 
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
@@ -35,7 +35,7 @@ changelog=changelog.txt
 install=wizard.install
 source=("$pkgname.tar.gz::$url/archive/v$pkgver.tar.gz"
         'migrationhelper')
-sha256sums=('05d86ea48bb1777a1a6a4700ffdb56b0a796de8de5dc8b598e27f4708656bea0'
+sha256sums=('12be55296d4e6ada7acdc75b26d5b64bdfb15ed984b47bbee5be9633781f57bf'
             '96471dc5a53af342cf14f5ec119df81509617f960c707d732781a24d9e2ed3c6')
 
 
