@@ -1,0 +1,9 @@
+--- a/usr/bin/teams	2021-03-12 10:24:04.000000000 +0100
++++ b/usr/bin/teams	2021-03-12 10:28:00.836868352 +0100
+@@ -8,5 +8,5 @@
+ 
+ mkdir -p "$TEAMS_LOGS"
+ 
+-nohup "$TEAMS_PATH" --disable-namespace-sandbox --disable-setuid-sandbox "$@" > "$TEAMS_LOGS/teams-startup.log" 2>&1 &
++nohup "$TEAMS_PATH" "$@" --disable-namespace-sandbox --disable-setuid-sandbox > "$TEAMS_LOGS/teams-startup.log" 2>&1 &
+ 
