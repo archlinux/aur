@@ -1,0 +1,36 @@
+pkgbase = lua-lualame
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jprjr/lualame
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = lame
+	source = https://github.com/jprjr/lualame/releases/download/v1.0.0/lualame-1.0.0.tar.gz
+	md5sums = 0fdf2299b71fcacd31580abca8943f90
+
+pkgname = lua-lualame
+	pkgdesc = Lua bindings for libmp3lame
+	depends = lame
+	depends = lua
+
+pkgname = lua51-lualame
+	pkgdesc = Lua bindings for libmp3lame for Lua 5.1
+	depends = lame
+	depends = lua51
+
+pkgname = lua52-lualame
+	pkgdesc = Lua bindings for libmp3lame for Lua 5.2
+	depends = lame
+	depends = lua52
+
+pkgname = lua53-lualame
+	pkgdesc = Lua bindings for libmp3lame for Lua 5.3
+	depends = lame
+	depends = lua53
+
