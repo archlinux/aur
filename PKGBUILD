@@ -4,7 +4,7 @@
 
 pkgname=firewalk
 pkgver=5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An active reconnaissance network security tool"
 makedepends=()
 arch=('i686' 'x86_64')
@@ -27,3 +27,5 @@ package() {
   make DESTDIR="$pkgdir" install 
   install -Dm644 $srcdir/Firewalk/man/firewalk.8   $pkgdir/usr/share/man/man8/firewalk.8
 }
+md5sums=('02412f13218ea052427bbf038a88a026'
+         'd94be823c96efbaeee8f75941cfdd3b7')
