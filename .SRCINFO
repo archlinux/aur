@@ -11,6 +11,7 @@ pkgbase = dwm-jadecell-git
 	makedepends = libxinerama
 	makedepends = libxft
 	depends = nerd-fonts-complete
+	depends = ttf-joypixels
 	provides = dwm
 	conflicts = dwm
 	source = git+https://gitlab.com/jadecell/dwm.git
