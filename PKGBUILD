@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-enaml
 epoch=
-pkgver=0.10.2
+pkgver=0.12.0
 pkgrel=00
 pkgdesc='Declarative DSL for building rich user interfaces in Python'
 arch=(x86_64)
 url=https://github.com/nucleic/enaml
-license=(custom:)
-depends=(python python-qtpy python-future python-ply python-kiwisolver python-setuptools python-atom)
+license=(BSD)
+depends=(python python-ply python-atom python-bytecode python-kiwisolver)
 depends+=()
 makedepends=(python-pip python-wheel)
 checkdepends=()
@@ -19,27 +19,37 @@ provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
-source+=(https://files.pythonhosted.org/packages/30/fe/b95b1a93d6296c1c16a618d857c0a892a80d7e5bc7cbb506acad9818d6b6/enaml-0.10.2.tar.gz)
-md5sums+=(4bd4157f88e9b5a28385dea73ef20e74)
+noextract=()
+source+=(https://files.pythonhosted.org/packages/d5/d5/b3e88ac554ea36b77d08b612e3259d998ad9868ac60f3c60918377c9999f/enaml-0.12.0.tar.gz)
+md5sums+=(8e77a894b8546ee8a4678dfb3aad25a3)
 source+=(LICENSE)
-md5sums+=(7b198a7b1296c1659830cbb4f1c65f2e)
+md5sums+=(9498cbdb4d81d88314d3baca05dcbe5f)
+
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
         tr ' ' '\n' | grep -Pv '^(PKGBUILD_EXTRAS)?$' | head -1
 }
 
-if [[ $(_first_source) =~ ^git+ ]]; then
-    provides+=("${pkgname%-git}")
-    conflicts+=("${pkgname%-git}")
+_vcs="$(grep -Po '^[a-z]+(?=\+)' <<< "$(_first_source)")"
+if [[ "$_vcs" ]]; then
+    makedepends+=("$(pkgfile --quiet /usr/bin/$_vcs)")
+    provides+=("${pkgname%-$_vcs}")
+    conflicts+=("${pkgname%-$_vcs}")
 fi
 
 _is_wheel() {
     [[ $(_first_source) =~ \.whl$ ]]
 }
 
+if [[ _is_wheel &&
+      $(basename "$(_first_source)" | rev | cut -d- -f1 | rev) =~ ^manylinux ]]; then
+    options=(!strip)  # https://github.com/pypa/manylinux/issues/119
+fi
+
 _dist_name() {
-    basename "$(_first_source)" |
-      sed 's/\(\.tar\.gz\|\.tgz\|\.tar\.bz2\|\.zip\|\.git\)$//'
+    find "$srcdir" -mindepth 1 -maxdepth 1 -type d -printf '%f
+' |
+        grep -v '^_tmpenv$'
 }
 
 if [[ $(_first_source) =~ ^git+ ]]; then
@@ -58,7 +68,7 @@ fi
 
 _build() {
     if _is_wheel; then return; fi
-    cd "$srcdir/$(_dist_name)"
+    cd "$srcdir"
     # See Arch Wiki/PKGBUILD/license.
     # Get the first filename that matches.
     local test_name
@@ -69,11 +79,20 @@ _build() {
             fi
         done
     fi
+    # Use the latest version of pip, as Arch's version is historically out of
+    # date(!) and newer versions do fix bugs (sometimes).
+    python -mvenv --clear --system-site-packages _tmpenv
+    _tmpenv/bin/pip --quiet install -U pip
     # Build the wheel (which we allow to fail) only after fetching the license.
-    /usr/bin/pip wheel -v --no-deps --wheel-dir="$srcdir" \
-        --global-option=--no-user-cfg \
-        --global-option=build --global-option=-j"$(nproc)" . ||
-        true
+    # In order to isolate from ~/.pydistutils.cfg, we need to set $HOME to a
+    # temporary directory, and thus first $XDG_CACHE_HOME back to its real
+    # location, so that pip inserts the wheel in the wheel cache.  We cannot
+    # use --global-option=--no-user-cfg instead because that fully disables
+    # wheels, causing a from-source build of build dependencies such as
+    # numpy/scipy.
+    XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}" HOME=_tmpenv \
+        _tmpenv/bin/pip wheel -v --no-deps --wheel-dir="$srcdir" \
+        "./$(_dist_name)" || true
 }
 
 build() { _build; }
@@ -89,9 +108,20 @@ _check() {
 _package() {
     cd "$srcdir"
     # pypa/pip#3063: pip always checks for a globally installed version.
-    /usr/bin/pip --quiet install --root="$pkgdir" \
+    python -mvenv --clear --system-site-packages _tmpenv
+    _tmpenv/bin/pip install --prefix="$pkgdir/usr" \
         --no-deps --ignore-installed --no-warn-script-location \
         "$(ls ./*.whl 2>/dev/null || echo ./"$(_dist_name)")"
+    if [[ -d "$pkgdir/usr/bin" ]]; then  # Fix entry points.
+        for f in "$pkgdir/usr/bin/"*; do
+            if [[ $(head -n1 "$f") = "#!$(readlink -f _tmpenv)/bin/python" ]]; then
+                sed -i '1c#!/usr/bin/python' "$f"
+            fi
+        done
+    fi
+    if [[ -d "$pkgdir/usr/etc" ]]; then
+        mv "$pkgdir/usr/etc" "$pkgdir/etc"
+    fi
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
@@ -100,3 +130,9 @@ _package() {
 package() { _package; }
 
 . "$(dirname "$BASH_SOURCE")/PKGBUILD_EXTRAS"
+
+# Remove makedepends already in depends (which may have been listed for the
+# first build, but autodetected on the second.
+makedepends=($(printf '%s\n' "${makedepends[@]}" |
+               grep -Pwv "^($(IFS='|'; echo "${depends[*]}"))$"))
+:  # Apparently ending with makedepends assignment sometimes fails.

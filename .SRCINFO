@@ -1,25 +1,23 @@
 pkgbase = python-enaml
 	pkgdesc = Declarative DSL for building rich user interfaces in Python
-	pkgver = 0.10.2
+	pkgver = 0.12.0
 	pkgrel = 00
 	url = https://github.com/nucleic/enaml
 	arch = x86_64
-	license = custom:
+	license = BSD
 	makedepends = python-pip
 	makedepends = python-wheel
 	depends = python
-	depends = python-qtpy
-	depends = python-future
 	depends = python-ply
-	depends = python-kiwisolver
-	depends = python-setuptools
 	depends = python-atom
+	depends = python-bytecode
+	depends = python-kiwisolver
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/30/fe/b95b1a93d6296c1c16a618d857c0a892a80d7e5bc7cbb506acad9818d6b6/enaml-0.10.2.tar.gz
+	source = https://files.pythonhosted.org/packages/d5/d5/b3e88ac554ea36b77d08b612e3259d998ad9868ac60f3c60918377c9999f/enaml-0.12.0.tar.gz
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 4bd4157f88e9b5a28385dea73ef20e74
-	md5sums = 7b198a7b1296c1659830cbb4f1c65f2e
+	md5sums = 8e77a894b8546ee8a4678dfb3aad25a3
+	md5sums = 9498cbdb4d81d88314d3baca05dcbe5f
 
 pkgname = python-enaml
 
