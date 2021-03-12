@@ -1,16 +1,16 @@
 pkgbase = inframap
 	pkgdesc = Read your tfstate or HCL to generate a graph specific for each provider, showing only the resources that are most important/relevant
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/cycloidio/inframap
 	arch = i386
 	arch = x86_64
 	license = MIT
-	source_i386 = https://github.com/cycloidio/inframap/releases/download/v0.6.0/inframap-linux-386.tar.gz
-	sha256sums_i386 = d9b9a016a388dd82c8597beae5b1663aff9bffb1d0f91bcaa509efbe921717e2
-	source_x86_64 = https://github.com/cycloidio/inframap/releases/download/v0.6.0/inframap-linux-amd64.tar.gz
-	sha256sums_x86_64 = c48aae2e1c6131dcb34c1c1597228109e99ad6baedced04be0a08ae933f768a4
+	source_i386 = https://github.com/cycloidio/inframap/releases/download/v0.6.1/inframap-linux-386.tar.gz
+	sha256sums_i386 = 7473be322b38a0e8e392f55fbda0dfdd8f0d184314a14c19ac750b239b4c75e5
+	source_x86_64 = https://github.com/cycloidio/inframap/releases/download/v0.6.1/inframap-linux-amd64.tar.gz
+	sha256sums_x86_64 = fa6bb17c8a480fc1c2530b8ae3a6a2c1a292837805c155c8360eaa90b7ecfb0b
 
 pkgname = inframap
 
