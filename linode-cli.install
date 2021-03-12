@@ -1,7 +1,7 @@
 post_install() {
 	echo
 	echo "The first time the CLI runs, it will prompt for configuration. The default is web-based configuration using OAuth."
-	echo "The CLI can also be manually configured or reconfigured using an API token by running the following:"
+	echo "The CLI can also be manually configured or reconfigured using an API token if you do not have access to a browser:"
 	echo 
 	echo "linode-cli configure --token"
 	echo
