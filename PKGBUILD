@@ -15,7 +15,7 @@ pkgbase=linux-phicomm-n1
 _srcname=linux-5.11
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.11.5
+pkgver=5.11.6
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
@@ -23,7 +23,7 @@ license=('GPL2')
 depends=('uboot-tools')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("https://mirrors.bfsu.edu.cn/kernel/v5.x/${_srcname}.tar.xz"
+source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'meson-gxl-s905d-phicomm-n1.dts'
         'config'
         'linux.preset'
@@ -34,7 +34,7 @@ source=("https://mirrors.bfsu.edu.cn/kernel/v5.x/${_srcname}.tar.xz"
 	'03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch')
 
 [[ ${pkgver##*.} != 0 ]] && \
-source+=("https://mirrors.bfsu.edu.cn/kernel/v5.x/patch-${pkgver}.xz")
+source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
          'e21d126e18d32bd49bca6a27efdece0e'
@@ -45,7 +45,7 @@ md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
          'e25f537f53ffe2850318ed541f0b3460'
          'd891085afff175033cd2cfc3c8241759'
          '7a18066683f3351b2bbd2653db783f80'
-         '6f548277e15547c62b33c1b11abecfee')
+         'c21187555e202f07cb3cd202763a2874')
 
 prepare() {
   cd ${_srcname}
