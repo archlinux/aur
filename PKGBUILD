@@ -8,8 +8,14 @@ pkgdesc="Audio and eBook download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Readarr/Readarr"
 license=("GPL3")
-depends=('sqlite')
-options=('!strip' 'staticlibs')
+depends=(
+  'sqlite'
+  'chromaprint'
+)
+options=(
+  '!strip'
+  'staticlibs'
+)
 provides=('readarr')
 conflicts=('readarr')
 optdepends=('calibre: calibre-server as root folder'
@@ -33,7 +39,7 @@ source=('readarr.service'
         'readarr.sysusers'
         'package_info')
 
-sha512sums=('ffcc3297f44f31daf21c79febcd6730a79ffd1e46cdb256f9b23a85ede4d026a6d6272aae23d1d055b3295b848be1385ce6d4c7b93b910b15be1e05f2aa04c27'
+sha512sums=('29b1a5c4162a6cd6da8215baffcab074658cdbd47c55f9b400f621aa42545336746cdc022c517374ac9589bcf9de5e9f18c1739c05b5fa529d7a60fd5f6d9150'
             'b34389cf2966a7a1a1fe6708303641e144191a95001c5ca6e570e9d50ba334fcbc1603852c3c2bfe008d97aaf54207690c689f00dd63378157af33ceebbbb089'
             '99f8210754ea5ec742ba6b0b9f05c8312237cb0225bc0d28a2a8ee8362b464da0880499b64ea58c84b64c0eb727748c3c15630cedb8785d7d94d856c76cf17eb'
             'f762a01de8c4448a64da61fc6804587b2679d3c2b874c42cd920d7af0a380ed4c93ff8e89aac72a1cdca90c98596d97f593c98f6528326e4dacfc3f09ab536a5')
@@ -46,6 +52,9 @@ sha512sums_armv7h=('ebf0639457d329ab4404b9707f3a7e0531e9662d9d4542b0ebcdc5994851
 package() {
   # Update environment isn't needed.
   rm -rf "${srcdir}/Readarr/Readarr.Update"
+
+  # Remove unneeded fpcalc
+  rm -f "${srcdir}/Readarr/fpcalc"
 
   install -d -m 755 "${pkgdir}/usr/lib/readarr/bin"
   cp -dpr --no-preserve=ownership "${srcdir}/Readarr/"* "${pkgdir}/usr/lib/readarr/bin"
