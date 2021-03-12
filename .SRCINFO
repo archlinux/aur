@@ -1,0 +1,22 @@
+pkgbase = filezilla-unstable
+	pkgdesc = Fast and reliable FTP, FTPS and SFTP client. (includes unstable versions)
+	pkgver = 3.53.0_rc1
+	pkgrel = 1
+	url = https://filezilla-project.org/
+	arch = x86_64
+	license = GPL
+	depends = dbus
+	depends = xdg-utils
+	depends = wxgtk3
+	depends = libidn
+	depends = hicolor-icon-theme
+	depends = sqlite
+	depends = gnutls
+	depends = libfilezilla-unstable>=0.27.0
+	provides = filezilla
+	conflicts = filezilla
+	source = https://download.filezilla-project.org/client/FileZilla_3.53.0-rc1_src.tar.bz2
+	sha512sums = 2c7e1bf239c302032cf23426bcf0e726bbc63e0563a56b92b8647e1f40fbf758e5ddbc32c449a8a71ccddfc07e5e0e576fc33d8822d9280751e8db413aeefc09
+
+pkgname = filezilla-unstable
+
