@@ -1,0 +1,13 @@
+pkgbase = projectctr-makerom
+	pkgdesc = Creates CTR cxi/cfa/cci/cia files
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://github.com/3DSGuy/Project_CTR/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = projectctr::git+https://github.com/3DSGuy/Project_CTR.git
+	sha256sums = SKIP
+
+pkgname = projectctr-makerom
+
