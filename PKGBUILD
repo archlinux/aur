@@ -3,25 +3,25 @@
 pkgname=python-pytorch-lightning
 _pkgname=pytorch-lightning
 pkgver=1.2.3
-pkgrel=1
+pkgrel=3
 pkgdesc="The lightweight PyTorch wrapper for high-performance AI research"
 arch=('any')
 url='https://github.com/PyTorchLightning/pytorch-lightning'
 license=('Apache')
 depends=(
-  'python-fsspec'
-  'python-pandas'
-  'python-pyaml'
-  'python-numpy'
-  'python-scikit-learn'
-  'python-pytorch'
-  'python-torchvision'
-  'python-twine'
-  'python-tqdm'
+  python-fsspec
+  python-pandas
+  python-pyaml
+  python-numpy
+  python-scikit-learn
+  python-pytorch
+  python-torchvision
+  python-twine
+  python-tqdm
+  tensorboard
 )
 optdepends=(
   'python-apex: mixed precision support'    
-  'tensorboard: tensorboard support'
   'python-horovod: for distributed training'
 )
 makedepends=('python-setuptools')
