@@ -1,0 +1,26 @@
+# Colors
+note() {
+    printf "${BLUE}==>${ALL_OFF}${BOLD} NOTE:${ALL_OFF} ${1}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+GREEN="${BOLD}$(tput setaf 2)"
+
+
+post_install() {
+    echo ""
+    note "To configure,run:"
+    note "    sudo cp /usr/lib/modprobe.d/ipt-netflow.conf /etc/modprobe.d/"
+    note "and change for your needs."
+    note "For details see the documentation in the /usr/share/doc/ipt-netflow/ directory."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    note "For configuration, see the documentation in the /usr/share/doc/ipt-netflow/ directory."
+    echo ""
+}
+
