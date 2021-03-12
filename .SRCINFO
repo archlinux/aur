@@ -1,6 +1,6 @@
 pkgbase = r-rcpparmadillo
 	pkgdesc = 'Rcpp' Integration for the 'Armadillo' Templated Linear Algebra Library
-	pkgver = 0.10.2.1.0
+	pkgver = 0.10.2.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppArmadillo
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = r-rcpparmadillo
 	optdepends = r-pkgkitten
 	optdepends = r-reticulate
 	optdepends = r-slam
-	source = https://cran.r-project.org/src/contrib/RcppArmadillo_0.10.2.1.0.tar.gz
-	sha256sums = 65db3ea24a70c926be3d88b14677c2a48940f2df62a970ef4560b32af0b5290e
+	source = https://cran.r-project.org/src/contrib/RcppArmadillo_0.10.2.2.0.tar.gz
+	sha256sums = 3865d31d40fd6f217b4171c3cc92011a1e56e2a354f40c251e968dbb8dac7aa4
 
 pkgname = r-rcpparmadillo
 
