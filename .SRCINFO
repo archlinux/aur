@@ -1,13 +1,15 @@
 pkgbase = linuxprivchecker-git
 	pkgdesc = A Linux privilege escalation check script
-	pkgver = r12.3f4fe96
+	pkgver = r37.0d70108
 	pkgrel = 1
 	url = https://github.com/sleventyeleven/linuxprivchecker
 	arch = any
 	license = custom
 	makedepends = git
-	depends = python2
+	makedepends = python-setuptools
+	depends = python
 	provides = linuxprivchecker
+	conflicts = linuxprivchecker
 	source = git+https://github.com/sleventyeleven/linuxprivchecker.git
 	sha256sums = SKIP
 

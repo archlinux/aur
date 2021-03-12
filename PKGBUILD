@@ -2,39 +2,40 @@
 
 
 pkgname=linuxprivchecker-git
+_name="${pkgname%-git}"
 
 pkgver() {
-	cd "${pkgname%-git}"
+	cd "$_name"
 	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r12.3f4fe96
+pkgver=r37.0d70108
 pkgrel=1
 
 pkgdesc='A Linux privilege escalation check script'
 arch=('any')
-url="https://github.com/sleventyeleven/${pkgname%-git}"
+url="https://github.com/sleventyeleven/$_name"
 license=('custom')
 
-makedepends=('git')
-depends=('python2')
+makedepends=('git' 'python-setuptools')
+depends=('python')
 
-provides=("${pkgname%-git}")
+provides=("$_name")
+conflicts=("$_name")
 
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 
-prepare() {
-	cd "${pkgname%-git}"
-	tail -12 README.md >LICENSE
-	sed -i '1s|python|python2|' "${pkgname%-git}.py"
+build() {
+	cd "$_name"
+	PYTHONHASHSEED=0 python setup.py build
 }
 
 package() {
-	cd "${pkgname%-git}"
-	install -Dm755 "${pkgname%-git}.py" "$pkgdir/usr/bin/${pkgname%-git}"
-	install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/${pkgname%-git}/"
-	install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
+	cd "$_name"
+	PYTHONHASHSEED=0 python setup.py install --skip-build --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE   -t"$pkgdir/usr/share/licenses/$_name/"
+	install -Dm644 README.md -t"$pkgdir/usr/share/doc/$_name/"
 }
 
 
