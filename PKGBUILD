@@ -9,7 +9,7 @@
 pkgname=shadered
 pkgver=1.5
 pkgrel=1
-pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
+pkgdesc="Lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
 url="https://github.com/dfranx/SHADERed"
 license=("MIT")
