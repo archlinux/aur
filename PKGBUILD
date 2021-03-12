@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname="sodalite"
-pkgver="0.19.5"
+pkgver="0.19.6"
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hnicke/sodalite/archive/v$pkgver.tar.gz")
 backup=('etc/sodalite.conf')
-sha256sums=(a2a3eebf2d79705ac28e5e70f5a63aff0dab047d18cf69bc9fcf4bbd4095ea53)
+sha256sums=('f20151d12ab3f3520d999a173d358dd1d36dae145e8297fa77a5170fd3c86197')
 
 
 
