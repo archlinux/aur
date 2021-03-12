@@ -1,9 +1,9 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210311.1
+pkgver=20210312.1
 pkgrel=1
-pkgdesc="Built with nativefier (based on electron 12), seemed to Windows version."
+pkgdesc="Built with nativefier (based on electron), seemed to Windows version."
 arch=("x86_64")
 url="https://wx.qq.com/"
 license=("MIT")
@@ -25,6 +25,7 @@ build() {
   nativefier \
       --name "$_instname" \
     --icon "${pkgname}.png" \
+    --internal-urls ".*?" \
     --inject "${pkgname}.css" \
     --hide-window-frame \
     --tray \
