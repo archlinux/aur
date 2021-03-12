@@ -2,7 +2,7 @@
 # Contributor: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
 
 _cranname=pbkrtest
-_cranver=0.5-0.1
+_cranver=0.5.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.5.0' 'r-lme4>=1.1.10' r-broom r-magrittr r-numderiv r-knitr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('f56525488c6efe4a5cbf849bf9a82747041478605b166c29bad54e464e46f469')
+sha256sums=('b2a3452003d93890f122423b3f2487dcb6925440f5b8a05578509e98b6aec7c5')
 
 build() {
   cd "${srcdir}"
