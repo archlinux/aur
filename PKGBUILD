@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=fish-systemd-git
-pkgver=r7.ae58bc5
+pkgver=r8.b570b22
 pkgrel=1
 pkgdesc="Comfortable fish aliases for systemctl commands"
 arch=('any')
@@ -20,7 +20,8 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  install -Dm644 conf.d/systemd-abbr.fish "$pkgdir/etc/fish/conf.d/systemd-abbr.fish"
-  install -Dm644 systemctl.fish "$pkgdir/usr/share/fish/functions/systemctl.fish"
+  install -Dm 644 conf.d/systemd-abbr.fish -t "$pkgdir/etc/fish/conf.d/"
+  install -Dm 644 functions/systemctl.fish -t "$pkgdir/usr/share/fish/functions/"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-

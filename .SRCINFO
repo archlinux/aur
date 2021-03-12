@@ -1,6 +1,6 @@
 pkgbase = fish-systemd-git
 	pkgdesc = Comfortable fish aliases for systemctl commands
-	pkgver = r7.ae58bc5
+	pkgver = r8.b570b22
 	pkgrel = 1
 	url = https://github.com/wawa19933/fish-systemd
 	arch = any
