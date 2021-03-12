@@ -2,8 +2,8 @@
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
 pkgname=mimalloc
-pkgver=1.6.7
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
 license=('MIT')
@@ -37,8 +37,8 @@ package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  ln -s "mimalloc-1.6/libmimalloc.so.1.6" "${pkgdir}/usr/lib/"
-  ln -s "mimalloc-1.6/libmimalloc.so.1.6" "${pkgdir}/usr/lib/libmimalloc.so"
-  ln -s "mimalloc-1.6/libmimalloc-secure.so.1.6" "${pkgdir}/usr/lib/"
-  ln -s "mimalloc-1.6/libmimalloc-secure.so.1.6" "${pkgdir}/usr/lib/libmimalloc-secure.so"
+  ln -s "mimalloc-2.0/libmimalloc.so.2.0" "${pkgdir}/usr/lib/"
+  ln -s "mimalloc-2.0/libmimalloc.so.2.0" "${pkgdir}/usr/lib/libmimalloc.so"
+  ln -s "mimalloc-2.0/libmimalloc-secure.so.2.0" "${pkgdir}/usr/lib/"
+  ln -s "mimalloc-2.0/libmimalloc-secure.so.2.0" "${pkgdir}/usr/lib/libmimalloc-secure.so"
 }
