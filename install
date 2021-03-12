@@ -19,8 +19,6 @@ post_install() {
 }
 
 post_upgrade() {
-    echo ""
-    note "For configuration, see the documentation in the /usr/share/doc/ipt-netflow/ directory."
-    echo ""
+    post_install
 }
 
