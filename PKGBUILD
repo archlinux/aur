@@ -1,4 +1,5 @@
-# Maintainer: s3my0n <rush4ck3r@gmail.com>
+# Maintainer: 4censord <mail@business-insulting.de>
+# Contributor: s3my0n <rush4ck3r@gmail.com>
 # Contributor: Aurélien Wailly <aurelien.wailly@gmail.com>, James Fryman <jfryman@gmail.com>
 
 pkgname=firewalk
