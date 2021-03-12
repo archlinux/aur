@@ -1,7 +1,7 @@
 pkgbase = php-xmlrpc
-	pkgdesc = PHP extention to write XML-RPC servers and clients
+	pkgdesc = PHP extension to write XML-RPC servers and clients
 	pkgver = 1.0.0RC2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/xmlrpc
 	arch = i686
 	arch = x86_64

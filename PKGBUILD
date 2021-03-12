@@ -3,8 +3,8 @@
 pkgname=php-xmlrpc
 _extname=xmlrpc
 pkgver=1.0.0RC2
-pkgrel=1
-pkgdesc="PHP extention to write XML-RPC servers and clients"
+pkgrel=2
+pkgdesc="PHP extension to write XML-RPC servers and clients"
 arch=("i686" "x86_64")
 url="https://pecl.php.net/package/xmlrpc"
 license=('PHP')
