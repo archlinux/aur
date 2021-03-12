@@ -9,11 +9,10 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=7.2.2.3
-_tensorrt_tag=21.02
+pkgver=7.2.3.4
+_tensorrt_tag=21.03
 _cudaver=11.1
-_cudnn_tarver=8.0
-_cudnn_sysver=8.1
+_cudnnver=8.1
 _ubuntuver=18.04
 _protobuf_ver=3.12.4
 _onnx_tag=1.8.1
@@ -27,7 +26,7 @@ license=('custom:NVIDIA-SLA' 'Apache')
 makedepends=('git' 'cmake' 'ninja' 'poppler' "cuda=${_cudaver}" 'cudnn' 'pybind11' 'python'
              'python-onnx' 'python-wheel' 'absl-py' 'python-scipy' 'python-prettytable'
              'python-pyaml' 'python-pytorch-cuda' 'python-pip' 'zlib')
-source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnn_tarver}.tar.gz"
+source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz"
         "git+https://github.com/NVIDIA/TensorRT.git#tag=${_tensorrt_tag}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
@@ -40,7 +39,7 @@ source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cu
         '020-tensorrt-fix-cub-deprecation-huge-warnings.patch'
         '030-tensorrt-fix-python.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('6b5457d4234fec305cc7b241af0c1da0def69a4d182d09b4396948c6eaeae8db'
+sha256sums=('d3a1f478e304b48878604fac70ce7920fece71f9cac62f925c9c59c197f5d087'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -51,7 +50,7 @@ sha256sums=('6b5457d4234fec305cc7b241af0c1da0def69a4d182d09b4396948c6eaeae8db'
             'ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
             'e6153bf43c248fb3ed843e41f6b722ff8c3507ad48fe105bfa129b8641741ecf'
-            '69b2b70ae4774385fc589f917b6f1df23415ed43a7a2cd9328504631c8461e95')
+            'aa48e7ef94618ad5983aef8773704a21260fe52bc0ebf16afeecebca1bd79316')
 
 prepare() {
     # tensorrt git submodules
@@ -95,7 +94,7 @@ build() {
         -DGPU_ARCHS='52 53 60 61 62 70 72 75 80 86' \
         -DPROTOBUF_VERSION="$_protobuf_ver" \
         -DCUDA_VERSION="$_cudaver" \
-        -DCUDNN_VERSION="$_cudnn_sysver" \
+        -DCUDNN_VERSION="$_cudnnver" \
         -Wno-dev
     make -C build
     
@@ -128,9 +127,9 @@ package_tensorrt() {
     
     make -C build DESTDIR="$pkgdir" install
     install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
-    install -D -m644 build/libnvcaffeparser_static.a -t "${pkgdir}/usr/lib"
+    install -D -m644 build/libnv{caffeparser,infer_plugin}_static.a -t "${pkgdir}/usr/lib"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/include" "${pkgdir}/usr"
-    cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/lib{myelin,nv{infer,parsers}}{*.so*,*_static.a} "${pkgdir}/usr/lib"
+    cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/lib{myelin*,nv{infer,parsers}}{.so*,_static.a} "${pkgdir}/usr/lib"
     
     install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
@@ -153,10 +152,20 @@ package_python-tensorrt() {
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     export PYTHONHASHSEED='0'
     
+    local _trt_major
+    local _trt_minor
+    local _trt_patch
+    local _trt_build
+    _trt_major="$(awk '/^#define NV_TENSORRT_MAJOR/ { print $3 }' TensorRT/include/NvInferVersion.h)"
+    _trt_minor="$(awk '/^#define NV_TENSORRT_MINOR/ { print $3 }' TensorRT/include/NvInferVersion.h)"
+    _trt_patch="$(awk '/^#define NV_TENSORRT_PATCH/ { print $3 }' TensorRT/include/NvInferVersion.h)"
+    _trt_build="$(awk '/^#define NV_TENSORRT_BUILD/ { print $3 }' TensorRT/include/NvInferVersion.h)"
+    local _trtver="${_trt_major}.${_trt_minor}.${_trt_patch}.${_trt_build}"
+    
     PIP_CONFIG_FILE='/dev/null' pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location \
         "TensorRT-${pkgver}/graphsurgeon/graphsurgeon-${_graphsurgeonver}-py2.py3-none-any.whl" \
         "TensorRT-${pkgver}/uff/uff-${_uffver}-py2.py3-none-any.whl" \
-        "TensorRT/python/build/dist/tensorrt-${pkgver}-cp${_pyver%%.*}${_pyver#*.}-none-linux_${CARCH}.whl"
+        "TensorRT/python/build/dist/tensorrt-${_trtver}-cp${_pyver%%.*}${_pyver#*.}-none-linux_${CARCH}.whl"
     python -O -m compileall "${pkgdir}/usr/lib/python${_pyver}/site-packages"/{graphsurgeon,uff,tensorrt}
     
     local _dir
