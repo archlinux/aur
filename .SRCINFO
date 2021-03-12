@@ -1,0 +1,15 @@
+pkgbase = plex-anilist-bundle-git
+	pkgdesc = Plex HTTP Anilist Metadata Agent
+	pkgver = r21.ebcb3b9
+	pkgrel = 1
+	url = https://github.com/sachaw/anilist.bundle
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = plex-media-server
+	depends = plex-ass-scanner-git
+	source = plex-anilist-bundle-git::git+https://github.com/sachaw/anilist.bundle.git
+	sha512sums = SKIP
+
+pkgname = plex-anilist-bundle-git
+
