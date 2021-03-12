@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.21.74
+pkgver=1.21.76
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=('cups: Printer support'
 chromium_base_ver="89"
 patchset="7"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
-_launcher_ver=6
+_launcher_ver=7
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         "chromium::git+https://github.com/chromium/chromium.git"
         "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
@@ -54,11 +54,10 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch" "chromium-no-history2.patch")
-arch_revision=7dabfd6f8cafa95fcbc254938abf3f21fef3deae
+arch_revision=c3700a0016c1268c0827f2f15c6715e0d0dd89b0
 Patches="
         add-dependency-on-opus-in-webcodecs.patch
-        don-t-crash-on-reentrant-RunMoveLoop-call.patch
-        add-ctime-for-std-time.patch
+        x11-ozone-fix-two-edge-cases.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch
         "
@@ -74,13 +73,12 @@ sha256sums=('SKIP'
             'SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
-            '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'f8b1558f6c87b33423da854d42f0f69d47885a96d6bf6ce7f26373e93d47442f'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             'd7775ffcfc25eace81b3e8db23d62562afb3dbb5904d3cbce2081f3fe1b3067d'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
-            '615f5fefc94da605957edb34b6c000f32953fb5ff6ffb321f062dab8e0fef9d3'
-            '102e0c976c0d7fd1fbe2f2978ec621499a97b62457b3fde4daf84f026d1a53a7'
+            '9e4743bdeaf5b668659ad53400e3977006916aac3a7ba045bbc750b7b4cbf274'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -177,11 +175,11 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../../add-dependency-on-opus-in-webcodecs.patch
-  patch -Np1 -i ../../don-t-crash-on-reentrant-RunMoveLoop-call.patch
-  patch -Np1 -i ../../add-ctime-for-std-time.patch
+  patch -Np1 -i ../../x11-ozone-fix-two-edge-cases.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../../patches/chromium-89-quiche-dcheck.patch
+  patch -Np1 -i ../../patches/chromium-89-AXTreeSerializer-include.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
