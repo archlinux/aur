@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Projector
+Comment=Common and client-related code for running Swing applications remotely.
+Exec=/bin/projector %U
+Icon=projector
+Type=Application
+StartupNotify=true
+Categories=Development;Utility;
+StartupWMClass=Projector
