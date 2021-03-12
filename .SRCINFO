@@ -1,0 +1,21 @@
+pkgbase = python-qt-reactor
+	pkgdesc = Twisted Qt Integration for Qt4 and Qt5 using qtpy
+	pkgver = 0.6
+	pkgrel = 00
+	url = https://github.com/frmdstryr/qt-reactor
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-twisted
+	depends = python-qtpy
+	noextract = qt_reactor-0.6-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/83/77/506a082b80c43fc50509f13c1aed9b63716295f3f0f983035b8bb49f6e23/qt_reactor-0.6-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 809803cf73b283a69a481781043d591d
+	md5sums = fee9e9036ceaa3835700c4d98b50251a
+
+pkgname = python-qt-reactor
+
