@@ -1,0 +1,19 @@
+pkgbase = python-pykeops
+	pkgdesc = Python bindings for the cpp/cuda library KeOps.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://www.kernel-operations.io/keops/index.html
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = gcc>=7.0.0
+	depends = cmake
+	depends = cuda
+	depends = python-pytorch>=1.5.0
+	source = https://files.pythonhosted.org/packages/18/5a/896032f7ab0bf6eee12af5373aa714bbf4e58314684c04e8c17a6a5e4914/pykeops-1.4.2.tar.gz
+	sha256sums = 21c3f6bcf44f737703f1b1ff5f888e3a837eb79315f2594b344eeffca3a7640b
+
+pkgname = python-pykeops
+
