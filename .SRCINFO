@@ -1,0 +1,14 @@
+pkgbase = lost-codeonly
+	pkgdesc = Remove annoying comments from your code
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/LostInTheCloud/codeonly
+	arch = x86_64
+	license = GPL-2.0
+	provides = codeonly
+	options = strip
+	source = https://github.com/LostInTheCloud/codeonly/releases/download/v1.1.0/codeonly-1.1.0-x86_64.tar.gz
+	sha256sums = 763d4fda449c63d3fd5652db23ba0338d0cc150b873221c46650efdbf089ca2c
+
+pkgname = lost-codeonly
+
