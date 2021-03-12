@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=0ad-zh-lang
-pkgver=a24
+pkgver=a24.b
 _pkgver=0.0.24
 pkgrel=1
 pkgdesc="Chinese Fonts and Translations For 0ad"
