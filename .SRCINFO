@@ -1,0 +1,24 @@
+pkgbase = python-openml
+	pkgdesc = python interface for OpenML
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://openml.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-liac-arff
+	depends = python-xmltodict
+	depends = python-requests
+	depends = python-scikit-learn
+	depends = python-dateutil
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-minio
+	depends = python-pyarrow
+	source = https://files.pythonhosted.org/packages/a4/5d/30ce4d1af609ba389d55654e6a7271619253dbbe7006a33bb20c703f0234/openml-0.11.0.tar.gz
+	sha256sums = 935a457e7a3fd07412a873621bd710f80277e94a8f396207d8fcd3e66f2795c8
+
+pkgname = python-openml
+
