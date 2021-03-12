@@ -3,6 +3,8 @@ post_install() {
 
 Note that the browser Ghostery Dawn is still in Beta.
 
+Launch command: /usr/bin/ghostery
+
 To use the builtin ad-free search (Ghostery Glow), a subscription is needed.
 If you want to try it out, you can get one for free by signing up for the beta:
 
