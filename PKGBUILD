@@ -1,7 +1,7 @@
 # Maintainer: Aron Cederholm <gmail>
 
 pkgname=mem
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='A colorized memory inspector for terminals and consoles'
 arch=('any')
@@ -24,10 +24,8 @@ source=(
 )
 validpgpkeys=('AD5582360F6A567CA5356535610CE1A9A5BD39C9')
 noextract=()
-md5sums=(
-         '610262136db28ee5469ab18411d52d36'
-         '2f59da06c849db0a630dfb7cd125a99e'
-)
+md5sums=('d4f84f5865f63029dca28b201f136a86'
+         'eba3ff07f3e0b94a55043054189600ca')
 
 build() {
 	cd "$pkgname-$pkgver"
