@@ -1,0 +1,15 @@
+pkgbase = xrt-bin
+	pkgdesc = Xilinx Run Time for FPGA
+	pkgver = 2020.2
+	pkgrel = 1
+	url = https://github.com/Xilinx/XRT
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	depends = ocl-icd
+	optdepends = vivado
+	source = https://www.xilinx.com/bin/public/openDownload?filename=xrt_202020.2.8.743_20.04-amd64-xrt.deb
+	md5sums = 4dd5237ab928507ffb7070b3412869a7
+
+pkgname = xrt-bin
+
