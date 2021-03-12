@@ -2,7 +2,7 @@
 pkgname=eclipse-java-bin
 pkgver=4.18
 _releasemonth="2020-12"
-pkgrel=0
+pkgrel=1
 pkgdesc="Highly extensible IDE"
 arch=('x86_64')
 url="https://www.eclipse.org"
@@ -11,7 +11,7 @@ depends=("java-environment>=11" "python" "libsecret")
 makedepends=('tar')
 provides=('eclipse-java')
 conflicts=('eclipse-java')
-source=("https://eclipse.mirror.rafal.ca/technology/epp/downloads/release/$_releasemonth/R/${pkgname%-bin}-$_releasemonth-R-linux-gtk-$CARCH.tar.gz"
+source=("https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_releasemonth/R/${pkgname%-bin}-$_releasemonth-R-linux-gtk-x86_64.tar.gz"
 			"eclipse.desktop"
 			"eclipse.png")
 sha512sums=('1d5aac59454d35175c6b388674d23de91f45d953141389d82b5557d46de92beb2b14396427bfab8f6b198ed58bed67094755d26d3d379c92733f2a74d51b02bd'
