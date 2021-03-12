@@ -2,8 +2,8 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2021.02.22
-pkgrel=2
+pkgver=2021.03.12
+pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
@@ -41,6 +41,7 @@ build() {
     --icon "${pkgname}.png" \
     --internal-urls '^(https?:\/\/)?(calendar|accounts)\.google\.com(\/.*)?$' \
     --maximize \
+    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/86.0" \
     --single-instance \
     --verbose \
     https://calendar.google.com
