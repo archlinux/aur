@@ -5,13 +5,13 @@ set stripe_cli_version $argv[1]
 echo "Making a new release of stripe-cli $stripe_cli_version"
 
 echo "Getting checksum..."
-set checksum (curl -L https://github.com/stripe/stripe-cli/releases/download/v$stripe_cli_version/stripe-checksums.txt | grep linux_x86_64.tar.gz | awk '{print $1}')
+set checksum (curl -L https://github.com/stripe/stripe-cli/releases/download/v$stripe_cli_version/stripe-linux-checksums.txt | grep linux_x86_64.tar.gz | awk '{print $1}')
 
 echo "Building PKGBUILD..."
 sed "s/VERSION/$stripe_cli_version/g;s/CHECKSUM/$checksum/g" PKGBUILD.template >PKGBUILD
 
 echo "Making and installing package locally..."
-makepkg -i
+makepkg -i; or exit
 
 echo "Generating .SRCINFO..."
 makepkg --printsrcinfo >.SRCINFO
