@@ -1,6 +1,6 @@
 pkgbase = git-interactive-rebase-tool-git
 	pkgdesc = An improved sequence editor for interactive git-rebase
-	pkgver = 2.0.0.r540.70a14d6
+	pkgver = 2.0.0.r563.8eef70b
 	pkgrel = 1
 	url = https://gitrebasetool.mitmaro.ca
 	install = git-interactive-rebase-tool.install
@@ -16,3 +16,4 @@ pkgbase = git-interactive-rebase-tool-git
 	sha256sums = SKIP
 
 pkgname = git-interactive-rebase-tool-git
+

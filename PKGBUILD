@@ -3,14 +3,16 @@
 
 
 pkgname=git-interactive-rebase-tool-git
+_pkgname="${pkgname%-git}"
+_name="${_pkgname#git-}"
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "$_pkgname"
   printf '%s.r%s.%s' \
     "$(git tag -l | grep -P '.+\..+\.\d+' | sed -r 's/([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=2.0.0.r540.70a14d6
+pkgver=2.0.0.r563.8eef70b
 pkgrel=1
 
 pkgdesc='An improved sequence editor for interactive git-rebase'
@@ -18,36 +20,34 @@ arch=('x86_64')
 url=https://gitrebasetool.mitmaro.ca
 license=('GPL3')
 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 makedepends=('rust')
 depends=('git')
 
 options=('zipman')
 
-install="${pkgname%-git}.install"
+install="$_pkgname.install"
 changelog=CHANGELOG.md
-source=("git+https://github.com/MitMaro/${pkgname%-git}.git")
+source=("git+https://github.com/MitMaro/$_pkgname.git")
 sha256sums=('SKIP')
 
 
 build() {
-  cd "${pkgname%-git}"
-  if type -P rustup; then
-    if ! rustup default &>/dev/null; then
-      rustup default stable
-    fi
+  cd "$_pkgname"
+  if type -P rustup && ! rustup default &>/dev/null; then
+    rustup default stable
   fi
   cargo build --release
 }
 
 package() {
-  cd "${pkgname%-git}"
-  install -Dm755 target/release/interactive-rebase-tool -t"$pkgdir/usr/bin/"
-  install -Dm644 {README,CHANGELOG,CODE_OF_CONDUCT}.md  -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
-  install -Dm644 LICENSE                                -t"$pkgdir/usr/share/licenses/${pkgname%-git}/"
-  install -Dm644 src/interactive-rebase-tool.1          -t"$pkgdir/usr/share/man/man1/"
+  cd "$_pkgname"
+  install -Dm755 "target/release/$_name" -t"$pkgdir/usr/bin/"
+  install -Dm644 {,readme/}*.md          -t"$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm644 LICENSE                 -t"$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dm644 src/$_name.1            -t"$pkgdir/usr/share/man/man1/"
 }
 
 
