@@ -72,3 +72,7 @@ md5sums=('SKIP'
          '67fd2b5b39e68efbddeabeec2a71b1d5'
          '1791b26249eff8ad354855f209dd9b2c'
          'ce5b763e857a38dab5f22ad77e0c248e')
+md5sums=('SKIP'
+         '5f01a429030bda20f486a14624066e2d'
+         'e3fb833f27ec565a40819fa4e5b15c48'
+         'ce5b763e857a38dab5f22ad77e0c248e')

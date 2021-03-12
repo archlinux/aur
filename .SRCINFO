@@ -14,8 +14,8 @@ pkgbase = ipt-netflow-dkms-git
 	source = dkms.conf
 	source = modprobe.conf
 	md5sums = SKIP
-	md5sums = 67fd2b5b39e68efbddeabeec2a71b1d5
-	md5sums = 1791b26249eff8ad354855f209dd9b2c
+	md5sums = 5f01a429030bda20f486a14624066e2d
+	md5sums = e3fb833f27ec565a40819fa4e5b15c48
 	md5sums = ce5b763e857a38dab5f22ad77e0c248e
 
 pkgname = ipt-netflow-dkms-git
