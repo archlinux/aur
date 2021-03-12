@@ -8,7 +8,7 @@ pkgname=('pipewire-git'
          'pipewire-media-session-git'
          'alsa-card-profiles-git'
          )
-pkgver=0.3.23.62.g22f6e8e3
+pkgver=0.3.23.74.ge2ac16cc
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -34,6 +34,7 @@ makedepends=('git'
              'libopenaptx'
              'libfdk-aac'
              'libcamera-git'
+             'vulkan-headers'
              )
 checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
@@ -98,6 +99,7 @@ package_pipewire-git() {
            'libsndfile.so'
            'libsystemd.so'
            'libudev.so'
+           'libvulkan.so'
            'libcamera-git'
            )
   optdepends=('pipewire-docs-git: Documentation'
