@@ -1,72 +1,74 @@
-# Maintainer: YuutaW <i@yuuta.moe>
-pkgname='rsshub-git'
-pkgver=1
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Contributor: YuutaW <i@yuuta.moe>
+
+pkgname=rsshub-git
+pkgver=r5997.c0f4b73e8
 pkgrel=1
-epoch=
 pkgdesc="Everything is RSSible"
-arch=('any')
+# The built package bundles native Node.js extensions like OpenCC
+arch=('x86_64')
 url="https://rsshub.app/"
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
-checkdepends=()
-optdepends=()
+# rsshub uses yarn and a dependency re2 uses npm
+makedepends=('npm' 'yarn' 'node-gyp' 'git')
+optdepends=(
+  'chromium: for routes using a headless browser'
+)
 backup=('etc/rsshub/rsshub.conf')
 source=("$pkgname::git+https://github.com/DIYgod/RSSHub.git"
-	"rsshub.conf"
-	"rsshub.service"
-    "rsshub_sysuser.conf"
-    "rsshub_tmpfile.conf")
-noextract=()
-md5sums=('SKIP'
-         '6621493e94958b1d3ac8d031bff36eb4'
-         '079e30a1e74485a571b104dfb5df0b49'
-         '6a6a769bf29d4281b36d7826e26a1117'
-         'd5e489cdc03b59987e8f1385210d2010')
+        "rsshub.conf"
+        "rsshub.service"
+        "rsshub_sysuser.conf"
+        "rsshub_tmpfile.conf")
+sha512sums=('SKIP'
+            'f8f0e8195a05cc7cd43630a2ce3b28250279d3b4adbfa3693b57b23ea70013b9e5de8ab4905a6411152bdf0ab470d5873c11f6836fc281c8fd961f520a10f3b4'
+            '7fdcbbec994bfbeab8a52f31786e1034f48f78ffcdc0de69ea23eda6bc377424be900922b87db06b834429fcaeeed4c9a2b3a3291ca4df4d1f9ad4b9fc421a17'
+            '892a82aa32c0f486009eb2b620b8fd5b8674de6a36ab16d42545e64fbdb7184b7d1f2ca63d6841ec420f639bc714df88dd32c17803772aa489a4c5f12f7ec96f'
+            'ae2fd7a452716fccd0f421176aba9b9971edf9a9a3f241bd023044f9bce140dfcad0777eff9d47a891264d0ea49ce9f9f7671043b44fd2bcf7c9f484c08b8449')
+# clean-nm.sh leaves many empty directories
+options=('!emptydirs')
+
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --always | sed 's|-|.|g'
+    cd $pkgname
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/$pkgname"
-	# Remove unnecessary directory
-	rm -rf .github
-	rm -rf docs
-	rm -rf test
+    cd $pkgname
+    # Remove unnecessary directory
+    rm -rf .github
+    rm -rf docs
+    rm -rf test
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	npm install --production --cache "${srcdir}/npm-cache"
+    cd $pkgname
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true yarn install --verbose --pure-lockfile --production --cache-folder "${srcdir}/yarn-cache"
 
-	# Cleanup node modules, as Dockerfile does.
-	chmod +x ./tools/clean-nm.sh
-	./tools/clean-nm.sh
+    # Cleanup node modules, as Dockerfile does.
+    chmod +x ./tools/clean-nm.sh
+    ./tools/clean-nm.sh
+    find -name '*.o' -delete
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	mkdir -p $pkgdir/opt/rsshub
-	cp -R ./* $pkgdir/opt/rsshub/
- 	chown -R root:root "${pkgdir}/opt/"
- 	find "${pkgdir}/opt" -type d -exec chmod 755 {} +
+    cd $pkgname
+    install -Ddm755 "$pkgdir"/opt/rsshub
+    cp -R ./* "$pkgdir"/opt/rsshub/
+    chown -R root:root "${pkgdir}/opt/"
+    find "${pkgdir}/opt" -type d -exec chmod 755 {} +
 
-	mkdir -p $pkgdir/etc/rsshub
-	install -Dm644 $srcdir/rsshub.conf $pkgdir/etc/rsshub/rsshub.conf
+    install -Dm640 "$srcdir"/rsshub.conf -t "$pkgdir"/etc/rsshub/
 
-	mkdir -p $pkgdir/usr/share/licenses/rsshub/
-	install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/rsshub/LICENSE
+    install -Dm644 ./LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
     # TODO: We still have several JS which contains the $srcdir
-	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
+    find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
-	mkdir -p $pkgdir/usr/lib/systemd/system
-	install -Dm644 $srcdir/rsshub.service $pkgdir/usr/lib/systemd/system/rsshub.service
+    install -Dm644 "$srcdir"/rsshub.service -t "$pkgdir"/usr/lib/systemd/system/
 
-	mkdir -p $pkgdir/usr/lib/sysusers.d/
-    install -Dm644 $srcdir/rsshub_sysuser.conf $pkgdir/usr/lib/sysusers.d/rsshub.conf
+    install -Dm644 "$srcdir"/rsshub_sysuser.conf -t "$pkgdir"/usr/lib/sysusers.d/
 
-	mkdir -p $pkgdir/usr/lib/tmpfiles.d/
-    install -Dm644 $srcdir/rsshub_tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/rsshub.conf
+    install -Dm644 "$srcdir"/rsshub_tmpfile.conf -t "$pkgdir"/usr/lib/tmpfiles.d/
 }

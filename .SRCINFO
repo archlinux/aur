@@ -1,23 +1,28 @@
 pkgbase = rsshub-git
 	pkgdesc = Everything is RSSible
-	pkgver = 1
+	pkgver = r5997.c0f4b73e8
 	pkgrel = 1
 	url = https://rsshub.app/
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = npm
+	makedepends = yarn
+	makedepends = node-gyp
+	makedepends = git
 	depends = nodejs
+	optdepends = chromium: for routes using a headless browser
+	options = !emptydirs
 	backup = etc/rsshub/rsshub.conf
 	source = rsshub-git::git+https://github.com/DIYgod/RSSHub.git
 	source = rsshub.conf
 	source = rsshub.service
 	source = rsshub_sysuser.conf
 	source = rsshub_tmpfile.conf
-	md5sums = SKIP
-	md5sums = 6621493e94958b1d3ac8d031bff36eb4
-	md5sums = 079e30a1e74485a571b104dfb5df0b49
-	md5sums = 6a6a769bf29d4281b36d7826e26a1117
-	md5sums = d5e489cdc03b59987e8f1385210d2010
+	sha512sums = SKIP
+	sha512sums = f8f0e8195a05cc7cd43630a2ce3b28250279d3b4adbfa3693b57b23ea70013b9e5de8ab4905a6411152bdf0ab470d5873c11f6836fc281c8fd961f520a10f3b4
+	sha512sums = 7fdcbbec994bfbeab8a52f31786e1034f48f78ffcdc0de69ea23eda6bc377424be900922b87db06b834429fcaeeed4c9a2b3a3291ca4df4d1f9ad4b9fc421a17
+	sha512sums = 892a82aa32c0f486009eb2b620b8fd5b8674de6a36ab16d42545e64fbdb7184b7d1f2ca63d6841ec420f639bc714df88dd32c17803772aa489a4c5f12f7ec96f
+	sha512sums = ae2fd7a452716fccd0f421176aba9b9971edf9a9a3f241bd023044f9bce140dfcad0777eff9d47a891264d0ea49ce9f9f7671043b44fd2bcf7c9f484c08b8449
 
 pkgname = rsshub-git
 
