@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 pkgname=gtk3-typeahead
-pkgver=3.24.26
+pkgver=3.24.27
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget"
 arch=(x86_64)
@@ -12,15 +12,15 @@ license=(LGPL)
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          dconf libxcomposite libxdamage pango shared-mime-info at-spi2-atk
          wayland libxkbcommon adwaita-icon-theme json-glib librsvg
-         wayland-protocols desktop-file-utils mesa cantarell-fonts colord rest
-         libcups libcanberra fribidi iso-codes tracker3 libcloudproviders
-         gtk-update-icon-cache)
-makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
+         desktop-file-utils mesa cantarell-fonts colord rest libcups libcanberra
+         fribidi iso-codes tracker3 libcloudproviders gtk-update-icon-cache)
+makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson
+             wayland-protocols)
 provides=("gtk3=$pkgver" gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
 conflicts=(gtk3 gtk3-print-backends)
 replaces=("gtk3-print-backends<=3.22.26-1")
 install=gtk3.install
-_commit=8e9c6171b6efea2880e0bc1bc16ac3208f7a616e  # tags/3.24.26^0
+_commit=c7df3b9e9790012e6c5fbad6a4f4519bcf75561f  # tags/3.24.27^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         typeahead.patch)
