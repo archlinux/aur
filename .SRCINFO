@@ -1,0 +1,12 @@
+pkgbase = featherwallet-wow
+	pkgdesc = Simple Wownero (WOW) wallet in Qt
+	pkgver = beta3
+	pkgrel = 1
+	url = https://featherwallet.org/wownero
+	arch = any
+	license = BSD-3
+	source = https://featherwallet.org/files/releases-wow/linux/feather-wow-beta-3-linux.zip
+	sha512sums = e79338a19c70f3bed6f70b0385861df204720f6164c4bebbca768d41376e853bc2c942e12b93b91ac4f70d0c045394e9ccf422ddc16bca0ac83a7ad6a1fcf862
+
+pkgname = featherwallet-wow
+
