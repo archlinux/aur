@@ -7,7 +7,7 @@
 # If you want to help improve or maintain this package please let me know!
 
 pkgname=shadered
-pkgver=1.5.0
+pkgver=1.5
 pkgrel=1
 pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
