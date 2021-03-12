@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.11.5
+pkgver=5.11.6
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,18 +42,18 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=06ec2739c66228cfc8cc20b5f6ea8795210ea001"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=6c577162954bbd921da824ff7c3614ffc5cef6f6"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('9e1f268251877d7508a11e9b7ecfafa50b20591c5f682287f453a28f1b1c06be46d8c8dcf8687542db28a9bd02a48a8496a393baffa072618228d78982f34027'
+b2sums=('c94885a274c835ce13e109aed4307831a1e57283c2e475dca1fc9c3c0cce97ad599e485b0413dabd182c5d48f9e5e30d071c3f9dcd0d6954e1affe0014279024'
         'SKIP'
         '387d7fecc6a6ef1290e42683c200923b438bdb0c2ad6fd1b31d65e21110405f0b4abb6cd995276f741b14682fa3774d14bd7190746599d7898a49a5324f7b3ca'
         'e3cc85db32795721d39962dfd3b72ac923b89da8a9125ef0e12ba199b3606cec9a2d99392c0b0f195b1557a25be2370be1efe3bab9a9e0c2e89e2e92eb86eccb'
         '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
-        'a24f2d2575d2c8edf604a2818397b9d6bb22e6e6c528c306ebf05ecebae42af4e1fe1b67d4fc6da1f8a4207977fb402628dc20d81f64cf12af69bb80892c90c3')
+        'ee7b1401291aeed70bf8d516483a8dad78d44b3a91aef4f8dc3103baae3b17b07b99741455ce5fd1eb8242569ce052adffa6c74f360d42faae73f49f5c5d62ad')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
