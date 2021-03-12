@@ -1,0 +1,12 @@
+pkgbase = gpmf-parser
+	pkgdesc = Parser for GPMF formatted telemetry data used within GoPro cameras
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/gopro/gpmf-parser/
+	arch = x86_64
+	license = APACHE
+	source = gpmf-parser::git+https://github.com/gopro/gpmf-parser.git#tag=v2.1
+	md5sums = SKIP
+
+pkgname = gpmf-parser
+
