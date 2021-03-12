@@ -1,0 +1,12 @@
+pkgbase = featherwallet
+	pkgdesc = Simple Monero (XMR) wallet in Qt
+	pkgver = beta4
+	pkgrel = 1
+	url = https://featherwallet.org/
+	arch = any
+	license = BSD-3
+	source = https://featherwallet.org/files/releases/linux/feather-beta-4-linux.zip
+	sha512sums = bf90dc50dd85ff363d9179c1faea1c7281e69764e36b5b848fce5cade198b3f712f80da779dc69d9ea7dcf19e471da93a1be3f975c165379a3d96839f219c4c4
+
+pkgname = featherwallet
+
