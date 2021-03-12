@@ -1,13 +1,22 @@
 [Unit]
 Description=Ivideon Videoserverd
-After=network.target
+After=network.target network-online.target nss-lookup.target
 Requires=network.target
+ConditionPathExists=/etc/videoserverd.conf
 
 [Service]
-Type=forking
+Type=simple
+User=videoserverd
 PIDFile=/run/videoserverd/videoserverd.pid
-ExecStart=/opt/ivideon/ivideon-server/auto_respawn -d -w /var/log/videoserverd -u videoserverd -p /run/videoserverd/videoserverd.pid /opt/ivideon/ivideon-server/videoserver -c /etc/videoserverd.conf
-ExecStop=/opt/ivideon/ivideon-server/auto_respawn -K 5 -p $MAINPID
+ExecStart=/opt/ivideon/ivideon-server/videoserver -c /etc/videoserverd.conf -l /var/log/videoserverd -d /var/log/videoserverd/dumps
+ExecReload=/usr/bin/kill -HUP $MAINPID
+TimeoutSec=30s
+Restart=on-failure
+RestartSec=5s
+StartLimitInterval=60
+StartLimitBurst=5
+KillMode=process
+SendSIGKILL=yes
 
 [Install]
 WantedBy=multi-user.target

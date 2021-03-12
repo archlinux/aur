@@ -3,8 +3,8 @@
 
 pkgname='ivideon-server-headless'
 pkgver='3.10.0'
-pkgrel='6545'
-_rel='7bbf113'
+pkgrel='6626'
+_rel='d5add9e'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -20,10 +20,10 @@ source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgnam
 	"sysusers.conf"
 	"videoservertmp.conf")
 noextract=("${source[@]%%::*}")
-sha256sums=('e66eae65c24c0c81bb945cf601954b2c940f15682c738f1d8df7fee7814152c3'
-            'aff6bcb55c58ef140d863cd26e469e6aacc5eb125da5f526ec90f63e9a58615f'
+sha256sums=('656347d422c7564ab276dcbe3b15e82ea3bf93db6b3398685f98694d2254774e'
+            'c3f54c4efd025b66c90f92f8e841fd57631cb9372609ad662238c9168112e3e1'
             '7da74ca97c53669f95efea718bbf05ddd7b0d5b0b97dc93d2777ed8c64388254'
-            '48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071'
+            'a5c9f464754801d679f5a68570f42cc72ff3de4f76b5dd7034b10c01dce65549'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
             '91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81'
             'ad8029bf201260608daf7ed4d109731bbf247e8597e36cc1dea915fceae51b56')
@@ -47,8 +47,10 @@ prepare() {
 }
 
 build() {
-  rm "opt/ivideon/ivideon-server/install_services.sh"
-  rm "opt/ivideon/ivideon-server/initd.sh"
+  rm "opt/ivideon/ivideon-server/ivideon-server.service"
+  rm "opt/ivideon/ivideon-server/remote-svc.service"
+  rm "opt/ivideon/ivideon-server/remote_service"
+  rm "opt/ivideon/ivideon-server/serverctl.sh"
 }
 
 package() {
