@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=2.11.3.2
-pkgver=2.11.3.2.r8.gdd038fa
+_pkgver=2.12
+pkgver=2.11.3.2.r268.g24ffd62
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -35,7 +35,6 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-
     stack setup
     stack build \
         --install-ghc \
