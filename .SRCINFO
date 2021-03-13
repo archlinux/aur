@@ -1,0 +1,15 @@
+pkgbase = python-vim_bridge
+	pkgdesc = A Python-to-Vim bridge that allows calls to Python functions in native Vim scripts.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/nvie/vim_bridge
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = https://github.com/nvie/vim_bridge/archive/0.6.tar.gz
+	source = LICENSE
+	sha256sums = 33a752e28b27ddc8f6e8f343b82194e55ed07fc6dbae7778fc5710f3add93783
+	sha256sums = e62c548185b428c86c9f63bbf87ce51958b589bf7253762bd3e53379f8c0aca5
+
+pkgname = python-vim_bridge
+
