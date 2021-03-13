@@ -8,13 +8,12 @@ pkgbase = hentaifetch-git
 	makedepends = git
 	makedepends = make
 	depends = curl
-	depends = jq
 	depends = jp2a
 	depends = neofetch
 	depends = imagemagick
 	provides = hentaifetch
 	conflicts = hentaifetch
-	source = git+https://github.com/proprdev/nekofetch.git#branch=master
+	source = git+https://github.com/helpmeplsfortheloveofgod/hentaifetch.git#branch=master
 	sha256sums = SKIP
 
 pkgname = hentaifetch-git
