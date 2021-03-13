@@ -1,7 +1,7 @@
 # Maintainer: Herbert Knapp Name <herbert.knapp edu.uni-graz.at>
 pkgname=exact-audio-copy
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A precise CD audio grabber for creating perfect quality rips using CD and DVD drives'
 arch=('any')
 url='https://www.exactaudiocopy.de/en/'
@@ -18,7 +18,10 @@ prepare() {
   cd eac
   7z x -aoa "$srcdir/eac.exe"
   chmod -R 755 .
-  rm -r CDRDAO
+  CYG_LATEST=$(curl -L -s https://cygwin.com/snapshots/ | sed -n 's,.*\(https://cygwin.com/snapshots/x86/cygwin1-[0-9]\+.dll.xz\).*,\1,p' | head -n 1)
+  curl -s ${CYG_LATEST} > cygwin1.dll.xz
+  xz --decompress cygwin1.dll.xz
+  mv cygwin1.dll CDRDAO/
   cp -r * "$srcdir/eac/"
   7z x EAC.exe
   convert .rsrc/1033/ICON/29.ico -thumbnail 128x128 -alpha on -background none -flatten "$srcdir/eac/eac.ico.128.png"

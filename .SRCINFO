@@ -1,7 +1,7 @@
 pkgbase = exact-audio-copy
 	pkgdesc = A precise CD audio grabber for creating perfect quality rips using CD and DVD drives
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.exactaudiocopy.de/en/
 	arch = any
 	license = unknown
