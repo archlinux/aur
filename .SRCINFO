@@ -1,0 +1,17 @@
+pkgbase = wutag-git
+	pkgdesc = CLI tool for tagging files
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/wojciechkepka/wutag
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = help2man
+	provides = wutag
+	conflicts = wutag
+	source = wutag-git::git+https://github.com/wojciechkepka/wutag
+	sha1sums = SKIP
+
+pkgname = wutag-git
+
