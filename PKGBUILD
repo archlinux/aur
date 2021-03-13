@@ -105,8 +105,9 @@ ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=0
+export MOZ_REQUIRE_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -126,6 +127,18 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 ac_add_options --disable-updater
+ac_add_options --enable-strip
+ac_add_options --disable-gpsd
+ac_add_options --disable-synth-speechd
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-debug-js-modules
+ac_add_options --disable-cdp
+ac_add_options --disable-trace-logging
+ac_add_options --disable-rust-tests
+ac_add_options --disable-ipdl-tests
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-webspeech
+ac_add_options --disable-webspeechtestbackend
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
