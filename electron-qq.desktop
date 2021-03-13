@@ -1,8 +1,8 @@
 [Desktop Entry]
 Categories=chat;Network;
-Exec=electron /usr/lib/electron-qq.asar %u
+Exec=electron-qq %u
 Icon=electron-qq.png
 Name=Electron QQ
-Comment=A cross-plantform QQ made with Electron
+Comment=A cross-platform QQ made with Electron
 Terminal=false
 Type=Application
