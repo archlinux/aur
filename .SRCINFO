@@ -6,7 +6,7 @@ pkgbase = silver
 	arch = x86_64
 	license = Unlicense
 	makedepends = rust
-	source = silver-1.1.0.tar.gz::https://github.com/reujab/silver/archive/v1.1.0.tar.gz
+	source = silver-2.0.0.tar.gz::https://github.com/reujab/silver/archive/v2.0.0.tar.gz
 	sha512sums = 3ef3ce7c8139f42b542c025c374259ca4bece16e7b4cb45485eeba0622f091e5778d86208f7786493cf0e11f1843f6db4f136a188193b2df8ae46795200cf96e
 
 pkgname = silver
