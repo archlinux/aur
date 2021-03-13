@@ -1,0 +1,29 @@
+diff -r -c1 orig/delegate9.9.13/include/fpoll.h delegate9.9.13/include/fpoll.h
+*** orig/delegate9.9.13/include/fpoll.h Sun May 18 05:11:20 2014
+--- delegate9.9.13/include/fpoll.h      Fri Jun 19 12:16:16 2020
+***************
+*** 7,8 ****
+--- 7,9 ----
+   */
++ #define _LIBIO_H // @2020-0619, @SatoxITS @ITS-more
+  #ifdef __linux__
+diff -r -c1 orig/delegate9.9.13/include/ystring.h delegate9.9.13/include/ystring.h
+*** orig/delegate9.9.13/include/ystring.h       Sun Aug 10 17:29:50 2014
+--- delegate9.9.13/include/ystring.h    Fri Jun 19 12:15:15 2020
+***************
+*** 1502,1503 ****
+--- 1502,1514 ----
+
++ // the shortest patch for comilation of delegate9.9.13 on recent Linuxes
++ // @2020-0619, @SatoxITS, @ITS-more
++ #pragma GCC diagnostic ignored "-Wparentheses"
++ #pragma GCC diagnostic ignored "-Wcomment"
++ #pragma GCC diagnostic ignored "-Wunused-result"
++ #pragma GCC diagnostic ignored "-Wunused-value"
++ #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
++ #pragma GCC diagnostic ignored "-Wformat-extra-args"
++ #pragma GCC diagnostic ignored "-Wnarrowing"
++ #pragma GCC diagnostic ignored "-Wstringop-overflow=" // for Pi
++ 
+  #endif /* _YSTRING_H */
+
