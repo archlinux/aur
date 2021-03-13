@@ -5,7 +5,7 @@ $ makepkg
 
 Wait for the build to complete, then install the package:
 
-$ yay -U vscodium-git-${version}-${arch}.pkg.tar.zst
+$ paru -U vscodium-git-${version}-${arch}.pkg.tar.zst
 
 If the package installed correctly, and VSCodium runs correctly, update the AUR with the new code:
 
