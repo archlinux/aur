@@ -1,7 +1,7 @@
 # Maintainer: DevHyperCoder <arduinoleo88 at gmail dot com>
 
 pkgname=rbmenu
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Rust Bookmark (d)Menu"
 arch=('x86_64')
@@ -23,4 +23,6 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 "target/release/rbmenu" \
         -t "$pkgdir/usr/bin/"
+    install -Dm644 "res/rbmenu.1" \
+        "$pkgdir/usr/share/man/man1/${pkgname}.1"
 }
