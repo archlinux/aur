@@ -2,16 +2,16 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.24.6
+pkgver=1.25.0
 pkgrel=1
-_jslibcommit='9ddec9baf8b6e7de58c00744eb371dc68e1b6383'
-_nodeversion='10.23.1'
+_jslibcommit='f80e89465ffc004705d2941301c0ffb6bfd71d1a'
+_nodeversion='10.24.0'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
 makedepends=('git' 'npm' 'python' 'nvm' 'jq' 'patch' 'pkgconf' 'make' 'gcc')
-depends=('electron6' 'libnotify' 'libsecret' 'libxtst')
+depends=('electron' 'libnotify' 'libsecret' 'libxtst')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archive/v${pkgver}.tar.gz"
@@ -19,10 +19,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archi
         "package.json.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('596f15a41a0fb1761da74e0a47c83ee9783c69054ce203300c7136c7de2c4515839802ed8ea2bfe03579849d935a8e9552e06bd97d7823e72237d9562c140872'
-            '48765f82e2ad6b2b00be52905e35dfb8b65577711d0f1887790988b2c5e75f946f8e0c89e539a6057cd90334a4a9afa971f3b6827108d7b694e0f8dcc86545f8'
+sha512sums=('6e8afb290030c7e23d5050ec88cd37a6600fd51b5452f5ec571ace35b95012ab8c19a3c2c3b76a981d0e37bdee08439d98d1c39bc169374dfec401af974ec6e7'
+            'e0a80a2088af56b68494356856101574b9c9aef3cad9ef384cd61ee45eb3cb398346604c72cf8ea6522f6747a08ab25d0590d9d17e4116bcdc6726864f95b506'
             'cbe6dff699de7a274b7c5ab1dd25a348443dd3dc50eb8b2290c8c300b6b3a560271aef773b2cd55d25ccaa1527ed25d5626310f6da342f2893d2f63212bd2814'
-            '25ec775e99686288b8242f19003f72e834022a69845da19687e6cdbd1cb399485b64369f90fa575e1b0e458fa1672fc5ba016750fda488bf1f536b1ebd5c07d0'
+            '724b548688e2af1d8d25e6ebe6e35831e891453f2df011e5fa757b57fcbcfef3c171510be4537652891441c65121bd9766f372f82d3edd5971fb77b726409575'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
 prepare() {
@@ -35,9 +35,9 @@ prepare() {
   patch --strip=1 package.json ${srcdir}/package.json.patch
 
   # Patch build to make it work with system electron
-  SYSTEM_ELECTRON_VERSION=$(pacman -Q electron6 | cut -d' ' -f2 | cut -d'-' -f1)
+  SYSTEM_ELECTRON_VERSION=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
   jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION\
-  '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron6"'\
+  '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron"'\
   > package.json.patched
   mv package.json.patched package.json
 }
