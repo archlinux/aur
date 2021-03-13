@@ -4,7 +4,7 @@ pkgbase = lokalise2
 	pkgrel = 1
 	url = https://lokalise.com
 	arch = x86_64
-	license = BSD-3
+	license = custom:BSD-3
 	source = lokalise2-2.6.3.tar.gz::https://github.com/lokalise/lokalise-cli-2-go/releases/download/v2.6.3/lokalise2_linux_x86_64.tar.gz
 	sha256sums = 4afd6cc36e0345c57865d64a35ca1ba8274623dc6c55ba61260425aa0c17e4d3
 
