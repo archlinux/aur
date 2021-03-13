@@ -9,5 +9,5 @@ set +e
 git add .
 git commit -m "update package"
 git push
-git remote add arch ssh://aur@aur.archlinux.org/lokalise.git
+git remote add arch ssh://aur@aur.archlinux.org/lokalise2.git
 git push arch
