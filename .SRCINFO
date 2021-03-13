@@ -1,4 +1,4 @@
-pkgbase = brother-dcp7057w-cupswrapper-bin
+pkgbase = brother-dcp7057w-cups-bin
 	pkgdesc = CUPS wrapper for Brother DCP-7057W printer
 	pkgver = 3.0.1_1
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = brother-dcp7057w-cupswrapper-bin
 	source = https://download.brother.com/welcome/dlf100448/dcp7057wcupswrapper-3.0.1-1.i386.deb
 	md5sums = 9cc5e273ec1975a75a7db01f855f5567
 
-pkgname = brother-dcp7057w-cupswrapper-bin
+pkgname = brother-dcp7057w-cups-bin
 
