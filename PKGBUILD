@@ -1,15 +1,15 @@
 pkgname=ctucx-gallery
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 pkgdesc="gallery as static-site-generator"
 url="https://cgit.ctu.cx/gallery/"
 license=('GPL-3')
-depends=('glibc' 'imagemagick')
+depends=('glibc' 'imagemagick' 'libexif')
 makedepends=( 'nim' 'nimble' )
-_commit="720f8230846802d0e0f41afe6961f7c86aa35cd4"
+_commit="3590fa16a36727aa6bd5ebcabe2d251b690a7373"
 source=("${pkgname}-${_commit}.tar.gz::https://cgit.ctu.cx/gallery/snapshot/gallery-${_commit}.tar.gz")
-sha256sums=('0117ce2b76dfa0fb4764799f8233cfdb5208b0dec4d276d3cc1ff5678165956e')
+sha256sums=('09542a34724db3e2468a558e4b23db2a7ef0c3682e1e2dd70f95b0c7e4b82166')
 
 build() {
   cd $srcdir/gallery-${_commit}
