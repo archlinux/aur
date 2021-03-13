@@ -3,7 +3,7 @@
 
 pkgname=google-sheets-nativefier
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Electron wrapper for the Google Sheets web application"
 arch=(x86_64)
 license=(MIT)
@@ -23,8 +23,7 @@ build() {
       --name "$_instname" \
       --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" \
       --internal-urls "(.*?sheets\.google\.com.*?|.*?accounts\.google\.com.*?)" \
-      --single-instance \
-      --electron-version 8.2.0
+      --single-instance 
 }
 
 package() {
