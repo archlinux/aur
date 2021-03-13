@@ -2,16 +2,16 @@
 # Contributor: ccat3z <c0ldcat3z@gmail.com>
 
 pkgname=qiniu-qshell-bin
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="CLI tool for Qiniu"
 arch=('x86_64')
 url="https://github.com/qiniu/qshell"
 license=('MIT')
 provides=('qshell')
-source=("http://devtools.qiniu.com/qshell-linux-x64-v${pkgver}.zip")
-sha256sums=(aaa50ddd5a9c62d810a5463341c7053dafc8ee90511b472450b089a5f70a7a62)
+source=("https://github.com/qiniu/qshell/releases/download/v${pkgver}/qshell-v${pkgver}-linux-amd64.tar.gz")
+sha256sums=(7f00c128a40785b08c6715005882cd85f49f9e133354c3b6caf4724fcc35a6b3)
 
 package() {
-    install -Dm755 "${srcdir}/qshell-linux-x64-v$pkgver" "${pkgdir}/usr/bin/qshell"
+    install -Dm755 "${srcdir}/qshell" "${pkgdir}/usr/bin/qshell"
 }
