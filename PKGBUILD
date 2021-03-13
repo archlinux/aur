@@ -1,7 +1,7 @@
 # Maintainer: f440 <freq440@gmail.com>
 
 pkgname=lazygit-bin
-pkgver=0.25.1
+pkgver=0.26
 pkgrel=1
 pkgdesc="simple terminal UI for git commands. Pre-compiled."
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -15,9 +15,9 @@ source_x86_64=("${pkgname/-bin/}-${pkgver}_Linux_x86_64.tar.gz::https://github.c
 source_armv6h=("${pkgname/-bin/}-${pkgver}_Linux_armv6.tar.gz::https://github.com/jesseduffield/lazygit/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_Linux_armv6.tar.gz")
 source_aarch64=("${pkgname/-bin/}-${pkgver}_Linux_armv6.tar.gz::https://github.com/jesseduffield/lazygit/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_Linux_aarch64.tar.gz")
 
-sha256sums_x86_64=('f9a0feef64b69b4d9c41172f504342295f396e4c2e7d043cdc127e93876695d4')
-sha256sums_armv6h=('af015086916a9bdc5c2bce034b6546c39115f31e16aaa4dcaf97061225ce8a9f')
-sha256sums_aarch64=('d8ba8833564bbff175eb94f53c5486ab499e12a04f424d1c9b25f3745b66ca3f')
+sha256sums_x86_64=('a9a7d8ac10bb05bfd12ff554e401c6d37e80ca9c24dabec487a56be90e96ef07')
+sha256sums_armv6h=('aeff0c316326c3740f49158873b33eef63649e46de20fd9629629d5e4c3c8d3f')
+sha256sums_aarch64=('1d018bfd4668ec7dd72b0f7708ebeefdb7fc09ea02a40706933ac60e63214871')
 
 package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/lazygit/LICENSE"
