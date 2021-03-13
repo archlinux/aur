@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
-pkgver=r609.556c382
-pkgrel=3
+pkgver=r613.81e4070
+pkgrel=1
 epoch=1
 pkgdesc="A cross-platform soundboard"
 arch=('any')
@@ -36,4 +36,9 @@ package() {
   # install binary symlink
   mkdir -p "${pkgdir}/usr/bin/"
   ln -sf /opt/soundux/soundux "${pkgdir}/usr/bin/soundux"
+  
+  # install doc
+  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/Soundux/README.md"
+  # install license
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/Soundux/LICENSE"
 }
