@@ -10,7 +10,7 @@ url="https://github.com/reujab/silver"
 license=('Unlicense')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('aea70c0485e1e5501098560d0fd2561a0cd425c39a1dd91c8e8328fdafdd538655f80ca4e212fce289a1a8bcc789ba5bbb7550a02a1f07512b6f43906ead6174')
+sha512sums=('3ef3ce7c8139f42b542c025c374259ca4bece16e7b4cb45485eeba0622f091e5778d86208f7786493cf0e11f1843f6db4f136a188193b2df8ae46795200cf96e')
 
 build() {
   cd "$pkgname-$pkgver"
