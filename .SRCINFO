@@ -1,0 +1,14 @@
+pkgbase = brother-dcp7057w-lpr-bin
+	pkgdesc = LPR driver for Brother DCP-7057W printer
+	pkgver = 3.0.1_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=ru&lang=ru&prod=dcp7057wr_eu
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf100446/dcp7057wlpr-3.0.1-1.i386.deb
+	md5sums = 740d0afd1ac529c72239ba14c8990555
+
+pkgname = brother-dcp7057w-lpr-bin
+
