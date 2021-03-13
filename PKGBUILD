@@ -3,7 +3,7 @@
 # Contributor: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="program to use secretservice to keep Docker credentials safe"
 arch=(x86_64)
 url="https://github.com/docker/docker-credential-helpers"
@@ -23,8 +23,9 @@ prepare() {
 
 build() {
   cd "$srcdir/src/$_gourl"
-  GOPATH="$srcdir" go install -v -x ./credentials
-  GOPATH="$srcdir" make secretservice
+  # XXX: remove GO111MODULE on the next release and/or go 1.17
+  GO111MODULE=off GOPATH="$srcdir" go install -v -x ./credentials
+  GO111MODULE=off GOPATH="$srcdir" make secretservice
 }
 
 package() {
