@@ -1,6 +1,6 @@
 pkgbase = gsequencer
 	pkgdesc = Advanced Gtk+ Sequencer
-	pkgver = 3.7.35
+	pkgver = 3.7.48
 	pkgrel = 1
 	url = https://nongnu.org/gsequencer
 	arch = x86_64
@@ -40,8 +40,8 @@ pkgbase = gsequencer
 	provides = libags_gui.so
 	provides = libags_audio.so
 	provides = libags.so
-	source = https://download.savannah.gnu.org/releases/gsequencer/3.7.x/gsequencer-3.7.35.tar.gz
-	sha512sums = c3541b535dddc4635ebdccf97dad14b4dc9902605138debe1c388260fb8714b4c23bfb4c44474e3ffadda783540cb494478ce12ef5840de402f11252368fe459
+	source = https://download.savannah.gnu.org/releases/gsequencer/3.7.x/gsequencer-3.7.48.tar.gz
+	sha512sums = 341b18d8ff18d2f259d32f0b7e53a5036505864fbe48ecdcefc73a546fb057121faa9a2cb99a7c65bad41a684771d974cc815a8b92c406eb6194597963c74387
 
 pkgname = gsequencer
 	depends = cairo
