@@ -1,16 +1,15 @@
 # Maintainer: bbaovanc <bbaovanc@bbaovanc.com
 
-_pkgname=nekofetch
+_pkgname=hentaifetch
 _branch=master
 pkgname=$_pkgname-git
-pkgver=r30.0e8a74b
-pkgrel=3
-pkgdesc="neofetch but with nekos"
+pkgver=1.0
+pkgrel=1
+pkgdesc="neofetch but with hentai"
 license=('GPL3')
 arch=(any)
-url="https://github.com/proprdev/nekofetch"
-depends=(curl jq jp2a neofetch)
-optdepends=('imagemagick: support for kitty image backend')
+url="https://github.com/helpmeplsfortheloveofgod/hentaifetch"
+depends=(curl jp2a neofetch, imagemagick)
 makedepends=(git make)
 provides=($_pkgname)
 conflicts=($_pkgname)
