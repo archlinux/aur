@@ -1,14 +1,14 @@
 pkgbase = minergate-cli
-	pkgdesc = Cryptocurrency miner and Mining Pool (console version)
-	pkgver = 8.2
+	pkgdesc = MinerGate xFast CLI Miner
+	pkgver = 1.7
 	pkgrel = 1
 	url = http://www.minergate.com/
 	arch = x86_64
 	license = custom
 	provides = minergate-cli
 	options = !strip
-	source = minergate-cli-8.2-amd64.deb::https://minergate.com/download/ubuntu-cli
-	sha256sums = 393c5ba236f6f92c449496fcda9509f4bfd3887422df98ffa59b3072124a99d8
+	source = minergate-cli-1.7.deb::https://www.minergate.com/download/xfast-ubuntu-cli
+	sha256sums = bff127436b13a455c2022052d67156313163f53a1ee1835c0756d39adf591a77
 
 pkgname = minergate-cli
 

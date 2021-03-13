@@ -1,15 +1,15 @@
-# Maintainer: Evrea <evrea at cock dot li>
+# Maintainer: JustKidding <jk@vin.ovh>
 
 pkgname=minergate-cli
-pkgver=8.2
+pkgver=1.7
 pkgrel=1
-pkgdesc="Cryptocurrency miner and Mining Pool (console version)"
+pkgdesc="MinerGate xFast CLI Miner"
 arch=("x86_64")
 url="http://www.minergate.com/"
 provides=("minergate-cli")
 license=("custom")
-source=("${pkgname}-${pkgver}-amd64.deb::https://minergate.com/download/ubuntu-cli")
-sha256sums=("393c5ba236f6f92c449496fcda9509f4bfd3887422df98ffa59b3072124a99d8")
+source=("${pkgname}-${pkgver}.deb::https://www.minergate.com/download/xfast-ubuntu-cli")
+sha256sums=("bff127436b13a455c2022052d67156313163f53a1ee1835c0756d39adf591a77")
 options=(!strip) # Doesn't work without disabling this option
 depends=() # Minergate comes bundled with its own libraries
 
