@@ -1,8 +1,18 @@
 # Maintainer: Michael Schantl <floss at schantl dash lx dot at>
 # OpenTSDB authors: https://raw.githubusercontent.com/OpenTSDB/opentsdb/master/AUTHORS
 
+# Supports automatic update checking
+
 pkgname="opentsdb"
-pkgver=2.4.0
+_MAJOR=2
+_MINOR=4
+_PATCH=0
+pkgver=$_MAJOR.$_MINOR.$_PATCH
+
+function _dl_url {
+  echo "https://github.com/OpenTSDB/opentsdb/archive/v$1.$2.$3.zip"
+}
+
 pkgrel=5
 pkgdesc="Distributed, scalable Time Series Database (TSDB) written on top of HBase"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
@@ -15,7 +25,7 @@ backup=(
   "etc/${pkgname}/opentsdb.conf"
 )
 install="${pkgname}.install"
-source=("https://github.com/OpenTSDB/opentsdb/archive/v${pkgver}.zip"
+source=("$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "${pkgname}.install"
         "opentsdb.service")
 sha512sums=('bec865831790fac91b90861451a8f14dc92992c2e5840ef663d728b68bf866c9bdda87f6562f1778e31e643d0cfb6f26d97e439e1ca990372d2cb81e28070fe9'
