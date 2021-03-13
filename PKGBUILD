@@ -8,13 +8,13 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=2.10.1
+pkgver=3.0.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
-checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
+checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
               openssh chromium)
 makedepends=(python-twisted python-jinja python-zope-interface
@@ -28,7 +28,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "subunit-tests.diff"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('33beb2428dea4bee638d8b2b6088c3b59fe0495a53bb332acea6bdb96f0a8a7e'
+sha256sums=('3f2597c038d8e1c5094e9018991b3eef5b03814bef836aeb0de992e931b07775'
             'SKIP'
             'SKIP'
             'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55'
