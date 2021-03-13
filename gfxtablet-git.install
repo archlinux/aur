@@ -1,9 +1,16 @@
 post_install() {
-  groupadd -r wheel
   udevadm control -R
   udevadm trigger
-  echo "Add yourself to 'wheel' group."
-  echo "# gpasswd -a <USER> wheel"
-  echo "You may need to restart X server."
+  echo "Add yourself to 'input' group."
+  echo "# gpasswd -a <USER> input"
+  echo "You may need to log out."
+}
+
+post_upgrade() {
+  udevadm control -R
+  udevadm trigger
+  echo "Add yourself to 'input' group."
+  echo "# gpasswd -a <USER> input"
+  echo "You may need to log out."
 }
 
