@@ -1,6 +1,6 @@
 pkgbase = octoprint
 	pkgdesc = Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://octoprint.org/
 	install = octoprint.install
@@ -27,7 +27,7 @@ pkgbase = octoprint
 	options = !distcc
 	options = !ccache
 	backup = etc/conf.d/octoprint
-	source = octoprint::git+https://github.com/foosel/OctoPrint.git#tag=1.5.2
+	source = octoprint::git+https://github.com/foosel/OctoPrint.git#tag=1.5.3
 	source = octoprint.sysusers
 	source = octoprint.service
 	source = octoprint-serve
