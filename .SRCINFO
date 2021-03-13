@@ -1,0 +1,13 @@
+pkgbase = tsar
+	pkgdesc = tsar: Tarsnap Always Rotating
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://support.powertools-tech.com/safonso/tsar
+	arch = any
+	license = GPL3
+	depends = tarsnap
+	source = https://support.powertools-tech.com/safonso/tsar/-/archive/v1.2/tsar-v1.2.tar.gz
+	sha256sums = 68fa18ac7ef833ba7fb2484d3b9ae8f533bdec9ccc273a02bc4fa05bf3105a1a
+
+pkgname = tsar
+
