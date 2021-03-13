@@ -2,7 +2,7 @@
 
 _pkgname=rbmenu
 pkgname=$_pkgname-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Rust Bookmark (d)Menu ; Pre compiled binary"
 arch=('x86_64')
@@ -19,4 +19,7 @@ package() {
     mv "$_pkgname-v$pkgver" $_pkgname
     install -Dm755 "$_pkgname" \
         -t "$pkgdir/usr/bin/"
+    install -Dm644 "${_pkgname}.1" \
+        "$pkgdir/usr/share/man/man1/${_pkgname}.1"
+
 }
