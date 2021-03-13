@@ -2,7 +2,7 @@
 # Contributor: https://github.com/shempignon/scaramanga/graphs/contributors
 
 pkgname=scaramanga
-pkgver=0.2.1.r0.d6a0ca2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Pacman Mirrorlist generator wrapper written in Rust'
 arch=('i686' 'x86_64')
