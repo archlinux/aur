@@ -1,9 +1,8 @@
 pkgbase = devilutionx-git
 	pkgdesc = Diablo devolved for linux (git version)
-	pkgver = 1.0.1.r17.g201c6fe8
-	pkgrel = 2
+	pkgver = 1.1.0.r1241.gae22644d
+	pkgrel = 1
 	url = https://github.com/diasurgical/devilutionX
-	install = devilutionx.install
 	arch = x86_64
 	license = custom:unlicense
 	makedepends = git
@@ -11,8 +10,7 @@ pkgbase = devilutionx-git
 	depends = sdl2_mixer
 	depends = sdl2_ttf
 	depends = libsodium
-	optdepends = ttf-charis-sil: CharisSILB.ttf
-	provides = devilutionx=1.0.1.r17.g201c6fe8
+	provides = devilutionx=1.1.0.r1241.gae22644d
 	source = devilutionx::git+https://github.com/diasurgical/devilutionX.git
 	sha256sums = SKIP
 

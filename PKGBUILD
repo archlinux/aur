@@ -1,24 +1,22 @@
 # Maintainer: LIN Rs <LinRs[d]users.noreply.github.com>
 
 pkgname=devilutionx-git
-_pkgname=devilutionx
-pkgver=1.0.1.r17.g201c6fe8
-pkgrel=2
+pkgver=1.1.0.r1241.gae22644d
+pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
 depends=('sdl2_mixer' 'sdl2_ttf' 'libsodium')
 makedepends=('git' 'cmake')
-optdepends=('ttf-charis-sil: CharisSILB.ttf')
-provides=("${_pkgname}"="${pkgver}")
-install="${_pkgname}".install
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}"="${pkgver}")
 source=(
-    "${_pkgname}::git+https://github.com/diasurgical/devilutionX.git"
+    "${pkgname%-git}::git+https://github.com/diasurgical/devilutionX.git"
 )
 sha256sums=('SKIP')
 pkgver() {
-    cd "${_pkgname}"
+    cd "${pkgname%-git}"
     ( set -o pipefail
       git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -26,21 +24,18 @@ pkgver() {
 }
 
 build() {
-    cd "${_pkgname}"
+    cd "${pkgname%-git}"
     mkdir -p build
     cd build
     cmake \
+	-DCMAKE_INSTALL_PREFIX="/usr" \
+	-DBINARY_RELEASE=ON \
 	-DCMAKE_BUILD_TYPE=Release ..
     make
 }
 package() {
-    cd "${_pkgname}"
-    install -Dm755 build/"${_pkgname}" \
-	    -t "${pkgdir}"/usr/bin/
+    cd "${pkgname%-git}"
+    make install DESTDIR="${pkgdir}"
     install -Dm644 LICENSE \
 	    -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
-    install -Dm644 Packaging/resources/icon.png \
-	    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/devilutionx.png
-    install -Dm644 Packaging/fedora/devilutionx.desktop \
-	    -t "${pkgdir}"/usr/share/applications/
 }
