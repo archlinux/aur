@@ -1,0 +1,27 @@
+#pre-install() {
+#kill any instance that was running
+#systemctl disable --now skywire.service
+#systemctl disable --now skywire-visor.service
+#}
+
+post_install() {
+/opt/skywire/scripts/skywire-autoconfig
+}
+
+#pre-upgrade() {
+#pre-install
+#}
+
+post_upgrade() {
+post_install
+}
+
+pre-remove() {
+systemctl disable --now skywire.service
+systemctl disable --now skywire-visor.service
+}
+
+post_remove() {
+#remove possibly dangling configs so as not to interfere with future installs
+rm -rf /opt/skywire
+}
