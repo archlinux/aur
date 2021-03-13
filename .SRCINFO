@@ -1,7 +1,7 @@
 pkgbase = winamp2
-	pkgdesc = Winamp 2.95 audio player with Milkdrop v1.04, FLAC v1.1.2, APE v3.99, MPC v0.99f
+	pkgdesc = Winamp 2.95 audio player with Milkdrop 1.04, FLAC 1.1.2, APE 3.99, MPC 0.99f plugins
 	pkgver = 2.95
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nullsoft.com
 	arch = any
 	license = unknown

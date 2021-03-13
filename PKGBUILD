@@ -1,8 +1,8 @@
 # Maintainer: Herbert Knapp Name <herbert.knapp edu.uni-graz.at>
 pkgname=winamp2
 pkgver=2.95
-pkgrel=1
-pkgdesc='Winamp 2.95 audio player with Milkdrop v1.04, FLAC v1.1.2, APE v3.99, MPC v0.99f'
+pkgrel=2
+pkgdesc='Winamp 2.95 audio player with Milkdrop 1.04, FLAC 1.1.2, APE 3.99, MPC 0.99f plugins'
 arch=('any')
 url="http://www.nullsoft.com"
 source=('winamp295rc_full_milkdrop_flac_ape_mpc.zip::https://a.pomf.cat/wmyhzm.zip')
@@ -22,23 +22,31 @@ prepare() {
 }
 
 package() {
+
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/applications" "$pkgdir/opt"
   mv "$srcdir/Winamp" "$pkgdir/opt/Winamp2"
+
   _launcher="$pkgdir/usr/bin/winamp2"
-  echo '#!/bin/sh' > "${_launcher}"
-  echo "cd /opt/Winamp2/" >> "${_launcher}"
-  echo "WINEDEBUG=-all WINEPREFIX=~/.winamp2 wine winamp.exe" >> "${_launcher}"
+  {
+    echo '#!/bin/sh'
+    echo 'mkdir -p ~/.winamp2'
+    echo '[[ -d ~/.winamp2/winamp ]] || cp -r /opt/Winamp2 ~/.winamp2/winamp'
+    echo "cd ~/.winamp2/winamp/"
+    echo "WINEDEBUG=-all WINEPREFIX=~/.winamp2 wine winamp.exe"
+  } > "${_launcher}"
   chmod +x "${_launcher}"
   
   _desktop="${pkgdir}/usr/share/applications/winamp2.desktop"
-  echo '[Desktop Entry]' > ${_desktop}
-  echo 'Type=Application' >> ${_desktop}
-  echo "Name=Winamp ${pkgver}" >> ${_desktop}
-  echo "Comment=${pkgdesc}" >> ${_desktop}
-  echo "Path=/opt/Winamp2" >> ${_desktop}
-  echo 'Exec=/usr/bin/winamp2' >> ${_desktop}
-  echo "Icon=/opt/Winamp2/winamp.ico.18.png" >> ${_desktop}
-  echo 'Terminal=false' >> ${_desktop}
-  echo 'Categories=AudioVideo;Audio;' >> ${_desktop}
+  {
+    echo '[Desktop Entry]'
+    echo 'Type=Application'
+    echo "Name=Winamp ${pkgver}"
+    echo "Comment=${pkgdesc}"
+    echo 'Path=/opt/Winamp2'
+    echo 'Exec=/usr/bin/winamp2'
+    echo 'Icon=/opt/Winamp2/winamp.ico.18.png'
+    echo 'Terminal=false'
+    echo 'Categories=AudioVideo;Audio;'
+  } > ${_desktop}
 }
 
