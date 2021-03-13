@@ -2,7 +2,7 @@
 pkgname=authelia-git
 _pkgname=authelia
 pkgver=4.27.1.r7.ge5a6b6b8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -35,11 +35,10 @@ build() {
   cd "$srcdir/$_pkgname/web"
   yarn install --frozen-lockfile
   INLINE_RUNTIME_CHUNK=false yarn build
-  mv build ../public_html
+  rm -rf ../internal/server/public_html
+  mv build ../internal/server/public_html
   cd ..
-  cp -R api public_html/
-  go get -u aletheia.icu/broccoli
-  go generate internal/server/*
+  cp -R api internal/server/public_html/
   sed -i "s/__BUILD_TAG__/master/" cmd/authelia/constants.go
   sed -i "s/__BUILD_COMMIT__/$(git rev-parse HEAD)/" cmd/authelia/constants.go
   go build -ldflags '-w' -trimpath -o authelia cmd/authelia/*.go
