@@ -4,7 +4,7 @@
 
 pkgname=mutt-wizard-git
 pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
-pkgver=3.1.1.r2.gc5dcb95
+pkgver=3.2.1.r18.g1a8d041
 pkgrel=1
 
 pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
