@@ -3,8 +3,8 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=2.0.7.r20.gf94626edf
-pkgrel=2
+pkgver=2.0.15.r31.g249815cf7
+pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
@@ -24,8 +24,8 @@ source=('git+https://github.com/emscripten-core/emscripten.git'
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '9108d609fee1a7fb7687c13d8d30eb26c0866e8f665c74000f131d3518af1de2'
-            '22a3ba176676cee5ced6e8ca50846ff436708299e76b33390932a98ad186b379')
+            '44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5'
+            'a9917b9ca044ded5095aeb7fa4ee822c2712f345684d73354fa9417fdcd885c2')
 
 pkgver() {
   cd ${pkgname%-git}
