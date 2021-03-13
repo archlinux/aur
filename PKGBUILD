@@ -1,7 +1,7 @@
 # Maintainer: Jacob Wang <jatcwang@gmail.com>
 
 pkgname=jdk-mission-control-bin
-pkgver=7.1.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="OpenJDK Mission Control"
 arch=('x86_64')
@@ -11,10 +11,10 @@ depends=('java-environment')
 optdepends=()
 options=(!strip)
 source=(
-  "org.openjdk.jmc-linux.gtk.x86_64.tar.gz"::"https://ci.adoptopenjdk.net/view/JMC/job/jmc-build/job/7.x.x/lastSuccessfulBuild/artifact/target/products/org.openjdk.jmc-7.1.1-linux.gtk.x86_64.tar.gz"
+  "org.openjdk.jmc-linux.gtk.x86_64.tar.gz"::"https://ci.adoptopenjdk.net/view/JMC/job/jmc-build/job/8.x.x/lastSuccessfulBuild/artifact/target/products/org.openjdk.jmc-8.0.0-linux.gtk.x86_64.tar.gz"
   "jdk-mission-control.desktop"
 )
-sha512sums=('b6d39341f5aca10dfbb40748e7ef8e728c19047493be1680de2395fc7424f7315b69179f8305a319690b7068d644094a35ee6c7d738e07a6c8ba3e5470746b21' 'SKIP')
+sha512sums=('86d11b9da5360cc484e601d931faee28ce6af11692bf6f018df3fa4d4ea44661f1396e7fd399fe50766e767ccb295d3b225e329a7dbf789b5227119468218a58' 'SKIP')
 
 # pkgver() {
 #   echo $(curl -I https://ci.adoptopenjdk.net/view/JMC/job/jmc-build/job/master/lastSuccessfulBuild/artifact/target/products/org.openjdk.jmc-linux.gtk.x86_64.tar.gz | grep 'Last-Modified' | sed 's/Last-Modified: //' | xargs -I {} date --date {} -u +"%Y%m%d%H%M%S")
@@ -32,5 +32,5 @@ package() {
   install -D -m644 "jdk-mission-control.desktop" \
       "${pkgdir}/usr/share/applications/jdk-mission-control.desktop"
 
-  ln -sf "/opt/jdk-mission-control/jmc" "${pkgdir}/usr/bin/jmc" 
+  ln -sf "/opt/jdk-mission-control/JDK Mission Control/jmc" "${pkgdir}/usr/bin/jmc" 
 }

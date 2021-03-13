@@ -2,7 +2,7 @@
 Name=JDK Mission Control
 Comment=A low-overhead profiling and diagostics tools suite for the JVM
 Exec=jmc %U
-Icon=/opt/jdk-mission-control/icon.xpm
+Icon="/opt/jdk-mission-control/JDK Mission Control/icon.xpm"
 Type=Application
 StartupNotify=true
 Categories=Development;Utility;
