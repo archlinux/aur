@@ -1,12 +1,12 @@
 # Maintainer: Slash
 # Contributor: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-hdhomerun
-pkgver=3.5.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc='HD Homerun PVR client addon for Kodi'
-_koditarget=Leia
+_koditarget=Matrix
 _gitname=pvr.hdhomerun
-_kodiver=18.1
+_kodiver=19.0
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
@@ -17,8 +17,8 @@ depends=('kodi' 'git')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('815ba3dfbe6e1318226d41879057f0b8a4f0ac960d12ebc5d69f0a1ac28cfa09'
-            'bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166')
+sha256sums=('a31587e00d58efb72aadba3ad1bd67c08332feef0d558e0eeb6fda7c81bf93e8'
+            'f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2')
 
 prepare() {
     cd xbmc-${_kodiver}-${_koditarget}
