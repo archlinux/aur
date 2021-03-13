@@ -1,6 +1,6 @@
 pkgbase = python-pydub
 	pkgdesc = Manipulate audio with an simple and easy high level interface
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://pydub.com
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-pydub
 	optdepends = python-simpleaudio: for playback
 	optdepends = ffmpeg: for playback
 	optdepends = libav: for playback
-	source = https://pypi.org/packages/source/p/pydub/pydub-0.25.0.tar.gz
-	source = https://github.com/jiaaro/pydub/raw/v0.25.0/LICENSE
-	sha256sums = c3fb5f3c60c4eb4af84666342507e8983f3a96b87b6ef90e13b996d4402942e2
+	source = https://pypi.org/packages/source/p/pydub/pydub-0.25.1.tar.gz
+	source = https://github.com/jiaaro/pydub/raw/v0.25.1/LICENSE
+	sha256sums = 980a33ce9949cab2a569606b65674d748ecbca4f0796887fd6f46173a7b0d30f
 	sha256sums = ae856536224cc7a389e968771fc5f259814bdd0da63539cf72282adbaef6897a
 
 pkgname = python-pydub
