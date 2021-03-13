@@ -2,7 +2,7 @@
 # Contributor: Bruce Zhang <zttt183525594 at gmail dot com>
 
 pkgname=mcfly
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Fly through your shell history"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('zsh: for zsh support'
 makedepends=('rust' 'cargo')
 install=mcfly.install
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cantino/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2bbd4f53fb74e749af93db647567b90ca39df6ecc25af7042b019d2380d74440')
+sha256sums=('09d22e761c5ba5f8f07fed2922abdcbc56574bbe58184019c7ebe591874d745c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
