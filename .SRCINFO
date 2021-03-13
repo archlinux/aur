@@ -1,0 +1,16 @@
+pkgbase = pyspace-git
+	pkgdesc = GLSL Fractal Ray Marcher in Python
+	pkgver = r55.7fca0da
+	pkgrel = 1
+	url = https://github.com/HackerPoet/PySpace
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-opengl
+	depends = python-pygame
+	depends = python-numpy
+	source = git+https://github.com/HackerPoet/PySpace.git
+	sha256sums = SKIP
+
+pkgname = pyspace-git
+
