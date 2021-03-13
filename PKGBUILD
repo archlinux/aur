@@ -5,15 +5,14 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='6.0.13'
+pkgver='6.1.3'
 pkgrel=1
 arch=('x86_64')
 depends=(
-	'libsodium' 'protobuf' 'libutempter'
+	'libutempter' 'libunwind' 'openssl'
 )
 makedepends=(
-	'libsodium' 'protobuf' 'libutempter'
-	'cmake' 'unzip' 'wget'
+	'ninja' 'cmake' 'tar' 'curl' 'zip' 'unzip'
 )
 url='https://mistertea.github.io/EternalTerminal/'
 license=('Apache')
@@ -22,7 +21,7 @@ source=(
 		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
 sha256sums=(
-		'728c3a444d666897c710e33fe473d8d289263a59574451b13aa53ec3c6ac88b3'
+		'5eb76a6667b7c8ba13b5cb089221e5fe237e5dde164956af8720ed11a9a38dcd'
 )
 
 prepare() {
