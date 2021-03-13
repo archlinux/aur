@@ -19,10 +19,10 @@ prepare() {
 }
 
 package() {
-    mv $srcdir/opt $pkgdir-$pkgver
-    mkdir -p $pkgdir-$pkgver/usr/bin
-    ln -sf /opt/Binance/binance $pkgdir-$pkgver/usr/bin/binance
-    find "${pkgdir}-${pkgver}" -type d -exec chmod 755 {} +
+    mv $srcdir/opt $pkgdir
+    mkdir -p $pkgdir/usr/bin
+    ln -sf /opt/Binance/binance $pkgdir/usr/bin/binance
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 #pkgver() {
