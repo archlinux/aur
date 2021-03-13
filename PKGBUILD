@@ -1,7 +1,7 @@
 # Maintainer: Yifan Xu <jamesxu182@gamil.com>
 
 pkgname=visual-studio-code-wayland
-pkgdesc='The Open Source build of Visual Studio Code (vscode) editor with electron 12 beta (wayland native support)'
+pkgdesc='The Open Source build of Visual Studio Code (vscode) editor with electron 12 (wayland native support)'
 # Important: Remember to check https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites for target node version
 # NodeJS versioning cheatsheet:
 #   - carbon: 8
@@ -9,14 +9,14 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor with electr
 #   - ?: 11 (not in repos)
 #   - erbium: 12
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron-beta
+_electron=electron12
 _pkgname=vscode
-pkgver=1.53.2
+pkgver=1.54.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=('electron-beta-bin' 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+depends=('electron12-bin' 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
@@ -27,7 +27,7 @@ source=("https://codeload.github.com/microsoft/${_pkgname}/tar.gz/$pkgver"
         'code.js'
         'code.sh'
         'product_json.diff')
-sha512sums=('841ea1af5188acb8db02cc4115cc3d303e0c342defb8e7ff3aa06edc98cdd5a0eaca237375f5d4ef9d71bfa8bcfd7f91731719923abcaafe9fc8a267185a44af'
+sha512sums=('83134854221f282dad7ea5324914c7fb3a63dc65eeb0abb641fcc377cbfc3c790095d033871f236765fb4eb275a466f16f39ef663d2b58df6a383596d1c0d950'
             '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
             '2a29dd06ec4b3e340a1f20aaf3379ed7b97ac39092811ee5ed4a67ba5d4eea26eb718ccb6ec7d49059341359d96272757493c43e3ecf39d3ad9053701b44bfe9'
             'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7')
