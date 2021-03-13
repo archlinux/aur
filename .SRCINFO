@@ -1,0 +1,14 @@
+pkgbase = safedotenv-git
+	pkgdesc = Tool to ensure that all .env secrets are safe by scanning your code
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gbaranski/safedotenv
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = safedotenv-git::git+https://github.com/gbaranski/safedotenv
+	md5sums = SKIP
+
+pkgname = safedotenv-git
+
