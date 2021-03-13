@@ -1,0 +1,16 @@
+pkgbase = zcentral_rb-bin
+	pkgdesc = ZCentral-Remote Boost
+	pkgver = 2020
+	pkgrel = 1
+	url = https://www8.hp.com/us/en/workstations/zcentral-remote-boost.html?jumpid=ex_r11260_go_rgs#section=resources
+	arch = x86_64
+	license = custom:"HP"
+	depends = lib32-glu
+	depends = dmidecode
+	conflicts = hgsreceiver-bin
+	options = emptydirs
+	source = file://ZCentral_RB_2020.1.0_Linux_Receiver_M39127-001.tar.gz
+	md5sums = ca830774793920bce0dc706d74a5541f
+
+pkgname = zcentral_rb-bin
+
