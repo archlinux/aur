@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-move-transition
-pkgver=2.3.4
+pkgver=2.3.5
 _obsver=26.1.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to move sources to a new position during scene transition"
@@ -15,7 +15,7 @@ makedepends=(
   'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
 )
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-move-transition#commit=7b203e240749adb76a38efa7e10fe48d944741a1"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-move-transition#commit=723646a2f766b0b7f766d81d90ef317f4c32d268"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
   "fix_python_binary_loading.patch"
 )
