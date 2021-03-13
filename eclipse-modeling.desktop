@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Version=4.7
-Name=Eclipse Modeling
-Comment=The Eclipse Modeling Tools
+Name=Eclipse Modeling Tools
+Comment=Eclipse Modeling Tools
 Exec=eclipse-modeling
 Icon=eclipse-modeling
 Terminal=false
