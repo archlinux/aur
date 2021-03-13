@@ -1,6 +1,6 @@
 pkgbase = wcal-git
 	pkgdesc = ISO weekly calendar
-	pkgver = r4.7db19e4
+	pkgver = r15.24ad672
 	pkgrel = 1
 	url = https://github.com/leahneukirchen/wcal
 	arch = x86_64
