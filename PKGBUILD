@@ -15,11 +15,14 @@ optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 _branch='aur'
 # try to change repo if default sends 404
 _repo='https://tlauncherrepo.com'
-# _repo='https://u.tlauncher.ru'
-_librepo='https://u.tlauncher.ru/repo/libraries'
+# _repo='https://cdn.turikhay.ru/tlauncher'
+# _repo='https://u.tlauncher.ru' # temporary out of service
+# _repo='https://tlaun.ch'
+
 # _librepo='https://tlauncherrepo.com/repo/libraries'
 # _librepo='https://tlaun.ch/repo/libraries'
-# _librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
+_librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
+# _librepo='https://tlauncherrepo.com/repo/libraries' # temporay out of service
 
 _bootstrap_version='1.11.2'
 _bootstrap_checksum='e04f195ab2bdb4768e3d325a01d9fd5c2f92a964fca584943e787419e2e37369'
