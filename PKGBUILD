@@ -3,8 +3,9 @@ pkgname=evesetup
 pkgver=1747682
 pkgrel=9
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
+changelog=$pkgname.changelog
 arch=(x86_64)
-url="https://forums.eveonline.com/t/eve-installing/71494"
+url="https://forums.eveonline.com/t/299030"
 license=('zlib')
 
 depends=('icu'
