@@ -11,7 +11,7 @@ pkgbase = eclipse-java-bin
 	depends = libsecret
 	provides = eclipse-java
 	conflicts = eclipse-java
-	source = https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-12/R/eclipse-java-2020-12-R-linux-gtk-x86_64.tar.gz
+	source = https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-12/R/eclipse-java-2020-12-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
 	source = eclipse.png
 	sha512sums = 1d5aac59454d35175c6b388674d23de91f45d953141389d82b5557d46de92beb2b14396427bfab8f6b198ed58bed67094755d26d3d379c92733f2a74d51b02bd
