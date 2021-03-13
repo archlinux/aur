@@ -2,6 +2,7 @@
 
 _realname=memtest86
 pkgname=$_realname-efi
+epoch=1
 pkgver=9.0build2000
 pkgrel=2
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
