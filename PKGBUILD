@@ -1,7 +1,7 @@
 # Maintainer: Matthias Steffen aur@matthiassteffen.biz
 
 pkgname=mailspring-libre
-pkgver=1.7.8_libre
+pkgver=1.8.0_libre
 pkgrel=1
 pkgdesc="A fork of a fork – aiming at removing Mailspring's dependecy on a central server."
 arch=('x86_64')
@@ -10,9 +10,9 @@ url="https://github.com/notpushkin/Mailspring-Libre"
 options=('!strip')
 
 source=()
-sha256sums_x86_64=('e16f85c4f2df398976ac70b3139ff698ab2c5caff7ca346eab62d60860d63a84')
+sha256sums_x86_64=('5cf5cf6cd541df6f50db3529c113ab19943ea43d17909a7997e2fb0ccfb1ca31')
 
-source_x86_64=("https://github.com/notpushkin/Mailspring-Libre/releases/download/1.7.8-libre/mailspring-1.7.8-libre-amd64.deb")
+source_x86_64=("https://github.com/notpushkin/Mailspring-Libre/releases/download/1.8.0-libre/mailspring-1.8.0-libre-amd64.deb")
 depends=("libxss" "libxkbfile" "libsecret" "gtk3" "nss" "libglvnd")
 
 optdepends=('libappindicator-gtk3: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" )
