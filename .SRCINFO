@@ -1,12 +1,12 @@
 pkgbase = fcitx5-skin-base16-material-darker
 	pkgdesc = A base16-material-darker theme for Fcitx5.
-	pkgver = 0.0.0.20200627
+	pkgver = 0.0.0.20210313
 	pkgrel = 1
 	url = https://github.com/btstream/fcitx5-skin-base16-material-darker
 	arch = any
-	license = custom
-	source = https://github.com/btstream/fcitx5-skin-base16-material-darker/archive/38bf71ad459a1ba6c84e212939f50541428d7ef3/fcitx5-skin-base16-material-darker-38bf71ad459a1ba6c84e212939f50541428d7ef3.tar.gz
-	sha512sums = 57f4bdded3ee6b290c0eca76ec3eb4309bfa663fc3beae0121c2478d2528a60fe95f44046e1136050c2e90c659e09b78b85c61d078a9bf53fb65b8ba4e3343c3
+	license = GPL
+	source = https://github.com/btstream/fcitx5-skin-base16-material-darker/archive/c03f8b690c38f98622d9d12e7ff90a57ba3ac1f5/fcitx5-skin-base16-material-darker-c03f8b690c38f98622d9d12e7ff90a57ba3ac1f5.tar.gz
+	b2sums = 5ccf36a081bdc7f15bedf9be7139eb480883d347f142347af5e7fc53653b15f803d0fc685822fd5691e6f4e7b091bd6ee8b62fb2468c85f065ff45ff1661af60
 
 pkgname = fcitx5-skin-base16-material-darker
 
