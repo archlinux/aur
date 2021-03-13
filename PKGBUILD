@@ -34,7 +34,8 @@ build () {
   -DCMAKE_INSTALL_SBINDIR="bin" \
   -DETHASH_NATIVE=ON \
   -DNATIVE=ON ..
-  cmake --build ..
+  #  cmake --build .. # BUGGED!
+  make
 }
 
 package() {
