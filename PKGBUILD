@@ -2,34 +2,36 @@
 
 pkgname=nginx-mainline-mod-auth-ldap-git
 pkgver=r158.83c059b
-pkgrel=5
+pkgrel=7
 
 _modname=nginx-auth-ldap
-_nginxver=1.19.6
 
 pkgdesc='LDAP Authentication module for nginx'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline' 'libldap')
-makedepends=('git')
+makedepends=('nginx-mainline-src' 'git')
 url="https://github.com/kvspb/nginx-auth-ldap"
 license=('BSD')
 
-source=(
-    https://nginx.org/download/nginx-$_nginxver.tar.gz
-    git+https://github.com/kvspb/nginx-auth-ldap.git
-)
+source=(git+https://github.com/kvspb/nginx-auth-ldap.git)
 
-sha256sums=('b11195a02b1d3285ddf2987e02c6b6d28df41bb1b1dd25f33542848ef4fc33b5'
-            'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir"/$_modname
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    mkdir -p build
+    cd build
+    ln -sf /usr/src/nginx/auto
+    ln -sf /usr/src/nginx/src
+}
+
 build() {
-    cd "$srcdir"/nginx-$_nginxver
-    ./configure --with-compat --with-http_ssl_module --add-dynamic-module=../$_modname
+    cd build
+    /usr/src/nginx/configure --with-compat --with-http_ssl_module --add-dynamic-module=../$_modname
     make modules
 }
 
@@ -37,7 +39,7 @@ package() {
     install -Dm644 "$srcdir"/$_modname/LICENSE \
                    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-    cd "$srcdir"/nginx-$_nginxver/objs
+    cd build/objs
     for mod in *.so; do
         install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
     done
