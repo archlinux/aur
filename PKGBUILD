@@ -1,7 +1,7 @@
 #Maintainer: jnanar <info@agayon.be>
 
 pkgname=python-errol
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 _realname='errol'
 pkgdesc="Errol is a file sender that rely on watchdog. It can be used to watch a directory and automatically transfer the new files (or modified ones) with XMPP."
@@ -13,8 +13,7 @@ options=(!emptydirs)
 provides=('python-errol')
 
 source=("https://gitlab.com/jnanar/${_realname}/-/archive/v${pkgver}/errol-v${pkgver}.tar.bz2")
-sha512sums=('f04c6120219b8629abcf6751153d1b5046a9406e4ea55a99375ec76957d9500542f6ac3ba36dea10e8179665c7d44cd83d4acabfa9512fe5f5d8405ebb9db4cb')
-
+sha512sums=('bc191b3d037c077ae19431ab46733afab08b43f18164b933912e21a06f3e537760654c75e70c50b3d2f5598e135a553f27ae2e4e8d3b3409d1f509b50d0048ce')
 
 package() {
   cd $srcdir/$_realname-v$pkgver
