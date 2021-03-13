@@ -1,8 +1,7 @@
-diff -r -u a/build.js b/build.js
---- a/build.js	2020-12-18 15:50:23.000000000 +0000
-+++ b/build.js	2020-12-24 18:13:01.432309794 +0000
-@@ -20,12 +20,13 @@
-     arch = Arch.arm64
+--- /mnt/LMule/repo/aur/freetube/FreeTube-0.12.0-beta/_scripts/build.js	2021-03-07 01:41:43.000000000 +0000
++++ /home/user/Desktop/build.js	2021-03-13 19:18:27.093723000 +0000
+@@ -24,12 +24,13 @@
+     arch = Arch.armv7l
    }
  
 -  targets = Platform.LINUX.createTarget(['deb', 'zip', 'apk', 'rpm', 'AppImage', 'pacman'], arch)
@@ -12,14 +11,14 @@ diff -r -u a/build.js b/build.js
  const config = {
    appId: `io.freetubeapp.${name}`,
    copyright: 'Copyleft © 2020 freetubeapp@protonmail.com',
-+  electronVersion: '11.1.0',
++  electronDist: '/usr/lib/electron',
    // asar: false,
    // compression: 'store',
    productName,
-@@ -63,7 +64,7 @@
+@@ -67,7 +68,7 @@
    linux: {
      category: 'Network',
-     icon: '_icons/icon.png',
+     icon: '_icons/icon.svg',
 -    target: ['deb', 'zip', 'apk', 'rpm', 'AppImage', 'pacman'],
 +    target: ['dir'],
    },

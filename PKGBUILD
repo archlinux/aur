@@ -2,8 +2,8 @@
 
 pkgname=freetube-git
 _pkgname=FreeTube
-pkgver=0.10.0.beta.r16.gf623ab8
-pkgrel=6
+pkgver=0.10.0.beta.r317.ge0a3ef92
+pkgrel=2
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
@@ -25,7 +25,6 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's@"electron": "^11.1.0,"@@g' "$srcdir/$_pkgname/package.json"
   patch "$srcdir/$_pkgname/_scripts/build.js" < package-only-necessary.diff
 }
 
