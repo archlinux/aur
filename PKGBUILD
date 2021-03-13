@@ -4,43 +4,26 @@
 
 _name=Impactor
 pkgname=cydia-impactor
-pkgver=0.9.52
-pkgrel=4
+pkgver=0.9.53
+pkgrel=1
 pkgdesc='A GUI tool for working with mobile devices'
 arch=('i686' 'x86_64')
 url='http://www.cydiaimpactor.com'
 license=('unknown')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk2' 'hicolor-icon-theme' 'libsm' 'libudev0-shim' 'libx11' 'ncurses5-compat-libs' 'pango')
-makedepends=('gendesk' 'libicns' 'p7zip' 'patchelf')
+depends=('atk' 'cairo' 'fontconfig' 'freetype2' 'gdk-pixbuf2' 'glib2' 'gtk2' 'hicolor-icon-theme' 'libsm' 'libudev0-shim' 'libx11' 'ncurses5-compat-libs' 'pango')
+makedepends=('gendesk' 'libicns' 'p7zip')
 optdepends=('usbmuxd: for connecting to iOS devices')
 source=("https://cache.saurik.com/impactor/mac/${_name}_$pkgver.dmg")
 source_i686=("https://cache.saurik.com/impactor/l32/${_name}32_$pkgver.tgz")
 source_x86_64=("https://cache.saurik.com/impactor/l64/${_name}64_$pkgver.tgz")
-sha256sums=('9db548074424473c5804d1118d27cd4f052db8b53b3e7c3261c1a903f521cbf1')
-sha256sums_i686=('135218c123214a419b0a18dcae84ec1eeb47fa90515c509ad68aa6ec1091449f')
-sha256sums_x86_64=('23b758162a34c6160021e6f82193df76bfbcc09f9476e492b76b130bb4e9e323')
+sha256sums=('5c4bc39ed919ec39c8c948afbf26455b5cdf04cce3ece3f56296dd1031da4e8e')
+sha256sums_i686=('4caa7c1110f007d351c18563a888cc64bb598d635a5dcf25835d6c3c933cb68b')
+sha256sums_x86_64=('73b8aeb26b13c0993eedd74f6c6f833c9fb0ef0119c33a69a4efbc3298dc8b5b')
 
 build() {
   gendesk -f -n --pkgname $_name --pkgdesc "$pkgdesc" --name 'Cydia Impactor' --categories 'Utility'
   7z e -y ${_name}_$pkgver.dmg $_name/$_name.app/Contents/Resources/$_name.icns || true
   icns2png -x $_name.icns
-
-  # remove overlinking
-  patchelf \
-    --remove-needed libatk-1.0.so.0 \
-    --remove-needed libatomic.so.1 \
-    --remove-needed libfontconfig.so.1 \
-    --remove-needed libfreetype.so.6 \
-    --remove-needed libgio-2.0.so.0 \
-    --remove-needed libgmodule-2.0.so.0 \
-    --remove-needed libncurses.so.5 \
-    --remove-needed libpangoft2-1.0.so.0 \
-    --remove-needed librt.so.1 \
-    --remove-needed libudev.so.0 \
-    Impactor
-  patchelf \
-    --remove-needed libatomic.so.1 \
-    Impactor.so
 }
 
 package() {
