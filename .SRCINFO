@@ -1,10 +1,10 @@
 pkgbase = asus-nb-ctrl-git
 	pkgdesc = Asus laptop control utilities
-	pkgver = 3.0.1.r0.g6f81f86
+	pkgver = 3.1.6.r0.g8a63dce
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asus-nb-ctrl
 	arch = x86_64
-	license = Mozilla Public License Version 2.0
+	license = MPL2
 	makedepends = git
 	makedepends = rust
 	depends = libusb

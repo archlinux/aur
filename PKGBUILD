@@ -1,12 +1,12 @@
 # Maintainer: Static_Rocket
 
 pkgname=asus-nb-ctrl-git
-pkgver=3.0.1.r0.g6f81f86
+pkgver=3.1.6.r0.g8a63dce
 pkgrel=1
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asus-nb-ctrl"
-license=('Mozilla Public License Version 2.0')
+license=('MPL2')
 depends=('libusb' 'udev' 'systemd')
 optdepends=('acpi_call: fan control')
 makedepends=('git' 'rust')
