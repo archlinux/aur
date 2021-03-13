@@ -2,7 +2,7 @@
 
 _gemname=octicons
 pkgname=ruby-$_gemname
-pkgver=12.0.0
+pkgver=12.1.0
 pkgrel=1
 pkgdesc="A package that distributes Octicons in a gem"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-nokogiri)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('df960c707a56378d3d8c46f8fc7b19d665a7fb08')
+sha1sums=('227adeb3c675d28b62cc532fc665e6df6fc4d5c6')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
