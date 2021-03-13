@@ -67,7 +67,7 @@ package()
     tmux kill-session -t ${_pkgname}" > ${srcdir}/${_pkgname}/${_pkgname}-stop.sh
 
     # Install the software.
-    install -Dm755 ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
+    find ${srcdir}/${_pkgname}/ -type f -exec install -Dm 755 "{}" "${pkgdir}/usr/lib/{}"
 
     # Symlinking the scripts.
     ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
