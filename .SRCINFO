@@ -1,7 +1,7 @@
 pkgbase = asymptote-git
 	pkgdesc = A vector graphics language (like metapost)
 	pkgver = 2.70.git.11.g3cac2756
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = http://asymptote.sourceforge.net/
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = asymptote-git
 	makedepends = ghostscript
 	makedepends = imagemagick
 	makedepends = glm
-	makedepends = asymptote
 	makedepends = librsvg
 	depends = gc
 	depends = python
