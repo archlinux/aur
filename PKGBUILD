@@ -2,7 +2,7 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=4.1.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/xwiki-labs/cryptpad/archive
         "cryptpad.service"
         "cryptpad.sysusers"
         "cryptpad.tmpfiles")
-sha256sums=('1b5ad7536532e504108bbdceb9c53c8ae116a7cd74185d9cbad0ee7929d423e2'
+sha256sums=('a54a254f696f7aaa6e2492d6561bccd62919217c7ece3cff97179b9746802128'
             '522851fbe4e0e41fd6ece8b2b0ed17bbae0233a58328b7994a5207aa341a635b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             'dc2207b11876160ad42b2e65aea384437c11fba82c98d74e7eb6aa84b191c49b')
@@ -35,7 +35,7 @@ package() {
 
     # Cryptpad
     install -Dt "$pkgdir/usr/share/$pkgname" package.json server.js
-    cp -rt "$pkgdir/usr/share/$pkgname" customize.dist lib node_modules scripts www
+    cp -rt "$pkgdir/usr/share/$pkgname" customize.dist lib scripts www
     rmdir "$pkgdir/usr/share/$pkgname/www/bower_components/codemirror/mode/rpm/changes"
 
     # Config
