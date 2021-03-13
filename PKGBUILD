@@ -4,7 +4,7 @@
 pkgname=emscripten-git
 epoch=2
 pkgver=2.0.15.r31.g249815cf7
-pkgrel=1
+pkgrel=2
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
@@ -19,13 +19,13 @@ provides=('emscripten')
 source=('git+https://github.com/emscripten-core/emscripten.git'
 	'git+https://github.com/llvm/llvm-project.git#commit=25a8881b724abf7251a9278e72224af7e82cb9c2'
 	'git+https://github.com/WebAssembly/binaryen.git#commit=5ae1724add800780475e02e05a4af133e3729bd6'
-        'emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten'
-	'emscripten-config::https://projects.archlinux.de/svntogit/community.git/tree/trunk/emscripten-config?h=packages/emscripten')
+        'emscripten.sh'
+	'emscripten-config')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5'
-            'a9917b9ca044ded5095aeb7fa4ee822c2712f345684d73354fa9417fdcd885c2')
+            'ca93ab7b993b51fca540bbcadd21134ea75b1ba7e449ab645686dcf179f4165b')
 
 pkgver() {
   cd ${pkgname%-git}

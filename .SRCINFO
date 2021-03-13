@@ -1,7 +1,7 @@
 pkgbase = emscripten-git
 	pkgdesc = LLVM-to-JavaScript compiler
 	pkgver = 2.0.15.r31.g249815cf7
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = http://emscripten.org
 	arch = i686
@@ -26,13 +26,13 @@ pkgbase = emscripten-git
 	source = git+https://github.com/emscripten-core/emscripten.git
 	source = git+https://github.com/llvm/llvm-project.git#commit=25a8881b724abf7251a9278e72224af7e82cb9c2
 	source = git+https://github.com/WebAssembly/binaryen.git#commit=5ae1724add800780475e02e05a4af133e3729bd6
-	source = emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten
-	source = emscripten-config::https://projects.archlinux.de/svntogit/community.git/tree/trunk/emscripten-config?h=packages/emscripten
+	source = emscripten.sh
+	source = emscripten-config
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5
-	sha256sums = a9917b9ca044ded5095aeb7fa4ee822c2712f345684d73354fa9417fdcd885c2
+	sha256sums = ca93ab7b993b51fca540bbcadd21134ea75b1ba7e449ab645686dcf179f4165b
 
 pkgname = emscripten-git
 
