@@ -1,5 +1,5 @@
 # Maintainer: Ivan Beloshabski <ivan@bell.ru>
-pkgname=brother-dcp7057w-cupswrapper-bin
+pkgname=brother-dcp7057w-cups-bin
 pkgver=3.0.1_1
 pkgrel=1
 pkgdesc="CUPS wrapper for Brother DCP-7057W printer"
