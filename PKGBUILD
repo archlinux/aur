@@ -2,7 +2,7 @@
 # Contributor: Olli <olli@suruatoel.xyz>
 
 pkgname=tomcat10
-pkgver=10.0.2
+pkgver=10.0.4
 pkgrel=1
 pkgdesc='Open source implementation of the Java Servlet 5.0 and JavaServer Pages 3.0 technologies'
 arch=(any)
