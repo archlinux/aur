@@ -14,7 +14,7 @@ pkgbase = instamenu-extra
 	depends = python>=3.4
 	provides = instamenu-extra
 	source = instamenu-extra-2021.03.13.tar.gz::https://github.com/The-Repo-Club/instamenu-extra/archive/2021.03.13.tar.gz
-	sha256sums = SKIP
+	sha256sums = 5412231f52fb646f57f716c0e7271fde0c404bcfca90358e8b031303da3ed791
 
 pkgname = instamenu-extra
 

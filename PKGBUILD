@@ -11,7 +11,7 @@ license=('CC BY-NC-SA 4.0')
 depends=('bash' 'systemd' 'autorandr' 'instamenu' 'instamenu-schemas' 'python>=3.4')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5412231f52fb646f57f716c0e7271fde0c404bcfca90358e8b031303da3ed791')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
