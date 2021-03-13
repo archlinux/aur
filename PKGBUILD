@@ -2,7 +2,7 @@
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=flexc++
 pkgver=2.09.00
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ scanner generator"
 arch=('i686' 'x86_64')
 url="https://fbb-git.gitlab.io/flexcpp/"

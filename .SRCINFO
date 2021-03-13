@@ -1,7 +1,7 @@
 pkgbase = flexc++
 	pkgdesc = C++ scanner generator
 	pkgver = 2.09.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fbb-git.gitlab.io/flexcpp/
 	arch = i686
 	arch = x86_64
