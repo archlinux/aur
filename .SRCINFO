@@ -1,7 +1,7 @@
 pkgbase = soundux-git
 	pkgdesc = A cross-platform soundboard
-	pkgver = r424.db04167
-	pkgrel = 2
+	pkgver = r609.556c382
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Soundux/Soundux
 	arch = any
@@ -14,8 +14,6 @@ pkgbase = soundux-git
 	provides = soundux
 	conflicts = soundux
 	source = git+https://github.com/Soundux/Soundux.git
-	source = soundux.desktop
 	sha256sums = SKIP
-	sha256sums = 9ba572406c69e23c43ae419fde2bcefb4eade15e4e8ed9c082324b11d7e35184
 
 pkgname = soundux-git
