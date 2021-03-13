@@ -1,6 +1,6 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=2723  # see ${srcdir}/Version.txt
+_pkg_subver=2900  # see ${srcdir}/Version.txt
 _gamepkg=RimWorld1-2-${_pkg_subver}Linux.zip
 
 pkgname=rimworld
@@ -14,7 +14,7 @@ depends=('glu' 'libxcursor')
 makedepends=('unzip')
 source=(rimworld.desktop
         rimworld.sh)
-sha256sums=('2cae10532b040e6766daf8fc33ecbd123ce2085acb921e30e57216da573879ce'
+sha256sums=('a360e7399d3b6b545cd7370013bafb6290d94e82e40f7df59655c806bd4164eb'
             '7f46d32b4ebb3e442b471797005cde6a1fdb7d923d1b7860dee6a9b1779248bf')
 
 _pkgpaths_tries=("$startdir"
