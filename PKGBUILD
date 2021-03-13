@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=smartmeter
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
 epoch=
 pkgdesc="Read energy utility meter with IR dongle"
@@ -11,7 +11,7 @@ groups=()
 depends=('mosquitto')
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('nodejs-node-red' 'influxdb' 'grafana-bin')
 provides=()
 conflicts=()
 replaces=()
