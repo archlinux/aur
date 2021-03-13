@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.5.7
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Basic system information fetcher, written in Rust"
 
