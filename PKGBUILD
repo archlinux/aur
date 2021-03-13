@@ -1,12 +1,12 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
 arch=('x86_64')
 url='https://blueprint64.ca/parallel-launcher'
-license=('GPL2')
+license=('GPL3')
 groups=()
 depends=(
 	'glibc'
@@ -29,11 +29,11 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install='parallel-launcher.install'
 changelog=
-source=('parallel-launcher-2.1.3.tar.gz')
+source=('parallel-launcher-2.2.0.tar.gz')
 noextract=()
-md5sums=('eaa5f72bce7fe33ec36869cdd61415dc')
+md5sums=('da094562c8a3b83aa9a7093d7c86af26')
 validpgpkeys=()
 
 build() {
@@ -45,4 +45,5 @@ package() {
 	install -D parallel-launcher $pkgdir/usr/bin/parallel-launcher
 	install -D parallel-launcher.desktop $pkgdir/usr/share/applications/parallel-launcher.desktop
 	install -D data/appicon.svg $pkgdir/usr/share/parallel-launcher/appicon.svg
+	install -D bps-mime.xml $pkgdir/usr/share/parallel-launcher/bps-mime.xml
 }

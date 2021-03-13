@@ -1,0 +1,8 @@
+post_install() {
+	xdg-mime install /usr/share/parallel-launcher/bps-mime.xml
+	update-desktop-database /usr/share/applications
+}
+
+pre_remove() {
+	xdg-mime uninstall /usr/share/parallel-launcher/bps-mime.xml
+}
