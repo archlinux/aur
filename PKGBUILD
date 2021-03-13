@@ -24,4 +24,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('74b7804bbc65c0035b4861e73a68bc4e')
+md5sums=('3b2f0d0eb11e12fdbf3a35975d203063')
