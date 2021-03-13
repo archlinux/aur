@@ -1,0 +1,22 @@
+pkgbase = jsoncpp-cmake-git
+	pkgdesc = C++ library for interacting with JSON; cmake version: FS#60285
+	pkgver = 1.9.4.r21.g1ee39a6
+	pkgrel = 1
+	url = https://github.com/open-source-parsers/jsoncpp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = git
+	makedepends = meson
+	makedepends = python
+	depends = gcc-libs
+	provides = jsoncpp
+	conflicts = jsoncpp
+	conflicts = jsoncpp-git
+	options = staticlibs
+	source = git+https://github.com/open-source-parsers/jsoncpp.git
+	sha256sums = SKIP
+
+pkgname = jsoncpp-cmake-git
+
