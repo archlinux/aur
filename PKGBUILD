@@ -16,17 +16,17 @@ md5sums=('SKIP')
 _gitdir=${pkgname%"-git"}
 
 pkgver() {
-	cd "$_gitdir"
+	cd "$srcdir/$_gitdir"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$_gitdir"
+	cd "$srcdir/$_gitdir"
 	make build
 }
 
 package() {
-	cd "$_gitdir"
+	cd "$srcdir/$_gitdir"
 	make DESTDIR="$pkgdir" install
 }
 
