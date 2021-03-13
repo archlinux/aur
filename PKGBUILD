@@ -69,7 +69,7 @@ package()
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
 
-    # Symlinking the scripts.
+    ## Symlinking the scripts.
     ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname}
     ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname}-start.sh ${pkgdir}/usr/bin/${_pkgname}-start
