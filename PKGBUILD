@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "21c14955e73d51c6d2029f39d6b26678479864d74739c10067e00f449a463e18"
+    "c45eb87528deedcb00827df2f6a9a6a6a9764e39f0cd48fcdfdded2c9a818e6e"
     "cf4fc81793572cc3e757e8ac26ce20807ce9c731eef0e96c046038075e2e3ecf"
     "810403667792b732768e7be442f43244c4297df6c4b5decb6d07e04ef13f545a"
     "30d938d1f385ea5c660fc4080d36391267a6e9c01939bd1eb535c5857af256f8"
@@ -44,7 +44,7 @@ package() {
     install -d "$pkgdir/opt/$_pkgname"
 
     # extract installer archive from installer binary
-    tail -c +38360 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
+    tail -c +38552 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
 
     # extract inner archive from installer archive
     tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" FreeFileSync.tar.gz -C "$srcdir"
