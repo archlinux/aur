@@ -2,7 +2,7 @@
 
 pkgname=non-euclidean-git
 pkgver=r31.8bbf723
-pkgrel=2
+pkgrel=3
 pkgdesc='Tiny Non-Euclidean engine'
 arch=($CARCH)
 url='https://github.com/Srinivasa314/NonEuclidean'
@@ -24,13 +24,13 @@ build() {
 
 package() {
   cd NonEuclidean
-  install -Dm755 NonEuclidean/NonEuclidean "$pkgdir/opt/NonEuclidean/NonEuclidean"
+  install -Dm755 NonEuclidean/NonEuclidean "$pkgdir/opt/NonEuclidean/non-euclidean"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 NonEuclidean/Meshes/* -t "$pkgdir/opt/NonEuclidean/Meshes/"
   install -Dm644 NonEuclidean/Shaders/* -t "$pkgdir/opt/NonEuclidean/Shaders/"
   install -Dm644 NonEuclidean/Textures/* -t "$pkgdir/opt/NonEuclidean/Textures/"
 
   install -d "$pkgdir/usr/bin/"
-  ln -s "$pkgdir/opt/NonEuclidean/NonEuclidean" "$pkgdir/usr/bin/NonEuclidean"
-  chmod +x "$pkgdir/usr/bin/NonEuclidean"
+  ln -s /opt/NonEuclidean/non-euclidean "$pkgdir/usr/bin/non-euclidean"
+  chmod +x "$pkgdir/usr/bin/non-euclidean"
 }
