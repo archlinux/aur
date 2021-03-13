@@ -2,7 +2,7 @@
 # Contributor: Codist <countstarlight@gmail.com>
 # Contributor: taotieren <admin@taotieren.com>
 pkgname=deepin-wine-qqmusic
-pkgver=17.73.10.0010
+pkgver=17.73.10.0011
 debpkgver=17.73deepin10
 debpkgname="com.qq.music.deepin"
 pkgrel=1
@@ -24,8 +24,11 @@ build() {
   msg "Extracting DPKG package ..."
   mkdir -p "${srcdir}/dpkgdir"
   tar -xvf data.tar.xz -C "${srcdir}/dpkgdir"
+  msg "Fixing Desktop file ..."
   sed "s/\(Categories.*$\)/\1Media;/" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
   sed "s/run.sh\".*/run.sh\"/" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
+  sed "s/StartupWMClass=QQ.exe/StartupWMClass=QQMusic.exe/g" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
+  sed "s/Icon=com.qq.music.deepin/Icon=qqmusic/g" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
 }
 
 
