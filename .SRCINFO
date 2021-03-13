@@ -1,7 +1,7 @@
 pkgbase = taiwins-git
 	pkgdesc = Tiling and floating wayland window manager focused on speed and size
 	pkgver = 0.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://taiwins.org
 	arch = x86_64
 	license = GPL2
