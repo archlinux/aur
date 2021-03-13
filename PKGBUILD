@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=89.0.4389.82
-pkgrel=2
+pkgver=89.0.4389.90
+pkgrel=1
 _launcher_ver=7
 _gcc_patchset=7
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         x11-ozone-fix-two-edge-cases.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('df4914407b68afdc6449cb8e3f1b08d110eb8689ac41f86490e337fa4d1be379'
+sha256sums=('11c6089c5fdd921216aa4eb34b52818a9b091cad655a24aed0982d29e65b279a'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'f8b1558f6c87b33423da854d42f0f69d47885a96d6bf6ce7f26373e93d47442f'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
