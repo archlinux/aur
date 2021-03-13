@@ -9,7 +9,7 @@ license=('Apache')
 depends=('java-runtime>=11')
 replaces=('pantheon')
 #changelog=
-source=("$pkgname-$pkgver.tar.gz::https://bintray.com/hyperledger-org/$pkgname-repo/download_file?file_path=$pkgname-$pkgver.tar.gz")
+source=("https://hyperledger.jfrog.io/artifactory/$pkgname-binaries/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('dc11cf6919de422afb311d072a4edbdaa2115eead5bb102aec5aacfc5fdb1164')
 
 check() {
