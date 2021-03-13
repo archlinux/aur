@@ -1,9 +1,10 @@
 pkgbase = fish-humantime
-	pkgdesc = Turn milliseconds into a human-readable string in Fish
+	pkgdesc = Fish plugin for making timestamps human-readable
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/jorgebucaran/humantime.fish
 	arch = any
+	groups = fish-plugins
 	license = MIT
 	depends = fish
 	replaces = fish-humanize-duration
