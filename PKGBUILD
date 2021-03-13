@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=wcal-git
-pkgver=r4.7db19e4
+pkgver=r15.24ad672
 pkgdesc='ISO weekly calendar'
 pkgrel=1
 license=('custom:CC0')
