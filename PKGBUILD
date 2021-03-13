@@ -36,7 +36,7 @@ pkgver()
 {
     cd ${srcdir}/${_pkgname}/
     version=$(git describe --tags --abbrev=0)
-    printf "%s" ${version:1} | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+    printf "%s" ${version} | sed "s/^v//;s/-/_/g;s/\//./g"
 }
 
 build()
@@ -56,7 +56,7 @@ package()
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-    dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- $@" > ${srcdir}/${_pkgname}/run.sh
+    dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- ${@}" > ${srcdir}/${_pkgname}/run.sh
 
     # Create btcpayserver-start.sh.
     echo -e "#!/bin/bash
@@ -66,8 +66,8 @@ package()
     echo -e "#!/bin/bash
     tmux kill-session -t ${_pkgname}" > ${srcdir}/${_pkgname}/${_pkgname}-stop.sh
 
-    # Put the installation at the right place.
-    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
+    # Install the software.
+    install -Ddm755 ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
 
     # Symlinking the scripts.
     ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
