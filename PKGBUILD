@@ -1,8 +1,18 @@
 # Maintainer: Michael Schantl <floss at schantl dash lx dot at>
 # Upstream authors: Tom Keffer, Matthew Wall and contributors
 
+# Supports automatic update checking
+
 pkgname=weewx
-pkgver=4.4.0
+_MAJOR=4
+_MINOR=4
+_PATCH=0
+pkgver=$_MAJOR.$_MINOR.$_PATCH
+
+function _dl_url {
+  echo "http://www.weewx.com/downloads/released_versions/${pkgname}-$1.$2.$3.tar.gz"
+}
+
 pkgrel=1
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
@@ -20,7 +30,7 @@ optdepends=("python-pyephem: extended almanac information"
             "mariadb-clients: MariaDB support"
             "python-mysqlclient: MariaDB support")
 backup=("etc/weewx/weewx.conf")
-source=("http://www.weewx.com/downloads/released_versions/${pkgname}-${pkgver}.tar.gz"
+source=("$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "wee_config"
         "wee_database"
         "wee_debug"
