@@ -2,17 +2,17 @@
 
 _target=sh-elf
 pkgname=$_target-newlib
-pkgver=3.3.0
+pkgver=4.1.0
 pkgrel=1
 _upstream_ver=$pkgver
-pkgdesc='A C standard library implementation intended for use on embedded systems (SuperH)'
+pkgdesc='A C standard library implementation intended for use on embedded systems (SuperH bare metal)'
 arch=(any)
 url='http://www.sourceware.org/newlib/'
 license=(BSD)
 makedepends=($_target-gcc)
 options=(!emptydirs !strip)
 source=(https://sourceware.org/pub/newlib/newlib-$_upstream_ver.tar.gz)
-sha256sums=('58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66')
+sha256sums=('f296e372f51324224d387cc116dc37a6bd397198756746f93a2b02e9a5d40154')
 
 build() {
   mkdir newlib-build
