@@ -24,8 +24,3 @@ package() {
     ln -sf /opt/Binance/binance $pkgdir/usr/bin/binance
     find "${pkgdir}" -type d -exec chmod 755 {} +
 }
-
-#pkgver() {
-#  cd $srcdir
-#  gunzip -cd usr/share/doc/binance/changelog.gz | head -1 | sed -e "s/^binance (\([0-9.]\+\)).*$/\1/"
-#}
