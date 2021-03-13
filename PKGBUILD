@@ -3,7 +3,7 @@
 
 pkgname=pyxplot
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Command-line graphing package with a simple interface that produces publication-quality output."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -15,12 +15,12 @@ makedepends=()
 optdepends=('python-scipy: mathematical functions'
 	    'python-numpy: mathematical functions'
             'gsl: fitting'
-            'gv: for the X11 terminal'
-            'ggv: PostScript files')
+            'gv: viewing PostScript files')
 source=("http://www.pyxplot.org.uk/src/${pkgname}_${pkgver}.tar.gz")
-md5sums=('2aa8445720f94ca23a7cf6688454ce84')
+sha256sums=('1c592a0bc77caec445a8d72534471c01d66ca1806309e6c983847c2e0b95e689')
+
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   # LDFLAGS to remove harmful -Wl,--as-needed
   # USRDIR because otherwise it seem to look for help file in wrong directory
@@ -29,8 +29,9 @@ build() {
   sed -i s+-ltermcap++ Makefile
   make USRDIR="/usr"
 }
+
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  install -d ${pkgdir}/usr
-  make USRDIR="${pkgdir}/usr" MANDIR="${pkgdir}/usr/share/man/man1" install
+  cd ${pkgname}-${pkgver}
+  install -d "$pkgdir"/usr
+  make USRDIR="$pkgdir"/usr MANDIR="$pkgdir"/usr/share/man/man1 install
 }
