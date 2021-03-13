@@ -1,0 +1,5 @@
+--- a/etc/resolver.seccomp
++++ b/etc/resolver.seccomp
+@@ -1 +1 @@
+-fcntl,bind,brk,clock_nanosleep,close,connect,dup,exit_group,fstat,getpid,getrandom,getsockname,gettimeofday,ioctl,kill,mmap,_newselect,nanosleep,open,openat,poll,read,recvfrom,recvmsg,rt_sigprocmask,select,sendmmsg,sendto,setsockopt,sigreturn,socket,stat,time,uname,wait4,write,writev,fstat64
++clock_gettime,fcntl,bind,brk,clock_nanosleep,close,connect,dup,exit_group,fstat,getpid,getrandom,getsockname,gettimeofday,ioctl,kill,mmap,_newselect,nanosleep,open,openat,poll,read,recvfrom,recvmsg,rt_sigprocmask,select,sendmmsg,sendto,setsockopt,sigreturn,socket,stat,time,uname,wait4,write,writev,fstat64,pselect6,newfstatat
