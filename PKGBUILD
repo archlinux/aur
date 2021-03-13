@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -12,8 +12,8 @@ makedepends=('git' 'rust' 'libx11')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.txt"
         "$pkgname.desktop")
-sha256sums=('cd86eefea8f75c3b80e27fadc6d5dccad47c501ad0914b8e1ebe625813dffb6b'
-            '09f08dc24ebe6800243586a6ac546bfdeb1b6a70d1f27a3e89c6d185b263e4a4'
+sha256sums=('e525ea9f3545d30b0c81dc4e7cf3c677d7340e3045ef18a9239aa3c44069882b'
+            '75f6130f1ebec215d27807ac05211cfc849b912fd870218f3c65d1d44e709d58'
             '9f9abd3a3ea78c1094c52a80d65c7d4bc59ffc0f67ee06ab07de373e6f769edb')
 
 build() {
