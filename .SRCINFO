@@ -1,6 +1,6 @@
 pkgbase = coova-chilli-arch
 	pkgdesc = An open-source software access controller
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://coova.github.io/
 	install = chilli.install
@@ -15,12 +15,10 @@ pkgbase = coova-chilli-arch
 	replaces = coova-chilli
 	options = !libtool
 	backup = etc/chilli.conf
-	source = https://github.com/coova/coova-chilli/archive/1.5.tar.gz
+	source = https://github.com/coova/coova-chilli/archive/1.6.tar.gz
 	source = chilli.service
-	source = makefile.am.patch
-	md5sums = 93a50aa2dfdc648f9c42780b26502c59
-	md5sums = 828147e21eac257c3b700ea7f4ca3d98
-	md5sums = 986482eb732530c30cdc9e7987a53ad4
+	sha256sums = 26b2bead6fd9c18eb736fb0a0f8709922de4e4fedee1122193f82706eb2b9305
+	sha256sums = cf4e9d610b22729a4dd6257b732d7ed4b01367cde6a330205a5f5c33cdbee578
 
 pkgname = coova-chilli-arch
 

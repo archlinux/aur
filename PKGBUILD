@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=coova-chilli-arch
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='An open-source software access controller'
 arch=('i686' 'x86_64')
@@ -13,18 +13,16 @@ optdepends=('python2')
 options=(!libtool)
 replaces=(coova-chilli)
 source=("https://github.com/coova/coova-chilli/archive/$pkgver.tar.gz"
-    chilli.service
-    makefile.am.patch
+  chilli.service
 )
 backup=('etc/chilli.conf')
 install=chilli.install
 
 prepare() {
-    cd "${srcdir}/coova-chilli-${pkgver}"
-    patch -Np1 -i ../makefile.am.patch
-    
-    ./bootstrap
-    ./configure --prefix=/usr --sbindir=/usr/bin/ \
+  cd "${srcdir}/coova-chilli-${pkgver}"
+
+  ./bootstrap
+  ./configure --prefix=/usr --sbindir=/usr/bin/ \
     --sysconfdir=/etc --localstatedir=/var \
     --enable-statusfile \
     --disable-static \
@@ -40,20 +38,20 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/coova-chilli-${pkgver}"
-    make
+  cd "${srcdir}/coova-chilli-${pkgver}"
+  make
 }
 
 package() {
-    cd "${srcdir}/coova-chilli-${pkgver}"
-    make DESTDIR="${pkgdir}" install
-    
-    msg2 "Installing systemd unit for ${pkgname}"
-    install -Dm0644 ../chilli.service $pkgdir/usr/lib/systemd/system/chilli.service
-    
-    rm -rf ${pkgdir}/etc/init.d
+  cd "${srcdir}/coova-chilli-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  msg2 "Installing systemd unit for ${pkgname}"
+  install -Dm0644 ../chilli.service \
+    "${pkgdir}/usr/lib/systemd/system/chilli.service"
+
+  rm -rf "${pkgdir}/etc/init.d"
 }
 
-md5sums=('93a50aa2dfdc648f9c42780b26502c59'
-         '828147e21eac257c3b700ea7f4ca3d98'
-         '986482eb732530c30cdc9e7987a53ad4')
+sha256sums=('26b2bead6fd9c18eb736fb0a0f8709922de4e4fedee1122193f82706eb2b9305'
+  'cf4e9d610b22729a4dd6257b732d7ed4b01367cde6a330205a5f5c33cdbee578')
