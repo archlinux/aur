@@ -1,7 +1,7 @@
 pkgbase = hentaifetch-git
 	pkgdesc = neofetch but with hentai
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/helpmeplsfortheloveofgod/hentaifetch
 	arch = any
 	license = GPL3
