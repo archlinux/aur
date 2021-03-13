@@ -1,6 +1,6 @@
 # Maintainer: Ratan Rai Sur <ratan.r.sur@gmail.com>
 pkgname=besu
-pkgver=20.10.1
+pkgver=21.1.1
 pkgrel=1
 pkgdesc="Hyperledger Ethereum Mainnet and Permissioned Network Client"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-runtime>=11')
 replaces=('pantheon')
 #changelog=
 source=("https://hyperledger.jfrog.io/artifactory/$pkgname-binaries/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('dc11cf6919de422afb311d072a4edbdaa2115eead5bb102aec5aacfc5fdb1164')
+sha256sums=('8755bf1b07ff40a14970604c3af3c8765449eefee154f4290737e6b3f554e6e9')
 
 check() {
   "$pkgname-$pkgver/bin/$pkgname" --version
