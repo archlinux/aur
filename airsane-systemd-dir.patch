@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f37e77d..13ab326 100644
+index ca5f617..0463c6b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -63,7 +63,7 @@ install(TARGETS ${PROJECT_NAME}
+@@ -109,7 +109,7 @@ install(TARGETS ${PROJECT_NAME}
      RUNTIME DESTINATION bin
  )
  install(FILES systemd/airsaned.service
@@ -12,15 +12,15 @@ index f37e77d..13ab326 100644
  install(FILES systemd/airsaned.default
      DESTINATION /etc/default
 diff --git a/systemd/airsaned.service b/systemd/airsaned.service
-index 2c17d67..a6a5134 100644
+index cede8ff..1f892a3 100644
 --- a/systemd/airsaned.service
 +++ b/systemd/airsaned.service
 @@ -4,10 +4,10 @@ After=network-online.target
  
  [Service]
  EnvironmentFile=-/etc/default/airsane
--ExecStart=/usr/local/bin/airsaned --interface=${INTERFACE} --listen-port=${LISTEN_PORT} --access-log=${ACCESS_LOG} --hotplug=${HOTPLUG} --mdns-announce=${MDNS_ANNOUNCE} --local-scanners-only=${LOCAL_SCANNERS_ONLY} --options-file=${OPTIONS_FILE}
-+ExecStart=/usr/bin/airsaned --interface=${INTERFACE} --listen-port=${LISTEN_PORT} --access-log=${ACCESS_LOG} --hotplug=${HOTPLUG} --mdns-announce=${MDNS_ANNOUNCE} --local-scanners-only=${LOCAL_SCANNERS_ONLY} --options-file=${OPTIONS_FILE}
+-ExecStart=/usr/local/bin/airsaned --interface=${INTERFACE} --base-port=${BASE_PORT} --access-log=${ACCESS_LOG} --hotplug=${HOTPLUG} --mdns-announce=${MDNS_ANNOUNCE} --local-scanners-only=${LOCAL_SCANNERS_ONLY} --options-file=${OPTIONS_FILE} --ignore-list=${IGNORE_LIST}
++ExecStart=/usr/bin/airsaned --interface=${INTERFACE} --base-port=${BASE_PORT} --access-log=${ACCESS_LOG} --hotplug=${HOTPLUG} --mdns-announce=${MDNS_ANNOUNCE} --local-scanners-only=${LOCAL_SCANNERS_ONLY} --options-file=${OPTIONS_FILE} --ignore-list=${IGNORE_LIST}
  ExecReload=/bin/kill -HUP $MAINPID
 -User=saned
 -Group=saned
