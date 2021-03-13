@@ -1,7 +1,7 @@
 pkgbase = cardano-node
 	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain.
 	pkgver = 1.25.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/input-output-hk/cardano-node
 	arch = any
 	license = Apache
@@ -13,17 +13,27 @@ pkgbase = cardano-node
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-byron-genesis.json
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-shelley-genesis.json
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-topology.json
+	source = https://hydra.iohk.io/build/5367762/download/1/testnet-config.json
+	source = https://hydra.iohk.io/build/5367762/download/1/testnet-byron-genesis.json
+	source = https://hydra.iohk.io/build/5367762/download/1/testnet-shelley-genesis.json
+	source = https://hydra.iohk.io/build/5367762/download/1/testnet-topology.json
 	source = cardano-node.sysusers
 	source = cardano-node.tmpfiles
 	source = cardano-node.service
+	source = cardano-node-testnet.service
 	sha256sums = 946da22e8fbbc587713c6006b70c2e02b3a26c8c173545afe6c15b8b78b25e08
 	sha256sums = 9999052dc926506d350cfca2bcfd291e50b48cc7f5215a154c344ad7ad7d70eb
 	sha256sums = 4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa
 	sha256sums = 59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961
 	sha256sums = 7ac2184ff55d1272e87d579550501b7e4fc61b9cf016179ca026516fff365730
+	sha256sums = 9ed2437e3fe4d65cd865468089dac0460c3a6afd805d5176b2e70f47e4a7e057
+	sha256sums = dca3139e907bb943bfeff5f186f3fc71217ff12cabde93a926277c6ddd647d87
+	sha256sums = 4e309ad1f7b19d5c442b9250326ef55a70581c5d1bc0f7a056d18ebff31bcfa6
+	sha256sums = cbcf919b1d2d656ea7512f8ecb12e3c3e3a8db137925abff52d647427f2b154f
 	sha256sums = 703f9b033c299b652b2d3228ee6ef4a9c09b7e846ff4b366a2aca68960370234
-	sha256sums = bedb3eaf9a6315485f54e4021b46d936708b6e199b2e2d1e344eebfff783b237
+	sha256sums = 1f1260d222715047855cd84e82019d3564456145346b9a5712b533fe2970373c
 	sha256sums = 612025b4071734ab29e90f5cc71cff2868abe4f333d7f60c25d4b5c7f236f43c
+	sha256sums = a5582d3b712330d0f37fc1488c06f4e2cb75176ffe382c74db9e6c75c3f95f9d
 
 pkgname = cardano-node
 

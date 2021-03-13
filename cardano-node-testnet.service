@@ -1,0 +1,20 @@
+[Unit]
+Description=Cardano node (testnet)
+Requires=network.target
+
+[Service]
+Type=simple
+ExecStart=cardano-node run \
+    --database-path /var/lib/cardano-node/db/testnet \
+    --socket-path /run/cardano-node/testnet/socket \
+    --host-addr 0.0.0.0 \
+    --port 3001 \
+    --config /var/lib/cardano-node/config/testnet-config.json  \
+    --topology /var/lib/cardano-node/config/testnet-topology.json
+Restart=always
+RestartSec=60
+User=cardano
+TimeoutStopSec=90
+
+[Install]
+WantedBy=multi-user.target
