@@ -3,7 +3,7 @@
 _pkgname=litex-boards
 pkgname=python-$_pkgname
 pkgver=2020.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Small footprint and configurable Ethernet core'
 arch=('any')
 url="https://github.com/litex-hub/$_pkgname"
@@ -24,4 +24,7 @@ package() {
   cd $_pkgname-$pkgver
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # remove tests
+  rm -rf "$pkgdir"/usr/lib/python*/site-packages/test
 }
