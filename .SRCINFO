@@ -1,7 +1,7 @@
 pkgbase = sakura-frp
 	pkgdesc = Sakura Frp
 	pkgver = 0.35.1_sakura_2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.natfrp.com/
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = sakura-frp
 	license = custom
 	provides = sakura-frpc
 	provides = natfrp
+	options = !strip
 	backup = etc/sakura-frp/frpc.ini
 	source = LICENSE::https://www.natfrp.com/policy/
 	source = sakura-frpc.service
