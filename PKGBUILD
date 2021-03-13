@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=coolvlviewer
-pkgver=1.28.2.12
-_pkgver=128212
+pkgver=1.28.2.14
+_pkgver=128214
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer'; built from source)"
 url="http://sldev.free.fr"
@@ -21,19 +21,19 @@ optdepends=(
 	'lib32-libidn11: for voice support'
 	'wine: for SLVoice support')
 makedepends=("cmake" "bison" "flex" "python2" "make" "bzip2" "glibc" "libx11" "libgl" "libxrender" "libidn" "libxinerama" "lib32-libxinerama")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 conflicts=('coolvlviewer-bin' 'coolvlviewer-experimental' 'coolvlviewer-experimental-bin')
 install=coolvlviewer.install
 source=("http://sldev.free.fr/sources/CoolVLViewer-src-${_pkgver}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('6a6ae4cff5c97d9906649055f7706be4'
+md5sums=('2cf91222264dc26af365d3b529fb10ed'
          '7a70defd1c6381bab1af7456b14daca4'
          'fd78de1f6c1333a5120ece89873515e0')
 
 build() {
 
-cd $srcdir/linden/indra
+cd $srcdir/linden
 ./buildlinux.sh
 }
 
@@ -46,7 +46,7 @@ install -D -m644 $srcdir/coolvlviewer.desktop \
 
 #$srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/
 
-install -D -m755 $srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/cvlv_icon.png \
+install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/cvlv_icon.png \
 	$pkgdir/usr/share/pixmaps/clvl_icon.png
 
 # Install Launcher
@@ -54,11 +54,11 @@ install -D -m755 $srcdir/coolvlviewer.launcher \
 	$pkgdir/usr/bin/coolvlviewer
     
 # Install License
-install -D -m644 $srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/licenses.txt \
+install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/licenses.txt \
 	$pkgdir/usr/share/licenses/$pkgname/LISENSE
     
 # Move Data to Destination Directory
-mv $srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/ $srcdir/coolvlviewer
+mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/ $srcdir/coolvlviewer
 install -d $pkgdir/opt/
 mv coolvlviewer/ $pkgdir/opt/
     
