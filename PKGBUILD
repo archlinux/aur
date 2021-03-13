@@ -1,6 +1,6 @@
 # Maintainer: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 pkgname=minimal-podcasts-player
-pkgver="0.1.0.1"
+pkgver="0.2.0"
 pkgrel=1
 pkgdesc="Subscribe, listen and (in the future) download your favorite podcasts, quickly and easily."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'python-podcastparser' 'python-pyqt5' 'qt5-multimedia' 'python-qt-material-git')
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('538f2a7e83c7a7a8297aa34b856101bd7e1949a26293add00feff6021b83a4c9')
+sha256sums=('d95b1c147a10de72c16cf3842555a6fb98ab25f41b6dd3752cc5d4d980484e1e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
