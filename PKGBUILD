@@ -4,7 +4,7 @@
 _gitname=beautyline
 pkgname=beautyline
 pkgver=20210313
-pkgrel=1
+pkgrel=2
 pkgdesc="Outlined icons designed to have unified look and comprehensive coverage with the Sweet icon pack (best suited to use with Sweet theme)"
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/artwork/${_gitname}"
