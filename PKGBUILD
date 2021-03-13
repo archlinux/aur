@@ -2,6 +2,11 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ### BUILD OPTIONS
+
+# Set to "undead" to use Undead PDS, or "prjc" to use Project C PDS.
+# Defaults to Undead PDS.
+_pds_choice=undead
+
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
@@ -88,16 +93,18 @@ _reponame="linux-archlinux"
 _repo_url="https://git.archlinux.org/linux"
 
 _reponame_gcc_patch="kernel_gcc_patch"
-_repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
+_repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
 _gcc_patch_name="more-uarches-for-gcc-v11-and-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 source=(
-    "${_reponame}::git+$_repo_url?signed#tag=$_srcver_tag"
-    "git+$_repo_url_gcc_patch"
+    "${_reponame}::git+${_repo_url}#tag=$_srcver_tag"
+    "git+${_repo_url_gcc_patch}"
     config # kernel config file
-    0009-prjc_v5.11-r1.patch
+    0005-v5.11_undead-pds099o.patch
+    0005-undead-glitched-pds.patch
+    0009-prjc_v5.11-r2.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -108,7 +115,9 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'e22a1be1e7332bbb1db8b94bf76d05f66302a8b73cf38bce3647969f76b38e5d46e40e3f6b7e4cf02ca1e43bfc812cd7e1c45094d1995eeef98a21508d0e5681'
-            '7d1ef268fb7b946a3e16c3f3402a3334a32df940eccf5dd2d637671f80e16599228eb13fd889f863dc33ea78a2c62027491c6fba6a44b3e68bf3c66f222adcd6'
+            '9c08c605b86739ac1110f8e4eaecedc46e335bf708f8a1cda34b02735a4a7f9189a8a868efcb0f2bbcae4aab784c5b51cac95db83c6f61da42f5cf6fb6b16b60'
+            '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd'
+            '3e75edcb8c82222a5ff64d751cff1c9102ea5eabadda3ba6ae1369b2a1478d5f001776f7ce1b13425f5c2f7acdb1a8a117864ccb9aca6755188efaa4110dcb43'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -125,9 +134,19 @@ prepare() {
     
     PatchesArray=(
         $_reponame_gcc_patch/$_gcc_patch_name
-        0009-prjc_v5.11-r1.patch
-        0005-glitched-pds.patch
     )
+    if [ "${_pds_choice}" = "undead" ]; then
+        PatchesArray+=(
+            0005-v5.11_undead-pds099o.patch
+            0005-undead-glitched-pds.patch
+        )
+    elif [ "${_pds_choice}" = "prjc" ]; then
+        PatchesArray+=(
+            0009-prjc_v5.11-r2.patch
+            0005-glitched-pds.patch
+        )
+    fi
+
     for MyPatch in "${PatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
@@ -156,7 +175,11 @@ prepare() {
     fi
     
     # Set yield_type to 0
-    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
+    if [ "${_pds_choice}" = "prjc" ]; then
+        sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
+    elif [ "${_pds_choice}" = "undead" ]; then
+        sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
+    fi
 
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
