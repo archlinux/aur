@@ -5,7 +5,7 @@
 pkgname=gcstar
 _pkgname=GCstar
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection management application"
 arch=('any')
 url="http://www.gcstar.org"
