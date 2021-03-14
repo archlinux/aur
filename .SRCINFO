@@ -1,19 +1,28 @@
 pkgbase = ruby-actionpack
 	pkgdesc = Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server.
 	pkgver = 6.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rubyonrails.org
 	arch = any
 	license = MIT
+	checkdepends = ruby-capybara
+	checkdepends = ruby-rack-cache
+	checkdepends = ruby-railties
+	checkdepends = ruby-selenium-webdriver
+	makedepends = ruby-activemodel
+	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-actionview
 	depends = ruby-activesupport
 	depends = ruby-rack
+	depends = ruby-rack-test
 	depends = ruby-rails-dom-testing
 	depends = ruby-rails-html-sanitizer
 	options = !emptydirs
 	source = rails-6.1.3.tar.gz::https://github.com/rails/rails/archive/v6.1.3.tar.gz
+	source = fix_tests.patch
 	sha512sums = ec6e871e3226c3efa5dc7f59cbd1819b45ab0d1a21b39b8c2d76022fff761fb268f79c7b560b987af245d9e305ecc4517379de3769d468b5a548005f8533044a
+	sha512sums = e25704542301f41fc81fa28c084f45646970a0308eaf9773920b67f09991d02cb822c0193eb7cb03b90a8967129296dabca2229c0869f7dfd13d583a5950a664
 
 pkgname = ruby-actionpack
 
