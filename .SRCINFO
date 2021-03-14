@@ -42,6 +42,7 @@ pkgbase = systemd-selinux
 	source = git+https://github.com/systemd/systemd-stable#tag=5ca6cc7f6e95bd98bb014126040d4a5fae541511?signed
 	source = git+https://github.com/systemd/systemd#tag=v247?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
+	source = 0002-PR-18987-boot-Move-console-declarations-to-missing_efi.h.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -64,6 +65,7 @@ pkgbase = systemd-selinux
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4
+	sha512sums = 235e7f48e7e76cfa87f5e31022df17a18600055ede0aa173e8274042ebac463e27a4693aba7aa0b48e774e01af34ad497cdbcfaed17e71c702e3ff41832ecabd
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
 	sha512sums = 8e76f8334b95ce7fee9190f4a1016b16109f3a75b68635fc227b2b4791cf8179ef09b532b66b4ed885ddf98ed76befed3106f3c3088f1819ed8cdf4c13e0805a
 	sha512sums = a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a

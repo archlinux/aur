@@ -1,0 +1,216 @@
+From 7d2ebb6f85cdeb0c4ddcdf08004f0547cad5cfe9 Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Sat, 30 Jan 2021 23:10:13 +0000
+Subject: [PATCH] boot: Turn all guid constants into C99 compound initializers
+
+Avoids having to use the address operator all the time and
+avoids having to cast or do other unintuitive stuff.
+
+[ Patch truncated to backport changes to src/boot/efi/console.c only]
+
+diff --git a/src/boot/efi/console.c b/src/boot/efi/console.c
+index 2dd4543d515..e3de27fee5c 100644
+--- a/src/boot/efi/console.c
++++ b/src/boot/efi/console.c
+@@ -9,8 +9,8 @@
+ #define SYSTEM_FONT_WIDTH 8
+ #define SYSTEM_FONT_HEIGHT 19
+ 
+-#define EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID \
+-        { 0xdd9e7534, 0x7762, 0x4698, { 0x8c, 0x14, 0xf5, 0x85, 0x17, 0xa6, 0x25, 0xaa } }
++#define EFI_SIMPLE_TEXT_INPUT_EX_GUID \
++        &(EFI_GUID) { 0xdd9e7534, 0x7762, 0x4698, { 0x8c, 0x14, 0xf5, 0x85, 0x17, 0xa6, 0x25, 0xaa } }
+ 
+ struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
+ 
+@@ -67,7 +67,6 @@ typedef struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL {
+ } EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
+ 
+ EFI_STATUS console_key_read(UINT64 *key, BOOLEAN wait) {
+-        EFI_GUID EfiSimpleTextInputExProtocolGuid = EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID;
+         static EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *TextInputEx;
+         static BOOLEAN checked;
+         UINTN index;
+@@ -75,7 +74,7 @@ EFI_STATUS console_key_read(UINT64 *key, BOOLEAN wait) {
+         EFI_STATUS err;
+ 
+         if (!checked) {
+-                err = LibLocateProtocol(&EfiSimpleTextInputExProtocolGuid, (VOID **)&TextInputEx);
++                err = LibLocateProtocol(EFI_SIMPLE_TEXT_INPUT_EX_GUID, (VOID **)&TextInputEx);
+                 if (EFI_ERROR(err))
+                         TextInputEx = NULL;
+ 
+From 252bcf48f31c1ea7aa8dfbd51a353e2a1eddc94c Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Fri, 12 Mar 2021 22:09:44 +0000
+Subject: [PATCH] boot: Move console declarations to missing_efi.h
+
+These were added to eficonex.h in gnu-efi 3.0.13. Let's move them
+to missing_efi.h behind an appropriate guard to fix the build with
+recent versions of gnu-efi.
+---
+ src/boot/efi/console.c     | 57 +-------------------------------
+ src/boot/efi/console.h     |  6 +---
+ src/boot/efi/missing_efi.h | 67 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 69 insertions(+), 61 deletions(-)
+
+diff --git a/src/boot/efi/console.c b/src/boot/efi/console.c
+index e3de27fee5c..83619d2147f 100644
+--- a/src/boot/efi/console.c
++++ b/src/boot/efi/console.c
+@@ -9,62 +9,7 @@
+ #define SYSTEM_FONT_WIDTH 8
+ #define SYSTEM_FONT_HEIGHT 19
+ 
+-#define EFI_SIMPLE_TEXT_INPUT_EX_GUID \
+-        &(EFI_GUID) { 0xdd9e7534, 0x7762, 0x4698, { 0x8c, 0x14, 0xf5, 0x85, 0x17, 0xa6, 0x25, 0xaa } }
+-
+-struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
+-
+-typedef EFI_STATUS (EFIAPI *EFI_INPUT_RESET_EX)(
+-        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+-        BOOLEAN ExtendedVerification
+-);
+-
+-typedef UINT8 EFI_KEY_TOGGLE_STATE;
+-
+-typedef struct {
+-        UINT32 KeyShiftState;
+-        EFI_KEY_TOGGLE_STATE KeyToggleState;
+-} EFI_KEY_STATE;
+-
+-typedef struct {
+-        EFI_INPUT_KEY Key;
+-        EFI_KEY_STATE KeyState;
+-} EFI_KEY_DATA;
+-
+-typedef EFI_STATUS (EFIAPI *EFI_INPUT_READ_KEY_EX)(
+-        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+-        EFI_KEY_DATA *KeyData
+-);
+-
+-typedef EFI_STATUS (EFIAPI *EFI_SET_STATE)(
+-        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+-        EFI_KEY_TOGGLE_STATE *KeyToggleState
+-);
+-
+-typedef EFI_STATUS (EFIAPI *EFI_KEY_NOTIFY_FUNCTION)(
+-        EFI_KEY_DATA *KeyData
+-);
+-
+-typedef EFI_STATUS (EFIAPI *EFI_REGISTER_KEYSTROKE_NOTIFY)(
+-        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+-        EFI_KEY_DATA KeyData,
+-        EFI_KEY_NOTIFY_FUNCTION KeyNotificationFunction,
+-        VOID **NotifyHandle
+-);
+-
+-typedef EFI_STATUS (EFIAPI *EFI_UNREGISTER_KEYSTROKE_NOTIFY)(
+-        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+-        VOID *NotificationHandle
+-);
+-
+-typedef struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL {
+-        EFI_INPUT_RESET_EX Reset;
+-        EFI_INPUT_READ_KEY_EX ReadKeyStrokeEx;
+-        EFI_EVENT WaitForKeyEx;
+-        EFI_SET_STATE SetState;
+-        EFI_REGISTER_KEYSTROKE_NOTIFY RegisterKeyNotify;
+-        EFI_UNREGISTER_KEYSTROKE_NOTIFY UnregisterKeyNotify;
+-} EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
++#define EFI_SIMPLE_TEXT_INPUT_EX_GUID &(EFI_GUID) EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID
+ 
+ EFI_STATUS console_key_read(UINT64 *key, BOOLEAN wait) {
+         static EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *TextInputEx;
+diff --git a/src/boot/efi/console.h b/src/boot/efi/console.h
+index 41df3a406e0..2c69af552a6 100644
+--- a/src/boot/efi/console.h
++++ b/src/boot/efi/console.h
+@@ -1,11 +1,7 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ #pragma once
+ 
+-#define EFI_SHIFT_STATE_VALID           0x80000000
+-#define EFI_RIGHT_CONTROL_PRESSED       0x00000004
+-#define EFI_LEFT_CONTROL_PRESSED        0x00000008
+-#define EFI_RIGHT_ALT_PRESSED           0x00000010
+-#define EFI_LEFT_ALT_PRESSED            0x00000020
++#include "missing_efi.h"
+ 
+ #define EFI_CONTROL_PRESSED             (EFI_RIGHT_CONTROL_PRESSED|EFI_LEFT_CONTROL_PRESSED)
+ #define EFI_ALT_PRESSED                 (EFI_RIGHT_ALT_PRESSED|EFI_LEFT_ALT_PRESSED)
+diff --git a/src/boot/efi/missing_efi.h b/src/boot/efi/missing_efi.h
+index 1b838af2a4e..b983931348b 100644
+--- a/src/boot/efi/missing_efi.h
++++ b/src/boot/efi/missing_efi.h
+@@ -53,3 +53,70 @@ typedef struct _EFI_RNG_PROTOCOL {
+ } EFI_RNG_PROTOCOL;
+ 
+ #endif
++
++#ifndef EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID
++
++#define EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID \
++    { 0xdd9e7534, 0x7762, 0x4698, {0x8c, 0x14, 0xf5, 0x85, 0x17, 0xa6, 0x25, 0xaa} }
++
++#define EFI_SHIFT_STATE_VALID           0x80000000
++#define EFI_RIGHT_CONTROL_PRESSED       0x00000004
++#define EFI_LEFT_CONTROL_PRESSED        0x00000008
++#define EFI_RIGHT_ALT_PRESSED           0x00000010
++#define EFI_LEFT_ALT_PRESSED            0x00000020
++
++struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
++
++typedef EFI_STATUS (EFIAPI *EFI_INPUT_RESET_EX)(
++        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
++        BOOLEAN ExtendedVerification
++);
++
++typedef UINT8 EFI_KEY_TOGGLE_STATE;
++
++typedef struct {
++        UINT32 KeyShiftState;
++        EFI_KEY_TOGGLE_STATE KeyToggleState;
++} EFI_KEY_STATE;
++
++typedef struct {
++        EFI_INPUT_KEY Key;
++        EFI_KEY_STATE KeyState;
++} EFI_KEY_DATA;
++
++typedef EFI_STATUS (EFIAPI *EFI_INPUT_READ_KEY_EX)(
++        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
++        EFI_KEY_DATA *KeyData
++);
++
++typedef EFI_STATUS (EFIAPI *EFI_SET_STATE)(
++        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
++        EFI_KEY_TOGGLE_STATE *KeyToggleState
++);
++
++typedef EFI_STATUS (EFIAPI *EFI_KEY_NOTIFY_FUNCTION)(
++        EFI_KEY_DATA *KeyData
++);
++
++typedef EFI_STATUS (EFIAPI *EFI_REGISTER_KEYSTROKE_NOTIFY)(
++        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
++        EFI_KEY_DATA KeyData,
++        EFI_KEY_NOTIFY_FUNCTION KeyNotificationFunction,
++        VOID **NotifyHandle
++);
++
++typedef EFI_STATUS (EFIAPI *EFI_UNREGISTER_KEYSTROKE_NOTIFY)(
++        struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
++        VOID *NotificationHandle
++);
++
++typedef struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL {
++        EFI_INPUT_RESET_EX Reset;
++        EFI_INPUT_READ_KEY_EX ReadKeyStrokeEx;
++        EFI_EVENT WaitForKeyEx;
++        EFI_SET_STATE SetState;
++        EFI_REGISTER_KEYSTROKE_NOTIFY RegisterKeyNotify;
++        EFI_UNREGISTER_KEYSTROKE_NOTIFY UnregisterKeyNotify;
++} EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
++
++#endif

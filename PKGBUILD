@@ -38,6 +38,7 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         "git+https://github.com/systemd/systemd#tag=v${pkgver%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
+        '0002-PR-18987-boot-Move-console-declarations-to-missing_efi.h.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -58,6 +59,7 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
 sha512sums=('SKIP'
             'SKIP'
             'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
+            '235e7f48e7e76cfa87f5e31022df17a18600055ede0aa173e8274042ebac463e27a4693aba7aa0b48e774e01af34ad497cdbcfaed17e71c702e3ff41832ecabd'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             '8e76f8334b95ce7fee9190f4a1016b16109f3a75b68635fc227b2b4791cf8179ef09b532b66b4ed885ddf98ed76befed3106f3c3088f1819ed8cdf4c13e0805a'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
@@ -100,6 +102,10 @@ prepare() {
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+
+  # Fix build with gnu-efi 3.0.13
+  # https://github.com/systemd/systemd/pull/18987
+  patch -Np1 -i ../0002-PR-18987-boot-Move-console-declarations-to-missing_efi.h.patch
 }
 
 build() {
