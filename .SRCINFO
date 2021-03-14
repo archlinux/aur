@@ -1,0 +1,13 @@
+pkgbase = unison-gtk-2.48.4
+	pkgdesc = Makes the specific version ${_pkgver} of ${_pkgname} available as default ${_pkgname}.
+	pkgver = 2.48.4
+	pkgrel = 1
+	url = http://www.cis.upenn.edu/~bcpierce/unison/
+	arch = any
+	license = GPL2
+	depends = unison-gtk-2.48.4-compat
+	provides = unison-gtk=2.48.4
+	conflicts = unison-gtk
+
+pkgname = unison-gtk-2.48.4
+
