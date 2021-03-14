@@ -1,4 +1,4 @@
-From 99d74f0eccadbbb0a98da89e2b0014f5d552a9e2 Mon Sep 17 00:00:00 2001
+From 2d6c02c65408e61ef2756031270d7d3e56bc4064 Mon Sep 17 00:00:00 2001
 From: 0x9fff00 <0x9fff00+git@protonmail.ch>
 Date: Sat, 9 Nov 2019 14:11:44 +0100
 Subject: [PATCH] Don't install LICENSE file
@@ -8,17 +8,17 @@ Subject: [PATCH] Don't install LICENSE file
  1 file changed, 1 deletion(-)
 
 diff --git a/setup.py b/setup.py
-index dc70bd8..cd76433 100644
+index ab0b9b6..06e37e8 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -11,7 +11,6 @@ setup(
      description='Adds APScheduler support to Flask',
      keywords=['apscheduler', 'scheduler', 'scheduling', 'cron'],
-     install_requires=['flask>=0.10.1', 'apscheduler>=3.2.0', 'python-dateutil>=2.4.2'],
+     install_requires=['flask>=0.10.1', 'apscheduler>=3.2.0,<4.0.0', 'python-dateutil>=2.4.2'],
 -    data_files=[('', ['LICENSE'])],
      classifiers=[
          'Development Status :: 5 - Production/Stable',
          'Intended Audience :: Developers',
 -- 
-2.24.0
+2.30.2
 

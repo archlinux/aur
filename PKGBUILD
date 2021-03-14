@@ -5,21 +5,21 @@
 _pipname=Flask-APScheduler
 _reponame=${_pipname,,}
 pkgname=python-$_reponame
-pkgver=1.11.0
-pkgrel=4
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='Adds APScheduler support to Flask'
 arch=('any')
 url="https://github.com/viniciuschiele/$_reponame"
 license=('Apache')
 depends=('python' 'python-apscheduler' 'python-dateutil' 'python-flask')
 makedepends=('python-setuptools')
-source=("$url/releases/download/$pkgver/$_pipname-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         '0001-Don-t-install-LICENSE-file.patch')
-sha256sums=('7911d66e449f412d92a1a6c524217f44f4c40a5c92148c60d5189c6c402f87d0'
-            '353a85fdcc9d8eee32fb7990155974eb30c8c79fe851a2fa6de700aaf59d8fb7')
+sha256sums=('c65dd3287fa8a8985071c6dac1369495f5ad53065c06cc35638ed85b46200d02'
+            'cc851fa535e506092c4901d2042e5f9b0ac2e6933808d6176825fc172e3498ba')
 
 prepare() {
-  cd "$_pipname-$pkgver"
+  cd "$_reponame-$pkgver"
 
   for p in "$srcdir"/*.patch; do
     patch -Np1 -i "$p"
@@ -27,13 +27,13 @@ prepare() {
 }
 
 build() {
-  cd "$_pipname-$pkgver"
+  cd "$_reponame-$pkgver"
 
   python setup.py build
 }
 
 package() {
-  cd "$_pipname-$pkgver"
+  cd "$_reponame-$pkgver"
 
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
