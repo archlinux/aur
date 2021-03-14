@@ -6,7 +6,6 @@ pkgbase = xfce4-docklike-plugin
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = xfce4-dev-tools
 	makedepends = intltool
 	depends = xfce4-panel>=4.4
@@ -15,6 +14,7 @@ pkgbase = xfce4-docklike-plugin
 	depends = gtk3
 	depends = cairo
 	depends = glib2
+	conflicts = xfce4-docklike-plugin-git
 	source = https://github.com/davekeogh/xfce4-docklike-plugin/archive/v0.2.0.zip
 	sha512sums = SKIP
 
