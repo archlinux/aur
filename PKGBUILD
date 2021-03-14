@@ -12,7 +12,10 @@ depends=(
 python-pyusb
 python-numpy
 )
-makedepends=(python-setuptools)
+makedepends=(
+python-setuptools
+libusb-compat
+)
 checkdepends=(
 python-pytest
 python-pytest-mock

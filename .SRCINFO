@@ -9,6 +9,7 @@ pkgbase = python-seabreeze
 	checkdepends = python-pytest-mock
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
+	makedepends = libusb-compat
 	depends = python-pyusb
 	depends = python-numpy
 	source = python-seabreeze-1.3.0.tar.gz::https://github.com/ap--/python-seabreeze/archive/v1.3.0.tar.gz
