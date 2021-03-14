@@ -1,7 +1,7 @@
 pkgbase = winesync-dkms
 	pkgdesc = Wine synchronization primitive driver - out-of-tree module
 	pkgver = 5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync
 	arch = x86_64
 	license = GPL2

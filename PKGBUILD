@@ -3,7 +3,7 @@
 _pkgbase=winesync
 pkgname=winesync-dkms
 pkgver=5.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Wine synchronization primitive driver - out-of-tree module"
 arch=('x86_64')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
@@ -37,4 +37,5 @@ package() {
     install -Dm644 "$srcdir/winesync.h" "$pkgdir/usr/src/$_pkgbase-$pkgver/include/uapi/linux/winesync.h"
     install -Dm644 "$srcdir/winesync.c" "$pkgdir/usr/src/$_pkgbase-$pkgver/src/drivers/misc/winesync.c"
     install -Dm644 "$srcdir/dkms.conf" "$pkgdir/usr/src/$_pkgbase-$pkgver/dkms.conf"
+    install -Dm644 "$srcdir/winesync.h" "$pkgdir/usr/include/linux/winesync.h"
 }
