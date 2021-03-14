@@ -1,0 +1,16 @@
+pkgbase = groffhl-git
+	pkgdesc = groff syntax highlighting parser
+	pkgver = 1.0.r1.fbfa09e
+	pkgrel = 1
+	url = https://github.com/randoragon/groffhl
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = MIT
+	makedepends = git
+	provides = groffhl
+	source = git+https://github.com/randoragon/groffhl
+	md5sums = SKIP
+
+pkgname = groffhl-git
+
