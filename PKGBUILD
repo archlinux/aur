@@ -2,7 +2,7 @@
 _projectname='spot'
 pkgname="$_projectname-client-git"
 pkgver='0.1.10.r0.g1d361b1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Gtk/Rust native Spotify client - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xou816/$_projectname"
@@ -12,11 +12,20 @@ makedepends=('cargo' 'git' 'meson>=0.50.0')
 optdepends=('org.freedesktop.secrets')
 provides=("$_projectname-client")
 conflicts=("$_projectname-client")
-source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+source=(
+	"$pkgname::git+$url"
+	'meson-test-release.diff'
+)
+sha256sums=('SKIP'
+            '4366433646f05f74cb9cdc23079ad37655e06589cd28ecd3cd156223ff213a95')
 
 _sourcedirectory="$pkgname"
 _builddirectory='build'
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+	patch --forward -p1 < '../meson-test-release.diff'
+}
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -25,7 +34,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/"
-	arch-meson "$_sourcedirectory" "$_builddirectory" -Doffline=false -Dbuildtype=release
+	meson setup --prefix '/usr' --libexecdir 'lib' --sbindir 'bin' --buildtype 'release' --wrap-mode 'nodownload' \
+		-Db_lto='true' -Db_pie='true' -Doffline='false' -Dfeatures='warn-cache' "$_sourcedirectory" "$_builddirectory"
 	meson compile -C "$_builddirectory"
 }
 
