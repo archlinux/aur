@@ -5,11 +5,11 @@
 # Contributor: SanskritFritz
 
 pkgname=tupitube
-pkgver=0.2.16
+pkgver=0.2.17
 pkgrel=1
 pkgdesc="Design and authoring tool for digital artists interested in 2D animation"
 arch=(x86_64)
-url="https://www.maefloresta.com/"
+url="https://tupitube.com/"
 license=(GPL2)
 depends=(ffmpeg qt5-multimedia qt5-svg quazip)
 makedepends=(ruby)
@@ -17,7 +17,7 @@ replaces=(tupitube.desk)
 source=(https://downloads.sourceforge.net/tupi2d/$pkgname.desk-$pkgver.tar.gz
         tupitube.appdata.xml
         qt-5.15.patch)
-sha256sums=('daedd818c7782ab88116d9a0f1401c6bcf874453d93381acefdd4a746625bc2e'
+sha256sums=('e266490757a38a02dfa37405e4704993238f8af3060163e17830a85b22d9ba15'
             '99fbafe0b359130d53278db3cada052f8245c325dcb82ce33997322dd750707a'
             'afb563345a62034f523dcc558aee83efb466c863feb39e6a8d5744c974b979ce')
 
