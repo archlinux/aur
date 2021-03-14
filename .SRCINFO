@@ -1,6 +1,6 @@
 pkgbase = libretro-vba-next-git
 	pkgdesc = libretro implementation of VBA Next. (Game Boy Advance)
-	pkgver = 741.e40f1d5
+	pkgver = 811.90d7d9b
 	pkgrel = 1
 	url = https://github.com/libretro/vba-next
 	arch = i686
@@ -11,9 +11,11 @@ pkgbase = libretro-vba-next-git
 	groups = libretro
 	license = GPL
 	makedepends = git
-	depends = gcc-libs
+	depends = zlib
+	depends = glibc
+	depends = libretro-core-info
 	source = git+https://github.com/libretro/vba-next.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libretro-vba-next-git
 

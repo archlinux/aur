@@ -1,22 +1,25 @@
-# Maintainer : Mike Polvere <mic.tjs@gmail.com>
+# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
+# Contributor: Mike Polvere <mic.tjs@gmail.com>
 # Contributor: Johnathan Jenkins <twodopeshaggy@gmail.com>
 # Contributor: prettyvanilla <prettyvanilla@posteo.at>
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-vba-next-git
-pkgver=741.e40f1d5
+pkgver=811.90d7d9b
 pkgrel=1
 pkgdesc="libretro implementation of VBA Next. (Game Boy Advance)"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+url="https://github.com/libretro/vba-next"
+license=('GPL')
 groups=('libretro')
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h') 
+depends=('zlib' 'glibc' 'libretro-core-info')
+makedepends=('git')
+
 _libname=vba_next_libretro
 _gitname=vba-next
-url="https://github.com/libretro/${_gitname}"
-license=('GPL')
-depends=('gcc-libs')
-makedepends=('git')
+
 source=("git+https://github.com/libretro/${_gitname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -25,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make -f Makefile.libretro
+  make
 }
 
 package() {
