@@ -1,25 +1,22 @@
 pkgbase = instawow
 	pkgdesc = Package manager for World of Warcraft
-	pkgver = 1.20.0
+	pkgver = 1.21.0.post1
 	pkgrel = 1
 	url = https://github.com/layday/instawow
 	arch = x86_64
 	license = GPL3
-	checkdepends = python-pytest>=6.0.1
-	checkdepends = python-pytest<7.0.0
-	checkdepends = python-pytest-asyncio>=0.14.0
-	checkdepends = python-pytest-asyncio<1.0.0
-	checkdepends = python-aresponses>=2.0.0
-	checkdepends = python-aresponses<3.0.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-aresponses
 	makedepends = tar
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-toml
 	depends = python>=3.7.0
-	depends = python-aiohttp>=3.6.0
+	depends = python-aiohttp>=3.7.3
 	depends = python-aiohttp<4.0.0
 	depends = python-alembic>=1.4.3
-	depends = python-alembic<1.5.0
+	depends = python-alembic<2.0.0
 	depends = python-click>=7.1.0
 	depends = python-click<8.0.0
 	depends = python-jellyfish>=0.8.2
@@ -29,14 +26,14 @@ pkgbase = instawow
 	depends = python-loguru<1.0.0
 	depends = python-pluggy>=0.13.0
 	depends = python-pluggy<1.0.0
-	depends = python-prompt_toolkit>=3.0.3
+	depends = python-prompt_toolkit>=3.0.15
 	depends = python-prompt_toolkit<4.0.0
-	depends = python-pydantic>=1.7.0
-	depends = python-pydantic<1.8.0
+	depends = python-pydantic>=1.8.0
+	depends = python-pydantic<1.9.0
 	depends = python-questionary>=1.8.0
 	depends = python-questionary<2.0.0
 	depends = python-sqlalchemy>=1.3.19
-	depends = python-sqlalchemy<1.4.0
+	depends = python-sqlalchemy<2.0.0
 	depends = python-typing_extensions>=3.7.4.3
 	depends = python-typing_extensions<4.0.0
 	depends = python-yarl>=1.4.0
@@ -45,8 +42,8 @@ pkgbase = instawow
 	conflicts = python-yarl-gns3
 	conflicts = python-aiohttp-gns3
 	conflicts = python-prompt_toolkit-gns3
-	source = https://files.pythonhosted.org/packages/source/i/instawow/instawow-1.20.0.tar.gz
-	sha256sums = 183111f4da27e10b45951a48a612db8582cf90a9306af20b3123560917108d0b
+	source = https://files.pythonhosted.org/packages/source/i/instawow/instawow-1.21.0.post1.tar.gz
+	sha256sums = c9f06009debf8d7c0943e87adf261c95dfda8c94f4c21b21e16468dd7791fe0b
 
 pkgname = instawow
 
