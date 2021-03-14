@@ -4,7 +4,7 @@
 pkgname=imagescan
 pkgver=3.65.0
 _utsushiver=${pkgver/3./0.}
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=(x86_64)
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -16,7 +16,6 @@ source=(https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan
         boost-1.74.patch)
 sha256sums=('e83704398c51a3166fd62c25b89e95cf6262e52f3dc6e627db3e7556e2220d64'
             'e7da445c970a4a99b476b3bb994d0d18f327e0cd166cd87ba24fcd16abee7d49')
-backup=('etc/utsushi/utsushi.conf')
 
 prepare() {
   cd utsushi-$_utsushiver
@@ -46,5 +45,5 @@ build() {
 package() {
   cd utsushi-$_utsushiver
   make DESTDIR="$pkgdir" install
-  install -Dm644 lib/devices.conf "$pkgdir"/etc/utsushi/utsushi.conf
+  install -Dm644 lib/devices.conf "$pkgdir"/etc/utsushi/utsushi.conf.sample
 }
