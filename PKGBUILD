@@ -32,5 +32,5 @@ package() {
   rmdir "$pkgdir"/usr/share/icons/hicolor/scalable/{apps,mimetypes}
   rmdir "$pkgdir"/usr/share/icons/hicolor/scalable/
   rm "$pkgdir"/usr/share/applications/mimeinfo.cache
-  rm "$pkgdir"/usr/share/mime/{XMLnamespaces,aliases,globs,magic,subclasses}
+  rm -rf "$pkgdir"/usr/share/mime
 }
