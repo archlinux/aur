@@ -13,8 +13,8 @@ source=('90-dracut-uefi-install.hook'
         'dracut-uefi-remove')
 sha256sums=('237cf72287f6802cd1782fb1df18a79061f48ba821a8d841d1e94cba95f5edca'
             '0fb3d028214ff7579386ca4b172a88fb7edb88b81286cfb7f82bd511d2f91832'
-            '1cf9022f12e59aa26cc668f3eb9822ff76a05921e3e8cc6d0642301d388b60aa'
-            '90f7983b4eca8c44f5b651ee9622b454db79a1c8dff1f188e11c25065f94ebe4')
+            'c73047c419309e6365795b1596d79d57e7b6acd9dccb61f59bbf40f8766faa29'
+            '22a9f727a5135548c71793382d6067ff61a566590265ef8160d51fd675d00e6b')
 
 package() {
   install -Dm644 "${srcdir}/90-dracut-uefi-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-uefi-install.hook"
