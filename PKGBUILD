@@ -1,9 +1,11 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 
+_provide_header=true
+
 _pkgbase=winesync
 pkgname=winesync-dkms
 pkgver=5.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Wine synchronization primitive driver - out-of-tree module"
 arch=('x86_64')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
@@ -26,6 +28,15 @@ sha256sums=('e28e61d370f48b1908c8798df601849cafa1cb162a377fd8d0ff43c5f0ce430a'
             '05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453'
             '650fc356d45409fdf22811d9ffde63cc24a169d438e002a2a749a42d5369f916')
 
+if [ "$_provide_header" = true ]; then
+    provides+=("$_pkgbase-header=$pkgver")
+    conflicts+=("$_pkgbase-header")
+fi
+
+prepare() {
+    sed -i -e 's/ktime_get_coarse_ts64/ktime_get_ts64/g' -e 's/if (timeout < 0)/if (timeout <= 0)/g' "$srcdir/winesync.c"
+}
+
 build() {
     kernver="$(echo "$pkgver" | sed 's/\./\\\\\\\\\\./g')"
     sed -i -e "s/@PACKAGE_VERSION@/$pkgver/g" -e "s/@KERNVER@/$kernver/g" "$srcdir/dkms.conf"
@@ -37,5 +48,7 @@ package() {
     install -Dm644 "$srcdir/winesync.h" "$pkgdir/usr/src/$_pkgbase-$pkgver/include/uapi/linux/winesync.h"
     install -Dm644 "$srcdir/winesync.c" "$pkgdir/usr/src/$_pkgbase-$pkgver/src/drivers/misc/winesync.c"
     install -Dm644 "$srcdir/dkms.conf" "$pkgdir/usr/src/$_pkgbase-$pkgver/dkms.conf"
-    install -Dm644 "$srcdir/winesync.h" "$pkgdir/usr/include/linux/winesync.h"
+    if [ "$_provide_header" = true ]; then
+        install -Dm644 "$srcdir/winesync.h" "$pkgdir/usr/include/linux/winesync.h"
+    fi
 }
