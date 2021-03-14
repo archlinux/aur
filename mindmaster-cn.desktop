@@ -3,7 +3,7 @@ Name=MindMaster
 Name[en_US]=mindmaster
 Categories=Office;MindMap;Brainstorming;Mind;Map;
 MimeType=application/x-emmx
-Exec=env XDG_CURRENT_DESKTOP=GNOME mindmaster %U
+Exec=mindmaster --no-sandbox
 Terminal=false
 Type=Application
 Icon=/opt/MindMaster-8/mindmaster.png

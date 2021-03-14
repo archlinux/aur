@@ -1,7 +1,7 @@
 pkgbase = mindmaster_cn
 	pkgdesc = 多功能，高颜值，易使用的专业思维导图软件
 	pkgver = 8.5.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.edrawsoft.cn/mindmaster/
 	arch = x86_64
 	license = Commercial
