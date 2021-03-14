@@ -1,10 +1,11 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: hayao  <hayao at fascode dot net>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname=archlinux-appstream-data
 pkgname=archlinux-appstream-data-pamac
 pkgver=20210218
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux application database for AppStream-based software centers (Fixed for pamac)"
 arch=("any")
 url="https://www.archlinux.org"

@@ -1,7 +1,7 @@
 pkgbase = archlinux-appstream-data-pamac
 	pkgdesc = Arch Linux application database for AppStream-based software centers (Fixed for pamac)
 	pkgver = 20210218
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.archlinux.org
 	arch = any
 	license = GPL
