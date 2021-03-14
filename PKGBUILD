@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa
-pkgver=20.3.1
+pkgver=21.0.0
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
               '71C4B75620BC75708B4BDB254C95FAAB3EB073EC'  # Dylan Baker <dylan@pnwbakers.com>
               '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
-sha256sums=('af751b49bb2ab0264d58c31e73d869e80333de02b2d1becc93f1b28c67aa780f'
+sha256sums=('e6204e98e6a8d77cf9dc5d34f99dd8e3ef7144f3601c808ca0dd26ba522e0d84'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
