@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-qt5
 	pkgdesc = Qt 5 for Android
 	pkgver = 5.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	install = android-armv7a-eabi-qt5.install
 	arch = any
