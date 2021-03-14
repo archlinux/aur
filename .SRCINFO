@@ -4,6 +4,7 @@ pkgbase = bullet-multithreaded
 	pkgrel = 1
 	url = http://www.bulletphysics.com/Bullet/
 	arch = x86_64
+	arch = aarch64
 	license = custom:zlib
 	makedepends = cmake
 	makedepends = doxygen
