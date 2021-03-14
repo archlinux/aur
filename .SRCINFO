@@ -1,5 +1,5 @@
 pkgbase = path-of-building-community-git
-	pkgdesc = An offline build planner for Path of Exile using PoBFrontent, LocalIdentity's fork
+	pkgdesc = An offline build planner for Path of Exile using PoBFrontend, LocalIdentity's fork
 	pkgver = 1.4.170.27.r3794.54.514
 	pkgrel = 1
 	url = https://github.com/PathOfBuildingCommunity/PathOfBuilding

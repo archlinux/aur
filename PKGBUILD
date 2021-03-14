@@ -2,7 +2,7 @@
 
 pkgname='path-of-building-community-git'
 pkgrel=1
-pkgdesc="An offline build planner for Path of Exile using PoBFrontent, LocalIdentity's fork"
+pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIdentity's fork"
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
