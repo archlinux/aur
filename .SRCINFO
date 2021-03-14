@@ -1,4 +1,4 @@
-pkgbase = xmr-stak
+pkgbase = xmr-stak-nvidia
 	pkgdesc = Unified All-in-one Monero miner (no cuda)
 	pkgver = 2.10.8
 	pkgrel = 1
