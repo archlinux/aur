@@ -1,7 +1,7 @@
 pkgbase = spot-client-git
 	pkgdesc = Gtk/Rust native Spotify client - git version
 	pkgver = 0.1.10.r0.g1d361b1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xou816/spot
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = spot-client-git
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	checkdepends = appstream-glib
 	makedepends = cargo
 	makedepends = git
 	makedepends = meson>=0.50.0
