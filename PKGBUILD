@@ -1,9 +1,9 @@
-# Maintainer: Br Anthony VanBerkum <anthonyvbop AT gmail DOT com>
+# Maintainer: Anthony VanBerkum <anthonyvbop AT gmail DOT com>
 # Contributor: Laércio de Sousa <lbsousajr AT gmail DOT com>
 # Contributor: David Gippner davidgippner at googlemail dot com
 pkgbase=gregorio
 pkgname=$pkgbase
-pkgver=5.2.1
+pkgver=6.0.0
 pkgrel=1
 _pkgver_underscores=$(echo $pkgver | sed -e 's/\./_/g')
 pkgdesc="Command-line tool to typeset Gregorian chant"
@@ -15,8 +15,8 @@ conflicts=("gregorio-svn" "gregorio-git" "gregoriotex")
 provides=("gregorio")
 source=("https://github.com/gregorio-project/gregorio/releases/download/v$pkgver/gregorio-$pkgver.tar.bz2"
         "https://github.com/gregorio-project/gregorio/releases/download/v$pkgver/supp_fonts-$_pkgver_underscores.zip")
-sha256sums=("773d312933ba96b272834d2bfa7f408c266b0b82038312c4a94eef702946b3a4"
-            "048b46c81f43e514ec7f3f69940666c619833ab86218baa8458008e5f2763307")
+sha256sums=("e2a3da9cb760cfd3bd152440bbd40c1776be430de8f421dc21cee70ae48a63b2"
+            "22d3c890c32f2e4e4be35b8245f5a2772dd05a6954f08c3c9b02a8002142e07f")
 
 
 prepare() {
