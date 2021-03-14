@@ -5,7 +5,7 @@
 pkgname=mindmaster_cn
 _pkgname=MindMaster-8
 pkgver=8.5.2
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 options=(!strip)
 conflicts=("mindmaster" "mindmaster-cn")
