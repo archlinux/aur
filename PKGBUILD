@@ -1,8 +1,8 @@
 # Maintainer: NeoTheFox <aur at repraptor.33mail.com>
 
 pkgname=edmarketconnector
-pkgver=4.1.6
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools'
 arch=('x86_64')
 url='https://github.com/EDCD/EDMarketConnector'
@@ -13,7 +13,7 @@ depends=('python-certifi' 'python-requests' 'python-watchdog' 'python-semantic-v
 source=("https://github.com/EDCD/EDMarketConnector/archive/Release/${pkgver}.tar.gz" 
         "edmarketconnector.sh"
 	"edmarketconnector.desktop")
-sha256sums=('fb0a2dec0180da0db7a1e9450d5456cce4f3f3a70ccd5c61ae5754dcb24472e0'
+sha256sums=('c9a2cb803b17469762346e67d49891c41a2d9cacbee9d4297e3685e74ca6174a'
             '7be0528d56edfcb444c4a7ba7a18e85296571e7558906c90fe6520c03206242c'
 	    'fa797932630e7b5e7cc42b0f0f4b20126b5af67661c636885b5486008cb1b13a')
 
