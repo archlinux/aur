@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = plotjuggler
+	pkgver = 3.1.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/facontidavide/PlotJuggler
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = LGPL3
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-websockets
+	source = https://github.com/facontidavide/PlotJuggler/archive/3.1.0.tar.gz
+	md5sums = SKIP
 
-pkgname = yarxi
+pkgname = plotjuggler
 
