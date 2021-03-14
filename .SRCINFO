@@ -1,7 +1,7 @@
 pkgbase = qserial
 	pkgdesc = The missing cross platform serial port utility with batteries included.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tuna/QSerial
 	arch = any
 	license = MIT

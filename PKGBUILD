@@ -2,7 +2,7 @@
 _pkgname=QSerial
 pkgname=qserial
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The missing cross platform serial port utility with batteries included."
 arch=('any')
 url="https://github.com/tuna/QSerial"
@@ -29,5 +29,6 @@ build() {
 
 package() {
     install -Dm755 ${srcdir}/${_pkgname}-${pkgver}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+    install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
