@@ -1,17 +1,18 @@
 pkgbase = ruby-rails-dom-testing
 	pkgdesc = Dom and Selector assertions for Rails applications
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/rails/rails-dom-testing
 	arch = any
 	license = MIT
+	makedepends = ruby-bundler
+	makedepends = ruby-rake
 	depends = ruby
-	depends = ruby-nokogiri
 	depends = ruby-activesupport
-	noextract = rails-dom-testing-2.0.1.gem
+	depends = ruby-nokogiri
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rails-dom-testing-2.0.1.gem
-	sha1sums = 26cd420f73c38658c5ee4b7758acbe511d73bade
+	source = ruby-rails-dom-testing-2.0.3.tar.gz::https://github.com/rails/rails-dom-testing/archive/v2.0.3.tar.gz
+	sha512sums = 0103cb494a28faa24c050c5659d7ac6858941f67fa977d1565193f30a2035b030450db4f091739cac86ff765677ea801bc7cd0966eea98866f5f582d8250d9b9
 
 pkgname = ruby-rails-dom-testing
 
