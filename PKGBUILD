@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=3.10.1
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -15,7 +15,7 @@ source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
 )
 sha256sums=(
-  "e8c36fe6563b14aac7c9baef336fc75256d1fa060cf531692ea611bc2314bc1e"
+  "1b74187c33f81b7d27537c0cc25570b3b6d63c334e13c6897008460cba36f0f2"
 )
 
 
