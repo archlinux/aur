@@ -1,8 +1,8 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=qstopmotion
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.2
+pkgrel=1
 pkgdesc="Application for creating stop-motion animation movies"
 url="http://qstopmotion.org/"
 license=(GPL2)
@@ -11,7 +11,7 @@ depends=(ffmpeg libgphoto2 qt5-multimedia qwt v4l-utils)
 makedepends=(cmake)
 source=("https://downloads.sourceforge.net/$pkgname/Version_${pkgver//./_}/$pkgname-$pkgver-Source.tar.gz"
         "qstopmotion.appdata.xml")
-sha256sums=('1df93e4a42898f4fd6c5ab35bbc82e38e367e7dd3885b44d025ac0d0cb1828d0'
+sha256sums=('8f2054c9a7644ae40a5ceaebe576758f2ea87f5430f12d873f1b8eacf73b4671'
             'fd0c4a63f3cd407143257141ab50cacd500821ded2ba1141a6b54def3490b3f1')
 
 prepare() {
