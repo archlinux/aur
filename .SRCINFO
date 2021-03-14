@@ -1,0 +1,16 @@
+pkgbase = s-bin
+	pkgdesc = Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow.
+	pkgver = 0.5.15
+	pkgrel = 1
+	url = http://github.com/zquestz/s
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = s
+	options = !strip
+	options = !emptydirs
+	source = s-bin.zip::https://github.com/zquestz/s/releases/download/v0.5.15/s-linux_amd64.zip
+	sha256sums = 38c29001936f1758159cc935b3ab97d1dee75c35ceacd8bd5ada3837b306192f
+
+pkgname = s-bin
+
