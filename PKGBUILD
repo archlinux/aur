@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
 pkgname=wutag
-pkgver=0.1.2
-pkgrel=1
+pkgver=0.2.0
+pkgrel=
 epoch=
 pkgdesc="CLI tool for tagging files"
 arch=('x86_64')
