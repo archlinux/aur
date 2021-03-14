@@ -6,7 +6,7 @@ pkgdesc="An offline build planner for Path of Exile using PoBFrontent, LocalIden
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=1.4.170.27.r3697.53.513
+pkgver=1.4.170.27.r3794.54.514
 
 depends=('zlib' 'qt5-base' 'lua51' 'lua51-bitop' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
@@ -79,7 +79,7 @@ build() {
 			-lz
 		)
 	# build lcurl.so
-	(cd "${srcdir}/Lua-cURLv3" && make LUA_IMPL=luajit)
+	(cd "${srcdir}/Lua-cURLv3" && make LUA_IMPL=lua51)
 	# build pobfrontend
 	(cd "${srcdir}/pobfrontend" && meson -Dbuildtype=release build \
 		&& cd build && ninja && strip ./pobfrontend)
