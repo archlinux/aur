@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-grvk
+	pkgdesc = Mantle to Vulkan translation layer (mingw-w64)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/libcg/grvk
+	arch = any
+	license = zlib
+	makedepends = mingw-w64-meson
+	depends = mingw-w64-vulkan-icd-loader
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/libcg/grvk/archive/0.3.0.tar.gz
+	sha256sums = 05072fdd49beed46a099c831d98f20f9d5f86416b288d5ee348b4004c5f020ae
+
+pkgname = mingw-w64-grvk
+
