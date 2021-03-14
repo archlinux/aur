@@ -1,10 +1,15 @@
 pkgbase = ruby-actionview
 	pkgdesc = Simple, battle-tested conventions and helpers for building web pages.
 	pkgver = 6.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rubyonrails.org
 	arch = any
 	license = MIT
+	checkdepends = ruby-activemodel
+	checkdepends = ruby-actionpack
+	checkdepends = ruby-railties
+	checkdepends = ruby-sqlite3
+	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-activesupport
 	depends = ruby-builder
