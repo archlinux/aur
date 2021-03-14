@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Remove
+Target = usr/lib/modules/*/pkgbase
+
+[Action]
+Description = Removing linux images...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/dracut-uefi-remove
+NeedsTargets

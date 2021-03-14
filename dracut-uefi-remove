@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+ESP_PATH=$(bootctl --print-esp-path)
+MACHINE_ID=$(cat /etc/machine-id)
+source <(grep '^BUILD_ID=' /etc/os-release)
+
+while read -r line; do
+  if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+    read -r pkgbase < "/${line}"
+    path="$(grep -lE "^${pkgbase}\$" /usr/lib/modules/*/pkgbase)"
+	version=$(basename "${path%/pkgbase}")
+    IMAGE="${ESP_PATH}/EFI/Linux/linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
+    if [ -f "$IMAGE" ]; then
+      echo ":: Removing $IMAGE..."
+      rm -f "$IMAGE"
+    fi
+  fi
+done
