@@ -1,17 +1,16 @@
 pkgbase = clevo-indicator-git
-	pkgdesc = Command-line and system tray fan control utility for Clevo laptops
-	pkgver = r19.c59790a
-	pkgrel = 6
-	url = https://github.com/taner1/clevo-indicator
-	changelog = README.md
+	pkgdesc = Fan control indicator for Clevo laptops
+	pkgver = r42.b88e763
+	pkgrel = 1
+	url = https://github.com/dbeniamine/clevo-indicator
 	arch = x86_64
-	license = custom:Unlicense
+	license = Unlicense
 	makedepends = git
-	makedepends = gcc
-	makedepends = libappindicator-gtk3
+	depends = libappindicator-gtk3
 	provides = clevo-indicator
-	source = clevo-indicator-git::git+https://github.com/taner1/clevo-indicator.git
-	md5sums = SKIP
+	conflicts = clevo-indicator
+	source = git+https://github.com/dbeniamine/clevo-indicator.git
+	sha256sums = SKIP
 
 pkgname = clevo-indicator-git
 
