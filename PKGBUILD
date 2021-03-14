@@ -8,8 +8,8 @@ _USE_GNU_EFI="1"
 #######
 
 pkgname="refind-efi-bin"
-pkgver="0.12.0"
-pkgrel="2"
+pkgver="0.13.2"
+pkgrel="1"
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - Precompiled binary"
 url="http://www.rodsbooks.com/refind/index.html"
 arch=('x86_64' 'i686')
@@ -28,7 +28,7 @@ install="${pkgname}.install"
 
 source=('refind_linux.conf')
 md5sums=('12ce3e22a216e7b25c253478a34713b4'
-         'ab97fcb2c754163222191895ba2ac4bd')
+         '8482e9915b6b6ab963a41fcc63ad3b65')
 
 if [[ "${_USE_GNU_EFI}" == "1" ]]; then
 	
