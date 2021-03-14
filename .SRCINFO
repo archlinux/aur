@@ -1,0 +1,18 @@
+pkgbase = imgbrd-grabber-bin
+	pkgdesc = Unofficial binary installer for ImgBrd Grabber
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Bionus/imgbrd-grabber
+	arch = x86_64
+	license = GPL
+	depends = wget
+	depends = imagemagick
+	conflicts = imgbrd-grabber-git
+	options = !strip
+	source = imgbrd-grabber.desktop
+	source = imgbrd-grabber.png
+	sha256sums = c43bf8672d239ebcc98f175e01f4ec6015b279a90e713522acd76bedb0e353ff
+	sha256sums = f0300d4576141332016d2e89ca8bc1cd48244197b48c0302b2d0018c87c0b6fd
+
+pkgname = imgbrd-grabber-bin
+

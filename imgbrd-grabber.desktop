@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=imgbrd-grabber
+Comment=ImgBrd Grabber GUI from GitHub
+Exec=/opt/imgbrd-grabber/imgbrd-grabber.appimage
+Icon=imgbrd-grabber
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Internet;Media;
