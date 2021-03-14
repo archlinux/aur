@@ -1,0 +1,11 @@
+pkgbase = ghost-deps-meta
+	pkgdesc = Provide no longer existing packages for find and fix AUR pkgbuilds
+	pkgver = 20210314
+	pkgrel = 1
+	arch = any
+	license = GPL
+	provides = tui
+	provides = dbus-core
+
+pkgname = ghost-deps-meta
+
