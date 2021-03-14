@@ -20,6 +20,8 @@ sha512sums=('24a46ce701c5c2e86538f8cd38dbbdfc09fbf1b071d468080bd35db30c9bb9f2ca6
 
 prepare() {
     cd bullet3-${pkgver}
+    # fix soname of pybullet
+    sed -i '/SET_TARGET_PROPERTIES(pybullet PROPERTIES PREFIX/d' examples/pybullet/CMakeLists.txt
     # fix version
     patch --forward --strip=1 --input="${srcdir}/0001-bump-up-version-to-3.09.patch"
 }
@@ -59,7 +61,6 @@ package_bullet-multithreaded() {
 
     DESTDIR="${pkgdir}" ninja -C _build install
     
-    install -Dm755 _build/examples/pybullet/pybullet.so.${pkgver} "${pkgdir}"/usr/lib/libpybullet.so.${pkgver}
     install -Dm755 _build/examples/ExampleBrowser/libBulletExampleBrowserLib.so.${pkgver} "${pkgdir}"/usr/lib/libBulletExampleBrowserLib.so.${pkgver}
     install -Dm755 _build/examples/OpenGLWindow/libOpenGLWindow.so "${pkgdir}"/usr/lib/libOpenGLWindow.so
     install -Dm755 _build/examples/ThirdPartyLibs/Gwen/libgwen.so "${pkgdir}"/usr/lib/libgwen.so
@@ -77,9 +78,9 @@ package_python-pybullet-multithreaded() {
     provides=('python-pybullet')
     conflicts=('python-pybullet')
 
+    install -Dm755 _build/examples/pybullet/libpybullet.so.${pkgver} "${pkgdir}"/usr/lib/libpybullet.so.${pkgver}
     cd bullet3-${pkgver}
     python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-
     install -Dm644 "${srcdir}"/bullet3-${pkgver}/LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
 
