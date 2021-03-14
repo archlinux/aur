@@ -2,7 +2,7 @@
 
 pkgname=devilutionx-git
 pkgver=1.1.0.r1241.gae22644d
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
@@ -35,7 +35,8 @@ build() {
 }
 package() {
     cd "${pkgname%-git}"
-    make install DESTDIR="${pkgdir}"
     install -Dm644 LICENSE \
 	    -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    cd build
+    make install DESTDIR="${pkgdir}"
 }
