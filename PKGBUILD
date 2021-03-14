@@ -1,4 +1,6 @@
 # Maintainer: Matthew Stern <msstern98 gmail com>
+# Maintainer: Ben Michalowicz <benjaminmichalowicz98 gmail com>
+
 pkgname=topologic-git
 pkgbase=topologic-git
 pkgver=1.0.3
