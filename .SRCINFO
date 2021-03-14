@@ -1,0 +1,22 @@
+pkgbase = unison-2.48.4-compat-bin
+	pkgdesc = File-synchronization tool. Specific version ${_pkgver}, compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!). Prebuilt binary from debian, repackaged.
+	pkgver = 2.48.4
+	pkgrel = 1
+	url = http://www.cis.upenn.edu/~bcpierce/unison/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	optdepends = unison-gtk=2.48.4: For gtk2 GUI support.
+	provides = unison-2.48.4=2.48.4
+	provides = unison-2.48=2.48.4
+	provides = unison-doc=2.48.4
+	conflicts = unison-2.48
+	source = http://ftp.de.debian.org/debian/pool/main/u/unison/unison_2.48.4-1+b1_amd64.deb
+	source = https://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4-manual.pdf
+	source = https://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4-manual.html
+	sha256sums = 3486bca59be0d6c72c83e5be0ef9b11c5f0e5c82e9a88db3ce6f675760b6a8fe
+	sha256sums = eaf9bf89967eb17c59b98f0a7ba6b6ff260b6c6de73277a633d954ceb42f5f93
+	sha256sums = 2b5674e2fd7751148784a716ce5a03f8cd0a321c8a3bd4343832ed9b83d2d404
+
+pkgname = unison-2.48.4-compat-bin
+
