@@ -1,0 +1,12 @@
+pkgbase = le-temps-des-escargots-git
+	pkgdesc = Small Game About 1871 Paris Commune
+	pkgver = r132.12df2db
+	pkgrel = 1
+	url = http://github.com/cosmo-ray/mggj-3
+	arch = any
+	depends = yirl-git
+	source = git://github.com/cosmo-ray/mggj-3
+	sha256sums = SKIP
+
+pkgname = le-temps-des-escargots-git
+
