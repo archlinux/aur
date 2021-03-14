@@ -20,8 +20,8 @@ _majorver=11
 _ver=11.0.10
 _hgver=11_0_10
 _updatever=9
-_jbver1=1319
-_jbver2=6
+_jbver1=1379
+_jbver2=1
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver2}
@@ -37,7 +37,7 @@ source=(https://github.com/JetBrains/JetBrainsRuntime/archive/${_hg_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('565f5ea0d2d9b1d5646c54a1a3d17bcde29fbdcd1cb1bf1e88d2f2f02adafe48'
+sha256sums=('a7423235d33a21451e0bb7ba1656b0c4e3d052cad19d52b4640c44d101a0bf23'
             'ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4'
             '915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6'
             '3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07'

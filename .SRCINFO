@@ -1,5 +1,5 @@
 pkgbase = java11-jetbrains-imfix
-	pkgver = 11.0.10.b1319.6
+	pkgver = 11.0.10.b1379.1
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
@@ -27,12 +27,12 @@ pkgbase = java11-jetbrains-imfix
 	makedepends = lcms2
 	makedepends = libnet
 	makedepends = bash
-	source = https://github.com/JetBrains/JetBrainsRuntime/archive/jb11_0_10-b6.tar.gz
+	source = https://github.com/JetBrains/JetBrainsRuntime/archive/jb11_0_10-b1.tar.gz
 	source = https://github.com/prehonor/myJetBrainsRuntime/raw/master/idea.patch
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 57757777da5e10fb58297201197b343108d1ff0b4b748ce716d4d529ffba6a1b
+	sha256sums = a7423235d33a21451e0bb7ba1656b0c4e3d052cad19d52b4640c44d101a0bf23
 	sha256sums = ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4
 	sha256sums = 915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6
 	sha256sums = 3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07
@@ -51,7 +51,7 @@ pkgname = jre11-jetbrains-headless-imfix
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-jetbrains=11
-	provides = jre11-jetbrains-headless=11.0.10.b1319.6-1
+	provides = jre11-jetbrains-headless=11.0.10.b1379.1-1
 	backup = etc/java11-jetbrains/logging.propertopenjdkies
 	backup = etc/java11-jetbrains/management/jmxremote.access
 	backup = etc/java11-jetbrains/management/jmxremote.password.template
@@ -70,24 +70,24 @@ pkgname = jre11-jetbrains-headless-imfix
 pkgname = jre11-jetbrains-imfix
 	pkgdesc = JetBrains Java 11 full runtime environment (With patch that allows the IME window follow the cursor)
 	install = install_jre-jetbrains.sh
-	depends = jre11-jetbrains-headless=11.0.10.b1319.6-1
+	depends = jre11-jetbrains-headless=11.0.10.b1379.1-1
 	depends = giflib
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=11
 	provides = java-runtime-jetbrains=11
-	provides = jre11-jetbrains=11.0.10.b1319.6-1
+	provides = jre11-jetbrains=11.0.10.b1379.1-1
 	conflicts = jre11-jetbrains
 
 pkgname = jdk11-jetbrains-imfix
 	pkgdesc = JetBrains Java 11 development kit (With patch that allows allow the IME window follow the cursor)
 	install = install_jdk-jetbrains.sh
-	depends = jre11-jetbrains=11.0.10.b1319.6-1
+	depends = jre11-jetbrains=11.0.10.b1379.1-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	provides = java-environment=11
 	provides = java-environment-jetbrains=11
-	provides = jdk11-jetbrains=11.0.10.b1319.6-1
+	provides = jdk11-jetbrains=11.0.10.b1379.1-1
 	conflicts = jdk11-jetbrains
