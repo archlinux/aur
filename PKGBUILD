@@ -1,7 +1,7 @@
-# Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
+# Maintainer: Eric Cheng <ericcheng@hey.com>
 
 pkgname=jellyfin-web-bin
-pkgver="10.7.0~rc3"
+pkgver="10.7.0_1"
 _pkgver=$(echo "$pkgver" | cut -f1 -d"_")
 _pkgverfull="${pkgver//_/-}"
 pkgrel=1
@@ -11,8 +11,8 @@ url='https://jellyfin.org/'
 license=('GPL2')
 provides=('jellyfin-web')
 conflicts=('jellyfin-web' 'jellyfin-web-git')
-source=("https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/web/${_pkgver}/jellyfin-web_${_pkgverfull}_all.deb")
-sha256sums=('931d16640c73119126d7668f4fc41a0bce6a6a251fd923dacb4d6279ee33ecab')
+source=("https://repo.jellyfin.org/releases/server/debian/stable/web/jellyfin-web_${_pkgverfull}_all.deb")
+sha256sums=('19cf6bad41176c46950bf5ebb5cfd94efda4582cb898524e0a1ea7576e523af1')
 
 options=('staticlibs')
 
