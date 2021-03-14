@@ -1,0 +1,18 @@
+pkgbase = tblis-git
+	pkgdesc = TBLIS is a library and framework for performing tensor operations, especially tensor contraction, using efficient native algorithms.
+	pkgver = v1.2.0.r17.g3dd4acb
+	pkgrel = 1
+	url = https://github.com/devinamatthews/tblis
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gcc
+	makedepends = openblas
+	provides = tblis
+	options = staticlibs
+	options = libtool
+	source = tblis::git+https://github.com/devinamatthews/tblis.git
+	sha256sums = SKIP
+
+pkgname = tblis-git
+
