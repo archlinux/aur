@@ -1,15 +1,21 @@
 pkgbase = ruby-xpath
-	pkgdesc = A Ruby DSL for generating XPath expressions
-	pkgver = 2.0.0
+	pkgdesc = XPath is a Ruby DSL for generating XPath expressions
+	pkgver = 3.2.0
 	pkgrel = 1
-	url = http://github.com/jnicklas/xpath
+	url = https://github.com/teamcapybara/xpath
 	arch = any
-	license = unknown
+	license = MIT
+	checkdepends = ruby-pry
+	makedepends = ruby-bundler
+	makedepends = ruby-rake
+	makedepends = ruby-rspec
 	depends = ruby
 	depends = ruby-nokogiri
 	options = !emptydirs
-	source = https://rubygems.org/downloads/xpath-2.0.0.gem
-	sha256sums = 9ca4a1cc88d9ab16c591468cce7b5d00ee06a8a76b841f8438970c7a44c86c12
+	source = ruby-xpath-3.2.0.tar.gz::https://github.com/teamcapybara/xpath/archive/3.2.0.tar.gz
+	source = remove_yard_dependency.patch
+	sha512sums = 432fd92c66aefa1ef13f276dffbd6d196e0a38f1d3337a9aaf8356f25d61884616fb140bc74b425466634648533dc221c5b369810bc344a9d48968bd51d6af31
+	sha512sums = 2a77db41ff6652a10149b9a188f6cced85dac66504b82234f4b0b7e0bc73bb71fb79849485fc56253674c039ec087c0bad76007082b54e359ac73e39ad171ef2
 
 pkgname = ruby-xpath
 
