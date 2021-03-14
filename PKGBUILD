@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
-pkgver=r242.a3b493d
-pkgrel=4
+pkgver=r248.c17384a
+pkgrel=2
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -14,7 +14,7 @@ sha256sums=('SKIP'
             '6f66f51e85e9a222dc855a14fad8414e279f76cc7032b19f7821622bc72632cc'
             '34f11759a1202f9e4448dd493b2aad253bf2c7f233f70fcf95c33f5a2ab19984'
             'a5e258d99a900361e442dc4cedba35b521cbb8dd22ecd1f491a3b853a002b8b4')
-backup=("etc/${_basename}/config.yaml" "etc/${_basename}/registration.yaml" )
+backup=("etc/${_basename}/config.yaml")
 install="${_basename}.install"
 makedepends+=('git' 'npm')
 # conflict/provide the same package as the non -git version
@@ -33,7 +33,6 @@ pkgver() {
 
 build(){
 	cd "${srcdir}/${_dirname}"
-	export npm_config_jobs=$(echo "$MAKEFLAGS" | sed -E 's/.*-?-j(obs)? ?([[:digit:]]+).*/\2/')
 	npm install --cache "${srcdir}/npm-cache"
 	npm run build --cache "${srcdir}/npm-cache"
 }
@@ -41,10 +40,16 @@ build(){
 package() {
 	cd "${srcdir}/${_dirname}"
 
-	npm install -g --cache "${srcdir}/npm-cache" --user root --prefix "${pkgdir}/usr"
+	npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr"
+
+	# remove references to srcdir
+	find "${pkgdir}/usr/lib/node_modules/" -name package.json -exec sed -i '/_where/d' {} \;
 
 	# adjust behaviour where npm links the installation instead of copying files
 	find "${pkgdir}/usr/lib/node_modules/" -maxdepth 1 -type l -exec cp --no-preserve=ownership -H --recursive {} '{}-tempcopy' \; -exec rm {} \; -exec mv '{}-tempcopy' {} \;
+
+	# npm seems to have dropped support for --user, back to manual chown
+	chown -R root:root "${pkgdir}/usr"
 
 	# delete the git files
 	rm -r "${pkgdir}/usr/lib/node_modules/${_basename}/.git"
