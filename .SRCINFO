@@ -1,0 +1,18 @@
+pkgbase = nvim-zig-git
+	pkgdesc = Neovim configuration for Zig
+	pkgver = r129.ead2193
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/ziglang/zig.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	optdepends = zig
+	provides = nvim-zig
+	conflicts = nvim-zig
+	source = git+https://github.com/ziglang/zig.vim.git
+	md5sums = SKIP
+
+pkgname = nvim-zig-git
+
