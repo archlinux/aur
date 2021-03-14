@@ -4,9 +4,9 @@
 # by automation in the wezterm repo.
 
 pkgname=wezterm-bin
-_tag=20210203-095643-70a364eb
+_tag=20210314-114017-04b7cedd
 pkgver=$(echo $_tag | tr - .)
-pkgrel=3
+pkgrel=2
 pkgdesc='A GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
@@ -30,7 +30,7 @@ source=(
   'LICENSE::https://github.com/wez/wezterm/raw/main/LICENSE.md'
 )
 sha256sums=(
-  'fbe935a505c2f0f6e4077fc30730f365dd19cc4b1b178f2a4075244b96f5fc77'
+  '3f70d32dc65d8b72c8d06e3260e4c75ebba2687c75fc63710e5769fdcd1b22f0'
   'ad915d9508677a4e94e4b3c0a045fedd20e953d95d7cd3ec97e6d16840fa0ed5'
 )
 
