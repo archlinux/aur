@@ -7,7 +7,7 @@ pkgrel=1
 _jslibcommit='f80e89465ffc004705d2941301c0ffb6bfd71d1a'
 _nodeversion='10.24.0'
 pkgdesc='Bitwarden Desktop Application'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
 makedepends=('git' 'npm' 'python' 'nvm' 'jq' 'patch' 'pkgconf' 'make' 'gcc')
@@ -67,8 +67,13 @@ package() {
   cd "${srcdir}/desktop-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
 
+  if [ $CARCH == "aarch64" ]; then
+    cp -r dist/linux-arm64-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
+  else
+    cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
+  fi
+  
   install -dm755 "${pkgdir}/usr/share/icons/hicolor"
   for i in 16 32 48 64 128 256 512; do
     install -Dm644 resources/icons/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
