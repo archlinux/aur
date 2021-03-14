@@ -1,10 +1,11 @@
 pkgbase = hb-downloader-git
 	pkgdesc = Unofficial tool and library for downloading bundles from Humble Bundle
 	pkgver = 0.40.beta.r77.gebbc912
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/talonius/hb-downloader
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests

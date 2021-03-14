@@ -5,13 +5,13 @@
 _pkgname=hb-downloader
 pkgname=$_pkgname-git
 pkgver=0.40.beta.r77.gebbc912
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial tool and library for downloading bundles from Humble Bundle"
 arch=('any')
 url='https://github.com/talonius/hb-downloader'
 license=('MIT')
 depends=('python' 'python-requests' 'python-pyaml')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=(!emptydirs)
