@@ -1,6 +1,6 @@
 pkgbase = yaru-remix-git
-	pkgdesc = Yaru-remix is a fork of Yaru theme
-	pkgver = 20.10.1.r67.gcc7e4163
+	pkgdesc = Yaru-remix is a fork of Yaru theme (Gnome 3.38 branch)
+	pkgver = 20.10.r0.gabfc331f
 	pkgrel = 1
 	url = https://github.com/Muqtxdir/yaru-remix
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = yaru-remix-git
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = yaru-remix::git+https://github.com/Muqtxdir/yaru-remix.git
+	source = yaru-remix::git+https://github.com/Muqtxdir/yaru-remix.git#branch=gnome-3-38
 	sha256sums = SKIP
 
 pkgname = yaru-remix-gtk-theme-git
