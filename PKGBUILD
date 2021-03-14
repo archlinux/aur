@@ -1,13 +1,14 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-terra
 pkgname=python-${_pkgname}
-pkgver=0.16.1
-pkgrel=2
+pkgver=0.16.4
+pkgrel=1
 pkgdesc="An open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-terra"
 license=('Apache')
 depends=(
+    'cython'
     'python-jsonschema'
     'python-marshmallow'
     'python-marshmallow-polyfield'
@@ -31,7 +32,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f398cc5029b0c42e169c9aeed58f1c915b4f122ed184ff3556691cfb73607513')
+sha256sums=('4b9344bd5f49ba8617f55d84633e22616001aca9072b58fb6b91ab0ffa28760c')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"

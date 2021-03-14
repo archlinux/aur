@@ -1,11 +1,12 @@
 pkgbase = python-qiskit-terra
 	pkgdesc = An open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms
-	pkgver = 0.16.1
-	pkgrel = 2
+	pkgver = 0.16.4
+	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-terra
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
+	depends = cython
 	depends = python-jsonschema
 	depends = python-marshmallow
 	depends = python-marshmallow-polyfield
@@ -24,8 +25,8 @@ pkgbase = python-qiskit-terra
 	optdepends = python-qiskit-ignis: noise framework
 	optdepends = python-qiskit-aqua: algorithms for quantum computing applications
 	optdepends = python-qiskit-ibmq: IBM Q account support
-	source = qiskit-terra-0.16.1.tar.gz::https://github.com/Qiskit/qiskit-terra/archive/0.16.1.tar.gz
-	sha256sums = f398cc5029b0c42e169c9aeed58f1c915b4f122ed184ff3556691cfb73607513
+	source = qiskit-terra-0.16.4.tar.gz::https://github.com/Qiskit/qiskit-terra/archive/0.16.4.tar.gz
+	sha256sums = 4b9344bd5f49ba8617f55d84633e22616001aca9072b58fb6b91ab0ffa28760c
 
 pkgname = python-qiskit-terra
 
