@@ -1,7 +1,7 @@
 pkgname=xmr-stak-nvidia
 pkgver=2.10.8
 pkgrel=0
-pkgdesc="Unified All-in-one Monero miner (no cuda)"
+pkgdesc="Unified All-in-one Monero miner (CUDA)"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
 license=('GPL3')
