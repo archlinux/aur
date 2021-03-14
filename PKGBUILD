@@ -1,6 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 pkgname=rizin-git
-pkgver=0.2.0.r25736.3f71f45c5
+pkgver=0.2.0.r25946.6b3c58ebf
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
@@ -53,6 +53,4 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
   install -dm644 "${pkgdir}/usr/share/doc/rizin"
   cp -r doc/* "${pkgdir}/usr/share/doc/rizin"
-  ln -s /usr/bin/rizin "${pkgdir}/usr/bin/rz"
-  rm "${pkgdir}/usr/share/man/man7/esil.7"
 }
