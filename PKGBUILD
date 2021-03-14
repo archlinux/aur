@@ -1,7 +1,7 @@
-# Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
+# Maintainer: Eric Cheng <ericcheng@hey.com>
 
 pkgname=jellyfin-server-bin
-pkgver='10.7.0~rc3'
+pkgver='10.7.0_1'
 _pkgver=$(echo "$pkgver" | cut -f1 -d"_")
 _pkgverfull="${pkgver//_/-}"
 pkgrel=1
@@ -17,17 +17,16 @@ source=('jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
-# Switch from 'stable-rc' to 'stable' ASAP when RC packages goes to stable. Since when RC packages considered 'stable' in the first place?
-source_x86_64=("https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/server/${_pkgver}/jellyfin-server_${_pkgverfull}_amd64.deb")
-source_aarch64=("https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/server/${_pkgver}/jellyfin-server_${_pkgverfull}_arm64.deb")
-source_armv7h=("https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/server/${_pkgver}/jellyfin-server_${_pkgverfull}_armhf.deb")
+source_x86_64=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgverfull}_amd64.deb")
+source_aarch64=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgverfull}_arm64.deb")
+source_armv7h=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgverfull}_armhf.deb")
 sha256sums=('1ea19635cced6672484937903c27976a5a145d708caff06a687a8defdd23d549'
             '0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
             'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
-sha256sums_x86_64=('5e759a913bb051d844d95d12c82ca405732de4ca24d5fd180b6ec6c0a7aebd13')
-sha256sums_aarch64=('f84425f0b75c7379c0f4dae2c3531a867a2ea96893e0370aaf582b0553244b93')
-sha256sums_armv7h=('8baec13440fdc6b7d05227d560a73cffa6b44467a5b1b38351da88bcdbbbb00a')
+sha256sums_x86_64=('3e2ced1f99167961e341dae674a94d8fd892a857bcc3bba026654ce9284062de')
+sha256sums_aarch64=('1f71f7113f58724fc8a17b50c0b26df204f6c17f48baf3a819b6c4f0cc22a17b')
+sha256sums_armv7h=('27153be892bcd51f29921beca807e738cc7e8144a195f9f10e61ee902f663a38')
 
 options=('staticlibs')
 

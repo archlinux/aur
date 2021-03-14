@@ -1,6 +1,6 @@
 pkgbase = jellyfin-server-bin
 	pkgdesc = The Free Software Media System - server package
-	pkgver = 10.7.0~rc3
+	pkgver = 10.7.0_1
 	pkgrel = 1
 	url = https://jellyfin.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jellyfin-server-bin
 	arch = armv7h
 	license = GPL2
 	depends = ffmpeg
-	depends = jellyfin-web-bin>=10.7.0~rc3
+	depends = jellyfin-web-bin>=10.7.0_1
 	optdepends = ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis
 	provides = jellyfin-server
 	conflicts = jellyfin-server
@@ -22,12 +22,12 @@ pkgbase = jellyfin-server-bin
 	sha256sums = 0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2
 	sha256sums = 9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228
 	sha256sums = b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a
-	source_x86_64 = https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/server/10.7.0~rc3/jellyfin-server_10.7.0~rc3_amd64.deb
-	sha256sums_x86_64 = 5e759a913bb051d844d95d12c82ca405732de4ca24d5fd180b6ec6c0a7aebd13
-	source_aarch64 = https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/server/10.7.0~rc3/jellyfin-server_10.7.0~rc3_arm64.deb
-	sha256sums_aarch64 = f84425f0b75c7379c0f4dae2c3531a867a2ea96893e0370aaf582b0553244b93
-	source_armv7h = https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/server/10.7.0~rc3/jellyfin-server_10.7.0~rc3_armhf.deb
-	sha256sums_armv7h = 8baec13440fdc6b7d05227d560a73cffa6b44467a5b1b38351da88bcdbbbb00a
+	source_x86_64 = https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_10.7.0-1_amd64.deb
+	sha256sums_x86_64 = 3e2ced1f99167961e341dae674a94d8fd892a857bcc3bba026654ce9284062de
+	source_aarch64 = https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_10.7.0-1_arm64.deb
+	sha256sums_aarch64 = 1f71f7113f58724fc8a17b50c0b26df204f6c17f48baf3a819b6c4f0cc22a17b
+	source_armv7h = https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_10.7.0-1_armhf.deb
+	sha256sums_armv7h = 27153be892bcd51f29921beca807e738cc7e8144a195f9f10e61ee902f663a38
 
 pkgname = jellyfin-server-bin
 
