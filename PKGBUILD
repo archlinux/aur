@@ -9,7 +9,7 @@
 _name=compiz
 pkgname=compiz-easy-patch
 pkgver=0.9.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE. (From Manjaro to Arch)"
 arch=('x86_64')
 url="https://launchpad.net/${_name}"
