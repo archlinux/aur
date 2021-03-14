@@ -27,7 +27,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("$pkgname::git://github.com/DMBuce/${pkgname%-git}.git")
+source=("$pkgname::git+https://github.com/DMBuce/${pkgname%-git}.git")
 #source=("$pkgname::git+ssh://git@mantrid/~/${pkgname%-git}.git")
 md5sums=('SKIP')
 
