@@ -14,7 +14,7 @@ source=("${pkgname}.zip::https://github.com/zquestz/s/releases/download/v${pkgve
 sha256sums=('38c29001936f1758159cc935b3ab97d1dee75c35ceacd8bd5ada3837b306192f')
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/s-linux_amd64"
 
   install -Dm 775 "s" \
     "${pkgdir}/usr/bin/s"
