@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='75e93671c322457183eb5642d96605ee'
-_referid='a479b83a85f54a8eba4c26acaa878235'
+_downloadid='7f222c5ab73542648b2932ea4248141b'
+_referid='568b91dde8e94375834d7fd65f4f8046'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -62,12 +62,12 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=17.0
+pkgver=17.1
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
-depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
+depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0' 'fuse2'
          'opencl-driver' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
@@ -78,13 +78,13 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('67bec4d4609ec6b00c97a0faccde9188842bc502b7efd8fc89c4436a3cf44d51')
+	sha256sums=('7d54018c41eaefc2058f4c7db7003bdb46c2412b5b20e0382dab04f94fe81fec')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('031a7412013643b2e17ef7f3fe1911895d9ac7ea84a006b4ac15f4577f203ef9')
+	sha256sums=('40c58d58ab40c8a7a6c9b64aa95fd9259a8d8a19cf8000c517f5f5f3f0b2d13c')
 	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
@@ -118,7 +118,8 @@ package()
 	msg2 "Extracting from bundle..."
 	msg "Please wait, this take a while..."
 	cd "${srcdir}" || exit
-	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
+#	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
+	./${_installer_binary} --appimage-extract "${pkgdir}/opt/${_pkgname}"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
