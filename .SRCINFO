@@ -1,0 +1,20 @@
+pkgbase = qserial
+	pkgdesc = The missing cross platform serial port utility with batteries included.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tuna/QSerial
+	arch = any
+	license = MIT
+	depends = libusb
+	depends = python-pyqt5-webengine
+	provides = qserial
+	conflicts = qserial
+	replaces = qserial
+	options = !strip
+	source = QSerial-1.0.zip::https://github.com/tuna/QSerial/archive/v1.0.zip
+	source = qserial.desktop
+	sha256sums = f30de8390e2f8a80d98872105e177cec773a36c637a126aa3e72b412e711ba6b
+	sha256sums = 1683f6d64933dcc2d2e044e997206ce68cfbc1d1330018c5d8e2beb7790e7827
+
+pkgname = qserial
+
