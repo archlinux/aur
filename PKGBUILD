@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jax
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('x86_64')
@@ -16,15 +16,15 @@ depends=('absl-py'
          'python-scipy'
          'python-six')
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/6d/4b/cd013403adac3a7b3b6a616bf40abc7ba767fba63facdb260d2f09ba4e18/jax-0.2.9.tar.gz"
-        "https://files.pythonhosted.org/packages/f4/4f/997245ba6cae047bce8d2a20fc9a6590360c3a5f6bf6269fa5126ad40a3f/jaxlib-0.1.59-cp39-none-manylinux2010_x86_64.whl")
-md5sums=('7677bff64e0702173e984bb5fa317cac'
-         'e2d518dcab7696f7aa2a135a28dc7dbc')
+source=("https://files.pythonhosted.org/packages/88/9d/2862825b5eddd0df64c78b22cc0b897f0128b1c6494bf39e4849e9e0fade/jax-0.2.10.tar.gz"
+        "https://files.pythonhosted.org/packages/d2/bb/c8263c2b0a6d95fa4e093ee59a34b6ff50a7d346898dcb25ad62905ada1d/jaxlib-0.1.62-cp39-none-manylinux2010_x86_64.whl")
+md5sums=('324f4ac60ae9c2e55685c13819d7c5ff'
+         'a65f8580fbae1b645ab059d1488fa48c')
 
 package() {
     pip install \
         --ignore-requires-python \
         --root=$pkgdir \
         "$srcdir/jax-${pkgver}.tar.gz" \
-        "$srcdir/jaxlib-0.1.59-cp39-none-manylinux2010_x86_64.whl"
+        "$srcdir/jaxlib-0.1.62-cp39-none-manylinux2010_x86_64.whl"
 }
