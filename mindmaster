@@ -1,0 +1,2 @@
+#/bin/shell bash
+/opt/MindMaster-8/MindMaster --no-sandbox
