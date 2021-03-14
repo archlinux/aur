@@ -1,6 +1,6 @@
 pkgbase = python-nox-poetry
 	pkgdesc = Use Poetry inside Nox sessions
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/cjolowicz/nox-poetry
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-nox-poetry
 	makedepends = python-dephell
 	depends = python
 	depends = python-nox
-	source = python-nox-poetry-0.8.2.tar.gz::https://github.com/cjolowicz/nox-poetry/archive/v0.8.2.tar.gz
-	b2sums = f295ae7d6454b337c3d87385293ae03f649b706f704a6bdabc6b440d29a1d3dabbaf966023c986c3619ee56de3ebf9237a804eda0acbae932d0a21b21d369dab
+	source = python-nox-poetry-0.8.3.tar.gz::https://github.com/cjolowicz/nox-poetry/archive/v0.8.3.tar.gz
+	b2sums = 6852bc419bce21742a51aef3f21cf714068ac7d877b5382d04555dbf57ade556363d22dc353679805ab4ebbd02f23858317780e8510cb31749ada7f2c033a077
 
 pkgname = python-nox-poetry
 
