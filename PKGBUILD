@@ -1,14 +1,14 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet-git
 _gitname=Mudlet
-pkgver=r513.gea6df57ad
+pkgver=r913.g9571f211
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting (git development branch"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
 license=('GPL')
 depends=('qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' \
-         'lrexlib-pcre5.1' 'qt5-gamepad' 'lua51-utf8'  'ttf-font' 'pugixml' 'lua-yajl' 'qtkeychain')
+         'lrexlib-pcre5.1' 'qt5-gamepad' 'lua51-utf8'  'ttf-font' 'pugixml' 'lua-yajl' 'qtkeychain-qt5')
 makedepends=('git' 'boost' 'qt5-tools')
 optdepends=('discord-rpc-api: discord integration'
             'ttf-bitstream-vera: default font'
