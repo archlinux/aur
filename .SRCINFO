@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-podcast
 	pkgdesc = Selfhosted podcast manager for your personal cloud
-	pkgver = 0.0.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://git.project-insanity.org/onny/nextcloud-app-podcast
 	arch = any
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-podcast-0.0.1.tar.gz::https://git.project-insanity.org/onny/nextcloud-app-podcast/-/jobs/1012/artifacts/raw/build/artifacts/podcast.tar.gz
-	sha512sums = 93594ea2fe870b297b7a4ff329d4c59d9cced0cad4b8c8c0be2f3679563227bd20b53d52cf90aa70148fa763c5028c56f8245ffc9283be3bc5b3ca2774f9ac79
+	source = nextcloud-app-podcast-0.2.0.tar.gz::https://git.project-insanity.org/onny/nextcloud-app-podcast/-/jobs/1169/artifacts/raw/build/artifacts/podcast.tar.gz
+	sha512sums = a308dd744489489c52212fc1ccdf8955d6d191444fee617567da00a36503c32524775e8c7f2eeb6fd5b0dfadd61b4d903d25832bd6dd7980eb53702bff0f2097
 
 pkgname = nextcloud-app-podcast
 
