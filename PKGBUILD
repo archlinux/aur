@@ -2,9 +2,9 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=condution-bin
-pkgver=1.0.1
-_pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+_pkgver=1.0.2
+pkgrel=0
 pkgdesc="A personal project management system that makes sense and will not burn your pockets out"
 arch=('x86_64')
 url='https://www.condution.com'
@@ -17,7 +17,7 @@ depends=('nss'
          'libdbusmenu-glib')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${_pkgver}.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v${_pkgver}/Condution-${_pkgver}.AppImage")
-sha256sums=('5f5bbad45fd5c25232f58351152f96b19d0e7300672197c529c849875d762658')
+sha256sums=('f013180d1cb1d2612d527afee31baf7bdba9409f2a58ad46761e98fb096d93bb')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${_pkgver}.AppImage
