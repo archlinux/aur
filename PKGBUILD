@@ -21,8 +21,9 @@ python-pytest
 python-pytest-mock
 python-pytest-runner
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ap--/python-seabreeze/archive/v${pkgver}.tar.gz")
-sha256sums=('6418dda3278274d006a9d2a86fda82c4160ade6c9b42fd66e419d56fd17810e3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ap--/python-seabreeze/archive/v${pkgver}.tar.gz" "10-oceanoptics.rules")
+sha256sums=('6418dda3278274d006a9d2a86fda82c4160ade6c9b42fd66e419d56fd17810e3'
+            '2c62b399a3b3fa61a4c39c32c4242f1b1eaad9ba2a5810f5020d44959b5f9c8a')
 
 prepare(){
   cd python-seabreeze-${pkgver}
@@ -47,6 +48,8 @@ check() {
 
 package() {
   cd python-seabreeze-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dt "${pkgdir}/etc/udev/rules.d" -m644 "${srcdir}"/10-oceanoptics.rules
+  msg2 "You might want to run: sudo udevadm control --reload-rules"
 }
 

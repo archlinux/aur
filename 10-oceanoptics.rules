@@ -1,0 +1,88 @@
+# udev rules file for Ocean Optics, Inc. spectrometers
+# ====================================================
+#
+# version: 2.3
+# updated: 2020-08-09
+# maintainer: Andreas Poehlmann <andreas@poehlmann.io>
+#
+# [info] Previous versions are missing this header.
+#
+# Ships with [python-seabreeze](https://github.com/ap--/python-seabreeze/)
+# Only USB spectrometers are supported. When using the newest version (1.0+)
+# of python-seabreeze you can install the rules via running:
+#
+#   $ seabreeze_os_setup
+#
+# Changes:
+# - added support for HDX spectrometer
+# - added support for QE-PRO class of OceanOptics spectrometers
+# - set MODE instead of group (Fedora doesn't use `plugdev`)
+# - match parent SUBSYSTEMS for compatibility with older udev versions
+# - match both actions 'add' and 'bind' (fixes https://github.com/systemd/systemd/issues/8221)
+# - do not allow overriding MODE setting (fixes https://github.com/ap--/python-seabreeze/issues/78)
+#
+
+SUBSYSTEMS=="usb", ACTION=="add", GOTO="oceanoptics_rules_begin"
+SUBSYSTEMS=="usb", ACTION=="bind", GOTO="oceanoptics_rules_begin"
+
+GOTO="oceanoptics_rules_end"
+LABEL="oceanoptics_rules_begin"
+
+# Ocean Optics Inc. USB2000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1002", SYMLINK+="usb2000-%n", MODE:="0666"
+# Ocean Optics Inc. ADC1000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1004", SYMLINK+="adc1000usb-%n", MODE:="0666"
+# Ocean Optics Inc. SAS spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1006", SYMLINK+="sas-%n", MODE:="0666"
+# Ocean Optics Inc. HR2000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="100a", SYMLINK+="hr2000-%n", MODE:="0666"
+# Ocean Optics Inc. NIR512 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="100c", SYMLINK+="nir512-%n", MODE:="0666"
+# Ocean Optics Inc. NIR256 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1010", SYMLINK+="nir256-%n", MODE:="0666"
+# Ocean Optics Inc. HR4000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1012", SYMLINK+="hr4000-%n", MODE:="0666"
+# Ocean Optics Inc. USB650 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1014", SYMLINK+="usb650-%n", MODE:="0666"
+# Ocean Optics Inc. HR2000+ spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1016", SYMLINK+="hr2000+-%n", MODE:="0666"
+# Ocean Optics Inc. QE65000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1018", SYMLINK+="qe65000+-%n", MODE:="0666"
+# Ocean Optics Inc. USB2000+ spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="101e", SYMLINK+="usb2000+-%n", MODE:="0666"
+# Ocean Optics Inc. USB4000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1022", SYMLINK+="usb4000-%n", MODE:="0666"
+# Ocean Optics Inc. USB325 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1024", SYMLINK+="usb320-%n", MODE:="0666"
+# Ocean Optics Inc. USB250 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1030", SYMLINK+="usb250-%n", MODE:="0666"
+# Ocean Optics Inc. NIRQuest-256 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1028", SYMLINK+="nirquest256-%n", MODE:="0666"
+# Ocean Optics Inc. NIRQuest-512 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1026", SYMLINK+="nirquest512-%n", MODE:="0666"
+# Ocean Optics Inc. Maya 2000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="102c", SYMLINK+="maya2000-%n", MODE:="0666"
+# Ocean Optics Inc. Maya Pro 2000 spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="102a", SYMLINK+="mayapro2000-%n", MODE:="0666"
+# Ocean Optics Inc. Torus spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="1040", SYMLINK+="torus-%n", MODE:="0666"
+# Ocean Optics Inc. Jaz spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="2000", SYMLINK+="jaz-%n", MODE:="0666"
+# Ocean Optics Inc. STS spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="4000", SYMLINK+="sts-%n", MODE:="0666"
+# Ocean Optics Inc. Spark spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="4200", SYMLINK+="spark-%n", MODE:="0666"
+# OceanOptics Inc. QE-Pro Spectrometer
+ATTR{idVendor}=="2457",ATTR{idProduct}=="4004",SYMLINK+="qe-pro-%n",MODE:="0666"
+# Ocean Optics Inc. Centice Clear Shot II spectrometer
+ATTR{idVendor}=="184c", ATTR{idProduct}=="0000", SYMLINK+="clearshot2-%n", MODE:="0666"
+# unprogrammed EzUSB
+ATTR{idVendor}=="0547", ATTR{idProduct}=="2131", SYMLINK+="ezUSB-%n", MODE:="0666"
+# unprogrammed EzUSB-FX
+ATTR{idVendor}=="0547", ATTR{idProduct}=="2235", SYMLINK+="ezUSB-FX-%n", MODE:="0666"
+# unprogrammed EzUSB-FX2
+ATTR{idVendor}=="04b4", ATTR{idProduct}=="8613", SYMLINK+="ezUSB-FX2-%n", MODE:="0666"
+# Ocean Insight Inc. HDX spectrometer
+ATTR{idVendor}=="2457", ATTR{idProduct}=="2003", SYMLINK+="oceanhdx-%n", MODE:="0666"
+
+LABEL="oceanoptics_rules_end"
