@@ -10,7 +10,7 @@ __pkgname=uutils-coreutils
 pkgver=8.32_0.0.4
 _pkgver=8.32
 __pkgver=0.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -34,8 +34,7 @@ build() {
       --prefix=/usr \
       --libexecdir=/usr/lib \
       --with-openssl \
-      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,realpath,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes"
-  make
+      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,echo,env,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,ln,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,wc,who,whoami,yes"
 }
 
 package() {
