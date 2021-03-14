@@ -1,0 +1,22 @@
+pkgbase = h4h5tools
+	pkgdesc = Tools for converting between HDF4 and HDF5 formats
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = https://portal.hdfgroup.org/display/support/Download+h4h5tools
+	arch = x86_64
+	license = BSD
+	depends = hdf4
+	depends = hdf5
+	depends = libaec
+	depends = libtirpc
+	depends = libjpeg
+	depends = krb5
+	depends = hdf-eos2
+	depends = hdf-eos5
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/h4toh5/h4toh5-2.2.5/src/h4h5tools-2.2.5.tar.gz
+	source = h4h5tools-configure-lm.patch
+	sha256sums = 79f6505c1df3ad0c2cc1a19b9b433b5d955dfd7d2dffefc080d89fdde01fd6f2
+	sha256sums = ac04b58e9d84a9ca158ad58c4c83fe43d2bddecf685061c9e78ad07bd4ac6a83
+
+pkgname = h4h5tools
+

@@ -1,0 +1,10 @@
+--- configure.ac.old	2021-03-04 21:20:28.740784871 -0500
++++ configure.ac	2021-03-04 21:18:37.924007058 -0500
+@@ -508,6 +508,7 @@
+   CPPFLAGS="$CPPFLAGS -I$HDFEOS2_DIR/include"
+   LDFLAGS="$LDFLAGS -L$HDFEOS2_DIR/lib"
+ 
++  AC_CHECK_LIB(m,cos,,AC_MSG_ERROR([invalid math library]))
+   AC_CHECK_LIB(Gctp, inv_init,, AC_MSG_ERROR([invalid Gctp in hdfeos2]))
+   AC_CHECK_LIB(hdfeos, GDopen,, AC_MSG_ERROR([invalid hdfeos in hdfeos2]))
+ 
