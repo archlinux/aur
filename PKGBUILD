@@ -10,13 +10,13 @@
 
 pkgname=ungoogled-chromium
 pkgver=89.0.4389.90
-pkgrel=2
+pkgrel=3
 _launcher_ver=7
 _gcc_patchset=7
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
-_uc_ver=89.0.4389.82-1
+_uc_ver=$pkgver-1
 _uc_usr=Eloston
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('11c6089c5fdd921216aa4eb34b52818a9b091cad655a24aed0982d29e65b279a'
-            '2bc8d0089c1a687b146a7921fcc5946c5f5f7c1745a1fe1ea6f0e275d4338631'
+            'f18996580d89d48e9f140c072343df7259b3b5193eafc4b82877c7e8efb769da'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'f8b1558f6c87b33423da854d42f0f69d47885a96d6bf6ce7f26373e93d47442f'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
