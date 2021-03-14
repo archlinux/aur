@@ -1,31 +1,44 @@
-# Maintainer: wahrwolf <wahrwolf[ät]wolfpit.net
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: wahrwolf <wahrwolf[ät]wolfpit.net
 # Contributor: MayeulC
 
-pkgname=hb-downloader
-pkgver=0.5.0h
-pkgrel=8
-pkgdesc="An unofficial library for querying the Humble Bundle API"
+_pkgname=hb-downloader
+pkgname=$_pkgname-git
+pkgver=0.40.beta.r77.gebbc912
+pkgrel=1
+pkgdesc="Unofficial tool and library for downloading bundles from Humble Bundle"
 arch=('any')
-url="https://github.com/saik0/humblebundle-python"
+url='https://github.com/talonius/hb-downloader'
 license=('MIT')
-depends=('python-requests' 'python-pyaml')
+depends=('python' 'python-requests' 'python-pyaml')
 makedepends=('python-setuptools')
+provides=($_pkgname)
+conflicts=($_pkgname)
 options=(!emptydirs)
-source=("$pkgname-$pkgver::https://github.com/wahrwolf/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('941ee284114b48aca690896913c3bf631ac346cd481db83825edd192c482887f')
+source=("git+$url.git")
+b2sums=('SKIP')
 
-build() {
-    cd "$pkgname-$pkgver"
-    python setup.py build
-    python setup.py test
+pkgver() {
+    cd "$_pkgname"
+    git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "$_pkgname"
+    python setup.py build
+}
+
+## Tests seems to currently be broken/non-isolated upstream? FIXME later.
+#check() {
+#    cd "$_pkgname"
+#    python setup.py test
+#}
+
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-    install -Dm 644 hb-downloader-settings.yaml -T "$pkgdir/etc/hb_downloader.yaml"
+    cd "$_pkgname"
+    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+    install -Dm 644 README.md hb-downloader-settings.example.yaml -t "$pkgdir/usr/share/doc/$_pkgname/"
     install -Dm 755 hb-downloader.py -T "$pkgdir/usr/bin/hb-downloader"
 
-    python setup.py install --root="$pkgdir/" 
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
