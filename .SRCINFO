@@ -1,21 +1,14 @@
 pkgbase = 7zip-bin
-	pkgdesc = Official Linux port of command line version of 7-Zip (not to be confused with p7zip)
+	pkgdesc = Command-line file archiver with high compression ratio (official build).
 	pkgver = 21.01
 	pkgrel = 1
 	url = https://www.7-zip.org
 	arch = x86_64
-	arch = i686
-	arch = armv7l
-	arch = aarch64
 	license = LGPL
-	source_x86_64 = https://7-zip.org/a/7z2101-linux-x64.tar.xz
-	md5sums_x86_64 = cc30db641a3127173ed0a9b8ef1e916a
-	source_i686 = https://7-zip.org/a/7z2101-linux-x86.tar.xz
-	md5sums_i686 = bd8b3d45efc9fdb6400cefa539dc8404
-	source_armv7l = https://7-zip.org/a/7z2101-linux-arm.tar.xz
-	md5sums_armv7l = 788d67ace25c9a213fcd0cc125ebe5f2
-	source_aarch64 = https://7-zip.org/a/7z2101-linux-arm64.tar.xz
-	md5sums_aarch64 = 5052cb0160af813d33f11b41f562e758
+	provides = 7zip
+	conflicts = 7zip
+	source = 7zip-bin-21.01.tar.xz::https://www.7-zip.org/a/7z2101-linux-x64.tar.xz
+	sha256sums = 63c93537b8fad1353c278e275ee0e9cd7f30bc7edd1fa44543f2478752b7caf9
 
 pkgname = 7zip-bin
 
