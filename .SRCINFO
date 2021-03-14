@@ -1,0 +1,21 @@
+pkgbase = python2-pycurl
+	pkgdesc = A Python 2.x interface to libcurl
+	pkgver = 7.43.0.3
+	pkgrel = 1
+	epoch = 1
+	url = http://pycurl.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	license = MIT
+	checkdepends = python2-bottle
+	checkdepends = python2-nose-show-skipped
+	checkdepends = vsftpd
+	checkdepends = python2-flaky
+	checkdepends = python2-pyflakes
+	depends = python2
+	depends = curl
+	source = https://github.com/pycurl/pycurl/archive/REL_7_43_0_3/python2-pycurl-7.43.0.3.tar.gz
+	sha512sums = 1c210be7dde473a524fbc3084066b0aaa13c0a50cc2ab03bceb49030897058ae09bb4b8b5961823184469dc0901a5aae0f67992f408f37bb9bcb0c34ea014aec
+
+pkgname = python2-pycurl
+
