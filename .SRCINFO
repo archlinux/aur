@@ -1,0 +1,15 @@
+pkgbase = topologic-git
+	pkgdesc = Library to create dyanimic context free or switching automata
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/mstern98/topologic-git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bison
+	depends = flex
+	source = topologic-git-1.0.3.tar.gz::https://github.com/mstern98/topologic-git/archive/v1.0.3.tar.gz
+	sha256sums = 3a6c5db61ea76f17b606e7e2af7bdcdd1fba9ac82629a5f5867e6203b0ad83c5
+
+pkgname = topologic-git
+
