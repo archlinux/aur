@@ -1,6 +1,6 @@
 # Maintainer: Elijah Gregg <lovetocode999@ctrl-c.club>
 pkgname=heb12-cli-git
-pkgver=0.1.0.r31.ge41cf6c
+pkgver=0.1.0.r32.g9f1a743
 pkgrel=1
 pkgdesc="Bible command line interface reader."
 arch=("x86_64")
