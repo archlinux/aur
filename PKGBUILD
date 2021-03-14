@@ -2,7 +2,7 @@
 _pkgname=QSerial
 pkgname=qserial
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The missing cross platform serial port utility with batteries included."
 arch=('any')
 url="https://github.com/tuna/QSerial"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=(${pkgname})
-depends=('libusb' 'python-pyqt5-webengine')
+depends=('libusb' 'qt5-webengine' 'qt5-serialport')
 makedepends=()
 backup=()
 options=('!strip')
