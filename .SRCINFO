@@ -1,7 +1,7 @@
 pkgbase = autopanogiga
 	pkgdesc = Create beautiful panoramas by stitching multiple photos automatically with Autopano Giga (trial version).
 	pkgver = 4.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kolor.com/autopano/
 	install = autopanogiga.install
 	changelog = ChangeLog
@@ -11,7 +11,7 @@ pkgbase = autopanogiga
 	source = autopanogiga
 	source = autopanogiga.desktop
 	sha256sums = a2546989f5d02fbcced61a81c65988c592af3a904eda0da4c5fad8a45a7af230
-	sha256sums = 145569fd59808c0b2241189908a8d6fd9fbce0772e7fd40f0fbaa713313d4a3b
+	sha256sums = 80114777faed6326764d14143f533efb473695d99e1771b2fdfbae89f3942fad
 	sha256sums = a7456db2e25dc33952ee42202edf31b070493e157945d40a4645187a1d49336b
 
 pkgname = autopanogiga

@@ -5,7 +5,7 @@
 # Created: 18/03/2011
 pkgname=autopanogiga
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Create beautiful panoramas by stitching multiple photos automatically with Autopano Giga (trial version).'
 arch=('x86_64')
 url='http://kolor.com/autopano/'
@@ -20,7 +20,7 @@ source=("$_archivename::http://download.kolor.com/apg/stable/linux64tarxz/${pkgv
         "$pkgname.desktop")
 
 sha256sums=('a2546989f5d02fbcced61a81c65988c592af3a904eda0da4c5fad8a45a7af230'
-            '145569fd59808c0b2241189908a8d6fd9fbce0772e7fd40f0fbaa713313d4a3b'
+            '80114777faed6326764d14143f533efb473695d99e1771b2fdfbae89f3942fad'
             'a7456db2e25dc33952ee42202edf31b070493e157945d40a4645187a1d49336b')
 
 package() {
