@@ -1,6 +1,6 @@
 pkgbase = code-minimap
 	pkgdesc = A high performance code minimap render
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/wfxr/code-minimap
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = code-minimap
 	makedepends = cargo
 	conflicts = code-minimap-git
 	conflicts = code-minimap-bin
-	source = code-minimap-0.5.0.tar.gz::https://github.com/wfxr/code-minimap/archive/v0.5.0.tar.gz
-	md5sums = 248afa6270c2423f2a3a89242d75777c
+	source = code-minimap-0.5.1.tar.gz::https://github.com/wfxr/code-minimap/archive/v0.5.1.tar.gz
+	md5sums = 8fb070a88dd907c1293e8c03551eb75e
 
 pkgname = code-minimap
 

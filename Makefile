@@ -1,4 +1,4 @@
-PKGVER = 0.5.0
+PKGVER = 0.5.1
 PKGREL = 1
 
 .PHONY: codegen

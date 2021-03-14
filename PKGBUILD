@@ -1,6 +1,6 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 pkgname=code-minimap
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A high performance code minimap render'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('248afa6270c2423f2a3a89242d75777c')
+md5sums=('8fb070a88dd907c1293e8c03551eb75e')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
