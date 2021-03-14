@@ -13,7 +13,7 @@ makedepends=('git')
 backup=()
 options=()
 install=
-source=("$pkgname::git://github.com/DMBuce/$pkgname.git#tag=$pkgver")
+source=("$pkgname::git+https://github.com/DMBuce/$pkgname.git#tag=$pkgver")
 #source=("$pkgname::git+ssh://git@mantrid/~/$pkgname.git#tag=$pkgver")
 noextract=()
 md5sums=(SKIP)
