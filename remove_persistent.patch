@@ -1,0 +1,13 @@
+diff --unified --recursive --text Redirector-3.5.2.original/manifest.json Redirector-3.5.2.patched/manifest.json
+--- Redirector-3.5.2.original/manifest.json	2019-12-16 11:40:12.000000000 +0000
++++ Redirector-3.5.2.patched/manifest.json	2021-03-14 22:54:02.353341341 +0000
+@@ -32,8 +32,7 @@
+     "scripts": [
+       "js/redirect.js",
+       "js/background.js"
+-    ],
+-    "persistent": true
++    ]
+   },
+   "options_ui": {
+     "page": "popup.html",

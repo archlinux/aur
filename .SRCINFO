@@ -1,0 +1,16 @@
+pkgbase = firefox-redirector
+	pkgdesc = Automatically redirects to user-defined urls on certain pages
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://einaregilsson.com/redirector/
+	arch = any
+	groups = firefox-addons
+	license = MIT
+	makedepends = zip
+	source = https://github.com/einaregilsson/Redirector/archive/v3.5.2/firefox-redirector-3.5.2.tar.gz
+	source = remove_persistent.patch
+	sha512sums = caecc14ac52e4c68b394be20ab562ad9046165e72f98b524f65d6ca5f090fbfd1339d963f551f968aebe1edd2d4ec50176a6b6c66bde3e323fb627f729f5a319
+	sha512sums = 01906062037678d4d76d04f4e5f1f541b292582543ec9cf9244c04ab84b1561ee98de73d3bbcb3147ed254ba6c0e4653137e3b7a7d30605b7d3a9a2e073dccf3
+
+pkgname = firefox-redirector
+
