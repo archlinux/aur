@@ -3,7 +3,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=gdevelop
-pkgver=5.0.0.beta105
+pkgver=5.0.0.beta106
 pkgrel=1
 pkgdesc="Open-source, cross-platform game creator designed to be used by everyone - no programming skills required."
 arch=('x86_64')
