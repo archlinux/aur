@@ -1,6 +1,6 @@
-pkgname=xmr-stak
+pkgname=xmr-stak-nvidia
 pkgver=2.10.8
-pkgrel=3
+pkgrel=0
 pkgdesc="Unified All-in-one Monero miner (no cuda)"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
@@ -14,8 +14,8 @@ source=("xmr-stak-$pkgver.tar.gz::https://github.com/fireice-uk/xmr-stak/archive
 	'xmr-stak.service')
 sha256sums=('bbbf85dc35a8b0b8ae5926640e36ef0b68a8a81804d45f11718c19bf53a41109'
             'b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a'
-            'SKIP'
-            'SKIP'
+            '814c3e82526500e4834c5787e5c1fbaa35a23a6e571274c523af2e0e7d1f7e23'
+            'a87d010b81befaab360259e55dd998b57305646dea1097a8090b4d2ed6dbc8bb'
             'e0cbee0dab1c730e5deff31eddef84a635b4c9f33ba2368a446e62acc084649a'
             )
 
