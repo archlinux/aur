@@ -1,0 +1,16 @@
+pkgbase = sekiro-grub-theme-git
+	pkgdesc = Sekiro - GRUB2 theme - GIT version
+	pkgver = r1.a704748
+	pkgrel = 1
+	url = https://github.com/semimqmo/sekiro_grub_theme
+	install = sekiro-grub-theme-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = sekiro-grub-theme=r1.a704748
+	conflicts = sekiro-grub-theme
+	source = git+https://github.com/semimqmo/sekiro_grub_theme.git
+	sha512sums = SKIP
+
+pkgname = sekiro-grub-theme-git
+

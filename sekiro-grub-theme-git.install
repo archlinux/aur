@@ -1,0 +1,15 @@
+post_install() {
+  echo '==> To select the Sekiro theme you must:'
+  echo '==>  1. Open the file "/etc/default/grub" in a text editor'
+  echo '==>  2. Update the variable GRUB_THEME="/boot/grub/themes/sekiro/theme.txt"'
+  echo '==>  3. Update the grub config by running "sudo grub-mkconfig -o /boot/grub/grub.cfg"'
+  echo '        or run "sudo update-grub" if you are in Manjaro'
+}
+
+# should run in the pre phase and check that a different theme was chosen
+# if this is not the case then the removal should be denied
+post_remove() {
+  echo '==> Make sure you selected a different theme in "/etc/default/grub"'
+  echo '    and updated your grub config with "sudo grub-mkconfig -o /boot/grub/grub.cfg"'
+  echo '    or "sudo update-grub" if you are in Manjaro'
+}
