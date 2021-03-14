@@ -1,9 +1,9 @@
 # Maintainer: Westofer Raymond <westoferraymond@gmail.com>
 
 pkgname=ytfzf
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="A posix script to find and watch youtube videos from the terminal. (With out API)"
+pkgdesc="A posix script to find and watch youtube videos from the terminal. (Without API)"
 arch=('any')
 url="https://github.com/pystardust/ytfzf"
 license=('GPL')
@@ -18,7 +18,7 @@ provides=('ytfzf')
 conflicts=("ytfzf-git")
 install=
 source=("https://github.com/pystardust/ytfzf/archive/v${pkgver}.tar.gz")
-md5sums=('5175c10f63c05ca542d5ad4d0bdd72b0')
+md5sums=('fff869cff4c00ca20e13a61b2199d604')
 
 package() {
 	cd "$srcdir/${pkgname}-${pkgver}"
