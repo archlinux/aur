@@ -1,6 +1,6 @@
 pkgbase = dhewm3-git
 	pkgdesc = Doom 3 source port
-	pkgver = 1.5.1_PRE1.r0.g3a763fc
+	pkgver = 1.5.1.r0.g441c26e
 	pkgrel = 1
 	epoch = 1
 	url = https://dhewm3.org/

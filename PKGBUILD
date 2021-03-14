@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=dhewm3
 pkgname=$_pkgname-git
-pkgver=1.5.1_PRE1.r0.g3a763fc
+pkgver=1.5.1.r0.g441c26e
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 source port"
@@ -25,22 +25,20 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	mkdir -p build
-}
-
 build() {
-	cd build
-	CXXFLAGS=${CXXFLAGS:+$CXXFLAGS }-DLINUX_DEFAULT_PATH='\"/usr/share/games/doom3\"' cmake ../$_pkgname/neo \
+	cmake -S $_pkgname/neo -B build \
+		-DCMAKE_CXX_FLAGS_INIT=-DLINUX_DEFAULT_PATH='\"/usr/share/games/doom3\"' \
+		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DDEDICATED=1
-	make
+		-DREPRODUCIBLE_BUILD=1 \
+		-DDEDICATED=1 \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-	cd build
 	# shellcheck disable=SC2154
-	make DESTDIR="$pkgdir" install
-	install -Dm644 -t "$pkgdir"/usr/share/applications ../$_pkgname.desktop
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
 }
