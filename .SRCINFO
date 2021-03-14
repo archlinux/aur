@@ -1,14 +1,14 @@
 pkgbase = python-qiskit-ignis
 	pkgdesc = Tools for quantum hardware verification, noise characterization, and error correction
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ignis
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-qiskit-terra
-	source = qiskit-ignis-0.5.1.tar.gz::https://github.com/Qiskit/qiskit-ignis/archive/0.5.1.tar.gz
-	sha256sums = c5c2202cb321edcfd746dd2af035408a7773902761c86df80cf8b791e3853605
+	source = qiskit-ignis-0.5.2.tar.gz::https://github.com/Qiskit/qiskit-ignis/archive/0.5.2.tar.gz
+	sha256sums = ca356051eea75b9481e8cba410994848470dfa0b2d3a52f46330e98ec2a8ccbd
 
 pkgname = python-qiskit-ignis
 
