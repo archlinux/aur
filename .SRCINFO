@@ -1,14 +1,15 @@
 pkgbase = python-xxh
 	pkgdesc = Take your shell with you!
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://pypi.org/project/xxh-xxh/
 	arch = x86_64
 	license = BSD
 	depends = python
 	depends = python-pexpect
-	source = python-xxh-0.8.6::https://github.com/xxh/xxh/archive/0.8.6.tar.gz
-	md5sums = 83a655b751ff9dc1ce0d30629d44f055
+	depends = python-setuptools
+	source = python-xxh-0.8.7::https://github.com/xxh/xxh/archive/0.8.7.tar.gz
+	md5sums = a104984f8590bf54043f993b41a107ad
 
 pkgname = python-xxh
 
