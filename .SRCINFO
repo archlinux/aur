@@ -1,6 +1,6 @@
 pkgbase = wechat-nativefier
-	pkgdesc = Built with nativefier (based on electron), seemed to Windows version.
-	pkgver = 20210312.1
+	pkgdesc = Built with nativefier (based on electron 12), seemed to Windows version.
+	pkgver = 20210314.1
 	pkgrel = 1
 	url = https://wx.qq.com/
 	arch = x86_64
