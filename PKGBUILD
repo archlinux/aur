@@ -1,8 +1,8 @@
 # Maintainer: Martin Hoeher <martin@rpdev.net>
-# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/268774105
+# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/270282346
 pkgname=opentodolist
 pkgver=3.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices."
 arch=('x86_64')
 url="https://opentodolist.rpdev.net/"
@@ -46,6 +46,8 @@ build() {
                 -GNinja \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=/usr \
+                -DQTKEYCHAIN_STATIC=ON \
+                -DQLMDB_WITH_STATIC_LIBS=ON \
                 ..
         cmake --build .
 }
@@ -66,4 +68,7 @@ package() {
         cd "$srcdir/${pkgname%}"
         cd build
         DESTDIR="$pkgdir/" cmake --build . --target install
+        rm -rf \
+                $pkgdir/usr/include/ \
+                $pkgdir/usr/lib/
 }
