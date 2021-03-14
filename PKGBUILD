@@ -1,9 +1,9 @@
 # Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=mu-cade
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 url="http://www.asahi-net.or.jp/~cs8k-cyu/windows/mcd_e.html"
-pkgdesc="sticky 2D shooter"
+pkgdesc="abstract shoot-em-up game, similar to Geometry Wars"
 license=('custom')
 depends=(libbulletml gcc-d ode sdl sdl_mixer)
 arch=('x86_64')
