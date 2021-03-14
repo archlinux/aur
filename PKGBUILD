@@ -3,7 +3,7 @@
 pkgname=firedragon-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=88.0a1.r638407+
+pkgver=88.0a1.r638591+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled - binary version"
 arch=(x86_64 aarch64)
@@ -25,7 +25,7 @@ replaces=('dragonwolf')
 install=firedragon-bin.install
 _uploadpath_x86_64="https://builds.garudalinux.org/repos/chaotic-aur/x86_64/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 source_x86_64=("${_uploadpath_x86_64}")
-sha256sums_x86_64=('a80accec03b89183446d09a53f43d81fd8e1abd786ed3942cb8e035e8a1ea4af')
+sha256sums_x86_64=('b2df3dbc9488bc262c4306b94a2c8d10e473c919b024c4c810da4c9f5376274f')
 
 package() {
   # Yep, that's somewhat redundant. But it works.
