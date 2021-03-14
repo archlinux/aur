@@ -18,9 +18,10 @@ provides=('ytfzf')
 conflicts=("ytfzf-git")
 install=
 source=("https://github.com/pystardust/ytfzf/archive/v${pkgver}.tar.gz")
-md5sums=('fff869cff4c00ca20e13a61b2199d604')
+md5sums=('19db6e2648a86526b0bdbdb7b237b672')
 
 package() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	install -Dm755  -t "${pkgdir}/usr/bin" "${pkgname}"
+	make DESTDIR="$pkgdir/" install
+
 }
