@@ -1,6 +1,6 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact-git
-pkgver=r148.d76b23a
+pkgver=r157.e63dae3
 pkgrel=1
 license=("MIT")
 pkgdesc="AMDGPU Controller application"
@@ -28,5 +28,6 @@ package() {
     install -Dm644 lact.desktop "${pkgdir}"/usr/share/applications/lact.desktop
     cd LACT
     install -Dm755 target/release/daemon "${pkgdir}"/usr/bin/lact-daemon
+    install -Dm755 target/release/cli "${pkgdir}"/usr/bin/lact-cli
     install -Dm755 target/release/gui "${pkgdir}"/usr/bin/lact-gui
 }
