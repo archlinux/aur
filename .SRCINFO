@@ -1,15 +1,14 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.3.2.r0.gcce4f4d
+	pkgver = 0.4.1.r9.g56fd7dc
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = any
 	license = AGPL3
 	makedepends = autoconf-archive
-	makedepends = cargo
 	makedepends = luarocks
-	makedepends = rust
 	makedepends = node-prune
+	makedepends = rust
 	makedepends = yarn
 	depends = bc
 	depends = bcprov
