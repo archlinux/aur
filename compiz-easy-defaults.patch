@@ -1,0 +1,145 @@
+diff -Naur a/metadata/core.xml.in b/metadata/core.xml.in
+--- a/metadata/core.xml.in	2016-07-01 21:39:57.000000000 +1000
++++ b/metadata/core.xml.in	2016-08-03 15:58:02.119855486 +1000
+@@ -215,7 +215,7 @@
+ 			<option name="window_menu_button" type="button">
+ 			<_short>Window Menu</_short>
+ 			<_long>Window menu button binding</_long>
+-			<default>&lt;Alt&gt;Button3</default>
++			<default>&lt;Alt&gt;Button2</default>
+ 			</option>
+ 			<option name="show_desktop_key" type="key">
+ 			<_short>Show Desktop</_short>
+@@ -254,14 +254,14 @@
+ 			<option name="hsize" type="int">
+ 			<_short>Horizontal Virtual Size</_short>
+ 			<_long>Screen size multiplier for horizontal virtual size</_long>
+-			<default>4</default>
++			<default>2</default>
+ 			<min>1</min>
+ 			<max>32</max>
+ 			</option>
+ 			<option name="vsize" type="int">
+ 			<_short>Vertical Virtual Size</_short>
+ 			<_long>Screen size multiplier for vertical virtual size</_long>
+-			<default>1</default>
++			<default>2</default>
+ 			<min>1</min>
+ 			<max>32</max>
+ 			</option>
+diff -Naur a/plugins/expo/expo.xml.in b/plugins/expo/expo.xml.in
+--- a/plugins/expo/expo.xml.in	2016-07-01 21:39:57.000000000 +1000
++++ b/plugins/expo/expo.xml.in	2016-08-03 16:02:18.653546597 +1000
+@@ -230,10 +230,10 @@
+ 			<_short>Selection Glow Color</_short>
+ 			<_long>Color and opacity of the glow texture that highlights the selected viewport.</_long>
+ 			<default>
+-			    <red>0xfbfb</red>
+-			    <green>0x8b8b</green>
+-			    <blue>0x0</blue>
+-			    <alpha>0x0</alpha>
++			    <red>0x1616</red>
++			    <green>0xa0a0</green>
++			    <blue>0x8585</blue>
++			    <alpha>0xffff</alpha>
+ 			</default>
+ 		    </option>
+ 		</subgroup>
+diff -Naur a/plugins/composite/composite.xml.in b/plugins/composite/composite.xml.in
+--- a/plugins/composite/composite.xml.in	2016-07-01 21:39:57.000000000 +1000
++++ b/plugins/composite/composite.xml.in	2016-08-03 15:58:02.119855486 +1000
+@@ -24,7 +24,7 @@
+ 	    <option name="unredirect_fullscreen_windows" type="bool">
+ 		<_short>Unredirect Fullscreen Windows</_short>
+ 		<_long>Allow drawing of fullscreen windows to not be redirected to offscreen pixmaps</_long>
+-		<default>true</default>
++		<default>false</default>
+ 	    </option>
+ 	    <option name="unredirect_match" type="match">
+ 		<_short>Unredirect Match</_short>
+diff -Naur a/plugins/grid/grid.xml.in b/plugins/grid/grid.xml.in
+--- a/plugins/grid/grid.xml.in	2016-07-01 21:39:57.000000000 +1000
++++ b/plugins/grid/grid.xml.in	2016-08-03 16:06:15.480336146 +1000
+@@ -566,7 +566,7 @@
+ 		<option name="animation_duration" type="int">
+ 			<_short>Preview Animation Duration</_short>
+ 			<_long>Preview animation duration (in ms).</_long>
+-			<default>350</default>
++			<default>250</default>
+ 			<min>0</min>
+ 		</option>
+ 		<option name="use_desktop_average_color" type="bool">
+@@ -578,9 +578,9 @@
+ 			<_short>Preview Outline Color</_short>
+ 			<_long>Color and opacity of the resize indicator preview outline.</_long>
+ 			<default>
+-			    <red>0xfbfb</red>
+-			    <green>0x8b8b</green>
+-			    <blue>0x0</blue>
++			    <red>0x1616</red>
++			    <green>0xa0a0</green>
++			    <blue>0x8585</blue>
+ 			    <alpha>0x9f9f</alpha>
+ 			</default>
+ 		</option>
+@@ -588,9 +588,9 @@
+ 			<_short>Preview Fill Color</_short>
+ 			<_long>Fill color and opacity of the resize indicator preview.</_long>
+ 			<default>
+-			    <red>0xfbfb</red>
+-			    <green>0x8b8b</green>
+-			    <blue>0x0</blue>
++			    <red>0x1616</red>
++			    <green>0xa0a0</green>
++			    <blue>0x8585</blue>
+ 			    <alpha>0x4f4f</alpha>
+ 			</default>
+ 		</option>
+diff -Naur a/plugins/resize/resize.xml.in b/plugins/resize/resize.xml.in
+--- a/plugins/resize/resize.xml.in	2016-07-01 21:39:57.000000000 +1000
++++ b/plugins/resize/resize.xml.in	2016-08-03 16:06:14.100335645 +1000
+@@ -17,7 +17,7 @@
+ 		<option name="initiate_button" type="button">
+ 		    <_short>Initiate Window Resize</_short>
+ 		    <_long>Start resizing window</_long>
+-		    <default>&lt;Alt&gt;Button2</default>
++		    <default>&lt;Alt&gt;Button3</default>
+ 		</option>
+ 		<option name="initiate_key" type="key">
+ 		    <_short>Initiate Window Resize</_short>
+@@ -28,7 +28,7 @@
+ 	    <option name="mode" type="int">
+ 		<_short>Default Resize Mode</_short>
+ 		<_long>Default mode used for window resizing</_long>
+-		<default>0</default>
++		<default>2</default>
+ 		<min>0</min>
+ 		<max>3</max>
+ 		<desc>
+@@ -72,9 +72,9 @@
+ 		<_short>Border Color</_short>
+ 		<_long>Border color used for outline and rectangle resize modes</_long>
+ 		<default>
+-		    <red>0x2f2f</red>
+-		    <green>0x2f2f</green>
+-		    <blue>0x4f4f</blue>
++		    <red>0x1616</red>
++		    <green>0xa0a0</green>
++		    <blue>0x8585</blue>
+ 		    <alpha>0x9f9f</alpha>
+ 		</default>
+ 	    </option>
+@@ -82,9 +82,9 @@
+ 		<_short>Fill Color</_short>
+ 		<_long>Fill color used for rectangle resize mode</_long>
+ 		<default>
+-		    <red>0x2f2f</red>
+-		    <green>0x2f2f</green>
+-		    <blue>0x4f4f</blue>
++		    <red>0x1616</red>
++		    <green>0xa0a0</green>
++		    <blue>0x8585</blue>
+ 		    <alpha>0x4f4f</alpha>
+ 		</default>
+ 	    </option>
+

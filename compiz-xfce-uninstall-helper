@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f /usr/bin/compiz ]; then
+   xfwm4 --daemon
+   xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -a -s xfwm4
+   rm ~/.config/autostart/compiz-xfce-autostart-setup.desktop
+   rm ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
+   
+   # these ones are clean-up for old filenames that are no longer used, some time in the future they should be removed
+   rm ~/.config/autostart/compiz-manjaro-decoratortheme.desktop
+   rm ~/.config/autostart/compiz-manjaro-xfce-decoratortheme.desktop
+   rm ~/.config/autostart/compiz-xfce-autostart.desktop
+   
+   rm ~/.local/bin/compiz-xfce-uninstall-helper
+fi

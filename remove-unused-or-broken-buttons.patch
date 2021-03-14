@@ -1,0 +1,321 @@
+diff --git a/gtk/window-decorator/decorator.c b/gtk/window-decorator/decorator.c
+index a119795..3c56880 100644
+--- a/gtk/window-decorator/decorator.c
++++ b/gtk/window-decorator/decorator.c
+@@ -216,13 +216,7 @@ update_event_windows (WnckWindow *win)
+ 	    WNCK_WINDOW_ACTION_CLOSE,
+ 	    WNCK_WINDOW_ACTION_MAXIMIZE,
+ 	    WNCK_WINDOW_ACTION_MINIMIZE,
+-	    0,
+-	    WNCK_WINDOW_ACTION_SHADE,
+-	    WNCK_WINDOW_ACTION_ABOVE,
+-	    WNCK_WINDOW_ACTION_STICK,
+-	    WNCK_WINDOW_ACTION_UNSHADE,
+-	    WNCK_WINDOW_ACTION_ABOVE,
+-	    WNCK_WINDOW_ACTION_UNSTICK
++	    0
+ 	};
+ 
+ 	/* Pixmap mode - if a box was set and we no longer need it unmap its window */
+@@ -1061,7 +1055,7 @@ populate_frame_actions (decor_t *d)
+         return frame_actions;
+ 
+     WnckWindowActions win_actions = wnck_window_get_actions (d->win);
+-    const unsigned int n_action_bits = 16;
++    const unsigned int n_action_bits = 10;
+     unsigned int i;
+     struct typestrings {
+         unsigned int decor_flag;
+@@ -1077,13 +1071,7 @@ populate_frame_actions (decor_t *d)
+         { DECOR_WINDOW_ACTION_MAXIMIZE_VERT, WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY },
+         { DECOR_WINDOW_ACTION_UNMAXIMIZE_HORZ, WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY },
+         { DECOR_WINDOW_ACTION_UNMAXIMIZE_VERT, WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY },
+-        { DECOR_WINDOW_ACTION_SHADE, WNCK_WINDOW_ACTION_SHADE },
+-        { DECOR_WINDOW_ACTION_UNSHADE, WNCK_WINDOW_ACTION_UNSHADE },
+-        { DECOR_WINDOW_ACTION_STICK, WNCK_WINDOW_ACTION_STICK },
+-        { DECOR_WINDOW_ACTION_UNSTICK, WNCK_WINDOW_ACTION_UNSTICK },
+-        { DECOR_WINDOW_ACTION_FULLSCREEN, WNCK_WINDOW_ACTION_FULLSCREEN },
+-        { DECOR_WINDOW_ACTION_ABOVE, WNCK_WINDOW_ACTION_ABOVE },
+-        { DECOR_WINDOW_ACTION_BELOW, WNCK_WINDOW_ACTION_BELOW },
++        { DECOR_WINDOW_ACTION_FULLSCREEN, WNCK_WINDOW_ACTION_FULLSCREEN }
+     };
+ 
+     for (i = 0; i < n_action_bits; ++i)
+diff --git a/gtk/window-decorator/events.c b/gtk/window-decorator/events.c
+index 5752176..be7d545 100644
+--- a/gtk/window-decorator/events.c
++++ b/gtk/window-decorator/events.c
+@@ -276,140 +276,6 @@ menu_button_event (WnckWindow *win,
+     }
+ }
+ 
+-void
+-shade_button_event (WnckWindow *win,
+-		    decor_event *gtkwd_event,
+-		    decor_event_type gtkwd_type)
+-{
+-    decor_t *d = g_object_get_data (G_OBJECT (win), "decor");
+-    guint   state = d->button_states[BUTTON_SHADE];
+-
+-    common_button_event (win, gtkwd_event, gtkwd_type,
+-			 BUTTON_SHADE, 1, _("Shade"));
+-
+-    switch (gtkwd_type) {
+-    case GButtonRelease:
+-	if (gtkwd_event->button == 1)
+-	{
+-	    if (state == BUTTON_EVENT_ACTION_STATE)
+-		wnck_window_shade (win);
+-	}
+-	break;
+-    default:
+-	break;
+-    }
+-}
+-
+-void
+-above_button_event (WnckWindow *win,
+-		    decor_event *gtkwd_event,
+-		    decor_event_type gtkwd_type)
+-{
+-    decor_t *d = g_object_get_data (G_OBJECT (win), "decor");
+-    guint   state = d->button_states[BUTTON_ABOVE];
+-
+-    common_button_event (win, gtkwd_event, gtkwd_type,
+-			 BUTTON_ABOVE, 1, _("Make Above"));
+-
+-    switch (gtkwd_type) {
+-    case GButtonRelease:
+-	if (gtkwd_event->button == 1)
+-	    if (state == BUTTON_EVENT_ACTION_STATE)
+-		wnck_window_make_above (win);
+-	break;
+-    default:
+-	break;
+-    }
+-}
+-
+-void
+-stick_button_event (WnckWindow *win,
+-		    decor_event *gtkwd_event,
+-		    decor_event_type gtkwd_type)
+-{
+-    decor_t *d = g_object_get_data (G_OBJECT (win), "decor");
+-    guint   state = d->button_states[BUTTON_STICK];
+-
+-    common_button_event (win, gtkwd_event, gtkwd_type,
+-			 BUTTON_STICK, 1, _("Stick"));
+-
+-    switch (gtkwd_type) {
+-    case GButtonRelease:
+-	if (gtkwd_event->button == 1)
+-	    if (state == BUTTON_EVENT_ACTION_STATE)
+-		wnck_window_stick (win);
+-	break;
+-    default:
+-	break;
+-    }
+-}
+-
+-void
+-unshade_button_event (WnckWindow *win,
+-		      decor_event *gtkwd_event,
+-		      decor_event_type gtkwd_type)
+-{
+-    decor_t *d = g_object_get_data (G_OBJECT (win), "decor");
+-    guint   state = d->button_states[BUTTON_UNSHADE];
+-
+-    common_button_event (win, gtkwd_event, gtkwd_type,
+-			 BUTTON_UNSHADE, 1, _("Unshade"));
+-
+-    switch (gtkwd_type) {
+-    case GButtonRelease:
+-	if (gtkwd_event->button == 1)
+-	    if (state == BUTTON_EVENT_ACTION_STATE)
+-		wnck_window_unshade (win);
+-	break;
+-    default:
+-	break;
+-    }
+-}
+-
+-void
+-unabove_button_event (WnckWindow *win,
+-		      decor_event *gtkwd_event,
+-		      decor_event_type gtkwd_type)
+-{
+-    decor_t *d = g_object_get_data (G_OBJECT (win), "decor");
+-    guint   state = d->button_states[BUTTON_UNABOVE];
+-
+-    common_button_event (win, gtkwd_event, gtkwd_type,
+-			 BUTTON_UNABOVE, 1, _("Unmake Above"));
+-
+-    switch (gtkwd_type) {
+-    case GButtonRelease:
+-	if (gtkwd_event->button == 1)
+-	    if (state == BUTTON_EVENT_ACTION_STATE)
+-		wnck_window_unmake_above (win);
+-	break;
+-    default:
+-	break;
+-    }
+-}
+-
+-void
+-unstick_button_event (WnckWindow *win,
+-		      decor_event *gtkwd_event,
+-		      decor_event_type gtkwd_type)
+-{
+-    decor_t *d = g_object_get_data (G_OBJECT (win), "decor");
+-    guint   state = d->button_states[BUTTON_UNSTICK];
+-
+-    common_button_event (win, gtkwd_event, gtkwd_type,
+-			 BUTTON_UNSTICK, 1, _("Unstick"));
+-
+-    switch (gtkwd_type) {
+-    case GButtonRelease:
+-	if (gtkwd_event->button == 1)
+-	    if (state == BUTTON_EVENT_ACTION_STATE)
+-		wnck_window_unstick (win);
+-	break;
+-    default:
+-	break;
+-    }
+-}
+-
+ static void
+ handle_title_button_event (WnckWindow   *win,
+ 			   int          action,
+diff --git a/gtk/window-decorator/gtk-window-decorator.h b/gtk/window-decorator/gtk-window-decorator.h
+index b7d579b..6bf5d31 100644
+--- a/gtk/window-decorator/gtk-window-decorator.h
++++ b/gtk/window-decorator/gtk-window-decorator.h
+@@ -130,13 +130,7 @@ extern struct _cursor cursor[3][3];
+ #define BUTTON_MAX     1
+ #define BUTTON_MIN     2
+ #define BUTTON_MENU    3
+-#define BUTTON_SHADE   4
+-#define BUTTON_ABOVE   5
+-#define BUTTON_STICK   6
+-#define BUTTON_UNSHADE 7
+-#define BUTTON_UNABOVE 8
+-#define BUTTON_UNSTICK 9
+-#define BUTTON_NUM     10
++#define BUTTON_NUM     4
+ 
+ struct _pos {
+     int x, y, w, h;
+@@ -540,35 +534,6 @@ menu_button_event (WnckWindow *win,
+ 		   decor_event_type gtkwd_type);
+ 
+ void
+-shade_button_event (WnckWindow *win,
+-		    decor_event *gtkwd_event,
+-		    decor_event_type gtkwd_type);
+-
+-void
+-above_button_event (WnckWindow *win,
+-		    decor_event *gtkwd_event,
+-		    decor_event_type gtkwd_type);
+-
+-void
+-stick_button_event (WnckWindow *win,
+-		    decor_event *gtkwd_event,
+-		    decor_event_type gtkwd_type);
+-void
+-unshade_button_event (WnckWindow *win,
+-		      decor_event *gtkwd_event,
+-		      decor_event_type gtkwd_type);
+-
+-void
+-unabove_button_event (WnckWindow *win,
+-		      decor_event *gtkwd_event,
+-		      decor_event_type gtkwd_type);
+-
+-void
+-unstick_button_event (WnckWindow *win,
+-		      decor_event *gtkwd_event,
+-		      decor_event_type gtkwd_type);
+-
+-void
+ title_event (WnckWindow       *win,
+ 	     decor_event      *gtkwd_event,
+ 	     decor_event_type gtkwd_type);
+diff --git a/gtk/window-decorator/gwd-theme-cairo.c b/gtk/window-decorator/gwd-theme-cairo.c
+index e6da481..85f4202 100644
+--- a/gtk/window-decorator/gwd-theme-cairo.c
++++ b/gtk/window-decorator/gwd-theme-cairo.c
+@@ -495,12 +495,6 @@ button_present (decor_t *decor,
+             break;
+ 
+         case BUTTON_MENU:
+-        case BUTTON_SHADE:
+-        case BUTTON_ABOVE:
+-        case BUTTON_STICK:
+-        case BUTTON_UNSHADE:
+-        case BUTTON_UNABOVE:
+-        case BUTTON_UNSTICK:
+             break;
+ 
+         default:
+diff --git a/gtk/window-decorator/gwd-theme-metacity.c b/gtk/window-decorator/gwd-theme-metacity.c
+index 4ec5277..a0bc39c 100644
+--- a/gtk/window-decorator/gwd-theme-metacity.c
++++ b/gtk/window-decorator/gwd-theme-metacity.c
+@@ -95,18 +95,6 @@ meta_button_state_for_button_type (decor_t        *decor,
+             return meta_button_state (decor->button_states[BUTTON_MIN]);
+         case META_BUTTON_TYPE_MENU:
+             return meta_button_state (decor->button_states[BUTTON_MENU]);
+-        case META_BUTTON_TYPE_SHADE:
+-            return meta_button_state (decor->button_states[BUTTON_SHADE]);
+-        case META_BUTTON_TYPE_ABOVE:
+-            return meta_button_state (decor->button_states[BUTTON_ABOVE]);
+-        case META_BUTTON_TYPE_STICK:
+-            return meta_button_state (decor->button_states[BUTTON_STICK]);
+-        case META_BUTTON_TYPE_UNSHADE:
+-            return meta_button_state (decor->button_states[BUTTON_UNSHADE]);
+-        case META_BUTTON_TYPE_UNABOVE:
+-            return meta_button_state (decor->button_states[BUTTON_UNABOVE]);
+-        case META_BUTTON_TYPE_UNSTICK:
+-            return meta_button_state (decor->button_states[BUTTON_UNSTICK]);
+         default:
+             break;
+     }
+@@ -553,18 +541,6 @@ button_type_to_meta_button_type (gint button_type)
+             return META_BUTTON_TYPE_MAXIMIZE;
+         case BUTTON_CLOSE:
+             return META_BUTTON_TYPE_CLOSE;
+-        case BUTTON_SHADE:
+-            return META_BUTTON_TYPE_SHADE;
+-        case BUTTON_ABOVE:
+-            return META_BUTTON_TYPE_ABOVE;
+-        case BUTTON_STICK:
+-            return META_BUTTON_TYPE_STICK;
+-        case BUTTON_UNSHADE:
+-            return META_BUTTON_TYPE_UNSHADE;
+-        case BUTTON_UNABOVE:
+-            return META_BUTTON_TYPE_UNABOVE;
+-        case BUTTON_UNSTICK:
+-            return META_BUTTON_TYPE_UNSTICK;
+         default:
+             break;
+     }
+diff --git a/gtk/window-decorator/wnck.c b/gtk/window-decorator/wnck.c
+index cc43f65..4ac1483 100644
+--- a/gtk/window-decorator/wnck.c
++++ b/gtk/window-decorator/wnck.c
+@@ -667,13 +667,7 @@ window_opened (WnckScreen *screen,
+ 	close_button_event,
+ 	max_button_event,
+ 	min_button_event,
+-	menu_button_event,
+-	shade_button_event,
+-	above_button_event,
+-	stick_button_event,
+-	unshade_button_event,
+-	unabove_button_event,
+-	unstick_button_event
++	menu_button_event
+     };
+ 
+     d = calloc (1, sizeof (decor_t));

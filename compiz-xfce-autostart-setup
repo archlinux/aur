@@ -1,0 +1,26 @@
+#!/bin/bash
+
+xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -a -s compiz
+
+## Automatic GWD decoration matching for default Manjaro Xfce themes
+if [ "$(xfconf-query -c xsettings -p /Net/ThemeName)" == "Menda" ]; then
+	gsettings set org.gnome.desktop.wm.preferences theme "Menda"
+elif [ "$(xfconf-query -c xsettings -p /Net/ThemeName)" == "Vertex-Maia-Square" ]; then
+	gsettings set org.gnome.desktop.wm.preferences theme "Vertex-Maia-Square"
+fi
+
+mkdir -p ~/.local/bin
+mkdir -p ~/.config/autostart
+
+rm ~/.local/bin/compiz-xfce-uninstall-helper
+cp /usr/bin/compiz-xfce-uninstall-helper ~/.local/bin/
+rm ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
+cp /etc/xdg/autostart/compiz-xfce-uninstall-helper.desktop ~/.config/autostart/
+sed -i 's|Exec=compiz-xfce-uninstall-helper|Exec=sh -c ~/.local/bin/compiz-xfce-uninstall-helper|' ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
+
+rm ~/.config/autostart/compiz-xfce-autostart-setup.desktop
+cp /etc/xdg/autostart/compiz-xfce-autostart-setup.desktop ~/.config/autostart/
+sed -i 's|Hidden=false|Hidden=true|' ~/.config/autostart/compiz-xfce-autostart-setup.desktop
+
+## This first-time run when it's replacing a running xfwm4, we run it twice cause of bugs
+compiz --replace ; exec compiz --replace

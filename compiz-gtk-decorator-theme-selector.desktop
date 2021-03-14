@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Compiz GTK decorator theme
+Comment=Set the theme for the Compiz GTK window decorator
+Icon=ccsm
+Exec=compiz-gtk-decorator-theme-selector
+Terminal=false
+Type=Application
+Categories=Compiz;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-OtherSettings;
+NotShowIn=MATE;
+StartupNotify=true

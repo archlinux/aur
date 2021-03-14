@@ -1,0 +1,7 @@
+[org.gnome.desktop.wm.preferences]
+button-layout=":minimize,maximize,close"
+theme="Matcha-dark-sea"
+titlebar-uses-system-font=true
+
+[org.mate.session.required-components]
+windowmanager="compiz"

@@ -1,0 +1,6 @@
+post_install() {
+     echo ""
+     echo "***  Xfce and MATE users just log out    ***"
+     echo "***  and back in, Compiz will autostart  ***"
+     echo ""
+}

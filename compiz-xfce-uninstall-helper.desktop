@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=Compiz-Xfce uninstallation helper (do not untick)
+Comment=
+Exec=compiz-xfce-uninstall-helper
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
+if [ ! -f /usr/bin/metacity ]; then
+  zenity --warning --text="<b>You do not appear to have Metacity installed.</b>\n\nThe Compiz GTK window decorator uses Metacity libraries to operate. The Metacity theme is what this tool adjusts.\n\nInstall the metacity package if you would like to use the Compiz GTK window decorator."
+fi
+
+main_window() {
+  selection=$(
+    zenity --height 450 --width 320 --list --ok-label="Apply" --cancel-label="Close" --title="Metacity themes" \
+    --column="Current theme: $( if [ $(gsettings get org.gnome.desktop.wm.preferences theme) == "''" ]; then
+        echo Default
+      else
+        gsettings get org.gnome.desktop.wm.preferences theme
+      fi)" \
+    "Compiz GWD default" \
+    $(
+      for d in /usr/share/themes/*/metacity-1; do
+        echo $d | sed 's:/usr/share/themes/::' | sed 's:/metacity-1::'
+      done
+    )
+  )
+}
+
+while [ $? = 0 ]; do
+if [ "$selection" == "Compiz GWD default" ]; then
+  gsettings set org.gnome.desktop.wm.preferences theme ""
+elif [ "$selection" != "" ]; then
+  gsettings set org.gnome.desktop.wm.preferences theme "$selection"
+fi
+main_window
+done
+
+IFS=$SAVEIFS

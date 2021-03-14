@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=Compiz-Xfce autostart setup
+Comment=
+Exec=compiz-xfce-autostart-setup
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false
