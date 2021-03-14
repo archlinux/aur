@@ -2,15 +2,15 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 
 pkgname=glow
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/charmbracelet/glow"
+url="https://github.com/charmbracelet/${pkgname}"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('828d8453f026a24cd7a6dcf8d97213fe713cadcfab7ca969d5f4c8338d88bb86')
+sha256sums=('97d373e002332e54e2fb808ea38f098ca49e2b88038c115bd6d33d0b3b921495')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -19,13 +19,10 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-X main.Version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
+        -ldflags "-X main.Version=$pkgver" \
         -o "$pkgname" .
 }
 
