@@ -18,6 +18,6 @@ pkgbase = nodejs-nightly
 	conflicts = nodejs
 	conflicts = npm
 	source = https://nodejs.org/download/nightly/v16.0.0-nightly20210312bfa6e37204/node-v16.0.0-nightly20210312bfa6e37204-linux-x64.tar.xz
-	md5sums = 12bb0d3a71823e7633feb3ba38fa3281
+	md5sums = 7bc8132ea194ea303563edc16d7d0c25
 
 pkgname = nodejs-nightly

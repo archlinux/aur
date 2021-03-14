@@ -11,7 +11,7 @@ makedepends=('procps-ng')
 conflicts=('nodejs' 'npm')
 provides=("nodejs=$pkgver" 'nodev16' 'npm')
 source=("https://nodejs.org/download/nightly/v${_pkgver}/node-v${_pkgver}-linux-x64.tar.xz")
-md5sums=('12bb0d3a71823e7633feb3ba38fa3281')
+md5sums=('7bc8132ea194ea303563edc16d7d0c25')
 
 package() {
   	cd node-v$_pkgver-linux-x64
