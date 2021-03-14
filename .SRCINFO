@@ -1,24 +1,26 @@
 pkgbase = python-qiskit-aer
 	pkgdesc = A high performance simulator for quantum circuits that includes noise models
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.7.6
+	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-aer
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
-	makedepends = conan
+	makedepends = python-pip
 	makedepends = cmake
 	makedepends = python-scikit-build
+	makedepends = pybind11
 	depends = python-qiskit-terra
 	depends = cython
 	depends = openblas
-	depends = pybind11
+	depends = spdlog
+	depends = muparserx
 	optdepends = thrust: Parallelization (GPU/CPU) support
 	optdepends = cuda: Parallelization with CUDA (NVIDIA)
 	optdepends = openmp: Parallelization with OpenMP
 	optdepends = intel-tbb: Parallelization with Intel TBB
-	source = qiskit-aer-0.7.1.tar.gz::https://github.com/Qiskit/qiskit-aer/archive/0.7.1.tar.gz
-	sha256sums = 816e0adaef2a5b89f0efa10c8b947815dbb09cbdbc0ad55282e08d07dcc99436
+	source = qiskit-aer-0.7.6.tar.gz::https://github.com/Qiskit/qiskit-aer/archive/0.7.6.tar.gz
+	sha256sums = ded2d0ac38fb522420db6b36f403b7182f9cee9e9150c711a0711837a17da3f1
 
 pkgname = python-qiskit-aer
 

@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-aer
 pkgname=python-${_pkgname}
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-aer"
@@ -11,7 +11,8 @@ depends=(
     'python-qiskit-terra'
     'cython'
     'openblas'
-    'pybind11')
+    'spdlog'
+    'muparserx')
 optdepends=(
     'thrust: Parallelization (GPU/CPU) support'
     'cuda: Parallelization with CUDA (NVIDIA)'
@@ -19,17 +20,18 @@ optdepends=(
     'intel-tbb: Parallelization with Intel TBB')
 makedepends=(
     'python-setuptools'
-    'conan'
+    'python-pip'
     'cmake'
-    'python-scikit-build')
+    'python-scikit-build'
+    'pybind11')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=('816e0adaef2a5b89f0efa10c8b947815dbb09cbdbc0ad55282e08d07dcc99436')
+sha256sums=('ded2d0ac38fb522420db6b36f403b7182f9cee9e9150c711a0711837a17da3f1')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py build
+	DISABLE_CONAN=ON python setup.py build
 }
 
 package() {
