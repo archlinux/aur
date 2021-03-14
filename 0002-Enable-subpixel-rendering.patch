@@ -8,7 +8,7 @@ Subject: [PATCH] Enable subpixel rendering
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 097f19b8a5..e5de62e353 100644
+index da4250b083..5669cf2496 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -124,7 +124,7 @@ FT_BEGIN_HEADER

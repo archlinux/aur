@@ -2,6 +2,6 @@
 /*.pkg.tar.*
 /.mkpkg_check
 /MKPKG
-/freetype2
-/freetype2-demos
+/freetype
+/freetype-demos
 /log

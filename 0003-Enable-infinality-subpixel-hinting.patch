@@ -8,10 +8,10 @@ Subject: [PATCH] Enable infinality subpixel hinting
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index e5de62e353..acb4d6d6aa 100644
+index 5669cf2496..ee313322f2 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -672,8 +672,8 @@ FT_BEGIN_HEADER
+@@ -689,8 +689,8 @@ FT_BEGIN_HEADER
     * https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx
     */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
