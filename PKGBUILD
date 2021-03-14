@@ -4,13 +4,13 @@ _pkg=pygmt
 pkgbase=python-${_pkg}
 pkgname=("python-${_pkg}")
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to the Generic Mapping Tools C library"
 arch=('x86_64')
 url="https://www.pygmt.org"
 license=('3-BSD')
 depends=('python-numpy' 'python-pandas' 'python-xarray' 'python-netcdf4' 'python-packaging' 'gmt6>=6.1.1')
-makedepends=('cython' 'python-setuptools'
+makedepends=('python-pip' 'cython' 'python-setuptools'
             'gmt-coast' 'gmt-dcw' 'ipython' 'python-matplotlib' 'jupyter' 'python-pytest'
             'python-pytest-cov' 'python-pytest-mpl' 'python-coverage'
             'python-black' 'python-pylint' 'flake8' 'python-sphinx'
