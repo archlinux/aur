@@ -2,7 +2,7 @@
 
 pkgname=kdeplasma-applets-fokus
 _gitpkgname=focus-plasmoid
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A simple pomodoro KDE plasmoid"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://gitlab.com/divinae/$_gitpkgname"
 license=('GPL')
 depends=('plasma-workspace')
 source=("https://gitlab.com/divinae/$_gitpkgname/-/archive/v$pkgver/$_gitpkgname-v$pkgver.tar.gz")
-sha512sums=('fe96ad0cad80a9372280fe4fb59a47e1747f8c2531cbc7710202de6a34228332b39cd2bdff220e18e6193b76cf4a0c9366d3d91547fe241af8e6eb719d534851')
+sha512sums=('f756370dde17869fd15129bcff0bb2c78db3a1580bbf6b935ed4ae9663d3346e467c222e4747c59c85f8c03c8ff5ed1d0e3e2f089b5d812456d005f0c05b089c')
 
 package() {
   cd "$_gitpkgname-v$pkgver"
