@@ -1,4 +1,4 @@
-pkgbase = python-nagios-check-hddtemp
+pkgbase = nagios-check-hddtemp
 	pkgdesc = A python plugin that allows Nagios/Icinga2 to monitor hdd temperatures using hddtemp in server mode
 	pkgver = 1.4.10
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = python-nagios-check-hddtemp
 	source = git+https://github.com/vint21h/nagios-check-hddtemp.git#tag=1.4.10
 	sha256sums = SKIP
 
-pkgname = python-nagios-check-hddtemp
+pkgname = nagios-check-hddtemp
 
