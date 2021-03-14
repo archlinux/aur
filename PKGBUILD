@@ -2,7 +2,7 @@
 # Maintainer: Nico_7t
 # Contributor: Nico_7t
 pkgname=pixivdeck
-pkgver=0.16.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Pixiv client for desktop"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'desktop-file-utils' 'electron' 'expat'
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-source_x86_64=("https://github.com/akameco/PixivDeck/releases/download/v0.16.3/PixivDeck_0.16.3_amd64.deb")
+source_x86_64=("https://github.com/akameco/PixivDeck/releases/download/v${pkgver}/PixivDeck_${pkgver}_amd64.deb")
 
 sha512sums_x86_64=('SKIP')
 

@@ -1,11 +1,12 @@
 pkgbase = pixivdeck
 	pkgdesc = Pixiv client for desktop
-	pkgver = 0.16.3
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/akameco/PixivDeck
 	install = pixivdeck.install
 	arch = i686
 	arch = x86_64
+	groups = 
 	license = MIT
 	depends = alsa-lib
 	depends = atk
@@ -43,7 +44,7 @@ pkgbase = pixivdeck
 	depends = pango
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/akameco/PixivDeck/releases/download/v0.16.3/PixivDeck_0.16.3_amd64.deb
+	source_x86_64 = https://github.com/akameco/PixivDeck/releases/download/v1.4.0/PixivDeck_1.4.0_amd64.deb
 	sha512sums_x86_64 = SKIP
 
 pkgname = pixivdeck
