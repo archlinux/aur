@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=helvum-git
-pkgver=0.1.0.r10.gb348339
+pkgver=0.1.0.r13.g3fccff0
 pkgrel=1
 pkgdesc='GTK-based patchbay for pipewire, inspired by the JACK tool catia'
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,7 @@ package() {
   cd helvum
 
   cargo install \
+    --no-track \
     --root "$pkgdir/usr" \
     --path "$srcdir/helvum"
 }
