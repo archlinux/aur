@@ -1,4 +1,5 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Maintainer: Matthew "Madness" Evan <matthew.v.evan@outlook.com>
+# Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Rob McCathie <archaur at rmcc dot com dot au
 # Contributor: /dev/rs0 <rs0@secretco.de.com>
 # Contributor: Iven Hsu <ivenvd AT gmail>
@@ -9,7 +10,7 @@ _name=compiz
 pkgname=compiz-easy-patch
 pkgver=0.9.14.1
 pkgrel=3
-pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
+pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE. (From Manjaro to Arch)"
 arch=('x86_64')
 url="https://launchpad.net/${_name}"
 license=('GPL' 'LGPL' 'MIT')
