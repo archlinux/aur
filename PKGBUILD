@@ -1,17 +1,17 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=instamenu-extra
-pkgver=2021.03.13
+pkgver=2021.03.14
 pkgrel=1
 pkgdesc="addons for instamenu"
 url="https://github.com/The-Repo-Club/$pkgname"
 arch=('any')
 groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
-depends=('bash' 'systemd' 'autorandr' 'instamenu' 'instamenu-schemas' 'python>=3.4')
+depends=('bash' 'systemd' 'glib2' 'autorandr' 'instamenu' 'instamenu-schemas' 'python>=3.4' 'python-gobject')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('5412231f52fb646f57f716c0e7271fde0c404bcfca90358e8b031303da3ed791')
+sha256sums=('5eb8f3d81c9ede115018c15e9b63b257edf922ae07658a80d90047d5a92c1b5e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

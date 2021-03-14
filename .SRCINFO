@@ -1,6 +1,6 @@
 pkgbase = instamenu-extra
 	pkgdesc = addons for instamenu
-	pkgver = 2021.03.13
+	pkgver = 2021.03.14
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/instamenu-extra
 	arch = any
@@ -8,13 +8,15 @@ pkgbase = instamenu-extra
 	license = CC BY-NC-SA 4.0
 	depends = bash
 	depends = systemd
+	depends = glib2
 	depends = autorandr
 	depends = instamenu
 	depends = instamenu-schemas
 	depends = python>=3.4
+	depends = python-gobject
 	provides = instamenu-extra
-	source = instamenu-extra-2021.03.13.tar.gz::https://github.com/The-Repo-Club/instamenu-extra/archive/2021.03.13.tar.gz
-	sha256sums = 5412231f52fb646f57f716c0e7271fde0c404bcfca90358e8b031303da3ed791
+	source = instamenu-extra-2021.03.14.tar.gz::https://github.com/The-Repo-Club/instamenu-extra/archive/2021.03.14.tar.gz
+	sha256sums = 5eb8f3d81c9ede115018c15e9b63b257edf922ae07658a80d90047d5a92c1b5e
 
 pkgname = instamenu-extra
 
