@@ -1,7 +1,7 @@
 pkgbase = cherrytree-bin
 	pkgdesc = Binary version of cherrytree
 	pkgver = 0.99.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.giuspen.com/cherrytree/
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = cherrytree-bin
 	provides = cherrytree
 	conflicts = cherrytree
 	source = https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/cherrytree_0.99.32-2_amd64.deb
-	sha256sums = 51c524bf1e96901ab4d133d52162f35c2b147edaeb544fba57949970a8b5fca1
+	sha256sums = 265bc77efd7dba45684e90aa42a6874792620fbbcea91968ef777c09e918e48c
 
 pkgname = cherrytree-bin
 
