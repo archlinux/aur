@@ -1,10 +1,10 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake3
 pkgver=1.32c
 pkgrel=2
 pkgdesc="The stock Quake 3 Arena binaries. PunkBuster Compatible."
-url="http://www.quake3arena.com/"
+url="https://web.archive.org/web/20000620090654/http://www.quake3arena.com/"
 license=('GPL')
 arch=('i686' 'x86_64')
 [ "${CARCH}" = "i686"   ] && depends=('libgl' 'libxext')
