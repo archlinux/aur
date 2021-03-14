@@ -1,9 +1,10 @@
 pkgbase = waynergy-git
 	pkgdesc = Synergy client for wlroots wayland compositors
-	pkgver = r124.4ead8fb
+	pkgver = r126.60a3d91
 	pkgrel = 1
 	url = https://github.com/r-c-f/waynergy
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = git
 	makedepends = meson
