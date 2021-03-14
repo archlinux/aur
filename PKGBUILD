@@ -1,30 +1,33 @@
-# Maintainer : Mike Polvere <mic.tjs@gmail.com>
-# Former Maintainer : Michael DeGuzis <mdeguzis@gmail.com>
-# Former Maintainer : Lauri Niskanen <ape@ape3000.com>
+# Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
+# Contributor : Mike Polvere <mic.tjs@gmail.com>
+# Contributor : Michael DeGuzis <mdeguzis@gmail.com>
+# Contributor : Lauri Niskanen <ape@ape3000.com>
 
 pkgname=libretro-gambatte-git
-pkgver=783.0897d1d
+pkgver=889.d8ccae4
 pkgrel=1
-pkgdesc="Game Boy / Color libretro core"
-arch=('i686' 'x86_64' 'arm' 'armv6h')
-_libname=gambatte_libretro
-_gitname=gambatte-libretro
-url="git+https://github.com/libretro/${_gitname}.git"
+pkgdesc="Nintendo Game Boy/Game Boy Color core"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+url="https://github.com/libretro/gambatte-libretro"
 license=('GPL2')
 groups=('libretro')
-depends=('gcc-libs')
+depends=('zlib' 'glibc' 'libretro-core-info')
 makedepends=('git')
+
+_libname=gambatte_libretro
+_gitname=gambatte-libretro
+
 source=("git+https://github.com/libretro/${_gitname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  	cd "${_gitname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${_gitname}"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-    cd "${_gitname}"
-    make -f Makefile.libretro
+  cd "${_gitname}"
+  make
 }
 
 package() {
