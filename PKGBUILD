@@ -1,23 +1,43 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
-# Contributor: Artem Vorotnikov <artem@vorotnikov.me>
+# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
-_gemname_='rack-cache'
-pkgname=ruby-${_gemname_}
-pkgver='1.6.1'
+_gemname='rack-cache'
+pkgname="ruby-${_gemname}"
+pkgver=1.12.1
 pkgrel=1
-pkgdesc='A quick drop-in component to enable HTTP caching for Rack-based applications'
+pkgdesc="Real HTTP Caching for Ruby Web Apps"
 arch=('any')
-url='http://tomayko.com/src/rack-cache/'
+url='https://github.com/rtomayko/rack-cache'
 license=('MIT')
+options=(!emptydirs)
 depends=('ruby' 'ruby-rack')
-options=('!emptydirs')
-source=("https://rubygems.org/downloads/${_gemname_}-${pkgver}.gem")
-noextract=("${_gemname_}-${pkgver}.gem")
-sha256sums=('613a4e88661ea7014211d39e5f99e18f35f6aa37ac7ef96001160131c0311490')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('f850facb28f302db819b6d67fd86e0dd18ae8f5d132044582bbcd6792b287c7d4a29219a47e708b5047fb373b5857632597d9743b4ba530b1258d29924ca4cf9')
 
-package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname_}-${pkgver}.gem"
-  rm "${pkgdir}/${_gemdir}/cache/${_gemname_}-${pkgver}.gem"
+prepare() {
+  cd "${_gemname}-${pkgver}"
+
+  # we built based on a tar archive, not a git repo
+  sed --in-place 's/git ls-files/find/' "${_gemname}.gemspec"
+
+  # update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "${_gemname}.gemspec"
 }
 
+build() {
+  cd "${_gemname}-${pkgver}"
+
+  gem build "${_gemname}"
+}
+
+package() {
+  cd "${_gemname}-${pkgver}"
+
+  local _gemdir="$(gem env gemdir)"
+
+  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
+
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+
+  install -Dm 644 MIT-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 CHANGES README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
+}

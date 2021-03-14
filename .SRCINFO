@@ -1,16 +1,15 @@
 pkgbase = ruby-rack-cache
-	pkgdesc = A quick drop-in component to enable HTTP caching for Rack-based applications
-	pkgver = 1.6.1
+	pkgdesc = Real HTTP Caching for Ruby Web Apps
+	pkgver = 1.12.1
 	pkgrel = 1
-	url = http://tomayko.com/src/rack-cache/
+	url = https://github.com/rtomayko/rack-cache
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-rack
-	noextract = rack-cache-1.6.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rack-cache-1.6.1.gem
-	sha256sums = 613a4e88661ea7014211d39e5f99e18f35f6aa37ac7ef96001160131c0311490
+	source = ruby-rack-cache-1.12.1.tar.gz::https://github.com/rtomayko/rack-cache/archive/v1.12.1.tar.gz
+	sha512sums = f850facb28f302db819b6d67fd86e0dd18ae8f5d132044582bbcd6792b287c7d4a29219a47e708b5047fb373b5857632597d9743b4ba530b1258d29924ca4cf9
 
 pkgname = ruby-rack-cache
 
