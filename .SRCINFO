@@ -1,0 +1,37 @@
+pkgbase = python-pyscreenshot-git
+	pkgdesc = Copy the contents of the screen to a PIL or Pillow image memory
+	pkgver = 2.3.r6.g9bccb78
+	pkgrel = 1
+	url = https://github.com/ponty/pyscreenshot
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pyvirtualdisplay
+	checkdepends = python-pillow
+	checkdepends = python-path.py
+	checkdepends = python-xlib
+	checkdepends = python-gobject
+	checkdepends = python-pyqt5
+	checkdepends = python-qtpy
+	checkdepends = python-wxpython
+	checkdepends = pyside2
+	checkdepends = xorg-server-xvfb
+	checkdepends = xorg-xdpyinfo
+	checkdepends = gnome-screenshot
+	checkdepends = scrot
+	checkdepends = imagemagick
+	checkdepends = maim
+	checkdepends = pqiv
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-easyprocess
+	depends = python-entrypoint2
+	depends = python-mss
+	depends = python-jeepney
+	provides = python-pyscreenshot
+	conflicts = python-pyscreenshot
+	source = git+https://github.com/ponty/pyscreenshot.git
+	sha256sums = SKIP
+
+pkgname = python-pyscreenshot-git
+
