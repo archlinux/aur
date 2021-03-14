@@ -1,19 +1,17 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
+# Contributor: Krzysztof Bogacki <krzysztof dot bogacki at leancode dot pl>
 
 _provide_header=true
 
 _pkgbase=winesync
 pkgname=winesync-dkms
 pkgver=5.11
-pkgrel=4
+pkgrel=5
 pkgdesc="Wine synchronization primitive driver - out-of-tree module"
-arch=('x86_64')
+arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
-depends=('dkms')
-optdepends=('linux-headers: build the module for Arch kernel'
-            'linux-lts-headers: build the module for LTS Arch kernel')
-provides=("$_pkgbase=$pkgver" "$pkgname=$pkgver")
-conflicts=("$_pkgbase" "$pkgname")
+optdepends=('linux-headers: build the module for Arch kernel')
+provides=("WINESYNC-MODULE=$pkgver")
 license=('GPL2')
 options=('!strip')
 _commit=e97dfb6b3ee6792cd1fe8242df4dafd8f10cca99
@@ -39,6 +37,7 @@ build() {
 }
 
 package() {
+    depends=('dkms')
     install -Dm644 "$srcdir/99-winesync.rules" "$pkgdir/usr/lib/udev/rules.d/99-winesync.rules"
     install -Dm644 "$srcdir/Makefile" "$pkgdir/usr/src/$_pkgbase-$pkgver/Makefile"
     install -Dm644 "$srcdir/winesync.h-$_commit" "$pkgdir/usr/src/$_pkgbase-$pkgver/include/uapi/linux/winesync.h"
