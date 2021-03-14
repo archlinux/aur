@@ -1,7 +1,7 @@
 pkgbase = ctucx-gallery
 	pkgdesc = gallery as static-site-generator
 	pkgver = 0.1
-	pkgrel = 10
+	pkgrel = 12
 	url = https://cgit.ctu.cx/gallery/
 	arch = x86_64
 	license = GPL-3
@@ -10,8 +10,8 @@ pkgbase = ctucx-gallery
 	depends = glibc
 	depends = imagemagick
 	depends = libexif
-	source = ctucx-gallery-3d2821954ec24623c80a42bff32665c71cf49b2d.tar.gz::https://cgit.ctu.cx/gallery/snapshot/gallery-3d2821954ec24623c80a42bff32665c71cf49b2d.tar.gz
-	sha256sums = dd4b150b5c05bce3486f702afb28d06da543e437fabe0e5112cf0e8a8c034d9a
+	source = ctucx-gallery-98a77d33e618e5bdd02231eeaacec754c54aa9af.tar.gz::https://cgit.ctu.cx/gallery/snapshot/gallery-98a77d33e618e5bdd02231eeaacec754c54aa9af.tar.gz
+	sha256sums = 8105b48a449c0a4dd96edb1e9db3087eb48c9cb075cf0b99aa2b299c388601a6
 
 pkgname = ctucx-gallery
 
