@@ -1,6 +1,6 @@
 pkgbase = shadered
-	pkgdesc = SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders.
-	pkgver = 1.5.0
+	pkgdesc = Lightweight tool for creating and testing HLSL and GLSL shaders.
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/dfranx/SHADERed
 	arch = x86_64
@@ -15,8 +15,30 @@ pkgbase = shadered
 	depends = glew
 	depends = glm
 	depends = spirv-headers
-	source = git+https://github.com/dfranx/SHADERed.git#commit=d05da43
+	source = https://github.com/dfranx/SHADERed.git#tag=v1.5
+	source = https://github.com/dfranx/ImGuiColorTextEdit
+	source = https://github.com/dfranx/SPIRV-VM.git
+	source = https://github.com/dfranx/ShaderExpressionParser
+	source = https://github.com/dfranx/SpvGenTwo
+	source = https://github.com/dfranx/assimp.git
+	source = https://github.com/KhronosGroup/glslang
+	source = https://github.com/dfranx/imgui.git
+	source = https://github.com/jtilly/inih
+	source = https://github.com/zeux/pugixml
+	source = https://github.com/KhronosGroup/SPIRV-Headers
+	source = https://github.com/KhronosGroup/SPIRV-Tools.git
 	source = SHADERed.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = e501a371996c373988bd74733f288c8caa6b44d88439c5d52b18e14b4766420c
 
