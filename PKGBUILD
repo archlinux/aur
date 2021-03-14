@@ -6,7 +6,7 @@
 #_plugin_voip='true'
 
 # Set this to 'true' to enable the new automatically generated jsaon api
-_jsonapi='true'
+#_jsonapi='true'
 
 # Set this to 'true' to enable auto login
 #_autologin='true'
@@ -31,7 +31,7 @@ _nativ_dialogs='true'
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.6.RC2.r90.g6cbd8fe3d
+pkgver=v0.6.6.r0.g751fffc30
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -40,7 +40,8 @@ license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'miniupnpc' 'libxss' 'libmicrohttpd' 'xapian-core')
 makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
-            'i2p: i2p hidden node support')
+            'i2p: i2p hidden node support'
+            'i2pd: i2p hidden node support' )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
