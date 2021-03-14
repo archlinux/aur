@@ -1,0 +1,118 @@
+diff --git a/libtransmission/quark.c b/libtransmission/quark.c
+index a1cfd9b5c..c74756859 100644
+--- a/libtransmission/quark.c
++++ b/libtransmission/quark.c
+@@ -291,6 +291,7 @@ static struct tr_key_struct const my_static[] =
+     Q("remote-session-password"),
+     Q("remote-session-port"),
+     Q("remote-session-requres-authentication"),
++    Q("remote-session-use-ssl"),
+     Q("remote-session-username"),
+     Q("removed"),
+     Q("rename-partial-files"),
+diff --git a/libtransmission/quark.h b/libtransmission/quark.h
+index 823543f90..d8c0d8165 100644
+--- a/libtransmission/quark.h
++++ b/libtransmission/quark.h
+@@ -290,6 +290,7 @@ enum
+     TR_KEY_remote_session_password,
+     TR_KEY_remote_session_port,
+     TR_KEY_remote_session_requres_authentication,
++    TR_KEY_remote_session_use_ssl,
+     TR_KEY_remote_session_username,
+     TR_KEY_removed,
+     TR_KEY_rename_partial_files,
+diff --git a/qt/Prefs.cc b/qt/Prefs.cc
+index b364b19da..28c117e59 100644
+--- a/qt/Prefs.cc
++++ b/qt/Prefs.cc
+@@ -66,6 +66,7 @@ std::array<Prefs::PrefItem, Prefs::PREFS_COUNT> const Prefs::Items
+     { SESSION_REMOTE_HOST, TR_KEY_remote_session_host, QVariant::String },
+     { SESSION_REMOTE_PORT, TR_KEY_remote_session_port, QVariant::Int },
+     { SESSION_REMOTE_AUTH, TR_KEY_remote_session_requres_authentication, QVariant::Bool },
++    { SESSION_REMOTE_USE_SSL, TR_KEY_remote_session_use_ssl, QVariant::Bool },
+     { SESSION_REMOTE_USERNAME, TR_KEY_remote_session_username, QVariant::String },
+     { SESSION_REMOTE_PASSWORD, TR_KEY_remote_session_password, QVariant::String },
+     { COMPLETE_SOUND_COMMAND, TR_KEY_torrent_complete_sound_command, QVariant::String },
+@@ -385,13 +386,14 @@ void Prefs::initDefaults(tr_variant* d) const
+ 
+     auto const download_dir = std::string_view { tr_getDefaultDownloadDir() };
+ 
+-    tr_variantDictReserve(d, 38);
++    tr_variantDictReserve(d, 39);
+     dictAdd(d, TR_KEY_blocklist_updates_enabled, true);
+     dictAdd(d, TR_KEY_compact_view, false);
+     dictAdd(d, TR_KEY_inhibit_desktop_hibernation, false);
+     dictAdd(d, TR_KEY_prompt_before_exit, true);
+     dictAdd(d, TR_KEY_remote_session_enabled, false);
+     dictAdd(d, TR_KEY_remote_session_requres_authentication, false);
++    dictAdd(d, TR_KEY_remote_session_use_ssl, false);
+     dictAdd(d, TR_KEY_show_backup_trackers, false);
+     dictAdd(d, TR_KEY_show_extra_peer_details, false);
+     dictAdd(d, TR_KEY_show_filterbar, true);
+diff --git a/qt/Prefs.h b/qt/Prefs.h
+index 090d91f65..b326bda6a 100644
+--- a/qt/Prefs.h
++++ b/qt/Prefs.h
+@@ -69,6 +69,7 @@ public:
+         SESSION_REMOTE_HOST,
+         SESSION_REMOTE_PORT,
+         SESSION_REMOTE_AUTH,
++        SESSION_REMOTE_USE_SSL,
+         SESSION_REMOTE_USERNAME,
+         SESSION_REMOTE_PASSWORD,
+         COMPLETE_SOUND_COMMAND,
+diff --git a/qt/Session.cc b/qt/Session.cc
+index 4151b8aea..c0ab7f1a9 100644
+--- a/qt/Session.cc
++++ b/qt/Session.cc
+@@ -342,7 +342,7 @@ void Session::start()
+     if (prefs_.get<bool>(Prefs::SESSION_IS_REMOTE))
+     {
+         QUrl url;
+-        url.setScheme(QStringLiteral("http"));
++        url.setScheme(prefs_.get<bool>(Prefs::SESSION_REMOTE_USE_SSL) ? QStringLiteral("https") : QStringLiteral("http"));
+         url.setHost(prefs_.get<QString>(Prefs::SESSION_REMOTE_HOST));
+         url.setPort(prefs_.get<int>(Prefs::SESSION_REMOTE_PORT));
+         url.setPath(QStringLiteral("/transmission/rpc"));
+diff --git a/qt/SessionDialog.cc b/qt/SessionDialog.cc
+index 4b0931359..44b336b3c 100644
+--- a/qt/SessionDialog.cc
++++ b/qt/SessionDialog.cc
+@@ -20,6 +20,7 @@ void SessionDialog::accept()
+     prefs_.set(Prefs::SESSION_REMOTE_HOST, ui_.hostEdit->text());
+     prefs_.set(Prefs::SESSION_REMOTE_PORT, ui_.portSpin->value());
+     prefs_.set(Prefs::SESSION_REMOTE_AUTH, ui_.authCheck->isChecked());
++    prefs_.set(Prefs::SESSION_REMOTE_USE_SSL, ui_.sslCheck->isChecked());
+     prefs_.set(Prefs::SESSION_REMOTE_USERNAME, ui_.usernameEdit->text());
+     prefs_.set(Prefs::SESSION_REMOTE_PASSWORD, ui_.passwordEdit->text());
+     session_.restart();
+@@ -69,6 +70,10 @@ SessionDialog::SessionDialog(Session& session, Prefs& prefs, QWidget* parent) :
+     connect(ui_.authCheck, &QAbstractButton::toggled, this, &SessionDialog::resensitize);
+     remote_widgets_ << ui_.authCheck;
+ 
++    ui_.sslCheck->setChecked(prefs.get<bool>(Prefs::SESSION_REMOTE_USE_SSL));
++    connect(ui_.sslCheck, &QAbstractButton::toggled, this, &SessionDialog::resensitize);
++    remote_widgets_ << ui_.sslCheck;
++
+     ui_.usernameEdit->setText(prefs.get<QString>(Prefs::SESSION_REMOTE_USERNAME));
+     auth_widgets_ << ui_.usernameLabel << ui_.usernameEdit;
+ 
+diff --git a/qt/SessionDialog.ui b/qt/SessionDialog.ui
+index fc8949d9e..7e1fe4862 100644
+--- a/qt/SessionDialog.ui
++++ b/qt/SessionDialog.ui
+@@ -116,6 +116,13 @@
+        </property>
+       </widget>
+      </item>
++     <item row="7" column="0" colspan="2">
++      <widget class="QCheckBox" name="sslCheck">
++       <property name="text">
++        <string>Use &amp;SSL</string>
++       </property>
++      </widget>
++     </item>
+     </layout>
+    </item>
+    <item>
