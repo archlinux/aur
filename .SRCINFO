@@ -1,0 +1,15 @@
+pkgbase = python-executing
+	pkgdesc = Get information about what a Python frame is currently doing, particularly the AST node being executed
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/alexmojaki/executing
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = git+https://github.com/alexmojaki/executing.git#tag=v0.5.4
+	sha256sums = SKIP
+
+pkgname = python-executing
+
