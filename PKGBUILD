@@ -12,8 +12,8 @@ depends=('gtk-engines')
 replaces=('gtk-smooth-engine')
 conflicts=('gtk-smooth-engine')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/smooth-engine/gtk-smooth-engine-$pkgver.tar.gz \
-        http://downloads.sourceforge.net/smooth-engine/smooth-themes-$_spkgver.tar.gz \
+source=(https://downloads.sourceforge.net/smooth-engine/gtk-smooth-engine-$pkgver.tar.gz \
+        https://downloads.sourceforge.net/smooth-engine/smooth-themes-$_spkgver.tar.gz \
 	deprecated_macros.diff free_border.diff careless.diff)
 
 build() {
