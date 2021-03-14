@@ -6,9 +6,9 @@
 
 pkgname=torus-trooper
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 url="http://www.asahi-net.or.jp/~cs8k-cyu/windows/tt_e.html"
-pkgdesc="sticky 2D shooter"
+pkgdesc="Fast-paced abstract scrolling shooter game"
 license=('custom')
 depends=(libbulletml gcc-d sdl sdl_mixer)
 arch=('x86_64')
