@@ -5,14 +5,21 @@
 
 pkgname=goocanvasmm
 pkgver=1.90.11
-pkgrel=4
+pkgrel=5
 pkgdesc='C++ wrappers for goocanvas'
 arch=('x86_64')
 url='https://download.gnome.org/sources/goocanvasmm/'
 license=('GPL')
 depends=('goocanvas' 'gtkmm3')
+makedepends=('mm-common')
 source=(https://download.gnome.org/sources/goocanvasmm/1.90/goocanvasmm-${pkgver}.tar.xz)
 sha512sums=('f4decc16fc927dd044714558d1edd5a1dc53bc084b1ad361f791bb3f21bedd298a14aa603e3087df7c61d6d873c86a5b00e1ff82cffa5cafa7f06e86b59a7241')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  sed -i 's/goocanvas-2.0/goocanvas-3.0/' configure.ac
+  autoreconf -fiv
+}
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -21,6 +28,8 @@ build() {
     --prefix=/usr \
     --disable-static \
     --disable-documentation
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
   make
 }
