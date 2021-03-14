@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 
+makepkg --printsrcinfo > .SRCINFO
 makepkg --check
 
 makepkg -fg
