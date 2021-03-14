@@ -7,5 +7,5 @@ pkgdesc="Provide no longer existing packages for find and fix AUR pkgbuilds"
 arch=(any)
 url=""
 license=(GPL)
-provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends)
+provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends c10t)
 # catalist-utils skype skype-legacy go-pie

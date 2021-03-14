@@ -9,6 +9,7 @@ pkgbase = ghost-deps-meta
 	provides = mono-stable
 	provides = msbuild-stable
 	provides = gtk3-print-backends
+	provides = c10t
 
 pkgname = ghost-deps-meta
 
