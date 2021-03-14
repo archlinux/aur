@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=python2-flanker
-pkgver=0.4.27
+pkgver=0.9.11
 pkgrel=1
 _libname=flanker
 pkgdesc='Mailgun Parsing Tools'
@@ -13,7 +13,7 @@ optdepends=('python2-regex: for flanker.mime'
             'python2-dnsq: for flanker.mime')
 license=('Apache2')
 arch=('any')
-source=(http://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/a6/44/a2d77a6f2ad4d78912b549a97b915f43da3cc9e6dbfc2084520bdaa6d00e/flanker-${pkgver}.tar.gz)
 
 build() {
     cd "$srcdir/$_libname-$pkgver"
@@ -25,4 +25,4 @@ package() {
     python2 setup.py install --root="$pkgdir"
 }
 
-sha256sums=('9f4d7e565fc50599c1912d1df2060c5a5f8918c823935fbc6681bf2ddde8ed4f')
+sha256sums=('974418e5b498fd3bcb3859c22e22d26495257f9cf98b744c17f2335aca86e001')
