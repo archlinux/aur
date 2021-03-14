@@ -1,0 +1,15 @@
+pkgbase = python-pure-eval
+	pkgdesc = Safely evaluate AST nodes without side effects
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/alexmojaki/pure_eval
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = git+https://github.com/alexmojaki/pure_eval.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = python-pure-eval
+
