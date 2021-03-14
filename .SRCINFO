@@ -1,7 +1,7 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Provide no longer existing packages for find and fix AUR pkgbuilds
 	pkgver = 20210314
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = GPL
 	provides = tui
@@ -9,7 +9,6 @@ pkgbase = ghost-deps-meta
 	provides = mono-stable
 	provides = msbuild-stable
 	provides = gtk3-print-backends
-	provides = go-pie
 
 pkgname = ghost-deps-meta
 
