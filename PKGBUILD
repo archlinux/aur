@@ -3,7 +3,7 @@
 
 pkgname=bitwarden
 pkgver=1.25.0
-pkgrel=1
+pkgrel=2
 _jslibcommit='f80e89465ffc004705d2941301c0ffb6bfd71d1a'
 _nodeversion='10.24.0'
 pkgdesc='Bitwarden Desktop Application'
