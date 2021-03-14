@@ -1,0 +1,26 @@
+pkgbase = brim
+	pkgdesc = Desktop application to efficiently search large packet captures and Zeek logs.
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://www.brimsecurity.com/download/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = glib2
+	optdepends = lsb-release
+	optdepends = libgnome-keyring
+	optdepends = pulseaudio
+	noextract = brim_amd64.deb
+	source = https://github.com/brimsec/brim/releases/download/v0.24.0/brim_amd64.deb
+	source = https://raw.githubusercontent.com/brimsec/brim/v0.24.0/LICENSE.txt
+	sha256sums = f476b174137050f5c730683b2afd048c7daee71a79b792ddcc897accda1b42ea
+	sha256sums = ebc2978c53b0f92bc5e540c07b3d8d864295dd5a448596b2f1131be6ee2edfca
+
+pkgname = brim
+
