@@ -15,7 +15,7 @@ backup=("etc/clicraft/action.d/explore.sh"
         "etc/cron.d/clicraft"
         "etc/logrotate.d/clicraft")
 install="$pkgname.install"
-source=("$pkgname::git://github.com/DMBuce/$pkgname.git#tag=$pkgver"
+source=("$pkgname::git+https://github.com/DMBuce/$pkgname.git#tag=$pkgver"
         #"$pkgname::git://git@mantrid/~/$pkgname.git#tag=$pkgver"
         "$pkgname.install"
         "$pkgname.rc")
