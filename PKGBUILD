@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-aqua
 pkgname=python-${_pkgname}
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-aqua"
@@ -22,7 +22,7 @@ depends=('python-qiskit-terra'
 )
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5cf1ed50eb35d3150c5d2f4977420ae5dee822ac50c5375eb81c7d033110931c')
+sha256sums=('fd044a75302f9e971bd6b2f8c7c25304d5f04a1d71b0f24ca25489a5942de29f')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
