@@ -1,22 +1,25 @@
-# Maintainer : Mike Polvere <mic.tjs@gmail.com>
+# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
+# Contributor : Mike Polvere <mic.tjs@gmail.com>
 # Contributor: Johnathan Jenkins <twodopeshaggy@gmail.com>
 # Contributor:  prettyvanilla <prettyvanilla@posteo.at>
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-fceumm-git
-pkgver=621.eb17f88
+pkgver=1072.eb87c5e
 pkgrel=1
 pkgdesc="libretro implementation of FCEUmm. (Nintendo Entertainment System)"
 groups=('libretro')
-arch=('i686' 'x86_64' 'arm' 'armv6h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+url="https://github.com/libretro/libretro-fceumm"
+license=('GPL2')
+groups=('libretro')
+depends=('zlib' 'glibc' 'libretro-core-info')
+makedepends=('git')
+
 _libname=fceumm_libretro
 _gitname=libretro-fceumm
-url="https://github.com/libretro/${_gitname}"
-license=('GPL')
-depends=('glibc')
-makedepends=('git')
 source=("git+https://github.com/libretro/${_gitname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -25,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make -f Makefile.libretro
+  make
 }
 
 package() {
