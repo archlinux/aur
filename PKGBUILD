@@ -8,7 +8,7 @@ pkgver=3.0.0
 pkgrel=3
 pkgdesc='Computational chemistry package. Version with enabled mpqc'
 arch=('x86_64' 'i686')
-url="http://bioinformatics.org/ghemical/ghemical/"
+url="https://bioinformatics.org/ghemical/ghemical/"
 license=('GPL')
 depends=('gtkglext' 'libghemical-mpqc' 'libglade' 'liboglappth>=1.0' 'openbabel')
 makedepends=('pkgconfig' 'intltool>=0.40.0' 'gettext')
