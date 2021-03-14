@@ -6,33 +6,35 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 
 pkgname=cgit-git
-pkgver=1.2.3.r0.g55fa25a
+pkgver=1.2.3.r13.gbd6f568
 pkgrel=1
 pkgdesc='A web interface for git written in plain C - git checkout'
 arch=('i686' 'x86_64')
-url='http://git.zx2c4.com/cgit/'
+url='https://git.zx2c4.com/cgit/'
 license=('GPL2')
 depends=('openssl' 'luajit')
 makedepends=('git' 'zlib' 'curl' 'asciidoc')
 optdepends=('groff: about page using man page syntax'
-	    'python-pygments: syntax highlighting support'
-	    'python-docutils: about page formatted with reStructuredText'
-	    'python-markdown: about page formated with markdown'
-	    'lua51-luaossl: for lua filters'
-	    'gzip: gzip compressed snapshots'
-	    'bzip2: bzip2 compressed snapshots'
-	    'lzip: lzip compressed snapshots'
-	    'xz: xz compressed snapshots'
-	    'zstd: zstd compressed snapshots'
-	    'mime-types: serve file with correct content-type header')
+            'python-pygments: syntax highlighting support'
+            'python-docutils: about page formatted with reStructuredText'
+            'python-markdown: about page formatted with markdown'
+            'lua51-luaossl: for lua filters'
+            'gzip: gzip compressed snapshots'
+            'bzip2: bzip2 compressed snapshots'
+            'lzip: lzip compressed snapshots'
+            'xz: xz compressed snapshots'
+            'zstd: zstd compressed snapshots'
+            'mime-types: serve file with correct content-type header')
 conflicts=('cgit')
 provides=('cgit')
 install=cgit.install
 source=('git://git.zx2c4.com/cgit.git'
-	'git://github.com/git/git.git'
-	'apache.example.conf')
+        'git://github.com/git/git.git'
+        'tmpfiles.conf'
+        'apache.example.conf')
 sha256sums=('SKIP'
             'SKIP'
+            '4004b72d433e5810b046fc6019171a11a0dae3e9c6b29a44f16ed41705c46c3d'
             '89927d462c0504863c163eb8a210e5d65db30ee6e4300ff6a2f92460e4f20a62')
 
 pkgver() {
@@ -51,35 +53,35 @@ pkgver() {
 }
 
 prepare() {
-	cd cgit/
+  cd cgit/
 
-	git config --file=.gitmodules submodule.git.url ../git/
-	git submodule init
-	git submodule update
+  git config --file=.gitmodules submodule.git.url ../git/
+  git submodule init
+  git submodule update
 }
 
 build() {
-	cd cgit/
+  cd cgit/
 
-	make
-	make doc-man
+  make
+  make doc-man
 }
 
 check() {
-	cd cgit/
+  cd cgit/
 
-	make test
+  make test
 }
 
 package() {
-	cd cgit/
+  cd cgit/
 
-	make CGIT_SCRIPT_PATH=/usr/share/webapps/cgit DESTDIR="${pkgdir}" prefix=/usr install install-man
+  make CGIT_SCRIPT_PATH=/usr/share/webapps/cgit DESTDIR="${pkgdir}" prefix=/usr install install-man
 
-	install -vd "${pkgdir}/var/cache/cgit"
-	install -vDm0644 "${srcdir}/apache.example.conf" "${pkgdir}/etc/webapps/cgit/apache.example.conf"
-	install -d "${pkgdir}/usr/lib/cgit"
-	mv "${pkgdir}/usr/share/webapps/cgit/cgit.cgi" "${pkgdir}/usr/lib/cgit"
-	ln -sf ../../../lib/cgit/cgit.cgi "${pkgdir}/usr/share/webapps/cgit/cgit.cgi"
+  install -vDm0644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/cgit.conf"
+  install -vDm0644 "${srcdir}/apache.example.conf" "${pkgdir}/etc/webapps/cgit/apache.example.conf"
+  install -d "${pkgdir}/usr/lib/cgit"
+  mv "${pkgdir}/usr/share/webapps/cgit/cgit.cgi" "${pkgdir}/usr/lib/cgit"
+  ln -sf ../../../lib/cgit/cgit.cgi "${pkgdir}/usr/share/webapps/cgit/cgit.cgi"
 }
 
