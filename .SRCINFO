@@ -1,6 +1,6 @@
 pkgbase = choria
-	pkgdesc = Finally, an MMORPG that's all about grinding and doing chores.
-	pkgver = 1.0.0_rc1
+	pkgdesc = Finally, an MMORPG that's all about grinding and doing chores
+	pkgver = 1.0.0_rc2
 	pkgrel = 1
 	url = https://github.com/jazztickets/choria
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = choria
 	depends = jsoncpp
 	depends = tinyxml2
 	depends = zlib
-	source = https://github.com/jazztickets/choria/releases/download/1.0.0-rc1/choria-1.0.0-rc1-a3a4a69f-src.tar.gz
-	sha256sums = 9e64eaa0fe8a185b5cbb9cfcc3acc88561407239cab55d0c3ec9ca1b4f376ff2
+	source = https://github.com/jazztickets/choria/releases/download/1.0.0-rc2/choria-1.0.0-rc2-a9b14f93-src.tar.gz
+	sha256sums = a8f6c2f95b7cf5d9505d49478b4de6f3a64656d6be578dfdc98824816edca46c
 
 pkgname = choria
 

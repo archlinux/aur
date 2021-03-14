@@ -1,17 +1,17 @@
 # Maintainer: jazztickets <jazztickets at gmail dot com>
 pkgname=choria
-pkgver=1.0.0_rc1
-pkgbuild=a3a4a69f
+pkgver=1.0.0_rc2
+pkgbuild=a9b14f93
 pkgfullname=(${pkgname}-${pkgver//_/-}-${pkgbuild})
 pkgrel=1
-pkgdesc="Finally, an MMORPG that's all about grinding and doing chores."
+pkgdesc="Finally, an MMORPG that's all about grinding and doing chores"
 arch=('i686' 'x86_64')
 url="https://github.com/jazztickets/choria"
 license=('GPL3')
 depends=('gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libogg' 'freetype2' 'lua' 'glm' 'sqlite' 'jsoncpp' 'tinyxml2' 'zlib')
 makedepends=('cmake')
 source=("https://github.com/jazztickets/${pkgname}/releases/download/${pkgver//_/-}/${pkgfullname}-src.tar.gz")
-sha256sums=('9e64eaa0fe8a185b5cbb9cfcc3acc88561407239cab55d0c3ec9ca1b4f376ff2')
+sha256sums=('a8f6c2f95b7cf5d9505d49478b4de6f3a64656d6be578dfdc98824816edca46c')
 
 prepare() {
 	cd $srcdir/$pkgfullname
