@@ -6,13 +6,12 @@
 pkgbase=droidcam
 pkgname=('droidcam' 'v4l2loopback-dc-dkms')
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
 url="https://github.com/aramg/${pkgbase}"
 license=('GPL')
-backup=("etc/modprobe.d/${pkgbase}.conf")
 makedepends=('gtk3' 'ffmpeg' 'libusbmuxd')
 
 source=("${pkgbase}.desktop"
@@ -59,6 +58,8 @@ package_droidcam() {
 
 package_v4l2loopback-dc-dkms() {
   depends=('dkms')
+  backup=("etc/modprobe.d/${pkgbase}.conf")
+
   _pkgname=v4l2loopback-dc
   local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
