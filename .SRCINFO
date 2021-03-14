@@ -1,7 +1,7 @@
 pkgbase = emilua
 	pkgdesc = Lua execution engine
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/emilua/emilua
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = emilua
 	source = boost.http::git+https://github.com/BoostGSoC14/boost.http.git#commit=07ba4ef67fc1488bf789008b43550526931ab412
 	source = trial.protocol::git+https://github.com/breese/trial.protocol.git#commit=cd0055431ec42f30c53b295411ee00cade8b9b5e
 	source = CLI11::git+https://github.com/CLIUtils/CLI11.git#commit=13becaddb657eacd090537719a669d66d393b8b2
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

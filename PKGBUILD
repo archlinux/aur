@@ -1,7 +1,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua execution engine"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/emilua/emilua"
@@ -31,7 +31,8 @@ prepare() {
 build() {
 	arch-meson emilua build \
 		   -D enable_tests=false \
-		   -D enable_http=true
+		   -D enable_http=true \
+		   -D version_suffix=-arch1
 	meson compile -C build
 }
 
