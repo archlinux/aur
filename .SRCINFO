@@ -5,7 +5,6 @@ pkgbase = kooha
 	url = https://github.com/SeaDve/Kooha
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = meson
 	depends = gstreamer
 	depends = gtk3
