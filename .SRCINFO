@@ -1,0 +1,14 @@
+pkgbase = python2-backports-abc
+	pkgdesc = A backport of recent additions to the 'collections.abc' module.
+	pkgver = 0.5
+	pkgrel = 3
+	url = https://pypi.python.org/pypi/backports_abc
+	arch = any
+	license = PSF
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.io/packages/source/b/backports_abc/backports_abc-0.5.tar.gz
+	sha256sums = 033be54514a03e255df75c5aee8f9e672f663f93abb723444caec8fe43437bde
+
+pkgname = python2-backports-abc
+
