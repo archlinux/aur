@@ -1,6 +1,6 @@
 pkgbase = deepin-qt5platform-plugins-git
 	pkgdesc = Qt platform plugins for DDE
-	pkgver = 5.0.21.r13.gc072996
+	pkgver = 5.0.21.r18.gd7f5265
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/qt5platform-plugins
 	arch = x86_64
