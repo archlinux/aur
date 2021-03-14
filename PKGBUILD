@@ -1,6 +1,6 @@
 # Maintainer: Elijah Gregg <lovetocode999@ctrl-c.club>
 pkgname=amfora-favicons-git
-pkgver=1.8.0.r21.gcd5ce9c
+pkgver=1.8.0.r24.g3e291cf
 pkgrel=1
 pkgdesc="Terminal browser for the Gemini protocol, patched for favicon.txt support"
 arch=("x86_64")

@@ -1,6 +1,6 @@
 pkgbase = amfora-favicons-git
 	pkgdesc = Terminal browser for the Gemini protocol, patched for favicon.txt support
-	pkgver = 1.8.0.r21.gcd5ce9c
+	pkgver = 1.8.0.r24.g3e291cf
 	pkgrel = 1
 	url = https://github.com/makeworld-the-better-one/amfora
 	arch = x86_64
