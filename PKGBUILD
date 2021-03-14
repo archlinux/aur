@@ -21,7 +21,7 @@ conflicts=('clicraft')
 backup=("etc/cron.d/clicraft"
         "etc/logrotate.d/clicraft")
 install="$pkgname.install"
-source=("$pkgname::git://github.com/DMBuce/${pkgname%-git}.git"
+source=("$pkgname::git+https://github.com/DMBuce/${pkgname%-git}.git"
         #"$pkgname::git+ssh://git@mantrid/~/${pkgname%-git}.git"
         "$pkgname.install"
         "$pkgname.rc")
