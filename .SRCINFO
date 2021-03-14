@@ -1,6 +1,6 @@
 pkgbase = nodejs-nightly
 	pkgdesc = Nightly version of nodejs evented I/O for V8 javascript
-	pkgver = 16.0.0.nightly202103118a6d7a09f2
+	pkgver = 16.0.0nightly20210312bfa6e37204
 	pkgrel = 1
 	url = http://nodejs.org/
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = nodejs-nightly
 	depends = libuv
 	depends = http-parser
 	depends = c-ares
-	provides = nodejs=16.0.0.nightly202103118a6d7a09f2
+	provides = nodejs=16.0.0nightly20210312bfa6e37204
 	provides = nodev16
 	provides = npm
 	conflicts = nodejs
 	conflicts = npm
-	source = https://nodejs.org/download/nightly/v16.0.0-nightly202103118a6d7a09f2/node-v16.0.0-nightly202103118a6d7a09f2-linux-x64.tar.xz
+	source = https://nodejs.org/download/nightly/v16.0.0-nightly20210312bfa6e37204/node-v16.0.0-nightly20210312bfa6e37204-linux-x64.tar.xz
 	md5sums = 12bb0d3a71823e7633feb3ba38fa3281
 
 pkgname = nodejs-nightly
