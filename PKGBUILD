@@ -2,11 +2,11 @@
 
 _target=xtensa-elf
 pkgname=$_target-gcc
-_pkgver=9.3.0
+_pkgver=10.2.0
 pkgver=$_pkgver
 _islver=0.22
 pkgrel=1
-pkgdesc='The GNU Compiler Collection - cross compiler for Xtensa target'
+pkgdesc='The GNU Compiler Collection - cross compiler for Xtensa (bare-metal) target'
 arch=(x86_64 i686 armv7h)
 url='http://gcc.gnu.org/'
 license=(GPL LGPL FDL)
@@ -14,12 +14,14 @@ depends=($_target-binutils libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha512sums=('4b9e3639eef6e623747a22c37a904b4750c93b6da77cf3958d5047e9b5ebddb7eebe091cc16ca0a227c0ecbd2bf3b984b221130f269a97ee4cc18f9cf6c444de'
+        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
+        gcc.patch)
+sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e'
             'SKIP'
-            'fc2c9796979610dd51143dcefe4f5c989c4354571cc5a1fcc6b932fd41f42a54f6b43adfd289af61be7bd06f3a523fa6a7d7ee56680e32d8036beb4c188fa668')
-validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
-
+            'fc2c9796979610dd51143dcefe4f5c989c4354571cc5a1fcc6b932fd41f42a54f6b43adfd289af61be7bd06f3a523fa6a7d7ee56680e32d8036beb4c188fa668'
+            '7637408259cef4b14a2f41690bbc769ad0dc6cf4d1c782405526aeb58f68193269af6882b23fb57c3521174e45709ed2d54f0af1f835646e70a3bfd9f626aad9')
+validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
 if [ -n "$_snapshot" ]; then
   _basedir=gcc-$_snapshot
 else
@@ -28,6 +30,8 @@ fi
 
 prepare() {
   cd $_basedir
+
+  patch -Np1 -i ../gcc.patch
 
   # link isl for in-tree builds
   ln -sf ../isl-$_islver isl
