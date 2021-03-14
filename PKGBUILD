@@ -2,14 +2,15 @@
 _projectname='spot'
 pkgname="$_projectname-client"
 pkgver='0.1.10'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Gtk/Rust native Spotify client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xou816/$_projectname"
 license=('MIT')
 depends=('alsa-lib' 'glib2' 'gtk3' 'libhandy' 'libpulse' 'openssl')
-makedepends=('cargo' 'meson>=0.50.0')
 optdepends=('org.freedesktop.secrets')
+makedepends=('cargo' 'meson>=0.50.0')
+checkdepends=('appstream-glib')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	'meson-test-release.diff'
