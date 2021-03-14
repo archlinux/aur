@@ -2,7 +2,7 @@
 _appname_=imgbrd-grabber
 pkgname="${_appname_}-bin"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial binary installer for ImgBrd Grabber"
 arch=("x86_64")
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -28,7 +28,7 @@ prepare(){
 
 package(){
     install -dm755 "${pkgdir}/"{opt,usr/share/applications}
-    cp -rL "${srcdir}/${_appname_}" "${pkgdir}/opt/${pkgname}"
+    cp -rL "${srcdir}/${_appname_}" "${pkgdir}/opt/${_appname_}"
     install -Dm644 "${srcdir}/${_appname_}.desktop" "${pkgdir}/usr/share/applications/${_appname_}.desktop"
     for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
     do

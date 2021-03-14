@@ -1,7 +1,7 @@
 pkgbase = imgbrd-grabber-bin
 	pkgdesc = Unofficial binary installer for ImgBrd Grabber
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = GPL
