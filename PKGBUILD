@@ -11,7 +11,7 @@ _webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-webengine}
 
 _reponame=syncthingtray
 pkgname=syncthingtray-lite
-pkgver=1.1.0
+pkgver=1.1.3
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing - without the KDE integrations'
@@ -24,7 +24,7 @@ makedepends=('cmake' 'ninja' 'qt5-tools' 'mesa')
 conflicts=('syncthingtray' 'syncthingtray-git')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('730301d51744c7c54a393b06a3a02cd93d2275d8864d8a2dc84a86afc901756f')
+sha256sums=('7e6580e8dee78fb3a3dacf4d55f02c7f8b44dac1785275bb7d937e59f57f295b')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
