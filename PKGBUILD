@@ -2,7 +2,7 @@
 
 _pkgname=qtc-markview
 pkgname=qtcreator-markview-plugin
-pkgver=4.13.0
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Qt Creator markup plugin"
 groups=('qt' 'qt5')
@@ -14,14 +14,13 @@ makedepends=('qtcreator-src')
 provides=('qtcreator-markview-plugin')
 conflicts=('qtcreator-markview-plugin-git')
 source=("${pkgname}-${pkgver}::https://github.com/OneMoreGres/qtc-markview/archive/${pkgver}.zip")
-sha512sums=('9a9917d7fd90827656431265e22ba507a1344accc9c6f5fa2f77f60baf72609210f428183f4451bcfe2a8845d96f5eb147fb91cde2895e81f281c22656431757')
+sha512sums=('b550535ebe216c459ddbb80026a4d6556be477e4da4486230a557345c77b817dde5b3d02756b8a543914e95c27e749b29b956f2b225c2e84b6b1a6cfe2d10464')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  # TODO: QTC_BUILD=/usr
   QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build/usr KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib \
     KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting \
-    qmake LIBS+="-L/usr/lib/qtcreator -L/usr/lib/qtcreator/plugins"
+    qmake-qt5 LIBS+="-L/usr/lib/qtcreator -L/usr/lib/qtcreator/plugins"
   make
 }
 
