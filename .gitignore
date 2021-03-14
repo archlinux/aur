@@ -1,0 +1,4 @@
+/pkg/
+/src/
+omnisharp-mono-*.tar.gz
+omnisharp-roslyn-bin-*.pkg.tar.*
