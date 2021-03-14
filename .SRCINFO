@@ -1,0 +1,31 @@
+pkgbase = ipython-git
+	pkgdesc = An enhanced Interactive Python shell - git version
+	pkgver = 7.12.0.r667.gd737c3250
+	pkgrel = 1
+	url = https://ipython.org
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-traitlets
+	depends = python-pexpect
+	depends = sqlite
+	depends = python-pickleshare
+	depends = python-prompt_toolkit
+	depends = python-jedi
+	depends = python-pygments
+	depends = python-backcall
+	depends = python-stack-data
+	depends = python-executing
+	depends = python-asttokens
+	depends = python-pure-eval
+	optdepends = python-nose: for IPython's test suite
+	provides = ipython
+	conflicts = ipython
+	source = git://github.com/ipython/ipython.git
+	source = https://www.packal.org/sites/default/files/public/styles/icon_large/public/workflow-files/nkeimipynbworkflow/icon/icon.png
+	md5sums = SKIP
+	md5sums = 2901d65f1b1fe354e72850085cd1c072
+
+pkgname = ipython-git
+
