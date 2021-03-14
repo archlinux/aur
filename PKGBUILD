@@ -8,7 +8,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('any')
 url='https://www.qt.io'
@@ -181,4 +181,5 @@ package() {
     find ${pkgdir}/${ANDROID_PREFIX}/plugins -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     find ${pkgdir}/${ANDROID_PREFIX}/qml -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/${ANDROID_PREFIX_LIB}/lib*.prl
+    cp -rvf qtbase/src/android/jar/src/org/qtproject/qt5/android/* ${pkgdir}/${ANDROID_PREFIX}/src/android/java/src/org/qtproject/qt5/android/
 }
