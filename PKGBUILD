@@ -1,7 +1,7 @@
 # Maintainer: Yasuaki Uechi <y@uechi.io> (https://uechi.io)
 
 pkgname=cfddns
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Dynamic DNS client for Cloudflare'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  '969aa552a72e8d5eebfb778f2def9512bb13d3b44c780c1c27c3ab2c15be63b4'
+  '67a4a73dc05154dfb54d21f1429decb05e3e1d80e5a27d8e339740169ebd04f2'
   '7cc3f2402decf9da7584468d1f42cb12d1708b22cef1f4898bfa46d5d48ac31b'
   'ce77a09082e10103e84015ae1dbc0cf12a77d64aa6201674c08d2de51ee265d8'
 )
