@@ -1,16 +1,16 @@
 pkgbase = python2-misaka
 	pkgdesc = The Python binding for Sundown, a markdown parsing library.
-	pkgver = 1.0.2
-	pkgrel = 2
-	url = http://misaka.61924.nl/
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://misaka.61924.nl/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = python2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/m/misaka/misaka-1.0.2.tar.gz
+	source = https://pypi.python.org/packages/source/m/misaka/misaka-2.1.1.tar.gz
 	source = LICENSE
-	sha256sums = 6197e4886ff0c2718df1b472e40b5fea45f447a7a5b0192a48123ee868973517
+	sha256sums = 62f35254550095d899fc2ab8b33e156fc5e674176f074959cbca43cf7912ecd7
 	sha256sums = 0fed45cfa40d1ceed4bf0173f11af10e962d2647a4beb7c0e8250a30720a1890
 
 pkgname = python2-misaka
