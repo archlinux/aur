@@ -9,8 +9,6 @@ url='https://hyliu.me/fluent-reader/'
 license=('BSD')
 depends=('hicolor-icon-theme')
 makedepends=('nodejs' 'node-gyp' 'npm')
-provides=('fluent-reader')
-conflicts=('fluent-reader')
 source=("https://github.com/yang991178/fluent-reader/archive/v${pkgver}.tar.gz"
         'fluent-reader.desktop')
 sha256sums=('40e43fbc983e1cfd1ea32c852918ebce88d243f7ed943031696bdc7e01e55784'
