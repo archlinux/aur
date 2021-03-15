@@ -1,4 +1,4 @@
-y# Maintaner: Francesco Masala <mail@francescomasala.me>
+# Maintaner: Francesco Masala <mail@francescomasala.me>
 # Contributor:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
