@@ -1,10 +1,10 @@
 # Maintainer: Oscar Rainford <oscar@fourbytes.me>
 pkgname=vpncloud
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
-url=""
+url="https://vpncloud.ddswd.de/"
 license=('GPL')
 groups=()
 depends=('libsystemd')
