@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=cloudflared
-pkgver=2021.2.5
+pkgver=2021.3.1
 pkgrel=1
 pkgdesc="Argo Tunnel client"
 arch=(x86_64 armv7h aarch64)
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cloudflare/cloudflared/arch
         "$pkgname.service"
         "sysusers.d.conf"
         "tmpfiles.d.conf")
-sha512sums=('a9daa7b1667f72fb696375f2709a67fd1aefc4130cc79fbd60b14c21227b2d52db83be442dc4394db8c12842a058f57210043c8db39b9ec3aeb524dbe952f9c6'
+sha512sums=('3234a5a4b80d0ff411dffd5719279be96179ea87660cc070db44e368c3df90fe6fa14a83bc490926aeaf44cc1cb12a163ad5ecbef695197d8dcc21cf58de5b3f'
             '52a8e1a71b7195047ea490ade1caae8f82c7c332d9473611853b6cc21c31eb4403a94b66e9efc800faa4a1d3c0d8b5ad01d60896728161eeb4bf2a69ac58b95a'
             'a3586fe91989e3d5e830eb824c2aa9d60387ada5351b3aee5f132342882403880b1150ec77b2cea6e231e452dbf9ed86e3fe04d736143eb2c2b7c40f8d996051'
             '019e8bf95390d8f4815cf6118d419dba677967a22d9e68c245c71b32b198f188756e213ccada3f00b44a11b1486ef08780702ea0226086fc7e79e6c4466a26ae'
