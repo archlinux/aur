@@ -2,8 +2,8 @@
 
 efi="$(bootctl -p)"
 while read -r line; do
-	if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
-		kver="$(basename "$(dirname "${line}")")"
-		rm -v "$efi/EFI/Linux/linux-${kver}-$(cat /etc/machine-id)"-*.efi
-	fi
+    if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+        kver="$(basename "$(dirname "${line}")")"
+        rm -v "$efi/EFI/Linux/linux-${kver}-$(cat /etc/machine-id)"-*.efi
+    fi
 done
