@@ -16,11 +16,7 @@ pkgbase = fontconfig-minimal-git
 	optdepends = docbook-utils: docs
 	optdepends = docbook-sgml: docs
 	source = git+https://gitlab.freedesktop.org/fontconfig/fontconfig.git
-	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/138.patch
-	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/172.patch
 	source = fontconfig.hook
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -15,12 +15,8 @@ optdepends=('docbook-utils: docs'
             'docbook-sgml: docs')
 #checkdepends=(unzip)
 source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig.git"
-        "https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/138.patch"
-        "https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/172.patch"
         fontconfig.hook)
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 # a nice page to test font matching:
@@ -35,8 +31,6 @@ pkgver() {
 prepare() {
   cd fontconfig
 
-  patch -Np1 -i ../138.patch
-  patch -Np1 -i ../172.patch
 }
 
 build() {
