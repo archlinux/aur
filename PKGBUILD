@@ -1,4 +1,4 @@
-# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Felipe F. Tonello <eu@felipetonello.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # TODO: support Toast
