@@ -21,9 +21,8 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  if !(rustup update) then
-  rustup toolchain install stable && rustup default stable
-  fi
+  echo "If build fails run: rustup toolchain install stable && rustup default stable"
+  
 
   cargo build --release
 }
