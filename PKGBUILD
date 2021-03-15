@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Nathan Loewen <loewen.nathan@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Alexey Vasiliev <robbinton@gmail.com>
 
 pkgname=freerdp-git
