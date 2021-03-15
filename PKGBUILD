@@ -3,9 +3,9 @@
 _pkgname='sfeed_curses'
 pkgname="${_pkgname/_/-}"
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Curses UI front-end for sfeed RSS and Atom parser'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.codemadness.org/sfeed_curses-ui.html'
 _url_source='https://codemadness.org/releases/sfeed_curses'
 license=('ISC')
