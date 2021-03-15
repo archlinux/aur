@@ -13,8 +13,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - ?: 11 (not in repos)
 #   - erbium: 12
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron9
-pkgver=1.52.1
+_electron=electron
+pkgver=1.54.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -25,7 +25,7 @@ optdepends=('bash-completion: Bash completions'
             'x11-ssh-askpass: SSH authentication')
 makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
 conflicts=('code')
-provides=('code')
+provides=('vscode')
 install='code-transparent.install'
 source=("$_pkgname::git+$url.git#tag=$pkgver"
         'code.js'
@@ -37,7 +37,7 @@ sha512sums=('SKIP'
             '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
             '0e75ee88274cbaf48c59ef6f363f6b8ac2ea83f8b17a61155008db773b709a1f0233754fa63a136ec0417313ba90a7eb17db000ec22a38ca8840d8ba6c47cab1'
             'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7'
-            'ae7fc5d2d1851bf9353c3f531a4de05cc5b41496468e908776b7a17cf85e889c601b94499bd6165efb902578af1ebf37443a03881f98d8c6120cb4f8667d8fe7'
+            '1ad5dd5090f33fe4f45f13ac7f20384869bb26f5e207933de8bfdea503386a331be9fd233205502aa742a7b90a3c15f8bd02a70a3c046c759c59d0d0b9f7f4bc'
             'e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e')
 
 # Even though we don't officially support other archs, let's
@@ -168,3 +168,4 @@ package() {
   install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
   install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/$_pkgname/ThirdPartyNotices.txt
 }
+

@@ -1,19 +1,20 @@
 diff --git a/src/main.js b/src/main.js
 --- a/src/main.js
 +++ b/src/main.js
-@@ -157,6 +157,9 @@ function configureCommandlineSwitchesSync(cliArgs) {
- 		}
- 	});
+@@ -157,6 +157,10 @@ 			}
+		}
+	});
  
 +	// enable transparent
 +	app.commandLine.appendSwitch('enable-transparent-visuals');
++	app.commandLine.appendSwitch('disable-gpu');
 +
  	// Support JS Flags
  	const jsFlags = getJSFlags(cliArgs);
  	if (jsFlags) {
-diff --git a/src/vs/code/electron-main/window.ts b/src/vs/code/electron-main/window.ts
---- a/src/vs/code/electron-main/window.ts
-+++ b/src/vs/code/electron-main/window.ts
+diff --git a/src/vs/platform/windows/electron-main/window.ts b/src/vs/platform/windows/electron-main/window.ts
+--- a/src/vs/platform/windows/electron-main/window.ts
++++ b/src/vs/platform/windows/electron-main/window.ts
 @@ -157,7 +157,8 @@					width: this.windowState.width,
  				height: this.windowState.height,
  				x: this.windowState.x,
@@ -28,7 +29,7 @@ diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
 --- a/src/vs/workbench/common/theme.ts	2020-04-21 11:28:02.140938188 +0800
 +++ b/src/vs/workbench/common/theme.ts	2020-04-21 11:36:36.133491755 +0800
 @@ -6,20 +6,24 @@
- import * as nls from 'vs/nls';
+ import { localize } from 'vs/nls';
  import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground } from 'vs/platform/theme/common/colorRegistry';
  import { IColorTheme } from 'vs/platform/theme/common/themeService';
 -import { Color } from 'vs/base/common/color';
@@ -54,7 +55,7 @@ diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
 +			light: '#F3F3F3',
 +			hc: '#000000'
 +		},
-+		nls.localize(
++		localize(
 +			'workbenchBackground',
 +			'Top-level background color. Not seen unless other elements have a transparent color.'
 +		)
