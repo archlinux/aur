@@ -1,0 +1,3 @@
+post_install() {
+	echo "Now you can use grc or git grc to replace git commit !"
+}
