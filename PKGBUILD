@@ -5,7 +5,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 pkgname=unreal-engine
 pkgver=4.26.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
@@ -27,7 +27,7 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
-_system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
+_system_compiler=y 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
 		   	# as an environment to /usr/sbin compile projects after building.
 
 prepare() {
@@ -111,7 +111,7 @@ package() {
   # Engine
   install -dma+rwX "$pkgdir/$dir/Engine"
   mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
-  # mv Engine/Build "$pkgdir/$dir/Engine/Build"
+  mv Engine/Build "$pkgdir/$dir/Engine/Build"
   mv Engine/Config "$pkgdir/$dir/Engine/Config"
   mv Engine/Content "$pkgdir/$dir/Engine/Content"
   mv Engine/Documentation "$pkgdir/$dir/Engine/Documentation"
