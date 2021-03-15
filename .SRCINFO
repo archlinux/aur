@@ -1,6 +1,6 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 11.0.0.r182655.6d0b075d662
+	pkgver = 11.0.1.r183823.99415d0f187
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -31,12 +31,12 @@ pkgbase = gcc-git
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends
 	groups = base-devel
-	depends = gcc-libs=11.0.0.r182655.6d0b075d662-1
+	depends = gcc-libs=11.0.1.r183823.99415d0f187-1
 	depends = binutils>=2.28
 	depends = libmpc
 	optdepends = lib32-gcc-libs: for generating code for 32-bit ABI
-	provides = gcc-multilib=11.0.0.r182655.6d0b075d662-1
-	provides = gcc=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-multilib=11.0.1.r183823.99415d0f187-1
+	provides = gcc=11.0.1.r183823.99415d0f187-1
 	conflicts = gcc
 	options = !emptydirs
 	options = staticlibs
@@ -44,67 +44,67 @@ pkgname = gcc-git
 pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC
 	depends = glibc>=2.27
-	provides = gcc-libs-multilib=11.0.0.r182655.6d0b075d662-1
-	provides = libgo.so=11.0.0.r182655.6d0b075d662-1
-	provides = libgfortran.so=11.0.0.r182655.6d0b075d662-1
-	provides = libgphobos.so=11.0.0.r182655.6d0b075d662-1
-	provides = libubsan.so=11.0.0.r182655.6d0b075d662-1
-	provides = libasan.so=11.0.0.r182655.6d0b075d662-1
-	provides = libtsan.so=11.0.0.r182655.6d0b075d662-1
-	provides = liblsan.so=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-libs=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-libs-multilib=11.0.1.r183823.99415d0f187-1
+	provides = libgo.so=11.0.1.r183823.99415d0f187-1
+	provides = libgfortran.so=11.0.1.r183823.99415d0f187-1
+	provides = libgphobos.so=11.0.1.r183823.99415d0f187-1
+	provides = libubsan.so=11.0.1.r183823.99415d0f187-1
+	provides = libasan.so=11.0.1.r183823.99415d0f187-1
+	provides = libtsan.so=11.0.1.r183823.99415d0f187-1
+	provides = liblsan.so=11.0.1.r183823.99415d0f187-1
+	provides = gcc-libs=11.0.1.r183823.99415d0f187-1
 	conflicts = gcc-libs
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-fortran-multilib=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-fortran=11.0.0.r182655.6d0b075d662-1
+	depends = gcc=11.0.1.r183823.99415d0f187-1
+	provides = gcc-fortran-multilib=11.0.1.r183823.99415d0f187-1
+	provides = gcc-fortran=11.0.1.r183823.99415d0f187-1
 	conflicts = gcc-fortran
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC
-	depends = gcc=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-objc-multilib=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-objc=11.0.0.r182655.6d0b075d662-1
+	depends = gcc=11.0.1.r183823.99415d0f187-1
+	provides = gcc-objc-multilib=11.0.1.r183823.99415d0f187-1
+	provides = gcc-objc=11.0.1.r183823.99415d0f187-1
 	conflicts = gcc-objc
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT)
-	depends = gcc=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-ada-multilib=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-ada=11.0.0.r182655.6d0b075d662-1
+	depends = gcc=11.0.1.r183823.99415d0f187-1
+	provides = gcc-ada-multilib=11.0.1.r183823.99415d0f187-1
+	provides = gcc-ada=11.0.1.r183823.99415d0f187-1
 	conflicts = gcc-ada
 	options = !emptydirs
 	options = staticlibs
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC
-	depends = gcc=11.0.0.r182655.6d0b075d662-1
+	depends = gcc=11.0.1.r183823.99415d0f187-1
 	provides = go=1.12.2
-	provides = gcc-go-multilib=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-go=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-go-multilib=11.0.1.r183823.99415d0f187-1
+	provides = gcc-go=11.0.1.r183823.99415d0f187-1
 	conflicts = go
 	conflicts = gcc-go
 
 pkgname = lib32-gcc-libs-gitb
 	pkgdesc = 32-bit runtime libraries shipped by GCC
 	depends = lib32-glibc>=2.27
-	provides = libgo.so=11.0.0.r182655.6d0b075d662-1
-	provides = libgfortran.so=11.0.0.r182655.6d0b075d662-1
-	provides = libubsan.so=11.0.0.r182655.6d0b075d662-1
-	provides = libasan.so=11.0.0.r182655.6d0b075d662-1
-	provides = lib32-gcc-libs=11.0.0.r182655.6d0b075d662-1
+	provides = libgo.so=11.0.1.r183823.99415d0f187-1
+	provides = libgfortran.so=11.0.1.r183823.99415d0f187-1
+	provides = libubsan.so=11.0.1.r183823.99415d0f187-1
+	provides = libasan.so=11.0.1.r183823.99415d0f187-1
+	provides = lib32-gcc-libs=11.0.1.r183823.99415d0f187-1
 	conflicts = lib32-gcc-libs
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC
-	depends = gcc=11.0.0.r182655.6d0b075d662-1
-	provides = gdc=11.0.0.r182655.6d0b075d662-1
-	provides = gcc-d=11.0.0.r182655.6d0b075d662-1
+	depends = gcc=11.0.1.r183823.99415d0f187-1
+	provides = gdc=11.0.1.r183823.99415d0f187-1
+	provides = gcc-d=11.0.1.r183823.99415d0f187-1
 	conflicts = gcc-d
 	options = staticlibs
