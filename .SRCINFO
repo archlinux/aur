@@ -1,7 +1,7 @@
 pkgbase = expressvpn-gui-gtk
 	pkgdesc = Unofficial linux GUI for expressvpn CLI (GTK)
-	pkgver = 0.4
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://gitlab.com/vojko.pribudic/expressvpn-gui-gtk
 	arch = x86_64
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = expressvpn-gui-gtk
 	depends = python-gobject
 	depends = expressvpn
 	depends = python-pexpect
-	source = https://gitlab.com/vojko.pribudic/expressvpn-gui-gtk/-/archive/v0.4/expressvpn-gui-gtk-v0.4.tar.gz
+	source = https://gitlab.com/vojko.pribudic/expressvpn-gui-gtk/-/archive/v0.4.1/expressvpn-gui-gtk-v0.4.1.tar.gz
 	md5sums = SKIP
 
 pkgname = expressvpn-gui-gtk
