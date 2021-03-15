@@ -3,8 +3,8 @@
 # Contributor: Siôn le Roux <sinisterstuf@gmail.com>
 
 pkgname=wakatime
-pkgver=13.0.7
-pkgrel=4
+pkgver=13.1.0
+pkgrel=1
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
         'literal_comparison.patch')
-sha256sums=('d75738130a8c982b0bf8ce20601a7fc86cf3b4bf00d3662dee260eb2b07d826a'
+sha256sums=('9e44e784a010039eb9e91227fdacd2920002a04b131f6468dd7ec13067c180e7'
             'ef526daab8b9656b33893bbeb43d9e9d96ad81a01446bbe0d3035170a7b80163')
 
 prepare () {
