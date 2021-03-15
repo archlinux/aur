@@ -11,8 +11,8 @@ arch=("any")
 url="https://github.com/btcpayserver/${_pkgname}"
 license=("MIT")
 groups=()
-depends=("bitcoin-daemon" "dotnet-core" "lnd" "nbxplorer-git" "tmux")
-makedepends=("git")
+depends=("bitcoin-daemon" "dotnet-runtime" "lnd" "nbxplorer-git" "tmux")
+makedepends=("git" "dotnet-sdk")
 checkdepends=()
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
