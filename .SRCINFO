@@ -1,13 +1,14 @@
 pkgbase = brother-hll2395dw
 	pkgdesc = Brother HL-L2395DW CUPS driver
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.brother.com
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = cups
 	depends = perl
+	depends = ghostscript
 	source = http://download.brother.com/welcome/dlf103563/hll2395dwpdrv-4.0.0-1.i386.rpm
 	sha256sums = 522b57c1b024f6860a0d0b22fe7050788b7a30b6be920479dff85865ff937380
 
