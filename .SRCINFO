@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-loom-ea-bin
 	pkgdesc = Java Project Loom OpenJDK 17 Early-Access Build
-	pkgver = 17_8dbd4e7
+	pkgver = 17_e0b8234
 	pkgrel = 1
-	epoch = 60
+	epoch = 61
 	url = https://jdk.java.net/loom/
 	arch = x86_64
 	license = GPL2
@@ -20,8 +20,8 @@ pkgbase = java-openjdk-loom-ea-bin
 	provides = java-runtime-openjdk=17
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
-	source = https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/60/jdk-17-loom-linux.tar.gz
-	sha256sums = f351ee531deaab1999c000451e799b9a4982bc386095fa44abd12c5f6c2ff5b3
+	source = https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/61/jdk-17-loom-linux.tar.gz
+	sha256sums = 1cb875e334db7801ddcd791d3e66bed63053f1972329a8d87230a8ea24c379c8
 
 pkgname = java-openjdk-loom-ea-bin
 
