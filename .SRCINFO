@@ -1,14 +1,15 @@
 pkgbase = ipgw-bin
 	pkgdesc = Northeastern University Gateway Client
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/neucn/ipgw
 	arch = x86_64
 	license = MIT
-	source = ipgw_linux::https://github.com/neucn/ipgw/releases/download/v1.3.0/ipgw_linux
-	source = LICENSE::https://raw.githubusercontent.com/neucn/ipgw/old-v1/LICENSE
-	md5sums = beb7191bfbfc60de70a411461c64f473
-	md5sums = fdd05dfe38c1cd8695958d07c347dbfc
+	source = ipgw_linux::https://github.com/neucn/ipgw/releases/download/v0.1.1/ipgw-linux-amd64.zip
+	source = LICENSE::https://raw.githubusercontent.com/neucn/ipgw/master/LICENSE
+	md5sums = 33462f0d1180909368d410b33857f41f
+	md5sums = 82fc1432415e7f3a2581dff2acb762e5
 
 pkgname = ipgw-bin
 
