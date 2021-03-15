@@ -1,16 +1,16 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 pkgname=rozb3-pac
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="create ZFS boot environment for pacman transactions"
+pkgdesc="pacman hook for bieaz"
 arch=(any)
 url="https://gitlab.com/m_zhou/rozb3-pac"
 license=('GPL')
-depends=('bieaz')
+depends=('bieaz>=0.1.0')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 package() {
     cd "$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
 }
-md5sums=('55c02ab850d8677b23ba0f67488f614b')
+md5sums=('a7317364dc25dfb32863f2c89ab27ab0')
