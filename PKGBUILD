@@ -3,7 +3,7 @@
 
 pkgname=topologic-git
 pkgbase=topologic-git
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Library to create dyanimic context free or switching automata'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(bison flex)
 makedepends=(git)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mstern98/topologic-git/archive/v${pkgver}.tar.gz")
-sha256sums=('3a6c5db61ea76f17b606e7e2af7bdcdd1fba9ac82629a5f5867e6203b0ad83c5')
+sha256sums=('c79feb30b8343b3a32c3fbb34ac06c7c6b4c67aaf042bbf4cef4b8a2ff0b672d')
 
 build() 
 {
