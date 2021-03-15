@@ -1,5 +1,14 @@
 post_install() {
-	echo "Use 'module load aocc' to set up the environment for AMD Optimizing C/C++ Compiler."
+	echo "Generating setenv_AOCC.sh script..."
+	/opt/aocc/install.sh | sed -e "s:/opt/setenv:/opt/aocc/setenv:g"
+	mv /opt/setenv_AOCC.sh /opt/aocc/
+
+	if pacman -Q env-modules &> /dev/null; then
+		echo "env-modules seems to be installed:"
+		echo "You can conveniently use"
+		echo "  $ module load aocc"
+		echo "to set up the environment for AMD Optimizing C/C++ Compiler."
+	fi
 }
 
 post_upgrade() {
