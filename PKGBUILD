@@ -5,7 +5,7 @@
 
 _basename=panon
 pkgname=plasma5-applets-$_basename
-pkgver=0.4.4
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
@@ -28,7 +28,7 @@ source=(
 	"https://raw.githubusercontent.com/williammalo/hsluv-glsl/master/hsluv-glsl.fsh"
 	hsluv-glsl_LICENSE.md::"https://raw.githubusercontent.com/williammalo/hsluv-glsl/master/LICENCE.md"
 )
-sha256sums=('83456161d79b54d89c2098a9328028a700953e1cb5a7c73d262f4ba0fd928fe0'
+sha256sums=('a45bb5371620b17f788d5204222b21733ac8086bb76d8b8db58b8a96cc21c34c'
             '1985bbfacfafcadf72582cfdb52103cceb853b0f9c818273ad179d6045c3f2cc'
             '5ad083fe6cafbf17ca8ecba924c124b7bc3f43f95732d1712104ac05f5373875')
 
