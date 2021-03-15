@@ -17,6 +17,14 @@ pkgbase = ghost-deps-meta
 	provides = xorg-server1.12
 	provides = xorg-server1.19-git
 	provides = catalist-utils
+	provides = nvidia-96xx-utils
+	provides = nvidia-173xx-utils
+	provides = nvidia-318xx-utils
+	provides = nvidia-310xx-utils
+	provides = nvidia-304xx-utils
+	provides = nvidia-346xx-utils
+	provides = nvidia-352xx-utils
+	provides = nvidia-450xx-utils
 
 pkgname = ghost-deps-meta
 
