@@ -2,11 +2,11 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.2.4d
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://www.todesk.cn/"
+url="https://www.todesk.com/"
 license=('unknown')
 makedepends=('tar')
 provides=("${_pkgname}")
@@ -18,12 +18,12 @@ conflicts=("${_pkgname}")
 # emptydirs: leave /opt/todesk/config empty dir
 options=('!strip' 'emptydirs')
 install="${_pkgname}.install"
-source_x86_64=("https://update.todesk.com/linux/${_pkgname}_${pkgver}_amd64.deb")
-source_aarch64=("https://update.todesk.com/linux/${_pkgname}_${pkgver}_aarch64.deb")
-source_armv7h=("https://update.todesk.com/linux/${_pkgname}_${pkgver}_armv7.deb")
-sha256sums_x86_64=('ea82cdf8dd0439a7282a3f50b4fab8b95fbd873e68be5e9ef1bfd68c93a1e691')
-sha256sums_aarch64=('1131532d3e6b8d0ebc2d9ea792d9eee37925f2b1f74259ceeb362a9e66e77498')
-sha256sums_armv7h=('e79cd6063baedce0326f90376114b7453964c7b22886e8467d5b846df238d26a')
+source_x86_64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_aarch64.deb")
+source_armv7h=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_armv7.deb")
+sha256sums_x86_64=('34435c420b8f4afc9337cdf1f131c97a5194e12971906bc9a00a142bd74e7d51')
+sha256sums_aarch64=('f3139bf50c5fca2d1cd0583545e1f1cec6f6ed7243a3556401fbc29325fe3a70')
+sha256sums_armv7h=('479deb3f3a55bf177da1c355ee2700537dfc2ed33594f681c8409286fa12d5d6')
 
 build() {
   mkdir -p ${srcdir}/build
@@ -57,12 +57,12 @@ package() {
   install -Dm644 opt/${_pkgname}/bin/qt.conf -t ${pkgdir}/opt/${_pkgname}/bin
 
   # desktop entry 
-  install -Dm 644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
+  install -Dm644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
 
   # systemd service
   install -Dm644 etc/systemd/system/${_pkgname}d.service -t ${pkgdir}/usr/lib/systemd/system 
 
   # icon
-  install -Dm 644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
+  install -Dm644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
 }
 # vim: set sw=2 ts=2 et:
