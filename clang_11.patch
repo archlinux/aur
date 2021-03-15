@@ -1,0 +1,108 @@
+diff --git a/Engine/Source/Editor/UnrealEd/Public/Layers/LayersSubsystem.h b/Engine/Source/Editor/UnrealEd/Public/Layers/LayersSubsystem.h
+index 7fbded01fbb..80e507524f7 100644
+--- a/Engine/Source/Editor/UnrealEd/Public/Layers/LayersSubsystem.h
++++ b/Engine/Source/Editor/UnrealEd/Public/Layers/LayersSubsystem.h
+@@ -41,7 +41,7 @@ namespace ELayersAction
+ }
+ 
+ UCLASS()
+-class UNREALED_API ULayersSubsystem : public UEditorSubsystem
++class UNREALED_API ULayersSubsystem final : public UEditorSubsystem
+ {
+ 	GENERATED_BODY()
+ 
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+index 1f856d789be..b4ffbeb2950 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+@@ -186,10 +186,10 @@ namespace UnrealBuildTool
+ 				throw new BuildException("Unable to build: no compatible clang version found. Please run Setup.sh");
+ 			}
+ 			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
+-			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 100 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
++			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 111 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
+ 			{
+ 				throw new BuildException(
+-					string.Format("This version of the Unreal Engine can only be compiled with clang 10.0, 9.0, 8.0, 7.0 and 6.0. clang {0} may not build it - please use a different version.",
++					string.Format("This version of the Unreal Engine can only be compiled with clang 11.1, 10.0, 9.0, 8.0, 7.0 and 6.0. clang {0} may not build it - please use a different version.",
+ 						CompilerVersionString)
+ 					);
+ 			}
+@@ -592,6 +592,12 @@ namespace UnrealBuildTool
+ 			}
+ 
+ 			Result += " -Wall -Werror";
++			
++			if(CompilerVersionGreaterOrEqual(11,0,0))
++			{
++				//instantiate templates once and reuse at compilation. Approximately 30% faster compile times
++				Result += " -fpch-instantiate-templates";
++			}
+ 
+ 			if (!CompileEnvironment.Architecture.StartsWith("x86_64") && !CompileEnvironment.Architecture.StartsWith("i686"))
+ 			{
+diff --git a/Engine/Source/Runtime/Core/Public/GenericPlatform/GenericPlatformCriticalSection.h b/Engine/Source/Runtime/Core/Public/GenericPlatform/GenericPlatformCriticalSection.h
+index 82dbd7f0c21..639a7cdcca7 100644
+--- a/Engine/Source/Runtime/Core/Public/GenericPlatform/GenericPlatformCriticalSection.h
++++ b/Engine/Source/Runtime/Core/Public/GenericPlatform/GenericPlatformCriticalSection.h
+@@ -39,6 +39,7 @@ template<class CriticalSection>
+ class TGenericPlatformRWLock
+ {
+ public:
++	
+ 	FORCEINLINE TGenericPlatformRWLock()
+ 	{
+ 	}
+diff --git a/Engine/Source/Runtime/Core/Public/HAL/PThreadCriticalSection.h b/Engine/Source/Runtime/Core/Public/HAL/PThreadCriticalSection.h
+index ff9c2e10bb5..3f547f1ea0b 100644
+--- a/Engine/Source/Runtime/Core/Public/HAL/PThreadCriticalSection.h
++++ b/Engine/Source/Runtime/Core/Public/HAL/PThreadCriticalSection.h
+@@ -66,6 +66,11 @@ public:
+ 	{
+ 		pthread_mutex_unlock(&Mutex);
+ 	}
++	
++	FORCEINLINE pthread_mutex_t GetMutex() const
++	{
++		return this->Mutex;
++	}
+ 
+ private:
+ 	FPThreadsCriticalSection(const FPThreadsCriticalSection&);
+diff --git a/Engine/Source/Runtime/Core/Public/UObject/WeakObjectPtrTemplates.h b/Engine/Source/Runtime/Core/Public/UObject/WeakObjectPtrTemplates.h
+index f2d367b57bd..771c337a209 100644
+--- a/Engine/Source/Runtime/Core/Public/UObject/WeakObjectPtrTemplates.h
++++ b/Engine/Source/Runtime/Core/Public/UObject/WeakObjectPtrTemplates.h
+@@ -382,4 +382,4 @@ void CopyFromWeakArray(DestArrayType& Dest, const SourceArrayType& Src)
+ 			Dest.Add(Value);
+ 		}
+ 	}
+-}
+\ No newline at end of file
++}
+diff --git a/Engine/Source/Runtime/Foliage/Private/ProceduralFoliageSpawner.cpp b/Engine/Source/Runtime/Foliage/Private/ProceduralFoliageSpawner.cpp
+index d6ffcf228cf..04e2ef2a316 100644
+--- a/Engine/Source/Runtime/Foliage/Private/ProceduralFoliageSpawner.cpp
++++ b/Engine/Source/Runtime/Foliage/Private/ProceduralFoliageSpawner.cpp
+@@ -80,7 +80,7 @@ const UProceduralFoliageTile* UProceduralFoliageSpawner::GetRandomTile(int32 X,
+ 		HashStream.Initialize(Y);
+ 		const double YRand = HashStream.FRand();
+ 		
+-		const int32 RandomNumber = (RAND_MAX * XRand / (YRand + 0.01));
++		const int32 RandomNumber = (static_cast<double>(RAND_MAX) * XRand / (YRand + 0.01));
+ 		const int32 Idx = FMath::Clamp(RandomNumber % PrecomputedTiles.Num(), 0, PrecomputedTiles.Num() - 1);
+ 		return PrecomputedTiles[Idx].Get();
+ 	}
+diff --git a/Engine/Source/ThirdParty/FBX/2020.1.1/include/fbxsdk/scene/geometry/fbxlayer.h b/Engine/Source/ThirdParty/FBX/2020.1.1/include/fbxsdk/scene/geometry/fbxlayer.h
+index 42d703fb8a8..1619c09c79b 100644
+--- a/Engine/Source/ThirdParty/FBX/2020.1.1/include/fbxsdk/scene/geometry/fbxlayer.h
++++ b/Engine/Source/ThirdParty/FBX/2020.1.1/include/fbxsdk/scene/geometry/fbxlayer.h
+@@ -461,7 +461,7 @@ public:
+       *	                                 deleted when the pointer is released or the object is destroyed. At the moment of 
+       *                                  release or destruction, the values in this buffer are copied back into this object.
+ 	  */
+-	template <class T> inline T* GetLocked(T*, ELockMode pLockMode=eReadWriteLock) {T v; return (T*)GetLocked(pLockMode, FbxTypeOf(v)); }
++	template <class T> inline T* GetLocked(T*, ELockMode pLockMode=eReadWriteLock) {T v = T(); return (T*)GetLocked(pLockMode, FbxTypeOf(v)); }
+ 
+ 	/** Unlock the data buffer.
+ 	  * \param pDataPtr                  The buffer to be released.

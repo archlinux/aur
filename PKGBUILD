@@ -5,7 +5,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 pkgname=unreal-engine
 pkgver=4.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
@@ -19,10 +19,16 @@ optdepends=('qt5-base: qmake build system for projects'
             'clion: IDE for projects')
 license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
-        use-arch-mono.patch)
-sha256sums=(15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58
-            e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4)
+        use-arch-mono.patch
+	clang_11.patch)
+sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
+            'e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4'
+            '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
+
+# Set options to anything that is not null to enable them.
+_system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
+		   	# as an environment to /usr/sbin compile projects after building.
 
 prepare() {
   # Check access to the repository
@@ -43,9 +49,16 @@ prepare() {
     git fetch --depth=1 origin tag $pkgver-release
     git reset --hard $pkgver-release
   fi
-  
+
   patch Engine/Build/BatchFiles/Linux/SetupMono.sh $srcdir/use-arch-mono.patch # Use system mono
-  
+  generateProjectArgs="-makefile"
+  if [ -n "$_system_compiler" ]
+  then
+    patch -p1 -i "$srcdir/clang_11.patch"
+    export LINUX_MULTIARCH_ROOT="/usr/sbin"
+    generateProjectArgs+=" -ForceUseSystemCompiler"
+  fi
+
   # Qt Creator source code access
   if [ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]
   then
@@ -54,20 +67,25 @@ prepare() {
 
   export TERM=xterm
   ./Setup.sh
-  ./GenerateProjectFiles.sh -makefile
+  ./GenerateProjectFiles.sh $generateProjectArgs
 }
 
 build() {
   cd $pkgname
   
   # Build all targets from the "all" rule separately, because building multiple targets in parallel results in an error (but building one target with multiple threads is possible)
-  make CrashReportClient-Linux-Shipping
-  make CrashReportClientEditor-Linux-Shipping
-  make ShaderCompileWorker
-  make UnrealLightmass
-  make UnrealFrontend
-  make UE4Editor
-  make UnrealInsights
+  ARGS=""
+  if [ -n "$_system_compiler" ]
+  then
+    ARGS="ARGS=-ForceUseSystemCompiler"
+  fi
+  make $ARGS CrashReportClient-Linux-Shipping
+  make $ARGS CrashReportClientEditor-Linux-Shipping
+  make $ARGS ShaderCompileWorker
+  make $ARGS UnrealLightmass
+  make $ARGS UnrealFrontend
+  make $ARGS UE4Editor
+  make $ARGS UnrealInsights
 }
 
 package() {
@@ -93,7 +111,7 @@ package() {
   # Engine
   install -dma+rwX "$pkgdir/$dir/Engine"
   mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
-  mv Engine/Build "$pkgdir/$dir/Engine/Build"
+  # mv Engine/Build "$pkgdir/$dir/Engine/Build"
   mv Engine/Config "$pkgdir/$dir/Engine/Config"
   mv Engine/Content "$pkgdir/$dir/Engine/Content"
   mv Engine/Documentation "$pkgdir/$dir/Engine/Documentation"
@@ -104,9 +122,7 @@ package() {
   mv Engine/Source "$pkgdir/$dir/Engine/Source"
   
   # Required folders
-  install -d "$pkgdir/$dir/Engine/DerivedDataCache"
-  # install -d "$pkgdir/$dir/Engine/Intermediate"
-  # install -d "$pkgdir/$dir/Engine/Saved"
+  # install -d "$pkgdir/$dir/Engine/DerivedDataCache"
   
   # Content
   mv FeaturePacks "$pkgdir/$dir/FeaturePacks"
