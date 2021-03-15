@@ -1,13 +1,14 @@
 pkgbase = goobook-git
 	pkgdesc = Search your google contacts from the command-line or mutt.
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/goobook/goobook
 	install = goobook.install
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-docutils
 	depends = python
 	depends = python-simplejson
 	depends = python-google-api-core
