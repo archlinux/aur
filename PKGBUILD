@@ -28,17 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd freerdp/
-
-  if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-    printf '%s.r%s.g%s' \
-      "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-      "$(git rev-list --count ${GITTAG}..)" \
-      "$(git rev-parse --short HEAD)"
-  else
-    printf '0.r%s.g%s' \
-      "$(git rev-list --count master)" \
-      "$(git rev-parse --short HEAD)"
-  fi
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
