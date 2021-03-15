@@ -1,6 +1,6 @@
 pkgbase = hub-kids
 	pkgdesc = La piattaforma facile, gratuita e innovativa per la didattica digitale.
-	pkgver = 5.2.219
+	pkgver = 5.4.241
 	pkgrel = 1
 	url = https://www.hubscuola.it/download-app
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hub-kids
 	optdepends = mupdf: a pdf viewer
 	options = !strip
 	source = https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/kidslinux.zip
-	md5sums = ce99177da78911898ec6ae724e7cb915
+	md5sums = ea7c2598f5647a8dfab906b9f22fc9dc
 
 pkgname = hub-kids
 
