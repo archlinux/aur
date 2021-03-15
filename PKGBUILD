@@ -8,7 +8,7 @@
 
 pkgname=freerdp-git
 pkgver=2.0.0.r699.gd6ba9c1da
-pkgrel=2
+pkgrel=3
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP) - git checkout"
 arch=('i686' 'x86_64')
 url="https://www.freerdp.com/"
@@ -17,6 +17,7 @@ depends=('dbus-glib' 'fuse' 'glibc' 'gstreamer' 'gst-plugins-base-libs' 'libcups
 'libgssglue' 'libx11' 'libxcursor' 'libxext' 'libxdamage' 'libxfixes'
 'libxkbcommon' 'libxi' 'libxinerama' 'libxkbfile' 'libxrandr' 'libxrender'
 'libxtst' 'openh264' 'openssl' 'pcsclite' 'wayland')
+optdepends=('libva')
 makedepends=('alsa-lib' 'cmake' 'docbook-xsl' 'ffmpeg' 'krb5' 'libjpeg-turbo'
 'libpulse' 'libusb' 'pam' 'systemd-libs' 'xmlto' 'xorgproto')
 provides=('freerdp' 'libfreerdp3.so' 'libfreerdp-client3.so' 'libfreerdp-server3.so'
@@ -50,6 +51,7 @@ build() {
         -DWITH_SERVER_CHANNELS=ON \
         -DCHANNEL_URBDRC_CLIENT=ON \
         -DWITH_OPENH264=ON \
+        -DWITH_VAAPI=ON \
         -DWITH_FUSE=ON \
         -Wno-dev \
         -B build \
