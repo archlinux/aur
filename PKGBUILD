@@ -2,7 +2,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=tslint
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=1
 pkgdesc="A Linter for the TypeScript language."
 arch=('any')
@@ -18,7 +18,7 @@ package() {
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  #find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('e586f69d992c14fb725c145d08b856902f9bf2e847a0886dcfd0583543510ba7')
+sha256sums=('e35879c2f92e7dd865c55117bf0fbe3d5ad2c62142fddb7051696ebf8312db43')
