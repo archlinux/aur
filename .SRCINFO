@@ -1,6 +1,6 @@
 pkgbase = jack_mixer-git
 	pkgdesc = A GTK based Jack audio mixer (git version)
-	pkgver = 15.r463.f99d81c
+	pkgver = 15.1.r0.gcbedd2b
 	pkgrel = 1
 	url = https://rdio.space/jackmixer/
 	arch = x86_64

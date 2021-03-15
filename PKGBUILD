@@ -2,7 +2,7 @@
 
 _pkgname=jack_mixer
 pkgname="${_pkgname}-git"
-pkgver=15.r463.f99d81c
+pkgver=15.1.r0.gcbedd2b
 pkgrel=1
 pkgdesc="A GTK based Jack audio mixer (git version)"
 arch=('x86_64')
@@ -20,7 +20,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   local ver="$(grep -A 5 project meson.build | grep version | cut -d "'" -f 2)"
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
