@@ -1,6 +1,6 @@
 pkgbase = check_systemd
 	pkgdesc = Nagios / Icinga monitoring plugin to check systemd for failed units
-	pkgver = 2.2.1
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/Josef-Friedrich/check_systemd
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = check_systemd
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-nagiosplugin
-	source = git+https://github.com/Josef-Friedrich/check_systemd.git#tag=v2.2.1
+	source = git+https://github.com/Josef-Friedrich/check_systemd.git#tag=v2.3.1
 	sha256sums = SKIP
 
 pkgname = check_systemd

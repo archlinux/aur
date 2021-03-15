@@ -1,7 +1,7 @@
 # Maintainer: Lukasz Michalski <lm@zork.pl>
 
 pkgname=check_systemd
-pkgver=2.2.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Nagios / Icinga monitoring plugin to check systemd for failed units"
 arch=('any')
