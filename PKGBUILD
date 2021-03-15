@@ -16,14 +16,14 @@ depends=('lib32-zlib' 'lib32-bzip2' 'lib32-libpng' 'lib32-harfbuzz' $_pkgbasenam
 makedepends=('gcc-multilib')
 provides=('libfreetype.so' 'lib32-freetype2')
 conflicts=('lib32-freetype2')
-source=(git://git.sv.nongnu.org/freetype/freetype2.git)
+source=(git+https://gitlab.freedesktop.org/freetype/freetype.git)
 sha1sums=('SKIP')
 validpgpkeys=('SKIP')
 
 pkgver() {
   local _tag _count
 
-  cd "${srcdir}/freetype2"
+  cd "${srcdir}/freetype"
   _tag=$(git describe --abbrev=0 )
   _count=$(git rev-list --count ${_tag}..HEAD)
   _tag=${_tag#VER-}
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
 
-  cd freetype2
+  cd freetype
 
   ./autogen.sh
 }
@@ -42,18 +42,18 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-  cd freetype2
+  cd freetype
   ./configure --prefix=/usr --disable-static --libdir=/usr/lib32
   make
 }
 
 #check() {
-#  cd freetype2
+#  cd freetype
 #  make -k check
 #}
 
 package() {
-  cd freetype2
+  cd freetype
   make DESTDIR="${pkgdir}" install
 
   rm -r "${pkgdir}"/usr/{include,share}
