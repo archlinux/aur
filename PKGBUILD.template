@@ -24,9 +24,9 @@ _headerspkg=${_pkgname}-headers-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
 _docspkg=${_pkgname}-docs-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
 
 # See if the sources are available from our own mirror:
-_kernsrc=$(pacman -Sp "${_pkgname}" 2> /dev/null) 
-_headerssrc=$(pacman -Sp "${_pkgname}-headers" 2> /dev/null) 
-_docssrc=$(pacman -Sp "${_pkgname}-docs" 2> /dev/null) 
+_kernsrc=$(pacman -Spdd "${_pkgname}" 2> /dev/null)
+_headerssrc=$(pacman -Spdd "${_pkgname}-headers" 2> /dev/null)
+_docssrc=$(pacman -Spdd "${_pkgname}-docs" 2> /dev/null)
 
 # If not, then use the Arch Linux archive:
 if [ "$(basename "${_kernsrc}" 2> /dev/null)" != "${_kernpkg}" ]; then
