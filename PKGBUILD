@@ -22,5 +22,5 @@ source=(${_pkgname}-${pkgver}.zip::https://github.com/gnunn1/tilix/releases/down
 md5sums=('7b8e24c0cafb04b070b1167985a9d597')
 
 package() {
-	cp -ar $srcdir/usr $pkgdir/usr
+	cp -ar "${_pkgname}-${pkgver}" $pkgdir/usr
 }
