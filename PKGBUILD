@@ -1,12 +1,12 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=libcamera-clang-git
-pkgver=r2289.5aff27a2
+pkgver=r2405.287e4f82
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with clang)'
 arch=('x86_64' 'i686')
 url='https://libcamera.org/'
-provides=('libcamera')
+provides=('libcamera' 'libcamera-git')
 conflicts=('libcamera' 'libcamera-git')
 makedepends=(
             "meson" "python-yaml" 'python-ply' 'python-jinja' 'pkgconf' 'gnutls' 'openssl' 'git'
@@ -22,10 +22,11 @@ depends=(
         'qt5-base'                # for 'qcam' tool
         #'lttng-ust'              # for tracing with LTTng
         )
-license=('LGPL' 'GPL')
+license=('LGPL' 'GPL' 'Apache' 'BSD' 'MIT' 'custom')
 #options=('!buildflags')
 source=('git://linuxtv.org/libcamera.git/')
 md5sums=('SKIP')
+_licensedir=/usr/share/licenses/${pkgname}
 
 pkgver() {
   cd libcamera
@@ -42,16 +43,20 @@ build() {
     ninja -C build
 }
 
-# At least for me, the following test is never passed.
-# Uncomment it if you really want to run the test.
+# If this check fails, use --nocheck to skip it
 
-# check() {
-#   cd ${srcdir}/libcamera
-#   meson test -C build
-# }
+check() {
+  cd ${srcdir}/libcamera
+  meson test -C build
+}
 
 package() {
     cd "$srcdir/libcamera"
     DESTDIR="${pkgdir}" ninja -C build install
     rm -rf "$pkgdir/usr/share/doc/"
+
+    # Install licenses
+    install -d ${pkgdir}/${_licensedir}/LICENSES
+    install -m644 COPYING.rst ${pkgdir}/${_licensedir}
+    install -m644 LICENSES/{BSD-{2,3}-Clause,CC-BY-SA-4.0,CC0-1.0,MIT,Linux-syscall-note}.txt ${pkgdir}/${_licensedir}/LICENSES
 }

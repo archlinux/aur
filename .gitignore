@@ -2,3 +2,4 @@ libcamera/
 src/
 pkg/
 *.tar*
+*.log
