@@ -1,0 +1,45 @@
+diff --git a/10_linux b/10_linux
+index 9f2e423..10b10b7 100644
+--- a/10_linux
++++ b/10_linux
+@@ -98,6 +98,8 @@ linux_entry ()
+       case $type in
+ 	  recovery)
+ 	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")" ;;
++	  fallback)
++	      title="$(gettext_printf "%s, with Linux %s (fallback initramfs)" "${os}" "${version}")" ;;
+ 	  *)
+ 	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")" ;;
+       esac
+@@ -203,7 +205,7 @@ while [ "x$list" != "x" ] ; do
+   basename=`basename $linux`
+   dirname=`dirname $linux`
+ #  rel_dirname=`make_system_path_relative_to_its_root $dirname`
+-  version=`echo $basename | sed -e "s,^[^0-9]*-,,g"`
++  version=`echo $basename | sed -e "s,vmlinuz-,,g"`
+   alt_version=`echo $version | sed -e "s,\.old$,,g"`
+   linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+ 
+@@ -274,10 +276,21 @@ while [ "x$list" != "x" ] ; do
+ #    GRUB_DISABLE_SUBMENU="true"
+ #  fi
+ 
+-  if [ "x$is_top_level" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xtrue ]; then
++  if [ "x$is_top_level" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xy ]; then
+     linux_entry "${OS}" "${version}" simple \
+     "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
+ 
++    if test -e "${dirname}/initramfs-${version}-fallback.img" ; then
++      initrd="initramfs-${version}-fallback.img"
++
++      if test -n "${initrd}" ; then
++        gettext_printf "Found fallback initrd image(s) in %s:%s\n" "${dirname}" "${initrd_extra} ${initrd}" >&2
++      fi
++
++      linux_entry "${OS}" "${version}" fallback \
++                  "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++    fi
++
+     submenu_indentation="$grub_tab"
+ 
+     if [ -z "$boot_device_id" ]; then

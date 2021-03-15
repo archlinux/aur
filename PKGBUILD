@@ -1,17 +1,17 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 
 pkgname=bieaz
-pkgver=0.0.33
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Shell script ZFS boot environment manager"
+pkgdesc="boot environment manager for ZFS"
 arch=(any)
 url="https://gitlab.com/m_zhou/bieaz"
 license=('GPL')
-depends=('coreutils')
+depends=('coreutils' 'awk' 'sed' 'grep' 'zfs-utils' 'sh')
 optdepends=('grub: select boot environment at boot')
 source=(
 	"$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
-	"0000-42_bieaz-detect-archlinux-initramfs.patch"
+	"0000-10_linux-detect-archlinux-initramfs.patch"
 )
 package() {
 	cd "$pkgname-$pkgver"
@@ -19,8 +19,8 @@ package() {
 }
 prepare() {
 	cd "${srcdir}/$pkgname-$pkgver/"
-	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
-	patch -Np1 -i "${srcdir}/0000-42_bieaz-detect-archlinux-initramfs.patch"
+	echo "Patch GRUB detection of Arch Linux initramfs/fallback..."
+	patch -Np1 -i "${srcdir}/0000-10_linux-detect-archlinux-initramfs.patch"
 }
-md5sums=('2b6f9728094645bd9cac9d6483ab2eb5'
-         '1e6b0557de8f46c8a0db45895821abe5')
+md5sums=('40eac1f815a8a16e3364d53bf9217e6e'
+         'ef173ee9b642c5f51b1b5a3e3138f1c5')
