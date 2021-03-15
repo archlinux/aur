@@ -1,0 +1,32 @@
+#!/bin/bash -e
+
+kernels=()
+dracut_update=0
+
+while read -r line; do
+    if [[ $line != 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+		dracut_update=1 # Dracut files have been updated
+        continue 
+    fi
+
+    read -r pkgbase < "/${line}"
+	kernels+=("${pkgbase}")
+done
+
+if (( dracut_update )); then
+	kernels=()
+	for file in /lib/modules/*/pkgbase; do
+		if read -r pkgbase &> /dev/null < "$file"; then
+			kernels+=("${pkgbase}")
+		fi
+	done
+fi
+
+for kernel in "${kernels[@]}"; do
+	path="$(grep -lE "^${kernel}\$" /usr/lib/modules/*/pkgbase)"
+	version=$(basename "${path%/pkgbase}")
+    read -r pkgbase < "$path"
+
+	echo ":: Building unified kernel image for $kernel-$version"
+	dracut -f --uefi --kver "${version}"
+done
