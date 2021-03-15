@@ -45,12 +45,12 @@ build() {
     # TODO(libertylocked): pkg will compile nodejs from src and it takes 
     # ages because it can't find a prebuilt arm64 target
     npx pkg . --targets linux-arm64 --output ./dist/linux-arm64/bw --build
+    ./dist/linux-arm64/bw completion --shell zsh > _bw
   else
     npm run package:lin
+    ./dist/linux/bw completion --shell zsh > _bw
   fi
 
-  # create zsh completions
-  ./dist/linux/bw completion --shell zsh > _bw
 
   # Restore node config from nvm
   npm config set prefix ${npm_prefix}
