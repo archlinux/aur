@@ -1,7 +1,8 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-plyer
-pkgver=1.2.4
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Platform-independent wrapper for platform-dependent APIs"
 arch=('any')
@@ -11,8 +12,7 @@ url="https://github.com/kivy/plyer"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/p/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('30ed5b5efe8ecac3395944e938f89cab')
-sha256sums=('3e3267d1414242c35e5d381d5bfc4f2651e181d11bc374ecc90d00658d05aaaf')
+sha256sums=('bf8de0cf76811201c475c1763703c1dbcc40c1a0a5520e9bfeee92271ba7e600')
 
 prepare(){
   cd "$srcdir/${pkgname#python2-}-$pkgver"
