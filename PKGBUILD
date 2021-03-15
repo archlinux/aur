@@ -1,7 +1,7 @@
 # Maintainer: Glennie Vignarajah <glennie@glennie.fr>
 
 pkgname=file-rename
-pkgver=0.20
+pkgver=1.13
 pkgrel=1
 pkgdesc="Renames multiple files using regular expressions."
 arch=(any)
@@ -10,7 +10,7 @@ license=('PERL 5')
 depends=(perl)
 options=(!emptydirs)
 source=(http://cpan.metacpan.org/authors/id/R/RM/RMBARKER/File-Rename-$pkgver.tar.gz)
-md5sums=('c91d42b25294ac001bfb1391258daec5')
+md5sums=('b2c54014d40ed59fc83335e94ef0b5c0')
 
 build() {
     cd "${srcdir}/File-Rename-${pkgver}"
