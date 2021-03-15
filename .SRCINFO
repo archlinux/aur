@@ -1,6 +1,6 @@
 pkgbase = qxmpp
 	pkgdesc = Cross-platform C++ XMPP client and server library
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/qxmpp-project/qxmpp
 	arch = i686
@@ -14,8 +14,7 @@ pkgbase = qxmpp
 	optdepends = libvpx: required to enable vpx video codec
 	optdepends = libtheora: required to enable theora video codec
 	conflicts = qxmpp-qt5
-	source = https://github.com/qxmpp-project/qxmpp/archive/v1.3.2.tar.gz
-	sha256sums = 016e23c40c604dd43b15e1888e31d48729d0f80775fb6f7faef1130a52fe0641
+	source = https://github.com/qxmpp-project/qxmpp/archive/v1.4.0.tar.gz
+	sha256sums = 2148162138eaf4b431a6ee94104f87877b85a589da803dff9433c698b4cf4f19
 
 pkgname = qxmpp
-
