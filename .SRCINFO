@@ -11,7 +11,6 @@ pkgbase = ghost-deps-meta
 	provides = gtk3-print-backends
 	provides = libudev.so.0
 	provides = oculus-rift-sdk-jherico-git
-	provides = requires
 	provides = oculus-rift-sdk
 
 pkgname = ghost-deps-meta
