@@ -10,7 +10,6 @@ pkgbase = tmuxinator
 	depends = ruby-erubis
 	depends = ruby-thor
 	depends = ruby-xdg>=4.3.0
-	depends = ruby-rdoc
 	optdepends = zsh-completions: for ZSH completion
 	options = !emptydirs
 	source = tmuxinator-2.0.2.tar.gz::https://github.com/aziz/tmuxinator/archive/v2.0.2.tar.gz

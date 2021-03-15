@@ -14,7 +14,6 @@ depends=(
   'ruby-erubis'
   'ruby-thor'
   'ruby-xdg>=4.3.0'
-  'ruby-rdoc'
 )
 makedepends=('ruby-bundler')
 optdepends=('zsh-completions: for ZSH completion')
