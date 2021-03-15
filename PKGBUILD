@@ -4,7 +4,7 @@ pkgname=kopia-bin
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
 pkgver=0.8.0~beta2
 _pkgver=$(echo "$pkgver" | tr '~' -)
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/kopia/kopia/'
 license=('APACHE')
@@ -21,7 +21,6 @@ noextract=("$pkgname-${_pkgver}.tar.gz")
 prepare() {
     mkdir -p "${pkgname%-bin}"
     bsdtar -xf "$pkgname-${_pkgver}.tar.gz" -C "${pkgname%-bin}" --strip-components	1
-    chmod +x "${pkgname%-bin}/${pkgname%-bin}"
 }
 
 package() {
