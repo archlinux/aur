@@ -17,12 +17,8 @@ depends=(lib32-expat lib32-freetype2 $_pkgbasename)
 makedepends=(git autoconf-archive gperf python-lxml python-six lib32-json-c)
 install=lib32-fontconfig.install
 source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig"
-	"https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/172.patch"
-	"https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/138.patch"
         fontconfig-32.hook)
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 # a nice page to test font matching:
@@ -36,9 +32,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgbasename
-  
-   patch -Np1 -i ../138.patch
-   patch -Np1 -i ../172.patch
+
 }
 
 build() {
