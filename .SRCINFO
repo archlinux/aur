@@ -1,7 +1,7 @@
 pkgbase = pamtester
 	pkgdesc = Tiny program to test the pluggable authentication modules (PAM) facility
 	pkgver = 0.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pamtester.sourceforge.net/
 	arch = i686
 	arch = x86_64
