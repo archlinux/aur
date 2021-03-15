@@ -2,7 +2,7 @@
 
 pkgname=cgmnlm-git
 pkgrel=1
-pkgver=r152.100759a
+pkgver=r165.dbc7266
 pkgdesc="colorful gemini line mode client - fork of gmni"
 url="https://src.clttr.info/rwa/cgmnlm"
 arch=("any")
