@@ -2,10 +2,10 @@
 
 pkgname=matrix-appservice-telegram
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
-depends=('python' 'python-telethon-session-sqlalchemy' 'python-telethon>=1.20' 'python-telethon<1.21' 'python-ruamel-yaml' 'python-commonmark' 'python-alembic' 'python-mautrix>=0.8.4' 'python-aiohttp' 'python-magic-ahupp')
+depends=('python' 'python-telethon-session-sqlalchemy' 'python-telethon>=1.20' 'python-telethon<1.22' 'python-ruamel-yaml' 'python-commonmark' 'python-alembic' 'python-mautrix>=0.8.4' 'python-aiohttp' 'python-magic-ahupp')
 makedepends=('python' 'python-pip')
 optdepends=('python-cryptg: Uses native code for Telegram crypto stuff instead of pure Python'
             'python-cchardet: For faster encoding detection'
