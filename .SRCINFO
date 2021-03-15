@@ -1,13 +1,13 @@
 pkgbase = rozb3-pac
 	pkgdesc = pacman hook for bieaz
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/m_zhou/rozb3-pac
 	arch = any
 	license = GPL
-	depends = bieaz
-	source = https://gitlab.com/m_zhou/rozb3-pac/-/archive/0.2.0/rozb3-pac-0.2.0.tar.gz
-	md5sums = a7317364dc25dfb32863f2c89ab27ab0
+	depends = bieaz>=0.1.0
+	source = https://gitlab.com/m_zhou/rozb3-pac/-/archive/0.2.1/rozb3-pac-0.2.1.tar.gz
+	md5sums = 6f1adb528733911d8342e006db48baf7
 
 pkgname = rozb3-pac
 
