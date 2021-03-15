@@ -3,7 +3,7 @@
 
 _gemname=evil-winrm
 pkgname=ruby-$_gemname
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc='Evil-WinRM'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-winrm ruby-winrm-fs ruby-stringio)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('511b7fc8b09828a4c691a393e951dc52cecf79fd')
+sha1sums=('5ca41a5096897913ac72b24f3108ed989eb8abeb')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
