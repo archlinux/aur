@@ -1,18 +1,18 @@
 pkgbase = gram-savitzky-golay-git
 	pkgdesc = C++ Implementation of Savitzky-Golay filtering based on Gram polynomials
-	pkgver = r38.762e560
+	pkgver = r40.6c4a34a
 	pkgrel = 1
 	url = https://github.com/arntanguy/gram_savitzky_golay/
 	arch = x86_64
 	license = BSD2
 	depends = eigen
 	depends = boost
+	provides = gram-savitzky-golay
+	conflicts = gram-savitzky-golay
 	source = gram-savitzky-golay::git+https://github.com/hedgepigdaniel/gram_savitzky_golay.git#branch=fix-meson
 	source = git+https://github.com/jrl-umi3218/jrl-cmakemodules.git
-	source = build.patch
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 18b9cc3fc5f5b8f35d8e698ce70486a2
 
 pkgname = gram-savitzky-golay-git
 
