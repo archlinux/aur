@@ -1,16 +1,20 @@
 pkgbase = perl-mousex-types-path-class
 	pkgdesc = A Path::Class type library for Mouse
 	pkgver = 0.07
-	pkgrel = 1
-	url = http://search.cpan.org/~MASAKI/MouseX-Types-Path-Class-0.07/
+	pkgrel = 2
+	url = https://metacpan.org/release/MouseX-Types-Path-Class
 	arch = any
-	license = GPL
 	license = PerlArtistic
-	depends = perl>=5.10.0
-	depends = perl-mousex-types
+	license = GPL
+	checkdepends = perl-test-useallmodules>=0
+	depends = perl-mouse>=0.39
+	depends = perl-mousex-types>=0.02
+	depends = perl-path-class>=0
+	depends = perl>=5.8.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MASAKI/MouseX-Types-Path-Class-0.07.tar.gz
-	sha256sums = 228d4b4f3f0ed9547278691d0b7c5fe53d90874a69df709a49703c6af87c09de
+	source = https://cpan.metacpan.org/authors/id/M/MA/MASAKI/MouseX-Types-Path-Class-0.07.tar.gz
+	md5sums = 49c15495a78e0b5ad9146b9c632969bd
+	sha512sums = 07593ec3c20f1b817c8881f6569ff4ad21e7cf1deeed34f790cd64027c956e1a501ec325e4296c3af480643f5d386c074c2810cf14236f8b6ab389d2e5a241d8
 
 pkgname = perl-mousex-types-path-class
 
