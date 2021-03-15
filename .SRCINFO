@@ -15,6 +15,7 @@ pkgbase = openvr-git
 	depends = jsoncpp
 	optdepends = steam: SteamVR must be installed through Steam, also contains vive udev rules
 	provides = openvr
+	conflicts = openvr
 	options = !strip
 	source = git+https://github.com/ValveSoftware/openvr.git
 	source = 0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch

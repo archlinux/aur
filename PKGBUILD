@@ -9,6 +9,7 @@ depends=('libgl' 'sdl2' 'glew' 'jsoncpp')
 optdepends=('steam: SteamVR must be installed through Steam, also contains vive udev rules')
 makedepends=('git' 'cmake' 'vulkan-headers' 'qt5-base') #qt5 for the overlayexample
 provides=("openvr")
+conflicts=("openvr")
 options=('!strip')
 
 source=("git+https://github.com/ValveSoftware/openvr.git"
