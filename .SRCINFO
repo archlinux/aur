@@ -25,6 +25,9 @@ pkgbase = ghost-deps-meta
 	provides = nvidia-346xx-utils
 	provides = nvidia-352xx-utils
 	provides = nvidia-450xx-utils
+	provides = jack-audio-connection-kit
+	provides = opencl-catalyst
+	provides = xcursor-hackneyed
 
 pkgname = ghost-deps-meta
 
