@@ -1,6 +1,6 @@
 # Maintainer: Julian Hornich <hornich at kth dot se>
 pkgname=ffc-hpc-git
-pkgver=1.1.0_20200311
+pkgver=1.2.0_20210216
 pkgrel=1
 pkgdesc="A compiler for finite element variational forms. HPC version"
 _branch=master
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/ffc-hpc"
 license=('LGPL')
 groups=('dolfin-hpc-git')
-depends=('python' 'fiat-hpc-git' 'ufl-hpc-git' 'ufc2-hpc-git' 'python-numpy' 'python-six' 'python-sympy')
+depends=('python' 'fiat-hpc-git' 'ufl-hpc-git' 'python-numpy' 'python-six' 'python-sympy')
 optdepends=()
 makedepends=('git' 'python' 'sed')
 provides=('ffc-hpc')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd ffc-hpc
-    echo "$(grep version setup.py | sed 's/.*= //;s/["|,]//g')_$(git log --format="%cd" --date=short -1 | sed 's/-//g')"
+    echo "$(head -n 1 ChangeLog | sed 's/ \[.*//')_$(git log --format="%cd" --date=short -1 | sed 's/-//g')"
 }
 
 prepare() {
