@@ -20,8 +20,12 @@ sha256sums=('3a688a12d090e3f1d91977bb6bb8da9d343602876ce00f736ce5e3604ab7e0af'
 prepare() {
 	cd "$pkgname-$pkgver"
 
-	# Disable building of other packages
-	sed -i '109,113d' package.json
+	# Disable building dist packages
+	sed -i '/AppImage/d' package.json
+	sed -i '/deb/d' package.json
+	sed -i '/rpm/d' package.json
+	sed -i '/pacman/d' package.json
+	sed -i '/snap/d' package.json
 	sed -i 's/tar.bz2/dir/g' package.json
 }
 
