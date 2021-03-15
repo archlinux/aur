@@ -1,6 +1,6 @@
 pkgbase = sweethome3d-furniture-library
 	pkgdesc = A tool to manage furniture in Sweet Home 3D
-	pkgver = 1.25
+	pkgver = 1.26
 	pkgrel = 1
 	url = http://www.sweethome3d.com/support/forum/viewthread_thread,1550
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = sweethome3d-furniture-library
 	makedepends = unzip
 	depends = java-runtime
 	depends = sweethome3d
-	source = http://downloads.sourceforge.net/project/sweethome3d/FurnitureLibraryEditor/FurnitureLibraryEditor-1.25.jar
+	source = http://downloads.sourceforge.net/project/sweethome3d/FurnitureLibraryEditor/FurnitureLibraryEditor-1.26.jar
 	source = furniturelibraryeditor
 	source = furniturelibraryeditor.desktop
 	md5sums = ceaf0dbe8288894a56ea58c49eacd9dc
