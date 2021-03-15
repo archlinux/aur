@@ -1,11 +1,12 @@
 pkgbase = angband-ncurses
 	pkgdesc = A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)
 	pkgver = 4.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rephial.org/
 	install = angband-ncurses.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	license = custom
 	makedepends = python-docutils
