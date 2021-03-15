@@ -2,37 +2,32 @@
 
 pkgname='brotli-static'
 _pkgname=${pkgname%-static}
-pkgver=0.6.0
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Brotli compression library (static version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MIT')
 url='https://github.com/google/brotli'
 depends=('gcc-libs')
 makedepends=('cmake')
 options=('staticlibs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('69cdbdf5709051dd086a2f020f5abf9e32519eafe0ad6be820c667c3a9c9ee0f')
+sha256sums=('f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46')
 
 build() {
-    cd "$_pkgname-$pkgver"
-
-    mkdir -p build
-    cd build
-    cmake .. \
+    cmake -B build -S "$_pkgname-$pkgver" \
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="/usr/lib"
-    make
+    make -C build
 }
 
 check() {
-    cd "$_pkgname-$pkgver"
-    make test
+    make -C build test
 }
 
 package() {
-    cd "$_pkgname-$pkgver/build"
+    cd build
     install -d $pkgdir/usr/lib
     install -Dm755 *.a "$pkgdir/usr/lib/"
 }
