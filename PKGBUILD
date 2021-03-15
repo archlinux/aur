@@ -30,7 +30,7 @@ package() {
   mkdir -p "${pkgdir}/opt/flipper"
   cp -aR "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/." "${pkgdir}/opt/flipper"
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "${pkgdir}/opt/flipper/flipper" "$pkgdir/usr/bin/flipper"
+  ln -s "/opt/flipper/flipper" "$pkgdir/usr/bin/flipper"
   gendesk -f -n --pkgname "flipper" --pkgdesc "${pkgdesc}" --exec="flipper" --categories=Application\;Development --icon flipper
   install -Dm644 "${srcdir}/flipper.desktop" "${pkgdir}/usr/share/applications/flipper.desktop"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/static/icon.png" "${pkgdir}/usr/share/pixmaps/flipper.png"
