@@ -1,9 +1,9 @@
 # Maintainer : eggz
 
 pkgname=ffmpeg-nocuda
-pkgver=4.3.1
+pkgver=4.3.2
 gitver=n${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -73,12 +73,8 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
 conflicts=('ffmpeg')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver"
-'fixsrt.patch'
-)
-sha256sums=('SKIP'
-'0dd0fbeb8bc67eb2c3d1376cca4a95e708e2dce48d3bc33a77fac2b9867af9e6'
-)
+source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver")
+sha256sums=('SKIP')
 
 prepare() {
  cd ${srcdir}/ffmpeg
