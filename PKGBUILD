@@ -14,14 +14,14 @@
 # Set this to 'true' to enable auto login
 #_autologin='true'
 
+# Set this to 'false' to disable nativ (system) dialogs
+_nativ_dialogs='true'
+
 # Set this to 'true' to enable wiki functionality (experimental)
 #_wiki='true'
 
 # set this to 'true' to use clang for compiling (experimental)
 #_clang='true'
-
-# Unofficial plugins
-#_plugin_lua4rs='true'
 
 # Set this to 'true' to use use archlinux' rapidjson instead of shipped version
 #_systems_rapidjson='true'
@@ -29,8 +29,8 @@
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.6.5
-pkgrel=3
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
@@ -38,15 +38,14 @@ license=('GPL2')
 depends=('qt5-multimedia' 'qt5-x11extras' 'miniupnpc' 'libxss' 'sqlcipher') # 'libmicrohttpd'
 makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
-            'i2p: i2p hidden node support')
+            'i2p: i2p hidden node support'
+            'i2pd: i2p hidden node support' )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
-        "bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch"
         "fix_icon_path.patch")
-sha256sums=('901a1d1f282e04118fbe0e24190355b4a8f355a806cc5448738b1d691b46f5d5'
-            'c8e53fb677f5438600a78e4bef4ee2aa6d837c1dfdff033545e087dd2d3e2280'
+sha256sums=('c545b9249ac7dbfef72a2d636bc0f8b729c7ce05f21a54dd9284b2a387592d4a'
             '724f55edb3aa5ae34abfcba341cdecf3d6f5095d1d7018de4e254ae5627c426f')
 
 # Add missing dependencies if needed
@@ -66,34 +65,53 @@ _optWiki=''
 [[ "$_jsonapi" == 'true' ]] && _optJsonapi='CONFIG+=rs_jsonapi'
 [[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
-([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]] || [[ "$_plugin_lua4rs" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
+[[ "$_nativ_dialogs" == 'true' ]] && _optNativDialogs='CONFIG*=rs_use_native_dialogs'
+([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
 [[ "$_wiki" == 'true' ]] && _optWiki='CONFIG+=wikipoos'
 
-# Handle unofficial plugins
-if [[ "$_plugin_lua4rs" == 'true' ]] ; then
-	depends=(${depends[@]} 'lua')
-    source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
-fi
+get_git_repo() {
+	git clone -n https://github.com/$1/$2
+	cd $2
+	git checkout $3
+	cd ..
+}
 
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
 
-	patch -p1 --ignore-whitespace -i "${srcdir}"/bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch
-
 	patch -p1 --ignore-whitespace -i "${srcdir}"/fix_icon_path.patch
 
 	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv3/g' plugins/VOIP/VOIP.pro || true
+
+	# manually clone dependencies (if anybody knows a better way to do this, let me know!)
+	cd supportlibs
+		rmdir restbed/dependency/asio || true
+		rmdir restbed/dependency/catch || true
+		rmdir restbed/dependency/kashmir || true
+		rmdir -p restbed/dependency || true
+		rmdir restbed || true
+		get_git_repo 'Corvusoft' 'restbed' 'c27c6726d28c42e2e1b7537ba63eeb23e944789d'
+
+		# get restbed deps
+		cd restbed
+			git submodule update --init dependency/asio
+			git submodule update --init dependency/catch
+			git submodule update --init dependency/kashmir
+		cd ..
+
+		rmdir udp-discovery-cpp || true
+		get_git_repo 'truvorskameikin' 'udp-discovery-cpp' 'f3a3103a6c52e5707629e8d0a7e279a7758fe845'
+
+		if [ "$_systems_rapidjson" -ne 'true'] ; then
+			rmdir rapidjson || true
+			get_git_repo 'Tencent' 'rapidjson' 'f54b0e47a08782a6131cc3d60f94d038fa6e0a51'
+		fi
+
+	cd ..
 }
 
 build() {
 	cd "${srcdir}/RetroShare-${pkgver}"
-
-	# Handle unofficial plugins
-	if [[ "$_plugin_lua4rs" == 'true' ]] ; then
-		[[ -d 'plugins/Lua4RS' ]] &&  rm -r plugins//Lua4RS
-		cp -r -l "${srcdir}/Lua4RS" plugins/
-		sed -i -e 's/SUBDIRS += \\/SUBDIRS += \\\n\t\tLua4RS \\/g' plugins/plugins.pro
-	fi
 
 	# remove unwanted plugins
 	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
@@ -106,9 +124,15 @@ build() {
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		'RS_UPNP_LIB="miniupnpc"' \
+		'RS_MAJOR_VERSION=0' \
+		'RS_MINOR_VERSION=6' \
+		'RS_MINI_VERSION=6' \
+		'RS_EXTRA_VERSION=""' \
 		RetroShare.pro
-	# workaround
-	make || make
+
+	make || true
+	rmdir supportlibs/restbed/include || true
+	make
 }
 
 package() {
