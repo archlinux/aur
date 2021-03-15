@@ -1,7 +1,7 @@
 # Maintainer: Julian Hornich <hornich at kth dot se>
 pkgname=fiat-hpc-git
 pkgdesc="Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra. HPC version"
-pkgver=1.5.0_20200311
+pkgver=1.6.0_20210216
 pkgrel=1
 _branch=master
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd fiat
-  echo "$(grep version setup.py | sed 's/.*="//;s/".*//g')_$(git log --format="%cd" --date=short -1 | sed 's/-//g')"
+  echo "$(grep 'version =' setup.py | sed 's/.*= \"//;s/\"//')_$(git log --format="%cd" --date=short -1 | sed 's/-//g')"
 }
 
 prepare() {
