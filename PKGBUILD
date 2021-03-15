@@ -1,6 +1,6 @@
 # Maintainer: Eugene Dementyev <e@dementyev.me>
 pkgname=ecs-tool
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 epoch=
 pkgdesc="ecs-tool can run commands on an ECS cluster and deploy services onto it"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("${pkgname}-$pkgver.tar.gz::https://github.com/springload/ecs-tool/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=(60070286786263553a9757f2f61676eb)
+md5sums=(5a21596ba2103117f909f0caf566b543)
 validpgpkeys=()
 
 build() {
