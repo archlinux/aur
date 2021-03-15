@@ -1,16 +1,16 @@
-# Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
+# Contributor: D. Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=systems-nominal
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An experimental game by Nerd^3"
 arch=('i686' 'x86_64')
 url="http://www.nerdcubed.co.uk/games/"
 license=('custom: commercial')
-depends=('libgl' 'gconf' 'cairo' 'fontconfig' 'gtk2' 'nss' 'libxtst' 'gcc-libs' 'alsa-lib' 'libudev.so.0')
+depends=('libgl' 'gconf' 'cairo' 'fontconfig' 'gtk2' 'nss' 'libxtst' 'gcc-libs' 'alsa-lib' 'libudev0-shim')
 md5sums=('688f9172036bb86ee372bd7fbfd254f5'
          'ab6dfe6c1ce9f311aace15c5a6855c75'
-         'db0da9f5e3708f8f5fd7a14678c07fd5')
+         '1662b26049165ed241ec2f4d756749fc')
 PKGEXT=.pkg.tar
 source=(http://assets.nerdcubed.co.uk/systems_nominal_${pkgver}_linux.7z
         ${pkgname}.desktop
