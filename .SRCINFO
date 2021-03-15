@@ -1,6 +1,6 @@
 pkgbase = rare
 	pkgdesc = A GUI for legendary, an open source replacement for Epic Games Launcher
-	pkgver = 0.9
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/Dummerle/Rare
 	arch = any
