@@ -6,8 +6,8 @@
 pkgname='cnrdrvcups-lb'
 
 # The download link changes with every version, try to keep changes in one place
-# current link : https://gdlp01.c-wss.com/gds/8/0100007658/18/linux-UFRII-drv-v520-uken-05.tar.gz
-_pkgver='5.20';  _dl='8/0100007658/18';_suffix='05'
+# https://gdlp01.c-wss.com/gds/8/0100007658/20/linux-UFRII-drv-v530-uken-12.tar.gz
+_pkgver='5.30';  _dl='8/0100007658/20';_suffix='12'
 
 pkgver="${_pkgver}"
 pkgrel='1'
@@ -27,8 +27,8 @@ conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-${_suffix}.tar.gz")
-md5sums=('affe334ad4bff34d8bf21b59a03e5b19')
-sha512sums=('31652894e8ad07e81ae044c5172ced73569a1b78f06f48bcafcd9cabcb19406f0645bfdf741cf3a60746859e671c443d14e5c0c04bffd540ac10406df7266b45')
+md5sums=('965e60cffa5f3e7872a344c9adbeca5b')
+sha512sums=('61f060a742c9e6cc7439f26fac63fbac33c96722ec80c604eca40716255920a65eab4cd6f592deee627a8c803776df2c0b8c3dbce9727e53862fa7551a172ebe')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -47,6 +47,7 @@ _driver_dir="cnrdrvcups-lb-${_pkgver}"
 
 prepare() {
 
+    # extract sources
     mkdir "${_srcdir}"
     cd "${_srcdir}"
     bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-uken/Sources/${pkgname}-${pkgver}-1.tar.gz"
@@ -126,7 +127,8 @@ _setvars() {
         _includedir='/usr/include'
         b_lib_dir="${srcdir}/${_srcdir}/lib"
         b_include_dir="${srcdir}/${_srcdir}/include"
-        _libsarch='libs64'
+        _libsarch='libs64/intel'
+        nobuild=0
   )
 
 # -fcommon is needed to compile succesfully with gcc10 , see https://gcc.gnu.org/gcc-10/porting_to.html
@@ -190,7 +192,7 @@ package() {
     
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-uken/Documents"
-    install -Dpm644 "README-ufr2-5.2xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.2xUK.html"
+    install -Dpm644 "README-ufr2-5.3xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.2xUK.html"
     install -Dpm644 "UsersGuide-ufr2-UK.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html"
     install -Dpm644 "LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Documents/LICENSE-EN.txt"
     popd
