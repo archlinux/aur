@@ -1,6 +1,6 @@
 pkgbase = vscode-json-languageserver
 	pkgdesc = The JSON Language server provides language-specific smarts for editing, validating and understanding JSON documents.
-	pkgver = 1.3.1
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/vscode-langservers/vscode-json-languageserver
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = vscode-json-languageserver
 	depends = nodejs
 	provides = vscode-json-languageserver
 	conflicts = vscode-json-languageserver-bin
-	noextract = vscode-json-languageserver-1.3.1.tgz
-	source = https://registry.npmjs.org/vscode-json-languageserver/-/vscode-json-languageserver-1.3.1.tgz
-	md5sums = 48e7bb6a9aac50b9cf23bf9d6d514788
+	noextract = vscode-json-languageserver-1.3.4.tgz
+	source = https://registry.npmjs.org/vscode-json-languageserver/-/vscode-json-languageserver-1.3.4.tgz
+	md5sums = ec86d6ed27f62d5cc03ba3304cc7f5fd
 
 pkgname = vscode-json-languageserver
 

@@ -1,7 +1,7 @@
 # Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
 
 pkgname=vscode-json-languageserver
-pkgver=1.3.1
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="The JSON Language server provides language-specific smarts for editing, validating and understanding JSON documents."
 arch=('any')
@@ -13,7 +13,7 @@ provides=(vscode-json-languageserver)
 conflicts=(vscode-json-languageserver-bin)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-md5sums=('48e7bb6a9aac50b9cf23bf9d6d514788')
+md5sums=('ec86d6ed27f62d5cc03ba3304cc7f5fd')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
