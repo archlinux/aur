@@ -1,6 +1,6 @@
 pkgbase = shadow-alpha
 	pkgdesc = Shadow Alpha application
-	pkgver = 5.0.863
+	pkgver = 5.0.890
 	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-alpha.install
@@ -35,7 +35,7 @@ pkgbase = shadow-alpha
 	optdepends = nouveau-fw: Driver for old Nvidia GPU
 	optdepends = libva-intel-driver: Driver for Intel GPU
 	provides = shadow-alpha
-	source = shadow-alpha-5.0.863-1.AppImage::https://update.shadow.tech/launcher/testing/linux/ubuntu_18.04/ShadowAlpha.AppImage
+	source = shadow-alpha-5.0.890-1.AppImage::https://update.shadow.tech/launcher/testing/linux/ubuntu_18.04/ShadowAlpha.AppImage
 	sha512sums = SKIP
 
 pkgname = shadow-alpha

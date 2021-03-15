@@ -93,7 +93,7 @@ package() {
 _commit=3ab413613a6c3c4b78d3f3eb030068c0ea497a4e
 pkgname=shadow-alpha
 basename=testing
-pkgver="$(pkgver)"
+pkgver=5.0.890
 pkgrel=1
 pkgdesc="Shadow Alpha application"
 arch=('x86_64')
