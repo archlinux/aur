@@ -1,13 +1,13 @@
 pkgbase = jisho
 	pkgdesc = A very simple cli tool to lookup Japanese words using jisho.org
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/JojiiOfficial/jisho-cli
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/JojiiOfficial/jisho-cli#tag=v0.1.2
+	source = git+https://github.com/JojiiOfficial/jisho-cli#tag=v0.1.4
 	md5sums = SKIP
 
 pkgname = jisho

@@ -1,7 +1,7 @@
 # Maintainer: jojii <jojii@gmx.net>
 pkgname=jisho
 _gitname=jisho-cli
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A very simple cli tool to lookup Japanese words using jisho.org"
 url="https://github.com/JojiiOfficial/jisho-cli"
