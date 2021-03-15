@@ -1,8 +1,8 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 _pkgbase=liquidtux
 pkgname=liquidtux-dkms-git
-pkgver=0.1.0.r3.b713c7a
-pkgrel=2
+pkgver=0.1.0.r10.f525962
+pkgrel=1
 pkgdesc="Linux kernel hwmon drivers for AIO liquid coolers and other devices (DKMS, Git)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/liquidctl/liquidtux"
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/liquidctl/liquidtux#branch=master"
         'dkms.conf')
 sha256sums=('SKIP'
-            '66287d98bf77ee8bf4a177dd4a5afbea4cb9f28e96d90457a5ba0fa102747eee')
+            'a176f96ddf328d0dd1c70b5121991aad8ce114c0f2d4eb4c106d76d5e68ee398')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
