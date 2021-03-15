@@ -24,7 +24,7 @@ provides=('freerdp' 'libfreerdp3.so' 'libfreerdp-client3.so' 'libfreerdp-server3
 'libfreerdp-shadow3.so' 'libfreerdp-shadow-subsystem3.so' 'libwinpr3.so'
 'libwinpr-tools3.so' 'libuwac0.so')
 conflicts=('freerdp')
-source=('freerdp::git://github.com/FreeRDP/FreeRDP.git')
+source=('freerdp::git+https://github.com/FreeRDP/FreeRDP.git')
 sha256sums=('SKIP')
 
 pkgver() {
