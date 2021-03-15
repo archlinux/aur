@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta8.r0.gfbca269f62
+pkgver=9.3.beta9.r0.g5cb72aade9
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -41,16 +41,16 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-singular-4.2.patch
         sagemath-pari-2.13.patch
-        sagemath-numpy-1.20.patch
-        sagemath-lrcalc2.patch)
+        sagemath-lrcalc2.patch
+        sagemath-eclib-20210310.patch)
 sha256sums=('SKIP'
-            '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
+            '4fdf318ec9a54567877b93af8c668ad925f2a82370048db158d134b58b064204'
             'af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
             '9896486aae7c9903012275bb53980049382424457e7edb2ebf9b186e23135bcc'
             '33907a0681900b9580b8aa5b3d2ddb2d609977076c38fdbc47279ecef4104ed1'
-            '1b67c603d5a76a00269548a09b559debabd586dccbe712c9770f4ee4ffb3d0c3'
-            '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9')
+            '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9'
+            'a79f1165fd262fcb52ac7a6afc33aa8d75182fa16595aa9ba1aaa0b2ebb45c19')
 
 pkgver() {
   cd sage
@@ -65,10 +65,10 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.2.patch
 # Port to PARI 2.13 https://trac.sagemath.org/ticket/30801
   patch -p1 -i ../sagemath-pari-2.13.patch
-# Fix deprecation warnings with numpy 1.20
-  patch -p1 -i ../sagemath-numpy-1.20.patch
 # Replace lrcalc.pyx with a wrapper over lrcalc's python bindings https://trac.sagemath.org/ticket/31355
   patch -p1 -i ../sagemath-lrcalc2.patch
+# Fix build with eclib 20210310 https://trac.sagemath.org/ticket/31443
+  patch -p1 -i ../sagemath-eclib-20210310.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
@@ -80,7 +80,7 @@ prepare(){
 }
 
 build() {
-  cd sage/src
+  cd sage/build/pkgs/sagelib/src
 
   export SAGE_NUM_THREADS=10
   python setup.py build
@@ -91,7 +91,7 @@ package_sagemath-git() {
   conflicts=(sagemath)
   provides=(sagemath)
 
-  cd sage/src
+  cd sage/build/pkgs/sagelib/src
   python setup.py install --root="$pkgdir" --optimize=1
 
 # Remove sage_setup
