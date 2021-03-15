@@ -1,6 +1,6 @@
 pkgbase = parallel-launcher
 	pkgdesc = A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 0
 	url = https://blueprint64.ca/parallel-launcher
 	install = parallel-launcher.install
@@ -16,8 +16,8 @@ pkgbase = parallel-launcher
 	depends = qt5-svg
 	depends = sdl2
 	depends = findutils
-	source = parallel-launcher-2.2.0.tar.gz
-	md5sums = da094562c8a3b83aa9a7093d7c86af26
+	source = parallel-launcher-2.3.0.tar.gz
+	md5sums = 4cdb75fc4cf907e5768d7d8d856544b9
 
 pkgname = parallel-launcher
 
