@@ -1,0 +1,7 @@
+*.tar.gz
+*.zip
+*.pkg.tar.xz
+icon.png
+LICENSE
+pkg/
+src/
