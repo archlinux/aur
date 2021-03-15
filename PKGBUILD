@@ -1,15 +1,15 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='sfeed'
-pkgver=0.9.20
+pkgname=sfeed
+pkgver=0.9.22
 pkgrel=1
 pkgdesc='RSS and Atom parser'
-arch=('x86_64')
+arch=('any')
 url='https://codemadness.org/sfeed-simple-feed-parser.html'
 _url_source='https://codemadness.org/releases/sfeed'
 license=('ISC')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2451457a7745ea8519316315a8597331302e00778a9ff7bec58dfb241674d991')
+sha256sums=('1941851adb7296dcd3e983575855fc8a4926fbd4e9d31220698f33ddca7f19ef')
 
 build() {
   make -C "${pkgname}-${pkgver}"
