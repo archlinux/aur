@@ -1,4 +1,4 @@
-# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=etcher-cli-bin
 _pkgname=etcher-cli
