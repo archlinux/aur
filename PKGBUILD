@@ -1,11 +1,11 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=ghost-deps-meta
-pkgver=20210314
-pkgrel=4
+pkgver=20210315
+pkgrel=1
 pkgdesc="Provide no longer existing packages for find and fix AUR pkgbuilds"
 arch=(any)
 url=""
 license=(GPL)
-provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends c10t)
+provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.so.0)
 # catalist-utils skype skype-legacy go-pie
