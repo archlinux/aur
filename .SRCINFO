@@ -1,6 +1,6 @@
 pkgbase = moonlight-qt
 	pkgdesc = GameStream client for PCs (Windows, Mac, and Linux)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://moonlight-stream.org
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = moonlight-qt
 	depends = ffmpeg
 	depends = sdl2_ttf
 	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs
-	source = https://github.com/moonlight-stream/moonlight-qt/releases/download/v3.0.0/MoonlightSrc-3.0.0.tar.gz
-	sha256sums = 2ce21c0b401c23f931c6f02b9fb68d4d168674b630f98e07548f69d8cf692463
+	source = https://github.com/moonlight-stream/moonlight-qt/releases/download/v3.1.0/MoonlightSrc-3.1.0.tar.gz
+	sha256sums = 807c74b8439da3b97f972f751a8555a17c750d01627cddb64afa2c62905d6f29
 
 pkgname = moonlight-qt
 
