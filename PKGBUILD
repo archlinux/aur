@@ -2,7 +2,7 @@
 
 pkgname=redoc-cli
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ReDoc's Command Line Interface"
 arch=('any')
 url="https://github.com/Redocly/redoc"
@@ -18,10 +18,15 @@ sha256sums=(
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
-  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
-  chmod -R go-w "${pkgdir}/usr"
-  # Why there is always a weird package `/usr/lib/node_modules/root/` while installing some packages from npm?
-  rm -rf "${pkgdir}/usr/lib/node_modules/root/"
+  npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  chmod -R u=rwX,go=rX "${pkgdir}"
+
+  # npm installs package.json owned by build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:

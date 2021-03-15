@@ -1,7 +1,7 @@
 pkgbase = redoc-cli
 	pkgdesc = ReDoc's Command Line Interface
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Redocly/redoc
 	arch = any
 	license = MIT
