@@ -1,7 +1,7 @@
 # Maintainer: Julian Hornich <hornich at kth dot se>
 pkgname=ufl-hpc-git
 pkgdesc="Unified form language. HPC version"
-pkgver=1.1.0_20200311
+pkgver=1.2.0_20210216
 pkgrel=1
 _branch=master
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ufl
-  echo "$(head -n 1 ChangeLog | sed 's/ .*//')_$(git log --format="%cd" --date=short -1 | sed 's/-//g')"
+  echo "$(grep 'version =' setup.py | sed 's/.*= \"//;s/\"//')_$(git log --format="%cd" --date=short -1 | sed 's/-//g')"
 }
 
 prepare() {

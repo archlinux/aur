@@ -1,6 +1,6 @@
 pkgbase = ufl-hpc-git
 	pkgdesc = Unified form language. HPC version
-	pkgver = 1.1.0_20200311
+	pkgver = 1.2.0_20210216
 	pkgrel = 1
 	url = https://bitbucket.org/adaptivesimulations/ufl-hpc/
 	arch = i686
