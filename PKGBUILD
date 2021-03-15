@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
-pkgver=2.24.0
+pkgver=2.24.2
 pkgrel=1
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('c6f9946a78bbfe4af067970826ae0bc7c52729ae22dd1dea1adcf0bca4998fd5'
+sha256sums=('36d23655bdf364ac5b5e86ea5faf0f0c9e91666867e9a1dcf462d5e136e4fec3'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
@@ -21,7 +21,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	# Disable building of other packages
-	sed -i '108,112d' package.json
+	sed -i '107,111d' package.json
 	sed -i 's/tar.bz2/dir/g' package.json
 }
 
