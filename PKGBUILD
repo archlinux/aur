@@ -5,7 +5,7 @@ pkgver=0.3
 pkgrel=4
 pkgdesc="Replacement for all gtk-demo language bindings"
 arch=(i686 x86_64)
-url="https://demohack.sourceforge.net/"
+url="http://demohack.sourceforge.net/"
 license=('LGPL')
 depends=('pygtk' 'medit-full>=1.1.0')
 makedepends=('pkg-config' 'gtkmm')
