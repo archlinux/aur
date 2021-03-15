@@ -5,14 +5,14 @@ pkgver=0.3
 pkgrel=4
 pkgdesc="Replacement for all gtk-demo language bindings"
 arch=(i686 x86_64)
-url="http://demohack.sourceforge.net/"
+url="https://demohack.sourceforge.net/"
 license=('LGPL')
 depends=('pygtk' 'medit-full>=1.1.0')
 makedepends=('pkg-config' 'gtkmm')
 optdepends=('gtkmm:	Running C++ demos'
 	    'gtk2-perl:	Running Perl demos'
 	    'ruby-gtk2:	Running Ruby demos')
-source=(http://downloads.sourceforge.net/sourceforge/demohack/$pkgname-$pkgver.tar.gz)
+source=(https://downloads.sourceforge.net/sourceforge/demohack/$pkgname-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
