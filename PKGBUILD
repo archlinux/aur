@@ -1,18 +1,27 @@
+# This module was originally made for IBM TSS (aur/ibm-tss).
 #
-# Note: This module is for IBM TSS.
+# As of 3.0.0 it *can* be built against the Intel TSS (community/tpm2-tss), but
+# in that case you should probably be using community/tpm2-tss-engine instead.
 #
-#       The TPM2 packages in [community] are for Intel TSS,
-#       so you probably want "tpm2-tss-engine" instead.
-#
+# For that reason the default is still to use IBM TSS, but if you prefer, you
+# can run `makepkg use_ibm_tss=0` to build against the Intel one.
+use_ibm_tss=1
+
 pkgname=openssl-tpm2-engine
-pkgver=2.4.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="OpenSSL engine for TPM-backed keys using IBM's TPM2 software stack"
 arch=(x86_64)
 url="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git"
 license=('LGPL2.1')
-depends=('openssl' 'ibm-tss')
-_commit=ff490ede6bd3cfae2699fe75b56fb8649a42b3be
+if (( use_ibm_tss )); then
+  depends=('openssl' 'ibm-tss')
+else
+  depends=('openssl' 'tpm2-tss')
+fi
+makedepends=('help2man')
+checkdepends=('swtpm')
+_commit=42d8f9121f9846eeb01e8d8c48f5c552e90685f6
 source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -31,6 +40,11 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
+
+#check() {
+#  cd $pkgname
+#  make check
+#}
 
 package() {
   cd $pkgname
