@@ -5,7 +5,7 @@
 
 _pkgname=libfilezilla
 pkgname=${_pkgname}-unstable
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs. (includes unstable versions)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ checkdepends=('cppunit')
 provides=('libfilezilla' 'libfilezilla.so')
 conflicts=('libfilezilla')
 source=(https://download.filezilla-project.org/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2)
-sha512sums=('f7545d0220bc83d66dd6b66494696a8799428d065037c98d7752d841e03fa5ea2198751cd22e22b9b1ad8023210725dd1af8afcffa6f61bcfe6aa12671200011')
+sha512sums=('30db720a8fbc806f498aa94ca9bdbbfa6ef04b4b4853e2c38744c2ba26dc8e34d3b006a057dcb527f6d745bf594ccffbb424f9b59dca6d1cb028b0f13bdd466a')
 
 build() {
   cd ${_pkgname}-${pkgver}
