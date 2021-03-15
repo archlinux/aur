@@ -1,7 +1,7 @@
 pkgbase = apwal
 	pkgdesc = Apwal is a simple application launcher for Linux together with a powerful editor.
 	pkgver = 0.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://apwal.free.fr
 	arch = i686
 	arch = x86_64

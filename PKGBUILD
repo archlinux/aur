@@ -2,17 +2,12 @@
 #
 pkgname=apwal
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Apwal is a simple application launcher for Linux together with a powerful editor. "
 url="http://apwal.free.fr"
-license="GPL"
+license=("GPL")
 arch=('i686' 'x86_64')
 depends=('gtk2')
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-install=
 source=("http://apwal.free.fr/download/$pkgname-$pkgver.tar.gz")
 md5sums=('2f15a1a680f842d8373a1c2725b53130')
 
