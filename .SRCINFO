@@ -1,6 +1,6 @@
 pkgbase = freerdp-git
 	pkgdesc = Free RDP client - git checkout
-	pkgver = 2.0.0.rc4.r1127.g2df3eb045
+	pkgver = 2.0.0.r699.gd6ba9c1da
 	pkgrel = 1
 	url = http://www.freerdp.com/
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = freerdp-git
 	depends = libxinerama
 	depends = libxv
 	depends = openh264
+	depends = fuse
 	provides = freerdp
 	conflicts = freerdp
 	source = freerdp::git://github.com/FreeRDP/FreeRDP.git
