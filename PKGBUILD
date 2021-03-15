@@ -1,12 +1,12 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
 url="https://github.com/sile-typesetter/$pkgname"
-license=('LGPL3')
+license=('AGPL3')
 depends=('bc'
          'bcprov' # pdftk optdepend is required
          'entr'
@@ -54,9 +54,9 @@ _python_deps=('isbnlib'
 depends+=("${_lua_deps[@]/#/lua-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
-makedepends=('autoconf-archive' 'cargo' 'luarocks' 'rust' 'node-prune' 'yarn')
+makedepends=('autoconf-archive' 'cargo' 'luarocks' 'node-prune' 'rust' 'yarn')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('c7a634de313553b5e1f506237a7e28f8e9bcd9e3b18ed55bffb44d7f4d696576')
+sha256sums=('486277cb3f37aabc1bc58387eb8442bbd733449365424ec5ec9f336b402c8629')
 prepare() {
     cd "$pkgname-$pkgver"
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
@@ -71,7 +71,7 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
-    ./configure --prefix="/usr"
+    ./configure --prefix "/usr"
     make
 }
 
