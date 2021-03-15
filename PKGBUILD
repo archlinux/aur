@@ -1,5 +1,4 @@
 # Maintainer : eggz
-
 pkgname=ffmpeg-nocuda
 pkgver=4.3.2
 gitver=n${pkgver}
