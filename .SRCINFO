@@ -28,6 +28,7 @@ pkgbase = ghost-deps-meta
 	provides = jack-audio-connection-kit
 	provides = opencl-catalyst
 	provides = xcursor-hackneyed
+	provides = eject
 
 pkgname = ghost-deps-meta
 
