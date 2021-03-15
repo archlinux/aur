@@ -1,7 +1,7 @@
 pkgbase = freerdp-git
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP) - git checkout
 	pkgver = 2.0.0.r699.gd6ba9c1da
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freerdp.com/
 	arch = i686
 	arch = x86_64
@@ -41,6 +41,7 @@ pkgbase = freerdp-git
 	depends = openssl
 	depends = pcsclite
 	depends = wayland
+	optdepends = libva
 	provides = freerdp
 	provides = libfreerdp3.so
 	provides = libfreerdp-client3.so
@@ -51,7 +52,7 @@ pkgbase = freerdp-git
 	provides = libwinpr-tools3.so
 	provides = libuwac0.so
 	conflicts = freerdp
-	source = freerdp::git://github.com/FreeRDP/FreeRDP.git
+	source = freerdp::git+https://github.com/FreeRDP/FreeRDP.git
 	sha256sums = SKIP
 
 pkgname = freerdp-git
