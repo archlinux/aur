@@ -3,13 +3,13 @@
 pkgname=bitwarden-cli
 pkgver=1.15.0
 _jslibcommit='f80e89465ffc004705d2941301c0ffb6bfd71d1a'
-_nodeversion='10.23.3'
-pkgrel=1
+_nodeversion='10.24.0'
+pkgrel=2
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/bitwarden/cli"
 license=('GPL3')
-makedepends=('nodejs' 'nvm' 'npm' 'git')
+makedepends=('git' 'npm' 'nvm')
 conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   export npm_config_cache="$srcdir/npm_cache"
-  _npm_prefix=$(npm config get prefix)
+  local npm_prefix=$(npm config get prefix)
   npm config delete prefix
   source /usr/share/nvm/init-nvm.sh
   nvm install ${_nodeversion} && nvm use ${_nodeversion}
@@ -39,15 +39,21 @@ build() {
   npm install
   cd "${srcdir}/cli-${pkgver}"
   npm install
-  # Due to some jsdom dependency complications we'll have to use bundled nodejs
-  # in the final build for now.
-  npm run dist:lin
+  npm run build:prod
+  npm run clean 
+  if [ $CARCH == "aarch64" ]; then
+    # TODO(libertylocked): pkg will compile nodejs from src and it takes 
+    # ages because it can't find a prebuilt arm64 target
+    npx pkg . --targets linux-arm64 --output ./dist/linux-arm64/bw --build
+  else
+    npm run package:lin
+  fi
 
   # create zsh completions
   ./dist/linux/bw completion --shell zsh > _bw
 
   # Restore node config from nvm
-  npm config set prefix ${_npm_prefix}
+  npm config set prefix ${npm_prefix}
   nvm unalias default
 }
 
@@ -58,7 +64,11 @@ package() {
   # cp -a build/. "${pkgdir}/usr/lib/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 ./dist/linux/bw "${pkgdir}/usr/bin/bw"
+  if [ $CARCH == "aarch64" ]; then
+    install -Dm755 ./dist/linux-arm64/bw "${pkgdir}/usr/bin/bw"
+  else
+    install -Dm755 ./dist/linux/bw "${pkgdir}/usr/bin/bw"
+  fi
 
   # package zsh completions
   install -Dm644 -t "${pkgdir}/usr/share/zsh/site-functions" "${srcdir}/cli-${pkgver}/_bw"
