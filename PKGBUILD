@@ -1,12 +1,12 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-espnet-git
-pkgver=0.9.8.r11071
+pkgver=0.9.8.r11077
 pkgrel=1
 pkgdesc='End-to-End Speech Processing Toolkit Python-Only Package (without venv)'
 arch=('any')
 url='https://github.com/espnet/espnet'
 license=('Apache 2.0')
-depends=('python>=3.7' 'python-numpy' 'python-soundfile' 'python-typeguard' 'python-editdistance' 'python-librosa' 'tensorboard' 'python-h5py' 'python-nltk' 'python-regex' 'python-inflect' 'python-jaconv' 'python-pytorch-complex' 'python-pytorch-wpe' 'python-sentencepiece' 'python-g2p-git' 'python-kaldiio' 'python-sentencepiece-git' 'python-wandb')
+depends=('python>=3.7' 'python-numpy' 'python-soundfile' 'python-typeguard' 'python-editdistance' 'python-librosa' 'tensorboard' 'python-h5py' 'python-nltk' 'python-regex' 'python-inflect' 'python-jaconv' 'python-pytorch-complex' 'python-pytorch-wpe' 'python-sentencepiece' 'python-g2p-git' 'python-kaldiio' 'python-sentencepiece-git' 'python-wandb' 'python-espnet-tts-frontend-git')
 optdepends=('sox: convert audio files')
 makedepends=('git' 'python-setuptools')
 provides=('python-espnet')
