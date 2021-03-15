@@ -1,6 +1,6 @@
 pkgbase = python-ctc-segmentation-git
 	pkgdesc = Determine and align utterance segments within audio files using CTC
-	pkgver = 1.5.1.r33
+	pkgver = 1.5.2.r34
 	pkgrel = 1
 	url = https://github.com/lumaku/ctc-segmentation
 	arch = any
