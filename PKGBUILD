@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.4.1.r9.g56fd7dc
+pkgver=0.4.2.r0.ga37f9a2
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -54,7 +54,7 @@ _python_deps=('isbnlib'
 depends+=("${_lua_deps[@]/#/lua-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
-makedepends=('autoconf-archive' 'luarocks' 'node-prune' 'rust' 'yarn')
+makedepends=('autoconf-archive' 'cargo' 'luarocks' 'node-prune' 'rust' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -69,11 +69,11 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
-    ./bootstrap.sh
     sed Makefile.am -i \
         -e "/^licensedir = /s#.(_casile)\$#$pkgname#" \
         -e 's/yarn \(install\|run\)/yarn --offline \1/' \
         -e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
+    ./bootstrap.sh
     cargo fetch
     yarn install --production --frozen-lockfile
 }
@@ -81,7 +81,7 @@ prepare() {
 build() {
     cd "$pkgname"
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
-    ./configure --prefix /usr
+    ./configure --prefix "/usr"
     make
 }
 
