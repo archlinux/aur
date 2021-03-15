@@ -1,0 +1,16 @@
+pkgbase = codeonly-git
+	pkgdesc = Remove annoying comments from your code
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/LostInTheCloud/codeonly
+	arch = any
+	license = GPL-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = codeonly-git::git+https://github.com/LostInTheCloud/codeonly
+	sha256sums = SKIP
+
+pkgname = codeonly-git
+
+
