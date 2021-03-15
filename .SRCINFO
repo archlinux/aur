@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cminpack
 	pkgdesc = A C/C++ rewrite of the MINPACK software (mingw-w64)
 	pkgver = 1.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://devernay.free.fr/hacks/cminpack/cminpack.html
 	arch = any
 	license = BSD
