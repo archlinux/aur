@@ -6,10 +6,10 @@ pkgbase = pamtester
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = pam
 	source = http://sourceforge.net/projects/pamtester/files/pamtester/0.1.2/pamtester-0.1.2.tar.gz
 	sha256sums = 83633d0e8a4f35810456d9d52261c8ae0beb9148276847cae8963505240fb2d5
 
 pkgname = pamtester
-
