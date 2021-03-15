@@ -1,6 +1,7 @@
 pkgname=nodejs-nightly
-_pkgver=16.0.0-nightly20210312bfa6e37204
-pkgver=16.0.0nightly20210312bfa6e37204
+_pkgver=16.0.0-nightly2021031566f0eb7dc3
+# replace - with .
+pkgver=16.0.0.nightly2021031566f0eb7dc3
 pkgrel=1
 pkgdesc='Nightly version of nodejs evented I/O for V8 javascript'
 arch=('x86_64')
@@ -11,7 +12,7 @@ makedepends=('procps-ng')
 conflicts=('nodejs' 'npm')
 provides=("nodejs=$pkgver" 'nodev16' 'npm')
 source=("https://nodejs.org/download/nightly/v${_pkgver}/node-v${_pkgver}-linux-x64.tar.xz")
-md5sums=('7bc8132ea194ea303563edc16d7d0c25')
+md5sums=('84a306c0e725bef9b0818861055cf037')
 
 package() {
   	cd node-v$_pkgver-linux-x64
