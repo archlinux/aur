@@ -1,0 +1,13 @@
+Only in c-wrapper-0.6.1-new/src: .#c-parser.c
+diff --unified --recursive --text c-wrapper-0.6.1-orig/src/c-parser.c c-wrapper-0.6.1-new/src/c-parser.c
+--- c-wrapper-0.6.1-orig/src/c-parser.c	2021-03-15 16:06:39.947773964 +0100
++++ c-wrapper-0.6.1-new/src/c-parser.c	2021-03-15 16:06:57.947776245 +0100
+@@ -1703,7 +1703,7 @@
+         /* skip lines starting with "# [0-9]+ <stdin>" and join with following line */
+         while (!SCM_EOFP(next_line_str)
+                && (SCM_STRING_LENGTH(next_line_str) > 2)
+-               && SCM_REGMATCHP(Scm_RegExec(SCM_REGEXP(skip_regex), SCM_STRING(next_line_str)))) {
++               && SCM_REGMATCHP(Scm_RegExec(SCM_REGEXP(skip_regex), SCM_STRING(next_line_str), SCM_UNDEFINED, SCM_UNDEFINED))) {
+             next_line_str = Scm_ReadLineUnsafe(SCM_PORT(in));
+             if (!SCM_EOFP(next_line_str)) {
+                 line_str = Scm_StringAppend2(SCM_STRING(line_str), SCM_STRING(next_line_str));
