@@ -1,7 +1,7 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Provide no longer existing packages for find and fix AUR pkgbuilds
 	pkgver = 20210315
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	provides = tui
@@ -10,6 +10,9 @@ pkgbase = ghost-deps-meta
 	provides = msbuild-stable
 	provides = gtk3-print-backends
 	provides = libudev.so.0
+	provides = oculus-rift-sdk-jherico-git
+	provides = requires
+	provides = oculus-rift-sdk
 
 pkgname = ghost-deps-meta
 
