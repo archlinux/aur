@@ -3,7 +3,7 @@
 
 pkgname=perl-math-calc-units
 pkgver=1.07
-pkgrel=3
+pkgrel=4
 pkgdesc="Human-readable unit-aware calculator"
 _dist=Math-Calc-Units
 arch=('any')
@@ -11,7 +11,7 @@ url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=('!emptydirs' purge)
-source=(http://search.cpan.org/CPAN/authors/id/S/SF/SFINK/$_dist-$pkgver.tar.gz)
+source=(https://cpan.metacpan.org/authors/id/S/SF/SFINK/$_dist-$pkgver.tar.gz)
 md5sums=('56e4be0e64d6c8fc27c8f87d0d3cebd8')
 
 # Setup environment to ensure installation in system perl and vender directory

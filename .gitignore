@@ -2,6 +2,8 @@ pkg/
 src/
 Math-Calc-Units-*.tar.gz
 perl-math-calc-units-*.pkg.tar.xz
+perl-math-calc-units-*.pkg.tar.zst
 perl-math-calc-units-*.src.tar.gz
+perl-math-calc-units-*.src.tar.zst
 *.swp
 
