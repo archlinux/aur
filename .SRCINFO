@@ -1,7 +1,7 @@
 pkgbase = ttf-octicons
 	pkgdesc = A scalable set of icons handcrafted with <3 by GitHub
 	pkgver = 12.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://octicons.github.com/
 	install = ttf-octicons.install
 	arch = any

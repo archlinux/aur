@@ -1,7 +1,7 @@
 # Maintainer: Elaina Martineau <elainamartineau@gmail.com>
 pkgname=ttf-octicons
 pkgver=12.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
 license=('MIT')
@@ -16,9 +16,11 @@ package() {
   cd "${srcdir}/octicons-${pkgver}"
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   
-  npm install -g fantasticon
-  mkdir font
-  fantasticon icons -o font -t ttf
+  local npmdir=node_modules
+  mkdir -p "$npmdir"
+  npm install --prefix "$npmdir" fantasticon
+  mkdir 'font'
+  fantasticon icons -o font -t ttf -n octicons
 
   install -d $pkgdir/usr/share/fonts/TTF/
   install -m644 font/octicons.ttf $pkgdir/usr/share/fonts/TTF/
