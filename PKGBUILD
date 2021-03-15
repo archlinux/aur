@@ -9,7 +9,7 @@ arch=("any")
 license=("GPL")
 source=("cgmnlm::git+https://src.clttr.info/rwa/cgmnlm.git")
 conflicts=('gmni-git')
-depends=('openssl')
+depends=('bearssl')
 makedepends=('git' 'scdoc')
 sha256sums=('SKIP')
 
