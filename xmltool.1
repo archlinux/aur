@@ -1,0 +1,634 @@
+.TH XXETOOL 1 "2021" "xmltool" "User Commands"
+.
+.SH NAME
+.
+xxetool \- database frontend
+.
+.SH SYNOPSIS
+.
+.B xmltool validate
+[\fIVALIDATE OPTIONS\fR] [\fICOMMON OPTIONS\fR]
+[\fIxml_files\fR]
+.br
+.
+.B xmltool  indent
+[\fIINDENT OPTIONS\fR] [\fICOMMON OPTIONS\fR]
+[\fIxml_files\fR]
+.br
+.
+.B xmltool schematron
+[\fISCHEMATRON OPTIONS\fR] [\fICOMMON OPTIONS\fR]
+.I shematron
+[\fIxml_files\fR]
+.br
+.
+.B xmltool  schemadoc
+[\fISCHEMADOC OPTIONS\fR] [\fICOMMON OPTIONS\fR]
+.I schema
+.I doc_dir
+.
+.SH DESCRIPTION
+The xmltool command-line utility can be used to validate and pretty-print (i.e. indent) XML documents and also to automatically generate a reference manual in HTML format for a schema.
+
+The xmltool utility comprises 4 different processors:
+
+.SS validate
+
+Checks the validity of a document conforming to a DTD, W3C XML Schema or RELAX NG schema. May also be used to check the validity of a DTD, W3C XML Schema or RELAX NG schema.
+
+.SS indent
+
+Saves one or more documents after reformatting their XML contents. May be also used to flatten these documents, that is, to transclude XInclude elements or DITA conrefs.
+
+.SS schematron
+
+Checks the validity of a document against a Schematron schema. May also be used to check the validity of a Schematron schema.
+
+.SS schemadoc
+
+Generates a reference manual in HTML format for a DTD, W3C XML Schema or RELAX NG schema.
+
+The generated HTML reference manual, organized like "DocBook: The Definitive Guide" by Norman Walsh and al., lists all the elements and attributes specified in the schema.
+This manual is intended to help content authors create instances conforming to a given schema. This manual is not intended to help schema authors document their design.
+Note that, for now, this documentation generator cannot extract documentation contained in a schema (i.e. in annotation/documentation elements) and merge extracted documentation with automatically generated documentation.
+.
+.SH VALIDATE OPTIONS
+.
+Validates specified XML files. If no XML files are specified, it is the schemas specified using the 
+.B -s
+option which are validated.    
+.
+.TP
+.BI -s \ schema
+Use specified
+.I schema
+file to validate all specified XML files.
+
+.I schema
+must be a DTD having a
+.B .dtd
+extension or a W3C XML Schema having a 
+.BR .xsd , \ .xs , \ .wxs
+extension or a RELAX NG schema having a 
+.BR .rng , \ .rnc
+(compact syntax) extension.
+
+By default, the
+.I schema
+used for validation is found in each specified XML file (e.g. \fB<!DOCTYPE>\fR).
+
+It is possible to specify several 
+.B -s
+options:
+
+    When no XML files are specified, each schema is individually validated.
+
+    When several XML files are specified, the schemas are composed to form a compound schema (e.g. DocBook 5+MathML) and this compound schema is used to validate specified XML files.
+.
+.TP
+.B -l
+Give priority to the schemas locally specified in the file (e.g. \fB<!DOCTYPE>\fR) to be validated over those specified using the
+.B -s
+option. Ignored unless the
+.B -s
+option is used too.
+.
+.TP
+.B -f
+When validating a document, ignore false duplicate ID errors caused by multiple inclusions of the same element. When saving a document, replace such false duplicate IDs by automatically generated ones.
+.
+.SH VALIDATION EXAMPLES
+.
+.TP
+Validate docbook-image.xml against the DTD specified in its <!DOCTYPE>:
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool validate
+docbook-image.xml
+.
+.TP
+Validate docbook-table.xml and docbook-image.xml against the DocBook 4.5 DTD:
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool validate -s
+/usr/share/java/xxe/addon/config/docbook/dtd/V4.5/docbookx.dtd \\
+    docbook-table.xml docbook-image.xml
+.
+.TP
+Validate the DocBook 4.5 DTD:
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool validate -s
+/usr/share/java/xxe/addon/config/docbook/dtd/V4.5/docbookx.dtd
+.
+.TP
+Validate sample.xml against the combined docbook.rng and mathml2.rng RELAX NG schemas:
+
+cd /usr/share/java/xxe/addon/mathml_config/db5mml
+
+.B xmltool validate \fR\\
+    \fB-s\fR ../../config/docbook5/rng/V5.0/docbook.rng \\
+    \fB-s\fR rng/mathml2.rng \\
+    sample.xml
+.
+.TP
+Note that the combined schemas don't need to be of the same kind:
+
+cd /usr/share/java/xxe/addon/mathml_config/db5mml
+
+.B xmltool validate \fR\\
+    \fB-s\fR ../../config/docbook5/rng/V5.0/docbook.rng \\
+    \fB-s\fR ../standalone/xsd/mathml2.xsd \\
+    sample.xml
+.
+.SH INDENT OPTIONS
+.
+Save, possibly indenting and / or flattening, specified XML files.
+.
+.TP
+.BI -o \ save_file_or_dir
+
+Specifies where to save all specified documents.
+
+If a single document is to be saved, 
+.I save_file_or_dir
+may specify a file or an existing directory.
+
+If multiple documents are to be saved,
+.I save_file_or_dir
+must specify a directory. Such directory is automatically created if it does not already exist.
+
+Default: reuse the original filename of each specified document after renaming this document using a 
+.B .BAK
+filename.
+.
+.TP
+.B -flat
+
+Do not preserve inclusions. Instead "flatten" the document.
+
+This option automatically generates
+.B xml:base
+attribute when needed to. Note that
+.B xml:base
+attributes are added even when this attribute is not allowed by the schema of the document being indented.
+
+Default: preserve inclusions.
+.
+.TP
+.BI -indent \ integer
+
+Specifies the number of space characters used to indent a child element relatively to its parent element.
+
+    A positive or null value means: indent always.
+
+    Value 
+.B -1
+means: never indent.
+
+    Any other negative value means indent, but only if the document to be saved has an actual document type. In such case, the number of space characters is: (\fB-2\fR - \fIinteger\fR).
+
+Default:
+.BR -4 .
+.
+.TP
+.BI -maxlinelength \ positive_integer
+
+Specifies the maximum line length for elements containing text interspersed with child elements.
+
+Default:
+.BR 78 .
+.
+.TP
+.B -noopenlines
+
+Do not add open lines between the child elements of elements having an "element-only" content model.
+
+Default: add open lines.
+.
+.TP
+.B -xhtml
+
+Favor the interoperability with HTML as recommended in the XHTML spec.
+
+In practice, if this option has been specified:
+
+    Empty elements having a non empty content are saved as "<tag></tag>".
+
+    Empty elements having an empty content are saved as "<tag />" (with a space after the tag).
+
+Note that specifying this option for document types other than XHTML does not really make sense.
+
+Default: do not favor the interoperability with HTML.
+.
+.TP
+.B -nocharentities
+
+Do not save characters not supported by the encoding as entity references. Instead, save them as numeric references.
+
+Default: when possible and when needed to, save characters as entity references.
+.
+.TP
+.BI -specialchars \ list_of_chars_or_char_ranges
+
+Always save specified characters as entity references.
+
+Example:
+.B -specialchars
+"reg 174 0x00ae 0256 pound:yen 163:165 0xA3:0xA5 0243:0245".
+
+No default.
+.
+.TP
+.BI -cdatasections \ list_of_simple_XPaths
+
+Save the textual contents of specified elements as CDATA sections.
+
+XHTML example:
+.B -cdatasections
+"htm:script htm:style".
+
+No default.
+.
+.TP
+.B -prefix \fIprefix namespace
+
+Associates a
+.I prefix
+to a namespace.
+
+Multiple 
+.B -prefix
+options are allowed.
+
+This may be needed to allow parsing the XPaths argument of the above 
+.B -cdatasections
+option. Options
+.B -prefix
+must precede the
+.B -cdatasections
+option.
+
+XHTML example:
+.B -prefix htm http://www.w3.org/1999/xhtml\fR.
+
+No default.
+.
+.TP
+.B -nooriginalprefixes
+
+Do not use the namespace prefixes originally specified in the document. Instead, generate prefixes.
+
+Default: Reuse the original prefixes as much as possible.
+.
+.TP
+.B -nodefaultnamespace
+
+Do not use the default namespace originally specified in the document.
+
+Default: Reuse the default namespace if any.
+.
+.TP
+.B -xmlversion 1.0\fR|\fB1.1\fR|\fBoriginal
+
+Specifies the 
+.B version
+pseudo-attribute of the XML declaration. 
+.B original
+means: reuse the XML version originally specified in the document.
+
+Default: original.
+.
+.TP
+.B -encoding \fIjava_supported_encoding\fR|\fBoriginal
+
+Specifies which encoding to use when saving a document. 
+.B original
+means: reuse the encoding originally specified in the 
+.B encoding
+pseudo-attribute of the XML declaration of the document.
+
+Default: original.
+.
+.TP
+.B -standalone yes\fR|\fBno\fR|\fBoriginal
+
+Specifies the 
+.B standalone
+pseudo-attribute of the XML declaration. 
+.B original
+means: reuse the 
+.B standalone
+pseudo-attribute originally specified in the document.
+
+No default: do not add a "standalone" pseudo-attribute to the XML declaration.
+.
+.TP
+.B -noinvalid
+
+Do not save specified documents if any of them is found to have validity errors (even harmless cross-reference errors).
+
+Default: save documents even if some of them are found to be invalid.
+.
+.TP
+.BI -script \ URL_or_filename
+
+Run specified .xed script in order to modify the document before saving it to disk. Note that it's possible to specify the
+.B -script
+option several times in order to use several scripts in turn.
+.
+.SH INDENTION EXAMPLES
+.
+.TP
+Indent docbook-table.xml using the default settings. The original docbook-table.xml is saved to docbook-table.xml.BAK.
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool indent
+docbook-table.xml
+
+.B ls
+docbook-table.xml*
+
+docbook-table.xml docbook-table.xml.BAK
+.
+.TP
+Indent docbook-table.xml using specified settings. Save indented file to out.xml.
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool indent -indent
+1
+.B -noopenlines -nolegacy -o 
+out.xml docbook-table.xml
+.
+.TP
+Force the indentation of schema-less file xhtml_strict.xxe.
+
+cd /usr/share/java/xxe/addon/config/xhtml
+
+.B xmltool indent -indent
+2
+.B -o
+indented.xxe xhtml_strict.xxe 
+
+WARNING: Cannot determine which schema to use for validating "xhtml_strict.xxe"
+.
+.TP
+Indent all .xhtml files contained in current directory. Create save files in directory /tmp/out/.
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool indent -v -encoding
+Windows-1252
+.B -o
+/tmp/out *.xhtml
+.
+.TP
+Transclude all XInclude elements contained docbook-modular-book.xml (\fB-f\fR is needed otherwise out.xml would contain a number of duplicate ID errors).
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool indent -xi -f -flat -o
+out.xml docbook-modular-book.xml
+.
+.TP
+Modify doc.xml using edit.xed before saving it, indented, to /tmp/out.xml.
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool indent -script
+edit.xed
+.B -o
+/tmp/out.xml doc.xml
+.
+.SH SCHEMATRON OPTIONS
+.
+Validate specified XML documents against specified Schematron.
+
+Optionally validate the Schematron itself.
+
+Unless the 
+.B -iso
+option is used, the Schematron may be embedded in another type of XML document (e.g. a DocBook 5 RELAX NG grammar not using the compact syntax).
+.
+.TP
+.B -iso
+
+Fully validate the Schematron as an ISO Schematron schema.
+
+Default: do not validate the Schematron, just load it.
+
+Note that the Schematron loader is very lenient and accepts ISO Schematron as well as Schematron 1.5 schemas.
+.
+.TP
+.BI -o \ out_schematron_file
+
+Save the Schematron to specified file. The written schema is in all cases an ISO Schematron schema using the minimal syntax.
+.
+.TP
+.BI -phase \ phase_id
+
+Specifies the ID of the phase which is to be used for validation. May also be #ALL or #DEFAULT.
+
+Default:
+.BR #DEFAULT ,
+if any,
+.B #ALL
+otherwise.
+.
+.TP
+.B -var \fIname value
+
+Specify overrides for some of the let variables defined in the Schematron.
+
+Note that value must be a valid XPath expression and not a plain string.
+.
+.SH SCHEMATRON EXAMPLES
+.
+.TP
+Validate docbook.sch as an ISO Schematron schema. Additionally save a copy in /tmp/out.sch.
+
+cd /usr/share/java/xxe/addon/config/docbook
+
+.B xmltool schematron -iso -o
+/tmp/out.sch docbook.sch
+.
+.TP
+Validate docbook-image.xml against docbook.sch.
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool schematron
+\\
+    /usr/share/java/xxe/addon/config/docbook/docbook.sch \\
+    docbook-image.xml
+.
+.TP
+Validate docbook-image.xml against docbook.sch, using phase #ALL. Pass to the Schematron variable foo having XPath string literal "bar" as its value.
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool schematron -phase
+\'#ALL\'
+.B -var
+foo '"bar"' \\
+    /usr/share/java/xxe/addon/config/docbook/docbook.sch \\
+    docbook-image.xml
+.
+.SH SCHEMADOC OPTIONS
+.
+Generate in directory
+.I doc_dir
+a reference manual in HTML format for schema file
+.IR schema .
+
+.I Schema
+must be a DTD having a
+.B .dtd
+extension or a W3C XML Schema having a 
+.BR .xsd ,
+.BR .xs \ or \ .wxs
+extension or a RELAX NG schema having a 
+.BR .rng \ or \ .rnc
+(compact syntax) extension.
+
+.I doc_dir
+is automatically created if it does not exist.
+.
+.TP
+.BI -css \ css_url
+
+Specifies the URL of the CSS style sheet used for the generated HTML.
+
+Default: generated HTML does not have a <link rel="stylesheet">.
+.
+.TP
+.BI -charset\  encoding
+
+Specifies the charset used for the generated HTML.
+
+Default: use platform default encoding and generated HTML does not have a <meta http-equiv="Content-Type">.
+.
+.TP
+.B -xxe
+
+Generate annotations which are meaningful when using the schema with XMLmind XML Editor.
+.
+.SH SCHEMADOC EXAMPLE
+.
+.TP
+cd /usr/share/doc/xxe/demo
+
+.B xmltool schemadoc
+bugreport/bugreport.xsd /tmp/bugreport_doc
+
+.B ls
+/tmp/bugreport_doc
+
+a__6sv96.html abbr__79rrv.html ... \fBindex.html\fR ... workaround__jus1.html
+.
+.SH COMMON OPTIONS
+.
+.TP
+.B -xi
+
+When loading a document, transclude XInclude elements.
+
+Default: XInclude elements are treated as any other element.
+
+This option is equivalent to "-inclscheme com.xmlmind.xml.xinclude.XIncludeScheme".
+.
+.TP
+.BI -inclscheme \ class_name
+
+When loading a document, transclude nodes specifying an inclusion directive belonging to specified inclusion scheme.
+
+Default: nodes specifying an inclusion directive are treated as any other node.
+
+Specifying several -inclscheme options is permitted. Mixing 
+.B -xi
+and
+.B -inclscheme
+options is permitted.
+.
+.TP
+.BI -cache \ schema_cache_dir
+
+Specifies the directory to be used as a schema cache. This directory is automatically created if it does not exist.
+
+Default: do not cache schemas.
+
+RELAX NG schemas can be cached only in memory and not on disk.
+.
+.TP
+.BI -rncencoding \ encoding
+
+Specifies the
+.I encoding
+used for RELAX NG compact syntax schemas.
+
+Default: do not cache schemas.
+.
+.TP
+.B -v
+
+Verbose.
+.
+.SH COMMON OPTIONS EXAMPLES
+.
+.TP
+Transclude all XInclude elements contained docbook-modular-book.xml (\fB-f\fR is needed otherwise out.xml would contain a number of duplicate ID errors).
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool indent -xi -f -flat -o 
+out.xml docbook-modular-book.xml
+.
+.TP
+Transclude all conref elements contained in topic1.dita.
+
+cd /tmp
+
+.B xmltool indent -inclscheme 
+"com.xmlmind.xmleditext.dita.ConrefScheme" \\
+    \fB-f -flat -o\fR out.dita topic1.dita 
+.
+.TP
+Validate docbook-table.xml. Cache the DocBook DTD if it is not already cached. If it is already cached, use the cached copy.
+
+cd /usr/share/doc/xxe/demo
+
+.B xmltool validate -cache 
+/tmp/cache docbook-table.xml
+
+.B ls
+/tmp/cache
+
+directory.txt docbookx.ser
+.
+.TP
+Validate mathml.pane against pane.rnc, a RELAX NG schema using the compact syntax, encoded in ISO-8859-1.
+
+cd /usr/share/java/xxe/addon/mathml_config/common/pane
+
+.B xmltool validate
+\\
+    \fB-rncencoding\fR ISO-8859-1 \\
+    \fB-s\fR pane.rnc \\
+    mathml.pane
+.
+.
+.SH ABOUT THIS MANPAGE
+.
+This manual page was created from http://www.xmlmind.com/xmleditor/_distrib/doc/xmltool/index.html and refers to the version from 5. March 2021.
+
+An offline html version of that web site is found at /usr/share/doc/xxe/doc/xmltool/index.html
+
+Similarly, a PDF variant is located at /usr/share/doc/xxe/doc/xmltool/xmltool.pdf
+
+
+

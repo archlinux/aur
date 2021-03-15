@@ -1,3 +1,5 @@
+#!/hint/bash
+
 post_install() {
     echo ""
     echo ""
@@ -9,17 +11,25 @@ post_install() {
     echo ">>> Localisation files may be available from Options -> Install Add-ons"
     echo ">>> UI Scaling can be activated from Options -> Preferences -> General"
     echo ""
-    echo ""
+    manual
 }
 
 post_upgrade() {
+    manual
     fix_scaling=$(vercmp $2 9.4.1-2 )
     if [[ $fix_scaling -le 0 ]]
     then
         echo ""
-        echo ">>> The _JAVA_OPTIONS variable is now set at launch to improve the UI-scaling."
+        echo ">>> Options to improve the UI-scaling are now set at launch."
         echo ">>> You may want to reconsider enabliung UI-scaling if you had issues."
         echo ">>> The setting is at Options -> Preferences -> General"
         echo ""
     fi
+}
+
+manual() {
+    echo ""
+    echo "A user manual for XXE is at"
+    echo "/usr/share/doc/xxe/doc/index.html"
+    echo ""
 }
