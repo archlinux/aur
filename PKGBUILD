@@ -1,18 +1,17 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-python-tdbus
-pkgver=0.9
+pkgver=0.11
 pkgrel=1
 pkgdesc="Simple Python bindings for D-BUS"
 arch=('i686' 'x86_64')
 depends=('python2')
 makedepends=('python2-setuptools')
-url="https://github.com/geertj/python-tdbus"
+url="https://github.com/hmvp/python-tdbus"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/p/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('5452a6afe95f9a4fc62d94130abd553f')
-sha256sums=('5bd23e7c67de5a410a3668076f0bdd3460d10e7d7253e496febb2345325fbf22')
+sha256sums=('c26b906f0128550ca5f1bf66226fc7e23a747e30b1fd4f9607b8148164e95b4e')
 
 prepare(){
   cd "$srcdir/${pkgname#python2-}-$pkgver"
