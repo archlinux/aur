@@ -1,8 +1,9 @@
 pkgbase = 1password-bin
 	pkgdesc = Password manager and secure wallet (development preview)
 	pkgver = 8.0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://1password.com/
+	install = 1password.install
 	arch = x86_64
 	license = custom:LicenseRef-1Password-Proprietary
 	depends = libxss
