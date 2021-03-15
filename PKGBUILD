@@ -1,9 +1,10 @@
-# Maintainer: haha662 <haha662 at outlook dot com>
+# Maintainer: anzi2001 <anzi2001 at gmail dot com> 
+# Contributor: haha662 <haha662 at outlook dot com>
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=tinytex
-_cranver=0.27
+_cranver=0.30
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,11 +12,11 @@ pkgdesc="Helper Functions to Install and Maintain 'TeX Live', and Compile 'LaTeX
 arch=("any")
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT" "custom")
-depends=("r" "r-xfun>=0.5")
+depends=("r" "r-xfun>=0.19")
 # makedepends=()
 optdepends=("r-textit" "r-rstudioapi")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz" "https://cran.r-project.org/web/packages/tinytex/LICENSE")
-sha256sums=('40ea127394ed0e37ad0b80d66b320f762c643c564c3ae20a0f896b1760620b82'
+sha256sums=('fc015f456a968f82238e368c6b9c5695fb7f37a3923b0e56313540fef5ad6636'
             'f58c2f5b0f10b231d9cea9bc4ea0d849cd4279a21d03257be8dc9fd9452fad37')
 
 build() {
