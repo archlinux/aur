@@ -1,6 +1,6 @@
 pkgbase = elogind-git
 	pkgdesc = The systemd project's logind, extracted to a standalone package
-	pkgver = 246.pre.r51.g8b21e351c
+	pkgver = 246.pre.r71.g3b9af47ff
 	pkgrel = 1
 	url = https://github.com/elogind/elogind
 	arch = i686

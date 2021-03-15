@@ -5,7 +5,7 @@
 _pkgbase=elogind
 pkgbase=elogind-git
 pkgname=('elogind-git' 'libelogind-git')
-pkgver=246.pre.r51.g8b21e351c
+pkgver=246.pre.r71.g3b9af47ff
 pkgrel=1
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64')
@@ -28,8 +28,8 @@ _pick() {
 }
 
 pkgver() {
-  cd "elogind"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/elogind"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/\:/./g'
 }
 
 build() {
