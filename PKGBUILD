@@ -14,13 +14,13 @@ license=(GPL)
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=(zlib bzip2 sh libpng harfbuzz)
 makedepends=(libx11 git)
-source=(git://git.sv.nongnu.org/freetype/freetype2.git)
+source=(git+https://gitlab.freedesktop.org/freetype/freetype.git)
 sha256sums=('SKIP')
 
 pkgver() {
   local _tag _count
 
-  cd "$srcdir/freetype2"
+  cd "$srcdir/freetype"
   _tag=$(git describe --abbrev=0 )
   _count=$(git rev-list --count $_tag..HEAD)
   _tag=${_tag#VER-}
@@ -28,20 +28,20 @@ pkgver() {
 }
 
 prepare() {
-  cd freetype2
+  cd freetype
 
   ./autogen.sh
 
 }
 
 build() {
-  cd freetype2
+  cd freetype
   ./configure --prefix=/usr --disable-static
   make
 }
 
 #check() {
-#  cd freetype2
+#  cd freetype
 #  make -k check
 #}
 
@@ -50,7 +50,7 @@ package_freetype2-minimal-git() {
   conflicts=(freetype2)
   backup=(etc/profile.d/freetype2.sh)
 
-  cd freetype2
+  cd freetype
   make DESTDIR="$pkgdir" install
 }
 
