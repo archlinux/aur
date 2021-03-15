@@ -8,6 +8,7 @@ arch=(any)
 url=""
 license=(GPL)
 provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.so.0
-          oculus-rift-sdk-jherico-git oculus-rift-sdk)
-# catalist-utils skype skype-legacy go-pie
-# Renamed: geoclue2 libsystemd gnu-efi-libs
+          oculus-rift-sdk-jherico-git oculus-rift-sdk libusbx mesa-hybris
+          xorg-server1.12 xorg-server1.19-git catalist-utils)
+# skype skype-legacy go-pie
+# Renamed: geoclue2 libsystemd gnu-efi-libs mime-types

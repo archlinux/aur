@@ -12,6 +12,11 @@ pkgbase = ghost-deps-meta
 	provides = libudev.so.0
 	provides = oculus-rift-sdk-jherico-git
 	provides = oculus-rift-sdk
+	provides = libusbx
+	provides = mesa-hybris
+	provides = xorg-server1.12
+	provides = xorg-server1.19-git
+	provides = catalist-utils
 
 pkgname = ghost-deps-meta
 
