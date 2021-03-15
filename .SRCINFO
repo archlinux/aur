@@ -1,8 +1,9 @@
 pkgbase = wudao-dict-git
 	pkgdesc = The command line version of Youdao Dictionary, supporting English-Chinese mutual search and online search.
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChestnutHeng/Wudao-dict
+	install = wudao-dict-git.install
 	arch = any
 	license = unknown
 	makedepends = git
@@ -10,7 +11,9 @@ pkgbase = wudao-dict-git
 	depends = python-bs4
 	depends = python-lxml
 	source = wudao-dict::git://github.com/ChestnutHeng/Wudao-dict.git
+	source = wd
 	md5sums = SKIP
+	md5sums = 7e504991b277c83136466f885626cd7c
 
 pkgname = wudao-dict-git
 

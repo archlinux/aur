@@ -1,0 +1,4 @@
+pre_remove() {
+    echo "deleting the wudao-dict bottle..."
+	find /home -maxdepth 2 -name ".local" -exec rm -rf \{\}/share/wudao-dict/ \;
+}

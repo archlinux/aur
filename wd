@@ -1,0 +1,13 @@
+#!/bin/bash
+
+WDDIR="$HOME/.local/share/wudao-dict"
+if [ ! -d "$WDDIR" ]
+then
+	cp -r /opt/wudao-dict "$WDDIR"
+	mkdir "$WDDIR/usr"
+fi
+
+save_path=$PWD
+cd $WDDIR
+./wdd $*
+cd $save_path

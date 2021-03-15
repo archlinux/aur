@@ -1,38 +1,28 @@
 # Maintainer: Ben <bensongsyz@gmail.com>
 pkgname='wudao-dict-git'
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The command line version of Youdao Dictionary, supporting English-Chinese mutual search and online search.'
 arch=('any')
 url="https://github.com/ChestnutHeng/Wudao-dict"
 license=('unknown')
 depends=('python' 'python-bs4' 'python-lxml')
+install="wudao-dict-git.install"
 makedepends=('git')
-source=('wudao-dict::git://github.com/ChestnutHeng/Wudao-dict.git')
-md5sums=('SKIP')
+source=('wudao-dict::git://github.com/ChestnutHeng/Wudao-dict.git'
+		'wd')
+md5sums=('SKIP'
+		'7e504991b277c83136466f885626cd7c')
 
 package() {
-	cd "$srcdir"
-
 	mkdir -p "${pkgdir}/opt"
-	cp -r "./wudao-dict" "${pkgdir}/opt/"
+	cp -r "./wudao-dict/wudao-dict" "${pkgdir}/opt/"
 
-	# 用户词
-	mkdir -p "${pkgdir}/opt/wudao-dict/wudao-dict/usr"
-	chmod -R 777 "${pkgdir}/opt/wudao-dict/wudao-dict/usr"
-
+#	# 添加系统命令wd
 	mkdir -p "${pkgdir}/usr/bin"
-
-	# 添加系统命令wd
-	cd "${pkgdir}/usr/bin"
-	echo '#!/bin/bash'>./wd
-	echo 'save_path=$PWD'>>./wd
-	echo 'cd '/opt/wudao-dict/wudao-dict >>./wd
-	echo './wdd $*'>>./wd
-	echo 'cd $save_path'>>./wd
-	chmod +x ./wd
+	cp ./wd "${pkgdir}/usr/bin"
 
 	# 添加bash_completion自动补全
 	mkdir -p "${pkgdir}/etc/bash_completion.d"
-	ln -s /opt/wudao-dict/wudao-dict/wd_com "${pkgdir}/etc/bash_completion.d/wd"
+	ln -s /opt/wudao-dict/wd_com "${pkgdir}/etc/bash_completion.d/wd"
 }
