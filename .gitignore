@@ -1,0 +1,7 @@
+# Ignore all the tarballs
+*.tar.xz
+zls-bin-*pkg.tar.*
+
+# Arch Build System
+src
+pkg

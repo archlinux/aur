@@ -1,0 +1,20 @@
+pkgbase = zls-bin
+	pkgdesc = Zig Language Server, or zls, is a language server for Zig. Pre-compiled official binary.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zigtools/zls
+	arch = x86_64
+	license = MIT
+	makedepends = python>=3.6
+	depends = zig
+	provides = zls
+	conflicts = zls
+	conflicts = zls-git
+	replaces = zls
+	replaces = zls-git
+	backup = usr/bin/zls.json
+	source_x86_64 = https://github.com/zigtools/zls/releases/download/0.1.0/x86_64-linux.tar.xz
+	sha256sums_x86_64 = 1318a785e6982ef86d1d0242403b20cec34ce209c64eee339512f8267e9a5ccb
+
+pkgname = zls-bin
+
