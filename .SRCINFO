@@ -1,4 +1,4 @@
-pkgbase = the-rock
+pkgbase = the-rock-git
 	pkgdesc = A command line King James bible viewer
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -9,9 +9,9 @@ pkgbase = the-rock
 	makedepends = cargo
 	makedepends = git
 	depends = ncurses
-	conflicts = bible-kjv
+	conflicts = the-rock
 	source = git+https://gitlab.com/NoahJelen/the-rock
 	md5sums = SKIP
 
-pkgname = the-rock
+pkgname = the-rock-git
 
