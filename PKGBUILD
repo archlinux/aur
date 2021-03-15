@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
 pkgname=ruby-net-ldap
-pkgver=0.16.3
+pkgver=0.17.0
 _gemname=${pkgname#ruby-}
 pkgrel=1
 pkgdesc="Pure Ruby LDAP library"
@@ -9,7 +9,7 @@ url="https://rubygems.org/gems/${_gemname}"
 license=("GPL")
 depends=('ruby')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('db464d2f8236e5f8546c07abb51b08e0a62b77136b1c7f91fa0ec5fe2336908e')
+sha256sums=('d62474b28b9f18d9108a7c859171bb1b9ebf0e1bc1d218e79170c0f373f729c8')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
