@@ -1,9 +1,9 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=19.0RC1
-gittag=19.0RC1-Matrix
+pkgver=19.0
+gittag=19.0-Matrix
 gittagvfs=4.0.0-Matrix
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
