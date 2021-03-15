@@ -2,8 +2,8 @@
 
 _pkgname='insomnia'
 pkgname="$_pkgname-git"
-pkgver="2020.4.0_alpha.3"
-pkgrel=1
+pkgver="2021.1.1"
+pkgrel=2
 pkgdesc='HTTP and GraphQL client for developers'
 url="https://github.com/Kong/insomnia"
 arch=('x86_64' 'i686')
@@ -23,12 +23,12 @@ source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    jq -r .version "$srcdir/$_pkgname/packages/insomnia-app/config/config.core.json" | tr '-' '_'
+    jq -r .version "$srcdir/$_pkgname/packages/insomnia-app/config/config.json" | tr '-' '_'
 }
 
 build() {
-    # Use node 12
-    local node_version='12'
+    # Use node version from insomnia nvm config
+    local node_version=$(cat "$srcdir/$_pkgname/.nvmrc")
     export npm_config_cache="$srcdir/npm_cache"
     local npm_prefix=$(npm config get prefix)
     npm config delete prefix
@@ -38,7 +38,7 @@ build() {
     # Run the build
     cd "$srcdir/$_pkgname"
     npm run bootstrap
-    GITHUB_REF=core@$(jq -r .version "packages/insomnia-app/config/config.core.json") npm run app-package
+    GITHUB_REF=core@$(jq -r .version "$srcdir/$_pkgname/packages/insomnia-app/config/config.json") npm run app-package
 
     # Restore node config
     npm config set prefix "$npm_prefix"
