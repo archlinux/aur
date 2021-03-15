@@ -5,13 +5,13 @@ pkgver=1.0.0
 pkgrel=2
 pkgdesc="The Quasar DV codec but with a gtk2 frontend"
 arch=('i686' 'x86_64')
-url="http://libdv.sourceforge.net/"
+url="https://libdv.sourceforge.net/"
 license=('LGPL')
 depends=('popt')
 makedepends=('pkgconfig' 'gtk2' 'libxv')
 optdepends=('gtk2: for using playdv' 'libxv: for using playdv')
 options=('!libtool')
-source=(gtk2.patch http://downloads.sourceforge.net/libdv/libdv-$pkgver.tar.gz)
+source=(gtk2.patch https://downloads.sourceforge.net/libdv/libdv-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir"/libdv-$pkgver
