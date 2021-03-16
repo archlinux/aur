@@ -1,0 +1,17 @@
+pkgbase = nohang
+	pkgdesc = A sophisticated low memory handler.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hakavlad/nohang
+	arch = any
+	license = MIT
+	depends = python
+	conflicts = nohang
+	backup = etc/nohang/nohang.conf
+	backup = etc/nohang/nohang-desktop.conf
+	backup = etc/logrotate.d/nohang
+	source = nohang::https://github.com/hakavlad/nohang/archive/v0.2.0.tar.gz
+	md5sums = SKIP
+
+pkgname = nohang
+
