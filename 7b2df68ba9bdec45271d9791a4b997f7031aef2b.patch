@@ -1,0 +1,22 @@
+From 7b2df68ba9bdec45271d9791a4b997f7031aef2b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <spaz16@wp.pl>
+Date: Tue, 16 Mar 2021 18:02:28 +0100
+Subject: [PATCH] Fix svg icon engine warning after KDE update
+
+---
+ src/gui/Main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gui/Main.cpp b/src/gui/Main.cpp
+index 2ebd731b..284c2c53 100644
+--- a/src/gui/Main.cpp
++++ b/src/gui/Main.cpp
+@@ -790,7 +790,7 @@ int main(int argc, char *argv[])
+         qmplay2Gui.loadIcons();
+         {
+             const QIcon svgIcon = QIcon(":/QMPlay2.svgz");
+-            if (!svgIcon.availableSizes().isEmpty())
++            if (svgIcon.availableSizes().size() == 1)
+                 QMessageBox::warning(nullptr, QString(), QObject::tr("QtSvg icon engine plugin doesn't exist.\nQMPlay2 will not scale up icons!"));
+         }
+ 
