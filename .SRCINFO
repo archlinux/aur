@@ -1,15 +1,17 @@
 pkgbase = burn-cd
 	pkgdesc = Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://burn-cd.sourceforge.net/
 	arch = any
 	license = GPL
 	depends = cdrtools
 	depends = dvd+rw-tools
-	depends = python2
+	depends = python
 	source = burn-cd-1.8.1.tar.gz::https://github.com/aglyzov/burn-cd/archive/1.8.1.tar.gz
+	source = burn-cd.patch
 	sha256sums = 8445937d904cf36e690764b1956e6736d4729cf639bc237a67df09d2f24218b2
+	sha256sums = 39746a189d20a4731214e3552ab4e5272f382d167620eadf0379547e1c8559e4
 
 pkgname = burn-cd
 

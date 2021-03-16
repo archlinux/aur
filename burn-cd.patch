@@ -1,0 +1,407 @@
+--- burn-cd-1.8.1	2021-03-06 06:25:02.105401102 +0100
++++ burn-cd	2021-03-06 06:26:14.918591379 +0100
+@@ -1,6 +1,6 @@
+-#!/usr/bin/python2 -O
++#!/usr/bin/python3 -O
+ # vim: fileencoding=utf-8:et:tw=0:ts=4:sts=4:sw=4:fdm=marker
+-import sys, os, stat, getopt, string, time, signal, types, random, atexit, termios, tty
++import sys, os, stat, getopt, time, signal, types, random, atexit, termios, tty
+ 
+ # config class to read and write simple config files
+ class   config( object ):  #{{{
+@@ -63,7 +63,7 @@
+     def __setattr__( self, key, value ):
+         k = str( key ).lower()
+         dict = self._dict
+-        if not dict.has_key( k ):
++        if k not in dict:
+             self._orderlist.append( (True,k) )
+         dict[ k ] = value
+ 
+@@ -118,7 +118,7 @@
+             yield s
+ 
+     def handle_not_string( self, number, obj ):
+-        sys.stderr.write( '[CONFIG WARNING] line %d: input "%s" is not a string\n' % (number,`obj`) )
++        sys.stderr.write( '[CONFIG WARNING] line %d: input "%s" is not a string\n' % (number,repr(obj)) )
+ 
+     def handle_unknown_key( self, number, string, key ):
+         sys.stderr.write( '[CONFIG WARNING] line %d: unknown key "%s"\n' % (number,key) )
+@@ -138,7 +138,7 @@
+         comment = param['comment']
+         ignore_unknown = param['ignore_unknown']
+         preserve_type = param['preserve_type']
+-        str_types = types.StringTypes
++        str_types = (str,)
+         number = 0
+         for s in source:
+             number += 1
+@@ -156,7 +156,7 @@
+                 continue
+             key = s[0].strip().lower()
+             value = s[1].strip()
+-            dict_has_key = dict.has_key( key )
++            dict_has_key = key in dict
+             if ignore_unknown and not dict_has_key:
+                 self.handle_unknown_key( number, orig, key )
+                 continue
+@@ -421,8 +421,8 @@
+     if signum == signal.SIGINT:
+         name = 'SIGINT (Ctrl-C)'
+     else:   name = 'SIGTERM'
+-    print '%s[%ssignal%s]\n%sGot a signal %s, terminating...%s' % \
+-        (COLOR_5, COLOR_8, COLOR_5, COLOR_4, name, COLOR_0)
++    print('%s[%ssignal%s]\n%sGot a signal %s, terminating...%s' % \
++        (COLOR_5, COLOR_8, COLOR_5, COLOR_4, name, COLOR_0))
+ 
+     sys.exit(10)
+ #}}}
+@@ -466,7 +466,7 @@
+                 flush()
+         else:
+             new_cmd.append( op )
+-    return string.join( new_cmd )
++    return ' '.join( new_cmd )
+ #}}}
+ def get_valid_opts( prog_out ): #{{{
+     valid_opts = []
+@@ -499,7 +499,7 @@
+         mode[ CC ][ termios.VMIN ] = 1
+         mode[ CC ][ termios.VTIME ] = 0
+         termios.tcsetattr( fd, termios.TCSADRAIN, mode )
+-    except Exception, why:
++    except Exception as why:
+         pass
+ 
+     return old
+@@ -511,7 +511,7 @@
+ 
+     fd = sys.stdin.fileno()
+     try:    termios.tcsetattr( fd, termios.TCSADRAIN, old )
+-    except Exception, why:
++    except Exception as why:
+         pass
+ #}}}
+ def getch():    #{{{
+@@ -565,10 +565,10 @@
+ #}}}
+ def print_task( s ):    #{{{
+     write( '%s %s%-50s%s' % (ASTERISK, COLOR_1, s, COLOR_0) )
+-    if debug:  print
++    if debug:  print()
+ #}}}
+ def print_error( s ):   #{{{
+-    print COLOR_5+'['+COLOR_8+ s +COLOR_5+']'+COLOR_0
++    print(COLOR_5+'['+COLOR_8+ s +COLOR_5+']'+COLOR_0)
+ #}}}
+ def print_warning( msg, tag=None ):  #{{{
+     tag_str = tag and (tag+': ') or ''
+@@ -604,7 +604,7 @@
+ 
+     bar_len = 39
+     write( '\r%s%s[' % (' '*first_pad,COLOR_9) )
+-    eq_len = long( round( percent*(bar_len-2) / 100.0 ) )
++    eq_len = int( round( percent*(bar_len-2) / 100.0 ) )
+     sp_len = bar_len - 2 - eq_len
+     write( COLOR_5+ '='*eq_len )
+     if 0 < eq_len < bar_len-2:
+@@ -685,21 +685,21 @@
+               'zero',   'nero',     'image=',   'video', 'interactive=', 'label=', 'simulate' ]
+         )
+     except getopt.GetoptError:
+-        print
++        print()
+         print_error('Error: wrong arguments')
+-        print
+-        print USAGE
+-        print DESCRIPTION
+-        print HELP
++        print()
++        print(USAGE)
++        print(DESCRIPTION)
++        print(HELP)
+         sys.exit(1)
+ 
+     for opt, val in opts:
+         if opt in ['-h','--help']:
+-            print USAGE
+-            print HELP
++            print(USAGE)
++            print(HELP)
+             sys.exit(0)
+         elif opt in ['--version']:
+-            print VERSION
++            print(VERSION)
+             sys.exit(0)
+         elif opt in ['-v','--verbose']:
+             verbose = True
+@@ -744,12 +744,12 @@
+             label = val
+ 
+     if not filenames and not (info or zero or image):
+-        print
++        print()
+         print_error('Error: you should specify files and/or dirs to burn')
+-        print
+-        print USAGE
+-        print DESCRIPTION
+-        print HELP
++        print()
++        print(USAGE)
++        print(DESCRIPTION)
++        print(HELP)
+         sys.exit(2)
+ 
+     root = '/' + escape_str( root ).lstrip('/')
+@@ -786,7 +786,7 @@
+     growisofs_out, growisofs_exit_code = run_cmd( cmd )
+ 
+     if mkisofs_exit_code == None and cdrecord_exit_code == None:
+-        print OK
++        print(OK)
+         exit_flag = False
+     else:
+         print_error('not found')
+@@ -873,7 +873,7 @@
+             break
+ 
+     if not is_mounted:
+-        print OK
++        print(OK)
+         if verbose:
+             print_key_value( 'mount point', '(not mounted)' )
+             print_key_value( 'file system', '(unknown)' )
+@@ -885,7 +885,7 @@
+ 
+     out, exit_code = run_cmd( cmd )
+     if exit_code == None:
+-        print OK
++        print(OK)
+         if verbose:
+             parts = s.split()
+             print_key_value( 'mount point', parts[1] )
+@@ -914,7 +914,7 @@
+             error_str = 'wrong device'
+         elif 'Current:' in s:
+             media = s.split()[1]
+-            if mmc_profiles.has_key( media ):
++            if media in mmc_profiles:
+                 media = mmc_profiles[ media ]
+             if media == 'none':
+                 media = None
+@@ -927,7 +927,7 @@
+             print_error('not a DVD')
+             exit_flag = True
+         else:
+-            print OK
++            print(OK)
+             exit_flag = False
+     else:
+         print_error( error_str )
+@@ -998,7 +998,7 @@
+         if 'ATIP info from disk' in s:
+             atip = True
+         elif 'ATIP start of lead out' in s:
+-            try:    total_space = long( s.split(':',1)[1].strip().split()[0] )
++            try:    total_space = int( s.split(':',1)[1].strip().split()[0] )
+             except: pass
+         elif 'Manufacturer' in s:
+             try:    manufacturer = s.split(':',1)[1].strip()
+@@ -1030,7 +1030,7 @@
+                 out += [ 'This media is not blank, exiting...\n' ]
+             exit_flag = True
+         else:
+-            print OK
++            print(OK)
+             exit_flag = False
+     else:
+         if 'RW' in media:
+@@ -1050,7 +1050,7 @@
+         disk_type += ' (blank)'
+     elif appendable:
+         s = out[-1]
+-        try:    last_start, new_start = map( long, s.split(',',1) )
++        try:    last_start, new_start = list(map( int, s.split(',',1) ))
+         except: pass
+         free_space = total_space - new_start
+         disk_type += ' (multisession)'
+@@ -1077,10 +1077,10 @@
+         if get_yes_or_no( default=True ):
+             zero = blank = appendable = True
+             free_space = total_space
+-            print YES
++            print(YES)
+             return
+         else:
+-            print NO
++            print(NO)
+ 
+     if verbose:
+         print_prog_out( out )
+@@ -1182,7 +1182,7 @@
+             if 'RW' in media:
+                 ask_for_zero = interactive
+         else:
+-            print OK
++            print(OK)
+             exit_flag = False
+     else:
+         if 'RW' in media:
+@@ -1212,7 +1212,7 @@
+         used_space = 0
+         for s in out:
+             if not 'Volume size is:' in s:  continue
+-            try:    used_space = long( s.split(':')[1] )
++            try:    used_space = int( s.split(':')[1] )
+             except: pass
+         free_space = total_space - used_space
+         disk_type += ' (multisession)'
+@@ -1252,10 +1252,10 @@
+         if get_yes_or_no( default=True ):
+             zero = blank = appendable = True
+             free_space = total_space
+-            print YES
++            print(YES)
+             return
+         else:
+-            print NO
++            print(NO)
+ 
+     if verbose:
+         print_prog_out( out )
+@@ -1354,7 +1354,7 @@
+         for f in valid_filenames:
+             print_debug( '    ' + f )
+ 
+-        empty_ext = [ e for e,v in video_extensions.items() if not v ]
++        empty_ext = [ e for e,v in list(video_extensions.items()) if not v ]
+         # exit if something was not found
+         if empty_ext:
+             write( '%sNo valid DVD-Video structure could be found, exiting...%s\n' % (COLOR_4,COLOR_0) )
+@@ -1364,14 +1364,14 @@
+         atexit.register( rm_tmp_dir )   # registering cleaning handler
+         tmp_dir = '/tmp/burn-cd--%s--%s' % (os.getpid(), random.randint(1000,9999))
+         try:
+-            os.mkdir( tmp_dir, 0700 )
+-            os.mkdir( tmp_dir + '/AUDIO_TS', 0700 )
+-            os.mkdir( tmp_dir + '/VIDEO_TS', 0700 )
++            os.mkdir( tmp_dir, 0o700 )
++            os.mkdir( tmp_dir + '/AUDIO_TS', 0o700 )
++            os.mkdir( tmp_dir + '/VIDEO_TS', 0o700 )
+ 
+             for f in valid_filenames:
+                 base = os_basename( f ).upper()
+                 os.symlink( f, '%s/VIDEO_TS/%s' % (tmp_dir, base) )
+-        except Exception, why:
++        except Exception as why:
+             write( '%sError creating a DVD-Video structure in %s:\n%s%s\n' % (COLOR_4, tmp_dir, why, COLOR_0) )
+             sys.exit(7)
+ 
+@@ -1397,7 +1397,7 @@
+             if ok:
+                 if root == '' and not dir_flag:  prefix = ''
+                 fnames.append( prefix + f )
+-        fnames = string.join( fnames )
++        fnames = ' '.join( fnames )
+ 
+     flush()
+ #}}}
+@@ -1455,7 +1455,7 @@
+     exit_code = ch_out.close()
+ 
+     if exit_code == None:
+-        print OK
++        print(OK)
+         exit_flag = False
+         if verbose:  print_key_value( 'Blanking time', blank_time or 'n/a' )
+     else:
+@@ -1494,7 +1494,7 @@
+             (COLOR_8,COLOR_0) )
+         sys.exit(5)
+     size = f_stat[ stat.ST_SIZE ]
+-    new_size = long( size/2048.0 + 0.9999999 )
++    new_size = int( size/2048.0 + 0.9999999 )
+     image = escape_str( f )
+ 
+     single_session = True
+@@ -1513,7 +1513,7 @@
+         print_error( 'too big' )
+         exit_flag = True
+     else:
+-        print OK
++        print(OK)
+ 
+     if verbose:
+         sess_size = '%.1f MB' % ( size / (1024.0*1024.0) )
+@@ -1575,7 +1575,7 @@
+         print_error( 'something wrong' )
+         exit_flag = True
+     else:
+-        try:    new_size = long( ch_out[-1] )
++        try:    new_size = int( ch_out[-1] )
+         except: new_size = 0
+ 
+         delta_size = free_space - new_size
+@@ -1602,7 +1602,7 @@
+             if not blank and 'RW' in media and new_size <= total_space:
+                 ask_for_zero = interactive
+         else:
+-            print OK
++            print(OK)
+ 
+     if ask_for_zero:
+         if dvd: s = 'Do you want to overwrite RW media to fit the data?'
+@@ -1612,7 +1612,7 @@
+             zero = blank = appendable = True
+             free_space = total_space
+             exit_flag = False
+-            print YES
++            print(YES)
+ 
+             multi_overhead = 11702
+             mode_str = 'start multi-session'
+@@ -1624,7 +1624,7 @@
+                 mode_str = 'single session'
+                 multi_overhead = 0
+         else:
+-            print NO
++            print(NO)
+ 
+     if verbose:
+         try:    sess_size = '%.1f MB (%.1f MB)' % ((new_size+multi_overhead)/512.0,new_size/512.0)
+@@ -1762,7 +1762,7 @@
+     #dbg.close()
+ 
+     if exit_code == None:
+-        print OK
++        print(OK)
+         exit_flag = False
+         if verbose:  print_key_value( 'Time', fixating_time )
+     else:
+@@ -1871,7 +1871,7 @@
+     finalizing_start = finalizing_start or time.time()
+ 
+     if exit_code == None:
+-        print OK
++        print(OK)
+         exit_flag = False
+         if verbose:
+             finalizing_time = '%d sec' % round( time.time()-finalizing_start )
+@@ -1905,7 +1905,7 @@
+ 
+     ch_out, exit_code = run_cmd( cmd )
+     if exit_code == None:
+-        print OK
++        print(OK)
+         flush()
+         return
+ 
+@@ -1927,7 +1927,7 @@
+     load_config()
+     parse_cmd_line()
+ 
+-    cmd = string.join( sys.argv )
++    cmd = ' '.join( sys.argv )
+     print_debug( cmd )
+ 
+     check_programs()
