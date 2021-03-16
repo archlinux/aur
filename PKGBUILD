@@ -3,7 +3,7 @@
 # Contributor: giniu <gginiu@gmail.com>
 
 pkgname=python-ipdb
-pkgver=0.13.6
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="IPython-enabled pdb"
 url="https://pypi.python.org/pypi/ipdb"
@@ -13,7 +13,7 @@ depends=('ipython')
 makedepends=('python-setuptools' 'python-toml')
 checkdepends=('python-mock')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gotcha/ipdb/archive/$pkgver.tar.gz")
-sha512sums=('fba282188ef0a844e2721d7ad53871b74a5d19fcd51ab8f291f80d05d6d3bacd15b5d0c538c503288d6ec65ab469ff1bde172191a28fcb353369e8cffa654039')
+sha512sums=('84ad8b6694ffcd89da5a4dc508b165a9aad40fc36276be7d32ae686856a0d60aa205da3adace26813e77735de3e4ae457f705fabf4baff29519adc0218c74f67')
 
 build() {
   cd ipdb-$pkgver
