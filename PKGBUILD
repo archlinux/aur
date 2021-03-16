@@ -1,12 +1,12 @@
 # Maintainer: lmartinez-mirror
 pkgname=vivarium-git
 pkgver=0.0.1.r2.g28212ea
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor inspired by xmonad"
 arch=('x86_64')
 url="https://github.com/inclement/vivarium"
 license=('GPL3')
-depends=('wlroots' 'xcb-util-renderutil')
+depends=('wlroots=0.12.0' 'xcb-util-renderutil')
 makedepends=('git' 'meson' 'wayland-protocols')
 optdepends=('xorg-xwayland: X.org support under Wayland')
 provides=('vivarium')
