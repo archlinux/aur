@@ -1,6 +1,6 @@
 pkgbase = lib32-libgudev-nosystemd
 	pkgdesc = GObject bindings for libudev
-	pkgver = 234
+	pkgver = 236
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/libgudev
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lib32-libgudev-nosystemd
 	provides = libgudev-1.0.so
 	provides = lib32-libgudev
 	conflicts = lib32-libgudev
-	source = git+https://gitlab.gnome.org/GNOME/libgudev.git#tag=234
+	source = git+https://gitlab.gnome.org/GNOME/libgudev.git#tag=236
 	sha256sums = SKIP
 
 pkgname = lib32-libgudev-nosystemd
