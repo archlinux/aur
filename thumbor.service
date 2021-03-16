@@ -1,0 +1,21 @@
+[Unit]
+Description=open-source photo thumbnail service
+Documentation=https://github.com/thumbor/thumbor
+After=network.target
+
+[Service]
+DynamicUser=true
+CacheDirectory=thumbor
+StateDirectory=thumbor
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+
+ExecStart=/usr/bin/thumbor --conf=/etc/thumbor.conf
+
+[Install]
+WantedBy=multi-user.target
