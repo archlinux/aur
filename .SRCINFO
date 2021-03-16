@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
 	pkgver = 1.54.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.visualstudio.com/
 	arch = x86_64
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = visual-studio-code-bin
 	depends = libxss
 	depends = glibc
 	depends = lsof
+	depends = shared-mime-info
 	optdepends = glib2: Needed for move to trash functionality
 	optdepends = libdbusmenu-glib: Needed for KDE global menu
 	provides = code
