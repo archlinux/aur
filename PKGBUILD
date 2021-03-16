@@ -1,6 +1,6 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
-pkgname=crane-bin
+pkgname=go-crane-bin
 pkgver=0.4.1
 pkgrel=1
 pkgdesc='crane is a tool for interacting with remote images and registries.'
