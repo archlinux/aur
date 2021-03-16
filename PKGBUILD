@@ -2,8 +2,8 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=3.9
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -30,10 +30,11 @@ optdepends=(
     'usbutils: optional for a quick VR HMD presence check'
     'jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions'
     'rsync: optional for backing up steamuser files from proton games'
+    'openssl: optional for generating a random hex string for Non-Steam games'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('13ac663f4d71ca7250989073fa54857eb3ae59d90e2eec1fe392e4aaf84ddb5e')
+sha256sums=('b88cd2425f123657ca6f3a716929d50208bc351e31fdb2ce9a4ce3a78ad12df5')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"

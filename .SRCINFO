@@ -1,7 +1,7 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 3.9
-	pkgrel = 2
+	pkgver = 4.0
+	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
 	license = GPL3
@@ -37,8 +37,9 @@ pkgbase = steamtinkerlaunch
 	optdepends = usbutils: optional for a quick VR HMD presence check
 	optdepends = jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions
 	optdepends = rsync: optional for backing up steamuser files from proton games
-	source = steamtinkerlaunch-3.9.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v3.9.tar.gz
-	sha256sums = 13ac663f4d71ca7250989073fa54857eb3ae59d90e2eec1fe392e4aaf84ddb5e
+	optdepends = openssl: optional for generating a random hex string for Non-Steam games
+	source = steamtinkerlaunch-4.0.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v4.0.tar.gz
+	sha256sums = b88cd2425f123657ca6f3a716929d50208bc351e31fdb2ce9a4ce3a78ad12df5
 
 pkgname = steamtinkerlaunch
 
