@@ -1,0 +1,22 @@
+pkgbase = python-restructuredtext-lint
+	pkgdesc = A comprehensive, fast, pure Python memcached client
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/twolfson/restructuredtext-lint
+	arch = any
+	license = UNLICENSE
+	makedepends = python
+	makedepends = python-docutils
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-docutils
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/r/restructuredtext-lint/restructuredtext_lint-1.3.2.tar.gz
+	md5sums = f329e3fb722f4d58b72af9e96f088df4
+	sha256sums = d3b10a1fe2ecac537e51ae6d151b223b78de9fafdd50e5eb6b08c243df173c80
+	sha512sums = 723c97879d54ce475a71441a9ca190a07f12a13da51c818ded29f3e4da255e734b54a49ae6c395cc1938e91ba9e88964d6aae896517e0d239301704f1b18cf67
+
+pkgname = python-restructuredtext-lint
+
+pkgname = python2-restructuredtext-lint
+
