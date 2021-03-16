@@ -3,9 +3,9 @@
 # Created by Darjan Krijan <darjan_krijan@gmx.de>
 #
 
-set MODULE   "aocc"
-set BASE_DIR "/opt"
-set VERSION  "3.0.0"
+set MODULE      "aocc"
+set BASE_DIR    "/opt"
+set VERSION     "3.0.0"
 set MODULE_ROOT "${BASE_DIR}/${MODULE}"
 set MODULE_TEXT "AMD Optimizing C/C++ Compiler and Fortran Compiler (flang)"
 
@@ -17,14 +17,32 @@ prepend-path LD_LIBRARY_PATH ${MODULE_ROOT}/lib
 append-path  CPATH           ${MODULE_ROOT}/include
 prepend-path MANPATH         ${MODULE_ROOT}/share/man
 
-setenv       CC              ${MODULE_ROOT}/bin/aocc-clang
-setenv       OMPI_CC         ${MODULE_ROOT}/bin/aocc-clang
-setenv       CXX             ${MODULE_ROOT}/bin/aocc-clang++
-setenv       OMPI_CXX        ${MODULE_ROOT}/bin/aocc-clang++
-setenv       FC              ${MODULE_ROOT}/bin/aocc-flang
-setenv       F77             ${MODULE_ROOT}/bin/aocc-flang
-setenv       F90             ${MODULE_ROOT}/bin/aocc-flang
-setenv       OMPI_FC         ${MODULE_ROOT}/bin/aocc-flang
+set CC  "${MODULE_ROOT}/bin/aocc-clang"
+set CXX "${MODULE_ROOT}/bin/aocc-clang++"
+set FC  "${MODULE_ROOT}/bin/aocc-flang"
+
+set-alias clang   ${CC}
+set-alias clang++ ${CXX}
+set-alias flang   ${FC}
+
+# Compiler environment variables for GNU Autotools, CMake, etc.
+setenv CC         ${CC}
+setenv CXX        ${CXX}
+setenv FC         ${FC}
+setenv F77        ${FC}
+setenv F90        ${FC}
+
+# MPT MPI
+setenv MPICC_CC   ${CC}
+setenv MPICXX_CXX ${CXX}
+setenv MPIFC_FC   ${FC}
+setenv MPIF90_F90 ${FC}
+setenv MPIF08_F08 ${FC}
+
+# OpenMPI
+setenv OMPI_CC    ${CC}
+setenv OMPI_CXX   ${CXX}
+setenv OMPI_FC    ${FC}
 
 module-whatis "${MODULE_TEXT} version ${VERSION}"
 
@@ -37,5 +55,6 @@ proc ModulesHelp {} {
 	puts stderr "LD_LIBRARY_PATH"
 	puts stderr "CPATH"
 	puts stderr "CC, CXX, FC, F77, F90"
+	puts stderr "MPICC_CC, MPICXX_CXX, MPIF90_F90, MPIF08_F08"
 	puts stderr "OMPI_CC, OMPI_CXX, OMPI_FC"
 }

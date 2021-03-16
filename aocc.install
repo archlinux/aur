@@ -5,7 +5,7 @@ post_install() {
 
 	if pacman -Q env-modules &> /dev/null; then
 		echo "env-modules seems to be installed:"
-		echo "You can conveniently use"
+		echo "If configured correctly, you can conveniently use"
 		echo "  $ module load aocc"
 		echo "to set up the environment for AMD Optimizing C/C++ Compiler."
 	fi
@@ -13,4 +13,9 @@ post_install() {
 
 post_upgrade() {
 	post_install
+}
+
+post_remove() {
+	rm /opt/aocc/setenv_AOCC.sh
+	rmdir /opt/aocc
 }
