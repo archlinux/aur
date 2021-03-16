@@ -1,7 +1,7 @@
 pkgbase = python-wolkenbruch
 	pkgdesc = Remind you to pack your rain gear when it’s forecast to rain
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/christophfink/wolkenbruch/
 	arch = x86_64
 	arch = i686
