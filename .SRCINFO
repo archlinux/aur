@@ -1,14 +1,13 @@
 pkgbase = mkbib
 	pkgdesc = A gtk3-Program to create bibtex-files
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://mirror.ctan.org/biblio/bibtex/utils/mkbib
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	makedepends = itstool
-	makedepends = gcc6
 	depends = gtk3
 	depends = libsoup
 	source = https://mirror.ctan.org/biblio/bibtex/utils/mkbib.zip
