@@ -1,0 +1,24 @@
+pkgbase = python-automaton
+	pkgdesc = Friendly state machines for python.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://opendev.org/openstack/automaton
+	arch = any
+	license = Apache
+	checkdepends = python-coverage
+	checkdepends = python-oslotest
+	checkdepends = python-stestr
+	checkdepends = python-testtools
+	checkdepends = python-reno
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pbr
+	depends = python-prettytable
+	source = https://pypi.io/packages/source/a/automaton/automaton-2.3.0.tar.gz
+	md5sums = 6d627a428a84ba03b0b4146dede1d45b
+	sha256sums = 3173a5fdbbb14ab4c6c53ea5c8f82c337fe4b3dc5a3dcd7d1804fd685868cf2e
+	sha512sums = 3e832f2cbaa147b57bcef024873454dbcb4e800d3873f4f6e533b137e49fee3cfe39efdacbfd700819c8c5f09e61f14d2862efc0daa78f79ad0e6f9c75161f8e
+
+pkgname = python-automaton
+
