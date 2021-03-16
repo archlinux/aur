@@ -6,7 +6,7 @@ pkgdesc='Experimental Nintendo Switch Emulator written in C# (LDN build)'
 arch=('x86_64')
 url='https://www.patreon.com/ryujinx'
 license=('MIT')
-depends=('dotnet-runtime>5')
+depends=('dotnet-runtime>=5')
 provides=('Ryujinx')
 conflicts=('ryujinx-git')
 options=('staticlibs')
