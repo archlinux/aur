@@ -24,7 +24,7 @@ pkgbase = colmap-git
 	depends = libjpeg
 	depends = boost-libs
 	depends = qt5-base
-	optdepends = cuda-toolkit: for cuda sfm/mvs acceleration
+	optdepends = libcudart.so: for cuda sfm/mvs acceleration
 	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=dev
 	source = gcc9.patch
 	source = vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin

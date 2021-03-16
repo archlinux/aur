@@ -20,7 +20,7 @@ depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   makedepends+=('cuda-sdk')
-  optdepends+=('cuda-toolkit: for cuda sfm/mvs acceleration')
+  optdepends+=('libcudart.so: for cuda sfm/mvs acceleration')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
         "gcc9.patch"
