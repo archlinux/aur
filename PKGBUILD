@@ -1,14 +1,13 @@
-# Maintainer: Anes Belfodil <anes dot belfodil at gmail dot com>
 # Maintainer: Campbell Jones <dev at serebit dot com> 
 
 pkgname=wraith-master-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="Wraith Master"
+pkgdesc="A Wraith Prism RGB control application built with Kotlin/Native (Binary Version)"
 arch=('x86_64')
 license=("Apache-2.0")
 depends=('gtk3')
-source=("wraith-master.tar.xz::https://gitlab.com/serebit/wraith-master/uploads/0fcdf56b36b28c7005b74e90dacd53d0/wraith-master-v1.1.1.tar.xz")
+source=("wraith-master.tar.xz::https://gitlab.com/serebit/wraith-master/uploads/d69d3d2ae823de346869d1c5d51b6b6c/wraith-master-v1.1.2.tar.xz")
 sha256sums=('SKIP')
 url="https://gitlab.com/serebit/wraith-master"
 
