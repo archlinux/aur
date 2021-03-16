@@ -2,16 +2,16 @@
 # Contributor: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=pip-tools
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="A set of tools to keep your pinned Python dependencies fresh."
 arch=('any')
 url="https://github.com/jazzband/pip-tools/"
 license=('BSD')
-depends=('python-click>=7' 'python-pip>=20.3')
+depends=('python-click>=7' 'python-pep517' 'python-pip>=20.3')
 makedepends=('python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7c31c5dfe6b3b2cfcdaf1712f34551964d809eb89ea3568a5d0b781426725824')
+sha256sums=('3b0c7b95e8d3dfb011bb42cb38f356fcf5d0630480462b59c4d0a112b8d90281')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
