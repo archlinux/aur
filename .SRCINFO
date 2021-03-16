@@ -1,6 +1,6 @@
 pkgbase = bencodetools-git
 	pkgdesc = A collection of tools for manipulating bencoded data.
-	pkgver = r194.735bced
+	pkgver = r195.1eea3eb
 	pkgrel = 1
 	url = https://gitlab.com/heikkiorsila/bencodetools
 	arch = x86_64

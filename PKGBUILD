@@ -1,6 +1,6 @@
 # Maintainer: grimi
 pkgname=bencodetools-git
-pkgver=r194.735bced
+pkgver=r195.1eea3eb
 pkgrel=1
 pkgdesc="A collection of tools for manipulating bencoded data."
 arch=("x86_64")
