@@ -1,0 +1,15 @@
+pkgbase = nash
+	pkgdesc = Not A Shell, a shell
+	pkgver = r29.38fc82d
+	pkgrel = 1
+	url = https://github.com/mgaldi/nash
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	source = nash::git://github.com/mgaldi/nash.git
+	md5sums = SKIP
+
+pkgname = nash
+
