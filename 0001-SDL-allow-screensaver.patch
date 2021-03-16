@@ -1,0 +1,32 @@
+From b238a033c829e44653cd9f943f274698bf15dcf4 Mon Sep 17 00:00:00 2001
+From: Peter Kaestle <peter@piie.net>
+Date: Sat, 28 Nov 2020 23:31:07 +0100
+Subject: [PATCH] SDL allow screensaver
+
+---
+ src/core/linux/SDL_dbus.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/core/linux/SDL_dbus.c b/src/core/linux/SDL_dbus.c
+index 13880cb..4153359 100644
+--- a/src/core/linux/SDL_dbus.c
++++ b/src/core/linux/SDL_dbus.c
+@@ -318,6 +318,7 @@ SDL_DBus_QueryProperty(const char *node, const char *path, const char *interface
+ void
+ SDL_DBus_ScreensaverTickle(void)
+ {
++    return;
+     if (screensaver_cookie == 0) {  /* no need to tickle if we're inhibiting. */
+         /* org.gnome.ScreenSaver is the legacy interface, but it'll either do nothing or just be a second harmless tickle on newer systems, so we leave it for now. */
+         SDL_DBus_CallVoidMethod("org.gnome.ScreenSaver", "/org/gnome/ScreenSaver", "org.gnome.ScreenSaver", "SimulateUserActivity", DBUS_TYPE_INVALID);
+@@ -328,6 +329,7 @@ SDL_DBus_ScreensaverTickle(void)
+ SDL_bool
+ SDL_DBus_ScreensaverInhibit(SDL_bool inhibit)
+ {
++    return SDL_TRUE;
+     if ( (inhibit && (screensaver_cookie != 0)) || (!inhibit && (screensaver_cookie == 0)) ) {
+         return SDL_TRUE;
+     } else {
+-- 
+2.29.2
+
