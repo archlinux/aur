@@ -1,24 +1,24 @@
 pkgbase = wlroots-hidpi-git
 	pkgdesc = Modular Wayland compositor library, with XWayland HiDPI (git version)
-	pkgver = 0.12.0.r342.g38ec1c0e
+	pkgver = 0.12.0.r378.g00bee2a6
 	pkgrel = 1
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
 	license = custom:MIT
-	makedepends = meson
 	makedepends = git
+	makedepends = meson
 	makedepends = wayland-protocols
 	makedepends = xorgproto
-	depends = systemd
-	depends = wayland
-	depends = opengl-driver
+	depends = libinput
 	depends = libxcb
+	depends = libxkbcommon
+	depends = opengl-driver
+	depends = pixman
+	depends = wayland
 	depends = xcb-util-errors
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = pixman
-	depends = libinput
-	depends = libxkbcommon
+	depends = systemd
 	provides = wlroots-hidpi=0.12.0
 	provides = wlroots=0.12.0
 	provides = wlroots-git

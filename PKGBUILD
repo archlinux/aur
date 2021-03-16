@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.12.0.r342.g38ec1c0e
+pkgver=0.12.0.r378.g00bee2a6
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
@@ -12,9 +12,22 @@ provides=("wlroots-hidpi=${pkgver%%.r*}"
           "wlroots-git")
 conflicts=(wlroots wlroots-git)
 options=(debug)
-depends=(systemd wayland opengl-driver libxcb xcb-util-errors
-         xcb-util-renderutil xcb-util-wm pixman libinput libxkbcommon)
-makedepends=(meson git wayland-protocols xorgproto)
+depends=(
+	libinput
+	libxcb
+	libxkbcommon
+	opengl-driver
+	pixman
+	wayland
+	xcb-util-errors
+	xcb-util-renderutil
+	xcb-util-wm
+	systemd)
+makedepends=(
+	git
+	meson
+	wayland-protocols
+	xorgproto)
 source=("${pkgname}::git+${url}"
         # "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/pull/2064.diff"
         "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff"
@@ -41,6 +54,7 @@ build () {
 		-Dlogind-provider=systemd \
 		-Dlibseat=disabled \
 		-Dwerror=false \
+		-Dexamples=false \
 		"${pkgname}" build
 	meson compile -C build
 }
