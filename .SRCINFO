@@ -1,13 +1,13 @@
 pkgbase = doom3-data
 	pkgdesc = Doom 3 patch data files; not the full game!
 	pkgver = 1.3.1.1304
-	pkgrel = 4
-	url = http://www.idsoftware.com/
+	pkgrel = 5
+	url = https://www.idsoftware.com/
 	install = doom3-data.install
 	arch = any
 	license = custom
-	source = http://youfailit.net/pub/idgames/idstuff/doom3/linux/doom3-linux-1.3.1.1304.x86.run
-	sha256sums = 2f90dff20f2d3c0c47f17b3d6d45c4f0e7d27b986bf6084f21b85180cd1e03b4
+	source = https://youfailit.net/pub/idgames/idstuff/doom3/linux/doom3-linux-1.3.1.1304.x86.run
+	b2sums = ac69b20193b188556143ff57464f81c088dc008abfda98ff49d8a2d802fa06ff383e6bcde4a8a056066e8cd663a07fa01f4f171e30ec5fe9185fd975a13efb60
 
 pkgname = doom3-data
 
