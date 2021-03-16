@@ -1,0 +1,28 @@
+pkgbase = python-speechbrain-git
+	pkgdesc = All-in-one speech toolkit in pure Python and Pytorch
+	pkgver = 0.0.0a28.r166
+	pkgrel = 1
+	url = https://github.com/espnet/espnet_model_zoo
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-hyperpyyaml
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-scipy
+	depends = python-sentencepiece
+	depends = python-pytorch
+	depends = python-torchaudio
+	depends = python-tqdm
+	depends = python-huggingface-hub
+	provides = python-speechbrain-zoo
+	conflicts = python-speechbrain-zoo
+	conflicts = python-speechbrain-git
+	source = python-speechbrain-git::git+https://github.com/espnet/espnet_model_zoo
+	md5sums = SKIP
+
+pkgname = python-speechbrain-git
+
