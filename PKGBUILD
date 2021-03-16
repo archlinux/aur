@@ -24,6 +24,7 @@ check() {
   cd "$_gitname"
   pytest
   behave --no-skipped --format progress
+  black . --check --diff
 }
 
 prepare() {
