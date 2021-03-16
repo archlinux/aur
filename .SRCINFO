@@ -1,0 +1,36 @@
+pkgbase = python-oslo-middleware
+	pkgdesc = Oslo Middleware library
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://docs.openstack.org/oslo.middleware/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-fixtures
+	checkdepends = python-hacking
+	checkdepends = python-oslotest
+	checkdepends = python-testtools
+	checkdepends = python-coverage
+	checkdepends = python-oslo-serialization
+	checkdepends = bandit
+	checkdepends = python-stestr
+	checkdepends = python-pre-commit
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pbr
+	depends = python-jinja
+	depends = python-oslo-config
+	depends = python-oslo-context
+	depends = python-oslo-i18n
+	depends = python-oslo-utils
+	depends = python-stevedore
+	depends = python-webob
+	depends = python-debtcollector
+	depends = python-statsd
+	options = !emptydirs
+	source = https://pypi.io/packages/source/o/oslo.middleware/oslo.middleware-4.2.0.tar.gz
+	md5sums = 70355dcacd3dfc00c31f4067536044d2
+	sha256sums = f6bb2b2896737bf37c8f0ff034fd74245b7a1d2d5cb1252b672b44fbe3249d88
+	sha512sums = 09afa9420149a2ca917c26a4bb7eec98634b2fa18b0579b5c97306e549eda799d094b985b0c1772f624839b8d0366b45e1cb8418d8c2dd39155a961bd90d3e62
+
+pkgname = python-oslo-middleware
+
