@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=i3-volume
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Volume control and volume notifications for i3wm"
 arch=(any)
@@ -13,7 +13,7 @@ install=${pkgname}.install
 source=("https://github.com/hastinbe/${pkgname}/archive/v${pkgver}.tar.gz"
         "i3volume-alsa.conf"
         "i3volume-pulseaudio.conf")
-md5sums=('5da7bd6df7b1dc3686baf5f399ab01ad'
+md5sums=('d685c4d2f9166793da161e457c05933f'
          'ebb255f91630209a64491bb0fed9bc08'
          'c36135349c39cdd70d20242a673d0b21')
 
