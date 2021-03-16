@@ -1,10 +1,10 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-speechbrain-git
-pkgver=0.0.0a28.r166
+pkgver=0.5.4.r4279
 pkgrel=1
 pkgdesc='All-in-one speech toolkit in pure Python and Pytorch'
 arch=('any')
-url='https://github.com/espnet/espnet_model_zoo'
+url='https://github.com/speechbrain/speechbrain'
 license=('Apache 2.0')
 depends=('python>=3.7' 'python-hyperpyyaml' 'python-joblib' 'python-numpy' 'python-packaging' 'python-scipy' 'python-sentencepiece' 'python-pytorch' 'python-torchaudio' 'python-tqdm' 'python-huggingface-hub')
 makedepends=('git' 'python-setuptools')
