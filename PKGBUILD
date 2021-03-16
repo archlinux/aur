@@ -19,7 +19,7 @@ depends=(
 makedepends=(
 	'git'
 )
-providess=("${_pkgname}")
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install=${_pkgname}.install
 backup=(

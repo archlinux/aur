@@ -8,6 +8,7 @@ pkgbase = prelockd-git
 	license = MIT
 	makedepends = git
 	depends = python
+	provides = prelockd
 	conflicts = prelockd
 	backup = etc/prelockd.conf
 	source = prelockd-git::git+https://github.com/hakavlad/prelockd.git#branch=master
