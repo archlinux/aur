@@ -1,7 +1,7 @@
 pkgbase = st-mads256h
 	pkgdesc = Simple virtual terminal emulator for X
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://st.suckless.org/
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = st-mads256h
 	sha256sums = a24118148631f6670ea568a3debdd00a7cbcfa525839281888e876e7ea409658
 	sha256sums = 5be9b40d2b51761685f6503e92028a7858cc6571a8867b88612fce8a70514d5b
 	sha256sums = c427ccdaf9b6eb4a298d27fd411e02728551a8dde5d1ab4d878d7321c78dbd89
-	sha256sums = dd5906e1ddabd507fa2bdc953836ae2d186e0b4af38079405619074962cb811c
+	sha256sums = 881743cddcf6d52abd01b17f3ed7f584e2ebd93958e880db1a6f4726db2aecba
 
 pkgname = st-mads256h
 

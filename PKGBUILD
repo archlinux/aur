@@ -9,7 +9,7 @@
 pkgname=st-mads256h
 _pkgname=st
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://st.suckless.org/'
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
             'a24118148631f6670ea568a3debdd00a7cbcfa525839281888e876e7ea409658'
             '5be9b40d2b51761685f6503e92028a7858cc6571a8867b88612fce8a70514d5b'
             'c427ccdaf9b6eb4a298d27fd411e02728551a8dde5d1ab4d878d7321c78dbd89'
-            'dd5906e1ddabd507fa2bdc953836ae2d186e0b4af38079405619074962cb811c')
+            '881743cddcf6d52abd01b17f3ed7f584e2ebd93958e880db1a6f4726db2aecba')
 provides=('st')
 conflicts=('st')
 
