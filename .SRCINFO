@@ -1,6 +1,6 @@
 pkgbase = spotlight
 	pkgdesc = Displays a new background image daily
-	pkgver = 48.aa1536f
+	pkgver = 50.51bfcf5
 	pkgrel = 1
 	url = https://github.com/mariusknaust/spotlight
 	install = spotlight.install
