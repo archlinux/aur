@@ -27,7 +27,7 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
-_system_compiler=y 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
+_system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
 		   	# as an environment to /usr/sbin compile projects after building.
 
 prepare() {
