@@ -2,7 +2,7 @@
 # Contributor: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=z.lua
-pkgver=1.8.11
+pkgver=1.8.12
 pkgrel=1
 pkgdesc='A new cd command that helps you navigate faster by learning your habits.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('lua')
 provides=('z.lua')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('213ea4c6287fa2952fb17db3191dcbaee014b28bff5230f615b23a1869aad912')
+sha256sums=('1c3d871bf625b5a2eef9ecbb4face9d6432565d05ea8d26322b7a65b2e1d99d2')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
