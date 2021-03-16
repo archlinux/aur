@@ -7,7 +7,7 @@ pkgdesc='crane is a tool for interacting with remote images and registries.'
 url='https://github.com/google/go-containerregistry'
 license=('Apache')
 arch=('x86_64')
-provides=('metalctl')
+provides=('crane')
 source=("crane-$pkgver-$pkgrel.tar.gz::https://github.com/google/go-containerregistry/releases/download/v$pkgver/go-containerregistry_Linux_$arch.tar.gz")
 md5sums=('a1e04a979a22c10c2cceafec5c3b00ae')
 
