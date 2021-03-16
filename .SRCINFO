@@ -1,8 +1,8 @@
 pkgbase = perl-catalyst-plugin-i18n
 	pkgdesc = I18N for Catalyst
 	pkgver = 0.10
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Catalyst-Plugin-I18N/
+	pkgrel = 3
+	url = https://metacpan.org/release/Catalyst-Plugin-I18N
 	arch = i686
 	arch = x86_64
 	license = perl
@@ -11,11 +11,8 @@ pkgbase = perl-catalyst-plugin-i18n
 	depends = perl-locale-maketext-lexicon
 	depends = perl-catalyst-runtime
 	depends = perl-mro-compat
-	provides = catalyst-plugin-i18n=0.10
-	provides = Catalyst::Plugin::I18N=0.10
-	provides = perl-catalyst-plugin-i18n=0.10
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-I18N-0.10.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-I18N-0.10.tar.gz
 	md5sums = d0b42885072d49dcd0f5def7eb14d42b
 	sha512sums = 69bec461f447febf2e17807ffd409136a703033af02ac9d8c0c8182d45770f0c3ed8146e121c3bed9c1fdda16ca8659c0b16287eae3312b55b0fd9535ceab052
 

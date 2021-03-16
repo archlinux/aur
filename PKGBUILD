@@ -3,19 +3,15 @@
 pkgname='perl-catalyst-plugin-i18n'
 _pkgname='Catalyst-Plugin-I18N'
 pkgver=0.10
-pkgrel=2
+pkgrel=3
 pkgdesc='I18N for Catalyst'
 arch=(i686 x86_64)
 license=('perl')
-url="http://search.cpan.org/dist/Catalyst-Plugin-I18N/"
+url="https://metacpan.org/release/Catalyst-Plugin-I18N"
 options=(!emptydirs)
-
 depends=('perl>=5.10.1' 'perl-locale-maketext-lexicon' 'perl-catalyst-runtime' 'perl-mro-compat')
 makedepends=('perl')
-
-provides=("catalyst-plugin-i18n=${pkgver}" "Catalyst::Plugin::I18N=${pkgver}" "perl-catalyst-plugin-i18n=${pkgver}")
-
-source=("http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('d0b42885072d49dcd0f5def7eb14d42b')
 sha512sums=('69bec461f447febf2e17807ffd409136a703033af02ac9d8c0c8182d45770f0c3ed8146e121c3bed9c1fdda16ca8659c0b16287eae3312b55b0fd9535ceab052')
 
@@ -44,5 +40,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# vim:set ts=2 sw=2 et:
