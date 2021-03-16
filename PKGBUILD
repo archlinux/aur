@@ -1,40 +1,33 @@
-# Maintainer: Jeremy Ruten <jeremy.ruten@gmail.com>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Contributor: Jeremy Ruten <jeremy.ruten@gmail.com>
 # Contributor: Brad Conte <brad@bradconte.com>
-# Ex-community Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+
 pkgname=stopwatch
 pkgver=3.5
-pkgrel=7
-pkgdesc="virtual stopwatch"
-arch=(any)
-url="http://code.google.com/p/archlinux-stuff/downloads/list"
-license=("Public Domain")
-groups=()
+pkgrel=8
+pkgdesc="Timing app written in Tcl/Tk"
+arch=('any')
+url="http://expect.sourceforge.net/${pkgname}/"
+license=('custom')
 depends=('tk')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-#install=
-#changelog=
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/archlinux-stuff/stopwatch-$pkgver.tar.gz")
-sha512sums=('f22cbd8e16d7d24c4b32191c5eb413e65d49207aaf6917eb3748e7aa55091b2f7ff8b03ab7954e1ee96a775c72443e6dfd5834311e5933a303f4e16b4c299ef2')
+source=("${pkgname}-${pkgver}.tar.gz::http://expect.sourceforge.net/stopwatch/${pkgname}.tar.gz"
+	LICENSE)
+sha256sums=('f3f56dccd00f669a5f0a4b1f6507ab78e0d1ad18305b760baab34edc68b3ef4e'
+            '599c44b010ac89d1b263b7cc783b816db8e7f47073484c42336b2d7f2d2ad8eb')
 
-#prepare() {
-#}
-
-#build() {
-#}
-
-#check() {
-#}
-
-package() {
-  mkdir -p $pkgdir/usr/bin
-  cp $srcdir/$pkgname-3.4/stopwatch $pkgdir/usr/bin
-  sed -e "s_/depot/path/wish_/usr/bin/wish_" -i $pkgdir/usr/bin/stopwatch
+prepare() {
+  mv "${srcdir}/${pkgname}-3.4" "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's|/depot/path/wish|/usr/bin/wish|' "${pkgname}"
+  sed -i -e 's|nist.gov|sourceforge.net|g' -e 's|#install||' \
+	-e 's|#directions||' README
 }
 
+package() {
+  cd "${pkgname}-${pkgver}"
+  install -D "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm0644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 HISTORY "${pkgdir}/usr/share/doc/${pkgname}/HISTORY"
+  install -Dm0644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+}
