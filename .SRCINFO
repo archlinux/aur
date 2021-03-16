@@ -13,7 +13,7 @@ pkgbase = bieaz
 	depends = sh
 	optdepends = grub: select boot environment at boot
 	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.1.6/bieaz-0.1.6.tar.gz
-	md5sums = 90ddac19b6fddf491a48dfdf4631d078
+	md5sums = 5f802940e54280d2075f011d204b7afa
 
 pkgname = bieaz
 
