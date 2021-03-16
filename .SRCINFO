@@ -1,21 +1,22 @@
 pkgbase = adms-git
 	pkgdesc = ADMS is a codegenerator for the VERILOG-A(MS) language
-	pkgver = 2.3.4.r29.g9c5bd52
-	pkgrel = 1
+	pkgver = 2.3.7.r6.g2097728
+	pkgrel = 2
 	url = https://github.com/qucs/adms
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = git
 	makedepends = autoconf
 	makedepends = automake
-	makedepends = flex
 	makedepends = bison
+	makedepends = flex
+	makedepends = git
 	makedepends = perl-gd
 	makedepends = perl-xml-libxml
 	depends = glibc
-	options = !makeflags
-	source = git+https://github.com/qucs/adms
+	provides = adms=2.3.7.r6.g2097728
+	conflicts = adms
+	source = adms::git+https://github.com/qucs/adms
 	md5sums = SKIP
 
 pkgname = adms-git

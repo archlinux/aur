@@ -1,33 +1,46 @@
-# Maintainer: nem <nem at posteo dot net>
+# Maintainer: dreieck
+# Contributor: nem <nem at posteo dot net>
 # Submitter: nem <nem at posteo dot net> 
 
-pkgname=adms-git
-pkgver=2.3.4.r29.g9c5bd52
-pkgrel=1
+_pkgname="adms"
+pkgname="${_pkgname}-git"
+pkgver=2.3.7.r6.g2097728
+pkgrel=2
 pkgdesc="ADMS is a codegenerator for the VERILOG-A(MS) language"
-arch=('x86_64' 'i686')
-url="https://github.com/qucs/adms"
+arch=(
+  'x86_64'
+  'i686'
+)
+url="https://github.com/qucs/${_pkgname}"
 license=('GPL')
 depends=('glibc')
-makedepends=('git' 'autoconf' 'automake' 'flex' 'bison' 'perl-gd' 'perl-xml-libxml')
-options=(!makeflags)
-source=(git+https://github.com/qucs/adms)
+makedepends=(
+  'autoconf'
+  'automake'
+  'bison'
+  'flex'
+  'git'
+  'perl-gd'
+  'perl-xml-libxml'
+)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/qucs/${_pkgname}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd adms 
+  cd "${srcdir}/${_pkgname}"
   git describe --long | sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd adms 
+  cd "${srcdir}/${_pkgname}"
   ./bootstrap.sh
   ./configure --enable-maintainer-mode --prefix=/usr
   make
 }
 
 package() {
-  cd adms 
-  make DESTDIR="$pkgdir" install
-
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
