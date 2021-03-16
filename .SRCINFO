@@ -1,0 +1,31 @@
+pkgbase = python-wsme
+	pkgdesc = Simplify the writing of REST APIs, and extend them with additional protocols.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://git.openstack.org/cgit/openstack/wsme
+	arch = any
+	license = MIT
+	checkdepends = python-transaction
+	checkdepends = python-pecan
+	checkdepends = python-sphinx
+	checkdepends = python-flask
+	checkdepends = python-flask-restful
+	checkdepends = python-nose
+	checkdepends = python-coverage
+	checkdepends = python-webtest
+	checkdepends = python-pytest
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = python-webob
+	depends = python-simplegeneric
+	depends = python-pytz
+	depends = python-netaddr
+	source = https://pypi.io/packages/source/W/WSME/WSME-0.10.1.tar.gz
+	md5sums = 5c22385eb1c2568d7b8ef04400b94265
+	sha256sums = 34209b623635a905bcdbc654f53ac814d038da65e4c2bc070ea1745021984079
+	sha512sums = 23020d3025c6746eb99db34199225437d78d827ccd3acafcb1eac8604f86e1fe7524cec3afcfccbf7d1f753fd6487e9a5549d2fcaa953949755b1705a95c8d84
+
+pkgname = python-wsme
+
