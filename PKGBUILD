@@ -1,7 +1,7 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=the-rock-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A command line King James bible viewer"
 arch=('i686' 'x86_64')
@@ -14,8 +14,6 @@ conflicts=("the-rock")
 md5sums=('SKIP')
 
 build() {
-    ls
-    echo $PWD
     cd $pkgname
     cargo build --release
     cd target/release
@@ -34,8 +32,8 @@ package() {
     install -Dt "$pkgdir/usr/lib/the_rock/" icon.png
 
     #the documentation
-    sudo install -Dt "$pkgdir/usr/share/man/man1" man/the_rock.1
-    sudo install -Dt "$pkgdir/usr/share/man/man1" man/bible.1
+    install -Dt "$pkgdir/usr/share/man/man1" man/the_rock.1
+    install -Dt "$pkgdir/usr/share/man/man1" man/bible.1
     gzip "$pkgdir/usr/share/man/man1/bible.1"
     gzip "$pkgdir/usr/share/man/man1/the_rock.1"
 }
