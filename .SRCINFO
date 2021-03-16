@@ -1,0 +1,19 @@
+pkgbase = soapysdrplay3-git
+	pkgdesc = Soapy SDR module for SDRPlay
+	pkgver = r33.208f95d
+	pkgrel = 1
+	url = http://www.sdrplay.com
+	install = soapysdrplay3-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = soapysdr
+	depends = libsdrplay
+	provides = soapysdrplay
+	conflicts = soapysdrplay-git
+	source = soapysdrplay3-git::git://github.com/pothosware/SoapySDRPlay3.git
+	md5sums = SKIP
+
+pkgname = soapysdrplay3-git
+
