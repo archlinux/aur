@@ -1,0 +1,35 @@
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Antonín Dach <dach@protonmail.com>
+
+pkgname=wayst-x11-git
+pkgver=r146.18a038b
+pkgrel=1
+pkgdesc='Simple terminal emulator for Wayland and X11 with OpenGL rendering and minimal dependencies.'
+arch=('x86_64')
+url='https://github.com/91861/wayst'
+license=('MIT')
+depends=('mesa' 'freetype2' 'fontconfig' 'libxkbcommon' 'libxrandr' 'libutf8proc')
+makedepends=('git') 
+provides=('wayst')
+conflicts=('wayst')
+source=('git+https://github.com/91861/wayst.git#branch=master')
+md5sums=('SKIP')
+
+pkgver() {
+  cd wayst
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd wayst
+
+  window_protocol=x11
+  make
+}
+
+package() {
+  cd "$srcdir/wayst"
+
+  mkdir -p "$pkgdir/usr/bin"
+  make INSTALL_DIR="$pkgdir/usr/bin" install
+}

@@ -1,0 +1,21 @@
+pkgbase = wayst-x11-git
+	pkgdesc = Simple terminal emulator for Wayland and X11 with OpenGL rendering and minimal dependencies.
+	pkgver = r146.18a038b
+	pkgrel = 1
+	url = https://github.com/91861/wayst
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = mesa
+	depends = freetype2
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = libutf8proc
+	provides = wayst
+	conflicts = wayst
+	source = git+https://github.com/91861/wayst.git#branch=master
+	md5sums = SKIP
+
+pkgname = wayst-x11-git
+
