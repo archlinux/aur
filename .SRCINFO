@@ -7,6 +7,7 @@ pkgbase = rare
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = gendesk
 	depends = python-wheel
 	depends = python-setuptools
 	depends = python-pyqt5
@@ -14,6 +15,8 @@ pkgbase = rare
 	depends = python-requests
 	depends = python-pillow
 	optdepends = wine-staging: Run windows games
+	provides = legendary
+	conflicts = legendary
 	source = rare-0.9.1.tar.gz::https://github.com/Dummerle/Rare/archive/0.9.1.tar.gz
 	sha256sums = SKIP
 
