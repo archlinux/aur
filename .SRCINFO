@@ -1,0 +1,30 @@
+pkgbase = python-oslo-policy
+	pkgdesc = Oslo Policy library
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://docs.openstack.org/oslo.policy/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-oslotest
+	checkdepends = python-requests-mock
+	checkdepends = python-stestr
+	checkdepends = python-sphinx
+	checkdepends = python-coverage
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-oslo-config
+	depends = python-oslo-context
+	depends = python-oslo-i18n
+	depends = python-oslo-serialization
+	depends = python-pyaml
+	depends = python-stevedore
+	depends = python-oslo-utils
+	options = !emptydirs
+	source = https://pypi.io/packages/source/o/oslo.policy/oslo.policy-3.7.0.tar.gz
+	md5sums = 285b1f08d980ee66b09ff9bf6aef0d06
+	sha256sums = 966a667aa41983b93472e04e7b7bdf68bef723fc1c8e1223e6011db042492646
+	sha512sums = b4c8ed5e5dccafc68bff54d3ac2b9ea3ed51d930cee23377fbbf731eb3a16faf2c7e41763764002520302cd7c39c78c6011c0748ca151ba5291565443ced5b20
+
+pkgname = python-oslo-policy
+
