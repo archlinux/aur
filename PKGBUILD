@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine
-pkgver=4.01.00
+pkgver=4.02.00
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
@@ -40,4 +40,5 @@ build() {
 package() {
   cd ee-build
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  find "$pkgdir" -type d -empty -delete
 }

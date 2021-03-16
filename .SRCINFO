@@ -1,6 +1,6 @@
 pkgbase = eternity-engine
 	pkgdesc = An advanced Doom port with vanilla compatibility
-	pkgver = 4.01.00
+	pkgver = 4.02.00
 	pkgrel = 1
 	url = http://eternity.youfailit.net/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = eternity-engine
 	depends = sdl2_mixer
 	depends = sdl2_net
 	depends = zlib
-	source = eternity::git+https://github.com/team-eternity/eternity.git#tag=4.01.00
+	source = eternity::git+https://github.com/team-eternity/eternity.git#tag=4.02.00
 	source = git+https://github.com/Wohlstand/libADLMIDI.git
 	b2sums = SKIP
 	b2sums = SKIP
