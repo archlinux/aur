@@ -4,10 +4,10 @@
 
 pkgname=spawn-fcgi-php
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to provide simple cgi-php support for nginx http daemon"
 arch=('any')
-url="http://aur.archlinux.org/packages.php?ID=37439"
+url='https://aur.archlinux.org/packages/spawn-fcgi-php/'
 license=('GPL')
 depends=('php-cgi' 'spawn-fcgi')
 backup=('etc/conf.d/spawn-fcgi-php.conf')
@@ -22,7 +22,7 @@ source=(
 )
 options=(!strip)
 
-build() {
+package() {
 	# Install script and configuration file
 	install -Dm755 "$srcdir"/spawn-fcgi-php.rc.d \
 		"$pkgdir"/etc/rc.d/spawn-fcgi-php

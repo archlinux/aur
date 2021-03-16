@@ -1,8 +1,8 @@
 pkgbase = spawn-fcgi-php
 	pkgdesc = Script to provide simple cgi-php support for nginx http daemon
 	pkgver = 1.2
-	pkgrel = 1
-	url = http://aur.archlinux.org/packages.php?ID=37439
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/spawn-fcgi-php/
 	arch = any
 	license = GPL
 	depends = php-cgi
