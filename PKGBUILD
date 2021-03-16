@@ -3,7 +3,7 @@
 # Contributor    : Jean-Michel T.Dydak <jean-michel@obarun.org>
 
 pkgname=lib32-eudev
-pkgver=3.2.9
+pkgver=3.2.10
 pkgrel=1
 udevver=243
 pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"

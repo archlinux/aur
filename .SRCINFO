@@ -1,6 +1,6 @@
 pkgbase = lib32-eudev
 	pkgdesc = The userspace dev tools (udev) forked by Gentoo (32-bit)
-	pkgver = 3.2.9
+	pkgver = 3.2.10
 	pkgrel = 1
 	url = https://dev.gentoo.org/~blueness/eudev
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = lib32-eudev
 	conflicts = lib32-eudev-git
 	options = !makeflags
 	options = !libtool
-	source = https://dev.gentoo.org/~blueness/eudev/eudev-3.2.9.tar.gz
+	source = https://dev.gentoo.org/~blueness/eudev/eudev-3.2.10.tar.gz
 	sha512sums = SKIP
 
 pkgname = lib32-eudev
