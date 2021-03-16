@@ -1,0 +1,52 @@
+From 38251ef14940585f77ce5de25b33bbfe75e9cbb2 Mon Sep 17 00:00:00 2001
+From: "Eric S. Raymond" <esr@thyrsus.com>
+Date: Wed, 27 May 2020 08:23:35 -0400
+Subject: [PATCH 2/2] Attempyt fix for GitLab issue #1.
+
+---
+ Makefile        | 2 +-
+ rcs-fast-import | 8 +++++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 05dbb87..afec305 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,7 +30,7 @@ rcs-fast-import-$(VERS).tar.gz: $(SOURCES) rcs-fast-import.1
+ PYLINTOPTS = --rcfile=/dev/null --reports=n \
+ 	--msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
+ 	--dummy-variables-rgx='^_'
+-SUPPRESSIONS = "C0103,C0111,C0301,C0325,C0410,C0323,C0330,C1001,R0902,R0903,R0912,R0913,R0914,R0915,R1702,W0110,W0141,W0333,W0142,W0621,E1101"
++SUPPRESSIONS = "C0103,C0111,C0301,C0325,C0410,C0323,C0330,C1001,R0902,R0903,R0912,R0913,R0914,R0915,R1702,R1720,R1723,W0110,W0141,W0333,W0142,W0621,E1101"
+ pylint:
+ 	@pylint $(PYLINTOPTS) --disable=$(SUPPRESSIONS) rcs-fast-import
+ 
+diff --git a/rcs-fast-import b/rcs-fast-import
+index 1d7d064..1998583 100755
+--- a/rcs-fast-import
++++ b/rcs-fast-import
+@@ -773,7 +773,7 @@ class RCS(Generic):
+     def postcommit(self, event):
+         "Save annotated tags for round-tripping."
+         for tag in event.taglist:
+-            with file("ANNOTATED-TAGS", "w") as fp:
++            with open("ANNOTATED-TAGS", "w") as fp:
+                 fp.write(tag.email_out())
+             do_or_die("ci -l -m'Annotated tag %s' -d'%s' ANNOTATED-TAGS,v"
+                       % (tag.name, tag.tagger.date.rfc822()))
+@@ -805,6 +805,12 @@ if __name__ == '__main__':
+             print("rcs-fast-import version %s" % version)
+             raise SystemExit(0)
+ 
++    # Nasty black magic. Replace stdin with a version of itself that uses an encoding
++    # that never aggregates bytes on input into multibyte code points. Without this
++    # fix, the attempt to read blob fdata failrs because the fp.read() skips code
++    # points, not bytes.  Alas that Python 3 Unicode handling is such a botch!
++    sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='latin-1', newline="\n")
++
+     vcs = RCS()
+     vcs.roundtrip = roundtrip
+     try:
+-- 
+2.30.2
+

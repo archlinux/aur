@@ -1,14 +1,19 @@
 pkgbase = rcs-fast-import
 	pkgdesc = Unpack a Git fast-import stream into an RCS file tree
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = http://www.catb.org/esr/rcs-fast-import/
 	arch = any
 	license = BSD
-	depends = python2
+	makedepends = xmlto
+	depends = python
 	depends = rcs
-	source = http://www.catb.org/esr/rcs-fast-import/rcs-fast-import-1.0.tar.gz
-	sha256sums = 57bb2771ecc534f71e479af0cbcb4a9b4b75d106b3fe7259191ead8c261f0604
+	source = https://gitlab.com/esr/rcs-fast-import/-/archive/1.1/rcs-fast-import-1.1.tar.gz
+	source = 0001-Fix-fatal-typo.patch
+	source = 0002-Attempyt-fix-for-GitLab-issue-1.patch
+	b2sums = 7b1fd0135337d315eb52e7316d2ff2a8ba761f098abbc647ffcbff8e837d0e1811c46df31684b8ee60e2ba91f89f74b18c76e52b284ef38a649b020f151b04f6
+	b2sums = 7f8d9f83815d606225d461259ecc76d57ac4dcc7753e05360076cdb5d4df11b86699830ff0a7e706de096c5e7a6e3616817540776caadc5dead6a985e7d00cda
+	b2sums = ee951836851663357883c40884cd434a047b3e7661da9eed5acf863539b607ef6e240d2934979830a90c0be11bf10138308e18ae564c2757fe528183d4441af6
 
 pkgname = rcs-fast-import
 
