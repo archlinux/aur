@@ -1,13 +1,15 @@
 pkgbase = stopwatch
-	pkgdesc = virtual stopwatch
+	pkgdesc = Timing app written in Tcl/Tk
 	pkgver = 3.5
-	pkgrel = 7
-	url = http://code.google.com/p/archlinux-stuff/downloads/list
+	pkgrel = 8
+	url = http://expect.sourceforge.net/stopwatch/
 	arch = any
-	license = Public Domain
+	license = custom
 	depends = tk
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/archlinux-stuff/stopwatch-3.5.tar.gz
-	sha512sums = f22cbd8e16d7d24c4b32191c5eb413e65d49207aaf6917eb3748e7aa55091b2f7ff8b03ab7954e1ee96a775c72443e6dfd5834311e5933a303f4e16b4c299ef2
+	source = stopwatch-3.5.tar.gz::http://expect.sourceforge.net/stopwatch/stopwatch.tar.gz
+	source = LICENSE
+	sha256sums = f3f56dccd00f669a5f0a4b1f6507ab78e0d1ad18305b760baab34edc68b3ef4e
+	sha256sums = 599c44b010ac89d1b263b7cc783b816db8e7f47073484c42336b2d7f2d2ad8eb
 
 pkgname = stopwatch
 
