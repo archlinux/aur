@@ -1,0 +1,12 @@
+#!/bin/sh
+pre_upgrade() {
+	mv /etc/bieaz.cfg /etc/bieaz.cfg.old
+	echo "moved config file to /etc/bieaz.cfg.old"
+};
+post_upgrade() {
+	bieaz update-menu -g
+}
+
+post_install() {
+	bieaz update-menu -g
+}
