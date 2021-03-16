@@ -1,8 +1,8 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 _pkgname="clitrans"
 pkgname="${_pkgname}-git"
-pkgver=0.3.1.49.g3e6f0e1
-pkgrel=2
+pkgver=0.3.3.71.g0164a26
+pkgrel=1
 pkgdesc="Yet another command-line translator (Chinese <=> English)"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/${_pkgname}"
@@ -21,8 +21,10 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    cargo build --release --locked
-    git reset --hard HEAD
+    # resolver requires nightly version cargo for now (2021-03-11)
+    sed -i /^resolver/d Cargo.toml
+    cargo build --release --locked --features audio
+    git checkout Cargo.toml
 }
 
 package() {
