@@ -1,7 +1,7 @@
 
 pkgname=gnome-shell-extension-background-logo-git
 _name=background-logo-extension
-pkgver=40.beta
+pkgver=40.rc
 pkgrel=1
 pkgdesc="GNOME Shell extension to overlay a logo over the default background"
 arch=(any)
