@@ -1,16 +1,16 @@
 # Maintainer: gee
 # contributors: yochananmarqos, bpierre, PedroHLC, rodrigo21
 pkgname='lib32-vkbasalt'
-pkgver=0.3.2.3
-pkgrel=4
+pkgver=0.3.2.4
+pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
 license=('zlib')
 makedepends=('meson' 'ninja' 'glslang' 'lib32-gcc-libs' 'lib32-libx11')
 depends=('lib32-gcc-libs' 'lib32-libx11' 'vkbasalt' )
-source=("${url}/releases/download/v0.3.2.3/vkBasalt-${pkgver}.tar.gz")
-sha256sums=('8cc65a69a20ac16802a8ff46629efa6540dee22daeef9db4ad0a22b63d2a4368')
+source=("${url}/releases/download/v${pkgver}/vkBasalt-${pkgver}.tar.gz")
+sha256sums=('f45d513d9f212e9a1e1ec49448e72c5f2510d62303c38fdb5015b9a3afd42b26')
 
 prepare() {
   cd ${srcdir}/vkBasalt-${pkgver}
@@ -23,9 +23,10 @@ prepare() {
 build() {
   cd ${srcdir}/vkBasalt-${pkgver}
 
-  ASFLAGS=--32 \
-  CFLAGS=-m32 \
-  CXXFLAGS=-m32 \
+  ASFLAGS+=" --32" \
+  CFLAGS+=" -m32" \
+  CXXFLAGS+=" -m32" \
+  LDFLAGS+=" -m32"
   PKG_CONFIG_PATH=/usr/lib32/pkgconfig \
   arch-meson \
     --buildtype=release \
