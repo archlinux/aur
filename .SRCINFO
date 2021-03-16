@@ -1,0 +1,35 @@
+pkgbase = python-cursive
+	pkgdesc = Cursive implements OpenStack-specific validation of digital signatures.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://opendev.org/x/cursive
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-coverage
+	checkdepends = python-subunit
+	checkdepends = python-mock
+	checkdepends = python-sphinx
+	checkdepends = python-openstackdocstheme
+	checkdepends = python-oslotest
+	checkdepends = python-testrepository
+	checkdepends = python-testscenarios
+	checkdepends = python-testtools
+	checkdepends = python-reno
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pbr
+	depends = python-cryptography
+	depends = python-oslo-serialization
+	depends = python-oslo-utils
+	depends = python-oslo-i18n
+	depends = python-oslo-log
+	depends = python-castellan
+	source = https://pypi.io/packages/source/c/cursive/cursive-0.2.2.tar.gz
+	md5sums = 0450c7e9c591a8e97719f62b84d4a938
+	sha256sums = fbdc2b088bf0b9a69b1897d726e6027e8fba8f21f0a881344f70e7a407d9abda
+	sha512sums = 6c97f8f71b016ee57349b8156543c8ca41c29c3f234ea60967b96c09fce2cea4b36b9f92996c622bd9504d4a71893903e8d5a8ab50e089fd37bddb8095f4b9d2
+
+pkgname = python-cursive
+
