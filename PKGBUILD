@@ -51,4 +51,5 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('2bfcf5613393a06a0a2ab6e2280e67beaf72e94d98a313a29170a3597d95dc8a')
+sha256sums=('7d4c4ff143a3a50eb254aa863dc10ab01dc5a3b585353454d344a7d274a8c030'
+            '2e613da0a2cb86367d7f73612dc381d489a92311b099c048698eac173a7e0c55')
