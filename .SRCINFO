@@ -1,0 +1,25 @@
+pkgbase = python-os-resource-classes
+	pkgdesc = Resource Classes for OpenStack
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://docs.openstack.org/os-resource-classes/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-coverage
+	checkdepends = python-oslotest
+	checkdepends = python-stestr
+	checkdepends = python-testtools
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-openstackdocstheme
+	makedepends = python-reno
+	depends = python
+	depends = python-pbr
+	source = https://pypi.io/packages/source/o/os-resource-classes/os-resource-classes-1.0.0.tar.gz
+	md5sums = 7f45566123c269a2336cda7b7cd08203
+	sha256sums = a948458fc37828b5421758bd5a61c6981207d6b2373354c39ccf12f0ad742bf6
+	sha512sums = a5daef5a53e7a164bbe863af9a27e2a5ce92b490099769e7e545a059e80bbd0c74f1ec28afe1622820686b0614e5bc6e748598454d6b380891eb8a0b20333e37
+
+pkgname = python-os-resource-classes
+
