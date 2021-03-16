@@ -1,0 +1,18 @@
+diff --git a/oslo.rootwrap-6.2.0/oslo_rootwrap/tests/test_functional.py b/oslo.rootwrap-6.2.0-patched/oslo_rootwrap/tests/test_functional.py
+index da59b21..5b89630 100644
+--- a/oslo.rootwrap-6.2.0/oslo_rootwrap/tests/test_functional.py
++++ b/oslo.rootwrap-6.2.0-patched/oslo_rootwrap/tests/test_functional.py
+@@ -103,11 +103,11 @@ later_install_cmd: CommandFilter, %s, root
+ 
+         # Should run as 'nobody'
+         code, out, err = self.execute(['id', '-u'])
+-        self.assertEqual('%s\n' % pwd.getpwnam('nobody').pw_uid, out)
++        self.assertEqual(int(pwd.getpwnam('nobody').pw_uid), int(out))
+ 
+         # Should run as 'root'
+         code, out, err = self.execute(['sh', '-c', 'id -u'])
+-        self.assertEqual('0\n', out)
++        self.assertEqual(0, int(out))
+ 
+ 
+ class RootwrapTest(_FunctionalBase, testtools.TestCase):

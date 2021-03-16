@@ -1,0 +1,35 @@
+pkgbase = python-oslo-rootwrap
+	pkgdesc = Oslo Rootwrap
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://docs.openstack.org/oslo.rootwrap/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-fixtures
+	checkdepends = python-testtools
+	checkdepends = python-stestr
+	checkdepends = python-oslotest
+	checkdepends = python-eventlet
+	checkdepends = python-reno
+	checkdepends = bandit
+	makedepends = python-setuptools
+	makedepends = python-openstackdocstheme
+	makedepends = python-sphinx
+	makedepends = python-reno
+	makedepends = python-mock
+	makedepends = python-fixtures
+	depends = python
+	depends = python-six
+	options = !emptydirs
+	source = https://pypi.io/packages/source/o/oslo.rootwrap/oslo.rootwrap-6.2.0.tar.gz
+	source = 0000-lost-binary2string.patch
+	md5sums = 3dad1a7a001be9f6283bcc25ce511c39
+	md5sums = 13d2c35be1e37af81d708cfe8c96297d
+	sha256sums = 83e01cf523b04a2f7c1a4c9000c55bbc1b75a26391cce25b3a7c94b50cafa848
+	sha256sums = 0fb81f04ddd9f1897c11e363d1b2be61fd0940493bed50861194a3a6ee7b5e26
+	sha512sums = bf3e91ec8a18f92f6f5974a6d8369ae73dba6e61fa3001996678b85d0bfb2426536d27097ad784169e6eca50ad23471505d5089e8d4a6a84c9e0e009a6a38f5a
+	sha512sums = feaa869fb50943464b006d14633e40f43ea75243836f5c4a8ee6a916878275498ddb421d7df73c51336cc71725e7eb4498b5f7214f61394fe0ba09f58aebd11b
+
+pkgname = python-oslo-rootwrap
+
