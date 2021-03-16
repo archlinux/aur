@@ -4,7 +4,7 @@
 pkgname=git-grc
 _pkgname=gcr
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Semantic git commits tool. use rust to rewrite the main features of git-cz."
 #epoch=0
 arch=('i686' 'x86_64')
@@ -15,6 +15,8 @@ depends=('gcc-libs'
          )
 makedepends=(cargo)
 optdepends=()
+# conflict for same file: /usr/bin/grc
+conflicts=(grc)
 install=$pkgname.install
 source=($_pkgname-$pkgver.tar.gz::https://github.com/sdttttt/$_pkgname/archive/v$pkgver.tar.gz)
 b2sums=('fffc7220a9c00baffe9e489de5cf37b13a5d57d72d29ee1c8bdcc285c5ac5a1564704627a192675568c75cf8f6c390737fcba106146477c24afc5b812eb81737')
