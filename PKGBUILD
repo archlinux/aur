@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=forked-daapd
 pkgver=27.4
-pkgrel=1
+pkgrel=2
 pkgdesc="iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/ejurgensen/forked-daapd"
@@ -19,23 +19,23 @@ install=forked-daapd.install
 changelog=
 source=(https://github.com/ejurgensen/forked-daapd/archive/$pkgver.tar.gz forked-daapd.install forked-daapd.service http://www.antlr3.org/download/antlr-3.4-complete.jar)
 noextract=()
-md5sums=('4dfb971ee446fa70be6c7f17f63ee171'
+md5sums=('456e9959e76d2561815b4917df6c29ba'
          'bad1372140c914d1c312a186087fe375'
          '5047515b396f37a9030a003f12eaaafa'
          '1b91dea1c7d480b3223f7c8a9aa0e172')
-sha1sums=('d330c770e683e7ffd15fc37fb750367dd755da11'
+sha1sums=('3520c125de7a11ca2fb566a37158686e47b4ca95'
           '90a796470231ae7c22635c3fbbb47f9d8a61ebd6'
           '76623036d11d411cb438f9ac8f9cdf21f12b305f'
           '5cab59d859caa6598e28131d30dd2e89806db57f')
-sha256sums=('b0c8be525f3f1d24bde1534c826d4f66ebcdbb821194deca4d62a50b96b98495'
+sha256sums=('9ab76158c0b03dec179a4753a21efc583e7d936e43cdc699305faa3ffa23d1f6'
             '19b394a38ac88247d6b7d939e648ac53e8f08bef852e76c79355d1231bffad3d'
             'f623bfe983e65bd5c658bb456b775c62812e3daf8a5f27d154cf70c48c1e51bf'
             '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7')
-sha384sums=('ff8f43145b73bf59649407cf07cd6616b5892ae98c46991959d6a8ed3ce6435eb230414576bd77df23894663674d3c85'
+sha384sums=('2f5727150073ca1acc650ce427bfbc108948cef9374ad2d9d005598b85024466f628c88b821ea16bedb105a6c6fd789a'
             'b536551061e8404f0128e9313411c9f2419d7bf4c982c8d9f32300727c873219d90c90bda32256fb9d3bd560c0be2704'
             'a4dc8c4a504496a624e210ac668e5190eb6756a4f7f2825c42624f424723ddfd0c0338fa753ad1d61944d3bdf08451a7'
             'a2fbecb5fae6af12adcfb3801624d4941e25e4b526794f7b9a713ae8b6873962ca36a74f9220d7e0057aaa89d5ca6d68')
-sha512sums=('51aac29f6d76b7e31af58f643d1cf5ccdf9bf7a7ded1fa3f731618dcd950148ae251d37ae44bcee800e4d577bb39484fb09dac6825caa1f614c0c93bd5d5f4ac'
+sha512sums=('d43cf870f9e444f935d47f8acfdf0ed142acd696ac4451a7fb842b8168e68eb0fc24d80c47e3f0c29bc22867552fa29c38e47c874f0846737f9d81b221db82ad'
             'f82c8b73b39e6b8e83b09953d187b98b9fb856914a0a231b6758701f4f383b5dd5368ec468011b78402fd9850662b61b48e6198336ed4049cfd1ed7cb8659e9b'
             'bc32f4cb705bf3890e85a51530818a1d86b260c1f6c1203b0f07757a8ab23b7654a357bc9c7ab10b370f4714f26b60368c1910c7efe9197041015183518a40d6'
             '04be4dfba3a21f3ab9d9e439a64958bd8e844a9f151b798383bd9e0dd6ebc416783ae7cb1d1dbb27fb7288ab9756b13b8338cdb8ceb41a10949c852ad45ab1f2')
