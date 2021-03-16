@@ -1,0 +1,34 @@
+diff --unified --recursive --text Gauche-fastcgi-0.1.3-orig/fastcgi.c Gauche-fastcgi-0.1.3-new/fastcgi.c
+--- Gauche-fastcgi-0.1.3-orig/fastcgi.c	2021-03-16 17:56:19.776469944 +0100
++++ Gauche-fastcgi-0.1.3-new/fastcgi.c	2021-03-16 17:56:12.853148404 +0100
+@@ -37,11 +37,11 @@
+ 
+ extern void Scm_Init_fcgi(ScmModule *module);
+ 
+-static int fcgi_filler(ScmPort *p, int cnt)
++static long int fcgi_filler(ScmPort *p, long int cnt)
+ {
+     int nread = 0, r;
+-    FCGX_Stream *stream = p->src.buf.data;
+-    char *datptr = p->src.buf.end;
++    FCGX_Stream *stream = Scm_PortBufferStruct(p)->data;
++    char *datptr = Scm_PortBufferStruct(p)->end;
+ 
+     while (nread == 0) {
+         r = FCGX_GetStr(datptr, cnt-nread, stream);
+@@ -56,12 +56,12 @@
+     return nread;
+ }
+ 
+-static int fcgi_flusher(ScmPort *p, int cnt, int forcep)
++static long int fcgi_flusher(ScmPort *p, long int cnt, int forcep)
+ {
+     int nwrote = 0, r;
+     int datsiz = SCM_PORT_BUFFER_AVAIL(p);
+-    FCGX_Stream *stream = p->src.buf.data;
+-    char *datptr = p->src.buf.buffer;
++    FCGX_Stream *stream = Scm_PortBufferStruct(p)->data;
++    char *datptr = Scm_PortBufferStruct(p)->buffer;
+ 
+     while ((!forcep && nwrote == 0)
+            || (forcep && nwrote < cnt)) {
