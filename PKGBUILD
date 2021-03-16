@@ -1,5 +1,5 @@
 pkgname=rconf
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=(x86_64)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jasonverbeek/rconf/archive/v$pkgver.tar.gz")
