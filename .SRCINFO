@@ -1,6 +1,6 @@
 pkgbase = python-nevergrad
 	pkgdesc = Gradient-free optimization
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/facebookresearch/nevergrad
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-nevergrad
 	depends = python-pandas
 	depends = python-typing-extensions
 	depends = python-pyproj
-	source = git+https://github.com/facebookresearch/nevergrad#tag=0.4.2
+	source = git+https://github.com/facebookresearch/nevergrad#tag=0.4.3
 	md5sums = SKIP
 
 pkgname = python-nevergrad
