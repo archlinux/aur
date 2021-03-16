@@ -23,14 +23,12 @@ if [ "$_BUILD_CUDA" == "ON" ] ; then
   optdepends+=('cuda-toolkit: for cuda sfm/mvs acceleration')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
-        "nvm-export.patch"
         "gcc9.patch"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
         )
 sha256sums=('SKIP'
-            '566331937811f643da5e4c2e5decae3927e7df293c0647acf2e4789ff2a43750'
             '531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686'
             'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'
             'd2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a'
@@ -39,11 +37,6 @@ sha256sums=('SKIP'
 pkgver() {
   git -C "$pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-prepare() {
-  git -C "$pkgname" apply -v "$srcdir"/*.patch
-}
-
 
 build() {
   # determine whether we can precompile CUDA kernels
