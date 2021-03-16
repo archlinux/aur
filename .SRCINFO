@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-epytext
+	pkgdesc = Sphinx epytext extension
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/jayvdb/sphinx-epytext
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-sphinx>=0.4
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-epytext/sphinx-epytext-0.0.4.tar.gz
+	md5sums = 5a7850b097af91ce495a6898fc4cbbe7
+
+pkgname = python-sphinx-epytext
+
