@@ -4,7 +4,7 @@ pkgname=python-spf-engine
 _pkgname=spf-engine
 pkgver=2.9.2
 _pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SPF (Sender Policy Framework) back-end for integration with Postfix and Sendmail"
 arch=('any')
 url="https://launchpad.net/${_pkgname}"
@@ -16,8 +16,10 @@ depends=('python-authres'
 	 'python-setuptools')
 optdepends=('postfix: Postfix integration'
 	    'sendmail: Sendmail integration') 
-conflicts=('python2-postfix-policyd-spf' 'python-postfix-policyd-spf')
-replaces=('spf-engine')
+provides=('spf-engine')
+conflicts=('python-postfix-policyd-spf'
+	   'python2-postfix-policyd-spf'
+	   'spf-engine')
 backup=(etc/python-policyd-spf/policyd-spf.conf
 	etc/pyspf-milter/pyspf-milter.conf)
 source=(https://launchpad.net/$_pkgname/$_pkgver/$pkgver/+download/$_pkgname-$pkgver.tar.gz{,.asc}
