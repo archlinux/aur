@@ -1,0 +1,29 @@
+pkgbase = strawberry-qt5
+	pkgdesc = A music player aimed at audio enthusiasts and music collectors (QT5 version)
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://www.strawbs.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = chromaprint
+	depends = protobuf
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = qt5-x11extras
+	depends = udisks2
+	depends = libcdio
+	depends = libgpod
+	depends = libmtp
+	depends = fftw
+	optdepends = gst-libav: additional codecs
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	conflicts = strawberry
+	source = https://github.com/jonaski/strawberry/releases/download/0.9.1/strawberry-0.9.1.tar.xz
+	sha256sums = b71da4cec9cc7b60961bbb82378d15fb79798e6b880852414ce05276084047a0
+
+pkgname = strawberry-qt5
+
