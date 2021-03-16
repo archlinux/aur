@@ -15,19 +15,19 @@ depends=('cups' 'ghostscript')
 source=(https://download3.ebz.epson.net/dsc/f/03/00/03/45/41/92e9c9254f0ee4230a069545ba27ec2858a2c457/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir" || exit
   tar xzf $pkgname-$pkgver.tar.gz
-  FILTER_FILE=`ls $_pkgname_filter*.tar.gz`
+  FILTER_FILE=$(ls $_pkgname_filter*.tar.gz)
   tar xzf $FILTER_FILE
 
-  cd "${FILTER_FILE%.tar.gz}"
-  aclocal
-  libtoolize
-  chmod +x configure
+  cd "${FILTER_FILE%.tar.gz}" || exit
+  patch -p1 -i "$srcdir"/fixbuild.patch
+  autoreconf -f -i
   # if you have runtime problems: add "--enable-debug" and look into /tmp/epson-inkjet-printer-filter.txt
   ./configure LDFLAGS="$LDFLAGS -Wl,--no-as-needed" --prefix=/opt/$pkgname
   make
 }
+
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
