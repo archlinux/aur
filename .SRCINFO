@@ -1,7 +1,7 @@
 pkgbase = zam-plugins-git
 	pkgdesc = Collection of LADSPA/LV2/VST/JACK audio plugins for high-quality processing (git version)
 	pkgver = 3.14.r0.ge7077fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zamaudio/zam-plugins
 	arch = x86_64
 	groups = ladspa-plugins
@@ -22,7 +22,8 @@ pkgbase = zam-plugins-git
 	depends = libx11
 	optdepends = jack: for standalone applications
 	provides = zam-plugins
-	conflicts = zam-plugins-git
+	provides = zam-plugins=3.14
+	conflicts = zam-plugins
 	conflicts = zamplugins
 	source = zam-plugins::git+https://github.com/zamaudio/zam-plugins.git
 	source = git+https://github.com/DISTRHO/DPF.git

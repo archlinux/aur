@@ -5,7 +5,7 @@
 _pkgname=zam-plugins
 pkgname="${_pkgname}-git"
 pkgver=3.14.r0.ge7077fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of LADSPA/LV2/VST/JACK audio plugins for high-quality processing (git version)"
 arch=('x86_64')
 url="https://github.com/zamaudio/zam-plugins"
@@ -14,8 +14,8 @@ groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio' 'vst-plugins')
 depends=('gcc-libs' 'glibc' 'libglvnd' 'libx11')
 makedepends=('gendesk' 'git' 'ladspa' 'libsamplerate' 'jack' 'lv2' 'zita-convolver')
 optdepends=('jack: for standalone applications')
-provides=("${_pkgname}")
-conflicts=("${pkgname}" 'zamplugins')
+provides=("${_pkgname}" "${_pkgname}=${pkgver/.r*/}")
+conflicts=("${_pkgname}" 'zamplugins')
 source=("${_pkgname}::git+https://github.com/zamaudio/${_pkgname}.git"
         'git+https://github.com/DISTRHO/DPF.git'
         'zam-plugins.directory'
