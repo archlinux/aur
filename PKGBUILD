@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ludo-bin
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.12.5
+pkgrel=1
 pkgdesc="Ludo is a minimalist frontend for emulators"
 arch=('x86_64' 'armv7h')
 url="https://github.com/libretro/ludo"
@@ -21,8 +21,8 @@ sha256sums=(
   'c7ee8acced118b64c6edd54260bc31a976ef551337dcf57d2e45cbfafbe8c84b'
   '139eedd5dd868717b46032cd9773bc63b692237c37e6da4450357a3f56a18042'
 )
-sha256sums_x86_64=('d21ea7242404e273d74b6c7921ef2b9eb9a84f704c6ac4a30c4c19c469bdd89c')
-sha256sums_armv7h=('6c0cb6a7d6f5b24155a753d720173a7b3b039eea05f9c5a32b47e4722aea92ed')
+sha256sums_x86_64=('4385007d55f96e1f7980e4d8c11a187d7152e88b575be3a4d2ffef5f28698ac6')
+sha256sums_armv7h=('423dc90f778a3bc3856f2bf51f967ee70351c93106d073f0561b972c22ddd5f5')
 
 package() {
   _ARCH=""
