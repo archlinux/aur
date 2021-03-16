@@ -1,12 +1,13 @@
 _repo="znc-playback"
 pkgname=${_repo}-git
-pkgver=r72.8691abf
+pkgver=r73.8dd128b
 pkgrel=1
 pkgdesc="An advanced playback module for ZNC"
 arch=('i686' 'x86_64')
 url="https://github.com/jpnurmi/znc-playback"
 license=('Apache')
 depends=('znc')
+makedepends=('git' 'cmake' 'python')
 source=("git+https://github.com/jpnurmi/znc-playback.git")
 
 pkgver() {

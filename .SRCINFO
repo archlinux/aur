@@ -1,11 +1,14 @@
 pkgbase = znc-playback-git
 	pkgdesc = An advanced playback module for ZNC
-	pkgver = r72.8691abf
+	pkgver = r73.8dd128b
 	pkgrel = 1
 	url = https://github.com/jpnurmi/znc-playback
 	arch = i686
 	arch = x86_64
 	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
 	depends = znc
 	source = git+https://github.com/jpnurmi/znc-playback.git
 	sha256sums = SKIP
