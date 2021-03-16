@@ -1,0 +1,33 @@
+pkgbase = python-oslo-cache
+	pkgdesc = Cache storage for OpenStack projects.
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://docs.openstack.org/oslo.cache/latest
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-oslotest
+	checkdepends = python-pifpaf
+	checkdepends = bandit
+	checkdepends = python-stestr
+	checkdepends = python-pre-commit
+	checkdepends = python-pymemcache
+	checkdepends = python-binary-memcached
+	checkdepends = python-memcached
+	checkdepends = python-pymongo
+	checkdepends = python-etcd3gw
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dogpile.cache
+	depends = python-oslo-config
+	depends = python-oslo-i18n
+	depends = python-oslo-log
+	depends = python-oslo-utils
+	options = !emptydirs
+	source = https://pypi.io/packages/source/o/oslo.cache/oslo.cache-2.7.0.tar.gz
+	md5sums = 012c54f8779cd416792554a65cb6573c
+	sha256sums = aad244c3cc38b86d610166bd2979e01acb59201f173d7069fa4a0a8bcb153520
+	sha512sums = 27cb541cb60247b69fc291278dce5c3828daa7914e2b9787882066c66ffa69629c0232ac7e3ad0388ddda414fe5c3d1ab52df075a3ac168c95751827408f1fb0
+
+pkgname = python-oslo-cache
+
