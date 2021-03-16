@@ -2,13 +2,13 @@
 
 pkgname=python-unp
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool that can unpack archives easily'
 arch=('any')
 url='https://github.com/mitsuhiko/unp'
 license=('BSD')
 depends=('python-click')
-source=("http://pypi.python.org/packages/source/u/unp/unp-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/u/unp/unp-${pkgver}.tar.gz")
 
 
 build() {
