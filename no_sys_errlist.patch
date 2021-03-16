@@ -1,0 +1,14 @@
+diff --unified --recursive --text shoebill-0.0.5.orig/sdl-gui/sdl.c shoebill-0.0.5.new/sdl-gui/sdl.c
+--- shoebill-0.0.5.orig/sdl-gui/sdl.c	2015-09-13 21:11:18.000000000 -0500
++++ shoebill-0.0.5.new/sdl-gui/sdl.c	2021-03-16 01:04:39.723515300 -0500
+@@ -491,9 +491,7 @@
+         if (f == NULL)
+             f = fopen(user_params.pram_path, "w+b");
+         if (f == NULL) {
+-            printf("Can't open pram_path! [%s] [errno=%s]\n",
+-                   user_params.pram_path,
+-                   sys_errlist[errno]);
++	    perror("Can't open pram_path!");
+             return 0;
+         }
+         rewind(f);

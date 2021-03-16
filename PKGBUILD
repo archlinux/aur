@@ -7,8 +7,15 @@ arch=('i686' 'x86_64')
 url="https://github.com/pruten/$pkgname"
 license=('BSD')
 depends=('sdl2')
-source=("https://github.com/pruten/shoebill/archive/$pkgver.tar.gz")
-md5sums=('03d24eeee574c06f9baa8c7c921d4682')
+source=("https://github.com/pruten/shoebill/archive/$pkgver.tar.gz"
+	"no_sys_errlist.patch")
+md5sums=('03d24eeee574c06f9baa8c7c921d4682'
+         'd8dcf81ea5eb69fc2678cd39294c45ec')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch --forward --strip=1 --input "${srcdir}/no_sys_errlist.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver/sdl-gui"
