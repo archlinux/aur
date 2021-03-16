@@ -3,7 +3,7 @@
 _name="QCElemental"
 _pkgname="qcelemental"
 pkgname="python-${_pkgname}"
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Periodic table, physical constants, and molecule parsing for quantum chemistry"
 arch=("any")
@@ -14,7 +14,7 @@ makedepends=("python-setuptools")
 optdepends=("python-networkx")
 checkdepends=("python-pytest")
 source=("https://github.com/MolSSI/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('10bab4edc76dbf9ab53677dfeaefbd5ab0e003d7fa030f30f960c1c17bdd930e')
+sha256sums=('5f79e1ca3649f229ce89616e82a99b01726b595b663bb6f8187bca07bcb8a36d')
 
 
 build() {
