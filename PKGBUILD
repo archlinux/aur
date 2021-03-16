@@ -2,14 +2,14 @@
 
 pkgname=jrnl-git
 _gitname=jrnl
-pkgver=2.7.r11.gdc776b1
-pkgrel=4
+pkgver=v2.8.beta.r1.g7bacf4a
+pkgrel=1
 pkgdesc="Collect your thoughts and notes without leaving the command line"
 arch=('any')
 url="https://jrnl.sh/"
 license=('GPL3')
 depends=('python')
-checkdepends=('python-behave')
+checkdepends=('python-behave' 'python-pytest' 'python-black')
 makedepends=('git' 'python-dephell' 'python-setuptools')
 conflicts=("jrnl")
 source=("git+https://github.com/jrnl-org/jrnl.git")
@@ -22,12 +22,14 @@ pkgver() {
 
 check() {
   cd "$_gitname"
-  behave
+  pytest
+  behave --no-skipped --format progress
 }
 
 prepare() {
   cd "$_gitname"
   dephell deps convert --from pyproject.toml --to setup.py --envs main
+  black . --check --diff | patch
 }
 
 build() {
