@@ -1,0 +1,16 @@
+pkgbase = python-makelove-git
+	pkgdesc = A packaging tool for löve games
+	pkgver = 0.0.6.r10.g13732ab
+	pkgrel = 1
+	url = https://github.com/pfirsich/makelove
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	provides = python-makelove
+	conflicts = python-makelove
+	source = git+https://github.com/pfirsich/makelove.git
+	md5sums = SKIP
+
+pkgname = python-makelove-git
+
