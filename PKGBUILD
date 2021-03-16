@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=3mux
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal multiplexer inspired by i3"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('925e23850ad69ce12069bb4c48af6e70c820bbd4bfe5a83ebf72eaefb9d8ab83')
+sha256sums=('0f4dae181914c73eaa91bdb21ee0875f21b5da64c7c9d478f6d52a2d0aa2c0ea')
 
 build() {
     cd $pkgname-$pkgver
