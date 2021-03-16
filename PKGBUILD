@@ -4,12 +4,12 @@ _pkgname=TermOx
 pkgname=termox
 pkgver=0.4
 pkgrel=1
-pkgdesc="C++14 Terminal User Interface framework with NCurses."
+pkgdesc="C++17 Terminal User Interface(TUI) Library. "
 arch=('x86_64')
 url="https://github.com/a-n-t-h-o-n-y/TermOx"
 license=('custom:MIT')
-depends=()
-makedepends=('ncurses' 'cmake' 'git')
+depends=('ncurses')
+makedepends=('cmake' 'git')
 source=("${url}/archive/v$pkgver.tar.gz" "patch")
 sha256sums=('b22e30079407226f0e99c20e17e64f98a3d5853726162440035c3703184a2b5b'
             '1455912434b271fe685a5174efd773845a7aec9ff72ed552eb7fb3262c4fc9d5')
