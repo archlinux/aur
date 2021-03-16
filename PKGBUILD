@@ -8,7 +8,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=3.0.0
+pkgver=3.0.1
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -28,7 +28,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "subunit-tests.diff"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('3f2597c038d8e1c5094e9018991b3eef5b03814bef836aeb0de992e931b07775'
+sha256sums=('2398434aa637b51fdb52c96580ab9a70d2b9604b2b2745d34a80fe7f319ce7d9'
             'SKIP'
             'SKIP'
             'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55'
