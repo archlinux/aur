@@ -1,13 +1,13 @@
 pkgbase = bossa
 	pkgdesc = Flash programming utility for Atmel's SAM family of flash-based ARM microcontrollers
 	pkgver = 1.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shumatech/BOSSA
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = readline
-	depends = wxgtk
+	depends = wxgtk2
 	source = https://github.com/shumatech/BOSSA/archive/1.9.1.tar.gz
 	source = 0001-makefile-allow-for-version-override.patch
 	sha256sums = ca650455dfa36cbd029010167347525bea424717a71a691381c0811591c93e72

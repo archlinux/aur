@@ -1,12 +1,12 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=bossa
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Flash programming utility for Atmel's SAM family of flash-based ARM microcontrollers"
 arch=('i686' 'x86_64')
 url="https://github.com/shumatech/BOSSA"
 license=('BSD')
-depends=('readline' 'wxgtk')
+depends=('readline' 'wxgtk2')
 source=("https://github.com/shumatech/BOSSA/archive/$pkgver.tar.gz"
         "0001-makefile-allow-for-version-override.patch")
 sha256sums=('ca650455dfa36cbd029010167347525bea424717a71a691381c0811591c93e72'
