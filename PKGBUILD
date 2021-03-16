@@ -1,4 +1,4 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=hexinject
 pkgver=1.6
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://hexinject.sourceforge.net/"
 license=("BSD")
 depends=("libpcap" "tcl")
-source=("${pkgname}-${pkgver}.tar.gz"::"http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "hexinject-1.6-fix-build-system.patch")
 sha256sums=('06e64636923af593c742129d81b717667223bff39918f26bf56809ead9700e65'
             'cb410b131fd447f8b18b2e69bd35a0ae79df1689eb32f8ff97365eb8e250e8c5')
