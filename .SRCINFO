@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201401w
 	pkgdesc = Epson printer driver (L456, L455, L366, L365, L362, L360, L312, L310, L222, L220, L132, L130)
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 10
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = epson-inkjet-printer-201401w
 	depends = cups
 	depends = ghostscript
 	source = https://download3.ebz.epson.net/dsc/f/03/00/03/45/41/92e9c9254f0ee4230a069545ba27ec2858a2c457/epson-inkjet-printer-201401w-1.0.0-1lsb3.2.src.rpm
-	sha256sums = 2bfcf5613393a06a0a2ab6e2280e67beaf72e94d98a313a29170a3597d95dc8a
+	sha256sums = 7d4c4ff143a3a50eb254aa863dc10ab01dc5a3b585353454d344a7d274a8c030
+	sha256sums = 2e613da0a2cb86367d7f73612dc381d489a92311b099c048698eac173a7e0c55
 
 pkgname = epson-inkjet-printer-201401w
-
