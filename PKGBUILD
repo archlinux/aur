@@ -2,7 +2,7 @@
 
 _pkgname=memavaild
 pkgname=${_pkgname}-git
-pkgver=0.5.r12.geb346e7
+pkgver=0.6.r3.g2603a8c
 pkgrel=1
 pkgdesc="Improve responsiveness during heavy swapping: keep amount of available memory."
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
 makedepends=(
 	'git'
 )
+providess=("${_pkgname}")
 conflicts=("${_pkgname}")
 install=${_pkgname}.install
 backup=(
