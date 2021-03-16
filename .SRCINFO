@@ -1,6 +1,6 @@
 pkgbase = ceb2txt-git
 	pkgdesc = A small tool that can convert ceb (Conversations Encrypted Backup) files to simple plain text.
-	pkgver = r13.386c53c
+	pkgver = 0.1.0.r1.386c53c
 	pkgrel = 1
 	url = https://github.com/inputmice/ceb2txt
 	arch = any

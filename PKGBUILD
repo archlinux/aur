@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=ceb2txt
 pkgname=$_pkgname-git
-pkgver=r13.386c53c
+pkgver=0.1.0.r1.386c53c
 pkgrel=1
 pkgdesc='A small tool that can convert ceb (Conversations Encrypted Backup) files to simple plain text.'
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP'
 pkgver() {
 	cd "$srcdir/$pkgname"
 	
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
