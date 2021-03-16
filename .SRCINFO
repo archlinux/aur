@@ -1,13 +1,13 @@
 pkgbase = verifast-bin
 	pkgdesc = research prototype of a tool for formal verification of C and Java programs
-	pkgver = 18.02
-	pkgrel = 2
+	pkgver = 19.12
+	pkgrel = 1
 	url = https://github.com/verifast/verifast
 	arch = any
 	license = MIT
-	source = http://github.com/verifast/verifast/releases/download/18.02/verifast-18.02-linux.tar.gz
+	source = http://github.com/verifast/verifast/releases/download/19.12/verifast-19.12-linux.tar.gz
 	source = https://raw.githubusercontent.com/verifast/verifast/master/LICENSE.md
-	md5sums = 79fb1f673df94776bb465fe154200129
+	md5sums = 235d075fa0790ad2e8401f71d9307d73
 	md5sums = a53d80725c9b46c7dc7dc507b6dee172
 
 pkgname = verifast-bin
