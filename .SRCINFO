@@ -1,6 +1,6 @@
 pkgbase = kermit
 	pkgdesc = A VTE-based, simple and froggy terminal emulator
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://github.com/orhun/kermit
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = kermit
 	makedepends = cmake
 	depends = gtk3>=3.18.9
 	depends = vte3>=0.42.5
-	source = kermit-3.2.tar.gz::https://github.com/orhun/kermit/archive/3.2.tar.gz
-	sha256sums = 5f8ada065783b2505e751d319374d6f4088f7879ac0bcce316b6ed278dda6332
+	source = kermit-3.3.tar.gz::https://github.com/orhun/kermit/archive/3.3.tar.gz
+	sha256sums = 3167380e9a77345e2834d937aecd46113dc4d27f99d56395e7b70e56587d922f
 
 pkgname = kermit
-
