@@ -1,14 +1,14 @@
 # Maintainer: Marius Knaust <marius.knaust@gmail.com>
 
 pkgname=otf-bitstream-charter
-pkgver=1.0
-pkgrel=2
+pkgver=20210112
+pkgrel=1
 pkgdesc="Bitstream charter fonts"
 arch=('any')
 url="http://practicaltypography.com/charter.html"
 license=('custom')
-source=("https://practicaltypography.com/fonts/Charter%20200512.zip")
-md5sums=('1d51f60c9ba6ccab0316f2d7ff836815')
+source=("https://practicaltypography.com/fonts/Charter%${pkgver}.zip")
+md5sums=('e37a9bcb03fdd18bb95b31e18a294dfa')
 
 package() {
   install -d "${pkgdir}/usr/share/fonts/OTF/"
