@@ -5,7 +5,7 @@
 
 pkgname=moneymanagerex-git
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  git checkout tags/$(git describe --abbrev=0 | sed -E 's/([^-]*-g)/r\1/;s/-/./g')
+  git checkout tags/$(git describe --tags --abbrev=0)
   git submodule update --init
   mkdir -p build
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
