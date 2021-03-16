@@ -1,7 +1,7 @@
 # Maintainer: Yurii <yu hrysh at posteo dot net>
 
 pkgname=lbrynet-bin
-pkgver=0.91.0
+pkgver=0.92.0
 pkgrel=1
 pkgdesc='Implementation of the LBRY Network protocols, without the desktop app'
 arch=('x86_64')
