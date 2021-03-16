@@ -3,7 +3,7 @@
 
 pkgname=vscodium-git
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
-pkgver=1.54.2
+pkgver=1.54.3
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -103,7 +103,7 @@ build() {
     # Export some environment variables that would normally be set by Travis CI.
     export SHOULD_BUILD="yes"
     export VSCODE_ARCH="${_vscode_arch}"
-    export TRAVIS_OS_NAME="linux"
+    export OS_NAME="linux"
     export LATEST_MS_COMMIT=$(git rev-list --tags --max-count=1)
     export LATEST_MS_TAG=$(git describe --tags "${LATEST_MS_COMMIT}")
 
