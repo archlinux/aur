@@ -1,0 +1,19 @@
+pkgbase = teonet
+	pkgdesc = Teonet C library
+	pkgver = 0.4.6
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = intltool
+	makedepends = doxygen
+	depends = libev
+	depends = confuse
+	depends = cunit
+	source = develop.tar.gz::https://github.com/teonet-co/teonet/archive/develop.tar.gz
+	md5sums = SKIP
+
+pkgname = teonet
+
