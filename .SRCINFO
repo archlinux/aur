@@ -1,7 +1,7 @@
 pkgbase = cyrus-sasl-xoauth2-git
 	pkgdesc = XOAUTH2 mechanism plugin for cyrus-sasl
 	pkgver = r22.43d03523fecf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moriyoshi/cyrus-sasl-xoauth2
 	arch = x86_64
 	license = MIT

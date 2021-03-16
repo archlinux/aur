@@ -1,7 +1,7 @@
 # Maintainer: Toke Høiland-Jørgensen <toke@toke.dk>
 _pkgname=cyrus-sasl-xoauth2
 pkgname=${_pkgname}-git
-pkgrel=1
+pkgrel=2
 pkgver=r22.43d03523fecf
 pkgdesc="XOAUTH2 mechanism plugin for cyrus-sasl"
 arch=(x86_64)
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=12 HEAD)"
 }
 
 build() {
