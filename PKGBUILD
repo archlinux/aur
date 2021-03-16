@@ -9,7 +9,7 @@ license=('custom:NTT')
 depends=('python>=3.7' 'python-pytorch-complex-git' 'python-numpy')
 makedepends=('git' 'python-setuptools')
 provides=('python-kaldiio')
-conflicts=("python-kaldiio-git" "${pkgname}")
+conflicts=("python-kaldiio-git" "${pkgname}" "python-kaldi-io")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(

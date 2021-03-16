@@ -13,6 +13,7 @@ pkgbase = python-kaldiio-git
 	provides = python-kaldiio
 	conflicts = python-kaldiio-git
 	conflicts = python-kaldiio-git
+	conflicts = python-kaldi-io
 	source = python-kaldiio-git::git+https://github.com/nttcslab-sp/kaldiio
 	md5sums = SKIP
 
