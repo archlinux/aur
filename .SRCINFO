@@ -1,6 +1,6 @@
 pkgbase = python-wolkenbruch
 	pkgdesc = Remind you to pack your rain gear when it’s forecast to rain
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://gitlab.com/christophfink/wolkenbruch/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-wolkenbruch
 	depends = python-geocoder
 	depends = python-pyaml
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/w/wolkenbruch/wolkenbruch-0.6.2.tar.gz
-	sha256sums = ecee8db7acebb1626b528a38b28907655e7c0c14c5cc31baac06b1511f4b3815
+	source = https://files.pythonhosted.org/packages/source/w/wolkenbruch/wolkenbruch-0.6.3.tar.gz
+	sha256sums = 83a56fc39a9cedd73c2831afa458ec693ec248e934a45db63027d9c3d4479b86
 
 pkgname = python-wolkenbruch
 
