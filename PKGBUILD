@@ -1,6 +1,6 @@
 pkgname=wiringop-zero-git
 _pkgbase=${pkgname%-*-*}
-pkgver="a8f0526"
+pkgver="32.a8f0526"
 pkgrel=1
 pkgdesc="WiringPi / WiringOP libary for the Orange Pi Zero with 26 pin GPIO header"
 arch=('armv7h')
@@ -11,6 +11,12 @@ makedepends=('git')
 conflicts=("${_pkgbase}")
 source=("git+${url}")
 md5sums=('SKIP')
+
+#====================================
+pkgver() {
+  cd ${srcdir}/WiringOP-Zero
+  printf '%s' "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
+}
 
 #====================================
 prepare() {

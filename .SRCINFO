@@ -1,6 +1,6 @@
 pkgbase = wiringop-zero-git
 	pkgdesc = WiringPi / WiringOP libary for the Orange Pi Zero with 26 pin GPIO header
-	pkgver = a8f0526
+	pkgver = 32.a8f0526
 	pkgrel = 1
 	url = https://github.com/xpertsavenue/WiringOP-Zero
 	arch = armv7h
