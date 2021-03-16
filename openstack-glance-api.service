@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenStack Image Service API server
+After=network.target httpd.service memcached.service etcd.service mysqld.service redis.service rabbitmq.service
+
+[Service]
+LimitNOFILE=131072
+LimitNPROC=131072
+Type=simple
+User=glance
+ExecStart=/usr/bin/glance-api --log-file=/var/log/glance/api.log
+PrivateTmp=true
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
