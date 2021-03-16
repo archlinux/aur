@@ -1,0 +1,25 @@
+pkgbase = skywire-dmsg
+	pkgdesc = Skywire Mainnet Node implementation. Skycoin.com
+	pkgver = _20201130.1134_e601063_develop
+	pkgrel = 1
+	url = https://github.com/skycoin/dmsg
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv8
+	arch = armv7
+	arch = armv7l
+	arch = armv7h
+	arch = armv6h
+	arch = armhf
+	arch = armel
+	arch = arm
+	makedepends = git
+	makedepends = go
+	makedepends = musl
+	makedepends = kernel-headers-musl
+	source = git+https://github.com/skycoin/dmsg.git
+	sha256sums = SKIP
+
+pkgname = skywire-dmsg
+
