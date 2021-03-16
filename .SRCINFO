@@ -1,0 +1,38 @@
+pkgbase = python-confluent-kafka
+	pkgdesc = Confluent's Python client for Apache Kafka
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/confluentinc/confluent-kafka-python
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = librdkafka
+	makedepends = python
+	makedepends = python-avro
+	makedepends = python-fastavro
+	makedepends = python-requests
+	makedepends = python-pytest-timeout
+	makedepends = python-jsonschema
+	makedepends = python-pyrsistent
+	makedepends = python-protobuf
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-avro
+	makedepends = python2-requests
+	makedepends = python2-pytest-timeout
+	makedepends = python2-pyrsistent
+	makedepends = python2-protobuf
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/c/confluent-kafka/confluent-kafka-1.6.0.tar.gz
+	md5sums = 997799934224368a0e9cfcbe4d637e7f
+	sha256sums = 8a9caabdb02e87cd65c7f10f689ba3f1a15f8774de455e96fa5fc56eecfee63c
+	sha512sums = 80ba5690d5e2abc2e296c792ce15fb2431ae5c2ccb116a0bc1c6d001041ab1353b4e2bb1c6764384ea8209b766f2201afd7774a1ff0d916134ec0bc5039c90ee
+
+pkgname = python-confluent-kafka
+
+pkgname = python2-confluent-kafka
+
