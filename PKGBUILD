@@ -2,7 +2,7 @@
 
 _pkgname=prelockd
 pkgname=${_pkgname}-git
-pkgver=0.8.r3.g8ad80b1
+pkgver=0.9.r3.g72c7131
 pkgrel=1
 pkgdesc="prelockd is a daemon that locks memory mapped binaries and libraries in memory to improve system responsiveness under low-memory conditions."
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
 makedepends=(
 	'git'
 )
+providess=("${_pkgname}")
 conflicts=("${_pkgname}")
 install=${_pkgname}.install
 backup=(
