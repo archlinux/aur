@@ -1,0 +1,20 @@
+pkgbase = python-hyperpyyaml-git
+	pkgdesc = Extensions to YAML syntax for better python interaction.
+	pkgver = 1.0.0.r8
+	pkgrel = 1
+	url = https://github.com/speechbrain/HyperPyYAML
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-pyaml
+	depends = python-ruamel-yaml
+	provides = python-hyperpyyaml
+	conflicts = python-hyperpyyaml
+	conflicts = python-hyperpyyaml-git
+	source = python-hyperpyyaml-git::git+https://github.com/speechbrain/HyperPyYAML
+	md5sums = SKIP
+
+pkgname = python-hyperpyyaml-git
+
