@@ -23,20 +23,17 @@ _nativ_dialogs='true'
 # set this to 'true' to use clang for compiling (experimental)
 #_clang='true'
 
-# Set this to 'true' to use use archlinux' rapidjson instead of shipped version
-#_systems_rapidjson='true'
-
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
 license=('GPL2')
 depends=('qt5-multimedia' 'qt5-x11extras' 'miniupnpc' 'libxss' 'sqlcipher') # 'libmicrohttpd'
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'rapidjson')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support'
             'i2pd: i2p hidden node support' )
@@ -51,10 +48,8 @@ sha256sums=('c545b9249ac7dbfef72a2d636bc0f8b729c7ce05f21a54dd9284b2a387592d4a'
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv3-opt')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
-[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
-[[ "$_systems_rapidjson" == 'true' ]] && makedepends=(${makedepends[@]} 'rapidjson')
 
 # Set options for qmake
 _optJsonapi=''
@@ -101,11 +96,6 @@ prepare() {
 
 		rmdir udp-discovery-cpp || true
 		get_git_repo 'truvorskameikin' 'udp-discovery-cpp' 'f3a3103a6c52e5707629e8d0a7e279a7758fe845'
-
-		if [ "$_systems_rapidjson" -ne 'true'] ; then
-			rmdir rapidjson || true
-			get_git_repo 'Tencent' 'rapidjson' 'f54b0e47a08782a6131cc3d60f94d038fa6e0a51'
-		fi
 
 	cd ..
 }
