@@ -1,0 +1,91 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2fdc299f..020f970d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
+ project(TermOx LANGUAGES CXX)
+ 
+ # Build Types
+@@ -48,9 +48,6 @@ if(${CMAKE_VERSION} VERSION_LESS "3.8")
+     set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ endif()
+ 
+-# Add nCurses
+-add_subdirectory(external/ncurses-snapshots)
+-
+ # Add Signals-Light
+ add_subdirectory(external/signals-light)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index dfd41d63..d4bca662 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,10 @@
+ cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+ # TermOx Library
+ 
++set(CURSES_NEED_NCURSES TRUE)
++set(CURSES_NEED_WIDE TRUE)
++find_package(Curses REQUIRED)
++
+ if(${CMAKE_VERSION} VERSION_LESS "3.8")
+     set(CMAKE_CXX_STANDARD 17)
+ endif()
+@@ -14,10 +18,14 @@ target_link_libraries(TermOx
+         signals-light
+         ${CMAKE_THREAD_LIBS_INIT}
+     PRIVATE
+-        nc
++        ${CURSES_LIBRARIES}
+ )
+ 
+-target_include_directories(TermOx PUBLIC ${PROJECT_SOURCE_DIR}/include)
++target_include_directories(TermOx
++    PUBLIC
++        ${PROJECT_SOURCE_DIR}/include
++        ${CURSES_INCLUDE_DIRS}
++    )
+ 
+ if(NOT ${CMAKE_VERSION} VERSION_LESS "3.8")
+     target_compile_features(TermOx PUBLIC cxx_std_17)
+diff --git a/src/terminal/input.cpp b/src/terminal/input.cpp
+index 412ab1a6..addc0dba 100644
+--- a/src/terminal/input.cpp
++++ b/src/terminal/input.cpp
+@@ -6,7 +6,7 @@
+ #ifndef _XOPEN_SOURCE_EXTENDED
+ #    define _XOPEN_SOURCE_EXTENDED
+ #endif
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #undef border
+ 
+ #include <termox/system/detail/find_widget_at.hpp>
+diff --git a/src/terminal/output.cpp b/src/terminal/output.cpp
+index 83f6e63b..e8507350 100644
+--- a/src/terminal/output.cpp
++++ b/src/terminal/output.cpp
+@@ -12,7 +12,7 @@
+ #ifndef _XOPEN_SOURCE_EXTENDED
+ #    define _XOPEN_SOURCE_EXTENDED
+ #endif
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #undef border
+ 
+ #include <termox/painter/brush.hpp>
+diff --git a/src/terminal/terminal.cpp b/src/terminal/terminal.cpp
+index bd2fb4bb..b8d32d2f 100644
+--- a/src/terminal/terminal.cpp
++++ b/src/terminal/terminal.cpp
+@@ -15,7 +15,7 @@
+ #ifndef _XOPEN_SOURCE_EXTENDED
+ #    define _XOPEN_SOURCE_EXTENDED
+ #endif
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #undef border
+ 
+ #include <termox/painter/color.hpp>
