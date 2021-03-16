@@ -15,7 +15,7 @@ makedepends=('boost'
              'perl'
              'python'
              'python2')
-source=("https://github.com/ViennaRNA/RNAblueprint/archive/${pkgver}.tar.gz")
+source=("$pkgname-${pkgver}.tar.gz::https://github.com/ViennaRNA/RNAblueprint/archive/${pkgver}.tar.gz")
 md5sums=('c917c2d8eed51a12dc0d2b702147dc69')
 sha1sums=('766d666f5cfa5294881b672b95fc4c777e9c4d40')
 sha256sums=('6268a6c63f9159011ea09b9b24065ca99f54a1c5cbc211a8e6dcd340efab9fb8')
