@@ -1,0 +1,29 @@
+pkgbase = python-bashate
+	pkgdesc = A pep8 equivalent for bash scripts
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://docs.openstack.org/developer/bashate/
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-hacking
+	makedepends = python-mock
+	makedepends = python-coverage
+	makedepends = python-discover
+	makedepends = python-fixtures
+	makedepends = python-subunit
+	makedepends = python-sphinx
+	makedepends = python-openstackdocstheme
+	makedepends = python-testtools
+	makedepends = python-stestr
+	makedepends = python-reno
+	depends = python
+	depends = python-pbr
+	depends = python-babel
+	source = https://pypi.io/packages/source/b/bashate/bashate-2.0.0.tar.gz
+	md5sums = 8143df66c83808ab25a59319da236fb1
+	sha256sums = eb990cf07c0ca09ee06f3b7eff79232a2d6eff9d2bdf141e8126efebb0521a17
+	sha512sums = f6bacddcad1077d034df0de4313b13aa24ba4c60baa456912d1f40511830a58ca118a72193d4cac358963870e097bee4b0e2ae5a7f7aec42f0ba1663180eb401
+
+pkgname = python-bashate
+
