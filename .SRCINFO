@@ -1,6 +1,6 @@
 pkgbase = kwin-unredirect
 	pkgdesc = KWin compositor with unredirect patch from Sporif
-	pkgver = 5.21.1
+	pkgver = 5.21.2
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	install = kwin-unredirect.install
@@ -24,7 +24,7 @@ pkgbase = kwin-unredirect
 	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
 	provides = kwin
 	conflicts = kwin
-	source = https://download.kde.org/stable/plasma/5.21.1/kwin-5.21.1.tar.xz
+	source = https://download.kde.org/stable/plasma/5.21.2/kwin-5.21.2.tar.xz
 	source = unredirect.patch
 	sha256sums = SKIP
 	sha256sums = 42fcd07ad64c101260878ec756d27189620ac36fddbff83ac6a0c2119ebbd5df
