@@ -4,7 +4,7 @@ pkgbase=rnablueprint
 pkgname=('rnablueprint' 'python-rnablueprint' 'python2-rnablueprint' 'perl-rnablueprint')
 pkgName=('RNAblueprint')
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for uniform sampling of RNA sequences given structural and sequence constraints."
 arch=('x86_64')
 url="https://github.com/ViennaRNA/RNAblueprint/"
@@ -57,7 +57,7 @@ package_python-rnablueprint() {
 }
 
 package_python2-rnablueprint() {
-  depends=('pytho2' rnablueprint="${pkgver}")
+  depends=('python2' rnablueprint="${pkgver}")
   cd "$srcdir/$pkgName-$pkgver"
 	cd interfaces/Python2
 	make DESTDIR="$pkgdir" install
