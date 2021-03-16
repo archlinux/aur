@@ -1,13 +1,13 @@
 pkgbase = zsh-vi-mode
 	pkgdesc = A better and friendly vi(vim) mode plugin for ZSH
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/jeffreytse/zsh-vi-mode
 	arch = any
 	license = MIT
 	depends = zsh
-	source = https://github.com/jeffreytse/zsh-vi-mode/archive/v0.7.0.tar.gz
-	sha256sums = cbcd36ada69d51f12618a28f41c512564aefebb8ad9857e5f3d579c60272818f
+	source = https://github.com/jeffreytse/zsh-vi-mode/archive/v0.8.0.tar.gz
+	sha256sums = 773cb2202b89c15f504f6c8b87e42102c110ee6f05a8cf3ea5ad095be5ca5c73
 
 pkgname = zsh-vi-mode
 
