@@ -1,0 +1,13 @@
+pkgbase = tz
+	pkgdesc = A time zone helper
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/oz/tz
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = glibc
+	source = tz-0.4.tar.gz::https://github.com/oz/tz/archive/v0.4.tar.gz
+	sha512sums = 783d2bf0bee01dd75a265d47392d469f81aa8b5180db863221381b0a638840f55b577fe546b8062b21e1699e8bcd13e4ad9653c20b74b9f4d5129e3622d92dd6
+
+pkgname = tz
