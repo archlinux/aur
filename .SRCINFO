@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-desktop
 	pkgdesc = Jitsi Meet desktop application
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = jitsi-meet-desktop
 	conflicts = jitsi-meet-electron
 	replaces = jitsi-meet-electron
 	options = !strip
-	source = jitsi-meet-desktop_2.7.0.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2.7.0.tar.gz
+	source = jitsi-meet-desktop_2.7.1.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2.7.1.tar.gz
 	source = jitsi-meet-desktop.desktop
-	sha256sums = 2fa79baed7d8568e354432f27d53a2eb24d8fd5fa68ac132a85722fe02baa9c8
+	sha256sums = 922c657d78e15ce11ad88409b33a387f83d639fe3c34e542831311929b1c3c96
 	sha256sums = 36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4
 
 pkgname = jitsi-meet-desktop

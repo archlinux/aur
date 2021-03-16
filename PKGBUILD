@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -28,7 +28,7 @@ makedepends=('coreutils'
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'jitsi-meet-desktop.desktop')
-sha256sums=('2fa79baed7d8568e354432f27d53a2eb24d8fd5fa68ac132a85722fe02baa9c8'
+sha256sums=('922c657d78e15ce11ad88409b33a387f83d639fe3c34e542831311929b1c3c96'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 prepare() {
@@ -70,15 +70,9 @@ package() {
   install -d "${pkgdir}/opt/${pkgname}"
   cp -r "${_dist_path}"/resources/* "${pkgdir}/opt/${pkgname}"
 
-  for icon in `ls resources/icons/*.png`; do
-    size=$(basename $icon)
-    size=${size#"icon_"}
-    size=${size%".png"}
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}/apps"
-    install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/jitsi-meet-desktop.png"
-  done
+  install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
- cat << EOF > "$pkgdir"/usr/bin/$pkgname
+  cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
 NODE_ENV=production ELECTRON_IS_DEV=false exec electron /opt/$pkgname/app.asar "\$@"
