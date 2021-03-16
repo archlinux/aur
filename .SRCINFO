@@ -1,0 +1,30 @@
+pkgbase = python-os-win
+	pkgdesc = Windows / Hyper-V library for OpenStack projects.
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = http://www.cloudbase.it/
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-coverage
+	checkdepends = python-ddt
+	checkdepends = python-oslotest
+	checkdepends = python-stestr
+	checkdepends = python-testscenarios
+	checkdepends = python-testtools
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pbr
+	depends = python-eventlet
+	depends = python-oslo-concurrency
+	depends = python-oslo-config
+	depends = python-oslo-log
+	depends = python-oslo-utils
+	depends = python-oslo-i18n
+	source = https://pypi.io/packages/source/o/os-win/os-win-5.4.0.tar.gz
+	md5sums = 89e2eba86f2033c7fe69b56cbb2f6c26
+	sha256sums = 142eaa816b1a37abcd9718a1820699cd14b34fa4a16129ddc3a799468682e7ed
+	sha512sums = 3c32fef9959e4ba4ac3c511f193e026a079935a3f1cba1bd151ab90de5e2acbb073dcd1172f5ebd0937012f15879b93897eb08b6b811ec2d06df6b69b8cbc2e0
+
+pkgname = python-os-win
+
