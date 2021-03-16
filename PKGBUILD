@@ -5,7 +5,7 @@ pkgname=epson-inkjet-printer-201401w
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.0
-pkgrel=8
+pkgrel=10
 pkgdesc="Epson printer driver (L456, L455, L366, L365, L362, L360, L312, L310, L222, L220, L132, L130)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
