@@ -1,12 +1,12 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 _pkgname=TermOx
-pkgname=cppurses
+pkgname=termox
 pkgver=0.4
 pkgrel=1
 pkgdesc="C++14 Terminal User Interface framework with NCurses."
 arch=('x86_64')
-url="https://github.com/a-n-t-h-o-n-y/CPPurses"
+url="https://github.com/a-n-t-h-o-n-y/TermOx"
 license=('custom:MIT')
 depends=()
 makedepends=('ncurses' 'cmake' 'git')
