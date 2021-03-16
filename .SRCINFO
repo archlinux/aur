@@ -1,6 +1,6 @@
 pkgbase = rtl8814au-aircrack-dkms-git
 	pkgdesc = Aircrack-ng kernel module for Realtek (USB adapters only) network cards with 8814au chipset
-	pkgver = r82.30626ff
+	pkgver = r90.27d2344
 	pkgrel = 1
 	url = https://github.com/aircrack-ng/rtl8814au
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = rtl8814au-aircrack-dkms-git
 	replaces = rtl8814au-dkms-git
 	source = rtl8814au::git+https://github.com/aircrack-ng/rtl8814au.git
 	source = dkms.conf
+	source = 5.11.patch
 	sha256sums = SKIP
 	sha256sums = b48a357efd1fd4365741c7cd5993619f60e518061e61fcb1c438f54b2d08149d
+	sha256sums = 9a4a28d0c33f0bc93aaf13f239821d523a2357968edd8478d03e9e1bd870c506
 
 pkgname = rtl8814au-aircrack-dkms-git
 
