@@ -2,7 +2,7 @@
 
 _pkgname=rbmenu
 pkgname=$_pkgname-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Rust Bookmark (d)Menu ; Pre compiled binary"
 arch=('x86_64')
