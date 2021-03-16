@@ -2,8 +2,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 ## Configuration env vars:
-_BUILD_CUDA="${_BUILD_CUDA:-ON}"
-_CUDA_ARCH="${_CUDA_ARCH:-Auto}"
+_BUILD_CUDA="${BUILD_CUDA:-ON}"
+_CUDA_ARCH="${CUDA_ARCH:-Auto}"
 
 _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
