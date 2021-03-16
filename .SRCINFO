@@ -1,0 +1,24 @@
+pkgbase = python-pcre
+	pkgdesc = Python PCRE bindings
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/awahlig/python-pcre
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = pcre
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/p/python-pcre/python-pcre-0.7.tar.gz
+	md5sums = fe1333c7675ab97049e1ee183578025b
+	sha256sums = 4286f3f31e9f08a8c6bff537940ce0ca86aad8eb3f78ad486620266f5099f681
+	sha512sums = aa6dd358c486a2a49836a3177f27bd32492e458075b1aaebf1a6a1b26ca5fda0697727f92ff9e58e57f944ff73da0deb8907368e1d8a5ee96e1ecda586735748
+
+pkgname = python-pcre
+
+pkgname = python2-pcre
+
