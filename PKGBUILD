@@ -11,7 +11,7 @@ arch=('any')
 url="http://expect.sourceforge.net/${pkgname}/"
 license=('custom')
 depends=('tk')
-source=("${pkgname}-${pkgver}.tar.gz::http://expect.sourceforge.net/stopwatch/${pkgname}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::http://expect.sourceforge.net/${pkgname}/${pkgname}.tar.gz"
 	LICENSE)
 sha256sums=('f3f56dccd00f669a5f0a4b1f6507ab78e0d1ad18305b760baab34edc68b3ef4e'
             '599c44b010ac89d1b263b7cc783b816db8e7f47073484c42336b2d7f2d2ad8eb')
