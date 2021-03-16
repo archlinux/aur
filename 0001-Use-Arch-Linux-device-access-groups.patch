@@ -43,11 +43,9 @@ index 191f56f42..f81c4d0fc 100644
  SUBSYSTEM=="scsi_generic", SUBSYSTEMS=="scsi", ATTRS{type}=="0", GROUP="disk"
  KERNEL=="qft[0-9]*|nqft[0-9]*|zqft[0-9]*|nzqft[0-9]*|rawqft[0-9]*|nrawqft[0-9]*", GROUP="disk"
  KERNEL=="loop-control", GROUP="disk", OPTIONS+="static_node=loop-control"
-diff --git a/sysusers.d/basic.conf.in b/sysusers.d/basic.conf.in
-index 8e358c02d..33e513a36 100644
---- a/sysusers.d/basic.conf.in
-+++ b/sysusers.d/basic.conf.in
-@@ -24,14 +24,14 @@ g utmp    -     -            -
+--- a/sysusers.d/basic.conf.in	2021-03-14 00:24:33.305379296 -0500
++++ b/sysusers.d/basic.conf.in	2021-03-14 00:26:01.674972835 -0500
+@@ -24,15 +24,15 @@
  
  # Hardware access groups
  g audio   -     -            -
@@ -59,9 +57,11 @@ index 8e358c02d..33e513a36 100644
  g lp      -     -            -
 +g optical -     -            -
  g render  -     -            -
+ g sgx     -     -            -
 -g tape    -     -            -
 +g storage -     -            -
 +g uucp    -     -            -
  g video   -     -            -
  
  # Default group for normal users
+

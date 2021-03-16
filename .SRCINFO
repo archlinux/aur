@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 247.r439.g5cd35a171c
+	pkgver = 248.rc3.r22.gefd3be9de1
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgbase = systemd-git
 	source = 30-systemd-udev-reload.hook
 	source = 30-systemd-update.hook
 	sha512sums = SKIP
-	sha512sums = e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4
+	sha512sums = 73ec374130597eb9cfa9defa62574a6815428cf86a51ff9c7ce76a20d8d762c5258c066b15f0327a7bfcbb9c49fa7da6bae58be6ae838c64d28ca24edadeff65
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
 	sha512sums = 8e76f8334b95ce7fee9190f4a1016b16109f3a75b68635fc227b2b4791cf8179ef09b532b66b4ed885ddf98ed76befed3106f3c3088f1819ed8cdf4c13e0805a
 	sha512sums = a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a
@@ -120,10 +120,10 @@ pkgname = systemd-git
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
-	provides = systemd=247.r439.g5cd35a171c
+	provides = systemd=248.rc3.r22.gefd3be9de1
 	provides = nss-myhostname
-	provides = systemd-tools=247.r439.g5cd35a171c
-	provides = udev=247.r439.g5cd35a171c
+	provides = systemd-tools=248.rc3.r22.gefd3be9de1
+	provides = udev=248.rc3.r22.gefd3be9de1
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -156,7 +156,7 @@ pkgname = systemd-libs-git
 	depends = lz4
 	depends = xz
 	depends = zstd
-	provides = systemd-libs=247.r439.g5cd35a171c
+	provides = systemd-libs=248.rc3.r22.gefd3be9de1
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
@@ -168,7 +168,7 @@ pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-git
-	provides = systemd-resolvconf=247.r439.g5cd35a171c
+	provides = systemd-resolvconf=248.rc3.r22.gefd3be9de1
 	provides = openresolv
 	provides = resolvconf
 	conflicts = systemd-resolvconf
@@ -178,7 +178,7 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=247.r439.g5cd35a171c
+	provides = systemd-sysvcompat=248.rc3.r22.gefd3be9de1
 	conflicts = systemd-sysvcompat
 	conflicts = sysvinit
 
