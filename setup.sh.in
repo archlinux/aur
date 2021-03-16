@@ -87,6 +87,7 @@ build_lib() {
 	printf "\nClean up evelauncher directory..."
 	cd evelauncher/
 	rm -f ./*.a ./*.la ./*.pem ./*.prl ./libxcb*
+	cp -f ../evelauncher.sh.real ./evelauncher.sh
 	chmod 0755 ./*
 	chmod 0644 ./*.qm ./*.conf ./errorpage/*
 	echo "done."

@@ -79,6 +79,7 @@ cp ../evesetup.shlib evesetup/
 cp ../evelauncher.kwinrule evesetup/
 cp ../evelauncher.lua evesetup/
 cp ../evelauncher.sh.in evesetup/evelauncher.sh
+cp ../evelauncher.sh.real evesetup/
 sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
 cp ../setup.sh.in evesetup/setup.sh
 sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh
