@@ -2,12 +2,12 @@
 
 pkgname=thumbor
 pkgver=7.0.0a5
-pkgrel=2
+pkgrel=3
 pkgdesc="open-source photo thumbnail service"
 arch=('x86_64')
 url="https://github.com/thumbor/thumbor"
 license=('MIT')
-depends=(python)
+depends=(python python-colorful python-pycurl python-opencv python-exiv2 python-cairosvg python-tornadoi gifsicle python-libthumbor)
 makedepends=(python-setuptools)
 backup=("etc/thumbor.conf")
 source=("https://github.com/thumbor/thumbor/archive/$pkgver.tar.gz"
