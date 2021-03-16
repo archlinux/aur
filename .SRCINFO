@@ -1,0 +1,19 @@
+pkgbase = obs-openvr-git
+	pkgdesc = obs source plugin for capturing OpenVR outputs
+	pkgver = 0.1.0.r0.9acff37
+	pkgrel = 1
+	url = https://gitlab.com/mcoffin/obs-openvr
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	makedepends = obs-studio
+	depends = openvr
+	depends = glfw>=3.0.0
+	provides = obs-openvr
+	conflicts = obs-openvr
+	source = obs-openvr::git+https://gitlab.com/mcoffin/obs-openvr.git#branch=master
+	sha256sums = SKIP
+
+pkgname = obs-openvr-git
+
