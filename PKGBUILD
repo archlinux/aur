@@ -3,7 +3,7 @@
 
 pkgname=python-defcon
 _pkgname=defcon
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-unicodedata2')
 optdepends=('python-fontpens' 'python-lxml')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('cab2d983b138f8afbdf18738dea9267887f123e75b4bc3fcb2ae9c9a463c1209')
+sha256sums=('410adb6bd18996054ad82b0654aea2bc0a334a9ff7007fe983ec6f3f39f449ea')
 
 build() {
     cd "$_pkgname-$pkgver"
