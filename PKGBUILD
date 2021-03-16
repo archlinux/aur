@@ -16,7 +16,7 @@ groups=(plasma)
 conflicts=(libksysguard)
 replaces=(libksysguard)
 provides=(libksysguard)
-source=("https://download.kde.org/stable/plasma/${pkgver%.*}/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/plasma/${pkgver%.*}/$_pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('e370db775b575106f9d228596d3aa0da3ba568da9c2cf76de6e1d8ab60945e59'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
