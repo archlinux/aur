@@ -1,14 +1,14 @@
 pkgbase = dcnnt
 	pkgdesc = Yet another tool to connect Android phone with desktop similar to KDE Connect
-	pkgver = 0.3.8
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/cyanomiko/dcnnt-py
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pycryptodome
-	source = https://github.com/cyanomiko/dcnnt-py/archive/0.3.8/dcnnt-py-0.3.8.tar.gz
-	sha256sums = 0ae186a994d968dcf9c60193a250568d57de68446856343a8cdd71c2a02eade5
+	source = https://github.com/cyanomiko/dcnnt-py/archive/fad240d0e9d44e3d88f9c3444ac072361d1ded8a/dcnnt-py-0.4.0.tar.gz
+	sha256sums = ae14b4c5f672f07b94f46db1de58ca2d73298eee873d71da21b3d4b85d0657dd
 
 pkgname = dcnnt
 
