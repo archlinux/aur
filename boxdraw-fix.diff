@@ -1,0 +1,13 @@
+--- st-boxdraw_v2-0.8.3.diff	2021-03-16 19:13:29.531960089 +0100
++++ st-boxdraw_v2-0.8.3.diff	2021-03-16 19:29:11.794283862 +0100
+@@ -536,9 +536,9 @@
+  extern char *utmp;
+  extern char *scroll;
+ @@ -122,3 +131,4 @@ extern char *termname;
+- extern unsigned int tabspaces;
+  extern unsigned int defaultfg;
+  extern unsigned int defaultbg;
++ extern float alpha;
+ +extern const int boxdraw, boxdraw_bold, boxdraw_braille;
+ diff --git a/x.c b/x.c
+ index e5f1737..6f7ea2c 100644
