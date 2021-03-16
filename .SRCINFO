@@ -1,0 +1,12 @@
+pkgbase = plank-theme-bigsur
+	pkgdesc = BigSur, BigSur-Dark and BigSur-Grey theme for Plank
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = plank
+	source = BigSur.tar.gz
+	md5sums = SKIP
+
+pkgname = plank-theme-bigsur
+
