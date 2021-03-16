@@ -1,20 +1,34 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.11.0.r71.g85757665
+pkgver=0.12.0.r378.g00bee2a6
 pkgrel=1
 license=(custom:MIT)
-pkgdesc='Modular Wayland compositor library'
+pkgdesc='Modular Wayland compositor library (git version)'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
 provides=("wlroots=${pkgver%%.r*}")
 conflicts=(wlroots)
 options=(debug)
-depends=(systemd wayland opengl-driver libxcb xcb-util-errors
-         xcb-util-wm pixman libinput libxkbcommon)
-makedepends=(meson ninja git wayland-protocols xorgproto)
+depends=(
+	libinput
+	libxcb
+	libxkbcommon
+	opengl-driver
+	pixman
+	wayland
+	xcb-util-errors
+	xcb-util-renderutil
+	xcb-util-wm
+	systemd
+	xorg-xwayland)
+makedepends=(
+	git
+	meson
+	wayland-protocols
+	xorgproto)
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
-
 
 pkgver () {
 	cd "${pkgname}"
@@ -26,23 +40,17 @@ pkgver () {
 }
 
 build () {
-	cd "${pkgname}"
-	rm -rf build
-	meson build \
-		--prefix /usr \
-		--buildtype debug \
-		-Dlogind=enabled \
+	arch-meson \
+		--buildtype=debug \
 		-Dlogind-provider=systemd \
-		-Dxcb-errors=enabled \
-		-Dxcb-icccm=enabled \
-		-Dxwayland=enabled \
-		-Dx11-backend=enabled \
-		-Dexamples=false
-	ninja -C build
+		-Dlibseat=disabled \
+		-Dwerror=false \
+		-Dexamples=false \
+		"${pkgname}" build
+	meson compile -C build
 }
 
 package () {
-	cd "${pkgname}"
-	DESTDIR="${pkgdir}" ninja -C build install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	DESTDIR="${pkgdir}" meson install -C build
+	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
