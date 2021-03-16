@@ -1,0 +1,23 @@
+pkgbase = python-huggingface-hub-git
+	pkgdesc = Client library to download and publish models on the huggingface.co hub
+	pkgver = 0.0.6.r25
+	pkgrel = 1
+	url = https://github.com/huggingface/huggingface_hub
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-filelock
+	depends = python-tqdm
+	depends = python-requests
+	depends = python-importlib-metadata
+	depends = python-espnet
+	provides = python-huggingface-hub
+	conflicts = python-huggingface-hub
+	conflicts = python-huggingface-hub-git
+	source = python-huggingface-hub-git::git+https://github.com/huggingface/huggingface_hub
+	md5sums = SKIP
+
+pkgname = python-huggingface-hub-git
+
