@@ -1,5 +1,4 @@
 #!/bin/sh
 
-cd "/opt/firestorm/"
-./firestorm $*
-exit $?
+cd "/usr/lib/firestorm/"
+exec ./firestorm $*

@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=6.4.12.62831
+pkgver=6.4.13.63251
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
@@ -21,17 +21,16 @@ optdepends=(
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
 install=firestorm.install
-source=("https://downloads.firestormviewer.org/linux/Phoenix_Firestorm-Release_x86_64_$pkgver.tar.xz"
+tardir="Phoenix_Firestorm-Releasex64_x86_64_${pkgver}"
+source=("https://downloads.firestormviewer.org/linux/Phoenix_Firestorm-Releasex64_x86_64_$pkgver.tar.xz"
         firestorm.desktop
         firestorm.launcher)
-b2sums=('5b3425b5928426e82d0b26ab5cfde2a8ae181490f42f538528169034d51bf7d179e102ce53c933db3d34aae63c20310e4d1122c1455d5efe85b48665d3100aee'
-        '1d2745212b45d48af416bbc1ffb66eefac40c5bdd27a3a12e2c2583b5908dc207cc5c2c7f6cd955574cf1fba2ac01c7f7b539507dea2dc6c75ab4b6c209cdcb1'
-        '1d323c1a38218bab12dc4129ad541f2514dc64fe6c3cdaa266012a761de34ee96209fe1e9dd17988a814371677ef67354d51630acfca9ce30e3eeb4adf77968e')
+b2sums=('7a6bf0e7e18cb09cd6a83f7129e06516a51040ce23f86fe7734dfbd314f904d28e2fb7f60a2988681a4ddd1914b50819988dd599b7d6207cabb4aa282344bcd6'
+        'd9343e4f93fc549fa3dc98bef3bfcd96ffae11e0fbdcc0ef604312e5fa1e0b5217a44e0988dac24fe2ce556c2737322ac66c8cc026aee471d2263743c4287f30'
+        '5b9342aa587e12bd03e8abd24e5d2d9c53cdddee949409045d20931b572d317de23c1eaea6efabe67683ca435bde428c0ab0706760eff0acf9b301f42abe38c4')
 
 prepare() {
-  mv "$srcdir/Phoenix_Firestorm-Release_x86_64_$pkgver" "$srcdir/firestorm"
-
-  cd "firestorm"
+  cd "${srcdir}/${tardir}"
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
       break;
@@ -42,27 +41,21 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/firestorm"
+  install -d "${pkgdir}/usr/lib"
+  cp -a "${srcdir}/${tardir}" "${pkgdir}"/usr/lib/firestorm
+  cd "${pkgdir}/usr/lib/firestorm"
 
-  # File modes fix.
-  find -type d -execdir chmod 755 "{}" \;
-  find -type f -execdir chmod 644 "{}" \;
-  chmod 755 bin/* firestorm etc/*
+  find app_settings skins -type f -execdir chmod 644 "{}" +
 
-  # Install Desktop File
-  install -D -m644 ../firestorm.desktop \
+  # Install desktop file
+  install -D -m644 "${srcdir}"/firestorm.desktop \
           "$pkgdir"/usr/share/applications/firestorm.desktop
 
-  # Install Icon File
+  # Install icon file
   install -D -m644 firestorm_icon.png \
-          "$pkgdir"/usr/share/pixmaps/firestorm_icon.png
+          "$pkgdir"/usr/share/pixmaps/firestorm.png
 
-  # Install Launcher
-  install -D -m755 ../firestorm.launcher \
+  # Install launcher
+  install -D -m755 "${srcdir}"/firestorm.launcher \
           "$pkgdir"/usr/bin/firestorm
-
-  # Move Data to Destination Directory
-  cd ..
-  install -d "$pkgdir"/opt
-  mv firestorm/ "$pkgdir"/opt
 }
