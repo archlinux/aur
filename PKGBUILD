@@ -1,9 +1,9 @@
 # Maintainer: Vincent von Schelm <aur at vncnt dot eu>
 
 pkgbase=rnablueprint
-pkgname=('rnablueprint' 'python-rnablueprint' 'perl-rnablueprint')
+pkgname=('rnablueprint' 'python-rnablueprint' 'python2-rnablueprint' 'perl-rnablueprint')
 pkgName=('RNAblueprint')
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Library for uniform sampling of RNA sequences given structural and sequence constraints."
 arch=('x86_64')
@@ -13,14 +13,16 @@ groups=('viennarna-package')
 makedepends=('boost'
              'swig' 
              'perl'
-             'python')
-source=("https://github.com/ViennaRNA/RNAblueprint/releases/download/${pkgver}/RNAblueprint-${pkgver}.tar.gz")
-md5sums=('440a11074144bea78ec8e1dcb6a096f3')
-sha1sums=('0596ea7f846cea0a72eaaefd2c9a9c86464cfc4a')
-sha256sums=('f59015f75afc6e2d0637dec24d91918bc59af2b60c11dcf1e25adc824eb13a75')
+             'python'
+             'python2')
+source=("https://github.com/ViennaRNA/RNAblueprint/archive/${pkgver}.tar.gz")
+md5sums=('c917c2d8eed51a12dc0d2b702147dc69')
+sha1sums=('766d666f5cfa5294881b672b95fc4c777e9c4d40')
+sha256sums=('6268a6c63f9159011ea09b9b24065ca99f54a1c5cbc211a8e6dcd340efab9fb8')
 
 prepare() {
 	cd "$srcdir/$pkgName-$pkgver"
+	./autogen.sh
 }
 
 build() {
@@ -50,7 +52,14 @@ package_rnablueprint() {
 package_python-rnablueprint() {
   depends=('python' rnablueprint="${pkgver}")
   cd "$srcdir/$pkgName-$pkgver"
-	cd interfaces/Python
+	cd interfaces/Python3
+	make DESTDIR="$pkgdir" install
+}
+
+package_python2-rnablueprint() {
+  depends=('python' rnablueprint="${pkgver}")
+  cd "$srcdir/$pkgName-$pkgver"
+	cd interfaces/Python2
 	make DESTDIR="$pkgdir" install
 }
 

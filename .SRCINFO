@@ -1,6 +1,6 @@
 pkgbase = rnablueprint
 	pkgdesc = Library for uniform sampling of RNA sequences given structural and sequence constraints.
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/ViennaRNA/RNAblueprint/
 	arch = x86_64
@@ -10,21 +10,26 @@ pkgbase = rnablueprint
 	makedepends = swig
 	makedepends = perl
 	makedepends = python
-	source = https://github.com/ViennaRNA/RNAblueprint/releases/download/1.3.0/RNAblueprint-1.3.0.tar.gz
-	md5sums = 440a11074144bea78ec8e1dcb6a096f3
-	sha1sums = 0596ea7f846cea0a72eaaefd2c9a9c86464cfc4a
-	sha256sums = f59015f75afc6e2d0637dec24d91918bc59af2b60c11dcf1e25adc824eb13a75
+	makedepends = python2
+	source = https://github.com/ViennaRNA/RNAblueprint/archive/1.3.2.tar.gz
+	md5sums = c917c2d8eed51a12dc0d2b702147dc69
+	sha1sums = 766d666f5cfa5294881b672b95fc4c777e9c4d40
+	sha256sums = 6268a6c63f9159011ea09b9b24065ca99f54a1c5cbc211a8e6dcd340efab9fb8
 
 pkgname = rnablueprint
 	depends = boost-libs
-	provides = libRNAblueprint.so=1.3.0
+	provides = libRNAblueprint.so=1.3.2
 
 pkgname = python-rnablueprint
 	depends = python
-	depends = rnablueprint=1.3.0
+	depends = rnablueprint=1.3.2
+
+pkgname = python2-rnablueprint
+	depends = python
+	depends = rnablueprint=1.3.2
 
 pkgname = perl-rnablueprint
 	depends = perl
 	depends = libxcrypt
-	depends = rnablueprint=1.3.0
+	depends = rnablueprint=1.3.2
 
