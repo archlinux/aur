@@ -4,9 +4,9 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=moneymanagerex-git
-pkgver=1.3.5
-pkgrel=8
-pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest stable version."
+pkgver=1.3.6
+pkgrel=1
+pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --abbrev=0 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --abbrev=0 | cut -c2-
 }
 
 prepare() {
