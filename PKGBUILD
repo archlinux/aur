@@ -25,6 +25,7 @@ sha256sums=("SKIP")
 
 prepare() {
       cd "$srcdir/Rare-$pkgver"
+      sed -i 's/mdi.view-grid-outline/mdi.view-grid/' $srcdir/Rare-$pkgver/Rare/utils/QtExtensions.py
       gendesk -n -f \
         --pkgname "Rare" \
         --pkgdesc "$pkgdesc" \
