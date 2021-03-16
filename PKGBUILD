@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
-pkgver=v0.7.0.r7.1cd023a
+pkgver=0.7.0.r7.1cd023a
 pkgrel=1
 pkgdesc="terminal telegram client that really works"
 arch=(any)
@@ -26,10 +26,7 @@ md5sums=('SKIP'
 pkgver() {
 	cd "$srcdir/$_pkgname"
 
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"	
-
-	# We now have tags so this is not needed
-	#printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/\(v\)\(.*\)/\2/')"
 }
 
 prepare() {

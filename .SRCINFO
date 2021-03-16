@@ -1,6 +1,6 @@
 pkgbase = telegram-tg-git
 	pkgdesc = terminal telegram client that really works
-	pkgver = v0.7.0.r7.1cd023a
+	pkgver = 0.7.0.r7.1cd023a
 	pkgrel = 1
 	url = https://github.com/paul-nameless/tg
 	arch = any
