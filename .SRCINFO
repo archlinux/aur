@@ -1,0 +1,16 @@
+pkgbase = tachidesk
+	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
+	pkgver = 0.2.5.r256
+	pkgrel = 1
+	url = https://github.com/AriaMoradi/Tachidesk
+	arch = any
+	license = MPL2
+	depends = java-runtime
+	provides = tachidesk
+	source = tachidesk-0.2.5.r256.jar::https://github.com/AriaMoradi/Tachidesk/releases/download/v0.2.5/Tachidesk-v0.2.5-r256.jar
+	source = tachidesk.sh
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = tachidesk
+
