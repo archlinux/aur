@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.21.76
+pkgver=1.21.77
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -109,12 +109,12 @@ _unwanted_bundled_libs=(
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
-  echo "Build with system libs is disabled for now" && exit 1
+  #echo "Build with system libs is disabled for now" && exit 1
   brave_base_ver="$(echo $pkgver | cut -d . -f 1-2)"
   brave_patchset="1"
   brave_patchset_name="brave-${brave_base_ver}-patches-${brave_patchset}"
   source+=("https://gitlab.com/hadogenes/brave-patches/-/archive/${brave_patchset_name}/brave-patches-${brave_patchset_name}.zip")
-  sha256sums+=("bd111797dc8a769a546612ab37c81983c4c4f8c04f83e707af7676e8fded45ff")
+  sha256sums+=("5130b5b6e66b5e1e55ce84f58b93d3088d71aa5aa3b61ec0f66598d0fbc0643f")
 
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
