@@ -1,0 +1,13 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Generated files
+*.zip
+*.zip.part
+*.pkg.tar.xz
+src
+pkg
+*.tar.zst
