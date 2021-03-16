@@ -1,35 +1,35 @@
 # Maintainer: robertfoster
 
 pkgname=gnome-pie-git
-pkgver=316.6d9b7ba
+pkgver=v0.7.2.r2.02e26da
 pkgrel=1
-pkgdesc="A visual application launcher for gnome."
+pkgdesc="Circular application launcher for GNOME"
 arch=('i686' 'x86_64')
-url="https://github.com/Simmesimme/Gnome-Pie"
-license=('GPL')
-depends=('gtk3' 'libunique3' 'gnome-menus' 'cairo' 'libgee' 'libxml2' 'libxtst' 'libunique' 'gdk-pixbuf2' 'hicolor-icon-theme' 'bamf')
-makedepends=('vala' 'cmake' 'git')
-install='gnome-pie-git.install'
-source=('gnome-pie::git://github.com/Simmesimme/Gnome-Pie.git')
-
+url="https://simmesimme.github.io/gnome-pie.html"
+license=('MIT')
+depends=('libarchive' 'libgee' 'libwnck3' 'gnome-menus')
+makedepends=('cmake' 'git' 'vala')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("gnome-pie::git+https://github.com/Simmesimme/gnome-pie")
 
 build() {
-  cd gnome-pie
-  msg "Building gnome-pie"
-  mkdir -p build
+  cd "${srcdir}/${pkgname%-git}"
+  ./resources/locale/compile-po.sh
+  [[ -d build ]] || mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd gnome-pie/build
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
-  cd gnome-pie
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "${srcdir}/${pkgname%-git}"
+  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
