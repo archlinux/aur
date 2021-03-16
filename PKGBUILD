@@ -4,6 +4,7 @@ pkgname=plank-theme-bigsur
 pkgver=0.1
 pkgrel=1
 pkgdesc='BigSur, BigSur-Dark and BigSur-Grey theme for Plank'
+url='https://www.gnome-look.org/p/1407624/'
 arch=('any')
 source=('BigSur.tar.gz')
 license=('GPL3')

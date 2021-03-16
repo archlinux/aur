@@ -2,6 +2,7 @@ pkgbase = plank-theme-bigsur
 	pkgdesc = BigSur, BigSur-Dark and BigSur-Grey theme for Plank
 	pkgver = 0.1
 	pkgrel = 1
+	url = https://www.gnome-look.org/p/1407624/
 	arch = any
 	license = GPL3
 	depends = plank
