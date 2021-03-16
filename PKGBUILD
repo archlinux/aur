@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ludo
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.12.5
+pkgrel=1
 pkgdesc="Ludo is a minimalist frontend for emulators"
 arch=('x86_64' 'armv7h')
 url="https://github.com/libretro/ludo"
