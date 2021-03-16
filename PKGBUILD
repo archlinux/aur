@@ -17,19 +17,11 @@ sha256sums=('d535a2445b94127966d759d28411474f1c074f9680fd66bcfecd1d1231c4f01f'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-
-	# Disable building dist packages
-	sed -i '109,113d' package.json
-	sed -i 's/tar.bz2/dir/g' package.json
-}
-
 build() {
 	cd "$pkgname-$pkgver"
 	yarn install --cache-folder "$srcdir/yarn-cache"
 	yarn compile
-	yarn build:linux
+	./node_modules/.bin/electron-builder --linux dir
 }
 
 package() {
