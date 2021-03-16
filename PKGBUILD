@@ -47,7 +47,7 @@ build() {
     -D cloudproviders=true \
     -D colord=yes \
     -D gtk_doc=true \
-    -D man=true \
+    -D man=true
   meson compile -C build
 }
 
