@@ -3,7 +3,7 @@ pkgname=python2-numba
 pkgver=0.47.0
 pkgrel=1
 pkgdesc="NumPy aware dynamic Python compiler using LLVM"
-url="http://numba.pydata.org/"
+url="https://numba.pydata.org/"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('python2-llvmlite>=0.31.0' 'python2-numpy>=1.10' 'python2-funcsigs'
