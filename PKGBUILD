@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-unredirect
-pkgver=5.21.1
+pkgver=5.21.2
 pkgrel=1
 pkgdesc='KWin compositor with unredirect patch from Sporif'
 arch=(x86_64)
