@@ -1,11 +1,12 @@
 pkgbase = teleport-bin
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gravitational/teleport
 	install = teleport.install
 	arch = x86_64
-	arch = armv7
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	depends = bash
 	depends = python
@@ -21,7 +22,9 @@ pkgbase = teleport-bin
 	sha256sums = cff4e3c69677210bdde9a781146df06fba3a62cef72ed6854cd1923a05444435
 	source_x86_64 = teleport-bin-6.0.1-x86_64.tar.gz::https://get.gravitational.com/teleport-v6.0.1-linux-amd64-bin.tar.gz
 	sha256sums_x86_64 = d8463472ba2cfe34c77357bf16c02c0f7a381a7610ede81224ee8d064f908177
-	source_armv7 = teleport-bin-6.0.1-x86_64.tar.gz::https://get.gravitational.com/teleport-v6.0.1-linux-arm-bin.tar.gz
-	sha256sums_armv7 = d8463472ba2cfe34c77357bf16c02c0f7a381a7610ede81224ee8d064f908177
+	source_armv7h = teleport-bin-6.0.1-armv7h.tar.gz::https://get.gravitational.com/teleport-v6.0.1-linux-arm-bin.tar.gz
+	sha256sums_armv7h = f5880caa8b48c710c24c5497e7543892e3fc8eae8153ff985f4e9ae57bbcb287
+	source_aarch64 = teleport-bin-6.0.1-aarch64.tar.gz::https://get.gravitational.com/teleport-v6.0.1-linux-arm64-bin.tar.gz
+	sha256sums_aarch64 = d3c98ddbffb219eaa4a89410ced10c7f6a481cc2e326d03a73e4eda3feac6c9c
 
 pkgname = teleport-bin
