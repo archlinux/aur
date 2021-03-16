@@ -14,7 +14,7 @@
 
 pkgname=discord-development-electron-bin
 _pkgname=discord-development
-pkgver=0.0.143
+pkgver=0.0.144
 pkgrel=1
 pkgdesc="Discord Development (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -33,9 +33,9 @@ source=("https://dl-development.discordapp.net/apps/linux/${pkgver}/${_pkgname}-
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
 # Skip SHA256 of licenses, it fails always for some reason.
-b2sums=('cee148b5c41f77dfdd6459856ebb72e99c2d00c0c8583555dde54ccea901eef94aa7dd620cde6bf8248af6863932a88676267c9bf02dfef479ebd04ca8b1b37f'
-        '216cef029383f20a85d802bdc5a462f79ba1a3c2200b008c51c87091167527461c457fbd93b3e23d1f1e9fc6eb993a1c41181d6e1798bd753f1cf17a4310fc16'
-        'c98282efbf3e4699d84992e615ed55ddcde375c2b96de99e6085b7196ffc0eb182b6d1193857020319449927a19febef25210771a86e212583d871b93bdc8514')
+b2sums=('f65d05fcd07ec83aec3c693e4a2893cb87a7e684da43e664118376739b4fae85ce9a62d05bc091a4bdec5a869dda6a55e35020b60fdf80906b9feac2dd8091d1'
+        '8e2ebdb2a626745336614ddfe44d219757ebd74fda377f978b0ff9a16056842ecc3f6ad512316d79f8eaffed5e9c2adae7c4328f722c3f611caa47f852a84e4d'
+        'c037ce3529898c7dcb9ce8aac2b329010a2af03c5f9234b33b8e6927edbaf549fa0e51455da48d27f4ea419c13c8cf402ed6954d5e6980a376260978d6d65d94')
 
 # The tar extracts to a folder called DiscordCanary.
 _tarname=DiscordDevelopment
