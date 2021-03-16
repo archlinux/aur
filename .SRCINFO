@@ -1,0 +1,18 @@
+pkgbase = python-discover
+	pkgdesc = Test discovery for unittest. Backported from Python 2.7 for Python 2.4+
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/discover/
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python2
+	source = https://pypi.io/packages/source/d/discover/discover-0.4.0.tar.gz
+	md5sums = 30bb643af4f5ea47fff572b5c346207d
+	sha256sums = 05c3fa9199e57d4b16fb653e02d65713adc1f89ef55324fb0c252b1cf9070d79
+	sha512sums = ae7035fb94580ccd7c419761334d028997e48456e17bf0a94e72bb71b28b3d9eb31e2a0ded5534dcfe1ebe74b352c508821a7ffed19256393ce743e9e741d248
+
+pkgname = python-discover
+
+pkgname = python2-discover
+
