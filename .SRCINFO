@@ -1,6 +1,6 @@
 pkgbase = mve-git
 	pkgdesc = Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,
-	pkgver = r1297.b9117b3
+	pkgver = r1316.65f677e
 	pkgrel = 1
 	url = http://www.gcc.tu-darmstadt.de/home/proj/mve/
 	arch = i686
@@ -23,13 +23,11 @@ pkgbase = mve-git
 	source = git+https://github.com/nmoehrle/mvs-texturing.git
 	source = git+https://github.com/flanggut/smvs.git
 	source = gtest.patch
-	source = eigen.patch::https://github.com/nmoehrle/mvs-texturing/pull/153.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 06b18787da3a61874fbe9bffd9b90090abe8339e6e91221c7b009c3fb90c655e
-	sha256sums = ef9700addddd58d5abea5f07d7e56ce073fc7cce0c0a33affd5093dd1d12875f
+	sha256sums = 1077e884f2ed19efefa8b65676ee117d039c66e64b481f7fb5887042b90cb9ae
 
 pkgname = mve-git
 

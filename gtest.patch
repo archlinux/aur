@@ -3,7 +3,7 @@ index d6d913f..9cb0080 100644
 --- a/tests/Makefile
 +++ b/tests/Makefile
 @@ -8,9 +8,9 @@ SOURCES = $(wildcard math/gtest_*.cc) $(wildcard mve/gtest_*.cc) $(wildcard sfm/
- INCLUDES = -I${MVE_ROOT}/libs -I${GTEST_PATH}/include
+ INCLUDES = -I${MVE_ROOT}/libs -I${GTEST_PATH}/googletest/include
  CXXWARNINGS = -Wall -Wextra -pedantic -Wno-sign-compare
  CXXFLAGS = -std=c++11 -pthread ${CXXWARNINGS} ${INCLUDES}
 -LDLIBS += -lpng -ltiff -ljpeg
