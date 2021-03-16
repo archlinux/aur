@@ -1,6 +1,6 @@
 pkgbase = ames
 	pkgdesc = Update anki cards with desktop audio and images
-	pkgver = v0.1.2
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/eshrh/ames
 	install = ames.install
