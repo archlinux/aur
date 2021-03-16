@@ -1,6 +1,6 @@
 pkgbase = bieaz
 	pkgdesc = boot environment manager for ZFS
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://gitlab.com/m_zhou/bieaz
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = bieaz
 	depends = zfs-utils
 	depends = sh
 	optdepends = grub: select boot environment at boot
-	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.1.3/bieaz-0.1.3.tar.gz
-	md5sums = 2601accb321cd5fb72a1f2e4f9fe0ce5
+	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.1.4/bieaz-0.1.4.tar.gz
+	md5sums = d56683891813f15f731e0164c3223a27
 
 pkgname = bieaz
 
