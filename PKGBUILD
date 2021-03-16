@@ -1,7 +1,7 @@
 # Maintainer: Yunxiang Li <shironeko@waifu.club>
 
 pkgname=gnu-poke-git
-pkgver=r3747.48148bc2
+pkgver=r4210.a5cccc4e
 pkgrel=1
 pkgdesc="Interactive, extensible editor for binary data."
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -12,6 +12,7 @@ makedepends=('help2man' 'git')
 checkdepends=('dejagnu')
 optdepends=()
 provides=('poke')
+options=('!makeflags')
 source=("
     ${pkgname}::git+https://git.savannah.gnu.org/git/poke.git"
     gnulib::git://git.sv.gnu.org/gnulib
