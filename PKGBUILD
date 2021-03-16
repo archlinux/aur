@@ -1,15 +1,15 @@
-# Contributor: grimi <grimi@poczta.fm>
+# Contributor: grimi
 
 pkgname=amigadepacker
 pkgver=0.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for depacking some compressed Amiga formats"
 arch=('i686' 'x86_64')
-url="http://zakalwe.fi/~shd/foss/amigadepacker"
+url="https://zakalwe.fi/~shd/foss/amigadepacker"
 license=('GPL')
 depends=('glibc')
-source=(http://zakalwe.fi/~shd/foss/amigadepacker/$pkgname-$pkgver.tar.bz2)
-md5sums=('06cbd36d5faf006c810a1bd978968bb5')
+source=(https://zakalwe.fi/~shd/foss/amigadepacker/$pkgname-$pkgver.tar.bz2)
+sha256sums=('bda2119919ada6310854e4486f8cb3ffc1722163747a5e176ef55e8807b7766f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
