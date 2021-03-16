@@ -33,7 +33,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
 license=('GPL2')
 depends=('qt5-multimedia' 'qt5-x11extras' 'miniupnpc' 'libxss' 'sqlcipher') # 'libmicrohttpd'
-makedepends=('git' 'qt5-tools' 'rapidjson')
+makedepends=('git' 'qt5-tools' 'rapidjson' 'cmake')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support'
             'i2pd: i2p hidden node support' )

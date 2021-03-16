@@ -12,6 +12,7 @@ pkgbase = retroshare
 	makedepends = git
 	makedepends = qt5-tools
 	makedepends = rapidjson
+	makedepends = cmake
 	depends = qt5-multimedia
 	depends = qt5-x11extras
 	depends = miniupnpc
