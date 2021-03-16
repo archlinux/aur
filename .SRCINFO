@@ -1,7 +1,7 @@
 pkgbase = thumbor
 	pkgdesc = open-source photo thumbnail service
 	pkgver = 7.0.0a5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thumbor/thumbor
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = thumbor
 	depends = python-tornado
 	depends = gifsicle
 	depends = python-libthumbor
+	depends = python-derpconf
 	backup = etc/thumbor.conf
 	source = https://github.com/thumbor/thumbor/archive/7.0.0a5.tar.gz
 	source = thumbor.service
