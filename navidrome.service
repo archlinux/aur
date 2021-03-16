@@ -1,0 +1,48 @@
+[Unit]
+Description=Navidrome Music server
+After=network.target
+Documentation=https://www.navidrome.org/docs/
+Documentation=https://github.com/navidrome/navidrome/blob/master/contrib/navidrome.service
+
+[Service]
+User=navidrome
+Group=navidrome
+
+ExecStart=/usr/bin/navidrome --configfile /etc/navidrome/navidrome.toml
+
+StateDirectory=navidrome
+WorkingDirectory=/var/lib/navidrome
+
+# Create this as the user who adds Music files
+ReadOnlyPaths=/var/lib/Music
+
+EnvironmentFile=-/etc/navidrome/envfile
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ProtectProc=invisible
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=~@clock @debug @module @mount @obsolete @privileged @reboot @setuid @swap @resources
+
+[Install]
+WantedBy=multi-user.target

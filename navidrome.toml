@@ -1,0 +1,6 @@
+# More options here: https://www.navidrome.org/docs/usage/configuration-options/#available-options
+
+LogLevel = 'INFO'
+ScanInterval = '1h'
+TranscodingCacheSize = '150MiB'
+MusicFolder = '/var/lib/Music' 
