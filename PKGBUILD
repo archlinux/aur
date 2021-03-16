@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=fstabfmt
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Format /etc/fstab files'
 arch=(x86_64)
 url='https://github.com/xyproto/fstabfmt'
 license=(BSD3)
 makedepends=(git go)
-source=("git+$url#commit=bc167f154ace6022a9bf0879b93f8377dacc6e82") # tag: v1.0.0
-sha256sums=(SKIP)
+source=("git+$url#commit=ffd615ad1915f65f37113d77d795deee5970c026") # tag: v1.1.0
+sha256sums=('SKIP')
 
 build() {
   cd $pkgname
