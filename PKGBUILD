@@ -57,7 +57,7 @@ package_python-rnablueprint() {
 }
 
 package_python2-rnablueprint() {
-  depends=('python' rnablueprint="${pkgver}")
+  depends=('pytho2' rnablueprint="${pkgver}")
   cd "$srcdir/$pkgName-$pkgver"
 	cd interfaces/Python2
 	make DESTDIR="$pkgdir" install
