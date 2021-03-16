@@ -1,7 +1,7 @@
 pkgbase = shoebill
 	pkgdesc = A Macintosh II emulator that runs A/UX
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pruten/shoebill
 	arch = i686
 	arch = x86_64

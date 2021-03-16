@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=shoebill
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Macintosh II emulator that runs A/UX"
 arch=('i686' 'x86_64')
 url="https://github.com/pruten/$pkgname"
