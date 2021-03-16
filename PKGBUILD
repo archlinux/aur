@@ -14,11 +14,6 @@ conflicts=("python-pagelabels")
 source=("${_name}-${pkgver}.tar.gz::https://github.com/lovasoa/pagelabels-py/archive/v${pkgver}.tar.gz")
 sha256sums=('409d98befa60938e059ed3a52ad9782f0b2ce32e794d54a79a9db0e6367c9ac8')
 
-prepare() {
-    pwd
-    cd "${_name}-${pkgver}"
-}
-
 build() {
     cd "${_name}-${pkgver}"
     python setup.py build
