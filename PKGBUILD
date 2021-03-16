@@ -6,7 +6,7 @@
 
 pkgname=nnn-icons
 pkgver=3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The fastest terminal file manager ever written. (with icon support)"
 arch=('x86_64')
 depends=('bash' 'icons-in-terminal')
