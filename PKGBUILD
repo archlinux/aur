@@ -5,8 +5,8 @@ _name="${pkgname#python-}"
 pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 
 arch=("x86_64" "i686")
 license=("BSD")
@@ -22,7 +22,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("83a56fc39a9cedd73c2831afa458ec693ec248e934a45db63027d9c3d4479b86")
+sha256sums=("7f87330e5409c1886dfb9215223b1a41c8fdf9deb186799a46b958ae7a797ea8")
 
 prepare() {
     rm -Rf "${srcdir}/*/*.egg-info"
