@@ -2,8 +2,8 @@
 # Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=bitwarden-git
-pkgver=1.24.6.r105.g368ac0ba
-pkgrel=2
+pkgver=1.24.6.r121.gb3af3558
+pkgrel=1
 _nodeversion='12.18.3'
 pkgdesc='Bitwarden Desktop Application (development version)'
 arch=('x86_64')
@@ -59,10 +59,10 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname%-git}"
+	_ensure_local_nvm
 	export npm_config_cache="$srcdir/npm_cache"
 	local npm_prefix=$(npm config get prefix)
 	npm config delete prefix
-	_ensure_local_nvm
 	nvm use ${_nodeversion}
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	npm install

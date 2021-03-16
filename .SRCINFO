@@ -1,7 +1,7 @@
 pkgbase = bitwarden-git
 	pkgdesc = Bitwarden Desktop Application (development version)
-	pkgver = 1.24.6.r105.g368ac0ba
-	pkgrel = 2
+	pkgver = 1.24.6.r121.gb3af3558
+	pkgrel = 1
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
 	license = GPL3
