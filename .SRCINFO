@@ -1,6 +1,6 @@
 pkgbase = python-telethon
 	pkgdesc = Full-featured Telegram client library for Python 3
-	pkgver = 1.21
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://github.com/LonamiWebs/Telethon
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-telethon
 	makedepends = python-setuptools
 	depends = python-pyaes
 	depends = python-rsa
-	source = https://files.pythonhosted.org/packages/source/T/Telethon/Telethon-1.21.tar.gz
-	sha256sums = 8ce569183ea0824133c263b6ea3ae98224608fd319a2ada4f98387e31a3ee51a
+	source = https://files.pythonhosted.org/packages/source/T/Telethon/Telethon-1.21.1.tar.gz
+	sha256sums = 993c837ef745addf972a27d7bfba0ce518a2863d1a50e0737255b764d23e0ef2
 
 pkgname = python-telethon
 
