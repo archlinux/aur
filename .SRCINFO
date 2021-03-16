@@ -1,0 +1,17 @@
+pkgbase = thonkbar-git
+	pkgdesc = minimalist block based lemonbar wrapper
+	pkgver = r18.873a964
+	pkgrel = 1
+	url = https://github.com/JoseFilipeFerreira/thonkbar
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = lemonbar-xft-git
+	provides = thonkbar
+	conflicts = thonkbar
+	source = git+https://github.com/JoseFilipeFerreira/thonkbar
+	md5sums = SKIP
+
+pkgname = thonkbar-git
+
