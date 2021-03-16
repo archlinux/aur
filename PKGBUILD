@@ -1,6 +1,6 @@
 # Maintainer: Temuri Takalandze <takalandzet@gmail.com>
 pkgname=goclockify
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A terminal based client for Clockify time tracker'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/ABGEO/goclockify'
 license=('MIT')
 makedepends=('go' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dafdb43daaf6eb7e7c3a321dd732cbe71873ec029c1f58d881ce5058be8ff636')
+sha256sums=('69f0bf1fbc0a005a9a7579ef47ad24e39df6c326c71f3439f1be7695ba9a463c')
 
 pkgver() {
     cd "${srcdir}/${pkgname}-${pkgver}"
