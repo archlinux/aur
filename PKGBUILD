@@ -11,6 +11,7 @@ makedepends=('git' 'meson' 'wayland-protocols')
 optdepends=('xorg-xwayland: X.org support under Wayland')
 provides=('vivarium')
 conflicts=('vivarium')
+install="$pkgname.install"
 source=("git+$url")
 md5sums=('SKIP')
 

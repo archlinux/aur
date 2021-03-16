@@ -1,0 +1,5 @@
+post_install()  {
+  printf ":: Vivarium can be configured either by its config.toml file\n"
+  printf ":: or its config.h header file.\n"
+  printf ":: You can also create one under $HOME/.config/vivarium/\n\n"
+}
