@@ -1,0 +1,20 @@
+pkgbase = vivarium-git
+	pkgdesc = A dynamic tiling wlroots compositor inspired by xmonad
+	pkgver = 0.0.1.r2.g28212ea
+	pkgrel = 1
+	url = https://github.com/inclement/vivarium
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = wlroots
+	depends = xcb-util-renderutil
+	optdepends = xorg-xwayland: X.org support under Wayland
+	provides = vivarium
+	conflicts = vivarium
+	source = git+https://github.com/inclement/vivarium
+	md5sums = SKIP
+
+pkgname = vivarium-git
+
