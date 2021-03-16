@@ -1,0 +1,22 @@
+pkgbase = python-pymemcache
+	pkgdesc = A comprehensive, fast, pure Python memcached client
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://github.com/pinterest/pymemcache
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-six
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-six
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/p/pymemcache/pymemcache-3.4.1.tar.gz
+	md5sums = 438913139cd3bf589ad2e39fed390ffe
+	sha256sums = deba75d6d16206e846916570cf9fabd4cf7d7c72ec86e3bdcc65e032f01418e9
+	sha512sums = ff70fc47c5f22ba7f472e2de016d39fd3ce4d277e6e31bbedde5934966fb65fb8d4bc1e8a6a878757c472a24a9704d4a1536b66643789294a3ba12ef3a83c7cd
+
+pkgname = python-pymemcache
+
+pkgname = python2-pymemcache
+
