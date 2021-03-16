@@ -10,7 +10,7 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.30.0
+pkgver=1.30.2
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -22,7 +22,7 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs iwd dnsmasq openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=fc29a96097e0f11ab963c27036b6b8b3e1f3d42b  # tags/1.30.0^0
+_commit=8a12494f3ab31b3fd68c5120e2822082a805dba6  # tags/1.30.2^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
@@ -122,7 +122,7 @@ END
   # packaged configuration
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf" <<END
 [connectivity]
-uri=http://archlinux.org/check_network_status.txt
+uri=http://ping.archlinux.org/nm-check.txt
 END
 
   # iwd wifi backend
