@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-3.1
 	pkgver = 3.1.13.sdk407
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = dotnet-core-3.1
 	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/94a88a85-be1e-464a-8cdd-6eb23d8559a1/b715559dd50aec6097db76ca50e2154b/dotnet-sdk-3.1.407-linux-arm64.tar.gz
 	sha512sums_aarch64 = 4ae1c92bd4cdf0ea459591e87aea0e2f560df9d2c406e68dcf6667576ebf7761817683b565d42aeca74a6f03cdb8342d3fd1f9c81a4657a78043a5f765dc549c
 
-pkgname = aspnet-runtime-3.1
+pkgname = aspnet-runtime-3.1-bin
 	pkgdesc = The ASP.NET Core runtime 3.1 (binary)
 	depends = dotnet-runtime-3.1
 	provides = aspnet-runtime=3.1.13
@@ -22,7 +22,7 @@ pkgname = aspnet-runtime-3.1
 	conflicts = aspnet-runtime=3.1.13
 	conflicts = aspnet-runtime-3.1
 
-pkgname = dotnet-runtime-3.1
+pkgname = dotnet-runtime-3.1-bin
 	pkgdesc = The .NET Core runtime 3.1 (binary)
 	depends = dotnet-host
 	depends = glibc
@@ -38,7 +38,7 @@ pkgname = dotnet-runtime-3.1
 	conflicts = dotnet-runtime=3.1.13
 	conflicts = dotnet-runtime-3.1
 
-pkgname = dotnet-sdk-3.1
+pkgname = dotnet-sdk-3.1-bin
 	pkgdesc = The .NET Core SDK 3.1 (binary)
 	depends = dotnet-runtime-3.1
 	depends = glibc
@@ -50,7 +50,7 @@ pkgname = dotnet-sdk-3.1
 	conflicts = dotnet-sdk=3.1.13.sdk407
 	conflicts = dotnet-sdk-3.1
 
-pkgname = dotnet-targeting-pack-3.1
+pkgname = dotnet-targeting-pack-3.1-bin
 	pkgdesc = The .NET Core targeting pack 3.1 (binary)
 	depends = netstandard-targeting-pack-2.1
 	provides = dotnet-targeting-pack=3.1.13
@@ -58,7 +58,7 @@ pkgname = dotnet-targeting-pack-3.1
 	conflicts = dotnet-targeting-pack=3.1.13
 	conflicts = dotnet-targeting-pack-3.1
 
-pkgname = aspnet-targeting-pack-3.1
+pkgname = aspnet-targeting-pack-3.1-bin
 	pkgdesc = The ASP.NET Core targeting pack 3.1 (binary)
 	depends = dotnet-targeting-pack-3.1
 	provides = aspnet-targeting-pack=3.1.13

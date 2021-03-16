@@ -2,16 +2,16 @@
 
 pkgbase=dotnet-core-3.1
 pkgname=(
-  'aspnet-runtime-3.1'
-  'dotnet-runtime-3.1'
-  'dotnet-sdk-3.1'
-  'dotnet-targeting-pack-3.1'
-  'aspnet-targeting-pack-3.1'
+  'aspnet-runtime-3.1-bin'
+  'dotnet-runtime-3.1-bin'
+  'dotnet-sdk-3.1-bin'
+  'dotnet-targeting-pack-3.1-bin'
+  'aspnet-targeting-pack-3.1-bin'
  )
 pkgver=3.1.13.sdk407
 _runtimever=3.1.13
 _sdkver=3.1.407
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -23,7 +23,7 @@ sha512sums_armv7h=('a60a272673842470ec3b32addd2ce2c3528b36315ba9c0b4237847b7e0b3
 sha512sums_aarch64=('4ae1c92bd4cdf0ea459591e87aea0e2f560df9d2c406e68dcf6667576ebf7761817683b565d42aeca74a6f03cdb8342d3fd1f9c81a4657a78043a5f765dc549c')
 sha512sums_x86_64=('b9c61061464a38df0a3eb5894a4a1229cd27d2ccba4168e434f4609b763630c01fbe1b2564826194d6d9b5ad86047e586312c0f35eafc3755dfe0ff9ba075c0c')
 
-package_dotnet-runtime-3.1() {
+package_dotnet-runtime-3.1-bin() {
   pkgdesc='The .NET Core runtime 3.1 (binary)'
   depends=('dotnet-host'
            'glibc'
@@ -43,7 +43,7 @@ package_dotnet-runtime-3.1() {
   ln -s dotnet-host-3.1 "${pkgdir}"/usr/share/licenses/dotnet-runtime-3.1
 }
 
-package_aspnet-runtime-3.1() {
+package_aspnet-runtime-3.1-bin() {
   pkgdesc='The ASP.NET Core runtime 3.1 (binary)'
   depends=('dotnet-runtime-3.1')
   provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-3.1")
@@ -54,7 +54,7 @@ package_aspnet-runtime-3.1() {
   ln -s dotnet-host-3.1 "${pkgdir}"/usr/share/licenses/aspnet-runtime-3.1
 }
 
-package_dotnet-sdk-3.1() {
+package_dotnet-sdk-3.1-bin() {
   pkgdesc='The .NET Core SDK 3.1 (binary)'
   depends=(
     'dotnet-runtime-3.1'
@@ -69,7 +69,7 @@ package_dotnet-sdk-3.1() {
   ln -s dotnet-host-3.1 "${pkgdir}"/usr/share/licenses/dotnet-sdk-3.1
 }
 
-package_dotnet-targeting-pack-3.1() {
+package_dotnet-targeting-pack-3.1-bin() {
   pkgdesc='The .NET Core targeting pack 3.1 (binary)'
   depends=(netstandard-targeting-pack-2.1)
   provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.1)
@@ -84,7 +84,7 @@ package_dotnet-targeting-pack-3.1() {
   ln -s dotnet-host-3.1 "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-3.1
 }
 
-package_aspnet-targeting-pack-3.1() {
+package_aspnet-targeting-pack-3.1-bin() {
   pkgdesc='The ASP.NET Core targeting pack 3.1 (binary)'
   depends=(dotnet-targeting-pack-3.1)
   provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-3.1)
