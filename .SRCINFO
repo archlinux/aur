@@ -8,6 +8,7 @@ pkgbase = memavaild-git
 	license = MIT
 	makedepends = git
 	depends = python
+	provides = memavaild
 	conflicts = memavaild
 	backup = etc/memavaild.conf
 	source = memavaild-git::git+https://github.com/hakavlad/memavaild.git#branch=master
