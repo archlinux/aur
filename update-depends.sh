@@ -31,6 +31,7 @@ echo "$pkgs" | grep -q meson             && move_to_makedepends meson
 echo "$pkgs" | grep -q wayland-protocols && move_to_makedepends wayland-protocols
 echo "$pkgs" | grep -q wayland           && move_to_makedepends wayland
 echo "$pkgs" | grep -q systemd-libs      && move_to_makedepends systemd-libs
+echo "$pkgs" | grep -q scdoc             && move_to_makedepends scdoc
 
 # Strip out empty lines
 pkgs="$(echo "$pkgs" | sed '/^$/d')"
