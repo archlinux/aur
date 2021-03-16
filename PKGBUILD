@@ -2,13 +2,14 @@
 # contributors: yochananmarqos, bpierre, PedroHLC, rodrigo21
 pkgname='lib32-vkbasalt'
 pkgver=0.3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
 license=('zlib')
-makedepends=('meson' 'ninja' 'glslang' 'lib32-gcc-libs' 'lib32-libx11')
-depends=('lib32-gcc-libs' 'lib32-libx11' 'vkbasalt' )
+makedepends=('meson' 'ninja' 'glslang' 'spirv-headers' 'vulkan-headers'
+             'lib32-gcc-libs' 'lib32-libx11')
+depends=('lib32-gcc-libs' 'lib32-libx11' 'vkbasalt')
 source=("${url}/releases/download/v${pkgver}/vkBasalt-${pkgver}.tar.gz")
 sha256sums=('f45d513d9f212e9a1e1ec49448e72c5f2510d62303c38fdb5015b9a3afd42b26')
 

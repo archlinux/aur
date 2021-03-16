@@ -1,13 +1,15 @@
 pkgbase = lib32-vkbasalt
 	pkgdesc = A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.
 	pkgver = 0.3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DadSchoorse/vkBasalt
 	arch = x86_64
 	license = zlib
 	makedepends = meson
 	makedepends = ninja
 	makedepends = glslang
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libx11
 	depends = lib32-gcc-libs
