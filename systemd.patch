@@ -1,0 +1,9 @@
+@@ -5,7 +5,7 @@
+ [Service]
+ Type = simple
+ Environment="GODEBUG=madvdontneed=1"
+-ExecStart = /path/to/torrserver -d /path/to/db/
++ExecStart = /usr/bin/torrserver -d /var/lib/torrserver
+ ExecReload = /bin/kill -HUP ${MAINPID}
+ ExecStop = /bin/kill -INT ${MAINPID}
+ TimeoutSec = 30

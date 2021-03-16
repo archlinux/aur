@@ -1,9 +1,11 @@
 post_install() {
+	mkdir /var/lib/torrserver
 	# Load service file
 	systemctl --quiet daemon-reload
-	}
+}
 
 post_upgrade() {
+	mkdir /var/lib/torrserver
 	# Reload service file
 	systemctl --quiet daemon-reload
 }
