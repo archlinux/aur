@@ -19,9 +19,10 @@ sha256sums=('f3f56dccd00f669a5f0a4b1f6507ab78e0d1ad18305b760baab34edc68b3ef4e'
 prepare() {
   mv "${srcdir}/${pkgname}-3.4" "${srcdir}/${pkgname}-${pkgver}"
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's|/depot/path/wish|/usr/bin/wish|' "${pkgname}"
-  sed -i -e 's|nist.gov|sourceforge.net|g' -e 's|#install||' \
-	-e 's|#directions||' README
+  sed -i -e 's|/depot/path/wish|/usr/bin/wish|' \
+	-e 's|expect.nist.gov|expect.sourceforge.net|g' "${pkgname}"
+  sed -i -e 's|expect.nist.gov|expect.sourceforge.net|g' -e 's|#install||' \
+	-e 's|#directions||' README 
 }
 
 package() {
