@@ -14,11 +14,6 @@ conflicts=("python-makelove")
 source=("${_name}-${pkgver}.tar.gz::https://github.com/pfirsich/makelove/archive/v${pkgver}.tar.gz")
 sha256sums=('de541fed68b4e34d2545f0284ca598cde2f2636c198f9e2bf4095b1d5f3f4817')
 
-prepare() {
-    pwd
-    cd "${_name}-${pkgver}"
-}
-
 build() {
     cd "${_name}-${pkgver}"
     python setup.py build
