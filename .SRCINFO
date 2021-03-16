@@ -1,0 +1,16 @@
+pkgbase = tz-git
+	pkgdesc = A time zone helper
+	pkgver = 20210315.877270d
+	pkgrel = 1
+	url = https://github.com/oz/tz/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = go
+	provides = tz
+	conflicts = tz
+	source = tz-git::git+https://github.com/oz/tz/
+	sha1sums = SKIP
+
+pkgname = tz-git
+
