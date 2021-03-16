@@ -1,0 +1,35 @@
+pkgbase = python-whereto
+	pkgdesc = Test Apache redirect rules.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://docs.openstack.org/whereto/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-coverage
+	checkdepends = python-subunit
+	checkdepends = python-sphinx
+	checkdepends = python-oslotest
+	checkdepends = python-testrepository
+	checkdepends = python-testtools
+	checkdepends = python-openstackdocstheme
+	checkdepends = python-reno
+	checkdepends = python-sphinxcontrib-autoprogram
+	checkdepends = python-openstackdocstheme
+	makedepends = python
+	makedepends = python-pbr
+	makedepends = python-pcre
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-pbr
+	makedepends = python2-pcre
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/w/whereto/whereto-0.4.0.tar.gz
+	md5sums = 7bcd145ed84a895df5b53aab92c18768
+	sha256sums = 0212ee7341ec9b2d0c3771eb4ff1ef73235ab3f24df02e2fbfab4867c31479c4
+	sha512sums = 999f52d185f47ad4a9a2f9c249f0af75f97ae498fb91f4c429dc8ce3509a2c9b0976b935191f3f860c7eadcb74c2363c4d0a8dea72b5e85ec18c1d1dac26e442
+
+pkgname = python-whereto
+
+pkgname = python2-whereto
+
