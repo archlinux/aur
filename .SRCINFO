@@ -1,14 +1,14 @@
 pkgbase = clib
 	pkgdesc = C package manager-ish
-	pkgver = 2.1.13
+	pkgver = 2.7.0
 	pkgrel = 1
-	url = https://github.com/clibs/clib
+	url = https://www.clibs.org
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
 	depends = curl
-	source = clib-2.1.13.tar.gz::https://github.com/clibs/clib/archive/2.1.13.tar.gz
-	sha512sums = 14b6a0fa7495cdb08434e76226579e5f68362ab1dab88b85b4bb16555d1bd2e29892feea375773c755023fdaf7c4ead7ac9732d8f90ceeaaedd22c2c47d57bb7
+	source = clib-2.7.0.tar.gz::https://github.com/clibs/clib/archive/2.7.0.tar.gz
+	sha512sums = 32168f924e788206f1c4c067fdcdc22ceeb02905fabeb74d81d94f5b452793b06901dbac793f65332e009241ae6712a8aa47c3ad755ba4a35429b1ef215675f3
 
 pkgname = clib
 
