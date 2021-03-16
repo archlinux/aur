@@ -12,7 +12,7 @@ depends=('gnucap' 'boost' 'jack')
 makedepends=('git')
 provides=('gnucap-jack')
 conflicts=('gnucap-jack')
-source=("$_pkgname::git+git://codeberg.org/gnucap/$_pkgname.git#branch=develop")
+source=("$_pkgname::git+https://codeberg.org/gnucap/$_pkgname.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
