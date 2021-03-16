@@ -3,18 +3,22 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-spotdl
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Download songs from YouTube using Spotify song URLs or playlists with albumart and meta-tags."
 arch=('any')
 license=('MIT')
 url="https://github.com/spotDL/spotify-downloader"
-depends=('python-setuptools' 'ffmpeg' 'python-spotipy' 'python-pytube' 'python-rich' 'python-rapidfuzz' 'python-mutagen' 'python-ytmusicapi' 'python-tqdm')
+depends=('python-setuptools' 'ffmpeg' 'python-spotipy' 'python-pytube' 'python-rich' 'python-rapidfuzz' 'python-mutagen' 'python-ytmusicapi' 'python-tqdm' 'python-beautifulsoup4')
 source=("https://pypi.io/packages/source/s/spotdl/spotdl-$pkgver.tar.gz")
-sha512sums=('f8f4f5c98fe105728a0ff8513a09354eaa68a362d42f00c61cd0b7ece475072dac9d46444adeb501b9eba45f5260a1d16e971982539961a6dbc4468c2cca69e2')
+sha512sums=('98d2c726f44cae48f605d16971c0487a547510f9afcbf669ec34ea7ce8df8b4b79dbeb7506d4e45a36df8bd5a55191bd0dde05fa75dc4ce62ec6d7881d0f91fa')
 
 build() {
   cd spotdl-$pkgver
+
+  # bs4 is a metapackage, we have to install beautifulsoup4 instead
+  sed -i 's/bs4/beautifulsoup4/' setup.cfg
+
   python setup.py build
 }
 
