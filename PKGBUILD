@@ -3,7 +3,7 @@
 pkgname=jrnl-git
 _gitname=jrnl
 pkgver=v2.8.beta.r1.g7bacf4a
-pkgrel=1
+pkgrel=2
 pkgdesc="Collect your thoughts and notes without leaving the command line"
 arch=('any')
 url="https://jrnl.sh/"
