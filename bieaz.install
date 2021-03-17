@@ -1,7 +1,10 @@
 #!/bin/sh
 pre_upgrade() {
-	mv /etc/bieaz.cfg /etc/bieaz.cfg.old
-	echo "moved config file to /etc/bieaz.cfg.old"
+	if [ -f /etc/bieaz.cfg ]; then
+		epoch=$(date +%s)
+		mv /etc/bieaz.cfg /etc/bieaz.cfg.${epoch}.old
+		echo "moved old config file to /etc/bieaz.cfg.${epoch}.old"
+	fi
 };
 post_upgrade() {
 	bieaz update-menu -g
