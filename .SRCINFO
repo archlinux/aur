@@ -1,7 +1,7 @@
 pkgbase = bieaz
 	pkgdesc = boot environment manager for ZFS
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/m_zhou/bieaz
 	install = bieaz.install
 	arch = any

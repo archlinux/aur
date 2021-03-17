@@ -2,7 +2,7 @@
 
 pkgname=bieaz
 pkgver="0.2.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="boot environment manager for ZFS"
 arch=(any)
 url="https://gitlab.com/m_zhou/bieaz"
