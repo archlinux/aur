@@ -1,12 +1,13 @@
 pkgbase = gst-plugins-rs-git
 	pkgdesc = GStreamer plugins written in Rust
-	pkgver = r7.3b5bdc1
+	pkgver = r3.3af6aa9
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
 	license = MIT
 	license = Apache
+	makedepends = cargo-c
 	makedepends = rust
 	makedepends = git
 	makedepends = meson
