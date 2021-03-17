@@ -7,7 +7,7 @@ pkgbase = rearx
 	license = GPL v3.0
 	provides = rearx
 	options = strip
-	source = https://github.com/garak92/rearx/blob/master/releases/download/v0.1.0/rearx-0.1.0-x86_64.tar.gz
+	source = https://github.com/garak92/rearx/releases/tag/v0.1.0/rearx-0.1.0-x86_64.tar.gz
 	sha256sums = c07d96264d4254c1a65464dbba78de58a90dc3ffb1ee38b8d798fe6558fd6f45
 
 pkgname = rearx
