@@ -1,0 +1,16 @@
+pkgbase = fpga-interchange-schema-git
+	pkgdesc = FPGA interchange schema definitions
+	pkgver = r22.cb6d168
+	pkgrel = 1
+	url = https://github.com/SymbiFlow/fpga-interchange-schema
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = capnproto-java
+	provides = fpga-interchange-schema=r22.cb6d168
+	conflicts = fpga-interchange-schema
+	source = git+https://github.com/SymbiFlow/fpga-interchange-schema.git
+	sha256sums = SKIP
+
+pkgname = fpga-interchange-schema-git
+
