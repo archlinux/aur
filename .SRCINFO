@@ -1,7 +1,7 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Provide no longer existing packages for find and fix AUR pkgbuilds
-	pkgver = 20210315
-	pkgrel = 2
+	pkgver = 20210317
+	pkgrel = 1
 	arch = any
 	license = GPL
 	provides = tui
@@ -29,6 +29,9 @@ pkgbase = ghost-deps-meta
 	provides = opencl-catalyst
 	provides = xcursor-hackneyed
 	provides = eject
+	provides = jdk5
+	provides = python2-jswebkit
+	provides = skype
 
 pkgname = ghost-deps-meta
 
