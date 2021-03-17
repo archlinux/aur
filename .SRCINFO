@@ -1,6 +1,6 @@
 pkgbase = logseq-desktop-git
 	pkgdesc = A privacy-first, open-source platform for knowledge sharing and management. (system electron)
-	pkgver = 0.0.13.r4.4bb95ef2
+	pkgver = 0.0.13.r6.11ee002e
 	pkgrel = 1
 	url = https://github.com/logseq/logseq
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = logseq-desktop-git
 	makedepends = electron
 	provides = logseq-desktop
 	conflicts = logseq-desktop
+	conflicts = logseq-desktop-bin
 	source = logseq-desktop-git::git+https://github.com/logseq/logseq
 	source = system_electron.patch
 	source = logseq-desktop.desktop
