@@ -1,6 +1,6 @@
 pkgbase = soundux
 	pkgdesc = A cross-platform soundboard
-	pkgver = 0.2.1
+	pkgver = 0.2.2_b1
 	pkgrel = 1
 	url = https://github.com/Soundux/Soundux
 	arch = any
@@ -12,10 +12,7 @@ pkgbase = soundux
 	depends = webkit2gtk
 	provides = soundux
 	conflicts = soundux
-	source = git+https://github.com/Soundux/Soundux#tag=0.2.1
-	source = soundux.desktop
+	source = git+https://github.com/Soundux/Soundux#tag=0.2.2_b1
 	sha256sums = SKIP
-	sha256sums = 9ba572406c69e23c43ae419fde2bcefb4eade15e4e8ed9c082324b11d7e35184
 
 pkgname = soundux
-

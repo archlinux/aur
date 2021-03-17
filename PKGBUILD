@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
-pkgver=0.2.1
+pkgver=0.2.2_b1
 pkgrel=1
 pkgdesc="A cross-platform soundboard"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('pulseaudio' 'webkit2gtk')
 makedepends=('git' 'cmake' 'ninja')
 conflicts=('soundux')
 provides=('soundux')
-source=("git+https://github.com/Soundux/Soundux#tag=$pkgver" "soundux.desktop")
-sha256sums=('SKIP' '9ba572406c69e23c43ae419fde2bcefb4eade15e4e8ed9c082324b11d7e35184')
+source=("git+https://github.com/Soundux/Soundux#tag=$pkgver")
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/Soundux"
@@ -23,15 +23,14 @@ build() {
 }
 
 package() {
-  # install binary
-  install -Dm 755 "${srcdir}/Soundux/build/soundux" "${pkgdir}/opt/soundux/soundux"
+  cd "${srcdir}/Soundux/build"
+  DESTDIR="$pkgdir/" ninja install
+  # install binary symlink
   mkdir -p "${pkgdir}/usr/bin/"
   ln -sf /opt/soundux/soundux "${pkgdir}/usr/bin/soundux"
-  # install dist
-  mkdir -p "${pkgdir}/opt/soundux/dist"
-  cp -r "${srcdir}/Soundux/build/dist"/* "${pkgdir}/opt/soundux/dist"
-  # install icon
-  install -Dm 664 "${srcdir}/Soundux/assets/icon.png" "${pkgdir}/usr/share/pixmaps/soundux.png"
-  # install desktop file
-  install -Dm 644 "${srcdir}/soundux.desktop" "${pkgdir}/usr/share/applications/soundux.desktop"
+  
+  # install doc
+  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/Soundux/README.md"
+  # install license
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/Soundux/LICENSE"
 }
