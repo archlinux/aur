@@ -3,9 +3,9 @@
 pkgname=gawk-xml
 _project=gawkextlib
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GAWK extension - interface to Expat for parsing XML"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL')
 depends=('expat' 'gawkextlib')
