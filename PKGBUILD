@@ -1,4 +1,6 @@
 # Maintainer: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
+# Contributor: Simon Gardling <titaniumtown@gmail.com>
+# Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
 pkgname=gnome-shell-git
 _pkgname=gnome-shell
