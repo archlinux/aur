@@ -21,7 +21,12 @@ pkgver()  {
 
 build() {
   cd bato
-  cargo build --release
+  cargo build --release --locked --all-features --target-dir=target
+}
+
+check() {
+  cd bato
+  cargo test --release --locked --target-dir=target
 }
 
 package() {
