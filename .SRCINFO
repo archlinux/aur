@@ -1,11 +1,12 @@
 pkgbase = sqlcrush-git
 	pkgdesc = console based database editor
 	pkgver = r26.502a583
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coffeeandscripts/sqlcrush
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-sqlalchemy
 	conflicts = sqlcrush
 	source = sqlcrush-git::git+https://github.com/coffeeandscripts/sqlcrush.git
