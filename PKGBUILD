@@ -7,14 +7,14 @@
 _pkgname=qemu-user-static
 pkgname=$_pkgname-bin
 pkgver=5.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A generic and open source machine emulator, statically linked'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.qemu.org"
 license=('GPL2' 'LGPL2.1')
 depends=('binfmt-qemu-static')
-provides=("qemu-user")
-conflicts=("qemu-user")
+provides=("qemu-user" "$_pkgname")
+conflicts=("qemu-user" "$_pkgname")
 
 _pkgadditver="+dfsg-8"
 source_i686=("https://deb.debian.org/debian/pool/main/q/qemu/${_pkgname}_${pkgver}${_pkgadditver}_i386.deb")
