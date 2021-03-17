@@ -8,8 +8,8 @@ pkgbase = libinputsynth-git
 	license = MIT
 	makedepends = meson
 	makedepends = git
-	makedepends = xdotool
 	depends = glib2
+	depends = xdotool
 	provides = libinputsynth=0.15.0.62.6ddcfd2
 	conflicts = libinputsynth
 	options = debug
