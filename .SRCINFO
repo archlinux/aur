@@ -1,0 +1,49 @@
+pkgbase = obs-studio-tytan652
+	pkgdesc = Free and open source software for video recording and live streaming. Built with Browser and VST plugins plus some patches and without FTL and Python.
+	pkgver = 26.1.2
+	pkgrel = 1
+	url = https://github.com/obsproject/obs-studio
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libfdk-aac
+	makedepends = libxcomposite
+	makedepends = x264
+	makedepends = jack
+	makedepends = vlc
+	makedepends = swig
+	makedepends = luajit
+	makedepends = python
+	makedepends = cef-minimal-3770
+	depends = ffmpeg
+	depends = jansson
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = qt5-x11extras
+	depends = curl
+	depends = gtk-update-icon-cache
+	optdepends = libfdk-aac: FDK AAC codec support
+	optdepends = libxcomposite: XComposite capture support
+	optdepends = jack: JACK Support
+	optdepends = vlc: VLC Media Source
+	optdepends = swig: Scripting
+	optdepends = luajit: Lua scripting
+	optdepends = v4l2loopback-dkms: Virtual camera output
+	provides = obs-studio=26.1.2
+	conflicts = obs-studio
+	conflicts = obs-linuxbrowser
+	source = obs-studio-tytan652::git+https://github.com/obsproject/obs-studio.git#tag=26.1.2
+	source = bind_iface.patch::https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
+	source = git+https://github.com/obsproject/obs-browser.git
+	source = git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
+	source = VST_PATH_fix.patch::https://patch-diff.githubusercontent.com/raw/obsproject/obs-vst/pull/82.patch
+	sha256sums = SKIP
+	sha256sums = 4ee347b12a9cc93bad2357a2ba29341a846da7e0ff80a3bf3e88c3b661643595
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 169af464164ef05384586f31fbde3d509159976e0afb914907fb3cf395adaf6e
+
+pkgname = obs-studio-tytan652
+
