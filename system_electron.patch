@@ -1,0 +1,77 @@
+diff --git a/deps.edn b/deps.edn
+index 686b080e..0d3a2155 100755
+--- a/deps.edn
++++ b/deps.edn
+@@ -1,4 +1,5 @@
+ {:paths ["src/main"]
++ :mvn/local-repo ".m2/repository"
+  :deps
+  {org.clojure/clojure         {:mvn/version "1.10.0"}
+   cheshire/cheshire {:mvn/version "5.10.0"}
+diff --git a/gulpfile.js b/gulpfile.js
+index 1cf6f943..45df9e6c 100644
+--- a/gulpfile.js
++++ b/gulpfile.js
+@@ -122,3 +122,4 @@ exports.electronMaker = async () => {
+ exports.clean = common.clean
+ exports.watch = gulp.parallel(common.keepSyncResourceFile, css.watchCSS)
+ exports.build = gulp.series(common.clean, common.syncResourceFile, css.buildCSS)
++exports.syncResourceFile = common.syncResourceFile
+diff --git a/package.json b/package.json
+index 2f4d41f5..7f1adb49 100644
+--- a/package.json
++++ b/package.json
+@@ -63,7 +63,6 @@
+         "codemirror": "^5.58.1",
+         "diff": "5.0.0",
+         "diff-match-patch": "^1.0.5",
+-        "electron": "^11.2.0",
+         "fs": "^0.0.1-security",
+         "fs-extra": "^9.1.0",
+         "fuse.js": "^6.4.6",
+diff --git a/resources/forge.config.js b/resources/forge.config.js
+index 5a2f780c..7d2b8698 100644
+--- a/resources/forge.config.js
++++ b/resources/forge.config.js
+@@ -33,10 +33,6 @@ module.exports = {
+     },
+     {
+       name: '@electron-forge/maker-zip',
+-      platforms: ['darwin', 'linux']
+-    },
+-    {
+-      name: 'electron-forge-maker-appimage',
+       platforms: ['linux']
+     }
+   ],
+@@ -52,5 +48,11 @@ module.exports = {
+         prerelease: true
+       }
+     }
++  ],
++
++  plugins: [
++    ['@electron-forge/plugin-local-electron', {
++      electronPath: '/usr/lib/electron'
++    }]
+   ]
+ }
+diff --git a/resources/package.json b/resources/package.json
+index b59df68c..4ad708dc 100644
+--- a/resources/package.json
++++ b/resources/package.json
+@@ -24,12 +24,10 @@
+   },
+   "devDependencies": {
+     "@electron-forge/cli": "^6.0.0-beta.54",
+-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+     "@electron-forge/maker-zip": "^6.0.0-beta.54",
+-    "electron-forge-maker-appimage": "trusktr/electron-forge-maker-appimage#patch-1",
+-    "electron": "11.2.0"
++    "@electron-forge/plugin-local-electron": "^6.0.0-beta.54",
++    "electron": "^11.2.0"
+   }
+ }
