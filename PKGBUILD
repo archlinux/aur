@@ -74,8 +74,9 @@ pkgver() {
 }
 
 prepare() {
+  buildir="${srcdir}"/build
   # Directory for out of source build
-  [[ -d ../build ]] || mkdir ../build
+  [[ -d "${buildir}" ]] || mkdir "${buildir}"
 
   # Update Git sub-modules
   cd "${srcdir}/${realname}"
@@ -91,8 +92,6 @@ prepare() {
   autoconf
   [[ -f /usr/include/netcdf.h ]] && \
     sed -i "s-\(ac_subdirs_all='\)contrib/netcdf/v4-\1-g; s-\(subdirs=\"\$subdirs\) contrib/netcdf/v4-\1-g" configure
-  # Go back
-  cd "${srcdir}"
 
   # # Force NLOpt
 
@@ -114,7 +113,8 @@ prepare() {
 build() {
   # This happens in ${pkgdir} (out-of-source)
   # Out of source build (recommended by Roy Stogner)
-  cd ../build
+  buildir="${srcdir}"/build
+  cd "${buildir}"
 
   CONFOPTS=(
     --enable-petsc-hypre-required # recommended by MOOSE
@@ -159,7 +159,8 @@ build() {
 }
 
 check() {
-  cd ../build
+  buildir="${srcdir}"/build
+  cd "${buildir}"
   make check
 }
 
@@ -176,5 +177,7 @@ package() {
   cp -a "${pkgdir}"/usr/examples "${pkgdir}/usr/share/doc/${realname}/"
 
   rm -r "${pkgdir}"/usr/contrib || echo "removed "
+  buildir="${srcdir}"/build
+  cd "${buildir}"
   rm "${pkgdir}"/usr/Make.common || echo "removed"
 }
