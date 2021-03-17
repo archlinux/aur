@@ -1,0 +1,28 @@
+pkgbase = python-zvmcloudconnector
+	pkgdesc = z/VM cloud management library in Python
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/mfcloud/python-zvm-sdk
+	arch = any
+	license = Apache
+	checkdepends = python-mock
+	checkdepends = python-subunit
+	checkdepends = python-pyaml
+	checkdepends = python-pytest
+	checkdepends = python-sphinx
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jsonschema
+	depends = python-netaddr
+	depends = python-pyjwt
+	depends = python-requests
+	depends = python-routes
+	depends = python-six
+	depends = python-webob
+	source = https://pypi.io/packages/source/z/zVMCloudConnector/zVMCloudConnector-1.4.1.tar.gz
+	md5sums = db19aec9bc5ae0f5cfeb80439ad53898
+	sha256sums = f24a37d5a0206e791398b6e7ae4698255cc6fa6e1d23548128259711b79ce7bf
+	sha512sums = 206776bd04ef547df530438efe6209db7374c33727d13269f6f3632aa69c74713b358e628dc4fab8afc6657ac65a17bd2ec4c6f2984385de2187581fd734e65c
+
+pkgname = python-zvmcloudconnector
+
