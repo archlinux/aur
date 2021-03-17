@@ -1,0 +1,9 @@
+*.zip
+*.tar.gz
+*.xz
+*.zst
+pkg
+src
+pocket-casts*
+LICENSE
+
