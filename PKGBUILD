@@ -68,7 +68,7 @@ build() {
 
 package() {
   cd "$srcdir/SHADERed"
-  install -Dm644 "$srcdir/SHADERed/bin/icon_256x256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$srcdir/SHADERed/Misc/Icon/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   install -Dm644 "$srcdir/SHADERed/Misc/Linux/org.shadered.SHADERed.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm755 "$srcdir/SHADERed.sh" "$pkgdir/usr/bin/$pkgname"
   mkdir -p "$pkgdir/opt/$pkgname"
