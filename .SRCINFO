@@ -27,6 +27,7 @@ pkgbase = cloudcompare-git
 	depends = qt5-base
 	depends = qt5-tools
 	depends = qt5-svg
+	depends = qt5-websockets
 	depends = shapelib
 	depends = tbb
 	depends = vxl
