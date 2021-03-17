@@ -8,7 +8,7 @@
 
 _pack=parallel
 pkgname=octave-$_pack
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Parallel execution package. See also package mpi, maintained by Carlo de Falco. "
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('28eeeaa6f726e4a59cd0c979ac4f0925f04e9bd4eee88896cd8ce91cc054b772')
+sha256sums=('ea86535e167351f3214feea4d0524626d07e211d1e84d94cbf230d41b2e01bc1')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
