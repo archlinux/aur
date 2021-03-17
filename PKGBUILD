@@ -3,11 +3,11 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
-url='http://llcon.sourceforge.net/'
+url='https://jamulus.io/'
 license=('GPL2')
 depends=('glibc' 'gcc-libs' 'qt5-base')
 makedepends=('jack')
@@ -31,5 +31,4 @@ package() {
      "${pkgdir}/usr/share/applications/jamulus.desktop" > "${pkgdir}/usr/share/applications/jamulus-server.desktop"
 }
 
-sha1sums=('b161f6738f35607a5dac59525c6b69e812548a7c')
-
+sha1sums=('4a73464962a841b640e5c39875b1e61b0849927c')
