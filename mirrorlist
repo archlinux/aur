@@ -12,6 +12,8 @@ Server = https://random-mirror.chaotic.cx/$repo/$arch
 # USA
 # * Texas, By: GarudaLinux and Fosshost
 Server = https://us-tx-mirror.chaotic.cx/$repo/$arch
+# * Texas, By: XStefen
+Server = https://us-tx-2-mirror.chaotic.cx/$repo/$arch
 # * Washington, By: LordKitsuna
 Server = https://us-wa-mirror.chaotic.cx/$repo/$arch
 # * Utah, By: The-aus
@@ -52,3 +54,7 @@ Server = https://bg-mirror.chaotic.cx/$repo/$arch
 # Toronto, Canada
 # By freebird54
 Server = https://ca-mirror.chaotic.cx/$repo/$arch
+
+# CDN
+# By: Fosshost (Takes 4 hours to sync updates)
+Server = https://cdn-mirror.chaotic.cx/$repo/$arch
