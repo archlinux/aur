@@ -1,9 +1,9 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.55.2.r513.gb6d3143c8
+pkgver=2.3.55.5.r4.g376e5026c
 _pkgtag=$pkgver
-pkgrel=3
+pkgrel=4
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('x86_64')
 url="https://github.com/supermerill/SuperSlicer"
@@ -14,11 +14,9 @@ makedepends=('git' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2-dev-opt')
 provides=('superslicer')
 conflicts=('superslicer')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
-        "superslicer.desktop"
         "start-superslicer.sh"
         "0001-wxgtk3-is-broken-on-wayland.patch")
 sha512sums=('SKIP'
-            '8f75de56ba3e29b9c650d2946bd11afcf406a7fd42d2620ec44e4e76f6b64626de720190ce0f8be29ba7c48f714bfa0a71c45f868bdce7bc1ac7dbbc0e9e7583'
             'abfbd056be518b1b733cddef6c430cc3c4199d5df13067574dd3269cf35b798e11b43f55f1dfb57d6d8ee1da06882825fef0f7a170a9b069b95e9aea1ec8f31d'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5')
 
@@ -66,9 +64,6 @@ package()
 	make DESTDIR="$pkgdir" install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
 	test ! -h "$pkgdir/usr/bin/prusa-gcodeviewer" || rm "$pkgdir/usr/bin/prusa-gcodeviewer"
-
-	install -d "$pkgdir/usr/share/applications"
-	install -m 644 "$srcdir/superslicer.desktop" "$pkgdir/usr/share/applications/"
 
 	mv "$pkgdir/usr/bin/superslicer" "$pkgdir/usr/share/SuperSlicer"
 	install -Dm 755 "${srcdir}/start-superslicer.sh" "${pkgdir}/usr/bin/superslicer"
