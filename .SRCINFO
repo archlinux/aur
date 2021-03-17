@@ -1,6 +1,6 @@
 pkgbase = openrc-git
 	pkgdesc = Dependency based init system that works with sysvinit.
-	pkgver = 0.42.34.g170ce262
+	pkgver = 0.42.42.g08d518b7
 	pkgrel = 1
 	url = http://www.gentoo.org/proj/en/base/openrc/
 	arch = i686

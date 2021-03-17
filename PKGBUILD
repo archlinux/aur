@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc-git
-pkgver=0.42.34.g170ce262
+pkgver=0.42.42.g08d518b7
 pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit.'
 arch=('i686' 'x86_64')
