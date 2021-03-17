@@ -2,12 +2,12 @@
 
 pkgname=sayit
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A text-to-speech command line tool backed by Azure Cognitive Services."
 arch=('any')
 url="https://github.com/pviotti/sayit"
 license=('MIT')
-depends=('dotnet-runtime-bin>=5.0.0')
+depends=('dotnet-runtime>=5.0.0')
 source=(https://github.com/pviotti/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver-linux.zip
         $pkgname)
 sha256sums=('e781f37340b0cec19d5b939a24010541eb00e2a95e591eb5d5ab1eb1fcf0c5e2'

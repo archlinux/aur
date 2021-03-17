@@ -3,7 +3,7 @@ package:
 	makepkg --printsrcinfo > .SRCINFO
 
 install:
-	pacman -U *.tar.xz
+	pacman -U *.tar.zst
 
 clean:
 	git clean -fdX

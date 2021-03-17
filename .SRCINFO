@@ -1,11 +1,11 @@
 pkgbase = sayit
 	pkgdesc = A text-to-speech command line tool backed by Azure Cognitive Services.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pviotti/sayit
 	arch = any
 	license = MIT
-	depends = dotnet-runtime-bin>=5.0.0
+	depends = dotnet-runtime>=5.0.0
 	source = https://github.com/pviotti/sayit/releases/download/v1.2/sayit-v1.2-linux.zip
 	source = sayit
 	sha256sums = e781f37340b0cec19d5b939a24010541eb00e2a95e591eb5d5ab1eb1fcf0c5e2
