@@ -1,7 +1,7 @@
 # Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=koko-git
-pkgver=r520.9159df6
+pkgver=r612.0b82195
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Image gallery application designed for desktop and touch devices"
@@ -20,22 +20,11 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd ${srcdir}/${pkgname%-git}
-  mkdir -p build
-}
-
 build() {
-  cd ${srcdir}/${pkgname%-git}/build
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S ${pkgname%-git}
+  make -C build
 }
 
 package() {
-    cd ${srcdir}/${pkgname%-git}/build
-    make DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
-
-#vim: syntax=sh

@@ -1,6 +1,6 @@
 pkgbase = koko-git
 	pkgdesc = Image gallery application designed for desktop and touch devices
-	pkgver = r520.9159df6
+	pkgver = r612.0b82195
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/koko
 	arch = x86_64
