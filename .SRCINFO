@@ -8,6 +8,7 @@ pkgbase = dtkwidget-git
 	license = LGPL3
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = gtest
 	depends = deepin-qt-dbus-factory-git
 	depends = dtkcore-git
 	depends = dtkgui-git
