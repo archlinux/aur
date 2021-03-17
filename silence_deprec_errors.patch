@@ -1,0 +1,12 @@
+diff -aur src.orig/jackmix/SConstruct src/jackmix/SConstruct
+--- src.orig/jackmix/SConstruct	2021-03-17 21:50:32.882244318 +0100
++++ src/jackmix/SConstruct	2021-03-17 21:50:42.212183009 +0100
+@@ -16,7 +16,7 @@
+ env.Replace(LIBS="")
+ env.Replace(LIBPATH="")
+ 
+-env.MergeFlags(['-Wall', '-Werror', '-g', '-fpic', '-std=c++11'])
++env.MergeFlags(['-Wall', '-g', '-fpic', '-std=c++11'])
+ 
+ tests = {}
+ tests.update(env['PKGCONFIG_TESTS'])

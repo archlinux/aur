@@ -2,8 +2,8 @@
 
 pkgname=jackmix-git
 _pkgname=jackmix
-pkgver=r323.bc11af8
-pkgrel=3
+pkgver=r367.3a0c868
+pkgrel=1
 pkgdesc="Matrix-mixer for JACK"
 arch=('i686' 'x86_64')
 url="https://github.com/kampfschlaefer/jackmix"
@@ -11,8 +11,10 @@ license=('GPL2')
 depends=('qt5-base' 'jack' 'ladish')
 makedepends=('gendesk' 'scons')
 conflicts=('jackmix')
-source=("${_pkgname}"::'git+https://github.com/kampfschlaefer/jackmix.git#branch=qt5')
-md5sums=('SKIP')
+source=("${_pkgname}"::'git+https://github.com/kampfschlaefer/jackmix.git#branch=no-lash'
+        silence_deprec_errors.patch)
+md5sums=('SKIP'
+         '0ed19b1747391585c597d73cc06f30b1')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -22,6 +24,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_pkgname}"
   gendesk -f -n --pkgname "$_pkgname" --exec "$_pkgname" --pkgdesc "$pkgdesc" --categories 'Audio;Mixer'
+  patch -p2 -i "$srcdir/silence_deprec_errors.patch"
 }
 
 build() {
