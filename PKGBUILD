@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
+  export GO111MODULE=off
   mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
   cp -a "$srcdir/$pkgname" "$srcdir"/build/src/github.com/linuxdeepin/go-dbus-factory
   go get -v github.com/fsnotify/fsnotify
