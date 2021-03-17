@@ -2,7 +2,7 @@
 
 _name=flake8-bugbear
 pkgname=python-flake8-bugbear
-pkgver=20.11.1
+pkgver=21.3.2
 pkgrel=1
 pkgdesc='Plugin for Flake8 finding likely bugs and design problems in your program'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('flake8' 'python-attrs' 'python-setuptools')
 checkdepends=('python-hypothesmith')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('572de22736fbf1aa4c85707db770db5c27dba6ec265baf258aab6e087d76016371d37201f45d9bea6ca7aaef482b07bd7e6957386372acec2c5aa4c098b5f8bc')
+sha512sums=('f7fd40785259055a391698d34931df1961633b75835379f453bc0102c243becd9472116af43da7f317506b7436bbbd90e38e2d8750420fb482b9d8e24399972e')
 
 build() {
   cd $_name-$pkgver
