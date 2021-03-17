@@ -15,6 +15,7 @@ pkgbase = shadered-git
 	depends = sdl2
 	depends = sfml
 	provides = shadered
+	conflicts = shadered
 	source = https://github.com/dfranx/SHADERed
 	source = https://github.com/dfranx/ImGuiColorTextEdit
 	source = https://github.com/dfranx/SPIRV-VM

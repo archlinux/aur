@@ -15,6 +15,7 @@ license=("MIT")
 depends=(assimp glew glm gtk3 sdl2 sfml)
 makedepends=(git cmake python)
 provides=('shadered')
+conflicts=('shadered')
 
 source=("git+https://github.com/dfranx/SHADERed"
         "git+https://github.com/dfranx/ImGuiColorTextEdit"
