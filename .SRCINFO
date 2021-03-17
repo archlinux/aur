@@ -1,9 +1,10 @@
 pkgbase = opencomic-bin
 	pkgdesc = Comic and Manga reader, written with Node.js and using Electron
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ollm/OpenComic
 	arch = x86_64
+	arch = arm64
 	license = GPL3
 	depends = libexif
 	depends = gtk3
@@ -17,8 +18,10 @@ pkgbase = opencomic-bin
 	depends = libjpeg-turbo
 	provides = opencomic
 	options = !strip
-	source = opencomic-bin-0.2.0.tar.gz::https://github.com/ollm/OpenComic/releases/download/v0.2.0/opencomic-0.2.0.x86_64.rpm
-	sha256sums = 2862fe94318a12b34eb4432ca22d2792e7e49388024f142a63bd0298d956adfb
+	source_x86_64 = opencomic-bin-0.2.0.tar.gz::https://github.com/ollm/OpenComic/releases/download/v0.2.0/opencomic-0.2.0.x86_64.rpm
+	b2sums_x86_64 = e7f594edd70e0fab29c2d228c6636b6a4d56fc91e8a3ed30b22671e07a42b1983a21837d2529404a70b08abea49448720b4f522746c5db39785871afa909c32a
+	source_arm64 = opencomic-bin-0.2.0.tar.gz::https://github.com/ollm/OpenComic/releases/download/v0.2.0/opencomic-0.2.0.arm64.rpm
+	b2sums_arm64 = 5ae6138d45458d667ae0df2289b777ecf0b64deb15489210c1da676074bd5ebe698e6ba495d18d07eec9201657679cc1dc4a9ffa61ee570dba34820084251bad
 
 pkgname = opencomic-bin
 
