@@ -3,7 +3,7 @@
 pkgname=python-flake8-annotations
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A flake8 extension that checks type annotations"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'flake8')
 makedepends=('python-setuptools' 'python-dephell')
 checkdepends=('python-pytest' 'python-pytest-check' 'python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('71d268f7e32ee84bae38260fcc934c25a2e7624869d7f2da272bef2d1925a35e3533707c88e43036ba82e5896499a9cd12917f24320a96e7cb990493ce3c4356')
+b2sums=('7f390ed097564b83de6d3ec7d43e97a754b1f1fa2aaf7ff48de0bbc3adecfc1571254e17b6c4d5e16e092f42b31bbcd201fa8d2fefef54a6c40d77dfab1386dc')
 
 prepare() {
   cd "$_pkgname-$pkgver"
