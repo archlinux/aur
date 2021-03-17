@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=86.0
+pkgver=86.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -23,8 +23,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
-_linux_commit=e123b80f7df1ad9043435f345c426717ca323579
-_settings_commit=c5c75a39dd91a8772255a78493853be6553262b2
+_linux_commit=c3375c312e37238f87ed27028780e25fe1f0b56d
+_settings_commit=2c49a15866dbfd235c988925d5fc26485b65edc1
 source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                $pkgname.desktop
                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
@@ -44,21 +44,21 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('c3ac474a2cf6a8e31a962f57c7357dbe67b5088b6aceea9980f25ce7a99b58dd'
+sha256sums_x86_64=('74f99c226ae6747f0170566f4f88be410866b0120214d2a593566cd1fff3d3df'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
                    '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-                   'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665')
-sha256sums_aarch64=('c3ac474a2cf6a8e31a962f57c7357dbe67b5088b6aceea9980f25ce7a99b58dd'
+                   '8a673eb894ea9658fdb63715df75bb8c2d9d7577600b6a5186e1456e4e7b0b00')
+sha256sums_aarch64=('74f99c226ae6747f0170566f4f88be410866b0120214d2a593566cd1fff3d3df'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
                     '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
                     'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-                    'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
+                    '8a673eb894ea9658fdb63715df75bb8c2d9d7577600b6a5186e1456e4e7b0b00'
                     '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
                     '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
@@ -81,9 +81,6 @@ ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 export CC='clang'
 export CXX='clang++'
-export AR=llvm-ar
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-update-channel=release
