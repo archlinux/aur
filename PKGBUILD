@@ -1,22 +1,22 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cozy-desktop
-pkgver=3.26.0
-pkgrel=2
+pkgver=3.26.1
+pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(any)
 url="https://cozy-labs.github.io/cozy-desktop/"
 license=(AGPL3)
-depends=(electron11)
+depends=(electron)
 makedepends=(nodejs-lts-erbium yarn git node-gyp python)
 source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
         https://github.com/cozy-labs/${pkgname}/releases/download/v${pkgver}/Cozy-Drive-${pkgver}-x86_64.AppImage
         ${pkgname}.desktop
         ${pkgname}.sh)
-sha256sums=('31a710f383cd089d3b08b790a481cc970aaadf01b2f5000fd751319ac7814720'
-            '3f4024d012b11fc879081c1b340a7de6f378e62249ebf5a5096915ffd2c3153b'
+sha256sums=('cbc01909d2210edec480b51d0b3c739c7b4dfb3819172784e96208c50f1ce5c2'
+            'dc26a588216f6889be63e56523f48b8a795fea27a9b347de87002a341391231d'
             '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
-            '5d77f8310100b20f90782c96d7d3061eff98adbecdbff8b14e03edb0f5df3ccf')
+            '65cbcde81059332bff1af94e59462babf3e23e4ed1ec9fb322bf5ce60c0bab85')
 
 prepare() {
     cd ${pkgname}-${pkgver}
