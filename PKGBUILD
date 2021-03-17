@@ -13,7 +13,7 @@ options=(!strip)
 depends=('openssl' 'systemd-libs')
 
 source=("https://github.com/solana-labs/solana/releases/download/v${pkgver}/solana-release-x86_64-unknown-linux-gnu.tar.bz2")
-md5sums=('46b58ce4a01bf348ba661d9889f2c513')
+md5sums=('20981a885f4702e0c0833f4faee73894')
 
 package() {
   cd ${srcdir}
