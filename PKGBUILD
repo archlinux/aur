@@ -17,7 +17,7 @@ backup=()
 options=()
 source=("https://sxrepo.mpie.de/attachments/download/60/sphinx-$pkgver.tar.xz")
 pkgext=("https://sxrepo.mpie.de/attachments/download/60/sphinx-$pkgver.tar.xz")
-sha1sums=('72bc1be167d78a93f9973ecd147251b76c392b31')
+sha1sums=('3fa21a1b87e722429df26f10820b66eb9cbec8c4')
 
 prep() {
 ./setup
