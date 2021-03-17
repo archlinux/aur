@@ -1,0 +1,14 @@
+pkgbase = wonderdraft
+	pkgdesc = An intuitive yet powerful fantasy mapmaking tool.
+	pkgver = 1.1.4.2
+	pkgrel = 1
+	url = https://www.wonderdraft.net
+	arch = x86_64
+	license = custom
+	options = !strip
+	options = !emptydirs
+	source = file://Wonderdraft-1.1.4.2-Linux64.zip
+	md5sums = 899a5b5daf489dd214a094195b7e2b4f
+
+pkgname = wonderdraft
+
