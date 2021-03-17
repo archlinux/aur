@@ -1,0 +1,41 @@
+post_install() {
+	echo "
+#####
+Minimum Server Configuration
+#####
+"
+	echo "
+Create a config file at /etc/autoygg/server.yaml. A sample configuration file is provided in etc/autoygg/autoygg-server/server.yaml.example
+"
+	echo '
+The configuration will look something like this:
+
+	---
+	ListenHost: "the:yggdrasil:ip:address:of:this:machine"
+	RequireRegistration: true
+	AccessListEnabled: false
+	GatewayTunnelIP: "10.42.0.1"
+	GatewayTunnelNetmask: "16"
+'
+	echo "
+Get the value for 'ListenHost' by running
+"
+	echo "
+	yggdrasilctl getSelf
+"
+	echo "
+#####
+Access Lists
+#####
+"
+	echo "
+To limit which clients can use the server, change AccessListEnabled to true in server.yaml and create a file named /etc/autoygg/accesslist.yaml. Add your client yggdrasil IP to that file, e.g. like this:
+"
+	echo "
+	---
+	AccessList:
+	  - yggip: 200:1234:5678:9000:0000:0000:0000:0001
+	  access: true
+	  comment: node at 124 main street
+"
+}

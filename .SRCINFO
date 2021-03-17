@@ -1,0 +1,25 @@
+pkgbase = autoygg-git
+	pkgdesc = An easy internet egress client/server for Yggdrasil network.
+	pkgver = v0.2.2.dev20210316233552
+	pkgrel = 1
+	url = https://github.com/massmesh/autoygg
+	install = autoygg.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = AGPL3
+	makedepends = git
+	makedepends = go
+	depends = yggdrasil
+	provides = autoygg
+	conflicts = autoygg
+	backup = etc/autoygg/server.yaml
+	backup = etc/autoygg/accesslist.yaml
+	backup = etc/autoygg/client.yaml
+	source = autoygg::git+https://github.com/MassMesh/autoygg.git#branch=simple-build
+	md5sums = SKIP
+
+pkgname = autoygg-git
+
