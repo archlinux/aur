@@ -1,6 +1,6 @@
 pkgbase = chalice
 	pkgdesc = Python Serverless Microframework for AWS
-	pkgver = 1.22.1
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://github.com/aws/chalice
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = chalice
 	depends = python-setuptools
 	optdepends = python-watchdog: server auto-reload support
 	optdepends = aws-cdk: AWS CDK support
-	source = chalice-1.22.1.tar.gz::https://github.com/aws/chalice/archive/1.22.1.tar.gz
-	sha512sums = 07e9f222b95d4ccae37b6e06537ad8171e9fa10a7781761367b7cdcf9689214b8c7ba59574ec4e16a3046c77c4e2f94bbef159bb0d4dbdfae2020afd89f663d6
+	source = chalice-1.22.2.tar.gz::https://github.com/aws/chalice/archive/1.22.2.tar.gz
+	sha512sums = 92e3267bb1991b6089abf2fbca830355533af1e68c81a3afc53c74d15d5edbad963181bc26500a400f25f291f14a1298f97a3bbff113d4569079ab67d6a073a7
 
 pkgname = chalice
 
