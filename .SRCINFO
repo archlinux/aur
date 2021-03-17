@@ -1,0 +1,17 @@
+pkgbase = tqm
+	pkgdesc = CLI tool to manage your torrent client queues. Primary focus is on removing torrents that meet specific criteria.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/l3uddz/tqm
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	depends = go
+	optdepends = deluge: torrent downloader
+	optdepends = qbittorrent: torrent downloader
+	source = tqm-1.4.1.tar.gz::https://github.com/l3uddz/tqm/archive/v1.4.1.tar.gz
+	sha512sums = 49fde3a8c60399f0ad6c074a3c050c519781a8bccf795a097abd0a64a0acf8b640bdb9933ec827db4c98740355e0e56c0c7554fbc82aef220a2f5d0d36b85eb0
+
+pkgname = tqm
+
