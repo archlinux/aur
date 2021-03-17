@@ -1,4 +1,6 @@
 # Maintainer: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
+# Contributor: Simon Gardling <titaniumtown@gmail.com>
+# Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
 pkgname=mutter-git
 _pkgname=mutter
@@ -25,8 +27,10 @@ pkgver() {
 }
 
 build() {
-  arch-meson "$_pkgname" build
-  ninja -C build
+  arch-meson $_pkgname build \
+    -D egl_device=true \
+    -D wayland_eglstream=true
+  meson compile -C build
 }
 
 package() {
