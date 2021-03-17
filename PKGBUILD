@@ -3,21 +3,22 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 license=('Apache')
 url="https://github.com/iterative/${pkgname}"
 depends=('python' 'python-appdirs' 'python-colorama' 'python-configobj'
-         'python-distro' 'python-flufl-lock' 'python-funcy'
-         'python-gitdb' 'python-gitpython' 'python-humanize'
-         'python-inflect' 'python-packaging'
-         'python-pathspec' 'python-ply' 'python-pyasn1'
+         'python-distro' 'python-flufl-lock' 'python-funcy' 'python-gitdb'
+	 'python-gitpython' 'python-humanize' 'python-inflect'
+	 'python-packaging' 'python-pathspec' 'python-ply' 'python-pyasn1'
          'python-yaml' 'python-requests' 'python-ruamel-yaml'
          'python-setuptools' 'python-shortuuid' 'python-tqdm'
          'python-treelib' 'python-voluptuous' 'python-zc.lockfile'
-	 'python-nanotime' 'python-grandalf' 'python-ntfs')
+	 'python-nanotime' 'python-grandalf' 'python-ntfs' 'python-shtab'
+	 'python-pygtrie'
+)
 optdepends=('python-google-cloud-storage: support for Google Cloud'
             'python-google-api-python-client: support for GDrive'
             'python-pydrive: support for GDrive'
@@ -29,9 +30,10 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
 	    )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('84779985a2e2bd9d046da98e7bd66640daf97ba8bf86a8acbea8d22343c6b245')
+sha256sums=('98c269d054efd3b8ea51bb38a357ca86312d92d12b006a0decffdb727c5122f0')
 
 package() {
   cd ${pkgname}-${pkgver}
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
+
