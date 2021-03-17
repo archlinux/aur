@@ -1,8 +1,8 @@
 pkgbase = yaml-language-server-bin
 	pkgdesc = Language server implementation for YAML files and optional schema support
 	pkgver = 0.16.0
-	pkgrel = 3
-	url = https://www.npmjs.com/package/vscode-html-languageserver-bin
+	pkgrel = 4
+	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
 	license = MIT
 	makedepends = npm
