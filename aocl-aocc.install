@@ -1,5 +1,10 @@
 post_install() {
-	echo "Use 'module load aocl-aocc' to set up the environment for AMD Optimizing CPU Libraries."
+	if pacman -Q env-modules &> /dev/null; then
+		echo "env-modules seems to be installed:"
+		echo "If configured correctly, you can conveniently use"
+		echo "  $ module load aocl-aocc"
+		echo "to set up the environment for AMD Optimizing CPU Libraries."
+	fi
 }
 
 post_upgrade() {

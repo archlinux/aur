@@ -1,37 +1,32 @@
 # Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
-# Manual download of '${pkgname}-linux-gcc-${pkgver}.tar.gz' required from upstream
-# Manual download of '${pkgname}-linux-aocc-${pkgver}.tar.gz' required from upstream
+# Manual download of '${pkgname}-linux-gcc-${pkgver}-${_pkgrel}.tar.gz'  required from upstream
+# Manual download of '${pkgname}-linux-aocc-${pkgver}-${_pkgrel}.tar.gz' required from upstream
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
-pkgver=2.1
-pkgrel=6
+pkgver=3.0
+_pkgrel=6
+pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
 url="https://developer.amd.com/amd-aocl/"
 source=(
-	"local://${pkgbase}-linux-aocc-${pkgver}.tar.gz"
-	"local://${pkgbase}-linux-gcc-${pkgver}.tar.gz"
+	"local://${pkgbase}-linux-aocc-${pkgver}-${_pkgrel}.tar.gz"
+	"local://${pkgbase}-linux-gcc-${pkgver}-${_pkgrel}.tar.gz"
 	"local://${pkgbase}-aocc.install"
 	"local://${pkgbase}-gcc.install"
 	"local://modulefile"
 )
 options=('staticlibs' '!strip')
-depends=('env-modules')
+optdepends=('env-modules')
 sha256sums=(
-	"e7af89ca23a545cc8bea54c2cb5005a42bf359611f5d4c28336f78f691da3a23"
-	"8ea9ec16051893e480f7ba09babeaa833897586aa4d0c2c53b22132b5884150c"
+	"c1f0dd73ad0bfb1ede823cdd681c2834f2b7c88b8e7423c4c4412d6cc624ce39"
+	"294e63fbceee8d993c4a98d51e008f81ffe4159b5b163db316ddd93fccc04b52"
 	"SKIP"
 	"SKIP"
 	"SKIP"
 )
-
-if [ -z ${MODULESHOME} ]; then
-	echo "Environment variable MODULESHOME from env-modules is unset."
-	echo "Restart your shell or source the env-modules scripts for your shell."
-	exit 1
-fi
 
 package_aocl-aocc() {
 	install=${pkgname}.install
@@ -40,24 +35,23 @@ package_aocl-aocc() {
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
-	cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver}
+	cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver}-${_pkgrel}
 
 	cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
 
 	./install.sh -t ${prefix}
 
 	# strip unneeded directories
-	mv ${prefix}/amd/${pkgbase}/${pkgver}/* ${prefix}
-	rm -r ${prefix}/amd
+	mv ${prefix}/${pkgver}-${_pkgrel}/* ${prefix}
+	rm -r ${prefix}/${pkgver}-${_pkgrel}
 
-	# delete libs directory with broken symlinks
-	rm -rf ${prefix}/libs
+	# fix amd-libs.cfg containing ${pkgdir}
+	sed -e "s:=.*/opt:=/opt:g" -i ${prefix}/amd-libs.cfg
 
-	# modulefile
-	echo -e "\nSymlinking modulefile..."
+	# env-modules (optional)
 	cp ${srcdir}/modulefile ${prefix}
-	mkdir -p ${pkgdir}${MODULESHOME}/modulefiles/
-	ln -s ${aocl_prefix}/modulefile ${pkgdir}${MODULESHOME}/modulefiles/${pkgname}
+	mkdir -p ${pkgdir}/etc/modules/modulefiles
+	ln -s ${aocl_prefix}/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
 }
 
 package_aocl-gcc() {
@@ -67,27 +61,26 @@ package_aocl-gcc() {
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
-	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}
+	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}-${_pkgrel}
 
 	cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
 
 	./install.sh -t ${prefix}
 
 	# strip unneeded directories
-	mv ${prefix}/amd/${pkgbase}/${pkgver}/* ${prefix}
-	rm -r ${prefix}/amd
+	mv ${prefix}/${pkgver}-${_pkgrel}/* ${prefix}
+	rm -r ${prefix}/${pkgver}-${_pkgrel}
 
-	# delete libs directory with broken symlinks
-	rm -rf ${prefix}/libs
+	# fix amd-libs.cfg containing ${pkgdir}
+	sed -e "s:=.*/opt:=/opt:g" -i ${prefix}/amd-libs.cfg
 
-	# modulefile
-	echo -e "\nSymlinking modulefile..."
+	# env-modules (optional)
 	cp ${srcdir}/modulefile ${prefix}
 	sed -e "s/aocl-aocc/aocl-gcc/g" \
 		-e "s/conflict aocl-gcc/conflict aocl-aocc/g" \
 		-i ${prefix}/modulefile
-	mkdir -p ${pkgdir}${MODULESHOME}/modulefiles/
-	ln -s ${aocl_prefix}/modulefile ${pkgdir}${MODULESHOME}/modulefiles/${pkgname}
+	mkdir -p ${pkgdir}/etc/modules/modulefiles
+	ln -s ${aocl_prefix}/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
 }
 
 # vim:set ts=4
