@@ -8,8 +8,8 @@ license=("GPL v3.0")
 arch=("x86_64")
 provides=("rearx")
 options=("strip")
-source=("https://github.com/garak92/rearx/releases/tag/v$pkgver/rearx-$pkgver-x86_64.tar.gz")
-sha256sums=("c07d96264d4254c1a65464dbba78de58a90dc3ffb1ee38b8d798fe6558fd6f45")
+source=("https://github.com/garak92/rearx/releases/download/v$pkgver/rearx-$pkgver-x86_64.tar.gz")
+sha256sums=("fd21d8f845a5abc7a445574f5ea97313c92a9a5b65808fde4081fb05524a2b4c")
 
 package() {
     install -Dm755 rearx -t "$pkgdir/usr/bin/"
