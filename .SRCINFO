@@ -1,0 +1,16 @@
+pkgbase = austin-git
+	pkgdesc = Python frame stack sampler for CPython
+	pkgver = v2.1.1.r0.g2f29bd7
+	pkgrel = 1
+	url = https://github.com/P403n1x87/austin
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	provides = austin
+	conflicts = austin
+	source = git+https://github.com/P403n1x87/austin
+	sha1sums = SKIP
+
+pkgname = austin-git
