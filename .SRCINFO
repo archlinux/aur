@@ -1,7 +1,7 @@
 pkgbase = htslib
 	pkgdesc = library for high-throughput sequencing data formats
-	pkgver = 1.11
-	pkgrel = 2
+	pkgver = 1.12
+	pkgrel = 1
 	url = https://github.com/samtools/htslib
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = htslib
 	provides = tabix
 	conflicts = tabix
 	replaces = tabix
-	source = https://github.com/samtools/htslib/releases/download/1.11/htslib-1.11.tar.bz2
-	sha256sums = cffadd9baa6fce27b8fe0b01a462b489f06a5433dfe92121f667f40f632538d7
+	source = https://github.com/samtools/htslib/releases/download/1.12/htslib-1.12.tar.bz2
+	sha256sums = 2280141b46e953ba4ae01b98335a84f8e6ccbdb6d5cdbab7f70ee4f7e3b6f4ca
 
 pkgname = htslib
 
