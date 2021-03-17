@@ -1,7 +1,7 @@
 pkgbase = ncsa-mosaic-git
 	pkgdesc = One of the first graphical web browsers
-	pkgver = 2.7b6.r25.af942b9
-	pkgrel = 2
+	pkgver = 2.7b6.r30.5d3543d
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/yotann/ncsa-mosaic
 	arch = i686

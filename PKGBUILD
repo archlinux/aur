@@ -6,9 +6,9 @@
 
 pkgname=ncsa-mosaic-git
 epoch=1
-pkgver=2.7b6.r25.af942b9
+pkgver=2.7b6.r30.5d3543d
 _pkgver=2.7b6
-pkgrel=2
+pkgrel=1
 pkgdesc="One of the first graphical web browsers"
 url="https://github.com/yotann/ncsa-mosaic"
 license=('custom')
