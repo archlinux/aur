@@ -1,4 +1,5 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 
 pkgname=vttest
@@ -9,8 +10,8 @@ arch=('i686' 'x86_64')
 url="http://invisible-island.net/vttest"
 license=('MIT')
 depends=('glibc')
-source=("${pkgname}-${pkgver}.tgz::ftp://ftp.invisible-island.net/vttest/vttest-${pkgver}.tgz")
-sha256sums=('6c9019c72c31b12d861783890a50ec5145a3424ee634c319b158af9af630910e')
+source=(https://invisible-island.net/datafiles/release/vttest.tar.gz)
+sha256sums=('SKIP')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
