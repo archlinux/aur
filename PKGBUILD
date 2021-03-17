@@ -1,21 +1,22 @@
-#
-# Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
-#
+# Maintainer: Christian Brassat <christian.brassat@gmail.com>
 
 pkgname=gnome-shell-frippery
-pkgver=3.26.0
+pkgver=3.38.0
 pkgrel=1
-pkgdesc="An unofficial extension pack providing GNOME2 like features for GNOME3."
+pkgdesc='Gnome Shell extensions to make Gnome 3 more like Gnome 2'
 arch=('any')
-url="http://frippery.org/extensions/index.html"
+url='http://frippery.org/extensions/index.html'
 license=('GPL2')
-depends=('gnome-shell>=3.26' 'gnome-shell<3.27')
-source=(http://frippery.org/extensions/$pkgname-$pkgver.tgz)
-sha256sums=('0c863ac663901a9905a4df8e479249b5a123acf1560a3ef927e05b64410c20b4')
+depends=('gnome-shell>=3.38')
+makedepends=()
+source=("http://frippery.org/extensions/${pkgname}-${pkgver}.tgz")
+md5sums=('735018c49a6d0c0515d9318b19bc0ff0')
 
 package() {
-    cd "$srcdir/"
-
-    rm -rf ".local/share/gnome-shell/$pkgname"
-    cp -R ".local" "$pkgdir/usr"
+  cd .local
+  rm -r share/gnome-shell/gnome-shell-frippery
+  mkdir -p $pkgdir/usr
+  cp -r share $pkgdir/usr/
 }
+
+# vim:set ts=2 sw=2 et:
