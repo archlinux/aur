@@ -1,7 +1,7 @@
 # Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
 pkgname=python-readchar
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Python library to read characters and key strokes"
 arch=("any")
@@ -11,8 +11,8 @@ depends=("python")
 makedepends=("python-setuptools" "flake8")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/magmax/python-readchar/archive/v$pkgver.tar.gz"
         "LICENSE")
-md5sums=('f7ee27cbdea3de2477e8a1bc20678a09'
-         '6fe7ddd14c619721d6db734a05d7d423')
+md5sums=('5248501d02afb078a6f46a0fa5cf39d9'
+         '688183518094c78c59f08f1b74493a98')
 
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"
