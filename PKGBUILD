@@ -7,12 +7,12 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=jdk-openj9-bin
-_jdkver=15
+_jdkver=16
 _jdkminor=0
-_jdkpatch=2
-_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_openj9ver=0.24.0
-_buildvershort=7
+_jdkpatch=0
+_jdkfullver=${_jdkver} #.${_jdkminor}.${_jdkpatch}
+_openj9ver=0.25.0
+_buildvershort=36
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
@@ -31,9 +31,9 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
+source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('5515ccd79b1b5e8d8a615b80d5fe1272f7bb41100e46d94fb78ee611ea014816')
+sha256sums=('9f9b327d08cbc71b32f28004ae9d9c2c84ff9bc335cac3068c5a5737bfa4606f')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 

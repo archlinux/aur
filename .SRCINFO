@@ -1,24 +1,24 @@
 pkgbase = jdk-openj9-bin
-	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk15
-	pkgver = 15.0.2b7_openj9_0.24.0
+	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk16
+	pkgver = 16b36_openj9_0.25.0
 	pkgrel = 1
-	url = https://adoptopenjdk.net/index.html?variant=openjdk15&jvmVariant=openj9
+	url = https://adoptopenjdk.net/index.html?variant=openjdk16&jvmVariant=openj9
 	arch = x86_64
 	license = custom
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=15
-	provides = java-environment-openjdk=15
-	provides = java-runtime=15
-	provides = java-runtime-openjdk=15
-	provides = java-runtime-headless=15
-	provides = java-runtime-headless-openjdk=15
-	conflicts = jdk15-openj9-bin
-	conflicts = jdk15-openj9
+	provides = java-environment=16
+	provides = java-environment-openjdk=16
+	provides = java-runtime=16
+	provides = java-runtime-openjdk=16
+	provides = java-runtime-headless=16
+	provides = java-runtime-headless-openjdk=16
+	conflicts = jdk16-openj9-bin
+	conflicts = jdk16-openj9
 	options = !strip
-	source = https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.2%2B7_openj9-0.24.0/OpenJDK15U-jdk_x64_linux_openj9_15.0.2_7_openj9-0.24.0.tar.gz
-	sha256sums = 5515ccd79b1b5e8d8a615b80d5fe1272f7bb41100e46d94fb78ee611ea014816
+	source = https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16%2B36_openj9-0.25.0/OpenJDK16-jdk_x64_linux_openj9_16_36_openj9-0.25.0.tar.gz
+	sha256sums = 9f9b327d08cbc71b32f28004ae9d9c2c84ff9bc335cac3068c5a5737bfa4606f
 
 pkgname = jdk-openj9-bin
 
