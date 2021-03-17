@@ -1,6 +1,6 @@
 # Maintainer: pingplug <aur at pingplug dot me>
 pkgname=vnote3-git
-pkgver=r1498.db341b55
+pkgver=r1528.2bad9155
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=('x86_64')
