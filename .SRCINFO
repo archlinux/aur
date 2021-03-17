@@ -11,7 +11,7 @@ pkgbase = wayst-x11-git
 	depends = fontconfig
 	depends = libxkbcommon
 	depends = libxrandr
-	depends = libutf8proc
+	optdepends = libutf8proc: unicode normalization
 	provides = wayst
 	conflicts = wayst
 	source = git+https://github.com/91861/wayst.git#branch=master
