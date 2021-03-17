@@ -1,44 +1,26 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-
-pkgbase='python-jsonpath-ng'
-_libname=${pkgbase/python-/}
-pkgname=('python-jsonpath-ng' 'python2-jsonpath-ng')
-pkgver=1.4.3
+# Maintainer: Paul Irofti <paul@irofti.net>
+_name=jsonpath-ng
+pkgname="python-$_name"
+pkgver=1.5.2
 pkgrel=1
-pkgdesc="JSONPath implementation that aims to be standard compliant"
-arch=(any)
-url="https://github.com/tomas-fp/jsonpath-ng/"
+pkgdesc="JSONPath for Python that aims to be standard compliant"
+arch=('any')
+url="https://github.com/h2non/jsonpath-ng"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz")
-sha256sums=('b1fc75b877e9b2f46845a455fbdcfb0f0d9c727c45c19a745d02db620a9ef0be')
-
-prepare() {
-  cp -r $_libname-$pkgver $_libname-$pkgver-py2
-
-  cd $_libname-$pkgver-py2
-  sed '1 s/python$/python2/' -i jsonpath_ng/bin/jsonpath.py
-  sed 's/jsonpath.py=/jsonpath.py2=/' -i setup.py
-}
+depends=('python' 'python-ply' 'python-decorator' 'python-six')
+makedepends=('python-setuptools')
+#source=("https://files.pythonhosted.org/packages/source/g/${_name}/${_name}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/c5/d0/c4b2fa7e00e69670a92b103761b4e10a4bdaca109818d44753219c20b7be/${_name}-${pkgver}.tar.gz")
+sha256sums=('144d91379be14d9019f51973bd647719c877bfc07dc6f3f5068895765950c69d')
 
 build() {
-  cd "$srcdir"/$_libname-$pkgver
+  cd "$srcdir/$_name-$pkgver"
   python setup.py build
-
-	cd "$srcdir"/$_libname-$pkgver-py2
-	python2 setup.py build
 }
 
-package_python-jsonpath-ng() {
-  depends=('python')
-
-  cd "$srcdir"/$_libname-$pkgver
-  python setup.py install -O1 --skip-build --root="$pkgdir"
+package() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-package_python2-jsonpath-ng() {
-  depends=('python2')
-
-  cd "$srcdir"/$_libname-$pkgver-py2
-  python2 setup.py install -O1 --skip-build --root="$pkgdir"
-}
+# vim:set sw=2 et:
