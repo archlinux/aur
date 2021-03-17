@@ -1,7 +1,7 @@
-# Maintainer: Steven Cook <visage@deadhexagon.com>
+# Maintainer: Steven Cook <scook@deadhexagon.com>
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
@@ -9,8 +9,12 @@ url="http://www.anope.org/"
 license=('GPL')
 makedepends=('cmake')
 optdepends=(
+    'openldap: OpenLDAP backend support'
     'mariadb: MySQL database backend support'
     'sqlite: SQLite database backend support'
+    'openssl: OpenSSL support'
+    'gnutls: GnuTLS support'
+    'pcre: Perl-compatible regular expression support'
 )
 install="anope.install"
 source=(
@@ -20,7 +24,7 @@ source=(
     "anope.tmpfiles"
 )
 sha512sums=(
-    'ddb42a453d72327d2256e5963f720bb310a7524c01661a0a136f18c539813649889e9fb764077c86e0854de8e3da095ebabb1ba53a0538d679bd42ea6403823b'
+    '0ce2caa5ede2831215781a333d896f1169f90bbb515078912f32beaff1699b7957384974cca7c86f1d584d624cb43c76769299ce245ee1fb6836ce7f14ada3e0'
     '81bc1bbb504fa021417312a72799b04682e54dd0dd1e070a035d62fa66ac7fa8ee3cb1c8ffe3746c4569e7716d591cfa14e9631571a74a4b8224fae18fd50bef'
     '6535e075c27a124e3aeb45f1496194a70130da88e2eae29a80ac3d33754ce4020b405438681690b3df032b386bccbb3f65983ad84f85fe76f3562e744ea55b52'
     '5c58a55c7e5974dec516f43eb960c9cdcadb68c92ceeaed7d96c82c180f8073d76d7491575331bca46f4714b19cdb188fe1bd056efb3391e3b3113c076407d21'
