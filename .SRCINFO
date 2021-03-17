@@ -29,6 +29,11 @@ pkgname = fake-background-webcam-git
 	depends = python-requests-unixsocket
 	depends = python-aiohttp>=3.6.2
 	depends = python-pyfakewebcam
+	depends = fake-background-bodypix
+	provides = fake-background-webcam
+	conflicts = fake-background-webcam
 
 pkgname = fake-background-bodypix-git
+	provides = fake-background-bodypix
+	conflicts = fake-background-bodypix
 

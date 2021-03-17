@@ -11,8 +11,6 @@ arch=('x86_64')
 url="https://github.com/fangfufu/Linux-Fake-Background-Webcam"
 license=("GPL")
 makedepends=('git' 'npm')
-#provides=('fake-background-webcam' 'fake-background-bodypix')
-#conflicts=('fake-background-webcam' 'fake-background-bodypix')
 
 source=("${pkgname}::git+${url}.git" 
         'fake-background-bodypix.service' 
@@ -35,7 +33,9 @@ pkgver() {
 }
 
 package_fake-background-webcam-git() {
-  depends=('v4l2loopback-dkms' 'python' 'akvcam-dkms' 'opencv' 'python-numpy>=1.18.2' 'python-requests>=2.23.0' 'python-requests-unixsocket' 'python-aiohttp>=3.6.2' 'python-pyfakewebcam')
+  depends=('v4l2loopback-dkms' 'python' 'akvcam-dkms' 'opencv' 'python-numpy>=1.18.2' 'python-requests>=2.23.0' 'python-requests-unixsocket' 'python-aiohttp>=3.6.2' 'python-pyfakewebcam' 'fake-background-bodypix')
+  provides=('fake-background-webcam')
+  conflicts=('fake-background-webcam') 
   cd "$srcdir/${pkgbase}/fakecam"  
   install -d "$pkgdir/usr/lib/$_pkgname"
   install -Dm644 *.py "$pkgdir/usr/lib/$_pkgname"
@@ -49,7 +49,8 @@ package_fake-background-webcam-git() {
 
 
 package_fake-background-bodypix-git() {  
-  
+  provides=('fake-background-bodypix')
+  conflicts=('fake-background-bodypix') 
   
   install -Dm644 "${srcdir}/fake-background-bodypix.service" "$pkgdir/usr/lib/systemd/system/fake-background-bodypix.service"
   
