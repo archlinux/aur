@@ -3,7 +3,7 @@
 _pkgname=fpga-interchange-schema
 pkgname="$_pkgname-git"
 pkgver=r22.cb6d168
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA interchange schema definitions"
 arch=(any)
 url="https://github.com/SymbiFlow/fpga-interchange-schema"
@@ -28,5 +28,5 @@ pkgver() {
 package() {
 	cd "$_pkgname"
 
-	install -Dm644 -t "$pkgdir/usr/share/$_pkgname/capnp" interchange/*.capnp
+	install -Dm644 -t "$pkgdir/usr/share/$_pkgname/" interchange/*.capnp
 }

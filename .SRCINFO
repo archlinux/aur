@@ -1,7 +1,7 @@
 pkgbase = fpga-interchange-schema-git
 	pkgdesc = FPGA interchange schema definitions
 	pkgver = r22.cb6d168
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SymbiFlow/fpga-interchange-schema
 	arch = any
 	license = Apache
