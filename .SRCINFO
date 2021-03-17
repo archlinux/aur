@@ -14,7 +14,6 @@ pkgbase = python-spf-engine
 	optdepends = sendmail: Sendmail integration
 	provides = spf-engine
 	conflicts = python-postfix-policyd-spf
-	conflicts = python2-postfix-policyd-spf
 	conflicts = spf-engine
 	backup = etc/python-policyd-spf/policyd-spf.conf
 	backup = etc/pyspf-milter/pyspf-milter.conf
