@@ -1,0 +1,16 @@
+pkgbase = flexvdi-client-appimage
+	pkgdesc = Client for connecting to flexVDI desktops
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = https://flexvdi.com/en/downloads
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = flexvdi-client-appimage-3.1.6-x86_64.AppImage
+	options = !strip
+	source_x86_64 = flexvdi-client-appimage-3.1.6-x86_64.AppImage::http://depot.flexvdi.com/clients/linux-x86_64/flexvdi-client-3.1.6-x86_64.AppImage
+	md5sums_x86_64 = 2507624190a5015e75d7ed989be7bd93
+
+pkgname = flexvdi-client-appimage
+
