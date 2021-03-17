@@ -26,7 +26,7 @@ depends=('python-setuptools'
          'python-marshmallow'
          # "pio home" requirements:
          'python-aiofiles'
-         'python-json-rpc'
+         'python-ajsonrpc'
          'python-starlette'
          'python-wsproto'
          'uvicorn')
