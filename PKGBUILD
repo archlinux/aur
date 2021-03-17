@@ -8,6 +8,7 @@ url="https://github.com/bcedu/VGrive"
 license=('GPL3')
 depends=('gtk3' 'granite' 'libsoup' 'libappindicator-gtk3')
 makedepends=('meson' 'vala' 'wayland-protocols')
+#checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'https://github.com/bcedu/VGrive/pull/116.patch')
 sha256sums=('f125ef74ce1d53517cc45d69716bb9668847d5c406096306aedf2a1178b4bfde'
@@ -23,9 +24,9 @@ build() {
 	meson compile -C build
 }
 
-check() {
-	meson test -C build
-}
+#check() {
+#	meson test -C build --print-errorlogs
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
