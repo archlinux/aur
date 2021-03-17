@@ -1,6 +1,6 @@
 pkgbase = timg
 	pkgdesc = Terminal Image and Video Viewer
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/hzeller/timg
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = timg
 	depends = libexif
 	depends = graphicsmagick
 	depends = ffmpeg
-	source = timg-1.2.0.tar.gz::https://github.com/hzeller/timg/archive/v1.2.0.tar.gz
-	sha256sums = b0fa8b4571247833167b73d6fe5aab733160c09f56389b97c9e516d0f0f2a5de
+	source = timg-1.2.1.tar.gz::https://github.com/hzeller/timg/archive/v1.2.1.tar.gz
+	sha256sums = 2ef2e1b79c3bf82e951ad35628bc0387fe8260052614a213385de82fcfa901ec
 
 pkgname = timg
 
