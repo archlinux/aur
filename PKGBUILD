@@ -2,7 +2,7 @@
 
 pkgname=zlib-ng
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
 arch=("any")
 url="https://github.com/zlib-ng/zlib-ng"
@@ -27,10 +27,10 @@ sha256sums=("57b5587c781fa75a4080bb915e1cd2d0a8a99569764fffcc173f77ec07bfb2ce")
 
 build() {
     cmake \
-         -Wno-dev \
-         -B build \
          -S "zlib-ng-${pkgver//_/-}" \
-         -DCMAKE_BUILD_TYPE=None \
+         -B build \
+         -Wno-dev \
+         -DCMAKE_BUILD_TYPE=Release \
          -DCMAKE_INSTALL_PREFIX=/usr \
          -DZLIB_COMPAT=ON
 
@@ -38,16 +38,14 @@ build() {
 }
 
 check() {
-    make \
-        -C build \
+    make -C build \
         test
 }
 
 package() {
-    make \
-        -C build \
+    make -C build \
         install \
-            DESTDIR="$pkgdir" \
+        DESTDIR="$pkgdir" \
 
     install -D -m644 "zlib-ng-${pkgver//_/-}/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
