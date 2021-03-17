@@ -48,4 +48,6 @@ package(){
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	mv $pkgdir{,/usr}/lib/systemd
 	rmdir $pkgdir/lib
+	chmod 0750 $pkgdir/etc/sudoers.d
+	chmod 0440 $pkgdir/etc/sudoers.d/*
 }
