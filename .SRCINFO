@@ -1,0 +1,14 @@
+pkgbase = python-pytypes
+	pkgdesc = typing toolbox w.r.t. PEP 484
+	pkgver = 1.0b5
+	pkgrel = 1
+	url = https://github.com/Stewori/pytypes
+	arch = any
+	license = Apache
+	makedepends = python-setuptools-scm
+	depends = python
+	source = https://files.pythonhosted.org/packages/ba/f9/6701f7cf163428aecad5bf607741bde295ae2b35bc631c60e668c6cd9c2d/pytypes-1.0b5.tar.gz
+	sha256sums = a28f6c7d01c91c9b4a81b4f9523cd0ce620edec3cd30bc389a34540ba3bd9de4
+
+pkgname = python-pytypes
+
