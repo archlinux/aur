@@ -1,3 +1,8 @@
+2021-03-17 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 2.3.0.RC2.r0.g2294a5c86-1
+	Switched back to 'master' git branch, since 'develop' is no more
+
 2019-07-12 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 1:2.1.alpha2.r156.ga1f759bc-1

@@ -3,7 +3,7 @@
 
 _pkgname="carla"
 pkgname="${_pkgname}-git"
-pkgver=2.1.r40.g577987dff
+pkgver=2.3.0.RC2.r0.g2294a5c86
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -31,7 +31,7 @@ optdepends=(
     'python-pyliblo: OSC control support'
     'python-rdflib: LADSPA-RDF support'
 )
-source=("${_pkgname}::git+https://github.com/falkTX/Carla.git#branch=develop")
+source=("${_pkgname}::git+https://github.com/falkTX/Carla.git")
 md5sums=('SKIP')
 changelog='changelog.txt'
 
@@ -43,6 +43,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+  make features
   make \
     HAVE_QT4=false \
     MOC_QT5=/usr/bin/moc-qt5 \
