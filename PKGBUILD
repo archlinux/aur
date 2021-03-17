@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=solana-bin
-pkgver=1.5.14
+pkgver=1.5.15
 pkgrel=1
 pkgdesc='Binaries for the Solana blockchain'
 arch=('x86_64')
@@ -17,6 +17,6 @@ md5sums=('46b58ce4a01bf348ba661d9889f2c513')
 
 package() {
   cd ${srcdir}
-  mkdir -p "${pkgdir}/opt"
-  cp -a solana-release "${pkgdir}/opt"
+  mkdir -p "${pkgdir}/usr/bin"
+  cp -a solana-release/bin/{spl-token,solana*} "${pkgdir}/usr/bin"
 }
