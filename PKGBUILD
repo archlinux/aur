@@ -1,0 +1,33 @@
+# Maintainer: Emeric Grange <emeric.grange@gmail.com>
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+
+_pkgname=shadered
+pkgname=$_pkgname-bin
+pkgver=1.5
+pkgrel=1
+pkgdesc="Lightweight tool for creating and testing HLSL and GLSL shaders."
+arch=("x86_64")
+url="https://github.com/dfranx/SHADERed"
+license=("MIT")
+depends=(gtk3 sdl2 sfml assimp glew-2.1 glm spirv-headers)
+provides=('shadered')
+conflicts=('shadered' 'shadered-git')
+
+source=("$url/releases/download/v$pkgver/Linux.zip"
+        "org.shadered.SHADERed.desktop"
+        "SHADERed.sh")
+sha256sums=('edefefc20bb9deeb1e5c32275c81a43b7a7b3b8ebf8e68ee6b9c28d79253096c'
+            'c3ecaa1f791aef4ba0a46236e9a133310a5bf981c8f1d98108c5a34b0b9edee6'
+            'a90e96ac17e8d4457da3f125f434adb0dfd5b0616d037a1656314e7abfaf0b18')
+
+package() {
+  mkdir -p "$pkgdir/opt"
+  cp -r SHADERed "$pkgdir/opt/$_pkgname"
+  install -Dm755 SHADERed.sh "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 org.shadered.SHADERed.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  for res in 32 64 128 256
+  do
+    install -Dm644 SHADERed/icon_${res}x${res}.png \
+      "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$_pkgname.png"
+  done
+}

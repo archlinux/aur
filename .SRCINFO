@@ -1,0 +1,26 @@
+pkgbase = shadered-bin
+	pkgdesc = Lightweight tool for creating and testing HLSL and GLSL shaders.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/dfranx/SHADERed
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = sdl2
+	depends = sfml
+	depends = assimp
+	depends = glew-2.1
+	depends = glm
+	depends = spirv-headers
+	provides = shadered
+	conflicts = shadered
+	conflicts = shadered-git
+	source = https://github.com/dfranx/SHADERed/releases/download/v1.5/Linux.zip
+	source = org.shadered.SHADERed.desktop
+	source = SHADERed.sh
+	sha256sums = edefefc20bb9deeb1e5c32275c81a43b7a7b3b8ebf8e68ee6b9c28d79253096c
+	sha256sums = c3ecaa1f791aef4ba0a46236e9a133310a5bf981c8f1d98108c5a34b0b9edee6
+	sha256sums = a90e96ac17e8d4457da3f125f434adb0dfd5b0616d037a1656314e7abfaf0b18
+
+pkgname = shadered-bin
+
