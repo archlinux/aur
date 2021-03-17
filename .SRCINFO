@@ -1,7 +1,7 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with AMDGPU WIP patches
 	pkgver = 5.12.r984749.6e80fb8ab04f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/drm/amd
 	arch = x86_64
 	license = GPL2
