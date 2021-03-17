@@ -18,11 +18,11 @@ source=("$url/releases/download/v$pkgver/Linux.zip"
         "SHADERed.sh")
 sha256sums=('edefefc20bb9deeb1e5c32275c81a43b7a7b3b8ebf8e68ee6b9c28d79253096c'
             'c3ecaa1f791aef4ba0a46236e9a133310a5bf981c8f1d98108c5a34b0b9edee6'
-            'a90e96ac17e8d4457da3f125f434adb0dfd5b0616d037a1656314e7abfaf0b18')
+            '885a7c14a7e00477c9acce4c64145e075a044be7a9f774b272cd5af7bde31ee9')
 
 package() {
-  mkdir -p "$pkgdir/opt"
-  cp -r SHADERed "$pkgdir/opt/$_pkgname"
+  mkdir -p "$pkgdir/usr/share/$_pkgname"
+  cp -r SHADERed/* "$pkgdir/usr/share/$_pkgname"
   install -Dm755 SHADERed.sh "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 org.shadered.SHADERed.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
   for res in 32 64 128 256

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -eu
-cd /opt/shadered/
+cd /usr/share/shadered/
 ./SHADERed "$@"
