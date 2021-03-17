@@ -1,0 +1,17 @@
+pkgbase = mathmod
+	pkgdesc = modelisation and manipulation of mathematics objects
+	pkgver = 11.0
+	pkgrel = 1
+	url = https://github.com/parisolab/mathmod/
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	license = GPLv2
+	depends = qt5-base
+	source = https://github.com/parisolab/mathmod/archive/11.0.tar.gz
+	source = MathMod.desktop
+	sha256sums = 418e5a40dc0e9e7e41027d9d9f0fe7dc2a27a2df1711891451e7af4a04140dbe
+	sha256sums = 6c001dae8ae8c1f6a4aaef7bf2d098a058c1e944dbf01642ea9792926b7204e9
+
+pkgname = mathmod
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=MathMod
+Version=11.0
+Encoding=UTF-8
+Comment=Modelization and manipulation of 3D math objects
+Comment[fr]=Modélisation et manipulation d'objets mathématiques 3D
+Exec=MathMod
+Icon=MathMod
+Type=Applicationa
+Terminal=false
+Categories=Education;Science;Math;Graphics;
+Keywords:science;math;numerical computation;plotting
