@@ -16,8 +16,8 @@ versiontag=12.0.0-rc3
 pkgrel=1
 arch=('x86_64')
 license=('custom:Apache 2.0 with LLVM Exception')
-depends=('llvm-libs' 'gcc' 'compiler-rt')
-makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx' 'python2')
+depends=('llvm-libs' 'gcc' 'compiler-rt' 'mlir')
+makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx' 'python2' 'mlir')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'python: for scan-view and git-clang-format'
             'llvm: referenced by some clang headers')
