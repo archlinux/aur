@@ -1,7 +1,7 @@
 pkgbase = ncsa-mosaic-git
 	pkgdesc = One of the first graphical web browsers
 	pkgver = 2.7b6.r25.af942b9
-	pkgrel = 3
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/yotann/ncsa-mosaic
 	arch = i686
@@ -22,9 +22,7 @@ pkgbase = ncsa-mosaic-git
 	conflicts = mosaic
 	options = !makeflags
 	source = git+https://github.com/yotann/ncsa-mosaic.git
-	source = fcommon.patch
 	sha256sums = SKIP
-	sha256sums = a228a1cd0f0a30362b198c53fb2d54264e9aff9932544dd6ace7fb0607bfbc29
 
 pkgname = ncsa-mosaic-git
 
