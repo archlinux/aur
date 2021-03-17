@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-harfbuzz
 	pkgdesc = OpenType text shaping engine (mingw-w64)
-	pkgver = 2.7.4
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-harfbuzz
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://github.com/harfbuzz/harfbuzz.git#commit=7236c7e29cef1c2d76c7a284c5081ff4d3aa1127
+	source = git+https://github.com/harfbuzz/harfbuzz.git#commit=03538e872a0610a65fad692b33d3646f387cf578
 	sha256sums = SKIP
 
 pkgname = mingw-w64-harfbuzz
