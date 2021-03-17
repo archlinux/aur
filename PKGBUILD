@@ -1,24 +1,24 @@
-# Maintainer: Jonas Gierer <jgierer12@gmail.com>
+# Maintainer: Fuad Saud <fuadfsaud@gmail.com>
 pkgname=pocket-casts-linux-bin
 provides=('pocket-casts-linux')
 conflicts=('pocket-casts-linux')
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=2
 pkgdesc="Electron wrapper around the Pocket Casts web app with support for MPRIS (media controls)"
 arch=('x86_64')
 license=('MIT')
-url="https://github.com/jgierer12/pocket-casts-linux"
+url="https://github.com/fuadsaud/pocket-casts-linux"
 depends=(
   'gtk3'
   'nss'
   'libxss'
 )
 source=(
-  "https://github.com/jgierer12/pocket-casts-linux/releases/download/v$pkgver/pocket-casts-linux-$pkgver-x64.pacman"
-  "https://raw.githubusercontent.com/jgierer12/pocket-casts-linux/v$pkgver/LICENSE"
+  "https://github.com/fuadsaud/pocket-casts-linux/releases/download/v$pkgver/pocket-casts-linux-$pkgver-x64.pacman"
+  "https://raw.githubusercontent.com/fuadsaud/pocket-casts-linux/v$pkgver/LICENSE"
 )
-md5sums=('be21aa678337da7d4a2f62c9b89dcf8c'
-         '04bf690e790df16c6404870cdea950bc')
+md5sums=('55089a97018d9884abd0a47a62d1ef4e'
+         'd33641b160d63ec0a1de56f9f89fe400')
 
 package() {
   cp --recursive $srcdir/{usr,opt} $pkgdir
