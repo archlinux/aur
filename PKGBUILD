@@ -1,17 +1,17 @@
 # Maintainer: José Ferreira <jose.filipe.matos.ferreira@gmail.com>
-
 pkgname=thonkbar-git
-pkgver=r18.873a964
+pkgver=r20.207d3cb
 pkgrel=1
 pkgdesc="minimalist block based lemonbar wrapper"
 arch=('any')
 url="https://github.com/JoseFilipeFerreira/${pkgname%-git}"
-license=('GPL')
+license=('GPL3')
 makedepends=(git gcc)
 depends=(lemonbar-xft-git)
 optdepends=()
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$pkgname")
+conflicts=("$pkgname")
+optdepends=('killall: send signals to blocks')
 source=("git+$url")
 md5sums=('SKIP')
 
@@ -27,7 +27,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}" || exit
-    make DESTDIR="$pkgdir/" install
+    make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
 
 # vim: ts=2 sw=2 et ft=sh:
