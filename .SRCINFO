@@ -1,5 +1,5 @@
 pkgbase = shadered-git
-	pkgdesc = SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders.
+	pkgdesc = Lightweight tool for creating and testing HLSL and GLSL shaders.
 	pkgver = 1.4.2_715.288f9c2
 	pkgrel = 1
 	url = https://github.com/dfranx/SHADERed
