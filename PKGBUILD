@@ -12,7 +12,8 @@ pkgdesc="A privacy-first, open-source platform for knowledge sharing and managem
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
-provides=("${pkgname}")
+provides=("logseq-desktop")
+conflicts=("logseq-desktop-git")
 source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
       "${_pkgname}.desktop")
 md5sums=('2c03410a82c2411c501aa0a3e67439d0'
