@@ -8,8 +8,6 @@ url="https://github.com/Soundux/Soundux"
 license=('GPL3')
 depends=('pulseaudio' 'webkit2gtk')
 makedepends=('git' 'cmake' 'ninja')
-conflicts=('soundux')
-provides=('soundux')
 source=("git+https://github.com/Soundux/Soundux#tag=$pkgver")
 sha256sums=('SKIP')
 

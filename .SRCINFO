@@ -10,8 +10,6 @@ pkgbase = soundux
 	makedepends = ninja
 	depends = pulseaudio
 	depends = webkit2gtk
-	provides = soundux
-	conflicts = soundux
 	source = git+https://github.com/Soundux/Soundux#tag=0.2.2_b1
 	sha256sums = SKIP
 
