@@ -154,8 +154,10 @@ build() {
       done)
 
   # Actual build
-  make clean
   make
+  # The path to the documentation is already set with   --docdir
+  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh doc
+  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh/examples examples_doc # DESTDIR="${pkgdir}"/usr/share/doc/${realname}/examples
 }
 
 check() {
@@ -165,19 +167,24 @@ check() {
 }
 
 package() {
-  # make DESTDIR=usr/share/doc/${realname}/examples examples_doc
-  make -C ../build DESTDIR="${pkgdir}"/usr/share/doc/${realname}/html doc
-  make -C ../build DESTDIR="${pkgdir}" install
-
-  mkdir -p "${pkgdir}/usr/share/doc/${realname}/"
-  cp -a ../build/doc/* "${pkgdir}/usr/share/doc/${realname}/"
-  install -d "${pkgdir}/etc/libmesh"
-  cp -a "${pkgdir}"/usr/Make.common "${pkgdir}/etc/libmesh"
-  mv "${pkgdir}"/usr/Make.common "${pkgdir}/usr/share/doc/libmesh/"
-  cp -a "${pkgdir}"/usr/examples "${pkgdir}/usr/share/doc/${realname}/"
-
-  rm -r "${pkgdir}"/usr/contrib || echo "removed "
   buildir="${srcdir}"/build
   cd "${buildir}"
+  make DESTDIR="${pkgdir}" install
+
+  # Move libtool (and contrib) to usr/share/libmesh
+  install -d "${pkgdir}/usr/share/libmesh/"
+  mv "${pkgdir}/usr/contrib" "${pkgdir}/usr/share/libmesh/"
+
+  # Set right path for Make.common
+  rm "${pkgdir}"/usr/Make.common
+  find "${pkgdir}"/usr/examples -type f -name Makefile -exec sed -i 's-\(LIBMESH_DIR[^=]*=\).*-\1 /etc/libmesh/-g' \{\} +
+
+  # Set the right place for /etc
+
+  # Get rid of /usr/Make.common (should be in /etc/libmesh)
   rm "${pkgdir}"/usr/Make.common || echo "removed"
+
+  # cp -a "${pkgdir}"/usr/Make.common "${pkgdir}/etc/libmesh"
+  # mv "${pkgdir}"/usr/Make.common "${pkgdir}/usr/share/doc/libmesh/"
+  # cp -a "${pkgdir}"/usr/examples "${pkgdir}/usr/share/doc/${realname}/"
 }
