@@ -1,0 +1,31 @@
+--- a/Makefile
++++ b/Makefile
+@@ -51,16 +51,16 @@ build: $(CLI)
+ assets: $(ASSETS)
+ 
+ $(GO_ASSETS):
+-	$(GO) build -o $(GO_ASSETS) -v github.com/jessevdk/go-assets-builder
++	$(GO) build -ldflags "-linkmode external -extldflags '${LDFLAGS}'" -o $(GO_ASSETS) -v github.com/jessevdk/go-assets-builder
+ 
+ $(ASSETS): $(GO_ASSETS) $(WEBUI_CORE)
+ 	$(GO_ASSETS) -p assets -s $(WEBUI_PREFIX) -o $(ASSETS) $(WEB_FILES)
+ 
+ $(XD): $(ASSETS)
+-	$(GO) build -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -tags='$(TAGS)' -o $(XD)
++	$(GO) build -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -linkmode external -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
+ 
+ dev: $(ASSETS)
+-	$(GO) build -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -tags='$(TAGS)' -o $(XD)
++	$(GO) build -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -linkmode external -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
+ 
+ $(CLI): $(XD)
+ 	$(RM) $(CLI)
+@@ -94,7 +94,7 @@ $(WEBUI_CORE): $(WEBUI_LOGO)
+ webui: $(WEBUI_CORE)
+ 
+ no-webui:
+-	$(GO) build -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -o $(XD)
++	$(GO) build -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -linkmode external -extldflags '${LDFLAGS}'" -o $(XD)
+ 
+ install: $(XD) $(CLI)
+ 	$(MKDIR) $(PREFIX)/bin
