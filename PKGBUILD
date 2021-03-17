@@ -18,7 +18,6 @@ optdepends=('postfix: Postfix integration'
 	    'sendmail: Sendmail integration') 
 provides=('spf-engine')
 conflicts=('python-postfix-policyd-spf'
-	   'python2-postfix-policyd-spf'
 	   'spf-engine')
 backup=(etc/python-policyd-spf/policyd-spf.conf
 	etc/pyspf-milter/pyspf-milter.conf)
