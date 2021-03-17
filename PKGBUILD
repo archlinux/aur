@@ -1,4 +1,4 @@
-# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 pkgname=proxysql
 pkgver=2.1.0
 pkgrel=1
