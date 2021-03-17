@@ -46,8 +46,7 @@ sha256sums=('SKIP'
             '8180864b00b0d413cc7306496ba184b9c1d2ca2e19e1164d6f16dd710c2c2097')
 
 pkgver() {
-    cd "$srcdir/SHADERed"
-    echo "1.4.2_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git -C SHADERed describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 prepare() {
