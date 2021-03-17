@@ -6,7 +6,7 @@
 
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
-pkgver=2.10
+pkgver=2.11
 pkgrel=1
 pkgdesc='Open source SIP stack and media stack'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -18,7 +18,7 @@ makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pjsip/$pkgbase/archive/$pkgver.tar.gz"
         '0001-Don-t-build-Java-bindings.patch'
         'config_site.h')
-sha256sums=('936a4c5b98601b52325463a397ddf11ab4106c6a7b04f8dc7cdd377efbb597de'
+sha256sums=('c89b155a38daef6e92c8e1ae5c6895357fe5c5406dfdee2f3717962e21565f1c'
             'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
             '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
