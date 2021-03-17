@@ -1,6 +1,6 @@
 pkgbase = ttf-ms-win10-auto
 	pkgver = 10.0.19042.789
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
