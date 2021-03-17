@@ -40,7 +40,7 @@ pkgbase = shadered
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e501a371996c373988bd74733f288c8caa6b44d88439c5d52b18e14b4766420c
+	sha256sums = 885a7c14a7e00477c9acce4c64145e075a044be7a9f774b272cd5af7bde31ee9
 
 pkgname = shadered
 

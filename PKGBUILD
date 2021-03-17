@@ -41,7 +41,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e501a371996c373988bd74733f288c8caa6b44d88439c5d52b18e14b4766420c')
+            '885a7c14a7e00477c9acce4c64145e075a044be7a9f774b272cd5af7bde31ee9')
 
 prepare() {
   cd SHADERed
@@ -71,6 +71,6 @@ package() {
   install -Dm644 "$srcdir/SHADERed/Misc/Icon/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   install -Dm644 "$srcdir/SHADERed/Misc/Linux/org.shadered.SHADERed.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm755 "$srcdir/SHADERed.sh" "$pkgdir/usr/bin/$pkgname"
-  mkdir -p "$pkgdir/opt/$pkgname"
-  mv $srcdir/SHADERed/bin/* "$pkgdir/opt/$pkgname"
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  cp -r $srcdir/SHADERed/bin/* "$pkgdir/usr/share/$pkgname"
 }
