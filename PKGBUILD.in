@@ -8,7 +8,7 @@ arch=('x86_64')
 url='http://kicad-pcb.org/'
 license=('GPL')
 depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
-makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja' 'tar' 'gz')
+makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja' 'tar' 'gzip')
 options=('!strip')
 optdepends=(
 	'kicad-library-nightly: for footprints and symbols'
