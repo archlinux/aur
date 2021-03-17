@@ -1,5 +1,5 @@
 # Maintainer: Elim Garak <garak92@protonmail.com>
-pkgname=rearx-bin
+pkgname=rearx
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A TUI client for the Searx meta-engine, written in Rust"
