@@ -10,7 +10,7 @@ license=('LGPL' 'MIT' 'Apache')
 depends=('csound' 'gstreamer' 'libsodium')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('cargo-c' 'rust' 'git' 'meson')
+makedepends=('cargo-c' 'git' 'meson' 'rust')
 source=("${pkgname%-git}::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs")
 
 pkgver() {
