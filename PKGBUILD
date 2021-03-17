@@ -14,13 +14,13 @@ source=(https://invisible-island.net/datafiles/release/vttest.tar.gz)
 sha256sums=('SKIP')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname-*
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname-*
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   make DESTDIR=$pkgdir mandir="/usr/share/man" install
 }
