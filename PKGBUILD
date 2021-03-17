@@ -1,9 +1,9 @@
-# Maintainer: Mufeed Ali <lastweakness@tuta.io>
+# Maintainer: Mufeed Ali <fushinari@protonmail.com>
 
 pkgname=komikku
 _author=valos
 _gitname=Komikku
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='Online/offline Manga reader for GNOME, built for the Librem 5'
 arch=(any)
@@ -14,7 +14,9 @@ depends=(
   libhandy
   python
   python-beautifulsoup4
+  python-brotli
   python-cairo
+  python-cffi
   python-dateparser
   python-gobject
   python-keyring
@@ -23,13 +25,15 @@ depends=(
   python-pillow
   python-pure-protobuf
   python-unidecode
+  python-wheel
+  webkit2gtk
 )
 makedepends=(
   gobject-introspection
   meson
 )
 source=("https://gitlab.com/$_author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz")
-sha256sums=('3f21d17414d33e9a33d831e4eeb297d62c27920b7e63de0abe755cb0983b3652')
+sha256sums=('d4ecd12d7fc3a6a3e5fde3ed03608ff48045c2e7425b66ef0fadf04941643da2')
 
 prepare() {
   cd $_gitname-v$pkgver
