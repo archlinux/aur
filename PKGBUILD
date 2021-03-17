@@ -117,41 +117,72 @@ build() {
   cd "${buildir}"
 
   CONFOPTS=(
-    --enable-petsc-hypre-required # recommended by MOOSE
-    --with-metis=PETSc            # use PETSCs' metis
-    --enable-cxx11-required       # force C++11 standard
-    --enable-metaphysicl-required # recommended by MOOSE
-    --enable-vtk-required
-    --enable-curl
-    --enable-hdf5
+    --quiet
+    --srcdir="${srcdir}/${realname}"
+    # target directory
+    --prefix=/usr
+    # read-only single-machine data (Make.common)
+    --sysconfdir=/etc/
+    # Binary directory
+    --bindir=/usr/bin
+    # Base data dir (affects doc and others)
+    --datadir=/usr/share
+    # Make sure that the documentation is in the right place (does not work)
+    --docdir=/usr/share/doc/libmesh
+    # use relative addresses for jumps
     --with-pic
+    # get -march flag for this system
+    --enable-march
+    # shared libraries
+    --enable-shared
+
+    # force C++11 standard (todo: check for update)
+    --enable-cxx11-required
+    # recommended by MOOSE
+    --enable-petsc-hypre-required
+    # recommended by MOOSE
+    --enable-metaphysicl-required
+    # Complex numbers
+    # make sure to compile PETSc with complex too
+    --enable-complex
+    # CURL
+    --enable-curl
+    # FFTW
+    --enable-fftw
+    # HDF5
+    --enable-hdf5
+    # OpenMPI
     --enable-mpi
-    --enable-complex              # make sure to compile PETSc with complex too
-    --enable-mumps                # MUMPS
-    --with-mumps=/usr/include     #
-    --with-mumps-lib=/usr/lib     #
-    --enable-netcdf               # NETCDF
-    --with-netcdf=/usr/include    #
-    --with-netcdf-lib=/usr/lib    #
-    --with-nlopt=/usr/include     # NLOPT
-    --with-nlopt-lib=/usr/lib     #
+    # METIS
+    # use PETSCs' metis
+    --with-metis=PETSc
+    # MUMPS
+    --enable-mumps
+    --with-mumps=/usr/include
+    --with-mumps-lib=/usr/lib
+    # NETCDF
+    --enable-netcdf
+    --with-netcdf=/usr/include
+    --with-netcdf-lib=/usr/lib
+    # NLOPT
+    --with-nlopt=/usr/include
+    --with-nlopt-lib=/usr/lib
+    # VTK
+    --enable-vtk-required
 
-    --enable-fftw               # Does this work ?
-    --enable-superlu            # Does this work ?
-
-    --enable-shared             # shared libraries
+    # infinite elements
+    --enable-ifem
     --enable-unique-id          # from libmesh GitHub wiki
-    --enable-march              # get -march flag for this system
-    --enable-ifem               # infinite elements
     --enable-nodeconstraint     # from libmesh GitHub wiki
+
+    --enable-superlu            # Does this work ?
   )
 
   # Configure
-  "${srcdir}/${realname}"/configure \
-    --prefix=/usr \
-    $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do
-        echo "${CONFOPTS[$i]}";
-      done)
+  local config_file="${srcdir}/${realname}"/configure
+  $config_file $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do
+                   echo "${CONFOPTS[$i]}";
+                 done)
 
   # Actual build
   make
