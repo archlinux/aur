@@ -69,7 +69,7 @@ prepare() {
 
 build() {
   cd SHADERed/
-  cmake .
+  cmake . -DCMAKE_BUILD_TYPE=Release
   make
 }
 
