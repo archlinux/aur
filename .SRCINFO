@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 5.12.968912.044a48f420b9
+	pkgver = 5.12.r984749.6e80fb8ab04f
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/amd
 	arch = x86_64
@@ -9,6 +9,10 @@ pkgbase = linux-amd-git
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -18,8 +22,10 @@ pkgbase = linux-amd-git
 	options = !strip
 	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next-5.12
 	source = config
+	source = sphinx-workaround.patch
 	sha256sums = SKIP
-	sha256sums = d3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1
+	sha256sums = eed5d64a1a50bee9be48c4a2e55142ab6f13a4ae1354ceb201ad13a7c7c64206
+	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
 
 pkgname = linux-amd-git
 	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules
@@ -35,6 +41,7 @@ pkgname = linux-amd-git
 
 pkgname = linux-amd-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux kernel with AMDGPU WIP patches kernel
+	depends = pahole
 
 pkgname = linux-amd-docs-git
 	pkgdesc = Documentation for the Linux kernel with AMDGPU WIP patches kernel

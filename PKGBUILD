@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.12.983137.c915ef890d5d
+pkgver=5.12.r984749.6e80fb8ab04f
 _product="${pkgbase%-git}"
 _kernel_rel=5.12
 _branch=drm-next-${_kernel_rel}
@@ -13,7 +13,7 @@ arch=(x86_64)
 url='https://gitlab.freedesktop.org/drm/amd'
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole cpio perl
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -22,14 +22,16 @@ _srcname=linux-agd5f
 source=(
   "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
   config         # the main kernel config file
+  sphinx-workaround.patch  # Sphinx 3.5 broke the build again
 )
 sha256sums=('SKIP'
-            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1')
+            'eed5d64a1a50bee9be48c4a2e55142ab6f13a4ae1354ceb201ad13a7c7c64206'
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 pkgver() {
   cd "${_srcname}"
 
-  echo "${_kernel_rel}".$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" "${_kernel_rel}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 export KBUILD_BUILD_HOST=archlinux
@@ -96,6 +98,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
