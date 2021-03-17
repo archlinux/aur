@@ -3,22 +3,22 @@
 
 pkgname=libcrystalhd
 pkgver=20131127
-pkgrel=2
+pkgrel=3
 pkgdesc="Broadcom Crystal HD library"
 arch=('i686' 'x86_64')
-url="https://github.com/agx/libcrystalhd"
+url="https://github.com/crystalhd-arch/libcrystalhd"
 license=('LGPLv2.1')
-source=("$pkgname-$pkgver.zip::https://github.com/agx/libcrystalhd/archive/master.zip")
-sha256sums=('a52154ae3278c5418032a6882f20103747514be25d1abab78c357725d48949e4')
+source=("https://github.com/crystalhd-arch/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('f905f000a42bd04507439ebcb4f3ce0fe28482c69c56c54cd83dc7de22c62a5630e2e229b730a1577c1a817d8cfaef7f9146eb577b1cbc3de6c8190a5157cea2')
+
 
 build() {
-  cd "$pkgname-master"
-  ./autogen.sh
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$pkgname-master"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 # vim:syntax=sh
