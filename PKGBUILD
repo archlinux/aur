@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -86,7 +86,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch"
          # the main kernel config files
         'config')
 
@@ -339,8 +340,9 @@ sha512sums=('69bf72b99b0ef55cb9cd8c37bc9670e0dc7d97ab1f5b9f7edd2c161e8489d3aac43
             'SKIP'
             '4fc960b88240908a91896375577b9f9521288f73a4096c6459a5d9d10c85fcea14566f3d49dabeb1d6973dbc07ad940c96fe89273b52a8d3e9673e6871d911d2'
             'd4bd0a49d18cea1fb7d2a3d64a2b9e2f18a56071446959b0a12b9234acce86ce1de0124b90357f39cffff744a7e6a8efd98377e9e7ba5eaef0371645833ab49d'
-            'b8ffb47a465c1c71694d7e3522c81ccadfb59288c52253afb8fda8c7c4c64b2f98ec82c0dbae9b7c8e89d78deaf64cbadb45b8653173f43e838eefbbfe78c86a'
-            'e0f3096aacc068ce2f70fb9a5ba198246771f27394096777e6e26e407e15efb5c45a587e26b99f5da08e8c1f2264b6b4af4fc0f937a337def83ecac56c074a14')
+            '0ea8a8671e4172e0c2b3eb02b7c783c9957b39dc835711deef4521da4a40b398f2a2a77fdd1efacd7c5412611d90f08606dbc556e6048644b19319f8bb2eff11'
+            'e63ed24cfd80e566ff98e5861b982bca07adee1b15ce40f31d5144f61e87c06583b86b8f9ea9953ba2b9d2802d26a1e2cc9e11717c5287094f5d3aee51da55d5'
+            'a06977b2ca8073e2c98dfa477447bbb38c178954c4cd276a17a3250ca0f2f0b82d2e16910185cc68862b6fea3dce3566799bb111b0bbd0434f572929de7ecbc9')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
