@@ -1,0 +1,6 @@
+*
+!/.SRCINFO
+!/.gitignore
+!/PKGBUILD
+!/xboxdrv.conf
+!/xboxdrv.service
