@@ -9,7 +9,7 @@ pkgdesc="An online radio streaming player that runs on a Linux system tray."
 arch=(any)
 url="https://radiotray.wordpress.com/"
 license=(GPL)
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' \
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good'
          'python2-dbus' 'python2-gobject' 'python2-lxml' 'python2-notify' 'python2-xdg')
 optdepends=('gst-plugins-bad: extra codec support'
             'gst-plugins-ugly: extra codec support'
@@ -38,14 +38,7 @@ prepare() {
     patch -Np1 < "${srcdir}/reduce-logging.patch"
 }
 
-build() {
-    cd $pkgname-$pkgver
-    python2 setup.py bdist
-}
-
 package() {
     cd $pkgname-$pkgver
-    bsdtar pxf "dist/${pkgname}-${pkgver}.linux-${CARCH}.tar.gz" -C "${pkgdir}"
-    chown -R root: "${pkgdir}"
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }
-
