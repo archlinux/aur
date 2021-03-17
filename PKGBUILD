@@ -1,4 +1,5 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
+# Maintainer: Mahor Foruzesh <mahorforuzesh at protonmail dot com>
 
 pkgname=tachidesk
 pkgver=0.2.5.r256
