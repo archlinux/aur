@@ -6,7 +6,7 @@ pkgdesc="Preview a full GRUB 2.x theme (or just a background image) using KVM/QE
 arch=('any')
 url="https://github.com/hartwork/grub2-theme-preview"
 license=('GPL')
-depends=('grub' 'qemu' 'mtools' 'python' 'libisoburn' 'edk2-ovmf')
+depends=('grub' 'qemu' 'mtools' 'python' 'python-setuptools' 'libisoburn' 'edk2-ovmf')
 makedepends=('git')
 source=("git+https://github.com/hartwork/grub2-theme-preview.git#tag=${pkgver}")
 sha256sums=('SKIP')

@@ -10,6 +10,7 @@ pkgbase = grub2-theme-preview
 	depends = qemu
 	depends = mtools
 	depends = python
+	depends = python-setuptools
 	depends = libisoburn
 	depends = edk2-ovmf
 	source = git+https://github.com/hartwork/grub2-theme-preview.git#tag=2.3.0
