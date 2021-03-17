@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 433
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = hydrus
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
 	optdepends = python-cloudscraper: bypass cloudflare "checking your browser" challenges
-	optdepends = python-pyqtchart: display bandwidth usage charts
+	optdepends = python-pyqt5-chart: display bandwidth usage charts
 	optdepends = python-pyopenssl: to generate certificates for accessing client API and server via HTTPS
 	conflicts = hydrus-docs
 	conflicts = hydrus-sources
