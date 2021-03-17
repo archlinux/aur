@@ -1,6 +1,6 @@
 pkgbase = mon2cam-git
 	pkgdesc = Workaround for multi-monitor Discord screensharing
-	pkgver = r45.d3c6a1c
+	pkgver = r83.fb6f333
 	pkgrel = 1
 	url = https://github.com/ShayBox/Mon2Cam
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = mon2cam-git
 	source = Mon2Cam.desktop
 	sha256sums = SKIP
 	sha256sums = 1174500c3fa06a04215189c9a9b6e334456c97fc962cc63c4ad6eee6bb215e98
-	sha256sums = fcc598918d2628e8dd57b64d1487c604b2423f244f42580ece480c6e365335d3
+	sha256sums = 5f7100d7c06257db8bcd9d23d0f70897f145ec561cf54dd0bfede948498af9da
 
 pkgname = mon2cam-git
 

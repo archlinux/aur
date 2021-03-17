@@ -1,10 +1,10 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
-Name=Mon2Cam        
+Name=Mon2Cam
 Comment=Workaround for multi-monitor Discord screensharing
-Exec=/usr/bin/Mon2Cam
+Exec=/usr/bin/mon2cam
 Icon=utilities-terminal
-Terminal=true 
+Terminal=true
 Type=Application
 Categories=Application;
