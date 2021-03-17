@@ -3,13 +3,15 @@
 
 pkgname=mautrix-whatsapp
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
 license=('AGPL')
+# mautrix-whatsapp can be build without encription support.
+# For that libolm has to be removed from the makedepends and depends
 makedepends=(go libolm)
-optdepends=('ffmpeg: If you want to send gifs from Matrix'
-            'libolm: If you want end-to-bridge encryption')
+depends=('libolm')
+optdepends=('ffmpeg: If you want to send gifs from Matrix')
 url="https://github.com/tulir/${pkgname}"
 source=("${url}/archive/v${pkgver}.tar.gz" 
         sysusers-mautrix-whatsapp.conf
