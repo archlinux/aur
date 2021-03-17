@@ -2,8 +2,8 @@
 # Contributor: Anthony Ruhier <anthony.ruhier@gmail.com>
 
 pkgname=netbox-git
-pkgver=v2.10.4.r28.b1cd634ab
-pkgrel=2
+pkgver=v2.10.5.r45.f9f1a4439
+pkgrel=1
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/netbox-community/netbox.git"
@@ -39,6 +39,7 @@ depends=('python'
          'python-xmltodict'
          'python-yaml')
 
+optdepends=('apache' 'nginx' 'postgresql' 'redis')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=("${pkgname%-git}")
