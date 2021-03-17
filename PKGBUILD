@@ -2,7 +2,7 @@
 ## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=mambaforge
 pkgver=4.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Conda and Mamba package managers configured to use conda-forge."
 arch=('x86_64')
 url="https://github.com/conda-forge/miniforge"
