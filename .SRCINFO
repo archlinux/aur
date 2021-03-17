@@ -1,18 +1,23 @@
-pkgbase = recutils
+pkgbase = recutils-git
 	pkgdesc = Set of tools and libraries to access plain text databases called recfiles.
-	pkgver = 1.8
-	pkgrel = 3
+	pkgver = 1.8.r26.gea03fda
+	pkgrel = 1
 	url = https://www.gnu.org/software/recutils/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	checkdepends = check
+	makedepends = git
+	makedepends = help2man
+	makedepends = rsync
+	depends = curl
 	depends = libgcrypt
-	source = https://ftp.gnu.org/gnu/recutils/recutils-1.8.tar.gz
-	source = https://ftp.gnu.org/gnu/recutils/recutils-1.8.tar.gz.sig
-	validpgpkeys = BDFA5717FC1DD35C2C3832A23EF90523B304AF08
-	sha256sums = df8eae69593fdba53e264cbf4b2307dfb82120c09b6fab23e2dad51a89a5b193
+	provides = recutils
+	conflicts = recutils
+	source = git+https://git.savannah.gnu.org/git/recutils.git
+	source = git+https://git.savannah.gnu.org/git/gnulib.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = recutils
+pkgname = recutils-git
 
