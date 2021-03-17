@@ -1,6 +1,8 @@
 *xz
 *gz
 *tar
+*zst
 pkg/
 src/
 tfsec-linux-amd64
+LICENSE
