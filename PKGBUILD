@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=4.3.1
-pkgrel=3
+pkgver=4.3.2
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -58,6 +58,7 @@ depends=(
   libxml2
   libxv
   libxvidcore.so
+  libzimg.so
   opencore-amr
   openjpeg2
   openssl # https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
@@ -97,7 +98,7 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-_tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
+_tag=f719f869907764e6412a6af6e178c46e5f915d25
 conflicts=("$_name")
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
@@ -115,8 +116,9 @@ prepare() {
   cd ffmpeg
 
   git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315 # fix build against libsrt 1.4.2
- patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
+
 build() {
   cd ffmpeg
 
@@ -168,9 +170,9 @@ build() {
     --enable-libxcb \
     --enable-libxml2 \
     --enable-libxvid \
+    --enable-libzimg \
     --enable-nvdec \
     --enable-nvenc \
-    --enable-omx \
     --enable-openssl \
     --enable-shared \
     --enable-version3 \
