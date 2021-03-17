@@ -1,7 +1,7 @@
 # Maintainer: Premysl Srubar <premysl.srubar at gmail com>
 pkgname=python-pyfakewebcam-git
 pkgver=r0.1.0.r10.g41abbab
-pkgrel=1
+pkgrel=2
 pkgdesc="An API for writing RGB frames to a fake webcam device on Linux"
 arch=('any')
 url="https://github.com/jremmons/pyfakewebcam"
