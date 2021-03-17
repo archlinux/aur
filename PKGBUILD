@@ -28,6 +28,7 @@ prepare() {
 
 check() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
+  export GO111MODULE=off
   mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
   cp -a "$srcdir/$pkgname" "$srcdir"/build/src/github.com/linuxdeepin/go-x11-client
   cd "$srcdir"/build/src/github.com/linuxdeepin/go-x11-client
