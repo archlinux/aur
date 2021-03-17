@@ -7,12 +7,12 @@ _pkgbase=libappindicator
 pkgbase=lib32-${_pkgbase}
 pkgname=("${pkgbase}-gtk"{2,3})
 pkgver=12.10.0
-pkgrel=11
+pkgrel=12
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (32-bit)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL3')
-makedepends=('dbus-glib' 'gobject-introspection' 'lib32-libdbusmenu-gtk'{2,3} 'lib32-libindicator-gtk'{2,3} 'vala')
+makedepends=('dbus-glib' 'lib32-libdbusmenu-gtk'{2,3} 'lib32-libindicator-gtk'{2,3} 'vala')
 options=('!emptydirs')
 source=(http://launchpad.net/${_pkgbase}/${pkgver%.*}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz{,.asc}
         no-python.patch)
