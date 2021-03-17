@@ -1,8 +1,8 @@
 diff --git a/hydrus/client/gui/ClientGUI.py b/hydrus/client/gui/ClientGUI.py
-index db9fd6f..c925431 100644
+index c73d9a8..717afce 100644
 --- a/hydrus/client/gui/ClientGUI.py
 +++ b/hydrus/client/gui/ClientGUI.py
-@@ -792,7 +792,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
+@@ -3903,7 +3903,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -12,7 +12,7 @@ index db9fd6f..c925431 100644
                          cmd = [ python_executable, server_script_path, db_param ]
                          
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
-index 857715d..ff6a7ae 100644
+index a9eef8d..ca32f46 100644
 --- a/hydrus/core/HydrusConstants.py
 +++ b/hydrus/core/HydrusConstants.py
 @@ -5,33 +5,9 @@ import typing
@@ -52,7 +52,7 @@ index 857715d..ff6a7ae 100644
  
  PLATFORM_WINDOWS = sys.platform == 'win32'
  PLATFORM_MACOS  = sys.platform == 'darwin'
-@@ -41,23 +17,16 @@ PLATFORM_HAIKU = sys.platform == 'haiku1'
+@@ -41,32 +17,16 @@ PLATFORM_HAIKU = sys.platform == 'haiku1'
  RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
  RUNNING_FROM_MACOS_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
  
@@ -69,11 +69,20 @@ index 857715d..ff6a7ae 100644
  
 -if PLATFORM_MACOS:
 -    
--    USERPATH_DB_DIR = os.path.join( os.path.expanduser( '~' ), 'Library', 'Hydrus' )
+-    desired_userpath_db_dir = os.path.join( '~', 'Library', 'Hydrus' )
 -    
 -else:
 -    
--    USERPATH_DB_DIR = os.path.join( os.path.expanduser( '~' ), 'Hydrus' )
+-    desired_userpath_db_dir = os.path.join( '~', 'Hydrus' )
+-    
+-
+-USERPATH_DB_DIR = os.path.expanduser( desired_userpath_db_dir )
+-
+-if USERPATH_DB_DIR == desired_userpath_db_dir:
+-    
+-    # could not figure it out, probably a crazy user situation atm
+-    
+-    USERPATH_DB_DIR = None
 -    
 +USERPATH_DB_DIR = DEFAULT_DB_DIR
  
