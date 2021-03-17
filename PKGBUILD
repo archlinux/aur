@@ -1,13 +1,13 @@
 # Maintainer: Owen D'Aprile <aur@owen.sh>
 
 pkgname=utf8info-git
-pkgver=r37.eb8e09e
+pkgver=r39.0cf38fa
 pkgrel=1
 pkgdesc='Small utility that reads a UTF-8 stream and prints out the raw codepoint information.'
 arch=('x86_64')
 url=https://github.com/lunasorcery/utf8info
 license=('unknown')
-makedepends=('curl' 'git')
+makedepends=('curl' 'git' 'unzip')
 source=("$pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 

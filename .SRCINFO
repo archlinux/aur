@@ -1,12 +1,13 @@
 pkgbase = utf8info-git
 	pkgdesc = Small utility that reads a UTF-8 stream and prints out the raw codepoint information.
-	pkgver = r37.eb8e09e
+	pkgver = r39.0cf38fa
 	pkgrel = 1
 	url = https://github.com/lunasorcery/utf8info
 	arch = x86_64
 	license = unknown
 	makedepends = curl
 	makedepends = git
+	makedepends = unzip
 	source = utf8info-git::git+https://github.com/lunasorcery/utf8info.git
 	sha256sums = SKIP
 
