@@ -7,6 +7,7 @@ pkgbase = shadered-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python
 	depends = assimp
 	depends = glew

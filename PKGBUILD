@@ -13,7 +13,7 @@ arch=("x86_64")
 url="https://github.com/dfranx/SHADERed"
 license=("MIT")
 depends=(assimp glew glm gtk3 sdl2 sfml)
-makedepends=(git cmake python)
+makedepends=(git cmake ninja python)
 provides=('shadered')
 conflicts=('shadered')
 
@@ -69,8 +69,10 @@ prepare() {
 
 build() {
   cd SHADERed/
-  cmake . -DCMAKE_BUILD_TYPE=Release
-  make
+  cmake . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -G Ninja
+  ninja
 }
 
 package() {
