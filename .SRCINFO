@@ -1,14 +1,13 @@
 pkgbase = python-pygram11
 	pkgdesc = histogramming in python accelerated with OpenMP
 	pkgver = 0.11.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/douglasdavis/pygram11
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
 	makedepends = python-setuptools
-	makedepends = pybind11
-	makedepends = python-numpy
+	makedepends = python-setuptools-scm
 	depends = python>=3.6
 	depends = python-numpy
 	options = !emptydirs

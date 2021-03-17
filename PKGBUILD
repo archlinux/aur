@@ -2,7 +2,7 @@
 
 pkgname=python-pygram11
 pkgver=0.11.2
-pkgrel=0
+pkgrel=1
 pkgdesc="histogramming in python accelerated with OpenMP"
 arch=('x86_64')
 url="https://github.com/douglasdavis/pygram11"
@@ -11,7 +11,7 @@ groups=()
 depends=('python>=3.6' 'python-numpy')
 optdepends=()
 checkdepends=()
-makedepends=('gcc' 'python-setuptools' 'pybind11' 'python-numpy')
+makedepends=('gcc' 'python-setuptools' 'python-setuptools-scm')
 provides=()
 conflicts=()
 replaces=()
