@@ -12,9 +12,7 @@
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
 _product=thunderbird
-pkgver=87.0b2
-_major=${pkgver/rc*}
-_build=${pkgver/*rc}
+pkgver=87.0b3
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 arch=('i686' 'x86_64')
