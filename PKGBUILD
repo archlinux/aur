@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=basis-universal
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc="Basis Universal GPU Texture Codec"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/BinomialLLC/basis_universal"
 license=('Apache')
 makedepends=('cmake' 'ninja')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('e654e4c333b7bc886e049c13f75de8ae1d2ca23aae6fd2252521bfd484461322')
+sha256sums=('f2aa3b8c46474a29c491284665ee9600937edb88dc3a4da474a2bc6c7148260c')
 provides=(basisu)
 
 prepare() {
