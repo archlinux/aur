@@ -1,0 +1,46 @@
+pkgbase = zestginx
+	pkgdesc = A modern, performant, and secure NGINX distribution packed with features.
+	pkgver = 1.19.8
+	pkgrel = 1
+	url = https://github.com/ZestProjects/zestginx
+	arch = any
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = rust>=1.39
+	depends = geoip
+	depends = libatomic_ops
+	depends = liburing
+	depends = libxcrypt
+	depends = mailcap
+	depends = mimalloc
+	depends = pcre
+	depends = zstd
+	backup = etc/logrotate.d/nginx
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	source = git+https://github.com/ZestProjects/zestginx.git
+	source = https://nginx.org/LICENSE
+	source = logrotate
+	source = service
+	b2sums = SKIP
+	b2sums = fbd993990b43a4476d0963287bdc5f55f73fa5ce828f11977cf1abeedd478729a95861d930e27c6a1b0e78b16397164395afc4473fd34e050cadd32b94336beb
+	b2sums = 6a8f31fe0c0a91487ae6ff209b0e43f0619ecc4a9eeaaede8c478ce041ac9b0fd94125fab064c9451800e3f5a6002ee80e92541032e3dfc426552bf4fa12dc00
+	b2sums = 7ed09ce30b7fff528b4c11f95d3ca66cdf8f570a200851525a45235f35ea4719d495134670b0cad03049448e51bd574fd0719508ed232fa526687f5297b7c3be
+
+pkgname = zestginx
+	provides = nginx
+	conflicts = nginx
+	replaces = nginx-zest-git
+
+pkgname = zestginx-src
+	pkgdesc = The source code of Zestginx, which is useful for building dynamic modules.
+	depends = 
+	replaces = nginx-zest-src-git
+
