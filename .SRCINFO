@@ -1,8 +1,8 @@
 pkgbase = rconf
-	pkgver = 1.1.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	arch = x86_64
-	source = rconf-1.1.1.tar.gz::https://github.com/jasonverbeek/rconf/archive/v1.1.1.tar.gz
+	source = rconf-2.0.0.tar.gz::https://github.com/jasonverbeek/rconf/archive/v2.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = rconf
