@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-ur-msgs
+	pkgdesc = ROS - Message and service definitions for interacting with Universal Robots robot controllers.
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-message-runtime
+	source = ros-melodic-ur-msgs-1.3.2.tar.gz::https://github.com/ros-industrial-release/ur_msgs-release/archive/release/melodic/ur_msgs/1.3.2.tar.gz
+	sha256sums = 019a4b09ff08b6ad898e89ade7cc58a6d71107993a1a693b409c99375883279e
+
+pkgname = ros-melodic-ur-msgs
+
