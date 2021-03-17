@@ -1,0 +1,24 @@
+pkgbase = argon-git
+	pkgdesc = the noble lightweight GUI package manager + update notifier (with full AUR support)
+	pkgver = v2.0.4+2+g8cf099e
+	pkgrel = 1
+	url = https://github.com/14mRh4X0r/arch-argon
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = auracle-git
+	depends = pacman-contrib
+	depends = pacaur
+	depends = libnotify
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = vte3
+	provides = argon
+	conflicts = argon
+	source = argon-git::git+https://github.com/14mRh4X0r/arch-argon.git
+	sha512sums = SKIP
+
+pkgname = argon-git
+
