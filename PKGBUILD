@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2021.03.11
+pkgver=2021.03.17
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org"
 arch=('x86_64')
@@ -16,7 +16,7 @@ _UXP=20210302
 source=("https://repo.palemoon.org/MoonchildProductions/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/RELBASE_${_UXP}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/Pale-Moon/raw/commit/7046794388319744751208a8d0e98e27861f67ce/palemoon/branding/unofficial/browser.desktop")
-sha256sums=('2e4974c7fe37ac0227d684fb622363e5494e41c73220cb18b8e28c20b84184e3'
+sha256sums=('6236090587a878a38bcc4974393d98c553939fae9153cf4f1a7427e6827cbaee'
             '2d0391d369ef596a935a8cc22c62d3c07873119cac2e1df65d5cb2325f182d48'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
