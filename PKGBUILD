@@ -13,7 +13,7 @@ linuxver="4.7.0-0"
 
 source=("https://github.com/openshift/okd/releases/download/${pkgver//_/-}.okd-${pkgdate}/openshift-client-linux-${linuxver}.okd-${pkgdate}.tar.gz")
 
-sha256sums=('7949f33d6e671c98859ab4a13908f341a69430f030643d6ebce43425151bd559')
+sha256sums=('d1bef47da6249fd6808c6308fb5b44213090139b7d940a3d347365baafd386cd')
 
 prepare() {
     # generate completion
