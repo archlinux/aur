@@ -16,10 +16,32 @@ depends=(assimp glew glm gtk3 sdl2 sfml)
 makedepends=(git cmake python)
 provides=('shadered')
 
-source=("git+https://github.com/dfranx/SHADERed.git"
+source=("git+https://github.com/dfranx/SHADERed"
+        "git+https://github.com/dfranx/ImGuiColorTextEdit"
+        "git+https://github.com/dfranx/SPIRV-VM"
+        "git+https://github.com/dfranx/ShaderExpressionParser"
+        "git+https://github.com/dfranx/SpvGenTwo"
+        "git+https://github.com/dfranx/assimp"
+        "git+https://github.com/KhronosGroup/glslang"
+        "git+https://github.com/dfranx/imgui"
+        "git+https://github.com/jtilly/inih"
+        "git+https://github.com/zeux/pugixml"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers"
+        "git+https://github.com/KhronosGroup/SPIRV-Tools"
         "SHADERed-git.desktop"
         "SHADERed-git.sh")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '9468e6cdf0097616def7415ef0d47abcd9f9c444fa5f6b23a5a4832d62209ea4'
             '8180864b00b0d413cc7306496ba184b9c1d2ca2e19e1164d6f16dd710c2c2097')
 
@@ -28,9 +50,25 @@ pkgver() {
     echo "1.4.2_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd SHADERed
+  git submodule init
+  git config submodule.'libs/ImGuiColorTextEdit'.url "$srcdir/ImGuiColorTextEdit"
+  git config submodule.'libs/SPIRV-VM'.url "$srcdir/SPIRV-VM"
+  git config submodule.'libs/ShaderExpressionParser'.url "$srcdir/ShaderExpressionParser"
+  git config submodule.'libs/SpvGenTwo'.url "$srcdir/SpvGenTwo"
+  git config submodule.'libs/assimp'.url "$srcdir/assimp"
+  git config submodule.'libs/glslang'.url "$srcdir/glslang"
+  git config submodule.'libs/imgui'.url "$srcdir/imgui"
+  git config submodule.'libs/inih'.url "$srcdir/inih"
+  git config submodule.'libs/pugixml'.url "$srcdir/pugixml"
+  git config submodule.'libs/spirv-headers'.url "$srcdir/SPIRV-Headers"
+  git config submodule.'libs/spirv-tools'.url "$srcdir/SPIRV-Tools"
+  git submodule update
+}
+
 build() {
   cd SHADERed/
-  git submodule update --init --recursive
   cmake .
   make
 }
