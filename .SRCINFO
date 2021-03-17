@@ -1,7 +1,7 @@
 pkgbase = soundux-git
 	pkgdesc = A cross-platform soundboard
-	pkgver = r613.81e4070
-	pkgrel = 1
+	pkgver = r663.efd428d
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Soundux/Soundux
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = soundux-git
 	makedepends = ninja
 	depends = pulseaudio
 	depends = webkit2gtk
+	depends = libwnck3
 	provides = soundux
 	conflicts = soundux
 	source = git+https://github.com/Soundux/Soundux.git
