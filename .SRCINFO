@@ -1,0 +1,31 @@
+pkgbase = python-gabbi
+	pkgdesc = Declarative HTTP testing library
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/cdent/gabbi
+	arch = any
+	license = Apache
+	checkdepends = python-mock
+	checkdepends = python-stestr
+	checkdepends = python-coverage
+	checkdepends = python-pytest-cov
+	checkdepends = python-hacking
+	checkdepends = python-sphinx
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pbr
+	depends = python-pytest
+	depends = python-six
+	depends = python-pyaml
+	depends = python-urllib3
+	depends = python-certifi
+	depends = python-jsonpath-rw-ext
+	depends = python-wsgi-intercept
+	depends = python-colorama
+	source = https://pypi.io/packages/source/g/gabbi/gabbi-2.2.0.tar.gz
+	md5sums = a07d2575ba0bd3b52dbb358e3985546c
+	sha256sums = a78bc2abe086951616d4edb630e8725d8418a70b33100e9d67571a50a80fffcb
+	sha512sums = f0b3b9f1d4adb587aff6bfb3a83742daa3b82603458c0c7dd597d404aa0441b60e3612a14d34a7e32491e8550ef042bc754792c1d2c4379df0c411d93254e7e3
+
+pkgname = python-gabbi
+
