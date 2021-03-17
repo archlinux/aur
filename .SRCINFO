@@ -1,0 +1,13 @@
+pkgbase = crystalhd-headers
+	pkgdesc = Broadcom Crystal HD headers for kernel driver and library
+	pkgver = 20131127
+	pkgrel = 3
+	url = https://github.com/crystalhd-arch/crystalhd-headers
+	arch = i686
+	arch = x86_64
+	license = LGPLv2.1
+	source = https://github.com/crystalhd-arch/crystalhd-headers/archive/20131127.tar.gz
+	sha512sums = 2901627e5dd86e5468ff3935318296c79978c2551066430489b9163fccff57eb987ad9f2ef2db7f09af96bcd9574aa9493e0d4cd6b82f401be00210f77025e16
+
+pkgname = crystalhd-headers
+
