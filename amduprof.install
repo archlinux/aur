@@ -1,5 +1,10 @@
 post_install() {
-	echo "Use 'module load amduprof' to set up the environment for AMD uProf performance analysis tool."
+	if pacman -Q env-modules &> /dev/null; then
+		echo "env-modules seems to be installed:"
+		echo "If configured correctly, you can conveniently use"
+		echo "  $ module load amduprof"
+		echo "to set up the environment for AMD µProf."
+	fi
 }
 
 post_upgrade() {
