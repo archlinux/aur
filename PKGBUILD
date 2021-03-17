@@ -1,12 +1,12 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
-pkgver=0.2.2_b1
+pkgver=0.2.2_b2
 pkgrel=1
 pkgdesc="A cross-platform soundboard"
 arch=('any')
 url="https://github.com/Soundux/Soundux"
 license=('GPL3')
-depends=('pulseaudio' 'webkit2gtk')
+depends=('pulseaudio' 'webkit2gtk' 'libwnck3')
 makedepends=('git' 'cmake' 'ninja')
 source=("git+https://github.com/Soundux/Soundux#tag=$pkgver")
 sha256sums=('SKIP')
