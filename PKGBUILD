@@ -13,4 +13,7 @@ sha256sums=("c07d96264d4254c1a65464dbba78de58a90dc3ffb1ee38b8d798fe6558fd6f45")
 
 package() {
     install -Dm755 rearx -t "$pkgdir/usr/bin/"
+    #Create rearx config directory and config file
+    mkdir -p ~/.config/rearx/
+    echo ""https://searx.garudalinux.org/"" > ~/.config/rearx/rearx.yaml
 }
