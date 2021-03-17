@@ -1,6 +1,6 @@
 pkgbase = edmarketconnector
 	pkgdesc = Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://github.com/EDCD/EDMarketConnector
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = edmarketconnector
 	depends = python-semantic-version
 	provides = edmarketconnector
 	conflicts = edmarketconnector
-	source = https://github.com/EDCD/EDMarketConnector/archive/Release/4.2.1.tar.gz
+	source = https://github.com/EDCD/EDMarketConnector/archive/Release/4.2.2.tar.gz
 	source = edmarketconnector.sh
 	source = edmarketconnector.desktop
-	sha256sums = c9a2cb803b17469762346e67d49891c41a2d9cacbee9d4297e3685e74ca6174a
+	sha256sums = b034056e2788c480dcbca57215d8db04b178f0925c51d66f17700d58e7f7f7be
 	sha256sums = 7be0528d56edfcb444c4a7ba7a18e85296571e7558906c90fe6520c03206242c
 	sha256sums = fa797932630e7b5e7cc42b0f0f4b20126b5af67661c636885b5486008cb1b13a
 
