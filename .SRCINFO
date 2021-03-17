@@ -1,0 +1,13 @@
+pkgbase = sphinxdft
+	pkgdesc = Toolkit for Density functional theory, continuum elasticity and multiband k.p models
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://sxrepo.mpie.de/
+	arch = x86_64
+	license = Apache 2.0
+	depends = cblas
+	depends = lapacke
+	depends = netcdf
+
+pkgname = sphinxdft
+
