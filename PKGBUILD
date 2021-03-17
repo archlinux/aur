@@ -1,4 +1,5 @@
-# Maintainer: Ignacy Kuchciński <ignacykuchcinski@gmail.com>
+# Maintainer: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
+# Contributor: Simon Gardling <titaniumtown@gmail.com>
 
 pkgname=sysprof-git
 _pkgname=sysprof
