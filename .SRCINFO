@@ -1,0 +1,37 @@
+pkgbase = python-etcd3
+	pkgdesc = Python client for the etcd3 API
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/kragniz/python-etcd3
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = bump2version
+	checkdepends = python-coverage
+	checkdepends = python-flake8-docstrings
+	checkdepends = python-flake8-import-order
+	checkdepends = flake8
+	checkdepends = python-grpcio-tools
+	checkdepends = python-hypothesis
+	checkdepends = python-mock
+	checkdepends = python-more-itertools
+	checkdepends = python-pifpaf
+	checkdepends = python-pydocstyle
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest
+	checkdepends = python-pyaml
+	checkdepends = python-sphinx
+	checkdepends = python-tox
+	makedepends = python-setuptools
+	depends = python
+	depends = python-grpcio
+	depends = python-protobuf
+	depends = python-six
+	depends = python-tenacity
+	source = https://pypi.io/packages/source/e/etcd3/etcd3-0.12.0.tar.gz
+	md5sums = f40a94e5e93194a9591a20bd600f4c84
+	sha256sums = 89a704cb389bf0a010a1fa050ce19342d23bf6371ebda1c21cfe8ff3ed488726
+	sha512sums = d31cf0059036af91b489d6197fcda71314b5dcd068b6095212e1fec39d55b0bc4e943da3fdda6131fd1a6d48741334f5659e470c3284f0c6ab1a39d662d7d78a
+
+pkgname = python-etcd3
+
