@@ -1,17 +1,14 @@
-# Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
+# Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
+# Contributor: Jacek Szafarkiewicz <szafar at linux dot pl>
 
 pkgname="zlib-ng-git"
-pkgver=2
+pkgver="r1549.b22bc51"
 pkgrel=1
-epoch=3
-pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
-arch=(
-	"any"
-)
+epoch=4
+arch=("any")
+pkgdesc="Zlib replacement with optimizations for \"next generation\" systems."
 url="https://github.com/zlib-ng/zlib-ng"
-license=(
-	"custom"
-)
+license=("custom: Zlib License")
 depends=(
 	"glibc"
 )
@@ -20,40 +17,41 @@ makedepends=(
 	"git"
 )
 provides=(
-	"zlib=1.2.11"
+	"zlib"
 	"zlib-ng"
 )
 conflicts=(
 	"zlib"
-	"zlib-ng"
 )
-options=(
-	"staticlibs"
-)
-source=(
-	"git+${url}.git"
-)
-b2sums=(
-	"SKIP"
-)
+source=("git+$url.git")
+b2sums=("SKIP")
+
+pkgver()
+{
+	cd "zlib-ng"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build()
 {
-	cd "zlib-ng" || exit
-	./configure --prefix="/usr" --zlib-compat
-	make
+    cmake \
+         -S "zlib-ng" \
+         -B "build" \
+         -Wno-dev \
+         -DCMAKE_BUILD_TYPE="Release" \
+         -DCMAKE_INSTALL_PREFIX="/usr" \
+         -DZLIB_COMPAT=ON
+
+    make -C "build"
 }
 
 check()
 {
-	cd "zlib-ng" || exit
-	make test
+    make -C "build" test
 }
 
 package()
 {
-	cd "zlib-ng" || exit
-	make install DESTDIR="${pkgdir}"
-
-	install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make DESTDIR="$pkgdir" -C "build" install
+    install -D -m644 "zlib-ng/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
