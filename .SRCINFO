@@ -1,6 +1,6 @@
 pkgbase = mesa-stable
 	pkgdesc = An open-source implementation of the OpenGL specification. (stable release)
-	pkgver = 20.3.4
+	pkgver = 21.0.0
 	pkgrel = 1
 	url = https://mesa3d.org/
 	arch = x86_64
@@ -100,7 +100,7 @@ pkgbase = mesa-stable
 	conflicts = mesa-vdpau
 	conflicts = mesa-rc
 	conflicts = mesa-git
-	source = https://archive.mesa3d.org/mesa-20.3.4.tar.xz
+	source = https://archive.mesa3d.org/mesa-21.0.0.tar.xz
 	source = LICENSE
 	source = 0001-4114.patch
 	source = 0001-4200.patch

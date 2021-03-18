@@ -1,6 +1,6 @@
-From 9699a4f3b21d8cf5b48785d4d9ca4241fd4f2e03 Mon Sep 17 00:00:00 2001
+From 82467de5bb895052993fb892cd4b34ee757fdcab Mon Sep 17 00:00:00 2001
 From: kevall474 <kevall474@tuta.io>
-Date: Wed, 24 Feb 2021 15:38:11 -0500
+Date: Wed, 24 Feb 2021 15:34:45 -0500
 Subject: [PATCH] 4114
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH] 4114
  1 file changed, 4 insertions(+)
 
 diff --git a/src/gallium/frontends/clover/llvm/invocation.cpp b/src/gallium/frontends/clover/llvm/invocation.cpp
-index 779b28dc9b3..f3d68622ca9 100644
+index 536e952b100..3a8d9c8e929 100644
 --- a/src/gallium/frontends/clover/llvm/invocation.cpp
 +++ b/src/gallium/frontends/clover/llvm/invocation.cpp
-@@ -230,7 +230,11 @@ namespace {
+@@ -249,7 +249,11 @@ namespace {
  
        c->getInvocation().setLangDefaults(c->getLangOpts(),
                                  compat::ik_opencl, ::llvm::Triple(target.triple),

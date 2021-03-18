@@ -19,10 +19,9 @@ fi
 
 #######################################
 
-#Set compiler
-#Set '1' to use gcc
-#Set '2' to use clang
-#If not set is will build with gcc
+#Set '1' to build with GCC
+#Set '2' to build with CLANG
+#Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
 if [ -z ${_compiler+x} ]; then
   _compiler=
 fi
@@ -31,7 +30,7 @@ fi
 
 pkgname=mesa-stable
 pkgdesc='An open-source implementation of the OpenGL specification. (stable release)'
-pkgver=20.3.4
+pkgver=21.0.0
 pkgrel=1
 arch=('x86_64')
 url="https://mesa3d.org/"
@@ -114,6 +113,7 @@ fi
   -Dgallium-nine=true \
   -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
+  -Dopencl-native=true \
   -Dvulkan-drivers=amd,intel,swrast \
   -Dshader-cache=enabled \
   -Dvulkan-overlay-layer=true \
@@ -126,18 +126,22 @@ fi
   -Dglx=dri \
   -Degl=enabled \
   -Dglvnd=true \
+  -Dmicrosoft-clc=disabled \
+  -Dspirv-to-dxil=false \
   -Dllvm=enabled \
   -Dshared-llvm=enabled \
   -Dvalgrind=enabled \
   -Dlibunwind=enabled \
   -Dlmsensors=enabled \
   -Dselinux=false \
-  -Dosmesa=gallium \
+  -Dosmesa=true \
   -Dswr-arches=avx,avx2,knl,skx \
   -Dshared-swr=true \
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
-  -Dzstd=enabled
+  -Dzstd=enabled \
+  -Dzlib=enabled \
+  -Dsse2=false
 
   meson configure build_64/
 
