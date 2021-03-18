@@ -1,8 +1,8 @@
 diff --git a/synth.tcl b/synth.tcl
-index d5ab0d77..1a73aa66 100644
+index dc585a76..68104de8 100644
 --- a/synth.tcl
 +++ b/synth.tcl
-@@ -134,7 +134,7 @@ read_verilog -specify -lib $::env(TECHMAP_PATH)/cells_sim.v
+@@ -133,7 +133,7 @@ read_verilog -specify -lib $::env(TECHMAP_PATH)/cells_sim.v
  
  techmap -map  $::env(TECHMAP_PATH)/carry_map.v
  write_json $::env(OUT_JSON).carry_fixup.json

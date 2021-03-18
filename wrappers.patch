@@ -431,7 +431,7 @@ index ec4f8561..d4ea43ba 100755
  
  mv vpr_stdout.log fasm.log
 diff --git a/vpr_common b/vpr_common
-index 8a831587..fd25a465 100644
+index 8a831587..6d540000 100644
 --- a/vpr_common
 +++ b/vpr_common
 @@ -1,6 +1,8 @@
