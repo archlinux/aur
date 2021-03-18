@@ -1,7 +1,7 @@
 # Maintainer: Tasos Sahanidis <aur@tasossah.com>
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next-git')
 provides=('ckb-next')
 install=ckb-next.install
 source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e4fbd14227ecc63fad9eaf705ca61defd7b44bcaa3ad29aae18cd8a69bbc9ef9')
+sha256sums=('6946bd035cdbbbd2f139e543d2ca84ba422176c62c3a3665b544118dc6d618d0')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
