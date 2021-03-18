@@ -1,0 +1,16 @@
+pkgbase = iftop-git
+	pkgdesc = Display bandwidth usage on an interface - git version
+	pkgver = r286.77901c8
+	pkgrel = 1
+	url = http://www.ex-parrot.com/~pdw/iftop/
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	depends = ncurses
+	provides = iftop
+	conflicts = iftop
+	source = git+https://code.blinkace.com/pdw/iftop.git
+	sha512sums = SKIP
+
+pkgname = iftop-git
+
