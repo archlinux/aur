@@ -1,14 +1,13 @@
 pkgbase = layan-cursor-theme-git
-	pkgdesc = A x-cursor theme inspired by layan gtk theme and based on capitaine-cursors
-	pkgver = 1
+	pkgdesc = A x-cursor theme inspired by the Layan GTK Theme and based on Capitaine Cursors.
+	pkgver = r2.7a37de2
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/vinceliuice/Layan-cursors
 	arch = any
 	license = GPL3
 	makedepends = git
 	provides = layan-cursor-theme
-	conflicts = layan-cursor-theme
 	source = git+https://github.com/vinceliuice/Layan-cursors.git
 	b2sums = SKIP
 
