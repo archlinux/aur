@@ -1,0 +1,6 @@
+pkg/
+src/
+Layan-cursors/
+*.tar.gz
+
+*.pkg.*

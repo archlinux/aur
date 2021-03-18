@@ -1,17 +1,12 @@
-# Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
+# Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
 
 pkgname="keydb"
 pkgver=6.0.16
 pkgrel=3
-pkgdesc="A Multithreaded Fork of Redis"
-arch=(
-	"i686"
-	"x86_64"
-)
+arch=("i686" "x86_64")
+pkgdesc="A Multithreaded fork of Redis."
 url="https://keydb.dev"
-license=(
-	"BSD"
-)
+license=("BSD")
 depends=(
 	"jemalloc"
 	"libatomic_ops"
@@ -49,36 +44,36 @@ b2sums=(
 	"d93a88d286698163e9f29fe77a15eb60c0afc028b5343b6bf195da0a123857463c36496a1a378c87fa263f7e901b73db07bf7e47f57a2172b50f0e8502de6fbd"
 )
 
-prepare() {
-	cd "KeyDB-$pkgver" || exit
-	patch "keydb.conf" <../keydb.conf-sane-defaults.patch
-	patch "src/Makefile" <../keydb-5.0-use-system-jemalloc.patch
+prepare()
+{
+	cd "KeyDB-$pkgver"
+	patch "keydb.conf" <"../keydb.conf-sane-defaults.patch"
+	patch "src/Makefile" <"../keydb-5.0-use-system-jemalloc.patch"
 }
 
 build() {
 	export LDFLAGS="$LDFLAGS -latomic"
-	make BUILD_TLS=yes MALLOC=jemalloc -C "KeyDB-$pkgver"
+	make BUILD_TLS="yes" MALLOC="jemalloc" -C "KeyDB-$pkgver"
 }
 
-# TODO: Fix tests in makepkg's environment.
-: '
-check() {
-	cd "KeyDB-$pkgver" || exit
+# TODO: Fix the tests in makepkg's environment.
+"""
+check()
+{
+	cd "KeyDB-$pkgver"
 	make test
 }
-'
+"""
 
-package() {
+package()
+{
 	cd "KeyDB-$pkgver" || exit
 	make PREFIX="$pkgdir/usr" install
-
 	install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "keydb.conf" "$pkgdir/etc/keydb.conf"
 	install -Dm644 "../keydb.service" "$pkgdir/usr/lib/systemd/system/keydb.service"
 	install -Dm644 "../keydb.logrotate" "$pkgdir/etc/logrotate.d/keydb"
-
 	ln -sf "keydb-server" "$pkgdir/usr/bin/keydb-sentinel"
-
 	install -Dm644 "../keydb.sysusers" "$pkgdir/usr/lib/sysusers.d/keydb.conf"
 	install -Dm644 "../keydb.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/keydb.conf"
 }
