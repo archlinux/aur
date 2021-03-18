@@ -1,6 +1,6 @@
 pkgbase = ubuntu-mate-themes
 	pkgdesc = GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE.
-	pkgver = 20.10.1
+	pkgver = 21.04.4
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-mate/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ubuntu-mate-themes
 	license = GPL3
 	depends = gtk-engine-murrine
 	optdepends = ubuntu-mate-icon-themes: The official icon themes for Ubuntu MATE.
-	source = http://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-themes_20.10.1_all.deb
-	sha256sums = 947050c7c8f49aa84ddff1db11e5a97e547e9b3cd64c7ea46171d1724d0623f5
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-themes_21.04.4_all.deb
+	sha256sums = f381da56d2a21e8ec413e8cc7fb9778a2e6c8ee68982d33fdedb7efe6ddf15ab
 
 pkgname = ubuntu-mate-themes
 
