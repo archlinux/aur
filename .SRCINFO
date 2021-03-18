@@ -1,7 +1,7 @@
 pkgbase = qemu-user-static-bin
 	pkgdesc = A generic and open source machine emulator, statically linked
 	pkgver = 5.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://wiki.qemu.org
 	arch = x86_64
 	arch = i686
@@ -17,13 +17,13 @@ pkgbase = qemu-user-static-bin
 	conflicts = qemu-user-static
 	source_x86_64 = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-9_amd64.deb
 	sha256sums_x86_64 = a3b74bc11b3ae2d9be96e9a013cbd3546ca9aa9c4ed9e95ab2d9945d32e7c2c4
-	source_i686 = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-8_i386.deb
-	sha256sums_i686 = d7a8c166f0b5cf00e8aa1517bec5a420a5ce1a5b053919841d016b0c014aaa56
+	source_i686 = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-9_i386.deb
+	sha256sums_i686 = bd2960ecebe728a5e4b4417030a686fd5e6a8775f9d5c54470c2f2f41485a503
 	source_aarch64 = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-9_arm64.deb
 	sha256sums_aarch64 = 7dadc7a82aaee50bf2f9c9a90ede89ef9d13a6bddf00a4ca00128a29639e60f8
 	source_armv7h = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-9_armhf.deb
 	sha256sums_armv7h = 64c838f401913f56345dc084716ae78945721760dda124e4adca0fad0a892047
-	source_armv6h = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-8_armel.deb
-	sha256sums_armv6h = ce920e7c532e090c46d78d2fbd370eaa40400078d929dfaecd0efa9dda686816
+	source_armv6h = https://deb.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.2+dfsg-9_armel.deb
+	sha256sums_armv6h = 688136bde6d39ea344e2f26585a22268a33749eb44031703af1f8b5c2f9ac966
 
 pkgname = qemu-user-static-bin
