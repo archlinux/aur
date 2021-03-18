@@ -1,6 +1,6 @@
 pkgbase = keeweb
 	pkgdesc = Desktop password manager compatible with KeePass databases
-	pkgver = 1.17.2
+	pkgver = 1.17.4
 	pkgrel = 1
 	url = https://keeweb.info
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = keeweb
 	depends = electron
 	depends = org.freedesktop.secrets
 	conflicts = keeweb-desktop
-	source = keeweb::git+https://github.com/keeweb/keeweb.git#tag=v1.17.2
-	source = git+https://github.com/keeweb/keeweb-native-modules.git#tag=0.10.3
+	source = keeweb::git+https://github.com/keeweb/keeweb.git#tag=v1.17.4
+	source = git+https://github.com/keeweb/keeweb-native-modules.git#tag=0.10.4
 	source = package.json.patch.js
 	sha1sums = SKIP
 	sha1sums = SKIP
