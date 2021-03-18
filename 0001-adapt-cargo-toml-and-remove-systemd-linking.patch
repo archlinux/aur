@@ -37,15 +37,15 @@ index 283453e7..29db166d 100644
  pin-utils = "0.1.0"
  pin-project = "1.0"
 -pathpatterns = "0.1.2"
--proxmox = { version = "0.10.1", features = [ "sortable-macro", "api-macro", "websocket" ] }
+-proxmox = { version = "0.11.0", features = [ "sortable-macro", "api-macro", "websocket" ] }
 +pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+proxmox = { version = "0.10.1", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "aad324c38b3cf46bbedf0318011bb22379c09086" }
++proxmox = { version = "0.11.0", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "1fce0ff41ddeb177f92874bf4e95a775cfd99c69" }
  #proxmox = { git = "git://git.proxmox.com/git/proxmox", version = "0.1.2", features = [ "sortable-macro", "api-macro" ] }
  #proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro", "websocket" ] }
 -proxmox-fuse = "0.1.1"
--pxar = { version = "0.8.0", features = [ "tokio-io" ] }
+-pxar = { version = "0.10.0", features = [ "tokio-io" ] }
 +proxmox-fuse = { version = "0.1.1", git = "git://git.proxmox.com/git/proxmox-fuse.git" }
-+pxar = { version = "0.8.0", features = [ "tokio-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "f4b103697ac427f5d92ddbb2277997378c018f1a"}
++pxar = { version = "0.10.0", features = [ "tokio-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "64f8857c700675a26cf7676bb5edce7e3be8a487"}
  #pxar = { path = "../pxar", features = [ "tokio-io" ] }
  regex = "1.2"
  rustyline = "7"

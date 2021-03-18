@@ -22,7 +22,7 @@ source=(
 )
 sha512sums=(
     'SKIP'
-    '0806e8e5078d5b25b19b7414d2b96bba886ed146cc0080fc505eb835698d4e689dad954db128c01da1b02df9c32be54512fe9fd7fded89c74c2dcbf05b2f9dc5'
+    '5ac6082b9d718931f6692f1f2821bb0c6b312b9a04aef10bc7400a4a051c6b1368de86d3438254e313434ef35229f56b17c65f72938320e12de7001136403ed9'
     '35e3aa7369c481dde640ba8a97f0d4e95a73907f2a985382a5ed230d762e5b645a81a72c9fdd19e2dead7de51c5f7d051379ad6340cbbc245890e71398e45381'
     '8ebadc9854ff8bcd4e1e2e849728ef5724164b834793d0dda989e72ff0180d44b1318fdd6a4c1bf29b6d93bb8241c8dc47839d7d6a4b9f59a8a03f7e208e9991'
 )
@@ -52,6 +52,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
+  mkdir -p target/testout/
   cargo test --release --bin proxmox-backup-client --bin pxar
 }
 
