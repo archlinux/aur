@@ -2,7 +2,7 @@
 
 pkgname=flameshot-33kk-git
 _pkgname=flameshot
-pkgver=r561.914e27e
+pkgver=r1317.c01b3ce
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software (with custom command uploader)"
 arch=('i686' 'x86_64')

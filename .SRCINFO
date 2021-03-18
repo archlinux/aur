@@ -1,6 +1,6 @@
 pkgbase = flameshot-33kk-git
 	pkgdesc = Powerful yet simple to use screenshot software (with custom command uploader)
-	pkgver = r561.914e27e
+	pkgver = r1317.c01b3ce
 	pkgrel = 1
 	url = https://github.com/33kk/flameshot
 	arch = i686
