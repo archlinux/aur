@@ -4,7 +4,7 @@ pkgdesc="ROS - Simple simulation interface and template for setting up a hardwar
 url='https://github.com/davetcoleman/ros_control_boilerplate'
 
 pkgname='ros-melodic-ros-control-boilerplate'
-pkgver='0.5.1'
+pkgver='0.5.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -46,7 +46,7 @@ depends=(${ros_depends[@]}
 
 _dir="ros_control_boilerplate-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/PickNikRobotics/ros_control_boilerplate/archive/${pkgver}.tar.gz")
-sha256sums=('7f513e48d5a8fb97eea86cfe4bb5a3e163f4fbc3072e171aba6a2d23612437e6')
+sha256sums=('d7effcf6b0c543827323db65f4716d6aff28f9ea9ab37dc73516f2fe02f9736f')
 
 build() {
     # Use ROS environment variables
