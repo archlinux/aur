@@ -2,19 +2,21 @@
 
 _pkgname='insomnia'
 pkgname="${_pkgname}-bin"
-pkgver=2021.1.0
+pkgver=2021.1.1
 pkgrel=2
 pkgdesc='API Client and Design Platform for GraphQL and REST'
 arch=('x86_64')
 url='https://insomnia.rest'
 _url_source='https://github.com/Kong/insomnia'
 license=('MIT')
-depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxslt' 'nss' 'xdg-utils')
+depends=('libnotify' 'libsecret' 'libxss' 'nss')
+optdepends=("libappindicator-gtk3: StatusNotifierItem support"
+	    "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_url_source}/releases/download/core@${pkgver}/${_pkgname^}.Core-${pkgver}.deb"
         "${_pkgname}-${pkgver}-license::${_url_source}/raw/core@${pkgver}/LICENSE")
-sha256sums=('dd3df7e2df8e8dee8b3b3501a9008aeb0749ff8322e162e65b9bdc1e283cce3e'
+sha256sums=('18f39e2d26ca89a251e69a73c8932597333eda049d75937bf8fe6db64a1cb838'
             'cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9')
 
 package() {
