@@ -1,10 +1,11 @@
 pkgbase = mindmaster_en
 	pkgdesc = Multi-functional, good-looking, easy-to-use professional mind mapping software
 	pkgver = 8.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.edrawsoft.com/download-mindmaster.html
 	arch = x86_64
 	license = Commercial
+	conflicts = mindmaster
 	conflicts = mindmaster_cn
 	replaces = mindmaster
 	options = !strip
