@@ -5,7 +5,7 @@
 pkgname=libmesh-petsc
 realname=libmesh
 pkgrel=1
-pkgver=cpp03_final.r4552.g9bdf9ac50
+pkgver=cpp03_final.r5833.ge7c7a2246
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
@@ -186,9 +186,6 @@ build() {
 
   # Actual build
   make
-  # The path to the documentation is already set with   --docdir
-  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh doc
-  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh/examples examples_doc # DESTDIR="${pkgdir}"/usr/share/doc/${realname}/examples
 }
 
 check() {
@@ -200,22 +197,27 @@ check() {
 package() {
   buildir="${srcdir}"/build
   cd "${buildir}"
+  # # TODO: this does not place the files in the right path (only in /usr/exmaples)
+  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh doc
+  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh/examples examples_doc
   make DESTDIR="${pkgdir}" install
 
   # Move libtool (and contrib) to usr/share/libmesh
   install -d "${pkgdir}/usr/share/libmesh/"
   mv "${pkgdir}/usr/contrib" "${pkgdir}/usr/share/libmesh/"
+  # Set right path for libtool from libMesh
+  sed -i 's-/usr/contrib/bin-/usr/share/libmesh/contrib-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
+
+  # Place examples and documentation in the right directory
+  install -d "${pkgdir}"/usr/share/doc/
+  cp -a "${buildir}"/doc "${pkgdir}"/usr/share/doc/libmesh
+  mv "${pkgdir}"/usr/examples "${pkgdir}"/usr/share/doc/libmesh/
+  # Make local links to the source of the examples
+  find "${pkgdir}"/usr/share/doc/libmesh/html/examples -type f -name '*.html' -exec sed -i 's-https://github.com/libMesh/libmesh/tree/master/examples/\([^/]*\)/\1_\(ex\)-/usr/share/doc/libmesh/examples/\1/\2-g' \{\} +
 
   # Set right path for Make.common
-  rm "${pkgdir}"/usr/Make.common
-  find "${pkgdir}"/usr/examples -type f -name Makefile -exec sed -i 's-\(LIBMESH_DIR[^=]*=\).*-\1 /etc/libmesh/-g' \{\} +
-
-  # Set the right place for /etc
+  find "${pkgdir}"/usr/share/doc/libmesh/examples -type f -name Makefile -exec sed -i 's-\(LIBMESH_DIR[^=]*=\).*-\1 /etc/libmesh/-g' \{\} +
 
   # Get rid of /usr/Make.common (should be in /etc/libmesh)
   rm "${pkgdir}"/usr/Make.common || echo "removed"
-
-  # cp -a "${pkgdir}"/usr/Make.common "${pkgdir}/etc/libmesh"
-  # mv "${pkgdir}"/usr/Make.common "${pkgdir}/usr/share/doc/libmesh/"
-  # cp -a "${pkgdir}"/usr/examples "${pkgdir}/usr/share/doc/${realname}/"
 }
