@@ -1,8 +1,8 @@
 ## TODO Looks like, AUR bug - need to rename to docker-registry-git: name busy, hidden+abandoned pkgbuild.
 pkgname=docker-registry2-git
 __gitroot=github.com/distribution/distribution
-pkgver=r2914.89337b7a
-pkgrel=1
+pkgver=r2916.a01c71e2
+pkgrel=2
 pkgdesc="Docker Registry 2.0 (aka docker-distibution) implementation to pack, ship, store, and deliver docker images (git version)."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://${__gitroot}"
@@ -26,16 +26,19 @@ sha256sums=('SKIP'
             )
 
 build() {
-  GOPATH="$srcdir" go get -v ${_gourl}
+  GOPATH="$srcdir"
+  cd $srcdir/$pkgname
+  go install .
+  make bin/registry
 }
 
 package() {
-  install -Dm644 "$srcdir/src/github.com/docker/distribution/cmd/registry/config-example.yml" "$pkgdir/etc/docker-registry/config.yml"
+  install -Dm644 "$srcdir/$pkgname/cmd/registry/config-example.yml" "$pkgdir/etc/docker-registry/config.yml"
   sed -e "s@/var/lib/registry@/var/lib/docker-registry@g" \
       -e "s@/etc/registry@/etc/docker-registry/.htpasswd@" \
       -i "$pkgdir/etc/docker-registry/config.yml"
 
-  install -Dm755 "$srcdir/bin/registry" "$pkgdir/usr/bin/docker-registry"
+  install -Dm755 "$srcdir/$pkgname/bin/registry" "$pkgdir/usr/bin/docker-registry"
   install -Dm644 docker-registry.conf "$pkgdir/etc/conf.d/docker-registry"
   install -Dm644 docker-registry.service "$pkgdir/usr/lib/systemd/system/docker-registry.service"
   install -Dm644 docker-registry.sysusers "$pkgdir/usr/lib/sysusers.d/docker-registry.conf"
