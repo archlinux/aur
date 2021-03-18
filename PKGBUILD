@@ -6,7 +6,7 @@ pkgname=mindmaster_cn
 _pkgname=MindMaster-8
 _softname=mindmaster
 pkgver=8.5.2
-pkgrel=9
+pkgrel=10
 arch=('x86_64')
 options=(!strip)
 conflicts=("mindmaster" "mindmaster-cn")
@@ -31,13 +31,13 @@ package() {
     export LC_CTYPE="zh_CN.UTF-8"
     mv  ${srcdir}/${pkgname}/* ${pkgdir}
     
-    install -dm644  "${pkgdir}/usr/share/pixmaps/" \
+    install -dm755  "${pkgdir}/usr/share/pixmaps/" \
                     "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/" \
                     "${pkgdir}/usr/share/mime/packages/" \
                     "${pkgdir}/usr/share/applications/"
    
     install -Dm755 "${srcdir}/${_softname}" "${pkgdir}/usr/bin/${_softname}"
-    install -m644 "${srcdir}/${_softname}.desktop" "${pkgdir}/opt/${_pkgname}/${_softname}.desktop"
+    install -m755 "${srcdir}/${_softname}.desktop" "${pkgdir}/opt/${_pkgname}/${_softname}.desktop"
     ln -sf "/opt/${_pkgname}/${_softname}.desktop" "${pkgdir}/usr/share/applications/${_softname}.desktop"
     ln -sf "/opt/${_pkgname}/${_softname}.png" "${pkgdir}/usr/share/pixmaps/${_softname}.png"
     ln -sf "/opt/${_pkgname}/emmx.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/emmx.svg"
