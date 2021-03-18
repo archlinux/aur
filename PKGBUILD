@@ -10,7 +10,7 @@
 _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ provides=('libfreerdp2.so' 'libfreerdp-client2.so' 'libfreerdp-server2'
 'libwinpr-tools2.so' 'libuwac0.so' 'freerdp')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
         "${_pkgname}-manpage_formatting.patch")
-sha512sums=('755c4236cbc80a3603af7dbb25a8d5c8a582bfe8c767a0acb51c520d8b8e571f615f227cda393b692860be2482cd2d5f1e99042375540b2bb063d4ea2cb2ef2a'
+sha512sums=('ca22769c1fdf2806a21ed45ff537cbf0b3f515023943316cd089a204cefa284a9ee7a8f1b3fc87ece7c5ea8edff47622b5b4c75eb5833ecf8e478c89f53afe56'
             'd960e042d1527b5d5721136b6b20fc36f65beafd010581ea5b908668537fe9fe622de6689a29c0274b0d6f1e513615f0d02e56c1d1d1e613d093e145d39af8d7')
 
 prepare() {
