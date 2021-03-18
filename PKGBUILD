@@ -1,7 +1,7 @@
 # Maintainer: Hydral <nathan.dacunha.nd@gmail.com>
 # Co-maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
-_jobId=1045101871
+_jobId=1106943887
 pkgname=solarus-bin
 pkgver=1.7.0.dev.$_jobId
 pkgrel=1
@@ -24,7 +24,7 @@ makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://gitlab.com/solarus-games/solarus/-/jobs/$_jobId/artifacts/download")
 provides=('solarus')
 conflicts=('solarus')
-b2sums=('c52a43b858890595a525efe4b5ec71c21c991abe87cdf1dae591d3fc916d433b04e246727452a0719590635730654cdf1126279b5e673df42547fbfbc2e4233d')
+b2sums=('fae7d5f1a0fc2b4df47042fd92f29cabd2430a4877931ce0a65481df75d106a80a0d309d3b12a778a9218f04a490e7f0036e7867f068942281aa6d38422d4ce1')
 
 package() {
   cd "$srcdir/staging"
