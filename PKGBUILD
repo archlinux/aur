@@ -3,7 +3,7 @@
 
 pkgname=sc-im
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A spreadsheet program based on SC'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/andmarti1424/sc-im'
@@ -14,7 +14,7 @@ license=('BSD')
 conflicts=('scim-spreadsheet' 'sc-im-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andmarti1424/$pkgname/archive/v${pkgver}.tar.gz"
         'arch.0.8.0.patch')
-sha256sums=('ba65b3936a21ae65b19d99a4cfbb69bb57d8b00880f0781fb620e8857bc498db'
+sha256sums=('edc9b9d2dc5ac37c31a46462a1387605983149a1abba00d47ac22f2726ce6d27'
             '191c8537f75decb0bf8d00db9543b07985684bf10308ff63c6648de70b7ff6e5')
 MAKEFLAGS='-j1'
 
