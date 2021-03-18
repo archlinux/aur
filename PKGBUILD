@@ -1,28 +1,28 @@
-# $Id: PKGBUILD 100866 2013-11-12 15:53:53Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Tino Reichardt <milky-archlinux@mcmilk.de>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Tino Reichardt <milky-archlinux@mcmilk.de>
 
 _pkgbasename=dietlibc
-pkgname=lib32-$_pkgbasename
-pkgver=0.33
-pkgrel=3
-pkgdesc="a libc optimized for small size"
+pkgname="lib32-${_pkgbasename}"
+pkgver=0.34
+pkgrel=1
+pkgdesc='A C library optimized for small size (32-bit)'
 arch=('x86_64')
-url="http://www.fefe.de/dietlibc/"
-depends=($_pkgbasename)
-license=("GPL")
+url='https://www.fefe.de/dietlibc/'
+depends=("$_pkgbasename")
+license=('GPL')
 options=('staticlibs')
-#source=(http://www.kernel.org/pub/linux/libs/dietlibc/$pkgname-$pkgver.tar.bz2)
-source=("http://www.fefe.de/dietlibc/dietlibc-$pkgver.tar.bz2")
-md5sums=('9d541b9a6623b04ec12e5248b82db7c0')
+source=("https://www.fefe.de/dietlibc/dietlibc-${pkgver}.tar.xz"{,.sig})
+sha256sums=('7994ad5a63d00446da2e95da1f3f03355b272f096d7eb9830417ab14393b3ace'
+            'SKIP')
+validpgpkeys=('878CBE5DA9A50595E674183F15396A7933EB059A'
+              '2DEC330151BB9F7DAD8B0BDCFC32CEECA534A9C6')
 
 build() {
-  cd "$_pkgbasename-$pkgver"
-  make MYARCH=i386 CC="gcc -m32"
+    make -C "${_pkgbasename}-${pkgver}" CC='gcc -m32' MYARCH='i386'
 }
 
 package() {
-  cd "$_pkgbasename-$pkgver"
-  make MYARCH=i386 DESTDIR="$pkgdir/" install
-  rm -rf "$pkgdir/opt/diet/"{bin,include,man}/
+    make -C "${_pkgbasename}-${pkgver}" MYARCH='i386' DESTDIR="$pkgdir" install
+    rm -r "${pkgdir}/opt/diet"/{bin,include,man}
 }
