@@ -1,7 +1,7 @@
 # Maintainer: Benoît Allard <benoit.allard@gnx.de>
 pkgname=python-optuna
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A hyperparameter optimization framework"
 arch=('any')
 url="https://optuna.org"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=("python"
     "python-alembic"
     "python-cliff"
-    "python-cma"
+    "python-cmaes"
     "python-colorlog"
     "python-numpy"
     "python-packaging"
