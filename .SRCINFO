@@ -1,0 +1,13 @@
+pkgbase = xrandr-notify
+	pkgdesc = subscribe to randr xevents
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pjvds/xrandr-notify
+	arch = any
+	makedepends = go
+	makedepends = git
+	source = xrandr-notify-0.2.0.tar.gz::https://github.com/pjvds/xrandr-notify/archive/0.2.0.tar.gz
+	sha1sums = 8437af917b8e7a3dc8f55860cbb074340e0dbe23
+
+pkgname = xrandr-notify
+
