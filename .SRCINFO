@@ -1,7 +1,7 @@
 pkgbase = zestginx
 	pkgdesc = A modern, performant, and secure NGINX distribution packed with features.
-	pkgver = 1.19.8
-	pkgrel = 3
+	pkgver = 1.19.8.1
+	pkgrel = 1
 	url = https://github.com/ZestProjects/zestginx
 	arch = any
 	license = custom

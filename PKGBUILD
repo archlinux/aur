@@ -1,8 +1,8 @@
 # Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
 
 pkgbase="zestginx"
-pkgver="1.19.8"
-pkgrel=3
+pkgver="1.19.8.1"
+pkgrel=1
 arch=("any")
 pkgname=("zestginx" "zestginx-src")
 pkgdesc="A modern, performant, and secure NGINX distribution packed with features."
@@ -49,10 +49,13 @@ backup=(
 
 prepare()
 {
+	cd "$pkgbase"
+	git checkout "release-$pkgver"
+	git submodule update --init
+	cd ..
+
 	cp -r "$pkgbase"{,"-src"}
 	rm -rf "$pkgbase-src/.git"
-	cd "$pkgbase"
-	git submodule update --init
 }
 
 build()
