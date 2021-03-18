@@ -1,6 +1,6 @@
 pkgbase = python-dash-table
 	pkgdesc = A First-Class Interactive DataTable for Dash
-	pkgver = 4.10.0
+	pkgver = 4.11.2
 	pkgrel = 1
 	url = https://github.com/plotly/dash-table
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-dash-table
 	makedepends = python-setuptools
 	depends = python
 	depends = python-dash
-	source = https://github.com/plotly/dash-table/archive/v4.10.0.tar.gz
-	sha256sums = 543db13584324fb978da258f6f8ddf0e3f701cb6eefb6c739772fceaa4b6d3a2
+	source = https://github.com/plotly/dash-table/archive/v4.11.2.tar.gz
+	sha256sums = 5113f423b6d424d04a2355ec4794d8c04e8651618e4e0268babc6768854db283
 
 pkgname = python-dash-table
 
