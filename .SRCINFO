@@ -1,19 +1,20 @@
 pkgbase = mindmaster_cn
 	pkgdesc = 多功能，高颜值，易使用的专业思维导图软件
 	pkgver = 8.5.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.edrawsoft.cn/mindmaster/
 	arch = x86_64
 	license = Commercial
 	conflicts = mindmaster
 	conflicts = mindmaster-cn
+	replaces = mindmaster-cn
 	options = !strip
-	source = mindmaster-cn.desktop
+	source = mindmaster.desktop
 	source = mindmaster
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = a090cb4f1ad939ddbd44f8cc6d2fc0caa65bccbee4daa7abe2a36b4866fc8856
+	sha256sums = 7bd6592bb4292311bae21fba8af4f4db6b22fe90ab679df9bad3213aa3e17ae5
 	source_x86_64 = https://www.edrawsoft.cn/2download/x86_64/mindmaster_8.5.2_cn.x86_64.deb
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 2cda609b477d69fec0bdd8a10a21511f9d1c4fc6cfab2c3789e7cd58c6ff5991
 
 pkgname = mindmaster_cn
 
