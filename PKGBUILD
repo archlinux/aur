@@ -1,8 +1,9 @@
 # Maintainer: Sampson Crowley <sampsonsprojects@gmail.com>
+# Github Contributor: ahmubashir <https://github.com/amubashir>
 
 pkgname=heroku-cli-bin
 pkgver=7.50.0
-pkgrel=1
+pkgrel=2
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to Manage Heroku apps with forced auto-update removed. Packaged before release to save time and bandwidth."
 arch=('any')
@@ -33,6 +34,14 @@ package() {
     herokuinstallperm=$(stat -c "%a" "$foundherokufile")
     herokuinstallfile="${foundherokufile/$srcdir/$herokulibdir}"
     install -Dm$herokuinstallperm "$foundherokufile" "$herokuinstallfile"
+    case $foundherokufile in
+         (*/plugin-autocomplete/autocomplete/bash/*.bash)
+              _complete_target="${foundherokufile##*/}"
+              install -Dm644 "$foundherokufile" "$pkgdir/usr/share/bash-completion/completions/${_complete_target%.*}"
+              unset _complete_target;;
+         (*/plugin-autocomplete/autocomplete/zsh/_*)
+              install -Dm644 "$foundherokufile" "$pkgdir/usr/share/zsh/site-functions/${foundherokufile##*/}";;
+     esac
   done
 
   ln -sf "../../../lib/heroku/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
