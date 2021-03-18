@@ -3,7 +3,7 @@
 
 pkgname=tfsec
 pkgver=0.39.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Static analysis powered security scanner for your terraform code"
 depends=(glibc)
 arch=(x86_64)
