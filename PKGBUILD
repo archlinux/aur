@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=bit
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A modern Git CLI'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('git')
 conflicts=('bit-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 install=$pkgname.install
-sha256sums=('4557779eea05183e3e2efed3233db56ec2fa27bc82002134a83f0ba1dcfef374')
+sha256sums=('2c8edfae9113f35bc767a58d0e473a3b9bc26c88d60118ec581a5d481771100c')
 
 prepare() {
   export GOPATH="$srcdir/gopath"
