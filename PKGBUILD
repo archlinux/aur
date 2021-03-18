@@ -3,14 +3,14 @@
 _pkgname=stremio
 pkgname=${_pkgname}-beta
 pkgver=4.4.132
-pkgrel=0
+pkgrel=1
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=(any)
 url="https://www.stremio.com"
 license=("MIT")
 groups=()
 depends=("nodejs" "ffmpeg" "qt5-webengine" "qt5-webchannel" "qt5-declarative" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-translations" "mpv" "openssl")
-makedepends=("git" "wget" "qt5-tools" "librsvg")
+makedepends=("git" "wget" "qt5-tools" "librsvg" "cmake")
 provides=("${pkgname}")
 conflicts=("${pkgname}" "stremio-legacy" "stremio")
 

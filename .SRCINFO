@@ -1,7 +1,7 @@
 pkgbase = stremio-beta
 	pkgdesc = Watch videos, movies, TV series and TV channels instantly. (Beta Version)
 	pkgver = 4.4.132
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.stremio.com
 	install = stremio.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = stremio-beta
 	makedepends = wget
 	makedepends = qt5-tools
 	makedepends = librsvg
+	makedepends = cmake
 	depends = nodejs
 	depends = ffmpeg
 	depends = qt5-webengine
