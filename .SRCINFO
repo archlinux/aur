@@ -1,0 +1,18 @@
+pkgbase = com.yunkanpan.numnode
+	pkgdesc = 欢迎使用云看盘软件
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://www.yunkanpan.com/
+	arch = x86_64
+	license = custom
+	provides = yunkanpan
+	options = !strip
+	source = https://od.zhullyb.workers.dev/?file=/Binary/yunkanpan.tar.gz
+	source = start.sh
+	source = com.yunkanpan.numnode.desktop
+	md5sums = 90b583264e50cfc75a456e48d2cc7371
+	md5sums = f76d31c6f2262b16c9601344d086be22
+	md5sums = 6fab03b729f5791be342e365bbcaf668
+
+pkgname = com.yunkanpan.numnode
+
