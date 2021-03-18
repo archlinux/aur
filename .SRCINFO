@@ -1,0 +1,28 @@
+pkgbase = outrun-git
+	pkgdesc = Execute a local command using the processing power of another Linux machine
+	pkgver = r3.1e86c42
+	pkgrel = 1
+	url = https://github.com/Overv/outrun
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = vagrant
+	checkdepends = python-vagrant
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-msgpack
+	depends = python-pyzmq
+	depends = python-lz4
+	depends = python-fasteners
+	depends = python-semver
+	depends = fuse3
+	depends = openssh
+	provides = outrun=r3.1e86c42
+	conflicts = outrun
+	source = git+https://github.com/Overv/outrun.git
+	sha256sums = SKIP
+
+pkgname = outrun-git
+
