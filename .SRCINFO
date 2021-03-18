@@ -5,6 +5,7 @@ pkgbase = emptty-openrc
 	url = https://github.com/tvrzna/emptty
 	arch = any
 	license = MIT
+	depends = emptty
 	provides = emptty-openrc
 	source = emptty.initd
 	sha256sums = 05ab1fd1fc81d27a07240fe942e2724351314afb4b9a0ee594c0f38cad6cdfac

@@ -9,6 +9,7 @@ url="https://github.com/tvrzna/emptty"
 license=('MIT')
 provides=('emptty-openrc')
 source=("emptty.initd")
+depends=('emptty')
 sha256sums=('05ab1fd1fc81d27a07240fe942e2724351314afb4b9a0ee594c0f38cad6cdfac')
 
 pkgver() {
