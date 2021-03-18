@@ -10,8 +10,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=yed
-pkgver=3.20.1
-pkgrel=2
+pkgver=3.21.1
+pkgrel=1
 epoch=1
 pkgdesc='Very powerful graph editor written in java'
 arch=('any')
@@ -22,7 +22,7 @@ source=("https://www.yworks.com/resources/yed/demo/yEd-${pkgver}.zip"
         'yed.desktop'
         'yed'
         'graphml+xml-mime.xml')
-sha256sums=('f1b8c878e45d476fd99e950c3469e7d7d9b433dab4efad8c1f8938dec9e2d897'
+sha256sums=('c4301c2d7e842bdb781b6a112c74e1244d1b80eb0eeb8a0a30e1bfba83ef09e4'
             'cc6957cde6eba0d82ea523b0257f8c91fd1e330a1e2ad7d64890e48a2450aa98'
             '731b54c6e731704efe9847d78e2df474d59042452ace29d2786d76891295249e'
             'e751b69ed8a25faf46d4e4016ed8f1774abc88679067934a6081348e3d6fc332')
