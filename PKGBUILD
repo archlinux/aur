@@ -1,6 +1,6 @@
 # Maintainer: Philip Johansson <philipphuket at gmail dotcom>
 pkgname=console_sudoku
-pkgver=2.03
+pkgver=2.04
 pkgrel=1
 epoch=
 pkgdesc="Fully fledged ncurses sudoku application built entirely in C++"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("git+https://github.com/flyingpeakock/Console_sudoku.git")
 noextract=("${source[@]##*/}")
-md5sums=(SKIP)
+md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
