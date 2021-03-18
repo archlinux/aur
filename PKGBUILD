@@ -2,8 +2,7 @@
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
 pkgver=37.r36.gb1d6851
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
@@ -24,6 +23,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
+  git checkout tags/v46
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
