@@ -1,0 +1,13 @@
+pkgbase = python-cmaes
+	pkgdesc = Lightweight Covariance Matrix Adaptation Evolution Strategy (CMA-ES) implementation for Python 3
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/CyberAgent/cmaes
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-numpy
+	source = python-cmaes-0.8.2.tar.gz::https://github.com/CyberAgent/cmaes/archive/v0.8.2.tar.gz
+
+pkgname = python-cmaes
+
