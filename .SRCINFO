@@ -1,7 +1,7 @@
 pkgbase = python-tamu_d3m-git
 	pkgdesc = core package for D3M project
 	pkgver = r8.423bbb8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tods-doc/tamu_d3m
 	arch = any
 	license = Apache
@@ -32,6 +32,7 @@ pkgbase = python-tamu_d3m-git
 	depends = python-openml
 	provides = python-tamu_d3m
 	conflicts = python-tamu_d3m
+	conflicts = python-d3m
 	source = git+https://github.com/tods-doc/tamu_d3m.git
 	md5sums = SKIP
 

@@ -3,7 +3,7 @@
 _name="tamu_d3m"
 pkgname="python-$_name-git"
 pkgver=r8.423bbb8
-pkgrel=1
+pkgrel=2
 
 pkgdesc="core package for D3M project"
 url="https://github.com/tods-doc/tamu_d3m"
@@ -35,7 +35,7 @@ depends=('python'
     'python-openml')
 makedepends=('git' 'python-setuptools')
 provides=("python-$_name")
-conflicts=("python-$_name")
+conflicts=("python-$_name" "python-d3m")
 
 source=("git+https://github.com/tods-doc/$_name.git")
 md5sums=('SKIP')
