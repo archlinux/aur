@@ -1,6 +1,6 @@
 pkgbase = televize
 	pkgdesc = CLI aplication to watch mainly Czech television streams
-	pkgver = 29
+	pkgver = 30
 	pkgrel = 1
 	url = http://xpisar.wz.cz
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = televize
 	depends = ctstream
 	optdepends = mplayer: for MPlayer backend
 	optdepends = mpv: for MPV backend
-	source = http://xpisar.wz.cz/televize/televize-29
-	sha256sums = a6e4b73f92810d190dbdbc13f99705e42c705da23fb30f60aec1a57f6c69d890
+	source = http://xpisar.wz.cz/televize/televize-30
+	sha256sums = 771045401398e5160345ed81c194d8310050f4624fa4a7daf1ec9e014134d35d
 
 pkgname = televize
 
