@@ -5,7 +5,7 @@
 pkgname=libmesh-petsc
 realname=libmesh
 pkgrel=1
-pkgver=cpp03_final.r4552.g9bdf9ac50
+pkgver=cpp03_final.r5833.ge7c7a2246
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
@@ -72,8 +72,9 @@ pkgver() {
 }
 
 prepare() {
+  buildir="${srcdir}"/build
   # Directory for out of source build
-  [[ -d ../build ]] || mkdir ../build
+  [[ -d "${buildir}" ]] || mkdir "${buildir}"
 
   # Update Git sub-modules
   cd "${srcdir}/${realname}"
@@ -89,8 +90,6 @@ prepare() {
   autoconf
   [[ -f /usr/include/netcdf.h ]] && \
     sed -i "s-\(ac_subdirs_all='\)contrib/netcdf/v4-\1-g; s-\(subdirs=\"\$subdirs\) contrib/netcdf/v4-\1-g" configure
-  # Go back
-  cd "${srcdir}"
 
   # # Force NLOpt
 
@@ -112,67 +111,111 @@ prepare() {
 build() {
   # This happens in ${pkgdir} (out-of-source)
   # Out of source build (recommended by Roy Stogner)
-  cd ../build
+  buildir="${srcdir}"/build
+  cd "${buildir}"
 
   CONFOPTS=(
-    --enable-petsc-hypre-required # recommended by MOOSE
-    --with-metis=PETSc            # use PETSCs' metis
-    --enable-cxx11-required       # force C++11 standard
-    --enable-metaphysicl-required # recommended by MOOSE
-    --enable-vtk-required
-    --enable-curl
-    --enable-hdf5
+    --quiet
+    --srcdir="${srcdir}/${realname}"
+    # target directory
+    --prefix=/usr
+    # read-only single-machine data (Make.common)
+    --sysconfdir=/etc/
+    # Binary directory
+    --bindir=/usr/bin
+    # Base data dir (affects doc and others)
+    --datadir=/usr/share
+    # Make sure that the documentation is in the right place (does not work)
+    --docdir=/usr/share/doc/libmesh
+    # use relative addresses for jumps
     --with-pic
+    # get -march flag for this system
+    --enable-march
+    # shared libraries
+    --enable-shared
+
+    # force C++11 standard (todo: check for update)
+    --enable-cxx11-required
+    # recommended by MOOSE
+    --enable-petsc-hypre-required
+    # recommended by MOOSE
+    --enable-metaphysicl-required
+    # Complex numbers
+    # make sure to compile PETSc with complex too
+    --enable-complex
+    # CURL
+    --enable-curl
+    # FFTW
+    --enable-fftw
+    # HDF5
+    --enable-hdf5
+    # OpenMPI
     --enable-mpi
-    --enable-complex              # make sure to compile PETSc with complex too
-    --enable-mumps                # MUMPS
-    --with-mumps=/usr/include     #
-    --with-mumps-lib=/usr/lib     #
-    --enable-netcdf               # NETCDF
-    --with-netcdf=/usr/include    #
-    --with-netcdf-lib=/usr/lib    #
-    --with-nlopt=/usr/include     # NLOPT
-    --with-nlopt-lib=/usr/lib     #
+    # METIS
+    # use PETSCs' metis
+    --with-metis=PETSc
+    # MUMPS
+    --enable-mumps
+    --with-mumps=/usr/include
+    --with-mumps-lib=/usr/lib
+    # NETCDF
+    --enable-netcdf
+    --with-netcdf=/usr/include
+    --with-netcdf-lib=/usr/lib
+    # NLOPT
+    --with-nlopt=/usr/include
+    --with-nlopt-lib=/usr/lib
+    # VTK
+    --enable-vtk-required
 
-    --enable-fftw               # Does this work ?
-    --enable-superlu            # Does this work ?
-
-    --enable-shared             # shared libraries
+    # infinite elements
+    --enable-ifem
     --enable-unique-id          # from libmesh GitHub wiki
-    --enable-march              # get -march flag for this system
-    --enable-ifem               # infinite elements
     --enable-nodeconstraint     # from libmesh GitHub wiki
+
+    --enable-superlu            # Does this work ?
   )
 
   # Configure
-  "${srcdir}/${realname}"/configure \
-    --prefix=/usr \
-    $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do
-        echo "${CONFOPTS[$i]}";
-      done)
+  local config_file="${srcdir}/${realname}"/configure
+  $config_file $(for (( i=1; i<=${#CONFOPTS[@]}; i++)); do
+                   echo "${CONFOPTS[$i]}";
+                 done)
 
   # Actual build
-  make clean
   make
 }
 
 check() {
-  cd ../build
+  buildir="${srcdir}"/build
+  cd "${buildir}"
   make check
 }
 
 package() {
-  # make DESTDIR=usr/share/doc/${realname}/examples examples_doc
-  make -C ../build DESTDIR="${pkgdir}"/usr/share/doc/${realname}/html doc
-  make -C ../build DESTDIR="${pkgdir}" install
+  buildir="${srcdir}"/build
+  cd "${buildir}"
+  # # TODO: this does not place the files in the right path (only in /usr/exmaples)
+  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh doc
+  make DESTDIR="${pkgdir}"/usr/share/doc/libmesh/examples examples_doc
+  make DESTDIR="${pkgdir}" install
 
-  mkdir -p "${pkgdir}/usr/share/doc/${realname}/"
-  cp -a ../build/doc/* "${pkgdir}/usr/share/doc/${realname}/"
-  install -d "${pkgdir}/etc/libmesh"
-  cp -a "${pkgdir}"/usr/Make.common "${pkgdir}/etc/libmesh"
-  mv "${pkgdir}"/usr/Make.common "${pkgdir}/usr/share/doc/libmesh/"
-  cp -a "${pkgdir}"/usr/examples "${pkgdir}/usr/share/doc/${realname}/"
+  # Move libtool (and contrib) to usr/share/libmesh
+  install -d "${pkgdir}/usr/share/libmesh/"
+  mv "${pkgdir}/usr/contrib" "${pkgdir}/usr/share/libmesh/"
+  # Set right path for libtool from libMesh
+  sed -i 's-/usr/contrib/bin-/usr/share/libmesh/contrib-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
 
-  rm -r "${pkgdir}"/usr/contrib || echo "removed "
+  # Place examples and documentation in the right directory
+  install -d "${pkgdir}"/usr/share/doc/
+  cp -a "${buildir}"/doc "${pkgdir}"/usr/share/doc/libmesh
+  mv "${pkgdir}"/usr/examples "${pkgdir}"/usr/share/doc/libmesh/
+  # Make local links to the source of the examples
+  find "${pkgdir}"/usr/share/doc/libmesh/html/examples -type f -name '*.html' -exec sed -i 's-https://github.com/libMesh/libmesh/tree/master/examples/\([^/]*\)/\1_\(ex\)-/usr/share/doc/libmesh/examples/\1/\2-g' \{\} +
+
+  # Set right path for Make.common
+  find "${pkgdir}"/usr/share/doc/libmesh/examples -type f -name Makefile -exec sed -i 's-\(LIBMESH_DIR[^=]*=\).*-\1 /etc/libmesh/-g' \{\} +
+
+  # Get rid of /usr/Make.common (should be in /etc/libmesh)
   rm "${pkgdir}"/usr/Make.common || echo "removed"
 }
