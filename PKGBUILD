@@ -9,9 +9,8 @@ arch=("x86_64")
 provides=("rearx")
 options=("strip")
 source=("https://github.com/garak92/rearx/releases/download/v$pkgver/rearx-$pkgver-x86_64.tar.gz")
-sha256sums=('dd7d906fa0148347923fd88fe6f25b6e44713ecda2b8ca7fc98e457083b40278')
+sha256sums=('1cfef1f6d385adf0cee0998e543cd097e63bb143fa41e4b44577c72a06b40659')
 
-backup=("etc/$pkgname/rearx.yaml")
 package() {
     install -Dm755 rearx -t "$pkgdir/usr/bin/"
 }
