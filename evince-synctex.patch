@@ -1,20 +1,19 @@
-diff --git a/evince b/evince
-index 5380585..f42c27f 100755
---- a/evince
-+++ b/evince
-@@ -1,5 +1,10 @@
+diff -u a/evince b/evince
+--- a/evince	2011-04-26 08:20:28.000000000 +0200
++++ b/evince	2021-03-18 02:52:14.227646706 +0100
+@@ -1,14 +1,17 @@
  #!/bin/sh
 -EDITORCMD="gvim --servername '`basename "$1" .pdf`' --remote-silent '+%l<Enter>' %f"
 +#EDITORCMD="gvim --servername '`basename "$1" .pdf`' --remote-silent '+%l<Enter>' %f"
+ # Highlight matched column
+ # EDITORCMD="gvim --servername '`basename "$1" .pdf`' --remote-silent '+%l<Enter>:match Search /\%%ll/' %f"
+-
 +if [ -z "$EDITORCMD" ]; then
 +	echo 'Please set variable $EDITORCMD'
 +	exit 1
 +fi
-+
- # Highlight matched column
- # EDITORCMD="gvim --servername '`basename "$1" .pdf`' --remote-silent '+%l<Enter>:match Search /\%%ll/' %f"
  
-@@ -8,7 +13,7 @@ PDFFILE="$1"
+ PDFFILE="$1"
  if [ -f "$PDFFILE" ];then
  	# danke an Feuerfieber
  	# http://forum.ubuntuusers.de/topic/evince-synctex-vim-emacs-scite-lyx-kile-editor/#post-2841828
@@ -23,53 +22,81 @@ index 5380585..f42c27f 100755
  		evince_backward_search "$PDFFILE" "$EDITORCMD"&
  		BACKWARD_SEARCH_PID=$!
  		echo $BACKWARD_SEARCH_PID
-diff --git a/evince_backward_search b/evince_backward_search
-index 747de5b..0b6e818 100755
---- a/evince_backward_search
-+++ b/evince_backward_search
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/python2
- # -*- coding: utf-8 -*-
- 
- # Copyright (C) 2010 Jose Aliste <jose.aliste@gmail.com>
-@@ -18,7 +18,7 @@
+diff -u a/evince_backward_search b/evince_backward_search
+--- a/evince_backward_search	2011-04-26 08:20:28.000000000 +0200
++++ b/evince_backward_search	2021-03-18 03:09:46.730829053 +0100
+@@ -18,9 +18,9 @@
  # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
  # Street, Fifth Floor, Boston, MA  02110-1301, USA
  
 -import dbus, subprocess, time, re
-+import dbus, subprocess, time, re, urllib2
++import dbus, subprocess, time, re, urllib.request, urllib.error, urllib.parse
  
- RUNNING, CLOSED = range(2)
+-RUNNING, CLOSED = range(2)
++RUNNING, CLOSED = list(range(2))
  
-@@ -104,9 +104,9 @@ class EvinceWindowProxy:
+ EV_DAEMON_PATH = "/org/gnome/evince/Daemon"
+ EV_DAEMON_NAME = "org.gnome.evince.Daemon"
+@@ -104,11 +104,11 @@
              if self._log:
                  self._log.debug("GetWindowList returned empty list")
  
 -    def on_sync_source(self, input_file, source_link):
-+    def on_sync_source(self, input_file, source_link, timestamp):
-         print input_file + ":" + str(source_link[0])
+-        print input_file + ":" + str(source_link[0])
 -        cmd = re.sub("%f",input_file,self.editor)
-+        cmd = re.sub("%f",'"'+urllib2.unquote(input_file.split("file://")[1])+'"',self.editor)
++    def on_sync_source(self, input_file, source_link, timestamp):
++        print(input_file + ":" + str(source_link[0]))
++        cmd = re.sub("%f",'"' + urllib.parse.unquote(input_file.split("file://")[1]) + '"',self.editor)
          cmd = re.sub("%l",str(source_link[0]), cmd)
-         print cmd
+-        print cmd
++        print(cmd)
          subprocess.call(cmd, shell=True)
-@@ -142,7 +142,7 @@ E.g.:
+         if self.source_handler is not None:
+             self.source_handler(input_file, source_link)
+@@ -117,10 +117,11 @@
+ ## This file offers backward search in any editor.
+ ##  evince_dbus  pdf_file  line_source input_file
+ if __name__ == '__main__':
+-    import dbus.mainloop.glib, gobject, glib, sys, os
++    import dbus.mainloop.glib, sys, os
++    from gi.repository import GLib
+ 
+     def print_usage():
+-        print """Usage: 
++        print("""Usage: 
+   evince_backward_search pdf_file "editorcmd %f %l"'
+     %f ... TeX-file to load
+     %l ... line to jump to
+@@ -130,7 +131,7 @@
+   evince_backward_search somepdf.pdf "scite %f '-goto:%l'"
+   evince_backward_search somepdf.pdf "lyxclient -g %f %l"
+   evince_backward_search somepdf.pdf "kate --use --line %l"
+-  evince_backward_search somepdf.pdf "kile --line %l" """
++  evince_backward_search somepdf.pdf "kile --line %l" """)
+         sys.exit(1)
+ 
+     if len(sys.argv)!=3:
+@@ -142,9 +143,9 @@
          print_usage()
  
      dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 -    a = EvinceWindowProxy('file://' + pdf_file, sys.argv[2] ,True)
-+    a = EvinceWindowProxy('file://' + urllib2.quote(pdf_file,safe="%/:=&?~#+!$,;'@()*[]"), sys.argv[2] ,True)
++    a = EvinceWindowProxy('file://' + urllib.parse.quote(pdf_file, safe = "%/:=&?~#+!$,;'@()*[]"), sys.argv[2] ,True)
      
  
-     loop = gobject.MainLoop()
-diff --git a/evince_forward_search b/evince_forward_search
-index 420e16a..a0b690a 100755
---- a/evince_forward_search
-+++ b/evince_forward_search
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/python2
- # -*- coding: utf-8 -*-
+-    loop = gobject.MainLoop()
++    loop = GLib.MainLoop()
+     loop.run() 
+ # ex:ts=4:et:
+diff -u a/evince_forward_search b/evince_forward_search
+--- a/evince_forward_search	2011-03-23 22:53:05.000000000 +0100
++++ b/evince_forward_search	2021-03-18 02:50:01.174458955 +0100
+@@ -23,7 +23,7 @@
+ import dbus, subprocess, time, sys, os
+     
+ def print_usage():
+-    print 'Usage: evince_forward_search pdf_file line_number tex_file' 
++    print('Usage: evince_forward_search pdf_file line_number tex_file') 
+     sys.exit(1)
  
- # Copyright (C) 2010 Jose Aliste <jose.aliste@gmail.com>
+ if len(sys.argv)!=4:

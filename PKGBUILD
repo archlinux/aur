@@ -3,17 +3,17 @@
 pkgname=evince-synctex
 _pkgname=${pkgname/-/_}
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Several scripts to ease the use of Evince with SyncTeX"
 arch=('any')
 url="http://forum.ubuntuusers.de/topic/evince-synctex-vim-emacs-scite-lyx-kile-editor/"
 license=('GPL')
-depends=('dbus-glib' 'python2-dbus' 'python2-gobject2')
+depends=('dbus-glib' 'dbus-python' 'python-gobject')
 install=$pkgname.install
 source=(http://dud.inf.tu-dresden.de/~ben/${_pkgname}.tar.gz
         $pkgname.patch)
 sha256sums=('65b43f00e894d116bbccf62cac1d6bdd753c6bcb4d0d7f90efbf10c59dc95052'
-            '2a8a5a55c68051f70a2ec8fe1e48b5c9a27f3def29ee4efb2f8e9773afda43cc')
+            'b17ee71aa63c49f870e1db18d67b75a3ed704ddbf494b8fe41316bc6e8c83457')
 
 prepare() {
   cd "$srcdir/${_pkgname}"
