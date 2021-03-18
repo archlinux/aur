@@ -1,14 +1,14 @@
 # Maintainer: Alex S. <shantanne[at]hotmail.com>
 
 pkgname=ordersprinter
-pkgver=2.0.9
+pkgver=2.0.17
 pkgrel=1
 packagename="$(echo ${pkgname}-${pkgver} | sed 's/\./_/g')"
 pkgdesc="OrderSprinter is a free Point-Of-Service/Point-Of-Sale software (POS) for the gastronomy."
 url=https://ordersprinter.de/
 arch=('any')
 license=('Creative Commons License BY-NC-ND')
-depends=('mysql' 'php')
+depends=('mysql' 'php' 'php-gd' 'jre-openjdk-headless')
 
 source=("https://ordersprinter.de/${packagename}.zip"
         ${pkgname}.conf

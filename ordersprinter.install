@@ -4,4 +4,6 @@ post_upgrade() {
   systemd-sysusers
   mkdir -p /var/lib/ordersprinter
   chown -R ordersprinter:ordersprinter /var/lib/ordersprinter
+  chown -R ordersprinter:ordersprinter /opt/ordersprinter/webapp
+  chmod +x /usr/bin/ordersprinter
 }
