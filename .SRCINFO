@@ -1,0 +1,36 @@
+pkgbase = python-os-xenapi
+	pkgdesc = XenAPI library for OpenStack projects
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://www.citrix.com/
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python-coverage
+	checkdepends = python-subunit
+	checkdepends = python-sphinx
+	checkdepends = python-oslosphinx
+	checkdepends = python-oslotest
+	checkdepends = python-os-testr
+	checkdepends = python-testrepository
+	checkdepends = python-testscenarios
+	checkdepends = python-testtools
+	checkdepends = python-reno
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pbr
+	depends = python-babel
+	depends = python-eventlet
+	depends = python-oslo-concurrency
+	depends = python-oslo-log
+	depends = python-oslo-utils
+	depends = python-oslo-i18n
+	depends = python-paramiko
+	depends = python-six
+	source = https://pypi.io/packages/source/o/os-xenapi/os-xenapi-0.3.4.tar.gz
+	md5sums = e1023c66411893c0d512fb227ae63b5c
+	sha256sums = 85d9d4bff4086a9c36eb9b2b9dfce542fa8336821a63826180dc0e8637e8ad72
+	sha512sums = 4e5afbce07d38f93e93ac839eb26927a2436b33a39e14a57ed1e99cbd3501c7d2dec8db7f65617c8d6308e8227e60f5653102ac3a04d9322c0791040fa3f22a9
+
+pkgname = python-os-xenapi
+
