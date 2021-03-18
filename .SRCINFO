@@ -1,7 +1,7 @@
 pkgbase = wowup
 	pkgdesc = WowUp the World of Warcraft addon updater
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WowUp/WowUp
 	arch = x86_64
 	license = GPL3
