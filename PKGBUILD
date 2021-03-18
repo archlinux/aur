@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
-pkgver=2.25.1
+pkgver=2.25.2
 pkgrel=1
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('aea3d002d4c50bddbe031b5285f39e1f49f7279c86c08afb1e87535b5120270d'
+sha256sums=('ec9761a8fe29fff109ec60ec6569d8a0435447867383f412ec6270cdd3d9c84d'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
