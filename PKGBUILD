@@ -3,7 +3,7 @@
 
 pkgname=riemann
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitors distributed systems"
 arch=('any')
 url="http://$pkgname.io/"

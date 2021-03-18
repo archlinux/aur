@@ -1,7 +1,7 @@
 pkgbase = riemann
 	pkgdesc = Monitors distributed systems
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://riemann.io/
 	install = riemann.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = riemann
 	makedepends = leiningen
 	depends = java-runtime-headless>=8
 	depends = bash
+	depends = inetutils
 	provides = riemann
 	conflicts = riemann-bin
 	backup = etc/riemann/riemann.config
