@@ -1,4 +1,5 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
+# Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
 pkgver=1.0.8
 pkgrel=1
