@@ -4,5 +4,5 @@
 *zst
 pkg/
 src/
-tfsec-linux-amd64
+tfsec-*
 LICENSE
