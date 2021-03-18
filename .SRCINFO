@@ -1,0 +1,23 @@
+pkgbase = python-tamu_axolotl-git
+	pkgdesc = Automated Time-series Outlier Detection System
+	pkgver = r11.3a861e7
+	pkgrel = 1
+	url = https://github.com/tods-doc/axolotl
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tamu_d3m
+	depends = python-grpcio
+	depends = python-grpcio-tools
+	depends = python-grpcio-testing
+	depends = python-ray
+	depends = python-networkx
+	provides = python-tamu_axolotl
+	conflicts = python-tamu_axolotl
+	source = git+https://github.com/tods-doc/axolotl
+	md5sums = SKIP
+
+pkgname = python-tamu_axolotl-git
+
