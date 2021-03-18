@@ -8,7 +8,7 @@ pkgdesc="Automates many of the common tasks of preparing structures for continuu
 arch=(any)
 url="http://pypi.python.org/pypi/${_name}"
 license=(BSD)
-depends=('python>=3.5' 'python-propka>=3.2' 'python-pandas>=1.0' 'python-pytest>=5.4.1')
+depends=('python>=3.5' 'python-propka>=3.2' 'python-pandas>=1.0' 'python-pytest>=5.4.1' 'python-mmcif-pdbx>=1.1.2')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('a6f5e2eefbd8bd2a072a89ee4026977de02dadd56e921095afac88d596b63820')
 options=(!emptydirs)

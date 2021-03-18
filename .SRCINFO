@@ -9,6 +9,7 @@ pkgbase = python-pdb2pqr
 	depends = python-propka>=3.2
 	depends = python-pandas>=1.0
 	depends = python-pytest>=5.4.1
+	depends = python-mmcif-pdbx>=1.1.2
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/p/pdb2pqr/pdb2pqr-3.1.0.tar.gz
 	sha256sums = a6f5e2eefbd8bd2a072a89ee4026977de02dadd56e921095afac88d596b63820
