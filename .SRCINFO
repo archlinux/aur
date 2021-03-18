@@ -13,3 +13,18 @@ pkgbase = python-xeno
 pkgname = python-xeno
 	depends = python
 
+pkgbase = python-xeno
+	pkgdesc = The Python dependency injector from outer space.
+	pkgver = 4.9.4
+	pkgrel = 1
+	url = https://github.com/lainproliant/xeno
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/x/xeno/xeno-4.9.4.tar.gz
+	sha256sums = 5792a378bd059ced7fdbe6feea7e076786b8f8a42d8d691ed67ab68af892d4bb
+
+pkgname = python-xeno
+	depends = python
+
