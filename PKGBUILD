@@ -1,10 +1,12 @@
 # Contributor: Hakan Erduman <hakan at erduman dot de>
+# Maintainer: Mubashshir <ahmubashshir@gmail.com>
+# pkg: git
 
 pkgname=xfce4-hamster-plugin-git
-pkgver=1.7.r2.gf9f5e21
+pkgver=1.13.r0.g68da2e6
 pkgrel=1
 pkgdesc="recreation of the gnome-shell hamster extension as a xfce4 panel plugin"
-url="https://github.com/projecthamster/${pkgname}"
+url="https://github.com/projecthamster/${pkgname%-git}"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('xfce4-panel' 'hamster-time-tracker')

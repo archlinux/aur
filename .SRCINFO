@@ -1,8 +1,8 @@
 pkgbase = xfce4-hamster-plugin-git
 	pkgdesc = recreation of the gnome-shell hamster extension as a xfce4 panel plugin
-	pkgver = 1.7.r2.gf9f5e21
+	pkgver = 1.13.r0.g68da2e6
 	pkgrel = 1
-	url = https://github.com/projecthamster/xfce4-hamster-plugin-git
+	url = https://github.com/projecthamster/xfce4-hamster-plugin
 	arch = x86_64
 	arch = i686
 	license = GPL
