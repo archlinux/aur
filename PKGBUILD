@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("rearx")
 options=("strip")
 source=("https://github.com/garak92/rearx/releases/download/v$pkgver/rearx-$pkgver-x86_64.tar.gz")
-sha256sums=("addb1ef77669d1dd1d31741f2999b87e29b72ed7e18e11f52a55cda5fcc06292")
+sha256sums=('8cb2fc8d326c40f094db393ed5308566e85187fd29cf6027cabaa7e50c796901')
 
 backup=(etc/rearx/rearx.yaml)
 package() {
