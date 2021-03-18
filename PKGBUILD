@@ -6,7 +6,7 @@ pkgdesc="A data visualization and processing tool for scanning probe miscroscopy
 url="http://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=(gtkglext pygtk fftw libunique minizip)
+depends=(gtkglext fftw minizip)
 makedepends=('pkgconf')
 optdepends=('libxml2: import of SPML and APE DAX data files'
             'zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)'
