@@ -1,0 +1,13 @@
+pkgbase = zsh-load-nvmrc
+	pkgdesc = Automatically handle .nvmrc files
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/th3rius/zsh-load-nvmrc
+	arch = any
+	license = MIT
+	depends = zsh
+	source = git://github.com/th3rius/zsh-load-nvmrc/
+	sha256sums = SKIP
+
+pkgname = zsh-load-nvmrc
+
