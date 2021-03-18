@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-windowoverlay-icons-git
+	pkgdesc = Adds application icons to the windows overview (in Activities menu)
+	pkgver = 37.r0.gbf02525
+	pkgrel = 1
+	url = https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell
+	provides = gnome-shell-extension-windowoverlay-icons
+	conflicts = gnome-shell-extension-windowoverlay-icons
+	source = git+https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-windowoverlay-icons-git
+
