@@ -2,7 +2,7 @@
 
 pkgbase="zestginx"
 pkgver="1.19.8"
-pkgrel=2
+pkgrel=3
 arch=("any")
 pkgname=("zestginx" "zestginx-src")
 pkgdesc="A modern, performant, and secure NGINX distribution packed with features."
@@ -57,12 +57,6 @@ prepare()
 
 build()
 {
-	export CFLAGS="${CFLAGS//-flto/}"
-	export CFLAGS="${CFLAGS//-flto=thinlto/}"
-	export CXXFLAGS="${CXXFLAGS//-flto/}"
-	export CXXFLAGS="${CXXFLAGS//-flto=thinlto/}"
-	export LDFLAGS="$LDFLAGS -lmimalloc"
-
 	cd "$pkgbase"
 	./configure \
 		--prefix="/etc/nginx" \
@@ -79,8 +73,7 @@ build()
 		--http-fastcgi-temp-path="/var/lib/nginx/fastcgi" \
 		--http-scgi-temp-path="/var/lib/nginx/scgi" \
 		--http-uwsgi-temp-path="/var/lib/nginx/uwsgi" \
-		--with-cc-opt="$CFLAGS $CPPFLAGS" \
-		--with-ld-opt="$LDFLAGS"
+		--with-ld-opt="-lmimalloc"
 	make
 }
 
