@@ -22,7 +22,7 @@ source=("https://julialang-s3.julialang.org/bin/linux/x64/1.5/$_name-1.5.4-linux
 512x512.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/512.png)
 noextract=(
 "$_name-1.5.3-linux-x86_64.tar.gz"
-"$_name-1.6.0-rc1-linux-x86_64.tar.gz"
+"$_name-1.6.0-rc3-linux-x86_64.tar.gz"
 "$_name-latest-linux64.tar.gz"
     )
 sha256sums=('80dec351d1a593e8ad152636971a48d0c81bfcfab92c87f3604663616f1e8bc5'
