@@ -10,8 +10,8 @@ pkgname=('virtualbox-svn'
          'virtualbox-guest-utils-svn'
          'virtualbox-guest-utils-nox-svn'
          'virtualbox-ext-vnc-svn')
-pkgver=86698
-pkgrel=1
+pkgver=87670
+pkgrel=2
 _vboxsf_commit='5aba938bcabd978e4615186ad7d8617d633e6f30'
 arch=('x86_64')
 url='http://virtualbox.org'
@@ -53,7 +53,8 @@ makedepends=('subversion'
              'vde2'
              'xalan-c'
              'xorgproto'
-             'xorg-server-devel')
+             'xorg-server-devel'
+             'yasm')
 source=("VirtualBox::svn+http://www.virtualbox.org/svn/vbox/trunk"
         # We need to build a modified version of vboxsf for Linux 4.16
         # https://bugzilla.redhat.com/show_bug.cgi?id=1481630#c65
@@ -77,9 +78,9 @@ source=("VirtualBox::svn+http://www.virtualbox.org/svn/vbox/trunk"
         '008-no-vboxvideo.patch'
         '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
         '013-Makefile.patch'
-        '016-VBoxServiceAutoMount-Change-Linux-mount-code-to-use-.patch'
         '017-fix-narrowing-conversion.patch'
-        '018-xclient.patch')
+        '018-xclient.patch'
+        '020-linux-5-11.patch')
 
 pkgver() {
   cd "VirtualBox"
@@ -99,12 +100,15 @@ prepare() {
         fi
     done
     
-    sed -i '#include<QPainter>/a #include<QPainterPath>' src/VBox/Frontends/VirtualBox/src/monitor/UIMonitorCommon.cpp
     echo 'Applying local config'
     cp "$srcdir/LocalConfig.kmk" .
     
     echo 'Use our CFLAGS'
     echo "VBOX_GCC_OPT=$CXXFLAGS" >> LocalConfig.kmk
+
+    sed -i '/#include "PyXPCOM_std.h"/a PyAPI_FUNC(void) _Py_NewReference(PyObject *op);' src/libs/xpcom18a4/python/src/PyIID.cpp
+    sed -i '/#include "PyXPCOM_std.h"/a PyAPI_FUNC(void) _Py_NewReference(PyObject *op);' src/libs/xpcom18a4/python/src/PyISupports.cpp
+    sed -i '/#include "PyXPCOM_std.h"/a PyAPI_FUNC(void) _Py_NewReference(PyObject *op);' src/libs/xpcom18a4/python/src/TypeObject.cpp
 }
 
 build() {
@@ -385,27 +389,27 @@ package_virtualbox-ext-vnc-svn() {
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('SKIP'
-         'SKIP'
-         'c24e71d845e06f153fa263af0384fc8c'
-         '050736b0edbf942776022bfca61a5754'
-         '984412a63aa9c07ddc3cfd970381d5df'
-         '4833c8e0524fd2272b24ba0d94aef006'
-         '6e2722bfd7013c1b0174382626ac1b8d'
-         'ed1341881437455d9735875ddf455fbe'
-         '9a72e6635976513f442f418431dc6151'
-         '3cf3dd86ff350a690c978a266f015dcc'
-         'fcf6bcef98b16849d5c9f048592739c0'
-         '16470fa4b27dc29f65e061b3e613f96d'
-         '6ab29654246a060561ad2de675105072'
-         'bc9efed88e0469cd7fc460d5a5cd7b4b'
-         '6a4e9581a6240b64feee765a1f19e5c3'
-         'b709cf16ffe9af2f5147fb2ef3fef529'
-         'e8a0b47e61ddcffdeed71086585a1ef3'
-         '08add9a5974c7212b783840dd6db1cc7'
-         'b71d308001ad15bfc1f0267de9be6c37'
-         '1b473941fd972a300219c211e389b5a1'
-         '481d456c8c4e2e0833dceefaed62a305'
-         '82db7666c0034c5388995bd062dc35e1'
-         '7be927b4626f8b3df77d4d2e8c8c25a0'
-         '62a5ae2264adf5de908fcfcb906c2648')
+sha256sums=('SKIP'
+            'SKIP'
+            '76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db'
+            'c1ccfaa3a37d6b227cd65de944df2d68cbf178a857b6ab15c04b8fa05693f252'
+            '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
+            'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
+            '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
+            '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
+            '240ddf9c532b34380dd9bdd56c6302f323ded9ca95ccf5c50b6e44a5cb533cc9'
+            'c41a801fe344a4471a7b61a4764d1d857c403e4fb96e2ba6bc89c77a35f2be7a'
+            '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
+            '83d8f24bff25bb925083cf39b3195236c6136105e62417712cc3f25b92e14b47'
+            '2beab8de525220fa418c9873f9e0d657ddbad4ff9e4a46d7053e6cd9bc4ce95e'
+            'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
+            '4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d'
+            '9ee947c9b5ec5b25f52d3e72340fc3a57ca6e65a604e15b669ac582a3fb0dc1b'
+            '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
+            '13c6ca9be0f91582445fd2a14a8c58a0625a15d9cb98cb6e8c2736d77ea976ab'
+            '053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491'
+            '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
+            'da7e58ed37dc23c6202aab3017864579a99e78417f3421ddcc98a198198fe2c9'
+            '5aac692909a0a0ec56b08bdece9e42cf7463abdca9da2f990d441ff463be6a99'
+            'cac5a573e9ed5aafb2f469c2e6fffb8cd4f389bbadba5a968c9f65be7a72fee3'
+            'a8fb9e4d0bb662a60953c17df79f60f225aaebf192bbd2319aa2b5d7a8a28bbc')
