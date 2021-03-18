@@ -1,13 +1,13 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=jellyfin-mpv-shim
-pkgver='1.8.1'
+pkgver='1.9.0'
 pkgrel=1
-pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV. (Unofficial)"
+pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV"
 arch=('any')
-url='https://github.com/iwalton3/jellyfin-mpv-shim'
+url='https://github.com/jellyfin/jellyfin-desktop'
 license=('MIT')
-depends=('mpv' 'python>=3.6' 'python-pydantic' 'python-mpv' 'python-mpv-jsonipc>=1.1.9' 'python-jellyfin-apiclient>=1.6.2' 'tk')
+depends=('mpv' 'python>=3.6' 'python-pydantic' 'python-mpv' 'python-mpv-jsonipc>=1.1.9' 'python-jellyfin-apiclient>=1.7.0' 'tk')
 makedepends=('python-setuptools' 'gettext')
 optdepends=('python-pystray: systray support'
 	'python-jinja: display mirroring support'
@@ -18,11 +18,11 @@ optdepends=('python-pystray: systray support'
 	'svp: SmoothVideo Project server'
 	'mpv-shim-default-shaders: default shader pack'
 	'python-pypresence: Discord Rich Presence integration')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/iwalton3/jellyfin-mpv-shim/archive/v$pkgver.tar.gz")
-sha256sums=('34cf9145d8b966c85680ef7ec74b2b949884f56c76d601e6d9e695bf513a8620')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-desktop/archive/v$pkgver.tar.gz")
+sha256sums=('e54fb01edcd50219e13b6b280abf842bc981f347f5c3a03d2bfb7461d55b1963')
 
 build() {
-	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
+	cd "${srcdir}/jellyfin-desktop-${pkgver}"
 	find -iname '*.po' | while read -r _file
 	do
 		msgfmt "$_file" -o "${_file%.*}.mo"
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
+	cd "${srcdir}/jellyfin-desktop-${pkgver}"
 	install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	cd "${pkgdir}"
