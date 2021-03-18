@@ -1,8 +1,8 @@
 # Maintainer: freb
 
 pkgname=burpsuite-pro
-pkgver=2021.3.1
-pkgrel=2
+pkgver=2021.3.2
+pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (professional edition)"
 url="https://portswigger.net/burp/"
 depends=('java-runtime>=9')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/downloa
         splash.png)
 install=burpsuite-pro.install
 sha256sums=(
-  'afe1980648b5c296b0428fdba5eeaa46ef4104852eba84d12aa3bb7cb129d53a' # jar
+  'be6b8be4b99c800daae1ba966e3e8c4fadf28d28662cae8008efdaaa3c7f99e8' # jar
   '740a01fd3feacee5b0563edc4c6634219d367bf2590ecfc954959a95354506c8' # burpsuite-pro.desktop
   'f9b8bedbab02c8f0e03b2f5e3f99fa003c58d767168c3c4aa135233b3b533d4b' # icon128.png
   '3aaa84dd4c3d31a88cd065b8445d164737c7fad4fb56833fb994de0bf6dbe3be' # splash.png
@@ -38,7 +38,7 @@ package() {
   install -m644 splash.png ${pkgdir}/usr/share/pixmaps/burpsuite-pro-splash.png
 
   # Create startup file for burpsuite-pro.
-  echo "#!/bin/sh
-exec \$JAVA_HOME/bin/java -jar /usr/share/${pkgname}/${pkgname}.jar -splash:/usr/share/pixmaps/burpsuite-pro-splash.png --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/javax.crypto=ALL-UNNAMED --add-opens java.desktop/javax.swing=ALL-UNNAMED \"\$@\"" > ${pkgdir}/usr/bin/${pkgname}
+  echo "#!/bin/sh" > ${pkgdir}/usr/bin/${pkgname}
+  echo "exec \"\$JAVA_HOME/bin/java\" \"-splash:/usr/share/pixmaps/burpsuite-pro-splash.png\" \"--add-opens\" \"java.base/java.lang=ALL-UNNAMED\" \"--add-opens\" \"java.base/javax.crypto=ALL-UNNAMED\" \"--add-opens\" \"java.desktop/javax.swing=ALL-UNNAMED\" \"-jar\" \"/usr/share/${pkgname}/${pkgname}.jar\" \"\$@\"" >> ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
