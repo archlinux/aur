@@ -1,11 +1,12 @@
+# Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgsrcname=find-file-in-project
 _pkgmaintainer=technomancy
 _pkgdestdirname=find-file-in-project
 _versionprefix=
-pkgver=5.7.10
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="Quick access to project files in Emacs"
 pkgname=emacs-${_pkgdestdirname}
@@ -14,7 +15,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs' 'emacs-swiper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('6459ac7e592d5910f3416eaa810bb867af86098de47c93bb3b6c733c7f427bb8')
+sha256sums=('f28d8a9401b70a3296fec6c5c984ba92dd0411e457f2d00d12a1461d3c64b827')
 install=${pkgname}.install
 
 build() {
