@@ -3,7 +3,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-spotdl
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Download songs from YouTube using Spotify song URLs or playlists with albumart and meta-tags."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 url="https://github.com/spotDL/spotify-downloader"
 depends=('python-setuptools' 'ffmpeg' 'python-spotipy' 'python-pytube' 'python-rich' 'python-rapidfuzz' 'python-mutagen' 'python-ytmusicapi' 'python-tqdm' 'python-beautifulsoup4')
 source=("https://pypi.io/packages/source/s/spotdl/spotdl-$pkgver.tar.gz")
-sha512sums=('98d2c726f44cae48f605d16971c0487a547510f9afcbf669ec34ea7ce8df8b4b79dbeb7506d4e45a36df8bd5a55191bd0dde05fa75dc4ce62ec6d7881d0f91fa')
+sha512sums=('d79981301b23344132949fcdc5ba2b41b62892cd16275f0538cc026c34313e3727d28d4e24c055fe4b64a67b59aae6201721543b741c791c541c3b6ef6e28a77')
 
 build() {
   cd spotdl-$pkgver
