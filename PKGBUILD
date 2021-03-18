@@ -44,7 +44,7 @@ prepare() {
   mkdir -p julia-rc  # release candidate
   mkdir -p julia-nightly  # for nightly
   tar -zxvf $_name-1.5.4-linux-x86_64.tar.gz -C julia-stable --strip-components=1  
-  tar -zxvf $_name-1.6.0-rc2-linux-x86_64.tar.gz -C julia-rc --strip-components=1
+  tar -zxvf $_name-1.6.0-rc3-linux-x86_64.tar.gz -C julia-rc --strip-components=1
   tar -zxvf $_name-latest-linux64.tar.gz -C julia-nightly --strip-components=1
 }
 
