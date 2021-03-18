@@ -5,7 +5,7 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
-pkgver=2.76
+pkgver=2.77.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -14,9 +14,9 @@ makedepends=('cmake' 'zip')
 makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite')
 makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
-        "https://www.etlegacy.com/download/file/122")
-sha256sums=('8bb8e9785e3be983a331c39298c1451cf805299560c769d59b9f04ae51912ee1'
-            '94e4847dc4f665c686401a7f33510f70c4431ff7803746865106b55ff357fd24')
+        "https://www.etlegacy.com/download/file/257")
+sha256sums=('730a8a52435884b922d8c280fcdeace648902399798c7a973da72fbc4163ebe2'
+            '5b988cb5f708e55d4ef7eee151352b82b56855d78ce50498f4b47c44e07550b1')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -111,7 +111,7 @@ package_etlegacy32-mod() {
 
     # mod
     mkdir -p $pkgdir/usr/lib/$_pkgbase/legacy
-    install -m 644 $srcdir/etlegacy-v$pkgver-i386/legacy/{etl_bin,pak3}_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-i386/legacy/legacy_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
     install -m 644 $srcdir/etlegacy-v$pkgver-i386/legacy/qagame.mp.i386.so $pkgdir/usr/lib/$_pkgbase/legacy
 
     # geoip
