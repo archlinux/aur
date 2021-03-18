@@ -2,20 +2,19 @@
 
 pkgname=joxi
 pkgver=3.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Free tool for screen capture"
 arch=('x86_64')
 url="http://joxi.net"
 license=('custom')
 depends=('qt5-svg' 'qt5-multimedia' 'qt5-x11extras' 'qt5-wayland' 'openssl-1.0' 'qt5-location' 'rtmpdump')
-
-source_x86_64=("${pkgname}.run::http://joxi.ru/download/linux")
+source=("${pkgname}-${pkgver}.run::http://dl.joxi.ru/linux/${pkgname}.run")
 options=(!strip)
-sha512sums_x86_64=('2f6a18b84ca862f6612ecd612cf81ba934b11680ae0fcfd8184cfb8f0d61a11420ec69073e8b39ab06d2971e489e1f4c0c2b6e0720cc2a181021ed99a6770a06')
+sha512sums=('2f6a18b84ca862f6612ecd612cf81ba934b11680ae0fcfd8184cfb8f0d61a11420ec69073e8b39ab06d2971e489e1f4c0c2b6e0720cc2a181021ed99a6770a06')
 
 
 prepare() {
-    sh joxi.run --noexec --target build
+    sh "${pkgname}-${pkgver}".run --noexec --target build
 
     cd build
 
