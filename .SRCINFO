@@ -1,0 +1,26 @@
+pkgbase = sunpaper-git
+	pkgdesc = Dynamic wallpaper changer based on local sunrise & sunset times
+	pkgver = r81.1fa6b43
+	pkgrel = 1
+	url = https://github.com/hexive/sunpaper
+	arch = any
+	license = unknown
+	makedepends = git
+	optdepends = wget: live weather mode support (requires an openweather API key)
+	optdepends = pywal: pywal mode support
+	optdepends = waybar: waybar mode support
+	optdepends = sway: sway oguri mode support
+	optdepends = oguri: sway oguri mode support
+	provides = sunwait
+	conflicts = sunwait
+	source = git+https://github.com/hexive/sunpaper
+	md5sums = SKIP
+
+pkgname = sunpaper-git
+	depends = sunwait
+	depends = wallutils
+	depends = bash
+
+pkgname = sunpaper-wallpapers-git
+	depends = 
+
