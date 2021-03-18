@@ -1,5 +1,5 @@
 pkgbase = obs-studio-tytan652
-	pkgdesc = Free and open source software for video recording and live streaming. Built with Browser and VST plugins plus some patches and without FTL and Python.
+	pkgdesc = Free and open source software for video recording and live streaming. Built with Browser and VST plugins and some patches but without FTL and Python.
 	pkgver = 26.1.2
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
@@ -15,7 +15,6 @@ pkgbase = obs-studio-tytan652
 	makedepends = vlc
 	makedepends = swig
 	makedepends = luajit
-	makedepends = python
 	makedepends = cef-minimal-3770
 	depends = ffmpeg
 	depends = jansson
