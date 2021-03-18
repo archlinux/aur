@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='sfz-bin'
-pkgver='0.3.0'
+pkgver='0.4.0'
 pkgrel='1'
 pkgdesc='A simple static file serving command-line tool written in Rust'
 arch=('x86_64')
