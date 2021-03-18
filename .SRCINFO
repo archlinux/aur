@@ -1,13 +1,13 @@
 pkgbase = zestginx
 	pkgdesc = A modern, performant, and secure NGINX distribution packed with features.
 	pkgver = 1.19.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZestProjects/zestginx
 	arch = any
 	license = custom
 	makedepends = cmake
 	makedepends = git
-	makedepends = rust>=1.39
+	makedepends = rust
 	depends = geoip
 	depends = libatomic_ops
 	depends = liburing

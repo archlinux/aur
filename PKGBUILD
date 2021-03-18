@@ -2,7 +2,7 @@
 
 pkgbase="zestginx"
 pkgver="1.19.8"
-pkgrel=1
+pkgrel=2
 arch=("any")
 pkgname=("zestginx" "zestginx-src")
 pkgdesc="A modern, performant, and secure NGINX distribution packed with features."
@@ -21,7 +21,7 @@ depends=(
 makedepends=(
 	"cmake"
 	"git"
-	"rust>=1.39"
+	"rust"
 )
 source=(
 	"git+$url.git"
