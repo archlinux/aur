@@ -1,13 +1,13 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.0.13.r6.11ee002e
+pkgver=0.0.13.r7.c6975bf0
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (system electron)"
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=("AGPL3")
-depends=()
-makedepends=("git" "yarn" "clojure" "electron")
+depends=("electron")
+makedepends=("git" "yarn" "clojure" "zip")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "logseq-desktop-bin")
 source=(
