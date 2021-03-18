@@ -1,6 +1,6 @@
 pkgbase = condution-bin
 	pkgdesc = A personal project management system that makes sense and will not burn your pockets out
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 0
 	url = https://www.condution.com
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = condution-bin
 	depends = gtk3
 	depends = libxss
 	depends = libdbusmenu-glib
-	source = condution-1.0.2.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v1.0.2/Condution-1.0.2.AppImage
-	sha256sums = f013180d1cb1d2612d527afee31baf7bdba9409f2a58ad46761e98fb096d93bb
+	source = condution-1.0.3.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v1.0.3/Condution-1.0.3.AppImage
+	sha256sums = 3ab0ca526e7ac775b374a4bdad61596db1aafd14ed63b31b9b549e487a29c08a
 
 pkgname = condution-bin
 
