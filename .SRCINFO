@@ -1,6 +1,6 @@
 pkgbase = sigasi
 	pkgdesc = Eclipse-based commercial VHDL, Verilog and SystemVerilog IDE
-	pkgver = 4.10.0
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = http://www.sigasi.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sigasi
 	depends = gtk3
 	depends = webkit2gtk
 	options = !strip
-	source = sigasi-4.10.0-x86_64.zip::http://download.sigasi.com/updates/4.10.0/com.sigasi.hdt.product-linux.gtk.x86_64.zip
+	source = sigasi-4.11.0-x86_64.zip::http://download.sigasi.com/updates/4.11.0/com.sigasi.hdt.product-linux.gtk.x86_64.zip
 	source = sigasi.desktop
-	sha256sums = 3167925877cfc178385974b8ce875cc057aaf2667175702f1be412e3040c7c56
+	sha256sums = e5ac3df6d987352c815badb0a57bcac91078acdb1523440e627cc16bc2d2610d
 	sha256sums = a8084b3146904c2accd5946e2aa493e133c56e4f8f0d7f582a0edcb080a7958c
 
 pkgname = sigasi
