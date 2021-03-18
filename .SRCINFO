@@ -1,0 +1,16 @@
+pkgbase = echfs-git
+	pkgdesc = Utilities for manipulating echfs filesystems
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/echfs/echfs
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = fuse
+	depends = util-linux
+	depends = pkgconf
+	source = https://github.com/echfs/echfs/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = echfs-git
+
