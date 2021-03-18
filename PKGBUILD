@@ -2,7 +2,7 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.22.2937
+pkgver=3.23.2938
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgname}-linux-${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('5d1e4bef658fa5f3bf37c8a471bd95e3ef1ba7a902d902b3d013544d190126f1'
+sha256sums=('fbcc337a46816d36e089723127ad1966670e90a96c0b4417008afa20079985de'
             'SKIP'
             '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
