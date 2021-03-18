@@ -1,7 +1,7 @@
 # Maintainer: Luka Žaja (luka dot zaja at protonmail dot com)
 
 pkgname=refind-btrfs
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Generate rEFInd manual boot stanzas from Btrfs snapshots'
 url='https://github.com/Venom1991/refind-btrfs'
@@ -21,7 +21,7 @@ depends=('btrfs-progs'
 makedepends=('python-setuptools')
 source=("https://github.com/Venom1991/refind-btrfs/archive/v${pkgver}.tar.gz")
 backup=('etc/refind-btrfs.conf')
-sha256sums=('e7152cf93683a7865db8ecc4fe1654e5cf0e1f744d023a000e85234c9909ffd9')
+sha256sums=('0078069a4d8023e321f5caf5deda427dfcdfcc9e6e3492f9070179c1427a2a34')
 
 build() {
     cd "${srcdir}/refind-btrfs-${pkgver}"
