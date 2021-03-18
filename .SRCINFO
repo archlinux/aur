@@ -3,6 +3,7 @@ pkgbase = com.yunkanpan.numnode
 	pkgver = 1.01
 	pkgrel = 1
 	url = https://www.yunkanpan.com/
+	install = .INSTALL
 	arch = x86_64
 	license = custom
 	provides = yunkanpan

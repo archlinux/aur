@@ -1,0 +1,6 @@
+#!/bin/sh
+
+post_remove() {
+    rm -rf /opt/yunkanpan
+}
+ 

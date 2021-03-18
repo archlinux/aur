@@ -5,6 +5,7 @@ pkgver=1.01
 pkgrel=1
 pkgdesc="欢迎使用云看盘软件"
 arch=("x86_64")
+install=.INSTALL
 url="https://www.yunkanpan.com/"
 license=("custom")
 depends=()
