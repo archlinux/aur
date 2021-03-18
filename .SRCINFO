@@ -9,7 +9,7 @@ pkgbase = topologic-git
 	depends = bison
 	depends = flex
 	source = topologic-git-1.1.1.tar.gz::https://github.com/mstern98/topologic-git/archive/v1.1.1.tar.gz
-	sha256sums = 3482123abed177bb63e993f5f31ab08056765486
+	sha256sums = fac39d53f391d34fab152d8020e39909668377818d7e248e8c32c22cd870e015
 
 pkgname = topologic-git
 

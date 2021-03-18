@@ -13,7 +13,7 @@ depends=(bison flex)
 makedepends=(git)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mstern98/topologic-git/archive/v${pkgver}.tar.gz")
-sha256sums=('3482123abed177bb63e993f5f31ab08056765486')
+sha256sums=('fac39d53f391d34fab152d8020e39909668377818d7e248e8c32c22cd870e015')
 
 build() 
 {
