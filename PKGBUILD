@@ -1,17 +1,18 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm-git
-pkgver=6.2.r1933.e452c0a
+pkgver=6.2.r1937.61adb26
 pkgrel=3
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
 license=('MIT')
 groups=()
-depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  dmenu ffmpeg geoclue i3lock imagemagick kdeconnect libnotify light network-manager-applet otf-nerd-fonts-fira-code pamixer picom polkit-gnome redshift skippy-xd wmname xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
+depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  dmenu ffmpeg geoclue i3lock imagemagick kdeconnect libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome redshift skippy-xd wmname xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
 # temporarily removed:
 makedepends=(git make)
 checkdepends=()
 optdepends=(\
+	'dunst: a nicer notification-daemon' \
     'rofi: a launcher that looks nicer than dmenu' \
     'rofi-dmenu: symlink dmenu to rofi for interoperability')
 provides=(moonwm)
