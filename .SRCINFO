@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-workspaces-bar-git
+	pkgdesc = GNOME Shell extension that shows workspaces buttons in top panel
+	pkgver = r9.47a4e9d
+	pkgrel = 1
+	url = https://github.com/fthx/workspaces-bar
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-workspaces-bar
+	conflicts = gnome-shell-extension-workspaces-bar
+	source = git+https://github.com/fthx/workspaces-bar.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-workspaces-bar-git
+
