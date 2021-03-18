@@ -2,15 +2,15 @@
 
 
 pkgname=octetos-core
-pkgver=2.8.4
-pkgrel=2
+pkgver=2.20.0
+pkgrel=1
 pkgdesc="C/C++ library to mainly provide Semantic Versioned inplmetation"
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/octetos-core.git"
 depends=('gcc' 'bison' 'libconfig' 'perl-xml-parser' 'intltool' 'cunit')
 #backup=('etc/nanorc')
-md5sums=('19e0b33707fc2d5a537d88e2be6cadb0')
+md5sums=('836b5027cb5b9ff527096b0b12b68047')
 source=(https://github.com/azaeldevel/$pkgname/archive/$pkgver-beta.tar.gz)
 
 build() {
