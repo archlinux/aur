@@ -48,7 +48,7 @@ _path=(
 )
 
 _flags=(
-    --buildtype=plain
+    --buildtype=debug
     -Dlogind=auto
     -Dlogind-provider=auto
     -Dxcb-errors=enabled
