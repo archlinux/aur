@@ -1,9 +1,9 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 _pkgname=eka2l1
 pkgname="${_pkgname}-git"
-pkgver=3361.196d2972
-pkgrel=1
-pkgdesc="Experimental Symbian OS emulator"
+pkgver=4188.df86afbc
+pkgrel=2
+pkgdesc="Experimental Symbian OS emulator (GIT version)"
 arch=('x86_64')
 url="https://github.com/EKA2L1/EKA2L1"
 license=('GPL2')
@@ -12,7 +12,6 @@ makedepends=(
 	'cmake'
 	'git'
 	'ccache'
-	'ninja'
     'glfw'
     'vulkan-headers'
     'python'
@@ -27,38 +26,40 @@ depends=(
 provides=('eka2l1')
 conflicts=('eka2l1')
 source=(
-	"${_pkgname}::git+https://github.com/EKA2L1/EKA2L1.git"
+	"${_pkgname}-git::git+https://github.com/EKA2L1/EKA2L1.git"
+  "eka2l1"
 )
-md5sums=(
-	'SKIP'
-)
+md5sums=('SKIP'
+         'a37f85023bcce416aaaf6b72e0d01c46')
 
 pkgver() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-git"
 	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${_pkgname}"
+	cd "${srcdir}/${_pkgname}-git"
 	git submodule update --recursive --init
-  find src/ -type f -exec sed -i 's/std::int16_t/int16_t/g' {} +
-  find src/ -type f -exec sed -i 's/std::uint32_t/uint32_t/g' {} +
-  find src/ -type f -exec sed -i 's/std::uint8_t/uint8_t/g' {} +
+  #find src/ -type f -exec sed -i 's/std::int16_t/int16_t/g' {} +
+  #find src/ -type f -exec sed -i 's/std::uint32_t/uint32_t/g' {} +
+  #find src/ -type f -exec sed -i 's/std::uint8_t/uint8_t/g' {} +
   sed -i 's/std::uint64_t surface_handle_64/std::uint32_t surface_handle_64/g' src/emu/drivers/src/graphics/backend/vulkan/graphics_vulkan.cpp
 }
 
 build() {
-	cd "${_pkgname}"
+	cd "${srcdir}/${_pkgname}-git"
 
 	mkdir -p build
 	cd build/
-	cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DGLFW_INSTALL=OFF ..
-	ninja
+	cmake -DCMAKE_BUILD_TYPE=Release -DGLFW_INSTALL=OFF -DCMAKE_INSTALL_PREFIX=/opt/eka2l1 ..
+  make
 }
 
 package() {
-	cd "${_pkgname}/build/bin"
+	cd "${srcdir}/${_pkgname}-git/build"
 
-	install -d -m 755 "${pkgdir}/usr/bin/"
-    install -m755 eka2l1 "${pkgdir}/usr/bin"
+ install -d -m 755 "${pkgdir}/opt/eka2l1"
+ install -d -m 755 "${pkgdir}/usr/bin"
+ cp -R "${srcdir}/${_pkgname}-git/build/bin/." "${pkgdir}/opt/eka2l1"
+ install -m 755 ${srcdir}/eka2l1 "${pkgdir}/usr/bin/eka2l1"
 }
