@@ -1,0 +1,19 @@
+pkgbase = gnome-bluetooth-battery-indicator-git
+	pkgdesc = Gnome-Shell extension displaying battery percentage for bluetooth devices
+	pkgver = r17.aead0c9
+	pkgrel = 1
+	url = https://github.com/MichalW/gnome-bluetooth-battery-indicator
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	depends = python-pybluez
+	provides = gnome-bluetooth-battery-indicator
+	conflicts = gnome-bluetooth-battery-indicator
+	source = git+https://github.com/MichalW/gnome-bluetooth-battery-indicator.git
+	source = git+https://github.com/TheWeirdDev/Bluetooth_Headset_Battery_Level.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gnome-bluetooth-battery-indicator-git
+
