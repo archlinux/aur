@@ -3,8 +3,8 @@
 pkgorg='stack-of-tasks'
 _pkgname='tsid'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.4.2
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
