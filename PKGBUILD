@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.0.13.r7.c6975bf0
+pkgver=0.0.13.r24.b1eeebb4
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (system electron)"
 arch=("x86_64")
@@ -57,7 +57,8 @@ build() {
     export GITLIBS="${srcdir}/${pkgname}/.gitlib"
 
     # build
-    yarn release-electron
+    yarn run gulp:build
+    yarn run gulp electronMaker
 }
 
 package() {
