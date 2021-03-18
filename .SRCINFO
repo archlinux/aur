@@ -1,13 +1,13 @@
 pkgbase = python-sip-pyqt4
-	pkgver = 4.19.24
+	pkgver = 4.19.25
 	pkgrel = 1
 	url = https://www.riverbankcomputing.com/software/sip/intro
 	arch = x86_64
 	license = custom:"sip"
 	makedepends = python
 	makedepends = python2
-	source = https://www.riverbankcomputing.com/static/Downloads/sip/4.19.24/sip-4.19.24.tar.gz
-	sha256sums = edcd3790bb01938191eef0f6117de0bf56d1136626c0ddb678f3a558d62e41e5
+	source = https://www.riverbankcomputing.com/static/Downloads/sip/4.19.25/sip-4.19.25.tar.gz
+	sha256sums = b39d93e937647807bac23579edbff25fe46d16213f708370072574ab1f1b4211
 
 pkgname = python-sip-pyqt4
 	pkgdesc = Python 3.x SIP bindings for C and C++ libraries (PyQt4 version)
