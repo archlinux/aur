@@ -10,7 +10,7 @@ arch=(any)
 url="https://radiotray.wordpress.com/"
 license=(GPL)
 depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good'
-         'dbus-python' 'python-gobject' 'python-lxml' 'python-notify2' 'python-xdg')
+         'dbus-python' 'python-gobject' 'python-lxml' 'python-notify2' 'python-pyxdg')
 optdepends=('gst-plugins-bad: extra codec support'
             'gst-plugins-ugly: extra codec support'
             'gst-libav: nonfree media decoding'
