@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-extensions-in-system-menu-git
+	pkgdesc = Adds menu items to the system menu for the Extensions or the Tweaks app
+	pkgver = r12.e9fc3e7
+	pkgrel = 1
+	url = https://github.com/Leleat/extensions-in-system-menu
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-extensions-in-system-menu
+	conflicts = gnome-shell-extension-extensions-in-system-menu
+	source = git+https://github.com/Leleat/extensions-in-system-menu.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-extensions-in-system-menu-git
+
