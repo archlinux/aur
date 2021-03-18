@@ -40,7 +40,7 @@ package(){
     rm -r files/logo
     
     mv files/* ${pkgdir}/opt/yunkanpan/
-    ln -sf /usr/lib32/libstdc++.so.6 ${pkgdir}/opt/yunkanpan/
+    cp /usr/lib32/libstdc++.so.6 ${pkgdir}/opt/yunkanpan/
     chmod 777 /opt/yunkanpan/
     
     mv ${srcdir}/start.sh ${pkgdir}/opt/yunkanpan/start.sh
@@ -49,6 +49,6 @@ package(){
 
     chmod a+x ${pkgdir}/opt/yunkanpan/start.sh
     mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
+    cp /opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
 }
  
