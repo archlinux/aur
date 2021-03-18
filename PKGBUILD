@@ -1,10 +1,11 @@
+# Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 # Contributor: ebiadsu
 # Previous Maintainer: holos
 # Contributor: Sebastien Duthil <duthils@free.fr>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-dash
-pkgver=2.17.0
+pkgver=2.18.1
 pkgrel=1
 pkgdesc='A modern list API for Emacs'
 arch=('any')
@@ -13,7 +14,7 @@ license=('GPL')
 makedepends=('emacs')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/magnars/dash.el/archive/$pkgver.tar.gz")
-sha256sums=('9db9f70a41ad50e87d0ecf681607290284809f3f24cf36fba0d38b0019aabfa0')
+sha256sums=('cb98eae83417954b9ace1dd7bf3252eae865ec1852aac50d674036fd502f1a68')
 
 build() {
   cd dash.el-"$pkgver"
