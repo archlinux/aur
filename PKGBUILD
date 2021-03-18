@@ -6,7 +6,7 @@
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.23.r62.g22f6e8e3
+pkgver=0.3.23.r131.g529f4d31
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (git) (32 bit client libraries)'
 url=https://pipewire.org
@@ -35,6 +35,9 @@ build() {
         -D tests=disabled \
         -D audiotestsrc=disabled \
         -D bluez5=disabled \
+        -D bluez5-codec-aptx=disabled \
+        -D bluez5-codec-ldac=disabled \
+        -D bluez5-codec-aac=disabled \
         -D ffmpeg=disabled \
         -D jack=disabled \
         -D libcamera=disabled \
