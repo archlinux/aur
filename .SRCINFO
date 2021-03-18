@@ -1,13 +1,14 @@
 pkgbase = riemann-bin
 	pkgdesc = Monitors distributed systems (precompiled)
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://riemann.io/
 	install = riemann.install
 	arch = any
 	license = EPL
 	depends = java-runtime-headless>=8
 	depends = bash
+	depends = inetutils
 	provides = riemann
 	conflicts = riemann
 	backup = etc/riemann/riemann.config

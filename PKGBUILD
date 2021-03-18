@@ -4,7 +4,7 @@
 pkgname=riemann-bin
 _pkgbase=${pkgname%%-bin}
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitors distributed systems (precompiled)"
 arch=('any')
 url="http://$_pkgbase.io/"
