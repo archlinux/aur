@@ -1,15 +1,17 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=1.0.8
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
 url="https://www.proxmox.com"
 license=('AGPL3')
-depends=('gcc-libs'
-	'fuse3'
-	'acl'
+depends=(
+    'acl'
+    'fuse3'
+    'gcc-libs'
+    'openssl'
 )
 makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'sg3_utils')
 source=(
