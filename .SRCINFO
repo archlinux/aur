@@ -1,6 +1,6 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
-	pkgver = 8.5.0
+	pkgver = 8.6.0
 	pkgrel = 0
 	url = http://www.crashplan.com/business
 	install = crashplan-pro.install
@@ -15,10 +15,10 @@ pkgbase = crashplan-pro
 	depends = inetutils
 	conflicts = crashplan
 	options = !strip
-	source = https://download.code42.com/installs/agent/cloud/8.5.0/446/install/CrashPlanSmb_8.5.0_1525200006850_446_Linux.tgz
+	source = https://download.code42.com/installs/agent/cloud/8.6.0/1059/install/CrashPlanSmb_8.6.0_1525200006860_1059_Linux.tgz
 	source = crashplan-pro
 	source = crashplan-pro.service
-	sha1sums = ba63e1c4725f8788419eaa4b3657f114c909b37d
+	sha1sums = b2d7b0615a26bb22d45455b26811acd09a52c948
 	sha1sums = c6bf34f1b0ba0bd8d9eb04f6b300112e3c053f84
 	sha1sums = f01486b90dafe714a69d20aaa873153ce069af13
 

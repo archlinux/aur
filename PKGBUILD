@@ -2,9 +2,9 @@
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=8.5.0
-_pkgtimestamp=1525200006850
-_pkgbuild=446
+pkgver=8.6.0
+_pkgtimestamp=1525200006860
+_pkgbuild=1059
 pkgrel=0
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -18,7 +18,7 @@ install=crashplan-pro.install
 source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha1sums=('ba63e1c4725f8788419eaa4b3657f114c909b37d'
+sha1sums=('b2d7b0615a26bb22d45455b26811acd09a52c948'
           'c6bf34f1b0ba0bd8d9eb04f6b300112e3c053f84'
           'f01486b90dafe714a69d20aaa873153ce069af13')
 options=(!strip)
@@ -32,7 +32,6 @@ build() {
   echo ""
 
   echo "" > install.vars
-  echo "JAVACOMMON=`which java`" >> install.vars
   echo "APP_BASENAME=CrashPlan" >> install.vars
   echo "TARGETDIR=/opt/$_pkgname" >> install.vars
   echo "PARENT_DIR=/opt/$_pkgname" >> install.vars
@@ -43,25 +42,24 @@ build() {
   NOW=`date +%Y%m%d`
   echo "INSTALLDATE=$NOW" >> install.vars
 
-  # sed -imod 's|\. $TARGETDIR/bin/run\.conf|:|' scripts/CrashPlanEngine
-  #sed -imod "s|Exec=.*|Exec=/opt/$_pkgname/bin/CrashPlanDesktop|" scripts/instll.sh
-  #sed -imod "s|Icon=.*|Icon=/opt/$_pkgname/bin/icon_app.png|" scripts/install.sh
-  # sed -imod "s|Categories=.*|Categories=System;|" scripts/CrashPlan.desktop
-  #$srcdir/code42-install/install.sh -v -u $USER
+  sed -i '/^resolve_native_libraries/ s/./#&/' install.sh
+  sed -i '/^install_service_script/ s/./#&/' install.sh
+  sed -i '/^install_launcher/ s/./#&/' install.sh
+  sed -i '/^start_service/ s/./#&/' install.sh
+  sed -i '/^prompt_to_start_desktop/ s/./#&/' install.sh
 }
 
 package() {
   mkdir -p $pkgdir/opt/$_pkgname
   cd $pkgdir/opt/$_pkgname
 
-  cat $srcdir/code42-install/CrashPlanSmb_$pkgver.cpi | gzip -d -c - | cpio -i --no-preserve-owner
+  $srcdir/code42-install/install.sh -q -x $pkgdir/opt/ -u $USER
 
-  chmod 777 log
-  chmod 775 electron/code42
+  # As arch isnt a recognised flavour we manually extract the so files
+  cp nlib/common/* nlib/
+  rm -rf nlib/{rhel7,rhel8,ubuntu18,ubuntu20,common}
 
-  mv app.asar electron/resources
-
-  sed -i "s|<backupConfig>|<backupConfig>\n\t\t\t<manifestPath>/opt/$_pkgname/manifest</manifestPath>|g" conf/default.service.xml
+  sed -i "s|<manifestPath.*</manifestPath>|<manifestPath>/opt/$_pkgname/manifest</manifestPath>|g" $pkgdir/opt/$_pkgname/conf/default.service.xml
 
   mkdir -p $pkgdir/usr/bin
   ln -s "/opt/$_pkgname/bin/CrashPlanDesktop" $pkgdir/usr/bin/CrashPlanDesktop
@@ -69,7 +67,7 @@ package() {
   # Fix for encoding troubles (CrashPlan ticket 178827)
   # Make sure the daemon is running using the same localization as
   # the (installing) user
-  echo "" >> $srcdir/code42-install/scripts/run.conf
+  echo "" > $srcdir/code42-install/scripts/run.conf
   echo "LC_ALL=$LANG" >> $srcdir/code42-install/scripts/run.conf
 
   # Prevent crashplan from restarting itself repeatedly..
@@ -77,17 +75,15 @@ package() {
   echo 'exit' >> bin/restartLinux.sh
 
   install -D -m 644 $srcdir/code42-install/install.vars install.vars
-  install -D -m 755 $srcdir/code42-install/scripts/desktop.sh bin/CrashPlanDesktop
   install -D -m 644 $srcdir/code42-install/scripts/run.conf bin/run.conf
-  install -D -m 755 $srcdir/code42-install/scripts/service.sh bin/CrashPlanEngine
   install -D -m 755 $srcdir/code42-install/scripts/code42.desktop $pkgdir/usr/share/applications/crashplan.desktop
-  install -D -m 755 $srcdir/code42-install/scripts/code42.desktop $pkgdir/usr/share/applications/crashplan.desktop
+  install -D -m 755 $srcdir/code42-install/scripts/service.sh bin/service.sh
 
   # We need to change the name for now
   ln -sf "/opt/$_pkgname/bin/Code42Service" $pkgdir/opt/crashplan/bin/CrashPlanService 
+  ln -sf "/opt/$_pkgname/bin/desktop.sh" $pkgdir/opt/crashplan/bin/CrashPlanDesktop 
+  ln -sf "/opt/$_pkgname/bin/service.sh" $pkgdir/opt/crashplan/bin/CrashPlanEngine
 
-  # rc.d daemon
-  install -D -m 755 $srcdir/crashplan-pro $pkgdir/etc/rc.d/crashplan-pro
   # systemd unit
   install -D -m 644 $srcdir/crashplan-pro.service $pkgdir/usr/lib/systemd/system/crashplan-pro.service
 }
