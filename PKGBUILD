@@ -1,20 +1,13 @@
-# Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
+# Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
 
 pkgname="ttf-29lt-zarid-sans"
-pkgver=2.000
-pkgrel=1
+pkgver="2.000"
+pkgrel=2
 epoch=1
-pkgdesc="A Friendly & Direct Typeface"
-arch=(
-	"any"
-)
+arch=("any")
+pkgdesc="A friendly & direct typeface."
 url="https://www.29lt.com/product/29lt-zarid-sans"
-license=(
-	"custom"
-)
-depends=(
-	"fontconfig"
-)
+license=("custom")
 makedepends=(
 	"woff2"
 )
@@ -31,14 +24,13 @@ b2sums=(
 
 prepare()
 {
-	woff2_decompress 29LTZaridSansVar.woff2
-	woff2_decompress 29LTZaridSansSlantedVar.woff2
+	woff2_decompress "29LTZaridSansVar.woff2"
+	woff2_decompress "29LTZaridSansSlantedVar.woff2"
 }
 
 package()
 {
 	install -D -m644 "29LTZaridSansVar.ttf" "$pkgdir/usr/share/fonts/TTF/29LTZaridSansVar.ttf"
 	install -D -m644 "29LTZaridSansSlantedVar.ttf" "$pkgdir/usr/share/fonts/TTF/29LTZaridSansSlantedVar.ttf"
-	
 	install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,13 +1,12 @@
 pkgbase = ttf-29lt-zarid-sans
-	pkgdesc = A Friendly & Direct Typeface
+	pkgdesc = A friendly & direct typeface.
 	pkgver = 2.000
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.29lt.com/product/29lt-zarid-sans
 	arch = any
 	license = custom
 	makedepends = woff2
-	depends = fontconfig
 	source = https://v-fonts.com/assets/fonts/29LTZaridSansVar.woff2
 	source = https://v-fonts.com/assets/fonts/29LTZaridSansSlantedVar.woff2
 	source = LICENSE
