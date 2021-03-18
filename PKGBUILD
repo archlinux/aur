@@ -5,8 +5,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=dia-git
-_pkgname=dia
-pkgver=6611.81fe2063
+pkgver=6621.bda0a93c
 pkgrel=1
 pkgdesc="A GTK+ based diagram creation program (GIT VERSION)"
 arch=('x86_64')
@@ -17,21 +16,27 @@ makedepends=('git' 'cmake' 'meson' 'intltool' 'dblatex' 'docbook-xsl')
 provides=('dia')
 conflicts=('dia')
 options=('docs' '!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/dia.git")
-md5sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/dia.git" poppler_fix.patch)
+sha256sums=('SKIP'
+            'e3e80a5770e91110a47f3da1eaeab8f692408899aead71ff7c3726369ef9fa4c')
+
+prepare() {
+  cd ${pkgname%-git}
+  git apply "$srcdir"/poppler_fix.patch
+}
 
 pkgver() {
-  cd ${_pkgname}
+  cd ${pkgname%-git}
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${_pkgname}
+  cd ${pkgname%-git}
   meson --prefix /usr --buildtype=plain  . build 
   ninja -j1 -C build
 }
 
 package() {
-  cd ${_pkgname}
+  cd ${pkgname%-git}
   DESTDIR="${pkgdir}" ninja -C build install
 }

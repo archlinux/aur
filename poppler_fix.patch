@@ -1,0 +1,22 @@
+diff --git a/plug-ins/pdf/pdf-import.cpp b/plug-ins/pdf/pdf-import.cpp
+index 15100bc6..c45cf452 100644
+--- a/plug-ins/pdf/pdf-import.cpp
++++ b/plug-ins/pdf/pdf-import.cpp
+@@ -857,7 +857,7 @@ extern "C"
+ gboolean
+ import_pdf(const gchar *filename, DiagramData *dia, DiaContext *ctx, void* user_data)
+ {
+-  PDFDoc *doc;
++  std::unique_ptr<PDFDoc> doc;
+   GooString *fileName = new GooString(filename);
+   // no passwords yet
+   GooString *ownerPW = NULL;
+@@ -889,7 +889,7 @@ import_pdf(const gchar *filename, DiagramData *dia, DiaContext *ctx, void* user_
+     delete diaOut;
+     ret = TRUE;
+   }
+-  delete doc;
++  doc.reset();
+   delete fileName;
+ 
+   return ret;
