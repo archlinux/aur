@@ -1,0 +1,12 @@
+pkgbase = yml2dot
+	pkgdesc = Turn YAML into beautiful Graph
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lucasepe/yml2dot
+	arch = x86_64
+	license = MIT
+	source = https://github.com/lucasepe/yml2dot/releases/download/v0.1.0/yml2dot_0.1.0_linux_64-bit.tar.gz
+	sha256sums = faa30f244c3d4b695d16fb7481d58bbc50f4b84842338952ae1e72c79d7c461b
+
+pkgname = yml2dot
+
