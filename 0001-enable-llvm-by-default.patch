@@ -1,6 +1,6 @@
-From 557c5a6420d2ffe70f569a32ee7417f14e14c567 Mon Sep 17 00:00:00 2001
+From 2e4fcd0c36b85a257f0528bba0b641edfc008235 Mon Sep 17 00:00:00 2001
 From: kevall474 <kevall474@tuta.io>
-Date: Wed, 24 Feb 2021 15:09:34 -0500
+Date: Wed, 24 Feb 2021 13:02:35 -0500
 Subject: [PATCH] enable llvm by default
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH] enable llvm by default
  3 files changed, 9 insertions(+)
 
 diff --git a/src/amd/compiler/aco_ir.cpp b/src/amd/compiler/aco_ir.cpp
-index a258447b662..7c9619d7937 100644
+index 4e248a9bd33..00299044828 100644
 --- a/src/amd/compiler/aco_ir.cpp
 +++ b/src/amd/compiler/aco_ir.cpp
 @@ -47,9 +47,14 @@ static void init_once()
@@ -29,30 +29,30 @@ index a258447b662..7c9619d7937 100644
  }
  
 diff --git a/src/amd/vulkan/radv_debug.h b/src/amd/vulkan/radv_debug.h
-index 2c559d8c125..9383dfe7787 100644
+index 8d828aaa28a..2e5aaec1109 100644
 --- a/src/amd/vulkan/radv_debug.h
 +++ b/src/amd/vulkan/radv_debug.h
-@@ -70,6 +70,7 @@ enum {
- 	RADV_PERFTEST_PS_WAVE_32      = 1 << 5,
- 	RADV_PERFTEST_GE_WAVE_32      = 1 << 6,
- 	RADV_PERFTEST_DFSM            = 1 << 7,
-+	RADV_PERFTEST_ACO             = 1 << 8,
+@@ -72,6 +72,7 @@ enum {
+ 	RADV_PERFTEST_GE_WAVE_32      = 1u << 6,
+ 	RADV_PERFTEST_DFSM            = 1u << 7,
+ 	RADV_PERFTEST_NO_SAM          = 1u << 8,
++	RADV_PERFTEST_ACO          		= 1u << 9,
  };
  
  bool
 diff --git a/src/amd/vulkan/radv_device.c b/src/amd/vulkan/radv_device.c
-index 9a82094a1ff..6c96e9ce1df 100644
+index 9513fb3b277..b28cbd47c35 100644
 --- a/src/amd/vulkan/radv_device.c
 +++ b/src/amd/vulkan/radv_device.c
-@@ -574,6 +574,7 @@ static const struct debug_control radv_perftest_options[] = {
- 	{"pswave32", RADV_PERFTEST_PS_WAVE_32},
+@@ -816,6 +816,7 @@ static const struct debug_control radv_perftest_options[] = {
  	{"gewave32", RADV_PERFTEST_GE_WAVE_32},
  	{"dfsm", RADV_PERFTEST_DFSM},
+ 	{"nosam", RADV_PERFTEST_NO_SAM},
 +  {"aco", RADV_PERFTEST_ACO},
  	{NULL, 0}
  };
  
-@@ -716,6 +717,8 @@ VkResult radv_CreateInstance(
+@@ -948,6 +949,8 @@ VkResult radv_CreateInstance(
  	instance->debug_flags = parse_debug_string(getenv("RADV_DEBUG"),
  						   radv_debug_options);
  

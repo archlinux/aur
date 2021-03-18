@@ -10,11 +10,11 @@
 
 #######################################
 
-#Enable llvm by default
-#Set 'y' to enable
-#Default is set to empty, so no llvm by default patch
-if [ -z ${_llvm+x} ]; then
-  _llvm=
+#Set '1' to build with GCC
+#Set '2' to build with CLANG
+#Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
+if [ -z ${_compiler+x} ]; then
+  _compiler=
 fi
 
 #######################################
@@ -121,6 +121,7 @@ END
   -Dgallium-nine=true \
   -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
+  -Dopencl-native=true \
   -Dvulkan-drivers=amd,intel,swrast \
   -Dshader-cache=enabled \
   -Dvulkan-overlay-layer=true \
@@ -133,18 +134,22 @@ END
   -Dglx=dri \
   -Degl=enabled \
   -Dglvnd=true \
+  -Dmicrosoft-clc=disabled \
+  -Dspirv-to-dxil=false \
   -Dllvm=enabled \
   -Dshared-llvm=enabled \
   -Dvalgrind=disabled \
   -Dlibunwind=enabled \
   -Dlmsensors=enabled \
   -Dselinux=false \
-  -Dosmesa=gallium \
+  -Dosmesa=true \
   -Dswr-arches=avx,avx2,knl,skx \
   -Dshared-swr=true \
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
-  -Dzstd=enabled
+  -Dzstd=enabled \
+  -Dzlib=enabled \
+  -Dsse2=false
 
   meson configure build_32/
 
