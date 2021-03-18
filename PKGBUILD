@@ -13,7 +13,7 @@ depends=(rsync squashfs-tools gnupg debootstrap)
 makedepends=(go git)
 conflicts=(distrobuilder-git)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-b2sums=('cdbc99d30aacc6efcb6e499a8f5ad3df89d16726cc9513ee08976d01a1e86dacd4e88c37715e11da9a727e013af60481ac2ec3b3dab52ea039c5ec7d6e2f9586')
+b2sums=('d1b7fe9fcc6fd65993dc0eaa610dac7bc35c0bd4e67165d94b8761e5ed906bd3ea4357f467332a6dbc02db39227d0efc4c260fae0d6fde6f63843eeacb5622d3')
 
 prepare() {
   # go modules will solve everything, they said ...
