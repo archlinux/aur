@@ -1,6 +1,6 @@
 pkgbase = supercronic-git
 	pkgdesc = Supercronic is a crontab-compatible job runner, designed specifically to run in containers.
-	pkgver = r83.41d5ac6
+	pkgver = r226.afb376d
 	pkgrel = 1
 	url = https://github.com/aptible/supercronic
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = supercronic-git
 	license = MIT
 	makedepends = git
 	makedepends = go
-	makedepends = dep
+	makedepends = bash-bats
 	provides = supercronic
 	conflicts = supercronic
 	source = supercronic-git::git+https://github.com/aptible/supercronic
