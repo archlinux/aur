@@ -16,7 +16,7 @@ makedepends=(
 optdepends=(
     "boost"
     "udev"
-    "python-sphynx"
+    "python-sphinx"
     "doxygen"
     "graphviz"
     "gstreamer"
