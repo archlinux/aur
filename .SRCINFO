@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2018
 	pkgdesc = Clear Linux lts2018
-	pkgver = 4.19.180
+	pkgver = 4.19.181
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2018
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = linux-clear-lts2018
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.180.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.181.xz
 	source = linux-clear-lts2018::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=4.19.177-198
 	source = enable_additional_cpu_optimizations-20210309.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210309.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
 	sha256sums = SKIP
-	sha256sums = 1a04316b0bd18796743494060bc47dd784eb8a034fe86a686625570c81cb5f47
+	sha256sums = 35d687ecffcdd238cc52921e31b925e469a9a549bbaa57411e336da091907bc8
 	sha256sums = SKIP
 	sha256sums = 8fa4ef2c3b392c410c3f74f9b4ab89683b7fca8cac70b96e2bf532a952e46d0b
 
