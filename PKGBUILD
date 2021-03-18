@@ -1,12 +1,13 @@
 pkgname=xmr-stak-nvidia
 pkgver=2.10.8
-pkgrel=0
-pkgdesc="Unified All-in-one Monero miner (CUDA)"
+pkgrel=1
+pkgdesc="Unified All-in-one Monero miner with CUDA support"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak"
 license=('GPL3')
 makedepends=('git' 'cmake' 'opencl-headers')
 depends=('libmicrohttpd' 'openssl' 'hwloc' 'ocl-icd')
+conflicts=('xmr-stak' 'xmr-stak-cpu-git' 'xmr-stak-git' 'xmr-stak-nvidia-git' 'xmr-stak-opencl-amd')
 source=("xmr-stak-$pkgver.tar.gz::https://github.com/fireice-uk/xmr-stak/archive/$pkgver.tar.gz"
         'no-donate.patch'
         'cuda-11.patch'
