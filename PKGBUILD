@@ -2,41 +2,69 @@
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: GordonGR <gordongr@freemail.gr>
 
-_pkgname=libcaca
-pkgname=lib32-$_pkgname
+pkgname=lib32-libcaca
 pkgver=0.99.beta19
-pkgrel=2
+pkgrel=4
 pkgdesc="Color AsCii Art library (32-bit)"
-arch=("x86_64")
 url="http://caca.zoy.org/wiki/libcaca"
-license=('custom:WTFPL')
-depends=("$_pkgname" "lib32-imlib2")
-source=("http://libcaca.zoy.org/files/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('a3d4441cdef488099f4a92f4c6c1da00')
+arch=(x86_64)
+license=(custom:WTFPL)
+depends=(lib32-imlib2 libcaca)
+makedepends=(git)
+_commit=caae67dce5d72ceceac79468bed47b58ea8e4a29  # tags/v0.99.beta19
+source=("git+https://github.com/cacalabs/libcaca#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd libcaca
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+  cd libcaca
+
+  # CVE-2021-3410
+  # https://bugs.archlinux.org/task/70053
+  git cherry-pick -n 46b4ea7c e4968ba6
+
+  # Fix up version
+  sed -i '/^AC_INIT/s/beta19pre/beta19/;/^LT_MICRO=/s/18/19/' configure.ac
+
+  autoreconf -fvi
+}
 
 build() {
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-    cd $_pkgname-$pkgver/
-
-    ./configure \
-        --prefix=/usr \
-        --enable-shared \
-        --disable-doc \
-        --disable-cxx \
-        --disable-gl \
-        --disable-csharp \
-        --disable-python \
-        --disable-slang \
-        --libdir=/usr/lib32/ \
-        --libexecdir=/usr/lib32 \
-        --host=i686-unknown-linux-gnu
-    make
+  cd libcaca
+  ./configure \
+    --build=x86_64-pc-linux-gnu \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --libexecdir=/usr/lib \
+    --mandir=/usr/share/man \
+    --enable-shared \
+    --disable-csharp \
+    --disable-cxx \
+    --disable-doc \
+    --disable-gl \
+    --disable-python \
+    --disable-slang \
+    --disable-static
+  make
 }
 
 package() {
-    make -C $_pkgname-$pkgver DESTDIR="$pkgdir" install
-    rm -rf "$pkgdir"/usr/{bin,include,lib,share}/
+  cd libcaca
+  make DESTDIR="$pkgdir" install
+
+  rm -r "$pkgdir"/usr/{share,include}
+  find "$pkgdir/usr/bin" -type f -not -name caca-config -printf 'Removing %P\n' -delete
+  mv "$pkgdir"/usr/bin/caca-config{,-32}
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
+
+# vim:set sw=2 noet:
