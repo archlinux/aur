@@ -204,7 +204,7 @@ package() {
   install -d "${pkgdir}/usr/share/libmesh/"
   mv "${pkgdir}/usr/contrib" "${pkgdir}/usr/share/libmesh/"
   # Set right path for libtool from libMesh
-  sed -i 's-/usr/contrib/bin-/usr/share/libmesh/contrib-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
+  sed -i 's-/usr/contrib/bin-/usr/share/libmesh/bin/contrib-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
 
   # Place examples and documentation in the right directory
   install -d "${pkgdir}"/usr/share/doc/
