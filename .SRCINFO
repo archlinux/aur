@@ -5,6 +5,7 @@ pkgbase = broot-git
 	url = https://github.com/Canop/broot
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
 	depends = zlib
