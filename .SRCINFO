@@ -1,0 +1,16 @@
+pkgbase = puzzle-jigsaw
+	pkgdesc = Tiling puzzle that requires the assembly mosaiced pieces
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://bitbucket.org/admsasha/puzzle-jigsaw
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = qt5-multimedia
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = https://bitbucket.org/admsasha/puzzle-jigsaw/downloads/puzzle-jigsaw-1.0.2.tar.gz
+	sha512sums = 855ad4ddc382de2e114c4aeed523d49dd6437d23f61a9aec1f7e9239ff62c28724a087ba203f3f5f1c6267c18af688742317997c768f2715cfe1520f4372c138
+
+pkgname = puzzle-jigsaw
+
