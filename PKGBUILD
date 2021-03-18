@@ -3,8 +3,8 @@
 # Contributor: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=aegisub-wangqr-git
-_pkgtag='v3.3.1'
-pkgver=3.3.1.r63.3bde4dd75
+_pkgtag='v3.3.2'
+pkgver=3.3.2.r6.8e4ca0dd9
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (wangqr fork)'
 arch=(x86_64)
