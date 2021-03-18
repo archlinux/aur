@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-go
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
@@ -12,32 +12,40 @@ provides=("flux-bin")
 conflicts=("flux-bin")
 replaces=("flux-cli")
 depends=("glibc")
-makedepends=("go")
-optdepends=("kubectl")
+makedepends=('go>=1.16', 'kustomize>=3.0')
+optdepends=('kubectl: for apply actions on the Kubernetes cluster',
+'bash-completion: auto-completion for flux in Bash',
+'zsh-completions: auto-completion for flux in ZSH')
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/fluxcd/flux2/archive/v$pkgver.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  20e91522cdba6e31468bc06cb51bb9c6dadc00e6325a6e25642dc4300ad06a31
+  4cdd586a3395ab0059fe51053ee541190f15610a59832ab92fc71ce3ba22818b
 )
+_srcname=flux
 
 build() {
-  cd "flux2-$pkgver"
+  cd "flux2-${pkgver}"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags "-X main.VERSION=$pkgver" -o flux-bin ./cmd/flux
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  ./manifests/scripts/bundle.sh "${PWD}/manifests" "${PWD}/cmd/flux/manifests"
+  go build -ldflags "-linkmode=external -X main.VERSION=${pkgver}" -o ${_srcname} ./cmd/flux
 }
 
 check() {
-  cd "flux2-$pkgver"
+  cd "flux2-${pkgver}"
   make test
 }
 
 package() {
-  cd "flux2-$pkgver"
-  install -Dm755 flux-bin "$pkgdir/usr/bin/flux"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "flux2-${pkgver}"
+  install -Dm755 ${_srcname} "${pkgdir}/usr/bin/${_srcname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  "${pkgdir}/usr/bin/${_srcname}" completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${_srcname}"
+  "${pkgdir}/usr/bin/${_srcname}" completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${_srcname}.fish"
+  "${pkgdir}/usr/bin/${_srcname}" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${_srcname}"
 }
