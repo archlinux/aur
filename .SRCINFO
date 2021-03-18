@@ -1,0 +1,17 @@
+pkgbase = mindmaster_en
+	pkgdesc = Multi-functional, good-looking, easy-to-use professional mind mapping software
+	pkgver = 8.5.2
+	pkgrel = 2
+	url = https://www.edrawsoft.com/download-mindmaster.html
+	arch = x86_64
+	license = Commercial
+	conflicts = mindmaster_cn
+	replaces = mindmaster
+	options = !strip
+	source = mindmaster.desktop
+	sha256sums = a090cb4f1ad939ddbd44f8cc6d2fc0caa65bccbee4daa7abe2a36b4866fc8856
+	source_x86_64 = https://download.edrawsoft.com/archives/mindmaster_8.5.2_en.x86_64.deb
+	sha256sums_x86_64 = 8ad99d719174281852e258b6c9a720de1638e55eca5fd4729970dcbbc9a9cdbd
+
+pkgname = mindmaster_en
+
