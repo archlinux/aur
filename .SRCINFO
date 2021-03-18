@@ -1,0 +1,16 @@
+pkgbase = solana
+	pkgdesc = A fast, secure, and censorship resistant blockchain.
+	pkgver = 1.5.15
+	pkgrel = 1
+	url = https://www.solana.com
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rustup
+	provides = solana
+	conflicts = solana-bin
+	source = solana-1.5.15.tar.gz::https://github.com/solana-labs/solana/archive/v1.5.15.tar.gz
+	md5sums = 75e5447f885c0c16e9a70ee24549ab78
+
+pkgname = solana
+
