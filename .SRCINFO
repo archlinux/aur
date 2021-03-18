@@ -5,13 +5,17 @@ pkgbase = nohang
 	url = https://github.com/hakavlad/nohang
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
-	conflicts = nohang
+	depends = systemd
+	optdepends = libnotify: notification server
+	optdepends = logrotate: logrotate support
+	optdepends = sudo: if nohang started with UID=0
 	backup = etc/nohang/nohang.conf
 	backup = etc/nohang/nohang-desktop.conf
 	backup = etc/logrotate.d/nohang
-	source = nohang::https://github.com/hakavlad/nohang/archive/v0.2.0.tar.gz
-	md5sums = SKIP
+	source = git+https://github.com/hakavlad/nohang.git#tag=v0.2.0
+	sha256sums = SKIP
 
 pkgname = nohang
 
