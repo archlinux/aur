@@ -7,7 +7,7 @@ _pref_maximum_performance=
 
 pkgname=nvidia-dkms-performance
 pkgver=460.56
-pkgrel=2
+pkgrel=3
 pkgdesc='NVIDIA driver sources for linux with some optimizations'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -25,7 +25,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '0005-Powermizer-max-performance.patch')
 sha256sums=('6aa33772f6777dfaecf3142d7e01da9689a7206254e81ddbebf3ce6067c214a2'
             '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
-            '1bd56d082093db9819b07f42c5414dffd1bcf92946d5f5dab706ed785933e169'
+            '2ce5c1c6c666ecff9a089b3c42fd5db66c6a974e894add1e4c47be6fd8223bc2'
             '18b7e1cf21834a646d5b6a7cf49daae5d55bc7e1f23fd5a96e05a8aa4a74de57'
             'a9465149c336c8f0bded15a4d473f16156d6da3a9fe4965ebe8a9afba5519c9f'
             'd24e341f9a0e38f03f4e425e5f59e407604463fc3daee36009ecbd0fefa8b801'
