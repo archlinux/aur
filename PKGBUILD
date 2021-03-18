@@ -4,12 +4,12 @@
 
 pkgname=pulseaudio-dlna
 pkgver=0.5.2.r152.gb0db813
-pkgrel=5
+pkgrel=6
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio'
 arch=('x86_64')
 url=https://github.com/masmu/pulseaudio-dlna
 license=('GPL3')
-depends=('python-chardet' 'python-dbus' 'python-docopt' 'python-gobject'
+depends=('dbus-python' 'python-chardet' 'python-docopt' 'python-gobject'
          'python-lxml' 'python-netifaces' 'python-notify2' 'python-psutil'
          'python-pychromecast6' 'python-pyroute2' 'python-requests'
          'python-setproctitle' 'python-setuptools')
