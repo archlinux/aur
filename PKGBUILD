@@ -1,9 +1,10 @@
+# Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 # Contributor: Hauke Wesselmann <hauke@h-dawg.de>
 # Contributor: xgdgsc <xgdgsc at gmail dot com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-js2-mode
-pkgver=20190219
+pkgver=20201220
 pkgrel=1
 pkgdesc="An improved JavaScript mode for GNU Emacs"
 arch=('any')
@@ -11,7 +12,7 @@ url="https://github.com/mooz/js2-mode/"
 license=('GPL2')
 depends=('emacs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mooz/js2-mode/archive/$pkgver.tar.gz)
-sha256sums=('718b8b8d582f52782b33fafc1921944dd79d4e67ce21ab8cb5762b716ddc61bf')
+sha256sums=('8dfc1e8504479cb458d2d49ac8155ace5cfdd71eb0d45770cd72d71125f7622c')
 
 build() {
   cd ${pkgname#emacs-}-$pkgver

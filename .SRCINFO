@@ -1,13 +1,13 @@
 pkgbase = emacs-js2-mode
 	pkgdesc = An improved JavaScript mode for GNU Emacs
-	pkgver = 20190219
+	pkgver = 20201220
 	pkgrel = 1
 	url = https://github.com/mooz/js2-mode/
 	arch = any
 	license = GPL2
 	depends = emacs
-	source = emacs-js2-mode-20190219.tar.gz::https://github.com/mooz/js2-mode/archive/20190219.tar.gz
-	sha256sums = 718b8b8d582f52782b33fafc1921944dd79d4e67ce21ab8cb5762b716ddc61bf
+	source = emacs-js2-mode-20201220.tar.gz::https://github.com/mooz/js2-mode/archive/20201220.tar.gz
+	sha256sums = 8dfc1e8504479cb458d2d49ac8155ace5cfdd71eb0d45770cd72d71125f7622c
 
 pkgname = emacs-js2-mode
 
