@@ -1,0 +1,6 @@
+pkg/
+src/
+*.tar.gz
+license-*.txt
+
+*.pkg.*
