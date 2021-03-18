@@ -1,0 +1,13 @@
+pkgbase = python-ovs-wrapper
+	pkgdesc = Python Open vSwitch library wrapper
+	pkgver = 2.14.2
+	pkgrel = 1
+	url = http://www.openvswitch.org/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = openvswitch
+	options = !emptydirs
+
+pkgname = python-ovs-wrapper
+
