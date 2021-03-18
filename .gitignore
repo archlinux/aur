@@ -4,3 +4,4 @@ pkg/
 src/
 /*.tgz
 /*.tar.gz
+/*.tar.zst
