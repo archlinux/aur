@@ -4,7 +4,7 @@
 # Contributor: Leonid Selivanov <bravebug at gmail dot com>
 #
 _pkgname="liferea"
-_pkgver="1.13.3"
+_pkgver="1.13.5"
 #_prerelease="rc3"
 
 pkgname="${_pkgname}-unstable"
@@ -29,7 +29,7 @@ provides=('liferea')
 conflicts=('liferea' 'liferea-git')
 #source=("https://github.com/lwindolf/${_pkgname}/archive/v${_pkgver}-${_prerelease}.tar.gz")
 source=("${pkgname}-${_pkgver}.tar.gz::${_url}/${_pkgname}/archive/v${_pkgver}.tar.gz")
-sha256sums=('42e1faf8860373b78640fd35b2636630fd8770059c61e535018b0683101d072d')
+sha256sums=('2ecb77506aa2070f5ee8b1d78acd3b634017633448df54fa9effd0f841a171c7')
 
 build() {
     #cd "${_pkgname}-${_pkgver}-${_prerelease}"
