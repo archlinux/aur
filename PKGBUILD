@@ -3,7 +3,7 @@
 # vim: ts=2 sw=2 et:
 
 pkgname=konsave
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Save and apply your KDE Plasma customizations with just one command!"
 url="https://github.com/Prayag2/${pkgname}"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools-scm')
 license=('GPL3')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('576c466f476f27a6f75cbc297e6ea4c5eabd76a90edb47f006b758d0da483646')
+sha256sums=('527a7b7ed62097a5ce44c7f86ca6382ab2eda00263257b725d7872512db4d4a6')
 
 prepare() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
