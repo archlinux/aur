@@ -1,7 +1,7 @@
 # Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
 
 pkgname="keydb"
-pkgver=6.0.16
+pkgver="6.0.16"
 pkgrel=3
 arch=("i686" "x86_64")
 pkgdesc="A Multithreaded fork of Redis."
