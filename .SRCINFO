@@ -1,7 +1,7 @@
 pkgbase = sc-controller
 	pkgdesc = User-mode driver and GTK3 based GUI for Steam Controller
-	pkgver = 0.4.8.2
-	pkgrel = 2
+	pkgver = 0.4.8.4
+	pkgrel = 1
 	url = https://github.com/Ryochan7/sc-controller
 	arch = any
 	license = GPL2
@@ -12,8 +12,8 @@ pkgbase = sc-controller
 	depends = python-pylibacl
 	depends = python-evdev
 	conflicts = sc-controller-git
-	source = https://github.com/Ryochan7/sc-controller/archive/v0.4.8.2.tar.gz
-	sha256sums = be515560da16e252f111c27d7fc936661ab12efcd1dd80b882b453007a5f5207
+	source = https://github.com/Ryochan7/sc-controller/archive/v0.4.8.4.tar.gz
+	sha256sums = 9391e8b58a9750507acd4d59f33da062229d311a9a8fe6427f92272bb5930186
 
 pkgname = sc-controller
 
