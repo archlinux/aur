@@ -1,0 +1,11 @@
+--- configure.ac.orig	2021-03-19 23:46:38.986463940 +0100
++++ configure.ac	2021-03-19 23:47:03.661732414 +0100
+@@ -34,7 +34,7 @@
+ AC_CONFIG_SRCDIR([conserver/main.c])
+ AC_CONFIG_HEADER(config.h)
+ 
+-AC_DEFINE_UNQUOTED(CONFIGINVOCATION, "$0 $@")
++AC_DEFINE_UNQUOTED(CONFIGINVOCATION, "`echo "$0" "$@"`")
+ 
+ dnl ### Set some option defaults. ###################################
+ if test -z "$CFLAGS"; then

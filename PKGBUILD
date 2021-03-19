@@ -3,7 +3,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname='conserver'
-pkgver='8.2.4'
+pkgver='8.2.6'
 pkgrel='1'
 pkgdesc='Serial console remote sharing and logging daemon with support for IPMI.'
 arch=('i686' 'x86_64')
@@ -17,15 +17,18 @@ _srcdir="${_giturl##*/}-${pkgver}"
 source=(
     "${_srcdir}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz"
     conserver.service
+    configure-fix.patch
 )
 
 sha256sums=(
-    8d8b263d9531ebb827257bd67baf9200cac4fb7ffbe033122686e39ca42cddd6
+    1c8b86f123d2d8e3ce568b782087b43dfac9cf6ffd5a9bdfcfdc6718d749a923
+    SKIP
     SKIP
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p0 <"${srcdir}/configure-fix.patch"
   ./package/setup-configure
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-libwrap --with-ipv6 --with-pam --with-openssl --with-freeipmi --with-port=782
 }
