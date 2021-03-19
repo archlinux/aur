@@ -6,7 +6,7 @@
 
 pkgname=emacs-dash
 pkgver=2.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern list API for Emacs'
 arch=('any')
 url="https://github.com/magnars/dash.el"
@@ -26,6 +26,5 @@ package() {
   install -d "$pkgdir"/usr/share/emacs/site-lisp/
   install -Dm644 dash{,-functional}.{el,elc} \
 	  "$pkgdir"/usr/share/emacs/site-lisp
-  install -Dm644 dash.info "$pkgdir"/usr/share/info/dash.info
 }
 

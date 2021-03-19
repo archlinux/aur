@@ -1,7 +1,7 @@
 pkgbase = emacs-dash
 	pkgdesc = A modern list API for Emacs
 	pkgver = 2.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magnars/dash.el
 	arch = any
 	license = GPL
