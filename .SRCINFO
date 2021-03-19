@@ -1,0 +1,17 @@
+pkgbase = python-xmpppy-git
+	pkgdesc = Python 3 implementation of XMPP (RFC3920, RFC3921).
+	pkgver = 0.6.2.r0.gef1cbd6
+	pkgrel = 1
+	url = https://github.com/xmpppy/xmpppy
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	provides = python-xmpppy=0.6.2.r0.gef1cbd6
+	conflicts = python-xmpppy
+	source = git+https://github.com/xmpppy/xmpppy.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-xmpppy-git
+
