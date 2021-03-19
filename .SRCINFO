@@ -1,12 +1,12 @@
 pkgbase = simple-svg
-	pkgdesc = This library is a single file header-only C++ library for creating SVG files
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgdesc = A single file header-only C++ library for creating SVG files
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/adishavit/simple-svg
 	arch = any
 	license = custom:BSD3
-	source = https://github.com/adishavit/simple-svg/archive/refs/heads/master.zip
-	sha256sums = 91c559c5ba813982dab382a90d9bb33dfe411084f3afb2f64600ea76669738cb
+	source = https://github.com/adishavit/simple-svg/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = ab39240a6841c592ddbbf28c5338324844feff9f6507aea31a6e085b39460654
 
 pkgname = simple-svg
 
