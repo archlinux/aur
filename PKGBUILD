@@ -1,5 +1,5 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
-# Contributor: xyzzy <628208@gmail.com>
+# Contributor: xyzzy
 
 pkgname=spotify-adblock-linux
 pkgver=1.2
