@@ -1,15 +1,17 @@
 pkgbase = vfio-kvm-git
 	pkgdesc = A systemd service that send a D-Bus signal when a QEMU evdev hotkey is pressed.
-	pkgver = 1.0.0.r2.g39f1afc
+	pkgver = 2.0.0.r0.gbf07890
 	pkgrel = 1
 	url = https://github.com/dangle/vfio-kvm
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = dbus
-	depends = python>=3.7
+	depends = libvirt
+	depends = python>=3.8
 	depends = python-evdev
 	depends = python-dbus-next
+	depends = qemu
 	depends = systemd
 	optdepends = ddccontrol: switch monitor inputs
 	provides = vfio-kvm
