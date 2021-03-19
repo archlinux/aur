@@ -1,8 +1,8 @@
 pkgbase = kde2-kdemultimedia-git
 	pkgdesc = Historical copy of the multimedia module of KDE 2, adapted to compile on modern systems
-	pkgver = 2.2.2.r5.ef6deb9
+	pkgver = 2.2.2.r46.3db8947
 	pkgrel = 1
-	url = https://github.com/sandsmark/kdemultimedia
+	url = https://invent.kde.org/sandsmark/kdemultimedia
 	arch = i686
 	arch = x86_64
 	groups = kde2
@@ -13,7 +13,7 @@ pkgbase = kde2-kdemultimedia-git
 	provides = kde2-kdemultimedia
 	conflicts = kde2-kdemultimedia
 	options = libtool
-	source = git+https://github.com/sandsmark/kde2-kdemultimedia.git
+	source = git+https://invent.kde.org/sandsmark/kde2-kdemultimedia.git
 	md5sums = SKIP
 
 pkgname = kde2-kdemultimedia-git
