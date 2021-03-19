@@ -1,8 +1,8 @@
 # Maintainer:  Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-x265
-pkgver=3.4
-pkgrel=2
+pkgver=3.5
+pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
 url='https://www.videolan.org/developers/x265.html'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-cmake' 'git' 'nasm' 'ninja')
-_tag=a4f320054d67fc3cff04ef72ac3382a4925d53b9
+_tag=f0c1022b6be121a753ff02853fbe33da71988656
 source=(x265::git+https://bitbucket.org/multicoreware/x265_git.git#tag=${_tag}
         mingw.patch)
 sha256sums=('SKIP'
