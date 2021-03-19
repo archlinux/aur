@@ -1,4 +1,4 @@
 pgmodeler-git
-*.xz
+*.tar.*
 pkg/
 src/
