@@ -7,7 +7,7 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
          pipewire-common-jack-git pipewire-common-pulse-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.23.r62.g22f6e8e3
+pkgver=0.3.24.r6.gdb85339f
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -34,13 +34,9 @@ build() {
   rm -rf build || true
   arch-meson $_pkgbase build \
     -D docs=enabled \
-    -D systemd-system-service=disabled \
-    -D audiotestsrc=disabled \
     -D ffmpeg=disabled \
     -D jack=disabled \
     -D libcamera=disabled \
-    -D videotestsrc=disabled \
-    -D volume=disabled \
     -D vulkan=disabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
