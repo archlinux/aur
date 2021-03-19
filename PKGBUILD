@@ -2,7 +2,7 @@
 
 pkgname='leda-free'
 pkgver='6.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='C++ class library for efficient data types and algorithms'
 url='https://www.algorithmic-solutions.com/index.php/products/leda-free-edition'
 license=('custom:LEDA Free License')

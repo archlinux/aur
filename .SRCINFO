@@ -1,17 +1,17 @@
 pkgbase = leda-free
 	pkgdesc = C++ class library for efficient data types and algorithms
 	pkgver = 6.3
-	pkgrel = 2
-	url = http://www.algorithmic-solutions.com/leda/
+	pkgrel = 4
+	url = https://www.algorithmic-solutions.com/index.php/products/leda-free-edition
 	arch = x86_64
 	license = custom:LEDA Free License
 	depends = gcc-libs
 	depends = tcsh
-	noextract = http://www.algorithmic-solutions.info/free/Packages/LEDA-6.3-free-fedora-core-8-64-g++-4.1.2-mt.tar.gz
+	noextract = https://www.algorithmic-solutions.info/free/Packages/LEDA-6.3-free-fedora-core-8-64-g++-4.1.2-mt.tar.gz
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = http://www.algorithmic-solutions.info/free/Packages/LEDA-6.3-free-fedora-core-8-64-g++-4.1.2-mt.tar.gz
+	source = https://www.algorithmic-solutions.info/free/Packages/LEDA-6.3-free-fedora-core-8-64-g++-4.1.2-mt.tar.gz
 	sha256sums = 281057aa2077972d46e5a8e42cecb5633fdf7682bc4ff8ca83e31bde6ae06db9
 
 pkgname = leda-free
