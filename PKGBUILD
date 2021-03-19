@@ -4,7 +4,7 @@
 pkgname=newlisp-devel
 _pkgname=newlisp
 pkgver=10.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A LISP like, general purpose scripting language. Ongoing development version."
 url="http://www.newlisp.org"
 license=('GPL3')
@@ -15,7 +15,7 @@ provides=('newlisp')
 conflicts=('newlisp')
 options=('docs' '!makeflags')
 source=("http://www.newlisp.org/downloads/development/inprogress/${_pkgname}-$pkgver.tgz")
-sha256sums=('9dbbf92af287a56f91cebed1cfffb7d046c010ee1b87bebeba46bd88831913a2')
+sha256sums=('400d4531f2312170be28e486dc9ac1b94e7e50a86f3500f3781e71c2d0a0e860')
 
 prepare() {
   cd "$_pkgname-$pkgver"
