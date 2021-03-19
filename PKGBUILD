@@ -3,7 +3,7 @@
 _gemname=gdk3
 pkgname=ruby-$_gemname
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GDK3 is a Ruby binding of GDK-3.x.'
 arch=(x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
