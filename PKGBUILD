@@ -10,7 +10,7 @@
 
 _pkgname=hyper
 pkgname=${_pkgname}-git
-pkgver=3.1.0.canary.4.r48.gb0002bbe
+pkgver=3.1.0.canary.4.r783.gbb5635cb
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -21,9 +21,9 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 
 source=(
-    "$pkgname::git+https://github.com/zeit/${_pkgname}.git"
+    "$pkgname::git+https://github.com/vercel/${_pkgname}.git"
     "disable-auto-update.diff"
-    "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
+    "https://raw.githubusercontent.com/vercel/art/master/hyper/mark/Hyper-Mark-120@3x.png"
     "Hyper.desktop"
 )
 sha256sums=('SKIP'
@@ -32,12 +32,13 @@ sha256sums=('SKIP'
          'ae29bd930c822c3144817a0e2fe2e2a8253fde90d31b0e19ad7880cd35609ebf')
 
 pkgver() {
-  cd "${pkgname}"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname}"
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "$pkgname"
+    git tag -d v3.1.0-canary.3
     patch -p1 < ../disable-auto-update.diff
 
     # yarn is a build-dep according to the README
