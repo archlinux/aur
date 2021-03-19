@@ -1,8 +1,8 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=dwm-monosans-git
-pkgver=6.2.r1706.50f67ac
-pkgrel=2
+pkgver=6.2.r1715.004c185
+pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url=https://github.com/monosans/dwm
 arch=(i686 x86_64)
@@ -15,14 +15,13 @@ optdepends=(
 	'st-monosans-git: default terminal emulator'
 	'pcmanfm-gtk3: default file manager'
 	'scrot: default screenshoter'
-	'brave-nightly-bin: default browser')
 makedepends=(git)
 source=(
 	git://github.com/monosans/dwm
 	config.mk)
 sha256sums=(
 	'SKIP'
-	'37e0b861183ab8d5595a0cc7fb5a98be19a681f1517b15a0cc48daeed009b1b9')
+	'961aa8a6202dd3c6625fcaf17280956fb5eb1048f5f82c37ee0f89f08c75028a')
 provides=(dwm)
 conflicts=(dwm)
 
