@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-no_deadkeys_underline
-pkgver=3.24.26
-pkgrel=2
+pkgver=3.24.27
+pkgrel=1
 epoch=1
 pkgdesc="Like gtk3 in extra but with a patch to disable dead keys having an underline below them while typing"
 arch=(x86_64)
@@ -21,7 +21,7 @@ conflicts=(gtk3-print-backends gtk3)
 replaces=("gtk3-print-backends<=3.22.26-1")
 license=(LGPL)
 install=gtk3.install
-_commit=8e9c6171b6efea2880e0bc1bc16ac3208f7a616e  # tags/3.24.26^0
+_commit=c7df3b9e9790012e6c5fbad6a4f4519bcf75561f  # tags/3.24.27^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         no_deadkeys_underline.patch)
