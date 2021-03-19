@@ -1,0 +1,15 @@
+pkgbase = pvz_beta
+	pkgdesc = pvz_beta
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/zzy-ac/plantsvszombies
+	arch = x86_64
+	license = GPL
+	depends = wine
+	depends = deepin-wine-helper
+	provides = pvz_beta=1.0.1
+	source = https://hub.fastgit.org/zzy-ac/plantsvszombies/raw/master/pvz_beta/PvZ_%CE%B2.tar.gz
+	md5sums = fefd66038fa1f8e8c7eeb87bca2df364
+
+pkgname = pvz_beta
+
