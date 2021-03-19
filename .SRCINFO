@@ -1,0 +1,17 @@
+pkgbase = libretro-crocods-git
+	pkgdesc = libretro implementation of Amstrad CPC.
+	pkgver = 75.86eeccf
+	pkgrel = 1
+	url = https://github.com/libretro/libretro-crocods
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/libretro/libretro-crocods.git
+	sha256sums = SKIP
+
+pkgname = libretro-crocods-git
+
