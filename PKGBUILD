@@ -2,7 +2,7 @@
 
 pkgname=opensnitch
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -33,7 +33,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external'
+    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod'
     make -C daemon
     make -C proto
 
