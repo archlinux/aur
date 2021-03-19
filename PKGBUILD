@@ -1,7 +1,7 @@
 # Maintainer: maximumadmin <mxmadm@protonmail.com>
 
 pkgname=zramd
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Automatically setup swap on zram ✨"
 arch=('any')
@@ -12,12 +12,12 @@ makedepends=('go')
 optdepends=('earlyoom: userspace oom daemon')
 conflicts=('systemd-swap' 'zramswap' 'zram-generator' 'zram-generator-git')
 backup=('etc/default/zramd')
-source=("https://github.com/maximumadmin/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('878fc14edf772eff956a8953d732e2d99a1a2845799b0a1a0a550da763bf7252')
+source=("https://github.com/maximumadmin/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('2a0bde93898a6640768ac34340804b9bcd871fa65adb9112fc91a555ee2140af')
 
 build() {
   cd "$pkgname-$pkgver"
-  make release
+  make
 }
 
 check() {
