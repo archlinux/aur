@@ -1,8 +1,9 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Old Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-scummvm-git
-pkgver=84203.6345d9a9aa
-pkgrel=2
+pkgver=93192.5637222c29
+pkgrel=1
 pkgdesc="libretro implementation of ScummVM."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/scummvm"
