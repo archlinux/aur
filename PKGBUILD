@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Bruno Pagani <archange@archlinux.org>
 pkgname=ibm-sw-tpm2
-pkgver=1637
+pkgver=1661
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 specification'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://sourceforge.net/projects/ibmswtpm2/'
 license=('BSD')
 depends=('openssl')
 source=("https://downloads.sourceforge.net/${pkgname//-}/ibmtpm$pkgver.tar.gz")
-sha512sums=('007aa415cccf19a2bcf789c426727dc4032dcb04cc9d11eedc231d2add708c1134d3d5ee5cfbe7de68307c95fff7a30bd306fbd8d53c198a5ef348440440a6ed')
+sha512sums=('942baa26311472d6af6b2c3b3b4132718e5e2b1eaa7decb0f64d910cbb7acaa4814ac95b18b5f2a4ea43990978cd5577b8fd50b158a055ff475710ad2426f6cb')
 
 prepare() {
 	cd src
