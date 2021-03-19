@@ -1,5 +1,5 @@
 # Maintainer: edward-p <edward at edward-p dot xyz>
-pkgname=projector
+pkgname=projector-bin
 pkgver=1.0.1
 pkgrel=1
 pkgdesc='Common and client-related code for running Swing applications remotely.'
