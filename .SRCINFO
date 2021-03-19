@@ -8,9 +8,9 @@ pkgbase = pacfoster
 	license = GPL
 	depends = ruby>=1.9.2
 	depends = pacman>=3.4.1
-	depends = yaourt>=0.9.4.3
+	depends = pikaur
 	source = pacfoster.rb
-	md5sums = 55fbd689083fe2afcda4f103ab7f2a90
+	md5sums = 1d8ce2067d5831b408e9012607bb227e
 
 pkgname = pacfoster
 
