@@ -1,7 +1,7 @@
 # Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 
 pkgname=memstrack
-pkgver=0.2
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A memory allocation trace, like a hot spot analyzer for memory allocation"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ryncsn/memstrack"
 license=('GPL3')
 makedepends=('gcc' 'ncurses')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('59000c8aa56fb169ff93e7feb8f9fce91b62ddd49d4b319e1ebda6d4b6430698')
+sha256sums=('93544fb2a9be533bbb7aec28afb4227f1156c38f3cd7576e5afa329ea103d3f5')
 
 build() {
   cd $pkgname-$pkgver
