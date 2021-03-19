@@ -1,13 +1,13 @@
 pkgname=openmodelica-omc
-pkgver=1.16.0
+pkgver=1.16.5
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
 groups=(openmodelica)
-depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'suitesparse' 'boost-libs')
-makedepends=('gcc-fortran' 'boost' 'clang' 'cmake' 'java-environment' 'antlr2' 'git' 'expat' 'ncurses' 'readline' 'opencl-headers' 'imagemagick')
+depends=('java-environment' 'lpsolve' 'omniorb')
+makedepends=('gcc-fortran' 'cmake' 'git' 'expat')
 source=("git+https://github.com/OpenModelica/OpenModelica.git#tag=v${pkgver}")
 sha1sums=('SKIP')
 
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "$srcdir/OpenModelica/OMCompiler"
-  autoconf
+  autoreconf -vfi
   export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
   ./configure --prefix=/usr/ --without-omc --with-omniORB  --with-cppruntime --with-lapack='-llapack -lblas'
   make
