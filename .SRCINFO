@@ -1,7 +1,7 @@
 pkgbase = ruby-hpricot
 	pkgdesc = A swift, liberal HTML parser with a fantastic library
 	pkgver = 0.8.6
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/hpricot/hpricot
 	arch = x86_64
 	license = MIT
