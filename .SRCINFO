@@ -8,7 +8,6 @@ pkgbase = weechat-xmpp-git
 	license = GPL3
 	depends = weechat
 	depends = python-xmpppy
-	depends = python
 	provides = weechat-xmpp
 	source = git+https://github.com/sleduc/weechat-xmpp.git#branch=master
 	md5sums = SKIP
