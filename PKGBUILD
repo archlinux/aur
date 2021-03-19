@@ -4,7 +4,7 @@
 _gemname=timers
 pkgname=ruby-${_gemname}
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout'
 url='https://github.com/celluloid/timers'
 arch=('any')
