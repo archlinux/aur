@@ -1,0 +1,12 @@
+pkgbase = v2ray-setcap-pacman-hook
+	pkgdesc = Pacman hook to setcap v2ray after v2ray install/upgrade.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = coreutils
+	source = v2ray-setcap.hook
+	sha256sums = d0c01d5ffe3bc99f5530e1145398d37703fb0ffcfc3de0dfecdf9dd1afa9db2a
+
+pkgname = v2ray-setcap-pacman-hook
+
