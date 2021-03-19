@@ -1,7 +1,7 @@
 _pkgbase=etlegacy
 pkgname=etlegacy32-bin
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit)"
-pkgver=2.76
+pkgver=2.77
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -19,13 +19,13 @@ license=('GPL3')
 source=(
     "etl_start.sh"
     "etlded_start.sh"
-    "https://www.etlegacy.com/download/file/122"
+    "https://www.etlegacy.com/download/file/236"
     "https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz")
 sha256sums=(
-    'f7133c4255ab94e56a2fc928cd0e31a6a0ce082c600bd2c4b9282dd82ed1cfd3'
-    'd53ac64be3c068c606ea51fe41ebcc8464b4e8a975c0353a31e03d2646dea168'
-    '94e4847dc4f665c686401a7f33510f70c4431ff7803746865106b55ff357fd24'
-    '8bb8e9785e3be983a331c39298c1451cf805299560c769d59b9f04ae51912ee1'
+    'eafc5825eb9d03307e89cce74bd5603f03657daf29b215e3bd0575e2136b3cbe'
+    '68133d626a343e2714fb839b2e054bf154b18c509bfa6e420899015c609cb153'
+    '3092724eb05574fd8b8b3dc7fb9cf9b36bd68e00d590d98936cdb2e3ab82632b'
+    '628016f3d0dc63409fb228acb4708b9a4a07a7b31eb5e4665841a6384d9dace4'
 )
 
 package() {
@@ -39,7 +39,7 @@ package() {
 
     # application entry
     cp -dr --no-preserve='ownership' "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.ico "${pkgdir}"/usr/share/icons/
-    cp -dr --no-preserve='ownership' "${srcdir}"/"$_pkgbase-$pkgver"/misc/etlegacy.desktop "${pkgdir}"/usr/share/applications/
+    cp -dr --no-preserve='ownership' "${srcdir}"/"$_pkgbase-$pkgver"/misc/com.etlegacy.ETLegacy.desktop "${pkgdir}"/usr/share/applications/
 
     # doc
     mkdir -p $pkgdir/usr/share/doc/$_pkgbase
