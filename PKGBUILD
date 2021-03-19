@@ -9,9 +9,9 @@ pkgver=0.18.1
 pkgrel=1
 pkgdesc="Image processing routines for SciPy"
 arch=('i686' 'x86_64')
-url="http://scikit-image.org/"
+url="http://scikit-image.org"
 license=('BSD')
-makedepends=('cython>=0.29.21')
+makedepends=('cython>=0.29.21' 'python-setuptools')
 depends=('python-numpy>1.18.0' 'python-scipy>=1.0.1' 'python-matplotlib>3.0.0' 'python-networkx>=2.0' 'python-pillow>7.1.1' 'python-pywavelets>=1.1.1' 'python-imageio>=2.3.0' 'python-tifffile>=2019.7.26')
 checkdepends=('python-pytest>=5.2.0'
               'python-pytest-cov>=2.7.0'

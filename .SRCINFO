@@ -2,7 +2,7 @@ pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
 	pkgver = 0.18.1
 	pkgrel = 1
-	url = http://scikit-image.org/
+	url = http://scikit-image.org
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -12,6 +12,7 @@ pkgbase = python-scikit-image
 	checkdepends = python-pytest-localserver
 	checkdepends = python-pooch
 	makedepends = cython>=0.29.21
+	makedepends = python-setuptools
 	depends = python-numpy>1.18.0
 	depends = python-scipy>=1.0.1
 	depends = python-matplotlib>3.0.0
