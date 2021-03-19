@@ -1,0 +1,23 @@
+pkgbase = vfio-kvm
+	pkgdesc = A systemd service that send a D-Bus signal when a QEMU evdev hotkey is pressed.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/dangle/vfio-kvm
+	arch = any
+	license = MIT
+	depends = dbus
+	depends = libvirt
+	depends = python>=3.8
+	depends = python-evdev
+	depends = python-dbus-next
+	depends = qemu
+	depends = systemd
+	optdepends = ddccontrol: switch monitor inputs
+	provides = vfio
+	conflicts = vfio
+	backup = etc/vfio-kvm.yaml
+	source = vfio-kvm-2.0.0.tar.gz::https://github.com/dangle/vfio-kvm/archive/2.0.0.tar.gz
+	md5sums = 082a75289bc8534cf9725d08ebab4e29
+
+pkgname = vfio-kvm
+
