@@ -2,7 +2,7 @@
 # CoMaintainer: Frederic Bezies < fredbezies at gmail dot com>
 
 pkgname=ne-git
-pkgver=3.3.0.r11.gdb1b7d7
+pkgver=3.3.0.r13.g058e6f9
 pkgrel=1
 pkgdesc="A nice developer editor, highly recommended by Epitech 
 (aka Episteak) French 
