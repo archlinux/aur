@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.3.3op1
+pkgver=2.3.3op2
 pkgrel=1
 epoch=1
 pkgdesc="The CUPS Printing System - daemon package"
@@ -38,7 +38,7 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         cups-no-export-ssllibs.patch
         cups-1.6.2-statedir.patch
         )
-sha256sums=('5cf7988081d9003f589ba173b37bc2bbf81db43bb94e5e7d3e7d4c0afb0f9bc2'
+sha256sums=('deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -87,7 +87,6 @@ build() {
      --enable-threads \
      --enable-avahi \
      --enable-libpaper \
-     --with-php=/usr/bin/php-cgi \
      --with-optim="$CFLAGS"
   make
 }
