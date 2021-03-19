@@ -5,7 +5,7 @@
 pkgbase=lib32-pipewire
 _pkgbase=pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
-pkgver=0.3.23
+pkgver=0.3.24
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor (32-bit client libraries)"
 url="https://pipewire.org"
@@ -15,7 +15,7 @@ makedepends=(git meson valgrind lib32-jack2 libpulse lib32-libpulse
              alsa-lib lib32-alsa-lib gstreamer lib32-gstreamer
              gst-plugins-base lib32-gst-plugins-base rtkit 
              lib32-dbus libsndfile lib32-libsndfile)
-_commit=68f6c75caed047af32320ab4de0c06457457be54  # tags/0.3.23
+_commit=c81d44e8a9497899d01bcc3054b6aa845e7a066e  # tags/0.3.24
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -35,11 +35,22 @@ build() {
 
   arch-meson $_pkgbase build \
     --libdir /usr/lib32 \
-    -D docs=false \
-    -D tests=false \
-    -D bluez5=false \
-    -D jack=false \
+    -D docs=disabled \
+    -D man=disabled \
+    -D systemd-system-service=disabled \
+    -D tests=disabled \
+    -D audiotestsrc=disabled \
+    -D bluez5=disabled \
+    -D bluez5-codec-aptx=disabled \
+    -D bluez5-codec-ldac=disabled \
+    -D bluez5-codec-aac=disabled \
+    -D ffmpeg=disabled \
+    -D jack=disabled \
+    -D libcamera=disabled \
     -D sdl2=disabled \
+    -D videotestsrc=disabled \
+    -D volume=disabled \
+    -D vulkan=disabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
