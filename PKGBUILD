@@ -1,7 +1,7 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=dwm-monosans-git
-pkgver=6.2.r1715.004c185
+pkgver=6.2.r1716.94ff86e
 pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url=https://github.com/monosans/dwm
@@ -14,7 +14,7 @@ optdepends=(
 	'dmenu: program launcher'
 	'st-monosans-git: default terminal emulator'
 	'pcmanfm-gtk3: default file manager'
-	'scrot: default screenshoter'
+	'scrot: default screenshoter')
 makedepends=(git)
 source=(
 	git://github.com/monosans/dwm

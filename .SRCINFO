@@ -1,7 +1,7 @@
 pkgbase = dwm-monosans-git
 	pkgdesc = A dynamic window manager for X
-	pkgver = 6.2.r1706.50f67ac
-	pkgrel = 2
+	pkgver = 6.2.r1716.94ff86e
+	pkgrel = 1
 	url = https://github.com/monosans/dwm
 	arch = i686
 	arch = x86_64
@@ -17,13 +17,12 @@ pkgbase = dwm-monosans-git
 	optdepends = st-monosans-git: default terminal emulator
 	optdepends = pcmanfm-gtk3: default file manager
 	optdepends = scrot: default screenshoter
-	optdepends = brave-nightly-bin: default browser
 	provides = dwm
 	conflicts = dwm
 	source = git://github.com/monosans/dwm
 	source = config.mk
 	sha256sums = SKIP
-	sha256sums = 37e0b861183ab8d5595a0cc7fb5a98be19a681f1517b15a0cc48daeed009b1b9
+	sha256sums = 961aa8a6202dd3c6625fcaf17280956fb5eb1048f5f82c37ee0f89f08c75028a
 
 pkgname = dwm-monosans-git
 
