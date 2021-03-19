@@ -1,6 +1,6 @@
 pkgbase = ttf-tangut-yinchuan
 	pkgdesc = BabelStone Font for Unicode Tangut Script characters
-	pkgver = 13.000
+	pkgver = 13.004
 	pkgrel = 1
 	url = http://www.babelstone.co.uk/Fonts/Yinchuan.html
 	arch = any
