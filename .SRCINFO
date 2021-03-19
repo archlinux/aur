@@ -1,6 +1,6 @@
 pkgbase = snappymail
 	pkgdesc = modern PHP webmail client
-	pkgver = 2.3.5
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/the-djmaze/snappymail
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = snappymail
 	optdepends = mariadb: storage backend for contacts
 	optdepends = php-pgsql: storage backend for contacts
 	optdepends = php-sqlite: storage backend for contacts
-	source = snappymail-2.3.5.tar.gz::https://github.com/the-djmaze/snappymail/archive/v2.3.5.tar.gz
+	source = snappymail-2.4.0.tar.gz::https://github.com/the-djmaze/snappymail/archive/v2.4.0.tar.gz
 	source = snappymail.sysusers
 	source = snappymail.tmpfiles
-	b2sums = 623d345b0c977aeb70fc3aeef8b075d61252f8b86dadea473aa1bc373b3bd5c0a211bbc69bbf636fc78339078833a5d6f9d50f083cf8bf6e5a13784543512a32
+	b2sums = d112da176004e90c284eff4f7d11fd0f66b8990fd68f4528e2c63869fe22564c18b287a63bca2f560ba51b8ec9f8a4b3dbfaed7c0a1a83272dfd1a482389182e
 	b2sums = e020b2d4bc694ca056f5c15b148c69553ab610b5e1789f52543aa65e098f8097a41709b5b0fc22a6a01088a9d3f14d623b1b6e9ae2570acd4f380f429301c003
 	b2sums = 2536e11622895322cc752c6b651811b2122d3ae60099fe609609d7b45ba1ed00ea729c23f344405078698d161dbf9bcaffabf8eff14b740acdce3c681c513318
 
