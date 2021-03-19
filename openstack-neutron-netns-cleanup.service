@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenStack Neutron Netns Cleanup Utility
+After=syslog.target network.target openvswitch.service
+Before=openstack-neutron-openvswitch-agent.service openstack-neutron-dhcp-agent.service openstack-neutron-l3-agent.service openstack-nova-compute.service
+
+[Service]
+Type=oneshot
+User=neutron
+ExecStart=/usr/bin/neutron-netns-cleanup --config-file /usr/share/neutron/neutron-dist.conf --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/dhcp_agent.ini --config-dir /etc/neutron/conf.d/common --config-dir /etc/neutron/conf.d/neutron-netns-cleanup --log-file /var/log/neutron/dhcp-agent.log
+ExecStop=/usr/bin/neutron-netns-cleanup --config-file /usr/share/neutron/neutron-dist.conf --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/dhcp_agent.ini --config-dir /etc/neutron/conf.d/common --config-dir /etc/neutron/conf.d/neutron-netns-cleanup --force --log-file /var/log/neutron/dhcp-agent.log
+PrivateTmp=false
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenStack Neutron Server
+After=syslog.target network.target
+[Service]
+Type=notify
+User=neutron
+ExecStart=/usr/bin/neutron-server --config-file /usr/share/neutron/neutron-dist.conf --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugin.ini --config-dir /etc/neutron/conf.d/common --config-dir /etc/neutron/conf.d/neutron-server --log-file /var/log/neutron/server.log
+PrivateTmp=true
+NotifyAccess=all
+KillMode=process
+Restart=on-failure
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
