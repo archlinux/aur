@@ -18,7 +18,6 @@ optdepends=(
 	'kdialog: for file dialogs in KDE'
 	'gnome-keyring: for storing passwords in GNOME keyring'
 	'kwallet: for storing passwords in KWallet'
-	'gtk3-print-backends: for printing'
 	'libunity: for download progress on KDE'
 	'ttf-liberation: fix fonts for some PDFs - CRBug #369991'
 	'xdg-utils'

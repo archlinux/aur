@@ -16,7 +16,6 @@ pkgbase = google-chrome
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	optdepends = gtk3-print-backends: for printing
 	optdepends = libunity: for download progress on KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs - CRBug #369991
 	optdepends = xdg-utils
