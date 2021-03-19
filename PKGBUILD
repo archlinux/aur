@@ -18,6 +18,7 @@ optdepends=('watchman: Required for a fully functional install'
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
 sha256sums=('b8de978606b5a9221f0ab17e3a4b00eec9e798498da41a64f9cc25d569d2e2d8')
+conflicts=('flipper-bin')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"

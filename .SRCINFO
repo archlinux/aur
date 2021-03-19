@@ -15,6 +15,7 @@ pkgbase = flipper
 	depends = openssl
 	optdepends = watchman: Required for a fully functional install
 	optdepends = android-sdk: Required for a fully functional install
+	conflicts = flipper-bin
 	source = flipper-0.81.0.tar.gz::https://github.com/facebook/flipper/archive/v0.81.0.tar.gz
 	sha256sums = b8de978606b5a9221f0ab17e3a4b00eec9e798498da41a64f9cc25d569d2e2d8
 
