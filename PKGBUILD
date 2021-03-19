@@ -2,7 +2,7 @@
 
 pkgname=ipfs-sync
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple daemon which will watch files on your filesystem, mirror them to MFS, automatically update related pins, and update related IPNS keys."
 url="https://github.com/TheDiscordian/ipfs-sync"
 license=('custom' 'BSD')
@@ -15,7 +15,7 @@ sha512sums=("5b22c06ef08114d993391345d235f2127f839be742601ec699a79dbaa79e12508cc
 
 package() {
 	cd ${pkgname}-${pkgver}/
-	go build -o ipfs-sync
+	go build -o ipfs-sync -ldflags "-X main.version=v$pkgver"
 	mkdir -p ${pkgdir}/usr/bin/
 	install ./ipfs-sync ${pkgdir}/usr/bin/ipfs-sync
 	mkdir -p ${pkgdir}/usr/lib/systemd/user

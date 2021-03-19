@@ -1,7 +1,7 @@
 pkgbase = ipfs-sync
 	pkgdesc = A simple daemon which will watch files on your filesystem, mirror them to MFS, automatically update related pins, and update related IPNS keys.
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheDiscordian/ipfs-sync
 	arch = any
 	license = custom
