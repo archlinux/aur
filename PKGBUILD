@@ -8,7 +8,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=mpd-light
-pkgver=0.22.4
+pkgver=0.22.6
 _majorver=0.22
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.'
@@ -22,7 +22,7 @@ depends=('alsa-lib' 'flac' 'libogg' 'audiofile' 'libmad' 'curl' 'faad2' 'sqlite'
 #depends+=('libFLAC.so' 'libasound.so' 'libaudiofile.so' 'libcurl.so'
 #          'libfaad.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so'
 #          'libmpdclient.so' 'libogg.so' 'libsamplerate.so'
-#          'libvorbis.so' 'libupnp.so' 'liburing.so')
+#          'libvorbis.so' 'libupnp.so' 'liburing.so' 'libixml.so')
 makedepends=('boost' 'meson' 'python-sphinx')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
@@ -30,7 +30,7 @@ replaces=('mpd')
 source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha512sums=('e169d6656b378d52798e822ffd47f554bd7c076ca8bc5a1119e3b2fad36bee79335dc392aa8d78d854689af62168625698c1777440e08a67075099898ee5fe34'
+sha512sums=('5e417204e24d11fa609740ae92bc1d796aad2d63537655f655074d829cd79cadaf1ca025171dcf5486c1e557cc946152c21e299286b1cb74cc342da2b1f41343'
             '3608f8b0418aa5527917c35308aeca80357c3cf1834cceeade2eaab7fa736117c0b3143cf225478441ffc533b45ff1e8c5579a2e1aa432a4db5ca4cef2dd04e1'
             'f3eaa25925887ae5df52da0119a77729b5761c175a22117ab15a1636b141f4b159db75dc4e9a52e0d16b2bc4b0f617a4e0838a8d3624f98706beb3387971c660')
 backup=('etc/mpd.conf')
