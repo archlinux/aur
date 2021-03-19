@@ -1,5 +1,5 @@
 pkgbase = python2-xmpppy-git
-	pkgdesc = Python 2/3 implementation of XMPP (RFC3920, RFC3921).
+	pkgdesc = Python 2 implementation of XMPP (RFC3920, RFC3921).
 	pkgver = 0.6.2.r0.gef1cbd6
 	pkgrel = 1
 	url = https://github.com/xmpppy/xmpppy
@@ -8,8 +8,11 @@ pkgbase = python2-xmpppy-git
 	makedepends = git
 	depends = python2
 	depends = python2-setuptools
-	provides = xmpppy
+	provides = python2-xmpppy=0.6.2.r0.gef1cbd6
 	conflicts = xmpppy
+	conflicts = python2-xmpppy
+	conflicts = python-xmpppy
+	conflicts = python-xmpppy-git
 	source = git+https://github.com/xmpppy/xmpppy.git#branch=master
 	md5sums = SKIP
 
