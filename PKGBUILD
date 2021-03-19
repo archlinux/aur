@@ -2,11 +2,11 @@
 
 _module=graphics
 pkgname=kde2-kde${_module}-git
-pkgver=2.2.2.r7.d4eb496
+pkgver=2.2.2.r17.79bbd6d
 pkgrel=1
 pkgdesc="Historical copy of the $_module module of KDE 2, adapted to compile on modern systems"
 arch=(i686 x86_64)
-url="https://github.com/sandsmark/kde${_module}"
+url="https://invent.kde.org/sandsmark/kde2-kde${_module}"
 license=("GPL2")
 groups=(kde2)
 depends=(kde2-kdelibs)
@@ -16,7 +16,7 @@ conflicts=(kde2-kde${_module} kcolorchooser kruler)
 options=(libtool)
 
 # Mirror
-source=("git+https://github.com/sandsmark/kde2-kde${_module}.git")
+source=("git+https://invent.kde.org/sandsmark/kde2-kde${_module}.git")
 
 md5sums=('SKIP')
 
