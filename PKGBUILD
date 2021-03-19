@@ -47,24 +47,28 @@ NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 
 ################################################################################
+if [[ $CLI == "YES" ]] ; then
+  pkgname="emacs-nox-git"
+else
 pkgname="emacs-git"
-pkgver=28.0.50.144634
-pkgrel=2
+fi
+pkgver=28.0.50.145975
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
-arch=('x86_64' )
+arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
-license=('GPL3' )
-depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'm17n-lib' 'libotf' 'harfbuzz' 'gpm')
+license=('GPL3')
+depends_nox=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'gpm')
+depends=("${depends_nox[@]}" 'm17n-lib' 'libotf' 'harfbuzz')
 makedepends=('git')
-provides=('emacs' 'emacs-seq')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq')
-replaces=('emacs26-git' 'emacs27-git' 'emacs-seq')
+provides=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
 source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
-# If Savannah access is blocked for reasons, use Github instead.
-# Edit the config file of your local repo copy as well.
+# I've given up on Savannah for the time being. A shame...
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
 options=(!strip)
-md5sums=('SKIP')
+b2sums=('SKIP')
 ################################################################################
 
 ################################################################################
@@ -102,7 +106,9 @@ else
   fi
 fi
 
-if [[ $NOTKIT == "YES" ]]; then
+if [[ $CLI == "YES" ]]; then
+  depends=("${depends_nox[@]}");
+elif [[ $NOTKIT == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' );
   makedepends+=( 'xorgproto' );
 elif [[ $LUCID == "YES" ]]; then
@@ -124,7 +130,7 @@ else
   depends+=();
 fi
 
-if [[ ! $NOCAIRO == "YES" ]]; then
+if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] ; then
   depends+=( 'cairo' );
 fi
 
@@ -224,7 +230,7 @@ else
   _conf+=();
 fi
 
-if [[ $NOCAIRO == "YES" ]]; then
+if [[ $NOCAIRO == "YES" || $CLI == "YES" ]]; then
   _conf+=( '--without-cairo' );
 fi
 
@@ -235,6 +241,10 @@ fi
 if [[ $NOGZ == "YES" ]]; then
   _conf+=( '--without-compress-install' );
 fi
+
+# ctags/etags may be provided by other packages, e.g, universal-ctags
+conf+=('--program-transform-name="s/\([ec]tags\)/\1.emacs/"')
+
 ################################################################################
 
 ################################################################################
@@ -274,15 +284,6 @@ package() {
   # Install optional documentation formats
   if [[ $DOCS_HTML == "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
   if [[ $DOCS_PDF == "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
-
-  # remove conflict with ctags package
-  mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
-
-  if [[ $NOGZ == "YES" ]]; then
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1};
-  else
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
-  fi
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
