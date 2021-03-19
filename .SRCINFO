@@ -1,7 +1,7 @@
 pkgbase = distrobuilder
 	pkgdesc = System container image builder for LXC and LXD
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lxc/distrobuilder
 	arch = x86_64
 	license = Apache
