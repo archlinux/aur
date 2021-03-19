@@ -3,7 +3,7 @@
 _gemname=gtk3
 pkgname=ruby-$_gemname
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GTK3 is a Ruby binding of GTK+-3.x.'
 arch=(x86_64)
 url=https://ruby-gnome2.osdn.jp/
