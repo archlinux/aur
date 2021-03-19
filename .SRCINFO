@@ -1,7 +1,7 @@
 pkgbase = gwyddion
 	pkgdesc = A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis
 	pkgver = 2.58
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gwyddion.net/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = gwyddion
 	makedepends = pkgconf
 	depends = gtkglext
 	depends = fftw
+	depends = pygtk
 	depends = minizip
 	optdepends = libxml2: import of SPML and APE DAX data files
 	optdepends = zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)
@@ -22,6 +23,7 @@ pkgbase = gwyddion
 	optdepends = libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files
 	optdepends = cfitsio: import of Flexible Image Transport System (FITS) files
 	optdepends = openexr: import and export of OpenEXR HDR images
+	optdepends = hdf5: import of Ergo data files
 	source = http://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.58.tar.xz
 	sha256sums = d31367cd892e5b79c4b0eda8fb458403e67bd575a8aba1585e6df8d8e58ef52c
 

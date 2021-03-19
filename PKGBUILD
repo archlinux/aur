@@ -1,12 +1,12 @@
 
 pkgname=gwyddion
 pkgver=2.58
-pkgrel=1
+pkgrel=2
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="http://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=(gtkglext fftw minizip)
+depends=(gtkglext fftw pygtk minizip)
 makedepends=('pkgconf')
 optdepends=('libxml2: import of SPML and APE DAX data files'
             'zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)'
@@ -19,7 +19,8 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'libwebp: WebP format support for the image export'
             'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files'
-            'openexr: import and export of OpenEXR HDR images')
+            'openexr: import and export of OpenEXR HDR images'
+            'hdf5: import of Ergo data files')
 source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
 sha256sums=('d31367cd892e5b79c4b0eda8fb458403e67bd575a8aba1585e6df8d8e58ef52c')
 
