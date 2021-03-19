@@ -11,6 +11,9 @@ pkgver=5.10.6.r0.g5bfd8ac02dfe
 _kernel_rel=5.11
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
+_major=5
+_minor=11
+_projectcpatchname=prjc_v5.11-r2.patch
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/post-factum/pf-kernel"
@@ -21,9 +24,11 @@ _srcname="${pkgbase}"
 source=(
   "${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=${_branch}"
   https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config
+  https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname
   pf_defconfig
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 

@@ -18,7 +18,9 @@ pkgbase = linux-pf-nodocs-git
 	options = !strip
 	source = linux-pf-nodocs-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.11
 	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config
+	source = https://gitlab.com/alfredchen/projectc/raw/master/5.11/prjc_v5.11-r2.patch
 	source = pf_defconfig
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
