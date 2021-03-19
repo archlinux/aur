@@ -5,7 +5,7 @@ _pkgname=gensystray
 _install_dir="/usr/share/${_pkgname}/"
 pkgname=${_pkgname}-git
 pkgver=r25.fd5a9b7
-pkgrel=3
+pkgrel=4
 pkgdesc='Create your own system tray item to run your favorite commands.'
 arch=('x86_64')
 url='https://github.com/dardevelin/gensystray'
@@ -33,7 +33,7 @@ package() {
   mkdir -p "${pkgdir}${_install_dir}"
 	cd "${_pkgname}"
 	install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -D -m644 "gensystray_default.png" "${pkgdir}${_install_dir}${_pkgname}.png"
+  install -D -m644 "gensystray_default.png" "${pkgdir}/usr/share/icons/${_pkgname}_default.png"
   install -D -m644 "README.md" "${pkgdir}${_install_dir}README.md"
   install -D -m644 "../gensystray.sample.cfg" "${pkgdir}${_install_dir}${_pkgname}.sample.cfg"
   # show configuration notes to the user 
