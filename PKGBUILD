@@ -2,8 +2,8 @@
 
 pkgbase=xbmpwall-git
 pkgname=$pkgbase
-pkgver=1.14
-pkgrel=2
+pkgver=1.15
+pkgrel=1
 
 _gitname=xbmpwall
 _gittag="v${pkgver}"
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
 validpgpkeys=('95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1')
 
 prepare() {
-  git clone --single-branch --depth=1 "https://github.com/dkeg/bitmap-walls.git"
+  cd $_gitname && git submodule update --init
 }
 
 build() {
@@ -46,6 +46,6 @@ package() {
   install -Dt "$pkgdir/usr/share/applications" -m644 "xbmpwall.desktop" 
   install -Dt "$pkgdir/usr/share/pixmaps" -m644 "xbmpwall.png"
   install -m755 -d "$pkgdir/usr/share/xbmpwall"
-  install -Dt "$pkgdir/usr/share/xbmpwall/bitmaps/bw-bgnd" -m644 "$srcdir/bitmap-walls/bw-bgnd/"*.xbm
-  install -Dt "$pkgdir/usr/share/xbmpwall/bitmaps/patterns" -m644 "$srcdir/bitmap-walls/patterns/"*.xbm
+  install -Dt "$pkgdir/usr/share/xbmpwall/bitmaps/bw-bgnd" -m644 "$srcdir/$_gitname/bitmap-walls/bw-bgnd/"*.xbm
+  install -Dt "$pkgdir/usr/share/xbmpwall/bitmaps/patterns" -m644 "$srcdir/$_gitname/bitmap-walls/patterns/"*.xbm
 }
