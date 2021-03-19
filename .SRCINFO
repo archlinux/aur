@@ -1,7 +1,7 @@
 pkgbase = browservice
 	pkgdesc = Browse the modern web on historical browsers
 	pkgver = 0.9.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ttalvitie/browservice
 	arch = x86_64
 	arch = armv7l
@@ -26,6 +26,7 @@ pkgbase = browservice
 	depends = libxcomposite
 	depends = libxkbcommon
 	depends = ttf-ms-fonts
+	depends = gtkglext
 	source = https://github.com/ttalvitie/browservice/archive/v0.9.2.0.tar.gz
 	source = cmake.patch
 	sha256sums = cd253de3f8254f05d83b2ea0e65ec047a3b05ab5c0903644501a383756ed2047

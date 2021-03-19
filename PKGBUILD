@@ -2,12 +2,12 @@
 
 pkgname=browservice
 pkgver=0.9.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Browse the modern web on historical browsers'
 url='https://github.com/ttalvitie/browservice'
 license=('MIT')
 arch=('x86_64' 'armv7l' 'aarch64')
-depends=('wget' 'cmake' 'poco' 'pango' 'libjpeg-turbo' 'libxcb' 'libx11' 'python' 'xorg-server-xvfb' 'xorg-xauth' 'at-spi2-atk' 'alsa-lib' 'nss' 'libcups' 'libxcursor' 'libxss' 'libxcomposite' 'libxkbcommon' 'ttf-ms-fonts')
+depends=('wget' 'cmake' 'poco' 'pango' 'libjpeg-turbo' 'libxcb' 'libx11' 'python' 'xorg-server-xvfb' 'xorg-xauth' 'at-spi2-atk' 'alsa-lib' 'nss' 'libcups' 'libxcursor' 'libxss' 'libxcomposite' 'libxkbcommon' 'ttf-ms-fonts' 'gtkglext')
 source=("https://github.com/ttalvitie/browservice/archive/v${pkgver}.tar.gz"
 'cmake.patch')
 sha256sums=('cd253de3f8254f05d83b2ea0e65ec047a3b05ab5c0903644501a383756ed2047'
@@ -35,4 +35,5 @@ install -Dm755 release/bin/cef.pak "${pkgdir}/usr/lib/cef.pak"
 install -Dm755 release/bin/cef_100_percent.pak "${pkgdir}/usr/lib/cef_100_percent.pak"
 install -Dm755 release/bin/cef_200_percent.pak "${pkgdir}/usr/lib/cef_200_percent.pak"
 install -Dm755 release/bin/cef_extensions.pak "${pkgdir}/usr/lib/cef_extensions.pak"
+install -Dm755 release/bin/retrojsvice.so "${pkgdir}/usr/lib/retrojsvice.so"
 }
