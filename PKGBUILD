@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.28.1dev+15+gaa2bc9e6e4
+pkgver=1.30.2
 pkgrel=1
 _pppver=2.4.8
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -38,7 +38,7 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=aa2bc9e6e404814469c0c661c47a712a262b2d4e  # nm-1-28
+_commit=8a12494f3ab31b3fd68c5120e2822082a805dba6  # tags/1.30.2^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         NetworkManager.conf
@@ -48,7 +48,7 @@ source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/Network
 sha256sums=('SKIP'
             '535f9c54ee29c35ca7b44c15f8de2e781c10d6f3324338c483bef360ad777efc'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
-            'a7e2b2e9fbcb493de920ddd9d0e4d48004df8cca05e51cd5da3e0f4be52f0359')
+            '983b35fc1846785932135c4fcda467a5d790b86bc50599ebafa8fe064ba53489')
 
 prepare() {
   cd NetworkManager
@@ -150,4 +150,5 @@ package() {
   rm -r "$pkgdir"/usr/include
   rm -r "$pkgdir"/usr/lib/pkgconfig
   rm -r "$pkgdir"/usr/lib/**/*nm-cloud-setup*
+  rm -r "$pkgdir"/usr/share/man/*/nm-cloud-setup*
 }
