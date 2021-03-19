@@ -5,10 +5,10 @@ pkgname=lxmed
 pkgver=20120515
 pkgrel=1
 pkgdesc="Menu editor for LXDE"
-url="http://sourceforge.net/projects/lxmed/"
+url="https://sourceforge.net/projects/lxmed/"
 license=('custom')
 depends=('gksu' 'java-runtime' 'ttf-dejavu')
-source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.gz/download)
+source=(${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.gz/download)
 arch=('any')
 md5sums=('dfbda46aad608d32f28ffdf44a3b1ac3')
 		 
