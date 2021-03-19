@@ -1,0 +1,18 @@
+pkgbase = kde2-i18n-git
+	pkgdesc = Historical copy of the i18n module of KDE 2, adapted to compile on modern systems
+	pkgver = 2.2.2.r8.a6beda12
+	pkgrel = 1
+	url = https://github.com/sandsmark/kdei18n
+	arch = any
+	groups = kde2
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	provides = kde2-i18n
+	conflicts = kde2-i18n
+	options = libtool
+	source = git+https://github.com/sandsmark/kde2-i18n.git
+	md5sums = SKIP
+
+pkgname = kde2-i18n-git
+
