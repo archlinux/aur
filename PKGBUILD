@@ -1,7 +1,7 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 pkgname=terser
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc='JavaScript parser, mangler/compressor and beautifier toolkit for ES6+'
 arch=('any')
@@ -13,14 +13,14 @@ provides=('nodejs-terser')
 conflicts=('nodejs-terser')
 replaces=('nodejs-terser')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('448f1e5de9d13e9e3293f26ba45620bd56ebbe7a3465550fa01337f2877b10be')
+sha256sums=('688b6376bad04cdeb461c88ca5cc1aa188ef48f416b0a04ed6e28b3848b16e8a')
 
 package() {
-  # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2020-03-22
-  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
+  # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2021-03-08
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/npm/issues/9359 for details.
+  # See https://github.com/npm/cli/issues/1103 for details.
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
   # npm gives ownership of ALL FILES to build user
@@ -35,6 +35,13 @@ package() {
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
+
+  find "$pkgdir" -type f -name package.json | while read pkgjson; do
+    local tmppackage="$(mktemp)"
+    jq 'del(.man)' "$pkgjson" > "$tmppackage"
+    mv "$tmppackage" "$pkgjson"
+    chmod 644 "$pkgjson"
+  done
 
   # package specific
   install -Dm 644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
