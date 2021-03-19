@@ -16,7 +16,7 @@ license=('GPL3')
 depends=("python" "python-setuptools")
 makedepends=("git")
 provides=("python-${_pkgname}=${pkgver}")
-conflicts=("python-${_pkgname}" "python2-${_pkgname}" "python2-${_pkgname}-git")
+conflicts=("${_pkgname}" "python-${_pkgname}" "python2-${_pkgname}" "python2-${_pkgname}-git")
 source=("git+$url.git#branch=master")
 md5sums=('SKIP')
 
