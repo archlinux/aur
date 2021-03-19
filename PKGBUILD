@@ -2,9 +2,9 @@
 
 pkgname=nft-blackhole
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Script / Daemon to blocking IP in nftables by country and black lists'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/tomasz-c/nft-blackhole'
 license=('MIT')
 depends=('systemd' 'nftables' 'python' 'python-yaml')
