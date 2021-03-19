@@ -1,6 +1,7 @@
-# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
+# Maintainer: T. Witt <code@amtare.eu>
+# Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=docsify-cli
-pkgver=4.4.1
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="A magical documentation generator."
 arch=(any)
@@ -11,7 +12,7 @@ makedepends=('npm')
 provides=('docsify')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('1a37eb5747a215a84dc347358188e0ab9856ad821b9bf9da01edf3a72e72026f')
+sha256sums=('34ad80b8f597c4afacb7e45e927b6745df11e6023ab5f2bbbd9ccebd971b3e81')
 options=(!strip)
 
 package() {
