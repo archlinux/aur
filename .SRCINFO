@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-qqmusic
 	pkgdesc = Tencent QQMusic on Deepin Wine5(com.qq.music.deepin) For Archlinux
-	pkgver = 17.73.10.0011
+	pkgver = 17.73.10.0012
 	pkgrel = 1
 	url = https://y.qq.com/
 	install = deepin-wine-qqmusic.install

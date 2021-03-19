@@ -2,7 +2,7 @@
 # Contributor: Codist <countstarlight@gmail.com>
 # Contributor: taotieren <admin@taotieren.com>
 pkgname=deepin-wine-qqmusic
-pkgver=17.73.10.0011
+pkgver=17.73.10.0012
 debpkgver=17.73deepin10
 debpkgname="com.qq.music.deepin"
 pkgrel=1
@@ -28,16 +28,16 @@ build() {
   sed "s/\(Categories.*$\)/\1Media;/" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
   sed "s/run.sh\".*/run.sh\"/" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
   sed "s/StartupWMClass=QQ.exe/StartupWMClass=QQMusic.exe/g" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
-  sed "s/Icon=com.qq.music.deepin/Icon=qqmusic/g" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
+#  sed "s/Icon=com.qq.music.deepin/Icon=qqmusic/g" -i "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop"
 }
 
 
 package() {
-  msg "Preparing icons ..."
+  msg "Setting desktop file ..."
   install -d "${pkgdir}/usr/share/applications"
   install -Dm644 "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/applications/${debpkgname}.desktop" "${pkgdir}/usr/share/applications/${debpkgname}.desktop"
   cp -r "${srcdir}/dpkgdir/opt/apps/${debpkgname}/entries/icons/" "${pkgdir}/usr/share/"
-  msg "Copying deepin files ..."
+  msg "Setting Deepin-Wine-QQ files ..."
   install -d "${pkgdir}/opt/apps/${debpkgname}/files"
   install -m644 "${srcdir}/dpkgdir/opt/apps/com.qq.music.deepin/files/files.7z" "${pkgdir}/opt/apps/${debpkgname}/files/"
   cp ${srcdir}/dpkgdir/opt/apps/${debpkgname}/files/helper_archive* "${pkgdir}/opt/apps/${debpkgname}/files/"
