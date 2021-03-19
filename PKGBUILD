@@ -5,20 +5,19 @@
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
 
 pkgname=conky-git
-pkgver=1.11.6.r6.g16be0e15
+pkgver=1.12.1.r14.g33aa5060
 pkgrel=1
 pkgdesc="Lightweight system monitor for X (from git)"
 arch=('x86_64')
 url="https://github.com/brndnmtthws/conky"
 license=('BSD' 'GPL')
-depends=('glib2' 'imlib2' 'libpulse' 'libxdamage' 'libxft' 'libxinerama'
-         'libxml2' 'libxnvctrl' 'lua' 'wireless_tools')
+depends=('alsa-lib' 'imlib2' 'libxdamage' 'libxft' 'libxinerama'
+         'libxml2' 'librsvg' 'lua53' 'tolua++' 'wireless_tools')
 makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'git' 'man-db')
 provides=('conky')
 conflicts=('conky')
 source=("git+$url.git")
 sha256sums=('SKIP')
-options=('!strip' 'debug')
 
 pkgver() {
   cd conky
@@ -31,17 +30,19 @@ build() {
   cmake \
     -D CMAKE_BUILD_TYPE=Release \
     -D MAINTAINER_MODE=ON \
-    -D BUILD_DOCS=ON \
-    -D BUILD_WLAN=ON \
-    -D BUILD_XDBE=ON \
-    -D BUILD_XSHAPE=ON \
-    -D BUILD_IMLIB2=ON \
+    -D RELEASE=ON \
+    -D BUILD_X11=ON \
     -D BUILD_CURL=ON \
+    -D BUILD_XDBE=ON \
     -D BUILD_RSS=ON \
-    -D BUILD_NVIDIA=ON \
     -D BUILD_WEATHER_METAR=ON \
-    -D BUILD_PULSEAUDIO=ON \
-    -D BUILD_JOURNAL=ON \
+    -D BUILD_IMLIB2=ON \
+    -D BUILD_WLAN=ON \
+    -D BUILD_LUA_CAIRO=ON \
+    -D BUILD_LUA_IMLIB2=ON \
+    -D BUILD_LUA_RSVG=ON \
+    -D BUILD_XSHAPE=ON \
+    -D BUILD_DOCS=ON \
     -D CMAKE_INSTALL_PREFIX=/usr \
     .
 
