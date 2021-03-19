@@ -1,13 +1,13 @@
 pkgbase = velero-bin
 	pkgdesc = Backup client for Kubernetes
 	pkgver = 1.5.3
-	pkgrel = 1
-	url = https://github.com/heptio/velero
+	pkgrel = 2
+	url = https://github.com/vmware-tanzu/velero
 	arch = x86_64
 	license = Apache
 	depends = kubectl
 	replaces = ark-bin
-	source = https://github.com/heptio/velero/releases/download/v1.5.3/velero-v1.5.3-linux-amd64.tar.gz
+	source = https://github.com/vmware-tanzu/velero/releases/download/v1.5.3/velero-v1.5.3-linux-amd64.tar.gz
 	sha256sums = 9fd6884a88470a555990cc51f5590f9edb5fd55315040573d5aab918e105cb13
 
 pkgname = velero-bin
