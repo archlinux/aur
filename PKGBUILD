@@ -1,4 +1,5 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Old Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-dosbox-git
 pkgver=358.aa71b67

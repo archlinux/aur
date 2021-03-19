@@ -1,7 +1,7 @@
 pkgbase = libretro-dosbox-git
 	pkgdesc = libretro implementation of DOSBox.
-	pkgver = 285.aa71b67
-	pkgrel = 2
+	pkgver = 358.aa71b67
+	pkgrel = 1
 	url = https://github.com/libretro/dosbox-libretro
 	arch = x86_64
 	arch = arm
