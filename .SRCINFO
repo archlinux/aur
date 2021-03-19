@@ -1,0 +1,20 @@
+pkgbase = gentor
+	pkgdesc = Utility to make your internet traffic anonymized through Tor network
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AtomCollection/GenTor
+	arch = any
+	license = MIT
+	depends = python
+	depends = tor
+	depends = macchanger
+	depends = privoxy
+	depends = net-tools
+	depends = curl
+	depends = systemd
+	depends = dos2unix
+	source = https://github.com/AtomCollection/gentor/releases/download/1.0/gentor-1.0.tar.gz
+	md5sums = d106e09f82affd51f7f9c4c3bdebd04e
+
+pkgname = gentor
+
