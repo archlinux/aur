@@ -1,7 +1,7 @@
 pkgbase = skywire
 	pkgdesc = Skywire Mainnet Node implementation. Skycoin.com
-	pkgver = 0.3.0
-	pkgrel = 12
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = i686
