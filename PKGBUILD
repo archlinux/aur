@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termchat-git
-pkgver=1.2.0.r3.g2398e84
+pkgver=1.3.0.r0.g35016b3
 pkgrel=1
 pkgdesc="Terminal chat through the LAN (git)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked --all-features
+  cargo test --release --locked --features stream-video
 }
 
 package() {
