@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Moroz <lukaszmoroz@gmail.com>
 
 pkgname=nautilus-copy-path
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Extension for Nautilus to copy files/dir path or name"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-nautilus' 'python-gobject')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chr314/nautilus-copy-path/archive/$pkgver.tar.gz")
-md5sums=('9d21e141bfe89e74c900907f5f7cab9c')
+md5sums=('db3006c9fd52892a3ee7ef13e97c815a')
 
 package() {
     cd "$pkgname-$pkgver"
