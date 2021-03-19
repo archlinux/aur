@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gnx.de>
 pkgname=python-stable-baselines3
-pkgver=1.0rc1
+pkgver=1.0
 pkgrel=1
 pkgdesc="A set of reliable implementations of reinforcement learning algorithms in PyTorch"
 arch=('any')
@@ -11,10 +11,10 @@ optdepends=('python-opencv: For render'
     'python-atari-py: For atari games'
     'python-pillow: For atari games'
     'tensorboard: Tensorboard support'
-    'python-psutils: Checking memory taken by replay buffer')
+    'python-psutil: Checking memory taken by replay buffer')
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DLR-RM/$_name/archive/v$pkgver.tar.gz")
-md5sums=('6a644fd4d49d6249cccfb3c09aecc05e')
+md5sums=('87c82d1897baf60c873a3828e559521a')
 
 build() {
     cd $_name-$pkgver
