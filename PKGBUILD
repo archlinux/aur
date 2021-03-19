@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=menyoki-git
-pkgver=1.2.1.r0.g2542319
+pkgver=1.3.0.r0.g1c6533e
 pkgrel=1
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line (git)"
 arch=('x86_64')
 url="https://github.com/orhun/menyoki"
 license=('GPL3')
-depends=('libx11' 'libxrandr')
+depends=('gcc-libs' 'libxrandr')
 makedepends=('rust' 'git')
 optdepends=('slop: area selection support')
 conflicts=("${pkgname%-git}")
