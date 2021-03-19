@@ -1,6 +1,6 @@
 pkgbase = openwrt-devel
 	pkgdesc = Metapackage to pull all dependencies required to build OpenWrt
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://openwrt.org/docs/guide-developer/build-system/install-buildsystem
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = openwrt-devel
 	depends = pacman
 	depends = patch
 	depends = pkgconf
-	depends = python2
+	depends = python
 	depends = sed
 	depends = sudo
 	depends = texinfo
