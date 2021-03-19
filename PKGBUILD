@@ -1,5 +1,5 @@
-# Maintainer: Connor Sheridan <conwsh@protonmail.com>
-# Contributor: Connor Sheridan <conwsh@protonmail.com>
+# Maintainer: Connor Sheridan <connorws@protonmail.com>
+# Contributor: Connor Sheridan <connorws@protonmail.com>
 
 pkgname=tinyfugue
 pkgver=5.0
