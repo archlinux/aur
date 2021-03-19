@@ -1,21 +1,17 @@
-# Maintainer: Stephan Friedrichs <deduktionstheorem at gmail dot com>
+# Maintainer: Stephan Friedrichs <accounts at sfriedri dot de>
 
 pkgname='simple-svg'
 pkgver='1.0.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='This library is a single file header-only C++ library for creating SVG files'
 arch=('any')
-url='http://code.google.com/p/simple-svg/'
+url='https://github.com/adishavit/simple-svg'
 license=('custom:BSD3')
-source=("http://simple-svg.googlecode.com/files/simple_svg_${pkgver}.hpp")
-sha256sums=('103e4d09294de700154e929caadd8fae66f5ca40099977c47ca5481e494d0740')
+source=('https://github.com/adishavit/simple-svg/archive/refs/heads/master.zip')
+sha256sums=('91c559c5ba813982dab382a90d9bb33dfe411084f3afb2f64600ea76669738cb')
 depends=()
 
-build() {
-	sed -n -e "6,29p" "${srcdir}/simple_svg_${pkgver}.hpp" > "${srcdir}/LICENSE"
-}
-
 package() {
-	install -D -m644 "${srcdir}/simple_svg_${pkgver}.hpp" "${pkgdir}/usr/include/simple_svg.hpp"
-	install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${srcdir}/${pkgname}-master/simple_svg_${pkgver}.hpp" "${pkgdir}/usr/include/simple_svg.hpp"
+	install -D -m644 "${srcdir}/${pkgname}-master/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
