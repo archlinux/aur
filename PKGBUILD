@@ -7,8 +7,8 @@
 
 prefix='amdgpu-pro-'
 postfix='-ubuntu-20.04'
-major='20.45'
-minor='1164792'
+major='20.50'
+minor='1232447'
 amdver='2.4.100'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 shared2="opt/amdgpu/lib/x86_64-linux-gnu"
@@ -30,7 +30,7 @@ optdepends=('clinfo')
 DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-45 -N %u'
 
 source=("https://drivers.amd.com/drivers/linux/$tarname.tar.xz")
-sha256sums=('482e7a1f8dc41839aa720bb62730f1176b9d608117f94dc2f7e2bd2cf1a5ac1a')
+sha256sums=('71d6eb53e883e5b2afcb26938e71d94e1bc4e4f749056425bb63e6b81e631fc6')
 
 package() {
 	mkdir -p "${srcdir}/opencl"
@@ -49,7 +49,7 @@ package() {
 	tar xJf data.tar.xz
 
 	# comgr
-	ar x "${srcdir}/$tarname/comgr-amdgpu-pro_1.7.0-${minor}_amd64.deb"
+	ar x "${srcdir}/$tarname/comgr-amdgpu-pro_1.9.0-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 
 	# orca
@@ -72,10 +72,10 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib
 	# roc*
 	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
-	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.1.7.0" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so.1.5.19245" "${pkgdir}/usr/lib"
+	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.1.9.0" "${pkgdir}/usr/lib"
+	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.0.21112-" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamdhip64.so" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so.1" "${pkgdir}/usr/lib"	
+	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4" "${pkgdir}/usr/lib"	
 	mv "${srcdir}/opencl/${shared}/libhsa-runtime64.so.1.2.0" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libhsa-runtime64.so.1" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared2}/libhsakmt.so.1.0.6" "${pkgdir}/usr/lib"
@@ -83,7 +83,7 @@ package() {
 	
 	# comgr
 	cd ${srcdir}/opencl/${shared}	
-	ln -s "libamd_comgr.so.1.7.0" "libamd_comgr.so"
+	ln -s "libamd_comgr.so.1.9.0" "libamd_comgr.so"
 	mv "${srcdir}/opencl/${shared}/libamd_comgr.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.1" "${pkgdir}/usr/lib/libamd_comgr.so"
 
