@@ -2,7 +2,7 @@
 
 pkgname=vscode-html-languageserver
 _parent=vscode
-pkgver=1.53.1
+pkgver=1.54.3
 pkgrel=1
 pkgdesc="HTML Language server from vscode"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(typescript npm)
 source=("$_parent-$pkgver.tar.gz::https://github.com/microsoft/vscode/archive/$pkgver.tar.gz"
 	"vscode-html-languageserver")
-sha256sums=('e64d6962389cb1e1f09558fa231f1e0eece87a059b09d6ba55a894e994997a39'
+sha256sums=('ea2cf3481b9a878aa5d4000289d238551d0ad4fe04ca2f3fea35bbe86026a369'
             'SKIP')
 
 prepare() {
@@ -34,19 +34,13 @@ package() {
 	npm pack
 	npm install -g --user root --prefix "${pkgdir}/usr" "$pkgname-$pkgver.tgz"
 
-	# Non-deterministic race in npm gives 777 permissions to random directories.
-	# See https://github.com/npm/cli/issues/1103 for details.
-	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-
 	# npm gives ownership of ALL FILES to build user
 	# https://bugs.archlinux.org/task/63396
 	chown -R root:root "${pkgdir}"
 
 	# Package the runner
-	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/vscode-html-languageserver" "${pkgdir}/usr/bin/"
+	install -Dt "${pkgdir}/usr/bin" "${srcdir}/vscode-html-languageserver"
 
 	# License
-	mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
-	cp "${srcdir}/$_parent-$pkgver/LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname/"
+	install -Dm 0644 -t "${pkgdir}/usr/share/licenses/$pkgname" "${srcdir}/$_parent-$pkgver/LICENSE.txt"
 }

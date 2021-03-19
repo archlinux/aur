@@ -1,6 +1,6 @@
 pkgbase = vscode-html-languageserver
 	pkgdesc = HTML Language server from vscode
-	pkgver = 1.53.1
+	pkgver = 1.54.3
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode/tree/master/extensions/html-language-features/server
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = vscode-html-languageserver
 	makedepends = typescript
 	makedepends = npm
 	depends = nodejs
-	source = vscode-1.53.1.tar.gz::https://github.com/microsoft/vscode/archive/1.53.1.tar.gz
+	source = vscode-1.54.3.tar.gz::https://github.com/microsoft/vscode/archive/1.54.3.tar.gz
 	source = vscode-html-languageserver
-	sha256sums = e64d6962389cb1e1f09558fa231f1e0eece87a059b09d6ba55a894e994997a39
+	sha256sums = ea2cf3481b9a878aa5d4000289d238551d0ad4fe04ca2f3fea35bbe86026a369
 	sha256sums = SKIP
 
 pkgname = vscode-html-languageserver
