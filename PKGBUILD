@@ -11,7 +11,7 @@ pkgdesc="A fork of the jabber plugin for weechat"
 arch=('any')
 url="https://github.com/sleduc/${_pkgname}"
 license=('GPL3')
-depends=("weechat" "python-xmpp" "python")
+depends=("weechat" "python-xmpppy" "python")
 provides=("${_pkgname}")
 source=("git+$url.git#branch=master")
 install="${_pkgname}.install"
