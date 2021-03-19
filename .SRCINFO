@@ -1,11 +1,11 @@
 pkgbase = kime-bin
 	pkgdesc = Korean IME
-	pkgver = 1.3.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = x86_64
 	license = GPL3
-	optdepends = libappindicator-gtk3: indicator support
+	optdepends = dbus: indicator support
 	optdepends = gtk2: gtk2 support
 	optdepends = gtk3: gtk3 support
 	optdepends = qt5-base: qt5 support
@@ -13,11 +13,9 @@ pkgbase = kime-bin
 	optdepends = libxcb: xim support
 	optdepends = cairo: xim support
 	provides = kime
-	provides = kime-window
 	conflicts = kime
-	conflicts = kime-window
-	source = https://github.com/Riey/kime/releases/download/v1.3.1/kime_latest_v1.3.1.tar.zst
-	md5sums = f7f62266bcb0249ee745ca0c4cbc93c7
+	source = https://github.com/Riey/kime/releases/download/v2.1.0/kime_latest_v2.1.0.tar.zst
+	md5sums = 81f9929207ca9230d227cdac76878cfe
 
 pkgname = kime-bin
 
