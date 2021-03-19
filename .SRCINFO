@@ -13,9 +13,10 @@ pkgbase = vfio-kvm
 	depends = qemu
 	depends = systemd
 	optdepends = ddccontrol: switch monitor inputs
-	provides = vfio
-	conflicts = vfio
+	provides = vfio-kvm
+	conflicts = vfio-kvm-git
 	backup = etc/vfio-kvm.yaml
+	backup = etc/libvirt/hooks/qemu
 	source = vfio-kvm-2.0.0.tar.gz::https://github.com/dangle/vfio-kvm/archive/2.0.0.tar.gz
 	md5sums = 082a75289bc8534cf9725d08ebab4e29
 
