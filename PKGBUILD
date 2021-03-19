@@ -1,13 +1,14 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Colin Pitrat <colin dot pitrat at gmail dot com>
 pkgname=caprice32-git
-pkgver=4.5.0.r226.g584d4ab
+pkgver=4.5.0.r230.g001bd66
 pkgrel=1
 pkgdesc="An emulator of the Amstrad CPC 8bit home computer range (CPC 464, 664, 6128)"
 arch=('i686' 'x86_64')
 url="https://github.com/ColinPitrat/caprice32"
 license=('GPL2')
-depends=('sdl' 'zlib' 'gcc-libs')
+makedepends=('git' 'glu')
+depends=('sdl' 'freetype2')
 source=(git://github.com/ColinPitrat/caprice32
 caprice32.desktop)
 sha256sums=('SKIP'
