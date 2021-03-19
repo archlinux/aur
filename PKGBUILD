@@ -2,7 +2,7 @@
 
 pkgname=qt2-git
 _pkgname=qt2
-pkgver=2.3.2.r51.cd8f9ec
+pkgver=2.3.2.r54.e33b3d1
 _pkgver=2.3.2
 pkgrel=1
 pkgdesc="Porting Qt2 to modern cmake to use it for KDE 2 port"
@@ -13,7 +13,7 @@ depends=('libxft' 'libsm' 'libgl' 'freeglut' 'libmng' 'libjpeg-turbo' 'libxmu' '
 makedepends=('git' 'cmake' 'byacc')
 provides=('qt2')
 conflicts=('qt2')
-source=("git+https://github.com/sandsmark/qt2.git")
+source=("git+https://invent.kde.org/sandsmark/qt2.git")
 sha256sums=('SKIP')
 
 pkgver() {
