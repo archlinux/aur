@@ -1,13 +1,13 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=gofumpt-git
-pkgver=r134.eb0da8c
+pkgver=r140.0c61c1e
 pkgrel=1
 pkgdesc="A stricter gofmt"
 arch=('i686' 'x86_64')
 url="https://github.com/mvdan/gofumpt"
 license=('custom')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
