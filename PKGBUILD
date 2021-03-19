@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("reddsaver")
 options=("strip")
 source=("https://github.com/manojkarthick/reddsaver/releases/download/v$pkgver/reddsaver-$pkgver-x86_64.tar.gz")
-sha256sums=("fdeb5ff25beef78c90fa3b0c08d0c7a485b54132932a8da045dc28e127e13832")
+sha256sums=("3f4d65f7c79f35cdf67752dd6c543a6237e4951d4144db0132731e2e9c5b8c58")
 
 package() {
     install -Dm755 reddsaver -t "$pkgdir/usr/bin/"
