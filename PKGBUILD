@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ooniprobe-desktop
-pkgver=3.2.3
-_cliver=3.5.2
+pkgver=3.3.0
+_cliver=3.8.0
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
@@ -16,17 +16,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/
         "ooniprobe_checksums_${_cliver}.txt::https://github.com/ooni/probe-cli/releases/download/v$_cliver/ooniprobe_checksums.txt"
         "$pkgname.desktop")
 noextract=("ooniprobe_v${_cliver}_linux_amd64.tar.gz")
-sha256sums=('9951df3a212e11abd2e121ad5b890a546170ab996b0a72dafc2434a691b456f9'
-            'ea9652a24c89f9dc6b30277c62232ef871eee0bee7f546d748d5ecd3049d32eb'
-            '8ef226e8ade948dc7fc2e4c0eccadf9793f86011b64b8b006a811798436bc800'
+sha256sums=('45bec9f715638373825a5ef0d7e34ea4be3e2424581512497c3df42cc8b4b555'
+            'ac836f6bd612e22136e467e74c70661ad39a9cd843ff351eb5aeafcac563dd23'
+            '7cce54f628db39fa5fc779d1bd2d48565fe370509f8ba94150c5cc3cc142292e'
             'baaf4f3cca079dddc0b4e048c8778c6cc84786bb88fd9d218424b7b9f04f1135')
 
 prepare() {
 	cd "${pkgname#ooni}-$pkgver"
-
-	# Disable building of rpm & tar.gz
-	sed -i 's/"deb",/"deb"/g' package.json
-	sed -i '45,46d' package.json
 
 	# Disable downloading probe-cli & remove other platforms
 	sed -i 's/darwin|linux|windows/linux/g' scripts/download-bin.js
@@ -46,8 +42,8 @@ prepare() {
 build() {
 	cd "${pkgname#ooni}-$pkgver"
 	yarn install --cache-folder "$srcdir/yarn-cache"
-#	yarn run pack:linux
-	yarn run build && node_modules/.bin/electron-builder --linux
+	yarn run build
+	node_modules/.bin/electron-builder --linux
 }
 
 package() {
