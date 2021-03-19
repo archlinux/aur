@@ -13,6 +13,7 @@ prepend-path PATH         ${MODULE_ROOT}/bin
 prepend-path CPATH        ${MODULE_ROOT}/include
 prepend-path LIBRARY_PATH ${MODULE_ROOT}/lib/x64
 prepend-path MANPATH      ${MODULE_ROOT}/bin/Help
+prepend-path PATH         ${MODULE_ROOT}/bin/AMDPerf
 prepend-path PYTHONPATH   ${MODULE_ROOT}/bin/AMDPerf
 
 module-whatis "${MODULE_TEXT} version ${VERSION}"

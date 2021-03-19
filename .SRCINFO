@@ -1,11 +1,12 @@
 pkgbase = amduprof
 	pkgdesc = AMD uProf performance analysis tool.
 	pkgver = 3.4.468
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.amd.com/amd-uprof/
 	install = amduprof.install
 	arch = x86_64
 	license = custom
+	depends = dkms
 	optdepends = env-modules
 	options = staticlibs
 	options = !strip
