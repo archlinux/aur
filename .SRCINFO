@@ -8,7 +8,7 @@ pkgbase = pvz_beta
 	depends = wine
 	depends = deepin-wine-helper
 	provides = pvz_beta=1.0.1
-	source = https://hub.fastgit.org/zzy-ac/plantsvszombies/raw/master/pvz_beta/PvZ_beta.tar.gz
+	source = https://hub.fastgit.org/zzy-ac/plantsvszombies/raw/master/PvZ_beta/PvZ_beta.tar.gz
 	md5sums = fefd66038fa1f8e8c7eeb87bca2df364
 
 pkgname = pvz_beta
