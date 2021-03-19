@@ -10,6 +10,8 @@ pkgbase = python-xmpppy-git
 	depends = python-setuptools
 	provides = python-xmpppy=0.6.2.r0.gef1cbd6
 	conflicts = python-xmpppy
+	conflicts = python2-xmpppy
+	conflicts = python2-xmpppy-git
 	source = git+https://github.com/xmpppy/xmpppy.git#branch=master
 	md5sums = SKIP
 
