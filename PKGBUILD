@@ -14,7 +14,7 @@ optdepends=('ibus-rime: input support'
 backup=('usr/share/rime-data/flypy_sys.txt'
         'usr/share/rime-data/flypy_top.txt'
         'usr/share/rime-data/flypy_user.txt')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/2014CAIS01/rime-flypy/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz"
         "$pkgname.install")
 sha256sums=('b9c5c3bd60defdc42d91a955cdb9e26d6a505e3f4d5362fff5addb82397e56f2'
             '07487dba48d81c42c647fae3449c0a52fdcee9edc890c65961122b5304b824eb')
