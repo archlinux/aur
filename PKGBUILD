@@ -5,7 +5,7 @@
 
 pkgname=bigloo-devel
 pkgver=4.4a
-pkgrel=31
+pkgrel=32
 epoch=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
