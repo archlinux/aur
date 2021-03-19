@@ -1,0 +1,46 @@
+diff --git a/komikku/utils.py b/komikku/utils.py
+index 23b584c..c1042a2 100644
+--- a/komikku/utils.py
++++ b/komikku/utils.py
+@@ -300,7 +300,12 @@ class KeyringHelper:
+ 
+     @property
+     def keyring(self):
+-        return keyring.get_keyring()
++        current_keyring = keyring.get_keyring()
++        if isinstance(current_keyring, keyring.backends.chainer.ChainerBackend):
++            # If several backends are available, use first (the one with the highest priority)
++            current_keyring = current_keyring.backends[0]
++
++        return current_keyring
+ 
+     def get(self, service):
+         if self.is_disabled:
+@@ -321,6 +326,8 @@ class KeyringHelper:
+                         username = item.get_attributes().get('login')
+                     if username:
+                         credential = CustomCredential(username, item.get_secret().decode('utf-8'), item.get_attributes().get('address'))
++        elif isinstance(self.keyring, keyring.backends.kwallet.DBusKeyring):
++            credential = self.keyring.get_credential(f"komikku-{service}", None)
+         else:
+             credential = self.keyring.get_credential(service, None)
+ 
+@@ -352,6 +359,8 @@ class KeyringHelper:
+                     item.delete()
+ 
+                 collection.create_item(label, attributes, password)
++        elif isinstance(self.keyring, keyring.backends.kwallet.DBusKeyring):
++            self.keyring.set_password(f"komikku-{service}", username, password)
+         else:
+             self.keyring.set_password(service, username, password, address)
+ 
+@@ -364,6 +373,9 @@ class PlaintextKeyring(keyring.backend.KeyringBackend):
+ 
+     priority = 1
+ 
++    def __init__(self):
++        super().__init__()
++
+     @property
+     def filename(self):
+         return os.path.join(self.folder, 'plaintext.keyring')
