@@ -42,7 +42,6 @@ build() {
         -D jack=disabled \
         -D libcamera=disabled \
         -D sdl2=disabled \
-        -D jack=disabled \
         -D videotestsrc=disabled \
         -D volume=disabled \
         -D vulkan=disabled \
