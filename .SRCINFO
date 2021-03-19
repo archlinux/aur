@@ -1,6 +1,6 @@
 pkgbase = lib_amxp-git
 	pkgdesc = Generic C-API for common patterns
-	pkgver = v0.6.6.r0.g1123c9d
+	pkgver = v0.6.7.r0.g7e5f14c
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxp
 	arch = any
