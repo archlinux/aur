@@ -7,7 +7,7 @@
 _gemname=hpricot
 pkgname=ruby-$_gemname
 pkgver=0.8.6
-pkgrel=10
+pkgrel=11
 pkgdesc='A swift, liberal HTML parser with a fantastic library'
 arch=(x86_64)
 url='https://github.com/hpricot/hpricot'
@@ -22,7 +22,6 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  find "$pkgdir/$_gemdir/extensions/" -name *.so -delete
   rm -r "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/test"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
