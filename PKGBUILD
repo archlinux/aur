@@ -1,4 +1,5 @@
-# Maintainer: Sergey Slipchenko <faergeek@gmail.com>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Old Maintainer: Sergey Slipchenko <faergeek@gmail.com>
 _gitname=snes9x2002
 
 pkgname=libretro-snes9x2002-git
