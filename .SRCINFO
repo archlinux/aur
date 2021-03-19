@@ -1,6 +1,6 @@
 pkgbase = udisks2-nosystemd
 	pkgdesc = Disk Management Service, version 2
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/udisks
 	arch = i686
@@ -22,17 +22,17 @@ pkgbase = udisks2-nosystemd
 	optdepends = ntfs-3g: NTFS filesystem management support
 	optdepends = dosfstools: VFAT filesystem management support
 	optdepends = libiscsi: iSCSI support
-	provides = udisks2=2.9.1
+	provides = udisks2=2.9.2
 	conflicts = udisks2
 	conflicts = udisks2-eudev
 	replaces = udisks2
 	replaces = udisks2-eudev
 	options = !libtool
 	backup = etc/udisks2/udisks2.conf
-	source = https://github.com/storaged-project/udisks/archive/udisks-2.9.1.tar.gz
+	source = https://github.com/storaged-project/udisks/archive/udisks-2.9.2.tar.gz
 	source = disable_logind_support.patch
 	source = remove_check.patch
-	sha512sums = 91480378347a9898b45f3425462958b4f2fdead6970f29399eb5cecb488b0c0282cc3823879233e74c87570467e366016b785af772bdb42d271d89deef142c78
+	sha512sums = 8c4cd266d97fd01e8b7b6e15e53774a52d723a5b382307c6fefba0ec1eda0178caa760358260180da6cc793af73fd40499b09a2c271d83524a81a260072432e6
 	sha512sums = 22041d363bd7e7a6cc3a7c49c169800a0fad0bc5d3fba5f8663bcd26e2ea09ed78dbdd31ace26a9700863d565be6026b4d2259d5ebbf234ad8571ce2795588ad
 	sha512sums = e98ef1d34b690e776dfaa9b8a801a98bac395aad38db55933caa843f685471ce9ccfe63287507396925234d17768400d8c38d735f209e515c708f7515ea7ba4f
 
