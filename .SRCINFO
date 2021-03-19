@@ -1,0 +1,13 @@
+pkgbase = sunwait-git
+	pkgdesc = Sunwait calculates sunrise or sunset times with civil, nautical, astronomical and custom twilights, for use with Windows Task Scheduler or 'cron' on Linux. Git version with new Github upstream.
+	pkgver = r24.102cb41
+	pkgrel = 1
+	url = https://github.com/risacher/sunwait
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = sunwait-git::git+https://github.com/risacher/sunwait.git
+	sha256sums = SKIP
+
+pkgname = sunwait-git
+
