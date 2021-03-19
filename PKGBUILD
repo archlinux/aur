@@ -1,8 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Old Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-beetle-wswan-git
-pkgver=r712.b4dc85b
+pkgver=r825.79e8d48
 pkgrel=1
 pkgdesc='WonderSwan core'
 arch=('x86_64')
@@ -30,4 +31,3 @@ package() {
   install -Dm 644 libretro-beetle-wswan/mednafen_wswan_libretro.so -t "${pkgdir}"/usr/lib/libretro/
 }
 
-# vim: ts=2 sw=2 et:
