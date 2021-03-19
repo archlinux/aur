@@ -3,7 +3,7 @@
 _pkgbase='gtimelog'
 pkgname=gtimelog-collabora-git
 pkgver=r449.3254e91
-pkgrel=1
+pkgrel=2
 pkgdesc="A time tracking application: Collabora repository."
 provides=('gtimelog')
 arch=('any')
@@ -31,6 +31,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgbase"
   python setup.py install --root="$pkgdir/"
+
+  # Install .desktop file and icon
+  install -Dm644 "$_pkgbase.desktop" "${pkgdir}/usr/share/applications/$_pkgbase.desktop"
+  install -Dm644 "src/$_pkgbase/$_pkgbase.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/$_pkgbase.png"
 }
 
 sha256sums=('SKIP')
