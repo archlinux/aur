@@ -4,7 +4,7 @@
 
 pkgname=ruby-treetop
 pkgver=1.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A Ruby-based text parsing and interpretation DSL'
 arch=('any')
 url='https://github.com/cjheath/treetop'
