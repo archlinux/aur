@@ -1,9 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Old Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 # Contributor: Duck Hunt <vaporeon@tfwno.gf>
 
 pkgname=libretro-ppsspp-git
-pkgver=r24922.d9198ff03
+pkgver=r26710.7b4ddb426
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core'
 arch=('x86_64')
