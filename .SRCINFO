@@ -1,0 +1,15 @@
+pkgbase = libretro-beetle-lynx-git
+	pkgdesc = Atari Lynx core
+	pkgver = r707.c1d9f1e
+	pkgrel = 1
+	url = https://github.com/libretro/beetle-lynx-libretro
+	arch = x86_64
+	groups = libretro-unstable
+	license = GPL2
+	makedepends = git
+	depends = libretro-core-info
+	source = libretro-beetle-lynx::git+https://github.com/libretro/beetle-lynx-libretro.git
+	sha256sums = SKIP
+
+pkgname = libretro-beetle-lynx-git
+
