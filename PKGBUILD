@@ -1,8 +1,8 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=arcanist
-pkgver=2020.5
-_commit=729100955129851a52588cdfd9b425197cf05815
+pkgver=2021.11
+_commit=5d9e971ab0e0ac0b7b15f4023336a253e78a60e1
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
@@ -19,6 +19,6 @@ sha256sums=('SKIP')
 package() {
   install -d "$pkgdir/usr/share/php/$pkgname/" "$pkgdir/usr/bin/"
   cp -a $pkgname/* "$pkgdir/usr/share/php/$pkgname/"
-  install -Dm644 $pkgname/resources/shell/bash-completion "$pkgdir/usr/share/bash-completion/completions/arc"
+  install -Dm644 $pkgname/support/shell/hooks/bash-completion.sh "$pkgdir/usr/share/bash-completion/completions/arc"
   ln -s ../share/php/$pkgname/bin/arc "$pkgdir/usr/bin/arc"
 }
