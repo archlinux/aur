@@ -8,7 +8,7 @@ pkgdesc='AniDB video/audio codec identification utility (command line version)'
 arch=('any')
 url='https://wiki.anidb.net/Avdump3'
 license=('MIT' 'unknown')
-depends=('dotnet-runtime>=3.1')
+depends=('dotnet-runtime-3.1')
 makedepends=('unzip')
 provides=('avdump3')
 conflicts=('avdump3')

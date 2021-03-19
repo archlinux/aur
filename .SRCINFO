@@ -7,7 +7,7 @@ pkgbase = avdump3-bin
 	license = MIT
 	license = unknown
 	makedepends = unzip
-	depends = dotnet-runtime>=3.1
+	depends = dotnet-runtime-3.1
 	provides = avdump3
 	conflicts = avdump3
 	noextract = avdump3_8188_beta.zip
