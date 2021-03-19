@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6"
 _pkgname=mxnet
 pkgname=('mxnet-git' 'mxnet-cuda-git')
 _pkgver=2.0.0
-pkgver=2.0.0.r11442.dbcd6a19f1
+pkgver=2.0.0.r11548.583f540898
 pkgrel=1
 pkgdesc='A flexible and efficient library for deep learning'
 arch=('x86_64')
@@ -143,8 +143,6 @@ _package() {
   # create neccesarry soft links
   ln -sf '/usr/lib/libmxnet.so' "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/mxnet/libmxnet.so"
   ln -s "/usr/include" "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/mxnet/include"
-
-  mv "${pkgdir}/mkldnn" "${pkgdir}/usr/include"
 
   # remove unwantted files
   rm -rfv "${pkgdir}/usr/mxnet"
