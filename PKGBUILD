@@ -4,7 +4,7 @@
 _gemname=cairo
 pkgname=ruby-$_gemname
 pkgver=1.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64')
 url='https://cairographics.org/rcairo'
