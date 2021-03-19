@@ -46,7 +46,6 @@ source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git")
 sha512sums=("SKIP")
 provides=("sway")
 conflicts=("sway")
-#options=(debug)
 install=sway-strace-git.install
 
 pkgver() {
@@ -57,6 +56,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 	meson  \
+		--buildtype=debug \
 		-Dwerror=false \
 		-Dtray=enabled \
 		-Dgdk-pixbuf=enabled \
