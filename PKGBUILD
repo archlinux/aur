@@ -2,10 +2,10 @@
 _gitname=snes9x2002
 
 pkgname=libretro-snes9x2002-git
-pkgver=r175.a6cf15d
+pkgver=r273.dd43317
 pkgrel=1
-pkgdesc='SNES libretro core heavily optimized for ARM'
-arch=('arm' 'armv6h' 'armv7h')
+pkgdesc='SNES libretro core eavily optimized for ARM'
+arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/$_gitname"
 license=('unknown')
 groups=('libretro')
