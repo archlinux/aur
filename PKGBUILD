@@ -3,7 +3,7 @@
 
 pkgname=libsigrok
 pkgver=0.5.2
-pkgrel=7
+pkgrel=8
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=('x86_64')
 url='https://www.sigrok.org/wiki/Libsigrok'
