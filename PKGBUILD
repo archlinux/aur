@@ -5,7 +5,7 @@ _pkgname=gensystray
 _install_dir="/usr/share/${_pkgname}/"
 pkgname=${_pkgname}-git
 pkgver=r25.fd5a9b7
-pkgrel=2
+pkgrel=3
 pkgdesc='Create your own system tray item to run your favorite commands.'
 arch=('x86_64')
 url='https://github.com/dardevelin/gensystray'
@@ -17,7 +17,7 @@ conflicts=('gensystray')
 source=("${_pkgname}::git+https://github.com/dardevelin/gensystray.git"
         'gensystray.sample.cfg')
 sha256sums=('SKIP'
-            '02b33f2c064c96308ce4754f24f0fad36f8d56c5fbdc55acc34ebc7b09532b42')
+            '5a53085fa539a3ca6159da6258d58c0637b0f20e0588f81ffab266d3f5637714')
 
 pkgver() {
   cd "${_pkgname}"
