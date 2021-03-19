@@ -1,6 +1,6 @@
 pkgbase = neovim-nightly-bin
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds
-	pkgver = 0.5.0+dev+1157+g0ab88c2ea
+	pkgver = 0.5.0+dev+1160+g0f7b6b2ef
 	pkgrel = 1
 	url = https://neovim.io
 	install = neovim.install
@@ -14,7 +14,7 @@ pkgbase = neovim-nightly-bin
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	backup = etc/xdg/nvim/sysinit.vim
-	source = neovim-0.5.0+dev+1157+g0ab88c2ea.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+	source = neovim-0.5.0+dev+1160+g0f7b6b2ef.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
 	sha512sums = SKIP
 
 pkgname = neovim-nightly-bin
