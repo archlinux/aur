@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
 _name=knossos
 pkgname=fs2-knossos
-pkgver=0.13.3
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ngld/knossos"
 license=('Apache')
 groups=()
 depends=(
-  'python' 'python-six' 'python-requests' 'python-requests-toolbelt' 'python-ply' 'python-token-bucket' 'python-pyqt5' 'qt5-webengine'
+  'python' 'python-six' 'python-requests' 'python-requests-toolbelt' 'python-ply' 'python-token-bucket' 'python-pyqt5' 'qt5-webengine' 'python-pyqtwebengine'
   'qt5-webchannel' 'qt5-tools' 'python-semantic-version' 'python-raven' 'p7zip' 'openal' 'sdl2'
 )
 makedepends=('python-setuptools' 'ninja' 'yarn')
@@ -18,9 +18,10 @@ source=(
     "https://github.com/ngld/knossos/archive/v${pkgver}.tar.gz"
     knossos
     knossos.desktop)
-md5sums=('2480b79802a4797f4926dc039e8005d0'
+
+md5sums=('e744e613c9925a5c3d774c1787c554fb'
          '541dfc75f3aecbe08b843eeec252e4b4'
-         'afd34e2bf9b8f74c1fc5785662e1f04a')
+         '2974a45a1f75051607d6d1402a8c429b')
 
 package() {
     cd "$srcdir/${_name}-$pkgver"
@@ -34,6 +35,7 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
     install -Dm644 ../knossos.desktop "$pkgdir/usr/share/applications/knossos.desktop"
+    install -Dm644 knossos/data/hlp.png "$pkgdir/usr/share/pixmaps/hlp.png"
 }
 
 # vim:set ts=2 sw=2 et:
