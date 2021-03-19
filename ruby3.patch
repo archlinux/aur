@@ -1,0 +1,43 @@
+commit af4b70b6b9ed4d22a277402939fccf6e2e9d82e9
+Author: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date:   Fri Mar 19 11:36:30 2021 -0700
+
+    Fileutils::install accepts keyword arguments
+
+diff --git a/install.rb b/install.rb
+index a13cded..8c7890d 100755
+--- a/install.rb
++++ b/install.rb
+@@ -51,7 +51,7 @@ def do_configs(configs, target, strip = 'ext/')
+   Dir.mkdir(target) unless File.directory? target
+   configs.each do |cf|
+     ocf = File.join(InstallOptions.config_dir, cf.gsub(/#{strip}/, ''))
+-    install(cf, ocf, {:mode => 0644, :preserve => true, :verbose => true})
++    install(cf, ocf, :mode => 0644, :preserve => true, :verbose => true)
+   end
+ end
+ 
+@@ -67,9 +67,9 @@ def do_libs(libs, strip = 'lib/')
+   libs.each do |lf|
+     olf = File.join(InstallOptions.site_dir, lf.gsub(/#{strip}/, ''))
+     op = File.dirname(olf)
+-    makedirs(op, {:mode => 0755, :verbose => true})
++    makedirs(op, :mode => 0755, :verbose => true)
+     chmod(0755, op)
+-    install(lf, olf, {:mode => 0644, :preserve => true, :verbose => true})
++    install(lf, olf, :mode => 0644, :preserve => true, :verbose => true)
+   end
+ end
+ 
+@@ -77,9 +77,9 @@ def do_man(man, strip = 'man/')
+   man.each do |mf|
+     omf = File.join(InstallOptions.man_dir, mf.gsub(/#{strip}/, ''))
+     om = File.dirname(omf)
+-    makedirs(om, {:mode => 0755, :verbose => true})
++    makedirs(om, :mode => 0755, :verbose => true)
+     chmod(0755, om)
+-    install(mf, omf, {:mode => 0644, :preserve => true, :verbose => true})
++    install(mf, omf, :mode => 0644, :preserve => true, :verbose => true)
+ 
+     gzip = %x{which gzip}
+     gzip.chomp!
