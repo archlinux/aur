@@ -1,7 +1,7 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=python-imaplib2-git
-pkgver=r146.e969a3f
-pkgrel=3
+pkgver=r155.08e267c
+pkgrel=1
 pkgdesc="Threaded Python IMAP4 client"
 arch=("any")
 url="https://github.com/jazzband/imaplib2"
@@ -12,12 +12,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
     "${pkgname}::git+https://github.com/jazzband/imaplib2.git"
-    "pr4_pr6_pr15.patch"
     "version.patch"
 )
 md5sums=(
     "SKIP"
-    "c06e73313173edf6311c803111cbd9b9"
     "e4fef5ad967bc93be04ba3dd325c7cae"
 )
 
@@ -30,7 +28,6 @@ prepare() {
     cd "$pkgname"
 
     # apply patches
-    patch -p1 -i "$srcdir/pr4_pr6_pr15.patch"
     patch -p1 -i "$srcdir/version.patch"
 
     # discard original imaplib2.py and rename imaplib2.py3 to imaplib2.py
