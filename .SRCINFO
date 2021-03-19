@@ -1,7 +1,7 @@
 pkgbase = rpi-imager
 	pkgdesc = Raspberry Pi Imaging Utility
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,9 @@ pkgbase = rpi-imager
 	depends = qt5-svg
 	depends = qt5-tools
 	source = rpi-imager-1.6.tar.gz::https://github.com/raspberrypi/rpi-imager/archive/v1.6.tar.gz
+	source = remove_update_checking.patch
 	sha256sums = 811f9c261f82f75eefb9129570c47ff6653c1e9af08d9ed0b877261b4d184685
+	sha256sums = eaffe8e2f1a958575d746b06460f39157427e894fb13bd78264a0d443cdeaf2f
 
 pkgname = rpi-imager
 

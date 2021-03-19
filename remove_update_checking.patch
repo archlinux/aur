@@ -1,0 +1,25 @@
+Index: main.qml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.qml b/main.qml
+--- a/main.qml	(revision 906ceabaecf060e0720dd2c71e140f8347101b42)
++++ b/main.qml	(date 1616171499168)
+@@ -955,16 +955,6 @@
+             for (var i in oslist) {
+                 osmodel.insert(osmodel.count-2, oslist[i])
+             }
+-
+-            if ("imager" in o) {
+-                var imager = o["imager"]
+-                if ("latest_version" in imager && "url" in imager) {
+-                    if (imageWriter.isVersionNewer(imager["latest_version"])) {
+-                        updatepopup.url = imager["url"]
+-                        updatepopup.openPopup()
+-                    }
+-                }
+-            }
+         })
+     }
+ 
