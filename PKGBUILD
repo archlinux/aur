@@ -1,9 +1,9 @@
 # Maintainer: Dr-Noob <peibolms at gmail dot com>
 _name=peakperf
 pkgname="$_name-git"
-pkgver=v1.1.r3.g634b98e
+pkgver=v1.4.r0.g60ded32
 pkgrel=1
-pkgdesc="Benchmark to achieve peak performance on x86_64 CPUs and NVIDIA GPUs"
+pkgdesc="Microbenchmark to achieve peak performance on x86_64 CPUs and NVIDIA GPUs"
 arch=('x86_64')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
@@ -35,5 +35,6 @@ build() {
 package() {
   cd "$srcdir/$_name"
   DESTDIR="$pkgdir" make -C build install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE"    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "peakperf.8" "$pkgdir/usr/share/man/man8/peakperf.8.gz"
 }
