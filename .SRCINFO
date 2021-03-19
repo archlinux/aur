@@ -1,6 +1,6 @@
 pkgbase = vfio-kvm
 	pkgdesc = A systemd service that send a D-Bus signal when a QEMU evdev hotkey is pressed.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/dangle/vfio-kvm
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = vfio-kvm
 	conflicts = vfio-kvm-git
 	backup = etc/vfio-kvm.yaml
 	backup = etc/libvirt/hooks/qemu
-	source = vfio-kvm-2.0.0.tar.gz::https://github.com/dangle/vfio-kvm/archive/2.0.0.tar.gz
-	md5sums = 082a75289bc8534cf9725d08ebab4e29
+	source = vfio-kvm-2.0.1.tar.gz::https://github.com/dangle/vfio-kvm/archive/2.0.1.tar.gz
+	md5sums = 723a647a564a80667e7cd93a47f22b3e
 
 pkgname = vfio-kvm
 
