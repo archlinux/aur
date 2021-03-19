@@ -2,15 +2,15 @@
 
 
 pkgname=octetos-coreutils
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Similar to coretils but is a C ++ API."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/octetos-coreutils.git"
-depends=('octetos-core')
+depends=('octetos-core' 'check')
 #backup=('etc/nanorc')
-md5sums=('b19aa1b002deceee3872f4dc6bc7de9e')
+md5sums=('9875ca291a9f6bd717d2a8b75d0aa8eb')
 source=(https://github.com/azaeldevel/${pkgname}/archive/${pkgver}-alpha.tar.gz)
 
 build() {
