@@ -310,7 +310,7 @@ index 52030f142..fd695c741 100644
      else if (hps == 6)
          previews = HiddenPreviewsAlways;
      setHiddenPreviews(previews);
-+    
++
 +    setUnredirectFullscreen(config.readEntry("UnredirectFullscreen",Options::defaultUnredirectFullscreen()));
  
      auto interfaceToKey = [](OpenGLPlatformInterface interface) {
