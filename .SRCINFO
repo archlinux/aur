@@ -8,7 +8,7 @@ pkgbase = reddsaver-bin
 	provides = reddsaver
 	options = strip
 	source = https://github.com/manojkarthick/reddsaver/releases/download/v0.3.2/reddsaver-0.3.2-x86_64.tar.gz
-	sha256sums = 3f4d65f7c79f35cdf67752dd6c543a6237e4951d4144db0132731e2e9c5b8c58
+	sha256sums = 97eec609728442097b84e4e6574aa9c1f3d0240243addae85f0bcc485c419ccd
 
 pkgname = reddsaver-bin
 
