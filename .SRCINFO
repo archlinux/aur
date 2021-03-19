@@ -1,7 +1,7 @@
 pkgbase = eka2l1-git
 	pkgdesc = Experimental Symbian OS emulator (GIT version)
-	pkgver = 4188.df86afbc
-	pkgrel = 2
+	pkgver = 4195.b86731a2
+	pkgrel = 1
 	url = https://github.com/EKA2L1/EKA2L1
 	arch = x86_64
 	license = GPL2
