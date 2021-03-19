@@ -1,6 +1,6 @@
 # Maintainer: Ben <bensongsyz@gmail.com>
 pkgname=okular-vim-colemak
-pkgver=v20.12.2
+pkgver=v20.12.3
 pkgrel=1
 pkgdesc="Document Viewer with colemak vim-binding"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('okular')
 makedepends=('unzip' 'extra-cmake-modules' 'appstream' 'kdoctools')
 source=("$pkgname-$pkgver.zip::https://invent.kde.org/graphics/okular/-/archive/$pkgver/okular-$pkgver.zip"
         "pageview_colemak.patch")
-sha512sums=('c12167bb391bc0372a94b986aad9b50429a9658cdb41ea5d923a63dfaca27d5ae6608c9569e0ecdf0595f3fe945dfa967f585a68dde06815906799e49cffd1e9'
+sha512sums=('21cabe63161e98291ca2de8c9832f9a626fa274cd8159c6aedb90d92ea578861cdb9770458edc347f5d05eebd84d640052ac278c5d6220d0a2042ae5a961e248'
             '90f3ce005333e0656af89be331515cbaea306c89fedd28a3d32d95cffeff79aeb3dc0c7a49bcfbde24d1d66c6dd0fc6295fe60f3aab0c695634639b8c3fb1dbe')
 
 prepare() {
