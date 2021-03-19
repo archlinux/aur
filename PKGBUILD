@@ -1,16 +1,17 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-chameleon
-pkgver=3.8.1
-pkgrel=2
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="Fast HTML/XML Template Compiler"
 arch=('any')
-license=('custom:BSD' 'ZPL')
+license=('BSD' 'ZPL')
 url="http://www.pagetemplates.org/"
 depends=('python')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/malthe/chameleon/archive/$pkgver.tar.gz")
-sha512sums=('d4a4b3ac0b59865a7ea1d9ede7f08d991296c1d08a48c7290b9e2864afa6527237d8dee604114918f3b5035f2cc915bf6218d0758ebcd393f2103bb0751f6ea2')
+checkdepends=('python-zope-testrunner')
+source=("https://github.com/malthe/chameleon/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('72cbd21f083d14b056539c515e43daaca01d923e065b6eca511f4e09486eb8e3fa61d6823dc78cca75f71926050aa04e0f961c9ddd728e15f55408e405f3c7aa')
 
 build() {
   cd chameleon-$pkgver
@@ -19,11 +20,11 @@ build() {
 
 check() {
   cd chameleon-$pkgver
-  python setup.py test
+  python -m zope.testrunner --path src
 }
 
 package() {
   cd chameleon-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
