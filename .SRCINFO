@@ -1,5 +1,5 @@
 pkgbase = apt
-	pkgver = 2.1.7
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://packages.debian.org
 	arch = i686
@@ -22,11 +22,12 @@ pkgbase = apt
 	makedepends = perl-unicode-linebreak
 	makedepends = perl-pod-parser
 	makedepends = po4a
+	makedepends = xxhash
 	provides = libapt-inst
 	provides = libapt-pkg
 	provides = libapt-pkg-dev
 	provides = apt-utils
-	source = git+https://salsa.debian.org/apt-team/apt.git#tag=2.1.7
+	source = git+https://salsa.debian.org/apt-team/apt.git#tag=2.2.0
 	source = https://github.com/mquinson/po4a/releases/download/v0.60/po4a-0.60.tar.gz
 	sha256sums = SKIP
 	sha256sums = c8d9c28758fa007e8e2989b5820c55910a6533dab581208d0c8acf4d43027b59
@@ -35,8 +36,11 @@ pkgname = apt
 	pkgdesc = Command-line package manager used on Debian-based systems
 	depends = gnupg
 	depends = curl
-	depends = xz
+	depends = libseccomp
+	depends = perl
+	depends = xxhash
 
 pkgname = apt-docs
 	pkgdesc = Documentation for apt
+	arch = any
 
