@@ -1,7 +1,7 @@
 pkgbase = cvechecker
 	pkgdesc = a local CVE checker tool
 	pkgver = 4.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/sjvermeu/cvechecker
 	install = cvechecker.install
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = cvechecker
 	groups = system
 	license = GPL
 	makedepends = autoconf
-	makedepends = libbsd
 	depends = libconfig>=1.3
 	depends = sqlite3
 	depends = wget
 	depends = libxslt
 	depends = jq
+	depends = libbsd
 	provides = cvechecker
 	conflicts = cvechecker-svn
 	source = https://github.com/sjvermeu/cvechecker/archive/cvechecker-4.0.zip

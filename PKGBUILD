@@ -3,14 +3,14 @@
 
 pkgname=cvechecker
 pkgver=4.0
-pkgrel=0
+pkgrel=1
 pkgdesc="a local CVE checker tool"
 arch=('i686' 'x86_64')
 url="https://github.com/sjvermeu/cvechecker"
 license=('GPL')
 groups=('system')
-depends=('libconfig>=1.3' 'sqlite3' 'wget' 'libxslt' 'jq')
-makedepends=('autoconf' 'libbsd')
+depends=('libconfig>=1.3' 'sqlite3' 'wget' 'libxslt' 'jq' 'libbsd')
+makedepends=('autoconf')
 provides=('cvechecker')
 conflicts=('cvechecker-svn')
 replaces=()
