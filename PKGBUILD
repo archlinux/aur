@@ -2,13 +2,13 @@
 pkgname=rpiplay-git
 _pkgname=rpiplay
 pkgver=1.2.r201.4a65c7b
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source AirPlay mirroring service"
-arch=(x86_64)
+arch=(x86_64 armv6h)
 url="https://github.com/FD-/RPiPlay"
 license=('GPL3')
 depends=(avahi gstreamer-vaapi gst-plugins-bad gst-libav)
-makedepends=(git cmake libplist openssl) 
+makedepends=(git cmake libplist openssl)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="${_pkgname}.install"

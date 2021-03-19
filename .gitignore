@@ -2,3 +2,4 @@ pkg/
 rpiplay/
 rpiplay-git-*
 src/
+Dockerfile

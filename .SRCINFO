@@ -1,10 +1,11 @@
 pkgbase = rpiplay-git
 	pkgdesc = An open-source AirPlay mirroring service
 	pkgver = 1.2.r201.4a65c7b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FD-/RPiPlay
 	install = rpiplay.install
 	arch = x86_64
+	arch = armv6h
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
