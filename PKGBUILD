@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A bridge from UFOs to FontTools objects."
 url="https://github.com/googlefonts/ufo2ft"
 checkdepends=('python-pytest' 'python-skia-pathops')
-depends=('python-booleanoperations' 'python-cffsubr' 'python-compreffor' 'python-cu2qu' 'python-defcon' 'python-fonttools>=4.21.1')
+depends=('python-booleanoperations' 'python-cffsubr' 'python-cu2qu' 'python-defcon' 'python-fonttools>=4.21.1')
 makedepends=('python-setuptools')
 optdepends=('python-compreffor')
 license=('MIT')

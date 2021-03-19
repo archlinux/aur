@@ -10,7 +10,6 @@ pkgbase = python-ufo2ft
 	makedepends = python-setuptools
 	depends = python-booleanoperations
 	depends = python-cffsubr
-	depends = python-compreffor
 	depends = python-cu2qu
 	depends = python-defcon
 	depends = python-fonttools>=4.21.1
