@@ -23,5 +23,5 @@ package() {
 check() {
     cd "$_pkgname-$pkgver"
     python setup.py build_ext --inplace
-    PYTHONPATH=src pytest tests
+    PYTHONPATH=src pytest tests/
 }
