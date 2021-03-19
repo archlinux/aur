@@ -3,7 +3,7 @@
 
 pkgbase='oclint'
 pkgname=("${pkgbase}")
-pkgver=20.11
+pkgver=21.03
 pkgrel=0
 pkgdesc="A static source code analysis tool to improve quality and reduce
          defects for C, C++ and Objective-C"
@@ -12,17 +12,15 @@ url="http://oclint.org/"
 license=('BSD')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}-git")
-depends=('clang' 'llvm-libs' 'gcc-libs' 'glibc' 'xz' 'libffi' 'libedit' 'libxml2' 'icu' 'zlib')
+depends=('clang>=11.1.0' 'llvm-libs>=11.1.0' 'gcc-libs' 'glibc' 'xz' 'libffi' 'libedit' 'libxml2' 'icu' 'zlib')
 makedepends=('gcc' 'binutils' 'make' 'cmake' 'ninja' 'git' 'python')
 options=(!ccache)
 source=(
     "${pkgbase}::git+https://github.com/oclint/oclint#tag=v${pkgver}"
     "arch-llvm.patch"
 )
-sha256sums=(
-    "SKIP"
-    "764f44e5af361b851938a733bd6d06d5b1e8badbd622f5c58cd249a1d02613ca"
-)
+sha256sums=('SKIP'
+            '764f44e5af361b851938a733bd6d06d5b1e8badbd622f5c58cd249a1d02613ca')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
