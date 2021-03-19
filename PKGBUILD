@@ -1,10 +1,11 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Old Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-redream-git
-pkgver=r1077.e032445a
+pkgver=r1104.bf4d812d
 pkgrel=1
 pkgdesc='Sega Dreamcast core'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/libretro/redream'
 license=('GPL2')
 groups=('libretro-unstable')
@@ -30,7 +31,7 @@ build() {
 package() {
   cd libretro-redream/deps/libretro
 
-  install -Dm 644 redream_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+  install -Dm 644 retrodream_libretro.so -t "${pkgdir}"/usr/lib/libretro/
 }
 
 # vim: ts=2 sw=2 et:
