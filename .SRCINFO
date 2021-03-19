@@ -1,8 +1,8 @@
 pkgbase = kde2-kdelibs-git
 	pkgdesc = Historical copy of the libs module of KDE 2, adapted to compile on modern systems
-	pkgver = 2.2.2.r23941.b87a75db2
+	pkgver = 2.2.2.r24019.1e989a6f0
 	pkgrel = 1
-	url = https://github.com/sandsmark/kdelibs
+	url = https://invent.kde.org/sandsmark/kde2-libs
 	arch = i686
 	arch = x86_64
 	groups = kde2
@@ -20,7 +20,7 @@ pkgbase = kde2-kdelibs-git
 	conflicts = kde2-kdelibs
 	conflicts = plasma-workspace
 	options = libtool
-	source = git+https://github.com/sandsmark/kdelibs.git
+	source = git+https://invent.kde.org/sandsmark/kde2-kdelibs.git
 	md5sums = SKIP
 
 pkgname = kde2-kdelibs-git
