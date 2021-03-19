@@ -2,14 +2,14 @@
 
 
 pkgname=octetos-db-maria
-pkgver=1.4.1
+pkgver=1.10.0
 pkgrel=2
 pkgdesc="API to access database, MariaDB component."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/octetos-db"
 depends=('octetos-db-abstract' 'mariadb-clients')
-md5sums=('a5f9a09165205ed2b3a801e01a4f0f94')
+md5sums=('4f3c75ccdd26bea226ae2a13538d0883')
 source=(https://github.com/azaeldevel/${pkgname}/archive/${pkgver}-alpha.tar.gz)
 
 build() {
