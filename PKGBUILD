@@ -1,7 +1,7 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=core
-pkgver=7.4.0
+pkgver=7.5.0
 pkgrel=1
 pkgdesc="Common Open Research Emulator"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('openvswitch: Open vSwitch SDN support'
 backup=('etc/core/core.conf')
 source=("https://github.com/coreemu/core/archive/release-$pkgver.tar.gz"
         'core-daemon.service')
-md5sums=('d1f787d4b4de529faa0ff42be0804fad'
+md5sums=('b119b48872439ad1d63bcc1edab4f25e'
          '91be51f861a0e166c643a885d1bf1eba')
 
 prepare() {
