@@ -1,26 +1,25 @@
-# Maintainer: Philip Abernethy<chais.z3r0@gmail.com>
+# Maintainer: Holger Schramm <dev@strace.it>
+# Contributor: Philip Abernethy<chais.z3r0@gmail.com>
+
 pkgname=sdl2-jstest-git
 _gitname=sdl-jstest
-pkgver=51.159fe1b
+pkgver=r82.aafbdb1
 pkgver() {
 	cd "${_gitname}"
-#	printf "%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	echo r.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 pkgrel=1
 pkgdesc="Simple SDL joystick test application for the command line."
-url="https://github.com/Grumbel/sdl-jstest"
-arch=('x86_64' 'i686')
+url="https://gitlab.com/sdl-jstest/sdl-jstest.git"
+arch=('x86_64' 'i686' 'aarch64')
 license=('GPLv3 or any later version')
-depends=('sdl2' 'ncurses' 'docbook2x')
-makedepends=('git' 'cmake')
+depends=('sdl' 'sdl2' 'ncurses')
+makedepends=('git' 'cmake' 'docbook2x')
 provides=('sdl2-jstest')
-install="${pkgname}.install"
 
-source=('sdl-jstest::git+https://github.com/Grumbel/sdl-jstest.git'
-	"${install}")
-sha512sums=('SKIP'
-            '6700f472466f24dcabc9be55f23f9e872f724f66024ac831daa11e61b6a6f6938111de035a4572c935cb01e7539d823ff26d48cc193935c00944bd2da23e3fcf')
+source=('sdl-jstest::git+https://gitlab.com/sdl-jstest/sdl-jstest.git')
+sha512sums=('SKIP')
 
 build() {
 	cd "${srcdir}/${_gitname}"

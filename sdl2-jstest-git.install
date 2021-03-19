@@ -1,7 +1,0 @@
-post_install() {
-	mandb
-}
-
-post_remove() {
-	mandb
-}
