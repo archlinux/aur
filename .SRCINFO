@@ -2,6 +2,7 @@ pkgbase = plantsvszombies
 	pkgdesc = plantsvszombies by deepin-wine5
 	pkgver = 1.1
 	pkgrel = 1
+	url = https://github.com/zzy-ac/plantsvszombies
 	arch = x86_64
 	license = GPL
 	depends = deepin-wine5

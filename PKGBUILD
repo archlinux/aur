@@ -9,7 +9,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="plantsvszombies by deepin-wine5"
 arch=(x86_64)
-url=""
+url="https://github.com/zzy-ac/plantsvszombies"
 license=('GPL')
 depends=('deepin-wine5' 'deepin-wine5-helper')
 provides=(plantsvszombies=$pkgver)
