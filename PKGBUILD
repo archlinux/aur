@@ -2,7 +2,7 @@
 
 
 pkgname=octetos-db-abstract
-pkgver=0.1.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="API to access database, abstract component."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 url="https://github.com/azaeldevel/octetos-db-abstract"
 depends=('octetos-core')
 #backup=('etc/nanorc')
-md5sums=('6af516cd3d515429cf2cf52caa488ac2')
+md5sums=('1ac1e74d3562078bf430c6570323501e')
 source=(https://github.com/azaeldevel/${pkgname}/archive/${pkgver}-alpha.tar.gz)
 
 build() {
