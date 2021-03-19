@@ -1,0 +1,6 @@
+#Set Garmin User
+GARMIN_USER=foo
+
+#Set Garmin Password
+GARMIN_PW=bar
+

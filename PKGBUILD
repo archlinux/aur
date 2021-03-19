@@ -2,7 +2,7 @@
 
 pkgname=withings-sync
 pkgver=v3.1.2.r5.g3bb410b
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for synchronisation of Withings (ex. Nokia Health Body) to Garmin Connect and Trainer Road."
 arch=(any)
 url="https://github.com/jaroslawhartman/withings-sync"
@@ -11,7 +11,7 @@ makedepends=("python")
 source=("$pkgname::git+https://github.com/jaroslawhartman/withings-sync.git"
         "${pkgname}.service"
         "${pkgname}.timer"
-        "${pkgname}.conf")
+        "${pkgname}.conf.example")
 
 pkgver() {
     cd $pkgname
@@ -29,7 +29,7 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
-  install -Dm600 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+  install -Dm600 "${srcdir}/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}/${pkgname}.conf.example"
 
   echo "1.) Run withings-sync as the <local user> including enabling the access to withings"
   echo "2.) Add User=<local user> to the service file"

@@ -1,7 +1,7 @@
 pkgbase = withings-sync
 	pkgdesc = A tool for synchronisation of Withings (ex. Nokia Health Body) to Garmin Connect and Trainer Road.
 	pkgver = v3.1.2.r5.g3bb410b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaroslawhartman/withings-sync
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = withings-sync
 	source = withings-sync::git+https://github.com/jaroslawhartman/withings-sync.git
 	source = withings-sync.service
 	source = withings-sync.timer
-	source = withings-sync.conf
+	source = withings-sync.conf.example
 	md5sums = SKIP
 	md5sums = cabc6d7ff62a22ed8b6722210c873bb6
 	md5sums = fdcbfb1d8c6081077048da6d92b0721f
