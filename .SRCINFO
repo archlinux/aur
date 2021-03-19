@@ -1,0 +1,29 @@
+pkgbase = xdg-desktop-portal-wlr-chooser-git
+	pkgdesc = xdg-desktop-portal backend for wlroots with graphical display chooser
+	pkgver = v0.2.0.r10.g6c8f6ca
+	pkgrel = 1
+	url = https://github.com/emersion/xdg-desktop-portal-wlr
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = wayland
+	makedepends = scdoc
+	depends = xdg-desktop-portal
+	depends = pipewire
+	depends = iniparser
+	optdepends = libpipewire02: For Chromium WebRTC desktop screencast (see project GitHub page)
+	optdepends = obs-xdg-portal: OBS Studio plugin for XDG Desktop Portal (or wlrobs for direct wlroots integration)
+	provides = xdg-desktop-portal-wlr
+	provides = xdg-desktop-portal-wlr-git
+	provides = xdg-desktop-portal-impl
+	conflicts = xdg-desktop-portal-wlr
+	conflicts = xdg-desktop-portal-wlr-git
+	options = debug
+	options = !strip
+	source = xdg-desktop-portal-wlr-chooser-git::https://github.com/columbarius/xdg-desktop-portal-wlr.git#branch=dmenu-chooser
+	sha512sums = SKIP
+
+pkgname = xdg-desktop-portal-wlr-chooser-git
+
