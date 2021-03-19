@@ -5,7 +5,7 @@
 # Contributor: Florian Pritz <bluewind@xinu.at>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.30.1
+pkgver=3.31.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
@@ -40,21 +40,11 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha256sums=('44e54a6186af14d01affa06bf7391cfe8fc2460bd4ba211aab5469d8b1ca5b4b'
+sha256sums=('6b85c1c9563e4c4a56ea57272768b6e464f5881cdf97aa0a6c080c001b3582ae'
             '1b61aeeadb57ba3d6d47ba63f75c20362b2af6cae0324593bc4668b5d5b07aa7'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
             'db643d69e840dfd5d7849e857291f15fd60913527402fde806ce3911e3523063')
-
-#prepare() {
-#  cd "syslog-ng-$pkgver"
-#
-#  # the version in pkg-config is 0.0.0 and so it won't detect the flags without
-#  # this. since your version is newer this is an easy fix for now, but should
-#  # eventually be removed when this bug is fixed:
-#  # https://bugs.archlinux.org/task/61888
-#  sed -i -e 's|^LMC_MIN_VERSION="1.0.0"|LMC_MIN_VERSION="0.0.0"|' configure.ac configure
-#}
 
 build() {
   cd "syslog-ng-$pkgver"
