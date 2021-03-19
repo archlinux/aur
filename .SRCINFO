@@ -1,10 +1,10 @@
 pkgbase = swayshot
 	pkgdesc = Sway screenshots: screen, window or region.
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://gitlab.com/radio_rogal/swayshot
 	arch = any
-	license = Apache
+	license = GPL3
 	depends = sway
 	depends = xdg-user-dirs
 	depends = grim
@@ -13,9 +13,10 @@ pkgbase = swayshot
 	optdepends = wl-clipboard: copy the full path to clipboard
 	optdepends = xsel: copy the full path to clipboard
 	optdepends = xclip: copy the full path to clipboard
+	optdepends = curl: upload a screenshot to x0.at
 	conflicts = swaygrab-helper
-	source = https://gitlab.com/radio_rogal/swayshot/-/archive/2.2.0/swayshot-2.2.0.tar.bz2
-	sha256sums = 4cb7f6317f79b7396940464c8a5974bdc5fe01f546f0a6920ea4d7060f848e01
+	source = https://gitlab.com/radio_rogal/swayshot/-/archive/2.3.0/swayshot-2.3.0.tar.bz2
+	sha256sums = ece411f2fe889dc6baf1288801f5659f277f7b296fc06a269323b22649d94bc6
 
 pkgname = swayshot
 
