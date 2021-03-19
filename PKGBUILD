@@ -2,7 +2,7 @@
 _name=micromamba
 pkgname=micromamba-bin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny version of mamba, the fast conda package installer."
 arch=("x86_64")
 url="https://github.com/mamba-org/mamba"
@@ -11,7 +11,7 @@ source=("${_name}-${pkgver}.tar.bz2::https://micromamba.snakepit.net/api/microma
 options=(strip)
 depends=("glibc")
 provides=("${_name}")
-sha256sums=('6f3d0b6818a2a7d39430b99b130e230a9170733dce696d868fd54137b97c54dd')
+sha256sums=('89e4d345fdbb70b9f73165177d1746f8ae65ba62a53da82fb939628abb4bc7b5')
 
 check() {
 	export PREFIX="${srcdir}"
