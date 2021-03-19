@@ -1,8 +1,8 @@
 # Maintainer: lmartinez-mirror
 # Contributor: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
 pkgname=vim-fzf-git
-pkgver=r429.02a192e
-pkgrel=1
+pkgver=r431.1ef72b1
+pkgrel=2
 pkgdesc='Vim plugin that integrates fzf, the fuzzy file finder'
 arch=('any')
 license=('MIT')
@@ -15,8 +15,9 @@ optdepends=('bat: syntax-highlighted preview support'
             'ripgrep: Rg command support'
             'the_silver_searcher: Ag command support')
 makedepends=('git')
-source=('git+https://github.com/junegunn/fzf.vim')
-md5sums=('SKIP')
+source=("git+$url" 'LICENSE')
+sha256sums=('SKIP'
+            '595e5c7670f76137827109954edd66d57ff85ce6f79a7548ea5dd588a4e22f7f')
 
 pkgver() {
   cd fzf.vim
@@ -25,7 +26,8 @@ pkgver() {
 
 package() {
   cd fzf.vim
-  install -Dm644  plugin/fzf.vim "${pkgdir}/usr/share/vim/vimfiles/plugin/fzf/fzf.vim"
-  find autoload bin doc -type f -exec install -Dm644 '{}' \
-    "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 644  plugin/fzf.vim "$pkgdir/usr/share/vim/vimfiles/plugin/fzf/fzf.vim"
+  find bin -type f -exec install -Dm 755 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  find autoload doc -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 444 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
