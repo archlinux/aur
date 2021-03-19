@@ -1,0 +1,4 @@
+post_install() {
+	       echo "To make weechat autoload the weechat-xmpp script you need to symlink it to your python autoload folder."
+	       echo "ln -s /usr/lib/weechat/python/jabber.py /path-to-your-weechat-config-folder/python/autoload/"
+}

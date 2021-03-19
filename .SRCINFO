@@ -1,0 +1,17 @@
+pkgbase = weechat-xmpp-git
+	pkgdesc = A fork of the jabber plugin for weechat
+	pkgver = unknown
+	pkgrel = 1
+	url = https://github.com/sleduc/weechat-xmpp
+	install = weechat-xmpp.install
+	arch = any
+	license = GPL3
+	depends = weechat
+	depends = python-xmpppy
+	depends = python
+	provides = weechat-xmpp
+	source = git+https://github.com/sleduc/weechat-xmpp.git#branch=master
+	md5sums = SKIP
+
+pkgname = weechat-xmpp-git
+
