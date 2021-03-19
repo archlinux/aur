@@ -3,7 +3,7 @@
 pkgname=ghost-deps-meta
 pkgver=20210319
 pkgrel=1
-pkgdesc="Provide no longer existing packages for find and fix AUR pkgbuilds"
+pkgdesc="Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix"
 arch=(any)
 url=""
 license=(GPL)
@@ -13,13 +13,15 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           nvidia-96xx-utils nvidia-173xx-utils nvidia-318xx-utils nvidia-310xx-utils
           nvidia-304xx-utils nvidia-346xx-utils nvidia-352xx-utils nvidia-450xx-utils
           jack-audio-connection-kit opencl-catalyst xcursor-hackneyed eject jdk5
-          python2-jswebkit skype
+          python2-jswebkit skype skype-legacy
           xf86dgaproto resourceproto scrnsaverproto bigreqsproto compositeproto
           dmxproto fontsproto glproto inputproto randrproto recordproto renderproto
           resourceproto scrnsaverproto videoproto xcmiscproto xf86dgaproto xf86driproto
-          xineramaproto
+          xineramaproto xextproto xf86vidmodeproto xproto dri3proto presentproto
+          dri3proto presentproto
+          llvm-libs-pypy-stm clang-pypy-stm llvm-pypy-stm
 )
-# skype-legacy go-pie
+# go-pie gcc-multilib
 # Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit
 #
 # Not to provide: udev

@@ -1,5 +1,5 @@
 pkgbase = ghost-deps-meta
-	pkgdesc = Provide no longer existing packages for find and fix AUR pkgbuilds
+	pkgdesc = Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix
 	pkgver = 20210319
 	pkgrel = 1
 	arch = any
@@ -32,6 +32,7 @@ pkgbase = ghost-deps-meta
 	provides = jdk5
 	provides = python2-jswebkit
 	provides = skype
+	provides = skype-legacy
 	provides = xf86dgaproto
 	provides = resourceproto
 	provides = scrnsaverproto
@@ -51,6 +52,16 @@ pkgbase = ghost-deps-meta
 	provides = xf86dgaproto
 	provides = xf86driproto
 	provides = xineramaproto
+	provides = xextproto
+	provides = xf86vidmodeproto
+	provides = xproto
+	provides = dri3proto
+	provides = presentproto
+	provides = dri3proto
+	provides = presentproto
+	provides = llvm-libs-pypy-stm
+	provides = clang-pypy-stm
+	provides = llvm-pypy-stm
 
 pkgname = ghost-deps-meta
 
