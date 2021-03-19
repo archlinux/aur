@@ -27,7 +27,7 @@ noextract=(
     )
 sha256sums=('80dec351d1a593e8ad152636971a48d0c81bfcfab92c87f3604663616f1e8bc5'
             'd2e93e07d29fdc16c1efdebf16363c7f6afcae59b0b6b160d336ee93f9055d73'
-            '8be485f9141f3227f69092e84be27d87f0231ea141780ec80ebf347a9fb0e53b'
+            'SKIP'
             '85aff59221938dd83aa3808910fb455c64f3f0936604bfaad7b8d27c01e3a7ed'
             '0310782968fe0ba2910e8a4fc3920ab58c0b8f91c66a66f6cff82cd0d6d31612'
             'aab27b427cb21108d831f2d9ddc89ce0948f7e8cb82e4bb2dc1bc82c6676224f'
@@ -52,7 +52,7 @@ package() {
 	# Creating the necessary directories
 	install -dm755 ${pkgdir}/usr
 	install -dm755 ${pkgdir}/usr/bin
-  install -dm755 ${pkgdir}/usr/share/applications
+    install -dm755 ${pkgdir}/usr/share/applications
 	install -dm755 ${pkgdir}/usr/share/${pkgname}
 	install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-stable
 	install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}/${_name}-rc
