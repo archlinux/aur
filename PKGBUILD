@@ -4,7 +4,7 @@
 _gemname=hitimes
 pkgname=ruby-${_gemname}
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, high resolution timer library for recording performance metrics'
 url='https://github.com/copiousfreetime/hitimes'
 arch=('x86_64')
