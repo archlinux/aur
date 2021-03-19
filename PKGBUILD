@@ -4,7 +4,7 @@
 
 pkgname=gtk3-no_deadkeys_underline
 pkgver=3.24.27
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Like gtk3 in extra but with a patch to disable dead keys having an underline below them while typing"
 arch=(x86_64)
@@ -46,7 +46,8 @@ build() {
     -D cloudproviders=true \
     -D colord=yes \
     -D gtk_doc=true \
-    -D man=true
+    -D man=true \
+    -D tracker3=true
   meson compile -C build
 }
 
