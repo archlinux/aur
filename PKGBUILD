@@ -1,13 +1,13 @@
-# Maintainer: Stephan Friedrichs <deduktionstheorem at gmail dot com>
+# Maintainer: Stephan Friedrichs <accounts at sfriedri dot de>
 
 pkgname='leda-free'
 pkgver='6.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='C++ class library for efficient data types and algorithms'
-url='http://www.algorithmic-solutions.com/leda/'
+url='https://www.algorithmic-solutions.com/index.php/products/leda-free-edition'
 license=('custom:LEDA Free License')
 arch=('x86_64')
-source=("http://www.algorithmic-solutions.info/free/Packages/LEDA-${pkgver}-free-fedora-core-8-64-g++-4.1.2-mt.tar.gz")
+source=("https://www.algorithmic-solutions.info/free/Packages/LEDA-${pkgver}-free-fedora-core-8-64-g++-4.1.2-mt.tar.gz")
 sha256sums=('281057aa2077972d46e5a8e42cecb5633fdf7682bc4ff8ca83e31bde6ae06db9')
 noextract=(${source[0]})
 depends=('gcc-libs' 'tcsh')
