@@ -1,0 +1,14 @@
+pkgbase = gowords
+	pkgdesc = CLI wrapper for dictionaryapi.dev. Search word definitions and memorize words.
+	pkgver = v0.0.6
+	pkgrel = 1
+	url = https://github.com/Parth576/dictionary-cli
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	depends = glibc
+	source = https://github.com/Parth576/dictionary-cli/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = 149d8ca959a64c9f4a2757faf12d674d2136b1a2a010124ec4ffa9236bb898dd
+
+pkgname = gowords
+
