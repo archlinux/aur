@@ -1,6 +1,6 @@
 pkgbase = kime
 	pkgdesc = Korean IME
-	pkgver = 1.3.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
@@ -11,18 +11,16 @@ pkgbase = kime
 	makedepends = cmake
 	makedepends = cairo
 	makedepends = libxcb
-	optdepends = kime-window: window support
+	makedepends = dbus
 	optdepends = gtk2: gtk2 support
 	optdepends = gtk3: gtk3 support
 	optdepends = gtk4: gtk4 support
 	optdepends = qt5-base: qt5 support
 	optdepends = qt6-base: qt6 support
-	optdepends = libxcb: xim support
-	optdepends = cairo: xim support
 	provides = kime
 	conflicts = kime
-	source = kime-1.3.1.tar.gz::https://github.com/Riey/kime/archive/v1.3.1.tar.gz
-	md5sums = 19366b3d7450a9ce80d59ee54443b223
+	source = kime-2.1.0.tar.gz::https://github.com/Riey/kime/archive/v2.1.0.tar.gz
+	md5sums = 9da39218d506db4534521f17d66cd351
 
 pkgname = kime
 

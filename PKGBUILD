@@ -1,26 +1,23 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=1.3.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
-optdepends=('kime-window: window support'
-            'gtk2: gtk2 support'
+optdepends=('gtk2: gtk2 support'
             'gtk3: gtk3 support'
             'gtk4: gtk4 support'
             'qt5-base: qt5 support'
-            'qt6-base: qt6 support'
-            'libxcb: xim support'
-            'cairo: xim support')
-makedepends=('cargo' 'clang' 'llvm' 'cmake' 'cairo' 'libxcb')
+            'qt6-base: qt6 support')
+makedepends=('cargo' 'clang' 'llvm' 'cmake' 'cairo' 'libxcb' 'dbus')
 arch=('any')
 license=('GPL3')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
 )
-md5sums=('19366b3d7450a9ce80d59ee54443b223')
+md5sums=('9da39218d506db4534521f17d66cd351')
 
 build() {
     cd "${pkgname}-${pkgver}"
