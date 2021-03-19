@@ -1,5 +1,5 @@
 pkgbase = pvz_beta
-	pkgdesc = pvz_beta
+	pkgdesc = pvz_beta 技能魔改版的pvz,源自贴吧老哥分享
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/zzy-ac/plantsvszombies

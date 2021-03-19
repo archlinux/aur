@@ -7,7 +7,7 @@
 pkgname=pvz_beta
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="pvz_beta"
+pkgdesc="pvz_beta 技能魔改版的pvz,源自贴吧老哥分享"
 arch=(x86_64)
 url="https://github.com/zzy-ac/plantsvszombies"
 license=('GPL')
