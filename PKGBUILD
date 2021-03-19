@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=ghost-deps-meta
-pkgver=20210317
+pkgver=20210319
 pkgrel=1
 pkgdesc="Provide no longer existing packages for find and fix AUR pkgbuilds"
 arch=(any)
@@ -14,7 +14,12 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           nvidia-304xx-utils nvidia-346xx-utils nvidia-352xx-utils nvidia-450xx-utils
           jack-audio-connection-kit opencl-catalyst xcursor-hackneyed eject jdk5
           python2-jswebkit skype
-
+          xf86dgaproto resourceproto scrnsaverproto bigreqsproto compositeproto
+          dmxproto fontsproto glproto inputproto randrproto recordproto renderproto
+          resourceproto scrnsaverproto videoproto xcmiscproto xf86dgaproto xf86driproto
+          xineramaproto
 )
 # skype-legacy go-pie
 # Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit
+#
+# Not to provide: udev

@@ -1,6 +1,6 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Provide no longer existing packages for find and fix AUR pkgbuilds
-	pkgver = 20210317
+	pkgver = 20210319
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -32,6 +32,25 @@ pkgbase = ghost-deps-meta
 	provides = jdk5
 	provides = python2-jswebkit
 	provides = skype
+	provides = xf86dgaproto
+	provides = resourceproto
+	provides = scrnsaverproto
+	provides = bigreqsproto
+	provides = compositeproto
+	provides = dmxproto
+	provides = fontsproto
+	provides = glproto
+	provides = inputproto
+	provides = randrproto
+	provides = recordproto
+	provides = renderproto
+	provides = resourceproto
+	provides = scrnsaverproto
+	provides = videoproto
+	provides = xcmiscproto
+	provides = xf86dgaproto
+	provides = xf86driproto
+	provides = xineramaproto
 
 pkgname = ghost-deps-meta
 
