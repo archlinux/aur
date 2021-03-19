@@ -2,7 +2,7 @@
 
 pkgname=sonic-pi
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
