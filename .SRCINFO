@@ -1,6 +1,6 @@
 pkgbase = python-flask-apscheduler
 	pkgdesc = Adds APScheduler support to Flask
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/viniciuschiele/flask-apscheduler
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-flask-apscheduler
 	depends = python-apscheduler
 	depends = python-dateutil
 	depends = python-flask
-	source = python-flask-apscheduler-1.12.0.tar.gz::https://github.com/viniciuschiele/flask-apscheduler/archive/1.12.0.tar.gz
+	source = python-flask-apscheduler-1.12.1.tar.gz::https://github.com/viniciuschiele/flask-apscheduler/archive/1.12.1.tar.gz
 	source = 0001-Don-t-install-LICENSE-file.patch
-	sha256sums = c65dd3287fa8a8985071c6dac1369495f5ad53065c06cc35638ed85b46200d02
+	sha256sums = b1bde39f8c4086cbb8203293d9634c9bb91ce2e4f50ebf1ac05c5255bf193586
 	sha256sums = cc851fa535e506092c4901d2042e5f9b0ac2e6933808d6176825fc172e3498ba
 
 pkgname = python-flask-apscheduler

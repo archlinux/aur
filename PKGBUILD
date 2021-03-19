@@ -5,7 +5,7 @@
 _pipname=Flask-APScheduler
 _reponame=${_pipname,,}
 pkgname=python-$_reponame
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='Adds APScheduler support to Flask'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python' 'python-apscheduler' 'python-dateutil' 'python-flask')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         '0001-Don-t-install-LICENSE-file.patch')
-sha256sums=('c65dd3287fa8a8985071c6dac1369495f5ad53065c06cc35638ed85b46200d02'
+sha256sums=('b1bde39f8c4086cbb8203293d9634c9bb91ce2e4f50ebf1ac05c5255bf193586'
             'cc851fa535e506092c4901d2042e5f9b0ac2e6933808d6176825fc172e3498ba')
 
 prepare() {
