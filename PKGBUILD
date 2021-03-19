@@ -1,7 +1,7 @@
 # Maintainer: Till Faelligen <tfaelligen at gmail dot com>
 pkgname='matrix-conduit-git'
 _pkgname='conduit'
-pkgver=0.1.0.293.g6191c3b
+pkgver=0.1.0.525.gabe9122
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://conduit.rs'
@@ -11,7 +11,7 @@ depends=('openssl')
 makedepends=('rust' 'cargo' 'git')
 provides=('conduit')
 source=(
-  "$_pkgname::git+https://git.koesters.xyz/timo/conduit"
+  "$_pkgname::git+https://gitlab.com/famedly/conduit"
   "conduit-archlinux::git+https://github.com/S7evinK/conduit-archlinux"
 )
 install=install-script.install
@@ -36,4 +36,7 @@ package() {
   install -D -m0644 conduit.service "$pkgdir"/usr/lib/systemd/system/conduit.service
   install -D -m0644 conduit-tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/conduit.conf
   install -D -m0644 conduit.env "$pkgdir"/etc/conduit/config
+  cd ../conduit
+  install -D -m0644 conduit-example.toml "$pkgdir"/etc/conduit/config.toml
+
 }
