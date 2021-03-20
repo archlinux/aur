@@ -95,9 +95,6 @@ ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 export CC='clang'
 export CXX='clang++'
-export AR=llvm-ar
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-update-channel=nightly
