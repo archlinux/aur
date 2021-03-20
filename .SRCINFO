@@ -1,20 +1,20 @@
 pkgbase = sourcetrail
 	pkgdesc = A cross-platform source explorer for C/C++ and Java
-	pkgver = 2020.4.35
+	pkgver = 2021.1.30
 	pkgrel = 1
 	url = https://www.sourcetrail.com
 	arch = x86_64
 	license = LGPL3
 	makedepends = rsync
 	depends = libglvnd
-	provides = sourcetrail=2020.4.35
+	provides = sourcetrail=2021.1.30
 	conflicts = coati
 	replaces = coati
-	noextract = sourcetrail-2020.4.35.tar.gz
+	noextract = sourcetrail-2021.1.30.tar.gz
 	options = !strip
-	source = sourcetrail-2020.4.35.tar.gz::https://github.com/CoatiSoftware/Sourcetrail/releases/download/2020.4.35/Sourcetrail_2020_4_35_Linux_64bit.tar.gz
+	source = sourcetrail-2021.1.30.tar.gz::https://github.com/CoatiSoftware/Sourcetrail/releases/download/2021.1.30/Sourcetrail_2021_1_30_Linux_64bit.tar.gz
 	source = sourcetrail.desktop
-	sha256sums = 8f32791987f5e63d83d4de14bb653fc3a682f1a0c666fa994b6209cb44c73d37
+	sha256sums = 95a4ca91cda4f29605e001f6704ef4c57a0fc86262c03ae11e21c8cd78ccf28f
 	sha256sums = 34d978813c1bba26ed243b15af11ea22800c5d95e4acc430496025d4caf4cc71
 
 pkgname = sourcetrail
