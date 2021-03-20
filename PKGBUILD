@@ -1,7 +1,7 @@
 # Maintainer: Maximilian Moser <maximilian.moser at tuwien dot ac dot at>
 
 pkgname=lightdm-elephant-greeter-git
-pkgver=r10.bcd44ba
+pkgver=r11.2ac1267
 pkgrel=1
 pkgdesc="Simple LightDM greeter that does not need X11"
 arch=("any")

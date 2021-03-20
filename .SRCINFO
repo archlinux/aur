@@ -1,6 +1,6 @@
 pkgbase = lightdm-elephant-greeter-git
 	pkgdesc = Simple LightDM greeter that does not need X11
-	pkgver = r10.bcd44ba
+	pkgver = r11.2ac1267
 	pkgrel = 1
 	url = https://github.com/max-moser/elephant-greeter
 	arch = any
