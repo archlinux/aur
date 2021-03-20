@@ -2,7 +2,7 @@
 
 pkgname=timescaledb-backup
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for dumping and restoring TimescaleDB databases"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-backup"
@@ -10,9 +10,9 @@ license=('custom:TSL')
 depends=('timescaledb' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "https://github.com/timescale/timescaledb/blob/master/tsl/LICENSE-TIMESCALE")
+        "https://raw.githubusercontent.com/timescale/timescaledb/master/tsl/LICENSE-TIMESCALE")
 b2sums=('ab84cac38b68fd82cf986394ebfa51019cac5075c151e900257164d4372c0d7304564ef6ef8bdcc29f93153d878d6af75092c881a1b0b6876015200a7e2e20fb'
-        'e2e7e6a21bd537a6e6957dbf3c8427aa605117e43c1f34dbfb2ac06c1213794d320f60a88bb31b131645f2a436b70fccaee8841917de80fe8486b53eadd77003')
+        '32bf2e976bf68df573329b3e83fe0060557f1c09859dc12f1c1070e6c2ecb29ee9699e981900e39b3a3ccd41384d28ab7a81bcc953e0d34f00d0048d0f1ea028')
 
 prepare() {
   cd "$pkgname-$pkgver"
