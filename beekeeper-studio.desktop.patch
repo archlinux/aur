@@ -3,7 +3,7 @@
 @@ -1,6 +1,6 @@
  [Desktop Entry]
  Name=Beekeeper Studio
--Exec=AppRun
+-Exec=AppRun %U
 +Exec=/usr/bin/beekeeper-studio %F
  Terminal=false
  Type=Application
