@@ -1,7 +1,7 @@
 pkgbase = paraview-opt
 	pkgdesc = Parallel Visualization application using VTK (openmpi version): installed to /opt/
-	pkgver = 5.8.1
-	pkgrel = 3
+	pkgver = 5.9.0
+	pkgrel = 1
 	url = https://www.paraview.org
 	arch = x86_64
 	license = BSD
@@ -14,7 +14,6 @@ pkgbase = paraview-opt
 	makedepends = qt5-tools
 	makedepends = qt5-xmlpatterns
 	makedepends = eigen
-	makedepends = pegtl
 	makedepends = utf8cpp
 	depends = boost-libs
 	depends = qt5-tools
@@ -51,16 +50,13 @@ pkgbase = paraview-opt
 	depends = libtiff
 	depends = zlib
 	optdepends = python-matplotlib
+	optdepends = python-pandas
 	provides = paraview
 	conflicts = paraview
-	source = https://www.paraview.org/files/v5.8/ParaView-v5.8.1.tar.xz
-	source = paraview-cgns-4.1.patch::https://gitlab.kitware.com/paraview/paraview/-/commit/3d48a287141eb911b4888440e09c262743b4db3c.patch
+	source = https://www.paraview.org/files/v5.9/ParaView-v5.9.0.tar.xz
 	source = paraview.sh
-	source = paraview-vtk-freetype-2.10.3.patch
-	sha256sums = 7653950392a0d7c0287c26f1d3a25cdbaa11baa7524b0af0e6a1a0d7d487d034
-	sha256sums = 917485fbff57b922e67e40ee35d265769b05b4b62c397e4c9ce00244f5fd07ae
+	sha256sums = b03258b7cddb77f0ee142e3e77b377e5b1f503bcabc02bfa578298c99a06980d
 	sha256sums = 862e79bdf72f5c3ec55d3373fc34d0e5da33b1597c54c4586bdf84641d0cc291
-	sha256sums = b547a665eaf980669b929f3a95e61cc8af4892ba3a41441ef98f8487886081ce
 
 pkgname = paraview-opt
 
