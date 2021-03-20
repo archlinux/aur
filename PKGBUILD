@@ -3,7 +3,7 @@
 
 pkgname=sia-ui
 _pkgname=Sia-UI
-pkgver=1.5.0
+pkgver=1.5.5
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Blockchain-based marketplace for file storage"
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('gconf' 'gtk2' 'nss' 'libxss')
 source=("https://sia.tech/releases/Sia-UI-${_pkgver}.AppImage"
 	"https://raw.githubusercontent.com/NebulousLabs/Sia-UI/master/LICENSE")
-sha512sums=('8f4077ef22e9d542ba28d0d331c106e68980e9df0a09fdfbecb43b3a728b547705254525459fbbb429ce6a07bc15d19b37120d9ee7c121b270e820b6985a560b'
+sha512sums=('3babac1d79d7e57ca1850a1dceb3ab7d042d69098c7837da503a869f7d3e5f36f20987a39bcc6d3dcf04219f4d69cbf686a966b8493f72e562d6b8ef22485a54'
             'da77523b36551334730d2be5e2b11935aa180db47dc703dcc9bd899269cd205f2205a406ff582cf8aa2fec2bae90442edcc2ef10aab341ce68e662b8137e98e3')
 
 
