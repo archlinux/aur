@@ -1,0 +1,19 @@
+pkgbase = blacktex-git
+	pkgdesc = A LaTex code prettifier and formatter
+	pkgver = 0.3.3.r4.g4be1761
+	pkgrel = 1
+	url = https://github.com/nschloe/blacktex
+	arch = any
+	license = GPL3
+	checkdepends = python-tox
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python>=3.7
+	provides = blacktex
+	conflicts = blacktex
+	source = blacktex-git::git+https://github.com/nschloe/blacktex
+	md5sums = SKIP
+
+pkgname = blacktex-git
+
