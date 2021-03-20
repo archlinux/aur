@@ -3,7 +3,7 @@
 
 pkgname=lite-xl
 _pkgname=lite
-pkgver=1.16.2
+pkgver=1.16.5
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
@@ -13,14 +13,14 @@ depends=('agg' 'lua52' 'sdl2')
 makedepends=('meson' 'gendesk')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-$pkgname.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	# credits to 6r1d  for the svg icon
 	"$pkgname.svg.zip::https://github.com/rxi/lite/files/4716765/lite.svg.zip")
-sha256sums=('9a5a01afc4f7e969685fca1297bc40a9aabce3782bb5c4d1486a63cc43c7dc01'
+sha256sums=('2f02e0460bd628f068461c5098a4c651cbfc6471b0c41f0b6252aa9e4a9dbe8d'
             '504d2ccd74f1c5b631b5b83a4f4319c74edb705fc383b3058f4b2d9354093b53')
 
 prepare() {
-    cd "$pkgname-$pkgver-$pkgname"
+    cd "$pkgname-$pkgver"
 
   # XDG desktop file
   gendesk -n -f \
@@ -34,13 +34,13 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-$pkgver-$pkgname"
+    cd "$pkgname-$pkgver"
     arch-meson build
     meson compile -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver-$pkgname"
+  cd "$pkgname-$pkgver"
 
   DESTDIR="$pkgdir" meson install -C build
   
