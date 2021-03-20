@@ -2,9 +2,9 @@
 _pkgname=sdk-setup
 pkgname=sailfish-$_pkgname
 pkgver=1.3.91
-pkgrel=1
+pkgrel=2
 pkgdesc="Sailfish SDK utilities patched to run on Arch, UNSUPPORTED"
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/sailfishos/sdk-setup"
 license=('GPL')
 depends=(
