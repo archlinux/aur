@@ -2,8 +2,8 @@
 
 pkgname=python-django-paypal
 _pypi_pkgname=django-paypal
-pkgver=0.2.3
-pkgrel=2
+pkgver=1.1
+pkgrel=0
 pkgdesc="A pluggable Django application for integrating PayPal Payments Standard or Payments Pro"
 arch=(any)
 url="https://pypi.python.org/pypi/django-paypal"
@@ -11,7 +11,7 @@ license=('UNKNOWN')
 makedepends=('python-setuptools')
 depends=('python' 'python-django') 
 source=("https://pypi.python.org/packages/source/d/django-paypal/django-paypal-${pkgver}.tar.gz")
-md5sums=('bcfbcb14c91a72017c9f6139829f2c23')
+md5sums=('0251e33648152f1c12c9bd420157f466')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
