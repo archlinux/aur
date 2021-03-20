@@ -1,6 +1,6 @@
 # Maintainer: Wieland Hoffmann <the_mineo@web.de>
 pkgname=chromaprint-git
-pkgver=v1.4.r22.c945fdd
+pkgver=v1.5.0.r0.516e3b3
 pkgrel=1
 pkgdesc="Client library, written in C++, for extracting audio fingerprints. "
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ provides=('chromaprint')
 conflicts=('chromaprint-bzr' 'chromaprint')
 depends=('ffmpeg')
 makedepends=('git' 'cmake')
-source=('git+https://bitbucket.org/acoustid/chromaprint.git')
+source=('git+https://github.com/acoustid/chromaprint.git')
 md5sums=('SKIP')
 
 pkgver() {
