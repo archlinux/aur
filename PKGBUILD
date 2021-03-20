@@ -3,7 +3,7 @@
 #     Updated: Yuki Chiba <yuki.from.akita@gmail.com>
 
 pkgname=smlsharp
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="A new programming language in the Standard ML family"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gmp'
 makedepends=('chrpath')
 source=("http://www.pllab.riec.tohoku.ac.jp/smlsharp/download/$pkgname-$pkgver.tar.gz"
         remove-tz-test.patch)
-sha256sums=('3464de2af4b030984412a96af2deeaf5b7c36059c7dbb8aa5beb831c5994d0a1'
+sha256sums=('6dbe0c6c11b6636f9cf5696961782fd43490ea63265d6e19bf387764931f4449'
             '9ad167dd7582349a84218c1d61347376e439d476cca1ffa26b6addeaf162dc6c')
 options=(libtool staticlibs)
 
