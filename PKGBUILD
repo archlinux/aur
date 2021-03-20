@@ -18,29 +18,24 @@ makedepends=(git extra-cmake-modules kdoctools qt5-declarative)
 optdepends=('sshfs: remote filesystem browser'
             'kde-cli-tools: configuration UI'
             'python-nautilus: Nautilus integration')
-provides=($_pkgname)
 conflicts=($_pkgname)
-source=("git+https://invent.kde.org/kde/$_remotename.git")
+provides=($_pkgname)
+source=("git+https://invent.kde.org/network/$_remotename.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_remotename
-  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-  mkdir -p build
+	cd $_remotename
+	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd build
-  cmake ../$_remotename \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DBUILD_TESTING=OFF
-  make
+	cmake -B build -S $_remotename \
+		-DCMAKE_INSTALL_LIBEXECDIR=lib \
+		-DBUILD_TESTING=OFF \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 }

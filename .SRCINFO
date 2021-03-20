@@ -23,7 +23,7 @@ pkgbase = kdeconnect-git
 	optdepends = python-nautilus: Nautilus integration
 	provides = kdeconnect
 	conflicts = kdeconnect
-	source = git+https://invent.kde.org/kde/kdeconnect-kde.git
+	source = git+https://invent.kde.org/network/kdeconnect-kde.git
 	sha256sums = SKIP
 
 pkgname = kdeconnect-git
