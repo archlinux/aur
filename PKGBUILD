@@ -4,7 +4,7 @@
 
 pkgbase=imagemagick6
 pkgname=(libmagick6)
-pkgver=6.9.12.2
+pkgver=6.9.12.3
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (version 6)"
 url="https://legacy.imagemagick.org/"
@@ -18,7 +18,7 @@ _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick6-${pkgver%.*}-${pkgver##*.}
 source=(https://github.com/ImageMagick/ImageMagick6/archive/${pkgver%.*}-${pkgver##*.}.tar.gz
         arch-fonts.diff)
-sha256sums=('e7157883de4602172cd93687afa4c86fb118aa976f1ca4742af2cddbe57e74df'
+sha256sums=('46f8e7224cd34aaab2de8e5221ed23d357d154ad63f1a6c28e4fa0a650537190'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
