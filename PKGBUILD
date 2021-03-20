@@ -64,7 +64,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.11.6.arch1
+pkgver=5.11.7.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -114,7 +114,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'e22a1be1e7332bbb1db8b94bf76d05f66302a8b73cf38bce3647969f76b38e5d46e40e3f6b7e4cf02ca1e43bfc812cd7e1c45094d1995eeef98a21508d0e5681'
+            '5dda635b80ace557cd4eb8cb1d8c7c667fea93f245e93ca0e1df413363d609349fe6f6b453157f1e9890de8a1334ebae99c3483f1256aa444c01aadbe7780b2b'
             '9c08c605b86739ac1110f8e4eaecedc46e335bf708f8a1cda34b02735a4a7f9189a8a868efcb0f2bbcae4aab784c5b51cac95db83c6f61da42f5cf6fb6b16b60'
             '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd'
             '3e75edcb8c82222a5ff64d751cff1c9102ea5eabadda3ba6ae1369b2a1478d5f001776f7ce1b13425f5c2f7acdb1a8a117864ccb9aca6755188efaa4110dcb43'
@@ -131,7 +131,7 @@ prepare() {
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
-    
+
     PatchesArray=(
         $_reponame_gcc_patch/$_gcc_patch_name
     )
@@ -155,7 +155,7 @@ prepare() {
 
     msg2 "Setting config..."
     cp ../config .config
-    
+
     if [ -n "$_subarch" ]; then
         yes "$_subarch" | make oldconfig
     else
@@ -173,7 +173,7 @@ prepare() {
             exit
         fi
     fi
-    
+
     # Set yield_type to 0
     if [ "${_pds_choice}" = "prjc" ]; then
         sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
@@ -220,7 +220,7 @@ _package() {
         wireguard-arch
     )
 
-    cd $_reponame 
+    cd $_reponame
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -309,7 +309,7 @@ _package-headers() {
                 strip -v $STRIP_SHARED "$file" ;;
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
-    
+
     echo "Stripping vmlinux..."
     strip -v $STRIP_STATIC "$builddir/vmlinux"
 
