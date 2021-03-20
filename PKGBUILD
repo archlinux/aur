@@ -1,18 +1,19 @@
-# Maintainer: Marti Raudsepp <marti@juffo.org>
-# Contributor: Radu Andries <admiral0@tuxfamily.org>
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
-# Contributor: Vincent Bernardoff <vb@luminar.eu.org>
+# Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=zbar-git
-pkgver=iPhoneSDK.1.3.1.r10.g453a338
+pkgver=0.23.92.r22.g4e0f618
 pkgrel=1
 pkgdesc="Application and library for reading bar codes from various sources"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://zbar.sourceforge.net/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/mchehab/zbar"
 license=('LGPL')
-depends=('v4l-utils' 'autoconf')
-conflicts=('zbar-gtk' 'zbar-qt' 'zbar')
-source=("$pkgname"::'git://github.com/vbmithr/ZBar#branch=neon')
+depends=('dbus' 'imagemagick' 'libsm' 'libxv' 'v4l-utils')
+makedepends=('gtk3' 'qt5-x11extras' 'python' 'xmlto' 'docbook-xsl' 'gobject-introspection')
+optdepends=('gtk3: for zbar-gtk'
+            'qt5-x11extras: for zbar-qt'
+            'python: for zbar python bindings')
+provides=('zbar' 'zbar-gtk' 'zbar-qt' 'python-zbar')
+source=("$pkgname"::'git+https://github.com/mchehab/zbar.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,12 +21,19 @@ pkgver() {
   git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/$pkgname"
+  autoreconf -vfi
+
+  # Removed in Python 3.9. Ignored in Python 3.0+ anyway.
+  sed -i '/tp_print/d' python/enum.c
+}
+
 build() {
   cd "$pkgname"
 
-  autoreconf --install
-  ./configure --prefix=/usr --without-python --without-qt --without-gtk
-
+  ./configure --prefix=/usr --with-qt --with-gtk=gtk3 --with-dbusconfdir=/usr/share CFLAGS="$CFLAGS -DNDEBUG"
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
