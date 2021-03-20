@@ -1,0 +1,53 @@
+diff --git a/ReaderFactory.cpp b/ReaderFactory.cpp
+index 51df2ad..164023f 100644
+--- a/ReaderFactory.cpp
++++ b/ReaderFactory.cpp
+@@ -146,7 +146,7 @@ Reader * ReaderFactory::open(char const * path) throw() {
+ 			reader = new TranscodeFileReader(fileIndex, fileFd,
+ 			    transcodeElement.pipeline,
+ 			    doneGuarantee,
+-			    boost::bind(&ReaderFactory::readAheadIsDone, this, _1));
++			    boost::bind(&ReaderFactory::readAheadIsDone, this, boost::placeholders::_1));
+ 			++*reader;
+ 			++readAheadCount;
+ 		    } else {
+@@ -154,7 +154,7 @@ Reader * ReaderFactory::open(char const * path) throw() {
+ 			reader = new TranscodeFileReader(fileIndex, fileFd,
+ 			    transcodeElement.pipeline,
+ 			    doneGuarantee,
+-			    boost::bind(&ReaderFactory::nonReadAheadIsDone, this, _1));
++			    boost::bind(&ReaderFactory::nonReadAheadIsDone, this, boost::placeholders::_1));
+ 		    }
+ 		}
+ 	    }
+@@ -253,7 +253,7 @@ int ReaderFactory::stat(char const * path, struct stat * st) throw() {
+ 	    reader = new TranscodeFileReader(fileIndex, fileFd,
+ 		transcodeElement.pipeline,
+ 		doneGuarantee,
+-		boost::bind(&ReaderFactory::readAheadIsDone, this, _1));
++		boost::bind(&ReaderFactory::readAheadIsDone, this, boost::placeholders::_1));
+ 	    map.insert(Map::value_type(fileIndex, reader));
+ 
+ 	    // readAheadRelease is responsible for it ...
+@@ -324,7 +324,7 @@ void ReaderFactory::readAhead(char const * path) throw() {
+ 	Reader * reader = new TranscodeFileReader(fileIndex, fileFd,
+ 	    transcodeElement.pipeline,
+ 	    doneGuarantee,
+-	    boost::bind(&ReaderFactory::readAheadIsDone, this, _1));
++	    boost::bind(&ReaderFactory::readAheadIsDone, this, boost::placeholders::_1));
+ 	map.insert(Map::value_type(fileIndex, reader));
+ 
+ 	// readAheadRelease is responsible for it
+diff --git a/TranscodeFileReader.cpp b/TranscodeFileReader.cpp
+index e5333e9..e847f42 100644
+--- a/TranscodeFileReader.cpp
++++ b/TranscodeFileReader.cpp
+@@ -12,7 +12,7 @@
+ #include <gst/gst.h>
+ #include <glib.h>
+ 
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
+ #include <boost/scoped_ptr.hpp>
+ #include <boost/shared_ptr.hpp>
+ 
