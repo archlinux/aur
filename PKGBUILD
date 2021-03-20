@@ -42,6 +42,6 @@ package() {
 	# install the package
 	cd elephant-greeter
 	make PKG_PREFIX="${pkgdir}" INSTALL_PATH="/usr" CONFIG_PATH="/etc" install
-	install -Dpm 644 LICENSE -t "${pkgdir}/usr/share/licenses/elephant-greeter/"
+	install -Dpm 644 LICENSE -t "${pkgdir}/usr/share/licenses/lightdm-elephant-greeter/"
 }
 
