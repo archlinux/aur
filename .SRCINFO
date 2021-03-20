@@ -1,6 +1,6 @@
 pkgbase = openmpt
 	pkgdesc = Audio module tracker formerly known as ModPlug Tracker
-	pkgver = 1.29.07.00
+	pkgver = 1.29.08.00
 	pkgrel = 1
 	url = https://openmpt.org/
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = openmpt
 	depends = wine-mono
 	depends = wine_gecko
 	optdepends = bash-completion: tab completion support
-	source_i686 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.07.00-portable.zip
-	sha256sums_i686 = 409d0b0c4b28ceb33ff51cda0a20f47937bd0496000094440c3535cc3637884e
-	source_x86_64 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.07.00-portable-x64.zip
-	sha256sums_x86_64 = 8627a2c49d79816c09e8180041fb40d3bb3bbd94b059b9fc68e67c51c2f05dad
+	source_i686 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.08.00-portable.zip
+	sha1sums_i686 = aa4aba5ec3522f05a48165730afb88647770a16a
+	source_x86_64 = https://download.openmpt.org/archive/openmpt/1.29/OpenMPT-1.29.08.00-portable-x64.zip
+	sha1sums_x86_64 = 0909a46c1b4be57b8d0d5076c4a442967d3851be
 
 pkgname = openmpt
 
