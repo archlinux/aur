@@ -1,0 +1,41 @@
+pkgbase = minetest4
+	pkgver = 0.4.17.1
+	pkgrel = 1
+	url = http://minetest.net/
+	arch = x86_64
+	license = GPL
+	makedepends = sqlite
+	makedepends = freetype2
+	makedepends = leveldb
+	makedepends = openal
+	makedepends = libvorbis
+	makedepends = curl
+	makedepends = irrlicht
+	makedepends = hicolor-icon-theme
+	makedepends = cmake
+	makedepends = hiredis
+	makedepends = luajit
+	conflicts = minetest
+	conflicts = minetest-common
+	source = minetest-0.4.17.1.tar.gz::https://github.com/minetest/minetest/archive/0.4.17.1.tar.gz
+	source = minetest-data-0.4.17.1.tar.gz::https://github.com/minetest/minetest_game/archive/0.4.17.tar.gz
+	sha256sums = cd25d40c53f492325edabd2f6397250f40a61cb9fe4a1d4dd6eb030e0d1ceb59
+	sha256sums = f0ab07cb47c1540b2016bf76a36e2eec28b0ea7827bf66fc5447e0c5e5d4495d
+
+pkgname = minetest4
+	pkgdesc = Multiplayer infinite-world block sandbox game
+	depends = minetest4-common
+	depends = irrlicht
+	depends = curl
+	depends = libvorbis
+	depends = sqlite
+	depends = openal
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = freetype2
+	depends = luajit
+
+pkgname = minetest4-common
+	pkgdesc = Common data files for minetest and minetest-server
+
