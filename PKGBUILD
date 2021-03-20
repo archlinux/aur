@@ -8,7 +8,7 @@ pkgdesc="A real-time strategy audio game"
 arch=('any')
 url="https://github.com/soundmud/soundrts"
 license=('BSD' 'Unknown')
-depends=('python2' 'python2-pygame')
+depends=('python' 'python-pygame')
 makedepends=('git')
 optdepends=('espeak: TTS support'
             'speech-dispatcher: TTS support'
