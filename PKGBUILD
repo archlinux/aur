@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=wbg
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Wallpaper application for wlroots based Wayland compositors"
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/${pkgname}
@@ -21,4 +21,5 @@ build() {
 package() {
   cd ${pkgname}
   DESTDIR="${pkgdir}/" ninja -C build install
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
