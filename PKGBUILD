@@ -1,13 +1,13 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=devilutionx-hellfire-git
 _pkgname=devilutionX
-pkgver=1.1.0.r1150.g7368778c
-pkgrel=2
-pkgdesc="Diablo & Hellfire devolved"
+pkgver=1.1.0.r1281.g378a99bfd
+pkgrel=1
+pkgdesc="Diablo & Hellfire devolved. An open source replacment for the original executables."
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom')
-depends=('sdl2_ttf' 'sdl_mixer' 'libsodium' 'hellfire-data')
+depends=('sdl2_ttf' 'sdl2_mixer' 'libsodium' 'hellfire-data')
 makedepends=('cmake')
 provides=('devilutionx')
 conflicts=('devilutionx' 'devilutionx-git' 'devilutionx-hellfire')
