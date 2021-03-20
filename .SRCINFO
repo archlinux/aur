@@ -1,13 +1,15 @@
 pkgbase = teem
 	pkgdesc = Group of libraries for processing scientific raster data.
 	pkgver = 1.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://teem.sourceforge.net/index.html
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	source = https://sourceforge.net/projects/teem/files/teem/1.11.0/teem-1.11.0-src.tar.gz/download
-	sha512sums = 48b171a12db0f02dcfdaa87aa84464c651d661fa66201dc966b3cd5a8134c5bad1dad8987ffcc5d7c21c5d14c2eb617d48200410a1bda19008ef743c093ed575
+	source = cmake.patch
+	sha256sums = a01386021dfa802b3e7b4defced2f3c8235860d500c1fa2f347483775d4c8def
+	sha256sums = e7dac798204c7a832839f52a7e339d46ed3207a6c762c2e4c8b12e842685c66c
 
 pkgname = teem
 

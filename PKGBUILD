@@ -1,7 +1,8 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
+# Contributor: bartus <szczepaniak.bartek+github@gmail.com>
 pkgname=teem
 pkgver=1.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Group of libraries for processing scientific raster data.'
 arch=('x86_64')
 url='http://teem.sourceforge.net/index.html'
@@ -9,33 +10,40 @@ license=('LGPL')
 depends=()
 optdepends=()
 makedepends=('cmake')
-source=("https://sourceforge.net/projects/teem/files/teem/${pkgver}/teem-${pkgver}-src.tar.gz/download")
-sha512sums=('48b171a12db0f02dcfdaa87aa84464c651d661fa66201dc966b3cd5a8134c5bad1dad8987ffcc5d7c21c5d14c2eb617d48200410a1bda19008ef743c093ed575')
+source=(
+    "https://sourceforge.net/projects/teem/files/teem/${pkgver}/teem-${pkgver}-src.tar.gz/download"
+    "cmake.patch"
+)
+sha256sums=('a01386021dfa802b3e7b4defced2f3c8235860d500c1fa2f347483775d4c8def'
+            'e7dac798204c7a832839f52a7e339d46ed3207a6c762c2e4c8b12e842685c66c')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver-src"
+    cd "$srcdir/$pkgname-$pkgver-src"
 
-	mkdir build || :
-	cd build
+    # Fix CMake config to install CMake files in the right place
+    patch -Np1 -i "$srcdir"/cmake.patch
 
-	cmake \
-		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
-		-DCMAKE_BUILD_TYPE:STRING=Release \
-		-DBUILD_SHARED_LIBS:BOOL=ON \
-		..
+    mkdir build || :
+    cd build
+
+    cmake \
+        -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+        -DCMAKE_BUILD_TYPE:STRING=Release \
+        -DBUILD_SHARED_LIBS:BOOL=ON \
+        ..
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver-src/build"
-	make
+    make
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver-src/build"
-	make install DESTDIR="$pkgdir"
+    make install DESTDIR="$pkgdir"
 
-	install -D -m644 \
-		"${srcdir}/$pkgname-$pkgver-src/LICENSE.txt" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 \
+        "${srcdir}/$pkgname-$pkgver-src/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
