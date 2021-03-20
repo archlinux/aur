@@ -1,6 +1,6 @@
 pkgbase = kokua-secondlife
 	pkgdesc = An Open Source third party viewer for Second Life® (secondlife), only.
-	pkgver = 6.4.13.50041
+	pkgver = 6.4.16.50214
 	pkgrel = 1
 	url = https://kokua.atlassian.net
 	arch = x86_64
@@ -36,10 +36,10 @@ pkgbase = kokua-secondlife
 	optdepends = lib32-libidn11: for voice support
 	optdepends = pangox-compat: for media_plugin_webkit to work
 	conflicts = kokua-opensim
-	source = https://pilotfiber.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_6_4_13_50041_x86_64.tar.bz2
+	source = https://pilotfiber.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_6_4_16_50214_x86_64.tar.bz2
 	source = file://kokua-secondlife.desktop
 	source = file://kokua-secondlife.launcher
-	md5sums = da3288e229c2204de26af3a5d390510d
+	md5sums = 48aa448cb07f4f5af8bb942ec4a92aed
 	md5sums = 3893a2c8ae9cb8e2adb4d7c47750029b
 	md5sums = e12fd7bd333f4f810dec66f1be17c71c
 
