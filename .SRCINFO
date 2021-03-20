@@ -1,7 +1,7 @@
 pkgbase = msp-flasher
 	pkgdesc = Flasher for TI MSP430 processor
 	pkgver = 1.03.20.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ti.com/tool/msp430-flasher
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = msp-flasher
 	options = !libtool
 	options = staticlibs
 	source = 61-msp430uif.rules
-	sha1sums = 8215c9f886d77591ffa86d4023476f9341833fef
+	sha1sums = c746439f29904c9bb47eecabd12b31abdfc8934d
 	source_i686 = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/1_03_20_00/exports/MSPFlasher-1_03_20_00-linux-x64-installer.zip
-	sha1sums_i686 = 0ae23f60f2830c49984ea402e5473fe4af6dfcda
+	sha1sums_i686 = 792f88f92bcf8386865367ea5c8f12d177eb3d28
 	source_x86_64 = http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/1_03_20_00/exports/MSPFlasher-1_03_20_00-linux-x64-installer.zip
 	sha1sums_x86_64 = 792f88f92bcf8386865367ea5c8f12d177eb3d28
 
