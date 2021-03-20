@@ -11,7 +11,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.16.4
+pkgver=3.16.5
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -28,7 +28,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('a31b4aa9b54a47f5dce3d944c32b4609348fa2ffdd1b533bdffb935f62b7049f')
+sha256sums=('525f469ad6e40dd7a8f09ebab5eb6a2dffc45939b99b7d937750cc04ed78d61c')
 
 build() {
   cmake -G Ninja -B build -S "$_pkgname-$pkgver" \
