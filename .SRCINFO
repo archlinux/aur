@@ -1,7 +1,7 @@
 pkgbase = fuzzel
 	pkgdesc = Application launcher for wlroots based Wayland compositors
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/dnkl/fuzzel
 	changelog = CHANGELOG.md
 	arch = x86_64

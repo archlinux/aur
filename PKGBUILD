@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=fuzzel
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Application launcher for wlroots based Wayland compositors"
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/${pkgname}
@@ -22,4 +22,5 @@ build() {
 package() {
   cd ${pkgname}
   DESTDIR="${pkgdir}/" ninja -C build install
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
