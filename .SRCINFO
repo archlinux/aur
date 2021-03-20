@@ -1,13 +1,13 @@
 pkgbase = python2-lazr-uri
 	pkgdesc = A self-contained, easily reusable library for parsing, manipulating, and generating URIs
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://launchpad.net/lazr.uri
 	arch = any
-	license = LGPL
-	depends = python2-distribute
-	source = http://launchpad.net/lazr.uri/trunk/1.0.3/+download/lazr.uri-1.0.3.tar.gz
-	md5sums = 1ae177e147092ae934b7edc3f8555665
+	license = LGPL3
+	depends = python2-setuptools
+	source = https://launchpad.net/lazr.uri/trunk/1.0.5/+download/lazr.uri-1.0.5.tar.gz
+	md5sums = e3882c6fe2e6f399559195aaa03bcaea
 
 pkgname = python2-lazr-uri
 
