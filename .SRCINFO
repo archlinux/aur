@@ -1,0 +1,21 @@
+pkgbase = ttyc-git
+	pkgdesc = ttyd protocol client + Wi-Se remote terminal configuration tool
+	pkgver = 20210315.v0.1.0.wistty.g3e0b157
+	pkgrel = 1
+	url = https://github.com/Depau/ttyc
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	provides = ttyc
+	provides = wistty
+	conflicts = ttyc
+	conflicts = wistty
+	source = git+https://github.com/Depau/ttyc.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ttyc-git
+
