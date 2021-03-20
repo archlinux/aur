@@ -2,7 +2,7 @@
 # Contributor: ----
 
 pkgname=btrustbiss
-pkgver=2.22
+pkgver=2.26
 pkgrel=1
 pkgdesc="B-Trust browser independent signing service."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://www.b-trust.org"
 license=('GPL')
 backup=('etc/xdg/autostart/btrust_biss.desktop')
 source=("https://www.b-trust.bg/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar")
-sha256sums=('01584bac48f764a228d30143e43cbef9d102b5f408c48a786cd697967ce975c9')
+sha256sums=('e52aca04a7b996f5081e309e00730997723b6a18e5290961f239e43882c448b4')
 depends=('fakeroot' 'binutils' 'pcsclite')
 options=('!strip' '!emptydirs' '!makeflags')
 
