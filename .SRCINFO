@@ -1,0 +1,16 @@
+pkgbase = repo-mokee
+	pkgdesc = The Multiple Git Repository Tool from the Android Open Source Project
+	pkgver = 2.13.2
+	pkgrel = 1
+	url = https://github.com/mokee/git-repo
+	arch = any
+	license = APACHE
+	depends = git
+	depends = python
+	provides = repo
+	conflicts = repo
+	source = git+https://github.com/MoKee/git-repo.git
+	md5sums = SKIP
+
+pkgname = repo-mokee
+
