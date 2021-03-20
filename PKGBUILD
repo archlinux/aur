@@ -2,7 +2,7 @@
 
 pkgname=com.yunkanpan.numnode
 pkgver=1.2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Drive to Develop"
 arch=("x86_64")
 install=
@@ -36,6 +36,6 @@ package(){
     mv ${srcdir}/start.sh ${pkgdir}/opt/yunkanpan/
     chmod a+x ${pkgdir}/opt/yunkanpan/start.sh
     mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
+    cp /opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
 }
  

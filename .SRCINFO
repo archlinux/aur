@@ -1,7 +1,7 @@
 pkgbase = com.yunkanpan.numnode
 	pkgdesc = The Drive to Develop
 	pkgver = 1.2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yunkanpan.com/
 	arch = x86_64
 	license = custom
