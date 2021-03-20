@@ -1,6 +1,6 @@
 pkgbase = verthash-miner
 	pkgdesc = GPU miner for the Verthash algorithm and Vertcoin
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/CryptoGraphics/VerthashMiner
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = verthash-miner
 	makedepends = git
 	makedepends = make
 	conflicts = verthash-miner-bin
-	source = git+https://github.com/CryptoGraphics/VerthashMiner.git#tag=0.7.1
+	source = git+https://github.com/CryptoGraphics/VerthashMiner.git#tag=0.7.2
 	sha256sums = SKIP
 
 pkgname = verthash-miner
