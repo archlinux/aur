@@ -19,6 +19,7 @@ pkgbase = lanraragi
 	depends = openssl
 	depends = zlib
 	depends = perl-local-lib
+	depends = perl-uri
 	source = https://github.com/Difegue/LANraragi/archive/v.0.7.7.tar.gz
 	source = lanraragi.service
 	source = lanraragi.sysusers

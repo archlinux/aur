@@ -6,7 +6,7 @@ pkgdesc="LANraragi build package"
 arch=(any)
 url="https://github.com/Difegue/LANraragi"
 license=("MIT")
-depends=(libarchive ghostscript perl gnupg redis imagemagick libwebp openssl zlib perl-local-lib)
+depends=(libarchive ghostscript perl gnupg redis imagemagick libwebp openssl zlib perl-local-lib perl-uri)
 makedepends=(cpanminus npm perl-config-autoconf pkgconf)
 source=("https://github.com/Difegue/LANraragi/archive/${pkgver}.tar.gz"
         "lanraragi.service" "lanraragi.sysusers" "lanraragi.tmpfiles")
