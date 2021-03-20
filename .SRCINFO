@@ -1,14 +1,14 @@
 pkgbase = ttf-agave
 	pkgdesc = A TrueType monospaced font designed for X environments
-	pkgver = 35
+	pkgver = 37
 	pkgrel = 1
 	url = https://alocy.be/page/agave
 	install = ttf-agave.install
 	arch = any
 	license = MIT
 	provides = ttf-font
-	source = https://github.com/agarick/agave/releases/download/v35/Agave-Regular.ttf
-	md5sums = 6539b018deb9ec59f98bc368d0dae7f1
+	source = https://github.com/agarick/agave/releases/download/v37/Agave-Regular.ttf
+	md5sums = 037aed0f8470eb82ab3c63ba04b2ba2a
 
 pkgname = ttf-agave
 

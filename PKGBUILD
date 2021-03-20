@@ -1,5 +1,5 @@
 pkgname=ttf-agave
-pkgver=35
+pkgver=37
 pkgrel=1
 url="https://alocy.be/page/agave"
 license=('MIT')
@@ -9,7 +9,7 @@ arch=('any')
 source=(
   "https://github.com/agarick/agave/releases/download/v$pkgver/Agave-Regular.ttf"
 )
-md5sums=('6539b018deb9ec59f98bc368d0dae7f1')
+md5sums=('037aed0f8470eb82ab3c63ba04b2ba2a')
 
 install=$pkgname.install
 
