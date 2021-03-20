@@ -1,10 +1,11 @@
-.PHONY: post clean upgrade versions
+.PHONY: post clean upgrade versions auto-update
 
+CURRENT_VER := $(shell grep '^pkgver' PKGBUILD | sed 's/.*=//')
 LATEST_VER := $(shell curl -s https://update.tryshift.com/download/version | sed 's/.* version //; s/ .*/\n/')
 
 versions:
 	@echo "Current version:"
-	@grep '^pkgver' PKGBUILD | sed 's/.*=/  /'
+	@echo "  $(CURRENT_VER)"
 	@echo "Latest version:"
 	@echo "  $(LATEST_VER)"
 
@@ -22,3 +23,10 @@ post:
 
 clean:
 	git clean -fX
+
+auto-update:
+ifeq ($(CURRENT_VER),$(LATEST_VER))
+	@echo "No update available. Version: $(CURRENT_VER)"
+else
+	@make upgrade && git push
+endif
