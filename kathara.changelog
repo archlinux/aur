@@ -1,5 +1,9 @@
-Thu, 18 Feb 2021 12:54:44 +0000 Mariano Scazzariello <marianoscazzariello@gmail.com>
+Sat, 20 Mar 2021 21:44:45 +0000 Kathara Team <contact@kathara.org>
 
-* Release v3.0.6
-    * Fix ltest exec commands
-    * Fix check command
+* Release v3.1.0
+    * Add option to specify number of terminals to open for a device
+    * Add advanced port forwarding options
+    * Add sysctl option in vstart
+    * Minor fixes (fix lstart directory parsing)
+    * Bump Dockerpy version to 4.4.0 and use max_pool_size = cpu_count with no limit (before the limit was 10)
+    * Fix Kubernetes timeout on big list requests
