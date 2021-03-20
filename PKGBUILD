@@ -22,14 +22,23 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=4ddca26")
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=4ddca26"
+        relax_ruby_version.patch)
 md5sums=('fef064ac4c3aa80ce64addcfc4666196'
-         'SKIP')
+         'SKIP'
+         '5a680e21dc1128613fdf0d744cd68d34')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 < ../relax_ruby_version.patch
+}
 
 build() {
   cd $pkgname-$pkgver
   gem build $pkgname.gemspec
 
+
+  export GO111MODULE=off # golang 1.16 uses modules by default and packages below fail to compile
   cd "$srcdir"/vagrant-installers/substrate/launcher
   go get github.com/mitchellh/osext
 
