@@ -1,13 +1,13 @@
 pkgbase = replit-desktop
 	pkgdesc = Un-official electron desktop app for https://repl.it
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/replit-discord/replit-desktop/
 	arch = x86_64
 	license = Apache
 	depends = gtk3
 	depends = nss
-	source = https://github.com/replit-discord/replit-desktop/releases/download/3.0.0-beta.1/replit-desktop-3.0.0-beta1.tar.gz
-	sha512sums = 88c39ef8d3e183ca351278736271c429b99cd9055ca9473a17f75fc6594e6ae32829ba70aaaafd06a19b77e5a6ceb5431265330cf6001d205dce63bf7245d21a
+	source = https://github.com/replit-discord/replit-desktop/releases/download/3.0.0-beta.2/replit-desktop-3.0.0-beta2.tar.gz
+	sha512sums = 38d597322142f8a76b7c52499b2dc3038ba8dd0f5ef820ea93377be6c9852a8b3bcf89a25504331b1e36c45e7f8097ebac61fffd02d14c04412a844e125392a4
 
 pkgname = replit-desktop

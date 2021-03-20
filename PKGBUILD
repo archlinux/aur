@@ -2,23 +2,21 @@
 
 pkgname="replit-desktop"
 pkgver="3.0.0"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Un-official electron desktop app for https://repl.it"
 url="https://github.com/replit-discord/replit-desktop/"
 license=('Apache')
 depends=('gtk3' 'nss')
-source=(
-		"https://github.com/replit-discord/${pkgname}/releases/download/${pkgver}-beta.1/${pkgname}-${pkgver}-beta1.tar.gz"
-)
-sha512sums=('88c39ef8d3e183ca351278736271c429b99cd9055ca9473a17f75fc6594e6ae32829ba70aaaafd06a19b77e5a6ceb5431265330cf6001d205dce63bf7245d21a')
+source=("https://github.com/replit-discord/${pkgname}/releases/download/${pkgver}-beta.2/${pkgname}-${pkgver}-beta2.tar.gz")
+sha512sums=('38d597322142f8a76b7c52499b2dc3038ba8dd0f5ef820ea93377be6c9852a8b3bcf89a25504331b1e36c45e7f8097ebac61fffd02d14c04412a844e125392a4')
 
 package() {
     cd "${srcdir}"
 
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -R "${srcdir}/${pkgname}-${pkgver}-beta1"/* "${pkgdir}/opt/${pkgname}"
+    cp -R "${srcdir}/${pkgname}-${pkgver}-beta2"/* "${pkgdir}/opt/${pkgname}"
 
     # install the icon
     # install -d -m755 "${pkgdir}/usr/share/icons"
