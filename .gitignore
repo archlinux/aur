@@ -1,0 +1,5 @@
+lightdm-elephant-greeter/
+pkg/
+src/
+*.pkg.tar.xz
+
