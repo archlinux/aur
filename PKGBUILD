@@ -13,15 +13,8 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
 sha256sums=('2ef0839b0e2e79435c037662c67df675b4ebc50d7bf001079d24b0bdf1d0c098')
 
-prepare() {
-    cd "$pkgname-$_pkgver"
-    export GOPATH="$srcdir"
-    go mod download
-}
-
 build() {
     cd "$pkgname-$_pkgver"
-    export GOPATH="$srcdir"
     go build \
       -trimpath \
       -buildmode=pie \
@@ -33,7 +26,6 @@ build() {
 
 check() {
     cd "$pkgname-$_pkgver"
-    export GOPATH="$srcdir"
     go test ./...
 }
 
