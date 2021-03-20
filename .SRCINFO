@@ -1,6 +1,6 @@
 pkgbase = ruby-colorls
 	pkgdesc = A Ruby CLI gem that beautifies the terminal's ls command, with color and font-awesome icons.
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/athityakumar/colorls
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = ruby-colorls
 	depends = ruby-manpages
 	depends = ruby-rainbow
 	depends = ruby-unicode-display_width
-	noextract = colorls-1.4.3.gem
+	depends = ruby-addressable
+	noextract = colorls-1.4.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/colorls-1.4.3.gem
-	sha256sums = b8ee2ea45450c2387e33aa429d9ee8f73a70b26d73874f14e788f7f7714a2df1
+	source = https://rubygems.org/downloads/colorls-1.4.4.gem
+	sha256sums = 2bbfd38d65fc89428edf6e772dd406b4340016ca49183c5ddbc0801855f32493
 
 pkgname = ruby-colorls
 
