@@ -1,31 +1,30 @@
-# Maintainer: Adel Qalieh <aqalieh95 at gmail dot com>
-
 pkgname=log4shib
-pkgver=1.0.9
-pkgrel=2
-pkgdesc='A forked version of log4cpp that has been created for the Shibboleth project'
-arch=('i686' 'x86_64')
-url="http://shibboleth.net/"
-license=('LGPL2')
-
-depends=('gcc-libs')
-source=("http://shibboleth.net/downloads/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b34cc90f50962cc245a238b472f72852732d32a9caf9a10e0244d0e70a311d6d')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    ./configure --disable-static --disable-doxygen --prefix=/usr
-}
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Shibboleth Project's fork of log4cpp"
+url="https://wiki.shibboleth.net/confluence/display/OpenSAML/log4shib"
+license=(LGPL2)
+arch=(x86_64)
+depends=(gcc-libs)
+source=("https://shibboleth.net/downloads/log4shib/$pkgver/$pkgname-$pkgver.tar.gz"
+        "https://shibboleth.net/downloads/log4shib/$pkgver/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('d066e2f208bdf3ce28e279307ce7e23ed9c5226f6afde288cd429a0a46792222'
+            'SKIP')
+validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    make
+  cd "$pkgname-$pkgver"
+  ./configure \
+    --prefix=/usr \
+    --disable-static \
+    --disable-doxygen \
+    ;
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    make DESTDIR="${pkgdir}" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
+
+# vim: ts=2:sw=2:et:
