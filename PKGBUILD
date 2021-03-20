@@ -4,7 +4,7 @@
 
 pkgname=netradiant-git
 pkgver=r2146.c94d5210
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
@@ -48,4 +48,7 @@ package() {
 
     cmake --install build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    # update-mime-database will erase the map mime type anyway
+    rm -r ${pkgdir}/usr/share/mime/
 }
