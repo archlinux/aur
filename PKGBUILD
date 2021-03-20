@@ -307,6 +307,7 @@ package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
   mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname,librewolf}
+  rm "$pkgdir"/usr/lib/${pkgname}/pingsender
 
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
