@@ -4,12 +4,12 @@
 pkgname=perl-time-clock
 _cpanname=Time-Clock
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Twenty-four hour clock object with nanosecond precision."
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/dist/Time-Clock/"
+url="https://search.cpan.org/dist/Time-Clock/"
 license=('perl')
-source=(http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Time-Clock-${pkgver}.tar.gz)
+source=(https://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Time-Clock-${pkgver}.tar.gz)
 md5sums=('e287f85f0ca0b4e1ef202849cec911fe')
 sha256sums=('35e8a8bbfcdb35d86dd4852a9cd32cfb455a9b42e22669186e920c8aca017aef')
 depends=('perl>=5.6.0')
