@@ -1,4 +1,4 @@
 src
 pkg
 *.zst
-app.asar
+*.asar
