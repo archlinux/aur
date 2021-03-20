@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=86.0
+pkgver=86.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -99,11 +99,6 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
         0028-Make-elfhack-use-toolchain.patch
         # end
-        # Fix MOZILLA#1694670
-        # "Linux startup crash in [@ qcms_data_create_rgb_with_gamma]"
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1694670
-        # https://bugs.archlinux.org/task/69821
-        0002-Bug-1694670.-Fix-the-OOB-check-in-write_u32-u16.-r-a.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -157,10 +152,6 @@ prepare() {
 
   # Force disable elfhack to fix build errors
   patch -Np1 -i "$srcdir"/build-disable-elfhack.patch
-
-  # Fix MOZILLA#1694670
-  patch -Np1 -i \
-  "$srcdir"/0002-Bug-1694670.-Fix-the-OOB-check-in-write_u32-u16.-r-a.patch
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -292,5 +283,4 @@ md5sums=('SKIP'
          '67c0bca3e38404d53e6057e744c7ecee'
          'c8e251f1fc9050cd12173b540baa96f8'
          '72176c9ee7b2ac4f1bb07ff5ee5fe10b'
-         '07770d558b8999b5793794e1551a1309'
-         '4fa2b662e08d8270e0968366c6d690e1')
+         '07770d558b8999b5793794e1551a1309')
