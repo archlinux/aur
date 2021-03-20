@@ -3,16 +3,15 @@
 
 pkgname=ttf-optimusprinceps
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimus Princeps font by Manfred Klein"
 arch=('any')
 url="http://www.dafont.com/optimusprinceps.font"
 license=('custom')
 makedepends=('unzip')
-depends=(fontconfig xorg-font-utils)
+depends=()
 source=("optimusprinceps.zip::http://img.dafont.com/dl/?f=optimusprinceps")
 md5sums=('42b921226539e25d43e48bef2d19a816')
-install=$pkgname.install
 
 package() {
   install -dm755 "$pkgdir/usr/share/fonts/TTF"
