@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=thiefmd
-pkgver=0.1.7
-_codename=subtle
+pkgver=0.1.8
+_codename=languages
 pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtkspell3' 'webkit2gtk' 'discount' 'gtksourceview4' 'libarchive'
          'clutter' 'libgee' 'libhandy')
 makedepends=('git' 'meson' 'vala')
-_commit=213f2fa1e72cd3d9830cf1d1f0c6c0106f715822
+_commit=413cf1e3a1d9dfb98dcf096a83842b20a9055212
 source=("git+https://github.com/kmwallio/ThiefMD.git#commit=$_commit"
         'git+https://github.com/ThiefMD/ghost-vala.git'
         'git+https://github.com/TwiRp/ultheme-vala.git'
@@ -46,5 +46,5 @@ build() {
 package() {
 	DESTDIR="$pkgdir" meson install -C build
 
-	ln -s /usr/bin/com.github.kmwallio.thiefmd "$pkgdir/usr/bin/$pkgname"
+	ln -s "/usr/bin/com.github.kmwallio.$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
