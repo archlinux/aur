@@ -1,0 +1,18 @@
+pkgbase = garuda-downloader-git
+	pkgdesc = Installation image downloader for Garuda Linux with support for delta downloads
+	pkgver = r17.5a2d5af
+	pkgrel = 1
+	url = https://gitlab.com/garuda-linux/applications/garuda-downloader
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	provides = garuda-downloader
+	conflicts = garuda-downloader
+	source = garuda-downloader-git::git+https://gitlab.com/garuda-linux/applications/garuda-downloader
+	md5sums = SKIP
+
+pkgname = garuda-downloader-git
+
