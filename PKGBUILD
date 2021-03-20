@@ -9,7 +9,7 @@ license=('MIT')
 depends=(python tor macchanger privoxy net-tools curl systemd dos2unix)
 makedepends=()
 source=("https://github.com/ChihebBayouli/gentor/releases/download/1.0/gentor-1.0.tar.gz")
-install=gentor.install
+install=.INSTALL
 md5sums=('d106e09f82affd51f7f9c4c3bdebd04e')
 build() {
     cd "$srcdir/$pkgname"
