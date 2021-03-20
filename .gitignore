@@ -1,4 +1,5 @@
 *~
 *.log
 pioneer-*.tar.gz
+pioneer-*.pkg.tar.zst
 pioneer-*.pkg.tar.xz

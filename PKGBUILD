@@ -4,7 +4,7 @@
 
 pkgname=pioneer
 pkgver=20210203
-pkgrel=1
+pkgrel=2
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64') # 'i686' untested
 url="https://github.com/pioneerspacesim/pioneer"
@@ -25,54 +25,34 @@ depends=(
   'sdl2' # libsdl2-dev
   'sdl2_image' # libsdl2-image-dev
 )
-makedepends=(
-  'automake' #  automake
-  'naturaldocs'
-  'pkgconf' # pkg-config
-  'cmake'
-)
+makedepends=(automake naturaldocs pkgconf cmake ninja)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
 sha256sums=('fcbc57374123b44161e9d15d97bd950255f654a222840894f50bfc2be716ea68')
 
 build()
 {
-  # Build codedoc
-  # cd "$srcdir/$pkgname-$pkgver"
-  # autoreconf -fvi
-  # ./configure
-  # make codedoc
+    cmake -S "$pkgname-$pkgver" -B build -G Ninja \
+          -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+          -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/ \
+          -D USE_SYSTEM_LIBGLEW:BOOL=ON \
+          -D USE_SYSTEM_LIBLUA:BOOL=ON \
+          -D CMAKE_EXPORT_COMPILE_COMMANDS=1 \
+          -Wno-dev
 
-  # Build
-  mkdir "$srcdir/$pkgname-$pkgver/build"
-  cd "$srcdir/$pkgname-$pkgver/build"
-  cmake \
-    -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-    -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/ \
-    -D USE_SYSTEM_LIBGLEW:BOOL=ON \
-    -D USE_SYSTEM_LIBLUA:BOOL=ON \
-    -D CMAKE_EXPORT_COMPILE_COMMANDS=1 \
-    -G 'Unix Makefiles' \
-    -Wno-dev \
-    -Wdeprecated \
-    --warn-uninitialized \
-    --warn-unused-vars \
-    "$srcdir/$pkgname-$pkgver"
-  time make
-  # Precompile all models into *.sgm files to alleviate long startup times
-  ./modelcompiler -batch inplace
+    cmake --build build --target all build-data codedoc
 }
 
 package()
 {
-  cd "$srcdir/$pkgname-$pkgver/build"
-  make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 
-  # appdata
-  mkdir --parents "$pkgdir/usr/share/metainfo"
-  mv "$pkgdir/usr/share/appdata/net.pioneerspacesim.Pioneer.appdata.xml" "$pkgdir/usr/share/metainfo/net.pioneerspacesim.Pioneer.appdata.xml"
-  rmdir "$pkgdir/usr/share/appdata"
+    # appdata
+    mv "$pkgdir"/usr/share/{appdata,metainfo}
 
-  # codedoc
-  # mkdir --parents "$pkgdir/usr/share/doc/pioneer"
-  # cp --recursive "$srcdir/$pkgname-$pkgver"/codedoc/* "$pkgdir/usr/share/doc/pioneer/"
+    # remove empty directories
+    rmdir "$pkgdir"/usr/share/pioneer/music/core/{{un,}docked,near-planet}
+
+    # codedoc
+    mkdir --parents "$pkgdir/usr/share/doc"
+    cp --recursive "$pkgname-$pkgver"/codedoc "$pkgdir"/usr/share/doc/pioneer
 }
