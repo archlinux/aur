@@ -1,13 +1,13 @@
 # Maintainer: Clansty <i@gao4.pw>
 pkgname=electron-qq
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform QQ made with Electron'
 license=('GPL')
 depends=('electron')
 optdepends=('mongodb-bin: provides faster storage')
 arch=('any')
-source=("app.asar::https://cf-ipfs.com/ipfs/QmeDkuSQiUzSdNr7piSKdpLP7CBanCPV3ByDnJp3ZX8JtP"
+source=("app-${pkgver}.asar::https://cf-ipfs.com/ipfs/QmeDkuSQiUzSdNr7piSKdpLP7CBanCPV3ByDnJp3ZX8JtP"
         512x512.png
         electron-qq.desktop
         ${pkgname})
@@ -15,7 +15,7 @@ source=("app.asar::https://cf-ipfs.com/ipfs/QmeDkuSQiUzSdNr7piSKdpLP7CBanCPV3ByD
 package() {
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
   install -Dm644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 "app.asar" "${pkgdir}/usr/lib/${pkgname}.asar"
+  install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/lib/${pkgname}.asar"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/local/sbin/${pkgname}"
 } 
 
