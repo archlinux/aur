@@ -1,0 +1,19 @@
+[Unit]
+Description=Shibboleth Service Provider Daemon
+Documentation=https://wiki.shibboleth.net/confluence/display/SP3/Home
+Before=httpd.service
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=shibd
+ExecStart=/usr/bin/shibd -f -F
+#StandardOutput=null
+#StandardError=journal
+TimeoutStopSec=1m
+TimeoutStartSec=5m
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target
