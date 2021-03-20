@@ -1,11 +1,11 @@
-# Maintainer: Björn <theodorstormgrade@gmail.com>
+# Maintainer: Thaodan <AUR+me@thaodan.de>
 _pkgname=sdk-setup
 pkgname=sailfish-$_pkgname
-pkgver=1.3.24.r159.9560e2e
+pkgver=1.3.91
 pkgrel=1
-pkgdesc="https://git.sailfishos.org/mer-core/scratchbox2"
+pkgdesc="Sailfish SDK utilities patched to run on Arch, UNSUPPORTED"
 arch=('x86_64' 'i686')
-url="https://git.sailfishos.org/mer-core/scratchbox2"
+url="https://github.com/sailfishos/sdk-setup"
 license=('GPL')
 depends=(
   'sh'
@@ -21,18 +21,18 @@ optdepends=(
   'p7zip: sdk-manage install'
   'ssu: sdk-manage install'
            )
-# groups=()
-# depends=()
-source=($pkgname::git+https://github.com/sailfishos/sdk-setup.git#tag=1.3.72)
+source=($pkgname::git+https://github.com/sailfishos/$_pkgname.git#tag=$pkgver)
+md5sums=('SKIP')
+
 makedepends=(
   'git'
 )
 
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+# pkgver() {
+#   cd "$srcdir/$pkgname"
+#   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+# }
 
 build() {
   cd "$srcdir/$pkgname/$_pkgname/src"
@@ -49,6 +49,8 @@ package() {
         cd $pkgname/$_pkgname/src
         _bindir=$pkgdir/usr/bin
         _libexec=$pkgdir/usr/lib/$pkgname
+        mkdir $pkgdir/etc
+        touch  $pkgdir/etc/MerSDK
         install -dm755 $pkgdir/usr/bin
         install -dm755 $pkgdir/usr/lib/$pkgname
         _install="/usr/bin/install -m755"
@@ -65,4 +67,3 @@ package() {
         $_install git-lltb ${_bindir}/git-lltb
         $_install sdk-init ${_bindir}/sdk-init
 }
-md5sums=('SKIP')

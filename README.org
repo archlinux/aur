@@ -1,0 +1,10 @@
+#+TITLE: Sailfish SDK on Arch Linux
+#+LANGUAGE: english
+
+* Intro
+  This package is a port of the Sailfish SDK utilities to be run on Arch Linux.
+  The use of these programs on Arch Linux is completely unsupported, so if you have issues report them here.
+  The idea behind is to be able to develop programs for Sailfish OS without using the SDK.
+
+* Scope
+  This package only packages all programs that make sense to use on Arch Linux in the scope of this package.
