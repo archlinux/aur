@@ -1,0 +1,13 @@
+pkgbase = badlionclient
+	pkgdesc = A minecraft pvp client
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://www.badlion.net
+	arch = x86_64
+	license = unknown
+	options = !strip
+	source_x86_64 = https://client-updates-cdn77.badlion.net/BadlionClient
+	sha256sums_x86_64 = SKIP
+
+pkgname = badlionclient
+
