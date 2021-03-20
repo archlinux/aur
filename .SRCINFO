@@ -1,0 +1,15 @@
+pkgbase = cogsy
+	pkgdesc = TUI-based Discogs collection tracker
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/cartoon-raccoon/cogsy
+	arch = x86_64
+	license = LGPL2
+	makedepends = cargo
+	depends = openssl
+	depends = sqlite3
+	depends = ncurses
+	source = cogsy-0.2.0.tar.gz::https://github.com/cartoon-raccoon/cogsy/cogsy/refs/tags/v0.2.0.tar.gz
+
+pkgname = cogsy
+
