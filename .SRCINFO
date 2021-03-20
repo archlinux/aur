@@ -1,0 +1,15 @@
+pkgbase = vkd3d-proton-bin
+	pkgdesc = Direct3D 12 to Vulkan translation library (Windows DLL binary files)
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/HansKristian-Work/vkd3d-proton
+	arch = x86_64
+	license = LGPL
+	depends = vulkan-icd-loader
+	optdepends = lib32-vulkan-icd-loader: 32-bit Windows application support
+	options = !strip
+	source = https://github.com/HansKristian-Work/vkd3d-proton/releases/download/v2.2/vkd3d-proton-2.2.tar.zst
+	sha256sums = 7544c7ab6b82229693d5ec29422bf6342eccbdbec3f0ac042ac8f0a8c8697b42
+
+pkgname = vkd3d-proton-bin
+
