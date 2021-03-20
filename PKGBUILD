@@ -15,15 +15,15 @@ source=('git+https://git.drupalcode.org/project/drupal.git#branch=8.9.x')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/drupal"
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/drupal"
   mkdir -p $pkgdir/usr/share/webapps/drupal8-git
-  cp -r ${srcdir}/${_pkgname}/drupal8-git/{*,.htaccess} ${pkgdir}/usr/share/webapps/drupal8-git
+  cp -r ${srcdir}/drupal/drupal8-git/{*,.htaccess} ${pkgdir}/usr/share/webapps/drupal8-git
   echo "deny from all" > ${pkgdir}/usr/share/webapps/drupal8-git/.htaccess
 }
