@@ -11,6 +11,7 @@ url="http://drupal.org"
 license=('GPL')
 makedepends=('git')
 depends=('php')
+options=(!strip)
 source=('git+https://git.drupalcode.org/project/drupal.git#branch=8.9.x')
 sha256sums=('SKIP')
 
