@@ -30,7 +30,7 @@ build() {
 
 package() {
     install -D build/cli/launcher/opensph-cli $pkgdir/usr/bin/opensph-cli
-    install -D build/cli/launcher/opensph-info $pkgdir/usr/bin/opensph-info
+    install -D build/cli/info/opensph-info $pkgdir/usr/bin/opensph-info
     install -D build/gui/launcherGui/opensph $pkgdir/usr/bin/opensph
 }
 
