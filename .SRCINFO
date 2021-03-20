@@ -1,12 +1,11 @@
 pkgbase = foot-git
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
 	license = mit
 	checkdepends = check
-	checkdepends = ttf-dejavu
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
