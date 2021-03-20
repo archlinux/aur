@@ -20,11 +20,11 @@ sha256sums=('6dbe0c6c11b6636f9cf5696961782fd43490ea63265d6e19bf387764931f4449'
 options=(libtool staticlibs)
 
 # Set this variable to anything non-empty to bootstrap the compiler
-stage=
+stage=y
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-incompatible-llvm
 }
 
 build() {
