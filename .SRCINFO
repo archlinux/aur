@@ -1,6 +1,6 @@
 pkgbase = instead
 	pkgdesc = a quest interpreter
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/instead-hub/instead
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = instead
 	depends = gtk3
 	depends = luajit
 	optdepends = instead-launcher: install and update INSTEAD games from net,insteadman: Manager for INSTEAD interpreter.
-	source = https://github.com/instead-hub/instead/releases/download/3.3.2/instead_3.3.2.tar.gz
-	sha256sums = bb98f6903291bcc40fb06f2203ab8e05272ec84fded412482b6faa54bea3a90b
+	source = https://github.com/instead-hub/instead/releases/download/3.3.3/instead_3.3.3.tar.gz
+	sha256sums = 1a39a8999254e585dbbc94b3da3ed8b28669d01c70f1f9e17864af4ad91f77b3
 
 pkgname = instead
 
