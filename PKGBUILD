@@ -2,15 +2,15 @@
 # Past Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 
 pkgname=python-django-cors-headers
-pkgver=3.4.0
-pkgrel=1
+pkgver=3.7.0
+pkgrel=0
 pkgdesc="Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)"
 arch=('any')
 url="http://github.com/ottoyiu/django-cors-headers"
 depends=('python-django')
 makedepends=('python-setuptools')
 source=("https://github.com/ottoyiu/django-cors-headers/archive/${pkgver}.tar.gz")
-sha512sums=('95ade44a4d5c29670e8217d97bfcd351058f544255919d7493622f870aeae711b4dd593f8c6ea862834a56f026cf7ba7673ca482d5aebf98474e999008134713')
+sha256sums=('96069c4aaacace786a34ee7894ff680780ec2644e4268b31181044410fecd12e')
 
 build() {
   cd ${srcdir}/django-cors-headers-${pkgver}
