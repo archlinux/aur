@@ -11,6 +11,7 @@ pkgbase = flood-git
 	depends = nodejs
 	optdepends = mediainfo
 	provides = nodejs-flood
+	conflicts = nodejs-flood
 	backup = etc/flood/config.js
 	source = flood::git+https://github.com/jesec/flood
 	source = flood.service

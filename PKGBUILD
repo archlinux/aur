@@ -13,6 +13,7 @@ makedepends=('git' 'npm')
 optdepends=('mediainfo')
 backup=('etc/flood/config.js')
 provides=('nodejs-flood')
+conflicts=('nodejs-flood')
 source=("${_pkgname}::git+https://github.com/jesec/flood"
         'flood.service'
         'flood.sysusers'
