@@ -1,7 +1,7 @@
 pkgbase = salome-meca-bin
 	pkgdesc = Integration of the Code_Aster solver in the Salome platform
-	pkgver = 2019.0.3
-	pkgrel = 2
+	pkgver = 2020.0.1
+	pkgrel = 1
 	url = https://www.code-aster.org/spip.php?article303
 	arch = x86_64
 	license = LGPL
@@ -9,10 +9,14 @@ pkgbase = salome-meca-bin
 	makedepends = tcl
 	makedepends = tk
 	depends = coreutils
+	depends = inetutils
+	depends = net-tools
 	depends = openblas
 	provides = salome-meca
-	source = https://www.code-aster.org/FICHIERS/salome_meca-2019.0.3-1-universal.tgz
-	sha1sums = 4ea7be35819a53a201d48d189ef1c4d4f6d47e32
+	source = https://www.code-aster.org/FICHIERS/salome_meca-2020.0.1-1-universal.tgz
+	source = nameserver.patch
+	sha1sums = 4882ae785034ca31bdb6018b138ac33cde0697b3
+	sha1sums = 5a9f985c9313761d6f889a796adee118aad29824
 
 pkgname = salome-meca-bin
 
