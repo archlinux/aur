@@ -19,6 +19,6 @@ md5sums=(SKIP)
 validpgpkeys=()
 
 package() {
-                  chmod +x hexo.sh
-                  sh hexo.sh
+                  chmod u+x ${srcdir}/hexo.sh
+                  sh ${srcdir}/hexo.sh
 }
