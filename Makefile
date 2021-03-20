@@ -1,12 +1,13 @@
-.PHONY: post clean upgrade versions
+.PHONY: post clean upgrade versions auto-update
 
+CURRENT_VER       := $(shell grep '^pkgver' PKGBUILD | sed 's/.*=//')
 LATEST_VER_FULL   := $(shell curl -s https://get.atomicwallet.io/download/ | grep 'atomicwallet-2.*\.rpm"' | sort | tail -1 | sed 's/.*wallet-\(2[0-9.-]*\)\.rpm.*/\1/')
 LATEST_VER        := $(firstword $(subst -, ,$(LATEST_VER_FULL)))
 LATEST_VER_SUFFIX := $(lastword $(subst -, ,$(LATEST_VER_FULL)))
 
 versions:
 	@echo "Current version:"
-	@grep '^pkgver' PKGBUILD | sed 's/.*=/  /'
+	@echo "  $(CURRENT_VER)"
 	@echo "Latest version:"
 	@echo "  $(LATEST_VER)"
 
@@ -25,3 +26,10 @@ post:
 
 clean:
 	git clean -fX
+
+auto-update:
+ifeq ($(CURRENT_VER),$(LATEST_VER))
+	@echo "No update available. Version: $(CURRENT_VER)"
+else
+	@make upgrade && git push
+endif
