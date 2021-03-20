@@ -6,6 +6,7 @@ pkgdesc='TUI-based Discogs collection tracker'
 arch=('x86_64')
 url="https://github.com/cartoon-raccoon/cogsy"
 license=("LGPL2")
+conflicts=("cogsy")
 depends=('openssl' 'sqlite3' 'ncurses')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cartoon-raccoon/$pkgname/archive/refs/tags/v$pkgver.tar.gz")

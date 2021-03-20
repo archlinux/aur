@@ -9,7 +9,9 @@ pkgbase = cogsy
 	depends = openssl
 	depends = sqlite3
 	depends = ncurses
-	source = cogsy-0.2.0.tar.gz::https://github.com/cartoon-raccoon/cogsy/cogsy/refs/tags/v0.2.0.tar.gz
+	conflicts = cogsy
+	source = cogsy-0.2.0.tar.gz::https://github.com/cartoon-raccoon/cogsy/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e07bdc5eaad6d288426cc1c7902e8bab704cf38ee17b9e48d3c600dc61c1eae0
 
 pkgname = cogsy
 
