@@ -3,7 +3,7 @@ pkgver=2.2.0
 pkgrel=1
 pkgdesc="Fast artificial neural network library (mingw-w64)"
 arch=(any)
-url="http://leenissen.dk/fann/"
+url="https://leenissen.dk/fann/"
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 license=('LGPL2.1')
@@ -23,7 +23,6 @@ prepare () {
 build() {
   cd "$srcdir/FANN-${pkgver}-Source"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
