@@ -3,7 +3,7 @@ pkgver=1.1.1
 pkgrel=7
 pkgdesc="An open video codec developed by the Xiph.org (mingw-w64)"
 arch=('any')
-url="http://xiph.org"
+url="https://xiph.org"
 license=("BSD")
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-libvorbis')
@@ -60,7 +60,4 @@ package() {
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
-  cd "${srcdir}/libtheora-$pkgver"
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
