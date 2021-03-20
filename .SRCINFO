@@ -1,0 +1,13 @@
+pkgbase = shellter
+	pkgdesc = Dynamic shellcode injection tool
+	pkgver = 13
+	pkgrel = 1
+	url = https://www.shellterproject.com
+	arch = any
+	license = custom
+	depends = wine
+	source = shellter::git+https://github.com/ParrotSec/shellter
+	sha512sums = SKIP
+
+pkgname = shellter
+
