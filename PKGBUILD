@@ -4,8 +4,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.66.7
-pkgrel=1
+pkgver=2.68.0
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -20,7 +20,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs')
 license=(LGPL)
-_commit=95115f029d9c170c2e966cd7d3547b6394c92a4a  # tags/2.66.7^0
+_commit=a58a47fd6d3da5ffb28809f212971748667dfb3c  # tags/2.68.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-thumbnailer.patch
@@ -52,6 +52,7 @@ prepare() {
 build() {
   CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
   arch-meson glib build \
+    -D glib_debug=disabled \
     -D selinux=disabled \
     -D sysprof=enabled \
     -D man=true
@@ -70,7 +71,8 @@ package() {
   install -D gio-querymodules.script "$pkgdir/usr/share/libalpm/scripts/gio-querymodules"
 
   # Avoid a dep on sysprof
-  sed -i 's/, sysprof-capture-4//' "$pkgdir"/usr/lib/pkgconfig/*.pc
+  sed -re '/^Requires\.private:/s/,? *sysprof-capture-[^,]*(,|$)/\1/' \
+    -i "$pkgdir"/usr/lib/pkgconfig/*.pc
 
   export PYTHONHASHSEED=0
   python -m compileall -d /usr/share/glib-2.0/codegen \
