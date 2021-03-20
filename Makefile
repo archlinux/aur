@@ -1,4 +1,4 @@
-.PHONY: post clean upgrade versions auto-update
+.PHONY: auto-update clean post test-upgrade upgrade versions
 
 CURRENT_VER       := $(shell grep '^pkgver' PKGBUILD | sed 's/.*=//')
 LATEST_VER_FULL   := $(shell curl -s https://get.atomicwallet.io/download/ | grep 'atomicwallet-2.*\.rpm"' | sort | tail -1 | sed 's/.*wallet-\(2[0-9.-]*\)\.rpm.*/\1/')
@@ -11,14 +11,16 @@ versions:
 	@echo "Latest version:"
 	@echo "  $(LATEST_VER)"
 
-upgrade:
+test-upgrade:
 	perl -pi -e 's/^pkgver=.+/pkgver=$(LATEST_VER)/' PKGBUILD
 	perl -pi -e 's/^_pkgver_suffix=.+/_pkgver_suffix=$(LATEST_VER_SUFFIX)/' PKGBUILD
 	bash -c 'perl -pi -e "s/^sha256sums=.+/$$(makepkg -g)/" PKGBUILD'
-	make post
+
+upgrade:
+	@make test-upgrade
+	@make post
 	git add .SRCINFO PKGBUILD
 	git commit -m "Upgrade to $(LATEST_VER)" .SRCINFO PKGBUILD
-	git show
 
 post:
 	makepkg --verifysource -f
