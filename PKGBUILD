@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=airvpn-bin
-pkgver=2.19.7
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=('airvpn' 'eddie-ui')
 conflicts=('airvpn' 'airvpn-bin' 'airvpn-git' 'eddie-ui-git')
 install=airvpn.install
 source_x86_64=("eddie-ui_${pkgver}_linux_x64_arch.tar.xz"::"https://airvpn.org/mirrors/eddie.website/download/?platform=linux&arch=x64&ui=ui&format=arch.tar.xz&version=${pkgver}")
-sha256sums_x86_64=('e86fe50176e20028e5fe19ca60ffdb5652d64b7a23aa1acb22073ebe531cc6a6')
-sha512sums_x86_64=('83be07f8aa0fb7663e47fc2a9a1444f3b81c097648c88098fc382fde1357dbddcb890d1661d7fe42160e618052945ca4e70cf458fbec8dc9c58fbc6f6ab59f47')
+sha256sums_x86_64=('aeef6783eaefa8f65bda7f9134b9a7b33f9f032fb463654ac9217cbaa9672229')
+sha512sums_x86_64=('17618bf89f86dc0b16fe58b888bc4710bcbeada0200e38b6d4843cb2deabc3e44d850c8b1c8369bd7efebdfbc2836a56e2053c388641df19c20d29d7440b2ba5')
 
 
 package() {
