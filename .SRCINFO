@@ -1,0 +1,14 @@
+pkgbase = supercollider-vstplugin
+	pkgdesc = The IEM vstplugin plugin for SuperCollider
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://git.iem.at/pd/vstplugin
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	depends = supercollider
+	source = https://git.iem.at/pd/vstplugin/uploads/55215e58eded6f286effe16ddc34b081/VSTPlugin_v0.4.1_Linux.zip
+	md5sums = a65f43b32c79cf85f7614b3461c9b8e4
+
+pkgname = supercollider-vstplugin
+
