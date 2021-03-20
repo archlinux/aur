@@ -1,7 +1,7 @@
 pkgbase = fastocr-git
 	pkgdesc = FastOCR is a desktop application for OCR API.
 	pkgver = 0.2.0.r0.5b396a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BruceZhang1993/FastOCR
 	arch = any
 	license = LGPL3
@@ -12,6 +12,7 @@ pkgbase = fastocr-git
 	depends = python-aiohttp
 	depends = python-dbus
 	depends = python-click
+	depends = qt5-quickcontrols2
 	provides = fastocr
 	source = fastocr::git+https://github.com/BruceZhang1993/FastOCR
 	sha256sums = SKIP
