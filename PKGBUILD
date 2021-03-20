@@ -1,7 +1,7 @@
 # Maintainer: Ashely Roll <ash at digitalnemesis dot com>
 
 pkgname=astrodmx-capture
-pkgver=0.78.5
+pkgver=0.86.3
 pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
@@ -12,11 +12,11 @@ license=(custom)
 options=(!strip)
 install=$pkgname.install
 
-source=("https://www.linux-astro-imaging.uk/sites/downloads/linux/dmx/astrodmx-generic-glibc-2.29_${pkgver}_x86-64-manual.tar.gz")
-sha256sums=("94de032d90bbad7fec3f4c7315c60d8c876e83fe1b44f12f36432c43334f47b1")
+source=("https://www.astrodmx-capture.org.uk/sites/downloads/astrodmx/current/x86-64/astrodmx-glibc-2.30_${pkgver}_x86-64-manual.tar.gz")
+sha256sums=("26fec744b1ce169f09e83af9d8385c56b6a3cd4735635c64251579c621afe7b2")
 
 _instdir="/usr/local/AstroDMx_Capture"
-_prefix="R-Linux-64-2.29-generic"
+_prefix="R-Linux-64-2.30"
 
 package() {
     # create the desitination folder
@@ -35,6 +35,5 @@ package() {
     # Update V0.78.3: Now have to start with launcher.sh, this does a cd, so will continue
     # to wrap with pushd/popd to not mess up local path
     mkdir -p "${pkgdir}/etc/profile.d"
-    echo "alias astrodmx=\"pushd '${_instdir}/bin'; ./launcher.sh; popd\"" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
+    echo "alias astrodmx=\"pushd '${_instdir}/bin'; ./AstroDMx-Launcher; popd\"" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
 }
-
