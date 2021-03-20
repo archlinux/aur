@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.7.0  # Don’t forget to update CHANGELOG.md
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -64,6 +64,7 @@ package_foot() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
   rm -rf "${pkgdir}/usr/share/terminfo"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_foot-terminfo() {
