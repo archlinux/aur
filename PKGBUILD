@@ -1,4 +1,3 @@
-
 pkgname=mingw-w64-libgnurx
 pkgver=2.5.1
 pkgrel=5
@@ -8,7 +7,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('GPL')
-url="http://mingw.sourceforge.net/"
+url="https://sourceforge.net/projects/mingw/"
 source=("http://download.sourceforge.net/mingw/Other/UserContributed/regex/mingw-regex-${pkgver}/mingw-libgnurx-${pkgver}-src.tar.gz"
         "mingw-w64-libgnurx-honor-destdir.patch")
 md5sums=('35c8fed3101ca1f253e9b6b1966661f6'
