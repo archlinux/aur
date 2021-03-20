@@ -1,6 +1,6 @@
 # Maintainer: Ellie Huxtable <e@elm.sh>
 pkgname=atuin
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 makedepends=('rustup')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

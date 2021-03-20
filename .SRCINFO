@@ -1,6 +1,6 @@
 pkgbase = atuin
 	pkgdesc = atuin - magical shell history
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
