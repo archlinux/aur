@@ -1,10 +1,9 @@
-
 pkgname=psp-bzip2
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="A high-quality data compression program (psp)"
 arch=(any)
-url="http://sources.redhat.com/bzip2"
+url="https://sources.redhat.com/bzip2"
 license=('custom')
 groups=('psp')
 depends=('psp-sdk')
