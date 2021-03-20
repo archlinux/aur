@@ -2,7 +2,7 @@ pkgname=mingw-w64-levmar
 pkgver=2.6
 pkgrel=1
 pkgdesc='Levenberg-Marquardt nonlinear least squares algorithms in C/C++ (mingw-w64)'
-url='http://www.ics.forth.gr/~lourakis/levmar'
+url='https://www.ics.forth.gr/~lourakis/levmar'
 arch=('any')
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-lapack' 'mingw-w64-f2c')
@@ -16,7 +16,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd "$srcdir/levmar-${pkgver}"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
