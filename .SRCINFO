@@ -1,23 +1,29 @@
 pkgbase = flood-git
 	pkgdesc = Flood: A web UI for rTorrent with a Node.js backend and React frontend.
-	pkgver = 1.0.0.r385.g06089c4
+	pkgver = 4.5.0.r6.g9283a1d3
 	pkgrel = 1
-	url = https://github.com/Flood-UI/flood
-	arch = x86_64
+	url = https://github.com/jesec/flood
+	install = flood.install
+	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python2
-	depends = npm
+	makedepends = npm
+	depends = nodejs
 	optdepends = mediainfo
+	provides = nodejs-flood
 	backup = etc/flood/config.js
-	source = flood-git::git+https://github.com/Flood-UI/flood
+	source = flood::git+https://github.com/jesec/flood
 	source = flood.service
 	source = flood.sysusers
 	source = flood.tmpfiles
+	source = flood.sh
+	source = flood.conf.d
 	sha256sums = SKIP
-	sha256sums = b17bb76abaa4c3802bef845e3989cc810507a574eb970667690846bd8b5dd5dc
+	sha256sums = 03ba8790b61378ec544db3d7a9057c112fd5ada643f0696ba0441fcf92c21f79
 	sha256sums = 351d9475fb25c43285f56b123d4415cd4a4bc5bebbc0c6cbe8be046031eb6900
-	sha256sums = 54bdb2682ad050e2ef43e209001eb2ad711ff4cbdd83fef860e3d94cf1edb514
+	sha256sums = dee6aef8405bd527424c7ce44c3150fdd3aaaa2c8fcb9f9a57fb5d06e2b4402c
+	sha256sums = d632f408d2ef9c61fe6a34d5480a96b5439b1bfdc2db9c45aaed7670b711bbb0
+	sha256sums = be0107f09eb7e7e913b435e15e0020de483dbd133ad7ea17546b90fe43656e17
 
 pkgname = flood-git
 

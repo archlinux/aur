@@ -3,9 +3,9 @@ Description=Flood rTorrent Web UI
 After=network.target
 
 [Service]
-WorkingDirectory=/usr/lib/flood
-ExecStart=/usr/bin/npm start
 User=flood
+EnvironmentFile=/etc/conf.d/flood
+ExecStart=/usr/bin/node --use_strict /usr/lib/flood/index.js --rundir /var/lib/flood $FLOOD_ARGS
 
 [Install]
 WantedBy=multi-user.target

@@ -1,57 +1,64 @@
-# Maintainer: Lari Tikkanen <lartza@wippies.com>
+# Maintainer: Lari Tikkanen <lartza@outlook.com>
 # Contributor: arshlinux
 pkgname=flood-git
-pkgver=1.0.0.r385.g06089c4
+_pkgname=flood
+pkgver=4.5.0.r6.g9283a1d3
 pkgrel=1
-pkgdesc='Flood: A web UI for rTorrent with a Node.js backend and React frontend. '
-url='https://github.com/Flood-UI/flood'
+pkgdesc='Flood: A web UI for rTorrent with a Node.js backend and React frontend.'
+url='https://github.com/jesec/flood'
 license=('GPL3')
-arch=('x86_64')
-depends=('npm')
-makedepends=('git' 'python2')
+arch=('any')
+depends=('nodejs')
+makedepends=('git' 'npm')
 optdepends=('mediainfo')
 backup=('etc/flood/config.js')
-source=("$pkgname::git+https://github.com/Flood-UI/flood"
+provides=('nodejs-flood')
+source=("${_pkgname}::git+https://github.com/jesec/flood"
         'flood.service'
         'flood.sysusers'
-        'flood.tmpfiles')
+        'flood.tmpfiles'
+        'flood.sh'
+        'flood.conf.d')
+install=flood.install
 sha256sums=('SKIP'
-            'b17bb76abaa4c3802bef845e3989cc810507a574eb970667690846bd8b5dd5dc'
+            '03ba8790b61378ec544db3d7a9057c112fd5ada643f0696ba0441fcf92c21f79'
             '351d9475fb25c43285f56b123d4415cd4a4bc5bebbc0c6cbe8be046031eb6900'
-            '54bdb2682ad050e2ef43e209001eb2ad711ff4cbdd83fef860e3d94cf1edb514')
+            'dee6aef8405bd527424c7ce44c3150fdd3aaaa2c8fcb9f9a57fb5d06e2b4402c'
+            'd632f408d2ef9c61fe6a34d5480a96b5439b1bfdc2db9c45aaed7670b711bbb0'
+            'be0107f09eb7e7e913b435e15e0020de483dbd133ad7ea17546b90fe43656e17')
 
 pkgver() {
-    cd "$pkgname"
+    cd "${_pkgname}"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "$pkgname"
-
-    cp config.template.js config.js
-    sed -e "s|./server/db/|/var/lib/flood/db/|" -i config.js
-
-    npm install --cache "${srcdir}/npm-cache --only=prod"
-}
-
 build() {
-    cd "$pkgname"
+    cd "${_pkgname}"
+
+    npm ci --cache "${srcdir}/npm-cache" 
     npm run build
 }
 
 package() {
-    install -dm755 $pkgdir/usr/lib/flood
-    cp -r $pkgname/* $pkgdir/usr/lib/flood
+    install -dm755 "${pkgdir}/usr/lib/flood"
+    install -D -m 644 "${srcdir}/${_pkgname}/package.json" "${pkgdir}/usr/lib/flood/"
+    install -D -m 644 "${srcdir}/${_pkgname}/package-lock.json" "${pkgdir}/usr/lib/flood/"
 
-    install -dm750 $pkgdir/var/lib/flood/db
+    cd "${pkgdir}/usr/lib/flood/"
+    npm ci --production --cache "${srcdir}/npm-cache"
 
-    install -dm755 $pkgdir/etc/flood
-    mv $pkgdir/usr/lib/flood/config.js $pkgdir/etc/flood/config.js
-    ln -s /etc/flood/config.js $pkgdir/usr/lib/flood/config.js
+    cp -r "${srcdir}/${_pkgname}/dist"/* "${pkgdir}/usr/lib/flood/"
 
-    install -Dm644 flood.service $pkgdir/usr/lib/systemd/system/flood.service
-    install -Dm644 flood.sysusers $pkgdir/usr/lib/sysusers.d/flood.conf
-    install -Dm644 flood.tmpfiles $pkgdir/usr/lib/tmpfiles.d/flood.conf
+    install -D -m 755 "${srcdir}/flood.sh" "${pkgdir}/usr/bin/flood"
+
+    find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+    chown -R root:root "${pkgdir}"
+
+    install -Dm644 "${srcdir}/flood.service" "${pkgdir}/usr/lib/systemd/system/flood.service"
+    install -Dm644 "${srcdir}/flood.sysusers" "${pkgdir}/usr/lib/sysusers.d/flood.conf"
+    install -Dm644 "${srcdir}/flood.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/flood.conf"
+    install -Dm644 "${srcdir}/flood.conf.d" "$pkgdir/etc/conf.d/flood"
 
     # This doesn't save us much but oh well
     # Thanks Nicola (https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/atom)
@@ -65,5 +72,7 @@ package() {
         -or -name "doc" -prune -exec rm -r '{}' \; \
         -or -name "html" -prune -exec rm -r '{}' \; \
         -or -name "man" -prune -exec rm -r '{}' \; \
-        -or -name "scripts" -prune -exec rm -r '{}' \;
+        -or -name "scripts" -prune -exec rm -r '{}' \; \
+        -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
+        -or -path "*/task-lists/src" -prune -exec rm -r '{}' \;
 }
