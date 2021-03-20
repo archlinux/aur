@@ -6,7 +6,7 @@ pkgdesc="hexo部署脚本-带typography主题"
 arch=(x86_64)
 url="https://mirrors.yaoyz.cn/hexo/hexo.sh"
 license=('GPL')
-depends=('nodejs-lts-erbium' 'npm' 'git' 'curl' 'wget' 'tar')
+depends=('nodejs-lts-erbium' 'npm' 'git' 'wget' 'curl' 'tar' 'gzip' 'zip')
 provides=(hexo-with-theme-typography=$pkgver)
 replaces=()
 backup=()
@@ -15,18 +15,10 @@ install=
 changelog=
 source=("https://mirrors.yaoyz.cn/hexo/hexo.sh")
 noextract=()
-md5sums=("c07b949636d1cb7b94764d76cdd41cab")
+md5sums=(SKIP)
 validpgpkeys=()
 
-# build() {                  
-#
-# }
-prepare() {
-                  wget https://mirrors.yaoyz.cn/hexo/hexo.sh 
-}
-
 package() {
-                  chmod +x "./hexo.sh"
-                  sh ./hexo.sh
-                  rm -r ./hexo.sh
+                  chmod +x hexo.sh
+                  sh hexo.sh
 }

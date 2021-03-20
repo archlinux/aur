@@ -8,12 +8,14 @@ pkgbase = hexo-with-theme-typography
 	depends = nodejs-lts-erbium
 	depends = npm
 	depends = git
-	depends = curl
 	depends = wget
+	depends = curl
 	depends = tar
+	depends = gzip
+	depends = zip
 	provides = hexo-with-theme-typography=1.0.1
 	source = https://mirrors.yaoyz.cn/hexo/hexo.sh
-	md5sums = c07b949636d1cb7b94764d76cdd41cab
+	md5sums = SKIP
 
 pkgname = hexo-with-theme-typography
 
