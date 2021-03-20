@@ -7,12 +7,13 @@ arch=('i686' 'x86_64')
 install="drupal8-git.install"
 url="http://drupal.org"
 license=('GPL')
-makedepends=('git' 'php')
+makedepends=('git')
+depends=('php')
 
 _gitroot="--branch 8.0.x http://git.drupal.org/project/drupal.git"
 _gitname="drupal8-git"
 
-build() {
+package() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
 
