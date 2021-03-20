@@ -38,6 +38,8 @@ makedepends=(
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
 
+export PBR_VERSION=$pkgver
+
 build(){
 	cd $_pyname-$pkgver
 	python setup.py build
