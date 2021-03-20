@@ -2,7 +2,7 @@
 
 pkgname=vr-lighthouse-bin
 _pkgname=lighthouse
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="About
 VR Lighthouse power state management in Rust"
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/ShayBox/$_pkgname"
 license=('MIT')
 source=($url/releases/download/$pkgver/lighthouse)
-sha256sums=('4b55fd2382622b2412d54ace6d1c228f0fdb1fd0e5873767f97dc1fbe397f1c2')
+sha256sums=('8749a85f640425bddf3eb355ca8b8afab8b6490d32306cfdc648a72c2a11b24e')
 
 package() {
   install -Dm755 lighthouse "$pkgdir/usr/bin/$_pkgname"
