@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/gopasspw/gopass-jsonapi"
 license=('MIT')
 
-source=("https://github.com/gopasspw/gopass-jsonapi/releases/download/v${pkgver}/gopass-jsonapi-${pkgdate}-linux-arm64.tar.gz")
+source=("https://github.com/gopasspw/gopass-jsonapi/releases/download/v${pkgver}/gopass-jsonapi-${pkgver}-linux-arm64.tar.gz")
 
 sha256sums=('11fbc59afa6a4ca6385974bdded34adc38dfc6837ab7297b106d012029cdbb19')
 
