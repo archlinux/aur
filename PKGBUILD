@@ -2,18 +2,24 @@
 
 _pkgname=authenticator
 pkgname=$_pkgname-git
-pkgver=3.32.2.r215.g5ab811d
+pkgver=4.0.2.r21.g8ac5109
 pkgrel=1
 pkgdesc="2FA code generator for GNOME "
 arch=('any')
 url="https://gitlab.gnome.org/World/Authenticator"
 license=('GPL')
-depends=('gtk4' 'python' 'glib2' 'python-pyotp' 'libsecret' 'python-pillow' 'pyzbar' 'python-gnupg' 'python-gobject' 'python-beautifulsoup4' 'python-pyfavicon' 'python-yoyo-migrations' 'python-iniherit')
-makedepends=('git' 'meson' 'ninja' 'gobject-introspection')
+depends=('gtk4' 'glib2' 'libsecret' 'zbar' 'libadwaita' 'gstreamer')
+makedepends=('git' 'meson' 'ninja' 'gobject-introspection' 'rust')
 provides=('authenticator')
 conflicts=('authenticator')
-source=("$_pkgname::git+https://gitlab.gnome.org/World/Authenticator.git")
-sha256sums=('SKIP')
+source=(
+  "$_pkgname::git+https://gitlab.gnome.org/World/Authenticator.git"
+  "zbar-rust::git+https://github.com/magiclen/zbar-rust.git"
+  "0001-fix-change-minor-max-version.patch"
+)
+sha256sums=('SKIP'
+            'SKIP'
+            '9b9274c9e96107793914c181034a3d9794689e98817c9cffe2e7523f7cf095c1')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -21,7 +27,11 @@ pkgver() {
 }
 
 prepare() {
+  cd "$srcdir/zbar-rust"
+  patch -Np1 < "../0001-fix-change-minor-max-version.patch"
+
   cd "$srcdir/$_pkgname"
+  sed -i "s|zbar-rust = \"0\.0\"|zbar-rust = { path = \"$srcdir/zbar-rust\" }|g" Cargo.toml
   meson build --prefix=/usr --libdir=lib --libexecdir=lib
 }
 

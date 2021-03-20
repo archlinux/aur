@@ -1,0 +1,34 @@
+From ea9e81c385fbee44bd6d283350f1838009ec2ff3 Mon Sep 17 00:00:00 2001
+From: tytan652 <tytan652@tytanium.xyz>
+Date: Sat, 20 Mar 2021 11:41:14 +0100
+Subject: [PATCH] fix: change minor max version
+
+---
+ build.rs         | 2 +-
+ tests/general.rs | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build.rs b/build.rs
+index 45dbb1d..e3d29d1 100644
+--- a/build.rs
++++ b/build.rs
+@@ -6,7 +6,7 @@ use std::path::PathBuf;
+ use std::process::Command;
+ 
+ const MIN_VERSION: &str = "0.10";
+-const MAX_VERSION: &str = "0.20";
++const MAX_VERSION: &str = "0.24";
+ 
+ fn main() {
+     if cfg!(target_os = "freebsd") {
+diff --git a/tests/general.rs b/tests/general.rs
+index 99b9271..d537ae2 100644
+--- a/tests/general.rs
++++ b/tests/general.rs
+@@ -8,5 +8,5 @@ fn version() {
+ 
+     assert_eq!(0, result);
+     assert_eq!(0, major);
+-    assert!(minor >= 10 && minor <= 20);
++    assert!(minor >= 10 && minor <= 24);
+ }
