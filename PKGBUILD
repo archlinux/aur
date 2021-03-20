@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('git')
 depends=('php')
 
-_gitroot="--branch 8.0.x http://git.drupal.org/project/drupal.git"
+_gitroot="--branch 8.9.x http://git.drupal.org/project/drupal.git"
 _gitname="drupal8-git"
 
 pkgver() {
