@@ -5,13 +5,12 @@ pkgver=r1.ebab72802
 pkgrel=1
 pkgdesc='Material Design icons by Google'
 arch=('any')
-url='https://material.io/icons'
+url='https://fonts.google.com/icons'
 license=('Apache')
 makedepends=('git')
 options=('!strip')
 
 prepare() {
-	# Use filtered clone with sparse checkout to minimize objects fetched from remote server.
 	git clone --filter=blob:none --depth=1 --no-checkout https://github.com/google/material-design-icons $pkgname
 	cd $pkgname
 	git config core.sparseCheckout true
