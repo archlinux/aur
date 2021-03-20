@@ -61,4 +61,6 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     cp "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
     chmod 0755 "${pkgdir}/usr/bin/${_pkgname}"
+
+    find "${pkgdir}" -type f -name .DS_Store -delete
 }
