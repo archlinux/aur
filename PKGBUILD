@@ -1,0 +1,47 @@
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+
+pkgname=timescaledb-backup
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="A tool for dumping and restoring TimescaleDB databases"
+arch=('x86_64')
+url="https://github.com/timescale/timescaledb-backup"
+license=('custom:TSL')
+depends=('timescaledb' 'glibc')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        "https://github.com/timescale/timescaledb/blob/master/tsl/LICENSE-TIMESCALE")
+b2sums=('ab84cac38b68fd82cf986394ebfa51019cac5075c151e900257164d4372c0d7304564ef6ef8bdcc29f93153d878d6af75092c881a1b0b6876015200a7e2e20fb'
+        'e2e7e6a21bd537a6e6957dbf3c8427aa605117e43c1f34dbfb2ac06c1213794d320f60a88bb31b131645f2a436b70fccaee8841917de80fe8486b53eadd77003')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  mkdir -p build
+  go mod vendor
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  go build -v \
+    -buildmode=pie \
+    -trimpath \
+    -mod=vendor \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
+    -o build \
+    ./cmd/...
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  # binaries
+  install -Dm755 -t "$pkgdir/usr/bin" build/ts-dump build/ts-restore
+
+  # license
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    "$srcdir/LICENSE-TIMESCALE" LICENSE NOTICE
+
+  # documentation
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+}
