@@ -1,0 +1,17 @@
+pkgbase = stylegan2-git
+	pkgdesc = StyleGAN2 - Official TensorFlow Implementation
+	pkgver = r16.315ac54
+	pkgrel = 1
+	url = https://github.com/NVlabs/stylegan2
+	arch = any
+	license = custom
+	makedepends = git
+	depends = cuda
+	depends = python-scipy
+	depends = python-requests
+	depends = python-pillow
+	source = git+https://github.com/NVlabs/stylegan2.git
+	sha256sums = SKIP
+
+pkgname = stylegan2-git
+
