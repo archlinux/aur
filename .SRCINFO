@@ -1,17 +1,18 @@
 pkgbase = mailtc
 	pkgdesc = Lightweight GTK2 mail checker for the system tray/notification area of panels.
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = http://mailtc.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gtk2
+	depends = libunique
 	options = !emptydirs
 	options = !libtool
-	source = http://downloads.sourceforge.net/sourceforge/mailtc/mailtc-1.4.0.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/mailtc/mailtc-1.4.2.tar.bz2
 	source = gdk_display.patch
-	sha256sums = a2aa8aa2b3e12a5698b874a1d5102749f569084feb0726152c29c6ca6f6fb1ab
+	sha256sums = f778456b658b2941c0a73baafaec62cf8b35a7fdd2602e03d213286b53964c37
 	sha256sums = 43ec209624b6368fe4fc0b5d9c1f0a51d699593a42b98a6277b101371536dc9e
 
 pkgname = mailtc
