@@ -1,0 +1,16 @@
+pkgbase = trex-bin
+	pkgdesc = T-Rex is a versatile cryptocurrency mining software for NVIDIA hardware. It supports a variety of algorithms and is trying to do its best to make it as fast and as convenient to use as possible.
+	pkgver = 0.19.12
+	pkgrel = 1
+	url = https://github.com/trexminer/T-Rex
+	arch = x86_64
+	license = custom
+	depends = nvidia-utils
+	provides = trex
+	conflicts = trex
+	options = !strip
+	source = t-rex_0.19.12_11.1.tar.gz::https://www.dropbox.com/s/yiy5gq26ownzp01/t-rex-0.19.12-new-linux-cuda11.1.tar.gz?dl=1
+	sha512sums = 5d47725de7deb60405727287ee078c27a65cb2fd11790e6f432ed4dbc586f1b01bebbafb3811409bc9d3698aa84a34de9c7358bfe9dd6af57f84cd97e676f5ec
+
+pkgname = trex-bin
+
