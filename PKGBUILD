@@ -1,8 +1,9 @@
-# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Old Maintainer:Lubosz Sarnecki <lubosz@gmail.com>
 # Old Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
  
 pkgname=python-cairo-git
-pkgver=1.10.1.34.5a45b0b
+pkgver=v1.20.0.r6.g4865f55
 pkgrel=1
 pkgdesc="Python bindings for the cairo graphics library. Git version."
 url="http://www.cairographics.org/"
@@ -11,18 +12,19 @@ license=('LGPL3')
 depends=('python' 'cairo>=1.12')
 makedepends=('git' 'pkg-config')
 options=('!libtool')
-provides=("python-cairo=1.10.0")
+provides=("python-cairo=1.20.0")
 conflicts=('python-cairo')
-source=("${pkgname}::git://git.cairographics.org/git/pycairo")
-md5sums=('SKIP')
+source=("${pkgname}::git://github.com/pygobject/pycairo")
+sha256sums=('SKIP')
  
 pkgver() {
     cd ${srcdir}/${pkgname}
-    PREFIX="pycairo_version        = '"
-    ver=$(grep "$PREFIX" setup.py | sed "s/$PREFIX//" | sed "s/'//")
-    revision=$(git rev-list --count HEAD)
-    hash=$(git log --pretty=format:'%h' -n 1)
-    echo $ver.$revision.$hash
+    #PREFIX="pycairo_version        = '"
+    #ver=$(grep "$PREFIX" setup.py | sed "s/$PREFIX//" | sed "s/'//")
+    #revision=$(git rev-list --count HEAD)
+    #hash=$(git log --pretty=format:'%h' -n 1)
+    #echo $ver.$revision.$hash
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
  
 package() {
