@@ -10,6 +10,7 @@ license=('LGPL')
 arch=('x86_64')
 depends=('vulkan-icd-loader')
 optdepends=('lib32-vulkan-icd-loader: 32-bit Windows application support')
+# do not provide vkd3d and lib32-vkd3d intentionally: providing them may break deepin-wine apps.
 options=(!strip)
 source=("https://github.com/HansKristian-Work/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.tar.zst")
 sha256sums=('7544c7ab6b82229693d5ec29422bf6342eccbdbec3f0ac042ac8f0a8c8697b42')
