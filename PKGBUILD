@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Current Maintainer: John A. Leuenhagen <john@zlima12.com>
+# Previous Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Vinay Shastry <vinayshastry at gmail dot com>
 
 _pkgname='wormhole-william'
@@ -29,5 +30,3 @@ package() {
   install -Dm644 "${_pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
