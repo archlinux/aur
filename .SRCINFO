@@ -1,0 +1,12 @@
+pkgbase = material-icons-fonts
+	pkgdesc = Material Design icons by Google
+	pkgver = r1.ebab72802
+	pkgrel = 1
+	url = https://material.io/icons
+	arch = any
+	license = Apache
+	makedepends = git
+	options = !strip
+
+pkgname = material-icons-fonts
+
