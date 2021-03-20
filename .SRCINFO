@@ -1,6 +1,6 @@
 pkgbase = shellter
 	pkgdesc = Dynamic shellcode injection tool
-	pkgver = 13
+	pkgver = 7.2
 	pkgrel = 1
 	url = https://www.shellterproject.com
 	arch = any

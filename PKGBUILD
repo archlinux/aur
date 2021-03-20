@@ -1,5 +1,5 @@
 pkgname=shellter
-pkgver=13
+pkgver=7.2
 pkgrel=1
 
 pkgdesc='Dynamic shellcode injection tool'
