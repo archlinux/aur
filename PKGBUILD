@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=fcft
 pkgver=2.3.2  # Don’t forget to update CHANGELOG.md
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman."
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/${pkgname}
@@ -28,4 +28,6 @@ check() {
 package() {
   cd ${pkgname}
   DESTDIR="${pkgdir}/" ninja -C build install
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 unicode/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.unicode"
 }
