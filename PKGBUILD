@@ -1,6 +1,6 @@
 # Maintainer: realitygaps <realitygaps@yahoo.com>
 pkgname=drupal8-git
-pkgver=20110620
+pkgver=r38123.3bddf7fcb8
 pkgrel=1
 pkgdesc="A PHP based content management system - GIT version"
 arch=('i686' 'x86_64')
@@ -12,6 +12,13 @@ depends=('php')
 
 _gitroot="--branch 8.0.x http://git.drupal.org/project/drupal.git"
 _gitname="drupal8-git"
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd "$srcdir"
