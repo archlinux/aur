@@ -28,8 +28,7 @@ build() {
   export CGO_ENABLED=1
 
   cd "$srcdir/$pkgname-$pkgver"
-  LDFLAGS="-extldflags \"${LDFLAGS}\"" \
-    make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
+  make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
 }
 
 package() {
