@@ -2,10 +2,10 @@
 
 pkgname=xonsh-git
 _gitname=xonsh
-pkgver=0.9.24.r222.g0dafe12d
+pkgver=0.9.27.r29.g8ad8b043
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
-url="http://github.com/scopatz/xonsh"
+url="https://github.com/xonsh/xonsh"
 arch=('any')
 license=('FreeBSD')
 depends=('python' 'python-ply')
