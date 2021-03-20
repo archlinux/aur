@@ -1,0 +1,17 @@
+pkgbase = ttyc
+	pkgdesc = ttyd protocol client
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Depau/ttyc
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	source = git+https://github.com/Depau/ttyc.git#tag=ttyc-v0.1
+	sha256sums = SKIP
+
+pkgname = ttyc
+
