@@ -11,8 +11,8 @@ license=('custom:brother commercial license')
 depends=('cups')
 depends_x86_64+=('lib32-glibc')
 install=$pkgname.install
-source=("http://download.brother.com/welcome/dlf101135/mfcj4620dwlpr-${pkgver}-1.i386.rpm"
-		"http://download.brother.com/welcome/dlf101137/mfcj4620dwcupswrapper-${pkgver}-1.i386.rpm"
+source=("https://download.brother.com/welcome/dlf101135/mfcj4620dwlpr-${pkgver}-1.i386.rpm"
+		"https://download.brother.com/welcome/dlf101137/mfcj4620dwcupswrapper-${pkgver}-1.i386.rpm"
 		'cupswrapper-license.txt'
 		'lpr-license.txt')
 md5sums=('787fe81c445e030a2754d4082416b7bf'
