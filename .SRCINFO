@@ -1,13 +1,15 @@
 pkgbase = spim-svn
 	pkgdesc = A MIPS32 simulator (SVN version)
 	pkgver = 717
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/spimsimulator/
 	arch = i686
 	arch = x86_64
 	groups = emulators
 	license = custom:BSD
 	makedepends = subversion
+	makedepends = bison
+	makedepends = flex
 	depends = glibc
 	provides = spim=717
 	conflicts = spim
