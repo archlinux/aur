@@ -1,5 +1,5 @@
 pkgbase = netradiant-git
-	pkgdesc = The open source, cross platform level editor for id Tech-derivated games, heir of GtkRadiant.
+	pkgdesc = The open source, cross platform level editor for idtech games (GtkRadiant fork)
 	pkgver = r2054.c5ecfe71
 	pkgrel = 1
 	epoch = 1
