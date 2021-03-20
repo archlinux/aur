@@ -1,0 +1,86 @@
+diff -pur a/src/interface.c b/src/interface.c
+--- a/src/interface.c	2012-04-08 11:34:45.000000000 +0200
++++ b/src/interface.c	2021-03-20 12:42:39.420873181 +0100
+@@ -12,6 +12,21 @@
+ #include "plugin.h"
+ #include "interface.h"
+ 
++/* colour mode frame */
++GtkWidget *lum_toggle;
++
++/* amount/radius frame */
++GtkWidget *amount_label[2], *amount_spin[2];
++GtkWidget *amount_hbox[2], *amount_vbox, *amount_scale[2];
++GtkObject *amount_adj[2];
++
++/* reset buttons */
++GtkWidget *reset_button, *button_hbox;
++
++/* dialog */
++GtkWidget *dialog, *dialog_vbox;
++GtkWidget *preview;
++
+ gboolean
+ user_interface (GimpDrawable * drawable)
+ {
+diff -pur a/src/interface.h b/src/interface.h
+--- a/src/interface.h	2012-04-08 11:34:45.000000000 +0200
++++ b/src/interface.h	2021-03-20 12:42:49.000843869 +0100
+@@ -17,16 +17,16 @@
+ /* declare all widgets global to make things a lot easier */
+ 
+ /* colour mode frame */
+-GtkWidget *lum_toggle;
++extern GtkWidget *lum_toggle;
+ 
+ /* amount/radius frame */
+-GtkWidget *amount_label[2], *amount_spin[2];
+-GtkWidget *amount_hbox[2], *amount_vbox, *amount_scale[2];
+-GtkObject *amount_adj[2];
++extern GtkWidget *amount_label[2], *amount_spin[2];
++extern GtkWidget *amount_hbox[2], *amount_vbox, *amount_scale[2];
++extern GtkObject *amount_adj[2];
+ 
+ /* reset buttons */
+-GtkWidget *reset_button, *button_hbox;
++extern GtkWidget *reset_button, *button_hbox;
+ 
+ /* dialog */
+-GtkWidget *dialog, *dialog_vbox;
+-GtkWidget *preview;
++extern GtkWidget *dialog, *dialog_vbox;
++extern GtkWidget *preview;
+diff -pur a/src/plugin.c b/src/plugin.c
+--- a/src/plugin.c	2012-04-08 11:34:45.000000000 +0200
++++ b/src/plugin.c	2021-03-20 12:41:15.047800811 +0100
+@@ -11,6 +11,12 @@
+ 
+ #include "plugin.h"
+ 
++float *fimg[4];
++float *buffer[3];
++gint channels;
++
++GTimer *timer;
++
+ GimpPlugInInfo PLUG_IN_INFO = { NULL, NULL, query, run };
+ 
+ MAIN ()
+diff -pur a/src/plugin.h b/src/plugin.h
+--- a/src/plugin.h	2012-04-08 11:34:45.000000000 +0200
++++ b/src/plugin.h	2021-03-20 12:40:44.667896124 +0100
+@@ -67,10 +67,10 @@ typedef struct
+ 
+ extern wavelet_settings settings;
+ 
+-float *fimg[4];
+-float *buffer[3];
+-gint channels;
++extern float *fimg[4];
++extern float *buffer[3];
++extern gint channels;
+ 
+-GTimer *timer;
++extern GTimer *timer;
+ 
+ #endif /* __PLUGIN_H__ */

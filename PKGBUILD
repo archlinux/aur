@@ -10,13 +10,18 @@ license=('GPL')
 groups=()
 depends=('gimp')
 provides=('wavelet-sharpen')
-source=(https://github.com/gimp-plugins-justice/wavelet-sharpen/archive/${commit}.zip)
-md5sums=('cc3485184615ace479b2c74ced1411d5')
-sha256sums=('6eb6450639222ec57ce1dcf6098c5ea3455a7a033106b4c4670c4bf7f20adde8')
+source=(https://github.com/gimp-plugins-justice/wavelet-sharpen/archive/${commit}.zip build_with_gcc10.patch)
+md5sums=('cc3485184615ace479b2c74ced1411d5'
+         'a922e26d92443a2ea56356fb799d3ef8')
+sha256sums=('6eb6450639222ec57ce1dcf6098c5ea3455a7a033106b4c4670c4bf7f20adde8'
+            '0ba1e8bda7db782f46be14345eb3dcb579657e6b7b03eaf38dec39d35b42f079')
 
 prepare() {
 	cd "$srcdir/wavelet-sharpen-$commit"
 	sed -i "2s/LIBS.*/\0 -lm/g" src/Makefile
+
+	# Needed for building with newer versions of GCC
+	patch -p1 < ../build_with_gcc10.patch
 }
 
 build() {

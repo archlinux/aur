@@ -9,8 +9,11 @@ pkgbase = gimp-plugin-wavelet-sharpen
 	depends = gimp
 	provides = wavelet-sharpen
 	source = https://github.com/gimp-plugins-justice/wavelet-sharpen/archive/0e9924850e7a51518cb418a994d976c9dc99b012.zip
+	source = build_with_gcc10.patch
 	md5sums = cc3485184615ace479b2c74ced1411d5
+	md5sums = a922e26d92443a2ea56356fb799d3ef8
 	sha256sums = 6eb6450639222ec57ce1dcf6098c5ea3455a7a033106b4c4670c4bf7f20adde8
+	sha256sums = 0ba1e8bda7db782f46be14345eb3dcb579657e6b7b03eaf38dec39d35b42f079
 
 pkgname = gimp-plugin-wavelet-sharpen
 
