@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2054.c5ecfe71
+pkgver=r2146.c94d5210
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -24,13 +24,12 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}/"
 
-    # Optional, fetch submodules too (such as Crunch and Daemonmap, by default they are compiled if present)
+    # Optional, fetch submodules too (such as Crunch and Daemonmap, they will be compiled if present)
     # git submodule update --init --recursive
     
-    # Needs Internet; Downloads gamepacks
     # Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
     # "all" (free + proprietary) and "none".
-    # To only fetch Xonotic and Unvanquished gamepacks for example,
+    # For example, to only fetch Xonotic and Unvanquished gamepacks,
     # use -DGAMEPACKS_LICENSE_LIST=none with -DGAMEPACKS_NAME_LIST="Xonotic Unvanquished".
     # Please refer to the NetRadiant README for more instructions.
     cmake -G "Unix Makefiles" -S. -Bbuild \
@@ -48,9 +47,5 @@ package() {
     cd "${srcdir}/${pkgname}/"
 
     cmake --install build
-
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # Map mime type doesn't work and produces a pacman warning
-    rm -r ${pkgdir}/usr/share/mime/
 }
