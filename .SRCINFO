@@ -1,0 +1,30 @@
+pkgbase = vim-everforest-git
+	pkgver = 0.1.3.r35.g2dd7dd9
+	pkgrel = 1
+	url = https://github.com/sainnhe/everforest
+	arch = any
+	license = MIT
+	makedepends = git
+	source = everforest::git+https://github.com/sainnhe/everforest.git
+	sha256sums = SKIP
+
+pkgname = vim-everforest-git
+	pkgdesc = Comfortable & Pleasant Color Scheme
+	depends = vim
+	provides = vim-everforest
+	conflicts = vim-everforest
+
+pkgname = vim-airline-everforest-git
+	pkgdesc = everforest color scheme for airline
+	depends = vim-everforest
+	depends = vim-airline
+	provides = vim-airline-everforest
+	conflicts = vim-airline-everforest
+
+pkgname = vim-lightline-everforest-git
+	pkgdesc = everforest color scheme for lightline
+	depends = vim-everforest
+	depends = vim-lightline-git
+	provides = vim-lightline-everforest
+	conflicts = vim-lightline-everforest
+
