@@ -4,9 +4,11 @@ pkgname=zsync2-git
 pkgver=2.0.0pre
 pkgrel=1
 pkgdesc="A file transfer program that's able to connect to rsync servers"
-arch=("x86_64")
+arch=(x86_64)
 url="https://github.com/AppImage/zsync2"
 license=("custom:Artistic")
+provides=(zsync2)
+conflicts=(zsync2)
 depends=(curl)
 makedepends=(cmake git gnutls openssl zlib)
 source=(git+$url.git
@@ -36,18 +38,13 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname/-git/}
-
-  mkdir -p build && cd build
-  cmake .. -DUSE_SYSTEM_CURL=1 -DBUILD_CPR_TESTS=0 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=None
-  make
+  cmake -B build ${pkgname/-git/} \
+    -DUSE_SYSTEM_CURL=1 -DBUILD_CPR_TESTS=0 \
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=None
+  make -C build
 }
 
 package() {
-  cd ${pkgname/-git/}/build
-
-  make DESTDIR="$pkgdir" install
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-
-  install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  make -C build DESTDIR="$pkgdir" install
+  install -Dm644 ${pkgname/-git/}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
