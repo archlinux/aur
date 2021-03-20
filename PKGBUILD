@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.33.0.r86.g09d7c75bfe
+pkgver=0.33.0.r102.g5824d9fff8
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -10,6 +10,7 @@ depends=(
          'alsa-lib'
          'aom'
          'aribb24'
+         'avisynthplus'
          'bzip2'
          'celt'
          'codec2'
@@ -113,20 +114,26 @@ depends=(
 license=('custom')
 url='http://mpv.io'
 makedepends=(
-             'git'
-             'mesa'
-             'python-docutils'
-             'nasm'
-             'ladspa'
-             'fontconfig'
-             'vulkan-headers'
-             'opencl-headers'
-             'wayland-protocols'
+             'amf-headers'
+             'avisynthplus'
+             'clang'
              'ffnvcodec-headers'
+             'fontconfig'
+             'git'
+             'intel-media-sdk'
+             'ladspa'
+             'llvm'
+             'mesa'
+             'nasm'
+             'opencl-headers'
+             'python-docutils'
+             'vulkan-headers'
+             'wayland-protocols'
              )
 optdepends=(
             'cuda: mpv ffmpeg nvcc and libnpp support'
             'davs2: Additional libdavs2 support for ffmpeg'
+            'intel-media-sdk: Intel QuickSync support for ffmpeg'
             'libilbc: Additional libilbc support for ffmpeg'
             'libklvanc-git: Additional libklvanc support for ffmpeg'
             'libopenmpt: Additional libopenmpt support for ffmpeg'
@@ -236,6 +243,7 @@ prepare() {
     '--disable-mbedtls'
     '--disable-programs'
     '--enable-alsa'
+    '--enable-amf'
     '--enable-bzlib'
     '--enable-chromaprint'
     '--enable-cuvid'
@@ -270,6 +278,7 @@ prepare() {
     '--enable-libiec61883'
     '--enable-libjack'
     '--disable-liblensfun'
+    '--enable-libmfx'
     '--enable-libmodplug'
     '--enable-libmp3lame'
     '--enable-libmysofa'
@@ -306,6 +315,7 @@ prepare() {
     '--enable-libzimg'
     '--enable-libzmq'
     '--enable-libzvbi'
+    '--enable-lto'
     '--enable-lv2'
     '--enable-lzma'
     '--enable-nonfree'
@@ -315,6 +325,7 @@ prepare() {
     '--enable-openal'
     '--enable-opencl'
     '--enable-opengl'
+    '--enable-pic'
     '--enable-sdl2'
     '--enable-sndio'
     '--enable-v4l2-m2m'
@@ -434,6 +445,7 @@ prepare() {
 
     if [ -d /opt/cuda ]; then
       _ffmpeg_options+=('--enable-cuda-nvcc')
+      _ffmpeg_options+=('--enable-cuda-llvm')
       _ffmpeg_options+=('--enable-libnpp')
       _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
       _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
