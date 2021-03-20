@@ -1,6 +1,6 @@
 pkgbase = openconnect-git
 	pkgdesc = Open client for Cisco AnyConnect VPN
-	pkgver = 8.04.r2.g5b0ea32e
+	pkgver = 8.10.r176.gb5b50c29
 	pkgrel = 1
 	url = http://www.infradead.org/openconnect.html
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = openconnect-git
 	provides = openconnect
 	conflicts = openconnect
 	options = !emptydirs
-	source = openconnect-git::git://git.infradead.org/users/dwmw2/openconnect.git
+	source = openconnect-git::git+https://gitlab.com/openconnect/openconnect.git/
 	md5sums = SKIP
 
 pkgname = openconnect-git
