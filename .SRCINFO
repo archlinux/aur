@@ -1,0 +1,30 @@
+pkgbase = neovim-everforest-git
+	pkgver = 0.1.3.r35.g2dd7dd9
+	pkgrel = 1
+	url = https://github.com/sainnhe/everforest
+	arch = any
+	license = MIT
+	makedepends = git
+	source = everforest::git+https://github.com/sainnhe/everforest.git
+	sha256sums = SKIP
+
+pkgname = neovim-everforest-git
+	pkgdesc = Comfortable & Pleasant Color Scheme
+	depends = neovim
+	provides = neovim-everforest
+	conflicts = neovim-everforest
+
+pkgname = neovim-airline-everforest-git
+	pkgdesc = everforest color scheme for airline
+	depends = neovim-everforest
+	depends = neovim-airline
+	provides = neovim-airline-everforest
+	conflicts = neovim-airline-everforest
+
+pkgname = neovim-lightline-everforest-git
+	pkgdesc = everforest color scheme for lightline
+	depends = neovim-everforest
+	depends = neovim-lightline
+	provides = neovim-lightline-everforest
+	conflicts = neovim-lightline-everforest
+
