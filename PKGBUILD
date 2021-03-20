@@ -3,7 +3,7 @@
 pkgname=com.yunkanpan.numnode
 pkgver=1.2.2.3
 pkgrel=1
-pkgdesc="欢迎使用云看盘软件"
+pkgdesc="The Drive to Develop"
 arch=("x86_64")
 install=
 url="https://www.yunkanpan.com/"
