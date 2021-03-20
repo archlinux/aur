@@ -3,8 +3,8 @@
 
 pkgname=perl-b-hooks-op-check
 _cpanname="B-Hooks-OP-Check"
-pkgver=0.19
-pkgrel=7
+pkgver=0.22
+pkgrel=1
 pkgdesc="Wrap OP check callbacks"
 arch=('i686' 'x86_64')
 license=('GPL' 'PerlArtistic')
@@ -13,7 +13,8 @@ options=('!emptydirs')
 depends=('perl>=5.5.0')
 makedepends=('perl-extutils-depends' 'perl-module-install')
 source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_cpanname-$pkgver.tar.gz")
-md5sums=('a6af890eccb266f6ad9cb295eb7c570b')
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/$_cpanname-$pkgver.tar.gz")
+md5sums=('b02925eacea03913a922f4b45020b5ac')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
