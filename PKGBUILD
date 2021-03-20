@@ -6,7 +6,7 @@
 pkgname=jetty
 pkgver=9.4.38
 _timestamp=v20210224
-pkgrel=1
+pkgrel=2
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
 url="http://www.eclipse.org/jetty/"

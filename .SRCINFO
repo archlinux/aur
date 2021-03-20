@@ -1,7 +1,7 @@
 pkgbase = jetty
 	pkgdesc = Jetty is a pure Java-based HTTP server and Java Servlet container
 	pkgver = 9.4.38
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eclipse.org/jetty/
 	arch = any
 	license = Apache
