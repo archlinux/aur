@@ -1,0 +1,11 @@
+pkgbase = pipewire-enable-bluez5
+	pkgdesc = Pacman hook to automatically enable Bluez5 support for Pipewire
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = WTFPL
+	source = pipewire-enable-bluez5.hook
+	md5sums = SKIP
+
+pkgname = pipewire-enable-bluez5
+

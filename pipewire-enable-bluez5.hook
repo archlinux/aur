@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = etc/pipewire/media-session.d/media-session.conf
+
+[Action]
+Description = Enable bluez5 support for pipewire
+When = PostTransaction
+Exec = /usr/bin/bash -c "[[ -f '/etc/pipewire/media-session.d/media-session.conf' ]] && sed -i 's|#bluez5|bluez5 |g' '/etc/pipewire/media-session.d/media-session.conf' || true"
