@@ -1,19 +1,15 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
-pkgver=1.6.4
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
-makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
+makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')
 checkdepends=('check' 'ttf-dejavu')
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2')
-source=(git+https://codeberg.org/dnkl/foot.git
-        git+https://codeberg.org/dnkl/tllist.git
-        git+https://codeberg.org/dnkl/fcft.git)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2' 'fcft')
+source=(git+https://codeberg.org/dnkl/foot.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd foot
@@ -23,25 +19,19 @@ pkgver() {
 build() {
   cd foot
 
-  mkdir -p subprojects
-  pushd subprojects
-  ln -sf ../../tllist .
-  ln -sf ../../fcft .
-  popd
-
   # makepkg uses -O2 by default, but we *really* want -O3
   # -Wno-missing-profile since we're not exercising everything when doing PGO builds
   export CFLAGS+=" -O3 -Wno-missing-profile"
 
-  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:text-shaping=disabled -Dfcft:test-text-shaping=false . build
+  meson --prefix=/usr --buildtype=release -Db_lto=true . build
 
   find -name "*.gcda" -delete
   meson configure -Db_pgo=generate build
   ninja -C build
 
-  script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline"
+  local script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline"
 
-  tmp_file=$(mktemp)
+  local tmp_file=$(mktemp)
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     build/foot \
@@ -72,13 +62,15 @@ package_foot-git() {
   pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
   depends+=('foot-terminfo')
   optdepends=('libnotify: desktop notifications'
-              'xdg-utils: URI launching')
+              'xdg-utils: URI launching'
+              'bash-completion: bash completions for foot itself')
   conflicts=('foot')
   provides=('foot')
 
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
   rm -rf "${pkgdir}/usr/share/terminfo"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/foot/LICENSE"
 }
 
 package_foot-terminfo-git() {
