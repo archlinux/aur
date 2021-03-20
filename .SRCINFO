@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-hg
 	pkgdesc = Standalone web browser from mozilla.org, nightly version
-	pkgver = 87.0a1.r561202.2231d839f1e7
+	pkgver = 88.0a1.r572254.f56d2bf535d6
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = firefox-nightly-hg
 	makedepends = autoconf2.13
 	makedepends = rust
 	makedepends = ccache
-	makedepends = mercurial-hg
+	makedepends = mercurial
 	makedepends = icu
 	makedepends = clang
 	makedepends = llvm

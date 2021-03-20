@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=87.0a1.r561202.2231d839f1e7
-_pkgver=87.0a1
+pkgver=88.0a1.r572254.f56d2bf535d6
+_pkgver=88.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
@@ -16,7 +16,7 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg
          ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-            xorg-server-xvfb autoconf2.13 rust ccache mercurial-hg icu clang llvm jack 
+            xorg-server-xvfb autoconf2.13 rust ccache mercurial icu clang llvm jack 
             python nodejs python2-psutil cbindgen nasm
             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2 python
             nodejs python2-psutil cbindgen nasm
