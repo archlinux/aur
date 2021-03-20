@@ -1,6 +1,6 @@
 # Maintainer: Llathasa Veleth <llathasa at outlook dot com>
 pkgname=disfetch
-pkgver=1.20
+pkgver=1.21
 pkgrel=0
 pkgdesc='Yet another *nix distro fetching program, but less complex.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash>=4.0.0')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a9e7af2e0a7f675045eea72955c81a047ef9c118a6247b76a822c60dcdb2f687')
+sha256sums=('e86a1aa0df2d48d10e944f7c4c565d70a063838e5916b76ee7abc9c3feb461b2')
 
 package() {
 	cd "$pkgname-$pkgver"
