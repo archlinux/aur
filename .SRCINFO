@@ -1,0 +1,18 @@
+pkgbase = gstarcad-bin
+	pkgdesc = 浩辰 CAD
+	pkgver = 20210317
+	pkgrel = 1
+	url = https://www.gstarcad.com/cad_linux/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = qt5-svg
+	depends = qt5-imageformats
+	depends = hicolor-icon-theme
+	optdepends = deepin-qt5integration: deepin DE integration
+	provides = gstarcad
+	source = gstarcad-bin-20210317-x86_64.deb::https://hccad.gstarcad.cn/linux2021/GstarCAD2021_Linux_uos_amd64_v2.0_20210317.deb
+	sha512sums = 67dae72b64a99a6bea93488a78a534bd56215546d0cac38035a708c4e8570193684a5080d7141fcbcceb580388157e8630ce82d71dc976654dc53688e8a97ed6
+
+pkgname = gstarcad-bin
+
