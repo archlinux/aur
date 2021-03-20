@@ -59,8 +59,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.23.arch1.r969267.63924135a103
-_srcver_tag=v5.10.23.arch1
+pkgver=v5.10.25.arch1.r969285.a73699c90d76
+_srcver_tag=v5.10.25.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -105,7 +105,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'dece85aae8326c62294c68b55ebf95dc48b1f4b457a61ec26d2aa3821ee19256b46bd99c556657c6b0fe1b6c4a8000444912230e09d6b5c7e6854080fb353e96'
+            'b310443e1abafbe467a1316a7cb7d742005554e9c57ca2fca98b90de6a123d76a1da30e0cc2cb1bf04a55787e7adddcf07b6087eb603bea05417409231842601'
             '05ec92046b9b48802b8c3afa550574a46893c90aeb552dca49445d1ef94dbb2a2f39d3d919c65d41f95859cea8bb641e042b20720a1a527cd067965dff84aea7')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -124,12 +124,12 @@ prepare() {
     #git remote add arch_stable "https://git.archlinux.org/linux.git" || true
     #git fetch arch_stable "${_srcver_tag_arch%.*}-${_srcver_tag_arch##*.}"
     #git merge --no-edit --no-commit FETCH_HEAD
-    
+
     msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
     git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
     git fetch upstream_stable ${_srcver_tag//.arch*/}
     git merge --no-edit --no-commit FETCH_HEAD
-    
+
     PatchesArray=(
         $_reponame_gcc_patch/$_gcc_patch_name
         arch_patches.patch
@@ -142,7 +142,7 @@ prepare() {
 
     msg2 "Setting config..."
     cp ../config .config
-    
+
     if [ -n "$_subarch" ]; then
         yes "$_subarch" | make oldconfig
     else
@@ -205,7 +205,7 @@ _package() {
         wireguard-arch
     )
 
-    cd $_reponame 
+    cd $_reponame
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -294,7 +294,7 @@ _package-headers() {
                 strip -v $STRIP_SHARED "$file" ;;
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
-    
+
     echo "Stripping vmlinux..."
     strip -v $STRIP_STATIC "$builddir/vmlinux"
 
