@@ -1,6 +1,6 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 20.10.6.1.r118.g4d8fedc83
+	pkgver = 21.04.1.r1.gc7d93582d
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -28,6 +28,11 @@ pkgname = yaru-gtk-theme-git
 	provides = yaru-gtk-theme
 	conflicts = yaru-gtk-theme
 
+pkgname = yaru-gtksourceview-theme-git
+	pkgdesc = Yaru default ubuntu gtksourceview theme
+	provides = yaru-gtksourceview-theme
+	conflicts = yaru-gtksourceview-theme
+
 pkgname = yaru-gnome-shell-theme-git
 	pkgdesc = Yaru default ubuntu gnome shell theme
 	depends = gnome-shell
@@ -38,6 +43,12 @@ pkgname = yaru-unity-theme-git
 	pkgdesc = Yaru default ubuntu unity theme
 	provides = yaru-unity-theme
 	conflicts = yaru-unity-theme
+
+pkgname = yaru-metacity-theme-git
+	pkgdesc = Yaru default ubuntu metacity theme
+	depends = metacity
+	provides = yaru-metacity-theme
+	conflicts = yaru-metacity-theme
 
 pkgname = yaru-icon-theme-git
 	pkgdesc = Yaru default ubuntu icon theme

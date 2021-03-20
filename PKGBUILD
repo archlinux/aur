@@ -5,11 +5,13 @@
 pkgbase=yaru-git
 pkgname=(yaru-sound-theme-git
          yaru-gtk-theme-git
+         yaru-gtksourceview-theme-git
          yaru-gnome-shell-theme-git
          yaru-unity-theme-git
+         yaru-metacity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=20.10.6.1.r118.g4d8fedc83
+pkgver=21.04.1.r1.gc7d93582d
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -36,15 +38,20 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/sounds
     fi
     if [[ "$1" != "gtk-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{-light,{,-dark}/{gtk-*,index.theme}}
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-light,-dark}/{gtk-*,index.theme}
+    fi
+    if [[ "$1" != "gtksourceview-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/gtksourceview-*
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        rm "${pkgdir}"/usr/share/themes/Yaru{,-dark}/gnome-shell
-        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-dark}
+        rm "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
+        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-light}
     fi
     if [[ "$1" != "unity-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/themes/Yaru/unity
+    fi
+    if [[ "$1" != "metacity-theme" ]]; then
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-light,-dark}/metacity-1
     fi
     if [[ "$1" != "icon-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/icons
@@ -76,6 +83,14 @@ package_yaru-gtk-theme-git() {
     _delete_all_from_pkgdir_except "gtk-theme"
 }
 
+package_yaru-gtksourceview-theme-git() {
+    pkgdesc="Yaru default ubuntu gtksourceview theme"  
+    provides=(yaru-gtksourceview-theme)
+    conflicts=(yaru-gtksourceview-theme)
+    DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+    _delete_all_from_pkgdir_except "gtksourceview-theme"
+}
+
 package_yaru-gnome-shell-theme-git() {
     pkgdesc="Yaru default ubuntu gnome shell theme"  
     depends=(gnome-shell)
@@ -93,6 +108,15 @@ package_yaru-unity-theme-git() {
     
     DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
     _delete_all_from_pkgdir_except "unity-theme"
+}
+
+package_yaru-metacity-theme-git() {
+    pkgdesc="Yaru default ubuntu metacity theme"
+    depends=(metacity)
+    provides=(yaru-metacity-theme)
+    conflicts=(yaru-metacity-theme)
+    DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+    _delete_all_from_pkgdir_except "metacity-theme"
 }
 
 package_yaru-icon-theme-git() {
