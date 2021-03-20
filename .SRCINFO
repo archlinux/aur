@@ -1,6 +1,6 @@
 pkgbase = zxtune123
 	pkgdesc = Chiptune player, CLI version
-	pkgver = r4891
+	pkgver = r4980
 	pkgrel = 1
 	url = https://zxtune.bitbucket.io/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = zxtune123
 	depends = boost-libs
 	conflicts = zxtune-git
 	conflicts = zxtune-bin
-	source = https://github.com/vitamin-caig/zxtune/archive/r4891.tar.gz
-	md5sums = c0cc62f06849154c22a3131778bb7369
+	source = https://github.com/vitamin-caig/zxtune/archive/r4980.tar.gz
+	md5sums = dcd248336f8c6eef0af34824fb45d364
 
 pkgname = zxtune123
 

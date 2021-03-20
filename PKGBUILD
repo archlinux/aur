@@ -1,6 +1,6 @@
 # Maintainer: Boris Timofeev <btimofeev at emunix dot org>
 pkgname=zxtune123
-pkgver=r4891
+pkgver=r4980
 pkgrel=1
 pkgdesc="Chiptune player, CLI version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('gcc' 'boost')
 optdepends=()
 conflicts=('zxtune-git' 'zxtune-bin')
 source=(https://github.com/vitamin-caig/zxtune/archive/$pkgver.tar.gz)
-md5sums=('c0cc62f06849154c22a3131778bb7369')
+md5sums=('dcd248336f8c6eef0af34824fb45d364')
 
 build() {
   cd "$srcdir/zxtune-$pkgver"
