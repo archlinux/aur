@@ -1,7 +1,7 @@
 pkgbase = python-randomfiletree
 	pkgdesc = Creates a random file and directory tree/structure for testing
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/klieret/randomfiletree
 	arch = any
 	license = MIT
