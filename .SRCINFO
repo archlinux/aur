@@ -1,6 +1,6 @@
 pkgbase = openlitespeed-bin
 	pkgdesc = A high-performance, lightweight, open source HTTP server
-	pkgver = 1.7.4
+	pkgver = 1.7.9
 	pkgrel = 1
 	url = https://openlitespeed.org/downloads/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = openlitespeed-bin
 	depends = openssl
 	depends = libzip
 	provides = openlitespeed
-	source = https://openlitespeed.org/packages/openlitespeed-1.7.4.tgz
-	md5sums = 540eb05bd9fcb06223246a7658e12b6e
+	source = https://openlitespeed.org/packages/openlitespeed-1.7.9.tgz
+	md5sums = 0592a969dff52b5cd34f9ae348acf410
 
 pkgname = openlitespeed-bin
 
