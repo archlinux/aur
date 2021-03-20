@@ -4,7 +4,7 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="hexo部署脚本-带typography主题"
 arch=(x86_64)
-url="https://mirrors.yaoyz.cn/hexo/hexo.sh"
+url="https://mirrors.yaoyz.cn/hexo"
 license=('GPL')
 depends=('nodejs-lts-erbium' 'npm' 'git' 'wget' 'curl' 'tar' 'gzip' 'zip')
 provides=(hexo-with-theme-typography=$pkgver)
@@ -18,7 +18,7 @@ noextract=()
 md5sums=(SKIP)
 validpgpkeys=()
 
-package() {
+build() {
                   chmod u+x ${srcdir}/hexo.sh
                   sh ${srcdir}/hexo.sh
 }
