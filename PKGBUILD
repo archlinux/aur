@@ -4,7 +4,7 @@ pkgdesc="ROS - Xacro (XML Macros) Xacro is an XML macro language."
 url='https://wiki.ros.org/xacro'
 
 pkgname='ros-noetic-xacro'
-pkgver='1.14.5'
+pkgver='1.14.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="xacro-${pkgver}"
+_dir="xacro-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/xacro/archive/${pkgver}.tar.gz")
-sha256sums=('1019b4ed2b79ba7a46fb9da8bf8dd8272acc123b1a77078e04592e03d570be7d')
+sha256sums=('c7a02d388f49b3a5f772349b2a938de711700bb5b96eb827e7528b3d220f6f14')
 
 build() {
 	# Use ROS environment variables.
