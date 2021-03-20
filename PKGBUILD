@@ -1,6 +1,6 @@
 # Maintainer: Robin Krahl <robin.krahl@ireas.org>
 pkgname=rusty-man
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Command-line viewer for rustdoc documentation"
 arch=('x86_64')
@@ -11,12 +11,10 @@ optdepends=('rust-docs: Rust standard library documentation')
 makedepends=('cargo')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://git.sr.ht/~ireas/rusty-man/archive/v${pkgver}.tar.gz
-	"$pkgname-$pkgver.tar.gz.asc"::https://git.sr.ht/~ireas/rusty-man/refs/v${pkgver}/rusty-man-v${pkgver}.tar.gz.asc
 )
 validpgpkeys=('28B13CD28267111859622B686D533958F070C57C')
 sha512sums=(
-	'284a3a8abb32d43b45dc4797d90c785223aa2d4ba76a55280dafe82f32bf27e585a2d094beac4f5674b9de670cfd07d46b065d0bc0492f4910bc939f8225a387'
-	'f93fa1a3ba7dc526206b53cb120c4485160951a381ad1637ec6a8e96ecce4d03b2ba8d31d50035262eb1c8f91ec9d0f16b9227073046518d1540970e1ff4126b'
+	'798d0384cd34fd03b66ee73a6804d3b3bdf015471644e312d86f5a5d331fd57606de77986ee2a6103faf6bcfa6c19328df497e167d30146a4af454c3a948469f'
 )
 
 prepare() {
