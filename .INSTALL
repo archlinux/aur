@@ -20,5 +20,6 @@ Options:
     -e, --enable          Enable anonymization at boot time
     -d, --disable         Enable anonymization at boot time
     -u, --uninstall       Uninstall GenTor
+
 EOF
 }
