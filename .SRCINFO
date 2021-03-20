@@ -1,0 +1,13 @@
+pkgbase = wolframengine
+	pkgdesc = Free Wolfram Engine(TM) for Developers
+	pkgver = 12.2.0
+	pkgrel = 0
+	arch = x86_64
+	license = custom
+	provides = wolframscript
+	noextract = WolframEngine_12.2.0_LIN.sh
+	source = https://files.wolframcdn.com/WolframEngine/12.2.0.0/WolframEngine_12.2.0_LIN.sh
+	sha256sums = a9e1cf60a1920f98d8e80c09356146444f4d454d2e7811b8fc55363600593dcb
+
+pkgname = wolframengine
+
