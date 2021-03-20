@@ -1,6 +1,6 @@
 pkgbase = fastocr-git
 	pkgdesc = FastOCR is a desktop application for OCR API.
-	pkgver = 0.1.2.r12.ca19e1b
+	pkgver = 0.2.0.r0.5b396a2
 	pkgrel = 1
 	url = https://github.com/BruceZhang1993/FastOCR
 	arch = any
