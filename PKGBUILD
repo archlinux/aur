@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-compass
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
@@ -11,13 +11,15 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
 optdepends=('org.freedesktop.secrets')
 source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('f7df3fbe8434e1f2e3dca642cba06e794a08d6ffbee01a064531894fb36cbf8d')
+sha256sums=('2289c06e7df39ee91da134f278d86201b2b1c17c898f607c0e9a1801777bc272')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
 
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/"MongoDB Compass"
 
     # Remove all unnecessary stuff
     rm -rf "${pkgdir}/usr/share/lintian"
