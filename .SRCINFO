@@ -1,6 +1,6 @@
 pkgbase = dwm-monosans-git
 	pkgdesc = dwm with swallowing, systray, holdbar and other features
-	pkgver = 6.2.r1717.ad5273f
+	pkgver = 6.2.r1718.ca7019f
 	pkgrel = 1
 	url = https://github.com/monosans/dwm
 	arch = i686
@@ -15,14 +15,11 @@ pkgbase = dwm-monosans-git
 	optdepends = libxft-bgra-git: if dwm crashes when displaying emojis
 	optdepends = dmenu: program launcher
 	optdepends = st-monosans-git: default terminal emulator
-	optdepends = pcmanfm-gtk3: default file manager
 	optdepends = scrot: default screenshoter
 	provides = dwm
 	conflicts = dwm
 	source = git://github.com/monosans/dwm
-	source = config.mk
 	sha256sums = SKIP
-	sha256sums = 961aa8a6202dd3c6625fcaf17280956fb5eb1048f5f82c37ee0f89f08c75028a
 
 pkgname = dwm-monosans-git
 
