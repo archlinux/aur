@@ -1,0 +1,25 @@
+From 6dd53ff08134fd0eec33805cbf831267adb22b41 Mon Sep 17 00:00:00 2001
+From: Ross Tyler <rossetyler@gmail.com>
+Date: Fri, 20 Sep 2019 10:00:44 -0700
+Subject: [PATCH] call good() explicitly on ostream
+
+---
+ ImageCache.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ImageCache.cpp b/ImageCache.cpp
+index c48844a..e007cfc 100644
+--- a/ImageCache.cpp
++++ b/ImageCache.cpp
+@@ -257,7 +257,7 @@ namespace ImageCache {
+ 	{
+ 	    __gnu_cxx::stdio_filebuf<char> buffer(fd, std::ios::out);
+ 	    std::ostream out(&buffer);
+-	    success = (out << *image);
++	    success = (out << *image).good();
+ 	    // stdio_filebuf destructor will close fd
+ 	}
+ 	if (success) {
+-- 
+2.31.0
+
