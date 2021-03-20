@@ -18,7 +18,7 @@ noextract=()
 md5sums=(SKIP)
 validpgpkeys=()
 
-build() {
+package() {
                   chmod u+x ${srcdir}/hexo.sh
                   sh ${srcdir}/hexo.sh
 }
