@@ -1,0 +1,17 @@
+pkgbase = ip-info-git
+	pkgdesc = Get information about a ip address or domain
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/siruidops/ip-info_c
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libcurl-gnutls
+	depends = gcc
+	depends = make
+	conflicts = ip-info-bin
+	source = ip-info-git::git+https://github.com/siruidops/ip-info_c
+	sha512sums = SKIP
+
+pkgname = ip-info-git
+
