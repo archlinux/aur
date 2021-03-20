@@ -1,0 +1,13 @@
+pkgbase = fcitx5-pinyin-sougou
+	pkgdesc = Fcitx 5 Pinyin Dictionary from https://pinyin.sogou.com/dict/
+	pkgver = 20210320
+	pkgrel = 1
+	url = https://github.com/CHN-beta/sougou-dict.git
+	arch = any
+	license = custom
+	makedepends = libime
+	source = git+https://github.com/CHN-beta/sougou-dict.git#commit=c33638423355e557febfd7922b392a394c0ddefc
+	sha512sums = SKIP
+
+pkgname = fcitx5-pinyin-sougou
+
