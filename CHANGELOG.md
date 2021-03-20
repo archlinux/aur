@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.7.0](#1-7-0)
 * [1.6.4](#1-6-4)
 * [1.6.3](#1-6-3)
 * [1.6.2](#1-6-2)
@@ -20,6 +21,108 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.7.0
+
+### Added
+
+* The `pad` option now accepts an optional third argument, `center`
+  (e.g. `pad=5x5 center`), causing the grid to be centered in the
+  window, with equal amount of padding of the left/right and
+  top/bottom side (https://codeberg.org/dnkl/foot/issues/273).
+* `line-height`, `letter-spacing`, `horizontal-letter-offset` and
+  `vertical-letter-offset` to `foot.ini`. These options let you tweak
+  cell size and glyph positioning
+  (https://codeberg.org/dnkl/foot/issues/244).
+* Key/mouse binding `select-extend-character-wise`, which forces the
+  selection mode to 'character-wise' when extending a selection.
+* `DECSET` `47`, `1047` and `1048`.
+* URL detection and OSC-8 support. URLs are highlighted and activated
+  using the keyboard (**no** mouse support). See **foot**(1)::URLs, or
+  [README.md](README.md#urls) for details
+  (https://codeberg.org/dnkl/foot/issues/14).
+* `-d,--log-level={info|warning|error}` to both `foot` and
+  `footclient` (https://codeberg.org/dnkl/foot/issues/337).
+* `-D,--working-directory=DIR` to both `foot` and `footclient`
+  (https://codeberg.org/dnkl/foot/issues/347)
+* `DECSET 80` - sixel scrolling
+  (https://codeberg.org/dnkl/foot/issues/361).
+* `DECSET 1070` - sixel private color palette
+  (https://codeberg.org/dnkl/foot/issues/362).
+* `DECSET 8452` - position cursor to the right of sixels
+  (https://codeberg.org/dnkl/foot/issues/363).
+* Man page **foot-ctlseqs**(7), documenting all supported escape
+  sequences (https://codeberg.org/dnkl/foot/issues/235).
+* Support for transparent sixels (DCS parameter `P2=1`)
+  (https://codeberg.org/dnkl/foot/issues/391).
+* `-N,--no-wait` to `footclient`
+  (https://codeberg.org/dnkl/foot/issues/395).
+* Completions for Bash shell
+  (https://codeberg.org/dnkl/foot/issues/10).
+
+
+### Changed
+
+* The fcft and tllist library subprojects are now handled via Meson
+  [wrap files](https://mesonbuild.com/Wrap-dependency-system-manual.html)
+  instead of needing to be manually cloned.
+* Box drawing characters are now rendered by foot, instead of using
+  font glyphs (https://codeberg.org/dnkl/foot/issues/198)
+* Double- or triple clicking then dragging now extends the selection
+  word- or line-wise (https://codeberg.org/dnkl/foot/issues/267).
+* The line thickness of box drawing characters now depend on the font
+  size (https://codeberg.org/dnkl/foot/issues/281).
+* Extending a word/line-wise selection now uses the original selection
+  mode instead of switching to character-wise.
+* While doing an interactive resize of a foot window, foot now
+  requires 100ms of idle time (where the window size does not change)
+  before sending the new dimensions to the client application. The
+  timing can be tweaked, or completely disabled, by setting
+  `resize-delay-ms` (https://codeberg.org/dnkl/foot/issues/301).
+* `CSI 13 ; 2 t` now reports (0,0).
+* Key binding matching logic; key combinations like `Control+Shift+C`
+  **must** now be written as either `Control+C` or `Control+Shift+c`,
+  the latter being the preferred
+  variant. (https://codeberg.org/dnkl/foot/issues/376)
+* Consumed modifiers are no longer sent to the client application
+  (https://codeberg.org/dnkl/foot/issues/376).
+* The minimum version requirement for the libxkbcommon dependency is
+  now 1.0.0.
+* Empty pixel rows at the bottom of a sixel is now trimmed.
+* Sixels with DCS parameter `P2=0|2` now use the _current_ ANSI
+  background color for empty pixels instead of the default background
+  color (https://codeberg.org/dnkl/foot/issues/391).
+* Sixel decoding optimized; up to 100% faster in some cases.
+* Reported sixel “max geometry” from current window size, to the
+  configured maximum size (defaulting to 10000x10000).
+
+
+### Removed
+
+* The `-g,--geometry` command-line option (which had been deprecated
+  and superseded by `-w,--window-size-pixels` since 1.5.0).
+
+
+### Fixed
+
+* Some mouse bindings (_primary paste_, for example) did not require
+  `shift` to be pressed while used in a mouse grabbing
+  application. This meant the mouse event was never seen by the
+  application.
+* Terminals spawned with `ctrl`+`shift`+`n` not terminating when
+  exiting shell (https://codeberg.org/dnkl/foot/issues/366).
+* Default value of `-t,--term` in `--help` output when foot was built
+  without terminfo support.
+* Drain PTY when the client application terminates.
+
+
+### Contributors
+
+* [craigbarnes](https://codeberg.org/craigbarnes)
+* toast
+* [l3mon4d3](https://codeberg.org/l3mon4d3)
+* [Simon Schricker](mailto:s.schricker@sillage.at)
 
 
 ## 1.6.4
@@ -105,7 +208,6 @@
 
 ### Contributors
 
-* [birger](https://codeberg.org/birger)
 * [pc](https://codeberg.org/pc)
 * [FollieHiyuki](https://codeberg.org/FollieHiyuki)
 * jbeich
@@ -127,6 +229,7 @@
 
 
 ### Changed
+
 
 * Use `-std=c11` instead of `-std=c18`.
 * Added `-Wno-profile-instr-unprofiled` to Clang cflags in PGO builds

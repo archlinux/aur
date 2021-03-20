@@ -1,6 +1,6 @@
 pkgbase = foot
-	pkgver = 1.6.4
-	pkgrel = 4
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -18,8 +18,8 @@ pkgbase = foot
 	depends = pixman
 	depends = fontconfig
 	depends = fcft
-	source = foot-1.6.4.tar.gz::https://codeberg.org/dnkl/foot/archive/1.6.4.tar.gz
-	sha256sums = 73142dcb7d0223ca740f880d372084b6dfdd56700c375709b3166bcaf32e034c
+	source = foot-1.7.0.tar.gz::https://codeberg.org/dnkl/foot/archive/1.7.0.tar.gz
+	sha256sums = a5a7405956fc1862638712606e502eba11f2561a77f3a9fbbb332f90c8b50ee4
 
 pkgname = foot
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
@@ -31,6 +31,8 @@ pkgname = foot
 	depends = fcft
 	depends = foot-terminfo
 	optdepends = libnotify: desktop notifications
+	optdepends = xdg-utils: URI launching
+	optdepends = bash-completion: bash completions for foot itself
 
 pkgname = foot-terminfo
 	pkgdesc = Terminfo files for the foot terminal emulator

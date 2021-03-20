@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
-pkgver=1.6.4  # Don’t forget to update CHANGELOG.md
-pkgrel=4
+pkgver=1.7.0  # Don’t forget to update CHANGELOG.md
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -9,7 +9,7 @@ depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'fcft')
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')
 checkdepends=('check')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('73142dcb7d0223ca740f880d372084b6dfdd56700c375709b3166bcaf32e034c')
+sha256sums=('a5a7405956fc1862638712606e502eba11f2561a77f3a9fbbb332f90c8b50ee4')
 
 build() {
   cd foot
@@ -57,7 +57,9 @@ package_foot() {
   pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
   changelog=CHANGELOG.md
   depends+=('foot-terminfo')
-  optdepends=('libnotify: desktop notifications')
+  optdepends=('libnotify: desktop notifications'
+              'xdg-utils: URI launching'
+              'bash-completion: bash completions for foot itself')
 
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
