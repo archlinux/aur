@@ -1,4 +1,5 @@
-# Maintainer: George Tokmaji <tokmajigeorge@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: George Tokmaji <tokmajigeorge@gmail.com>
 # Contributor: Benedict Etzel <developer@beheh.de>
 # Contributor: Jonathan Steel <mail at jsteel dot org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
@@ -7,27 +8,21 @@
 
 pkgname=openclonk-git
 pkgrel=1
-pkgver=r11397.c13bc33d7
+pkgver=r11491.701bcf38c
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
 url='http://openclonk.org'
 license=('custom')
-depends=('glew' 'freealut' 'miniupnpc' 'libxrandr' 'sdl2' 'sdl_mixer>=1.2' 'desktop-file-utils' 'qt5-base' 'hicolor-icon-theme')
-install=openclonk.install
+depends=('freealut' 'miniupnpc' 'sdl2' 'qt5-base' 'hicolor-icon-theme' 'tinyxml' 'libepoxy' 'libvorbis')
 makedepends=('cmake' 'boost' 'mesa' 'git')
 provides=('openclonk')
 conflicts=('clonk_rage' 'openclonk' 'openclonk-music')
 source=("$pkgname::git+https://github.com/openclonk/openclonk#branch=master")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${pkgname}
-  patch -p1 -i "$srcdir"/../directories.patch
 }
 
 build() {
