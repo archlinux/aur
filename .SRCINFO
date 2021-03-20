@@ -1,0 +1,21 @@
+pkgbase = psp-libbulletml-git
+	pkgdesc = C++ library to handle BulletML easily (psp)
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = http://shinh.skr.jp/libbulletml/
+	arch = any
+	groups = psp
+	license = BSD
+	makedepends = psp-gcc
+	makedepends = git
+	depends = psp-sdk
+	provides = psp-libbulletml
+	conflicts = psp-libbulletml
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/psp-ports.git
+	md5sums = SKIP
+
+pkgname = psp-libbulletml-git
+
