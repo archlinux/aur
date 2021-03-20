@@ -1,0 +1,21 @@
+pkgbase = psp-libmad-git
+	pkgdesc = A high-quality MPEG audio decoder (psp)
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = http://shinh.skr.jp/libmad/
+	arch = any
+	groups = psp
+	license = GPL
+	makedepends = psp-gcc
+	makedepends = git
+	depends = psp-sdk
+	provides = psp-libmad
+	conflicts = psp-libmad
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/psp-ports.git
+	md5sums = SKIP
+
+pkgname = psp-libmad-git
+
