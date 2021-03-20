@@ -1,7 +1,7 @@
-
+# Maintainer: Holger Schramm <dev@strace.it>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Yegorius <yegorius@domic.us>
-# Maintainer: Sergey Shatunov <me@prok.pw>
+# Contributor: Sergey Shatunov <me@prok.pw>
 
 pkgname=jetty
 pkgver=9.4.38
