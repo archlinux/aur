@@ -1,13 +1,13 @@
 # Maintainer: Aaron Barany <akb825@gmail.com>
 
 pkgname=('cuttlefish-tool')
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Texture converter tool and library'
 arch=('i686' 'x86_64')
 url="https://github.com/akb825/Cuttlefish"
 license=('Apache')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'ispc')
 depends=('freeimage')
 source=()
 sha256sums=()
