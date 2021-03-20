@@ -1,10 +1,10 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Soc Virnyl S. Estela <renegan.ronin@gmail.com>
 # Contributor: Matthias Lisin <ml@visu.li>
 # Contributor: Chris Nixon <chris.nixon@sigma.me.uk>
 
 _pkgname=pyenv
 pkgname=$_pkgname-git
-pkgver=1.2.19.r4.g366c9801
+pkgver=1.2.24.1.r0.g332772ab
 pkgrel=1
 pkgdesc="Easily switch between multiple versions of Python (Git)"
 arch=('any')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
-  git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {

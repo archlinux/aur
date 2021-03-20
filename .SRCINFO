@@ -1,6 +1,6 @@
 pkgbase = pyenv-git
 	pkgdesc = Easily switch between multiple versions of Python (Git)
-	pkgver = 1.2.19.r4.g366c9801
+	pkgver = 1.2.24.1.r0.g332772ab
 	pkgrel = 1
 	url = https://github.com/pyenv/pyenv
 	arch = any
