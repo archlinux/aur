@@ -1,5 +1,1 @@
 d /var/lib/wiki-js 0755 wiki-js wiki-js  -
-h /var/lib/wiki-js -    -       -        - +C
-Z /var/lib/wiki-js -    wiki-js wiki-js
-z /etc/wiki-js 0755 root wiki-js -
-z /etc/wiki-js/config.yml 0660 root wiki-js
