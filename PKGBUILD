@@ -11,6 +11,7 @@ pkgdesc="Modified version of default kupfer volumes plugin that allows usage of 
 arch=('any')
 url="https://gist.github.com/4351271"
 license=('GPL')
+makedepends=('git')
 depends=('kupfer')
 source=("kupfer-volumes-cc::git://gist.github.com/4351271.git")
 sha256sums=(SKIP)

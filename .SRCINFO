@@ -5,6 +5,7 @@ pkgbase = kupfer-plugin-volumescc
 	url = https://gist.github.com/4351271
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = kupfer
 	source = kupfer-volumes-cc::git://gist.github.com/4351271.git
 	sha256sums = SKIP
