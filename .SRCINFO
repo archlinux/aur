@@ -1,0 +1,19 @@
+pkgbase = fzf-tab-completion-git
+	pkgdesc = Tab completion using fzf in zsh, bash, GNU readline apps (e.g. python, php -a etc.)
+	pkgver = r293.bdef0e2
+	pkgrel = 1
+	url = https://github.com/lincheney/fzf-tab-completion
+	install = fzf-tab-completion-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = rl_custom_function
+	depends = fzf
+	provides = fzf-tab-completion
+	source = fzf-tab-completion::git+https://github.com/lincheney/fzf-tab-completion.git
+	sha256sums = SKIP
+
+pkgname = fzf-tab-completion-git
+
