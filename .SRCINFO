@@ -1,0 +1,16 @@
+pkgbase = gitify-git
+	pkgdesc = GitHub Notifications on your menu bar
+	pkgver = 4.20.r1195.d67a2e8
+	pkgrel = 1
+	url = https://github.com/manosim/gitify.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	provides = gitify
+	conflicts = gitify
+	source = git+https://github.com/manosim/gitify.git
+	md5sums = SKIP
+
+pkgname = gitify-git
+
