@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -13,11 +13,16 @@ optdepends=('python-pyqt5: Qt5 Python bindings'
             'pyside2: PySide Qt5 Python bindings'
             'usbaudio: audio mirroring for Android <8.0'
             'sndcpy: audio mirroring for Android >=10')
-_commit=d681dd38dacaea20a8867c10a0f3915801f9b2c5  # tags/v4.9.0^0
+_commit=c2055ee29d3d6d143b5566c0c127a3188f0af9c7  # tags/v4.10.0^0
 source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('7427D25413635E1E39657B6B1007816766D390D7')
               # Srevin Saju (srevinsaju) <srevinsaju@sugarlabs.org>
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	python setup.py --version
+}
 
 build() {
 	cd "$srcdir/$pkgname"

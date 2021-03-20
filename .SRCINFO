@@ -1,6 +1,6 @@
 pkgbase = guiscrcpy
 	pkgdesc = Open Source GUI based Android Screen Mirroring System
-	pkgver = 4.9.0
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://guiscrcpy.github.io
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = guiscrcpy
 	optdepends = pyside2: PySide Qt5 Python bindings
 	optdepends = usbaudio: audio mirroring for Android <8.0
 	optdepends = sndcpy: audio mirroring for Android >=10
-	source = git+https://github.com/srevinsaju/guiscrcpy.git#commit=d681dd38dacaea20a8867c10a0f3915801f9b2c5?signed
+	source = git+https://github.com/srevinsaju/guiscrcpy.git#commit=c2055ee29d3d6d143b5566c0c127a3188f0af9c7?signed
 	validpgpkeys = 7427D25413635E1E39657B6B1007816766D390D7
 	sha256sums = SKIP
 
