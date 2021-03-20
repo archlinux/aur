@@ -24,6 +24,6 @@ pkgver() {
 package() {
   cd "${srcdir}/drupal"
   mkdir -p $pkgdir/usr/share/webapps/drupal8-git
-  cp -r ${srcdir}/drupal/drupal8-git/{*,.htaccess} ${pkgdir}/usr/share/webapps/drupal8-git
+  cp -r ${srcdir}/drupal/{*,.htaccess} ${pkgdir}/usr/share/webapps/drupal8-git
   echo "deny from all" > ${pkgdir}/usr/share/webapps/drupal8-git/.htaccess
 }
