@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-cpu-opt
-pkgver=5.11.1.arch1
+pkgver=5.11.7.arch1
 pkgrel=1
 pkgdesc='Linux (with CPU optimizations patch)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
