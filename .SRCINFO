@@ -1,0 +1,19 @@
+pkgbase = hexo-with-theme-typography
+	pkgdesc = hexo部署脚本-带typography主题
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://mirrors.yaoyz.cn/hexo/hexo.sh
+	arch = x86_64
+	license = GPL
+	depends = nodejs-lts-erbium
+	depends = npm
+	depends = git
+	depends = curl
+	depends = wget
+	depends = tar
+	provides = hexo-with-theme-typography=1.0.1
+	source = https://mirrors.yaoyz.cn/hexo/hexo.sh
+	md5sums = c07b949636d1cb7b94764d76cdd41cab
+
+pkgname = hexo-with-theme-typography
+
