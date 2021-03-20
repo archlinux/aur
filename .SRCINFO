@@ -1,0 +1,15 @@
+pkgbase = blacktex
+	pkgdesc = A LaTex code prettifier and formatter
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/nschloe/blacktex
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python>=3.7
+	source = https://files.pythonhosted.org/packages/source/b/blacktex/blacktex-0.3.3.tar.gz
+	sha256sums = 34ac3723f69e3f9eb00ec89b77547560905a2af840e386373492d099dd930500
+
+pkgname = blacktex
+
