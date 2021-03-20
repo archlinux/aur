@@ -1,0 +1,14 @@
+pkgbase = cisco-global-exploiter
+	pkgdesc = This tool detects 14 different vulnerabilities on Cisco routers and switches
+	pkgver = 13
+	pkgrel = 1
+	url = http://www.blackangels.it
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl
+	source = cisco-global-exploiter::git+https://github.com/foreni-packages/cisco-global-exploiter
+	sha512sums = SKIP
+
+pkgname = cisco-global-exploiter
+
