@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Return to Castle Wolfenstein: multiplayer
-Comment=Fight agianst the online hordes
+Comment=Fight against the online hordes
 Path=/opt/return_to_castle_wolfenstein/
 Exec=/opt/return_to_castle_wolfenstein/iowolfmp.ARCH
 Icon=rtcwmp-id.png

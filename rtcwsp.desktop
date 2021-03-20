@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Return to Castle Wolfenstein
-Comment=Fight agianst the deranged nazis
+Comment=Fight against the deranged nazis
 Path=/opt/return_to_castle_wolfenstein/
 Exec=/opt/return_to_castle_wolfenstein/iowolfsp.ARCH
 Icon=rtcwsp-id.png
