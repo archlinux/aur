@@ -36,6 +36,6 @@ package(){
     mv ${srcdir}/start.sh ${pkgdir}/opt/yunkanpan/
     chmod a+x ${pkgdir}/opt/yunkanpan/start.sh
     mkdir -p ${pkgdir}/usr/bin
-    cp /opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
+    cp ${pkgdir}/opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
 }
  
