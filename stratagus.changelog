@@ -1,3 +1,8 @@
+2021-03-20 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Update the dependencies array for v3.0.0
+
 2020-08-30 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
