@@ -1,6 +1,6 @@
 pkgbase = gitify-git
 	pkgdesc = GitHub Notifications on your menu bar
-	pkgver = 4.20.r1195.d67a2e8
+	pkgver = 4.20.r1195.d67a2e8-2
 	pkgrel = 1
 	url = https://github.com/manosim/gitify.git
 	arch = x86_64
