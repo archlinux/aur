@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -19,7 +19,7 @@ optdepends=('dbus: indicator support'
 arch=('x86_64')
 license=('GPL3')
 source=("https://github.com/Riey/kime/releases/download/v${pkgver}/kime_latest_v${pkgver}.tar.zst")
-md5sums=('367c96c555bbd2a18f6cbade747e15d3')
+md5sums=('bd637fa8b963baf01c70562933781b33')
 
 package() {
     install -Dm755 kime-check -t "${pkgdir}/usr/bin"
