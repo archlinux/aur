@@ -1,7 +1,7 @@
 pkgbase = veloren
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
-	pkgver = 0.8.0
-	pkgrel = 3
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = veloren
 	provides = veloren
 	conflicts = veloren
 	options = !strip
-	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.8.0
+	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.9.0
 	sha512sums = SKIP
 
 pkgname = veloren
