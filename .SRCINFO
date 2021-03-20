@@ -1,6 +1,6 @@
 pkgbase = light-locker-gtk2
 	pkgdesc = A simple session locker
-	pkgver = 1.4.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/the-cavalry/light-locker
 	arch = i686
@@ -13,11 +13,12 @@ pkgbase = light-locker-gtk2
 	depends = libxxf86misc
 	depends = lightdm
 	depends = libxss
+	depends = dconf
 	provides = light-locker
 	conflicts = light-locker
 	conflicts = light-locker-git
-	source = https://github.com/the-cavalry/light-locker/releases/download/v1.4.0/light-locker-1.4.0.tar.bz2
-	sha256sums = 560f20390b24513d5bf7b691bac5d745b76eb21ac3bccd877b73cb7f6d137ec3
+	source = https://github.com/the-cavalry/light-locker/releases/download/v1.8.0/light-locker-1.8.0.tar.bz2
+	sha256sums = 3c76106f40a8efe67b462061e4c798e3e501b54356c8cdc1b67a3022d9d7dba1
 
 pkgname = light-locker-gtk2
 
