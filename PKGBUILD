@@ -1,12 +1,18 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=salome-meca-bin
-pkgver=2019.0.3
-pkgrel=2
+pkgver=2020.0.1
+_pkgver="V${pkgver}_universal_universal"
+pkgrel=1
 pkgdesc='Integration of the Code_Aster solver in the Salome platform'
 arch=('x86_64')
 url='https://www.code-aster.org/spip.php?article303'
 license=('LGPL')
-depends=('coreutils' 'openblas')
+depends=(
+    'coreutils'
+    'inetutils'
+    'net-tools'
+    'openblas'
+)
 makedepends=(
 	'python2'
 	'tcl'
@@ -14,35 +20,44 @@ makedepends=(
 )
 optdepends=()
 provides=('salome-meca')
-source=("https://www.code-aster.org/FICHIERS/salome_meca-2019.0.3-1-universal.tgz")
-sha1sums=('4ea7be35819a53a201d48d189ef1c4d4f6d47e32')
+source=(
+    "https://www.code-aster.org/FICHIERS/salome_meca-${pkgver}-1-universal.tgz"
+    "nameserver.patch"
+)
+# NOTE: the SHA1 on the website does not match!
+sha1sums=('4882ae785034ca31bdb6018b138ac33cde0697b3'
+          '5a9f985c9313761d6f889a796adee118aad29824')
 
 prepare() {
 	cd "${srcdir}"
 
 	msg2 "Extracting installer..."
 
-	# remove previous build folder if present, otherwise the installer will fail
+	# Remove previous build folder if present, otherwise the installer will fail
 	[ ! -d "${srcdir}/salome_meca" ] || rm -rf "${srcdir}/salome_meca"
 
-	# self-extract
-	./salome_meca-2019.0.3-1-universal.run &> /dev/null <<-EOF
+	# Self-extract
+    # Flags to avoid installing files in userspace or sending notifications
+	"./salome_meca-${pkgver}-1-universal.run" -D -q -p -c &> /dev/null <<-EOF
 	${srcdir}/salome_meca
 	EOF
 
-	# do not set configuration variables with gconftool-2 during package creation
-	sed -i '5,10d' "${srcdir}/salome_meca/V${pkgver}_universal/salome_prerequisites_root.sh"
-}
+	# Do not set configuration variables with gconftool-2 during package creation
+	sed -i '5,10d' "${srcdir}/salome_meca/V${pkgver}_universal_universal/salome_prerequisites_root.sh"
 
-package() {
-	local _pkgver="V${pkgver}_universal"
 	cd "${srcdir}/salome_meca/${_pkgver}/"
 
-	# impose the right path for the setup script
+	# Impose the right path for the setup script
 	sed -i \
 		-e "107iSALOMEDIR=${srcdir}/salome_meca/${_pkgver}/" \
 		-e 's,\bpython\b,python2,g'\
 		create_appli.sh
+
+	# Remove an empty if (invalid bash syntax)
+	sed -i '300,302d' create_appli.sh
+
+	# Remove commands messing with user's home folder
+	sed -i '142,237d' create_appli.sh
 
 	# use the bundled version of python
 	export PATH="${srcdir}/salome_meca/${_pkgver}/prerequisites/Python-365/bin/":$PATH
@@ -56,14 +71,16 @@ package() {
 	msg2 "Building virtual application..."
 
 	# create virtual application
-	# -D to not automatically create a (wrong) desktop and menu entry
-	./create_appli.sh -D -q -a "${srcdir}/salome_meca/appli_${_pkgver}"
+	./create_appli.sh -p -c -D -q -a "${srcdir}/salome_meca/appli_${_pkgver}"
 
 	# ensure that the extraction did not fail
 	if [ ! -e "${srcdir}/salome_meca/appli_${_pkgver}/salome" ]; then
 		error "Extraction of the application failed, please check '${srcdir}/salome_meca/appli_${_pkgver}/appli_${_pkgver}.log' for relevant error messages."
 		exit 1
 	fi
+
+	# The GNU hostname command from inetutils does not support the --all-ip-addresses flag
+	patch -p0 < "${srcdir}/nameserver.patch"
 
 	# create .desktop file from template
 	sed -e "s,APPLIDIR/salome,/usr/bin/salome_meca," \
@@ -87,7 +104,9 @@ package() {
 	_newpath='/opt'
     # shellcheck disable=2156
 	find "${srcdir}/salome_meca" -type l -execdir bash -c 'p="$(readlink "{}")"; if [ "${p:0:1}" != "/" ]; then p="$(echo "$(pwd)/$p" | sed -e "s|/\./|/|g" -e ":a" -e "s|/[^/]*/\.\./|/|" -e "t a")"; fi; if [ "${p:0:'${#_oldpath}'}" == "'"$_oldpath"'" ]; then ln -snf "'"$_newpath"'${p:'${#_oldpath}'}" "{}"; fi;' \;
+}
 
+package() {
 	cd "${srcdir}"
 
 	# create launcher script
@@ -120,5 +139,5 @@ package() {
 
 	# remove unnecessary installation script with refs to $srcdir
 	# to avoid namcap warning
-	rm "${pkgdir}/opt/salome_meca/${_pkgver}/modules/KERNEL_V9_3_0/bin/salome/virtual_salome.pyc"
+	rm "${pkgdir}/opt/salome_meca/${_pkgver}/modules/KERNEL_V9_4_0/bin/salome/virtual_salome.pyc"
 }

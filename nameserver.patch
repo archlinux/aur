@@ -1,0 +1,17 @@
+--- modules/KERNEL_V9_4_0/bin/salome/nameserver.py	2021-01-22 12:27:26.000000000 +0100
++++ modules/KERNEL_V9_4_0/bin/salome/nameserver_new.py	2021-03-20 21:09:03.000000000 +0100
+@@ -89,12 +89,8 @@
+         else:
+           # get ip address on default interface (for instance eth0) to limit listening on this interface (cyber security request)
+           from subprocess import check_output
+-          ips = check_output(['hostname', '--all-ip-addresses'])
+-          if ips.strip():
+-            ipDefault = ips.split()[0].decode()
+-          else:
+-            ip = check_output(['hostname', '--ip-address'])
+-            ipDefault = ip.split()[-1].decode()
++          ip = check_output(['hostname', '--ip-address'])
++          ipDefault = ip.split()[-1].decode()
+           self.CMD = ['omniNames','-start' , aPort]
+           self.CMD += ['-logdir' , upath, '-errlog', upath+'/omniNameErrors.log']
+           self.CMD += ['-ORBendPoint', 'giop:tcp:%s:%s'%(hname,aPort)]
