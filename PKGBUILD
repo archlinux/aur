@@ -2,7 +2,7 @@
 _pkgname=teem
 pkgname=${_pkgname}-svn
 pkgver=r6479
-pkgrel=1
+pkgrel=2
 pkgdesc='Group of libraries for processing scientific raster data.'
 arch=('x86_64')
 url='http://teem.sourceforge.net/index.html'
@@ -13,6 +13,8 @@ makedepends=(
     'cmake'
     'svn'
 )
+provides=("teem")
+conflicts=("teem")
 source=(
     "${_pkgname}::svn+https://svn.code.sf.net/p/teem/code/teem/trunk"
 )

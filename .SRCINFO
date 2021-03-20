@@ -1,12 +1,14 @@
 pkgbase = teem-svn
 	pkgdesc = Group of libraries for processing scientific raster data.
 	pkgver = r6479
-	pkgrel = 1
+	pkgrel = 2
 	url = http://teem.sourceforge.net/index.html
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	makedepends = svn
+	provides = teem
+	conflicts = teem
 	source = teem::svn+https://svn.code.sf.net/p/teem/code/teem/trunk
 	sha256sums = SKIP
 
