@@ -6,7 +6,7 @@ pkgbase = python-django-cors-headers
 	arch = any
 	makedepends = python-setuptools
 	depends = python-django
-	source = https://github.com/ottoyiu/django-cors-headers/archive/3.7.0.tar.gz
+	source = https://pypi.io/packages/source/d/django-cors-headers/django-cors-headers-3.7.0.tar.gz
 	sha256sums = 96069c4aaacace786a34ee7894ff680780ec2644e4268b31181044410fecd12e
 
 pkgname = python-django-cors-headers
