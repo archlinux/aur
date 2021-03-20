@@ -1,0 +1,17 @@
+[Unit]
+Description=Flox
+After=network.target local-fs.target
+
+[Service]
+User=root
+Type=notify
+NotifyAccess=all
+ExecStart=/usr/sbin/floxd
+ExecStop=/usr/sbin/floxadm stop
+ExecStopPost=/bin/sleep 5
+TimeoutSec=300
+Restart=no
+KillMode=none
+
+[Install]
+WantedBy=multi-user.target
