@@ -4,7 +4,7 @@ _name=kjv1611
 pkgbase=$_name-font
 pkgname=(otf-$_name)
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete digital font restoration of the typeface found in the 1611 King James Bible'
 arch=('any')
 url="https://github.com/ctrlcctrlv/$_name"
@@ -16,6 +16,6 @@ sha256sums=('fc96e79c9d823eada8bb6e6074dec0b2d70280e1dae1dfb0c1afcd5710e441c5'
 
 package_otf-kjv1611() {
     provides=("$pkgbase")
-    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/${_name^^}.otf" $_name-$pkgver.otf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$_name/LICENSE.txt" $_name-$pkgver-LICENSE.txt
+    install -Dm644 $_name-$pkgver.otf "$pkgdir/usr/share/fonts/OTF/${_name^^}.otf"
+    install -Dm644 $_name-$pkgver-LICENSE.txt "$pkgdir/usr/share/licenses/$_name/LICENSE.txt"
 }

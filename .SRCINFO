@@ -1,7 +1,7 @@
 pkgbase = kjv1611-font
 	pkgdesc = A complete digital font restoration of the typeface found in the 1611 King James Bible
 	pkgver = 3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ctrlcctrlv/kjv1611
 	arch = any
 	license = OFL
