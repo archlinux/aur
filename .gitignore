@@ -1,4 +1,4 @@
-archive.tar.gz
-*.tar.xz
+*.tar.*
+*.zip
 pkg/
 src/
