@@ -3,7 +3,7 @@
 pkgname=python-django-paypal
 _pypi_pkgname=django-paypal
 pkgver=1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A pluggable Django application for integrating PayPal Payments Standard or Payments Pro"
 arch=(any)
 url="https://pypi.python.org/pypi/django-paypal"

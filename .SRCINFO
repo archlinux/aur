@@ -2,16 +2,16 @@
 # Sat May  2 12:02:47 UTC 2015
 pkgbase = python-django-paypal
 	pkgdesc = A pluggable Django application for integrating PayPal Payments Standard or Payments Pro
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/django-paypal
 	arch = any
 	license = UNKNOWN
 	makedepends = python-setuptools
 	depends = python
 	depends = python-django
-	source = https://pypi.python.org/packages/source/d/django-paypal/django-paypal-0.2.3.tar.gz
-	md5sums = bcfbcb14c91a72017c9f6139829f2c23
+	source = https://pypi.python.org/packages/source/d/django-paypal/django-paypal-1.1.tar.gz
+	md5sums = 0251e33648152f1c12c9bd420157f466
 
 pkgname = python-django-paypal
 
