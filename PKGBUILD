@@ -1,4 +1,5 @@
-# Maintainer: realitygaps <realitygaps@yahoo.com>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: realitygaps <realitygaps@yahoo.com>
 pkgname=drupal8-git
 pkgver=r38123.3bddf7fcb8
 pkgrel=1
