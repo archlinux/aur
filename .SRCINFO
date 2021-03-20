@@ -1,6 +1,6 @@
 pkgbase = python-orange-widget-base
 	pkgdesc = Base widget and workflow definitions for Orange.
-	pkgver = 4.8.1
+	pkgver = 4.12.0
 	pkgrel = 1
 	url = http://orange.biolab.si/
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = python-orange-widget-base
 	depends = python-networkx
 	depends = python-requests
 	depends = python-pandas
-	source = https://github.com/biolab/orange-widget-base/archive/4.8.1.tar.gz
-	sha256sums = af82f0da0102c7a3e973c405ac89ae91cb470bb4cc94a590a2b2c8bc276d441f
+	source = https://github.com/biolab/orange-widget-base/archive/4.12.0.tar.gz
+	sha256sums = bcdc78a36cfb8760b677b879ca4de1d8e57ea02109df8a47910e39a66a7ef985
 
 pkgname = python-orange-widget-base
 
