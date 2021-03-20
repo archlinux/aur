@@ -1,16 +1,16 @@
 pkgbase = pacfoster
 	pkgdesc = A cleaning script similar to 'debfoster', using the pacman build system.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bbs.archlinux.org/viewtopic.php?pid=834436
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ruby>=1.9.2
 	depends = pacman>=3.4.1
-	depends = pikaur
+	optdepends = pikaur
 	source = pacfoster.rb
-	md5sums = 1d8ce2067d5831b408e9012607bb227e
+	md5sums = 44c0f1a8ebbbe6e606c0793aa3b46fa8
 
 pkgname = pacfoster
 

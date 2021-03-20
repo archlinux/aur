@@ -4,6 +4,8 @@ file = File.expand_path("~/.pacsafe.conf")
 trap("INT") { exit }
 $stdout.sync = true #rsync "realtime" output
 
+helper = ENV.fetch("AURHELPER", "pikaur")
+
 if File.file? file
   filelist = File.new(file, "r").lines.collect {|line| line.strip}
   filelist.delete("")
@@ -23,7 +25,7 @@ i=0
 
 while i < testlist.size
   item = testlist[i]
-  system("pikaur -Qs \"^#{item.gsub("+", '\\\\\\\\\\\+')}$\" 2>/dev/null")
+  system("#{helper} -Qs \"^#{item.gsub("+", '\\\\\\\\\\\+')}$\" 2>/dev/null")
   print "(Yes/Prune/Skip/Info/Undo/eXit/Quit/Help) "
 
   begin
@@ -42,7 +44,7 @@ while i < testlist.size
     prunelist.push item
   when "i"
     puts ": info"
-    print `pikaur -Qi #{item}`
+    print `helper -Qi #{item}`
     i -= 1
   when "q", "\x03"
     puts ": quitting"
@@ -84,5 +86,5 @@ end
 
 if prunelist.size > 0 then
   puts "removing package(s) #{prunelist.join(" ")}"
-  system "pikaur -Rsc #{prunelist.join(" ")}"
+  system "helper -Rsc #{prunelist.join(" ")}"
 end

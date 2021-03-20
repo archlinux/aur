@@ -3,14 +3,15 @@
 
 pkgname=pacfoster
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cleaning script similar to 'debfoster', using the pacman build system."
 arch=('i686' 'x86_64')
 url="https://bbs.archlinux.org/viewtopic.php?pid=834436"
 license=('GPL')
-depends=('ruby>=1.9.2' 'pacman>=3.4.1' 'pikaur')
+depends=('ruby>=1.9.2' 'pacman>=3.4.1')
+optdepends=('pikaur')
 source=('pacfoster.rb')
-md5sums=('1d8ce2067d5831b408e9012607bb227e')
+md5sums=('44c0f1a8ebbbe6e606c0793aa3b46fa8')
 
 package()
 {
