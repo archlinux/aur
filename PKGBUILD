@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://www.mikrotik.com/download"
 license=('custom')
 provides=('netinstall')
+conflicts=('netinstall')
 source=("https://download.mikrotik.com/routeros/$pkgver/netinstall-$pkgver.tar.gz")
 sha256sums=('fed66ce7cdf0c23caacade790314f37079c77549e681fb11892f25294bbd4458')
 
