@@ -1,6 +1,6 @@
 pkgbase = rare
 	pkgdesc = A GUI for legendary, an open source replacement for Epic Games Launcher
-	pkgver = 0.9.5.1
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/Dummerle/Rare
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = rare
 	depends = python-requests
 	depends = python-pillow
 	optdepends = wine-staging: Run windows games
-	source = rare-0.9.5.1.tar.gz::https://github.com/Dummerle/Rare/archive/0.9.5.1.tar.gz
+	source = rare-0.9.6.tar.gz::https://github.com/Dummerle/Rare/archive/0.9.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = rare
