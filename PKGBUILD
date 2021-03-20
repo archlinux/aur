@@ -3,14 +3,14 @@
 _pkgname="discordrichpresencepresets"
 pkgname="${_pkgname}-git"
 pkgver=avalonia.v0.1.beta.r17.3045abe
-pkgrel=3
+pkgrel=4
 pkgdesc="A GUI tool to set and switch between Discord Rich Presences"
 arch=('x86_64')
 url="https://github.com/cainy-a/DiscordRichPresencePresets"
 license=('BSD')
 groups=()
-depends=('dotnet-runtime-bin>=5.0.0' 'dotnet-host-bin>=5.0.0')
-makedepends=('git' 'dotnet-sdk-bin>=5.0.0' 'dotnet-targeting-pack-bin>5.0.0')
+depends=('dotnet-runtime>=5.0.0' 'dotnet-host>=5.0.0')
+makedepends=('git' 'dotnet-sdk>=5.0.0' 'dotnet-targeting-pack>=5.0.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("usr/share/${_pkgname}/data")
@@ -62,7 +62,7 @@ build() {
 
 	# build with dotnet
 	cd DiscordRichPresencePresets.Avalonia
-	dotnet publish --self-contained false -r linux-x64
+	dotnet build
 }
 
 #check() {
@@ -75,12 +75,10 @@ package() {
 
 	# install license
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
-
-	# move to build output
-	#cd "DiscordRichPresencePresets.Avalonia/bin/Debug/net5.0/linux-x64/publish"
-	# copy publish folder
+	
+	# copy build folder
 	mkdir -p "${pkgdir}/usr/lib/${_pkgname}/"
-	cp -r --preserve=mode "DiscordRichPresencePresets.Avalonia/bin/Debug/net5.0/linux-x64/publish/"* "${pkgdir}/usr/lib/${_pkgname}/"
+	cp -r --preserve=mode "DiscordRichPresencePresets.Avalonia/bin/Debug/net5.0/"* "${pkgdir}/usr/lib/${_pkgname}/"
 	# install desktop entry
 	install -Dm 644 "launch.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	# install launch script
