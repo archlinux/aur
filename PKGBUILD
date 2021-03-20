@@ -1,15 +1,15 @@
-# Contributor: grimi <grimi at poczta dot fm>
+# Contributor: grimi
 
 pkgname=undms
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Decompress Amiga DMS disk images to ADF"
 arch=('i686' 'x86_64')
-url="http://aminet.net/package/misc/unix/undms-1.3.c"
+url="https://aminet.net/package/misc/unix/undms-1.3.c"
 license=('freedist')
 makedepends=('p7zip')
-source=("http://aminet.net/misc/unix/${pkgname}-${pkgver}.c.Z")
-md5sums=('7c9d5a4830d0e1ded7eab3a287f15c4b')
+source=("https://aminet.net/misc/unix/${pkgname}-${pkgver}.c.Z")
+sha256sums=('d5c5396d1003f4d4125b4fe4833043e207b7315e87db3be92c2188ffbe27e8ac')
 
 build() {
   7z x ${pkgname}-${pkgver}.c.Z
