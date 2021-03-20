@@ -15,17 +15,17 @@ _gitname="drupal8-git"
 
 package() {
   cd "$srcdir"
-  msg "Connecting to GIT server...."
+  echo "Connecting to GIT server...."
 
   if [ -d $_gitname ] ; then
     cd $_gitname && git pull origin
-    msg "The local files are updated."
+    echo "The local files are updated."
   else
     git clone $_gitroot $_gitname
   fi
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
+  echo "GIT checkout done or server timeout"
+  echo "Starting make..."
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
