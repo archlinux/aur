@@ -2,7 +2,7 @@
 
 _pkgname=edex-ui
 pkgname=${_pkgname}-bin
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc='A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support'
 url='https://github.com/GitSquared/edex-ui'
@@ -21,13 +21,13 @@ noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
 options=(!strip)
 
 sha256sums=('589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
-sha256sums_i686=('31116f735e6881685b0d0e9bd52049107de0615a2addedc63dc5155f1690664a')
-sha256sums_x86_64=('82f8c9de26a80d3cca0f8f23ee2f37ef82bb1711d0647a4fb7f86011305a3b2c')
-sha256sums_aarch64=('5d66a95740e5b21a07323463fd25ba4171a21186be7eefcd907cad30a2c798c4')
+sha256sums_i686=('57fc1aeb04e1f14282d23c1b682314ef038604d43ea4c8d1ef8e7f1aa126205c')
+sha256sums_x86_64=('6c1f74e8d6c837e38931861fd9faf44eef83f45e357ea4901cbfb640cf85dfd2')
+sha256sums_aarch64=('04621c706c3c4a4f6d399d54ad6afcc8db2c1218c79d977ad72786c1a87e900d')
 b2sums=('399283bc59e70998486f2ae7b0af9f2f241206dd660e50808be3cef500adef2a9e8d449304f506d93bd2281e6b0729b16145173591deeb105ef545b769453e10')
-b2sums_i686=('59778b92b38b2ed048d55924cb087ca076fa7af7695547aa998fc53971430f11b838b07ce8fb745b6b71fb06282927530ee9c0686bca276da07620052119b4d5')
-b2sums_x86_64=('c0ce3cfbb65a28ac9871f68b3993f8e729be1f1186eb54ac60e95986c2986ff25ab5bb321cd1453e2ff099c203a7861e681b46dbd823ab8981d005a71ebfd1ce')
-b2sums_aarch64=('1cdab2e49be6e3cac6321d4b1f22ef0ebbb1e81c9564672fdf3eb5e692fb5f5724c38b8f1d7e6b96498ff0bbc8cc9e28f9f173021e2f85b3be256822e2ada698')
+b2sums_i686=('61f017200c9f3539ec8a7737242b5f5d3a4d0b81eff21fa862584b7f86c6546545ca5cc85499cbcf051bf3185674bd8d8baa15734a4b5d42c46a0ecc1af17254')
+b2sums_x86_64=('407b411f7bc34add191709c8b54baf3a9ce6472dc362b7a998f2944362b10a21d8dfeca4ddce156f3f43793e969ed5e779066b3de3b07a1b207bf98b40b3ac7c')
+b2sums_aarch64=('30d0d1d7dca9ac28259d38e312c477c9903ddc424a96d25bafe8debd7a43f63cbb21650dee73c5c44604013632f4b7c81db7c59d7b849d5236569107e45d2571')
 
 prepare() {
   chmod +x "${pkgname}-${pkgver}.${CARCH}.AppImage"
