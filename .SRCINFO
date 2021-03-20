@@ -9,6 +9,8 @@ pkgbase = drupal8-git
 	license = GPL
 	makedepends = git
 	depends = php
+	source = git+https://git.drupalcode.org/project/drupal.git#branch=8.9.x
+	sha256sums = SKIP
 
 pkgname = drupal8-git
 

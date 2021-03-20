@@ -1,5 +1,6 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 # Contributor: realitygaps <realitygaps@yahoo.com>
+_pkgname=drupal8
 pkgname=drupal8-git
 pkgver=r38123.3bddf7fcb8
 pkgrel=1
@@ -10,9 +11,8 @@ url="http://drupal.org"
 license=('GPL')
 makedepends=('git')
 depends=('php')
-
-_gitroot="--branch 8.9.x http://git.drupal.org/project/drupal.git"
-_gitname="drupal8-git"
+source=('git+https://git.drupalcode.org/project/drupal.git#branch=8.9.x')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -22,27 +22,8 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir"
-  echo "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    echo "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  echo "GIT checkout done or server timeout"
-  echo "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
+  cd "${srcdir}/${_pkgname}"
   mkdir -p $pkgdir/usr/share/webapps/drupal8-git
-  cp -r $srcdir/drupal8-git/{*,.htaccess} $pkgdir/usr/share/webapps/drupal8-git
-  echo "deny from all" > $pkgdir/usr/share/webapps/drupal8-git/.htaccess
+  cp -r ${srcdir}/${_pkgname}/drupal8-git/{*,.htaccess} ${pkgdir}/usr/share/webapps/drupal8-git
+  echo "deny from all" > ${pkgdir}/usr/share/webapps/drupal8-git/.htaccess
 }
