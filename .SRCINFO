@@ -1,6 +1,6 @@
 pkgbase = gfs2-utils
 	pkgdesc = Utilities for managing the global file system (GFS2)
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://sourceware.org/cluster/gfs/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = gfs2-utils
 	makedepends = check
 	depends = python
 	options = staticlibs
-	source = https://releases.pagure.org/gfs2-utils/gfs2-utils-3.4.0.tar.bz2
-	sha512sums = aee1dfc8b548ae8e2202c3bbfffb0ceea112eca8465760aa32074d4e526f2c2b1b0f10e8526a667e264d33612dd2b73c8690b16da67b794baf476c4458b5de7d
+	source = https://releases.pagure.org/gfs2-utils/gfs2-utils-3.4.1.tar.bz2
+	sha512sums = 35177da6714f7ebbd015fad1d76d10d31865d173772c6b83fd37c922c447acc042afdd81a9afbf620cbe5dd48ddb1f3b0fea2fb86576a43989cf0813f019ceb1
 
 pkgname = gfs2-utils
 
