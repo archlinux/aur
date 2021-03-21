@@ -16,7 +16,7 @@ pkgbase = linvstmanager-git
 	optdepends = linvst-x-bin
 	optdepends = linvst3-x-bin
 	conflicts = linvstmanager
-	source = https://github.com/Goli4thus/linvstmanager/archive/v1.1.1.zip
+	source = https://github.com/Goli4thus/linvstmanager/archive/refs/tags/v1.1.1.zip
 	md5sums = 36d9540486a95d92b23dd5d6e8ededa7
 
 pkgname = linvstmanager-git

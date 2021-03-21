@@ -1,4 +1,5 @@
-# Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
+# Maintainer: Kyle Bronsdon <kyle at silksow dot com>
+# Contributor: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvstmanager-git
 pkgver=1.1.1
 pkgrel=2
@@ -11,7 +12,7 @@ depends=('wine' 'git')
 makedepends=('cmake' 'qt5-base')
 conflicts=('linvstmanager')
 optdepends=('jack' 'linvst-bin' 'linvst3-bin' 'linvst-x-bin' 'linvst3-x-bin')
-source=("https://github.com/Goli4thus/linvstmanager/archive/v$pkgver.zip")
+source=("https://github.com/Goli4thus/linvstmanager/archive/refs/tags/v$pkgver.zip")
 md5sums=('36d9540486a95d92b23dd5d6e8ededa7')
 
 build() {
