@@ -1,7 +1,6 @@
 capnproto/
 capnproto-git-*.tar.xz
+capnproto-git-*.tar.zst
 capnproto-git-*.src.tar.gz
-release-*.tar.gz
 pkg/
 src/
-.AURINFO
