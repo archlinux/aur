@@ -10,7 +10,7 @@ conflicts=(gdu-git gdu-bin)
 depends=('glibc')
 makedepends=('go' 'pandoc')
 arch=('x86_64')
-url="https://github.com/Dundee/gdu"
+url="https://github.com/dundee/gdu"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/dundee/gdu/archive/v${pkgver}.tar.gz")
 sha256sums=('67c3ee6b08f8c65751cff42dbac4f3365d862517c5bb5851f62949b6f038b121')
 
