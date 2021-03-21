@@ -1,2 +1,2 @@
 # OPTIONS
-OPTIONS="-f --mlisten=127.0.0.1 --mport=9392 --listen=127.0.0.1"
+OPTIONS="-f --munix-socket=/run/gvm/gvmd.sock --listen=127.0.0.1"
