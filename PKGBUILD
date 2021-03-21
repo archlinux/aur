@@ -12,6 +12,7 @@ makedepends=(
     "python-yaml"
     "python-ply"
     "python-jinja"
+    "lttng-ust"
 )
 optdepends=(
     "boost"
@@ -37,7 +38,10 @@ pkgver() {
 
 build() {
     cd "${srcdir}/libcamera"
-    meson build --prefix /usr -Dwerror=false
+    arch-meson build \
+        -D werror=false \
+        -D documentation=disabled \
+        -D tracing=disabled
     ninja -C build
 }
 

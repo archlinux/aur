@@ -13,6 +13,7 @@ pkgbase = libcamera-git
 	makedepends = python-yaml
 	makedepends = python-ply
 	makedepends = python-jinja
+	makedepends = lttng-ust
 	optdepends = boost
 	optdepends = udev
 	optdepends = python-sphinx
