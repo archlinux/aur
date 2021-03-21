@@ -1,7 +1,7 @@
 pkgbase = session-desktop-files
 	pkgdesc = .desktop launch files for common session operations (log out, shutdown, reboot)
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.archlinux.org/index.php/Desktop_Entries
 	arch = any
 	license = MIT
