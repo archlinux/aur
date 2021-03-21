@@ -1,0 +1,15 @@
+[Unit]
+Description=Teleport SSH Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+EnvironmentFile=-/etc/default/teleport-%i
+ExecStart=/usr/bin/teleport start --pid-file=/run/teleport-%i.pid --config=/etc/teleport.d/%i.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/run/teleport-%i.pid
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target
