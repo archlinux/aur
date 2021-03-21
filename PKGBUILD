@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=googledot-cursor-theme
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cursor theme inspired on Google"
 arch=('any')
 url="https://www.pling.com/p/1215613"
@@ -23,9 +23,11 @@ prepare() {
 build() {
 	cd Google_Cursor-$pkgver/builder
 	_themes='Blue Black'
+	_sizes='22 24 28 32 40 48 56 64 72 80 88 96'
 
+	set -- ${_sizes}
 	for t in $_themes; do
-		python build.py unix -p "../bitmaps/GoogleDot-$t"
+		python build.py unix -p "../bitmaps/GoogleDot-$t" --xsizes ${_sizes[@]}
 	done
 }
 
