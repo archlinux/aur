@@ -24,7 +24,6 @@ package(){
  cd "carddav"
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
- install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
  install -D -m 640 -o root -g http "config.inc.php.dist" "$pkgdir/etc/webapps/roundcubemail/plugins/carddav/config.inc.php"
  ln -s "/etc/webapps/roundcubemail/plugins/carddav/config.inc.php" "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav/config.inc.php"
 }
