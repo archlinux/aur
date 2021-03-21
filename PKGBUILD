@@ -4,14 +4,17 @@
 
 pkgname=openmpi
 pkgver=4.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='High performance message passing library (MPI)'
 url='https://www.open-mpi.org'
 arch=('x86_64')
 license=('custom:OpenMPI')
-depends=('glibc' 'libltdl' 'hwloc' 'openssh' 'zlib' 'libnl' 'perl')
-makedepends=('inetutils' 'valgrind' 'gcc-fortran')
-optdepends=('gcc-fortran: fortran support')
+depends=('glibc' 'libltdl' 'hwloc' 'openssh' 'zlib' 'libnl' 'perl' 'libevent')
+makedepends=('inetutils' 'valgrind' 'gcc-fortran' 'cuda')
+optdepends=(
+  'gcc-fortran: fortran support'
+  'cuda: cuda support'
+)
 options=('staticlibs')
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
 sha256sums=('c58f3863b61d944231077f344fe6b4b8fbb83f3d1bc93ab74640bf3e5acac009')
@@ -19,7 +22,8 @@ b2sums=('9709dc8c251d4f2be14d0ab498c5d0d0e59f95db98fb16d9e84fe3d30af5a8e2f9636bb
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr \
+  ./configure \
+    --prefix=/usr \
     --sysconfdir=/etc/${pkgname} \
     --enable-mpi-fortran=all \
     --libdir=/usr/lib/${pkgname} \
@@ -31,6 +35,8 @@ build() {
     --without-slurm \
     --with-hwloc=/usr \
     --with-libltdl=/usr  \
+    --with-libevent=/usr  \
+    --with-cuda=/opt/cuda \
     FC=/usr/bin/gfortran \
     LDFLAGS="${LDFLAGS} -Wl,-z,noexecstack"
   make
