@@ -1,6 +1,6 @@
 # Maintainer: fengkx <liangkx8237 [At] gmail.com>
 pkgname=webarchiver
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 pkgdesc=""
 arch=("x86_64")
