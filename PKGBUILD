@@ -42,7 +42,8 @@ sha256sums=('b8edaeb2a8a4a46fd1d81027ee3272165c3472f179c981efdf01db22ce3ee3c3'
             '9f2d48c1cd3b80108c1a567ed6778272880c53e8c647b16f18084d681c3b8671')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 install=$pkgname.install
-backup=(etc/shibboleth/attribute-map.xml
+backup=(etc/shibboleth/attrChecker.html
+        etc/shibboleth/attribute-map.xml
         etc/shibboleth/attribute-policy.xml
         etc/shibboleth/bindingTemplate.html
         etc/shibboleth/console.logger
@@ -55,6 +56,7 @@ backup=(etc/shibboleth/attribute-map.xml
         etc/shibboleth/postTemplate.html
         etc/shibboleth/protocols.xml
         etc/shibboleth/security-policy.xml
+        etc/shibboleth/sessionError.html
         etc/shibboleth/shibboleth2.xml
         etc/shibboleth/shibd.logger
         etc/shibboleth/sslError.html)
