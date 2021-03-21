@@ -1,6 +1,6 @@
 pkgbase = vpsplayer
 	pkgdesc = High quality Variable Pitch and Speed audio player
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/fcrollet/vpsplayer
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = vpsplayer
 	optdepends = gst-plugins-good: "Good" additional codecs
 	optdepends = gst-plugins-bad: "Bad" additional codecs
 	optdepends = gst-plugins-ugly: "Ugly" additional codecs
-	source = https://github.com/fcrollet/vpsplayer/releases/download/v1.0.3/VPS_Player-1.0.3.tar.xz
-	sha256sums = 9a548867eb84b421305bf3b38d35562d8fec3df238e51313f94cd2c47a67d37d
+	source = https://github.com/fcrollet/vpsplayer/releases/download/v1.0.4/VPS_Player-1.0.4.tar.xz
+	sha256sums = 200131cc5ccb1da0653617f4fc4475d508fbf4851342ed062057c35075ee878f
 
 pkgname = vpsplayer
 
