@@ -3,15 +3,15 @@
 # Contributor: Valeriy Lyasotskiy <onestep@ukr.net>
 
 pkgname=g15daemon
-pkgver=3.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD"
 arch=('x86_64')
 url="https://gitlab.com/menelkir/g15daemon"
 license=('GPL')
 depends=('libg15render>=3.0')
 source=(https://gitlab.com/menelkir/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('06dcb460584ef5d8051e1cbf36785be5385eea2ea431abc845ccbb7dde204acf2a1ca4c2905bb36cdd38128b6b54a1b9c6bc7ec93b6aa2c40cf36f4576bb471a')
+sha512sums=('07dd9cdb57065620cf5c27177154a3d8efac359e52c36de0259ba12ae4633b7c900165feb8d21bd2b1a169201e6feb7889d8c9282621a66070789ba8b4f4f0ac')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
