@@ -1,6 +1,6 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=ruffle-nightly-bin
-pkgver=2021.03.20
+pkgver=2021.03.21
 pkgrel=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=('x86_64')
@@ -16,5 +16,5 @@ package() {
 	cd "$srcdir/"
 	install -Dm755 -t "$pkgdir/usr/bin/" ruffle
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE_*
 }
