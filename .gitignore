@@ -1,0 +1,6 @@
+pkg/
+src/
+dpf/
+mod-cv-plugins/
+mod-cv-plugins-git-*.pkg.tar.xz
+mod-cv-plugins-git-*.pkg.tar.zst

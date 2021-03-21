@@ -1,54 +1,49 @@
-maintainer="Milk Brewster (milkii on Freenode)"
-pkgname=mod-cv-plugins-git
-pkgver=r189.1fa2d2b
+# Maintainer: Milk Brewster (milkii on Freenode)
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+_pkgname=mod-cv-plugins
+pkgname="${_pkgname}-git"
+pkgver=r210.2094659
 pkgrel=1
 pkgdesc="CV (audio-rate control) LV2 plugins from MOD Devices."
-#epoch=0
 arch=('i686' 'x86_64')
 url="https://github.com/moddevices/mod-cv-plugins"
-license=()
-groups=(lv2-plugins)
-depends=()
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/mxmilkiib/mod-cv-plugins")
-noextract=()
-md5sums=('SKIP')
-#sha1sums=()
-#sha256sums=()
-#sha384sums=()
-#sha512sums=()
+license=('GPL2')
+groups=('lv2-plugins' 'pro-audio')
+depends=('glibc' 'gcc-libs')
+makedepends=('git' 'lv2')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/moddevices/mod-cv-plugins.git"
+        'dpf::git+https://github.com/DISTRHO/DPF.git')
+md5sums=('SKIP'
+         'SKIP')
+
 
 pkgver() {
-  cd "${srcdir}/mod-cv-plugins"
+  cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-prepare()
-{
-  cd "$srcdir/mod-cv-plugins"
-  git submodule update --init --recursive
-
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git submodule init
+  git config submodule.dpf.url "${srcdir}/dpf"
+  git submodule update
 }
 
 build() {
-  cd "$srcdir/mod-cv-plugins"
+  cd "${srcdir}/${_pkgname}"
+  make PREFIX=/usr
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/lib/lv2
-  cd "$srcdir/mod-cv-plugins"
-  make DEST_DIR="$pkgdir/usr/lib/lv2" install
+  cd "${srcdir}/${_pkgname}"
+  install -dm755 "${pkgdir}"/usr/lib/lv2
+  make DEST_DIR="${pkgdir}/usr/lib/lv2" install
 }
 
 # vim:set ts=2 sw=2 et:
