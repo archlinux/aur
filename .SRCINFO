@@ -1,7 +1,7 @@
 pkgbase = drupal8-git
 	pkgdesc = A PHP based content management system - GIT version
 	pkgver = r38123.3bddf7fcb8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://drupal.org
 	install = drupal8-git.install
 	arch = i686

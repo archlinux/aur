@@ -3,7 +3,7 @@
 _pkgname=drupal8
 pkgname=drupal8-git
 pkgver=r38123.3bddf7fcb8
-pkgrel=2
+pkgrel=3
 pkgdesc="A PHP based content management system - GIT version"
 arch=('i686' 'x86_64')
 install="drupal8-git.install"
