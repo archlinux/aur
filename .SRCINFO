@@ -1,0 +1,14 @@
+pkgbase = tmux-nord-theme
+	pkgdesc = An arctic, north-bluish clean and elegant tmux color theme.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://www.nordtheme.com/ports/tmux
+	install = tmux-nord-theme.install
+	arch = any
+	license = MIT
+	depends = tmux
+	source = tmux-nord-theme-0.3.0.tar.gz::https://github.com/arcticicestudio/nord-tmux/archive/v0.3.0.tar.gz
+	sha256sums = 5672240fe3251a3e7a4bd41f93a39407e7fbcb91a732744d8e056f893542a26c
+
+pkgname = tmux-nord-theme
+
