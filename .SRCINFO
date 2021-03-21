@@ -14,8 +14,8 @@ pkgbase = bottles
 	depends = gtk3
 	depends = python-gobject
 	depens = wine
-	source = bottles-3.1.0.tar.gz::https://github.com/bottlesdevs/Bottles/archive/3.1.0.tar.gz
-	sha256sums = 69853021a1843db75d0158f95b0d13311ff83244b44520855a06d82ba34e2a8b
+	source = bottles-3.1.1.tar.gz::https://github.com/bottlesdevs/Bottles/archive/3.1.1.tar.gz
+	sha256sums = b917508da824b08e0c3a8cda28cdbbcfcdc15ff11e065096203d2503dc9d2c5a
 
 pkgname = bottles
 

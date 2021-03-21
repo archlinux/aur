@@ -2,7 +2,7 @@
 # Contributor:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Easily manage wineprefix'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'dconf' 'python' 'libhandy' 'gtk3' 'python-gobject')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}.tar.gz")
-sha256sums=('69853021a1843db75d0158f95b0d13311ff83244b44520855a06d82ba34e2a8b')
+sha256sums=('b917508da824b08e0c3a8cda28cdbbcfcdc15ff11e065096203d2503dc9d2c5a')
 
 build() {
   cd "Bottles-${pkgver}"
