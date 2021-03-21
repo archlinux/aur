@@ -1,6 +1,6 @@
 pkgname=shibboleth-sp
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shibboleth SAML2 single sign-on system - Service Provider"
 url="https://www.shibboleth.net/"
 license=(Apache)
