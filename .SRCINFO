@@ -1,0 +1,15 @@
+pkgbase = gog-darkest-dungeon-the-shieldbreaker
+	pkgdesc = DLC for the darkest_dungeon game.
+	pkgver = 24839
+	pkgrel = 1
+	url = https://www.gog.com/game/darkest_dungeon_the_shieldbreaker
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	depends = gog-darkest-dungeon
+	noextract = darkest_dungeon_the_shieldbreaker_24839_28859.sh
+	source = darkest_dungeon_the_shieldbreaker_24839_28859.sh::gog://darkest_dungeon_the_shieldbreaker_24839_28859.sh
+	sha256sums = 1059f42f08fb72905494b81d15397ae05eff75c72b56644117485cb464acda13
+
+pkgname = gog-darkest-dungeon-the-shieldbreaker
+
