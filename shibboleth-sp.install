@@ -1,0 +1,11 @@
+post_install() {
+  if [ ! -e /etc/shibboleth/sp-encrypt-cert.pem ]; then
+    shib-keygen -o /etc/shibboleth -n sp-encrypt -u _shibd -g _shibd
+  fi
+
+  if [ ! -e /etc/shibboleth/sp-signing-cert.pem ]; then
+    shib-keygen -o /etc/shibboleth -n sp-signing -u _shibd -g _shibd
+  fi
+}
+
+# vim: ts=2:sw=2:et:

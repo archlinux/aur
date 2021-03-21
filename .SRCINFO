@@ -3,6 +3,7 @@ pkgbase = shibboleth-sp
 	pkgver = 3.2.1
 	pkgrel = 2
 	url = https://www.shibboleth.net/
+	install = shibboleth-sp.install
 	arch = x86_64
 	license = Apache
 	makedepends = apache

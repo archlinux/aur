@@ -41,6 +41,7 @@ sha256sums=('b8edaeb2a8a4a46fd1d81027ee3272165c3472f179c981efdf01db22ce3ee3c3'
             '425b561c7e3c582aae635e2f41448cdf10e393ab39209668ab3063fd13acebcd'
             '9f2d48c1cd3b80108c1a567ed6778272880c53e8c647b16f18084d681c3b8671')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
+install=$pkgname.install
 
 build() {
   cd "$pkgname-$pkgver"
