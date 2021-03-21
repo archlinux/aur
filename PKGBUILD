@@ -1,5 +1,5 @@
 pkgname=libcamera-git
-pkgver=r2409.79b48225
+pkgver=r2416.1a26f79f
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
 arch=('x86_64' 'i686')
@@ -37,7 +37,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/libcamera"
-    meson build --prefix /usr
+    meson build --prefix /usr -Dwerror=false
     ninja -C build
 }
 
