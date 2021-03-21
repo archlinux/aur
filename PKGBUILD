@@ -2,7 +2,7 @@
 
 pkgname=rime-flypy
 pkgver=10.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="小鹤音形 rime 挂接文件"
 arch=('any')
 url="http://flypy.com/"
@@ -16,7 +16,7 @@ backup=('usr/share/rime-data/flypy_sys.txt'
         'usr/share/rime-data/flypy_user.txt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz"
         "$pkgname.install")
-sha256sums=('b9c5c3bd60defdc42d91a955cdb9e26d6a505e3f4d5362fff5addb82397e56f2'
+sha256sums=('b92cec9c7d47d1d710fad421591595014d3e98726194dfd229da7f8bdab01be2'
             '07487dba48d81c42c647fae3449c0a52fdcee9edc890c65961122b5304b824eb')
 install="$pkgname.install"
 
