@@ -1,6 +1,6 @@
 pkgbase = youtube-dlp-bin
 	pkgdesc = Fork of youtube-dlc - download videos from youtube.com or other video platforms
-	pkgver = 2021.03.15
+	pkgver = 2021.03.21
 	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = youtube-dlp-bin
 	optdepends = aria2: for using aria2 as external downloader
 	optdepends = python-pycryptodome: for hlsnative downloader
 	provides = yt-dlp
-	source = yt-dlp-2021.03.15::https://github.com/yt-dlp/yt-dlp/releases/download/2021.03.15/yt-dlp
-	sha256sums = 9542d095c5abe44e2ec08091f7ff0fd905fd43b1864afa44ea4981080ff9bd01
+	source = yt-dlp-2021.03.21::https://github.com/yt-dlp/yt-dlp/releases/download/2021.03.21/yt-dlp
+	sha256sums = 602f3a48f6ca586919165cd648a8094e08ec10da768c19921531219d28ae36ff
 
 pkgname = youtube-dlp-bin
 
