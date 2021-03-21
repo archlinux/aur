@@ -13,7 +13,9 @@ pkgbase = ydotool
 	depends = libuinputplus
 	depends = boost-libs
 	source = https://github.com/ReimuNotMoe/ydotool/archive/v0.2.0.tar.gz
+	source = https://github.com/ReimuNotMoe/ydotool/pull/96.patch
 	sha256sums = 2311b003d2ff383f3348f17101f0df74f56616d530d66d0a014a52ba85a5dcf1
+	sha256sums = f462b5f62306a5431e5aa39d1a8ba670300f7304a15cc720af5ded65193eaeda
 
 pkgname = ydotool
 
