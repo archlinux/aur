@@ -8,8 +8,9 @@ pkgdesc='Simple terminal emulator for Wayland and X11 with OpenGL rendering and 
 arch=('x86_64')
 url='https://github.com/91861/wayst'
 license=('MIT')
-depends=('mesa' 'freetype2' 'fontconfig' 'libxkbcommon' 'libxrandr')
-optdepends=('libutf8proc: unicode normalization')
+depends=('freetype2' 'fontconfig')
+optdepends=('libutf8proc: unicode normalization'
+	    'libxkbcommon: wayland support')
 makedepends=('git') 
 provides=('wayst')
 conflicts=('wayst')
