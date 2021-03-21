@@ -93,6 +93,10 @@ package() {
                     "$pkgdir"/usr/lib/tmpfiles.d/shibboleth-sp.conf
   install -Dm0644 "$srcdir"/shibd.service \
                     "$pkgdir"/usr/lib/systemd/system/shibd.service
+
+  # Match tmpfiles.d
+  chmod 0700 "$pkgdir"/var/cache/shibboleth
+  chmod 0750 "$pkgdir"/var/log/shibboleth
 }
 
 # vim: ts=2:sw=2:et:
