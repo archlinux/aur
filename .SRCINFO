@@ -1,11 +1,12 @@
 pkgbase = todotxt-machine-git
 	pkgdesc = Interactive terminal todo.txt file editor with an interface similar to mutt
 	pkgver = bbd6457
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnthonyDiGirolamo/todotxt-machine
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = python-urwid
 	depends = python-docopt

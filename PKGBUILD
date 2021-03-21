@@ -4,13 +4,13 @@
 _pkgname=todotxt-machine
 pkgname=$_pkgname-git
 pkgver=bbd6457
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive terminal todo.txt file editor with an interface similar to mutt"
 url="https://github.com/AnthonyDiGirolamo/todotxt-machine"
 arch=('any')
 license=('GPL3')
 depends=('python' 'python-urwid' 'python-docopt')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("https://pypi.python.org/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
