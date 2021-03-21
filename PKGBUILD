@@ -2,7 +2,7 @@
 
 pkgname=ydotool
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('x86_64')
 depends=('libevdevplus' 'libuinputplus')
