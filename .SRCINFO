@@ -5,6 +5,7 @@ pkgbase = ydotool
 	url = https://github.com/ReimuNotMoe/ydotool
 	install = ydotool.install
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	makedepends = cmake
 	makedepends = ninja
