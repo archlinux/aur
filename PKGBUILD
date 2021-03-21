@@ -2,17 +2,17 @@
 
 _name=linapple
 pkgname="${_name}-git"
-pkgver=2015.06.29.g956f676
+pkgver=2020.06.01.gae9fd93
 pkgrel=1
 pkgdesc="Apple 2e emulator"
-arch=('i686')
-url="https://github.com/timob/${_name}"
+arch=('i686' 'x86_64')
+url="https://github.com/linappleii/linapple.git"
 license=('GPL2')
-depends=('sdl' 'zlib' 'libzip' 'curl')
+depends=('sdl' 'sdl_image' 'zlib' 'libzip' 'curl')
 makedepends=('git')
 provides=("${_name}")
 conflicts=("${_name}")
-source=("${_name}::git+${url}.git")
+source=("${_name}::git+https://github.com/linappleii/linapple.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,23 +21,15 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/${_name}/src"
+  cd "$srcdir/${_name}"
+  pwd
   export CFLAGS="$CFLAGS $CPPFLAGS"
   make PREFIX="/usr"
 }
 
 package() {
   cd "$srcdir/${_name}"
-
-  mkdir -p $pkgdir/usr/bin
-  install "$SRCDEST"/${_name}.sh $pkgdir/usr/bin/${_name}
-
-  mkdir -p $pkgdir/usr/share/${_name}
-  install ${_name} $pkgdir/usr/share/${_name}/
-  install -m 644 linapple.installed.conf charset40.bmp font.bmp icon.bmp splash.bmp Master.dsk $pkgdir/usr/share/${_name}/
-
-  mkdir -p $pkgdir/usr/share/doc/${_name}
-  install -m 644 CHANGELOG README $pkgdir/usr/share/doc/${_name}/
+  make DESTDIR="$pkgdir/usr/" install
 }
 
 # vim:set ts=2 sw=2 et:
