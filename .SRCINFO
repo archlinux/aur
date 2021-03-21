@@ -24,6 +24,7 @@ pkgbase = swift-language-git
 	source = cmark::git+https://github.com/apple/swift-cmark#branch=main
 	source = llbuild::git+https://github.com/apple/swift-llbuild#branch=main
 	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#branch=main
+	source = swift-crypto::git+https://github.com/apple/swift-crypto#branch=main
 	source = swift-driver::git+https://github.com/apple/swift-driver#branch=main
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
 	source = swiftpm::git+https://github.com/apple/swift-package-manager#branch=main
