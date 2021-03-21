@@ -7,10 +7,11 @@ pkgbase = ripme-git
 	license = MIT
 	makedepends = git
 	makedepends = maven
+	makedepends = jq
 	depends = java-runtime
 	provides = ripme
 	conflicts = ripme
-	source = git+https://github.com/RipMeApp/ripme.git
+	source = git+https://github.com/ripmeapp2/ripme.git
 	sha256sums = SKIP
 
 pkgname = ripme-git

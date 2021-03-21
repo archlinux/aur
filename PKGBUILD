@@ -10,10 +10,10 @@ arch=('any')
 url="https://github.com/RipMeApp/ripme"
 license=('MIT')
 depends=('java-runtime')
-makedepends=('git' 'maven')
+makedepends=('git' 'maven' 'jq')
 provides=('ripme')
 conflicts=('ripme')
-source=("git+https://github.com/RipMeApp/ripme.git")
+source=("git+https://github.com/ripmeapp2/ripme.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,7 +32,7 @@ EOF
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 "target/ripme-$(git describe --tags --abbrev=0)-jar-with-dependencies.jar" \
+  install -Dm644 "target/ripme-$(jq -r '.latestVersion' < ripme.json)-jar-with-dependencies.jar" \
     "$pkgdir/usr/share/java/ripme.jar"
   install -Dm755 ripme.sh "$pkgdir/usr/bin/ripme"
 }
