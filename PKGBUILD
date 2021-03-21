@@ -1,6 +1,6 @@
 pkgname=shibboleth-sp
 pkgver=3.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Shibboleth SAML2 single sign-on system - Service Provider"
 url="https://www.shibboleth.net/"
 license=(Apache)
@@ -36,7 +36,7 @@ source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkg
 sha256sums=('b8edaeb2a8a4a46fd1d81027ee3272165c3472f179c981efdf01db22ce3ee3c3'
             'SKIP'
             'c6705c063a8154d1e5503a182cf16057fd2571f2f750609c7436cb7a8a316ee8'
-            '9eb0f846e92c0257e3cf3cc3f2aed5a4bd9debe3f107af86ad0c6ac4973d921a'
+            '7723e6705fc63dd01163644ff1f1eb637cc7b6dc7e3fef2f0f37b5d63afa2d7e'
             '83d152120c8ec7650d1271c0956304c780649916ce21acdf2ee3d7c673a777a4')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 

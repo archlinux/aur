@@ -1,2 +1,3 @@
-z /var/cache/shibboleth 0700 shibd -   - -
-z /var/log/shibboleth   0750 shibd adm - -
+d /run/shibboleth       0750 shibd shibd - -
+z /var/cache/shibboleth 0700 shibd -     - -
+z /var/log/shibboleth   0750 shibd adm   - -
