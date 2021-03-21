@@ -1,0 +1,20 @@
+pkgbase = osu-tunes-git
+	pkgdesc = An audio player using osu! beatmaps
+	pkgver = r5.9c18074
+	pkgrel = 1
+	url = https://github.com/cainy-a/osu-tunes
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = nim
+	makedepends = nimble
+	makedepends = clang
+	depends = csfml
+	provides = osu-tunes
+	conflicts = osu-tunes
+	backup = usr/share/osu-tunes/data
+	source = osu-tunes-source::git+https://github.com/cainy-a/osu-tunes#commit=9c18074b50e78f5977e34c20863b9fe602fd56ae
+	md5sums = SKIP
+
+pkgname = osu-tunes-git
+
