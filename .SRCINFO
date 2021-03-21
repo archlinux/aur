@@ -1,6 +1,6 @@
 pkgbase = roundcubemail-plugin-carddav-git
 	pkgdesc = CardDAV plugin for RoundCube Webmailer
-	pkgver = v4.1.0.r2.g507a642
+	pkgver = v4.1.1.r1.g6cfcae7
 	pkgrel = 1
 	url = https://github.com/mstilkerich/rcmcarddav
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = roundcubemail-plugin-carddav-git
 	conflicts = roundcube-rcmcarddav-git
 	conflicts = roundcubemail-plugin-carddav
 	replaces = roundcube-rcmcarddav
+	options = !strip
 	backup = etc/webapps/roundcubemail/plugins/carddav/config.inc.php
 	source = roundcubemail-plugin-carddav-git::git+https://github.com/mstilkerich/rcmcarddav.git
 	sha256sums = SKIP
