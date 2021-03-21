@@ -1,27 +1,27 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
+# Maintainer: Jonas DOREL <jonas at dorel dot me>
 
-pkgname=python-dodgy
-pkgver=0.2.1
+pkgbase='python-dodgy'
+pkgname=('python-dodgy')
+_module='dodgy'
+pkgver='0.2.1'
 pkgrel=1
-pkgdesc="Looks at Python code to search for things which look dodgy such as passwords or diffs"
-arch=('any')
+pkgdesc="Searches for dodgy looking lines in Python code"
 url="https://github.com/landscapeio/dodgy"
-license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'git')
-source=(git+https://github.com/landscapeio/dodgy#tag=${pkgver})
-sha256sums=('SKIP')
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('28323cbfc9352139fdd3d316fa17f325cc0e9ac74438cbba51d70f9b48f86c3a')
 
 build() {
-  cd "dodgy"
-
-  python setup.py build
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-  cd "dodgy"
-
-  python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
-  install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    PIP_CONFIG_FILE=/dev/null
+    python setup.py install --isolated --root="${pkgdir}" --ignore-installed --no-deps --optimize=1 --skip-build
 }
