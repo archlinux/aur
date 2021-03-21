@@ -11,7 +11,7 @@ pkgbase = netron-bin
 	options = !strip
 	source = netron-bin-4.8.3.AppImage::https://github.com/lutzroeder/netron/releases/download/v4.8.3/Netron-4.8.3.AppImage
 	source = LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE
-	sha256sums = c92d05dec48997ccdf833d93cb578a9a8622d4e5c3aa24d2f38065d99c97fd01
+	sha256sums = 7cc23597fc67d95673689c566fe9a5d372d21546b45c4580c0f8c0206f34d19f
 	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
 
 pkgname = netron-bin

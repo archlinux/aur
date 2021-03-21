@@ -15,7 +15,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
         'LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE')
-sha256sums=('c92d05dec48997ccdf833d93cb578a9a8622d4e5c3aa24d2f38065d99c97fd01'
+sha256sums=('7cc23597fc67d95673689c566fe9a5d372d21546b45c4580c0f8c0206f34d19f'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88')
 
 package() {
