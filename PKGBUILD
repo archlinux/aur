@@ -2,14 +2,14 @@
 shortname=gvm-libs
 pkgname=gvm-libs-20
 pkgver=20.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='greenbone-vulnerability-manager libraries'
 arch=('x86_64')
 url="https://github.com/greenbone/gvm-libs"
 license=('GPL')
 provides=('gvm-libs')
 conflicts=('gvm-libs')
-depends=('gnutls' 'libpcap' 'gpgme' 'libssh' 'glib2' 'libldap' 'hiredis')
+depends=('gnutls' 'libpcap' 'gpgme' 'libssh' 'glib2' 'libldap' 'hiredis' 'sudo')
 makedepends=('cmake' 'doxygen')
 groups=('greenbone-vulnerability-manager')
 source=("${shortname}-${pkgver}.tar.gz::https://github.com/greenbone/gvm-libs/archive/v${pkgver}.tar.gz"

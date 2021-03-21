@@ -1,7 +1,7 @@
 pkgbase = gvm-libs-20
 	pkgdesc = greenbone-vulnerability-manager libraries
 	pkgver = 20.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gvm-libs
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -15,6 +15,7 @@ pkgbase = gvm-libs-20
 	depends = glib2
 	depends = libldap
 	depends = hiredis
+	depends = sudo
 	provides = gvm-libs
 	conflicts = gvm-libs
 	replaces = openvas-libraries
