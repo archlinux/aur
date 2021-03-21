@@ -1,7 +1,7 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=ttyc
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='ttyd protocol client'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
