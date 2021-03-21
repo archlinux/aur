@@ -64,6 +64,8 @@ pkgbase = ghost-deps-meta
 	provides = llvm-pypy-stm
 	provides = nodejs-grunt-cli
 	provides = node-webkit
+	provides = perl-data-pond
+	provides = perl-perl6-junction
 
 pkgname = ghost-deps-meta
 
