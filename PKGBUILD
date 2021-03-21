@@ -14,8 +14,8 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-git
-pkgver=0.22.1.r67.gad585e179
-pkgrel=1
+pkgver=0.22.6.r447.ga7ba10423
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music (from git)'
 url='https://www.musicpd.org/'
 license=('GPL2')
@@ -23,7 +23,7 @@ arch=('x86_64')
 depends=('bzip2' 'chromaprint' 'expat' 'gcc-libs' 'glibc' 'lame' 'libcdio'
          'libcdio-paranoia' 'libgcrypt' 'libgme' 'libmad' 'libmms' 'libmodplug'
          'libmpcdec' 'libnfs' 'libshout' 'libsidplayfp' 'libsoxr' 'openal' 'opus'
-         'smbclient' 'sqlite' 'wavpack' 'wildmidi' 'yajl' 'zlib' 'zziplib')
+         'pipewire' 'smbclient' 'sqlite' 'wavpack' 'wildmidi' 'yajl' 'zlib' 'zziplib')
 makedepends=('alsa-lib' 'audiofile' 'avahi' 'boost' 'curl' 'dbus' 'faad2'
              'ffmpeg' 'flac' 'fluidsynth' 'git' 'icu' 'jack' 'libao' 'libid3tag' 'libmikmod'
              'libmpdclient' 'libogg' 'libpulse' 'libsamplerate' 'libsndfile' 'libupnp'
