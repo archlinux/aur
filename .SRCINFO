@@ -1,8 +1,8 @@
 pkgbase = linux-zen-g14
 	pkgdesc = Linux ZEN with patch for Zephyrus G14 (GA401I)
-	pkgver = 5.11.3.zen1
+	pkgver = 5.11.8.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.11.3-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.11.8-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,8 +16,8 @@ pkgbase = linux-zen-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.11.3-zen1
-	source = config-5.11.3.zen1::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=49e8a3f43993f19379334fd6931c28b254b61620
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.11.8-zen1
+	source = config-5.11.8.zen1::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=c2f27f65bb10f3b4e7048a3b2938687329ee9e62
 	source = i8042.patch
 	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.11.patch
 	source = https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
@@ -26,7 +26,7 @@ pkgbase = linux-zen-g14
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 6c446a2ee6bc666884530aef7f8be82ea70440cb2576c57cc933bd90a48a1db3
+	sha256sums = 1bcc8a0cf210b676e9861f309c0501df642474a7d727549c6144651e77276fc9
 	sha256sums = 6c1ac099878622b258adee05e70be226f263b93a8a7ca9c021d2b3c8abab31ac
 	sha256sums = 34f4ae617a2407fed2ba347b663d31f39c1ec9b390e1ea5ea636c91a4cc6f875
 	sha256sums = d9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac
@@ -41,6 +41,7 @@ pkgname = linux-zen-g14
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = VHBA-MODULE
 	replaces = 
 
 pkgname = linux-zen-g14-headers

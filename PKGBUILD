@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.11.3.zen1
+pkgver=5.11.8.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401I)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,7 +18,7 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=49e8a3f43993f19379334fd6931c28b254b61620"
+  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=c2f27f65bb10f3b4e7048a3b2938687329ee9e62"
   i8042.patch
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.11.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
@@ -30,7 +30,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6c446a2ee6bc666884530aef7f8be82ea70440cb2576c57cc933bd90a48a1db3'
+            '1bcc8a0cf210b676e9861f309c0501df642474a7d727549c6144651e77276fc9'
             '6c1ac099878622b258adee05e70be226f263b93a8a7ca9c021d2b3c8abab31ac'
             '34f4ae617a2407fed2ba347b663d31f39c1ec9b390e1ea5ea636c91a4cc6f875'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
@@ -75,7 +75,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE)
   replaces=()
 
   cd $_srcname
