@@ -63,7 +63,7 @@ pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=17.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
@@ -118,8 +118,8 @@ package()
 	msg2 "Extracting from bundle..."
 	msg "Please wait, this take a while..."
 	cd "${srcdir}" || exit
-#	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
-	./${_installer_binary} --appimage-extract "${pkgdir}/opt/${_pkgname}"
+	./${_installer_binary} -i -y -n -a -C "${pkgdir}/opt/${_pkgname}"
+#	./${_installer_binary} --appimage-extract "${pkgdir}/opt/${_pkgname}"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
