@@ -1,7 +1,7 @@
 pkgbase = bibata-cursor-theme
 	pkgdesc = Material Based Cursor Theme
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ful1e5/Bibata_Cursor
 	arch = any
 	license = GPL3
