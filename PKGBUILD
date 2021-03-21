@@ -3,7 +3,7 @@
 pkgname=hellfire-data-gog
 _pkgname=devilutionX
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo & Hellfire devolved"
 arch=('any')
 url="https://www.gog.com/game/diablo"
@@ -45,5 +45,5 @@ package() {
     install -Dm644 "${srcdir}/hellfire/hellfire.mpq" "${pkgdir}/opt/${_pkgname}/hellfire.mpq"
     install -Dm644 "${srcdir}/hellfire/hfmonk.mpq" "${pkgdir}/opt/${_pkgname}/hfmonk.mpq"
     install -Dm644 "${srcdir}/hellfire/hfmusic.mpq" "${pkgdir}/opt/${_pkgname}/hfmusic.mpq"
-    install -Dm644 "${srcdir}/hellfire/hellfire.mpq" "${pkgdir}/opt/${_pkgname}/hellfire.mpq"
+    install -Dm644 "${srcdir}/hellfire/hfvoice.mpq" "${pkgdir}/opt/${_pkgname}/hfvoice.mpq"
 }
