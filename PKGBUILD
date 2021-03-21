@@ -8,7 +8,7 @@
 
 pkgname=librewolf-nightly
 _pkgname="Librewolf Nightly"
-pkgver=r635306.b898442a9527
+pkgver=r639492.6cce5976ef31
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 aarch64)
