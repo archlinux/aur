@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=devilutionx-hellfire-git
 _pkgname=devilutionX
-pkgver=1.1.0.r1281.g378a99bfd
+pkgver=1.1.0.r1300.g2e21e7ab0
 pkgrel=1
 pkgdesc="Diablo & Hellfire devolved. An open source replacment for the original executables."
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -36,7 +36,7 @@ package() {
     install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/icon.png" "${pkgdir}/usr/share/pixmaps/diablo-$_pkgname.png"
     install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/hellfire.png" "${pkgdir}/usr/share/pixmaps/hellfire-$_pkgname.png"
     # install required font
-    install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/CharisSILB.ttf" "${pkgdir}/usr/share/fonts/Charis/CharisSILB.ttf"
+    install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/CharisSILB.ttf" "${pkgdir}/usr/share/fonts/CharisSILB.ttf"
     # install game documents
     install -Dm644 "${srcdir}/$_pkgname/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/$_pkgname-readme.md"
     install -Dm644 "${srcdir}/$_pkgname/docs/BACKGROUND.md" "${pkgdir}/usr/share/doc/${_pkgname}/$_pkgname-background.md"
@@ -48,6 +48,8 @@ package() {
     # install devilutionX licenses
     install -Dm644 "${srcdir}/$_pkgname/LICENSE"  "${pkgdir}/usr/share/licenses/${_pkgname}/$_pkgname-license"
     install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/LICENSE.CharisSILB.txt"  "${pkgdir}/usr/share/licenses/${_pkgname}/CharisSILB-font-license.txt"
+    # install extta mpq
+    install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/devilutionx.mpq" "${pkgdir}/opt/${_pkgname}/devilutionx"
     # install devilutionX executable
     install -Dm755 "${srcdir}/$_pkgname/build/devilutionx" "${pkgdir}/opt/${_pkgname}/devilutionx"
     mkdir "${pkgdir}/usr/bin"
