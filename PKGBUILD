@@ -52,7 +52,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=28.0.50.145975
+pkgver=28.0.50.145997
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -243,7 +243,7 @@ if [[ $NOGZ == "YES" ]]; then
 fi
 
 # ctags/etags may be provided by other packages, e.g, universal-ctags
-conf+=('--program-transform-name="s/\([ec]tags\)/\1.emacs/"')
+_conf+=('--program-transform-name="s/\([ec]tags\)/\1.emacs/"')
 
 ################################################################################
 
