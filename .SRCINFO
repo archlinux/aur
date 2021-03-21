@@ -1,0 +1,13 @@
+pkgbase = terraform13
+	pkgdesc = HashiCorp tool for building and updating infrastructure as code idempotently
+	pkgver = 0.13.6
+	pkgrel = 1
+	url = https://www.terraform.io/
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	source = terraform-0.13.6.tar.gz::https://github.com/hashicorp/terraform/archive/v0.13.6.tar.gz
+	sha512sums = 63368d4e30dbf66fe7f486ae7348c3eb9285386ef452a6c8c01f8e034fcc57cf647165ab38aed8e4624f00f7eb1ba0103264366bccc4513796dc36634361b22a
+
+pkgname = terraform13
+
