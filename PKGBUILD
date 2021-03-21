@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.13.0.r109.gfd992e7
-pkgrel=1
+pkgver=1.14.0.r36.gf3cbbc6
+pkgrel=2
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0 1.0 Universal')
 depends=('electron')
-makedepends=('git' 'npm' 'python')
+makedepends=('git' 'npm' 'nvm' 'python')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
             'nss-mdns: for companion server')
@@ -26,10 +26,36 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_ensure_local_nvm() {
+	# lets be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="$srcdir/.nvm"
+
+	# The init script returns 3 if version
+	# specified in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	export npm_config_cache="$srcdir/npm_cache"
+	local nodeversion='12.21.0'
+	local npm_prefix=$(npm config get prefix)
+	npm config delete prefix
+	_ensure_local_nvm
+	nvm install "$nodeversion" && nvm use "$nodeversion"
+}
+
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	_ensure_local_nvm
 	npm install --cache "$srcdir/npm-cache"
 	npm run publish:lin
+
+	# Restore node config from nvm
+	npm config set prefix "$npm_prefix"
+	nvm unalias default
 }
 
 package() {
