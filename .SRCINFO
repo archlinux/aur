@@ -1,0 +1,18 @@
+pkgbase = mod-midi-merger-git
+	pkgdesc = JACK clients to merge/broadcast MIDI events from/to several in- or outputs (git version)
+	pkgver = r45.f9ef13a
+	pkgrel = 1
+	url = https://github.com/moddevices/mod-midi-merger
+	arch = x86_64
+	groups = pro-audio
+	license = ISC
+	makedepends = git
+	depends = glibc
+	depends = jack
+	provides = mod-midi-merger
+	conflicts = mod-midi-merger
+	source = mod-midi-merger::git+https://github.com/moddevices/mod-midi-merger.git
+	md5sums = SKIP
+
+pkgname = mod-midi-merger-git
+

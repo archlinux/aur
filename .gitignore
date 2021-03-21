@@ -1,0 +1,5 @@
+pkg/
+src/
+mod-midi-merger/
+mod-midi-merger-git-*.pkg.tar.xz
+mod-midi-merger-git-*.pkg.tar.zst
