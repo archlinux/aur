@@ -1,5 +1,5 @@
 pkgbase = poppler-lcd
-	pkgver = 0.88.0
+	pkgver = 21.03.0
 	pkgrel = 1
 	url = https://github.com/jonathanffon/poppler-lcd-patch
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = poppler-lcd
 	makedepends = gobject-introspection
 	makedepends = icu
 	makedepends = qt5-base
+	makedepends = qt6-base
 	makedepends = git
 	makedepends = nss
 	makedepends = gtk-doc
@@ -24,9 +25,9 @@ pkgbase = poppler-lcd
 	makedepends = python
 	makedepends = boost
 	options = !emptydirs
-	source = https://poppler.freedesktop.org/poppler-0.88.0.tar.xz
-	source = git+https://github.com/jonathanffon/poppler-lcd-patch#commit=0f8878713b6131449328ed149358c0cbd07e89ef
-	sha256sums = b4453804e9a5a519e6ceee0ac8f5efc229e3b0bf70419263c239124474d256c7
+	source = https://poppler.freedesktop.org/poppler-21.03.0.tar.xz
+	source = git+https://github.com/jonathanffon/poppler-lcd-patch#commit=af6c658b775194fbc4fe7e68746c0a68cc9b9656
+	sha256sums = fd51ead4aac1d2f4684fa6e7b0ec06f0233ed21667e720a4e817e4455dd63d27
 	sha256sums = SKIP
 
 pkgname = poppler-lcd
@@ -40,22 +41,34 @@ pkgname = poppler-lcd
 	depends = nss
 	depends = curl
 	optdepends = poppler-data: encoding data to display PDF documents containing CJK characters
-	provides = poppler=0.88.0
+	provides = libpoppler.so
+	provides = libpoppler-cpp.so
+	provides = poppler=21.03.0
 	conflicts = poppler
-	conflicts = poppler-qt3<0.88.0
-	conflicts = poppler-qt4<0.88.0
+	conflicts = poppler-qt3<21.03.0
+	conflicts = poppler-qt4<21.03.0
 
 pkgname = poppler-glib-lcd
 	pkgdesc = Poppler glib bindings with subpixel patch on LCD display
-	depends = poppler-lcd=0.88.0
+	depends = poppler-lcd=21.03.0
 	depends = glib2
+	provides = libpoppler-glib.so
 	provides = poppler-glib
 	conflicts = poppler-glib
 
 pkgname = poppler-qt5-lcd
 	pkgdesc = Poppler Qt5 bindings with subpixel patch on LCD display
-	depends = poppler-lcd=0.88.0
+	depends = poppler-lcd=21.03.0
 	depends = qt5-base
+	provides = libpoppler-qt5.so
 	provides = poppler-qt5
 	conflicts = poppler-qt5
+
+pkgname = poppler-qt6-lcd
+	pkgdesc = Poppler Qt6 bindings with subpixel patch on LCD display
+	depends = poppler-lcd=21.03.0
+	depends = qt6-base
+	provides = libpoppler-qt6.so
+	provides = poppler-qt6
+	conflicts = poppler-qt6
 

@@ -1,20 +1,20 @@
 # Maintainer: Jeffrey Feng <galago1992@gmail.com>
 
 pkgbase=poppler-lcd
-pkgname=('poppler-lcd' 'poppler-glib-lcd' 'poppler-qt5-lcd')
-pkgver=0.88.0
+pkgname=('poppler-lcd' 'poppler-glib-lcd' 'poppler-qt5-lcd' 'poppler-qt6-lcd')
+pkgver=21.03.0
 pkgrel=1
 arch=(x86_64)
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgconfig' 'lcms2' 
-             'gobject-introspection' 'icu' 'qt5-base' 'git' 'nss' 'gtk-doc' 'curl' 'poppler-data'
+             'gobject-introspection' 'icu' 'qt5-base' 'qt6-base' 'git' 'nss' 'gtk-doc' 'curl' 'poppler-data'
              'cmake' 'python' 'boost') 
 options=('!emptydirs')
 url="https://github.com/jonathanffon/poppler-lcd-patch"
-_commit=0f8878713b6131449328ed149358c0cbd07e89ef
+_commit=af6c658b775194fbc4fe7e68746c0a68cc9b9656
 source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz"
         "git+https://github.com/jonathanffon/poppler-lcd-patch#commit=${_commit}")
-sha256sums=('b4453804e9a5a519e6ceee0ac8f5efc229e3b0bf70419263c239124474d256c7'
+sha256sums=('fd51ead4aac1d2f4684fa6e7b0ec06f0233ed21667e720a4e817e4455dd63d27'
             'SKIP')
 
 prepare() {
@@ -40,16 +40,16 @@ package_poppler-lcd() {
   pkgdesc="PDF rendering library based on xpdf 3.0 with subpixel patch on LCD display"
   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2' 'nss' 'curl')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
+  provides=('libpoppler.so' 'libpoppler-cpp.so' "poppler=${pkgver}")
   conflicts=('poppler' "poppler-qt3<${pkgver}" "poppler-qt4<${pkgver}")
-  provides=("poppler=${pkgver}")
 
   cd build
   make DESTDIR="${pkgdir}" install
 
   # cleanup for splitted build
-  rm -vrf "${pkgdir}"/usr/include/poppler/{glib,qt5}
-  rm -vf "${pkgdir}"//usr/lib/libpoppler-{glib,qt5}.*
-  rm -vf "${pkgdir}"/usr/lib/pkgconfig/poppler-{glib,qt5}.pc
+  rm -vrf "${pkgdir}"/usr/include/poppler/{glib,qt5,qt6}
+  rm -vf "${pkgdir}"//usr/lib/libpoppler-{glib,qt5,qt6}.*
+  rm -vf "${pkgdir}"/usr/lib/pkgconfig/poppler-{glib,qt5,qt6}.pc
   rm -vrf "${pkgdir}"/usr/{lib,share}/gir*
   rm -vrf "${pkgdir}"/usr/share/gtk-doc
 }
@@ -58,7 +58,7 @@ package_poppler-glib-lcd() {
   pkgdesc="Poppler glib bindings with subpixel patch on LCD display"
   depends=("poppler-lcd=${pkgver}" 'glib2')
   conflicts=('poppler-glib')
-  provides=('poppler-glib')
+  provides=('libpoppler-glib.so' 'poppler-glib')
 
   cd build
 
@@ -73,11 +73,21 @@ package_poppler-qt5-lcd() {
   pkgdesc="Poppler Qt5 bindings with subpixel patch on LCD display"
   depends=("poppler-lcd=${pkgver}" 'qt5-base')
   conflicts=('poppler-qt5')
-  provides=('poppler-qt5')
-  
+  provides=('libpoppler-qt5.so' 'poppler-qt5')
+
   cd build
   make -C qt5 DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
   install -m644 poppler-qt5.pc "${pkgdir}/usr/lib/pkgconfig/"
 }
 
+package_poppler-qt6-lcd() {
+  pkgdesc="Poppler Qt6 bindings with subpixel patch on LCD display"
+  depends=("poppler-lcd=${pkgver}" 'qt6-base')
+  conflicts=('poppler-qt6')
+  provides=('libpoppler-qt6.so' 'poppler-qt6')
+
+  cd build
+  make -C qt6 DESTDIR="${pkgdir}" install
+  install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
+}
