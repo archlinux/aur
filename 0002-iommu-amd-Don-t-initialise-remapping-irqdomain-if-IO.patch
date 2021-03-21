@@ -1,0 +1,71 @@
+From fa6692f3c77252a239725dab4352cecf34e12098 Mon Sep 17 00:00:00 2001
+From: David Woodhouse <dwmw@amazon.co.uk>
+Date: Mon, 15 Mar 2021 11:15:02 +0000
+Subject: [PATCH 2/3] iommu/amd: Don't initialise remapping irqdomain if IOMMU
+ is disabled
+
+When the IOMMU is disabled, the driver still enumerates and initialises
+the hardware in order to turn it off. Because IRQ remapping setup is
+done early, the irqdomain is set up opportunistically.
+
+In commit b34f10c2dc59 ("iommu/amd: Stop irq_remapping_select() matching
+when remapping is disabled") I already make the irq_remapping_select()
+function check the amd_iommu_irq_setup flag because that might get
+cleared only after the irqdomain setup is done, when the IVRS is parsed.
+
+However, in the case where 'amd_iommu=off' is passed on the command line,
+the IRQ remapping setup isn't done but the amd_iommu_irq_setup flag is
+still set by the early IRQ remap init code. Stop it doing that, by
+bailing out of amd_iommu_prepare() early when it's disabled.
+
+This avoids the crash in irq_remapping_select() as it dereferences the
+NULL amd_iommu_rlookup_table[]:
+
+[    0.243659] Switched APIC routing to physical x2apic.
+[    0.262206] BUG: kernel NULL pointer dereference, address: 0000000000000500
+[    0.262927] #PF: supervisor read access in kernel mode
+[    0.263390] #PF: error_code(0x0000) - not-present page
+[    0.263844] PGD 0 P4D 0
+[    0.264135] Oops: 0000 [#1] SMP PTI
+[    0.264460] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.12.0-rc3 #831
+[    0.265069] Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.14.0-1.fc33 04/01/2014
+[    0.265825] RIP: 0010:irq_remapping_select+0x57/0xb0
+[    0.266327] Code: 4b 0c 48 3d 30 e0 a7 9e 75 0d eb 35 48 8b 00 48 3d 30 e0 a7 9e 74 2a 0f b6 50 10 39 d1 75 ed 0f b7 40 12 48 8b 15 69 e3 d2 01 <48> 8b 14 c2 48 85 d2 74 0e b8 01 00 00 00 48 3b aa 90 04 00 00 74
+[    0.268412] RSP: 0000:ffffffff9e803db0 EFLAGS: 00010246
+[    0.268919] RAX: 00000000000000a0 RBX: ffffffff9e803df8 RCX: 0000000000000000
+[    0.269550] RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffff98120112fe79
+[    0.270245] RBP: ffff9812011c8218 R08: 0000000000000001 R09: 000000000000000a
+[    0.270922] R10: 000000000000000a R11: f000000000000000 R12: ffff9812011c8218
+[    0.271549] R13: ffff98120181ed88 R14: 0000000000000000 R15: 0000000000000000
+[    0.272221] FS:  0000000000000000(0000) GS:ffff98127dc00000(0000) knlGS:0000000000000000
+[    0.272997] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    0.273508] CR2: 0000000000000500 CR3: 0000000030810000 CR4: 00000000000006b0
+[    0.274178] Call Trace:
+[    0.274416]  irq_find_matching_fwspec+0x41/0xc0
+[    0.274812]  mp_irqdomain_create+0x65/0x150
+[    0.275251]  setup_IO_APIC+0x70/0x811
+
+Fixes: a1a785b57242 ("iommu/amd: Implement select() method on remapping irqdomain")
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=212017
+Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+---
+ drivers/iommu/amd/init.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/iommu/amd/init.c b/drivers/iommu/amd/init.c
+index 01da76dc1caa..3ea395ef4929 100644
+--- a/drivers/iommu/amd/init.c
++++ b/drivers/iommu/amd/init.c
+@@ -2997,6 +2997,9 @@ int __init amd_iommu_prepare(void)
+ {
+ 	int ret;
+ 
++	if (amd_iommu_disabled)
++		return -ENODEV;
++
+ 	amd_iommu_irq_remap = true;
+ 
+ 	ret = iommu_go_to_state(IOMMU_ACPI_FINISHED);
+-- 
+2.31.0
+

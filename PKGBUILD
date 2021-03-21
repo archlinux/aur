@@ -65,7 +65,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.11.8
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -82,6 +82,7 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -89,10 +90,11 @@ validpgpkeys=(
 )
 b2sums=('48028845215ba4514735575b2cf0f9bd67c224168074c406d01188ab28483ab139d6fab42dda6be10b04c9716e7be91fc6f5e4bbd58984bea40b7e7cff60e477'
         'SKIP'
-        '20042a049ca6f95782c0e6a05e67871f6f5a290098b051b87d4f8ddbb965e78e3ecdd20fad38bde6efb462cb21a65b8aac19455396ba0aef83e73a55bc7b3fb6'
+        'fb0f93e5373ba40e8b019195faf56480d0e2e4216124c3b30293ff6abf0885e867e17b3a613da9ed0ba3fe7fd1cb539f08fa1f7370d875e3cb6bbd1ada78f0eb'
         '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
-        '59c8f4d66eeeb5b3f84b17ab81431804ac9334e97cdbf99ff3dd77803ee3af55908d3d3ba0e957093418a7c5805e423ac78dd398ffb64ba6577aa69bfb9cfbe1')
+        'c22463da6e78830e104f728c00cf43573a7e1a59c17234f49844b9295eab953f4e119d34a0621feb816b9f1f0469dd769884f9ed1740c73176625435ea0a8624'
+        '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
