@@ -1,7 +1,7 @@
 # Maintainer: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=5.8e
+pkgver=5.8f
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
 pkgrel=1
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
 )
 
 sha1sums=(
-	"d7cb478b525522f451d51f17e73fefaab33fa13f"
+	"c711b1c4d9748c0a0206af612834f03b179ed5d2"
 	"07ee699a267425f01c7e28c2369ba6521bd515ec"
 	"7a0283d47e945b66a82dcbd11bdd10a6406dd027"
 	"deb5297344427dd07d8044543f1c023b0c4c001c"
