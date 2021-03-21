@@ -1,0 +1,15 @@
+pkgbase = gog-darkest-dungeon-musketeer
+	pkgdesc = DLC for the darkest_dungeon game.
+	pkgver = 24839
+	pkgrel = 1
+	url = https://www.gog.com/game/darkest_dungeon_musketeer
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	depends = gog-darkest-dungeon
+	noextract = darkest_dungeon_musketeer_24839_28859.sh
+	source = darkest_dungeon_musketeer_24839_28859.sh::gog://darkest_dungeon_musketeer_24839_28859.sh
+	sha256sums = 0fce8f4f4cab31733e39bb02fbde8df8e868de9fe8b7d79a696fb4981f6d9c54
+
+pkgname = gog-darkest-dungeon-musketeer
+
