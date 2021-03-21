@@ -1,17 +1,18 @@
 pkgbase = perl-gtk2-ex-listmodelconcat
 	pkgdesc = Gtk2::Ex::ListModelConcat -- concatenated list models
-	pkgver = 10
-	pkgrel = 2
+	pkgver = 11
+	pkgrel = 1
 	url = https://metacpan.org/release/Gtk2-Ex-ListModelConcat
 	arch = any
 	license = LGPL
 	license = Perl
+	checkdepends = perl-devel-globaldestruction
 	depends = perl
 	depends = gtk2-perl
 	depends = perl-gtk2-ex-widgetbits
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/K/KR/KRYDE/Gtk2-Ex-ListModelConcat-10.tar.gz
-	md5sums = 512e3d0467f8b6a1e6682ce6fe1a35b5
+	source = http://cpan.metacpan.org/authors/id/K/KR/KRYDE/Gtk2-Ex-ListModelConcat-11.tar.gz
+	md5sums = e796b39386c6f2fc13518eae48a3ff02
 
 pkgname = perl-gtk2-ex-listmodelconcat
 
