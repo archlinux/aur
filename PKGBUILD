@@ -1,5 +1,5 @@
 # Maintainer: Sakura1943 <1436700265@qq.com>
-pkgname=rhythm-doctor
+pkgname=rhythmdoctor-deepin-wine-5-git
 pkgver=1.1
 pkgrel=1
 pkgdesc="Rhythm Doctor by deepin-wine5"

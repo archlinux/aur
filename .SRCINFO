@@ -1,4 +1,4 @@
-pkgbase = rhythm-doctor
+pkgbase = rhythmdoctor-deepin-wine-5-git
 	pkgdesc = Rhythm Doctor by deepin-wine5
 	pkgver = 1.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = rhythm-doctor
 	source = https://gitlab.com/Sakura1943/rhychm-doctor/-/raw/master/rhythmdoctor.tar.gz
 	md5sums = SKIP
 
-pkgname = rhythm-doctor
+pkgname = rhythmdoctor-deepin-wine-5-git
 
