@@ -7,7 +7,7 @@ pkgbase = xerox-phaser-6000-6010
 	arch = x86_64
 	license = custom:"XeroxEULA"
 	depends = cups
-	source = xerox-phaser-6000-6010-1.01_20110222.zip::http://www.support.xerox.com/support/phaser-6000/file-redirect/enus.html?operatingSystem=linux&fileLanguage=en&contentId=116070
+	source = xerox-phaser-6000-6010-1.01_20110222.zip::https://www.support.xerox.com/download/116070
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/XeroxEULA
 	sha256sums = 3cb437d2a83fe18718ee73f0293cef17b7129f16e7302c94752e93b4e9152ff2
 	sha256sums = 0b4c700a15719e07766c44451c767f1470ab97bf466cc61b18b96aec5891fc7e
