@@ -52,10 +52,3 @@ pkgname = llvm-ocaml-rc
 	conflicts = llvm-ocaml
 	conflicts = llvm-ocaml-git
 
-pkgname = mlir-rc
-	pkgdesc = Multi-Level Intermediate Representation (rc release)
-	depends = llvm
-	depends = llvm-libs
-	provides = mlir
-	conflicts = mlir-git
-

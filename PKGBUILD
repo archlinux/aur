@@ -9,8 +9,7 @@
 #Credits: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgbase=llvm-rc
-pkgname=("$pkgbase" 'llvm-libs-rc' 'llvm-ocaml-rc' 'mlir-rc')
-#pkgname=("$pkgbase" 'llvm-libs-rc' 'llvm-ocaml-rc')
+pkgname=("$pkgbase" 'llvm-libs-rc' 'llvm-ocaml-rc')
 url='https://llvm.org/'
 pkgver=12.0.0rc3
 versiontag=12.0.0-rc3
@@ -44,12 +43,9 @@ build(){
   -DLLVM_ENABLE_DOXYGEN=OFF \
   -DSPHINX_WARNINGS_AS_ERRORS=OFF \
   -DLLVM_BINUTILS_INCDIR=/usr/include \
-  -DLLVM_ENABLE_PROJECTS="mlir"
 
   ninja -C build all
   ninja -C build ocaml_doc
-  #ninja -C build mlir-doc
-  #ninja -C build flang-doc
 }
 
 package_llvm-rc(){
@@ -90,28 +86,6 @@ package_llvm-rc(){
 
   # remove doc dir
   rm -rf "$pkgdir"/usr/share/doc
-
-  # move everything provided by mlir to a separate package
-
-  rm -rf "$srcdir"/mlir.{lib,cmake,bin} \
-         "$srcdir"/mlir \
-         "$srcdir"/mlir-c
-
-  # move mlir lib to a separate package
-  mkdir "$srcdir/mlir.lib"
-  mv  "$pkgdir"/usr/lib/{*libMLIR*,*libmlir*} "$srcdir/mlir.lib"
-
-  # move lib/cmake/mlir to a separate package
-  mkdir "$srcdir/mlir.cmake"
-  mv "$pkgdir"/usr/lib/cmake/mlir  "$srcdir/mlir.cmake"
-
-  # move mlir binary to a separate package
-  mkdir "$srcdir/mlir.bin"
-  mv "$pkgdir"/usr/bin/*mlir*  "$srcdir/mlir.bin"
-
-  # move mlir include to a separate package
-  mv "$pkgdir"/usr/include/mlir  "$srcdir"
-  mv "$pkgdir"/usr/include/mlir-c  "$srcdir"
 }
 
 package_llvm-libs-rc(){
@@ -146,33 +120,4 @@ package_llvm-ocaml-rc(){
   #cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$pkgname/html"
 
   install -Dm644 "$srcdir/llvm-project-$pkgver.src/llvm/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_mlir-rc(){
-  pkgdesc='Multi-Level Intermediate Representation (rc release)'
-  depends=('llvm' 'llvm-libs') # if somebody have depends recommendation feel free to make a pull request
-  conflicts=('mlir-git')
-  provides=('mlir')
-
-  install -d "$pkgdir"/{usr/lib,usr/include,usr/bin}
-
-  # move mlir lib to a separate package
-  #mv "$pkgdir"/usr/lib/{*libMLIR*,*libmlir*,*mlir*} "$srcdir/mlir.lib"
-  cp -a "$srcdir"/mlir.lib/* "$pkgdir"/usr/lib/
-
-  # move lib/cmake/mlir to a separate package
-  #mv "$pkgdir"/usr/lib/cmake/mlir  "$srcdir/mlir.cmake"
-  cp -a "$srcdir/mlir.cmake" "$pkgdir"/usr/lib/cmake/
-
-  # move mlir binary to a separate package
-  #mv "$pkgdir"/usr/bin/*mlir*  "$srcdir/mlir.bin"
-  cp -a "$srcdir"/mlir.bin/* "$pkgdir"/usr/bin/
-
-  # move mlir include to a separate package
-  #mv "$pkgdir"/usr/include/mlir  "$srcdir"
-  #mv "$pkgdir"/usr/include/mlir-c  "$srcdir"
-  cp -a "$srcdir/mlir" "$pkgdir"/usr/include/
-  cp -a "$srcdir/mlir-c" "$pkgdir"/usr/include/
-
-  install -Dm644 "$srcdir/llvm-project-$pkgver.src/mlir/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
