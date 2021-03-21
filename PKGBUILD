@@ -1,6 +1,6 @@
 pkgname=shibboleth-sp
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
 url="https://www.shibboleth.net/"
 license=(Apache)
@@ -42,6 +42,22 @@ sha256sums=('b8edaeb2a8a4a46fd1d81027ee3272165c3472f179c981efdf01db22ce3ee3c3'
             '9f2d48c1cd3b80108c1a567ed6778272880c53e8c647b16f18084d681c3b8671')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 install=$pkgname.install
+backup=(etc/shibboleth/attribute-map.xml
+        etc/shibboleth/attribute-policy.xml
+        etc/shibboleth/bindingTemplate.html
+        etc/shibboleth/console.logger
+        etc/shibboleth/discoveryTemplate.html
+        etc/shibboleth/globalLogout.html
+        etc/shibboleth/localLogout.html
+        etc/shibboleth/metadataError.html
+        etc/shibboleth/native.logger
+        etc/shibboleth/partialLogout.html
+        etc/shibboleth/postTemplate.html
+        etc/shibboleth/protocols.xml
+        etc/shibboleth/security-policy.xml
+        etc/shibboleth/shibboleth2.xml
+        etc/shibboleth/shibd.logger
+        etc/shibboleth/sslError.html)
 
 build() {
   cd "$pkgname-$pkgver"
@@ -61,12 +77,10 @@ package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
-  # Duplicates of every config file
-  mkdir -p "$pkgdir"/usr/share/$pkgname/dist
-  mv "$pkgdir"/etc/shibboleth/*.dist "$pkgdir"/usr/share/$pkgname/dist/
-
-  # Generated during installation
-  rm -vf "$pkgdir"/etc/shibboleth/sp-*.pem
+  # Apache module
+  mkdir -p "$pkgdir"/usr/lib/httpd/modules
+  mv -v "$pkgdir"/usr/lib/shibboleth/mod_shib_24.so \
+          "$pkgdir"/usr/lib/httpd/modules/mod_shib.so
 
   # Scripts
   for _x in keygen metagen seckeygen; do
@@ -76,10 +90,17 @@ package() {
     mv -v "$pkgdir"/usr/bin/$_x "$pkgdir"/usr/bin/shib-$_x
   done
 
-  # Apache module
-  mkdir -p "$pkgdir"/usr/lib/httpd/modules
-  mv -v "$pkgdir"/usr/lib/shibboleth/mod_shib_24.so \
-          "$pkgdir"/usr/lib/httpd/modules/mod_shib.so
+  # Remove keys generated during installation
+  rm -vf "$pkgdir"/etc/shibboleth/sp-*.pem
+
+  # Remove duplicates of every config file
+  mkdir -p "$pkgdir"/usr/share/$pkgname/dist
+  mv "$pkgdir"/etc/shibboleth/example-*.xml "$pkgdir"/usr/share/$pkgname/
+  mv "$pkgdir"/etc/shibboleth/*.dist "$pkgdir"/usr/share/$pkgname/dist/
+
+  # Remove the bundled Apache and init.d examples
+  rm -vf "$pkgdir"/etc/shibboleth/apache*.config
+  rm -vf "$pkgdir"/etc/shibboleth/shibd-*
 
   # Provide our own Apache and systemd examples
   install -Dm0644 "$srcdir"/apache.conf \
@@ -90,10 +111,6 @@ package() {
                     "$pkgdir"/usr/lib/tmpfiles.d/shibboleth-sp.conf
   install -Dm0644 "$srcdir"/shibd.service \
                     "$pkgdir"/usr/lib/systemd/system/shibd.service
-
-  # Remove the bundled Apache and init.d examples
-  rm -vf "$pkgdir"/etc/shibboleth/apache*.config
-  rm -vf "$pkgdir"/etc/shibboleth/shibd-*
 
   # Match tmpfiles.d
   rm -rf "$pkgdir"/var/run
