@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GG
+Exec=env LD_PRELOAD=/opt/GG/xulrunner/libcrypto.so.1.0.0 /opt/GG/gghub --gglink %u
+Icon=/opt/GG/icons/gg.png
+Terminal=false
+Type=Application
+Categories=Utility;Network;InstantMessaging;
+MimeType=x-scheme-handler/gg;

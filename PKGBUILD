@@ -1,0 +1,28 @@
+# Maintainer: workonfire <kolucki62@gmail.com>
+
+pkgname=gadu-gadu
+pkgver=12.4.104.12172
+pkgrel=1
+pkgdesc="Gadu-Gadu is a Polish instant messaging client using a proprietary protocol."
+arch=('i686' 'x86_64')
+url="https://gg.pl"
+license=('custom')
+optdepends=('flashplugin: needed for avatar editor')
+source=("${pkgname}".desktop::https://raw.githubusercontent.com/oliwier975PL/PKGBUILDs/master/"${pkgname}"/"${pkgname}".desktop
+        "${pkgname}"::https://raw.githubusercontent.com/oliwier975PL/PKGBUILDs/master/"${pkgname}"/"${pkgname}")
+source_x86_64=(gg_64bit_"${pkgver}".tar.bz2::http://im-updates.gg.pl/phoenix/app/release/"${pkgver}"/standard/Linux_x86_64-gcc3/pl/gg_64bit.tar.bz2)
+source_i686=(gg_32bit_"${pkgver}".tar.bz2::http://im-updates.gg.pl/phoenix/app/release/"${pkgver}"/standard/Linux_x86-gcc3/pl/gg_32bit.tar.bz2)
+sha256sums=('8137b434801ad2f7a2a6ec5bf731e41dd381839ce55dca4082634764cea53c78'
+            'cfc55261aacbb25bdf65b3a05875cf106e1e1877b220c39ede863ee6a9631b7c')
+sha256sums_i686=('d53eefd156b3181057ff82738ab572bf979301ff138ce6e1c9c11bc98f809231')
+sha256sums_x86_64=('fc19358fe2cb1114158630825ca520a579fc6165383d37cfedc38991c162ea98')
+options=(!strip)
+
+package() {
+  mkdir -p "${pkgdir}"/opt
+  mkdir -p "${pkgdir}"/usr/bin
+  mkdir -p "${pkgdir}"/usr/share/applications
+  cp -r "${srcdir}"/GG "${pkgdir}"/opt/
+  install -Dm755 "${pkgname}" "${pkgdir}"/usr/bin/
+  install -m644 "${pkgname}".desktop "${pkgdir}"/usr/share/applications/
+}

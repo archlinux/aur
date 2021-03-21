@@ -1,0 +1,5 @@
+#!/bin/bash
+
+GG_DIR=/opt/GG/
+
+LD_PRELOAD="$GG_DIR/xulrunner/libcrypto.so.1.0.0" exec "$GG_DIR/gghub" "$@"
