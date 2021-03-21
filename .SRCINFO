@@ -1,7 +1,7 @@
 pkgbase = util-linux-aes
 	pkgdesc = Miscellaneous system utilities for Linux, with loop-AES support
 	pkgver = 2.36.2
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/karelzak/util-linux
 	install = util-linux-aes.install
 	arch = x86_64
@@ -74,6 +74,8 @@ pkgname = util-linux-libs-aes
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
+	provides = util-linux-libs
 	conflicts = libutil-linux
+	conflicts = util-linux-libs
 	replaces = libutil-linux
 

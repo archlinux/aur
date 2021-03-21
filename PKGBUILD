@@ -10,7 +10,7 @@ pkgbase=util-linux-aes
 pkgname=(util-linux-aes util-linux-libs-aes)
 _pkgmajor=2.36
 pkgver=${_pkgmajor}.2
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -139,8 +139,8 @@ package_util-linux-aes() {
 
 package_util-linux-libs-aes() {
   pkgdesc="util-linux runtime libraries"
-  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so')
-  conflicts=('libutil-linux')
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs")
+  conflicts=('libutil-linux' "${_basename}-libs")
   replaces=('libutil-linux')
 
   make -C "$_basename-$pkgver" DESTDIR="$pkgdir" install-usrlib_execLTLIBRARIES
