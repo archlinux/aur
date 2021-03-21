@@ -2,7 +2,7 @@
 # GPG: https://keybase.io/greut/pgp_keys.asc
 
 pkgname='eclint'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
@@ -14,11 +14,11 @@ makedepends=('git' 'go' 'gzip')
 checkdepends=('git' 'go')
 optdepends=('git: Git repository support')
 source=(
-  "${url}/uploads/9feaf615dfcf34209410e7a61d01844c/eclint-${pkgver}.tar.gz"
-  "${url}/uploads/df01647c32131e62905e56c5d8183b58/eclint-${pkgver}.tar.gz.sig"
+  "${url}/uploads/d7730430ffc0d72168a22c5bf00ac58c/eclint-${pkgver}.tar.gz"
+  "${url}/uploads/f8c566e2b59f7a0a48fb0f20cedc851a/eclint-${pkgver}.tar.gz.sig"
 )
 
-sha256sums=('291f445d62955cc837fac447a36253737cce332f7cdd7d39a5e923e9411ca813'
+sha256sums=('d3808edacbf7fedf3650020815c77abd6b7ec7039427a6a75c6710579fd0f2c2'
             'SKIP')
 validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
 
@@ -40,4 +40,5 @@ check() {
 
 package() {
   install -Dm755 "$pkgname" "$pkgdir"/usr/bin/"$pkgname"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
