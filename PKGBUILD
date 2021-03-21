@@ -2,14 +2,13 @@
 
 pkgname=python-pyneapple-git
 _pkgname="${pkgname#python-%-git}"
-pkgver=r59.cb10e66
+pkgver=r65.17521e9
 pkgrel=1
 pkgdesc="Interactive literate coding notebook in GTK"
 arch=(any)
 url="https://github.com/darthoctopus/pyneapple"
 license=('GPL')
 depends=('python' 'python-gobject' 'jupyter-notebook' 'python-setproctitle' 'xdg-utils')
-optdepends=('python2-ipykernel: Python2 kernel')
 makedepends=('git' 'xdg-utils')
 options=(!emptydirs)
 source=($_pkgname::git+https://github.com/darthoctopus/pyneapple.git)

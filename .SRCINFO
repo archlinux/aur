@@ -1,6 +1,6 @@
 pkgbase = python-pyneapple-git
 	pkgdesc = Interactive literate coding notebook in GTK
-	pkgver = r59.cb10e66
+	pkgver = r65.17521e9
 	pkgrel = 1
 	url = https://github.com/darthoctopus/pyneapple
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = python-pyneapple-git
 	depends = jupyter-notebook
 	depends = python-setproctitle
 	depends = xdg-utils
-	optdepends = python2-ipykernel: Python2 kernel
 	options = !emptydirs
 	source = python-pyneapple-git::git+https://github.com/darthoctopus/pyneapple.git
 	md5sums = SKIP
