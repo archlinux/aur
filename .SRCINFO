@@ -1,6 +1,6 @@
 pkgbase = fox-devel
 	pkgdesc = Free Objects for X: GUI Toolkit for C++, development version.
-	pkgver = 1.7.74
+	pkgver = 1.7.75
 	pkgrel = 1
 	url = http://www.fox-toolkit.org/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = fox-devel
 	depends = libxft
 	depends = libxi
 	depends = libxrandr
-	source = http://www.fox-toolkit.org/ftp/fox-1.7.74.tar.gz
-	sha512sums = 910cd6c9d4922e526391a80266d9586b0a63b15754413692b462f7f785d9d822cc8eb7b77afd34aa8437f77310909414084442198c454e4b748878343d48e16a
+	source = http://www.fox-toolkit.org/ftp/fox-1.7.75.tar.gz
+	sha512sums = 370836f935d870664fbb30847f13b1b46381b93f23c4545d8acaefe68100db0b1c4cbbe3bc2c10977f0e09fbf407cda19e1164f9b63958a9344088c6f119ff7f
 
 pkgname = fox-devel
 
