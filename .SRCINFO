@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io/
 	arch = i686
@@ -16,11 +16,11 @@ pkgbase = python-photutils
 	makedepends = python-scikit-image
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.0.2.tar.gz
-	md5sums = 1796be3ea9747b9e34613a437e90e03c
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.1.0.tar.gz
+	md5sums = 7fb0ff65adb756f5ef8512ff0beddfef
 
 pkgname = python-photutils
-	depends = python>=3.6
+	depends = python>=3.7
 	depends = python-numpy>=1.17
 	depends = python-astropy>=4.0
 	optdepends = python-scipy>=0.19: To power a variety of features in several modules (strongly recommended)
