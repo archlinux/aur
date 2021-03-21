@@ -1,0 +1,5 @@
+pkg/
+src/
+mod-midi-utilities/
+mod-midi-utilities-git-*.pkg.tar.xz
+mod-midi-utilities-git-*.pkg.tar.zst
