@@ -52,7 +52,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.11.7
+pkgver=5.11.8
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -85,7 +85,7 @@ done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'SKIP'
-            'b2d515812a4538ae7d7a0f6b10c0bda38828802172daef66b9ed0c79e6ee7e3e'
+            'fbf3d516a0df8944cdf8a340c5f365bfed7d63eedc76601a3ad84eb6c1a2ce33'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
