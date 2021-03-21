@@ -1,8 +1,8 @@
 pkgname=shibboleth-sp
 pkgver=3.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
-url="https://www.shibboleth.net/"
+url="https://wiki.shibboleth.net/confluence/display/SP3/Home"
 license=(Apache)
 arch=(x86_64)
 depends=(
@@ -23,10 +23,11 @@ makedepends=(
   apache
   boost
   doxygen
-  #fcgi
+  fcgi
 )
 optdepends=(
-  "apache: To use mod_shib."
+  "apache: To use mod_shib in Apache."
+  "fcgi: To use shibresponder and shibauthorizer in Nginx/Lighttpd."
 )
 source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz.asc"
@@ -68,8 +69,9 @@ build() {
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
     --localstatedir=/var \
-    --enable-systemd \
     --enable-apache-24 \
+    --enable-systemd \
+    --with-fastcgi \
     --with-gssapi \
     ;
   make
