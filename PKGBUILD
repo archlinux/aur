@@ -5,7 +5,7 @@
 
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.33
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch"
 url="https://github.com/Dudemanguy/gtk/tree/gtk2-filechooser-icon-view"
@@ -17,7 +17,7 @@ depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcompo
 makedepends=(gobject-introspection git gtk-doc)
 optdepends=('gnome-themes-standard: Default widget theme'
             'adwaita-icon-theme: Default icon theme'
-            'python2: gtk-builder-convert')
+            'python: gtk-builder-convert')
 license=('LGPL')
 install=gtk2.install
 _commit=68631945733158f164427db84f01301d7e875763  # tags/2.24.33^0
@@ -37,7 +37,6 @@ prepare() {
   cd gtk
   git apply -3 ../xid-collision-debug.patch
   git apply -3 ../gtk2-filechooser-icon-view.patch
-  sed -i '1s/python$/&2/' gtk/gtk-builder-convert
   NOCONFIGURE=1 ./autogen.sh
 }
 

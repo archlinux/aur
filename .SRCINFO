@@ -1,7 +1,7 @@
 pkgbase = gtk2-patched-filechooser-icon-view
 	pkgdesc = GTK2 patched with ahodesuka's filechooser-icon-view patch
 	pkgver = 2.24.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dudemanguy/gtk/tree/gtk2-filechooser-icon-view
 	install = gtk2.install
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = gtk2-patched-filechooser-icon-view
 	depends = gtk-doc
 	optdepends = gnome-themes-standard: Default widget theme
 	optdepends = adwaita-icon-theme: Default icon theme
-	optdepends = python2: gtk-builder-convert
+	optdepends = python: gtk-builder-convert
 	provides = gtk2=2.24.33
 	provides = libgailutil.so
 	provides = libgdk-x11-2.0.so
