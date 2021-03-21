@@ -1,40 +1,68 @@
 diff --git a/komikku/utils.py b/komikku/utils.py
-index 23b584c..c1042a2 100644
+index 23b584c..efbc9e5 100644
 --- a/komikku/utils.py
 +++ b/komikku/utils.py
-@@ -300,7 +300,12 @@ class KeyringHelper:
+@@ -292,7 +292,7 @@ class KeyringHelper:
+ 
+     @property
+     def has_recommended_backend(self):
+-        return not isinstance(self.keyring, keyring.backends.fail.Keyring)
++        return self.keyring is not None and not isinstance(self.keyring, keyring.backends.fail.Keyring)
+ 
+     @property
+     def is_disabled(self):
+@@ -300,7 +300,17 @@ class KeyringHelper:
  
      @property
      def keyring(self):
 -        return keyring.get_keyring()
-+        current_keyring = keyring.get_keyring()
-+        if isinstance(current_keyring, keyring.backends.chainer.ChainerBackend):
-+            # If several backends are available, use first (the one with the highest priority)
-+            current_keyring = current_keyring.backends[0]
++        current_keyring_backend = keyring.get_keyring()
 +
-+        return current_keyring
++        if isinstance(current_keyring_backend, keyring.backends.chainer.ChainerBackend):
++            # Search SecretService backend
++            for backend in current_keyring_backend.backends:
++                if isinstance(backend, keyring.backends.SecretService.Keyring):
++                    return backend
++
++            return None
++
++        return current_keyring_backend
  
      def get(self, service):
          if self.is_disabled:
-@@ -321,6 +326,8 @@ class KeyringHelper:
-                         username = item.get_attributes().get('login')
+@@ -322,6 +332,7 @@ class KeyringHelper:
                      if username:
                          credential = CustomCredential(username, item.get_secret().decode('utf-8'), item.get_attributes().get('address'))
-+        elif isinstance(self.keyring, keyring.backends.kwallet.DBusKeyring):
-+            credential = self.keyring.get_credential(f"komikku-{service}", None)
          else:
++            # Fallback on PlaintextKeyring
              credential = self.keyring.get_credential(service, None)
  
-@@ -352,6 +359,8 @@ class KeyringHelper:
-                     item.delete()
+         if credential is None or credential.username is None:
+@@ -334,6 +345,15 @@ class KeyringHelper:
+             return
+ 
+         if isinstance(self.keyring, keyring.backends.SecretService.Keyring):
++            # At this time, SecretService is the only backend that support a collection of items with arbitrary attributes
++            # Known working implementations are:
++            # - GNOME Keyring
++            # - KeePassXC Secret Service integration (tested, work well)
++
++            # Freedesktop.org Secret Service specification was written by both GNOME and KDE projects together
++            # but it’s supported by the GNOME Keyring only
++            # ksecretservice (https://community.kde.org/KDE_Utils/ksecretsservice) exists but is unfinished and seems unmaintained
++
+             collection = self.keyring.get_preferred_collection()
+ 
+             label = f'{self.appid}: {username}@{service}'
+@@ -353,6 +373,7 @@ class KeyringHelper:
  
                  collection.create_item(label, attributes, password)
-+        elif isinstance(self.keyring, keyring.backends.kwallet.DBusKeyring):
-+            self.keyring.set_password(f"komikku-{service}", username, password)
          else:
++            # Fallback on PlaintextKeyring
              self.keyring.set_password(service, username, password, address)
  
-@@ -364,6 +373,9 @@ class PlaintextKeyring(keyring.backend.KeyringBackend):
+ 
+@@ -364,6 +385,9 @@ class PlaintextKeyring(keyring.backend.KeyringBackend):
  
      priority = 1
  
