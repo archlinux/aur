@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-rainbow-cursor-theme
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Material Based Cursor Theme: Rainbow"
 arch=('any')
 url="https://github.com/ful1e5/Bibata_Cursor_Rainbow"
@@ -25,9 +25,11 @@ prepare() {
 build() {
 	cd Bibata_Cursor_Rainbow-$pkgver/builder
 	_themes='Modern Original'
+	_sizes='22 24 28 32 40 48 56 64 72 80 88 96'
 
-	for t in $_themes; do
-		python build.py unix -p "../bitmaps/Bibata-Rainbow-$t"
+	set -- ${_sizes}
+	for t in ${_themes}; do
+		python build.py unix -p "../bitmaps/Bibata-Rainbow-$t" --xsizes ${_sizes[@]}
 	done
 }
 

@@ -1,7 +1,7 @@
 pkgbase = bibata-rainbow-cursor-theme
 	pkgdesc = Material Based Cursor Theme: Rainbow
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ful1e5/Bibata_Cursor_Rainbow
 	arch = any
 	license = GPL3
