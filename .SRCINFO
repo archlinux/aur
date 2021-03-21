@@ -34,14 +34,6 @@ pkgname = lib32-llvm-libs-rc
 	conflicts = lib32-llvm-libs
 	conflicts = lib32-llvm-libs-git
 
-pkgname = lib32-mlir-rc
-	pkgdesc = Multi-Level Intermediate Representation (32-bit) (rc release)
-	depends = lib32-llvm
-	depends = lib32-llvm-libs
-	depends = mlir
-	provides = lib32-mlir
-	conflicts = lib32-mlir-git
-
 pkgname = lib32-clang-rc
 	pkgdesc = C language family frontend for LLVM (32-bit) (rc release)
 	depends = lib32-llvm-libs

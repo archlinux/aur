@@ -8,8 +8,7 @@
 #Credits: Evangelos Foutras <evangelos@foutrelis.com>
 #Credits: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
-pkgname=('lib32-llvm-rc' 'lib32-llvm-libs-rc' 'lib32-mlir-rc' 'lib32-clang-rc')
-#pkgname=('lib32-llvm-rc' 'lib32-llvm-libs-rc' 'lib32-clang-rc')
+pkgname=('lib32-llvm-rc' 'lib32-llvm-libs-rc' 'lib32-clang-rc')
 url='https://llvm.org/'
 pkgver=12.0.0rc3
 versiontag=12.0.0-rc3
@@ -45,12 +44,10 @@ export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   -DLLVM_ENABLE_SPHINX=OFF \
   -DLLVM_ENABLE_DOXYGEN=OFF \
   -DLLVM_BINUTILS_INCDIR=/usr/include \
-  -DLLVM_ENABLE_PROJECTS="mlir;clang;clang-tools-extra"
-  #-DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
+  -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
 
   ninja -j12 -C build all
   ninja -C build ocaml_doc
-  #ninja -C build mlir-doc
 }
 
 package_lib32-llvm-rc(){
@@ -86,18 +83,6 @@ package_lib32-llvm-rc(){
   install -Dm644 "$srcdir/llvm-project-$pkgver.src/llvm/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   rm -rf "$pkgdir"/usr/lib
-
-  # move everything provided by mlir to a separate package
-
-  rm -rf "$srcdir"/mlir.{lib32,cmake}
-
-  # move mlir lib to a separate package
-  mkdir "$srcdir/mlir.lib32"
-  mv "$pkgdir"/usr/lib32/{*libMLIR*,*libmlir*} "$srcdir/mlir.lib32"
-
-  # move lib/cmake/mlir to a separate package
-  mkdir "$srcdir/mlir.cmake"
-  mv "$pkgdir"/usr/lib32/cmake/mlir  "$srcdir/mlir.cmake"
 
   # move everything provided by clang to a separate package
 
@@ -135,26 +120,6 @@ package_lib32-llvm-libs-rc(){
   ln -s ../LLVMgold.so "$pkgdir/usr/lib32/bfd-plugins/LLVMgold.so"
 
   install -Dm644 "$srcdir/llvm-project-$pkgver.src/llvm/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lib32-mlir-rc(){
-  pkgdesc='Multi-Level Intermediate Representation (32-bit) (rc release)'
-  depends=('lib32-llvm' 'lib32-llvm-libs' 'mlir') # if somebody have depends recommendation feel free to make a pull request
-  conflicts=('lib32-mlir-git')
-  provides=('lib32-mlir')
-
-  install -d "$pkgdir"/usr/lib32
-
-  # move mlir lib to a separate package
-  #mv "$pkgdir"/usr/lib/{*libMLIR*,*libmlir*,*mlir*} "$srcdir/mlir.lib"
-  cp -a "$srcdir"/mlir.lib32/* "$pkgdir"/usr/lib32/
-
-  # move lib/cmake/mlir to a separate package
-  #mv "$pkgdir"/usr/lib/cmake/mlir  "$srcdir/mlir.cmake"
-  cp -a "$srcdir/mlir.cmake" "$pkgdir"/usr/lib32/cmake/
-
-
-  install -Dm644 "$srcdir/llvm-project-$pkgver.src/mlir/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lib32-clang-rc(){
