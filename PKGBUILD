@@ -10,9 +10,11 @@ makedepends=('cmake' 'ninja' 'scdoc')
 url="https://github.com/ReimuNotMoe/ydotool"
 license=('AGPL3')
 source=("$url/archive/v$pkgver.tar.gz"
-        "$url/pull/96.patch")
+        "$url/pull/96.patch"
+        "80-uinput.rules")
 sha256sums=('2311b003d2ff383f3348f17101f0df74f56616d530d66d0a014a52ba85a5dcf1'
-            'f462b5f62306a5431e5aa39d1a8ba670300f7304a15cc720af5ded65193eaeda')
+            'f462b5f62306a5431e5aa39d1a8ba670300f7304a15cc720af5ded65193eaeda'
+            'e092f5e7e474aec6c980c458046d0ff11b18750b53de2bf0a0aba1ca26e6d58e')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -32,4 +34,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+
+  install -Dm644 80-uinput.rules "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 }
