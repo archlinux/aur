@@ -1,0 +1,24 @@
+pkgbase = micromamba
+	pkgdesc = C++ tiny version of mamba, the fast conda package installer
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/gulrak/filesystem
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libarchive
+	depends = cmake
+	depends = curl
+	depends = libsolv
+	depends = cli11
+	depends = pybind11
+	depends = nlohmann-json
+	depends = python-pip
+	depends = yaml-cpp
+	depends = reproc
+	depends = cpp-ghc-filesystem
+	source = micromamba-0.8.2.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/0.8.2.tar.gz
+	md5sums = bef2441b78595abcbb296d6785e5ce01
+
+pkgname = micromamba
+
