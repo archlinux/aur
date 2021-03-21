@@ -1,62 +1,71 @@
-# Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
+# Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 
 pkgname=teleport
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
-arch=('x86_64' 'arm' 'armv7h' 'aarch64')
-url="https://gravitational.com/teleport"
+arch=('i386' 'x86_64' 'armv7h' 'aarch64')
+url="https://github.com/gravitational/teleport"
 license=('Apache')
-depends=('glibc')
+depends=('bash' 'python')
+makedepends=('go>=1.14.0')
+provides=('tctl' 'tsh')
 install=teleport.install
-source_x86_64=(
-    "https://get.gravitational.com/teleport-v${pkgver}-linux-amd64-bin.tar.gz"
-    "teleport.service"
-    "teleport.yaml"
-    )
-sha256sums_x86_64=(
-    'd8463472ba2cfe34c77357bf16c02c0f7a381a7610ede81224ee8d064f908177'
-    'a4e7bb81be841bccedc493824d8740f5addc1d8f4cb483e0883f9650c7369f47'
-    '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
-    )
-source_arm=(
-    "https://get.gravitational.com/teleport-v${pkgver}-linux-arm-bin.tar.gz"
-    "teleport.service"
-    "teleport.yaml"
-    )
 
-sha256sums_arm=(
-    'f5880caa8b48c710c24c5497e7543892e3fc8eae8153ff985f4e9ae57bbcb287'
-    'a4e7bb81be841bccedc493824d8740f5addc1d8f4cb483e0883f9650c7369f47'
-    '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
-    )
-source_armv7h=("${source_arm[@]}")
-sha256sums_armv7h=("${sha256sums_arm[@]}")
-source_aarch64=(
-    "https://get.gravitational.com/teleport-v${pkgver}-linux-arm64-bin.tar.gz"
-    "teleport.service"
-    "teleport.yaml"
-    )
+_webassets_ref=69750d0b9b8bbc3f0b56dc41f036f6a9e295c62a
 
-sha256sums_aarch64=(
-    'd3c98ddbffb219eaa4a89410ced10c7f6a481cc2e326d03a73e4eda3feac6c9c'
-    'a4e7bb81be841bccedc493824d8740f5addc1d8f4cb483e0883f9650c7369f47'
-    '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
-    )
-options=(!strip)
+source=("${pkgname}.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}-webassets.tar.gz::https://github.com/gravitational/webassets/archive/${_webassets_ref}.tar.gz"
+        "teleport.service"
+        "teleport@.service"
+        "teleport.install")
 
-backup=('etc/teleport/teleport.yaml')
+sha256sums=('c08eb20ea4dd668c445522ddd96f220aebbd9b5d01209d2f87b4052b06aa36b2'
+            'c2e2d71f95f163c15db42b8ea6811017d5dd7020bb416bbe864e3bdb8d2fdf7c'
+            '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
+            '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
+            'cff4e3c69677210bdde9a781146df06fba3a62cef72ed6854cd1923a05444435')
 
-package() {
-    mkdir -p "${pkgdir}/usr/lib/systemd/system" "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/etc/teleport"
+prepare() {
+    mv "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}"
+    rm -Rf "${srcdir}/${pkgname}/webassets"
+    mv "${srcdir}/webassets-${_webassets_ref}" "${srcdir}/${pkgname}/webassets"
 
-    install -m644 teleport.yaml "${pkgdir}/etc/teleport/teleport.yaml"
-
-    install -m644 teleport.service "${pkgdir}/usr/lib/systemd/system/teleport.service"
-
-    cd "${srcdir}/teleport"
-    install -m755 -t "${pkgdir}/usr/bin/" teleport tctl tsh
-    # no man pages, docs or web assets in release tarball
+    install -m755 -d "${srcdir}/go/src/github.com/gravitational"
+    ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/gravitational/teleport"
 }
 
+build() {
+    export GOPATH="${srcdir}/go"
+
+    # See: https://wiki.archlinux.org/index.php/Go_package_guidelines
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    cd "${GOPATH}/src/github.com/gravitational/teleport"
+
+    make
+
+    rm -Rf "${srcdir}/go"
+    unset GOPATH
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+    # Install binaries
+    install -Dm755 build/teleport "${pkgdir}/usr/bin/teleport"
+    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
+    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
+
+    # Install services
+    install -Dm644 ${srcdir}/teleport.service "${pkgdir}/usr/lib/systemd/system/teleport.service"
+    install -Dm644 ${srcdir}/teleport@.service "${pkgdir}/usr/lib/systemd/system/teleport@.service"
+
+    # Copy example files
+    install -dm755 "${pkgdir}/usr/share/teleport"
+    cp -r examples "${pkgdir}/usr/share/teleport/"
+}
