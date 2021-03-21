@@ -1,39 +1,44 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Jonas DOREL <jonas at dorel dot me>
 
-pkgname=python-prospector
-_pkgname=prospector
-pkgver=1.2.0
+pkgbase='python-prospector'
+pkgname=('python-prospector')
+_module='prospector'
+pkgver='1.3.1'
 pkgrel=1
 pkgdesc="Python static analysis tool"
-arch=('any')
-depends=('python-pylint-celery'
+url="http://prospector.readthedocs.io"
+depends=('python-pylint-plugin-utils'
+         'python-pylint-celery'
          'python-pylint-flask'
-         'python-pylint-django'
          'python-requirements-detector'
          'python-setoptconf'
          'python-dodgy'
-         'python-pyaml'
+         'python-yaml'
+         'python-mccabe'
+         'python-pyflakes'
          'python-pycodestyle'
          'python-pep8-naming'
-         'python-pydocstyle')
-makedepends=('python-setuptools')
+         'python-pydocstyle'
+         'python-pylint'
+         'python-pylint-django'
+         'python-astroid')
 optdepends=('python-pyroma: check setup.py'
             'python-vulture: find dead code'
-            'python-mypy: optional type checking')
-url="https://github.com/PyCQA/prospector"
-license=('GPL2')
-source=("$url/archive/$pkgver.tar.gz")
-md5sums=('33da5351e8a5e65b47f8473632d0b8df')
+            'mypy: optional type checking')
+makedepends=('python-setuptools')
+license=('GPL')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('700d7918d93d73035a2a58fb18c6be0b609a0481fc6e0908843fa856b89e52c6')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    PIP_CONFIG_FILE=/dev/null
+    python setup.py install --isolated --root="${pkgdir}" --ignore-installed --no-deps --optimize=1 --skip-build
 }
-
-# vim:set ts=2 sw=2 et:
