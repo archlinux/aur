@@ -1,31 +1,25 @@
 pkgbase = python-radio_beam
 	pkgdesc = A tool for manipulating and utilizing two dimensional gaussian beams within the astropy framework
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
-	url = https://radio-beam.readthedocs.io/
+	url = https://radio-beam.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
 	checkdepends = python-pytest-astropy
+	checkdepends = python-scipy
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = python-astropy
-	makedepends = python-astropy-helpers
-	makedepends = python2-astropy-helpers
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/r/radio_beam/radio_beam-0.3.2.tar.gz
-	md5sums = 9bf93952bcf371a0574df393a897fe89
+	source = https://files.pythonhosted.org/packages/source/r/radio-beam/radio-beam-0.3.3.tar.gz
+	md5sums = 1a019b5fb8f3449710c028f777316e38
 
 pkgname = python-radio_beam
 	depends = python
 	depends = python-astropy
+	depends = python-six
+	depends = python-scipy
 	optdepends = python-pytest-astropy: For testing
-	optdepends = python-radio_beam-doc: Documentation for Radio Beam
-
-pkgname = python2-radio_beam
-	depends = python2
-	depends = python2-astropy
-	optdepends = python2-pytest32: For testing
 	optdepends = python-radio_beam-doc: Documentation for Radio Beam
 
 pkgname = python-radio_beam-doc
