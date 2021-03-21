@@ -2,12 +2,12 @@
 
 pkgname=ospd
 pkgver=20.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Greenbone Open Scanner Protocol python bindings'
 arch=('x86_64')
 url="https://github.com/greenbone/ospd"
 license=('GPL')
-depends=('python-paramiko' 'python-lxml' 'python-defusedxml')
+depends=('python-paramiko' 'python-lxml' 'python-defusedxml' 'python-pytest' 'python-deprecated')
 provides=('python-ospd')
 conflicts=('python-ospd')
 makedepends=('python-setuptools')

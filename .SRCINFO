@@ -1,7 +1,7 @@
 pkgbase = ospd
 	pkgdesc = Greenbone Open Scanner Protocol python bindings
 	pkgver = 20.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/ospd
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -10,6 +10,8 @@ pkgbase = ospd
 	depends = python-paramiko
 	depends = python-lxml
 	depends = python-defusedxml
+	depends = python-pytest
+	depends = python-deprecated
 	provides = python-ospd
 	conflicts = python-ospd
 	source = ospd-20.8.2.tar.gz::https://github.com/greenbone/ospd/archive/v20.8.2.tar.gz
