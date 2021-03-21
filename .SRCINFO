@@ -6,8 +6,14 @@ pkgbase = pyglossary
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	depends = python
 	optdepends = python-gobject: Gtk3-based interface
 	optdepends = tix: Tkinter-based interface
+	optdepends = python-lxml: Many optional flags and formats
+	optdepends = python-beautifulsoup4: HTML parsing
+	optdepends = python-yaml: Reading from cc-kedict
+	optdepends = python-pyicu: Reading or writing Aard 2 (.slob) files
+	optdepends = python-marisa: Writing to Kobo E-Reader Dictionary
 	provides = pyglossary=4.0.11
 	source = pyglossary-4.0.11.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/4.0.11.tar.gz
 	sha256sums = d56d8f8f18a33c1bc8be45571379736ae732e8f4009a1f4ac0d21ea22eb9eb01

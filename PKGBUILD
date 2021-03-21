@@ -8,7 +8,17 @@ pkgdesc="A tool for converting dictionary files aka glossaries with various form
 arch=(any)
 url="https://github.com/ilius/pyglossary"
 license=('GPL3')
-optdepends=('python-gobject: Gtk3-based interface' 'tix: Tkinter-based interface')
+# TODO add python-libzim and python-lzo if/when they exist
+depends=('python')
+optdepends=(
+  'python-gobject: Gtk3-based interface'
+  'tix: Tkinter-based interface'
+  'python-lxml: Many optional flags and formats'
+  'python-beautifulsoup4: HTML parsing'
+  'python-yaml: Reading from cc-kedict'
+  'python-pyicu: Reading or writing Aard 2 (.slob) files'
+  'python-marisa: Writing to Kobo E-Reader Dictionary'
+)
 makedepends=('python-setuptools')
 provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ilius/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
