@@ -6,7 +6,7 @@ _module="$_name"
 pkgname=("python-$_module")
 pkgdesc="Pyluach is a Python package for manipulating Hebrew dates, Gregorian-Hebrew calendar conversions, and other Jewish calendar related calculations"
 pkgver="1.2.1"
-pkgrel=2
+pkgrel=3
 url="https://github.com/simlist/pyluach"
 license=('MIT')
 arch=('any')
@@ -19,7 +19,6 @@ sha256sums=('7cdcee5aeaac82a6405ce3992fd872edaab03e13b49e34b3e415491cc5acb157'
 build() {
     cd "$_name-$pkgver"
     python setup.py build
-    python2 setup.py build
 }
 
 package_python-pyluach(){
