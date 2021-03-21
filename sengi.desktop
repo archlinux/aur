@@ -6,5 +6,5 @@ Terminal=false
 Type=Application
 Icon=sengi
 StartupWMClass=Sengi
-X-AppImage-Version=1.0.3
+X-AppImage-Version=1.1.3
 Categories=Internet;
