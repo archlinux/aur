@@ -1,7 +1,7 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant
 	pkgver = 20.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gsa
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -16,6 +16,7 @@ pkgbase = gsa
 	depends = libxml2
 	depends = libmicrohttpd
 	depends = openvas-scanner
+	depends = npm
 	source = gsa-20.8.1.tar.gz::https://github.com/greenbone/gsa/archive/v20.8.1.tar.gz
 	source = gsad
 	source = gsad.service
