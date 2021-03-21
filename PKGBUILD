@@ -30,11 +30,13 @@ optdepends=(
 )
 source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz.asc"
+        "apache.conf"
         "shibboleth-sp.sysusers"
         "shibboleth-sp.tmpfiles"
         "shibd.service")
 sha256sums=('b8edaeb2a8a4a46fd1d81027ee3272165c3472f179c981efdf01db22ce3ee3c3'
             'SKIP'
+            '460305d6f41e0cc2464ce15fa5c9812216f04c2bcd7031967166b065eb223133'
             'c6705c063a8154d1e5503a182cf16057fd2571f2f750609c7436cb7a8a316ee8'
             '9fc765c802d9dd2cfec6d714e96cfb1b3c79a165ea0c9b9e7a286958fa5e2eb2'
             '83d152120c8ec7650d1271c0956304c780649916ce21acdf2ee3d7c673a777a4')
@@ -83,6 +85,8 @@ package() {
           "$pkgdir"/usr/lib/httpd/modules/mod_shib.so
 
   # Extras
+  install -Dm0644 "$srcdir"/apache.conf \
+                    "$pkgdir"/usr/share/$pkgname/example-apache.conf
   install -Dm0644 "$srcdir"/shibboleth-sp.sysusers \
                     "$pkgdir"/usr/lib/sysusers.d/shibboleth-sp.conf
   install -Dm0644 "$srcdir"/shibboleth-sp.tmpfiles \
