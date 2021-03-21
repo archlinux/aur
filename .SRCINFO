@@ -1,6 +1,6 @@
 pkgbase = electron-cash-bin
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 4.2.3
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = http://www.electroncash.org/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = electron-cash-bin
 	depends = ttf-bitstream-vera
 	validpgpkeys = D56C110F4555F371AEEFCB254FD06489EFF1DDE1
 	validpgpkeys = D465135F97D0047E18E99DC321810A542031C02C
-	source_x86_64 = https://github.com/Electron-Cash/Electron-Cash/releases/download/4.2.3/Electron-Cash-4.2.3-x86_64.AppImage
-	source_x86_64 = Electron-Cash-4.2.3-x86_64.AppImage.asc::https://github.com/Electron-Cash/Electron-Cash/releases/download/4.2.3/Electron-Cash-4.2.3-x86_64.AppImage.asc
-	sha256sums_x86_64 = 2145be075441cff0919fd9a33d61f18206051947f6ceb4c98044ea0d987db0f7
+	source_x86_64 = https://github.com/Electron-Cash/Electron-Cash/releases/download/4.2.4/Electron-Cash-4.2.4-x86_64.AppImage
+	source_x86_64 = Electron-Cash-4.2.4-x86_64.AppImage.asc::https://github.com/Electron-Cash/Electron-Cash/releases/download/4.2.4/Electron-Cash-4.2.4-x86_64.AppImage.asc
+	sha256sums_x86_64 = 2014cc7d7168338a2a12e7675fd43081525d5d26fbd49ebef27bf26334f5809f
 	sha256sums_x86_64 = SKIP
 
 pkgname = electron-cash-bin
