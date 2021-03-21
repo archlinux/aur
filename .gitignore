@@ -1,5 +1,6 @@
 libcamera/
 src/
 pkg/
+.vscode/
 *.tar*
 *.log

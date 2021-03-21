@@ -1,6 +1,6 @@
 pkgbase = libcamera-clang-git
 	pkgdesc = A complex camera support library for Linux, Android, and ChromeOS (built with clang)
-	pkgver = r2405.287e4f82
+	pkgver = r2416.1a26f79f
 	pkgrel = 1
 	url = https://libcamera.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = libcamera-clang-git
 	makedepends = gnutls
 	makedepends = openssl
 	makedepends = git
-	makedepends = libudev0
+	makedepends = udev
 	makedepends = gstreamer
 	makedepends = qt5-tools
 	makedepends = clang

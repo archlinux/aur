@@ -1,7 +1,7 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=libcamera-clang-git
-pkgver=r2409.79b48225
+pkgver=r2416.1a26f79f
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with clang)'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ provides=('libcamera' 'libcamera-git')
 conflicts=('libcamera' 'libcamera-git')
 makedepends=(
             "meson" "python-yaml" 'python-ply' 'python-jinja' 'pkgconf' 'gnutls' 'openssl' 'git'
-            'libudev0'    # for device hotplug enumeration
+            'udev'        # for device hotplug enumeration
             'gstreamer'   # for gstreamer support
             'qt5-tools'   # for 'qcam' tool
             'clang'
@@ -27,6 +27,10 @@ license=('LGPL' 'GPL' 'Apache' 'BSD' 'MIT' 'custom')
 source=('git://linuxtv.org/libcamera.git/')
 md5sums=('SKIP')
 _licensedir=/usr/share/licenses/${pkgname}
+
+prepare() {
+  sed -i 's/werror=true/werror=false/' ${srcdir}/libcamera/meson.build
+}
 
 pkgver() {
   cd libcamera
