@@ -1,0 +1,15 @@
+pkgbase = helium-ledger-app-bin
+	pkgdesc = Helium Application for Ledger
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/helium/helium-ledger-app
+	arch = x86_64
+	license = Apache
+	depends = openssl-1.0
+	provides = helium-ledger-app
+	conflicts = helium-ledger-app
+	source = helium-ledger-app-1.1.2-x86_64-unknown-linux-gnu.zip::https://github.com/helium/helium-ledger-app/releases/download/1.1.2/helium-ledger-app-1.1.2-x86_64-unknown-linux-gnu.zip
+	sha512sums = 0db9f730732de7f3cd0819e651de57c722406094de50801adf805e839bd57d93f5fa0a644adcb5a9fbb90fc63d464bb93f7f35a14fe181eaa2a1a899e8e85274
+
+pkgname = helium-ledger-app-bin
+
