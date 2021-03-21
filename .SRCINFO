@@ -1,6 +1,6 @@
 pkgbase = sysprof-git
 	pkgdesc = Kernel based performance profiler
-	pkgver = 3.39.92+22+g9e823c5
+	pkgver = 3.40.0+1+g7353f8d
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Sysprof
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = sysprof-git
 	makedepends = yelp-tools
 	makedepends = git
 	makedepends = meson
-	depends = glib2-git
 	depends = gtk3
 	depends = polkit
 	depends = libdazzle
