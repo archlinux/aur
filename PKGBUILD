@@ -2,8 +2,8 @@
 
 _pkgname=widlparser
 pkgname="python-${_pkgname}"
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="WebIDL Parser"
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
@@ -12,9 +12,9 @@ depends=('python' 'python-typing-extensions')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plinss/widlparser/archive/v${pkgver}.tar.gz"
         LICENSE)
-sha256sums=('90ef5a06decce85db33c103109fe2e25b2f472a75479cddfd0cfc7c139bd1a88'
+sha256sums=('df0e71706995b2e8e60d8ef677bb15e56127849609332b6b97e9dbaf650b80e0'
             'f348501d1ffcefb090a49e4ec6911786e7913347f50f0924d5256497213a2493')
-b2sums=('1d53f4d815a0e6a4517c3a709f06bec537977536f1366d0f1a225db9a4be84c3a4d3cfdfa9f9dca487126dabf330e096b50604956eb5e2533fc5f5af3c438744'
+b2sums=('e6cb50294efb58606302ada5c5c93c7463c5d1802a7b13e3a09848b5aca8963756947ada4a4f2fa25f70e053fe741cf85522fc9b33aa8bb63a55b22be4575a08'
         '9869a2d862cc7ea22788323384983b8afe64f0015bfae28181d60b0601e2e4c67e74774a4e318842873eef418eb887bfa0f58ef6cca59278f52d95433a2c79a4')
 
 prepare() {
