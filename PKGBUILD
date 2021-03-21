@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=xcursor-pro-cursor-theme
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern X11 Cursor Theme"
 arch=('any')
 url="https://www.pling.com/p/1481466"
@@ -22,8 +22,13 @@ prepare() {
 
 build() {
 	cd XCursor-pro-$pkgver/builder
-	python build.py unix -p ../bitmaps/XCursor-Pro-Dark
-	python build.py unix -p ../bitmaps/XCursor-Pro-Light
+	_themes='Dark Light'
+	_sizes='22 24 28 32 40 48 56 64 72 80 88 96'
+
+	set -- ${_sizes}
+	for t in ${_themes}; do
+		python build.py unix -p "../bitmaps/XCursor-Pro-$t" --xsizes ${_sizes[@]}
+	done
 }
 
 package() {
