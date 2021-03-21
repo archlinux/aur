@@ -1,0 +1,23 @@
+pkgbase = daykountdown-git
+	pkgdesc = A simple date countdown app written for KDE Plasma, using Kirigami.
+	pkgver = r189.357fb6d
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/daykountdown
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kwidgetsaddons
+	depends = kirigami2
+	depends = kio
+	depends = qt5-svg
+	provides = daykountdown
+	conflicts = daykountdown
+	source = git+https://invent.kde.org/plasma-mobile/daykountdown.git
+	sha256sums = SKIP
+
+pkgname = daykountdown-git
+
