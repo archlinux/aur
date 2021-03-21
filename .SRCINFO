@@ -1,6 +1,6 @@
 pkgbase = kime-bin
 	pkgdesc = Korean IME
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = kime-bin
 	optdepends = cairo: xim support
 	provides = kime
 	conflicts = kime
-	source = https://github.com/Riey/kime/releases/download/v2.1.4/kime_latest_v2.1.4.tar.zst
-	md5sums = 1319044ad98e189497c8aac8fdeadb0f
+	source = https://github.com/Riey/kime/releases/download/v2.1.5/kime_latest_v2.1.5.tar.zst
+	md5sums = 147b67921b044bb31733b7be3788883e
 
 pkgname = kime-bin
 
