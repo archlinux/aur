@@ -4,7 +4,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=serpent-browser
-pkgver=2021.03.11
+pkgver=2021.03.17
 pkgrel=1
 pkgdesc="Unbranded version of Basilisk web browser"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
