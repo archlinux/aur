@@ -2,7 +2,7 @@
 
 _srcname=ttyc
 pkgname=wistty
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Set remote terminal parameters for Wi-Se'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')

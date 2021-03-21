@@ -1,6 +1,6 @@
 pkgbase = wistty
 	pkgdesc = Set remote terminal parameters for Wi-Se
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/Depau/wi-se-sw
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wistty
 	arch = aarch64
 	license = GPL3
 	makedepends = go
-	source = git+https://github.com/Depau/ttyc.git#tag=wistty-v0.1
+	source = git+https://github.com/Depau/ttyc.git#tag=wistty-v0.2
 	sha256sums = SKIP
 
 pkgname = wistty
