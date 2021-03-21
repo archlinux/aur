@@ -2,7 +2,7 @@
 pkgname=olaris-git
 _pkgname=olaris-server
 pkgver=v0.3.3.r71.g022d7aa
-pkgrel=1
+pkgrel=2
 pkgdesc='open-source, community driven, media manager and transcoding server'
 arch=('x86_64')
 url="https://gitlab.com/olaris/olaris-server"
@@ -44,4 +44,5 @@ package() {
   cd ${_pkgname}
   install -Dm755 build/olaris "$pkgdir"/usr/bin/olaris
   install -Dm644 doc/config-examples/systemd/olaris.service "$pkgdir"/usr/lib/systemd/user/olaris.service
+  install -Dm644 $srcdir/olaris.service "$pkgdir"/usr/lib/systemd/system/olaris.service
 }
