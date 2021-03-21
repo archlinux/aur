@@ -15,6 +15,6 @@ sha512sums=('SKIP')
 package() {
     install -Dm755 -t "$pkgdir/usr/bin" "$pkgname/cge.pl"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/cisco-global-exploiter/" "$pkgname/debian/copyright"
-	mkdir -p $pkgdir/usr/share/docs/cisco-global-exploiter
-	cp -r $pkgname/debian $pkgname/doc $pkgdir/usr/share/docs/cisco-global-exploiter/
+	mkdir -p $pkgdir/usr/share/doc/cisco-global-exploiter
+	cp -r $pkgname/debian $pkgname/doc $pkgdir/usr/share/doc/cisco-global-exploiter/
 }
