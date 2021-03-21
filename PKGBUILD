@@ -1,15 +1,16 @@
 # Maintainer: Maximilian Luz <luzmaximilian@gmail.com>
 
 pkgname="surface-control"
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 _pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/linux-surface/surface-control'
 license=('MIT')
 arch=('x86_64')
-depends=('gcc-libs')
-makedepends=('rust' 'cargo')
+depends=('gcc-libs' 'systemd-libs')
+makedepends=('rust' 'cargo' 'systemd-libs')
+
 
 source=(
     "${pkgname}::git+https://github.com/linux-surface/surface-control.git#tag=v${pkgver}-${_pkgrel}"
