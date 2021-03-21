@@ -62,6 +62,8 @@ pkgbase = ghost-deps-meta
 	provides = llvm-libs-pypy-stm
 	provides = clang-pypy-stm
 	provides = llvm-pypy-stm
+	provides = nodejs-grunt-cli
+	provides = node-webkit
 
 pkgname = ghost-deps-meta
 
