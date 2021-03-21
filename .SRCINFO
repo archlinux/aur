@@ -1,9 +1,8 @@
 pkgbase = tvheadend-git
 	pkgdesc = TV streaming server for Linux
-	pkgver = 4.3.r1878.ge59b92e9f
+	pkgver = 4.3.r1947.gdbaa0f850
 	pkgrel = 1
 	url = https://tvheadend.org/
-	install = tvheadend.install
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -15,25 +14,34 @@ pkgbase = tvheadend-git
 	makedepends = python
 	depends = avahi
 	depends = ffmpeg
+	depends = libavresample
 	depends = libdvbcsa
 	depends = libfdk-aac
 	depends = libhdhomerun
+	depends = libogg
+	depends = libtheora
+	depends = libvorbis
+	depends = libvpx
 	depends = openssl
+	depends = opus
 	depends = pcre2
+	depends = pngquant
 	depends = uriparser
+	depends = x264
+	depends = x265
 	optdepends = xmltv: For an alternative source of programme listings
 	provides = tvheadend
 	conflicts = tvheadend
-	conflicts = hts-tvheadend
-	conflicts = hts-tvheadend-svn
-	conflicts = tvheadend-git
-	backup = etc/conf.d/tvheadend
-	source = tvheadend-git::git+https://github.com/tvheadend/tvheadend.git#branch=master
-	source = dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend
-	source = ignore-missing-libavresample.patch
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = ab3e00343f57b70b5e02a981e0a16055
+	options = !strip
+	options = emptydirs
+	source = tvheadend-git::git+https://github.com/tvheadend/tvheadend.git
+	source = tvheadend.service
+	source = tmpfile.conf
+	source = user.conf
+	sha512sums = SKIP
+	sha512sums = d29662ee47f2d0da98d444819f730a8c487999454d60d7397b0f67068300ab5111ffce18befc9fdef5ff8fa1925213716837ea44808fb934197e4a56f98de8a7
+	sha512sums = 1080c8a2530d1f16ab5304cdd81c9c9da23b281e44a4874f4921905c843d876831214af481f9be91a74291ed4a6a10684dbdfb8f926b51bbb6895b92d493b201
+	sha512sums = 5e0475cfe1f915bd3269ba3e9e0ca6cc7e492988bfd4f1feafcbbd3e8b0276c228f0b08a4116f3213d12c0ea940eff0dc71601a6e6ddcda934964cf51a665539
 
 pkgname = tvheadend-git
 

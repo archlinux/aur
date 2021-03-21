@@ -1,0 +1,16 @@
+[Unit]
+Description=Tvheadend - a TV streaming server and DVR
+Wants=network.target
+
+[Service]
+Type=forking
+RuntimeDirectory=tvheadend
+PrivateTmp=yes
+Environment=PID_DIR=/run/tvheadend
+User=tvheadend
+Group=tvheadend
+ExecStart=/usr/bin/tvheadend -c /etc/tvheadend -f -p ${PID_DIR}/tvheadend.pid -C
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

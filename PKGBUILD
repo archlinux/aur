@@ -1,113 +1,95 @@
-# Maintainer: Dan Ziemba <zman0900@gmail.com>
+# Maintainer: Francois Menning <f.menning@pm.me>
+# Contributor: Dan Ziemba <zman0900@gmail.com>
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
-pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.3.r1878.ge59b92e9f
+pkgname=tvheadend-git
+pkgver=4.3.r1947.gdbaa0f850
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
 depends=(
-    'avahi'
-    'ffmpeg'
-    'libdvbcsa'
-    'libfdk-aac'
-    'libhdhomerun'
-    'openssl'
-    'pcre2'
-    'uriparser'
+  'avahi'
+  'ffmpeg'
+  'libavresample'
+  'libdvbcsa'
+  'libfdk-aac'
+  'libhdhomerun'
+  'libogg'
+  'libtheora'
+  'libvorbis'
+  'libvpx'
+  'openssl'
+  'opus'
+  'pcre2'
+  'pngquant'
+  'uriparser'
+  'x264'
+  'x265'
 )
 makedepends=(
-    'git'
-    'python'
+  'git'
+  'python'
 )
 optdepends=(
-    'xmltv: For an alternative source of programme listings'
+  'xmltv: For an alternative source of programme listings'
 )
+options=('!strip' 'emptydirs')
 provides=('tvheadend')
-conflicts=('tvheadend' 'hts-tvheadend' 'hts-tvheadend-svn' 'tvheadend-git')
-install=tvheadend.install
-backup=('etc/conf.d/tvheadend')
-
+conflicts=('tvheadend')
 source=(
-    "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
-    'dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend'
-    'ignore-missing-libavresample.patch'
+  "${_gitname}::git+https://github.com/tvheadend/tvheadend.git"
+  tvheadend.service
+  tmpfile.conf
+  user.conf
 )
-md5sums=(
-    'SKIP'
-    'SKIP'
-    'ab3e00343f57b70b5e02a981e0a16055'
-)
+sha512sums=('SKIP'
+            'd29662ee47f2d0da98d444819f730a8c487999454d60d7397b0f67068300ab5111ffce18befc9fdef5ff8fa1925213716837ea44808fb934197e4a56f98de8a7'
+            '1080c8a2530d1f16ab5304cdd81c9c9da23b281e44a4874f4921905c843d876831214af481f9be91a74291ed4a6a10684dbdfb8f926b51bbb6895b92d493b201'
+            '5e0475cfe1f915bd3269ba3e9e0ca6cc7e492988bfd4f1feafcbbd3e8b0276c228f0b08a4116f3213d12c0ea940eff0dc71601a6e6ddcda934964cf51a665539')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${srcdir}"
-    _dvbscan="${_gitname}/data/dvb-scan"
-    rm -rf "${_dvbscan}"
-    cp -a "dvb-scan-tables" "${_dvbscan}"
-    rm -rf "${_dvbscan}/.git"
-    touch "${_dvbscan}/.stamp"
-
-    cd "${_gitname}"
-    patch -p1 -i ../ignore-missing-libavresample.patch
+  cd "${srcdir}/${_gitname}"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_gitname}"
 
-    # Work-around for GCC 10
-    export CFLAGS="${CFLAGS} -fcommon"
+  # Work-around for GCC 10
+  export CFLAGS="${CFLAGS} -fcommon"
 
-    ./configure \
-        --prefix=/usr \
-        --mandir=/usr/share/man/man1 \
-        --release \
-        --python=python3 \
-        --enable-avahi \
-        --enable-zlib \
-        --disable-ffmpeg_static --enable-libav \
-        --disable-libx264_static --enable-libx264 \
-        --disable-libx265_static --enable-libx265 \
-        --disable-libvpx_static --enable-libvpx \
-        --disable-libtheora_static --enable-libtheora \
-        --disable-libvorbis_static --enable-libvorbis \
-        --disable-libfdkaac_static --enable-libfdkaac \
-        --disable-libopus_static --enable-libopus \
-        --disable-nvenc \
-        --enable-vaapi \
-        --enable-inotify \
-        --enable-epoll \
-        --disable-pcre --enable-pcre2 \
-        --enable-uriparser \
-        --enable-dvben50221 \
-        --enable-dbus_1 \
-        --disable-hdhomerun_static --enable-hdhomerun_client \
-        --enable-tvhcsa
-    make
+  ./configure \
+    --prefix=/usr \
+    --datadir=/var/lib \
+    --mandir=/usr/share/man/man1 \
+    --python=python3 \
+    --enable-avahi \
+    --enable-zlib \
+    --enable-pngquant \
+    --enable-libav \
+    --disable-ffmpeg_static --enable-ffmpeg \
+    --disable-libx264_static --enable-libx264 \
+    --disable-libx265_static --enable-libx265 \
+    --disable-libvpx_static --enable-libvpx \
+    --disable-libogg_static --enable-libogg \
+    --disable-libtheora_static --enable-libtheora \
+    --disable-libvorbis_static --enable-libvorbis \
+    --disable-libfdkaac_static --enable-libfdkaac \
+    --disable-libopus_static --enable-libopus \
+    --disable-hdhomerun_static --enable-hdhomerun_client
+
+  make
 }
 
 package() {
-    cd "${srcdir}/${_gitname}"
-    make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${_gitname}"
 
-    install -D -m 644 "${srcdir}/${_gitname}/rpm/tvheadend.service" \
-        "$pkgdir/usr/lib/systemd/system/tvheadend.service"
-    sed -i 's|/etc/sysconfig|/etc/conf.d|g' \
-        "$pkgdir/usr/lib/systemd/system/tvheadend.service"
+  make DESTDIR="$pkgdir/" install
 
-    install -d "$pkgdir/etc/conf.d"
-    cat << EOF > "$pkgdir/etc/conf.d/tvheadend"
-# Configuration file for the tvheadend service.
-
-MALLOC_ARENA_MAX=4
-OPTIONS="-u hts -g video -6 --http_port 9981 --htsp_port 9982"
-EOF
+  install -Dm 644 "${srcdir}/tvheadend.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 "${srcdir}/user.conf" "${pkgdir}/usr/lib/sysusers.d/tvheadend.conf"
+  install -Dm 644 "${srcdir}/tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/tvheadend.conf"
 }
-
