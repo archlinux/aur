@@ -8,10 +8,10 @@ pkgdesc="A tool for converting dictionary files aka glossaries with various form
 arch=(any)
 url="https://github.com/ilius/pyglossary"
 license=('GPL3')
-depends=('python-gobject' 'python-setuptools')
-optdepends=('tix: Tkinter-based interface')
+optdepends=('python-gobject: Gtk3-based interface' 'tix: Tkinter-based interface')
+makedepends=('python-setuptools')
 provides=("${pkgname}=${pkgver}")
-source=("https://github.com/ilius/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ilius/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('d56d8f8f18a33c1bc8be45571379736ae732e8f4009a1f4ac0d21ea22eb9eb01')
 
 package() {

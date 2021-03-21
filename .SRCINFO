@@ -5,11 +5,11 @@ pkgbase = pyglossary
 	url = https://github.com/ilius/pyglossary
 	arch = any
 	license = GPL3
-	depends = python-gobject
-	depends = python-setuptools
+	makedepends = python-setuptools
+	optdepends = python-gobject: Gtk3-based interface
 	optdepends = tix: Tkinter-based interface
 	provides = pyglossary=4.0.11
-	source = https://github.com/ilius/pyglossary/archive/refs/tags/4.0.11.tar.gz
+	source = pyglossary-4.0.11.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/4.0.11.tar.gz
 	sha256sums = d56d8f8f18a33c1bc8be45571379736ae732e8f4009a1f4ac0d21ea22eb9eb01
 
 pkgname = pyglossary
