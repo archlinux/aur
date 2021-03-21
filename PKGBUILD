@@ -1,8 +1,8 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname="jfa-go-bin"
 _pkgname="jfa-go"
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/hrfee/jfa-go"
@@ -15,10 +15,10 @@ options=()
 install=
 changelog=
 
-sha256sums_x86_64=('a71805b047e2b76500fb630830655170f76ed0a4616ebdc27d6e3461605b971d')
-sha256sums_aarch64=('ef04eac31e88281ed029fecff16cdcff0dba7edb7eca9ba5fe2671dcb3c76842')
-sha256sums_armv6h=('73109d88f53115e01e2184d94ec582ae166ba56b062c1d35952e06c7a848ef2b')
-sha256sums_armv7h=('73109d88f53115e01e2184d94ec582ae166ba56b062c1d35952e06c7a848ef2b')
+sha256sums_x86_64=('4ccca9809b54782a550ff799f0ae14f0dee4580edf4d20349085bd6f2955c83b')
+sha256sums_aarch64=('fe478db12d577ab0fe450dfdafe63d76b07b2f4250b2b954bc31e6aec1056c63')
+sha256sums_armv6h=('edc2fe92a59f3a9054b26826f0d7092420f0c9d5a677a8570852d876a29972ac')
+sha256sums_armv7h=('edc2fe92a59f3a9054b26826f0d7092420f0c9d5a677a8570852d876a29972ac')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
