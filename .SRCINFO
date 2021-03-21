@@ -1,6 +1,6 @@
 pkgbase = getmail6-git
 	pkgdesc = POP3 mail retriever with reliable Maildir and command delivery; Python 3 port
-	pkgver = 6.14.r463.fd2240b
+	pkgver = 6.15.r481.b2e4bed
 	pkgrel = 1
 	epoch = 1
 	url = http://getmail6.org
@@ -11,10 +11,11 @@ pkgbase = getmail6-git
 	depends = python-chardet
 	optdepends = python-keyring: secure password store
 	optdepends = python-keyrings-alt: alternative backends
-	provides = getmail=6.14.r463.fd2240b
+	provides = getmail=6.15.r481.b2e4bed
 	provides = getmail6
 	conflicts = getmail
 	source = git+https://github.com/getmail6/getmail6.git
 	b2sums = SKIP
 
 pkgname = getmail6-git
+
