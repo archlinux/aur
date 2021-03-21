@@ -1,0 +1,18 @@
+pkgbase = terminaleco-edersonferreira-git
+	pkgdesc = A simple and fast Golang terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/edersonferreira/terminaleco
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = gtk3
+	provides = terminaleco
+	conflicts = terminaleco
+	source = git+https://github.com/edersonferreira/terminaleco
+	md5sums = SKIP
+
+pkgname = terminaleco-edersonferreira-git
+
