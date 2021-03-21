@@ -77,6 +77,25 @@ index 0b5c899..c3b7166 100644
 +   keys['o'] = actionExpandCollapseOrSortColumn;
     keys[KEY_RECLICK] = actionExpandOrCollapse;
  }
+diff --git a/CategoriesPanel.c b/CategoriesPanel.c
+index 4ee1ad4..43930da 100644
+--- a/CategoriesPanel.c
++++ b/CategoriesPanel.c
+@@ -67,6 +67,14 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+    HandlerResult result = IGNORED;
+ 
+    int selected = Panel_getSelectedIndex(super);
++
++   switch (ch) {
++      case 'k': ch = KEY_UP; break;
++      case 'j': ch = KEY_DOWN; break;
++      case 'h': ch = KEY_LEFT; break;
++      case 'l': ch = KEY_RIGHT; break;
++   }
++
+    switch (ch) {
+       case EVENT_SET_SELECTED:
+          result = HANDLED;
 diff --git a/Panel.c b/Panel.c
 index 986a989..e7cb440 100644
 --- a/Panel.c
@@ -202,9 +221,24 @@ index 880597d..0c44936 100644
  
  For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 64af535..6c947a8 100644
+index 64af535..5d7432d 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
+@@ -215,10 +215,10 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+          continue;
+       }
+       switch (ch) {
+-         case KEY_ALT('H'): ch = KEY_LEFT; break;
+-         case KEY_ALT('J'): ch = KEY_DOWN; break;
+-         case KEY_ALT('K'): ch = KEY_UP; break;
+-         case KEY_ALT('L'): ch = KEY_RIGHT; break;
++         case 'h': case KEY_ALT('H'): ch = KEY_LEFT; break;
++         case 'j': case KEY_ALT('J'): ch = KEY_DOWN; break;
++         case 'k': case KEY_ALT('K'): ch = KEY_UP; break;
++         case 'l': case KEY_ALT('L'): ch = KEY_RIGHT; break;
+       }
+       redraw = true;
+       if (Panel_eventHandlerFn(panelFocus)) {
 @@ -251,7 +251,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }

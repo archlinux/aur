@@ -2,7 +2,7 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
-pkgver=3.0.5.24.g71f51a2
+pkgver=3.0.5.176.g70fecb4
 pkgrel=1
 epoch=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
@@ -19,7 +19,7 @@ options=('!emptydirs')
 source=("git+${url}.git"
         'vim-keybindings.patch')
 sha256sums=('SKIP'
-            '57f51adeb4313a412b6a3e5a6f69082895df36eb2bbc8e4eaadea40c435479d8')
+            '6aca35a573a327acfb76d191d9e65d87d14c4ede23dbbe51774b79e424f3f3cb')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
