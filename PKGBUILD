@@ -10,32 +10,25 @@
 
 pkgname=vagrant
 pkgver=2.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
-         'ruby' 'xz' 'perl')
+         'ruby2.6' 'xz' 'perl')
 makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=4ddca26"
-        relax_ruby_version.patch)
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=4ddca26")
 md5sums=('fef064ac4c3aa80ce64addcfc4666196'
-         'SKIP'
-         '5a680e21dc1128613fdf0d744cd68d34')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 < ../relax_ruby_version.patch
-}
+         'SKIP')
 
 build() {
   cd $pkgname-$pkgver
-  gem build $pkgname.gemspec
+  gem-2.6 build $pkgname.gemspec
 
 
   export GO111MODULE=off # golang 1.16 uses modules by default and packages below fail to compile
@@ -65,7 +58,7 @@ package() {
 
   GEM_PATH="$EMBEDDED_DIR"/gems/$pkgver GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $pkgname-$pkgver.gem --no-document --prerelease
+    gem-2.6 install $pkgname-$pkgver.gem --no-document --prerelease
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
