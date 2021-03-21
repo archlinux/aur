@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/fengkx/webarchiver/"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fengkx/$pkgname/releases/download/v$pkgver/${pkgname}-v$pkgver-$arch-unknown-linux-gnu.tar.gz")
-sha1sums=("a733884cd3a29b2549b0b0ab19121814d137c9cf")
+sha1sums=("8877651056e0aef3a4023234a13e9a3f7eebecc2")
 
 prepare() {
 	mv -f "webarchiver-v$pkgver-$arch-unknown-linux-gnu" "$pkgname-$pkgver"

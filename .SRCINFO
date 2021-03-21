@@ -5,7 +5,7 @@ pkgbase = webarchiver
 	arch = x86_64
 	license = MIT
 	source = webarchiver-0.1.1.tar.gz::https://github.com/fengkx/webarchiver/releases/download/v0.1.1/webarchiver-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha1sums = a733884cd3a29b2549b0b0ab19121814d137c9cf
+	sha1sums = 8877651056e0aef3a4023234a13e9a3f7eebecc2
 
 pkgname = webarchiver
 
