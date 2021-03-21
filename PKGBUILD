@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-huggingface-hub-git
-pkgver=0.0.6.r25
+pkgver=0.0.7.r28
 pkgrel=1
 pkgdesc='Client library to download and publish models on the huggingface.co hub'
 arch=('any')
