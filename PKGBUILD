@@ -22,6 +22,5 @@ build() {
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    PIP_CONFIG_FILE=/dev/null
-    python setup.py install --isolated --root="${pkgdir}" --ignore-installed --no-deps --optimize=1 --skip-build
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
