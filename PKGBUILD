@@ -6,7 +6,6 @@ pkgdesc=""
 arch=("x86_64")
 url="https://github.com/fengkx/webarchiver/"
 license=('MIT')
-depends=("docker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fengkx/$pkgname/releases/download/v$pkgver/${pkgname}-v$pkgver-$arch-unknown-linux-gnu.tar.gz")
 sha1sums=("a733884cd3a29b2549b0b0ab19121814d137c9cf")
 
