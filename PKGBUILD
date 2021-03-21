@@ -5,8 +5,8 @@
 _pkgbase=msbuild
 pkgbase=msbuild-git
 pkgname=('msbuild-git' 'msbuild-sdkresolver-git')
-pkgver=16.3.0.r3318.g8059ecc7
-pkgrel=2
+pkgver=16.8.0.r4172.gb2c271b4
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/mono/msbuild'
 license=('MIT')
@@ -15,13 +15,11 @@ makedepends=(xmlstarlet unzip dotnet-host dotnet-sdk)
 source=('git+https://github.com/mono/msbuild.git'
         copy_hostfxr.patch
         fix_bashisms.patch
-        license_check_is_case_sensitive.patch
-        fix_dotnet_case.patch)
+	license_check_is_case_sensitive-new.patch)
 sha256sums=('SKIP'
             'f08615c058771fe740758d9bd2e23e01a52c5d51fab05a15558622e7f7974f22'
             'a13ecb4125c673372d87a3b7d957fc8716a3c3e74cd08e9e354b5dcf170ed453'
-            '3a12a9c33ad5938e8af24d2985241053602f4efc94a4818a00a17da32ce4aba5'
-            '69668675a5db978845a48b01b9b30fae07509683deeaef4dd616aba4acb8e2b5')
+	    'SKIP')
 
 pkgver() {
     local _version _commit
@@ -38,8 +36,9 @@ prepare() {
 
     patch --forward --strip=1 --input="${srcdir}/fix_bashisms.patch"
     patch --forward --strip=1 --input="${srcdir}/copy_hostfxr.patch"
-    patch --forward --strip=1 --input="${srcdir}/license_check_is_case_sensitive.patch"
-    patch --forward --strip=1 --input="${srcdir}/fix_dotnet_case.patch"
+    patch --forward --strip=1 --input="${srcdir}/license_check_is_case_sensitive-new.patch"
+    #patch --forward --strip=1 --input="${srcdir}/license_check_is_case_sensitive.patch"
+    #patch --forward --strip=1 --input="${srcdir}/fix_dotnet_case.patch"
     #cp $(pacman -Ql dotnet-host | grep -F libhostfxr.so | cut -d' ' -f2) ./mono/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/
 }
 
@@ -76,5 +75,5 @@ package_msbuild-sdkresolver-git() {
 
     mkdir -p "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/"
     cp -dr --no-preserve=ownership "${srcdir}/target/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver" "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/"
-    cp -dr --no-preserve=ownership $(pacman -Ql dotnet-host | grep -F libhostfxr.so | cut -d' ' -f2) "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/"
+    #cp -dr --no-preserve=ownership $(pacman -Ql dotnet-host | grep -F libhostfxr.so | cut -d' ' -f2) "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/"
 }

@@ -1,6 +1,6 @@
 pkgbase = msbuild-git
-	pkgver = 16.3.0.r3318.g8059ecc7
-	pkgrel = 2
+	pkgver = 16.8.0.r4172.gb2c271b4
+	pkgrel = 1
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	license = MIT
@@ -12,13 +12,11 @@ pkgbase = msbuild-git
 	source = git+https://github.com/mono/msbuild.git
 	source = copy_hostfxr.patch
 	source = fix_bashisms.patch
-	source = license_check_is_case_sensitive.patch
-	source = fix_dotnet_case.patch
+	source = license_check_is_case_sensitive-new.patch
 	sha256sums = SKIP
 	sha256sums = f08615c058771fe740758d9bd2e23e01a52c5d51fab05a15558622e7f7974f22
 	sha256sums = a13ecb4125c673372d87a3b7d957fc8716a3c3e74cd08e9e354b5dcf170ed453
-	sha256sums = 3a12a9c33ad5938e8af24d2985241053602f4efc94a4818a00a17da32ce4aba5
-	sha256sums = 69668675a5db978845a48b01b9b30fae07509683deeaef4dd616aba4acb8e2b5
+	sha256sums = SKIP
 
 pkgname = msbuild-git
 	pkgdesc = Xamarin implementation of the Microsoft build system (Git version)
