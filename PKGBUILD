@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=olaris-git
 _pkgname=olaris-server
-pkgver=v0.3.3.r47.g432918e
+pkgver=v0.3.3.r71.g022d7aa
 pkgrel=1
 pkgdesc='open-source, community driven, media manager and transcoding server'
 arch=('x86_64')
@@ -12,9 +12,12 @@ conflicts=('olaris')
 provides=('olaris')
 source=("${_pkgname}::git+https://gitlab.com/olaris/olaris-server.git"
     "react-static.zip::https://gitlab.com/api/v4/projects/olaris%2Folaris-react/jobs/artifacts/develop/download?job=build"
-    "ffmpeg-build.zip::https://gitlab.com/api/v4/projects/olaris%2Fffmpeg/jobs/artifacts/master/download?job=compile")
+    "ffmpeg-build.zip::https://gitlab.com/api/v4/projects/olaris%2Fffmpeg/jobs/artifacts/master/download?job=compile"
+    "olaris.service"
+)
 noextract=('react-static.zip' 'ffmpeg-build.zip')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP'
+    '2592546c3ac1ee3c7c7120edbfeecfe1053106a78bd5179c4a2077f3c764c871')
 
 pkgver() {
   cd ${_pkgname}
@@ -33,8 +36,7 @@ build() {
       ffmpeg-static/bin/ffmpeg ffmpeg-static/bin/ffprobe \
       -d $FFMPEG_LOC
 
-  make deps
-  PATH=~/go/bin:/usr/bin make generate
+  make generate
   make build-local
 }
 

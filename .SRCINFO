@@ -1,6 +1,6 @@
 pkgbase = olaris-git
 	pkgdesc = open-source, community driven, media manager and transcoding server
-	pkgver = v0.3.2.r10.g6929193
+	pkgver = v0.3.3.r71.g022d7aa
 	pkgrel = 1
 	url = https://gitlab.com/olaris/olaris-server
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = olaris-git
 	makedepends = go
 	makedepends = git
 	makedepends = unzip
+	makedepends = go-bindata-assetfs
 	provides = olaris
 	conflicts = olaris
 	noextract = react-static.zip
@@ -15,9 +16,11 @@ pkgbase = olaris-git
 	source = olaris-server::git+https://gitlab.com/olaris/olaris-server.git
 	source = react-static.zip::https://gitlab.com/api/v4/projects/olaris%2Folaris-react/jobs/artifacts/develop/download?job=build
 	source = ffmpeg-build.zip::https://gitlab.com/api/v4/projects/olaris%2Fffmpeg/jobs/artifacts/master/download?job=compile
+	source = olaris.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 2592546c3ac1ee3c7c7120edbfeecfe1053106a78bd5179c4a2077f3c764c871
 
 pkgname = olaris-git
 
