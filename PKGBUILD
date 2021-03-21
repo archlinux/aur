@@ -1,19 +1,18 @@
-# Maintainer: Darren Ng <$(base64 --decode <<<'VW4xR2ZuQGdtYWlsLmNvbQo=')>
+# Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 pkgname=badvpn-git
 pkgver=r1949.4b7070d
-pkgrel=1
+pkgrel=2
 pkgdesc="NCD scripting language, tun2socks proxifier, P2P VPN"
 arch=($CARCH)
 url=https://github.com/ambrop72/${pkgname%-git}
-license=(custom:BSD-3-Clause) # https://spdx.org/licenses/
-# NSPR_INCLUDE_DIRS /usr/include/nspr
-# nspr -> nss -> badvpn-git
-# openssl -> base
-depends=(nss)
-makedepends=(git cmake time)
+# https://spdx.org/licenses/
+license=(custom:BSD-3-Clause)
+# https://wiki.archlinux.org/index.php/Arch_package_guidelines#Package_dependencies
+# Do not rely on transitive dependencies
+depends=(nspr nss openssl)
+makedepends=(git cmake)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git} tun2socks{,-git})
-# backup=() # systemd service file?
 source=(${pkgname%-git}::git+https://github.com/ambrop72/${pkgname%-git}.git#branch=master)
 md5sums=(SKIP)
 
@@ -45,13 +44,14 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_PLUGIN_LIBS=ON \
     \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname%-git}/" \
     -DCMAKE_INSTALL_SBINDIR=bin
 
   # ccmake -B build -S .
   # echo; pwd; echo; return 1
 
-  /usr/bin/time --format="\n  wall clock time - %E\n" make -C build
+  # /usr/bin/time --format="\n  wall clock time - %E\n" \
+  make -C build
 
 }
 

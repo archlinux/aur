@@ -1,14 +1,15 @@
 pkgbase = badvpn-git
 	pkgdesc = NCD scripting language, tun2socks proxifier, P2P VPN
 	pkgver = r1949.4b7070d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ambrop72/badvpn
 	arch = x86_64
 	license = custom:BSD-3-Clause
 	makedepends = git
 	makedepends = cmake
-	makedepends = time
+	depends = nspr
 	depends = nss
+	depends = openssl
 	provides = badvpn
 	conflicts = badvpn
 	conflicts = tun2socks
