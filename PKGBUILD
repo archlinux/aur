@@ -1,7 +1,7 @@
 # Maintainer: sohlk <sohlk at outlook dot com>
 
 pkgname=eleventy-plugin-rss
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A pack of Eleventy plugins for generating an RSS feed"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'eleventy')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/11ty/eleventy-plugin-rss/archive/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('83806634ec2e4bc78a200a271b4f0baa8c06fe891b3fb1c521dd4aaed2788abe')
+sha256sums=('SKIP')
 
 package() {
   npm install -g --production --legacy-peer-deps --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
