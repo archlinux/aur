@@ -1,10 +1,11 @@
 pkgbase = python-inform
 	pkgdesc = Print and logging utilities for communicating with user
 	pkgver = 1.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KenKundert/inform
 	arch = any
 	license = GPL3
+	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python-six
 	depends = python-arrow

@@ -3,11 +3,11 @@
 pkgname='python-inform'
 _pkgname=${pkgname#python-}
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Print and logging utilities for communicating with user"
 arch=('any')
 depends=('python-six' 'python-arrow')
-makedepends=('python-setuptools')
+makedepends=('python-pip' 'python-setuptools')
 url="https://github.com/KenKundert/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
