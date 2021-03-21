@@ -1,6 +1,6 @@
 pkgbase = ansible-runner
 	pkgdesc = A tool and python library that helps when interfacing with Ansible directly
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 2
 	url = https://github.com/ansible/ansible-runner
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ansible-runner
 	depends = python-daemon
 	depends = python-yaml
 	depends = python-six
-	source = https://github.com/ansible/ansible-runner/archive/1.4.6.tar.gz
-	sha256sums = 7a36fae4589daaea7bdc4c8f9b3ca8ffe05a170c737162214f419dd9d7488aa8
+	source = https://github.com/ansible/ansible-runner/archive/1.4.7.tar.gz
+	sha256sums = 2ac4c236d021503b34c3986b0bb35f75a39ac91848ab786946e136dc73b1e938
 
 pkgname = ansible-runner
 

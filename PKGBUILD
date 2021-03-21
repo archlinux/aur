@@ -1,7 +1,7 @@
 # Maintainer: Jeffrey Zhang <zhang.lei.fly@gmail.com>
 
 pkgname=ansible-runner
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=2
 pkgdesc="A tool and python library that helps when interfacing with Ansible directly"
 arch=("any")
@@ -14,7 +14,7 @@ depends=("python-psutil"
          "python-six")
 makedepends=('python-setuptools')
 source=("https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7a36fae4589daaea7bdc4c8f9b3ca8ffe05a170c737162214f419dd9d7488aa8')
+sha256sums=('2ac4c236d021503b34c3986b0bb35f75a39ac91848ab786946e136dc73b1e938')
 
 build() {
     cd ${pkgname}-${pkgver}
