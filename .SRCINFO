@@ -1,0 +1,15 @@
+pkgbase = rhythm-doctor
+	pkgdesc = Rhythm Doctor by deepin-wine5
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/Sakura1943/rhychm-doctor
+	arch = x86_64
+	license = GPL
+	depends = deepin-wine5
+	depends = deepin-wine5-helper
+	provides = rhythmdoctor=1.1
+	source = https://gitlab.com/Sakura1943/rhychm-doctor/-/raw/master/rhythmdoctor.tar.gz
+	md5sums = SKIP
+
+pkgname = rhythm-doctor
+
