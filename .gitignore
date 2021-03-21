@@ -1,4 +1,6 @@
 pkg/
 src/
-*.pkg.tar.xz
-gog_darkest_dungeon_2.1.0.2.sh
+*.pkg.tar.*
+gog_darkest_dungeon_*.sh
+gog_darkest_dungeon_*.sh.part
+frontendstarted

@@ -1,5 +1,5 @@
 pkgname=gog-darkest-dungeon
-pkgver=21142
+pkgver=24839
 pkgrel=1
 _gamename=${pkgname#gog-}
 _gamename_=${_gamename//-/_}
@@ -9,12 +9,8 @@ arch=("i686" "x86_64")
 url="https://www.gog.com/game/darkest-dungeon"
 license=("custom")
 groups=("games")
-source=("gog_darkest_dungeon_${pkgver}.sh::gogdownloader://${_gamename_}/en3installer0"
-        "${pkgname}"
-        "${pkgname}.desktop")
-md5sums=('4b43065624dbab74d794c56809170588'
-         '23b66329f52fb4a9073ec7f1589625cc'
-         '1fc48d384bc8e36749174ece86c6706e')
+source=("gog_darkest_dungeon_${pkgver}.sh::gogdownloader://${_gamename_}/en3installer0")
+md5sums=('2a04beb04b3129b4bd68b4dd9023e82d')
 noextract=("gog_darkest_dungeon_${pkgver}.sh")
 # Register lgogdownloader as a download agent
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
@@ -29,18 +25,20 @@ prepare() {
   dd if=$srcdir/gog_darkest_dungeon_${pkgver}.sh \
      skip=1 obs=1024 conv=sync ibs=$offset | \
      bsdtar -C $srcdir/gog_darkest_dungeon_${pkgver} -xf -
-  # Hardcode the install destination.
-  sed -i "/recommended_destinations/i destination = \"$pkgdir/opt/${pkgname}\"," \
-    $srcdir/gog_darkest_dungeon_${pkgver}/scripts/config.lua
+
   # Skip the uninstallers.
   sed -i "s/support_uninstall = true,/support_uninstall = false,/g" \
     $srcdir/gog_darkest_dungeon_${pkgver}/scripts/config.lua
+
   # Prevent the installer from trying to install the desktop icon
-  sed -i '/postinstall =/d' \
+  sed -i '/MojoSetup.platform.installdesktopmenuitem/,+2d' \
+    $srcdir/gog_darkest_dungeon_${pkgver}/scripts/mojosetup_mainline.lua
+
+  # Remove interaction by setting optional opions to required
+  # Set all option for the last two options (desktp + menu item) to be required
+  sed -i '129,${/^    Setup.Option/,/^    }/s/required = false/required = true/}' \
     $srcdir/gog_darkest_dungeon_${pkgver}/scripts/config.lua
-  # Deactivate all but the two first options (Menu items and desktop icons)
-  sed -i '85,${/^    Setup.Option/,/^    }/s/disabled = false/disabled = true/}' \
-    $srcdir/gog_darkest_dungeon_${pkgver}/scripts/config.lua
+
   # Remove interaction by disabling EULAs (covered by custom license)
   sed -i '/Setup.Eula/ d' \
     $srcdir/gog_darkest_dungeon_${pkgver}/scripts/config.lua
@@ -50,16 +48,21 @@ package() {
   cd $srcdir/gog_darkest_dungeon_${pkgver}
   # Install using mojo and force stdio gui to prevent gtk windows from popping
   # up.
-  ./startmojo.sh --ui stdio
+  ./startmojo.sh --destination $pkgdir/opt/gog/$_gamename --ui stdio
 
-  chmod +x $pkgdir/opt/$pkgname/start.sh
-  chmod +x $pkgdir/opt/$pkgname/game/darkest.bin.x86
-  chmod +x $pkgdir/opt/$pkgname/game/darkest.bin.x86_64
+  chmod +x $pkgdir/opt/gog/$_gamename/start.sh
+  chmod +x $pkgdir/opt/gog/$_gamename/game/darkest.bin.x86
+  chmod +x $pkgdir/opt/gog/$_gamename/game/darkest.bin.x86_64
 
-  install -Dm 755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm 644 $srcdir/gog_darkest_dungeon_${pkgver}/data/noarch/support/icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -Dm 644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  # Remove makepkg paths from desktop file and move to share
+  sed -i "s,$pkgdir,,g" $pkgdir/opt/gog/$_gamename/.mojosetup/gog_com-Darkest_Dungeon_1.desktop
+  install -Dm 644 $pkgdir/opt/gog/$_gamename/.mojosetup/gog_com-Darkest_Dungeon_1.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+
+  # Install EULA
   install -Dm 644 $srcdir/gog_darkest_dungeon_${pkgver}/data/noarch/docs/End\ User\ License\ Agreement.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  # Remove metafiles
+  rm -r $pkgdir/opt/gog/$_gamename/.mojosetup
 }
 
 # vim:set ts=2 sw=2 et:
