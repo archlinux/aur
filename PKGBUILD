@@ -19,7 +19,7 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           resourceproto scrnsaverproto videoproto xcmiscproto xf86dgaproto xf86driproto
           xineramaproto xextproto xf86vidmodeproto xproto dri3proto presentproto
           dri3proto presentproto
-          llvm-libs-pypy-stm clang-pypy-stm llvm-pypy-stm
+          llvm-libs-pypy-stm clang-pypy-stm llvm-pypy-stm nodejs-grunt-cli node-webkit
 )
 # go-pie gcc-multilib
 # Renamed: geoclue2 libsystemd gnu-efi-libs mime-types libwebkit
