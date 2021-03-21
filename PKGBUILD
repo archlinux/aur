@@ -1,7 +1,7 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=dwm-luke-git
-pkgver=6.2.r1866.f656ecb
+pkgver=6.2.r1870.3eb52c3
 pkgrel=1
 pkgdesc="Luke's build of dynamic window manager for X"
 url=https://github.com/LukeSmithxyz/dwm
@@ -26,11 +26,11 @@ pkgver() {
 
 build() {
 	cd dwm
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+	make PREFIX=/usr X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
 	cd dwm
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
+	make PREFIX=/usr X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
