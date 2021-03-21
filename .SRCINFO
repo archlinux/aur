@@ -1,0 +1,15 @@
+pkgbase = gnome-dark-apps-git
+	pkgdesc = Per application dark theme on demand.
+	pkgver = r4.7d002aa
+	pkgrel = 1
+	url = https://workonfi.re
+	arch = any
+	license = GPL
+	depends = xdotool
+	provides = gnome-dark-apps
+	conflicts = gnome-dark-apps
+	source = gnome-dark-apps-git::git+https://github.com/workonfire/gnome-dark-apps.git
+	md5sums = SKIP
+
+pkgname = gnome-dark-apps-git
+
