@@ -3,13 +3,13 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=akira-git
-pkgver=0.0.13.r31.gcbe9b9c
+pkgver=0.0.13.r68.gcf2989c
 pkgrel=2
 pkgdesc="Native Linux App for UI and UX Design built in Vala and Gtk"
 arch=(x86_64 aarch64)
 url="https://github.com/akiraux/Akira"
 license=(GPL3)
-depends=(goocanvas3 libgranite.so gtksourceview3 gtk-theme-elementary elementary-icon-theme)
+depends=(goocanvas libgranite.so gtksourceview3 gtk-theme-elementary elementary-icon-theme)
 makedepends=(git vala meson appstream)
 provides=(akira)
 conflicts=(akira)

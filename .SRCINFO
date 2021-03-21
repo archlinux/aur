@@ -1,6 +1,6 @@
 pkgbase = akira-git
 	pkgdesc = Native Linux App for UI and UX Design built in Vala and Gtk
-	pkgver = 0.0.13.r31.gcbe9b9c
+	pkgver = 0.0.13.r68.gcf2989c
 	pkgrel = 2
 	url = https://github.com/akiraux/Akira
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = akira-git
 	makedepends = vala
 	makedepends = meson
 	makedepends = appstream
-	depends = goocanvas3
+	depends = goocanvas
 	depends = libgranite.so
 	depends = gtksourceview3
 	depends = gtk-theme-elementary
