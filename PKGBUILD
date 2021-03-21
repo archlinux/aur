@@ -13,7 +13,7 @@ makedepends=(
             'udev'        # for device hotplug enumeration
             'gstreamer'   # for gstreamer support
             'qt5-tools'   # for 'qcam' tool
-            'clang'
+            'clang>=5.0'
             )
 depends=(
         'libc++'

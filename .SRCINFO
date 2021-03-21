@@ -22,7 +22,7 @@ pkgbase = libcamera-clang-git
 	makedepends = udev
 	makedepends = gstreamer
 	makedepends = qt5-tools
-	makedepends = clang
+	makedepends = clang>=5.0
 	depends = libc++
 	depends = gst-plugins-base-libs
 	depends = libevent
