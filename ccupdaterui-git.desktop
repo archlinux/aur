@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CCUpdaterUI
+Comment=Unofficial Mod Updater UI for CrossCode
+Exec=ccupdaterui
+Icon=ccupdaterui
+Categories=Game;PackageManager;

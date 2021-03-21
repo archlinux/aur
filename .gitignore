@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/ccupdaterui-git-*.pkg.tar.*
+
+/ccupdaterui-git/
+/ccupdaterui-git-ccupdatercli/

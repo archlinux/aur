@@ -1,0 +1,22 @@
+pkgbase = ccupdaterui-git
+	pkgdesc = Unofficial Mod Updater UI for CrossCode
+	pkgver = r53.284721a
+	pkgrel = 1
+	url = https://github.com/dmitmel/CCUpdaterUI
+	arch = x86_64
+	arch = i686
+	license = custom:MIT
+	makedepends = git
+	makedepends = go
+	depends = sdl2
+	provides = ccupdaterui
+	conflicts = ccupdaterui
+	source = ccupdaterui-git::git+https://github.com/dmitmel/CCUpdaterUI.git
+	source = ccupdaterui-git-ccupdatercli::git+https://github.com/dmitmel/CCUpdaterCLI.git#branch=redesign-for-ui
+	source = ccupdaterui-git.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = cb3306509846c3a770dd39f0d03a57256e251820f887850cea312f88bd982ed1
+
+pkgname = ccupdaterui-git
+
