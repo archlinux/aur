@@ -6,7 +6,7 @@ Before=httpd.service
 [Service]
 Type=notify
 NotifyAccess=main
-User=shibd
+User=_shibd
 ExecStart=/usr/bin/shibd -f -F
 TimeoutStopSec=1m
 TimeoutStartSec=5m

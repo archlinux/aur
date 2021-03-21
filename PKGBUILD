@@ -37,9 +37,9 @@ source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkg
 sha256sums=('b8edaeb2a8a4a46fd1d81027ee3272165c3472f179c981efdf01db22ce3ee3c3'
             'SKIP'
             '460305d6f41e0cc2464ce15fa5c9812216f04c2bcd7031967166b065eb223133'
-            'c6705c063a8154d1e5503a182cf16057fd2571f2f750609c7436cb7a8a316ee8'
-            '9fc765c802d9dd2cfec6d714e96cfb1b3c79a165ea0c9b9e7a286958fa5e2eb2'
-            'f8c2be7e42141285a351eb9c4a3abdcdd479eb2797e75388db1be0f13903fb87')
+            '8df312358f8341b246f08bc8b8691f49b00dd3fe639061aa24f60a5ddb9551db'
+            '425b561c7e3c582aae635e2f41448cdf10e393ab39209668ab3063fd13acebcd'
+            '9f2d48c1cd3b80108c1a567ed6778272880c53e8c647b16f18084d681c3b8671')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 
 build() {
