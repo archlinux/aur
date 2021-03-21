@@ -3,8 +3,8 @@
 # Contributor: Phillip Smith <pkgbuild@phs.id.au>
 # Contributor: Nathan Owe <ndowens04 at gmail>
 pkgname=freeipmi
-pkgver=1.6.6
-pkgrel=2
+pkgver=1.6.7
+pkgrel=1
 pkgdesc="Provides in-band and out-of-band IPMI software based on the IPMI v1.5/2.0 specification."
 arch=('x86_64' 'aarch64')
 url="https://www.gnu.org/software/freeipmi"
@@ -21,7 +21,7 @@ backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/libipmiconsole.conf")
 options=('!libtool')
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('cfa30179b44c582e73cf92c2ad0e54fe49f9fd87f7a0889be9dc2db5802e6aab'
+sha256sums=('bb8519313933656c1e55e4f1ab3204748c26671d058e8aadd8e30a8053eadebf'
             'SKIP')
 validpgpkeys=('A865A9FB6F0387624468543A3EFB7C4BE8303927') # Albert Chu <chu11@llnl.gov>
 
