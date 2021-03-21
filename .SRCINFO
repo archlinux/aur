@@ -1,0 +1,16 @@
+pkgbase = umpv
+	pkgdesc = mpv script that emulates "unique application" functionality on Linux
+	pkgver = 0.33.0
+	pkgrel = 1
+	url = https://github.com/mpv-player/mpv
+	arch = any
+	license = GPL
+	depends = mpv
+	depends = python
+	optdepends = youtube-dl
+	conflicts = mpv-tools
+	source = mpv-0.33.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.33.0.tar.gz
+	sha256sums = f1b9baf5dc2eeaf376597c28a6281facf6ed98ff3d567e3955c95bf2459520b4
+
+pkgname = umpv
+

@@ -1,0 +1,4 @@
+mpv-*.tar.gz
+pkg/
+src/
+umpv-*.pkg.tar.zst
