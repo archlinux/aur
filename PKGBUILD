@@ -2,7 +2,7 @@
 
 pkgname=otf-fontemon
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="World's first video game in a font."
 arch=('any')
 url='https://github.com/mmulet/font-game-engine'
@@ -18,8 +18,8 @@ for file in "${_fontfiles[@]}"; do
     source+=("${pkgname}-${pkgver}-${pkgrel}-${file}::${url}/releases/download/${pkgver}/${file}")
 done
 
-md5sums=('2947d671b765cbfcf3289dd463111768'
-    '51caa4b85386853fd78074268631693d')
+sha256sums=('9fa30993fbdd822ab8476ee992056f45d0abf0e31205291fa2cd142c8ec8300f'
+            'd100f6cfa04b45370f6a6ee9d977765dc9ac48d651538579f1e88af13fb6ec32')
 
 package() {
     for file in "${_fontfiles[@]}"; do
