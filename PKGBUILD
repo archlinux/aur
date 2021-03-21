@@ -40,7 +40,7 @@ optdepends=(
         "xorg-xrandr: inxi -G single screen resolution"
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/smxi/inxi/archive/${_pkgver}.tar.gz")
-sha256sums=('1439a6bb220dbe0aea03d4a9e375e48a28f340a48532da2c15782b661feabcc3')
+sha256sums=('68278a405c7dc55bdf70b30ec9538187b95fc0799f15765683521876c8f28f9b')
 
 package() {
   cd "${pkgname}-${_pkgver}"
