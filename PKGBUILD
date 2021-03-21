@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=timeline
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A plain-text based distributed social network build on top of git configuration manager"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'git')
 conflicts=('timeline-git')
 source=("https://github.com/ajdiaz/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('0b65c3b50b5c3b872380486f492e649c7f80d13ca8327e90103f8e4fc0752a4b'
+sha256sums=('41c4969d83076f06293daa0bb9f3c0b760ea693ebd1fb84c852c2e10963152c0'
             'ef063a64b2e38988cf7b7395161351e537e50719f4d77fa3d180e25b911371fd')
 
 prepare() {
@@ -32,7 +32,7 @@ package() {
    "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
   # binary
-  install -D -m755 "tl" "${pkgdir}/usr/bin/tl"  
+  install -D -m755 "tl" "${pkgdir}/usr/bin/tl"
 
   # docs
   install -D -m644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
