@@ -22,7 +22,7 @@ install=
 changelog=
 source=(
 	"$pkgname.desktop"
-	https://git.rip/freezer/freezerpc/-/raw/master/build/icon.png
+	https://git.freezer.life/exttex/freezerpc/raw/branch/master/app/assets/icon.png
 )
 source_x86_64=("https://files.freezer.life/0:/PC/1.1.17/freezer_1.1.17_amd64.deb")
 noextract=()
