@@ -3,8 +3,8 @@
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
-pkgver=r257.9440104
-pkgrel=3
+pkgver=r343.642df0c
+pkgrel=1
 arch=('any')
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests')
 license=('MIT')
