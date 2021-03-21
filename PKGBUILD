@@ -2,7 +2,7 @@ pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfi
 url='https://wiki.ros.org/rqt_reconfigure'
 
 pkgname='ros-melodic-rqt-reconfigure'
-pkgver='0.5.3'
+pkgver='0.5.4'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -32,9 +32,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_reconfigure-${pkgver}"
+_dir="rqt_reconfigure-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_reconfigure/archive/${pkgver}.tar.gz")
-sha256sums=('07e4b46a71fc881a855250b73a97a13fb8e54fac74f6d09b5fd2365e2b7ab79a')
+sha256sums=('d10b156375e0dd8a42eee9e99fe55f42485894e4abad61c653dce6469bad5584')
 
 build() {
 	# Use ROS environment variables.
