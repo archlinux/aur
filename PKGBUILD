@@ -1,7 +1,7 @@
 # Maintainer: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=5.6d
+pkgver=5.8e
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
 pkgrel=1
 arch=('x86_64')
@@ -12,11 +12,10 @@ optdepends=('openvr: For VR support')
 replaces=('ftcfrcsimulator')
 
 # Base name of files in the zip
-# The developers seem to change the scheme they are using every release
-_files_name="xRC Simulator v5.6"
+_files_name="xRC Simulator v5.8"
 
 source=(
-	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=1357"
+	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=1489"
 	"xrcsimulator.desktop"
 	"16x16.png"
 	"24x24.png"
@@ -28,7 +27,7 @@ source=(
 )
 
 sha1sums=(
-	"6d88b80cb6ad836894317f22f60aa216842883b3"
+	"d7cb478b525522f451d51f17e73fefaab33fa13f"
 	"07ee699a267425f01c7e28c2369ba6521bd515ec"
 	"7a0283d47e945b66a82dcbd11bdd10a6406dd027"
 	"deb5297344427dd07d8044543f1c023b0c4c001c"
