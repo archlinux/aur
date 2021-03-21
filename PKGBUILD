@@ -14,9 +14,9 @@ sha512sums=('SKIP')
 package() {
     install -D -t "$pkgdir/opt/shellter" "$pkgname/shellter.exe"
 	mkdir -p $pkgdir/usr/share/licences/shellter/
-	mkdir -p $pkgdir/usr/share/docs/shellter
+	mkdir -p $pkgdir/usr/share/doc/shellter
 	mkdir -p $pkgdir/usr/bin
-	cp -r $pkgname/debian $pkgname/shellcode_samples $pkgname/docs $pkgdir/usr/share/docs/shellter
+	cp -r $pkgname/debian $pkgname/shellcode_samples $pkgname/docs $pkgdir/usr/share/doc/shellter
 	cp -r $pkgname/licenses $pkgdir/usr/share/licences/shellter
 	cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/sh
