@@ -15,8 +15,8 @@ arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse
-         libvpx libjpeg zlib icu libevent libpipewire02)
+         ffmpeg nss-hg ttf-font libpulse libopenaptx
+         libvpx libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
@@ -307,6 +307,7 @@ package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
   mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname,librewolf}
+  mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname-bin,librewolf-bin}
   rm "$pkgdir"/usr/lib/${pkgname}/pingsender
 
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
@@ -354,13 +355,11 @@ END
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  #install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/librewolf "\$@"
-END
+#exec /usr/lib/$pkgname/librewolf "\$@"
+#END
 
-  # Replace duplicate binary with wrapper
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$pkgname" \
-    "$pkgdir/usr/lib/$pkgname/librewolf-bin"
+  ln -srf "$pkgdir"/usr/lib/${pkgname}/librewolf \
+          "$pkgdir"/usr/bin/$pkgname
 }
