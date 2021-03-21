@@ -1,0 +1,15 @@
+pkgbase = pilot-git
+	pkgdesc = Orca's best friend.
+	pkgver = r173.2b34874
+	pkgrel = 1
+	url = http://wiki.xxiivv.com/Pilot
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = electron
+	source = pilot-git::git+https://github.com/hundredrabbits/Pilot.git
+	sha1sums = SKIP
+
+pkgname = pilot-git
+
