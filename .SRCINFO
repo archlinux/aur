@@ -1,15 +1,15 @@
 pkgbase = eleventy
 	pkgdesc = A simpler static site generator. An alternative to Jekyll. Transforms a directory of templates (of varying types) into HTML
-	pkgver = 0.11.1
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://www.11ty.dev
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = eleventy-0.11.1.tar.gz
-	source = eleventy-0.11.1.tar.gz::https://github.com/11ty/eleventy/archive/v0.11.1.tar.gz
-	sha256sums = da3b11bf638982822befcde468da16a3fe0db2c86ca00ac61b09504976e4a6af
+	noextract = eleventy-0.12.1.tar.gz
+	source = eleventy-0.12.1.tar.gz::https://github.com/11ty/eleventy/archive/v0.12.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = eleventy
 
