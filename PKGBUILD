@@ -2,7 +2,7 @@
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=yubikey-manager-qt
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('x86_64')
@@ -13,17 +13,17 @@ replaces=('yubikey-neo-manager')
 source=("https://developers.yubico.com/${pkgname}/Releases/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3'  # Dag Heyman <dag@yubico.com>
 	      '9E885C0302F9BB9167529C2D5CBA11E6ADC7BCD1') # Dennis Fokin <dennis.fokin@yubico.com> 
-sha256sums=('9e3fcf8552323591258c585f02bf5b3f758431a0f1e1c90d7f6460b8b1a235fa'
+sha256sums=('5393f92288bdd946559e20a0446ad9cb0542b7b11848af49040283b81e1913a3'
             'SKIP')
 
 build() {
-	cd ${pkgname}-${pkgname}-${pkgver}
+	cd ${pkgname}
 	qmake-qt5
 	make
 }
 
 package() {
-	cd ${pkgname}-${pkgname}-${pkgver}
+	cd ${pkgname}
 	make INSTALL_ROOT="${pkgdir}/" install
 	install -D -m0644 resources/ykman-gui.desktop "${pkgdir}/usr/share/applications/ykman-gui.desktop"
 	install -D -m0644 resources/icons/ykman.png "${pkgdir}/usr/share/pixmaps/ykman.png"
