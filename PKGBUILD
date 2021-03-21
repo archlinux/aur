@@ -1,3 +1,5 @@
+# Maintainer: workonfire <kolucki62@gmail.com>
+
 pkgname=gnome-dark-apps-git
 pkgver=r4.7d002aa
 pkgrel=1
