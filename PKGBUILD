@@ -8,7 +8,7 @@ arch=('x86_64')
 depends=('libevdevplus' 'libuinputplus' 'boost-libs')
 makedepends=('cmake' 'ninja' 'boost' 'scdoc')
 url="https://github.com/ReimuNotMoe/ydotool"
-license=('MIT')
+license=('AGPL3')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('2311b003d2ff383f3348f17101f0df74f56616d530d66d0a014a52ba85a5dcf1')
 
