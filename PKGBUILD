@@ -1,10 +1,11 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
+# Contributor: Davide Depau <davide@depau.eu>
 
 _pkgname=libadwaita
 pkgname=$_pkgname-git
 pkgver=1.1.0.r.g699c5ea
-pkgrel=2
+pkgrel=3
 pkgdesc="Library full of GTK+ widgets for mobile phones"
 url="https://gitlab.gnome.org/exalm/$_pkgname"
 license=(LGPL)
