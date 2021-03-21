@@ -1,7 +1,7 @@
 pkgbase = freerdp-git
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP) - git checkout
-	pkgver = 2.0.0.r699.gd6ba9c1da
-	pkgrel = 3
+	pkgver = 2.0.0.r703.gfab649a1b
+	pkgrel = 1
 	url = https://www.freerdp.com/
 	arch = i686
 	arch = x86_64

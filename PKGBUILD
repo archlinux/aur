@@ -7,8 +7,8 @@
 # community/freerdp contributor: Stijn Segers <francesco dot borromini at gmail dot com>
 
 pkgname=freerdp-git
-pkgver=2.0.0.r699.gd6ba9c1da
-pkgrel=3
+pkgver=2.0.0.r703.gfab649a1b
+pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP) - git checkout"
 arch=('i686' 'x86_64')
 url="https://www.freerdp.com/"
