@@ -13,7 +13,7 @@ pkgbase = clean-chroot-manager
 	conflicts = clean_chroot_manager
 	replaces = clean_chroot_manager
 	source = clean-chroot-manager-2.211.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v2.211.tar.gz
-	b2sums = 7d73f4b731fb292bd5951ba85f77184a2d458473ec84597cc2d5e13c54491da58590ee5ea32ed2d17d2157d8c68133e4576091b952f155800be25496e448e67b
+	b2sums = 883ffcf5ea09a5a93b0a3c183613a2012c51b2816c25ee9b30885120e51754c0c53887d04a3dd15dc178128ea799578afd56d3b8b96160ad2660da58000ef672
 
 pkgname = clean-chroot-manager
 
