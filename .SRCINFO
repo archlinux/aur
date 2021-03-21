@@ -1,7 +1,7 @@
 pkgbase = hellfire-data-gog
 	pkgdesc = Diablo & Hellfire devolved
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/diablo
 	arch = any
 	license = custom
