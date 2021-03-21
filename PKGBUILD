@@ -9,7 +9,6 @@ license=('MIT')
 depends=('electron')
 options=('!strip')
 conflicts=('projector')
-replaces=('projector')
 source_x86_64=(
   "$pkgname-$pkgver.zip::https://github.com/JetBrains/projector-client/releases/download/launcher-v${pkgver}/projector-linux-x64-launcher-v${pkgver}.zip"
 )
