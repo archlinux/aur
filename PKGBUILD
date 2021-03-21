@@ -1,7 +1,7 @@
 # Maintainer: sohlk <sohlk at outlook dot com>
 
 pkgname=eleventy-plugin-syntaxhighlight
-pkgver=3.0.6
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A pack of Eleventy plugins for syntax highlighting in Markdown, Liquid, and Nunjucks templates"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'eleventy')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/11ty/eleventy-plugin-syntaxhighlight/archive/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('91793ded7191418ff7da0e40fb84fed8743b3bfd11b5103f945095af0fa5c39f')
+sha256sums=('SKIP')
 
 package() {
   npm install -g --production --legacy-peer-deps --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"

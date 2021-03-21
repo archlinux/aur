@@ -1,6 +1,6 @@
 pkgbase = eleventy-plugin-syntaxhighlight
 	pkgdesc = A pack of Eleventy plugins for syntax highlighting in Markdown, Liquid, and Nunjucks templates
-	pkgver = 3.0.6
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/11ty/eleventy-plugin-syntaxhighlight
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = eleventy-plugin-syntaxhighlight
 	makedepends = npm
 	depends = nodejs
 	depends = eleventy
-	noextract = eleventy-plugin-syntaxhighlight-3.0.6.tar.gz
-	source = eleventy-plugin-syntaxhighlight-3.0.6.tar.gz::https://github.com/11ty/eleventy-plugin-syntaxhighlight/archive/v3.0.6.tar.gz
-	sha256sums = 91793ded7191418ff7da0e40fb84fed8743b3bfd11b5103f945095af0fa5c39f
+	noextract = eleventy-plugin-syntaxhighlight-3.1.0.tar.gz
+	source = eleventy-plugin-syntaxhighlight-3.1.0.tar.gz::https://github.com/11ty/eleventy-plugin-syntaxhighlight/archive/v3.1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = eleventy-plugin-syntaxhighlight
 
