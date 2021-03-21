@@ -2,7 +2,7 @@
 shortname=gvm-libs
 pkgname=gvm-libs-20
 pkgver=20.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='greenbone-vulnerability-manager libraries'
 arch=('x86_64')
 url="https://github.com/greenbone/gvm-libs"
@@ -36,6 +36,7 @@ package() {
 
   install -d $pkgdir/run/gvm
   install -m 750 -d $pkgdir/var/lib/gvm
+  install -m 750 -d $pkgdir/var/lib/openvas
   install -d $pkgdir/var/lib/gvm/gvmd
   install -m 750 -d $pkgdir/var/log/gvm
   install -m 750 -d $pkgdir/etc/sudoers.d

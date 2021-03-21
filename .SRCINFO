@@ -1,7 +1,7 @@
 pkgbase = gvm-libs-20
 	pkgdesc = greenbone-vulnerability-manager libraries
 	pkgver = 20.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/greenbone/gvm-libs
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
