@@ -1,6 +1,6 @@
 pkgbase = getmail6
 	pkgdesc = POP3 mail retriever with reliable Maildir and command delivery; Python 3 port
-	pkgver = 6.14
+	pkgver = 6.15
 	pkgrel = 1
 	url = http://getmail6.org
 	changelog = CHANGELOG
@@ -10,10 +10,10 @@ pkgbase = getmail6
 	depends = python-chardet
 	optdepends = python-keyring: secure password store
 	optdepends = python-keyrings-alt: alternative backends
-	provides = getmail=6.14
+	provides = getmail=6.15
 	conflicts = getmail
-	source = getmail6-6.14.tgz::https://github.com/getmail6/getmail6/archive/v6.14.tar.gz
-	b2sums = c74fce627e6a23e0b209dddca690301f80626d9c4489d8cd2391884908e6f1c017602ed23ca4d343e2dd400b911d3f808235231217afd38f96017d8f0d20b3a2
+	source = getmail6-6.15.tgz::https://github.com/getmail6/getmail6/archive/v6.15.tar.gz
+	b2sums = fd1f6ad33f6a518f6ae09470f484dc3493060c596902307afa77376b495b19a8e8a5d500cbd7ffb2e0903a007a4e7f80464c801585dea0e767b3d71c1e2582a0
 
 pkgname = getmail6
 
