@@ -1,0 +1,20 @@
+pkgbase = jim
+	pkgdesc = SSH wrapper to connect to pre-defined servers
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/CryoCodec/jim
+	arch = x86
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = openssh
+	depends = sshpass
+	provides = jim
+	conflicts = jim
+	source = jim::git+https://github.com/zalintyre/jim.git
+	md5sums = SKIP
+
+pkgname = jim
+
