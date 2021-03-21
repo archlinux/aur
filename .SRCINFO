@@ -1,0 +1,15 @@
+pkgbase = gog-darkest-dungeon-the-crimson-court
+	pkgdesc = DLC for the darkest_dungeon game.
+	pkgver = 24839
+	pkgrel = 1
+	url = https://www.gog.com/game/darkest_dungeon_the_crimson_court
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	depends = gog-darkest-dungeon
+	noextract = darkest_dungeon_the_crimson_court_24839_28859.sh
+	source = darkest_dungeon_the_crimson_court_24839_28859.sh::gog://darkest_dungeon_the_crimson_court_24839_28859.sh
+	sha256sums = 3edb41b306b008099c7b42fb2d9feedfcbf0f0297372831df1143edf3393f5ea
+
+pkgname = gog-darkest-dungeon-the-crimson-court
+
