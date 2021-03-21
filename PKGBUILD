@@ -1,28 +1,44 @@
-# Maintainer: Dustin Falgout <dustin@antergos.com>
+# Maintainer: X0rg
 
 pkgname=obs-service-tar_scm
-_pkgver=0.5.3
-pkgver="${_pkgver}.r213"
+pkgver=0.10.22
 pkgrel=1
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
 url="https://github.com/openSUSE/obs-service-tar_scm"
-license=('GPL3')
-source=("${pkgname}::git+https://github.com/openSUSE/${pkgname}.git")
+license=('GPL2')
 groups=('obs')
-depends=('python2' 'obs-build' 'git')
-optdepends=('subversion: svn repo support.'
-			'mercurial: hg repo support.'
-			'bzr: bzr repo support.')
+depends=('obs-build'
+	'python'
+	'python-pyaml'
+	'python-dateutil')
+checkdepends=('flake8'
+	'python-mock'
+	'python-pylint'
+	'python-dulwich'
+	'cpio'
+	'git'
+	'subversion'
+	'mercurial'
+	'bzr')
+optdepends=('cpio: needed for running properly the obs_scm source service'
+	'git: git repo support'
+	'subversion: svn repo support'
+	'mercurial: hg repo support'
+	'bzr: bzr repo support')
 backup=("etc/obs/services/tar_scm")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/openSUSE/obs-service-tar_scm/archive/$pkgver.tar.gz")
+sha512sums=('974f407c2d603cdcd1c300d0442ab34c9233b2925565fa36644d32994735611c53c531d45a4067e0f9caa1d1774648554c783334884be8e772b7f1575275f063')
 
-pkgver() {
-	cd "${srcdir}/${pkgname}"
-	printf "%s.r%s" "${_pkgver}" "$(git rev-list --count HEAD)"
-}	
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+	if [[ -d "tests/tmp" ]]; then
+		rm -rf "tests/tmp"
+	fi
+	make check3
+}
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	make DESTDIR="${pkgdir}" PREFIX=/usr install 
+	cd "$srcdir/$pkgname-$pkgver"
+	make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
