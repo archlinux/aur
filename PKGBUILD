@@ -2,11 +2,12 @@
 
 pkgname=gadu-gadu
 pkgver=12.4.105.12185
-pkgrel=1
+pkgrel=2
 pkgdesc="Gadu-Gadu is a Polish instant messaging client using a proprietary protocol."
 arch=('i686' 'x86_64')
 url="https://gg.pl"
 license=('custom')
+depends=('gtk2' 'alsa-lib' 'dbus-glib' 'libxt')
 optdepends=('flashplugin: needed for avatar editor')
 source=("${pkgname}".desktop::https://raw.githubusercontent.com/oliwier975PL/PKGBUILDs/master/"${pkgname}"/"${pkgname}".desktop
         "${pkgname}"::https://raw.githubusercontent.com/oliwier975PL/PKGBUILDs/master/"${pkgname}"/"${pkgname}")

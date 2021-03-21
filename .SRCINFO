@@ -1,11 +1,15 @@
 pkgbase = gadu-gadu
 	pkgdesc = Gadu-Gadu is a Polish instant messaging client using a proprietary protocol.
 	pkgver = 12.4.105.12185
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gg.pl
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = gtk2
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = libxt
 	optdepends = flashplugin: needed for avatar editor
 	options = !strip
 	source = gadu-gadu.desktop::https://raw.githubusercontent.com/oliwier975PL/PKGBUILDs/master/gadu-gadu/gadu-gadu.desktop
