@@ -2,7 +2,7 @@
 
 pkgbase=stardog-studio
 pkgname=stardog-studio-bin
-pkgver=1.29.0
+pkgver=1.33.1
 pkgrel=1
 pkgdesc='IDE for the Stardog graph database management system.'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     stardog-studio.desktop
     stardog-studio.png)
     
-b2sums=('1a205ab37e12698fc8f39ed5f683b26c834040cfb9396a6bdcc1d5147ab1100f17baa3e1d7a11b3d33b1128eeab76b00390bd44a8fcc73e9daa116f153979ac0'
+b2sums=('7366054371239026e8de7db31b661bad193d2c6ef840eb366420af496d3b7af0fc564cc881d0c47e1548e1f5ea6df8e6c45d3f537c8451622b705e1940b0fb67'
 
 '6d355359ea74002f7c6be304e163ac0d9904a50e6673be53f562b456cb62a0643cbe3d5498652b43dbebba123d1ca4feb560f46e3ba7959d7c751b259775217e'
 
