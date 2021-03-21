@@ -36,7 +36,7 @@ source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkg
         "shibd.service")
 sha256sums=('b8edaeb2a8a4a46fd1d81027ee3272165c3472f179c981efdf01db22ce3ee3c3'
             'SKIP'
-            '460305d6f41e0cc2464ce15fa5c9812216f04c2bcd7031967166b065eb223133'
+            'e33bf34a6d629125b79e93da5b7fff6489f6b385bfd6abf04145b438a0446060'
             '8df312358f8341b246f08bc8b8691f49b00dd3fe639061aa24f60a5ddb9551db'
             '425b561c7e3c582aae635e2f41448cdf10e393ab39209668ab3063fd13acebcd'
             '9f2d48c1cd3b80108c1a567ed6778272880c53e8c647b16f18084d681c3b8671')
@@ -68,10 +68,6 @@ package() {
   # Generated during installation
   rm -vf "$pkgdir"/etc/shibboleth/sp-*.pem
 
-  # Miscellaneous garbage
-  rm -vf "$pkgdir"/etc/shibboleth/shibd-*
-  rm -rvf "$pkgdir"/var/run
-
   # Scripts
   for _x in keygen metagen seckeygen; do
     mv -v "$pkgdir"/etc/shibboleth/$_x.sh "$pkgdir"/usr/bin/shib-$_x
@@ -85,9 +81,9 @@ package() {
   mv -v "$pkgdir"/usr/lib/shibboleth/mod_shib_24.so \
           "$pkgdir"/usr/lib/httpd/modules/mod_shib.so
 
-  # Extras
+  # Provide our own Apache and systemd examples
   install -Dm0644 "$srcdir"/apache.conf \
-                    "$pkgdir"/usr/share/$pkgname/example-apache.conf
+                    "$pkgdir"/usr/share/$pkgname/apache.conf
   install -Dm0644 "$srcdir"/shibboleth-sp.sysusers \
                     "$pkgdir"/usr/lib/sysusers.d/shibboleth-sp.conf
   install -Dm0644 "$srcdir"/shibboleth-sp.tmpfiles \
@@ -95,7 +91,12 @@ package() {
   install -Dm0644 "$srcdir"/shibd.service \
                     "$pkgdir"/usr/lib/systemd/system/shibd.service
 
+  # Remove the bundled Apache and init.d examples
+  rm -vf "$pkgdir"/etc/shibboleth/apache*.config
+  rm -vf "$pkgdir"/etc/shibboleth/shibd-*
+
   # Match tmpfiles.d
+  rm -rf "$pkgdir"/var/run
   chmod 0700 "$pkgdir"/var/cache/shibboleth
   chmod 0750 "$pkgdir"/var/log/shibboleth
 }
