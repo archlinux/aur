@@ -1,7 +1,7 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname="jfa-go"
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/hrfee/jfa-go"
@@ -24,23 +24,25 @@ validpgpkeys=()
 prepare() {
     cd jfa-go
     go get github.com/swaggo/swag/cmd/swag
-    make configuration npm email version GOESBUILD=on
+    make configuration npm email GOESBUILD=on
 }
 
 build() {
-	cd jfa-go
-    make typescript bundle-css GOESBUILD=on
+	cd ${pkgname}
     export GOPATH="$(go env GOPATH)"
+	make typescript bundle-css GOESBUILD=on
     "${GOPATH}"/bin/swag init -g main.go
-    make copy internal-files compile
+    make copy external-files 
+    make compile
 }
 
 package() {
-    cd jfa-go
+    cd ${pkgname}
+    install -d "$pkgdir"/opt
+    make install DESTDIR="$pkgdir"/opt
     mkdir -p "$pkgdir"/usr/bin
-    cp build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
-    chmod 755 "$pkgdir"/usr/bin/$pkgname
-    chown root "$pkgdir"/usr/bin/$pkgname
-    mkdir -p "$pkgdir"/usr/share/licenses
+    chown -R root "$pkgdir"/opt/$pkgname/
+    chmod 755 "$pkgdir"/opt/$pkgname/$pkgname
+    ln -sf /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname 
     install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
