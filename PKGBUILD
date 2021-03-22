@@ -7,7 +7,7 @@ pkgname='ros-melodic-urdf'
 pkgver='1.13.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
