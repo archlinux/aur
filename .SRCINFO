@@ -1,6 +1,6 @@
 pkgbase = python-control-git
 	pkgdesc = Implements basic operations for analysis and design of feedback control systems in Python
-	pkgver = 662.601b581
+	pkgver = 970.6ede92e
 	pkgrel = 1
 	url = https://github.com/python-control/python-control
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-control-git
 	checkdepends = python-nose
 	checkdepends = python2-nose
 	checkdepends = python-slycot-git
+	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools

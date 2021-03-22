@@ -2,7 +2,7 @@
 
 pkgbase=python-control-git
 pkgname=('python2-control-git' 'python-control-git')
-pkgver=662.601b581
+pkgver=970.6ede92e
 pkgrel=1
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-scipy'
          'python-matplotlib')
 optdepends=('python-slycot-git: matrix equation support, model simplification tools, and state feedback')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
-checkdepends=('python-nose' 'python2-nose' 'python-slycot-git')
+checkdepends=('python-nose' 'python2-nose' 'python-slycot-git' 'xorg-server-xvfb')
 options=('staticlibs')
 source=("git+https://github.com/python-control/python-control.git"
         "LICENSE")
@@ -48,7 +48,7 @@ build() {
 
 check() {
   cd python-control
-  python setup.py test
+  xvfb-run --auto-servernum pytest control/tests
 }
 
 package_python2-control-git() {
