@@ -2,12 +2,12 @@
 
 pkgname=thesage
 pkgver=0.34.3022
-pkgrel=1
+pkgrel=2
 pkgdesc='English Dictionary and Thesaurus. A twenty-first century lexical reference system.'
 arch=('x86_64')
 url='https://www.sequencepublishing.com/1/burbridge/beta_linux.html'
 license=('All Rights Reserved')
-depends=('dotnet-runtime>=3.1')
+depends=('dotnet-runtime-3.1')
 source=("$pkgname-$pkgver.zip::https://www.sequencepublishing.com/cgi-bin/download.cgi?burbridgelinux"
         "$pkgname.desktop"
         "$pkgname.png")

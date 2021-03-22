@@ -1,11 +1,11 @@
 pkgbase = thesage
 	pkgdesc = English Dictionary and Thesaurus. A twenty-first century lexical reference system.
 	pkgver = 0.34.3022
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sequencepublishing.com/1/burbridge/beta_linux.html
 	arch = x86_64
 	license = All Rights Reserved
-	depends = dotnet-runtime>=3.1
+	depends = dotnet-runtime-3.1
 	source = thesage-0.34.3022.zip::https://www.sequencepublishing.com/cgi-bin/download.cgi?burbridgelinux
 	source = thesage.desktop
 	source = thesage.png
