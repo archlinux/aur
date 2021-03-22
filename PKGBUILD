@@ -6,7 +6,7 @@ url='http://wiki.ros.org/trac_ik_examples'
 pkgname='ros-melodic-trac-ik-examples'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(

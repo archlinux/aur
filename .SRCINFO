@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-trac-ik-examples
 	pkgdesc = ROS - This package contains the source code for testing and comparing trac_ik.
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wiki.ros.org/trac_ik_examples
 	arch = i686
 	arch = x86_64
