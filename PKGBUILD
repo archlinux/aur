@@ -7,7 +7,7 @@ pkgname='ros-melodic-orocos-kdl'
 pkgver='1.4.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('LGPL')
 
 ros_makedepends=(
