@@ -1,0 +1,13 @@
+pkgbase = ut1-blacklists-strong_redirector
+	pkgdesc = Université Toulouse 1 Capitole 'strong_redirector' blocklist: "Same as strict_redirector, but, for google, yahoo, we are only blocking some terms."
+	pkgver = 20210208
+	pkgrel = 1
+	url = https://dsi.ut-capitole.fr/blacklists/index_en.php
+	arch = any
+	groups = ut1-blacklists
+	license = CC BY-SA 4.0
+	source = ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/strong_redirector.tar.gz
+	md5sums = SKIP
+
+pkgname = ut1-blacklists-strong_redirector
+
