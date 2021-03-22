@@ -22,7 +22,7 @@ source=(
   "netcdf.m4.patch"
 )
 sha256sums=('SKIP'
-            'e6861363bc9556bc0487003c7ce1b072532b07b654b12ae294f1bdabb6187783')
+            'b6b2d10d1f423b9a088e6b55d9368d8f1ac7291646da34864c5f58124f5e3880')
 
 # Find the location of the header files of PETSc
 petsc_h=$(pacman -Ql petsc | grep -m 1 petsc.h | sed 's-^[[:alpha:]-]* --g')
