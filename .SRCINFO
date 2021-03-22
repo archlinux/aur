@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-roscpp-traits
 	pkgdesc = ROS - roscpp_traits contains the message traits code as described in MessagesTraits.
 	pkgver = 0.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/roscpp_traits
 	arch = i686
 	arch = x86_64
