@@ -1,7 +1,7 @@
 # Maintainer : Thomas Weißschuh <aur t-8ch.de>
 
 pkgname=hsqldb2-java
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="HSQLDB Java libraries, Version 2"
 arch=('any')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('java-environment')
 makedepends=('unzip' 'apache-ant' 'jdk8-openjdk')
 conflicts=('hsqldb-java')
-source=("https://downloads.sourceforge.net/project/hsqldb/hsqldb/hsqldb_2_5/hsqldb-${pkgver}.zip")
+source=("https://downloads.sourceforge.net/project/hsqldb/hsqldb/hsqldb_2_6/hsqldb-${pkgver}.zip")
 url="http://hsqldb.org/"
 
 
@@ -57,4 +57,4 @@ EOF
   chmod +x "${pkgdir}/usr/bin/"*
 }
 
-sha256sums=('d2e0b1276b43ed27fca509c7eb4c371be3685a752dc356d9cf5eed82f1e1c468')
+sha256sums=('1a1b9304997513e6a859af294d612ace08470d75e2090148b7efbca630906229')
