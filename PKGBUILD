@@ -6,11 +6,10 @@ pkgrel=1
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
 url="https://github.com/BookStackApp/BookStack"
-license=('custom')
+license=('MIT')
 depends=(
     'php7'
     'php7-gd'
-    'php7-tidy'
     'php7-fpm'
 )
 makedepends=('composer')
