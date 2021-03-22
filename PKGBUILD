@@ -6,7 +6,7 @@ pkgdesc='CAN related message types.'
 url="http://wiki.ros.org/can_msgs?distro=melodic"
 
 pkgver='0.8.5'
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('LGPL3')
 
