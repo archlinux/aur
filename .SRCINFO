@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-diagnostic-analysis
 	pkgdesc = ROS - The diagnostic_analysis package can convert a log of diagnostics data into a series of CSV files.
 	pkgver = 1.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/diagnostics_analysis
 	arch = any
 	license = BSD
