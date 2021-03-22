@@ -7,7 +7,7 @@ pkgname='ros-melodic-tf2-eigen'
 pkgver='0.6.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
