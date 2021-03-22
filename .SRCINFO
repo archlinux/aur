@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-pipeline
 	pkgdesc = ROS - image_pipeline fills the gap between getting raw images from a camera driver and higher-level vision processing.
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/image_pipeline
 	arch = i686
 	arch = x86_64
