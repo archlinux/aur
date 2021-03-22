@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
@@ -7,7 +8,7 @@
 # Contributor: Michai Coman <mihai@m1x.ro>
 
 pkgname='unetbootin'
-pkgver=700
+pkgver=702
 pkgrel=1
 pkgdesc='Create bootable Live USB drives'
 arch=('x86_64')
@@ -20,7 +21,7 @@ optdepends=('polkit: run unetbootin directly from menu')
 source=("${pkgname}-${pkgver}::${_url_source}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
 				"org.archlinux.pkexec.${pkgname}.policy")
-sha256sums=('709f1ccc9f72c664d85fbaccce38c17cb8861261e2447f2000d0d753f5ffcbd0'
+sha256sums=('95add3253d2731680a83ea464c7bbe92db864c000ae4921e141b93536b7a68f8'
             '6b99405a78ac4de80e3a20e766ce993f22c8a01e4ab50f952a10bdcc26effd3f'
             '118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c')
 
