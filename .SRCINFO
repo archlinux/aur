@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-media-export
 	pkgdesc = ROS - Placeholder package enabling generic export of media paths.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/media_export
 	arch = any
 	license = BSD
