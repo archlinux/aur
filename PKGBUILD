@@ -38,7 +38,7 @@ package() {
     chmod -R 777 ${pkgdir}/opt/${_pkgname}
     
     mkdir ${pkgdir}/usr/bin
-    mv ${srcdir}/start.sh ${pkgdir}/usr/bin/${_pkgname}
+    cp ${srcdir}/start.sh ${pkgdir}/usr/bin/${_pkgname}
     chmod a+x ${pkgdir}/usr/bin/${_pkgname}
 } 
  
