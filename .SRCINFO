@@ -1,7 +1,7 @@
 pkgbase = mediainfo-gui-qt
 	pkgdesc = Supplies technical and tag information about a video or audio file (Qt GUI interface)
-	pkgver = 19.09
-	pkgrel = 2
+	pkgver = 20.09
+	pkgrel = 1
 	url = https://mediaarea.net/en/MediaInfo
 	arch = i686
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = mediainfo-gui-qt
 	depends = qt5-base
 	provides = mediainfo-gui
 	conflicts = mediainfo-gui
-	source = mediainfo-gui-qt-19.09.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v19.09.tar.gz
+	source = mediainfo-gui-qt-20.09.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v20.09.tar.gz
 	source = kde4-service.desktop
 	source = konqueror-service.desktop
 	source = kservices5.desktop
-	md5sums = b15f687a32f40bf383b8a8466ac2205c
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = 8ae98866059890165a62ccc8989e6afccb98d69dad48022ec8b423fbb8f489d2
+	sha256sums = 3c6b9a9f798c18a7dbed17eccafb06d4f417393eeba255947009bae25aa32e47
+	sha256sums = 6c448929c66a96badfd66d347eaf0d28ad935bf1e33210f08cda75fe4295592f
+	sha256sums = a10fd186aa786bb6ae45013fe092a2a2959fdbdddebad70ae5ffc031409dd6a7
 
 pkgname = mediainfo-gui-qt
 
