@@ -5,7 +5,7 @@ url='https://wiki.ros.org/four_wheel_steering_controller'
 pkgname='ros-melodic-four-wheel-steering-controller'
 pkgver='0.17.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
