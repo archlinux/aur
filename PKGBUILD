@@ -5,7 +5,7 @@ url='https://codesuppository.blogspot.com'
 pkgname='ros-melodic-convex-decomposition'
 pkgver='0.1.12'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('MIT')
 
 ros_makedepends=(ros-melodic-catkin)

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-convex-decomposition
 	pkgdesc = ROS - Convex Decomposition Tool for Robot Model.
 	pkgver = 0.1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codesuppository.blogspot.com
 	arch = any
 	license = MIT
