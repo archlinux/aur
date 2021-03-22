@@ -14,7 +14,7 @@ options=(!strip)
 source=("https://static2.wolai.com/dist/installers/wolai-${pkgver}.AppImage"
         "start.sh")
 md5sums=("16f245da6f00148643a2ce60e49bb29d"
-         "711f08ded488ab4572df3cae9715ae14")
+         "0a949982a3b76ebe44048559cf382c2f")
 _filename=${_pkgname}-${pkgver}.AppImage
 
 prepare() {
