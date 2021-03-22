@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rospy'
 pkgname='ros-melodic-rospy'
 pkgver='1.14.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
