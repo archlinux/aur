@@ -1,7 +1,7 @@
 pkgbase = otf-bitstream-charter
 	pkgdesc = Bitstream charter fonts
 	pkgver = 20210112
-	pkgrel = 1
+	pkgrel = 2
 	url = http://practicaltypography.com/charter.html
 	arch = any
 	license = custom
