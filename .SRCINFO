@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gazebo-ros
 	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
 	pkgver = 2.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/gazebo_ros
 	arch = i686
 	arch = x86_64
