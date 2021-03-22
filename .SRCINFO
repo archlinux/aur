@@ -1,0 +1,13 @@
+pkgbase = ut1-blacklists-dating
+	pkgdesc = Université Toulouse 1 Capitole 'dating' blocklist: "Dating, matching site for single person"
+	pkgver = 20210208
+	pkgrel = 1
+	url = https://dsi.ut-capitole.fr/blacklists/index_en.php
+	arch = any
+	groups = ut1-blacklists
+	license = CC BY-SA 4.0
+	source = ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/dating.tar.gz
+	md5sums = SKIP
+
+pkgname = ut1-blacklists-dating
+
