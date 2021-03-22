@@ -3,20 +3,28 @@
 _pkgname=LightGBM
 pkgbase=lightgbm
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
 url="https://github.com/Microsoft/LightGBM"
 license=('MIT')
 depends=('boost-libs' 'ocl-icd' 'openmpi')
-makedepends=('boost' 'cmake' 'opencl-headers' 'python-setuptools')
+makedepends=('boost' 'cmake' 'opencl-headers' 'python-setuptools' 'eigen' 'fmt')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a1e64bff404f448681ee33fb131a6218c4388574b83df0d25f45e63268a03b44')
+sha256sums=('13cb5ba45f6bb26537090f40564d425a37d9b9ef7dd8b5e82d7976fe2434c771')
 
-build() {
+prepare(){
     cd "${_pkgname}-${pkgver}"
-    cmake -H. -Bbuild \
+
+    sed -i "97 a find_package(Eigen3 REQUIRED)" CMakeLists.txt
+    sed -i '98 a include_directories(${EIGEN3_INCLUDE_DIRS})' CMakeLists.txt
+
+    sed -i "s/\"..\/..\/..\/external_libs\/fmt\/include\/fmt\/format.h\"/<fmt\/format.h>/" include/LightGBM/utils/common.h
+    mkdir external_libs/fast_double_parser/include
+    curl https://raw.githubusercontent.com/lemire/fast_double_parser/ace60646c02dc54c57f19d644e49a61e7e7758ec/include/fast_double_parser.h -o external_libs/fast_double_parser/include/fast_double_parser.h
+
+    cmake -S. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
         -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
@@ -25,7 +33,10 @@ build() {
         -DUSE_OPENMP=ON \
         -DUSE_GPU=ON \
         -DUSE_MPI=ON
+}
 
+build() {
+    cd "${_pkgname}-${pkgver}"
     cmake --build build
 }
 
