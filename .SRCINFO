@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-octovis
 	pkgdesc = ROS - octovis is visualization tool for the OctoMap library based on Qt and libQGLViewer.
 	pkgver = 1.9.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://octomaphub.io
 	arch = any
 	license = GPLv2

@@ -6,7 +6,7 @@ url='https://octomaphub.io'
 pkgname='ros-melodic-octovis'
 pkgver='1.9.0'
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('GPLv2')
 
 ros_makedepends=(ros-melodic-octomap)
