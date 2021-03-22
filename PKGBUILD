@@ -4,7 +4,7 @@ url='https://wiki.ros.org/kdl_parser'
 pkgname='ros-melodic-kdl-parser'
 pkgver='1.13.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
