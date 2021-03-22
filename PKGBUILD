@@ -1,11 +1,10 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Bound incoming velocity messages according to robot velocity and acceleration limits."
 url='https://wiki.ros.org/yocs_velocity_smoother'
 
 pkgname='ros-melodic-yocs-velocity-smoother'
 pkgver='0.8.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp

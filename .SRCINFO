@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-yocs-velocity-smoother
 	pkgdesc = ROS - Bound incoming velocity messages according to robot velocity and acceleration limits.
 	pkgver = 0.8.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/yocs_velocity_smoother
 	arch = i686
 	arch = x86_64
