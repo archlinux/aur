@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://wahay.org"
 license=('GPL3')
 provides=('wahay')
-depends=('tor' 'mumble' 'xclip' 'gtk3')
+depends=('gtk3' 'mumble' 'tor' 'torsocks' 'xclip')
 optdepends=('torsocks-git')
 conflicts=('wahay' 'wahay-bin')
 
