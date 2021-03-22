@@ -1,8 +1,9 @@
-# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
+# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
+# Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 
 pkgname=obsidian-insider
 _pkgname=obsidian
-_appimagver=0.11.7
+_appimagver=0.11.9
 _appimage="${_pkgname}-${_appimagver}.asar.gz"
 pkgver=${_appimagver//-/_}
 pkgrel=1
@@ -19,8 +20,8 @@ source=(
   "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.asar.gz"
 )
 sha256sums=('38d18cc7f3c6aacaba37aecb2c27754ad6562be121d23d6eeeeeccfb85234d04'
-            '8cd2bac969bf0b394c5766a26985759ec5bc6d6cf5ce0316920dce095d964041'
-            '212400b69331b5d5b3af3388940d87e91250b37678c0c178a06f20902ffa4c29')
+            '0e132cb981e7c94b2116e94b18c6b7fcb1431be690a03b95247a5ef929ef3275'
+            '8f9b6782441c6a3bc31c033cb4bdd1216079a5f337133e1d00ce62b6c63e573c')
 
 package() {
     # Go to source directory
