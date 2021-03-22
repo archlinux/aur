@@ -6,7 +6,7 @@ url='https://wiki.ros.org/mav_planning_msgs'
 pkgname='ros-melodic-mav-planning-msgs'
 pkgver='3.3.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('ASL 2.0')
 
 ros_makedepends=(

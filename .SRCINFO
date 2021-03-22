@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mav-planning-msgs
 	pkgdesc = ROS - Messages specific to MAV planning, especially polynomial.
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/mav_planning_msgs
 	arch = i686
 	arch = x86_64
