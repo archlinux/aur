@@ -6,7 +6,7 @@ url='https://wiki.ros.org/laser_pipeline'
 pkgname='ros-melodic-laser-pipeline'
 pkgver='1.6.3'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

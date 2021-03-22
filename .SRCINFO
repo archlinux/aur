@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-laser-pipeline
 	pkgdesc = ROS - Meta-package of libraries for processing laser data, including converting laser data into 3D representations.
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/laser_pipeline
 	arch = any
 	license = BSD
