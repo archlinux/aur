@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-industrial-robot-status-interface
 	pkgdesc = ROS - Exposes ROS-Industrials RobotStatus info from hardware_interfaces for consumption by ros_control controllers.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = i686
 	arch = x86_64
