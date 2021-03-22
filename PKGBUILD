@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=devilutionx-hellfire-git
 _pkgname=devilutionX
-pkgver=1.1.0.r1300.g2e21e7ab0
+pkgver=1.1.0.r1316.ge07f5aeac
 pkgrel=1
 pkgdesc="Diablo & Hellfire devolved. An open source replacment for the original executables."
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -49,7 +49,7 @@ package() {
     install -Dm644 "${srcdir}/$_pkgname/LICENSE"  "${pkgdir}/usr/share/licenses/${_pkgname}/$_pkgname-license"
     install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/LICENSE.CharisSILB.txt"  "${pkgdir}/usr/share/licenses/${_pkgname}/CharisSILB-font-license.txt"
     # install extta mpq
-    install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/devilutionx.mpq" "${pkgdir}/opt/${_pkgname}/devilutionx"
+    install -Dm644 "${srcdir}/$_pkgname/Packaging/resources/devilutionx.mpq" "${pkgdir}/opt/${_pkgname}/devilutionx.mpq"
     # install devilutionX executable
     install -Dm755 "${srcdir}/$_pkgname/build/devilutionx" "${pkgdir}/opt/${_pkgname}/devilutionx"
     mkdir "${pkgdir}/usr/bin"
