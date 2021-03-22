@@ -1,13 +1,13 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=soniccd-git
-pkgver=r213.955e257
-pkgrel=2
+pkgver=r245.e1ffe4f
+pkgrel=1
 pkgdesc='A full decompilation of Sonic CD 2011, based on the PC remake with
 improvements & tweaks from the mobile remakes.'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-CD-11-Decompilation'
-license=('unknown')
+license=('custom:RSDKv3/4 Decompilation Source Code License v1')
 makedepends=('git')
 depends=('sdl2' 'libogg' 'libtheora' 'libvorbis')
 provides=(soniccd)
@@ -36,4 +36,5 @@ package() {
 	install -Dm644 soniccd.desktop "$pkgdir/usr/share/applications/soniccd.desktop"
 	cd "$srcdir/Sonic-CD-11-Decompilation/bin"
 	install -Dm755 soniccd "$pkgdir/usr/bin/soniccd"
+	install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
