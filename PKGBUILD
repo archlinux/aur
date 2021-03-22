@@ -20,5 +20,5 @@ validpgpkeys=()
 
 package() {
            chmod u+x ${srcdir}/hexo.sh
-           sh ${srcdir}/hexo.sh
+           sudo sh ${srcdir}/hexo.sh
 }
