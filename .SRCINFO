@@ -6,7 +6,6 @@ pkgbase = gpu-trace
 	arch = x86_64
 	license = MIT
 	depends = trace-cmd
-	optdepends = gpuvis-git
 	provides = gpu-trace
 	provides = amdgpu-trace
 	conflicts = gpu-trace

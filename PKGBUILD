@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://github.com/lostgoat/gpu-trace"
 license=('MIT')
 depends=('trace-cmd')
-optdepends=('gpuvis-git')
 provides=('gpu-trace' 'amdgpu-trace')
 conflicts=('gpu-trace' 'amdgpu-trace')
 source=("git+$url#tag=$pkgver")
