@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/joystick_drivers'
 pkgname='ros-melodic-joystick-drivers'
 pkgver='1.14.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
