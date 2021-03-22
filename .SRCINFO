@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosout
 	pkgdesc = ROS - System-wide logging mechanism for messages sent to the /rosout topic.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosout
 	arch = i686
 	arch = x86_64
