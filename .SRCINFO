@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-angular
+	pkgdesc = Angular 1.5.8 (XStatic packaging standard)
+	pkgver = 1.5.8.0
+	pkgrel = 1
+	url = http://angularjs.org/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular/XStatic-Angular-1.5.8.0.tar.gz
+	md5sums = 15384e734161d31ff18a644f9632f25b
+	sha256sums = b1dcdd7a66d3041625698bba2ac480ffc2447b05f551f10fcae2ac33139eb033
+	sha512sums = 87bc6ba1f83a12e2e57f35585ea67c6d4d78b843cc2d8dbf7db972b097f81aefa86f06b389677a7cf2f614c5ca54ebdf2289a62355b0e04847c2fac7d55423e1
+
+pkgname = python-xstatic-angular
+
+pkgname = python2-xstatic-angular
+
