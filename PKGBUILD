@@ -6,7 +6,7 @@ url='https://wiki.ros.org/openni2_launch'
 pkgname='ros-melodic-openni2-launch'
 pkgver='1.5.1'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)

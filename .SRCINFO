@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-openni2-launch
 	pkgdesc = ROS - Launch files to start the openni2_camera drivers using rgbd_launch.
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/openni2_launch
 	arch = any
 	license = BSD
