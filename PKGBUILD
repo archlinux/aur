@@ -6,7 +6,7 @@
     pkgname='ros-melodic-cartographer-ros-msgs'
     pkgver='1.0.0'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-std-msgs
