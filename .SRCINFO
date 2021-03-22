@@ -1,0 +1,16 @@
+pkgbase = ouilookup-py3
+	pkgdesc = CLI tool, Python3 module for looking up hardware MAC addresses from the published OUI source at ieee.org
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/verbnetworks/ouilookup
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python>=3.0
+	options = emptydirs
+	source = ouilookup::git://github.com/verbnetworks/ouilookup#branch=master
+	sha256sums = SKIP
+
+pkgname = ouilookup-py3
+
