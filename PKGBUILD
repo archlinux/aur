@@ -2,7 +2,7 @@
 
 _pkgname=authenticator
 pkgname=$_pkgname-git
-pkgver=4.0.2.r21.g8ac5109
+pkgver=4.0.2.r22.gb1c9dba
 pkgrel=1
 pkgdesc="2FA code generator for GNOME "
 arch=('any')
@@ -14,12 +14,10 @@ provides=('authenticator')
 conflicts=('authenticator')
 source=(
   "$_pkgname::git+https://gitlab.gnome.org/World/Authenticator.git"
-  "zbar-rust::git+https://github.com/magiclen/zbar-rust.git"
-  "0001-fix-change-minor-max-version.patch"
+  "zbar-rust::git+https://github.com/magiclen/zbar-rust.git#commit=fc38e762b93326c98db965e7fcde55c7ab024ae8"
 )
 sha256sums=('SKIP'
-            'SKIP'
-            '9b9274c9e96107793914c181034a3d9794689e98817c9cffe2e7523f7cf095c1')
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -27,9 +25,6 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/zbar-rust"
-  patch -Np1 < "../0001-fix-change-minor-max-version.patch"
-
   cd "$srcdir/$_pkgname"
   sed -i "s|zbar-rust = \"0\.0\"|zbar-rust = { path = \"$srcdir/zbar-rust\" }|g" Cargo.toml
   meson build --prefix=/usr --libdir=lib --libexecdir=lib
