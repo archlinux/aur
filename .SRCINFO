@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-ros-planning-interface
 	pkgdesc = ROS - Components of MoveIt that offer simpler interfaces to planning and execution.
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
