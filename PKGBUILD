@@ -2,11 +2,12 @@
 # Contributor: Krzysztof Bogacki <krzysztof dot bogacki at leancode dot pl>
 
 _provide_header=true
+_provide_udev_rule=true
 
 _pkgbase=winesync
 pkgname=winesync-dkms
 pkgver=5.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Wine synchronization primitive driver - out-of-tree module"
 arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
@@ -35,6 +36,10 @@ if [ "$_provide_header" = true ]; then
     provides+=("$_pkgbase-header=$pkgver")
     conflicts+=("$_pkgbase-header")
 fi
+if [ "$_provide_udev_rule" = true ]; then
+    provides+=("$_pkgbase-udev-rule=$pkgver")
+    conflicts+=("$_pkgbase-udev-rule")
+fi
 
 build() {
     kernver="$(echo "$pkgver" | sed 's/\./\\\\\\\\\\./g')"
@@ -43,12 +48,14 @@ build() {
 
 package() {
     depends=("${_depends[@]}")
-    install -Dm644 "$srcdir/99-winesync.rules" "$pkgdir/usr/lib/udev/rules.d/99-winesync.rules"
     install -Dm644 "$srcdir/Makefile" "$pkgdir/usr/src/$_pkgbase-$pkgver/Makefile"
     install -Dm644 "$srcdir/winesync.h-$_commit" "$pkgdir/usr/src/$_pkgbase-$pkgver/include/uapi/linux/winesync.h"
     install -Dm644 "$srcdir/winesync.c-$_commit" "$pkgdir/usr/src/$_pkgbase-$pkgver/src/drivers/misc/winesync.c"
     install -Dm644 "$srcdir/dkms.conf" "$pkgdir/usr/src/$_pkgbase-$pkgver/dkms.conf"
     if [ "$_provide_header" = true ]; then
         install -Dm644 "$srcdir/winesync.h-$_commit" "$pkgdir/usr/include/linux/winesync.h"
+    fi
+    if [ "$_provide_udev_rule" = true ]; then
+        install -Dm644 "$srcdir/99-winesync.rules" "$pkgdir/usr/lib/udev/rules.d/99-winesync.rules"
     fi
 }

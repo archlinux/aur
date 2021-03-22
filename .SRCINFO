@@ -1,7 +1,7 @@
 pkgbase = winesync-dkms
 	pkgdesc = Wine synchronization primitive driver - out-of-tree module
 	pkgver = 5.11
-	pkgrel = 5
+	pkgrel = 6
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync
 	arch = any
 	license = GPL2
@@ -9,7 +9,9 @@ pkgbase = winesync-dkms
 	optdepends = linux-headers: build the module for Arch kernel
 	provides = WINESYNC-MODULE=5.11
 	provides = winesync-header=5.11
+	provides = winesync-udev-rule=5.11
 	conflicts = winesync-header
+	conflicts = winesync-udev-rule
 	options = !strip
 	source = winesync.c-e97dfb6b3ee6792cd1fe8242df4dafd8f10cca99::https://repo.or.cz/linux/zf.git/blob_plain/e97dfb6b3ee6792cd1fe8242df4dafd8f10cca99:/drivers/misc/winesync.c
 	source = winesync.h-e97dfb6b3ee6792cd1fe8242df4dafd8f10cca99::https://repo.or.cz/linux/zf.git/blob_plain/e97dfb6b3ee6792cd1fe8242df4dafd8f10cca99:/include/uapi/linux/winesync.h
