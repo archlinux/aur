@@ -1,30 +1,21 @@
 pkgbase = spotify-edge-snap
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.1.55.494.gca75f788
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
 	makedepends = squashfs-tools
-	depends = alsa-lib>=1.0.14
-	depends = gtk2
-	depends = libsystemd
-	depends = desktop-file-utils
-	depends = openssl
+	depends = gtk3
+	depends = libsm
 	depends = nss
-	depends = at-spi2-atk
-	optdepends = ffmpeg-compat-57: Adds support for playback of local files
-	optdepends = zenity: Adds support for importing local files
-	optdepends = libnotify: Desktop notifications
 	provides = spotify
 	conflicts = spotify
-	options = !strip
 	source = spotify.protocol
 	source = LICENSE
 	sha512sums = 999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20
 	sha512sums = 2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615
 	source_x86_64 = https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_45.snap
-	depends_x86_64 = libcurl-gnutls
 	sha512sums_x86_64 = 5d61a2d5b26be651620ab5d18d3a204d8d7b09dcec8a733ddc176c44cb43e9176c4350933ebe4498b065ba219113f3226c13bea9659da738fe635f41d01db303
 
 pkgname = spotify-edge-snap

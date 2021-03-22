@@ -4,20 +4,15 @@ pkgname=spotify-edge-snap
 pkgver=1.1.55.494.gca75f788
 _snapid=pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7
 _revision=45
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 conflicts=('spotify')
 provides=('spotify')
 license=('custom')
 url='https://www.spotify.com'
-depends=('alsa-lib>=1.0.14' 'gtk2' 'libsystemd' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk')
-depends_x86_64=('libcurl-gnutls')
+depends=('gtk3' 'libsm' 'nss')
 makedepends=('squashfs-tools')
-optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
-            'zenity: Adds support for importing local files'
-            'libnotify: Desktop notifications')
-options=('!strip')
 source=('spotify.protocol'
         'LICENSE')
 # Get latest version info: curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/spotify
