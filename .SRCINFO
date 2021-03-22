@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-spacenav-node
 	pkgdesc = ROS - ROS interface to the 3Dconnexion SpaceNavigator 6DOF joystick.
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/spacenav_node
 	arch = i686
 	arch = x86_64
