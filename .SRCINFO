@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-pr2-common
 	pkgdesc = ROS - Metapackage for various PR2-related ROS packages
 	pkgver = 1.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/pr2_common
 	arch = any
 	license = BSD
