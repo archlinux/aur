@@ -4,7 +4,7 @@ url='https://www.wiki.ros.org/viso2'
 pkgname='ros-melodic-libviso2'
 pkgver='0.0.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('GPL')
 
 makedepends=('cmake' 'gcc-libs' 'git')
