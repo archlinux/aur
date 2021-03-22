@@ -1,5 +1,5 @@
 pkgbase = lsr-git
-	pkgdesc = List files recursively.
+	pkgdesc = Recursively list files in directories.
 	pkgver = main
 	pkgrel = 1
 	url = https://github.com/joshuahoeflich/lsr
