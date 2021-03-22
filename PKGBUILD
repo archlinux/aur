@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-planners-ompl'
 pkgver='1.0.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core

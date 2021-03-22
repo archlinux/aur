@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-planners-ompl
 	pkgdesc = ROS - MoveIt interface to OMPL.
 	pkgver = 1.0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
