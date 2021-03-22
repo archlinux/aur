@@ -4,7 +4,7 @@ url='https://www.wiki.ros.org/tf2_tools'
 pkgname='ros-melodic-tf2-tools'
 pkgver='0.6.6'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2-msgs
