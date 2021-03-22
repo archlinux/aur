@@ -5,7 +5,6 @@ pkgbase = winesync-dkms
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync
 	arch = any
 	license = GPL2
-	depends = dkms
 	optdepends = linux-headers: build the module for Arch kernel
 	provides = WINESYNC-MODULE=5.11
 	provides = winesync-header=5.11
