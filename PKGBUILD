@@ -1,26 +1,35 @@
 # Maintainer: robertfoster
 
 pkgname=python2-pynacl-git
-pkgver=1.4.0.r21.gc3279b1
+pkgver=1.4.0.r31.f6c17a3
 pkgrel=1
-pkgdesc='A simple ctypes based python binding to libsodium'
+pkgdesc='Python binding to the Networking and Cryptography (NaCl) library'
 arch=('any')
 url='http://libnacl.readthedocs.org'
 license=('APACHE')
-makedepends=(git python-setuptools python2-setuptools libsodium)
-conflicts=('python2-pynacl')
-replaces=('python2-libnacl' 'python2-pynacl')
-provides=('python2-pynacl')
-source=("$pkgname::git+https://github.com/pyca/pynacl.git")
+depends=('libsodium' 'python2' 'python2-cffi')
+makedepends=('python2-setuptools' 'python2-pycparser')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/pyca/pynacl.git")
+
+build() {
+  export SODIUM_INSTALL=system
+
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py build
+}
 
 package() {
-  cd "$srcdir/$pkgname"
-  python2 setup.py install --root="$pkgdir" -O1
+  export SODIUM_INSTALL=system
+
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname}"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 md5sums=('SKIP')

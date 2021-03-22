@@ -1,18 +1,17 @@
 pkgbase = python2-pynacl-git
-	pkgdesc = A simple ctypes based python binding to libsodium
-	pkgver = 1.4.0.r21.gc3279b1
+	pkgdesc = Python binding to the Networking and Cryptography (NaCl) library
+	pkgver = 1.4.0.r31.f6c17a3
 	pkgrel = 1
 	url = http://libnacl.readthedocs.org
 	arch = any
 	license = APACHE
-	makedepends = git
-	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	makedepends = libsodium
+	makedepends = python2-pycparser
+	depends = libsodium
+	depends = python2
+	depends = python2-cffi
 	provides = python2-pynacl
 	conflicts = python2-pynacl
-	replaces = python2-libnacl
-	replaces = python2-pynacl
 	source = python2-pynacl-git::git+https://github.com/pyca/pynacl.git
 	md5sums = SKIP
 
