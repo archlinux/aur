@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosparam
 	pkgdesc = ROS - rosparam contains the rosparam command-line tool for getting and setting ROS Parameters on the Parameter Server using YAML-encoded files.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosparam
 	arch = any
 	license = BSD
