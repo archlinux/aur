@@ -6,7 +6,7 @@ url='https://github.com/bosch-robotics-cr/tracetools'
 pkgname='ros-melodic-tracetools'
 pkgver='0.2.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('APLv2')
 
 ros_makedepends=(ros-melodic-catkin)
