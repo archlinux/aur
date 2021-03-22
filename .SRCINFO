@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-nodelet-core
 	pkgdesc = ROS - Nodelet Core Metapackage.
 	pkgver = 1.9.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wiki.ros.org/nodelet_core
 	arch = any
 	license = BSD

@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/nodelet_core'
 pkgname='ros-melodic-nodelet-core'
 pkgver='1.9.16'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
