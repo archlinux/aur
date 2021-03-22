@@ -5,7 +5,7 @@ url='https://wiki.ros.org/map_server'
 pkgname='ros-melodic-map-server'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rostest

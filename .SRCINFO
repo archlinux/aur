@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-map-server
 	pkgdesc = ROS - map_server provides the map_server ROS Node, which offers map data as a ROS Service.
 	pkgver = 1.16.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/map_server
 	arch = i686
 	arch = x86_64
