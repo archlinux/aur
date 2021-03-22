@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-sound-play
 	pkgdesc = ROS - sound_play provides a ROS node that translates commands on a ROS topic (robotsound) into sounds.
 	pkgver = 0.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/sound_play
 	arch = i686
 	arch = x86_64
