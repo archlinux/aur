@@ -5,7 +5,7 @@ url='https://wiki.ros.org/ecl_errors'
 pkgname='ros-melodic-ecl-errors'
 pkgver='0.61.6'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-ecl-license
