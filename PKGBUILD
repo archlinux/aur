@@ -6,7 +6,7 @@ url='http://www.ros.org/'
 pkgname='ros-melodic-gripper-action-controller'
 pkgver='0.17.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

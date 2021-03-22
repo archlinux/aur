@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gripper-action-controller
 	pkgdesc = ROS - The gripper_action_controller package.
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = i686
 	arch = x86_64
