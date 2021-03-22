@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-panda-moveit-config
 	pkgdesc = Franka Emika Panda MoveIt! Config Package
 	pkgver = 0.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/panda_moveit_config
 	arch = i686
 	arch = x86_64
