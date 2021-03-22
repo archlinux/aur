@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-publisher
 	pkgdesc = ROS - Contains a node publish an image stream from single image file or avi motion file.
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/image_publisher
 	arch = i686
 	arch = x86_64
