@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python2'
          'python2-beautifulsoup3')
 makedepends=('python2-distribute')
-source=("http://pypi.python.org/packages/source/p/$_realname/$_realname-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/p/$_realname/$_realname-$pkgver.tar.gz")
 md5sums=('cdfec252158c5047b626861900186dfb')
 
 package(){
