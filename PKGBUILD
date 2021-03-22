@@ -1,7 +1,8 @@
 # Mainteiner: Perseo <pgutierrez@gmail.com>
+
 pkgname=xsct-git
 _pkgname=xsct
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 gitname=sct
 

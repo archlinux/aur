@@ -1,6 +1,6 @@
 pkgbase = xsct-git
 	pkgdesc = Improved sct (set screen color temperature)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/faf0/sct
 	arch = i686
