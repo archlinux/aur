@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rviz-plugin-tutorials
 	pkgdesc = ROS - Tutorials showing how to write plugins for RViz.
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rviz_plugin_tutorials
 	arch = any
 	license = BSD
