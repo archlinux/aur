@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-publisher
 	pkgdesc = ROS - rqt_publisher provides a GUI plugin for publishing arbitrary messages with fixed or computed field values.
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rqt_publisher
 	arch = any
 	license = BSD
