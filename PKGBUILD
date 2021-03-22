@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosbag_migration_rule'
 pkgname='ros-melodic-rosbag-migration-rule'
 pkgver='1.0.0'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
