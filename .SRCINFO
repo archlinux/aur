@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
 	pkgver = 2021.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qgroundcontrol.org/mavlink/
 	arch = any
 	license = LGPLv3

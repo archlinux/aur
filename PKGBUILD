@@ -6,7 +6,7 @@ url='https://qgroundcontrol.org/mavlink/'
 pkgname='ros-melodic-mavlink'
 pkgver='2021.3.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('LGPLv3')
 
 ros_makedepends=()
