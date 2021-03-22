@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-bond-core
 	pkgdesc = ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing.
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/bond_core
 	arch = i686
 	arch = x86_64

@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/bond_core'
 pkgname='ros-melodic-bond-core'
 pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
