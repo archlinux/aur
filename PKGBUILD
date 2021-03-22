@@ -55,7 +55,7 @@ pkgbase=linux-xanmod
 pkgver=5.11.8
 _major=5.11
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -85,7 +85,7 @@ done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'SKIP'
-            'fbf3d516a0df8944cdf8a340c5f365bfed7d63eedc76601a3ad84eb6c1a2ce33'
+            'da09a7132d9fd41237981aaea02556b4cda4a7e2dd102a0f52552039cde38d15'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
