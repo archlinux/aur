@@ -6,7 +6,7 @@ url='http://wiki.ros.org/trac_ik_kinematics_plugin'
 pkgname='ros-melodic-trac-ik-kinematics-plugin'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

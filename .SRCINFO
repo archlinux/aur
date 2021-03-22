@@ -1,8 +1,8 @@
 pkgbase = ros-melodic-trac-ik-kinematics-plugin
 	pkgdesc = ROS - A MoveIt! Kinematics plugin using TRAC-IK.
 	pkgver = 1.5.1
-	pkgrel = 1
-	url = http://www.ros.org/
+	pkgrel = 2
+	url = http://wiki.ros.org/trac_ik_kinematics_plugin
 	arch = i686
 	arch = x86_64
 	arch = aarch64
