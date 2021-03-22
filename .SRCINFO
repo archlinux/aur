@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros-controllers
 	pkgdesc = ROS - Library of ros controllers.
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/ros_controllers
 	arch = i686
 	arch = x86_64
