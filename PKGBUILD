@@ -7,7 +7,7 @@ pkgname='ros-melodic-diagnostic-common-diagnostics'
 pkgver='1.9.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
