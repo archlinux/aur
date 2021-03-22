@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-turtlebot3
 	pkgdesc = ROS - ROS packages for the Turtlebot3 (meta package)
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtlebot3
 	arch = any
 	license = Apache-2.0, BSD

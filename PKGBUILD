@@ -4,7 +4,7 @@ url='https://wiki.ros.org/turtlebot3'
 pkgname='ros-melodic-turtlebot3'
 pkgver='1.2.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache-2.0, BSD')
 
 ros_makedepends=(
