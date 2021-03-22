@@ -5,7 +5,7 @@ url='https://wiki.ros.org/nav_core'
 pkgname='ros-melodic-nav-core'
 pkgver='1.16.7'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
