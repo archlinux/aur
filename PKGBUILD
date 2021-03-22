@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/joshuahoeflich/lsr/archive/main.tar.gz")
 noextract=()
-md5sums=('b7a9e4a0e5ae141868b195e5fc916381')
+md5sums=('da8293111d8ae975b31bceeab71e89d5')
 
 build() {
   cd "$pkgname-$pkgver"
