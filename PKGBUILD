@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-rainbow-cursor-theme
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Material Based Cursor Theme: Rainbow"
 arch=('any')
 url="https://github.com/ful1e5/Bibata_Cursor_Rainbow"
