@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosserial-python
 	pkgdesc = ROS - A Python-based implementation of the rosserial protocol.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosserial_python
 	arch = any
 	license = BSD
