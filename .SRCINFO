@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-depth-image-proc
 	pkgdesc = ROS - Contains nodelets for processing depth images such as those produced by OpenNI camera.
 	pkgver = 1.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/depth_image_proc
 	arch = i686
 	arch = x86_64
