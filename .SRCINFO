@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mbf-msgs
 	pkgdesc = ROS - The move_base_flex messages package providing the action definition files for the action GetPath, ExePath, Recovery and MoveBase.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = 3-Clause BSD

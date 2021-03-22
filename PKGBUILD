@@ -6,7 +6,7 @@
     pkgname='ros-melodic-mbf-msgs'
     pkgver='0.3.4'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('3-Clause BSD')
 
     ros_makedepends=(ros-melodic-message-generation
