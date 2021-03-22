@@ -5,9 +5,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-_pkgver=7.1.0
+_pkgver=7.2.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=9
+pkgrel=1
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -18,16 +18,10 @@ makedepends=(extra-cmake-modules doxygen eigen boost kdoctools)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
             'rawtherapee: RAW import' 'darktable: RAW import'
             'perl: for digitaglinktree')
-source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$_pkgver.tar.xz"{,.sig}
-         showfoto-configure-crash.patch::"https://invent.kde.org/graphics/digikam/-/commit/c79a1c6b.patch")
-sha256sums=('b103c8463adf04939583199e13f8e83015d8a4a9ad79ebfd502d2a50b5a5abbe'
-            'SKIP'
-            '86f775473462087f24fcf72257ba6f0b6001dca729fb7225ac38e88cd7a5f338')
+source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$_pkgver.tar.xz"{,.sig})
+sha256sums=('cd87ece143aefa02e692a4af5c3c3cc107b9a4d61804d79fa77dd2e344798a17'
+            'SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
-
-prepare() {
-  patch -d $pkgname-$_pkgver -p1 -i ../showfoto-configure-crash.patch # Fix crash on showfoto configuration
-}
 
 build() {
   cmake -B build -S $pkgname-$_pkgver \
