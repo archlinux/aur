@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/joshuahoeflich/${pkgname}/archive/main.tar.gz")
+source=("https://github.com/joshuahoeflich/lsr/archive/main.tar.gz")
 noextract=()
 md5sums=('b7a9e4a0e5ae141868b195e5fc916381')
 
