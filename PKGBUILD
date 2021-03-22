@@ -2,8 +2,8 @@
 # Contributor: David Vogt <d@408.ch>
 
 pkgname=git-bug
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64')
 url="https://github.com/MichaelMure/${pkgname%-git}"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('git')
 makedepends=('go')
 optdepends=('xdg-utils: open bugs in browser')
-source=("git+${url}.git#commit=2d64b85db71a17ff3277bbbf7ac9d8e81f8e416c")
+source=("git+${url}.git#commit=cc4a93c8ce931b1390c61035b888ad17110b7bd6")
 sha256sums=('SKIP')
 
 build() {
