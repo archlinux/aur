@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gazebo-plugins
 	pkgdesc = ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
 	pkgver = 2.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/gazebo_plugins
 	arch = i686
 	arch = x86_64
