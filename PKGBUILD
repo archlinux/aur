@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/bond'
 pkgname='ros-melodic-bond'
 pkgver='1.8.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
