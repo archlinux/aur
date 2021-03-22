@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-actionlib-msgs
 	pkgdesc = ROS - actionlib_msgs defines the common messages to interact with an action server and an action client.
 	pkgver = 1.12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/actionlib_msgs
 	arch = any
 	license = BSD

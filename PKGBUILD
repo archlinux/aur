@@ -6,7 +6,7 @@ url='https://wiki.ros.org/actionlib_msgs'
 pkgname='ros-melodic-actionlib-msgs'
 pkgver='1.12.8'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
