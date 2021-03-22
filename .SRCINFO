@@ -3,6 +3,7 @@ pkgbase = 1password-bin
 	pkgver = 8.0.30
 	pkgrel = 1
 	url = https://1password.com/
+	install = 1password.install
 	arch = x86_64
 	license = custom:LicenseRef-1Password-Proprietary
 	depends = libxss
