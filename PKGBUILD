@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=xcursor-pro-cursor-theme
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern X11 Cursor Theme"
 arch=('any')
 url="https://www.pling.com/p/1481466"

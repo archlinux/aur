@@ -1,7 +1,7 @@
 pkgbase = xcursor-pro-cursor-theme
 	pkgdesc = Modern X11 Cursor Theme
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pling.com/p/1481466
 	arch = any
 	license = GPL3
