@@ -1,5 +1,5 @@
 # Maintainer: <mumei AT airmail DOT cc>
-pkgname=vul-complete
+pkgname=vul-complete-git
 pkgver=r1
 pkgrel=1
 pkgdesc="Latin Clementine Vulgate Bible in the terminal"

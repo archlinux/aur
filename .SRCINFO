@@ -1,4 +1,4 @@
-pkgbase = vul-complete
+pkgbase = vul-complete-git
 	pkgdesc = Latin Clementine Vulgate Bible in the terminal
 	pkgver = r1
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = vul-complete
 	source = vul-complete::git+https://github.com/theunpleasantowl/vul-complete
 	md5sums = SKIP
 
-pkgname = vul-complete
+pkgname = vul-complete-git
 
