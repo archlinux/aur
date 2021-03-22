@@ -6,7 +6,7 @@ url='https://wiki.ros.org/mavros_msgs'
 pkgname='ros-melodic-mavros-msgs'
 pkgver='1.6.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(
