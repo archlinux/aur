@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosserial-server
 	pkgdesc = ROS - A more performance- and stability-oriented server alternative implemented in C++ to rosserial_python.
 	pkgver = 0.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.ros.org/rosserial_server
 	arch = i686
 	arch = x86_64

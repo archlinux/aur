@@ -5,7 +5,7 @@ url='https://wiki.ros.org/rosserial_server'
 pkgname='ros-melodic-rosserial-server'
 pkgver='0.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('BSD')
 
 ros_makedepends=(
