@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-tf
 	pkgdesc = ROS - tf is a package that lets the user keep track of multiple coordinate frames over time.
 	pkgver = 1.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ros/geometry
 	arch = i686
 	arch = x86_64
