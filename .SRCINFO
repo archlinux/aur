@@ -1,0 +1,19 @@
+pkgbase = argos-translate-git
+	pkgdesc = Offline neural machine translation library and GUI.
+	pkgver = r231.8c4e64e
+	pkgrel = 1
+	url = https://github.com/argosopentech/argos-translate
+	install = argos-translate-git.install
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-pip
+	provides = argos-translate
+	provides = argos-translate-cli
+	source = git+https://github.com/argosopentech/argos-translate.git
+	sha256sums = SKIP
+
+pkgname = argos-translate-git
+
