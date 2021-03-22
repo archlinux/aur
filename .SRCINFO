@@ -1,0 +1,20 @@
+pkgbase = midibench-git
+	pkgdesc = MIDI tool for developers
+	pkgver = 15.16e806d
+	pkgrel = 1
+	url = https://github.com/jpcima/midibench
+	arch = x86_64
+	license = Boost
+	makedepends = git
+	makedepends = meson
+	depends = glew
+	depends = rtmidi
+	depends = sdl2
+	depends = sdl_image
+	provides = midibench
+	conflicts = midibench
+	source = midibench-git::git+https://github.com/jpcima/midibench
+	sha512sums = SKIP
+
+pkgname = midibench-git
+
