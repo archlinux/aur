@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-unique-identifier
 	pkgdesc = ROS - ROS messages and interfaces for universally unique identifiers.
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/unique_identifier
 	arch = any
 	license = BSD
