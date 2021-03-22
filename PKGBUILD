@@ -3,7 +3,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r2415.fbde894
+pkgver=r2457.d54d0b3
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -24,7 +24,7 @@ optdepends=(
   'crunch: A wordlist generator where you can specify a standard character set or a character set you specify and generate all possible combinations and permutations'
   'curl: An URL retrieval utility and library'
   'dhcp: A DHCP server, client, and relay agent'
-  'dsniff: Collection of tools for network auditing and penetration testing'
+  'dnsmasq: Lightweight, easy to configure DNS forwarder and DHCP server'
   'ethtool: Utility for controlling network drivers and hardware'
   'ettercap: A network sniffer/interceptor/logger for ethernet LANs'
   'hashcat: Multithreaded advanced password recovery utility'

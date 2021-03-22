@@ -1,6 +1,6 @@
 pkgbase = airgeddon-git
 	pkgdesc = Multi-use bash script for Linux systems to audit wireless networks
-	pkgver = r2388.15a44bb
+	pkgver = r2415.fbde894
 	pkgrel = 1
 	url = https://github.com/v1s1t0r1sh3r3/airgeddon
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = airgeddon-git
 	optdepends = crunch: A wordlist generator where you can specify a standard character set or a character set you specify and generate all possible combinations and permutations
 	optdepends = curl: An URL retrieval utility and library
 	optdepends = dhcp: A DHCP server, client, and relay agent
-	optdepends = dsniff: Collection of tools for network auditing and penetration testing
+	optdepends = dnsmasq: Lightweight, easy to configure DNS forwarder and DHCP server
 	optdepends = ethtool: Utility for controlling network drivers and hardware
 	optdepends = ettercap: A network sniffer/interceptor/logger for ethernet LANs
 	optdepends = hashcat: Multithreaded advanced password recovery utility
