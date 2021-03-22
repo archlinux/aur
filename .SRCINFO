@@ -1,6 +1,6 @@
 pkgbase = instawow
 	pkgdesc = Package manager for World of Warcraft
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/layday/instawow
 	arch = x86_64
@@ -42,8 +42,8 @@ pkgbase = instawow
 	conflicts = python-yarl-gns3
 	conflicts = python-aiohttp-gns3
 	conflicts = python-prompt_toolkit-gns3
-	source = https://files.pythonhosted.org/packages/source/i/instawow/instawow-1.22.0.tar.gz
-	sha256sums = b36d015573d33c0632e085424fbe9482ea2b8b6a6989e292229cfe139d7c9e72
+	source = https://files.pythonhosted.org/packages/source/i/instawow/instawow-1.22.1.tar.gz
+	sha256sums = 6cef4f9a9ee041d15d0aab41250030f491974b3c66b86436f8971e69f41d5600
 
 pkgname = instawow
 
