@@ -1,6 +1,6 @@
 pkgbase = dfhack-twbt
 	pkgdesc = memory hacking library for Dwarf Fortress and a set of tools that use it
-	pkgver = 0.47.04
+	pkgver = 0.47.05
 	pkgrel = 10
 	url = https://dfhack.readthedocs.io/en/stable/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dfhack-twbt
 	makedepends = python-sphinx
 	makedepends = perl-xml-libxml
 	makedepends = perl-xml-libxslt
-	depends = dwarffortress=0.47.04
+	depends = dwarffortress=0.47.05
 	depends = lua
 	depends = protobuf
 	depends = libpng12
@@ -26,8 +26,8 @@ pkgbase = dfhack-twbt
 	conflicts = dfhack-git
 	conflicts = dfhack-twbt-bin
 	conflicts = dfhack
-	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.04-r3
-	source = twbt::git+https://github.com/thurin/df-twbt#branch=04704
+	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.05-r1
+	source = twbt::git+https://github.com/thurin/df-twbt#branch=04705
 	source = dfhack.sh
 	source = dfhack-run.sh
 	source = colors.txt

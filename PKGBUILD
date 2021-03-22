@@ -3,8 +3,8 @@
 # shellcheck disable=2148
 
 pkgname=dfhack-twbt
-pkgver=0.47.04
-_pkgver=$pkgver-r3
+pkgver=0.47.05
+_pkgver=$pkgver-r1
 _twbtver=v6.61
 pkgrel=10
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
@@ -17,7 +17,7 @@ makedepends=('cmake' 'git' 'python-sphinx' 'perl-xml-libxml' 'perl-xml-libxslt')
 conflicts=('dfhack-bin' 'dfhack-git' 'dfhack-twbt-bin' 'dfhack')
 
 source=("dfhack::git+https://github.com/DFHack/dfhack#tag=$_pkgver"
-        "twbt::git+https://github.com/thurin/df-twbt#branch=04704"
+        "twbt::git+https://github.com/thurin/df-twbt#branch=04705"
         dfhack.sh
         dfhack-run.sh
         colors.txt
