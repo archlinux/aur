@@ -6,7 +6,7 @@ url='http://wiki.ros.org/geometric_shapes'
 pkgname='ros-melodic-geometric-shapes'
 pkgver='0.6.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-resource-retriever
