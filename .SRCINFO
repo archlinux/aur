@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-planners
 	pkgdesc = ROS - Metapacakge that installs all available planners for MoveIt.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
