@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-pcl-conversions
 	pkgdesc = ROS - Provides conversions from PCL data types and ROS message types.
 	pkgver = 1.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/pcl_conversions
 	arch = i686
 	arch = x86_64

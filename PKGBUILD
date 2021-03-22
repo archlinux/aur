@@ -6,7 +6,7 @@ url='https://wiki.ros.org/pcl_conversions'
 pkgname='ros-melodic-pcl-conversions'
 pkgver='1.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
