@@ -6,7 +6,7 @@ url='https://wiki.ros.org/slime_wrapper'
 pkgname='ros-melodic-slime-wrapper'
 pkgver='0.4.16'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Public domain')
 
 ros_makedepends=(ros-melodic-catkin)
