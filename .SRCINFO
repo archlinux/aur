@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-fake-controller-manager
 	pkgdesc = ROS - A fake controller manager plugin for MoveIt.
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
