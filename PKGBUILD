@@ -6,7 +6,7 @@ url='https://github.com/ros-controls/ros_control/wiki'
 pkgname='ros-melodic-hardware-interface'
 pkgver='0.18.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
