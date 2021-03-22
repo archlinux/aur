@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/rosconsole_bridge'
 pkgname='ros-melodic-rosconsole-bridge'
 pkgver='0.5.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
