@@ -2,12 +2,12 @@
 
 pkgname=authselect
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Authselect is a tool to select system authentication and identity sources from a list of supported profiles."
 arch=('i686' 'x86_64')
 url="https://github.com/authselect/authselect"
 license=('GPL3')
-depends=('popt' 'asciidoc')
+depends=('popt' 'asciidoc' 'libselinux')
 provides=('authconfig')
 conflicts=('authconfig')
 makedepends=()

@@ -1,13 +1,14 @@
 pkgbase = authselect
 	pkgdesc = Authselect is a tool to select system authentication and identity sources from a list of supported profiles.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/authselect/authselect
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = popt
 	depends = asciidoc
+	depends = libselinux
 	provides = authconfig
 	conflicts = authconfig
 	source = https://github.com/authselect/authselect/archive/refs/tags/1.2.2.tar.gz
