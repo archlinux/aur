@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-easy-markers
 	pkgdesc = ROS - Python library to assist in publishing markers easily.
 	pkgver = 0.2.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.ros.org/easy_markers
 	arch = any
 	license = BSD
