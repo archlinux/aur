@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-graph
 	pkgdesc = ROS - rqt_graph provides a GUI plugin for visualizing the ROS computation graph.
 	pkgver = 0.4.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rqt_graph
 	arch = any
 	license = BSD
