@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-common-tutorials
 	pkgdesc = ROS - Metapackage that contains common tutorials.
 	pkgver = 0.1.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/common_tutorials
 	arch = any
 	license = BSD
