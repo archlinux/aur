@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros-tutorials
 	pkgdesc = ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features.
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/ros_tutorials
 	arch = i686
 	arch = x86_64
