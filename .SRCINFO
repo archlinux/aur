@@ -1,0 +1,13 @@
+pkgbase = lsr-git
+	pkgdesc = List files recursively.
+	pkgver = main
+	pkgrel = 1
+	url = https://github.com/joshuahoeflich/lsr
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/joshuahoeflich/lsr-git/archive/main.tar.gz
+	md5sums = b7a9e4a0e5ae141868b195e5fc916381
+
+pkgname = lsr-git
+
