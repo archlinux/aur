@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-hector-gazebo-plugins
 	pkgdesc = ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector.
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/hector_gazebo_plugins
 	arch = i686
 	arch = x86_64

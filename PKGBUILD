@@ -6,7 +6,7 @@ url='https://wiki.ros.org/hector_gazebo_plugins'
 pkgname='ros-melodic-hector-gazebo-plugins'
 pkgver='0.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
