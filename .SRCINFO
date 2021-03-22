@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-slime-ros
 	pkgdesc = ROS - Extensions for slime to assist in working with ROS packages.
 	pkgver = 0.4.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/slime_ros
 	arch = any
 	license = Public Domain

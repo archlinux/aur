@@ -6,7 +6,7 @@ url='https://wiki.ros.org/slime_ros'
 pkgname='ros-melodic-slime-ros'
 pkgver='0.4.16'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Public Domain')
 
 ros_makedepends=(ros-melodic-catkin)
