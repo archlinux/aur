@@ -6,7 +6,7 @@ url='https://github.com/ros/diagnostics'
 pkgname='ros-melodic-rosdiagnostic'
 pkgver='1.9.7'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
