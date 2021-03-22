@@ -1,7 +1,7 @@
 pkgbase = mtasc-bin
 	pkgdesc = Motion-Twin ActionScript 2 Compiler
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tech.motion-twin.com/mtasc.html
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=mtasc-bin
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Motion-Twin ActionScript 2 Compiler"
 arch=('i686' 'x86_64')
 url="http://tech.motion-twin.com/${pkgname%-bin}.html"
@@ -14,5 +14,6 @@ package() {
 	install -Dm755 -t "$pkgdir/usr/bin/" "$srcdir/${pkgname%-bin}"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" "$srcdir/CHANGES.txt" "$srcdir/Future.txt"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/Readme.txt"
-	# TODO: Install std?
+	install -d "$pkgdir/usr/share/$pkgname/"
+	cp -r -t "$pkgdir/usr/share/$pkgname/" "$srcdir/std"*
 }
