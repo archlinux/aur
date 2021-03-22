@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosbaglive'
 pkgname='ros-melodic-rosbaglive'
 pkgver='0.2.6'
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosbag
