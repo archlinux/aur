@@ -7,7 +7,7 @@ url='https://wiki.ros.org/costmap_prohibition_layer'
 pkgname='ros-melodic-costmap-prohibition-layer'
 pkgver='0.0.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-costmap-prohibition-layer
 	pkgdesc = ROS - Package that implemets a costmap layer to add prohibited areas to the costmap-2D by a user configuration.
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/costmap_prohibition_layer
 	arch = i686
 	arch = x86_64
