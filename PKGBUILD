@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/wiimote'
 pkgname='ros-melodic-wiimote'
 pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('GPL')
 
 ros_makedepends=(ros-melodic-genmsg
