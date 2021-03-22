@@ -7,7 +7,7 @@ pkgname='ros-melodic-actionlib-tutorials'
 pkgver='0.1.11'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
