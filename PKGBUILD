@@ -6,7 +6,7 @@ pkgdesc='Generic CAN interface description with helpers for filtering and driver
 url="http://wiki.ros.org/socketcan_interface?distro=melodic"
 
 pkgver='0.8.5'
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL3')
 
