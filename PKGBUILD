@@ -5,7 +5,7 @@ url='https://sourceforge.net/projects/ivcon/'
 pkgname='ros-melodic-ivcon'
 pkgver='0.1.7'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('GPL')
 
 ros_makedepends=(ros-melodic-catkin)

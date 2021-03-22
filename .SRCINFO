@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ivcon
 	pkgdesc = ROS - Mesh Conversion Utility Used to generate .iv files from .stl files.
 	pkgver = 0.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/ivcon/
 	arch = any
 	license = GPL
