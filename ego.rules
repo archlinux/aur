@@ -1,8 +1,0 @@
-/* Allow users in 'ego-users' group to invoke commands as 'ego' */
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.freedesktop.machine1.host-shell" &&
-        action.lookup("user") == "ego" &&
-        subject.isInGroup("ego-users")) {
-            return polkit.Result.YES;
-    }
-});

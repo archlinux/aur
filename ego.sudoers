@@ -1,2 +1,0 @@
-# Allow users in 'ego-users' group to invoke commands as 'ego'
-%ego-users      ALL=(ego) NOPASSWD:ALL
