@@ -4,7 +4,7 @@ url='https://wiki.ros.org/teleop_twist_joy'
 pkgname='ros-melodic-teleop-twist-joy'
 pkgver='0.1.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
