@@ -14,7 +14,7 @@ conflicts=('spotify')
 provides=('spotify')
 license=('custom')
 url='https://www.spotify.com'
-depends=('gtk3' 'libcurl-gnutl' 'libsm' 'nss')
+depends=('gtk3' 'libcurl-gnutls' 'libsm' 'nss')
 makedepends=('squashfs-tools')
 source=('spotify.protocol'
         'LICENSE')
