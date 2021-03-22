@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-diagnostic-updater
 	pkgdesc = ROS - diagnostic_updater contains tools for easily updating diagnostics.
 	pkgver = 1.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/diagnostic_updater
 	arch = i686
 	arch = x86_64
