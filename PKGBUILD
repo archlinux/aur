@@ -6,7 +6,7 @@ url='https://wiki.ros.org/roslz4'
 pkgname='ros-melodic-roslz4'
 pkgver='1.14.10'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
