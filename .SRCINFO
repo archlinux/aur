@@ -1,13 +1,13 @@
 pkgbase = smug
 	pkgdesc = A session manager for tmux written in Go
-	pkgver = 0.1.9
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/ivaaaan/smug
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/ivaaaan/smug/archive/v0.1.9.tar.gz
-	sha256sums = 90babce69f4687f7937a813228f19ab4659c2cdf85f31e29a3ecac5bb07f71a3
+	source = https://github.com/ivaaaan/smug/archive/v0.2.tar.gz
+	sha256sums = bef59b1e068440e0aaf9a7c7652effca7037c3e2f7ad8d7d677850436efbaabf
 
 pkgname = smug
 
