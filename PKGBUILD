@@ -2,7 +2,7 @@
 # Maintainer: neko <hi@neko.vg>
 
 pkgname=pounce
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc='A a multi-client, TLS-only IRC bouncer using a multiple-consumer ring buffer and the IRCv3.2 server-time extension to communicate with clients.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://git.causal.agency/${pkgname}/"
 license=('GPL3')
 depends=('libretls')
 source=("https://git.causal.agency/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-md5sums=('16c5821533b3c512b4261bf23414e3e2')
+md5sums=('f9b78815ca4bc82ca3f840e67e736bf2')
 
 build() {
       cd "${pkgname}-${pkgver}"

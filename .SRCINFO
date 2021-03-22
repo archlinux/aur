@@ -1,13 +1,13 @@
 pkgbase = pounce
 	pkgdesc = A a multi-client, TLS-only IRC bouncer using a multiple-consumer ring buffer and the IRCv3.2 server-time extension to communicate with clients.
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://git.causal.agency/pounce/
 	arch = x86_64
 	license = GPL3
 	depends = libretls
-	source = https://git.causal.agency/pounce/snapshot/pounce-2.2.tar.gz
-	md5sums = 16c5821533b3c512b4261bf23414e3e2
+	source = https://git.causal.agency/pounce/snapshot/pounce-2.3.tar.gz
+	md5sums = f9b78815ca4bc82ca3f840e67e736bf2
 
 pkgname = pounce
 
