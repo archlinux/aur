@@ -6,7 +6,7 @@ url='https://wiki.ros.org/srdfdom'
 pkgname='ros-melodic-srdfdom'
 pkgver='0.5.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-urdfdom-py
