@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-message-generation
 	pkgdesc = ROS - Package modeling the build-time dependencies for generating language bindings of messages.
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ros/message_generation
 	arch = i686
 	arch = x86_64
