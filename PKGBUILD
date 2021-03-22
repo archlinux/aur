@@ -6,7 +6,7 @@ _commit=dfe4fa9e5d0b0032fe29319197f7b8b2669a244d
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -130,6 +130,7 @@ source=(
     proton-user_compat_data.patch
     dxvk-extraopts.patch
     vkd3d-extraopts.patch
+    patches-remove_leftover_patch.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.bz2
@@ -189,10 +190,7 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-
-    pushd wine
-    git revert --no-edit 290c9a4d6372cee046768eccd8fa49050a294f68
-    popd
+    patch -p1 -i "$srcdir"/patches-remove_leftover_patch.patch
     ./patches/protonprep-nofshack.sh
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
@@ -343,4 +341,6 @@ sha256sums=('SKIP'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473'
-            '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a')
+            '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a'
+            '28818da77650aa45d655f84900b3fc33f8f4b40a4133b301069a8753a18f3e3b'
+)

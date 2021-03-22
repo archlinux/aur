@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
 	pkgver = 6.4.GE.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -216,6 +216,7 @@ pkgbase = proton-ge-custom
 	source = proton-user_compat_data.patch
 	source = dxvk-extraopts.patch
 	source = vkd3d-extraopts.patch
+	source = patches-remove_leftover_patch.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -247,6 +248,7 @@ pkgbase = proton-ge-custom
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
 	sha256sums = 23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473
 	sha256sums = 7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a
+	sha256sums = 28818da77650aa45d655f84900b3fc33f8f4b40a4133b301069a8753a18f3e3b
 
 pkgname = proton-ge-custom
 
