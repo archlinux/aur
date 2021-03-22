@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-desktop
 	pkgdesc = ROS - A metapackage to aggregate several packages.
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ros/metapackages
 	arch = any
 	license = BSD
