@@ -7,7 +7,7 @@ pkgname='ros-melodic-smach-ros'
 pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
