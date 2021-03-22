@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotors-evaluation
 	pkgdesc = ROS - The dataset evaluation package for the RotorS simulator.
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rotors_evaluation
 	arch = i686
 	arch = x86_64
