@@ -1,7 +1,7 @@
 pkgbase = util-linux-aes
 	pkgdesc = Miscellaneous system utilities for Linux, with loop-AES support
 	pkgver = 2.36.2
-	pkgrel = 1.2
+	pkgrel = 1.3
 	url = https://github.com/karelzak/util-linux
 	install = util-linux-aes.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = util-linux-aes
 	makedepends = python
 	makedepends = libcap-ng
 	makedepends = libxcrypt
+	makedepends = gtk-doc
 	options = strip
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.2.tar.xz
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.2.tar.sign
