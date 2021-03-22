@@ -7,7 +7,7 @@ pkgname='ros-melodic-qwt-dependency'
 pkgver='1.1.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
