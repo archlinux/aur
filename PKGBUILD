@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/openni_launch'
 pkgname='ros-melodic-openni-launch'
 pkgver='1.11.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nodelet

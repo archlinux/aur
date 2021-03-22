@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-openni-launch
 	pkgdesc = ROS - Drivers for the Microsoft Kinect, Asus Xtion, and Primesense Devices.
 	pkgver = 1.11.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.wiki.ros.org/openni_launch
 	arch = i686
 	arch = x86_64
