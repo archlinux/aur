@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-bootstrap-scss
+	pkgdesc = Bootstrap-SCSS 3.4.1 (XStatic packaging standard)
+	pkgver = 3.4.1.0
+	pkgrel = 1
+	url = https://github.com/twbs/bootstrap-sass
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-bootstrap
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-bootstrap
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Bootstrap-SCSS/XStatic-Bootstrap-SCSS-3.4.1.0.tar.gz
+	md5sums = 01b41f33c6c57d1a5d59f41ce360bdd0
+	sha256sums = 5cb56f0090cb6489d643730de57c68d8a6714f2b9fe526ac89bb68f5d77dfe10
+	sha512sums = feb615cfed466cfdab62402cc544578395ad0827f8618ae59af3c1e72059e094a32367f624a50efe06fba44bf03d5101ef75e643abda8368eb9468c4a1b162c6
+
+pkgname = python-xstatic-bootstrap-scss
+
+pkgname = python2-xstatic-bootstrap-scss
+
