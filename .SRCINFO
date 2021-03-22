@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-bag
 	pkgdesc = ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS bag files.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt_bag
 	arch = any
 	license = BSD
