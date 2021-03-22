@@ -6,7 +6,7 @@ url='https://wiki.ros.org/navigation'
 pkgname='ros-melodic-navigation'
 pkgver='1.16.7'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD' 'LGPL')
 
 ros_makedepends=(
