@@ -4,7 +4,7 @@ url='https://ompl.kavrakilab.org'
 pkgname='ros-melodic-ompl'
 pkgver='1.4.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=()
