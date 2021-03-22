@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-executive-smach
 	pkgdesc = ROS - This metapackage depends on the SMACH library and ROS SMACH integration packages.
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/executive_smach
 	arch = any
 	license = BSD
