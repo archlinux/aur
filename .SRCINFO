@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-visualization-tutorials
 	pkgdesc = ROS - Metapackage referencing tutorials related to rviz and visualization.
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/visualization_tutorials
 	arch = any
 	license = BSD
