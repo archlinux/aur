@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-pluginlib
 	pkgdesc = ROS - The pluginlib package provides tools for writing and dynamically loading plugins using the ROS build infrastructure.
 	pkgver = 1.12.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.ros.org/wiki/pluginlib
 	arch = i686
 	arch = x86_64

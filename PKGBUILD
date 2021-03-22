@@ -6,7 +6,7 @@ url='http://www.ros.org/wiki/pluginlib'
 pkgname='ros-melodic-pluginlib'
 pkgver='1.12.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
