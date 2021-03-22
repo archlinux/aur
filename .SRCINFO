@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-robot-controllers-msgs
 	pkgdesc = ROS - Messages for use with robot_controllers framework.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = i686
 	arch = x86_64
