@@ -1,35 +1,32 @@
-# Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
-
-pkgname=(gtk4-git)
-pkgver=3.99.4.r42.g53cd499621
+# Maintainer: Andrew Crerar <crerar@archlinux.org>
+pkgbase=gtk4-git
+pkgname=(gtk4-git gtk-update-icon-cache-git)
+pkgver=4.1.2.r80.g48f87c1eea
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
 url="https://www.gtk.org/"
 license=('LGPL')
-depends=('at-spi2-atk' 'cairo' 'atk' 'dconf' 'glib2' 'libepoxy'
+depends=('at-spi2-atk' 'cairo' 'atk' 'dconf' 'glib2' 'libepoxy' 'fribidi'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
          'pango' 'graphene' 'json-glib' 'shared-mime-info' 'gdk-pixbuf2' 'colord'
-         'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad')
-makedepends=('gobject-introspection' 'gtk-doc' 'git' 'meson' 'ninja' 'vulkan-headers'
-             'wayland' 'wayland-protocols')
-optdepends=('gnome-icon-theme: Default icon theme'
-            'gnome-themes-standard: Default widget theme'
-            'hicolor-icon-theme: Freedesktop.org Hicolor icon theme'
-            'gdk-pixbuf2: An image loading library'
-            'wayland: A computer display server protocol'
-            'wayland-protocols: Specifications of extended Wayland protocols')
+         'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad-libs' 'wayland'
+         'vulkan-headers' 'libcloudproviders' 'libglvnd' 'iso-codes' 'harfbuzz'
+         'tracker3' 'libx11' 'libxrender' 'libxi' 'libxext' 'libxdamage' 'libxfixes'
+         'fontconfig' 'ffmpeg' 'librsvg' 'desktop-file-utils' 'adwaita-icon-theme'
+         'cantarell-fonts')
+makedepends=('gobject-introspection' 'cmake' 'git' 'meson' 'wayland-protocols'
+             'sysprof' 'python' 'shaderc' 'sassc' 'glib2-docs' 'pandoc' 'python-toml'
+             'python-jinja' 'python-typogrify' 'python-pygments' 'libxslt' 'docbook-xsl')
 source=('git+https://gitlab.gnome.org/GNOME/gtk.git'
-        'gtk4.install'
-        'gtk4-query-immodules.hook'
+        'gtk4-querymodules.hook'
         'gtk4-update-icon-cache.hook'
         'gtk4-update-icon-cache.script'
         'settings.ini')
 sha512sums=('SKIP'
-            '5dcb698a15e7d5f4611c9357782d475052944cc71e73351238ffb5dfbe18d1bd1b62289da7f8066cde256c4339de5efa982088f47781876f5d8317f92b87f79f'
-            '1dbcce0a3e17ee05b579613adba25feff692f6626155e91fa6859e5f176753201b5ceffa8c9c7c897cf945aeeb32fbd28affa24050dfc0d65237733964bf28de'
-            '9d3bb80afb3a00dc50402d32476719daaeab017e1a066425bb602316b534d0a9899d48734a84f70af1066ed104df0491264383a34969dfad2ea9828fb41b9b6b'
-            '805cf12606c738d0442d8af415223d3faada93c933b563b7c4c1d5e0c16d2d21435406add1fcc69300fb2fe534f2d0ddbf50b2c0463fc7462109d0f7802ccef1'
+            '4adbad5b238d8326edb066de9f27bf07894137b4cb9b8a38325b80a89f928fce89c268b2270cf8bc6ca4cf311f0674bf1a756e0e28f59771e694559e1a551a6a'
+            '6b7d8ecf0e98dcb35fac0c5dc96feb4d66c060c4a19801eac385827a601ae430223b3731d0de0845b0cae50e8169a95b1c13357281ca5a7c2c1ca1930163cad9'
+            '05929a7816b0fb45918850d172a375a2e6915a75db879fcc2fbe3b58864e76cc50a7767645a545f48b0d15417f30d1b205a77cfd6396a66df49b28f846bf5bbb'
             '1642d77622d61234e316e8fcbc803a6a5556c606e37e56aa5981ef2f2df85bfa959c31b5d1bff248b340760e1178281cb0d7abdf540c5f7d4b62cb383a67c685')
 pkgver() {
   cd gtk
@@ -39,34 +36,64 @@ pkgver() {
                       "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd gtk
-
-  meson --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libdir=lib \
-    -Dbroadway-backend=true \
-    -Dvulkan=enabled \
-    -Dwayland-backend=true \
-    _build .
-
-  cd _build
-
-  ninja
+prepare() {
+ cd gtk
 }
 
-package() {
-  install="gtk4.install"
+build() {
+  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+  # NOTE: We cannot use arch-meson _yet_ due to building with the gtk_doc flag
+  #       as gi-docgen's official upstream guidance is to include the dep. as
+  #       a subproject (which arch-meson disallows). See:
+  #       https://gitlab.gnome.org/ebassi/gi-docgen/-/issues/60#note_1060533
+  meson setup --prefix /usr \
+    --libexecdir lib \
+    --sbindir bin \
+    --buildtype plain \
+    --auto-features enabled \
+    -Db_lto=true \
+    -Db_pie=true \
+    -Dbroadway-backend=true \
+    -Dcloudproviders=enabled \
+    -Dsysprof=enabled \
+    -Dtracker=enabled \
+    -Dcolord=enabled \
+    -Dgtk_doc=true \
+    -Dman-pages=true \
+    -Dvulkan=enabled \
+    -Dwayland-backend=true \
+    gtk build
 
-  cd gtk/_build
+  meson compile -C build
+  ninja -C build
+}
 
-  DESTDIR="$pkgdir" ninja install
+package_gtk4-git() {
+  depends+=('gtk-update-icon-cache-git')
+  provides+=('libgtk-4.so')
+  conflicts=('gtk4')
 
-  install -Dm 644 "../../settings.ini" "$pkgdir"/usr/share/gtk-4.0/settings.ini
-  install -Dm 644 "../../gtk4-query-immodules.hook" "$pkgdir"/usr/share/libalpm/hooks/gtk4-query-immodules.hook
-  install -D "gtk/tools/gtk4-update-icon-cache" "$pkgdir"/usr/bin/gtk4-update-icon-cache
-  install -Dm 644 "../../gtk4-update-icon-cache.hook" "$pkgdir"/usr/share/libalpm/hooks/gtk4-update-icon-cache.hook
-  install -Dm 755 "../../gtk4-update-icon-cache.script" "$pkgdir"/usr/share/libalpm/scripts/gtk4-update-icon-cache
+  DESTDIR="$pkgdir" meson install -C build
 
+  install -Dm 644 "settings.ini" "$pkgdir"/usr/share/gtk-4.0/settings.ini
+  install -Dm 644 "gtk4-querymodules.hook" "$pkgdir"/usr/share/libalpm/hooks/gtk4-querymodules.hook
+
+  # gtk-update-icon-cache us also used by other toolkits
+  mkdir -p guic/usr/{bin,share/man/man1}
+  mv {"$pkgdir",guic}/usr/bin/gtk4-update-icon-cache
+  mv {"$pkgdir",guic}/usr/share/man/man1/gtk4-update-icon-cache.1
+}
+
+package_gtk-update-icon-cache-git() {
+  pkgdesc="GTK icon cache updater"
+  depends=('gdk-pixbuf2' 'librsvg' 'hicolor-icon-theme')
+  conflicts=('gtk-update-icon-cache')
+  provides=('gtk-update-icon-cache')
+
+  mv -t "$pkgdir" guic/*
+  ln -s gtk4-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
+  ln -s gtk4-update-icon-cache.1 "$pkgdir/usr/share/man/man1/gtk-update-icon-cache.1"
+
+  install -Dm 644 "gtk4-update-icon-cache.hook" "$pkgdir"/usr/share/libalpm/hooks/gtk-update-icon-cache.hook
+  install -Dm 755 "gtk4-update-icon-cache.script" "$pkgdir"/usr/share/libalpm/scripts/gtk-update-icon-cache
 }

@@ -1,5 +1,5 @@
 [Trigger]
-Type = File
+Type = Path
 Operation = Install
 Operation = Upgrade
 Operation = Remove
@@ -9,5 +9,5 @@ Target = !usr/share/icons/*/?*
 [Action]
 Description = Updating icon theme caches...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/gtk4-update-icon-cache
+Exec = /usr/share/libalpm/scripts/gtk-update-icon-cache
 NeedsTargets
