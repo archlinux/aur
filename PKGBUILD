@@ -1,8 +1,8 @@
 #Maintainer: Machina <machinax@protonmail.com>
 pkgname='python-name-that-hash'
 _module='name-that-hash'
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=4
 pkgdesc="The Modern Hash Identifcation System"
 url="https://github.com/HashPals/Name-That-Hash"
 makedepends=('python-setuptools')
