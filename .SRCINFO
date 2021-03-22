@@ -1,7 +1,7 @@
 pkgbase = nextdns-unprivileged
 	pkgdesc = The NextDNS DoH client running as unprivileged user.
-	pkgver = 1.10.1
-	pkgrel = 2
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
 	install = nextdns.install
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = nextdns-unprivileged
 	makedepends = go
 	provides = nextdns
 	conflicts = nextdns
-	source = https://github.com/nextdns/nextdns/archive/v1.10.1.tar.gz
+	source = https://github.com/nextdns/nextdns/archive/v1.11.0.tar.gz
 	source = nextdns.service
 	source = nextdns.sysusers
 	source = nextdns.tmpfiles
 	source = 01-socket.patch
-	sha256sums = c2ac19510a9e58c34b3ece2a5c5ff7e991099c91c0cf4bcc4228897dd65692ba
+	sha256sums = d76c125d5e843d7623e0d1e4e78b29ff6d65046ccf933709ce162ca24e6999b2
 	sha256sums = d5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9
 	sha256sums = 96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec
 	sha256sums = fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2
-	sha256sums = 0bb64a96c313072e6295c33309441e3fcceb38598ebc1d597bcb059d6624eec5
+	sha256sums = df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6
 
 pkgname = nextdns-unprivileged
 
