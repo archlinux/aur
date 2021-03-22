@@ -15,8 +15,7 @@ options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 depends=(dkms)
 install=amduprof.install
-md5sums=("d3463cce390acbd9174dea8b2ae2b8c1" "SKIP")
-
+md5sums=("571b9dd6abc931153c9ab038962bcbf7" "SKIP")
 
 amduprof_prefix=/opt/${pkgname}
 

@@ -13,7 +13,7 @@ pkgbase = amduprof
 	options = libtool
 	source = local://AMDuProf_Linux_x64_3.4.468.tar.bz2
 	source = local://modulefile
-	md5sums = d3463cce390acbd9174dea8b2ae2b8c1
+	md5sums = 571b9dd6abc931153c9ab038962bcbf7
 	md5sums = SKIP
 
 pkgname = amduprof
