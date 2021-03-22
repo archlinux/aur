@@ -4,12 +4,16 @@ _pyname=neutron
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
 pkgver=17.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack Networking Service"
 arch=('any')
 url="https://docs.openstack.org/neutron/latest/"
 license=('Apache')
 depends=(
+	ipset
+	iptables
+	ebtables
+	dnsmasq
 	haproxy
 	sudo
 	python
