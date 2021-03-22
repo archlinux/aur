@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotors-gazebo
 	pkgdesc = ROS - The rotors_gazebo package
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rotors_gazebo
 	arch = i686
 	arch = x86_64
