@@ -7,7 +7,7 @@ pkgname='ros-melodic-dynamic-edt-3d'
 pkgver='1.9.0'
 _pkgver_patch=1
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-octomap)
