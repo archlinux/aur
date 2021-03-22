@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-move-slow-and-clear
 	pkgdesc = ROS - move_slow_and_clear
 	pkgver = 1.16.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/move_slow_and_clear
 	arch = i686
 	arch = x86_64
