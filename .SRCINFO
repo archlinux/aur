@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-bootstrap
+	pkgdesc = Bootstrap 4.5.3 (XStatic packaging standard)
+	pkgver = 4.5.3.1
+	pkgrel = 1
+	url = https://getbootstrap.com/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Bootstrap/XStatic-Bootstrap-4.5.3.1.tar.gz
+	md5sums = 2e70ba547e7d17aa0b0c428ebf3ebcd0
+	sha256sums = cf67d205437b32508a88b69a7e7c5bbe2ca5a8ae71097391a6a6f510ebfd2820
+	sha512sums = ac7d1105c85e0365b92ad637d812d8bd022bcb850b85483655ebac973f1802b6e7d5ee7ae2fe5c449c7c6a1fc9de4d9904df6ee497add4dd78f3d2e146bd7277
+
+pkgname = python-xstatic-bootstrap
+
+pkgname = python2-xstatic-bootstrap
+
