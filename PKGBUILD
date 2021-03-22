@@ -18,7 +18,7 @@ build() {
 	# avoid using the Makefile directly -- it doesn't understand
 	# any kernel but the current.
 	make -C /usr/src/linux-ck M="$PWD/src" \
-			EXTRA_CFLAGS="-DCONFIG_R8168_NAPI -DCONFIG_ASPM -DENABLE_EEE" \
+			EXTRA_CFLAGS="${CFLAGS/-fno-plt/} -DCONFIG_R8168_NAPI -DCONFIG_ASPM -DENABLE_EEE" \
 			modules
 }
 
