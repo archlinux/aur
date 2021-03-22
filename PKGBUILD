@@ -4,9 +4,9 @@
 
 _pkgname=libadwaita
 pkgname=$_pkgname-git
-pkgver=1.1.0.r.g699c5ea
-pkgrel=3
-pkgdesc="Library full of GTK+ widgets for mobile phones"
+pkgver=1.1.0.r.g73c17e0
+pkgrel=1
+pkgdesc="Library full of GTK widgets for mobile phones"
 url="https://gitlab.gnome.org/exalm/$_pkgname"
 license=(LGPL)
 arch=(i686 x86_64 armv7h aarch64)
