@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Maintainer: Your Name <josh@joshuahoeflich.com>
+# Maintainer: Joshua Hoeflich
 pkgname=lsr-git
 pkgver=main
 pkgrel=1
