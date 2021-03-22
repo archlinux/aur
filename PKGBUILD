@@ -1,4 +1,4 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 # Contributor: vorpalblade77@gmail.com
 # Contributor: Daniel Neve <the.mephit@googlemail.com>
 # Contributor: Eduardo Parra Mazuecos <eduparra90@gmail.com>
@@ -8,7 +8,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="A unified API for parsing NZB files"
 arch=('any')
-url="http://pypi.python.org/pypi/pynzb/"
+url="https://pypi.python.org/pypi/pynzb/"
 license=('BSD')
 depends=('python' 'expat')
 makedepends=('python-distribute')
