@@ -6,7 +6,7 @@ pkgname='ros-melodic-rtabmap-ros'
 pkgver='0.20.7'
 _pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-genmsg
