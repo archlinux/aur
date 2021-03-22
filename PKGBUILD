@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-resources'
 pkgver='0.7.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
