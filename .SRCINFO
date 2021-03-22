@@ -4,6 +4,8 @@ pkgbase = timeshift-bin
 	pkgrel = 1
 	url = https://github.com/teejee2008/timeshift
 	arch = x86_64
+	arch = aarch64
+	arch = i386
 	license = GPL
 	depends = libgee
 	depends = vte3
@@ -16,8 +18,10 @@ pkgbase = timeshift-bin
 	depends = gtk3
 	provides = timeshift
 	conflicts = timeshift
-	source = https://github.com/teejee2008/timeshift/releases/download/v20.11.1/timeshift_20.11.1_amd64.deb
 	md5sums = c71ca96e3be09f471c4e8c93cbbbc885
+	source_x86_64 = https://github.com/teejee2008/timeshift/releases/download/v20.11.1/timeshift_20.11.1_amd64.deb
+	source_aarch64 = https://github.com/teejee2008/timeshift/releases/download/v20.11.1/timeshift_20.11.1_arm64.deb
+	source_i386 = https://github.com/teejee2008/timeshift/releases/download/v20.11.1/timeshift_20.11.1_i386.deb
 
 pkgname = timeshift-bin
 
