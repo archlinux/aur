@@ -7,7 +7,7 @@ pkgname='ros-melodic-tuw-vehicle-msgs'
 pkgver='0.0.13'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
