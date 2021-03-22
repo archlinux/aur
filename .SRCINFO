@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-resources-pr2-description
 	pkgdesc = ROS - PR2 Resources used for MoveIt! testing.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = h
 	arch = i686
 	arch = x86_64

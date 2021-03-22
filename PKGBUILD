@@ -6,7 +6,7 @@ url='h'
 pkgname='ros-melodic-moveit-resources-pr2-description'
 pkgver='0.7.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
