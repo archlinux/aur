@@ -2,13 +2,13 @@
 
 _pkgname=mx2000drv
 pkgname=${_pkgname}-git
-pkgver=r82.b6a752c
+pkgver=r89.0bb2530
 pkgrel=1
 pkgdesc="Perixx MX 2000 II gaming mouse driver"
 arch=('any')
 url="https://github.com/pzl/mx2000drv"
 license=('GPL2')
-depends=('libusb')
+depends=('libusb' 'hidapi')
 makedepends=('git' 'make')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -25,11 +25,7 @@ build() {
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
