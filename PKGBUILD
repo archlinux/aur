@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
 pkgver=2.25.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
@@ -16,6 +16,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 sha256sums=('0720125a9fcd15f7892bc498de85684f3bc48e89e9c59fd9dc4e1a8c96cb990f'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	# Disable husky
+	sed -i '/husky/d' package.json
+}
 
 build() {
 	cd "$pkgname-$pkgver"

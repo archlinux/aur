@@ -1,7 +1,7 @@
 pkgbase = gmail-desktop
 	pkgdesc = Unofficial Gmail desktop app
 	pkgver = 2.25.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timche/gmail-desktop
 	arch = x86_64
 	license = MIT
