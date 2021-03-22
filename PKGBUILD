@@ -7,10 +7,10 @@ _gitname=netdata
 pkgver=v1.17.0.r31.g0af353168
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
-url="https://github.com/firehol/netdata/wiki"
+url="https://github.com/netdata/netdata/wiki"
 arch=('x86_64')
 license=('GPL')
-depends=('libmnl' 'libnetfilter_acct' 'zlib' 'judy' 'libuv' 'openssl')
+depends=('libmnl' 'libnetfilter_acct' 'zlib' 'lz4' 'judy' 'libuv' 'openssl' 'json-c')
 makedepends=('git')
 optdepends=('nodejs: for monitoring named and SNMP devices'
             'lm_sensors: for monitoring hardware sensors'
