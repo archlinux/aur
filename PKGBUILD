@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-web'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
