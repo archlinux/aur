@@ -4,7 +4,7 @@ url='https://www.wiki.ros.org/ROS'
 pkgname='ros-melodic-ros'
 pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
