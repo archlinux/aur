@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-unique-id
 	pkgdesc = ROS - ROS Python and C++ interfaces for universally unique identifiers.
 	pkgver = 1.0.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.ros.org/unique_id
 	arch = i686
 	arch = x86_64

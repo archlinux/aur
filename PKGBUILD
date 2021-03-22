@@ -7,7 +7,7 @@ pkgname='ros-melodic-unique-id'
 pkgver='1.0.6'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
