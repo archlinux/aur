@@ -1,0 +1,16 @@
+pkgbase = python-kinjector
+	pkgdesc = Inject/eject JSON/YAML data to/from KiCad Board files.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/xesscorp/kinjector
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyaml
+	provides = python-kinjector
+	source = https://files.pythonhosted.org/packages/source/k/kinjector/kinjector-0.0.6.tar.gz
+	md5sums = 92c3180d2b3af3ba4fde8989816777a6
+
+pkgname = python-kinjector
+
