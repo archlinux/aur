@@ -1,6 +1,6 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 pkgname=asroot-libpassphrase
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A simpler alternative to sudo and doas, libpassphrase version"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=(sed)
 conflicts=(asroot)
 provides=(asroot)
 source=(asroot-$pkgver.tar.gz::https://github.com/maandree/asroot/archive/${pkgver}.tar.gz)
-sha256sums=(39995b9742980b10e56f052eeead53871aef375e4f173dd61269a7eeeab64627)
+sha256sums=(f5970ac461b21ba5f194d60fbcdace4225e5e2f8a38454d1658a23eba80238db)
 
 prepare() {
   cd "${srcdir}/asroot-${pkgver}"
