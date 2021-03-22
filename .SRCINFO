@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-summit-xl-pad
 	pkgdesc = ROS -The summit_xl_pad package allows to control the summit_xl product range (summit_xl, summit_xl_omni, x_wam) teleoperation
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/summit_xl_pad
 	arch = i686
 	arch = x86_64
