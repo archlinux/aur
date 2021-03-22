@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-industrial-msgs
 	pkgdesc = ROS - The industrial message package containes industrial specific messages definitions.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/industrial_msg
 	arch = i686
 	arch = x86_64
