@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosboost'
 pkgname='ros-melodic-rosboost-cfg'
 pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
