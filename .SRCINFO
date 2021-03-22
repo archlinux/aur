@@ -1,0 +1,20 @@
+pkgbase = wolai-bin
+	pkgdesc = wolai
+	pkgver = 1.0.34
+	pkgrel = 1
+	url = https://www.wolai.com/
+	arch = x86_64
+	license = Custom
+	depends = gconf
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	provides = wolai
+	options = !strip
+	source = https://static2.wolai.com/dist/installers/wolai-1.0.34.AppImage
+	source = start.sh
+	md5sums = 16f245da6f00148643a2ce60e49bb29d
+	md5sums = 711f08ded488ab4572df3cae9715ae14
+
+pkgname = wolai-bin
+
