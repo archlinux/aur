@@ -8,7 +8,8 @@ pkgrel=1
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 depends=(
-  'python')
+  'python'
+  'python-matplotlib')
 makedepends=(
   'jupyter'
   'jupyterlab'

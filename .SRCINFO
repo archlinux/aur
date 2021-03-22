@@ -12,6 +12,7 @@ pkgbase = python-ipympl
 	makedepends = python-setuptools
 	makedepends = python-jupyter_packaging
 	depends = python
+	depends = python-matplotlib
 	source = https://pypi.python.org/packages/46/5a/1881283fd5978e6e57819656cb9833fdabb5c242e34f7d5a8419693199f2/ipympl-0.6.3.tar.gz
 	sha512sums = 0a8dc5d34740817efcf61debf71f4e4fbe0b8932c2c205641aefe5bf2e2d8f3eda6c6bb75fbcb26440b9ed09a805b8c2b32c53461ccc32e39981b7a0f5fdc121
 
