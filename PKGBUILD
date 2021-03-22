@@ -12,7 +12,7 @@ pkgver() {
     "$(git tag -l | grep -P '.+\..+\.\d+' | sed -r 's/([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=2.0.0.r563.8eef70b
+pkgver=2.0.0.r569.badf080
 pkgrel=1
 
 pkgdesc='An improved sequence editor for interactive git-rebase'
@@ -34,6 +34,11 @@ source=("git+https://github.com/MitMaro/$_pkgname.git")
 sha256sums=('SKIP')
 
 
+prepare() {
+  cd "$_pkgname"
+  sed -i 's|/docs/assets/||' README.md
+}
+
 build() {
   cd "$_pkgname"
   if type -P rustup && ! rustup default &>/dev/null; then
@@ -46,6 +51,7 @@ package() {
   cd "$_pkgname"
   install -Dm755 "target/release/$_name" -t"$pkgdir/usr/bin/"
   install -Dm644 {,readme/}*.md          -t"$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm644 docs/assets/images/*    -t"$pkgdir/usr/share/doc/$_pkgname/images/"
   install -Dm644 LICENSE                 -t"$pkgdir/usr/share/licenses/$_pkgname/"
   install -Dm644 src/$_name.1            -t"$pkgdir/usr/share/man/man1/"
 }
