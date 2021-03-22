@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-summit-xl-sim
 	pkgdesc = ROS - The summit_xl_sim metapackage
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/summit_xl_sim
 	arch = any
 	license = BSD
