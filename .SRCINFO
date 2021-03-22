@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-joint-state-publisher-gui
 	pkgdesc = ROS - This package contains a GUI tool for setting and publishing joint state values for a given URDF.
 	pkgver = 1.12.15
-	pkgrel = 1
+	pkgrel = 2
 	url = h
 	arch = i686
 	arch = x86_64
