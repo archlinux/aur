@@ -6,7 +6,7 @@ url='http://wiki.ros.org/combined_robot_hw'
 pkgname='ros-melodic-combined-robot-hw'
 pkgver='0.18.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-combined-robot-hw
 	pkgdesc = ROS - Combined Robot HW class.
 	pkgver = 0.18.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/combined_robot_hw
 	arch = i686
 	arch = x86_64
