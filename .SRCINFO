@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-jquery
+	pkgdesc = jQuery 3.5.1 (XStatic packaging standard)
+	pkgver = 3.5.1.1
+	pkgrel = 1
+	url = https://jquery.com/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-jQuery/XStatic-jQuery-3.5.1.1.tar.gz
+	md5sums = ed522ddb3ac0064988f19491d0a28f72
+	sha256sums = e0ae8f8ec5bbd28045ba4bca06767a38bd5fc27cf9b71f434589f59370dcd323
+	sha512sums = 9794ff19c0458aa32f6be33e5947965f66ff587d76b349dfbd136031d1e2776a8d0f537a3340784be5834152cb4dd2e1133d3580ba750160a5f4c66cc3660755
+
+pkgname = python-xstatic-jquery
+
+pkgname = python2-xstatic-jquery
+
