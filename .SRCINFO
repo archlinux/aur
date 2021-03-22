@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-libfranka
 	pkgdesc = C++ library for Franka Emika research robots
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/libfranka
 	arch = i686
 	arch = x86_64

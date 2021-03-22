@@ -4,7 +4,7 @@ url="http://wiki.ros.org/libfranka"
 pkgname='ros-melodic-libfranka'
 pkgver='0.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('Apache')
 
 ros_makedepends=(ros-melodic-roscpp ros-melodic-catkin)
