@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-joy
 	pkgdesc = ROS - ROS driver for a generic Linux joystick.
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/joy
 	arch = i686
 	arch = x86_64

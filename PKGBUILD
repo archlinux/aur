@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/joy'
 pkgname='ros-melodic-joy'
 pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-diagnostic-updater
