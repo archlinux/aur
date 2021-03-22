@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-trac-ik
 	pkgdesc = ROS - The ROS packages in this repository were created to provide an improved alternative Inverse Kinematics solver to the popular inverse Jacobian methods in KDL.
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/trac_ik
 	arch = i686
 	arch = x86_64
