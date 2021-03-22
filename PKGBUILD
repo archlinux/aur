@@ -7,7 +7,7 @@ pkgname='ros-melodic-robot-state-publisher'
 pkgver='1.14.1'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(

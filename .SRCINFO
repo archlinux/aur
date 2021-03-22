@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-robot-state-publisher
 	pkgdesc = ROS - This package allows you to publish the state of a robot to tf.
 	pkgver = 1.14.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/robot_state_publisher
 	arch = i686
 	arch = x86_64
