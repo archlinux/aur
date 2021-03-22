@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-franka-control
 	pkgdesc = ROS - franka_control provides a hardware node to control a Franka Emika research robot.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = h
 	arch = i686
 	arch = x86_64
