@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-experimental
 	pkgdesc = ROS - experimental packages for moveit
 	pkgver = 1.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
