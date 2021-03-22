@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-qt-dotgraph
 	pkgdesc = ROS - qt_dotgraph provides helpers to work with dot graphs.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/qt_dotgraph
 	arch = any
 	license = BSD
