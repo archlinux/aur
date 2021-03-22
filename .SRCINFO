@@ -1,14 +1,14 @@
 pkgbase = textnote-bin
 	pkgdesc = Simple tool for creating and organizing daily notes on the command line
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/dkaslovsky/textnote
 	arch = x86_64
 	license = MIT
 	provides = textnote
 	conflicts = textnote
-	source = https://github.com/dkaslovsky/textnote/releases/download/v1.1.0/textnote_linux_amd64
-	sha256sums = 4bfd8bce0b1786a0d48fbb3dbb69e425e798f4531a4d449357108474e26cdd34
+	source = https://github.com/dkaslovsky/textnote/releases/download/v1.1.1/textnote_linux_amd64
+	sha256sums = 02cc79d2224344174cf3688ad6f57106bd78403b2fe26b2d3d609bb11cc92bf6
 
 pkgname = textnote-bin
 

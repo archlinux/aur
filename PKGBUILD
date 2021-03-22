@@ -2,7 +2,7 @@
 
 _name=textnote
 pkgname=${_name}-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Simple tool for creating and organizing daily notes on the command line'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=()
 conflicts=(${_name})
 provides=(${_name})
 source=("https://github.com/dkaslovsky/textnote/releases/download/v${pkgver}/textnote_linux_amd64")
-sha256sums=('4bfd8bce0b1786a0d48fbb3dbb69e425e798f4531a4d449357108474e26cdd34')
+sha256sums=('02cc79d2224344174cf3688ad6f57106bd78403b2fe26b2d3d609bb11cc92bf6')
 
 package() {
     cd "${srcdir}/"
