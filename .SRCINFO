@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ackermann-steering-controller
 	pkgdesc = ROS - Controller for a steer drive mobile base.
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/ackermann_steering_controller
 	arch = i686
 	arch = x86_64
