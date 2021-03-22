@@ -1,6 +1,6 @@
 pkgbase = 1password-bin
 	pkgdesc = Password manager and secure wallet (development preview)
-	pkgver = 8.0.28
+	pkgver = 8.0.30
 	pkgrel = 1
 	url = https://1password.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = 1password-bin
 	depends = libxss
 	depends = gtk3
 	depends = nss
-	source = https://downloads.1password.com/linux/debian/pool/main/1/1password/1password-8.0.28.deb
+	source = https://downloads.1password.com/linux/debian/pool/main/1/1password/1password-8.0.30.deb
 	validpgpkeys = 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
-	sha256sums = adaf597240a45bbe60470383290ab902b9fca7fbce6a7c72804a2c9e00ae96c3
+	sha256sums = 64dcf59c36c9924156b47e2a32b5ed59a915cbdd6deb40f4bcf6eeac76d8c65e
 
 pkgname = 1password-bin
 
