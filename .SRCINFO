@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-laser-assembler
 	pkgdesc = ROS - Provides nodes to assemble point clouds from either LaserScan or PointCloud messages.
 	pkgver = 1.7.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.ros.org/laser_assembler
 	arch = i686
 	arch = x86_64
