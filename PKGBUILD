@@ -6,7 +6,7 @@
     pkgname='ros-melodic-cartographer'
     pkgver='1.0.0'
     arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-    pkgrel=6
+    pkgrel=7
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-catkin)
