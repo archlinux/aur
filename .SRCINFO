@@ -1,14 +1,14 @@
 pkgbase = python2-taglib
 	pkgdesc = Python library to read and manipulate audio media metadata
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.google.com/p/python-taglib/
 	arch = any
 	license = BSD
 	depends = python2
 	optdepends = python2-imaging: for image support
 	options = !emptydirs
-	source = https://python-taglib.googlecode.com/files/taglib-3.1.tar.bz2
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/python-taglib/taglib-{3.1}.tar.bz2
 	md5sums = 9c9209359ba2ccf768cf5da5a64a1edb
 
 pkgname = python2-taglib
