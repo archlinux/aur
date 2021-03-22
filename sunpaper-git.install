@@ -1,0 +1,4 @@
+post_install()  {
+  printf ":: You must create a config file at ~/.config/sunpaper/config to\n"
+  printf ":: make any custom changes to the script.\n"
+}
