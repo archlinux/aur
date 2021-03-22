@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosserial_client'
 pkgname='ros-melodic-rosserial-client'
 pkgver='0.8.0'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

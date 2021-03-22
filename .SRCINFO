@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosserial-client
 	pkgdesc = ROS - Generalized client side source for rosserial.
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rosserial_client
 	arch = any
 	license = BSD
