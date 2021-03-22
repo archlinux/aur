@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-gettext
+	pkgdesc = Angular-Gettext 2.4.1 (XStatic packaging standard)
+	pkgver = 2.4.1.0
+	pkgrel = 1
+	url = https://angular-gettext.rocketeer.be/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Gettext/XStatic-Angular-Gettext-2.4.1.0.tar.gz
+	md5sums = 6552973138d37609c776d2d8a049aabe
+	sha256sums = 883192c9273b2d1b8dc69e605845f0d3a267698955e55dcde0e3a4defeae385b
+	sha512sums = c6419359ad36efec273f1751bed471917cd3402da71e42a58ace54acc799ef44fc0fc303bfadb488bc6bedbee741adf38783f76f328508dd53016f4c734ef34f
+
+pkgname = python-xstatic-angular-gettext
+
+pkgname = python2-xstatic-angular-gettext
+
