@@ -1,12 +1,12 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic2013-git
-pkgver=r191.1046e22
-pkgrel=2
+pkgver=r288.c505c71
+pkgrel=1
 pkgdesc='A full decompilation of Sonic 1 & 2 (2013).'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation'
-license=('unknown')
+license=('custom:RSDKv3/4 Decompilation Source Code License v1')
 makedepends=('git')
 depends=('sdl2' 'libogg' 'libvorbis')
 provides=(sonic2013)
@@ -41,4 +41,5 @@ package() {
 	install -Dm644 sonic2.desktop "$pkgdir/usr/share/applications/sonic2.desktop"
 	cd "$srcdir/Sonic-1-2-2013-Decompilation/bin"
 	install -Dm755 sonic2013 "$pkgdir/usr/bin/sonic2013"
+	install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
