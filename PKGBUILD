@@ -3,10 +3,10 @@
 
 pkgname=dfhack-twbt-bin
 _pkgname=dfhack
-pkgver=0.44.12
-_pkgver=$pkgver-r2
-_twbtver=6.61
-pkgrel=6
+pkgver=0.47.05
+_pkgver=$pkgver-r1
+_twbtver=6.xx
+pkgrel=1
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it including Text Will Be Text plugin"
 arch=('x86_64')
 url="https://dfhack.readthedocs.org/"
@@ -21,16 +21,16 @@ source=(
     dfhack-run.sh
     dfhack.init
     init.txt
-    https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-64-gcc-4.8.tar.bz2
-    https://github.com/mifki/df-twbt/releases/download/v$_twbtver/twbt-$_twbtver-linux.zip
+    https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-64bit-gcc-7.tar.bz2
+    https://github.com/thurin/df-twbt/releases/download/$_pkgver/twbt-$_twbtver-linux64-$_pkgver.zip
 )
 
 md5sums=('e630ae2fc93c6c7b55552336da2b6c07'
          '3853c6f890d3541f710f2c4833a9e696'
          '6730da5fec400ece9102552e77996fcb'
          '052a58e7f5f1af8be3ddefe9677b8fc6'
-         'e200a6225dcf285e2eac19c1d1e118ea'
-         '8eac5ae59dad0397090c4f50d50ef841')
+         '8dabfca61ff02821ed0be0a885ad17f2'
+         '672d40f24ca3e94ead4a79ccdc146114')
 
 prepare() {
     sed -e 's|setarch i386 -R ||' \
