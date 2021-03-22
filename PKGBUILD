@@ -4,13 +4,13 @@ pkgname=xournalpp-mobile-git
 _pkgname=xournalpp-mobile
 _gitname=xournalpp_mobile
 pkgver=1.1.10.r6.ga64432f
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the main features of Xournal++ to various Flutter platforms like Android, iOS and the Web."
-arch=('any')
+arch=('x86_64' 'arm')
 url="https://xournal.online/"
 license=('custom:EUPL-1.2')
-depends=('gtk3')
-makedepends=('git' 'flutter' 'cmake' 'ninja' 'clang')
+depends=('gtk3' 'xdg-user-dirs')
+makedepends=('git' 'flutter-group-pacman-hook' 'flutter-beta' 'cmake' 'ninja' 'clang')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://gitlab.com/TheOneWithTheBraid/${_gitname}.git")
@@ -25,8 +25,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_gitname}"
 
-  flutter channel master
-  flutter upgrade
   flutter config --enable-linux-desktop
 }
 
