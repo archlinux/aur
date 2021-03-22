@@ -1,7 +1,7 @@
 # Maintainer: Philipp Joram <mail at phijor dot me>
 
 pkgname=pokefinder
-pkgver=2.5.0
+pkgver=3.0.1
 pkgrel=2
 pkgdesc='Cross platform Pokémon RNG tool'
 arch=(x86_64)
@@ -12,11 +12,9 @@ depends=(
 )
 
 source=(
-    "$pkgname.zip::https://github.com/Admiral-Fish/PokeFinder/releases/download/v$pkgver/PokeFinder-linux.zip"
+    "$pkgname-$pkgver.zip::https://github.com/Admiral-Fish/PokeFinder/releases/download/v$pkgver/PokeFinder-linux.zip"
 )
-sha256sums=(
-    'eb2d8d18ea379be6602f3b54a5dd5fb8625d981fd3094a7aedf2083e8d9a991b'
-)
+sha256sums=('cbb8854280b76496b9842b507391263a12fb0e066431560f7b90c342ed0b3b0e')
 
 package() {
     install -v -m755 -d "$pkgdir/usr/bin/"

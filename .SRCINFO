@@ -1,13 +1,13 @@
 pkgbase = pokefinder
 	pkgdesc = Cross platform Pokémon RNG tool
-	pkgver = 2.5.0
+	pkgver = 3.0.1
 	pkgrel = 2
 	url = https://github.com/Admiral-Fish/PokeFinder
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
-	source = pokefinder.zip::https://github.com/Admiral-Fish/PokeFinder/releases/download/v2.5.0/PokeFinder-linux.zip
-	sha256sums = eb2d8d18ea379be6602f3b54a5dd5fb8625d981fd3094a7aedf2083e8d9a991b
+	source = pokefinder-3.0.1.zip::https://github.com/Admiral-Fish/PokeFinder/releases/download/v3.0.1/PokeFinder-linux.zip
+	sha256sums = cbb8854280b76496b9842b507391263a12fb0e066431560f7b90c342ed0b3b0e
 
 pkgname = pokefinder
 
