@@ -7,7 +7,7 @@ pkgname='ros-melodic-roslint'
 pkgver='0.11.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
