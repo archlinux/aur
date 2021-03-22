@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-ros-move-group
 	pkgdesc = ROS - The move_group node for MoveIt.
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
