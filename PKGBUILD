@@ -4,7 +4,7 @@ url='https://wiki.ros.org/turtlebot3_bringup'
 pkgname='ros-melodic-turtlebot3-bringup'
 pkgver='1.2.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('Apache-2.0')
 
 ros_makedepends=(
