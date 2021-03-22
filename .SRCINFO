@@ -1,0 +1,20 @@
+pkgbase = neptune-git
+	pkgdesc = YouTube based song player, made with GTK and GoLang.
+	pkgver = r149.357e25d
+	pkgrel = 1
+	url = https://github.com/pauloo27/neptune
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = go
+	depends = mpv
+	depends = youtube-dl
+	depends = libappindicator-gtk3
+	optdepends = mpv-mpris: Load MPRIS
+	provides = neptune
+	source = neptune-git::git+https://github.com/pauloo27/neptune.git
+	md5sums = SKIP
+
+pkgname = neptune-git
+
