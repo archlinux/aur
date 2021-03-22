@@ -11,7 +11,7 @@ depends=("java-environment>=11" "python" "libsecret")
 makedepends=('tar')
 provides=('eclipse-java')
 conflicts=('eclipse-java')
-source=("https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_releasemonth/R/${pkgname%-bin}-$_releasemonth-R-linux-gtk-x86_64.tar.gz&r=1"
+source=("https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_releasemonth/R/${pkgname%-bin}-$_releasemonth-R-linux-gtk-$CARCH.tar.gz&r=1"
 			"eclipse.desktop"
 			"eclipse.png")
 sha512sums=('93d04fe9a69120b15d192d2574db4d67f4fc331edcbd1b3f90a5f5bb7434879e0c79cabf9a22976bddf0af2f28206ae838d4f3ec5123e52e278633ccd3489bf1'
