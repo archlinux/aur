@@ -4,7 +4,7 @@ url='https://wiki.ros.org/roscpp_serialization'
 pkgname='ros-melodic-roscpp-serialization'
 pkgver='0.6.14'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
