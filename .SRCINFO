@@ -1,13 +1,11 @@
 pkgbase = moonplayer-plugins
 	pkgdesc = Plugins for Moon Player
-	pkgver = 18.409d820
+	pkgver = 20.a6d63e7
 	pkgrel = 1
 	url = https://github.com/coslyk/moonplayer-plugins
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = moonplayer
-	depends = python
 	source = git://github.com/coslyk/moonplayer-plugins
 	sha512sums = SKIP
 

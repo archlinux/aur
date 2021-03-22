@@ -1,13 +1,13 @@
 # Maintainer: Levinit <levinit at outlook>
 
 pkgname=moonplayer-plugins
-pkgver=18.409d820
+pkgver=20.a6d63e7
 pkgrel=1
 pkgdesc="Plugins for Moon Player"
 arch=('any')
 url="https://github.com/coslyk/moonplayer-plugins"
 license=('GPL3')
-depends=('moonplayer' 'python')
+#depends=('moonplayer' 'python')
 makedepends=('git')
 
 source=("git://github.com/coslyk/moonplayer-plugins")
