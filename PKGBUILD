@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosmake'
 pkgname='ros-melodic-rosmake'
 pkgver='1.14.9'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
