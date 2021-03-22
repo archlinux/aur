@@ -4,7 +4,7 @@ url='https://wiki.ros.org/angles'
 pkgname='ros-melodic-angles'
 pkgver='1.9.13'
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
