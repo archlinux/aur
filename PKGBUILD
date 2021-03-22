@@ -5,7 +5,7 @@ url='https://wiki.ros.org/pr2_description'
 pkgname='ros-melodic-pr2-description'
 pkgver='1.12.4'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-ivcon
