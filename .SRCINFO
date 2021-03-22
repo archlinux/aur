@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotors-comm
 	pkgdesc = ROS - RotorS specific messages and services
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rotors_comm
 	arch = i686
 	arch = x86_64
