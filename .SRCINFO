@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gazebo-ros-control
 	pkgdesc = ROS - gazebo_ros_control.
 	pkgver = 2.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/gazebo_ros_control
 	arch = i686
 	arch = x86_64

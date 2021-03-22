@@ -6,7 +6,7 @@ url='http://ros.org/wiki/gazebo_ros_control'
 pkgname='ros-melodic-gazebo-ros-control'
 pkgver='2.8.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-joint-limits-interface
