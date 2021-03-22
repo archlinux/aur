@@ -6,7 +6,7 @@ url='https://wiki.ros.org/dynamic_reconfigure'
 pkgname='ros-melodic-dynamic-reconfigure'
 pkgver='1.6.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
