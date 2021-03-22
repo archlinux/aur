@@ -1,11 +1,11 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 pkgname=libresample
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A real-time library for audio sampling rate conversion"
 arch=('i686' 'x86_64')
-url="http://ccrma.stanford.edu/~jos/resample/Free_Resampling_Software.html"
-license=('LGPL2')
+url="https://ccrma.stanford.edu/~jos/resample/Free_Resampling_Software.html"
+license=('LGPL2.1')
 options=('staticlibs')
 source=("http://ccrma.stanford.edu/~jos/gz/$pkgname-$pkgver.tgz"
         "Makefile.in.patch")
