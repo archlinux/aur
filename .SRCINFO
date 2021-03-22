@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mav-msgs
 	pkgdesc = ROS - Package containing messages for communicating with rotary wing MAVs
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/mav_msgs
 	arch = i686
 	arch = x86_64
