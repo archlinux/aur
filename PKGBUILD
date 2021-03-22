@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-pyuavcan
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Python implementation of the UAVCAN protocol stack.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('python-can' 'python-pyserial' 'python-ruamel-yaml'
             'python-requests' 'python-simplejson')
 makedepends=('python' 'python-setuptools')
 source=("${pkgname}-${pkgver}::https://github.com/UAVCAN/pyuavcan/archive/$pkgver.tar.gz")
-sha256sums=('d4e907922a95e84ae676aca801737c22d7f09c087743f4968d8617ee7f5495e1')
+sha256sums=('6b5d056be6047ba8219023043522abc829562446b53d02a5245ab7fd179d8c36')
 
 _pkgname=pyuavcan
 
