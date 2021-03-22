@@ -5,7 +5,7 @@ url='https://wiki.ros.org/dwa_local_planner'
 pkgname='ros-melodic-dwa-local-planner'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
