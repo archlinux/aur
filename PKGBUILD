@@ -1,9 +1,9 @@
 # Maintainer: Matteo Salonia <saloniamatteo@protonmail.com> 
 # Maintainer: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
-# Based on ddgr's PKGBUILD from the AUR
 
 pkgname=ddgr-git
+_pkgname=ddgr
 pkgver=1.9
 pkgrel=1
 pkgdesc="DuckDuckGo from the terminal"
@@ -15,6 +15,12 @@ makedepends=('git')
 conflicts=("ddgr")
 source=("git+https://github.com/jarun/ddgr/")
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "${_pkgname}"
+  _pkgver=$(grep -om1 "[0-9]\.[0-9]" CHANGELOG)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 package() {
 	# install ddgr into /usr/bin/ddgr
