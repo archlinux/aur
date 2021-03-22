@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotors-description
 	pkgdesc = ROS - The rotors_description package provides URDF modles of the AscTec multicopters.
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rotors_description
 	arch = i686
 	arch = x86_64
