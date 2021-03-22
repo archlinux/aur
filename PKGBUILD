@@ -41,7 +41,7 @@ if [ "$_provide_udev_rule" = true ]; then
     conflicts+=("$_pkgbase-udev-rule")
 fi
 
-build() {
+prepare() {
     kernver="$(echo "$pkgver" | sed 's/\./\\\\\\\\\\./g')"
     sed -i -e "s/@PACKAGE_VERSION@/$pkgver/g" -e "s/@KERNVER@/$kernver/g" "$srcdir/dkms.conf"
 }
