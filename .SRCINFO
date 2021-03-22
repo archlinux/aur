@@ -1,8 +1,8 @@
 pkgbase = lsd-control
 	pkgdesc = lsd command controller
 	pkgver = 1.2
-	pkgrel = 1
-	url = https:/fascode.net
+	pkgrel = 2
+	url = https://fascode.net
 	arch = any
 	depends = lsd
 	conflicts = lsd-control-git
