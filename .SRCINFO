@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-bondpy
 	pkgdesc = ROS - Python implementation of bond, a mechanism for checking when another process has terminated.
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/bondpy
 	arch = any
 	license = BSD
