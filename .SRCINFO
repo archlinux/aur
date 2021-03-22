@@ -1,14 +1,14 @@
 pkgbase = mkslideshow
 	pkgdesc = A small tool for making simple slide-shows
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Benni3D/mkslideshow.git
 	arch = any
 	license = GPL2
 	depends = ffmpeg
 	optdepends = zenity: needed by mkslideshow_gui
-	source = https://github.com/Benni3D/mkslideshow/archive/v1.0.tar.gz
-	md5sums = 76f093c066cc313567b327f94c9588e6
+	source = https://github.com/Benni3D/mkslideshow/archive/v1.1.tar.gz
+	md5sums = 0bc5383ca9a6156ec80e4cad0458517c
 
 pkgname = mkslideshow
 
