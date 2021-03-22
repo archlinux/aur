@@ -6,7 +6,7 @@ url='https://wiki.ros.org/gazebo_ros_pkgs'
 pkgname='ros-melodic-gazebo-ros-pkgs'
 pkgver='2.8.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD,LGPL,Apache 2.0')
 
 ros_makedepends=(ros-melodic-catkin)
