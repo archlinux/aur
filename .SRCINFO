@@ -1,0 +1,20 @@
+pkgbase = python-xstatic
+	pkgdesc = XStatic base package with minimal support code
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/xstatic-py/xstatic
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic/XStatic-1.0.2.tar.gz
+	md5sums = dea172b7b14b0dbcd5ed63075221af4b
+	sha256sums = 80b78dfe37bce6dee4343d64c65375a80bcf399b46dd47c0c7d56161568a23a8
+	sha512sums = a8d613ed29defe5e1dc62b637063fc260260c32f90e5ef85beb68e88b599722cf8efd57547c5f40576558aea2ac9b1ff7bd2fe6b214658f15b60c6756899f09e
+
+pkgname = python-xstatic
+
+pkgname = python2-xstatic
+
