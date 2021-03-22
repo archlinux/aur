@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-proc
 	pkgdesc = ROS - Single image rectification and color processing.
 	pkgver = 1.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/image_proc
 	arch = i686
 	arch = x86_64

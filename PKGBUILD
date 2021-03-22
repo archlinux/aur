@@ -4,7 +4,7 @@ url='https://wiki.ros.org/image_proc'
 pkgname='ros-melodic-image-proc'
 pkgver='1.15.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
