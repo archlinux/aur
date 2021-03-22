@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ecl-concepts
 	pkgdesc = ROS - Introduces a compile time concept checking mechanism that can be used most commonly to check for required functionality when passing template arguments.
 	pkgver = 0.62.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/ecl_concepts
 	arch = any
 	license = BSD

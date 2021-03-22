@@ -5,7 +5,7 @@ url='https://wiki.ros.org/ecl_concepts'
 pkgname='ros-melodic-ecl-concepts'
 pkgver='0.62.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-ecl-license
