@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ecl-config
 	pkgdesc = ROS - These tools inspect and describe your system with macros, types and functions.
 	pkgver = 0.61.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/ecl_config
 	arch = any
 	license = BSD
