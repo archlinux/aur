@@ -4,7 +4,7 @@ url='https://wiki.ros.org/openslam_gmapping'
 pkgname='ros-melodic-openslam-gmapping'
 pkgver='0.2.1'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
