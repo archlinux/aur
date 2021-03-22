@@ -3,12 +3,12 @@
 
 pkgname=zettlr
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
-_electron=electron10
+_electron=electron
 depends=($_electron)
 makedepends=(pandoc git yarn)
 optdepends=('pandoc: For exporting to various format'
