@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-franka-gripper
 	pkgdesc = ROS - This package implements the franka gripper of type Franka Hand for the use in ros.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = h
 	arch = i686
 	arch = x86_64
