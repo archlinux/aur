@@ -6,7 +6,7 @@ url='https://wiki.ros.org/roslisp'
 pkgname='ros-melodic-roslisp'
 pkgver='1.9.24'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
