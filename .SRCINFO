@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-xacro
 	pkgdesc = ROS - Xacro (XML Macros) Xacro is an XML macro language.
 	pkgver = 1.13.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/xacro
 	arch = any
 	license = BSD
