@@ -2,7 +2,7 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.77.0.alpha.181.gd6b6d035
+pkgver=0.77.0.alpha.689.g76375c2d
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
 depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth')
 optdepends=('libpng' 'ncurses')
-makedepends=('autoconf' 'automake' 'gcc' 'gzip')
+makedepends=('meson' 'gcc' 'gzip')
 provides=("dosbox")
 conflicts=("dosbox")
 source=(
@@ -22,9 +22,8 @@ md5sums=(
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  FLAGS="-O3 -DNDEBUG -pipe"
-  ./autogen.sh
-  ./configure CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" --prefix=/usr
+  FLAGS="-Ofast"
+  meson setup -Dbuildtype=release -Db_lto=true -Dc_args="$FLAGS" -Dcpp_args="$FLAGS" -Db_asneeded=true -Dstrip=true -Ddefault_library=static -Dfluidsynth:enable-floats=true -Dfluidsynth:try-static-deps=true release
 }
 
 pkgver() {
@@ -34,7 +33,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make -j "$(nproc)"
+  meson compile -C release
 
   # Add current commit info to the README
   sed -i "s|%GIT_COMMIT%|$(git rev-parse master)|" docs/README.template
@@ -47,7 +46,7 @@ package() {
   gzip -f "$srcdir/${_pkgname}/docs/dosbox.1" >  "$srcdir/${_pkgname}/docs/dosbox.1.gz"
 
   # install all files
-  install -Dm 755 "$srcdir/${_pkgname}/src/dosbox" "$pkgdir/usr/bin/dosbox"
+  install -Dm 755 "$srcdir/${_pkgname}/release/dosbox" "$pkgdir/usr/bin/dosbox"
   install -Dm 644 "$srcdir/${_pkgname}/docs/dosbox.1.gz" "$pkgdir/usr/share/man/man1/dosbox.1.gz"
 
   # desktop file and icon
