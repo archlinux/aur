@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/vision_opencv'
 pkgname='ros-melodic-vision-opencv'
 pkgver='1.13.0'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
