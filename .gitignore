@@ -1,0 +1,5 @@
+mod-arpeggiator-lv2/
+mod-arpeggiator-lv2-git-*.pkg.tar.xz
+mod-arpeggiator-lv2-git-*.pkg.tar.zst
+pkg/
+src/

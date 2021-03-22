@@ -1,0 +1,20 @@
+pkgbase = mod-arpeggiator-lv2-git
+	pkgdesc = A MIDI arpeggiator LV2 plugin from MOD Devices (git version)
+	pkgver = r101.5fefe42
+	pkgrel = 1
+	url = https://github.com/moddevices/mod-arpeggiator-lv2
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL
+	makedepends = git
+	makedepends = lv2
+	depends = glibc
+	depends = gcc-libs
+	provides = mod-arpeggiator-lv2
+	conflicts = mod-arpeggiator-lv2
+	source = mod-arpeggiator-lv2::git+https://github.com/moddevices/mod-arpeggiator-lv2.git
+	md5sums = SKIP
+
+pkgname = mod-arpeggiator-lv2-git
+
