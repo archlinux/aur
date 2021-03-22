@@ -6,7 +6,7 @@ url='https://wiki.ros.org/ros_emacs_utils'
 pkgname='ros-melodic-ros-emacs-utils'
 pkgver='0.4.16'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
