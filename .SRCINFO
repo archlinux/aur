@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-librviz-tutorial
 	pkgdesc = ROS - Tutorial showing how to compile your own C++ program with RViz displays and features.
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/librviz_tutorial
 	arch = i686
 	arch = x86_64
