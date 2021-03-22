@@ -6,7 +6,7 @@ url='http://www.ros.org/'
 pkgname='ros-melodic-industrial-robot-status-controller'
 pkgver='0.1.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('Apache 2.0')
 
 ros_makedepends=(
