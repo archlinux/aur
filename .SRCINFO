@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-fileupload
+	pkgdesc = Angular-FileUpload 12.0.4 (XStatic packaging standard)
+	pkgver = 12.0.4.0
+	pkgrel = 1
+	url = https://github.com/danialfarid/angular-file-upload
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-FileUpload/XStatic-Angular-FileUpload-12.0.4.0.tar.gz
+	md5sums = 1cf48c0204783da2f71efe79039a8468
+	sha256sums = 68e66efc4f2ed81438553a54646d5cc67487b05764c0003ff25ae5beb8dae21f
+	sha512sums = 108c745f8e59d6bbc79bca9ba77f18ae3600f7da793311f4db269aef6c474f834a58e825d6fbf8a49d37d64e36546b8024e2bf3d20db85ffeef3b703cb9237fc
+
+pkgname = python-xstatic-angular-fileupload
+
+pkgname = python2-xstatic-angular-fileupload
+
