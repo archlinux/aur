@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-urdf-geometry-parser
 	pkgdesc = ROS - Extract geometry value of a vehicle from urdf.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/urdf_geometry_parser
 	arch = i686
 	arch = x86_64
