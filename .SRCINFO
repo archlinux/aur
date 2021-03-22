@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rostopic
 	pkgdesc = ROS - rostopic contains the rostopic command-line tool for displaying debug information about ROS Topics, including publishers, subscribers, publishing rate, and ROS Messages.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rostopic
 	arch = any
 	license = BSD
