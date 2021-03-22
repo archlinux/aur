@@ -3,9 +3,9 @@
 
 _pkgname=mod-cv-plugins
 pkgname="${_pkgname}-git"
-pkgver=r210.2094659
+pkgver=r212.c2d547e
 pkgrel=1
-pkgdesc="CV (audio-rate control) LV2 plugins from MOD Devices."
+pkgdesc="CV (audio-rate control) LV2 plugins from MOD Devices (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/moddevices/mod-cv-plugins"
 license=('GPL2')
@@ -15,9 +15,11 @@ makedepends=('git' 'lv2')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/moddevices/mod-cv-plugins.git"
-        'dpf::git+https://github.com/DISTRHO/DPF.git')
+        'dpf::git+https://github.com/DISTRHO/DPF.git'
+        'logic-operators-no-programs.diff')
 md5sums=('SKIP'
-         'SKIP')
+         'SKIP'
+         'b3c9265ebaf7be3949705ddfcd9095bf')
 
 
 pkgver() {
@@ -31,8 +33,10 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule init
-  git config submodule.dpf.url "${srcdir}/dpf"
+  git submodule set-url source/mod-logic-operators/dpf "${srcdir}/dpf"
   git submodule update
+
+  patch -p1 -N -r - -i "${srcdir}"/logic-operators-no-programs.diff
 }
 
 build() {
