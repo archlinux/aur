@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-kdl-conversions
 	pkgdesc = ROS - Conversion functions between KDL and geometry_msgs types.
 	pkgver = 1.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/kdl_conversions
 	arch = any
 	license = BSD
