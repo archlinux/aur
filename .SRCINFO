@@ -1,16 +1,13 @@
 pkgbase = python2-cyrano
 	pkgdesc = Tool used for demonstrating Python packages that combines a display window and an IPython shell.
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://stsdas.stsci.edu/cyrano
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = ipython2
 	depends = python2-pmw
-	provides = python-cyrano
-	conflicts = python-cyrano
-	replaces = python-cyrano
 	source = http://stsdas.stsci.edu/cyrano/cyrano-0.1.4.tar.gz
 	md5sums = 5ba2fb588dd6c10385de34b4a46d8966
 

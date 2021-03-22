@@ -1,16 +1,13 @@
-# Maintainer: Evgeniy Alekseev <arcanis.arch at gmail dot com>
+# Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Contributor: Sebastien Binet <binet at cern dot ch>
 
 pkgname=python2-cyrano
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool used for demonstrating Python packages that combines a display window and an IPython shell."
 url="http://stsdas.stsci.edu/cyrano"
 arch=('i686' 'x86_64')
 license=('BSD')
-conflicts=('python-cyrano')
-provides=('python-cyrano')
-replaces=('python-cyrano')
 depends=('ipython2' 'python2-pmw')
 source=(http://stsdas.stsci.edu/cyrano/cyrano-${pkgver}.tar.gz)
 md5sums=('5ba2fb588dd6c10385de34b4a46d8966')
