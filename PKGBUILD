@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=2.1.5.r0.aad990e
+pkgver=2.2.0.r0.36934f6
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
