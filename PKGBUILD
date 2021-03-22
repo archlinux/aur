@@ -6,7 +6,7 @@
     pkgname='ros-melodic-mbf-abstract-core'
     pkgver='0.3.4'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('BSD')
 
     ros_makedepends=(ros-melodic-std-msgs
