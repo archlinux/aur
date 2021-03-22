@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=googledot-cursor-theme
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cursor theme inspired on Google"
 arch=('any')
 url="https://www.pling.com/p/1215613"

@@ -1,7 +1,7 @@
 pkgbase = googledot-cursor-theme
 	pkgdesc = Cursor theme inspired on Google
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pling.com/p/1215613
 	arch = any
 	license = GPL3
