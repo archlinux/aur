@@ -7,7 +7,7 @@ pkgname='ros-melodic-resource-retriever'
 pkgver='1.12.6'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
