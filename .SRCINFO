@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-schema-form
+	pkgdesc = Angular Schema-Form 0.8.13.0 (XStatic packaging standard)
+	pkgver = 0.8.13.0
+	pkgrel = 1
+	url = http://schemaform.io/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Schema-Form/XStatic-Angular-Schema-Form-0.8.13.0.tar.gz
+	md5sums = d0faab81c36f4cfc03e092fedc30018d
+	sha256sums = 7c08634901751267fe26d266fc027cf6ed2e5f422696985cec750594b3f4e300
+	sha512sums = 878ea176074b1523af7193f8439966682e4ee4c99e6d50b4835ce4c136269998222b85b3a03811138696dcad72dd0aa646a43c45727a95379120f5228d30759b
+
+pkgname = python-xstatic-angular-schema-form
+
+pkgname = python2-xstatic-angular-schema-form
+
