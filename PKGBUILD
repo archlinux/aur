@@ -3,12 +3,12 @@
 pkgname=python-kifield
 _name=${pkgname#python-}
 pkgver=0.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for manipulating part fields in KiCad schematic files or "\
 "libraries."
-url="https://xess.com/KiField/docs/_build/singlehtml/index.html"
+url="https://github.com/xesscorp/KiField"
 arch=(any)
-license=('BSD')
+license=('MIT')
 depends=(
   'python'
   'python-openpyxl'
@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
 )
-provides=('python-kifield')
+provides=("$pkgname")
 md5sums=('f2b1cfbeef2b714fcb98a7194fd45e91')
 
 build() {
