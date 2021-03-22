@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-geometry-tutorials
 	pkgdesc = ROS - Metapackage of geometry tutorials ROS.
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wiki.ros.org/geometry_tutorials
 	arch = any
 	license = BSD
