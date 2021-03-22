@@ -4,7 +4,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.17.0.r31.g0af353168
+pkgver=v1.29.3.r187.gbbcfd952f
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
 url="https://github.com/netdata/netdata/wiki"
@@ -21,15 +21,31 @@ optdepends=('nodejs: for monitoring named and SNMP devices'
             'hddtemp: for monitoring hhd temperature'
             'apcupsd: for monitoring APC UPS'
             'iw: for monitoring Linux as access point')
-source=("$_gitname::git+https://github.com/firehol/netdata"
+source=("$_gitname::git+https://github.com/netdata/netdata"
+        "submodule-mqtt_websockets::git+https://github.com/underhood/mqtt_websockets.git"
+        "submodule-MQTT-C::git+https://github.com/underhood/MQTT-C.git"
+        "submodule-c-rbuf::git+https://github.com/underhood/c-rbuf.git"
         "${_gitname}.tmpfiles"
         "${_gitname}.sysusers")
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '3f934ddd1f5248f9e11c29050c023d60b76e4098ec9c8d413bb362d43e9242f767fd58310d966076e8400779af8bda2459afcc314b267fcb9f1c84173e14e313'
             'a910809a823ba58ca7bdaa72e8d68427b48f452c1fbb2343fa182ecb0a091a7640e73af24b8ba2fdd90e00aed8ef53b7fccd25cb8f04ca9b9fa6c8e52223ca66')
 provides=('netdata')
 conflicts=('netdata')
 install="$_gitname.install"
+
+prepare() {
+  cd "$_gitname"
+  git submodule set-url mqtt_websockets "$srcdir"/submodule-mqtt_websockets
+  git submodule update --init --no-fetch mqtt_websockets
+
+  git -C mqtt_websockets submodule set-url MQTT-C "$srcdir"/submodule-MQTT-C
+  git -C mqtt_websockets submodule set-url c-rbuf "$srcdir"/submodule-c-rbuf
+  git -C mqtt_websockets submodule update --init --no-fetch MQTT-C c-rbuf
+}
 
 pkgver() {
   cd "$_gitname"

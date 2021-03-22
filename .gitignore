@@ -2,3 +2,6 @@
 /src/
 /netdata/
 /netdata-git-*.pkg.*
+/submodule-mqtt_websockets/
+/submodule-MQTT-C/
+/submodule-c-rbuf/
