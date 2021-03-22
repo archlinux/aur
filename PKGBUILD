@@ -4,7 +4,7 @@ url='https://wiki.ros.org/class_loader'
 pkgname='ros-melodic-class-loader'
 pkgver='0.4.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
