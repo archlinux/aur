@@ -4,7 +4,7 @@ url='https://wiki.ros.org/turtlebot3_gazebo'
 pkgname='ros-melodic-turtlebot3-gazebo'
 pkgver='1.3.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('Apache-2.0')
 
 ros_makedepends=(
