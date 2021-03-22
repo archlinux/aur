@@ -5,7 +5,7 @@ url='https://wiki.ros.org/amcl'
 pkgname='ros-melodic-amcl'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('LGPL')
 
 ros_makedepends=(ros-melodic-catkin
