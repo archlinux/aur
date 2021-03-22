@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-trac-ik-python
 	pkgdesc = ROS - The trac_ik_python package contains a python wrapper using SWIG for trac_ik_lib.
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/trac_ik_python
 	arch = i686
 	arch = x86_64
