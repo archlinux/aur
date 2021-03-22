@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosmaster
 	pkgdesc = ROS - ROS Master implementation.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosmaster
 	arch = any
 	license = BSD
