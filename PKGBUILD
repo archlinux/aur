@@ -6,7 +6,7 @@ url='https://wiki.ros.org/warehouse_ros'
 pkgname='ros-melodic-warehouse-ros'
 pkgver='0.9.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
