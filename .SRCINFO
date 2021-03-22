@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-ros-control-interface
 	pkgdesc = ROS - ros_control controller manager interface for MoveIt!.
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/moveit_ros_control_interface
 	arch = any
 	license = BSD

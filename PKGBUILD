@@ -5,7 +5,7 @@ url='https://wiki.ros.org/moveit_ros_control_interface'
 pkgname='ros-melodic-moveit-ros-control-interface'
 pkgver='1.0.7'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
