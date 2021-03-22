@@ -6,7 +6,7 @@ url='https://wiki.ros.org/actionlib'
 pkgname='ros-melodic-actionlib'
 pkgver='1.12.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
