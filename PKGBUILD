@@ -5,7 +5,7 @@ url='http://wiki.ros.org/ecl_type_traits'
 pkgname='ros-melodic-ecl-type-traits'
 pkgver='0.62.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-ecl-license

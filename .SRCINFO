@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ecl-type-traits
 	pkgdesc = ROS - Extends c++ type traits and implements a few more to boot.
 	pkgver = 0.62.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/ecl_type_traits
 	arch = any
 	license = BSD
