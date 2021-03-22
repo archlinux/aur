@@ -6,7 +6,7 @@ url='https://wiki.ros.org/random_numbers'
 pkgname='ros-melodic-random-numbers'
 pkgver='0.3.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
