@@ -6,7 +6,7 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
-pkgver=0.44.r0.bdc1e1b
+pkgver=0.45.r0.185d044
 pkgrel=1
 
 pkgdesc='A command-line interface for Reddit written in POSIX sh'
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "${pkgname%-git}"
   # Arch packages are never ever installed to `/usr/local/`.
-  patch -Np1 <../archlinux.patch
+  patch --verbose -Np1 <../archlinux.patch
 }
 
 package() {
