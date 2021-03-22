@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-message-runtime
 	pkgdesc = ROS - Package modeling the run-time dependencies for language bindings of messages.
 	pkgver = 0.4.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/message_runtime
 	arch = i686
 	arch = x86_64

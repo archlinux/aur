@@ -6,7 +6,7 @@ url='https://wiki.ros.org/message_runtime'
 pkgname='ros-melodic-message-runtime'
 pkgver='0.4.12'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
