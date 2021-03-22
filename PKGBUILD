@@ -6,7 +6,7 @@ url='https://wiki.ros.org/summit_xl_localization'
 pkgname='ros-melodic-summit-xl-localization'
 pkgver='1.1.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
