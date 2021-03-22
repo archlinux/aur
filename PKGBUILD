@@ -7,7 +7,7 @@ pkgname='ros-melodic-joy-listener'
 pkgver='0.2.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
