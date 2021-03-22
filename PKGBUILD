@@ -5,7 +5,7 @@ url='https://wiki.ros.org/chomp_motion_planner'
 pkgname='ros-melodic-chomp-motion-planner'
 pkgver='1.0.7'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core

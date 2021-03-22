@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-chomp-motion-planner
 	pkgdesc = ROS - chomp motion planner
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/chomp_motion_planner
 	arch = any
 	license = BSD
