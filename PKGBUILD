@@ -5,7 +5,7 @@ pkgname='ros-melodic-catkin'
 pkgver='0.7.29'
 epoch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
