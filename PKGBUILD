@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosgraph_msgs'
 pkgname='ros-melodic-rosgraph-msgs'
 pkgver='1.11.2'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

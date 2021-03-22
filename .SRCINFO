@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosgraph-msgs
 	pkgdesc = ROS - Messages relating to the ROS Computation Graph.
 	pkgver = 1.11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rosgraph_msgs
 	arch = any
 	license = BSD
