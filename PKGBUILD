@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r1616.d17da13
+pkgver=r1665.be9139e
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64')
@@ -36,10 +36,12 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/keplerproject/lua-compat-5.3.git'
         'git+https://github.com/nothings/stb.git'
         'git+https://github.com/wolfpld/tracy.git'
+        'git+https://github.com/Neargye/magic_enum.git'
         'pcsx-redux.sh'
         'pcsx-redux.desktop'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -80,6 +82,7 @@ prepare() {
   git config submodule.third_party/luv.url "$srcdir/luv"
   git config submodule.third_party/stb.url "$srcdir/stb"
   git config submodule.third_party/tracy.url "$srcdir/tracy"
+  git config submodule.third_party/magic_enum.url "$srcdir/magic_enum"
 
   git submodule update third_party/imgui \
                        third_party/imgui_club \
@@ -94,7 +97,8 @@ prepare() {
                        third_party/luajit \
                        third_party/luv \
                        third_party/stb \
-                       third_party/tracy
+                       third_party/tracy \
+                       third_party/magic_enum
 
   cd third_party/luv
   git submodule init
