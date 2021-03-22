@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-stage-ros
 	pkgdesc = ROS - This package provides ROS specific hooks for stage.
 	pkgver = 1.8.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://wiki.ros.org/stage_ros
 	arch = i686
 	arch = x86_64

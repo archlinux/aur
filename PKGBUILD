@@ -4,7 +4,7 @@ url='https://wiki.ros.org/stage_ros'
 pkgname='ros-melodic-stage-ros'
 pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
