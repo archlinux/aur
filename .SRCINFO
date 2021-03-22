@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-message-filters
 	pkgdesc = ROS - A set of message filters which take in messages and may output those messages at a later time, based on the conditions that filter needs met.
 	pkgver = 1.14.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/message_filters
 	arch = i686
 	arch = x86_64
