@@ -5,7 +5,7 @@ url='https://wiki.ros.org/ecl_license'
 pkgname='ros-melodic-ecl-license'
 pkgver='0.61.8'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
