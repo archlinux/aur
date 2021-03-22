@@ -4,7 +4,7 @@ url='https://wiki.ros.org/camera_calibration_parsers'
 pkgname='ros-melodic-camera-calibration-parsers'
 pkgver='1.11.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=8
+pkgrel=9
 license=('BSD')
 
 ros_makedepends=(
