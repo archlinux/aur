@@ -1,6 +1,6 @@
 pkgbase = overmind
 	pkgdesc = Process manager for Procfile-based applications and tmux
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/DarthSim/overmind
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = overmind
 	depends = tmux
 	conflicts = overmind-bin
 	conflicts = overmind-git
-	source = overmind-2.2.1.tar.gz::https://github.com/DarthSim/overmind/archive/v2.2.1.tar.gz
-	sha512sums = d616cad5defc204c20e9d679d4a6d87886044dff5173e9e836aa782d8e1b4271189fcaf14f7ee4b2cea70b738b59d6561bf51b2e0d9e2944e76709de7c2e2300
-	b2sums = 0d4abe280c89818f695d7c205d6cbb9773d75521df3f50dbc8062cdc844c4183d90e38a1d38ffb61f80a3581a511b06acc6715f34989f2f9cd7f3e1bbf8737cf
+	source = overmind-2.2.2.tar.gz::https://github.com/DarthSim/overmind/archive/v2.2.2.tar.gz
+	sha512sums = 1ca98ee6a058e4d396e96c3b0442387567816e6c3b7cad1122e5f3ca915067ae2b03d9629e156c91e4164fa71f42930002da1d9e0e7f4eaee9d866bcabe94f6f
+	b2sums = 0caafb16472bb0c3ea369347156cda929bb8e16ba19b758c61ed0c87ad946b93528f506c675b73da80becc7935a35930f8778e14eea0076c5aa1969b7721fd87
 
 pkgname = overmind
 
