@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosnode'
 pkgname='ros-melodic-rosnode'
 pkgver='1.14.10'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
