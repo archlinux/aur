@@ -1,0 +1,22 @@
+pkgbase = hexo-deployer-with-theme-typography
+	pkgdesc = Hexo deployment tool with typography theme
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/Sakura1943/hexo-deployer-with-theme-typography
+	arch = x86_64
+	license = GPL
+	depends = vim
+	depends = nano
+	depends = git
+	depends = wget
+	depends = curl
+	depends = tar
+	depends = gzip
+	depends = zip
+	depends = nodejs-lts-erbium
+	provides = hexo-deployer-with-theme-typography=1.1
+	source = https://mirrors.yaoyz.cn/hexo//hexo.sh
+	md5sums = SKIP
+
+pkgname = hexo-deployer-with-theme-typography
+
