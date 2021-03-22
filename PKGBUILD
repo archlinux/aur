@@ -7,7 +7,7 @@ pkgname='ros-melodic-compressed-image-transport'
 pkgver='1.9.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-compressed-image-transport
 	pkgdesc = ROS - Compressed_image_transport provides a plugin to image_transport for transparently sending images encoded as JPEG or PNG.
 	pkgver = 1.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wiki.ros.org/image_transport_plugins
 	arch = any
 	license = BSD
