@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='ocdownloader'
-_upstreamver='1.7.10'
+_upstreamver='1.7.11'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='e-alfred/ocdownloader'
@@ -24,7 +24,7 @@ optdepends=(
 	'youtube-dl: To download videos')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_nextcloud_appname}-${pkgver}.tar.gz")
-sha512sums=('ab63b98219487e6ae565dc1f590f9a1b85019211df024186223d9150914655ff41d8fbdd116ff45340d0a589d0fae289d8d0474867726e586cda42e664ed3fee')
+sha512sums=('77924bdd0306566093a7dd9b840ec3e0fcc96aa9533aa4ed23c5f48c33c2d8765c877b009ab566293129320d9b7291b5e318e21ad37e9d8e001b7016c237186f')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
