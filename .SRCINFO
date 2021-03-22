@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-global-planner
 	pkgdesc = ROS - A path planner library and node.
 	pkgver = 1.16.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/global_planner
 	arch = i686
 	arch = x86_64
