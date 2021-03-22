@@ -1,7 +1,7 @@
 pkgbase = kopia-bin
 	pkgdesc = A cross-platform backup-tool with encryption, deduplication, compression and cloud support.
-	pkgver = 0.8.0~beta2
-	pkgrel = 3
+	pkgver = 0.8.0~beta3
+	pkgrel = 1
 	url = https://github.com/kopia/kopia/
 	arch = x86_64
 	arch = aarch64
@@ -9,13 +9,12 @@ pkgbase = kopia-bin
 	license = APACHE
 	provides = kopia
 	conflicts = kopia
-	noextract = kopia-bin-0.8.0-beta2.tar.gz
-	source_x86_64 = kopia-bin-0.8.0-beta2.tar.gz::https://github.com/kopia/kopia/releases/download/v0.8.0-beta2/kopia-0.8.0-beta2-linux-x64.tar.gz
-	sha256sums_x86_64 = a41c2cf59b5244c3bccab4856d339d705b7dc2aa162d7524eb3fd7eb3f5561c3
-	source_aarch64 = kopia-bin-0.8.0-beta2.tar.gz::https://github.com/kopia/kopia/releases/download/v0.8.0-beta2/kopia-0.8.0-beta2-linux-arm64.tar.gz
-	sha256sums_aarch64 = a17ac9bc904e7520da0afe76b9a671c32cfabcb120cca53282b68a4a2a648f89
-	source_armv7h = kopia-bin-0.8.0-beta2.tar.gz::https://github.com/kopia/kopia/releases/download/v0.8.0-beta2/kopia-0.8.0-beta2-linux-arm.tar.gz
-	sha256sums_armv7h = d4709a851dfac66f0c3d04eb20e1a02a3ed8f652d01d87ef097529a8bfda6e7a
+	source_x86_64 = https://github.com/kopia/kopia/releases/download/v0.8.0-beta3/kopia_0.8.0-beta3_linux_amd64.deb
+	sha256sums_x86_64 = f9af94513163dbdbe6e4ededc274f4947adbdf022f10534042b1f3d6e7ad0d18
+	source_aarch64 = https://github.com/kopia/kopia/releases/download/v0.8.0-beta3/kopia_0.8.0-beta3_linux_arm64.deb
+	sha256sums_aarch64 = 785d8ef4d7c90097caebfe67cb5f588fd641ded309b829e55c7b68adef0df40f
+	source_armv7h = https://github.com/kopia/kopia/releases/download/v0.8.0-beta3/kopia_0.8.0-beta3_linux_armhf.deb
+	sha256sums_armv7h = 7133c6605cc82e77aadfa4e9dfebd812f86fe391b59f5816f1db6c7d575e00b7
 
 pkgname = kopia-bin
 
