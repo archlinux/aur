@@ -4,7 +4,7 @@ url='https://github.com/ros/ros_comm'
 pkgname='ros-melodic-rostest'
 pkgver='1.14.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
