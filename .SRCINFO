@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-bondcpp
 	pkgdesc = ROS - C++ implementation of bond, a mechanism for checking when another process has terminated.
 	pkgver = 1.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.wiki.ros.org/bondcpp
 	arch = i686
 	arch = x86_64

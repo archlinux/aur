@@ -4,7 +4,7 @@ url='https://www.wiki.ros.org/bondcpp'
 pkgname='ros-melodic-bondcpp'
 pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
