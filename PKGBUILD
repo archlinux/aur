@@ -1,8 +1,8 @@
 # Maintainer: wowario <wowario at protonmail dot com>
 # Contributor: wowario <wowario at protonmail dot com>
 
-pkgbase=('wownero-git')
-pkgname=('wownero-git')
+pkgbase='wownero-git'
+pkgname='wownero-git'
 pkgver=v0.9.2.2.0e65b21328
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
