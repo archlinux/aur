@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-lrdragndrop
+	pkgdesc = Angular-lrdragndrop 1.0.2.4 (XStatic packaging standard)
+	pkgver = 1.0.2.4
+	pkgrel = 1
+	url = https://github.com/lorenzofox3/lrDragNDrop
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-lrdragndrop/XStatic-Angular-lrdragndrop-1.0.2.4.tar.gz
+	md5sums = 6c6c7969bfa89701db2b316162b36291
+	sha256sums = 5d3cce15a6342814811ddc372c6035bf4026253664c0b72a660b481cb183ae1b
+	sha512sums = 5828382536d27cdfaf4eb2e35f0718c3201b10cad939fc086818e9a3052501660f07cddaf8525ca162aab307789243228880cacfe69b9a4acab77017a4b6ba89
+
+pkgname = python-xstatic-angular-lrdragndrop
+
+pkgname = python2-xstatic-angular-lrdragndrop
+
