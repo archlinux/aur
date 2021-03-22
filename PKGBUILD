@@ -6,7 +6,7 @@ url='https://wiki.ros.org/hls_lfcd_lds_driver'
 pkgname='ros-melodic-hls-lfcd-lds-driver'
 pkgver='1.1.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
