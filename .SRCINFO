@@ -1,6 +1,6 @@
 pkgbase = simplenote-electron-arm-bin
 	pkgdesc = The simplest way to keep notes
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/Automattic/simplenote-electron
 	arch = armv7h
@@ -17,10 +17,10 @@ pkgbase = simplenote-electron-arm-bin
 	optdepends = ttf-joypixels: emoji support
 	provides = simplenote
 	options = !strip
-	source_armv7h = simplenote-electron-2.7.0-armv7h.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.7.0/Simplenote-linux-2.7.0-armv7l.AppImage
-	b2sums_armv7h = 0b5840f36c5807b26076cafb28930128bac66677d5f5ec2ca799d6f1531df3217d4aa58fca6eb9412bff0933136715b806f477b5a8cf52fdbc7e4c639e72881f
-	source_aarch64 = simplenote-electron-2.7.0-aarch64.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.7.0/Simplenote-linux-2.7.0-arm64.AppImage
-	b2sums_aarch64 = 377e9ea13c370363f74f6306335b961af951faac90d5d902db57112e968366dfcf28b1af9a79620babc70c841027924f73f7157b13d3e556b6ea87f45d10d672
+	source_armv7h = simplenote-electron-2.8.0-armv7h.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.8.0/Simplenote-linux-2.8.0-armv7l.AppImage
+	b2sums_armv7h = bcbe6cf9fd8fa6710dd5a0843211cdf0de73833cfe940fcfa96a5bebe9c4c98e7a32ed5cfc27ccdc3fc9120b3cb77ea5929374f77a3c6e0239fe450aca711cf6
+	source_aarch64 = simplenote-electron-2.8.0-aarch64.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.8.0/Simplenote-linux-2.8.0-arm64.AppImage
+	b2sums_aarch64 = f80a3258192ddef1d96e99579efc8da62c5869b85d23534d885090f19a8704f704f2f5e845c35426ea87e16d5cdceb3a992f10fe1ad8490b23a066faf9674579
 
 pkgname = simplenote-electron-arm-bin
 
