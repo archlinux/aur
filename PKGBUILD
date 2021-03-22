@@ -6,7 +6,7 @@ url='https://github.com/PickNikRobotics/rosparam_shortcuts'
 pkgname='ros-melodic-rosparam-shortcuts'
 pkgver='0.4.0'
 arch=('x86_64')
-pkgrel=3
+pkgrel=4
 license=('unknown')
 
 _ros_makedepends=(
