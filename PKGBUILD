@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 #XXX: when changing major version (i.e. 1.15 to 1.1X) remeber to updated the occurences in build() and package()
-pkgver=1.15.10
+pkgver=1.15.11
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,13 +12,10 @@ license=('GPL')
 depends=('sdl2'
          'sdl2_image' 
          'sdl2_mixer' 
-         'sdl2_ttf' 
          'pango' 
-         'fribidi' 
          'dbus' 
          'openssl' 
-         'boost-libs' 
-         'libpng')
+         'boost-libs')
 optdepends=('python:  some tools for UMC developers'
             'tk: for GUI.pyw, a gui for some of these tools'
             'gettext: for creating translation files with wmlxgettext'
@@ -41,7 +38,7 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "wesnothd-devel.service"
         "wesnoth-devel.appdata.xml")
 
-sha256sums=('e04692d7a48b82a72a25ce895617f248372b01a5675e8356c16d675748a8bc61'
+sha256sums=('08e90fbbd6d5989caad4f0c3e805158ad5298445aa68017bee60b7ce243cc77f'
          '3631b4c1eda6c2099e43272f2a26a8a3e897b9541a395ebeb9a1b8b3753a647d'
          '196cd09c73c6503b9caef7c47bb61d0243c10e9b15daa6b3aff437f7ad03448a'
          '98fbd8bafff165c45d0a1eb23a500108e4ce7c8ed32b9abc9bf1c3179e1d3491'
@@ -57,7 +54,7 @@ prepare() {
   #diff -rupN src/ src_new/ > patch_name.patch
 
   #How to apply a patch
-  #patch -p1 < ../../sdlmixer_2.0.2.patch
+  #patch -p1 < ../../patch_name.patch
 }
 
 check() {
