@@ -1,7 +1,7 @@
 # Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
 
 pkgname='textnote'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Simple tool for creating and organizing daily notes on the command line'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('go')
 provides=("${pkgname}")
 source=("https://github.com/dkaslovsky/textnote/archive/v${pkgver}.tar.gz")
-sha256sums=('cbccbddecb93b5e831446a1afa998f553ce339bd26864a727d41e6ab1f924e77')
+sha256sums=('29bd17095654bc176a39ab3bb0e3a4cca84eea22783dcbafbac8c49fe9e90808')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/"

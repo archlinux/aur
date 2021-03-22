@@ -1,14 +1,14 @@
 pkgbase = textnote
 	pkgdesc = Simple tool for creating and organizing daily notes on the command line
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/dkaslovsky/textnote
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	provides = textnote
-	source = https://github.com/dkaslovsky/textnote/archive/v1.1.0.tar.gz
-	sha256sums = cbccbddecb93b5e831446a1afa998f553ce339bd26864a727d41e6ab1f924e77
+	source = https://github.com/dkaslovsky/textnote/archive/v1.1.1.tar.gz
+	sha256sums = 29bd17095654bc176a39ab3bb0e3a4cca84eea22783dcbafbac8c49fe9e90808
 
 pkgname = textnote
 
