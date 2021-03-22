@@ -6,7 +6,7 @@ url='https://wiki.ros.org/summit_xl_sim_bringup'
 pkgname='ros-melodic-summit-xl-sim-bringup'
 pkgver='1.1.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

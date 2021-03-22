@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-summit-xl-sim-bringup
 	pkgdesc = ROS - Launch files for Summit XL simulation
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/summit_xl_sim_bringup
 	arch = any
 	license = BSD
