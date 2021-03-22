@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gazebo-msgs
 	pkgdesc = ROS - Message and service data structures for interacting with Gazebo from ROS.
 	pkgver = 2.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/gazebo_msgs
 	arch = i686
 	arch = x86_64
