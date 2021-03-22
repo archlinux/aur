@@ -4,7 +4,7 @@ url='https://github.com/tuw-robotics/tuw_msgs'
 pkgname='ros-melodic-tuw-gazebo-msgs'
 
 pkgver='0.0.13'
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('BSD')
 

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-tuw-gazebo-msgs
 	pkgdesc = ROS - Message and service data structures.
 	pkgver = 0.0.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tuw-robotics/tuw_msgs
 	arch = i686
 	arch = x86_64
