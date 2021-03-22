@@ -5,7 +5,7 @@ url='https://wiki.ros.org/rosapi'
 pkgname='ros-melodic-rosapi'
 pkgver='0.11.13'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

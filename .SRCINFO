@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosapi
 	pkgdesc = ROS - Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 	pkgver = 0.11.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosapi
 	arch = any
 	license = BSD
