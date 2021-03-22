@@ -3,7 +3,7 @@
 _pkgname=mod-midi-utilities
 pkgname="${_pkgname}-git"
 pkgver=r45.c912a95
-pkgrel=1
+pkgrel=2
 pkgdesc="MIDI utility LV2 plugins from MOD Devices (git version)"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-midi-utilities"
@@ -13,8 +13,10 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'lv2')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${_pkgname}::git+https://github.com/moddevices/mod-midi-utilities.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/moddevices/mod-midi-utilities.git"
+        'remove-modgui.diff')
+md5sums=('SKIP'
+         '01586d56193a64a33deea69121b3afaa')
 
 
 pkgver() {
@@ -25,6 +27,11 @@ pkgver() {
   )
 }
 
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -p1 -N -r - -i "${srcdir}"/remove-modgui.diff
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"

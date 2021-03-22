@@ -1,7 +1,7 @@
 pkgbase = mod-midi-utilities-git
 	pkgdesc = MIDI utility LV2 plugins from MOD Devices (git version)
 	pkgver = r45.c912a95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moddevices/mod-midi-utilities
 	arch = x86_64
 	groups = lv2-plugins
@@ -14,7 +14,9 @@ pkgbase = mod-midi-utilities-git
 	provides = mod-midi-utilities
 	conflicts = mod-midi-utilities
 	source = mod-midi-utilities::git+https://github.com/moddevices/mod-midi-utilities.git
+	source = remove-modgui.diff
 	md5sums = SKIP
+	md5sums = 01586d56193a64a33deea69121b3afaa
 
 pkgname = mod-midi-utilities-git
 

@@ -1,0 +1,41 @@
+diff --git a/midi-switchbox_1-2.lv2/manifest.ttl b/midi-switchbox_1-2.lv2/manifest.ttl
+index ad8d792..c0ed489 100644
+--- a/midi-switchbox_1-2.lv2/manifest.ttl
++++ b/midi-switchbox_1-2.lv2/manifest.ttl
+@@ -4,5 +4,4 @@
+ <http://moddevices.com/plugins/mod-devel/MIDI-Switchbox_1-2>
+     a lv2:Plugin ;
+     lv2:binary <midi-switchbox_1-2.so>  ;
+-    rdfs:seeAlso <midi-switchbox_1-2.ttl> ,
+-                 <modgui.ttl> .
++    rdfs:seeAlso <midi-switchbox_1-2.ttl> .
+diff --git a/midi-switchbox_1-3.lv2/manifest.ttl b/midi-switchbox_1-3.lv2/manifest.ttl
+index 9707c79..9db5d37 100644
+--- a/midi-switchbox_1-3.lv2/manifest.ttl
++++ b/midi-switchbox_1-3.lv2/manifest.ttl
+@@ -4,4 +4,4 @@
+ <http://moddevices.com/plugins/mod-devel/midi-switchbox_1-3>
+     a lv2:Plugin ;
+     lv2:binary <midi-switchbox_1-3.so>  ;
+-    rdfs:seeAlso <midi-switchbox_1-3.ttl> , <modgui.ttl> .
++    rdfs:seeAlso <midi-switchbox_1-3.ttl> .
+diff --git a/midi-switchbox_2-1.lv2/manifest.ttl b/midi-switchbox_2-1.lv2/manifest.ttl
+index ab56682..16da1c1 100644
+--- a/midi-switchbox_2-1.lv2/manifest.ttl
++++ b/midi-switchbox_2-1.lv2/manifest.ttl
+@@ -4,4 +4,4 @@
+ <http://moddevices.com/plugins/mod-devel/midi-switchbox_2-1>
+     a lv2:Plugin ;
+     lv2:binary <midi-switchbox_2-1.so>  ;
+-    rdfs:seeAlso <midi-switchbox_2-1.ttl> , <modgui.ttl> .
++    rdfs:seeAlso <midi-switchbox_2-1.ttl> .
+diff --git a/midi-switchbox_3-1.lv2/manifest.ttl b/midi-switchbox_3-1.lv2/manifest.ttl
+index fb15edb..15d1a9c 100644
+--- a/midi-switchbox_3-1.lv2/manifest.ttl
++++ b/midi-switchbox_3-1.lv2/manifest.ttl
+@@ -4,4 +4,4 @@
+ <http://moddevices.com/plugins/mod-devel/midi-switchbox_3-1>
+     a lv2:Plugin ;
+     lv2:binary <midi-switchbox_3-1.so>  ;
+-    rdfs:seeAlso <midi-switchbox_3-1.ttl> , <modgui.ttl> .
++    rdfs:seeAlso <midi-switchbox_3-1.ttl> .
