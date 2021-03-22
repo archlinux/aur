@@ -6,7 +6,7 @@ url='https://wiki.ros.org/python_orocos_kdl'
 pkgname='ros-melodic-python-orocos-kdl'
 pkgver='1.4.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('LGPL')
 
 ros_makedepends=(
