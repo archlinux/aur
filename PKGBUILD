@@ -4,7 +4,7 @@ url='https://wiki.ros.org/laser_proc'
 pkgname='ros-melodic-laser-proc'
 pkgver='0.1.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
