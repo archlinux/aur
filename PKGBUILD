@@ -6,7 +6,7 @@ url='https://wiki.ros.org/cmake_modules'
 pkgname='ros-melodic-cmake-modules'
 pkgver='0.4.2'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
