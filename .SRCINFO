@@ -1,15 +1,15 @@
 pkgbase = nextcloud-app-drawio
 	pkgdesc = Draw.io integration for Nextcloud servers
-	pkgver = 0.9.9
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/pawelrojek/nextcloud-drawio
 	arch = any
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = drawio-v0.9.9.tar.gz::https://github.com/pawelrojek/nextcloud-drawio/releases/download/v.0.9.9/drawio-v0.9.9.tar.gz
-	md5sums = f3a1fbf6a1664e339f3b7e281954e860
-	sha256sums = 02d2cb40bb965cfa7c28b65ffa22c8c03b2cb246fe4dcad0e914399347b87701
+	source = drawio-v1.0.0.tar.gz::https://github.com/pawelrojek/nextcloud-drawio/releases/download/v.1.0.0/drawio-v1.0.0.tar.gz
+	md5sums = 9a72f133e440d85f93956bc147202029
+	sha256sums = 15efeba0dec95b88a72d7f858e569b579a402d78c6563047b6d12b017a95a6b0
 
 pkgname = nextcloud-app-drawio
 
