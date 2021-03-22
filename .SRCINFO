@@ -1,7 +1,7 @@
 pkgbase = xmltooling
 	pkgdesc = Shibboleth Project XML processing library
 	pkgver = 3.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://wiki.shibboleth.net/confluence/display/OpenSAML/XMLTooling-C
 	arch = x86_64
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = xmltooling
 	makedepends = doxygen
 	depends = curl
 	depends = gcc-libs
-	depends = log4shib>=2
+	depends = log4shib
 	depends = openssl
 	depends = xerces-c
 	depends = xml-security-c
