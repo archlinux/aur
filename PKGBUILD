@@ -2,18 +2,15 @@
 # Contributor: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=rememberthemilk
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
 url="https://www.rememberthemilk.com"
 license=('custom:none' 'MIT' 'Apache')
 source=("https://www.rememberthemilk.com/download/linux/debian/pool/main/r/rememberthemilk/rememberthemilk_${pkgver}_amd64.deb")
-sha256sums=('d705b0c9c20108a186b214596437d373081d34ed53fc87fcec08dc7954532715')
-
-# Dependencies listed in deb file that are satisfied by other dependencies: gtk3 libxtst at-spi2-atk libutil-linux
-# Dependencies listed in deb file that are not satisfied by other dependencies
-depends=(libnotify nss libxss xdg-utils libappindicator-gtk3 libsecret)
+sha256sums=('c96fbc1fa030cee28ecb1abe71f09fb49a61b63f71a353e51ca4bc0a50cd941d')
+depends=(gtk3 libnotify nss libxss libxtst xdg-utils at-spi2-atk libutil-linux libappindicator-gtk3 libsecret)
 
 prepare() {
   cd ${srcdir}
@@ -32,5 +29,3 @@ package() {
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 "${srcdir}/opt/RememberTheMilk"/LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
