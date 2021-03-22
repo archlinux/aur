@@ -5,7 +5,7 @@ url='https://wiki.ros.org/clear_costmap_recovery'
 pkgname='ros-melodic-clear-costmap-recovery'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
