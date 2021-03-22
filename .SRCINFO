@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosbridge-library
 	pkgdesc = ROS - The core rosbridge package, repsonsible for interpreting JSON and performing the appropriate ROS action, like subscribe, publish, call service, and interact with params.
 	pkgver = 0.11.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosbridge_library
 	arch = i686
 	arch = x86_64

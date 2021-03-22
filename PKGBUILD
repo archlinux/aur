@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosbridge_library'
 pkgname='ros-melodic-rosbridge-library'
 pkgver='0.11.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
