@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ecl-exceptions
 	pkgdesc = ROS - Template based exceptions - these are simple and practical and avoid the proliferation of exception types.
 	pkgver = 0.62.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/ecl_exceptions
 	arch = any
 	license = BSD
