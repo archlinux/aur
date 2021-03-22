@@ -4,17 +4,17 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify-snap
-pkgver=1.1.55.494.gca75f788
+pkgver=1.1.55.498.gf9a83c60
 _snapid=pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7
-_revision=45
-pkgrel=2
+_revision=46
+pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 conflicts=('spotify')
 provides=('spotify')
 license=('custom')
 url='https://www.spotify.com'
-depends=('gtk3' 'libsm' 'nss')
+depends=('gtk3' 'libcurl-gnutl' 'libsm' 'nss')
 makedepends=('squashfs-tools')
 source=('spotify.protocol'
         'LICENSE')
@@ -22,7 +22,7 @@ source=('spotify.protocol'
 source_x86_64=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_revision}.snap")
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
-sha512sums_x86_64=('5d61a2d5b26be651620ab5d18d3a204d8d7b09dcec8a733ddc176c44cb43e9176c4350933ebe4498b065ba219113f3226c13bea9659da738fe635f41d01db303')
+sha512sums_x86_64=('dabb55d2ba41f977b6d3f03bfcf147d11785136dd1277efc62011c8371ef25cc04531266bd16608639b9b6a500c1a18a45f44ba7a43e17ab5ac139e36eff7149')
 
 prepare() {
     cd "${srcdir}"
