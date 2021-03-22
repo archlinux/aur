@@ -6,7 +6,7 @@ url='https://github.com/ros-controls/ros_controllers/wiki'
 pkgname='ros-melodic-joint-trajectory-controller'
 pkgver='0.17.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
