@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-srv
 	pkgdesc = ROS - A Python GUI plugin for introspecting available ROS message types.
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rqt_srv
 	arch = any
 	license = BSD
