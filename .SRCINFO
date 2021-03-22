@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-eigen-stl-containers
 	pkgdesc = ROS - This package provides a set of typedefs that allow using Eigen datatypes in STL containers.
 	pkgver = 0.1.8
-	pkgrel = 4
+	pkgrel = 5
 	url = http://eigen.tuxfamily.org/dox/TopicUnalignedArrayAssert.html
 	arch = any
 	license = BSD

@@ -6,7 +6,7 @@ url='http://eigen.tuxfamily.org/dox/TopicUnalignedArrayAssert.html'
 pkgname='ros-melodic-eigen-stl-containers'
 pkgver='0.1.8'
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
