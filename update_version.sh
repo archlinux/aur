@@ -13,15 +13,14 @@ metainfo=$(curlie --silent \
 		tx_esetdownloads_ajax[plugin_id]==34508 \
 		tx_esetdownloads_ajax[beta]==0)
 VER=$(jq -r 'first(.files.installer[]).full_version' <(cat <<< "$metainfo"))
-DOWNLOAD_URL=$(jq -r 'first(.files.installer[]).url' <(cat <<< "$metainfo"))
-bundle=$(basename ${DOWNLOAD_URL})
+bundle=$(basename $(jq -r 'first(.files.installer[]).url' <(cat <<< "$metainfo")))
 CHANGELOG=$(xq -r '.changelog.ul[0].li' <(cat <<< "<changelog>`jq -r 'first(.changelogs[])' <(cat <<< "$metainfo")`</changelog>"))
 
 # Insert latest version into PKGBUILD
 sed -i \
+	-e "s/^_pkgver_major=.*/pkgver=${VER%%.*}/" \
 	-e "s/^pkgver=.*/pkgver=${VER}/" \
 	-e 's/^pkgrel=.*/pkgrel=1/' \
-	-e "s|^_bundle_url=.*|_bundle_url=`dirname ${DOWNLOAD_URL}`|" \
 	-e "s/^_bundle_file=.*/_bundle_file=${bundle}/" \
 	PKGBUILD
 

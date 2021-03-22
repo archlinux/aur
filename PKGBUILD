@@ -5,10 +5,11 @@
 
 _pkgname=eea
 pkgname="${_pkgname}-dkms"
+_pkgver_major=7
 pkgver=7.1.9.0
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
-pkgdesc='ESET Endpoint Antivirus Business for Linux'
+pkgdesc='ESET Endpoint Antivirus Business for Linux (DKMS)'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
 license=('proprietary')
 depends=(
@@ -21,7 +22,7 @@ depends=(
 conflicts=('esets' "${_pkgname}")
 install=${_pkgname}.install
 
-_bundle_url=https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest
+_bundle_url=https://download.eset.com/com/eset/apps/business/eea/linux/g2/v${_pkgver_major}/${pkgver}
 _bundle_file=eeau.x86_64.bin
 _distro=ubuntu18
 
