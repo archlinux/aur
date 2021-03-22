@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-view
 	pkgdesc = ROS - A simple viewer for ROS image topics.
 	pkgver = 1.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/image_view
 	arch = i686
 	arch = x86_64
