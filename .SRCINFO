@@ -1,0 +1,20 @@
+pkgbase = tlauncherorg
+	pkgdesc = Launcher for Minecraft. Builds from tlauncher.org
+	pkgver = 2.75
+	pkgrel = 1
+	epoch = 1
+	url = https://tlauncher.org
+	arch = any
+	license = GPLv3
+	depends = java-runtime>=8
+	source = launcher.zip::https://tlauncher.org/jar
+	source = tlauncher.desktop
+	source = tlauncher.svg
+	source = tlauncher.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tlauncherorg
+

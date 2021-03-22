@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=2.75
+Type=Application
+Name=TLauncher
+Comment=The Launcher for Minecraft
+Icon=tlauncher
+Exec=/usr/bin/tlauncher
+NoDisplay=false
+Categories=Application;Game;
+StartupNotify=false
+Terminal=false
