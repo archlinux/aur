@@ -1,0 +1,19 @@
+pkgbase = xournalpp-mobile-git
+	pkgdesc = A port of the main features of Xournal++ to various Flutter platforms like Android, iOS and the Web.
+	pkgver = 1.1.10.r6.ga64432f
+	pkgrel = 1
+	url = https://xournal.online/
+	arch = any
+	license = custom:EUPL-1.2
+	makedepends = git
+	makedepends = flutter
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	depends = gtk3
+	provides = xournalpp-mobile
+	conflicts = xournalpp-mobile
+	source = git+https://gitlab.com/TheOneWithTheBraid/xournalpp_mobile.git
+	sha512sums = SKIP
+
+pkgname = xournalpp-mobile-git
