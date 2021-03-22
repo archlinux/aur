@@ -55,7 +55,7 @@ pkgbase=linux-xanmod-lts
 pkgver=5.10.25
 _major=5.10
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
@@ -86,7 +86,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            'ffddb3dfc0658935f326ca9f52bdd46930b7518eb2f49c101ad592b4a9615d27'
+            '4e2a15f3e488b4ab1fbd6aac10224b2bf68081c47025a57bed436bf01f4c472f'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
