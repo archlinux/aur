@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-action
 	pkgdesc = ROS - rqt_action provides a feature to introspect all available ROS action (from actionlib) types.
 	pkgver = 0.4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rqt_action
 	arch = any
 	license = BSD
