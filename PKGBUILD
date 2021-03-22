@@ -4,7 +4,7 @@ url='https://wiki.ros.org/roscreate'
 pkgname='ros-melodic-roscreate'
 pkgver='1.14.9'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
