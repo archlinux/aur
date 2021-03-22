@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotors-joy-interface
 	pkgdesc = ROS - The rotors_joy_interface package to control MAVs with a joystick
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rotors_joy_interface
 	arch = i686
 	arch = x86_64
