@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-resources-panda-moveit-config
 	pkgdesc = ROS - MoveIt Resources for testing: Franka Emika Panda A project-internal configuration for testing in MoveIt.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = h
 	arch = i686
 	arch = x86_64
