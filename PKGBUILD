@@ -6,7 +6,7 @@ url='http://www.ros.org/wiki/ps3joy'
 pkgname='ros-melodic-ps3joy'
 pkgver='1.14.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-diagnostic-msgs
