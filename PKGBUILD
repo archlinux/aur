@@ -6,7 +6,7 @@ url='https://wiki.ros.org/camera_calibration'
 pkgname='ros-melodic-camera-calibration'
 pkgver='1.15.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
