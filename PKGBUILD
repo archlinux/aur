@@ -13,10 +13,6 @@ license=('MPL2')
 source=('git+https://github.com/openglfreak/efistubmgr.git')
 sha256sums=('SKIP')
 
-if [ "${PRINTSRCINFO:-0}" -eq 1 ]; then
-    depends=("${_depends[@]}")
-fi
-
 pkgver() {(
     cd "$srcdir/efistubmgr"
     set -o pipefail
