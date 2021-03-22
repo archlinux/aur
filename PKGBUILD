@@ -6,7 +6,7 @@ url='https://wiki.ros.org/test_diagnostic_aggregator'
 pkgname='ros-melodic-test-diagnostic-aggregator'
 pkgver='1.9.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
