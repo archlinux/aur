@@ -6,7 +6,7 @@ url='https://wiki.ros.org/roslisp_repl'
 pkgname='ros-melodic-roslisp-repl'
 pkgver='0.4.16'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Public domain')
 
 ros_makedepends=(ros-melodic-catkin)
