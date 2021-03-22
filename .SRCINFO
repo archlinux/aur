@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt
 	pkgdesc = ROS - rqt is a Qt-based framework for GUI development for ROS.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt
 	arch = i686
 	arch = x86_64

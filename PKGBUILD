@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rqt'
 pkgname='ros-melodic-rqt'
 pkgver='0.5.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
