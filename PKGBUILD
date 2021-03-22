@@ -6,7 +6,7 @@ url='https://smc.sourceforge.net/'
 pkgname='ros-melodic-smclib'
 pkgver='1.8.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Mozilla Public License Version 1.1')
 
 ros_makedepends=(
