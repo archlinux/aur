@@ -30,6 +30,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+
+  # Remove demo tools
+  rm -f "$pkgdir"/usr/bin/samlsign
 }
 
 # vim: ts=2:sw=2:et:
