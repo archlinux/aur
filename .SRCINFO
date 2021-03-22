@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-lms1xx
 	pkgdesc = ROS - The lms1xx package contains a basic ROS driver for the SICK LMS1xx line of LIDARs.
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/LMS1xx
 	arch = i686
 	arch = x86_64

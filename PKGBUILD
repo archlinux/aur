@@ -6,7 +6,7 @@ url='http://ros.org/wiki/LMS1xx'
 pkgname='ros-melodic-lms1xx'
 pkgver='0.2.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('LGPL')
 
 ros_makedepends=(
