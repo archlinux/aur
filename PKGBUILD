@@ -6,7 +6,7 @@ url='https://wiki.ros.org/wu_ros_tools'
 pkgname='ros-melodic-wu-ros-tools'
 pkgver='0.2.6'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
