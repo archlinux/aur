@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit
 	pkgdesc = ROS - Meta package that contains all essential package of MoveIt!.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
