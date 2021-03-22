@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gmapping
 	pkgdesc = ROS - This package contains a ROS wrapper for OpenSlam's Gmapping.
 	pkgver = 1.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.ros.org/gmapping
 	arch = i686
 	arch = x86_64
