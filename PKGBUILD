@@ -6,7 +6,7 @@ url='https://wiki.ros.org/ros_base'
 pkgname='ros-melodic-ros-base'
 pkgver='1.4.1'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
