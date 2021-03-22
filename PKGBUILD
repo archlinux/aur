@@ -3,19 +3,19 @@
 # Contributor: Roni Choudhury <aichoudh@gmail.com>
 
 pkgname=pin
-pkgver=3.17.r98314
-_pkgver=3.17-98314-g0c048d619
+pkgver=3.18.r98332
+_pkgver=3.18-98332-gaebd7b1e6
 pkgrel=1
 pkgdesc="A tool for the dynamic instrumentation of programs"
 arch=('x86_64')
-url="http://www.pintool.org"
+url="https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html"
 license=('custom')
 groups=()
 depends=('gcc>=4.4.7' 'bash' 'lib32-gcc-libs>=4.4.7')
 options=('!strip' 'staticlibs')
 source=("http://software.intel.com/sites/landingpage/pintool/downloads/${pkgname}-${_pkgver}-gcc-linux.tar.gz"
         "pin.sh")
-sha256sums=('a9cc3df7667b70dd44e51f66ed506bcdc31d942bb7698e1d4e1f8fe5d01c80bb'
+sha256sums=('de8ef1a0cb301764a774aa9bcaae8cba997a7dde3155ed271e52d00acceb230b'
             '7198073c94e785cbd9002cdd174ab3bb1d28cc4e26626905c12173ad31ae82fc')
 
 package() {
