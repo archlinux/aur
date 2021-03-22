@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotors-control
 	pkgdesc = ROS - RotorS control package
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rotors_control
 	arch = i686
 	arch = x86_64
