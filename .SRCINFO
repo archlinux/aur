@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-bootstrap
+	pkgdesc = Angular-Bootstrap 2.5.0 (XStatic packaging standard)
+	pkgver = 2.5.0.0
+	pkgrel = 1
+	url = http://angular-ui.github.io/bootstrap/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Bootstrap/XStatic-Angular-Bootstrap-2.5.0.0.tar.gz
+	md5sums = cb8629df48e822255d1057a2bc624cb6
+	sha256sums = be60686c9a29c74ceeadd787969c2bcbce39f15b30daa4949574aeca602f9f35
+	sha512sums = f533f998fac74e9226a48af47740cf92c24bb4b3cfdc0a87ae19699589b406cf1e6b34fc46aeeaf1b541d039c20a11945e1c383d0d1a5be0c46cce53349bee09
+
+pkgname = python-xstatic-angular-bootstrap
+
+pkgname = python2-xstatic-angular-bootstrap
+
