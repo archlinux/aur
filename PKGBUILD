@@ -6,7 +6,7 @@ url='https://github.com/ros-controls/ros_control/wiki'
 pkgname='ros-melodic-rqt-controller-manager'
 pkgver='0.18.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)

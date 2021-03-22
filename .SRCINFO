@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-controller-manager
 	pkgdesc = ROS - Graphical frontend for interacting with the controller manager.
 	pkgver = 0.18.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
 	license = BSD
