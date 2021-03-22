@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-octomap-mapping
 	pkgdesc = ROS - Mapping tools to be used with the OctoMap library, implementing a 3D occupancy grid mapping.
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/octomap_mapping
 	arch = any
 	license = BSD

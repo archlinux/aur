@@ -5,7 +5,7 @@ url='http://ros.org/wiki/octomap_mapping'
 pkgname='ros-melodic-octomap-mapping'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
