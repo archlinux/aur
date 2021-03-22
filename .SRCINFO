@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-turtlebot3-teleop
 	pkgdesc = ROS - Provides teleoperation using keyboard for Turtlebot3.
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtlebot3_teleop
 	arch = any
 	license = Apache-2.0
