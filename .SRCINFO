@@ -1,6 +1,6 @@
 pkgbase = mos-bin
 	pkgdesc = This package contains the Mongoose OS CLI tool.
-	pkgver = 2.19.0
+	pkgver = 2.19.1
 	pkgrel = 2
 	url = https://mongoose-os.com
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = mos-bin
 	depends = libusb>=1.0.16
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.19.0+b8341b5~xenial0_amd64.deb
-	sha512sums_x86_64 = 765df04951381856fd2315608c01b7f7329d072b4df7706613653426b5eaf88f344ba537badffee6b3416ec14debfff6133a589441faf68307655c0246985492
-	source_i686 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.19.0+b8341b5~xenial0_i386.deb
-	sha512sums_i686 = 7b9674289b664ebe37f2a196fa8d0bb755e64a50adeeb48e2f45479ce3a8454a74970f53a54f87407054f94ebd798e88def74b322dff22eb324f127d9cc1dd27
-	source_arm64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.19.0+b8341b5~xenial0_arm64.deb
-	sha512sums_arm64 = 1ecfbf1069784e1897e6607a5977ed1ea2361f8972de2a60d8d3c82911573abf9804c6bfd1114eda20328ff75b1bd8499767c2024fb08f4e663559828112b65d
+	source_x86_64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.19.1+9bf406d~xenial0_amd64.deb
+	sha512sums_x86_64 = 9660dcae949360c43343430fa2df9498e6f3ea21d60d25832ba378ad39d5fd5a4826fc6a40e339d6041f9d1cebfbd442da71734c2aabda8c70d6695c7c44d040
+	source_i686 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.19.1+9bf406d~xenial0_i386.deb
+	sha512sums_i686 = 62022e5fdc6975fa896aac64df1c87438851deb650eb206f4e661597e48ef6fab02962283af83d5edd1b8b6e14617d42655bc455820274011aa743b3269797b5
+	source_arm64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.19.1+9bf406d~xenial0_arm64.deb
+	sha512sums_arm64 = ec439846268de9289e9f8aa23d05a1119e9bb7f1faf260e466346f8a8ac5c9c38bbb09e17d6012a97b34ace5fdb7b2d2787b752910f58536d2aef0351d64758f
 
 pkgname = mos-bin
 
