@@ -6,7 +6,7 @@ url='https://wiki.ros.org/audio_common'
 pkgname='ros-melodic-audio-common'
 pkgver='0.3.10'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
