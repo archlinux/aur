@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-franka-description
 	pkgdesc = ROS - franka_description contains URDF files and meshes of Franka Emika robots.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = h
 	arch = i686
 	arch = x86_64
