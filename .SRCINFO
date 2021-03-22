@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mavros-extras
 	pkgdesc = ROS - Extra nodes and plugins for MAVROS.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/mavros_extras
 	arch = i686
 	arch = x86_64
