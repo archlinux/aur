@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosbridge-suite
 	pkgdesc = ROS - Rosbridge provides a JSON API to ROS functionality for non-ROS programs.
 	pkgver = 0.11.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosbridge_suite
 	arch = any
 	license = BSD
