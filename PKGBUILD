@@ -6,7 +6,7 @@ url='https://wiki.ros.org/gencpp'
 pkgname='ros-melodic-gencpp'
 pkgver='0.6.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
