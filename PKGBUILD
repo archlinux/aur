@@ -6,7 +6,7 @@ pkgdesc='Conversion nodes for messages from SocketCAN to a ROS Topic and vice ve
 url="http://wiki.ros.org/socketcan_bridge?distro=melodic"
 
 pkgver='0.8.5'
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL3')
 
