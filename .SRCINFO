@@ -1,0 +1,13 @@
+pkgbase = ut1-blacklists-sexual_education
+	pkgdesc = Université Toulouse 1 Capitole 'sexual_education' blocklist: "Website which talk about sexual education, and can be misdetected as porn"
+	pkgver = 20210208
+	pkgrel = 1
+	url = https://dsi.ut-capitole.fr/blacklists/index_en.php
+	arch = any
+	groups = ut1-blacklists
+	license = CC BY-SA 4.0
+	source = ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/sexual_education.tar.gz
+	md5sums = SKIP
+
+pkgname = ut1-blacklists-sexual_education
+
