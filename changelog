@@ -1,3 +1,41 @@
+Proton-6.4-GE-1
+
+Thanks everyone for being patient with this one. There's still some media foundation related bugs and pending fixes that Derek (mfplat patchset author) is working on, but this release should be good enough to get some new games working that weren't previously (notably MK11, Injustice 2, Need for Speed), At the end of the week wine 6.5 releases so if the media foundation patches are fully resolved by then there will likely be another release. Here are the details on this release for now:
+Media Foundation changes/currently known issues:
+
+Working:
+-MK11 cutscenes fully working, video+audio in cutscenes works, has slight audio desync. Crypt also works.
+-Injustice 2 cutscenes fully working, video+audio in cutscenes works, has slight audio desync
+
+Broken:
+-DmC 5's "History of DMC" video is broken again
+-Power Rangers Battle for the Grid Story videos broken
+-Seven: Days Long Gone Humble Bundle logo video will hang if intros are not skipped
+-Borderlands 3 Marcus intro on new game hangs (again)
+-RE2/RE3 WMV playback currently broken
+Notes:
+-As this is a new implementation of the mfplat patches, WMV support and MPEG4 Section 2 support are both missing/not added yet. It is a work in progress, and you may see bugs that were previously fixed. Please be patient as this is a work in progress.
+Wine:
+-Updated wine + wine-staging to 6.4-git
+-Need For Speed atiadlxx fix ported from proton (Need For Speed now runs)
+-Crown Trick + Home Behind 2 fix ported from proton
+-Hades controller input fix ported from proton
+-DualSense/PS5 controller mapping ported from proton
+-Additional OpenXR patches ported from proton
+
+-FAudio updated to git
+-Wine and Wine-staging updated to git
+-vkd3d updated to git
+-dxvk updated to git and FarCry 5 texture issue worked around
+-Dead or Alive 5 protonfix added (thanks iglu47)
+-watchdogs 2 and farcry5 uplay overlay disable protonfixes added (thanks iglu47)
+-corefonts fixed in protonfixes (thanks iglu47)
+-vcrun2019_ge download url updated in protonfixes
+-winetricks updated in protonfixes
+-msiexec re-enabled in wine build (thanks fastrizwaan)
+
+All in all, I would say the summary of this build is if you want to play MK11 or Injustice 2, this build is for you, but if you have any games that heavily relied on Media Foundation (mfplat) prior to this, chances are they may be broken in this build. Once Derek gets WMV and MP4S2 implemented along with some cleanups the next build should work nicely regarding mfplat.
+
 Proton-6.1-GE-2
 
 HOTFIX: 2/7/2021
