@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-turtle-actionlib
 	pkgdesc = ROS - turtle_actionlib demonstrates how to write an action server and client with the turtlesim.
 	pkgver = 0.1.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/turtle_actionlib
 	arch = i686
 	arch = x86_64
