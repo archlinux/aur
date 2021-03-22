@@ -4,9 +4,9 @@
 pkgbase=pycharm-professional-edition
 pkgname=(pycharm-professional-edition pycharm-professional-edition-jre)
 _pkgname=pycharm-professional
-pkgver=2020.3.3
-_buildver=2020.3.3
-pkgrel=3
+pkgver=2020.3.4
+_buildver=2020.3.4
+pkgrel=1
 arch=('any')
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 url='https://www.jetbrains.com/pycharm/'
@@ -16,7 +16,7 @@ options=(!strip)
 source=("https://download.jetbrains.com/python/${_pkgname}-$pkgver.tar.gz"
         "pycharm-professional.desktop"
 		)
-sha256sums=('b526c73554a297b509565f0c218bce64f4f63072766d2ca9d4fb1a7efb0dfbfb'
+sha256sums=('2060539f9c4c42819a58a7bcae1143d6383507907acd1cc4d1f05d2c0a93f3a1'
             '718e049d2a54afff457e4c507047bd3948bbf407c3d738c913cda9256c304521')
 makedepends=('python-setuptools' 'cython')
         
