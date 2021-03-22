@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-summit-xl-common
 	pkgdesc = ROS - URDF description of the Summit XL and Summit XL HL, platform messages and other files for simulation.
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/summit_xl_common
 	arch = any
 	license = BSD

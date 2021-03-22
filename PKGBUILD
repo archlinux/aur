@@ -7,7 +7,7 @@ url='https://wiki.ros.org/summit_xl_common'
 pkgname='ros-melodic-summit-xl-common'
 pkgver='1.1.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
