@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-fake-localization
 	pkgdesc = ROS - A ROS node that simply forwards odometry information.
 	pkgver = 1.16.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/fake_localization
 	arch = i686
 	arch = x86_64
