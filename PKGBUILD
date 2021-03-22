@@ -7,7 +7,7 @@ pkgname='ros-melodic-urdf-sim-tutorial'
 pkgver='0.4.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
