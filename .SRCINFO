@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gennodejs
 	pkgdesc = ROS - Javascript ROS message and service generators.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/gennodejs
 	arch = any
 	license = Apache 2.0
