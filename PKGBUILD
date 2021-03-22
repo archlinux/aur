@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rotors_hil_interface'
 pkgname='ros-melodic-rotors-hil-interface'
 pkgver='2.2.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('ASL 2.0')
 
 ros_makedepends=(

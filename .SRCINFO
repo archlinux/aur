@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotors-hil-interface
 	pkgdesc = ROS - RotorS Hardware-in-the-loop interface package
 	pkgver = 2.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rotors_hil_interface
 	arch = i686
 	arch = x86_64
