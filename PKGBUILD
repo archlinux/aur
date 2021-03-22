@@ -6,7 +6,7 @@ url='http://wiki.ros.org/move_base_flex/mbf_utility'
 pkgname='ros-melodic-mbf-utility'
 pkgver='0.3.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
