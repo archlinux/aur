@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/openni_camera'
 pkgname='ros-melodic-openni-camera'
 pkgver='1.11.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nodelet
