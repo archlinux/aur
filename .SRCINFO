@@ -1,0 +1,15 @@
+pkgbase = robin-hood-hashing-git
+	pkgdesc = Fast & memory efficient hashtable based on robin hood hashing for C++11/14/17/20
+	pkgver = 3.11.0
+	pkgrel = 1
+	url = https://github.com/martinus/robin-hood-hashing
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = robin-hood-hashing
+	conflicts = robin-hood-hashing
+	source = robin-hood-hashing-git::git+https://github.com/martinus/robin-hood-hashing.git
+	md5sums = SKIP
+
+pkgname = robin-hood-hashing-git
+
