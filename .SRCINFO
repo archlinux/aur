@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-cartographer-rviz
 	pkgdesc = ROS - Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/googlecartographer/cartographer_ros
 	arch = i686
 	arch = x86_64
