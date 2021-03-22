@@ -5,7 +5,7 @@ url='https://wiki.ros.org/costmap_2d'
 pkgname='ros-melodic-costmap-2d'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

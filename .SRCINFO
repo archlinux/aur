@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-costmap-2d
 	pkgdesc = ROS - This package provides an implementation of a 2D costmap.
 	pkgver = 1.16.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/costmap_2d
 	arch = i686
 	arch = x86_64
