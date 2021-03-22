@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-smach
 	pkgdesc = ROS - SMACH is a task-level architecture for rapidly creating complex robot behavior.
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/smach
 	arch = any
 	license = BSD
