@@ -1,0 +1,16 @@
+pkgbase = rosbe
+	pkgdesc = ReactOS Build Environment
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://reactos.org/wiki/Build_Environment
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = python
+	optdepends = perl: run translate.pl to translate backtraces found in debug log
+	options = staticlibs
+	source = https://downloads.sourceforge.net/reactos/RosBE-Unix-2.2.1.tar.bz2
+	sha1sums = 320614352df8871ba8e6c99a92f9a0fc8f660a3e
+
+pkgname = rosbe
+
