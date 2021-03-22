@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-tf-tree
 	pkgdesc = ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF frame tree.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt_tf_tree
 	arch = any
 	license = BSD
