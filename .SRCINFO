@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-diagnostic-msgs
 	pkgdesc = ROS - This package holds the diagnostic messages which provide the standardized interface for the diagnostic and runtime monitoring systems in ROS.
 	pkgver = 1.12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/diagnostic_msgs
 	arch = any
 	license = BSD
