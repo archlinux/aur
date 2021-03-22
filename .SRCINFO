@@ -1,0 +1,13 @@
+pkgbase = vul-complete
+	pkgdesc = Latin Clementine Vulgate Bible in the terminal
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/theunpleasantowl/vul-complete
+	arch = any
+	license = Public Domain
+	depends = bash
+	source = vul-complete::git+https://github.com/theunpleasantowl/vul-complete
+	md5sums = SKIP
+
+pkgname = vul-complete
+
