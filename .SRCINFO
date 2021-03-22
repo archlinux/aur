@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosservice
 	pkgdesc = ROS - rosservice contains the rosservice command-line tool for listing and querying ROS Services.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosservice
 	arch = any
 	license = BSD
