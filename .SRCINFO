@@ -1,0 +1,13 @@
+pkgbase = lsd-control
+	pkgdesc = lsd command controller
+	pkgver = 1.2
+	pkgrel = 1
+	url = https:/fascode.net
+	arch = any
+	depends = lsd
+	conflicts = lsd-control-git
+	source = https://github.com/SereneTeam/lsdcontrol/archive/v1.2.zip
+	md5sums = a13ff73e41f56ed94a28ca51ae703bdb
+
+pkgname = lsd-control
+
