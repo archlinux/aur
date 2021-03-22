@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-bootstrap-datepicker
+	pkgdesc = Bootstrap-Datepicker 1.4.0 (XStatic packaging standard)
+	pkgver = 1.4.0.0
+	pkgrel = 1
+	url = https://github.com/eternicode/bootstrap-datepicker/
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-bootstrap
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-bootstrap
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.4.0.0.tar.gz
+	md5sums = 68375e81274159874ab5fd6d85ea405c
+	sha256sums = df33add9f5e785fa884ac4b182601af6aac9e1eeef7cfe62dbbcb0654d0f2d6e
+	sha512sums = 81e117707e10f0e2bc511ebfbecaed42a9a388f71cddbe08c98b6c0b3984499e1499d4b0102ecdfaa8bd5f8fdb72bd338a9ab3acf74e038a8fe78a537f16c912
+
+pkgname = python-xstatic-bootstrap-datepicker
+
+pkgname = python2-xstatic-bootstrap-datepicker
+
