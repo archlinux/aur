@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-gui'
 pkgver='0.5.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

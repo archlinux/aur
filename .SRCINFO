@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-gui
 	pkgdesc = ROS - rqt_gui provides the main to start an instance of the ROS integrated graphical user interface provided by qt_gui.
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rqt_gui
 	arch = any
 	license = BSD
