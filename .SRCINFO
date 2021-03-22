@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-robotnik-sensors
 	pkgdesc = ROS - Robotnik standard sensors description. URDF and meshes.
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/robotnik_sensors
 	arch = any
 	license = BSD

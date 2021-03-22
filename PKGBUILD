@@ -6,7 +6,7 @@ url='https://wiki.ros.org/robotnik_sensors'
 pkgname='ros-melodic-robotnik-sensors'
 pkgver='1.1.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
