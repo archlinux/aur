@@ -4,7 +4,7 @@ url='http://ros.org/wiki/swri_console'
 pkgname='ros-melodic-swri-console'
 pkgver='1.1.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosgraph-msgs

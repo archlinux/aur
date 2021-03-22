@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-swri-console
 	pkgdesc = ROS - A rosout GUI viewer developed at Southwest Research Insititute as an alternative to rqt_console.
 	pkgver = 1.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://ros.org/wiki/swri_console
 	arch = i686
 	arch = x86_64
