@@ -1,9 +1,9 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=piavpn-bin
-pkgver=2.7.0_06158
+pkgver=2.7.1_06182
 _pkgver=${pkgver/_/-}
 _pkgver=${_pkgver/.0/}
-pkgrel=3
+pkgrel=1
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -16,7 +16,7 @@ conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
 source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
 options=(!strip)
-sha256sums=('2c9364df4afb213dc7eb1891241a94adff32896d2bface7f82501e3e8998d29b')
+sha256sums=('891233d9b84f149eff168f8f4f6e165c3c5dfd848c90352ff875258dad2c00aa')
 
 prepare() {
 	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
@@ -32,8 +32,6 @@ package() {
 	# we don't need these scripts
 	rm $pkgdir/opt/piavpn/bin/install-wireguard.sh
 	rm $pkgdir/opt/piavpn/bin/pia-uninstall.sh
-
-	mkdir $pkgdir/opt/piavpn/var
 
 	mkdir -p $pkgdir/usr/share/pixmaps
 	cp installfiles/app.png $pkgdir/usr/share/pixmaps/pia.png
@@ -56,6 +54,7 @@ package() {
 	ln -s ../../../opt/piavpn/bin/piactl $pkgdir/usr/local/bin/piactl
 
 	# limit log to the minimum to avoid excessive flooding
+	mkdir -p $pkgdir/opt/piavpn/var
 	cat > $pkgdir/opt/piavpn/var/debug.txt << EOF
 [rules]
 *.debug=false
