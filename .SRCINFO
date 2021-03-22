@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-joint-trajectory-controller
 	pkgdesc = ROS - Graphical frontend for interacting with joint_trajectory_controller instances.
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/rqt_joint_trajectory_controller
 	arch = i686
 	arch = x86_64
