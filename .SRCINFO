@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rospack
 	pkgdesc = ROS - ROS Package Tool.
 	pkgver = 2.5.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/rospack
 	arch = i686
 	arch = x86_64
