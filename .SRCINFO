@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-pointcloud-to-laserscan
 	pkgdesc = ROS - Converts a 3D Point Cloud into a 2D laser scan.
 	pkgver = 1.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.ros.org/perception_pcl
 	arch = i686
 	arch = x86_64
