@@ -1,6 +1,6 @@
 pkgbase = eclipse-java-bin
 	pkgdesc = Highly extensible IDE
-	pkgver = 4.18
+	pkgver = 4.19
 	pkgrel = 1
 	url = https://www.eclipse.org
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = eclipse-java-bin
 	depends = libsecret
 	provides = eclipse-java
 	conflicts = eclipse-java
-	source = https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-12/R/eclipse-java-2020-12-R-linux-gtk-x86_64.tar.gz&r=1
+	source = https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-java-2021-03-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
 	source = eclipse.png
-	sha512sums = 1d5aac59454d35175c6b388674d23de91f45d953141389d82b5557d46de92beb2b14396427bfab8f6b198ed58bed67094755d26d3d379c92733f2a74d51b02bd
+	sha512sums = 93d04fe9a69120b15d192d2574db4d67f4fc331edcbd1b3f90a5f5bb7434879e0c79cabf9a22976bddf0af2f28206ae838d4f3ec5123e52e278633ccd3489bf1
 	sha512sums = eb3e245f27a0eb328bdf3dcc1258013d55cf24d4ec3864cdc0ad9c68995bfc1af44f05a5973368f115e9957359c9e50b4cefa2fa7014c36e499447c48769f505
 	sha512sums = 7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f
 
