@@ -6,7 +6,7 @@ url='https://github.com/mavlink/mavros'
 pkgname='ros-melodic-test-mavros'
 pkgver='1.6.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD, GPLv3, LGPLv3')
 
 ros_makedepends=(ros-melodic-mavros-extras
