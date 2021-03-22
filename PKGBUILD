@@ -7,7 +7,7 @@ pkgname='ros-melodic-stereo-image-proc'
 pkgver='1.15.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(

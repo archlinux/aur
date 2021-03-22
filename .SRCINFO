@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-stereo-image-proc
 	pkgdesc = ROS - Stereo and single image rectification and disparity processing.
 	pkgver = 1.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ros-perception/image_pipeline
 	arch = any
 	license = BSD
