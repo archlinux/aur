@@ -1,0 +1,13 @@
+pkgbase = ut1-blacklists-liste_bu
+	pkgdesc = Université Toulouse 1 Capitole 'liste_bu' blocklist: "A french list for educational sites. VERY locally oriented. may help libraries."
+	pkgver = 20210208
+	pkgrel = 1
+	url = https://dsi.ut-capitole.fr/blacklists/index_en.php
+	arch = any
+	groups = ut1-blacklists
+	license = CC BY-SA 4.0
+	source = ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/liste_bu.tar.gz
+	md5sums = SKIP
+
+pkgname = ut1-blacklists-liste_bu
+
