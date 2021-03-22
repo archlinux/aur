@@ -1,7 +1,7 @@
 pkgbase = python-xstatic
 	pkgdesc = XStatic base package with minimal support code
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xstatic-py/xstatic
 	arch = any
 	license = MIT

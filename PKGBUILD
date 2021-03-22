@@ -5,7 +5,7 @@ _pycname=XStatic
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="XStatic base package with minimal support code"
 arch=(any)
 url="https://github.com/xstatic-py/xstatic"
@@ -38,12 +38,14 @@ _package_python(){
 	depends=(python)
 	cd $_pycname-$pkgver
 	python setup.py install --root "$pkgdir" --optimize=1
+	sed -i 's/;/;\n/g' $pkgdir/usr/lib/python*/site-packages/${_pycname}-${pkgver}-py*-nspkg.pth
 }
 
 _package_python2(){
 	depends=(python2)
 	cd $_pycname-$pkgver-py2
 	python2 setup.py install --root "$pkgdir" --optimize=1
+	sed -i 's/;/;\n/g' $pkgdir/usr/lib/python*/site-packages/${_pycname}-${pkgver}-py*-nspkg.pth
 }
 
 eval "package_python-${_pyname}(){ _package_python; }"
