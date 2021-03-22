@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosserial-arduino
 	pkgdesc = ROS - rosserial for Arduino/AVR platforms.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosserial_arduino
 	arch = any
 	license = BSD

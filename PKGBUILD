@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosserial_arduino'
 pkgname='ros-melodic-rosserial-arduino'
 pkgver='0.8.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
