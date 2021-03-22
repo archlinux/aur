@@ -4,7 +4,7 @@ url='https://wiki.ros.org/depthimage_to_laserscan'
 pkgname='ros-melodic-depthimage-to-laserscan'
 pkgver='1.0.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
