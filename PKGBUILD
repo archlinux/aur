@@ -6,7 +6,7 @@ url='http://www.ros.org/'
 pkgname='ros-melodic-robot-controllers-interface'
 pkgver='0.6.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
