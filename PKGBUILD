@@ -5,7 +5,7 @@ url='https://wiki.ros.org/four_wheel_steering_msgs'
 pkgname='ros-melodic-four-wheel-steering-msgs'
 pkgver='1.1.0'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
