@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-topic-tools
 	pkgdesc = ROS - Tools for directing, throttling, selecting, and otherwise messing with ROS topics at a meta level.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/topic_tools
 	arch = i686
 	arch = x86_64

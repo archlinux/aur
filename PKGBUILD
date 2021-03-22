@@ -6,7 +6,7 @@ url='https://wiki.ros.org/topic_tools'
 pkgname='ros-melodic-topic-tools'
 pkgver='1.14.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
