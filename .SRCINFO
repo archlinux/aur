@@ -1,0 +1,14 @@
+pkgbase = mtasc-bin
+	pkgdesc = Motion-Twin ActionScript 2 Compiler
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://tech.motion-twin.com/mtasc.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	source = http://tech.motion-twin.com/zip/mtasc-1.12-linux.tgz
+	sha512sums = 41bc51025c8df7730a23dfd6dd7bdfb4065a694913834e34b3cbe7ba2508cb4372a131184a6f2fb7be42bc2e18c1178ed3a74a450f9d0c775046181aa3026916
+
+pkgname = mtasc-bin
+
