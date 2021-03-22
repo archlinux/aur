@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-costmap-converter
 	pkgdesc = ROS : converts costmaps
 	pkgver = 0.0.12
-	pkgrel = 4
+	pkgrel = 5
 	arch = i686
 	arch = x86_64
 	arch = aarch64
