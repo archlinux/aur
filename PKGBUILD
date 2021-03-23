@@ -6,8 +6,8 @@ arch=('x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
 groups=(openmodelica)
-depends=('java-environment' 'lpsolve' 'omniorb')
-makedepends=('gcc-fortran' 'cmake' 'git' 'expat')
+depends=('lapack' 'expat' 'lpsolve' 'omniorb' 'java-environment')
+makedepends=('gcc-fortran' 'cmake' 'git')
 source=("git+https://github.com/OpenModelica/OpenModelica.git#tag=v${pkgver}")
 sha1sums=('SKIP')
 

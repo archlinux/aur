@@ -9,10 +9,11 @@ pkgbase = openmodelica-omc
 	makedepends = gcc-fortran
 	makedepends = cmake
 	makedepends = git
-	makedepends = expat
-	depends = java-environment
+	depends = lapack
+	depends = expat
 	depends = lpsolve
 	depends = omniorb
+	depends = java-environment
 	source = git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.16.5
 	sha1sums = SKIP
 
