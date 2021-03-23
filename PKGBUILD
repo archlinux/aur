@@ -14,7 +14,7 @@ b2sums=('e777cf1f19a5ad051b81ccd878067ba043c5121f460aed26fa41c999812d9c52e30837c
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  make CFLAGS="$CFLAGS $LDFLAGS"
 }
 
 package() {

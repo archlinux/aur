@@ -1,7 +1,7 @@
 pkgbase = wev
 	pkgdesc = tool for debugging wayland events, similar to xev
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://git.sr.ht/~sircmpwn/wev
 	arch = i686
 	arch = x86_64
