@@ -2,7 +2,7 @@
 
 pkgname=zigbee2mqtt
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.zigbee2mqtt.io'
@@ -27,7 +27,7 @@ install='zigbee2mqtt.install'
 options=('!strip')
 
 package() {
-  npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgver}.tar.gz"
+  npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgver}.tar.gz"
 
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
   chown -R root:root "${pkgdir}"

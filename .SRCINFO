@@ -1,7 +1,7 @@
 pkgbase = zigbee2mqtt
 	pkgdesc = A Zigbee to MQTT bridge
 	pkgver = 1.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zigbee2mqtt.io
 	install = zigbee2mqtt.install
 	arch = x86_64
