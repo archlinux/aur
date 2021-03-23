@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-objectpath
+	pkgdesc = objectpath 1.2.1 (XStatic packaging standard)
+	pkgver = 1.2.1.0
+	pkgrel = 1
+	url = https://github.com/mike-marcacci/objectpath
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-objectpath/XStatic-objectpath-1.2.1.0.tar.gz
+	md5sums = 680a5e23a3d362db0b0721e5620dd6fc
+	sha256sums = cd1e9f502482afcdd028821148843b07b4065c8dcea8e5cc33abb9ae1cf20b20
+	sha512sums = b68134691ba65ff9c890f0a24255987878e01ee0324b4f38a64a3422490a58bf19978df1af2f7b4b1538aff99841e1b06641fda09509ca7b385ff7979f2e3455
+
+pkgname = python-xstatic-objectpath
+
+pkgname = python2-xstatic-objectpath
+
