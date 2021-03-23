@@ -1,0 +1,13 @@
+diff --git a/horizon-19.1.0-old/openstack_dashboard/local/local_settings.py.example b/horizon-19.1.0/openstack_dashboard/local/local_settings.py.example
+index 2b084bf..b588971 100644
+--- a/horizon-19.1.0-old/openstack_dashboard/local/local_settings.py.example
++++ b/horizon-19.1.0/openstack_dashboard/local/local_settings.py.example
+@@ -20,7 +20,7 @@ from horizon.utils import secret_key
+ 
+ from openstack_dashboard.settings import HORIZON_CONFIG
+ 
+-DEBUG = True
++DEBUG = False
+ 
+ # This setting controls whether or not compression is enabled. Disabling
+ # compression makes Horizon considerably slower, but makes it much easier

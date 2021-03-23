@@ -1,0 +1,24 @@
+diff --git a/horizon-19.1.0-old/openstack_auth/views.py b/horizon-19.1.0/openstack_auth/views.py
+index 353dc99..b7e5b7c 100644
+--- a/horizon-19.1.0-old/openstack_auth/views.py
++++ b/horizon-19.1.0/openstack_auth/views.py
+@@ -12,6 +12,7 @@
+ # limitations under the License.
+ import datetime
+ import logging
++import functools
+ 
+ from django.conf import settings
+ from django.contrib import auth
+@@ -116,9 +117,9 @@ def login(request):
+         initial.update({'region': requested_region})
+ 
+     if request.method == "POST":
+-        form = functional.curry(forms.Login)
++        form = functools.partial(forms.Login)
+     else:
+-        form = functional.curry(forms.Login, initial=initial)
++        form = functools.partial(forms.Login, initial=initial)
+ 
+     choices = settings.WEBSSO_CHOICES
+     reason = get_csrf_reason(request.GET.get('csrf_failure'))
