@@ -3,8 +3,8 @@
 pkgname=jellyfin-web-bin
 pkgver=10.7.1
 _pkgver="${pkgver}-1"
-pkgrel=2
-pkgdesc='The Free Software Media System - web package'
+pkgrel=3
+pkgdesc='Jellyfin web client'
 arch=('any')
 url='https://jellyfin.org/'
 license=('GPL2')

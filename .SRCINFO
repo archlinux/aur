@@ -1,7 +1,7 @@
 pkgbase = jellyfin-web-bin
-	pkgdesc = The Free Software Media System - web package
+	pkgdesc = Jellyfin web client
 	pkgver = 10.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jellyfin.org/
 	arch = any
 	license = GPL2
