@@ -1,5 +1,5 @@
 pkgbase = dogehouse
-	pkgdesc = Taking voice conversations to the moon 🚀
+	pkgdesc = Taking voice conversations to the moon
 	pkgver = 1.0.19
 	pkgrel = 2
 	url = https://dogehouse.tv
