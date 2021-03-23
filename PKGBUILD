@@ -3,11 +3,11 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.12.r984749.6e80fb8ab04f
+pkgver=5.13.r985190.50487c677b93
 _product="${pkgbase%-git}"
-_kernel_rel=5.12
+_kernel_rel=5.13
 _branch=drm-next-${_kernel_rel}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='https://gitlab.freedesktop.org/drm/amd'
 license=(GPL2)

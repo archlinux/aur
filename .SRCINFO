@@ -1,7 +1,7 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 5.12.r984749.6e80fb8ab04f
-	pkgrel = 2
+	pkgver = 5.13.r985190.50487c677b93
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/amd
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = linux-amd-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next-5.12
+	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next-5.13
 	source = config
 	source = sphinx-workaround.patch
 	sha256sums = SKIP
