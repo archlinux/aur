@@ -59,10 +59,10 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt54
-pkgver=5.4.102
+pkgver=5.4.106
 _major=5.4
 _branch=5.x
-_rt=53
+_rt=54
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version - LTS branch 5.4.x'
@@ -76,7 +76,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-rt${_rt}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${_rt}-xanmod${xanmod}/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${_rt}/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh)
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -92,7 +92,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'a5e9d0c82ad642c2b7855bde9087059a16bc47cb0dde986ae7bcfbf34d6d782e'
+            '895239e11d6cacb1270a7946257ad77a371ebf0e0db751a0c807fe4c51c516fc'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
