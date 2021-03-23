@@ -1,6 +1,6 @@
 pkgname=xbacklight-auto-git
 pkgbase=xbacklight-auto
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Automatic brightness utility using the V4L2 camera api and xbacklight"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgbase}
-	make DESTDIR="${pkgdir}/" install
+	mkdir -p $pkgdir/usr/bin
+	cd $srcdir/$pkgbase
+	make DESTDIR=$pkgdir/ install
 }
