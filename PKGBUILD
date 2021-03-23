@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ndi-sdk
-pkgver=4.5.20200630.r116025
+pkgver=4.6.2.20210302.r121634
 pkgrel=1
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
@@ -13,9 +13,9 @@ provides=('libndi')
 conflicts=('libndi')
 options=('!strip')
 _srcfile="InstallNDISDK_v${pkgver}_Linux.tar.gz"
-source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${_majver}_Linux.tar.gz")
+source=("$_srcfile"::"https://downloads.ndi.tv/SDK/NDI_SDK_Linux/InstallNDISDK_v${_majver}_Linux.tar.gz")
 noextract=("$_srcfile")
-sha256sums=('45621d7e70e73d5e6b8d07cc8d55a920fac979508de65db705eff7a188222e71')
+sha256sums=('d4856a339be78f6aaa87ed4f7a89176f7a12e219c06497bfa413d015a4bb3ea0')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
@@ -36,7 +36,7 @@ package() {
     install -D -m755 "${_sdkdir}/bin/${CARCH}-linux-gnu/"* -t "${pkgdir}/usr/bin"
     
     # headers
-    install -D -m644 "${_sdkdir}/include/"* -t "${pkgdir}/usr/include"
+    cp -dr --no-preserve='ownership' "${_sdkdir}/include" "${pkgdir}/usr"
     
     # library
     install -D -m755 "${_sdkdir}/lib/${CARCH}-linux-gnu/libndi.so.${_majver}".*.* -t "${pkgdir}/usr/lib"
