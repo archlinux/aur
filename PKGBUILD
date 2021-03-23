@@ -4,12 +4,12 @@
 pkgname=mopac7
 pkgver=1.15
 pkgrel=1
-url="http://www.bioinformatics.org/ghemical/ghemical/"
+url="https://www.bioinformatics.org/ghemical/ghemical/"
 license=("GPL")
 pkgdesc="Computational chemistry library, that provides function to ghemical"
 arch=(i686 x86_64)
 depends=('gcc-fortran')
-source=("http://bioinformatics.org/ghemical/download/release20111012/$pkgname-$pkgver.tar.gz")
+source=("https://bioinformatics.org/ghemical/download/release20111012/$pkgname-$pkgver.tar.gz")
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver

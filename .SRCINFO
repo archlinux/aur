@@ -2,12 +2,12 @@ pkgbase = mopac7
 	pkgdesc = Computational chemistry library, that provides function to ghemical
 	pkgver = 1.15
 	pkgrel = 1
-	url = http://www.bioinformatics.org/ghemical/ghemical/
+	url = https://www.bioinformatics.org/ghemical/ghemical/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gcc-fortran
-	source = http://bioinformatics.org/ghemical/download/release20111012/mopac7-1.15.tar.gz
+	source = https://bioinformatics.org/ghemical/download/release20111012/mopac7-1.15.tar.gz
 	md5sums = 7e509fd03154b37cc682593365c233f4
 
 pkgname = mopac7
