@@ -1,7 +1,7 @@
 pkgbase = dogehouse
 	pkgdesc = Taking voice conversations to the moon
 	pkgver = 1.0.19
-	pkgrel = 8
+	pkgrel = 9
 	url = https://dogehouse.tv
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,9 @@ pkgbase = dogehouse
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
+	conflicts = dogehouse
+	conflicts = dogehouse-bin
+	conflicts = dogehouse-git
 	source = dogehouse::git+https://github.com/benawad/dogehouse.git
 	md5sums = SKIP
 

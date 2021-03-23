@@ -2,7 +2,7 @@
 
 pkgname=dogehouse
 pkgver=1.0.19
-pkgrel=8
+pkgrel=9
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
@@ -29,6 +29,7 @@ depends=(
     'libappindicator-gtk3'
 )
 source=("${pkgname}::git+https://github.com/benawad/dogehouse.git")
+conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
 prepare() {
     cd "${srcdir}/dogehouse"
