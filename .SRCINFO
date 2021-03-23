@@ -1,6 +1,6 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.4.2.r0.ga37f9a2
+	pkgver = 0.5.0.r0.g19b2722
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = any

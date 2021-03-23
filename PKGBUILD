@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.4.2.r0.ga37f9a2
+pkgver=0.5.0.r0.g19b2722
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -74,7 +74,7 @@ prepare() {
         -e 's/yarn \(install\|run\)/yarn --offline \1/' \
         -e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
     ./bootstrap.sh
-    cargo fetch
+    cargo fetch --locked
     yarn install --production --frozen-lockfile
 }
 
@@ -83,6 +83,11 @@ build() {
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
     ./configure --prefix "/usr"
     make
+}
+
+check() {
+    cd "$pkgname"
+    make check
 }
 
 package () {
