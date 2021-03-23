@@ -2,17 +2,18 @@
 # Contributor: Rhys Kenwell <redrield+aur@gmail.com>
 # Github Contributor: Michael Herold <https://github.com/michaelherold>
 # Github Contributor: ahmubashir <https://github.com/amubashir>
+# Github Contributor: Joey Dumont <https://github.com/joeydumont>
 
 pkgname=heroku-cli
 pkgver=7.51.0
-pkgrel=1
+pkgrel=2
 _commit_id="b07fb744b68993c2b480f155ef1b4fdd509e77e4"
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('npm' 'yarn' 'perl' 'git')
+makedepends=('yarn' 'perl' 'git')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("git+https://github.com/heroku/cli.git#commit=${_commit_id}")
@@ -45,7 +46,7 @@ prepare() {
 
     pushd "cli"
 
-      # install packaging tools; install fails now unless installed with yarn >:(
+      # install packaging tools
       yarn install
 
       pushd packages/cli
@@ -54,7 +55,7 @@ prepare() {
         sed -i "/oclif\/plugin-update/d" ./package.json
 
         # install dependencies
-        npm install
+        yarn install
 
         # remove dist folder if necessary
         if [[ -d "./dist" ]]; then
