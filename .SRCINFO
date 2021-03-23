@@ -1,8 +1,8 @@
 pkgbase = ttf-monoid
 	pkgdesc = A customisable coding font
 	pkgver = 0.61
-	pkgrel = 5
-	url = http://larsenwork.com/monoid/
+	pkgrel = 6
+	url = https://github.com/larsenwork/monoid
 	arch = any
 	license = MIT
 	license = custom:OFL
