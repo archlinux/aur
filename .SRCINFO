@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-termjs
+	pkgdesc = term.js 0.0.7 (XStatic packaging standard)
+	pkgver = 0.0.7.0
+	pkgrel = 1
+	url = https://github.com/chjj/term.js
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-term.js/XStatic-term.js-0.0.7.0.tar.gz
+	md5sums = 7434ecf6f5680c293cf3806245dc946b
+	sha256sums = b5f3ab69cb638391f04254913a11b2aab08e2d51c5b81bb6a564c5a6d442bd31
+	sha512sums = bde2504b743be3cee191dc9ae42321e432a71ded850bb5b4f585e29a7bba5b3d9c7c4ceb464548b90df7c67e470f6cd6f0587bb0c65635046b58d17818151b95
+
+pkgname = python-xstatic-termjs
+
+pkgname = python2-xstatic-termjs
+
