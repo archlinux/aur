@@ -1,20 +1,21 @@
 pkgbase = wtfutil-bin
 	pkgdesc = Personal information dashboard for your terminal
-	pkgver = 0.35.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://wtfutil.com
 	arch = x86_64
 	arch = aarch64
 	arch = armv6h
 	license = MPL2
+	depends = glibc
 	provides = wtfutil
 	conflicts = wtfutil
-	source_x86_64 = https://github.com/wtfutil/wtf/releases/download/v0.35.0/wtf_0.35.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d6a281cb21cd9ee9e8a2bb32e6193358724d26faa879c0c2eeb48f5a8599e017
-	source_aarch64 = https://github.com/wtfutil/wtf/releases/download/v0.35.0/wtf_0.35.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 15e668a6bd43d8ddc45172c30caf137720ecfc6dae5665117b81fd891ddb0170
-	source_armv6h = https://github.com/wtfutil/wtf/releases/download/v0.35.0/wtf_0.35.0_linux_armv6.tar.gz
-	sha256sums_armv6h = 5d10b839563e19d9e41bc1aa8a1014a3850f7b7b12144f1660f6af0fd27ccc02
+	source_x86_64 = https://github.com/wtfutil/wtf/releases/download/v0.36.0/wtf_0.36.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = fc3d8a885b85c505d1182000c119896ccfc18d1f8380cd107375a155d7d4cde3
+	source_aarch64 = https://github.com/wtfutil/wtf/releases/download/v0.36.0/wtf_0.36.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7bd66abdfc9a13272e7868b86e12974c621065b95d441a16ddae25bbe41ec526
+	source_armv6h = https://github.com/wtfutil/wtf/releases/download/v0.36.0/wtf_0.36.0_linux_armv6.tar.gz
+	sha256sums_armv6h = f9aa66ff146277cc85682ba59d1d4db31d0795fefaf67d7f57d8bef95e1e5b87
 
 pkgname = wtfutil-bin
 
