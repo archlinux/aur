@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-ndi
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
