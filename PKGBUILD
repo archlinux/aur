@@ -2,7 +2,7 @@
 # Maintainer: sh0rez <me@shorez.de>
 
 pkgname=tanka-git
-pkgver=v0.13.0.r0.g291814d
+pkgver=v0.15.0.r1.gb19bc9f
 pkgrel=1
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -22,13 +22,9 @@ conflicts=(tanka)
 
 md5sums=('SKIP')
 
-function pkgver() {
+pkgver() {
   cd "$srcdir/tanka"
-    (
-      set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
