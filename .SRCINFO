@@ -1,7 +1,7 @@
 pkgbase = conky-lua-nv
 	pkgdesc = An advanced system monitor for X based on torsmo with lua and nvidia enabled
-	pkgver = 1.11.6
-	pkgrel = 2
+	pkgver = 1.12.1
+	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	install = conky-lua-nv.install
 	arch = i686
@@ -39,8 +39,8 @@ pkgbase = conky-lua-nv
 	replaces = conky
 	options = !strip
 	options = debug
-	source = https://github.com/brndnmtthws/conky/archive/v1.11.6.tar.gz
-	sha1sums = bf4b3dfe895f400b27a57ddc14964d231dc98005
+	source = https://github.com/brndnmtthws/conky/archive/v1.12.1.tar.gz
+	sha1sums = 00d49d0835c0eae245ce0facc58f7566454c8c46
 
 pkgname = conky-lua-nv
 
