@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-rickshaw
+	pkgdesc = Rickshaw 1.5.1 (XStatic packaging standard)
+	pkgver = 1.5.1.0
+	pkgrel = 1
+	url = http://code.shutterstock.com/rickshaw/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Rickshaw/XStatic-Rickshaw-1.5.1.0.tar.gz
+	md5sums = aef17022c8a0ea3d9e2da6237d5175ef
+	sha256sums = cf278d4bd4e974ddcf7170d20bbb706cc34f93cf61658f2f68f3138374178564
+	sha512sums = f8fd6a5031b56d790aa30a2388f5db72aa7fb0b3da696c008de99464650394733155fac0d822422ef52bc12887711b3d325673e4b0f25aca045cda007b97c8cb
+
+pkgname = python-xstatic-rickshaw
+
+pkgname = python2-xstatic-rickshaw
+
