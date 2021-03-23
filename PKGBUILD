@@ -2,13 +2,13 @@
 
 pkgname='outspline-experimental'
 pkgver='0.8.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental addons for Outspline"
 arch=('any')
 url="https://kynikos.github.io/outspline/"
 license=('GPL3')
 depends=('outspline')
-source=("http://downloads.sourceforge.net/project/outspline/experimental/$pkgname-$pkgver.tar.bz2")
+source=("https://downloads.sourceforge.net/project/outspline/experimental/$pkgname-$pkgver.tar.bz2")
 sha256sums=('7e0c48f12d9f69860888520ed8b3b486ccc89c4a9a46652085ff2eed399d234c')
 
 package() {
