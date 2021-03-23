@@ -2,7 +2,7 @@
 
 pkgname=dogehouse
 pkgver=1.0.19
-pkgrel=6
+pkgrel=7
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
@@ -33,11 +33,6 @@ source=("${pkgname}::git+https://github.com/benawad/dogehouse.git")
 prepare() {
     cd "${srcdir}/dogehouse"
     git reset --hard $(git describe --abbrev=0 --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-}
-
-pkgver() {
-    cd "${srcdir}/dogehouse"
-    git describe --abbrev=0 --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
