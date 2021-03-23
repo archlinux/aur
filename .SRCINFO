@@ -1,6 +1,6 @@
 pkgbase = ecodms-client
 	pkgdesc = Document Management Software
-	pkgver = 18.09.3
+	pkgver = 21.02.1
 	pkgrel = 1
 	url = http://www.ecodms.de/index.php/de/
 	install = ecodms-client.install
@@ -18,8 +18,8 @@ pkgbase = ecodms-client
 	depends = pcre
 	depends = freeimage
 	options = !strip
-	source_x86_64 = ecodmsclient-18.09.3_amd64.deb::https://www.ecodms.de/ecodms_180964/focal/ecodmsclient-18.09-3-1_amd64.deb
-	md5sums_x86_64 = 68516adf5e420236802ad24e33500365
+	source_x86_64 = ecodmsclient-21.02.1_amd64.deb::https://www.ecodms.de/ecodms_210264/focal/ecodmsclient-21.02-1-0_amd64.deb
+	md5sums_x86_64 = 28fd3969d2a807f3734e61728fb69111
 
 pkgname = ecodms-client
 
