@@ -1,6 +1,6 @@
 pkgbase = ibus-mozc-ut
 	pkgdesc = Mozc module for IBus bundled with the UT dictionary
-	pkgver = 2.26.4289.102.20210222
+	pkgver = 2.26.4318.102.20210322
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = i686
@@ -16,11 +16,11 @@ pkgbase = ibus-mozc-ut
 	makedepends = qt5-base
 	depends = ibus>=1.4.1
 	depends = mozc-ut-common
-	provides = ibus-mozc=2.26.4289.102
+	provides = ibus-mozc=2.26.4318.102
 	conflicts = ibus-mozc
 	conflicts = ibus-mozc-ut2
 	conflicts = ibus-mozc-ut-united
-	source = ibus-mozc-ut-git::git+https://github.com/google/mozc.git#commit=492e6227de3adec93c1f294b6c68a42b85b4e7db
+	source = ibus-mozc-ut-git::git+https://github.com/google/mozc.git#commit=467a91c5b237ef9f519075b42e7c4585281e168f
 	sha256sums = SKIP
 
 pkgname = ibus-mozc-ut
