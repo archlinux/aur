@@ -18,7 +18,7 @@ Options:
     --dns                 Use this to fix DNS
     --nodelay             Disable delay time
     -e, --enable          Enable anonymization at boot time
-    -d, --disable         Enable anonymization at boot time
+    -d, --disable         Disable anonymization at boot time
     -u, --uninstall       Uninstall GenTor
 
 EOF
