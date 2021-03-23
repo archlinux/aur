@@ -2,7 +2,7 @@
 # Maintainer: tabulatejarl8@gmail.com <TabulateJarl8>
 # Maintainer: TurboWafflz <turbowafflz@gmail.com>
 pkgname=iicalc-beta
-pkgver=2.7.24
+pkgver=2.7.29
 pkgrel=1
 pkgdesc="An extensible calculator written in Python. Development/Beta Channel."
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=("iicalc")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('dea1dfcbc81b63737bdddca7f1ca762f9f2d4de2248388ba2263755b5c532cf3a81affad0274a37f5ce6c8583a64aa49e3b56a2388b2805a63953ceabe06a30e')
+sha512sums=('b6ea1c6a54cd8a0d96611b1ac07575eeb8231801340496f41c3d9ec595b4863d3b331cd8287d26ac4b4699e5b6b3fbbc1f645eea817a01964abe70a23de1008a')
 
 package(){
 
