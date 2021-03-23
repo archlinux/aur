@@ -1,7 +1,7 @@
 # Maintainer: Vitor Rodrigues <vitor.rodrigues@gmail.com>
 
 pkgname=dbeaver-ce-bin
-pkgver=21.0.0
+pkgver=21.0.1
 pkgrel=1
 pkgdesc="Free Universal SQL Client for Developers and Database Administrators (Community Edition)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(dbeaver-ce.desktop dbeaver-ce.install)
 source_x86_64=(https://dbeaver.io/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('afb8749c8d73d7feb1227af554de4a1ffff7358f4241db8f6df87063d999ffac'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('3b3761acba5447d7693ef643a2f85264162b168595363b3e629751e8997a7285')
+sha256sums_x86_64=('5b10843010ea707e38786272adc706c5280ef2f29fbba22c3f66d434bdf813ea')
 
 noextract=("dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz")
 

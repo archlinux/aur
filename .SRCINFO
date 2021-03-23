@@ -1,6 +1,6 @@
 pkgbase = dbeaver-ce-bin
 	pkgdesc = Free Universal SQL Client for Developers and Database Administrators (Community Edition)
-	pkgver = 21.0.0
+	pkgver = 21.0.1
 	pkgrel = 1
 	url = http://dbeaver.io/
 	install = dbeaver-ce.install
@@ -13,13 +13,13 @@ pkgbase = dbeaver-ce-bin
 	optdepends = dbeaver-plugin-svg-format: save diagrams in SVG format
 	provides = dbeaver-ce
 	conflicts = dbeaver-ce
-	noextract = dbeaver-ce-21.0.0-linux.gtk.x86_64.tar.gz
+	noextract = dbeaver-ce-21.0.1-linux.gtk.x86_64.tar.gz
 	source = dbeaver-ce.desktop
 	source = dbeaver-ce.install
 	sha256sums = afb8749c8d73d7feb1227af554de4a1ffff7358f4241db8f6df87063d999ffac
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_x86_64 = https://dbeaver.io/files/21.0.0/dbeaver-ce-21.0.0-linux.gtk.x86_64.tar.gz
-	sha256sums_x86_64 = 3b3761acba5447d7693ef643a2f85264162b168595363b3e629751e8997a7285
+	source_x86_64 = https://dbeaver.io/files/21.0.1/dbeaver-ce-21.0.1-linux.gtk.x86_64.tar.gz
+	sha256sums_x86_64 = 5b10843010ea707e38786272adc706c5280ef2f29fbba22c3f66d434bdf813ea
 
 pkgname = dbeaver-ce-bin
 
