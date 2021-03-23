@@ -4,12 +4,12 @@
 
 pkgname=perl-libapreq2
 pkgver=2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe, standards-compliant, high-performance library used for parsing HTTP cookies, query-strings and POST data."
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/libapreq2"
 options=('!emptydirs')
-depends=('mod_perl' 'apr-util')
+depends=('mod_perl' 'apr-util' 'perl')
 makedepends=('perl-extutils-xsbuilder')
 license=("GPL")
 source=(https://cpan.metacpan.org/authors/id/S/SH/SHAY/libapreq2-$pkgver.tar.gz
@@ -36,11 +36,11 @@ package() {
   sed -i "s#$srcdir#/usr/src#" $pkgdir/usr/bin/apreq2-config
   find $pkgdir -name '.packlist' -delete
   find $pkgdir -name '*.pod' -delete
-# template start; name=perl-binary-module-dependency; version=1;
-if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-fi
-# template end;
+## template start; name=perl-binary-module-dependency; version=1;
+#if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+#	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+#	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+#	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+#fi
+## template end;
 }
