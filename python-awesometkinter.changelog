@@ -1,3 +1,10 @@
+2021.3.19:
+- [critical] fix checkbox and radiobutton images
+
+2021.3.18:
+- [progressbar, buttons] reuse images to improve performance
+- [scrollable_frame] improve performance
+
 2021.1.7:
 - Fix button and progressbar style to support more themes.
 - bug fixes.
