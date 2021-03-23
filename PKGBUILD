@@ -46,4 +46,7 @@ package() {
 
   ln -sf "../../../lib/heroku/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
   ln -sf "../../lib/heroku/bin/run" "$pkgdir/usr/bin/heroku"
+
+  # Remove empty directories
+  find "${pkgdir}" -type d -empty -delete
 }
