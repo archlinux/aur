@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=2.0.0dev.r6030.ga03aeddd
+pkgver=2.0.0dev.r6076.g9f796794
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - mcode back-end'
@@ -57,8 +57,7 @@ build() {
 check() {
 	cd "${srcdir}/ghdl"
 
-	mkdir include
-	ln -s ../src/grt/vpi_user.h include/
+	make install.vpi.local
 
 	make test
 }
