@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-jquery-quicksearch
+	pkgdesc = JQuery.quicksearch 2.0.3 (XStatic packaging standard)
+	pkgver = 2.0.3.2
+	pkgrel = 1
+	url = http://plugins.jquery.com/jquery.quicksearch/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-jquery
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-jquery
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-JQuery.quicksearch/XStatic-JQuery.quicksearch-2.0.3.2.tar.gz
+	md5sums = ac6148cfff5a7a90240e7801bf9f0e4a
+	sha256sums = f38760fe93b504f2855ef25e9bf91df65c8a6601674165e4685fb217bb616fd1
+	sha512sums = 08578fcb448cd5b2234d19fae361f2f63361222be1e0218ef04fcdda9e1377077bdd018cfa684e3736c1837108b1937a8923426747a9cd852729ed585019d092
+
+pkgname = python-xstatic-jquery-quicksearch
+
+pkgname = python2-xstatic-jquery-quicksearch
+
