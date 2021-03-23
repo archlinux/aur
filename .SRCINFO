@@ -15,7 +15,7 @@ pkgbase = gentor
 	depends = systemd
 	depends = dos2unix
 	depends = iptables
-	source = https://github.com/ChihebBayouli/gentor/releases/download/1.0/gentor-1.0.tar.gz
+	source = https://github.com/ChihebBayouli/gentor/releases/download/1.1/gentor-1.0.tar.gz
 	md5sums = d106e09f82affd51f7f9c4c3bdebd04e
 
 pkgname = gentor

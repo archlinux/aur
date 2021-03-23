@@ -8,7 +8,7 @@ url="https://github.com/ChihebBayouli/GenTor"
 license=('GPL2')
 depends=(tor macchanger privoxy net-tools curl systemd dos2unix iptables)
 makedepends=(python)
-source=("https://github.com/ChihebBayouli/gentor/releases/download/1.0/gentor-1.0.tar.gz")
+source=("https://github.com/ChihebBayouli/gentor/releases/download/1.1/gentor-1.0.tar.gz")
 install=.INSTALL
 md5sums=('d106e09f82affd51f7f9c4c3bdebd04e')
 build() {
