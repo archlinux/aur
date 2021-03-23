@@ -1,0 +1,25 @@
+pkgbase = python-xstatic-jquery-tablesorter
+	pkgdesc = JQuery.TableSorter 2.14.5 (XStatic packaging standard)
+	pkgver = 2.14.5.2
+	pkgrel = 1
+	url = https://github.com/Mottie/tablesorter
+	arch = any
+	license = MIT
+	license = GPL2
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-jquery
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-jquery
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-JQuery.TableSorter/XStatic-JQuery.TableSorter-2.14.5.2.tar.gz
+	md5sums = 024a8dd83aa173ec0b161e76391ba56c
+	sha256sums = bdd847ca0cde4014fd21134f99e59a99ef488185c745e82646911d2f9de3d762
+	sha512sums = f43aa875e18f89c070682d5aaaf33d1dbbfc655f310ee94c1917e3b4fc7585aacbfcc2fb52b56cf45092bb7992f057b27dc7776dd55996b0b43605236f3dafc1
+
+pkgname = python-xstatic-jquery-tablesorter
+
+pkgname = python2-xstatic-jquery-tablesorter
+
