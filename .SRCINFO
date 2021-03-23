@@ -1,0 +1,14 @@
+pkgbase = pipewire-pulse-completion
+	pkgdesc = bash completion for various pulseaudio commands
+	pkgver = 14.2
+	pkgrel = 2
+	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pipewire
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=6a487c5244563f49a025088de3510c80824fc99e
+	sha256sums = SKIP
+
+pkgname = pipewire-pulse-completion
+
