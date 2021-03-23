@@ -8,4 +8,5 @@ Type=Application
 StartupNotify=true
 StartupWMClass=Dogehouse
 Categories=Chat;Network;
-Keywords=social;devops;
+Keywords=social;devops
+Path=/usr/share/dogehouse
