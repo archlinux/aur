@@ -1,7 +1,7 @@
 # Maintainer: Thayne McCombs <astrothayne at gmail dot com>
 pkgname=wev
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="tool for debugging wayland events, similar to xev"
 url='https://git.sr.ht/~sircmpwn/wev'
 license=(MIT)
