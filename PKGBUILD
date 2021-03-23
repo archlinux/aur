@@ -16,14 +16,14 @@ _filename=${_base}src.tar.xz
 _sha256sum=239bac1ed064ab2c08679116c25cf5fea49a337dd3835ad0bf661de1663339bc
 _rid=2610
 
-# Latest URL: always points towards the latest version, but when it
-# is updated, breaks building of this package.
+# download.php URL: Identifies the download using the Megazeux version.
 #source=("${_filename}::https://www.digitalmzx.com/download.php?latest=src&ver=${pkgver}")
 
-# Stable URL: points towards a specific version, but the rid must be updated manually.
-# To find it, look at the last page of https://www.digitalmzx.com/search.php?browse=4&desc=recordReleaseDate.
-# Additionally, the sha256sum is part of the URL, so it is
-# used both to identify the download and to validate the file.
+# download/ URL: Identifies the download using a site-specific "rid",
+# and a SHA-256 checksum of the file.  We prefer this one as it allows
+# us to use the checksum from upstream (as opposed to what a packager
+# downloaded).  The sha256sum is part of the URL, so it is used both
+# to identify the download and to validate the file.
 source=("${_filename}::https://www.digitalmzx.com/download/${_rid}/${_sha256sum}/")
 
 sha256sums=("${_sha256sum}")
