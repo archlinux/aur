@@ -2,7 +2,7 @@
 # Current Maintainer: Dylan Morrison <dylanjmorrison611 at gmail.com>
 
 pkgname=megazeux
-pkgver=2.92e
+pkgver=2.92f
 pkgrel=1
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
@@ -13,16 +13,21 @@ depends=(libvorbis libpng sdl2)
 makedepends=()
 _base=mzx${pkgver/.}
 _filename=${_base}src.tar.xz
-_sha256sum=1d25e7cc07a9ffdba229bfe59b9a52eff8d7459be78cfb7eb9746539b51634be
+_sha256sum=239bac1ed064ab2c08679116c25cf5fea49a337dd3835ad0bf661de1663339bc
+_rid=2610
 
-##old version
-#source=("${_filename}::https://www.digitalmzx.com/download.php?rid=2197&f=${_sha256sum}")
+# Latest URL: always points towards the latest version, but when it
+# is updated, breaks building of this package.
+#source=("${_filename}::https://www.digitalmzx.com/download.php?latest=src&ver=${pkgver}")
 
-##new version
-source=("${_filename}::https://www.digitalmzx.com/download.php?latest=src&ver=${pkgver}")
+# Stable URL: points towards a specific version, but the rid must be updated manually.
+# To find it, look at the last page of https://www.digitalmzx.com/search.php?browse=4&desc=recordReleaseDate.
+# Additionally, the sha256sum is part of the URL, so it is
+# used both to identify the download and to validate the file.
+source=("${_filename}::https://www.digitalmzx.com/download/${_rid}/${_sha256sum}/")
 
 sha256sums=("${_sha256sum}")
-DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - -o %o %u")
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - -o %o %u")
 
 build() {
   cd "${srcdir}/${_base}"
