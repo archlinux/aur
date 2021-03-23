@@ -64,7 +64,7 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.2
+pkgver=5.11.8
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -73,7 +73,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="546c83f060687c8c83fda71b2a32e7acad5c42ce" # 5.11.2-1
+__commit="2c366888f8e94155dd1742796dc31cf2bb655fb0" # 5.11.8-1
 
 license=(GPL2)
 makedepends=(
@@ -96,9 +96,9 @@ done
         
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '322b6928336fdcf0e4dd84d0bb4fab791cf8c32548ae7ab8f79646a13cbdd5a0'  # xanmod
+            'fbf3d516a0df8944cdf8a340c5f365bfed7d63eedc76601a3ad84eb6c1a2ce33'  # xanmod
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'  # choose-gcc-optimization.sh
-            '3076c0cd5a819c60acb56addf252a9912bb25afa790b20d462a8a0a701d6ff02' # manjaro
+            'c8741423769787ada79425adc6f5186bbcc05e337f48c39b47b4fc60ad2126ba' # manjaro
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -251,14 +251,15 @@ _package() {
   echo "${pkgver}-${pkgrel}-Manjaro-Xanmod x64" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for linux-manjaro-xanmod kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
   provides=()
   replaces=()
   conflicts=()
@@ -330,6 +331,8 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  msg2 "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
