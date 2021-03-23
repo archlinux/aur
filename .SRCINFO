@@ -1,7 +1,7 @@
 pkgbase = coreutils-hybrid
 	pkgdesc = GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy
 	pkgver = 8.32_0.0.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
 	license = GPL3
