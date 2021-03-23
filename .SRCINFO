@@ -1,5 +1,5 @@
-pkgbase = nginx
-	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server
+pkgbase = nginx-quiche
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche for http3
 	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://nginx.org
@@ -48,8 +48,7 @@ pkgbase = nginx
 	md5sums = ba2e3b08ce0f0fff7cced624d0ecf7cc
 	md5sums = 6a01fb17af86f03707c8ae60f98a2dc2
 
-pkgname = nginx
-
-pkgname = nginx-src
-	depends = 
+pkgname = nginx-quiche
+	provides = nginx
+	conflicts = nginx
 

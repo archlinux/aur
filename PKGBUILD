@@ -4,12 +4,13 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
-pkgbase=nginx
-pkgname=(nginx nginx-src)
+_pkgbase=nginx
+pkgbase=${_pkgbase}-quiche
+pkgname=${pkgbase}
 pkgver=1.16.1
 pkgrel=1
 _quichever=0.7.0
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche for http3'
 arch=(x86_64)
 url='https://nginx.org'
 license=(custom)
@@ -77,19 +78,13 @@ _stable_flags=(
 )
 
 prepare() {
-  cp -r $pkgbase-$pkgver{,-src}
-  
-  #cd $srcdir/boringssl
-  #mkdir build && cd build && cmake ../ && make && cd $srcdir/boringssl
-  #mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
-  #cp $srcdir/boringssl/build/crypto/libcrypto.a $srcdir/boringssl/build/ssl/libssl.a .openssl/lib
-  #touch $srcdir/boringssl/.openssl/include/openssl/ssl.h
+  cp -r $_pkgbase-$pkgver{,-src}
 
   cd $srcdir/quiche-$_quichever/deps
   rm -r boringssl
   ln -s $srcdir/boringssl boringssl
 
-  cd $srcdir/$pkgbase-$pkgver
+  cd $srcdir/$_pkgbase-$pkgver
   patch -Np1 -i $srcdir/quiche-$_quichever/extras/nginx/nginx-1.16.patch
 }
 
@@ -97,7 +92,7 @@ build() {
   cd $srcdir/boringssl
   mkdir build && cd build && cmake ../ && make && cd $srcdir/boringssl
 
-  cd $srcdir/$pkgbase-$pkgver
+  cd $srcdir/$_pkgbase-$pkgver
 
   ./configure \
     --prefix=/etc/nginx \
@@ -128,11 +123,13 @@ build() {
 
 check() {
   cd nginx-tests
-  TEST_NGINX_BINARY="$srcdir/$pkgbase-$pkgver/objs/nginx" prove .
+  TEST_NGINX_BINARY="$srcdir/$_pkgbase-$pkgver/objs/nginx" prove .
 }
 
-package_nginx() {
-  cd $pkgbase-$pkgver
+package_nginx-quiche() {
+  provides=($_pkgbase)
+  conflicts=($_pkgbase)
+  cd $_pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
@@ -167,8 +164,8 @@ package_nginx() {
   done
 }
 
-package_nginx-src() {
+package_nginx-quiche-src() {
   depends=()
   install -d "$pkgdir/usr/src"
-  cp -r $pkgbase-$pkgver-src "$pkgdir/usr/src/nginx"
+  cp -r $_pkgbase-$pkgver-src "$pkgdir/usr/src/nginx-quiche"
 }
