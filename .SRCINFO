@@ -8,12 +8,11 @@ pkgbase = python-inkscape-figures
 	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = rofi
+	depends = python-pyperclip
+	depends = python-click
 	depends = python-appdirs
 	depends = python-daemonize
-	depends = python-click
-	depends = python-inotify
-	depends = python-daemonize
-	depends = python-pyperclip
+	depends = python-inotify-simple
 	source = https://files.pythonhosted.org/packages/source/i/inkscape-figures/inkscape-figures-1.0.8.tar.gz
 	sha256sums = 49ced7335a64f2dba4ff3f57f24a7ebd792674395631a248e0edcbe8e6196f32
 
