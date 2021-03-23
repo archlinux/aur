@@ -13,7 +13,7 @@ makedepends=()
 optdepends=()
 source=(https://razaoinfo.dl.sourceforge.net/project/pseint/${pkgver}/pseint-l64-${pkgver}.tgz)
 noextract=()
-sha256sums=()
+sha256sums=('SKIP') #generar con 'makepkg -g'
 
 package() {
     mkdir -p "${pkgdir}/opt/pseint"
