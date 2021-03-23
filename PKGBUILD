@@ -2,8 +2,8 @@
 
 pkgname=dogehouse
 pkgver=1.0.19
-pkgrel=1
-pkgdesc="Taking voice conversations to the moon"
+pkgrel=2
+pkgdesc="Taking voice conversations to the moon 🚀"
 url="https://dogehouse.tv"
 license=('MIT')
 arch=('x86_64')
@@ -12,11 +12,7 @@ makedepends=(
     'yarn'
     'nodejs'
 )
-depends=(
-    'dbus-x11'
-    'nss'
-    'gtk3'
-)
+depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'tuxedo-control-center' 'util-linux-libs' 'xdg-utils')
 source=("${pkgname%-git}::git+https://github.com/benawad/dogehouse.git")
 
 prepare() {
