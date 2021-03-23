@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-font-awesome
+	pkgdesc = Font-Awesome 4.7.0 (XStatic packaging standard)
+	pkgver = 4.7.0.0
+	pkgrel = 1
+	url = https://fortawesome.github.io/Font-Awesome/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Font-Awesome/XStatic-Font-Awesome-4.7.0.0.tar.gz
+	md5sums = 141a0e9a7e21e82f922573a00ae0c166
+	sha256sums = e01fb480caaa7c7963dcb3328a4700e631bef6070db0e8b685816d220e685f6c
+	sha512sums = 2913e51d38aca70b2d7df29d0af4356fb9e0ea3c00ba3fafc10446fe7e1d9a18ed10500bb565f2a71642784c631f7fdf3f89462515582107f184e833b68c4c71
+
+pkgname = python-xstatic-font-awesome
+
+pkgname = python2-xstatic-font-awesome
+
