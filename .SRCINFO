@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-jsencrypt
+	pkgdesc = JSEncrypt 2.3.1 (XStatic packaging standard)
+	pkgver = 2.3.1.1
+	pkgrel = 1
+	url = http://travistidwell.com/jsencrypt/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-JSEncrypt/XStatic-JSEncrypt-2.3.1.1.tar.gz
+	md5sums = 4b03331d4b2f6c12e2e4b8ee6056bda0
+	sha256sums = a277912a4f70d1d2f58c8d94b992d244e69fcf851a2cbed5d83cb4fc422a72f2
+	sha512sums = 9e130f3c554a986016f5a429514642804408d357ead24ae6f144ba3bcb8d88c50b16ae42e685f009646fd9abfba61f39e41f2860b351e824fbb31fc24eeec1e4
+
+pkgname = python-xstatic-jsencrypt
+
+pkgname = python2-xstatic-jsencrypt
+
