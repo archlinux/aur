@@ -1,10 +1,15 @@
 pkgbase = impd-git
 	pkgdesc = Manage passive immersion and create condensed audio.
 	pkgver = 0.1.r1.g1211089
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ajatt-Tools/impd
 	arch = any
 	license = GPL3
+	depends = ffmpeg
+	depends = mpd
+	optdepends = mpc: interaction with mpd
+	optdepends = libnotify: desktop notifications
+	optdepends = youtube-dl: adding audio from youtube
 	source = impd-git::git+https://github.com/Ajatt-Tools/impd
 	sha256sums = SKIP
 
