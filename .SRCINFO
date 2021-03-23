@@ -8,6 +8,7 @@ pkgbase = pterodactyl-daemon-bin
 	depends = docker
 	provides = pterodactyl-daemon
 	conflicts = pterodactyl-daemon
+	options = !strip
 
 pkgname = pterodactyl-daemon-bin
 
