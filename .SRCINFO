@@ -1,7 +1,7 @@
 pkgbase = python-pyluach
 	pkgdesc = Pyluach is a Python package for manipulating Hebrew dates, Gregorian-Hebrew calendar conversions, and other Jewish calendar related calculations
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/simlist/pyluach
 	arch = any
 	license = MIT
