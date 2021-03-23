@@ -25,7 +25,7 @@ pkgbase = dogehouse
 	conflicts = dogehouse
 	conflicts = dogehouse-bin
 	conflicts = dogehouse-git
-	source = dogehouse::git+https://github.com/benawad/dogehouse.git
+	source = dogehouse::https://github.com/benawad/dogehouse/archive/refs/tags/v1.0.19.tar.gz
 	md5sums = SKIP
 
 pkgname = dogehouse

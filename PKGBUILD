@@ -28,7 +28,7 @@ depends=(
     'libnotify'
     'libappindicator-gtk3'
 )
-source=("${pkgname}::git+https://github.com/benawad/dogehouse.git")
+source=("${pkgname}::https://github.com/benawad/dogehouse/archive/refs/tags/v${pkgver}.tar.gz")
 conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
 prepare() {
