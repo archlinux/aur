@@ -2,8 +2,8 @@
 # Contributor: Bijaya Dangol <dangoldbj23@gmail.com>
 # Contributor: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
-pkgver=4.1.0
-pkgrel=4
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Find duplicate files with various contents, using perceptual diff for pictures"
 arch=('any')
 url="https://dupeguru.voltaicideas.net/"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-hsaudiotag3k'
          'libxkbcommon-x11')
 makedepends=('python-distro' 'python-sphinx')
-source=( https://github.com/arsenetar/${pkgname}/archive/${pkgver}.tar.gz )
-md5sums=('eee02386ea18f592502c05049eda9f99')
+source=( https://github.com/arsenetar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz )
+md5sums=('a88af36a661c813874bb6a2b8d5becbc')
 provides=("dupeguru")
 conflicts=("dupeguru-git" "dupeguru-se" "dupeguru-pe" "dupeguru-me")
 
@@ -31,7 +31,6 @@ package() {
   
   cp -R "help" "build"
   cp -R "locale" "build"
-  msg "Starting package..."
   python package.py --arch-pkg
   cd "build/${pkgname}-arch"
 
