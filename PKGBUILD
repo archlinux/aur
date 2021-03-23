@@ -9,7 +9,7 @@
 
 pkgname=font-manager
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple font management application for GTK+ Desktop Environments'
 url='https://fontmanager.github.io'
 arch=('x86_64' 'i686')
@@ -25,6 +25,7 @@ makedepends=('gobject-introspection'
              'intltool'
              'libxml2'
              'meson'
+             'nautilus'
              'ninja'
              'vala'
              'yelp-tools')
@@ -32,7 +33,9 @@ source=("https://github.com/FontManager/master/releases/download/$pkgver/$pkgnam
 sha256sums=('80b9c8ec8cd9b859b8216be8d7ba988d27b0e155d9a4afc71fcd850eebc56701')
 
 build() {
-    arch-meson "$pkgname-$pkgver" build
+    arch-meson "$pkgname-$pkgver" build \
+        -Dnautilus=true \
+        -Dreproducible=true
     ninja -C build
 }
 
