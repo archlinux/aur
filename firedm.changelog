@@ -1,3 +1,33 @@
+2021.3.23:
+- [New feature] add on completion pc shutdown option, issue #225.
+- [New feature] add on completion custom command option, issue #225
+- [download tab] fix deleting a download item.
+- [download tab] clean right click menu
+- [download tab] add select menu with ['Select all', 'Select None', 'Select completed', 'Select non completed'] options
+- [popup] disable popup custom titlebar and use system default
+- [dependencies] disable auto installing missing packages when running from open source, to avoid installing packages system wide without user permission.
+- [popup] fix entry widget color and focus.
+
+2021.3.19:
+- [critical] Fix checkboxs in downloads tab.
+- [download items] remove buttons and progressbar for completed items to enhance loading time.
+- [download items] fix resume existing item
+
+2021.3.18:
+- [critical] Fix automatic file segmentation issue #223
+- [gui] Fix gui realtime update while using too many connections, issue #223
+- Fix filename extraction from http-headers, issue #217
+- fix error for non-resumable files or unknown ranges., issue #217
+- added a warning popup when downloading a non-resumable files.
+- [Gui] fix titlebar color for popup window.
+- [clipboard] extend url monitor to include http, https, ftp, ftps, and file schemes, issue #220
+- [gui] prevent window resize to zero.
+- [gui] fix flickering in "Downloads tab" while downloading playlist
+- [gui] reset select_all status in Downloads tab.
+- [update] auto check for updates fix.
+- [gui] changed playlist download icon, issue #210
+- [gui] enhance startup/shutdown time
+
 2021.2.9:
 - Change Application name from 'PyIDM' to 'FireDM'.
 - [critical] Fix support for multiple video streaming websites, issue #140
