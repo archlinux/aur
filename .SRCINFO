@@ -1,13 +1,13 @@
 pkgbase = kjv1611-font
 	pkgdesc = A complete digital font restoration of the typeface found in the 1611 King James Bible
-	pkgver = 3.6
-	pkgrel = 3
+	pkgver = 3.6.1
+	pkgrel = 1
 	url = https://github.com/ctrlcctrlv/kjv1611
 	arch = any
 	license = OFL
-	source = kjv1611-3.6.otf::https://github.com/ctrlcctrlv/kjv1611/releases/download/v3.6/KJV1611.otf
-	source = kjv1611-3.6-LICENSE.txt::https://github.com/ctrlcctrlv/kjv1611/raw/v3.6/LICENSE.txt
-	sha256sums = fc96e79c9d823eada8bb6e6074dec0b2d70280e1dae1dfb0c1afcd5710e441c5
+	source = kjv1611-3.6.1.otf::https://github.com/ctrlcctrlv/kjv1611/releases/download/v3.6.1/KJV1611.otf
+	source = kjv1611-3.6.1-LICENSE.txt::https://github.com/ctrlcctrlv/kjv1611/raw/v3.6.1/LICENSE.txt
+	sha256sums = cff7f1a9c81ec59c09a3b3e3d36a01c8a494e4d7843143e1c0e89ac867ffbf48
 	sha256sums = 0ea667fb557836c9a1f7c802fcced24d781cfcb8696e1a57cab1b0a727957a9c
 
 pkgname = otf-kjv1611
