@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-jasmine
+	pkgdesc = Jasmine 2.4.1 (XStatic packaging standard)
+	pkgver = 2.4.1.2
+	pkgrel = 1
+	url = http://jasmine.github.io/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Jasmine/XStatic-Jasmine-2.4.1.2.tar.gz
+	md5sums = 736937d16fd655d1f6f2096b97d8255b
+	sha256sums = bf921be423c254a5cebc2156a7fd66d8210cefd251fc2fa51f792a153bf9e82b
+	sha512sums = 929c5e99ee9278b4aa6c3241433c18de7af037f75cf917cbec1de48c7400e8f3fea72accaf3a107ec98a0e57928fdd892bbd081beccf0c9148196562f9078c70
+
+pkgname = python-xstatic-jasmine
+
+pkgname = python2-xstatic-jasmine
+
