@@ -5,7 +5,7 @@
 pkgbase='concourse'
 pkgname=('concourse' 'concourse-fly-cli' 'concourse-resource-types')
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
@@ -27,8 +27,6 @@ prepare() {
   sed -e 's#/usr/local/concourse/bin/init#/usr/lib/concourse/bin/init#' -i worker/runtime/spec/mounts.go
   sed -e 's#"init-bin"   default:"/usr/local/concourse/bin/init"#"init-bin"   default:"/usr/lib/concourse/bin/init"#' -i worker/workercmd/worker_linux.go
 
-  go get github.com/gobuffalo/packr/packr
-
   go get -d ./...
   yarn
 }
@@ -39,8 +37,8 @@ build() {
   export PATH=$PATH:"$GOPATH/bin"
   ldflags="-X github.com/concourse/concourse.Version=${pkgver}"
   yarn build
-  packr build -o concourse -trimpath -ldflags "${ldflags}" ./cmd/concourse
-  packr build -o fly -trimpath -ldflags "${ldflags}" ./fly
+  go build -o concourse -trimpath -ldflags "${ldflags}" ./cmd/concourse
+  go build -o fly -trimpath -ldflags "${ldflags}" ./fly
   gcc -O2 -static cmd/init/init.c -o init
 }
 
