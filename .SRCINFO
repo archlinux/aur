@@ -1,0 +1,13 @@
+pkgbase = pterodactyl-daemon-bin
+	pkgdesc = Open-source server control and management daemon for pterodactyl-panel (wings).
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/pterodactyl/wings
+	arch = any
+	license = MIT
+	depends = docker
+	provides = pterodactyl-daemon
+	conflicts = pterodactyl-daemon
+
+pkgname = pterodactyl-daemon-bin
+
