@@ -1,7 +1,7 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname=firedm
-pkgver=2021.3.19
+pkgver=2021.3.23
 pkgrel=1
 pkgdesc="Python open source alternative to IDM (Internet Download Manager)"
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/firedm/FireDM'
 license=('LGPL3')
 depends=('ffmpeg'
          'python>=3.6' 
-         'python-awesometkinter>=2020.1.7'
+         'python-awesometkinter>=2021.3.19'
          'python-certifi'
          'python-packaging'
          'python-pillow>=6.0.0'
@@ -17,7 +17,7 @@ depends=('ffmpeg'
          'python-pycurl'
          'python-pystray'
          'youtube-dl'
-         'youtube-dlc')
+         'youtube-dlp')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 replaces=('pyidm')
