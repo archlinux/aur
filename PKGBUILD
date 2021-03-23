@@ -4,29 +4,30 @@
 # Github Contributor: ahmubashir <https://github.com/amubashir>
 
 pkgname=heroku-cli
-pkgver=7.50.0
-pkgrel=2
-_builddir=cli-$pkgver-$pkgrel
+pkgver=7.51.0
+pkgrel=1
+_commit_id="b07fb744b68993c2b480f155ef1b4fdd509e77e4"
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('npm' 'yarn' 'perl')
+makedepends=('npm' 'yarn' 'perl' 'git')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
-source=("https://github.com/heroku/cli/archive/v$pkgver.tar.gz")
-sha256sums=('0a4f5e92b93248443c188a261b6f5179e800ad325856dccaca22e42caebcccd4')
-sha512sums=('d5d80ba4439407b75efa7dffff031a4112336de4bab953141ee399e1861275d8b8bf11fcb4da370d6f211aaf15ce4ef8df4d4470ab20c8449accc4410f0f24b6')
+source=("git+https://github.com/heroku/cli.git#commit=${_commit_id}")
+sha256sums=('SKIP')
+sha512sums=('SKIP')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
-append_path() {
+_append_path() {
   case ":$PATH:" in
-      *:"$1":*)
-          ;;
-      *)
-          PATH="${PATH:+$PATH:}$1"
+    *:"$1":*) ;;
+
+    *)
+      PATH="${PATH:+$PATH:}$1"
+      ;;
   esac
 }
 
@@ -34,15 +35,15 @@ prepare() {
   # Set path to perl scriptdirs if they exist
   # https://wiki.archlinux.org/index.php/Perl_Policy#Binaries_and_scripts
   # Added /usr/bin/*_perl dirs for scripts
-  [ -d /usr/bin/site_perl ] && append_path '/usr/bin/site_perl'
-  [ -d /usr/bin/vendor_perl ] && append_path '/usr/bin/vendor_perl'
-  [ -d /usr/bin/core_perl ] && append_path '/usr/bin/core_perl'
+  [ -d /usr/bin/site_perl ] && _append_path '/usr/bin/site_perl'
+  [ -d /usr/bin/vendor_perl ] && _append_path '/usr/bin/vendor_perl'
+  [ -d /usr/bin/core_perl ] && _append_path '/usr/bin/core_perl'
 
   export PATH
 
   pushd "$srcdir"
 
-    pushd "cli-$pkgver"
+    pushd "cli"
 
       # install packaging tools; install fails now unless installed with yarn >:(
       yarn install
@@ -65,7 +66,7 @@ prepare() {
         pushd dist/heroku-v$pkgver/
 
           # move package source to src root
-          mv -f ./heroku-v$pkgver-linux-x64.tar.xz $srcdir/
+          mv -f ./heroku-v$pkgver-linux-x64.tar.xz "$srcdir"/
 
         popd
 
@@ -93,22 +94,21 @@ prepare() {
   popd
 }
 
-
 package() {
   install -dm755 "$pkgdir/usr/lib/heroku"
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
   herokulibdir="$pkgdir/usr/lib"
-  for foundherokudir in $(find "$srcdir/heroku" -mindepth 1 -type d) ; do
+  for foundherokudir in $(find "$srcdir/heroku" -mindepth 1 -type d); do
     herokuinstalldir="${foundherokudir/$srcdir/$herokulibdir}"
     install -dm755 "$herokuinstalldir"
   done
 
-  for foundherokufile in $(find "$srcdir/heroku" -mindepth 1 -type f) ; do
+  for foundherokufile in $(find "$srcdir/heroku" -mindepth 1 -type f); do
     herokuinstallperm=$(stat -c "%a" "$foundherokufile")
     herokuinstallfile="${foundherokufile/$srcdir/$herokulibdir}"
-    install -Dm$herokuinstallperm "$foundherokufile" "$herokuinstallfile"
+    install -Dm"$herokuinstallperm" "$foundherokufile" "$herokuinstallfile"
     case $foundherokufile in
         (*/plugin-autocomplete/autocomplete/bash/*.bash)
             _complete_target="${foundherokufile##*/}"
@@ -120,5 +120,8 @@ package() {
   done
 
   ln -sf "../../../lib/heroku/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-  ln -sf "../../lib/heroku/bin/run" "$pkgdir/usr/bin/heroku"
+  ln -sf "../lib/heroku/bin/run" "$pkgdir/usr/bin/heroku"
+
+  # Remove empty directories
+  find "${pkgdir}" -type d -empty -delete
 }
