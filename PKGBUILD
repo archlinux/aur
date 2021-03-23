@@ -4,15 +4,15 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify
-pkgver=1.1.55.494
+pkgver=1.1.55.498
 epoch=1
-_commit=gca75f788
+_commit=gf9a83c60
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
-depends=('alsa-lib>=1.0.14' 'gtk2' 'libsystemd' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk')
+depends=('alsa-lib>=1.0.14' 'gtk3' 'libsystemd' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk')
 depends_x86_64=('libcurl-gnutls')
 depends_i686=('libcurl-compat')
 optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
@@ -36,8 +36,8 @@ sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb43
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
             'SKIP'
             'SKIP')
-sha512sums_x86_64=('95938ac1170c8cccb9fde836659e84b82391513bbd55d228d496bb3562b0e5ea567b4956aeacf379e76e4569e4b6d5060a5f21db0ce76c0a6908b2f4323d7fd6'
-                   'e202d266a57dc4ad5300aaa1336e920bb1cd56c1814542aaf2ff113265fb0bd565ad686502bed2b9a23a9229511055b9967f426c93da788e1a6c65ef89a98bb5')
+sha512sums_x86_64=('395806fc064706cc6b005054ec0f5e0a9b0cebfa073ccb771b7e8cb2f6c8aa300efe9164e492f90f4c83d047a898f6553c44722562d8f3e1462947d811a2e599'
+                   '674ae1c6d8d8cfee67369f83da936db6004468f4b8cd72c6ea190a4b68d3960f3d8c7d19f5d13eb6a381e1773b2f2c200096acb2316e65786cf1d9e519c49c38')
 validpgpkeys=('8FD3D9A8D3800305A9FFF259D1742AD60D811D58') # Spotify <tux@spotify.com>
 # Old Keys:
 # 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
