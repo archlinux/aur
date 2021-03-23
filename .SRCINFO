@@ -1,0 +1,15 @@
+pkgbase = python-inkscape-figures
+	pkgdesc = Script for managing inkscape figures
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://pypi.org/project/inkscape-figures
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = rofi
+	source = https://files.pythonhosted.org/packages/source/i/inkscape-figures/inkscape-figures-1.0.8.tar.gz
+	sha256sums = 49ced7335a64f2dba4ff3f57f24a7ebd792674395631a248e0edcbe8e6196f32
+
+pkgname = python-inkscape-figures
+
