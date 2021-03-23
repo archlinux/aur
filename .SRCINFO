@@ -1,6 +1,6 @@
 pkgbase = python-yqxx
 	pkgdesc = Auto submitter for xg.hit.edu.cn yqxx
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/billchenchina/yqxx
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-yqxx
 	depends = python-requests
 	depends = python-yaml
 	depends = python-hitutil
-	source = https://files.pythonhosted.org/packages/source/y/yqxx/yqxx-0.4.0.tar.gz
-	sha256sums = fe19e7a0f2dd92923460c6bb7abe8c1304a158bc8bb3a2f0373801b4da2dc209
+	source = https://files.pythonhosted.org/packages/source/y/yqxx/yqxx-0.4.1.tar.gz
+	sha256sums = 3f28a961276892718c16f2fce3106409119b121736e53d3907c41c7729681f7d
 
 pkgname = python-yqxx
 
