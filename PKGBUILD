@@ -1,7 +1,7 @@
 # Maintainer: Andrew Crerar <crerar@archlinux.org>
 pkgbase=gtk4-git
 pkgname=(gtk4-git gtk-update-icon-cache-git)
-pkgver=4.1.2.r80.g48f87c1eea
+pkgver=4.1.2.r108.gb539c92312
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
@@ -70,7 +70,7 @@ build() {
 
 package_gtk4-git() {
   depends+=('gtk-update-icon-cache-git')
-  provides+=('libgtk-4.so')
+  provides+=('gtk4')
   conflicts=('gtk4')
 
   DESTDIR="$pkgdir" meson install -C build
@@ -88,7 +88,7 @@ package_gtk-update-icon-cache-git() {
   pkgdesc="GTK icon cache updater"
   depends=('gdk-pixbuf2' 'librsvg' 'hicolor-icon-theme')
   conflicts=('gtk-update-icon-cache')
-  provides=('gtk-update-icon-cache')
+  provides+=('gtk-update-icon-cache')
 
   mv -t "$pkgdir" guic/*
   ln -s gtk4-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
