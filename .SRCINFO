@@ -1,7 +1,7 @@
 pkgbase = python-awesomeversion
 	pkgdesc = One version package to rule them all.
 	pkgver = 21.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ludeeus/awesomeversion
 	arch = any
 	license = MIT
