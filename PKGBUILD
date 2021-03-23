@@ -3,7 +3,7 @@
 
 _basepkg="lightdm-webkit-theme-litarvan"
 pkgname="${_basepkg}-git"
-pkgver=3.0.0.r7.g9745227
+pkgver=3.1.0.r22.g775b717
 pkgrel=1
 pkgdesc='Modern and full-featured LightDM theme'
 arch=('any')
