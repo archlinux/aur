@@ -1,7 +1,7 @@
 # Maintainer: John Downey <jdowney@gmail.com>
 pkgname=smug
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A session manager for tmux written in Go'
 arch=('x86_64')
 url="https://github.com/ivaaaan/smug"
@@ -17,8 +17,7 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build
+  go build -o build -buildmode=pie -trimpath -ldflags="-X=main.version=$pkgver -linkmode=external" -mod=readonly -modcacherw
 }
 
 check() {
