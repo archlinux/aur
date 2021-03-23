@@ -13,8 +13,15 @@ depends=(libvorbis libpng sdl2)
 makedepends=()
 _base=mzx${pkgver/.}
 _filename=${_base}src.tar.xz
-_sha256sum=239bac1ed064ab2c08679116c25cf5fea49a337dd3835ad0bf661de1663339bc
+
+# To get the _rid from upstream, look at the last page of
+# https://www.digitalmzx.com/search.php?browse=4&desc=recordReleaseDate.
+# Look for the "Source Code" download.
 _rid=2610
+
+# To get the _sha256sum from upstream, open the link from the table in the step
+# above, and look at the target of the download link in the sidebar on the left.
+_sha256sum=239bac1ed064ab2c08679116c25cf5fea49a337dd3835ad0bf661de1663339bc
 
 # download.php URL: Identifies the download using the Megazeux version.
 #source=("${_filename}::https://www.digitalmzx.com/download.php?latest=src&ver=${pkgver}")
