@@ -2,7 +2,7 @@
 
 pkgname=dogehouse
 pkgver=1.0.19
-pkgrel=9
+pkgrel=10
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
