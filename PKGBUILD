@@ -3,7 +3,7 @@
 pkgname=prometheus-apcupsd-exporter
 _pkgname=apcupsd_exporter
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Prometheus exporter for apcupsd metrics"
 arch=(x86_64)
 url="https://github.com/mdlayher/apcupsd_exporter"
@@ -21,6 +21,11 @@ b2sums=('1088e2ea94566b68ed021216d62d405e802ffd575c6ea26f9ebd6d2910091876d80a19e
 
 prepare() {
   cd "$_pkgname-$pkgver"
+
+  # create folder for build output
+  mkdir build
+
+  # download dependencies
   go mod vendor
 }
 
@@ -37,7 +42,12 @@ build() {
     -X github.com/prometheus/common/version.Branch=tarball \
     -X github.com/prometheus/common/version.BuildUser=someone@builder \
     -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)" \
-    github.com/mdlayher/apcupsd_exporter/cmd/apcupsd_exporter
+    -o build ./cmd/...
+}
+
+check() {
+  cd "$_pkgname-$pkgver"
+  go test ./...
 }
 
 package() {
@@ -49,7 +59,7 @@ package() {
   cd "$_pkgname-$pkgver"
 
   # binary
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "build/$_pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # license
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$_pkgname-$pkgver/LICENSE.md"
