@@ -2,10 +2,10 @@
 
 pkgname=userrepository-mirrorlist
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Userrepository.eu mirror list for pacman"
 arch=('any')
-url="https://raw.githubusercontent.com/brunomiguel/userrepository-mirrorlist/main/"
+url="https://github.com/brunomiguel/userrepository-mirrorlist"
 license=('GPL3')
 backup=(etc/pacman.d/userrepository-mirrorlist)
 source=(mirrorlist)

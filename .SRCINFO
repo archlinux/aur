@@ -1,8 +1,8 @@
 pkgbase = userrepository-mirrorlist
 	pkgdesc = Userrepository.eu mirror list for pacman
 	pkgver = 0.0.2
-	pkgrel = 2
-	url = https://raw.githubusercontent.com/brunomiguel/userrepository-mirrorlist/main/
+	pkgrel = 3
+	url = https://github.com/brunomiguel/userrepository-mirrorlist
 	install = userrepository.install
 	arch = any
 	license = GPL3
