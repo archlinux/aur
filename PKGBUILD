@@ -2,15 +2,15 @@
 
 pkgname=libsquish
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='DXT compression library'
 depends=('gcc-libs')
 makedepends=('cmake')
 arch=('i686' 'x86_64')
-url='http://sourceforge.net/projects/libsquish/'
+url='https://sourceforge.net/projects/libsquish/'
 license=('MIT')
 source=("http://downloads.sourceforge.net/project/libsquish/libsquish-${pkgver}.tgz")
-md5sums=('c02645800131e55b519ff8dbe7284f93')
+sha256sums=('628796eeba608866183a61d080d46967c9dda6723bc0a3ec52324c85d2147269')
 
 build() {
   rm -rf "$srcdir/build" && mkdir -p "$srcdir/build" && cd "$srcdir/build"
