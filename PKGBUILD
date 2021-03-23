@@ -2,7 +2,7 @@
 
 _pkgname=fasm
 pkgname="python-$_pkgname-git"
-pkgver=0.0.r86.gbae2e6d
+pkgver=0.0.2.r67.gaf39a4f
 pkgrel=2
 pkgdesc="FPGA Assembly (FASM) Parser and Generation library"
 arch=(x86_64)
