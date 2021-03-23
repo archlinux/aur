@@ -4,15 +4,15 @@
 
 pkgname=endless-sky
 pkgver=0.9.12
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
-url="http://endless-sky.github.io/"
+url="https://endless-sky.github.io/"
 depends=(openal libpng glew hicolor-icon-theme libjpeg-turbo sdl2 libmad)
 makedepends=(scons)
 optdepends=('endless-sky-high-dpi: high resolution graphics assets'
             'endless-sky-editor: map editor')
 license=('GPL3' 'CCPL' 'custom:public domain')
-pkgdesc="A space exploration and combat game similar to Escape Velocity"
+pkgdesc="A sandbox-style space exploration and combat game"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/endless-sky/endless-sky/archive/v${pkgver}.tar.gz"
         "0001-fix-Add-missing-string-include.patch")
 sha512sums=('694d3c6f50f80e8b4ff79580fa9510fde26a846dd227736af96a3eda7810d68b2ae051a72c0e02fe88eae9d839e48933614aa172a9bed6653e03ad30feaddc05'
@@ -26,7 +26,6 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  # remove -jnproc for reproducible builds
   scons -j "$(nproc)"
 }
 
@@ -34,7 +33,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  # Install executable
+  # binary
   install -Dm755 -t "${pkgdir}/usr/bin" endless-sky
 
   # resources
@@ -48,7 +47,7 @@ package() {
   # icons
   for res in 16 22 24 32 48 128 256 512; do
     install -Dm644 \
-      "${srcdir}/${pkgname}-${pkgver}/icons/icon_${res}x${res}.png" \
+      "icons/icon_${res}x${res}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
   done
 
@@ -56,7 +55,7 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/man/man6" endless-sky.6
 
   # copyright
-  install -Dm644 copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" copyright
 }
 
 # vim:set ts=2 sw=2 et:

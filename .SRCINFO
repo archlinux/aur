@@ -1,8 +1,8 @@
 pkgbase = endless-sky
-	pkgdesc = A space exploration and combat game similar to Escape Velocity
+	pkgdesc = A sandbox-style space exploration and combat game
 	pkgver = 0.9.12
-	pkgrel = 2
-	url = http://endless-sky.github.io/
+	pkgrel = 3
+	url = https://endless-sky.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL3
