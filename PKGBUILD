@@ -2,7 +2,7 @@
 pkgbase=python-sphinx-prompt
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Sphinx directive to add unselectable prompt"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 #'python-sphinx')
 checkdepends=('python-sphinx' 'python-pygments')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('66c0f4a1e0ba2f7f0e1864e599e7bd2d')
+md5sums=('4b217991abf068ce9e22cf10393faf56')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}

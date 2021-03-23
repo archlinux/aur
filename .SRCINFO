@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-prompt
 	pkgdesc = Sphinx directive to add unselectable prompt
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sbrunner/sphinx-prompt
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python-sphinx-prompt
 	checkdepends = python-sphinx
 	checkdepends = python-pygments
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-prompt/sphinx-prompt-1.3.0.tar.gz
-	md5sums = 66c0f4a1e0ba2f7f0e1864e599e7bd2d
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-prompt/sphinx-prompt-1.4.0.tar.gz
+	md5sums = 4b217991abf068ce9e22cf10393faf56
 
 pkgname = python-sphinx-prompt
 	depends = python-sphinx
