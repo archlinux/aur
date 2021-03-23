@@ -4,7 +4,7 @@
 pkgname=lite-xl
 _pkgname=lite
 pkgver=1.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
 url="https://github.com/franko/$pkgname"
@@ -13,11 +13,8 @@ depends=('agg' 'lua52' 'sdl2')
 makedepends=('meson' 'gendesk')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	# credits to 6r1d  for the svg icon
-	"$pkgname.svg.zip::https://github.com/rxi/lite/files/4716765/lite.svg.zip")
-sha256sums=('2f02e0460bd628f068461c5098a4c651cbfc6471b0c41f0b6252aa9e4a9dbe8d'
-            '504d2ccd74f1c5b631b5b83a4f4319c74edb705fc383b3058f4b2d9354093b53')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('2f02e0460bd628f068461c5098a4c651cbfc6471b0c41f0b6252aa9e4a9dbe8d')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -44,7 +41,7 @@ package() {
 
   DESTDIR="$pkgdir" meson install -C build
   
-  install -Dm 644 "../$_pkgname.svg" \
+  install -Dm 644 "dev-utils/$_pkgname.svg" \
 	"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm 644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
