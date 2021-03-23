@@ -2,9 +2,9 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
-_build=90
+
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -18,13 +18,13 @@ optdepends=('libreoffice: for OpenSymbol fonts'
 provides=('onlyoffice')
 conflicts=('onlyoffice')
 options=('!strip' '!emptydirs')
-source=("https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${pkgver}/onlyoffice-desktopeditors_${pkgver}-${_build}_amd64.deb")
+source=("https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${pkgver}/onlyoffice-desktopeditors_amd64.deb")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('4d468408284cdc6c6d079e3fccd20a8d1228727031a4154aed7b17df3edaabca')
+sha256sums=('9ca996c5a555ba5feb183221deef730a92aeed4d279ab9ed1457fdeb1432cdd8')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
-    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors_${pkgver}-${_build}_amd64.deb" -C "onlyoffice-${pkgver}"
+    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors_amd64.deb" -C "onlyoffice-${pkgver}"
 }
 
 package() {
