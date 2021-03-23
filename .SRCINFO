@@ -1,6 +1,6 @@
 pkgbase = flutter
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://flutter.io
 	install = flutter.install
@@ -24,10 +24,10 @@ pkgbase = flutter
 	options = !emptydirs
 	backup = opt/flutter/packages/flutter_test/pubspec.yaml
 	backup = opt/flutter/packages/flutter/pubspec.yaml
-	source = flutter-2.0.1.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.1-stable.tar.xz
+	source = flutter-2.0.3.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.3-stable.tar.xz
 	source = flutter.sh
 	source = flutter.csh
-	sha256sums = 7938e7c78cd277fcf2f01291cd590b9d5adb0c4342763044c9d9678901829241
+	sha256sums = 95c5045d0739187d961d24b7315e562d6b998c6ef7665aab7f199d3b2f1b4691
 	sha256sums = 1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a
 	sha256sums = 7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f
 
