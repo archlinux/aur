@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-bootswatch
+	pkgdesc = bootswatch 3.3.7 (XStatic packaging standard)
+	pkgver = 3.3.7.0
+	pkgrel = 1
+	url = http://bootswatch.com/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-bootswatch/XStatic-bootswatch-3.3.7.0.tar.gz
+	md5sums = 422f09e076ff1741b76a9f7554ceca32
+	sha256sums = 93ee5863c1ec07212fe12ae137a10708b4102720391d460f061dd3f441ba3b6e
+	sha512sums = 507888801c921e0686868ae4a8d2fcb9245c4d644afe51bc838cfaef8136a2badc2534d58bda03753511a05d82e40213f74d31fc25e389a3f79ee3961999d43f
+
+pkgname = python-xstatic-bootswatch
+
+pkgname = python2-xstatic-bootswatch
+
