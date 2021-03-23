@@ -1,11 +1,10 @@
 pkgbase = xd-torrent
 	pkgdesc = An I2P BitTorrent client
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xd-torrent.github.io/
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = go
 	depends = glibc
 	backup = etc/xd.conf
