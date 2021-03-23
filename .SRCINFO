@@ -7,8 +7,10 @@ pkgbase = the-rock
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
+	makedepends = gzip
 	depends = ncurses
 	conflicts = the-rock-git
+	conflicts = bible-kjv
 	source = https://gitlab.com/NoahJelen/the-rock/-/archive/0.1.1/the-rock-0.1.1.zip
 	md5sums = SKIP
 

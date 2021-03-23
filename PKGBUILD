@@ -8,9 +8,9 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/NoahJelen/the-rock"
 license=('GPL')
 depends=('ncurses')
-makedepends=('cargo')
+makedepends=('cargo' 'gzip')
 source=("https://gitlab.com/NoahJelen/the-rock/-/archive/0.1.1/the-rock-0.1.1.zip")
-conflicts=('the-rock-git')
+conflicts=('the-rock-git' 'bible-kjv')
 md5sums=('SKIP')
 
 build() {
