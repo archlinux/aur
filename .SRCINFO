@@ -1,6 +1,6 @@
 pkgbase = atomic-tweetdeck
 	pkgdesc = Just a small Electron TweetDeck app.
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/dogancelik/atomic-tweetdeck
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = atomic-tweetdeck
 	depends = libxss
 	depends = nss
 	depends = alsa-lib
-	source = atomic-tweetdeck-linux-x64_0.17.0.tgz::https://github.com/dogancelik/atomic-tweetdeck/releases/download/v0.17.0/atomic-tweetdeck-linux-x64.tgz
+	source = atomic-tweetdeck-linux-x64_0.17.1.tgz::https://github.com/dogancelik/atomic-tweetdeck/releases/download/v0.17.1/atomic-tweetdeck-linux-x64.tgz
 	source = atomic-tweetdeck.desktop
-	md5sums = 5bc82b36c347b328a41db9fec5036b48
+	md5sums = c66c3357d8f387be8e66ec8b2d230695
 	md5sums = 6d0350843795b0e996d159e5dd6607bf
 
 pkgname = atomic-tweetdeck
