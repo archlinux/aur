@@ -1,8 +1,8 @@
 # Maintainer: Isaac Mills <rooster0055@protonmail.com>
 
 pkgname=dogehouse
-pkgver=latest
-pkgrel=3
+pkgver=1.0.19
+pkgrel=4
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
