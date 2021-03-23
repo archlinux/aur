@@ -1,7 +1,7 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=blocky-bin
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc='Fast and lightweight DNS proxy as ad-blocker'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -19,10 +19,10 @@ source_armv7h=("https://github.com/0xERR0R/blocky/releases/download/v${pkgver}/b
 sha256sums=('3fec7b35def7cdc5f9d296b3fc70b40f0c2af189b3b4d54ee5867a2dee007bdb'
             '61b5efedf88a95fd2bde8f69fce8a3692bcff29cab4b218603b376a5509accc5'
             '8ef3cfa71ee8d2ad427dc5d83df7967a6b3e6e1dfafaec8cb4520e7269c2471b')
-sha256sums_x86_64=('a128f30ed8d6cdca4a21a70d6e250fe15812796a951329092e428a45a8db35b1')
-sha256sums_aarch64=('0aa21ef80f73f4f0c399f81a592317d9ed1d9b164181474a4d160934923bef3e')
-sha256sums_armv7h=('af3faa35f923d84f8053627566dd252d46579e5fcc0a88c8c80d229ce1dabfe8')
-sha256sums_armv6h=('af3faa35f923d84f8053627566dd252d46579e5fcc0a88c8c80d229ce1dabfe8')
+sha256sums_x86_64=('00178cc57d8fbbf8bd9d7d16c0825151a8482fa22aae0a7739903c79ab3043f2')
+sha256sums_aarch64=('b66eb3f68fa5d6890da9b454626a6b4af78bb9f871937ef21c0d447e638cd2c7')
+sha256sums_armv7h=('abcfca7958831c6f58ad070cdc6095ff5672da903aec5fcf17d09fc2fe3b7858')
+sha256sums_armv6h=('abcfca7958831c6f58ad070cdc6095ff5672da903aec5fcf17d09fc2fe3b7858')
 
 package() {
         cd "$src"
