@@ -1,21 +1,21 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 _pkgname=autopsy
 pkgname=${_pkgname}-bin
-pkgver=4.17.0
-pkgrel=2
+pkgver=4.18.0
+pkgrel=1
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
 license=('Apache-2.0')
-_skver=4.10.1
-depends=(java-runtime=8 testdisk sleuthkit 'sleuthkit-java=4.10.1' java8-openjfx)
+_skver=4.10.2
+depends=(java-runtime=8 testdisk sleuthkit "sleuthkit-java=${_skver}" java8-openjfx)
 makedepends=()
 optdepends=('opencv: media files (64-bit)'
 			'perl-parse-registry: regripper')
 source=(
 	https://github.com/sleuthkit/${_pkgname}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.zip
 	Autopsy.desktop)
-sha512sums=('2a720a351755bd44ba71f08e1422800663fe2805faee53279fe30dedb0221c61107c0ac7c90e1bde92949dd71a6fccfcbd89e23db14867bc107ec29679c86f68'
+sha512sums=('9e9f1aa49585109b26606e71b7c45ecce691eeb85afebc28f3b84bfd64f09a235e05d9c04a47f296c1df959b5eb901f0d49fd66142b2c48a8963d6a0bb7bf1f3'
             'd209bc1947eccaee7520243e8f8ce81daa71404e547a671eec7ca9e95572e305ae75db8058784631ac721c7612de405347be2b4d3124f324c06af9efb6dd82a7')
 
 prepare() {
@@ -29,25 +29,25 @@ prepare() {
 package() {
   cd "${_pkgname}-${pkgver}"
 
-  mkdir -p "${pkgdir}"/opt/${_pkgname}
-  cp -r * $pkgdir/opt/${_pkgname}/
+  install -d "${pkgdir}/opt/${_pkgname}"
+  cp -r * "$pkgdir/opt/${_pkgname}/"
 
   # copy sleuthkit jar into autopsy
   rm -f $pkgdir/opt/${_pkgname}/${_pkgname}/modules/ext/sleuthkit-${_skver}.jar
   ln -s /usr/share/java/sleuthkit-${_skver}.jar $pkgdir/opt/${_pkgname}/${_pkgname}/modules/ext/sleuthkit-${_skver}.jar
 
   # overwrite bin/autopsy with proper permissions
-  install -m755 bin/autopsy $pkgdir/opt/${_pkgname}/bin/autopsy
+  install -m755 bin/autopsy "$pkgdir/opt/${_pkgname}/bin/autopsy"
 
   # symlink to executable
-  mkdir -p $pkgdir/usr/bin
+  install -d "$pkgdir/usr/bin"
   ln -sr $pkgdir/opt/${_pkgname}/bin/autopsy $pkgdir/usr/bin/autopsy
 
-  mkdir -p $pkgdir/usr/share/pixmaps
-  cp icon.ico $pkgdir/usr/share/pixmaps/autopsy.ico
+  install -d "$pkgdir/usr/share/pixmaps"
+  install -Dm0644 icon.ico $pkgdir/usr/share/pixmaps/autopsy.ico
 
-  mkdir -p $pkgdir/usr/share/applications
-  install -Dm644 $srcdir/Autopsy.desktop $pkgdir/usr/share/applications
+  install -d "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/Autopsy.desktop" "$pkgdir/usr/share/applications"
 
-  install -Dm 644 LICENSE-2.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 'LICENSE-2.0.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
