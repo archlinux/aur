@@ -2,7 +2,7 @@
 
 pkgname=timescaledb-parallel-copy
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for parallel copying of CSV data into a TimescaleDB hypertable"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-parallel-copy"
@@ -14,19 +14,22 @@ b2sums=('1865dec51c3446fe32d62290cb268b6cb61fa405acb7bbc314984b25c381bacabe04f2c
 
 prepare() {
   cd "$pkgname-$pkgver"
+  mkdir -p build
   go mod vendor
 }
 
 build() {
-  cd "$pkgname-$pkgver/cmd/timescaledb-parallel-copy"
+  cd "$pkgname-$pkgver"
   go build -v \
     -buildmode=pie \
     -trimpath \
     -mod=vendor \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}"
+    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
+    -o build \
+    ./cmd/...
 }
 
 package() {
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname-$pkgver/cmd/timescaledb-parallel-copy/timescaledb-parallel-copy"
+  install -Dm755 -t "$pkgdir/usr/bin" "$pkgname-$pkgver/build/$pkgname"
 }

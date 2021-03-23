@@ -1,7 +1,7 @@
 pkgbase = timescaledb-parallel-copy
 	pkgdesc = A tool for parallel copying of CSV data into a TimescaleDB hypertable
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timescale/timescaledb-parallel-copy
 	arch = x86_64
 	license = Apache
