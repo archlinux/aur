@@ -12,11 +12,11 @@ source=("git+https://github.com/raptor8134/xbacklight-auto.git")
 md5sums=('SKIP')
 
 build() {
-	cd $pkgbase
+	cd ${srcdir}/${pkgbase}
 	make
 }
 
 package() {
-	cd $pkgbase
-	make DESTDIR="$pkgdir/" install
+	cd ${srcdir}/${pkgbase}
+	make DESTDIR="${pkgdir}/" install
 }
