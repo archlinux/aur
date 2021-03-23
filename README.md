@@ -53,7 +53,7 @@ http
         location /
         {
             # Proxy
-            proxy_pass          http://localhost:528;
+            proxy_pass          http://localhost:5285;
             proxy_http_version  1.1;
             proxy_set_header    Host $host;
             proxy_set_header    Upgrade $http_upgrade;
