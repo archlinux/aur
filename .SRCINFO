@@ -1,11 +1,12 @@
 pkgbase = burpsuite-pro
 	pkgdesc = An integrated platform for performing security testing of web applications (professional edition)
 	pkgver = 2021.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://portswigger.net/burp/
 	install = burpsuite-pro.install
 	arch = any
 	license = custom
+	makedepends = zip
 	depends = java-runtime>=9
 	noextract = burpsuite-pro-2021.3.2.jar
 	source = burpsuite-pro-2021.3.2.jar::https://portswigger.net/burp/releases/download?product=pro&version=2021.3.2&type=Jar
