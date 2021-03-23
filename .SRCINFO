@@ -1,0 +1,17 @@
+pkgbase = python-django-discover-runner
+	pkgdesc = A Django test runner based on unittest2's test discovery.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/jezdez/django-discover-runner
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	source = https://pypi.io/packages/source/d/django-discover-runner/django-discover-runner-1.0.tar.gz
+	md5sums = 23d377cdcc5f1c2e1bcc5b508e6da4a7
+	sha256sums = 0ba91fe722c256bcbfdeb36fac7eac0f27e5bfda55d98c4c1cf9ab62b5b084fe
+	sha512sums = 669287ed7f801dbfe949e2affd9ee1861aa6a41fcc2e2403dc2e106dee3d23c8400d686ef750242bdc74d23eaf316fcf36071c82d7c458ff724305e5fe27410e
+
+pkgname = python-django-discover-runner
+
