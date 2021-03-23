@@ -3,10 +3,10 @@
 
 pkgname='endless-sky-git'
 _gitname='endless-sky'
-pkgver=0.9.12.r3.g6b705fd87
+pkgver=0.9.12.r767.g1af961037
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://endless-sky.github.io/"
+url="https://endless-sky.github.io/"
 provides=('endless-sky')
 depends=('openal' 'hicolor-icon-theme' 'libjpeg-turbo' 'libmad' 'glew' 'libpng' 'sdl2')
 makedepends=('git' 'scons')
@@ -14,31 +14,28 @@ optdepends=('endless-sky-high-dpi: high resolution graphics assets'
             'endless-sky-editor: map editor')
 conflicts=('endless-sky')
 license=('GPL3' 'CCPL' 'custom:public domain')
-pkgdesc="A space exploration and combat game similar to Escape Velocity"
+pkgdesc="A sandbox-style space exploration and combat game"
 source=("${_gitname}::git+https://github.com/endless-sky/endless-sky.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-    # cutting off 'v' prefix that presents in the git tag
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
+  cd "$_gitname"
   scons -j "$(nproc)"
 }
 
 package() {
-  cd $_gitname
+  cd "$_gitname"
 
-  # Install executable
+  # binary
   install -Dm755 -t "${pkgdir}/usr/bin" endless-sky
 
   # resources
-  ## They explicitly want this path. Although one could workaround with '-r' param
-  install -Dm644 -t "${pkgdir}/usr/share/games/${_gitname}" credits.txt
-  install -Dm644 -t "${pkgdir}/usr/share/games/${_gitname}" keys.txt
+  install -Dm644 -t "${pkgdir}/usr/share/games/${_gitname}" credits.txt keys.txt
   cp -rf data images sounds "${pkgdir}/usr/share/games/${_gitname}/"
 
 
@@ -56,7 +53,7 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/man/man6" endless-sky.6
 
   # copyright
-  install -Dm644 copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" copyright
 }
 
 # vim:set ts=2 sw=2 et:
