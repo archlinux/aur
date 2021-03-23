@@ -1,4 +1,4 @@
-# Maintainer: Wang Ruochen <aur@ruo-chen.wang>
+# Maintainer: Wang Ruochen <arch@ruo-chen.wang>
 pkgname=interception-caps2esc-nocaps-git
 _pkgname=interception-caps2esc
 pkgver=0.1.3.r4.g339f645
