@@ -1,14 +1,14 @@
 pkgbase = dovecot-xaps-daemon
 	pkgdesc = iOS Push Email for Dovecot - xaps daemon
-	pkgver = 0.9
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/freswa/dovecot-xaps-daemon
 	arch = x86_64
 	license = custom:MIT
 	makedepends = go
 	backup = etc/xapsd/xapsd.yaml
-	source = https://github.com/freswa/dovecot-xaps-daemon/archive/v0.9/dovecot-xaps-daemon-0.9.tar.gz
-	b2sums = 7c135e0f8981627e5f17d8f919323024eab68e119b5fca56e38c65071c853a1563462b63512475b2d0ab424bb79bc79ab3ed2174fdbbda92c8154db1dab59b39
+	source = https://github.com/freswa/dovecot-xaps-daemon/archive/v1.0/dovecot-xaps-daemon-1.0.tar.gz
+	b2sums = 75467f6d860e4324db5e226979d52eca68b7f7b647c1e02ae25cdb439b33903d4f3ad8de5aa6fb9741e92a1c17ab1614cda0b54ef5d70938a57021242fe016ec
 
 pkgname = dovecot-xaps-daemon
 
