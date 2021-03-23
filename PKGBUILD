@@ -2,7 +2,7 @@
 
 pkgname=timescaledb-tune
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for tuning TimescaleDB for better performance"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-tune"
@@ -14,19 +14,22 @@ b2sums=('e3898ce8b30f833865ec7e11974c0f199389e21ad24d48885c395091342e10c1d249ecb
 
 prepare() {
   cd "$pkgname-$pkgver"
+  mkdir build
   go mod vendor
 }
 
 build() {
-  cd "$pkgname-$pkgver/cmd/timescaledb-tune"
+  cd "$pkgname-$pkgver"
   go build -v \
     -buildmode=pie \
     -trimpath \
     -mod=vendor \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}"
+    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
+    -o build \
+    ./cmd/...
 }
 
 package() {
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname-$pkgver/cmd/timescaledb-tune/timescaledb-tune"
+  install -Dm755 -t "$pkgdir/usr/bin" "$pkgname-$pkgver/build/$pkgname"
 }

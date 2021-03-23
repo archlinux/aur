@@ -1,7 +1,7 @@
 pkgbase = timescaledb-tune
 	pkgdesc = A tool for tuning TimescaleDB for better performance
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timescale/timescaledb-tune
 	arch = x86_64
 	license = Apache
