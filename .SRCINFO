@@ -1,15 +1,15 @@
 pkgbase = dovecot-xaps-plugin
 	pkgdesc = iOS Push Email for Dovecot - dovecot plugin
-	pkgver = 0.8
-	pkgrel = 3
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/freswa/dovecot-xaps-plugin
 	arch = x86_64
 	license = custom:MIT
 	makedepends = cmake
 	depends = dovecot
 	depends = dovecot-xaps-daemon
-	source = https://github.com/freswa/dovecot-xaps-plugin/archive/v0.8/dovecot-xaps-plugin-0.8.tar.gz
-	b2sums = 1b2483d8de3b47672e5b78ea83865c8282459aaa9d40a16ca1238761766dd59e2c94c760dab26c3f213b85c5f80b02bc2c867add37e951b92c6619aeb6c5687e
+	source = https://github.com/freswa/dovecot-xaps-plugin/archive/v1.0/dovecot-xaps-plugin-1.0.tar.gz
+	b2sums = 15fc1d5461c9c02a9d0f2d77618a7b94be6eebdcf4536b9ef2d0f09bc76c91665cff0a7d5bd603b74a3c73241199836cd9be04ae38ed959b0b83a47ab53371c3
 
 pkgname = dovecot-xaps-plugin
 

@@ -1,8 +1,8 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=dovecot-xaps-plugin
-pkgver=0.8
-pkgrel=3
+pkgver=1.0
+pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - dovecot plugin'
 arch=('x86_64')
 url='https://github.com/freswa/dovecot-xaps-plugin'
@@ -10,7 +10,7 @@ license=('custom:MIT')
 depends=('dovecot' 'dovecot-xaps-daemon')
 makedepends=('cmake')
 source=("https://github.com/freswa/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('1b2483d8de3b47672e5b78ea83865c8282459aaa9d40a16ca1238761766dd59e2c94c760dab26c3f213b85c5f80b02bc2c867add37e951b92c6619aeb6c5687e')
+b2sums=('15fc1d5461c9c02a9d0f2d77618a7b94be6eebdcf4536b9ef2d0f09bc76c91665cff0a7d5bd603b74a3c73241199836cd9be04ae38ed959b0b83a47ab53371c3')
 
 build() {
   cd ${pkgname}-${pkgver}
