@@ -2,7 +2,7 @@
 # Maintainer: mvnsio
 pkgname=sidekick-browser-stable-bin
 pkgver=88.8.43.7638
-pkgrel=1
+pkgrel=2
 pkgdesc="Sidekick is a revolutionary new work OS based on the Chromium browser. Designed to be the ultimate online work experience, it brings together your team and every web tool you use – all in one interface"
 arch=('x86_64')
 url="https://www.meetsidekick.com/"
@@ -12,12 +12,18 @@ depends=('alsa-lib>=1.0.16' 'atk>=2.2.0' 'at-spi2-atk>=2.5.3' 'at-spi2-core>=2.9
 optdepends=('vulkan-icd-loader')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://api.meetsidekick.com/downloads/df/linux/deb")
-sha512sums_x86_64=('3cadb80eda8ba2f765cefc5340d5cf6a0e2d094a900f6473501320c6a188afc1a63b632a40f87205022961d75c73138e2c02edd812df7e72b2aeb87b2349c299')
+source=("https://api.meetsidekick.com/downloads/df/linux/deb")
+sha512sums=('3cadb80eda8ba2f765cefc5340d5cf6a0e2d094a900f6473501320c6a188afc1a63b632a40f87205022961d75c73138e2c02edd812df7e72b2aeb87b2349c299')
 
 package(){
+# Extract package data
+  tar xf data.tar.xz -C "${pkgdir}"
 
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-
+ # Install icons.
+  for _size in 16 24 32 48 64 128 256; do
+    case "${_size}" in
+      *) _branding="${pkgdir}/opt/meetsidekick.com/sidekick/" ;;
+    esac
+    install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/sidekick-browser.png"
+  done
 }
