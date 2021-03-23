@@ -1,7 +1,7 @@
 pkgbase = util-linux-aes
 	pkgdesc = Miscellaneous system utilities for Linux, with loop-AES support
 	pkgver = 2.36.2
-	pkgrel = 1.3
+	pkgrel = 1.4
 	url = https://github.com/karelzak/util-linux
 	install = util-linux-aes.install
 	arch = x86_64
@@ -55,7 +55,7 @@ pkgname = util-linux-aes
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
-	provides = util-linux
+	provides = util-linux=2.36
 	conflicts = rfkill
 	conflicts = util-linux
 	replaces = rfkill
@@ -75,7 +75,7 @@ pkgname = util-linux-libs-aes
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs
+	provides = util-linux-libs=2.36
 	conflicts = libutil-linux
 	conflicts = util-linux-libs
 	replaces = libutil-linux

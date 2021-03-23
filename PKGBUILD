@@ -10,7 +10,7 @@ pkgbase=util-linux-aes
 pkgname=(util-linux-aes util-linux-libs-aes)
 _pkgmajor=2.36
 pkgver=${_pkgmajor}.2
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -78,7 +78,7 @@ build() {
 
 package_util-linux-aes() {
   conflicts=('rfkill' "${_basename}")
-  provides=('rfkill' "${_basename}")
+  provides=('rfkill' "${_basename}=2.36")
   replaces=('rfkill')
   depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libsystemd.so'
            'libudev.so' 'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-aes'
@@ -139,7 +139,7 @@ package_util-linux-aes() {
 
 package_util-linux-libs-aes() {
   pkgdesc="util-linux runtime libraries"
-  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs")
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.36")
   conflicts=('libutil-linux' "${_basename}-libs")
   replaces=('libutil-linux')
 
