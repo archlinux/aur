@@ -1,8 +1,8 @@
 pkgbase = perl-libapreq2
 	pkgdesc = A safe, standards-compliant, high-performance library used for parsing HTTP cookies, query-strings and POST data.
-	pkgver = 2.15
+	pkgver = 2.16
 	pkgrel = 1
-	url = http://search.cpan.org/dist/libapreq2
+	url = https://metacpan.org/release/libapreq2
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,9 +10,9 @@ pkgbase = perl-libapreq2
 	depends = mod_perl
 	depends = apr-util
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SH/SHAY/libapreq2-2.15.tar.gz
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHAY/libapreq2-2.16.tar.gz
 	source = link-in-apr-shared-objects.patch
-	md5sums = 68c8c296e264e45aeeb2d30bd982aa62
+	md5sums = c0f4fbeee7514ea22a038933d0075f8e
 	md5sums = 4cee6d940e95aeb47dd503b8e8a1c7dd
 
 pkgname = perl-libapreq2

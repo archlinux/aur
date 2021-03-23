@@ -3,18 +3,18 @@
 # Maintainer: Tom K <tomk@runbox.com>
 
 pkgname=perl-libapreq2
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc="A safe, standards-compliant, high-performance library used for parsing HTTP cookies, query-strings and POST data."
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/dist/libapreq2"
+url="https://metacpan.org/release/libapreq2"
 options=('!emptydirs')
 depends=('mod_perl' 'apr-util')
 makedepends=('perl-extutils-xsbuilder')
 license=("GPL")
 source=(https://cpan.metacpan.org/authors/id/S/SH/SHAY/libapreq2-$pkgver.tar.gz
         link-in-apr-shared-objects.patch)
-md5sums=('68c8c296e264e45aeeb2d30bd982aa62'
+md5sums=('c0f4fbeee7514ea22a038933d0075f8e'
          '4cee6d940e95aeb47dd503b8e8a1c7dd')
 
 prepare() {
