@@ -2,7 +2,7 @@
 _pkgname=ccupdaterui
 pkgname="${_pkgname}-git"
 pkgver=r53.284721a
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Mod Updater UI for CrossCode"
 arch=(x86_64 i686)
 url="https://github.com/dmitmel/CCUpdaterUI"
@@ -23,20 +23,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# Copied from <https://github.com/archlinux/svntogit-community/blob/b138f41c77b5b911bdf6d14484163c48ea51ac0f/trunk/PKGBUILD#L37-L45>
-_fake_gopath_link() {
-  mkdir -p "${GOPATH}/src/${1%/*}"
-  rm -f "${GOPATH}/src/${1}"
-  ln -rsT "${2}" "${GOPATH}/src/${1}"
-}
+prepare() {
+  export GOPATH="${srcdir}/${pkgname}-gopath"
+  mkdir -p "$GOPATH"
 
-_fake_gopath_pushd() {
-  pushd  "${GOPATH}/src/${1}" >/dev/null
-}
+  cd "${srcdir}/${pkgname}"
 
-# Copied from <https://github.com/archlinux/svntogit-community/blob/b138f41c77b5b911bdf6d14484163c48ea51ac0f/trunk/PKGBUILD#L47-L49>
-_fake_gopath_popd() {
-  popd >/dev/null
+  rm -rf "vendor/" "go.mod" "go.sum"
+  cat > "go.mod" <<EOF
+module github.com/20kdc/CCUpdaterUI
+go 1.11
+replace github.com/CCDirectLink/CCUpdaterCLI => ../${pkgname}-ccupdatercli
+EOF
 }
 
 build() {
@@ -47,18 +45,15 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -ldflags=-s -ldflags=-w"
   export CGO_ENABLED=1
-  export GO111MODULE=off
+  export GO111MODULE=on
 
-  _fake_gopath_link github.com/20kdc/CCUpdaterUI "${pkgname}"
-  _fake_gopath_link github.com/CCDirectLink/CCUpdaterCLI "${pkgname}-ccupdatercli"
-
-  _fake_gopath_pushd github.com/20kdc/CCUpdaterUI
-  go get -v ./...
-  go build -v .
-  _fake_gopath_popd
+  cd "${srcdir}/${pkgname}"
+  go get -v
+  go build -v
 }
 
 package() {
+  export GOPATH="${srcdir}/${pkgname}-gopath"
   install -Dm755 "${GOPATH}/bin/CCUpdaterUI" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/${pkgname}/bindata/credits.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"

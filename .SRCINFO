@@ -1,7 +1,7 @@
 pkgbase = ccupdaterui-git
 	pkgdesc = Unofficial Mod Updater UI for CrossCode
 	pkgver = r53.284721a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dmitmel/CCUpdaterUI
 	arch = x86_64
 	arch = i686
