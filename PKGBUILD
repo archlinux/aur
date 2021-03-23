@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=obs-studio-tytan652
 pkgver=26.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. Built with Browser and VST plugins and some patches but without FTL and Python."
 # Why no FTL ? Because Mixer is dead
 # Why no Python ? Because it doesn't work out of the box with Python 3.9
