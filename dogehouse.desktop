@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Dogehouse
+Comment=Taking voice conversations to the moon
+GenericName=Social Media Clubhouse
+Exec=/usr/share/dogehouse/dogehouse %F
+Icon=dogehouse
+Type=Application
+StartupNotify=true
+StartupWMClass=Dogehouse
+Categories=Chat;Network;
+Keywords=social;devops;
