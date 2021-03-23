@@ -1,0 +1,31 @@
+pkgbase = wowlet-git
+	pkgdesc = a free Wownero desktop wallet
+	pkgver = 0.1.0.0.732f34b595
+	pkgrel = 1
+	url = https://git.wownero.com/wowlet/wowlet
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	depends = libunwind
+	depends = openssl
+	depends = readline
+	depends = pcsclite
+	depends = hidapi
+	depends = protobuf
+	depends = miniupnpc
+	depends = libgcrypt
+	depends = qrencode
+	depends = libsodium
+	depends = libpgm
+	depends = expat
+	depends = qt5-base
+	depends = qt5-websockets
+	depends = tor
+	source = wowlet-git::git+https://git.wownero.com/wowlet/wowlet
+	sha256sums = SKIP
+
+pkgname = wowlet-git
+
