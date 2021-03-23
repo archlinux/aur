@@ -1,0 +1,5 @@
+# Main repository
+# [userrepository]
+Server = https://userrepository.eu
+SigLevel = Optional TrustAll
+

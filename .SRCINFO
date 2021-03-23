@@ -1,0 +1,14 @@
+pkgbase = userrepository-mirrorlist
+	pkgdesc = Userrepository.eu mirror list for pacman
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = https://raw.githubusercontent.com/brunomiguel/userrepository-mirrorlist/main/
+	install = userrepository.install
+	arch = any
+	license = GPL3
+	backup = etc/pacman.d/userrepository-mirrorlist
+	source = mirrorlist
+	sha256sums = 5558c32995ca1ae359709cb63f9dafd57db64bc9ff11626b3e110c9e0d290599
+
+pkgname = userrepository-mirrorlist
+

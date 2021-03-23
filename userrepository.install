@@ -1,0 +1,38 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    RED="${BOLD}\e[1;31m"
+	local mesg=$1; shift
+	printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_install() {
+    msg "Thank you for installing userrepository.eu"
+    echo ""
+    msg "You can edit the mirror file at:"
+    echo ""
+    msg "/etc/pacman.d/userrepository-mirrorlist"
+    echo ""
+    msg "Userrepository is kindly hosted by Fosshost."
+    echo ""
+    msg "If you want to support this project,"
+    echo ""
+    msg "please donate to Fosshost: https://fosshost.org/donate"
+		echo ""
+}
+
+post_upgrade() {
+    msg "Thank you for keep using userrepository.eu"
+    echo ""
+    msg "You can edit the mirror file at:"
+    echo ""
+    msg "/etc/pacman.d/userrepository-mirrorlist"
+    echo ""
+		msg "Userrepository is kindly hosted by Fosshost."
+    echo ""
+    msg "If you want to support this project,"
+    echo ""
+    msg "please donate to Fosshost: https://fosshost.org/donate"
+		echo ""
+}
+
