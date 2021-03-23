@@ -1,14 +1,14 @@
 pkgbase = python-sortedcollections
 	pkgdesc = A python library for sorted collections.
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://www.grantjenks.com/docs/sortedcollections/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-sortedcontainers>=2.0.0
-	source = https://files.pythonhosted.org/packages/source/s/sortedcollections/sortedcollections-1.1.2.tar.gz
-	sha256sums = b93e0decbd7f8f19e40c320709e70e4845b6c8b3a0e96c3c4f707b4b93e1d38a
+	source = https://codeload.github.com/grantjenks/python-sortedcollections/tar.gz/refs/tags/v2.1.0
+	sha256sums = 4a70235d04737268feaed645e11c4aa25d165f0c69114f92d71e84ecb3e99ccf
 
 pkgname = python-sortedcollections
 
