@@ -9,7 +9,7 @@ url='http://www.coreboot.org/Bios_extract'
 license=(GPL2)
 depends=(glibc)
 makedepends=(git)
-source=(git+https://review.coreboot.org/cgit/bios_extract.git)
+source=(git+https://github.com/coreboot/bios_extract)
 sha1sums=('SKIP')
 
 pkgver() {

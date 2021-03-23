@@ -8,7 +8,7 @@ pkgbase = bios_extract-git
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	source = git+https://review.coreboot.org/cgit/bios_extract.git
+	source = git+https://github.com/coreboot/bios_extract
 	sha1sums = SKIP
 
 pkgname = bios_extract-git
