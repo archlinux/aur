@@ -1,8 +1,8 @@
-# Maintainer: Walter C <bitlord@disroot.org>
+# Maintainer: Walter - "d2Nhc2Fub3ZhQGRpc3Jvb3Qub3JnCg==" - use base64 -d
 
 pkgname="procs-git"
 _pkgname="procs"
-pkgver=0.8.15.400.gf85713f
+pkgver=0.11.5.667.g6456a59
 pkgrel=1
 pkgdesc="A modern replacement for ps written by Rust"
 arch=("i686" "x86_64")
@@ -22,13 +22,8 @@ pkgver() {
 
 build() {
     cd $_pkgname
-    cargo build --release --locked
-}
-    
-check() {
-    cd $_pkgname
-    cargo test --release --locked
-}
+    cargo build --release --locked --all-features --target-dir=target
+ }
 
 package() {
     cd "$srcdir/$_pkgname"
