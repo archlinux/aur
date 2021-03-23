@@ -2,7 +2,7 @@
 # Maintainer: sh0rez <me@shorez.de>
 
 pkgname=tanka-bin
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=0
 pkgdesc='Flexible, reusable and concise configuration for Kubernetes using Jsonnet'
 arch=('x86_64')
@@ -23,4 +23,4 @@ package() {
   install -Dm 755 "$srcdir/tk-$pkgver" "$pkgdir/usr/bin/tk"
 }
 
-sha256sums=('d89c82039c3f53fe1a17757d9140eb2befffeda5ea3762b415c923e4cd384218')
+sha256sums=('6545ed473c346bc8f560ab22db2a59baef93231e4199b7fc932443ce1d10059b')
