@@ -1,0 +1,16 @@
+pkgbase = python-awesomeversion
+	pkgdesc = One version package to rule them all.
+	pkgver = 21.2.3
+	pkgrel = 1
+	url = https://github.com/ludeeus/awesomeversion
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-black
+	depends = python-pre-commit
+	depends = python-requests
+	source = python-awesomeversion-21.2.3.tar.gz::https://github.com/ludeeus/awesomeversion/archive/refs/tags/21.2.3.tar.gz
+	b2sums = 63fe640ebe90301b1bdd06ca56353e99921e182e8b78c158f6346a6cb114a7f260bc5746eb5616fb129d1054315c4c8aa87984801e293cd6025adfa59307a691
+
+pkgname = python-awesomeversion
+
