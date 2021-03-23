@@ -1,4 +1,4 @@
-pkgbase = st-bydarch-git
+pkgbase = st-bydarch
 	pkgdesc = Simple virtual terminal emulator for X
 	pkgver = 0.8.2.r6.114304a
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = st-bydarch-git
 	source = st-bydarch::git+https://github.com/darch7/st.git
 	sha256sums = SKIP
 
-pkgname = st-bydarch-git
+pkgname = st-bydarch
 
