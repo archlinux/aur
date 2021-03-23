@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-dconf
-pkgver=0.38.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc='A low-level configuration system'
 arch=(x86_64)
@@ -22,7 +22,7 @@ makedepends=(
   python
   vala
 )
-_tag=c63ea4d11ac29db3c5175d53e990e77e8b20f7bf
+_tag=4c0a26052efafae923eba42d14c5cb88da745de2
 source=(git+https://gitlab.gnome.org/GNOME/dconf.git#tag=${_tag})
 sha256sums=(SKIP)
 
