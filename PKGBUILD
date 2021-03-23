@@ -2,7 +2,7 @@
 pkgname=soundux
 pkgver=0.2.2_b2
 pkgrel=1
-pkgdesc="A cross-platform soundboard"
+pkgdesc="A cross-platform soundboard - stable version"
 arch=('any')
 url="https://github.com/Soundux/Soundux"
 license=('GPL3')
