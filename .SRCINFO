@@ -1,6 +1,6 @@
 pkgbase = python-espnet-git
 	pkgdesc = End-to-End Speech Processing Toolkit Python-Only Package (without venv)
-	pkgver = 0.9.8.r11083
+	pkgver = 0.9.8.r11094
 	pkgrel = 1
 	url = https://github.com/espnet/espnet
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-espnet-git
 	depends = python-g2p-git
 	depends = python-kaldiio-git
 	depends = python-sentencepiece-git
-	depends = python-wandb
+	depends = python-wandb-git
 	depends = python-espnet-tts-frontend-git
 	depends = python-ctc-segmentation-git
 	optdepends = sox: convert audio files
