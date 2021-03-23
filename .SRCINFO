@@ -1,5 +1,5 @@
 pkgbase = st-bydarch
-	pkgdesc = Simple virtual terminal emulator for X
+	pkgdesc = Simple virtual terminal emulator for X - Modificado por Darch7
 	pkgver = 0.8.2.r6.114304a
 	pkgrel = 1
 	url = https://github.com/darch7/st.git
@@ -8,8 +8,8 @@ pkgbase = st-bydarch
 	makedepends = ncurses
 	makedepends = libxext
 	makedepends = git
+	depends = ttf-meslo-nerd-font-powerlevel10k
 	depends = libxft
-	optdepends = ttf-meslo-nerd-font-powerlevel10k: AUR - Tipografias para mejorar apariencia
 	provides = st
 	conflicts = st
 	options = zipman
