@@ -1,0 +1,23 @@
+pkgbase = python-xstatic-mdi
+	pkgdesc = mdi 1.6.50 (XStatic packaging standard)
+	pkgver = 1.6.50.2
+	pkgrel = 1
+	url = http://materialdesignicons.com/
+	arch = any
+	license = MIT
+	license = Apache
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-mdi/XStatic-mdi-1.6.50.2.tar.gz
+	md5sums = aa720e603fce607681cc69989fbd41a9
+	sha256sums = be1005af7a593b0b3a349aadb05e4160ea65894248a47b246c6658345e2f10c1
+	sha512sums = 3b769502e4886726269838806f6631ba2f55bf2fb74a64ab4c62efb706456030415e045923a6290f93f936afd01908ab19feaabb6648e32e0ce672938c9dc08c
+
+pkgname = python-xstatic-mdi
+
+pkgname = python2-xstatic-mdi
+
