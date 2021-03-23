@@ -6,6 +6,8 @@ pkgbase = toggle_cool_cow_says_type
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
 	source = toggle_cool_cow_says_type-0.1.7.tar.gz::https://github.com/togglebyte/toggle_cool_cow_says_type/archive/refs/tags/v0.1.7.tar.gz
 	sha256sums = 60f7aa208fe195a51ef312e114e0fe9a152a96beae2860b2750493b3d969ef46
 

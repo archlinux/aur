@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/togglebyte/toggle_cool_cow_says_type'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/togglebyte/toggle_cool_cow_says_type/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('60f7aa208fe195a51ef312e114e0fe9a152a96beae2860b2750493b3d969ef46')            
 
