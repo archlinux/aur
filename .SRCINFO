@@ -1,7 +1,7 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
 	pkgver = 2.68.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
 	license = LGPL
@@ -15,7 +15,6 @@ pkgbase = glib2-patched-thumbnailer
 	makedepends = util-linux
 	makedepends = meson
 	makedepends = dbus
-	makedepends = sysprof
 	depends = pcre
 	depends = libffi
 	depends = util-linux-libs

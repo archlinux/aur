@@ -5,7 +5,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.68.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=(glib2=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so
 conflicts=('glib2')
 depends=(pcre libffi util-linux-libs zlib tumbler libmount.so)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
-             meson dbus sysprof)
+             meson dbus)
 checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
@@ -54,7 +54,6 @@ build() {
   arch-meson glib build \
     -D glib_debug=disabled \
     -D selinux=disabled \
-    -D sysprof=enabled \
     -D man=true
   meson compile -C build
 }
@@ -69,10 +68,6 @@ package() {
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
   install -D gio-querymodules.script "$pkgdir/usr/share/libalpm/scripts/gio-querymodules"
-
-  # Avoid a dep on sysprof
-  sed -re '/^Requires\.private:/s/,? *sysprof-capture-[^,]*(,|$)/\1/' \
-    -i "$pkgdir"/usr/lib/pkgconfig/*.pc
 
   export PYTHONHASHSEED=0
   python -m compileall -d /usr/share/glib-2.0/codegen \
