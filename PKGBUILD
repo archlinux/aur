@@ -1,6 +1,6 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 pkgname=xt7-player-mpv
-pkgver=0.31.3143
+pkgver=0.33.3152
 #hotfix=-hotfix
 pkgrel=1
 _realname=xt7-player-mpv
