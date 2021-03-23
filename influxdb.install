@@ -1,0 +1,9 @@
+## arg 1:  the new package version
+post_install() {
+  echo '----------------------------------------------------------------------'
+  echo 'Arch style is that users manually start installed services. So, issue:'
+  echo '$ sudo systemctl enable influxdb.service'
+  echo '$ sudo systemctl start influxdb.service'
+  echo 'And point your browser to http://(local)host:8086'
+  echo '----------------------------------------------------------------------'
+}

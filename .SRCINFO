@@ -1,20 +1,25 @@
 pkgbase = influxdb2-bin
-	pkgdesc = An open source agent for collecting metrics and data on the system; Binary pre-release
-	pkgver = 2.0.0_beta.10
+	pkgdesc = Scalable datastore for metrics, events, and real-time analytics; Binary release;
+	pkgver = 2.0.4
 	pkgrel = 1
-	url = https://github.com/influxdata/influxdb
+	url = https://github.com/InfluxData/influxdb
+	install = influxdb.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = glibc
 	conflicts = influxdb
+	conflicts = influxdb-bin
 	source = influxdb.sysusers
-	source = influxdb.service
-	sha256sums = dd96a189e7411fc1dd644f05bab06192ecc6afa2f2611e7433ec5efeecb4dd5b
-	sha256sums = 4aa6c35d5157115c1add2e80f1a80cf4918bfdb1d5032deb5fffce4f5fa553f7
-	source_x86_64 = influxdb.tar.gz::https://dl.influxdata.com/influxdb/releases/influxdb_2.0.0-beta.10_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3780F2C6A31AFE3161C300D00CAEC8FEFD97B993C73AFBA476F5CEFE205AADB3
-	source_aarch64 = influxdb.tar.gz::https://dl.influxdata.com/influxdb/releases/influxdb_2.0.0-beta.10_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1A827EB5671C7424337E8482892BCDB2940C8A7B758AE37946C6081CB862BD49
+	source = influxdb.tmpfiles
+	source = influxdb.service.d
+	sha256sums = 5266afa264a210102ade9e777f9258baa38dcc500707b822a31b9a7e2e029439
+	sha256sums = 4be469656e630e9ab49653f3a7b51062712cf6fe892d76bf645f7e6feb4502ed
+	sha256sums = f71a1780f3b21b638f08e556cb9410d1b8cc2aaafcdd2d340954ed8ba0809cd8
+	source_x86_64 = https://dl.influxdata.com/influxdb/releases/influxdb2-2.0.4-linux-amd64.tar.gz
+	sha256sums_x86_64 = 876a2aeac84714617464acb75ebbb3a8053a42e5f9242bb771ae4eb2d9d6cb6c
+	source_aarch64 = https://dl.influxdata.com/influxdb/releases/influxdb2-2.0.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = a8c3abc206060489c9067e75472add9199675807314781a9360ee786f2808d69
 
 pkgname = influxdb2-bin
 
