@@ -2,7 +2,7 @@
 
 pkgname=dogehouse
 pkgver=1.0.19
-pkgrel=4
+pkgrel=5
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
@@ -11,6 +11,22 @@ makedepends=(
     'git'
     'yarn'
     'nodejs'
+)
+depends=(
+    'c-ares'
+    'ffmpeg'
+    'gtk3'
+    'http-parser'
+    'libevent'
+    'libvpx'
+    'libxslt'
+    'libxss'
+    'minizip'
+    'nss'
+    're2'
+    'snappy'
+    'libnotify'
+    'libappindicator-gtk3'
 )
 source=("${pkgname}::git+https://github.com/benawad/dogehouse.git")
 
