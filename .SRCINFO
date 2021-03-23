@@ -1,0 +1,23 @@
+pkgbase = python-nltk-git
+	pkgdesc = Natural language processing in Python
+	pkgver = 3.5+137+gd0f54c29b
+	pkgrel = 1
+	url = https://www.nltk.org/
+	arch = any
+	license = APACHE
+	checkdepends = python-nose
+	checkdepends = nltk-data
+	checkdepends = python-requests
+	checkdepends = python-regex
+	makedepends = python-setuptools
+	depends = python-yaml
+	optdepends = nltk-data: test data
+	optdepends = python-numpy: used for calculations
+	optdepends = python-matplotlib: used for plotting
+	provides = _pkgname
+	conflicts = _pkgname
+	source = python-nltk::git+https://github.com/nltk/nltk
+	sha256sums = SKIP
+
+pkgname = python-nltk-git
+
