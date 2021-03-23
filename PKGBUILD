@@ -2,13 +2,13 @@
 
 pkgname='outspline-extra'
 pkgver='0.8.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra addons for Outspline"
 arch=('any')
 url="https://kynikos.github.io/outspline/"
 license=('GPL3')
 depends=('outspline')
-source=("http://downloads.sourceforge.net/project/outspline/extra/$pkgname-$pkgver.tar.bz2")
+source=("https://downloads.sourceforge.net/project/outspline/extra/$pkgname-$pkgver.tar.bz2")
 sha256sums=('8b5db75639de3cb462d9f138e1f775b395c1a76fa9ac84d77b3a6bc6dc55cc02')
 
 package() {
