@@ -3,7 +3,7 @@
 pkgname=iortcw
 _pkgname=return_to_castle_wolfenstein
 pkgver=1.51c
-pkgrel=2
+pkgrel=3
 pkgdesc="Return to Castle Wolfenstein, an update of the GPL'd source code from ID software to play nicely with modern hardware."
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/iortcw/iortcw"
@@ -13,7 +13,7 @@ makedepends=('p7zip' 'unzip')
 provides=('iorctw')
 conflicts=('iorctw-git')
 install=iortcw.install
-source=("${url}/archive/${pkgver}.tar.gz"
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/patch-data-SP_deutsch.zip"
         "${url}/releases/download/${pkgver}/patch-data-SP_espanol.zip"
         "${url}/releases/download/${pkgver}/patch-data-SP_francais.zip"

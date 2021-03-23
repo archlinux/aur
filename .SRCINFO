@@ -1,7 +1,7 @@
 pkgbase = iortcw
 	pkgdesc = Return to Castle Wolfenstein, an update of the GPL'd source code from ID software to play nicely with modern hardware.
 	pkgver = 1.51c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iortcw/iortcw
 	install = iortcw.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = iortcw
 	noextract = patch-data-SP_espanol.zip
 	noextract = patch-data-SP_francais.zip
 	noextract = patch-data-SP_italiano.zip
-	source = https://github.com/iortcw/iortcw/archive/1.51c.tar.gz
+	source = https://github.com/iortcw/iortcw/archive/refs/tags/1.51c.tar.gz
 	source = https://github.com/iortcw/iortcw/releases/download/1.51c/patch-data-SP_deutsch.zip
 	source = https://github.com/iortcw/iortcw/releases/download/1.51c/patch-data-SP_espanol.zip
 	source = https://github.com/iortcw/iortcw/releases/download/1.51c/patch-data-SP_francais.zip
