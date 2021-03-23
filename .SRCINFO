@@ -1,0 +1,13 @@
+pkgbase = webui
+	pkgdesc = Open source project to use web browsers as UI.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/alifcommunity/webui/
+	arch = x86_64
+	license = LGPL3
+	depends = boost
+	source = https://github.com/alifcommunity/webui/archive/refs/tags/v1.0.6.tar.gz
+	md5sums = SKIP
+
+pkgname = webui
+
