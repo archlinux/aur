@@ -3,7 +3,7 @@
 # Some sloppy repackage of the debian version
 
 pkgname=guilded
-pkgver=1.0.990846
+pkgver=1.0.992656
 pkgrel=1
 pkgdesc="That Discord Chat App Knocoff(www.guilded.gg)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core'
 	 'util-linux-libs' 'libappindicator-gtk3' 'libsecret')
 source=("${pkgname}-${pkgver}.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb")
-sha256sums=('b2e2a1acd3a3a9d09ba3a8ddc83f91a49157d244a3a0641d20c68910d5537d41')
+sha256sums=('33d8902ae1775d34f4470f586f06a131f3af174afc3468788fa36c072b96ae07')
 
 prepare() {
   tar Jxvf data.tar.xz
