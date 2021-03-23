@@ -3,9 +3,10 @@
 # Contributor: Olivier EBLE <olivier.eble at gmail com>
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
 # Contributor: Justin Gottula <justin at jgottula com>
+# Contributor: RJ <private>
 pkgname=libftd2xx
 pkgver=1.4.22
-pkgrel=3
+pkgrel=1
 pkgdesc="Library that allows a direct access to a USB FTDI2XX chip based device"
 arch=('i686' 'x86_64')
 url="http://www.ftdichip.com/"
