@@ -25,9 +25,11 @@ pkgbase = unreal-engine
 	source = com.unrealengine.UE4Editor.desktop
 	source = use-arch-mono.patch
 	source = clang_11.patch
+	source = PackageWithSystemCompiler.patch
 	sha256sums = 15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58
 	sha256sums = e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4
 	sha256sums = 8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d
+	sha256sums = 9e403b939a0601c6271da17af9497742cacd74e3cde41562c9f288dfbdcbdbfe
 
 pkgname = unreal-engine
 

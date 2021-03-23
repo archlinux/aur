@@ -1,0 +1,168 @@
+diff --color --recursive -u /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Developer/TargetPlatform/Private/TargetPlatformManagerModule.cpp Source/Developer/TargetPlatform/Private/TargetPlatformManagerModule.cpp
+--- /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Developer/TargetPlatform/Private/TargetPlatformManagerModule.cpp	2021-03-22 17:53:24.000000000 -0500
++++ Source/Developer/TargetPlatform/Private/TargetPlatformManagerModule.cpp	2021-03-23 15:12:07.170105858 -0500
+@@ -1032,6 +1032,25 @@
+ 			if (PlatArray[Index].Contains(TEXT("##PlatformValidate:")))
+ 			{
+ 				PlatformInfo::EPlatformSDKStatus Status = PlatArray[Index+2].Contains(TEXT("INVALID")) ? PlatformInfo::EPlatformSDKStatus::NotInstalled : PlatformInfo::EPlatformSDKStatus::Installed;
++				if (Status == PlatformInfo::EPlatformSDKStatus::NotInstalled)
++				{
++					if (PLATFORM_LINUX)
++					{
++						FILE  *cmd = popen("which clang", "r");
++						char temp[60];
++						fgets(temp, 60, cmd);
++						pclose(cmd);
++						cmd = nullptr;
++						
++						FString result = FString(ANSI_TO_TCHAR(temp));
++						if(result.Contains(TEXT("/usr/sbin/clang")))
++						{
++							Status = PlatformInfo::EPlatformSDKStatus::Unknown;
++						}
++						
++					}
++				}
++				
+ 				FString PlatformName = PlatArray[Index+1];
+ 				if (PlatformName == TEXT("Win32") || PlatformName == TEXT("Win64"))
+ 				{
+diff --color --recursive -u /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Editor/MainFrame/Private/Frame/MainFrameActions.cpp Source/Editor/MainFrame/Private/Frame/MainFrameActions.cpp
+--- /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Editor/MainFrame/Private/Frame/MainFrameActions.cpp	2021-03-22 17:53:24.000000000 -0500
++++ Source/Editor/MainFrame/Private/Frame/MainFrameActions.cpp	2021-03-23 15:37:21.927967222 -0500
+@@ -844,6 +844,11 @@
+ 		OptionalParams += FString::Printf(TEXT(" -target=%s -clientconfig=%s"), *Target->Name, LexToString(ConfigurationInfo.Configuration));
+ 	}
+ 
++	if (PlatformInfo->SDKStatus == PlatformInfo::EPlatformSDKStatus::Unknown)
++	{
++		OptionalParams += TEXT(" -ForceUseSystemCompiler");
++	}
++	
+ 	FString ProjectPath = FPaths::IsProjectFilePathSet() ? FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath()) : FPaths::RootDir() / FApp::GetProjectName() / FApp::GetProjectName() + TEXT(".uproject");
+ 	FString CommandLine = FString::Printf(TEXT("-ScriptsForProject=\"%s\" BuildCookRun %s%s -nop4 -project=\"%s\" -cook -stage -archive -archivedirectory=\"%s\" -package -ue4exe=\"%s\" %s -utf8output"),
+ 		*ProjectPath,
+Only in Source/Programs/AutomationTool/AllDesktop/obj: Debug
+Only in Source/Programs/AutomationTool/AllDesktop/obj/Development: AllDesktop.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/AllDesktop/obj/Development: AllDesktop.Automation.dll
+Only in Source/Programs/AutomationTool/AllDesktop/obj/Development: AllDesktop.Automation.pdb
+Only in Source/Programs/AutomationTool/AllDesktop/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Only in Source/Programs/AutomationTool/Android/obj: Debug
+Binary files /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/Android/obj/Development/Android.Automation.csprojAssemblyReference.cache and Source/Programs/AutomationTool/Android/obj/Development/Android.Automation.csprojAssemblyReference.cache differ
+Only in Source/Programs/AutomationTool/Android/obj/Development: Android.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/Android/obj/Development: Android.Automation.dll
+Only in Source/Programs/AutomationTool/Android/obj/Development: Android.Automation.pdb
+Only in Source/Programs/AutomationTool/Android/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+diff --color --recursive -u /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/AutomationUtils/BuildCommand.cs Source/Programs/AutomationTool/AutomationUtils/BuildCommand.cs
+--- /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/AutomationUtils/BuildCommand.cs	2021-03-22 17:53:24.000000000 -0500
++++ Source/Programs/AutomationTool/AutomationUtils/BuildCommand.cs	2021-03-23 07:39:48.264601154 -0500
+@@ -43,6 +43,10 @@
+ 			return ParseParamValue(Params, Param, Default);
+ 		}
+ 
++		public string ParseForParam(string Param, string Default = null)
++		{
++			return ParseForParam(Params, Param, Default);
++		}
+ 		/// <summary>
+ 		/// Parses an argument.
+ 		/// </summary>
+diff --color --recursive -u /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/AutomationUtils/CommandUtils.cs Source/Programs/AutomationTool/AutomationUtils/CommandUtils.cs
+--- /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/AutomationUtils/CommandUtils.cs	2021-03-22 17:53:24.000000000 -0500
++++ Source/Programs/AutomationTool/AutomationUtils/CommandUtils.cs	2021-03-23 15:45:18.977842041 -0500
+@@ -1909,6 +1909,19 @@
+ 			return Default;
+ 		}
+ 
++		public static string ParseForParam(string[] ArgList, string Param, string Default = null)
++		{
++			foreach (var Arg in ArgList)
++			{
++				var ArgStr = Arg;
++
++				if (ArgStr.StartsWith(Param, StringComparison.InvariantCultureIgnoreCase))
++				{
++					return ArgStr;
++				}
++			}
++			return Default;
++		}
+ 		/// <summary>
+ 		/// Parses the argument list for any number of parameters.
+ 		/// </summary>
+Only in Source/Programs/AutomationTool/AutomationUtils/obj: Debug
+Only in Source/Programs/AutomationTool/AutomationUtils/obj/Development: AutomationUtils.Automation.csprojAssemblyReference.cache
+Only in Source/Programs/AutomationTool/AutomationUtils/obj/Development: AutomationUtils.Automation.csproj.CoreCompileInputs.cache
+Only in Source/Programs/AutomationTool/AutomationUtils/obj/Development: AutomationUtils.Automation.csproj.FileListAbsolute.txt
+Only in Source/Programs/AutomationTool/AutomationUtils/obj/Development: AutomationUtils.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/AutomationUtils/obj/Development: AutomationUtils.Automation.dll
+Only in Source/Programs/AutomationTool/AutomationUtils/obj/Development: AutomationUtils.Automation.pdb
+Only in Source/Programs/AutomationTool/AutomationUtils/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Only in Source/Programs/AutomationTool/BuildGraph: BuildGraph.Automation.xml
+Binary files /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/BuildGraph/obj/Development/BuildGraph.Automation.csprojAssemblyReference.cache and Source/Programs/AutomationTool/BuildGraph/obj/Development/BuildGraph.Automation.csprojAssemblyReference.cache differ
+Only in Source/Programs/AutomationTool/BuildGraph/obj/Development: BuildGraph.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/BuildGraph/obj/Development: BuildGraph.Automation.dll
+Only in Source/Programs/AutomationTool/BuildGraph/obj/Development: BuildGraph.Automation.pdb
+Only in Source/Programs/AutomationTool/BuildGraph/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Only in Source/Programs/AutomationTool/HoloLens: obj
+Only in Source/Programs/AutomationTool: .idea
+Only in Source/Programs/AutomationTool/IOS/obj: Debug
+Binary files /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/IOS/obj/Development/IOS.Automation.csprojAssemblyReference.cache and Source/Programs/AutomationTool/IOS/obj/Development/IOS.Automation.csprojAssemblyReference.cache differ
+Only in Source/Programs/AutomationTool/IOS/obj/Development: IOS.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/IOS/obj/Development: IOS.Automation.dll
+Only in Source/Programs/AutomationTool/IOS/obj/Development: IOS.Automation.pdb
+Only in Source/Programs/AutomationTool/IOS/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Only in Source/Programs/AutomationTool/Linux/obj: Debug
+Only in Source/Programs/AutomationTool/Linux/obj/Development: Linux.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/Linux/obj/Development: Linux.Automation.dll
+Only in Source/Programs/AutomationTool/Linux/obj/Development: Linux.Automation.pdb
+Only in Source/Programs/AutomationTool/Linux/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Only in Source/Programs/AutomationTool/Localization/obj: Debug
+Only in Source/Programs/AutomationTool/Localization/obj/Development: Localization.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/Localization/obj/Development: Localization.Automation.dll
+Only in Source/Programs/AutomationTool/Localization/obj/Development: Localization.Automation.pdb
+Only in Source/Programs/AutomationTool/Localization/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Only in Source/Programs/AutomationTool/Lumin/obj/Debug: Lumin.Automation.csprojAssemblyReference.cache
+Only in Source/Programs/AutomationTool/Lumin/obj: Development
+Only in Source/Programs/AutomationTool/Mac/obj: Debug
+Only in Source/Programs/AutomationTool/Mac/obj/Development: Mac.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/Mac/obj/Development: Mac.Automation.dll
+Only in Source/Programs/AutomationTool/Mac/obj/Development: Mac.Automation.pdb
+Only in Source/Programs/AutomationTool/Mac/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Binary files /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/obj/Development/AutomationTool.csprojAssemblyReference.cache and Source/Programs/AutomationTool/obj/Development/AutomationTool.csprojAssemblyReference.cache differ
+Only in Source/Programs/AutomationTool/obj/Development: AutomationTool.csproj.CopyComplete
+Only in Source/Programs/AutomationTool/obj/Development: AutomationTool.csproj.CoreCompileInputs.cache
+Only in Source/Programs/AutomationTool/obj/Development: AutomationTool.csproj.FileListAbsolute.txt
+Only in Source/Programs/AutomationTool/obj/Development: AutomationTool.exe
+Only in Source/Programs/AutomationTool/obj/Development: AutomationTool.pdb
+Only in Source/Programs/AutomationTool/OneSkyLocalization/obj: Debug
+Only in Source/Programs/AutomationTool/OneSkyLocalization/obj/Development: .NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+Only in Source/Programs/AutomationTool/OneSkyLocalization/obj/Development: OneSkyLocalization.Automation.csproj.FilesWrittenAbsolute.txt
+Only in Source/Programs/AutomationTool/OneSkyLocalization/obj/Development: OneSkyLocalization.Automation.dll
+Only in Source/Programs/AutomationTool/OneSkyLocalization/obj/Development: OneSkyLocalization.Automation.pdb
+diff --color --recursive -u /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/Scripts/BuildCookRun.Automation.cs Source/Programs/AutomationTool/Scripts/BuildCookRun.Automation.cs
+--- /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/Scripts/BuildCookRun.Automation.cs	2021-03-22 17:53:24.000000000 -0500
++++ Source/Programs/AutomationTool/Scripts/BuildCookRun.Automation.cs	2021-03-23 07:42:42.600927171 -0500
+@@ -90,6 +90,11 @@
+ 			}
+ 		}
+ 
++		var ForceUseSystemCompiler = ParseForParam("ForceUseSystemCompiler");
++		if (!String.IsNullOrEmpty(ForceUseSystemCompiler))
++		{
++			Params.UbtArgs = " -ForceUseSystemCompiler";
++		}
+ 		Params.ValidateAndLog();
+ 		return Params;
+ 	}
+diff --color --recursive -u /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/Scripts/BuildProjectCommand.Automation.cs Source/Programs/AutomationTool/Scripts/BuildProjectCommand.Automation.cs
+--- /home/zerophase/Documents/PackagesMaintained/unreal-engine/unreal-engine-4.26.1-3-x86_64.pkg/opt/unreal-engine/Engine/Source/Programs/AutomationTool/Scripts/BuildProjectCommand.Automation.cs	2021-03-22 17:53:24.000000000 -0500
++++ Source/Programs/AutomationTool/Scripts/BuildProjectCommand.Automation.cs	2021-03-23 16:35:30.723332327 -0500
+@@ -105,7 +105,7 @@
+ 		{
+ 			if (Params.EditorTargets.Contains("UnrealPak") == false)
+ 			{
+-				Agenda.AddTargets(new string[] { "UnrealPak" }, HostPlatform.Current.HostEditorPlatform, UnrealTargetConfiguration.Development, Params.CodeBasedUprojectPath);
++				Agenda.AddTargets(new string[] { "UnrealPak" }, HostPlatform.Current.HostEditorPlatform, UnrealTargetConfiguration.Development, Params.CodeBasedUprojectPath, Params.UbtArgs);
+ 			}
+ 		}

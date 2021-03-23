@@ -20,10 +20,12 @@ optdepends=('qt5-base: qmake build system for projects'
 license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
         use-arch-mono.patch
-	clang_11.patch)
+	clang_11.patch
+	PackageWithSystemCompiler.patch)
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             'e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4'
-            '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d')
+            '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d'
+            '9e403b939a0601c6271da17af9497742cacd74e3cde41562c9f288dfbdcbdbfe')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
@@ -55,6 +57,7 @@ prepare() {
   if [ -n "$_system_compiler" ]
   then
     patch -p1 -i "$srcdir/clang_11.patch"
+    patch -p9 -i "$srcdir/PackageWithSystemCompiler.patch"
     export LINUX_MULTIARCH_ROOT="/usr/sbin"
     generateProjectArgs+=" -ForceUseSystemCompiler"
   fi
