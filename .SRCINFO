@@ -1,6 +1,6 @@
 pkgbase = heimdall-git
 	pkgdesc = Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices
-	pkgver = 1.4.2.r9.g92be54f
+	pkgver = 1.4.2.r10.g3997d5c
 	pkgrel = 1
 	url = https://glassechidna.com.au/heimdall/
 	arch = i686
@@ -14,8 +14,10 @@ pkgbase = heimdall-git
 	conflicts = heimdall
 	source = Heimdall::git+https://github.com/Benjamin-Dobell/Heimdall
 	source = heimdall.desktop
+	source = reset-device.patch
 	sha256sums = SKIP
 	sha256sums = 439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4
+	sha256sums = 42d3b86206d6ab80c79a16d7c1dcdcd478cb975d5155c9971744c2dd981c4577
 
 pkgname = heimdall-git
 

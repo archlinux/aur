@@ -6,7 +6,7 @@
 
 pkgname=heimdall-git
 _pkgname=Heimdall
-pkgver=1.4.2.r9.g92be54f
+pkgver=1.4.2.r10.g3997d5c
 pkgrel=1
 pkgdesc="Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices"
 arch=("i686" "x86_64")
@@ -20,15 +20,21 @@ provides=("heimdall")
 source=(
 	"$_pkgname::git+https://github.com/Benjamin-Dobell/Heimdall"
 	"heimdall.desktop"
+	"reset-device.patch"
 )
-sha256sums=(
-	"SKIP"
-	"439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4"
-)
+sha256sums=('SKIP'
+            '439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4'
+            '42d3b86206d6ab80c79a16d7c1dcdcd478cb975d5155c9971744c2dd981c4577')
 
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$srcdir/$_pkgname"
+
+	patch -p1 -i "$srcdir/reset-device.patch"
 }
 
 build() {
