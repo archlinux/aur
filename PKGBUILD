@@ -2,7 +2,7 @@
 # Maintainer: mvnsio
 pkgname=sidekick-browser-stable-bin
 pkgver=88.8.43.7638
-pkgrel=3
+pkgrel=4
 pkgdesc="Sidekick is a revolutionary new work OS based on the Chromium browser. Designed to be the ultimate online work experience, it brings together your team and every web tool you use – all in one interface"
 arch=('x86_64')
 url="https://www.meetsidekick.com/"
