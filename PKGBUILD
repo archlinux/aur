@@ -29,6 +29,6 @@ build() {
 
 package() {
   cd "$srcdir/OpenModelica/OMCompiler/build"
-  mkdir -p ${pkgdir}/usr
-  cp -r * ${pkgdir}/usr
+  make install DESTDIR="${pkgdir}"
+  chmod go+rx "${pkgdir}"/usr/share/omc/runtime/c/fmi/buildproject/config.*
 }
