@@ -1,0 +1,14 @@
+pkgbase = kgb
+	pkgdesc = A PAQ6-based archiver, with high compression ratio
+	pkgver = 1.0b4
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	noextract = debian.tar.xz
+	source = https://netactuate.dl.sourceforge.net/project/kgbarchiver/kgb_arch_posix/1.0b4_mod_by_Slawek/kgb_arch_posix_by_slawek_v1.0b4.tar.bz2
+	source = debian.tar.xz::https://deb.debian.org/debian/pool/main/k/kgb/kgb_1.0b4+ds-14.debian.tar.xz
+	sha512sums = 3eb8eac9a070a48d884cd1f446678c9e080fb2d31bf604ecad02f3e6acd81bec71d4c1a1a8500dfdacc167be84956333d18de55af6d959edf19d2c68d1ed18f6
+	sha512sums = ed1e17289b31ac90c9358b2a529ba3fc0c771f4cdedcf62aa1c06b60c2a9fdaa681d8e27b1393b40132c22abd7bd7fdce450adda3c6a902463192c5ec7fd862d
+
+pkgname = kgb
+
