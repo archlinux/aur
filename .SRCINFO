@@ -1,0 +1,22 @@
+pkgbase = kde2-kdegames-git
+	pkgdesc = Historical copy of the games module of KDE 2, adapted to compile on modern systems
+	pkgver = 2.2.2.r5.0bc86e0
+	pkgrel = 1
+	url = https://invent.kde.org/sandsmark/kde2-kdegames
+	arch = i686
+	arch = x86_64
+	groups = kde2
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde2-kdelibs
+	provides = kde2-kdegames
+	conflicts = kde2-kdegames
+	conflicts = kcolorchooser
+	conflicts = kruler
+	options = libtool
+	source = git+https://invent.kde.org/sandsmark/kde2-kdegames.git
+	md5sums = SKIP
+
+pkgname = kde2-kdegames-git
+
