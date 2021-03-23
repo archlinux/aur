@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Connor Behan <connor.behan@gmail.com>
 # Contributor: Xyne <ac xunilhcra enyx, backwards>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 
@@ -8,10 +8,10 @@ pkgrel=3
 pkgdesc='Computational chemistry package'
 license=("GPL")
 arch=('x86_64' 'i686')
-url='http://bioinformatics.org/ghemical/ghemical/'
+url='https://bioinformatics.org/ghemical/ghemical/'
 depends=('libghemical>=3.0' 'liboglappth>=1.0' 'libglade' 'gtkglext' 'openbabel')
 makedepends=('pkgconfig' 'intltool>=0.40.0' 'gettext')
-source=("http://bioinformatics.org/ghemical/download/release20111012/$pkgname-$pkgver.tar.gz"
+source=("https://bioinformatics.org/ghemical/download/release20111012/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
 sha256sums=('babb2bda93cf0c20f234452eeb7d19d1d8c0e4c4d611734f110f8de066a1bcb2'
             '475db7721deff079feda637e9ecfc2ee7a381aa574fd3126c9eea7d71b9dd100')
