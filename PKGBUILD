@@ -27,7 +27,6 @@ _rid=2610
 source=("${_filename}::https://www.digitalmzx.com/download/${_rid}/${_sha256sum}/")
 
 sha256sums=("${_sha256sum}")
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - -o %o %u")
 
 build() {
   cd "${srcdir}/${_base}"
