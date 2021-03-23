@@ -1,14 +1,14 @@
 pkgbase = preserve-git
 	pkgdesc = Efficiency oriented media player/jellyfin frontend
 	pkgver = 0.5.0.r0.g8e7a8da
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tonyfinn/preserve
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = jq
 	makedepends = npm
-	optdepends = caddy2: systemd unit,
+	optdepends = caddy: systemd unit,
 	optdepends = nginx: web server config provided,
 	provides = preserve=0.5.0.r0.g8e7a8da
 	conflicts = preserve

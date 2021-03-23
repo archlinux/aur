@@ -1,7 +1,7 @@
 # Maintainer: Tony Finn <aur@tonyfinn.com>
 
 pkgname=preserve-git
-pkgver=0.5.0.r0.g8e7a8da
+pkgver=0.5.2.r2.g46f085d
 pkgrel=1
 pkgdesc="Efficiency oriented media player/jellyfin frontend"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://gitlab.com/tonyfinn/preserve"
 license=(GPL)
 makedepends=(git jq npm)
 optdepends=(
-    'caddy2: systemd unit',
+    'caddy: systemd unit',
     'nginx: web server config provided',
 )
 provides=("preserve=${pkgver}")
