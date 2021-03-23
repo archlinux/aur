@@ -1,7 +1,7 @@
 pkgbase = krack
 	pkgdesc = Krathalan's packaging softwares
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~krathalan/krack
 	arch = any
 	license = GPL3
@@ -17,6 +17,7 @@ pkgbase = krack
 	backup = etc/krack/receive.conf
 	source = https://git.sr.ht/~krathalan/krack/archive/0.2.0.tar.gz
 	source = https://git.sr.ht/~krathalan/krack/blob/master/signatures/0.2.0.tar.gz.sig
+	validpgpkeys = B46B326273E4A1D21AAA3F6F529AC10050BD24EF
 	sha512sums = f4210026344a56e3bc8d937ae3ad8b5c86fc86c05053528e74ae0e95492032fca2be4f3d9ab9c98967871014c26d7850800b09551a5840e5d4b7aec8b3e5f06d
 	sha512sums = 188468db09fef2550668dbd67d036e3836cbaa728eb7741a4b5a5eabc3b8cecac75d6c52875f1974570e38c4dfa5328b87940b512a36b1a63737e75a501db75f
 
