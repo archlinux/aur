@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=5.8.1
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-make')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-no-demo.patch)
-sha256sums=('06726e471fbaa55f792578f9b4ab282ea9d008cf39ddcc3b42b73400acddef40' SKIP)
+sha256sums=('7bdd4811f1cf0767c5fdb5e435817fdadee50b0acdb598f4882ae7b8291a7f24' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -41,6 +41,9 @@ prepare () {
   sed -i "s|default: C|default: library|g" SLIP_LU/Makefile
   sed -i "/SO_PLAIN/d" SLIP_LU/Lib/Makefile
   sed -i "/SO_MAIN/d" SLIP_LU/Lib/Makefile
+
+  # use MAKEFLAGS instead of JOBS
+  sed -i "s| --jobs=\$(JOBS)||g" */Makefile
 }
 
 build() {
@@ -64,7 +67,6 @@ package() {
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" \
       DESTDIR="${pkgdir}" INSTALL="${pkgdir}"/usr/${_arch}
-    mv "${pkgdir}"/usr/${_arch}/lib/libsliplu.dll "${pkgdir}"/usr/${_arch}/bin
     rm "${pkgdir}"/usr/${_arch}/bin/*.exe
     rm -rf "${pkgdir}"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
