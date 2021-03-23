@@ -1,7 +1,7 @@
 pkgbase = vscode-json-languageserver
 	pkgdesc = The JSON Language server provides language-specific smarts for editing, validating and understanding JSON documents.
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vscode-langservers/vscode-json-languageserver
 	arch = any
 	license = MIT

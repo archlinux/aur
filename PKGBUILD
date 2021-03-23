@@ -2,7 +2,7 @@
 
 pkgname=vscode-json-languageserver
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The JSON Language server provides language-specific smarts for editing, validating and understanding JSON documents."
 arch=('any')
 url="https://github.com/vscode-langservers/vscode-json-languageserver"
@@ -16,7 +16,7 @@ noextract=("${pkgname}-${pkgver}.tgz")
 md5sums=('ec86d6ed27f62d5cc03ba3304cc7f5fd')
 
 package() {
-  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+  npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
