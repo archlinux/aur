@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-tv4
+	pkgdesc = tv4 1.2.7 (XStatic packaging standard)
+	pkgver = 1.2.7.0
+	pkgrel = 1
+	url = http://geraintluff.github.com/tv4/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-tv4/XStatic-tv4-1.2.7.0.tar.gz
+	md5sums = 921148dff35fb41431d5f122da570248
+	sha256sums = 9b4c57244e914126cdda5d8bc24698189d73800203c85b1fc945a08e25c7c713
+	sha512sums = 02bf9d1ea79f8d0676e833ddd95c781772008798d8aed93cc8ebf6ff8f3c6ec947f7a0ab24c0c3d0d1e763f7e49134863291e10bf2cdfc291c09124a840346e8
+
+pkgname = python-xstatic-tv4
+
+pkgname = python2-xstatic-tv4
+
