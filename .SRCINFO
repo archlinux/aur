@@ -7,6 +7,7 @@ pkgbase = gnome-shell-extension-improvedosk-git
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
+	optdepends = ttf-symbola: Recommended font for symbols
 	provides = gnome-shell-extension-improvedosk
 	conflicts = gnome-shell-extension-improvedosk
 	source = gnome-shell-extension-improvedosk-git::git+https://github.com/SebastianLuebke/improved-osk-gnome-ext.git

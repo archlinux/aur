@@ -11,6 +11,7 @@ conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 makedepends=('git')
 depends=('gnome-shell')
+optdepends=('ttf-symbola: Recommended font for symbols')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
