@@ -1,40 +1,41 @@
 # Maintainer: Sean Greenslade <aur at seangreenslade dot com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Jon Gjengset
 # Contributor: jsteel <mail at jsteel dot org>
 # Contributor: andreas_baumann <abaumann at yahoo dot com>
-# Contributor: tobias [tobias [at] archlinux.org]
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: tobias [tobias [at] archlinux.org]
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=1.14.7
+pkgver=2.0.6
 pkgrel=1
-pkgdesc='Small but very powerful text-based mail client - slang version'
-url='http://www.mutt.org/'
+pkgdesc="Small but very powerful text-based mail client - slang version"
+url="http://www.mutt.org/"
+license=('GPL2')
+arch=('x86_64')
 provides=('mutt')
 conflicts=('mutt')
-license=('GPL')
-arch=('x86_64')
-depends=('gdbm' 'glibc' 'libgpg-error' 'openssl' 'libsasl' 'mime-types' 'krb5' 'slang'
+depends=('gdbm' 'glibc' 'libgpg-error' 'openssl' 'libsasl' 'mime-types' 'slang'
 'sqlite' 'zlib')
-makedepends=('gpgme' 'libidn2')
+makedepends=('docbook-xml' 'docbook-xsl' 'elinks' 'git' 'gpgme' 'krb5'
+'libidn2' 'lynx' 'libxslt')
 optdepends=('perl: for smime_keys'
+            'python: for experimental mutt_oath2.py'
             'smtp-forwarder: to send mail')
 backup=('etc/Muttrc')
-source=("https://bitbucket.org/mutt/mutt/downloads/${_pkgbase}-${pkgver}.tar.gz"{,.asc})
-sha512sums=('dc9739b5f0a99ca70fcbd495c71fbead23e3481f9c9e426feb827997c9c42e5f28355084f54788820c96a079dedb649fcc20e69436fb3c4df7e46f372b533e7c'
-            'SKIP')
-b2sums=('f729412d3da97fe9bd76733705317660edfa3858a9eb1012179fb289b03da58d79b6e261dbdc4ab8b001e89ca455e9972bab8f270bac28e887afc7e0bd9fc8c1'
-        'SKIP')
+source=("git+https://gitlab.com/muttmua/${_pkgbase}.git#tag=${_pkgbase}-${pkgver//./-}-rel?signed")
+sha512sums=('SKIP')
+b2sums=('SKIP')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <kevin@8t8.us>
 
 prepare() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}"
   autoreconf -vfi
 }
 
 build() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --enable-debug \
@@ -55,11 +56,12 @@ build() {
 }
 
 package() {
-  depends+=('libgpgme.so' 'libidn2.so')
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  depends+=('libgpgme.so' 'libgssapi_krb5.so' 'libidn2.so')
+
+  cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" install
+  install -vDm 644 contrib/gpg.rc "${pkgdir}/etc/Muttrc.gpg.dist"
 
   # /etc/mime.types is provided by mailcap
   rm "${pkgdir}"/etc/mime.types{,.dist}
-  install -Dm644 contrib/gpg.rc "${pkgdir}"/etc/Muttrc.gpg.dist
 }
