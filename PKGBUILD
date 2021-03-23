@@ -3,8 +3,8 @@
 pkgname=jellyfin-server-bin
 pkgver=10.7.1
 _pkgver="${pkgver}-1"
-pkgrel=2
-pkgdesc='The Free Software Media System - server package'
+pkgrel=3
+pkgdesc='Jellyfin server component'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://jellyfin.org/'
 license=('GPL2')
@@ -26,7 +26,7 @@ sha256sums=('1ea19635cced6672484937903c27976a5a145d708caff06a687a8defdd23d549'
 sha256sums_x86_64=('c6a38f72ee9fc213ddd35cbaedbe3c54c2ac81febdeb14a8df105e7c0ce32e79')
 sha256sums_aarch64=('bd303b3f6afaabb7fc7dca43af99656b7e031a8672fc1131605b8ca2b943f6f1')
 sha256sums_armv7h=('f51a7b60f94c2680cea3524c7ce8c1390638826bef94a4b09e1bc24bd77e5d6c')
-
+backup=('etc/conf.d/jellyfin')
 options=('staticlibs')
 
 package() {
