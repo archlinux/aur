@@ -1,4 +1,4 @@
-# Maintainer: Wang Ruochen <aur@ruo-chen.wang>
+# Maintainer: Wang Ruochen <arch@ruo-chen.wang>
 pkgname=alwaysatty-git
 pkgver=r3.1e23181
 pkgrel=2
