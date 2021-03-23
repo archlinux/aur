@@ -23,7 +23,7 @@ sha256sums_armv7h=('ffb132b99d126b4b5afa4b1d15a156b962630d2c1dd9e5ceda334cbb555e
 sha256sums_aarch64=('428ac68beb07467d648665cfa9a31173280d3e60199843854bf68f7a63647822')
 
 package() {
-    bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
     
     mv "${pkgdir}/usr/sbin/nordvpnd" "${pkgdir}/usr/bin"
     rm -r "${pkgdir}/etc/init.d"
