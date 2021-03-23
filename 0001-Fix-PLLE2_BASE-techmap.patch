@@ -1,0 +1,51 @@
+From 2b3762c85054cfa669558a01a64f43802707f919 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Fri, 5 Mar 2021 11:13:46 +0100
+Subject: [PATCH] Fix PLLE2_BASE techmap
+
+---
+ xc/xc7/techmap/cells_map.v | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/xc/xc7/techmap/cells_map.v b/xc/xc7/techmap/cells_map.v
+index c43fb94d..d4d0df45 100644
+--- a/xc/xc7/techmap/cells_map.v
++++ b/xc/xc7/techmap/cells_map.v
+@@ -4142,7 +4142,7 @@ endmodule
+ module PLLE2_BASE
+ (
+ input         CLKFBIN,
+-input         CLKIN,
++input         CLKIN1,
+ 
+ output        CLKFBOUT,
+ output        CLKOUT0,
+@@ -4153,6 +4153,7 @@ output        CLKOUT4,
+ output        CLKOUT5,
+ 
+ input         RST,
++input         PWRDWN,
+ output        LOCKED
+ );
+ 
+@@ -4239,7 +4240,7 @@ output        LOCKED
+   _TECHMAP_REPLACE_
+   (
+   .CLKFBIN(CLKFBIN),
+-  .CLKIN1(CLKIN),
++  .CLKIN1(CLKIN1),
+   .CLKINSEL(1'b1),
+ 
+   .CLKFBOUT(CLKFBOUT),
+@@ -4250,7 +4251,7 @@ output        LOCKED
+   .CLKOUT4(CLKOUT4),
+   .CLKOUT5(CLKOUT5),
+ 
+-  .PWRDWN(1'b0),
++  .PWRDWN(PWRDWN),
+   .RST(RST),
+   .LOCKED(LOCKED),
+ 
+-- 
+2.31.0
+
