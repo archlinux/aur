@@ -3,7 +3,7 @@
 # Contributor: Stephen304 <info at massmesh dot org>
 pkgname=autoygg-git
 _pkgname="autoygg"
-pkgver=v0.2.2.dev20210316233552
+pkgver=v0.2.2.dev20210323005448
 pkgrel=1
 pkgdesc="An easy internet egress client/server for Yggdrasil network."
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 backup=('etc/autoygg/server.yaml' 'etc/autoygg/accesslist.yaml' 'etc/autoygg/client.yaml')
 options=()
 install=autoygg.install
-source=('autoygg::git+https://github.com/MassMesh/autoygg.git#branch=simple-build')
+source=('autoygg::git+https://github.com/MassMesh/autoygg.git#branch=main')
 md5sums=('SKIP')
 
 pkgver() {

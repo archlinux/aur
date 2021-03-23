@@ -18,7 +18,7 @@ pkgbase = autoygg-git
 	backup = etc/autoygg/server.yaml
 	backup = etc/autoygg/accesslist.yaml
 	backup = etc/autoygg/client.yaml
-	source = autoygg::git+https://github.com/MassMesh/autoygg.git#branch=simple-build
+	source = autoygg::git+https://github.com/MassMesh/autoygg.git#branch=main
 	md5sums = SKIP
 
 pkgname = autoygg-git
