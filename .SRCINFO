@@ -1,0 +1,22 @@
+pkgbase = python-xstatic-roboto-fontface
+	pkgdesc = roboto-fontface 0.5.0 (XStatic packaging standard)
+	pkgver = 0.5.0.0
+	pkgrel = 1
+	url = https://github.com/choffmeister/roboto-fontface-bower
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-roboto-fontface/XStatic-roboto-fontface-0.5.0.0.tar.gz
+	md5sums = 32273ba68fa063623461db0b0767524f
+	sha256sums = 6d272df58e20eec3a15bca279163f38614c7074e2fecb537a58b29d109e83f62
+	sha512sums = 69aa26b571f1d8b6156b5e2fe77e7314abb39ddd308023bce44d3ad2cd50ba9721fdabf49f5657742a7574428b69953cb251b8b8b9b117dd7f43d35173320bc7
+
+pkgname = python-xstatic-roboto-fontface
+
+pkgname = python2-xstatic-roboto-fontface
+
