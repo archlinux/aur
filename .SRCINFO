@@ -1,13 +1,14 @@
 pkgbase = reaper-bin
 	pkgdesc = A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset
 	pkgver = 6.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reaper.fm
 	arch = x86_64
 	license = custom
 	depends = gtk3
 	depends = desktop-file-utils
 	depends = xdg-utils
+	depends = aribb24
 	optdepends = jack
 	optdepends = pulseaudio
 	provides = reaper=6.25
