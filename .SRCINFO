@@ -1,4 +1,4 @@
-pkgbase = topylogic
+pkgbase = python-topylogic
 	pkgdesc = Library to create dyanimic context free or switching automata
 	pkgver = 1.3.0.post3
 	pkgrel = 1
