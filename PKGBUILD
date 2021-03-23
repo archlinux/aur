@@ -1,9 +1,9 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-# Maintainer: Pig Monkey <pm@pig-monkey.com>
 # Maintainer: Chris Hillenbrand <chillenb.lists@gmail.com>
+# Contributor: Pig Monkey <pm@pig-monkey.com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=monolith
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='CLI to save web pages as single HTML files'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ license=(Unlicense)
 depends=(openssl)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('2538e0b241f56e4fee77df5ca05184ff67fa48b58324fb34793575ca9618c8c2310a0f71a0da4fa39cd456cdf1bfc1ac056c493c6f8e1ad1b464637fc6e5636e')
+sha512sums=('ccc15d1c85197a5fcb35b78d9ad531a40b8dd6078336af2f2e0d09548a6bc56975464d373de6a760c8a6c8a64b7a7319db6fe039f06196b4da8f8814095234e1')
 
 
 build() {
