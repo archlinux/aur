@@ -1,0 +1,5 @@
+nerdctl/
+
+*.pkg.tar.zst
+pkg/
+src/

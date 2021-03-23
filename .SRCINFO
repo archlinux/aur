@@ -1,0 +1,18 @@
+pkgbase = nerdctl-git
+	pkgdesc = Docker-compatible CLI for containerd
+	pkgver = v0.7.2.r4.8222244
+	pkgrel = 1
+	url = https://github.com/containerd/nerdctl
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = bash
+	optdepends = containerd
+	provides = nerdctl
+	conflicts = nerdctl
+	source = git+https://github.com/containerd/nerdctl.git
+	md5sums = SKIP
+
+pkgname = nerdctl-git
+
