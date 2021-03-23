@@ -1,13 +1,13 @@
 # Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=plasma-angelfish-git
-pkgver=r836.2a48b70
-pkgrel=2
+pkgver=r855.5869f59
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Web browser for Plasma Mobile"
 url="https://invent.kde.org/plasma-mobile/angelfish"
 license=('GPL2')
-depends=('qt5-webengine' 'purpose' 'kirigami2')
+depends=('qt5-webengine' 'purpose' 'kirigami2' 'qt5-feedback')
 makedepends=('extra-cmake-modules' 'git' 'corrosion-git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")

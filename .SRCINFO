@@ -1,7 +1,7 @@
 pkgbase = plasma-angelfish-git
 	pkgdesc = Web browser for Plasma Mobile
-	pkgver = r836.2a48b70
-	pkgrel = 2
+	pkgver = r855.5869f59
+	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/angelfish
 	arch = x86_64
 	license = GPL2
@@ -11,6 +11,7 @@ pkgbase = plasma-angelfish-git
 	depends = qt5-webengine
 	depends = purpose
 	depends = kirigami2
+	depends = qt5-feedback
 	provides = plasma-angelfish
 	conflicts = plasma-angelfish
 	source = git+https://invent.kde.org/plasma-mobile/angelfish.git
