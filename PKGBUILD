@@ -2,7 +2,7 @@
 
 pkgname=php-oauth
 _extname=oauth
-pkgver=2.0.5
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ url="https://www.php.net/manual/en/intro.oauth.php"
 license=('BSD')
 depends=('php')
 source=("https://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('c3fdd6ff8e6912832409beab58f2817ece83a6806c79f2f7b1707c98d595e0a7')
+sha256sums=('d46f59072f1ade65cf4c4353b7ecf5546d1c56cad602152cb4ba72abb1aa5eec')
 backup=("etc/php/conf.d/$_extname.ini")
 
 build() {
