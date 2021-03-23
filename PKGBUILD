@@ -2,19 +2,19 @@
 
 pkgname=the-rock-git
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line King James bible viewer"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/NoahJelen/the-rock"
 license=('GPL')
 depends=('ncurses')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'gzip')
 source=("git+https://gitlab.com/NoahJelen/the-rock")
-conflicts=("the-rock")
+conflicts=('the-rock' 'bible-kjv')
 md5sums=('SKIP')
 
 build() {
-    cd $pkgname
+    cd "the-rock/"
     cargo build --release
     cd target/release
     ln -sf the_rock bible
@@ -22,7 +22,7 @@ build() {
 
 package() {
     #the package contents
-    cd $pkgname
+    cd "the-rock/"
     mkdir -p "$pkgdir/usr/lib/the_rock"
     mkdir -p "$pkgdir/usr/share/man/man1/"
     install -Dt "$pkgdir/usr/bin" -m755 target/release/the_rock
