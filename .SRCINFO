@@ -10,6 +10,7 @@ pkgbase = python-nltk-git
 	checkdepends = python-requests
 	checkdepends = python-regex
 	makedepends = python-setuptools
+	depends = python-regex
 	depends = python-yaml
 	optdepends = nltk-data: test data
 	optdepends = python-numpy: used for calculations
