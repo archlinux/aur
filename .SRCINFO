@@ -1,6 +1,6 @@
 pkgbase = gitqlient-git
 	pkgdesc = Development branch of GitQlient
-	pkgver = v1.3.0.rc.r16.f284653
+	pkgver = v1.3.0.r50.7df3880
 	pkgrel = 1
 	url = https://github.com/francescmm/GitQlient
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=gitqlient-git
-pkgver=v1.3.0.rc.r16.f284653
+pkgver=v1.3.0.r50.7df3880
 pkgrel=1
 pkgdesc="Development branch of GitQlient"
 arch=(x86_64)
