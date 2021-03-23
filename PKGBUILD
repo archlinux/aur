@@ -2,14 +2,16 @@
 # Maintainer: mvnsio
 pkgname=sidekick-browser-stable-bin
 pkgver=88.8.43.7638
-pkgrel=2
+pkgrel=3
 pkgdesc="Sidekick is a revolutionary new work OS based on the Chromium browser. Designed to be the ultimate online work experience, it brings together your team and every web tool you use – all in one interface"
 arch=('x86_64')
 url="https://www.meetsidekick.com/"
 license=('unknown')
 groups=('')
 depends=('alsa-lib>=1.0.16' 'atk>=2.2.0' 'at-spi2-atk>=2.5.3' 'at-spi2-core>=2.9.90' 'bash-completion' 'ca-certificates' 'cairo>=1.6.0' 'dbus>=1.5.12' 'desktop-file-utils' 'expat>=2.0.1' 'gcc>=3.3' 'gcc-libs' 'gdk-pixbuf2>=2.22.0' 'glib2>=2.39.4' 'glibc>=2.16' 'gtk3>=3.9.10' 'hicolor-icon-theme' 'libcups>=1.4.0' 'libdrm>=2.4.38' 'libx11>=1.4.99.1' 'libxcb>=1.9.2' 'libxcomposite>=0.3' 'libxdamage>=1.1' 'libxext' 'libxfixes' 'libxkbcommon>=0.4.1' 'libxrandr' 'mesa>=8.1' 'nspr>=4.9' 'nss>=3.22' 'pango' 'ttf-liberation' 'xdg-utils>=1.0.2')
-optdepends=('vulkan-icd-loader')
+optdepends=('libu2f-udev'
+            'vulkan-icd-loader')
+provides=('www-browser')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://api.meetsidekick.com/downloads/df/linux/deb")
