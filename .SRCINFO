@@ -1,7 +1,7 @@
 pkgbase = distrobuilder
 	pkgdesc = System container image builder for LXC and LXD
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/lxc/distrobuilder
 	arch = x86_64
 	license = Apache
@@ -12,8 +12,8 @@ pkgbase = distrobuilder
 	depends = gnupg
 	depends = debootstrap
 	conflicts = distrobuilder-git
-	source = distrobuilder-1.1.tar.gz::https://github.com/lxc/distrobuilder/archive/distrobuilder-1.1.tar.gz
-	b2sums = d1b7fe9fcc6fd65993dc0eaa610dac7bc35c0bd4e67165d94b8761e5ed906bd3ea4357f467332a6dbc02db39227d0efc4c260fae0d6fde6f63843eeacb5622d3
+	source = distrobuilder-1.2.tar.gz::https://github.com/lxc/distrobuilder/archive/distrobuilder-1.2.tar.gz
+	b2sums = e6d0bf355818020ebe304adb71c35a67698441eaf3baf62abcddb334337388d06fb1bc49910be0c716038a41f18bcf0573a484e7bbd1fc4fb46ccabd15830376
 
 pkgname = distrobuilder
 

@@ -3,8 +3,8 @@
 # Contributor: Stéphane Graber <stgraber AT ubuntu DOT com>
 
 pkgname=distrobuilder
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="System container image builder for LXC and LXD"
 arch=(x86_64)
 url="https://github.com/lxc/distrobuilder"
@@ -13,26 +13,21 @@ depends=(rsync squashfs-tools gnupg debootstrap)
 makedepends=(go git)
 conflicts=(distrobuilder-git)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-b2sums=('d1b7fe9fcc6fd65993dc0eaa610dac7bc35c0bd4e67165d94b8761e5ed906bd3ea4357f467332a6dbc02db39227d0efc4c260fae0d6fde6f63843eeacb5622d3')
+b2sums=('e6d0bf355818020ebe304adb71c35a67698441eaf3baf62abcddb334337388d06fb1bc49910be0c716038a41f18bcf0573a484e7bbd1fc4fb46ccabd15830376')
 
 prepare() {
   mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
-
-  # export & create $GOPATH
-  export GOPATH="$srcdir/go"
-  mkdir -p "$GOPATH"
-
-  # download dependencies (via workaround as per below comment)
-  # https://github.com/lxc/distrobuilder/issues/408#issuecomment-801899860
   cd "$pkgname-$pkgver"
-  go mod init github.com/lxc/distrobuilder
-  go get github.com/mudler/docker-companion/api@master
-  go get -t -d ./...
+
+  # create build folder
+  mkdir build
+
+  # download dependencies
+  go mod vendor
 }
 
 build() {
   # export various Go flags
-  export GOPATH="$srcdir/go"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -41,19 +36,15 @@ build() {
 
   # build binary
   cd "$pkgname-$pkgver"
-  go install -v ./...
+  go build -v -o build ./...
 }
 
 check() {
-  # TODO: See Makefile for additional checks
-  # - deadcode
-  # - golint
-  export GOPATH="$srcdir/go"
   cd "$pkgname-$pkgver"
   go test -v ./...
   go vet -v ./...
 }
 
 package() {
-  install -Dm755 "$srcdir/go/bin/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm755 -t "$pkgdir/usr/bin" "$pkgname-$pkgver/build/$pkgname"
 }
