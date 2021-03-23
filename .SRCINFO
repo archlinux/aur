@@ -1,0 +1,18 @@
+pkgbase = dogehouse
+	pkgdesc = Taking voice conversations to the moon
+	pkgver = 1.0.19
+	pkgrel = 1
+	url = https://dogehouse.tv
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	makedepends = nodejs
+	depends = dbus-x11
+	depends = nss
+	depends = gtk3
+	source = dogehouse::git+https://github.com/benawad/dogehouse.git
+	md5sums = SKIP
+
+pkgname = dogehouse
+
