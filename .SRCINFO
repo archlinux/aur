@@ -1,7 +1,7 @@
 pkgbase = dogehouse
 	pkgdesc = Taking voice conversations to the moon
 	pkgver = 1.0.19
-	pkgrel = 10
+	pkgrel = 11
 	url = https://dogehouse.tv
 	arch = x86_64
 	license = MIT
