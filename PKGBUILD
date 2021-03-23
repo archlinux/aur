@@ -1,10 +1,9 @@
 # Maintainer: Eric Cheng <ericcheng@hey.com>
 
 pkgname=jellyfin-server-bin
-pkgver='10.7.1_1'
-_pkgver=$(echo "$pkgver" | cut -f1 -d"_")
-_pkgverfull="${pkgver//_/-}"
-pkgrel=1
+pkgver=10.7.1
+_pkgver="${pkgver}-1"
+pkgrel=2
 pkgdesc='The Free Software Media System - server package'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://jellyfin.org/'
@@ -17,9 +16,9 @@ source=('jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
-source_x86_64=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgverfull}_amd64.deb")
-source_aarch64=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgverfull}_arm64.deb")
-source_armv7h=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgverfull}_armhf.deb")
+source_x86_64=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgver}_amd64.deb")
+source_aarch64=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgver}_arm64.deb")
+source_armv7h=("https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_${_pkgver}_armhf.deb")
 sha256sums=('1ea19635cced6672484937903c27976a5a145d708caff06a687a8defdd23d549'
             '0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
