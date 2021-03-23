@@ -1,20 +1,20 @@
 pkgbase = spotify
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.1.55.498
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
 	depends = alsa-lib>=1.0.14
 	depends = gtk3
-	depends = libsystemd
 	depends = libxss
 	depends = desktop-file-utils
 	depends = openssl
 	depends = nss
 	depends = at-spi2-atk
 	depends = libcurl-gnutls
+	depends = libsm
 	optdepends = ffmpeg-compat-57: Adds support for playback of local files
 	optdepends = zenity: Adds support for importing local files
 	optdepends = libnotify: Desktop notifications
@@ -29,9 +29,9 @@ pkgbase = spotify
 	sha512sums = 999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20
 	sha512sums = 2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615
 	sha512sums = 395806fc064706cc6b005054ec0f5e0a9b0cebfa073ccb771b7e8cb2f6c8aa300efe9164e492f90f4c83d047a898f6553c44722562d8f3e1462947d811a2e599
-	sha512sums = 4df76f404e3dcb65d2965856bdabb1cb75cf54a8d31c7d0f3334696b35cd8c091a3e96ec19fe50dc1a9c34934da8a09aea9273644108b161aba9237de042fcda
 	sha512sums = SKIP
-	sha512sums = 674ae1c6d8d8cfee67369f83da936db6004468f4b8cd72c6ea190a4b68d3960f3d8c7d19f5d13eb6a381e1773b2f2c200096acb2316e65786cf1d9e519c49c38
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = spotify
 
