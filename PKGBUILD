@@ -2,7 +2,7 @@
 
 pkgname=dogehouse
 pkgver=1.0.19
-pkgrel=7
+pkgrel=8
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
@@ -44,8 +44,10 @@ build() {
 
 package() {
     cd "${srcdir}/dogehouse/baklava/builds/linux-unpacked"
+    install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
     cp -r . ${pkgdir}/usr/share/${pkgname}
+    ln -s /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
     install -D -m644 ${srcdir}/../dogehouse.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     install -D -m644 ${srcdir}/dogehouse/baklava/icons/icon.png \
           ${pkgdir}/usr/share/pixmaps/dogehouse.png
