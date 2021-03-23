@@ -4,15 +4,16 @@
 # Contributor: Bruno Inec <bruno at inec dot fr>
 
 pkgname=wtfutil
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
 url="https://wtfutil.com"
 license=('MPL2')
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
-sha256sums=('9fcf24d41ff9a96aa257d59322c1d4577ebf1101ccdfd792a0c5c4d93bb0c6d3')
+sha256sums=('6994cc1972d03b59d5c4a5028e9250fa9ec4c14856f902bcf7437339f01b141e')
 
 prepare() {
 	export GOPATH="$srcdir/gopath"
