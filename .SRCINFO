@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-jquery-migrate
+	pkgdesc = JQuery-Migrate 3.3.2 (XStatic packaging standard)
+	pkgver = 3.3.2.1
+	pkgrel = 1
+	url = https://github.com/jquery/jquery-migrate
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-jquery
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-jquery
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-JQuery-Migrate/XStatic-JQuery-Migrate-3.3.2.1.tar.gz
+	md5sums = 83382e3198c37ae0e011b693eb553106
+	sha256sums = 986f979a0e2da0a45341a033691811147fdf6eaa97a706b7ab3d9e7711cead6e
+	sha512sums = 0fb4f1c5b86a1063a2bd2366f5c153b4f7c66a7cba2d492ca9a518c452a87765c30b0eb1a1a141c817d7d20dfeaf7143ad60747b8805d77aa9aeef89697a7292
+
+pkgname = python-xstatic-jquery-migrate
+
+pkgname = python2-xstatic-jquery-migrate
+
