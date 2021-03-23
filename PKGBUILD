@@ -2,7 +2,7 @@
 
 _pkgbase=prjxray
 pkgbase="$_pkgbase-git"
-pkgname=("$_pkgbase-git" "python-$_pkgbase-git")
+pkgname=("$_pkgbase-tools-git" "python-$_pkgbase-git")
 pkgver=r3457.0ddf03b8
 pkgrel=1
 pkgdesc="Documenting the Xilinx 7-series bit-stream format"
@@ -71,9 +71,10 @@ check() {
 	env PYTHONPATH=. pytest tests/
 }
 
-package_prjxray-git() {
-	provides=("${pkgname%%-git}")
-	conflicts=("${pkgname%%-git}")
+package_prjxray-tools-git() {
+	provides=("${pkgname%%-git}" "prjxray" "prjxray-git")
+	conflicts=("${pkgname%%-git}" "prjxray")
+	replaces=("prjxray-git")
 
 	make -C build DESTDIR="$pkgdir/" install
 	install -Dm644 "$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

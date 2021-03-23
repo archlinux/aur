@@ -32,9 +32,13 @@ pkgbase = prjxray-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = prjxray-git
+pkgname = prjxray-tools-git
+	provides = prjxray-tools
 	provides = prjxray
+	provides = prjxray-git
+	conflicts = prjxray-tools
 	conflicts = prjxray
+	replaces = prjxray-git
 
 pkgname = python-prjxray-git
 	arch = any
