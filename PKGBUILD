@@ -1,6 +1,6 @@
 # Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
 pkgname=upstream-bin
-pkgver=0.1.9
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Desktop client for radicle (binary version)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "https://releases.radicle.xyz/${_package}"
     "https://raw.githubusercontent.com/radicle-dev/radicle-upstream/v${pkgver}/LICENSE"
 )
-sha256sums=('89ecb7ed6449d8a3fb41cc19ce323faf41e6906023b1fa631fb901f27100347f'
+sha256sums=('5ff0b002e0220f84b9190aec82108e8dc47539789b4f266ad9fc99b224878d05'
             'd1bb5e1a4cd3774790ae7024904d572c27267857ed004a062416d520bf4230ad')
 
 package() {
