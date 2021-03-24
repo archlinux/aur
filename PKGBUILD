@@ -3,7 +3,7 @@
 pkgname=python-generate_mac
 _pypiname=python-generate_mac
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Library for Generating Ethernet MAC addresses"
 url="https://github.com/GIJack/python-generate_mac"
 arch=('any')
