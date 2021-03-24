@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-sanitize
+	pkgdesc = Angular-Sanitize 1.2.1 (XStatic packaging standard)
+	pkgver = 1.2.1.1
+	pkgrel = 1
+	url = http://angular-ui.github.io/Sanitize/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Sanitize/XStatic-Angular-Sanitize-1.2.1.1.tar.gz
+	md5sums = 322929c54d7e28882095136049c540ba
+	sha256sums = 0e5dcc517cfa71fdd639188d00b057cdcacd00029898b72f021eb4db23fab93d
+	sha512sums = 0a9d894dfe9426103eb94cd67d97df64d19a7fac4d69743d71adbbaf85b0454bae1eab62848d518f68d92893ac3af137d3fd960bfcee001b2a714e51a46edde2
+
+pkgname = python-xstatic-angular-sanitize
+
+pkgname = python2-xstatic-angular-sanitize
+
