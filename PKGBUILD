@@ -5,12 +5,12 @@ pkgver=20201015
 pkgrel=1
 pkgdesc='A simple Taskbar for XFCE4'
 arch=('i686' 'x86_64')
-url='https://git.mirko.pm/brombinmirko/xfce4-taskbar-plugin.git'
+url='https://github.com/mirkobrombin/xfce4-taskbar-plugin.git'
 license=('GPL3')
 depends=('xfce4-panel>=4.4' 'xfce4-dev-tools' 'libwnck3' 'libxfce4ui' 'gtk3' 'cairo')
 makedepends=('git')
 
-source=("git+https://git.mirko.pm/brombinmirko/xfce4-taskbar-plugin")
+source=("git+https://github.com/mirkobrombin/xfce4-taskbar-plugin.git")
 sha512sums=('SKIP')
 
 pkgver() {
