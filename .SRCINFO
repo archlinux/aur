@@ -1,0 +1,20 @@
+pkgbase = libmatroska-git
+	pkgdesc = C++ libary to parse Matroska files
+	pkgver = 1.6.3.r7.g8cf9207
+	pkgrel = 1
+	url = https://matroska.org/index.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = libebml.so
+	provides = libmatroska
+	provides = libmatroska.so
+	conflicts = libmatroska
+	source = git+https://github.com/Matroska-Org/libmatroska.git
+	sha256sums = SKIP
+
+pkgname = libmatroska-git
+
