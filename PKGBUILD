@@ -9,7 +9,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=89.0a1.r638601+
+pkgver=89.0a1.r640483+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
