@@ -184,6 +184,9 @@ fi
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
+  # Remove mozilla vpn ads
+  patch -p1 -i ../mozilla-vpn-ad.patch
+  
   # To enable global menubar
   # Set these to true
   # browser.proton.appmenu.enabled
