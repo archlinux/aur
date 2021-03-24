@@ -2,7 +2,7 @@
 
 _pkgname=phallus-fonts
 pkgname=${_pkgname}-git
-pkgver=199.99faf2a
+pkgver=241.2581eb6
 pkgrel=1
 pkgdesc="Lemon and Uushi fonts by phallus"
 arch=('any')
@@ -48,5 +48,5 @@ package() {
     for f in *.pcf; do
         install -D -m644 "$f" "${pkgdir}/usr/share/fonts/misc/$f"
     done
-    install -D -m644 license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
