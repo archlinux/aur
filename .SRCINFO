@@ -1,0 +1,24 @@
+pkgbase = python-aredis
+	pkgdesc = Redis client for Python asyncio (has support for redis server, sentinel and cluster)
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/NoneGG/aredis
+	arch = x86_64
+	license = custom
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-mock
+	checkdepends = redis
+	checkdepends = redis-create-cluster
+	checkdepends = python-contextvars
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/aredis/aredis-1.1.8.tar.gz
+	source = test_redis_client.conf
+	source = config.sh
+	md5sums = 1ff3630906f395ddfef12b9dbf2b850e
+	md5sums = 1a8e476f369a657b1c41e56f8d3e8c5d
+	md5sums = 92fa2184a98d197b06996a91b543e3ee
+
+pkgname = python-aredis
+
