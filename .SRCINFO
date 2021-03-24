@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-notify
+	pkgdesc = Angular-Notify 2.5.1 (XStatic packaging standard)
+	pkgver = 2.5.1.0
+	pkgrel = 1
+	url = https://github.com/cgross/angular-notify
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Notify/XStatic-Angular-Notify-2.5.1.0.tar.gz
+	md5sums = 41c008d2861b015bc9c54efa8587798b
+	sha256sums = 2c6b5a966b8223d0ae476621fe83fb8376383bf2e511040646099d6a817a1daa
+	sha512sums = 0be6d4c0cca5018211d6f97f48883142138e6aced1f23b783e5373f639b4f9e8612fd38ae1dc9e9d4de4880cdb447c9d615235e073d4eaa63e3cdcd72f8b1d8f
+
+pkgname = python-xstatic-angular-notify
+
+pkgname = python2-xstatic-angular-notify
+
