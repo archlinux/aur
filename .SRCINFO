@@ -1,0 +1,16 @@
+pkgbase = toosheh-extractor
+	pkgdesc = Official toosheh extractor CLI for Linux. Please USE A VPN or any anti-sensorship tools before installing this package.
+	pkgver = 4.3.7509.24771
+	pkgrel = 1
+	url = htto://www.toosheh.org/download/
+	arch = x86_64
+	arch = aarch64
+	license = other
+	provides = toosheh-extractor
+	conflicts = toosheh-extractor
+	options = !strip
+	source = https://s3-us-west-2.amazonaws.com/lisa-app/extract-linux-x64.zip
+	md5sums = SKIP
+
+pkgname = toosheh-extractor
+
