@@ -2,7 +2,7 @@
 
 pkgname=dogehouse
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
@@ -31,7 +31,7 @@ build() {
     cargo install nj-cli
     yarn compile
     yarn build:globkey
-    rm -rf ./node_modules/globkey/!("dist")
+    rm -rf ./node_modules/globkey/!("dist|package.json|index.d.ts|yarn.lock")
     ./node_modules/.bin/electron-builder --linux --x64 --dir
 }
 
