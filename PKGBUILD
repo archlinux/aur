@@ -2,8 +2,8 @@
 # Contributor: willemw <willemw12@gmail.com>
 
 pkgname='castero'
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='TUI podcast client for the terminal'
 arch=('any')
 url='https://github.com/xgi/castero'
@@ -17,7 +17,7 @@ depends=('python-beautifulsoup4'
         'python-vlc')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2dd0f33965e8d5908b3ad04660d810add538b579e9aa75c7237855a8193daf8e')
+sha256sums=('f6a37cf0102a0fe7b843dd0a38b86674b888eb7a494347d54f4823d41e558450')
 
 build() {
   cd "${pkgname}-${pkgver}"
