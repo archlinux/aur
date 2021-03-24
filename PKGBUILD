@@ -1,16 +1,16 @@
-# Maintainer: Semyon Ivanov <semyon95@gmail.com>
+# Maintainer: Alex Sarum <rum.274.4 at gmail dot com>
+# Cotributor: Semyon Ivanov <semyon95@gmail.com>
 
 pkgname=devspace-bin
-pkgver=4.14.0
+pkgver=5.9.1
 pkgrel=1
-pkgdesc="Client-only, open-source dev tool for Kubernetes"
+pkgdesc="The Fastest Developer Tool for Kubernetes, develop software directly inside Kubernetes"
 arch=('x86_64')
-url="https://devspace.cloud"
-license=('apache')
-source=($pkgname-$pkgver::https://github.com/devspace-cloud/devspace/releases/download/v$pkgver/devspace-linux-amd64)
-sha256sums=('2866bd1cbfcc2ff94e866df7d63a932fcb0caa682814435170212a6390915f62')
+url='https://devspace.sh'
+license=('Apache')
+source=($pkgname-$pkgver::https://github.com/loft-sh/devspace/releases/download/v$pkgver/devspace-linux-amd64)
+sha256sums=('fab54f355fcb0629496069ab694b5ffbaf4145739cbd7bf705eb5ad73d34721b')
 
 package() {
-    install -Dm 755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/devspace"	
+    install -Dm 755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/devspace"
 }
-
