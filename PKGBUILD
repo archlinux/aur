@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=4.0.9.2
+pkgver=4.0.9.3
 pkgrel=1
 pkgdesc='Litecoin wallet'
 arch=(any)
@@ -27,11 +27,10 @@ depends=(
   python-websocket-client
   zbar
 )
-makedepends=(python-requests)
 source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
 b2sums=(
-  b16b32ce554be66700074418e5c139e2152b79f0c84d312940aa4915a3d16f6a3ea490810060db97b32e1f0fcb72c29012260304e1bcaef75f392fe9f2e9b680
+  d8eda2557416aeda0767f0b77530069beb46a9410e43618bd22e9f53815a7cac9d81668ca5be6271bd5dd0e9c57190c94085582aa83a231388b1ac2ef670c8c5
   SKIP
 )
 
