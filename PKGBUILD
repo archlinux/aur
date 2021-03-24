@@ -6,7 +6,7 @@
 # Maintainer: Matt Coffin <mcoffin13 at gmail.com>
 pkgname=wl-clipboard-rs
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A safe Rust reimplementation of the Wayland command-line copy/paste utilities"
 arch=('x86_64')
@@ -34,6 +34,11 @@ package() {
 		mkdir -p "$pkgdir/usr"
 	fi
 	cargo install --path "$pkgname-$pkgver" --root "$pkgdir/usr" --bins
+
+	local _f
+	for _f in "$pkgdir"/usr/{.crates.toml,.crates2.json}; do
+		[ ! -e "$_f" ] || rm "$_f"
+	done
 
 	cd "$pkgname-$pkgver"
 
