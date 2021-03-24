@@ -1,6 +1,6 @@
 pkgbase = libcuckoo-git
 	pkgdesc = libcuckoo provides a high-performance, compact hash table that allows multiple concurrent reader and writer threads.
-	pkgver = r364.86d5ef0
+	pkgver = 0.3.r0.g8785773
 	pkgrel = 1
 	url = https://github.com/efficient/libcuckoo
 	arch = any
