@@ -8,10 +8,11 @@ pkgbase = lazpaint-bin
 	license = GPL3
 	depends = gtk2
 	depends = desktop-file-utils
+	provides = lazpaint
+	conflicts = lazpaint
 	source_x86_64 = https://github.com/bgrabitmap/lazpaint/releases/download/v7.1.6/lazpaint7.1.6_linux64.deb
 	sha256sums_x86_64 = 66ecc46318975d34c9f9b3fce8168010b7c22134f350f638b76d8d10c097cf8c
 	source_i686 = https://github.com/bgrabitmap/lazpaint/releases/download/v7.1.6/lazpaint7.1.6_linux32.deb
 	sha256sums_i686 = 148601cef036c41f955b4e26bb0e5706ab3d744e5a1081c6b5eec88dba57fab9
 
 pkgname = lazpaint-bin
-
