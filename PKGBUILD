@@ -2,8 +2,8 @@
 
 pkgname=qqmusic-bin
 _pkgname=qqmusic
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="tencent qq music"
 arch=("x86_64")
 url="https://y.qq.com/"
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 source=("qqmusic_${pkgver}_amd64.deb::http://dldir1.qq.com/music/clntupate/linux/deb/qqmusic_${pkgver}_amd64.deb")
 
 
-sha512sums=('cb6813e0a349d1a4dbea85cfdf80e8555ecce8b60e6adea46d4e9532d8874669066a14af7a541039c1e0b599c897d12e144c1ae3a2f7aab5b12fd7fe4856bf03')
+sha512sums=('0b7603522ba4bf057b41cb3132efcd6b31d9e0a121f2b9279643ed0d9fe37e5c327e8b0b3aaa3916facf611d5e5e2d2822c80f9da2d1d221e3dedd6398e7508c')
 
 package(){
     cd ${srcdir}
