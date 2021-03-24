@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbsd-git
-pkgver=0.9.1.r18.g7cfa2d4
+pkgver=0.11.3.r11.g8f59221
 pkgrel=1
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
 url="https://libbsd.freedesktop.org/wiki/"
 license=('BSD')
-depends=('glibc')
+depends=('glibc' 'libmd')
 makedepends=('git')
 provides=('libbsd')
 conflicts=('libbsd')
