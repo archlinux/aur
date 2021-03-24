@@ -1,15 +1,15 @@
 # Maintainer: Marko Korhonen <reekymarko@reekynet.com>
 
 pkgname=beets-check
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Verify and store checksums in your beets library"
 arch=('any')
-url=""
+url="https://github.com/geigerzaehler/beets-check"
 license=('MIT')
 depends=('python' 'beets>=1.4.3')
 source=("https://github.com/geigerzaehler/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('3713ab4aa776f40dd00d9867323b4204')
+md5sums=('8343240c1e4e4c2496f924b8c2faf042')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
