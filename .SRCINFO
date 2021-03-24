@@ -8,6 +8,7 @@ pkgbase = python-spacy
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = python-pip
 	makedepends = python-wheel
 	makedepends = cython
 	depends = python-catalogue

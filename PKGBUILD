@@ -27,7 +27,11 @@ depends=(
 	python-ujson
 	python-wasabi
 )
-makedepends=(python-wheel cython)
+makedepends=(
+	python-pip
+	python-wheel
+	cython
+)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('9f7a09fbad53aac2a3cb7696a902de62b94575a15d249dd5e26a98049328060e')
 
