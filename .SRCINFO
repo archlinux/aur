@@ -1,6 +1,6 @@
 pkgbase = watson
 	pkgdesc = A wonderful CLI to track your time!
-	pkgver = 1.10.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://tailordev.github.io/Watson/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = watson
 	depends = python-click-didyoumean
 	depends = python-requests
 	options = !emptydirs
-	source = watson-1.10.0.tar.gz::https://github.com/TailorDev/Watson/archive/1.10.0.tar.gz
-	sha256sums = aa5f40fd6f1383c0ce0065a90c2d3f92a1f57a00e4000cb1b6ebe60f90dac17f
+	source = watson-2.0.0.tar.gz::https://github.com/TailorDev/Watson/archive/2.0.0.tar.gz
+	sha256sums = aa69188e8ac56c35ecd095f7cccf2b075e97c92945a813253b0a69b5c3a737dd
 
 pkgname = watson
 
