@@ -17,7 +17,7 @@ _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 pkgname="grub-git"
-pkgver=2.04.rc1.r19.g4e7b5bb3b
+pkgver=2.06.rc1.r0.ga53e530f8
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -46,25 +46,25 @@ install="${pkgname}.install"
 source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
         "grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
-        '10_linux-detect-archlinux-initramfs.patch'
         'add-GRUB_COLOR_variables.patch'
+        'detect-archlinux-initramfs.patch'
         'grub.default')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
-            'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            '690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3')
+            '5dee6628c48eef79812bb9e86ee772068d85e7fcebbd2b2b8d1e19d24eda9dab'
+            '580a81b00088773d554832b0d74c85bf16fec37728802973c45993bcb97cd7d5'
+            '791fadf182edf8d5bee4b45c008b08adce9689a9624971136527891a8f67d206')
  
 prepare() {
     cd grub
 
-    # Patch grub-mkconfig to detect Arch Linux initramfs images.
-    patch -Np1 -i "$srcdir"/10_linux-detect-archlinux-initramfs.patch
-
     # Patch to enable GRUB_COLOR_* variables in grub-mkconfig.
     # Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
     patch -Np1 -i "$srcdir"/add-GRUB_COLOR_variables.patch
+
+    # Patch grub-mkconfig to detect Arch Linux initramfs images.
+    patch -Np1 -i "$srcdir"/detect-archlinux-initramfs.patch
 
     # Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme.
     sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
@@ -93,9 +93,6 @@ build() {
     export GRUB_CONTRIB="$srcdir"/grub-extras
     export GNULIB_SRCDIR="$srcdir"/gnulib
 
-    # Undefined references to __stack_chk_fail
-    CFLAGS=${CFLAGS/-fstack-protector-strong}
-
     # Undefined references to _GLOBAL_OFFSET_TABLE_
     CFLAGS=${CFLAGS/-fno-plt}
 
@@ -104,9 +101,6 @@ build() {
     for _arch in $_build_platforms; do
         mkdir "$srcdir"/grub/build_"$_arch"
         cd "$srcdir"/grub/build_"$_arch"
-
-        # Explicitly set ac_cv_header_sys_sysmacros_h
-        # https://savannah.gnu.org/bugs/index.php?55520
 
         # * _FORTIFY_SOURCE requires compiling with optimization warnings
         #   become errors due to a -Werror added during ./configure tests.
@@ -126,8 +120,7 @@ build() {
                 --enable-nls \
                 --disable-silent-rules \
                 --disable-werror \
-                CPPFLAGS="$CPPFLAGS -O2" \
-                ac_cv_header_sys_sysmacros_h=yes
+                CPPFLAGS="$CPPFLAGS -O2" 
         make
     done
 }
@@ -140,9 +133,9 @@ package() {
         make DESTDIR="$pkgdir" bashcompletiondir=/usr/share/bash-completion/completions install
     done
 
-	# Install /etc/default/grub (used by grub-mkconfig)
-	install -D -m0644 "$srcdir"/grub.default "$pkgdir"/etc/default/grub
-	
+    # Install /etc/default/grub (used by grub-mkconfig)
+    install -D -m0644 "$srcdir"/grub.default "$pkgdir"/etc/default/grub
+
     # Tidy up
     find "$pkgdir"/usr/lib/grub \( -name '*.module' -o \
                                    -name '*.image' -o \
