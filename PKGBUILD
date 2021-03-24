@@ -1,30 +1,33 @@
-# Maintainer: Alfin Bakhtiar Ilhami <alfin at nuclea dot id>
-# Maintainer: Jan-Tarek Butt <tarek at ring0 dot de>
+# Maintainer: Hunter Wittenborn <git@hunterwittenborn.me>
+# Past Maintainer: Alfin Bakhtiar Ilhami <alfin at nuclea dot id>
+# Past Maintainer: Jan-Tarek Butt <tarek at ring0 dot de>
 
-pkgbase=bootstrap-studio
 pkgname=bootstrap-studio
-pkgver=5.2.1
-pkgrel=3
-pkgdesc='A powerful desktop app for creating responsive websites using the Bootstrap framework.'
-url='https://bootstrapstudio.io/'
-arch=('x86_64')
-source=(
-	$pkgname.AppImage::'https://bootstrapstudio.io/releases/desktop/'$pkgver'/Bootstrap%20Studio.AppImage'
-	launcher.sh::'https://bootstrapstudio.io/releases/desktop/'$pkgver'/launcher.sh'
-)
+pkgver=5.5.4
+pkgrel=1
+pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
+arch=("x86_64")
+license=("custom")
+url="https://bootstrapstudio.io/"
 
-sha512sums=(
-	'5a12934eba7611b317d2c0611232339628e3c2dc434703d483c4ff18eab5a405cce2d1fbb4ffff2cf353575d38f3a925747fa5f4d45be9d44982fb6d92f41f2e'
-	'df0febc0427ee86caab4959657d24fdb20150c994a7825b229694579f9bfb5c32ebf16988195e1706f2031aeae794842af7356b68b91068293a51ae12b8b61bd'
-)
+source=("https://bootstrapstudio.io/releases/desktop/${pkgver}/Bootstrap Studio.AppImage")
+sha256sums=("SKIP")
 
-package() {
-	mv $pkgname.AppImage 'Bootstrap Studio.AppImage'
-	sed -i '55,60d' launcher.sh
-	sed -i '8,12d' launcher.sh
-	bash launcher.sh
+prepare() {
+	chmod +x "Bootstrap Studio.AppImage"
+	./"Bootstrap Studio.AppImage" --appimage-extract
 }
 
-post_remove() {
-	bash launcher.sh --uninstall
+package() {
+	mkdir -p "${pkgdir}/opt/bootstrap-studio"
+	cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/bootstrap-studio"
+
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -s "${pkgdir}/opt/bootstrap-studio/squashfs-root/AppRun" "${pkgdir}/usr/bin/bootstrap-studio"
+
+	mkdir -p "${pkgdir}/usr/share/applications"
+	cp -r "${srcdir}/squashfs-root/bstudio.desktop" "${pkgdir}/usr/share/applications/"
+
+	mkdir -p "${pkgdir}/usr/share/icons/hicolor/0x0/apps/"
+	cp -r "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/bstudio.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/"
 }

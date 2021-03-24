@@ -11,3 +11,15 @@ pkgbase = bootstrap-studio
 
 pkgname = bootstrap-studio
 
+pkgbase = bootstrap-studio
+	pkgdesc = Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework.
+	pkgver = 5.5.4
+	pkgrel = 1
+	url = https://bootstrapstudio.io/
+	arch = x86_64
+	license = custom
+	source = https://bootstrapstudio.io/releases/desktop/5.5.4/Bootstrap Studio.AppImage
+	sha256sums = SKIP
+
+pkgname = bootstrap-studio
+
