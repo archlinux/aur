@@ -1,0 +1,18 @@
+pkgbase = openstamanager
+	pkgdesc = Il software gestionale open source per l'assistenza tecnica e la fatturazione
+	pkgver = 2.4.22
+	pkgrel = 1
+	url = https://www.openstamanager.com/
+	arch = any
+	license = GPL3
+	depends = php>=5.6
+	optdepends = mariadb: database
+	optdepends = apache: web server
+	optdepends = nginx: web server
+	options = !strip
+	backup = etc/webapps/openstamanager/config.inc.php
+	source = https://github.com/devcode-it/openstamanager/releases/download/v2.4.22/openstamanager-2.4.22.zip
+	sha256sums = SKIP
+
+pkgname = openstamanager
+
