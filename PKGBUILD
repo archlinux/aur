@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta9.r0.g5cb72aade9
+pkgver=9.3.rc0.r0.g2c25f07cfd
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -39,7 +39,6 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
-        sagemath-singular-4.2.patch
         sagemath-pari-2.13.patch
         sagemath-lrcalc2.patch
         sagemath-eclib-20210310.patch)
@@ -47,10 +46,9 @@ sha256sums=('SKIP'
             '4fdf318ec9a54567877b93af8c668ad925f2a82370048db158d134b58b064204'
             'af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
-            '9896486aae7c9903012275bb53980049382424457e7edb2ebf9b186e23135bcc'
             '33907a0681900b9580b8aa5b3d2ddb2d609977076c38fdbc47279ecef4104ed1'
             '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9'
-            'a79f1165fd262fcb52ac7a6afc33aa8d75182fa16595aa9ba1aaa0b2ebb45c19')
+            'e7b31f5e7ea88681c6eda41e5a74a2859a12dd128e75c00db3cfbd1d8ddf080d')
 
 pkgver() {
   cd sage
@@ -61,8 +59,6 @@ prepare(){
   cd sage
 
 # Upstream patches
-# Fixes for singular 4.2 https://trac.sagemath.org/ticket/25993
-  patch -p1 -i ../sagemath-singular-4.2.patch
 # Port to PARI 2.13 https://trac.sagemath.org/ticket/30801
   patch -p1 -i ../sagemath-pari-2.13.patch
 # Replace lrcalc.pyx with a wrapper over lrcalc's python bindings https://trac.sagemath.org/ticket/31355

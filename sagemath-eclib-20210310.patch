@@ -1,25 +1,5 @@
-diff --git a/build/pkgs/eclib/checksums.ini b/build/pkgs/eclib/checksums.ini
-index 4daaf05d8b..b37bff93c0 100644
---- a/build/pkgs/eclib/checksums.ini
-+++ b/build/pkgs/eclib/checksums.ini
-@@ -1,4 +1,4 @@
--tarball=eclib-20190909.tar.bz2
--sha1=0e994c0de95ef03ef19ad5030a2cacbb83c76bbd
--md5=1a67217a7fa762646d43c7bec8a73028
--cksum=4240278408
-+tarball=eclib-20210310.tar.bz2
-+sha1=73437ac8deae94f00e7713405b3251d9c81f95e4
-+md5=4ac988bc46869866f076f7bea0fdaa6b
-+cksum=2130748042
-diff --git a/build/pkgs/eclib/package-version.txt b/build/pkgs/eclib/package-version.txt
-index 4defdea11f..3384f6c732 100644
---- a/build/pkgs/eclib/package-version.txt
-+++ b/build/pkgs/eclib/package-version.txt
-@@ -1 +1 @@
--20190909
-+20210310
 diff --git a/src/sage/libs/eclib/__init__.pxd b/src/sage/libs/eclib/__init__.pxd
-index 3f99f998a5..d44d4fba86 100644
+index 3f99f99..d44d4fb 100644
 --- a/src/sage/libs/eclib/__init__.pxd
 +++ b/src/sage/libs/eclib/__init__.pxd
 @@ -12,9 +12,11 @@ from libcpp.pair cimport pair
@@ -38,7 +18,7 @@ index 3f99f998a5..d44d4fba86 100644
  cdef extern from "eclib/xmod.h": pass
  cdef extern from "eclib/svector.h": pass
 diff --git a/src/sage/libs/eclib/interface.py b/src/sage/libs/eclib/interface.py
-index e898456720..493b5f1347 100644
+index e898456..493b5f1 100644
 --- a/src/sage/libs/eclib/interface.py
 +++ b/src/sage/libs/eclib/interface.py
 @@ -21,17 +21,16 @@ Check that ``eclib`` is imported as needed::
@@ -738,7 +718,7 @@ index e898456720..493b5f1347 100644
 -        return [[Integer(x), Integer(y), Integer(z)] for (x,y,z) in L]
 +        return self.__mw.getbasis()
 diff --git a/src/sage/libs/eclib/mwrank.pyx b/src/sage/libs/eclib/mwrank.pyx
-index b82831dc5f..ce5090c80d 100644
+index b82831d..ce5090c 100644
 --- a/src/sage/libs/eclib/mwrank.pyx
 +++ b/src/sage/libs/eclib/mwrank.pyx
 @@ -28,6 +28,7 @@ from cysignals.signals cimport sig_on, sig_off
@@ -1156,22 +1136,24 @@ index b82831dc5f..ce5090c80d 100644
  
      def getbasis(self):
 diff --git a/src/sage/libs/eclib/newforms.pyx b/src/sage/libs/eclib/newforms.pyx
-index b50b6061aa..90846347e2 100644
+index b50b606..96263cd 100644
 --- a/src/sage/libs/eclib/newforms.pyx
 +++ b/src/sage/libs/eclib/newforms.pyx
-@@ -215,6 +216,7 @@ cdef class ECModularSymbol:
-         self.sign = sign
+@@ -140,6 +140,7 @@ cdef class ECModularSymbol:
  
-         self.nfs = new newforms(n, 0)
-+        nap = 500 # eclib will increase this to 100*sqrt(N) if necessary
-         self.nfs.createfromcurve(sign, CR, nap)
-         sig_off()
+         - ``nap`` - (int, default 1000): the number of ap of E to use
+          in determining the normalisation of the modular symbols.
++         Note that eclib will increase this to 100*sqrt(N) if necessary.
+ 
+         EXAMPLES::
  
 diff --git a/src/sage/libs/eclib/t b/src/sage/libs/eclib/t
 new file mode 100644
-index 0000000000..e69de29bb2
+index 00000000..e69de29
+--- /dev/null
++++ b/src/sage/libs/eclib/t
 diff --git a/src/sage/libs/eclib/wrap.cpp b/src/sage/libs/eclib/wrap.cpp
-index 58c18ab67b..28e6da869b 100644
+index 58c18ab..28e6da8 100644
 --- a/src/sage/libs/eclib/wrap.cpp
 +++ b/src/sage/libs/eclib/wrap.cpp
 @@ -178,11 +178,11 @@ int mw_rank(struct mw* m)
@@ -1201,8 +1183,43 @@ index 58c18ab67b..28e6da869b 100644
  }
  
  double two_descent_regulator(struct two_descent* t)
+diff --git a/src/sage/schemes/elliptic_curves/ell_modular_symbols.py b/src/sage/schemes/elliptic_curves/ell_modular_symbols.py
+index a32f64e..30a61e1 100644
+--- a/src/sage/schemes/elliptic_curves/ell_modular_symbols.py
++++ b/src/sage/schemes/elliptic_curves/ell_modular_symbols.py
+@@ -298,19 +298,27 @@ class ModularSymbolECLIB(ModularSymbol):
+             sage: m(0)
+             1/5
+ 
+-        If ``nap`` is too small, the normalization in eclib may be incorrect.  See :trac:`31317`::
++        If ``nap`` is too small, the normalization in eclib used to be
++        incorrect (see :trac:`31317`), but since ``eclib`` version
++        v20210310 the value of ``nap`` is increased automatically by
++        ``eclib``::
+ 
+             sage: from sage.schemes.elliptic_curves.ell_modular_symbols import ModularSymbolECLIB
+             sage: E = EllipticCurve('1590g1')
+             sage: m = ModularSymbolECLIB(E, sign=+1, nap=300)
+             sage: [m(a/5) for a in [1..4]]
+-            [1001/153, -1001/153, -1001/153, 1001/153]
++            [13/2, -13/2, -13/2, 13/2]
+ 
+-        Those values are incorrect.  The correct values are::
++        These values are correct, and increasing ``nap`` has no
++        effect.  The correct values may verified by the numerical
++        implementation::
+ 
+             sage: m = ModularSymbolECLIB(E, sign=+1, nap=400)
+             sage: [m(a/5) for a in [1..4]]
+             [13/2, -13/2, -13/2, 13/2]
++            sage: m = E.modular_symbol(implementation='num')
++            sage: [m(a/5) for a in [1..4]]
++            [13/2, -13/2, -13/2, 13/2]
+ 
+         """
+         from sage.libs.eclib.newforms import ECModularSymbol
 diff --git a/src/sage/schemes/elliptic_curves/ell_rational_field.py b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-index a792afce8d..c894cbc766 100644
+index a792afc..5a56389 100644
 --- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
 @@ -779,7 +779,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
@@ -1214,7 +1231,38 @@ index a792afce8d..c894cbc766 100644
              sage: type(EE)
              <class 'sage.libs.eclib.interface.mwrank_EllipticCurve'>
              sage: EE.isogeny_class()
-@@ -2525,7 +2525,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -1283,22 +1283,21 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+             sage: [Mminus(1/i) for i in [1..11]]
+             [0, 0, 1/2, 1/2, 0, 0, -1/2, -1/2, 0, 0, 0]
+ 
+-        With the default 'eclib' implementation, if ``nap`` is too
+-        small, the normalization may be computed incorrectly.  See
+-        :trac:`31317`::
++        With older version of eclib, in the default 'eclib'
++        implementation, if ``nap`` is too small, the normalization may
++        be computed incorrectly (see :trac:`31317`).  This was fixed
++        in eclib version v20210310, since now eclib increase ``nap``
++        automatically. The following used to give incorrect results.
++        See :trac:`31443`::
+ 
+             sage: E = EllipticCurve('1590g1')
+             sage: m = E.modular_symbol(nap=300)
+             sage: [m(a/5) for a in [1..4]]
+-            [1001/153, -1001/153, -1001/153, 1001/153]
++            [13/2, -13/2, -13/2, 13/2]
+ 
+-        Those values are incorrect.  The correct values may be
+-        obtained by increasing ``nap``, as verified by the numerical
++        These values are correct, as verified by the numerical
+         implementation::
+ 
+-            sage: m = E.modular_symbol(nap=400)
+-            sage: [m(a/5) for a in [1..4]]
+-            [13/2, -13/2, -13/2, 13/2]
+             sage: m = E.modular_symbol(implementation='num')
+             sage: [m(a/5) for a in [1..4]]
+             [13/2, -13/2, -13/2, 13/2]
+@@ -2525,7 +2524,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
          assert reg.parent() is R
          return reg
  
@@ -1223,7 +1271,7 @@ index a792afce8d..c894cbc766 100644
          """
          Given a list of rational points on E, compute the saturation in
          E(Q) of the subgroup they generate.
-@@ -2538,17 +2538,24 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -2538,17 +2537,24 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
          -  ``verbose (bool)`` - (default: ``False``), if ``True``, give
             verbose output
  
@@ -1255,7 +1303,7 @@ index a792afce8d..c894cbc766 100644
  
          -  ``saturation (list)`` - points that form a basis for
             the saturation
-@@ -2559,12 +2566,32 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -2559,12 +2565,32 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
          -  ``regulator (real with default precision)`` -
             regulator of saturated points.
  
@@ -1293,7 +1341,7 @@ index a792afce8d..c894cbc766 100644
  
          EXAMPLES::
  
-@@ -2577,7 +2604,9 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -2577,7 +2603,9 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
  
          TESTS:
  
@@ -1304,7 +1352,7 @@ index a792afce8d..c894cbc766 100644
  
              sage: E = EllipticCurve([1, 0, 1, -977842, -372252745])
              sage: P = E([-192128125858676194585718821667542660822323528626273/336995568430319276695106602174283479617040716649, 70208213492933395764907328787228427430477177498927549075405076353624188436/195630373799784831667835900062564586429333568841391304129067339731164107, 1])
-@@ -2585,7 +2614,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -2585,7 +2613,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
              113.302910926080
              sage: E.saturation([P])
              ([(-192128125858676194585718821667542660822323528626273/336995568430319276695106602174283479617040716649 : 70208213492933395764907328787228427430477177498927549075405076353624188436/195630373799784831667835900062564586429333568841391304129067339731164107 : 1)], 1, 113.302910926080)
@@ -1313,7 +1361,7 @@ index a792afce8d..c894cbc766 100644
              sage: 2*Q == 2*P
              True
              sage: ind
-@@ -2634,36 +2663,16 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -2634,36 +2662,16 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
          c = Emin.mwrank_curve()
          from sage.libs.eclib.all import mwrank_MordellWeil
          mw = mwrank_MordellWeil(c, verbose)
