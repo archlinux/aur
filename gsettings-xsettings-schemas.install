@@ -1,0 +1,16 @@
+post_upgrade() {
+  echo
+  echo "========================================================"
+  echo "/                                                      /"
+  echo "/  gsettings-xsettings-schemas is not needed anymore!  /"
+  echo "/                                                      /"
+  echo "/  Update gsetttings-desktop-schemas to v40.0          /"
+  echo "/  and remove gsettings-xsettings-schemas.             /"
+  echo "/                                                      /"
+  echo "========================================================"
+  echo
+}
+
+post_install() {
+  post_upgrade
+}
