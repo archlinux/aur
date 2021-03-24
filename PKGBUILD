@@ -3,7 +3,7 @@
 pkgname=qqmusic-bin
 _pkgname=qqmusic
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="tencent qq music"
 arch=("x86_64")
 url="https://y.qq.com/"
@@ -23,7 +23,6 @@ package(){
     mkdir -p "${pkgdir}"/usr/bin
     ln -s /opt/qqmusic/qqmusic "${pkgdir}"/usr/bin/qqmusic
     sed -i 's|Exec=/opt/QQmusic/qqmusic %U|Exec=qqmusic %U|g' $pkgdir/usr/share/applications/qqmusic.desktop 
-    sed -i 's|QQmusic|QQ音乐|g' $pkgdir/usr/share/applications/qqmusic.desktop 
-    sed -i 's|QQMusic|QQ音乐|g' $pkgdir/usr/share/applications/qqmusic.desktop 
+    sed -i 's|QQmusic|qqmusic|g' $pkgdir/usr/share/applications/qqmusic.desktop 
 }
  
