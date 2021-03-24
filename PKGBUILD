@@ -3,7 +3,7 @@
 # Contributor: Peter Kosyh <p.kosyhgmail.com>
 
 pkgname=instead
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="a quest interpreter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'gtk3' 'luajit')
 makedepends=('cmake')
 optdepends=('instead-launcher: install and update INSTEAD games from net','insteadman: Manager for INSTEAD interpreter.')
 source=(https://github.com/instead-hub/instead/releases/download/${pkgver}/instead_${pkgver}.tar.gz)
-sha256sums=('1a39a8999254e585dbbc94b3da3ed8b28669d01c70f1f9e17864af4ad91f77b3')
+sha256sums=('ff705290646b764a189f08e852deee82baa56f467f5f3fe9e687df81c3c819d6')
 
 build() {
   cd "${srcdir}"
