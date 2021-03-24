@@ -6,7 +6,7 @@
 
 pkgname=lib32-tbb
 pkgver=2020.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High level abstract threading library (32-bit)"
 arch=('x86_64')
 url="https://threadingbuildingblocks.org"
@@ -20,7 +20,8 @@ sha512sums=('ea1ffd22c7234d715b8c46a4e51b40719c7a9b8837ab3166f1da5a2c6061167c2be
 
 build() {
   cd "oneTBB-${pkgver}"
-  make
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+  make arch=ia32
 }
 
 package() {
