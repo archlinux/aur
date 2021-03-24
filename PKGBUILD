@@ -5,8 +5,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-browser
 pkgver=26.1.1
-pkgrel=2
-pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
+pkgrel=3
+pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
@@ -26,13 +26,15 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio" "obs-linuxbrowser")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "git+https://github.com/Mixer/ftl-sdk.git"
-        "git+https://github.com/obsproject/obs-browser.git")
-md5sums=("SKIP" "SKIP" "SKIP")
+        "git+https://github.com/obsproject/obs-browser.git"
+        "git+https://github.com/obsproject/obs-vst.git")
+md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 prepare() {
   cd $pkgname
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
+  git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git submodule update
 }
 

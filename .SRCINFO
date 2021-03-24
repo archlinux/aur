@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
-	pkgdesc = Free and open source software for video recording and live streaming. Built with the browser plugin.
+	pkgdesc = Free and open source software for video recording and live streaming. Built with browser, vst plugins.
 	pkgver = 26.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -38,6 +38,8 @@ pkgbase = obs-studio-browser
 	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=26.1.1
 	source = git+https://github.com/Mixer/ftl-sdk.git
 	source = git+https://github.com/obsproject/obs-browser.git
+	source = git+https://github.com/obsproject/obs-vst.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
