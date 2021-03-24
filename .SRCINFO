@@ -1,21 +1,16 @@
 pkgbase = wren
-	pkgdesc = Small, fast, class-based concurrent scripting language
-	pkgver = 0.1.0
-	pkgrel = 2
-	url = http://wren.io/
+	pkgdesc = Small, fast, class-based concurrent scripting language.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://wren.io/
 	arch = x86_64
 	license = MIT
-	makedepends = setconf
-	makedepends = libuv
-	makedepends = git
-	makedepends = python2
-	depends = glibc
-	source = git+https://github.com/munificent/wren.git#commit=417ed7a
-	source = git+https://chromium.googlesource.com/external/gyp.git#commit=aae1e3efb50786df20e9572621fb746865f0df53
-	source = git+https://github.com/libuv/libuv.git#commit=cd37fd0
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	makedepends = python3
+	depends = libuv
+	source = wren-0.3.0.tar.gz::https://github.com/wren-lang/wren/archive/refs/tags/0.3.0.tar.gz
+	source = wren-cli-0.3.0.tar.gz::https://github.com/wren-lang/wren-cli/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = c566422b52a18693f57b15ae4c9459604e426ea64eddb5fbf2844d8781aa4eb7
+	sha256sums = a498d2ccb9a723e7163b4530efbaec389cc13e6baaf935e16cbd052a739b7265
 
 pkgname = wren
 

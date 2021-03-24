@@ -1,0 +1,8 @@
+# PKGBUILD
+src
+pkg
+
+# Tarfiles
+wren*.tar.gz
+wren-cli*.tar.gz
+*.pkg.tar.zst

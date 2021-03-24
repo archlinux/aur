@@ -1,45 +1,39 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Techcable <Techcable@techcable.net>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Tetsumi <tetsumi@vmail.me>
 
 pkgname=wren
-pkgver=0.1.0
-pkgrel=2
-pkgdesc='Small, fast, class-based concurrent scripting language'
-makedepends=('setconf' 'libuv' 'git' 'python2')
-depends=('glibc')
+pkgver=0.3.0
+pkgrel=1
+pkgdesc='Small, fast, class-based concurrent scripting language. '
+makedepends=('python3')
+depends=('libuv')
 license=('MIT')
 arch=('x86_64')
-url='http://wren.io/'
-source=("git+https://github.com/munificent/wren.git#commit=417ed7a"
-        "git+https://chromium.googlesource.com/external/gyp.git#commit=aae1e3efb50786df20e9572621fb746865f0df53"
-        "git+https://github.com/libuv/libuv.git#commit=cd37fd0")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
-
-prepare() {
-  # silence warnings
-  setconf wren/util/wren.mk C_WARNINGS '-w'
-  sed 's/ rcu / rc /g' -i wren/util/wren.mk
-  # libuv and gyp
-  setconf wren/util/libuv.py LIB_UV_VERSION "\"v$(pkg-config --modversion libuv)\""
-  mkdir -p wren/deps
-  cp -ru libuv wren/deps
-  mkdir -p wren/deps/libuv/build
-  cp -ru gyp wren/deps/libuv/build/gyp
-  # no downloads, use the existing git clones
-  sed -i 's:download:>/dev/null:g' wren/util/wren.mk
-}
+url='https://wren.io/'
+source=("wren-$pkgver.tar.gz::https://github.com/wren-lang/wren/archive/refs/tags/${pkgver}.tar.gz"
+        "wren-cli-$pkgver.tar.gz::https://github.com/wren-lang/wren-cli/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('c566422b52a18693f57b15ae4c9459604e426ea64eddb5fbf2844d8781aa4eb7'
+            'a498d2ccb9a723e7163b4530efbaec389cc13e6baaf935e16cbd052a739b7265')
 
 build() {
-  make -C wren
+    make -C "${srcdir}/wren-${pkgver}/projects/make"
+    make -C "${srcdir}/wren-cli-${pkgver}/projects/make"
 }
 
 package() {
-  install -Dm755 wren/bin/wren "$pkgdir/usr/bin/wren"
-  install -Dm644 wren/src/include/wren.h "$pkgdir/usr/include/wren.h"
-  install -Dm755 wren/lib/libwren.so "$pkgdir/usr/lib/libwren.so"
-  install -Dm644 wren/LICENSE "$pkgdir/usr/share/licenses/wren/LICENSE"
+    pushd "${srcdir}/wren-${pkgver}"
+    install -Dm755 ./bin/wren_test "$pkgdir/usr/bin/wren_test"
+    install -Dm644 ./src/include/wren.h "$pkgdir/usr/include/wren.h"
+    install -Dm755 ./lib/libwren.so "$pkgdir/usr/lib/libwren.so"
+    install -Dm644 ./lib/libwren.a "$pkgdir/usr/lib/libwren.a"
+    install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/wren/LICENSE"
+
+    popd
+    pushd "${srcdir}/wren-cli-${pkgver}"
+
+    # NOTE: Rename 'wren_cli' to plain 'wren'
+    install -Dm755 ./bin/wren_cli "$pkgdir/usr/bin/wren"
+    install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/wren/cli-LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
