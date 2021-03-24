@@ -42,6 +42,7 @@ http
     server
     {
         listen          443 ssl;
+        listen          [::]:443 ssl;
         server_name     subdomain.domain.me;
 
         # SSL
