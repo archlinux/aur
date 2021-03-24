@@ -1,0 +1,13 @@
+pkgbase = redis-create-cluster
+	pkgdesc = A small script used to easily start a big number of Redis instances configured to run in cluster mode
+	pkgver = 6.2.1
+	pkgrel = 1
+	url = https://github.com/redis/redis/tree/unstable/utils/create-cluster
+	arch = any
+	license = BSD
+	depends = redis
+	source = https://raw.githubusercontent.com/redis/redis/6.2.1/utils/create-cluster/create-cluster
+	md5sums = 964d32a46891357ed755b402fdb9f602
+
+pkgname = redis-create-cluster
+
