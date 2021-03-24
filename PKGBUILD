@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm-git
-pkgver=6.2.r1937.61adb26
+pkgver=6.2.r1945.c5c9efb
 pkgrel=3
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
