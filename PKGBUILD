@@ -43,35 +43,35 @@ source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/f
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
                https://gitlab.com/librewolf-community/browser/linux/-/raw/master/unity-menubar.patch
-               remove_addons.patch
-               context-menu.patch
-               mozilla-vpn-ad.patch)
+               https://gitlab.com/librewolf-community/browser/linux/-/raw/master/remove_addons.patch
+               https://gitlab.com/librewolf-community/browser/linux/-/raw/master/context-menu.patch
+               https://gitlab.com/librewolf-community/browser/linux/-/raw/master/mozilla-vpn-ad.patch)
 source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                 $__pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
                 https://gitlab.com/librewolf-community/browser/linux/-/raw/master/unity-menubar.patch
-                remove_addons.patch
-                context-menu.patch
+                https://gitlab.com/librewolf-community/browser/linux/-/raw/master/remove_addons.patch
+                https://gitlab.com/librewolf-community/browser/linux/-/raw/master/context-menu.patch
                 arm.patch
                 build-arm-libopus.patch
-                mozilla-vpn-ad.patch)
+                https://gitlab.com/librewolf-community/browser/linux/-/raw/master/mozilla-vpn-ad.patch)
 
 sha512sums_x86_64=('c1c08be2283e7a162c8be2f2647ec2bb85cab592738dc45e4b4ffb72969229cc0019a30782a4cb27f09a13b088c63841071dd202b3543dfba295140a7d6246a4'
                    '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
                    'SKIP'
                    'SKIP'
                    'd44fd0175a132a091b59ecf57f4a0bc215d6a33eeca9dbbff701201cd5a96a1dd6539afc4ef1503c3ba2ee8e241c3e75b856f12efcc4f7db82f2cd6e880f124f'
-                   '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                   'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
+                   '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
+                   'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
 sha512sums_aarch64=('c1c08be2283e7a162c8be2f2647ec2bb85cab592738dc45e4b4ffb72969229cc0019a30782a4cb27f09a13b088c63841071dd202b3543dfba295140a7d6246a4'
                     '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
                     'SKIP'
                     'SKIP'
                     'd44fd0175a132a091b59ecf57f4a0bc215d6a33eeca9dbbff701201cd5a96a1dd6539afc4ef1503c3ba2ee8e241c3e75b856f12efcc4f7db82f2cd6e880f124f'
-                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                    'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
+                    '8a8ae3276914cd8812feb99acac8c2363f5530656593bebaed5cf67defec19153c30409b6fba418162c7e7f2876554202bbcf5f356d7e785488859879161d921'
+                    'a4274739be161710d90fdb674315ef4b0696ce6e092641a62f7a18c5a773de959a38fe52e0c8683821753a99e4337ea3e448579937d684e22345f7d936161061'
                     '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
                     '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
