@@ -73,9 +73,7 @@ pkgver() {
 }
 
 prepare() {
-  if [[ ! -d mozbuild ]];then
-      mkdir mozbuild
-  fi
+  mkdir -p mozbuild
   cd mozilla-unified
 
   #
@@ -99,12 +97,12 @@ export CXX='clang++'
 # Branding
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-app-name=${pkgname}
-ac_add_options --with-app-basename=librewolf
+ac_add_options --with-app-basename=Librewolf
 ac_add_options --with-branding=browser/branding/librewolf
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=0
+export MOZ_REQUIRE_SIGNING=1
 export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
@@ -191,6 +189,9 @@ fi
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
 
   patch -p1 -i ../context-menu.patch
+
+  # remove mozilla vpn ads
+  patch -p1 -i ../mozilla-vpn-ad.patch
 
   # this one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
