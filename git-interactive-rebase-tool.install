@@ -7,7 +7,7 @@ post_install() {
 
 post_remove() {
   echo ""
-  echo "You have to remove the tool from the git configuration:"
+  echo "Remove interactive-rebase-tool from the git configuration:"
   echo "git config --global --unset sequence.editor"
   echo ""
 }
