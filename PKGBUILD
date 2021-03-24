@@ -3,7 +3,7 @@
 
 _pkgname=plac
 pkgname=python-${_pkgname}
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="The smartest command line arguments parser in the world"
 url="https://pypi.org/project/plac/"
@@ -12,7 +12,7 @@ makedepends=(python-setuptools)
 license=(BSD)
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d598bc4b549282ec3a1fde40ddc4a273e051237b5aa70c44f572306a13c651e8')
+sha256sums=('51e332dabc2aed2cd1f038be637d557d116175101535f53eaa7ae854a00f2a74')
 
 
 build() {
