@@ -1,23 +1,14 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
-pkgname=python2-pynapi
+pkgname=python2-pynapi-git
 pkgver=0.5.7.r0.gd9b3b4d
 pkgrel=1
 pkgdesc='python library (and cmd util) to download subtitles from various subtitle sites'
 arch=(any)
 url='https://github.com/jabbas/pynapi'
 license=('GPL')
-groups=()
-depends=()
 makedepends=(git python2-setuptools)
-optdepends=()
 provides=(pynapi)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-noextract=()
 source=('git://github.com/jabbas/pynapi.git')
 _gitname='pynapi'
 md5sums=(SKIP)
