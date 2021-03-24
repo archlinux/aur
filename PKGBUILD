@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -17,7 +17,7 @@ license=('GPL3')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
 )
-md5sums=('99c8fed2d191b0969a43be677cffeb79')
+md5sums=('a654a1b5230ef1701b1bb00195266476')
 
 build() {
     cd "${pkgname}-${pkgver}"

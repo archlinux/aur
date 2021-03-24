@@ -1,6 +1,6 @@
 pkgbase = kime
 	pkgdesc = Korean IME
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = kime
 	optdepends = qt6-base: qt6 support
 	provides = kime
 	conflicts = kime
-	source = kime-2.2.1.tar.gz::https://github.com/Riey/kime/archive/v2.2.1.tar.gz
-	md5sums = 99c8fed2d191b0969a43be677cffeb79
+	source = kime-2.3.0.tar.gz::https://github.com/Riey/kime/archive/v2.3.0.tar.gz
+	md5sums = a654a1b5230ef1701b1bb00195266476
 
 pkgname = kime
 
