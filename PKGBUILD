@@ -2,7 +2,7 @@
 
 _name=azure-cli
 pkgname=python-$_name
-pkgver=2.20.0
+pkgver=2.21.0
 pkgrel=1
 pkgdesc="Microsoft Azure Command-Line Tools"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('fabric' 'python-antlr4' 'python-applicationinsights' 'python-argcomple
          'python-tabulate' 'python-vsts-cd-manager' 'python-wheel' 'python-yaml')
 makedepends=('git' 'python-setuptools')
 source=("https://github.com/Azure/azure-cli/archive/azure-cli-${pkgver}.tar.gz")
-sha256sums=('35416e94ab39375dd8a23229285615a4937dd56b43bf0307aabb9621c80b0b0e')
+sha256sums=('bbe4a1f85418d239444717f2c9706a87f81fd2515bb0bb4b4e48548fd3e08caa')
 
 build() {
   cd "$_name-$_name-$pkgver/src"
