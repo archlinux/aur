@@ -21,17 +21,11 @@ pre_install() {
 }
 
 post_install() {
+    # If first install
     if ! test -f /var/lib/bee/keys/libp2p.key; then
-        /usr/bin/bee init --config /etc/bee/bee.yaml >/dev/null
-        chown -R bee:bee /var/lib/bee/keys
-    fi
+        /usr/bin/bee init --config /etc/bee/bee.yaml >/dev/null && chown -R bee:bee /var/lib/bee/keys
 
-    # Allow group members (bee user) to use clef's socket
-    if test -S /var/lib/bee-clef/clef.ipc; then
-        chmod 660 /var/lib/bee-clef/clef.ipc
-    fi
-
-    echo "
+        echo "
 Logs:   journalctl -f -u bee.service
 Config: /etc/bee/bee.yaml
 
@@ -43,6 +37,12 @@ Check documentation for more info:
 
 After you finish configuration run 'sudo bee-get-addr'.
         "
+    fi
+
+    # Allow group members (bee user) to use clef's socket
+    if test -S /var/lib/bee-clef/clef.ipc; then
+        chmod 660 /var/lib/bee-clef/clef.ipc
+    fi
 }
 
 post_remove() {
