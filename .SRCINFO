@@ -1,7 +1,7 @@
 pkgbase = nodejs-cz-conventional-changelog
 	pkgdesc = Commitizen plugin for conventional changelogs commit messages
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/commitizen/cz-conventional-changelog
 	arch = any
 	license = MIT
