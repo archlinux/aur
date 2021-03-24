@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-animate
+	pkgdesc = Angular-Animate 1.2.1 (XStatic packaging standard)
+	pkgver = 1.2.1.1
+	pkgrel = 1
+	url = https://angularjs.org/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Animate/XStatic-Angular-Animate-1.2.1.1.tar.gz
+	md5sums = 01df0010fffabc1db43e4aba4fcff378
+	sha256sums = 88af1f8edb66ac76e6fb0c59f1127af8473760fa54d4983d4118e2ba776c015a
+	sha512sums = e569028ad3d68e9fa4fb0d5c1779b9445e137d4d2cc0c58be2b574d930f173cccf339732d45f95024064411401672c973776da4b2c735bbf4fe443b720d60732
+
+pkgname = python-xstatic-angular-animate
+
+pkgname = python2-xstatic-angular-animate
+
