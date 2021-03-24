@@ -2,7 +2,7 @@
 
 pkgname=spline
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A design tool for 3D web experiences."
 arch=('x86_64')
 url='https://spline.design'
@@ -26,6 +26,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-design"
 	mkdir -p "${pkgdir}/usr/share/applications"
+	sed 's#Exec=spline#Exec=spline-design#' "${srcdir}/usr/share/applications/${pkgname}.desktop"
 	cp "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
 	cp "${srcdir}/usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/"

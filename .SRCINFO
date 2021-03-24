@@ -1,7 +1,7 @@
 pkgbase = spline
 	pkgdesc = A design tool for 3D web experiences.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://spline.design
 	arch = x86_64
 	license = custom
