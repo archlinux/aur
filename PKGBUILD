@@ -1,9 +1,10 @@
 # Maintainer: BigfootACA <bigfoot@classfun.cn>
 
 _pyname=tempest
-pkgname=openstack-$_pyname
+pkgbase=openstack-$_pyname
+pkgname=(openstack-$_pyname{,-doc})
 pkgver=26.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStack Integration Testing"
 arch=(any)
 url="https://docs.openstack.org/tempest/latest/"
@@ -53,7 +54,7 @@ sha512sums=('4420840f767efa401fd43601a115b56696018f3c719e276cd0b9ec316ef47849f89
 export PBR_VERSION=$pkgver
 
 build(){
-	cd $_pyname-$pkgver
+	cd "$_pyname-$pkgver"
 	python setup.py build
 	sphinx-apidoc -f -o doc/source/tests/compute tempest/api/compute
 	sphinx-apidoc -f -o doc/source/tests/identity tempest/api/identity
@@ -66,25 +67,47 @@ build(){
 	GENERATE_TEMPEST_PLUGIN_LIST=false sphinx-build -b html doc/source doc/build/html
 }
 
-#check(){
-#	cd $_pyname-$pkgver
-#	stestr run
-#}
+check(){
+	cd "$_pyname-$pkgver"
+	#stestr --test-path tempest/tests run
+}
 
-package(){
-	cd $_pyname-$pkgver
-	export PYTHONPATH=${PWD}
+_package_pkg(){
+	optdepends=(
+		"python-openstackclient: OpenStack CLI Client"
+		"${pkgbase}-doc: Documents for ${pkgdesc}"
+	)
+	backup=(
+		etc/tempest/accounts.yaml
+		etc/tempest/allow-list.yaml
+		etc/tempest/logging.conf
+		etc/tempest/rbac-persona-accounts.yaml
+		etc/tempest/tempest.conf
+	)
+	cd "$_pyname-$pkgver"
+	export PYTHONPATH="${PWD}"
 	python setup.py install --root "$pkgdir" --optimize=1
 	mv "$pkgdir"{/usr,}/etc
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	oslo-config-generator --config-file tempest/cmd/config-generator.tempest.conf
-	install -Dm644 etc/*.sample -t "$pkgdir"/usr/share/${pkgname}/conf
-	install -Dm644 etc/*.yaml -t "$pkgdir"/usr/share/${pkgname}/conf
-	install -Dm644 etc/*.sample -t "$pkgdir"/etc/tempest
-	install -Dm644 etc/*.yaml -t "$pkgdir"/etc/tempest
+	install -Dm644 etc/*.sample -t "$pkgdir/usr/share/$pkgname/conf"
+	install -Dm644 etc/*.yaml   -t "$pkgdir/usr/share/$pkgname/conf"
+	install -Dm644 etc/*.sample -t "$pkgdir/etc/$_pyname"
+	install -Dm644 etc/*.yaml   -t "$pkgdir/etc/$_pyname"
 	for i in "$pkgdir"/etc/tempest/*.sample
 	do mv -v $i ${i//.sample}
 	done
-	mkdir -p "${pkgdir}/usr/share/doc"
-	cp -r doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
+_package_doc(){
+	pkgdesc="${pkgdesc} Documents"
+	depends=()
+	cd "$_pyname-$pkgver"
+	DOCDIR=$pkgdir/usr/share/doc
+	mkdir -p "$DOCDIR"
+	cp -r doc/build/html "$DOCDIR/$pkgbase"
+	rm -r "$DOCDIR/$pkgbase/.doctrees"
+}
+
+eval "package_${pkgbase}(){ _package_pkg; }"
+eval "package_${pkgbase}-doc(){ _package_doc; }"

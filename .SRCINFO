@@ -1,7 +1,7 @@
 pkgbase = openstack-tempest
 	pkgdesc = OpenStack Integration Testing
 	pkgver = 26.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/tempest/latest/
 	arch = any
 	license = Apache
@@ -42,4 +42,6 @@ pkgbase = openstack-tempest
 	sha512sums = 4420840f767efa401fd43601a115b56696018f3c719e276cd0b9ec316ef47849f890493fe831081e88388ce04daf509ddf853d3d1b5ba9e62f1b4f850c4cf688
 
 pkgname = openstack-tempest
+
+pkgname = openstack-tempest-doc
 
