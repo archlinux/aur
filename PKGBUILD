@@ -1,6 +1,6 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=readerwriterqueue-git
-pkgver=r102.d0f9f0c
+pkgver=1.0.4.r6.g0973284
 pkgrel=1
 pkgdesc="A fast single-producer, single-consumer lock-free queue for C++."
 arch=('any')
@@ -17,13 +17,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    INCDIR="${pkgdir}/usr/include/readerwriterqueue"
-    mkdir -p "${INCDIR}"
-    cp readerwriterqueue.h atomicops.h "${INCDIR}/"
+    cd "${pkgname}"
+    install -D -m644 readerwriterqueue.h atomicops.h -t "${pkgdir}/usr/include/readerwriterqueue"
+    install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
  
 pkgver() {
-  cd "$srcdir/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C ${pkgname} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }

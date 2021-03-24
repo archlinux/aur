@@ -1,6 +1,6 @@
 pkgbase = readerwriterqueue-git
 	pkgdesc = A fast single-producer, single-consumer lock-free queue for C++.
-	pkgver = r102.d0f9f0c
+	pkgver = 1.0.4.r6.g0973284
 	pkgrel = 1
 	url = https://github.com/cameron314/readerwriterqueue
 	arch = any
