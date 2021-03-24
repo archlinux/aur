@@ -1,0 +1,18 @@
+pkgbase = bearlibterminal-git
+	pkgdesc = BearLibTerminal is a library that creates a terminal-like window facilitating flexible textual output and uncomplicated input processing.
+	pkgver = r412.0be5bf6
+	pkgrel = 1
+	url = http://foo.wyrd.name/en:bearlibterminal
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = git
+	provides = bearlibterminal
+	source = bearlibterminal-git::git+https://github.com/cfyzium/bearlibterminal
+	md5sums = SKIP
+
+pkgname = bearlibterminal-git
+
