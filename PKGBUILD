@@ -2,8 +2,8 @@
 
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-pkgver=2.09.03
-pkgrel=3
+pkgver=2.10.04
+pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
@@ -28,11 +28,11 @@ source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de
 source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
 source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
 source_aarch64=(${pkgname}_${pkgver}-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/${pkgname}_${pkgver}-debian-stretch-stable_arm64.deb)
+sha256sums_x86_64=('28ad72003023720187d59b1ddc0f1b717d23a8bf7f50b17af2b14a873529630f')
+sha256sums_armv6h=('c148daed8b8a989a980960c156c25f31b694cc1cb924ac3a55a5e29afb336d6e')
+sha256sums_armv7h=('c148daed8b8a989a980960c156c25f31b694cc1cb924ac3a55a5e29afb336d6e')
+sha256sums_aarch64=('80c3b8444812146bbc97aed272c8efd767024bef4ffb006191a144d8681c4c67')
 noextract=()
-sha256sums_x86_64=('23932a2863eedcf4e0d84ba177cc43b361c92d6b2a16e6481db4a9b7864ac761')
-sha256sums_armv6h=('86a012ab674f282fa3567bcdd0bcb9195ef8f7ebb484236e1b7296e39ba6915b')
-sha256sums_armv7h=('86a012ab674f282fa3567bcdd0bcb9195ef8f7ebb484236e1b7296e39ba6915b')
-sha256sums_aarch64=('e845d8a173a0fba75347dfe144798d69f66e05e3670004b8cfc89ad79b35fbd5')
 
 package() {
   cd "${srcdir}"
@@ -45,4 +45,10 @@ package() {
 
   # Remove group write permissions from all files/directories
   chmod -R g-w "${pkgdir}"
+
+  # Run services with user deconz
+  sed -e "s/User=1000/User=deconz/" -i ${pkgdir}/usr/lib/systemd/system/deconz.service ${pkgdir}/usr/lib/systemd/system/deconz-gui.service
+  install -vDm 644 "../69-conbee.rules" "${pkgdir}/etc/udev/rules.d/69-conbee.rules"
+  install -vDm 644 "../${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -vDm 644 "../${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }

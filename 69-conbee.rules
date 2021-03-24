@@ -1,0 +1,4 @@
+# ConBee II disable modem manager and mtp probing
+ATTRS{idVendor}=="1cf1", ATTRS{idProduct}=="0030", ENV{ID_MM_DEVICE_IGNORE}="1"
+ATTRS{idVendor}=="1cf1", ATTRS{idProduct}=="0030", ENV{MTP_NO_PROBE}="1"
+KERNEL=="ttyACM?", SUBSYSTEMS=="usb", DRIVERS=="usb", ACTION=="add", ATTRS{idVendor}=="1cf1", ATTRS{idProduct}=="0030", SYMLINK+="ttyConBee2", GROUP="deconz", MODE="0660"
