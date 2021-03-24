@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kooha
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Simple screen recorder for GNOME"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gstreamer' 'gtk3' 'libhandy' 'python-gobject')
 makedepends=('meson')
 checkdepends=('appstream-glib')
-sha256sums=('8f252f06d5e24a2bf28f4fd78bb9f18be1fe23420765a7717be6f9867b64c3b1')
+sha256sums=('10d04f8e710ee1928ed5638f4dfbc929105c0efe7d9e4732eeed08ae7285dec6')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 build() {
