@@ -1,33 +1,51 @@
 pkgbase = jellyfin-bin
 	pkgdesc = The Free Software Media System
-	pkgver = 10.5.5
+	pkgver = 10.7.1
 	pkgrel = 1
 	url = https://jellyfin.org/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL2
-	depends = ffmpeg
-	depends = sqlite
-	optdepends = ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis
 	provides = jellyfin
 	conflicts = jellyfin
 	conflicts = jellyfin-git
+	noextract = jellyfin-10.7.1.deb
+	noextract = jellyfin-web-10.7.1.deb
 	options = staticlibs
 	source = jellyfin.conf
 	source = jellyfin.service
 	source = jellyfin.sysusers
 	source = jellyfin.tmpfiles
-	sha256sums = 9f8dafb06676f972fca88cc1cedf5936518b5a7556628482aeea2c7f2f485678
+	source = jellyfin-web-10.7.1.deb::https://repo.jellyfin.org/releases/server/debian/stable/web/jellyfin-web_10.7.1-1_all.deb
+	sha256sums = 1ea19635cced6672484937903c27976a5a145d708caff06a687a8defdd23d549
 	sha256sums = 0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2
 	sha256sums = 9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228
 	sha256sums = b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a
-	source_x86_64 = https://github.com/jellyfin/jellyfin/releases/download/v10.5.5/jellyfin_10.5.5-1_debian-amd64.deb
-	sha256sums_x86_64 = f036e7247ae47a19d68765901b8a9c65b4996640ff950fe33995e728a4fa51d7
-	source_aarch64 = https://github.com/jellyfin/jellyfin/releases/download/v10.5.5/jellyfin_10.5.5-1_debian-arm64.deb
-	sha256sums_aarch64 = fbd10596766b093a67b8f9988c3663097d4abf06ed5b97c99b467f03041a7880
-	source_armv7h = https://github.com/jellyfin/jellyfin/releases/download/v10.5.5/jellyfin_10.5.5-1_debian-armhf.deb
-	sha256sums_armv7h = bd511e580d3c7705a5694531c77efa155bab3a554e8ba9e91c270ec623831573
+	sha256sums = 19cf6bad41176c46950bf5ebb5cfd94efda4582cb898524e0a1ea7576e523af1
+	source_x86_64 = jellyfin-10.7.1.deb::https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_10.7.1-1_amd64.deb
+	sha256sums_x86_64 = 3e2ced1f99167961e341dae674a94d8fd892a857bcc3bba026654ce9284062de
+	source_aarch64 = jellyfin-10.7.1.deb::https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_10.7.1-1_arm64.deb
+	sha256sums_aarch64 = 1f71f7113f58724fc8a17b50c0b26df204f6c17f48baf3a819b6c4f0cc22a17b
+	source_armv7h = jellyfin-10.7.1.deb::https://repo.jellyfin.org/releases/server/debian/stable/server/jellyfin-server_10.7.1-1_armhf.deb
+	sha256sums_armv7h = 27153be892bcd51f29921beca807e738cc7e8144a195f9f10e61ee902f663a38
 
 pkgname = jellyfin-bin
+	depends = jellyfin-web-bin=10.7.1
+	depends = jellyfin-server-bin=10.7.1
+
+pkgname = jellyfin-web-bin
+	pkgdesc = Jellyfin web client
+	provides = jellyfin-web
+	conflicts = jellyfin-web
+	conflicts = jellyfin-web-git
+
+pkgname = jellyfin-server-bin
+	pkgdesc = Jellyfin server component
+	depends = ffmpeg
+	optdepends = ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis
+	provides = jellyfin-server
+	conflicts = jellyfin-server
+	conflicts = jellyfin-server-git
+	backup = etc/conf.d/jellyfin
 
