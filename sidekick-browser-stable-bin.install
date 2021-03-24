@@ -129,11 +129,11 @@ post_install() {
 	# System-wide package configuration.
 	DEFAULTS_FILE="/etc/default/sidekick-browser"
 
-	# sources.list setting for sidekick-browser updates.
-	REPOCONFIG="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-	REPOCONFIGREGEX="deb (\[arch=[^]]*\bamd64\b[^]]*\][[:space:]]*) https?://dl.google.com/linux/chrome/deb/ stable main"
+	# # sources.list setting for sidekick-browser updates.
+	# REPOCONFIG="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+	# REPOCONFIGREGEX="deb (\[arch=[^]]*\bamd64\b[^]]*\][[:space:]]*) https?://dl.google.com/linux/chrome/deb/ stable main"
 
-	APT_CONFIG="`which apt-config 2> /dev/null`"
+	# APT_CONFIG="`which apt-config 2> /dev/null`"
 
 	# You may comment out this entry, but any other modifications may be lost.\n"
 
@@ -554,6 +554,6 @@ post_remove() {
 	DEFAULTS_FILE="/etc/default/sidekick-browser"
 
 	# sources.list setting for sidekick-browser updates.
-	REPOCONFIG="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-	update-desktop-database -q
+	# REPOCONFIG="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+	# update-desktop-database -q
 }
