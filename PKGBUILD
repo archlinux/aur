@@ -15,7 +15,7 @@ arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse libopenaptx
+         ffmpeg nss-hg ttf-font libpulse
          libvpx libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
@@ -352,6 +352,7 @@ END
   install -Dm644 browser/branding/librewolf/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
 
+  # Install .desktop files
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
