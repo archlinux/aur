@@ -1,20 +1,18 @@
-# Maintainer: ml <ml AHHHH visu.li>
+# Maintainer: ml <>
 pkgname=svu
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Semantic Version Util'
 arch=('x86_64')
 url='https://github.com/caarlos0/svu'
 license=('MIT')
-# grep -rF exec.Command
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('55c45a610c3e495dbbd7da3d8980fcb1b615dac580e42606161e8e338efaf670')
+sha256sums=('10a802e712c71aed3d41fe98d0fa526ecc91066573fe72b60c209023243ba8be')
 
 build() {
   cd "$pkgname-$pkgver"
-  # enforce CGO_ENABLED=1 so the build does not break for AUR users having CGO_ENABLED=0
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -24,12 +22,6 @@ build() {
   export GOLDFLAGS="-linkmode=external -X main.version=v$pkgver"
   go build -o "$pkgname" -ldflags "$GOLDFLAGS"
 }
-
-# no upstream tests
-#check() {
-#  cd "$pkgname-$pkgver"
-#  go test -ldflags "$GOLDFLAGS" -short ./...
-#}
 
 package() {
   cd "$pkgname-$pkgver"
