@@ -2,7 +2,7 @@
 _npmname=commitizen
 pkgname=nodejs-commitizen
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Git plugin to help you write consistent commit messages"
 arch=(any)
 url="https://github.com/commitizen/cz-cli"
@@ -14,7 +14,7 @@ noextract=($_npmname-$pkgver.tgz)
 sha512sums=('a5895812783b5cc5764d6e31b630ca046a9e2744deab6cf2452c764b7325d570299474a52592bcbe6d4a746725a4c119b8669f6d2e537875c85671e4f11588cd')
 
 package() {
-    npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
     # Remove references to $pkgdir
     find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
