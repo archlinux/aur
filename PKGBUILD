@@ -20,9 +20,6 @@ _nativ_dialogs='true'
 # Set this to 'true' to use clang for compiling (experimental)
 #_clang='true'
 
-# Unofficial plugins
-#_plugin_lua4rs='true'
-
 # INCOMPATIBLE OPTION - Do not swtich between different version with this enabled and disbaled! RetroShare required _manual_ migration!
 # Set this to 'true' to not used an encrypted database. This will likely enhance your performance.
 #_no_sqlcipher='true'
@@ -31,14 +28,14 @@ _nativ_dialogs='true'
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.6.r0.g751fffc30
+pkgver=v0.6.6.r8.g67c607cb3
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'miniupnpc' 'libxss' 'libmicrohttpd' 'xapian-core')
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'rapidjson' 'cmake')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support'
             'i2pd: i2p hidden node support' )
@@ -56,7 +53,7 @@ _optSql=''
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
-[[ "$_jsonapi" == 'true' ]] && makedepends=(${makedepends[@]} 'cmake' 'doxygen' 'rapidjson')
+[[ "$_jsonapi" == 'true' ]] && makedepends=(${makedepends[@]} 'cmake' 'doxygen')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
 
@@ -71,7 +68,7 @@ _optNativDialogs=''
 [[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
 [[ "$_nativ_dialogs" == 'true' ]] && _optNativDialogs='CONFIG*=rs_use_native_dialogs'
-([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]] || [[ "$_plugin_lua4rs" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
+([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
 [[ "$_wiki" == 'true' ]] && _optWiki='CONFIG+=wikipoos'
 
 # Handle unofficial plugins
@@ -88,13 +85,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-
-	# Handle unofficial plugins
-	if [[ "$_plugin_lua4rs" == 'true' ]] ; then
-		[[ -d 'plugins/Lua4RS' ]] &&  rm -r plugins//Lua4RS
-		cp -r -l "${srcdir}/Lua4RS" plugins/
-		sed -i -e 's/SUBDIRS += \\/SUBDIRS += \\\n\t\tLua4RS \\/g' plugins/plugins.pro
-	fi
 
 	# remove unwanted plugins
 	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
