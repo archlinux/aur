@@ -1,6 +1,6 @@
 pkgbase = moonwm-git
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
-	pkgver = 6.2.r9.e76646f
+	pkgver = 6.2.r1953.08e6f76
 	pkgrel = 1
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
