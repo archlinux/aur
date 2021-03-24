@@ -1,0 +1,32 @@
+pkgbase = serialtool
+	pkgdesc = A practical Serial-Port/TCP/UDP debugging tool.
+	pkgver = 1.4.0alpha
+	pkgrel = 1
+	url = https://github.com/Skiars/SerialTool
+	install = serialtool.install
+	arch = any
+	license = GPL3
+	makedepends = qscintilla-qt5
+	makedepends = qt5-serialport
+	makedepends = qt5-charts
+	makedepends = qt5-script
+	makedepends = qt5-tools
+	depends = qscintilla-qt5
+	depends = qt5-serialport
+	depends = qt5-charts
+	depends = qt5-script
+	provides = serialtool
+	conflicts = serialtool
+	replaces = serialtool
+	options = !strip
+	source = SerialTool.zip::https://github.com/Skiars/SerialTool/archive/refs/tags/v1.4.0alpha.zip
+	source = serialtool.desktop
+	source = 20-usb-serial.rules
+	source = serialtool.install
+	sha256sums = 95b8780eecc007fae461025d1c3db8b2158905e9379541632ab791c3c5e72455
+	sha256sums = ff5fe40677b49c0061dfbb3781871a759a97f59e4f9cbc7baae0c181ecf90a76
+	sha256sums = bd504256698f7e7b1a74fbc6490276f0c096c2e6b5e7199049766b7ba7c860a7
+	sha256sums = 303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4
+
+pkgname = serialtool
+
