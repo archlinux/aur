@@ -1,6 +1,6 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=pteros
-pkgver=2.8.r125.g16923940
+pkgver=2.8.r144.g2965c2b0
 pkgrel=1
 pkgdesc="C++ library for molecular modeling."
 arch=('any')
@@ -13,19 +13,22 @@ source=("${pkgname}"'::git+https://github.com/yesint/pteros.git#branch=master')
 sha1sums=('SKIP')
 
 build() {
-    cd "$srcdir/${pkgname}"
-    mkdir -p build && pushd build
-    cmake -DWITH_OPENBABEL=OFF -DWITH_GROMACS=OFF -DDOWNLOAD_DEPS=OFF ..
-    make
-    popd
+    cmake -DWITH_OPENBABEL=OFF \
+        -DWITH_GROMACS=OFF \
+        -DDOWNLOAD_DEPS=OFF \
+        -B "${pkgname}/build" \
+        -S "${pkgname}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    make -C "${pkgname}/build" all
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
-  make DESTDIR="${pkgdir}" install 
+    make -C "${pkgname}/build" DESTDIR="$pkgdir" install
+    install -D -m644 "${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
  
 pkgver() {
-  cd "$srcdir/${pkgname}"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  git -C ${pkgname} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
