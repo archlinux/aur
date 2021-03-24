@@ -2,7 +2,7 @@
 # Contributor: Vyacheslav Konovalov <vyachkonovalov at protonmail dot com>
 
 pkgname=robo3t-bin
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='Shell-centric MongoDB management tool'
 arch=('x86_64')
@@ -10,12 +10,12 @@ url='https://robomongo.org/'
 license=('GPLv3')
 depends=('qt5-base' 'openssl-1.0' 'libcurl-gnutls')
 conflicts=('robo3t')
-_hash='8650949'
+_hash='48f7dfd'
 _filename="robo3t-$pkgver-linux-x86_64-$_hash"
 source=("https://github.com/Studio3T/robomongo/releases/download/v$pkgver/$_filename.tar.gz"
         'https://raw.githubusercontent.com/Studio3T/robomongo/master/src/robomongo/gui/resources/icons/logo-256x256.png'
         'robo3t.desktop')
-sha256sums=('fc5fb8f0ec4a6c973bd5b87c224e7ec4064c399ddffe7b5452982a56ff21c2b0'
+sha256sums=('a47e2afceddbab8e59667facff5da249c77459b7e470b8cae0c05d5423172b4d'
             'a63c4b244c451e2e881934119e435d6ce54ce8157dac724753143b48e6652eb7'
             '7d373a219df170d774431d5118432bcc7adc01aee07733972e651cd1a4dfb619')
 
