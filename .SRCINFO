@@ -1,0 +1,18 @@
+pkgbase = gsl-git
+	pkgdesc = A numerical library for C and C++
+	pkgver = 2.6.r48.ga0f31bd6
+	pkgrel = 1
+	url = https://www.gnu.org/software/gsl/gsl.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = gsl
+	conflicts = gsl
+	options = staticlibs
+	source = git+https://git.savannah.gnu.org/git/gsl.git
+	sha256sums = SKIP
+
+pkgname = gsl-git
+
