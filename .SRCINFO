@@ -1,0 +1,14 @@
+pkgbase = alefbet
+	pkgdesc = 2 Hebrew fonts (at the moment): the commonly used "David Libre", and the handwriting font "Gveret Levin".
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = OFL
+	noextract = GveretLevinAlefAlefAlef.zip
+	source = https://github.com/meirsadan/david-libre/releases/download/v1.001/DavidLibre_TTF_v1.001.zip
+	source = https://opensiddur.org/wp-content/uploads/fonts/GveretLevinAlefAlefAlef/GveretLevinAlefAlefAlef.zip
+	sha256sums = a66515bcdcda5abab7a86d945a8d89077916837f1128e44610e74e88bc41bb3f
+	sha256sums = 5df0379f71c8e8b1ddf00a4bda6693fa4520c40ca1f3e157bccbdfad4fb03959
+
+pkgname = alefbet
+
