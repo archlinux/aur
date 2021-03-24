@@ -9,7 +9,7 @@ license=('other')
 depends=()
 provides=(toosheh-extractor)
 conflicts=(toosheh-extractor)
-
+#get from official link
 source=("https://s3-us-west-2.amazonaws.com/lisa-app/extract-linux-x64.zip")
 
 md5sums=('SKIP')
