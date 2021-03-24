@@ -1,0 +1,83 @@
+diff --git a/Gemfile b/Gemfile
+index baffd808..846c8c96 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -4,14 +4,8 @@ source "https://rubygems.org"
+ 
+ gemspec
+ 
+-gem "chandler", "0.9.0"
+-gem "mdl", "0.9.0"
+ gem "minitest", "~> 5.11"
+ gem "pry", "0.13.1"
+ gem "rake", "~> 13.0"
+ gem "rake-compiler", "~> 1.0"
+ gem "rexml", "~> 3.2" # TODO: remove when https://github.com/gettalong/kramdown/pull/638 released
+-gem "rubocop", "0.82.0"
+-gem "rubocop-performance", "~> 1.3"
+-gem "simplecov", "0.18.5"
+-gem "yard", "0.9.24"
+diff --git a/Rakefile b/Rakefile
+index fc750d31..d0d646bd 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -1,14 +1,7 @@
+ # frozen_string_literal: true
+ 
+ require "bundler/gem_tasks"
+-require "chandler/tasks"
+ require "rake/extensiontask"
+-require "yard"
+-
+-#
+-# Add chandler as a prerequisite for `rake release`
+-#
+-task "release:rubygem_push" => "chandler:push"
+ 
+ #
+ # Prepend DevKit into compilation phase
+@@ -38,7 +31,7 @@ end
+ 
+ namespace :lint do
+   desc "Run all linters"
+-  task all: %i[clang_format executables tabs trailing_whitespace rubocop mdl]
++  task all: %i[clang_format executables tabs trailing_whitespace]
+ 
+   require_relative "tasks/linter"
+ 
+@@ -70,18 +63,6 @@ namespace :lint do
+     TrailingWhitespaceLinter.new.run
+   end
+ 
+-  require "rubocop/rake_task"
+-
+-  desc "Checks ruby code style with RuboCop"
+-  RuboCop::RakeTask.new
+-
+-  desc "Checks markdown code style with Markdownlint"
+-  task :mdl do
+-    puts "Running mdl"
+-
+-    sh("mdl", *Dir.glob("*.md"))
+-  end
+-
+   desc "Checks shell code style with shellcheck"
+   task :shellcheck do
+     puts "Running shellcheck"
+@@ -141,16 +122,3 @@ namespace :docker do
+ end
+ 
+ task default: %i[compile test lint]
+-
+-YARD::Rake::YardocTask.new
+-
+-namespace :coverage do
+-  desc "Merges all result sets into a single coverage report"
+-  task :collate do
+-    ENV["COV_COLLATION"] = "true"
+-
+-    require "simplecov"
+-
+-    SimpleCov.collate Dir["coverage/*.json"]
+-  end
+-end
