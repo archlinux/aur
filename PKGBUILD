@@ -1,6 +1,6 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=hadolint
-pkgver=1.23.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Dockerfile linter, validate inline bash, written in Haskell'
 url='https://github.com/hadolint/hadolint/'
