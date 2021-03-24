@@ -1,7 +1,7 @@
 pkgbase = graphite-exporter-bin
 	pkgdesc = Exporter for metrics received via Graphite protocol
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prometheus/graphite_exporter
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = graphite-exporter-bin
 	source = graphite-exporter.service
 	source = graphite-exporter.conf
 	sha256sums = 26f1500e903befb08a8c14d509c82975f14d979f6b5fa9d748fe0208c21efa76
-	sha256sums = 0ad81a6409006721ecaa2e8238e90408e241f1007b38c200a402b190e6926a01
+	sha256sums = 67956be5b5c675e8a3b5fb488c66c5627ba9b8bc19371be08e921c369ca66f6f
 	source_x86_64 = https://github.com/prometheus/graphite_exporter/releases/download/v0.9.0/graphite_exporter-0.9.0.linux-amd64.tar.gz
 	sha256sums_x86_64 = 8da5bf07180f345abbd0e3c5ddf0f2bd319d930b6f9dd0385f4cfebdc6815c86
 	source_i686 = https://github.com/prometheus/graphite_exporter/releases/download/v0.9.0/graphite_exporter-0.9.0.linux-386.tar.gz
