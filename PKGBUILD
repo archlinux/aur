@@ -10,30 +10,38 @@
 # system is prohibited by EULA (although in certain countries EULA is invalid).
 # Please consult Microsoft license before using fonts.
 #
-# This PKGBUILD downloads fonts directly from Microsoft, by retrieving
-# selective parts of the Windows 10 Enterprise 90-day evaluation edition.
-# Around 200 MB will be downloaded, intstead of a full ISO of almost 4 GB in
-# size. Note that downloading the fonts this way can take 8-20 minutes, even
-# on a fast connection. Be patient.
+# This PKGBUILD attempts to download fonts directly from Microsoft, by
+# retrieving selective parts of the Windows 10 Enterprise 90-day evaluation
+# edition. This only works if the user is allowed to mount filesystems through
+# udisks2. This is determined by Polkit, which by default only allows users to
+# do this when they are logged in locally (e.g. not through SSH).
+#
+# If it is possible to download fonts directly, around 200 MiB of data will be
+# downloaded. Downloading the fonts this way can take 8-20 minutes, even on a
+# fast connection. Be patient. Note that for tis method, it is necessary to
+# mount an HTTP source and an ISO file as a loop device using FUSE. If the
+# build fails, it might be that these must be unmounted manually. This can be
+# done with:
+#
+#  $ udisksctl unmount -b /dev/loop0
+#  $ udisksctl loop-delete -b /dev/loop0
+#  $ fusermount -uz src/mnt/http
+#
+# Replace /dev/loop0 with the relevant loop device, which is reported during
+# package build.
 #
 # For the download, HTTP is used instead of HTTPS due to that httpfs2 does not
 # support modern TLS versions. A file integrity check is performed after
 # download. Due to the unconventional way that the data is downloaded, the
 # verification is done in prepare().
 #
+# If fonts cannot be downloaded directly, the ISO fill will be fully
+# downloaded. Due to that install.wim will be extracted from the ISO, it is
+# assumed that twice its size (almost 8 GiB) is necessary as temporary disk
+# space. A free disk space check is performed before the ISO is downloaded.
+#
 # Please ignore any 'ln' errors when building this package. This is expected
 # behavior.
-#
-# Note that this package mounts an HTTP source and an ISO as a loop device
-# using FUSE. If building fails, it might be that these must be unmounted
-# manually. This can be done with:
-#
-#   udisksctl unmount -b /dev/loop0
-#   udisksctl loop-delete -b /dev/loop0
-#   fusermount -uz src/mnt/http
-#
-# Replace /dev/loop0 with the relevant loop device, which is reported during
-# package build.
 #
 # If for some reason you want to download the full ISO file, please visit:
 #
@@ -42,12 +50,15 @@
 # This package is based on ttf-ms-win10. Use that package if font files from
 # a local source need to be used.
 #
-
+# ttf-ms-win10 is considered to be upstream for this package, which is why its
+# maintainers and contributors are added as contributors to this package.
+# Without their effort this package would not exist, nor be updated.
+#
 
 pkgbase=ttf-ms-win10-auto
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.19042.789
-pkgrel=1
+pkgrel=3
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -354,6 +365,7 @@ _totalSource=$(expr \
 sha256sums=($(awk "BEGIN{for(c=0;c<${_totalSource};c++) printf \"SKIP\n\"}"))
 
 prepare() {
+  echo "- Examininging locally available fonts"
   for _font in \
     ${_ttf_ms_win10[@]} \
     ${_ttf_ms_win10_japanese[@]} \
@@ -370,27 +382,66 @@ prepare() {
   allFiles+=( license.rtf )
 
   if [ ${#_missingFonts[@]} -gt 0 ]; then
-    echo "- Downloading fonts"
-    mkdir -p mnt/http
-    echo "  - Mounting HTTP file"
-    httpfs2 -c /dev/null "$_iso" mnt/http
-    echo "  - Creating loop device"
-    _loopdev=$(udisksctl loop-setup -r -f mnt/http/$(echo "$_iso" | awk -F "/" '{print $NF}') --no-user-interaction | awk '{print $NF}')
-    _loopdev=${_loopdev::-1}
-    echo "  - Mounting loop device: $_loopdev"
-    _mountpoint=$(udisksctl mount -t udf -b "$_loopdev" --no-user-interaction | awk '{print $NF}')
-    echo "  - Loop device mounted as ISO at: $_mountpoint"
+    echo "- Fonts are missing"
+    echo -ne "- Mount filesystems as a non-privileged user: "
+    touch test.mount
+    _mount=
+    udisksctl loop-setup -r -f test.mount --no-user-interaction >/dev/null 2>&1 && _mount=true
+    rm test.mount
 
-    echo "  - Extracting files"
-    7z e ${_mountpoint}/sources/install.wim Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf}
+    if [ $_mount ]; then
+      echo "allowed"
+      echo "- Downloading fonts directly"
+      mkdir -p mnt/http
+      echo "  - Mounting HTTP file"
+      httpfs2 -c /dev/null "$_iso" mnt/http
+      echo "  - Creating loop device"
+      _isoFile="mnt/http/$(echo "$_iso" | awk -F "/" '{print $NF}')"
+      _loopDev=$(udisksctl loop-setup -r -f "${_isoFile}" --no-user-interaction | awk '{print $NF}')
+      _loopDev=${_loopDev::-1}
+      echo "  - Mounting loop device: $_loopDev"
+      _mountpoint=$(udisksctl mount -t udf -b "$_loopDev" --no-user-interaction | awk '{print $NF}')
+      echo "  - Loop device mounted as ISO at: $_mountpoint"
 
-    echo "  - Unmounting loop device $_loopdev as ISO at: $_mountpoint"
-    udisksctl unmount -b "$_loopdev" --no-user-interaction
-    echo "  - Deleting loop device: $_loopdev"
-    udisksctl loop-delete -b "$_loopdev" --no-user-interaction
-    echo "  - Unmounting HTTP file"
-    fusermount -uz mnt/http
-    rmdir -p mnt/http
+      echo "  - Extracting files from online Windows installation image"
+      7z e "${_mountpoint}/sources/install.wim" \
+        Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf}
+
+      echo "  - Unmounting loop device $_loopDev as ISO at: $_mountpoint"
+      udisksctl unmount -b "$_loopDev" --no-user-interaction
+      echo "  - Deleting loop device: $_loopDev"
+      udisksctl loop-delete -b "$_loopDev" --no-user-interaction
+      echo "  - Unmounting HTTP file"
+      fusermount -uz mnt/http
+      rmdir -p mnt/http
+    else
+      echo "not allowed"
+      echo "- Preparing download of full ISO"
+      echo "  - Checking free disk space required for download and extraction"
+      _freeDiskSpace=$(($(stat -f --format="%a*%S" .)))
+      _downloadSize=$(curl -sI "$_iso" | grep Content-Length | awk '{print $2}' | tr -d '\r\n')
+      [ -z $_downloadSize ] && echo -ne "Unable to determine file size of:\n${_iso}\n" && exit 255
+      _requiredDiskSpace=$((${_downloadSize}*2))
+      if [ $_requiredDiskSpace -gt $_freeDiskSpace ]; then
+        echo "Not enough free disk space"
+        echo "Needed: $((${_requiredDiskSpace}/1048576)) MiB"
+        echo "Available: $((${_freeDiskSpace/1048576)) MiB"
+        exit 255
+      fi
+
+      echo "  - Downloading ISO"
+      curl -JLO "$_iso"
+      echo "  - Extracting Windows installation image"
+      7z x $(echo "$_iso" | awk -F "/" '{print $NF}') sources/install.wim
+
+      echo "  - Extracting files from local Windows installation image"
+      7z e sources/install.wim \
+        Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf}
+
+      echo "  - Cleaning up temporary files"
+      rm $(echo "$_iso" | awk -F "/" '{print $NF}')
+      rm -rf sources
+    fi
   fi
 
   echo "- Verifying file integrity"
@@ -430,36 +481,50 @@ package_ttf-ms-win10-auto() {
 
 package_ttf-ms-win10-auto-japanese() {
     pkgdesc='Microsoft Windows 10 Japanese TrueType fonts'
+    provides=(ttf-ms-win10-japanese)
+    conflicts=(ttf-ms-win10-japanese)
     _package ${_ttf_ms_win10_japanese[@]}
 }
 
 package_ttf-ms-win10-auto-korean() {
     pkgdesc='Microsoft Windows 10 Korean TrueType fonts'
+    provides=(ttf-ms-win10-korean)
+    conflicts=(ttf-ms-win10-korean)
     _package ${_ttf_ms_win10_korean[@]}
 }
 
 package_ttf-ms-win10-auto-sea() {
     pkgdesc='Microsoft Windows 10 Southeast Asian TrueType fonts'
+    provides=(ttf-ms-win10-sea)
+    conflicts=(ttf-ms-win10-sea)
     _package ${_ttf_ms_win10_sea[@]}
 }
 
 package_ttf-ms-win10-auto-thai() {
     pkgdesc='Microsoft Windows 10 Thai TrueType fonts'
+    provides=(ttf-ms-win10-thai)
+    conflicts=(ttf-ms-win10-thai)
     _package ${_ttf_ms_win10_thai[@]}
 }
 
 package_ttf-ms-win10-auto-zh_cn() {
     pkgdesc='Microsoft Windows 10 Simplified Chinese TrueType fonts'
+    provides=(ttf-ms-win10-zh_cn)
+    conflicts=(ttf-ms-win10-zh_cn)
     _package ${_ttf_ms_win10_zh_cn[@]}
 }
 
 package_ttf-ms-win10-auto-zh_tw() {
     pkgdesc='Microsoft Windows 10 Traditional Chinese TrueType fonts'
+    provides=(ttf-ms-win10-zh_tw)
+    conflicts=(ttf-ms-win10-zh_tw)
     _package ${_ttf_ms_win10_zh_tw[@]}
 }
 
 package_ttf-ms-win10-auto-other() {
     pkgdesc='Microsoft Windows 10 Other TrueType fonts'
+    provides=(ttf-ms-win10-other)
+    conflicts=(ttf-ms-win10-other)
     _package ${_ttf_ms_win10_other[@]}
 }
 

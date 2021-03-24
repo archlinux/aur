@@ -1,6 +1,6 @@
 pkgbase = ttf-ms-win10-auto
 	pkgver = 10.0.19042.789
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
@@ -10,7 +10,6 @@ pkgbase = ttf-ms-win10-auto
 	provides = ttf-font
 	provides = ttf-ms-win10
 	conflicts = ttf-vista-fonts
-	conflicts = ttf-ms-win10
 	source = http://software-download.microsoft.com/download/pr/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso
 	source = file://arial.ttf
 	source = file://arialbd.ttf
@@ -309,28 +308,41 @@ pkgname = ttf-ms-win10-auto
 	provides = ttf-tahoma
 	provides = ttf-ms-fonts
 	conflicts = ttf-vista-fonts
-	conflicts = ttf-ms-win10
 	conflicts = ttf-tahoma
 	conflicts = ttf-ms-fonts
 
 pkgname = ttf-ms-win10-auto-japanese
 	pkgdesc = Microsoft Windows 10 Japanese TrueType fonts
+	provides = ttf-ms-win10-japanese
+	conflicts = ttf-ms-win10-japanese
 
 pkgname = ttf-ms-win10-auto-korean
 	pkgdesc = Microsoft Windows 10 Korean TrueType fonts
+	provides = ttf-ms-win10-korean
+	conflicts = ttf-ms-win10-korean
 
 pkgname = ttf-ms-win10-auto-sea
 	pkgdesc = Microsoft Windows 10 Southeast Asian TrueType fonts
+	provides = ttf-ms-win10-sea
+	conflicts = ttf-ms-win10-sea
 
 pkgname = ttf-ms-win10-auto-thai
 	pkgdesc = Microsoft Windows 10 Thai TrueType fonts
+	provides = ttf-ms-win10-thai
+	conflicts = ttf-ms-win10-thai
 
 pkgname = ttf-ms-win10-auto-zh_cn
 	pkgdesc = Microsoft Windows 10 Simplified Chinese TrueType fonts
+	provides = ttf-ms-win10-zh_cn
+	conflicts = ttf-ms-win10-zh_cn
 
 pkgname = ttf-ms-win10-auto-zh_tw
 	pkgdesc = Microsoft Windows 10 Traditional Chinese TrueType fonts
+	provides = ttf-ms-win10-zh_tw
+	conflicts = ttf-ms-win10-zh_tw
 
 pkgname = ttf-ms-win10-auto-other
 	pkgdesc = Microsoft Windows 10 Other TrueType fonts
+	provides = ttf-ms-win10-other
+	conflicts = ttf-ms-win10-other
 
