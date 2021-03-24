@@ -1,7 +1,7 @@
 pkgbase = python-rf24-network
 	pkgdesc = Python bindings for networking with RF24 radio modules
-	pkgver = 1.0.13
-	pkgrel = 1
+	pkgver = 1.0.14
+	pkgrel = 0
 	url = http://tmrh20.github.io/RF24Network/
 	arch = any
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = python-rf24-network
 	depends = rf24-network
 	depends = python
 	depends = python-rf24
-	source = https://github.com/nRF24/RF24Network/archive/v1.0.13.tar.gz
-	sha256sums = 627b921a90c63ce921349691e522f140da1a7be51c7531b436590b86909ebe75
+	source = https://github.com/nRF24/RF24Network/archive/v1.0.14.tar.gz
+	sha256sums = 31a719921fa608be8c931574dfe772bc93f0103b21cca00e9ced6a7ad451d92c
 
 pkgname = python-rf24-network
 
