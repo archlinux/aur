@@ -11,11 +11,10 @@ pkgdesc="A library for configuring and customizing font access (32-bit)"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fontconfig/"
 license=(custom)
-provides=(lib32-fontconfig)
+provides=(lib32-fontconfig libfontconfig.so)
 conflicts=(lib32-fontconfig)
 depends=(lib32-expat libfreetype.so $_pkgbasename)
 makedepends=(git meson gperf lib32-freetype2)
-provides=(libfontconfig.so)
 install=fontconfig-32.install
 source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig"
         fontconfig-32.hook)

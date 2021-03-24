@@ -13,6 +13,7 @@ pkgbase = lib32-fontconfig-git
 	depends = lib32-expat
 	depends = libfreetype.so
 	depends = fontconfig
+	provides = lib32-fontconfig
 	provides = libfontconfig.so
 	conflicts = lib32-fontconfig
 	source = git+https://gitlab.freedesktop.org/fontconfig/fontconfig
