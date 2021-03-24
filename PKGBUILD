@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=vte3-nohang
-pkgver=0.62.3
+pkgver=0.64.0
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget (plus no-hang patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
