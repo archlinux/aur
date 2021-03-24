@@ -2,7 +2,7 @@
 
 pkgname=dogehouse
 pkgver=1.0.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
 license=('MIT')
@@ -22,8 +22,6 @@ depends=(
 source=("${pkgname}.tar.gz::https://github.com/benawad/dogehouse/archive/refs/tags/v${pkgver}.tar.gz")
 conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
-shopt -s extglob
-
 build() {
     rustup update stable
     cd "${srcdir}/dogehouse-${pkgver}/baklava"
@@ -31,7 +29,8 @@ build() {
     cargo install nj-cli
     yarn compile
     yarn build:globkey
-    rm -rf ./node_modules/globkey/!("dist|package.json|index.d.ts|yarn.lock")
+    rm -rf ./node_modules/globkey/src
+    rm -rf ./node_modules/globkey/target
     ./node_modules/.bin/electron-builder --linux --x64 --dir
 }
 
