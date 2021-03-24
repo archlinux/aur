@@ -40,7 +40,8 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
                remove_addons.patch
-               context-menu.patch)
+               context-menu.patch
+               mozilla-vpn-ad.patch)
 source_aarch64=("hg+$_repo#revision=autoland"
                 $pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
@@ -48,14 +49,16 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 remove_addons.patch
                 context-menu.patch
                 arm.patch
-                build-arm-libopus.patch)
+                build-arm-libopus.patch
+                mozilla-vpn-ad.patch)
 
 sha512sums_x86_64=('SKIP'
                    '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
                    'SKIP'
                    'SKIP'
                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                   'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3')
+                   'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
+                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
 sha512sums_aarch64=('SKIP'
                     '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
                     'SKIP'
@@ -63,7 +66,8 @@ sha512sums_aarch64=('SKIP'
                     '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
                     'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
                     '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
-                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
+                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
+                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
 
 pkgver() {
   cd mozilla-unified
@@ -93,9 +97,6 @@ ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 export CC='clang'
 export CXX='clang++'
-export AR=llvm-ar
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-update-channel=nightly
@@ -107,6 +108,7 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # System libraries
@@ -309,6 +311,8 @@ package() {
   install -Dvm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/etc/firejail/$pkgname.profile"
   install -Dvm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/etc/firejail/$pkgname-common.profile"
   install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
+  
+  rm "$pkgdir"/usr/lib/${pkgname}/pingsender
   
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
