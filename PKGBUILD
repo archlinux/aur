@@ -1,38 +1,32 @@
-# Contributor: lynix <lynix47@gmail.com>
 # Maintainer: lynix <lynix47@gmail.com>
 
 pkgname=aerotools-git
-pkgver=20101208
+pkgver=r77.7109ba7
 pkgrel=1
 pkgdesc="CLI and hddtemp proxy for querying aquaero(R) 4.0 USB devices"
 arch=('i686' 'x86_64')
-url="http://github.com/lynix/aerotools/"
+url="https://github.com/lynix/aerotools"
 license=('GPL3')
 depends=('libusb>=1.0.8')
 makedepends=('git' 'pkgconfig')
 provides=('aerotools')
 conflicts=('aerotools')
-source=()
-md5sums=()
+source=('git+https://github.com/lynix/aerotools.git')
+md5sums=('SKIP')
 
-_gitroot="git://github.com/lynix/aerotools.git"
+pkgver() {
+  cd aerotools
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  msg "Connecting to GIT server..."
-  if [[ -d $srcdir/$pkgname-$pkgver ]]; then
-    cd $srcdir/$pkgname-$pkgver && git pull origin
-  else
-    git clone $_gitroot $srcdir/$pkgname-$pkgver
-    cd $srcdir/$pkgname-$pkgver
-  fi
-
-  msg "GIT checkout done or server timeout"
-
+  cd aerotools
 	make
 }
 
 package() {
-	make DESTDIR=$pkgdir PREFIX=/usr install
+  cd aerotools
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
 # vim:set ts=2 sw=2 et:

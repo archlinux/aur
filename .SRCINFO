@@ -1,8 +1,8 @@
 pkgbase = aerotools-git
 	pkgdesc = CLI and hddtemp proxy for querying aquaero(R) 4.0 USB devices
-	pkgver = 20101208
+	pkgver = r77.7109ba7
 	pkgrel = 1
-	url = http://github.com/lynix/aerotools/
+	url = https://github.com/lynix/aerotools
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,8 @@ pkgbase = aerotools-git
 	depends = libusb>=1.0.8
 	provides = aerotools
 	conflicts = aerotools
+	source = git+https://github.com/lynix/aerotools.git
+	md5sums = SKIP
 
 pkgname = aerotools-git
 
