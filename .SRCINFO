@@ -1,7 +1,7 @@
 pkgbase = python-rf24
 	pkgdesc = Python bindings for RF24 radio modules
-	pkgver = 1.3.9
-	pkgrel = 2
+	pkgver = 1.3.12
+	pkgrel = 0
 	url = http://tmrh20.github.io/RF24/
 	arch = any
 	license = GPL2
@@ -10,10 +10,10 @@ pkgbase = python-rf24
 	depends = boost-libs
 	depends = python
 	depends = rf24
-	source = https://github.com/nRF24/RF24/archive/v1.3.9.tar.gz
+	source = https://github.com/nRF24/RF24/archive/v1.3.12.tar.gz
 	source = boost-include.patch
-	sha256sums = 7fc2d32a3a226faa78e60ba472ad40f3da97d4d158845f9603d41e1cf8f31ae4
-	sha256sums = 80439c7ae3c30c93e8da055b753bbe047da22815041aea048d723afd75ea1a39
+	sha256sums = 2c63b5c7d8cdb952679bf3830c2cb25375e95628e531e2e0497aed08767b94b3
+	sha256sums = 2cac9b4bc51943fcf9b7a8a51fdbd116276cd128d1d6375b3d832fcb4934d03a
 
 pkgname = python-rf24
 
