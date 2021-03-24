@@ -2,8 +2,9 @@
 # ArchLinux's PKGBUILD with a commit disabled to enable unstable vaapi support
 # https://github.com/archlinux/svntogit-packages/blob/master/totem/repos/extra-x86_64/PKGBUILD
 
+_gitname=totem
 pkgname=totem-vaapi
-pkgver=3.38.0+1+g02a939121
+pkgver=3.38.0+1+g693768c16
 pkgrel=1
 pkgdesc="Movie player for the GNOME desktop based on GStreamer with (unstable) VA-API support"
 url="https://wiki.gnome.org/Apps/Videos"
@@ -19,8 +20,9 @@ optdepends=('gst-plugins-ugly: Extra media codecs'
             'grilo-plugins: Media discovery'
             'python-dbus: MPRIS plugin')
 groups=(gnome)
-conflicts=(totem-plugin)
+conflicts=(totem-plugin totem)
 replaces=(totem-plugin)
+provides=(totem)
 _commit=18a9c6a988597958be014b4648696ed5eb221e5f  # tags/V_3_38_0-fixed^0
 source=("git+https://gitlab.gnome.org/GNOME/totem.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgd.git")
@@ -28,12 +30,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${_gitname}
   git describe --tags | sed 's/^V_//;s/-fixed//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd ${_gitname}
 
   git submodule init
   git submodule set-url subprojects/libgd "$srcdir/libgd"
@@ -43,11 +45,11 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgname build -D enable-gtk-doc=true
+  arch-meson ${_gitname} build -D enable-gtk-doc=true
   ninja -C build
 }
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname/COPYING
+  install -Dt "$pkgdir/usr/share/licenses/${_gitname}" -m644 ${_gitname}/COPYING
 }
