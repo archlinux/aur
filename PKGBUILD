@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Birk <jona@jbirk.de>
 
 pkgname=toggle_cool_cow_says_type
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A terminal based typing game."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/togglebyte/toggle_cool_cow_says_type/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('60f7aa208fe195a51ef312e114e0fe9a152a96beae2860b2750493b3d969ef46')            
+sha256sums=('06ececa4130cab1364ef14f84168f889da899b6f886697ca402078b723ba76aa')            
 
 build() {
     cd ${pkgname}-${pkgver}
