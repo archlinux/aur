@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=5.11.6.arch1
+pkgver=5.11.8.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -30,7 +30,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0c4c3b90f011cac0973d65031d12c518da831d4563fee6ae60ee06929fe0bc81'
+            'bd644e14f3e885bfdda17d5da2f9112070c7126362864664234df2033d17d8ca'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '1c621f67bbf9efef610d1b2d1afd727fca9ceaa298f807bd0348b59ec6ce9562' )
 
