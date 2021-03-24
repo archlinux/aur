@@ -1,12 +1,30 @@
+Submodule jslib contains modified content
+diff --git a/jslib/src/angular/components/register.component.ts b/jslib/src/angular/components/register.component.ts
+index 6149f83..005d528 100644
+--- a/jslib/src/angular/components/register.component.ts
++++ b/jslib/src/angular/components/register.component.ts
+@@ -69,6 +69,12 @@ export class RegisterComponent {
+     }
+ 
+     async submit() {
++        if (typeof crypto.subtle === 'undefined') {
++            this.platformUtilsService.showToast('error', "This browser requires HTTPS to use the web vault",
++                "Check the bitwarden_rs wiki for details on how to enable it");
++            return;
++        }
++
+         if (!this.acceptPolicies && this.showTerms) {
+             this.platformUtilsService.showToast('error', this.i18nService.t('errorOccurred'),
+                 this.i18nService.t('acceptPoliciesError'));
 diff --git a/src/app/app.component.ts b/src/app/app.component.ts
-index 51853633..c9b3d48a 100644
+index 9c5b6b5d..287338d2 100644
 --- a/src/app/app.component.ts
 +++ b/src/app/app.component.ts
 @@ -140,6 +140,10 @@ export class AppComponent implements OnDestroy, OnInit {
                          }
                          break;
                      case 'showToast':
-+                        if (typeof message.text === "string" && (message.text.indexOf("this.subtle") != -1 || message.text.indexOf("importKey") != -1)) {
++                        if (typeof message.text === "string" && typeof crypto.subtle === 'undefined') {
 +                            message.title="This browser requires HTTPS to use the web vault";
 +                            message.text="Check the bitwarden_rs wiki for details on how to enable it";
 +                        }
@@ -14,10 +32,10 @@ index 51853633..c9b3d48a 100644
                          break;
                      case 'analyticsEventTrack':
 diff --git a/src/app/services/services.module.ts b/src/app/services/services.module.ts
-index 3e4d8dfa..f5bf60e4 100644
+index e5c48fe9..17ee65c9 100644
 --- a/src/app/services/services.module.ts
 +++ b/src/app/services/services.module.ts
-@@ -135,25 +135,32 @@ const environmentService = new EnvironmentService(apiService, storageService, no
+@@ -136,25 +136,33 @@ const environmentService = new EnvironmentService(apiService, storageService, no
  const auditService = new AuditService(cryptoFunctionService, apiService);
  const eventLoggingService = new EventLoggingService(storageService, apiService, userService, cipherService);
  
@@ -54,6 +72,7 @@ index 3e4d8dfa..f5bf60e4 100644
 -        }
 +        const isDev = false;
 +        environmentService.baseUrl = getBaseUrl();
++        environmentService.webVaultUrl = environmentService.baseUrl;
 +        environmentService.notificationsUrl = environmentService.baseUrl + '/notifications';
 +        environmentService.enterpriseUrl = environmentService.baseUrl + '/portal';
          apiService.setUrls({
@@ -62,20 +81,8 @@ index 3e4d8dfa..f5bf60e4 100644
              api: isDev ? 'http://localhost:4000' : null,
              identity: isDev ? 'http://localhost:33656' : null,
              events: isDev ? 'http://localhost:46273' : null,
-diff --git a/src/app/settings/two-factor-u2f.component.ts b/src/app/settings/two-factor-u2f.component.ts
-index 5560c476..a9b954a8 100644
---- a/src/app/settings/two-factor-u2f.component.ts
-+++ b/src/app/settings/two-factor-u2f.component.ts
-@@ -128,6 +128,7 @@ export class TwoFactorU2fComponent extends TwoFactorBaseComponent implements OnI
-         (window as any).u2f.register(u2fChallenge.appId, [{
-             version: u2fChallenge.version,
-             challenge: u2fChallenge.challenge,
-+            attestation: 'direct',
-         }], [], (data: any) => {
-             this.ngZone.run(() => {
-                 this.u2fListening = false;
 diff --git a/src/scss/styles.scss b/src/scss/styles.scss
-index 55b3c92c..c48e2baf 100644
+index be32ef9e..1cbb8682 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
 @@ -1,5 +1,56 @@
@@ -135,15 +142,4 @@ index 55b3c92c..c48e2baf 100644
  $primary: #175DDC;
  $primary-accent: #1252A3;
  $secondary: #ced4da;
-diff --git a/webpack.config.js b/webpack.config.js
-index b6da3558..eef05772 100644
---- a/webpack.config.js
-+++ b/webpack.config.js
-@@ -178,6 +178,7 @@ const config = {
-         },
-         minimizer: [
-             new TerserPlugin({
-+                sourceMap: true,
-                 terserOptions: {
-                     safari10: true,
-                 },
+
