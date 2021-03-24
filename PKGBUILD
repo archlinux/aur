@@ -7,6 +7,7 @@ pkgdesc='BearLibTerminal is a library that creates a terminal-like window facili
 arch=('i686' 'x86_64')
 url='http://foo.wyrd.name/en:bearlibterminal'
 license=('MIT')
+replaces=('bearlibterminal-hg')
 makedepends=('cmake' 'python-setuptools' 'python2-setuptools' 'git')
 provides=('bearlibterminal')
 source=('bearlibterminal-git::git+https://github.com/cfyzium/bearlibterminal')

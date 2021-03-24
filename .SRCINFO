@@ -11,6 +11,7 @@ pkgbase = bearlibterminal-git
 	makedepends = python2-setuptools
 	makedepends = git
 	provides = bearlibterminal
+	replaces = bearlibterminal-hg
 	source = bearlibterminal-git::git+https://github.com/cfyzium/bearlibterminal
 	md5sums = SKIP
 
