@@ -19,7 +19,7 @@ url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse whoogle-git
          libvpx libjpeg zlib icu libevent libpipewire02)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
+makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
@@ -95,7 +95,6 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
-ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 export CC='clang'
 export CXX='clang++'
