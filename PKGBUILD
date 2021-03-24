@@ -1,10 +1,10 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.15.0
+pkgver=1.15.1
 _jslibcommit='f80e89465ffc004705d2941301c0ffb6bfd71d1a'
 _nodeversion='10.24.0'
-pkgrel=2
+pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bitwarden/cli"
@@ -14,17 +14,12 @@ conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
-sha512sums=('f579f619f5b18fe439b1e88d01a7be081616f954661c64d6273023573439e2bb8c6e504496e17b1071189a476c7b07a5d2c4778657912933014deea9ade9f438'
+sha512sums=('5eb175d0d03abf59639e29b169d6dfcf9107aac862d28a4ad3961520c4c617199e2f130869173a5ae63d16e57a1465ee9f3bd63b1956b9f7488d0c9cf8aad474'
             'e0a80a2088af56b68494356856101574b9c9aef3cad9ef384cd61ee45eb3cb398346604c72cf8ea6522f6747a08ab25d0590d9d17e4116bcdc6726864f95b506')
 
 prepare() {
   rmdir "${srcdir}/cli-${pkgver}/jslib"
   ln -s "${srcdir}/jslib-${_jslibcommit}" "${srcdir}/cli-${pkgver}/jslib"
-
-  # XXX: Fix cannot find module sendAccessResponse
-  # Remove this hack when PR is merged: https://github.com/bitwarden/cli/pull/253
-  mv ${srcdir}/cli-${pkgver}/src/models/response/SendAccessResponse.ts \
-     ${srcdir}/cli-${pkgver}/src/models/response/sendAccessResponse.ts
 }
 
 build() {
