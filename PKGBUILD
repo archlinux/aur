@@ -12,7 +12,7 @@
 # If unsure, try the system electron first, and fallback to this package if system won't work.
 
 pkgname=jitsi-meet-electron
-pkgver=2.7.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application powered by Electron. Uses npm version of electron"
 arch=('any')
@@ -29,7 +29,7 @@ source=(
 )
 
 sha256sums=('d4ce7836a838be92d6484813737c424074a7747fd1b7eed9fbc061c4b2cd10cf'
-            '922c657d78e15ce11ad88409b33a387f83d639fe3c34e542831311929b1c3c96')
+            'c2326bfa1cc6525e93c2a5ce0f52c716858626988f4696cd00ad4abe3bc7dea9')
 
 build() {
     cd "${pkgname}-${pkgver}"
