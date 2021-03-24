@@ -4,7 +4,7 @@
 pkgname=haste-server-git
 _gitname=haste-server
 pkgver=r384.5d2965f
-pkgrel=1
+pkgrel=2
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
 url="https://github.com/seejohnrun/haste-server"
@@ -41,5 +41,5 @@ prepare() {
 package() {
 	cd "${srcdir}/${_gitname}"
 	install -Dm644 "../../${_gitname}.service" -t "${pkgdir}/usr/lib/systemd/system"
-	npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr" *.tgz
+	npm install --cache ../cache -g --prefix "${pkgdir}/usr" *.tgz
 }
