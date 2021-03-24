@@ -2,7 +2,7 @@
 _npmname=jsondiffpatch
 pkgname=nodejs-jsondiffpatch
 pkgver=0.3.11
-pkgrel=2
+pkgrel=3
 pkgdesc="diff and patch JavaScript objects (JSON)"
 arch=(any)
 url="https://github.com/benjamine/jsondiffpatch"
@@ -14,7 +14,7 @@ noextract=($_npmname-$pkgver.tgz)
 sha512sums=('5e2dc8ca076dfc11a19a5e9b754161803922d5380eb29de11b78a21f72adccff826a1b4671d3df2912e59d96d2c3eddbd6e99992198aaea5d481470a7a7ca1b4')
 
 package() {
-    npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+    npm install -g  --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
     # Remove references to $pkgdir
     find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
