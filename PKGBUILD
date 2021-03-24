@@ -3,7 +3,7 @@
 
 _pkgname=hadolint
 pkgname=hadolint-git
-pkgver=r891.f0ef28b
+pkgver=r905.dc61382
 pkgrel=1
 pkgdesc='Dockerfile linter, validate inline bash, written in Haskell'
 url='Dockerfile linter, validate inline bash, written in Haskell'
