@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=supercollider-mkplugins
 pkgver=0.1.7D
-pkgrel=1
+pkgrel=2
 pkgdesc="Mads Kjeldgaard's plugins for SuperCollider"
 arch=('x86_64')
 url="https://github.com/madskjeldgaard/mkplugins"

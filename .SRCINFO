@@ -1,7 +1,7 @@
 pkgbase = supercollider-mkplugins
 	pkgdesc = Mads Kjeldgaard's plugins for SuperCollider
 	pkgver = 0.1.7D
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madskjeldgaard/mkplugins
 	arch = x86_64
 	groups = pro-audio
