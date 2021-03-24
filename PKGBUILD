@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -19,7 +19,7 @@ optdepends=('dbus: indicator support'
 arch=('x86_64')
 license=('GPL3')
 source=("https://github.com/Riey/kime/releases/download/v${pkgver}/kime_latest_v${pkgver}.tar.zst")
-md5sums=('420d7c47ec6c242b8784fd554b15bb44')
+md5sums=('77a01ab207022cd0af050d9cc4476435')
 
 package() {
     install -Dm755 kime-check -t "${pkgdir}/usr/bin"
@@ -37,7 +37,7 @@ package() {
     install -Dm644 kime_engine.hpp -t "${pkgdir}/usr/include"
     install -Dm644 default_config.yaml -T "${pkgdir}/etc/xdg/kime/config.yaml"
     for d in *.desktop; do
-        install -Dm644 "$d" -t "${pkgdir}/usr/share/applications"
+        install -Dm644 "$d" -t "${pkgdir}/etc/xdg/autostart"
     done
     for i in icons/64x64/*; do
         install -Dm644 "$i" -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps"
