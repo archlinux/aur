@@ -7,7 +7,7 @@ pkgdesc="Verify and store checksums in your beets library"
 arch=('any')
 url="https://github.com/geigerzaehler/beets-check"
 license=('MIT')
-depends=('python' 'beets>=1.4.3')
+depends=('python>=3.7' 'beets>=1.4.7')
 source=("https://github.com/geigerzaehler/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('8343240c1e4e4c2496f924b8c2faf042')
 
