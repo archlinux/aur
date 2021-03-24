@@ -1,9 +1,10 @@
 pkgbase = tai-git
-	pkgdesc = terminal ascii image -- convert images to ascii written in Rust
-	pkgver = 0.0.3.r0.g4db4c1f
-	pkgrel = 1
+	pkgdesc = terminal ascii image -- convert images to ascii art
+	pkgver = 0.0.3.r2.gf1692f8
+	pkgrel = 2
 	url = https://github.com/MustafaSalih1993/tai
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = cargo

@@ -1,9 +1,9 @@
 # Maintainer: lmartinez-mirror
 pkgname=tai-git
-pkgver=0.0.3.r0.g4db4c1f
-pkgrel=1
-pkgdesc="terminal ascii image -- convert images to ascii written in Rust"
-arch=('x86_64')
+pkgver=0.0.3.r2.gf1692f8
+pkgrel=2
+pkgdesc="terminal ascii image -- convert images to ascii art"
+arch=('x86_64' 'aarch64')
 url="https://github.com/MustafaSalih1993/tai"
 license=('MIT')
 depends=('gcc-libs')
