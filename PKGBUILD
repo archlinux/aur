@@ -8,7 +8,7 @@ pkgdesc='a free Monero desktop wallet'
 license=('BSD')
 arch=('x86_64')
 url="https://featherwallet.org"
-depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'tor')
+depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor')
 makedepends=('git' 'cmake' 'boost')
 
 source=("${pkgname}"::"git+https://git.featherwallet.org/feather/feather")
