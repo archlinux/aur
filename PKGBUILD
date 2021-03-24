@@ -3,7 +3,7 @@
 # Contributor: Tim Brown <stimut@gmail.com>
 
 pkgname=google-cloud-sdk-app-engine-java
-pkgver=332.0.0
+pkgver=333.0.0
 pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides the Java runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
@@ -17,7 +17,7 @@ depends=(
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha256sums=('0db18834eec2edc115a7a6597cb17518c8716e11a89a71cf732b887b55e96783')
+sha256sums=('633a8dc36bfa874fee4fc12d3bd864d4ea098f3e1a3b63f54cf9cd39d4baa12a')
 
 package() {
   # Install the component manifest file
