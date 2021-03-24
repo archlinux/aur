@@ -1,14 +1,15 @@
-# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# Maintainer: Konstantin Gizdov <arch at kge dot pw>
+# Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Morten Linderud <morten@linderud.pw>
 # Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('any')
 url="https://gephi.org"
 license=('CDDL' 'GPL3')
-depends=('java-runtime' 'libxxf86vm' 'java-environment')
+depends=('java-runtime=8' 'libxxf86vm' 'java-environment=8')
 makedepends=('gendesk')
 options=(!strip)
 source=("https://github.com/gephi/gephi/releases/download/v$pkgver/gephi-$pkgver-linux.tar.gz")
