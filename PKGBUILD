@@ -15,7 +15,7 @@ source=(
 	"${pkgname}-${pkgver}.jar::$(curl -s ${_url} | grep "browser_download_url.*jar" | cut -d\" -f4)"
 	"${pkgname}.sh"
 )
-md5sums=('4c9df61451e7644c04db7bde22e7dcc2'
+md5sums=('SKIP'
          '196d4e69879d3b01f73672c812c0f20c')
 
 pkgver() {
