@@ -2,9 +2,9 @@
 
 pkgname=vger
 pkgver=1.06
-pkgrel=2
+pkgrel=3
 pkgdesc="Gemini server written in C"
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url="https://tildegit.org/solene/vger"
 license=('BSD')
 depends=(libbsd)

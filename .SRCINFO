@@ -1,9 +1,10 @@
 pkgbase = vger
 	pkgdesc = Gemini server written in C
 	pkgver = 1.06
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tildegit.org/solene/vger
 	arch = x86_64
+	arch = armv7h
 	license = BSD
 	depends = libbsd
 	optdepends = xinetd: Network support
