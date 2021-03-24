@@ -1,20 +1,20 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=the-rock
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A command line King James bible viewer"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/NoahJelen/the-rock"
 license=('GPL')
 depends=('ncurses')
 makedepends=('cargo' 'gzip')
-source=("https://gitlab.com/NoahJelen/the-rock/-/archive/0.1.1/the-rock-0.1.1.zip")
+source=("https://gitlab.com/NoahJelen/the-rock/-/archive/0.2.0/the-rock-0.2.0.zip")
 conflicts=('the-rock-git' 'bible-kjv')
 md5sums=('SKIP')
 
 build() {
-    cd "the-rock-0.1.1"
+    cd "the-rock-0.2.0"
     cargo build --release
     cd target/release
     ln -sf the_rock bible
@@ -22,7 +22,7 @@ build() {
 
 package() {
     #the package contents
-    cd "the-rock-0.1.1"
+    cd "the-rock-0.2.0"
     mkdir -p "$pkgdir/usr/lib/the_rock"
     mkdir -p "$pkgdir/usr/share/man/man1/"
     install -Dt "$pkgdir/usr/bin" -m755 target/release/the_rock
