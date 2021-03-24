@@ -13,9 +13,9 @@ optdepends=("dialog: GUI elements")
 makedepends=("tar")
 conflicts=("iicalc")
 options=('!strip' '!emptydirs')
-install=iicalc.install
+install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('a09018f60d4f55dff6d3a70a2c0974c146c7c8449a43f80b63054ff21a8a4ce3e50f5f134629298e06bd6072e3a7aba57b28667cb5e5812b0849119886011616')
+sha512sums=('fe32d651ca03b131f1f88d51ce8799491eb636450726e22b59f8866c6723d3cd1fc4270c8281723d2379ef67e79000ae62e973b4d45639824c136e50c0db7527')
 
 package(){
 
