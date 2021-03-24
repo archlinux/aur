@@ -4,7 +4,7 @@
 
 _gitname=totem
 pkgname=totem-vaapi
-pkgver=3.38.0+1+g693768c16
+pkgver=3.38.0
 pkgrel=1
 pkgdesc="Movie player for the GNOME desktop based on GStreamer with (unstable) VA-API support"
 url="https://wiki.gnome.org/Apps/Videos"
