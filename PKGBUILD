@@ -7,7 +7,7 @@ pkgdesc="AMDGPU Controller application"
 url="https://github.com/ilyazzz/LACT"
 makedepends=("rust")
 depends=("gtk3" "hwids")
-arch=("any")
+arch=('x86_64' 'aarch64')
 backup=('etc/lact.json')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/ilyazzz/LACT/archive/refs/tags/v${pkgver}.tar.gz" 
