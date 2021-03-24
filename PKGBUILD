@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::https://github.com/GIJack/python-generate_mac/archive/${pkgver}.tar.gz)
-sha256sums=('78cd5a3cc10d122ee534f04542ae7cfd9a5d20c7dbf5f64fa82f25791af0840c')
+sha256sums=('bbe887839bd366b263376a87f40a55523092a9090124c3d5637dc144f9ca51be')
 
 package() {
   cd ${_pypiname}-${pkgver}
