@@ -1,15 +1,16 @@
 pkgbase = python-mattermostdriver
-	pkgdesc = A Python Mattermost Driver
-	pkgver = 7.0.1
+	pkgdesc = Python Mattermost Driver for APIv4
+	pkgver = 7.2.0
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/mattermostdriver/
+	url = https://vaelor.github.io/python-mattermost-driver/
 	arch = any
-	license = custom:MIT
+	license = MIT
 	depends = python
 	depends = python-requests
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/source/m/mattermostdriver/mattermostdriver-7.0.1.tar.gz
-	md5sums = 7018be836c1578bb57a9a508c5b2a9d7
+	source = python-mattermostdriver-7.2.0.tar.gz::https://github.com/Vaelor/python-mattermost-driver/archive/refs/tags/7.2.0.tar.gz
+	sha256sums = 5de915f1383fe63acebf739be8b7706c94cbe73d62151ad5a5085cf8e4560fc8
+	sha512sums = aae1fed45ff2024edee3c09663424ed17cc2466f893eb989dbe407d2ae515e03b216b24aff500e15168c46027796d70feb9780ab481c4b21a91b11326dbe0cbe
 
 pkgname = python-mattermostdriver
 
