@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-mock
+	pkgdesc = Angular-Mock 1.2.1 (XStatic packaging standard)
+	pkgver = 1.2.1.1
+	pkgrel = 1
+	url = http://angularjs.org/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Mock/XStatic-Angular-Mock-1.2.1.1.tar.gz
+	md5sums = 94f072c39c2070f3939b619d913fb37f
+	sha256sums = ffee6edfab8276abd8057ddc28c4d8503424c0c61938e787720766862ef43e42
+	sha512sums = 3ad74d21a804f4e0b9b314b34745012f291b674e8d8c4de1425e560c4c405ba9c1a2600d2fd16ac77cf162bf0ed4390d52f6017b12142d69fe399be1ef6ba812
+
+pkgname = python-xstatic-angular-mock
+
+pkgname = python2-xstatic-angular-mock
+
