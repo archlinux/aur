@@ -1,0 +1,15 @@
+pkgbase = python-contextvars
+	pkgdesc = PEP 567 Backport
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/MagicStack/contextvars
+	arch = any
+	license = custom
+	checkdepends = python-immutables
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/contextvars/contextvars-2.4.tar.gz
+	md5sums = 5907c5c866d9ac75563c90b0b7953b04
+
+pkgname = python-contextvars
+
