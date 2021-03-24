@@ -1,7 +1,7 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm-git
-pkgver=6.2.r1945.c5c9efb
-pkgrel=3
+pkgver=6.2.r1950.5ede211
+pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
@@ -12,9 +12,7 @@ depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  dmenu ffmpeg geoclu
 makedepends=(git make)
 checkdepends=()
 optdepends=(\
-	'dunst: a nicer notification-daemon' \
-    'rofi: a launcher that looks nicer than dmenu' \
-    'rofi-dmenu: symlink dmenu to rofi for interoperability')
+	'xfce4-notifyd: a good default notification-daemon')
 provides=(moonwm)
 conflicts=(moonwm)
 replaces=()
