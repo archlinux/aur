@@ -1,6 +1,6 @@
 pkgbase = splunk
 	pkgdesc = Statistical analysis and search tool for logs and machine data
-	pkgver = 8.1.2.0
+	pkgver = 8.1.3.0
 	pkgrel = 1
 	epoch = 3
 	url = https://www.splunk.com/
@@ -10,8 +10,8 @@ pkgbase = splunk
 	options = !strip
 	source = splunk.service
 	sha256sums = ca96b85750a0592208facc747bbe1eb22b0a35b6dee841e6f51f1ad6a9157757
-	source_x86_64 = https://download.splunk.com/products/splunk/releases/8.1.2/linux/splunk-8.1.2-545206cc9f70-Linux-x86_64.tgz
-	sha256sums_x86_64 = 6cd7492aeaf8e94059226d45192c034f8c5e5a32dd6246973b5bd25b77442e71
+	source_x86_64 = https://download.splunk.com/products/splunk/releases/8.1.3/linux/splunk-8.1.3-63079c59e632-Linux-x86_64.tgz
+	sha256sums_x86_64 = b191a7a1c2eeb23e8b0331c04c8d1f3ab2b854ca3a45c31b8bf52dd81084afdc
 
 pkgname = splunk
 
