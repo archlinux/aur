@@ -6,16 +6,16 @@ _pkgbasename=fontconfig
 pkgname=lib32-$_pkgbasename-git
 pkgver=2.13.91+18+g01e4f08
 pkgrel=1
-epoch=2
 pkgdesc="A library for configuring and customizing font access (32-bit)"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fontconfig/"
 license=(custom)
 provides=(lib32-fontconfig)
 conflicts=(lib32-fontconfig)
-depends=(lib32-expat lib32-freetype2 $_pkgbasename)
-makedepends=(git autoconf-archive gperf python-lxml python-six lib32-json-c)
-install=lib32-fontconfig.install
+depends=(lib32-expat libfreetype.so $_pkgbasename)
+makedepends=(git meson gperf lib32-freetype2)
+provides=(libfontconfig.so)
+install=fontconfig-32.install
 source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig"
         fontconfig-32.hook)
 sha256sums=('SKIP'
@@ -53,19 +53,15 @@ build() {
 
 #check() {
 #  cd $_pkgbasename
-#  meson test -C build
+#  meson test -C build --print-errorlogs
 #}
 
 package() {
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
-
-  rm -r "$pkgdir"/{etc,usr/{include,share}}
-  find "$pkgdir/usr/bin" -not -type d -not -name fc-cache -delete
-  mv "$pkgdir"/usr/bin/fc-cache{,-32}
-
-  install -Dm644 ../fontconfig-32.hook "$pkgdir/usr/share/libalpm/hooks/fontconfig-32.hook"
-
-  # Install license
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -r "${pkgdir}"/{etc,usr/{include,share}}
+  mv "${pkgdir}"/usr/bin/fc-cache{,-32}
+  find "${pkgdir}"/usr/bin -type f -not -name '*-32' -delete
+  install -Dm 644 *.hook -t "${pkgdir}"/usr/share/libalpm/hooks/
+  install -dm 755 "${pkgdir}"/usr/share/licenses
+  ln -s fontconfig "${pkgdir}"/usr/share/licenses/lib32-fontconfig
 }

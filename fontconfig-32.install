@@ -1,0 +1,11 @@
+post_upgrade() {
+  # a full forced directory scan is required here
+  echo "Rebuilding 32-bit fontconfig cache..."
+  /usr/bin/fc-cache-32 -rs
+}
+
+post_install() {
+  post_upgrade $1 0
+}
+
+# vim:set sw=2 et:
