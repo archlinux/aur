@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-jquery-colourpicker
+	pkgdesc = jquery-colourpicker 1.0.0 (XStatic packaging standard)
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://andreaslagerkvist.com/jquery/colour-picker/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-jquery
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-jquery
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-jquery-colourpicker/XStatic-jquery-colourpicker-1.0.0.1.tar.gz
+	md5sums = f9826f4a0758ba8c9a403f9353c20e9e
+	sha256sums = 1b9766d6042786ba1fefa5c28ff646ad20ba685f98c831fc00d9473175dd2d35
+	sha512sums = 063bc8a2e03a8ae7cbb7da2a87058cdb57ad8543f71c784a73b1ce4ef0873c367d86f54fa53fb7162e0b8d46ef6c0874cc4e49754eb633e0e8d249c56baead0c
+
+pkgname = python-xstatic-jquery-colourpicker
+
+pkgname = python2-xstatic-jquery-colourpicker
+
