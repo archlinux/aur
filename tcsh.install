@@ -1,0 +1,13 @@
+post_install() {
+  if ! grep -qe '^/bin/tcsh$' etc/shells; then
+    echo /bin/tcsh >>etc/shells
+    echo /bin/csh >>etc/shells
+    echo 'Added tcsh and csh to /etc/shells.'
+  fi
+}
+
+pre_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/tcsh$/d' /etc/shells
+  sed -i -r '/^(\/usr)?\/bin\/csh$/d' /etc/shells
+  echo 'Removed tcsh and csh from /etc/shells.'
+}
