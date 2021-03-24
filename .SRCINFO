@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-lightning
 	pkgdesc = The lightweight PyTorch wrapper for high-performance AI research
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/PyTorchLightning/pytorch-lightning
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-pytorch-lightning
 	depends = tensorboard
 	optdepends = python-apex: mixed precision support
 	optdepends = python-horovod: for distributed training
-	source = pytorch-lightning-1.2.4.tar.gz::https://github.com/PyTorchLightning/pytorch-lightning/archive/1.2.4.tar.gz
-	sha512sums = 52d4f55e483b5565cc6cad3c003b504ed1ef102e876c33871d839fb09d6ceb3174431b14259f73f7e50acd6411df9c9f3cb9c75629ee387262d61926f822727a
+	source = pytorch-lightning-1.2.5.tar.gz::https://github.com/PyTorchLightning/pytorch-lightning/archive/1.2.5.tar.gz
+	sha512sums = 675ea80c6896a829f9bba9d26b097f410d12db462088cb64b72b54bf5773d788a0023c569a49b2c9c410e3f0ccd7581a45ccb1590c7fd9f525a59d817caffa8e
 
 pkgname = python-pytorch-lightning
 
