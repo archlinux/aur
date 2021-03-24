@@ -1,0 +1,15 @@
+pkgbase = nextpad-git
+	pkgdesc = Not so powerful text editor I'm working on, inspired by vim and nano.
+	pkgver = 0.0.r8.5440ee1
+	pkgrel = 1
+	url = https://github.com/LiveEmily/nextpad.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	provides = nextpad
+	source = git+https://github.com/LiveEmily/nextpad.git
+	md5sums = SKIP
+
+pkgname = nextpad-git
+
