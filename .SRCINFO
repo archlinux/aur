@@ -1,0 +1,24 @@
+pkgbase = python-xstatic-angular-vis
+	pkgdesc = Angular-Vis 4.16.0 (XStatic packaging standard)
+	pkgver = 4.16.0.0
+	pkgrel = 1
+	url = https://github.com/visjs/angular-visjs
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-xstatic
+	makedepends = python-xstatic-angular
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-xstatic
+	makedepends = python2-xstatic-angular
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/X/XStatic-Angular-Vis/XStatic-Angular-Vis-4.16.0.0.tar.gz
+	md5sums = 0dccc277987e79fe11e92c20a4e03721
+	sha256sums = 6ffaaab864083a9502455d1bebccb2b558e0e3637e33f7f69003e132f06ec9b3
+	sha512sums = aacca8608301a4aa3a558b19d6c0adfe5b5a236d2d03d0bcb903752be87037f60bb3bd43b009e2322a1669e2bde7783f4d450fa8362d952be5ac22f35670717f
+
+pkgname = python-xstatic-angular-vis
+
+pkgname = python2-xstatic-angular-vis
+
