@@ -7,6 +7,7 @@ pkgbase = python-adafruit-circuitpython-busdevice
 	arch = armv7h
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-adafruit-blinka
 	optdepends = python-raspberry-gpio
