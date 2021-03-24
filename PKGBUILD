@@ -10,7 +10,7 @@ license=('GPL')
 groups=('pro-audio')
 depends=('supercollider')
 source=("$url/releases/download/v.${pkgver}/MKPlugins-Linux.zip")
-md5sums=('61f764e71b8b9ef4eea34491c0a49872')
+md5sums=('1a0d9d4d35ed6a48f3716917606775ef')
 
 package() {
 	DESTINATION_="usr/share/SuperCollider/Extensions/"
