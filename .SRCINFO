@@ -1,6 +1,6 @@
 pkgbase = rocrand
 	pkgdesc = Pseudo-random and quasi-random number generator on ROCm
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocrand
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rocrand
 	makedepends = cmake
 	makedepends = git
 	depends = hip-rocclr
-	source = rocrand-4.0.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocRAND/archive/rocm-4.0.0.tar.gz
-	sha256sums = 1cafdbfa15cde635bd424d2a858dc5cc94d668f9a211ff39606ee01ed1715f41
+	source = rocrand-4.1.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocRAND/archive/rocm-4.1.0.tar.gz
+	sha256sums = 94327e38739030ab6719a257f5a928a35842694750c7f46d9e11ff2164c2baed
 
 pkgname = rocrand
