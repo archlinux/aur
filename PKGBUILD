@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 binname=${pkgname}-binary
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -16,10 +16,14 @@ source=(
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
 	"00-worker-log-level-info.patch"
+	"03-rr-log-output.patch"
+	"03-rr-binary-log-output.patch"
 )
 sha256sums=(
-	"7b002d60eeebd795a4e7f0c3fa4ac0b8a043ef3fbf3153727a4ce9833ce0141e"
-	"6c3d10071548a693be1999b52617ab11ab55e3a6d05db25ee9aeea033afbfd4f"
+	"2954b1378757598f2e3ce819f91892a5c89837a5a08107fdd6f81effcba947e6"
+	"fa88e2c87966df507a2d53d5199c8e27e3ea4bfcc5d9267e21d96fe025f7da15"
+	SKIP
+	SKIP
 	SKIP
 	SKIP
 	SKIP
@@ -31,8 +35,10 @@ prepare() {
 
 	cd "$srcdir/$pkgname-$pkgver"
 	patch -p1 < "$srcdir/00-worker-log-level-info.patch"
+	patch -p1 < "$srcdir/03-rr-log-output.patch"
 
 	cd "$srcdir/$binname-$pkgver"
+	patch -p1 <"$srcdir/03-rr-binary-log-output.patch"
 	go mod edit -replace "github.com/spiral/roadrunner/v2=../roadrunner-$pkgver"
 	go mod download
 }
