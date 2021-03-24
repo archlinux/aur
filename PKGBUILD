@@ -5,7 +5,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.68.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         glib-compile-schemas.hook
         glib-compile-schemas.hook gio-querymodules.{hook,script})
 sha256sums=('SKIP'
-            '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
+            'b1cb539389aaabd13671424452f2805112a359b96c9e0e7f80fad804a77f9c7e'
             '9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
@@ -41,6 +41,10 @@ pkgver() {
 
 prepare() {
   cd glib
+
+  # https://bugs.archlinux.org/task/70131
+  # https://gitlab.gnome.org/GNOME/glib/-/merge_requests/2010
+  git cherry-pick -n 07ab2e26c937 77649d3d3d94
 
   # Suppress noise from glib-compile-schemas.hook
   git apply -3 ../noisy-glib-compile-schemas.diff
