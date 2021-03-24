@@ -1,0 +1,15 @@
+pkgbase = nextcloud-app-files-antivirus
+	pkgdesc = Antivirus app for Nextcloud
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/nextcloud/files_antivirus
+	arch = any
+	license = AGPL3
+	depends = nextcloud
+	depends = clamav
+	options = !strip
+	source = nextcloud-app-files-antivirus-3.2.0.tar.gz::https://github.com/nextcloud/files_antivirus/releases/download/v3.2.0/files_antivirus.tar.gz
+	sha512sums = a8c5326928956fec6daa18689b588612970237686169c56ba159df53e63910ae146c00550ed7eab88d805aa71b786fcc34f1417833eba097e2258409c61cea1e
+
+pkgname = nextcloud-app-files-antivirus
+
