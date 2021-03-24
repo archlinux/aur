@@ -4,14 +4,16 @@
 
 pkgname=bootstrap-studio
 pkgver=5.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
 url="https://bootstrapstudio.io/"
 
-source=("https://bootstrapstudio.io/releases/desktop/${pkgver}/Bootstrap Studio.AppImage")
-sha256sums=("SKIP")
+source=("https://bootstrapstudio.io/releases/desktop/${pkgver}/Bootstrap Studio.AppImage"
+				"bstudio.desktop")
+sha256sums=("SKIP"
+						"SKIP")
 
 prepare() {
 	chmod +x "Bootstrap Studio.AppImage"
@@ -26,7 +28,7 @@ package() {
 	ln -s "${pkgdir}/opt/bootstrap-studio/squashfs-root/AppRun" "${pkgdir}/usr/bin/bootstrap-studio"
 
 	mkdir -p "${pkgdir}/usr/share/applications"
-	cp -r "${srcdir}/squashfs-root/bstudio.desktop" "${pkgdir}/usr/share/applications/"
+	cp -r "${srcdir}/bstudio.desktop" "${pkgdir}/usr/share/applications/"
 
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/0x0/apps/"
 	cp -r "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/bstudio.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/"

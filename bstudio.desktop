@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bootstrap Studio
+Exec=/opt/bootstrap-studio/squashfs-root/AppRun
+Terminal=false
+Type=Application
+Icon=bstudio
+StartupWMClass=Bootstrap Studio
+X-AppImage-Version=5.5.4
+Comment=Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework.
+Categories=Development;
