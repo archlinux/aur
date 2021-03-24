@@ -1,14 +1,16 @@
 pkgbase = wesher
 	pkgdesc = Create and manage an encrypted mesh overlay network using wireguard
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/costela/wesher
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	depends = gcc-libs
+	depends = glibc
 	source = wesher-0.2.6.tar.gz::https://github.com/costela/wesher/archive/refs/tags/v0.2.6.tar.gz
+	source = wesher.service
 	md5sums = 209febe054a716466ac9987081e01eac
+	md5sums = a1c62e4939c72c3a4068a1829fced041
 
 pkgname = wesher
 
