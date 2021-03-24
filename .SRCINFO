@@ -1,0 +1,18 @@
+pkgbase = python-favicons
+	pkgdesc = Favicon generator for Python 3 with strongly typed sync & async APIs, CLI, & HTML generation
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/checktheroads/favicons
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-rich
+	depends = python-svglib
+	depends = python-typer
+	source = https://files.pythonhosted.org/packages/source/f/favicons/favicons-0.0.9.tar.gz
+	md5sums = 19091796d3c4a339be590ed87875ee4c
+
+pkgname = python-favicons
+
