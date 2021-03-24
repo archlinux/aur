@@ -1,7 +1,7 @@
 pkgbase = serialtool
 	pkgdesc = A practical Serial-Port/TCP/UDP debugging tool.
 	pkgver = 1.4.0alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Skiars/SerialTool
 	install = serialtool.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = serialtool
 	depends = qt5-script
 	provides = serialtool
 	conflicts = serialtool
-	replaces = serialtool
+	conflicts = serialtool-git
 	options = !strip
 	source = SerialTool.zip::https://github.com/Skiars/SerialTool/archive/refs/tags/v1.4.0alpha.zip
 	source = serialtool.desktop

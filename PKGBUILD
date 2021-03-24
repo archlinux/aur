@@ -2,14 +2,14 @@
 _pkgname=SerialTool
 pkgname=serialtool
 pkgver=1.4.0alpha
-pkgrel=2
+pkgrel=3
 pkgdesc="A practical Serial-Port/TCP/UDP debugging tool."
 arch=('any')
 url="https://github.com/Skiars/SerialTool"
 license=('GPL3')
 provides=(${pkgname})
-conflicts=(${pkgname})
-replaces=(${pkgname})
+conflicts=(${pkgname}  'serialtool-git')
+#replaces=(${pkgname})
 depends=('qscintilla-qt5' 'qt5-serialport' 'qt5-charts' 'qt5-script')
 makedepends=('qscintilla-qt5' 'qt5-serialport' 'qt5-charts' 'qt5-script' 'qt5-tools')
 backup=()
@@ -26,15 +26,20 @@ sha256sums=('95b8780eecc007fae461025d1c3db8b2158905e9379541632ab791c3c5e72455'
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/
-    qmake ${_pkgname}.pro
+    qmake 
     make
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -dm755 "${pkgdir}/usr/bin/" \
+                   "${pkgdir}/usr/share/${pkgname}/" 
+
+    cd ${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/
+    cp --preserve=mode -r ${_pkgname} language config themes slave  "${pkgdir}/usr/share/${pkgname}/"
+
+    ln -sf  "/usr/share/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/resource/images/logo.ico" "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
-#install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}/resource/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
 }
