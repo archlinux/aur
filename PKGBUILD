@@ -47,7 +47,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         unity-menubar.patch)
 md5sums=('0af7dc247737238f7c5a625f4c5a64d1'
          'SKIP'
-         'd35dfd0a95314019d71a4e75c22ca180'
+         '10872ca39ebb8844ec753203c55bccc4'
          '7c04ba88f1078b224c7c1483b5f0fa78'
          '1ef0f094e533a68399b96dc8080c6a6e'
          '2f911c142fc7eb0b76a6af1fad0438d6'
