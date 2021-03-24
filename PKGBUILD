@@ -1,21 +1,36 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=bupstash
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="a tool for encrypted backups"
 arch=('x86_64')
 url="https://github.com/andrewchambers/bupstash"
 license=('MIT')
-depends=('libsodium' 'gcc-libs') # pkgconf covered by base-devel
-makedepends=('cargo' 'pandoc')
+depends=('libsodium' 'gcc-libs')
+makedepends=('cargo' 'ruby-ronn-ng')
+checkdepends=('bash-bats') # if you hate yourself, add procps-ng + bubblewrap
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6f6d5183fac662113df6f7d4b568dd2ed0cbdb7c87474afee183e800269bfb14ec514952b17e43ca8b10be18e7a8a4428f1bf0caa143c5fb4b08aee2b2f48bcb')
+b2sums=('289af01eef818023ceb56d587e6539f3e6fcf908c5d351211d2271ef1cc031d9f9e6bb2980c409ddb2757fdb95b2e9ddca4739cec738ce8abdcc9308b804f231')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  cargo build --release --locked --all-features --target-dir=target
+  cargo build --release --locked --all-features
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+
+  # run cargo tests
+  cargo test
+
+  # create binary if not already built
+  cargo build --release --locked --all-features
+  # run cli tests
+  # ensure recently-built binary is first in $PATH
+  PATH="$(pwd)/target/release:$PATH"
+  bats ./cli-tests
 }
 
 package() {
@@ -42,13 +57,15 @@ package() {
     title="${PART[0]}"
     section="${PART[1]}"
 
+    # generate man directory if required
     if [ ! -d "$pkgdir/usr/share/man/man${section}" ]; then
       install -d "$pkgdir/usr/share/man/man${section}"
     fi
 
-    pandoc --standalone --to man \
-      -o "$pkgdir/usr/share/man/man${section}/${title}.${section}" \
-      "$filename"
+    # generate man page
+    ronn --roff \
+      <"$filename" \
+      >"$pkgdir/usr/share/man/man${section}/${title}.${section}"
   done
   IFS="$OLDIFS"
   unset OLDIFS
