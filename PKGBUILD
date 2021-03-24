@@ -1,8 +1,8 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: github iamkroot/trakt-scrobbler
 pkgname=trakt-scrobbler
-pkgver=1.2.0
-pkgrel=5
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -37,7 +37,7 @@ source=(
     "trakts-man.md"
     "trakts.zsh"
 )
-sha256sums=('6ae3fbcf9396672cc1942eace6217d5cd2e8e5b9ebff550ef03bea4dea19fc2e'
+sha256sums=('820bcab20926ec00051d2a90472ef80bb6a33e41948249d2d12eb43b6530b752'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c'
             '6b6c3f55ab153a9dc749e67acd6e091b5d1e9e35c3b51af4d2f1c687e8c8fab8')
 
