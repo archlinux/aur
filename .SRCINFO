@@ -14,7 +14,7 @@ pkgbase = xf86-input-libinput-git
 	optdepends = xorg-xinput: input configuration for X
 	provides = xf86-input-libinput
 	conflicts = xf86-input-libinput
-	source = git://anongit.freedesktop.org/xorg/driver/xf86-input-libinput
+	source = https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput
 	validpgpkeys = SKIP
 	sha512sums = SKIP
 

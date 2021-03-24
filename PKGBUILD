@@ -16,7 +16,7 @@ conflicts=('xorg-server<1.19.0' 'X-ABI-XINPUT_VERSION<24' 'X-ABI-XINPUT_VERSION>
 provides=('xf86-input-libinput')
 conflicts=('xf86-input-libinput')
 groups=('xorg-drivers')
-source=("git://anongit.freedesktop.org/xorg/driver/xf86-input-libinput")
+source=("https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput")
 sha512sums=('SKIP')
 validpgpkeys=('SKIP') # Peter Hutterer (Who-T) <office@who-t.net>
 
