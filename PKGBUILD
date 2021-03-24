@@ -5,7 +5,7 @@
 pkgname=guilded
 pkgver=1.0.992656
 pkgrel=1
-pkgdesc="That Discord Chat App Knocoff(www.guilded.gg)"
+pkgdesc="That Discord Chat App Knockoff(www.guilded.gg)"
 arch=('x86_64')
 url="https://www.guilded.gg/"
 license=('custom')
