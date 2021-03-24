@@ -1,7 +1,7 @@
 # Maintainer: ventusliberum <dafeinayius@gmail.com>
 
 pkgname=graviton-bin
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc='A modern Code Editor'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("graviton")
 source=("https://github.com/Graviton-Code-Editor/Graviton-App/releases/download/v${pkgver}/Graviton.Editor_Installer_${pkgver}_linux_amd64.deb"
         "https://raw.githubusercontent.com/Graviton-Code-Editor/Graviton-App/master/LICENSE.md")
 
-sha256sums=('df083b0485dbf4efe1b23f12a10ffbe5af2e42fb5c2a4cd044f7e1f4f9b7bf9b'
+sha256sums=('d551b4f47975544560413154d64664dad3cacb94ff7c78b23bf675d103e24527'
             'SKIP')
 
 package() {
