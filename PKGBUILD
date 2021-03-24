@@ -1,5 +1,7 @@
+# Maintainer: N Fytilis n-fit[]live.com
+
 ### Original Thunderbird from extra ###
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
@@ -11,7 +13,7 @@
 # Building: Nikita Tarasov <nikatar@disroot.org>
 
 pkgname=thunderbird-appmenu-bin
-pkgver=68.12.0
+pkgver=78.8.1
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Thunderbird-appmenu, binary version"
@@ -24,11 +26,11 @@ optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
 conflicts=("thunderbird")
 options=(!emptydirs !makeflags)
-source=(https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst{,.sig})
+source=(https://download.opensuse.org/repositories/home:/nicman23/Arch/x86_64/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst{,.sig})
 noextract=(thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst)
-validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
+validpgpkeys=(F4E1120072D04191A13F2B32F268E71029DBD9A7)
 sha256sums=(
-	'166873c41d9584b030f801db9b3c7bd9aa74c08a73e117fd2561136b03cad6c0'
+	'SKIP'
 	'SKIP'
 )
 
