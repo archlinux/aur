@@ -1,7 +1,7 @@
 pkgbase = libmd-git
-	pkgdesc = Message Digest functions from BSD systems
+	pkgdesc = Message digest functions from BSD systems
 	pkgver = 1.0.3.r12.gd9c4c7f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hadrons.org/software/libmd/
 	arch = i686
 	arch = x86_64
