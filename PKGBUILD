@@ -2,7 +2,7 @@
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=0
+pkgver=r2003.0b1cf62
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -10,10 +10,9 @@ url="https://fluffychat.im/"
 license=('AGPL3')
 makedepends=('clang'
              'ninja'
-             'flutter-git'
+             'flutter'
              'cmake'
              'git')
-optdepends=('pantalaimon: used for E2E encryption')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://gitlab.com/famedly/fluffychat.git")
@@ -26,15 +25,17 @@ pkgver(){
 
 prepare() {
   flutter config --enable-linux-desktop
-
+  flutter config --no-analytics
   cd ${_name}
   git submodule update --init --recursive
-  echo "dependency_overrides:\n  intl: 0.17.0-nullsafety.2" >> pubspec.yaml
+  #echo "dependency_overrides:\n  intl: 0.17.0-nullsafety.2" >> pubspec.yaml
 }
 
 build() {
   cd ${_name}
 
+  flutter clean
+  flutter pub get
   flutter build linux --release --verbose
 }
 
