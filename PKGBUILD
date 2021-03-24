@@ -2,7 +2,7 @@
 
 _pyname=fastavro
 pkgname=python-$_pyname
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Fast read/write of AVRO files"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -16,9 +16,9 @@ makedepends=(
 	python-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('345bfc8fbd3ae12c835a78fb22f076fd')
-sha256sums=('1d9b18a86ecc3837a919c3190f2f538b7bcf179e0ad2524d7626699773bf2945')
-sha512sums=('0c60674a622829927ad8bd1d87f2e4d86391c0329412f5efcb66482941117cbb781c619425a172964a836c477418c26fb00720934a9e0cd338c8da845170bca3')
+md5sums=('aa3f88f42985cbbfaccdd332e7345ebb')
+sha256sums=('4c0c2ed0c218d3e8737bd04d6cac2a3c1afd11090d3ac3a45fbaafd73cfe2cd7')
+sha512sums=('ec0d7b7b497855412cdeff4d089675697a9c8153e2d866a0db4c4e34695b027feac2ff520e891f29555815b1bb8a791adf9566b8c3b6929c9bd9305b2c49398a')
 
 build(){
 	cd $_pyname-$pkgver
