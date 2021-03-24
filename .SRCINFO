@@ -44,7 +44,6 @@ pkgbase = librewolf-nightly
 	depends = nss-hg
 	depends = ttf-font
 	depends = libpulse
-	depends = libopenaptx
 	depends = libvpx
 	depends = libjpeg
 	depends = zlib
