@@ -1,6 +1,6 @@
 pkgbase = async++-git
 	pkgdesc = Async++ is a lightweight concurrency framework for C++11.
-	pkgver = r171.2c852e5
+	pkgver = 1.1.r0.g172ca3f
 	pkgrel = 1
 	url = https://github.com/Amanieu/asyncplusplus
 	arch = any
