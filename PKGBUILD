@@ -40,7 +40,7 @@ _name=alice-vision
 _fragment="#branch=develop"
 
 pkgname=${_name}-git
-pkgver=2.4.0.r0.g38d899f54
+pkgver=2.4.0.r10.g6ac5c4e96
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -54,6 +54,7 @@ depends+=('glu' 'glfw-x11') # geogram deps.
 makedepends+=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sphinx' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 source+=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "geogram::git+https://github.com/alicevision/geogram.git"
+        "cmake_cxx_std_14.patch"
         )
 sha256sums+=('SKIP'
             'SKIP'
@@ -74,10 +75,12 @@ prepare() {
 #  git config submodule.src/dependencies/osi_clp.url
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
+  git apply -v "${srcdir}"/cmake_cxx_std_14.patch
 }
 
 
 build() {
+  export CCACHE_BASEDIR="$srcdir"
   ((!DISABLE_CUDA)) && {
   msg2 "Build uncertaintyTE library"
   cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/usr -G Ninja -S ute_lib -B ute_build
@@ -120,3 +123,7 @@ package() {
   find "${pkgdir}/usr" . -type d -print0 | xargs --null rmdir 2>/dev/null || true
 }
 # vim:set ts=2 sw=2 et:
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275')
