@@ -2,7 +2,7 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='monero-feather-git'
-pkgver=0.4.0.763d3fad0e
+pkgver=0.5.0.d1bb4c143f
 pkgrel=1
 pkgdesc='a free Monero desktop wallet'
 license=('BSD')
@@ -31,24 +31,3 @@ package_monero-feather-git() {
   install -Dm644 "${srcdir}/${pkgname}/src/assets/images/feather.png" "${pkgdir}/usr/share/pixmaps/feather.png"
 }
 
-post_install () {
-  echo ""
-  echo ""
-  echo "============================================"
-  echo " START TOR SERVICE BEFORE RUNNING FEATHER"
-  echo "============================================"
-  echo ""
-  echo "Start Tor service with:"
-  echo ""
-  echo "sudo systemctl start tor.service"
-  echo ""
-  echo "Check Tor status with:"
-  echo ""
-  echo "systemctl status tor.service"
-  echo ""
-  echo "Stop Tor service with:"
-  echo ""
-  echo "sudo systemctl stop tor.service"
-  echo ""
-  echo ""
-}
