@@ -7,7 +7,7 @@
 _pkgbase=nginx
 pkgbase=${_pkgbase}-quiche
 pkgname=${pkgbase}
-pkgver=1.16.1
+pkgver=1.18.0
 pkgrel=1
 _quichever=0.7.0
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche for http3'
@@ -29,13 +29,13 @@ backup=(etc/nginx/fastcgi.conf
         etc/logrotate.d/nginx)
 install=nginx.install
 source=(https://nginx.org/download/nginx-$pkgver.tar.gz{,.asc}
-        hg+http://hg.nginx.org/nginx-tests#revision=ddbde6c5b0cd
+        hg+http://hg.nginx.org/nginx-tests#revision=c1d167a13c24
 	https://github.com/cloudflare/quiche/archive/$_quichever.tar.gz
         git+https://boringssl.googlesource.com/boringssl#commit=597b810379e126ae05d32c1d94b1a9464385acd0
         service
         logrotate)
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('45a80f75336c980d240987badc3dcf60'
+md5sums=('b2d33d24d89b8b1f87ff5d251aa27eb8'
          'SKIP'
          'SKIP'
          'c308dfc84e69c14206c3cdfde92a259d'
