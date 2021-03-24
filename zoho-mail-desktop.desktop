@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Zoho Mail - Desktop
+Exec=/opt/zoho-mail-desktop/squashfs-root/AppRun %U
+Terminal=false
+Type=Application
+Icon=zoho-mail-desktop
+StartupWMClass=Zoho Mail - Desktop
+X-AppImage-Version=1.2.0
+Comment=The desktop version of your favorite mailsuite!
+MimeType=x-scheme-handler/mailto;
+Categories=Office;

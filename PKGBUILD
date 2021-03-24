@@ -4,14 +4,16 @@
 
 pkgname=zoho-mail-desktop
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The desktop version of your favorite mailsuite!"
 arch=('x86_64')
 license=('custom')
 url="https://www.zoho.com/mail/"
 
-source=("https://downloads.zohocdn.com/zmail-desktop/linux/zoho-mail-desktop-x64-v${pkgver}.AppImage")
-sha256sums=("SKIP")
+source=("https://downloads.zohocdn.com/zmail-desktop/linux/zoho-mail-desktop-x64-v${pkgver}.AppImage"
+        "zoho-mail-desktop.desktop")
+sha256sums=("SKIP"
+            "SKIP")
 
 prepare() {
   chmod +x "zoho-mail-desktop-x64-v${pkgver}.AppImage"
@@ -26,7 +28,7 @@ package() {
   cp -r "${pkgdir}/opt/zoho-mail-desktop/squashfs-root/AppRun" "${pkgdir}/usr/bin/zoho-mail-desktop"
 
   mkdir -p "${pkgdir}/usr/share/applications"
-  cp -r "${srcdir}/squashfs-root/zoho-mail-desktop.desktop" "${pkgdir}/usr/share/applications"
+  cp -r "${srcdir}/zoho-mail-desktop.desktop" "${pkgdir}/usr/share/applications"
 
   for img in 1024x1024 128x128 16x16 24x24 256x256 32x32 48x48 512x512 64x64 96x96; do
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/${img}/apps"
