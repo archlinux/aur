@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: craven at gmx dot net 
 # Contributor: realitygaps AT yahoo DOT com
 
 pkgname=xstream
-pkgver=1.4.15
+pkgver=1.4.16
 pkgrel=1
 pkgdesc="Simple java library to serialize objects to XML and back again."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('java-environment=8')
 makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/x-stream/xstream/archive/${pkgname^^}_${pkgver//./_}.tar.gz")
-sha256sums=('81b68111b3e222d1017f8b5e361957938977fae4af09c2f2e407773d30b13882')
+sha256sums=('8e4ef39152a36ab30e6b430f801e7d83c361a4d782f060e0979eeb3544cda928')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname^^}_${pkgver//./_}"
