@@ -2,13 +2,13 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='wowlet-git'
-pkgver=0.1.0.0.732f34b595
+pkgver=0.1.0.0.81ad7bdb46
 pkgrel=1
 pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
 arch=('x86_64')
 url="https://git.wownero.com/wowlet/wowlet"
-depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'pcsclite' 'hidapi' 'protobuf' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'tor')
+depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor')
 makedepends=('git' 'cmake' 'boost')
 
 source=("${pkgname}"::"git+https://git.wownero.com/wowlet/wowlet")
