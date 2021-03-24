@@ -1,7 +1,7 @@
 pkgbase = rocm-utils
 	pkgdesc = ROCm Platform Runtime: Utils
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
 	depends = rocminfo
