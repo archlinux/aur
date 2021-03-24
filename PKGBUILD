@@ -15,7 +15,6 @@ makedepends=(
   'jupyterlab'
   'jupyterlab_pygments'
   'npm'
-  'python-deprecation'
   'python-setuptools'
   'python-jupyter_packaging')
 license=('BSD')

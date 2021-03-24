@@ -9,7 +9,6 @@ pkgbase = python-ipympl
 	makedepends = jupyterlab
 	makedepends = jupyterlab_pygments
 	makedepends = npm
-	makedepends = python-deprecation
 	makedepends = python-setuptools
 	makedepends = python-jupyter_packaging
 	depends = python
