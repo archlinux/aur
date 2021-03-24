@@ -1,16 +1,16 @@
-# Maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
+# Maintainer: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 # Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
 pkgname=socklab
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Shell interface for teaching the socket API"
 arch=('x86_64' 'i686')
 url="https://github.com/drakkar-lig/socklab"
 license=('custom:CeCILL2')
 depends=('readline')
 source=("https://github.com/drakkar-lig/socklab/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5b24a229a9a3d66d7529da34279c58f92dc97804b3d64615c87cd872fb13aeb4')
+sha256sums=('1f3050412c09f3821b2da9a1fd21d98805417022dfbe6a1d06c3bb680ed1d0d3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
