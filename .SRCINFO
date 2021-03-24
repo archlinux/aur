@@ -1,7 +1,7 @@
 pkgbase = nodejs-dat
 	pkgdesc = Sync data across the distributed web
 	pkgver = 13.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datproject/dat
 	arch = any
 	license = custom
