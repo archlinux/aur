@@ -1,0 +1,18 @@
+pkgbase = dosnap-git
+	pkgdesc = Automatically manage Btrfs snapshots
+	pkgver = r23.81e576d
+	pkgrel = 1
+	url = https://github.com/weirane/dosnap
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	depends = btrfs-progs
+	provides = dosnap
+	conflicts = dosnap
+	backup = etc/dosnap.toml
+	source = dosnap::git+https://github.com/weirane/dosnap
+	md5sums = SKIP
+
+pkgname = dosnap-git
+
