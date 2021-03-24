@@ -3,7 +3,7 @@
 _pyname=avro
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Avro is a serialization and RPC framework."
 arch=(any)
@@ -16,9 +16,9 @@ makedepends=(
 	python2-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('ae5da129dc22247278328bbae6ea2fcf')
-sha256sums=('bbf9f89fd20b4cf3156f10ec9fbce83579ece3e0403546c305957f9dac0d2f03')
-sha512sums=('d363aefa05defe4d7ddf9afe8cfc33b450baa81833b0c07756a6d5de0e7ba78c71904491f9d0f0f1950ed3df942b4348677833c4c227084a48bd4a72da80b401')
+md5sums=('b0350c3965ddeabf0fe3273e42461087')
+sha256sums=('381b990cc4c4444743c3297348ffd46e0c3a5d7a17e15b2f4a9042f6e955c31a')
+sha512sums=('46bb7035a71a0d1b43d067fdc8bde8328322acc764908d100bb0ef4a23913e7fd7660ee61dfb21e8e85cc53720192e329da6f2f31aeafd480322ade0907bc2a7')
 
 prepare(){
 	cp -a $_pyname-$pkgver{,-py2}
