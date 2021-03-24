@@ -3,8 +3,8 @@
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin-beta
 _pkgname=ramboxpro
-pkgver=1.5.0
-_pkgver=1.5.0
+pkgver=1.5.1
+_pkgver=1.5.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place (most recent release, including pre-releases)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('rambox-pro-bin')
 source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${_pkgver}/RamboxPro-${_pkgver}-linux-x64.deb")
 sha256sums=('49caf20d36575fc2f8a4011049682885493428770f8cf2ae9297203ba50f7407'
-            '273347149b7caa826068fb8e55ddd9dad98646c3638042afaaf8513fd07991a5')
+            '660b034a17f8da837c17b57f958ddbc380e2e8ad8fb698bddb62fc2305087ff4')
 
 build() {
     rm -rf "${srcdir}/root"
