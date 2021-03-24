@@ -2,7 +2,7 @@
 
 pkgname=casile
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
 url="https://github.com/sile-typesetter/$pkgname"
@@ -51,7 +51,7 @@ _python_deps=('isbnlib'
               'pantable'
               'ruamel-yaml'
               'usfm2osis-cw-git')
-depends+=("${_lua_deps[@]/#/lua-}"
+depends+=("${_lua_deps[@]/#/lua-}" "${_lua_deps[@]/#/lua53-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
 makedepends=('autoconf-archive' 'cargo' 'luarocks' 'node-prune' 'rust' 'yarn')
