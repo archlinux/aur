@@ -1,3 +1,12 @@
+4.7.2 (2021-03-23 18:23:04)
+
+    Improves the detection of some no-return functions,
+    Speeds-up the reconstruction of procedures when a signature changes in one of the callees,
+    Fixes a few decompilation issues,
+    Fixes a crash when the Hopper windows was moved accros multiple screens on some systems,
+    Adds methods to create alignment directive from Python scripts,
+    Fixes a crash for some Python scripts which were changing some labels names in the document.
+
 4.7.1 (2021-01-23 15:51:43)
 
     Fixes an issue in the C++ demangler for some symbols,
