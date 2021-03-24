@@ -41,7 +41,7 @@ prepare() {
   git submodule set-url subprojects/libgd "$srcdir/libgd"
   git submodule update
 # Revert the commit that disables vaapi
-  git revert 190796bdfe12a3c3cdf95b88155be8d0f44de2f3 --no-edit
+  git revert 190796bdfe12a3c3cdf95b88155be8d0f44de2f3 --no-edit --no-commit
 }
 
 build() {
