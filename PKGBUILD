@@ -2,63 +2,55 @@
 # Contributor: Nicky D
 
 pkgname=firestorm
-pkgver=r58052.381d04b870a5
+pkgver=6.4.17.63601
 pkgrel=1
-pkgdesc="Firestorm is FOSS where you can build & share Virtual Reality (VR) in OpenSim/SecondLife (P2P). Meet people in 3D! Source build."
+pkgdesc="This is the Firestorm Viewer!"
 arch=('i686' 'x86_64')
-url=https://www.firestormviewer.org/
+url=https://www.firestormviewer.org
 license=('LGPL')
 depends=(dbus-glib gconf glu gtk2 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl vlc zlib)
 optdepends=(
   'alsa-lib: for ALSA support'
   'pepper-flash: for inworld Flash support'
   'freealut: for OpenAL support'
-  'gstreamer: For video support - may need good, bad and ugly plugins'
   'lib32-libidn11: for voice support'
   'libpulse: for PulseAudio support'
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
-makedepends=('cmake' 'gcc' 'python2-virtualenv' 'python2-pip' 'mercurial')
-conflicts=('firestorm-bin' 'firestorm-beta' 'firestorm-nightly')
+makedepends=('cmake' 'gcc' 'make' 'python2-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
+conflicts=('firestorm-bin' 'firestorm-nightly' 'firestorm-beta-bin')
 provides=('firestorm')
 
-source=("$pkgname"::'hg+https://hg.firestormviewer.org/phoenix-firestorm-release' 'autovars' 'firestorm.desktop' 'firestorm.launcher' 'dontTarSelf.patch')
-md5sums=('SKIP' '7245883fbdba303d4f827f60907574c6' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370' '5ce1e87b6cbdd300d52906de7444f264')
+source=("$pkgname"::'git+https://vcs.firestormviewer.org/phoenix-firestorm' "fs-build-variables"::'git+https://vcs.firestormviewer.org/fs-build-variables' 'firestorm.desktop' 'firestorm.launcher')
+md5sums=('SKIP' 'SKIP' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+	cat "$srcdir/$pkgname/build-linux-x86_64/newview/viewer_version.txt"
 }
 
 prepare() {
-	virtualenv2 "$pkgname"
-	export AUTOBUILD_VARIABLES_FILE="$srcdir/autovars"
-
+	export AUTOBUILD_VARIABLES_FILE="$srcdir/fs-build-variables/variables"
 	cd "$pkgname"
-	source bin/activate
-	pip install --upgrade autobuild
+	virtualenv2 ".venv"
+	source .venv/bin/activate
+	pip install git+https://vcs.firestormviewer.org/autobuild-1.1
 
-	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE
-#    cd indra/newview
-#	patch -Np0 -i "$srcdir/dontTarSelf.patch"
+	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DPACKAGE:BOOL=Off --chan="ArchLinux"
 }
 
 build() {
-    export AUTOBUILD_VARIABLES_FILE="$srcdir/autovars"
-    cd "$pkgname"
-    source bin/activate
-    
-    autobuild build -A 64 -c ReleaseFS_open -- -Dchan=Linux
+	#export AUTOBUILD_VARIABLES_FILE="buildVars/fs-build-variables"
+	cd "$pkgname/build-linux-x86_64"
+	make
 }
 
 package() {
-    mkdir -p "$pkgdir/opt"
-    mkdir -p "$pkgdir/usr/share/applications"
-    
-    mv "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm"
-    
-    install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm.desktop"
-    install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm"
-}
+	mkdir -p "$pkgdir/opt"
+	mkdir -p "$pkgdir/usr/share/applications"
 
+	mv "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm"
+
+	install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm.desktop"
+	install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm"
+}
