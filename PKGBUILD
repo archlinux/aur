@@ -1,6 +1,7 @@
  # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
-_projectname=skycoin
+#_projectname=skycoin
+#_projectname=FrappeFortyTwo	#Uncomment for testing
 pkgname=skywire-dmsg
 _pkgname=dmsg
 _githuborg=${_projectname}
@@ -14,23 +15,10 @@ arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'arm
 url="https://${_pkggopath}"
 license=()
 makedepends=('git' 'go' 'musl' 'kernel-headers-musl') #disable signature check pending fixes#  'skycoin-keyring')
-#install=skywire.install
-#_scripts=${_pkgname}-scripts
-#scripts need at least this commit to work if current build to develop fails
-#source=("git+${url}.git#commit=d156980280fdb2ddfc8765ff77cdd55c0b7e9d9c"
+#uncomment the next line and comment the one after for testing your branch
+#source=("git+https://github.com/FrappeFortyTwo/dmsg.git#branch=${BRANCH:-enhancement/improve-dmsgpty}")
 source=("git+${url}.git") ##branch=${BRANCH:-develop}"
-#"${_scripts}.tar.gz"  )
-#'PKGBUILD.sig' #disable signature checking for now
-#'PKGBUILD')
 sha256sums=('SKIP')
-#            '2994b9816389300da84de6880aa531a5eedc4ad2d4da693ee371d0f61ff8a38b')
-#            'SKIP'
-#            'SKIP')
-#validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
-#'98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
-
-#tar -czvf skywire-scripts.tar.gz skywire-scripts
-#updpkgsums
 
 pkgver() {
 cd "${srcdir}/${_pkgname}"
@@ -43,9 +31,6 @@ echo "${_version}_${_date}.${_count}_${_commit}_${BRANCH:-develop}"
 }
 
 prepare() {
-#verify PKGBUILD signature
-#	gpg --verify ${srcdir}/PKGBUILD.sig ${srcdir}/PKGBUILD   #disabled the signature check
-
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin ${srcdir}/go/apps
 ln -rTsf ${srcdir}/${_pkgname} ${srcdir}/go/src/${_pkggopath}
@@ -64,7 +49,6 @@ export CC=musl-gcc
 #create the skywire binaries
 cd ${srcdir}/go/src/${_pkggopath}
 _cmddir=${srcdir}/go/src/${_pkggopath}/cmd
-#static compilation ; need to re-evaluate build determinism
 
 _buildbins dmsg-discovery $GOBIN
 _buildbins dmsg-server $GOBIN
@@ -72,11 +56,6 @@ _buildbins dmsgget $GOBIN
 _buildbins dmsgpty-cli $GOBIN
 _buildbins dmsgpty-host $GOBIN
 _buildbins dmsgpty-ui $GOBIN
-#cd $GOBIN
-#_msg2 'binary sha256sums'
-#sha256sum $(ls)
-#cd $_GOAPPS
-#sha256sum $(ls)
 }
 
 #I had to speed up the build for testing but there's a risk of using old binaries.
@@ -86,26 +65,15 @@ _GOHERE=$2
 _binpath=$3
 _binname=$1
 _msg2 "building ${_binname} binary"
-if [[ ! -f ${_GOHERE}/${_binname} ]] ; then
+#if [[ ! -f ${_GOHERE}/${_binname} ]] ; then
 	cd ${_cmddir}/${_binpath}${_binname}
   go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $_GOHERE/ .
-fi
+#fi
 }
 
 
 package() {
-#  _msg2 'creating dirs'
-#create directory trees or the visor might make them with weird permissions
-#_skydir="opt/skywire-dmsg"
-
-#_systemddir="etc/systemd/system"
-#_skybin="${_skydir}/bin"
-#mkdir -p ${pkgdir}/usr/bin
-#mkdir -p ${pkgdir}/${_skydir}/bin
-
 _msg2 'installing binaries'
-#_skywirebins=$( ls ${srcdir}/go/bin )
-#for i in ${_skywirebins}; do
 mkdir -p ${pkgdir}/opt/skywire/bin/
 install -Dm755  ${srcdir}/go/bin/dmsg-discovery ${pkgdir}/opt/skywire/bin/
 install -Dm755  ${srcdir}/go/bin/dmsg-server ${pkgdir}/opt/skywire/bin/
