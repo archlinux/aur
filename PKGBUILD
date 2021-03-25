@@ -1,19 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=2020.10.05.r13.g165fc69
+pkgver=2020.10.05.r21.g2888236
 pkgrel=2
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
 url="https://github.com/eth-p/bat-extras"
 license=('MIT')
-depends=('bat')
+depends=('bash' 'bat' 'coreutils' 'less')
 makedepends=('git')
 checkdepends=('ripgrep')
-optdepends=('ripgrep: required for batgrep script'
-            'entr: optional for batwatch script'
+optdepends=('git: required for batdiff script'
+            'ripgrep: required for batgrep script'
             'ncurses: optional for batdiff script'
             'git-delta: optional for batdiff script'
+            'entr: optional for batwatch script'
             'prettier: various code formatting for prettybat script'
             'shfmt: bash formatting for prettybat script'
             'rustfmt: Rust formatting for prettybat script'
@@ -47,7 +48,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./build.sh --minify=none
+    ./build.sh --minify=none --no-verify
 }
 
 check() {
