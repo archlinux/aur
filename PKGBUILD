@@ -5,7 +5,7 @@
 _pkgname=deadbeef-fb
 pkgname=deadbeef-plugin-fb-gtk3-git
 pkgver=r166.g355e614
-pkgrel=1
+pkgrel=2
 pkgdesc="A filebrowser plugin for the DeaDBeeF audio player"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/zykure/deadbeef-fb"
@@ -24,6 +24,10 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
+
+  # Temporarily fix compilation
+  sed -e "s/errno/err_no/g" -i utils.c
+
   ./autogen.sh
 }
 

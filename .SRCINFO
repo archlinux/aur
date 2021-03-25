@@ -1,7 +1,7 @@
 pkgbase = deadbeef-plugin-fb-gtk3-git
 	pkgdesc = A filebrowser plugin for the DeaDBeeF audio player
 	pkgver = r166.g355e614
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/zykure/deadbeef-fb
 	arch = i686
 	arch = x86_64
