@@ -6,7 +6,7 @@ update-srcinfo:
 .PHONY: update-srcinfo
 
 update-pkgsums:
-	rm -f openshift-client-linux.tar.gz
+	rm -f *.tar.gz{,part}
 	updpkgsums
 .PHONY: update-pkgsums
 
