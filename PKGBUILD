@@ -9,7 +9,7 @@ url="https://gitlab.com/LynxOS/lds"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/lds-$pkgver.tar.gz")
-md5sums=('cc3d383ac22c116202a1a1e85e632c5')
+md5sums=('ccc3d383ac22c116202a1a1e85e632c5')
 depends=(
         'dex'
         'qt5-styleplugins'

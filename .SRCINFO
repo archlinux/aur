@@ -20,7 +20,7 @@ pkgbase = lynx-desktop-settings
 	depends = pavucontrol
 	depends = pa-applet-git
 	source = https://gitlab.com/LynxOS/lds/-/archive/0.0.4/lds-0.0.4.tar.gz
-	md5sums = cc3d383ac22c116202a1a1e85e632c5
+	md5sums = ccc3d383ac22c116202a1a1e85e632c5
 
 pkgname = lynx-desktop-settings
 
