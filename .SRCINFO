@@ -1,19 +1,34 @@
 pkgbase = img2pdf-git
-	pkgdesc = Losslessly convert images to PDF without unnecessarily increasing file size by re-encoding JPEG files.
-	pkgver = 0.3.6.r17.a84a1b8
+	pkgdesc = Losslessly convert raster images to PDF
+	pkgver = 0.4.0.r8.b5f0912
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.mister-muffin.de/josch/img2pdf
 	arch = any
 	license = LGPL3
+	checkdepends = python-pytest
+	checkdepends = python-pdfrw
+	checkdepends = python-numpy
+	checkdepends = python-scipy
+	checkdepends = python-lxml
+	checkdepends = colord
+	checkdepends = ghostscript
+	checkdepends = imagemagick
+	checkdepends = mupdf-tools
+	checkdepends = poppler
+	checkdepends = perl-image-exiftool
+	checkdepends = netpbm
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-pillow
 	depends = python-pikepdf
-	provides = img2pdf=0.3.6
+	optdepends = tk: experimental tkinter GUI /usr/bin/img2pdf-gui
+	provides = img2pdf=0.4.0
+	provides = python-img2pdf=0.4.0
 	conflicts = img2pdf
 	conflicts = python-img2pdf
-	source = git+http://gitlab.mister-muffin.de/josch/img2pdf.git
+	conflicts = python-img2pdf-git
+	source = git+https://gitlab.mister-muffin.de/josch/img2pdf.git
 	md5sums = SKIP
 
 pkgname = img2pdf-git
