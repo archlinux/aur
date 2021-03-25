@@ -1,0 +1,18 @@
+pkgbase = vim-colors-spring-night-git
+	pkgdesc = A low-contrast calm color scheme for Vim
+	pkgver = r228.8e0e889
+	pkgrel = 1
+	url = https://github.com/rhysd/vim-color-spring-night
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = vim-airline
+	source = vim-colors-spring-night-git::git+https://github.com/rhysd/vim-color-spring-night
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = c268c4f5894d19260aedd79dc1dc39ba098b3cbb02eaa4af7a1d0d4faea1837d
+
+pkgname = vim-colors-spring-night-git
+
