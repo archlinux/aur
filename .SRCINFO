@@ -1,0 +1,15 @@
+pkgbase = ignorant-git
+	pkgdesc = ignorant checks if a phone number is used on a list of platforms. (git version)
+	pkgver = r3.60ea009
+	pkgrel = 1
+	url = https://github.com/megadose/ignorant
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	conflicts = ignorant
+	source = ignorant-git::git+https://github.com/megadose/ignorant.git
+	sha256sums = SKIP
+
+pkgname = ignorant-git
+
