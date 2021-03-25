@@ -1,6 +1,6 @@
 pkgbase = xmousepasteblock-git
 	pkgdesc = Middle mouse button primary X selection/clipboard paste disabler.
-	pkgver = 1.0.r0.gef7887d
+	pkgver = 1.0.r3.gac8a28c
 	pkgrel = 1
 	url = https://github.com/milaq/XMousePasteBlock
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = xmousepasteblock-git
 	depends = libxi
 	depends = libx11
 	depends = libev
+	depends = libxfixes
 	provides = xmousepasteblock
 	source = git://github.com/milaq/XMousePasteBlock#branch=master
 	sha1sums = SKIP
