@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/bytecodealliance/wasmtime"
 license=('APACHE2')
 depends=()
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 options=()
 source=("${pkgname}-${pkgver}::git+https://github.com/bytecodealliance/wasmtime.git#tag=v${pkgver}")
 sha384sums=('SKIP')
