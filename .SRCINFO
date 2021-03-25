@@ -1,6 +1,6 @@
 pkgbase = smartgit_preview
 	pkgdesc = Graphical Git client. Preview version.
-	pkgver = 21.1_preview_2
+	pkgver = 21.1_preview_3
 	pkgrel = 1
 	url = https://www.syntevo.com/smartgit/preview/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = smartgit_preview
 	provides = smartgit
 	conflicts = smartgit
 	replaces = smartgithg
-	source = https://www.syntevo.com/downloads/smartgit/smartgit-21_1-preview-2.deb
-	sha1sums = 3ef9b582c0aad9eb5292006c53d153dff79ad4c8
+	source = https://www.syntevo.com/downloads/smartgit/smartgit-21_1-preview-3.deb
+	sha1sums = 150c6d1f973249675ccb6293542f23d21b91d344
 
 pkgname = smartgit_preview
 
