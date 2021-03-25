@@ -1,0 +1,29 @@
+pkgbase = openexr-git
+	pkgdesc = Reference implementation of the EXR format
+	pkgver = 3.0.0.beta.r7.ge46ac0a7
+	pkgrel = 1
+	url = https://www.openexr.com/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = chrpath
+	makedepends = freeglut
+	makedepends = python
+	makedepends = python-numpy
+	depends = gcc-libs
+	depends = zlib
+	optdepends = boost-libs: python support
+	optdepends = python: python support
+	provides = openexr
+	conflicts = openexr
+	conflicts = ilmbase
+	replaces = ilmbase
+	source = git+https://github.com/AcademySoftwareFoundation/openexr.git
+	sha256sums = SKIP
+
+pkgname = openexr-git
+
