@@ -3,9 +3,9 @@
 pkgname=fluffychat-git
 _name=fluffychat
 pkgver=v0.28.0.r0.g0b1cf62
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends"
-arch=('any')
+arch=('x86_64')
 url="https://fluffychat.im/"
 license=('AGPL3')
 makedepends=('clang'
