@@ -1,11 +1,12 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/WarmUpTill/SceneSwitcher
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = git
 	makedepends = libfdk-aac
 	makedepends = libxcomposite
 	makedepends = x264
@@ -25,10 +26,14 @@ pkgbase = obs-advanced-scene-switcher
 	makedepends = gtk-update-icon-cache
 	depends = obs-studio
 	depends = libxss
-	source = obs-advanced-scene-switcher-1.10.tar.gz::https://github.com/WarmUpTill/SceneSwitcher/archive/1.10.tar.gz
+	source = obs-advanced-scene-switcher-1.11::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.11
+	source = git+https://github.com/chriskohlhoff/asio.git
+	source = git+https://github.com/zaphoyd/websocketpp.git
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
 	source = fix_python_binary_loading.patch
-	sha256sums = 02d3edd59549a35a0163f207447d1030bfee8b7192acff29886e831f866db01a
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897
 	sha256sums = bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd
 
