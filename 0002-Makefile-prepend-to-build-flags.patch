@@ -1,4 +1,4 @@
-From 14e1cc72af2eaac776d6d314085e0b58a0033903 Mon Sep 17 00:00:00 2001
+From 5837198cc33ef6875cc5039f9074a2f6e4d98514 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 21:03:19 +0100
 Subject: [PATCH 2/2] Makefile: prepend to build flags
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] Makefile: prepend to build flags
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile_plugin.common b/Makefile_plugin.common
-index 940c29e..d8d39d0 100644
+index 940c29e..3c1f32b 100644
 --- a/Makefile_plugin.common
 +++ b/Makefile_plugin.common
 @@ -38,9 +38,9 @@
@@ -18,9 +18,9 @@ index 940c29e..d8d39d0 100644
 -CXXFLAGS ?= $(shell yosys-config --cxxflags) #-DSDC_DEBUG
 -LDFLAGS ?= $(shell yosys-config --ldflags)
 -LDLIBS ?= $(shell yosys-config --ldlibs)
-+CXXFLAGS = $(shell yosys-config --cxxflags) $(CXXFLAGS) #-DSDC_DEBUG
-+LDFLAGS = $(shell yosys-config --ldflags) $(LDFLAGS)
-+LDLIBS = $(shell yosys-config --ldlibs) $(LDLIBS)
++CXXFLAGS := $(shell yosys-config --cxxflags) $(CXXFLAGS) #-DSDC_DEBUG
++LDFLAGS := $(shell yosys-config --ldflags) $(LDFLAGS)
++LDLIBS := $(shell yosys-config --ldlibs) $(LDLIBS)
  PLUGINS_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)/plugins
  DATA_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)
  
