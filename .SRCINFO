@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-spirv-tools
 	pkgdesc = API and commands for processing SPIR-V modules (mingw-w64)
-	pkgver = 2020.6
+	pkgver = 2020.7
 	pkgrel = 1
 	url = https://www.khronos.org/vulkan/
 	arch = any
@@ -12,8 +12,10 @@ pkgbase = mingw-w64-spirv-tools
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/KhronosGroup/SPIRV-Tools/archive/v2020.6.tar.gz
-	sha256sums = de2392682df8def7ac666a2a320cd475751badf4790b01c7391b7644ecb550a3
+	source = https://github.com/KhronosGroup/SPIRV-Tools/archive/v2020.7.tar.gz
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	sha256sums = c06eed1c7a1018b232768481184b5ae4d91d614d7bd7358dc2fe306bd0a39c6e
+	sha256sums = SKIP
 
 pkgname = mingw-w64-spirv-tools
 

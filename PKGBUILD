@@ -1,5 +1,5 @@
 pkgname=mingw-w64-spirv-tools
-pkgver=2020.6
+pkgver=2020.7
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules (mingw-w64)"
 arch=('any')
@@ -8,8 +8,8 @@ license=('custom')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/v${pkgver}.tar.gz")
-sha256sums=('de2392682df8def7ac666a2a320cd475751badf4790b01c7391b7644ecb550a3')
+source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/v${pkgver}.tar.gz" "git+https://github.com/KhronosGroup/SPIRV-Headers.git")
+sha256sums=('c06eed1c7a1018b232768481184b5ae4d91d614d7bd7358dc2fe306bd0a39c6e' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -17,21 +17,11 @@ build() {
   cd SPIRV-Tools-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake  \
+    ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
-      -DSPIRV-Headers_SOURCE_DIR=/usr/${_arch} \
+      -DSPIRV-Headers_SOURCE_DIR="${srcdir}"/SPIRV-Headers \
       -DSPIRV_SKIP_EXECUTABLES=ON \
       -DSPIRV_SKIP_TESTS=ON \
-      ..
-    make
-    popd
-    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    ${_arch}-cmake  \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DSPIRV-Headers_SOURCE_DIR=/usr/${_arch} \
-      -DSPIRV_SKIP_EXECUTABLES=ON \
-      -DSPIRV_SKIP_TESTS=ON \
-      -DBUILD_SHARED_LIBS=OFF \
       ..
     make
     popd
@@ -40,8 +30,6 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/SPIRV-Tools-${pkgver}/build-${_arch}-static"
-    make DESTDIR="${pkgdir}" install
     cd "${srcdir}/SPIRV-Tools-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
