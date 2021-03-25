@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.11.9 Kernel Configuration
+# Linux/x86 5.11.10 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
@@ -371,8 +371,8 @@ CONFIG_JAILHOUSE_GUEST=y
 # CONFIG_MZEN is not set
 CONFIG_MZEN2=y
 # CONFIG_MPSC is not set
-# CONFIG_MATOM is not set
 # CONFIG_MCORE2 is not set
+# CONFIG_MATOM is not set
 # CONFIG_MNEHALEM is not set
 # CONFIG_MWESTMERE is not set
 # CONFIG_MSILVERMONT is not set
@@ -393,6 +393,7 @@ CONFIG_MZEN2=y
 # CONFIG_MNATIVE is not set
 CONFIG_X86_INTERNODE_CACHE_SHIFT=6
 CONFIG_X86_L1_CACHE_SHIFT=6
+CONFIG_X86_USE_PPRO_CHECKSUM=y
 CONFIG_X86_TSC=y
 CONFIG_X86_CMPXCHG64=y
 CONFIG_X86_CMOV=y
