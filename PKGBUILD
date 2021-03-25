@@ -8,6 +8,7 @@ url="https://cairographics.org/"
 arch=(x86_64)
 license=(LGPL MPL)
 depends=(libpng fontconfig pixman glib2 lzo)
+makedepends=(gtk-doc)
 provides=(cairo)
 replaces=(cairo)
 _commit=156cd3eaaebfd8635517c2baf61fcf3627ff7ec2

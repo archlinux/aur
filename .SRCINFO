@@ -6,6 +6,7 @@ pkgbase = cairo-minimal
 	arch = x86_64
 	license = LGPL
 	license = MPL
+	makedepends = gtk-doc
 	depends = libpng
 	depends = fontconfig
 	depends = pixman
