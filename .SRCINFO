@@ -1,0 +1,14 @@
+pkgbase = gossm-bin
+	pkgdesc = Interactive CLI tool that you can connect to ec2 using commands same as start-session, ssh in AWS SSM Session Manager
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/gjbae1212/gossm
+	arch = x86_64
+	license = MIT
+	depends = pacman>5
+	depends = openssh
+	source = gossm-bin-1.3.3.tar.gz::https://github.com/gjbae1212/gossm/releases/download/v1.3.3/gossm_1.3.3_Linux_x86_64.tar.gz
+	sha256sums = 97e18c4faa6c8da48d390aaa81acfe7080aab10875887b4ca1898470664c8c4b
+
+pkgname = gossm-bin
+
