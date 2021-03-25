@@ -1,0 +1,14 @@
+pkgbase = python-pz
+	pkgdesc = Utility to substitute awk, sed and/or grep with Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CZ-NIC/pz
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pz/pz-1.0.0.tar.gz
+	sha256sums = 5142614f9d0ca1afd68efc57bf65218aaa52d093999de647f7268034ce8e2e95
+
+pkgname = python-pz
+
