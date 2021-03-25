@@ -2,9 +2,9 @@
 
 _pkgbase=symbiflow-arch-defs
 pkgbase="$_pkgbase-nightly-bin"
-_buildnum=190
-_builddate=20210318-000555
-_commit=9669b55e
+_buildnum=200
+_builddate=20210324-020513
+_commit=1c7a3d1e
 pkgver="${_builddate%%-*}.$_buildnum.$_commit"
 pkgrel=1
 pkgdesc="Documentation of various FPGA architectures - latest binary snapshot"
@@ -32,12 +32,12 @@ sha256sums=('0726ddf229165179fe21da0c97884eeddf88be32dcfc13abf9b2eced0dbafad6'
             'badf095978ca0d828972a7b487b235e3f6970bdb43a0b3c710abaa261cd5f10a'
             '9822a26f45ac0bfa556f1f3d550aad03225802740c21d0fa8c750c2358a76e04'
             'b030be41442550e87e75b1cda575ed52e5334314c5e19219870e77c0edaaa8c9'
-            'f8608ba6c899d8439644a1dd92467d5acca3101ec9f217748fd1d8fe6762f20e'
-            'aa7499752dbe33361e28ff7b3c9f8ea05209734449f7d960f177414c1e355243'
-            'ebc9ee4710bd3ff46b7f62dc71ca88aea155573ca7a8e0f85bf37c8afcafbda9'
-            '37a080e733f012ab64442584251a573ebfda77d1de85fbc78172677faecc34b6'
-            'fafdf226645265aa53e1c725906e914a90f89bc7508685031a13b3eb4a932dd6'
-            '374446a45756363d026d92d945176eab8fc70cf1941c46df545d9285d2fa8b68')
+            '095d6660d4da4869b11c38a69725a7252b1a31fe0f108c025d4d1a710dceb676'
+            'f3982ada4e7d6eb01e2fa0f26060ecb25b1eda4bd3a4c5e7d136d77e9aff30d5'
+            'e646c7f89cd1ad883cc662529ea88d2ef2559c4ca356b42d5b0c03bbf62d8039'
+            'a35be25b4dd752b1ca0f8a0cfb915034673d9c208b350cb20afe94b28abe42c7'
+            'd6d11b66ddcb66fc2a0697a814e0a9f4f92a5587ec0c4dd3ecd6a2f2e289cb29'
+            'af0f04c538f2772b99c67b227a5057b7dcb5041ebb2dfe72d939fb32be45226c')
 
 pkgname=("$pkgbase-toolchain" "${_devices[@]/#/$pkgbase-device-}")
 
@@ -51,7 +51,7 @@ _extract_tarball() {
 
 _package-toolchain() {
 	pkgdesc="Scripts to invoke the SymbiFlow toolchain"
-	depends=('vtr>8.0.0' 'yosys' 'yosys-symbiflow-plugins' 'python' 'python-constraint' 'python-xc-fasm' 'prjxray')
+	depends=('vtr>8.0.0' 'yosys' 'yosys-symbiflow-plugins' 'python' 'python-constraint' 'python-xc-fasm' 'prjxray-tools')
 	optdepends=("${_devices[@]/#/$pkgbase-device-}")
 	provides=("$_pkgbase-toolchain")
 	conflicts=("$_pkgbase-toolchain")
