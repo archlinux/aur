@@ -6,3 +6,4 @@ pkg
 *.pkg.tar.xz
 *.pkg.tar.zst
 *.log
+*.png
