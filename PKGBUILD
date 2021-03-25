@@ -59,7 +59,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-lts54
-pkgver=5.4.107
+pkgver=5.4.108
 _major=5.4
 _branch=5.x
 xanmod=1
@@ -92,7 +92,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '4c5f7b701a34706fbf8f9dbc5c676db489f634592308b729c1d322ae3f4e9856'
+            '3264176ada03e73c3b725f48a3677cc80a642db8b6d9c473bfa534d34c0d4c9d'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
