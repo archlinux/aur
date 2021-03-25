@@ -1,4 +1,4 @@
-From fda341d9bd3c1584e8573b2674c0ca0add759164 Mon Sep 17 00:00:00 2001
+From 14e1cc72af2eaac776d6d314085e0b58a0033903 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 21:03:19 +0100
 Subject: [PATCH 2/2] Makefile: prepend to build flags
@@ -8,22 +8,22 @@ Subject: [PATCH 2/2] Makefile: prepend to build flags
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile_plugin.common b/Makefile_plugin.common
-index b631102..943533b 100644
+index 940c29e..d8d39d0 100644
 --- a/Makefile_plugin.common
 +++ b/Makefile_plugin.common
-@@ -37,9 +37,9 @@
+@@ -38,9 +38,9 @@
  # |-- example2-plugin
  # |-- ...
- CXX = $(shell yosys-config --cxx)
--CXXFLAGS = $(shell yosys-config --cxxflags) #-DSDC_DEBUG
--LDFLAGS = $(shell yosys-config --ldflags)
--LDLIBS = $(shell yosys-config --ldlibs)
-+CXXFLAGS := $(shell yosys-config --cxxflags) $(CXXFLAGS) #-DSDC_DEBUG
-+LDFLAGS := $(shell yosys-config --ldflags) $(LDFLAGS)
-+LDLIBS := $(shell yosys-config --ldlibs) $(LDLIBS)
- PLUGINS_DIR = $(DESTDIR)$(shell yosys-config --datdir)/plugins
- DATA_DIR = $(DESTDIR)$(shell yosys-config --datdir)
+ CXX ?= $(shell yosys-config --cxx)
+-CXXFLAGS ?= $(shell yosys-config --cxxflags) #-DSDC_DEBUG
+-LDFLAGS ?= $(shell yosys-config --ldflags)
+-LDLIBS ?= $(shell yosys-config --ldlibs)
++CXXFLAGS = $(shell yosys-config --cxxflags) $(CXXFLAGS) #-DSDC_DEBUG
++LDFLAGS = $(shell yosys-config --ldflags) $(LDFLAGS)
++LDLIBS = $(shell yosys-config --ldlibs) $(LDLIBS)
+ PLUGINS_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)/plugins
+ DATA_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)
  
 -- 
-2.30.2
+2.31.0
 

@@ -17,8 +17,8 @@ source=("git+$url.git"
         "0001-Makefile-respect-DESTDIR.patch"
         "0002-Makefile-prepend-to-build-flags.patch")
 sha256sums=('SKIP'
-            'a9244e22e16246fa51a3e09132f6cba79a2dd1a5417d45c1e269a60df0bb1eba'
-            '9c59cdd274f733c8ba009150d3f70f9b488400acc9b92813d92547155974fd3f')
+            '489561c4913b24c5a3d9b759f8b5b4c818767208d1c381c142798dda44afaba1'
+            '421f89c80ddebd6ccbffb930461dbe06211ddc645b9adeefd934093de1129fbf')
 
 pkgver() {
 	cd "$_pkgname"

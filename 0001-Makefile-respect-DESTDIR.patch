@@ -1,4 +1,4 @@
-From 8f30f20d02f9174407c6ee6a29a12bbe42c9a246 Mon Sep 17 00:00:00 2001
+From c3ea3ebe13068400bc78f8f648d251395cc60067 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Fri, 22 Jan 2021 20:30:00 +0100
 Subject: [PATCH 1/2] Makefile: respect DESTDIR
@@ -8,20 +8,20 @@ Subject: [PATCH 1/2] Makefile: respect DESTDIR
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile_plugin.common b/Makefile_plugin.common
-index 053a79f..b631102 100644
+index 5e0a244..940c29e 100644
 --- a/Makefile_plugin.common
 +++ b/Makefile_plugin.common
-@@ -40,8 +40,8 @@ CXX = $(shell yosys-config --cxx)
- CXXFLAGS = $(shell yosys-config --cxxflags) #-DSDC_DEBUG
- LDFLAGS = $(shell yosys-config --ldflags)
- LDLIBS = $(shell yosys-config --ldlibs)
--PLUGINS_DIR = $(shell yosys-config --datdir)/plugins
--DATA_DIR = $(shell yosys-config --datdir)
-+PLUGINS_DIR = $(DESTDIR)$(shell yosys-config --datdir)/plugins
-+DATA_DIR = $(DESTDIR)$(shell yosys-config --datdir)
+@@ -41,8 +41,8 @@ CXX ?= $(shell yosys-config --cxx)
+ CXXFLAGS ?= $(shell yosys-config --cxxflags) #-DSDC_DEBUG
+ LDFLAGS ?= $(shell yosys-config --ldflags)
+ LDLIBS ?= $(shell yosys-config --ldlibs)
+-PLUGINS_DIR ?= $(shell yosys-config --datdir)/plugins
+-DATA_DIR ?= $(shell yosys-config --datdir)
++PLUGINS_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)/plugins
++DATA_DIR ?= $(DESTDIR)$(shell yosys-config --datdir)
  
  OBJS := $(SOURCES:cc=o)
  
 -- 
-2.30.2
+2.31.0
 
