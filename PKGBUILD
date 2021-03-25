@@ -2,7 +2,7 @@
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=r2003.0b1cf62
+pkgver=v0.28.0.r0.g0b1cf62
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -12,7 +12,8 @@ makedepends=('clang'
              'ninja'
              'flutter'
              'cmake'
-             'git')
+             'git'
+             'gtk3')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://gitlab.com/famedly/fluffychat.git")
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver(){
     cd ${_name}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
