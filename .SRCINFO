@@ -10,9 +10,6 @@ pkgbase = deepinv20-dark-cursors-git
 	depends = libxcursor
 	provides = deepinv20-dark-cursors
 	conflicts = deepinv20-dark-cursors
-	conflicts = deepinv20-dark-cursors-git
-	replaces = deepinv20-dark-cursors
-	replaces = deepinv20-dark-cursors-git
 	source = git+https://github.com/yeyushengfan258/DeepinV20-dark-cursors.git
 	md5sums = SKIP
 

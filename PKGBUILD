@@ -13,8 +13,7 @@ makedepends=("inkscape" "xorg-xcursorgen" )
 pkgver=r2.b8a6de9
 pkgrel=1
 
-conflicts=("${_pkgname}" "${_pkgname}-git")
-replaces=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
 license=('GPL3')
