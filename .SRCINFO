@@ -1,7 +1,7 @@
 pkgbase = tiny-irc-client-git
 	pkgdesc = A console IRC client
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/osa1/tiny
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Nick Econopouly <wry at mm dot st>
 pkgname=tiny-irc-client-git
-pkgver="0.7.0"
-pkgrel=2
+pkgver="0.8.0"
+pkgrel=1
 pkgdesc="A console IRC client"
 arch=('x86_64')
 provides=('tiny')
@@ -25,7 +25,7 @@ build() {
 
     # build tiny
     cd tiny
-    cargo install --path tiny --features=desktop-notifications
+    cargo install --path crates/tiny --features=desktop-notifications
 }
 
 package() {
