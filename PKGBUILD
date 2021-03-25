@@ -9,14 +9,16 @@ depends=('mingw-w64-spirv-tools')
 makedepends=('mingw-w64-cmake' 'python')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz wine-glslangValidator.sh)
-sha256sums=('8ff2fcf9b054e4a4ef56fcd8a637322f827b2b176a592a618d63672ddb896e06'
-            'ca9bc184d08a08905c7bc01956fbd76eb3a009e4346ff195846959b707f241e1')
+source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz wine-glslangValidator.sh
+        git+https://github.com/KhronosGroup/SPIRV-Tools#commit=c79edd260c2b503f0eca57310057b4a100999cc5
+        git+https://github.com/KhronosGroup/SPIRV-Headers#commit=75b30a659c8a4979104986652c54cc421fc51129)
+sha256sums=('8ff2fcf9b054e4a4ef56fcd8a637322f827b2b176a592a618d63672ddb896e06' SKIP SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd glslang-$pkgver
+  cp -r SPIRV-Tools glslang-${pkgver}/External/spirv-tools
+  cp -r SPIRV-Headers glslang-${pkgver}/External/spirv-tools/external/spirv-headers
 }
 
 build() {

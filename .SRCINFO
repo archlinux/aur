@@ -14,8 +14,12 @@ pkgbase = mingw-w64-glslang
 	options = staticlibs
 	source = https://github.com/KhronosGroup/glslang/archive/11.2.0.tar.gz
 	source = wine-glslangValidator.sh
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools#commit=c79edd260c2b503f0eca57310057b4a100999cc5
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers#commit=75b30a659c8a4979104986652c54cc421fc51129
 	sha256sums = 8ff2fcf9b054e4a4ef56fcd8a637322f827b2b176a592a618d63672ddb896e06
-	sha256sums = ca9bc184d08a08905c7bc01956fbd76eb3a009e4346ff195846959b707f241e1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mingw-w64-glslang
 
