@@ -20,8 +20,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.11.8
-pkgrel=2
+pkgver=5.11.10
+pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -42,20 +42,20 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=270816406a853b1fafb27dbc0f2a5f730f5456d6"
-  "0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch::https://git.archlinux.org/linux.git/patch/?id=cf3924542f2ddfcb6e33a5af274d08836ca9c27a"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=a2e6b3026698f2ec59a91b8c4a47ea95dfe53f97"
+  "0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch::https://git.archlinux.org/linux.git/patch/?id=ade278c3ab329108090fc2e84658bcfce569dcad"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('48028845215ba4514735575b2cf0f9bd67c224168074c406d01188ab28483ab139d6fab42dda6be10b04c9716e7be91fc6f5e4bbd58984bea40b7e7cff60e477'
+b2sums=('84b97aeb190d570144d0e315edf8c0b51fd92a70f94a30f08ef49a65eedd48ee135b2c2f3a1a2827ace96fef2d1963e83948790c7729f3d7c1f615f8d32c9656'
         'SKIP'
         'fb0f93e5373ba40e8b019195faf56480d0e2e4216124c3b30293ff6abf0885e867e17b3a613da9ed0ba3fe7fd1cb539f08fa1f7370d875e3cb6bbd1ada78f0eb'
         'e3cc85db32795721d39962dfd3b72ac923b89da8a9125ef0e12ba199b3606cec9a2d99392c0b0f195b1557a25be2370be1efe3bab9a9e0c2e89e2e92eb86eccb'
         '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
-        'c60f67b5382aeae5b85e1851f3a078ece1a16679668bfb2a361312f6975db32190d42b9e621e66988935e921357ec7cfe2d32169b384f36b7ae44f05e97e132c'
-        '9a00d496c6208bb7a5ffd9b64ef82cf3697ae86113a395be3f508402a99e9a1d46163614059e8e9bb58a66726b79fe5dbbab9ce9274d1508188f61f84ff3078b')
+        'a09d589624a1b3b125f19450347428d01c479e5fe0775672a7dd237b632e7783928ae5421040f2b889ad9a79df16a8d545b1183a6aefeb12764810abc0fd0b08'
+        '2d5a43a5066b75566ab72bc2d255f42a7fb12d3d534e9757a5ab7f45b1ad4b509c969df613e237f1a318b9433ca87ad0e5b5311d2e70a1242f8efd158dbcc827')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
