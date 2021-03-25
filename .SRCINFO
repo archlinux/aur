@@ -1,7 +1,7 @@
 pkgbase = alire
 	pkgdesc = A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alire.ada.dev/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = alire
 	makedepends = git
 	makedepends = gprbuild
 	depends = glibc
-	source = https://github.com/alire-project/alire/archive/refs/tags/v1.0.0.tar.gz
+	source = alire-1.0.0.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v1.0.0.tar.gz
 	source = git+https://github.com/alire-project/xmlezout.git
 	source = git+https://github.com/mosteo/ajunitgen.git
 	source = git+https://github.com/mosteo/aaa.git
