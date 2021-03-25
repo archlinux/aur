@@ -1,11 +1,10 @@
 pkgbase = infinitywallet
 	pkgdesc = Digital asset wallet
 	pkgver = 1.0.67beta
-	pkgrel = 4
+	pkgrel = 5
 	url = https://infinitywallet.io
 	install = infinitywallet.install
 	arch = x86_64
-	license = 
 	depends = alsa-lib
 	depends = atk
 	depends = at-spi2-atk

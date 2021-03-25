@@ -1,10 +1,9 @@
 pkgname=infinitywallet
 pkgver=1.0.67beta
-pkgrel=4
+pkgrel=5
 pkgdesc="Digital asset wallet"
 arch=('x86_64')
 url="https://infinitywallet.io"
-license=('')
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'discord' 'expat' 'fontconfig' 'freetype2' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango' 'util-linux-libs' 'xdg-utils' 'zlib')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
