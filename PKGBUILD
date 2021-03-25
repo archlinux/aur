@@ -52,10 +52,10 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
-pkgver=5.11.8
+pkgver=5.11.9
 _major=5.11
 _branch=5.x
-xanmod=2
+xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -85,7 +85,7 @@ done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'SKIP'
-            'da09a7132d9fd41237981aaea02556b4cda4a7e2dd102a0f52552039cde38d15'
+            'ae79bce7fac36834160154bf5a0f654bcce7c66896d1a5af3eb497e7b3071391'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
