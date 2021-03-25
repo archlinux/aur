@@ -1,27 +1,19 @@
 pkgbase = python-neo
 	pkgdesc = Neo is a package for representing electrophysiology data in Python, together with support for reading a wide range of neurophysiology file formats
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://pypi.org/project/neo/#files
 	arch = any
 	license = custom
 	depends = python-quantities
 	depends = python-setuptools
-	depends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/n/neo/neo-0.8.0.tar.gz
-	sha256sums = SKIP
+	conflicts = python2-neo
+	source = https://files.pythonhosted.org/packages/source/n/neo/neo-0.9.0.tar.gz
+	sha256sums = 6e31c88d7c52174fa2512df589b2b5003e9471fde27fca9f315f4770ba3bd3cb
 
 pkgname = python-neo
 	depends = python-quantities
 	depends = python-setuptools
-	depends = python2-setuptools
 	depends = python
 	depends = python-numpy
-
-pkgname = python2-neo
-	depends = python-quantities
-	depends = python-setuptools
-	depends = python2-setuptools
-	depends = python2
-	depends = python2-numpy
 
