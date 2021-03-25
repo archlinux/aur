@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-spirv-headers
 	pkgdesc = SPIR-V Headers (mingw-w64)
-	pkgver = 1.5.4
+	pkgver = 1.5.4.raytracing.fixed
 	pkgrel = 1
 	url = https://www.khronos.org/registry/spir-v/
 	arch = any
