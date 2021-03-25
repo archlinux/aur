@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g3-kpe
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -29,8 +29,6 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
         "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
         "remoting-name.patch::$_filesurl/patches/remoting-name.patch"
-        "bmo1680166_p1.patch::$_filesurl/patches/bmo1680166_p1.patch"
-        "bmo1680166_p2.patch::$_filesurl/patches/bmo1680166_p2.patch"
         )
 sha256sums=('SKIP'
             '6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6'
@@ -43,9 +41,7 @@ sha256sums=('SKIP'
             '25846888b48208606ff88c04dc8b9cb5b1a9c433adfd2d72ce13b6b9edc73a87'
             '71386c2e269bd021c3b8c86b457101bdb730f76db3f2bbb91bf617109564a09c'
             '809c7dea066cb2ba70fb1c16c1b3dcd69c7e7715f354daf2f1c67af757e6d47b'
-            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761'
-            '005662a42e8c37027d8c64bbb2db9c1d8bce315dbdca2d9a489d5084dfa87bf9'
-            '9a04633df4ed595701b81abc13ca21ca86855ce7e69918ff8cc5c8138aa6a7d4')
+            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761')
 
 prepare() {
 
@@ -58,10 +54,6 @@ prepare() {
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
   patch -Np1 -i ../remoting-name.patch
-
-  # Prevent sandbox crashing when building with rustc >= 1.48
-  patch -Np1 -i ../bmo1680166_p1.patch
-  patch -Np1 -i ../bmo1680166_p2.patch
 
   cat >../mozconfig <<END
 export CC=clang
