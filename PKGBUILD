@@ -1,7 +1,7 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=alire
-pkgver=0.7.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://alire.ada.dev/"
 license=(GPL3)
 depends=(glibc)
 makedepends=(git gprbuild)
-source=(git+https://github.com/alire-project/alire.git#tag=v0.7.1
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v$pkgver.tar.gz"
 git+https://github.com/alire-project/xmlezout.git
 git+https://github.com/mosteo/ajunitgen.git
 git+https://github.com/mosteo/aaa.git
@@ -22,24 +22,25 @@ git+https://github.com/mosteo/ansi-ada
 git+https://github.com/mosteo/uri-ada.git
 git+https://github.com/mosteo/minirest
 git+https://github.com/Fabien-Chouteau/spdx_ada#commit=319ca7bcc1e2eb1843aad1f64aca3ecba91a2bcc)
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+b2sums=('bad08a570d464d454739edb42717a5ad33eb132dea4c3f2752e26bf122aa6a6b058e1b89987a9c8a6c5d432492b29586fbefad0e54207f8e7a9601ef1bbba9a0'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare()
 {
   # Get the submodules from the sources above
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
+  git submodule init
   git config submodule.deps/xmlezout.url "$srcdir"/xmlezout
   git config submodule.deps/ajunitgen.url "$srcdir"/ajunitgen
   git config submodule.deps/aaa.url "$srcdir"/aaa
