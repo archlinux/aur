@@ -2,7 +2,7 @@
 # Contributor: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
 
 pkgname=aliza
-pkgver=1.98.43
+pkgver=1.98.50
 pkgrel=1
 pkgdesc="Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. Meshes in VTK, OBJ and STL formats. Filters, segmentation, front-end for registration with Elastix and many more features"
 arch=('x86_64')
@@ -12,10 +12,62 @@ depends=('hicolor-icon-theme'
          'libxt'
          'libglvnd')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.deb::https://drive.google.com/uc?export=download&id=1tNq23my6Ts0ufi4Wfu7Hy1ep7tmlbKBz")
-sha512sums=('e777096910acd8571d61953ee4db6326128ed3907504217b8703d8dce19b3c2f39c634a3dd052242bb790d580f7f7d2dff5a0bce567a94982be1798ba5c6d2f6')
+source=("${pkgname}-${pkgver}.tar.gz::https://www.dropbox.com/s/k0rei4lkgks79eu/aliza-1.98.50.tar.gz")
+sha512sums=('4796c82fc8f7c999ca138fcd29be3c0e2fd6ede1e4bbb4ea6edb91fe9af4079aa80d31a6dfe07446cdf57c654f314457547c5d53b76cfd8099aa462e4cb7083b')
+noextract=("${pkgname}-${pkgver}.tar.gz")
 
-package(){
-  tar xJf data.tar.xz -C "${pkgdir}"
-  install -Dm644 "${pkgdir}/usr/share/doc/aliza/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+package() {
+    ALIZA_DIR="/opt/aliza"
+    ALIZA_C_DIR="${pkgdir}${ALIZA_DIR}/install_menu"
+    ALIZA_I_DIR="${pkgdir}/usr/share/icons/hicolor"
+
+    mkdir -p "${pkgdir}${ALIZA_DIR}"
+    tar xzf "${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}${ALIZA_DIR}" --strip 1
+
+
+    mkdir -p "${pkgdir}/usr/share/applications";
+    mkdir -p "${ALIZA_I_DIR}/16x16/apps";
+    mkdir -p "${ALIZA_I_DIR}/22x22/apps";
+    mkdir -p "${ALIZA_I_DIR}/24x24/apps";
+    mkdir -p "${ALIZA_I_DIR}/32x32/apps";
+    mkdir -p "${ALIZA_I_DIR}/36x36/apps";
+    mkdir -p "${ALIZA_I_DIR}/42x42/apps";
+    mkdir -p "${ALIZA_I_DIR}/48x48/apps";
+    mkdir -p "${ALIZA_I_DIR}/64x64/apps";
+    mkdir -p "${ALIZA_I_DIR}/72x72/apps";
+    mkdir -p "${ALIZA_I_DIR}/96x96/apps";
+    mkdir -p "${ALIZA_I_DIR}/128x128/apps";
+    mkdir -p "${ALIZA_I_DIR}/192x192/apps";
+    mkdir -p "${ALIZA_I_DIR}/256x256/apps";
+    mkdir -p "${ALIZA_I_DIR}/scalable/apps";
+    cp "${ALIZA_C_DIR}/icons/hicolor/16x16/apps/aliza.png"    "${ALIZA_I_DIR}/16x16/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/22x22/apps/aliza.png"    "${ALIZA_I_DIR}/22x22/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/24x24/apps/aliza.png"    "${ALIZA_I_DIR}/24x24/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/32x32/apps/aliza.png"    "${ALIZA_I_DIR}/32x32/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/36x36/apps/aliza.png"    "${ALIZA_I_DIR}/36x36/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/42x42/apps/aliza.png"    "${ALIZA_I_DIR}/42x42/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/48x48/apps/aliza.png"    "${ALIZA_I_DIR}/48x48/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/64x64/apps/aliza.png"    "${ALIZA_I_DIR}/64x64/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/72x72/apps/aliza.png"    "${ALIZA_I_DIR}/72x72/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/96x96/apps/aliza.png"    "${ALIZA_I_DIR}/96x96/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/128x128/apps/aliza.png"  "${ALIZA_I_DIR}/128x128/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/192x192/apps/aliza.png"  "${ALIZA_I_DIR}/192x192/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/256x256/apps/aliza.png"  "${ALIZA_I_DIR}/256x256/apps"
+    cp "${ALIZA_C_DIR}/icons/hicolor/scalable/apps/aliza.svg" "${ALIZA_I_DIR}/scalable/apps"
+    ALIZA_DS_FILE="${pkgdir}/usr/share/applications/aliza.desktop"
+    ALIZA_EXE="${ALIZA_DIR}/aliza.sh"
+    echo "[Desktop Entry]"              > "${ALIZA_DS_FILE}"
+    echo "Type=Application"            >> "${ALIZA_DS_FILE}"
+    echo "Encoding=UTF-8"              >> "${ALIZA_DS_FILE}"
+    echo "Name=Aliza"                  >> "${ALIZA_DS_FILE}"
+    echo "GenericName=Aliza"           >> "${ALIZA_DS_FILE}"
+    echo "Comment=Medical Imaging"     >> "${ALIZA_DS_FILE}"
+    echo "Exec=\"${ALIZA_EXE}\" %F"    >> "${ALIZA_DS_FILE}"
+    echo "Icon=aliza"                  >> "${ALIZA_DS_FILE}"
+    echo "Terminal=false"              >> "${ALIZA_DS_FILE}"
+    echo "Categories=Graphics;"        >> "${ALIZA_DS_FILE}"
+    echo "StartupNotify=false"         >> "${ALIZA_DS_FILE}"
+    echo "MimeType=application/dicom;" >> "${ALIZA_DS_FILE}"
+    chmod +x "${ALIZA_DS_FILE}"
 }

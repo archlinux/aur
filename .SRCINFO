@@ -1,6 +1,6 @@
 pkgbase = aliza
 	pkgdesc = Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. Meshes in VTK, OBJ and STL formats. Filters, segmentation, front-end for registration with Elastix and many more features
-	pkgver = 1.98.43
+	pkgver = 1.98.50
 	pkgrel = 1
 	url = http://www.aliza-dicom-viewer.com
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = aliza
 	depends = hicolor-icon-theme
 	depends = libxt
 	depends = libglvnd
+	noextract = aliza-1.98.50.tar.gz
 	options = !emptydirs
-	source = aliza-1.98.43.deb::https://drive.google.com/uc?export=download&id=1tNq23my6Ts0ufi4Wfu7Hy1ep7tmlbKBz
-	sha512sums = e777096910acd8571d61953ee4db6326128ed3907504217b8703d8dce19b3c2f39c634a3dd052242bb790d580f7f7d2dff5a0bce567a94982be1798ba5c6d2f6
+	source = aliza-1.98.50.tar.gz::https://drive.google.com/uc?export=download&id=1vuEt3bO9tN8csfBwoRwk90d6kYTQpHOI
+	sha512sums = 4796c82fc8f7c999ca138fcd29be3c0e2fd6ede1e4bbb4ea6edb91fe9af4079aa80d31a6dfe07446cdf57c654f314457547c5d53b76cfd8099aa462e4cb7083b
 
 pkgname = aliza
 
