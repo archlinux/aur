@@ -4,7 +4,7 @@ pkgname=yamc-git
 provides=("yamc")
 conflicts=("yamc")
 pkgver=r217.fc378ad
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ mutex (mutual exclusion primitive for multi-threading) collections. This is header-only, cross-platform, no external dependency C++11 library."
 url="https://github.com/yohhoy/yamc"
 license=("MIT")
@@ -12,6 +12,7 @@ depends=()
 makedepends=("cmake" "git")
 arch=("any")
 optdepends=()
+checkdepends=('git')
 sha256sums=("SKIP")
 _repo="yamc"
 source=("git+https://github.com/yohhoy/${_repo}")
@@ -27,6 +28,12 @@ pkgver() {
 build() {
 	cmake -S "${_repo}" -B "build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TESTING=OFF
 	make -C "build"
+}
+
+check() {
+	cmake -S "${_repo}" -B "build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TESTING=ON
+	make -C "build"
+	make -C "build" test
 }
 
 package() {

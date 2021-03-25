@@ -1,10 +1,11 @@
 pkgbase = yamc-git
 	pkgdesc = C++ mutex (mutual exclusion primitive for multi-threading) collections. This is header-only, cross-platform, no external dependency C++11 library.
 	pkgver = r217.fc378ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yohhoy/yamc
 	arch = any
 	license = MIT
+	checkdepends = git
 	makedepends = cmake
 	makedepends = git
 	provides = yamc
