@@ -1,9 +1,10 @@
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Last Maintainer: Matthew Sexton <wsdmatty@gmail.com>
 # Maintainer: sgtxd <mark@sgtxd.de>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ffmpeg-compat-57
 pkgver=3.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
