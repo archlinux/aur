@@ -1,6 +1,6 @@
 pkgbase = win10x-icon-theme-git
 	pkgdesc = A colorful Design icon theme for linux desktops
-	pkgver = r2.e79f634
+	pkgver = r61.8781242
 	pkgrel = 1
 	url = https://github.com/yeyushengfan258/Win10x-icon-theme
 	arch = any

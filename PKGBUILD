@@ -3,7 +3,7 @@
 pkgname=win10x-icon-theme-git
 _pkgname=win10x-icon-theme
 _gitname=Win10x-icon-theme
-pkgver=r2.e79f634
+pkgver=r61.8781242
 pkgrel=1
 pkgdesc="A colorful Design icon theme for linux desktops"
 arch=('any')
