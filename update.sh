@@ -25,7 +25,7 @@ wget $src
 sha=$(sha256sum "${PROJ_NAME}-$1.tgz" | cut -d ' ' -f 1)
 popd
 
-echo "# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
+echo "# Maintainer: Sumner Evans <inquiries [at] sumnerevans [dot] com>
 
 pkgbase=${AUR_NAME}
 pkgname=${AUR_NAME}
@@ -49,7 +49,7 @@ sha256sums=('${sha}')
 ${ADDITIONAL}
 
 package() {
-  npm install -g --user root --prefix \"\$pkgdir/usr\" \"\$srcdir/\$pkgname-\$pkgver.tgz\"
+  npm install -g --prefix \"\$pkgdir/usr\" \"\$srcdir/\$pkgname-\$pkgver.tgz\"
 
   # Fix permissions
   find \"\$pkgdir/usr\" -type d -exec chmod 755 '{}' +
@@ -58,7 +58,7 @@ package() {
   ln -s \"../../../lib/node_modules/\$pkgname/LICENSE\" \"\${pkgdir}/usr/share/licenses/\${pkgname}/LICENSE\"
 }" >> PKGBUILD
 
-make
+makepkg --printsrcinfo > .SRCINFO
 
 # Test
 makepkg -f

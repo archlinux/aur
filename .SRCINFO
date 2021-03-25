@@ -1,7 +1,7 @@
 pkgbase = eslint-plugin-snakecasejs
 	pkgdesc = ESLint Plugin: enforce snake_case syntax on variables and function names
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ptkdev/eslint-plugin-snakecasejs
 	arch = any
 	license = MIT
