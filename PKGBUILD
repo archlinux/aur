@@ -2,7 +2,7 @@
 _pkgname=SerialTool
 pkgname=serialtool
 pkgver=1.4.0alpha
-pkgrel=5
+pkgrel=6
 pkgdesc="A practical Serial-Port/TCP/UDP debugging tool."
 arch=('any')
 url="https://github.com/Skiars/SerialTool"
@@ -21,7 +21,7 @@ source=("${_pkgname}.zip::https://github.com/Skiars/${_pkgname}/archive/refs/tag
         "${pkgname}.install"
         "io.github.skiars.serialtool.metainfo.xml")
 sha256sums=('95b8780eecc007fae461025d1c3db8b2158905e9379541632ab791c3c5e72455'
-            '0fc47631291ea6b1d5d62af0a709a1a234fa354cc807b4a368f9fa93b7f97bbe'
+            '4d7507fe5b90bec2a29a7cd2dae8f0824d51a1e32a774f07ba45ff6de4ad007f'
             'bd504256698f7e7b1a74fbc6490276f0c096c2e6b5e7199049766b7ba7c860a7'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4'
             '41a8f888c8bccdd06a808469a2d37183879b1244b822b397e14bf1b2a013bdc7')
