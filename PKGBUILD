@@ -4,7 +4,7 @@
 pkgname=alchemy-viewer
 pkgver=6.4.17.45975
 pkgrel=1
-pkgdesc="This is the next generation of Alchemy Viewer!"
+pkgdesc="Alchemy is FOSS where you can build & share Virtual Reality (VR) in OpenSim/SecondLife (P2P). Meet people in 3D! Source build."
 arch=('i686' 'x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
