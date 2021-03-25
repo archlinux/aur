@@ -63,7 +63,7 @@ prepare() {
   then
     patch -p1 -i "$srcdir/clang_11.patch"
     patch -p9 -i "$srcdir/PackageWithSystemCompiler.patch"
-    patch -p9 -i "$srcdir/compile_in_editor.patch"
+    patch -p8 -i "$srcdir/compile_in_editor.patch"
     export LINUX_MULTIARCH_ROOT="/usr/sbin"
     generateProjectArgs+=" -ForceUseSystemCompiler"
   fi
