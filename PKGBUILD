@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-fmt
 pkgver=7.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="{fmt} is an open-source formatting library for C++. It can be used as a safe and fast alternative to (s)printf and iostreams. (mingw-w64)"
 url="https://fmt.dev/"
 license=("MIT")
@@ -18,7 +18,7 @@ source=(
 	"https://github.com/fmtlib/fmt/archive/${pkgver}.tar.gz"
 )
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="x86_64-w64-mingw32"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -DFMT_DOC=OFF )
 
 prepare() {
@@ -37,6 +37,7 @@ check() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "fmt-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DFMT_TEST=ON
 		make -C "build-${_arch}"
+		make -C "build-${_arch}" test
 	done
 }
 
