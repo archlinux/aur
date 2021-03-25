@@ -23,7 +23,7 @@ _UNIFONT_VER="13.0.05"
 pkgname='grub-luks-keyfile-git'
 pkgdesc='GNU GRand Unified Bootloader (2)'
 epoch=2
-pkgver=2.05
+pkgver=2.06rc1
 pkgrel=1
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
@@ -60,8 +60,8 @@ source=("git+https://git.savannah.gnu.org/git/grub.git"
         "git+https://git.savannah.gnu.org/git/grub-extras.git#commit=${_GRUB_EXTRAS_COMMIT}"
         "git+https://git.savannah.gnu.org/git/gnulib.git#commit=${_GNULIB_COMMIT}"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
-        '0003-10_linux-detect-archlinux-initramfs.patch'
-        '0004-add-GRUB_COLOR_variables.patch'
+        '0001-00_header-add-GRUB_COLOR_-variables.patch'
+        '0002-10_linux-detect-archlinux-initramfs.patch'
         '0001-Cryptomount-support-LUKS-detached-header.patch'
         '0002-Cryptomount-support-key-files.patch'
         '0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
@@ -74,8 +74,8 @@ sha256sums=('SKIP'
             'SKIP'
             'c4e61e9336d8d024479ea72616722c6c47c93f76dc173e8ad3edf9f9e07c3115'
             'SKIP'
-            '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
-            'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
+            'ef87b27e4cef6f83c41c8a1a0401f41e22a89a130baaef8c5a832a6c99bb2683'
+            'ce7e24acec78989169a136e989e07369def3dd7c727788d5038a255409ec3c35'
             'b9d737d1b403b540a00a8e9c25240a06bb371da7588d3e665af8543397724698'
             '5d7060fbe9738764d2f8ebc96b43cc0bb8939c2e4e4e78b7a82a1a149ea6e837'
             '3e373bcb7847326ae14365e7443f900559f35f4f9ba2e5e69d034f4423fc45bb'
@@ -122,11 +122,11 @@ prepare() {
 	done
 
 	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
-	patch -Np1 -i "${srcdir}/0003-10_linux-detect-archlinux-initramfs.patch"
+	patch -Np1 -i "${srcdir}/0002-10_linux-detect-archlinux-initramfs.patch"
 
 	echo "Patch to enable GRUB_COLOR_* variables in grub-mkconfig..."
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
-	patch -Np1 -i "${srcdir}/0004-add-GRUB_COLOR_variables.patch"
+	patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
 	
 	echo "Patch to enable LUKS detached header support..."
 	patch -Np1 -i "${srcdir}/0001-Cryptomount-support-LUKS-detached-header.patch"
@@ -162,6 +162,12 @@ prepare() {
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	gzip -cd "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz" > "unifont.bdf"
 
+	echo "Add the grub-extra sources for bios build..."
+	install -d "${srcdir}/grub-bios/grub-extras"
+	cp -r "${srcdir}/grub-extras/915resolution" \
+		"${srcdir}/grub-bios/grub-extras/915resolution"
+	export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
+	
 	echo "Run bootstrap..."
 	./bootstrap \
 		--gnulib-srcdir="${srcdir}/gnulib/" \
@@ -183,11 +189,11 @@ _build_grub-common_and_bios() {
 	cp -r "${srcdir}/grub/" "${srcdir}/grub-bios/"
 	cd "${srcdir}/grub-bios/"
 
-	echo "Add the grub-extra sources for bios build..."
-	install -d "${srcdir}/grub-bios/grub-extras"
-	cp -r "${srcdir}/grub-extras/915resolution" \
-		"${srcdir}/grub-bios/grub-extras/915resolution"
-	export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
+	#echo "Add the grub-extra sources for bios build..."
+	#install -d "${srcdir}/grub-bios/grub-extras"
+	#cp -r "${srcdir}/grub-extras/915resolution" \
+	#	"${srcdir}/grub-bios/grub-extras/915resolution"
+	#export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
 
 	echo "Unset all compiler FLAGS for bios build..."
 	unset CFLAGS

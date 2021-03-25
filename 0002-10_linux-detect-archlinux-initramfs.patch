@@ -1,8 +1,16 @@
+From 058d08a025f9a6ec77d5ddd1fc62c7bd6abe1a52 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Wed, 10 Mar 2021 18:40:00 +0100
+Subject: [PATCH] 10_linux: detect archlinux initramfs
+---
+ util/grub.d/10_linux.in | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index f5d3e78..ef59c8c 100644
+index e8b01c0d0..e703dcdb0 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -83,6 +83,8 @@ linux_entry ()
+@@ -93,6 +93,8 @@ linux_entry ()
        case $type in
  	  recovery)
  	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")" ;;
@@ -11,7 +19,7 @@ index f5d3e78..ef59c8c 100644
  	  *)
  	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")" ;;
        esac
-@@ -186,7 +188,7 @@ while [ "x$list" != "x" ] ; do
+@@ -198,7 +200,7 @@ while [ "x$list" != "x" ] ; do
    basename=`basename $linux`
    dirname=`dirname $linux`
    rel_dirname=`make_system_path_relative_to_its_root $dirname`
@@ -20,7 +28,7 @@ index f5d3e78..ef59c8c 100644
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
    linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
  
-@@ -248,6 +250,18 @@ while [ "x$list" != "x" ] ; do
+@@ -285,6 +287,18 @@ while [ "x$list" != "x" ] ; do
  
    linux_entry "${OS}" "${version}" advanced \
                "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
