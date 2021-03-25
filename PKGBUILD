@@ -7,7 +7,7 @@
 
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
@@ -26,22 +26,26 @@ backup=('etc/tengine/fastcgi.conf'
 install=tengine.install
 conflicts=('tengine')
 provides=('nginx' 'tengine')
-_psol_ver=1.13.35.2
-_nps_ver=${_psol_ver}-stable
+_psol_ver=1.14.36.1
+_nps_ver=1.14.33.1-RC1
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
+        fix-version.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1542.patch
         service
         logrotate
         pagespeed-v${_nps_ver}.zip::https://github.com/apache/incubator-pagespeed-ngx/archive/v${_nps_ver}.zip
-        psol-v${_psol_ver}.zip::https://dl.google.com/dl/page-speed/psol/${_psol_ver}-x64.tar.gz
+        psol-v${_psol_ver}.tar.gz::https://dist.apache.org/repos/dist/release/incubator/pagespeed/${_psol_ver}/x64/psol-${_psol_ver}-apache-incubating-x64.tar.gz
         )
-sha256sums=('6b90ba57ed984b0f97bf2d939c25403b9803897bee793aead2aedf34c4c6d9fc'
+sha256sums=('e9efa781fbadb491bddd362d0a59bd95057d7c25e5d82397b2ba6c0d8791986a'
+            'f03c6bf36c088c514ebbe8e219e6e251a5cb059a67979ccbac9bd5fabd70a082'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
-            '474ef99dcfb678684394c9064c340772633c6dafe630ed90a0f1f319931df139'
-            'df3ba3c8fc54e13845d0a1daa7a6e3d983126c23912851bbf8ba35be646a434f')
+            '43e6f0a14a2244ac4524e5ef6cf5c2db6145b785470575575f5bc7373179bebf'
+            '01c1c0ce36adba494973efbd79437efcfa8a5b6029e487f604da60bddf18e77b')
 
 prepare() {
     mv psol incubator-pagespeed-ngx-${_nps_ver}/
+    cd tengine-$pkgver
+    patch -Np1 -i ../fix-version.patch
 }
 
 build() {
