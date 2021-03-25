@@ -4,6 +4,7 @@ pkgbase = hilbish
 	pkgrel = 1
 	url = https://github.com/hilbis/hilbish
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go>=1.16
 	depends = readline
