@@ -1,12 +1,12 @@
 pkgbase = jellyfin-mpv-shim-web
 	pkgdesc = Jellyfin web client for MPV Shim
-	pkgver = 1.7.0
+	pkgver = 1.7.0_3
 	pkgrel = 1
 	url = https://github.com/iwalton3/jellyfin-web
 	arch = any
 	license = GPL2
-	source = jellyfin-mpv-shim-web-1.7.0.zip::https://github.com/iwalton3/jellyfin-web/releases/download/jwc1.7.0/dist.zip
-	sha256sums = a5bdea7da72752eea49ed6df15a6ce9f9fb9cfbe5359097a1ec5bb2543dc220d
+	source = jellyfin-mpv-shim-web-1.7.0_3.zip::https://github.com/iwalton3/jellyfin-web/releases/download/v1.7.0-3/dist.zip
+	sha256sums = 17e9b78a698479ffff66d72f39e96e2f2f43a4c4189c52380465769c1f7afcc6
 
 pkgname = jellyfin-mpv-shim-web
 
