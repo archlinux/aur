@@ -1,6 +1,6 @@
 pkgbase = dafny-git
 	pkgdesc = Dafny is a verification-aware programming language
-	pkgver = v2.2.0.r19.g45af975d
+	pkgver = v3.0.0.rpre.rrelease.r1.r256.rgd25ae257
 	pkgrel = 1
 	url = https://github.com/Microsoft/dafny.git
 	arch = i686

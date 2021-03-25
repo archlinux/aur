@@ -1,7 +1,7 @@
 # Maintainer: crave <crave@infinity>
 
 pkgname=dafny-git
-pkgver=v2.2.0.r19.g45af975d
+pkgver=v3.0.0.rpre.rrelease.r1.r256.rgd25ae257
 pkgrel=1
 pkgdesc="Dafny is a verification-aware programming language"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/z3-//;s/-/.r/;s/-/./'
+  git describe --long | sed 's/z3-//g;s/-/.r/g;s/-/./g'
 }
 
 build() {
