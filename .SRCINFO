@@ -1,6 +1,6 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/pytorch/vision
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = python-torchvision
 	optdepends = ffmpeg: video reader backend (the recommended one with better performance)
 	optdepends = python-av: video reader backend (the default one)
 	optdepends = python-pycocotools: support for MS-COCO dataset
-	source = vision-0.9.0.tar.gz::https://github.com/pytorch/vision/archive/v0.9.0.tar.gz
-	sha512sums = 13e3a1cbe477db1e461a1bf820b9ababa22061ff825eeb12df4b606cf68414a653b3493eecc42504a63ac7eb9d2f6806ce7d545eae01dd73f0cd3c31fd9d8fe2
+	source = vision-0.9.1.tar.gz::https://github.com/pytorch/vision/archive/v0.9.1.tar.gz
+	sha512sums = e20c84cbbd3cc6bf3cfcb33fdf858a11515d4872926d8f1c7a529b83bd677d9f68093fb60d9b7918346007b91b05ade841e6ab171215bc356622f575bfba7954
 
 pkgname = python-torchvision
 	depends = python-numpy
@@ -41,6 +41,6 @@ pkgname = python-torchvision-cuda
 	depends = python-six
 	depends = python-tqdm
 	depends = python-pytorch-cuda
-	provides = python-torchvision=0.9.0
-	conflicts = python-torchvision=0.9.0
+	provides = python-torchvision=0.9.1
+	conflicts = python-torchvision=0.9.1
 
