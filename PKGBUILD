@@ -24,5 +24,5 @@ package() {
 
 	cp -r * "${pkgdir}/opt/tess/"
 
-	sudo ln -s "/opt/tess/tess" "/usr/bin/tess"
+	sudo ln -s "/opt/tess/tess" "${pkgdir}/usr/bin/tess"
 }
