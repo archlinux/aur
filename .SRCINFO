@@ -1,14 +1,14 @@
 pkgbase = pvz_beta
 	pkgdesc = pvz_beta 技能魔改版的pvz,源自贴吧老哥分享
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zzy-ac/plantsvszombies
 	arch = x86_64
 	license = GPL
 	depends = wine
 	depends = deepin-wine-helper
 	provides = pvz_beta=1.0.1
-	source = https://hub.fastgit.org/zzy-ac/plantsvszombies/raw/master/PvZ_beta/PvZ_beta.tar.gz
+	source = https://github.zzy-ac.workers.dev/zzy-ac/plantsvszombies/raw/master/PvZ_beta/PvZ_beta.tar.gz
 	md5sums = fefd66038fa1f8e8c7eeb87bca2df364
 
 pkgname = pvz_beta

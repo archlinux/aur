@@ -6,7 +6,7 @@
 # Maintainer: zzy-ac <1304024859@qq.com>
 pkgname=pvz_beta
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="pvz_beta 技能魔改版的pvz,源自贴吧老哥分享"
 arch=(x86_64)
 url="https://github.com/zzy-ac/plantsvszombies"
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://hub.fastgit.org/zzy-ac/plantsvszombies/raw/master/PvZ_beta/PvZ_beta.tar.gz")
+source=("https://github.zzy-ac.workers.dev/zzy-ac/plantsvszombies/raw/master/PvZ_beta/PvZ_beta.tar.gz")
 noextract=()
 md5sums=("fefd66038fa1f8e8c7eeb87bca2df364")
 validpgpkeys=()
