@@ -14,6 +14,7 @@ pkgbase = azure-sdk-cpp-git
 	makedepends = git
 	depends = openssl
 	depends = curl
+	provides = azure-sdk-cpp
 	source = git+https://github.com/Azure/azure-sdk-for-cpp.git
 	sha256sums = SKIP
 

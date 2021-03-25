@@ -6,6 +6,7 @@ pkgdesc='Azure SDK for C++'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/Azure/azure-sdk-for-cpp'
 license=('MIT')
+provides=('azure-sdk-cpp')
 depends=(openssl curl)
 makedepends=(cmake git)
 source=("git+https://github.com/Azure/azure-sdk-for-cpp.git")
