@@ -1,0 +1,15 @@
+pkgbase = alternatives
+	pkgdesc = A tool to maintain symbolic links determining default commands.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://github.com/fedora-sysv/chkconfig
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	checkdepends = beakerlib
+	conflicts = chkconfig
+	source = https://github.com/fedora-sysv/chkconfig/archive/refs/tags/1.15.tar.gz
+	sha256sums = eac2af3e7fc42a3a60b28e04d98dcfbc5c5cb7f51eb02cb71329b6b71ef99d6e
+
+pkgname = alternatives
+
