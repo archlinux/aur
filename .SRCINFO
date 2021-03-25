@@ -1,0 +1,31 @@
+pkgbase = lightlyshaders-git
+	pkgdesc = Round corners and outline effect for KWin
+	pkgver = r7.3c2572b
+	pkgrel = 1
+	url = https://github.com/Luwx/LightlyShaders
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-x11extras
+	depends = qt5-xmlpatterns
+	depends = qt5-tools
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kio
+	depends = kservice
+	depends = kinit
+	depends = knotifications
+	depends = kwidgetsaddons
+	depends = kwindowsystem
+	depends = kguiaddons
+	provides = lightlyshaders
+	conflicts = lightlyshaders
+	source = git+https://github.com/Luwx/LightlyShaders.git
+	sha256sums = SKIP
+
+pkgname = lightlyshaders-git
+
