@@ -12,6 +12,9 @@ depends=(libx11 libxcb libxinerama slop xmenu xorg-xsetroot  dmenu ffmpeg geoclu
 makedepends=(git make)
 checkdepends=()
 optdepends=(\
+    'matcha-gtk-theme: a fitting GTK theme (Matcha-dark-aliz)',
+    'numix-circle-icon-theme: an icon theme that fits nicely',
+    'lxappearance: GUI for configuring GTK and icon theme',
 	'xfce4-notifyd: a good default notification-daemon')
 provides=(moonwm)
 conflicts=(moonwm)
