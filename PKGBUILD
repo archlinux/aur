@@ -2,7 +2,7 @@
 # Contributor: Nicky D
 
 pkgname=firestorm
-pkgver=6.4.17.63601
+pkgver=6.4.13.63251
 pkgrel=1
 pkgdesc="This is the Firestorm Viewer!"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=('cmake' 'gcc' 'make' 'python2-virtualenv' 'python2-pip' 'git' 'boos
 conflicts=('firestorm-bin' 'firestorm-nightly' 'firestorm-beta-bin')
 provides=('firestorm')
 
-source=("$pkgname"::'git+https://vcs.firestormviewer.org/phoenix-firestorm' "fs-build-variables"::'git+https://vcs.firestormviewer.org/fs-build-variables' 'firestorm.desktop' 'firestorm.launcher')
+source=("$pkgname"::'git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_6.4.13' "fs-build-variables"::'git+https://vcs.firestormviewer.org/fs-build-variables' 'firestorm.desktop' 'firestorm.launcher')
 md5sums=('SKIP' 'SKIP' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370')
 
 pkgver() {
@@ -40,7 +40,6 @@ prepare() {
 }
 
 build() {
-	#export AUTOBUILD_VARIABLES_FILE="buildVars/fs-build-variables"
 	cd "$pkgname/build-linux-x86_64"
 	make
 }
