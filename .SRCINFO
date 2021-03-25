@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-vulkan-validation-layers
+	pkgdesc = Vulkan Validation Layers (mingw-w64)
+	pkgver = 1.2.172
+	pkgrel = 1
+	url = https://www.khronos.org/vulkan/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = python-lxml
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-spirv-headers
+	depends = mingw-w64-vulkan-icd-loader
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/v1.2.172.tar.gz
+	sha256sums = 0e29bf2545658177d37052bcce09f29d3f464caf31d00a84c37368dd1a660d29
+
+pkgname = mingw-w64-vulkan-validation-layers
+
