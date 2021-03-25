@@ -1,17 +1,17 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kweather-git
-pkgver=0.4.r39.g19bcec1
+pkgver=0.4.r46.g9e90aa3
 pkgrel=1
 pkgdesc="Weather application for Plasma Mobile"
 arch=(x86_64)
 url="https://invent.kde.org/plasma-mobile/kweather"
 license=(GPL3)
-depends=(ki18n kconfig kcoreaddons knotifications kirigami2 kdbusaddons plasma-framework)
-makedepends=(git cmake extra-cmake-modules)
-provides=(kweather)
-conflicts=(kweather)
-source=("git+https://invent.kde.org/plasma-mobile/kweather.git")
+depends=('ki18n' 'kconfig' 'kcoreaddons' 'knotifications' 'kirigami2' 'kdbusaddons' 'plasma-framework' 'kweathercore-git')
+makedepends=('git' 'extra-cmake-modules')
+provides=('kweather')
+conflicts=('kweather')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
