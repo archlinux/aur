@@ -5,17 +5,17 @@
 
 pkgname=python-gensim
 _pkgname=gensim
-pkgver=3.8.3
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Library for topic modelling, document indexing and similarity retrieval with large corpora"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
 url="https://radimrehurek.com/gensim/"
-depends=('python-numpy' 'python-scipy' 'python-six' 'python-smart_open')
+depends=('python-numpy' 'python-scipy' 'python-smart_open')
 optdepends=("python-pyro: Usage in a distributed environment")
 makedepends=('python-setuptools' 'python-wheel' 'cython')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/RaRe-Technologies/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('09a60a53aa1de2c9c23eeaae01503d6b3102d7db6c82a04cb995f1bcd41828692044dd94818175c178d7524bd95382fa9ebd234adc865a4da707519dd80b1109')
+sha512sums=('64bdee7d5f60b0cb158fbd628fd13cfa8f266da5b43202a4a179f778c1f93cfe35cb484c860e104f8b73f57bcd26052de136f180d5543a33134a5617d3cf6adf')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
