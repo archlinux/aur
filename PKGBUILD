@@ -41,7 +41,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     # Delete the stuff that's been vendored in. It's not ideal but that's we'll deal with for now.
     mv "${pkgdir}"/usr/${_arch}/bin/spirv-remap.exe .
-    rm -r "${pkgdir}"/usr/${_arch}/{bin/spirv*,include/spirv-tools,SPIRV-Tools*,lib/libSPIRV-*,lib/pkgconfig}
+    rm -r "${pkgdir}"/usr/${_arch}/{bin/spirv*,bin/libSPIRV-*,include/spirv-tools,SPIRV-Tools*,lib/libSPIRV-*,lib/pkgconfig}
     mv spirv-remap.exe "${pkgdir}"/usr/${_arch}/bin/spirv-remap.exe
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
 #     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
