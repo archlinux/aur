@@ -1,0 +1,14 @@
+pkgbase = python2-markupsafe
+	pkgdesc = Implements a XML/HTML/XHTML Markup safe string for Python - python2 version
+	pkgver = 1.1.1
+	pkgrel = 8
+	url = https://pypi.python.org/pypi/MarkupSafe
+	arch = x86_64
+	license = BSD
+	checkdepends = python2-pytest-runner
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-markupsafe-1.1.1-8.tar.gz::https://github.com/pallets/markupsafe/archive/1.1.1.tar.gz
+	sha256sums = 222a10e3237d92a9cd45ed5ea882626bc72bc5e0264d3ed0f2c9129fa69fc167
+
+pkgname = python2-markupsafe
