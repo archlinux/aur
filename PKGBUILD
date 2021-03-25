@@ -10,7 +10,7 @@ url="https://github.com/openshift/oc"
 license=("Apache")
 depends=()
 
-source=("https://mirror.openshift.com/pub/openshift-v4/clients/ocp/${pkgver}/openshift-client-linux.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://mirror.openshift.com/pub/openshift-v4/clients/ocp/${pkgver}/openshift-client-linux.tar.gz")
 
 sha256sums=('e52795752079527824f7deae88996045ac67e7078eb4331a0793deae7d6500b7')
 
