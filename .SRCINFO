@@ -1,0 +1,19 @@
+pkgbase = python-kymatio
+	pkgdesc = Python interface for SPArse Modeling Software (SPAMS)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://spams-devel.gforge.inria.fr/
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-appdirs
+	depends = python-configparser
+	depends = python-packaging
+	source = https://files.pythonhosted.org/packages/source/k/kymatio/kymatio-0.2.0.tar.gz
+	sha256sums = 32fbb2b5c1ceeeadc30029d6d9d4590a35052cc7c685cf2bb049690708bd3dfb
+
+pkgname = python-kymatio
+
