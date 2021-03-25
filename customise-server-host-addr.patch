@@ -1,0 +1,36 @@
+From 0bd29cad075b9345c62d16b504d4cbcaf63f7b2c Mon Sep 17 00:00:00 2001
+From: Matthew Gamble <git@matthewgamble.net>
+Date: Fri, 26 Mar 2021 10:07:18 +1100
+Subject: [PATCH] Allow selection of which network interface(s) to bind to
+
+This is important for security reasons, as it allows someone to lock
+down who can talk directly to the Snapdrop server. If someone wants to
+run Snapdrop behind a reverse proxy (for example), it doesn't help if
+someone can still talk directly to the Nodejs process.
+---
+ server/index.js | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/server/index.js b/server/index.js
+index 38fa399..b2b2c87 100644
+--- a/server/index.js
++++ b/server/index.js
+@@ -16,9 +16,9 @@ const { uniqueNamesGenerator, animals, colors } = require('unique-names-generato
+ 
+ class SnapdropServer {
+ 
+-    constructor(port) {
++    constructor(host, port) {
+         const WebSocket = require('ws');
+-        this._wss = new WebSocket.Server({ port: port });
++        this._wss = new WebSocket.Server({ host: host, port: port });
+         this._wss.on('connection', (socket, request) => this._onConnection(new Peer(socket, request)));
+         this._wss.on('headers', (headers, response) => this._onHeaders(headers, response));
+ 
+@@ -288,4 +288,4 @@ Object.defineProperty(String.prototype, 'hashCode', {
+   }
+ });
+ 
+-const server = new SnapdropServer(process.env.PORT || 3000);
+\ No newline at end of file
++const server = new SnapdropServer(process.env.HOST || null, process.env.PORT || 3000);
