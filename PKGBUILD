@@ -1,16 +1,15 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=buckaroo
-pkgver=2.2.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A C++ package manager"
 arch=('x86_64')
 url="https://github.com/LoopPerfect/buckaroo"
 license=('MIT')
-depends=('buck')
 options=(!strip)
 
 source=("https://github.com/LoopPerfect/buckaroo/releases/download/v${pkgver}/buckaroo-linux")
-sha256sums=('23f9a4145a3e51f1205a4b265374c548fc4a4e9156e5121285f5c5bdb4d3228c')
+sha256sums=('bcdb6e07bc3d9e2f84f1eb100c7bc9fa630f770eb230aa4f4b772c1b1492dcde')
 
 package() {
   # Make telemetry an opt-in feature
