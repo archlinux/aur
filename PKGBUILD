@@ -2,11 +2,11 @@ _pkgbase=etlegacy
 pkgname=etlegacy32-bin
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit)"
 pkgver=2.77.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 provides=('etlegacy')
-conflicts=('etlegacy')
+conflicts=('etlegacy' 'etlegacy32-mod')
 backup=('usr/lib/etlegacy/etmain/etl_server.cfg'
         'usr/lib/etlegacy/etmain/legacy.cfg'
         'usr/lib/etlegacy/etmain/campaigncycle.cfg'
@@ -15,6 +15,7 @@ backup=('usr/lib/etlegacy/etmain/etl_server.cfg'
         'usr/lib/etlegacy/etmain/objectivecycle.cfg')
 install=etlegacy.install
 depends=("enemy-territory-data")
+makedepends=("imagemagick")
 license=('GPL3')
 source=(
     "etl_start.sh"
@@ -36,6 +37,8 @@ package() {
     ln -s /usr/share/enemy-territory/etmain/{pak0,pak1,pak2}.pk3 $pkgdir/usr/lib/$_pkgbase/etmain/
     install -Dm 755 "${srcdir}"/etl_start.sh "${pkgdir}"/usr/bin/etl
     install -Dm 755 "${srcdir}"/etlded_start.sh "${pkgdir}"/usr/bin/etlded
+
+    convert -background none  "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.svg -resize 64x64 -colors 256 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.ico
 
     # application entry
     cp -dr --no-preserve='ownership' "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.ico "${pkgdir}"/usr/share/icons/
