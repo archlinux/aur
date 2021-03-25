@@ -55,10 +55,12 @@ makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-l
 source=("${pkgname}_${pkgver}.tgz::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
+        "cmake_cxx_std_14.patch"
 )
 sha256sums=('39dcf4bb0a7cb1d0ba234b4ec2de6d245a83ac21846585de3156b37b82d3066b'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275')
 
 prepare() {
   cd "${srcdir}"/AliceVision-${pkgver}
@@ -67,6 +69,7 @@ prepare() {
   cp -r "${srcdir}"/nanoflann src/dependencies/nanoflann
   #fix missing submodule warning.
   mkdir src/dependencies/osi_clp/CoinUtils
+  patch -Np1 -i"${srcdir}"/cmake_cxx_std_14.patch
 }
 
 
