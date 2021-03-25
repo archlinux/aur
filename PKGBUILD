@@ -1,6 +1,5 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
-pkgbase=python-control
 pkgname=python-control
 pkgver=0.9.0
 pkgrel=2
