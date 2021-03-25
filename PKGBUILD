@@ -162,11 +162,11 @@ prepare() {
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	gzip -cd "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz" > "unifont.bdf"
 
-	echo "Add the grub-extra sources for bios build..."
-	install -d "${srcdir}/grub-bios/grub-extras"
-	cp -r "${srcdir}/grub-extras/915resolution" \
-		"${srcdir}/grub-bios/grub-extras/915resolution"
-	export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
+	#echo "Add the grub-extra sources for bios build..."
+	#install -d "${srcdir}/grub-bios/grub-extras"
+	#cp -r "${srcdir}/grub-extras/915resolution" \
+	#	"${srcdir}/grub-bios/grub-extras/915resolution"
+	#export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
 	
 	echo "Run bootstrap..."
 	./bootstrap \
