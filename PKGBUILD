@@ -64,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.9
-pkgrel=2
+pkgver=5.11.10
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -88,7 +88,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('356efa4629b2d9e9ab6ddcbc832a336e399e3aa20f26490633f0bf90cb9b67b94695035617fbc8b4f0f78f42f1d8fab10198871dfe76cb8fc7a7f5e4f6fcca54'
+b2sums=('84b97aeb190d570144d0e315edf8c0b51fd92a70f94a30f08ef49a65eedd48ee135b2c2f3a1a2827ace96fef2d1963e83948790c7729f3d7c1f615f8d32c9656'
         'SKIP'
         '8a0e1fb03037e57df8de81856a0bdb94e393d9336b587b1c907c6e4ed15abfa6c86634131ebbfab45eeb6b423bf467536ad0543efbef2586645ade016c32a013'
         '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
