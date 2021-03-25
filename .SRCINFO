@@ -1,0 +1,13 @@
+pkgbase = go2tv
+	pkgdesc = cast your videos to UPnP/DLNA MediaRenderer
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/alexballas/Go2TV
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/alexballas/Go2TV/archive/v1.2.tar.gz
+	sha256sums = 3822dc68374a2dcd81d865fc51c85d95d8e7ee90bcd67d88ba904e9570827ec6
+
+pkgname = go2tv
+
