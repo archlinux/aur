@@ -1,15 +1,15 @@
 pkgbase = doh-cli
 	pkgdesc = a simple DNS over HTTPS query client
-	pkgver = 0.3
-	pkgrel = 3
+	pkgver = 0.6
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/doh-cli
 	arch = any
 	license = GPL3
 	depends = python-setuptools
 	depends = python-requests
 	depends = python-dnspython
-	source = https://files.pythonhosted.org/packages/source/d/doh-cli/doh-cli-0.3.tar.gz
-	sha256sums = d42c76c690628b3ed9f6d015ca40214fb030a4065fa52f954a7c59d1bc52ba8d
+	source = https://files.pythonhosted.org/packages/source/d/doh-cli/doh-cli-0.6.tar.gz
+	sha256sums = 0107d4e669fd1a692d39ad4ddb89784d49ca097e5fb575363bd4edbbc9936fb8
 
 pkgname = doh-cli
 

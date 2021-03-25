@@ -1,7 +1,7 @@
 # Maintainer : Achilleas Pipinellis <axil archlinux gr>
 pkgname=doh-cli
-pkgver=0.3
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="a simple DNS over HTTPS query client"
 arch=('any')
 url="https://pypi.python.org/pypi/doh-cli"
@@ -18,4 +18,4 @@ package() {
   cd ${pkgname}-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-sha256sums=('d42c76c690628b3ed9f6d015ca40214fb030a4065fa52f954a7c59d1bc52ba8d')
+sha256sums=('0107d4e669fd1a692d39ad4ddb89784d49ca097e5fb575363bd4edbbc9936fb8')
