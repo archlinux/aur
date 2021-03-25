@@ -1,8 +1,8 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=nhentai-git
-pkgver=r439.05e6ceb
-pkgrel=2
+pkgver=r441.8452347
+pkgrel=1
 pkgdesc='CLI tool for downloading doujinshi from nhentai.net'
 arch=(any)
 url=https://github.com/RicterZ/"${pkgname%-*}"
@@ -10,7 +10,7 @@ license=(custom:MIT)
 
 depends=(
   'python-requests>=2.5.0'
-  # python-soupsieve
+  python-soupsieve
   'python-beautifulsoup4>=4.0.0'
   # python-threadpoolctl
   'python-tabulate>=0.7.5'
