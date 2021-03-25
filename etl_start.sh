@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /usr/lib/etlegacy
-./etl_bot.sh
+./etl_bot.sh "$@"
