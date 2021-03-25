@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <crabvk@protonmail.com>
 
 pkgname=flux
-pkgver=0.108.1
+pkgver=0.109.1
 pkgrel=1
 pkgdesc='Lightweight scripting language for querying databases (like InfluxDB) and working with data'
 arch=(i686 x86_64 arm64)
