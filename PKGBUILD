@@ -3,8 +3,8 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=sipvicious
-pkgver=0.3.1
-pkgrel=5
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="Set of security tools that can be used to audit SIP based VoIP systems"
 arch=('any')
 url="https://github.com/EnableSecurity/sipvicious"
@@ -13,23 +13,23 @@ depends=('python>=3.6')
 optdepends=('python-scapy: allow svcrash to crash SIPVicious toolset')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
-source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/sipvicious/tarball/384c9d432a87568a4f3df9d4aefc8fdfbaecabc4")
-b2sums=('f314601435f6e7acb6474550d36d209d60213c6e8dd5ca569072b58877035727630d72205e7feeb74ef2c538b4f2c6a322d67316fb500e4304aeeae835d474ee')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/sipvicious/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('4ef872ecea9113f3ec24df98133230f678ccfff24380c2fafff810a4cbc3e2fe26866deb3595a7540cd42d34fd5bc045e6a2f51c7eb6403a445f33acd74e2213')
 
 prepare() {
-  cd "$srcdir/EnableSecurity-sipvicious-384c9d4"
+  cd "$srcdir/sipvicious-$pkgver"
 
   sed -i "s/sipvicious_//" setup.py
 }
 
 build() {
-  cd "$srcdir/EnableSecurity-sipvicious-384c9d4"
+  cd "$srcdir/sipvicious-$pkgver"
 
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/EnableSecurity-sipvicious-384c9d4"
+  cd "$srcdir/sipvicious-$pkgver"
 
   python setup.py install -O2 --skip-build --root="$pkgdir"
 
