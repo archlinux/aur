@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-fmt
 pkgver=7.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="{fmt} is an open-source formatting library for C++. It can be used as a safe and fast alternative to (s)printf and iostreams. (mingw-w64)"
 url="https://fmt.dev/"
 license=("MIT")
@@ -19,12 +19,23 @@ source=(
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -DFMT_DOC=OFF )
+
+prepare() {
+	cd "fmt-${pkgver}"
+	sed -i 's/class ostream final/class FMT_API ostream final/' 'include/fmt/os.h'
+}
 
 build() {
-	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -DFMT_DOC=OFF -DFMT_TEST=OFF )
-	
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "fmt-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -S "fmt-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DFMT_TEST=OFF
+		make -C "build-${_arch}"
+	done
+}
+
+check() {
+	for _arch in ${_architectures}; do
+		${_arch}-cmake -S "fmt-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DFMT_TEST=ON
 		make -C "build-${_arch}"
 	done
 }
