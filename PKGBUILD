@@ -2,7 +2,7 @@
 # Maintainer: heavysink <winstonwu91 at gmail>
 
 pkgname=miktex
-pkgver=21.2
+pkgver=21.3
 pkgrel=2
 pkgdesc="a distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
@@ -11,16 +11,16 @@ license=('custom')
 depends=('apr' 'boost-libs' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
          'fribidi' 'gd' 'gmp' 'graphite' 'harfbuzz-icu' 'hunspell' 'icu'
          'libjpeg' 'log4cxx' 'xz' 'mpfr' 'libmspack' 'openssl' 'pixman' 'libpng'
-         'poppler' 'popt' 'potrace' 'uriparser' 'zziplib' 'poppler-qt5' 'qt5-script')
+         'poppler' 'popt' 'potrace' 'uriparser' 'hicolor-icon-theme' 'zziplib' 'poppler-qt5' 'qt5-script' 'qt5-declarative')
 makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt5-tools' 'boost')
 source=("https://github.com/MiKTeX/miktex/archive/${pkgver}.tar.gz")
-md5sums=('acf0a438b53d81455a90369b33d0a19d')
+md5sums=('3828012cc9df51c1ae9b5305723b5a1d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"	
     [ -d build ] || mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/opt/miktex -DWITH_UI_QT=ON ..
+    cmake -DCMAKE_INSTALL_PREFIX=/opt/miktex -DWITH_UI_QT=ON -DUSE_SYSTEM_POPPLER=TRUE -DUSE_SYSTEM_POPPLER_QT5=TRUE ..
     make
 }
 
