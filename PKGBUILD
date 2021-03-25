@@ -1,6 +1,6 @@
 pkgname=infinitywallet
 pkgver=1.0.67beta
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital asset wallet"
 arch=('x86_64')
 url="https://infinitywallet.io"
@@ -17,6 +17,6 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-#	install -D -m644 "/opt/InfinityWallet/resources/app.asar.unpacked/node_modules/phantomjs-prebuilt/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/opt/InfinityWallet/resources/app.asar.unpacked/node_modules/phantomjs-prebuilt/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
