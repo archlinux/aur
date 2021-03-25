@@ -1,6 +1,6 @@
 pkgname=vercel
 pkgver=21.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line interface for Vercel"
 arch=(any)
 url="https://github.com/vercel/vercel"
@@ -14,7 +14,7 @@ sha256sums=('e2b0d36af7ca06839075a2a8eda6b15087ae9fa9a76c073bfeaeebe4e1e0c71f')
 # For more info about this package see:
 # https://wiki.archlinux.org/index.php/Node.js_package_guidelines
 package() {
-  npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
+  npm install -g --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 
   # Fix permissions
   find "$pkgdir"/usr -type d -exec chmod 755 {} +
