@@ -1,6 +1,6 @@
 pkgbase = python-numpy-quaternion
 	pkgdesc = Add built-in support for quaternions to NumPy
-	pkgver = 2021.3.11.10.32.22
+	pkgver = 2021.3.17.16.51.43
 	pkgrel = 1
 	url = https://quaternion.readthedocs.io/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-numpy-quaternion
 	depends = python-numpy
 	depends = python-scipy
 	optdepends = python-numba: speedup of numerical functions
-	source = https://files.pythonhosted.org/packages/source/n/numpy-quaternion/numpy-quaternion-2021.3.11.10.32.22.tar.gz
-	sha256sums = 49319fb9243e577b424166c1b1e68a13ff2a649315b1a9ceae6a2ad74dc4cf4c
+	source = https://files.pythonhosted.org/packages/source/n/numpy-quaternion/numpy-quaternion-2021.3.17.16.51.43.tar.gz
+	sha256sums = 5548b10556b22115fcd6b2979d4abb1aa448e1ad63e1cae10c30f41576ef163c
 
 pkgname = python-numpy-quaternion
 
