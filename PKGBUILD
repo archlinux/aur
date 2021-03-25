@@ -2,8 +2,8 @@
 # Contributor: Prasad Kumar
 _pkgname=stremio
 pkgname=${_pkgname}-beta
-pkgver=4.4.132
-pkgrel=1
+pkgver=4.4.135
+pkgrel=0
 pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
 arch=(any)
 url="https://www.stremio.com"
@@ -43,5 +43,4 @@ package() {
 	cd "$srcdir/${_pkgname}"
 	export PREFIX="$pkgdir";
 	make -f release.makefile install
-	install -Dm644 smartcode-stremio.desktop "$PREFIX/opt/stremio/smartcode-stremio.desktop"
 }
