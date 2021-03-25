@@ -3,7 +3,7 @@
 pkgname=fluffychat
 pkgver=0.28.0
 _flutterversion=2.0.3-stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends"
 arch=('x86_64')
 url="https://fluffychat.im/"
@@ -12,9 +12,8 @@ makedepends=('clang'
              'ninja'
              'cmake'
              'git'
-             'unzip')
-provides=("$pkgname")
-conflicts=("$pkgname")
+             'unzip'
+             'gtk3')
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
