@@ -1,8 +1,8 @@
-# Maintainer: naspeh <naspeh@ya.ru>
+# Maintainer: naspeh <naspeh@gmail.com>
 
 pkgname=perevod-git
 pkgver=0.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight selection translator (GTK+)'
 arch=('any')
 url='https://github.com/naspeh/perevod'
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-gobject' 'gtk3')
 makedepends=('git')
 provides=('perevod')
-source=("$pkgname"::'git://github.com/naspeh/perevod.git')
+source=("$pkgname"::'git+https://github.com/naspeh/perevod.git')
 sha256sums=('SKIP')
 
 pkgver() {
