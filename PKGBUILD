@@ -17,19 +17,19 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/sipvicious/a
 b2sums=('4ef872ecea9113f3ec24df98133230f678ccfff24380c2fafff810a4cbc3e2fe26866deb3595a7540cd42d34fd5bc045e6a2f51c7eb6403a445f33acd74e2213')
 
 prepare() {
-  cd "$srcdir/sipvicious-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   sed -i "s/sipvicious_//" setup.py
 }
 
 build() {
-  cd "$srcdir/sipvicious-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/sipvicious-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   python setup.py install -O2 --skip-build --root="$pkgdir"
 
