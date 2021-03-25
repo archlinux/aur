@@ -4,9 +4,9 @@
 pkgbase=mediawiki-lts
 _pkgname=mediawiki
 pkgname=('mediawiki-lts' 'mediawiki-math-lts')
-pkgver=1.31.7
+pkgver=1.35.1
 _basever=${pkgver%.*}
-_hash=a1263db
+_hash=a412f37
 pkgrel=1
 pkgdesc="Latests MediaWiki LTS engine"
 arch=('any')
@@ -14,9 +14,8 @@ url="http://www.mediawiki.org/wiki/MediaWiki"
 # + http://www.mediawiki.org/wiki/Extension:Math
 license=("GPL")
 depends=('php')
-makedepends=('git' 'texvc')
-optdepends=('texvc: for math rendering'
-	    'python2'
+makedepends=('git')
+optdepends=('python2'
 	    'pcre: for regular expressions support'
 	    'php-intl: to handle Unicode normalization'
 #	    'php-mysql: for MySQL database support'
@@ -36,9 +35,9 @@ validpgpkeys=('41B2ABE817ADD3E52BDA946F72BC1C5D23107F8A'
 source=("https://releases.wikimedia.org/mediawiki/${_basever}/mediawiki-$pkgver.tar.gz"{,.sig}
 	"mediawiki-math-${_basever}.tar.gz::https://codeload.github.com/wikimedia/mediawiki-extensions-Math/legacy.tar.gz/REL${_basever/./_}"
 	apache.example.conf)
-sha256sums=('fd0388b3ca93e9f3ada370fb6cb8ae564fa0cf688f488fc8d0714fc001f93264'
+sha256sums=('8e65a61d4a16ea6f3e60a2828483f8d50047b89f94f1313fcc2da113fdabe315'
             'SKIP'
-            'c5cb0101ab19cdbbba8ffb90ced5c43ff13c01cde5035946c4b723c2273c9099'
+            'a1fe8aaa3ebb0c54b263a24f2e5a70e3c0875342c416800a636021f946a3c604'
             'cfeff68331e930b6a93f166c12666ac59a84aa24334f94520eff3f988f37ce2b')
 
 package_mediawiki-lts() {
@@ -66,7 +65,7 @@ package_mediawiki-lts() {
 }
 
 package_mediawiki-math-lts() {
-  depends=('mediawiki-lts' 'texvc')
+  depends=('mediawiki-lts')
   optdepends=()
   backup=()
   pkgdesc="MediaWiki math extension"
@@ -76,6 +75,5 @@ package_mediawiki-math-lts() {
   install -vdm0755 "$pkgdir"/usr/share/webapps/mediawiki/extensions
 #  cp -a mediawiki-math-${_basever} "$pkgdir"/usr/share/webapps/mediawiki/extensions/Math
   cp -a wikimedia-mediawiki-extensions-Math-${_hash} "$pkgdir"/usr/share/webapps/mediawiki/extensions/Math
-  ln -s /usr/bin/texvc "$pkgdir"/usr/share/webapps/mediawiki/extensions/Math/math/texvc
 }
 
