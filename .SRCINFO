@@ -12,7 +12,7 @@ pkgbase = snapdrop
 	source = example-nginx.conf
 	source = customise-server-host-addr.patch
 	sha256sums = 8886ae45aa5910606c8125e27cc589ae26fe162eedc11a396ca864f4788f2c2a
-	sha256sums = a20b5daf7e2b49d0dc54e93911e22b2fea244ecf2ef3ee58960e3c2aacde586a
+	sha256sums = 869a3b728ff81f0b29177279e344684f554e5670787b0401312b4f51142c33bc
 	sha256sums = c91545d65af2bfd6f09e05c7263b00340a98870ee9f3ded7447891e56b296fb6
 
 pkgname = snapdrop
