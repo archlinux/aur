@@ -1,15 +1,15 @@
 
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=zram-generator
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Systemd unit generator for zram devices"
-arch=("x86_64")
+arch=("x86_64" "arm" "arv6h" "armv7h" "aarch64" "i686" "pentium4")
 url="https://github.com/systemd/zram-generator"
 license=('MIT')
 depends=("systemd")
 makedepends=('git' 'rust' 'ruby-ronn-ng')
-_commit=1169513f8a9eaaf2dd88e42ccc1e9ade5eff07a1 # tags/0.3.1^0
+_commit=7e14ee973dd5d6ac00fcc4a392425e5d12d7c0ac # tags/0.3.2^0
 install='zram-generator.install'
 source=("${pkgname%-git}::git+https://github.com/systemd/zram-generator.git#commit=$_commit"
         'half-memory.conf.example'
@@ -27,19 +27,19 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
-	make build man
+	make CARGOFLAGS="--target-dir=target" build man
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
 
-	make check
+	make CARGOFLAGS="--target-dir=target" check
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	make DESTDIR="$pkgdir" install
+	make CARGOFLAGS="--target-dir=target" DESTDIR="$pkgdir" install
 	install -Dpm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dpm644 "$srcdir/half-memory.conf.example" "$pkgdir/usr/share/doc/zram-generator/half-memory.conf.example"
 }
