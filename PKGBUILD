@@ -3,7 +3,7 @@
 pkgname="python-marshmallow-dataclass"
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=8.3.1
+pkgver=8.3.2
 pkgrel=1
 pkgdesc='Convert dataclasses into marshmallow schemas'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-marshmallow' 'python-typing_inspect' 'python-marshmall
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-typeguard')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7862fb357c676b014a1f15b8ecfc5573723d2f9245015443b99bf0a6ae0b20bcd6afbc044564053a0a880b52e3a002a131a9d82ab370437d136c93ea491b7615')
+sha512sums=('97e3706ac46280e259014fb66fb678d711eb2ca8dee745dbbaa7dd5009ad5edf4a8bc73df8ff6f866b8a1966bf3026d4b1aa03ea5a9d56dc47282a5782ea6709')
 
 build() {
   cd "$_name-$pkgver"

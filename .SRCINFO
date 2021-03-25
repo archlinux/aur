@@ -1,6 +1,6 @@
 pkgbase = python-marshmallow-dataclass
 	pkgdesc = Convert dataclasses into marshmallow schemas
-	pkgver = 8.3.1
+	pkgver = 8.3.2
 	pkgrel = 1
 	url = https://github.com/lovasoa/marshmallow_dataclass
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-marshmallow-dataclass
 	depends = python-typing_inspect
 	depends = python-marshmallow-enum
 	depends = python-marshmallow-union
-	source = python-marshmallow-dataclass-8.3.1.tar.gz::https://github.com/lovasoa/marshmallow_dataclass/archive/v8.3.1.tar.gz
-	sha512sums = 7862fb357c676b014a1f15b8ecfc5573723d2f9245015443b99bf0a6ae0b20bcd6afbc044564053a0a880b52e3a002a131a9d82ab370437d136c93ea491b7615
+	source = python-marshmallow-dataclass-8.3.2.tar.gz::https://github.com/lovasoa/marshmallow_dataclass/archive/v8.3.2.tar.gz
+	sha512sums = 97e3706ac46280e259014fb66fb678d711eb2ca8dee745dbbaa7dd5009ad5edf4a8bc73df8ff6f866b8a1966bf3026d4b1aa03ea5a9d56dc47282a5782ea6709
 
 pkgname = python-marshmallow-dataclass
 
