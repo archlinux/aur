@@ -5,7 +5,7 @@
 gccver=102
 pkgname=gcc-arm-none-eabi-bin-$gccver
 pkgver=10_2020_q4_major
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)"
 arch=('x86_64')
 depends=('glibc')
@@ -26,8 +26,8 @@ md5sums=('8312c4c91799885f222f663fc81f9a31')
 
 package() {
   mkdir -p $pkgdir/opt
-  cd $srcdir/gcc-*/
-  cp -a */ $pkgdir/opt
-  rm -f $pkgdir/opt/bin/arm-none-eabi-gdb*
-  rm -f $pkgdir/usr/lib/libcc1.so*
+  cd $srcdir/
+  cp -a gcc-*/ $pkgdir/opt
+  rm -f $pkgdir/opt/gcc-*/bin/arm-none-eabi-gdb*
+  rm -f $pkgdir/opt/gcc-*/lib/libcc1.so*
 }
