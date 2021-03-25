@@ -3,12 +3,12 @@
 
 pkgname=gtkmathview
 pkgver=0.8.0
-pkgrel=7
+pkgrel=8
 pkgdesc="C++ rendering engine for MathML documents"
 arch=('x86_64')
 url="http://helm.cs.unibo.it/mml-widget/"
 license=('LGPL3')
-depends=('popt' 'gtk2' 't1lib' 'gmetadom')
+depends=('popt' 't1lib' 'libxml2' 'glib2')
 source=(http://helm.cs.unibo.it/mml-widget/sources/${pkgname}-${pkgver}.tar.gz
         gtkmathview-0.8.0-gcc43.patch
         gtkmathview-0.8.0-cond-t1.patch
@@ -26,10 +26,10 @@ sha256sums=('1dc30175da6a3c560a7d62d1abe1c2f9829d988e6f1a7c5e766544575c558c43'
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -Np1 -i ${srcdir}/gtkmathview-0.8.0-gcc43.patch
-  patch -Np1 -i ${srcdir}/gtkmathview-0.8.0-gcc47.patch
-  patch -Np1 -i ${srcdir}/gtkmathview-0.8.0-includes.patch
-  patch -Np1 -i ${srcdir}/gtkmathview-0.8.0-cond-t1.patch
+  patch -p1 -i ../gtkmathview-0.8.0-gcc43.patch
+  patch -p1 -i ../gtkmathview-0.8.0-gcc47.patch
+  patch -p1 -i ../gtkmathview-0.8.0-includes.patch
+  patch -p1 -i ../gtkmathview-0.8.0-cond-t1.patch
   patch -p1 -i ../gtkmathview-gcc6.patch # Debian patch  
   patch -p1 -i ../gtkmathview-gcc7.patch # Debian patch
 
@@ -43,13 +43,14 @@ build() {
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \
-    --disable-gtk
+    --disable-gtk \
+    --disable-gmetadom
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
   cd ${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir}/ install
+  make DESTDIR="${pkgdir}/" install
 }
 
