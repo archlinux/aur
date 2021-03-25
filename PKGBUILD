@@ -1,6 +1,6 @@
 # Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
-pkgver=1.1.r61.94a7a78
+pkgver=1.1.r62.30c85c4
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
@@ -20,7 +20,7 @@ package() {
 	cd "Tess"
 
 	npm install
-	npm run test-build
+	npm run build
 
 	cd "dist/linux-unpacked"
 
