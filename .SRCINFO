@@ -1,8 +1,8 @@
 pkgbase = nhentai-git
 	pkgdesc = CLI tool for downloading doujinshi from nhentai.net
 	pkgver = r439.05e6ceb
-	pkgrel = 1
-	url = https://github.com/RicterZ/nhentai/nhentai
+	pkgrel = 2
+	url = https://github.com/RicterZ/nhentai
 	arch = any
 	license = custom:MIT
 	makedepends = git

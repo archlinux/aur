@@ -2,10 +2,10 @@
 
 pkgname=nhentai-git
 pkgver=r439.05e6ceb
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for downloading doujinshi from nhentai.net'
 arch=(any)
-url=https://github.com/RicterZ/nhentai/"${pkgname%-*}"
+url=https://github.com/RicterZ/"${pkgname%-*}"
 license=(custom:MIT)
 
 depends=(
@@ -18,8 +18,6 @@ depends=(
   'python-iso8601>=0.1'
 )
 makedepends=(git python-setuptools)
-# checkdepends=(python-pytest python-nose)
-# optdepends=()
 
 provides=({,python-}"${pkgname%-*}")
 conflicts=("${provides[@]}" python-$pkgname)
