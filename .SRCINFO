@@ -1,6 +1,6 @@
 pkgbase = firestorm
 	pkgdesc = This is the Firestorm Viewer!
-	pkgver = 6.4.17.63601
+	pkgver = 6.4.13.63251
 	pkgrel = 1
 	url = https://www.firestormviewer.org
 	arch = i686
@@ -46,7 +46,7 @@ pkgbase = firestorm
 	conflicts = firestorm-bin
 	conflicts = firestorm-nightly
 	conflicts = firestorm-beta-bin
-	source = firestorm::git+https://vcs.firestormviewer.org/phoenix-firestorm
+	source = firestorm::git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_6.4.13
 	source = fs-build-variables::git+https://vcs.firestormviewer.org/fs-build-variables
 	source = firestorm.desktop
 	source = firestorm.launcher
