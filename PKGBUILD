@@ -2,14 +2,17 @@
 
 pkgname=psst-git
 _pkgname="psst"
-pkgver=0
+pkgver=r173.0bb5258
 pkgrel=1
 pkgdesc="Fast and multi-platform Spotify client with native GUI"
 arch=("x86_64")
 url="https://github.com/jpochyla/psst"
 license=('MIT')
 makedepends=( 'rust'
-              'git')
+              'git'
+              'gtk3'
+              'cairo'
+              'openssl')
 provides=("psst")
 conflicts=("psst")
 source=("git+https://github.com/jpochyla/psst.git")
@@ -17,7 +20,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
