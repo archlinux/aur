@@ -1,0 +1,16 @@
+pkgbase = gnome-health-git
+	pkgdesc = A health tracking app for the GNOME desktop
+	pkgver = 0.92.6+5+g6edaad5
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Cogitri/Health
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	provides = gnome-health
+	conflicts = gnome-health
+	source = git+https://gitlab.gnome.org/Cogitri/Health.git
+	b2sums = SKIP
+
+pkgname = gnome-health-git
