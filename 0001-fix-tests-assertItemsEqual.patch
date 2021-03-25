@@ -1,0 +1,323 @@
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/common/test_notifications.py b/keystone-18.0.0/keystone/tests/unit/common/test_notifications.py
+index b0fb720..f90b97e 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/common/test_notifications.py
++++ b/keystone-18.0.0/keystone/tests/unit/common/test_notifications.py
+@@ -1045,7 +1045,7 @@ class TestEventCallbacks(test_v3.RestfulTestCase):
+         Foo()
+         project_ref = unit.new_project_ref(domain_id=self.domain_id)
+         PROVIDERS.resource_api.create_project(project_ref['id'], project_ref)
+-        self.assertItemsEqual(['cb1', 'cb0'], callback_called)
++        self.assertCountEqual(['cb1', 'cb0'], callback_called)
+ 
+     def test_invalid_event_callbacks(self):
+         @notifications.listener
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/contrib/federation/test_utils.py b/keystone-18.0.0/keystone/tests/unit/contrib/federation/test_utils.py
+index f233ac5..f9153cb 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/contrib/federation/test_utils.py
++++ b/keystone-18.0.0/keystone/tests/unit/contrib/federation/test_utils.py
+@@ -777,7 +777,7 @@ class MappingRuleEngineTests(unit.BaseTestCase):
+         self.assertIsNotNone(mapped_properties)
+         self.assertEqual('opilotte', mapped_properties['user']['name'])
+         self.assertListEqual([], mapped_properties['group_names'])
+-        self.assertItemsEqual(['abc123', 'ghi789', 'klm012'],
++        self.assertCountEqual(['abc123', 'ghi789', 'klm012'],
+                               mapped_properties['group_ids'])
+ 
+     def test_rule_engine_group_ids_mapping_blacklist(self):
+@@ -793,7 +793,7 @@ class MappingRuleEngineTests(unit.BaseTestCase):
+         self.assertIsNotNone(mapped_properties)
+         self.assertEqual('opilotte', mapped_properties['user']['name'])
+         self.assertListEqual([], mapped_properties['group_names'])
+-        self.assertItemsEqual(['abc123', 'ghi789', 'klm012'],
++        self.assertCountEqual(['abc123', 'ghi789', 'klm012'],
+                               mapped_properties['group_ids'])
+ 
+     def test_rule_engine_group_ids_mapping_only_one_group(self):
+@@ -810,7 +810,7 @@ class MappingRuleEngineTests(unit.BaseTestCase):
+         self.assertIsNotNone(mapped_properties)
+         self.assertEqual('opilotte', mapped_properties['user']['name'])
+         self.assertListEqual([], mapped_properties['group_names'])
+-        self.assertItemsEqual(['210mlk', '321cba'],
++        self.assertCountEqual(['210mlk', '321cba'],
+                               mapped_properties['group_ids'])
+ 
+     def test_mapping_projects(self):
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/endpoint_policy/backends/test_base.py b/keystone-18.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py
+index 279b3d7..7c63fb3 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/endpoint_policy/backends/test_base.py
++++ b/keystone-18.0.0/keystone/tests/unit/endpoint_policy/backends/test_base.py
+@@ -95,7 +95,7 @@ class DriverTestCase(object):
+                                          policy_id=policy_id)
+ 
+         associations = self.driver.list_associations_for_policy(policy_id)
+-        self.assertItemsEqual([first, second], associations)
++        self.assertCountEqual([first, second], associations)
+ 
+     def test_delete_association_by_endpoint(self):
+         endpoint_id = uuid.uuid4().hex
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/identity/shadow_users/test_backend.py b/keystone-18.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py
+index ee89edf..da43a21 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/identity/shadow_users/test_backend.py
++++ b/keystone-18.0.0/keystone/tests/unit/identity/shadow_users/test_backend.py
+@@ -66,7 +66,7 @@ class ShadowUsersBackendTests(object):
+         user_created = PROVIDERS.shadow_users_api.create_nonlocal_user(user)
+         self.assertEqual(user_created['id'], user['id'])
+         user_found = PROVIDERS.shadow_users_api.get_user(user_created['id'])
+-        self.assertItemsEqual(user_created, user_found)
++        self.assertCountEqual(user_created, user_found)
+ 
+     def test_create_federated_user_unique_constraint(self):
+         user_dict = PROVIDERS.shadow_users_api.create_federated_user(
+@@ -95,7 +95,7 @@ class ShadowUsersBackendTests(object):
+             self.federated_user["idp_id"],
+             self.federated_user["protocol_id"],
+             self.federated_user["unique_id"])
+-        self.assertItemsEqual(user_dict_create, user_dict_get)
++        self.assertCountEqual(user_dict_create, user_dict_get)
+         self.assertEqual(user_dict_create["id"], user_dict_get["id"])
+ 
+     def test_update_federated_user_display_name(self):
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/policy/backends/test_base.py b/keystone-18.0.0/keystone/tests/unit/policy/backends/test_base.py
+index e7f39a2..94f07b0 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/policy/backends/test_base.py
++++ b/keystone-18.0.0/keystone/tests/unit/policy/backends/test_base.py
+@@ -38,7 +38,7 @@ class DriverTestCase(object):
+ 
+         policies = self.driver.list_policies()
+ 
+-        self.assertItemsEqual([self.policy, another_policy], policies)
++        self.assertCountEqual([self.policy, another_policy], policies)
+ 
+     def test_get_policy(self):
+         self.assertEqual(self.policy,
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_associate_project_endpoint_extension.py b/keystone-18.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py
+index ad1d527..78673f2 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_associate_project_endpoint_extension.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_associate_project_endpoint_extension.py
+@@ -352,7 +352,7 @@ class EndpointFilterCRUDTestCase(EndpointFilterTestCase):
+ 
+         ep_id_list = [catalog[0]['endpoints'][0]['id'],
+                       catalog[0]['endpoints'][1]['id']]
+-        self.assertItemsEqual([self.endpoint_id, endpoint_id2], ep_id_list)
++        self.assertCountEqual([self.endpoint_id, endpoint_id2], ep_id_list)
+ 
+     @unit.skip_if_cache_disabled('catalog')
+     def test_remove_endpoint_from_project_invalidates_cache(self):
+@@ -381,7 +381,7 @@ class EndpointFilterCRUDTestCase(EndpointFilterTestCase):
+         ep_id_list = [catalog[0]['endpoints'][0]['id'],
+                       catalog[0]['endpoints'][1]['id']]
+         self.assertEqual(2, len(catalog[0]['endpoints']))
+-        self.assertItemsEqual([self.endpoint_id, endpoint_id2], ep_id_list)
++        self.assertCountEqual([self.endpoint_id, endpoint_id2], ep_id_list)
+ 
+         # remove the endpoint2 from the default project, bypassing
+         # catalog_api API manager.
+@@ -1340,7 +1340,7 @@ class EndpointGroupCRUDTestCase(EndpointFilterTestCase):
+ 
+         ep_id_list = [catalog[0]['endpoints'][0]['id'],
+                       catalog[0]['endpoints'][1]['id']]
+-        self.assertItemsEqual([self.endpoint_id, endpoint_id2], ep_id_list)
++        self.assertCountEqual([self.endpoint_id, endpoint_id2], ep_id_list)
+ 
+     @unit.skip_if_cache_disabled('catalog')
+     def test_remove_endpoint_group_from_project_invalidates_cache(self):
+@@ -1382,7 +1382,7 @@ class EndpointGroupCRUDTestCase(EndpointFilterTestCase):
+ 
+         ep_id_list = [catalog[0]['endpoints'][0]['id'],
+                       catalog[0]['endpoints'][1]['id']]
+-        self.assertItemsEqual([self.endpoint_id, endpoint_id2], ep_id_list)
++        self.assertCountEqual([self.endpoint_id, endpoint_id2], ep_id_list)
+ 
+         # remove endpoint_group project association, bypassing
+         # catalog_api API manager.
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_backend_id_mapping_sql.py b/keystone-18.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py
+index e5aa878..aebb882 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_backend_id_mapping_sql.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_backend_id_mapping_sql.py
+@@ -351,7 +351,7 @@ class SqlIDMapping(test_backend_sql.SqlTests):
+                 )
+             )
+             domain_a_mappings = [m.to_dict() for m in domain_a_mappings]
+-        self.assertItemsEqual(local_entities[:2], domain_a_mappings)
++        self.assertCountEqual(local_entities[:2], domain_a_mappings)
+ 
+     def test_get_domain_mapping_list_by_user_entity_type(self):
+         local_entities = self._prepare_domain_mappings_for_list()
+@@ -367,7 +367,7 @@ class SqlIDMapping(test_backend_sql.SqlTests):
+             )
+             domain_b_mappings_user = [m.to_dict()
+                                       for m in domain_b_mappings_user]
+-        self.assertItemsEqual(local_entities[-2:], domain_b_mappings_user)
++        self.assertCountEqual(local_entities[-2:], domain_b_mappings_user)
+ 
+     def test_get_domain_mapping_list_by_group_entity_type(self):
+         local_entities = self._prepare_domain_mappings_for_list()
+@@ -384,4 +384,4 @@ class SqlIDMapping(test_backend_sql.SqlTests):
+                 )
+             )
+             domain_b_mappings_group = domain_b_mappings_group.first().to_dict()
+-        self.assertItemsEqual(local_entities[2], domain_b_mappings_group)
++        self.assertCountEqual(local_entities[2], domain_b_mappings_group)
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_backend_sql.py b/keystone-18.0.0/keystone/tests/unit/test_backend_sql.py
+index 82285fc..c720696 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_backend_sql.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_backend_sql.py
+@@ -242,7 +242,7 @@ class SqlModels(SqlTests):
+             else:
+                 actual_schema.append((column.name, type(column.type), None))
+ 
+-        self.assertItemsEqual(expected_schema, actual_schema)
++        self.assertCountEqual(expected_schema, actual_schema)
+ 
+     def test_user_model(self):
+         cols = (('id', sql.String, 64),
+@@ -1156,7 +1156,7 @@ class SqlCatalog(SqlTests, catalog_tests.CatalogTests):
+         )
+         self.assertThat(catalog_ref, matchers.HasLength(2))
+         srv_id_list = [catalog_ref[0]['id'], catalog_ref[1]['id']]
+-        self.assertItemsEqual([srv_1['id'], srv_2['id']], srv_id_list)
++        self.assertCountEqual([srv_1['id'], srv_2['id']], srv_id_list)
+ 
+ 
+ class SqlPolicy(SqlTests, policy_tests.PolicyTests):
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_backend_templated.py b/keystone-18.0.0/keystone/tests/unit/test_backend_templated.py
+index 4b56b37..ad103eb 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_backend_templated.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_backend_templated.py
+@@ -93,7 +93,7 @@ class TestTemplatedCatalog(unit.TestCase, catalog_tests.CatalogTests):
+             expected_endpoints = e.pop('endpoints')
+             observed_endpoints = o.pop('endpoints')
+             self.assertDictEqual(e, o)
+-            self.assertItemsEqual(expected_endpoints, observed_endpoints)
++            self.assertCountEqual(expected_endpoints, observed_endpoints)
+ 
+     def test_get_v3_catalog(self):
+         user_id = uuid.uuid4().hex
+@@ -232,7 +232,7 @@ class TestTemplatedCatalog(unit.TestCase, catalog_tests.CatalogTests):
+              'enabled': True,
+              'name': "'Identity Service'",
+              'id': 'identity'}]
+-        self.assertItemsEqual(exp_services, services)
++        self.assertCountEqual(exp_services, services)
+ 
+     # NOTE(dstanek): the following methods have been overridden
+     # from unit.catalog.test_backends.CatalogTests.
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_hacking_checks.py b/keystone-18.0.0/keystone/tests/unit/test_hacking_checks.py
+index f7be762..9afe4d4 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_hacking_checks.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_hacking_checks.py
+@@ -49,7 +49,7 @@ class BaseStyleCheck(unit.BaseTestCase):
+ 
+     def assert_has_errors(self, code, expected_errors=None):
+         actual_errors = [e[:3] for e in self.run_check(code)]
+-        self.assertItemsEqual(expected_errors or [], actual_errors)
++        self.assertCountEqual(expected_errors or [], actual_errors)
+ 
+ 
+ class TestCheckForMutableDefaultArgs(BaseStyleCheck):
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_policy.py b/keystone-18.0.0/keystone/tests/unit/test_policy.py
+index 8346549..096e87a 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_policy.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_policy.py
+@@ -228,7 +228,7 @@ class PolicyJsonTestCase(unit.TestCase):
+                     yield str(target)
+ 
+         doc_targets = list(read_doc_targets())
+-        self.assertItemsEqual(policy_keys, doc_targets + policy_rule_keys)
++        self.assertCountEqual(policy_keys, doc_targets + policy_rule_keys)
+ 
+ 
+ class GeneratePolicyFileTestCase(unit.TestCase):
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_sql_upgrade.py b/keystone-18.0.0/keystone/tests/unit/test_sql_upgrade.py
+index 50c2870..0cfb03e 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_sql_upgrade.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_sql_upgrade.py
+@@ -297,7 +297,7 @@ class SqlMigrateBase(db_fixtures.OpportunisticDBTestMixin,
+         actual_cols = [col.name for col in table.columns]
+         # Check if the columns are equal, but allow for a different order,
+         # which might occur after an upgrade followed by a downgrade
+-        self.assertItemsEqual(expected_cols, actual_cols,
++        self.assertCountEqual(expected_cols, actual_cols,
+                               '%s table' % table_name)
+ 
+     def insert_dict(self, session, table_name, d, table=None):
+@@ -831,7 +831,7 @@ class SqlLegacyRepoUpgradeTests(SqlMigrateBase):
+             password_table_name, self.metadata, autoload=True)
+         actual_users = get_users_from_db(user_table, local_user_table,
+                                          password_table)
+-        self.assertItemsEqual(expected_users, actual_users)
++        self.assertCountEqual(expected_users, actual_users)
+ 
+     def test_migrate_user_with_null_password_to_password_tables(self):
+         USER_TABLE_NAME = 'user'
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_v3_assignment.py b/keystone-18.0.0/keystone/tests/unit/test_v3_assignment.py
+index d9e4389..605db50 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_v3_assignment.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_v3_assignment.py
+@@ -2866,7 +2866,7 @@ class ImpliedRolesTests(test_v3.RestfulTestCase, test_v3.AssignmentTestMixin,
+         actual_implied_ids = [implied['id']
+                               for implied in role_inference['implies']]
+ 
+-        self.assertItemsEqual(expected_implied_ids, actual_implied_ids)
++        self.assertCountEqual(expected_implied_ids, actual_implied_ids)
+ 
+         self.assertIsNotNone(role_inference['prior_role']['links']['self'])
+         for implied in role_inference['implies']:
+diff --git a/keystone-18.0.0-old/keystone/tests/unit/test_v3_federation.py b/keystone-18.0.0/keystone/tests/unit/test_v3_federation.py
+index b0cd558..4f09ea9 100644
+--- a/keystone-18.0.0-old/keystone/tests/unit/test_v3_federation.py
++++ b/keystone-18.0.0/keystone/tests/unit/test_v3_federation.py
+@@ -1304,7 +1304,7 @@ class FederatedIdentityProviderTests(test_v3.RestfulTestCase):
+         entities = self._fetch_attribute_from_response(resp,
+                                                        'identity_providers')
+         entities_ids = [e['id'] for e in entities]
+-        self.assertItemsEqual(entities_ids, [idp1_id, idp2_id])
++        self.assertCountEqual(entities_ids, [idp1_id, idp2_id])
+ 
+         # filter the IdP by ID.
+         url = self.base_url() + '?id=' + idp1_id
+@@ -1333,7 +1333,7 @@ class FederatedIdentityProviderTests(test_v3.RestfulTestCase):
+         entities = self._fetch_attribute_from_response(resp,
+                                                        'identity_providers')
+         entities_ids = [e['id'] for e in entities]
+-        self.assertItemsEqual(entities_ids, [idp1_id, idp2_id])
++        self.assertCountEqual(entities_ids, [idp1_id, idp2_id])
+ 
+         # filter the IdP by 'enabled'.
+         url = self.base_url() + '?enabled=True'
+@@ -3332,7 +3332,7 @@ class FederatedUserTests(test_v3.RestfulTestCase, FederatedSetupMixin):
+         fed_projects = r.result['projects']
+ 
+         # compare
+-        self.assertItemsEqual(auth_projects, fed_projects)
++        self.assertCountEqual(auth_projects, fed_projects)
+ 
+     def test_auth_projects_matches_federation_projects_with_group_assign(self):
+         # create project, role, group
+@@ -3367,7 +3367,7 @@ class FederatedUserTests(test_v3.RestfulTestCase, FederatedSetupMixin):
+         fed_projects = r.result['projects']
+ 
+         # compare
+-        self.assertItemsEqual(auth_projects, fed_projects)
++        self.assertCountEqual(auth_projects, fed_projects)
+ 
+     def test_auth_domains_matches_federation_domains(self):
+         # create domain and role
+@@ -3393,7 +3393,7 @@ class FederatedUserTests(test_v3.RestfulTestCase, FederatedSetupMixin):
+         fed_domains = r.result['domains']
+ 
+         # compare
+-        self.assertItemsEqual(auth_domains, fed_domains)
++        self.assertCountEqual(auth_domains, fed_domains)
+ 
+     def test_auth_domains_matches_federation_domains_with_group_assign(self):
+         # create role, group, and domain
+@@ -3427,7 +3427,7 @@ class FederatedUserTests(test_v3.RestfulTestCase, FederatedSetupMixin):
+         fed_domains = r.result['domains']
+ 
+         # compare
+-        self.assertItemsEqual(auth_domains, fed_domains)
++        self.assertCountEqual(auth_domains, fed_domains)
+ 
+     def test_list_head_domains_for_user_duplicates(self):
+         # create role
