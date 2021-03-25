@@ -22,8 +22,8 @@ package() {
 
   make install PREFIX=/usr DESTDIR="$pkgdir"
 
-  rm $pkgdir/src -rf   # source file
-  rm $pkgdir/bin -rf   # demo file
-  rm $pkgdir/share -rf # doc generater
+  rm $pkgdir/usr/src -rf   # source file
+  rm $pkgdir/usr/bin -rf   # demo file
+  rm $pkgdir/usr/share -rf # doc generater
 }
 
