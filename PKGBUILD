@@ -2,8 +2,8 @@
 _name=kymatio
 pkgname="python-$_name"
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="Python interface for SPArse Modeling Software (SPAMS)"
+pkgrel=2
+pkgdesc="Wavelet scattering in Python"
 
 arch=('any')
 url="http://spams-devel.gforge.inria.fr/"
