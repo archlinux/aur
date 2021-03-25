@@ -1,0 +1,92 @@
+From 739747f0b50796af2642afe51afe6d1c2a456673 Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Mon, 4 May 2020 06:53:57 -0500
+Subject: [PATCH] ccache support
+
+---
+ .../Platform/Linux/LinuxToolChain.cs          | 41 +++++++++++++++----
+ 1 file changed, 33 insertions(+), 8 deletions(-)
+
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+index 1f856d789be..687ce99d66f 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+@@ -115,6 +115,7 @@ namespace UnrealBuildTool
+ 				// use native linux toolchain
+ 				ClangPath = LinuxCommon.WhichClang();
+ 				GCCPath = LinuxCommon.WhichGcc();
++				CCachePath = LinuxCommon.Which("ccache");
+ 				ArPath = LinuxCommon.Which("ar");
+ 				LlvmArPath = LinuxCommon.Which("llvm-ar");
+ 				RanlibPath = LinuxCommon.Which("ranlib");
+@@ -152,12 +153,13 @@ namespace UnrealBuildTool
+ 
+ 				// set up the path to our toolchain
+ 				GCCPath = "";
+-				ClangPath   = Path.Combine(BaseLinuxPath, @"bin", "clang++" + GetHostPlatformBinarySuffix());
+-				ArPath      = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}-{1}", Architecture, "ar" + GetHostPlatformBinarySuffix())));
+-				LlvmArPath  = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}", "llvm-ar" + GetHostPlatformBinarySuffix())));
+-				RanlibPath  = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}-{1}", Architecture, "ranlib" + GetHostPlatformBinarySuffix())));
+-				ObjcopyPath = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}", "llvm-objcopy" + GetHostPlatformBinarySuffix())));
+-				StripPath   = ObjcopyPath;
++				CCachePath = "/usr/bin/ccache";
++				ClangPath = Path.Combine(BaseLinuxPath, @"bin", "clang++" + GetHostPlatformBinarySuffix());
++				ArPath = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}-{1}", Architecture, "ar" + GetHostPlatformBinarySuffix())));
++				LlvmArPath = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}", "llvm-ar" + GetHostPlatformBinarySuffix())));
++				RanlibPath = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}-{1}", Architecture, "ranlib" + GetHostPlatformBinarySuffix())));
++				StripPath = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}-{1}", Architecture, "strip" + GetHostPlatformBinarySuffix())));
++				ObjcopyPath = Path.Combine(Path.Combine(BaseLinuxPath, String.Format("bin/{0}-{1}", Architecture, "objcopy" + GetHostPlatformBinarySuffix())));
+ 
+ 				// When cross-compiling on Windows, use old FixDeps. It is slow, but it does not have timing issues
+ 				bUseFixdeps = (BuildHostPlatform.Current.Platform == UnrealTargetPlatform.Win64 || BuildHostPlatform.Current.Platform == UnrealTargetPlatform.Win32);
+@@ -1142,6 +1144,7 @@ namespace UnrealBuildTool
+ 		protected string BaseLinuxPath;
+ 		protected string ClangPath;
+ 		protected string GCCPath;
++		protected string CCachePath;
+ 		protected string ArPath;
+ 		protected string LlvmArPath;
+ 		protected string RanlibPath;
+@@ -1228,6 +1231,7 @@ namespace UnrealBuildTool
+ 				String.IsNullOrEmpty(ClangPath) ? "gcc" : "clang",
+ 				String.IsNullOrEmpty(ClangPath) ? GCCPath : ClangPath,
+ 				CompilerVersionString, CompilerVersionMajor, CompilerVersionMinor, CompilerVersionPatch);
++			Log.TraceInformation("{0}", String.IsNullOrEmpty(CCachePath) ? "" : "Using CCache");
+ 
+ 			if (UsingClang())
+ 			{
+@@ -1472,8 +1476,29 @@ namespace UnrealBuildTool
+ 
+ 				FileReference CompilerResponseFileName = CompileAction.ProducedItems[0].Location + ".rsp";
+ 				FileItem CompilerResponseFileItem = Graph.CreateIntermediateTextFile(CompilerResponseFileName, AllArguments);
+-
+-				CompileAction.CommandArguments = string.Format(" @\"{0}\"", CompilerResponseFileName);
++				if (!String.IsNullOrEmpty(CCachePath))
++				{
++					// Sloppiness Settings to try
++					// pch_defines,time_macros,file_stat_matches, file_stat_matches_ctime,include_file_ctime,include_file_mtime
++					CompileAction.CommandPath = new FileReference(CCachePath);
++					Environment.SetEnvironmentVariable("CCACHE_SLOPPINESS", "pch_defines,modules,locale,time_macros");
++					if (UsingClang())
++					{
++						string PreprocesspCH = " -fpch-preprocess ";
++						string SkipPCHValidation = " -Xclang -fno-validate-pch";
++						CompileAction.CommandArguments += ClangPath + PreprocesspCH + SkipPCHValidation;
++					}
++					else
++					{
++						CompileAction.CommandArguments += GCCPath;
++					}
++				}
++				else
++				{
++					  CompileAction.CommandPath = new FileReference(ClangPath);
++				}
++				
++				CompileAction.CommandArguments += string.Format(" @\"{0}\"", CompilerResponseFileName);
+ 				CompileAction.PrerequisiteItems.Add(CompilerResponseFileItem);
+ 				CompileAction.CommandDescription = "Compile";
+ 				CompileAction.CommandVersion = CompilerVersionString;
+-- 
+2.31.0
+

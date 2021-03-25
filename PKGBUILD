@@ -21,16 +21,19 @@ license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
         use-arch-mono.patch
 	clang_11.patch
-	PackageWithSystemCompiler.patch)
+	PackageWithSystemCompiler.patch
+	ccache.patch)
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             'e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4'
             '8042bed3405298b5a4357068dd6b22a5a8a0f19def64b4f61ed0362fb46cb00d'
-            '9e403b939a0601c6271da17af9497742cacd74e3cde41562c9f288dfbdcbdbfe')
+            '9e403b939a0601c6271da17af9497742cacd74e3cde41562c9f288dfbdcbdbfe'
+            'a0a0d3f065e27f4d31e21e5f9d15cb4d8f59c50245a45469878fc1fe8bdc78e6')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Set options to anything that is not null to enable them.
 _system_compiler= 	# for the system compiler you'll need to set LINUX_MULTIARCH_ROOT 
 		   	# as an environment to /usr/sbin compile projects after building.
+_ccache_support=       # Patches for ccache. More optimizations might be needed.
 
 prepare() {
   # Check access to the repository
@@ -60,6 +63,10 @@ prepare() {
     patch -p9 -i "$srcdir/PackageWithSystemCompiler.patch"
     export LINUX_MULTIARCH_ROOT="/usr/sbin"
     generateProjectArgs+=" -ForceUseSystemCompiler"
+  fi
+  if [ -n "$_ccache_support" ]
+  then
+    patch -p1 -i "$srcdir/ccache.patch"
   fi
 
   # Qt Creator source code access
@@ -101,18 +108,18 @@ package() {
     sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" com.unrealengine.UE4Editor.desktop
     sed -i "6c\Exec=/$dir/Engine/Binaries/Linux/UE4Editor %F" com.unrealengine.UE4Editor.desktop
   fi
-  install -Dm644 com.unrealengine.UE4Editor.desktop $pkgdir/usr/share/applications/com.unrealengine.UE4Editor.desktop
+  install -Dm777 com.unrealengine.UE4Editor.desktop $pkgdir/usr/share/applications/com.unrealengine.UE4Editor.desktop
   
   cd $pkgname
   
   # Icon for Desktop entry
-  install -Dm644 Engine/Source/Programs/UnrealVS/Resources/Preview.png $pkgdir/usr/share/pixmaps/ue4editor.png
+  install -Dm777 Engine/Source/Programs/UnrealVS/Resources/Preview.png $pkgdir/usr/share/pixmaps/ue4editor.png
 
   # License
-  install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
+  install -Dm777 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
   
   # Engine
-  install -dma+rwX "$pkgdir/$dir/Engine"
+  install -dma777 "$pkgdir/$dir/Engine"
   mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
   mv Engine/Build "$pkgdir/$dir/Engine/Build"
   mv Engine/Config "$pkgdir/$dir/Engine/Config"
@@ -133,7 +140,7 @@ package() {
   mv Templates "$pkgdir/$dir/Templates"
 
   # Build scripts, used by some plugins (CLion)
-  install -Dm755 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
-  install -Dm755 Setup.sh "$pkgdir/$dir/Setup.sh"
-  install -Dm644 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
+  install -Dm777 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
+  install -Dm777 Setup.sh "$pkgdir/$dir/Setup.sh"
+  install -Dm777 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
 }
