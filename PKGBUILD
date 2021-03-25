@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Manifest0
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: liberodark
 
