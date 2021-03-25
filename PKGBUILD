@@ -1,4 +1,4 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Daniel Langbein < daniel [ at ] systemli [ dot ] org >
 
 pkgname='kclock'
 pkgver=0.4.0
