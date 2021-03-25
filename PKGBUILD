@@ -15,7 +15,7 @@ depends=(python2 python embree qt5-base seexpr-qt5 boost{,-python2}-libs openexr
 makedepends=(boost{,-python2} cmake ninja)
 options=()
 _github="https://github.com/${pkgname}hq/${pkgname}"
-source=(appleseed.tgz::"${_github}/archive/${_pkgver}.tar.gz"
+source=(appleseed_${_pkgver}.tgz::"${_github}/archive/${_pkgver}.tar.gz"
         osl_1.11.8.patch::"https://github.com/appleseedhq/appleseed/pull/2900.patch"
         "cmake.extra.install.dirs.remove.patch"
         "boost_107200.patch"
