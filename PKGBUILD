@@ -14,6 +14,7 @@ optdepends=()
 makedepends=('git')
 sha256sums=("SKIP")
 source=("git+https://gitlab.com/patlefort/${_pkgname}")
+options=('!strip')
 
 pkgver() {
 	cd "${_pkgname}"
