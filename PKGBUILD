@@ -15,7 +15,7 @@ md5sums=('31f81d97f65b261342eb9355a7faca82')
 
 build() {
   cd "${srcdir}/tiny-${pkgver}/tiny"
-  cargo build --no-default-features --features=tls-native,desktop-notifications --release --locked
+  cargo build --no-default-features --features=tls-native,desktop-notifications --release
 }
 
 check() {
