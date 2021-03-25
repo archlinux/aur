@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
 depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron')
-makedeps=('asar')
+makedepends=('asar')
 options=(!strip)
 source=(
     "${pkgname}"

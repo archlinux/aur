@@ -5,6 +5,7 @@ pkgbase = obsidian-insider
 	url = https://obsidian.md/
 	arch = x86_64
 	license = custom:Commercial
+	makedepends = asar
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse
