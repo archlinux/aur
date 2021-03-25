@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/bytecodealliance/wasmtime-py"
 license=('APACHE2')
 depends=('python' 'python-setuptools' 'python-wheel' 'wasmtime')
+makedepends=('git')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}::git+https://github.com/bytecodealliance/wasmtime-py.git#tag=${pkgver}")
 sha384sums=('SKIP')

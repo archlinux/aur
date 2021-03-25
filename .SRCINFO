@@ -6,6 +6,7 @@ pkgbase = python-wasmtime
 	arch = x86_64
 	arch = aarch64
 	license = APACHE2
+	makedepends = git
 	depends = python
 	depends = python-setuptools
 	depends = python-wheel
