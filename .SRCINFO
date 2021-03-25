@@ -1,7 +1,7 @@
 pkgbase = tess-git
 	pkgdesc = Tess, a simple terminal
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SquitchYT/Tess.git
 	arch = x86_64
 	license = unknown

@@ -1,7 +1,7 @@
 # Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tess, a simple terminal"
 arch=(x86_64)
 url="https://github.com/SquitchYT/Tess.git"
