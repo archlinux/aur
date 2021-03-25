@@ -1,0 +1,16 @@
+pkgbase = apkleaks-git
+	pkgdesc = scanning apk file for URIs, endpoints & secrets. (git version)
+	pkgver = v1.0.2.r103.g401e09c
+	pkgrel = 1
+	url = https://github.com/dwisiswant0/apkleaks
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyaxmlparser
+	conflicts = apkleaks
+	source = apkleaks-git::git+https://github.com/dwisiswant0/apkleaks.git
+	sha256sums = SKIP
+
+pkgname = apkleaks-git
+
