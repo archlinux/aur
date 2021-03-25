@@ -1,12 +1,12 @@
 pkgbase = tess-git
 	pkgdesc = Tess, a simple terminal
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SquitchYT/Tess.git
 	arch = x86_64
 	license = unknown
 	makedepends = git
-	depends = npm
+	makedepends = npm
 	depends = glib2
 	depends = glibc
 	source = git+https://github.com/SquitchYT/Tess.git

@@ -1,13 +1,13 @@
 # Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tess, a simple terminal"
 arch=(x86_64)
 url="https://github.com/SquitchYT/Tess.git"
 license=('unknown')
-depends=('npm' 'glib2' 'glibc')
-makedepends=('git')
+depends=('glib2' 'glibc')
+makedepends=('git' 'npm')
 source=("git+$url")
 md5sums=('SKIP')
 
@@ -24,5 +24,5 @@ package() {
 
 	cp -r * "${pkgdir}/opt/tess/"
 
-	sudo ln -s "/opt/tess/tess" "${pkgdir}/usr/bin/tess"
+	ln -s "/opt/tess/tess" "${pkgdir}/usr/bin/tess"
 }
