@@ -1,8 +1,8 @@
 # Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
-pkgver=1.0
-pkgrel=4
-pkgdesc="Tess, a simple terminal"
+pkgver=1.1.r61.94a7a78
+pkgrel=1
+pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
 url="https://github.com/SquitchYT/Tess.git"
 license=('unknown')
@@ -10,6 +10,11 @@ depends=('glib2' 'glibc')
 makedepends=('git' 'npm')
 source=("git+$url")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "Tess"
+  printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
 	cd "Tess"
