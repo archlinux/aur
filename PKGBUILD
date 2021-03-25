@@ -69,7 +69,7 @@ build(){
 
 check(){
 	cd "$_pyname-$pkgver"
-	#stestr --test-path tempest/tests run
+	stestr --test-path tempest/tests run
 }
 
 _package_pkg(){
