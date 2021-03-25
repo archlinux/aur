@@ -1,9 +1,10 @@
 pkgbase = hilbish-git
 	pkgdesc = A shell written in Go and extended with Lua
-	pkgver = 0.0.12.r5.g9cc9c4a
-	pkgrel = 1
+	pkgver = 0.1.2.r0.gdeb1bc8
+	pkgrel = 2
 	url = https://github.com/hilbis/hilbish
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = go>=1.16
