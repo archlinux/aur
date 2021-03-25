@@ -1,17 +1,17 @@
 pkgbase = tiny-irc-client
 	pkgdesc = Console IRC client written in Rust
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/osa1/tiny
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = rustup
+	makedepends = cargo
 	depends = libdbus
 	depends = openssl
-	source = https://github.com/osa1/tiny/archive/v0.7.0.tar.gz
-	md5sums = 13046d60e7a501b29a56cebe9911c9fa
+	source = https://github.com/osa1/tiny/archive/v0.8.0.tar.gz
+	md5sums = 31f81d97f65b261342eb9355a7faca82
 
 pkgname = tiny-irc-client
 
