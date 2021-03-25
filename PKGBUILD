@@ -1,7 +1,7 @@
 # Maintainer: okhsunrog <me@gornushko.com>
 pkgbase=linux-okhsunrog
 pkgdesc="pf-kernel by okhsunrog (personal build)"
-pkgver=5.11.pf4
+pkgver=5.11.pf5
 _product=$pkgbase
 pkgrel=1
 arch=(x86_64)
@@ -12,9 +12,9 @@ makedepends=(
   xmlto git tar inetutils xz
 )
 options=('!strip')
-_srcname="pf-kernel-v5.11-pf4"
+_srcname="pf-kernel-v5.11-pf5"
 source=(
-  "https://gitlab.com/post-factum/pf-kernel/-/archive/v5.11-pf4/pf-kernel-v5.11-pf4.tar.gz"
+  "https://gitlab.com/post-factum/pf-kernel/-/archive/v5.11-pf5/pf-kernel-v5.11-pf5.tar.gz"
   config
 )
 sha256sums=('SKIP'
