@@ -1,5 +1,5 @@
-# Maintainer: Rye Mutt
-# Contributor: TommyFirestorm
+# Maintainer: Justin Jagieniak <justin@jagieniak.net>
+# Contributor: Rye Mutt
 
 pkgname=alchemy-next-viewer
 pkgver=6.4.17.45975
