@@ -1,0 +1,18 @@
+pkgbase = libkmip
+	pkgdesc = C implementation of the KMIP specification
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/OpenKMIP/libkmip
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	depends = openssl
+	source = https://github.com/OpenKMIP/libkmip/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = d9f9baacf8aabd7399be7f39aca232ac3eea9b4c7582e6f7115b88efbb41ab8a
+
+pkgname = libkmip
+
