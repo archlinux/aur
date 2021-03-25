@@ -1,0 +1,21 @@
+pkgbase = vigil
+	pkgdesc = Microservices Status Page. Monitors a distributed infrastructure and sends alerts (Slack, SMS, etc.).
+	pkgver = 1.21.1
+	pkgrel = 1
+	url = https://github.com/valeriansaliou/vigil
+	arch = x86_64
+	arch = armv7h
+	license = MPL2
+	makedepends = cargo
+	makedepends = libstrophe
+	depends = libstrophe
+	backup = etc/vigil.cfg
+	source = vigil.service
+	source = vigil.sysusers
+	source = vigil-1.21.1.tar.gz::https://github.com/valeriansaliou/vigil/archive/v1.21.1.tar.gz
+	sha512sums = a437e0a11d0b4fed3d1d2fe78180811e9dec1145bf0fb7920c666c167c5d956fbf4b72ee874184c531c9eca2250c127a2c3082b0d9d0eb6d0d866e8bfb745a8a
+	sha512sums = 98634e670f732777184212a50b9a1d41e2669b04cb02b3d62c882eba1c306e5d2ed71ec0ba860541a72702b36b964c3875af5db8f6e87e825ddf8708439606a2
+	sha512sums = bde1020625a08c279bccc239b90192c46a766c71546b30ba64c3d3ec59151afeb14ac4305b074a9349fcf6e40b3adf6b4c6922a26046c638d56655ed46fde86b
+
+pkgname = vigil
+
