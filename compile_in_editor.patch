@@ -1,0 +1,16 @@
+--- /home/zerophase/Documents/PackagesMaintained/unreal-engine/opt/unreal-engine/Engine/Source/Developer/HotReload/Private/HotReload.cpp	2021-03-24 03:10:56.000000000 -0500
++++ Engine/Source/Developer/HotReload/Private/HotReload.cpp	2021-03-25 03:37:32.071430288 -0500
+@@ -1581,6 +1581,13 @@
+ 		FString FullProjectPath = FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath());
+ 		AdditionalArguments += FString::Printf(TEXT("\"%s\" "), *FullProjectPath);
+ 	}
++	
++	if(!FPaths::FileExists(FPaths::RootDir() +
++	                       FString("Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64")))
++	{
++		AdditionalArguments += FString(TEXT(" -ForceUseSystemCompiler"));
++	}
++	
+ 	return AdditionalArguments;
+ }
+ 
