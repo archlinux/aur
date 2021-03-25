@@ -9,7 +9,7 @@ pkgdesc='Library to create dyanimic context free or switching automata'
 arch=('any')
 url="https://github.com/mstern98/topologic-parse-git"
 license=('MIT')
-depends=(topologic-git)
+depends=(topologic-git bison flex)
 makedepends=(git)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mstern98/topologic-parse-git/archive/v${pkgver}.tar.gz")

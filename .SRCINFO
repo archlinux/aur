@@ -7,6 +7,8 @@ pkgbase = topologic-parse-git
 	license = MIT
 	makedepends = git
 	depends = topologic-git
+	depends = bison
+	depends = flex
 	source = topologic-parse-git-1.0.0.tar.gz::https://github.com/mstern98/topologic-parse-git/archive/v1.0.0.tar.gz
 	sha256sums = defa59e0469d44866b0446e0ed9a5eaf0d4dfb887e530ffb98872c09639e7f51
 
