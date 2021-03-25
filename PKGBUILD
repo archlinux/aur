@@ -122,7 +122,7 @@ package() {
   install -Dm777 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
   
   # Engine
-  install -dma777 "$pkgdir/$dir/Engine"
+  install -dm777 "$pkgdir/$dir/Engine"
   mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
   mv Engine/Build "$pkgdir/$dir/Engine/Build"
   mv Engine/Config "$pkgdir/$dir/Engine/Config"
