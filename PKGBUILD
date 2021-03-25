@@ -1,4 +1,4 @@
-# Maintainer: naspeh
+# Maintainer: naspeh <naspeh@gmail.com>
 
 pkgname=tider-git
 pkgver=0.0.0
