@@ -1,0 +1,30 @@
+pkgbase = maui-booth-git
+	pkgdesc = A convergent camera app
+	pkgver = r36.5617d7a
+	pkgrel = 1
+	url = https://invent.kde.org/maui/booth
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = knotifications
+	depends = kio
+	depends = attica
+	depends = mauikit-git
+	depends = kirigami2
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	depends = qt5-multimedia
+	provides = maui-booth
+	conflicts = maui-booth
+	source = git+https://invent.kde.org/maui/booth.git
+	sha256sums = SKIP
+
+pkgname = maui-booth-git
+
