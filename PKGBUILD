@@ -6,12 +6,12 @@
 buildarch=8
 
 pkgbase=linux-raspberrypi4-aarch64
-_commit=9797f1a4938c20139b00a25de93cc99efb5c291b
+_commit=623ca2ba45d86eb1b0323637330295c3f8d93c76
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4"
-pkgver=5.4.79
-pkgrel=2
+pkgver=5.10.17
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,10 +24,10 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-b2sums=('7ef70ba8232538d08336730406ea8512027f434689ea27f7a9be758ba387aebf72add4dcfa5a6062e6eddf2f6f4f2cbb8012fa22f190eaf45c7e665bcd86b680'
-        '4bbd31aeb35fb0400ee65d63d1718bd93ed65fbe5f50c22fff63a60e2934f63c71245590b2ab4449abdd75f80c44e6b5016e44e6c35406b5ba20bbc346d5dcb5'
-        '7988d1abc76ff5237ab104e4d3ce0d4d62e6d4c514cbe9411e6950baeb4e3121731ff75d85868071fbcc7f8c98448f5db128a564237844680375cb2e3176fdd7'
-        '36001cc4b2c03306d205a90963ed8bffa3ab32890b465ffb858fe5187e02df5545afbc0eb09d2dc2d745e1b7ea31f662c40c249711b472d54dcf2401a2e7bb0f'
+b2sums=('38905d20c8ea9abf9ec5193ed31db5bdfcfa8d7904829522f16c59f449dc1b62a21987709934860a09b1c47b9ee15a40fe2cabe83d987fe47542633aab8c14bc'
+        'f5d8ea1a0dd69fc616e8a55b74ca4288cce9f9e87a6dd26325711c8dbae420c472ee48738977d11bb1f30bb98d2aff0942d69020f28b37a6684f4d834fd376fe'
+        '40ca3d551bdb28e8ca915a93c82aa714178227fe401c7d37385d739fe595e548ff3511d5949812d19903e291ee15cf16837965baa2c2f8216f1ea4e23ae7d5fb'
+        '852e61e084da8a7d3c8935857ee87d1b1d2f989f30734a4e787ceba302119e7e565b13c3b6b4fa251efa83ee7abb3a7506614f802f158c7a3e504a4f817a3f0a'
         'f0cb39a8e448dc93cd830f1680303ecfcda6c729030ecf0bbf6dd8c57777a12ab33bbd991da4f735ba5869afb59d39f5cf5c7c725cc9ba6a78c235c2fd00251a'
         '40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8'
         '8edd95fb949c3282bc70043af19cd6afc5201c2889a4d4c2a0b65862d27ed7bbcfdcfb75cb2a91bae852f9a2294b5c947d71ce742458bf98f6937429130a64b0')
@@ -153,7 +153,7 @@ _package-headers() {
   cp -t "${_builddir}" -a include scripts
 
   install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s arch/$KARCH/kernel/module.lds
+  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s scripts/module.lds
 
   cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
 

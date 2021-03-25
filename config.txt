@@ -2,9 +2,27 @@
 
 gpu_mem=64
 arm_64bit=1
-dtoverlay=dwc2
 
-device_tree=broadcom/bcm2711-rpi-4-b.dtb
+# Specifies a subdirectory for overlays and device trees
 overlay_prefix=overlays/
+device_tree=broadcom/bcm2711-rpi-4-b.dtb
+
+# Enable USB gadget mode
+dtoverlay=dwc2
+dr_mode=peripheral
+
+# Enable DRM VC4 V3D driver on top of the dispmanx display stack
+dtoverlay=vc4-fkms-v3d
+max_framebuffers=2
+
+# Route interrupt via the GIC-400
+enable_gic=1
+
+# Enable the first PL011 (UART0) the primary UART
+enable_uart=1
+uart_2ndstage=1
+dtoverlay=miniuart-bt
+
+# AArch64 kenrnel
 kernel=kernel8.img
 initramfs initramfs-linux.img followkernel

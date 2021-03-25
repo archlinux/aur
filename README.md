@@ -16,13 +16,13 @@ GitHub:    <https://github.com/esotericnonsense/linux-raspberrypi4-aarch64.git>
 
 ## Kernel config
 
-Generated from 4.19.83 bcm2711_defconfig, plus:
+Generated from `make bcm2711_defconfig` and enabling the following:
 
 ```
 # sane cpufreq governor (normal default is powersave, locked to 600mhz)
-CPU_FREQ_DEFAULT_GOV_ONDEMAND=y
+CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND=y
 # required for mkinitcpio `encrypt` hook
-DM_INTEGRITY=m
+CONFIG_DM_INTEGRITY=m
 ```
 
 This config supports a 32-bit userland by default.
