@@ -1,0 +1,18 @@
+pkgbase = rustic
+	pkgdesc = Rustic is a wrapper around the Restic backup program
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/bnavetta/rustic
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = restic
+	provides = rustic
+	conflicts = rustic
+	source = git+https://github.com/bnavetta/rustic#tag=v0.2.1
+	sha256sums = SKIP
+
+pkgname = rustic
+
