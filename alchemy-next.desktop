@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Alchemy
+Comment=Client for the On-line Virtual World, Second Life
+Exec=/opt/alchemy-next/etc/../alchemy
+Icon=/opt/alchemy-next/etc/../alchemy_icon.png
+Terminal=false
+Type=Application
+Categories=Game;Simulation;
+StartupNotify=true
+StartupWMClass=Alchemy\mX-Desktop-File-Install-Version=3.0
