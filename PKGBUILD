@@ -1,9 +1,9 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=zram-generator-git
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Systemd unit generator for zram devices"
-arch=("x86_64")
+arch=("x86_64" "arm" "arv6h" "armv7h" "aarch64" "i686" "pentium4")
 url="https://github.com/systemd/zram-generator"
 provides=('zram-generator')
 conflicts=('zram-generator')
@@ -27,19 +27,19 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
-	make build man
+	make CARGOFLAGS="--target-dir=target" build man
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
 
-	make check
+	make CARGOFLAGS="--target-dir=target" check
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	make DESTDIR="$pkgdir" install
+	make CARGOFLAGS="--target-dir=target" DESTDIR="$pkgdir" install
 	install -Dpm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dpm644 "$srcdir/half-memory.conf.example" "$pkgdir/usr/share/doc/zram-generator/half-memory.conf.example"
 }
