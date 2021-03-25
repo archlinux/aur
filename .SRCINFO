@@ -1,0 +1,16 @@
+pkgbase = snapdrop
+	pkgdesc = A Progressive Web App for local file sharing
+	pkgver = 2021.03.10
+	pkgrel = 1
+	url = https://github.com/RobinLinus/snapdrop
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	source = https://github.com/RobinLinus/snapdrop/archive/fad4632eb903ea6de9ecbec90df0ac6bd7410e68.tar.gz
+	source = example-nginx.conf
+	sha256sums = 8886ae45aa5910606c8125e27cc589ae26fe162eedc11a396ca864f4788f2c2a
+	sha256sums = a20b5daf7e2b49d0dc54e93911e22b2fea244ecf2ef3ee58960e3c2aacde586a
+
+pkgname = snapdrop
+
