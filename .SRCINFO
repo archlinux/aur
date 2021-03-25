@@ -1,0 +1,20 @@
+pkgbase = azure-sdk-cpp-git
+	pkgdesc = Azure SDK for C++
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-cpp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = openssl
+	depends = curl
+	depends = zlib
+	depends = util-linux-libs
+	depends = aws-c-common
+	depends = aws-c-event-stream
+	depends = libpulse
+	source = git+https://github.com/Azure/azure-sdk-for-cpp.git
+	sha256sums = SKIP
+
+pkgname = azure-sdk-cpp-git
+
