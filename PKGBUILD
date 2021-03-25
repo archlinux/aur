@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.26.1-beta.1'
+_pkgver='1.26.1-beta.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version - binary version'
@@ -19,7 +19,7 @@ optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
-sha256sums=('bb44413a2f646522e3df1c5df70f6b912e8c8562bb03a5fd0a308f02bbe029a6')
+sha256sums=('dbfc0cfc694a7d5d8e3e4bbaf77dd7af28ae334a3578f0eefee7c89849ddfa35')
 
 package() {
 	cd "$srcdir/"
