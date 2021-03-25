@@ -1,8 +1,16 @@
-.PHONY: update-srcinfo
+all: | update-pkgsums update-srcinfo
+.PHONY: all
+
 update-srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
+.PHONY: update-srcinfo
 
-.PHONE: compare-versions
+update-pkgsums:
+	rm -f openshift-client-linux.tar.gz
+	updpkgsums
+.PHONY: update-pkgsums
+
 compare-versions:
 	# https://github.com/erdii/toolbox/blob/main/cmd/aur-compare-oc-versions/main.go
 	aur-compare-oc-versions
+.PHONY: compare-versions
