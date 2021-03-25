@@ -1,7 +1,7 @@
 pkgbase = waterfox-g3-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
 	license = MPL
