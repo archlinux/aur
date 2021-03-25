@@ -1,7 +1,7 @@
 # Maintainer: squitch <clementfoure2005@gmail.com>
 pkgname=tess-git
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tess, a simple terminal"
 arch=(x86_64)
 url="https://github.com/SquitchYT/Tess.git"
@@ -15,14 +15,13 @@ package() {
 	cd "Tess"
 
 	npm install
-
 	npm run test-build
 
 	cd "dist/linux-unpacked"
+
 	mkdir -p "${pkgdir}/opt/tess"
 	mkdir -p "${pkgdir}/usr/bin"
 
-	cp -r * "${pkgdir}/opt/tess/"
-
+	cp -r -f * "${pkgdir}/opt/tess/"
 	ln -s "/opt/tess/tess" "${pkgdir}/usr/bin/tess"
 }
