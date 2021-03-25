@@ -10,24 +10,24 @@ license=("GPL3")
 source=("${pkgname}::git+${url}")
 depends=('ffmpeg' 'mpd')
 optdepends=(
-    'mpc: interaction with mpd'
-    'libnotify: desktop notifications'
-    'youtube-dl: adding audio from youtube'
+	'mpc: interaction with mpd'
+	'libnotify: desktop notifications'
+	'youtube-dl: adding audio from youtube'
 )
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${pkgname}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}"
-  make
+	cd "${pkgname}"
+	make
 }
 
 package() {
-  cd "${pkgname}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${pkgname}"
+	make DESTDIR="${pkgdir}" install
+	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
