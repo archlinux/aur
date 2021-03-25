@@ -3,7 +3,7 @@
 _pkgname=netns-helper
 pkgname=netns-helper-git
 provides=("${_pkgname}")
-pkgver=r11.5bd5db7
+pkgver=r23.3f9eb4f
 pkgrel=1
 pkgdesc="Helper systemd services to create network namespaces for other programs and services."
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -11,6 +11,7 @@ license=("GPL3")
 depends=("systemd" "iproute2")
 arch=("any")
 optdepends=()
+makedepends=('git')
 sha256sums=("SKIP")
 source=("git+https://gitlab.com/patlefort/${_pkgname}")
 
