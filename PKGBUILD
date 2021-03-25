@@ -1,8 +1,8 @@
-# Maintainer: naspeh <naspeh@ya.ru>
+# Maintainer: naspeh
 
 pkgname=tider-git
 pkgver=0.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc='Lightweight time tracker (GTK+)'
 arch=('any')
 url='http://pusto.org/en/tider/'
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-gobject' 'gtk3' 'libnotify')
 makedepends=('git')
 provides=('tider')
-source=("$pkgname"::'git://github.com/naspeh/tider.git')
+source=("$pkgname"::'git+https://github.com/naspeh/tider.git')
 sha256sums=('SKIP')
 
 pkgver() {
