@@ -1,0 +1,5 @@
+post_install() {
+	echo
+	echo '    The kernel images are located at `/usr/share/qemu/kernel/vmlinuz.<arch>`.'
+	echo
+}

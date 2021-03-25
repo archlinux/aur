@@ -1,0 +1,14 @@
+# source tarball and build directory
+linux-*/
+linux-*.tar.xz
+
+# kernel image
+vmlinuz.*
+
+# makepkg and production
+linux-*.tar.xz
+linux-*.tar.sign
+patch-*.xz
+src/
+pkg/
+qemu-guest-kernel-*.pkg.tar*

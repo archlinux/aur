@@ -1,0 +1,35 @@
+pkgbase = qemu-guest-kernel
+	pkgdesc = Linux kernels for QEMU/KVM guests (direct kernel boot)
+	pkgver = 5.10.25
+	pkgrel = 1
+	url = https://github.com/guest-kernel/qemu
+	install = archpkg.install
+	arch = any
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = clang
+	makedepends = lld
+	makedepends = llvm
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.10.25.xz
+	source = config.i686
+	source = config.x86_64
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
+	sha256sums = SKIP
+	sha256sums = 5a3cb361a621aa753790faee038732fffaa0406a5771f545df68a5afa2164a36
+	sha256sums = 61d2de3e8fbbf97ecbefedcfb53a2913ee94135276d2741adc105d57a56fdbee
+	sha256sums = ef2e2b6103e6ba557106b465a9597b83e5f25ecca99cae442800a5b64e0b85e0
+
+pkgname = qemu-guest-kernel
+
