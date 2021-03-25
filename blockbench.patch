@@ -1,5 +1,5 @@
 diff --git a/main.js b/main.js
-index faa144c..f27ae51 100644
+index 53dfa9f..5102b74 100644
 --- a/main.js
 +++ b/main.js
 @@ -1,7 +1,6 @@
@@ -8,10 +8,10 @@ index faa144c..f27ae51 100644
  const path = require('path')
  const url = require('url')
 -const { autoUpdater } = require('electron-updater');
+ const fs = require('fs');
  
  let orig_win;
- let all_wins = [];
-@@ -12,7 +11,7 @@ function createWindow(second_instance) {
+@@ -39,7 +38,7 @@ function createWindow(second_instance) {
  		return;
  	}
  	let win = new BrowserWindow({
@@ -20,55 +20,58 @@ index faa144c..f27ae51 100644
  		show: false,
  		backgroundColor: '#21252b',
  		frame: false,
-@@ -140,39 +139,7 @@ ipcMain.on('change-main-color', (event, arg) => {
+@@ -170,42 +169,7 @@ ipcMain.on('edit-launch-setting', (event, arg) => {
  })
  
  app.on('ready', () => {
 -
  	createWindow()
 -
--	if (process.execPath && process.execPath.match(/electron\.\w+$/)) {
+-	ipcMain.on('app-loaded', () => {
 -
--		console.log('[Blockbench] Launching in development mode')
+-		if (process.execPath && process.execPath.match(/electron\.\w+$/)) {
 -
--	} else {
--
--		autoUpdater.autoInstallOnAppQuit = true;
--		autoUpdater.autoDownload = false;
--
--		autoUpdater.on('update-available', (a) => {
--			console.log('update-available', a)
--			ipcMain.on('allow-auto-update', () => {
--				autoUpdater.downloadUpdate()
+-			console.log('[Blockbench] App launched in development mode')
+-	
+-		} else {
+-	
+-			autoUpdater.autoInstallOnAppQuit = true;
+-			autoUpdater.autoDownload = false;
+-	
+-			autoUpdater.on('update-available', (a) => {
+-				console.log('update-available', a)
+-				ipcMain.on('allow-auto-update', () => {
+-					autoUpdater.downloadUpdate()
+-				})
+-				orig_win.webContents.send('update-available');
 -			})
--			orig_win.webContents.send('update-available');
--		})
--		autoUpdater.on('update-downloaded', (a) => {
--			console.log('update-downloaded', a)
--			orig_win.webContents.send('update-downloaded', a)
--		})
--		autoUpdater.on('error', (a) => {
--			console.log('update-error', a)
--			orig_win.webContents.send('update-error', a)
--		})
--		autoUpdater.on('download-progress', (a) => {
--			console.log('update-progress', a)
--			orig_win.webContents.send('update-progress', a)
--		})
--		autoUpdater.checkForUpdates().catch(err => {})
--	}
+-			autoUpdater.on('update-downloaded', (a) => {
+-				console.log('update-downloaded', a)
+-				orig_win.webContents.send('update-downloaded', a)
+-			})
+-			autoUpdater.on('error', (a) => {
+-				console.log('update-error', a)
+-				orig_win.webContents.send('update-error', a)
+-			})
+-			autoUpdater.on('download-progress', (a) => {
+-				console.log('update-progress', a)
+-				orig_win.webContents.send('update-progress', a)
+-			})
+-			autoUpdater.checkForUpdates().catch(err => {})
+-		}
+-	})
  })
  
  app.on('window-all-closed', () => {
 diff --git a/package-lock.json b/package-lock.json
-index 2584091..fde174a 100644
+index de995a0..7fdb2ab 100644
 --- a/package-lock.json
 +++ b/package-lock.json
 @@ -1,6 +1,6 @@
  {
  	"name": "Blockbench",
--	"version": "3.7.0",
-+	"version": "3.7.2",
+-	"version": "3.8.1",
++	"version": "3.8.3",
  	"lockfileVersion": 1,
  	"requires": true,
  	"dependencies": {
