@@ -2,12 +2,12 @@
 # Maintainer: Rigel Kent <sendmemail at rigelk dot eu>
 pkgname=peertube
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ActivityPub-federated video streaming platform using P2P directly in your web browser"
 arch=("x86_64")
 url="https://joinpeertube.org/"
 license=("AGPL")
-depends=("nodejs>=12" "nodejs<=15" "ffmpeg" "postgresql" "openssl" "redis" "npm")
+depends=("nodejs>=12" "nodejs<16" "ffmpeg" "postgresql" "openssl" "redis" "npm")
 makedepends=("yarn" "python2" "git")
 backup=("etc/peertube/production.yaml")
 options=("!strip")
