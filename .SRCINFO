@@ -1,0 +1,13 @@
+pkgbase = zram-generator-defaults
+	pkgdesc = Fedora's defaults for zram-generator
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/systemd/zram-generator
+	arch = any
+	license = MIT
+	depends = zram-generator
+	source = zram-generator.conf
+	md5sums = 16555397e10d63adc3cf23c891e0d5f5
+
+pkgname = zram-generator-defaults
+
