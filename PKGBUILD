@@ -15,6 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}"/Vulkan-ValidationLayers-${pkgver}
+  ../scripts/update_deps.py
   sed -i "s|WinSock2.h|winsock2.h|g" layers/vk_loader_platform.h
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
