@@ -1,0 +1,19 @@
+pkgbase = pdfadd
+	pkgdesc = Assistants de création de graphiques pour pdflatex/asymptote
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://xm1math.net/pdfadd
+	arch = x86_64
+	license = GPL
+	depends = gcc>=3.0
+	depends = gcc-libs
+	depends = glibc>=2.27
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libglvnd
+	depends = qt5-base>=5.11.0rc1
+	source = https://xm1math.net/pdfadd/pdfadd-2.0.tar.bz2
+	sha512sums = 2040d1b7f0ec0ef5f86e6db4ec79a9705aa7f1fd184b1c2a6ce816c9c1184c754b49125b6af174826f19056118a256c6534275635bb9e786c4bb5d990ff063d0
+
+pkgname = pdfadd
+
