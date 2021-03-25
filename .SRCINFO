@@ -1,7 +1,7 @@
 pkgbase = fcitx-mozc-ut
 	pkgdesc = Fcitx engine module for Mozc with Mozc UT Dictionary
 	pkgver = 2.26.4318.102.20210322
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = x86_64
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = fcitx-mozc-ut
 	makedepends = glib2
 	makedepends = bzip2
 	makedepends = unzip
-	depends = mozc-ut=2.26.4318.102.20210322
+	depends = mozc-ut
 	depends = fcitx
 	depends = qt5-base
 	conflicts = fcitx-mozc

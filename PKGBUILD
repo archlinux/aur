@@ -13,7 +13,7 @@ _fcitxver=20210124
 _iconver=20201229
 _utdicver=20210322
 pkgver=${_mozcver}.${_utdicver}
-pkgrel=1
+pkgrel=2
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut
@@ -21,7 +21,7 @@ pkgdesc="Fcitx engine module for Mozc with Mozc UT Dictionary"
 arch=('x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
-depends=("mozc-ut=${pkgver}" 'fcitx' 'qt5-base')
+depends=('mozc-ut' 'fcitx' 'qt5-base')
 makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified')
 
@@ -32,7 +32,7 @@ source=(
   protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-${_fcitxver}.patch
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-icons-${_iconver}.tar.gz
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicver}.${pkgrel}.tar.bz2
+  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicver}.1.tar.bz2
 )
 
 sha256sums=(
