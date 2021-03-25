@@ -1,7 +1,7 @@
 # Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
 pkgname=python-awesometkinter
-pkgver=2020.3.19
+pkgver=2021.3.19
 pkgrel=1
 pkgdesc="Pretty tkinter widgets"
 arch=('any')
