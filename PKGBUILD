@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=obs-studio-tytan652
 pkgver=26.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. Built with Browser and VST plugins and some patches but without FTL and Python."
 # Why no FTL ? Because Mixer is dead
 # Why no Python ? Because it doesn't work out of the box with Python 3.9
@@ -52,7 +52,7 @@ prepare() {
 
   cd obs-vst
   # obs-vst: fix memory leak
-  git cherry-pick 944c1c962748ee48ab0eca24bacc5354c169eb60
+  git cherry-pick -n 944c1c962748ee48ab0eca24bacc5354c169eb60
   # Fix VST_PATH use under Linux (https://github.com/obsproject/obs-vst/pull/82)
   patch -Np1 < "$srcdir/VST_PATH_fix.patch"
 }
