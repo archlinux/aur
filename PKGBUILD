@@ -15,6 +15,7 @@ source=(ftp://mgetty.greenie.net/pub/mgetty/source/1.2/${pkgname}-${pkgver}.tar.
 	    config.patch
 	    policy.patch
             aarch64.patch
+            errno.patch
 	    90-mgetty.rules
             mgetty@.service)
 
@@ -24,6 +25,7 @@ prepare() {
   patch -Np0 -i ../../config.patch
   patch -Np0 -i ../../policy.patch
   patch -p1 < ../../aarch64.patch
+  patch -p1 < ../../errno.patch
 }
 
 build() {
@@ -48,5 +50,6 @@ md5sums=('41a18c46845ff058d2848bc1aab6ab3b'
          'c0f9ed08a1e9877f972cbd8a00cfd932'
          'ed732db6dde0859af7acb48e9c7aa136'
          '8756ace492fb86ba70ed3a5c4b980b0b'
+         '86c3502f8bb05c240edb5cad0e11de9c'
          '4b73a5654db86a34a8dccdf5f55c699c'
          'cbc70329924235e8f2e6302c859d59a6')

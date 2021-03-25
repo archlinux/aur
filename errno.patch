@@ -1,0 +1,27 @@
+--- a/logfile.c	2021-03-25 17:13:53.772671030 -0400
++++ b/logfile.c	2021-03-25 17:14:36.600122777 -0400
+@@ -55,14 +55,6 @@
+ 
+ extern int atexit _PROTO(( void (*)(void) ));
+ 
+-/* Most systems have these variables but do not declare them. On many
+-   of those systems that _do_ declare them, it won't hurt */
+-
+-#if !defined(__NetBSD__) && !defined( __FreeBSD__ ) && !defined(__OpenBSD__) && !defined(__GLIBC__) && !defined(__MACH__)
+-extern int sys_nerr;
+-extern char *sys_errlist[];
+-#endif
+-
+ /* Interactive Unix is a little bit braindead - does not have atexit(),
+  */
+ #if defined(ISC) || defined(SVR4) || defined(_3B1_) || \
+@@ -332,8 +324,7 @@
+ 		             tm->tm_mon+1,  tm->tm_mday,
+ 			     tm->tm_hour, tm->tm_min, tm->tm_sec,
+ 		             log_infix, ws,
+-			     ( errnr <= sys_nerr ) ? sys_errlist[errnr]:
+-			     "<error not in list>" );
++			     strerror(errno));
+ #ifdef SYSLOG
+ 	syslog( level == L_FATAL? LOG_ALERT: LOG_ERR, "%s: %m", ws );
+ #endif
