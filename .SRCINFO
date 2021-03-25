@@ -1,0 +1,26 @@
+pkgbase = forge-git
+	pkgdesc = High Performance Visualizations
+	pkgver = 1.1.0_af3.2.2.r418.g735e642
+	pkgrel = 1
+	url = https://github.com/arrayfire/forge
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = graphviz
+	makedepends = git
+	makedepends = python
+	makedepends = glm
+	makedepends = boost
+	depends = glfw
+	depends = freetype2
+	depends = fontconfig
+	depends = freeimage
+	depends = glbinding
+	provides = forge
+	conflicts = forge
+	options = !buildflags
+	source = git+https://github.com/arrayfire/forge.git
+	sha512sums = SKIP
+
+pkgname = forge-git
+
