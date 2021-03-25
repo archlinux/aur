@@ -1,0 +1,20 @@
+pkgbase = explo
+	pkgdesc = Simple tool to describe web security issues in a human and machine readable format
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/telekom-security/explo
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-pyaml
+	depends = python-pyquery
+	depends = python-pystache
+	depends = python-eliot
+	depends = python-six
+	source = explo-0.2.2.tar.gz::https://github.com/telekom-security/explo/archive/refs/tags/0.2.2.tar.gz
+	sha512sums = 12893209a15fbeb0e501dd19fb5161b05fbc82e8713b01da919f99371ec49ad7c527e4261ba65495e23d1c3a33eb6b564cc1aad1aa29299ab50cb59dacdf1b7b
+
+pkgname = explo
+
