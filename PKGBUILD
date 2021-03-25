@@ -7,10 +7,7 @@ pkgdesc="GTK Theme para LynxOS"
 arch=('any')
 url="https://gitlab.com/LynxOS/lgt"
 license=('GPL')
-makedepends=(
-            'git'
-            'lynx-icons-theme'
-            )
+depends=('lynx-icons-theme')
 source=("$url/-/archive/$pkgver/lgt-$pkgver.tar.gz")
 md5sums=('a88d309f13fc99187e624599a328076b')
 

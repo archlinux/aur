@@ -5,8 +5,7 @@ pkgbase = lynx-gtk-theme
 	url = https://gitlab.com/LynxOS/lgt
 	arch = any
 	license = GPL
-	makedepends = git
-	makedepends = lynx-icons-theme
+	depends = lynx-icons-theme
 	source = https://gitlab.com/LynxOS/lgt/-/archive/0.0.1/lgt-0.0.1.tar.gz
 	md5sums = a88d309f13fc99187e624599a328076b
 
