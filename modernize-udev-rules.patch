@@ -1,0 +1,32 @@
+diff --git c/dist/linux64/50-oryx.rules w/dist/linux64/50-oryx.rules
+index c0b37e6..d1f641e 100644
+--- c/dist/linux64/50-oryx.rules
++++ w/dist/linux64/50-oryx.rules
+@@ -1,6 +1,6 @@
+ # Rule for the Moonlander
+-SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", GROUP="plugdev"
++SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", TAG+="uaccess"
+ # Rule for the Ergodox EZ Original / Shine / Glow
+-SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", GROUP="plugdev"
++SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", TAG+="uaccess"
+ # Rule for the Planck EZ Standard / Glow
+-SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", GROUP="plugdev"
++SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", TAG+="uaccess"
+diff --git c/dist/linux64/50-wally.rules w/dist/linux64/50-wally.rules
+index bcbd6a2..1353099 100644
+--- c/dist/linux64/50-wally.rules
++++ w/dist/linux64/50-wally.rules
+@@ -1,10 +1,8 @@
+ # Teensy rules for the Ergodox EZ Original / Shine / Glow
+ ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
+ ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+-KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", TAG+="uaccess"
++KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", TAG+="uaccess"
+ 
+ # STM32 rules for the Moonlander and Planck EZ Standard / Glow
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", \
+-    MODE:="0666", \
+-    SYMLINK+="stm32_dfu"
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", TAG+="uaccess", SYMLINK+="stm32_dfu"
