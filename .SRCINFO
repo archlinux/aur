@@ -1,12 +1,12 @@
 pkgbase = mongotimer
 	pkgdesc = A humongous timer or stopwatch for the terminal
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/maandree/mongotimer
 	arch = any
 	license = custom:ISC
-	source = mongotimer-1.1.tar.gz::https://github.com/maandree/mongotimer/archive/1.1.tar.gz
-	sha256sums = db9155e009e84ba753559fbe4e073e66ef55657ffbfeb6ab493b8285463a4a23
+	source = mongotimer-1.1.1.tar.gz::https://github.com/maandree/mongotimer/archive/1.1.1.tar.gz
+	sha256sums = 8dc220fd9918ae0e588f2b91336f5ffd2c3a9a3141fca24bd6908fc9fe3731d0
 
 pkgname = mongotimer
 
