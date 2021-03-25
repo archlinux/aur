@@ -1,18 +1,13 @@
-pkgbase = drawio-desktop
+pkgbase = drawio
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 14.4.3
+	pkgver = 14.5.1
 	pkgrel = 1
-	url = https://github.com/jgraph/drawio-desktop
-	arch = x86_64
+	url = https://github.com/jgraph/drawio
+	arch = any
 	license = Apache
-	makedepends = yarn
-	makedepends = ant
-	depends = electron
-	depends = libnotify
-	source = drawio-14.4.3.tar.gz::https://github.com/jgraph/drawio/archive/v14.4.3.tar.gz
-	source = drawio-desktop-14.4.3.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v14.4.3.tar.gz
-	sha256sums = 9beb41ac58e364d5d7a879836b54784fe7b18380ca58fa8a9689566c1fba383d
-	sha256sums = 64b8351a5e842bc10cf73e45121c1cae1c043aea231ae1eb089ba42d22cef9a3
+	options = !strip
+	source = https://github.com/jgraph/drawio/releases/download/v14.5.1/draw.war
+	sha256sums = f4d89497132cc6f10f3b0a33297d101e1b09422019a5b1ec49d4a8442307adb6
 
-pkgname = drawio-desktop
+pkgname = drawio
 

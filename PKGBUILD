@@ -1,105 +1,41 @@
-# Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
 
-pkgname=drawio-desktop
-pkgver=14.4.3
+pkgname=drawio
+pkgver=14.5.1
 pkgrel=1
-pkgdesc='Diagram drawing application built on web technology'
-arch=('x86_64')
-url='https://github.com/jgraph/drawio-desktop'
-license=('Apache')
-depends=(electron libnotify)
-makedepends=(yarn ant)
-source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
-        "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz")
-sha256sums=('9beb41ac58e364d5d7a879836b54784fe7b18380ca58fa8a9689566c1fba383d'
-             '64b8351a5e842bc10cf73e45121c1cae1c043aea231ae1eb089ba42d22cef9a3')
+pkgdesc="Diagram drawing application built on web technology"
+arch=("any")
+url="https://github.com/jgraph/drawio"
+license=("Apache")
+options=(!strip)
+source=(
+    "https://github.com/jgraph/drawio/releases/download/v${pkgver}/draw.war"
+)
+sha256sums=(
+    "f4d89497132cc6f10f3b0a33297d101e1b09422019a5b1ec49d4a8442307adb6"
+)
 
-build() {
-  cd "$srcdir/drawio-$pkgver"/etc/build
-  ant app
-  cd "$srcdir/drawio-$pkgver"/src/main/webapp
+prepare() {
+    cd "${srcdir}"
 
-  rm -rf "META-INF" "WEB-INF"
+    rm -rf META-INF WEB-INF
+    rm -f yarn.lock
+    rm -f service-worker.js
 
-  # disable updater
-  sed -e '/electron-updater/d' -i 'package.json'
-  local updater='const autoUpdater = { on: () => {}, setFeedURL: () => {}, checkForUpdates: () => {} }'
-  sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'electron.js'
-
-  # fix version in package.json
-  sed -i 's/"version": ".*"/"version": "'"$pkgver"'"/g' package.json
-
-  yarn install --cache-folder ../npm-cache --prod
-  yarn autoclean -I
-  yarn autoclean -F
-
-  # remove paths refering build directories
-  find . -name 'package.json' -exec sed "s,$srcdir/src/drawio-$pkgver/src/main/webapp,/usr/lib/drawio,g" -i {} \;
-
-  rm -f 'package-lock.json'
-  find . -name '.yarnclean'         -exec rm -fv {} \;
-  find . -name 'yarn.lock'          -exec rm -fv {} \;
-  find . -name '.airtap.yml'        -exec rm -fv {} \;
-  find . -name '.bin'               -exec rm -fvr {} +
-  find . -name 'well-known'         -exec rm -fvr {} +
-  find . -name '.coveralls.yml'     -exec rm -fv {} \;
-  find . -name '.gitignore'         -exec rm -fv {} \;
-  find . -name '.github'            -exec rm -fvr {} +
-  find . -name '.eslintrc*'         -exec rm -fv {} \;
-  find . -name '.jscs.json'         -exec rm -fv {} \;
-  find . -name '.npmignore'         -exec rm -fv {} \;
-  find . -name '.prettierrc.js'     -exec rm -fv {} \;
-  find . -name '.travis.yml'        -exec rm -fv {} \;
-  find . -name '.tonic_example.js'  -exec rm -fv {} \;
-
+    sed -i '/<!--.*\[if IE\].*\[endif\]-->/d' index.html
+    sed -i 's/return false/return true/' disableUpdate.js
+    sed -i "s/'electron': 'plugins\/electron.js',//" js/diagramly/App.js
+    rm -f electron.js electronFilesWorker.js plugins/electron.js
 }
 
 package() {
-  cd "$srcdir/drawio-$pkgver"/src/main/webapp
+    cd "${srcdir}"
 
-  mkdir -p "$pkgdir/usr/lib"
-  cp -rp . "$pkgdir/usr/lib/draw.io"
+    install -dm755 "${pkgdir}/usr/share"
 
-  # fix file permissions
-  chmod -R g+r,o+r "$pkgdir/usr/lib/draw.io"
+    cp -r . "${pkgdir}/usr/share/draw.io"
+    rm "${pkgdir}/usr/share/draw.io/draw.war"
 
-  # create run script
-  mkdir -p "$pkgdir/usr/bin"
-  printf '%s\n' \
-  '#!/bin/sh' \
-  'exec electron /usr/lib/draw.io "$@"' \
-  > "$pkgdir/usr/bin/draw.io"
-  chmod a+x "$pkgdir/usr/bin/draw.io"
-
-  # create desktop file
-  mkdir -p "$pkgdir/usr/share/applications"
-  printf '%s\n' \
-  '[Desktop Entry]' \
-  'Name=draw.io' \
-  'Comment=draw.io desktop' \
-  'Exec=/usr/bin/draw.io %U' \
-  'Terminal=false' \
-  'Type=Application' \
-  'Icon=draw.io' \
-  'Categories=Graphics;' \
-  > "$pkgdir/usr/share/applications/draw.io.desktop"
-
-  ln -s /usr/bin/draw.io "$pkgdir/usr/bin/drawio"
-
-  MIMETYPE="$(grep mimeType "$srcdir/drawio-desktop-$pkgver/electron-builder-linux-mac.json" | sed 's/.*"mimeType":.*"\(.*\)".*/\1/g' | tr '\n' ';')"
-  if [[ -n "${MIMETYPE}" ]]; then
-      echo "MimeType=${MIMETYPE}" >> "$pkgdir/usr/share/applications/draw.io.desktop"
-  fi
-
-  # create icons
-  cd "$srcdir/drawio-desktop-$pkgver"
-  find 'build' -regex '.*/[0-9]+x[0-9]+\.png' |
-  grep -o '[0-9]\+' | 
-  sort -u |
-  while read size; do
-    if [[ -f "build/${size}x${size}.png" ]]; then
-      install -Dm644 "build/${size}x${size}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/draw.io.png"
-    fi
-  done
+    chmod -R 0000 "${pkgdir}/usr/share/draw.io"
+    chmod -R u+rwX,g+rX,o+rX "${pkgdir}/usr/share/draw.io"
 }
