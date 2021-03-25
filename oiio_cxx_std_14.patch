@@ -1,0 +1,36 @@
+#diff --git a/src/appleseed.qtcommon/CMakeLists.txt b/src/appleseed.qtcommon/CMakeLists.txt
+#index 5bed9b025..2be2ceebb 100644
+#--- a/src/appleseed.qtcommon/CMakeLists.txt
+#+++ b/src/appleseed.qtcommon/CMakeLists.txt
+#@@ -192,6 +192,7 @@ add_library (appleseed.qtcommon STATIC
+# )
+# 
+# set_target_properties (appleseed.qtcommon PROPERTIES FOLDER "Core")
+#+set_target_properties (appleseed.qtcommon PROPERTIES CXX_STANDARD 14)
+# 
+# 
+# #--------------------------------------------------------------------------------------------------
+diff --git a/src/appleseed.studio/CMakeLists.txt b/src/appleseed.studio/CMakeLists.txt
+index 0c191c815..9587c060c 100644
+--- a/src/appleseed.studio/CMakeLists.txt
++++ b/src/appleseed.studio/CMakeLists.txt
+@@ -438,6 +438,7 @@ add_executable (appleseed.studio
+ )
+ 
+ set_target_properties (appleseed.studio PROPERTIES FOLDER "Applications")
++set_target_properties (appleseed.studio PROPERTIES CXX_STANDARD 14)
+ 
+ if (WIN32)
+     set_target_properties (appleseed.studio PROPERTIES
+diff --git a/src/appleseed/CMakeLists.txt b/src/appleseed/CMakeLists.txt
+index d56d5ed18..20a18ff04 100644
+--- a/src/appleseed/CMakeLists.txt
++++ b/src/appleseed/CMakeLists.txt
+@@ -2340,6 +2340,7 @@ add_library (appleseed SHARED
+ )
+ 
+ set_target_properties (appleseed PROPERTIES FOLDER "Core")
++set_target_properties (appleseed PROPERTIES CXX_STANDARD 14)
+ 
+ if (USE_VISIBILITY_MAP)
+     set_target_properties (appleseed PROPERTIES
