@@ -1,0 +1,20 @@
+pkgbase = deepinv20-dark-cursors-git
+	pkgdesc = DeepinV20 Dark Cursors for linux desktops
+	pkgver = r2.b8a6de9
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/DeepinV20-dark-cursors
+	arch = any
+	license = GPL3
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	depends = libxcursor
+	provides = deepinv20-dark-cursors
+	conflicts = deepinv20-dark-cursors
+	conflicts = deepinv20-dark-cursors-git
+	replaces = deepinv20-dark-cursors
+	replaces = deepinv20-dark-cursors-git
+	source = git+https://github.com/yeyushengfan258/DeepinV20-dark-cursors.git
+	md5sums = SKIP
+
+pkgname = deepinv20-dark-cursors-git
+
