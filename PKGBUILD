@@ -2,11 +2,11 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=appleseed
-pkgrel=2
 pkgver=2.1.0
 _pkgver=${pkgver}-beta
+pkgrel=2
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects."
-arch=(x86_64)
+arch=(i686 x86_64)
 url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
@@ -40,6 +40,7 @@ prepare() {
     msg2 "Applying patch: ${patch##*/}"
     patch -d "${pkgname}-${_pkgver}" -Nfp1 -i "$patch" || true #silently drop failed chunks
   done
+  sed '/python37/s/37/39/' -i "${srcdir}/${pkgname}-${_pkgver}"/src/appleseed.python/CMakeLists.txt
 }
 
 build() {
@@ -72,7 +73,7 @@ CMAKE_FLAGS=( -DWITH_EMBREE=ON
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
-  install -D -m644 "${pkgname}-${_pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${srcdir}/${pkgname}-${_pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
