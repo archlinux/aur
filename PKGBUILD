@@ -3,7 +3,7 @@
 
 pkgbase=shadowsocks-uri-generator-git
 pkgname=(ss-uri-gen-git ss-uri-gen-chatbot-telegram-git)
-pkgver=20210218.r83.b0d6a43
+pkgver=20210326.r95.b2ad505
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/database64128/shadowsocks-uri-generator"
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-    _build ShadowsocksUriGenerator
+    _build ShadowsocksUriGenerator.CLI
     _build ShadowsocksUriGenerator.Chatbot.Telegram
 }
 
@@ -42,10 +42,11 @@ _build() {
 }
 
 package_ss-uri-gen-git() {
-	pkgdesc="CLI for multi-user Shadowsocks SIP003, SIP008 and Outline server deployment and management"
+	pkgdesc="CLI for managing federated Shadowsocks servers, automating deployments of Outline servers, and SIP008 online config"
 	provides=(ss-uri-gen)
 	conflicts=(ss-uri-gen)
-	install -Dm755 -t $pkgdir/usr/bin/ $srcdir/$pkgbase/ShadowsocksUriGenerator/bin/Release/net5.0/linux-x64/publish/ss-uri-gen
+	install -Dm755 -t $pkgdir/usr/bin/ $srcdir/$pkgbase/ShadowsocksUriGenerator.CLI/bin/Release/net5.0/linux-x64/publish/ss-uri-gen
+	install -Dm644 -t $pkgdir/usr/lib/systemd/user/ $srcdir/$pkgbase/systemd/user/ss-uri-gen.service
 }
 
 package_ss-uri-gen-chatbot-telegram-git() {
@@ -53,4 +54,5 @@ package_ss-uri-gen-chatbot-telegram-git() {
 	provides=(ss-uri-gen-chatbot-telegram)
 	conflicts=(ss-uri-gen-chatbot-telegram)
 	install -Dm755 -t $pkgdir/usr/bin/ $srcdir/$pkgbase/ShadowsocksUriGenerator.Chatbot.Telegram/bin/Release/net5.0/linux-x64/publish/ss-uri-gen-chatbot-telegram
+	install -Dm644 -t $pkgdir/usr/lib/systemd/user/ $srcdir/$pkgbase/systemd/user/ss-uri-gen-chatbot-telegram.service
 }
