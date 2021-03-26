@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=halibut  
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="free document preparation system"
 url="http://www.chiark.greenend.org.uk/~sgtatham/halibut/"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  prefix=/usr make  
+  CFLAGS+=" -fcommon" prefix=/usr make  
   cd doc
   make
 }
