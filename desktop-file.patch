@@ -1,0 +1,43 @@
+From b4dd6ca42c8a4b2cd7a6b79cf9938dd49d64e696 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Thu, 14 Jan 2021 20:50:43 +0100
+Subject: [PATCH 1/2] Use a valid category.
+
+---
+ dist/linux64/wally.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dist/linux64/wally.desktop b/dist/linux64/wally.desktop
+index 396cede..b9556bc 100644
+--- a/dist/linux64/wally.desktop
++++ b/dist/linux64/wally.desktop
+@@ -7,4 +7,4 @@ Comment=Flash your ZSA keyboard the EZ way
+ Exec=wally
+ Icon=wally
+ Terminal=false
+-Categories=Development;
++Categories=Settings;HardwareSettings;
+
+From f71c234e94fb4937485884cfe2fae13207517eb2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Thu, 14 Jan 2021 20:51:22 +0100
+Subject: [PATCH 2/2] Add a generic name.
+
+---
+ dist/linux64/wally.desktop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dist/linux64/wally.desktop b/dist/linux64/wally.desktop
+index b9556bc..27d0cd8 100644
+--- a/dist/linux64/wally.desktop
++++ b/dist/linux64/wally.desktop
+@@ -3,6 +3,7 @@ Type=Application
+ Version=1.0
+ Name=Wally
+ Name[en_US]=Wally
++GenericName=ZSA Keyboard Flashing Tool
+ Comment=Flash your ZSA keyboard the EZ way
+ Exec=wally
+ Icon=wally
