@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=78.8.1
+pkgver=78.9.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -24,9 +24,9 @@ source_i686=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('c68838bcdd7075cb3c253a2c1231fe85d8d767cce75f4f76009c69dc845fdaa0e30fbe94a6f3b7227339006b7c88b77128f16ec348c3e6fbdd516ede828b97f7'
+sha512sums_x86_64=('9e51c5e9dd687b6e8af9f8a0c6a28f47a0533f7399c5f12ce4eebec9655982c32929a89ac4edac57e14f5fcbe3edbe4e43c691eb009db79c44fcf67a2613f327'
                    'SKIP')
-sha512sums_i686=('c68838bcdd7075cb3c253a2c1231fe85d8d767cce75f4f76009c69dc845fdaa0e30fbe94a6f3b7227339006b7c88b77128f16ec348c3e6fbdd516ede828b97f7'
+sha512sums_i686=('9e51c5e9dd687b6e8af9f8a0c6a28f47a0533f7399c5f12ce4eebec9655982c32929a89ac4edac57e14f5fcbe3edbe4e43c691eb009db79c44fcf67a2613f327'
                  'SKIP')
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
