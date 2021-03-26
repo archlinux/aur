@@ -5,7 +5,7 @@ pkgname=python-$_pyname
 pkgver=2.1.0
 pkgrel=1
 pkgdesc="Sphinx Extensions to support API reference sites in OpenStack"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/os-api-ref/latest/"
 license=(Apache)
 depends=(
@@ -43,7 +43,7 @@ build(){
 }
 
 check(){
-	cd "$srcdir"/$_pyname-$pkgver
+	cd $_pyname-$pkgver
 	stestr run
 }
 
