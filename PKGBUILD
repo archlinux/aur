@@ -52,15 +52,15 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt
-pkgver=5.10.25
-_major=5.10
+pkgver=5.11.10
+_major=5.11
 _branch=5.x
-_rt=35
+_rt=11
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
-arch=(x86_64)
 url="http://www.xanmod.org/"
+arch=(x86_64)
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
@@ -77,15 +77,17 @@ validpgpkeys=(
 )
 
 # Archlinux patches
-_commits=""
-for _patch in $_commits; do
-    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+_commit="be7d4710850020de55bce930c83fa80347c02fc3"
+_patches=("sphinx-workaround.patch")
+for _patch in ${_patches[@]}; do
+    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
 done
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'SKIP'
-            '654b31c029b1cd59413afb831d51553aab80e075b21a3d5c241fbe9b28330623'
-            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
+            '302334386db76b291359a8e4834fe1f26c562bafb56dea7cd7d1db5b1ed64545'
+            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
