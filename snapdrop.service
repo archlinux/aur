@@ -1,0 +1,44 @@
+[Unit]
+Description=Snapdrop Server
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=true
+Environment="HOST=127.0.0.1"
+# Uncomment this if you're not going to run Snapdrop behind a reverse-proxy (ie. nginx)
+#Environment="HOST=0.0.0.0"
+Environment="PORT=3000"
+ExecStart=/usr/bin/node index.js
+WorkingDirectory=/usr/share/snapdrop/server
+
+Restart=always
+RestartSec=10s
+
+LimitNOFILE=1024
+LimitNPROC=32
+
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+RestrictNamespaces=true
+
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+RestrictAddressFamilies=AF_INET AF_INET6
+
+LockPersonality=true
+RestrictRealtime=true
+
+# Node/Snapdrop doesn't seem to work with this enabled
+#MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

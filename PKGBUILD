@@ -2,7 +2,7 @@
 
 pkgname="snapdrop"
 pkgver=2021.03.10
-pkgrel=2
+pkgrel=3
 _githash="fad4632eb903ea6de9ecbec90df0ac6bd7410e68"
 pkgdesc="A Progressive Web App for local file sharing"
 url="https://github.com/RobinLinus/snapdrop"
@@ -12,13 +12,15 @@ depends=("nodejs")
 makedepends=("npm")
 source=(
     "https://github.com/RobinLinus/snapdrop/archive/${_githash}.tar.gz"
-    "example-nginx.conf"
     "customise-server-host-addr.patch"
+    "example-nginx.conf"
+    "snapdrop.service"
 )
 sha256sums=(
     "8886ae45aa5910606c8125e27cc589ae26fe162eedc11a396ca864f4788f2c2a"
-    "869a3b728ff81f0b29177279e344684f554e5670787b0401312b4f51142c33bc"
     "c91545d65af2bfd6f09e05c7263b00340a98870ee9f3ded7447891e56b296fb6"
+    "9bd2e544a4c3ac7e3d865881c02bb5c829aef5f34302f7a082c9724d85145930"
+    "5d7f5efe54122221785ceeaa0b92873ce618a7d4160abf14b41c196bed2953db"
 )
 
 prepare() {
@@ -42,4 +44,6 @@ package() {
 
     chmod -R 0000 "${pkgdir}/usr/share"
     chmod -R u+rwX,g+rX,o+rX "${pkgdir}/usr/share"
+
+    install -Dm644 "${srcdir}/snapdrop.service" "${pkgdir}/usr/lib/systemd/system/snapdrop.service"
 }
