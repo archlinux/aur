@@ -1,25 +1,31 @@
 # Maintainer: Allen Zhong <moeallenz@gmail.com>
 pkgname=yaml2json
-pkgver=1.3
+pkgver=1.3.r4.g82e774e
 pkgrel=1
 pkgdesc="Transform yaml string to json string without the type infomation."
 url="https://github.com/bronze1man/yaml2json"
 license=('MIT')
 arch=('x86_64')
-makedepends=('go-pie' )
-sha256sums=('fd0954936fef9f4848ef37debb25b26479495df0a8d46582e1e307cb29cdafc1')
+makedepends=('go' 'git')
+sha256sums=('SKIP')
 source=(
-    https://github.com/bronze1man/yaml2json/archive/v${pkgver}.tar.gz
+    $pkgname::git+https://github.com/bronze1man/yaml2json.git
 )
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed -r "s/([^-]*-g)/r\1/;s/-/./g;s/^v//"
+}
 
 build() {
     mkdir -p ${srcdir}/gobuild
     export GOPATH="${srcdir}/gobuild"
+    export GO111MODULE=off
 
-    mv "${srcdir}/${pkgname}-${pkgver}/vendor" "$GOPATH/src"
+    mv "${srcdir}/${pkgname}/vendor" "$GOPATH/src"
 
     mkdir -p "$GOPATH/src/github.com/bronze1man"
-    cp -r "${srcdir}/${pkgname}-${pkgver}" $GOPATH/src/github.com/bronze1man/yaml2json
+    cp -r "${srcdir}/${pkgname}" $GOPATH/src/github.com/bronze1man/yaml2json
 
     cd "$GOPATH/src/github.com/bronze1man/yaml2json"
     #go run github.com/bronze1man/yaml2json/y2jBuilder
