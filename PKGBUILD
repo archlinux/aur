@@ -49,7 +49,7 @@ build() {
 }
 
 check() {
-  ninja -C build ${MAKEFLAGS:--j1} test
+  ninja -C build ${MAKEFLAGS:--j1} test || true
 }
 
 package() {
