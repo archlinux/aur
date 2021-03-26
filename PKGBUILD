@@ -2,7 +2,7 @@
 pkgname=cardboard-git
 _pkgname=cardboard
 pkgver=r300.f2ef2ff
-pkgrel=1
+pkgrel=2
 license=("GPL3")
 pkgdesc="A unique, scrollable tiling Wayland compositor designed with laptops in mind."
 makedepends=(git meson ninja wayland-protocols)

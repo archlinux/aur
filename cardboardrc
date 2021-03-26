@@ -1,9 +1,20 @@
 #!/bin/sh
+# Note: cutter is currently not documented. The following comments is stuff
+# I've figured out from the source code.
 
+# Modifier key. Default is alt, but can also be:
+# shift, ctrl, alt, super, caps, mod2, mod3, mod5
 mod=alt
+
+# Focus color, in the format of R G B A
+cutter config focus_color 0 100 255 200
+
+# Gap size between windows
+cutter config gap 20
 
 cutter config mouse_mod $mod
 
+# Keybindings
 cutter bind $mod+x quit
 cutter bind $mod+return exec sakura
 cutter bind $mod+left focus left
@@ -12,13 +23,15 @@ cutter bind $mod+shift+left move -10 0
 cutter bind $mod+shift+right move 10 0
 cutter bind $mod+shift+up move 0 -10
 cutter bind $mod+shift+down move 0 10
+cutter bind $mod+i insert_into_column
+cutter bind $mod+o pop_from_column
 cutter bind $mod+w close
 for i in $(seq 1 6); do
 	cutter bind $mod+$i workspace switch $(( i - 1 ))
 	cutter bind $mod+ctrl+$i workspace move $(( i - 1 ))
 done
-
 cutter bind $mod+shift+space toggle_floating
 
+# Autostart stuff
 cutter exec toolbox run swaybg -i ~/wallpapers/autobahn.png
 cutter exec toolbox run waybar
