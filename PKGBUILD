@@ -2,12 +2,12 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 pkgname=amide  
 pkgver=1.0.6
-pkgrel=6
+pkgrel=7
 pkgdesc='Medical imaging data examiner'
 arch=('x86_64')
 url='http://amide.sourceforge.net/'
 license=('GPL')
-depends=('dcmtk' 'ffmpeg' 'gsl' 'libgnomecanvas' 'volpack' 'xmedcon')
+depends=('dcmtk' 'ffmpeg' 'gsl' 'libgnomecanvas' 'volpack' 'xmedcon-gtk2')
 makedepends=('gtk-doc' 'gnome-doc-utils' 'intltool')
 source=('https://web.stanford.edu/~loening/files/amide-1.0.6-2.fc25.src.rpm' amide_nognome.patch)
 sha512sums=('2d6f9d7cfa7921ba95fd0a887504d4ec135d0e93d94ffdf256b5fc94f3df1766006e0f13ca24c1cc7904c636182db96b7e7c29ac2529554c351458217406053d'

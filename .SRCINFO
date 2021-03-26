@@ -1,7 +1,7 @@
 pkgbase = amide
 	pkgdesc = Medical imaging data examiner
 	pkgver = 1.0.6
-	pkgrel = 6
+	pkgrel = 7
 	url = http://amide.sourceforge.net/
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = amide
 	depends = gsl
 	depends = libgnomecanvas
 	depends = volpack
-	depends = xmedcon
+	depends = xmedcon-gtk2
 	source = https://web.stanford.edu/~loening/files/amide-1.0.6-2.fc25.src.rpm
 	source = amide_nognome.patch
 	sha512sums = 2d6f9d7cfa7921ba95fd0a887504d4ec135d0e93d94ffdf256b5fc94f3df1766006e0f13ca24c1cc7904c636182db96b7e7c29ac2529554c351458217406053d
