@@ -1,11 +1,11 @@
 # Maintainer: Berkcan Ucan <ucanberkcan@gmail.com>
 
 pkgname=tinance
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Track your favorite cryptocurrency from terminal!'
 arch=('any')
-url=https://github.com/panlazy/tinance
+url=https://www.npmjs.com/package/tinance
 license=('GPL3')
 depends=('nodejs' 'jq')
 makedepends=('npm')
