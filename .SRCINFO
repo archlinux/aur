@@ -1,0 +1,22 @@
+pkgbase = gaphor-git
+	pkgdesc = Gaphor is a UML and SysML modeling application written in Python
+	pkgver = 0.28.7
+	pkgrel = 1
+	url = https://github.com/gaphor/gaphor
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	makedepends = python-poetry
+	depends = python-cairo
+	depends = python-gaphas
+	depends = python-generic
+	depends = python-gobject
+	depends = python-importlib-metadata
+	depends = python-typing_extensions
+	depends = python-tinycss2
+	provides = gaphor
+	conflicts = gaphor
+	source = git+https://github.com/gaphor/gaphor.git
+	b2sums = SKIP
+
+pkgname = gaphor-git
