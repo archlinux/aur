@@ -1,0 +1,8 @@
+/*.tar.xz
+/*.tar.gz
+/*.tar.zst
+/pkg
+/src
+/wordninja-rs-lua
+
+*~

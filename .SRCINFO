@@ -1,0 +1,16 @@
+pkgbase = wordninja-rs-lua-git
+	pkgdesc = Wordninja Rust lua native module.
+	pkgver = b2f252a
+	pkgrel = 1
+	url = https://github.com/BlindingDark/wordninja-rs-lua
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = lua
+	provides = wordninja-rs-lua
+	conflicts = wordninja-rs-lua
+	source = git+https://github.com/BlindingDark/wordninja-rs-lua
+	sha256sums = SKIP
+
+pkgname = wordninja-rs-lua-git
+
