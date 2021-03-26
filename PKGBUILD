@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 pkgname=crux-toolkit-git
-pkgver=r3353.414acd52
+pkgver=r3376.6da2a981
 pkgrel=1
 pkgdesc="The Crux mass spectrometry analysis toolkit"
 arch=('x86_64')
