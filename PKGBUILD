@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/matlink/gplaycli/archive/${
         "$pkgname.install")
 md5sums=('a8be0fda33673f6992a7612313cd670c'
          '0ff99d96280fbbb90aec3f9ce0dcde0f'
-         'e993658f9913493bb4336d73f23a3195')
+         'd47ee183649bea842ca075fbeb660a77')
 
 package() {
     # install specific gpapi version adapted for gplaycli

@@ -18,7 +18,7 @@ pkgbase = gplaycli
 	source = gplaycli.install
 	md5sums = a8be0fda33673f6992a7612313cd670c
 	md5sums = 0ff99d96280fbbb90aec3f9ce0dcde0f
-	md5sums = e993658f9913493bb4336d73f23a3195
+	md5sums = d47ee183649bea842ca075fbeb660a77
 
 pkgname = gplaycli
 
