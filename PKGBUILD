@@ -3,13 +3,13 @@
 
 
 pkgname=ustreamer
-pkgver=3.14
+pkgver=3.23
 pkgrel=1
 pkgdesc="Lightweight and fast MJPG-HTTP streamer"
 url="https://github.com/pikvm/ustreamer"
 license=(GPL)
 arch=(i686 x86_64 armv6h armv7h aarch64)
-depends=(libjpeg libevent libutil-linux libbsd libgpiod)
+depends=(libjpeg libevent libbsd libgpiod)
 makedepends=(gcc make)
 source=(${pkgname}::"git+https://github.com/pikvm/ustreamer#commit=v${pkgver}")
 md5sums=(SKIP)
