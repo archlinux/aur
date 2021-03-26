@@ -1,0 +1,22 @@
+pkgbase = key-exe-bin
+	pkgdesc = Java Software Verification Tool
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://www.key-project.org/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	optdepends = z3: z3 solver support
+	optdepends = yices: yices solver support
+	noextract = key-${pkgver}-exe.jar
+	source = https://www.key-project.org/dist/2.8.0/key-2.8.0-exe.jar
+	source = key-logo-white.png
+	source = key.desktop
+	source = key.sh
+	sha256sums = 65b1a6d1c21df993c23e781c661d8b6f9efd07050aed0c2ca224575772e6bdb1
+	sha256sums = 4528428a6d47de78ca395de5be6102816ffe0a94ab168b3ecb35f9aa440b230e
+	sha256sums = 5b56b4146777dbbdd4b6564b948bb3f0553cd99a47c8a74034905ffa5cf1af9f
+	sha256sums = 3917522c185e4077b5225af7264791cca4c51c82dc4150e803b4c8c105b9d302
+
+pkgname = key-exe-bin
+
