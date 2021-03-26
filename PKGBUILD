@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.16.5
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -14,6 +14,7 @@ sha1sums=('SKIP')
 prepare() {
   cd "$srcdir/OpenModelica"
   git checkout "tags/v${pkgver}"
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/7327.patch | patch -p1
   sed -i "s,\.\./,https://github.com/OpenModelica/,g" .gitmodules
   git submodule sync
   git submodule update --init --recursive
