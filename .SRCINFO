@@ -1,0 +1,27 @@
+pkgbase = nx-kwin-decoration-git
+	pkgdesc = KWin decoration for NX Desktop, by Nitrux SA.
+	pkgver = r85.9579027
+	pkgrel = 1
+	url = https://github.com/nx-desktop/nx-window-deco
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = kcoreaddons
+	depends = kguiaddons
+	depends = kconfigwidgets
+	depends = kwindowsystem
+	depends = ki18n
+	depends = kiconthemes
+	depends = qt5-x11extras
+	provides = nx-kwin-decoration
+	provides = nomad-kwin-decoration
+	provides = nx-window-deco
+	conflicts = nx-kwin-decoration
+	conflicts = nomad-kwin-decoration
+	conflicts = nx-window-deco
+	source = git+https://github.com/nx-desktop/nx-window-deco.git
+	sha256sums = SKIP
+
+pkgname = nx-kwin-decoration-git
+
