@@ -1,13 +1,12 @@
 pkgbase = duplicacy-util
 	pkgdesc = A utility to run Duplicacy backups
 	pkgver = 1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jeffaco/duplicacy-util
 	arch = x86_64
 	arch = i686
 	license = Apache License 2.0
 	makedepends = go
-	makedepends = dep
 	source = duplicacy-util-1.5.tar.gz::https://github.com/jeffaco/duplicacy-util/archive/v1.5.tar.gz
 	sha256sums = ec49b052dbf1c23d90c95b648ddeaaa80f4f885d0f257ac2146724f626db8eb8
 
