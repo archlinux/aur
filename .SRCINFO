@@ -1,0 +1,18 @@
+pkgbase = librist
+	pkgdesc = A library that can be used to add the RIST protocol to applications
+	pkgver = 0.2.0.rc5
+	pkgrel = 1
+	url = https://code.videolan.org/rist/librist/
+	arch = x86_64
+	license = BSD
+	makedepends = meson
+	makedepends = cmake
+	makedepends = cmocka
+	makedepends = lz4
+	depends = cjson
+	depends = mbedtls
+	source = https://code.videolan.org/rist/librist/-/archive/v0.2.0-RC5/librist-v0.2.0-RC5.tar.bz2
+	sha256sums = bfcac4b78de3139696304a8ec72841fec56370c0b0948044581344d42c6e1ff2
+
+pkgname = librist
+
