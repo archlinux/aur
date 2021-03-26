@@ -3,8 +3,8 @@
 
 
 # Things that need to be updated on new build
-pkgver=1.20.0
-sha256sums_x86_64=(bae79a075ee5f03a661c3d3e9ea40b8e08aea4977d66deea9a99279ba7bb59e1)
+pkgver=1.20.2
+sha256sums_x86_64=(a3685a92f395f8d5a1601ec705b764b337418029a2cba9f79960cbade1343ad3)
 pkgrel=1
 
 # Things that will stay the same
