@@ -4,68 +4,76 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=4.4.r99044.gd1f3d721df
+pkgver=4.4.r101737.g896395bbcf
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('GPL3')
 depends=(
-    'alsa-lib'
-    'aom'
-    'bzip2'
-    'fontconfig'
-    'fribidi'
-    'gmp'
-    'gnutls'
-    'gsm'
-    'jack'
-    'lame'
-    'libass.so'
-    'libavc1394'
-    'libbluray.so'
-    'libdav1d.so'
-    'libdrm'
-    'libfreetype.so'
-    'libiec61883'
-    'libmfx'
-    'libmodplug'
-    'libomxil-bellagio'
-    'libpulse'
-    'librav1e.so'
-    'libraw1394'
-    'libsoxr'
-    'libssh'
-    'libtheora'
-    'libva.so'
-    'libva-drm.so'
-    'libva-x11.so'
-    'libvdpau'
-    'libvidstab.so'
-    'libvorbisenc.so'
-    'libvorbis.so'
-    'libvpx.so'
-    'libwebp'
-    'libx11'
-    'libx264.so'
-    'libx265.so'
-    'libxcb'
-    'libxext'
-    'libxml2'
-    'libxv'
-    'libxvidcore.so'
-    'opencore-amr'
-    'openjpeg2'
-    'opus'
-    'sdl2'
-    'speex'
-    'srt'
-    'v4l-utils'
-    'vmaf'
-    'xz'
-    'zlib'
+  alsa-lib
+  aom
+  bzip2
+  fontconfig
+  fribidi
+  gmp
+  gnutls
+  gsm
+  jack
+  lame
+  libass.so
+  libavc1394
+  libbluray.so
+  libdav1d.so
+  libdrm
+  libfreetype.so
+  libiec61883
+  libmfx
+  libmodplug
+  libpulse
+  librav1e.so
+  libraw1394
+  libsoxr
+  libssh
+  libtheora
+  libva.so
+  libva-drm.so
+  libva-x11.so
+  libvdpau
+  libvidstab.so
+  libvorbisenc.so
+  libvorbis.so
+  libvpx.so
+  libwebp
+  libx11
+  libx264.so
+  libx265.so
+  libxcb
+  libxext
+  libxml2
+  libxv
+  libxvidcore.so
+  libzimg.so
+  opencore-amr
+  openjpeg2
+  opus
+  sdl2
+  speex
+  srt
+  v4l-utils
+  vmaf
+  xz
+  zlib
 )
-makedepends=('git' 'avisynthplus' 'ffnvcodec-headers' 'ladspa' 'nasm')
+makedepends=(
+  amf-headers
+  avisynthplus
+  clang
+  ffnvcodec-headers
+  git
+  ladspa
+  nasm
+)
 optdepends=('avisynthplus: for reading AviSynth scripts as input'
             'intel-media-sdk: for Intel Quick Sync Video'
             'ladspa: for LADSPA filters'
@@ -84,13 +92,9 @@ prepare() {
 }
 
 pkgver() {
-    local _version
-    local _revision
-    local _shorthash
-    _version="$(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
-    _revision="$(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }')"
-    _shorthash="$(git -C ffmpeg rev-parse --short HEAD)"
-    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+    printf '%s.r%s.g%s' "$(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')" \
+                        "$(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }')" \
+                        "$(git -C ffmpeg rev-parse --short HEAD)"
 }
 
 build() {
@@ -103,7 +107,10 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
+        --enable-amf \
         --enable-avisynth \
+        --enable-cuda-llvm \
+        --enable-lto \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
@@ -144,9 +151,9 @@ build() {
         --enable-libxcb \
         --enable-libxml2 \
         --enable-libxvid \
+        --enable-libzimg \
         --enable-nvdec \
         --enable-nvenc \
-        --enable-omx \
         --enable-shared \
         --enable-version3
     make
