@@ -12,7 +12,7 @@ url='https://libimobiledevice.org/'
 arch=('x86_64')
 license=('LGPL2.1')
 depends=('fuse2' 'libimobiledevice' 'libplist')
-source=("$pkgname-$pkgver::https://github.com/libimobiledevice/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/libimobiledevice/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('2a00769e8f1d8bad50898b9d00baf12c8ae1cda2d19ff49eaa9bf580e5dbe78c')
 
 build() {
