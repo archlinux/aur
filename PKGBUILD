@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
 pkgname=portmod
-pkgver=2.0_rc6
+pkgver=2.0_rc7
 pkgrel=1
 pkgdesc="A cli tool to manage mods for OpenMW"
 provides=('portmod')
@@ -17,7 +17,7 @@ makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python
 checkdepends=("python-pytest")
 optdepends=("omwllf" "tes3cmd" "tr-patcher" "python-argcomplete")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('8c0a1bfab099410dbd3ab403f793a1af97a067ecf8cc078ddb583902d33abd812e6a60b9b017e5e360e222b4a0aaeca8d3105666c2aed8f1e7b027fd476c5ec1')
+sha512sums=('8a45fefc4e2bb5af09692f944331deb17b8498ca694723e0f457b94b097d71c9f96d60b7125791e0c9225dde1b41235f135aad487ade0c9d90d209a4dcbac299')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
