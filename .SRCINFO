@@ -1,6 +1,6 @@
 pkgbase = srt-git
 	pkgdesc = Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)
-	pkgver = 1.4.1.r254.g3e87ca1c
+	pkgver = 1.4.3rc0.r19.g1d4338a0
 	pkgrel = 1
 	url = https://www.srtalliance.org/
 	arch = x86_64

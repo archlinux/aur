@@ -2,7 +2,7 @@
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=srt-git
-pkgver=1.4.1.r254.g3e87ca1c
+pkgver=1.4.3rc0.r19.g1d4338a0
 pkgrel=1
 pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd srt
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.\(RC\|rc\)\./rc/'
 }
 
 build() {
