@@ -2,17 +2,17 @@
 
 pkgname=protonvpn-cli-ng
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux CLI for ProtonVPN."
 arch=("any")
-url="https://github.com/ProtonVPN/linux-cli"
+url="https://github.com/ProtonVPN/linux-cli-community"
 license=("GPLv3")
 depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools" "python-docopt" "python-requests" "python-jinja")
 replaces=("protonvpn-cli")
-source=("https://github.com/ProtonVPN/linux-cli/archive/v2.2.6.tar.gz")
-sha256sums=('01ff05c9e6c174c7879553310d15bd0bcaf31e62be8c7f9a8c01b434a7c2612e')
+source=("https://github.com/ProtonVPN/linux-cli-community/archive/v2.2.6.tar.gz")
+sha256sums=('eb7e334ea55f510fdcda44541714ee4c03b7d00a23228ee5e18d37863b243d72')
 
-_protonvpn_src_dir="linux-cli-2.2.6"
+_protonvpn_src_dir="linux-cli-community-2.2.6"
 
 package() {
     # Define paths

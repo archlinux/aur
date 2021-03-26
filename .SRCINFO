@@ -1,8 +1,8 @@
 pkgbase = protonvpn-cli-ng
 	pkgdesc = A Linux CLI for ProtonVPN. 
 	pkgver = 2.2.6
-	pkgrel = 1
-	url = https://github.com/ProtonVPN/linux-cli
+	pkgrel = 2
+	url = https://github.com/ProtonVPN/linux-cli-community
 	arch = any
 	license = GPLv3
 	depends = openvpn
@@ -14,8 +14,8 @@ pkgbase = protonvpn-cli-ng
 	depends = python-requests
 	depends = python-jinja
 	replaces = protonvpn-cli
-	source = https://github.com/ProtonVPN/linux-cli/archive/v2.2.6.tar.gz
-	sha256sums = 01ff05c9e6c174c7879553310d15bd0bcaf31e62be8c7f9a8c01b434a7c2612e 
+	source = https://github.com/ProtonVPN/linux-cli-community/archive/v2.2.6.tar.gz
+	sha256sums = eb7e334ea55f510fdcda44541714ee4c03b7d00a23228ee5e18d37863b243d72 
 
 pkgname = protonvpn-cli-ng
 
