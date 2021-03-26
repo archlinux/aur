@@ -3,7 +3,7 @@
 pkgbase='kb'
 pkgname=('kb')
 _module='kb-manager'
-pkgver='0.1.3'
+pkgver='0.1.6'
 pkgrel=1
 pkgdesc="A command line minimalist knowledge base manager"
 url="https://github.com/gnebbia/kb"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('78e14f6eef30a4742925cc75ba9a5509c032ae42e73e26582cd7ed91794f41df')
+sha256sums=('55e3d8fd160ce1c71e3acaaf1bc14603fcb5dd055fc7eb62521d3f3737749b1d')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
