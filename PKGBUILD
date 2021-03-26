@@ -84,7 +84,7 @@ _makenconfig=y
 
 pkgbase=linux-manjaro-xanmod-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.9
+pkgver=5.11.10
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -93,7 +93,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="90cf5261be3838b522012021160d93b545b86e45" # 5.11.9-1
+__commit="1ef0d1c1ebb0feff97bdfe3cb82b40fa05147a3f" # 5.11.10-1
 
 license=(GPL2)
 makedepends=(
