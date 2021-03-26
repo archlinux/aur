@@ -8,7 +8,7 @@
 pkgname=conky-lua-nv
 _pkgname=conky
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -29,6 +29,13 @@ sha1sums=('00d49d0835c0eae245ce0facc58f7566454c8c46')
 options=('!strip' 'debug')
 install='conky-lua-nv.install'
 
+prepare() {
+  # disable HSV gradients for now
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  rm tests/test-hsv.cc
+  sed -i 's/set(test_srcs ${test_srcs} test-hsv.cc)//g' tests/CMakeLists.txt
+}
+
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
@@ -48,6 +55,8 @@ build() {
     -D BUILD_NVIDIA=ON \
     -D BUILD_XDBE=ON \
     -D BUILD_XSHAPE=ON \
+    -D BUILD_HSV_GRADIENT=OFF \
+    -D BUILD_TESTS=OFF \
     -D CMAKE_INSTALL_PREFIX=/usr \
     .
 
