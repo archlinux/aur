@@ -1,14 +1,17 @@
 pkgbase = maltego
 	pkgdesc = Information gathering software by Paterva
-	pkgver = 4.2.15.13632
+	pkgver = 4.2.16.13775
 	pkgrel = 1
 	url = https://www.maltego.com
 	install = maltego.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom
 	depends = java-runtime
-	source = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.2.15.13632.deb
-	sha256sums = 06a495f133845dfbd95ac6d7801f006dc0f91bd183854078323a614b45a42c8f
+	depends = sh
+	source = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.2.16.13775.deb
+	source = LICENSE.pdf::https://www.maltego.com/pdf/legal/Maltego%20Technologies_TermsandConditions_2020-11.pdf
+	sha256sums = 57b29f731dc884651ac89d12574bdc26881973f7197199890d3b9f0c803fd4d0
+	sha256sums = 5295b55e0da0a7aaa733032bf6d508dd149d66b379f71c4b15271729c3aa5500
 
 pkgname = maltego
+

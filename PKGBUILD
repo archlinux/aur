@@ -4,19 +4,21 @@
 
 pkgname=maltego
 
-pkgver=4.2.15.13632
+pkgver=4.2.16.13775
 pkgrel=1
 
 pkgdesc='Information gathering software by Paterva'
 url="https://www.$pkgname.com"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('custom')
 
-depends=('java-runtime')
+depends=('java-runtime' 'sh')
 
 install="$pkgname.install"
-source=("https://$pkgname-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v$pkgver.deb")
-sha256sums=('06a495f133845dfbd95ac6d7801f006dc0f91bd183854078323a614b45a42c8f')
+source=("https://$pkgname-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v$pkgver.deb"
+        "LICENSE.pdf::https://www.$pkgname.com/pdf/legal/${pkgname^}%20Technologies_TermsandConditions_2020-11.pdf")
+sha256sums=('57b29f731dc884651ac89d12574bdc26881973f7197199890d3b9f0c803fd4d0'
+            '5295b55e0da0a7aaa733032bf6d508dd149d66b379f71c4b15271729c3aa5500')
 
 
 package() {
@@ -24,6 +26,7 @@ package() {
   sed -i 's|\(Exec=\)x-www-browser|\1xdg-open|g;s|^\(Version=\).*|\11.0|' \
          "$pkgdir/usr/share/applications/$pkgname"{,_config}.desktop
   chmod g-w "$pkgdir"/usr{,/bin,/share{,/applications,"/$pkgname",/pixmaps}}
+  install -Dm644 LICENSE.pdf -t"$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 
