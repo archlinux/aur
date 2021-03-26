@@ -107,8 +107,7 @@ ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=1
-export MOZ_APP_REMOTINGNAME=${__pkgname//-/}
+export MOZ_REQUIRE_SIGNING=0
 
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
