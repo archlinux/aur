@@ -4,20 +4,24 @@ pkgname=(yaru-remix-gtk-theme-git
          yaru-remix-gnome-shell-theme-git
          yaru-remix-icon-theme-git
          yaru-remix-wallpaper-git)
-pkgver=20.10.r0.gabfc331f
-pkgrel=1
-pkgdesc="Yaru-remix is a fork of Yaru theme (Gnome 3.38 branch)"
+pkgver=r6.a1fdac60
+pkgrel=2
+epoch=1
+pkgdesc="Yaru-remix is a fork of Yaru theme"
 arch=(any)
 url="https://github.com/Muqtxdir/${pkgbase%-git}"
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'CCPL:by-nc-sa')
 makedepends=(meson sassc git)
 options=('!strip' '!buildflags' 'staticlibs')
-source=("${pkgbase%-git}::git+https://github.com/Muqtxdir/yaru-remix.git#branch=gnome-3-38")
+source=("${pkgbase%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgbase%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
