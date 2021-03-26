@@ -1,6 +1,6 @@
 # Maintainer: istimaldar_sntlk <istimaldar@gmail.com>
 pkgname=earthly-bin
-pkgver=0.5.6
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='Build automation for the container era'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "https://github.com/earthly/earthly/releases/download/v${pkgver}/earthly-linux-amd64"
 )
 sha512sums=(
-  '4aeac28a7e4e0b7d72c360c44b1fdcb77bb84ab3903c70936dc40f6b6eca25f44d6df7f1d16b839baa3c4a31260ea898462e0d89e6e4856589ff506c1a3b8d46'
+  'e4a1e0f0c4ffc6d64912b836d5fa0fb54bee09fc4f171e46bb680555d342383e6674e238ae54af7d1ae7a48b9daf141eb0ae1263e7f5bc38613411640f20e52b'
 )
 
 prepare() {
