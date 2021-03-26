@@ -1,6 +1,6 @@
 pkgbase = librist
 	pkgdesc = A library that can be used to add the RIST protocol to applications
-	pkgver = 0.2.0.rc5
+	pkgver = 0.2.0rc5
 	pkgrel = 1
 	url = https://code.videolan.org/rist/librist/
 	arch = x86_64

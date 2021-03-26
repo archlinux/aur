@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=librist
-pkgver=0.2.0.rc5
+pkgver=0.2.0rc5
 _srcver=0.2.0-RC5
 pkgrel=1
 pkgdesc='A library that can be used to add the RIST protocol to applications'
