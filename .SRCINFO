@@ -1,0 +1,26 @@
+pkgbase = bazel3
+	pkgdesc = Correct, reproducible, and fast builds for everyone
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://bazel.build/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = protobuf
+	makedepends = python
+	depends = java-environment=11
+	depends = libarchive
+	depends = zip
+	depends = unzip
+	provides = bazel=3.7.2
+	conflicts = bazel
+	options = !distcc
+	options = !strip
+	source = https://github.com/bazelbuild/bazel/releases/download/3.7.2/bazel-3.7.2-dist.zip
+	source = https://github.com/bazelbuild/bazel/releases/download/3.7.2/bazel-3.7.2-dist.zip.sig
+	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
+	sha512sums = e8746ef5ec22feb95e9dbbddb3fb56cf8f49c80f326fc2a4e0ce2619607826fac22f46bfb995daee55bf9ffabb9d646b8454be2bce7b479da5cf2a7e5b3be62b
+	sha512sums = SKIP
+
+pkgname = bazel3
+
