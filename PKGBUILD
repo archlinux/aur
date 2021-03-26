@@ -16,13 +16,16 @@ conflicts=(cppqed)
 source=("${pkgname}"::git+https://github.com/vukics/cppqed
         "blitz-cppqed::git+https://github.com/vukics/blitz"
         "pcg-cpp::git+https://github.com/vukics/pcg-cpp"
-        "Xoshiro-cpp::git+https://github.com/vukics/Xoshiro-cpp")
+        "Xoshiro-cpp::git+https://github.com/vukics/Xoshiro-cpp"
+        "cmake_GetGitRev.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'f1bcc9fe4cc8accb76a2c3825b633c19f68ba995db3f9e42d89834b72d038bef')
 
 prepare() {
+  git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/cmake_GetGitRev.patch
   git -C "${srcdir}/${pkgname}" config submodule.blitz.url "${srcdir}"/blitz-cppqed
   git -C "${srcdir}/${pkgname}" config submodule.CPPQEDutils/thirdPartyRandom/pcg-cpp.url "${srcdir}"/pcg-cpp
   git -C "${srcdir}/${pkgname}" config submodule.CPPQEDutils/thirdPartyRandom/Xoshiro-cpp.url "${srcdir}"/Xoshiro-cpp

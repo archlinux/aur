@@ -24,10 +24,12 @@ pkgbase = cppqed-git
 	source = blitz-cppqed::git+https://github.com/vukics/blitz
 	source = pcg-cpp::git+https://github.com/vukics/pcg-cpp
 	source = Xoshiro-cpp::git+https://github.com/vukics/Xoshiro-cpp
+	source = cmake_GetGitRev.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = f1bcc9fe4cc8accb76a2c3825b633c19f68ba995db3f9e42d89834b72d038bef
 
 pkgname = cppqed-git
 

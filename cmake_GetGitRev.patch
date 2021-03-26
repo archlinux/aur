@@ -1,0 +1,100 @@
+From 2519c5dd5a640d5a8cef23074ec18cb7ca926c2f Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Fri, 26 Mar 2021 06:42:49 +0100
+Subject: [PATCH 1/2] Revert "Switched to newest version of
+ GetGitRevisionDescription"
+
+This reverts commit 3c232f076838ceeb8d54f176eea4d21a0327b19c.
+---
+ cmake/GetGitRevisionDescription.cmake    | 13 +++++--------
+ cmake/GetGitRevisionDescription.cmake.in |  4 +---
+ 2 files changed, 7 insertions(+), 12 deletions(-)
+
+diff --git a/cmake/GetGitRevisionDescription.cmake b/cmake/GetGitRevisionDescription.cmake
+index 87f691ad..1cbc35b8 100644
+--- a/cmake/GetGitRevisionDescription.cmake
++++ b/cmake/GetGitRevisionDescription.cmake
+@@ -3,7 +3,7 @@
+ # These functions force a re-configure on each git commit so that you can
+ # trust the values of the variables in your build system.
+ #
+-#  get_git_head_revision(<refspecvar> <hashvar> [ALLOW_LOOKING_ABOVE_CMAKE_SOURCE_DIR])
++#  get_git_head_revision(<refspecvar> <hashvar> [<additional arguments to git describe> ...])
+ #
+ # Returns the refspec and sha hash of the current head revision
+ #
+@@ -86,15 +86,10 @@ endfunction()
+ function(get_git_head_revision _refspecvar _hashvar)
+     _git_find_closest_git_dir("${CMAKE_CURRENT_SOURCE_DIR}" GIT_DIR)
+ 
+-    if("${ARGN}" STREQUAL "ALLOW_LOOKING_ABOVE_CMAKE_SOURCE_DIR")
+-        set(ALLOW_LOOKING_ABOVE_CMAKE_SOURCE_DIR TRUE)
+-    else()
+-        set(ALLOW_LOOKING_ABOVE_CMAKE_SOURCE_DIR FALSE)
+-    endif()
+     if(NOT "${GIT_DIR}" STREQUAL "")
+         file(RELATIVE_PATH _relative_to_source_dir "${CMAKE_SOURCE_DIR}"
+              "${GIT_DIR}")
+-        if("${_relative_to_source_dir}" MATCHES "[.][.]" AND NOT ALLOW_LOOKING_ABOVE_CMAKE_SOURCE_DIR)
++        if("${_relative_to_source_dir}" MATCHES "[.][.]")
+             # We've gone above the CMake root dir.
+             set(GIT_DIR "")
+         endif()
+@@ -143,7 +138,9 @@ function(get_git_head_revision _refspecvar _hashvar)
+             string(REGEX REPLACE "gitdir: (.*)$" "\\1" git_worktree_dir
+                                  ${worktree_ref})
+             string(STRIP ${git_worktree_dir} git_worktree_dir)
+-            _git_find_closest_git_dir("${git_worktree_dir}" GIT_DIR)
++            if(NOT EXISTS "${git_worktree_dir}/HEAD")
++                _git_find_closest_git_dir("${git_worktree_dir}" GIT_DIR)
++            endif()
+             set(HEAD_SOURCE_FILE "${git_worktree_dir}/HEAD")
+         endif()
+     else()
+diff --git a/cmake/GetGitRevisionDescription.cmake.in b/cmake/GetGitRevisionDescription.cmake.in
+index 116efc4e..6d8b708e 100644
+--- a/cmake/GetGitRevisionDescription.cmake.in
++++ b/cmake/GetGitRevisionDescription.cmake.in
+@@ -8,12 +8,10 @@
+ # http://academic.cleardefinition.com
+ # Iowa State University HCI Graduate Program/VRAC
+ #
+-# Copyright 2009-2012, Iowa State University
+-# Copyright 2011-2015, Contributors
++# Copyright Iowa State University 2009-2010.
+ # Distributed under the Boost Software License, Version 1.0.
+ # (See accompanying file LICENSE_1_0.txt or copy at
+ # http://www.boost.org/LICENSE_1_0.txt)
+-# SPDX-License-Identifier: BSL-1.0
+ 
+ set(HEAD_HASH)
+ 
+-- 
+2.31.0
+
+
+From 6f87dae293c9e0d32159fac27bdd912b0004e364 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Fri, 26 Mar 2021 06:45:00 +0100
+Subject: [PATCH 2/2] fix GetGitRevisionDescription.cmake
+
+---
+ cmake/GetGitRevisionDescription.cmake | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/GetGitRevisionDescription.cmake b/cmake/GetGitRevisionDescription.cmake
+index 1cbc35b8..28898b46 100644
+--- a/cmake/GetGitRevisionDescription.cmake
++++ b/cmake/GetGitRevisionDescription.cmake
+@@ -138,7 +138,7 @@ function(get_git_head_revision _refspecvar _hashvar)
+             string(REGEX REPLACE "gitdir: (.*)$" "\\1" git_worktree_dir
+                                  ${worktree_ref})
+             string(STRIP ${git_worktree_dir} git_worktree_dir)
+-            if(NOT EXISTS "${git_worktree_dir}/HEAD")
++            if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${git_worktree_dir}/HEAD")
+                 _git_find_closest_git_dir("${git_worktree_dir}" GIT_DIR)
+             endif()
+             set(HEAD_SOURCE_FILE "${git_worktree_dir}/HEAD")
+-- 
+2.31.0
+
