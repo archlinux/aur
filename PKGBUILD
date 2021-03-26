@@ -1,7 +1,7 @@
 # Maintainer: istimaldar_sntlk <istimaldar@gmail.com>
 pkgname=earthly-bin
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Build automation for the container era'
 arch=('x86_64')
 url='https://earthly.dev'
