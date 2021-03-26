@@ -1,0 +1,24 @@
+#!/bin/sh
+
+mod=alt
+
+cutter config mouse_mod $mod
+
+cutter bind $mod+x quit
+cutter bind $mod+return exec sakura
+cutter bind $mod+left focus left
+cutter bind $mod+right focus right
+cutter bind $mod+shift+left move -10 0
+cutter bind $mod+shift+right move 10 0
+cutter bind $mod+shift+up move 0 -10
+cutter bind $mod+shift+down move 0 10
+cutter bind $mod+w close
+for i in $(seq 1 6); do
+	cutter bind $mod+$i workspace switch $(( i - 1 ))
+	cutter bind $mod+ctrl+$i workspace move $(( i - 1 ))
+done
+
+cutter bind $mod+shift+space toggle_floating
+
+cutter exec toolbox run swaybg -i ~/wallpapers/autobahn.png
+cutter exec toolbox run waybar

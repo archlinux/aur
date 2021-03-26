@@ -1,0 +1,4 @@
+post_install() {
+	echo "Cardboard will try to run ~/.config/cardboard/cardboardrc on startup."
+	echo "A sample script is provided in /usr/share/cardboard/"
+}

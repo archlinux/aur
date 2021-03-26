@@ -1,0 +1,35 @@
+pkgbase = cardboard-git
+	pkgdesc = A unique, scrollable tiling Wayland compositor designed with laptops in mind.
+	pkgver = r300.f2ef2ff
+	pkgrel = 1
+	url = https://gitlab.com/cardboardwm/cardboard
+	install = cardboard.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = libdrm
+	depends = libinput
+	depends = wayland
+	depends = xcb-util-wm
+	depends = xorg-server-xwayland
+	optdepends = dmenu: Application launcher
+	optdepends = grim: Screenshot utility
+	optdepends = mako: Lightweight notification daemon
+	optdepends = slurp: Select a region
+	optdepends = swaybg: Set background
+	optdepends = swayidle: Idle management daemon
+	optdepends = swaylock: Screen locker
+	optdepends = waybar: Highly customizable bar
+	provides = cardboard
+	conflicts = cardboard
+	source = git+https://gitlab.com/cardboardwm/cardboard.git
+	source = cardboardrc
+	sha512sums = SKIP
+	sha512sums = 351d5b3b96032586cf36f56f640146df8c873b641406bedf13d081e0c99fdd45dd4f9d2771c8d2cdac6cd1365e310285e8a07bdd7355a3788069c18b6b4ec106
+
+pkgname = cardboard-git
+
