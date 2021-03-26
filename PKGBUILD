@@ -12,7 +12,7 @@ depends=('python' 'python-txdbus' 'python-service-identity')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner')
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/hbldh/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("81b864482745c6082f1f8155d93695011277e998f5563f6106da80ae7f6c052c  bleak-0.11.0.tar.gz")
+sha256sums=("81b864482745c6082f1f8155d93695011277e998f5563f6106da80ae7f6c052c")
 
 build() {
   cd $_pkgname-$pkgver
