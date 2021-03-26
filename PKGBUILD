@@ -3,10 +3,12 @@
 
 pkgname=tfsec-bin
 pkgver=0.39.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Static analysis powered security scanner for your terraform code"
 depends=(glibc)
 arch=(x86_64)
+provides=('tfsec')
+conflicts=('tfsec')
 url="https://github.com/tfsec/tfsec"
 license=('MIT')
 
