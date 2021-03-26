@@ -1,0 +1,12 @@
+pkgbase = skeuos-gtk-theme-git
+	pkgdesc = Light and dark colorful Gtk3.20+ theme
+	pkgver = fc81bbe
+	pkgrel = 1
+	url = https://github.com/daniruiz/skeuos-gtk
+	arch = any
+	license = unknown
+	source = git+https://github.com/daniruiz/skeuos-gtk.git
+	md5sums = SKIP
+
+pkgname = skeuos-gtk-theme-git
+
