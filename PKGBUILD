@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=1.0.0.r0.gdd40a2442
+pkgver=0.35.1.r193.g219e1a871
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('x86_64' 'aarch64')
@@ -33,6 +33,10 @@ prepare() {
   cd "$srcdir/${pkgname/-git/}"
 
   if [ "$CARCH" = "aarch64" ]; then
+    git clean -f
+    patch -p1 < "$srcdir/9401.patch"
+    patch -p1 < "$srcdir/9430.patch"
+    patch -p1 < "$srcdir/9422.patch"
     export PATH="$srcdir/crystal-0.35.0-aarch64-alpine-linux-musl/bin:$PATH"
     export EXPORT_CC="CC=cc" # prevent lld usage, broken on  aarch64
   fi
