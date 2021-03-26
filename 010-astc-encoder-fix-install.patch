@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -125,7 +125,7 @@ set(CMAKE_CXX_STANDARD 14)
+@@ -146,7 +146,7 @@ set(CMAKE_CXX_STANDARD 14)
  set(CMAKE_CXX_STANDARD_REQUIRED ON)
  set(CMAKE_CXX_EXTENSIONS OFF)
  set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
@@ -11,7 +11,7 @@
  # Subcomponents
 --- a/Source/UnitTest/cmake_core.cmake
 +++ b/Source/UnitTest/cmake_core.cmake
-@@ -108,5 +108,3 @@ target_link_libraries(test-simd-${ISA_SIMD}
+@@ -114,5 +114,3 @@ target_link_libraries(test-simd-${ISA_SIMD}
  
  add_test(NAME test-simd-${ISA_SIMD}
           COMMAND test-simd-${ISA_SIMD})
