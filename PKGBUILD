@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='33ca9aa8a2a2d28022d3fc03704e99ce01828376'
-_svt_vp9_ver='e1bbb77ed315f417002071e93789b366d9ff997e'
+_svt_vp9_ver='abd5c59c06d686eae57ef4e6f899c601f791d055'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r100994.ga52b9464e4
+pkgver=4.4.r101737.g896395bbcf
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -15,20 +15,20 @@ depends=(
         'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
         'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
         'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
-        'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
-        'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame' 'opencore-amr'
-        'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
-        'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
-        'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
-        'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265' 'libxcb'
-        'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'libmysofa'
-        'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'vulkan-icd-loader'
-        'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio' 'libdrm'
-        'intel-media-sdk' 'libva' 'libvdpau'
+        'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
+        'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
+        'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
+        'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
+        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
+        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
+        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
+        'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2'
-        'pocketsphinx' 'rockchip-mpp' 'lensfun-git'
+        'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs'
+        'xavs2' 'pocketsphinx' 'rockchip-mpp' 'lensfun-git'
 )
 makedepends=(
     # official repositories:
@@ -50,10 +50,10 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            'de0eeda63c2b0adf185e8c96e15872940cb8cfae5dd7590d593f56ef2c7db09d'
+            'e096996903d4e19348fabe9c61923678cbadf57299cd03809c9e06065d6ffbe2'
             '740dc9838aa47daa9f9b107178e53e384344f4c6f90865bd7e3af189257da544'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '34e78efe063abc10707e47b4a3ba9d22955bfaf26d5670abb963d8f11f6b22b1'
+            'b7d722dfce20b73e9d5c73d55ffe041bbdc92a3c4a5c5d766b6b3040671b4052'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -80,6 +80,7 @@ build() {
         --prefix='/usr' \
         --extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow' \
         --extra-ldflags='-L/opt/cuda/lib64' \
+        --enable-lto \
         \
         --disable-rpath \
         --enable-gpl \
@@ -118,7 +119,7 @@ build() {
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --disable-libglslang \
+        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libiec61883 \
@@ -140,6 +141,7 @@ build() {
         --enable-libpulse \
         --enable-librabbitmq \
         --enable-librav1e \
+        --enable-librist \
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
