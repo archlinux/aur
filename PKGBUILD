@@ -2,8 +2,8 @@
 
 pkgname=hyperglot
 pkgver=0.2.9
-pkgrel=1
-pkgdesc='Hyperglot: a database and tools for detecting language support in fonts'
+pkgrel=2
+pkgdesc='A database and tools for detecting language support in fonts'
 arch=(any)
 url="https://github.com/rosettatype/$pkgname"
 license=('GPL3')
