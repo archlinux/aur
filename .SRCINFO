@@ -1,6 +1,6 @@
 pkgbase = sheepshaver-git
 	pkgdesc = An Open Source PowerMac Emulator
-	pkgver = r2660.g29bb3d5a
+	pkgver = r2667.g4671258b
 	pkgrel = 1
 	url = http://sheepshaver.cebix.net
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = sheepshaver-git
 	sha256sums = ab944b2d074df35671ad534a1c768fdcf663d9d0f838d68b73007e3737b1a0c4
 
 pkgname = sheepshaver-git
-	provides = sheepshaver=r2660.g29bb3d5a
+	provides = sheepshaver=r2667.g4671258b
 	conflicts = sheepshaver
 
 pkgname = sheepnet-dkms-git
 	depends = dkms
-	provides = sheepnet-dkms=r2660.g29bb3d5a
+	provides = sheepnet-dkms=r2667.g4671258b
 	conflicts = sheepnet-dkms
 

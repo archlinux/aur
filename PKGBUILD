@@ -2,7 +2,7 @@
 
 pkgbase=sheepshaver-git
 pkgname=(sheepshaver-git sheepnet-dkms-git)
-pkgver=r2660.g29bb3d5a
+pkgver=r2667.g4671258b
 pkgrel=1
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
@@ -13,7 +13,8 @@ source=('git+https://github.com/cebix/macemu'
         'SheepShaver.sysctl'
         'SheepShaver.desktop'
         'SheepShaver.png'
-		'sdl2_bug.patch')
+		'sdl2_bug.patch'
+		)
 sha256sums=('SKIP'
             'a4aa858b95d29906873693988d5db42d5a4da8aa94a72c79374f59fc488efd51'
             'cb002e73e864a6ca271e0bbaa6df6eb89dc1df86856fc575c20bf79367458c39'
@@ -27,11 +28,12 @@ pkgver() {
 
 prepare() {
   cd macemu/
-  patch -p1 -i "$srcdir/sdl2_bug.patch"
+  # patch -p1 -i "$srcdir/sdl2_bug.patch"
 }
 
 build() {
   cd macemu/SheepShaver/src/Unix
+  export CXXFLAGS="$CXXFLAGS -DSTDC_HEADERS=1"
   ./autogen.sh \
     --prefix=/usr \
     --enable-addressing=direct \
