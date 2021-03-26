@@ -1,7 +1,7 @@
 # Maintainer: Mathias Merscher <archlinux@rheinekopfsache.de>
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 
-pkgname=tfsec
+pkgname=tfsec-bin
 pkgver=0.39.14
 pkgrel=1
 pkgdesc="Static analysis powered security scanner for your terraform code"

@@ -1,4 +1,4 @@
-pkgbase = tfsec
+pkgbase = tfsec-bin
 	pkgdesc = Static analysis powered security scanner for your terraform code
 	pkgver = 0.39.14
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = tfsec
 	sha256sums = ea6c5c6315dec16d0111d0da9a27449221a6f74efcd2d89200f1fe8f9c19254e
 	sha256sums = d59c7e06f84530a8464a352e7b7e153830d566e06aa8ca6a72defa809fad3a37
 
-pkgname = tfsec
+pkgname = tfsec-bin
 
