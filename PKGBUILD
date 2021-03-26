@@ -2,14 +2,14 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-maps-git
-pkgver=r1387.gb0700637
+pkgver=r1405.g0cb6a2e4
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
 url="https://ddnet.tw"
 license=('custom')
 makedepends=('git')
-backup=('usr/share/ddnet/data/autoexec_server.cfg'
+backup=('usr/share/ddnet/data/autoexec_server_maps.cfg'
         'usr/share/ddnet/data/reset.cfg'
         'usr/share/ddnet/data/storage.cfg')
 source=("git+https://github.com/ddnet/${pkgname%%-git}.git")
@@ -36,12 +36,13 @@ package() {
   _datadir="$pkgdir/usr/share/ddnet/data"
   install -d -m755 $_datadir/{maps,types}
 
-  install -m644 autoexec_server.cfg $_datadir
+    # Rename autoexec_server.cfg to avoid conflict with 'ddnet' package
+  install -m644 autoexec_server.cfg $_datadir/autoexec_server_maps.cfg
   install -m644 reset.cfg           $_datadir
   install -m644 storage.cfg         $_datadir
 
     # Disable test flag
-  sed '/sv_test_cmds/s/1/0/' -i $_datadir/autoexec_server.cfg
+  sed '/sv_test_cmds/s/1/0/' -i $_datadir/autoexec_server_maps.cfg
 
     # Set map type list, and fail if no map type is found
   _typelist=$(ls -d types/* | sed 's|.*/||')
