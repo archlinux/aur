@@ -4,12 +4,12 @@
 pkgname=gplaycli
 pkgver=3.29
 _gpapi_ver=0.4.4.4
-pkgrel=1
-pkgdesc="command line tool to search/install/update Android applications Google PlayStore able to run with cronjob, in order to automatically update an F-Droid server instance"
+pkgrel=2
+pkgdesc="command line tool to search, install, update Android applications from the Google Play Store"
 arch=('any')
 url="https://github.com/matlink/gplaycli"
 license=('AGPL')
-depends=('python' 'python-pyaxmlparser' 'python-setuptools' 'python-protobuf') # 'python-gpapi' temporarily replaced by adapted version
+depends=('python' 'python-pyaxmlparser' 'python-setuptools' 'python-protobuf' 'python-cryptography') # 'python-gpapi' temporarily replaced by adapted version
 conflicts=('python-gpapi')
 optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
 install=$pkgname.install
@@ -27,6 +27,12 @@ package() {
     
     # install gplaycli
     cd "$srcdir/$pkgname-$pkgver"
+
+    # fix for bug #272 (PR 273)
+    sed -i "s/splits = data_iter['splits']/splits = data_iter.get('splits')/g" gplaycli/gplaycli.py
+    # fix uploadDate (PR 266)
+    sed -i "s#details['uploadDate'],#details['uploadDate'] if ('uploadDate' in details) else 'N/A',#g" gplaycli/gplaycli.py
+
     python setup.py install --root="$pkgdir/" --optimize=1
 
     # installs config to build user home - moving to /usr/share
