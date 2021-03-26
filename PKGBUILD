@@ -5,16 +5,25 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.1.42.622
-_commit=gbd112320
-_rel=37
-pkgrel=3
-pkgdesc="A proprietary music streaming service"
+pkgver=1.1.55.498
+_commit=gf9a83c60
+pkgrel=1
+pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
-license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
-url="https://www.spotify.com"
-depends=("alsa-lib>=1.0.14" "gtk2" "nss" "libxtst" "libxss" "libcurl-gnutls" "libglvnd")
-optdepends=('ffmpeg0.10: Adds support for playback of local files'
+license=('custom')
+url='https://www.spotify.com'
+depends=('alsa-lib>=1.0.14'
+	 'at-spi2-atk'
+	 'glib2'
+	 'gtk3'
+	 'libxtst'
+	 'libxss'
+	 'libcurl-gnutls'
+	 'libglvnd'
+	 'nss'
+	 'openssl'
+	 'xdg-utils')
+optdepends=('ffmpeg: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
 provides=("${_pkgname}")
@@ -22,12 +31,12 @@ conflicts=("${_pkgname}")
 
 source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Release"
 	"${_pkgname}-Release.sig::http://repository.spotify.com/dists/testing/Release.gpg"
-	"${_pkgname}-${pkgver}-${CARCH}.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}-${_rel}_amd64.deb"
+	"${_pkgname}-${pkgver}-${CARCH}.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}_amd64.deb"
 	"${_pkgname}-${CARCH}-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
 	'LICENSE')
 sha512sums=('SKIP'
 	'SKIP'
-	'a3fe98d69460ffd641df3219c2a3d164a33e2b52c86a56276e473dd5c3a43d6304df3b77fefcf0ca6c09cb6e2c8dacab65573cf7543725b6c8d402832149e122'
+	'395806fc064706cc6b005054ec0f5e0a9b0cebfa073ccb771b7e8cb2f6c8aa300efe9164e492f90f4c83d047a898f6553c44722562d8f3e1462947d811a2e599'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
 validpgpkeys=('8FD3D9A8D3800305A9FFF259D1742AD60D811D58')
@@ -92,5 +101,5 @@ package() {
 
     # Install license
     # https://www.spotify.com/legal/end-user-agreement
-    install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
