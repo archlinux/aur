@@ -27,13 +27,15 @@ pkgbase = firefox-beta
 	makedepends = nasm
 	makedepends = python-setuptools
 	makedepends = python-psutil
+	makedepends = python-zstandard
 	makedepends = lld
+	makedepends = dump_syms
 	depends = gtk3
 	depends = libxt
 	depends = mime-types
 	depends = dbus-glib
 	depends = ffmpeg
-	depends = nss>=3.60
+	depends = nss
 	depends = ttf-font
 	depends = libpulse
 	optdepends = networkmanager: Location detection via available WiFi networks
