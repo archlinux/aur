@@ -2,4 +2,4 @@
 !/.gitignore
 !/PKGBUILD
 !/.SRCINFO
-!/*.diff
+!/*.patch
