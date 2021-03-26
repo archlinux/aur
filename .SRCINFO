@@ -1,0 +1,14 @@
+pkgbase = asus-wmi-screenpad-dkms-git
+	pkgdesc = Variation of the asus-wmi kernel module with screenpad brightness support
+	pkgver = r17.5f45b53
+	pkgrel = 1
+	url = https://github.com/Plippo/asus-wmi-screenpad
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	source = asus-wmi-screenpad-dkms-git::git+https://github.com/Plippo/asus-wmi-screenpad
+	sha512sums = SKIP
+
+pkgname = asus-wmi-screenpad-dkms-git
+
