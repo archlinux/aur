@@ -8,6 +8,7 @@ pkgbase = mingw-w64-spirv-tools
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-spirv-headers
 	makedepends = python
+	makedepends = git
 	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
