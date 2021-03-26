@@ -1,7 +1,7 @@
 # Maintainer: tcg <aur-tcg@emailaddress.biz>
 
 pkgname=tcg-git
-pkgver=0.2.46
+pkgver=0.2.47
 pkgrel=1
 pkgdesc="cgroups for terminals"
 arch=('x86_64')
@@ -17,7 +17,7 @@ build() {
   git submodule update --init --recursive
   mkdir -p build
   cd build
-  cmake --config Release ..
+  cmake ..
   make -j
 }
 
