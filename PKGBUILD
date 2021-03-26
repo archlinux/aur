@@ -9,7 +9,7 @@ _provide_udev_rule=true
 pkgbase='winesync'
 pkgname=()
 pkgver=5.11
-pkgrel=7
+pkgrel=8
 pkgdesc="Wine synchronization primitive driver"
 arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
@@ -29,13 +29,13 @@ _header_conflicts=("$pkgbase-header")
 _udev_rule_conflicts=("$pkgbase-udev-rule")
 license=('GPL2')
 options=('!strip')
-_commit=e97dfb6b3ee6792cd1fe8242df4dafd8f10cca99
+_commit=d8c6e2ca1d6291f6c8489b7c24d481451e8c3c10
 source=("winesync.c-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/drivers/misc/winesync.c"
         "winesync.h-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/include/uapi/linux/winesync.h"
         '99-winesync.rules'
         'Makefile'
         'dkms.conf')
-sha256sums=('54408ac30ab482781cb554dd86f05020dda4473bee0caecc326fa1cdda719b9f'
+sha256sums=('33b79f4c0b99bd623cf2b1b50fe2ff6d8eaa7f71cd73c3949898862a102fa23d'
             'ab632cb5ec60a285846bd491de49a35e629f08a0a29882672f56ae280144e95d'
             '9b22d9976a83785e6a1cfc4a3aa230a8c5e4e903730bbafc598ec86bfaa35c3e'
             '05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453'
