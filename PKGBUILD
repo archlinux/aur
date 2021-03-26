@@ -1,18 +1,23 @@
-# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
-
+# Maintainer: Marcel Walk (Nyasaki) <mwalk at nyasaki dot cloud>
 pkgname=paclog
-pkgver=1.1.1
+pkgver=1.1
 pkgrel=1
-pkgdesc='List recent commits for Arch Linux packages'
-url='https://github.com/protist/paclog'
+pkgdesc="A pacman log analyzer"
 arch=('any')
-license=('GPL3')
-depends=('w3m')
-source=("https://github.com/protist/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('eb4473a44e9521dfcae5fc3de66f45b8b2e054bc6291abb8735f9543185ea8d7')
+url="https://github.com/xfgusta/paclog"
+license=('MIT')
+depends=(python)
+makedepends=(tar)
+source=("https://github.com/xfgusta/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('SKIP')
+
+BUILDENV+=('!check')
+
+prepare() {
+	tar -zxvf $pkgver.tar.gz $pkgname-$pkgver/paclog $pkgname-$pkgver/LICENSE
+}
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
+	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m 0755 "${srcdir}/${pkgname}-${pkgver}/paclog" "${pkgdir}/usr/bin/paclog"
 }
