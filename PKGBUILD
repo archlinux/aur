@@ -2,7 +2,7 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.21.0.62.gb43834eb
+pkgver=3.21.0.109.gfff5bc5d
 pkgrel=1
 _realver=3.21.0
 pkgdesc='Visual diff and merge tool'
@@ -19,8 +19,8 @@ makedepends=('git'
              'meson'
              'yelp-tools')
 optdepends=('python-dbus: open a new tab in an already running instance')
-conflicts=('meld' 'meld-dev')
 provides=('meld')
+conflicts=('meld' 'meld-dev')
 options=('!emptydirs')
 source=("git+https://gitlab.gnome.org/GNOME/meld.git")
 sha256sums=('SKIP')
