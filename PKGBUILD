@@ -3,7 +3,7 @@
 # prev-Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=2.100.8.r183.g712b601e
+pkgver=2.100.8.r191.g3c232f07
 pkgrel=1
 pkgdesc="Highly flexible framework for simulating open quantum dynamics."
 arch=(i686 x86_64)
