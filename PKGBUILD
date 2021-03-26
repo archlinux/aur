@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=neovim-coc-git
-pkgver=0.0.79.r36.g815d105f
+pkgver=0.0.80.r44.g67fb4d13
 pkgrel=1
 pkgdesc='Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode'
 arch=('any')
@@ -9,19 +9,24 @@ license=('MIT')
 depends=('neovim' 'nodejs')
 optdepends=('npm: for installing coc extensions'
             'yarn: for installing coc extensions'
-            'watchman: for workspace_didChangeWatchedFiles feature'
-            'neovim-coc-extras-meta: some basic extensions')
-makedepends=('git')
+            'watchman: for workspace_didChangeWatchedFiles feature')
+makedepends=('git' 'yarn')
 provides=('neovim-coc')
 conflicts=('neovim-coc')
-source=('git+https://github.com/neoclide/coc.nvim.git#branch=release')
+source=('git+https://github.com/neoclide/coc.nvim.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/coc.nvim"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe release --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "${srcdir}/coc.nvim"
+    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
+    yarn run build
+}
+ 
 package() {
     cd "${srcdir}/coc.nvim"
     nvim -es --cmd ":helptags doc" --cmd ":q"
