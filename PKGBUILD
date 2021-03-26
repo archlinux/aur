@@ -12,8 +12,8 @@ url='https://libimobiledevice.org/'
 arch=('x86_64')
 license=('LGPL2.1')
 depends=('libimobiledevice' 'fuse2')
-source=("https://cgit.libimobiledevice.org/ifuse.git/snapshot/$pkgname-$pkgver.tar.bz2")
-sha256sums=('e324456e64b788951b714d6ee7c2ecb1f6bda2355973548fe49d4a14db5d15fe')
+source=("$pkgname-$pkgver::https://github.com/libimobiledevice/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('2a00769e8f1d8bad50898b9d00baf12c8ae1cda2d19ff49eaa9bf580e5dbe78c')
 
 build() {
   cd "$pkgname-$pkgver"
