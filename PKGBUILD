@@ -20,6 +20,7 @@ sha256sums=('3942014f681bfe2b25f3653fbb1108dbaf1de9f4f6993e9770a7fd42a92014f2')
 
 build() {
     cd "${srcdir}/coc.nvim-${_hash}"
+    sed -i "3s/=.*/= '${_hash}'/" webpack.config.js
     yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
     yarn run build
 }
