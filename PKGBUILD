@@ -3,20 +3,47 @@
 
 pkgname=tfsec
 pkgver=0.39.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Static analysis powered security scanner for your terraform code"
-depends=(glibc)
+depends=('glibc')
+makedepends=('go')
 arch=(x86_64)
 url="https://github.com/tfsec/tfsec"
 license=('MIT')
 
-source=("tfsec-${pkgver}::${url}/releases/download/v${pkgver}/tfsec-linux-amd64"
-        "https://raw.githubusercontent.com/tfsec/tfsec/v${pkgver}/LICENSE")
+source=("${url}/archive/refs/tags/v${pkgver}.zip")
 
-sha256sums=('ea6c5c6315dec16d0111d0da9a27449221a6f74efcd2d89200f1fe8f9c19254e'
-            'd59c7e06f84530a8464a352e7b7e153830d566e06aa8ca6a72defa809fad3a37')
+sha256sums=('c40e9cc92b1bfa97611ba4ccd1279db235c460b721a9a8d8e9f38c87ee4ed2e2')
+
+build() {
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    _flags=(
+        -X=github.com/tfsec/tfsec/version.Version=v${pkgver}
+        -s -w
+        -linkmode=external
+    )
+
+    cd "${pkgname}-${pkgver}"
+
+    go build \
+        -buildmode=pie \
+        -trimpath \
+        -modcacherw \
+        -mod=readonly \
+        -ldflags="${_flags[*]}" \
+        -o "${pkgname}" \
+        ./cmd/"${pkgname}"
+}
+
+check () {
+    cd "${pkgname}-${pkgver}"
+    go test -v ./...
+}
 
 package() {
-    install -D -m755 "${srcdir}/tfsec-${pkgver}" "${pkgdir}/usr/bin/tfsec"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
