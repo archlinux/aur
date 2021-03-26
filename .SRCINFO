@@ -1,7 +1,7 @@
 pkgbase = yaru-remix-git
 	pkgdesc = Yaru-remix is a fork of Yaru theme
 	pkgver = r6.a1fdac60
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/Muqtxdir/yaru-remix
 	arch = any

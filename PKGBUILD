@@ -5,7 +5,7 @@ pkgname=(yaru-remix-gtk-theme-git
          yaru-remix-icon-theme-git
          yaru-remix-wallpaper-git)
 pkgver=r6.a1fdac60
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Yaru-remix is a fork of Yaru theme"
 arch=(any)
@@ -32,10 +32,9 @@ build() {
 
 _delete_all_from_pkgdir_except() {
   if [[ "$1" != "gtk-theme" ]]; then
-    rm -r "${pkgdir}"/usr/share/themes/Yaru-remix-light/{gtk-*,index.theme}
-    rm -r "${pkgdir}"/usr/share/themes/Yaru-remix-dark/{gtk-*,index.theme}
-    rm -r "${pkgdir}"/usr/share/themes/Yaru-remix/{gtk-*,index.theme}
-    rm -r "${pkgdir}"/usr/share/themes/Yaru-remix/{metacity-*,index.theme}
+    rm -r "${pkgdir}"/usr/share/themes/Yaru-remix-light/{metacity-*,gtk-*,index.theme}
+    rm -r "${pkgdir}"/usr/share/themes/Yaru-remix-dark/{metacity-*,gtk-*,index.theme}
+    rm -r "${pkgdir}"/usr/share/themes/Yaru-remix/{metacity-*,gtk-*,index.theme}
   fi
   if [[ "$1" != "gnome-shell-theme" ]]; then
     rm -r "${pkgdir}"/usr/share/themes/Yaru-remix/gnome-shell
