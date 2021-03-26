@@ -1,15 +1,15 @@
 pkgbase = usacloud-bin
 	pkgdesc = CLI client for the Sakura Cloud
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/sacloud/usacloud
 	arch = i686
 	arch = x86_64
 	license = Apache
-	source_i686 = usacloud_linux-386_1.1.3.zip::https://github.com/sacloud/usacloud/releases/download/v1.1.3/usacloud_linux-386.zip
-	sha256sums_i686 = 0e72f3d9add91fb0a77ace64e7d9b1989dfb4898b62a2925cd67d8aeecafc9c9
-	source_x86_64 = usacloud_linux-amd64_1.1.3.zip::https://github.com/sacloud/usacloud/releases/download/v1.1.3/usacloud_linux-amd64.zip
-	sha256sums_x86_64 = e8b30a5a741ad6496446def52472c8610a63e02ea52d22eb94640cc709131357
+	source_i686 = usacloud_linux-386_1.1.4.zip::https://github.com/sacloud/usacloud/releases/download/v1.1.4/usacloud_linux-386.zip
+	sha256sums_i686 = 77c574f1b926d8c0161fdc2afcd97350a08b9815c5f902689a8f8b1107930e24
+	source_x86_64 = usacloud_linux-amd64_1.1.4.zip::https://github.com/sacloud/usacloud/releases/download/v1.1.4/usacloud_linux-amd64.zip
+	sha256sums_x86_64 = baa336fe993ba04f7a8874830228e37bcbdd905b618eea79e06cbc3ed600ca2a
 
 pkgname = usacloud-bin
 
