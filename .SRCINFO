@@ -1,0 +1,13 @@
+pkgbase = bukubrow-bin
+	pkgdesc = Host application for the Bukubrow WebExtension, precompiled
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/samhh/bukubrow-host/
+	arch = x86_64
+	license = GPL3
+	conflicts = bukubrow
+	source = https://github.com/samhh/bukubrow-host//releases/download/v5.2.0/bukubrow-linux-amd64
+	sha256sums = ab7f3a6cade0875e34c8962f6a6c3af138e607cb95e1d2cf58dba58075bc5d81
+
+pkgname = bukubrow-bin
+
