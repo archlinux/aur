@@ -1,21 +1,22 @@
 pkgbase = python-catboost
 	pkgdesc = Fast, scalable, high performance gradient boosting on decision trees
-	pkgver = 0.24.4
+	pkgver = 0.25
 	pkgrel = 1
 	url = https://catboost.ai/
 	arch = x86_64
 	license = Apache
 	makedepends = python-wheel
 	makedepends = python-pip
+	depends = python>=3.9
 	depends = python-numpy
 	depends = python-six
 	depends = python-graphviz
 	depends = python-plotly
 	optdepends = python-ipywidgets: visualization in Jupyter
-	noextract = catboost-0.24.4-cp39-none-manylinux1_x86_64.whl
+	noextract = catboost-0.25-cp39-none-manylinux1_x86_64.whl
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/cp39/c/catboost/catboost-0.24.4-cp39-none-manylinux1_x86_64.whl
-	sha256sums = 120dc93fa1ebf3da370528cbf98fac8b5f02d3a7699c8e8a08664cc4a1aafeb0
+	source = https://files.pythonhosted.org/packages/cp39/c/catboost/catboost-0.25-cp39-none-manylinux1_x86_64.whl
+	sha256sums = 7aef085fb1f9d140a8938fb5baeeeb6e7cba1e55928e42bb295c8592b46b26ed
 
 pkgname = python-catboost
 
