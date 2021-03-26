@@ -5,15 +5,17 @@ pkgname=avxsynth-plugin-${_plug}-git
 pkgver=20120611.5c2028d
 pkgrel=1
 pkgdesc="Plugin for Avxsynth. ${_plug} (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/fundies/fft3dfilter-linux"
 license=('GPL')
-depends=('avxsynth' 'fftw')
+depends=('avxsynth'
+         'fftw'
+         )
 makedepends=('git')
 provides=("avxsynth-plugin-${_plug}")
 conflicts=("avxsynth-plugin-${_plug}")
 
-source=("${_plug}::git://github.com/fundies/fft3dfilter-linux.git")
+source=("${_plug}::git+https://github.com/sl1pkn07/fft3dfilter-linux.git")
 md5sums=('SKIP')
 _gitname="${_plug}"
 

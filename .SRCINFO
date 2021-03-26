@@ -3,7 +3,6 @@ pkgbase = avxsynth-plugin-fft3dfilter-git
 	pkgver = 20120611.5c2028d
 	pkgrel = 1
 	url = https://github.com/fundies/fft3dfilter-linux
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -11,7 +10,7 @@ pkgbase = avxsynth-plugin-fft3dfilter-git
 	depends = fftw
 	provides = avxsynth-plugin-fft3dfilter
 	conflicts = avxsynth-plugin-fft3dfilter
-	source = fft3dfilter::git://github.com/fundies/fft3dfilter-linux.git
+	source = fft3dfilter::git+https://github.com/sl1pkn07/fft3dfilter-linux.git
 	md5sums = SKIP
 
 pkgname = avxsynth-plugin-fft3dfilter-git
