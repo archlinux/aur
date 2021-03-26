@@ -1,5 +1,5 @@
 diff --git a/doc/ref/Makefile.am b/doc/ref/Makefile.am
-index 2f4b8ca88..c6fe2ec93 100644
+index 2f4b8ca88..939e1966c 100644
 --- a/doc/ref/Makefile.am
 +++ b/doc/ref/Makefile.am
 @@ -22,7 +22,7 @@
@@ -12,7 +12,7 @@ index 2f4b8ca88..c6fe2ec93 100644
  guile_TEXINFOS = preface.texi			\
                   intro.texi			\
 diff --git a/doc/ref/guile.texi b/doc/ref/guile.texi
-index 9f3fe2d72..2f40b9dba 100644
+index 660b1ae90..c3c6b300c 100644
 --- a/doc/ref/guile.texi
 +++ b/doc/ref/guile.texi
 @@ -1,7 +1,7 @@
