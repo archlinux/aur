@@ -5,7 +5,7 @@
 
 pkgbase=minetest-git
 pkgname=(minetest-git minetest-server-git minetest-common-git)
-pkgver=5.4.0.r31.g75eb28b95
+pkgver=5.4.0.r55.g437d01196
 pkgrel=1
 epoch=1
 url=https://www.minetest.net
@@ -36,7 +36,7 @@ build() {
 
 	cmake -B build-client -S "${pkgbase%-git}" \
 		-DIRRLICHT_INCLUDE_DIR="$srcdir/irrlicht/include" \
-		-DIRRLICHT_LIBRARY="$srcdir/build-irrlicht/lib/Linux/libIrrlicht.a" \
+		-DIRRLICHT_LIBRARY="$srcdir/build-irrlicht/lib/Linux/libIrrlichtMt.a" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=1 \
 		-DENABLE_GETTEXT=1 \
