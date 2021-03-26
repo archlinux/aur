@@ -1,6 +1,6 @@
 pkgname=gaphor-git
 _pkgname=gaphor
-pkgver=0.28.7
+pkgver=2.3.0+10+g0f47a603
 pkgrel=1
 pkgdesc='Gaphor is a UML and SysML modeling application written in Python'
 arch=('any')
@@ -12,6 +12,11 @@ provides=('gaphor')
 conflicts=('gaphor')
 source=("git+https://github.com/gaphor/gaphor.git")
 b2sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd ${_pkgname}

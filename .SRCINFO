@@ -1,6 +1,6 @@
 pkgbase = gaphor-git
 	pkgdesc = Gaphor is a UML and SysML modeling application written in Python
-	pkgver = 0.28.7
+	pkgver = 2.3.0+10+g0f47a603
 	pkgrel = 1
 	url = https://github.com/gaphor/gaphor
 	arch = any
