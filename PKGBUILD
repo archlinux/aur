@@ -91,6 +91,7 @@ package() {
   install -vDm 755 zy.desktop "$pkgdir/usr/share/applications/${_pkgname}.desktop"
   install -vDm 755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/zy-player.sh"
   install -vDm 755 zy "$pkgdir/opt/zy-player/zy-player"
+  sed -i 's/StartupWMClass=ZY Player/StartupWMClass=zy/' "$pkgdir/usr/share/applications/zy-player.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
