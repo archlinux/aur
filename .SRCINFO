@@ -1,9 +1,10 @@
 pkgbase = obs-vkcapture-git
-	pkgver = 0.1
+	pkgver = r33.6c03447
 	pkgrel = 1
 	url = https://github.com/nowrep/obs-vkcapture
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = vulkan-headers
