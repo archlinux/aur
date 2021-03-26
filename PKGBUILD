@@ -2,7 +2,7 @@
 
 pkgname=tinance
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Track your favorite cryptocurrency from terminal!'
 arch=('any')
 url=https://www.npmjs.com/package/tinance
@@ -11,7 +11,7 @@ depends=('nodejs' 'jq')
 makedepends=('npm')
 source=("https://registry.npmjs.org/tinance/-/tinance-$pkgver.tgz")
 noextract=("${source[@]##*/}")
-md5sums=('a6abb5638e595f92a3083811ec101d17')
+md5sums=('4459e4a3ee0ad021c252ece56ffb932b')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"

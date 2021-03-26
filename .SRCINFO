@@ -1,7 +1,7 @@
 pkgbase = tinance
 	pkgdesc = Track your favorite cryptocurrency from terminal!
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.npmjs.com/package/tinance
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = tinance
 	depends = jq
 	noextract = tinance-0.0.5.tgz
 	source = https://registry.npmjs.org/tinance/-/tinance-0.0.5.tgz
-	md5sums = a6abb5638e595f92a3083811ec101d17
+	md5sums = 4459e4a3ee0ad021c252ece56ffb932b
 
 pkgname = tinance
 
