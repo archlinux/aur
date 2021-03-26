@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=halibut-git
-pkgver=1.2.r15.g44df656
+pkgver=1.2.r17.gd9b77f1
 pkgrel=1
 pkgdesc="free document preparation system"
 url="http://www.chiark.greenend.org.uk/~sgtatham/halibut/"
 arch=('i686' 'x86_64')
 license=('custom:MIT')
 depends=('glibc')
-makedepends=('git' 'halibut')
+makedepends=('git')
 conflicts=('halibut')
 provides=('halibut')
 source=(git://git.tartarus.org/simon/halibut.git git://git.tartarus.org/simon/charset.git)
