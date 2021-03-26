@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.22.67
+pkgver=1.22.70
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -114,7 +114,7 @@ if [ "$COMPONENT" = "4" ]; then
   brave_patchset="1"
   brave_patchset_name="brave-${brave_base_ver}-patches-${brave_patchset}"
   source+=("https://gitlab.com/hadogenes/brave-patches/-/archive/${brave_patchset_name}/brave-patches-${brave_patchset_name}.zip")
-  sha256sums+=("5130b5b6e66b5e1e55ce84f58b93d3088d71aa5aa3b61ec0f66598d0fbc0643f")
+  sha256sums+=("0f6a78c2bbe9803f57cbccdb797efded3c2b55ebcb96e931273be380aa4c264b")
 
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
