@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -22,7 +22,8 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "dont_pulse_mentions.patch"
         "no_circles.patch"
         "use_xdg-open.patch"
-        "fix_thread_context_menu.patch")
+        "fix_thread_context_menu.patch"
+        "mediaviewer_nofullscreen.patch")
 sha512sums=('92506477ee1778f7528d8b914406cbf04abf1941d4f1a5d61b75dbf393df2184da1f4f83bbc343e221a539c7a01d3e3b3fe5286453d2bf1863b75ea922b70d5a'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             'dc5ffda130496c44bfe52792e856dac811b1a8e48b463529dd54396ad1b45915f8b6d9fcb6cb254f9350b3440d7b94a67d1c19660962f0350015061b021af6f1'
@@ -31,7 +32,8 @@ sha512sums=('92506477ee1778f7528d8b914406cbf04abf1941d4f1a5d61b75dbf393df2184da1
             '673e2a28781d0d604549c621592b1017ad306ddaf6d1beedfe73f3f1357fbb6afd994a324dfa15029789bdf8a4d6e85ad12a3877519618f6585bbc1927c06900'
             '8ec6b1739a1391b75a2653fff704a7d22e830c526acffe138936bbd20047bd24831e42558fa22069d7e914e762bbcfa2e1b14a8fd3911fd8bbbd0662d8baac14'
             '9c74c88eff1402d1334ec66b6233e85497666ee28eca1a804b8f5006c691bdd3718db2a238a736e30b1c8249d2c20ccc320650e97f67c4a9a67b689eb572cc2b'
-            'e6a10c1304e01676373c77d27629d93c085fa4e34e80ce1e4bd10af9cfb0a24c1fe2077cc0fdda83162e865cfab6811c9bc27aa13661c6d300c54749ffaef796')
+            'e6a10c1304e01676373c77d27629d93c085fa4e34e80ce1e4bd10af9cfb0a24c1fe2077cc0fdda83162e865cfab6811c9bc27aa13661c6d300c54749ffaef796'
+            'ba9adaa91d8d16a5d8dcbe55591a26f90eeda635b3973b2051ce6ed3e244394bc5e93e5c56febca5331803e7c728eebed77ef920ded1cb6e1ed6330c57d41905')
 
 prepare() {
     cd "$srcdir/tdesktop-$pkgver-full"

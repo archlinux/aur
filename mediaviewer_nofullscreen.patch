@@ -1,0 +1,37 @@
+Description: Fix un-fullscreened media viewer sizing
+Reverts 3251b8bf6e740e55777e85d63065a61e43df54fe
+Credits: novie
+
+diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+index 604449dd3..021b74030 100644
+--- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
++++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
+@@ -457,13 +457,15 @@ void OverlayWidget::moveToScreen() {
+ 			.arg(screenList.indexOf(activeWindowScreen)));
+ 		windowHandle()->setScreen(activeWindowScreen);
+ 		DEBUG_LOG(("Viewer Pos: New actual screen: %1")
+-			.arg(screenList.indexOf(windowHandle()->screen())));
++			.arg(windowHandle()
++				? screenList.indexOf(windowHandle()->screen())
++				: -2));
+ 	}
+ 	updateGeometry();
+ }
+ 
+ void OverlayWidget::updateGeometry() {
+-	if (Platform::IsWayland()) {
++	if (Platform::IsLinux()) {
+ 		return;
+ 	}
+ 	const auto screen = windowHandle() && windowHandle()->screen()
+@@ -1341,7 +1343,9 @@ void OverlayWidget::handleVisibleChanged(bool visible) {
+ 	if (visible) {
+ 		const auto screenList = QGuiApplication::screens();
+ 		DEBUG_LOG(("Viewer Pos: Shown, screen number: %1")
+-			.arg(screenList.indexOf(windowHandle()->screen())));
++			.arg(windowHandle()
++				? screenList.indexOf(windowHandle()->screen())
++				: -2));
+ 
+ 		moveToScreen();
+ 	}
