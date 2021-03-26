@@ -1,0 +1,26 @@
+[Unit]
+Description=OpenStack Cinder Volume Server
+After=syslog.target
+After=network.target
+After=target.service
+After=iscsi.service
+After=iscsid.service
+After=lvm-cinder.service
+Requires=lvm-cinder.service
+Wants=lvm-cinder.service
+Wants=target.service
+Wants=iscsi.service
+Wants=iscsid.service
+
+[Service]
+LimitNOFILE=131072
+LimitNPROC=131072
+Type=simple
+User=cinder
+ExecStart=/usr/bin/cinder-volume --config-file /usr/share/cinder/cinder-dist.conf --config-file /etc/cinder/cinder.conf --logfile /var/log/cinder/volume.log
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+

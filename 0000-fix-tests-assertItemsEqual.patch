@@ -1,0 +1,94 @@
+diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
+index 8db1f8d..e997d5b 100644
+--- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
++++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
+@@ -4262,7 +4262,7 @@ class StorwizeSVCFcDriverTestCase(test.TestCase):
+                               }
+                      }
+ 
+-        self.assertItemsEqual(term_data, term_ret)
++        self.assertCountEqual(term_data, term_ret)
+ 
+     @mock.patch.object(storwize_svc_common.StorwizeHelpers,
+                        'get_conn_fc_wwpns')
+@@ -4291,7 +4291,7 @@ class StorwizeSVCFcDriverTestCase(test.TestCase):
+                                '5005076801A96CFE',
+                                '5005076801996CFE',
+                                '5005076801991806']
+-        self.assertItemsEqual(expected_target_wwn, conn_info[
++        self.assertCountEqual(expected_target_wwn, conn_info[
+             'data']['target_wwn'])
+ 
+         # Terminate connection
+@@ -4310,8 +4310,8 @@ class StorwizeSVCFcDriverTestCase(test.TestCase):
+                               '5005076801996CFE',
+                               '5005076801206CFE',
+                               '5005076801106CFE']
+-        self.assertItemsEqual(expected_term_data, target_wwn1)
+-        self.assertItemsEqual(expected_term_data, target_wwn2)
++        self.assertCountEqual(expected_term_data, target_wwn1)
++        self.assertCountEqual(expected_term_data, target_wwn2)
+ 
+     def test_storwize_svc_fc_host_maps(self):
+         # Create two volumes to be used in mappings
+diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
+index d4c732b..0d901e5 100644
+--- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
++++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
+@@ -413,7 +413,7 @@ class InStorageMCSFcDriverTestCase(test.TestCase):
+                               }
+                      }
+ 
+-        self.assertItemsEqual(term_data, term_ret)
++        self.assertCountEqual(term_data, term_ret)
+ 
+     def test_instorage_mcs_fc_host_maps(self):
+         # Create two volumes to be used in mappings
+diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
+index 14c6bd7..609b6ef 100644
+--- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
++++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
+@@ -2267,7 +2267,7 @@ class NetAppCmodeClientTestCase(test.TestCase):
+         result = self.client.get_aggregate_disk_types(
+             fake_client.VOLUME_AGGREGATE_NAME)
+ 
+-        self.assertItemsEqual(expected, result)
++        self.assertCountEqual(expected, result)
+         mock_get_aggregate_disk_types.assert_called_once_with(
+             fake_client.VOLUME_AGGREGATE_NAME)
+ 
+@@ -2306,7 +2306,7 @@ class NetAppCmodeClientTestCase(test.TestCase):
+             fake_client.VOLUME_AGGREGATE_NAME)
+ 
+         self.assertIsInstance(result, list)
+-        self.assertItemsEqual(['SATA', 'SSD'], result)
++        self.assertCountEqual(['SATA', 'SSD'], result)
+         mock_get_aggregate_disk_types.assert_has_calls([
+             mock.call(fake_client.VOLUME_AGGREGATE_NAME),
+             mock.call(fake_client.VOLUME_AGGREGATE_NAME, shared=True),
+diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
+index 8181bf0..65ea43b 100644
+--- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
++++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
+@@ -96,7 +96,7 @@ class CapabilitiesLibraryTestCase(test.TestCase):
+ 
+         result = self.ssc_library.get_ssc_flexvol_names()
+ 
+-        self.assertItemsEqual(fake.SSC_VOLUMES, result)
++        self.assertCountEqual(fake.SSC_VOLUMES, result)
+ 
+     def test_get_ssc_for_flexvol(self):
+ 
+diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
+index 8824d70..403d3b7 100644
+--- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
++++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
+@@ -285,7 +285,7 @@ class DatastoreTest(test.TestCase):
+             datastores, valid_host_refs=[host2, host3])
+ 
+         self.assertEqual((host2, rp, ds3_props['summary']), ret)
+-        self.assertItemsEqual([mock.call(mock.sentinel.ds1_mount_info2),
++        self.assertCountEqual([mock.call(mock.sentinel.ds1_mount_info2),
+                                mock.call(mock.sentinel.ds1_mount_info3),
+                                mock.call(mock.sentinel.ds2_mount_info2),
+                                mock.call(mock.sentinel.ds2_mount_info3),
