@@ -1,6 +1,6 @@
 pkgbase = gnome-internet-radio-locator
 	pkgdesc = Easily find live radio programs based on geographical location of radio broadcasters on the Internet
-	pkgver = 3.9.2
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/InternetRadioLocator
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = gnome-internet-radio-locator
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = python
-	makedepends = meson
 	depends = libchamplain
 	depends = geoclue
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
-	source = https://download.gnome.org/sources/gnome-internet-radio-locator/3.9/gnome-internet-radio-locator-3.9.2.tar.xz
-	sha256sums = f86c41d03f8093c40129a151a0a1449fa167563ce153102506a50f23df31f824
+	depends = gtk4
+	source = https://download.gnome.org/sources/gnome-internet-radio-locator/4.0/gnome-internet-radio-locator-4.0.0.tar.xz
+	sha256sums = d0ae51a5e60d25a37d561b7552eecfd4ad1fdba2e8fde880ba4f0c1c5a988f36
 
 pkgname = gnome-internet-radio-locator
 
