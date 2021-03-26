@@ -1,9 +1,8 @@
 pkgbase = fisher-git
 	pkgdesc = A package manager for the fish shell
-	pkgver = 4.0.0.r4.g4f2bc7b
+	pkgver = 4.3.0.r0.g247b58e0d97c785e
 	pkgrel = 1
 	url = https://github.com/jorgebucaran/fisher
-	install = fisher-git.install
 	arch = any
 	license = MIT
 	depends = fish>=2.3.0
