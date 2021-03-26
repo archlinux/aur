@@ -12,7 +12,7 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=21.1.0_devel.135967.b33792b794f
+pkgver=21.1.0_devel.137111.3463b8bf416
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -93,8 +93,7 @@ build () {
        -D shared-glapi=enabled \
        -D gallium-opencl=icd \
        -D valgrind=disabled \
-       -D vulkan-overlay-layer=true \
-       -D vulkan-device-select-layer=true \
+       -D vulkan-layers=device-select,overlay \
        -D tools=[] \
        -D zstd=enabled \
        -D microsoft-clc=disabled
