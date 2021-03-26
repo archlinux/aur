@@ -3,7 +3,7 @@
 
 pkgname=openssl-weak-ciphers
 _pkgname=openssl
-_ver=1.1.1i
+_ver=1.1.1k
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -18,7 +18,7 @@ conflicts=('openssl')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242'
+sha256sums=('892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
             'SKIP'
             '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
