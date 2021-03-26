@@ -2,7 +2,7 @@
 
 _name=pantable
 pkgname=python-$_name
-pkgver=0.13.4
+pkgver=0.13.5
 pkgrel=1
 pkgdesc='CSV Tables in Markdown: Pandoc Filter for CSV Tables'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('pandoc>=2.11.2'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('264a9895b06fc609ec3e0de034a806466df1088d6200db85ced5386b365ee64c')
+sha256sums=('1b157256dc9fb2cb777a264226e42be9a5391c948cf0217af5389979829a29d6')
 
 build() {
 	cd "$_name-$pkgver"
