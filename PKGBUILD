@@ -16,21 +16,20 @@ provides=("avxsynth-plugin-${_plug}")
 conflicts=("avxsynth-plugin-${_plug}")
 
 source=("${_plug}::git+https://github.com/sl1pkn07/fft3dfilter-linux.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
 }
 
 build() {
-  cd "${_gitname}"
+  cd "${_plug}"
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   install -Dm775 fft3dfilter.so "${pkgdir}/usr/lib/avxsynth/fft3dfilter.so"
   install -Dm664 README "${pkgdir}/usr/share/doc/avxsynth/plugins/${_plug}/README"
 }

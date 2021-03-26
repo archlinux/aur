@@ -11,7 +11,7 @@ pkgbase = avxsynth-plugin-fft3dfilter-git
 	provides = avxsynth-plugin-fft3dfilter
 	conflicts = avxsynth-plugin-fft3dfilter
 	source = fft3dfilter::git+https://github.com/sl1pkn07/fft3dfilter-linux.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = avxsynth-plugin-fft3dfilter-git
 
