@@ -2,7 +2,7 @@
 
 pkgname=drawio-desktop-bin
 pkgver=14.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64')
 url="https://github.com/jgraph/drawio-desktop"
@@ -28,8 +28,8 @@ package() {
     cd "${srcdir}"
     cp -R opt "${pkgdir}/opt"
     cp -R usr "${pkgdir}/usr"
-    chmod 4755 "${pkgdir}/opt/draw.io/chrome-sandbox"
+    chmod 4755 "${pkgdir}/opt/drawio/chrome-sandbox"
     mkdir -p "${pkgdir}/usr/bin"
-    ln -sf "/opt/draw.io/drawio" "${pkgdir}/usr/bin/draw.io"
-    ln -sf "/opt/draw.io/drawio" "${pkgdir}/usr/bin/drawio"
+    ln -sf "/opt/drawio/drawio" "${pkgdir}/usr/bin/draw.io"
+    ln -sf "/opt/drawio/drawio" "${pkgdir}/usr/bin/drawio"
 }
