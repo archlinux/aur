@@ -1,8 +1,8 @@
-# Maintainer: A Frederick Christensen <aurlinux@nosocomia.com>
+# Maintainer: A Frederick Christensen <aur@nosocomia.com>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=python-caldav
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="a caldav client library"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python' 'python-lxml' 'python-vobject' 'python-dateutil' 'python-distribute' 'python-six' 'python-requests')
 options=(!emptydirs)
 source=("https://github.com/python-caldav/caldav/archive/v${pkgver}.tar.gz")
-sha256sums=('3ed2d7bd3ed523bbdaa93b5c4e5379db1b44bd4560557787381cb9d20f144741')
+sha256sums=('b252c3d818b6d69362f2b1bb2c6891e267e790e7e224b53869b3e574480ca402')
 
 package() {
   cd "$srcdir/caldav-$pkgver"
