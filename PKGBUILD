@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=papirus-nord
-pkgver=202008291420
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Custom colors for folder icons for Papirus Icon Theme!"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('papirus-icon-theme')
 optdepends=('papirus-linux-universe: change folder colors')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Adapta-Projects/Papirus-Nord/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('63407cee62be9e1ba3a9dde39d4943141dfc855e18c965cf7bf0d70ac2f337e8')
+sha256sums=('c5e6cc1baa05857fe9f209226ee86fb121cf84182f6b74bbb4e4f100b4db2067')
 
 package() {
 	cd Papirus-Nord-$pkgver
