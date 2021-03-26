@@ -22,7 +22,7 @@ url="https://gitlab.com/cardboardwm/cardboard"
 source=("git+https://gitlab.com/cardboardwm/cardboard.git"
 cardboardrc)
 sha512sums=('SKIP'
-'351d5b3b96032586cf36f56f640146df8c873b641406bedf13d081e0c99fdd45dd4f9d2771c8d2cdac6cd1365e310285e8a07bdd7355a3788069c18b6b4ec106')
+'682d0ce694a89fd874c6e3c5d18dc863797de7ab99551b8bd1b87e238a41752a67b796649448bd1094375db0d993e33f0cba054741c43e037a7b239b3278ad5a')
 provides=("cardboard")
 conflicts=("cardboard")
 install=cardboard.install
