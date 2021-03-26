@@ -1,7 +1,7 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=brltty-git
-pkgver=6.3.r14.gd20a94680
+pkgver=6.3.r130.g58497b388
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=('x86_64')
@@ -70,6 +70,8 @@ package() {
 	make INSTALL_ROOT="${pkgdir}" install-udev
 	make INSTALL_ROOT="${pkgdir}" install-dracut
 	make INSTALL_ROOT="${pkgdir}" install-polkit
+	rm -rv "${pkgdir}/etc/X11"
+	install -vDm 644 "Autostart/gdm/xbrlapi.desktop" -t "${pkgdir}/etc/xdg/autostart/"
 	install -vDm 644 "Documents/${pkgname%-git}.conf" -t "${pkgdir}/etc/"
 
 	# fix directory permission and ownership
