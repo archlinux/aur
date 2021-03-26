@@ -1,7 +1,7 @@
 pkgbase = meld-dev
 	pkgdesc = Visual diff and merge tool
 	pkgver = 3.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://meldmerge.org/
 	arch = any
 	license = GPL
@@ -16,7 +16,6 @@ pkgbase = meld-dev
 	optdepends = python-dbus: open a new tab in an already running instance
 	provides = meld
 	conflicts = meld meld-git
-	replaces = meld meld-git
 	options = !emptydirs
 	source = https://download.gnome.org/sources/meld/3.21/meld-3.21.0.tar.xz
 	sha256sums = b680114d5ab793324549fd58f4eb202d8e280c0633a0b765ede6dfb34160a81b
