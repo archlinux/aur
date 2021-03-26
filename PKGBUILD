@@ -1,7 +1,7 @@
 # Maintainer: tekacs <pkg@tekacs.com>
 
 pkgname=tandem-chat
-pkgver=1.5.816
+pkgver=1.6.210
 pkgrel=1
 pkgdesc='Tandem Chat - a virtual office for remote teams'
 arch=('x86_64')
