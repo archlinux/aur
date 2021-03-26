@@ -39,7 +39,6 @@ build(){
 	python setup.py build
 }
 
-## Test was broken
 check(){
 	cd $_pyname-$pkgver
 	stestr run
