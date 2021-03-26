@@ -1,7 +1,9 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-coc
+# Coc.nvim creates tags on release branch but the source code is only available on master branch, so I have to use commit hash to specify the version to use.
+_hash='c90a07eec847d38909702454c9e096ac6d392aff'
 pkgver=0.0.80
-pkgrel=2
+pkgrel=3
 pkgdesc='Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode'
 arch=('any')
 url='https://github.com/neoclide/coc.nvim'
@@ -9,18 +11,24 @@ license=('MIT')
 depends=('vim' 'nodejs')
 optdepends=('npm: for installing coc extensions'
             'yarn: for installing coc extensions'
-            'watchman: for workspace_didChangeWatchedFiles feature'
-            'vim-coc-extras-meta: some basic extensions')
+            'watchman: for workspace_didChangeWatchedFiles feature')
+makedepends=('yarn')
 provides=('vim-coc')
 conflicts=('vim-coc')
-source=("https://github.com/neoclide/coc.nvim/archive/v${pkgver}.tar.gz")
-sha256sums=('6bc817a8fcb42ed4ce139bb128a0087520be1c73d197968b163e9125c9a80ba6')
+source=("https://github.com/neoclide/coc.nvim/archive/${_hash}.zip")
+sha256sums=('3942014f681bfe2b25f3653fbb1108dbaf1de9f4f6993e9770a7fd42a92014f2')
+
+build() {
+    cd "${srcdir}/coc.nvim-${_hash}"
+    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
+    yarn run build
+}
 
 package() {
-    cd "${srcdir}/coc.nvim-${pkgver}"
+    cd "${srcdir}/coc.nvim-${_hash}"
     vim -es --cmd ":helptags doc" --cmd ":q"
-    find autoload bin build data doc package.json plugin -type f -exec \
+    find autoload build data doc package.json plugin -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/pack/coc/start/coc.nvim/{}" \;
-    install -Dm 644 "${srcdir}/coc.nvim-${pkgver}/LICENSE.md" \
+    install -Dm 644 "${srcdir}/coc.nvim-${_hash}/LICENSE.md" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
