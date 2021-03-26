@@ -4,7 +4,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=bochs-svn
-pkgver=2.6.11.r13903
+pkgver=2.6.11.r14201
 pkgrel=1
 pkgdesc="A portable x86 PC emulation software package, including GUI debugger (SVN Snapshot)"
 arch=('x86_64')
@@ -20,6 +20,12 @@ pkgver() {
   local ver="$(svnversion)"
   local rel="$(grep -e "^VERSION=" configure | sed -e 's/.svn//' -e 's/VERSION=//' -e 's/\"//g')"
   printf "%s.r%s" "$rel" "${ver//[[:alpha:]]}"
+}
+
+prepare() {
+    cd "$srcdir/$pkgname"
+
+    patch -p0 < ../../fix-build.patch # https://sourceforge.net/p/bochs/bugs/1430/
 }
 
 build() {
@@ -50,8 +56,6 @@ build() {
         #--enable-x86-debugger
         #--enable-all-optimizations
         #--enable-plugins
-
-    sed -i 's/BX_NETMOD_FBSD 1/BX_NETMOD_FBSD 0/g' config.h
 
     make -j 1
 }
