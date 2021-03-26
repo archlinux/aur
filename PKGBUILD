@@ -1,4 +1,4 @@
-# Maintainer: SeineEloquenz alexander-linder@gmx.de
+# Maintainer: SeineEloquenz alexander minus linder at gmx dot de
 
 pkgname=key-exe-bin
 pkgver=2.8.0
