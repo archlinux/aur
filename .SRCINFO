@@ -1,13 +1,13 @@
 pkgbase = ttf-sil-scheherazade
 	pkgdesc = An Arabic Naskh-style Unicode typeface
-	pkgver = 3.000
+	pkgver = 3.100
 	pkgrel = 1
 	url = https://software.sil.org/scheherazade/
 	arch = any
 	license = OFL
 	conflicts = ttf-sil-fonts<=6
-	source = https://software.sil.org/downloads/r/scheherazade/ScheherazadeNew-3.000.zip
-	sha256sums = 43fa1fbcbd5776b963aff6270577124bc6893152c52dc7084675b53c4ffad701
+	source = https://software.sil.org/downloads/r/scheherazade/ScheherazadeNew-3.100.zip
+	sha256sums = 3a2adec63d337dd3a409479a6a8d71754d87754564c7abfbc6fa6228cf0ced23
 
 pkgname = ttf-sil-scheherazade
 
