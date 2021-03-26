@@ -1,28 +1,28 @@
-# Maintainer: Jason Edson <jason@oceighty.co>
+# Maintainer: Jason Edson <jaysonedson@gmail.com>
 
 _pkgname=meld
 pkgname=$_pkgname-dev
-pkgver=3.19.0
+pkgver=3.21.0
 pkgrel=1
 pkgdesc='Visual diff and merge tool'
+arch=('any')
 url='http://meldmerge.org/'
-license=(GPL)
-arch=(any)
+license=('GPL')
+depends=('dconf'
+         'gsettings-desktop-schemas'
+         'gtksourceview4'
+         'python-cairo'
+         'python-gobject')
+makedepends=('git'
+             'intltool'
+             'meson'
+             'yelp-tools')
+optdepends=('python-dbus: open a new tab in an already running instance')
 conflicts=('meld' 'meld-git')
-replaces=('meld' 'meld-git')
 provides=('meld')
-makedepends=('intltool' 'gnome-doc-utils' 'itstool')
-install=meld.install
-depends=('python>=3.3'
-        'gtk3>=3.6'
-	'glib2>=2.36'
-	'python-gobject>=3.14'
-	'pygobject-devel>=3.14'
-	'gtksourceview3>=3.14'
-        'python-cairo>=1.10.0-6')
-optdepends=('python2-dbus: open a new tab in an already running instance')
+options=('!emptydirs')
 source=("https://download.gnome.org/sources/$_pkgname/${pkgver%.*}/meld-${pkgver}.tar.xz")
-sha1sums=('14e425a276e45518a18f63d9668c50c9b928ddf5')
+sha256sums=('b680114d5ab793324549fd58f4eb202d8e280c0633a0b765ede6dfb34160a81b')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -30,12 +30,11 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  python3 setup.py build
+    arch-meson build -D docs=true -D byte-compile=false
+    ninja -C build
 }
 
 package() {
   cd $_pkgname-$pkgver
-  # using --skip-build breaks install
-  python3 setup.py --no-update-icon-cache --no-compile-schemas \
-    install --prefix=/usr --root="$pkgdir" --optimize=1
+    DESTDIR="${pkgdir}" meson install -C build
 }
