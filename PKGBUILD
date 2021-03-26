@@ -4,11 +4,11 @@ _pyname=nova
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
 pkgver=22.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cloud computing fabric controller"
-arch=('any')
+arch=(any)
 url="https://docs.openstack.org/nova/latest/"
-license=('Apache')
+license=(Apache)
 depends=(
 	libffi
 	libxml2
@@ -49,7 +49,7 @@ depends=(
 	python-requests
 	python-six
 	python-stevedore
-	websockify
+	python-websockify
 	python-oslo-cache
 	python-oslo-concurrency
 	python-oslo-config
@@ -88,7 +88,6 @@ depends=(
 	python-zvmcloudconnector
 	python-futurist
 	python-openstacksdk
-	python-dataclasses
 	python-pyaml
 	python-pymysql
 )
@@ -127,6 +126,7 @@ checkdepends=(
 	python-wsgi-intercept
 	python-oslo-vmware
 )
+conflicts=(python-nova)
 source=(
 	"https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz"
 	openstack-nova-api.service
@@ -150,7 +150,7 @@ md5sums=('c186cca0778eedf936fe4dd1d15e036b'
          'de818eb31a86aaf4ae47bbf49a011a21'
          '063c88893366f685c380fae0aa678b15'
          'fdc38aa4d35b511165091aac88c6614d'
-         'c526c7def15d56ada9f2e692d254ce90')
+         '7e4af4b03bf0ac69b3a657b6642ae5bb')
 sha256sums=('dd2561a576f8f0c38e545e2cf71c896740bf64b40ac991537af1dec3d1fea3a1'
             'ccee044c78f73566662b46ae1d2837b34fa998e607a5b965dff85c5042eb21de'
             '14c3724e55fa7d094cc95c334d564c5b2276d73bbf3771de6fa2c8acaab9f71b'
@@ -161,7 +161,7 @@ sha256sums=('dd2561a576f8f0c38e545e2cf71c896740bf64b40ac991537af1dec3d1fea3a1'
             '5b6276b3480d30fc402a980e073e437fd81818cc024d1a04192bc6239177ad9d'
             'a8101096ca72a2f70d003c54b3339d16697315380795d657134cf9c02388a49f'
             'ed64bd90f87a3c41ed57e8fea77055d9df85ed6229bd3f75d74627c42322eb4c'
-            '455e52b729fe19a31316f4770988129ac82b2984794d17a43e7526ecc368f11f')
+            '46ac6ef1d5b31996e3cfb4ec3647acbdc056efd01a91ff0d757f5fd8f4f8637d')
 sha512sums=('acb9745b2bebd669f919a2d3d73e9dc5dad5aa3de49690daddd779fb6467139f857d67c6d8af3761f12db9bf6c5120d1af7bee3e73b3c0e0c44d6b41cafe7883'
             'bcd6c94e9d882528b4883fa947822e6dbea6ca8b438815556471f54f8f5bd8b413f0906d4cc210a85891fef09846972689d7d4c25ed1ae8a582fd413c22c4820'
             'df839698bf257be1de5ed667c1c8f3c53c9384e549edc79b0988edae366ea6c10aff96ca9bbfb272852f5dd2348fbf1ea95c610ef261a771e8e6ca42b3448abc'
@@ -172,7 +172,7 @@ sha512sums=('acb9745b2bebd669f919a2d3d73e9dc5dad5aa3de49690daddd779fb6467139f857
             '3e0671510a19f700f75d5d0efc98ae49a1616984f0abbadf19c0f9732bce6700b5fde436933a90906426877a2c52fcdb1c0b643f97781df8169808847388e850'
             'b2351829821824724106663a64e1237c01cec99ea5c503e92611fcceb32a1c10e85c59fee020a75e05748a8a82d89e08edaeb8f62a52843673dd59e5cfb4f6c4'
             '77a3849f4604fdb4293dbaf7341f9dab62b6e2df82eeab5baa728ed5ae9b3d0ac73f4fd924aee2271d6696ba5c26a50ff21f2a2a452515b8a4a2c12e9fd6a7e9'
-            '11407608510ea92b46a031e6bac459032ebefe4a66f192b2f3798e475e66a9f99bc33b48d930ca0736c496d52dffeb86b84937a960ad73ba91abcabb0b758778')
+            '1ba67c1ef08878dd25db648f80a1aefe73f07e283b18132ec18814176e2e27b67dbc264d0904bcb3df06d4fcc7f2945bd23306e7742a19a6ddb945b3627cb0f6')
 
 export PBR_VERSION=$pkgver
 
@@ -199,7 +199,6 @@ _package_pkg(){
 		etc/nova/logging_sample.conf
 		etc/nova/nova.conf
 		etc/nova/policy.yaml
-		etc/nova/policy.json
 		etc/nova/rootwrap.conf
 		etc/nova/rootwrap.d/compute.filters
 	)
@@ -219,35 +218,35 @@ _package_pkg(){
 		?*.service)install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
 	esac
 	done
-	install -vDm644 ${srcdir}/sudoers.conf "$pkgdir"/etc/sudoers.d/$_pyname
-	install -vDm644 ${srcdir}/tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/$_pyname.conf
-	install -vDm644 ${srcdir}/sysusers.conf "$pkgdir"/usr/lib/sysusers.d/$_pyname.conf
+	install -vDm644 "$srcdir/sudoers.conf" "$pkgdir/etc/sudoers.d/$_pyname"
+	install -vDm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$_pyname.conf"
+	install -vDm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$_pyname.conf"
 	oslo-config-generator --config-file=etc/nova/nova-config-generator.conf
 	oslopolicy-sample-generator --config-file=etc/nova/nova-policy-generator.conf
-	install -vDm644 etc/$_pyname/rootwrap.conf -t "$CONFDIR"
-	install -vDm644 etc/$_pyname/rootwrap.conf -t "$DATADIR"
-	install -vDm644 etc/$_pyname/api-paste.ini -t "$CONFDIR"
-	install -vDm644 etc/$_pyname/api-paste.ini -t "$DATADIR"
-	install -vDm644 etc/$_pyname/logging_sample.conf -t "$CONFDIR"
-	install -vDm644 etc/$_pyname/logging_sample.conf -t "$DATADIR"
-	install -vDm644 etc/$_pyname/rootwrap.d/compute.filters -t "$CONFDIR/rootwrap.d"
-	install -vDm644 etc/$_pyname/*.*.sample -t "$CONFDIR"
-	install -vDm644 etc/$_pyname/*.*.sample -t "$DATADIR"
-	echo '{}' >"$CONFDIR/policy.json"
+	install -vDm644 "etc/$_pyname/rootwrap.conf" -t "$CONFDIR"
+	install -vDm644 "etc/$_pyname/rootwrap.conf" -t "$DATADIR"
+	install -vDm644 "etc/$_pyname/api-paste.ini" -t "$CONFDIR"
+	install -vDm644 "etc/$_pyname/api-paste.ini" -t "$DATADIR"
+	install -vDm644 "etc/$_pyname/logging_sample.conf" -t "$CONFDIR"
+	install -vDm644 "etc/$_pyname/logging_sample.conf" -t "$DATADIR"
+	install -vDm644 "etc/$_pyname/rootwrap.d/compute.filters" -t "$CONFDIR/rootwrap.d"
+	install -vDm644 "etc/$_pyname/"*.*.sample -t "$CONFDIR"
+	install -vDm644 "etc/$_pyname/"*.*.sample -t "$DATADIR"
 	for i in "$CONFDIR/"*.*.sample
 	do mv -v "$i" "${i//.sample}"
 	done
-	chmod 0750 $pkgdir/etc/sudoers.d
-	chmod 0440 $pkgdir/etc/sudoers.d/*
+	chmod 0750 "$pkgdir/etc/sudoers.d"
+	chmod 0440 "$pkgdir/etc/sudoers.d/"*
 }
 
 _package_doc(){
 	pkgdesc="${pkgdesc} Documents"
 	depends=()
 	cd $_pyname-$pkgver
-	mkdir -p "${pkgdir}/usr/share/doc"
-	cp -r doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
-	rm -r "${pkgdir}/usr/share/doc/${pkgname}/.doctrees"
+	DOCDIR="$pkgdir/usr/share/doc"
+	mkdir -p "$DOCDIR"
+	cp -r doc/build/html "$DOCDIR/${pkgname}"
+	rm -r "$DOCDIR/${pkgname}/.doctrees"
 }
 
 eval "package_${pkgbase}(){ _package_pkg; }"
