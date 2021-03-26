@@ -1,5 +1,5 @@
 post_install() {
-    echo 'copy it to $HOME/.config/gplaycli to use standard credentials'
+    echo 'Standard config is found in "/usr/share/gplaycli/config"'
     echo 'copy it to "$HOME/.local/etc/gplaycli/gplaycli.conf" or "/etc/gplaycli/gplaycli.conf"'
 }
 post_upgrade() {
