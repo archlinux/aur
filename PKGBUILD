@@ -2,7 +2,7 @@
 # Contributor: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
 
 pkgname=aliza
-pkgver=1.98.50
+pkgver=1.98.57
 pkgrel=1
 pkgdesc="Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. Meshes in VTK, OBJ and STL formats. Filters, segmentation, front-end for registration with Elastix and many more features"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('hicolor-icon-theme'
          'libxt'
          'libglvnd')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.tar.gz::https://www.dropbox.com/s/k0rei4lkgks79eu/aliza-1.98.50.tar.gz")
-sha512sums=('4796c82fc8f7c999ca138fcd29be3c0e2fd6ede1e4bbb4ea6edb91fe9af4079aa80d31a6dfe07446cdf57c654f314457547c5d53b76cfd8099aa462e4cb7083b')
+source=("${pkgname}-${pkgver}.tar.gz::https://www.dropbox.com/s/mr55xb79zpwcoc4/aliza-1.98.57.tar.gz")
+sha512sums=('cbfa34a0932d1b5d6054b6b97d9b7fe904f1681dcb22f86bb03f153ed2c12f028f58a6a56880e4951c486af2d0a69659dd6058316eda398d3106f08177e6047b')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 
