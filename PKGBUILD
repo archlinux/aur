@@ -198,13 +198,18 @@ package() {
   # # TODO: this does not place the files in the right path (only in /usr/exmaples)
   make DESTDIR="${pkgdir}"/usr/share/doc/libmesh doc
   make DESTDIR="${pkgdir}"/usr/share/doc/libmesh/examples examples_doc
+  # Remove calls to analytics and prying eyes
+  find "${pkgdir}"/usr/share/doc/libmesh/examples\
+       -type f -exec\
+       sed -i 's_google_google-removed_g' \{\} +
+
   make DESTDIR="${pkgdir}" install
 
   # Move libtool (and contrib) to usr/share/libmesh
   install -d "${pkgdir}/usr/share/libmesh/"
   mv "${pkgdir}/usr/contrib" "${pkgdir}/usr/share/libmesh/"
   # Set right path for libtool from libMesh
-  sed -i 's-/usr/contrib/bin-/usr/share/libmesh/bin/contrib-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
+  sed -i 's-/usr/contrib/bin-/usr/share/libmesh/contrib/bin-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
 
   # Place examples and documentation in the right directory
   install -d "${pkgdir}"/usr/share/doc/
