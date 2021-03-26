@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=zutty
-pkgver=0.6
+pkgver=0.8
 pkgrel=1
 pkgdesc='Terminal emulator'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://tomscii.sig7.se/zutty'
 license=(GPL3)
 depends=(freetype2 libglvnd libxmu)
 makedepends=(git python)
-source=('git+https://github.com/tomszilagyi/zutty#commit=71f7fc9f03cdc2f38d9dca1f9e5f279899dbc568') # tag: 0.6
+source=('git+https://github.com/tomszilagyi/zutty#commit=56e46c757e18b20510842cbe243f501259a62141') # tag: 0.8
 sha256sums=('SKIP')
 
 build() {
