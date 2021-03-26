@@ -6,8 +6,8 @@ _svt_av1_ver='0.8.4'
 _svt_vp9_ver='0.3.0'
 
 pkgname=ffmpeg-full
-pkgver=4.3.1
-pkgrel=11
+pkgver=4.3.2
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -17,13 +17,13 @@ depends=(
         'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
         'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
         'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
-        'fontconfig' 'freetype2' 'fribidi' 'glslang' 'libgme' 'gsm' 'libiec61883'
-        'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
-        'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
-        'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
-        'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
-        'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265'
-        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
+        'libiec61883' 'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame'
+        'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
+        'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
+        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264'
+        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
         'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
@@ -35,8 +35,9 @@ depends=(
 makedepends=(
     # official repositories:
         'nasm' 'opencl-headers' 'vulkan-headers' 'ffnvcodec-headers' 'clang'
+        'amf-headers'
     # AUR:
-        'decklink-sdk' 'amf-headers'
+        'decklink-sdk'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
@@ -45,18 +46,16 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '010-ffmpeg-fix-vmaf-model-path.patch'
         '015-ffmpeg-cuda11.0-fix.patch'
-        '016-ffmpeg-srt-1.4.2-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315'
         '017-ffmpeg-glslang-11.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/4dab04622a6cf2a31da26a51dedb60ec44ac89a4'
         "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch"
         "050-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/n4.3.1-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
-sha256sums=('ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb'
+sha256sums=('46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb'
             'SKIP'
             'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
             '1392206202287f64f95023ec8630095c0419454f913af4d5fd703ea8117fe133'
-            '960fd930955cd126e33c543eb5bf300fc050efdd4238626ee4aad2a50d353fa7'
             '5b6815fc088d4acdc046eb223350a964bc998b0759aef90acf0591f65e7c98cb'
             'b37d43d5d8692599347c6f1f316c13b9a9addc66d3ceb7e6e02341c494af7cdc'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
@@ -69,7 +68,6 @@ prepare() {
     rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,av1,vp9}.c
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/015-ffmpeg-cuda11.0-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/016-ffmpeg-srt-1.4.2-fix.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/017-ffmpeg-glslang-11.0-fix.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
@@ -85,6 +83,7 @@ build() {
         --prefix='/usr' \
         --extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow' \
         --extra-ldflags='-L/opt/cuda/lib64' \
+        --enable-lto \
         \
         --disable-rpath \
         --enable-gpl \
