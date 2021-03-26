@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
 pkgver=2.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -33,7 +33,7 @@ sha512sums=('92506477ee1778f7528d8b914406cbf04abf1941d4f1a5d61b75dbf393df2184da1
             '8ec6b1739a1391b75a2653fff704a7d22e830c526acffe138936bbd20047bd24831e42558fa22069d7e914e762bbcfa2e1b14a8fd3911fd8bbbd0662d8baac14'
             '9c74c88eff1402d1334ec66b6233e85497666ee28eca1a804b8f5006c691bdd3718db2a238a736e30b1c8249d2c20ccc320650e97f67c4a9a67b689eb572cc2b'
             'e6a10c1304e01676373c77d27629d93c085fa4e34e80ce1e4bd10af9cfb0a24c1fe2077cc0fdda83162e865cfab6811c9bc27aa13661c6d300c54749ffaef796'
-            'ba9adaa91d8d16a5d8dcbe55591a26f90eeda635b3973b2051ce6ed3e244394bc5e93e5c56febca5331803e7c728eebed77ef920ded1cb6e1ed6330c57d41905')
+            'e74c9c4cef3c6ac17c1cac19ecc4fc788b20a06776344a32f5ebdeeab9064c61a5ee302eca1f3d25af63f1e4c11b5ee615f3afdfefa30c1b1626fb093bf26866')
 
 prepare() {
     cd "$srcdir/tdesktop-$pkgver-full"
