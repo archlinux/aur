@@ -1,0 +1,22 @@
+pkgbase = zulu-16-bin
+	pkgdesc = Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
+	pkgver = 16.0.0
+	pkgrel = 1
+	url = https://www.azul.com/products/zulu-community/
+	install = zulu-16-bin.install
+	arch = x86_64
+	license = custom
+	depends = java-environment-common>=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-environment=16
+	provides = java-environment-openjdk=16
+	provides = java-runtime-headless=16
+	provides = java-runtime-headless-openjdk=16
+	provides = java-runtime=16
+	provides = java-runtime-openjdk=16
+	source = https://cdn.azul.com/zulu/bin/zulu16.28.11-ca-jdk16.0.0-linux_x64.tar.gz
+	sha256sums = 236b5ea97aff3cb312e743848d7efa77faf305170e41371a732ca93c1b797665
+
+pkgname = zulu-16-bin
+
