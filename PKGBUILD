@@ -3,8 +3,8 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=wp-cli-git
-pkgver=r8814.ae5557d7
-pkgrel=3
+pkgver=r9258.3f4c34bf
+pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
@@ -33,8 +33,11 @@ build() {
   cd ${pkgname}
   # Replace specific version numbers with dev-master to pull latest versions
   sed -i 's/"^[0-9]\+"/"dev-master"/g' composer.json
+  sed -i 's/"^[0-9]\+\.[0-9]\+"/"dev-master"/g' composer.json
   sed -i 's/"^[0-9]\+\.[0-9]\+\.[0-9]\+"/"dev-master"/g' composer.json
   sed -i 's/"[0-9]\+\.[0-9]\+\.x-dev"/"dev-master"/g' composer.json
+  # Fix issue where a dependency was upgraded without being refered by others
+  sed -i 's/"wp-cli\/wp-cli-tests": "dev-master"/"wp-cli\/wp-cli-tests": "^3.0.10"/g' composer.json
   composer update --no-interaction --prefer-dist --no-scripts && composer dump
   echo -n "Building phar... "
   php -dphar.readonly=off utils/make-phar.php wp-cli.phar --quiet
