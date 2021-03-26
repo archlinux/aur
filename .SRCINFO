@@ -1,6 +1,6 @@
 pkgbase = openmsx-catapult-git
 	pkgdesc = Front-end for openMSX: the MSX emulator that aims for perfection.
-	pkgver = 952.35c4c0e
+	pkgver = 1000.8962a2d
 	pkgrel = 1
 	url = http://openmsx.org
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = openmsx-catapult-git
 	makedepends = python
 	makedepends = git
 	depends = libxml2
-	depends = wxgtk
+	depends = wxgtk2
 	depends = zlib
 	depends = libjpeg
 	depends = libpng
