@@ -16,7 +16,7 @@ pkgbase = python-pancritic
 	optdepends = python-markdown2: Markdown2 backend for Markdown output
 	optdepends = python-panflute: Panflute backend for Markdown output
 	optdepends = python-pypandoc: Pandoc backend for Markdown output
-	source = -0.3.2.tar.gz::https://github.com/ickc/pancritic/archive/v0.3.2.tar.gz
+	source = pancritic-0.3.2.tar.gz::https://github.com/ickc/pancritic/archive/v0.3.2.tar.gz
 	sha256sums = 670c0093924c11bb05a42ace4250166e076ad00f41e4208972613c07e3573515
 
 pkgname = python-pancritic

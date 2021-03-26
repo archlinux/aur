@@ -15,7 +15,7 @@ optdepends=('python-markdown: Markdown backend for Markdown output'
             'python-panflute: Panflute backend for Markdown output'
             'python-pypandoc: Pandoc backend for Markdown output')
 checkdepends=('python-coverage' 'python-markdown' 'python-markdown2' 'python-panflute' 'python-pypandoc')
-source=("$pkname-$pkgver.tar.gz::https://github.com/ickc/$_pipname/archive/v$pkgver.tar.gz")
+source=("$_pipname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('670c0093924c11bb05a42ace4250166e076ad00f41e4208972613c07e3573515')
 
 build() {
