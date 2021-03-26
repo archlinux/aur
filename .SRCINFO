@@ -1,8 +1,9 @@
 pkgbase = hilbish-git
 	pkgdesc = A shell written in Go and extended with Lua
-	pkgver = 0.1.2.r0.gdeb1bc8
+	pkgver = 0.1.2.r3.g795a7d7
 	pkgrel = 2
 	url = https://github.com/hilbis/hilbish
+	install = hilbish-git.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

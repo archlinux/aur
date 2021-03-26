@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 pkgname=hilbish-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.2.r0.gdeb1bc8
+pkgver=0.1.2.r3.g795a7d7
 pkgrel=2
 pkgdesc="A shell written in Go and extended with Lua"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,7 @@ makedepends=('git' 'go>=1.16')
 optdepends=('lua')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install="$pkgname.install"
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
@@ -22,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  sed -i "s|/usr|$pkgdir/usr|" Makefile
+  sed -i '\|/etc/shells|d' Makefile
 }
 
 build() {
@@ -38,7 +39,7 @@ build() {
 
 package() {
   cd "$pkgname"
-  make install
+  DESTDIR="$pkgdir/" make install
   install -Dm 444 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm 444 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
