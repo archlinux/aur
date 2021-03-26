@@ -134,8 +134,7 @@ build () {
        -D shared-glapi=enabled \
        -D gallium-opencl=disabled \
        -D valgrind=disabled \
-       -D vulkan-overlay-layer=true \
-       -D vulkan-device-select-layer=true \
+       -D vulkan-layers=device-select,overlay \
        -D tools=[] \
        -D zstd=enabled \
        -D microsoft-clc=disabled \
