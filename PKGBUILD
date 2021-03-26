@@ -3,14 +3,14 @@
 
 pkgname=tome4-git
 _pkgname=tome4
-pkgver=1.6.0.r14.g1a766e61b8
+pkgver=1.7.2.r117.g75e65d71a1
 pkgrel=1
 pkgdesc="An open-source, single-player, role-playing roguelike game set in the world of Eyal."
 arch=('i686' 'x86_64')
 url="http://tome.te4.org/"
 license=('custom' 'GPL3')
-depends=('glu' 'openal' 'libvorbis' 'sdl2_ttf>=2.0.12' 'sdl2_image>=2.0.0' )
-makedepends=('git' 'premake' 'zip' 'unzip')
+depends=('glu' 'openal' 'libvorbis' 'sdl2_ttf' 'sdl2_image')
+makedepends=('git' 'premake' 'zip' 'unzip' 'glew')
 options=(!makeflags emptydirs)
 source=("git+http://git.net-core.org/tome/t-engine4.git"
 	aur-${_pkgname}.patch
@@ -19,10 +19,9 @@ source=("git+http://git.net-core.org/tome/t-engine4.git"
 provides=('tome4')
 conflicts=('tome4-beta' 'tome4' 'tome4-nomusic')
 sha256sums=('SKIP'
-            '37f5be7020a06228b7d22f4c622ab5a8843b4dbea7493d7e3b324bd592cd818e'
+            '8e1821d1fe4bd2b48115179a83d71eaefa8b6bda70de77ca75d122d5d3053410'
             '3a1e4901337f91697bcfaf095f488c447c27ccc2484a543e31f024d5aefb61a0'
             '80e663d9eb2d41c6d9c0a6b4b5b52eb33b0872c3412a617530777fd137c0baa1')
-
 
 pkgver() {
     cd "${srcdir}/t-engine4"
@@ -35,8 +34,8 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir"/t-engine4
+  cp premake4.lua premake5.lua
 	patch -p1 < "${srcdir}/aur-${_pkgname}.patch"
-  sed -i "s|#include <GL/glext.h>||g" src/tgl.h
 }
 
 ###############################################################################
@@ -44,7 +43,7 @@ prepare() {
 ###############################################################################
 build() {
 	cd t-engine4
-	premake4 gmake
+	premake5 gmake
 	make config=debug
 }
 
