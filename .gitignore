@@ -1,0 +1,11 @@
+pkg/linvst3-bin/.BUILDINFO
+pkg/linvst3-bin/.MTREE
+pkg/linvst3-bin/.PKGINFO
+pkg/linvst3-bin/usr/bin/lin-vst3-servertrack.exe
+pkg/linvst3-bin/usr/bin/lin-vst3-servertrack.exe.so
+pkg/linvst3-bin/usr/bin/linvst3convert
+pkg/linvst3-bin/usr/bin/linvst3converttree
+pkg/linvst3-bin/usr/share/LinVst/linvst3.so
+src/*
+LinVst3*
+linvst3*
