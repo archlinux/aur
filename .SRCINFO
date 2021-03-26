@@ -1,6 +1,6 @@
 pkgbase = tcg-git
 	pkgdesc = cgroups for terminals
-	pkgver = 0.2.49
+	pkgver = 0.2.50
 	pkgrel = 1
 	url = https://github.com/zasdfgbnm/tcg
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = tcg-git
 	makedepends = cmake
 	makedepends = boost
 	depends = boost-libs
+	depends = fmt
+	depends = spdlog
 	source = git+https://github.com/zasdfgbnm/tcg
 	sha256sums = SKIP
 

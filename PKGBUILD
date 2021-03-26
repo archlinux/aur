@@ -1,20 +1,19 @@
 # Maintainer: tcg <aur-tcg@emailaddress.biz>
 
 pkgname=tcg-git
-pkgver=0.2.49
+pkgver=0.2.50
 pkgrel=1
 pkgdesc="cgroups for terminals"
 arch=('x86_64')
 url="https://github.com/zasdfgbnm/tcg"
 license=('MIT')
-depends=('boost-libs')
+depends=('boost-libs' 'fmt' 'spdlog')
 makedepends=('git' 'cmake' 'boost')
 source=("git+$url")
 sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/tcg"
-  git submodule update --init --recursive
   mkdir -p build
   cd build
   cmake ..
