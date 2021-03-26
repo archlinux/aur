@@ -13,7 +13,7 @@ pkgbase = qlstatus
 	depends = libnl
 	depends = libnotify
 	source = qlstatus-1.1.5.tar.gz::https://github.com/qlem/qlstatus/archive/v1.1.5.tar.gz
-	md5sums = 6fe3cc3536899ef1a42daa2db08030f5
+	md5sums = 6d471db7a3479267616c20b44604e038
 
 pkgname = qlstatus
 

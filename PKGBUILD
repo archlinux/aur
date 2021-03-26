@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'libpulse' 'libnl' 'libnotify')
 makedepends=('make' 'cmake' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qlem/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('6fe3cc3536899ef1a42daa2db08030f5')
+md5sums=('6d471db7a3479267616c20b44604e038')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
