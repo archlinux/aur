@@ -1,0 +1,13 @@
+pkgbase = portwine-meta-nvidia
+	pkgdesc = Nvidia proprietary drivers support for PortWINE project
+	pkgver = 0.0.1
+	pkgrel = 20210326
+	url = https://portwine-linux.ru
+	arch = x86_64
+	license = MIT
+	depends = opencl-nvidia
+	depends = lib32-opencl-nvidia
+	depends = lib32-nvidia-utils
+
+pkgname = portwine-meta-nvidia
+
