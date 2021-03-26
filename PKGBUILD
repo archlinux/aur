@@ -2,12 +2,12 @@
 
 pkgname=python-bempp-cl
 _pyname=bempp-cl
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A fast Python based just-in-time compiling boundary element library'
 arch=('x86_64')
 url="https://github.com/bempp/bempp-cl"
-license=(MIT)
+license=('MIT')
 depends=('python' 'python-numpy' 'python-scipy' 'python-numba' 'python-meshio' 'python-llvmlite')
 makedepends=('python-setuptools')
 optdepends=('python-plotly: data visualization'
@@ -16,7 +16,7 @@ optdepends=('python-plotly: data visualization'
 provides=('python-bempp')
 conflicts=('python-bempp')
 source=(${_pyname}-${pkgver}.tar.gz::"https://github.com/bempp/bempp-cl/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('65dccb4e60111acbf7e4ac2cfa024f88a0360d542cbdf7522b63ea9d48427382')
 
 build() {
 	cd "$srcdir/$_pyname-$pkgver"
@@ -28,7 +28,7 @@ package() {
 	python setup.py install --skip-build -O1 --root="$pkgdir"
 
 	cd "$pkgdir"
-	install -m0644 -D "$srcdir/$_pyname-$pkgver"/LICENSE.md usr/share/licenses/$pkgname/LICENSE.md
+	install -m0644 -D "$srcdir/$_pyname-$pkgver"/LICENSE usr/share/licenses/$pkgname/LICENSE
 	chmod -R a+r usr
 }
 
