@@ -1,0 +1,16 @@
+pkgbase = jjbmc
+	pkgdesc = Java Software Verification Tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/JonasKlamroth/JJBMC
+	arch = any
+	license = unknown
+	depends = jre8-openjdk-headless
+	noextract = JJBMC.jar
+	source = https://github.com/JonasKlamroth/JJBMC/releases/download/ISoLa/JJBMC.jar
+	source = jjbmc.sh
+	sha256sums = a678dabf3c8bc986d5f589c8830ac828545c8a4a36e2011a1246639d24641258
+	sha256sums = 143b2d54b35d8602a9bdbb2009fc39d1c0065890f4ad50bc311f9c80446cf986
+
+pkgname = jjbmc
+
