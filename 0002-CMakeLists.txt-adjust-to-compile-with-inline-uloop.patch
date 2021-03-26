@@ -1,0 +1,27 @@
+From 3f5dabdc0c5e83077c10aec1f1fa2de0dc93e6d5 Mon Sep 17 00:00:00 2001
+From: Dobroslaw Kijowski <dobo90@gmail.com>
+Date: Thu, 25 Mar 2021 22:10:03 +0100
+Subject: [PATCH 2/3] CMakeLists.txt: adjust to compile with inline uloop
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e960ab..450ed01 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,8 +8,8 @@ IF(APPLE)
+   LINK_DIRECTORIES(/opt/local/lib)
+ ENDIF()
+ 
+-ADD_EXECUTABLE(relayd main.c dhcp.c route.c)
+-TARGET_LINK_LIBRARIES(relayd ubox)
++ADD_EXECUTABLE(relayd main.c dhcp.c route.c uloop.c)
++TARGET_LINK_LIBRARIES(relayd)
+ 
+ SET(CMAKE_INSTALL_PREFIX /usr)
+ 
+-- 
+2.31.0
+

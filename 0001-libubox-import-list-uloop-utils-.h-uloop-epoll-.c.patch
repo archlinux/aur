@@ -1,0 +1,1332 @@
+From 93e640d3236f1937ddb0ab07b06397cd950b6fb0 Mon Sep 17 00:00:00 2001
+From: Dobroslaw Kijowski <dobo90@gmail.com>
+Date: Thu, 25 Mar 2021 22:06:53 +0100
+Subject: [PATCH 1/3] libubox: import {list,uloop,utils}.h uloop{,-epoll}.c
+
+From HEAD:
+
+commit 551d75b5662cccd0466b990d58136bdf799a804d
+Author: Peter Seiderer <ps.report@gmx.net>
+Date:   Sat Mar 6 11:54:50 2021 +0100
+
+    libubox: tests: add more blobmsg/json test cases
+
+    * add mixed int/double tests
+     * add blobmsg_cast_u64/blobmsg_cast_s64 tests
+
+    Signed-off-by: Peter Seiderer <ps.report@gmx.net>
+---
+ list.h        | 208 ++++++++++++++++++
+ uloop-epoll.c | 107 ++++++++++
+ uloop.c       | 581 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ uloop.h       | 115 ++++++++++
+ utils.h       | 258 ++++++++++++++++++++++
+ 5 files changed, 1269 insertions(+)
+ create mode 100644 list.h
+ create mode 100644 uloop-epoll.c
+ create mode 100644 uloop.c
+ create mode 100644 uloop.h
+ create mode 100644 utils.h
+
+diff --git a/list.h b/list.h
+new file mode 100644
+index 0000000..8e61e47
+--- /dev/null
++++ b/list.h
+@@ -0,0 +1,208 @@
++/*-
++ * Copyright (c) 2011 Felix Fietkau <nbd@openwrt.org>
++ * Copyright (c) 2010 Isilon Systems, Inc.
++ * Copyright (c) 2010 iX Systems, Inc.
++ * Copyright (c) 2010 Panasas, Inc.
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice unmodified, this list of conditions, and the following
++ *    disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++#ifndef _LINUX_LIST_H_
++#define _LINUX_LIST_H_
++
++#include <stddef.h>
++#include <stdbool.h>
++
++#define	prefetch(x)
++
++#ifndef container_of
++#define container_of(ptr, type, member)					\
++	({								\
++		const __typeof__(((type *) NULL)->member) *__mptr = (ptr);	\
++		(type *) ((char *) __mptr - offsetof(type, member));	\
++	})
++#endif
++
++struct list_head {
++	struct list_head *next;
++	struct list_head *prev;
++};
++
++#define LIST_HEAD_INIT(name) { &(name), &(name) }
++#undef LIST_HEAD
++#define LIST_HEAD(name)	struct list_head name = LIST_HEAD_INIT(name)
++
++static inline void
++INIT_LIST_HEAD(struct list_head *list)
++{
++	list->next = list->prev = list;
++}
++
++static inline bool
++list_empty(const struct list_head *head)
++{
++	return (head->next == head);
++}
++
++static inline bool
++list_is_first(const struct list_head *list,
++	      const struct list_head *head)
++{
++	return list->prev == head;
++}
++
++static inline bool
++list_is_last(const struct list_head *list,
++	     const struct list_head *head)
++{
++	return list->next == head;
++}
++
++static inline void
++_list_del(struct list_head *entry)
++{
++	entry->next->prev = entry->prev;
++	entry->prev->next = entry->next;
++}
++
++static inline void
++list_del(struct list_head *entry)
++{
++	_list_del(entry);
++	entry->next = entry->prev = NULL;
++}
++
++static inline void
++_list_add(struct list_head *_new, struct list_head *prev,
++    struct list_head *next)
++{
++
++	next->prev = _new;
++	_new->next = next;
++	_new->prev = prev;
++	prev->next = _new;
++}
++
++static inline void
++list_del_init(struct list_head *entry)
++{
++	_list_del(entry);
++	INIT_LIST_HEAD(entry);
++}
++
++#define	list_entry(ptr, type, field)	container_of(ptr, type, field)
++#define	list_first_entry(ptr, type, field)	list_entry((ptr)->next, type, field)
++#define	list_last_entry(ptr, type, field)	list_entry((ptr)->prev, type, field)
++
++#define	list_for_each(p, head)						\
++	for (p = (head)->next; p != (head); p = p->next)
++
++#define	list_for_each_safe(p, n, head)					\
++	for (p = (head)->next, n = p->next; p != (head); p = n, n = p->next)
++
++#define list_for_each_entry(p, h, field)				\
++	for (p = list_first_entry(h, __typeof__(*p), field); &p->field != (h); \
++	    p = list_entry(p->field.next, __typeof__(*p), field))
++
++#define list_for_each_entry_safe(p, n, h, field)			\
++	for (p = list_first_entry(h, __typeof__(*p), field),		\
++	    n = list_entry(p->field.next, __typeof__(*p), field); &p->field != (h);\
++	    p = n, n = list_entry(n->field.next, __typeof__(*n), field))
++
++#define	list_for_each_entry_reverse(p, h, field)			\
++	for (p = list_last_entry(h, __typeof__(*p), field); &p->field != (h); \
++	    p = list_entry(p->field.prev, __typeof__(*p), field))
++
++#define	list_for_each_prev(p, h) for (p = (h)->prev; p != (h); p = p->prev)
++#define	list_for_each_prev_safe(p, n, h) for (p = (h)->prev, n = p->prev; p != (h); p = n, n = p->prev)
++
++static inline void
++list_add(struct list_head *_new, struct list_head *head)
++{
++	_list_add(_new, head, head->next);
++}
++
++static inline void
++list_add_tail(struct list_head *_new, struct list_head *head)
++{
++	_list_add(_new, head->prev, head);
++}
++
++static inline void
++list_move(struct list_head *list, struct list_head *head)
++{
++	_list_del(list);
++	list_add(list, head);
++}
++
++static inline void
++list_move_tail(struct list_head *entry, struct list_head *head)
++{
++	_list_del(entry);
++	list_add_tail(entry, head);
++}
++
++static inline void
++_list_splice(const struct list_head *list, struct list_head *prev,
++    struct list_head *next)
++{
++	struct list_head *first;
++	struct list_head *last;
++
++	if (list_empty(list))
++		return;
++
++	first = list->next;
++	last = list->prev;
++	first->prev = prev;
++	prev->next = first;
++	last->next = next;
++	next->prev = last;
++}
++
++static inline void
++list_splice(const struct list_head *list, struct list_head *head)
++{
++	_list_splice(list, head, head->next);
++}
++
++static inline void
++list_splice_tail(struct list_head *list, struct list_head *head)
++{
++	_list_splice(list, head->prev, head);
++}
++
++static inline void
++list_splice_init(struct list_head *list, struct list_head *head)
++{
++	_list_splice(list, head, head->next);
++	INIT_LIST_HEAD(list);
++}
++
++static inline void
++list_splice_tail_init(struct list_head *list, struct list_head *head)
++{
++	_list_splice(list, head->prev, head);
++	INIT_LIST_HEAD(list);
++}
++
++#endif /* _LINUX_LIST_H_ */
+diff --git a/uloop-epoll.c b/uloop-epoll.c
+new file mode 100644
+index 0000000..609ca6e
+--- /dev/null
++++ b/uloop-epoll.c
+@@ -0,0 +1,107 @@
++/*
++ * uloop - event loop implementation
++ *
++ * Copyright (C) 2010-2016 Felix Fietkau <nbd@openwrt.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++
++/**
++ * FIXME: uClibc < 0.9.30.3 does not define EPOLLRDHUP for Linux >= 2.6.17
++ */
++#ifndef EPOLLRDHUP
++#define EPOLLRDHUP 0x2000
++#endif
++
++static int uloop_init_pollfd(void)
++{
++	if (poll_fd >= 0)
++		return 0;
++
++	poll_fd = epoll_create(32);
++	if (poll_fd < 0)
++		return -1;
++
++	fcntl(poll_fd, F_SETFD, fcntl(poll_fd, F_GETFD) | FD_CLOEXEC);
++	return 0;
++}
++
++static int register_poll(struct uloop_fd *fd, unsigned int flags)
++{
++	struct epoll_event ev;
++	int op = fd->registered ? EPOLL_CTL_MOD : EPOLL_CTL_ADD;
++
++	memset(&ev, 0, sizeof(struct epoll_event));
++
++	if (flags & ULOOP_READ)
++		ev.events |= EPOLLIN | EPOLLRDHUP;
++
++	if (flags & ULOOP_WRITE)
++		ev.events |= EPOLLOUT;
++
++	if (flags & ULOOP_EDGE_TRIGGER)
++		ev.events |= EPOLLET;
++
++	ev.data.ptr = fd;
++	fd->flags = flags;
++
++	return epoll_ctl(poll_fd, op, fd->fd, &ev);
++}
++
++static struct epoll_event events[ULOOP_MAX_EVENTS];
++
++static int __uloop_fd_delete(struct uloop_fd *sock)
++{
++	sock->flags = 0;
++	return epoll_ctl(poll_fd, EPOLL_CTL_DEL, sock->fd, 0);
++}
++
++static int uloop_fetch_events(int timeout)
++{
++	int n, nfds;
++
++	nfds = epoll_wait(poll_fd, events, ARRAY_SIZE(events), timeout);
++	for (n = 0; n < nfds; ++n) {
++		struct uloop_fd_event *cur = &cur_fds[n];
++		struct uloop_fd *u = events[n].data.ptr;
++		unsigned int ev = 0;
++
++		cur->fd = u;
++		if (!u)
++			continue;
++
++		if (events[n].events & (EPOLLERR|EPOLLHUP)) {
++			u->error = true;
++			if (!(u->flags & ULOOP_ERROR_CB))
++				uloop_fd_delete(u);
++		}
++
++		if(!(events[n].events & (EPOLLRDHUP|EPOLLIN|EPOLLOUT|EPOLLERR|EPOLLHUP))) {
++			cur->fd = NULL;
++			continue;
++		}
++
++		if(events[n].events & EPOLLRDHUP)
++			u->eof = true;
++
++		if(events[n].events & EPOLLIN)
++			ev |= ULOOP_READ;
++
++		if(events[n].events & EPOLLOUT)
++			ev |= ULOOP_WRITE;
++
++		cur->events = ev;
++	}
++
++	return nfds;
++}
+diff --git a/uloop.c b/uloop.c
+new file mode 100644
+index 0000000..8517366
+--- /dev/null
++++ b/uloop.c
+@@ -0,0 +1,581 @@
++/*
++ * uloop - event loop implementation
++ *
++ * Copyright (C) 2010-2016 Felix Fietkau <nbd@openwrt.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++#include <sys/time.h>
++#include <sys/types.h>
++
++#include <unistd.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <errno.h>
++#include <poll.h>
++#include <string.h>
++#include <fcntl.h>
++#include <stdbool.h>
++
++#include "uloop.h"
++#include "utils.h"
++
++#ifdef USE_KQUEUE
++#include <sys/event.h>
++#endif
++#ifdef USE_EPOLL
++#include <sys/epoll.h>
++#endif
++#include <sys/wait.h>
++
++struct uloop_fd_event {
++	struct uloop_fd *fd;
++	unsigned int events;
++};
++
++struct uloop_fd_stack {
++	struct uloop_fd_stack *next;
++	struct uloop_fd *fd;
++	unsigned int events;
++};
++
++static struct uloop_fd_stack *fd_stack = NULL;
++
++#define ULOOP_MAX_EVENTS 10
++
++static struct list_head timeouts = LIST_HEAD_INIT(timeouts);
++static struct list_head processes = LIST_HEAD_INIT(processes);
++
++static int poll_fd = -1;
++bool uloop_cancelled = false;
++bool uloop_handle_sigchld = true;
++static int uloop_status = 0;
++static bool do_sigchld = false;
++
++static struct uloop_fd_event cur_fds[ULOOP_MAX_EVENTS];
++static int cur_fd, cur_nfds;
++static int uloop_run_depth = 0;
++
++int uloop_fd_add(struct uloop_fd *sock, unsigned int flags);
++
++#ifdef USE_KQUEUE
++#include "uloop-kqueue.c"
++#endif
++
++#ifdef USE_EPOLL
++#include "uloop-epoll.c"
++#endif
++
++static void waker_consume(struct uloop_fd *fd, unsigned int events)
++{
++	char buf[4];
++
++	while (read(fd->fd, buf, 4) > 0)
++		;
++}
++
++static int waker_pipe = -1;
++static struct uloop_fd waker_fd = {
++	.fd = -1,
++	.cb = waker_consume,
++};
++
++static void waker_init_fd(int fd)
++{
++	fcntl(fd, F_SETFD, fcntl(fd, F_GETFD) | FD_CLOEXEC);
++	fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK);
++}
++
++static int waker_init(void)
++{
++	int fds[2];
++
++	if (waker_pipe >= 0)
++		return 0;
++
++	if (pipe(fds) < 0)
++		return -1;
++
++	waker_init_fd(fds[0]);
++	waker_init_fd(fds[1]);
++	waker_pipe = fds[1];
++
++	waker_fd.fd = fds[0];
++	waker_fd.cb = waker_consume;
++	uloop_fd_add(&waker_fd, ULOOP_READ);
++
++	return 0;
++}
++
++static void uloop_setup_signals(bool add);
++
++int uloop_init(void)
++{
++	if (uloop_init_pollfd() < 0)
++		return -1;
++
++	if (waker_init() < 0) {
++		uloop_done();
++		return -1;
++	}
++
++	uloop_setup_signals(true);
++
++	return 0;
++}
++
++static bool uloop_fd_stack_event(struct uloop_fd *fd, int events)
++{
++	struct uloop_fd_stack *cur;
++
++	/*
++	 * Do not buffer events for level-triggered fds, they will keep firing.
++	 * Caller needs to take care of recursion issues.
++	 */
++	if (!(fd->flags & ULOOP_EDGE_TRIGGER))
++		return false;
++
++	for (cur = fd_stack; cur; cur = cur->next) {
++		if (cur->fd != fd)
++			continue;
++
++		if (events < 0)
++			cur->fd = NULL;
++		else
++			cur->events |= events | ULOOP_EVENT_BUFFERED;
++
++		return true;
++	}
++
++	return false;
++}
++
++static void uloop_run_events(int timeout)
++{
++	struct uloop_fd_event *cur;
++	struct uloop_fd *fd;
++
++	if (!cur_nfds) {
++		cur_fd = 0;
++		cur_nfds = uloop_fetch_events(timeout);
++		if (cur_nfds < 0)
++			cur_nfds = 0;
++	}
++
++	while (cur_nfds > 0) {
++		struct uloop_fd_stack stack_cur;
++		unsigned int events;
++
++		cur = &cur_fds[cur_fd++];
++		cur_nfds--;
++
++		fd = cur->fd;
++		events = cur->events;
++		if (!fd)
++			continue;
++
++		if (!fd->cb)
++			continue;
++
++		if (uloop_fd_stack_event(fd, cur->events))
++			continue;
++
++		stack_cur.next = fd_stack;
++		stack_cur.fd = fd;
++		fd_stack = &stack_cur;
++		do {
++			stack_cur.events = 0;
++			fd->cb(fd, events);
++			events = stack_cur.events & ULOOP_EVENT_MASK;
++		} while (stack_cur.fd && events);
++		fd_stack = stack_cur.next;
++
++		return;
++	}
++}
++
++int uloop_fd_add(struct uloop_fd *sock, unsigned int flags)
++{
++	unsigned int fl;
++	int ret;
++
++	if (!(flags & (ULOOP_READ | ULOOP_WRITE)))
++		return uloop_fd_delete(sock);
++
++	if (!sock->registered && !(flags & ULOOP_BLOCKING)) {
++		fl = fcntl(sock->fd, F_GETFL, 0);
++		fl |= O_NONBLOCK;
++		fcntl(sock->fd, F_SETFL, fl);
++	}
++
++	ret = register_poll(sock, flags);
++	if (ret < 0)
++		goto out;
++
++	sock->registered = true;
++	sock->eof = false;
++	sock->error = false;
++
++out:
++	return ret;
++}
++
++int uloop_fd_delete(struct uloop_fd *fd)
++{
++	int i;
++
++	for (i = 0; i < cur_nfds; i++) {
++		if (cur_fds[cur_fd + i].fd != fd)
++			continue;
++
++		cur_fds[cur_fd + i].fd = NULL;
++	}
++
++	if (!fd->registered)
++		return 0;
++
++	fd->registered = false;
++	uloop_fd_stack_event(fd, -1);
++	return __uloop_fd_delete(fd);
++}
++
++static int tv_diff(struct timeval *t1, struct timeval *t2)
++{
++	return
++		(t1->tv_sec - t2->tv_sec) * 1000 +
++		(t1->tv_usec - t2->tv_usec) / 1000;
++}
++
++int uloop_timeout_add(struct uloop_timeout *timeout)
++{
++	struct uloop_timeout *tmp;
++	struct list_head *h = &timeouts;
++
++	if (timeout->pending)
++		return -1;
++
++	list_for_each_entry(tmp, &timeouts, list) {
++		if (tv_diff(&tmp->time, &timeout->time) > 0) {
++			h = &tmp->list;
++			break;
++		}
++	}
++
++	list_add_tail(&timeout->list, h);
++	timeout->pending = true;
++
++	return 0;
++}
++
++static void uloop_gettime(struct timeval *tv)
++{
++	struct timespec ts;
++
++	clock_gettime(CLOCK_MONOTONIC, &ts);
++	tv->tv_sec = ts.tv_sec;
++	tv->tv_usec = ts.tv_nsec / 1000;
++}
++
++int uloop_timeout_set(struct uloop_timeout *timeout, int msecs)
++{
++	struct timeval *time = &timeout->time;
++
++	if (timeout->pending)
++		uloop_timeout_cancel(timeout);
++
++	uloop_gettime(time);
++
++	time->tv_sec += msecs / 1000;
++	time->tv_usec += (msecs % 1000) * 1000;
++
++	if (time->tv_usec > 1000000) {
++		time->tv_sec++;
++		time->tv_usec -= 1000000;
++	}
++
++	return uloop_timeout_add(timeout);
++}
++
++int uloop_timeout_cancel(struct uloop_timeout *timeout)
++{
++	if (!timeout->pending)
++		return -1;
++
++	list_del(&timeout->list);
++	timeout->pending = false;
++
++	return 0;
++}
++
++int uloop_timeout_remaining(struct uloop_timeout *timeout)
++{
++	struct timeval now;
++
++	if (!timeout->pending)
++		return -1;
++
++	uloop_gettime(&now);
++
++	return tv_diff(&timeout->time, &now);
++}
++
++int uloop_process_add(struct uloop_process *p)
++{
++	struct uloop_process *tmp;
++	struct list_head *h = &processes;
++
++	if (p->pending)
++		return -1;
++
++	list_for_each_entry(tmp, &processes, list) {
++		if (tmp->pid > p->pid) {
++			h = &tmp->list;
++			break;
++		}
++	}
++
++	list_add_tail(&p->list, h);
++	p->pending = true;
++
++	return 0;
++}
++
++int uloop_process_delete(struct uloop_process *p)
++{
++	if (!p->pending)
++		return -1;
++
++	list_del(&p->list);
++	p->pending = false;
++
++	return 0;
++}
++
++static void uloop_handle_processes(void)
++{
++	struct uloop_process *p, *tmp;
++	pid_t pid;
++	int ret;
++
++	do_sigchld = false;
++
++	while (1) {
++		pid = waitpid(-1, &ret, WNOHANG);
++		if (pid < 0 && errno == EINTR)
++			continue;
++
++		if (pid <= 0)
++			return;
++
++		list_for_each_entry_safe(p, tmp, &processes, list) {
++			if (p->pid < pid)
++				continue;
++
++			if (p->pid > pid)
++				break;
++
++			uloop_process_delete(p);
++			p->cb(p, ret);
++		}
++	}
++
++}
++
++static void uloop_signal_wake(void)
++{
++	do {
++		if (write(waker_pipe, "w", 1) < 0) {
++			if (errno == EINTR)
++				continue;
++		}
++		break;
++	} while (1);
++}
++
++static void uloop_handle_sigint(int signo)
++{
++	uloop_status = signo;
++	uloop_cancelled = true;
++	uloop_signal_wake();
++}
++
++static void uloop_sigchld(int signo)
++{
++	do_sigchld = true;
++	uloop_signal_wake();
++}
++
++static void uloop_install_handler(int signum, void (*handler)(int), struct sigaction* old, bool add)
++{
++	struct sigaction s;
++	struct sigaction *act;
++
++	act = NULL;
++	sigaction(signum, NULL, &s);
++
++	if (add) {
++		if (s.sa_handler == SIG_DFL) { /* Do not override existing custom signal handlers */
++			memcpy(old, &s, sizeof(struct sigaction));
++			s.sa_handler = handler;
++			s.sa_flags = 0;
++			act = &s;
++		}
++	}
++	else if (s.sa_handler == handler) { /* Do not restore if someone modified our handler */
++			act = old;
++	}
++
++	if (act != NULL)
++		sigaction(signum, act, NULL);
++}
++
++static void uloop_ignore_signal(int signum, bool ignore)
++{
++	struct sigaction s;
++	void *new_handler = NULL;
++
++	sigaction(signum, NULL, &s);
++
++	if (ignore) {
++		if (s.sa_handler == SIG_DFL) /* Ignore only if there isn't any custom handler */
++			new_handler = SIG_IGN;
++	} else {
++		if (s.sa_handler == SIG_IGN) /* Restore only if noone modified our SIG_IGN */
++			new_handler = SIG_DFL;
++	}
++
++	if (new_handler) {
++		s.sa_handler = new_handler;
++		s.sa_flags = 0;
++		sigaction(signum, &s, NULL);
++	}
++}
++
++static void uloop_setup_signals(bool add)
++{
++	static struct sigaction old_sigint, old_sigchld, old_sigterm;
++
++	uloop_install_handler(SIGINT, uloop_handle_sigint, &old_sigint, add);
++	uloop_install_handler(SIGTERM, uloop_handle_sigint, &old_sigterm, add);
++
++	if (uloop_handle_sigchld)
++		uloop_install_handler(SIGCHLD, uloop_sigchld, &old_sigchld, add);
++
++	uloop_ignore_signal(SIGPIPE, add);
++}
++
++static int uloop_get_next_timeout(struct timeval *tv)
++{
++	struct uloop_timeout *timeout;
++	int diff;
++
++	if (list_empty(&timeouts))
++		return -1;
++
++	timeout = list_first_entry(&timeouts, struct uloop_timeout, list);
++	diff = tv_diff(&timeout->time, tv);
++	if (diff < 0)
++		return 0;
++
++	return diff;
++}
++
++static void uloop_process_timeouts(struct timeval *tv)
++{
++	struct uloop_timeout *t;
++
++	while (!list_empty(&timeouts)) {
++		t = list_first_entry(&timeouts, struct uloop_timeout, list);
++
++		if (tv_diff(&t->time, tv) > 0)
++			break;
++
++		uloop_timeout_cancel(t);
++		if (t->cb)
++			t->cb(t);
++	}
++}
++
++static void uloop_clear_timeouts(void)
++{
++	struct uloop_timeout *t, *tmp;
++
++	list_for_each_entry_safe(t, tmp, &timeouts, list)
++		uloop_timeout_cancel(t);
++}
++
++static void uloop_clear_processes(void)
++{
++	struct uloop_process *p, *tmp;
++
++	list_for_each_entry_safe(p, tmp, &processes, list)
++		uloop_process_delete(p);
++}
++
++bool uloop_cancelling(void)
++{
++	return uloop_run_depth > 0 && uloop_cancelled;
++}
++
++int uloop_run_timeout(int timeout)
++{
++	int next_time = 0;
++	struct timeval tv;
++
++	uloop_run_depth++;
++
++	uloop_status = 0;
++	uloop_cancelled = false;
++	while (!uloop_cancelled)
++	{
++		uloop_gettime(&tv);
++		uloop_process_timeouts(&tv);
++
++		if (do_sigchld)
++			uloop_handle_processes();
++
++		if (uloop_cancelled)
++			break;
++
++		uloop_gettime(&tv);
++
++		next_time = uloop_get_next_timeout(&tv);
++		if (timeout >= 0 && timeout < next_time)
++			next_time = timeout;
++		uloop_run_events(next_time);
++	}
++
++	--uloop_run_depth;
++
++	return uloop_status;
++}
++
++void uloop_done(void)
++{
++	uloop_setup_signals(false);
++
++	if (poll_fd >= 0) {
++		close(poll_fd);
++		poll_fd = -1;
++	}
++
++	if (waker_pipe >= 0) {
++		uloop_fd_delete(&waker_fd);
++		close(waker_pipe);
++		close(waker_fd.fd);
++		waker_pipe = -1;
++	}
++
++	uloop_clear_timeouts();
++	uloop_clear_processes();
++}
+diff --git a/uloop.h b/uloop.h
+new file mode 100644
+index 0000000..36084f5
+--- /dev/null
++++ b/uloop.h
+@@ -0,0 +1,115 @@
++/*
++ * uloop - event loop implementation
++ *
++ * Copyright (C) 2010-2013 Felix Fietkau <nbd@openwrt.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++#ifndef _ULOOP_H__
++#define _ULOOP_H__
++
++#include <sys/time.h>
++#include <sys/types.h>
++#include <stdbool.h>
++#include <stdint.h>
++#include <signal.h>
++
++#if defined(__APPLE__) || defined(__FreeBSD__)
++#define USE_KQUEUE
++#else
++#define USE_EPOLL
++#endif
++
++#include "list.h"
++
++struct uloop_fd;
++struct uloop_timeout;
++struct uloop_process;
++
++typedef void (*uloop_fd_handler)(struct uloop_fd *u, unsigned int events);
++typedef void (*uloop_timeout_handler)(struct uloop_timeout *t);
++typedef void (*uloop_process_handler)(struct uloop_process *c, int ret);
++
++#define ULOOP_READ		(1 << 0)
++#define ULOOP_WRITE		(1 << 1)
++#define ULOOP_EDGE_TRIGGER	(1 << 2)
++#define ULOOP_BLOCKING		(1 << 3)
++
++#define ULOOP_EVENT_MASK	(ULOOP_READ | ULOOP_WRITE)
++
++/* internal flags */
++#define ULOOP_EVENT_BUFFERED	(1 << 4)
++#ifdef USE_KQUEUE
++#define ULOOP_EDGE_DEFER	(1 << 5)
++#endif
++
++#define ULOOP_ERROR_CB		(1 << 6)
++
++struct uloop_fd
++{
++	uloop_fd_handler cb;
++	int fd;
++	bool eof;
++	bool error;
++	bool registered;
++	uint8_t flags;
++};
++
++struct uloop_timeout
++{
++	struct list_head list;
++	bool pending;
++
++	uloop_timeout_handler cb;
++	struct timeval time;
++};
++
++struct uloop_process
++{
++	struct list_head list;
++	bool pending;
++
++	uloop_process_handler cb;
++	pid_t pid;
++};
++
++extern bool uloop_cancelled;
++extern bool uloop_handle_sigchld;
++
++int uloop_fd_add(struct uloop_fd *sock, unsigned int flags);
++int uloop_fd_delete(struct uloop_fd *sock);
++
++int uloop_timeout_add(struct uloop_timeout *timeout);
++int uloop_timeout_set(struct uloop_timeout *timeout, int msecs);
++int uloop_timeout_cancel(struct uloop_timeout *timeout);
++int uloop_timeout_remaining(struct uloop_timeout *timeout);
++
++int uloop_process_add(struct uloop_process *p);
++int uloop_process_delete(struct uloop_process *p);
++
++bool uloop_cancelling(void);
++
++static inline void uloop_end(void)
++{
++	uloop_cancelled = true;
++}
++
++int uloop_init(void);
++int uloop_run_timeout(int timeout);
++static inline int uloop_run(void)
++{
++	return uloop_run_timeout(-1);
++}
++void uloop_done(void);
++
++#endif
+diff --git a/utils.h b/utils.h
+new file mode 100644
+index 0000000..5c53cc0
+--- /dev/null
++++ b/utils.h
+@@ -0,0 +1,258 @@
++/*
++ * utils - misc libubox utility functions
++ *
++ * Copyright (C) 2012 Felix Fietkau <nbd@openwrt.org>
++ *
++ * Permission to use, copy, modify, and/or distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ */
++
++#ifndef __LIBUBOX_UTILS_H
++#define __LIBUBOX_UTILS_H
++
++#include <sys/stat.h>
++#include <sys/types.h>
++#include <sys/time.h>
++#include <stdint.h>
++#include <stdbool.h>
++#include <unistd.h>
++#include <time.h>
++
++/*
++ * calloc_a(size_t len, [void **addr, size_t len,...], NULL)
++ *
++ * allocate a block of memory big enough to hold multiple aligned objects.
++ * the pointer to the full object (starting with the first chunk) is returned,
++ * all other pointers are stored in the locations behind extra addr arguments.
++ * the last argument needs to be a NULL pointer
++ */
++
++#define calloc_a(len, ...) __calloc_a(len, ##__VA_ARGS__, NULL)
++
++void *__calloc_a(size_t len, ...);
++
++#ifndef ARRAY_SIZE
++#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
++#endif
++
++#define __BUILD_BUG_ON(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
++
++#ifdef __OPTIMIZE__
++extern int __BUILD_BUG_ON_CONDITION_FAILED;
++#define BUILD_BUG_ON(condition)					\
++	do {							\
++		__BUILD_BUG_ON(condition);			\
++		if (condition)					\
++			__BUILD_BUG_ON_CONDITION_FAILED = 1;	\
++	} while(0)
++#else
++#define BUILD_BUG_ON __BUILD_BUG_ON
++#endif
++
++#if defined(__APPLE__) && !defined(CLOCK_MONOTONIC)
++#define LIBUBOX_COMPAT_CLOCK_GETTIME
++
++#include <mach/clock_types.h>
++#define CLOCK_REALTIME	CALENDAR_CLOCK
++#define CLOCK_MONOTONIC	SYSTEM_CLOCK
++
++int clock_gettime(int type, struct timespec *tv);
++
++#endif
++
++#ifdef __GNUC__
++#define _GNUC_MIN_VER(maj, min) (((__GNUC__ << 8) + __GNUC_MINOR__) >= (((maj) << 8) + (min)))
++#else
++#define _GNUC_MIN_VER(maj, min) 0
++#endif
++
++#if defined(__linux__) || defined(__CYGWIN__)
++#include <byteswap.h>
++#include <endian.h>
++
++#elif defined(__APPLE__)
++#include <machine/endian.h>
++#include <machine/byte_order.h>
++#elif defined(__FreeBSD__)
++#include <sys/endian.h>
++#else
++#include <machine/endian.h>
++#endif
++
++#ifndef __BYTE_ORDER
++#define __BYTE_ORDER BYTE_ORDER
++#endif
++#ifndef __BIG_ENDIAN
++#define __BIG_ENDIAN BIG_ENDIAN
++#endif
++#ifndef __LITTLE_ENDIAN
++#define __LITTLE_ENDIAN LITTLE_ENDIAN
++#endif
++
++#define __constant_swap16(x) ((uint16_t)(				\
++	(((uint16_t)(x) & (uint16_t)0x00ffU) << 8) |			\
++	(((uint16_t)(x) & (uint16_t)0xff00U) >> 8)))
++
++#define __constant_swap32(x) ((uint32_t)(				\
++	(((uint32_t)(x) & (uint32_t)0x000000ffUL) << 24) |		\
++	(((uint32_t)(x) & (uint32_t)0x0000ff00UL) <<  8) |		\
++	(((uint32_t)(x) & (uint32_t)0x00ff0000UL) >>  8) |		\
++	(((uint32_t)(x) & (uint32_t)0xff000000UL) >> 24)))
++
++#define __constant_swap64(x) ((uint64_t)(				\
++	(((uint64_t)(x) & (uint64_t)0x00000000000000ffULL) << 56) |	\
++	(((uint64_t)(x) & (uint64_t)0x000000000000ff00ULL) << 40) |	\
++	(((uint64_t)(x) & (uint64_t)0x0000000000ff0000ULL) << 24) |	\
++	(((uint64_t)(x) & (uint64_t)0x00000000ff000000ULL) <<  8) |	\
++	(((uint64_t)(x) & (uint64_t)0x000000ff00000000ULL) >>  8) |	\
++	(((uint64_t)(x) & (uint64_t)0x0000ff0000000000ULL) >> 24) |	\
++	(((uint64_t)(x) & (uint64_t)0x00ff000000000000ULL) >> 40) |	\
++	(((uint64_t)(x) & (uint64_t)0xff00000000000000ULL) >> 56)))
++
++/*
++ * This returns a constant expression while determining if an argument is
++ * a constant expression, most importantly without evaluating the argument.
++ */
++#define __is_constant(x)						\
++	(sizeof(int) == sizeof(*(1 ? ((void*)((long)(x) * 0l)) : (int*)1)))
++
++#define __eval_once(func, x)						\
++	({ __typeof__(x) __x = x; func(__x); })
++
++#ifdef __cplusplus
++/*
++ * g++ does not support __builtin_choose_expr, so always use __eval_once.
++ * Unfortunately this means that the byte order functions can't be used
++ * as a constant expression anymore
++ */
++#define __eval_safe(func, x) __eval_once(func, x)
++#else
++#define __eval_safe(func, x)						\
++	__builtin_choose_expr(__is_constant(x),				\
++			      func(x), __eval_once(func, x))
++#endif
++
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++
++#define const_cpu_to_be64(x) __constant_swap64(x)
++#define const_cpu_to_be32(x) __constant_swap32(x)
++#define const_cpu_to_be16(x) __constant_swap16(x)
++
++#define const_be64_to_cpu(x) __constant_swap64(x)
++#define const_be32_to_cpu(x) __constant_swap32(x)
++#define const_be16_to_cpu(x) __constant_swap16(x)
++
++#define const_cpu_to_le64(x) (x)
++#define const_cpu_to_le32(x) (x)
++#define const_cpu_to_le16(x) (x)
++
++#define const_le64_to_cpu(x) (x)
++#define const_le32_to_cpu(x) (x)
++#define const_le16_to_cpu(x) (x)
++
++#define cpu_to_be64(x) __eval_safe(__constant_swap64, x)
++#define cpu_to_be32(x) __eval_safe(__constant_swap32, x)
++#define cpu_to_be16(x) __eval_safe(__constant_swap16, x)
++
++#define be64_to_cpu(x) __eval_safe(__constant_swap64, x)
++#define be32_to_cpu(x) __eval_safe(__constant_swap32, x)
++#define be16_to_cpu(x) __eval_safe(__constant_swap16, x)
++
++#define cpu_to_le64(x) (x)
++#define cpu_to_le32(x) (x)
++#define cpu_to_le16(x) (x)
++
++#define le64_to_cpu(x) (x)
++#define le32_to_cpu(x) (x)
++#define le16_to_cpu(x) (x)
++
++#else /* __BYTE_ORDER == __LITTLE_ENDIAN */
++
++#define const_cpu_to_le64(x) __constant_swap64(x)
++#define const_cpu_to_le32(x) __constant_swap32(x)
++#define const_cpu_to_le16(x) __constant_swap16(x)
++
++#define const_le64_to_cpu(x) __constant_swap64(x)
++#define const_le32_to_cpu(x) __constant_swap32(x)
++#define const_le16_to_cpu(x) __constant_swap16(x)
++
++#define const_cpu_to_be64(x) (x)
++#define const_cpu_to_be32(x) (x)
++#define const_cpu_to_be16(x) (x)
++
++#define const_be64_to_cpu(x) (x)
++#define const_be32_to_cpu(x) (x)
++#define const_be16_to_cpu(x) (x)
++
++#define cpu_to_le64(x) __eval_safe(__constant_swap64, x)
++#define cpu_to_le32(x) __eval_safe(__constant_swap32, x)
++#define cpu_to_le16(x) __eval_safe(__constant_swap16, x)
++
++#define le64_to_cpu(x) __eval_safe(__constant_swap64, x)
++#define le32_to_cpu(x) __eval_safe(__constant_swap32, x)
++#define le16_to_cpu(x) __eval_safe(__constant_swap16, x)
++
++#define cpu_to_be64(x) (x)
++#define cpu_to_be32(x) (x)
++#define cpu_to_be16(x) (x)
++
++#define be64_to_cpu(x) (x)
++#define be32_to_cpu(x) (x)
++#define be16_to_cpu(x) (x)
++
++#endif
++
++#ifndef __packed
++#define __packed __attribute__((packed))
++#endif
++
++#ifndef __constructor
++#define __constructor __attribute__((constructor))
++#endif
++
++#ifndef __destructor
++#define __destructor __attribute__((destructor))
++#endif
++
++#ifndef __hidden
++#define __hidden __attribute__((visibility("hidden")))
++#endif
++
++int b64_encode(const void *src, size_t src_len,
++	       void *dest, size_t dest_len);
++
++int b64_decode(const void *src, void *dest, size_t dest_len);
++
++#define B64_ENCODE_LEN(_len)	((((_len) + 2) / 3) * 4 + 1)
++#define B64_DECODE_LEN(_len)	(((_len) / 4) * 3 + 1)
++
++static inline unsigned int cbuf_order(unsigned int x)
++{
++	return 32 - __builtin_clz(x - 1);
++}
++
++static inline unsigned long cbuf_size(int order)
++{
++	unsigned long page_size = sysconf(_SC_PAGESIZE);
++	unsigned long ret = 1ULL << order;
++
++	if (ret < page_size)
++		ret = page_size;
++
++	return ret;
++}
++
++void *cbuf_alloc(unsigned int order);
++void cbuf_free(void *ptr, unsigned int order);
++int mkdir_p(char *dir, mode_t mask);
++
++#endif
+-- 
+2.31.0
+

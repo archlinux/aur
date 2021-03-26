@@ -1,0 +1,28 @@
+From 87702b57d615bc20d4af21f8a5fb183ab33de0e9 Mon Sep 17 00:00:00 2001
+From: Dobroslaw Kijowski <dobo90@gmail.com>
+Date: Thu, 25 Mar 2021 22:13:34 +0100
+Subject: [PATCH 3/3] relayd.h: fix includes
+
+* Change system includes into relative ones.
+---
+ relayd.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/relayd.h b/relayd.h
+index d7ad212..c1e85a2 100644
+--- a/relayd.h
++++ b/relayd.h
+@@ -31,8 +31,8 @@
+ #include <stdint.h>
+ #include <stdbool.h>
+ 
+-#include <libubox/uloop.h>
+-#include <libubox/list.h>
++#include "uloop.h"
++#include "list.h"
+ 
+ #define DEBUG
+ #ifdef DEBUG
+-- 
+2.31.0
+

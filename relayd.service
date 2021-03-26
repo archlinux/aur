@@ -1,0 +1,12 @@
+[Unit]
+Description=relayd
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/relayd
+ExecStart=/usr/bin/relayd $ARGS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

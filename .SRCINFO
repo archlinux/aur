@@ -1,0 +1,26 @@
+pkgbase = relayd
+	pkgdesc = Transparent routing / relay daemon (taken from OpenWrt)
+	pkgver = 20200425
+	pkgrel = 1
+	url = https://git.openwrt.org/project/relayd.git
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	depends = glibc
+	backup = etc/conf.d/relayd
+	source = relayd::git+https://git.openwrt.org/project/relayd.git#commit=f4d759be54ceb37714e9a6ca320d5b50c95e9ce9
+	source = 0001-libubox-import-list-uloop-utils-.h-uloop-epoll-.c.patch
+	source = 0002-CMakeLists.txt-adjust-to-compile-with-inline-uloop.patch
+	source = 0003-relayd.h-fix-includes.patch
+	source = relayd.conf
+	source = relayd.service
+	sha256sums = SKIP
+	sha256sums = 3073ac119de2635eeb5affa6c8e46a6328179ffe568302a463f62d5e5b0ac4f5
+	sha256sums = b002ab6bf4729984c630e3ef57caf2606e2a667cdd2fac1046d16475bd5cb98e
+	sha256sums = b4fcb393e3567e61999d31734d45314e2cced8620d52146696f982437a978c75
+	sha256sums = 58c84f0f6c335e05c281d9f2eeb144839a5e0e2021bac9073872a4634739fd1f
+	sha256sums = 91a601ba5080851ecba276ad8ba11bcd1c4ed97715e631fc8e3c58fa86962b62
+
+pkgname = relayd
+
