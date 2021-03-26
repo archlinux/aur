@@ -1,6 +1,6 @@
 pkgbase = audiotube-git
 	pkgdesc = Client for YouTube Music
-	pkgver = r52.18f9c0c
+	pkgver = r69.eb105e2
 	pkgrel = 1
 	url = https://invent.kde.org/jbbgameich/audiotube
 	arch = x86_64
