@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst3-x-bin
 pkgver=4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux Windows vst3 wrapper/bridge"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst3-X"
