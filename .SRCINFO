@@ -1,7 +1,7 @@
 pkgbase = linvst3-x-bin
 	pkgdesc = Linux Windows vst3 wrapper/bridge
 	pkgver = 4.0
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst3-X
 	arch = x86_64
 	groups = pro-audio
