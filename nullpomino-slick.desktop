@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=NullpoMino
+Comment=An action puzzle game
+Exec=/opt/nullpomino/play_slick
+Type=Application

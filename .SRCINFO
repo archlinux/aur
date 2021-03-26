@@ -1,0 +1,17 @@
+pkgbase = nullpomino-slick
+	pkgdesc = An action puzzle game
+	pkgver = 7.5.0
+	pkgrel = 1
+	url = https://github.com/nullpomino/nullpomino
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = java-runtime>=1.5
+	conflicts = nullpomino-git
+	source = NullpoMino7.5.0_linux.tar.gz::https://github.com/nullpomino/nullpomino/releases/download/v7.5.0/NullpoMino7.5.0_linux.tar.gz
+	source = nullpomino-slick.desktop
+	md5sums = SKIP
+	md5sums = caba0042fe874a90568b32304557dbb2
+
+pkgname = nullpomino-slick
+
