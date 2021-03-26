@@ -12,7 +12,7 @@ makedepends=(cmake gcc-fortran gmp python llvm10)
 conflicts=(julia julia-git julia-nightly-bin julia-bin julia-beta-bin)
 url='https://julialang.org/'
 licenses=('MIT')
-source=("https://julialang-s3.julialang.org/bin/linux/x64/1.5/$_name-1.6.0-linux-x86_64.tar.gz"
+source=("https://julialang-s3.julialang.org/bin/linux/x64/1.6/$_name-1.6.0-linux-x86_64.tar.gz"
         "https://julialangnightlies-s3.julialang.org/bin/linux/x64/$_name-latest-linux64.tar.gz"
 16x16.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/16.png
 32x32.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/32.png
