@@ -2,7 +2,7 @@
 
 pkgname='qt5-wasm'
 
-_qtver=5.15.0
+_qtver=5.15.2
 _emsdkver=1.39.8
 
 _qt="qt-everywhere-src-${_qtver}"
@@ -10,7 +10,7 @@ _qt="qt-everywhere-src-${_qtver}"
 _modules="qtbase qtdeclarative qtquickcontrols2 qtwebsockets qtsvg"
 
 pkgver=${_qtver/-/}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -21,12 +21,10 @@ conflicts=()
 groups=('qt-wasm' 'qt5-wasm')
 install=$pkgname.install
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
-        'git+https://github.com/emscripten-core/emsdk.git#tag=2.0.0'
-	'emsdk.patch'
+        'git+https://github.com/emscripten-core/emsdk.git#tag=2.0.15'
         'qtwasm_env.sh')
-sha256sums=('22b63d7a7a45183865cc4141124f12b673e7a17b1fe2b91e433f6547c5d548c3'
+sha256sums=('3a530d1b243b5dec00bc54937455471aaa3e56849d2593edb8ded07228202240'
             'SKIP'
-            'd96327578ad9535cdd2d0b0277ac89a65e86ffbb426c818e3e00fd29ddbd932a'
             'd5e93f991453f1b9ff9ba6f053520ae0610f32d6f0fa0772f6587f10f3dfe023')
 options=('!strip')
 
@@ -84,7 +82,6 @@ package() {
   rm -rf .git .circleci .gitignore
   sed -i "s|${srcdir}|${_opt}|" .emscripten_sanity_wasm
   sed -i "s|${srcdir}|${_opt}|" upstream/emscripten/cache/is_vanilla.txt
-  patch --forward --strip=1 --input="${srcdir}/emsdk.patch"
   sed -i "s|qt5emsdk|${pkgname}-emsdk|" emsdk.py
 
   find . -type d -name "__pycache__" -prune -exec rm -rf {} \;
