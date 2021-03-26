@@ -2,6 +2,7 @@
 pkgname=papirus-nord
 pkgver=3.0.0
 pkgrel=1
+epoch=1
 pkgdesc="Custom colors for folder icons for Papirus Icon Theme!"
 arch=('any')
 url="https://www.pling.com/p/1360398"

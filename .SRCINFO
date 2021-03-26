@@ -2,6 +2,7 @@ pkgbase = papirus-nord
 	pkgdesc = Custom colors for folder icons for Papirus Icon Theme!
 	pkgver = 3.0.0
 	pkgrel = 1
+	epoch = 1
 	url = https://www.pling.com/p/1360398
 	arch = any
 	license = GPL2
