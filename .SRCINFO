@@ -1,29 +1,26 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
-	pkgver = 0.9.4b.CD498
-	pkgrel = 2
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = http://fritzing.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
 	makedepends = git
-	depends = desktop-file-utils
 	depends = libgit2
 	depends = qt5-serialport
 	depends = qt5-svg
-	source = https://github.com/fritzing/fritzing-app/archive/CD-498.tar.gz
+	source = https://github.com/fritzing/fritzing-app/archive/0.9.6.tar.gz
 	source = git+https://github.com/fritzing/fritzing-parts.git#commit=e79a69765026f3fda8aab1b3e7a4952c28047a62
 	source = 0001-don-t-scan-filesystem-for-application-directory-if-i.patch
 	source = 0002-allow-user-and-administrator-to-install-parts-librar.patch
 	source = 0003-provide-script-for-user-to-clone-parts-library.patch
-	source = https://github.com/fritzing/fritzing-app/commit/472951243d70eeb40a53b1f7e16e6eab0588d079.patch
-	sha256sums = b8af09b44a1d79fc3ff86f4e0c6793cd4473baf052420b7e1f127f0aaa968167
+	sha256sums = eb4ebe461c5d42edb4b10f1f824e7c855ad54555e222c5999061dead09834491
 	sha256sums = SKIP
 	sha256sums = 52b20ee77723f805c905dea49177931cfe681689e71b941ee35e2e302a83cf4c
 	sha256sums = 1e59cd5db471b60cd12b8d63510de442c883b3fa0f8d27532aa29bc81838fec1
 	sha256sums = fb0d8fc6257f166ab77f99bbe32dff51bbdace7d5a3d4d9a789542a8e3fec540
-	sha256sums = b8d33b1b1523c2038ba684f15f32a5311f0ae9592257c202b5b06cbedcc22757
 
 pkgname = fritzing
 
