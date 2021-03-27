@@ -19,8 +19,11 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd yash
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
