@@ -1,9 +1,10 @@
+#!/bin/bash
 # Contributor: Splex
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.1.alpha.r9.g158a1947eb
+pkgver=1.1.alpha.r199.g30c0b84b2b
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -15,9 +16,9 @@ depends=('double-conversion' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'libyaml' 'potr
 optdepends=('python-numpy: some extensions'
             'python-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
-	    'ruby: for simplepath extension'
-	    'imagemagick: for some file conversions')
-makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'gtest' 'pango' 'python' 'fontconfig')
+            'ruby: for simplepath extension'
+            'imagemagick: for some file conversions')
+makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'gtest' 'gmock' 'pango' 'python' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!buildflags')
@@ -42,18 +43,14 @@ pkgver() {
 }
 
 build() {
-  cd "$_gitname"
-  [[ -d build ]] || mkdir build
-  cd build
   export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
   export CXXFLAGS="${CXXFLAGS} -fpermissive"
-  cmake .. \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_BUILD_TYPE=RELEASE 
-  make 
+  cmake -S "${_gitname}" -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=RELEASE 
+  make -C build
 }
 
 package() {
-  cd "$_gitname"/build
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="${pkgdir}" install
 }
