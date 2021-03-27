@@ -1,6 +1,6 @@
 pkgbase = python-linearmodels
 	pkgdesc = Linear models in Python.
-	pkgver = 4.17
+	pkgver = 4.23
 	pkgrel = 1
 	url = https://bashtage.github.io/linearmodels/doc
 	arch = x86_64
@@ -10,13 +10,16 @@ pkgbase = python-linearmodels
 	checkdepends = python-xarray
 	makedepends = cython
 	makedepends = python-setuptools
+	depends = python-pyhdfe
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-patsy
 	depends = python-scipy
 	optdepends = python-xarray
-	source = python-linearmodels-4.17.tar.gz::https://github.com/bashtage/linearmodels/archive/4.17.tar.gz
-	sha256sums = fbffd00535fa94691f7a8c985211726cc6b2cd3ed4fc7d1709ef4c9d1d7d6636
+	source = python-linearmodels-4.23.tar.gz::https://github.com/bashtage/linearmodels/archive/refs/tags/v4.23.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/bashtage/linearmodels/pull/336.patch
+	sha256sums = 74e7e131b22e8817efe35b04d3d4193262ed4c17e3d2aefafc4209c69288d823
+	sha256sums = 3e3c40a8cf95e5ec22b46758f9799a010e88f7fc124e916fbce689afb6258acd
 
 pkgname = python-linearmodels
 
