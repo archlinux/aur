@@ -34,7 +34,7 @@ pkgver() {
 prepare(){
   # materia-qt has no ./change_color script
   cd "${srcdir}/materia-theme-qt/Kvantum"
-  sed "s/4285f4/$_accent/" -i */*
+  sed "s/8ab4f8/$_accent/" -i */*
 }
 
 build(){
@@ -47,7 +47,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/themes"
   cp -r "${srcdir}"/themes/* "${pkgdir}/usr/share/themes"
   cp -r "${srcdir}"/materia-theme-qt/Kvantum "${pkgdir}/usr/share"
-  
+
   mkdir -p "${pkgdir}/usr/share/libalpm/hooks"
   cp 99-gdm-use-materia-theme.hook "${pkgdir}/usr/share/libalpm/hooks"
 }
