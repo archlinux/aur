@@ -1,7 +1,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='motoko'
-pkgver=v0.2.1
+pkgver=v0.2.2
 pkgrel=1
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
@@ -16,13 +16,13 @@ _basedownloadurl="https://github.com/ldez/${pkgname}/releases/download/${pkgver}
 _basearchive="${pkgname}_${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('b910d41eac5164ea97ea58538ddee852895a3f5d2877ffdfce3db1e78a7c3be6')
+sha256sums_x86_64=('8890081eb46f4ce7ef7093c4917780385ae2d44549eec50ce19ba24accc42f2c')
 
 source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
-sha256sums_i686=('f31dca23ec9594fcd454e501763b40a4ac62a0c2cb5e4ef6e24b28b906266a6a')
+sha256sums_i686=('45c18dc5dd27be6b925f3b3b4dec8517a9859f371ad9297602de020863bd0ff4')
 
 source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
-sha256sums_aarch64=('a732e416fc63373438df125e7e3184616ec6506c42269316772440cb65d87cd7')
+sha256sums_aarch64=('3625f072ec82e8b44040fc08755339fa9dd4a606f70019498ce5d1704c620c09')
 
 package() {
 	# Bin
