@@ -3,7 +3,7 @@
 
 pkgname=python-topylogic
 pkgbase=python-topylogic
-pkgver=1.3.0rc1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Library to create dyanimic context free or switching automata'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 _pkgname=topylogic
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('32be4118081b1a7d2b0840e627fe31f248a628c1c019e439ef7c52b0d2ba9a89')
+sha256sums=('c4426dd198ffc724274d6b0e18b3b56d90023eba7a9c6e725821d24d23df8f02')
 
 build() 
 {
