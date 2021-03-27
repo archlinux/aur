@@ -3,4 +3,5 @@ Type=Application
 Name=osu!lazer
 Icon=/usr/share/pixmaps/osu-lazer.png
 Comment=Open source free-to-win rhythm game
-Exec=/usr/bin/osu
+Exec=/usr/bin/osu-lazer
+Categories=Game;

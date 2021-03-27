@@ -2,7 +2,7 @@
 
 pkgname=osu-lazer-bin
 pkgver=2021.323.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=('x86_64')
 url="https://osu.ppy.sh"
@@ -12,8 +12,8 @@ depends=(ffmpeg zlib libgl sdl2 fuse2)
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=(osu osu-lazer)
-conflicts=(osu osu-lazer)
+provides=(osu-lazer)
+conflicts=(osu-lazer)
 replaces=()
 backup=()
 options=(!strip)
@@ -40,6 +40,6 @@ package() {
 	 install -Dm644 osu-lazer.desktop "${pkgdir}"/usr/share/applications/osu-lazer.desktop
 
 	 # Install binary
-	 install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}".AppImage "${pkgdir}"/usr/bin/osu
+	 install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}".AppImage "${pkgdir}"/usr/bin/osu-lazer
 
 }
