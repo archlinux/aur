@@ -1,0 +1,16 @@
+pkgbase = regexops-git
+	pkgdesc = a small tool for printing lines that match Regex patterns
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/siruidops/regexops
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = glibc
+	source = regexops-git::git+https://github.com/siruidops/regexops
+	sha512sums = SKIP
+
+pkgname = regexops-git
+
