@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-git
-pkgver=7.5.0.r176.gf7ad1e7e3
+pkgver=7.5.0.r188.gbbc5899a8c
 pkgrel=1
 pkgdesc="An object-oriented C++ class library designed for rapid production of sophisticated domain-specific CAD/CAM/CAE applications."
 arch=(x86_64)
@@ -28,13 +28,10 @@ rapidjson
 )
 #checkdepends=()
 
-#source=("git+https://git.dev.opencascade.org/repos/occt.git")  # broken today?
 source=(
-"occt::git+https://github.com/Open-Cascade-SAS/OCCT.git"
-fix-install-dir-references.patch
+"git+https://git.dev.opencascade.org/repos/occt.git"
 )
-md5sums=('SKIP'
-         '9614204ad945c1fcfa4c2c058c9d0423')
+sha256sums=('SKIP')
 
 pkgver() {
   cd occt
@@ -43,7 +40,6 @@ pkgver() {
 
 prepare() {
   cd occt
-  patch -Np1 -i "$srcdir/fix-install-dir-references.patch"
   
   # fix for None type build
   sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
@@ -79,13 +75,12 @@ build() {
   USE_TBB=ON
   USE_VTK=ON
   AUX_ARGS=
-  
+
   cmake -B build_dir -S "occt" \
     -W no-dev \
     -G Ninja \
-    -D CMAKE_BUILD_TYPE='None' \
+    -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX='/usr' \
-    -D 3RDPARTY_DIR:PATH="$OCCT3RDPARTY" \
     -D 3RDPARTY_FREETYPE_DIR:PATH="$FREETYPE_DIR" \
     -D BUILD_ADDITIONAL_TOOLKITS:STRING="$BUILD_ADDITIONAL_TOOLKITS" \
     -D BUILD_DOC_Overview:BOOL=$BUILD_DOC_Overview \
@@ -105,13 +100,18 @@ build() {
     -D INSTALL_DIR_LAYOUT:STRING=Unix \
     -D INSTALL_DIR_BIN:STRING=$INSTALL_DIR_BIN \
     -D INSTALL_DIR_LIB:STRING=$INSTALL_DIR_LIB \
+    -D INSTALL_DIR_CMAKE:PATH=/usr/lib/cmake/opencascade \
     -D USE_FFMPEG:BOOL=$USE_FFMPEG \
     -D USE_FREEIMAGE:BOOL=$USE_FREEIMAGE \
     -D USE_GLES2:BOOL=$USE_GLES2 \
     -D USE_RAPIDJSON:BOOL=$USE_RAPIDJSON \
     -D USE_TBB:BOOL=$USE_TBB \
+    -D INSTALL_VTK=False \
+    -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9" \
+    -D 3RDPARTY_VTK_LIBRARY_DIR:PATH="/usr/lib" \
+    -D 3RDPARTY_VTK_INCLUDE_DIR:PATH="/usr/include" \
     -D USE_VTK:BOOL=$USE_VTK
-   
+
   cmake --build build_dir
 }
 
