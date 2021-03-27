@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=7.5.RC1.r4.g6b105a3
+pkgver=7.5.RC1.r13.ge1df346
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -9,12 +9,13 @@ url=https://github.com/CadQuery/OCP
 license=('Apache')
 depends=(
 python
-opencascade
+opencascade-rc
+vtk9-fix
 )
 makedepends=(
 git
 clang
-"python-joblib>=1.0.0"
+python-joblib
 python-click
 python-pandas
 python-path
@@ -56,6 +57,7 @@ build() {
     --clean \
     --libclang "$(ldconfig -p | grep 'libclang.so$' | head -1 | awk '{print $NF}')" \
     --include "$(clang -print-resource-dir)"/include \
+    --include "/usr/include/vtk" \
     all ocp.toml
 
   cmake \
@@ -63,6 +65,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX="/usr" \
     -D OPENCASCADE_INCLUDE_DIR=opencascade \
     -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9" \
     -B build_dir \
     -G Ninja \
     -S OCP
