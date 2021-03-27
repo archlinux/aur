@@ -38,7 +38,7 @@ build(){
 }
 
 check(){
-	cd "$srcdir"/$_pyname-$pkgver
+	cd $_pyname-$pkgver
 	stestr run
 }
 
