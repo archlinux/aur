@@ -6,7 +6,6 @@ pkgbase = vim-coc-rust-analyzer-git
 	arch = any
 	license = MIT
 	makedepends = yarn
-	makedepends = npm
 	makedepends = git
 	depends = vim-coc
 	provides = vim-coc-rust-analyzer
