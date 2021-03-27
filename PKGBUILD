@@ -7,8 +7,9 @@ _colors_dark="SEL_BG=$_accent FG=eeeeee \n BG=212121 \n HDR_FG=e0e0e0 \n HDR_BG=
 pkgdesc="Easy installer for the materia theme with a custom accent color, gdm and qt5 support (edit PKGBUILD)"
 arch=('any')
 url="https://github.com/nana-4/materia-theme"
+pkgver=20210322
 _url_qt="https://github.com/PapirusDevelopmentTeam/materia-kde"
-pkgver=r1607.68baf805
+_pkgver_qt=20210307
 pkgrel=1
 license=('GPL')
 makedepends=(sassc inkscape)
@@ -20,16 +21,12 @@ optdepends=(
 provides=()
 conflicts=('materia-theme' 'kvantum-theme-materia')
 replaces=()
-source=(${_pkgname}::git+$url.git
-        ${_pkgname}-qt::git+$_url_qt.git
+source=("${_pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${_pkgname}-${_pkgver_qt}-qt.tar.gz"::"${_url_qt}/archive/refs/tags/${_pkgver_qt}.tar.gz"
         99-gdm-use-materia-theme.hook)
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('4460af612cd70242543ac71023f8963eea39be059486e9ebe58b3846be74bcb5'
+            '0474c94e2db944f3efffbcba651289d2ddf11dcaffc0dabf6e1042a254ed9ea1'
             '7db390763b37c3cc2c2984a8a3e8452d1822ac579def6a07eecbee076fb73d77')
-pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare(){
     # materia-qt has no ./change_color script
