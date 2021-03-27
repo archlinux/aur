@@ -1,7 +1,7 @@
 pkgbase = denix-backgrounds
 	pkgdesc = DeniX backgrounds
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/denix666/denix-backgrounds
 	arch = any
 	license = GPL
