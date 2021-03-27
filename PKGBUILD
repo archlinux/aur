@@ -11,7 +11,7 @@ _url_qt="https://github.com/PapirusDevelopmentTeam/materia-kde"
 pkgver=r1607.68baf805
 pkgrel=1
 license=('GPL')
-makedepends=(bc sassc inkscape)
+makedepends=(sassc inkscape)
 depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra')
 optdepends=(
     'resvg: faster compilation'
@@ -52,4 +52,3 @@ package() {
     mkdir -p "${pkgdir}/usr/share/libalpm/hooks"
     cp 99-gdm-use-materia-theme.hook "${pkgdir}/usr/share/libalpm/hooks"
 }
-
