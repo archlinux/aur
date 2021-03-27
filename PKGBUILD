@@ -1,9 +1,9 @@
-# Maintainer: Lukas1818 <aur at lukas1818 dot de>
+# Maintainer: 4censord <mail@business-insulting.de>
 
 pkgname=gog-hacknet
 pkgver=5.069
 pkgrel=1
-pkgdesc="Story driven Hacking Game"
+pkgdesc="Story driven Hacking Game (GOG version)"
 url="https://www.gog.com/game/hacknet"
 license=('custom')
 arch=('i686' 'x86_64')
