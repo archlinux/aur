@@ -7,7 +7,7 @@
 pkgname=firedragon-stable
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=87.0
+pkgver=88.0b3
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding & new features using stable as source."
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ install=$__pkgname.install
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _linux_commit=7a39d563510701275472b1656b92eed590a040d5
 _settings_commit=241e6f4d73e6f2de37537cf4473612ae9f8ad81e
-source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source_x86_64=(https://archive.mozilla.org/pub/devedition/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                $__pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
@@ -45,7 +45,7 @@ source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/f
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
                "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch")
-source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source_aarch64=(https://archive.mozilla.org/pub/devedition/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                 $__pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
@@ -57,7 +57,7 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
+sha256sums_x86_64=('b9ac5833ef8109b9106c39b5aa0e8f5edf3ee794cc110dcade70ecab34529c3d'
                    '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
                    'SKIP'
                    'SKIP'
@@ -66,7 +66,7 @@ sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                    '85f037f794afee0c70840123960375a00f9cef08dd903ea038b6bb62e683b96f'
                    'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9')
-sha256sums_aarch64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
+sha256sums_aarch64=('b9ac5833ef8109b9106c39b5aa0e8f5edf3ee794cc110dcade70ecab34529c3d'
                     '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
                     'SKIP'
                     'SKIP'
