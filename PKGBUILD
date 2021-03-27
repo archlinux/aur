@@ -18,7 +18,6 @@ prepare() {
 
 build() {
     cd $srcdir/$pkgname-$pkgver
-    git reset 0ae148032b
     cmake . . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/local
     make
 }
