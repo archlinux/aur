@@ -1,7 +1,7 @@
 pkgbase = gog-hacknet
-	pkgdesc = Story driven Hacking Game
+	pkgdesc = Story driven Hacking Game (GOG version)
 	pkgver = 5.069
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/hacknet
 	arch = i686
 	arch = x86_64

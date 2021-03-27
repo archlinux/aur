@@ -2,7 +2,7 @@
 
 pkgname=gog-hacknet
 pkgver=5.069
-pkgrel=1
+pkgrel=2
 pkgdesc="Story driven Hacking Game (GOG version)"
 url="https://www.gog.com/game/hacknet"
 license=('custom')
@@ -28,9 +28,15 @@ package(){
 	mkdir -p "${pkgdir}/opt/$pkgname"
 	cp -a "${srcdir}/data/noarch/game" -T "${pkgdir}/opt/$pkgname"
 	chmod -R 644 "${pkgdir}/opt/$pkgname/"
+	# required to be writable for creating new accounts, if not it fails with a exeption
+	# doesnt seem to be actually written to.
+	chmod -R 666 "${pkgdir}/opt/$pkgname/Content/People"
+	
 	find ${pkgdir} -type d -exec chmod +x {} +
 	chmod 555 "${pkgdir}/opt/$pkgname/Hacknet.bin.x86_64"
 	chmod 555 "${pkgdir}/opt/$pkgname/Hacknet.bin.x86"
+
+
 
 	# remove integrated libsdl2 and libsdl2-image because it doesnt launch for me using them.
 	# deleting them makes the dynamic linker use the system libs
@@ -38,6 +44,7 @@ package(){
 	rm "${pkgdir}/opt/gog-hacknet/lib64/libSDL2_image-2.0.so.0"
 	rm "${pkgdir}/opt/gog-hacknet/lib/libSDL2-2.0.so.0"
 	rm "${pkgdir}/opt/gog-hacknet/lib/libSDL2_image-2.0.so.0"
+
 
 	# Desktop integration
 	install -Dm 644 "${srcdir}/data/noarch/support/icon.png" \
