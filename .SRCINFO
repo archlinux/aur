@@ -8,6 +8,7 @@ pkgbase = how-to-use-pvs-studio-free-git
 	license = APACHE
 	makedepends = cmake
 	makedepends = git
+	depends = gcc-libs
 	optdepends = pvs-studio: for the PVS-Studio code analyzer
 	provides = how-to-use-pvs-studio-free
 	conflicts = how-to-use-pvs-studio-free

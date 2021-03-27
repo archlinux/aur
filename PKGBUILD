@@ -8,6 +8,7 @@ pkgdesc='An utility that adds special comments to a source code for analyzing th
 arch=('i686' 'x86_64')
 url=https://github.com/viva64/$_pkgname
 license=('APACHE')
+depends=('gcc-libs')
 makedepends=('cmake' 'git')
 optdepends=('pvs-studio: for the PVS-Studio code analyzer')
 provides=($_pkgname)
