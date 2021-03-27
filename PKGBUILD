@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-x11gestures
 _uuid=x11gestures@joseexposito.github.io
-pkgver=2
+pkgver=6
 pkgrel=1
 pkgdesc="Enable GNOME Shell multi-touch gestures on X11"
 arch=(any)
