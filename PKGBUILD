@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=thiefmd
-pkgver=0.1.8
-_codename=languages
+pkgver=0.2.0
+_codename=creators-edition
 pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
@@ -10,14 +10,16 @@ license=('GPL3')
 depends=('gtkspell3' 'webkit2gtk' 'discount' 'gtksourceview4' 'libarchive'
          'clutter' 'libgee' 'libhandy')
 makedepends=('git' 'meson' 'vala')
-_commit=413cf1e3a1d9dfb98dcf096a83842b20a9055212
+_commit=89ff79ef5e151cafa87d17d9b1e43582de746e0a
 source=("git+https://github.com/kmwallio/ThiefMD.git#commit=$_commit"
+        'git+https://github.com/ThiefMD/BiBtex-vala.git'
         'git+https://github.com/ThiefMD/ghost-vala.git'
         'git+https://github.com/TwiRp/ultheme-vala.git'
         'git+https://github.com/ThiefMD/wordpress-vala.git'
         'git+https://github.com/ThiefMD/writeas-vala.git'
         'git+https://github.com/ThiefMD/libwritegood-vala.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,7 +34,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/ThiefMD"
 	git submodule init
-	for _submodule in ghost-vala ultheme-vala wordpress-vala writeas-vala libwritegood-vala; do
+	for _submodule in BiBtex-vala ghost-vala ultheme-vala wordpress-vala writeas-vala libwritegood-vala; do
 		git config submodule.src/${_submodule}.url $srcdir/${_submodule}
 	done
 	git submodule update
