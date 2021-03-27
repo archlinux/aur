@@ -1,0 +1,20 @@
+pkgbase = gog-hacknet
+	pkgdesc = Story driven Hacking Game
+	pkgver = 5.069
+	pkgrel = 1
+	url = https://www.gog.com/game/hacknet
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = sed
+	depends = sdl2
+	depends = sdl2_image
+	depends = gconf
+	provides = hacknet=5.069
+	source = local://hacknet_en_5_069_15083.sh
+	source = gog-hacknet.desktop
+	sha256sums = b906aa80f8ff526cd6388a54a8de84cf735d9f65760e38996e1bab1cc4b333bd
+	sha256sums = dc93dbff6d7c254b07247dcacc4348da6e52590c6b48968c60b48b72e03290b2
+
+pkgname = gog-hacknet
+
