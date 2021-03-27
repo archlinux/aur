@@ -8,7 +8,6 @@ pkgbase = vim-coc-lists-git
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	makedepends = npm
 	depends = vim-coc
 	provides = vim-coc-lists
 	conflicts = vim-coc-lists
