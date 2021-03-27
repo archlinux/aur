@@ -5,7 +5,7 @@
 pkgname=gqview-devel
 _pkgname=gqview
 pkgver=2.1.5
-pkgrel=7
+pkgrel=8
 pkgdesc="An image browser and viewer"
 arch=('i686' 'x86_64')
 url="http://gqview.sourceforge.net/"
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
-  ./configure LDFLAGS=" -lm -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now" --prefix=/usr
+  ./configure CFLAGS="$CFLAGS -fcommon" LDFLAGS=" -lm -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now" --prefix=/usr
   make
 }
 
