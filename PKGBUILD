@@ -6,7 +6,7 @@
 ### Info ###
 pkgname=vivaldi-arm-bin
 _pkgname=${pkgname%-arm-bin}
-pkgver=3.7.2218.45
+pkgver=3.7.2218.49
 pkgrel=1
 _pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind'
@@ -24,9 +24,9 @@ _source_armhf=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-${
 source_armv6h=("$_source_armhf")
 source_armv7h=("$_source_armhf")
 source_aarch64=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-${_pkgrel}_arm64.deb")
-b2sums_armv6h=('2edfa3bbabf646be447a3a9265a102bb0ddfaeed7562072c7a2a59e6b860c7d094a23cc4b6c8c07d69e96746244e0e8a4c2a0a42f806831f7defdc5149420de1')
-b2sums_armv7h=('2edfa3bbabf646be447a3a9265a102bb0ddfaeed7562072c7a2a59e6b860c7d094a23cc4b6c8c07d69e96746244e0e8a4c2a0a42f806831f7defdc5149420de1')
-b2sums_aarch64=('85737bbb82dc9b971996cabef7dcca334c3155616a2b881436376aadd141b1898b6438e984f4cc53bbe1f7496ef46ac14d17242314a817e9e0a49ce61301863f')
+b2sums_armv6h=('3fe7e29db324993b2afdebd8d8cb8a6c1cac77a8715d46abae9a7b0c191fef0cebe0b7f90647c21bdbed29e8827b1e6f4afdfb3754cbf1bf57f9c238d668c25f')
+b2sums_armv7h=('3fe7e29db324993b2afdebd8d8cb8a6c1cac77a8715d46abae9a7b0c191fef0cebe0b7f90647c21bdbed29e8827b1e6f4afdfb3754cbf1bf57f9c238d668c25f')
+b2sums_aarch64=('ca375153a48dda8d119cd1f747c651de914b6665c287a742cf333b090b7d4ca6439b1354e0ffd49a4e2d187bba73f0155280d9c90eac7e6c7aead9336c12e081')
 
 ### Prepare ###
 prepare() {
