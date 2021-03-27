@@ -1,16 +1,16 @@
 pkgbase = ttf-lxgw-wenkai
 	pkgdesc = An open-source Chinese font derived from Fontworks' Klee One.
-	pkgver = 0.206
+	pkgver = 0.211
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwWenKai
 	arch = any
 	license = OFL
-	source = ttf-lxgw-wenkai-0.206-1-LICENSE::https://github.com/lxgw/LxgwWenKai/raw/v0.206/SIL_Open_Font_License_1.1.txt
-	source = ttf-lxgw-wenkai-0.206-1-LXGWWenKai-Regular.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v0.206/LXGWWenKai-Regular.ttf
-	source = ttf-lxgw-wenkai-0.206-1-LXGWWenKai-Medium.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v0.206/LXGWWenKai-Medium.ttf
+	source = ttf-lxgw-wenkai-0.211-1-LICENSE::https://github.com/lxgw/LxgwWenKai/raw/v0.211/SIL_Open_Font_License_1.1.txt
+	source = ttf-lxgw-wenkai-0.211-1-LXGWWenKai-Regular.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v0.211/LXGWWenKai-Regular.ttf
+	source = ttf-lxgw-wenkai-0.211-1-LXGWWenKai-Medium.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v0.211/LXGWWenKai-Medium.ttf
 	sha256sums = e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602
-	sha256sums = b5277114ed2d80c6bfc8bf051b81cbb2a9671fb3f350237d7c2bbb4113921cb0
-	sha256sums = 6c470cc42210790bf70283166fbc221dea39a42666c6bd28c89e420f85de3154
+	sha256sums = 4532c94f60731a6de29b4fe50cb393aaf898fda869ade8f1de18ea5a4907f898
+	sha256sums = 5fdcb7f8ae292c7cd71d5556eed230e1f77d47307b5bbc2eec1cddfa011aa843
 
 pkgname = ttf-lxgw-wenkai
 
