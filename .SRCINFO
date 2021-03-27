@@ -1,0 +1,14 @@
+pkgbase = gog-hacknet-labyrinths-dlc
+	pkgdesc = Labyrinths DLC for Hacknet (GOG version)
+	pkgver = 5.069
+	pkgrel = 1
+	url = https://www.gog.com/game/hacknet_labyrinths
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gog-hacknet
+	source = local://hacknet_labyrinths_dlc_en_5_069_15083.sh
+	sha256sums = d925b55ddb36865aece63fcbce61ce9c9e4ceb851acebfb2d835ae13e439fd55
+
+pkgname = gog-hacknet-labyrinths-dlc
+
