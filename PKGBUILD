@@ -2,7 +2,7 @@
 # Co-maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=gdu
-pkgver=4.9.0
+pkgver=4.9.1
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
@@ -12,7 +12,7 @@ makedepends=('go' 'pandoc')
 arch=('x86_64')
 url="https://github.com/dundee/gdu"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/dundee/gdu/archive/v${pkgver}.tar.gz")
-sha256sums=('fcab78ac1104b6e4036158a5d3a715494443cfcffd1c21e2237717c9e6baed7f')
+sha256sums=('02680848ccb4b2571ee672a874305405a33dc2cace235a7240f8b2d51e2f3501')
 
 prepare(){
   cd "$pkgname-$pkgver"
