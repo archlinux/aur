@@ -2,7 +2,7 @@
 
 pkgname=eternity-engine
 pkgver=4.02.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
@@ -40,5 +40,4 @@ build() {
 package() {
   cd ee-build
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  find "$pkgdir" -type d -empty -delete
 }

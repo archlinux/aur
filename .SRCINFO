@@ -1,7 +1,7 @@
 pkgbase = eternity-engine
 	pkgdesc = An advanced Doom port with vanilla compatibility
 	pkgver = 4.02.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eternity.youfailit.net/
 	arch = i686
 	arch = x86_64
