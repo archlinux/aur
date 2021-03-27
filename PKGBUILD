@@ -2,7 +2,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='https://wiki.ros.org/rviz'
 
 pkgname='ros-noetic-rviz'
-pkgver='1.14.4'
+pkgver='1.14.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD, Creative Commons')
@@ -61,9 +61,9 @@ depends=(
     python-sip
 )
 
-_dir="rviz-${pkgver}"
+_dir="rviz-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rviz/archive/${pkgver}.tar.gz")
-sha256sums=('9561e5487037cb761fc3b4e1626c9e9c73243662cee8dc54f679dc35031b9f8f')
+sha256sums=('1e4f75a2607ef2245dd17ff68c2e9baa7dc3ad555c0faec2ef876c5b2933e066')
 
 build() {
     # Use ROS environment variables.
