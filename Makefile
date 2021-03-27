@@ -1,14 +1,11 @@
-all: | update-pkgsums update-srcinfo
-.PHONY: all
-
-update-srcinfo:
-	makepkg --printsrcinfo > .SRCINFO
-.PHONY: update-srcinfo
-
-update-pkgsums:
-	rm -f *.tar.gz{,part}
+update:
 	updpkgsums
-.PHONY: update-pkgsums
+	makepkg --printsrcinfo > .SRCINFO
+.PHONY: update
+
+install:
+	makepkg -si
+.PHONY: update
 
 compare-versions:
 	# https://github.com/erdii/toolbox/blob/main/cmd/aur-compare-oc-versions/main.go
