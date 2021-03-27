@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.26.arch1.r969306.51b20f67d33c
+pkgver=v5.10.26.arch1.r969310.1110c37124f4
 _srcver_tag=v5.10.26.arch1
 pkgrel=1
 pkgdesc="Linux"
@@ -89,7 +89,7 @@ _repo_url="https://github.com/koverstreet/bcachefs"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
-_gcc_patch_name="more-uarches-for-gcc-v11-and-kernel-5.8+.patch"
+_gcc_patch_name="more-uarches-for-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
