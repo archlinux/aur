@@ -1,0 +1,17 @@
+pkgbase = python-pyhdfe
+	pkgdesc = Algorithms for high dimensional fixed effect absorption
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jeffgortmaker/pyhdfe
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/pyhdfe/pyhdfe-0.1.0.tar.gz
+	sha256sums = 820a40722d70e94cec1dcd140d6c480f02578fee96660b722a2e722c2222e377
+
+pkgname = python-pyhdfe
+
