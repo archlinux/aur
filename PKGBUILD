@@ -1,7 +1,7 @@
 # Maintainer: tcg <aur-tcg@emailaddress.biz>
 
 pkgname=tcg-git
-pkgver=0.2.60
+pkgver=0.2.61
 pkgrel=1
 pkgdesc="cgroups for terminals"
 arch=('x86_64')
