@@ -1,8 +1,8 @@
 # Maintainer: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=plex-mpv-shim
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Cast media from Plex Mobile and Web apps to MPV"
 arch=('any')
 url='https://github.com/iwalton3/plex-mpv-shim'
@@ -23,7 +23,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iwalton3/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('d3ab4923bb2f4c5e57f68ea3ca80d0c3')
+md5sums=('8aee3be4f52b7351a14e1e85bdfb515d')
 
 build() {
     cd $pkgname-$pkgver
