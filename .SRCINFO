@@ -1,13 +1,13 @@
 pkgbase = solo-python
 	pkgdesc = Tools and Python library for SoloKeys.
 	pkgver = 0.0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/solokeys/solo-python
 	arch = any
 	license = Apache
 	license = MIT
 	makedepends = python-pip
-	makedepends = flit
+	makedepends = python-flit
 	depends = python
 	depends = python-click>=7.0
 	depends = python-cryptography
