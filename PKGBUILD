@@ -4,7 +4,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=evince-git
-pkgver=3.31.4+2+gfc65afe7
+pkgver=40.1
 pkgrel=1
 pkgdesc="Simply a document viewer"
 url="http://projects.gnome.org/evince/"
@@ -13,7 +13,7 @@ license=(GPL)
 depends=(gtk3 libgxps libspectre gsfonts poppler-glib djvulibre t1lib libsecret
          desktop-file-utils dconf gsettings-desktop-schemas adwaita-icon-theme)
 makedepends=(itstool libnautilus-extension texlive-bin gobject-introspection
-             intltool docbook-xsl python gtk-doc git gnome-common)
+             docbook-xsl python gtk-doc git meson)
 optdepends=('texlive-bin: DVI support'
 	          'gvfs: bookmark support and session saving')
 provides=('evince')
