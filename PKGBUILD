@@ -63,7 +63,7 @@ build() {
   msg2 "Dumping symbols..."
   python dump_symbols.py dummy
   msg2 "Dump complete."
-  file symbols_mangled_linux.dat
+  ls -lh symbols_mangled_linux.dat
 
   CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
     --clean \
