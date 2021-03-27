@@ -6,7 +6,7 @@ pkgdesc="Utility to make your internet traffic anonymized through Tor network"
 arch=(any)
 url="https://github.com/ChihebBayouli/GenTor"
 license=('GPL2')
-depends=(tor macchanger privoxy net-tools curl systemd dos2unix iptables)
+depends=(tor macchanger privoxy net-tools curl systemd iptables)
 makedepends=(python)
 source=("https://github.com/ChihebBayouli/gentor/releases/download/1.1/gentor-1.0.tar.gz")
 install=.INSTALL
@@ -18,5 +18,4 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     sudo python install.py install
-    sudo dos2unix /usr/bin/gentor
 }
