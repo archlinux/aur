@@ -8,7 +8,6 @@ pkgbase = neovim-coc-snippets-git
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	makedepends = npm
 	depends = neovim-coc
 	provides = neovim-coc-snippets
 	conflicts = neovim-coc-snippets
