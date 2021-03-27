@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=ddns-updater
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Lightweight scratch container updating DNS A records periodically for GoDaddy, Namecheap and DuckDNS"
 arch=('x86_64')
@@ -29,4 +29,4 @@ package() {
   install -Dm755 cmd/updater/updater "$pkgdir/usr/bin/ddns-updater"
 }
 
-sha256sums=('2f487faef869d9ab59b5bda3706ae6d6fe11b0d0abfab12f9a77ea41254507ee')
+sha256sums=('9cd94b2a91e1a2c550806b4d0bf009cc49422ca3dbef8f460142ff03a7294d76')
