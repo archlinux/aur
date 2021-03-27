@@ -2,7 +2,7 @@
 
 pkgname=zsa-wally
 pkgver=2.1.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally"
@@ -31,7 +31,7 @@ prepare() {
     patch --strip=1 --input="$srcdir/desktop-file.patch"
 
     export GOPATH="$srcdir/gopath"
-    go get -u github.com/wailsapp/wails/cmd/wails
+    go get -u github.com/wailsapp/wails/cmd/wails@v1.8.0
 }
 
 build() {
