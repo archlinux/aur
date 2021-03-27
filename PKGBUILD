@@ -40,9 +40,11 @@ pegtl
 gl2ps
 ffmpeg
 libtheora
+java-runtime
 )
 
 makedepends=(
+java-environment
 cmake
 ninja
 )
