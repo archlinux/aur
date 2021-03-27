@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 _pkgname=urllib-gssapi
 pkgname=python-urllib-gssapi
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="GSSAPI (HTTP Negotiate) authentication for Python urllib"
 url="https://github.com/pythongssapi/urllib-gssapi"
@@ -9,7 +9,7 @@ arch=(any)
 license=(Apache)
 depends=(python-gssapi)
 makedepends=(git python-setuptools)
-_commit=8d06338a6128366fc695dac508200db6687f53c2
+_commit=ef1e484ab935e68fb4de763ff36d5ab541df04fc
 source=("git+https://github.com/pythongssapi/urllib-gssapi#commit=$_commit")
 sha256sums=('SKIP')
 

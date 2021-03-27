@@ -1,6 +1,6 @@
 pkgbase = python-urllib-gssapi
 	pkgdesc = GSSAPI (HTTP Negotiate) authentication for Python urllib
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/pythongssapi/urllib-gssapi
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-urllib-gssapi
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-gssapi
-	source = git+https://github.com/pythongssapi/urllib-gssapi#commit=8d06338a6128366fc695dac508200db6687f53c2
+	source = git+https://github.com/pythongssapi/urllib-gssapi#commit=ef1e484ab935e68fb4de763ff36d5ab541df04fc
 	sha256sums = SKIP
 
 pkgname = python-urllib-gssapi
