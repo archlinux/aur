@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd tubes-$pkgver
-  PYTHONPATH=. trial3 tubes
+  PYTHONPATH=. trial tubes
 }
 
 package() {
