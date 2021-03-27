@@ -2,15 +2,15 @@
 
 pkgname=xmltv-druid
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XMLTV configurator (for gShowTV)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://gshowtv.sourceforge.net/xmltv-druid.html"
 license=('GPL')
 makedepends=('gnome-doc-utils')
 # 'gtk2-perl' depends on 'libgnome'
-depends=('glade-perl' 'gnome-perl' 'gnome-terminal' 'gtk2-perl' 'xmltv')
-source=(http://downloads.sourceforge.net/project/gshowtv/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
+depends=('gtk2-perl' 'glade-perl' 'gnome-perl' 'gnome-terminal' 'xmltv')
+source=(https://downloads.sourceforge.net/project/gshowtv/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('625391aa24138a395b64273020bc1396')
 
 prepare() {
@@ -40,7 +40,7 @@ prepare() {
 
 package() {
   cd $pkgname-$pkgver
-  make install PREFIX="$pkgdir/usr/" 
   install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
+  make install PREFIX="$pkgdir/usr/" 
 }
 
