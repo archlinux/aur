@@ -9,7 +9,7 @@
 
 pkgname=firefox-appmenu-bin
 _pkgname=firefox
-pkgver=86.0.1
+pkgver=87.0
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Firefox-appmenu, binary version"
@@ -26,14 +26,14 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("firefox=$pkgver")
 conflicts=("firefox")
 options=(!emptydirs !makeflags !strip)
-source=(https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz{,.sig})
-noextract=(firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
+source=(https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst{,.sig})
+noextract=(firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst)
 validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
 sha256sums=(
-	'aea055b7151709f54a1a5dcb3d9543b86c326875220f3e5e6a3cfcd432ed6e8f'
+	'ff0206e3382e58f55e042164b4ef753780003d5f2c87ad0fe1a4ea7b3af61fb0'
 	'SKIP'
 )
 
 package() {
-	tar -xf $srcdir/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz -C $pkgdir --exclude=".*"
+	tar -xf $srcdir/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst -C $pkgdir --exclude=".*"
 }
