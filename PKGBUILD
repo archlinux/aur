@@ -4,20 +4,27 @@
 pkgname=python-rebulk
 _name=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Define simple search patterns in bulk to perform advanced matching on any string.'
 arch=('any')
 url='https://github.com/Toilal/rebulk'
 license=('MIT')
 depends=('python')
-makedepends=(
-  'python-setuptools'
-  'python-pytest-runner'
+makedepends=('python-setuptools')
+checkdepends=(
+  'python-pylint'
+  'python-pytest'
 )
-checkdepends=('python-pylint')
 optdepends=('python-regex')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('025d191c11abf9174c6aff0006579624047d3371a654333c4bf7a4b421552cdc')
+
+prepare() {
+  cd "${_name}-${pkgver}"
+
+  # Pytest Runner not required to build
+  sed -i "s/'pytest-runner'//" setup.py
+}
 
 build() {
   cd "${_name}-${pkgver}"
