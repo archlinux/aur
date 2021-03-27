@@ -44,7 +44,7 @@ java-runtime
 )
 
 makedepends=(
-java-environment
+'java-runtime-openjdk=8'
 cmake
 ninja
 )
