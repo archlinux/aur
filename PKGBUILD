@@ -2,39 +2,36 @@
 
 pkgname=peerflix-server
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client for node.js with web ui"
 arch=('i686' 'x86_64')
 url="https://github.com/asapach/peerflix-server"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=($pkgname.service
-	$pkgname.sh
-	peerflix.sysusers
-	peerflix.tmpfiles
+source=("${pkgname}.service"
+  peerflix.sysusers
+  peerflix.tmpfiles
 )
-conflicts=('peerflix-server-git')
 options=('!strip')
 
-package(){
-    cd $srcdir
-    local _npmdir="$pkgdir/usr/lib/node_modules/"
-    mkdir -p $_npmdir
-    cd $_npmdir
-    npm install -g --user root --prefix "$pkgdir/usr" --production $pkgname@$pkgver
+package() {
+  cd $srcdir
+  local _npmdir="${pkgdir}/usr/lib/node_modules"
+  mkdir -p "${_npmdir}"
+  cd "${_npmdir}"
+  npm install -g --user root --prefix "${pkgdir}/usr" --production "${pkgname}@$pkgver"
 
-    install -Dm644 "${srcdir}/$pkgname.service" "${pkgdir}/usr/lib/systemd/system/$pkgname.service"
-    install -D -m644 "${srcdir}/peerflix.sysusers" "${pkgdir}/usr/lib/sysusers.d/peerflix.conf"
-    install -D -m644 "${srcdir}/peerflix.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/peerflix.conf"
-    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-
-    install -Dm775 "${srcdir}/peerflix-server.sh" "${pkgdir}/usr/bin/peerflix-server"
-    pathtoreplace=`echo $pkgdir | sed 's:/:\\\/:g'`
-    find $pkgdir -type f -name "*.json" -exec sed -i "s/$pathtoreplace//g" {} +;
+  install -Dm644 "${srcdir}/${pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -D -m644 "${srcdir}/peerflix.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/peerflix.conf"
+  install -D -m644 "${srcdir}/peerflix.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/peerflix.conf"
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+  rm -rf "${_npmdir}/root"
 }
 
-md5sums=('db2b8fff218d2154a4086fe95a82bacc'
-         'ea9702820f92bef0636a4f01d13dd348'
-         'baf787b4e3fea8c0ee16736a998cd776'
-         '3d88f37f81f89b39e071d7cd06fcf22a')
+sha256sums=('0e7df5ed1521ff0f1f1e039cccdc20b1c92a3b0edc1d38e5e524db37559cd006'
+  '669025775203d7e39255be921e51d93781ee74b10d3e8bf22d381035c2605fcc'
+  '88da04100ee77e2ac03e87b22636147ff38bb091f9b03e2e7df1e57027a0b2bf')
