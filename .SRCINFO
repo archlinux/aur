@@ -6,7 +6,6 @@ pkgbase = vim-coc-clangd-git
 	arch = any
 	license = Apache
 	makedepends = yarn
-	makedepends = npm
 	makedepends = git
 	depends = vim-coc
 	depends = clang
