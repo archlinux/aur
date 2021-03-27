@@ -27,7 +27,7 @@ noextract=("$pkgname-$pkgver.AppImage")
 sha256sums=("2c14723f4f883e6a45eb5163ad38e731a5e2c9236a320abdf8adbd247a311f7c"
             "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
             "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
-            "f37168074db22cf8e898f08b3f67458e1708a8c4ae179fb14a916e74e12bec4e")
+            "026a1db53b94cea60d30079e0050140096e3d1ef9b2a2035d8acafa04d9519d5")
 
 package() {
 	 # Install image
