@@ -1,16 +1,17 @@
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gnome-connections
 _pkgname=connections
-pkgver=3.38.1
+pkgver=40.0
 pkgrel=1
 pkgdesc="Remote desktop client for the GNOME desktop environment"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/connections"
 license=('GPL3')
 depends=('gtk-frdp' 'gtk-vnc')
-makedepends=('git' 'meson' 'vala')
-_commit=7373db222661a70b4dba268f5539034ccef62773  # tags/v3.38.1
+makedepends=('itstool' 'git' 'meson' 'vala')
+_commit=5fd4f1bcf39e8747553571e54897549f8e51beb4  # tags/v40.0
 source=("git+https://gitlab.gnome.org/GNOME/connections.git#commit=$_commit")
 sha256sums=('SKIP')
 
