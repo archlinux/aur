@@ -7,8 +7,9 @@
 
 _jdkname=liberica-jdk-full
 pkgname="${_jdkname}-bin"
-_java_ver=15.0.2
-pkgver=${_java_ver}+10
+_java_ver=16
+_java_rel=36
+pkgver=${_java_ver}.0.0+${_java_rel}
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -17,13 +18,13 @@ license=('custom')
 depends=('java-environment-common=3' 'java-runtime-common>=3' 'ca-certificates-utils')
 optdepends=(ffmpeg freetype2 gtk2 gtk3 libnet)
 provides=(
-  "java-environment=${_java_ver/.*}"
-  "java-environment-openjdk=${_java_ver/.*}"
-  "java-openjfx=${_java_ver/.*}"
-  "java-runtime-headless=${_java_ver/.*}"
-  "java-runtime-headless-openjdk=${_java_ver/.*}"
-  "java-runtime=${_java_ver/.*}"
-  "java-runtime-openjdk=${_java_ver/.*}"
+  "java-environment=${pkgver/.*}"
+  "java-environment-openjdk=${pkgver/.*}"
+  "java-openjfx=${pkgver/.*}"
+  "java-runtime-headless=${pkgver/.*}"
+  "java-runtime-headless-openjdk=${pkgver/.*}"
+  "java-runtime=${pkgver/.*}"
+  "java-runtime-openjdk=${pkgver/.*}"
   "liberica-jdk-bin=$pkgver"
   "liberica-jdk-lite-bin=$pkgver"
   "liberica-jre-bin=$pkgver"
@@ -46,36 +47,42 @@ backup=(etc/${_jdkname}/logging.properties
         etc/${_jdkname}/security/policy/unlimited/default_local.policy
         etc/${_jdkname}/sound.properties)
 
-source=(freedesktop-java.desktop
-        freedesktop-jconsole.desktop
-        freedesktop-jshell.desktop
-        ${_jdkname}16.png::https://hg.openjdk.java.net/jdk-updates/jdk15u/raw-file/c346ef23c8a6/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
-        ${_jdkname}24.png::https://hg.openjdk.java.net/jdk-updates/jdk15u/raw-file/c346ef23c8a6/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
-        ${_jdkname}32.png::https://hg.openjdk.java.net/jdk-updates/jdk15u/raw-file/c346ef23c8a6/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
-        ${_jdkname}48.png::https://hg.openjdk.java.net/jdk-updates/jdk15u/raw-file/c346ef23c8a6/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=(73b9ab762976cb9c2bfcecdbd6334b4c727b0876
-          96890ae2efed2f4244036bc59d018c2707fa9749
-          dbcbe1243717288176b17e203982f41d32c4a419
+source=(freedesktop-java.desktop.in
+        freedesktop-jconsole.desktop.in
+        freedesktop-jshell.desktop.in
+        ${_jdkname}16.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
+        ${_jdkname}24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
+        ${_jdkname}32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
+        ${_jdkname}48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
+sha1sums=(59dce69f1e9b5440394dbc67a9384af617a48785
+          96ced62ddefc481ae2636bc59bf701763bbbbf5c
+          512c5fcfa72e8a43523f84183b8779851d3d1341
           36096a57cebd346e08efc68326fe77960d43726f
           b8233f9ff931ce97a265827fac18ed90f4e248c6
           a0da2952bc87a425182c3ac88e88649fbaa7cb65
           eb36aa73a9be98164447774217865b91e79d503c)
 
-source_aarch64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-aarch64-full.tar.gz)
-source_armv7h=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-arm32-vfp-hflt-full.tar.gz)
+source_aarch64=(https://download.bell-sw.com/java/$_java_ver+$_java_rel/bellsoft-jdk$_java_ver+$_java_rel-linux-aarch64-full.tar.gz)
+source_armv7h=(https://download.bell-sw.com/java/$_java_ver+$_java_rel/bellsoft-jdk$_java_ver+$_java_rel-linux-arm32-vfp-hflt-full.tar.gz)
 source_armv8h=(${source_armv7h[@]})
-source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-full.tar.gz)
+source_x86_64=(https://download.bell-sw.com/java/$_java_ver+$_java_rel/bellsoft-jdk$_java_ver+$_java_rel-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('801f4008f3bd09d4d2a0ebd5000cf66d8dbfc1ad')
-sha1sums_armv7h=('f1b47f3a058b6bad00cfc4307778f3e8eff4c9d0')
+sha1sums_aarch64=('d0d567f6f25775ae222ebb71e198d6ea36fbd99c')
+sha1sums_armv7h=('b8104ab8e96f414472e32c50666989d0b1f9cb70')
 sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_x86_64=('ede6c0d3a1ee630e162099475be5102c9fee5555')
+sha1sums_x86_64=('758ba613d60fab9c62d267b9df11b4ab28457e86')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
+prepare() {
+  for f in *.desktop.in; do
+    sed "s|@@VER@@|${pkgver/.*}|g" $f >> ${f/.in}
+  done
+}
+
 package() {
-  cd jdk-$_java_ver-full
+  cd jdk-${pkgver/.*}-full
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
   cp -a . "${pkgdir}/${_jvmdir}/"

@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=OpenJDK Java 15 Runtime
-Comment=OpenJDK Java 15 Runtime
+Name=OpenJDK Java @@VER@@ Runtime
+Comment=OpenJDK Java @@VER@@ Runtime
 Keywords=java;runtime
 Exec=/usr/lib/jvm/liberica-jdk-full/bin/java -jar
 Terminal=false
