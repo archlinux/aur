@@ -24,7 +24,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_extname}"
-    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
+    yarn install --ignore-scripts --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
+    yarn run build
 }
 
 package() {
