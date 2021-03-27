@@ -1,5 +1,5 @@
 # Maintainer: Leonardo Eugenio <lelgenio@disroot.org>
-pkgname=materia-custom-accent
+pkgname=materia-custom-accent-git
 _pkgname=materia-theme
 _accent="c85a5a"
 _colors="     SEL_BG=$_accent FG=212121 \n BG=eeeeee \n HDR_FG=eeeeee \n HDR_BG=303030 \n MATERIA_VIEW=ffffff \n MATERIA_SURFACE=fafafa"
@@ -11,7 +11,7 @@ _url_qt="https://github.com/PapirusDevelopmentTeam/materia-kde"
 pkgver=r1607.68baf805
 pkgrel=1
 license=('GPL')
-makedepends=(sassc inkscape)
+makedepends=(sassc inkscape git)
 depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra')
 optdepends=(
     'resvg: faster compilation'
