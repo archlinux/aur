@@ -1,7 +1,7 @@
 pkgbase = eccodes
 	pkgdesc = ECMWF decoding library for GRIB, BUFR and GTS
-	pkgver = 2.20.0
-	pkgrel = 2
+	pkgver = 2.21.0
+	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = eccodes
 	optdepends = jasper: as an alternative to openjpeg
 	conflicts = grib_api
 	conflicts = libbufr-ecmwf
-	source = http://software.ecmwf.int/wiki/download/attachments/45757960/eccodes-2.20.0-Source.tar.gz
-	sha512sums = ea2953987c4713b230e6d75ad5ae1dbbeea2633d1caf60614ececfe2fabe07d7c794baf120f5df82716f37b2540f7f6a6cd82f04070a78bf65dc7d499ca50dc0
+	source = http://software.ecmwf.int/wiki/download/attachments/45757960/eccodes-2.21.0-Source.tar.gz
+	sha512sums = f2ba8361b99800646a92f5f5beb7ec2facf2ee3b8a3f7985d9681a23b2faae778004c8c688ebe4b3a8492e99c76422c66ecc8943d12d3342d5bc1d38362ccf06
 
 pkgname = eccodes
 
