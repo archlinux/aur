@@ -1,21 +1,22 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=obs-studio-tytan652
 pkgver=26.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. Built with Browser and VST plugins and some patches but without FTL and Python."
 # Why no FTL ? Because Mixer is dead
 # Why no Python ? Because it doesn't work out of the box with Python 3.9
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
-depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
-         "qt5-x11extras" "curl" "gtk-update-icon-cache")
-makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
+depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
+         "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache")
+makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
              "vlc" "swig" "luajit" "cef-minimal-3770")
 optdepends=(
             "libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
-            "jack: JACK Support"
+            "libva-intel-driver: hardware encoding"
+            "libva-mesa-driver: hardware encoding"
             "vlc: VLC Media Source"
             "swig: Scripting"
             "luajit: Lua scripting"
