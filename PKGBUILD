@@ -8,7 +8,7 @@ _npmid="@$_npmscope/$_npmname"
 
 pkgname="$_npmscope-$_npmname"
 pkgver=11.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for Angular"
 arch=('any')
 url="https://github.com/$_npmscope/$pkgname"
@@ -22,7 +22,7 @@ sha1sums=('9145a282ef55b93c41d27650e4988d137cac7702')
 
 package() {
     # Setting temporary cache
-    npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]%%::*}"
+    npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]%%::*}"
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
@@ -33,11 +33,11 @@ package() {
     chown -R root:root $pkgdir
 
     # Package contains reference to $srcdir/$pkgdir
-    find "${pkgdir}" -type f -name package.json -execdir sed -i '/_where/d' {} \+
+    #find "${pkgdir}" -type f -name package.json -execdir sed -i '/_where/d' {} \+
     # print first line (the '{' symbol) and lines from the first non-underscored key to the end
     # (npm internal keys are underscored but we don't need these keys)
-    sed -i -n '1p;/  "[^_].*": {$/,$p' "$pkgdir"/usr/lib/node_modules/"$_npmid"/package.json
-    sed -i "s|$pkgdir||" "$pkgdir"/usr/lib/node_modules/"$_npmid"/node_modules/sshpk/package.json
+    #sed -i -n '1p;/  "[^_].*": {$/,$p' "$pkgdir"/usr/lib/node_modules/"$_npmid"/package.json
+    #sed -i "s|$pkgdir||" "$pkgdir"/usr/lib/node_modules/"$_npmid"/node_modules/sshpk/package.json
 
     install -Dm644 "$pkgdir/usr/lib/node_modules/$_npmid/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
