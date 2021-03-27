@@ -11,10 +11,10 @@ depends=(vim-coc-highlight-git
          vim-coc-lists-git
          vim-coc-snippets-git
          vim-coc-syntax-git
+         vim-coc-dictionary-git
          vim-coc-tag-git
          vim-coc-yank-git)
-optdepends=('vim-coc-dictionary-git: words from files in &dictionary'
-            'vim-coc-word-git: words from google 10000 english repo'
+optdepends=('vim-coc-word-git: words from google 10000 english repo'
             'vim-coc-emoji-git: emoji words for markdown'
             'vim-coc-pairs-git: auto pairs support'
             'vim-coc-explorer-git: file/buffer explorer'
