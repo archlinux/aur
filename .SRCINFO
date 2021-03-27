@@ -6,7 +6,6 @@ pkgbase = vim-coc-css-git
 	arch = any
 	license = MIT
 	makedepends = yarn
-	makedepends = npm
 	makedepends = git
 	depends = vim-coc
 	provides = vim-coc-css
