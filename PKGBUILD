@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=iniget-git
-pkgver=1.0.r49.38071ed
+pkgver=1.0.r51.28214ea
 pkgrel=1
 epoch=
 pkgdesc="Extract information from INI files in CLI"
