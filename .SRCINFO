@@ -1,8 +1,8 @@
 pkgbase = tcg
 	pkgdesc = cgroups for terminals
-	pkgver = 0.2.60
+	pkgver = 0.2.61
 	pkgrel = 1
-	url = https://github.com/zasdfgbnm/tcg/archive/774b8916aa092657c71e854971fe520a7ce508d2.zip
+	url = https://github.com/zasdfgbnm/tcg/archive/1a4a652665366e8b42b8092413dc4ed4cfc27c08.zip
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -11,8 +11,8 @@ pkgbase = tcg
 	depends = boost-libs
 	depends = fmt
 	depends = spdlog
-	source = https://github.com/zasdfgbnm/tcg/archive/774b8916aa092657c71e854971fe520a7ce508d2.zip
-	sha256sums = 03b9d640d7fca1dfd0d35f268c2334e7b1145e05d833d60feb476e5fa7f44ec9
+	source = https://github.com/zasdfgbnm/tcg/archive/1a4a652665366e8b42b8092413dc4ed4cfc27c08.zip
+	sha256sums = 8661587062e3142f741f3ec77577030d961cc9f6ed6578d1464f3088d71cfea2
 
 pkgname = tcg
 
