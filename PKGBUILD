@@ -10,12 +10,12 @@ url=https://github.com/JoseExposito/$pkgname
 license=(GPL)
 depends=(gnome-shell touchegg)
 install=$pkgname.install
-source=(https://github.com/JoseExposito/$pkgname/releases/download/$pkgver/$_uuid.zip)
+source=($_uuid-$pkgver.zip::https://github.com/JoseExposito/$pkgname/releases/download/$pkgver/$_uuid.zip)
 noextract=($_uuid.zip)
-sha256sums=(065cd60ae902a5f020b020e01d718870ca508f9a111e88ff7d439a930bf393b2)
+sha256sums=(09989eea5902622f9f90f44409931232617527ae1a7472283b740af289964a24)
 
 package() {
-    bsdtar -xf "$srcdir"/$_uuid.zip \
+    bsdtar -xf "$srcdir"/$_uuid-$pkgver.zip \
         -C "$pkgdir" \
         -s ":^:usr/share/gnome-shell/extensions/$_uuid/:"
 

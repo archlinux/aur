@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-x11gestures
 	depends = gnome-shell
 	depends = touchegg
 	noextract = x11gestures@joseexposito.github.io.zip
-	source = https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/6/x11gestures@joseexposito.github.io.zip
-	sha256sums = 065cd60ae902a5f020b020e01d718870ca508f9a111e88ff7d439a930bf393b2
+	source = x11gestures@joseexposito.github.io-6.zip::https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/6/x11gestures@joseexposito.github.io.zip
+	sha256sums = 09989eea5902622f9f90f44409931232617527ae1a7472283b740af289964a24
 
 pkgname = gnome-shell-extension-x11gestures
 
