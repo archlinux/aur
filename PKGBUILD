@@ -1,7 +1,7 @@
 # Maintainer: Julius de Jeu <julius@voidcorp.nl>
 
 pkgname=powdertoy-jacobsmod-bin
-pkgver=44.2
+pkgver=44.5
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air
     pressure, velocity & heat! Modded version by Jacob1"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('openssl')
 
 source=("$pkgname-$pkgver.tar.gz::https://starcatcher.us/TPT/mod/Older/Jacob1's%20Mod%20ver%20$pkgver%20linux64.zip" powdertoy-jacobsmod.desktop jacobsmod)
-md5sums=('6fe831d173664621d3f030e576b77526' 'SKIP' 'SKIP')
+md5sums=('d21797a5f0f6ffe2217c1843058d54eb' 'SKIP' 'SKIP')
 
 prepare(){
   cp "${srcdir}/Jacob1's Mod" "${srcdir}/powder64-jacob"
