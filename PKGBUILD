@@ -3,10 +3,10 @@
 pkgname=easyeda-router
 pkgver=0.8.11
 pkgrel=1
-pkgdesc="LCEDA/EASYEDA local auto router server for Linux."
+pkgdesc="LCEDA/EasyEDA local auto router server for Linux."
 arch=('x86_64')
-url="https://docs.easyeda.com/en/PCB/Route/index.html#Cloud-Auto-Router"
-#url="https://docs.lceda.cn/cn/PCB/Route/index.html#%E8%87%AA%E5%8A%A8%E5%B8%83%E7%BA%BF"
+url="https://docs.easyeda.com/en/PCB/Route/index.html#Local-Auto-Router"
+#url="https://docs.easyeda.com/cn/PCB/Route/index.html#%E6%9C%AC%E5%9C%B0%E8%87%AA%E5%8A%A8%E5%B8%83%E7%BA%BF"
 license=('unknown')
 depends=('jre8-openjdk-headless')
 source=(${pkgname}-${pkgver}.zip::"https://image.easyeda.com/files/EasyEDA-Router-v${pkgver}.zip")
