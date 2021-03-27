@@ -1,10 +1,11 @@
 pkgbase = gallery-dl-git
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites (git)
-	pkgver = 1.17.0.r14.g10c279f2
+	pkgver = 1.17.1.r11.g5ad615f0
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = any
 	license = GPL2
+	checkdepends = python-nose
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
