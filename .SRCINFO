@@ -1,16 +1,19 @@
 pkgbase = ruby-mimemagic
 	pkgdesc = Fast mime detection by extension or content in pure ruby
-	pkgver = 0.3.5
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/minad/mimemagic
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
+	depends = shared-mime-info
+	depends = ruby-nokogiri
+	depends = ruby-rake
 	options = !emptydirs
-	source = git+https://github.com/minad/mimemagic.git?tag=v0.3.5
+	source = git+https://github.com/minad/mimemagic.git?tag=v0.4.3
 	sha256sums = SKIP
 
 pkgname = ruby-mimemagic
