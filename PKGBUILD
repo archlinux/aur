@@ -52,7 +52,7 @@ build(){
 }
 
 check(){
-	cd "$srcdir"/$_pyname-$pkgver
+	cd $_pyname-$pkgver
 	python os_ken/tests/run_tests.py
 }
 
