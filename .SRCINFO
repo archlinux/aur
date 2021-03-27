@@ -1,7 +1,7 @@
 pkgbase = svgo
 	pkgdesc = Tool for optimizing SVG files
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svg/svgo
 	arch = any
 	license = MIT
