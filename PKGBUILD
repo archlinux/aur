@@ -1,6 +1,4 @@
-# Maintainer: daniel666
-# Contributor: Davide Depau <davide@depau.eu>
-# Contributor: liberodark
+# Maintainer: Mike Hicklen (hicklemon) <mike@xfs.repair>
 
 pkgname=keeper-password-manager
 pkgver=15.1.1
