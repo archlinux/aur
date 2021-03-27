@@ -6,7 +6,6 @@ pkgbase = neovim-coc-pyright-git
 	arch = any
 	license = MIT
 	makedepends = yarn
-	makedepends = npm
 	makedepends = git
 	depends = neovim-coc
 	depends = python
