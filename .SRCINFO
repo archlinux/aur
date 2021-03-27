@@ -1,0 +1,22 @@
+pkgbase = mygestures-git
+	pkgdesc = Mouse Gestures for Linux
+	pkgver = r250.2742a3f
+	pkgrel = 1
+	url = https://github.com/deters/mygestures
+	arch = x86_64
+	license = custom
+	makedepends = autoconf
+	makedepends = pkgconf
+	makedepends = make
+	depends = libtool
+	depends = libx11
+	depends = libxrender
+	depends = libxtst
+	depends = libxml2
+	provides = mygestures
+	conflicts = mygestures
+	source = git+https://github.com/deters/mygestures
+	sha512sums = SKIP
+
+pkgname = mygestures-git
+
