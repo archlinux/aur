@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
-pkgver=r14.3e34af7
-pkgrel=3
+pkgver=r15.ebd9a10
+pkgrel=2
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
 url="https://github.com/hermes83/compiz-windows-effect"
@@ -29,7 +29,7 @@ package() {
 
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   #local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
-  local schema=org.gnome.shell.extensions.com.github.hermes83.compiz-alike-windows-effect.gschema.xml
+  local schema=org.gnome.shell.extensions.com.github.hermes83.compiz-windows-effect.gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
   install -dm755 "${destdir}"
