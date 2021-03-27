@@ -21,7 +21,7 @@ sha256sums=('a4a6c859b4ed293deee40ff61d6695b3ff7bc153770a1799f2be872181282e00')
 sha512sums=('6d0d0d85fc4057dbc8536220538572000f2816e87874e21a3008f5a05edff46af4b2f09b23acff5813a8174402b3bc4ec8864851f9cc8de50b4386d024b3aeda')
 
 check(){
-	cd "$srcdir"/$_pyname-$pkgver
+	cd $_pyname-$pkgver
 	export PYTHONPATH=${PWD}
 	pytest
 }
