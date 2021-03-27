@@ -5,7 +5,7 @@
 
 _pkgname=touchegg
 pkgname=${_pkgname}-git
-pkgver=r426.53aa6e8
+pkgver=r508.f6c64bb
 pkgrel=1
 pkgdesc='Linux multi-touch gesture recognizer'
 arch=('x86_64')
@@ -31,9 +31,4 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" make -C build install
-
-    # /lib is a symlink to /usr/lib on most Arch systems, this
-    # workaround is needed to prevent alpm from failing with
-    # a conflict
-    [ -d "$pkgdir/lib" ] && mv "$pkgdir/lib" "$pkgdir/usr/lib"
 }
