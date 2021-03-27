@@ -10,7 +10,7 @@ license=("custom:${pkgname}")
 depends=('libxss'
          'nss'
          'gtk3')
-source=("http://clientapi.teaspeak.de/files/release/1.5.1-2/TeaClient-linux_x64.deb"
+source=("${pkgname}-${pkgver}-${pkgrel}.deb::https://clientapi.teaspeak.de/files/release/1.5.1-2/TeaClient-linux_x64.deb"
         'LICENSE')
 sha256sums=('580dddb1a7a65540da696d886220b4f9818018e3b461bc465f79de1c39281710'
             'SKIP')
