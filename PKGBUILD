@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-tweaks-system-menu-git
 _gitname=tweaks-system-menu
-pkgver=11.r6.g7253a3f
+pkgver=14.r0.g86e0b95
 pkgrel=1
 pkgdesc="GNOME Shell Extension to put Gnome Tweaks in the system menu."
 arch=('any')
@@ -27,6 +27,10 @@ prepare() {
 build() {
 	arch-meson "$_gitname" build
 	meson compile -C build
+}
+
+check() {
+	meson test -C build --print-errorlogs
 }
 
 package() {
