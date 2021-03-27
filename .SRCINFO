@@ -2,7 +2,7 @@ pkgbase = lan951x-led-ctl
 	pkgdesc = Command line tool to control the LED's of a LAN9512/LAN9514 ethernet controller
 	pkgver = 1.0.r6.g2d51527
 	pkgrel = 1
-	url = https://mockmoon-cybernetics.ch/computer/raspberry-pi/lan951x-led-ctl/
+	url = https://familie-radermacher.ch/dominic/computer/raspberry-pi/lan951x-led-ctl/
 	arch = x86_64
 	arch = i686
 	arch = armv6h
@@ -11,7 +11,7 @@ pkgbase = lan951x-led-ctl
 	license = GPL2
 	makedepends = git
 	depends = libusb>=1.0
-	source = git+https://mockmoon-cybernetics.ch/cgi/cgit/linux/lan951x-led-ctl.git
+	source = git+https://familie-radermacher.ch/cgi/cgit/linux/lan951x-led-ctl.git
 	sha256sums = SKIP
 
 pkgname = lan951x-led-ctl
