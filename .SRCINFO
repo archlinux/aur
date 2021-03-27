@@ -1,6 +1,6 @@
 pkgbase = asfa
 	pkgdesc = share files by upload via ssh and generation of a non-guessable link
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/obreitwi/asfa
 	arch = x86_64
