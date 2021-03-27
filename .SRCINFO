@@ -1,6 +1,6 @@
 pkgbase = i3-autodisplay
 	pkgdesc = i3wm display auto-configuration for multiple monitors
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/lpicanco/i3-autodisplay
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = i3-autodisplay
 	makedepends = go
 	depends = glibc
 	conflicts = i3-autodisplay
-	source = https://github.com/lpicanco/i3-autodisplay/archive/v0.4.tar.gz
-	sha256sums = a54b24dafc6665ee6f3c89559cd15bb1e1ed2adde7a638c7f84f6556b1504d84
+	source = https://github.com/lpicanco/i3-autodisplay/archive/v0.5.tar.gz
+	sha256sums = 797125c2963364641089c8faed3bb4c7a1aa316f1e80fff438748a86ea0558d5
 
 pkgname = i3-autodisplay
 

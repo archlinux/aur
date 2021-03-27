@@ -2,7 +2,7 @@
 # Contributor: Gabriel Hidasy Rezende <gabrielhidasy at gmail dot com>
 
 pkgname=i3-autodisplay
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='i3wm display auto-configuration for multiple monitors'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('git' 'go')
 depends=('glibc')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('a54b24dafc6665ee6f3c89559cd15bb1e1ed2adde7a638c7f84f6556b1504d84')
+sha256sums=('797125c2963364641089c8faed3bb4c7a1aa316f1e80fff438748a86ea0558d5')
 conflicts=("$pkgname")
 
 build() {
