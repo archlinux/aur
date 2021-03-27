@@ -4,14 +4,14 @@
 
 pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=10.0.5.r2.gac6d9d2
+pkgver=10.1.0beta.r0.g12e1bff
 _pkgver=10.0.5
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('dbus-glib' 'vte3>=0.38' 'libnotify' 'pacman>=5.2' 'pacman<5.3' 'appstream-glib' 'archlinux-appstream-data-pamac' 'libappindicator-gtk3' 'git')
+depends=('dbus-glib' 'vte3>=0.38' 'libnotify' 'pacman>=5.2' 'pacman<5.3' 'appstream-glib' 'libappindicator-gtk3' 'archlinux-appstream-data-pamac' 'git' 'libhandy')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')

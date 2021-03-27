@@ -1,6 +1,6 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
-	pkgver = 10.0.5.r2.gac6d9d2
+	pkgver = 10.1.0beta.r0.g12e1bff
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
@@ -25,9 +25,10 @@ pkgbase = pamac-aur-git
 	depends = pacman>=5.2
 	depends = pacman<5.3
 	depends = appstream-glib
-	depends = archlinux-appstream-data-pamac
 	depends = libappindicator-gtk3
+	depends = archlinux-appstream-data-pamac
 	depends = git
+	depends = libhandy
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	provides = pamac
