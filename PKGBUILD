@@ -311,9 +311,9 @@ package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  install -Dvm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/etc/firejail/$pkgname.profile"
-  install -Dvm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/etc/firejail/$pkgname-common.profile"
-  install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
+  install -Dvm644 "$srcdir/settings/$__pkgname.profile" "$pkgdir/etc/firejail/$__pkgname.profile"
+  install -Dvm644 "$srcdir/settings/$__pkgname-common.profile" "$pkgdir/etc/firejail/$__pkgname-common.profile"
+  install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/$__pkgname.psd"
   
   rm "$pkgdir"/usr/lib/${pkgname}/pingsender  
   
