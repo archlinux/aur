@@ -1,19 +1,19 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x.dev>
-# Contributor: Luke Horwell
+# Contributor: Luke Horwell <code@horwell.me>
 # Contributor: Tomasz Gąsior <tomaszgasior.pl>
 
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
 __arch_pkg_commit="408873e9af613dc26f6d434fe489735fb8c5de75"
-_gtkver=3.24.27
+_gtkver=3.24.28
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
 pkgver=${_gtkver}
 pkgrel=1
-pkgdesc="GTK3 patched for classic desktops like XFCE or MATE. Please see README."
-url="https://github.com/lah7/gtk3-mushrooms"
+pkgdesc="GTK3 patched to provide a more classic experience"
+url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends)
 provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
@@ -91,7 +91,7 @@ sha256sums=('4935ec23cbd0150bd479fc457861d3a665354509c3ff933997827c7141c8657c'
             '17aa98262b96817396c74c303c83eee2a0c9c94b10e31d8de48a44cb17b08dc1'
             'af2d2d4a0d876f9abc350a1cdb09ffc016a8894ee3c46030c3d90c6e99b27c5a'
             'ba93f62e249f2713dbfe6c82de1be4ac655264d6407ed3dc5e05323027520f31'
-            'f71c067570339f9f8efac7bb87717a2c52279cb50223fb8b5ba7085930757a26'
+            'b04e09763367f1ce932cd2ee3a359d4de150e1c38e7bef7d29aa72557a6b47c6'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '1d2e3c41c7de03a31d717b09e053c88cbaca2ae74eefd982549c49de81c21ada')
@@ -167,7 +167,7 @@ package_gtk3-classic()
 
 package_lib32-gtk3-classic()
 {
-	pkgdesc="GTK3 patched for classic desktops like XFCE or MATE. (32-bit)"
+	pkgdesc="GTK3 patched to provide a more classic experience (32-bit)"
 	depends=(
 		lib32-atk lib32-cairo lib32-libxcursor lib32-libxinerama lib32-libxrandr lib32-libxi
 		lib32-libepoxy lib32-gdk-pixbuf2 lib32-fribidi lib32-libxcomposite lib32-libxdamage 
