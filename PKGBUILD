@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Small and embeddable JavaScript engine'
 pkgname=quickjs
-pkgver=2020.11.08
+pkgver=2021.03.27
 pkgrel=1
 url=https://bellard.org/quickjs
 depends=(gcc-libs)
@@ -10,7 +10,7 @@ options=(!strip)
 license=(custom:MIT)
 _pv="${pkgname}-${pkgver//./-}"
 source=("${url}/${_pv}.tar.xz")
-sha512sums=('d437813948269bab6046c0219eb20ccea45613073bea1c4eee5b553831fdaaa5e2165b14fcb436e86bf70d488200845f7821864abb6f40b115f0ef7f24971e02')
+sha512sums=('eeb810083484df213bc658a8703ca3ef094b7789c2b49eed86cb4068c9f9da401ad0300261d61a163c6ea82306f3ef50bf8e29a64920f704fd8958ef08a7286c')
 
 prepare () {
 	cat >> "${_pv}/Makefile" <<-EOF
