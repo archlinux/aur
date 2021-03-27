@@ -4,7 +4,7 @@
 
 set -u
 pkgname='uhubctl'
-pkgver='2.3.0'
+pkgver='2.4.0'
 pkgrel='1'
 pkgdesc='control USB per-port power switching on PPPS smart USB hubs'
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('libusb>=1.0.12' 'libudev.so')
 _verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" "\s\+<title>${pkgname}\sv*\([0-9\.]\+\)</title>.*" 'f')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('674fb3bdcc46eb7152ff0b94a3aa62c0')
-sha256sums=('714f733592d3cb6ba8efc84fbc03b1beed2323918ff33aef01cdb956755be7b7')
+md5sums=('9bdf73940881df02574a94703ad8b582')
+sha256sums=('391f24fd1f89cacce801df38ecc289b34c3627bc08ee69eec515af7e1a283d97')
 
 prepare() {
   set -u
