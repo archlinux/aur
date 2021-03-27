@@ -9,7 +9,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/JohnnyMorganz/StyLua/releas
 arch=('any')
 license=('MPL-2.0')
 conflicts=('stylua-git')
-sha256sums=('aafff74f270c6d2cca0e7d10cd17a754ecb445a927983d1be9cf60085541b475')
+sha256sums=('8078e6523123975f10a9e5d368c200cdd0e204223d72d59af3c1db8dd5e92821')
 
 package() {
     cd "$srcdir/"
