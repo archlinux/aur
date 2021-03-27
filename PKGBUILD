@@ -1,7 +1,7 @@
 # Maintainer: Wang Ruochen <arch@ruo-chen.wang>
 pkgname=dosnap-git
 _pkgname=${pkgname%-git}
-pkgver=r23.81e576d
+pkgver=r27.9614499
 pkgrel=1
 pkgdesc="Automatically manage Btrfs snapshots"
 arch=('x86_64')
@@ -39,6 +39,7 @@ package() {
     local _bin=target/release/$_pkgname
     install -Dm755 $_bin -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 dosnap.toml "$pkgdir/etc/dosnap.toml"
 
     find ./systemd -name 'dosnap-*' -type f \
         -exec install -Dm644 "{}" -t "$pkgdir/usr/lib/systemd/system" \;
