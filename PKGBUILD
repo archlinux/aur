@@ -1,7 +1,7 @@
 # Maintainer: tcg <aur-tcg@emailaddress.biz>
 
 pkgname=tcg-git
-pkgver=0.2.61
+pkgver=0.2.62
 pkgrel=1
 pkgdesc="cgroups for terminals"
 arch=('x86_64')
@@ -17,9 +17,9 @@ build() {
   mkdir -p build
   cd build
   if [ "x$CODE_COVERAGE" = "xON" ]; then
-    cmake -DCODE_COVERAGE=ON -DGCDA_DIR=/var/lib/tcg ..
+    cmake -DVERSION=${pkgver} -DCODE_COVERAGE=ON -DGCDA_DIR=/var/lib/tcg ..
   else
-    cmake ..
+    cmake -DVERSION=${pkgver} ..
   fi
   make -j
 }
