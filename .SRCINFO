@@ -1,13 +1,14 @@
 pkgbase = tabs-app
 	pkgdesc = Persistent and separate browser tabs in one window
 	pkgver = 1.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://eternae.ink/ashpie/tabs
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
 	makedepends = npm
-	depends = electron
+	depends = gtk3
+	depends = nss
 	depends = xorg-xinput
 	provides = tabs-app
 	conflicts = tabs-app

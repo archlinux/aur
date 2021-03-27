@@ -2,7 +2,7 @@
 
 pkgname='tabs-app'
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
 url='https://eternae.ink/ashpie/tabs'
@@ -15,7 +15,7 @@ sha512sums=('SKIP'
   '94bf995f0e4a132bd41452ca75deaffe58b3cf434adacf7371ba74e14b32a6c116e7686abea0796081bc8af3dc0c10a1059a9afa651ef13da1b4751dced89644')
 provides=('tabs-app')
 conflicts=('tabs-app')
-depends=('electron' 'xorg-xinput')
+depends=('gtk3' 'nss' 'xorg-xinput')
 makedepends=('yarn' 'npm')
 
 prepare() {
