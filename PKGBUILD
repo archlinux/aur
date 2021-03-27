@@ -2,7 +2,7 @@
 _projectname='luv'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.7'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Cross-platform asynchronous I/O and system calls'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/aantron/$_projectname"
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-no-vendored-libuv-headers.diff::$url/commit/2b009466670799b79c47f61f8d2f5e6c04448572.diff"
 )
 sha256sums=('09b7785cc64f6de465a50d8af54e4ace4c52b23d929a45f5044e7c9942a2558a'
-            '86f2fbad97e40dec16de0ff15d159bbce38a6cecf6eab1533da1b7c4c3aa481d')
+            '32956ba4b3a66f807e260b6d6f9e19782c6c6e9127de6e13484eb3cee4b0abd6')
 
 _sourcedirectory="$_projectname-$pkgver"
 
