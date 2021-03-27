@@ -3,7 +3,7 @@ pkgname=japokwm-git
 _pkgname=japokwm
 pkgver=r647.cea881d
 pkgrel=1
-license=("BSD")
+license=("BSD 2-Clause")
 pkgdesc="A wlroots and dwl based tiling-windowmanager based around creating layouts"
 makedepends=(
     "meson"
