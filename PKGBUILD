@@ -1,10 +1,10 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 # Contributor: Rodrigo Gryzinski <rogryza@gmail.com>
 
-_dhall_ver=1.38.0
+_dhall_ver=1.38.1
 pkgname='dhall-bash-bin'
 pkgver=1.0.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Dhall to bash compiler"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'

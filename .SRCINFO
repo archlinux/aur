@@ -1,12 +1,12 @@
 pkgbase = dhall-bash-bin
 	pkgdesc = Dhall to bash compiler
 	pkgver = 1.0.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = BSD
-	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.38.0/dhall-bash-1.0.36-x86_64-linux.tar.bz2
-	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.38.0/dhall-bash/LICENSE
+	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.38.1/dhall-bash-1.0.36-x86_64-linux.tar.bz2
+	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.38.1/dhall-bash/LICENSE
 	sha256sums = 22c94ddc94b1d48a6b624da4287156108eb4abc6bc828520fba9cec22488c565
 	sha256sums = 91f68ca8606e7ae993148187e397e20431aa6d870ac9fcc70330a0479468eef9
 	b2sums = 11626a9a7ca7a4b40454228f94788508bf2ffd196f6174b64b75466d3bf328dc80a881bdc4dafaa5cb72fc055e4f5e89ae30d78af73f4b0ba0c9750e2fdf91d4
