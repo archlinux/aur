@@ -9,7 +9,7 @@ pkgbase = sqls-bin
 	depends = go
 	conflicts = sqls-git
 	source = sqls-bin-0.2.18.tar.gz::https://github.com/lighttiger2505/sqls/releases/download/v0.2.18/sqls_0.2.18_Linux_x86_64.tar.gz
-	sha256sums = SKIP
+	sha256sums = 36b4906dc8d09b9ab69e19b4546303dd4c2dff031276ae67eb10720768c1aece
 
 pkgname = sqls-bin
 

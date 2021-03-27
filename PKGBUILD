@@ -8,7 +8,7 @@ url="https://github.com/lighttiger2505/sqls"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lighttiger2505/sqls/releases/download/v$pkgver/sqls_${pkgver}_Linux_x86_64.tar.gz")
 arch=('x86_64')
-sha256sums=('SKIP')
+sha256sums=('36b4906dc8d09b9ab69e19b4546303dd4c2dff031276ae67eb10720768c1aece')
 depends=('git' 'go')
 conflicts=('sqls-git')
 
