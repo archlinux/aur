@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="GTK3-based panel for sway window manager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools' 'python-wheel')
 optdepends=('wlr-randr: for non-sway Wayland WMs support')
 source=("https://github.com/nwg-piotr/nwg-panel/archive/v"$pkgver".tar.gz")
 
-md5sums=('c25ce306e01c55a0d9d34942618ae8d4')
+md5sums=('fc5caae7d11ad5b3584816e307d72026')
 
 package() {
   cd "${pkgname}-${pkgver}"
