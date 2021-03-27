@@ -4,14 +4,14 @@
 
 pkgname=tesseract-gui
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Tesseract (OCR) GUI"
 arch=('any')
-url="http://sourceforge.net/projects/tesseract-gui/"
+url="https://sourceforge.net/projects/tesseract-gui/"
 license=('GPL3')
-depends=('imagemagick' 'pygtk' 'python2' 'tesseract')
+depends=('imagemagick' 'pygtk' 'tesseract')
 install=$pkgname.install
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-${pkgver%%.*}/$pkgname-$pkgver.tar.gz)
+source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-${pkgver%%.*}/$pkgname-$pkgver.tar.gz)
 md5sums=('71b9a1c7f493652939158f399f29a85c')
 
 prepare() {

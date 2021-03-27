@@ -1,16 +1,15 @@
 pkgbase = tesseract-gui
 	pkgdesc = Tesseract (OCR) GUI
 	pkgver = 2.9
-	pkgrel = 2
-	url = http://sourceforge.net/projects/tesseract-gui/
+	pkgrel = 3
+	url = https://sourceforge.net/projects/tesseract-gui/
 	install = tesseract-gui.install
 	arch = any
 	license = GPL3
 	depends = imagemagick
 	depends = pygtk
-	depends = python2
 	depends = tesseract
-	source = http://downloads.sourceforge.net/project/tesseract-gui/tesseract-gui/tesseract-gui-2/tesseract-gui-2.9.tar.gz
+	source = https://downloads.sourceforge.net/project/tesseract-gui/tesseract-gui/tesseract-gui-2/tesseract-gui-2.9.tar.gz
 	md5sums = 71b9a1c7f493652939158f399f29a85c
 
 pkgname = tesseract-gui
