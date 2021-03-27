@@ -3,7 +3,7 @@
 
 set -u
 pkgname='urbackup2-client-no-gui'
-pkgver='2.4.10'
+pkgver='2.4.11'
 pkgrel='1'
 pkgdesc='Client/Server network backup for Windows Workgroups and Linux, headless client'
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -25,7 +25,7 @@ _scripts=(
 _srcdir="urbackup-client-${pkgver}.0"
 source=("https://hndl.urbackup.org/Client/${pkgver}/urbackup-client-${pkgver}.tar.gz")
 source+=("${_scripts[@]}" 'defaults_client' "${_patches[@]}")
-md5sums=('91d6b2b47586dc945d141ffee34a539c'
+md5sums=('fb00f65b2c7a12463e82a64c3f690ae1'
          'fcdef7852b3d847c5c2468a619e7fba9'
          'b5f82ed45105f9929e9b98eee8b288fc'
          '5a3c106ff05e9939902272c936b653eb'
@@ -35,7 +35,7 @@ md5sums=('91d6b2b47586dc945d141ffee34a539c'
          'b3442a7228cbb9ce56da85ba219ad925'
          '135f5736be2c1c55ea9a858613a3e71c'
          '4976ee476c8f0730e97d3f36bd90508a')
-sha256sums=('8fd1830c82bac05733aa5746ba5169ce90fa28891381696ff75d4bae0f0a6b63'
+sha256sums=('819dffb2521bf78e43ca0e6b8222aa79478f7a04d27682c36e00665129766fbf'
             '18b5eceb73086b86d904f80e9270df121d06d7c683f93c5449a82e7deb38e0ee'
             '334d9eb67a642d96e04874fd27c1b57d578c35b4cdc768d50db7ac2436f0927c'
             '869e6244efbf6e370938e2e5c94a16c0130f583815ddbd34802578656989048b'
