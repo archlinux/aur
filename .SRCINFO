@@ -1,7 +1,7 @@
 pkgbase = linux-x32
 	pkgdesc = Linux with x32 ABI
 	pkgver = 5.11.10.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.11.10-arch1
 	arch = x86_64
 	license = GPL2
@@ -13,11 +13,6 @@ pkgbase = linux-x32
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	makedepends = xmlto
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
 	makedepends = git
 	options = !strip
 	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.10-arch1
@@ -35,13 +30,11 @@ pkgname = linux-x32
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = linux-docs: documentation for Arch Linux’s distribution kernel
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-x32-headers
 	pkgdesc = Headers and scripts for building modules for the Linux with x32 ABI kernel
 	depends = pahole
-
-pkgname = linux-x32-docs
-	pkgdesc = Documentation for the Linux with x32 ABI kernel
 
