@@ -6,7 +6,7 @@
 set -u
 pkgname='pmacct'
 #pkgname+='-git'
-pkgver=1.7.5
+pkgver=1.7.6
 _pkgver="${pkgver%%.r[0-9]*}"
 _pkgverb="${_pkgver%%.[a-z]*}"
 _pkgverb="${_pkgverb%%[a-z]*}"
@@ -15,7 +15,7 @@ pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect 
 arch=('i686' 'x86_64')
 url='http://www.pmacct.net/'
 license=('GPL2')
-depends=('libpcap' 'libmariadbclient' 'postgresql-libs' 'sqlite3')
+depends=('libpcap' 'libmariadbclient' 'postgresql-libs' 'sqlite3' 'numactl')
 _verwatch=("${url}" "${url}${pkgname%-git}-\([0-9\.]\+\)\.tar\.gz" 'l')
 _srcdir="${pkgname%-git}-${_pkgver%%[a-z]*}"
 source=(
@@ -25,12 +25,12 @@ source=(
   'sfacctd.rc.d'
   'uacctd.rc.d'
 )
-md5sums=('4ce9e8f38ce37d3c60bfa3d66e0d5184'
+md5sums=('b829cfdc394d5acd6d32fb23de181a6b'
          '3b9313a756b75b4b571b17693db0ae04'
          'f732e33cbccba5a492d2ee95b5f88221'
          '235c1e77690fbe939a69c98dad041203'
          '9a49065076b645df94e30278052a8796')
-sha256sums=('2e778bd3cdd968c4b9f22e28008b9b72f229980201d2cc2ee04cb02f6b0bdcd5'
+sha256sums=('aa4407fe552412f56790ef1b8fde01a53e80136488c89f91e43c84825f1357f3'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
