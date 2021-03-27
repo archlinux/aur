@@ -4,7 +4,7 @@
 
 _pkgname=renovate
 pkgname=renovate-git
-pkgver=24.30.0.r1.g2cd92c1a8
+pkgver=24.96.1.r1.g9de36c449
 pkgrel=1
 pkgdesc="Universal dependency update tool that fits into your workflows."
 arch=(any)
