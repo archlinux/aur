@@ -3,7 +3,7 @@
 _pkgname=radontea
 pkgname=python-${_pkgname}
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Algorithms to compute the inverse Radon transform (e.g. SART, backprojection, Fourier interpolation)."
 arch=('any')
 url="https://github.com/RI-imaging/radontea"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=(
 	'python'
 	'python-setuptools'
-	#'python-pip'
+	'python-pip'
 	'python-numpy'
 	'python-scipy'
 	)
