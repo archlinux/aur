@@ -19,7 +19,7 @@ source_armv6h=( https://github.com/mbrubeck/agate/releases/download/v${pkgver}/a
 source_armv7h=( https://github.com/mbrubeck/agate/releases/download/v${pkgver}/agate.armv7-unknown-linux-gnueabihf.gz )
 
 sha256sums=( '3d521d3417774312370a74869cc612e5a5d449793d78ed3649e7acf81b2080a6'
-             '5f6071ba89cbee35525722459b26f8be80ea0c96430a8beb964bb325259d90e7'
+             '2281a345cd0e70f275e7630fb585eac94938d97a80f1db12f048a7cbb0e6c253'
              '3ae91c3090f65bc95b7dee277e357061408560c468546e50f5acc6e58b3f1042' )
 sha256sums_x86_64=( '006bf85869d1055aad4950caa3bb6737c7386cc5ced5b20ce18985354d10edb5' )
 sha256sums_aarch64=( 'b0cdfc7798336284652ffefb8e244505a055d699ae87ec0ecfa771f4ccee5821' )
