@@ -8,7 +8,6 @@ pkgbase = neovim-coc-explorer-git
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	makedepends = npm
 	depends = neovim-coc
 	provides = neovim-coc-explorer
 	conflicts = neovim-coc-explorer
