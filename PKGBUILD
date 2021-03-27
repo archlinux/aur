@@ -38,7 +38,6 @@ source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/f
                $__pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
-               "megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/megabar.patch"
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
@@ -47,7 +46,6 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 $__pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
-                "megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/megabar.patch"
                 "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                 "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
                 "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
@@ -59,7 +57,6 @@ sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd
                    '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
                    'SKIP'
                    'SKIP'
-                   '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                    '85f037f794afee0c70840123960375a00f9cef08dd903ea038b6bb62e683b96f'
@@ -68,7 +65,6 @@ sha256sums_aarch64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7f
                     '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
                     'SKIP'
                     'SKIP'
-                    '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
                     'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                     '85f037f794afee0c70840123960375a00f9cef08dd903ea038b6bb62e683b96f'
                     '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
@@ -97,7 +93,7 @@ export CXX='clang++'
 
 # Branding
 ac_add_options --enable-update-channel=nightly
-ac_add_options --with-app-name=${pkgname}
+ac_add_options --with-app-name=${__pkgname}
 ac_add_options --with-app-basename='${_pkgname}'
 ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-distribution-id=org.garudalinux
@@ -179,10 +175,6 @@ fi
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
-
-  # Disable (some) megabar functionality
-  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -p1 -i ../megabar.patch
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
