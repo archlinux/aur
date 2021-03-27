@@ -8,16 +8,13 @@ pkgdesc='coc.nvim extensions marketplace'
 arch=('any')
 url='https://github.com/fannheyward/coc-marketplace'
 depends=('neovim-coc')
-makedepends=('git' 'yarn' 'npm')
+makedepends=('git' 'yarn')
 _packdir="usr/share/nvim/runtime/pack/coc/start/${_extname}"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-install="${pkgname}.install"
-source=("${_extname}::git+${url}.git"
-        "${pkgname}.install")
-sha256sums=('SKIP'
-            '28cc66de4745e00291dc58a32588eb4df5cb52f2a780353f975e58efbc1d73a4')
+source=("${_extname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
