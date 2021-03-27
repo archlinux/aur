@@ -1,11 +1,11 @@
 diff --git a/main.cpp b/main.cpp
-index ce0dea0..cb729de 100644
+index c16fbc3..aa153d0 100644
 --- a/main.cpp
 +++ b/main.cpp
-@@ -30,6 +30,12 @@ static bool IsSourceFile(const filesystem::path &path)
-     , ".cxx"
+@@ -31,6 +31,12 @@ static bool IsSourceFile(const filesystem::path &path)
      , ".c++"
      , ".cs"
+     , ".java"
 +    , ".h"
 +    , ".hh"
 +    , ".hpp"
@@ -14,4 +14,4 @@ index ce0dea0..cb729de 100644
 +    , ".h++"
    };
    string ext = path.extension().string();
-   transform(ext.begin(), ext.end(), ext.begin(), [](char ch){return tolower(ch);});
+   transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char ch) { return static_cast<decltype(ext)::value_type>(tolower(ch)); });

@@ -15,7 +15,7 @@ conflicts=($_pkgname)
 source=(git+$url.git
         add-comments-to-headers-too.patch)
 sha256sums=('SKIP'
-            '8de3ba2cc20f9752edc2e9932a6bc2c92bec2fddc24ee5c01a9fd587c93c6878')
+            '950a0baf41a1b7cd52a1f207aecf6e9c101eb1865c1490c4bc69fae21ed6da56')
 
 pkgver() {
   cd $_pkgname

@@ -14,7 +14,7 @@ pkgbase = how-to-use-pvs-studio-free-git
 	source = git+https://github.com/viva64/how-to-use-pvs-studio-free.git
 	source = add-comments-to-headers-too.patch
 	sha256sums = SKIP
-	sha256sums = 8de3ba2cc20f9752edc2e9932a6bc2c92bec2fddc24ee5c01a9fd587c93c6878
+	sha256sums = 950a0baf41a1b7cd52a1f207aecf6e9c101eb1865c1490c4bc69fae21ed6da56
 
 pkgname = how-to-use-pvs-studio-free-git
 
