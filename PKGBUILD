@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='https://wiki.ros.org/roslaunch'
 
 pkgname='ros-noetic-roslaunch'
-pkgver='1.15.9'
+pkgver='1.15.10'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -38,7 +38,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/tools/roslaunch"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d')
+sha256sums=('c42d8630919bedf08c689436c4a6b347928cd94b9afb87400931993273192506')
 
 build() {
 	# Use ROS environment variables.
