@@ -7,7 +7,6 @@ pkgbase = neovim-coc-git-git
 	groups = neovim-coc-extras-git
 	license = MIT
 	makedepends = yarn
-	makedepends = npm
 	depends = neovim-coc
 	depends = git
 	provides = neovim-coc-git-git
