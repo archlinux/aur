@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror <lmartinez-mirror at noreply dot github dot com>
 pkgname=baru
-pkgver=0.2.6
-pkgrel=2
+pkgver=0.2.7
+pkgrel=1
 pkgdesc='A system monitor written in Rust and C'
 arch=('x86_64')
 url='https://github.com/doums/baru'
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('libpulse')
 makedepends=('git' 'rust' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c2e415369e46f9b54a5f3c7f7b59ee4eb6de3f0f394cf92ca0f6e3302a7b2152f6a9092b6eb912a3ff09cbec3b98f8524cecd5c9d847088f6f3536d75c2f2938')
+sha512sums=('1afb3f72510640778c4b2980e45aebac091cbee3884f74ca017416393541880bd71d6309f42a820edef1f011eb8a6f64e61d000b92fe97f1db3ba477e60ee5fb')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -17,6 +17,7 @@ build() {
 }
 
 package() {
-  install -Dm 755 "$pkgname-$pkgver/target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  cd "$pkgname-$pkgver"
+  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 }
 
