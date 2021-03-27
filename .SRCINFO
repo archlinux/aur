@@ -1,12 +1,11 @@
 pkgbase = sunloginclient
 	pkgdesc = Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)
 	pkgver = 11.0.0.36662
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sunlogin.oray.com
 	install = sunloginclient.install
 	arch = x86_64
 	license = custom
-	makedepends = icoutils
 	depends = libappindicator-gtk3
 	depends = xorg-xhost
 	provides = sunlogin

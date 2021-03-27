@@ -4,13 +4,12 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 pkgver=11.0.0.36662
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
          'xorg-xhost')
-makedepends=('icoutils')
 license=('custom')
 provides=('sunlogin')
 source=("https://down.oray.com/${_pkgname}/linux/${pkgname}-${pkgver}-amd64.deb"
