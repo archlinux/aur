@@ -22,7 +22,7 @@ optdepends=('autopep8: autopep8 formatting plugin'
             'python-pydocstyle: pydocstyle linting plugin'
             'pylama: pylama linting plugin'
             'python-pylint: pylint linting plugin')
-makedepends=('yarn' 'npm' 'git')
+makedepends=('yarn' 'git')
 license=('MIT')
 source=("${_extname}::git+${url}.git")
 pkgver=r204.9c13197
