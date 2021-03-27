@@ -7,7 +7,7 @@
 _npmname=ws
 pkgname=nodejs-ws
 pkgver=7.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple to use, blazing fast and thoroughly tested WebSocket client and server for Node.js"
 arch=(any)
 url="https://github.com/websockets/ws"
@@ -18,8 +18,9 @@ source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 sha256sums=('e28bcff988a71f41d20c46e89f0638ffb1292e8d1effeda87fd0165fa3134cca')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  chown -R root:root "${pkgdir}"
   install -Dm644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
