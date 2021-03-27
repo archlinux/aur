@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   arch-meson $_pkgname build
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
