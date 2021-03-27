@@ -1,13 +1,13 @@
 pkgbase = dhall-lsp-server-bin
 	pkgdesc = Language Server Protocol implementation for Dhall
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = custom:MIT
-	source = dhall-lsp-server-1.38.0-1.0.13.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/1.38.0/dhall-lsp-server-1.0.13-x86_64-linux.tar.bz2
-	source = LICENSE-1.0.13::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.38.0/dhall-lsp-server/LICENSE
-	sha256sums = eac9a37cbd95f491eeb4563c57a3574d1b8cde3d66b0608633f7522fd4fbf65b
+	source = dhall-lsp-server-1.38.1-1.0.14.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/1.38.1/dhall-lsp-server-1.0.14-x86_64-linux.tar.bz2
+	source = LICENSE-1.0.14::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.38.1/dhall-lsp-server/LICENSE
+	sha256sums = 4fd8cf141978562e25c9820bc2bdd86b6d935a2bf9db543655daa6bdf2728d5c
 	sha256sums = 9e2f0e499b5406faffffd32d0a1d69d519dc8c681fb0648ee5e9970e0299d4a7
 
 pkgname = dhall-lsp-server-bin
