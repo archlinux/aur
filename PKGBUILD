@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.1.0_devel.135967.b33792b794f
+pkgver=21.1.0_devel.137126.ba8ddc0c683
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -149,11 +149,6 @@ build () {
 package() {
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
-    # remove script file from /usr/bin
-    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
-    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-    rmdir "${pkgdir}/usr/bin"
-    
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
   
