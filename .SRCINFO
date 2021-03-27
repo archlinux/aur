@@ -8,7 +8,6 @@ pkgbase = neovim-coc-pairs-git
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	makedepends = npm
 	depends = neovim-coc
 	provides = neovim-coc-pairs
 	conflicts = neovim-coc-pairs
