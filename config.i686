@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.10.25 Kernel Configuration
+# Linux/x86 5.10.26 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 11.1.0"
 CONFIG_GCC_VERSION=0
@@ -3588,6 +3588,7 @@ CONFIG_SYNC_FILE=y
 
 # CONFIG_AUXDISPLAY is not set
 # CONFIG_UIO is not set
+# CONFIG_VFIO is not set
 # CONFIG_VIRT_DRIVERS is not set
 CONFIG_VIRTIO=y
 CONFIG_VIRTIO_MENU=y
