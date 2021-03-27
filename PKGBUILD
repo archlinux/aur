@@ -43,8 +43,8 @@ prepare() {
   # vo_gpu: placebo: update for upstream API changes
   git cherry-pick -n 7c4465cefb27d4e0d07535d368febdf77b579566
   
+  # patch mpv with the PipeWire audio backend
   patch -Np1 -i ../pipewire.patch
-
 }
 
 build() {
