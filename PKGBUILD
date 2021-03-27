@@ -320,7 +320,7 @@ END
     install -Dvm644 browser/branding/${__pkgname}/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$__pkgname.png"
   done
-  install -Dvm644 browser/branding/librewolf/content/about-logo.png \
+  install -Dvm644 browser/branding/${__pkgname}/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
