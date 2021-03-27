@@ -1,0 +1,13 @@
+pkgbase = whale
+	pkgdesc = A Unofficial Trello app
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/1000ch/whale
+	arch = x86_64
+	license = MIT
+	depends = tar
+	source = https://github.com/1000ch/whale/releases/download/v2.4.0/whale_2.4.0_amd64.deb
+	md5sums = 79f3a1a81b6205b7de98cb27473cb752
+
+pkgname = whale
+
