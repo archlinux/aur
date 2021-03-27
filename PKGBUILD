@@ -1,4 +1,5 @@
-# Maintainer: lsf
+# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
+# Contributor:  lsf
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -55,7 +56,7 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
 sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
-                   '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+                   '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
                    'SKIP'
                    'SKIP'
                    '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
@@ -64,7 +65,7 @@ sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd
                    '85f037f794afee0c70840123960375a00f9cef08dd903ea038b6bb62e683b96f'
                    'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9')
 sha256sums_aarch64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
-                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+                    '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
                     'SKIP'
                     'SKIP'
                     '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
