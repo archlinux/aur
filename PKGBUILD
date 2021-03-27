@@ -6,7 +6,7 @@
 set -u
 _pkgname='inetutils'
 pkgname="${_pkgname}-git"
-pkgver=1.9.4.r101.g393f4c6c
+pkgver=2.0.r5.g4ad0b48b
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='A collection of common network programs'
@@ -84,7 +84,7 @@ sha256sums=('SKIP'
 pkgver() {
   set -u
   cd "${_srcdir}"
-  git describe --long | sed -e "s:^${_pkgname}-::g" -e 's:_:.:g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  git describe --long | sed -e "s:^${_pkgname}-::g" -e 's:_:.:g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
   set +u
 }
 
@@ -97,7 +97,7 @@ prepare() {
     # telnetd disconnects without banner on 90% of connections
     # http://lists.gnu.org/archive/html/bug-inetutils/2015-07/msg00006.html
     # http://lists.gnu.org/archive/html/bug-inetutils/2015-08/index.html
-    sed -e 's:if (pty_read () <= 0):if (pty_read () < 0):g' -i 'telnetd/telnetd.c'
+    #sed -e 's:if (pty_read () <= 0):if (pty_read () < 0):g' -i 'telnetd/telnetd.c'
 
     # http://lists.gnu.org/archive/html/bug-inetutils/2017-07/msg00005.html
     #patch -Nbup1 -i '../0001-telnetd-Fix-buffer-overflows.patch'
