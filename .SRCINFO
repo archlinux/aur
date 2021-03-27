@@ -1,6 +1,6 @@
 pkgbase = jellyfin-mpv-shim
 	pkgdesc = Cast media from Jellyfin Mobile and Web apps to MPV
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin-desktop
 	install = jellyfin-mpv-shim.install
@@ -24,8 +24,8 @@ pkgbase = jellyfin-mpv-shim
 	optdepends = svp: SmoothVideo Project server
 	optdepends = mpv-shim-default-shaders: default shader pack
 	optdepends = python-pypresence: Discord Rich Presence integration
-	source = jellyfin-mpv-shim-1.10.1.tar.gz::https://github.com/jellyfin/jellyfin-desktop/archive/v1.10.1.tar.gz
-	sha256sums = be52ef70f717d4834690bddb2037e78b7656590c326df005261892dd64eb6fe3
+	source = jellyfin-mpv-shim-1.10.2.tar.gz::https://github.com/jellyfin/jellyfin-desktop/archive/v1.10.2.tar.gz
+	sha256sums = 64d6e61f0eb750ec05c362b63f158e8ba446db1a7a4024230a3410ab7fcbc035
 
 pkgname = jellyfin-mpv-shim
 
