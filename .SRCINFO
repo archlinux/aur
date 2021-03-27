@@ -1,6 +1,6 @@
 pkgbase = clitrans-git
 	pkgdesc = Yet another command-line translator (Chinese <=> English)
-	pkgver = 0.3.3.71.g0164a26
+	pkgver = 0.3.6.90.gafb0bab
 	pkgrel = 1
 	url = https://github.com/wfxr/clitrans
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = clitrans-git
 	license = MIT
 	license = APACHE
 	makedepends = git
-	makedepends = rust>=1.51
+	makedepends = rust
+	makedepends = cargo
 	makedepends = alsa-lib
 	makedepends = curl
 	depends = alsa-lib

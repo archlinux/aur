@@ -7,7 +7,7 @@ pkgdesc="Yet another command-line translator (Chinese <=> English)"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/${_pkgname}"
 license=("MIT" "APACHE")
-makedepends=("git" "rust>=1.51" "alsa-lib" "curl")
+makedepends=("git" "rust" "cargo" "alsa-lib" "curl")
 depends=("alsa-lib" "curl")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 
@@ -21,7 +21,10 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    cargo build --release --locked --features full
+    # resolver requires nightly version cargo for now (2021-03-11)
+    sed -i /^resolver/d Cargo.toml
+    cargo build --release --locked --features audio
+    git checkout Cargo.toml
 }
 
 package() {
