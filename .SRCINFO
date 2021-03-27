@@ -1,12 +1,17 @@
 pkgbase = mips64el-linux-gnu-linux-api-headers
-	pkgdesc = Kernel headers sanitized for use in userspace (mips64el-linux-gnu)
-	pkgver = 5.2.6
+	pkgdesc = Kernel headers sanitized for use in userspace (MIPS64EL target, for the toolchain with GNU C library and multilib ABI)
+	pkgver = 5.11.10
 	pkgrel = 1
-	url = http://www.kernel.org
+	url = https://www.kernel.org
 	arch = any
 	license = GPL2
-	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.6.tar.xz
-	sha1sums = b07b8b7997a7211c25f5b51341890d4f2c349646
+	makedepends = rsync
+	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.10.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.10.tar.sign
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = d372acb8fa337141ca1bbeda9e25873c76ce52a27974226a95275ce43522dc1d
+	sha256sums = SKIP
 
 pkgname = mips64el-linux-gnu-linux-api-headers
 
