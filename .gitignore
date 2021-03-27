@@ -4,4 +4,6 @@
 !PKGBUILD
 !.SRCINFO
 
-!extern.patch
+!*.patch
+!*.desktop
+!*.xml

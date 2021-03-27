@@ -1,24 +1,33 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 pkgname=i8086emu-git
 pkgver=0.9.2.r35.1143f09
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="cross-platform emulator for the Intel 8086 microprocessor"
 arch=($CARCH)
-url=http://${pkgname%-git}.sourceforge.net/
+url=http://"${pkgname%-*}".sourceforge.net/
 license=(GPL2)
-depends=(gtk2 beep)
-makedepends=(git nasm cmake)
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+depends=(gtk2 beep) # shared-mime-info # namcap: W: unneeded dependency on a package run when needed by hooks.
+makedepends=(cmake desktop-file-utils git nasm)
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 
 # (A)
 # source=(file:///dev/null)
 # md5sums=(SKIP)
 
 # (B)
-source=(${pkgname%-git}::git+https://git.code.sf.net/p/i8086emu/git extern.patch)
-sha1sums=(SKIP a5c1091422a1f9454a6fa161107781854f387896)
+source=("${pkgname%-*}"::git+https://git.code.sf.net/p/i8086emu/git
+        http://"${pkgname%-*}".sourceforge.net/dl/i8086.pdf
+        extern.patch
+        "${pkgname%-*}".xml
+        net.sourceforge."${pkgname%-*}"."${pkgname%emu*}"{gui,text}.desktop)
+sha1sums=(SKIP
+          11d730bde4fc248fb2ae37785af564e884c62b66
+          a5c1091422a1f9454a6fa161107781854f387896
+          d3667ed6dc769ba4d7054a5eb4736f118c02bcc2
+          cb75fe18ded8ed3f86ef159d08309b62e8739a11
+          48d414d51f66852c70e37d3c69d9613bb88eacac)
 
 prepare() {
 
@@ -26,9 +35,9 @@ prepare() {
   # cp -a ~/i8086emu.git/ ./
 
   # (B)
-  patch --directory=${pkgname%-git} --input=- --strip=1 --verbose <extern.patch # --dry-run
+  patch --directory="${pkgname%-*}" --input=- --strip=1 --verbose <extern.patch # --dry-run
 
-  cd ${pkgname%-git}/${pkgname%-git}/src
+  cd "${pkgname%-*}"/"${pkgname%-*}"/src
 
   # https://unix.stackexchange.com/a/450857
   # Insert text blob w/ sed in case any whitespace get messed up
@@ -45,14 +54,14 @@ prepare() {
 }
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-*}"
   # cutting off 'v' prefix that presents in the git tag
   printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
 
-  cd ${pkgname%-git}/${pkgname%-git}/
+  cd "${pkgname%-*}/${pkgname%-*}"
   export CFLAGS="-fPIC $CFLAGS"
 
   # i8086text
@@ -67,7 +76,7 @@ build() {
     --exec-prefix=/usr \
     \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/${pkgname%-git} \
+    --libexecdir=/usr/lib/"${pkgname%-*}" \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --infodir=/usr/share/doc \
@@ -93,7 +102,7 @@ build() {
 # makepkg --noextract --holdver --repackage
 package() {
 
-  cd ${pkgname%-git}/${pkgname%-git}/
+  cd "${pkgname%-*}/${pkgname%-*}"
 
   # i8086text
   make DESTDIR="$pkgdir" install
@@ -104,6 +113,7 @@ package() {
     "$pkgdir/usr/lib/i8086emu/i8086pit.so"
   rmdir -v "$pkgdir/usr/lib/i8086emu"
 
+  # only stub dirs remain
   [ -z "$(ls -A "$pkgdir/usr/bin")" ]
   [ -z "$(ls -A "$pkgdir/usr/lib")" ]
 
@@ -111,5 +121,10 @@ package() {
   install -vDm755 cmake_build_gui/bin/* "$pkgdir/usr/bin/"
   install -vDm755 cmake_build_gui/lib/*.so "$pkgdir/usr/lib/"
   install -vDm644 cmake_build_gui/lib/*.a "$pkgdir/usr/lib/"
+
+  cd "$srcdir"
+  [ -z "$(desktop-file-validate *.desktop 2>&1)" ]
+  install -vdm755 "$pkgdir/usr/share/applications/"; install -vDm644 *.desktop "$_/"
+  install -vDm644 {,"$pkgdir/usr/share/mime/packages/"}"${pkgname%-*}".xml
 
 }
