@@ -1,0 +1,18 @@
+pkgbase = run-scaled-git
+	pkgdesc = Run an X application scaled via xpra. Useful on hidpi screens. (Rewritten in Python and added input method support)
+	pkgver = r3.4b7fc79
+	pkgrel = 1
+	url = https://github.com/SamLukeYes/run-scaled
+	arch = any
+	license = Boost
+	makedepends = git
+	depends = xpra
+	depends = xorg-xrandr
+	depends = xorg-server-xvfb
+	provides = run-scaled
+	conflicts = run-scaled
+	source = git+https://github.com/SamLukeYes/run-scaled.git
+	md5sums = SKIP
+
+pkgname = run-scaled-git
+
