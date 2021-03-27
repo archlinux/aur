@@ -1,0 +1,13 @@
+pkgbase = python-orgparse
+	pkgdesc = orgparse - Emacs org-mode parser in Python
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/karlicoss/orgparse
+	arch = any
+	license = BSD
+	license = License
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-orgparse
+
