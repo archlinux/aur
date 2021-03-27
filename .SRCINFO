@@ -1,0 +1,18 @@
+pkgbase = neovim-coc-deno-git
+	pkgdesc = Deno extension for coc.nvim
+	pkgver = r120.7921f6d
+	pkgrel = 1
+	url = https://github.com/fannheyward/coc-deno
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = git
+	depends = neovim-coc
+	depends = deno
+	provides = neovim-coc-deno
+	conflicts = neovim-coc-deno
+	source = coc-deno::git+https://github.com/fannheyward/coc-deno.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-deno-git
+
