@@ -1,10 +1,10 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
 pkgname=sakura-frp
-pkgver=0.35.1_sakura_2.1
-pkgrel=2
+pkgver=0.36.1_sakura_1
+pkgrel=1
 pkgdesc="Sakura Frp"
-arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h' 'arm')
+arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url="https://www.natfrp.com/"
 license=('custom')
 provides=('sakura-frpc' 'natfrp')
@@ -15,9 +15,8 @@ source=(LICENSE::'https://www.natfrp.com/policy/'
 backup=("etc/${pkgname}/frpc.ini")
 source_x86_64=(${pkgname}-${pkgver}-x86_64::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_amd64")
 source_i686=(${pkgname}-${pkgver}-i686::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_386")
-source_arm=(${pkgname}-${pkgver}-arm::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_arm")
-source_armv7h=(${pkgname}-${pkgver}-arm::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_arm")
-source_armv6h=(${pkgname}-${pkgver}-arm::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_arm")
+source_armv7h=(${pkgname}-${pkgver}-armv7h::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_armv7")
+source_armv6h=(${pkgname}-${pkgver}-armv6h::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_armv6")
 source_aarch64=(${pkgname}-${pkgver}-aarch64::"https://azure.globalslb.net/frp/${pkgver//_/-}/frpc_linux_arm64")
 # disbale strip
 # => strip: error: the input file './usr/bin/sakura-frpc' has no sections
@@ -26,15 +25,14 @@ md5sums=('SKIP'
          '4fb2a7fdc3abaa441385e7598d60362a'
          'f0a1b91d07a50785b2500b16c730bf9a'
          '37b14750055c7c04ce7c3e80fa3894d3')
-md5sums_x86_64=('9892b70acbb15c3802ebb833203630bc')
-md5sums_i686=('6063859c1067a8cfda2de355c3029793')
-md5sums_aarch64=('a84d974eac06638dcf03e1d5f21eda74')
-md5sums_armv6h=('eb829c7b7d9a45e1466e389033d32c49')
-md5sums_armv7h=('eb829c7b7d9a45e1466e389033d32c49')
-md5sums_arm=('eb829c7b7d9a45e1466e389033d32c49')
+md5sums_x86_64=('ec03ac70fa11438151191b367f0ee7e1')
+md5sums_i686=('9020882124b07c7ab99222de7a4af772')
+md5sums_aarch64=('39f07e2d5ae0f3655673dccca9484a19')
+md5sums_armv6h=('8f34582942b9ce2d14c6de5d0963181e')
+md5sums_armv7h=('bfa01fe13a4cedf6321592930d37f313')
 
 package() {
-  install -Dm755 ${pkgname}-${pkgver}-* ${pkgdir}/usr/bin/${pkgname}c
+  install -Dm755 ${pkgname}-${pkgver}-${CARCH} ${pkgdir}/usr/bin/${pkgname}c
 
   # frpc.ini
   install -dm755 ${pkgdir}/etc/${pkgname}
