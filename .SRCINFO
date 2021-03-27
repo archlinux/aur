@@ -22,6 +22,7 @@ pkgbase = python-ocp-git
 	makedepends = rapidjson
 	makedepends = python-jinja
 	makedepends = python-toml
+	makedepends = lief
 	depends = python
 	depends = opencascade-rc
 	depends = vtk9-fix

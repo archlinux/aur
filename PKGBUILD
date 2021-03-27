@@ -30,6 +30,7 @@ python-schema
 rapidjson
 python-jinja
 python-toml
+lief
 )
 conflicts=(python-ocp)
 provides=(python-ocp)
@@ -49,10 +50,21 @@ prepare(){
   # instead use the ones from the installed opencascade package
   #rm -rf opencascade
   #ln -s /usr/include/opencascade .
+
 }
 
 build() {
   cd OCP
+
+  # get symbols
+  mkdir -p dummy/lib_linux/
+  ln -s /usr/lib dummy/lib_linux/.
+  rm *.dat
+  msg2 "Dumping symbols..."
+  python dump_symbols.py dummy
+  msg2 "Dump complete."
+  file symbols_mangled_linux.dat
+
   CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
     --clean \
     --libclang "$(ldconfig -p | grep 'libclang.so$' | head -1 | awk '{print $NF}')" \
@@ -76,14 +88,12 @@ build() {
 check() {
   cd OCP
   cd build_dir
-  python -c "from OCP.gp import gp_Vec, gp_Ax1, gp_Ax3, gp_Pnt, gp_Dir, gp_Trsf, gp_GTrsf, gp, gp_XYZ"
+  #python -c "from OCP.gp import gp_Vec, gp_Ax1, gp_Ax3, gp_Pnt, gp_Dir, gp_Trsf, gp_GTrsf, gp, gp_XYZ"
+  python -c "import OCP"
 }
 
 package(){
   cd OCP
-  #_python_site_path="$(python -c 'import sys; print(sys.path[-1])')"
-  #mkdir -p "${pkgdir}/${_python_site_path}"
-  #cp "${srcdir}"/build/OCP.*.so "${pkgdir}/${_python_site_path}"
 
   install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP.*.so
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
