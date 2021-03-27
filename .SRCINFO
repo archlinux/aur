@@ -5,6 +5,7 @@ pkgbase = vtk9-fix
 	url = http://vtk.org
 	arch = x86_64
 	license = BSD
+	makedepends = java-runtime-openjdk=8
 	makedepends = cmake
 	makedepends = ninja
 	depends = gdal
@@ -38,6 +39,7 @@ pkgbase = vtk9-fix
 	depends = gl2ps
 	depends = ffmpeg
 	depends = libtheora
+	depends = java-runtime
 	provides = vtk
 	conflicts = vtk
 	conflicts = vtk9
