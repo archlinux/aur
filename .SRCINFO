@@ -1,6 +1,6 @@
 pkgbase = fedora-firefox-wayland-bin
 	pkgdesc = Fedora's firefox build with wayland enabled by default
-	pkgver = 86.0.1
+	pkgver = 87.0
 	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -27,16 +27,16 @@ pkgbase = fedora-firefox-wayland-bin
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=86.0.1
+	provides = firefox=87.0
 	provides = libffi=3.1
 	conflicts = firefox
 	conflicts = libffi=3.1
 	conflicts = libffi=3.2
 	options = !emptydirs
 	options = !strip
-	source = https://kojipkgs.fedoraproject.org/packages/firefox/86.0.1/2.fc32/x86_64/firefox-86.0.1-2.fc32.x86_64.rpm
+	source = https://kojipkgs.fedoraproject.org/packages/firefox/87.0/2.fc32/x86_64/firefox-87.0-2.fc32.x86_64.rpm
 	source = https://download-ib01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/x86_64/os/Packages/l/libffi-3.1-24.fc32.x86_64.rpm
-	sha256sums = d053d0976be598813a0a76f4e6f0164c46a975b7233c857c159882b94343794d
+	sha256sums = 9e6487bbb8749a226ae7845a79d9fc911cdf94edbf0839dc456edaf2cea56512
 	sha256sums = 86c87a4169bdf75c6d3a2f11d3a7e20b6364b2db97c74bc7eb62b1b22bc54401
 pkgname = fedora-firefox-wayland-bin
 
