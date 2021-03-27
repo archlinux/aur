@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.1.0_devel.135442.34d6ce28e38
+pkgver=21.1.0_devel.137126.ba8ddc0c683
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -154,12 +154,6 @@ package() {
     rm -rf "$pkgdir"/usr/share/drirc.d/
     rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
     rm -rf "$pkgdir"/usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
-  
-    # remove script file from /usr/bin
-    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
-    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-    rmdir "${pkgdir}/usr/bin"
-
 
     # indirect rendering
     ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
