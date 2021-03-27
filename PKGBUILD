@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-semantic-release
-pkgver=7.15.0
+pkgver=7.15.1
 pkgrel=1
 pkgdesc="Automatic semantic versioning for Python projects"
 arch=('any')
@@ -21,7 +21,7 @@ depends=('python-click'
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('dfed0fed7b0344f2a458c0e220564994d4c3c8323f6255810bc6ea76a851fc82338b13191dc206e628a5a8b09b616535c8290e1aa6dfb5a9e4d2a1ab58268fb6')
+b2sums=('45b1d3bec80cd6cd865015bc8c81049196432febc375c24021888527529c8a43da6b23bc87ba2f35e34f3e87a5002f9106b86252821291adb35ecabbe4226c82')
 
 build() {
   cd "$pkgname-$pkgver"
