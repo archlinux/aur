@@ -8,18 +8,22 @@ arch=('x86_64')
 url="https://www.aliflang.org/"
 license=('GPL3')
 depends=('boost')
-source=("https://github.com/alifcommunity/compiler/archive/refs/tags/v3.0.17.tar.gz")
+optdepends=('webui: to use web browsers as UI')
+source=("$pkgname-$pkgver"::"git+https://github.com/alifcommunity/compiler.git")
 md5sums=('SKIP')
 
+prepare() {
+    cd $srcdir/$pkgname-$pkgver
+    git reset 3f390406c3f7e018f1af968358bd57760c71fb7b
+}
+
 build() {
-    cd $srcdir/compiler-$pkgver
-    cmake . .
+    cd $srcdir/$pkgname-$pkgver
+    cmake . . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/local
     make
 }
 
 package() {
-    cd $srcdir/compiler-$pkgver
-    mkdir -p $pkgdir/usr/local/lib/
-    install -D Alif/alif $pkgdir/usr/local/bin/alif
-    cp -vr aliflib $pkgdir/usr/local/lib/
+    cd $srcdir/$pkgname-$pkgver
+    make install
 }

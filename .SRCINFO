@@ -6,7 +6,8 @@ pkgbase = alif
 	arch = x86_64
 	license = GPL3
 	depends = boost
-	source = https://github.com/alifcommunity/compiler/archive/refs/tags/v3.0.17.tar.gz
+	optdepends = webui: to use web browsers as UI
+	source = alif-3.0.17::git+https://github.com/alifcommunity/compiler.git
 	md5sums = SKIP
 
 pkgname = alif
