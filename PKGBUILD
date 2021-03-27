@@ -31,7 +31,7 @@ prepare() {
     patch --strip=1 --input="$srcdir/desktop-file.patch"
 
     export GOPATH="$srcdir/gopath"
-    go get -u github.com/wailsapp/wails/cmd/wails@v1.8.0
+    go get -modcacherw -u github.com/wailsapp/wails/cmd/wails@v1.8.0
 }
 
 build() {
@@ -44,7 +44,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath"
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
     # Don't know what this does but it's in the install.linux.sh script from upstream
     export CGO_ENABLED=1
 
