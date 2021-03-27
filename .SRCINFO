@@ -1,7 +1,7 @@
 pkgbase = mhwaveedit
 	pkgdesc = mhWaveEdit is a graphical program for editing, playing and recording sound files.
 	pkgver = 1.4.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magnush/mhwaveedit/
 	arch = x86_64
 	arch = aarch64

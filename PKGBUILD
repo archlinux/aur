@@ -1,7 +1,7 @@
-# Maintainer: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
+# Maintainer: Dominic Radermacher <dominic@familie-radermacher.ch>
 pkgname=mhwaveedit
 pkgver=1.4.24
-pkgrel=1
+pkgrel=2
 pkgdesc="mhWaveEdit is a graphical program for editing, playing and recording sound files."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/magnush/mhwaveedit/"
