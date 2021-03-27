@@ -10,10 +10,8 @@ url="https://github.com/moses-palmer/pynput"
 license=('LGPL3')
 depends=('python-xlib' 'python-six' 'python-evdev')
 makedepends=('python-setuptools-lint' 'python-sphinx')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
-        "$pkgname.patch")
-sha256sums=('4e50b1a0ab86847e87e58f6d1993688b9a44f9f4c88d4712315ea8eb552ef828'
-            'b2e10f5baf1501e8365b1a95fd756cde5a8510107d89557ab764a47c3ef47226')
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('4e50b1a0ab86847e87e58f6d1993688b9a44f9f4c88d4712315ea8eb552ef828')
 
 build() {
 	cd "$_name-$pkgver"
