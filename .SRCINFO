@@ -1,7 +1,7 @@
 pkgbase = linkinator
 	pkgdesc = Find broken links, missing images, etc in your HTML
 	pkgver = 2.13.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustinBeckwith/linkinator#readme
 	arch = any
 	license = MIT
