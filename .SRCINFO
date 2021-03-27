@@ -3,7 +3,6 @@ pkgbase = how-to-use-pvs-studio-free-git
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/viva64/how-to-use-pvs-studio-free
-	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = cmake
