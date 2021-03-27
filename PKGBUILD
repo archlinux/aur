@@ -7,7 +7,7 @@
 pkgname=firedragon-stable
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=88.0b3
+pkgver=87.0
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding & new features using stable as source."
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ install=$__pkgname.install
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _linux_commit=7a39d563510701275472b1656b92eed590a040d5
 _settings_commit=241e6f4d73e6f2de37537cf4473612ae9f8ad81e
-source_x86_64=(https://archive.mozilla.org/pub/devedition/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                $__pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
                "git+https://gitlab.com/dr460nf1r3/settings.git"
@@ -45,7 +45,7 @@ source_x86_64=(https://archive.mozilla.org/pub/devedition/releases/$pkgver/sourc
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
                "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch")
-source_aarch64=(https://archive.mozilla.org/pub/devedition/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                 $__pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
                 "git+https://gitlab.com/dr460nf1r3/settings.git"
