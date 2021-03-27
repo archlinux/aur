@@ -1,5 +1,4 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
-# Contributor: lsf
+# Maintainer: lsf
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -13,12 +12,10 @@ pkgdesc="Librewolf fork build using custom branding & new features using stable 
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse whoogle-git
-         libvpx libjpeg zlib icu libevent libpipewire02)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils
-             rust mozilla-common xorg-server-xwayland xorg-server-xvfb
-             autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
+             rust
+             autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -29,7 +26,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
-replaces=('dragonwolf')
 provides=('firedragon')
 conflicts=('firedragon')
 install=$__pkgname.install
@@ -57,8 +53,8 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('b9ac5833ef8109b9106c39b5aa0e8f5edf3ee794cc110dcade70ecab34529c3d'
-                   '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
+sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
+                   '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
                    '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
@@ -66,8 +62,8 @@ sha256sums_x86_64=('b9ac5833ef8109b9106c39b5aa0e8f5edf3ee794cc110dcade70ecab3452
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                    '85f037f794afee0c70840123960375a00f9cef08dd903ea038b6bb62e683b96f'
                    'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9')
-sha256sums_aarch64=('b9ac5833ef8109b9106c39b5aa0e8f5edf3ee794cc110dcade70ecab34529c3d'
-                    '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
+sha256sums_aarch64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
+                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
                     '2addc8abeea860e123da43b5c6be687f520f5770d52e3b19de62bedc3581d007'
@@ -79,9 +75,7 @@ sha256sums_aarch64=('b9ac5833ef8109b9106c39b5aa0e8f5edf3ee794cc110dcade70ecab345
                     '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
-  if [[ ! -d mozbuild ]];then
-      mkdir mozbuild
-  fi
+  mkdir -p mozbuild
   cd firefox-$pkgver
 
   cat >../mozconfig <<END
@@ -102,9 +96,9 @@ export CXX='clang++'
 # Branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${__pkgname}
-ac_add_options --with-app-basename='${___pkgname}'
-ac_add_options --with-branding=browser/branding/firedragon
-ac_add_options --with-distribution-id=org.garudalinux
+ac_add_options --with-app-basename=${_pkgname}
+ac_add_options --with-branding=browser/branding/${__pkgname}
+ac_add_options --with-distribution-id=io.gitlab.$__{pkgname}-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
@@ -289,12 +283,6 @@ package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  install -Dvm644 "$srcdir/settings/$__pkgname.profile" "$pkgdir/etc/firejail/$__pkgname.profile"
-  install -Dvm644 "$srcdir/settings/$__pkgname-common.profile" "$pkgdir/etc/firejail/$__pkgname-common.profile"
-  install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
-  
-  rm "$pkgdir"/usr/lib/${__pkgname}/pingsender
-
   local vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
@@ -302,7 +290,7 @@ package() {
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Don't disable extensions in the application directory
-// done in dragonwolf.cfg
+// done in librewolf.cfg
 // pref("extensions.autoDisableScopes", 11);
 END
 
@@ -339,14 +327,14 @@ END
     "$pkgdir/usr/share/applications/$__pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$__pkgname/$__pkgname "\$@"
+exec /usr/lib/$__pkgname/dragonwolf "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/librewolf-bin"
+  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$__pkgname/dragonwolf-bin"
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
