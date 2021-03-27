@@ -12,7 +12,8 @@ pkgdesc="Librewolf fork build using custom branding & new features using stable 
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse whoogle-git
+        libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust
              autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
@@ -75,7 +76,9 @@ sha256sums_aarch64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7f
                     '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
-  mkdir -p mozbuild
+  if [[ ! -d mozbuild ]];then
+      mkdir mozbuild
+  fi
   cd firefox-$pkgver
 
   cat >../mozconfig <<END
@@ -329,12 +332,12 @@ END
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$__pkgname/dragonwolf "\$@"
+exec /usr/lib/$__pkgname/$__pkgname "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$__pkgname/dragonwolf-bin"
+  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/$__pkgname-bin"
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
