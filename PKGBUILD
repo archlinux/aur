@@ -115,10 +115,10 @@ check() {
   export PATH="$PATH:$srcdir/tmp_install"
 
   cd "$srcdir"/buildbot-$pkgver/master
-  TZ=UTC trial3 --reporter=summary --rterrors buildbot
+  TZ=UTC trial --reporter=summary --rterrors buildbot
 
   cd "$srcdir"/buildbot-$pkgver/worker
-  PYTHONPATH=. trial3 --reporter=summary buildbot_worker
+  PYTHONPATH=. trial --reporter=summary buildbot_worker
 
   for module in base waterfall_view console_view grid_view wsgi_dashboards
   do
