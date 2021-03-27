@@ -4,9 +4,9 @@ pkgdesc="ROS - control_msgs contains base messages and actions useful for contro
 url='https://wiki.ros.org/control_msgs'
 
 pkgname='ros-noetic-control-msgs'
-pkgver='1.5.0'
+pkgver='1.5.2'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -38,7 +38,7 @@ depends=(
 
 _dir="control_msgs-${pkgver}/control_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/control_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('230b0f893d1d57aff482b5672bb6cbadcf9908956a6e986c78d85006472f4dc5')
+sha256sums=('6e74a95a91a0105196720acb0cb860724373e430480258f16c9b7661607ba36b')
 
 build() {
 	# Use ROS environment variables.
