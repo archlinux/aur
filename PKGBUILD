@@ -2,12 +2,12 @@
 
 pkgname=run-scaled-git
 _gitdir=run-scaled
-pkgver=r3.4b7fc79
+pkgver=r5.94daf39
 pkgrel=1
 pkgdesc='Run an X application scaled via xpra. Useful on hidpi screens. (Rewritten in Python and added input method support)'
 arch=('any')
 url='https://github.com/SamLukeYes/run-scaled'
-license=('Boost')
+license=('GPL3')
 provides=('run-scaled')
 conflicts=('run-scaled')
 makedepends=('git')
