@@ -1,4 +1,5 @@
-src
-pkg
-materia-theme*
-materia-custom-accent-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!99-gdm-use-materia-theme.hook
+!.gitignore
