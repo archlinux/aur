@@ -47,7 +47,7 @@ build(){
 }
 
 check(){
-	cd "$srcdir"/$_pyname-$pkgver
+	cd $_pyname-$pkgver
 	ostestr --color --slowest --blacklist_file exclusion_py3.txt
 }
 
