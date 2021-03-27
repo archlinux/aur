@@ -1,5 +1,5 @@
---- a/src/Makefile	2021-01-04 20:25:57.361048840 -0500
-+++ b/src/Makefile	2021-01-04 20:27:57.596453700 -0500
+--- a/src/Makefile	2021-03-26 22:53:48.650299401 -0400
++++ b/src/Makefile	2021-03-26 22:55:11.157618240 -0400
 @@ -1,4 +1,5 @@
 -CFLAGS=-g -Wall -O3 -std=gnu99
 +CFLAGS+=-g -Wall -O3 -std=gnu99
@@ -11,8 +11,8 @@
  	mkdir -p ${LIBDIR}
  	ar rcs ${LIBDIR}/libwiggletools.a *.o
  
--%.o: %.c; ${CC} ${CFLAGS} ${INC} ${OPTS} -c $< -o $@
-+%.o: %.c; ${CC} ${CFLAGS} ${LDFLAGS} ${INC} ${OPTS} -c $< -o $@
+-%.o: %.c; ${CC} ${CFLAGS} ${INC} ${CPPFLAGS} ${OPTS} -c $< -o $@
++%.o: %.c; ${CC} ${CFLAGS} ${LDFLAGS} ${INC} ${CPPFLAGS} ${OPTS} -c $< -o $@
  
  clean:
  	rm -Rf *.o *.a wiggletools
