@@ -9,6 +9,7 @@ arch=('x86_64')
 url="http://vtk.org"
 license=('BSD')
 depends=(
+gdal
 freetype2
 jsoncpp
 libharu
