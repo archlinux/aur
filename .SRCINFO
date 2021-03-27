@@ -1,7 +1,7 @@
 pkgbase = quicktype
 	pkgdesc = Generate types and converters from JSON, Schema, and GraphQL
 	pkgver = 15.0.260
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quicktype/quicktype
 	arch = any
 	license = Apache
