@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=rust-bin
-pkgver=1.50.0
+pkgver=1.51.0
 pkgrel=1
 pkgdesc='Binary precompiled packages for Rust'
 url='https://www.rust-lang.org/'
@@ -15,11 +15,11 @@ source_x86_64=("https://static.rust-lang.org/dist/rust-$pkgver-x86_64-unknown-li
 source_pentium4=("https://static.rust-lang.org/dist/rust-$pkgver-i686-unknown-linux-gnu.tar.gz"{,.asc})
 source_i686=("https://static.rust-lang.org/dist/rust-$pkgver-i686-unknown-linux-gnu.tar.gz"{,.asc})
 
-sha256sums_x86_64=('fa889b53918980aea2dea42bfae4e858dcb2104c6fdca6e4fe359f3a49767701'
+sha256sums_x86_64=('9e125977aa13f012a68fdc6663629c685745091ae244f0587dd55ea4e3a3e42f'
                    'SKIP')
-sha256sums_pentium4=('dee56dc425ed5d8e8112f26fba3060fd324c49f1261e0b7e8e29f7d9b852b09a'
+sha256sums_pentium4=('de2e8ef724d89ba6f567f07ebacf5a244c7cdae30ee559f1913310eda38d9cd1'
                      'SKIP')
-sha256sums_i686=('dee56dc425ed5d8e8112f26fba3060fd324c49f1261e0b7e8e29f7d9b852b09a'
+sha256sums_i686=('de2e8ef724d89ba6f567f07ebacf5a244c7cdae30ee559f1913310eda38d9cd1'
                  'SKIP')
 
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE'  # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
