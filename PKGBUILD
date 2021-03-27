@@ -1,5 +1,5 @@
 pkgname=regexops-git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 
 pkgdesc='a small tool for printing lines that match Regex patterns'
