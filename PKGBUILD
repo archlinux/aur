@@ -1,15 +1,15 @@
 # Maintainer: Christian Visintin
 pkgname=termscp
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="TermSCP is a SCP/SFTP/FTPS client for command line with an integrated UI to explore the remote file system. Basically WinSCP on a terminal."
 url="https://github.com/veeso/termscp"
-license=("GPL-3.0")
+license=("MIT")
 arch=("x86_64")
 provides=("termscp")
 options=("strip")
 source=("https://github.com/veeso/termscp/releases/download/v$pkgver/termscp-$pkgver-x86_64.tar.gz")
-sha256sums=("e2700e2e9b741eb273e2633d5cf24ad620365d059bdd4f2b42f3737a7c28a2c7")
+sha256sums=("7a8c70add8306a2cb3f2ee1d075a00fef143fc9aad4199797c7462bab1649296")
 
 package() {
     install -Dm755 termscp -t "$pkgdir/usr/bin/"
