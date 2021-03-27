@@ -7,7 +7,7 @@ Target = usr/lib/dracut/*
 Target = usr/lib/systemd/systemd
 
 [Action]
-Description = Updating linux initcpios...
+Description = Generating unified EFI kernel images...
 When = PostTransaction
 Exec = /usr/share/libalpm/scripts/dracut-install
 NeedsTargets

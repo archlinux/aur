@@ -4,7 +4,7 @@
 
 pkgname=dracut-hook-uefi-systemd
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Install/remove hooks for dracut unified kernel images for systemd-boot"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
 arch=('any')
@@ -20,8 +20,8 @@ source=(
 )
 sha256sums=('2315588a5e87f46d53e7566942547ea258a4e6f00a28de2f87603b3522172d1b'
             '85d5a588984c9c204064926bcdf61dcdbf8d2424efe91389e07669b08ab0ef75'
-            '492d51df1234b75a32e7dff63c86ee104a7d844a408070e1c4da5dc8ab53be6f'
-            '054dac9f1d55029a922ff05c3064e54d25790c7a18d2b598edc58ef3d295cba1')
+            '8b662d1cbcde160b96c8172c94d68f52c2df1718a280321bdbd0ba7e815d8cfe'
+            '6907029a32d144669cb8d312a788598a43c1a45647c33fa66f2fdf165aea71f8')
 
 package() {
   install -Dm644 "${srcdir}/90-dracut-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-install.hook"
