@@ -8,8 +8,7 @@ pkgbase = clitrans-git
 	license = MIT
 	license = APACHE
 	makedepends = git
-	makedepends = rust
-	makedepends = cargo
+	makedepends = rust>=1.51
 	makedepends = alsa-lib
 	makedepends = curl
 	depends = alsa-lib

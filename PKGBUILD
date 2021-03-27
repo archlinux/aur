@@ -1,13 +1,13 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 _pkgname="clitrans"
 pkgname="${_pkgname}-git"
-pkgver=0.3.3.71.g0164a26
+pkgver=0.3.6.90.gafb0bab
 pkgrel=1
 pkgdesc="Yet another command-line translator (Chinese <=> English)"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/${_pkgname}"
 license=("MIT" "APACHE")
-makedepends=("git" "rust" "cargo" "alsa-lib" "curl")
+makedepends=("git" "rust>=1.51" "alsa-lib" "curl")
 depends=("alsa-lib" "curl")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 
@@ -21,10 +21,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    # resolver requires nightly version cargo for now (2021-03-11)
-    sed -i /^resolver/d Cargo.toml
-    cargo build --release --locked --features audio
-    git checkout Cargo.toml
+    cargo build --release --locked --features full
 }
 
 package() {
