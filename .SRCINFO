@@ -1,7 +1,7 @@
 pkgbase = osu-lazer-bin
 	pkgdesc = The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew.
 	pkgver = 2021.323.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osu.ppy.sh
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = osu-lazer-bin
 	sha256sums = 2c14723f4f883e6a45eb5163ad38e731a5e2c9236a320abdf8adbd247a311f7c
 	sha256sums = 36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10
 	sha256sums = 30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244
-	sha256sums = f37168074db22cf8e898f08b3f67458e1708a8c4ae179fb14a916e74e12bec4e
+	sha256sums = 026a1db53b94cea60d30079e0050140096e3d1ef9b2a2035d8acafa04d9519d5
 
 pkgname = osu-lazer-bin
 
