@@ -1,7 +1,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='seihon'
-pkgver=v0.5.1
+pkgver=v0.8.3
 pkgrel=1
 pkgdesc='A simple tool to publish multi-arch images on the Docker Hub.'
 url='https://github.com/ldez/seihon'
@@ -16,7 +16,7 @@ _basedownloadurl="https://github.com/ldez/${pkgname}/releases/download/${pkgver}
 _basearchive="${pkgname}_${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('6e047f41cc3529ab53539c226822244aa9cb8bd6f057aa61f89eb13633b805b0')
+sha256sums_x86_64=('4c257c6304359918a087b0fba2c04a686e7337ea9ce6763bebfaccd45ebaca04')
 
 package() {
 	# Bin
