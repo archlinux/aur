@@ -1,7 +1,7 @@
 pkgbase = itk-snap
 	pkgdesc = Software to segment structures in 3D medical images
-	pkgver = 3.6.0
-	pkgrel = 5
+	pkgver = 3.8.2
+	pkgrel = 1
 	url = http://www.itksnap.org
 	arch = x86_64
 	license = GPL3
@@ -11,12 +11,13 @@ pkgbase = itk-snap
 	depends = fltk
 	depends = gdal
 	depends = glew
-	depends = insight-toolkit
+	depends = insight-toolkit4
 	depends = jsoncpp
 	depends = libogg
 	depends = libtheora
 	depends = netcdf
 	depends = openmpi
+	depends = pdal
 	depends = proj
 	depends = pugixml
 	depends = python
@@ -24,14 +25,16 @@ pkgbase = itk-snap
 	depends = qt5-x11extras
 	depends = unixodbc
 	depends = vtk
-	source = itk-snap::git+git://git.code.sf.net/p/itk-snap/src
+	source = itk-snap::git+git://git.code.sf.net/p/itk-snap/src#commit=2da5b3560f9
+	source = patch.diff
 	source = itkKernelFunction.h
 	source = itksnap.png
 	source = itksnap.desktop
 	sha256sums = SKIP
+	sha256sums = a2d3c1613c4c873640b1de99cfd3c60ec44140a62715698cd0b9ca4e124d649c
 	sha256sums = f88fce76c3a0a3bf72deba15e901945f89df422db27e09b75fdd1a169a856e3d
 	sha256sums = ee2f8698bf751cb3e1e6520e99c0c761f996fd3707f4155d126e7ecc0a6d6884
-	sha256sums = 2c23d817b14df70d9561ff601509f1e0899881e37598048e551dc2161f78b1b2
+	sha256sums = 324b7fc9ea389c52f7dc615a30f392e8445884098242f738c72e533b260845c0
 
 pkgname = itk-snap
 
