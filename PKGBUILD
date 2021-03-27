@@ -22,12 +22,6 @@ pkgver() {
   printf "%s.r%s" "$rel" "${ver//[[:alpha:]]}"
 }
 
-prepare() {
-    cd "$srcdir/$pkgname"
-
-    patch -p0 < ../../fix-build.patch # https://sourceforge.net/p/bochs/bugs/1430/
-}
-
 build() {
     cd "$srcdir/$pkgname"
 
@@ -47,7 +41,6 @@ build() {
         --enable-avx \
         --enable-long-phy-address \
         --enable-disasm \
-        --enable-pcidev \
         --enable-usb \
         --enable-debugger \
         --enable-sb16 \
