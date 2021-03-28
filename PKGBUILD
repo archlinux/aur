@@ -12,13 +12,14 @@ md5sums=('SKIP' 'SKIP')
         
 prepare()
 {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd kdeplasma-addons
   patch --strip=1 --input="$srcdir"/limit-to-only-target.patch
 }
         
 build()
 {
-  cmake -B build -S $pkgname-$pkgver \
+pwd
+  cmake -B build -S kdeplasma-addons \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
