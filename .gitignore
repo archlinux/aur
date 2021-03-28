@@ -6,3 +6,4 @@
 *.bz2
 src/
 pkg/
+*.zst

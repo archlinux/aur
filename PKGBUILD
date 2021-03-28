@@ -26,7 +26,9 @@ build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
-		--disable-schemas-compile
+		--disable-schemas-compile \
+    CC=g++ \
+    CFLAGS='-fpermissive'
 	make
 }
 
