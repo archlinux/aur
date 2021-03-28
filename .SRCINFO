@@ -1,6 +1,6 @@
 pkgbase = odio
 	pkgdesc = Audio compression tool for FLAC and Nero AAC
-	pkgver = 21.2.28
+	pkgver = 21.3.28
 	pkgrel = 1
 	url = https://tari.in/www/software/odio
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = odio
 	depends = libodiosacd
 	depends = lsdvd
 	options = !emptydirs
-	source = https://github.com/tari01/odio/archive/21.2.28.tar.gz
-	md5sums = 74cd7f170d24975c67f773831b580f06
+	source = https://github.com/tari01/odio/archive/21.3.28.tar.gz
+	md5sums = 98fa12757e018bd9fbf3733c5b12cdb4
 
 pkgname = odio
 
