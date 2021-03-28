@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-extended-pak256
-pkgver=2.1.0.0
+pkgver=2.3.0.1
 pkgrel=1
 pkgdesc="Highest resolution graphics set for Simutrans Extended"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://www.simutrans.com/"
 license=('CC-BY-NC-SA 4.0')
 depends=('simutrans-extended')
 source=(https://github.com/Phystam/pak256-release/archive/$pkgver.zip)
-sha256sums=('91af876d1c384cd9d220a931bc9d8bc9aff2b594a6fd6492a651115f830432e3')
+sha256sums=('3cfd8062f3be80fdeb6d3fd48171a2efe9b1eeaa35bec1aed64cc90e474d93ac')
 
 package() {
   #data
