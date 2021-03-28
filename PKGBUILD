@@ -24,5 +24,3 @@ package() {
 	install -Dm755 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
 	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
-
-
