@@ -8,7 +8,7 @@
 prefix='amdgpu-pro-'
 postfix='-ubuntu-20.04'
 major='20.50'
-minor='1232447'
+minor='1234664'
 amdver='2.4.100'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 shared2="opt/amdgpu/lib/x86_64-linux-gnu"
@@ -17,7 +17,7 @@ tarname="${prefix}${major}-${minor}${postfix}"
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=${major}.${minor}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -27,10 +27,10 @@ conflicts=('rocm-opencl-runtime')
 provides=('opencl-driver')
 optdepends=('clinfo')
 
-DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-45 -N %u'
+DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-50 -N %u'
 
 source=("https://drivers.amd.com/drivers/linux/$tarname.tar.xz")
-sha256sums=('71d6eb53e883e5b2afcb26938e71d94e1bc4e4f749056425bb63e6b81e631fc6')
+sha256sums=('0ffbd907c3243e85b1c9696fe9a7ebb448da8f0f1c54a666489e7da54b1179e7')
 
 package() {
 	mkdir -p "${srcdir}/opencl"
@@ -73,7 +73,7 @@ package() {
 	# roc*
 	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.1.9.0" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.0.21112-" "${pkgdir}/usr/lib"
+	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.0.21115-" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamdhip64.so" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4" "${pkgdir}/usr/lib"	
 	mv "${srcdir}/opencl/${shared}/libhsa-runtime64.so.1.2.0" "${pkgdir}/usr/lib"
