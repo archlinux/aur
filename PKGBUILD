@@ -3,8 +3,8 @@
 # Contributor: perlawk
 
 pkgname=dlib
-pkgver=19.21
-pkgrel=5
+pkgver=19.22
+pkgrel=1
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://dlib.net"
@@ -19,7 +19,7 @@ optdepends=('giflib: for GIF support'
             'sqlite: for sqlite support')
 makedepends=('cmake' 'ninja')
 source=("http://dlib.net/files/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('be728a03ae8c4dc8b48408d90392a3c28bc6642a6eb22f3885895b434d7df53c')
+sha256sums=('20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572')
 
 build() {
     cd "${srcdir}"
