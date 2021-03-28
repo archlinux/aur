@@ -1,6 +1,6 @@
 pkgbase = exaile
 	pkgdesc = A full-featured Amarok-style media player for GTK+
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://www.exaile.org/
 	arch = any
@@ -34,8 +34,8 @@ pkgbase = exaile
 	optdepends = libnotify: recording streams
 	optdepends = moodbar: moodbar plugin
 	optdepends = gst-plugins-bad: BPM Counter plugin
-	source = exaile-4.1.0.tar.gz::https://github.com/exaile/exaile/archive/4.1.0.tar.gz
-	sha512sums = 4b0742f04075cea20883fb68bb35fa3583d101b4dac0a5fef7db6cfdab756a8081228acceb0e4e8f27915afc23827d2ce9285868a2d6cf5085971caf461bdd65
+	source = exaile-4.1.1.tar.gz::https://github.com/exaile/exaile/archive/4.1.1.tar.gz
+	sha512sums = babf37253054fbeb6dad33aedafe969201860d4f35222d577343256730be943682c1a5f2f7cec7c574695624cb2b7abbdff4e6eaada848d22fea073c2c44bd23
 
 pkgname = exaile
 

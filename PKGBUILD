@@ -7,7 +7,7 @@
 # Contributor: Joshua Stiefer <facedelajunk@gmail.com>
 
 pkgname=exaile
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=('udisks2: device detection'
 	'moodbar: moodbar plugin'
 	'gst-plugins-bad: BPM Counter plugin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/exaile/exaile/archive/$pkgver.tar.gz")
-sha512sums=('4b0742f04075cea20883fb68bb35fa3583d101b4dac0a5fef7db6cfdab756a8081228acceb0e4e8f27915afc23827d2ce9285868a2d6cf5085971caf461bdd65')
+sha512sums=('babf37253054fbeb6dad33aedafe969201860d4f35222d577343256730be943682c1a5f2f7cec7c574695624cb2b7abbdff4e6eaada848d22fea073c2c44bd23')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
