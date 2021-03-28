@@ -4,6 +4,8 @@ pkgbase = uhubctl
 	pkgrel = 1
 	url = https://github.com/mvp/uhubctl
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	depends = libusb>=1.0.12
 	depends = libudev.so
