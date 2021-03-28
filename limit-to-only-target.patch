@@ -1,0 +1,57 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7a895e3d7..c22998ccc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,17 +78,6 @@ add_definitions(
+ 
+ ################# list the subdirectories #################
+ add_subdirectory(applets)
+-add_subdirectory(dataengines)
+-add_subdirectory(runners)
+-
+-add_subdirectory(wallpapers)
+-
+-add_subdirectory(windowswitchers)
+-add_subdirectory(desktopswitchers)
+-
+-add_subdirectory(plasmacalendarplugins)
+-
+-add_subdirectory(templates)
+ 
+ # add clang-format target for all our real source files
+ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+diff --git a/applets/CMakeLists.txt b/applets/CMakeLists.txt
+index 93b637b1b..06ff2ef99 100644
+--- a/applets/CMakeLists.txt
++++ b/applets/CMakeLists.txt
+@@ -1,29 +1 @@
+-plasma_install_package(activitypager org.kde.plasma.activitypager)
+-plasma_install_package(kickerdash org.kde.plasma.kickerdash)
+-plasma_install_package(konsoleprofiles/package org.kde.plasma.konsoleprofiles)
+-plasma_install_package(keyboardindicator org.kde.plasma.keyboardindicator)
+-
+-add_subdirectory(binary-clock)
+-add_subdirectory(calculator)
+-add_subdirectory(colorpicker)
+-add_subdirectory(comic)
+-add_subdirectory(dict)
+-if(NOT WIN32)
+-    # uses the command line tool 'quota', does not make sense on Windows
+-    add_subdirectory(diskquota)
+-endif(NOT WIN32)
+-add_subdirectory(fifteenPuzzle)
+-add_subdirectory(fuzzy-clock)
+-add_subdirectory(grouping)
+-add_subdirectory(mediaframe)
+-add_subdirectory(nightcolor)
+-add_subdirectory(notes)
+-add_subdirectory(quicklaunch)
+-add_subdirectory(quickshare)
+-if(NOT WIN32)
+-    add_subdirectory(systemloadviewer)
+-endif(NOT WIN32)
+-add_subdirectory(timer)
+-add_subdirectory(userswitcher)
+-add_subdirectory(weather)
+-add_subdirectory(webbrowser)
++add_subdirectory(systemloadviewer)
