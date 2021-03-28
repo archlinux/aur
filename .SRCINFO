@@ -1,6 +1,6 @@
 pkgbase = moolticute
 	pkgdesc = Easy companion for Mooltipass device
-	pkgver = 0.44.0
+	pkgver = 0.45.2
 	pkgrel = 1
 	url = https://github.com/mooltipass/moolticute
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = moolticute
 	depends = qt5-base
 	depends = qt5-websockets
 	depends = hicolor-icon-theme
-	source = moolticute-0.44.0.tar.gz::https://github.com/mooltipass/moolticute/archive/v0.44.0.tar.gz
-	sha256sums = ec14982e0c5d855e1eddec591ce4718a48ee643090935f92052378a2ea1634b6
+	source = moolticute-0.45.2.tar.gz::https://github.com/mooltipass/moolticute/archive/v0.45.2.tar.gz
+	sha256sums = 7cc82d18585026964a60e6088080d43b64e5193779dd2164c8e0caed21dd5112
 
 pkgname = moolticute
 
