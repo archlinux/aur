@@ -12,16 +12,15 @@ depends=(
         'uwsgi'
         'uwsgi-plugin-python'
         'python-certifi'
-        'python-flask'
-        'python-flask-babel'        
+        'python-flask-babel' # sub dep: flask, babel, jinja
         'python-lxml'
         'python-idna'
         'python-pygments'
-        'python-pyopenssl'
-        'python-dateutil'        
+        'python-dateutil'
         'python-yaml'
         'python-requests'
-        'python-pysocks')
+        'python-pysocks'
+        'python-langdetect')
 conflicts=('searx-git' )
 replaces=('searx-py3')
 backup=('etc/searx/settings.yml' 'etc/uwsgi/searx.ini')
