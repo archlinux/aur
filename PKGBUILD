@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gsubs
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop app that finds you the perfect subtitle match"
 arch=('x86_64')
 url="https://cholaware.com/gsubs"
@@ -15,18 +15,10 @@ sha256sums=('c75c59f273fa8fe8bc98182f50486552defb91dff247571509e436809b76a245'
             '977b34d613aeac66d6009033e03c6d5138135be079bb5c6ab1442c91251683bf'
             '01eb6b7b04403e5d8df76ba0ad4601e22054d25f922d7cab3b7f8a9d9877804c')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-
-	# Disable building of dist packages
-	sed -i 's/AppImage/dir/g' electron-builder.yml
-	sed -i '16,17d' electron-builder.yml
-}
-
 build() {
 	cd "$pkgname-$pkgver"
 	npm install --cache "$srcdir/npm-cache"
-	npm run dist:linux
+	npm run pack
 }
 
 package() {

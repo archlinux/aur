@@ -1,7 +1,7 @@
 pkgbase = gsubs
 	pkgdesc = A desktop app that finds you the perfect subtitle match
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cholaware.com/gsubs
 	arch = x86_64
 	license = MIT
