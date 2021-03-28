@@ -1,7 +1,7 @@
 _pkgbase=obs-vkcapture
 pkgbase=${_pkgbase}-git
 pkgname=('obs-vkcapture-git' 'lib32-obs-vkcapture-git')
-pkgver=r33.6c03447
+pkgver=r46.0645e74
 pkgrel=1
 url='https://github.com/nowrep/obs-vkcapture'
 license=('GPL2')
@@ -49,4 +49,5 @@ package_lib32-obs-vkcapture-git() {
     conflicts=('lib32-obs-vkcapture')
 
     make -C build32 DESTDIR="$pkgdir" install
+    rm -r "$pkgdir/usr/bin"
 }

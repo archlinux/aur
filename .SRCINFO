@@ -1,5 +1,5 @@
 pkgbase = obs-vkcapture-git
-	pkgver = r33.6c03447
+	pkgver = r46.0645e74
 	pkgrel = 1
 	url = https://github.com/nowrep/obs-vkcapture
 	arch = x86_64
