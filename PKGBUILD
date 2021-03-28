@@ -1,6 +1,6 @@
 # Maintainer: Fabrizio del Tin <fdt@euniversity.pub>
 pkgname=muse-git
-pkgver=4.0.0
+pkgver=latest.r0.8b83cb3e
 pkgrel=1
 pkgdesc="A MIDI/Audio sequencer with recording and editing capabilities"
 arch=('i686' 'x86_64')
@@ -29,12 +29,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/muse/muse3/"
-
-  sed -i 's/PyInt_AsLong/PyLong_AsLong/g' muse/remote/pyapi.cpp
-  sed -i 's/PyString_AsString/PyBytes_AsString/g' muse/remote/pyapi.cpp
-  sed -i 's/static void\* pyapithreadfunc(void\*)/static struct PyModuleDef muse =\n{\n    PyModuleDef_HEAD_INIT,\n    "muse", \/\* name of module \*\/\n    "",          \/\* module documentation, may be NULL \*\/\n    -1,          \/\* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. \*\/\n    g_methodDefinitions\n};\n\nstatic void\* pyapithreadfunc(void\*)/' muse/remote/pyapi.cpp
-  sed -i 's/Py_InitModule( "muse", g_methodDefinitions );/PyModule_Create( \&muse );/' muse/remote/pyapi.cpp
+  cd "${srcdir}/muse/src/"
 
   # build dir
   [ -d build ] || mkdir build && cd build
@@ -43,21 +38,21 @@ build() {
         -DCMAKE_BUILD_TYPE=release \
         -DENABLE_VST_VESTIGE=1 \
         -DENABLE_VST_NATIVE=1 \
-        -DENABLE_LV2=1 \
-        -DENABLE_LV2_MAKE_PATH=1 \
         -DENABLE_PYTHON=1 \
         -DENABLE_FLUID=1 \
         -DENABLE_DSSI=1 \
         -DENABLE_LASH=1 \
         -DENABLE_OSC=1 \
         -DENABLE_RTAUDIO=1 ..
-  sed -i -e 's/CXX_INCLUDES = /CXX_INCLUDES = -I\/usr\/include\/harfbuzz /' muse/lv2Gtk2Support/CMakeFiles/lv2_gtk2_support.dir/flags.make
+
+#        -DENABLE_LV2=1 \
+#        -DENABLE_LV2_MAKE_PATH=1 \
 
   make -j$(nproc)
 }
 
 package() {
-  cd "$srcdir/muse/muse3/build"
+  cd "$srcdir/muse/src/build"
   make DESTDIR="$pkgdir" install
 
   # .. and oomidi grepmidi bin
