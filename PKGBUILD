@@ -9,13 +9,15 @@ pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
-depends=("${_variant}-coc")
+depends=("${_variant}-coc" 'rust-analyzer')
 makedepends=('yarn' 'git')
 license=('MIT')
-source=("${_extname}::git+${url}.git")
-pkgver=r464.4b3847f
+source=("${_extname}::git+${url}.git"
+        'package.json.patch')
+pkgver=r865.8eba9cf
 pkgrel=1
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '3f5fdb4c82e98bff76a2241ae21d9a9da4b146f5bcd6a5cf110a8953260dc098')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
@@ -39,5 +41,6 @@ package() {
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     rm -rf "${srcdir}/${_extname}/package"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+    patch "$pkgdir/$_packdir/package.json" <"$srcdir/package.json.patch"
     chown -R root:root "${pkgdir}"
 }
