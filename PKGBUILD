@@ -1,29 +1,30 @@
-# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
+# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
+# Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 
 pkgname=obsidian
-_appimagver=0.10.11
-_appimage="${pkgname}-${_appimagver}.AppImage"
-pkgver=${_appimagver//-/_}
+pkgver=0.11.9
 pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
-provides=("obsidian")
-conflicts=("obsidian-appimage")
 arch=('x86_64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
-depends=('zlib' 'hicolor-icon-theme' 'fuse')
+depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron')
+makedepends=('asar')
 options=(!strip)
-source=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
-noextract=("${_appimage}")
-sha256sums=('9f26bd1dc1e2c3a7214de634d8fcd8fc37ea7cf85d999f9570f51d570531bf6c')
+source=(
+    "${pkgname}"
+    "${pkgname}.desktop"
+    "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
+)
+sha256sums=(
+    'd6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7'
+    '345946f1883d547410e34b85b7daa9d38fb5d1869212653530e87676149fe921'
+    '5f298cdea99af07d9d9b6b6af1983ea0ac4ecdbe3c6b3aa5aa7ef4d6937981d2'
+)
 
 prepare() {
-    # Enable execution of AppImage
-    chmod +x "${_appimage}"
-    # Extract AppImage into squashfs-root folder
-    ./"${_appimage}" --appimage-extract
-    # Set permissions for squashfs-root folder
-    chmod -R 0755 squashfs-root
+    cd "$srcdir"
+    asar ef "${pkgname}-${pkgver}"/resources/obsidian.asar icon.png
 }
 
 package() {
@@ -31,18 +32,18 @@ package() {
     cd "$srcdir"
 
     # Create directories for installation
-    install -dm0755 "${pkgdir}"/usr/bin
-    install -dm0755 "${pkgdir}"/opt
-    install -dm0755 "${pkgdir}"/usr/share/icons
-    # Install icons
-    cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
-    # Modify .desktop file to run executable instead of AppImage
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname} %u|" squashfs-root/${pkgname}.desktop
+    install -dm0755 "$pkgdir"/usr/bin
+    install -dm0755 "$pkgdir"/usr/lib/obsidian
+
+    # Install executable file
+    install -Dm755 "$pkgname" "$pkgdir"/usr/bin/
     # Install desktop file
-    install -Dm644 squashfs-root/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications/
-    # Move package contents to opt
-    mv squashfs-root "${pkgdir}"/opt/${pkgname}
-    # Symlink /usr/bin executable to opt
-    ln -s /opt/${pkgname}/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
+    install -Dm644 "$pkgname".desktop -t "$pkgdir"/usr/share/applications/
+    install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/obsidian.png
+    # Most of the release package is electron, but we use system's default one
+    # So strip away asar packages and put them to /usr/lib/
+    cd "${pkgname}-${pkgver}"/resources/
+    find . -type d -exec install -d {,"$pkgdir"/usr/lib/obsidian/}{} \;
+    find . -type f -exec install -D -m 644 {,"$pkgdir"/usr/lib/obsidian/}{} \;
 }
 
