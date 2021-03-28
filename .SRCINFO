@@ -1,13 +1,13 @@
 pkgbase = ddns-henet
 	pkgdesc = Dynamic DNS updater for Hurricane Electric
-	pkgver = v1.0
+	pkgver = v1.1
 	pkgrel = 1
 	url = https://gitlab.com/somini/ddns-henet
 	arch = any
 	license = GPL3
 	depends = curl
-	source = https://gitlab.com/somini/ddns-henet/-/archive/v1.0/ddns-henet-v1.0.tar.gz
-	sha256sums = b1e2269ade7b9be0b19ffd4d77ccb00d5df43ddc55c3b6a5c1745bc1771d7ca3
+	source = https://gitlab.com/somini/ddns-henet/-/archive/v1.1/ddns-henet-v1.1.tar.gz
+	sha256sums = 08502d2894ed5edf24ea7c055a60930ea911ae0c70ecdfca3047677f18cba0c1
 
 pkgname = ddns-henet
 
