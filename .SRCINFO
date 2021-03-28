@@ -1,0 +1,16 @@
+pkgbase = kwin-script-grid-tiling-git
+	pkgdesc = A kwin script that automatically tiles windows
+	pkgver = r313.8710583
+	pkgrel = 1
+	url = https://github.com/lingtjien/Grid-Tiling-Kwin
+	arch = any
+	license = GPL3
+	makedepends = kpackage
+	depends = kwin
+	provides = kwin-script-grid-tiling
+	conflicts = kwin-script-grid-tiling
+	source = Grid-Tiling-Kwin::git+https://github.com/lingtjien/Grid-Tiling-Kwin
+	md5sums = SKIP
+
+pkgname = kwin-script-grid-tiling-git
+
