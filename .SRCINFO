@@ -1,0 +1,17 @@
+pkgbase = neovim-coc-diagnostic-git
+	pkgdesc = diagnostic-languageserver extension for coc.nvim
+	pkgver = r87.e9e41ae
+	pkgrel = 1
+	url = https://github.com/iamcco/coc-diagnostic
+	arch = any
+	license = unknown
+	makedepends = yarn
+	makedepends = git
+	depends = neovim-coc
+	provides = neovim-coc-diagnostic
+	conflicts = neovim-coc-diagnostic
+	source = coc-diagnostic::git+https://github.com/iamcco/coc-diagnostic.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-diagnostic-git
+
