@@ -1,0 +1,15 @@
+pkgbase = sapling-git
+	pkgdesc = A highly experimental vi-inspired editor where you edit code, not text.
+	pkgver = r358.04acf19
+	pkgrel = 1
+	url = https://github.com/kneasle/sapling
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	source = git+https://github.com/kneasle/sapling.git
+	sha256sums = SKIP
+
+pkgname = sapling-git
+
