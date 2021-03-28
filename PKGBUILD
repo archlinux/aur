@@ -1,11 +1,10 @@
-# Maintainer: Yizheng Hu <huyizheng@hotmail.com>
 # Contributor: Ye Shu <shuye02@outlook.com>
 # Contributor: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Ashwin Vishnu <ashuwish+arch at gmail dot com>
 
 pkgname=sendanywhere
-pkgver=20.11.6
-pkgrel=2
+pkgver=21.3.26
+pkgrel=1
 arch=('x86_64')
 
 pkgdesc="Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
@@ -15,7 +14,7 @@ depends=('electron8')
 makedepends=('asar')
 
 source=("${pkgname}-${pkgver}.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb" "LICENSE")
-sha512sums=('1da80fa5f054dcb2a0d7717c1544baff884164d933d643dca52d1bda677bd989bb676f20e19db64f629d7d6324af430f192a52dad2868d6dad4ae978ed6871e7'
+sha512sums=('bf958acbbaed096db7727c7c1e58ac6de114ce25cb139d9121323e9602ba5267cf43d83ada7d932e1a4a2838c7d9b2739de2437bca17501fd1825cff0d4a39f8'
             'aeb97a12f246d78cbf202354148b429a037997d68087bceed5d5ce5036443d779c2535138b54347579ddf05994a61b9333913f9261733f367d02e0e9cf7d0b5e')
 # If validity check fails, please leave a comment to remind me to update the package version
 
@@ -31,8 +30,7 @@ package(){
     sed -i "s|,\"paprika.node\"|,\"/usr/lib/$pkgname/paprika.node\"|" resources/app/src/main/main.prod.js
 
     # Copy Relevanat data
-    cp -r resources/*  $pkgdir/usr/lib/$pkgname/
-    rm $pkgdir/usr/lib/$pkgname/app.asar
+    cp -r resources/app  $pkgdir/usr/lib/$pkgname/
     cp paprika.node $pkgdir/usr/lib/$pkgname/
 
     cd $srcdir
