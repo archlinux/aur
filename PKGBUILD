@@ -10,7 +10,7 @@ pkgname=('yaru-sound-theme'
          'yaru-icon-theme'
          'yaru-session')
 pkgver=21.04.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -24,7 +24,7 @@ source=("https://github.com/ubuntu/yaru/archive/${_commit}.tar.gz")
 sha256sums=('e2a400527451e33abb44d96b6878514482d008355639add6ab30d6e9b2dd70f3')
 
 build() {
-  arch-meson $pkgbase-$pkgver build
+  arch-meson $pkgbase-$_commit build
   meson configure build -Dubuntu-unity=true
   ninja -C build
 }
