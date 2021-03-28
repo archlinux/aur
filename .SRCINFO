@@ -1,0 +1,17 @@
+pkgbase = vim-coc-eslint-git
+	pkgdesc = Eslint extension for coc.nvim
+	pkgver = 1.4.5.r0.gbc6028f
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-eslint
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = git
+	depends = vim-coc
+	provides = vim-coc-eslint
+	conflicts = vim-coc-eslint
+	source = coc-eslint::git+https://github.com/neoclide/coc-eslint.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-eslint-git
+
