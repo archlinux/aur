@@ -1,14 +1,14 @@
 pkgbase = kelpdot-bin
 	pkgdesc = Simple dotfiles manager
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://woomy4680-exe.github.io/kelp-docs/
 	arch = x86_64
 	license = MIT
 	provides = kelpdot
 	options = strip
-	source = https://github.com/Woomy4680-exe/kelp/releases/download/2.1.3/kelpdot-aur.tar.gz
-	sha256sums = e87038a77674415e02b2b7b09ca2b31bfa09af59844078c9393b3b9b28599de2
+	source = https://github.com/Woomy4680-exe/kelp/releases/download/2.1.4/kelpdot-aur.tar.gz
+	sha256sums = 2a7aa30647e04913184a917d61bde42ddb34e56516f52b49b5403b4d4b8c8dff
 
 pkgname = kelpdot-bin
 
