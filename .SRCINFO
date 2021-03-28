@@ -1,6 +1,6 @@
 pkgbase = vim-coc-java-git
 	pkgdesc = Java extension for coc.nvim
-	pkgver = 1.5.0.r0.g281d9e0
+	pkgver = 1.5.3.r2.g64ab35d
 	pkgrel = 1
 	url = https://github.com/neoclide/coc-java
 	arch = any
@@ -9,10 +9,13 @@ pkgbase = vim-coc-java-git
 	makedepends = npm
 	makedepends = git
 	depends = vim-coc
+	depends = java-runtime-headless
 	provides = vim-coc-java
 	conflicts = vim-coc-java
 	source = coc-java::git+https://github.com/neoclide/coc-java.git
+	source = package.json.patch
 	sha256sums = SKIP
+	sha256sums = 013e5a469c6cada8baca2bf7feca967faeb7aac043c919332959e816e16634a5
 
 pkgname = vim-coc-java-git
 

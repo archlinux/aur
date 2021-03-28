@@ -9,13 +9,15 @@ pkgname="${_variant}-${_extname}-git"
 provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
-depends=("${_variant}-coc")
+depends=("${_variant}-coc" 'java-runtime-headless')
 makedepends=('yarn' 'npm' 'git')
 license=('EPL')
-source=("${_extname}::git+${url}.git")
-pkgver=1.5.0.r0.g281d9e0
+source=("${_extname}::git+${url}.git"
+        'package.json.patch')
+pkgver=1.5.3.r2.g64ab35d
 pkgrel=1
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '013e5a469c6cada8baca2bf7feca967faeb7aac043c919332959e816e16634a5')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
@@ -40,5 +42,6 @@ package() {
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     rm -rf "${srcdir}/${_extname}/package"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+    patch "$pkgdir/$_packdir/package.json" <"$srcdir/package.json.patch"
     chown -R root:root "${pkgdir}"
 }
