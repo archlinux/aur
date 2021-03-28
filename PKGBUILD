@@ -1,7 +1,7 @@
 # Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
 
 pkgname=kicad-nightly
-pkgver=5.99.0_10019_g42c6af4bd8
+pkgver=5.99.0_10027_g0561ce903e
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=42c6af4bd8
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=0561ce903e
 	'kicad-nightly.env'
 )
 sha256sums=(
