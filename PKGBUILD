@@ -5,7 +5,7 @@
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager-3
 pkgver=3.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-OS media managment tool (v3)"
 arch=('any')
 url="https://www.tinymediamanager.org/"
@@ -15,7 +15,7 @@ install=tinyMediaManager.install
 noextract=("tmm_${pkgver}_linux.tar.gz")
 conflicts=('tiny-media-manager')
 # https://gitlab.com/tinyMediaManager/tinyMediaManager/-/packages
-source=("tmm_${pkgver}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/7592635/download"
+source=("tmm_${pkgver}_${pkgrel}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/7592637/download"
         "tinyMediaManager.desktop"
         "tinymediamanager"
         "tinymediamanager-cli"
@@ -24,7 +24,7 @@ source=("tmm_${pkgver}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMed
 package() {
   destpath="$pkgdir/usr/share/$_gitname"
   mkdir -p "$destpath"
-  tar -xvf "tmm_${pkgver}_linux.tar.gz" -C "$destpath"
+  tar -xvf "tmm_${pkgver}_${pkgrel}_linux.tar.gz" -C "$destpath"
   install -m644 tinymediamanager.JAVA_OPTS "$destpath/tmm.JAVA_OPTS"
 
   # Install desktop entry
@@ -36,7 +36,7 @@ package() {
   install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
 
-sha256sums=('f5142ea1f558e6b11593b388bd32c1dee567a7d58964d743e53834df1472fa8d'
+sha256sums=('4fb6c48e02d7cb13a6823fb1b4667dc10cb29081893f04c1576861ffadd7e71b'
             '02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3'
             '4bf36dd16bfc02a39ddde88cfcf30b4f4a5f0b08d2b34ffbab03f6553f57d596'
             '2d3df36c67a710b03b8fea3ac58c49307da8db22b7c6f8fd0011552fe94dde26'
