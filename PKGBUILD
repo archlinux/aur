@@ -30,7 +30,7 @@ rapidjson
 #checkdepends=()
 
 source=("${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz")
-md5sums=('c7ef879cafcd860090070fe281104279')
+sha256sums=('3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739')
 
 prepare() {
   cd occt-${_pkgver}
@@ -94,7 +94,7 @@ build() {
     -D INSTALL_DIR_LAYOUT:STRING=Unix \
     -D INSTALL_DIR_BIN:STRING=$INSTALL_DIR_BIN \
     -D INSTALL_DIR_LIB:STRING=$INSTALL_DIR_LIB \
-    -D INSTALL_DIR_CMAKE:PATH=/usr/lib/cmake/opencascade \
+    -D INSTALL_DIR_CMAKE:STRING=lib/cmake/opencascade \
     -D USE_FFMPEG:BOOL=$USE_FFMPEG \
     -D USE_FREEIMAGE:BOOL=$USE_FREEIMAGE \
     -D USE_GLES2:BOOL=$USE_GLES2 \
