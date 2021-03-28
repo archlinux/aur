@@ -1,0 +1,18 @@
+pkgbase = python-cutie-git
+	pkgdesc = Command line User Tools for Input Easification
+	pkgver = r86.836798d
+	pkgrel = 1
+	url = https://github.com/Kamik423/cutie
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-colorama
+	depends = python-readchar
+	provides = cutie
+	conflicts = cutie
+	source = cutie::git://github.com/Kamik423/cutie
+	sha256sums = SKIP
+
+pkgname = python-cutie-git
