@@ -1,31 +1,27 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
+# Old Maintainer: Jean Lucas <jean@4ray.co>
 # Contributor: Sander Zuidema <s.zuidema at bazix dot nl>
 
 pkgname=gluon-scenebuilder
-pkgver=8.4.1
+pkgver=16.0.0
 pkgrel=1
 pkgdesc="Open-source drag & drop UI design tool for JavaFX (Java 8) by Gluon (binary)"
 arch=('any')
 url="https://gluonhq.com/products/scene-builder/"
 license=('BSD')
-depends=('java-environment>=8' 'java-openjfx')
+options=(!strip)
 conflicts=('javafx-scenebuilder')
-source=(http://download.gluonhq.com/scenebuilder/$pkgver/scenebuilder-$pkgver-all.jar
-        $pkgname.sh
-        $pkgname.desktop)
-noextract=(scenebuilder-$pkgver-all.jar)
-sha512sums=('da0adf86abacef8dca7812cbdcca294488cea5e74ed1810c23ff3de1d968b066d8768a6afcb24a3bb679ad29f93bb9e5730ddc5dc6398ee8f3e8cc6b9cc7d187'
-            '2a9dffb0b000ab838455b1846ed760c6a2bca92ac4a2d9cd2b5f064482718d16c89674fec5c32f1049497ec88e924da68af97c59530beede2b6c5e5183b0168c'
-            '10fa47683b9301bd8c05dc1af88dd6e4acc33ba61d048e6f05d533b54fa359cfb6f537401b2571954eb5af2f30f408b7b943ffcb5e0039cd395fb18ccabf896d')
+source=(http://download.gluonhq.com/scenebuilder/$pkgver/install/linux/SceneBuilder-$pkgver.deb)
+sha512sums=('39b2ec33708c42d80d27dd895aaf782c86c2ebaf582ac5838ad0d3460ddafc0c7db8b83fa1428a36e387bfefdce7f06d9ebadf94310423c34e48f50120960470')
 
 package() {
-  bsdcpio --extract --make-directories LICENSE com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png < scenebuilder-$pkgver-all.jar
+	bsdtar -xJ -C $pkgdir -f $srcdir/data.tar.xz
 
-  cd $srcdir
+	install -dm755 $pkgdir/usr/{bin,share/{applications,pixmaps}}
 
-  install -Dm 755 scenebuilder-$pkgver-all.jar $pkgdir/opt/$pkgname/$pkgname.jar
-  install -Dm 755 $pkgname.sh $pkgdir/usr/bin/$pkgname
-  install -Dm 644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -Dm 644 com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -Dm 644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	ln -s ../../opt/scenebuilder/bin/SceneBuilder $pkgdir/usr/bin/scenebuilder
+	ln -s ../../opt/scenebuilder/bin/SceneBuilder $pkgdir/usr/bin/SceneBuilder
+	ln -s ../../opt/scenebuilder/lib/scenebuilder-SceneBuilder.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	ln -s ../../opt/scenebuilder/lib/SceneBuilder.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
+
