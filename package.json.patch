@@ -1,0 +1,10 @@
+--- package.json.old	2021-03-28 10:33:24.557720327 +0800
++++ package.json.new	2021-03-28 10:35:32.467725438 +0800
+@@ -87,6 +87,7 @@
+         },
+         "go.goplsPath": {
+           "type": "string",
++          "default": "/usr/bin/gopls",
+           "description": "Path to `gopls` bin (Change requires `:CocRestart`)"
+         },
+         "go.goplsArgs": {
