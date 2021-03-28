@@ -1,7 +1,7 @@
 # Maintainer: Oystein Sture <oysstu@gmail.com>
 pkgname=eprosima-fast-dds-gen
-pkgver=1.0.4
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Fast-DDS IDL code generator tool"
 arch=('any')
 url="https://github.com/eProsima/Fast-DDS-Gen"
