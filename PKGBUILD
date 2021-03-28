@@ -6,30 +6,26 @@
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=12
+pkgrel=13
 pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
-url='http://www.doom3.com/'
+url='https://doom.com/'
 license=('custom:"DOOM 3"')
 arch=('i686' 'x86_64')
-if [ "$CARCH" = "i686"   ]; then
-    depends=('libgl' 'alsa-lib' 'openal' 'libxxf86vm' 'libstdc++5')
-    makedepends=('scons' 'zip')
-    optdepends=(
-        'alsa-plugins: pulseaudio-support'
-        'libpulse: pulseaudio support'
-    )
-fi
-if [ "$CARCH" = "x86_64" ]; then
-    depends=('lib32-libgl' 'lib32-alsa-lib' 'lib32-openal' 'lib32-libxxf86vm' 'lib32-libstdc++5')
-    makedepends=('scons' 'gcc-multilib' 'zip')
-    optdepends=(
-        'lib32-alsa-plugins: pulseaudio-support'
-        'lib32-libpulse: pulseaudio support'
-    )
-fi
+depends_i686=('libgl' 'alsa-lib' 'openal' 'libxxf86vm' 'libstdc++5')
+makedepends_i686=('python2-scons' 'zip')
+optdepends_i686=(
+    'alsa-plugins: pulseaudio-support'
+    'libpulse: pulseaudio support'
+)
+depends_x86_64=('lib32-libgl' 'lib32-alsa-lib' 'lib32-openal' 'lib32-libxxf86vm' 'lib32-libstdc++5')
+makedepends_x86_64=('python2-scons' 'gcc-multilib' 'zip')
+optdepends_x86_64=(
+    'lib32-alsa-plugins: pulseaudio-support'
+    'lib32-libpulse: pulseaudio support'
+)
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
-    'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
+    'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' 'sound.patch' 'math.patch' \
     'http://www.gamers.org/pub/idgames/idstuff/source/idtech4-doom3-source-GPL.zip' \
     "http://www.gamers.org/pub/idgames/idstuff/doom3/linux/${pkgname}-linux-${pkgver}.x86.run")
 provides=('doom3')
@@ -40,14 +36,20 @@ sha256sums=('ea9fe17fdb19cfe8a22e2b7859093f7a76eeaa51fd2571507b6dc37462515f21'
             '718378f2c3c42d56b916e9341e01261a2cfad5fb60ef15cc57954d1a4ce2a94e'
             'e6654e29773b5ed01f897294ecbc21a84dcb59afc30cb60eb0d5a3c03c7d3de1'
             'c9a701498a7b0f923182bf9f11aac8d2193026e509ae3643a5bc118b1a458c6b'
+            'a407c385c2a0a013c2bc464fd590e2b976f337e3ee04d769b238168bb5610f76'
+            'ac0abb77d44ceb28d7dbe40e2187ee5bc81a8a0314c7f08af17aea7156b6bf3c'
             '18b5e0b5dcbdce60e5f006e7995bc30c9ef7f606c2aa08c5f0a76eb6a6657ad0'
             '2f90dff20f2d3c0c47f17b3d6d45c4f0e7d27b986bf6084f21b85180cd1e03b4')
 
 build() {
     cd "${srcdir}/doom3.gpl/neo"
 
+    # Apply patches
+    patch -p3 -i "${srcdir}/sound.patch"
+    patch -p3 -i "${srcdir}/math.patch"
+
     # Build Binaries from Source
-    scons NOCURL=1 BUILD=release BUILD_GAMEPAK=1
+    scons2 NOCURL=1 BUILD=release BUILD_GAMEPAK=1
 
     cd "${srcdir}"
 

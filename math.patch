@@ -1,0 +1,39 @@
+diff -ur src/doom3.gpl/neo/tools/compilers/roqvq/codec.cpp src.new/doom3.gpl/neo/tools/compilers/roqvq/codec.cpp
+--- src/doom3.gpl/neo/tools/compilers/roqvq/codec.cpp	2011-11-22 13:15:52.000000000 -0500
++++ src.new/doom3.gpl/neo/tools/compilers/roqvq/codec.cpp	2021-03-28 11:26:37.968295020 -0400
+@@ -321,7 +321,7 @@
+ int	codec::BestCodeword( unsigned char *tempvector, int dimension, VQDATA **codebook )
+ {
+ 	VQDATA dist;
+-	VQDATA bestDist = HUGE;
++	VQDATA bestDist = HUGE_VAL;
+ 	VQDATA tempvq[64];
+ 	int bestIndex = -1;
+ 
+@@ -1510,7 +1510,7 @@
+ 		//
+ 		// find the closest two and eliminate one
+ 		//
+-		double bestDist = HUGE;
++		double bestDist = HUGE_VAL;
+ 		double dist, simport;
+ 		int bestIndex = -1;
+ 		int bestOtherIndex = 0;
+@@ -1576,7 +1576,7 @@
+ 		// until we have reduced it to 256 entries, find one to toss
+ 		//
+ 		do {
+-			bestDist = HUGE;
++			bestDist = HUGE_VAL;
+ 			bestIndex = -1;
+ 			bestOtherIndex = -1;
+ 			if (optimize) {
+@@ -1591,7 +1591,7 @@
+ 				}
+ 			}
+ 			if (bestIndex == -1 || !optimize) {
+-				bestDist = HUGE;
++				bestDist = HUGE_VAL;
+ 				bestIndex = -1;
+ 				bestOtherIndex = 0;
+ 				aentries = 0;

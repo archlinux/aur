@@ -1,0 +1,12 @@
+diff -ur src/doom3.gpl/neo/sys/linux/sound.cpp src.new/doom3.gpl/neo/sys/linux/sound.cpp
+--- src/doom3.gpl/neo/sys/linux/sound.cpp	2011-11-22 13:15:52.000000000 -0500
++++ src.new/doom3.gpl/neo/sys/linux/sound.cpp	2021-03-28 11:16:43.267629805 -0400
+@@ -279,7 +279,7 @@
+ 	}
+ 	// instead of an exact match, do a very close to
+ 	// there is some horrible Ensonic ES1371 which replies 44101 for a 44100 request
+-	if ( abs( m_speed - PRIMARYFREQ ) > 5 ) {
++	if ( abs( (double) (m_speed - PRIMARYFREQ) ) > 5 ) {
+ 		common->Warning( "ioctl SNDCTL_DSP_SPEED failed to get the requested frequency %d, got %d", PRIMARYFREQ, m_speed );
+ 		InitFailed();
+ 		return false;
