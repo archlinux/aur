@@ -3,11 +3,11 @@
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 # Committer: Judd Vinet <jvinet@zeroflux.org>
 
-_pkgbasename=tcl85
+_pkgbasename=tcl84
 pkgname=lib32-$_pkgbasename
-pkgver=8.5.19
+pkgver=8.4.20
 pkgrel=1
-pkgdesc="The Tcl scripting language, 8.5 series"
+pkgdesc="The Tcl scripting language, 8.4 series"
 arch=('x86_64')
 url="http://tcl.sourceforge.net/"
 license=('custom')
@@ -15,7 +15,7 @@ depends=('lib32-glibc' "$_pkgbasename")
 makedepends=('gcc-multilib')
 provides=("lib32-tcl" "lib32-tcl=$pkgver")
 source=(http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
-md5sums=('4f4e1c919f6a6dbb37e9a12d429769a6')
+md5sums=('b57ecc6540026fd4a83288ac6bf2b02b')
 options=('staticlibs')
 
 build() {
@@ -26,9 +26,10 @@ build() {
 	
 	# we build the tcl sqlite interface in sqlite-tcl package
 	rm -rf ${srcdir}/tcl${pkgver}/pkgs/sqlite3*
-	
+
+	autoreconf
 	./configure --libdir=/usr/lib32 --prefix=/usr --mandir=/usr/share/man \
-                --includedir=/usr/include/tcl8.5
+                --includedir=/usr/include/tcl8.4
 	
 	make
 }
@@ -46,14 +47,13 @@ package()
 	
 	make INSTALL_ROOT=${pkgdir} install install-private-headers
 	rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
-	ln -s libtcl8.5.so "$lib_dir/libtcl8.5.so.0"
+	ln -s libtcl8.4.so "$lib_dir/libtcl8.4.so.0"
 	sed -e "s#${srcdir}/tcl${pkgver}/unix#/usr/lib32#" \
 		-e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
 		-i "${pkgdir}/usr/lib32/tclConfig.sh"
 	sed -i "s#${srcdir}#/usr/src#" $lib_dir/tclConfig.sh
-	mkdir $lib_dir/tcl8.5
-	mv $lib_dir/tclConfig.sh $lib_dir/tcl8.5/
-	mv $lib_dir/pkgconfig/tcl.pc $lib_dir/pkgconfig/tcl85.pc
+	mkdir $lib_dir/tcl8.4
+	mv $lib_dir/tclConfig.sh $lib_dir/tcl8.4/
 	install -dm 755 -p "${pkgdir}"/usr/share/licenses
 	ln -s $_pkgbasename "${pkgdir}"/usr/share/licenses/$pkgname
 }

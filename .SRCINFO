@@ -1,18 +1,18 @@
-pkgbase = lib32-tcl85
-	pkgdesc = The Tcl scripting language, 8.5 series
-	pkgver = 8.5.19
+pkgbase = lib32-tcl84
+	pkgdesc = The Tcl scripting language, 8.4 series
+	pkgver = 8.4.20
 	pkgrel = 1
 	url = http://tcl.sourceforge.net/
 	arch = x86_64
 	license = custom
 	makedepends = gcc-multilib
 	depends = lib32-glibc
-	depends = tcl85
+	depends = tcl84
 	provides = lib32-tcl
-	provides = lib32-tcl=8.5.19
+	provides = lib32-tcl=8.4.20
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.5.19-src.tar.gz
-	md5sums = 4f4e1c919f6a6dbb37e9a12d429769a6
+	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.4.20-src.tar.gz
+	md5sums = b57ecc6540026fd4a83288ac6bf2b02b
 
-pkgname = lib32-tcl85
+pkgname = lib32-tcl84
 
