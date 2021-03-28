@@ -1,7 +1,7 @@
 pkgbase = python-torrentmirror-git
 	pkgdesc = Torrentmirror python library and CLI access
 	pkgver = r13.e60f677
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XayOn/torrentmirror
 	arch = any
 	license = custom:none
@@ -12,6 +12,7 @@ pkgbase = python-torrentmirror-git
 	depends = python
 	depends = python-robobrowser
 	depends = python-cleo
+	depends = python-werkzeug
 	depends = python-docopt
 	depends = python-tabulate
 	depends = python-xdg
