@@ -36,7 +36,7 @@ prepare() {
 	source .venv/bin/activate
 	pip install git+https://vcs.firestormviewer.org/autobuild-1.1
 
-	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DPACKAGE:BOOL=Off --chan="ArchLinux"
+	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON --chan="ArchLinux"
 }
 
 build() {
