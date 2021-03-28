@@ -1,0 +1,17 @@
+pkgbase = vim-coc-zsh-git
+	pkgdesc = coc.nvim source for Zsh completions
+	pkgver = r3.ef6b0ca
+	pkgrel = 1
+	url = https://github.com/tjdevries/coc-zsh
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = vim-coc
+	depends = zsh
+	provides = vim-coc-zsh
+	conflicts = vim-coc-zsh
+	source = git+https://github.com/tjdevries/coc-zsh.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-zsh-git
+
