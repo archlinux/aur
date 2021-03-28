@@ -2,7 +2,7 @@
 pkgname=python-lookatme-qrcode
 _pkgname=lookatme.contrib.qrcode
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lookatme extension adds QR code rendering capabilities to the code blocks.'
 arch=('any')
 url="https://github.com/d0c-s4vage/lookatme.contrib.qrcode"
