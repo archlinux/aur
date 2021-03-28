@@ -1,17 +1,17 @@
 # Maintainer: tcg <aur-tcg@emailaddress.biz>
 
 pkgname=tcg
-pkgver=0.2.63
+pkgver=0.2.64
 pkgrel=1
 pkgdesc="cgroups for terminals"
 arch=('x86_64')
-commit=e93035ccbead319ce380a59094c2272ea5980b32
+commit=fa0a95d3644e403fa91920b54a773ca6cd1f123f
 url="https://github.com/zasdfgbnm/tcg/archive/$commit.zip"
 license=('MIT')
 depends=('boost-libs' 'fmt' 'spdlog')
 makedepends=('git' 'cmake' 'boost')
 source=("$url")
-sha256sums=('f3f7e4d9e486749681732364b65d6300dbecc37659fca8be9b5f8aeae2a31a40')
+sha256sums=('5261f10b1afbea63993c927eb243e8ccf0364e37558354fc3215f7f944de5138')
 
 build() {
   cd "$srcdir/tcg-$commit"
