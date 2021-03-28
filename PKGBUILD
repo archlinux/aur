@@ -3,9 +3,9 @@
 
 _gemname=asciidoctor-diagram
 pkgname=ruby-$_gemname
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
-pkgdesc='An extension for asciidoctor that adds support for UML diagram generation using PlantUML'
+pkgdesc='Asciidoctor diagramming extension'
 arch=(any)
 url='https://github.com/asciidoctor/asciidoctor-diagram'
 license=(MIT)
@@ -21,7 +21,7 @@ optdepends=('ttf-font: font for diagram'
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('9b84b1fd0c1659a9375d6af719e7c13b6f6cd0a4')
+sha1sums=('f0eb6c2187ce82a1242504cd3613d9d4a26b9339')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
