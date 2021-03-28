@@ -1,0 +1,14 @@
+pkgbase = ambit-bin
+	pkgdesc = Dotfile manager written in Rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/plamorg/ambit
+	arch = x86_64
+	license = GPL-3.0
+	provides = ambit
+	options = strip
+	source = https://github.com/plamorg/ambit/releases/download/v0.1.0/ambit-0.1.0-x86_64.tar.gz
+	sha256sums = 497657eb4a92617283c7538a5b3390b0777006f835d2699d0fe835ef5618114a
+
+pkgname = ambit-bin
+
