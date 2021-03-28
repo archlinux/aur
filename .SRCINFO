@@ -1,0 +1,17 @@
+pkgbase = ruby-webrick
+	pkgdesc = HTTP server toolkit
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/ruby/webrick
+	arch = any
+	license = RUBY
+	license = BSD
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = webrick-1.7.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/webrick-1.7.0.gem
+	sha1sums = 10ba51035928541b7713415f1f2e3a41114972fc
+
+pkgname = ruby-webrick
+
