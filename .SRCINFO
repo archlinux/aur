@@ -1,0 +1,18 @@
+pkgbase = b2m
+	pkgdesc = Play bilibili or other videos with mpv
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/snylonue/b2m
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	source = https://github.com/snylonue/b2m/archive/refs/tags/0.23.0.tar.gz
+	sha256sums = 3c0016a8da8ed8dd18910953fe2f4a317b5c02c2bfdf0b069d8a9d89e50e0583
+
+pkgname = b2m
+
