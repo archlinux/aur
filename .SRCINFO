@@ -1,13 +1,14 @@
 pkgbase = upliftpowerplay-git
 	pkgdesc = UPP: A tool for parsing, dumping and modifying data in Radeon PowerPlay tables
 	pkgver = r40.557ab4e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sibradzic/upp
 	arch = x86_64
 	license = GPL3
 	depends = python-click
 	depends = python
-	replaces = upliftpowerplay
+	provides = upliftpowerplay
+	conflicts = upliftpowerplay
 	source = upliftpowerplay-git::git://github.com/sibradzic/upp.git
 	sha256sums = SKIP
 
