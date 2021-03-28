@@ -1,0 +1,20 @@
+pkgbase = goji
+	pkgdesc = Command line JIRA client
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/kylef/goji
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = python-poetry
+	depends = python
+	depends = python-click
+	depends = python-requests
+	depends = python-pysocks
+	depends = python-toml
+	depends = python-jsonschema
+	source = goji-0.4.0.tar.gz::https://github.com/kylef/goji/archive/0.4.0.tar.gz
+	sha1sums = de7bcd57979fe9c1d58ea5166991cfa404039769
+
+pkgname = goji
+
