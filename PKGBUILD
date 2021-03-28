@@ -7,7 +7,7 @@ _pkgname=obsidian
 pkgver=0.11.10
 # Full public release
 _pkgver=0.11.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 provides=("${_pkgname}")
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.asar.gz"
 )
 sha256sums=(
-    'e0a6a8f7dfbfff88664621448ac456d47e62c6d94e2cc59702c4f31968780ed4'
+    'd6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7'
     'b58f58a58278dc5eaddd0e935d973b69eb671d971db678c077892c7369a0f6e4'
     '5f298cdea99af07d9d9b6b6af1983ea0ac4ecdbe3c6b3aa5aa7ef4d6937981d2'
     'afbc43520c04ab0e92efe7a77d349e05731c1ce0c1090571ad317f24fa48f715'

@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/electron /usr/share/obsidian/app.asar --no-sandbox "$@"
+exec /usr/bin/electron /usr/lib/obsidian/app.asar --no-sandbox "$@"
