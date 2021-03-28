@@ -1,0 +1,14 @@
+pkgbase = klepto
+	pkgdesc = A tool that copies and anonymises data from other sources.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hellofresh/klepto
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = klepto-0.3.0.tar.gz::https://github.com/hellofresh/klepto/archive/v0.3.0.tar.gz
+	sha512sums = 593ec00ff0b000ddb0c37e5cfb082f61373e442d1d9f0e9a4b68e05ffc6eedcbe7365d9d43892c8fb89cfd7ea386e311d0ff74c9a41eaf086e2ab007d5e7a30d
+
+pkgname = klepto
+
