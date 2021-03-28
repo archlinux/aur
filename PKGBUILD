@@ -1,6 +1,7 @@
-# Maintainer: Jonathan Rouleau <jonathan@rouleau.io>
+# Maintainer: Brian Cooper <brian at brian-cooper dot com>
+# Contributor: Jonathan Rouleau <jonathan@rouleau.io>
 pkgname=udemy-dl-git
-pkgver=1.0.r5.g5f9e70f
+pkgver=1.1.r1.g595c003
 pkgrel=1
 pkgdesc='A utility to download courses from udemy for personal offline use'
 arch=('any')
