@@ -7,4 +7,6 @@
 !.SRCINFO
 !ventoy
 !ventoyweb
+!ventoy-persistent
 !sanitize.patch
+!ventoy.install
