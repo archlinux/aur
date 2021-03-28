@@ -1,7 +1,7 @@
 pkgbase = imagewriter
 	pkgdesc = A graphical utility for writing raw disk images & hybrid isos to USB keys
 	pkgver = 1.10.1432200249.1d253d9
-	pkgrel = 16
+	pkgrel = 18
 	url = https://github.com/openSUSE/imagewriter
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = imagewriter
 	license = GPL2
 	depends = qt5-base
 	depends = udisks2
-	source = http://download.opensuse.org/tumbleweed/repo/src-oss/src/imagewriter-1.10.1432200249.1d253d9-2.4.src.rpm
+	source = http://download.opensuse.org/tumbleweed/repo/src-oss/src/imagewriter-1.10.1432200249.1d253d9-2.5.src.rpm
 	sha512sums = 500a2ffc28de140492077bf8d7af7090f42448c92c56b3653456faddb623fe802b185b59ce5166f2ad6f4f73158ca328d82c61ef81a27480937a0855fcd58456
 
 pkgname = imagewriter
