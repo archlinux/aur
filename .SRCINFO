@@ -2,6 +2,7 @@ pkgbase = nwscript-code
 	pkgdesc = Setup for a NWScript pseudo-IDE assembled from VSC and various development tools
 	pkgver = 1.1.5
 	pkgrel = 1
+	url = https://gitlab.com/Taro94/nwscript-code/
 	arch = any
 	license = GPL
 	depends = code
