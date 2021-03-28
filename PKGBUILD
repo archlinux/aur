@@ -8,7 +8,7 @@ _svt_vp9_ver='7951c3cf6773c5e0ede00e4ce3e3ad2f7e090cfb'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.4.r100994.ga52b9464e4
+pkgver=4.4.r101748.g797c2ecc8f
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -19,26 +19,26 @@ depends=(
         'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
         'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
         'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
-        'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
-        'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame' 'opencore-amr'
-        'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
-        'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
-        'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
-        'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265' 'libxcb'
-        'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'libmysofa'
-        'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'vulkan-icd-loader'
-        'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm'
-        'libva' 'libvdpau'
+        'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
+        'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
+        'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
+        'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
+        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
+        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
+        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib'
+        'libomxil-bellagio' 'libdrm' 'libva' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2'
-        'pocketsphinx' 'lensfun-git'
+        'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs'
+        'xavs2' 'pocketsphinx' 'lensfun-git'
 )
 makedepends=(
     # official repositories:
-        'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'clang'
+        'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'clang' 'amf-headers'
     # AUR:
-        'decklink-sdk' 'amf-headers'
+        'decklink-sdk'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
@@ -80,7 +80,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-        --extra-cflags="-I/usr/include/tensorflow" \
+        --enable-lto \
         \
         --disable-rpath \
         --enable-gpl \
@@ -119,6 +119,7 @@ build() {
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
+        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libiec61883 \
@@ -135,10 +136,12 @@ build() {
         --enable-libopenh264 \
         --enable-libopenjpeg \
         --enable-libopenmpt \
+        --disable-libopenvino \
         --enable-libopus \
         --enable-libpulse \
         --enable-librabbitmq \
         --enable-librav1e \
+        --enable-librist \
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
@@ -151,7 +154,7 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
         --enable-libsvtav1 \
-        --enable-libtensorflow \
+        --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
@@ -196,9 +199,18 @@ build() {
         --enable-zlib \
         \
         --enable-amf \
+        --disable-cuda-nvcc \
+        --disable-cuda-llvm \
+        --disable-cuvid \
+        --disable-ffnvcodec \
         --enable-libdrm \
+        --disable-libmfx \
+        --disable-libnpp \
+        --disable-nvdec \
+        --disable-nvenc \
         --enable-omx \
-        --enable-v4l2-m2m \
+        --disable-rkmpp \
+        --disable-v4l2-m2m \
         --enable-vaapi \
         --enable-vdpau
     make
