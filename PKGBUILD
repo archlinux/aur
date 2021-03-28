@@ -25,11 +25,8 @@ url="https://github.com/jarun/nnn"
 license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
-source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "nnn-${pkgver}.tar.gz.sig::${url}/releases/download/v${pkgver}/nnn-${pkgver}.tar.gz.sig")
-sha512sums=('e997e2279c495c7235fdfd51ffcc36949686889424686f050329c7f127c62f3ddc807a758ee1b18b00a1884eeaf9f94195d02b2d0e2d76ae1523b8bf2cef1232'
-            'SKIP')
-validpgpkeys=('BBAD0B2F3093A7C3377A8F6BA75979F35C080412')
+source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('e997e2279c495c7235fdfd51ffcc36949686889424686f050329c7f127c62f3ddc807a758ee1b18b00a1884eeaf9f94195d02b2d0e2d76ae1523b8bf2cef1232')
 
 prepare() {
     sed -i 's/install: all/install:/' "${provides}-${pkgver}/Makefile"
