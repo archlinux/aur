@@ -27,10 +27,10 @@ check_postgres() {
 }
 
 check_mugen() {
-    if [ -f "/opt/karaokemugen/karaokemugen" ]; then
-        echo -e "${_COL_GREEN_}Karaoke Mugen is installed in /opt/karaokemugen."
+    if [ -f "/usr/lib/karaokemugen/asar/app.asar" ]; then
+        echo -e "${_COL_GREEN_}Karaoke Mugen is installed in /usr/lib/karaokemugen."
     else
-        echo -e "${_COL_BRED_}Karaoke Mugen is not installed in /opt/karaokemugen. Exiting."
+        echo -e "${_COL_BRED_}Karaoke Mugen is not installed in /usr/lib/karaokemugen. Exiting."
         exit 1
     fi
 }
@@ -67,23 +67,6 @@ if [[ $(which tput > /dev/null 2>&1 && tput -T "${TERM}" colors || echo -n '0') 
     _COL_DEFAULT_='\e[0m'
     _BEGIN_="${_COL_BRED_}-> ${_COL_BBLUE_}"
 fi
-
-while getopts ":g" opt; do
-  case ${opt} in
-    g )
-      #target=$OPTARG
-      echo -e "${_COL_YELLOW_}You may have to enter your sudo password"
-      add_user_to_group
-      echo -e "${_BEGIN_}Done! You need to restart your session to apply these changes."
-      exit 0
-      ;;
-    \? )
-      echo "Invalid option: $OPTARG" 1>&2
-      exit 1
-      ;;
-  esac
-done
-shift $((OPTIND -1))
 
 echo -e "${_BEGIN_}Welcome to the Karaoke Mugen installer!"
 echo -e "${_COL_YELLOW_}⚠️ You may have to enter your sudo password a couple times during this installation."
