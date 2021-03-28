@@ -57,13 +57,18 @@ build() {
   cd OCP
 
   # get symbols
-  mkdir -p dummy/lib_linux/
+  local _structure_needed="dummy/lib_linux/"
+  mkdir -p ${_structure_needed}
   ln -s /usr/lib dummy/lib_linux/.
+  msg2 "Old symbols:"
+  ls -lh *.dat
   rm *.dat
   msg2 "Dumping symbols..."
   python dump_symbols.py dummy
-  msg2 "Dump complete."
-  ls -lh symbols_mangled_linux.dat
+  msg2 "Dump complete. New symbols:"
+  ls -lh *.dat
+  rm -rf ${_structure_needed}
+  find -maxdepth 1 -name '*.dat' -exec ln -sf ../{} pywrap/{} \;
 
   CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
     --clean \
@@ -72,24 +77,19 @@ build() {
     --include "/usr/include/vtk" \
     all ocp.toml
 
-  cmake \
-    -W no-dev \
-    -D CMAKE_INSTALL_PREFIX="/usr" \
+  cmake -B build_dir -S OCP -W no-dev -G Ninja \
     -D OPENCASCADE_INCLUDE_DIR=opencascade \
+    -D CMAKE_INSTALL_PREFIX="/usr" \
     -D CMAKE_BUILD_TYPE=None \
-    -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9" \
-    -B build_dir \
-    -G Ninja \
-    -S OCP
+    -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9"
 
   cmake --build build_dir
 }
 
 check() {
   cd OCP
-  cd build_dir
   #python -c "from OCP.gp import gp_Vec, gp_Ax1, gp_Ax3, gp_Pnt, gp_Dir, gp_Trsf, gp_GTrsf, gp, gp_XYZ"
-  python -c "import OCP"
+  PYTHONPATH="./build_dir" python -c "import OCP"
 }
 
 package(){
