@@ -1,13 +1,12 @@
 pkgbase = defrag
-	pkgdesc = A braindead simple and filesystem agnostic defrag script
+	pkgdesc = A braindead simple and filesystem agnostic defragmentation script
 	pkgver = 0.08
 	pkgrel = 1
 	url = http://ck.kolivas.org/apps/defrag/
-	arch = i686
-	arch = x86_64
+	arch = any
 	depends = bash
 	source = http://ck.kolivas.org/apps/defrag/defrag-0.08/defrag
-	md5sums = cdc2179f521689356834efaedad15a62
+	sha512sums = fa1c9c3a58ec43020a6a1da66bcbf8304e9b2ad1afbd25c0aab0962410e977412954669be2ae2aaaf8b14b2294cad91bbb0143f589688aa684080dff1b2c5316
 
 pkgname = defrag
 
