@@ -14,5 +14,5 @@ build() {
 
 package() {
     cd $srcdir
-    cargo install --root="$pkgdir" --git=https://github.com/dduan/tre
+    cargo install --root="$pkgdir" --git=https://github.com/dduan/tre --tag="v$pkgver"
 }
