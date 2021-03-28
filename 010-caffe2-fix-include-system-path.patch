@@ -1,6 +1,6 @@
 --- a/torch/utils/cpp_extension.py
 +++ b/torch/utils/cpp_extension.py
-@@ -1760,7 +1760,7 @@ def _write_ninja_file_to_build_library(path,
+@@ -1759,7 +1759,7 @@ def _write_ninja_file_to_build_library(path,
              common_cflags.append(f'-DPYBIND11_{pname}=\\"{pval}\\"')
  
      common_cflags += [f'-I{include}' for include in user_includes]

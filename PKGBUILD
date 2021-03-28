@@ -6,7 +6,7 @@ _cuda_archs='5.2;5.3;6.0;6.1;6.2;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX
 
 pkgbase=caffe2-git
 pkgname=('caffe2-git' 'caffe2-cuda-git')
-pkgver=0.8.2.r34171.gdbbe0a2105b
+pkgver=0.8.2.r34802.g01b15570145
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework'
@@ -106,8 +106,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c68ddbd539e2a8ef3a1874a65e9c6701fc9d136b592be095b953cdcab38815fd'
-            'cfe57df7a34de8d9fe14b2499d8a211d0670f8a9cb7c999110577fb1626b4b03'
+            'd926cdacdbddf2334ac8b49602d9e1b12afb01c63a7dd0fb303dbc5d987c0ead'
+            '497225e56a88a2c2f65eac4d6240297e42abb298654ad843a70c3c5a10d7170c'
             '7385ac0742f00245c3bd7560e33648566a25b950964806c55b6c3eaee25981ac')
 
 prepare() {
@@ -130,7 +130,8 @@ prepare() {
                            'tbb'
                            'XNNPACK'
                            'fmt'
-                           'tensorpipe')
+                           'tensorpipe'
+                           'kineto')
     
     git -C pytorch submodule init
     
@@ -148,6 +149,7 @@ prepare() {
     git -C pytorch config --local submodule.third_party/NNPACK_deps/FXdiv.url "${srcdir}/FXdiv"
     git -C pytorch config --local submodule.third_party/NNPACK_deps/FP16.url "${srcdir}/FP16"
     git -C pytorch config --local submodule.third_party/NNPACK_deps/psimd.url "${srcdir}/psimd"
+    git -C pytorch config --local submodule.third_party/cpuinfo.url "${srcdir}/cpuinfo-pytorch"
     git -C pytorch config --local submodule.third_party/python-enum.url "${srcdir}/enum34"
     git -C pytorch config --local submodule.third_party/python-peachpy.url "${srcdir}/PeachPy"
     git -C pytorch config --local submodule.third_party/python-six.url "${srcdir}/six"
@@ -155,9 +157,6 @@ prepare() {
     git -C pytorch config --local submodule.third_party/nccl/nccl.url "${srcdir}/nccl"
     git -C pytorch config --local submodule.third_party/gemmlowp/gemmlowp.url "${srcdir}/gemmlowp"
     git -C pytorch config --local submodule.android/libs/fbjni.url "${srcdir}/fbjni"
-    
-    # special case (upstream uses third-party instead of third_party)
-    git -C pytorch config --local submodule.third-party/cpuinfo.url "${srcdir}/cpuinfo-pytorch"
     
     git -C pytorch submodule update
     

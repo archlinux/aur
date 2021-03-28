@@ -1,6 +1,6 @@
 pkgbase = caffe2-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework
-	pkgver = 0.8.2.r34171.gdbbe0a2105b
+	pkgver = 0.8.2.r34802.g01b15570145
 	pkgrel = 1
 	epoch = 1
 	url = https://caffe2.ai/
@@ -130,8 +130,8 @@ pkgbase = caffe2-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c68ddbd539e2a8ef3a1874a65e9c6701fc9d136b592be095b953cdcab38815fd
-	sha256sums = cfe57df7a34de8d9fe14b2499d8a211d0670f8a9cb7c999110577fb1626b4b03
+	sha256sums = d926cdacdbddf2334ac8b49602d9e1b12afb01c63a7dd0fb303dbc5d987c0ead
+	sha256sums = 497225e56a88a2c2f65eac4d6240297e42abb298654ad843a70c3c5a10d7170c
 	sha256sums = 7385ac0742f00245c3bd7560e33648566a25b950964806c55b6c3eaee25981ac
 
 pkgname = caffe2-git
