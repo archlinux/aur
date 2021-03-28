@@ -1,8 +1,8 @@
 # Contributor: Gleb Liutsko <gleb290303@gmail.com>
 
 pkgname=spolyrics
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Displays the lyrics to the currently playing song"
 arch=('any')
 url="https://github.com/glebliutsko/spolyrics"
@@ -11,7 +11,7 @@ depends=('python' 'python-requests' 'python-pyqt5' 'python-pyqt5-webengine' 'pyt
 makedepends=('python-setuptools')
 source=("https://github.com/glebliutsko/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-py3-none-any.whl"
         'spolyrics.desktop')
-md5sums=('9b793eaeb100fa14be9d4fc7f9af3817'
+md5sums=('06bbaa8a2732d247054852b6b85e1902'
          '7d831c4e18ffe6484d5817d250032b2d')
 
 package() {
