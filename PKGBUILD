@@ -1,20 +1,19 @@
 # Maintainer: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=labjack-exodriver-git
 _gitname="labjack-exodriver"
-pkgver=191.be04726
+pkgver=198.77faae4
 pkgrel=1
 pkgdesc="Linux low-level LabJack U12, U3, U6, UE9, Digit and T7 USB library"
 arch=('i686' 'x86_64')
 url="http://labjack.com/support/software"
 license=('MIT')
-depends=("libusbx")
+depends=("libusb")
 makedepends=('git')
 provides=('labjack-exodriver')
 conflicts=('labjack-exodriver')
 install='labjack-exodriver.install'
-source=("${_gitname}::git+git://github.com/labjack/exodriver.git" 'LICENSE')
-md5sums=('SKIP'
-'6b654d05134aa959b7db1f4b05c7f33d')
+source=("${_gitname}::git+https://github.com/labjack/exodriver.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}"/"${_gitname}"
@@ -43,8 +42,6 @@ package() {
   install -D -m644 90-labjack.rules \
     ${pkgdir}/usr/lib/udev/rules.d/90-labjack.rules
   install -D -m644 liblabjackusb/labjackusb.h ${pkgdir}/usr/include/
-  install -D -m644 ../LICENSE \
-    ${pkgdir}/usr/share/licenses/labjack-exodriver/LICENSE
   cp -dpr --no-preserve=ownership \
     examples ${pkgdir}/usr/share/doc/labjack-exodriver
 }
