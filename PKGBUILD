@@ -79,9 +79,7 @@ build() {
 
   cmake -B build_dir -S OCP -W no-dev -G Ninja \
     -D OPENCASCADE_INCLUDE_DIR=opencascade \
-    -D CMAKE_INSTALL_PREFIX="/usr" \
-    -D CMAKE_BUILD_TYPE=None \
-    -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9"
+    -D CMAKE_BUILD_TYPE=None
 
   cmake --build build_dir
 }
