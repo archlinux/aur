@@ -1,0 +1,17 @@
+pkgbase = cesium-editor
+	pkgdesc = A bare bones text editor
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/NoahJelen/cesium
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = gzip
+	depends = ncurses
+	conflicts = cesium-editor-git
+	source = https://gitlab.com/NoahJelen/cesium/-/archive/0.1.1/cesium-0.1.1.zip
+	md5sums = SKIP
+
+pkgname = cesium-editor
+
