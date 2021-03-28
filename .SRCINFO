@@ -1,0 +1,17 @@
+pkgbase = neovim-coc-htmlhint-git
+	pkgdesc = Integrates the HTMLHint static analysis tool into coc.nvim
+	pkgver = 0.2.1.r1.g76f1d99
+	pkgrel = 1
+	url = https://github.com/yaegassy/coc-htmlhint
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = git
+	depends = neovim-coc
+	provides = neovim-coc-htmlhint
+	conflicts = neovim-coc-htmlhint
+	source = coc-htmlhint::git+https://github.com/yaegassy/coc-htmlhint.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-htmlhint-git
+
