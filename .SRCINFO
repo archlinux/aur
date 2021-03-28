@@ -1,0 +1,13 @@
+pkgbase = plasma-splash-arch-moe
+	pkgdesc = A Moe themed arch splash screen for KDE Plasma.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/perigoso/plasma-splash-arch-moe
+	arch = any
+	license = GPL
+	depends = plasma-desktop
+	source = plasma-splash-arch-moe-1.0.tar.gz::https://github.com/perigoso/plasma-splash-arch-moe/archive/v1.0.tar.gz
+	sha256sums = 636fe2136e4a6437aefad5ae8691def5e0c80ddb7beab8573a51ac56da597c17
+
+pkgname = plasma-splash-arch-moe
+
