@@ -1,5 +1,5 @@
 export CASROOT="/usr"
-
+export CSF_OCCTResourcePath="${CASROOT}/share/opencascade/resources"
 # ----- Set envoronment variables used by OCCT -----
 export CSF_LANGUAGE=us
 export MMGT_CLEAR=1

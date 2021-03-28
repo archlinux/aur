@@ -34,7 +34,7 @@ source=(
 opencascade.sh
 )
 sha256sums=('3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739'
-            '7b6afbc46707011f14a68c9edd13569288a89d893a9ca438724c4026aa62ce57')
+            '9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb')
 
 prepare() {
   cd occt-${_pkgver}
