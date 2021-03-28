@@ -35,7 +35,7 @@ prepare() {
 	source .venv/bin/activate
 	pip install autobuild -i https://pkg.alchemyviewer.org/repository/autobuild/simple --extra-index-url https://pypi.org/simple
 
-	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DUSE_FMODSTUDIO=OFF -DPACKAGE:BOOL=Off
+	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DUSE_FMODSTUDIO=OFF
 }
 
 build() {
