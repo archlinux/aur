@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=thiefmd
-pkgver=0.2.1
+pkgver=0.2.2
 _codename=fiximgup
 pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtkspell3' 'webkit2gtk' 'discount' 'gtksourceview4' 'libarchive'
          'clutter' 'libgee' 'libhandy')
 makedepends=('git' 'meson' 'vala')
-_commit=2bbe89f36a75f0f82975969c657c2dd2f90127c9
+_commit=b31c48195392a6178177a73473adca0cf53c62c0
 source=("git+https://github.com/kmwallio/ThiefMD.git#commit=$_commit"
         'git+https://github.com/ThiefMD/BiBtex-vala.git'
         'git+https://github.com/ThiefMD/ghost-vala.git'
