@@ -5,10 +5,10 @@
 pkgbase=libgnome
 pkgname=('libgnome' 'libgnome-data')
 pkgver=2.32.1
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 license=('LGPL')
-makedepends=('intltool' 'gnome-vfs' 'libbonobo' 'gconf' 'gvfs' 'libcanberra' 'python')
+makedepends=('intltool' 'gnome-vfs' 'libbonobo' 'gconf' 'gtk-doc' 'gvfs' 'libcanberra' 'python')
 options=('!emptydirs')
 url="http://www.gnome.org"
 source=(https://download.gnome.org/sources/${pkgbase}/2.32/${pkgbase}-${pkgver}.tar.bz2
@@ -20,7 +20,6 @@ sha256sums=('b2c63916866485793b87398266dd7778548c1734923c272a94d84ee011b6f7a4'
 
 prepare() {
   cd $pkgbase-$pkgver
-  #patch "$pkgbase/gnome-config.h" < "$srcdir/05_glib-2.54-ftbfs.patch"
   patch -Np1 -i ../05_glib-2.54-ftbfs.patch
   patch -Np1 -i ../0001-Don-t-use-G_DISABLE_DEPRECATED.patch
 }

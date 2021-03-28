@@ -1,6 +1,6 @@
 pkgbase = libgnome
 	pkgver = 2.32.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.gnome.org
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libgnome
 	makedepends = gnome-vfs
 	makedepends = libbonobo
 	makedepends = gconf
+	makedepends = gtk-doc
 	makedepends = gvfs
 	makedepends = libcanberra
 	makedepends = python
