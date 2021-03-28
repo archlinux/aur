@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=devilutionx-hellfire-git
 _pkgname=devilutionX
-pkgver=1.1.0.r1316.ge07f5aeac
+pkgver=1.1.0.r1366.g2362ff82f
 pkgrel=1
 pkgdesc="Diablo & Hellfire devolved. An open source replacment for the original executables."
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -27,7 +27,7 @@ pkgver() {
 # compile devilutionX with Hellfire enabled
 build() {
     cd "${_pkgname}"/build
-    cmake .. -DHELLFIRE=ON
+    cmake ..
     make
 }
 
