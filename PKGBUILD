@@ -8,7 +8,7 @@ pkgdesc="An updated version of Game Boy Development Kit"
 url="https://github.com/Zal0/gbdk-2020"
 license=('MIT')
 arch=('x86_64' 'i686')
-makedepends=('git' 'sdcc>=4.1.0')
+makedepends=('git')
 depends=('sdcc>=4.1.0')
 conflicts=('gbdk' 'lcc')
 source=("https://github.com/Zal0/gbdk-2020/archive/${pkgver}.tar.gz")
