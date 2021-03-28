@@ -4,19 +4,18 @@
 
 _name=gnome-commander
 pkgname=$_name-git
-pkgver=1.9.0.r18.09ef4307
+pkgver=1.11.0.r311.8f02c9bf
 pkgrel=1
 pkgdesc="Graphical two-pane filemanager for GNOME"
 arch=('x86_64')
-url="http://gcmd.github.io/"
+url="https://gcmd.github.io"
 license=('GPL')
-depends=('libgnomeui' 'gconf' 'python' 'libsm' 'libunique' 'gnome-vfs'
-         'exiv2' 'taglib' 'chmlib' 'libgsf' 'poppler-glib')
-makedepends=('perl-xml-parser' 'yelp-tools' 'git')
+depends=('libgnomeui' 'libunique3' 'taglib' 'poppler-glib' 'libgsf' 'exiv2' 'chmlib')
+makedepends=('yelp-tools' 'git')
 options=(!libtool)
 provides=($_name)
 conflicts=($_name)
-source=(git+https://git.gnome.org/browse/$_name)
+source=(git+https://gitlab.gnome.org/GNOME/$_name)
 md5sums=('SKIP')
 
 pkgver() {
@@ -31,22 +30,18 @@ pkgver() {
 
 prepare() {
   cd $_name
-  ./autogen.sh NOCONFIGURE=1
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $_name
   ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
-              --localstatedir=/var --enable-python
-  make
+              --localstatedir=/var \
+              --with-help-dir=/usr/share/doc/$pkgname
+  make CXXFLAGS="$CXXFLAGS -Wno-error"
 }
 
 package() {
   cd $_name
-
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir" install
-  install -d "$pkgdir/usr/share/gconf/schemas"
-  gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/$_name.schemas" \
-    --domain "$_name" "$pkgdir/etc/gconf/schemas/"*.schemas
-  rm -rf "$pkgdir/etc/gconf/schemas/"
 }
