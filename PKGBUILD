@@ -6,7 +6,7 @@ _gitauth='mdbooth'
 _pkgname='ldmtool'
 _gitname='libldm'
 pkgname="${_pkgname}"
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='tool for managing Microsoft Windows dynamic disks'
 arch=('i686' 'x86_64')
@@ -21,7 +21,9 @@ source=(
   "${url}/archive/${_gitname}-${pkgver}.tar.gz"
   'sysmacros.patch'
 )
-sha256sums=('9c941b40655ade5c3ab7da9d1b957df9400d88a59af090c87d1aa9971b0df84c'
+md5sums=('ab38c1a47275eebb9c9cbcaf16220636'
+         'b4585e50359818c9d89e541c37d98cc3')
+sha256sums=('61bb2f2367b1df59f818cb96794d1770a0def956bd2c343dccf1425dae3021b5'
             '503052d3fb15869f5ed3b3425299dce64b20e40d1df58eeb9d863ec97d0e7ce9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
