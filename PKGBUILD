@@ -2,22 +2,22 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
-# Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
+# Contributor: TuxSpirit<tuxspirit@archlinux.fr>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=p7zip
-pkgver=17.03
-pkgrel=2
+pkgver=17.04
+pkgrel=1
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=('x86_64')
 url="https://github.com/jinfeihan57/p7zip"
 license=('LGPL' 'custom:unRAR')
 depends=('gcc-libs' 'sh')
-source=(https://github.com/jinfeihan57/p7zip/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+source=(https://github.com/jinfeihan57/p7zip/archive/$pkgver/$pkgname-$pkgver.tar.gz
         oemcp-iconv.patch::https://github.com/jinfeihan57/p7zip/commit/c104127e6a93.patch
         oemcp-cygwin.patch::https://github.com/jinfeihan57/p7zip/commit/0e0a1a8316b6.patch
         oemcp-apple.patch::https://github.com/jinfeihan57/p7zip/commit/334a01e3f8bc.patch)
-sha256sums=('bb4b9b21584c0e076e0b4b2705af0dbe7ac19d378aa7f09a79da33a5b3293187'
+sha256sums=('af15c4b540274c0a31da8e63928224676128285c74e8e582c77f22396e2a080a'
             'e32636aa03b9c75a2b9d9138e03a738ceed6ca5da4c3c67e7f5981e135fb9e24'
             'fa658d42cc1da2b567a210a819502bd8e3bb1e02d5d23e087e2278c4aaffe15e'
             'a1b21ceb5582633d85d41ec9e4995f758cba1731dd80fb6f45a7bc6b18bfe394')
