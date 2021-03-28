@@ -11,6 +11,7 @@ sha256sums=('cd6a6abdabf954395c1434f79e7d71646a015451fa3d69ba8d102d994eb8071e')
 
 build() {
   cd "$pkgname-$pkgver"
+  printf ":: If $pkgname fails to compile, check that you have a libc installed with pthread support.\n"
   make CFLAGS="${CFLAGS} -std=c99" LDFLAGS="${LDFLAGS} -lpthread" all
 }
 
