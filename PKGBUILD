@@ -1,11 +1,11 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
-makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')
+makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
 depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2' 'fcft')
 source=(git+https://codeberg.org/dnkl/foot.git)
@@ -19,37 +19,70 @@ pkgver() {
 build() {
   cd foot
 
+  local compiler=other
+  local do_pgo=no
+
   # makepkg uses -O2 by default, but we *really* want -O3
-  # -Wno-missing-profile since we're not exercising everything when doing PGO builds
-  export CFLAGS+=" -O3 -Wno-missing-profile"
+  CFLAGS+=" -O3"
+
+  # Figure out which compiler we're using, and whether or not to do PGO
+  case $(${CC-cc} --version) in
+    *GCC*)
+      compiler=gcc
+      do_pgo=yes
+      ;;
+
+    *clang*)
+      compiler=clang
+
+      # We need llvm to be able to manage the profiling data
+      if command -v llvm-profdata > /dev/null; then
+        do_pgo=yes
+
+        # Meson adds -fprofile-correction, which Clang doesn't
+        # understand
+        CFLAGS+=" -Wno-ignored-optimization-argument"
+      fi
+      ;;
+  esac
 
   meson --prefix=/usr --buildtype=release -Db_lto=true . build
 
-  find -name "*.gcda" -delete
-  meson configure -Db_pgo=generate build
-  ninja -C build
+  if [[ ${do_pgo} == yes ]]; then
+    find -name "*.gcda" -delete
+    meson configure -Db_pgo=generate build
+    ninja -C build
 
-  local script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline"
+    local script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline --sixel"
 
-  local tmp_file=$(mktemp)
+    local tmp_file=$(mktemp)
 
-  if [[ -v WAYLAND_DISPLAY ]]; then
-    build/foot \
-      --config /dev/null \
-      --term=xterm \
-      sh -c "./scripts/generate-alt-random-writes.py ${script_options} ${tmp_file} && cat ${tmp_file}"
-  else
-    ./scripts/generate-alt-random-writes.py \
-      --rows=67 \
-      --cols=135 \
-      ${script_options} \
-      ${tmp_file}
-    build/pgo ${tmp_file} ${tmp_file} ${tmp_file}
+    if [[ -v WAYLAND_DISPLAY ]]; then
+      build/footclient --version
+      build/foot \
+        --config /dev/null \
+        --term=xterm \
+        sh -c "./scripts/generate-alt-random-writes.py ${script_options} ${tmp_file} && cat ${tmp_file}"
+    else
+      build/footclient --version
+      build/foot --version
+      ./scripts/generate-alt-random-writes.py \
+        --rows=67 \
+        --cols=135 \
+        ${script_options} \
+        ${tmp_file}
+      build/pgo ${tmp_file} ${tmp_file} ${tmp_file}
+    fi
+
+    rm "${tmp_file}"
+
+    if [[ ${compiler} == clang ]]; then
+      llvm-profdata merge default_*profraw --output=build/default.profdata
+    fi
+
+    meson configure -Db_pgo=use build
   fi
 
-  rm "${tmp_file}"
-
-  meson configure -Db_pgo=use build
   ninja -C build
 }
 
