@@ -1,7 +1,7 @@
 pkgbase = irony-mod-manager-bin
 	pkgdesc = A mod manager and launcher for paradox interactive games
 	pkgver = 1.14.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcssov/IronyModManager
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = irony-mod-manager-bin
 	source = irony-mod-manager-bin.sh
 	source = irony-mod-manager-bin.README.md
 	source = fixed-jsons.diff
-	md5sums = 9a0bd4e4fa084fba431102091687ce89
+	md5sums = 13dfaa3caabb72c0e76d9252e91bff78
 	md5sums = 190d6d8e852bbe000af5dac87a5b921c
 	md5sums = 4d10c1d451ed731909fc1f749c9482d1
 	md5sums = 020c05854432b6e877de520a967fccee
