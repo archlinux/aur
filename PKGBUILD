@@ -18,7 +18,7 @@ package() {
   cp -r ${srcdir}/* ${pkgdir}/$HOME/${pkgname}
   echo ""
   warning "The TeaSpeak-server files will be installed in $HOME/${pkgname}!"
-  warning "You can change the localtion of the files, if you want."
+  warning "You can change the location of the files, if you want."
   warning "But dont forget to edit the ´/usr/bin/teaspeak-server´script!"
   echo ""
   warning "You can delete this server, by removing the server folder."
