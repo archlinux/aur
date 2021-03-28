@@ -1,11 +1,13 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# Maintainer:  Lone_Wolf <lonewolf@xs4all.nl>
+# Maintainer:  Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Steven She <mintcoffee@gmail.com>
 # Contributor: vbPadre <vbPadre@gmail.com>
 
 # cndrvcups-lb-bin
 # Contributor: Allen Choong <allencch at hotmail dot com>
 # Contributor: Indeed <fengjared at gmail dot com>
+
+# mips64 arm64 available
 
 _opt_RPM=1
 _opt_ppdlevel=2 # no extra ppd, 1 extra ppd from source, 2 extra ppd from RPM/Debian
@@ -16,8 +18,9 @@ pkgbase+='-bin'
 pkgname="${pkgbase}"
 # The download link changes with every version, try to keep changes in one place
 #_pkgver='5.10';  _dl='8/0100007658/13'
-_pkgver='5.20';  _dl='8/0100007658/18';_suffix='05'
-
+#_pkgver='5.20';  _dl='8/0100007658/18';_suffix='05'
+_pkgver='5.30';  _dl='8/0100007658/20';_suffix='12'
+#https://gdlp01.c-wss.com/gds/8/0100007658/20/linux-UFRII-drv-v530-uken-12.tar.gz
 pkgver="${_pkgver}"
 pkgrel='1'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
@@ -39,9 +42,9 @@ options=('!emptydirs' '!strip' '!libtool')
 source=(
   "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-${_suffix}.tar.gz"
 )
-md5sums=('affe334ad4bff34d8bf21b59a03e5b19')
-sha256sums=('6680f596e2c79a175d0b03dc255d32af98f8ca995b4a18d1f1a05fff4caf0c54')
-sha512sums=('31652894e8ad07e81ae044c5172ced73569a1b78f06f48bcafcd9cabcb19406f0645bfdf741cf3a60746859e671c443d14e5c0c04bffd540ac10406df7266b45')
+md5sums=('965e60cffa5f3e7872a344c9adbeca5b')
+sha256sums=('a13dd88c183facb5d42d4ab65d8e2f9ec6548ac502485bb066bcb83088b7c9ae')
+sha512sums=('61f060a742c9e6cc7439f26fac63fbac33c96722ec80c604eca40716255920a65eab4cd6f592deee627a8c803776df2c0b8c3dbce9727e53862fa7551a172ebe')
 
 #PKGEXT='.pkg.tar.gz'
 
@@ -49,7 +52,8 @@ build() {
   set -u
   shopt -s nullglob
 
-  declare -A _archd=([i686]='32-bit_Driver' [x86_64]='64-bit_Driver')
+  #declare -A _archd=([i686]='32-bit_Driver' [x86_64]='64-bit_Driver')
+  declare -A _archd=([i686]='x86' [x86_64]='x64')
   if [ "${_opt_RPM}" -ne 0 ]; then
     declare -A _archf=([i686]='i386' [x86_64]='x86_64')
     local _p1='-'
