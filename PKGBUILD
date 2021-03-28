@@ -3,10 +3,8 @@
 
 pkgname=obsidian-insider
 _pkgname=obsidian
-_appimagver=0.11.9
-_appimage="${_pkgname}-${_appimagver}.asar.gz"
-pkgver=${_appimagver//-/_}
-pkgrel=2
+pkgver=0.11.9
+pkgrel=3
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 provides=("obsidian")
 arch=('x86_64')
@@ -21,8 +19,8 @@ source=(
     "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.asar.gz"
 )
 sha256sums=(
-    '38d18cc7f3c6aacaba37aecb2c27754ad6562be121d23d6eeeeeccfb85234d04'
-    '0e132cb981e7c94b2116e94b18c6b7fcb1431be690a03b95247a5ef929ef3275'
+    'e0a6a8f7dfbfff88664621448ac456d47e62c6d94e2cc59702c4f31968780ed4'
+    '33e2d337a336711882dd37dff8de63c5c14c75434b58b3ed1cd5eb807cd4ea4c'
     '8f9b6782441c6a3bc31c033cb4bdd1216079a5f337133e1d00ce62b6c63e573c'
 )
 
@@ -45,6 +43,6 @@ package() {
     install -Dm644 ${pkgname}.desktop -t "${pkgdir}/usr/share/applications/"
     install -Dm644 icon.png "${pkgdir}/usr/share/pixmaps/obsidian.png"
     # Move package contents to opt
-    install -Dm644 ${_pkgname}-${pkgver}.asar  "${pkgdir}/opt/${pkgname}/obsidian.asar"
+    install -Dm644 ${_pkgname}-${pkgver}.asar "${pkgdir}/usr/share/${_pkgname}/app.asar"
 }
 

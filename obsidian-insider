@@ -1,4 +1,2 @@
 #!/bin/sh
-
-/usr/bin/electron /opt/obsidian-insider/obsidian.asar %u --no-sandbox %
-
+exec /usr/bin/electron /usr/share/obsidian/app.asar --no-sandbox "$@"
