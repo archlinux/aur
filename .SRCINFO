@@ -1,0 +1,15 @@
+pkgbase = python-urwid-ueberzogen
+	pkgdesc = Some widgets which extend urwid with the possibility to use ueberzug.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/d0c-s4vage/lookatme.contrib.image_ueberzug
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-ueberzug
+	depends = python-urwid
+	source = urwid-ueberzogen-0.0.4.tar.gz::https://github.com/seebye/urwid-ueberzogen/archive/refs/tags/0.0.4.tar.gz
+	md5sums = 85336dc1398186cc9e24222c8a79714b
+
+pkgname = python-urwid-ueberzogen
+
