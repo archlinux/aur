@@ -65,7 +65,6 @@ pkgbase = ffmpeg-amd-full-git
 	depends = svt-hevc
 	depends = svt-av1
 	depends = svt-vp9
-	depends = tensorflow
 	depends = tesseract
 	depends = libtheora
 	depends = twolame
