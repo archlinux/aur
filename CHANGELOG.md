@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.7.1](#1-7-1)
 * [1.7.0](#1-7-0)
 * [1.6.4](#1-6-4)
 * [1.6.3](#1-6-3)
@@ -21,6 +22,34 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.7.1
+
+### Changed
+
+* Update PGO build instructions in `INSTALL.md`
+  (https://codeberg.org/dnkl/foot/issues/418).
+* In scrollback search mode, empty cells can now be matched by spaces.
+
+
+### Fixed
+
+* Logic that repairs invalid key bindings ended up breaking valid key
+  bindings instead (https://codeberg.org/dnkl/foot/issues/407).
+* Custom `line-height` settings now scale when increasing or
+  decreasing the font size at run-time.
+* Newlines sometimes incorrectly inserted into copied text
+  (https://codeberg.org/dnkl/foot/issues/410).
+* Crash when compositor send `text-input-v3::enter` events without
+  first having sent a `keyboard::enter` event
+  (https://codeberg.org/dnkl/foot/issues/411).
+* Deadlock when rendering sixel images.
+* URL labels, scrollback search box or scrollback position indicator
+  sometimes not showing up, caused by invalidly sized surface buffers
+  when output scaling was enabled
+  (https://codeberg.org/dnkl/foot/issues/409).
+* Empty sixels resulted in non-empty images.
 
 
 ## 1.7.0

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
-pkgver=1.7.0  # Don’t forget to update CHANGELOG.md
-pkgrel=2
+pkgver=1.7.1  # Don’t forget to update CHANGELOG.md
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -9,7 +9,7 @@ depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'fcft')
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols' 'tllist')
 checkdepends=('check')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('a5a7405956fc1862638712606e502eba11f2561a77f3a9fbbb332f90c8b50ee4')
+sha256sums=('44a97d36dae6c9989aa68d2d69731679aa1f3e0c4ecc721cf79a80f5bdfdbc5f')
 
 build() {
   cd foot

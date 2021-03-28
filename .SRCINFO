@@ -1,6 +1,6 @@
 pkgbase = foot
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -18,8 +18,8 @@ pkgbase = foot
 	depends = pixman
 	depends = fontconfig
 	depends = fcft
-	source = foot-1.7.0.tar.gz::https://codeberg.org/dnkl/foot/archive/1.7.0.tar.gz
-	sha256sums = a5a7405956fc1862638712606e502eba11f2561a77f3a9fbbb332f90c8b50ee4
+	source = foot-1.7.1.tar.gz::https://codeberg.org/dnkl/foot/archive/1.7.1.tar.gz
+	sha256sums = 44a97d36dae6c9989aa68d2d69731679aa1f3e0c4ecc721cf79a80f5bdfdbc5f
 
 pkgname = foot
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
