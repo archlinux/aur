@@ -1,0 +1,17 @@
+pkgbase = neovim-coc-vetur-git
+	pkgdesc = Vue language server extension for coc.nvim
+	pkgver = 1.2.4.r0.g0d9d2a1
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-vetur
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = git
+	depends = neovim-coc
+	provides = neovim-coc-vetur
+	conflicts = neovim-coc-vetur
+	source = coc-vetur::git+https://github.com/neoclide/coc-vetur.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-vetur-git
+
