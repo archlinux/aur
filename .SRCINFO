@@ -1,6 +1,6 @@
 pkgbase = libodiosacd
 	pkgdesc = SACD decoder (shared library)
-	pkgver = 21.3.22
+	pkgver = 21.3.28
 	pkgrel = 1
 	url = https://tari.in/www/software/libodiosacd
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = libodiosacd
 	makedepends = glibc
 	depends = glibc
 	options = !emptydirs
-	source = https://github.com/tari01/libodiosacd/archive/21.3.22.tar.gz
-	md5sums = d4d9727ce4ca8a26abab111d1050b989
+	source = https://github.com/tari01/libodiosacd/archive/21.3.28.tar.gz
+	md5sums = 65623848df94b6119272cdbbece7e843
 
 pkgname = libodiosacd
 
