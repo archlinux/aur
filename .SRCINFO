@@ -1,6 +1,6 @@
 pkgbase = thiefmd
 	pkgdesc = The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://thiefmd.com
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = thiefmd
 	depends = clutter
 	depends = libgee
 	depends = libhandy
-	source = git+https://github.com/kmwallio/ThiefMD.git#commit=89ff79ef5e151cafa87d17d9b1e43582de746e0a
+	source = git+https://github.com/kmwallio/ThiefMD.git#commit=2bbe89f36a75f0f82975969c657c2dd2f90127c9
 	source = git+https://github.com/ThiefMD/BiBtex-vala.git
 	source = git+https://github.com/ThiefMD/ghost-vala.git
 	source = git+https://github.com/TwiRp/ultheme-vala.git
