@@ -13,11 +13,11 @@ sha256sums=('6214f0b16282a383e422082350e72affb92f71abef6e19ad8ba4f8dc29eb3aa9')
 
 package() {
 
-  mkdir -p ${pkgdir}/$HOME/${pkgname}
+  mkdir -p ${pkgdir}/opt/${pkgname}
   mkdir -p ${pkgdir}/usr/bin
-  cp -r ${srcdir}/* ${pkgdir}/$HOME/${pkgname}
+  cp -r ${srcdir}/* ${pkgdir}/opt/${pkgname}
   echo ""
-  warning "The TeaSpeak-server files will be installed in $HOME/${pkgname}!"
+  warning "The TeaSpeak-server files will be installed in /opt/${pkgname}!"
   warning "You can change the location of the files, if you want."
   warning "But dont forget to edit the ´/usr/bin/teaspeak-server´script!"
   echo ""
@@ -26,10 +26,10 @@ package() {
   echo ""
   sleep 15
   touch ${pkgdir}/usr/bin/teaspeak-server
-  echo "cd $HOME/teaspeak-server && ./TeaSpeakServer" >> ${pkgdir}/usr/bin/teaspeak-server
+  echo "cd /opt/teaspeak-server && ./TeaSpeakServer" >> ${pkgdir}/usr/bin/teaspeak-server
   chmod +x ${pkgdir}/usr/bin/teaspeak-server
-  chmod -R 750 ${pkgdir}/$HOME/${pkgname}
-  chown -R $USER:$USER ${pkgdir}/$HOME/${pkgname}
+  chmod -R 750 ${pkgdir}/opt/${pkgname}
+  chown -R $USER:$USER ${pkgdir}/opt/${pkgname}
   
 }
 
