@@ -1,0 +1,11 @@
+--- package.json.old	2021-03-28 09:28:27.984047295 +0800
++++ package.json.new	2021-03-28 09:32:20.180718825 +0800
+@@ -59,7 +59,7 @@
+             "string",
+             "null"
+           ],
+-          "default": null,
++          "default": "/usr/lib/jvm/default",
+           "description": "Specifies the folder path to the JDK (8 or more recent) used to launch the Java Language Server.\nOn Windows, backslashes must be escaped, i.e.\n\"java.home\":\"C:\\\\Program Files\\\\Java\\\\jdk1.8.0_161\"",
+           "scope": "window"
+         },
