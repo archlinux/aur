@@ -1,0 +1,15 @@
+pkgbase = com.officebox.deepin
+	pkgdesc = 万彩办公大师Office Box是一款免费办公工具箱，小小工具箱，几乎满足各种办公需求，包含70+个无任何广告及插件的办公小工具，所有的小工具无需安装，直接加载启动，从此省去到处寻找工具、安装及卸载的麻烦。
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = http://http://www.wofficebox.com/
+	arch = x86_64
+	license = GPL
+	depends = deepin-wine5
+	depends = deepin-wine5-helper
+	provides = com.officebox.deepin=3.0.7
+	source = https://gitlab.com/Sakura1943/officebox/-/raw/master/com.officebox.deepin.tar.gz
+	md5sums = SKIP
+
+pkgname = com.officebox.deepin
+
