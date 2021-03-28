@@ -1,7 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=searx
-pkgver=0.18.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine (python(3) based)"
 arch=('any')
@@ -28,7 +28,7 @@ backup=('etc/searx/settings.yml' 'etc/uwsgi/searx.ini')
 source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
         'searx.ini'
         'searx.sysusers')
-sha512sums=('65cdc3a96ce658d06c3cd600b98bccaf39185684de86096a5e3f87a54906bfcdfc42626b8394c7e9abd835f81611f3a26a97897f4f2da4d9275fd3887667d2eb'
+sha512sums=('725b585d2aedd6fa08d41d98dcdc62234035b0f07211d678e913fb3c9ef949ca4f1719c02368f09eb4469aaa2af8018bd860c088f7bd934de4a588c19e95db65'
             '6e1e7771e747e2bcb9cbc3e5ec9735461b6d791c0c0412e06e7dd802c18625edd0916de32164bf780c18ef7b6a87f55ed1e917377b3adb2bf53c0344f34b49e8'
             '6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e')
 
