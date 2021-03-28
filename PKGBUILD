@@ -58,6 +58,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX='/usr' \
     -D INSTALL_DIR_CMAKE=/usr/lib/cmake/opencascade \
     -D BUILD_WITH_DEBUG=OFF \
+    -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
     -D USE_FFMPEG=ON \
     -D USE_FREEIMAGE=ON \
     -D USE_RAPIDJSON=ON \
