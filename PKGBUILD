@@ -9,13 +9,13 @@ url="https://github.com/angrysoft/pycouchdb"
 license=('Apache 2.0')
 arch=('any')
 depends=('python-setuptools' 'python-pycryptodomex')
-source=("git+https://angrysoft@bitbucket.org/angrysoft/pyiot.git")
+source=("${_realname}::git+https://bitbucket.org/angrysoft/pyiot/src/master/")
 md5sums=("SKIP")
 noextract=()
 
 pkgver() {
   cd ${_realname}
-  git describe --tags | sed 's+-+.r+' |tr - .
+  git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
