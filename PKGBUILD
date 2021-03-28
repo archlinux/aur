@@ -4,7 +4,7 @@
 _jobId=1134933283
 pkgname=solarus-bin
 pkgver=1.7.0.dev.$_jobId
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='A lightweight, free and open-source game engine for Action-RPGs'
 url='https://gitlab.com/solarus-games/solarus'
@@ -20,7 +20,6 @@ depends=('glm'
          'sdl2>=2.0.6'
          'sdl2_image'
          'sdl2_ttf')
-makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://gitlab.com/solarus-games/solarus/-/jobs/$_jobId/artifacts/download")
 provides=('solarus')
 conflicts=('solarus')

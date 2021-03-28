@@ -1,11 +1,10 @@
 pkgbase = solarus-bin
 	pkgdesc = A lightweight, free and open-source game engine for Action-RPGs
 	pkgver = 1.7.0.dev.1134933283
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/solarus-games/solarus
 	arch = x86_64
 	license = GPL3
-	makedepends = unzip
 	depends = glm
 	depends = hicolor-icon-theme
 	depends = libmodplug>=0.8.8.4
