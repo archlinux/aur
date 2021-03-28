@@ -1,7 +1,7 @@
 pkgbase = lib32-wildmidi
 	pkgdesc = Open Source MIDI Synthesizer (32-bit)
 	pkgver = 0.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mindwerks.net/projects/wildmidi/
 	arch = x86_64
 	license = LGPL3
