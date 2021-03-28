@@ -7,9 +7,9 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=4.14
+_pkgvermajmin=4.15
 _pkgver=${_pkgvermajmin}.0
-_verpostfix=""
+_verpostfix="beta2"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=2
 _urlbase="https://download.qt.io/official_releases"
@@ -39,7 +39,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('d240109351e96446ff149cbd56341ec02ba37bfa50462a85e4d02dfe6b21201e')
+sha256sums=('e4bddafb500b97e71963c1b9779713eaead2a652ec2930b688041780b9fc0c45')
 
 prepare() {
   cd ${srcdir}/${_filename}
