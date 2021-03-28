@@ -29,84 +29,66 @@ rapidjson
 )
 #checkdepends=()
 
-source=("${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz")
-sha256sums=('3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739')
+options=(!strip)
+
+source=(
+"${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
+opencascade.sh
+)
+sha256sums=('3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739'
+            '7b6afbc46707011f14a68c9edd13569288a89d893a9ca438724c4026aa62ce57')
 
 prepare() {
   cd occt-${_pkgver}
+
+  curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
   
   # fix for None type build
-  sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
+  #sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
 
   # fix for trying to write into the system during build
-  sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
+  #sed 's,if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}"),if (0),g' -i CMakeLists.txt
 }
 
 build() {
-  INSTALL_DIR_BIN=bin
-  INSTALL_DIR_LIB=lib
+  # prevents the build from trying to write into the system
+  export DESTDIR="${srcdir}/garbage"
+  rm -rf "${DESTDIR}"
 
-  BUILD_ADDITIONAL_TOOLKITS=
-  BUILD_DOC_Overview=OFF
-  BUILD_Inspector=OFF
-  BUILD_LIBRARY_TYPE=Shared
-  BUILD_PATCH=
-  BUILD_RELEASE_DISABLE_EXCEPTIONS=ON
-  BUILD_WITH_DEBUG=OFF
-  BUILD_ENABLE_FPE_SIGNAL_HANDLER=ON
-
-  BUILD_MODULE_ApplicationFramework=ON
-  BUILD_MODULE_DataExchange=ON
-  BUILD_MODULE_Draw=ON
-  BUILD_MODULE_ModelingAlgorithms=ON
-  BUILD_MODULE_ModelingData=ON
-  BUILD_MODULE_Visualization=ON
-
-  USE_FFMPEG=ON
-  USE_FREEIMAGE=ON
-  USE_GLES2=ON
-  USE_RAPIDJSON=ON
-  USE_TBB=ON
-  USE_VTK=ON
-  AUX_ARGS=
-
-  cmake -B build_dir -S occt-${_pkgver} \
-    -W no-dev \
-    -G Ninja \
-    -D CMAKE_BUILD_TYPE=None \
+  cmake -B build_dir -S occt-${_pkgver} -W no-dev -G Ninja \
+    -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX='/usr' \
-    -D 3RDPARTY_FREETYPE_DIR:PATH="$FREETYPE_DIR" \
-    -D BUILD_ADDITIONAL_TOOLKITS:STRING="$BUILD_ADDITIONAL_TOOLKITS" \
-    -D BUILD_DOC_Overview:BOOL=$BUILD_DOC_Overview \
-    -D BUILD_Inspector:BOOL=$BUILD_Inspector \
-    -D BUILD_LIBRARY_TYPE:STRING=$BUILD_LIBRARY_TYPE \
-    -D BUILD_MODULE_ApplicationFramework:BOOL=$BUILD_MODULE_ApplicationFramework \
-    -D BUILD_MODULE_DataExchange:BOOL=$BUILD_MODULE_DataExchange \
-    -D BUILD_MODULE_Draw:BOOL=$BUILD_MODULE_Draw \
-    -D BUILD_MODULE_FoundationClasses:BOOL=ON \
-    -D BUILD_MODULE_ModelingAlgorithms:BOOL=$BUILD_MODULE_ModelingAlgorithms \
-    -D BUILD_MODULE_ModelingData:BOOL=$BUILD_MODULE_ModelingData \
-    -D BUILD_MODULE_Visualization:BOOL=$BUILD_MODULE_Visualization \
-    -D BUILD_PATCH:PATH="$BUILD_PATCH" \
-    -D BUILD_RELEASE_DISABLE_EXCEPTIONS:BOOL=$BUILD_RELEASE_DISABLE_EXCEPTIONS \
-    -D BUILD_WITH_DEBUG:BOOL=$BUILD_WITH_DEBUG \
-    -D BUILD_ENABLE_FPE_SIGNAL_HANDLER:BOOL=$BUILD_ENABLE_FPE_SIGNAL_HANDLER \
-    -D INSTALL_DIR_LAYOUT:STRING=Unix \
-    -D INSTALL_DIR_BIN:STRING=$INSTALL_DIR_BIN \
-    -D INSTALL_DIR_LIB:STRING=$INSTALL_DIR_LIB \
-    -D INSTALL_DIR_CMAKE:STRING=lib/cmake/opencascade \
-    -D USE_FFMPEG:BOOL=$USE_FFMPEG \
-    -D USE_FREEIMAGE:BOOL=$USE_FREEIMAGE \
-    -D USE_GLES2:BOOL=$USE_GLES2 \
-    -D USE_RAPIDJSON:BOOL=$USE_RAPIDJSON \
-    -D USE_TBB:BOOL=$USE_TBB \
+    -D BUILD_DOC_Overview=OFF \
+    -D BUILD_Inspector=OFF \
+    -D BUILD_LIBRARY_TYPE=Shared \
+    -D BUILD_MODULE_ApplicationFramework=ON \
+    -D BUILD_MODULE_DataExchange=ON \
+    -D BUILD_MODULE_Draw=ON \
+    -D BUILD_MODULE_FoundationClasses=ON \
+    -D BUILD_MODULE_ModelingAlgorithms=ON \
+    -D BUILD_MODULE_ModelingData=ON \
+    -D BUILD_MODULE_Visualization=ON \
+    -D BUILD_RELEASE_DISABLE_EXCEPTIONS=ON \
+    -D BUILD_WITH_DEBUG=OFF \
+    -D BUILD_ENABLE_FPE_SIGNAL_HANDLER=ON \
+    -D INSTALL_DIR_LAYOUT=Unix \
+    -D INSTALL_DIR_BIN=bin \
+    -D INSTALL_DIR_LIB=lib \
+    -D INSTALL_DIR_CMAKE=/usr/lib/cmake/opencascade \
+    -D USE_FFMPEG=ON \
+    -D USE_FREEIMAGE=ON \
+    -D USE_GLES2=ON \
+    -D USE_RAPIDJSON=ON \
+    -D USE_TBB=ON \
+    -D USE_VTK=ON \
     -D INSTALL_VTK=False \
     -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9" \
-    -D 3RDPARTY_VTK_LIBRARY_DIR:PATH="/usr/lib" \
-    -D 3RDPARTY_VTK_INCLUDE_DIR:PATH="/usr/include" \
-    -D USE_VTK:BOOL=$USE_VTK
+    -D VTK_RENDERING_BACKEND="OpenGL2" \
+    -D 3RDPARTY_VTK_LIBRARY_DIR=/usr/lib \
+    -D 3RDPARTY_VTK_INCLUDE_DIR=/usr/include
 
   cmake --build build_dir
+  rm -rf "${DESTDIR}"
 }
 
 check() {
@@ -116,8 +98,14 @@ check() {
 
 package() {
   cd occt-${_pkgver}
-  local _destdir=/  # maybe this belongs in /opt/${pkgname}?
-  DESTDIR="${pkgdir}${_destdir}" cmake --build ../build_dir -- install
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE_LGPL_21.txt
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 OCCT_LGPL_EXCEPTION.txt
+  local _installroot=/  # could put this in /opt/${pkgname}
+  export DESTDIR="${pkgdir}${_installroot}"
+  cmake --build ../build_dir -- install
+  
+  # remove the pollution from bin
+  rm -rf "${pkgdir}/usr/bin/"*.sh
+  
+  install -m755 -Dt "${pkgdir}/etc/profile.d" "${srcdir}/opencascade.sh"
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE_LGPL_21.txt
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" OCCT_LGPL_EXCEPTION.txt
 }
