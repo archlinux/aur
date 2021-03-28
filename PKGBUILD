@@ -11,7 +11,7 @@ license=(MIT)
 depends=('python' 'python-semver')
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/reubano/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("42e02c0f022ae6663000de741b818e226a60c4c6983614c87770c0d5321bf217")
+sha256sums=("2effded9665a19573e71f5431c9d79f9215da6f894a12251187a3254d2310df9")
 
 build() {
   cd $_pkgname-$pkgver
