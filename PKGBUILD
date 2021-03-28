@@ -1,60 +1,43 @@
-# Contributor: Stefan Seemayer <mail@semicolonsoftware.de>
+# Maintainer: Buce <dmbuce@gmail.com>
 pkgname=c10t-git
-pkgver=20120305
+pkgver=1.7.r242.g15d0bfe
+pkgver() {
+  cd "$srcdir/$pkgname"
+  if ! git describe --tags 2>/dev/null; then
+    echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  fi | sed 's/-/.r/; s/-/./g'
+}
 pkgrel=1
-pkgdesc="The c10t mapper for Minecraft"
+pkgdesc="A minecraft cartography tool."
 arch=('i686' 'x86_64')
-url="http://toolchain.eu/project/c10t"
-license=('GPL')
-groups=()
+url="https://github.com/udoprog/c10t"
+license=('BSD')
 depends=(libpng boost-libs freetype2)
 makedepends=('boost' 'git' 'cmake')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
+#checkdepends=()
+optdepends=()
+provides=('c10t')
+conflicts=('c10t')
+backup=(etc/c10t-palette.json)
 install=
-source=()
-noextract=()
-md5sums=()
-
-_gitroot="git://github.com/udoprog/c10t.git"
-_gitname="c10t-gitrepo"
+source=("$pkgname::git+https://github.com/udoprog/${pkgname%-git}.git")
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$srcdir/$pkgname"
 
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-    cd $_gitname
-    git submodule init || exit 1
-    git submodule update || exit 1
-    cd "$srcdir"
-  fi
+  git submodule init
+  git submodule update
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
+  cmake .
+  sed -i 's,palette.json,/etc/c10t-palette.json,g' src/settings_t.cpp
+  make c10t
+}
 
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-  git submodule init || exit 1
-  git submodule update || exit 1
+package() {
+  install -D -m 755  "$srcdir/$pkgname/c10t" "$pkgdir/usr/bin/c10t"
+  install -D -m 644 "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/c10t/LICENSE"
+  install -D -m 644 "$srcdir/$pkgname/palette.json" "$pkgdir/etc/c10t-palette.json"
+}
 
-  #
-  # BUILD HERE
-  #
-
-  #./autogen.sh
-  #./configure --prefix=/usr
-  cmake . || return 1
-  make c10t || return 1
-
-  mkdir -p $pkgdir/usr/bin/ || return 1
-  install -m755 c10t $pkgdir/usr/bin/ || return 1
-} 
+# vim:set ts=2 sw=2 et:
