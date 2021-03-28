@@ -1,0 +1,18 @@
+pkgbase = python-lookatme-ueberzug
+	pkgdesc = Provides image rendering support for python-lookatme
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/d0c-s4vage/lookatme.contrib.image_ueberzug
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-lookatme
+	depends = python-urwid-ueberzogen
+	depends = python-ueberzug
+	optdepends = python-lookatme-render: render code blocks of supported languages into images
+	optdepends = python-lookatme-qrcode: embeds qrcodes in the presentation
+	source = lookatme.contrib.image_ueberzug-1.1.0.tar.gz::https://github.com/d0c-s4vage/lookatme.contrib.image_ueberzug/archive/refs/tags/v1.1.0.tar.gz
+	md5sums = 1d6763b776f8d663199a140d177796b0
+
+pkgname = python-lookatme-ueberzug
+
