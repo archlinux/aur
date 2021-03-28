@@ -1,0 +1,18 @@
+pkgbase = plasma5-applets-systemloadviewer
+	pkgdesc = Deprecated Plasma 5 plasmoid for monitoring system load. I preserved it as I prefer to use this plasmoid.
+	pkgver = 2020.1.3_21.11
+	pkgrel = 1
+	url = https://home.otoy.com/render/octane-render/demo/
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = kross
+	depends = plasma-workspace
+	depends = libcanberra-pulse
+	depends = pulseaudio
+	depends = perl
+	source = https://invent.kde.org/plasma/kdeplasma-addons#commit=62730341432d3abf203ea5d2f5583cd5a0b64123
+
+pkgname = plasma5-applets-systemloadviewer
+
