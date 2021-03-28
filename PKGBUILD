@@ -6,7 +6,7 @@ set -u
 _perlmod='File-Touch'
 _modnamespace='File'
 pkgname="perl-${_perlmod,,}"
-pkgver='0.11'
+pkgver='0.12'
 pkgrel='1'
 pkgdesc="${_perlmod//-/::} update file access and modification times, optionally creating files if needed"
 arch=('any')
@@ -18,9 +18,9 @@ _srcdir="${_perlmod}-${pkgver}"
 #source=("https://cpan.metacpan.org/authors/id/N/NE/NEILB/${_perlmod}-${pkgver}.tar.gz")
 _verwatch=("http://www.cpan.org/modules/by-module/${_modnamespace}/" "${_perlmod}-\([0-9\.]*\)\.tar\.gz" 'l')
 source=("${_verwatch[0]}${_perlmod}-${pkgver}.tar.gz")
-md5sums=('caf4101a022f66c88f5fb4383b3f6388')
-sha256sums=('e379a5ff89420cf39906e5ceff309b8ce958f99f9c3e57ad52b5002a3982d93c')
-sha512sums=('7f1d46fe26de863388854e222b0229e29f0575ee0d8ed59f8cc447a39bc40d7fda425a394a4c3bbc9f561370b6c82cec9c65f4bb784ebba4ff72dbcb5c0a4cd0')
+md5sums=('84215f5010adcbec0065e1c718d8875f')
+sha256sums=('2a04dc424df48e98c54556c6045cab026a49e3737aa94a21cf497761b0f2e59c')
+sha512sums=('0a13b4a2260fb134ba8ab2fc521aa9d92c9724773c06626e90bdb8b67c3ffab99679cb7f9ef6bfa5335c1d4fdf9bdbcfd8a8927f6fed5a0800dd3c9504904b40')
 
 build() {
   set -u
