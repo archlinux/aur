@@ -1,7 +1,7 @@
 # Maintainer: Louis Tim Larsen <louis(a)louis.dk>
 
 pkgname=ephemeral
-pkgver=7.0.5
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="A private-by-default, always-incognito browser for elementary OS."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('ephemeral-bin' 'ephemeral-git')
 install=${pkgname}.install
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/cassidyjames/${pkgname}/archive/${pkgver}.tar.gz"
 	"disable_paid_and_native_infobars.patch")
-sha512sums=('6520106eba53475d6852dc6e44d73a513eec9bbccbe89f5ab1704147d439230eaa581072e8bef1a78e83bb2df85e460f04cbcaa724b78c386303577802b3db67'
+sha512sums=('acbec119486ff554deed20b31a2d08d60079ae770988901035270f866bc659c9b501036b597906fcf1589cf59699fdbc6786494ede3870f96d0591ff6a6de203'
             'f02f2a25b9acffc52df02322813d0536ea823fdc5deec234b4e49e9441054421d8c2621911b64acf78cc2e6f156d6193e8b100b780e76fd4e0e7b554e1c83b16')
 
 #prepare() {
