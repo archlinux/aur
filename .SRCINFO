@@ -1,16 +1,16 @@
 pkgbase = ruby-asciidoctor-diagram-ditaamini
 	pkgdesc = Ditaa JAR files wrapped in a Ruby gem
-	pkgver = 0.13.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/asciidoctor/asciidoctor-diagram
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = asciidoctor-diagram-ditaamini-0.13.1.gem
+	noextract = asciidoctor-diagram-ditaamini-1.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/asciidoctor-diagram-ditaamini-0.13.1.gem
-	sha1sums = 5b3ba18ef1aedec98a49ba4961ae86c81bd3b176
+	source = https://rubygems.org/downloads/asciidoctor-diagram-ditaamini-1.0.0.gem
+	sha1sums = bd82528b59a30ff4ef5b0a419c7a68499dcf7c1c
 
 pkgname = ruby-asciidoctor-diagram-ditaamini
 

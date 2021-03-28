@@ -3,7 +3,7 @@
 
 _gemname=asciidoctor-diagram-ditaamini
 pkgname=ruby-$_gemname
-pkgver=0.13.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Ditaa JAR files wrapped in a Ruby gem'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5b3ba18ef1aedec98a49ba4961ae86c81bd3b176')
+sha1sums=('bd82528b59a30ff4ef5b0a419c7a68499dcf7c1c')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
