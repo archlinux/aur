@@ -7,7 +7,7 @@ pkgbase = com.officebox.deepin
 	license = GPL
 	depends = deepin-wine5
 	depends = deepin-wine5-helper
-	provides = com.officebox.deepin=3.0.7
+	provides = com.officebox.deepin-3.0.7
 	source = https://gitlab.com/Sakura1943/officebox/-/raw/master/com.officebox.deepin.tar.gz
 	md5sums = SKIP
 
