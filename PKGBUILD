@@ -6,7 +6,7 @@ _cuda_archs='5.2;5.3;6.0;6.1;6.2;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX
 
 pkgbase=caffe2
 pkgname=('caffe2' 'caffe2-cuda')
-_pytorchver=1.8.0
+_pytorchver=1.8.1
 pkgver="0.8.2_${_pytorchver}"
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework'
@@ -129,7 +129,8 @@ prepare() {
                            'foxi'
                            'tbb'
                            'fmt'
-                           'tensorpipe')
+                           'tensorpipe'
+                           'kineto')
     
     git -C pytorch submodule init
     
