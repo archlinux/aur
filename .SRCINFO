@@ -1,7 +1,7 @@
 pkgbase = obsidian-insider
 	pkgdesc = Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
 	pkgver = 0.11.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://obsidian.md/
 	arch = x86_64
 	license = custom:Commercial
@@ -11,6 +11,7 @@ pkgbase = obsidian-insider
 	depends = fuse
 	depends = electron
 	provides = obsidian
+	conflicts = obsidian
 	options = !strip
 	source = obsidian-insider
 	source = obsidian-insider.desktop

@@ -7,9 +7,10 @@ _pkgname=obsidian
 pkgver=0.11.10
 # Full public release
 _pkgver=0.11.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 arch=('x86_64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
