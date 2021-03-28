@@ -3,7 +3,7 @@
 pkgbase = indicator-keylock
 	pkgdesc = An indicator that displays the status of the keyboard lock keys
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/indicator-keylock/
 	install = indicator-keylock.install
 	arch = x86_64
