@@ -7,7 +7,7 @@ pkgbase = python-pyiot-git
 	license = Apache 2.0
 	depends = python-setuptools
 	depends = python-pycryptodomex
-	source = git+https://angrysoft@bitbucket.org/angrysoft/pyiot.git
+	source = pyiot::git+https://bitbucket.org/angrysoft/pyiot/src/master/
 	md5sums = SKIP
 
 pkgname = python-pyiot-git
