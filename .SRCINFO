@@ -1,0 +1,14 @@
+pkgbase = kwprocessor
+	pkgdesc = Advanced keyboard-walk generator with configureable basechars, keymap and routes
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://hashcat.net/wiki/doku.php?id=kwprocessor
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = kwprocessor-1.00.tgz::https://github.com/hashcat/kwprocessor/archive/refs/tags/v1.00.tar.gz
+	sha256sums = 2b6565d6cb131f75acd0732973a4e0702ff6abeb233e19894314408e3261b62e
+
+pkgname = kwprocessor
+
