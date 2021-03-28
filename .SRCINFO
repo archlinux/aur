@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-msg-git
+	pkgdesc = Display a message in early boot
+	pkgver = r10.f7e1db9
+	pkgrel = 1
+	url = https://git.jacobkoziej.xyz/mkinitcpio-msg/
+	arch = any
+	license = GPL3
+	source = git+https://git.jacobkoziej.xyz/mkinitcpio-msg/?signed
+	validpgpkeys = 1BF98D10E0D00B41572358364C133A84E6469228
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-msg-git
+
