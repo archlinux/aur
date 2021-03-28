@@ -54,9 +54,9 @@ source=(freedesktop-java.desktop.in
         ${_jdkname}24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
         ${_jdkname}32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
         ${_jdkname}48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=(59dce69f1e9b5440394dbc67a9384af617a48785
-          96ced62ddefc481ae2636bc59bf701763bbbbf5c
-          512c5fcfa72e8a43523f84183b8779851d3d1341
+sha1sums=(19873c53aaf234d215b9892450bfd4e95c13ed7c
+          5347a8c12c16a29aada0babdfda5dbef236717c0
+          8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b
           36096a57cebd346e08efc68326fe77960d43726f
           b8233f9ff931ce97a265827fac18ed90f4e248c6
           a0da2952bc87a425182c3ac88e88649fbaa7cb65
