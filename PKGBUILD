@@ -65,7 +65,6 @@ build() {
     -D USE_GLES2=OFF \
     -D USE_VTK=ON \
     -D INSTALL_VTK=False \
-    -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9" \
     -D 3RDPARTY_VTK_LIBRARY_DIR=/usr/lib \
     -D 3RDPARTY_VTK_INCLUDE_DIR=/usr/include
 
