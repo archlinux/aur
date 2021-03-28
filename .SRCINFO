@@ -29,6 +29,7 @@ pkgbase = mwptools-git
 	optdepends = gnuplot: Mission Elevation plots
 	optdepends = ruby: Replay Blackbox logs
 	optdepends = go: Build otxlog (OpenTX log player)
+	optdepends = paho-mqtt-c-git: Alternative MQTT library (AUR)
 	provides = mwptools
 	conflicts = mwptools
 	source = mwptools::git+https://github.com/stronnag/mwptools.git

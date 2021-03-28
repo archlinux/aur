@@ -14,6 +14,7 @@ optdepends=('blackbox-tools-git: Replay Blackbox files (AUR)'
  'gnuplot: Mission Elevation plots'
  'ruby: Replay Blackbox logs'
  'go: Build otxlog (OpenTX log player)'
+ 'paho-mqtt-c-git: Alternative MQTT library (AUR)'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
