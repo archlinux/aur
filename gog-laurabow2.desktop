@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.1
+Type=Application
+Name=The Dagger of Amon Ra
+GenericName=The Dagger of Amon Ra
+Comment=The Dagger of Amon Ra
+Icon=/opt/gog/laurabow2/goggame-1929512011.ico
+Exec=/usr/bin/scummvm --path=/opt/gog/laurabow2 sci:laurabow2
+Categories=Game;
+Path=/opt/gog/laurabow2
