@@ -20,7 +20,7 @@ pkgbase = opencascade-rc
 	conflicts = opencascade
 	conflicts = opencascade-git
 	source = opencascade-rc-7.5.1.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_5_1;sf=tgz
-	md5sums = c7ef879cafcd860090070fe281104279
+	sha256sums = 3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739
 
 pkgname = opencascade-rc
 
