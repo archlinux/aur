@@ -7,14 +7,13 @@ license=('GPL3')
 depends=('plasma-workspace' 'libcanberra-pulse' 'pulseaudio' 'perl')
 optdepends=()
 makedepends=('extra-cmake-modules' 'kdoctools' 'kross')
-url="https://home.otoy.com/render/octane-render/demo/"
-source=('https://invent.kde.org/plasma/kdeplasma-addons#commit=62730341432d3abf203ea5d2f5583cd5a0b64123'
-        'limit-to-only-target.patch')
-
+source=(git+https://invent.kde.org/plasma/kdeplasma-addons#commit=62730341432d3abf203ea5d2f5583cd5a0b64123 limit-to-only-target.patch)
+md5sums=('SKIP' 'SKIP')
+        
 prepare()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  patch --strip=1 --input=limit-to-only-target.patch
+  patch --strip=1 --input="$srcdir"/limit-to-only-target.patch
 }
         
 build()
