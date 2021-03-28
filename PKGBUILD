@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino
-pkgver=2021.2
+pkgver=2021.3
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
 license=('Apache')
-depends=('protobuf' 'tbb')
+depends=('protobuf')
 # GPU (clDNN) plugin: only Intel GPUs are supported:
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
@@ -19,46 +19,50 @@ optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
             'python-py-cpuinfo: for benchmark tool'
             'python-progress: for benchmark tool'
             'opencv: for benchmark and cross_check tools')
-makedepends=('git' 'git-lfs' 'cmake' 'libusb' 'ocl-icd' 'opencv' 'python'
-             'cython' 'shellcheck')
+makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 'opencv'
+             'python' 'cython' 'shellcheck')
 options=('!emptydirs')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
 replaces=('intel-openvino')
 # supported firmwares: VPU_SUPPORTED_FIRMWARES in inference-engine/cmake/vpu_dependencies.cmake
-_firmware_ver=1522 # FIRMWARE_PACKAGE_VERSION in inference-engine/cmake/vpu_dependencies.cmake
+_firmware_ver=1639 # FIRMWARE_PACKAGE_VERSION in inference-engine/cmake/vpu_dependencies.cmake
 _gnaver=02.00.00.1047.1 # GNA_VERSION (GNA2) in inference-engine/cmake/dependencies.cmake
+_tbbver=2020_20200415 # inference-engine/cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'git+https://github.com/opencv/ade.git'
         'git+https://github.com/openvinotoolkit/oneDNN.git'
         'googletest-openvinotoolkit'::'git+https://github.com/openvinotoolkit/googletest.git'
         'git+https://github.com/gflags/gflags.git'
+        'git+https://github.com/herumi/xbyak.git'
         "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/unified/VPU/usb-ma2x8x/firmware_usb-ma2x8x_${_firmware_ver}.zip"
         "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/unified/VPU/pcie-ma2x8x/firmware_pcie-ma2x8x_${_firmware_ver}.zip"
         "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/unified/GNA/GNA_${_gnaver}.zip"
+        "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/linux/tbb${_tbbver}_lin_strip.tgz"
         'openvino.conf'
         'openvino.sh'
         'setupvars.sh'
         '010-ade-disable-werror.patch'
-        '020-openvino-cldnn-disable-werror.patch'
-        '030-openvino-do-not-install-tbb.patch')
+        '020-openvino-cldnn-disable-werror.patch')
 noextract=("firmware_usb-ma2x8x_${_firmware_ver}.zip"
-           "firmware_pcie-ma248x_${_firmware_ver}.zip"
-           "GNA_${_gnaver}.zip")
+           "firmware_pcie-ma2x8x_${_firmware_ver}.zip"
+           "GNA_${_gnaver}.zip"
+           "tbb${_tbbver}_lin_strip.tgz")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '95a93144f0bbfe6e35d3830e93e6b63e1e109f849a6a7c307cae9030e3a662aa'
-            '6d061d21d90f1919ef375138066ba7a20ceb663901d2729d9cb1b639169df5da'
+            'SKIP'
+            'cfba5fc0895a564fa51a1438f1c4d4f06198be982b1c2fb973c5cb9ab0a3c1f3'
+            '4176456c96b151470de3a723b603503306cff2e52975b739927e37d730c053be'
             '20820e07392a1e876cf5577430c1c4c74b924d8f34cc17bfa3e36e641555e05d'
-            'f485aa97d88d424dd3a223e0eddbbc382ec6c8d5094d51cbd3f0524b915e3d68'
+            '95b2f3b0b70c7376a0c7de351a355c2c514b42c4966e77e3e34271a599501008'
+            '66cbaab93a6097207ff0908db155d590ad30b5fe12b429473e0bdfa99d1fd37f'
             '49a1cdd2357ac3c657b28d72aea1294e4af46389e41ed0d55ccbd12bd995058d'
-            '093199ae759e8755166b9737562438866123eda9b1afbbef2f7107b3cf827be5'
+            'cfcc5af35d7a50f83c780716f69f8a800b14bcf143f7abafd31a7a0dcb8c9ae8'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '013c96d0842d8778b0719ee29b9d9d7d8b61dc9b3b8b4e03d2293a8948e15377'
-            'c64d605faff70037e7381fdc501e6b71cc1569b84bc8230db2c61d1d28a230b7')
+            '97a5c979aa4553879e95ce7a081e558504f0e4141a10cd3fc0b549ca54bbced5')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -71,15 +75,16 @@ prepare() {
     git -C openvino config --local submodule.inference-engine/thirdparty/mkl-dnn.url "${srcdir}/oneDNN"
     git -C openvino config --local submodule.inference-engine/tests/ie_test_utils/common_test_utils/gtest.url "${srcdir}/googletest-openvinotoolkit"
     git -C openvino config --local submodule.inference-engine/samples/thirdparty/gflags.url "${srcdir}/gflags"
+    git -C openvino config --local submodule.thirdparty/xbyak.url "${srcdir}/xbyak"
     git -C openvino submodule update
     
     install -D -m644 "firmware_usb-ma2x8x_${_firmware_ver}.zip"  -t thirdparty/unified/VPU/usb-ma2x8x
     install -D -m644 "firmware_pcie-ma2x8x_${_firmware_ver}.zip" -t thirdparty/unified/VPU/pcie-ma2x8x
     install -D -m644 "GNA_${_gnaver}.zip" -t thirdparty/unified/GNA
+    install -D -m644 "tbb${_tbbver}_lin_strip.tgz" -t thirdparty/linux
     
     patch -d openvino/inference-engine/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-cldnn-disable-werror.patch"
-    patch -d openvino -Np1 -i "${srcdir}/030-openvino-do-not-install-tbb.patch"
 }
 
 build() {
@@ -107,8 +112,6 @@ build() {
         -DNGRAPH_TEST_UTIL_ENABLE:BOOL='OFF' \
         -DNGRAPH_UNIT_TEST_ENABLE:BOOL='FALSE' \
         -DNGRAPH_USE_SYSTEM_PROTOBUF:BOOL='ON' \
-        -DTBBROOT:PATH='/usr' \
-        -DTBB_DIR:PATH='/usr/lib/cmake/TBB' \
         -DTREAT_WARNING_AS_ERROR:BOOL='OFF' \
         -Wno-dev
     make -C build
@@ -122,10 +125,12 @@ package() {
     install -D -m755 setupvars.sh -t "${pkgdir}/opt/intel/openvino/bin"
     
     local _gnasover
+    local _gnasover_full
     local _gnadir="${pkgdir}/opt/intel/openvino/deployment_tools/inference_engine/external/gna"
-    _gnasover="$(find "openvino/inference-engine/temp/gna_${_gnaver}/linux/x64" \
-                     -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
+    _gnasover="$(find "${_gnadir}/lib" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.so\.//')"
+    _gnasover_full="$(find "${_gnadir}/lib" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
     cp -dr --no-preserve='ownership' "openvino/inference-engine/temp/gna_${_gnaver}/include" "$_gnadir"
-    mv "${_gnadir}/lib/libgna.so" "${_gnadir}/lib/libgna.so.${_gnasover}"
+    rm "${_gnadir}/lib"/libgna.so{,".${_gnasover}"}
+    ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/lib/libgna.so.${_gnasover}"
     ln -s "libgna.so.${_gnasover}" "${_gnadir}/lib/libgna.so"
 }
