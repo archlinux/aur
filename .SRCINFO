@@ -1,0 +1,18 @@
+pkgbase = wine-gui-git
+	pkgdesc = GUI for managing Windows programs under linux
+	pkgver = 0.14alpha.0.ge30a345
+	pkgrel = 1
+	url = https://github.com/tank142/wine-gui
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt6-base
+	depends = xdg-utils
+	depends = winetricks
+	depends = icoutils
+	depends = imagemagick
+	source = wine-gui::git+https://github.com/tank142/wine-gui.git
+	sha256sums = SKIP
+
+pkgname = wine-gui-git
+
