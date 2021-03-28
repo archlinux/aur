@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Obsidian Insider
-Exec=/usr/bin/electron /usr/share/obsidian/app.asar %u --no-sandbox %U
+Exec=/usr/bin/obsidian-insider %U
 Terminal=false
 Type=Application
 Icon=obsidian
