@@ -2,8 +2,8 @@
 
 pkgname=python-pkutils
 _pkgname=pkutils
-pkgver=2.0.0
-pkgrel=1
+pkgver=1.2.1
+pkgrel=2
 pkgdesc="A python packaging utility library"
 arch=(any)
 url='https://github.com/reubano/pkutils'
