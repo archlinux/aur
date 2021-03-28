@@ -1,0 +1,17 @@
+pkgbase = neovim-coc-zsh-git
+	pkgdesc = coc.nvim source for Zsh completions
+	pkgver = r3.ef6b0ca
+	pkgrel = 1
+	url = https://github.com/tjdevries/coc-zsh
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = neovim-coc
+	depends = zsh
+	provides = neovim-coc-zsh
+	conflicts = neovim-coc-zsh
+	source = git+https://github.com/tjdevries/coc-zsh.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-zsh-git
+
