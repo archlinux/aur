@@ -2,12 +2,12 @@
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 pkgname=xclipd-git
 _pkgname=xclipd
-pkgver=v1.0.0.r0.gedd8a64
+pkgver=1.0.0.r0.gedd8a64
 pkgrel=1
 pkgdesc='An X11 clipboard manager.'
 url="https://github.com/jhunt/$_pkgname"
