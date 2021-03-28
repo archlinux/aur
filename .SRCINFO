@@ -1,0 +1,15 @@
+pkgbase = python-thrift-sasl
+	pkgdesc = Thrift SASL python module
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/cloudera/thrift_sasl
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	depends = thrift
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/t/thrift_sasl/thrift_sasl-0.4.2.tar.gz
+	sha256sums = 6a1c54731cb3ce61bdc041d9dc36e21f0f56db0163bb7b57be84de3fda70922f
+
+pkgname = python-thrift-sasl
+
