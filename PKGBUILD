@@ -3,7 +3,7 @@
 
 pkgname=oneshot
 
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 
 pkgdesc='First-come-first-serve single-fire HTTP/HTTPS server'
@@ -12,13 +12,13 @@ url="https://github.com/raphaelreyna/$pkgname"
 license=('MIT')
 
 makedepends=('go')
-depends=('man-db')
+depends=('man-db' 'hicolor-icon-theme')
 
 options=('zipman')
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('5249679376a362bf19384cf7e9422fc8074de9be6363ad6e3c2e4e525cd141c38584499beb865e6533ee99ce23ee0c6bc6054b81a89fe3563efc1a33184645bf')
+b2sums=('df09d4675f5d54e9860c57b341e8360f950a2ea5df006b9721e9ad29e857df46b544c9473de21849994496a89e1c51057d056d188d95074bd705e358dbdec344')
 
 
 build() {
@@ -35,10 +35,12 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname"                                   -t"$pkgdir/usr/bin/"
-  install -Dm644 "doc/man/$pkgname.1"                         -t"$pkgdir/usr/share/man/man1/"
-  install -Dm644 {README,doc/md/*}.md "${pkgname}_banner.png" -t"$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 LICENSE                                      -t"$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 "$pkgname"           -t"$pkgdir/usr/bin/"
+  install -Dm644 "doc/man/$pkgname.1" -t"$pkgdir/usr/share/man/man1/"
+  install -Dm644 "${pkgname}_banner.png" \
+                 {README,doc/md/*}.md -t"$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 icon/icon.svg        -t"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+  install -Dm644 LICENSE              -t"$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 
