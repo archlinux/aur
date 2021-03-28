@@ -9,7 +9,7 @@ pkgbase = tachidesk
 	provides = tachidesk
 	source = tachidesk-0.2.7.r312.jar::https://github.com/Suwayomi/Tachidesk/releases/download/v0.2.7/Tachidesk-v0.2.7-r312.jar
 	source = tachidesk.sh
-	md5sums = SKIP
+	md5sums = d05260628ffebe1f92c497f14d16043f
 	md5sums = 196d4e69879d3b01f73672c812c0f20c
 
 pkgname = tachidesk

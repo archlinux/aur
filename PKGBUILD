@@ -5,22 +5,20 @@ pkgname=tachidesk
 pkgver=0.2.7.r312
 pkgrel=1
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
-arch=('any')
+arch=("any")
 url="https://github.com/Suwayomi/Tachidesk"
-fetch_url="https://api.github.com/repos/Suwayomi/Tachidesk/releases/latest"
-license=('MPL2')
+license=("MPL2")
 depends=("java-runtime")
 provides=("tachidesk")
-source=(
-	"${pkgname}-${pkgver}.jar::$(curl -s ${fetch_url} | grep "browser_download_url.*jar" | cut -d\" -f4)"
-	"${pkgname}.sh"
-)
-md5sums=('SKIP'
-         '196d4e69879d3b01f73672c812c0f20c')
 
-pkgver() {
-	curl -s ${fetch_url}  | grep -m1 "Tachidesk.*jar" -o | sed -n -e's/Tachidesk-v\|.jar//g;s/-/./gp'
-}
+_semver=$(printf ${pkgver} | cut -d'.' -f4 --complement)
+_commits=$(printf ${pkgver} | cut -d'.' -f4)
+_fetch_url="${url}/releases/download/v${_semver}/Tachidesk-v${_semver}-${_commits}.jar"
+
+source=("${pkgname}-${pkgver}.jar::${_fetch_url}" 
+		"${pkgname}.sh")
+md5sums=('d05260628ffebe1f92c497f14d16043f'
+         '196d4e69879d3b01f73672c812c0f20c')
 
 package() {
 	install -Dm755 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
