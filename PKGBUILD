@@ -24,7 +24,7 @@ depends=(
 conflicts=('searx-git' )
 replaces=('searx-py3')
 backup=('etc/searx/settings.yml' 'etc/uwsgi/searx.ini')
-source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
+source=("https://github.com/searx/searx/archive/v$pkgver.zip"
         'searx.ini'
         'searx.sysusers')
 sha512sums=('725b585d2aedd6fa08d41d98dcdc62234035b0f07211d678e913fb3c9ef949ca4f1719c02368f09eb4469aaa2af8018bd860c088f7bd934de4a588c19e95db65'
