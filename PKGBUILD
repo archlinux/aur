@@ -15,7 +15,7 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pyserial: Arduino/serial device support')
 options=(!strip)
 source=("${pkgname}-v${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('57aee35406a303bc8b4ab6f9d8139af77cece48142618a70964430ea71eb05243e9fb49b49543a63452c8c24a9fabb6ed92e18558bf267ee2fb0be17ab59758d')
+sha512sums=('SKIP')
 
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
