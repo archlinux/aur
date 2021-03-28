@@ -11,16 +11,16 @@ source=("https://github.com/dduan/tre/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c372573a6325288b9b23dcd20d1cb100ad275f5b0636a7328395352b3549dd71')
 
 build() {
-    cd $srcdir
+    cd $srcdir/tre-command
     cargo build --release --locked --target-dir=$PWD/target
 }
 
 package() {
-    cd $srcdir
+    cd $srcdir/tre-command
     cargo test --release --locked --target-dir=$PWD/target
 }
 
 package() {
-    cd $srcdir
+    cd $srcdir/tre-command
     install -Dm 755 target/release/tre "${pkgdir}/usr/bin/tre"
 }
