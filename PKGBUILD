@@ -1,14 +1,14 @@
 # Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
 pkgname=irony-mod-manager-bin
-pkgver=1.13.116
+pkgver=1.14.28
 pkgrel=1
 pkgdesc="A mod manager and launcher for paradox interactive games"
 arch=('x86_64')
 url="https://github.com/bcssov/IronyModManager"
 license=('MIT')
 depends=("fontconfig" "bash" "zlib" "krb5" "lttng-ust")
-source=("$pkgname-$pkgver.zip::https://github.com/bcssov/IronyModManager/releases/download/v$pkgver/linux-x64.zip"
-		"$pkgname.png::https://raw.githubusercontent.com/bcssov/IronyModManager/v$pkgver/src/IronyModManager/Assets/logo.png"
+source=("$pkgname-$pkgver.zip::https://github.com/bcssov/IronyModManager/releases/download/v$pkgver-alpha/linux-x64.zip"
+		"$pkgname.png::https://raw.githubusercontent.com/bcssov/IronyModManager/v$pkgver-alpha/src/IronyModManager/Assets/logo.png"
 		"$pkgname.desktop"
 		"$pkgname.sh"
 		"$pkgname.README.md"
