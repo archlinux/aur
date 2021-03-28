@@ -1,7 +1,8 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
+# shellcheck disable=SC2010,SC2016
 pkgname=minc-toolkit-v2
-pkgver=1.9.17
-pkgrel=2
+pkgver=1.9.18.1
+pkgrel=1
 pkgdesc="Medical Imaging NetCDF Toolkit"
 arch=('x86_64')
 url="https://www.mcgill.ca/bic/software/minc"
@@ -17,7 +18,7 @@ depends=(
     'glut'
     'gsl'
     'hdf5'
-    'insight-toolkit'
+    'insight-toolkit4'
     'lapacke'
     'libgl'
     'libjpeg-turbo'
@@ -33,22 +34,24 @@ depends=(
 makedepends=('git' 'cmake' 'bc')
 provides=('minc-toolkit')
 source=("git+https://github.com/BIC-MNI/minc-toolkit-v2.git#tag=release-${pkgver}"
-        'FindNIFTI.patch')
+        'FindNIFTI.patch'
+        'xdisp.patch')
 sha256sums=('SKIP'
-            'bfff8b8b72c7ac39bc457709d482bb205d94c1303304ae15fd3a3299bc087b2a')
+            'bfff8b8b72c7ac39bc457709d482bb205d94c1303304ae15fd3a3299bc087b2a'
+            '968c27cac3ce6698940b3aa511f6ce7ff6dadad219b24427fffdcf0ec37a2aab')
 
-_itk=`ls /usr/lib/cmake | grep -m1 ITK`
+_itk=$(ls /opt/insight-toolkit4/lib/cmake | grep -m1 ITK)
 _install_prefix="/usr/share/minc"
 
 prepare() {
 
     # Ensure that the required ITK modules are present
-    if [ `ls "/usr/include/$_itk" | grep 'itkMINCImageIO.h'` == "" ];
+    if [ "$(ls "/opt/insight-toolkit4/include/$_itk" | grep 'itkMINCImageIO.h')" == "" ];
     then
         error "ITK must be built with -DModule_ITKIOMINC:BOOL=ON"
         exit 1
     fi
-    if [ `ls "/usr/include/$_itk" | grep 'itkMINCTransformAdapter.h'` == "" ];
+    if [ "$(ls "/opt/insight-toolkit4/include/$_itk" | grep 'itkMINCTransformAdapter.h')" == "" ];
     then
         error "ITK must be built with -DModule_ITKIOTransformMINC:BOOL=ON"
         exit 1
@@ -61,7 +64,7 @@ prepare() {
     sed -i \
         's/FIND_PACKAGE(NIFTI OPTIONAL)/FIND_PACKAGE(NIFTI REQUIRED)/' \
         CMakeLists.txt
-    patch -p0 -i ${srcdir}/FindNIFTI.patch
+    patch -p0 -i "${srcdir}"/FindNIFTI.patch
 
     # Fix missing libminc in patch_morphology
     sed -i \
@@ -82,12 +85,18 @@ prepare() {
         's/enum {false=0, true=1};//' \
         minctools/progs/mincdump/mincdump.h
 
-    mkdir build || :
+    # Fix link error due to multiple symbol definitions
+    (cd "${srcdir}/${pkgname}/xdisp" && git apply "${srcdir}/xdisp.patch")
+
+    rm -rf build
+    mkdir build
     cd build
 
     cmake .. \
         -DCMAKE_BUILD_TYPE:STRING=Release   \
         -DCMAKE_INSTALL_PREFIX:PATH="${_install_prefix}" \
+        -DCMAKE_CXX_FLAGS='-fdiagnostics-color=always' \
+        -DCMAKE_C_FLAGS='-fdiagnostics-color=always' \
         -DMT_BUILD_ABC:BOOL=ON   \
         -DMT_BUILD_ANTS:BOOL=OFF   \
         -DMT_BUILD_C3D:BOOL=ON   \
@@ -106,11 +115,13 @@ prepare() {
         -DUSE_SYSTEM_GSL:BOOL=ON   \
         -DUSE_SYSTEM_HDF5:BOOL=ON   \
         -DUSE_SYSTEM_ITK:BOOL=ON   \
+        -DUSE_SYSTEM_JPEG:BOOL=ON \
         -DUSE_SYSTEM_NETCDF:BOOL=ON   \
         -DUSE_SYSTEM_NIFTI:BOOL=ON   \
+        -DUSE_SYSTEM_OPENJPEG:BOOL=ON \
         -DUSE_SYSTEM_PCRE:BOOL=ON   \
         -DUSE_SYSTEM_ZLIB:BOOL=ON \
-        -DITK_DIR:PATH=/usr/lib/cmake/"$_itk"
+        -DITK_DIR:PATH=/opt/insight-toolkit4/lib/cmake/"$_itk"
 }
 
 build() {

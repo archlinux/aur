@@ -1,7 +1,7 @@
 pkgbase = minc-toolkit-v2
 	pkgdesc = Medical Imaging NetCDF Toolkit
-	pkgver = 1.9.17
-	pkgrel = 2
+	pkgver = 1.9.18.1
+	pkgrel = 1
 	url = https://www.mcgill.ca/bic/software/minc
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = minc-toolkit-v2
 	depends = glut
 	depends = gsl
 	depends = hdf5
-	depends = insight-toolkit
+	depends = insight-toolkit4
 	depends = lapacke
 	depends = libgl
 	depends = libjpeg-turbo
@@ -31,10 +31,12 @@ pkgbase = minc-toolkit-v2
 	depends = perl
 	depends = zlib
 	provides = minc-toolkit
-	source = git+https://github.com/BIC-MNI/minc-toolkit-v2.git#tag=release-1.9.17
+	source = git+https://github.com/BIC-MNI/minc-toolkit-v2.git#tag=release-1.9.18.1
 	source = FindNIFTI.patch
+	source = xdisp.patch
 	sha256sums = SKIP
 	sha256sums = bfff8b8b72c7ac39bc457709d482bb205d94c1303304ae15fd3a3299bc087b2a
+	sha256sums = 968c27cac3ce6698940b3aa511f6ce7ff6dadad219b24427fffdcf0ec37a2aab
 
 pkgname = minc-toolkit-v2
 
