@@ -3,10 +3,10 @@
 
 pkgname=obsidian-insider
 _pkgname=obsidian
-pkgver=0.11.9
-pkgrel=3
+pkgver=0.11.10
+pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
-provides=("obsidian")
+provides=("${_pkgname}")
 arch=('x86_64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
@@ -20,8 +20,8 @@ source=(
 )
 sha256sums=(
     'e0a6a8f7dfbfff88664621448ac456d47e62c6d94e2cc59702c4f31968780ed4'
-    '33e2d337a336711882dd37dff8de63c5c14c75434b58b3ed1cd5eb807cd4ea4c'
-    '8f9b6782441c6a3bc31c033cb4bdd1216079a5f337133e1d00ce62b6c63e573c'
+    '85cd8b31a4dac91c3738d36c1fe47447612a1ca800edd98e19e8aec21c2a448b'
+    'afbc43520c04ab0e92efe7a77d349e05731c1ce0c1090571ad317f24fa48f715'
 )
 
 prepare() {
@@ -35,7 +35,7 @@ package() {
 
     # Create directories for installation
     install -dm0755 "${pkgdir}/usr/bin"
-    install -dm0755 "${pkgdir}/opt"
+    install -dm0755 "${pkgdir}/usr/share/obsidian"
 
     # Install executable file
     install -Dm755 ${pkgname} "${pkgdir}/usr/bin/"
