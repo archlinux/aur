@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-systemloadviewer
 	pkgdesc = Deprecated Plasma 5 plasmoid for monitoring system load. I preserved it as I prefer to use this plasmoid.
-	pkgver = 2020.1.3_21.11
+	pkgver = 5.20.80
 	pkgrel = 1
 	url = https://home.otoy.com/render/octane-render/demo/
 	arch = x86_64

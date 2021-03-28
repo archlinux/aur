@@ -1,5 +1,5 @@
 pkgname=plasma5-applets-systemloadviewer
-pkgver=2020.1.3_21.11
+pkgver=5.20.80
 pkgrel=1
 pkgdesc="Deprecated Plasma 5 plasmoid for monitoring system load. I preserved it as I prefer to use this plasmoid."
 arch=('x86_64')
