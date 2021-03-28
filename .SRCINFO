@@ -1,7 +1,7 @@
 pkgbase = serialtool-git
 	pkgdesc = A practical Serial-Port/TCP/UDP debugging tool.
-	pkgver = 1.4.0alpha.0.1.g20896fb
-	pkgrel = 2
+	pkgver = 1.4.0alpha.0.21.gf25f840
+	pkgrel = 1
 	url = https://github.com/Skiars/SerialTool
 	install = serialtool-git.install
 	arch = any
@@ -22,15 +22,7 @@ pkgbase = serialtool-git
 	conflicts = serialtool
 	options = !strip
 	source = SerialTool::git+https://github.com/Skiars/SerialTool.git
-	source = serialtool.desktop
-	source = 20-usb-serial.rules
-	source = serialtool-git.install
-	source = io.github.skiars.serialtool.metainfo.xml
 	sha256sums = SKIP
-	sha256sums = f646db8d3d577589da15a555653a91ae725be626c933e384ba07db8b9bdc30c8
-	sha256sums = bd504256698f7e7b1a74fbc6490276f0c096c2e6b5e7199049766b7ba7c860a7
-	sha256sums = 303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4
-	sha256sums = 41a8f888c8bccdd06a808469a2d37183879b1244b822b397e14bf1b2a013bdc7
 
 pkgname = serialtool-git
 
