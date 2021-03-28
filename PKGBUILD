@@ -3,24 +3,27 @@
 
 _gemname=gollum-rugged_adapter
 pkgname=ruby-$_gemname
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Adapter for Gollum to use Rugged (libgit2) at the backend.'
 arch=(any)
 url='https://github.com/gollum/rugged_adapter'
 license=(MIT)
 depends=(ruby
-         'ruby-rugged<1'
+         'ruby-rugged>=1.1.0'
          ruby-mime-types)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('5a8a6b5d9f69d81c503f179b7295573989dc0cb0')
+sha1sums=('91b12d0994e903927594701a938fec7d84892d68')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+
+  sed -e 's/%q<mime-types>.freeze, \["~> 1.15"\]/%q<mime-types>.freeze, [">= 1.15"]/' -i $pkgdir/$_gemdir/specifications/$_gemname-$pkgver.gemspec
+
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
