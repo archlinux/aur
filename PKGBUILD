@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/lmacken/unicards"
 license=("APACHE")
 depends=("python")
-source=("http://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=("b06f6effd7782f9541e5761afc4ee01ee7e163f9c6c04ad9b3712354f0a2cfdd")
 
 
