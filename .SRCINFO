@@ -1,0 +1,14 @@
+pkgbase = xclipd
+	pkgdesc = An X11 clipboard manager.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jhunt/xclipd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	conflicts = xclipd-git
+	source = xclipd-1.0.0.tar.gz::https://github.com/jhunt/xclipd/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 6dfa2226f2482f8e05ca0a1076a672944a2551d020c6871d1e4165e79aa6d151
+
+pkgname = xclipd
+
