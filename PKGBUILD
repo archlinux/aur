@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/azote"
@@ -18,7 +18,7 @@ optdepends=('imagemagick: for screen color picker'
 			'xorg-xrandr: for checking outputs on X11-based WMs'
 			'wlr-randr-git: for checking outputs on wlroots-based compositors other than sway')
 
-source=("https://github.com/nwg-piotr/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/$pkgname/archive/v$pkgver.tar.gz")
 
 md5sums=('81b62aceafadc3ecf7027e74d6985503')
 
