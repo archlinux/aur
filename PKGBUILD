@@ -7,7 +7,7 @@ arch=(x86_64)
 url="http://http://www.wofficebox.com/"
 license=('GPL')
 depends=('deepin-wine5' 'deepin-wine5-helper')
-provides=(com.officebox.deepin=$pkgver)
+provides=(officebox=$pkgver)
 replaces=()
 backup=()
 options=()
@@ -23,6 +23,12 @@ prepare() {
 	cp -r opt "$pkgname-$pkgver"/opt
 	cp -r usr "$pkgname-$pkgver"/usr
 }
+
+#check() {
+#	cd "$pkgname-$pkgver"
+#	make -k check
+#}
+
 
 package() {
 	cd "$pkgname-$pkgver"
