@@ -7,6 +7,7 @@ pkgbase = python-thriftpy2
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
+	checkdepends = python-tornado
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = python-ply
