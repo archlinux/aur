@@ -2,7 +2,7 @@
 
 pkgname=linux-firmware-minimal
 pkgver=20100519
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal amount of firmware files for Linux, mostly recommended for virtual systems."
 arch=('any')
 url="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/"
@@ -20,9 +20,9 @@ build() {
 package() {
   cd "${srcdir}/linux-firmware-${pkgver}"
 
-  install -d -m755 "${pkgdir}/lib/firmware"
-  cp -a * "${pkgdir}/lib/firmware/"
+  install -d -m755 "${pkgdir}/usr/lib/firmware"
+  cp -a * "${pkgdir}/usr/lib/firmware/"
   install -d -m755 "${pkgdir}/usr/share/licenses/linux-firmware/"
-  mv "${pkgdir}/lib/firmware"/LICEN* "${pkgdir}/usr/share/licenses/linux-firmware/"
+  mv LICEN* "${pkgdir}/usr/share/licenses/linux-firmware/"
 }
 # vim:set ts=2 sw=2 et:

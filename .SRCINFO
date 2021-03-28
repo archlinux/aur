@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-minimal
 	pkgdesc = Minimal amount of firmware files for Linux, mostly recommended for virtual systems.
 	pkgver = 20100519
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/
 	arch = any
 	license = GPL2
