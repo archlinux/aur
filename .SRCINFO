@@ -1,6 +1,6 @@
 pkgbase = gnome-notes-git
 	pkgdesc = Write out notes, every detail matters
-	pkgver = 3.37.90+2+gcd4c135
+	pkgver = 40.0+6+g8491d75
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Notes
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = gnome-notes-git
 	makedepends = yelp-tools
 	makedepends = git
 	makedepends = meson
-	depends = tracker
+	depends = tracker3
 	depends = webkit2gtk
 	depends = gnome-online-accounts
 	depends = evolution-data-server
 	depends = libhandy
-	provides = bijiben=3.37.90+2+gcd4c135
+	provides = bijiben=40.0+6+g8491d75
 	provides = gnome-notes
 	conflicts = bijiben
 	conflicts = gnome-notes
@@ -26,4 +26,3 @@ pkgbase = gnome-notes-git
 	b2sums = SKIP
 
 pkgname = gnome-notes-git
-

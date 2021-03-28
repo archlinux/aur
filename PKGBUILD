@@ -1,12 +1,12 @@
 pkgname=gnome-notes-git
 _pkgname=gnome-notes
-pkgver=3.37.90+2+gcd4c135
+pkgver=40.0+6+g8491d75
 pkgrel=1
 pkgdesc="Write out notes, every detail matters"
 url="https://wiki.gnome.org/Apps/Notes"
 arch=(x86_64)
 license=(GPL)
-depends=('tracker' 'webkit2gtk' 'gnome-online-accounts' 'evolution-data-server'
+depends=('tracker3' 'webkit2gtk' 'gnome-online-accounts' 'evolution-data-server'
          'libhandy')
 makedepends=('evolution' 'python' 'appstream-glib' 'yelp-tools' 'git' 'meson')
 provides=("bijiben=$pkgver" 'gnome-notes')
