@@ -2,7 +2,7 @@
 
 pkgname=python-pycouchdb-git
 _realname=pycouchdb
-pkgver=0.3.r31.g203b39d
+pkgver=0.3.r32.gacd57d0
 pkgrel=1
 pkgdesc="Python client library for CouchDb 3.x.x"
 url="https://github.com/angrysoft/pycouchdb"

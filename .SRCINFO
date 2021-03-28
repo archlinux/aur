@@ -1,6 +1,6 @@
 pkgbase = python-pycouchdb-git
 	pkgdesc = Python client library for CouchDb 3.x.x
-	pkgver = 0.3.r31.g203b39d
+	pkgver = 0.3.r32.gacd57d0
 	pkgrel = 1
 	url = https://github.com/angrysoft/pycouchdb
 	arch = any
