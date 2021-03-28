@@ -4,7 +4,7 @@
 
 _name=rogerrouter
 pkgname=roger-router
-pkgver=2.2.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
@@ -24,21 +24,21 @@ provides=("${_name}=${pkgver}" "roger=${pkgver}")
 options=('!emptydirs')
 install=roger-router.install
 
-source=("https://gitlab.com/tabos/${_name}/-/archive/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha512sums=('dd7163d086c46286ebbf5e4451fbb21792b789d1406955d0bd8672882fde66187337197a761549b1a907a975a6360a963c7f6655373d68e90ab273087b321927')
+source=("https://gitlab.com/tabos/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
+sha512sums=('879f7cd3919a015981ecca2649913dd04feec3d86df07ae0551ea4714b12c43406b078e3f9749bdc94225b02ce51bec5dfa604e87f4b160d6704d4a350041774')
 
 build() {
-    cd "${srcdir}/${_name}-v${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}"
     meson --prefix /usr --buildtype=plain "builddir"
     ninja -v -C "builddir"
 }
 
 check() {
-    cd "${srcdir}/${_name}-v${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}"
     ninja -C "builddir" test
 }
 
 package() {
-    cd "${srcdir}/${_name}-v${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}"
     DESTDIR="$pkgdir" ninja -C "builddir" install
 }
