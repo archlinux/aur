@@ -29,8 +29,6 @@ rapidjson
 )
 #checkdepends=()
 
-options=(!strip)
-
 source=(
 "${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
 opencascade.sh
@@ -58,28 +56,13 @@ build() {
   cmake -B build_dir -S occt-${_pkgver} -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX='/usr' \
-    -D BUILD_DOC_Overview=OFF \
-    -D BUILD_Inspector=OFF \
-    -D BUILD_LIBRARY_TYPE=Shared \
-    -D BUILD_MODULE_ApplicationFramework=ON \
-    -D BUILD_MODULE_DataExchange=ON \
-    -D BUILD_MODULE_Draw=ON \
-    -D BUILD_MODULE_FoundationClasses=ON \
-    -D BUILD_MODULE_ModelingAlgorithms=ON \
-    -D BUILD_MODULE_ModelingData=ON \
-    -D BUILD_MODULE_Visualization=ON \
-    -D BUILD_RELEASE_DISABLE_EXCEPTIONS=ON \
-    -D BUILD_WITH_DEBUG=OFF \
-    -D BUILD_ENABLE_FPE_SIGNAL_HANDLER=ON \
-    -D INSTALL_DIR_LAYOUT=Unix \
-    -D INSTALL_DIR_BIN=bin \
-    -D INSTALL_DIR_LIB=lib \
     -D INSTALL_DIR_CMAKE=/usr/lib/cmake/opencascade \
+    -D BUILD_WITH_DEBUG=OFF \
     -D USE_FFMPEG=ON \
     -D USE_FREEIMAGE=ON \
-    -D USE_GLES2=ON \
     -D USE_RAPIDJSON=ON \
     -D USE_TBB=ON \
+    -D USE_GLES2=OFF \
     -D USE_VTK=ON \
     -D INSTALL_VTK=False \
     -D CMAKE_CXX_FLAGS="-DVTK_MAJOR_VERSION=9" \
