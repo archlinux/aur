@@ -1,0 +1,21 @@
+pkgbase = gnome-text-editor-dev
+	pkgdesc = A simple Text Editor for GNOME
+	pkgver = 3.39.92+39+g1421ecc
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-text-editor
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = gcc
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita-git
+	depends = gtksourceview5-dev
+	provides = gnome-text-editor
+	conflicts = gnome-text-editor
+	source = git+https://gitlab.gnome.org/chergert/gnome-text-editor.git
+	b2sums = SKIP
+
+pkgname = gnome-text-editor-dev
+
