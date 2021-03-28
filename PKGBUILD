@@ -37,14 +37,14 @@ build() {
 }
 
 package_obs-vkcapture-git() {
-    pkgdesc='OBS Linux Vulkan game capture'
+    pkgdesc='OBS Linux Vulkan/OpenGL game capture'
     conflicts=('obs-vkcapture')
 
     make -C build DESTDIR="$pkgdir" install
 }
 
 package_lib32-obs-vkcapture-git() {
-    pkgdesc='OBS Linux Vulkan game capture (32-bit)'
+    pkgdesc='OBS Linux Vulkan/OpenGL game capture (32-bit)'
     depends=('lib32-vulkan-icd-loader')
     conflicts=('lib32-obs-vkcapture')
 
