@@ -1,6 +1,6 @@
 pkgbase = grilo-plugins-git
 	pkgdesc = A collection of plugins for the Grilo framework
-	pkgver = 0.3.12+23+g7a2f9fbe
+	pkgver = 0.3.12+35+gd6d91c7c
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/grilo-plugins

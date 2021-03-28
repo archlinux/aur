@@ -1,6 +1,6 @@
 pkgname=grilo-plugins-git
 _pkgname=grilo-plugins
-pkgver=0.3.12+23+g7a2f9fbe
+pkgver=0.3.12+35+gd6d91c7c
 pkgrel=1
 epoch=1
 pkgdesc="A collection of plugins for the Grilo framework"
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build
+  arch-meson -D enable-tracker=no $_pkgname build
   meson compile -C build
 }
 
