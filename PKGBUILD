@@ -2,7 +2,7 @@
 
 pkgname=python-pyiot-git
 _realname=pyiot
-pkgver=v0.1.r5.g752888c
+pkgver=v0.1.r106.g7eb7a3c
 pkgrel=1
 pkgdesc="Python library for IOT devices"
 url="https://github.com/angrysoft/pycouchdb"
