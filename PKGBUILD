@@ -3,8 +3,8 @@
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
 pkgver=2.14.2
-pkgrel=1
-pkgdesc="A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework."
+pkgrel=2
+pkgdesc='A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework.'
 arch=('i686' 'x86_64')
 url="http://cutelyst.org"
 license=('LGPL2.1')
@@ -28,9 +28,9 @@ build() {
 
 package_cutelyst-docs() {
   pkgdesc="Doxygen HTML API Documentation"
-  cd "$srcdir/${pkgbase}-${pkgver}/Cutelyst"
+  cd "$srcdir/${pkgbase}-${pkgver}"
 
-  doxygen cutelyst.doxygen
+  doxygen Cutelyst/cutelyst.doxygen
 
   install -d -m755 ${pkgdir}/usr/share/doc/cutelyst/html/
   install -d -m755 ${pkgdir}/usr/share/doc/cutelyst/html/search/
