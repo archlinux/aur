@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-pop-shell-git
 	pkgdesc = Pop Shell - Tiling window management in Gnome (WIP)
-	pkgver = r659.6b2287f
+	pkgver = r668.77650a9
 	pkgrel = 1
 	url = https://github.com/pop-os/shell
 	install = pop-shell.install
