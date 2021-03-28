@@ -1,0 +1,21 @@
+pkgbase = python-lookatme-qrcode
+	pkgdesc = Lookatme extension adds QR code rendering capabilities to the code blocks.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/d0c-s4vage/lookatme.contrib.qrcode
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-runner
+	makedepends = python-setuptools
+	depends = python-lookatme
+	depends = python-pyqrcode
+	optdepends = python-lookatme-ueberzug: renders images with the image_ueberzug extension
+	optdepends = python-lookatme-render: render code blocks of supported languages into images
+	optdepends = python-lookatme-qrcode: embeds qrcodes in the presentation
+	source = lookatme.contrib.qrcode-2.1.0.tar.gz::https://github.com/d0c-s4vage/lookatme.contrib.qrcode/archive/refs/tags/v2.1.0.tar.gz
+	md5sums = 1058bb388097b2f55b7af2408b5f2f29
+
+pkgname = python-lookatme-qrcode
+
