@@ -12,7 +12,7 @@ license=('PHP')
 depends=('php')
 makedepends=('php' 'git' 'autoconf')
 install=${_pkgname}.install
-source=("${_pkgname}"::"git+https://git.php.net/repository/pecl/php/uploadprogress.git")
+source=("${_pkgname}"::"git+https://git.php.net/repository/pecl/php/uploadprogress.git#tag=uploadprogress-${pkgver}")
 sha512sums=('SKIP')
 
 build() {
