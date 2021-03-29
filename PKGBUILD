@@ -1,11 +1,11 @@
 # Maintainer: Swix
 
 pkgname=gog-terraria
-pkgver=1.4.1.2.42620
-pkgrel=2
+pkgver=1.4.1.2.45131
+pkgrel=1
 epoch=1
 
-_gogrel=42620
+_gogrel=45131
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 _setupname="setup_${_gamename}_${pkgver}_${_gogrel}.sh"
@@ -24,7 +24,7 @@ source=("${_setupname}::gogdownloader://${_gamename}/en3installer0"
 
 # bsdtar is really cool but I want to control what I'm extracting
 noextract=("${_setupname}")
-sha256sums=('37f3b68ff95a9fb3832dfd62062b22941f76ef419118665a3809164d2aadc376'
+sha256sums=('e0f05e937fee7854830ea42f0241c2d0531166f7db3ae11e1eec4210820d7518'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093'
             'ce9c75ce912e6c1c081e7fb9f0a4b49c8cf2274e82da4ead1cab6ab9c527cd79'
             '9ec20a7515dd54a518da4fab006e0b2313deff1c341a3bd163f0e1305b6be5b6')
