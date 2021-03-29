@@ -1,7 +1,5 @@
 # Maintainer: Jake McGinty <jake@tonari.no>
 
-# TODO(mcginty): Eventually move this to AUR once this is released publicly.
-
 pkgname=innernet-git
 pkgver=v0.12.6.r1.92f00fe
 pkgrel=1
