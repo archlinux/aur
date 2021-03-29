@@ -3,20 +3,20 @@
 
 pkgname=glow
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/charmbracelet/${pkgname}"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('git' 'go' 'gzip' 'tar')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('97d373e002332e54e2fb808ea38f098ca49e2b88038c115bd6d33d0b3b921495')
 
 build() {
     local commit
     local extraflags
-    commit=$(bsdcat ${pkgname}-${pkgver}.tar.gz | git get-tar-commit-id)
+    commit=$(zcat ${pkgname}-${pkgver}.tar.gz | git get-tar-commit-id)
     extraflags="-X main.Version=${pkgver} -X main.CommitSHA=${commit}"
 
     cd "$pkgname-$pkgver"
