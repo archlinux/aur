@@ -5,24 +5,30 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh
-pkgver=1.20151229
-pkgrel=3
-pkgdesc='manage config files in HOME via fake bare git repositories'
+pkgver=1.20190619
+pkgrel=1
+pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
 arch=('any')
 url="https://github.com/RichiH/$pkgname"
 license=('GPL')
 depends=('git')
 optdepends=('myrepos: helps manage a large number of repositories')
+makedepends=('ruby-ronn')
+checkdepends=('perl' 'perl-shell-command')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RichiH/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ae069506b0490287aefa582ab4e6af1c7ebc4dca743b17d91e0c8d0327d7a3fa')
-_src_dir="$pkgname-$pkgver"
+sha256sums=('9f9373bd96dfa1317ff119b2a3feaffc0e5331816e940267daf088637f995f5f')
 
 prepare() {
-    cd "$_src_dir"
-    sed -i 's|\(install:\) all|\1|' Makefile
+    cd "$pkgname-$pkgver"
+    sed -i 's#^\(install:\) all#\1 manpages#' Makefile
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+	make test
 }
 
 package() {
-    cd "$_src_dir"
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" ZSHDIR='$(PREFIX)/share/zsh/site-functions' install
 }
