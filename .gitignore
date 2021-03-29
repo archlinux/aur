@@ -1,6 +1,6 @@
 /pkg/
 /src/
-/*\.gz
-/*\.xz
+/*\.pkg\.tar\.*
+/*\.tar\.gz
 /*\.asc
 /renderdoc*\.log
