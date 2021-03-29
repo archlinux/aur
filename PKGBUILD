@@ -27,7 +27,6 @@ validpgpkeys=()
 
 build()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}/
     mkdir -p ${srcdir}/${pkgname}-${pkgver}/build/
     cd ${srcdir}/${pkgname}-${pkgver}/build/
     cmake ..
@@ -48,5 +47,5 @@ package()
     install -Dm644 ${srcdir}/${pkgname}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
 
     # Install the license.
-    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSES/ ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSES/GPL-3.0-or-later.txt ${pkgdir}/usr/share/licenses/${pkgname}/
 }
