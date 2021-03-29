@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=6.1.r8.g6347bdd1
+pkgver=6.5.r1.g2e42e7d9
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -186,9 +186,9 @@ package() {
          install
     
     # font aliasing settings for win32 applications
-    mkdir -p "${pkgdir}/etc/fonts/conf.d"
-    install -D -m644 "${srcdir}/30-win32-aliases.conf" -t "${pkgdir}/etc/fonts/conf.avail"
-    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    install -d -m755 "${pkgdir}/usr/share/fontconfig/conf.default"
+    install -D -m644 "${srcdir}/30-win32-aliases.conf" -t "${pkgdir}/usr/share/fontconfig/conf.avail"
+    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
     
     # wine binfmt
     install -D -m644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
