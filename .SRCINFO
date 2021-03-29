@@ -1,6 +1,6 @@
 pkgbase = vul-complete-git
 	pkgdesc = Latin Clementine Vulgate Bible in the terminal
-	pkgver = r1
+	pkgver = r1.1
 	pkgrel = 1
 	url = https://github.com/theunpleasantowl/vul-complete
 	arch = any
