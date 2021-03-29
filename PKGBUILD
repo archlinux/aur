@@ -1,6 +1,6 @@
 # Maintainer: Parth576  <bruhhh192@gmail.com>
 pkgname=gowords
-pkgver=v0.0.6
+pkgver=v0.0.7
 pkgrel=1
 pkgdesc='CLI wrapper for dictionaryapi.dev. Search word definitions and memorize words.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/Parth576/dictionary-cli/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('149d8ca959a64c9f4a2757faf12d674d2136b1a2a010124ec4ffa9236bb898dd')
+sha256sums=('f7128598f89a3dc7dccf27bbc5227101ad4afb44644c4eabb763d6dd60f1ae80')
 
 ver=$(echo "$pkgver" | sed 's/v//')
 
