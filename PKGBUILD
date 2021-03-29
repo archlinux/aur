@@ -1,3 +1,6 @@
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: quininer
+
 pkgname=vtebench-git
 pkgver=0.3.1.52.g9cb3afc
 pkgrel=1
