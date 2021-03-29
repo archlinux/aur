@@ -1,6 +1,6 @@
 pkgbase = j9-git
 	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
-	pkgver = r2181.3cbf8f13
+	pkgver = r2388.ad0ca1c6
 	pkgrel = 1
 	url = http://www.jsoftware.com
 	install = j9-git.install
@@ -12,6 +12,7 @@ pkgbase = j9-git
 	depends = qt5-websockets
 	depends = qt5-multimedia
 	depends = qt5-svg
+	depends = pcre2
 	optdepends = wget: for web/gethttp addon
 	optdepends = expat: for api/expat addon
 	optdepends = fftw: for math/fftw addon

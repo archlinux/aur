@@ -3,13 +3,13 @@
 # Maintainer: eelvex <eelvex at gmail dot com>
 
 pkgname=j9-git
-pkgver=r2181.3cbf8f13
+pkgver=r2388.ad0ca1c6
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3')
-depends=('qt5-webengine' 'qt5-websockets' 'qt5-multimedia' 'qt5-svg')
+depends=('qt5-webengine' 'qt5-websockets' 'qt5-multimedia' 'qt5-svg' 'pcre2')
 optdepends=('wget: for web/gethttp addon'
             'expat: for api/expat addon'
             'fftw: for math/fftw addon'
