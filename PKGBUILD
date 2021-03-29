@@ -1,8 +1,8 @@
 # Maintainer: Andrew Fischer <andrew at apastron dot co>
 pkgname=multichain-alpha
 pkgver=2.0
-pkgrel=4
-pkgdesc="MultiChain open source platform for private blockchains - version 4 alpha"
+pkgrel=5
+pkgdesc="MultiChain open source platform for private blockchains - version 2.0 alpha"
 arch=('x86_64')
 url="https://github.com/MultiChain/multichain"
 license=('GPLv3')
@@ -19,6 +19,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/multichain-${pkgver}-release"
+  # perform the recommended v8build steps
+  set MUTICHAIN_HOME=$(pwd)
+  mkdir v8build
+  pushd v8build
+  curl -LO https://github.com/MultiChain/multichain-binaries/raw/master/linux-v8.tar.gz
+  tar xzvj linux-v8.tar.gz
+  popd
   ./autogen.sh
   ./configure --prefix="/usr"
   make
