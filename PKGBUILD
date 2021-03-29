@@ -41,7 +41,7 @@ package()
 
     # Install the software.
     cd ${srcdir}/${pkgname}-${pkgver}/build/
-    sudo make DESTDIR="${pkgdir}/" install
+    sudo make install
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${pkgname}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
