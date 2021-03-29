@@ -1,6 +1,6 @@
 pkgbase = wine-gui-git
 	pkgdesc = GUI for managing Windows programs under linux
-	pkgver = 0.14alpha.0.ge30a345
+	pkgver = 0.14alpha.3.g82ee4c7
 	pkgrel = 1
 	url = https://github.com/tank142/wine-gui
 	arch = x86_64

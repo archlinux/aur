@@ -1,6 +1,6 @@
 # Maintainer: tank142
 pkgname=wine-gui-git
-pkgver=0.14alpha.0.ge30a345
+pkgver=0.14alpha.3.g82ee4c7
 pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux"
 arch=('x86_64')
