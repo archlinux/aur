@@ -10,7 +10,7 @@ pkgbase = keysmith
 	depends = libsodium
 	depends = qt5-base
 	conflicts = keysmith-git
-	source = keysmith-0.2.tar.gz::https://github.com/KDE/keysmith/archive/refs/tags/v0.2.tar.gz
+	source = keysmith-0.2.tar.gz::https://github.com/KDE/keysmith/archive/master.tar.gz
 	md5sums = 07ac50d5681fba2a771a459e88eadc6b
 
 pkgname = keysmith
