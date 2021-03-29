@@ -27,9 +27,9 @@ validpgpkeys=()
 
 build()
 {
-    cd ${srcdir}/${pkgname}/
-    mkdir -p ${srcdir}/${pkgname}/build/
-    cd ${srcdir}/${pkgname}/build/
+    cd ${srcdir}/${pkgname}-${pkgver}/
+    mkdir -p ${srcdir}/${pkgname}-${pkgver}/build/
+    cd ${srcdir}/${pkgname}-${pkgver}/build/
     cmake ..
     make
 }
@@ -37,16 +37,16 @@ build()
 package()
 {
     # Assure that the folders exist.
-    mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
-    mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
+    mkdir -p ${pkgdir}/usr/share/doc/${pkgname}/
+    mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
 
     # Install the software.
-    cd ${srcdir}/${pkgname}/build/
+    cd ${srcdir}/${pkgname}-${pkgver}/build/
     make install
 
     # Install the documentation.
-    install -Dm644 ${pkgdir}/usr/lib/${pkgname}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
+    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
 
     # Install the license.
-    install -Dm644 ${pkgdir}/usr/lib/${pkgname}/LICENSES/ ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSES/ ${pkgdir}/usr/share/licenses/${pkgname}/
 }
