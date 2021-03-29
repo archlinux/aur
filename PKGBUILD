@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=gimgview
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="a simple gtk3 based image viewer"
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://gitlab.sokoll.com/moritz/gimgview/-/archive/master/gimgview-master.tar.gz")
 noextract=()
-sha256sums=("eb365b64e02275b58bae89baff4a636ad840bc3e5784edc4cddcf3b00bd18f51")
+sha256sums=("695cfd1f9cce0250584a23bb1a6a6bcc043b508ea0d30d5b78a9e98ccb07db2b")
 validpgpkeys=()
 
 build() {
