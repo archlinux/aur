@@ -1,13 +1,13 @@
 pkgbase = dff2dsf
 	pkgdesc = Signalyst DFF to DSF command line conversion utility
 	pkgver = 1.2.2
-	pkgrel = 1
-	url = http://www.signalyst.com/professional.html
+	pkgrel = 2
+	url = https://www.signalyst.com/professional.html
 	arch = x86_64
 	license = custom
 	depends = glibc
 	depends = gcc-libs
-	source = http://www.signalyst.com/binx/dff2dsf-122.zip
+	source = https://www.signalyst.com/binx/dff2dsf-122.zip
 	sha256sums = 77ae7297ee1a6efe72014c7ebfd68033be40fae0246e10fc35eb7a252dd1f685
 
 pkgname = dff2dsf
