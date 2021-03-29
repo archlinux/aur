@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=467a91c5b237ef9f519075b42e7c4585281e168f
-_mozcver=2.26.4318.102
-_utdicver=20210322
+_commit=2d434cb612b680cdc1bdaf4b036be606ef3856f0
+_mozcver=2.26.4325.102
+_utdicver=20210329
 _buildtype=Release
 
 pkgname='ibus-mozc-ut'
