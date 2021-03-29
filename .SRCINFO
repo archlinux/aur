@@ -1,7 +1,7 @@
 pkgbase = infer-bin
 	pkgdesc = Infer is a static analysis tool for Java, C++, Objective-C, and C. Infer is written in OCaml.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/facebook/infer
 	arch = x86_64
 	license = MIT
