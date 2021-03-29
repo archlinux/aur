@@ -3,7 +3,7 @@
 
 extname=event
 pkgname=php-$extname
-pkgver=3.0.2r1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='PHP PECL extension providing interface to libevent library'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://pecl.php.net/package/$extname"
 license=('PHP')
 depends=('php>=7.3' 'libevent')
 source=("http://pecl.php.net/get/$extname-$pkgver.tgz")
-sha256sums=('5e99836878d721767b8a627e108433bea7fd8d34178186a5464f669a609b22c5')
+sha256sums=('504185c1bc7d6b22ae3d256f82fab6561708610db35ea2773e9e4478174c7174')
 
 build() {
     cd $srcdir/$extname-$pkgver
@@ -26,8 +26,8 @@ build() {
 }
 
 check() {
-	cd $srcdir/$extname-$pkgver
-	NO_INTERACTION=1 make test
+    cd $srcdir/$extname-$pkgver
+    NO_INTERACTION=1 make test
 }
 
 package() {
