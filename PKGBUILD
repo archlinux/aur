@@ -1,40 +1,29 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
+# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Mick Elliot <micke at sfu dot ca>
 
 pkgname=mafft
-pkgver=7.453
+pkgver=7.475
 pkgrel=1
-pkgdesc="Multiple alignment program for amino acid or nucleotide sequences"
-arch=('i686' 'x86_64')
-url="https://mafft.cbrc.jp/alignment/software/"
-license=('custom')
-depends=('ruby')
-options=('!makeflags')
-source=($url/$pkgname-$pkgver-with-extensions-src.tgz)
-md5sums=('749a7867831482a75b1a728928ec2a1a')
+pkgdesc='Multiple alignment program for amino acid or nucleotide sequences'
+arch=('x86_64')
+url='https://mafft.cbrc.jp/alignment/software'
+license=('BSD')
+depends=(
+  perl
+)
+source=("${pkgname}-${pkgver}.tgz::https://mafft.cbrc.jp/alignment/software/${pkgname}-${pkgver}-with-extensions-src.tgz")
+sha1sums=('f04d536ee1eb810b1e518c79dc463d661b82ad49')
 
 build() {
-  cd $pkgname-$pkgver-with-extensions/core
-  make clean
-  make PREFIX=/usr LIBDIR=/usr/lib/mafft
-
-  cd ../extensions
-  make clean
-  make PREFIX=/usr LIBDIR=/usr/lib/mafft
+  make -C "${pkgname}-${pkgver}-with-extensions/core" PREFIX=/usr LIBDIR=/usr/lib/mafft
+  make -C "${pkgname}-${pkgver}-with-extensions/extensions" PREFIX=/usr LIBDIR=/usr/lib/mafft
 }
 
 package() {
-  cd $pkgname-$pkgver-with-extensions/core
-  make PREFIX=$pkgdir/usr LIBDIR=$pkgdir/usr/lib/mafft install
-
-  cd ../extensions
-  make PREFIX=$pkgdir/usr LIBDIR=$pkgdir/usr/lib/mafft install
-
-  install -d $pkgdir/usr/share/licenses/mafft/
-  install -m644 ../license* $pkgdir/usr/share/licenses/mafft/
-
-  rm $pkgdir/usr/lib/mafft/*.1
-
-  ln -sf /usr/lib/mafft/mafft-profile $pkgdir/usr/bin
-  ln -sf /usr/lib/mafft/mafft-distance $pkgdir/usr/bin
+  make DESTDIR="${pkgdir}" -C "${pkgname}-${pkgver}-with-extensions/core" install PREFIX=/usr LIBDIR=/usr/lib/mafft
+  make DESTDIR="${pkgdir}" -C "${pkgname}-${pkgver}-with-extensions/extensions" install PREFIX=/usr LIBDIR=/usr/lib/mafft
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}-with-extensions/license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm -vf "${pkgdir}/usr/lib/mafft/mafft-homologs.1" "${pkgdir}/usr/lib/mafft/mafft.1"
 }
+# vim:set ts=2 sw=2 et:
