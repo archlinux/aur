@@ -1,10 +1,11 @@
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
-# Maintainer: Westofer Raymond <westoferraymond@gmail.com>
+# Maintainer: Brian Cooper <brian at brian-cooper dot com>
+# Contributor: Westofer Raymond <westoferraymond@gmail.com>
 pkgname=athens-git
 _pkgname=athens
-pkgver=v1.0.0.beta.38.r8.ge073e5cc9
+pkgver=v1.0.0.beta.61.r3.g32ae526
 pkgrel=1
 pkgdesc="Athens is an open-source and local-first alternative to Roam Research. Athens lets you take notes... Master branch "
 arch=('i686' 'x86_64')
@@ -52,7 +53,6 @@ build() {
         electron-builder --linux --"${!CARCH}" --dir \
         -c.electronDist=/usr/lib/electron \
         -c.electronVersion="$(</usr/lib/electron/version)"
-
 }
 
 #check() {
@@ -71,7 +71,4 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
     install -Dm644 "build/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -Dm644 "dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}.asar"
-
-
 }
-
