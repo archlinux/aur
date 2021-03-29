@@ -8,12 +8,14 @@
 
 
 ## Helpful internal stuff
-_commit=467a91c5b237ef9f519075b42e7c4585281e168f
-_mozcver=2.26.4318.102
-_utdicver=20210322
-_fcitx5patchver=20210124
-_fcitx5patchlink=27432
+_commit=2d434cb612b680cdc1bdaf4b036be606ef3856f0
+_mozcver=2.26.4325.102
+_utdicver=20210329
+_fcitx5patchver=20210329
+_fcitx5patchuserlink=28
+_fcitx5patchlink=28063
 _fcitx5iconver=20201229
+_fcitx5iconuserlink=27
 _fcitx5iconlink=27009
 _buildtype=Release
 
@@ -26,14 +28,15 @@ url='https://github.com/fcitx/mozc'
 license=('custom')
 depends=('fcitx5' 'mozc-ut-common')
 makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six' 'qt5-base')
+optdepends=('fcitx5-configtool')
 conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
            'fcitx-mozc-ut' 'fcitx5-mozc' 'fcitx5-mozc-git')
 provides=("fcitx5-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/27/${_fcitx5patchlink}/fcitx5-mozc-${_fcitx5patchver}.patch"
-        "https://osdn.net/downloads/users/27/${_fcitx5iconlink}/fcitx5-mozc-icons-${_fcitx5iconver}.tar.gz")
+        "https://osdn.net/downloads/users/${_fcitx5patchuserlink}/${_fcitx5patchlink}/fcitx5-mozc-${_fcitx5patchver}.patch"
+        "https://osdn.net/downloads/users/${_fcitx5iconuserlink}/${_fcitx5iconlink}/fcitx5-mozc-icons-${_fcitx5iconver}.tar.gz")
 sha256sums=('SKIP'
-            '63813212007c8b531cf9114334e915dee35b899ea5a443e2821ca6a17b972b38'
+            '1b8fe2f0cb1422c34602921f2cd0a85c4daa0b0ad473d1228f754d2a1505e77d'
             'b3c69ef3e960266fd9e36e9c4039f9b68ec843a0f598aed9f20535af008ce7df')
 
 prepare() {
