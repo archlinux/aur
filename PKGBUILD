@@ -3,7 +3,7 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
@@ -11,12 +11,12 @@ arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/dandavison/$_name"
 license=('MIT')
 
-depends=('git' 'libgit2')
 makedepends=('rust' 'clang' 'llvm')
+depends=('git' 'libgit2')
 
 backup=("etc/gitconfig.$_name")
 source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
-sha256sums=('27259c3d305edee5f49a3a992e7d739cab400f478a675b7388fef85a2724217c')
+sha256sums=('f432335361088c37f8aa4bb747ba12e1f8eddbbc3ed5c51fdd52d9b96eb22227')
 
 
 prepare() {

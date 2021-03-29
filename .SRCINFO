@@ -1,6 +1,6 @@
 pkgbase = git-delta
 	pkgdesc = A syntax-highlighting pager for git and diff output
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/dandavison/delta
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = git-delta
 	depends = git
 	depends = libgit2
 	backup = etc/gitconfig.delta
-	source = git-delta-0.6.0.tgz::https://github.com/dandavison/delta/archive/0.6.0.tar.gz
-	sha256sums = 27259c3d305edee5f49a3a992e7d739cab400f478a675b7388fef85a2724217c
+	source = git-delta-0.7.1.tgz::https://github.com/dandavison/delta/archive/0.7.1.tar.gz
+	sha256sums = f432335361088c37f8aa4bb747ba12e1f8eddbbc3ed5c51fdd52d9b96eb22227
 
 pkgname = git-delta
 
