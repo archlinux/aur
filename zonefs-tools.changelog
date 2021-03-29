@@ -1,0 +1,16 @@
+### v1.5.0
+
+This new release fixes some problems with mkzonefs and improves the test suite.
+In more details:
+
+mkzonefs:
+- Improved zone reset handling, forcing an all zone reset, always.
+- Use O_EXCL mode flag to open a device file to avoid formatting a device in use.
+Fix make install directive
+- Add the new make rpm directive
+Test suite:
+- New zio tool to execute IO operations of various types using various flags
+- Fix stale data access when running tests
+- zonefs-tests-nullblk.sh improvements (new options)
+- Add test cases related to using zonefs files as swap files
+- Various other minor improvements.

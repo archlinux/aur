@@ -1,12 +1,15 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = zonefs-tools
+	pkgdesc = This project provides the mkzonefs command line utility which allows formatting zoned block devices for use withe the zonefs file system.
+	pkgver = 1.5.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/damien-lemoal/zonefs-tools
+	changelog = zonefs-tools.changelog
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = GPL
+	depends = glibc
+	depends = util-linux-libs
+	source = zonefs-tools-1.5.0.tar.gz::https://github.com/damien-lemoal/zonefs-tools/archive/refs/tags/v1.5.0.tar.gz
+	md5sums = 75c00e15d263122486342d96ee38b487
 
-pkgname = yarxi
+pkgname = zonefs-tools
 
