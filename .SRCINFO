@@ -1,0 +1,31 @@
+pkgbase = make-escape
+	pkgdesc = Escaped symbols for GNU Make
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/egasato/make-escape
+	changelog = ChangeLog
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	source = https://gitlab.com/egasato/make-escape/-/archive/v0.1.0/make-escape-v0.1.0.tar.bz2
+	source = https://downloads.sourceforge.net/project/egasato-make-escape/v0.1.0/make-escape-v0.1.0.tar.bz2.sig
+	validpgpkeys = 278775DF8230FE08784729E3DCCA6B78DD448CAE
+	md5sums = 489bde0a9f0b7f102e82a1e288385aa7
+	md5sums = SKIP
+	sha1sums = 2cacaf3890fad31f56298fd132db4480cddadb57
+	sha1sums = SKIP
+	sha224sums = be8bf5e4ee1e47ba369a578c535f5637295049118536dc6d3957cf2d
+	sha224sums = SKIP
+	sha256sums = 1411538c1975905cd28be92d6d5b75ac4d28faf3a3bfc2d204a16361a76edddb
+	sha256sums = SKIP
+	sha384sums = f965d47a573ac412a54a7e0900c9a78df048101eef1c4c08e604dff5607c1c8a8ad89cfe40c158665581e1607dc6445d
+	sha384sums = SKIP
+	sha512sums = a81dfed49e082df4a669dc76959894c786e88f60ad19a55b28961b19da526fcfc010f35e9502240a2cbccc7e8a58a95cf2f96ef33a97d01740bc8374f4ea828f
+	sha512sums = SKIP
+	b2sums = fb0536b0271e407cea2b504b740dd09a1c1bd412d121c7569168ee324f7ba37fd35c406d85c8bf4859b336d3af10d4a2b186d656fdae573ebde81b6aa1a30ff1
+	b2sums = SKIP
+
+pkgname = make-escape
+
