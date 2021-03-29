@@ -1,0 +1,10 @@
+### v5.9.0
+
+This release brings many bug fixes and improvements:
+
+- Support for generating rpm packages using "make rpm"
+- Compilation warning fixes
+- Configuration fixes (header file checks)
+- Various tools bug fixes
+- Updates to README documentation
+- Details can be found in git log.
