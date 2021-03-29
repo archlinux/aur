@@ -1,14 +1,17 @@
 pkgbase = ruby-mysql2
 	pkgdesc = A simple, fast Mysql library for Ruby, binding to libmysql
-	pkgver = 0.4.4
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = http://github.com/brianmario/mysql2
-	arch = any
+	arch = x86_64
 	license = MIT
+	makedepends = mariadb-clients
+	makedepends = ruby-rake
+	makedepends = ruby-rake-compiler
 	depends = ruby
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mysql2-0.4.4.gem
-	sha256sums = 2adf72de58581ddb17abe952f5c7843ee0caf3455ed20c82f9c41583ce3aa3ec
+	source = ruby-mysql2-0.5.3.tar.gz::http://github.com/brianmario/mysql2/archive/0.5.3.tar.gz
+	sha512sums = d704f192b233b78c8ccdc3978dab796ef667ad92f651255daa99ab0f886e8f816094583ff7c091681d42caf9cd3e14b17cc37f8b574ee5a6851adfd65d5bbf87
 
 pkgname = ruby-mysql2
 
