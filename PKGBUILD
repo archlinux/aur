@@ -13,6 +13,8 @@ arch=('x86_64')
 # from a makedepends to a true depends, and use that dynamic library.
 depends=('ncurses' 'ffmpeg' 'libunistring')
 makedepends=('cmake' 'pandoc' 'python-pypandoc' 'python-cffi' 'python-setuptools' 'doctest' 'qrcodegen' 'readline' 'ninja')
+provides=(notcurses)
+conflicts=(notcurses)
 source=(git+https://github.com/dankamongmen/notcurses)
 
 pkgver() {

@@ -17,6 +17,8 @@ pkgbase = notcurses-git
 	depends = ncurses
 	depends = ffmpeg
 	depends = libunistring
+	provides = notcurses
+	conflicts = notcurses
 	source = git+https://github.com/dankamongmen/notcurses
 	sha256sums = SKIP
 
