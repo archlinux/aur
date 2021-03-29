@@ -2,7 +2,7 @@
 # Contributor: Lucas Hermann Negri <lucashnegri at gmail dot com>
 pkgname=armadillo
 pkgver=10.3.0
-_pkgver=${pkgver/_/-}                     # For use with RC releases, to replace the _ with -
+_pkgver=${pkgver/_/-} # For use with RC releases, to replace the _ with -
 
 pkgrel=1
 pkgdesc="C++ linear algebra library"
@@ -23,7 +23,7 @@ build() {
   fi
 
   cd "${srcdir}/$pkgname-$_pkgver"
-  cmake  $ARMA64LIBDIR -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+  cmake $ARMA64LIBDIR -DCMAKE_INSTALL_PREFIX:PATH=/usr .
   make
 }
 
@@ -32,4 +32,3 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-      
