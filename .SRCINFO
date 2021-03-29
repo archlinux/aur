@@ -1,0 +1,18 @@
+pkgbase = moe-theme-git
+	pkgdesc = Moe is a light theme, with blur transparencies and red tones with gradients.
+	pkgver = r16.28d4315
+	pkgrel = 1
+	url = https://gitlab.com/jomada/moe-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = moe-theme::git+https://gitlab.com/jomada/moe-theme
+	sha256sums = SKIP
+
+pkgname = plasma-theme-moe-git
+	optdepends = kvantum-theme-moe: Moe theme for Kvantum (recommended)
+
+pkgname = kvantum-theme-moe-git
+	depends = kvantum-qt5
+
