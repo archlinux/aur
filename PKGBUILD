@@ -2,12 +2,12 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=2
+pkgrel=1
 _srcname=linux-5.11
 _major=5.11
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=6
+_minor=10
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -35,11 +35,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('5e1c408890504104b23ce9556a3bf2ef7e67460d1bc53e4f8fac3ed7635632a957faf1d4a7b704c3893dd0f38ee470b8fb8d1f206c89924154c6311c7fc80cdb'
+b2sums=('b836fbbf9d67d94d067ee79958bd83a189d5798321371b2f3dfa3cc4d0acd75006a117bdf16fef4fb312ed86ec2c4dcac466741c75429dc87c086d8439a32032'
         'SKIP'
-        'c94885a274c835ce13e109aed4307831a1e57283c2e475dca1fc9c3c0cce97ad599e485b0413dabd182c5d48f9e5e30d071c3f9dcd0d6954e1affe0014279024'
+        '84b97aeb190d570144d0e315edf8c0b51fd92a70f94a30f08ef49a65eedd48ee135b2c2f3a1a2827ace96fef2d1963e83948790c7729f3d7c1f615f8d32c9656'
         'SKIP'
-        '3afa267c35f36a47ffefc287040035ea0903b68a91a2635f5e45f661bcd6568077749b1cec41b6f28175f098ca543249f6b68d5429a8a9a940e00ed7738e8dbd'
+        '8a0e1fb03037e57df8de81856a0bdb94e393d9336b587b1c907c6e4ed15abfa6c86634131ebbfab45eeb6b423bf467536ad0543efbef2586645ade016c32a013'
         'eab8a07469cff83526e5fef59d72d9c2c539432c161298cb61a09c25d55528e495b4d9dd0ff527d3e5900b8adb3f973f6601ea35837f04bf0c2794eaf04bc6ad')
 
 
