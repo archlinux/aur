@@ -1,18 +1,19 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=udr-git
-pkgver=v0.9.4.r20.g49ca8b5
-pkgrel=2
+pkgver=v0.9.4.r23.g774f2e7
+pkgrel=1
 pkgdesc="A UDT wrapper for rsync that improves throughput of large dataset transfers over long distances."
-arch=('i686' 'x86_64')
-url="https://github.com/LabAdvComp/UDR"
-license=('apache-2.0' )
-makedepends=('git')
-depends=('openssl' 'crypto++' 'rsync')
-makedepends=('git')
-provides=('udr')
-source=('git://github.com/LabAdvComp/UDR')
-md5sums=('SKIP')
+arch=('x86_64')
+url="http://www.labcomputing.org/"
+license=(APACHE)
+depends=(openssl crypto++ rsync udt)
+makedepends=(git)
+checkdepends=(python-pytest)
+provides=(udr)
+conflicts=(udr)
+source=('git+https://github.com/martinetd/UDR.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd UDR
@@ -21,26 +22,22 @@ pkgver() {
 
 prepare() {
   cd UDR
-  curl -L https://github.com/martinetd/UDR/commit/d65038fab5a35a446d5e17274a28ece64ad8c3c2.patch | patch -p1
 }
 
 build() {
-  cd "$srcdir/UDR"
+  cd UDR
+  make -j1  # multithread build fails
+}
 
-  if test "$CARCH" == x86_64; then
-    MACHINE=AMD64
-  fi
-  if test "$CARCH" == i686; then
-    MACHINE=IA32
-  fi
-  unset LDFLAGS # LDFLAGS from /etc/makepkg.conf were causing build failure
-  make -j1 -e arch=$MACHINE
+check() {
+  cd UDR
+  #pytest -vv tests  # broken
 }
 
 package() {
-  cd "$srcdir/UDR"
-  mkdir -p ${pkgdir}/usr/bin/
-  install -D -m755  src/udr ${pkgdir}/usr/bin/
+  cd UDR
+  install -m755 -Dt "${pkgdir}"/usr/bin/ src/udr
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
 }
 
 # vim:set ts=2 sw=2 et:

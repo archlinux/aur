@@ -1,18 +1,20 @@
 pkgbase = udr-git
 	pkgdesc = A UDT wrapper for rsync that improves throughput of large dataset transfers over long distances.
-	pkgver = v0.9.4.r20.g49ca8b5
-	pkgrel = 2
-	url = https://github.com/LabAdvComp/UDR
-	arch = i686
+	pkgver = v0.9.4.r23.g774f2e7
+	pkgrel = 1
+	url = http://www.labcomputing.org/
 	arch = x86_64
-	license = apache-2.0
+	license = APACHE
+	checkdepends = python-pytest
 	makedepends = git
 	depends = openssl
 	depends = crypto++
 	depends = rsync
+	depends = udt
 	provides = udr
-	source = git://github.com/LabAdvComp/UDR
-	md5sums = SKIP
+	conflicts = udr
+	source = git+https://github.com/martinetd/UDR.git
+	sha256sums = SKIP
 
 pkgname = udr-git
 
