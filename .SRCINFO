@@ -1,6 +1,6 @@
 pkgbase = pyghdl-git
-	pkgdesc = VHDL Language Server and interface to ghdl, a VHDL analyzer
-	pkgver = v0.37.0.r975.1a1e3212
+	pkgdesc = Python binding for GHDL and high-level APIs
+	pkgver = v1.0.0.r116.9ab4fd18
 	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = pyghdl-git
 	makedepends = python-setuptools
 	depends = ghdl-git
 	depends = python
+	depends = python-pydecor>=2.0.1
+	depends = python-pyvhdlmodel>=0.7.3
 	source = ghdl::git+https://github.com/ghdl/ghdl.git
 	sha256sums = SKIP
 
