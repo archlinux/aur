@@ -1,0 +1,3 @@
+post_install() {
+  echo "vtebench accepts benchmarks as executables and uses their stdout as benchmark payload. By default benchmarks are read from the ./benchmarks directory, which contains a good selection of benchmarks already. Benchmarks in vtebench are defined as a directory with a benchmark and an optional setup executable."
+}
