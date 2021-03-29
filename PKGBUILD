@@ -1,7 +1,7 @@
 # Maintainer: Richard Bradfield <bradfier at fstab dot me>
 
 pkgname=xd-rs
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="xd - A tool to dump binary input in a variety of formats"
 url="https://bitbucket.org/delan/xd"
