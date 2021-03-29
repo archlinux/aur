@@ -2,7 +2,7 @@
 
 pkgname=python-oci
 _pyname=oci-python-sdk
-pkgver=2.33.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc='Python SDK for Oracle Cloud Infrastructure'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('python' 'python-dateutil' 'python-certifi' 'python-cryptography' 'pyth
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.patch")
-sha256sums=('dad50ed0dc238c3775f56566e6b5ab828623634bb20f8e30248e3dd4aedc8d18'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('d29be7183bee368c189181434f8af504a8326eb2bf2fee6df5c84c8ca2b547c1'
+            '6605e6b1e8bbdc4f85305275f6ced0428a97ed952c3398448aaa596e8aa97511')
 
 prepare() {
   cd "${_pyname}-${pkgver}"
