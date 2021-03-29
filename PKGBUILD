@@ -2,7 +2,7 @@
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
 url="https://www.proxmox.com"
