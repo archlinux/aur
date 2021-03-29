@@ -6,6 +6,7 @@ pkgbase = python-certifi-system-store
 	arch = any
 	license = MPL
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	provides = python-certifi
 	conflicts = python-certifi
@@ -13,5 +14,4 @@ pkgbase = python-certifi-system-store
 	sha256sums = 603be2b260ae2d5d025f584a219087683ff2ddcd09325ebb56b172cd07877057
 
 pkgname = python-certifi-system-store
-	depends = python
 
