@@ -1,0 +1,16 @@
+pkgbase = discli
+	pkgdesc = Discord TUI client written in Go
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Kaneki07/DisCli
+	arch = x86_64
+	license = MIT
+	provides = discli
+	conflicts = cordless-bin
+	replaces = cordless-bin
+	noextract = discli-1
+	source = discli-1::https://github.com/Kaneki07/DisCli/releases/download/Discli-1.0/DisCliNux
+	md5sums = SKIP
+
+pkgname = discli
+
