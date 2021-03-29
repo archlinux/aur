@@ -5,6 +5,7 @@ pkgname=agate
 pkgver=3.0.1
 pkgrel=1
 pkgdesc="Simple static file server for the Gemini network protocol, written in Rust"
+depends=('gcc-libs')
 makedepends=('cargo')
 arch=('x86_64')
 url="https://github.com/mbrubeck/agate"
