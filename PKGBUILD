@@ -1,7 +1,7 @@
 # Maintainer: Marcus Klein <himself@kleini.org>
 
 pkgname=brickstore
-pkgver=2021.3.2
+pkgver=2021.3.3
 pkgrel=1
 pkgdesc="BrickStore is a BrickLink offline management tool."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('qt5-translations')
 source=("https://github.com/rgriebl/brickstore/archive/v$pkgver.tar.gz")
-sha256sums=('7b733907f47b0396df70f2975c3653d91f61889ad5d7dd8de77d8c2a2739cf51')
+sha256sums=('8b5278aa332e5d7496f8b97ea4213460a9985bbf4633e661296b93671f03e985')
 
 build() {
 	cd "$pkgname-$pkgver"
