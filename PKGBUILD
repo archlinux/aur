@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildbox-common
-pkgver=0.0.41.r0.gcbf52bb
+pkgver=0.0.42.r0.g7311d76
 pkgrel=1
 pkgdesc="Shared protocol-buffer definitions and various helper functions"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://buildgrid.build"
 license=('Apache')
 depends=('c-ares' 'grpc' 'gtest' 'gmock' 'gflags' 'google-glog')
 makedepends=('cmake' 'git')
-_commit=cbf52bb5e2a5e515cd95fb165fc4848bd4b5d925 # release 0.0.41
+_commit=7311d76a2d6198cda5d8af2dd8c9ab05fa59c326 # release 0.0.42
 source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=$_commit")
 sha256sums=('SKIP')
 
