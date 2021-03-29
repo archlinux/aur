@@ -1,14 +1,14 @@
 # Maintainer: Nicola Corna <nicola@corna.info>
 
 pkgname=pyghdl-git
-pkgver=v0.37.0.r975.1a1e3212
+pkgver=v1.0.0.r116.9ab4fd18
 pkgrel=1
-pkgdesc='VHDL Language Server and interface to ghdl, a VHDL analyzer'
+pkgdesc='Python binding for GHDL and high-level APIs'
 arch=('any')
 url='https://github.com/ghdl/ghdl'
 license=('GPLv2')
 
-depends=('ghdl-git' 'python')
+depends=('ghdl-git' 'python' 'python-pydecor>=2.0.1' 'python-pyvhdlmodel>=0.7.3')
 makedepends=('python-setuptools')
 
 source=('ghdl::git+https://github.com/ghdl/ghdl.git')
@@ -20,11 +20,11 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/ghdl/python"
+  cd "$srcdir/ghdl"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/ghdl/python"
+  cd "$srcdir/ghdl"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
