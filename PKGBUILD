@@ -1,4 +1,5 @@
-# Maintainer: Christoph Robbert <chrobbert@gmail.com>
+# Maintainer:  FirstAirBender <noblechuk5[at]web[dot]de>
+# Contributor: Christoph Robbert <chrobbert@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
 # Contributor: jrutila
@@ -6,45 +7,49 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=0.9.5
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='GUI designer for wxWidgets that can generate Python, C++, Perl, Lisp and XRC code'
+pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets / wxPython'
 arch=('any')
 license=('MIT')
 url='http://wxglade.sourceforge.net/'
-depends=('python2' 'wxpython' 'desktop-file-utils')
-makedepends=('gendesk' 'imagemagick')
-install="$pkgname.install"
+depends=('python' 'python-wxpython' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
+makedepends=(icoutils gendesk)
 source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
-        'wxglade.sh')
-sha256sums=('46a644c7960cb718ccb7267d7a21311231f99d37f817770e958704ef12d64275'
-            '4549c2034453475f06265fa1c845db3b4c006ab9b17d0386aecd2a276577a6e0')
+        application-x-wxg.xml)
+sha256sums=('a92585df4254eae88db457b0505cd58374385898e94206bf190111a041a20cd4'
+            'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
 
 prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec 'wxglade %F' \
-    --name 'wxGlade' --mimetypes 'application/x-wxg'
-  convert "wxGlade-$pkgver/icons/icon.xpm" "$pkgname.png"
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "$pkgname %F" \
+    --name 'WxGlade' --mimetypes 'application/x-wxg'
+
+  rm -rf "$pkgname-$pkgver" && mv -Tfv {wxGlade,$pkgname}-$pkgver
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  python setup.py build
+
+  icotool --extract --output=$srcdir icons/wxglade*.ico
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/wxGlade"
+  cd "$pkgname-$pkgver"
 
-  # TODO: Update man pages upstream
-  #install -Dm644 "wxGlade-$pkgver/docs/man/$pkgname.1" \
-  #  "$pkgdir/usr/share/man/man1/$pkgname.1"
-  rm -rf "wxGlade-$pkgver/docs/man"
-  mv "wxGlade-$pkgver/docs/"* "$pkgdir/usr/share/doc/wxGlade/"
-  cp -R "wxGlade-$pkgver/" "$pkgdir/usr/share/wxGlade/"
+  python setup.py install --root="$pkgdir" --optimize=1
 
-  python2 -m compileall "$pkgdir/usr/share/wxGlade/"
+  datadir="$pkgdir/usr/share/"
 
-  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "wxGlade-$pkgver/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  install -Dm644 "$pkgname.png" \
-    "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 "$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/application-x-wxg.xml" "$datadir/mime/packages/$pkgname.xml"
+
+  find "$srcdir" -maxdepth 1 -name "$pkgname*128*.png" \
+    -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/apps/$pkgname.png" \; \
+    -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/mimetypes/application-x-wxg.png" \;
+
+  find "$srcdir" -maxdepth 1 -name "$pkgname*32*.png" \
+    -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/apps/$pkgname.png" \; \
+    -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/mimetypes/application-x-wxg.png" \;
+
+  install -Dm644 "$srcdir/$pkgname.desktop" "$datadir/applications/$pkgname.desktop"
 }
-
-# vim:set ts=2 sw=2 et:

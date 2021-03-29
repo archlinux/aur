@@ -1,20 +1,21 @@
 pkgbase = wxglade
-	pkgdesc = GUI designer for wxWidgets that can generate Python, C++, Perl, Lisp and XRC code
-	pkgver = 0.9.5
+	pkgdesc = wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets / wxPython
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://wxglade.sourceforge.net/
-	install = wxglade.install
 	arch = any
 	license = MIT
+	makedepends = icoutils
 	makedepends = gendesk
-	makedepends = imagemagick
-	depends = python2
-	depends = wxpython
+	depends = python
+	depends = python-wxpython
 	depends = desktop-file-utils
-	source = https://github.com/wxGlade/wxGlade/archive/v0.9.5.tar.gz
-	source = wxglade.sh
-	sha256sums = 46a644c7960cb718ccb7267d7a21311231f99d37f817770e958704ef12d64275
-	sha256sums = 4549c2034453475f06265fa1c845db3b4c006ab9b17d0386aecd2a276577a6e0
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	source = https://github.com/wxGlade/wxGlade/archive/v1.0.1.tar.gz
+	source = application-x-wxg.xml
+	sha256sums = a92585df4254eae88db457b0505cd58374385898e94206bf190111a041a20cd4
+	sha256sums = f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0
 
 pkgname = wxglade
 
