@@ -1,19 +1,19 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=promscale_extension
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="PostgreSQL extension for Promscale"
 arch=('x86_64')
 url="https://github.com/timescale/promscale_extension"
 license=('Apache' 'custom:Timescale')
 depends=(postgresql)
 makedepends=(rust clang llvm)
-_tslver=1.7.4 # latest version of Timescale - used to pin license version
+_tslver=2.1.1 # latest version of Timescale - used to pin license version
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "LICENSE-TIMESCALE-$_tslver::https://raw.githubusercontent.com/timescale/timescaledb/$_tslver/tsl/LICENSE-TIMESCALE")
-b2sums=('10ea7f5fed2693228314e663aee464ede5d5ba23d1d39159cd231f6fbb7e72735c4d97d94b4a528f0372615c0f64a3a7bc055671640a0b1af085f75010b4024b'
-        'e8823fbfed8c9bc8738387d1b60b7507a1e492f3fffa18036e3016d0882d71d34dff380413ce86673b3496868dae6f64d0204769fa3540a62fb6d757af59222c')
+b2sums=('162a41816505cfe89bed2e2553a0763b4056ca2ea14dd9bf944e49dd4d5f3c18ac2839008fac3bed9d9771f1ff133158155faa72d5d8236a688aa7daa880e9f2'
+        '32bf2e976bf68df573329b3e83fe0060557f1c09859dc12f1c1070e6c2ecb29ee9699e981900e39b3a3ccd41384d28ab7a81bcc953e0d34f00d0048d0f1ea028')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,6 +24,7 @@ package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
+  # licenses
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 "$srcdir/LICENSE-TIMESCALE-$_tslver" "$pkgdir/usr/share/licenses/LICENSE-TIMESCALE"
+  install -Dm644 "$srcdir/LICENSE-TIMESCALE-$_tslver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-TIMESCALE"
 }
