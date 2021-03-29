@@ -4,11 +4,11 @@ pkgbase = innernet-git
 	pkgrel = 1
 	url = https://github.com/tonarino/innernet
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = git
 	makedepends = cargo
 	depends = sqlite
-	source = innernet-git::git+ssh://git@github.com/tonarino/innernet
+	source = innernet-git::git+https://github.com/tonarino/innernet
 	sha1sums = SKIP
 
 pkgname = innernet-git

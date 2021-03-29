@@ -1,16 +1,16 @@
 # Maintainer: Jake McGinty <jake@tonari.no>
 
 pkgname=innernet-git
-pkgver=v0.12.6.r1.92f00fe
+pkgver=v1.0.0.r1.a9e59ba
 pkgrel=1
 pkgdesc="A tool to manage WireGuard network topologies."
 #epoch=0
 arch=('x86_64')
 url="https://github.com/tonarino/innernet"
-license=('custom')
+license=('MIT')
 depends=('sqlite')
 makedepends=('git' 'cargo')
-source=("$pkgname::git+ssh://git@github.com/tonarino/innernet")
+source=("$pkgname::git+https://github.com/tonarino/innernet")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -37,13 +37,15 @@ package() {
 
   install -Dm755 "target/release/innernet" "$pkgdir/usr/bin/innernet"
   install -Dm755 "target/release/innernet-server" "$pkgdir/usr/bin/innernet-server"
-  ln -s "/usr/bin/innernet" "$pkgdir/usr/bin/inn"
+  ln -s innernet "$pkgdir/usr/bin/inn"
 
   install -Dm644 "client/innernet@.service" "$pkgdir/usr/lib/systemd/system/innernet@.service"
   install -Dm644 "server/innernet-server@.service" "$pkgdir/usr/lib/systemd/system/innernet-server@.service"
 
   install -Dm644 "doc/innernet.8.gz" "$pkgdir/usr/share/man/man8/innernet.8.gz"
   install -Dm644 "doc/innernet-server.8.gz" "$pkgdir/usr/share/man/man8/innernet-server.8.gz"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
