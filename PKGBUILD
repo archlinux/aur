@@ -2,7 +2,7 @@
 pkgname=drb-git
 pkgver=r1
 pkgrel=1
-pkgdesc="Douay-Rheims Bible and other Catholic doctrinal texts"
+pkgdesc="Douay-Rheims Bible and other Catholic doctrinal texts, from your terminal"
 arch=(any)
 url="https://github.com/theunpleasantowl/drb"
 license=('Public Domain')

@@ -1,5 +1,5 @@
 pkgbase = drb-git
-	pkgdesc = Douay-Rheims Bible and other Catholic doctrinal texts
+	pkgdesc = Douay-Rheims Bible and other Catholic doctrinal texts, from your terminal
 	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/theunpleasantowl/drb
