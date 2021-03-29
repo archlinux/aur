@@ -9,7 +9,7 @@ url="http://litcave.rudi.ir/"
 license=('custom:BSD')
 makedepends=('git')
 provides=("${pkgname%-*}")
-conflicts=(${pkgname%-*})
+conflicts=("${pkgname%-*}")
 source=("$pkgname::git+git://repo.or.cz/fbvis.git")
 md5sums=('SKIP')
 
