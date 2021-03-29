@@ -1,7 +1,8 @@
 pkgbase = firecracker-git
 	pkgdesc = Secure and fast microVMs for serverless computing
-	pkgver = v0.20.0.r4.g144b6c08
+	pkgver = r2700.dc893ea2
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/firecracker-microvm/firecracker
 	arch = x86_64
 	license = Apache:2.0

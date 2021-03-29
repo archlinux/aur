@@ -1,7 +1,8 @@
 pkgname=firecracker-git
 _gitname=firecracker
-pkgver=v0.20.0.r4.g144b6c08
+pkgver=r2700.dc893ea2
 pkgrel=1
+epoch=1
 pkgdesc="Secure and fast microVMs for serverless computing"
 url="https://github.com/firecracker-microvm/firecracker"
 depends=()
@@ -13,15 +14,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd ${_gitname}
-  tools/devtool build --release
+  tools/devtool --unattended build --release
 }
 
 package() {
