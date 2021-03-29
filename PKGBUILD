@@ -9,8 +9,6 @@ arch=('any')
 url='https://github.com/rsms/inter/'
 license=('custom:OFL')
 makedepends=('git' 'p7zip' 'python' 'fontforge' 'subversion')
-conflicts=('nerd-fonts-inter')
-provides=('nerd-fonts-inter')
 source=("https://github.com/rsms/inter/releases/download/v$_interver/Inter-$_interver.zip" "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$_nfver/font-patcher" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$_nfver/src/glyphs")
 sha256sums=('a237ab9dc0a710c47dd79f71c68bd1f8490bc8b3c818c2224a8110e89e439740' '3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859' 'SKIP')
 
