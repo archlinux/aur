@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 binname=${pkgname}-binary
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -16,13 +16,11 @@ source=(
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
 	"00-worker-log-level-info.patch"
-	"03-rr-log-output.patch"
 	"03-rr-binary-log-output.patch"
 )
 sha256sums=(
-	"2954b1378757598f2e3ce819f91892a5c89837a5a08107fdd6f81effcba947e6"
-	"fa88e2c87966df507a2d53d5199c8e27e3ea4bfcc5d9267e21d96fe025f7da15"
-	SKIP
+	"aec72f655d477347e8ce6dd7fb1cd7ca4c581d1e9b4c3dc1e25bfa86af16d1ad"
+	"65604afd79cb8a27458d82f74c9340f03d905aca115bc18c6d208ad3cd88d4ff"
 	SKIP
 	SKIP
 	SKIP
@@ -35,7 +33,7 @@ prepare() {
 
 	cd "$srcdir/$pkgname-$pkgver"
 	patch -p1 < "$srcdir/00-worker-log-level-info.patch"
-	patch -p1 < "$srcdir/03-rr-log-output.patch"
+#	patch -p1 < "$srcdir/03-rr-log-output.patch"
 
 	cd "$srcdir/$binname-$pkgver"
 	patch -p1 <"$srcdir/03-rr-binary-log-output.patch"
