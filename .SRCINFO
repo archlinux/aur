@@ -1,0 +1,18 @@
+pkgbase = stylish-gtk-theme-git
+	pkgdesc = A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell
+	pkgver = 2020.09.12.53664fe
+	pkgrel = 1
+	url = https://github.com/vinceliuice/stylish-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = gtk3
+	makedepends = sassc
+	makedepends = git
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gnome-themes-standard: for gtk2 themes
+	provides = stylish-gtk-theme
+	source = git+https://github.com/vinceliuice/stylish-gtk-theme.git
+	sha512sums = SKIP
+
+pkgname = stylish-gtk-theme-git
+
