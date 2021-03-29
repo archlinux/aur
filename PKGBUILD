@@ -2,14 +2,14 @@
 # Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=libfmod
-pkgver=4.44.61
+pkgver=4.44.64
 pkgrel=1
 pkgdesc="Libraries of the fmodex audio engine"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
 conflicts=('fmodex')
-source=("https://www.panda3d.org/download/noversion/fmodapi44461linux.tar.gz")
+source=(https://zdoom.org/files/fmod/fmodapi44464linux.tar.gz)
 sha512sums=('SKIP')
 
 package() {
