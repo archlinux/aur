@@ -7,6 +7,7 @@ pkgdesc="Generate benchmarks for terminal emulators"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
 makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'git')
+install=vtebench.install
 provides=(vtebench)
 conflicts=(vtebench)
 source=(git+https://github.com/alacritty/vtebench)
