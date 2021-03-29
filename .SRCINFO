@@ -1,0 +1,19 @@
+pkgbase = rakudo-bin
+	pkgdesc = Raku compiler for MoarVM
+	pkgver = 2021.03_01
+	pkgrel = 1
+	url = https://rakudo.org/
+	arch = x86_64
+	groups = raku
+	license = PerlArtistic
+	provides = rakudo-moar
+	provides = perl6
+	provides = raku
+	conflicts = rakudo-moar
+	conflicts = perl6
+	conflicts = raku
+	source = https://rakudo.org/dl/rakudo/rakudo-moar-2021.03-01-linux-x86_64-gcc.tar.gz
+	source = https://rakudo.org/dl/rakudo/rakudo-moar-2021.03-01-linux-x86_64-gcc.tar.gz.asc
+
+pkgname = rakudo-bin
+
