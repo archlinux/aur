@@ -3,7 +3,7 @@
 # Contributor: cantabile <cantabile dot desu at gmail dot com>
 
 pkgname=uswsusp-git
-pkgver=0.r501.g668c5f7
+pkgver=1.0
 pkgrel=8
 pkgdesc='Userspace software suspend - git checkout'
 arch=('i686' 'x86_64')
