@@ -1,7 +1,7 @@
 # Maintainer: Tim Schumacher <timschumi@gmx.de>
 # Contributor: David Vilar <davvil@gmail.com>
 pkgname=vassal
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Game engine for building and playing online adaptations of board games and card games."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('java-runtime>=11')
 source=(https://github.com/vassalengine/vassal/releases/download/${pkgver}/VASSAL-${pkgver}-linux.tar.bz2
         VASSAL-256x256.png)
 noextract=()
-md5sums=('db5e6f5b841ae0c3ee63c07f9812d865'
+md5sums=('1042ba2d14cdb9af9ad60259cdaffa1f'
          '4a4ec11bdbd7dbbf56e6f1d533f69a7e')
 build() {
   true
@@ -28,9 +28,22 @@ package() {
   mkdir -p $pkgdir/usr/bin
   cat << EOF > $pkgdir/usr/bin/vassal
 #!/bin/bash
+
 shopt -s nullglob
-JAVA_PATHS=(/usr/lib/jvm/java-{11..15}-*/bin/java)
-cd /usr/share/java/$pkgname && \${JAVA_PATHS[0]} -classpath lib/Vengine.jar VASSAL.launch.ModuleManager "\$@"
+
+JAVA_BIN="\$(which java)"
+JAVA_VER="\$("\${JAVA_BIN}" -version 2>&1 | awk -F '"' '/version/ {print \$2}')"
+
+# Cut after first dot (if it's a 1.x version it's too old anyways)
+JAVA_VER="\${JAVA_VER%%.*}"
+
+# If the default java installation is not suitable
+if [[ "\${JAVA_VER}" < "11" ]]; then
+  JAVA_BINS=(/usr/lib/jvm/java-{11..15}-*/bin/java)
+  JAVA_BIN="\${JAVA_BINS[0]}"
+fi
+
+cd /usr/share/java/$pkgname && "\${JAVA_BIN}" -classpath lib/Vengine.jar VASSAL.launch.ModuleManager "\$@"
 EOF
   chmod a+x $pkgdir/usr/bin/vassal
 
