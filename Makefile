@@ -8,4 +8,4 @@ all: .SRCINFO
 clean:
 	rm -rf pkg src
 	rm -f rabtap-bin*.pkg.tar.xz
-	rm -f rabtap-v*.zip
+	rm -f rabtap-v*.tgz
