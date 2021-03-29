@@ -16,11 +16,17 @@ _commits=$(printf ${pkgver} | cut -d'.' -f4)
 _fetch_url="${url}/releases/download/v${_semver}/Tachidesk-v${_semver}-${_commits}.jar"
 
 source=("${pkgname}-${pkgver}.jar::${_fetch_url}" 
-		"${pkgname}.sh")
+        "${pkgname}.desktop"
+        "${pkgname}.png"
+        "${pkgname}.sh")
 md5sums=('d05260628ffebe1f92c497f14d16043f'
+         '728182fd92daa4e50b98c0d62bb65c5e'
+         '520cdde66717d1701fb40dfbcdab59a2'
          '196d4e69879d3b01f73672c812c0f20c')
 
 package() {
-	install -Dm755 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+    desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
+    install -Dm755 "${srcdir}/${pkgname}.png"           "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
+    install -Dm755 "${srcdir}/${pkgname}.sh"            "${pkgdir}/usr/bin/${pkgname}"
 }
