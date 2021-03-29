@@ -4,7 +4,7 @@ _pkgbase=moe-theme
 pkgbase="${_pkgbase}-git"
 pkgname=(plasma-theme-moe-git kvantum-theme-moe-git)
 pkgver=r16.28d4315
-pkgrel=1
+pkgrel=2
 pkgdesc="Moe is a light theme, with blur transparencies and red tones with gradients."
 arch=(any)
 url="https://gitlab.com/jomada/${_pkgbase}"
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package_plasma-theme-moe-git() {
-    optdepends=('kvantum-theme-moe: Moe theme for Kvantum (recommended)')
+    optdepends=('kvantum-theme-moe-git: Moe theme for Kvantum (recommended)')
 
     cd "${srcdir}/${_pkgbase}"
 
