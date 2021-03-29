@@ -1,7 +1,7 @@
 pkgbase = audacity-alien
 	pkgdesc = A program that lets you manipulate digital audio waveforms (patched version from Alien Bob repo due to upstream packaging issues)
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audacityteam.org
 	arch = x86_64
 	arch = i686
@@ -16,6 +16,8 @@ pkgbase = audacity-alien
 	depends = libsoxr
 	depends = soundtouch
 	depends = wxgtk3
+	depends = libjpeg6-turbo
+	depends = vamp-plugin-sdk
 	optdepends = ffmpeg: additional import/export capabilities
 	provides = audacity
 	conflicts = audacity

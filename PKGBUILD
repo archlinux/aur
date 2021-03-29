@@ -2,13 +2,12 @@
 
 pkgname=audacity-alien
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that lets you manipulate digital audio waveforms (patched version from Alien Bob repo due to upstream packaging issues)"
 arch=('x86_64' 'i686')
 url="https://audacityteam.org"
 license=('GPL2' 'CCPL')
-depends=('expat' 'gcc-libs' 'soundtouch' 'gdk-pixbuf2' 'glibc' 'libmad'
-'libsoxr' 'soundtouch' 'wxgtk3')
+depends=('expat' 'gcc-libs' 'soundtouch' 'gdk-pixbuf2' 'glibc' 'libmad' 'libsoxr' 'soundtouch' 'wxgtk3' 'libjpeg6-turbo' 'vamp-plugin-sdk')
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=("audacity")
 conflicts=("audacity")
