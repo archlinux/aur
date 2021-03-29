@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-scramp
-pkgver=1.2.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python implementation of the SCRAM protocol"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python python-asn1crypto)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=("https://files.pythonhosted.org/packages/source/s/scramp/scramp-$pkgver.tar.gz"{,.asc})
-sha256sums=('ac578bf7b49645ca1083117e40f4e8af2073b003750d5bf21b3285ff342a4f33'
+sha256sums=('d27d768408c6fc025a0e567eed84325b0aaf24364c81ea5974e8334ae3c4fda3'
             'SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
