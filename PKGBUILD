@@ -57,6 +57,9 @@ build() {
 	# For the time being encrypt support is disabled. To reenable add
 	# --enable-encrypt below and fix the code.
 
+    # This is necessary for gcc >= 10
+	CFLAGS="$CFLAGS -fcommon"
+
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
