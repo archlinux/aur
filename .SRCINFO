@@ -1,22 +1,23 @@
 pkgbase = beamerpresenter-git
-	pkgdesc = Simple dual screen pdf presentation software (git)
-	pkgver = 0.1.3_292.4f167ac
+	pkgdesc = Modular multi-screen pdf presenter (git)
+	pkgver = 0.2.0beta
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	install = beamerpresenter.install
 	arch = x86_64
-	license = GPL3
+	license = AGPL3
 	makedepends = git
-	depends = poppler-qt5>=0.41.0
-	depends = qt5-multimedia>=5.5.1
+	makedepends = libmupdf
+	depends = jbig2dec
+	depends = openjpeg2
+	depends = gumbo-parser
+	depends = qt5-multimedia
 	depends = hicolor-icon-theme
-	optdepends = mupdf-tools: external rendering
-	optdepends = gst-libav: video support
-	optdepends = gst-plugins-good: multimedia support
-	optdepends = wmctrl: embedding external programs in Xorg
+	optdepends = gst-libav: show videos
+	optdepends = gst-plugins-good: show videos
 	conflicts = beamerpresenter
 	backup = etc/xdg/beamerpresenter/beamerpresenter.conf
-	backup = etc/xdg/beamerpresenter/pid2wid.sh
+	backup = etc/xdg/beamerpresenter/gui.json
 	source = git://github.com/stiglers-eponym/BeamerPresenter.git
 	md5sums = SKIP
 

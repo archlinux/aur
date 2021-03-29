@@ -17,6 +17,7 @@ makedepends=('git' 'libmupdf')
 #depends=('poppler-qt5' 'qt5-multimedia' 'hicolor-icon-theme')
 #makedepends=('git')
 
+optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos')
 conflicts=('beamerpresenter')
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 md5sums=('SKIP')
