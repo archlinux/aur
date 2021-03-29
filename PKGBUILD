@@ -1,11 +1,10 @@
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
-
+# Maintainer: lmartinez-mirror
+# Contributor: Morten Linderud <foxboron@archlinux.org>
 pkgname=smenu-git
 _pkgname=smenu
-pkgver=0.9.11.r0.g5ea933c
+pkgver=0.9.17.r13.gab186c4
 pkgrel=1
-pkgdesc="Terminal utility that allows you to use words coming from the standard input to create a nice selection window just
-below the cursor. Once done, your selection will be sent to standard output."
+pkgdesc="A powerful and versatile selection tool for interactive or scripting use"
 arch=('x86_64')
 url="https://github.com/p-gen/smenu"
 license=('GPL')
@@ -13,22 +12,20 @@ depends=('ncurses')
 makedepends=('git')
 provides=('smenu')
 conflicts=('smenu')
-source=('git+https://github.com/p-gen/smenu')
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "${_pkgname}"
-  ./autogen.sh
-  ./configure --prefix="/usr"
-  make
+  cd "$pkgname"
+  ./build.sh --prefix=/usr
 }
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
