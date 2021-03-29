@@ -3,26 +3,35 @@
 
 pkgname=glow
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/charmbracelet/${pkgname}"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('97d373e002332e54e2fb808ea38f098ca49e2b88038c115bd6d33d0b3b921495')
 
 build() {
+    local commit
+    local extraflags
+    commit=$(bsdcat ${pkgname}-${pkgver}.tar.gz | git get-tar-commit-id)
+    extraflags="-X main.Version=${pkgver} -X main.CommitSHA=${commit}"
+
     cd "$pkgname-$pkgver"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     go build \
-        -ldflags "-X main.Version=$pkgver" \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "${extraflags} -linkmode external -extldflags \"${LDFLAGS}\"" \
         -o "$pkgname" .
 }
 
