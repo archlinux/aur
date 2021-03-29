@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
 conflicts=('fmodex')
-source=("http://www.fmod.org/download/fmodex/api/Linux/fmodapi${pkgver//./}linux.tar.gz")
-sha512sums=('dfbb588b670c5f01fac9a263a55687736c711a2148cb24cb5fba2d4b26e7a6b6c046cdeffbfeb8e67aa1e7ea1a29a13c074a67dd3eecf4ed5557992f73ee42d9')
+source=("https://www.panda3d.org/download/noversion/fmodapi44461linux.tar.gz")
+sha512sums=('SKIP')
 
 package() {
 	if [ $CARCH == 'i686' ]; then
