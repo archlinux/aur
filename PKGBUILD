@@ -7,7 +7,7 @@
 
 pkgname=tengine
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -25,18 +25,15 @@ backup=('etc/tengine/fastcgi.conf'
 install=tengine.install
 provides=('nginx')
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
-        fix-version.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1542.patch
         service
         logrotate
        )
-sha256sums=('e9efa781fbadb491bddd362d0a59bd95057d7c25e5d82397b2ba6c0d8791986a'
-            'f03c6bf36c088c514ebbe8e219e6e251a5cb059a67979ccbac9bd5fabd70a082'
+sha256sums=('097684d83356fcdda8a6e949bca621126db751b37f6b23591cb3894a1f8a0108'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
 prepare() {
     cd tengine-$pkgver
-    patch -Np1 -i ../fix-version.patch
 }
 
 build() {
