@@ -1,7 +1,8 @@
-# Maintainer: Karsten Pufahl <contact@karstenpufahl.de>
+# Maintainer: Felix Uhl <aur@mail.felix-uhl.de>
+# Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 
 pkgname=stm32cubef7
-pkgver=1.4.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Embedded software for STM32 F7 series"
 arch=('any')
@@ -23,13 +24,13 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=('stm32cubef7.zip::http://www.st.com/content/ccc/resource/technical/software/firmware/18/40/6e/b0/44/f7/43/1d/stm32cubef7.zip/files/stm32cubef7.zip/_jcr_content/translations/en.stm32cubef7.zip'
+source=('STM32CubeF7-1.16.1.zip::https://github.com/STMicroelectronics/STM32CubeF7/archive/refs/tags/v1.16.1.zip'
 		'LICENSE')
 noextract=()
-sha512sums=('cbaff1f1760e0e1d043cdd584953d568a0e7014cd217e9405a78069dedf4d81be1123b8de0028d2e3ab8ada2b63bd34e4f34460499e5b09a459d0c4906363e6b'
+sha512sums=('5143a9dcf12d811778ccda6c7d361a5fc8c90f81edef22bec25c31f28e5869e97ccede483787972f20afe581431e434bde1c6612f7749e0eb9f8f3d2be2cce75'
             '56b5435d98843b02ad3b735cce67b37a98e56095e7377710708c8ce9b72fc4451a314109536bcc48229697c054479b422977d337e701a07014c84fcb97cb04d8')
 package() {
 	install -d "$pkgdir"/opt/"$pkgname"
-	mv STM32Cube_FW_F7_V$pkgver/* "$pkgdir"/opt/"$pkgname"/
+	mv STM32CubeF7-$pkgver/* "$pkgdir"/opt/"$pkgname"/
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
