@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/powder-toy-snapshot-*.pkg.tar.*
+
+/powder-toy-snapshot-*.tar.gz

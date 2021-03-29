@@ -1,0 +1,11 @@
+diff --unified --recursive --text --color The-Powder-Toy-94.1.orig/resources/powdertoy-save.xml The-Powder-Toy-94.1/resources/powdertoy-save.xml
+--- The-Powder-Toy-94.1.orig/resources/powdertoy-save.xml	2019-02-21 07:23:45.000000000 +0200
++++ The-Powder-Toy-94.1/resources/powdertoy-save.xml	2019-10-06 00:21:51.080019592 +0300
+@@ -1,6 +1,6 @@
+ <?xml version="1.0"?>
+ <mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-	<mime-type type="application/vnd.powdertoy.save">
++	<mime-type type="application/vnd.powder-toy.save">
+ 		<comment>Powder Toy save</comment>
+ 		<glob pattern="*.cps"/>
+ 		<glob pattern="*.stm"/>
