@@ -5,15 +5,15 @@
 
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced-nox
-pkgver=4.3.3.10
-pkgrel=2
+pkgver=4.3.4.10
+pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
 url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
 license=('GPL' 'custom')
 groups=()
-depends=('libtorrent-rasterbar' 'qt5-base')
+depends=('libtorrent-rasterbar>=1:1.2.12' 'qt5-base')
 makedepends=('boost' 'qt5-tools')
 checkdepends=()
 optdepends=('python: needed for torrent search tab')
@@ -32,7 +32,7 @@ noextract=()
 md5sums=('SKIP' 'SKIP')
 
 build() {
-	cd qBittorrent*
+	cd qBittorrent*$pkgver
 
 	# tell qmake not ot break makepkg's debug/!strip options
 	export QBT_ADD_CONFIG='nostrip'
@@ -42,8 +42,13 @@ build() {
 }
 
 package() {
-	cd qBittorrent*
+	cd qBittorrent*$pkgver
 
 	make INSTALL_ROOT="$pkgdir/" install
 	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+
+	msg "IMPORTANT NOTICE"
+	msg2 "As of 2021 Mar 29, one of the dependency of this package, libtorrent-rasterbar >= 1.2.12"
+	msg2 "is not available yet in archlinux/extra"
+	msg2 "You may install without checking dependency by 'pacman -Ud {package_name}'"
 }
