@@ -1,6 +1,6 @@
 # Maintainer: StuckUpCreations <onelove.nyahbingi@gmail.com>
 pkgname=ctjs-bin
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow"
 arch=("x86_64")
@@ -16,7 +16,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/ct-js/ct-js/releases/download/v1.5.1/ct.js.v1.5.1.for.linux64.zip")
+source=("https://github.com/ct-js/ct-js/releases/download/v1.6.0/ct.js.v1.6.0.for.linux64.zip")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -27,6 +27,11 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/icons/
 	mkdir -p ${pkgdir}/usr/share/applications/
 	mv ${srcdir}/linux64/data/fonts/OpenSans\ –\ LICENSE.txt ${srcdir}/linux64/data/fonts/OpenSansLicense.txt
+	touch ${pkgdir}/usr/bin/ctjs
+	echo "#!/bin/bash" >> ${pkgdir}/usr/bin/ctjs
+	echo "cd /opt/ctjs" >> ${pkgdir}/usr/bin/ctjs
+	echo "./ctjs" >> ${pkgdir}/usr/bin/ctjs
+	chmod +x ${pkgdir}/usr/bin/ctjs
 	touch ${pkgdir}/usr/share/applications/ctjs.desktop
 	echo "[Desktop Entry]" >>  ${pkgdir}/usr/share/applications/ctjs.desktop
 	echo "Type=Application" >> ${pkgdir}/usr/share/applications/ctjs.desktop
