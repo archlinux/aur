@@ -1,0 +1,17 @@
+pkgbase = python-certifi-system-store
+	pkgdesc = A certifi hack to use system trust store on Linux/FreeBSD
+	pkgver = 3021.3.16
+	pkgrel = 1
+	url = https://github.com/tiran/certifi-system-store
+	arch = any
+	license = MPL
+	makedepends = python-setuptools
+	depends = python
+	provides = python-certifi
+	conflicts = python-certifi
+	source = https://files.pythonhosted.org/packages/source/c/certifi-system-store/certifi-system-store-3021.3.16.tar.gz
+	sha256sums = 603be2b260ae2d5d025f584a219087683ff2ddcd09325ebb56b172cd07877057
+
+pkgname = python-certifi-system-store
+	depends = python
+
