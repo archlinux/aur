@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-git
-pkgver=20.07.70.r12886.78f53637c
+pkgver=21.07.70.r14221
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
@@ -38,9 +38,9 @@ install=$pkgname.install
 #options=(debug !strip)
 
 pkgver() {
-  cd kdenlive
-  _ver="$(cat CMakeLists.txt | grep KDE_APPLICATIONS | cut -d '"' -f2 | tr '\n' '.' | cut -d "." -f 1-3)"
-  echo "$(echo ${_ver}).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd ${srcdir}/kdenlive
+  _ver="$(cat CMakeLists.txt | grep RELEASE_SERVICE_VERSION | cut -d '"' -f2 | tr '\n' '.' | cut -d "." -f 1-3)"
+  echo "$(echo ${_ver}).r$(git rev-list --count HEAD)"
 }
 
 prepare(){
