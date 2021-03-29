@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/tonarino/innernet"
 license=('MIT')
 depends=('sqlite')
+conflicts=('innernet')
 makedepends=('git' 'cargo')
 source=("$pkgname::git+https://github.com/tonarino/innernet")
 sha1sums=('SKIP')
