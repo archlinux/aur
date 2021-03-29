@@ -1,6 +1,6 @@
 pkgbase = plotbitrate-git
 	pkgdesc = a script for plotting the bitrate of an audio or video stream over time
-	pkgver = 1.0.7.1.r1.g5a5665b
+	pkgver = 1.0.7.1.r3.ga092d99
 	pkgrel = 1
 	url = https://github.com/zeroepoch/plotbitrate
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = plotbitrate-git
 	depends = python-matplotlib
 	depends = python-pyqt5
 	depends = ffmpeg
-	provides = plotbitrate
-	conflicts = plotbitrate
-	source = plotbitrate::git+https://github.com/zeroepoch/plotbitrate.git
+	provides = python-plotbitrate-git
+	conflicts = python-plotbitrate-git
+	source = git+https://github.com/zeroepoch/plotbitrate.git
 	md5sums = SKIP
 
 pkgname = plotbitrate-git
