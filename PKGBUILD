@@ -4,13 +4,13 @@
 
 pkgname=libomxil-component-fbdevsink
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource implementation of the OpenMAX Integration Layer API - FBdevSink component"
 arch=('i686' 'x86_64')
 url="http://omxil.sourceforge.net"
 license=('LGPL')
-depends=('glibc')
-source=("http://downloads.sourceforge.net/project/omxil/components/libomxfbdevsink-${pkgver}.tar.gz")
+depends=('glibc' 'libomxil-bellagio')
+source=("https://downloads.sourceforge.net/project/omxil/components/libomxfbdevsink-${pkgver}.tar.gz")
 md5sums=('6a6a452bd8c9c4fb64f7913ba0884732')
 
 prepare() {
@@ -24,7 +24,7 @@ prepare() {
 build() {
     cd ${srcdir}/libomxfbdevsink-${pkgver}
 
-    ./configure --prefix=/usr --disable-static
+    ./configure --prefix=/usr
     make
 }
 
