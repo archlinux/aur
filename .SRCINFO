@@ -1,0 +1,16 @@
+pkgbase = keysmith
+	pkgdesc = OTP client for Plasma Mobile and Desktop
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/btcpayserver/keysmith
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	depends = frameworkintegration
+	depends = libsodium
+	depends = qt5-base
+	source = https://github.com/KDE/keysmith/archive/refs/tags/v0.2.tar.gz
+	md5sums = 07ac50d5681fba2a771a459e88eadc6b
+
+pkgname = keysmith
+
