@@ -8,7 +8,7 @@ pkgbase = keysmith-git
         license = GPL3
         makedepends = cmake
         makedepends = git
-	depends = qt5-base
+	depends = frameworkintegration libsodium qt5-base
         source = keysmith::git://github.com/KDE/keysmith.git
 
 pkgname = keysmith-git
