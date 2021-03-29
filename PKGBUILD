@@ -1,11 +1,12 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protomail.com>
+
 pkgname=keysmith
 pkgver=0.2
 pkgrel=1
 epoch=
-pkgdesc="OTP client for Plasma Mobile and Desktop"
+pkgdesc="OTP client for Plasma Mobile and Desktop."
 arch=("any")
-url="https://github.com/btcpayserver/${pkgname}"
+url="https://github.com/KDE/${pkgname}"
 license=("GPL3")
 groups=()
 depends=("frameworkintegration" "libsodium" "qt5-base")
@@ -13,13 +14,13 @@ makedepends=("cmake")
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=("keysmith-git")
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/KDE/keysmith/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KDE/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
 md5sums=("07ac50d5681fba2a771a459e88eadc6b")
 validpgpkeys=()
@@ -35,6 +36,17 @@ build()
 
 package()
 {
+    # Assure that the folders exist.
+    mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
+    mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
+
+    # Install the software.
     cd ${srcdir}/${pkgname}/build/
     make install
+
+    # Install the documentation.
+    install -Dm644 ${pkgdir}/usr/lib/${pkgname}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
+
+    # Install the license.
+    install -Dm644 ${pkgdir}/usr/lib/${pkgname}/LICENSES/ ${pkgdir}/usr/share/licenses/${pkgname}/
 }
