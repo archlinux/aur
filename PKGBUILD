@@ -1,4 +1,5 @@
-# Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=lib32-libfmod
 pkgver=4.44.61
@@ -8,8 +9,8 @@ arch=('x86_64')
 url="http://www.fmod.org/"
 license=('custom')
 conflicts=('fmodex')
-source=("http://www.fmod.org/download/fmodex/api/Linux/fmodapi${pkgver//./}linux.tar.gz")
-sha512sums=('dfbb588b670c5f01fac9a263a55687736c711a2148cb24cb5fba2d4b26e7a6b6c046cdeffbfeb8e67aa1e7ea1a29a13c074a67dd3eecf4ed5557992f73ee42d9')
+source=(https://www.panda3d.org/download/noversion/fmodapi44461linux.tar.gz)
+sha512sums=('SKIP')
 
 package() {
 	install -Dm644 ${srcdir}/fmodapi${pkgver//./}linux/api/lib/libfmodex-${pkgver}.so ${pkgdir}/usr/lib32/libfmodex-${pkgver}.so
