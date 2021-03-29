@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=2.6.1
+pkgver=2.7.1
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -12,10 +12,12 @@ arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
-source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('92506477ee1778f7528d8b914406cbf04abf1941d4f1a5d61b75dbf393df2184da1f4f83bbc343e221a539c7a01d3e3b3fe5286453d2bf1863b75ea922b70d5a')
+source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+        "fix-tgcalls-gcc10.patch")
+sha512sums=('dffd184c4369c5c5947b1ca085add533e54313ce39aebcdca4f0958431a305aa5e95c2f2b48592f6992e666b2d33eeba5697f9e09f6048a53b807f2950fbd17b'
+            'dbc61a8520f3698fdeec6c9849cfd8241b8b778589f89277f82d6c748d8ed7a81db90daa0a69dedc3ab2b81bba848ee68e1df79a9cb3fb055f99bd7d19f46e5d')
 
 prepare() {
     cd tdesktop-$pkgver-full
@@ -24,10 +26,14 @@ prepare() {
         touch $ttf
     done
     sed -i 's/DemiBold/Bold/g' Telegram/lib_ui/ui/style/style_core_font.cpp
+    cd ..
 
-    cd cmake
+    cd tdesktop-$pkgver-full/cmake
     # force webrtc link to libjpeg
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
+
+    cd ../Telegram/ThirdParty/tgcalls
+    patch -Np1 -i "$srcdir"/fix-tgcalls-gcc10.patch
 }
 
 build() {
