@@ -1,0 +1,28 @@
+pkgbase = vtebench-git
+	pkgdesc = Generate benchmarks for terminal emulators
+	pkgver = 0.3.1.52.g9cb3afc
+	pkgrel = 1
+	url = https://github.com/alacritty/vtebench
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = fontconfig
+	makedepends = ncurses
+	makedepends = desktop-file-utils
+	makedepends = gdb
+	makedepends = libxcb
+	makedepends = git
+	depends = freetype2
+	depends = fontconfig
+	depends = libxi
+	depends = libxcursor
+	depends = libxrandr
+	provides = vtebench
+	conflicts = vtebench
+	source = git+https://github.com/alacritty/vtebench
+	sha256sums = SKIP
+
+pkgname = vtebench-git
+
