@@ -8,7 +8,7 @@
 
 pkgname=wxglade
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets / wxPython'
 arch=('any')
 license=('MIT')
@@ -21,7 +21,7 @@ sha256sums=('a92585df4254eae88db457b0505cd58374385898e94206bf190111a041a20cd4'
             'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
 
 prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "$pkgname %F" \
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "$pkgname %f" \
     --name 'WxGlade' --mimetypes 'application/x-wxg'
 
   rm -rf "$pkgname-$pkgver" && mv -Tfv {wxGlade,$pkgname}-$pkgver
