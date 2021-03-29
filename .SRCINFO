@@ -1,0 +1,33 @@
+pkgbase = make-support
+	pkgdesc = Escaped symbols for GNU Make
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/egasato/make-support
+	changelog = ChangeLog
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = make-escape
+	depends = make-escape
+	source = https://gitlab.com/egasato/make-support/-/archive/v0.1.0/make-support-v0.1.0.tar.bz2
+	source = https://downloads.sourceforge.net/project/egasato-make-support/v0.1.0/make-support-v0.1.0.tar.bz2.sig
+	validpgpkeys = 278775DF8230FE08784729E3DCCA6B78DD448CAE
+	md5sums = 61d66e92c1afe86471954eaae3d2d89e
+	md5sums = SKIP
+	sha1sums = 405380dff7e447e8d24fe16877e642da64192458
+	sha1sums = SKIP
+	sha224sums = dccb3514249eb139c6ae5646b410e5bbe6e640a467adc423de5b796c
+	sha224sums = SKIP
+	sha256sums = 8d58bbe2460d01502738e0c8e72af2e04b44a9d877d526bc9c29c8270f03d9c4
+	sha256sums = SKIP
+	sha384sums = 8b85502544a419caf29b0acf7ef5a98458a5ce1d95b2a8ebcbe68a01d70e1b32efd2cb3836696b6f805420ccf1552248
+	sha384sums = SKIP
+	sha512sums = ec2c59f0f3cb004b1fbbe48b50f9b7d79b42c7b3f019dc5a2882146560f5b5543ae092f5d27155e0eaa8898ba290900b90c19076a21580de4579dec79033aae1
+	sha512sums = SKIP
+	b2sums = b6af1101226f1a5a9d9fd3fbf5514ec8bb28958cb38b230c06884c057ebf96b3ee2f4d2c4bfb78fcbd4776bbe696c0738e8c3e6486bd5a9dd9f6408c32f37a44
+	b2sums = SKIP
+
+pkgname = make-support
+
