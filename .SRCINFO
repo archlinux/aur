@@ -1,10 +1,13 @@
 pkgbase = ruby-sprockets-rails
 	pkgdesc = Sprockets Rails integration
 	pkgver = 3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rails/sprockets-rails
 	arch = any
 	license = MIT
+	makedepends = ruby-bundler
+	makedepends = ruby-rails
+	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-actionpack
 	depends = ruby-activesupport
