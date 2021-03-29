@@ -23,7 +23,7 @@ changelog=
 #source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KDE/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KDE/${pkgname}/archive/master.tar.gz")
 noextract=()
-md5sums=("07ac50d5681fba2a771a459e88eadc6b")
+md5sums=("SKIP")
 validpgpkeys=()
 
 build()
