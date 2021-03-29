@@ -6,7 +6,7 @@ _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=2.13
 pkgver=2.13.r8.g030ca91
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
 license=('GPL')
@@ -40,6 +40,8 @@ build() {
         --install-ghc \
         --ghc-options='-fdiagnostics-color=always' \
         --flag 'pandoc:embed_data_files' \
+        --flag 'hslua:system-lua' \
+        --flag 'hslua:pkg-config' \
         --fast
 }
 
