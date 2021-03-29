@@ -38,7 +38,7 @@ package_kvantum-theme-moe-git() {
 
     cd "${srcdir}/${_pkgbase}"
 
-	install -d "${pkgdir}"/usr/share/kvantum
+	install -d "${pkgdir}"/usr/share/Kvantum
 
-    cp -dr --no-preserve=ownership {,Moe-Dark-}kvantum/* "${pkgdir}"/usr/share/kvantum
+    cp -dr --no-preserve=ownership {,Moe-Dark-}kvantum/* "${pkgdir}"/usr/share/Kvantum
 }
