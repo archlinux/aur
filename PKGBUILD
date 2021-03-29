@@ -3,14 +3,14 @@
 
 pkgname=activemq
 pkgver=5.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
-url="http://activemq.apache.org"
+url="https://downloads.apache.org"
 license=('Apache 2.0')
 depends=('java-runtime' 'lsb-release')
-source=("$url/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
-	    'service'
+source=("$url/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
+        'service'
 	    'sysusers')
 options=(!strip)
 install=install
