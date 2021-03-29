@@ -1,0 +1,5 @@
+2011-09-14 Sergej Pupykin <pupykin.s+arch@gmail.com>
+
+	* 20110914-1 :
+	Add contrib/ to /usr/share/notion/contrib
+	Add mod_*.lua to /etc/notion/
