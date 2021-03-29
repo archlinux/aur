@@ -5,7 +5,7 @@ pkgbase = bibata-rainbow-cursor-theme
 	url = https://github.com/ful1e5/Bibata_Cursor_Rainbow
 	arch = any
 	license = GPL3
-	makedepends = python-clickgen
+	makedepends = python-clickgen=1.1.8
 	depends = libxcursor
 	depends = libpng
 	noextract = bibata-rainbow-cursor-theme-bitmaps-1.1.0.zip

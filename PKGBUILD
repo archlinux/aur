@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/ful1e5/Bibata_Cursor_Rainbow"
 license=('GPL3')
 depends=('libxcursor' 'libpng')
-makedepends=('python-clickgen')
+makedepends=('python-clickgen=1.1.8')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
 noextract=("$pkgname-bitmaps-$pkgver.zip")
