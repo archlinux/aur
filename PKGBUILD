@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Felix Uhl <aur@mail.felix-uhl.de>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: cantabile <cantabile dot desu at gmail dot com>
 
 pkgname=uswsusp-git
