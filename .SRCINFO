@@ -1,7 +1,7 @@
 pkgbase = duplicacy-util
 	pkgdesc = A utility to run Duplicacy backups
 	pkgver = 1.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jeffaco/duplicacy-util
 	arch = x86_64
 	arch = i686
