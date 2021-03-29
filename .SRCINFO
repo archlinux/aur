@@ -1,6 +1,6 @@
 pkgbase = miro-git
 	pkgdesc = A GPU-accelerated terminal emulator written in Rust (git)
-	pkgver = r130.da2e85e
+	pkgver = 0.2.0.r17.gce75629
 	pkgrel = 1
 	url = https://github.com/o2sh/miro
 	arch = x86_64

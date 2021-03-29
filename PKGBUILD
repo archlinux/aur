@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=miro-git
-pkgver=r130.da2e85e
+pkgver=0.2.0.r17.gce75629
 pkgrel=1
 pkgdesc="A GPU-accelerated terminal emulator written in Rust (git)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
