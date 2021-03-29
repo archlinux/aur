@@ -1,9 +1,10 @@
-# Maintainer: hcra <hcra at u53r dot space>
+# Maintainer: pvdp <pvdp at email dot com>
+# Contributor: hcra <hcra at u53r dot space>
 
 pkgname=weborf-git
 _pkgname="weborf"
-pkgver=0.15
-pkgrel=6
+pkgver=0.17.r13.gd1dfb90
+pkgrel=1
 pkgdesc="Minimal HTTP server to share your files"
 arch=('any')
 url="https://ltworf.github.io/weborf"
@@ -13,7 +14,7 @@ makedepends=('pacman>=5.1' 'git' 'sudo' 'findutils')
 optdepends=('qweborf-git: graphical user interface')
 conflicts=('weborf')
 source=("git+https://github.com/ltworf/weborf.git#branch=master")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
