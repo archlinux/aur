@@ -1,6 +1,6 @@
 # Maintainer: Habboon <support@habboon.pw>
 pkgname=habboon-client-bin
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A desktop application for the Habboon Client."
 arch=('x86_64')
@@ -10,8 +10,8 @@ groups=('')
 depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://app.habboon.pw/habboon_1.0.5_amd64.deb")
-sha512sums_x86_64=('5c18d63a8aaf88fdee0906f96ed81547483a0a61edb16d90e35d71dbc1ed7ed58dbf74e4ab57cb4edb1a210b7b7120289a2a0dfb4ff90ee7478adfbae6843f6e')
+source_x86_64=("https://app.habboon.pw/habboon_1.0.6_amd64.deb")
+sha512sums_x86_64=('311bc110990b3edef752d7e8aa349cc7572c00cada7ec3b6f90c89756ac58b670210f729a2125faa5345e96ba09dbc7bc5b82c69fe5fd43dabe18494e9ffe918')
 
 package() {
 	# Extract package data
