@@ -5,8 +5,8 @@
 
 pkgname=qweborf
 _pkgname=weborf
-pkgver=0.16
-pkgrel=2
+pkgver=0.17
+pkgrel=1
 pkgdesc="Minimal HTTP server to share your files - Qt frontend"
 arch=(any)
 url="https://ltworf.github.io/weborf"
@@ -15,7 +15,7 @@ depends=('python' 'weborf' 'desktop-file-utils')
 makedepends=('python-pyqt5' 'python-setuptools')
 conflicts=("$pkgname-git")
 source=(https://github.com/ltworf/weborf/releases/download/$pkgver/weborf_$pkgver.orig.tar.gz)
-sha256sums=('a0d1c181fd344268600c76d8cfd773b5f5cd9662a401bb3a8b4b038de19426d6')
+sha256sums=('17c01d49f9fd3bd582de80c5bcf0ca20fdc09594d6ba92466e6929ca7c1259dd')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver/qweborf"
