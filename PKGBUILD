@@ -1,8 +1,8 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer: asmdey <pavel.finkelshtein@jetbrains.com>
 
 _gemname=tty-spinner
 pkgname=ruby-$_gemname
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A terminal spinner for tasks that have non-deterministic time frame."
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('e5e9140ef4ea075dad1f0c6e41985c384b8931e2')
+sha256sums=('0e036f047b4ffb61f2aa45f5a770ec00b4d04130531558a94bfc5b192b570542')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
