@@ -1,0 +1,16 @@
+diff --git a/src/server/rest.rs b/src/server/rest.rs
+index 44e157fb..016b8c0c 100644
+--- a/src/server/rest.rs
++++ b/src/server/rest.rs
+@@ -306,8 +306,9 @@ async fn get_request_parameters<S: 'static + BuildHasher + Send>(
+         }
+     }
+ 
+-    let body = req_body
+-        .map_err(|err| http_err!(BAD_REQUEST, "Promlems reading request body: {}", err))
++    let body = futures::TryStreamExt::map_err(req_body, |err| {
++            http_err!(BAD_REQUEST, "Promlems reading request body: {}", err)
++        })
+         .try_fold(Vec::new(), |mut acc, chunk| async move {
+             if acc.len() + chunk.len() < 64*1024 { //fimxe: max request body size?
+                 acc.extend_from_slice(&*chunk);
