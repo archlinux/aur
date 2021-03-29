@@ -1,14 +1,14 @@
 pkgbase = wordpress-plugin-antispam-bee
 	pkgdesc = Anti spam plugin
-	pkgver = 2.9.3
+	pkgver = 2.9.4
 	pkgrel = 1
 	url = https://github.com/pluginkollektiv/antispam-bee
 	arch = any
 	license = GPL2
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-antispam-bee-2.9.3.tar.gz::https://downloads.wordpress.org/plugin/antispam-bee.2.9.3.zip
-	sha512sums = 1645765a309d41af3b9f8df0c6223f57027234c56ede88e6284e68ff54f05701f17a887bdffe88a081ee6eb0a5108660a1237063547bd534b06038b4d580d015
+	source = wordpress-plugin-antispam-bee-2.9.4.tar.gz::https://downloads.wordpress.org/plugin/antispam-bee.2.9.4.zip
+	sha512sums = 3686a742c56a965d438e1da04ea858e7ad0f858559dd5ef81d5f1c7fabcf8877caff3821134a3c2c95649e9682e48a3543dd5c703fd0a8f6afba571d089824a4
 
 pkgname = wordpress-plugin-antispam-bee
 

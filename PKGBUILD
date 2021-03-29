@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-antispam-bee
-pkgver=2.9.3
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="Anti spam plugin"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/antispam-bee.${pkgver}.zip")
-sha512sums=('1645765a309d41af3b9f8df0c6223f57027234c56ede88e6284e68ff54f05701f17a887bdffe88a081ee6eb0a5108660a1237063547bd534b06038b4d580d015')
+sha512sums=('3686a742c56a965d438e1da04ea858e7ad0f858559dd5ef81d5f1c7fabcf8877caff3821134a3c2c95649e9682e48a3543dd5c703fd0a8f6afba571d089824a4')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
