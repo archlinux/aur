@@ -35,5 +35,7 @@ package() {
 	cd vtebench
 
 	install -D -m755 "target/release/vtebench" "$pkgdir/usr/bin/vtebench"
-	install -D -m644 "benchmarks" "$pkgdir/usr/share/vtebench/benchmarks"
+
+	install -d "${pkgdir}/usr/share/vtebench/benchmarks"
+        cp -r "$srcdir/vtebench/benchmarks" "${pkgdir}/usr/share/vtebench"
 }
