@@ -13,7 +13,7 @@ source=(
   "https://github.com/yairm210/Unciv/releases/download/3.13.11-patch1/Unciv.jar"
   "$_pkgname.sh"
   "$_pkgname.desktop"
-  "https://github.com/yairm210/Unciv/tree/3.13.11-patch1/extraImages/Unciv icon v4.png"
+  "https://github.com/yairm210/Unciv/tree/3.13.11-patch1/extraImages/Unciv%20icon%20v4.png"
 )
 md5sums=('e4efe45883990484be415035cc0dcd24'
          'f8eab098f20681b8db232cc5709713d3'
