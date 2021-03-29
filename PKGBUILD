@@ -3,7 +3,7 @@
 
 _gemname=tty-prompt
 pkgname=ruby-$_gemname
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A beautiful and powerful interactive command line prompt.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-necromancer ruby-pastel ruby-tty-reader)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0931db8ce1b525da1e7fac0bccc01d97e8203ff5')
+sha256sums=('5dc55f299c409ce4eaedd58f87ff51235673dc0b307225400e5e3b86bced6ba6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
