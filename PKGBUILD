@@ -2,7 +2,7 @@
 # Former maintainer: Anton Kudryavtsev <boblobl4@gmail.com>
 
 pkgname=mbedtls-git
-pkgver=2.17.0.r258.g75d9a333c
+pkgver=2.26.0.r95.g2aff17b8c
 pkgrel=1
 pkgdesc="An open source, portable, easy to use, readable and flexible SSL library"
 arch=('i686' 'x86_64')
@@ -10,8 +10,7 @@ url="https://tls.mbed.org/"
 license=('apache')
 depends=('glibc')
 makedepends=('git')
-checkdepends=('python2')
-provides=('mbedtls' 'polarssl')
+provides=('mbedtls' 'polarssl' 'libmbedcrypto.so' 'libmbedtls.so' 'libmbedx509.so')
 conflicts=('mbedtls' 'polarssl')
 options=('staticlibs')
 source=("git+https://github.com/ARMmbed/mbedtls.git")
@@ -29,7 +28,7 @@ prepare() {
 pkgver() {
   cd "mbedtls"
 
-  git describe --long --tags | sed 's/^mbedtls-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^mbedtls-//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -41,7 +40,7 @@ build() {
 check() {
   cd "mbedtls"
 
-  make SHARED=1 check
+  make SHARED=1 PYTHON="python" check
 }
 
 package() {
