@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
 _pkgname=vegastrike
-pkgver=rev.11399
+pkgver=rev.11439
 pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
@@ -27,7 +27,7 @@ prepare(){
 echo "Prepare section"
 #Patches section
 cd ${srcdir}/Assets-Production/
-git apply ../../19.patch
+#git apply ../../19.patch
 }
 
 
