@@ -1,21 +1,20 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=screenshot-bash
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Screenshot script, that uploads screenshot to a predefined server."
 arch=("any")
 url="https://gitlab.com/Scrumplex/ScreenshotBASH"
 license=("GPL3")
-
-depends=("bash" "flameshot" "kdialog" "sox")
-makedepends=("git")
-
+depends=("bash" "kdialog" "sox")
+optdepends=("spectacle: use default screenshot program"
+            "flameshot: use alternative screenshot program")
 provides=("screenshot-bash" "upload-bash")
 conflicts=("screenshot-bash-git")
 
 source=("https://gitlab.com/Scrumplex/ScreenshotBASH/-/archive/${pkgver}/ScreenshotBASH-${pkgver}.tar.gz")
-sha512sums=('df2577e85be81e4fa7797cbf1fc4d7ddc4a1c9544b8d1ff7969234e3943a5526877470f82e58e88dcd00d1fd621377eaaba42d11d9fde4f641303cb8eaac1484')
+sha512sums=('5b247b60742ac8add8ff37ae5d721ed19d2cf668a7ef718caf3308089982027c549d28e26108ae05c24f18e677869536ca2ca7e40b7e2863aaa806ca1d68a5c0')
 
 
 
