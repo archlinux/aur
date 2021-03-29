@@ -1,6 +1,6 @@
 pkgbase = pulseeffects-git
 	pkgdesc = Audio Effects for Pipewire applications
-	pkgver = 5.0.1.r0.gf2edc36d
+	pkgver = 5.0.3.r4.ge321795c
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
@@ -68,7 +68,7 @@ pkgname = pulseeffects-git
 	conflicts = pulseeffects
 
 pkgname = gst-plugins-pulseeffects-git
-	pkgdesc = Audio Effects for Pulseaudio Applications - gstreamer plugins
+	pkgdesc = Audio Effects for Pipewire Applications - gstreamer plugins
 	depends = gst-plugins-base
 	depends = gstreamer
 	depends = libebur128

@@ -5,7 +5,7 @@
 
 pkgbase=pulseeffects-git
 pkgname=("${pkgbase}" "gst-plugins-${pkgbase}")
-pkgver=5.0.1.r0.gf2edc36d
+pkgver=5.0.3.r4.ge321795c
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -45,7 +45,7 @@ package_pulseeffects-git() {
 }
 
 package_gst-plugins-pulseeffects-git() {
-  pkgdesc="Audio Effects for Pulseaudio Applications - gstreamer plugins"
+  pkgdesc="Audio Effects for Pipewire Applications - gstreamer plugins"
   depends=('gst-plugins-base' 'gstreamer' 'libebur128' 'rnnoise'
     'libsamplerate' 'libsndfile' 'zita-convolver')
   conflicts=('gst-plugins-pulseeffects')
