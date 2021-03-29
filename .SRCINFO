@@ -1,0 +1,17 @@
+pkgbase = python-sasl
+	pkgdesc = Python wrapper for Cyrus SASL
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/cloudera/python-sasl
+	arch = x86_64
+	license = Apache
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = gcc-libs
+	depends = libsasl
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/sasl/sasl-0.2.1.tar.gz
+	sha256sums = 04f22e17bbebe0cd42471757a48c2c07126773c38741b1dad8d9fe724c16289d
+
+pkgname = python-sasl
+
