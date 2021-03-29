@@ -1,14 +1,14 @@
 pkgbase = uwuify
 	pkgdesc = fastest text uwuifier in the west
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Daniel-Liu-c0deb0t/uwu
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = uwuify-0.1.0.tar.gz::https://github.com/Daniel-Liu-c0deb0t/uwu/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = ccccaaf60aee39ef1acc864262656316448a3c6dfa3aa882b1a9a67d77f4b7c6
+	source = uwuify-0.2.1.tar.gz::https://github.com/Daniel-Liu-c0deb0t/uwu/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 40089a349c3485e7dedfb00bfd0b1f128b0a7bc709121cc3a001e6c56df9163b
 
 pkgname = uwuify
 
