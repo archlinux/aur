@@ -34,7 +34,6 @@ build() {
     --verbose \
     --single-instance \
     --tray \
-    --electron-version 9.0.2 \
     "${url}"
 }
 
