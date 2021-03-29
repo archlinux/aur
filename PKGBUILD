@@ -8,12 +8,12 @@
 
 
 ## Helpful internal stuff
-_commit=467a91c5b237ef9f519075b42e7c4585281e168f
-_mozcver=2.26.4318.102
-_utdicver=20210322
+_commit=2d434cb612b680cdc1bdaf4b036be606ef3856f0
+_mozcver=2.26.4325.102
+_utdicver=20210329
 _utdicrel=1
-_utdiclink1=28
-_utdiclink2=28019
+_utuserlink=28
+_utdiclink=28065
 _kenver=202102
 _jugyosyover=202102
 _buildtype=Release
@@ -30,11 +30,11 @@ makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/${_utdiclink1}/${_utdiclink2}/mozcdic-ut-${_utdicver}.${_utdicrel}.tar.bz2"
+        "https://osdn.net/downloads/users/${_utuserlink}/${_utdiclink}/mozcdic-ut-${_utdicver}.${_utdicrel}.tar.bz2"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kenver}.zip"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyover}.zip")
 sha256sums=('SKIP'
-            '4dfaad909e2634621b028261140354608d0e560d369e97b2712ebca72d1456dd'
+            '057c5d1a5c66e7eed20979b7268d651da1999a52469abe2a9eab843d6b1e631f'
             '4529d801c19890f21fb4c2581bafdcb546c3aabd5984715b8e1773692f0293e7'
             '0f832e4a420fb43bc71da881c1e5ea822713d380b2e9d37709b3025198cfbd83')
 
