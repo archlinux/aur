@@ -12,3 +12,4 @@ pkgbase = python-fdfgen
 
 pkgname = python-fdfgen
 	depends = python
+

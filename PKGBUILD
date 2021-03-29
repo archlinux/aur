@@ -1,8 +1,9 @@
-# Maintainer: Pavle Portic <pavle.portic@tilda.center>
-pkgbase=python-fdfgen
-pkgname=python-fdfgen
+# Maintainer: Pavle Portic <archlinux@theedgeofrage.com>
+
+pkgbase='python-fdfgen'
+pkgname=('python-fdfgen')
 _module='fdfgen'
-pkgver=0.16.1
+pkgver='0.16.1'
 pkgrel=2
 pkgdesc="Library for creating FDF files"
 url="http://github.com/ccnmtl/fdfgen/"
