@@ -1,6 +1,6 @@
 pkgbase = rx-bin
 	pkgdesc = A modern and extensible pixel editor implemented in Rust (this package downloads and extracts the official AppImage)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cloudhead.io/rx/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = rx-bin
 	depends = gcc-libs
 	provides = rx
 	conflicts = rx
-	noextract = rx-0.3.0-x86_64.AppImage
+	noextract = rx-0.4.0-x86_64.AppImage
 	options = !strip
-	source = https://github.com/cloudhead/rx/releases/download/v0.3.0/rx-0.3.0-x86_64.AppImage
-	sha256sums = c32bd63f33809a84547937dfc6b68c0f321050d8283659155964e469733c5bb6
+	source = https://github.com/cloudhead/rx/releases/download/v0.4.0/rx-0.4.0-x86_64.AppImage
+	sha256sums = bfc50922b9dfd4442067a423789aea3190c55e92878ab072f8cce886017974ee
 
 pkgname = rx-bin
 
