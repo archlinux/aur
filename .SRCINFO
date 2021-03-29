@@ -1,7 +1,7 @@
 pkgbase = dogehouse
 	pkgdesc = Taking voice conversations to the moon
-	pkgver = 1.0.21
-	pkgrel = 3
+	pkgver = 1.0.23
+	pkgrel = 1
 	url = https://dogehouse.tv
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = dogehouse
 	conflicts = dogehouse
 	conflicts = dogehouse-bin
 	conflicts = dogehouse-git
-	source = dogehouse.tar.gz::https://github.com/benawad/dogehouse/archive/refs/tags/v1.0.21.tar.gz
+	source = dogehouse.tar.gz::https://github.com/benawad/dogehouse/archive/refs/tags/v1.0.23.tar.gz
 	md5sums = SKIP
 
 pkgname = dogehouse
