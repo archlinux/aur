@@ -1,7 +1,7 @@
 # Maintainer: sseneca <me at ssene dot ca>
 
 pkgname=jellycli
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Terminal music player for Jellyfin."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('go' 'git')
 depends=('glibc' 'alsa-lib')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('6e8e68a8d1198c9cece384306191a313d82a1fe49fb888d0183f75cfdfe36bc31f2efd309fc7abe60bbfbaf5f91c7b7c04132e14c33b04c5c209e94ef7f99e52')
+sha512sums=('1fab0b8376a3d45f3b4fb07fdeadd557860422a177c2a95f5dfa892612465238f93d3e5a2ff194b3baec57efdce6dd16db306e7ac68c88cef693bf27fe3efb03')
 
 build() {
   cd "$pkgname-$pkgver"
