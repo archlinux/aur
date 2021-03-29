@@ -2,7 +2,7 @@
 
 pkgname=protoc-gen-grpc-web
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Protobuf gRPC compiler for Web Clients'
 arch=('x86_64')
 url='https://github.com/grpc/grpc-web'
