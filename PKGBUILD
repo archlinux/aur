@@ -7,10 +7,10 @@ arch=('any')
 url="https://github.com/vlachoudis/bCNC"
 license=(GPL2)
 depends=(python python-pyserial python-pillow tk)
-source=("https://github.com/vlachoudis/bCNC/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vlachoudis/bCNC/archive/${pkgver}.tar.gz"
         "bcnc.desktop")
-md5sums=('387a49ac07b535b4002d30c6800971b6'
-         'bfebf708ff377bcc6c2597b5e03e420e')
+sha256sums=('151b9bdac1fbbb2300f1e133d70e7c8fe34702a8731e9caefc1583c9365faf60'
+            'd5f3f49fabe26d5e1de285d1c61be8d6b48f6498effdf1fc80b396d12fa9a137')
 
 build() {
   cd "bCNC-${pkgver}"
