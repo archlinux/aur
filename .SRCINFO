@@ -1,21 +1,20 @@
 pkgbase = vcsh-git
-	pkgdesc = manage config files in HOME via fake bare git repositories
-	pkgver = 1.20151229.r36.gcb33546
+	pkgdesc = Version Control System for $HOME that manages multiple Git repositories
+	pkgver = 1.20190619.r0.gdbc9c07
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/RichiH/vcsh
 	arch = any
 	license = GPL
-	makedepends = git
-	makedepends = perl-shell-command
-	makedepends = perl-test-most
+	checkdepends = perl
+	checkdepends = perl-shell-command
 	makedepends = ruby-ronn
 	depends = git
 	optdepends = myrepos: helps manage a large number of repositories
 	provides = vcsh
 	conflicts = vcsh
 	source = vcsh-git::git://github.com/RichiH/vcsh.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vcsh-git
 

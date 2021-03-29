@@ -5,31 +5,31 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh-git
-_pkgname=${pkgname%-git}
-pkgver=1.20151229.r36.gcb33546
+pkgver=1.20190619.r0.gdbc9c07
 pkgrel=1
 epoch=1
-pkgdesc='manage config files in HOME via fake bare git repositories'
+pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
 arch=('any')
-url="https://github.com/RichiH/$_pkgname"
+url="https://github.com/RichiH/${pkgname%-git}"
 license=('GPL')
 depends=('git')
-makedepends=('git' 'perl-shell-command' 'perl-test-most' 'ruby-ronn')
+makedepends=('ruby-ronn')
+checkdepends=('perl' 'perl-shell-command')
 optdepends=('myrepos: helps manage a large number of repositories')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git://github.com/RichiH/vcsh.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git tag v1.20151229-arch 5f70699 ||:
-  git describe --tags --long | sed 's/-arch//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 HEAD |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$pkgname"
-  sed -i 's|\(install:\) all|\1|' Makefile
+  sed -i 's#^\(install:\) all#\1 manpages#' Makefile
 }
 
 build() {
@@ -39,12 +39,10 @@ build() {
 
 check() {
   cd "$pkgname"
-  make -k test
+  make test
 }
 
 package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir/" ZSHDIR='$(PREFIX)/share/zsh/site-functions' install
 }
-
-# vim:set ts=2 sw=2 et:
