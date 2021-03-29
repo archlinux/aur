@@ -14,7 +14,7 @@ license=("BSD")
 depends=("nss" "alsa-lib" "at-spi2-atk" "pango" "libxrandr" "libxcursor" "libxss" "libxtst" "libxcomposite" "libglvnd" "dbus")
 makedepends=("cmake" "make")
 provides=("cef" "cef-minimal")
-conflicts=("cef-minimal" "cef-git", "cef-minimal-3770-bin")
+conflicts=("cef-minimal" "cef-git" "cef-minimal-3770-bin")
 source_i686=(
     "https://cef-builds.spotifycdn.com/cef_binary_${_url_pkgver}_linux32.tar.bz2"
 )
