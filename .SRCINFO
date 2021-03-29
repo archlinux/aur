@@ -13,6 +13,8 @@ pkgbase = cnrdrvcups-lb-bin
 	depends = gcc-libs
 	depends = libxml2
 	depends = libglade
+	depends = libjpeg6-turbo
+	depends = libjbig-shared
 	optdepends = libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices
 	optdepends = gtk2: for cnsetuputil2
 	provides = cnrdrvcups-lb=5.30
