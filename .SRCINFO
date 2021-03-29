@@ -1,6 +1,6 @@
 pkgbase = graviton-bin
 	pkgdesc = A modern Code Editor
-	pkgver = 2.2.7
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = https://graviton.netlify.app/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = graviton-bin
 	depends = xdg-utils
 	provides = graviton
 	conflicts = graviton
-	source = https://github.com/Graviton-Code-Editor/Graviton-App/releases/download/v2.2.7/Graviton.Editor_Installer_2.2.7_linux_amd64.deb
+	source = https://github.com/Graviton-Code-Editor/Graviton-App/releases/download/v2.2.8/Graviton.Editor_Installer_2.2.8_linux_amd64.deb
 	source = https://raw.githubusercontent.com/Graviton-Code-Editor/Graviton-App/master/LICENSE.md
-	sha256sums = d551b4f47975544560413154d64664dad3cacb94ff7c78b23bf675d103e24527
+	sha256sums = 3a2dd296da9e74aabc4d98282378fe05189f3b6f50f90acd089bcc446df3a1f9
 	sha256sums = SKIP
 
 pkgname = graviton-bin
