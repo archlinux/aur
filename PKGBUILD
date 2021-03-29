@@ -1,16 +1,20 @@
 # Maintainer: Mark Austin <ganthore@gmail.com>
 
 pkgname=keysmith-git
-pkgver=v0.1.r175.gf25ae7f
+pkgver=v0.1.r199.g52bdf6e
 pkgrel=1
 pkgdesc="An application to generate two-factor authentication (2FA) tokens."
 url="https://github.com/KDE/keysmith"
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('qt5-base')
-makedepends=('git' 'cmake' 'extra-cmake-modules')
+depends=("frameworkintegration" "libsodium" "qt5-base")
+makedepends=("cmake")
 provides=('keysmith' 'keysmith-git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=("keysmith")
 
 options=('!libtool' '!emptydirs')
 
