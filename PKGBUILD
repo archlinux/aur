@@ -1,7 +1,7 @@
 # Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 pkgname=procpath
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A process tree analysis workbench"
 arch=(any)
