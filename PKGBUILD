@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=.r13465.952d777f5
+pkgver=21.03.80.r14168
 pkgrel=1
 pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
@@ -26,21 +26,19 @@ optdepends=('ffmpeg: for FFmpeg plugin'
 	    'oxygen-icons: optional for xfce')
 provides=('kdenlive')
 conflicts=('kdenlive')
-#source=(${pkgname}::git://anongit.kde.org/kdenlive)
-#source=(git://anongit.kde.org/kdenlive) 
-#source=('git://anongit.kde.org/kdenlive#branch=release/20.04')
 #Source repo has changed recently. To save yourself from downloading the entire repo again
 #run the following command in the kdenlive repo directory:
-#git remote set-url origin https://invent.kde.org/multimedia/kdenlive 
-source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/20.12')
+#git remote set-url origin https://invent.kde.org/multimedia/kdenlive
+##If there has been a branch switch, Arch will not build unless you supply --cleanbuild to makepkg
+source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/21.04')
 sha1sums=('SKIP')
 install=$pkgname.install
 options=(debug !strip)
 
 pkgver() {
-  cd kdenlive
-  _ver="$(cat CMakeLists.txt | grep KDE_APPLICATIONS | cut -d '"' -f2 | tr '\n' '.' | cut -d "." -f 1-3)"
-  echo "$(echo ${_ver}).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd ${srcdir}/kdenlive
+  _ver="$(cat CMakeLists.txt | grep RELEASE_SERVICE_VERSION | cut -d '"' -f2 | tr '\n' '.' | cut -d "." -f 1-3)"
+  echo "$(echo ${_ver}).r$(git rev-list --count HEAD)"
 }
 
 prepare(){
