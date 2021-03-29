@@ -1,12 +1,13 @@
 pkgbase = retroarch-rbp4
 	pkgdesc = Reference frontend for the libretro API (Raspberry Pi 4)
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libretro.com/
 	arch = armv7h
 	groups = libretro
 	license = GPL
 	makedepends = git
+	makedepends = vulkan-headers
 	depends = alsa-lib
 	depends = flac
 	depends = libass.so

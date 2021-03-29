@@ -7,7 +7,7 @@
 _pkgname=retroarch
 pkgname=retroarch-rbp4
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi 4)'
 arch=(armv7h)
 url=http://www.libretro.com/
@@ -34,6 +34,7 @@ depends=(
 )
 makedepends=(
   git
+  vulkan-headers
 )
 optdepends=(
   'libretro-overlays: Collection of overlays'
@@ -95,13 +96,13 @@ build() {
     --disable-wayland \
     --disable-x11 \
     --disable-videocore \
-    --disable-vulkan \
-    --disable-vulkan_display \
     --enable-kms \
     --enable-opengles \
     --enable-opengles3 \
     --enable-opengl_core \
-    --enable-plain_drm
+    --enable-plain_drm \
+    --enable-vulkan \
+    --enable-vulkan_display
   make
   make -C libretro-common/audio/dsp_filters
   make -C gfx/video_filters
