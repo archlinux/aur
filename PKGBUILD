@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-pebble
 _name=${pkgname#python-}
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="Pebble provides a neat API to manage threads and processes within an application"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/${_name^}-$pkgver.tar.gz)
 noextract=()
-sha1sums=('4af237aa8bc0dba50d41bcc2e5c6ae2a40255e5e')
+sha1sums=('54e80121ed3b5aba885404b2a8da55c2a67c7d97')
 
 build() {
     cd "$srcdir/${_name^}-$pkgver"
