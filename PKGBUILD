@@ -2,7 +2,7 @@
 # Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.81.0
+pkgver=0.82.1
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('x86_64')
@@ -17,14 +17,15 @@ optdepends=('watchman: Required for a fully functional install'
             'android-sdk: Required for a fully functional install')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('b8de978606b5a9221f0ab17e3a4b00eec9e798498da41a64f9cc25d569d2e2d8')
+sha256sums=('1dcb51b250b530f6a18bbf3756c6f8b304f354132dedbf242292d964a41297f7')
 conflicts=('flipper-bin')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
   mkdir -p ${srcdir}/yarn_cache
   yarn --cache-folder=${srcdir}/yarn_cache
-  yarn build --linux
+  # See https://github.com/electron-userland/electron-builder/issues/2665#issuecomment-370452193
+  NO_PROXY=* yarn build --linux
 }
 
 package() {
