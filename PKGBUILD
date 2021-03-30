@@ -21,7 +21,7 @@ url="https://${hosting}/${owner}/${project}"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('make' 'coreutils' 'sed')
+makedepends=('coreutils')
 checkdepends=()
 optdepends=()
 
