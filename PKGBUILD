@@ -18,7 +18,7 @@ conflicts=(notcurses)
 source=(git+https://github.com/dankamongmen/notcurses)
 
 pkgver() {
-  cd "$pkgname"
+  cd notcurses/build
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
