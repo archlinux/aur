@@ -1,6 +1,6 @@
 pkgbase = ruby-sqlint
 	pkgdesc = Simple SQL linter supporting ANSI and PostgreSQL syntaxes
-	pkgver = 0.1.10
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/purcell/sqlint
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ruby-sqlint
 	makedepends = rubygems
 	depends = ruby
 	depends = ruby-pg-query
-	noextract = sqlint-0.1.10.gem
-	source = https://rubygems.org/downloads/sqlint-0.1.10.gem
-	sha256sums = 8c90b9fa00c1dfaa0d1e244fb7dc5c819aa163093e528b5473859c8895c64737
+	noextract = sqlint-0.2.0.gem
+	source = https://rubygems.org/downloads/sqlint-0.2.0.gem
+	sha256sums = 73c2c4c190d1a06e51cca706fb38cf5cf7f0a3a9b9c2e19c9177939e986691fa
 
 pkgname = ruby-sqlint
 
