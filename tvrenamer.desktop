@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Icon=tvrenamer
+Name=TVRenamer
+Exec=tvrenamer
+Terminal=false
+Hidden=false
+Categories=Utility
+Comment=Rename TV episodes from TV listings
