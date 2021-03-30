@@ -14,4 +14,5 @@ sha256sums=('316cb7ca9a19e6349f5c60fca014a236682627e0907db6fbd913b4e8ecf14abc')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}/"
+  chmod -R 755 ${pkgdir}/
 }
