@@ -1,15 +1,20 @@
 pkgbase = macro11-git
-	pkgdesc = A MACRO-11 assembler for the PDP-11 in portable C source code.
-	pkgver = macro11.2013.2.r6.ge35df87
+	pkgdesc = A PDP-11 cross assembler in portable C source code.
+	pkgver = r13.5f553d7
 	pkgrel = 1
-	url = https://github.com/shattered/macro11
-	arch = any
-	license = custom
+	url = https://github.com/j-hoppe/MACRO11
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
 	depends = glibc
-	source = macro11-git::git+https://github.com/shattered/macro11.git
+	source = macro11-git::git+https://github.com/j-hoppe/MACRO11.git
 	sha256sums = SKIP
 
 pkgname = macro11-git

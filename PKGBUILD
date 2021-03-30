@@ -2,19 +2,19 @@
 
 pkgname=macro11-git
 
-pkgver=macro11.2013.2.r6.ge35df87
+pkgver=r13.5f553d7
 
 pkgrel=1
 
-pkgdesc="A MACRO-11 assembler for the PDP-11 in portable C source code."
+pkgdesc="A PDP-11 cross assembler in portable C source code."
 
-arch=(any)
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 
-url="https://github.com/shattered/macro11"
+url="https://github.com/j-hoppe/MACRO11"
 
-license=('custom')
+license=('MIT')
 
-source=(${pkgname}::"git+https://github.com/shattered/${pkgname%-git}.git")
+source=(${pkgname}::"git+https://github.com/j-hoppe/MACRO11.git")
 
 sha256sums=('SKIP')
 
@@ -30,16 +30,16 @@ makedepends=(
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}/src"
   make
 }
 
 package() {
-  install -D -m755 "${srcdir}/${pkgname}/macro11" "${pkgdir}/usr/bin/macro11"
+  install -D -m755 "${srcdir}/${pkgname}/src/macro11" "${pkgdir}/usr/bin/macro11"
   install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

@@ -1,0 +1,6 @@
+# Ignore any direcories
+*/
+
+# Ignore any build packages
+*.pkg.tar.(xz|zst)
+
