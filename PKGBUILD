@@ -1,8 +1,8 @@
 # Maintainer: Paolo Stivanin <info at paolostivanin dot com>
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=libbaseencode
-pkgver=1.0.9
-pkgrel=4
+pkgver=1.0.11
+pkgrel=1
 pkgdesc='C library for encoding/decoding base32 and base64 data (RFC-4648)'
 url="https://github.com/paolostivanin/libbaseencode"
 license=('APACHE')
