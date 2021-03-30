@@ -12,7 +12,8 @@ arch=('x86_64')
 # dynamic library. Should the .so be shipped in the future, promote qrcodegen
 # from a makedepends to a true depends, and use that dynamic library.
 depends=('ncurses' 'ffmpeg' 'libunistring')
-makedepends=('cmake' 'python-cffi' 'python-setuptools' 'qrcodegen' 'readline' 'ninja')
+makedepends=('cmake' 'python-cffi' 'python-setuptools' 'readline' 'ninja')
+optdepends=('qrcodegen: QR code support')
 provides=(notcurses)
 conflicts=(notcurses)
 source=(git+https://github.com/dankamongmen/notcurses)
@@ -25,7 +26,7 @@ pkgver() {
 prepare() {
   mkdir -p notcurses/build
   cd notcurses/build
-  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DUSE_DOCTEST=OFF -DUSE_OXYGEN=OFF -DUSE_PANDOC=OFF
+  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DUSE_DOCTEST=OFF -DUSE_DOXYGEN=OFF -DUSE_PANDOC=OFF -DUSE_QRCODEGEN=OFF
 }
 
 build() {
