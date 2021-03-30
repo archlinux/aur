@@ -1,0 +1,23 @@
+pkgbase = sdrplusplus-git
+	pkgdesc = Cross-platform SDR software
+	pkgver = 0.2.5.r88.gbcc1744
+	pkgrel = 1
+	url = https://github.com/alexandrerouma/sdrplusplus
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc>=8
+	makedepends = cmake>=3.13
+	depends = libglvnd
+	depends = fftw>=3
+	depends = glfw
+	depends = glew
+	depends = libvolk
+	provides = sdrplusplus
+	provides = libsdrpp_core.so
+	conflicts = sdrplusplus
+	source = sdrplusplus-git::git+https://github.com/alexandrerouma/sdrplusplus
+	md5sums = SKIP
+
+pkgname = sdrplusplus-git
+
