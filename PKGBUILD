@@ -2,7 +2,7 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='wowlet-git'
-pkgver=0.1.0.0.81ad7bdb46
+pkgver=0.1.0.0.fafc8e4d7d
 pkgrel=1
 pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
@@ -17,7 +17,6 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git submodule update --init --recursive
   mkdir -p build
   cd build
   cmake ..
@@ -25,9 +24,18 @@ build() {
 }
 
 package_wowlet-git() {
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname}/build/bin/wowlet" "${pkgdir}/usr/bin/wowlet"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/wowlet.desktop" "${pkgdir}/usr/share/applications/wowlet.desktop"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/wowlet.png" "${pkgdir}/usr/share/pixmaps/wowlet.png"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm644 "${srcdir}/${pkgname}/SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY"
+  install -Dm644 "${srcdir}/${pkgname}/HACKING.md" "${pkgdir}/usr/share/doc/${pkgname}/HACKING"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/org.wowlet.wowlet.desktop" "${pkgdir}/usr/share/applications/org.wowlet.wowlet.desktop"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/wowlet.1.gz" "${pkgdir}/usr/share/man/man1/wowlet.1.gz"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/wowlet.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wowlet.svg"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/48x48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/wowlet.png"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/wowlet.png"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/96x96.png" "${pkgdir}/usr/share/icons/hicolor/96x96/apps/wowlet.png"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/wowlet.png"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/192x192.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/wowlet.png"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/wowlet.png"
 }
-
