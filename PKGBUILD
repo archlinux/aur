@@ -1,18 +1,18 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 
 pkgname="deemix-pyweb-git"
-_pkgname="deemix-pyweb"
-pkgver=r439.2a277db76a
+_pkgname="deemix-gui-pyweb"
+pkgver=r465.2204471b8b
 pkgrel=1
 pkgdesc="This is a pyqtwebengine wrapper for deemix-webui"
 arch=('any')
-url="https://git.rip/RemixDev/$_pkgname"
+url="https://gitlab.com/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'python-eventlet')
+depends=('python>=3.7' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'python-eventlet')
 makedepends=('git')
 provides=('deemix-pyweb')
-source=("${_pkgname}::git+https://git.rip/RemixDev/$_pkgname"
-        "deemix-webui::git+https://git.rip/RemixDev/deemix-webui")
+source=("${_pkgname}::git+https://gitlab.com/RemixDev/$_pkgname"
+        "deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
