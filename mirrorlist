@@ -1,17 +1,19 @@
-# Randomly pick one of the mirrors below
+# Randomly pick one of the mirrors below (except CDN)
 # - This is GOOD with with Pacman 6+ parallel downloads;
 # - This is BAD with powerpill;
 # - This helps us not overusing one specific mirror;
 # - But feel free to comment it and use the list below instead.
 Server = https://random-mirror.chaotic.cx/$repo/$arch
 
+# CDN
+# By: Fosshost (Takes 4 hours to sync updates - DB comes from a always fresh mirror)
+Server = https://cdn-mirror.chaotic.cx/$repo/$arch
+
 # Brazil
 # * By: UFSCar (dead right now)
 #Server = https://br-sp-mirror.chaotic.cx/$repo/$arch
 
 # USA
-# * Texas, By: GarudaLinux and Fosshost
-Server = https://us-tx-mirror.chaotic.cx/$repo/$arch
 # * Texas, By: XStefen
 Server = https://us-tx-2-mirror.chaotic.cx/$repo/$arch
 # * Washington, By: LordKitsuna
@@ -43,10 +45,6 @@ Server = https://be-bru-mirror.chaotic.cx/$repo/$arch
 # * By: Ryoichi <t.me/maakpain>
 Server = https://kr-mirror.chaotic.cx/$repo/$arch
 
-# Singapore
-# * By: Nico (End-of-live: 2021-05-22)
-Server = https://sg-mirror.chaotic.cx/$repo/$arch
-
 # Bulgaria
 # * By: Sudo Man <github.com/sakrayaami>
 Server = https://bg-mirror.chaotic.cx/$repo/$arch
@@ -54,7 +52,3 @@ Server = https://bg-mirror.chaotic.cx/$repo/$arch
 # Toronto, Canada
 # By freebird54
 Server = https://ca-mirror.chaotic.cx/$repo/$arch
-
-# CDN
-# By: Fosshost (Takes 4 hours to sync updates)
-Server = https://cdn-mirror.chaotic.cx/$repo/$arch
