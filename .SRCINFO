@@ -1,0 +1,20 @@
+pkgbase = aws-adfs
+	pkgdesc = Command line tool to ease aws cli authentication against ADFS
+	pkgver = 1.24.5
+	pkgrel = 1
+	url = https://github.com/venth/aws-adfs
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	depends = python-click
+	depends = python-botocore
+	depends = python-requests
+	depends = python-fido2
+	source = aws-adfs-1.24.5.tar.gz::https://github.com/venth/aws-adfs/archive/refs/tags/1.24.5.tar.gz
+	sha256sums = 003b214e4c664659ac72bcce67f034176068ec974f8e8eb051624956470ef1cd
+	sha512sums = c0507743b6545510cf0fd7272a61a87fbcb56c300228ff9ae1deb8023d7f71e6935f541820ac73e94b22f7a50651eef89a38daf5f168d5d6a8edb2c89f663529
+
+pkgname = aws-adfs
+
