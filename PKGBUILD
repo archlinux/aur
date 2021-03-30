@@ -2,7 +2,7 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='wowlet-git'
-pkgver=0.1.0.0.fafc8e4d7d
+pkgver=0.1.0.0.82ac1c2daf
 pkgrel=1
 pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
