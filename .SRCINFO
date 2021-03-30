@@ -1,6 +1,6 @@
 pkgbase = paru-bin
 	pkgdesc = Feature packed AUR helper
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = paru-bin
 	provides = paru
 	conflicts = paru
 	backup = etc/paru.conf
-	source_x86_64 = https://github.com/Morganamilo/paru/releases/download/v1.4.0/paru-v1.4.0-x86_64.tar.zst
-	sha256sums_x86_64 = 03298cb148b4e3d4f4f935f4921fa11b42062c7b4c3d13853d949e32deead4ff
-	source_aarch64 = https://github.com/Morganamilo/paru/releases/download/v1.4.0/paru-v1.4.0-aarch64.tar.zst
-	sha256sums_aarch64 = a51fd7465400237ed85aa49475cb80baf32c09d5ab23d32039bf0c1a31ddd467
+	source_x86_64 = https://github.com/Morganamilo/paru/releases/download/v1.5.0/paru-v1.5.0-x86_64.tar.zst
+	sha256sums_x86_64 = 2114fd313f366226526475960288ee1a13eb630ae30033f6038fd29df01d2897
+	source_aarch64 = https://github.com/Morganamilo/paru/releases/download/v1.5.0/paru-v1.5.0-aarch64.tar.zst
+	sha256sums_aarch64 = 7dcf03758e0cc3dce9a645d9ab7434cbd0c36f50480d871db96ad65426918137
 
 pkgname = paru-bin
