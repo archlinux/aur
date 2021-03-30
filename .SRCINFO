@@ -8,6 +8,7 @@ pkgbase = keysmith-git
         license = GPL3
         makedepends = cmake
         makedepends = git
+        makedepends = extra-cmake-modules
 	depends = frameworkintegration 
 	depends = libsodium
         depends = qt5-base

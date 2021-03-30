@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=("frameworkintegration" "libsodium" "qt5-base")
-makedepends=("cmake")
+makedepends=("cmake" "extra-cmake-modules" "git")
 provides=('keysmith' 'keysmith-git')
 checkdepends=()
 optdepends=()
