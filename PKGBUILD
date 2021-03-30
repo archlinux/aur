@@ -1,22 +1,27 @@
 pkgname=mold-git
-pkgver=r1662.fd6de2d
-pkgrel=1
+pkgver=r2014.b19a487
+pkgrel=2
 pkgdesc='Fast linker'
 arch=(x86_64)
 url='https://github.com/rui314/mold'
 license=('unknown')
-depends=(mimalloc)
+depends=(mimalloc xxhash)
 makedepends=(clang cmake git)
 source=("git+$url")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
   cd mold
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd mold
+  git submodule update --init
+}
+
 build() {
-  make -C mold
+  make -C mold submodules all
 }
 
 package() {
