@@ -1,6 +1,6 @@
 pkgbase = flipper
 	pkgdesc = A desktop debugging platform for mobile developers
-	pkgver = 0.82.1
+	pkgver = 0.82.2
 	pkgrel = 1
 	url = https://fbflipper.com
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = flipper
 	optdepends = watchman: Required for a fully functional install
 	optdepends = android-sdk: Required for a fully functional install
 	conflicts = flipper-bin
-	source = flipper-0.82.1.tar.gz::https://github.com/facebook/flipper/archive/v0.82.1.tar.gz
-	sha256sums = 1dcb51b250b530f6a18bbf3756c6f8b304f354132dedbf242292d964a41297f7
+	source = flipper-0.82.2.tar.gz::https://github.com/facebook/flipper/archive/v0.82.2.tar.gz
+	sha256sums = 6976615ba857b49d1b05d7041d33ab984349a31813fbe708145699b03ca2e7c3
 
 pkgname = flipper
 
