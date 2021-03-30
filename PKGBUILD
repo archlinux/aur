@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=2020.10.05.r28.g98e1f2f
+pkgver=2020.10.05.r30.g2b2db2b
 pkgrel=1
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
@@ -15,6 +15,7 @@ optdepends=('git: required for batdiff script'
             'man-db: required for batman script'
             'ncurses: optional for batdiff script'
             'git-delta: optional for batdiff script'
+            'exa: optional for batpipe script'
             'entr: optional for batwatch script'
             'prettier: various code formatting for prettybat script'
             'shfmt: bash formatting for prettybat script'
