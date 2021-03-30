@@ -3,7 +3,7 @@
 pkgname=ttf-hymmnos-ar
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Hymmnos and Ar-ciela fonts from the Ar tonelico Series"
+pkgdesc="Hymmnos and Ar-ciela fonts from the Ar Tonelico Series"
 arch=('any')
 url="http://hymmnoserver.uguu.ca/"
 license=('custom')
