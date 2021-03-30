@@ -14,6 +14,7 @@ pkgbase = notcurses-git
 	makedepends = qrcodegen
 	makedepends = readline
 	makedepends = ninja
+	makedepends = python-pip
 	depends = ncurses
 	depends = ffmpeg
 	depends = libunistring
