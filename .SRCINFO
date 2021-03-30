@@ -1,12 +1,13 @@
 pkgbase = binance
-	pkgdesc = The Binance Desktop Application
-	pkgver = 1.13.1
+	pkgdesc = The Binance desktop application
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://www.binance.com/en/download
 	arch = x86_64
 	license = unknown
-	source = https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb
-	sha256sums = 100a13f9e3d89ee7af28e20adc6f1cab33d32752326fb96ca7e177837cb7db82
+	depends = electron
+	source = binance-1.14.0.deb::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb
+	sha256sums = 130a41eb2d2d9c84f94f04e8e338b7f33966ab1fade4810a9e859218327ea769
 
 pkgname = binance
 
