@@ -1,0 +1,63 @@
+--- Makefile	2021-02-14 12:59:55.868073893 +0100
++++ Makefile	2021-02-14 13:02:54.451661445 +0100
+@@ -53,7 +53,7 @@
+ 	bin/z88dk-ticks$(EXESUFFIX) bin/z88dk-z80svg$(EXESUFFIX) \
+ 	bin/z88dk-font2pv1000$(EXESUFFIX) bin/z88dk-basck$(EXESUFFIX) \
+ 	bin/z88dk-lib$(EXESUFFIX)
+-	
++
+ ALL = $(BINS) testsuite
+ 
+ ALL_EXT = bin/zsdcc$(EXESUFFIX)
+@@ -81,7 +81,7 @@
+ 	tar xzf $^
+ 	touch $@
+ else
+-	svn checkout -r $(SDCC_VERSION) https://svn.code.sf.net/p/sdcc/code/trunk/sdcc -q $(SDCC_PATH) 
++	svn checkout -r $(SDCC_VERSION) https://svn.code.sf.net/p/sdcc/code/trunk/sdcc -q $(SDCC_PATH)
+ 	patch -d $(SDCC_PATH) -p0 < $(Z88DK_PATH)/src/zsdcc/sdcc-z88dk.patch
+ endif
+ endif
+@@ -93,7 +93,7 @@
+ zsdcc-tarball: $(SDCC_PATH)/configure
+ 	@mkdir -p dist
+ 	tar --exclude=.svn -cvzf dist/zsdcc_r$(SDCC_VERSION)_src.tar.gz src/sdcc-build
+-	
++
+ 
+ $(SDCC_PATH)/Makefile: $(SDCC_PATH)/configure
+ ifdef BUILD_SDCC
+@@ -200,17 +200,17 @@
+ 	cp -r src/m4 $(prefix_share)/src/
+ 
+ 
+-	# BSD install syntax below
+-	#find include -type d -exec $(INSTALL) -d -m 755 {,$(prefix_share)/}{}  \;
+-	#find include -type f -exec $(INSTALL) -m 664 {,$(prefix_share)/}{}  \;
+-	#find lib -type d -exec $(INSTALL) -d -m 755 {,$(prefix_share)/}{} \;
+-	#find lib -type f -exec $(INSTALL) -m 664 {,$(prefix_share)/}{} \;
+-	#find libsrc -type d -exec $(INSTALL) -d -m 755 {,$(prefix_share)/}{} \;
+-	#find libsrc -type f -exec $(INSTALL) -m 664 {,$(prefix_share)/}{} \;
++# BSD install syntax below
++#find include -type d -exec $(INSTALL) -d -m 755 {,$(prefix_share)/}{}  \;
++#find include -type f -exec $(INSTALL) -m 664 {,$(prefix_share)/}{}  \;
++#find lib -type d -exec $(INSTALL) -d -m 755 {,$(prefix_share)/}{} \;
++#find lib -type f -exec $(INSTALL) -m 664 {,$(prefix_share)/}{} \;
++#find libsrc -type d -exec $(INSTALL) -d -m 755 {,$(prefix_share)/}{} \;
++#find libsrc -type f -exec $(INSTALL) -m 664 {,$(prefix_share)/}{} \;
+ 
+ 
+ # Needs to have a dependency on libs
+-test: $(ALL) 
++test: $(ALL)
+ 	$(MAKE) -C test
+ 
+ testsuite: $(BINS)
+@@ -251,6 +251,6 @@
+ 	$(RM) $(SDCC_DEPS)
+ endif
+ endif
+-	#if [ -d bin ]; then find bin -type f -exec rm -f {} ';' ; fi
++#if [ -d bin ]; then find bin -type f -exec rm -f {} ';' ; fi
+ 
+ .PHONY: test testsuite

@@ -1,29 +1,28 @@
 # Maintainer: Ábel Futó <lebaotuf+arch at gmail dot com>
 # Contributor: John Schug <xtr.xtrnet@gmail.com>
 pkgname=z88dk
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="Developement kit for Z80 computers"
 arch=('i686' 'x86_64')
 url="http://z88dk.org"
 license=('custom:The Clarified Artistic License')
 depends=('perl' 'libxml2')
 backup=(etc/profile.d/z88dk.sh)
-source=(http://downloads.sourceforge.net/project/z88dk/z88dk/${pkgver}/${pkgname}-src-${pkgver}.tgz
-        fix-makefile-v2.0.patch
-	fix-gcc10-fnocommon.patch
+source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-src-${pkgver}.tgz
+	fix-whitespace-Makefile.patch
+        fix-makefile-v2.1.patch
         z88dk.sh)
-sha256sums=('285fb55858b3860fb7a152d6090eedd355a33863812d94ef56368825547d5506'
-            '8a275f9240cbc89e7d7443cfe35875c3f1ffc2c57bd95375dee250d8031ba509'
-            'e55d7d1f262429cedc478f87cadbbe1eff8c7a874c2d7bdc8019174e46a9c2ac'
+sha256sums=('f3579ee59b4af552721173165af38223b115ccb67179e79d2f3c0ae64338dc7c'
+            '3ae2c544e97a49298e81c3fbd19ff4458b7627a827d83534c34499f7570cfaa8'
+            '02ad318eb810f2dff140f66e8c77b946f66018e077a7c27b87824081f6601646'
             '4eef7c67e5b142db3006a4076876cdae9f386a7b94a66841a5a8fac869bea156')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
 
-  patch -Np0 < ../fix-makefile-v2.0.patch
-  patch -Np1 < ../fix-gcc10-fnocommon.patch
-
+  patch -Np0 < ../fix-whitespace-Makefile.patch
+  patch -Np0 < ../fix-makefile-v2.1.patch
 }
 
 build() {
@@ -33,13 +32,20 @@ build() {
   export ZCCCFG="${srcdir}/${pkgname}"/lib/config
   export Z80_OZFILES="${srcdir}/${pkgname}"/lib/
   export MAKEFLAGS="-j1"
-  ./build.sh
-   make libs
+  make
+  make -C libsrc clean
+  make -C libsrc
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
+  make -C libsrc prefix="/usr" DESTDIR="${pkgdir}" install
   make prefix="/usr" DESTDIR="${pkgdir}" install
+
+  # Uncomment for a cleaner install directory - no functionality will be lost
+  #rm -rf ${pkgdir}/usr/share/z88dk/libsrc/target/{zx,zxn,ts2068}/newlib/obj
+  #rm -rf ${pkgdir}/usr/share/z88dk/libsrc/target/zx-common/fcntl/esxdos/obj
+  #rm -rf ${pkgdir}/usr/share/z88dk/libsrc/target/zx/fzx/obj/{z80,z80n}
 
   install -dm755 ${pkgdir}/etc/profile.d/
   install -m755 ${srcdir}/z88dk.sh ${pkgdir}/etc/profile.d/
