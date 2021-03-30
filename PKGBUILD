@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=5.19.r0.gf7d81508958
+pkgver=6.5.r41.g6ca1a92684f
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -160,9 +160,9 @@ package() {
          install
     
     # font aliasing settings for win32 applications
-    mkdir -p "${pkgdir}/etc/fonts/conf.d"
-    install -D -m644 "${srcdir}/30-win32-aliases.conf" -t "${pkgdir}/etc/fonts/conf.avail"
-    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    install -d -m755 "${pkgdir}/usr/share/fontconfig/conf.default"
+    install -D -m644 "${srcdir}/30-win32-aliases.conf" -t "${pkgdir}/usr/share/fontconfig/conf.avail"
+    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
     
     # wine binfmt
     install -D -m644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"

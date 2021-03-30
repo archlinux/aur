@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 5.19.r0.gf7d81508958
+	pkgver = 6.5.r41.g6ca1a92684f
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -141,9 +141,9 @@ pkgbase = wine-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=5.19.r0.gf7d81508958
-	provides = bin32-wine=5.19.r0.gf7d81508958
-	provides = wine-wow64=5.19.r0.gf7d81508958
+	provides = wine=6.5.r41.g6ca1a92684f
+	provides = bin32-wine=6.5.r41.g6ca1a92684f
+	provides = wine-wow64=6.5.r41.g6ca1a92684f
 	conflicts = wine
 	conflicts = bin32-wine
 	conflicts = wine-wow64
