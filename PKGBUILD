@@ -32,7 +32,6 @@ build() {
   cmake -B build -S ../kate \
     -DBUILD_TESTING=OFF
   cmake --build build
-  make
 }
 
 package_kwrite-git() {
