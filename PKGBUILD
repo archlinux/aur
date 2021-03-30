@@ -7,12 +7,12 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Compile ONLY used modules to VASTLY reduce the number of modules built
-# and the build time.
+# Only compile active modules to VASTLY reduce the number of modules built and
+# the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
-# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD read the database kept if it exists
+# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD reads the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
