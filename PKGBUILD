@@ -12,7 +12,7 @@ makedepends=('cmake')
 validpgpkeys=('060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
-sha256sums=('a183d7cf30d931b2a078d6f0ef64616b71ab26f9258e5f4e191778c7ace7175d'
+sha256sums=('645329236992ee85f05569475da2af0f0d81aaccd4aebc8d0b8603e54a320935'
             'SKIP')
 
 build()  {
