@@ -1,6 +1,6 @@
 pkgbase = booster-git
 	pkgdesc = Fast and secure initramfs generator
-	pkgver = 0.3.r57.ge634744
+	pkgver = 0.3.r73.g355b308
 	pkgrel = 1
 	url = https://github.com/anatol/booster
 	arch = x86_64
