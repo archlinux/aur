@@ -8,6 +8,8 @@ pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
 license=('MPL-2.0')
 depends=('jre8-openjdk' 'bash' 'xorg-xrandr')
+provides=('unciv')
+conflicts=('unciv')
 arch=('any')
 source=(
   "https://github.com/yairm210/Unciv/releases/download/3.13.11-patch1/Unciv.jar"
