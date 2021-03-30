@@ -24,13 +24,13 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
-  make manpages
+    cd "$pkgname-$pkgver"
+    make manpages
 }
 
 check() {
     cd "$pkgname-$pkgver"
-	make test
+    make test
 }
 
 package() {
