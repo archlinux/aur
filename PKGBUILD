@@ -1,6 +1,6 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=mozillavpn
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 epoch=
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
@@ -31,7 +31,7 @@ install=
 changelog=
 source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/$pkgname/$pkgver-focal1/${pkgname}_${pkgver}.orig.tar.gz")
 noextract=()
-sha256sums=('4d3d557528812a3fd8401d31ef97c49e5d3cb0a4a9679dd0fea219cb3c8e640e')
+sha256sums=('290eace9a4f76ed79062015bade39db56584a5c1868625df24dfb196d6c71a22')
 validpgpkeys=()
 
 build() {
