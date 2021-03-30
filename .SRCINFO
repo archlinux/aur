@@ -1,0 +1,19 @@
+pkgbase = psvita-sdk
+	pkgdesc = PS vita homebrew sdk
+	pkgver = 1
+	pkgrel = 1
+	url = https://vitasdk.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = wget
+	depends = pacman>5
+	depends = git
+	options = !strip
+	source = sudo-fix.patch
+	source = git+https://github.com/vitasdk/vdpm
+	md5sums = 1213c1c23d734af92553ac8801443d36
+	md5sums = SKIP
+
+pkgname = psvita-sdk
+
