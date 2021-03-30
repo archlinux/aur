@@ -1,6 +1,6 @@
 pkgbase = pg_partman
 	pkgdesc = Partition management extention for PostgreSQL
-	pkgver = 4.4.1
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/pgpartman/pg_partman
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = pg_partman
 	makedepends = llvm
 	depends = python
 	depends = postgresql
-	source = https://github.com/pgpartman/pg_partman/archive/v4.4.1.tar.gz
-	sha256sums = 72ca9dcb0cdfe2a2a8b0295b054e4e1245c6fd804061c8282fa5006163e5ec98
+	source = https://github.com/pgpartman/pg_partman/archive/v4.5.0.tar.gz
+	sha256sums = a62bb23a075614d5a1924c2a80296b94f96308b1fb362ee8596c4d8243c1e4a2
 
 pkgname = pg_partman
 
