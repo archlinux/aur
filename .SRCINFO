@@ -1,6 +1,6 @@
 pkgbase = gtranslator-git
 	pkgdesc = Translation Editor, an enhanced gettext po file editor for the GNOME
-	pkgver = 3.38.0.r5135.f6e6ffaf
+	pkgver = 40.0.r5212.df06d5a6
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Gtranslator
 	arch = x86_64

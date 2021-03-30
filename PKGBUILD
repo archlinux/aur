@@ -2,7 +2,7 @@
 
 _name=gtranslator
 pkgname=$_name-git
-pkgver=3.38.0.r5135.f6e6ffaf
+pkgver=40.0.r5212.df06d5a6
 pkgrel=1
 pkgdesc='Translation Editor, an enhanced gettext po file editor for the GNOME'
 arch=('x86_64')
