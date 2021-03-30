@@ -13,8 +13,8 @@ pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ a
 arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
 license=('Apache')
-makedepends=('cmake' 'git')
-depends=('lua' 'screen' 'sudo' 'bash' 'awk' 'sed' 'pkcs11-helper' 'sqlite')
+makedepends=('cmake' 'git' 'gtest')
+depends=('lua' 'screen' 'sudo' 'bash' 'pkcs11-helper' 'sqlite')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 provides=("minecraft-server=${_pkgver%_*}" "spigot=${_pkgver%_*}" "$_pkgname=${pkgver}")
