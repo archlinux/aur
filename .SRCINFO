@@ -1,0 +1,14 @@
+pkgbase = editorconfig-checker
+	pkgdesc = A tool to verify that your files are in harmony with your .editorconfig
+	pkgver = 2.3.5
+	pkgrel = 1
+	url = https://github.com/editorconfig-checker/editorconfig-checker
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = ec
+	source = editorconfig-checker-2.3.5.tar.gz::https://github.com/editorconfig-checker/editorconfig-checker/archive/refs/tags/2.3.5.tar.gz
+	sha256sums = eefe32abf1220164ace859678300a52073d41dd229ba2eadc23de17315a248f6
+
+pkgname = editorconfig-checker
+
