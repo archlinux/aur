@@ -11,13 +11,14 @@ pkgbase = opencascade-git
 	makedepends = ninja
 	makedepends = rapidjson
 	depends = tk
-	depends = vtk
+	depends = vtk9-fix
 	depends = gl2ps
 	depends = ffmpeg
 	depends = freeimage
 	depends = intel-tbb
 	provides = opencascade
 	conflicts = opencascade
+	conflicts = opencascade-rc
 	source = git+https://git.dev.opencascade.org/repos/occt.git
 	sha256sums = SKIP
 
