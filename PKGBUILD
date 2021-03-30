@@ -3,10 +3,18 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgbase=kate-git
-pkgname=(kwrite-git kate-git)
-pkgver=21.07.70_r17987.g664722487
+pkgname=kate-git
+pkgver=21.07.70_r17988.g3d0d58325
 pkgrel=1
+pkgdesc="Advanced Text Editor"
+groups=(kde-applications-git kde-utilities-git)
+url="https://www.kde.org/applications/utilities/kate/"
+depends=(knewstuff-git ktexteditor-git kactivities-git kuserfeedback-git hicolor-icon-theme)
+optdepends=('konsole-git: open a terminal in Kate'
+            'clang: C and C++ LSP support'
+            'python-language-server: Python LSP support'
+            'texlab: LaTeX LSP support'
+            'rust: Rust LSP support')
 arch=(x86_64)
 license=(GPL LGPL FDL)
 makedepends=(extra-cmake-modules-git kdoctools-git plasma-framework-git knewstuff-git kitemmodels-git ktexteditor-git kactivities-git kuserfeedback-git git)
@@ -34,34 +42,7 @@ build() {
   cmake --build build
 }
 
-package_kwrite-git() {
-  pkgdesc="Text Editor"
-  groups=(kde-applications-git)
-  url="https://www.kde.org/applications/utilities/kwrite/"
-  depends=(ktexteditor-git hicolor-icon-theme)
-
+package() {
+  cd build
   DESTDIR="$pkgdir" cmake --install build
-
-  find "$pkgdir" -type f -name '*kate*' -exec rm {} \;
-  rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor \
-        "$pkgdir"/usr/share/doc/HTML/*/{kate,katepart} \
-        "$pkgdir"/usr/share/katexmltools \
-        "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{ktexteditorpreviewplugin,lspclient,tabswitcherplugin}.mo \
-        "$pkgdir"/usr/share/plasma/plasmoids
-}
-
-package_kate-git() {
-  pkgdesc="Advanced Text Editor"
-  groups=(kde-applications-git kde-utilities-git)
-  url="https://www.kde.org/applications/utilities/kate/"
-  depends=(knewstuff-git ktexteditor-git kactivities-git kuserfeedback-git hicolor-icon-theme)
-  optdepends=('konsole-git: open a terminal in Kate'
-              'clang: C and C++ LSP support'
-              'python-language-server: Python LSP support'
-              'texlab: LaTeX LSP support'
-              'rust: Rust LSP support')
-  DESTDIR="$pkgdir" cmake --install build
-
-  find "$pkgdir" -type f -name '*kwrite*' -exec rm {} \;
-  rm -r "$pkgdir"/usr/share/doc/HTML/*/kwrite
 }
