@@ -1,5 +1,5 @@
 pkgbase = restool
-	pkgdesc = Aser space application providing the ability to dynamically create and manage DPAA2 containers and objects from Linux.
+	pkgdesc = An user space application providing the ability to dynamically create and manage NXP DPAA2 containers and objects from Linux.
 	pkgver = 18.06
 	pkgrel = 0
 	url = https://github.com/qoriq-open-source/restool
