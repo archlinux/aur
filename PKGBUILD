@@ -29,9 +29,11 @@ _opt_fdpp=0
 # 0 = use freedos
 # 1 = use fdpp and comcom32 (boot only, freedos is still used for utilities)
 
+#_commit='#commit=260ff21fea5de'; SOURCE_DATE_EPOCH="$(date +%s -d '2021-03-06 04:16')"
+
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre8.r1875.gf8fb7ac43
+pkgver=2.0pre8.r2855.gb12525bbd
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -78,7 +80,7 @@ _freedos='dosemu-freedos-1.1-bin.tgz'
 #_freedos='dosemu-freedos-bin.tgz'
 #_freedos='msdos70-bin.tgz' # install.c will need to be fixed before this is automatic
 source=(
-  "git+https://github.com/${_github}.git"
+  "git+https://github.com/${_github}.git${_commit:-}"
   'http://downloads.sourceforge.net/sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz' # for the GNU utils
 )
 if [ "${_freedos}" != 'none' ]; then
@@ -113,21 +115,30 @@ prepare() {
     fi
   done
 
+  shopt -s nullglob
+  for _pt in "${startdir}/"/*.localpatch; do
+    set +u; msg2 "Local Patch ${_pt}"; set -u
+    patch -Nup1 -i "${_pt}"
+  done
+  shopt -u nullglob
+
   # Some makepkg options including -i erroneously run prepare() for vcs packages
   if [ -f 'debian/rules' ]; then
     if [ "${_freedos}" != 'none' ]; then
       ln -sf "../${_freedos}"
     fi
     #ln -s '../.git' 'src/.git'
-    sed -e '# Enable VDE' \
-        -e 's:^\(\s*plugin_vde\)\s.*$:\1 on:g' \
-        -e '# Update freedos' \
-        -e 's:^\(\s*fdtarball\)\s.*$:'"\1 ${_freedos}:g" \
-        -e '# This breaks PREFIX and we still need freedos' \
-        -e '#s:^\(\s*fdtarball\)\s.*$:'"\1:g" \
-        -e '# Prefix' \
-        -e 's:^}$:  prefix /usr\n&:g' \
-      -i 'compiletime-settings'{,.devel}
+    local _onoff=(off on on)
+    cat > 'compiletime-settings' << EOF
+config {
+  sysconfdir /etc
+  fdtarball ${_freedos}
+  prefix /usr
+  plugin_vde on
+  fdpp ${_onoff[${_opt_fdpp}]}
+  debug ${_onoff[${_opt_Debug}]}
+}
+EOF
     rm -f 'debian/rules' # We don't use this file so I'm using it as a flag.
   fi
   set +u
@@ -153,7 +164,7 @@ _configure() { # makepkg -e compatible
     fi
     echo "CFLAGS=${CFLAGS}"
     CFLAGS="${CFLAGS} -Wno-unused-result" \
-    ./default-configure "${_opts[@]:-}"
+    "${PWD}"/default-configure "${_opts[@]}" --prefix='/usr'
   fi
   set +u
   cd "${srcdir}"
@@ -176,6 +187,7 @@ package() {
   set -u
   cd 'dosemu2'
   make DESTDIR="${pkgdir}" install
+  test -d "${pkgdir}/usr/local" && echo "${}"
   if [ "${_opt_Debug}" -eq 0 ] || [ "${_opt_keepdesktop}" -ne 0 ]; then # sudo in the launcher crashes cinnamon
     install -Dm644 <(cat << EOF
 [Desktop Entry]
@@ -205,6 +217,9 @@ fi
     sed -i -e '# Enable ptrace_scope' \
            -e "s@^get_binary()@${_code//${_lf}/\\n}&@g" \
       "${pkgdir}/usr/bin/dosemu"
+  fi
+  if [ "${_opt_fdpp}" -ne 0 ]; then
+    : find "${pkgdir}" -name 'command.com' -delete # remove files and symlinks
   fi
   set +u
 }
