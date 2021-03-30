@@ -3,7 +3,7 @@
 
 pkgname=gfold-git
 pkgver=1.0.1.r0.g3c74743
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to help keep track of Git repositories (git)"
 arch=('x86_64')
 url="https://github.com/nickgerace/gfold"
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --locked --package "${pkgname%-git}"
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --release --locked --package "${pkgname%-git}"
 }
 
 package() {
