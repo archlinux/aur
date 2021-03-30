@@ -15,8 +15,12 @@ pkgbase = rtl8189es-git
 	conflicts = rtl8189es-git
 	source = git+https://github.com/jwrdegoede/rtl8189ES_linux
 	source = rtl8189es-git.install
+	source = makefile-for-linux.patch
+	source = package_kernel_rtl8189es_patches_010-rename-sta_info.h.patch
 	md5sums = SKIP
 	md5sums = 8a04c4c6a69a34393694aa0a14fb4853
+	md5sums = c199e7dce430101a1b47a3e73c7c0b8e
+	md5sums = 967d0e1b4f7e7cc17949113faf67f89b
 
 pkgname = rtl8189es-git
 
