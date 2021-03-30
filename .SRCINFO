@@ -1,0 +1,18 @@
+pkgbase = libayatana-common
+	pkgdesc = Ayatana System Indicators' common API functions
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators/libayatana-common
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = GPL3
+	makedepends = cmake
+	makedepends = cmake-extras
+	makedepends = glib2
+	depends = glib2
+	source = https://github.com/AyatanaIndicators/libayatana-common/archive/0.9.0.tar.gz
+	md5sums = 87626afe087278b003d034ea7e6d2a80
+
+pkgname = libayatana-common
+
