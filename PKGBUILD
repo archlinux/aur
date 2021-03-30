@@ -1,24 +1,21 @@
 # Maintainer: John Gleezowood <psyrccio@gmail.com>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Clarence <xjh.azzbcc@gmail.com>
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
-pkgver=3.7.20
+pkgver=3.10.4
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
-url="http://www.ocenaudio.com.br/"
+url="https://www.ocenaudio.com/"
 license=('custom')
-depends=('desktop-file-utils' 'gtk-update-icon-cache' 'jack' 'pulseaudio'
-         'qt5-base' 'shared-mime-info')
+depends=('hicolor-icon-theme' 'jack' 'libpulse' 'qt5-base')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install="$_pkgname.install"
-source=("LICENSE.txt")
-sha256sums=('SKIP')
-sha256sums_i686=('90173b867800802fa8b6f129332bffb802bd06015828d83b04d7c768bf79c70e')
-sha256sums_x86_64=('d12db0742ffa37bc8c3c3ddc8cfa117340bb7881ea611dd948bb3e7b18eefce0')
-source_i686=("${_pkgname}-${pkgver}_i686.deb::http://www.ocenaudio.com/downloads/ocenaudio_debian32.deb")
-source_x86_64=("${_pkgname}-${pkgver}_x86_64.pkg.tar.xz::http://www.ocenaudio.com/downloads/ocenaudio_archlinux.pkg.tar.xz")
+sha256sums_i686=('eece0cff805d8882c8c472999d1fe10d5fc49baa1a20428ffb59cca95c38ae3a')
+sha256sums_x86_64=('fc213f7790dbed4a327c4e1f4758d999478ee437808c04d60cacb40d30cec5de')
+source_i686=("${_pkgname}-${pkgver}_i686.deb::https://www.ocenaudio.com/downloads/index.php/ocenaudio_debian32.deb?version=v${pkgver}")
+source_x86_64=("${_pkgname}-${pkgver}_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v${pkgver}")
 
 build() {
   echo "ocenaudio "$pkgver
@@ -27,17 +24,18 @@ build() {
 package() {
   if [ $CARCH == "i686" ]; then
     tar -xJf ${srcdir}/data.tar.xz -C "${pkgdir}"
-
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -sf "/opt/$_pkgname/bin/${_pkgname}" "${pkgdir}/usr/bin"
     rm -rf "${pkgdir}/var"
   else
     cp -rLnf ${srcdir}/* ${pkgdir}/
-    rm -f ${pkgdir}/${_pkgname}-${pkgver}_x86_64.pkg.tar.xz
+    rm -f ${pkgdir}/${_pkgname}-${pkgver}_x86_64.tar.xz
   fi
-  install -Dm644 "${srcdir}/LICENSE.txt" \
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/licenses"
+  install -Dm644 "${pkgdir}/opt/$_pkgname/bin/ocenaudio_license.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  if [ -f "${pkgdir}/LICENSE.txt" ]; then
-    rm -f "${pkgdir}/LICENSE.txt"
-  fi
+
+  ln -sf "/opt/$_pkgname/bin/${_pkgname}" "${pkgdir}/usr/bin"
+  sed -i 's|^Exec=/opt/ocenaudio/bin|Exec=/usr/bin|' "$pkgdir/usr/share/applications/ocenaudio.desktop"
+
+  rm -f "${pkgdir}/opt/$_pkgname/bin/ocenaudio_license.txt"
 }
