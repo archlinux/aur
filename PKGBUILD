@@ -2,19 +2,20 @@
 #
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 #
 pkgname="python2-gimp"
 _pkgname="gimp"
-pkgver="2.10.20"
-pkgrel="2"
+pkgver="2.10.24"
+pkgrel="1"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('LGPL')
 depends=('gimp' 'pygtk')
-makedepends=('gtk-doc' 'intltool')
+makedepends=('gtk-doc' 'intltool' 'autoconf=2.69')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('e12f9f874b1a007c4277b60aa81e0b67330be7e6153e5749ead839b902fc7b3c')
+sha256sums=('bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e')
 
 prepare() {
     cd ${_pkgname}-${pkgver}
