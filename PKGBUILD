@@ -14,6 +14,7 @@ source=(
 depends=(
     "openssl"
     "sdl2"
+    "hicolor-icon-theme"
     "libunistring"
     "pcre"
 )
