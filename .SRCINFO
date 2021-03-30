@@ -1,0 +1,16 @@
+pkgbase = qnodeeditor
+	pkgdesc = Qt-based library aimed at graph-controlled data processing (qv2ray edition)
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://github.com/Qv2ray/QNodeEditor
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = qt5-base
+	provides = nodeeditor
+	conflicts = nodeeditor
+	source = https://github.com/Qv2ray/QNodeEditor/archive/6f1d2f559bc9df42f9165067766f20578cf934e3.zip
+	sha256sums = e224ecf7d71880d297dd0f1e9b4a1bf6ebf6d1ae829d7a73a9744e5d67b0cd3f
+
+pkgname = qnodeeditor
+
