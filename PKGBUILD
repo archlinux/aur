@@ -3,7 +3,7 @@
 
 pkgname=gfold
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to help keep track of Git repositories"
 arch=('x86_64')
 url="https://github.com/nickgerace/gfold"
@@ -15,12 +15,12 @@ sha512sums=('25975338790d145fa4ee005d5f37eb5d0a0d5a8d70ca43a70a42cf76a8a7df77fc2
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release --locked --package "$pkgname"
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked
+  cargo test --release --locked --package "$pkgname"
 }
 
 package() {
