@@ -1,6 +1,6 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-micro-xrce-dds-client
-pkgver=1.2.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="eProsima's XRCE DDS client"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/eProsima/Micro-XRCE-DDS-Client/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('22405cb2cfba948c49ab9cddf6da3ff6f07efa1e63dc3a37bcfbcf14e87f91c2')
+sha256sums=('115947db7e7cc519a46b967111a47c42374fe68ac8320bfc3b30b54248994559')
 validpgpkeys=()
 
 build() {

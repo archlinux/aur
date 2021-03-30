@@ -1,14 +1,14 @@
 pkgbase = eprosima-micro-xrce-dds-client
 	pkgdesc = eProsima's XRCE DDS client
-	pkgver = 1.2.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/eProsima/Micro-XRCE-DDS-Client
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	depends = eprosima-micro-cdr
-	source = https://github.com/eProsima/Micro-XRCE-DDS-Client/archive/v1.2.3.tar.gz
-	sha256sums = 22405cb2cfba948c49ab9cddf6da3ff6f07efa1e63dc3a37bcfbcf14e87f91c2
+	source = https://github.com/eProsima/Micro-XRCE-DDS-Client/archive/v2.0.0.tar.gz
+	sha256sums = 115947db7e7cc519a46b967111a47c42374fe68ac8320bfc3b30b54248994559
 
 pkgname = eprosima-micro-xrce-dds-client
 
