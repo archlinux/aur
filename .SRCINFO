@@ -1,12 +1,12 @@
 pkgbase = otf-gt40
 	pkgdesc = A free recreation of the GT 40 Mono Font by Kate Willaert
-	pkgver = 1
+	pkgver = 2021
 	pkgrel = 1
-	url = https://archive.org/download/gt-40-mono-font/GT40%20Mono%20Font.zip
+	url = https://archive.org/download/gt-40-2021/GT40%202021.7z
 	arch = any
 	license = custom
-	source = otf-gt40-1.zip::https://archive.org/download/gt-40-mono-font/GT40%20Mono%20Font.zip
-	sha256sums = 0bbf729c7bba82ecc7646d1f96f88236e79e00efff09393489e205be1554fee5
+	source = otf-gt40-2021.7z::https://archive.org/download/gt-40-2021/GT40%202021.7z
+	sha256sums = 519703dd535c233ccfc1440027522763c56dae2a2369faf7216fa77e631036b2
 
 pkgname = otf-gt40
 
