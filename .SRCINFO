@@ -1,0 +1,18 @@
+pkgbase = factropy-git
+	pkgdesc = A hobby gamedev project heavily influenced by Factorio
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/seanpringle/factropy
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libglvnd
+	source = git+https://github.com/seanpringle/factropy.git
+	source = git+https://github.com/seanpringle/raylib.git
+	source = factropy.sh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = b77189e6385420fcc54dcbce0f77e25c
+
+pkgname = factropy-git
+
