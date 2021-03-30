@@ -3,13 +3,13 @@
 
 pkgname=python-camelot-git
 pkgver=v0.8.2.r26.g7709e58
-pkgrel=4
+pkgrel=5
 pkgdesc="Camelot: PDF Table Extraction for Humans"
 arch=('any')
 url='https://camelot-py.readthedocs.io'
 license=('MIT')
 depends=('python' 'tk' 'ghostscript' 'opencv' 'python-chardet' 'python-click' 'python-matplotlib'
-         'python-numpy' 'python-openpyxl' 'python-pandas' 'python-pdfminer.six'
+         'python-numpy' 'python-openpyxl' 'python-pandas' 'python-pdfminer'
          'python-pypdf2')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mpl')
