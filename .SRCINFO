@@ -1,0 +1,29 @@
+pkgbase = divinityoriginalsin-ee-gog
+	pkgdesc = Divinity: Original Sin - Enhanced Edition is a much lauded Role-Playing-Game that blends deep customization and humor with dynamic turn based combat.
+	pkgver = 2.0.119.430.ch.17075
+	pkgrel = 1
+	url = https://www.gog.com/game/divinity_original_sin_enhanced_edition
+	arch = x86_64
+	license = custom:commercial
+	makedepends = binwalk
+	depends = zlib
+	depends = libglvnd
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	options = !strip
+	backup = opt/divinityoriginalsin-ee-gog/game/Data/Localization/language.lsx
+	source = divinityoriginalsin-ee-gog_2_0_119_430_ch_17075.sh::gogdownloader://divinity_original_sin_enhanced_edition/en3installer0
+	source = divinityoriginalsin-ee-gog
+	source = divinityoriginalsin-ee-gog.desktop
+	source = language_setup.md
+	sha256sums = 1abff3dfb6321995c7b52031a0ff99a5313343fcd469596c76ef971d2685ea7d
+	sha256sums = cdd06507dbb9561e2f63da495ddab649fd70988e4142d9fe2d40a14c7e0fba0c
+	sha256sums = 0e63ae80106ef02b646a71badd15a9c72ce664145b2b83ce2140507174af0edd
+	sha256sums = 33213d2d4ab54a04830c167ea854c0a31cce608b734c4aa4895b41024b3647f2
+
+pkgname = divinityoriginalsin-ee-gog
+

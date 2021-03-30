@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /opt/divinityoriginalsin-ee-gog/game
+LD_LIBRARY_PATH="." ./EoCApp

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/divinityoriginalsin-ee-gog.png
+Exec=/usr/bin/divinityoriginalsin-ee-gog
+Terminal=false
+StartupNotify=false
+
+Name=Divinity: Original Sin - Enhanced Edition
+Comment=Divinity: Original Sin - Enhanced Edition is a much lauded Role-Playing-Game that blends deep customization and humor with dynamic turn based combat.
+
+Categories=Game;
