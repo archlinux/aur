@@ -1,6 +1,6 @@
 pkgname=threadpool11-git
 pkgdesc='A fast, lock-free, cross-platform C++11 thread pooling library that is aiming to be lightweight and simple.'
-pkgver=2.0.8.r0.g46c9afc
+pkgver=3.0.0.r3.g8998e5c
 pkgver() {
   cd "$pkgname"
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -8,10 +8,13 @@ pkgver() {
 pkgrel=1
 source=("$pkgname"'::git+https://github.com/tghosgor/threadpool11.git')
 arch=('any')
-url=('https://github.com/tghosgor/threadpool11')
-license=('LGPL3')
+url='https://github.com/tghosgor/threadpool11'
+license=('MIT')
 makedepends=(
-  'boost' # Boost.Lockfree is used, there is an internal copy if you do not have it installed but we want it to be recent for this.
+  'boost'
+  'cmake'
+  'git'
+  'make'
 )
 sha512sums=('SKIP')
 options=('staticlibs')
