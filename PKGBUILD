@@ -4,7 +4,7 @@ _pkgname=Mark-Mind
 _gitpkgname=Mark.Mind
 _oldpkgname=mind
 pkgname=mark-mind
-pkgver=1.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Mark Mind — Next generation mind map editor"
 arch=('any')
@@ -18,11 +18,11 @@ makedepends=('coreutils')
 backup=()
 options=('!strip')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/MarkMindLtd/${_pkgname}/releases/download/v${pkgver//_/-}/${_gitpkgname}-${pkgver}.AppImage"
-    "${pkgname}.desktop")
-sha256sums=(
-      'b1bfeb234778cb53c1c40d25ea72a01e3aa238f3badb1555caac7f44593ec59e'  
-    'e726247f694723f9c8cec971efa8eabe321b4341df06c0de6157581ecb285764'
-)
+    "io.github.markmindltd.mark_mind.desktop"
+    "io.github.markmindltd.mark_mind.metainfo.xml")
+sha256sums=('bad6e300c8eec056df1682a42e4f37c7b2c7053ee5e9ce8e76635599ed631f05'
+            'bc8c6db34688ad87879871a9ea28c088a1f44fcdfb7f4e4aef52a425283dde9f'
+            'c0050afe68a3c62cc8f15508b1209a41eae4cbd7e358a0bf0ae20bc37178f35f')
 
 prepare() {
     chmod u+x ${srcdir}/${_pkgname}-${pkgver}.AppImage
@@ -51,5 +51,6 @@ package() {
     install -d ${pkgdir}/usr/bin
     ln -s ../../opt/${pkgname}/${_oldpkgname} ${pkgdir}/usr/bin/${pkgname}
 
-    install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -Dm644 "${srcdir}/io.github.markmindltd.mark_mind.desktop" "${pkgdir}/usr/share/applications/io.github.markmindltd.mark_mind.desktop"
+    install -Dm644 "${srcdir}/io.github.markmindltd.mark_mind.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.markmindltd.mark_mind.metainfo.xml"
 }
