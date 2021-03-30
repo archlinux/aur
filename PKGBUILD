@@ -2,18 +2,24 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 ### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
+# Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Optionally select a sub architecture by number if building in a clean chroot
-# Leaving this entry blank will require user interaction during the build
-# which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 32.
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
 #
-# Note - the march=native option is unavailable by this method, use the nconfig
-# and manually select it.
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
+# Optionally select a sub architecture by number or leave blank which will
+# require user interaction during the build. Note that the generic (default)
+# option is 32.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -47,24 +53,14 @@ _makenconfig=
 #  30. Intel Cooper Lake (MCOOPERLAKE)
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Native optimizations autodetected by GCC (MNATIVE) (NEW)
-
+#  33. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
+#  34. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
 _subarch=
-
-# Compile ONLY used modules to VASTLYreduce the number of modules built
-# and the build time.
-#
-# To keep track of which modules are needed for your specific system/hardware,
-# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD read the database kept if it exists
-#
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.10
+pkgver=5.11.11
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -75,7 +71,7 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.11-ck${_ckpatchversion}"
-_gcc_more_v=20210309
+_gcc_more_v=20210327
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -88,10 +84,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('84b97aeb190d570144d0e315edf8c0b51fd92a70f94a30f08ef49a65eedd48ee135b2c2f3a1a2827ace96fef2d1963e83948790c7729f3d7c1f615f8d32c9656'
+b2sums=('e82eca6aee8e983304d363f6b427784df593f1fa8c2e7c54b0c6317e9a59497d4398dcec60a0e1ef7efd1f964e1c55a8ee2e3fb1fbf238a87917b30fc049f30b'
         'SKIP'
         '8a0e1fb03037e57df8de81856a0bdb94e393d9336b587b1c907c6e4ed15abfa6c86634131ebbfab45eeb6b423bf467536ad0543efbef2586645ade016c32a013'
-        '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
+        'f9a5de8af8ea693a21a824e3805c6d784d17ab72828000966a53ed46e66edce53a447271985634137e42901e41c4ac49d3f91e9262896668a335cea8ee896a7c'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         'c22463da6e78830e104f728c00cf43573a7e1a59c17234f49844b9295eab953f4e119d34a0621feb816b9f1f0469dd769884f9ed1740c73176625435ea0a8624'
         '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32')
@@ -156,7 +152,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-gcc-v10-and-kernel-5.8+.patch"
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
