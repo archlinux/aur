@@ -28,10 +28,11 @@ exec java -server \
   -XX:CompilerThreadPriority=1 \
   -XX:+CompilerThreadHintNoPreempt \
   -Djava.library.path=/usr/lib/starsector \
-  -Xms512m -Xmx1024m -classpath ${CLASSPATH} \
+  -Xms1536m -Xmx1536m -Xss2048k -classpath ${CLASSPATH} \
   -Dcom.fs.starfarer.settings.paths.saves=${SAVEPATH} \
   -Dcom.fs.starfarer.settings.paths.screenshots=${SCRPATH} \
   -Dcom.fs.starfarer.settings.paths.mods=${MODPATH} \
   -Dcom.fs.starfarer.settings.paths.logs=${LOGPATH} \
+  -Dcom.fs.starfarer.settings.linux=true \
   com.fs.starfarer.StarfarerLauncher
 # vim:set ts=2 sw=2 et:

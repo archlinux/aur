@@ -1,7 +1,7 @@
 # Maintainer: Erdbeerkaese <erbeerkaese dot arch at gmail dot com>
 
 pkgname=starsector
-pkgver=0.95a_RC9
+pkgver=0.95a_RC11
 pkgrel=1
 pkgdesc="Starsector (formerly “Starfarer”) is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game."
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ http://s3.amazonaws.com/fractalsoftworks/starsector/starsector_linux-${pkgver//_
 ${pkgname}.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
 starsector.sh
 starsector.desktop)
-sha256sums=('695bc45045fd8977ba36223bf813a16fea10fca33ae1ad5b73d71de43bbabdbe'
+sha256sums=('b084f2016fd7d4e841d3a0304e24515dcaf5ba03ae7c4d5578460811d2c13315'
             '0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16'
-            '209f86a20f658ae9c318f315d44cc714aa0e825bcf39962654dc35d58a2d0cb9'
+            '1d59f7e2855783c880ad1d885834f85defd5fd813e81c5f78b0c3e911905c5c8'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
 package() {
   install -d "$pkgdir/usr/share/$pkgname" \
