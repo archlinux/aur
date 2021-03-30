@@ -7,7 +7,7 @@
 pkgname=libpulse-nosystemd
 pkgdesc="Client library for PulseAudio"
 pkgver=14.2
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
@@ -52,7 +52,10 @@ package() {
   _pick usr/include
   _pick usr/share/man/man1/pa{cat,ctl,dsp,mon,play,rec,record}.1
   _pick usr/share/man/man5/pulse-client.conf.5
+  _pick usr/share/bash-completion/completions/pa{cat,ctl,dsp,play,rec,record}
+  _pick usr/share/bash-completion/completions/pulseaudio
   _pick usr/share/vala
+  _pick usr/share/zsh
 
   cd ..
   rm -rf temp
