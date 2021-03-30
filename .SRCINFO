@@ -1,15 +1,15 @@
 pkgbase = olive-appimage
 	pkgdesc = Olive is a free non-linear video editor for Windows, macOS, and Linux.
-	pkgver = 19eabf28
+	pkgver = f99600ed
 	pkgrel = 1
 	url = https://olivevideoeditor.org
 	arch = x86_64
 	license = GPL3
 	depends = fuse
-	noextract = Olive-19eabf28-Linux-x86_64.AppImage
+	noextract = Olive-f99600ed-Linux-x86_64.AppImage
 	options = !strip
-	source = https://olivevideoeditor.org/dl/Olive-19eabf28-Linux-x86_64.AppImage
-	md5sums = 806251aef0b14616850585de973d91f8
+	source = https://olivevideoeditor.org/dl/Olive-f99600ed-Linux-x86_64.AppImage
+	md5sums = 0c40c78f815d281f32ab33c23a1145a4
 
 pkgname = olive-appimage
 
