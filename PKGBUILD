@@ -5,7 +5,7 @@ pkgdesc="upstream git package for the Material Design-like flat theme for GTK4, 
 arch=('any')
 url="https://github.com/nana-4/materia-theme"
 license=('GPL')
-makedepends=('git' 'sassc' 'meson>=0.47.0')
+makedepends=('git' 'npm' 'meson>=0.47.0')
 depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra')
 optdepends=()
 provides=('materia-theme')
@@ -14,7 +14,7 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/materia-theme.git)
 sha256sums=('SKIP')
 
-pkgver=r1609.79b71a42
+pkgver=r1614.37e2a7fb
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
