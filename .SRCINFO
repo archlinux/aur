@@ -1,0 +1,21 @@
+pkgbase = gmi
+	pkgdesc = Gemini capsule generator.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://gitlab.com/teegre/gmi
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = fzf
+	depends = openssh
+	depends = rsync
+	depends = sed
+	depends = tar
+	optdepends = nano
+	source = https://gitlab.com/teegre/gmi/-/archive/0.7.2/gmi-0.7.2.tar.gz
+	sha256sums = 4cee2de651f31a970e3e222c531dd229cff8a68e76c8712a06e7f698b32a44e3
+
+pkgname = gmi
+
