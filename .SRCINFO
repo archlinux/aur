@@ -1,0 +1,29 @@
+pkgbase = cnkiexpress
+	pkgdesc = cnki for arch
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = http://cajviewer.cnki.net/download.html
+	arch = i686
+	arch = x86_64
+	groups = cnkiexpress
+	license = GPL
+	makedepends = yay
+	makedepends = debtap
+	makedepends = wget
+	depends = at-spi2-core
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	source = https://download.cnki.net/cnkiexpress/cnkiexpress_0.0.10_amd64.deb
+	sha512sums = SKIP
+
+pkgname = cnkiexpress
+
