@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-release-git
-pkgver=rev.13874
+pkgver=rev.14520
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('vegastrike-engine')
 #install=$pkgname.install
 #options=(!makeflags debug !strip)
 
-source=('git+https://github.com/vegastrike/Vega-Strike-Engine-Source#branch=0.6.x')
+source=('git+https://github.com/vegastrike/Vega-Strike-Engine-Source#branch=0.7.x')
 sha1sums=('SKIP')
 
 pkgver() {
@@ -32,10 +32,6 @@ cd ..
 mkdir -p build
 #for now, these two patches modify the same line in CMakelists.txt
 #patch -Np1 -i ../py2.patch
-patch -Np1 -i ../Python.patch
-#patch -Np1 -i ../galaxy.patch
-#patch -Np1 -i ../nav.patch
-#patch -Np1 -i ../nav_galaxy.patch
 }
 
 build(){
