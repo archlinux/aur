@@ -1,6 +1,6 @@
 pkgbase = blightmud
 	pkgdesc = A terminal mud client written in rust
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 2
 	url = https://github.com/blightmud/blightmud
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = blightmud
 	depends = gcc-libs
 	provides = blightmud
 	conflicts = blightmud
-	source = blightmud-3.0.4.tar.gz::https://github.com/Blightmud/Blightmud/archive/v3.0.4.tar.gz
-	md5sums = 630cfb898dd2c84e8c3a94f0ae864b9a
+	source = blightmud-3.0.5.tar.gz::https://github.com/Blightmud/Blightmud/archive/v3.0.5.tar.gz
+	md5sums = 6aca6fdb4b1f4f581d88626cedd36cce
 
 pkgname = blightmud
 
