@@ -5,21 +5,21 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=3.38.2
+pkgver=40.1
 pkgrel=1
-pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
+pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dconf' 'gtk3' 'libgxps' 'libspectre' 'poppler-glib' 'djvulibre' 'gsettings-desktop-schemas' 'gspell' 'libarchive' 'gst-plugins-base-libs' 'libsynctex')
+depends=('dconf' 'gtk3' 'libgxps' 'libspectre' 'poppler-glib' 'djvulibre' 'gsettings-desktop-schemas' 'gspell' 'libarchive' 'gst-plugins-base-libs' 'libsynctex' 'libhandy')
 makedepends=('meson' 'ninja' 'itstool' 'texlive-bin' 'intltool' 'docbook-xsl' 'python' 'gtk-doc' 'appstream-glib')
 optdepends=('texlive-bin: DVI support'
 			'gvfs: for session saving and bookmarking')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
-source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('27d419d5fed6305e074628edcfde0cb734fffda205d63cac323391c04903bd94')
+source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:2}/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('7a666363c350af2e3bbba7f14b3c1befc5012f9ed3d9d073447f4c59f33dcf2d')
 
 build() {
 	arch-meson "$_pkgname-${pkgver}" build \
