@@ -1,3 +1,13 @@
+2021-03-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.5.5-1:
+    Added UserInterfaceMode bot config property (#2260).
+    Our generic variant of ASF no longer requires the very latest runtime to run, if it's not mandatory for operation (#2219).
+    Rewritten SteamTarget NLog logging target for full async support. There are no configuration changes for existing setups using it.
+    Slightly changed internals about fetching GitHub releases and wiki in ASF-ui (JustArchiNET/ASF-ui#1319 JustArchiNET/ASF-ui#1320).
+    Fixed a possible System.FormatException crash when using CompleteTypesToSend (#2228).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-03-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.4.3-1:
     Added mab, mabadd and mabrm commands (#2183).
