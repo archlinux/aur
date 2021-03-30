@@ -1,8 +1,8 @@
 # Maintainer:  Yamada Hayao <hayao@fascode.net>
 
-_pkgname=filezilla
+_pkgname="filezilla"
 pkgname="$_pkgname-bin"
-pkgver=3.53.0
+pkgver="3.53.1"
 pkgrel=1
 pkgdesc='Free, open source FTP, FTPS and SFTP client (Pre-built binary)'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ for _arch in ${arch[@]}; do
         '$(
             _url="https://download.filezilla-project.org/client/FileZilla_${pkgver}.sha512"
             _sum="$(curl --silent -L "${_url}" | grep "FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2")"
-            if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]] || [[ -z "${_sum}" ]]; then
+            if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]] || [[ -z "${_sum}" ]] || [[ "${_sum}" = "" ]]; then
                 echo -n "SKIP"
             else
                 echo -n "$(echo "${_sum}" | cut -d ' ' -f 1)"
@@ -30,9 +30,8 @@ for _arch in ${arch[@]}; do
 done
 
 package() {
-    rm -rf "${srcdir}/FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2"
     mkdir -p "${pkgdir}/opt/" "${pkgdir}/usr/bin/"
-    cp -r "${srcdir}/"* "${pkgdir}/opt/"
+    cp -r "${srcdir}/FileZilla3" "${pkgdir}/opt/"
 
     mv "${pkgdir}/opt/FileZilla3/share" "${pkgdir}/usr/"
 
@@ -41,8 +40,9 @@ package() {
         ln -s "${1}" "${2}"
         echo "Created symlink ${1} -> ${2}"
     }
+
     for _fullpath in "${pkgdir}/opt/FileZilla3/bin/"* ;do
         _filename="$(basename "${_fullpath}")"
-        _make_link "/opt/FileZilla3/bin/${_filename}"  "${pkgdir}/usr/bin/${_filename}" 
+        _make_link "/opt/FileZilla3/bin/${_filename}" "${pkgdir}/usr/bin/${_filename}" 
     done
 }
