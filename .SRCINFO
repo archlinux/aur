@@ -1,6 +1,6 @@
 pkgbase = python-dlib-cuda
 	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques.
-	pkgver = 19.21
+	pkgver = 19.22
 	pkgrel = 1
 	url = http://www.dlib.net/
 	arch = x86_64
@@ -13,22 +13,23 @@ pkgbase = python-dlib-cuda
 	depends = cuda
 	depends = cudnn
 	depends = libx11
-	optdepends = cblas: for BLAS support
+	depends = cblas
+	depends = lapack
+	depends = blas
 	optdepends = giflib: for GIF support
-	optdepends = lapack: for LAPACK support
 	optdepends = libjpeg-turbo: for JPEG support
 	optdepends = libpng: for PNG support
 	optdepends = sqlite: for sqlite support
 	optdepends = ccache-ext: for ccache support during compiling
 	optdepends = python-numpy: for running numpy based tests
-	source = http://dlib.net/files/dlib-19.21.tar.bz2
-	sha256sums = be728a03ae8c4dc8b48408d90392a3c28bc6642a6eb22f3885895b434d7df53c
+	source = http://dlib.net/files/dlib-19.22.tar.bz2
+	sha256sums = 20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572
 
 pkgname = python-dlib-cuda
 	depends = python
 	depends = cuda
 	depends = cudnn
 	depends = libx11
-	provides = python-dlib=19.21
+	provides = python-dlib=19.22
 	conflicts = python-dlib
 
