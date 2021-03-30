@@ -18,16 +18,12 @@ pkgbase = linux-bcachefs-510-zen
 	options = !strip
 	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git#branch=master
 	source = git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master
-	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
-	source = arch_patches.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = 23089df30f5b19a8d1f0ebe506eb3c83
-	md5sums = ca87e89ce440e95b794fbc2f6e13c8e6
 
 pkgname = linux-bcachefs-510-zen
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem

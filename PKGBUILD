@@ -8,7 +8,7 @@
 # git clone https://github.com/koverstreet/bcachefs.git \
 #   --reference PATHTOEXISTINGGIT linux-bcachefs # if you alread got a linux git
 # and:
-# git clone https://github.com/zen-kernel/zen-kernel -b 5.10/master
+# git clone https://github.com/zen-kernel/zen-kernel -b 5.10/master \
 #  --bare --reference linux-bcachefs zen-kernel
 #################################################################################
 
@@ -67,10 +67,10 @@ _subarch=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=1
 
 pkgbase=linux-bcachefs-510-zen
-pkgver=v5.10.26.arch1.r969310.1110c37124f4
+pkgver=v5.10.26.arch1.r971587.47ff0aad7ea6
 _srcver_tag=v5.10.26.arch1
 pkgrel=1
 pkgdesc="Linux"
@@ -96,16 +96,13 @@ _repo_url="https://github.com/koverstreet/bcachefs"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
-_gcc_patch_name="more-uarches-for-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
     "${_reponame}::git+${_repo_url}.git#branch=master"
     'git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master'
-    "git+${_repo_url_gcc_patch}"
     config # kernel config file
-    arch_patches.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -113,9 +110,7 @@ validpgpkeys=(
 )
 md5sums=('SKIP'
          'SKIP'
-         'SKIP'
-         '23089df30f5b19a8d1f0ebe506eb3c83'
-         'ca87e89ce440e95b794fbc2f6e13c8e6')
+         '23089df30f5b19a8d1f0ebe506eb3c83')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -124,8 +119,8 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
     cd "$srcdir/$_reponame"
 
-    git remote add zen ../zen-kernel
-    git pull zen makepkg
+    git remote add zen ../zen-kernel || true
+    EDITOR=true git pull zen makepkg
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
@@ -137,20 +132,10 @@ prepare() {
     #git fetch arch_stable "${_srcver_tag_arch%.*}-${_srcver_tag_arch##*.}"
     #git merge --no-edit --no-commit FETCH_HEAD
 
-    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    git fetch upstream_stable ${_srcver_tag//.arch*/}
-    git merge --no-edit --no-commit FETCH_HEAD
-
-    PatchesArray=(
-        $_reponame_gcc_patch/$_gcc_patch_name
-        arch_patches.patch
-    )
-    for MyPatch in "${PatchesArray[@]}"
-    do
-        msg2 "Applying patch $MyPatch..."
-        patch -Np1 -i "$srcdir/$MyPatch"
-    done
+#    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
+#    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+#    git fetch upstream_stable ${_srcver_tag//.arch*/}
+#    git merge --no-edit --no-commit FETCH_HEAD
 
     msg2 "Setting config..."
     cp ../config .config
