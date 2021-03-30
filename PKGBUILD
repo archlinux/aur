@@ -25,7 +25,7 @@ build() {
         # Generate .desktop entry
         echo "[Desktop Entry]" > $desktopname
         echo "Name=PolyGlot" >> $desktopname
-        echo "Comment=${pkgdesc}"
+        echo "Comment=${pkgdesc}" >> $desktopname
         echo "Icon=draquet-polyglot" >> $desktopname
         echo "Exec=PolyGlot" >> $desktopname
         echo "Type=Application" >> $desktopname
@@ -44,5 +44,5 @@ package() {
         # Install Icon
         install -Dm644 $srcdir/opt/polyglot-linear-a/lib/application-zip.png "$pkgdir/usr/share/pixmaps/draquet-polyglot.png"
         # Install .desktop entry
-        install -Dm644 $srcdir/$desktopname "$pkgdir/usr/share/applications/$desktopname"
+        install -Dm644 $srcdir/$desktopname "$pkgdir/usr/share/applications/${desktopname}"
 }
