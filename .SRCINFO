@@ -1,0 +1,14 @@
+pkgbase = pixiv-dl
+	pkgdesc = A Pixiv Images Downloader Based on Python3
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Brx86/Pixiv-1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = pixiv.py
+	md5sums = a7a9ce2726e23cb569d54a9cd2983c75
+
+pkgname = pixiv-dl
+
