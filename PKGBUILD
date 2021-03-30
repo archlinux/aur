@@ -3,15 +3,15 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/32/32747/fcitx-mozc-ut-20210725.PKGBUILD/
+# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/32/32840/fcitx-mozc-ut-20210822.PKGBUILD
 
 # Mozc compile option
 _bldtype=Release
 
-_mozcver=2.26.4444.102
-_fcitxver=20210329
+_mozcver=2.26.4472.102
+_fcitxver=20210822
 _iconver=20201229
-_utdicver=20210725
+_utdicver=20210822
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
@@ -36,13 +36,13 @@ source=(
 )
 
 sha256sums=(
-  '8c9040297a838faa8417439ddb1fd5c8881c38f7f3e6200f5147bfea460aed4f'
+  '51e060b9d401318c3db2b32c03e6fb97f778a6d70596f10a9290969151700346'
   '441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6'
   '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
   '9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a'
-  'b8c0e65b3e3f8cff8e35a8e044158d78bd534a3a64389cd98256b2a1b4f232ed'
+  'b8e69d58d66b529d3a4803075dfb6e756afe546b3959cc2e7308ecfdf6c1a664'
   '7985e6e8c4f4f45f8d040e54715c90b54cd51bb86f6a97fa3bdb17b2137e927d'
-  'ff431c6da2344d400f3e1eb875cf5f870429f8febb24db63814a4a92dcc618c6'
+  '17bc94f0aef77fd15de156fa63226c8ee5e01c65d6b7b6dca98d912f7cabf32d'
 )
 
 prepare() {
