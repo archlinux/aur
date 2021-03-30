@@ -1,6 +1,6 @@
 pkgbase = pianoteq-stage-trial-bin
 	pkgdesc = Physical modelling piano instrument as a standalone program and VST2 and LV2 plugins. STAGE trial version
-	pkgver = 7.1.0
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://www.pianoteq.com/home
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = pianoteq-stage-trial-bin
 	provides = pianoteq-stage-trial
 	conflicts = pianoteq-stage-trial
 	conflicts = pianoteq-stage-bin
+	source = file://pianoteq_stage_linux_trial_v720.7z
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
+	sha256sums = d5f4bb5b8332d1dd4f3d8a28c08ea3c625f395c099d67e2aed8d2ca70d39f69d
 	sha256sums = 94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3
 
 pkgname = pianoteq-stage-trial-bin
