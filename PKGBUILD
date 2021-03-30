@@ -1,4 +1,5 @@
-# Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
+# Maintainer: N Fytilis (nicman23) n-fit[@]live[.]com
+# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ### BUILD OPTIONS
@@ -58,7 +59,7 @@ _subarch=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-pkgbase=linux-bcachefs-git
+pkgbase=linux-bcachefs-510-zen
 pkgver=v5.10.26.arch1.r969310.1110c37124f4
 _srcver_tag=v5.10.26.arch1
 pkgrel=1
@@ -76,10 +77,6 @@ makedepends=(
     tar
     xz
     xmlto
-    python-sphinx
-    python-sphinx_rtd_theme
-    graphviz
-    imagemagick
     git
 )
 options=('!strip')
@@ -94,7 +91,8 @@ _gcc_patch_name="more-uarches-for-kernel-5.8+.patch"
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "${_reponame}::git+${_repo_url}#branch=master"
+    "${_reponame}::git+${_repo_url}.git#branch=master"
+    'git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master'
     "git+${_repo_url_gcc_patch}"
     config # kernel config file
     arch_patches.patch
@@ -103,10 +101,11 @@ validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
     "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'f7553567157e6642cb3754ea5c22e34eedc9664c9cce63072de8d3342e6b2412e2b8a55c28c0709009db00565389444ca8a04874f97fd0238fd4dbfc6f30d986'
-            '05ec92046b9b48802b8c3afa550574a46893c90aeb552dca49445d1ef94dbb2a2f39d3d919c65d41f95859cea8bb641e042b20720a1a527cd067965dff84aea7')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         '23089df30f5b19a8d1f0ebe506eb3c83'
+         'ca87e89ce440e95b794fbc2f6e13c8e6')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -114,6 +113,9 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
     cd "$srcdir/$_reponame"
+
+    git remote add zen ../zen-kernel
+    git pull zen makepkg
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
@@ -157,7 +159,7 @@ prepare() {
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             msg2 "No modprobed.db data found"
-            exit
+            make localmodconfig
         fi
     fi
 
@@ -181,7 +183,6 @@ pkgver() {
 build() {
     cd $_reponame
     make all
-    make htmldocs
 }
 
 _package() {
@@ -303,29 +304,9 @@ _package-headers() {
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs() {
-    pkgdesc="Documentation for the $pkgdesc kernel $_pkgdesc_extra"
-
-    cd $_srcname
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-    msg2 "Installing documentation..."
-    local src dst
-    while read -rd '' src; do
-        dst="${src#Documentation/}"
-        dst="$builddir/Documentation/${dst#output/}"
-        install -Dm644 "$src" "$dst"
-    done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-    msg2 "Adding symlink..."
-    mkdir -p "$pkgdir/usr/share/doc"
-    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-}
-
 pkgname=(
     "$pkgbase"
     "$pkgbase-headers"
-    "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
