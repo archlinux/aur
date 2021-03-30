@@ -3,8 +3,8 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.3.6.r18.4532c25
-pkgrel=1
+pkgver=1.3.6.r45.e2be2b7
+pkgrel=2
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -17,8 +17,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}d/default-config.json")
 install="${pkgname%-git}.install"
-source=('git+https://github.com/evilsocket/opensnitch.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/evilsocket/opensnitch.git'
+        'https://patch-diff.githubusercontent.com/raw/evilsocket/opensnitch/pull/381.patch')
+sha256sums=('SKIP'
+            '4a25ddae4278a3f512857826fc854c5678655bd2061b3b654c03f3d27450924c')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -31,6 +33,9 @@ prepare() {
 
   cd "$srcdir/${pkgname%-git}"
   sed -i 's|local/bin|bin|g' "daemon/${pkgname%-git}d.service"
+
+  # temporary patch until 381 gets merged upstream
+  patch -Np1 -i ${srcdir}/381.patch
 }
 
 build() {
@@ -45,6 +50,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
   export PATH=${PATH}:${GOPATH}/bin
   go get github.com/golang/protobuf/protoc-gen-go
+  # make ../daemon/ui/protocol/ui.pb.go
   make
   popd
 
