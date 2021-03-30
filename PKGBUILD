@@ -1,8 +1,8 @@
 # Maintainer: Paolo Stivanin <info at paolostivanin dot com>
 # Maintainer: KingofToasters <dev@sgregoratto.me>
 pkgname=libcotp
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc='C library that generates TOTP and HOTP'
 url="https://github.com/paolostivanin/libcotp"
 license=('APACHE')
