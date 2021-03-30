@@ -21,6 +21,14 @@ _commit=6a487c5244563f49a025088de3510c80824fc99e  # tags/v14.2^0
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit")
 sha256sums=('SKIP')
 
+_pick() {
+  local f
+  for f; do
+    mkdir -p "$pkgdir"/"$(dirname "$f")"
+    mv "$f" "$pkgdir"/"$f"
+  done
+}
+
 build() {
   arch-meson --auto-features auto pulseaudio build \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
@@ -34,31 +42,18 @@ build() {
 package() {
   DESTDIR="$pkgdir"/temp meson install -C build
 
-  cd "$pkgdir"
+  cd "$pkgdir"/temp
 
-  # Extract libpulse
-  mkdir -p {etc/pulse,usr/{bin,lib/pulseaudio,share/man/man{1,5}}}
+  _pick etc/pulse/client.conf
+  _pick usr/bin/pa{cat,ctl,dsp,mon,play,rec,record}
+  _pick usr/lib/libpulse{,-simple,-mainloop-glib}.so*
+  _pick usr/lib/{cmake,pkgconfig}
+  _pick usr/lib/pulseaudio/libpulse{dsp,common-*}.so
+  _pick usr/include
+  _pick usr/share/man/man1/pa{cat,ctl,dsp,mon,play,rec,record}.1
+  _pick usr/share/man/man5/pulse-client.conf.5
+  _pick usr/share/vala
 
-  mv {temp/,}etc/pulse/client.conf
-
-  mv temp/usr/bin/pa{cat,ctl,dsp,mon,play,rec,record} \
-     usr/bin
-
-  mv temp/usr/lib/libpulse{,-simple,-mainloop-glib}.so* \
-     temp/usr/lib/{cmake,pkgconfig} \
-     usr/lib
-
-  mv temp/usr/lib/pulseaudio/libpulsedsp.so \
-     temp/usr/lib/pulseaudio/libpulsecommon-*.so \
-     usr/lib/pulseaudio
-
-  mv {temp/,}usr/include
-
-  mv temp/usr/share/man/man1/pa{cat,ctl,dsp,mon,play,rec,record}.1 \
-     usr/share/man/man1
-
-  mv {temp/,}usr/share/man/man5/pulse-client.conf.5
-  mv {temp/,}usr/share/vala
-
+  cd ..
   rm -rf temp
 }
