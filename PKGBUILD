@@ -8,7 +8,7 @@
 
 pkgname=wxglade
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets / wxPython'
 arch=('any')
 license=('MIT')
@@ -37,7 +37,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   datadir="$pkgdir/usr/share/"
 
