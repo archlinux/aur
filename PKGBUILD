@@ -1,6 +1,6 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-g3-git
-pkgver=78.8.0+039024a9caa8
+pkgver=78.9.0+e34e6599e218
 pkgrel=1
 pkgdesc="Private and optimized Firefox fork based on the LTS Release of Firefox."
 arch=('i686' 'x86_64')
