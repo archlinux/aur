@@ -1,6 +1,6 @@
 # Maintainer: Mautamu mautam@usa.com
 pkgname=leftwm-theme-git
-pkgver=r31.e133c21
+pkgver=r32.fac15fb
 pkgrel=1
 epoch=2
 pkgdesc="Theme manager for LeftWM"
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname
-  cargo +nightly build --release
+  cargo build --release
 }
 
 pkgver() {
