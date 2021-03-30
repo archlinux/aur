@@ -2,7 +2,7 @@
 pkgname=waypipe
 pkgver=0.8.0
 pkgrel=1
-pkgdesc='A proxy for Wayland protocol applications. WARNING: different versions are incompatible'
+pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 license=('MIT')
 # minimal build: only 'wayland' 'wayland-protocols' 'meson' 'ninja'
 depends=('lz4' 'zstd' 'mesa' 'ffmpeg' 'libva')
