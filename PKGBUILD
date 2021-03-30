@@ -1,29 +1,28 @@
 # Maintainer: Jake McGinty <jake@tonari.no>
 
 pkgname=innernet
-pkgver=v1.0.0
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="A tool to manage WireGuard network topologies."
-#epoch=0
 arch=('x86_64')
 url="https://github.com/tonarino/innernet"
 license=('MIT')
 depends=('sqlite')
-conflicts=("innernet-git")
-makedepends=('git' 'cargo')
-source=("$pkgname::git+https://github.com/tonarino/innernet#tag=$pkgver")
+conflicts=('innernet-git')
+makedepends=('git' 'cargo' 'clang' 'llvm')
+source=("$pkgname::git+https://github.com/tonarino/innernet#tag=v$pkgver")
 sha1sums=('SKIP')
 
 build() {
   cd "$pkgname"
 
-  cargo build --release --locked
+  cargo build --release --locked --target-dir=target
 }
 
 check() {
   cd "$pkgname"
 
-  cargo test --release --locked
+  cargo test --release --locked --target-dir=target
 }
 
 package() {

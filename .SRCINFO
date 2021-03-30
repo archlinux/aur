@@ -1,15 +1,17 @@
 pkgbase = innernet
 	pkgdesc = A tool to manage WireGuard network topologies.
-	pkgver = v1.0.0
-	pkgrel = 1
+	pkgver = 1.0.0
+	pkgrel = 2
 	url = https://github.com/tonarino/innernet
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	makedepends = clang
+	makedepends = llvm
 	depends = sqlite
 	conflicts = innernet-git
-	source = innernet::git+https://github.com/tonarino/innernet#tag=v1.0.0
+	source = innernet::git+https://github.com/tonarino/innernet#tag=1.0.0
 	sha1sums = SKIP
 
 pkgname = innernet
