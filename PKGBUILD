@@ -2,6 +2,16 @@
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
+#################################################################################
+# Because the package needs to download 2 linux gits to accelerate the progress
+# do not let makepkg fetch them on its own. use (hint: uncomment the lines :) ):
+# git clone https://github.com/koverstreet/bcachefs.git \
+#   --reference PATHTOEXISTINGGIT linux-bcachefs # if you alread got a linux git
+# and:
+# git clone https://github.com/zen-kernel/zen-kernel -b 5.10/master
+#  --bare --reference linux-bcachefs zen-kernel
+#################################################################################
+
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
