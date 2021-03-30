@@ -1,1 +1,81 @@
-../linux-lts/linux-lts/trunk/linux-lts-pkgbuild.patch
+--- a/PKGBUILD	2021-03-26 14:30:44.000000000 +0800
++++ b/PKGBUILD	2021-03-30 19:50:29.484501827 +0800
+@@ -1,9 +1,10 @@
+-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
++# Maintainer: Jason Rosenzweig <mail4jasonr@gmail.com>
++# Contributor: Andreas Radke <andyrtr@archlinux.org>
+ 
+-pkgbase=linux-lts
++pkgbase=linux-lts-logo
+ pkgver=5.10.26
+ pkgrel=1
+-pkgdesc='LTS Linux'
++pkgdesc='LTS Linux with tux'
+ url="https://www.kernel.org/"
+ arch=(x86_64)
+ license=(GPL2)
+@@ -17,6 +18,7 @@
+   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+   config         # the main kernel config file
+   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
++  config.patch
+ )
+ validpgpkeys=(
+   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+@@ -26,7 +28,8 @@
+ sha256sums=('fc532833f1ac167f363f1b9de85db39d2d635ab516f66dc381bdd70804601482'
+             'SKIP'
+             '7a35b1afafb35371478ddcb3db6509905163a9da49000abd4213900669a0791b'
+-            '6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929')
++            '6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929'
++            'e2f773bc3de49f21f9af5cb4d68b8df1c95c99071c3147714cf4c1312d4110c9')
+ 
+ export KBUILD_BUILD_HOST=archlinux
+ export KBUILD_BUILD_USER=$pkgbase
+@@ -40,6 +43,7 @@
+   echo "-$pkgrel" > localversion.10-pkgrel
+   echo "${pkgbase#linux}" > localversion.20-pkgname
+ 
++  cp ../config .config
+   local src
+   for src in "${source[@]}"; do
+     src="${src%%::*}"
+@@ -50,8 +54,10 @@
+   done
+ 
+   echo "Setting config..."
+-  cp ../config .config
+-  make olddefconfig
++  #make olddefconfig
++  #make menuconfig
++  make oldconfig
++  make prepare
+ 
+   make -s kernelrelease > version
+   echo "Prepared $pkgbase version $(<version)"
+@@ -60,7 +66,6 @@
+ build() {
+   cd $_srcname
+   make all
+-  make htmldocs
+ }
+ 
+ _package() {
+@@ -69,7 +74,7 @@
+   optdepends=('crda: to set the correct wireless channels of your country'
+               'linux-firmware: firmware images needed for some devices')
+   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+-  replaces=(wireguard-lts)
++  conflicts=(wireguard-lts)
+ 
+   cd $_srcname
+   local kernver="$(<version)"
+@@ -187,7 +192,7 @@
+   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+ }
+ 
+-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
++pkgname=("$pkgbase" "$pkgbase-headers")
+ for _p in "${pkgname[@]}"; do
+   eval "package_$_p() {
+     $(declare -f "_package${_p#$pkgbase}")
