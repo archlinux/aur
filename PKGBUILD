@@ -1,4 +1,3 @@
-# Maintainer: Kostis Karantias <kkarantias@gmail.com>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Daniel Greve <greve.daniel.l@gmail.com>
 
