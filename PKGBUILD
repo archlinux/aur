@@ -3,7 +3,7 @@ pkgname=draquet-polyglot-bin
 pkgver=3.3
 pkgrel=1
 
-pkgdesc="PolyGlot is a conlang construction toolkit."
+pkgdesc="PolyGlot is a conlang construction toolkit"
 arch=('x86_64')
 url="http://draquet.github.io/PolyGlot/index.html"
 license=('MIT')
