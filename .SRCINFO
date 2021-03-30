@@ -1,7 +1,7 @@
 pkgbase = timeshift
 	pkgdesc = A system restore utility for Linux
 	pkgver = 20.11.1+3+g08d0e59
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/teejee2008/timeshift
 	install = timeshift.install
 	arch = i686
@@ -10,20 +10,19 @@ pkgbase = timeshift
 	arch = armv7h
 	arch = aarch64
 	license = GPL
+	checkdepends = appstream-glib
+	checkdepends = desktop-file-utils
 	makedepends = git
 	makedepends = vala
-	makedepends = diffutils
-	makedepends = coreutils
 	depends = gtk3
 	depends = libsoup
-	depends = desktop-file-utils
 	depends = cronie
 	depends = rsync
 	depends = libgee
 	depends = vte3
 	depends = xapp
 	depends = xorg-xhost
-	depends = btrfs-progs
+	optdepends = btrfs-progs: BTRFS support
 	source = git+https://github.com/teejee2008/timeshift.git#commit=08d0e5912b617009f2f0fdb61fb4173cb3576ed4
 	sha256sums = SKIP
 
