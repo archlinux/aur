@@ -18,12 +18,6 @@ prepare() {
         tar -xf data.tar.xz
 }
 
-build() {
-        cd "opt"
-        cd "polyglot-linear-a" 
-}
-
-
 package() {
 	install -Dm755 $srcdir/opt/polyglot-linear-a/bin/PolyGlot "$pkgdir/usr/bin/PolyGlot"
         install -Dm644 $srcdir/opt/polyglot-linear-a/share/doc/copyright "$pkgdir/usr/share/doc/copyright"
