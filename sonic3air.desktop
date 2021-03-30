@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Sonic 3 A.I.R.
+Type=Application
+Exec=/usr/bin/sonic3air
+Icon=/opt/sonic3air/data/icon.png
+Categories=Game
