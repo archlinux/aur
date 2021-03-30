@@ -5,7 +5,7 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh-git
-pkgver=1.20190619.r0.gdbc9c07
+pkgver=1.20190619.r19.g2bc91a2
 pkgrel=1
 epoch=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
@@ -27,14 +27,9 @@ pkgver() {
     sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$pkgname"
-  sed -i 's#^\(install:\) all#\1 manpages#' Makefile
-}
-
 build() {
   cd "$pkgname"
-  make manpages
+  make
 }
 
 check() {
