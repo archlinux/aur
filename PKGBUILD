@@ -1,18 +1,18 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 
 pkgname="deemix-git"
-_pkgname="deemix"
-pkgver=r527.94f3bc95c3
+_pkgname="deemix-py"
+pkgver=r562.67fcb7d37f
 pkgrel=1
 pkgdesc="a deezer downloader built from the ashes of Deezloader Remix."
 arch=('any')
-url="https://git.rip/RemixDev/$_pkgname"
+url="https://git.freezer.life/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy' 'python-eventlet' 'python-deezer-py')
+depends=('python>=3.7' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy' 'python-eventlet' 'python-deezer-py')
 conflicts=('deemix')
 makedepends=('git')
 provides=('deemix')
-source=("${_pkgname}::git+https://git.rip/RemixDev/$_pkgname")
+source=("${_pkgname}::git+https://git.freezer.life/RemixDev/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
