@@ -1,7 +1,7 @@
 pkgbase = pianoteq-stage-trial-bin
 	pkgdesc = Physical modelling piano instrument as a standalone program and VST2 and LV2 plugins. STAGE trial version
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pianoteq.com/home
 	arch = x86_64
 	arch = armv7h
@@ -11,8 +11,6 @@ pkgbase = pianoteq-stage-trial-bin
 	groups = vst-plugins
 	license = custom
 	makedepends = gendesk
-	makedepends = wget
-	makedepends = p7zip
 	depends = alsa-lib
 	depends = libx11
 	optdepends = jack: JACK support for stand-alone application

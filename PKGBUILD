@@ -4,14 +4,14 @@
 
 pkgname=pianoteq-stage-trial-bin
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Physical modelling piano instrument as a standalone program and VST2 and LV2 plugins. STAGE trial version"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://www.pianoteq.com/home"
 license=('custom')
 groups=('lv2-plugins' 'pro-audio' 'vst-plugins')
 depends=('alsa-lib' 'libx11')
-makedepends=('gendesk' 'wget' 'p7zip')
+makedepends=('gendesk')
 optdepends=('jack: JACK support for stand-alone application')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'pianoteq-stage-bin')
