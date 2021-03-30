@@ -20,6 +20,7 @@ package() {
   warning "The TeaSpeak-server files will be installed in /opt/${pkgname}!"
   warning "You can change the location of the files, if you want."
   warning "But dont forget to edit the ´/usr/bin/teaspeak-server´script!"
+  warning "You can easily run the server via the command ´teaspeak-server´."
   echo ""
   warning "You can delete this server, by removing the server folder."
   warning "But dont forget to uninstall the package via pacman, too."
