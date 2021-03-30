@@ -2,3 +2,5 @@ bcachefs
 kernel_gcc_patch
 pkg
 src
+linux-bcachefs
+zen-kernel
