@@ -3,12 +3,12 @@ pkgname=astah-community
 _pkgname=${pkgname/-/_}
 pkgver=7.2.0
 _pkgver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 _pkgrel=1ff236
 pkgdesc="Lightweight, easy-to-use, and free UML2.x modeler"
 arch=("any")
 license=("custom")
-depends=("java-runtime")
+depends=("jre8-openjdk")
 makedepends=("shared-mime-info" "gtk-update-icon-cache" "desktop-file-utils")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "astah-professional")
@@ -28,7 +28,7 @@ md5sums=('de053e4ca0e36781a32d2c5b37464beb'
          '95e5566bcef2eb2f7ee5a8ec99eae8af'
          '2082f9bbd578952fbc464416100ac3ff')
 
-package() {         
+package() {
     install -Dm755 $srcdir/$_pkgname/astah $pkgdir/usr/bin/astah || return 1
     install -Dm755 $srcdir/$_pkgname/astah-command.sh $pkgdir/usr/bin/astah-command || return 1
     install -Dm644 $srcdir/${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop || return 1
