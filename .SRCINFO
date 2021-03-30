@@ -1,6 +1,6 @@
 pkgbase = snes9x-git
 	pkgdesc = Port of the Snes9x emulator (git version)
-	pkgver = 1.60.r280.gfc78065
+	pkgver = 1.60.r291.g8a5d29c
 	pkgrel = 1
 	url = http://www.snes9x.com/
 	arch = x86_64
