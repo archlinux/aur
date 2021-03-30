@@ -6,7 +6,7 @@
 _pkgbase=nginx
 pkgbase=nginx-mainline
 pkgname=(nginx-mainline nginx-mainline-src)
-pkgver=1.19.8
+pkgver=1.19.9
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
@@ -27,13 +27,13 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('cf509a62c6789e4a922a87d822ab6c1d'
+md5sums=('335208e1427a4d58b0cef2f7674ab4c0'
          'SKIP'
-         'ef491e760e7c1ffec9ca25441a150c83'
+         'ba2e3b08ce0f0fff7cced624d0ecf7cc'
          '6a01fb17af86f03707c8ae60f98a2dc2')
-sha512sums=('da548dc459f7a921e2f6ea54f543496244e820acbdf3effc4db331717f69b710181fbfdac3be101cd7d1c39e3ca37a94f9a9c4017f11da843ed85a34acf26bc2'
+sha512sums=('a418aa22046f641afd95ee661c77c469d21c9957aa5ab74c4186526fcd18e0d701ee933a76ab143081b4b3f8815484074c2609aa257646218bf6b4b739b3cb88'
             'SKIP'
-            '4f90db6b8b5c13762b96ddff9ca4e846762d46b90be27c7c9d54cec6f7f12fc95585f8455919296edb0255405dd80af8ee86780b805631b72eb74ee59f359715'
+            'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7')
 
 _common_flags=(
