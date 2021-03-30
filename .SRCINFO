@@ -1,11 +1,13 @@
 pkgbase = notion3
 	pkgdesc = Tabbed tiling, window manager. Fork of Ion3
 	pkgver = 20190501
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://notionwm.net
 	changelog = ChangleLog
 	arch = x86_64
+	arch = pentium4
+	arch = i686
+	arch = i486
 	license = custom:LGPL
 	makedepends = git
 	makedepends = pkgconfig
