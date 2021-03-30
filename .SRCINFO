@@ -1,0 +1,16 @@
+pkgbase = ttf-hymmnos-ar
+	pkgdesc = Hymmnos and Ar-ciela fonts from the Ar tonelico Series
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://hymmnoserver.uguu.ca/
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	source = hymmnos.ttf
+	source = ar-ciela_compartment.ttf
+	md5sums = a1c83206ddc8bea62b9c917fb66d9579
+	md5sums = 6b3aecd0c365cfbc58b613747bc254b9
+
+pkgname = ttf-hymmnos-ar
+
