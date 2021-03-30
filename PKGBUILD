@@ -13,14 +13,36 @@ provides=('draquet-polyglot')
 install=
 source=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/DraqueT/PolyGlot/releases/download/${pkgver}/PolyGlot-Ins-Lin.deb")
 md5sums=('24ebc0a74fc8d4f429fed9cd2a61904e')
+
+desktopname=draquet-polyglot.desktop
+
 prepare() {
 	cd "$srcdir"
         tar -xf data.tar.xz
 }
 
+build() {
+        # Generate .desktop entry
+        echo "[Desktop Entry]" > $desktopname
+        echo "Name=PolyGlot" >> $desktopname
+        echo "Comment=${pkgdesc}"
+        echo "Icon=draquet-polyglot" >> $desktopname
+        echo "Exec=PolyGlot" >> $desktopname
+        echo "Type=Application" >> $desktopname
+        echo "Encoding=UTF-8" >> $desktopname
+        echo "Terminal=false" >> $desktopname
+        echo "Categories=Development;Science;Translation;Dictionary;TextTools;Languages;" >> $desktopname
+}
+
 package() {
-	install -Dm755 $srcdir/opt/polyglot-linear-a/bin/PolyGlot "$pkgdir/usr/bin/PolyGlot"
+	      # Install PolyGlot to necessary folders
+        install -Dm755 $srcdir/opt/polyglot-linear-a/bin/PolyGlot "$pkgdir/usr/bin/PolyGlot"
         install -Dm644 $srcdir/opt/polyglot-linear-a/share/doc/copyright "$pkgdir/usr/share/doc/copyright"
         mkdir -p "$pkgdir/usr/lib/"
         cp -r $srcdir/opt/polyglot-linear-a/lib/* "$pkgdir/usr/lib/"
+
+        # Install Icon
+        install -Dm644 $srcdir/opt/polyglot-linear-a/lib/application-zip.png "$pkgdir/usr/share/pixmaps/draquet-polyglot.png"
+        # Install .desktop entry
+        install -Dm644 $srcdir/$desktopname "$pkgdir/usr/share/applications/$desktopname"
 }
