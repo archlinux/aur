@@ -2,7 +2,7 @@
 
 pkgname=whoogle-git
 pkgver=0.3.1_r247.ge912b8f
-pkgrel=4
+pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -12,7 +12,7 @@ makedepends=(git)
 source=("git+$url.git"
         whoogle.service)
 sha256sums=('SKIP'
-            '4b70638665c6d8865bae898b1c32636dfdadee26c53b068fcfc51c051a74d0d8')
+            'b8474f3024d310b67454b8b59977fd26b66dba3930f31604058b773e13905e49')
 install=whoogle.install
 
 pkgver() {
