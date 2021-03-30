@@ -3,7 +3,7 @@
 
 pkgname=vidcutter
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, simple to use, constantly evolving and hella fast media cutter + joiner with frame-accurate SmartCut technology'
 arch=(x86_64)
 url='https://github.com/ozmartian/vidcutter'
@@ -26,5 +26,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
+  export PYTHONHASHSEED=0
   python3 setup.py install --root="$pkgdir" --optimize=1
 }
