@@ -1,7 +1,7 @@
 pkgbase = dvc-bin
 	pkgdesc = Open-source version control system for data science projects as a binary
 	pkgver = 2.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc
 	arch = x86_64
 	license = APACHE
