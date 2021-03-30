@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tvrenamer-bin
 pkgver=1.0b4
 pkgrel=1
