@@ -22,7 +22,7 @@ sha256sums=('a92585df4254eae88db457b0505cd58374385898e94206bf190111a041a20cd4'
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "$pkgname %f" \
-    --name 'WxGlade' --mimetypes 'application/x-wxg'
+    --name 'WxGlade' --mimetypes 'application/x-wxg' --categories "Development;GUIDesigner"
 
   rm -rf "$pkgname-$pkgver" && mv -Tfv {wxGlade,$pkgname}-$pkgver
 }
