@@ -11,7 +11,7 @@ pkgbase = opencascade-rc
 	makedepends = ninja
 	makedepends = rapidjson
 	depends = tk
-	depends = vtk9-fix
+	depends = vtk
 	depends = gl2ps
 	depends = ffmpeg
 	depends = freeimage
@@ -21,8 +21,10 @@ pkgbase = opencascade-rc
 	conflicts = opencascade-git
 	source = opencascade-rc-7.5.1.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_5_1;sf=tgz
 	source = opencascade.sh
+	source = revert_small_edge_fix.patch
 	sha256sums = 3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739
 	sha256sums = 9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb
+	sha256sums = c4d64cfd9004bdf80abf7ee567c2d736de550f5cf771a5a2bb28292ca00a1869
 
 pkgname = opencascade-rc
 
