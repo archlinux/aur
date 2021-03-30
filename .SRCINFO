@@ -1,7 +1,7 @@
 pkgbase = grub-themes-git
 	pkgdesc = Flat Design themes for Grub
-	pkgver = 2021.01.26.r1.g86fc01c
-	pkgrel = 4
+	pkgver = 2021.01.26.r4.gae0fced
+	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
 	license = GPL3

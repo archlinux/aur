@@ -65,8 +65,8 @@ pkgname=('grub-theme-tela-color-1080p-git'
          'grub-theme-whitesur-whitesur-1080p-git'
          'grub-theme-whitesur-whitesur-2k-git'
          'grub-theme-whitesur-whitesur-4k-git')
-pkgver=2021.01.26.r1.g86fc01c
-pkgrel=4
+pkgver=2021.01.26.r4.gae0fced
+pkgrel=1
 pkgdesc="Flat Design themes for Grub"
 arch=('any')
 url="https://github.com/vinceliuice/grub2-themes"
@@ -105,7 +105,7 @@ _package() {
 
 main() {
     for _pkgname in "${pkgname[@]}"; do
-        eval "package_$_pkgname() {
+        eval "package_${_pkgname}() {
             provides=("${_pkgname%-*}")
             conflicts=("${_pkgname%-*}")
             name="$(echo ${_pkgname%-*} | sed 's/grub-theme-//' | awk -F '-' '{print $1}')"
