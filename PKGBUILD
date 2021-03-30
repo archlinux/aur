@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=0.6.0b0.r1736.g92cb138c
+pkgver=210329.r1.g44df1f67
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -84,7 +84,7 @@ package_blender-plugin-bim-git() {
   # Install blender bim addon
   mkdir -p "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
   cd "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
-  cp -rf "${srcdir}/IfcOpenShell/src/ifcblenderexport/blenderbim" "./"
+  cp -rf "${srcdir}/IfcOpenShell/src/blenderbim/blenderbim" "./"
   python -O -m compileall "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim"
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
