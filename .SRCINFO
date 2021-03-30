@@ -1,7 +1,7 @@
 pkgbase = git-team-git
 	pkgdesc = Command line interface for managing and enhancing git commit messages with co-authors.
 	pkgver = 1.5.3.r0.gf8bd5c5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hekmekk/git-team.git
 	arch = x86_64
 	license = MIT
