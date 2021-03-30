@@ -11,7 +11,7 @@ get_channel() {
 }
 
 get_major_version() {
-    curl https://cloud.google.com/feeds/kubernetes-engine-$1-channel-release-notes.xml \
+    curl https://cloud.google.com/feeds/gke-stable-channel-release-notes.xml \
         | sed 's/xmlns=".*"//g' \
         | xmllint --nocdata --xpath '(/feed/entry)[1]/content/text()' - \
         | rg -o 'v?(\d\.\d+)\.\d+-gke\.\d+' -r '$1' \
