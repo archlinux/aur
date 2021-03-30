@@ -1,7 +1,7 @@
 pkgbase = astah-community
 	pkgdesc = Lightweight, easy-to-use, and free UML2.x modeler
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://astah.net/editions/community
 	install = astah-community.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = astah-community
 	makedepends = shared-mime-info
 	makedepends = gtk-update-icon-cache
 	makedepends = desktop-file-utils
-	depends = java-runtime
+	depends = jre8-openjdk
 	provides = astah_community
 	conflicts = astah_community
 	conflicts = astah-professional
