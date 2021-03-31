@@ -6,40 +6,73 @@
 ## Ensure the 'pkgver' and 'incrver' variables are updated below to match your package version
 
 pkgname=scrt
-pkgver=8.7.3
-incrver=2279
+pkgver=9.0.1
+incrver=2451
 pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
 license=('custom')
-
-depends=('openssl' 'glibc' 'qt5-base' 'icu63')
-		
-source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu19-64.tar.gz")
-md5sums=('da6bb62ab6435b81eb8326e5d5a6cbe5')
-options=('!strip')
+groups=('')
+depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
+		'libpng' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'openssl'
+		'qt5-base' 'qt5-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-
+		util-renderutil' 'xcb-util-wm' 'zlib' 'icu66')
+options=('!strip' '!emptydirs')
+source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu20-64.tar.gz")
+md5sums=('a6dd19747e1993f87b72ea279dd15598')
 
 package() {
-	cd "${srcdir}"/${pkgname}-${pkgver}
-	
-	install -Dm 755 ./SecureCRT ${pkgdir}/usr/lib/securecrt/SecureCRT
-	
-	echo '#!/bin/sh' > "${pkgdir}/usr/lib/securecrt/run.sh"
-	echo '[[ -z "$LD_LIBRARY_PATH" ]] && export LD_LIBRARY_PATH=/usr/lib/securecrt || export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/securecrt' >> "${pkgdir}/usr/lib/securecrt/run.sh"
-	echo 'exec /usr/lib/securecrt/`basename "$0"` "$@"'  >> "${pkgdir}/usr/lib/securecrt/run.sh"
-	chmod +x "${pkgdir}/usr/lib/securecrt/run.sh"
-	mkdir -p "$pkgdir/usr/bin/"
-	ln -s /usr/lib/securecrt/run.sh "$pkgdir/usr/bin/SecureCRT"
+       cd "${srcdir}"/${pkgname}-${pkgver}
 
-	install -Dm 644 ./SecureCRT.desktop ${pkgdir}/usr/share/applications/SecureCRT.desktop
-	install -Dm 644 ./securecrt_64.png ${pkgdir}/usr/share/vandyke/data/securecrt_64.png
+       install -Dm 755 ./SecureCRT ${pkgdir}/usr/bin/SecureCRT
 
-	install -Dm 644 ./SecureCRT_HISTORY.txt ${pkgdir}/usr/share/doc/securecrt/SecureCRT_HISTORY.txt
-	install -Dm 644 ./SecureCRT_README.txt ${pkgdir}/usr/share/doc/securecrt/SecureCRT_README.txt
-	install -Dm 644 ./SecureCRT_EULA.txt ${pkgdir}/usr/share/doc/securecrt/SecureCRT_EULA.txt 
-	cp -r ./SecureCRTHelp ${pkgdir}/usr/share/doc/securecrt/
-	
-	install -Dm 644 ./changelog.Debian.gz ${pkgdir}/usr/share/doc/securecrt/changelog.Debian.gz
+       install -Dm 755 ./libClientConfigUiQt.so
+${pkgdir}/usr/lib/scrt/libClientConfigUiQt.so
+       install -Dm 755 ./libQt5Multimedia.so.5
+${pkgdir}/usr/lib/scrt/libQt5Multimedia.so.5
+       install -Dm 755 ./libpython3Qt.so
+${pkgdir}/usr/lib/scrt/libpython3Qt.so
+       install -Dm 755 ./libibusplatforminputcontextplugin.so
+${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
+       install -Dm 755 ./libcomposeplatforminputcontextplugin.so
+${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+       install -Dm 755 ./libqxcb.so
+${pkgdir}/usr/lib/scrt/plugins/platforms/libqxcb.so
+       install -Dm 755 ./libCommonUiQt.so
+${pkgdir}/usr/lib/scrt/libCommonUiQt.so
+       install -Dm 755 ./libQt5Gui.so.5
+${pkgdir}/usr/lib/scrt/libQt5Gui.so.5
+       install -Dm 755 ./libQt5PrintSupport.so.5
+${pkgdir}/usr/lib/scrt/libQt5PrintSupport.so.5
+       install -Dm 755 ./libQt5Core.so.5
+${pkgdir}/usr/lib/scrt/libQt5Core.so.5
+       install -Dm 755 ./libQt5Widgets.so.5
+${pkgdir}/usr/lib/scrt/libQt5Widgets.so.5
+       install -Dm 755 ./libQt5Network.so.5
+${pkgdir}/usr/lib/scrt/libQt5Network.so.5
+       install -Dm 755 ./libQt5XcbQpa.so.5
+${pkgdir}/usr/lib/scrt/lib/libQt5XcbQpa.so.5
+       install -Dm 755 ./libQt5DBus.so.5
+${pkgdir}/usr/lib/scrt/lib/libQt5DBus.so.5
 
+       install -Dm 644 ./SecureCRT_fr.qm
+${pkgdir}/usr/share/vandyke/data/SecureCRT_fr.qm
+       install -Dm 644 ./SecureCRT_README.txt
+${pkgdir}/usr/share/doc/scrt/SecureCRT_README.txt
+       install -Dm 644 ./SecureCRT_Ubuntu_Copyright.txt
+${pkgdir}/usr/share/doc/scrt/copyright
+       install -Dm 644 ./SecureCRT_EULA.txt
+${pkgdir}/usr/share/doc/scrt/SecureCRT_EULA.txt
+       install -Dm 644 ./SecureCRT_HISTORY.txt
+${pkgdir}/usr/share/doc/scrt/SecureCRT_HISTORY.txt
+       install -Dm 644 ./changelog.Debian.gz
+${pkgdir}/usr/share/doc/scrt/changelog.Debian.gz
+       cp -rp ./SecureCRTHelp
+${pkgdir}/usr/share/doc/scrt/SecureCRTHelp
+
+       install -Dm 644 ./securecrt_64.png
+${pkgdir}/usr/share/vandyke/data/securecrt_64.png
+       install -Dm 644 ./SecureCRT.desktop
+${pkgdir}/usr/share/applications/SecureCRT.desktop
 }
