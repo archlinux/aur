@@ -1,3 +1,3 @@
 # aur-portainer-bin
 
-An AUR package for [portainer](https://github.com/portainer/portainer) using prebuilt standalone binaries.
+An unofficial [AUR package](https://aur.archlinux.org/packages/portainer-bin/) for [Portainer](https://github.com/portainer/portainer) Community Edition (CE) using prebuilt standalone binaries.
