@@ -9,7 +9,7 @@ pkgname=(
   kata2-linux-container
   kata2-containers-image
 )
-pkgver=2.0.1
+pkgver=2.0.2
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers, version 2"
@@ -18,7 +18,7 @@ url="https://katacontainers.io/"
 license=('Apache')
 makedepends=(
   'go' 'bc' 'rust'
-  #'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
+  #'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from source repo
   'mkinitcpio'  # initrd build
   'pacman' 'udisks2' # rootless image build
 )
@@ -40,9 +40,12 @@ source=(
   "install_sd-kata-agent.tpl"
   "kata-agent.service.in"
   "kata-containers.target"
+
+  # https://lkml.org/lkml/2021/1/23/75
+  "0001-config-preemption.diff"
 )
 sha512sums=(
-  "d9383627a4917439722f423d8f8f7902c33793bd723a8e7f62d126a7c5da8bbb72650949ea50bd2b4138e54e82d617d70b6917d9abe9a5a3dfcbecd39a962b52"
+  "b064da681d08e1c27f685841e8ad0e3a046389cee56319b534870ebbb853dfb77a3f11c73272db0198551eb549b163e9c99bc3ce1cfa202dc295a711317603bd"
   "${KATA_KERNEL_SUM_SHA512:-2b9c83425c3fd40abb76197e65933d1f79c60b71b3eccc6e0dcbb6748001ccbd002366cc2b61a796536166f08d831478a840bcb1e19ca0531b7f180a451e4d1c}"
   "SKIP"
 
@@ -53,9 +56,11 @@ sha512sums=(
   "60e2dee0afcfc52b6075309b4eeb55c75dc4a8f063274f2cd481a0056fae0e78e414f0422af26acddff93edb43a23cb52c26aefd92677160fd8eb6a685b6a6d6"
   "8f927f482d54a762ae5c952883034355a76c5547993ed4245a434a74014aa96e6c5182e3ece0a431e075c1d2f86e99ed0d0d8d839586821c5a7cdf053ec6963d"
   "b599a62d07f4451f52747eaf185142fbe8eeb9aced211369fc83d88c43483ef1008f87615fcfcf30d74a557569b89d5fcb4a61326ffc8cb0559ec51807d808ca"
+
+  "76c27fe0e2b84a9ae0d4b0e2a96ef0c07777811991b4aae21c88494b91fa2837fb67be335cebf4874e5e3235b5ba4641ec4544f9e055765e2dcf399d9d875e8c"
 )
 b2sums=(
-  "555a98dc6475e0f313effac4333fe3fb704a077342de5f9b290ff3f80b7f5c5e0434f0c9f2ec99c6dd98031920ac55e04a90758f4bf5c44d2268b48993ffc42c"
+  "87755396f688de92b877cd5c81b48fd69cbc5d44922bdfbb52be94cdbf2b721cfc8e69bd8a9570d37fd4f90cdeec6b44795e000bae8b412d6c3ee6a4670dbce5"
   "${KATA_KERNEL_SUM_B2:-450f91dd84df37cb16c6937e2a4cc55a8b2e5046b6396685cf2ae5a733a925ed5502944b5a60a1056827c788407fa3f916e04b48b9c8e3d68df6b0830039ff0b}"
   "SKIP"
 
@@ -66,6 +71,8 @@ b2sums=(
   "1ce51ec8cfac8149e3d421d58ec4cb5df2119f4c4d6371da3406297f87a35b6453a9a91bfce9b3b6ac81945b9c8c8237d5818b7321198635614148a8001e3da7"
   "8b5371fe7b1858dc61dcf4153b58f9c7a5ba564299d657c2bc4eac2328801346e9ca3f6f441dcca710e89495e5b7f9d35b002a8e031eb3cbd4a4fa850566309a"
   "60bb47bec6e35ccc460ac066d7205d084ab8bdc7d1749918ce0497983a6e7eb770ca9fd996f44b05dbdbfc35390bf2d02b7e8abc619fa6d9df298988d5f19053"
+
+  "919319ddcaac3f7c5b1c1998fced9920f3e7e9d4660c83e380495fc3a14d5f4e82736ac9435fdb78512576f1d90f80b1ad017529f2b42e013b844ed3ec4bc99f"
 )
 validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # kernel
@@ -84,6 +91,8 @@ _kernel_prepare(){
   #for p in $(find "${srcdir}/${_pkgbase}-${_pkgver}/tools/packaging/kernel/patches" -type f -name "*.patch"); do
   #  patch -p1 <"${p}"
   #done
+
+  patch -p1 <"${srcdir}/0001-config-preemption.diff"
 
   # kernel config prep from upstream ("${srcdir}/${_pkgbase}-${_pkgver}/tools/packaging/obs-packaging/linux-container/kata-linux-container.spec-template")
   make -s mrproper
@@ -175,7 +184,8 @@ package_kata2-containers-image(){
 }
 
 package_kata2-linux-container(){
-  install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}/vmlinux" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
+  install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}/arch/${_KARCH}/boot/bzImage" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
+  #install -Dm 0644 "${srcdir}/linux-${_kata_kernel_ver}/vmlinux" "${pkgdir}/usr/share/kata-containers/vmlinux-${_kata_kernel_ver}.container"
   pushd "${pkgdir}/usr/share/kata-containers"
   ln -sf "vmlinux-${_kata_kernel_ver}.container" vmlinux.container
   if [ "${_KARCH}" = "powerpc" ]; then
