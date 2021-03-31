@@ -1,14 +1,14 @@
 pkgbase = cowspeak
 	pkgdesc = Display an animal with a random quote or your own text
-	pkgver = 3.2
+	pkgver = 3.22
 	pkgrel = 1
 	url = https://github.com/Souravgoswami/cowspeak-root
 	arch = any
 	license = MIT
 	depends = ruby>=2.5
 	provides = cowspeak
-	source = https://github.com/Souravgoswami/cowspeak-root/raw/master/tarballs/cowspeak-v3.2.tar.xz
-	md5sums = 0377efe3ccf1667d92d7f922d90fbaa0
+	source = https://github.com/Souravgoswami/cowspeak-root/raw/master/tarballs/cowspeak-v3.22.tar.xz
+	md5sums = 55f81618da4b06ba7a222dbeb3f1431c
 
 pkgname = cowspeak
 
