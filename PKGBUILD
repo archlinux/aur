@@ -4,7 +4,7 @@
 
 pkgname=portainer-bin
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A lightweight docker management UI"
 arch=('x86_64')
@@ -37,4 +37,6 @@ package() {
   install -Dm644 "portainer.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/portainer.png"
   install -Dm644 "portainer.desktop" "${pkgdir}/usr/share/applications/portainer.desktop"
   install -Dm644 "portainer.service" "${pkgdir}/usr/lib/systemd/system/portainer.service"
+
+  ln -s "/usr/bin/docker-compose" "${pkgdir}/usr/share/portainer/docker-compose"
 }

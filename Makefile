@@ -14,4 +14,4 @@ srcinfo: .SRCINFO
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src *.tar.gz *.tar.xz
+	rm -rf pkg src *.tar.gz *.tar.xz *.tar.zst
