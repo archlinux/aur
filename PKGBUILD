@@ -1,14 +1,16 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
+
 pkgname=realize-git
 _pkgname=realize
-pkgver=v2.0.2.r18.g05f079e
+pkgver=v2.0.2.r35.g498ce46
 pkgrel=1
 pkgdesc="Golang live reload and task runner"
 arch=('x86_64')
 url="https://gorealize.io/"
 license=('GPL')
 depends=('glibc')
-makedepends=('go' 'dep' 'git')
+makedepends=('go' 'git')
 provides=('realize')
 options=('!strip')
 source=('git+https://github.com/oxequa/realize.git')
@@ -22,29 +24,23 @@ pkgver() {
   )
 }
 
-prepare() {
-  # setup go env vars
-  export GOPATH="${srcdir}"
-  export PATH="${PATH}:${srcdir}/bin"
-
-  # create dirs & copy source
+build() {
   cd "${_pkgname}"
-  install -d "${GOPATH}/src/github.com/oxequa"
-  cp -a "$(pwd)" "${GOPATH}/src/github.com/oxequa/realize"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "$_pkgname" .
 }
 
-build() {
-  cd "${GOPATH}/src/github.com/oxequa/realize"
-
-  # install dependencies
-  dep ensure
-
-  # build binary
-  # note: `go build` is not used due to realize's directory layout
-  go install
+check() {
+  cd "${_pkgname}"
+  go test ./...
 }
 
 package() {
-  install -Dm755 "${GOPATH}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "${_pkgname}"
+  install -Dm755 realize/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
