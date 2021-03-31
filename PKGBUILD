@@ -2,8 +2,8 @@
 # Maintainer (core/linux): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-x32
-pkgver=5.11.10.arch1
-pkgrel=2
+pkgver=5.11.11.arch1
+pkgrel=1
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -25,7 +25,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'f18fe32efa484cafbc95f35cb4e8abcd398c2cc9d158329ce5426533433ab27c')
+            '2ff5655c3b0d95dc34a8fde4d7a850fe10994bbeae45ffd43174614120d01948')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -65,8 +65,8 @@ _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices'
-              'linux-docs: documentation for Arch Linux’s distribution kernel')
+              'linux-docs: documentation for Arch Linux’s distribution kernel'
+              'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd $_srcname
