@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst-x-bin
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Linux Windows vst wrapper/bridge"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('linvstx')
 optdepends=('jack')
 suffix="Debian-Stretch"
 source=("$url/releases/download/$pkgver/LinVst-X-$pkgver-$suffix.zip")
-md5sums=('72961c61a0cb920b4b6a72bc5d275101')
+md5sums=('8f64f46dc0b276d9b3ed4973ad17ddf1')
 
 package() {
 
