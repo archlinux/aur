@@ -2,13 +2,15 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Davide Depau <davide@depau.eu>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Marco Melorio <marco.melorio@protonmail.com>
 
 _pkgname=libadwaita
 pkgname=$_pkgname-git
-pkgver=1.1.0.r.g73c17e0
-pkgrel=2
+pkgver=r1560.4f6e828
+pkgrel=1
+epoch=1
 pkgdesc="Library full of GTK widgets for mobile phones"
-url="https://gitlab.gnome.org/exalm/$_pkgname"
+url="https://gitlab.gnome.org/GNOME/$_pkgname"
 license=(LGPL)
 arch=(i686 x86_64 armv7h aarch64)
 depends=(gtk4)
@@ -21,10 +23,9 @@ md5sums=(SKIP)
 
   pkgver() {
     cd $_pkgname
-  
-    printf "%s.r%s.g%s" "$(grep -m1 'version' meson.build | sed -r 's/([^0-9]*([0-9.]+)).*/\2/')" \
-                        "$(git describe --tags --long | cut -d '-' -f 2)" \
-                        "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
   }
 
 build() {
