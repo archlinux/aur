@@ -1,6 +1,6 @@
 pkgbase = cloud-hypervisor-bin
 	pkgdesc = A Rust-VMM based cloud hypervisor from Intel (binary source)
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
@@ -8,15 +8,15 @@ pkgbase = cloud-hypervisor-bin
 	optdepends = qemu-headless
 	provides = cloud-hypervisor
 	conflicts = cloud-hypervisor
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.14.0/ch-remote
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.14.0/cloud-hypervisor
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.14.0/cloud-hypervisor-static
-	sha512sums = 0d173d8da4a36b24c870bdb47885f956af4e3bbe03af7911178b59a6f141d725f2a57bc082d8df6f9b6baec8e13bfee785de9dcac18c784f3533f5ea7d4dfb2f
-	sha512sums = 5eaf4e8fda34ca5be8e931d1f9a0f1cb040fad2ea5f97cde43705d0cebafc1074ea77c6a2e0dec0da76ce82736f7361d25c5cf63dcdb70b71060f99383b97183
-	sha512sums = 1d1b04d51ac16b6e862de2ca6514bcf08969b4f75acf9ee514bcacfd194ff8b757117fe84316b61629d54665bf40cb603d7f272a8b1ae69a3a68e7e878dda7e7
-	b2sums = 595248a29680b79e187a85215892a8c6badc77aa5c1c3105fcb066bbf4813660058dca069d8b12565fbe0905842454f1ab368759949dc37ce6f4abd6dc36f12b
-	b2sums = 80539f8d2d08f502281a4e89d783ffd8003115b9dd6743e7a6b49d9203e46901def0734c5f19785baaf752136578f5b4bb6b007a7b509a9d71f32b327f737227
-	b2sums = 0e66a928571531bcda995805ac16f1d2b5416febc3b9b266be446e2d61f9da84c85888c0bbe237d8a53491e835bb8ff7ff7d14cdf41266afe1b60b98573b343b
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.14.1/ch-remote
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.14.1/cloud-hypervisor
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.14.1/cloud-hypervisor-static
+	sha512sums = 10936802b00526373b367d1356658be46fcdee0294e9a096ba2e57d16c8323bb34fb20abf9c63073dbbf10d219e10b16d1388c457c5585f5bf3810b4ef27b91d
+	sha512sums = a1cfdfe41dc4b57d8b0ba24f6708948d5e9d4d81adddcfff3bd5d109a2fac2dacbf759241eb7b9ea1c1613b438d496d291503c1d6da29db438308b3da14f19b3
+	sha512sums = 5a74dab67d79e0fd6b225f3ffed4d0f2f692a7690513fe5de5c382f17fd6f6906b9016906728e654328a0abc8f2ff45924192985a5cc44389b4364399387e1ee
+	b2sums = de990292e27c46711873af64011a318352ebb0f4e6489c394133361ef3ad234412152ad7cd3c9dc0bc87ccbb57b9335cb7f3500cced47898ed2f7c39ae971eac
+	b2sums = da31d33a1facae97472afd1456e83224ff8fbda96c41b56da1102a5ba3603695d47f618363825ac6aa15d83dd70ace5c124f9d6bb2dceda0bf778572d7786516
+	b2sums = 6ad02a6b7aa5b3e0b71b3be4a93287e9a81f4ae598c8791fdbab885d03a3c2f6886784ae52e0354f5bc7348b6acb778da87605e9be57cfb003dbaa2d1e7246d6
 
 pkgname = cloud-hypervisor-bin
 
