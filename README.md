@@ -39,17 +39,24 @@ http
         "" close;
     }
 
+    # Directives
+    gzip                on;
+    limit_rate          1m;
+    limit_rate_after    5m;
+    ssl_protocols       TLSv1.3;
+    types_hash_max_size 4096;
+    
+    ## SSL certificate
+    include             /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam         /etc/letsencrypt/ssl-dhparams.pem;
+    ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.me/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/subdomain.domain.me/fullchain.pem;
+
     server
     {
         listen          443 ssl;
         listen          [::]:443 ssl;
         server_name     subdomain.domain.me;
-
-        # SSL
-        include /etc/letsencrypt/options-ssl-nginx.conf;
-        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-        ssl_certificate_key /etc/letsencrypt/live/subdomain.domain.me/privkey.pem;
-        ssl_certificate /etc/letsencrypt/live/subdomain.domain.me/fullchain.pem;
 
         location /
         {
@@ -64,6 +71,15 @@ http
             proxy_set_header    X-Forwarded-Ssl $proxy_x_forwarded_ssl;
             proxy_set_header    X-Forwarded-Port $server_port;
         }
+    }
+
+    # Always use HTTPS over HTTP.
+    server
+    {
+        listen      80;
+        listen      [::]:80;
+        server_name redirect;
+        return      301 https://$host$request_uri;
     }
 }
 ```
