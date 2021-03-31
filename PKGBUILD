@@ -1,4 +1,4 @@
-# Maintainer: Ayatale  <buzo+arch@Lini.de>
+# Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=ttf-hymmnos-ar
 pkgver=1.0.1
