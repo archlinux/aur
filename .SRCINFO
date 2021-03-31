@@ -1,7 +1,7 @@
 pkgbase = iwlwifi
 	pkgdesc = Intel wireless chips driver (current kernel release cycle)
-	pkgver = 2020.04.17.r0.g7219a63ab
-	pkgrel = 2
+	pkgver = 2021.03.26.r0.g23c990843
+	pkgrel = 1
 	url = https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi
 	arch = i686
 	arch = x86_64

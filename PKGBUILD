@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iwlwifi
-pkgver=2020.04.17.r0.g7219a63ab
-pkgrel=2
+pkgver=2021.03.26.r0.g23c990843
+pkgrel=1
 pkgdesc="Intel wireless chips driver (current kernel release cycle)"
 arch=('i686' 'x86_64')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
@@ -13,7 +13,7 @@ makedepends=('git' 'linux-headers' 'xz')
 
 
 _gitsource="https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-fixes.git"
-_gittag="iwlwifi-sent-for-review-2020-04-17"  # $(git ls-remote --refs --sort -v:refname "$_gitsource" "iwlwifi-next*" | grep -m 1 -o "iwlwifi.*")
+_gittag="iwlwifi-sent-for-review-2021-03-26"  # $(git ls-remote --refs --sort -v:refname "$_gitsource" "iwlwifi-next*" | grep -m 1 -o "iwlwifi.*")
 _moduleSrc="iwlwifi-fixes/drivers/net/wireless/intel/iwlwifi"
 
 prepare() {
