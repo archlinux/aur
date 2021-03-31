@@ -3,8 +3,8 @@
 pkgname=funemustation-git
 _name=funemustation
 _export=FunEmuStation_Launcher
-pkgver=r15.c8111e8
-pkgrel=2
+pkgver=r18.9446a8a
+pkgrel=1
 pkgdesc="A simple but elegant launcher of emulators and pc games"
 url="https://dannygaray60.itch.io/funemustation-launcher"
 depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'libxrandr' 'libxi' 'libglvnd')
