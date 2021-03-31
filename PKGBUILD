@@ -1,22 +1,22 @@
-# $Id: PKGBUILD 210524 2014-04-14 20:07:24Z jgc $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Aline Freitas <aline@alinefreitas.com.br>
 
 pkgname=polkit-git
-pkgver=0.115.r7.g42227b5
+pkgver=0.118.r12.g2c8287f
 pkgrel=1
 epoch=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 arch=(i686 x86_64)
 license=(LGPL)
 url="https://www.freedesktop.org/wiki/Software/polkit/"
-depends=(glib2 pam expat systemd js52)
+depends=(glib2 pam expat systemd js78)
 makedepends=(intltool gtk-doc gobject-introspection git autoconf-archive python-six)
 provides=('polkit')
 conflicts=('polkit')
 options=('!emptydirs')
-source=($pkgname::git+http://anongit.freedesktop.org/git/polkit.git)
+#source=($pkgname::git+http://anongit.freedesktop.org/git/polkit.git)
+source=($pkgname::git+https://gitlab.freedesktop.org/polkit/polkit.git)
 sha256sums=('SKIP')
 
 pkgver() {

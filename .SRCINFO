@@ -1,6 +1,6 @@
 pkgbase = polkit-git
 	pkgdesc = Application development toolkit for controlling system-wide privileges
-	pkgver = 0.115.r7.g42227b5
+	pkgver = 0.118.r12.g2c8287f
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freedesktop.org/wiki/Software/polkit/
@@ -17,11 +17,11 @@ pkgbase = polkit-git
 	depends = pam
 	depends = expat
 	depends = systemd
-	depends = js52
+	depends = js78
 	provides = polkit
 	conflicts = polkit
 	options = !emptydirs
-	source = polkit-git::git+http://anongit.freedesktop.org/git/polkit.git
+	source = polkit-git::git+https://gitlab.freedesktop.org/polkit/polkit.git
 	sha256sums = SKIP
 
 pkgname = polkit-git
