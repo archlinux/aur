@@ -1,12 +1,12 @@
-diff --unified --recursive --text orig/package.json patched/package.json
---- orig/package.json	2020-12-15 22:44:24.000000000 +0100
-+++ patched/package.json	2020-12-25 16:07:45.746047461 +0100
+diff --unified --recursive --text orig/package.json deltachat-desktop-1.15.3/package.json
+--- orig/package.json	2021-03-18 13:55:27.000000000 +0100
++++ deltachat-desktop-1.15.3/package.json	2021-03-18 19:48:25.361065415 +0100
 @@ -4,8 +4,6 @@
    "description": "Desktop Application for delta.chat",
    "main": "index.js",
    "scripts": {
 -    "install": "npm run install:submodules",
 -    "install:submodules": "git submodule update --recursive --init",
-     "test": "npm run lint && npm run check-formatting && npm run test-log-conventions && npm run test-unit",
+     "test": "npm run check-types && npm run lint && npm run check-formatting && npm run test-log-conventions && npm run test-unit && npm run test-misc",
+     "test-misc": "node ./bin/test_package_lock_version",
      "test-log-conventions": "node ./bin/log-conventions",
-     "test-unit": "node test/unit",

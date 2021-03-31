@@ -1,0 +1,41 @@
+diff --unified --recursive --text a/bin/build-shared-version-info.js b/bin/build-shared-version-info.js
+--- a/bin/build-shared-version-info.js	2021-02-13 11:36:03.000000000 +0100
++++ b/bin/build-shared-version-info.js	2021-02-15 15:57:08.270159483 +0100
+@@ -2,36 +2,12 @@
+ const fs = require('fs-extra')
+ const { join } = require('path')
+ 
+-function gatherProcessStdout(cmd, args) {
+-  const { status, stdout, stderr } = spawnSync(cmd, args)
+-  if (status !== 0) throw new Error(stderr)
+-  return stdout.toString().replace(/\n/g, '')
+-}
+-
+ async function gatherBuildInfo() {
+-  let git_describe, git_branch;
+-  try {
+-    git_describe = gatherProcessStdout('git', ['describe'])
+-    try {
+-      git_symbolic_ref = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF || gatherProcessStdout('git', ['symbolic-ref', 'HEAD'])
+-      git_branch = git_symbolic_ref.split('/').pop()
+-      console.log(git_symbolic_ref, git_branch)
+-    } catch (err) {
+-      console.log(err)
+-      git_branch = "master"
+-    }
+-  } catch (err) {
+-    console.log(err)
+-    process.exit(1)
+-  }
+-
+-  const git_ref = git_describe + (git_branch === 'master' ? '' : '-' + git_branch)
+-
+   const package = await fs.readJSON(join(__dirname, '../package.json'))
+   return {
+     VERSION: package.version,
+     BUILD_TIMESTAMP: Date.now(),
+-    GIT_REF: git_ref
++    GIT_REF: "NOGIT"
+   }
+ }
+ 
