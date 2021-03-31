@@ -1,12 +1,13 @@
 # Maintainer: Marcel Walk (Nyasaki) <mwalk at nyasaki dot cloud>
 pkgname=paclog
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A pacman log analyzer"
 arch=('any')
 url="https://github.com/xfgusta/paclog"
 license=('MIT')
 depends=(python)
+conflicts=('pacolog' 'pacutils')
 source=("https://github.com/xfgusta/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('SKIP')
 
