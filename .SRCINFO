@@ -1,0 +1,19 @@
+pkgbase = mousai
+	pkgdesc = Simple application for identifying songs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SeaDve/Mousai
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = gstreamer
+	depends = gtk3
+	depends = libhandy
+	depends = python-gobject
+	depends = python-requests
+	source = mousai-0.2.0.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = dba48c55939caeb211893c026339561134f3c712b2d3f8d2348f6d8183ccf4d3
+
+pkgname = mousai
+
