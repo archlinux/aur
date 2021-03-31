@@ -11,7 +11,7 @@ pkgbase = thunar-megasync-bin
 	conflicts = thunar-megasync
 	conflicts = thunar-gtk3-megasync
 	replaces = thunar-megasync
-	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/thunar-megasync-4.3.0-1-x86_64.pkg.tar.zst
+	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/thunar-megasync-4.3.0-1-x86_64.pkg.tar.xz
 	sha256sums = 3c3e8bc9a793881c92aee9e937263218b13c2bbc4ed0d2714272466325284cb9
 
 pkgname = thunar-megasync-bin
