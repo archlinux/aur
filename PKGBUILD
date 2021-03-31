@@ -5,25 +5,23 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus
-pkgver=1.4.1028
+pkgver=1.5.1484
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (with all plugins)"
 url="https://psi-plus.com"
 license=('GPL2')
 arch=('x86_64')
-depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qca'
+depends=('qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qca'
 	 'libidn' 'libxss' 'qt5-svg' 'hunspell' 'qtkeychain'
-	 'libsignal-protocol-c' 'libotr' 'tidy')
-makedepends=('patch' 'cmake')
-source=("https://github.com/psi-plus/psi-plus-snapshots/archive/${pkgver}.tar.gz" "otr-fix.patch")
-sha256sums=('9c3cd36a54abd6a4ec5c8602bffdc007fa16b490221ccde98818b8536e19a017'
-	'e1a7dfdf2d7d9cd7154e2a0fa5516ab9aea2d4a25201a85a2baf80c19c60e55b')
-
+	 'libsignal-protocol-c' 'libotr' 'tidy' 'http-parser')
+makedepends=('patch' 'cmake' 'usrsctp-git')
+source=("https://github.com/psi-plus/psi-plus-snapshots/archive/${pkgver}.tar.gz")
+sha256sums=('631652c66904ed8b6deca557370c3708a8862931633f7676070326b0f0eda444')
 
 build() {
   cd psi-plus-snapshots-${pkgver}
   # https://github.com/psi-im/plugins/issues/43
-  patch -p0 -i "${srcdir}/otr-fix.patch"
+  # patch -p0 -i "${srcdir}/otr-fix.patch"
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release  \
