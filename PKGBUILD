@@ -2,13 +2,13 @@
 # Contributor:
 
 pkgname=haruna-git
-pkgver=0.5.0.r73.g783c06b
+pkgver=0.6.0.r0.g8a52529
 pkgrel=1
 pkgdesc="A Qt/QML video player built on top of libmpv"
 url="https://github.com/g-fb/haruna"
 arch=('x86_64')
 license=('GPL3')
-depends=('breeze-icons' 'kfilemetadata' 'kio' 'kxmlgui' 'mpv' 'kirigami2')
+depends=('breeze' 'kfilemetadata' 'kio-extras' 'mpv' 'qqc2-desktop-style' 'youtube-dl')
 makedepends=('extra-cmake-modules' 'git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
