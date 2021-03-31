@@ -1,7 +1,7 @@
 # Maintainer: suienzan <suienzan at gmail dot com>
 _pkgname=mosdns
 pkgname=${_pkgname}-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Plug-in configured DNS forwarder/server"
 arch=('x86_64')
@@ -14,7 +14,7 @@ backup=('etc/mosdns/config.yaml')
 provides=('mosdns')
 conflicts=('mosdns' 'mosdns-git')
 source=("$pkgname-$pkgver.zip::https://github.com/IrineSistiana/mosdns/releases/download/v${pkgver}/mosdns-linux-amd64.zip")
-sha256sums=('f989aa051421f45c35799bbb770f67da162f4bf3247279bde072ebc47d96d6d7')
+sha256sums=('ce65b2f3776bf859efaea4a86aa301fa7849ad832b1544090b5579d0a76147a9')
 
 package() {
   install -Dm755 mosdns "$pkgdir"/usr/bin/mosdns
