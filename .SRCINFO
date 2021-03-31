@@ -5,7 +5,6 @@ pkgbase = xbacklight-auto
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = xorg-xbacklight
 	provides = xbacklight-auto
 	source = git+https://github.com/raptor8134/xbacklight-auto.git
