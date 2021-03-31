@@ -2,7 +2,7 @@
 # Contributor: Ivan Fonseca <ivanfon@riseup.net>
 pkgname=godot-beta-bin
 _v1=3.3
-_v2=rc6
+_v2=rc7
 pkgver=${_v1}_${_v2}
 pkgrel=1
 pkgdesc='The latest official beta release of the Godot game engine'
