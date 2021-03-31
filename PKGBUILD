@@ -1,9 +1,9 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
 
 pkgname=com.yunkanpan.numnode
-pkgver=1.2.2.3
-pkgrel=2
-pkgdesc="The Drive to Develop"
+pkgver=1.2.2.5
+pkgrel=1
+pkgdesc="欢迎使用云看盘软件"
 arch=("x86_64")
 install=
 url="https://www.yunkanpan.com/"
@@ -11,31 +11,33 @@ license=("custom")
 depends=()
 options=(!strip)
 provides=('yunkanpan')
-source=("https://od.zhullyb.workers.dev/?file=/Binary/com.yunkanpan.numnode_1.2.2.3_amd64.deb"
-        "start.sh")
-md5sums=("995739059c8b8d4ef8cea965e30b8b1b"
-         "f76d31c6f2262b16c9601344d086be22")
-
-prepare(){
-    cd ${srcdir}
-    tar -Jxvf data.tar.xz -C "${srcdir}"
-
-}
+source=("http://cdn.yunkanpan.com/static/download/com.yunkanpan.numnode_${pkgver}_amd64.tar.gz"
+        "start.sh"
+        "com.yunkanpan.numnode.desktop"
+        "com.yunkanpan.numnode.svg")
+md5sums=("e9a673ea1ad9b4f917b7f5b9a8da89be"
+         "f76d31c6f2262b16c9601344d086be22"
+         "51b912b66f699b8cc8202ae63647956b"
+         "ec884dd90cf2d798dcb2e750f0ccebca")
 
 package(){
     cd ${srcdir}
+    mkdir -p ${pkgdir}/usr/bin
+    mkdir -p ${pkgdir}/usr/share/{applications,icons}
+    mv com.yunkanpan.numnode.desktop ${pkgdir}/usr/share/applications
+    mv com.yunkanpan.numnode.svg ${pkgdir}/usr/share/icons
     
     mkdir -p ${pkgdir}/opt/yunkanpan
-    mv opt/apps/${pkgname}/files/* ${pkgdir}/opt/yunkanpan/
+    mv v${pkgver}/* ${pkgdir}/opt/yunkanpan
 
-    mkdir -p ${pkgdir}/usr/share/
-    mv opt/apps/${pkgname}/entries/*  ${pkgdir}/usr/share/
-    mv ${pkgdir}/usr/share/applications/com.yunkanpan.deepin.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-    
-    sed -i '4c Exec=yunkanpan %U' ${pkgdir}/usr/share/applications/${pkgname}.desktop
     mv ${srcdir}/start.sh ${pkgdir}/opt/yunkanpan/
     chmod a+x ${pkgdir}/opt/yunkanpan/start.sh
     mkdir -p ${pkgdir}/usr/bin
-    cp ${pkgdir}/opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
+    ln -s /opt/yunkanpan/start.sh ${pkgdir}/usr/bin/yunkanpan
+    
+    rm ${pkgdir}/opt/yunkanpan/libstdc++.so.6
+    ln -s /usr/lib/libstdc++.so.6 ${pkgdir}/opt/yunkanpan/libstdc++.so.6
+    
+    chmod -R 777 ${pkgdir}/opt/yunkanpan
 }
  
