@@ -1,6 +1,6 @@
 pkgbase = dh-autoreconf
 	pkgdesc = debhelper add-on to call autoreconf and clean up after the build
-	pkgver = 19
+	pkgver = 20
 	pkgrel = 1
 	url = https://packages.debian.org/sid/dh-autoreconf
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = dh-autoreconf
 	depends = automake
 	depends = gettext
 	depends = libtool
-	source = https://deb.debian.org/debian/pool/main/d/dh-autoreconf/dh-autoreconf_19.tar.xz
-	sha256sums = d6d7feb73c9a762a6eb93d407e33cbe056cfcea9aca14bef2121037b1a9e18fb
+	source = https://deb.debian.org/debian/pool/main/d/dh-autoreconf/dh-autoreconf_20.tar.xz
+	sha256sums = 53e6d9084a70c87afc8ceadc988868de07d53d2404e98be51e500aa42548d37d
 
 pkgname = dh-autoreconf
 
