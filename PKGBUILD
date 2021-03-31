@@ -1,15 +1,15 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=debhelper-sphinx
-pkgver=3.2.1
-_debpkgrel=1
+pkgver=3.4.3
+_debpkgrel=2
 pkgrel=1
 pkgdesc="debhelper scripts for sphinx docs: sphinxdoc.pm"
 arch=("any")
 url="https://packages.debian.org/sid/all/sphinx-common"
 license=('BSD')
 source=("https://deb.debian.org/debian/pool/main/s/sphinx/sphinx-common_${pkgver}-${_debpkgrel}_all.deb")
-sha512sums=('f7e56c3131746629accdfc002b42f92e140b086188abeaebb064165d1024507fd0a3c688246f256f658fa438eaec817384f0054b1832737f0d340b16619dd1c3')
+sha512sums=('f5e39e5b0bacc132ec767584a53aaf9143daf3a51559a872f6ced1fc62802b9c9b20f57556d05be68ab1aa46848b821f67d7d660875117b26ca2ca09775ab3ca')
 
 prepare() {
   cd "$srcdir"
