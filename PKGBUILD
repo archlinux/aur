@@ -39,10 +39,10 @@ package() {
         python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
         # Copying bm_main.py
-        install -Dm644 "$srcdir/$pkgname/$pkgname/bm_main.py" "${pkgdir}/$(python -c "import site; print(site.getsitepackages()[0])")/$pkgname/bm_main.py"
+        install -Dm644 "$srcdir/$pkgname-$pkgver/$pkgname/bm_main.py" "${pkgdir}/$(python -c "import site; print(site.getsitepackages()[0])")/$pkgname/bm_main.py"
 
         # Copying .desktop file and icon
         echo -e "\n Creating desktop icon. Finishing the installation"
-        install -Dm644 "$srcdir/$pkgname/packaging/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-        install -Dm644 "$srcdir/$pkgname/packaging/$pkgname.svg" "$pkgdir/opt/$pkgname/gui/$pkgname.svg"
+        install -Dm644 "$srcdir/$pkgname-$pkgver/packaging/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+        install -Dm644 "$srcdir/$pkgname-$pkgver/packaging/$pkgname.svg" "$pkgdir/opt/$pkgname/gui/$pkgname.svg"
 }
