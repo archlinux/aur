@@ -3,7 +3,7 @@
 _pkgname=lain
 pkgname=$_pkgname-git
 pkgcom=1759
-pkgsha=a3b9d8d
+pkgsha=5882000
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
