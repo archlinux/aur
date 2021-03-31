@@ -1,6 +1,6 @@
 pkgbase = chromium-bypass-paywalls
 	pkgdesc = Bypass Paywalls is a web browser extension to help bypass paywalls for selected sites
-	pkgver = 1.7.8
+	pkgver = 1.7.9
 	pkgrel = 1
 	url = https://github.com/iamadamdev/bypass-paywalls-chrome
 	install = chromium-bypass-paywalls.install
@@ -9,8 +9,8 @@ pkgbase = chromium-bypass-paywalls
 	makedepends = zip
 	optdepends = chromium: open-source web browser from Google
 	optdepends = google-chrome: Google's freeware web browser
-	source = https://github.com/iamadamdev/bypass-paywalls-chrome/releases/download/v1.7.8/bypass-paywalls-chrome.crx
-	md5sums = 67b50b884755a48f899d666cb9043334
+	source = https://github.com/iamadamdev/bypass-paywalls-chrome/releases/download/v1.7.9/bypass-paywalls-chrome.crx
+	sha256sums = 77f6c61f40bb78b6c4a412ae3e029a7274e4ea5601d8e7bcef1c74a75051ad75
 
 pkgname = chromium-bypass-paywalls
 
