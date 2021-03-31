@@ -2,7 +2,7 @@
 # Contributor: Martynas Janu <martynas.janu at googlemail dot com>
 # Contributor: Benjamin Asbach <archlinux-aur.pkgname at impl dot it>
 pkgname=apache-netbeans
-pkgver=12.2
+pkgver=12.3
 pkgrel=1
 pkgdesc="Apache Netbeans IDE development platform"
 arch=('i686' 'x86_64')
@@ -12,9 +12,9 @@ options=('!strip')
 depends=('java-runtime>=8')
 provides=('apache-netbeans')
 conflicts=('apache-netbeans')
-source=("https://www-eu.apache.org/dist/netbeans/netbeans/12.2/netbeans-12.2-bin.zip"
+source=("https://www-eu.apache.org/dist/netbeans/netbeans/12.3/netbeans-12.3-bin.zip"
         "apache-netbeans.desktop")
-sha512sums=("b25cda9830e8fe1d05687b08cc5fa9bcac7e8e6d12776998a4da7e483b3be0d04493345e56be7e6198fa8f86428d57d4459bfa7372c2e3f918f4a1101d0a31a7"
+sha512sums=("d38abd8312010837cffbe9b1c721a1e14a33735b766c09a0b640adf1360c439b3d68df032f420afb6af060e054c92dc07436fb50d33823b8fed996cbd824e39d"
             "e8160bb80c333a6b478766f176092caa8d87394202c923df22a8f4e3a336a72b0c3ee7f724743b13bfdc785fca32c1b984c2f719b0b153f943a9beaa9d877909")
 
 package() {
