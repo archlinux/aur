@@ -12,7 +12,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go' 'gzip' 'tar')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/go-swagger/go-swagger/archive/v${pkgver}.tar.gz")
-sha256sums=('1ec5a44ae8bb9ffafd02a9c7b1df5a8a43c2296dece02bb8fab6f13f70007f4f')
+sha256sums=('b2325d1bfc837a5f5ae514b6797a1408a6a127f3d698254c49933e65be70fc10')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
