@@ -6,7 +6,7 @@
 
 pkgname=vcsh-git
 pkgver=1.20190619.r21.gf0c829a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
 arch=('any')
@@ -15,7 +15,6 @@ license=('GPL')
 depends=('git')
 makedepends=('ruby-ronn')
 checkdepends=('perl' 'perl-shell-command' 'perl-test-most')
-optdepends=('myrepos: helps manage a large number of repositories')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git://github.com/RichiH/vcsh.git")
