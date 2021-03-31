@@ -1,6 +1,6 @@
 pkgbase = vcvrack-git
 	pkgdesc = Open-source virtual Eurorack DAW
-	pkgver = 1.1.0.r10.g266b63d
+	pkgver = 1.1.6.r17.ge334902e
 	pkgrel = 1
 	url = https://github.com/VCVRack/Rack
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = vcvrack-git
 	source = https://libzip.org/download/libzip-1.5.2.tar.gz
 	source = https://www.zlib.net/zlib-1.2.11.tar.gz
 	source = http://www.music.mcgill.ca/~gary/rtmidi/release/rtmidi-4.0.0.tar.gz
-	source = https://bitbucket.org/jpommier/pffft/get/29e4f76ac53b.zip
+	source = https://bitbucket.org/jpommier/pffft/get/2b2bd45bbf9b.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -45,7 +45,7 @@ pkgbase = vcvrack-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c2cb85f3244fc1303646a3961aa0d591238fb81d4978541ef3f974db564aec46
+	sha256sums = 6299d2de5b6c71db5c9e736095bbf141e4f0bc6eb90b4791aa384b3accd59bbd
 	sha256sums = 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95
 	sha256sums = 5f8dec765048efac5d919aded51b26a32a05397ea207aa769ff6b53c7027d2c9
 	sha256sums = c8dded1454747f65956f981c95e7f89a06abdaa2a53e8aeaa66bab2a3d59cebd
@@ -54,7 +54,7 @@ pkgbase = vcvrack-git
 	sha256sums = be694a4abb2ffe5ec02074146757c8b56084dbcebf329123c84b205417435e15
 	sha256sums = c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1
 	sha256sums = 370cfe710f43fbeba8d2b8c8bc310f314338c519c2cf2865e2d2737b251526cd
-	sha256sums = bb10afba127904a0c6c553fa445082729b7d72373511bda1b12a5be0e03f318a
+	sha256sums = f21913b96eb0f87839dcb363992cd619e7a9c4333685ad9627bc3da205e36a89
 
 pkgname = vcvrack-git
 

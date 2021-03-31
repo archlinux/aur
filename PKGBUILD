@@ -1,8 +1,9 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Popolon <popolon@popolon.org>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Contributor: Miroslav Koškár
 
 pkgname=vcvrack-git
-pkgver=1.1.0.r10.g266b63d
+pkgver=1.1.6.r17.ge334902e
 pkgrel=1
 pkgdesc="Open-source virtual Eurorack DAW"
 url="https://github.com/VCVRack/Rack"
@@ -29,7 +30,7 @@ source=(
     https://libzip.org/download/libzip-1.5.2.tar.gz
     https://www.zlib.net/zlib-1.2.11.tar.gz
     http://www.music.mcgill.ca/~gary/rtmidi/release/rtmidi-4.0.0.tar.gz
-    https://bitbucket.org/jpommier/pffft/get/29e4f76ac53b.zip
+    https://bitbucket.org/jpommier/pffft/get/2b2bd45bbf9b.zip
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -38,7 +39,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c2cb85f3244fc1303646a3961aa0d591238fb81d4978541ef3f974db564aec46'
+            '6299d2de5b6c71db5c9e736095bbf141e4f0bc6eb90b4791aa384b3accd59bbd'
             '04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95'
             '5f8dec765048efac5d919aded51b26a32a05397ea207aa769ff6b53c7027d2c9'
             'c8dded1454747f65956f981c95e7f89a06abdaa2a53e8aeaa66bab2a3d59cebd'
@@ -47,7 +48,7 @@ sha256sums=('SKIP'
             'be694a4abb2ffe5ec02074146757c8b56084dbcebf329123c84b205417435e15'
             'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
             '370cfe710f43fbeba8d2b8c8bc310f314338c519c2cf2865e2d2737b251526cd'
-            'bb10afba127904a0c6c553fa445082729b7d72373511bda1b12a5be0e03f318a')
+            'f21913b96eb0f87839dcb363992cd619e7a9c4333685ad9627bc3da205e36a89')
 
 pkgver() {
     cd "${pkgname%-git}"
