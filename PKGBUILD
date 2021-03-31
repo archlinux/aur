@@ -131,7 +131,7 @@ prepare() {
 build() {
   # optionally hard code makepkg defaults/modify to fit your specific hardware
   #unset CFLAGS CXXFLAGS
-  #CFLAGS="-march=haswell -O2 -pipe -fstack-protector-strong -fno-plt"
+  #CFLAGS="-march=haswell -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS -Wformat -Werror=format-security -fstack-clash-protection -fcf-protection"
   #CXXFLAGS="${CFLAGS}"
 
   make -C chromium-launcher-$_launcher_ver
