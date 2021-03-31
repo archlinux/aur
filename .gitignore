@@ -1,0 +1,4 @@
+backlight/
+pkg/
+src/
+*.pkg.tar*
