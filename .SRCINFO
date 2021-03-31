@@ -1,6 +1,6 @@
 pkgbase = rtl8189es-git
 	pkgdesc = RTL8189ES / RTL8189ETV modules
-	pkgver = 57.03ac413
+	pkgver = 4.3.18.1.57.03ac413
 	pkgrel = 1
 	url = https://github.com/jwrdegoede/rtl8189ES_linux
 	install = rtl8189es-git.install

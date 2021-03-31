@@ -1,6 +1,7 @@
 pkgname=rtl8189es-git
 _pkgbase=${pkgname%-*-*}
-pkgver=57.03ac413
+_pkgver="4.3.18.1"
+pkgver=4.3.18.1.57.03ac413
 pkgrel=1
 pkgdesc="RTL8189ES / RTL8189ETV modules"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -24,7 +25,7 @@ _extramodules=$(cat `find /usr/lib/modules/extramodules* -type 'f' -name 'versio
 
 pkgver() {
   cd ${srcdir}/rtl8189ES_linux
-  printf '%s' "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
+  printf '%s' ${_pkgver} "." "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -42,10 +43,10 @@ build() {
   cd ${srcdir}/rtl8189ES_linux
   if [ ${CARCH} == "armv6h" -o ${CARCH} == "armv7h" ]; then
      ARCH="arm"
-     make ARCH=$ARCH -j$procs_num KSRC="/usr/lib/modules/${_extramodules}/build/" CONFIG_PLATFORM_ARM_SUN8I=y modules
+     make ARCH=$ARCH -j$procs_num KSRC="/usr/lib/modules/${_extramodules}/build/" CONFIG_PLATFORM_ARM_SUN8I=y CONFIG_POWER_SAVING=n CONFIG_WIFI_MONITOR=y modules
   else
      ARCH=${CARCH}
-     make ARCH=$ARCH -j$procs_num KSRC="/usr/lib/modules/${_extramodules}/build/" CONFIG_PLATFORM_I386_PC=y modules
+     make ARCH=$ARCH -j$procs_num KSRC="/usr/lib/modules/${_extramodules}/build/" CONFIG_PLATFORM_I386_PC=y CONFIG_POWER_SAVING=n CONFIG_WIFI_MONITOR=y modules
   fi
 }
 
