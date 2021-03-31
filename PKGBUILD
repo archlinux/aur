@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Schlabach <Techcable at techcable dot net>
 pkgname=zls-bin
 pkgver="0.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Zig Language Server, or zls, is a language server for Zig. Pre-compiled official binary."
 arch=('x86_64')
 url="https://github.com/zigtools/zls"
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('zig')
 # Used to update the `zls.json` file with the path to our build runner.
 # See: https://github.com/zigtools/zls/blob/master/README.md#configuration-options
-# I could use `jq` but I think python is more prevalent ;)
+# I could use `jq` but I think python is more prevalent (although jq seems
+# surprisingly common, just look at the reverse dependencies for `jq-git`)
 makedepends=('python>=3.6')
 provides=('zls')
 conflicts=('zls' 'zls-git')
@@ -22,9 +23,12 @@ replaces=('zls' 'zls-git')
 backup=('usr/bin/zls.json')
 source_x86_64=("https://github.com/zigtools/zls/releases/download/${pkgver}/x86_64-linux.tar.xz")
 sha256sums_x86_64=("1318a785e6982ef86d1d0242403b20cec34ce209c64eee339512f8267e9a5ccb")
+# Technically, our python script is a "source"
+source=("update_config.py")
+sha256sums=("f55e83f8510c50d55d7f37fa6dfa4d0f9a99061099829b350fa58892bc828a57")
 
 prepare() {
-    python3 ../update_config.py $CARCH-linux/zls.json || exit 1
+    python3 "${srcdir}/update_config.py" "${srcdir}/$CARCH-linux/zls.json"
 }
 
 package() {
