@@ -3,8 +3,8 @@
 # Contributor: cantabile <cantabile dot desu at gmail dot com>
 
 pkgname=uswsusp-git
-pkgver=0.r501.g668c5f7
-pkgrel=8
+pkgver=1.0
+pkgrel=9
 pkgdesc='Userspace software suspend - git checkout'
 arch=('i686' 'x86_64')
 url='http://suspend.sourceforge.net/'
@@ -29,16 +29,6 @@ sha256sums=('SKIP'
             'fe8d5c831302125fd92ba6e48cacaf0359925d41de5623be2b8525a0cdf1fcc6'
             'd8a4f646d0785adf038830f14564f20ea307a27f225c17eb581a2e4d5e0c8519'
             'fc303c78d3ae0794f8a267e9b8b9fec665b7413f396310d1a19efedcd2a1760d')
-
-pkgver() {
-	cd suspend-utils/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-	fi
-}
 
 build() {
 	cd suspend-utils/
