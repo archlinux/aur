@@ -1,0 +1,12 @@
+pkgbase = trak
+	pkgdesc = Super-simple time tracker for your terminal
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/michaljanocko/trak
+	arch = any
+	license = MIT
+	source = trak-1.1.tar.gz::https://github.com/michaljanocko/trak/archive/v1.1.tar.gz
+	sha256sums = 6e19421e3ae8232ea85255098b6acd53e4d293c7df2d10ecca175afbb83d795d
+
+pkgname = trak
+
