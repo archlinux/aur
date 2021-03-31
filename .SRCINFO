@@ -1,0 +1,18 @@
+pkgbase = libpep-adapter-git
+	pkgdesc = C++ library for common structures used in p≡p adapters
+	pkgver = 2.1.19
+	pkgrel = 1
+	url = https://gitea.pep.foundation/pEp.foundation/libpEpAdapter
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = pep-engine
+	depends = pep-engine
+	provides = libpep-adapter
+	source = git+https://gitea.pep.foundation/pEp.foundation/libpEpAdapter.git
+	md5sums = SKIP
+
+pkgname = libpep-adapter-git
+
