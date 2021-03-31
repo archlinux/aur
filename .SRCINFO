@@ -1,0 +1,23 @@
+pkgbase = pep-jni-adapter-git
+	pkgdesc = p≡p JNI adapter
+	pkgver = 2.1.20
+	pkgrel = 1
+	url = https://gitea.pep.foundation/pEp.foundation/pEpJNIAdapter
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = yml2
+	makedepends = pep-engine
+	makedepends = libpep-adapter
+	makedepends = java-environment
+	depends = pep-engine
+	depends = libpep-adapter
+	depends = java-runtime
+	provides = pep-jni-adapter
+	source = git+https://gitea.pep.foundation/pEp.foundation/pEpJNIAdapter.git
+	md5sums = SKIP
+
+pkgname = pep-jni-adapter-git
+
