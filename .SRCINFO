@@ -1,18 +1,18 @@
-pkgbase = otf-apple-sf-mono
-	pkgdesc = Apples monospaced vairant of the San Francisco typeface family.
-	pkgver = 16.0d2e1
+pkgbase = otf-apple-ny
+	pkgdesc = Apples New York typeface family. For usage alongside SF.
+	pkgver = 16.0d2e2
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom:apple-restricted-font
 	makedepends = texlive-bin
 	makedepends = p7zip
-	source = https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg
+	source = https://devimages-cdn.apple.com/design/resources/download/NY-Font.dmg
 	source = license.awk
 	source = version.awk
-	sha256sums = fc0beba1460fbe0f1f6d7c0f1eff6e09dd9cd996a24595f47dcb332614ecd541
+	sha256sums = 58058b5dbddb77eec84a0c0b10b41fc544bc7cd50c6cb49874da4197f91afde5
 	sha256sums = cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889
 	sha256sums = 55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198
 
-pkgname = otf-apple-sf-mono
+pkgname = otf-apple-ny
 
