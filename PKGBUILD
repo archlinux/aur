@@ -13,6 +13,7 @@ source=("https://download.cnki.net/"$pkgname"/"$pkgname"_"$pkgver"_amd64.deb")
 sha512sums=("SKIP")
 package() {
 	sudo debtap -u
+	cd /cnkiexpress
 	sudo debtap "$pkgname"_"$pkgver"_amd64.deb
 	sudo pacman -U "$pkgname"_"$pkgver"-1-x86_64.pkg.tar.zst
 }
