@@ -1,0 +1,18 @@
+pkgbase = stear-keyboard-git
+	pkgdesc = Simple remote keyboard
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://gitlab.gnome.org/tallero/stear-keyboard
+	arch = any
+	license = AGPL3
+	depends = python-appdirs
+	depends = python-keyboard
+	depends = python-gnupg
+	depends = python-setproctitle
+	provides = stear-keyboard
+	conflicts = stear-keyboard
+	source = git+https://gitlab.gnome.org/tallero/stear-keyboard
+	sha512sums = SKIP
+
+pkgname = stear-keyboard-git
+
