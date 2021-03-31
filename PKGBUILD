@@ -59,12 +59,6 @@ pkgver() {
   git describe | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-  cd $pkgname
-  sed -i 's/COMMAND lua\b/COMMAND luajit/' awesomeConfig.cmake tests/examples/CMakeLists.txt
-  sed -i 's/LUA_COV_RUNNER lua\b/LUA_COV_RUNNER luajit/' tests/examples/CMakeLists.txt
-}
-
 build() {
   mkdir -p build
   cd build
@@ -74,7 +68,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSCONFDIR=/etc \
     -DLUA_INCLUDE_DIR=/usr/include/luajit-2.0 \
-    -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so
+    -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so \
+    -DLUA_EXECUTABLE=/usr/bin/luajit
   make
 }
 
