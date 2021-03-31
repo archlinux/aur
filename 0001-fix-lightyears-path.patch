@@ -1,0 +1,11 @@
+--- lightyears.orig	2021-03-31 14:36:52.116636127 +0200
++++ lightyears	2021-03-31 14:37:42.432829867 +0200
+@@ -1,7 +1,7 @@
+ #!/usr/bin/python
+ 
+ # Set the location of the LightYears files here:
+-LIGHTYEARS_DIR = "/usr/share/games/lightyears" # (for Debian)
++LIGHTYEARS_DIR = "/usr/share/lightyears" # (for Arch)
+ 
+ # Save games and configuration files are stored in the user's
+ # home directory.

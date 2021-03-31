@@ -1,30 +1,35 @@
 # Maintainer: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 
 pkgname=20kly
-pkgver=1.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="20'000 Light Years Into Space game"
 arch=('any')
 url="http://www.jwhitham.org/20kly/"
 license=('GPL')
-depends=('python2-pygame' 'glpk')
+depends=('python-pygame' 'glpk')
+checkdepends=(python-pytest python-coverage mypy)
 provides=('20kly')
-source=("http://www.jwhitham.org/$pkgname/lightyears-$pkgver.tar.bz2"
-        '0001-fix.patch')
-md5sums=('1211f6c9f368e3d8053965b3e42dcdcd'
-         '963cd97ab3b7f962069612e642a3dee5')
+source=("${pkgname}.tar.gz::https://github.com/20kly/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+        '0001-fix-lightyears-path.patch')
+md5sums=('1e698cd23bf6e016c59b984660a2d47b'
+         'SKIP')
 
 prepare() {
-  cd "lightyears-$pkgver"
-  patch -p1 -i $srcdir/0001-fix.patch
+  cd "${pkgname}-${pkgver}"
+  patch -p0 -i "$srcdir/0001-fix-lightyears-path.patch"
 }
 
 package() {
-  cd "lightyears-$pkgver"
+  cd "${pkgname}-${pkgver}"
+  export PYTHONHASHSEED=0
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
-  mkdir -p ${pkgdir}/usr/share/20kly
-  cp -r audio data code manual lightyears ${pkgdir}/usr/share/20kly
+  mkdir -p "${pkgdir}/usr/share/lightyears"
+  cp -a data lib20k "${pkgdir}/usr/share/lightyears/"
+  ln -s lib20k "${pkgdir}/usr/share/lightyears/code"
 
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s /usr/share/20kly/lightyears ${pkgdir}/usr/bin/20kly
+  install -D lightyears "${pkgdir}/usr/bin/lightyears"
+
+  install -Dm644 manual.pdf -t "${pkgdir}/usr/share/doc/lightyears/"
 }
