@@ -1,5 +1,5 @@
-# Previous maintainer: Paul <paul@mrarm.io>
 # Maintainer: Sambhav <samb at disroot dot org>
+# Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
 pkgver=v0.1.beta.2.r128.gd2a20a1
