@@ -3,7 +3,7 @@
 pkgname="mksignkernels"
 pkgdesc="Bundle and sign your kernel for SecureBoot-enabled systems."
 
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=($pkgname)
 backup=("etc/$pkgname.mk")
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('14f986d045bfd577b903db7ebe54aa0fe20e3fbcd9e3aec8caba518e7097b2a0')
+sha256sums=('2004795bbcf3b00d0bd39c2454d93126f4bfd71c960cff4f72ada515fb74fd09')
 
 package() {
   cd "$pkgname-$pkgver/"
