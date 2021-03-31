@@ -77,4 +77,4 @@ http
 * Stop: `tmux kill-session -t lnd;nbxplorer-stop;btcpayserver-stop`
 
 ### Usage of a dynamic IP address
-Use "--externalhosts" instead of "--externalip" for lnd.
+Give the option "--externalip" your DynDNS domain name.
