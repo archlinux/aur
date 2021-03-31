@@ -1,0 +1,21 @@
+[Unit]
+Description=goshimmer
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+LimitNOFILE=4096
+SyslogIdentifier=goshimmer
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+User=goshimmer
+WorkingDirectory=/var/lib/goshimmer
+TimeoutSec=1200
+Restart=always
+ExecStart=/usr/bin/goshimmer -c "/var/lib/goshimmer/config.json"
+
+[Install]
+WantedBy=multi-user.target

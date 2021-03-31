@@ -1,0 +1,21 @@
+#!/bin/sh
+
+pre_install() {
+	if ! id -u goshimmer > /dev/null 2>&1; then
+		useradd --no-create-home --system goshimmer > /dev/null
+	fi
+	mkdir -p /var/lib/goshimmer
+}
+
+post_install() {
+	chown -R goshimmer:goshimmer /var/lib/goshimmer
+}
+
+pre_remove() {
+	systemctl stop goshimmer.service
+}
+
+post_remove() {
+	userdel goshimmer > /dev/null
+}
+
