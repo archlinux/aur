@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-taskwhisperer
 	pkgdesc = Gnome Shell TaskWarrior integration
-	pkgver = 17
+	pkgver = 18
 	pkgrel = 1
 	url = https://github.com/cinatic/taskwhisperer
 	arch = any
 	license = GPL3
 	depends = gnome-shell
-	source = https://github.com/cinatic/taskwhisperer/archive/v17.tar.gz
-	sha256sums = 0b28cb602c6d674ae141951941c6417b4f96895cb0686c79d3b9aa6bf63a0e97
+	source = https://github.com/cinatic/taskwhisperer/archive/v18.tar.gz
+	sha256sums = df749d97cdacab1bc2c1c3f8681097a795bacc5475abba688bb89d5ade6f713c
 
 pkgname = gnome-shell-extension-taskwhisperer
 
