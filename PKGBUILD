@@ -3,7 +3,7 @@
 pkgname='otf-apple-sf-mono'
 pkgver=16.0d2e1
 pkgrel=1
-pkgdesc='Apples monospaced vairant of the San Francisco typeface family.'
+pkgdesc='Apples the San Francisco typeface family. Monospaced variant.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom:apple-restricted-font')
