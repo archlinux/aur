@@ -1,7 +1,7 @@
 pkgbase = evernote-beta-bin
 	pkgdesc = Official Evernote client for Linux (beta, early-access)
 	pkgver = 10.7.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://evernote.com/intl/ar/b1433t1422
 	install = evernote-beta-bin.install
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = evernote-beta-bin
 	depends = libappindicator-gtk3
 	depends = libsecret
 	provides = evernote
-	noextract = Evernote-10.7.6-linux-ddl-ga-2321.deb
-	source = https://cdn1.evernote.com/boron/linux/builds/Evernote-10.7.6-linux-ddl-ga-2321.deb
-	sha256sums = d335c2eafaf837e867e684c1e1c7677df79d2afd45732ac239b5196208f0f22f
+	noextract = Evernote-10.7.6-linux-ddl-ga-2330.deb
+	source = https://cdn1.evernote.com/boron/linux/builds/Evernote-10.7.6-linux-ddl-ga-2330.deb
+	sha256sums = 14a920801f8865dadbc5a1544e8051bb0b7bb66535575459f4f372d89170342f
 
 pkgname = evernote-beta-bin
 

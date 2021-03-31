@@ -2,8 +2,8 @@
 
 pkgname=evernote-beta-bin
 pkgver=10.7.6
-buildver=2321
-pkgrel=2
+buildver=2330
+pkgrel=3
 pkgdesc="Official Evernote client for Linux (beta, early-access)"
 arch=('x86_64')
 url="https://evernote.com/intl/ar/b1433t1422"
@@ -22,7 +22,7 @@ source=(
     )
 noextract=("Evernote-${pkgver}-linux-ddl-ga-${buildver}.deb")
 sha256sums=(
-    'd335c2eafaf837e867e684c1e1c7677df79d2afd45732ac239b5196208f0f22f'
+    '14a920801f8865dadbc5a1544e8051bb0b7bb66535575459f4f372d89170342f'
 )
 
 package() {
