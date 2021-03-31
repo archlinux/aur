@@ -5,7 +5,7 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh-git
-pkgver=1.20190619.r19.g2bc91a2
+pkgver=1.20190619.r21.gf0c829a
 pkgrel=1
 epoch=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
@@ -14,7 +14,7 @@ url="https://github.com/RichiH/${pkgname%-git}"
 license=('GPL')
 depends=('git')
 makedepends=('ruby-ronn')
-checkdepends=('perl' 'perl-shell-command')
+checkdepends=('perl' 'perl-shell-command' 'perl-test-most')
 optdepends=('myrepos: helps manage a large number of repositories')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
