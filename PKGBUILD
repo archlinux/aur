@@ -22,6 +22,6 @@ package() {
     mkdir -p $_npmdir
     cd $srcdir/$pkgname
     npm pack
-    npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "$pkgdir/usr" "${_npmname}-${pkgver}.tgz"
+    npm install --cache "${srcdir}/npm-cache" -g --prefix "$pkgdir/usr" "${_npmname}-${pkgver}.tgz"
     install -Dm644 "${srcdir}/imapnotify@.service" "${pkgdir}/usr/lib/systemd/user/imapnotify@.service"
 }
