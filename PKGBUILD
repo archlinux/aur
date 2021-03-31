@@ -2,24 +2,24 @@
 # Maintainer: Martin Wimpress <code@flexion.org>
 
 pkgname=bip
-pkgver=0.9.0rc1
-_pkgver=0.9.0-rc.1
+pkgver=0.9.0rc4
+_pkgver=0.9.0-rc4
 pkgrel=1
 pkgdesc="Multiuser IRC proxy that supports replaying of logged conversations."
 arch=('x86_64')
 url="http://bip.milkypond.org/"
 license=('GPL')
 depends=('openssl')
-source=("https://projects.duckcorp.org/attachments/download/79/bip-$_pkgver.tar.gz"
+source=("https://projects.duckcorp.org/attachments/download/97/bip-$_pkgver.tar.gz"
         "${pkgname}.service")
-md5sums=('8c7079d51f13ce4799c750f89ebc1b41'
-         'a716f77fc40573cd359d9984a9cc8a66')
+md5sums=('cd5afefdee246bdd83c0fb2e7744b24f'
+         '8675ee1b2cb85c0e79c182e897cffd31')
 install=${pkgname}.install
 
 prepare() {
     cd ${pkgname}-${_pkgver}
     # Don't treat warnings as errors.
-    sed -i 's/-Werror//g' Makefile.in
+    sed -i 's/-Werror//g' src/Makefile.in
     # Make the sample configuration reflect the PKGBUILD defaults
     sed -i 's:/var/proxy/logs:/var/log/bip:' samples/$pkgname.conf
 }
