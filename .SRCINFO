@@ -1,6 +1,6 @@
 pkgbase = rizin
 	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://rizin.re/
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = rizin
 	depends = libzip
 	depends = xxhash
 	depends = libuv
-	provides = rizin=0.1.0
+	provides = rizin=0.1.2
 	conflicts = rizin-git
-	source = rizin-0.1.0.tar.xz::https://github.com/rizinorg/rizin/releases/download/v0.1.0/rizin-src-v0.1.0.tar.xz
-	sha256sums = 4fd83662150cecce575e2b55d050a9061cc58c5960eb6280091cb42501a9633b
+	source = rizin-0.1.2.tar.xz::https://github.com/rizinorg/rizin/releases/download/0.1.2/rizin-src-v0.1.2.tar.xz
+	sha256sums = 9e9529f302622806902928a05ed9dd8492d3278fa9c85a9ad05c032c1a91fec1
 
 pkgname = rizin
 

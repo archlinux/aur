@@ -2,7 +2,7 @@
 # Maintainer : tsp <patrictroy at gmail dot com>
 
 pkgname=rizin
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=("rizin=${pkgver}")
 conflicts=("rizin-git")
-source=("${pkgname}-${pkgver}.tar.xz::https://github.com/rizinorg/rizin/releases/download/v${pkgver}/rizin-src-v${pkgver}.tar.xz")
-sha256sums=('4fd83662150cecce575e2b55d050a9061cc58c5960eb6280091cb42501a9633b')
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/rizinorg/rizin/releases/download/${pkgver}/rizin-src-v${pkgver}.tar.xz")
+sha256sums=('9e9529f302622806902928a05ed9dd8492d3278fa9c85a9ad05c032c1a91fec1')
 
 build() {
   # this is actually needed to prevent linking against old system-wide r2 libs
@@ -40,5 +40,4 @@ package() {
   install -dm644 "${pkgdir}/usr/share/doc/rizin"
   cp -r doc/* "${pkgdir}/usr/share/doc/rizin"
   ln -s /usr/bin/rizin "${pkgdir}/usr/bin/rz"
-  rm "${pkgdir}/usr/share/man/man7/esil.7"
 }
