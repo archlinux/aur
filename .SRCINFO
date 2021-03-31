@@ -1,7 +1,7 @@
 pkgbase = nodejs-imapnotify
 	pkgdesc = Execute scripts on new messages using IDLE imap command
 	pkgver = 0.4.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/titibandit/node-imapnotify
 	install = nodejs-imapnotify.install
 	arch = any
