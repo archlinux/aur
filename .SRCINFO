@@ -5,7 +5,7 @@ pkgbase = thunar-megasync-bin
 	url = https://mega.nz
 	arch = x86_64
 	license = custom
-	depends = megasync
+	depends = megasync-bin
 	depends = thunar
 	provides = thunar-megasync=4.3.0
 	conflicts = thunar-megasync
