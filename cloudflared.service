@@ -12,6 +12,9 @@ Restart=on-failure
 RestartSec=5s
 TimeoutStartSec=0
 
+# Allow cloudflared access to logfile
+ReadWritePaths=/var/log/cloudflared.log
+
 # Allow cloudflared to bind ports in the range of 0-1024 and restrict it to
 # that capability
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE

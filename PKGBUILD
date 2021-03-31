@@ -2,7 +2,7 @@
 
 pkgname=cloudflared
 pkgver=2021.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Argo Tunnel client"
 arch=(x86_64 armv7h aarch64)
 url="https://github.com/cloudflare/cloudflared"
@@ -18,9 +18,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cloudflare/cloudflared/arch
         "tmpfiles.d.conf")
 b2sums=('fc296603b8f44a843a109a13a4d98b2ee63b04d06a894e16dfc6e9aa0a20bf03feaafd36106da7c6ff3740aed937d4a94143d2dbb32ffbdb4f34c0bccbdb1c2e'
         '887218db3b5e7cdbb90c86b60aac1597d70b59fccece18c8c5e6e2357d04aa219b2438436f23f913a0c8dc6eb425ef3e22901e28fd30e5130d17e414e67ec4af'
-        '14229bc641d46bc162882f0fec0304f7f5d24ae52049fbfd57c08cd493645fc54697807a8aafb8fca3c51dd4f7bd7b46ac1527a5eea97decfddaef0c069f65eb'
+        '0fa4ac918b4c72e2b1a1bd36e025fdb6078364363cba167e6d91e7815c8bd6f5c4b412f0651d1a75991ef7e069da6e81917f22bd40ef87fd1ccd41171e64e0b2'
         '7a15fc73f02cc74e2cea55ba51632724bae16f140e07904a88daa3179ed320e9e6efa9a1901d8249fd1618a2a91f93384a93bfaba6eba6990457b7c2d2155f58'
-        'c19a0ac124fffbe084fda2e02413dd3b8309dce1d6b4fbc2346f0b311ad59bed0887166ebe9d45019e629b944b0a5590e53119f8a6d8afc9dd774a15383bb5d5')
+        '83ffe6d68df4c98d23bef780f891797793321022a8d50897383f3cc9730cce5660704cd51ee791033e09ad4c1ce33c992e40d542a0685293c328faeba00aa864')
 
 prepare() {
   cd "$pkgname-$pkgver"
