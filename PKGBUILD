@@ -57,7 +57,7 @@ prepare() {
   #make olddefconfig
   #make menuconfig
   #make oldconfig
-  #make prepare
+  make prepare
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
