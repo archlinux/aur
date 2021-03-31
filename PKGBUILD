@@ -1,16 +1,16 @@
 # Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
-pkgname='otf-apple-sf-mono'
-pkgver=16.0d2e1
+pkgname='otf-apple-sf-compact'
+pkgver=16.0d18e1
 pkgrel=1
-pkgdesc='Apples monospaced vairant of the San Francisco typeface family.'
+pkgdesc='Apples San Francisco typeface family. watchOS system font.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom:apple-restricted-font')
-source=('https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg'
+source=('https://devimages-cdn.apple.com/design/resources/download/SF-Font-Compact.dmg'
         'license.awk'
         'version.awk')
-sha256sums=('fc0beba1460fbe0f1f6d7c0f1eff6e09dd9cd996a24595f47dcb332614ecd541'
+sha256sums=('5e53392ef1bdd17b8daf940745bcc85ad9f01c975eaf1e812a5c0a2d67897ec5'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
 makedepends=('texlive-bin' 'p7zip')
@@ -18,17 +18,17 @@ makedepends=('texlive-bin' 'p7zip')
 prepare() {
     cd ${srcdir}
     # These are dmg images, xar and cpio archives.  Just use 7z.
-    7z x -y 'SF-Mono.dmg'
-    7z x -y 'SFMonoFonts/SF Mono Fonts.pkg'
+    7z x -y 'SF-Font-Compact.dmg'
+    7z x -y 'SanFranciscoCompact/San Francisco Compact.pkg'
     7z x -y 'Payload~'
 
-    otfinfo -i Library/Fonts/SF-Mono-BoldItalic.otf | \
+    otfinfo -i Library/Fonts/SF-Compact-Display-Regular.otf | \
         awk -f license.awk > LICENSE
 }
 
 pkgver() {
     cd ${srcdir}
-    otfinfo -i Library/Fonts/SF-Mono-BoldItalic.otf | \
+    otfinfo -i Library/Fonts/SF-Compact-Display-Regular.otf | \
         awk -f version.awk
 }
 
