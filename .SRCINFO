@@ -1,0 +1,15 @@
+pkgbase = ca-certificates-vsign-universal-root
+	pkgdesc = VeriSign Universal Root Certification Authority
+	pkgver = 114514
+	pkgrel = 1
+	url = https://symantec.tbs-certificats.com/vsign-universal-root.crt
+	arch = any
+	license = GPL
+	makedepends = p11-kit
+	provides = ca-certificates-verisign-root
+	conflicts = ca-certificates-verisign-root
+	source = https://symantec.tbs-certificats.com/vsign-universal-root.crt
+	b2sums = a81094c32af2b9c9740fb3d8bdc18a4ddca277be8ff218d1cee82891bbf172b4cecb126303589a8bb4a19d0f86dcecd5584f07bbab4182e50f47036bd0dc26b6
+
+pkgname = ca-certificates-vsign-universal-root
+
