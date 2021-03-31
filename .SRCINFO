@@ -1,0 +1,19 @@
+pkgbase = md++-git
+	pkgdesc = A fast, extensible, and easy to use static site generator. Still in the alpha phase.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/TheLandfill/mdxx.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = glibc
+	depends = gcc-libs
+	depends = python
+	provides = md++
+	source = git+https://github.com/TheLandfill/mdxx.git
+	md5sums = SKIP
+
+pkgname = md++-git
+
