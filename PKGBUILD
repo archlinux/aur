@@ -9,7 +9,7 @@ arch=('any')
 url="https://gitlab.gnome.org/tallero/stear-keyboard"
 license=(AGPL3)
 depends=(python-appdirs python-keyboard python-gnupg python-setproctitle)
-source=("git+https://gitlab.gnome.org/tallero/$_pkgname")
+source=("git+https://gitlab.gnome.org/tallero/$_pkgname#tag=$pkgver")
 conflicts=("stear-keyboard")
 provides=("stear-keyboard")
 sha512sums=('SKIP')
