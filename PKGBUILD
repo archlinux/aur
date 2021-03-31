@@ -6,7 +6,7 @@
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
 pkgver=4.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
@@ -14,7 +14,7 @@ license=('GPL2')
 groups=('xfce4')
 depends=('exo' 'garcon' 'libxfce4ui' 'xfconf' 'libwnck3' 'libdbusmenu-gtk3'
          'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('intltool' 'gobject-introspection' 'vala')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'xfce4-dev-tools')
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"
