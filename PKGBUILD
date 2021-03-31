@@ -2,7 +2,7 @@
 
 pkgname=ttf-ubuntu-arabic
 pkgver=0.84+arabic
-pkgrel=3
+pkgrel=4
 pkgdesc="Public release of Arabic font to Ubuntu Xenial Xerus"
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/ubuntu-font-family-sources/0.84~mono0.83+arabicfontconfig-0ubuntu1"
@@ -19,7 +19,7 @@ package() {
   install -Dt "$pkgdir"/usr/share/licenses/$pkgname -m644 LICENCE.txt
 
   # Install fontconfig files
-  install -Dt "$pkgdir"/etc/fonts/conf.avail -m644 *.conf
-  install -d "$pkgdir"/etc/fonts/conf.d
-  ln -rs "$pkgdir"/etc/fonts/conf.avail/* "$pkgdir"/etc/fonts/conf.d
+  install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+  install -d "$pkgdir"/usr/share/fontconfig/conf.default
+  ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
 }
