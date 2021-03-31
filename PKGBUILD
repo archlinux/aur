@@ -9,10 +9,10 @@ arch=('i686' 'x86_64')
 url="https://rizin.re/"
 license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
-depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
+depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv' 'tree-sitter')
 provides=("rizin=${pkgver}")
 conflicts=("rizin-git")
-source=("${pkgname}-${pkgver}.tar.xz::https://github.com/rizinorg/rizin/releases/download/${pkgver}/rizin-src-v${pkgver}.tar.xz")
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/rizinorg/rizin/releases/download/v${pkgver}/rizin-src-${pkgver}.tar.xz")
 sha256sums=('9e9529f302622806902928a05ed9dd8492d3278fa9c85a9ad05c032c1a91fec1')
 
 build() {
