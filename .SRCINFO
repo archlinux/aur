@@ -1,0 +1,15 @@
+pkgbase = dracula-grub-theme-git
+	pkgdesc = Dark theme for GRUB Bootloader
+	pkgver = r5.9eb82b9
+	pkgrel = 1
+	url = https://github.com/dracula/grub
+	install = dracula-grub-theme-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = grub
+	source = dracula-grub-theme-git::git+https://github.com/dracula/grub
+	md5sums = SKIP
+
+pkgname = dracula-grub-theme-git
+

@@ -1,0 +1,4 @@
+*.tar.zst
+dracula-grub-theme-git/
+pkg/
+src/
