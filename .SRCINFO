@@ -15,7 +15,7 @@ pkgbase = buttermanager
         depends = python-pyaml
         depends = python-pyqt5
         depends = tk
-        source  = https://github.com/egara/buttermanager/archive/$pkgver.tar.gz
+        source  = https://github.com/egara/buttermanager/archive/2.4.tar.gz
 	md5sums = SKIP
 
 pkgname = buttermanager
