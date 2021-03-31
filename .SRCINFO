@@ -1,6 +1,6 @@
 pkgbase = librewolf-nightly
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)
-	pkgver = r645352.43682c39ec63
+	pkgver = r640483.d8d407400667
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf-nightly.install
@@ -41,7 +41,7 @@ pkgbase = librewolf-nightly
 	depends = mime-types
 	depends = dbus-glib
 	depends = ffmpeg
-	depends = nss-hg
+	depends = nss
 	depends = ttf-font
 	depends = libpulse
 	depends = libvpx

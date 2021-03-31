@@ -8,14 +8,14 @@
 
 pkgname=librewolf-nightly
 _pkgname="Librewolf Nightly"
-pkgver=r645352.43682c39ec63
+pkgver=r640483.d8d407400667
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse
+         ffmpeg nss ttf-font libpulse
          libvpx libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
