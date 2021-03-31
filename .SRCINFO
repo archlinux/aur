@@ -1,6 +1,6 @@
 pkgbase = uswsusp-git
 	pkgdesc = Userspace software suspend - git checkout
-	pkgver = 1.0
+	pkgver = 0.r501.g668c5f7
 	pkgrel = 8
 	url = http://suspend.sourceforge.net/
 	install = uswsusp.install
