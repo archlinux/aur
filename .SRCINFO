@@ -1,14 +1,14 @@
 pkgbase = supercollider-mkplugins
 	pkgdesc = Mads Kjeldgaard's plugins for SuperCollider
-	pkgver = 0.1.8E
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/madskjeldgaard/mkplugins
 	arch = x86_64
 	groups = pro-audio
 	license = GPL
 	depends = supercollider
-	source = https://github.com/madskjeldgaard/mkplugins/releases/download/v0.1.8E/MKPlugins-Linux.zip
-	md5sums = d800dbc6f6f19a582290dc866a3bc29e
+	source = https://github.com/madskjeldgaard/mkplugins/releases/download/v0.2.0/MKPlugins-Linux.zip
+	md5sums = a4989cbbbbe86c56955e8369878a1464
 
 pkgname = supercollider-mkplugins
 
