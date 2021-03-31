@@ -4,7 +4,7 @@ pkgver=4.4.0
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('x86_64')
-url="https://mega.nz"
+url="https://mega.io"
 license=('custom')
 provides=("megasync=$pkgver")
 conflicts=('megasync')
