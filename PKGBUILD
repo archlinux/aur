@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.7.1.r41.g72c6296
+pkgver=3.7.1.r58.g7dfb55c8a8db62ac
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -13,9 +13,11 @@ makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git"
-        "0001-fix-wlserver-update-wlr_headless_backend_create-call.patch")
+        "https://patch-diff.githubusercontent.com/raw/Plagman/gamescope/pull/150.patch"
+        "https://patch-diff.githubusercontent.com/raw/Plagman/gamescope/pull/181.patch")
 sha512sums=('SKIP'
-            'c79e380f2307744de7fff7d719da6b5ecdaf8daf03771acb2c4bf1770e34692876fa37ce5efc8441dee9d8d386a17331f6991fe635730c59012faaba7db4b50b')
+            '939b87c9c83ba957ad1eda6b89d281fc03365f2c1e01377a4b1cb06647ceeba0cf00f6df100891d81b3b585a29d850089440c6ae62bc077554c9e5c32eca85df'
+            '430db3983a92b664ab0f0ed1246d430a657122b68a9c14fb8f37d430987fc15ab6fcd1f70e18d4e4fd5891899963f766ea48ddf5b6085262080dedcb3ceecd65')
 
 
 pkgver() {
@@ -25,13 +27,17 @@ pkgver() {
 }
 
 prepare() {
-
-    rm -rf "$srcdir/$_pkgname/subprojects/libliftoff"
-    rm -rf "$srcdir/$_pkgname/subprojects/wlroots"
-
     cd "$srcdir/$_pkgname"
 
-    patch -Np1 < "$srcdir/0001-fix-wlserver-update-wlr_headless_backend_create-call.patch"
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        git apply "../$src"
+    done
+
+    rm -rf "subprojects/libliftoff" "subprojects/wlroots"
 }
 
 build() {
