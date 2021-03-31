@@ -25,12 +25,12 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
-        cd "$pkgname"
+        cd "$pkgname-$pkgver"
         python setup.py build
 }
 
 package() {
-        cd "$pkgname"
+        cd "$pkgname-$pkgver"
         # Creating destination directory
         install -dm755 "$pkgdir/opt/$pkgname"
 
