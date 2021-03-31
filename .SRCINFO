@@ -1,12 +1,13 @@
 pkgbase = vcsh
 	pkgdesc = Version Control System for $HOME that manages multiple Git repositories
 	pkgver = 1.20190619
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RichiH/vcsh
 	arch = any
 	license = GPL
 	checkdepends = perl
 	checkdepends = perl-shell-command
+	checkdepends = perl-test-most
 	makedepends = ruby-ronn
 	depends = git
 	optdepends = myrepos: helps manage a large number of repositories
