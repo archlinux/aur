@@ -35,11 +35,9 @@ rapidjson
 source=(
 "${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
 opencascade.sh
-revert_small_edge_fix.patch
 )
 sha256sums=('3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739'
-            '9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb'
-            'c4d64cfd9004bdf80abf7ee567c2d736de550f5cf771a5a2bb28292ca00a1869')
+            '9acb2439f1f7f066c111adef5d9f34dcb19c906cc928f87b71eb194317948dfb')
 
 prepare() {
   cd occt-${_pkgver}
@@ -47,7 +45,7 @@ prepare() {
   curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
 
   # https://tracker.dev.opencascade.org/view.php?id=32264
-  patch -p1 < ../revert_small_edge_fix.patch
+  curl -L 'http://git.dev.opencascade.org/gitweb/?p=occt.git;a=patch;h=refs/heads/CR32264' | patch -p1
   
   # fix for None type build
   #sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
@@ -65,6 +63,7 @@ build() {
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX='/usr' \
     -D INSTALL_DIR_CMAKE=/usr/lib/cmake/opencascade \
+    -D INSTALL_TEST_CASES=OFF \
     -D BUILD_WITH_DEBUG=OFF \
     -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
     -D USE_FFMPEG=ON \
@@ -82,8 +81,21 @@ build() {
 }
 
 check() {
-  cd occt-${_pkgver}
-  #TODO
+  # prevent the current environment from skewing the testing
+  unset "${!CSF@}"
+  unset "${!DRAW@}"
+  unset CASROOT
+
+  # graphics testing does not seem to go well (some seem to stall forever)
+  rm -rf "${srcdir}"/occt-${_pkgver}/tests/bugs/vis
+  rm -rf "${srcdir}"/occt-${_pkgver}/tests/perf/vis
+  rm -rf "${srcdir}"/occt-${_pkgver}/tests/v3d
+
+  cd build_dir
+  cp draw.sh check.sh
+  sed 's,DRAWEXE,lin64/gcc/bin/DRAWEXE -b -f testgrid.tcl,g' -i check.sh  # possibly try with -v instead of -b
+  echo testgrid > testgrid.tcl
+  ./check.sh  
 }
 
 package() {
