@@ -9,7 +9,7 @@ pkgbase = go-swagger-bin
 	provides = swagger
 	conflicts = swagger
 	source_x86_64 = swagger_linux_amd64_0.26.1::https://github.com/go-swagger/go-swagger/releases/download/v0.26.1/swagger_linux_amd64
-	sha256sums_x86_64 = ad2ad2ab6c4920d517124a17c898134273d5e315d09dcac800ffce83a0f3288b
+	sha256sums_x86_64 = 1ec5a44ae8bb9ffafd02a9c7b1df5a8a43c2296dece02bb8fab6f13f70007f4f
 
 pkgname = go-swagger-bin
 

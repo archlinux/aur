@@ -11,7 +11,7 @@ url="https://goswagger.io"
 license=("ASL 2.0")
 
 source_x86_64=("swagger_linux_amd64_${pkgver}::https://github.com/go-swagger/go-swagger/releases/download/v${pkgver}/swagger_linux_amd64")
-sha256sums_x86_64=('ad2ad2ab6c4920d517124a17c898134273d5e315d09dcac800ffce83a0f3288b')
+sha256sums_x86_64=('1ec5a44ae8bb9ffafd02a9c7b1df5a8a43c2296dece02bb8fab6f13f70007f4f')
 
 package() {
   install -d ${pkgdir}/usr/bin
