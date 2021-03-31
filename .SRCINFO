@@ -1,11 +1,12 @@
 pkgbase = bat-extras-git
 	pkgdesc = Bash scripts that integrate bat with various command line tools.
-	pkgver = 2020.10.05.r30.g2b2db2b
+	pkgver = 2021.03.30.r1.g87525fc
 	pkgrel = 1
 	url = https://github.com/eth-p/bat-extras
 	arch = any
 	license = MIT
 	checkdepends = ripgrep
+	checkdepends = fish
 	makedepends = git
 	depends = bash
 	depends = bat
