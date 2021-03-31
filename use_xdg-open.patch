@@ -2,35 +2,38 @@ Description: use xdg-open to open things in external applications
 Credits: novie
 
 diff --git a/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp b/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp
-index 0531a5b45..0879fb232 100644
+index 0489ece0d..71d8836b9 100644
 --- a/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp
-@@ -13,6 +13,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
- #include "platform/linux/specific_linux.h"
- #include "storage/localstorage.h"
- 
-+#include <QtCore/QProcess>
- #include <QtGui/QDesktopServices>
- 
- extern "C" {
-@@ -65,6 +66,10 @@ QByteArray EscapeShell(const QByteArray &content) {
- } // namespace internal
+@@ -27,6 +27,7 @@ namespace Platform {
+ namespace File {
  
  void UnsafeOpenUrl(const QString &url) {
-+	QProcess process;
-+	process.startDetached(qsl("xdg-open"), {url});
-+	return;
-+
- 	if (!g_app_info_launch_default_for_uri(
- 		url.toUtf8(),
- 		nullptr,
-@@ -79,6 +84,9 @@ void UnsafeOpenEmailLink(const QString &email) {
++#if 0
+ 	try {
+ 		if (Gio::AppInfo::launch_default_for_uri(url.toStdString())) {
+ 			return;
+@@ -38,6 +39,7 @@ void UnsafeOpenUrl(const QString &url) {
+ 	if (QDesktopServices::openUrl(url)) {
+ 		return;
+ 	}
++#endif
+ 
+ 	QProcess::startDetached(qsl("xdg-open"), { url });
+ }
+@@ -65,6 +67,7 @@ bool UnsafeShowOpenWith(const QString &filepath) {
+ }
  
  void UnsafeLaunch(const QString &filepath) {
- 	const auto absolutePath = QFileInfo(filepath).absoluteFilePath();
-+	QProcess process;
-+	process.startDetached(qsl("xdg-open"), {absolutePath});
-+	return;
++#if 0
+ 	try {
+ 		if (Gio::AppInfo::launch_default_for_uri(
+ 			Glib::filename_to_uri(filepath.toStdString()))) {
+@@ -77,6 +80,7 @@ void UnsafeLaunch(const QString &filepath) {
+ 	if (UnsafeShowOpenWith(filepath)) {
+ 		return;
+ 	}
++#endif
  
- 	if (!g_app_info_launch_default_for_uri(
- 		("file://" + absolutePath).toUtf8(),
+ 	const auto qUrlPath = QUrl::fromLocalFile(filepath);
+ 	if (QDesktopServices::openUrl(qUrlPath)) {
