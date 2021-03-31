@@ -11,7 +11,7 @@ pkgbase = stear-keyboard
 	depends = python-setproctitle
 	provides = stear-keyboard
 	conflicts = stear-keyboard
-	source = git+https://gitlab.gnome.org/tallero/stear-keyboard
+	source = git+https://gitlab.gnome.org/tallero/stear-keyboard#tag=0.1
 	sha512sums = SKIP
 
 pkgname = stear-keyboard
