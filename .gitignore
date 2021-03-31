@@ -1,4 +1,4 @@
 pkg/
 src/
 v*.tar.gz
-otf-xits-*.xz
+*.pkg.tar.zst

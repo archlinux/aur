@@ -1,13 +1,13 @@
 pkgname=otf-xits
-pkgver=1.301
+pkgver=1.302
 pkgrel=2
 pkgdesc="An OpenType implementation of STIX fonts with math support"
 arch=('any')
-url="https://github.com/khaledhosny/xits"
+url="https://github.com/alif-type/xits"
 license=('custom:OFL')
 ghname=xits
-source=("https://github.com/khaledhosny/$ghname/archive/v$pkgver.tar.gz")
-sha256sums=('63a778f24e9275b7f2c7c78060e7ad6c375f5cff077852716537b26e9da8be69')
+source=("https://github.com/alif-type/$ghname/archive/v$pkgver.tar.gz")
+sha256sums=('a396dfddde7da50ce82cae530775ab522b1d33f87ca8211634535b6325a09c2b')
 
 package() {
   cd "$srcdir/$ghname-$pkgver"
