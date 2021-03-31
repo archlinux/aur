@@ -1,0 +1,15 @@
+pkgbase = com.caustic3.deepin
+	pkgdesc = A Music Creation Tool, Caustic3 on Deepin Wine5
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://singlecellsoftware.com/caustic
+	arch = x86_64
+	license = custom
+	depends = deepin-wine5
+	depends = deepin-wine5-helper
+	provides = caustic3=3.2.1
+	source = https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/caustic3.tar.gz
+	md5sums = c46c0eef7e614b127dfffeebf1801bb9
+
+pkgname = com.caustic3.deepin
+
