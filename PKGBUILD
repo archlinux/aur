@@ -2,7 +2,7 @@
 
 pkgname=mylar3
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Comic book download automation for usenet and torrents."
 arch=('any')
 url="https://github.com/mylar3/mylar3"
@@ -22,12 +22,11 @@ depends=(
   'python-pillow'
   'python-portend'
   'python-pytz'
+  'python-rarfile'
   'python-requests'
   'python-simplejson'
   'python-six'
   'python-tzlocal'
-  'python-unrar'
-  'python-unrar-cffi'
   'python-urllib3'
 )
 options=(!strip)
