@@ -7,7 +7,7 @@ pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
 url="https://github.com/bamless/jstar"
 license=('MIT')
-makedepends=('cmake>=3.9' 'python>=2.7')
+makedepends=('cmake>=3.9' 'python>=2.7' 'git')
 
 source=("${pkgname}-${pkgver}::git://github.com/bamless/jstar.git#tag=v${pkgver}")
 sha256sums=('SKIP')

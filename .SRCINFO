@@ -8,6 +8,7 @@ pkgbase = jstar
 	license = MIT
 	makedepends = cmake>=3.9
 	makedepends = python>=2.7
+	makedepends = git
 	source = jstar-1.8.1::git://github.com/bamless/jstar.git#tag=v1.8.1
 	sha256sums = SKIP
 
