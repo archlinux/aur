@@ -9,7 +9,7 @@ license=('custom')
 provides=("thunar-megasync=$pkgver")
 conflicts=('thunar-megasync' 'thunar-gtk3-megasync')
 replaces=("thunar-megasync")
-depends=('megasync' 'thunar')
+depends=('megasync-bin' 'thunar')
 source=("${url}/linux/MEGAsync/Arch_Extra/x86_64/thunar-megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('3c3e8bc9a793881c92aee9e937263218b13c2bbc4ed0d2714272466325284cb9')
 
