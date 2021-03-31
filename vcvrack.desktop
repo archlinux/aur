@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=VCVRack
+Version=1.1.6+git
+Encoding=UTF-8
+Comment=Open-source virtual modular synthesizer
+Comment[fr]=sythetiseur modulaire virtuel open source
+Exec=vcvrack
+Icon=/opt/vcvrack/res/icon.png
+Type=Application
+Terminal=false
+Categories=AudioVideo;Audio;
+Keywords:music;multimedia;synthesizer,midi

@@ -4,7 +4,7 @@
 
 pkgname=vcvrack-git
 pkgver=1.1.6.r17.ge334902e
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source virtual Eurorack DAW"
 url="https://github.com/VCVRack/Rack"
 license=(BSD)
@@ -22,6 +22,7 @@ source=(
     git+https://github.com/thestk/rtaudio.git
     git+https://github.com/AndrewBelt/glfw.git
     vcvrack.sh
+    vcvrack.desktop
     https://github.com/nigels-com/glew/releases/download/glew-2.1.0/glew-2.1.0.tgz
     http://www.digip.org/jansson/releases/jansson-2.12.tar.gz
     https://vcvrack.com/downloads/dep/speexdsp-SpeexDSP-1.2rc3.tgz
@@ -40,6 +41,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '6299d2de5b6c71db5c9e736095bbf141e4f0bc6eb90b4791aa384b3accd59bbd'
+            'a7aa48156543ca6d05def561b6708935d7fd284baff4412716ad7077fb221b6c'
             '04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95'
             '5f8dec765048efac5d919aded51b26a32a05397ea207aa769ff6b53c7027d2c9'
             'c8dded1454747f65956f981c95e7f89a06abdaa2a53e8aeaa66bab2a3d59cebd'
@@ -84,5 +86,6 @@ package() {
     install -D -m644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE*
     install -D -m755 -t "$pkgdir/opt/${pkgname%-git}" Rack
     install -d "$pkgdir/opt/${pkgname%-git}/plugins"
+    install -vD -m644 "$srcdir/vcvrack.desktop" -t "$pkgdir/usr/share/applications/"
     cp -dr --preserve=mode -t "$pkgdir/opt/${pkgname%-git}" res
 }
