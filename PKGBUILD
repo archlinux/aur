@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=tweeny
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A modern C++ tweening library"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://mobius3.github.io/tweeny"
 license=('MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mobius3/tweeny/archive/v$pkgver.tar.gz")
-sha256sums=('33d2f439eec49bdd8464bd8017381d6e50af898342be217a254fd2cef2b3bb0f')
+sha256sums=('2be7db9e0354da31f020b77474e2d547dbbaa8999a6a4bea4b388e6d31e4ef07')
 
 prepare() {
   mkdir -p build
