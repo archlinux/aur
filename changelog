@@ -1,3 +1,6 @@
+2021-04-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.5.6-1:
+    Compared to V5.0.5.5, this version includes only a newer version of ASF-ui which had a pretty important regression in the previous build.
 2021-03-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.5.5-1:
     Added UserInterfaceMode bot config property (#2260).
