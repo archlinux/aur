@@ -1,0 +1,146 @@
+###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~###
+###                jackal configuration file                 ###
+###~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~###
+#
+#
+# WARNING: search for "TODO" in this document and replace secrets with something
+# custom before uncommenting them.
+
+peppers:
+  keys:
+    #v1: m7FFfnHf2g3KsPRPvVjjEiu6uss8tAHg # <-- TODO: please, use your custom key here!
+  use: v1
+
+#logger:
+#  level: "debug"
+#  output_path: "jackal.log"
+
+# Prometheus metrics and pprof
+#http_port: 6060
+
+#admin:
+#  port: 15280
+
+#hosts:
+#  - domain: jackal.im
+#    tls:
+#      cert_file: ""
+#      privkey_file: ""
+
+storage:
+  type: pgsql
+  pgsql:
+    host: 127.0.0.1:5432
+    user: jackal
+    password: password
+    database: jackal
+    max_open_conns: 16
+
+cluster:
+  etcd:
+    endpoints:
+      - http://127.0.0.1:2379
+  port: 14369
+
+shapers:
+  #- name: super
+  #  max_sessions: 20
+  #  rate:
+  #    limit: 131072
+  #    burst: 65536
+  #  matching:
+  #    jid:
+  #      # in: [admin@localhost]
+  #      regex: ^(admin|otheradmin)@localhost
+
+  - name: normal
+    max_sessions: 10
+    rate:
+      limit: 65536
+      burst: 32768
+
+listeners:
+  - type: c2s
+    port: 5222
+    req_timeout: 60s
+    transport: socket
+    sasl:
+      mechanisms: [scram_sha_1, scram_sha_256]
+
+      # Authentication gateway
+      # (proto: https://github.com/jackal-xmpp/jackal-proto/blob/master/jackal/proto/authenticator/v1/authenticator.proto)
+      external:
+        address: 127.0.0.1:4567
+        is_secure: false
+
+  - type: c2s
+    port: 5223
+    direct_tls: true
+    req_timeout: 60s
+    transport: socket
+    sasl:
+      mechanisms: [scram_sha_1, scram_sha_256]
+
+  - type: s2s
+    port: 5269
+    req_timeout: 60s
+    max_stanza_size: 131072
+
+  - type: s2s
+    port: 5270
+    direct_tls: true
+    req_timeout: 60s
+    max_stanza_size: 131072
+
+s2s_out:
+  # dialback_secret: s3cr3tf0rd14lb4ck <-- TODO: Use a custom secret here
+  dial_timeout: 5s
+  req_timeout: 60s
+  max_stanza_size: 131072
+
+modules:
+#  enabled:
+#    - roster
+#    - offline
+#    - disco
+#    - private
+#    - vcard
+#    - version
+#    - caps
+#    - ping
+#    - carbons
+#
+#  version:
+#    show_os: true
+#
+#  offline:
+#    queue_size: 300
+#
+#  ping:
+#    ack_timeout: 90s
+#    interval: 3m
+#    send_pings: true
+#    timeout_action: kill
+#
+#  external:
+#    - name: ext_mod_1
+#      address: 127.0.0.1:4569
+#      is_secure: false
+#      request_timeout: 60s
+#
+#      event_handler:
+#        topics: # notify c2s connect/disconnect events
+#          - c2s.stream.registered
+#          - c2s.stream.unregistered
+#
+#      iq_handler:
+#        namespace:
+#          in: [ https://jackal.im ]
+#          # reg_ex: ^org.jackal.+
+#
+#      message_handler:
+#        pre_processor: true
+#        pre_router: true
+
+components:
+
