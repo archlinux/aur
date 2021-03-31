@@ -1,7 +1,7 @@
 pkgbase = go-tuner-git
 	pkgdesc = Search and Play songs from YouTube inside your terminal.
-	pkgver = r248.b79c371
-	pkgrel = 2
+	pkgver = r253.b3c7a72
+	pkgrel = 1
 	url = https://github.com/pauloo27/tuner
 	arch = i686
 	arch = x86_64

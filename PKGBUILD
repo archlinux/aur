@@ -1,8 +1,8 @@
 # Maintainer: Kyle Czar <czar at kalli dot st>
 pkgname=go-tuner-git
 provides=('go-tuner')
-pkgver=r248.b79c371
-pkgrel=2
+pkgver=r253.b3c7a72
+pkgrel=1
 pkgdesc="Search and Play songs from YouTube inside your terminal."
 arch=('i686' 'x86_64')
 url="https://github.com/pauloo27/tuner"
@@ -37,6 +37,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -DT tuner ${pkgdir}/usr/bin/go-tuner
+    install -DT tuner ${pkgdir}/usr/bin/tuner
     install -DT LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
