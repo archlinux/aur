@@ -2,8 +2,8 @@
 
 _pkgname='sfeed_curses'
 pkgname="${_pkgname/_/-}"
-pkgver=0.9.9
-pkgrel=3
+pkgver=0.9.10
+pkgrel=1
 pkgdesc='Curses UI front-end for sfeed RSS and Atom parser'
 arch=('any')
 url='https://www.codemadness.org/sfeed_curses-ui.html'
@@ -12,7 +12,7 @@ license=('ISC')
 depends=('ncurses')
 optdepends=('sfeed: RSS and Atom parser')
 source=("${_url_source}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('29bac3112c9804f7d3bfd1b25b72b42390f97723ef5021ed5584a54e2774118d')
+sha256sums=('d64a64116cd16ba00c592ca08a8d545d2fa91c2cf9cf8673e2f0b6c7b101b2db')
 
 build() {
   make -C "${_pkgname}-${pkgver}"
