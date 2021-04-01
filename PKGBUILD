@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=119
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
 arch=(x86_64 i686)
 url="https://ares.dev/"
@@ -16,7 +16,7 @@ source=("https://ares.dev/downloads/ares_v119-source.zip"
         "ares-paths.patch")
 sha256sums=("a61e15acee8bb84107d1eccea53b6d8c23ee34d902c01c53d3b4e55a20996771"
         "9a91bcfb10df8dfdf02375d9015064de3d20faf251b456caf6760e73a7f4e466"
-        "a16574ed09a7ddac02d7cf9f1ab453e9be22c1887e3ee50fe2abcd9ed8c118df")
+        "99e0ea0b33f6f3583c27e2ebbb8a7b1b482da19527d9f3e61c2dc26e9e345d71")
 
 prepare() {
   patch -Np1 -i "${srcdir}/ares-paths.patch"
