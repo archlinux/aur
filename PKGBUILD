@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 pkgname=tvision-git
 pkgver=586.r319.g3a36472
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern port of Turbo Vision 2.0 with cross-platform and Unicode support"
 arch=('x86_64')
 url="https://github.com/magiblot/tvision"
@@ -9,9 +9,8 @@ license=('MIT' 'custom:public-domain')
 depends=('ncurses')
 makedepends=('git' 'cmake>=3.5')
 optdepends=('gpm: Linux console mouse support (requires recompile)')
-provides=('tvision')
+provides=('tvision' 'libtvision.a')
 conflicts=('tvision')
-# options=('staticlibs')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
