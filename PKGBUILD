@@ -1,33 +1,43 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=iauto
-pkgver=3.1.2
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="Flowchart diagrams drawer"
 arch=('x86_64')
 url="http://www.iautodraw.com"
 license=('unknown')
 depends=(electron3)
-source=("http://www.iautodraw.com/static/version/Iauto_3.1.2(Linux).deb")
-sha512sums=('561ec73b03fc0fe22e69e7ce9a440f3fa260d81f5f104923483761c2581796df2c5bc9245af371b5886aea5cc02b5479b6a22f5db2300fb882e1be26db5dfa43')
+makedepends=(p7zip gendesk)
+source=("${pkgname}-${pkgver}.exe::http://www.iautodraw.com/static/version/IAuto%20Setup%20${pkgver}(win%2064).exe")
+sha512sums=('98c0fa2cf432dbafe90fbbf17709ebf1aea2fb7801a54e138d87a2ab466c10f4fba2157c5585a72aff2791487bfdb46e5f6301e721f6ad41ece19a50820eab53')
 
-prepare() {
+    prepare() {
     cd $srcdir
-    tar -xvf data.tar.xz -C "${srcdir}"
+    7z e ${pkgname}-${pkgver}.exe -aoa
+    7z x app-64.7z resources/   -aoa
+    
+#     mv resources/app.asar ${pkgname}.asar
+    
+    # it will not run without this, don't know why
+    asar extract resources/app.asar build/
+    asar pack build ${pkgname}.asar
 }
 
 package() {
     cd $srcdir/
-    mv usr ${pkgdir}/
+    for res in {256x256,512-512} 
+    do
+        install -Dm644 build/dist/electron/static/image/icons/${res}.png \
+        ${pkgdir}/usr/share/icons/hicolor/${res:0:3}x${res:0:3}/apps/${pkgname}.png
+    done
+    
+    gendesk -f --pkgname "$pkgname" --pkgdesc "IAuto(IA) 流程可视化" --icon "${pkgname}" --categories "Utility;" --name "${pkgname}" --exec "${pkgname}"
+    
+    install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     
     mkdir -p ${pkgdir}/usr/share/${pkgname}
-    mv $srcdir/opt/${pkgname}/resources/app.asar ${pkgdir}/usr/share/${pkgname}/${pkgname}.asar
-    
-    cd ${pkgdir}/usr/share/applications
-    sed -i "4c Exec=${pkgname} %U" ${pkgname}.desktop
-    
-    
-    
+    mv ${pkgname}.asar ${pkgdir}/usr/share/${pkgname}/
     
     # link executable
     mkdir -p ${pkgdir}/usr/bin/
