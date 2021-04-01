@@ -1,13 +1,15 @@
 # Maintainer: garionion <garionion at entr0py.de>
+# thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=0.28.0
+pkgver=0.28.1
 _flutterversion=2.0.3-stable
-pkgrel=2
+pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64')
 url="https://fluffychat.im/"
 license=('AGPL3')
+depends=('libolm')
 makedepends=('clang'
              'ninja'
              'cmake'
@@ -18,7 +20,7 @@ source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
 sha256sums=('95c5045d0739187d961d24b7315e562d6b998c6ef7665aab7f199d3b2f1b4691'
-            'a24fd9d565980b7beb7d21cf1f51230b613d4d66ae771a17e95a3711d85d47c5')
+            '25defcb4419db484b2230c9da852d0f0c72898b94d442b9ebe3595dc04920d7c')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
