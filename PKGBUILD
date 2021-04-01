@@ -8,7 +8,7 @@ pkgbase=jack2-git
 pkgname=('jack2-git' 'jack2-dbus-git')
 pkgdesc="The JACK low-latency audio server"
 pkgver=1.9.17.r1.ge984aeb2
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 url="http://jackaudio.org/"
@@ -82,8 +82,8 @@ package_jack2-dbus-git() {
   'wait' 'zombie')
 
   pkgdesc+=" (dbus integration)"
-  depends=('gcc-libs' 'glibc' 'jack2' 'libdbus-1.so' 'libexpat.so'
-  'libjackserver.so' 'python-dbus')
+  depends=('dbus-python' 'gcc-libs' 'glibc' 'jack2' 'libdbus-1.so' 'libexpat.so'
+  'libjackserver.so')
   conflicts=('jack2-dbus')
   provides=('jack2-dbus')
 
