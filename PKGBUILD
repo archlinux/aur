@@ -14,8 +14,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=16.1.0
-_buildver=17198959
+pkgver=16.1.1
+_buildver=17801498
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
@@ -73,7 +73,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '985f9992702874ecee2518b57fb73d5228d8cb065d4435fc3015870a49e91194'
+  '62e1b91bf580e05ddc14a1cc52589731291a4262fa1dca956d23e4c60ce013a5'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -104,7 +104,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=12.1.0_17195230
+_vmware_fusion_ver=12.1.1_17801503
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 _unlocker_ver=3.0.3
@@ -123,7 +123,7 @@ source+=(
   "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
 )
 sha256sums+=(
-  '75a54777ddc759babe84d276156dafa8822bdc5ece7b751de8ac1948b13af136'
+  'fbc94a432c00fb9e05dd648cc80dd58cfb052c3aa53f44dc996be02e25a7c270'
   '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -382,7 +382,7 @@ fi
     -e "s/@PKGVER@/$_pkgver/g" \
     -i "$dkms_dir/dkms.conf"
 
-  for module in vmmon vmnet; do # vmblock vmci vsock
+  for module in vmmon vmnet; do
     tar -xf "vmware-vmx/lib/modules/source/$module.tar" -C "$dkms_dir"
     msg "Patching $module module for DKMS"
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
