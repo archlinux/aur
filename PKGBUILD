@@ -1,23 +1,24 @@
 # Maintainer: robertfoster
 
 pkgname=partclone-utils
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Utility for use with partclone generated images."
 arch=('i686' 'x86_64')
-url="http://www.idealworldinc.com/partclone-utils/"
+url="https://sourceforge.net/projects/partclone-utils"
 license=(GPL)
-source=("https://sourceforge.net/projects/partclone-utils/files/$pkgname-$pkgver.tar.gz")
+source=("${url}/files/$pkgname-$pkgver.tar.gz")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-${pkgver}"
+  autoreconf -i
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('8ab22dfad00559533bc6694f756d6070')
+sha256sums=('1dc98b4f8f26cfd16674edf54e2e2e393efcb4b1269787b3616ca9e5f96d9030')
