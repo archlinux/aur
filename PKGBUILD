@@ -7,89 +7,41 @@
 # Contributor: Dede Dindin Qudsy <xtrymind+gmail+com>
 # Contributor: Ike Devolder <ike.devolder+gmail+com>
 
-pkgbase=nvidia-390xx
-pkgname=(nvidia-390xx nvidia-390xx-dkms)
+pkgname=nvidia-390xx
 pkgver=390.141
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
-makedepends=("nvidia-390xx-utils=${pkgver}" 'libglvnd' 'linux-headers')
+makedepends=("nvidia-390xx-utils=${pkgver}" 'libglvnd' 'linux-headers' "nvidia-390xx-dkms=$pkgver")
+provides=('NVIDIA-MODULE')
 conflicts=('nvidia')
 license=('custom')
 options=('!strip')
-_pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
-source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-        'kernel-4.16.patch'
-        'kernel-5.11.patch')
-b2sums=('fae33e5fcd8f0429f163ad40e58a07c42ff47260bd1b0f56989d6147d63294c475f33ddc02f06a16eaf8c8ea9f74a98dbcb32b5322c68661331ebf7dfe976770'
-        '16480a3df51248b5adf3a3349f602f96cd830b5364c0a1c142a53099ed1e881f727026fe36b837b76f20aef7e7bf606f52c1af28f1eec7cc8bf39a571243a4ba'
-        '51f0c73e5e2b3fa96267b60c53c4acf966a6cf4de9acabd10cfc26bbfadba95cc7766546afe37e0e0ce67b5b9a0fb3cbea35ed8d47505d456473d1a9f7248dad')
-
-prepare() {
-    sh "${_pkg}.run" --extract-only
-    cd "${_pkg}"
-
-    # Restore phys_to_dma support (still needed for 390.138)
-    # From loqs via https://bugs.archlinux.org/task/58074
-    patch -Np1 -i ../kernel-4.16.patch
-
-    # From Joan Bruguera via Ike Devolder
-    # https://gitlab.com/herecura/packages/nvidia-390xx-dkms/-/blob/herecura/linux-5.11.patch
-    patch -Np1 -i ../kernel-5.11.patch
-
-    cp -a kernel kernel-dkms
-    cd kernel-dkms
-    sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
-    sed -i 's/__JOBS/`nproc`/' dkms.conf
-    sed -i 's/__DKMS_MODULES//' dkms.conf
-    sed -i '$iBUILT_MODULE_NAME[0]="nvidia"\
-DEST_MODULE_LOCATION[0]="/kernel/drivers/video"\
-BUILT_MODULE_NAME[1]="nvidia-uvm"\
-DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
-BUILT_MODULE_NAME[2]="nvidia-modeset"\
-DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
-BUILT_MODULE_NAME[3]="nvidia-drm"\
-DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
-
-    # Gift for linux-rt guys
-    sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
-}
 
 build() {
-    cd "${_pkg}"/kernel
-    make SYSSRC=/usr/src/linux module
+    #cd "${_pkg}"/kernel
+    #make SYSSRC=/usr/src/linux module
+
+    _kernver=$(</usr/src/linux/version)
+
+    fakeroot dkms build --dkmstree "${srcdir}" -m nvidia/${pkgver} -k ${_kernver}
 }
 
-package_nvidia-390xx() {
-    pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
+package() {
     depends=('linux' "nvidia-390xx-utils=${pkgver}" 'libglvnd')
 
-    _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
-    install -Dt "${pkgdir}${_extradir}" -m644 \
-      "${srcdir}/${_pkg}/kernel"/nvidia{,-modeset,-drm,-uvm}.ko
+    _kernver="$(</usr/src/linux/version)"
 
-    find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
+    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 \
+        nvidia/${pkgver}/${_kernver}/${CARCH}/module/*
 
-    echo "blacklist nouveau" |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
-
-    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
-}
-
-package_nvidia-390xx-dkms() {
-    pkgdesc="NVIDIA driver sources for linux, 390xx legacy branch"
-    depends=('dkms' "nvidia-390xx-utils=$pkgver" 'libglvnd')
-    provides=("nvidia-390xx=$pkgver")
-    conflicts+=('nvidia-390xx')
-
-    cd ${_pkg}
-
-    install -dm 755 "${pkgdir}"/usr/src
-    cp -dr --no-preserve='ownership' kernel-dkms "${pkgdir}/usr/src/nvidia-${pkgver}"
+    # compress each module individually
+    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 
     echo "blacklist nouveau" |
         install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
 
-    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
+    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 \
+        /usr/share/licenses/nvidia-390xx-dkms/LICENSE
 }
