@@ -1,6 +1,6 @@
 pkgbase = kime-git
 	pkgdesc = Korean IME
-	pkgver = 2.3.0.r0.03e8565
+	pkgver = 2.3.1.r0.92df30e
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
