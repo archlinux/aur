@@ -1,8 +1,10 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-# Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
+# Maintainer: Jules Sam. Randolph <jules.sam.randolph@gmail.com>
+# Contributors: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
+#               Dimitris Kiziridis <ragouel at outlook dot com>
+
 
 pkgname=flipper
-pkgver=0.82.2
+pkgver=0.83.0
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('x86_64')
@@ -17,7 +19,7 @@ optdepends=('watchman: Required for a fully functional install'
             'android-sdk: Required for a fully functional install')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('6976615ba857b49d1b05d7041d33ab984349a31813fbe708145699b03ca2e7c3')
+sha256sums=('9e818ee8f55570480cf7d7674b8b099106c232c61dc7eb543fa53b787d37c3e4')
 conflicts=('flipper-bin')
 
 build() {
