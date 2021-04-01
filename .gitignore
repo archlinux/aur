@@ -1,0 +1,4 @@
+admbrowser/
+pkg/
+src/
+*.pkg.tar*
