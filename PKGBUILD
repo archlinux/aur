@@ -3,7 +3,7 @@
 
 _pkgname=electrum
 pkgname="${_pkgname}"-appimage
-pkgver=4.0.9
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Electrum Bitcoin wallet with bundled libraries"
 arch=('x86_64')
@@ -18,7 +18,7 @@ validpgpkeys=('6694D8DE7BE8EE5631BED9502BD5824B7F9470E6')
 source=("https://download.electrum.org/${pkgver}/${_appimage}"{,.asc} 
         "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/spesmilo/${_pkgname}/${pkgver}/LICENCE")
 
-b2sums=('028985276576836f5d8afc13b0754a048fd3fd1ad28476e32342426a20a89a740c17da178f43d85c71d7ae3fd7f32091a1dcc4ceae5ccea331b0e263b8e5841a' 
+b2sums=('e29961d59f8362aad36e26a076b1fd9d5f61b51c3672c3a1b17cf8891073eb7d0b12c62f17dd131a05413a5b75bca6b4b3029ddafdcedf94230bb0d66d16046e' 
         'SKIP' 
         'a70dea849f4af001369ba2d35bc79c86d8212f0511f86d6f86f88ba0372ba72ef2ef9e2cee176ca5c85cd8c7fd65a95ed388d11cfb8314252d9c8a7ab66c6110')
 
