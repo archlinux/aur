@@ -11,7 +11,7 @@ arch=(x86_64)
 url=https://github.com/Shatur95/optimus-manager-qt
 license=(GPL3)
 depends=(qt5-base qt5-svg qt5-x11extras 'optimus-manager>=1.4')
-makedepends=(qt5-tools libxrandr extra-cmake-modules)
+makedepends=(git qt5-tools libxrandr extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(13e627617087845b81ca4ecd19cbbda7393d5bd823a77b7115f34fa4282991a9)
 
