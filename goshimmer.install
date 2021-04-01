@@ -5,6 +5,7 @@ pre_install() {
 		useradd --no-create-home --system goshimmer > /dev/null
 	fi
 	mkdir -p /var/lib/goshimmer
+	mkdir -p /etc/goshimmer
 }
 
 post_install() {
