@@ -20,8 +20,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.11.10
-pkgrel=3
+pkgver=5.11.11
+pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -33,29 +33,29 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=52bfa7f40779c278ba7132ae04bded62debbb1b8
+_arch_config_commit=5cb5e5c5c94022293ca0cb7dc2b5eccf3dbb57fe
 _bmqversion=5.11-r3
 _bmq_patch="prjc_v${_bmqversion}.patch"
-_gcc_more_v=20210309
+_gcc_more_v=20210327
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=727836c67f1a3aab93dd432650135f98e11a7652"
-  "0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch::https://git.archlinux.org/linux.git/patch/?id=95df534789ea3a8e92cff3196d7233b3fc519138"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=79b01c393663d48d5d31752dc14d12f09418dc7a"
+  "0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch::https://git.archlinux.org/linux.git/patch/?id=a4010c3d6f43dec4bf0010cab87cb3d29b4c7087"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('84b97aeb190d570144d0e315edf8c0b51fd92a70f94a30f08ef49a65eedd48ee135b2c2f3a1a2827ace96fef2d1963e83948790c7729f3d7c1f615f8d32c9656'
+b2sums=('e82eca6aee8e983304d363f6b427784df593f1fa8c2e7c54b0c6317e9a59497d4398dcec60a0e1ef7efd1f964e1c55a8ee2e3fb1fbf238a87917b30fc049f30b'
         'SKIP'
-        '8a0e1fb03037e57df8de81856a0bdb94e393d9336b587b1c907c6e4ed15abfa6c86634131ebbfab45eeb6b423bf467536ad0543efbef2586645ade016c32a013'
+        '4d1d62d801bcf929febd42798e7b0a0f30dd9baa73a2c1d3a453139c0daec104479868cae98d0fd408e28ab565fee386e5a6fcc198be5b220968a9d88ecfafad'
         '13efa1d20f89452d036f300c311e0a4b5920fad3d27e4c8ddc9bf97d0c5105b599113c21c48e636c8a84bd38f8590d7f6ad8d9ce6306097fcca2c9ecd300344d'
-        '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
-        'c194a40410d3833d1d0ddbffa5fb28ab383a0594ab7db9cdda4b4f56a4f551469e48717cba4d61f5719be1c6ed5965476d0af538b919b86a45d7c6fce875338e'
-        '817ca96e8c7b63dab140d6cc1da10ce1cc3a700711c84ea3371eb3129bf06955c985de5b5f75df72a07a46aac2dbef3c2415c3e9faecb0863615db99c8bca3a9')
+        'f9a5de8af8ea693a21a824e3805c6d784d17ab72828000966a53ed46e66edce53a447271985634137e42901e41c4ac49d3f91e9262896668a335cea8ee896a7c'
+        '6fe262b7196d11eb4005fba9684ae6ad50cc953b86c398b81da1777c8e7892c5c92d4124a63aa01373fef5f9863bb662c9c9d3d16c5d4781e663643e1cc21d99'
+        'be8246def7306a93cdc2c79db023b337a885a737c3397394eb19d774a427dd3903081a9a4e9125bc1dbb7b1f693754fbd73bfaa1ede48c6ca3dec05216dfb894')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -115,7 +115,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-gcc-v10-and-kernel-5.8+.patch"
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
 
   make oldconfig
 
