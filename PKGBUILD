@@ -2,7 +2,7 @@
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('x86_64')
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -40,6 +40,11 @@ package() {
     rm             ${pkgdir}/opt/${_pkgname}/AppRun
     rm             ${pkgdir}/opt/${_pkgname}/jitsi-meet.desktop
     rm             ${pkgdir}/opt/${_pkgname}/jitsi-meet.png
+    # Since 2.8.4 jitsi-meet is a bash script that needs to point to jitsi-meet.bin, the bash script that jitsi ships is broken without this
+    cat > ${pkgdir}/opt/${_pkgname}/jitsi-meet << EOF
+#!/bin/bash
+/opt/${_pkgname}/jitsi-meet.bin --no-sandbox "\$@"
+EOF
 
     find           ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
 
