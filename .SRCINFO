@@ -1,0 +1,14 @@
+pkgbase = openocd-nuclei-bin
+	pkgdesc = OpenOCD with RISC-V support from Nuclei System Technology (official build).
+	pkgver = 0.10.0
+	pkgrel = 15
+	url = https://nucleisys.com/download.php
+	install = openocd-nuclei-bin.install
+	arch = x86_64
+	license = GPL
+	provides = openocd
+	source = https://nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-0.10.0-15-linux-x64.tgz
+	sha256sums = 636e48ffba7ab4b63f28f36db2549c09fb04cd2f876e450b8c3e39af4e5b983f
+
+pkgname = openocd-nuclei-bin
+
