@@ -1,0 +1,22 @@
+pkgbase = dcda
+	pkgdesc = 本软件支持串口 / TCP Server / TCP Client 三合一的通讯调试工具。
+	pkgver = 1.0.1_beta
+	pkgrel = 1
+	url = https://gitee.com/danpey/dcda
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = qt5-svg
+	makedepends = qt5-serialport
+	makedepends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-serialport
+	depends = qt5-multimedia
+	provides = dcda
+	conflicts = dcda
+	options = !strip
+	source = dcda.tar.gz::https://gitee.com/danpey/dcda/repository/archive/beta-1.0.1?format=tar.gz
+	sha256sums = d4e24ad81ac3b08dfa343edf9ba68bb65ee41cee21093adc398adac8622d3ffa
+
+pkgname = dcda
+
