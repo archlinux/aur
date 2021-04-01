@@ -1,6 +1,6 @@
 pkgbase = linvst3-x-bin
 	pkgdesc = Linux Windows vst3 wrapper/bridge
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst3-X
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = linvst3-x-bin
 	depends = gtk3
 	optdepends = jack
 	conflicts = linvst3x
-	source = https://github.com/osxmidi/LinVst3-X/releases/download/4.0/LinVst3-X-4.0-Debian-Stretch.zip
-	md5sums = d093dcb6f1316ed9a6399be05d0e1147
+	source = https://github.com/osxmidi/LinVst3-X/releases/download/4.1/LinVst3-X-4.1-Debian-Stretch.zip
+	md5sums = cbe75292d36afca9a06813d3919d58d3
 
 pkgname = linvst3-x-bin
 

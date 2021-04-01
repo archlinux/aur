@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst3-x-bin
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Linux Windows vst3 wrapper/bridge"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('linvst3x')
 optdepends=('jack')
 _suffix="Debian-Stretch"
 source=("$url/releases/download/$pkgver/LinVst3-X-$pkgver-$_suffix.zip")
-md5sums=('d093dcb6f1316ed9a6399be05d0e1147')
+md5sums=('cbe75292d36afca9a06813d3919d58d3')
 
 package() {
 	# Shared library
