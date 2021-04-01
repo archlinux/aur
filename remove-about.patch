@@ -1,0 +1,39 @@
+diff --git a/src/MainWindow.vala b/src/MainWindow.vala
+index 957b1f9..3bf5016 100644
+--- a/src/MainWindow.vala
++++ b/src/MainWindow.vala
+@@ -414,10 +414,6 @@ namespace Vocal {
+             toolbar.import_podcasts_selected.connect (() => {
+                 import_podcasts();
+             });
+-
+-            toolbar.about_selected.connect (() => {
+-                controller.app.show_about (this);
+-            });
+             
+             toolbar.theme_toggled.connect (() => {
+                 if (controller.settings.dark_mode_enabled) {
+diff --git a/src/Widgets/Toolbar.vala b/src/Widgets/Toolbar.vala
+index 1da6a48..403998e 100644
+--- a/src/Widgets/Toolbar.vala
++++ b/src/Widgets/Toolbar.vala
+@@ -38,7 +38,6 @@ namespace Vocal {
+ 		public signal void seek_backward_selected();
+ 		public signal void downloads_selected();
+         public signal void check_for_updates_selected();
+-        public signal void about_selected ();
+         public signal void theme_toggled ();
+ 
+         public Gtk.Menu             menu;
+@@ -193,11 +192,6 @@ namespace Vocal {
+             });
+             //menu.add(donate);
+ 
+-            var about = new Gtk.MenuItem.with_label (_("About"));
+-            about.activate.connect (() => {
+-                about_selected ();
+-            });
+-            menu.add (about);
+             menu.show_all();
+ 
+             // Create the AppMenu
