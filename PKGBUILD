@@ -36,6 +36,8 @@ build() {
     
     # build game (without android)
     JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" ./gradlew --gradle-user-home=. releaseJSettlers || return 1
+    # build server
+    JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" ./gradlew --gradle-user-home=. releaseDedicatedServer || return 1
 }
 
 package() {
@@ -49,7 +51,11 @@ package() {
     _workingDir='~/.'${_pkgname}
     _mapCreatorName='MapCreator'
     _mapCreatorScript=${_pkgname}'-'${_mapCreatorName,,}
-        
+
+    _serverJar='DedicatedJSettlersServer.jar'
+    _serverName='Server'
+    _serverScript=${_pkgname}'-'${_serverName,,}
+
     # create destination-dirs
     mkdir -p ${_jarDest} ${_dataDest} ${_licenseDest}
     
@@ -58,7 +64,8 @@ package() {
     unzip -j ${_progName}'.zip' ${_progName}'/'${_progName}'.jar' -d ${_jarDest} 
     unzip -j ${_progName}'.zip' ${_progName}'/'${_mapCreatorName}'.jar' -d ${_jarDest}
     unzip -j ${_progName}'.zip' ${_progName}'/maps/*' -d ${_dataDest}'/maps'
-    
+    cp ${_serverJar} ${_jarDest}
+
     # copy license
     cd ${srcdir}   
     cp ${_pkgname}'/LICENSE.txt' ${_licenseDest}
@@ -74,6 +81,11 @@ package() {
     echo 'cd '${_workingDir} >> ${bin}/${_mapCreatorScript}
     echo 'exec /usr/bin/java -jar /usr/share/java/'${_pkgname}'/'${_mapCreatorName}'.jar --maps=/usr/share/'${_pkgname}'/maps "$@"' >> ${bin}/${_mapCreatorScript}
     chmod +x ${bin}/${_mapCreatorScript}
+
+    echo '#!/bin/sh' > ${bin}/${_serverScript}
+    echo 'cd '${_workingDir} >> ${bin}/${_serverScript}
+    echo 'exec /usr/bin/java -jar /usr/share/java/'${_pkgname}'/'${_serverJar}' "$@"' >> ${bin}/${_serverScript}
+    chmod +x ${bin}/${_serverScript}
 
     install -Dm644 ../${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 ../${_mapCreatorScript}.desktop "${pkgdir}/usr/share/applications/${_mapCreatorScript}.desktop"
