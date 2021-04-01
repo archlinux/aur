@@ -6,6 +6,7 @@ pkgbase = gcstar-gitlab
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = gtk2-perl
 	depends = perl-gtk3
 	depends = perl-gtk3-simplelist
 	depends = perl-libwww

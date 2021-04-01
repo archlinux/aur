@@ -11,7 +11,7 @@ pkgdesc="A collection management application"
 arch=('any')
 url="https://gitlab.com/Kerenoc/GCstar"
 license=("GPL")
-depends=('perl-gtk3' 'perl-gtk3-simplelist' 'perl-libwww' 'perl-xml-simple'
+depends=('gtk2-perl' 'perl-gtk3' 'perl-gtk3-simplelist' 'perl-libwww' 'perl-xml-simple'
          'perl-net-snmp' 'perl-xml-parser' 'perl-switch'
          'perl-xml-libxml' 'perl-sort-naturally'
          'perl-http-message' 'perl-http-date' 'perl-http-cookies'
