@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=uhk-agent-appimage
-pkgver=1.5.10
+pkgver=1.5.11
 pkgrel=1
 pkgdesc="The configuration application of the Ultimate Hacking Keyboard."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(libusb fuse2 dbus-glib gtk2)
 source=("https://github.com/UltimateHackingKeyboard/agent/releases/download/v${pkgver}/UHK.Agent-${pkgver}-linux-x86_64.AppImage"
         uhk-agent.desktop.patch
         uhk-agent.sh)
-md5sums=('4d5f85f4782d23f5c02ce11547015da4'
+md5sums=('57892a992f1e2319fec38db5cd3ef1f3'
          '1224228320a6c7553ee66619fba68c98'
          'a417373306c108ea2632571d8309df9b')
 options=(!strip)
