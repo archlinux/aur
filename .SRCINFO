@@ -1,13 +1,13 @@
 pkgbase = spleen-font
 	pkgdesc = Monospaced bitmap fonts
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://www.cambus.net/spleen-monospaced-bitmap-fonts/
 	arch = any
 	license = BSD
 	conflicts = bdf-spleen
-	source = https://github.com/fcambus/spleen/releases/download/1.8.2/spleen-1.8.2.tar.gz
-	sha256sums = 16262d8e403486252c9541b9b1b5c2847c4e7329d214ca2e7f9889f83b196fdf
+	source = https://github.com/fcambus/spleen/releases/download/1.9.0/spleen-1.9.0.tar.gz
+	sha256sums = 18d2b207ba5e9fb9bdabc59f02c6ea856aa9d98a9c7b784324565b0603aeaa54
 
 pkgname = spleen-font
 
