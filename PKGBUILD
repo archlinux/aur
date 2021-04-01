@@ -2,13 +2,13 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 pkgname=python-liblarch-git
 _name=liblarch
-pkgver=3.0.1.r3.g8c90053
+pkgver=3.1.0.r0.gb0840da
 pkgrel=1
 pkgdesc="Python library to easily handle data structure, with a GTK binding"
 arch=('any')
 url="https://wiki.gnome.org/Projects/liblarch"
 license=('LGPL3')
-depends=('gtk3' 'python-gobject' 'python-cairosvg')
+depends=('gtk3' 'python-gobject' 'python-cairo')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-nose')
 provides=("${pkgname%-git}")
