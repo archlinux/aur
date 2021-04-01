@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A dmenu-inspired native client for web services. Supports youtube, spotify (podcasts), soundcloud, nyaa.si, 4chan, matrix and several manga sites.
-	pkgver = r610.cfa37b6
+	pkgver = r611.c2934be
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = quickmedia-git
 	optdepends = youtube-dl: To play youtube videos
 	provides = QuickMedia
 	conflicts = QuickMedia
-	source = quickmedia-git-r610.cfa37b6.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
-	sha512sums = 7815485f6fba252c307e99a118dd6aa8301ba7e95949da53d55652ae60f4c5fe9c80b0fba17036b770ee302595fe1dea4d00ca9f1fbd1145953ea020e2625d42
+	source = quickmedia-git-r611.c2934be.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
+	sha512sums = c93a640ec863b6fbde754c08d8c8be25c447e5189b4d058b7d18ad64d6405c0ed1bc19cb14762084fcba2c768a6709bcdeff38cc14e300835e84b78d3c92587d
 
 pkgname = quickmedia-git
 
