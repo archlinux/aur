@@ -5,8 +5,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.14.1
-pkgrel=3
+pkgver=2.14.2
+pkgrel=1
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
@@ -14,8 +14,9 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream' 'tk'
              'libnsl' 'avahi' 'ca-certificates' 'intltool' 'libnm' 'dbus-glib'
              'libgnt' 'libxcrypt')
+options=('!emptydirs')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('f132e18d551117d9e46acce29ba4f40892a86746c366999166a3862b51060780'
+sha256sums=('19654ad276b149646371fbdac21bc7620742f2975f7399fed0ffc1a18fbaf603'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
@@ -57,6 +58,10 @@ package_pidgin(){
   make -C libpurple DESTDIR="$pkgdir" uninstall-libLTLIBRARIES
 
   rm "$pkgdir/usr/share/man/man1/finch.1"
+
+  # https://bugs.archlinux.org/task/53770
+  # https://bugs.archlinux.org/task/69026
+  find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
 }
 
 package_libpurple(){
@@ -73,6 +78,10 @@ package_libpurple(){
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
   done
+
+  # https://bugs.archlinux.org/task/53770
+  # https://bugs.archlinux.org/task/69026
+  find "$pkgdir/usr/lib/perl5" -name perllocal.pod -delete
 }
 
 package_finch(){
