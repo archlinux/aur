@@ -1,6 +1,6 @@
 # Maintainer: Mike Cuche <cuche@gmx.com>
 pkgname=dsda-doom-git
-pkgver=r3506.681a31f7
+pkgver=r3718.0cbfc803
 pkgrel=1
 pkgdesc="Fork of PrBoom+ with extra tooling for demo recording and playback, with a focus on speedrunning (git version)"
 arch=('x86_64')
@@ -11,9 +11,9 @@ makedepends=('cmake' 'deutex' 'imagemagick' 'git')
 provides=('prboom-plus')
 conflicts=('prboom-plus')
 source=('git+https://github.com/kraflab/dsda-doom.git'
-'prboom-plus.svg')
+'dsda-doom.desktop')
 sha256sums=('SKIP'
-'be9670d095570bde98b651b0f263b7dd41b63158da9bbd84c4dfe6d6a3e4da1e')
+'31944f60e6cf45db60d63dd6538e0d21bade193646f28b000fa8c2f1d9672dbf')
 
 
 pkgver() {
@@ -31,6 +31,6 @@ build() {
 package() {
   cd "${srcdir}/dsda-doom/prboom2"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ${srcdir}/prboom-plus.svg "${pkgdir}"/usr/share/pixmaps/prboom-plus.svg
-  install -Dm644 ICONS/prboom-plus.desktop "${pkgdir}"/usr/share/applications/prboom-plus.desktop
+  install -Dm644 ICONS/dsda-doom.png "${pkgdir}"/usr/share/pixmaps/dsda-doom.png
+  install -Dm644 ${srcdir}/dsda-doom.desktop "${pkgdir}"/usr/share/applications/dsda-doom.desktop
 }
