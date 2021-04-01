@@ -2,7 +2,7 @@
 
 pkgname=fluxctl-bin
 pkgdesc="CLI client for Flux, the GitOps Kubernetes operator"
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fluxcd/flux"
@@ -10,7 +10,7 @@ license=('apache')
 _binary=fluxctl_linux_amd64
 _srcname=fluxctl
 source=("$_binary-$pkgver::https://github.com/fluxcd/flux/releases/download/$pkgver/$_binary")
-sha256sums=('bc3c5c1f4b82ddc6f5c56b5c2a12a0e695950d53ab77f7c52b893dbcb0625def')
+sha256sums=('991f77ec238b26238819c654455adf28e7f58f43a891011212f060a34af51b08')
 
 package() {
   install -Dm 755 "${srcdir}/${_binary}-${pkgver}" "${pkgdir}/usr/bin/${_srcname}"
