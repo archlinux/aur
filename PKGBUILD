@@ -53,10 +53,10 @@ build() {
     --disable-opencore-amr \
     "${arch_opts[@]}"
 
-  make -j1 dep
-  make -j1
+  make dep
+  make
 
-  make -j1 -C pjsip-apps/src/swig
+  make -C pjsip-apps/src/swig
 
   cd 'pjsip-apps/src/swig/python'
   python setup.py build
