@@ -1,18 +1,16 @@
 pkgbase = sofia-sip
 	pkgdesc = An open-source SIP User-Agent library
-	pkgver = 1.12.11
-	pkgrel = 4
+	pkgver = 1.13.3
+	pkgrel = 1
 	url = http://sofia-sip.sourceforge.net
 	arch = x86_64
 	arch = i686
 	license = LGPL
 	depends = glib2
 	depends = openssl
-	options = zipman
-	source = http://downloads.sourceforge.net/sofia-sip/sofia-sip-1.12.11.tar.gz
-	source = 0001-fix-buggy-loop-hack.patch
-	md5sums = f3582c62080eeecd3fa4cd5d4ccb4225
-	md5sums = ad26f31dec412906443823f10e2fdab0
+	depends = gawk
+	source = sofia-sip-1.13.3.tar.gz::https://github.com/freeswitch/sofia-sip/archive/refs/tags/v1.13.3.tar.gz
+	md5sums = f6805ecb2d46c04ef51efddd8a991fff
 
 pkgname = sofia-sip
 
