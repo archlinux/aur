@@ -4,6 +4,7 @@ pkgver=3.0.2
 pkgrel=0
 pkgdesc="remote.it is a cloud service that provides secure connections."
 url="https://remote.it"
+license=('MIT')
 arch=('x86_64')
 depends=('grep>=2.1.6' 'curl>=7.21.0' 'nodejs>=10' 'jq' 'avahi')
 optdepends=()
