@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Google Slides
+Exec=GoogleSlides
+Icon=/usr/share/pixmaps/GoogleSlides.png
+Terminal=false
+Categories=Slides;Google;Nativefier;

@@ -1,0 +1,18 @@
+pkgbase = google-slides-nativefier
+	pkgdesc = Electron wrapper for the Google Slides web application
+	pkgver = 21.04.01
+	pkgrel = 1
+	url = https://slides.google.com
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	makedepends = unzip
+	source = google-slides-nativefier.png
+	source = google-slides-nativefier.desktop
+	sha256sums = faafa258b255df313ec807447f87fde903d9b4b560cb83025d1396c5a07fe517
+	sha256sums = d453eca9594c39cbb6de6910ca410878e4c381fd7b8845f9db09341435b88f7c
+
+pkgname = google-slides-nativefier
+
