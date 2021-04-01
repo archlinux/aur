@@ -7,7 +7,7 @@
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://www.pjsip.org/'
@@ -17,15 +17,18 @@ makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp'
              'python' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pjsip/$pkgbase/archive/$pkgver.tar.gz"
         '0001-Don-t-build-Java-bindings.patch'
+        '0002-Fix-installation-of-libpjsua2-shared-libraries-2670.patch::https://github.com/pjsip/pjproject/commit/742f7dc252ded778a8b677937791c02e2fbc0dde.patch'
         'config_site.h')
 sha256sums=('c89b155a38daef6e92c8e1ae5c6895357fe5c5406dfdee2f3717962e21565f1c'
             'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
+            '2c4102f143bbe045946c417c74596475b0a875c70fa1bb5c7e12fc1f8df15a7c'
             '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
 prepare() {
   cd "$pkgbase-$pkgver"
   patch -Np1 < "../${source[1]}"
-  cp "../${source[2]}" 'pjlib/include/pj/config_site.h'
+  patch -Np1 < "../${source[2]%%::*}"
+  cp "../${source[3]}" 'pjlib/include/pj/config_site.h'
 }
 
 build() {
