@@ -1,6 +1,6 @@
 # Maintainer: Fernando Fernández <fernando@softwareperonista.com.ar>
 pkgname=gvls
-tag=18.0
+tag=19.0
 pkgver=0.${tag}
 pkgrel=1
 pkgdesc='GNOME Vala Language Server'
@@ -14,7 +14,7 @@ makedepends=(git meson)
 optdepends=()
 groups=()
 source=("https://gitlab.gnome.org/esodan/gvls/-/archive/${pkgname}-${tag}/${pkgname}-${pkgname}-${tag}.tar.gz")
-sha256sums=('9e8015ae4464828733290adebf9f79a5fb7b5e739cca3ba25aa9854fc3216763')
+sha256sums=('d1456dd68fdbea88f8d011ea8c465322800fbf19bc5d332270d25ec5033f0e13')
 
 prepare() {
   cd ${pkgname}-${pkgname}-${tag}
