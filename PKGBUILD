@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.120
+pkgver=4.4.135
 pkgrel=1
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://www.stremio.com/'
 license=('GPL3')
 depends=('mpv' 'nodejs' 'openssl' 'qt5-webengine' 'qt5-base' 'qt5-declarative'
           'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-translations' 'qt5-webchannel')
-makedepends=('git' 'librsvg')
+makedepends=('git' 'cmake' 'librsvg')
 source=("git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}"
         'git+https://github.com/Ivshti/libmpv.git'
         'git+https://github.com/itay-grudev/SingleApplication.git'
@@ -21,9 +21,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '241f5633528e9f19c84c7ca41266771c309e286d6d9393a99e0fbce2203a3caa'
-            'd035141496ad41352490464c3fff6492d13fee146edb88afeefc15d07662e89e'
-            '7653fc2d0ddf20fa212f15648f5ceb1c0b7b5dd6902c31b20f9724cb1665ec74')
+            '1560580101ec49d577f1840bc4215a584d01ee04a254826194b87f727f73bdc5'
+            '03173f78f1de32522c3cad4f3db3e315b7d4f409795e30347aa13c617321ce39'
+            'd1702ebfa92b55c26331e26ff50b5240c8bf69b0edfd6b7b78ef2da257a864d4')
 
 prepare() {
     git -C stremio-shell submodule init
