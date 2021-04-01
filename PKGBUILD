@@ -1,16 +1,16 @@
 # Maintainer: Omar Sandoval <osandov at osandov dot com>
 
 pkgname=drgn
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Scriptable debugger library'
 arch=('x86_64')
 url='https://github.com/osandov/drgn'
 license=('GPL3')
-depends=('bzip2' 'libkdumpfile' 'python' 'xz' 'zlib')
-makedepends=('gawk' 'python-setuptools')
+depends=('libelf' 'libkdumpfile' 'python')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('1571ec9a03ea019880e145cc46f9ff9aed613c0ad3e5e56c1e818f808811b03c')
+sha256sums=('91a0eec19f1569dffd764b200906e0bd5ea553faa2f4060184a6c0a41675c022')
 
 build() {
 	cd "$pkgname-$pkgver"

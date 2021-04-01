@@ -1,19 +1,16 @@
 pkgbase = drgn
 	pkgdesc = Scriptable debugger library
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/osandov/drgn
 	arch = x86_64
 	license = GPL3
-	makedepends = gawk
 	makedepends = python-setuptools
-	depends = bzip2
+	depends = libelf
 	depends = libkdumpfile
 	depends = python
-	depends = xz
-	depends = zlib
-	source = https://files.pythonhosted.org/packages/source/d/drgn/drgn-0.0.9.tar.gz
-	sha256sums = 1571ec9a03ea019880e145cc46f9ff9aed613c0ad3e5e56c1e818f808811b03c
+	source = https://files.pythonhosted.org/packages/source/d/drgn/drgn-0.0.10.tar.gz
+	sha256sums = 91a0eec19f1569dffd764b200906e0bd5ea553faa2f4060184a6c0a41675c022
 
 pkgname = drgn
 
