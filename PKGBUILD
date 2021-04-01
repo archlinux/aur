@@ -8,8 +8,8 @@ pkgname=java-openjdk-loom-ea-bin
 
 # loom is currently based on JDK 17
 _majorver=17
-_prerelease=5
-_buildno=191
+_prerelease=6
+_buildno=225
 _buildver=${_prerelease}_${_buildno}
 
 
@@ -19,12 +19,12 @@ _commit="2ae17c0a6436"
 _commit=$(echo ${_commit} | cut -c1-7)
 
 
-#pkgver=${_majorver}_${_buildver}
-pkgver=${_majorver}_${_commit}
+pkgver=${_majorver}_${_buildver}
+#pkgver=${_majorver}_${_commit}
 
 pkgrel=1
 # must stick to use epoch as the old upstream broke version comparisons
-epoch=63
+epoch=64
 
 # Virtual threads (fibers) and continuations for the JVM
 # Early-Access JVM prototype - don't use in production
@@ -49,10 +49,10 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 
-#source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
-source=("https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/${epoch}/jdk-${_majorver}-loom-linux.tar.gz")
+source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
+#source=("https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/${epoch}/jdk-${_majorver}-loom-linux.tar.gz")
 
-sha256sums=('d83209f40471d58066276c9efc1207437486b91374fe29ba5972489608725c25')
+sha256sums=('cf439c4daaf068cb675c394b1a1a93dc9433e7f0c139131ba7c5fdccab1b2c77')
 
 _eaname=java-openjdk-loom-ea
 _jvmdir=/usr/lib/jvm/${_eaname}
@@ -61,8 +61,8 @@ package() {
 
   # Install
   install -d "${pkgdir}${_jvmdir}"
-#  cd jdk-${_majorver}
-  cd jdk-${_majorver}-loom
+  cd jdk-${_majorver}
+#  cd jdk-${_majorver}-loom
   cp -a bin include jmods lib release "${pkgdir}${_jvmdir}/"
 
   # Link JKS keystore from ca-certificates-utils
