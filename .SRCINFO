@@ -1,0 +1,14 @@
+pkgbase = frangipanni
+	pkgdesc = Program to convert lines of text into a tree structure
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/birchb1024/frangipanni
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = frangipanni-0.4.0.tar.gz::https://github.com/birchb1024/frangipanni/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 81fb239a7c93d5f6f9e83662675ab4227f62f57b215a04e1773383225d99d7b6
+
+pkgname = frangipanni
+
