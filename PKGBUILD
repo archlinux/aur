@@ -1,24 +1,17 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=duf-git
-pkgver=r107.4c15e83
+pkgver=r128.bb93070
 pkgrel=1
 pkgdesc="Disk Usage/Free Utility"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/muesli/duf"
+url="https://github.com/muesli/${pkgname%-git}"
 license=('MIT')
 makedepends=('go' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git://github.com/muesli/duf.git)
+source=($pkgname::"git://github.com/muesli/${pkgname%-git}.git")
 sha256sums=('SKIP')
-
-prepare() {
-    export GOPATH="$srcdir/gopath"
-    export GO111MODULE=on
-
-    go clean -modcache
-}
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -27,6 +20,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
+
+    local commit
+    local extraflags
+    commit=$(git rev-parse --short HEAD)
+    extraflags="-X main.Version=${pkgver} -X main.CommitSHA=${commit}"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -38,10 +36,8 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-X main.Version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
+        -ldflags "${extraflags} -extldflags \"${LDFLAGS}\"" \
         -o "${pkgname%-git}" .
-
-    go clean -modcache
 }
 
 package() {
