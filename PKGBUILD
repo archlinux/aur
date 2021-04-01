@@ -2,8 +2,8 @@
 
 pkgname=alchitry-labs-bin
 _pkgname=alchitry-labs
-pkgver=1.2.1
-pkgrel=5
+pkgver=1.2.6
+pkgrel=6
 pkgdesc='Alchitry Labs - The Easiest Way to Program FPGAs'
 arch=(x86_64)
 license=('custom: commercial')
@@ -12,7 +12,7 @@ provides=(alchitry-labs)
 conflicts=(alchitry-labs)
 depends=('java-environment>=8')
 source=("$pkgname-$pkgver.tar.gz::https://cdn.alchitry.com/labs/alchitry-labs-$pkgver-linux.tgz" "${_pkgname}.desktop" "alchitry-loader.desktop")
-sha256sums=("12557569ab16988058e83e5e21c7bf3c70d8d88d13555626bdc30e519392c3dc"
+sha256sums=("2389233602c828e7b9bfbb0a3a97891e7c609717161069b69a8a9884e90bea57"
             "bd74a04852e5b7aa5b4764602900cadcccf7be22579a3e8090ee04a8f723c51b"
             "65f5408ef23cad8e214a6950071edc0b99027fcbdaa726a3b3428393c570a804")
 
