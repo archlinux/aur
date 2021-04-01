@@ -57,7 +57,6 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
 arch_revision=c3700a0016c1268c0827f2f15c6715e0d0dd89b0
 Patches="
         add-dependency-on-opus-in-webcodecs.patch
-        x11-ozone-fix-two-edge-cases.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch
         "
@@ -78,7 +77,6 @@ sha256sums=('SKIP'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             'd7775ffcfc25eace81b3e8db23d62562afb3dbb5904d3cbce2081f3fe1b3067d'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
-            '9e4743bdeaf5b668659ad53400e3977006916aac3a7ba045bbc750b7b4cbf274'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -175,7 +173,6 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../../add-dependency-on-opus-in-webcodecs.patch
-  patch -Np1 -i ../../x11-ozone-fix-two-edge-cases.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../../patches/chromium-89-quiche-dcheck.patch
