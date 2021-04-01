@@ -3,7 +3,7 @@
 _srcname=pyinstrument_cext
 
 pkgname=python-pyinstrument_cext
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A CPython extension supporting pyinstrument"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   "https://github.com/joerick/pyinstrument_cext/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '4e054364f5357b99703eab7c372e10eb085f3074fbff4fe4be997883bce1b67c'
+  '920c5c584077c13c436829133624b0ba189a1d73b6bba49c79b3e1a46879c9a0'
 )
 
 build() {
