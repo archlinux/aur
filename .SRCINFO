@@ -1,0 +1,15 @@
+pkgbase = bspacr-git
+	pkgdesc = LV2 effect plugin suited for any kind of music with zero latency
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/sjaehn/BSpacr
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = cairo
+	depends = lv2
+	source = git+https://github.com/sjaehn/BSpacr
+	sha512sums = SKIP
+
+pkgname = bspacr-git
+
