@@ -8,7 +8,7 @@
 
 pkgname=shutter
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="A featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="https://shutter-project.org/"
@@ -41,7 +41,7 @@ prepare() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 bin/$pkgname "$pkgdir/usr/bin/$pkgname"
-  cp -a share "$pkgdir/usr/"
+  make prefix="$pkgdir/usr" install
 }
+
 
