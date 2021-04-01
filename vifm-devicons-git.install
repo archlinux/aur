@@ -1,0 +1,14 @@
+post_install() {
+  echo "  1. install and set NERDfont as a default font for your terminal"
+  echo "  2. append  the following line to your .vifmrc file and restart Vifm"
+  echo "       source /usr/share/vifm-devicons/favicons.vifm"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+$op $*
+

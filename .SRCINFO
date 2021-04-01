@@ -1,0 +1,16 @@
+pkgbase = vifm-devicons-git
+	pkgdesc = File and directory icons for Vifm (git)
+	pkgver = r9.da0db19
+	pkgrel = 1
+	url = https://github.com/cirala/vifm_devicons
+	install = vifm-devicons-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = nerd-fonts-source-code-pro: recommended by the author of original ranger_devicons project
+	conflicts = vifm-devicons
+	source = vifm-devicons-git::git+https://github.com/cirala/vifm_devicons.git
+	md5sums = SKIP
+
+pkgname = vifm-devicons-git
+
