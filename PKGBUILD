@@ -3,8 +3,8 @@
 pkgorg='humanoid-path-planner'
 _pkgname='hpp-fcl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.6.0
-pkgrel=5
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -12,14 +12,9 @@ license=('BSD')
 depends=('assimp' 'eigenpy' 'octomap')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig} $url/pull/202.patch)
-sha256sums=('SKIP' 'SKIP' '2fb3c86ffdec3337901e0a07a77f945e055ea9e290938bddfdae5c1a251893ff')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
-
-prepare() {
-    cd "$pkgbase-$pkgver"
-    head -n33 "$srcdir/202.patch" | patch -p1
-}
 
 build() {
     cd "$pkgbase-$pkgver"
@@ -36,7 +31,7 @@ check() {
 package_hpp-fcl() {
     cd "$pkgbase-$pkgver"
     make DESTDIR="$pkgdir/" install
-    rm -rf $pkgdir/usr/share/doc
+    rm -rf "$pkgdir/usr/share/doc"
     sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclTargets.cmake"
     sed -i '/Boost COMPONENTS/s/python3//' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclConfig.cmake"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -45,6 +40,6 @@ package_hpp-fcl() {
 package_hpp-fcl-docs() {
     cd "$pkgbase-$pkgver"
     make DESTDIR="$pkgdir/" install
-    rm -rf $pkgdir/usr/{lib,include,"share/$_pkgname"}
+    rm -rf "$pkgdir"/usr/{lib,include,"share/$_pkgname"}
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
