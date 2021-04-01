@@ -1,0 +1,14 @@
+pkgbase = python-concurrent-log-handler
+	pkgdesc = RotatingFileHandler replacement with concurrency, gzip and Windows support
+	pkgver = 0.9.19
+	pkgrel = 1
+	url = https://github.com/Preston-Landers/concurrent-log-handler
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-portalocker
+	source = python-concurrent-log-handler-0.9.19.src.tar.gz::https://github.com/Preston-Landers/concurrent-log-handler/archive/0.9.19.tar.gz
+	sha512sums = 109a1bcdc898b5235b4e91f11410bf2e9a4b52a50eb4ea44b82856b5c74ab492add71d8f3374d1e26ac8d74e888f1d3949afd0652c7b2aeeee1080ce99e167b0
+
+pkgname = python-concurrent-log-handler
+
