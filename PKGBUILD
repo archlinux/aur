@@ -1,33 +1,36 @@
-# Maintainer: Thomas Krug <t.krug@elektronenpumpe.de>
+# Maintainer: Aleksandar Trifunovic <akstrfn@gmail.com>
+# Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 # Contributor: Pierre DOUCET <pierre at equinoxefr.org>
 
 pkgname=pcb2gcode
-pkgver=1.3.2
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Gerber to gcode file converter" 
+pkgdesc="Command-line tool for isolation, routing and drilling of PCBs."
 arch=('i686' 'x86_64')
-url="https://github.com/pcb2gcode/pcb2gcode/wiki"
+url="https://github.com/pcb2gcode/pcb2gcode"
 license=('GPL')
-depends=('boost-libs' 'gtkmm' 'gerbv-git')
-source=("https://github.com/pcb2gcode/pcb2gcode/releases/download/v${pkgver}/pcb2gcode-${pkgver}.tar.gz")
-md5sums=('60fb7e9878f082992a95359356d609b6')
+depends=('boost-libs' 'gtkmm' 'glibmm' 'gerbv')
+makedepends=('boost')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "patch")
+sha256sums=('49cc566b4b4ec00a3c847e3d4dc75bc91584bec07bcc77dcfad1f6129c6f6a0d'
+            '9adab6f0ccd3c9310954d2a49bca41b4733b827d3b53730b6f9a0405dab2071e')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 < ../patch
+  autoupdate
   autoreconf -i
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 

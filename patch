@@ -1,0 +1,68 @@
+diff --git a/configure.ac b/configure.ac
+index 025c6f35..cbb9c4ea 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,7 +18,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+ # Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_CC
+-AC_PROG_LIBTOOL
++LT_INIT
+ 
+ # Check for C++11
+ AX_CXX_COMPILE_STDCXX_14
+@@ -50,7 +50,7 @@ BOOST_FORMAT
+ BOOST_OPTIONAL
+ BOOST_VARIANT
+ 
+-AC_SUBST([BOOST_CPPFLAGS_SYSTEM], ['$(subst -I,-isystem ,$(BOOST_CPPFLAGS))'])
++#AC_SUBST([BOOST_CPPFLAGS_SYSTEM], ['$(subst -I,-isystem ,$(BOOST_CPPFLAGS))'])
+ 
+ PKG_CHECK_MODULES([glibmm], [glibmm-2.4 >= 2.8])
+ PKG_CHECK_MODULES([gdkmm], [gdkmm-2.4 >= 2.8])
+@@ -58,17 +58,17 @@ PKG_CHECK_MODULES([gerbv], [libgerbv >= 2.1.0])
+ PKG_CHECK_MODULES([rsvg], [librsvg-2.0 >= 2.0])
+ 
+ # Optional GEOS, as a faster and more reliable replacement for Boost geometry.
+-GEOS_INIT([3.8.1])
+-AS_IF([test "x$HAVE_GEOS" = "xyes"],
+-      [AC_MSG_NOTICE([Found geos, we'll use it instead of some of the boost geometry for greater accuracy and speed.])],
+-      [AC_MSG_NOTICE([Didn't find geos, we'll use boost geometry for all geometry functions.  If you see inaccuracies or you want faster run times, try geos.])])
+-AS_IF([test "x$HAVE_GEOS" = "xyes"],
+-      [AC_SUBST(GEOS_EXTRA, ["-DUSE_UNSTABLE_GEOS_CPP_API -DGEOS_VERSION=\\\"\$(GEOS_VERSION)\\\""])])
+-AS_IF([test "x$HAVE_GEOS" = "xyes"],
+-      [AC_SUBST(GEOS_CFLAGS_SYSTEM, ['$(subst -I,-isystem ,$(GEOS_CFLAGS))'])])
++# GEOS_INIT([3.8.1])
++# AS_IF([test "x$HAVE_GEOS" = "xyes"],
++#       [AC_MSG_NOTICE([Found geos, we'll use it instead of some of the boost geometry for greater accuracy and speed.])],
++#       [AC_MSG_NOTICE([Didn't find geos, we'll use boost geometry for all geometry functions.  If you see inaccuracies or you want faster run times, try geos.])])
++# AS_IF([test "x$HAVE_GEOS" = "xyes"],
++#       [AC_SUBST(GEOS_EXTRA, ["-DUSE_UNSTABLE_GEOS_CPP_API -DGEOS_VERSION=\\\"\$(GEOS_VERSION)\\\""])])
++# AS_IF([test "x$HAVE_GEOS" = "xyes"],
++#       [AC_SUBST(GEOS_CFLAGS_SYSTEM, ['$(subst -I,-isystem ,$(GEOS_CFLAGS))'])])
+ 
+ 
+-AC_SUBST([gdkmm_CFLAGS_SYSTEM], ['$(subst -I,-isystem ,$(gdkmm_CFLAGS))'])
++# AC_SUBST([gdkmm_CFLAGS_SYSTEM], ['$(subst -I,-isystem ,$(gdkmm_CFLAGS))'])
+ 
+ AC_SUBST(gerbv_LIBS)
+ AC_SUBST(gerbv_CFLAGS)
+@@ -77,16 +77,13 @@ AC_ARG_VAR([pcb2gcode_LDFLAGS_EXTRA], [Additional flags when linking pcb2gcode])
+ 
+ # GERBV_INTERPOLATION_LINEARx10 isn't available in older gerbv.h's, but
+ # we want to use the new symbol
+-CFLAGS+=" ${gerbv_CFLAGS}"
+-AX_C_COMPILE_VALUE(GERBV_INTERPOLATION_LINEARx10,NEW_LINEARX10,[#include "gerbv.h"])
++# CFLAGS+=" ${gerbv_CFLAGS}"
++# AX_C_COMPILE_VALUE(GERBV_INTERPOLATION_LINEARx10,NEW_LINEARX10,[#include "gerbv.h"])
+ 
+ # Ignore GTK 2.0 warnings for linux and macos.
+ AC_SUBST([gerbv_CFLAGS_SYSTEM1], ['$(subst -I/usr/include/gtk-2.0,-isystem /usr/include/gtk-2.0,$(gerbv_CFLAGS))'])
+ AC_SUBST([gerbv_CFLAGS_SYSTEM], ['$(subst -I/usr/local/Cellar/gtk+/2.24.32_3/include/gtk-2.0,-isystem /usr/local/Cellar/gtk+/2.24.32_3/include/gtk-2.0,$(gerbv_CFLAGS_SYSTEM1))'])
+ 
+-# Checks for header files.
+-AC_HEADER_STDC
+-
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_HEADER_STDBOOL
+ AC_C_INLINE
