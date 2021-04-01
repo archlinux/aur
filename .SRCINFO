@@ -1,0 +1,13 @@
+pkgbase = qq2mp
+	pkgdesc = A Tool to Search Mobile Phone Number Easily
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Brx86/yun
+	arch = x86_64
+	license = GPL3
+	depends = python
+	source = https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/qq2mp.tar.gz
+	md5sums = 1df6fd6bb97668adce935fd80f70d8de
+
+pkgname = qq2mp
+
