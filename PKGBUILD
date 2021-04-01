@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.7.1.r59.g774002483b310a71
+pkgver=3.7.1.r65.g4f24653d776f570b
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git"
-        "https://patch-diff.githubusercontent.com/raw/Plagman/gamescope/pull/150.patch")
+        "fix-wlroots-master-$pkgrel.patch::https://patch-diff.githubusercontent.com/raw/Plagman/gamescope/pull/150.patch")
 sha512sums=('SKIP'
             'e5769d1b67c1d19b0142faadd752178f398ca1b893d01683d95658c4eaad15cc5921552fa89b302891f75fbc6ff67b65dced856808d7ac9d80d3812cc8d9441f')
 
