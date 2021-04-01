@@ -106,7 +106,6 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../add-dependency-on-opus-in-webcodecs.patch
-  patch -Np1 -i ../x11-ozone-fix-two-edge-cases.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-89-quiche-dcheck.patch
