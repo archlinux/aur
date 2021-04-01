@@ -1,0 +1,42 @@
+pkgbase = nvidia-settings-beta-gtk2
+	pkgdesc = Tool for configuring the NVIDIA graphics driver
+	pkgver = 465.19.01
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nvidia-settings
+	arch = x86_64
+	license = GPL2
+	makedepends = inetutils
+	makedepends = jansson
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = libxv
+	makedepends = libvdpau
+	makedepends = nvidia-utils
+	makedepends = libxext
+	options = staticlibs
+	source = -465.19.01.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/465.19.01.tar.gz
+	source = libxnvctrl_so.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = nvidia-settings-beta-gtk2
+	depends = jansson
+	depends = gtk3
+	depends = libxv
+	depends = libvdpau
+	depends = nvidia-utils
+	depends = libxnvctrl
+	provides = nvidia-settings
+	provides = nvidia-settings-beta
+	conflicts = nvidia-settings
+	conflicts = nvidia-settings-beta
+
+pkgname = libxnvctrl-beta-gtk2
+	pkgdesc = NVIDIA NV-CONTROL X extension
+	depends = libxext
+	provides = libXNVCtrl.so
+	provides = libxnvctrl
+	provides = libxnvctrl-beta
+	conflicts = libxnvctrl
+	conflicts = libxnvctrl-beta
+
