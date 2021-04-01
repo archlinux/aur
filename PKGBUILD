@@ -4,7 +4,7 @@ pkgname=hqplayer-embedded
 _rpmver=4.22.3-59
 _debpkgver=4.22.3-67
 pkgver=4.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'aarch64')
@@ -20,14 +20,25 @@ sha256sums_aarch64=('5ee9595652b3289fe96ad5f33102fd062d2583a1eeb65fb615293067a8d
 '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
 
 package() {
-  if [ "$arch" == "x86_64" ]; then
+  if [ "$(uname -m)" == "x86_64" ]; then
   bsdtar xf hqplayerd-"$_rpmver".fc33.x86_64.rpm -C "$pkgdir"
   else
-  bsdtar xf hqplayerd_"$_debpkgver"_arm64.deb -C "$pkgdir"
+  cd "$srcdir"
+  bsdtar xf data.tar.xz -C "$pkgdir"
   fi
+  
   install -Dm644 "hqplayerd.service" "$pkgdir/usr/lib/systemd/user/hqplayerd.service"
+  
+  if [ "$(uname -m)" == "x86_64" ]; then
   install -Dm644 "$pkgdir/usr/share/doc/hqplayerd/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   rm "$pkgdir/usr/share/doc/hqplayerd/LICENSE"
+  else
+  install -Dm644 "$pkgdir/usr/share/doc/hqplayerd/copyright" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  rm "$pkgdir/usr/share/doc/hqplayerd/copyright"
+  install -Dm644 "$pkgdir/lib/systemd/system/hqplayerd.service" "$pkgdir/usr/lib/systemd/system/hqplayerd.service"
+  rm -rf "$pkgdir/lib"
+  fi
+  
   cp "$pkgdir/etc/hqplayer/hqplayerd.xml" "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml"
   rm "$pkgdir/etc/hqplayer/hqplayerd.xml"
   
