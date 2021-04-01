@@ -2,12 +2,12 @@
 
 pkgname=kame-editor-git
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/beelzy/kame-editor"
 license=('GPL3')
 pkgdesc='A 3DS theme editor made with Qt5'
-depends=('qt5-base' 'portaudio' 'kame-tools-git' 'rstmcpp-git' 'vgmstream-kode54-git')
+depends=('qt5-base' 'portaudio' 'kame-tools-git' 'rstmcpp-git' 'vgmstream-git')
 makedepends=('git')
 
 _gitroot='https://gitlab.com/beelzy/kame-editor.git'
