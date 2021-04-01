@@ -2,7 +2,7 @@
 
 _name=dvc
 pkgname=$_name-bin
-pkgver=2.0.15
+pkgver=2.0.16
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects as a binary"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 	'bash-completion'
 )
 source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-1.x86_64.rpm")
-sha256sums=('47977243a8f750d7d24922b364cb3b40e69ec98b1d17d906038612c78721fcd0')
+sha256sums=('d4e0b07ff99dfa157446e6cdb21c7e39b4253e994481409182b46d9b9b159a1c')
 
 package() {
 	cd $srcdir
@@ -24,8 +24,7 @@ package() {
 	cp -R usr/lib ${pkgdir}/usr/lib/dvc
 	cp -R usr/bin ${pkgdir}/usr/lib/dvc
 	chmod -R 755 ${pkgdir}/usr/lib/dvc
-	#install -Dm644 -t ${pkgdir}/usr/share/zsh/site-functions usr/share/zsh/site-functions/_dvc/_dvc
-	install -Dm644 -t ${pkgdir}/usr/share/zsh/site-functions usr/share/zsh/site-funtions/_dvc
+	install -Dm644 -t ${pkgdir}/usr/share/zsh/site-functions usr/share/zsh/site-functions/_dvc
 	install -Dm644 -t ${pkgdir}/etc/bash_completion.d etc/bash_completion.d/dvc
 	mkdir ${pkgdir}/usr/bin
 	ln -s /usr/lib/dvc/bin/dvc ${pkgdir}/usr/bin/dvc
