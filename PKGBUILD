@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=joindesktop-git
-pkgver=0.4.0.r67.14c017b
-pkgrel=1
+pkgver=0.5.0.r88.3c7d3ad
+pkgrel=2
 pkgdesc="An official desktop app for Join by Joaoapps built in Electron."
 arch=('x86_64')
 url="https://joaoapps.com/join/desktop"
 license=('none')
-depends=('electron')
+depends=('electron9')
 makedepends=('git' 'npm')
 optdepends=('libnotify: for native notifications')
 provides=("${pkgname%-git}")
@@ -16,12 +16,13 @@ source=("${pkgname%-git}::git+https://github.com/joaomgcd/JoinDesktop.git"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '59746e474ebed1e32f93b2732da8d2d19fc47d53696c787142f672372606281f'
-            'b6d1d5ce0e3e41b63924c4710fb73a7cb556ef1dccaad52f5b3d2d585d5a03fe')
+            '306bd114d7229fb09f2ff5a8fae8c544d74092654a4d9652e1a2579706250bda')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "$(node -pe "require('./package.json').version").r%s.%s" \
 		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
