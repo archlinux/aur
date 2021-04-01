@@ -6,9 +6,9 @@
 # General package information
 pkgname=krack
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Krathalan's packaging softwares"
-url="https://git.sr.ht/~krathalan/krack"
+url="https://github.com/krathalan/krack"
 license=("GPL3")
 arch=("any")
 
@@ -21,10 +21,8 @@ makedepends=("git" "scdoc")
 conflicts=("krack-git")
 
 # Download information
-_packagesig="${url}/blob/master/signatures/${pkgver}.tar.gz.sig"
-source=("${url}/archive/${pkgver}.tar.gz" "${_packagesig}")
-validpgpkeys=("B46B326273E4A1D21AAA3F6F529AC10050BD24EF")
-sha512sums=("f4210026344a56e3bc8d937ae3ad8b5c86fc86c05053528e74ae0e95492032fca2be4f3d9ab9c98967871014c26d7850800b09551a5840e5d4b7aec8b3e5f06d" "188468db09fef2550668dbd67d036e3836cbaa728eb7741a4b5a5eabc3b8cecac75d6c52875f1974570e38c4dfa5328b87940b512a36b1a63737e75a501db75f")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz" "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.asc")
+sha256sums=("a547bb5c9f98f051adb4adcb784aefdda25c104604b55d928c881f41b482d8b0" "97f3f9c4c67b0872b7b8021f05025b3d1c6b6537856a3645206debb17ee29519")
 
 build()
 {
