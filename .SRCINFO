@@ -1,0 +1,13 @@
+pkgbase = make-tui
+	pkgdesc = Display and run Makefile rules in the terminal.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/claby2/make-tui
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = make-tui-0.1.0.tar.gz::https://github.com/claby2/make-tui/archive/v0.1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = make-tui
+
