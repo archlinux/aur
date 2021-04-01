@@ -1,0 +1,15 @@
+pkgbase = sysbox-ce-bin
+	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nestybox/sysbox
+	install = install.sh
+	arch = x86_64
+	license = Apache
+	optdepends = shiftfs: Operation without userns-remap (stock kernel)
+	optdepends = shiftfs-dkms: Operation without userns-remap (DKMS)
+	source = https://github.com/nestybox/sysbox/releases/download/v0.3.0/sysbox-ce_0.3.0-0.debian-buster_amd64.deb
+	sha256sums = 02aa4b3ab3e823d91e01c742875a4ece9d6415c9915c5f08df918725361b928e
+
+pkgname = sysbox-ce-bin
+
