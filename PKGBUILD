@@ -15,7 +15,7 @@ conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git"
         "https://patch-diff.githubusercontent.com/raw/Plagman/gamescope/pull/150.patch")
 sha512sums=('SKIP'
-            '939b87c9c83ba957ad1eda6b89d281fc03365f2c1e01377a4b1cb06647ceeba0cf00f6df100891d81b3b585a29d850089440c6ae62bc077554c9e5c32eca85df')
+            'e5769d1b67c1d19b0142faadd752178f398ca1b893d01683d95658c4eaad15cc5921552fa89b302891f75fbc6ff67b65dced856808d7ac9d80d3812cc8d9441f')
 
 
 pkgver() {
