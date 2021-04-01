@@ -5,17 +5,22 @@ pkgbase = kime-bin
 	url = https://github.com/Riey/kime
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = pkg-config
 	optdepends = dbus: indicator support
 	optdepends = gtk2: gtk2 support
 	optdepends = gtk3: gtk3 support
+	optdepends = gtk4: gtk4 support
 	optdepends = qt5-base: qt5 support
 	optdepends = qt6-base: qt6 support
 	optdepends = libxcb: xim support
 	optdepends = cairo: xim support
 	provides = kime
 	conflicts = kime
-	source = https://github.com/Riey/kime/releases/download/v2.3.0/kime_latest_v2.3.0.tar.zst
-	md5sums = 77a01ab207022cd0af050d9cc4476435
-
+	source = kime-bin-2.3.0.tar.gz::https://github.com/Riey/kime/archive/refs/tags/v2.3.0.tar.gz
+	source = kime-bin-2.3.0-bin.tar.zst::https://github.com/Riey/kime/releases/download/v2.3.0/kime-v2.3.0.tar.zst
+	md5sums = a654a1b5230ef1701b1bb00195266476
+	md5sums = 74f66ac1fefaa998bc2e5ce799d17732
+ 
 pkgname = kime-bin
-
