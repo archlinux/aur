@@ -35,6 +35,7 @@ EOF
 
 build() {
   cd "${srcdir}"
+  # https://github.com/nativefier/nativefier/issues/831
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
