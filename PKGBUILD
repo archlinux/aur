@@ -7,12 +7,12 @@
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source SIP stack and media stack'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://www.pjsip.org/'
 license=('GPL')
-makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp'
+makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp' 'libyuv'
              'openssl' 'opus' 'portaudio' 'speex' 'swig' 'util-linux'
              'python' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pjsip/$pkgbase/archive/$pkgver.tar.gz"
@@ -48,6 +48,7 @@ build() {
     --with-external-srtp \
     --with-external-pa \
     --with-external-gsm \
+    --with-external-yuv \
     --enable-shared \
     --disable-opencore-amr \
     "${arch_opts[@]}"
