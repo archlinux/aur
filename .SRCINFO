@@ -1,0 +1,13 @@
+pkgbase = i3-maim-clpimg
+	pkgdesc = copy images to clipboard on linux on qt backend
+	pkgver = 1.0.0
+	pkgrel = 0
+	arch = x86_64
+	license = GPL
+	depends = clpimg
+	depends = maim
+	source = https://github.com/arpanetus/i3-maim-clpimg/archive/refs/tags/1.0.0.zip
+	md5sums = d6ad879e168690721a4cb43370883947
+
+pkgname = i3-maim-clpimg
+
