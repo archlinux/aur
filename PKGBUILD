@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('GPL2')
 makedepends=('inetutils' 'jansson' 'gtk2' 'gtk3' 'libxv' 'libvdpau' 'nvidia-utils' 'libxext')
 options=('staticlibs')
-source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
+source=(https://github.com/NVIDIA/nvidia-settings/archive/refs/tags/${pkgver}.tar.gz
         libxnvctrl_so.patch)
 sha512sums=('SKIP'
             'SKIP')
