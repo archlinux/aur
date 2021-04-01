@@ -2,7 +2,7 @@
 
 pkgname=torrential
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple BitTorrent client for elementary OS"
 arch=(x86_64)
 url="https://github.com/davidmhewitt/torrential"
@@ -18,7 +18,8 @@ source=("git+https://github.com/davidmhewitt/torrential#commit=$_commit"
         "git+https://github.com/transmission/libnatpmp"
         "git+https://github.com/transmission/libutp"
         "git+https://github.com/transmission/miniupnpc"
-        "no-unity.patch")
+        "no-unity.patch"
+        "patch-vala.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -27,7 +28,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8b279ca266c8b1643cf10ff0a66a66283be6595959720bcc321fdef0f3da6ea7')
+            '8b279ca266c8b1643cf10ff0a66a66283be6595959720bcc321fdef0f3da6ea7'
+            'f45f87330502796a3ab2d4798c8fa76f3ce63026828aa890e99ae06ed0adca1f')
 
 pkgver() {
   cd $pkgname
@@ -53,6 +55,7 @@ prepare() {
   
   cd ..
   patch -Np1 -i ../no-unity.patch
+  patch -Np1 -i ../patch-vala.patch
   sed -i '/--fatal-warnings/d' CMakeLists.txt
 }
 
