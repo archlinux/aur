@@ -9,6 +9,7 @@ pkgbase = admbrowser-git
 	depends = python-yaml
 	depends = python-pyqt5
 	depends = qt5-webkit
+	provides = admbrowser
 	backup = etc/admbrowser.yaml
 	source = git+https://github.com/alandmoore/admbrowser
 	md5sums = SKIP

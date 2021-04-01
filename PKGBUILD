@@ -1,6 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 _pkgbase=admbrowser
 pkgname="${_pkgbase}-git"
+provides=("${_pkgbase}")
 pkgver=r155.da7b945
 pkgrel=1
 pkgdesc="A web browser for kiosk systems."
