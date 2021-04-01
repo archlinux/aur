@@ -5,7 +5,7 @@ post_install() {
     echo '| READ VERY CAREFULLY! |'
     echo '------------------------'
     echo '1. Create /etc/sub{u,g}id files (touch /etc/subuid /etc/subgid) or the'
-    echo '   sysctl service will not start'
+    echo '   sysbox service will not start'
     echo ''
     echo '2. Make sure to start the sysbox service (systemctl start sysbox)'
     echo ''
