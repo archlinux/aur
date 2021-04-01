@@ -8,7 +8,7 @@
 
 pkgname=exaile
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
 url="https://www.exaile.org/"
@@ -43,6 +43,10 @@ optdepends=('udisks2: device detection'
 	'gst-plugins-bad: BPM Counter plugin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/exaile/exaile/archive/$pkgver.tar.gz")
 sha512sums=('babf37253054fbeb6dad33aedafe969201860d4f35222d577343256730be943682c1a5f2f7cec7c574695624cb2b7abbdff4e6eaada848d22fea073c2c44bd23')
+
+prepare() {
+	sed -i 's/new_for_uri/new_for_path/' "$srcdir/$pkgname-$pkgver/xl/trax/util.py"
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
