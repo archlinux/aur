@@ -40,12 +40,6 @@ build() {
   make
 }
 
-check() {
-  cd "$_pkgname"
-
-  #make check
-}
-
 package() {
   cd "$_pkgname"
 

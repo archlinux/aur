@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !xorgxrdp-nvidia-git.install
+!Dockerfile

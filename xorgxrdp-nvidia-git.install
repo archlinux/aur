@@ -5,7 +5,7 @@ echo -e '\033[1;33mxorgxrdp-nvidia only use the first gpu,' \
 
 echo -e '\033[0;31mremember to edit "/etc/xrdp/sesman.ini",' \
 'change "param=xrdp/xorg.conf" to "param=xrdp/xorg_nvidia.conf"' \
-'in the section "[Xorg]"'
+'in the section "[Xorg]".'
 
 echo -en '\033[0m'
 }
