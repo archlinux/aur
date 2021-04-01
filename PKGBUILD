@@ -8,7 +8,7 @@ pkgdesc="A systray app to set the JACK configuration from QjackCtl presets via D
 arch=('any')
 url="https://github.com/SpotlightKid/${_pkgname}"
 license=('MIT')
-depends=('hicolor-icon-theme' 'jack2-dbus' 'python-dbus' 'python-gobject' 'python-pyudev'
+depends=('dbus-python' 'hicolor-icon-theme' 'jack2-dbus' 'python-gobject' 'python-pyudev'
          'python-xdg')
 optdepends=(
     'a2jmidid: ALSA-MIDI to JACK bridge control'
