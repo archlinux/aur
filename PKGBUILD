@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2021.02.22
+pkgver=2021.04.01
 pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
@@ -35,12 +35,14 @@ EOF
 
 build() {
   cd "${srcdir}"
-  # https://regex101.com/r/FpfTKB/1
+  # https://github.com/nativefier/nativefier/pull/1146
+  # https://github.com/nativefier/nativefier/issues/831
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
-    --internal-urls '/^(https?:\/\/)?(todoist\.com|accounts\.google\.com|www\.facebook\.com|appleid\.apple\.com)(\/.*)?$' \
+    --internal-urls '/^(https?:\/\/)?appleid\.apple\.com(\/.*)?$' \
     --maximize \
+    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/87.0" \
     --single-instance \
     --verbose \
     https://todoist.com

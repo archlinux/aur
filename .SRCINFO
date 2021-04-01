@@ -1,6 +1,6 @@
 pkgbase = todoist-nativefier
 	pkgdesc = Todoist in shared Electron runtime
-	pkgver = 2021.02.22
+	pkgver = 2021.04.01
 	pkgrel = 1
 	url = https://todoist.com
 	arch = x86_64
