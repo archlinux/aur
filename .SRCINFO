@@ -19,8 +19,10 @@ pkgbase = xygrib-git
 	provides = xygrib
 	conflicts = xygrib
 	source = xygrib-git::git+https://github.com/opengribs/XyGrib.git
+	source = CMakelists.txt.patch
 	source = xygrib.install
 	sha1sums = SKIP
+	sha1sums = add3722f418a64fd70e3a912793d3e5530fac4a0
 	sha1sums = 97eec7e40bd2d4f44986ffbf5096ac4ba37ebbfe
 
 pkgname = xygrib-git

@@ -13,8 +13,9 @@ provides=('xygrib')
 depends=('libnova' 'qwt' 'proj' 'qt5-base' 'openjpeg2' 'qt5-tools')
 makedepends=('cmake' 'zlib' 'bzip2' 'libpng')
 url="https://opengribs.org/"
-source=("$pkgname::git+https://github.com/opengribs/XyGrib.git" "xygrib.install")
+source=("$pkgname::git+https://github.com/opengribs/XyGrib.git" "CMakelists.txt.patch" "xygrib.install")
 sha1sums=('SKIP'
+          'add3722f418a64fd70e3a912793d3e5530fac4a0'
           '97eec7e40bd2d4f44986ffbf5096ac4ba37ebbfe')
 
 pkgver() {
@@ -24,6 +25,7 @@ pkgver() {
 
 build() {
   cd $pkgname
+  patch --strip=1 -i $srcdir/CMakelists.txt.patch
   mkdir -p build
   cd build
   cmake ../
