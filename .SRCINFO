@@ -10,7 +10,6 @@ pkgbase = xorgxrdp-glamor
 	makedepends = xorg-server-devel
 	makedepends = xrdp
 	depends = xorg-server
-	depends = libglvnd
 	provides = xorgxrdp
 	conflicts = xorgxrdp
 	options = staticlibs
