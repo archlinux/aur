@@ -3,14 +3,14 @@
 _pkgname=xorgxrdp
 pkgname=xorgxrdp-glamor
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Xorg drivers for xrdp, with glamor enabled. Only works on Intel and AMD GPUs."
 arch=('i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
 license=('MIT')
 provides=('xorgxrdp')
 conflicts=('xorgxrdp')
-depends=('libepoxy' 'libglvnd')
+depends=('xorg-server')
 makedepends=('nasm' 'xorg-server-devel' 'xrdp')
 options=('staticlibs')
 source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
@@ -30,16 +30,8 @@ prepare () {
 build () {
   cd "$_pkgname-$pkgver"
 
-  CFLAGS+=" $(pkgconf --cflags libdrm)" \
-  LDFLAGS+=' -L/usr/lib/xorg/modules -lglamoregl -Wl,-rpath,/usr/lib/xorg/modules' \
   ./configure --prefix="/usr" --enable-glamor
   make
-}
-
-check () {
-  cd "$_pkgname-$pkgver"
-
-  #make check
 }
 
 package () {
