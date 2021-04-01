@@ -1,8 +1,8 @@
 pkgbase = nemu-git
 	pkgdesc = ncurses interface for QEMU
-	pkgver = 2.2.1.r48.ga99a806
+	pkgver = 2.6.0.r34.g953e68e
 	pkgrel = 1
-	url = https://bitbucket.org/PascalRD/nemu
+	url = https://github.com/nemuTUI/nemu
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
@@ -16,7 +16,7 @@ pkgbase = nemu-git
 	depends = libarchive
 	provides = nemu
 	conflicts = nemu
-	source = git+https://bitbucket.org/PascalRD/nemu
+	source = git+https://github.com/nemuTUI/nemu.git
 	md5sums = SKIP
 
 pkgname = nemu-git
