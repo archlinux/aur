@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=autojump-rs
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to navigate your filesystem from the command line (in Rust)"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://github.com/xen0n/autojump-rs"
@@ -60,8 +60,8 @@ package() {
     done
 
     # autojump FS#49601
-    install -d "${pkgdir}"/usr/share/fish/completions
-    mv "${pkgdir}"/etc/profile.d/autojump.fish "${pkgdir}"/usr/share/fish/completions
+    install -d "${pkgdir}"/usr/share/fish/vendor_conf.d/
+    mv "${pkgdir}"/etc/profile.d/autojump.fish "${pkgdir}"/usr/share/fish/vendor_conf.d/
 
     # https://github.com/joelthelion/autojump/pull/339
     sed -i "s:/usr/local/:/usr/:g" "${pkgdir}/etc/profile.d/autojump.sh"
