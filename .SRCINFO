@@ -1,0 +1,19 @@
+pkgbase = apaste
+	pkgdesc = Command-line client for riseup.net pastebin service
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://share.riseup.net/
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	makedepends = moreutils
+	depends = nodejs
+	provides = nodejs-apaste
+	conflicts = nodejs-apaste
+	replaces = nodejs-apaste
+	source = apaste-1.2.5.tar.gz::https://0xacab.org/riseup/share/up1-cli-client-nodejs/-/archive/0304b7f4f332d041141b61e3c1b6332554ee04cf/up1-cli-client-nodejs-0304b7f4f332d041141b61e3c1b6332554ee04cf.tar.gz
+	sha512sums = 8925832ae981c5722f905e554f300b82d73a41a2b1c2cf509f97940cf7a253f329af816c5b21f2574e85c296aecdf762697f62a611eddeaeb245a3b677796c14
+
+pkgname = apaste
+
