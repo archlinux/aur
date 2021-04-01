@@ -51,8 +51,12 @@ onlinebestmatch() {
       json=$(echo "$json" | jq '.[0]')
     fi
     local version="$(echo "$json" | jq -r '.version' | head -n1)"
-
-    local latestversion="$(echo "$json" | jq '.versions | .[]' | xargs semver -r "$semverspec" | tail -n1)"
+    local latestversion
+    if [ "$semverspec" = "latest" ]; then
+      latestversion="$(echo "$json" | jq -r '.versions | .[]' | tail -n1)"
+    else
+      latestversion="$(echo "$json" | jq '.versions | .[]' | xargs semver -r "$semverspec" | tail -n1)"
+    fi
     if [ "$version" != "$latestversion" ]; then
       json="$(npm view --json "$package@$latestversion")"
     fi

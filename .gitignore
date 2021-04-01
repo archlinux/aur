@@ -2,6 +2,7 @@
 *.tar.gz
 *.zip
 *.pkg.tar.xz
+*.pkg.tar.zst
 src/
 pkg/
 droid_sans.zip
