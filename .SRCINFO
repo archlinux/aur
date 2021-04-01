@@ -1,0 +1,13 @@
+pkgbase = etlcpp
+	pkgdesc = Embedded Template Library
+	pkgver = 20.8.0
+	pkgrel = 1
+	url = https://www.etlcpp.com/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = https://github.com/ETLCPP/etl/archive/refs/tags/20.8.0.tar.gz
+	sha256sums = d1cb2d95f060b646507aea2b12110d15ce66e34ff616eabc0b667323c849ecca
+
+pkgname = etlcpp
+
