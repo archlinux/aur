@@ -1,6 +1,6 @@
 pkgbase = xorgxrdp-nvidia-git
 	pkgdesc = Xorg drivers for xrdp, with NVIDIA GPU support.
-	pkgver = 0.2.15
+	pkgver = 0.2.15.r12.g37d8ae7
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/xorgxrdp
 	install = xorgxrdp-nvidia-git.install

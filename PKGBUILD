@@ -2,7 +2,7 @@
 
 _pkgname=xorgxrdp
 pkgname=xorgxrdp-nvidia-git
-pkgver=0.2.15
+pkgver=0.2.15.r12.g37d8ae7
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp, with NVIDIA GPU support."
 arch=('i686' 'x86_64')
@@ -16,6 +16,12 @@ options=('staticlibs')
 source=('git+https://github.com/Nexarian/xorgxrdp.git#branch=resize_wyhash_egfx_nvidia_features')
 sha256sums=('SKIP')
 install="$pkgname.install"
+
+pkgver() {
+    cd "$_pkgname"
+
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "$_pkgname"
