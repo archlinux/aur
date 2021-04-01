@@ -1,0 +1,27 @@
+pkgbase = remoteit
+	pkgdesc = remote.it is a cloud service that provides secure connections.
+	pkgver = 3.0.2
+	pkgrel = 0
+	url = https://remote.it
+	install = remoteit.install
+	arch = x86_64
+	depends = grep>=2.1.6
+	depends = curl>=7.21.0
+	depends = nodejs>=10
+	depends = jq
+	depends = avahi
+	noextract = remoteit-headless.tgz
+	source = connectd::https://downloads.remote.it/connectd/v4.12.0/connectd.x86_64-etch
+	source = muxer::https://downloads.remote.it/multiport/v0.3-alpha/muxer.x86_64-ubuntu16.04
+	source = demuxer::https://downloads.remote.it/multiport/v0.3-alpha/demuxer.x86_64-ubuntu16.04
+	source = remoteit::https://downloads.remote.it/cli/v1.7.26/remoteit_linux_x86_64
+	source = remoteit-headless.tgz::https://downloads.remote.it/desktop/v3.0.2/remoteit-headless.tgz
+	source = avahi-alias@remoteit.local.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = remoteit
