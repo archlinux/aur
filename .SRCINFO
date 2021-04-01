@@ -1,6 +1,6 @@
 pkgbase = haruna
 	pkgdesc = Video player built with Qt/QML on top of libmpv.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 2
 	url = https://github.com/g-fb/haruna
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = haruna
 	depends = qt5-quickcontrols2
 	depends = kirigami2
 	depends = breeze-icons
-	source = haruna-0.5.0.tar.gz::https://github.com/g-fb/haruna/archive/0.5.0.tar.gz
-	md5sums = c047c826d9bf596c8ad9d2d225f19cef
+	source = haruna-0.6.0.tar.gz::https://github.com/g-fb/haruna/archive/0.6.0.tar.gz
+	md5sums = 615134acc52e44cde755acf6cf18eb72
 
 pkgname = haruna
 
