@@ -1,6 +1,6 @@
 pkgbase = duf
 	pkgdesc = Disk Usage/Free Utility
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/muesli/duf
 	arch = x86_64
@@ -9,9 +9,12 @@ pkgbase = duf
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = go
-	source = https://github.com/muesli/duf/archive/v0.6.0/duf-0.6.0.tar.gz
-	sha256sums = 238ace11966ab3b1f99e5488a9f161ebc97aba7600a8f09884110d0572309491
+	makedepends = gzip
+	makedepends = tar
+	source = https://github.com/muesli/duf/archive/v0.6.1/duf-0.6.1.tar.gz
+	sha256sums = a80ca8ba79b7f7b9a8433652e595220039627de575fe920e78d2aeab40b6cc9c
 
 pkgname = duf
 
