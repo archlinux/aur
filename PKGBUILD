@@ -2,7 +2,7 @@
 
 pkgname=ageofconquerors-trial-data
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Data files from Age of Empires II: The Conquerors Demo"
 arch=('any')
 url='https://www.ageofempires.com/'
@@ -13,11 +13,17 @@ license=('custom')
 source=('https://github.com/sandsmark/freeaoe/releases/download/1/Age2XTrial.exe')
 
 sha1sums=('a0b27848a70bcda203837573445de6e243920170')
-makedepends=('cabextract')
+makedepends=('cabextract' 'catdoc')
 
 build() {
     cd "${srcdir}"
     cabextract Age2XTrial.exe
+
+    rm -f EULA.txt
+    catdoc EULAx.RTF > EULA
+
+    rm -f README
+    catdoc Readmex.rtf > README
 }
 
 package() {
@@ -36,6 +42,6 @@ package() {
 
     install -Dm 0644 *.TTF -t "${pkgdir}/usr/share/ageofconquerors-trial/"
 
-    install -Dm 644 EULAx.RTF -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm 644 Readmex.rtf -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm 644 EULA -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
