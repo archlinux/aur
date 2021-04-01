@@ -1,8 +1,8 @@
 pkgbase = hadolint-git
-	pkgdesc = Dockerfile linter, validate inline bash, written in Haskell
-	pkgver = r905.dc61382
+	pkgdesc = Dockerfile linter, validate inline bash
+	pkgver = 2.1.0.r0.g85a5357
 	pkgrel = 1
-	url = Dockerfile linter, validate inline bash, written in Haskell
+	url = https://github.com/hadolint/hadolint
 	arch = any
 	license = GPL
 	makedepends = git

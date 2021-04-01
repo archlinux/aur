@@ -3,10 +3,10 @@
 
 _pkgname=hadolint
 pkgname=hadolint-git
-pkgver=r905.dc61382
+pkgver=2.1.0.r0.g85a5357
 pkgrel=1
-pkgdesc='Dockerfile linter, validate inline bash, written in Haskell'
-url='Dockerfile linter, validate inline bash, written in Haskell'
+pkgdesc='Dockerfile linter, validate inline bash'
+url='https://github.com/hadolint/hadolint'
 license=('GPL')
 source=('git+https://github.com/hadolint/hadolint.git')
 sha256sums=('SKIP')
@@ -18,7 +18,9 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  [ ${PIPESTATUS[0]} -eq 0 ] || \
+printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
