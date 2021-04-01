@@ -21,12 +21,12 @@ prepare() {
   export PREFIX=/usr
   export NV_USE_BUNDLED_LIBJANSSON=0
   export OUTPUTDIR=out
-  cd ${pkgbase}-${pkgver}
+  cd nvidia-settings-${pkgver}
   patch -p0 < "${srcdir}/libxnvctrl_so.patch"
 }
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd nvidia-settings-${pkgver}
   make
   make -C src/libXNVCtrl
 }
@@ -36,14 +36,14 @@ package_nvidia-settings-beta-gtk2() {
   provides=(nvidia-settings nvidia-settings-beta)
   conflicts=(nvidia-settings nvidia-settings-beta)
 
-  cd ${pkgbase}-${pkgver}
+  cd nvidia-settings-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   install -D -m644 doc/nvidia-settings.desktop "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
   install -D -m644 doc/nvidia-settings.png "${pkgdir}/usr/share/pixmaps/nvidia-settings.png"
   sed -e 's:__UTILS_PATH__:/usr/bin:' -e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' -e 's/__NVIDIA_SETTINGS_DESKTOP_CATEGORIES__/Settings;HardwareSettings;/' -i "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
 
-  rm "$pkgdir/usr/lib/libnvidia-gtk2.so.$pkgver"
+  rm "$pkgdir/usr/lib/libnvidia-gtk3.so.$pkgver"
 }
 
 package_libxnvctrl-beta-gtk2() {
@@ -52,7 +52,7 @@ package_libxnvctrl-beta-gtk2() {
   provides=('libXNVCtrl.so' 'libxnvctrl' 'libxnvctrl-beta')
   conflicts=(libxnvctrl libxnvctrl-beta)
 
-  cd ${pkgbase}-${pkgver}
+  cd nvidia-settings-${pkgver}
   install -Dm 644 doc/{NV-CONTROL-API.txt,FRAMELOCK.txt} -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 samples/{Makefile,README,*.c,*.h,*.mk} -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 
