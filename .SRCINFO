@@ -1,7 +1,7 @@
 pkgbase = rav1e-bin
 	pkgdesc = The fastest and safest AV1 encoder
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/xiph/rav1e
 	arch = x86_64
 	arch = aarch64
@@ -13,10 +13,10 @@ pkgbase = rav1e-bin
 	source = https://raw.githubusercontent.com/xiph/rav1e/master/PATENTS
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/xiph/rav1e/releases/download/v0.4.0/rav1e-0.4.0-linux.tar.gz
-	sha256sums_x86_64 = 8372174ba45ca66a76bd43ffb03acb4ace5341cc9b38a15b21c0aff9f16e793d
-	source_aarch64 = https://github.com/xiph/rav1e/releases/download/v0.4.0/rav1e-0.4.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = ede79db300b4c2cfd944505f4b0a4bad0c79f46708949cf4d03ef838826a6ba2
+	source_x86_64 = https://github.com/xiph/rav1e/releases/download/v0.4.1/rav1e-0.4.1-linux.tar.gz
+	sha256sums_x86_64 = 9e822ac0b001ebad3da7db281e9114cc840d7f1a676278b0aac7b161558c3217
+	source_aarch64 = https://github.com/xiph/rav1e/releases/download/v0.4.1/rav1e-0.4.1-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 90d482b8f6485e06f7fe87aff180f3b6140c865b417b2e71464cd423d360211a
 
 pkgname = rav1e-bin
 
