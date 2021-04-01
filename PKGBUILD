@@ -1,8 +1,8 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=118
-pkgrel=2
+pkgver=119
+pkgrel=1
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
 arch=(x86_64 i686)
 url="https://ares.dev/"
@@ -11,19 +11,19 @@ depends=(gtk3 gtksourceview3 libao libgl libpulse libudev.so=1-64 libxv openal s
 makedepends=(mesa)
 provides=(ares-emu)
 conflicts=(ares-emu)
-source=("https://ares.dev/downloads/ares_v118-source.zip"
+source=("https://ares.dev/downloads/ares_v119-source.zip"
         "LICENSE"
         "ares-paths.patch")
-sha256sums=('563c7d4304570091370da3c8183dd69526da00aa917b1391667636e95da9d360'
+sha256sums=("a61e15acee8bb84107d1eccea53b6d8c23ee34d902c01c53d3b4e55a20996771"
         "9a91bcfb10df8dfdf02375d9015064de3d20faf251b456caf6760e73a7f4e466"
-        "24863b59c880b34703a5b06e90f0ebf2087a186858b0b3ef4de5c09a36489ea3")
+        "a16574ed09a7ddac02d7cf9f1ab453e9be22c1887e3ee50fe2abcd9ed8c118df")
 
 prepare() {
   patch -Np1 -i "${srcdir}/ares-paths.patch"
 }
 
 build() {
-  cd "ares/lucia"
+  cd "ares_v${pkgver}/lucia"
   make hiro=gtk3
 }
 
@@ -32,14 +32,13 @@ package() {
   install -Dm 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   # Lucia is the simple user interface for Ares
-  install -Dm 755 "ares/lucia/out/lucia" -t "${pkgdir}/usr/bin/"
-  install -Dm 644 "ares/lucia/resource/lucia.png" -t "${pkgdir}/usr/share/icons/"
+  install -Dm 755 "ares_v${pkgver}/lucia/out/lucia" -t "${pkgdir}/usr/bin/"
+  install -Dm 644 "ares_v${pkgver}/lucia/resource/lucia.png" -t "${pkgdir}/usr/share/icons/"
   
-  sed -i "s/Name=lucia/Name=Ares (Lucia)/" "ares/lucia/resource/lucia.desktop"
-  install -Dm 644 "ares/lucia/resource/lucia.desktop" -t "${pkgdir}/usr/share/applications/"  
+  sed -i "s/Name=lucia/Name=Ares (Lucia)/" "ares_v${pkgver}/lucia/resource/lucia.desktop"
+  install -Dm 644 "ares_v${pkgver}/lucia/resource/lucia.desktop" -t "${pkgdir}/usr/share/applications/"  
 
   # Also install the shaders for Ares
   install -dm 755 "${pkgdir}/usr/share/ares"
-  cp -dr --no-preserve=ownership "ares/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
+  cp -dr --no-preserve=ownership "ares_v${pkgver}/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
 }
-
