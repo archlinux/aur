@@ -1,0 +1,13 @@
+pkgbase = iauto
+	pkgdesc = Flowchart diagrams drawer
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://www.iautodraw.com
+	arch = x86_64
+	license = unknown
+	depends = electron3
+	source = http://www.iautodraw.com/static/version/Iauto_3.1.2(Linux).deb
+	sha512sums = 561ec73b03fc0fe22e69e7ce9a440f3fa260d81f5f104923483761c2581796df2c5bc9245af371b5886aea5cc02b5479b6a22f5db2300fb882e1be26db5dfa43
+
+pkgname = iauto
+
