@@ -2,7 +2,7 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2021.03.12
+pkgver=2021.04.01
 pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
@@ -35,13 +35,11 @@ EOF
 
 build() {
   cd "${srcdir}"
-  # https://regex101.com/r/GsAPiQ/1
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
-    --internal-urls '^(https?:\/\/)?(calendar|accounts)\.google\.com(\/.*)?$' \
     --maximize \
-    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/86.0" \
+    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/87.0" \
     --single-instance \
     --verbose \
     https://calendar.google.com
