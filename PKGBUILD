@@ -15,7 +15,7 @@ _launcher_ver=7
 _gcc_patchset=7
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
-# ungoogled chromium variables 
+# ungoogled chromium variables
 _uc_ver=$pkgver-1
 _uc_usr=Eloston
 pkgdesc="A lightweight approach to removing Google web service dependency"
