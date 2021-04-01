@@ -2,12 +2,12 @@
 
 pkgname=or-tools
 pkgver=8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
 url="https://github.com/google/or-tools"
 license=('Apache')
-depends=('gcc-libs' 'protobuf' 'gflags' 'google-glog' 'coin-or-cbc' 'protobuf')
+depends=('gcc-libs' 'protobuf' 'coin-or-cbc' 'protobuf')
 # abseil fixed version since it breaks stuff
 makedepends=('cmake' 'pkgconf' 'git' 'abseil-cpp=20200923.3')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
@@ -25,8 +25,7 @@ prepare() {
         -DBUILD_DEPS=OFF \
         -DUSE_SCIP=OFF \
         -DBUILD_SAMPLES=OFF \
-        -DBUILD_EXAMPLES=OFF \
-        -DBUILD_CXX_EXAMPLES=OFF
+        -DBUILD_EXAMPLES=OFF
 }
 
 build() {

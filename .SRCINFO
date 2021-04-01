@@ -1,7 +1,7 @@
 pkgbase = or-tools
 	pkgdesc = Google's Operations Research tools.
 	pkgver = 8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/or-tools
 	arch = x86_64
 	license = Apache
@@ -11,8 +11,6 @@ pkgbase = or-tools
 	makedepends = abseil-cpp=20200923.3
 	depends = gcc-libs
 	depends = protobuf
-	depends = gflags
-	depends = google-glog
 	depends = coin-or-cbc
 	depends = protobuf
 	source = https://github.com/google/or-tools/archive/v8.2.tar.gz
