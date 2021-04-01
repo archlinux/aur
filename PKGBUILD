@@ -5,7 +5,7 @@
 
 _pkgname=gcstar
 pkgname="${_pkgname}-gitlab"
-pkgver=1.7.2.1
+pkgver=Test
 pkgrel=1
 pkgdesc="A collection management application"
 arch=('any')
@@ -18,13 +18,13 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
          'perl-gd' 'perl-date-calc'
          'perl-lwp-protocol-https'
          'perl-archive-zip' 'perl-datetime-format-strptime'
-       	 'perl-image-exiftool'
          'perl-gdgraph' 'perl-mp3-info'
          'perl-ogg-vorbis-header-pureperl' 'perl-mp3-tag'
-         #'perl-net-freedb'
+         'perl-net-freedb'
          )
 optdepends=(
        'gtk-engine-murrine'
+       'perl-image-exiftool'
 )
 makedepends=('git')
 conflicts=("${_pkgname}")
