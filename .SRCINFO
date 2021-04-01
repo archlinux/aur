@@ -1,7 +1,7 @@
 pkgbase = pjproject
 	pkgdesc = Open source SIP stack and media stack
 	pkgver = 2.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.pjsip.org/
 	arch = x86_64
 	arch = aarch64
@@ -41,6 +41,7 @@ pkgname = pjproject
 	depends = ffmpeg
 	depends = libsrtp
 	depends = opus
+	depends = libyuv
 	optdepends = e2fsprogs
 	optdepends = python-pjproject: Python bindings
 

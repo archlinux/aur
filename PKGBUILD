@@ -7,7 +7,7 @@
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Open source SIP stack and media stack'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://www.pjsip.org/'
@@ -64,7 +64,7 @@ build() {
 
 package_pjproject() {
   depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux'
-           'ffmpeg' 'libsrtp' 'opus')
+           'ffmpeg' 'libsrtp' 'opus' 'libyuv')
   optdepends=('e2fsprogs' 'python-pjproject: Python bindings')
   cd "$pkgbase-$pkgver"
   make -j1 DESTDIR="$pkgdir" install
