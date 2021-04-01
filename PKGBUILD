@@ -15,7 +15,7 @@ source=(
   "stoplight-studio.desktop"
 )
 sha512sums=(
-  "B6oJrYhmqkDkvFlGFg4MwphQgn2TIxxa/Dn1D9QLB42cm+NcYN3XM9eM1g7f2Xm7J81KRY3dB4Ok0/v2k0Whfg=="
+  "07aa09ad8866aa40e4bc5946160e0cc29850827d93231c5afc39f50fd40b078d9c9be35c60ddd733d78cd60edfd979bb27cd4a458ddd0783a4d3fbf69345a17e"
   "0c7c3742debb40ed5a3323467441890e900d4416ddc10e2778ddadd930b7b9f0447978c446b4b80fd5c6ee29f4ca65054e0b8ccf59cd1780a95c044867ec54af"
 )
 options=(!strip)
