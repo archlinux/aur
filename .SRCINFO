@@ -1,5 +1,5 @@
 pkgbase = i3-maim-clpimg
-	pkgdesc = copy images to clipboard on linux on qt backend
+	pkgdesc = Create a screenshot and then immediately copy it into the clipboard
 	pkgver = 1.0.0
 	pkgrel = 0
 	arch = x86_64
