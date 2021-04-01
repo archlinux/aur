@@ -1,0 +1,14 @@
+pkgbase = cro-chain-desktop-bin
+	pkgdesc = Crypto.org Chain desktop wallet
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/crypto-com/chain-desktop-wallet
+	arch = x86_64
+	license = Apache
+	source = chain-desktop-wallet-0.1.3-x86_64.AppImage::https://github.com/crypto-com/chain-desktop-wallet/releases/download/v0.1.3/chain-desktop-wallet-0.1.3-x86_64.AppImage
+	source = LICENSE
+	sha512sums = 83630e4bd38f48be133852cae278361ee51c577de7d53d932d0bba356a88bcb7427d031934529809abc3eadb9cc6cdedb2e285b6f39a475bae839d3042389492
+	sha512sums = cd660ca9bc594ae6476c54e50d49c7e886c2f7dbaffb1876ef866c4a6dd219f734996f42361a4d958688b04e3b6188f0384bcf0690060a1e46306448bb70ca09
+
+pkgname = cro-chain-desktop-bin
+
