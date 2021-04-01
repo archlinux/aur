@@ -6,6 +6,7 @@ pkgbase = keysmith
 	arch = any
 	license = GPL3
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = frameworkintegration
 	depends = libsodium
 	depends = qt5-base
