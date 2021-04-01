@@ -75,7 +75,7 @@ pkgbase = thunderbird-appmenu
 	depends = pixman
 	depends = libpixman-1.so
 	depends = gnupg
-	depends = notify-send
+	depends = libnotify
 	optdepends = libotr: OTR support for active one-to-one chats
 	provides = thunderbird=78.9.0
 	conflicts = thunderbird
