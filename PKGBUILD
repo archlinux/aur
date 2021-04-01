@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-inter
-_interver=3.17
+_interver=3.18
 _nfver=2.1.0
 pkgver="${_interver}_${_nfver}"
 pkgrel=1
@@ -10,7 +10,7 @@ url='https://github.com/rsms/inter/'
 license=('custom:OFL')
 makedepends=('git' 'p7zip' 'python' 'fontforge' 'subversion')
 source=("https://github.com/rsms/inter/releases/download/v$_interver/Inter-$_interver.zip" "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$_nfver/font-patcher" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$_nfver/src/glyphs")
-sha256sums=('3f95f93e4f49776052d2972a30ed4e1c92764393a41fe0f6ff01059a8e2a6a16' '3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859' 'SKIP')
+sha256sums=('bcffbda52f7b0c7c2a842ac7e77869ff6327cea77fa9035393df695ae90bdc5b' '3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859' 'SKIP')
 
 build() {
   # prepare glyphs so that font-patcher can find them
