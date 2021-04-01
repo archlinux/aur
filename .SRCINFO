@@ -1,0 +1,26 @@
+pkgbase = xorgxrdp-glamor
+	pkgdesc = Xorg drivers for xrdp
+	pkgver = 0.2.15
+	pkgrel = 1
+	url = https://github.com/neutrinolabs/xorgxrdp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = nasm
+	makedepends = xorg-server-devel
+	makedepends = xrdp
+	depends = libepoxy
+	depends = libglvnd
+	provides = xorgxrdp
+	conflicts = xorgxrdp
+	options = staticlibs
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.15/xorgxrdp-0.2.15.tar.gz
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.15/xorgxrdp-0.2.15.tar.gz.asc
+	source = glamor.patch
+	validpgpkeys = 61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB
+	sha256sums = fde7ba96b6fc34ffdeaef9fc5a86c7f1f21cf82efd9df005f206f2d25b2afa37
+	sha256sums = SKIP
+	sha256sums = 2d9f0b6a223aa65d553c07356d7862193af04a7afac792c28822a6304306a2f4
+
+pkgname = xorgxrdp-glamor
+

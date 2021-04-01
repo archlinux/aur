@@ -1,0 +1,83 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,9 @@ PKG_CHECK_MODULES([XORG_SERVER], [xorg-server >= 0], [],
+   [AC_MSG_ERROR([please install xserver-xorg-dev, xorg-x11-server-sdk or xorg-x11-server-devel])])
+ if test "x${enable_glamor}" = "xyes"; then
+   PKG_CHECK_MODULES([XORG_SERVER_GLAMOR], [xorg-server >= 1.19.0])
++  PKG_CHECK_MODULES([LIBDRM], [libdrm])
++  PKG_CHECK_MODULES([EPOXY], [epoxy])
++  PKG_CHECK_VAR([XORG_SERVER_MODULES], [xorg-server], [moduledir])
+ fi
+
+ if test "x$XRDP_CFLAGS" = "x"; then
+
+
+
+--- a/module/Makefile.am
++++ b/module/Makefile.am
+@@ -22,12 +22,13 @@ if WITH_GLAMOR
+ EXTRA_FLAGS += -DXORGXRDP_GLAMOR -DGLAMOR_FOR_XORG
+ EXTRA_SOURCES += rdpEgl.c
+ EXTRA_HEADERS += rdpEgl.h
+-EGLLIB += -lepoxy
+ endif
+
+ AM_CFLAGS = \
+   $(XORG_SERVER_CFLAGS) \
+   $(XRDP_CFLAGS) \
++  $(LIBDRM_CFLAGS) \
++  $(EPOXY_CFLAGS) \
+   -DPACKAGE_VERSION_MAJOR=@package_version_major@ \
+   -DPACKAGE_VERSION_MINOR=@package_version_minor@ \
+   -DPACKAGE_VERSION_PATCHLEVEL=@package_version_patchlevel@ \
+@@ -82,6 +83,9 @@ noinst_HEADERS = \
+ libxorgxrdp_la_LTLIBRARIES = libxorgxrdp.la
+
+ libxorgxrdp_la_LDFLAGS = -module -avoid-version
++if WITH_GLAMOR
++libxorgxrdp_la_LDFLAGS += $(EPOXY_LDFLAGS) -L$(XORG_SERVER_MODULES) -lglamoregl -Wl,-rpath,$(XORG_SERVER_MODULES)
++endif
+
+ libxorgxrdp_ladir = $(moduledir)
+
+
+
+--- a/xrdpdev/Makefile.am
++++ b/xrdpdev/Makefile.am
+@@ -13,6 +13,7 @@ endif
+ AM_CFLAGS = \
+   $(XORG_SERVER_CFLAGS) \
+   $(XRDP_CFLAGS) \
++  $(LIBDRM_CFLAGS) \
+   -DPACKAGE_VERSION_MAJOR=@package_version_major@ \
+   -DPACKAGE_VERSION_MINOR=@package_version_minor@ \
+   -DPACKAGE_VERSION_PATCHLEVEL=@package_version_patchlevel@ \
+
+
+
+--- a/xrdpkeyb/Makefile.am
++++ b/xrdpkeyb/Makefile.am
+@@ -11,6 +11,9 @@ AM_CFLAGS = \
+ xrdpkeyb_drv_la_LTLIBRARIES = xrdpkeyb_drv.la
+
+ xrdpkeyb_drv_la_LDFLAGS = -module -avoid-version
++if WITH_GLAMOR
++xrdpkeyb_drv_la_LDFLAGS += -L$(XORG_SERVER_MODULES) -lglamoregl -Wl,-rpath,$(XORG_SERVER_MODULES)
++endif
+
+ xrdpkeyb_drv_ladir = $(moduledir)/input
+
+
+
+--- a/xrdpdev/xorg.conf
++++ b/xrdpdev/xorg.conf
+@@ -7,6 +7,9 @@
+ EndSection
+ 
+ Section "ServerFlags"
++    # This line prevents "ServerLayout" sections in xorg.conf.d files
++    # overriding the "X11 Server" layout (xrdp #1784)
++    Option "DefaultServerLayout" "X11 Server"
+     Option "DontVTSwitch" "on"
+     Option "AutoAddDevices" "off"
+ EndSection
