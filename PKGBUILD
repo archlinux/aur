@@ -1,6 +1,6 @@
 # Maintainer: Senya <senya at riseup.net>
 pkgname=crowdin-cli
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="Command line tool that allows you to manage and synchronize localization resources with your Crowdin project"
 url="https://support.crowdin.com/cli-tool/"
@@ -30,4 +30,3 @@ package()
   install -Dm 0755 "$startdir"/crowdin "$pkgdir"/usr/bin/crowdin
   install -Dm 0644 "$srcdir/$pkgname"/crowdin_completion "$pkgdir"/usr/share/bash-completion/completions/crowdin
 }
-
