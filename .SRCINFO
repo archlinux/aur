@@ -4,6 +4,7 @@ pkgbase = ymuse
 	pkgrel = 1
 	url = https://yktoo.com/en/software/ymuse/
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = go
 	depends = gtk3
