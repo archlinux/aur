@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst3-bin
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Linux Windows vst3 wrapper/bridge"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('linvst3')
 optdepends=('jack')
 suffix="Debian-Stretch"
 source=("$url/releases/download/$pkgver/LinVst3-$pkgver-$suffix.zip")
-md5sums=('008ee236b7dd8844435ea4ff3d9acd46')
+md5sums=('dac2d1f3f6c36a4a242a0d9d734337ee')
 
 package() {
 
