@@ -1,0 +1,33 @@
+pkgbase = make-ansi
+	pkgdesc = ANSI Escape Sequences for GNU Make
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/egasato/make-ansi
+	changelog = ChangeLog
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	depends = make-escape
+	optdepends = make-support
+	source = https://github.com/egasato/make-ansi/-/archive/v0.1.0/make-ansi-v0.1.0.tar.bz2
+	source = https://downloads.sourceforge.net/project/egasato-make-ansi/v0.1.0/make-ansi-v0.1.0.tar.bz2.sig
+	validpgpkeys = 278775DF8230FE08784729E3DCCA6B78DD448CAE
+	md5sums = f7324c2ffa6aa454a8719d732c92497a
+	md5sums = SKIP
+	sha1sums = 17b6117e4f9e8d3f1380cefd6ee14e995994c19c
+	sha1sums = SKIP
+	sha224sums = 1822e5cdc0e8cdc3f8d1e11ec6d7d04cc697d0f06e1319fd641c9b32
+	sha224sums = SKIP
+	sha256sums = fcade37f234f27766bf2f6bff9f653bf1fe88c2dc3e35b7e591521cbee4925e6
+	sha256sums = SKIP
+	sha384sums = e5f1c6049eeebc0dddd474f13b9173ab905a2127c4e87d6c67014c7bee8379e28f87c8fe2e3cb2cb2c32ab5b0ac9a266
+	sha384sums = SKIP
+	sha512sums = ee4a4ab4b2232f0c2d110bd17a38017756b5d1c99940cbee4f86f5afa486f9829fcedff9f29ba9b6e8ea310061d9840986282c297c87cbe60d4b04a9723d4922
+	sha512sums = SKIP
+	b2sums = fe82842a2cf12d41cbd2f82efce8f8f8d8efff0eba2cc260d045643ee145382f428bc954342e637a2b5dd1a9cbbde3df3b6b7a47b95ee5199cfe6c6e4c1cd5d1
+	b2sums = SKIP
+
+pkgname = make-ansi
+
