@@ -6,22 +6,21 @@ _name=firefox
 _channel=nightly
 _lang=eo
 pkgname=${_name}-${_channel}-${_lang}
-pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
+pkgdesc="Retumilo farita de Mozilla — Esperanta nestabila versio"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=80.0a1
-pkgver=80.0a1
+_version=89.0a1
+pkgver=89.0a1
 pkgrel=1
-arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
-optdepends=('pulseaudio: audio support'
-            'ffmpeg: h.264 video'
-            'hunspell: spell checking'
-            'hyphen: hyphenation'
-            'libnotify: notification integration'
-            'networkmanager: location detection via available WiFi networks'
-            'speech-dispatcher: text-to-speech'
-            'startup-notification: support for FreeDesktop Startup Notification')
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
+depends=(dbus-glib gtk3 libxt nss mime-types)
+optdepends=('pulseaudio: subteno al fono'
+            'ffmpeg: h.264-video'
+            'hunspell: literumado'
+            'hyphen: dividstrekado'
+            'libnotify: integrigo por notifoj'
+            'networkmanager: detekto de loko per disponeblaj sendrataj retoj'
+            'speech-dispatcher: teksto-al-parolado')
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-mozilla-central-l10n"
 _urlUS="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
@@ -34,11 +33,11 @@ source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
 source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.tar.bz2.asc"::"${_url}/${_src}-x86_64.tar.bz2.asc"
                "${_filename}-x86_64.txt"::"${_urlUS}/${_srcUS}-x86_64.txt")
-sha512sums=('96b390e8857c2bcce077af75473e4fd12ae20e3e1daaec3973fe0371f84c82e23a9e1de24003f3a86a77e76a38979fb7e706ce261498ca48b1f1d4b1fa4a5fd8'
+sha512sums=('5ea76e94b6ac71f2968a0927ec32344c23884679d8b5991ef192acf4de06e3d2aaa4b84e7417b9c2a618b5dd496120b71df20e9a264f20fe292e72473c782faf'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
-sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
-sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
+sha512sums_i686=(SKIP SKIP SKIP)
+sha512sums_x86_64=(SKIP SKIP SKIP)
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353)
 
 pkgver() {
   echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8)"
