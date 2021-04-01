@@ -1,40 +1,20 @@
 # Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
-pkgname='otf-apple-sf-mono'
-pkgver=16.0d2e1
+pkgname='otf-nexus-sans-pro'
+pkgver=1
 pkgrel=1
-pkgdesc='Apples the San Francisco typeface family. Monospaced variant.'
+pkgdesc='Nexus Sans font, used by e.g., the Freie Universität Berlin'
 arch=('any')
-url='https://developer.apple.com/fonts/'
-license=('custom:apple-restricted-font')
-source=('https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg'
-        'license.awk'
-        'version.awk')
-sha256sums=('fc0beba1460fbe0f1f6d7c0f1eff6e09dd9cd996a24595f47dcb332614ecd541'
-            'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
-            '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
-makedepends=('texlive-bin' 'p7zip')
-
-prepare() {
-    cd ${srcdir}
-    # These are dmg images, xar and cpio archives.  Just use 7z.
-    7z x -y 'SF-Mono.dmg'
-    7z x -y 'SFMonoFonts/SF Mono Fonts.pkg'
-    7z x -y 'Payload~'
-
-    otfinfo -i Library/Fonts/SF-Mono-BoldItalic.otf | \
-        awk -f license.awk > LICENSE
-}
-
-pkgver() {
-    cd ${srcdir}
-    otfinfo -i Library/Fonts/SF-Mono-BoldItalic.otf | \
-        awk -f version.awk
-}
+url='http://fontfont.com'
+license=('custom:fontfont.com')
+source=('file://NexusSansPro.zip'
+        'http://www.fontfont.com/eula/license.html')
+sha256sums=('c3fe0733fd74deb9ebf41c4b69b3e1f7cfc55a2654df48cdf80ae07b1d92d720'
+            'c357c78a3ca2e1febd54741b478d0fc2d68746df7686ec119ea8509650e4d203')
 
 package() {
-    install -Dm655 "${srcdir}"/Library/Fonts/*.otf \
+    install -Dm655 "${srcdir}"/*.otf \
         -t "${pkgdir}/usr/share/fonts/OTF/"
-    install -Dm644 LICENSE \
-        "${pkgdir}"/usr/share/licenses/${pkgname}/AppleFontLicense
+    install -Dm644 license.html \
+        "${pkgdir}"/usr/share/licenses/${pkgname}/license.html
 }
