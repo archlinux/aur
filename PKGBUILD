@@ -1,4 +1,5 @@
 # Maintainer: Jules Sam. Randolph <jules.sam.randolph@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flipper-bin
 pkgver=0.83.0
