@@ -1,0 +1,11 @@
+--- ppa_syslog.h	2021-04-01 14:50:32.369176172 +0200
++++ ppa_syslog.h.patched	2021-04-01 14:51:01.486226082 +0200
+@@ -39,7 +39,7 @@
+ #include <syslog.h>
+ #endif
+ 
+-char syslog_message[128];
++static char syslog_message[128];
+ extern size_t message_size ;
+ 
+ void wrap_syslog( int, char *, char *);
