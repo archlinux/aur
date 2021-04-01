@@ -20,24 +20,29 @@ sha256sums=('fde7ba96b6fc34ffdeaef9fc5a86c7f1f21cf82efd9df005f206f2d25b2afa37'
             '2d9f0b6a223aa65d553c07356d7862193af04a7afac792c28822a6304306a2f4')
 validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta@vmeta.jp>
 
-build() {
+prepare () {
   cd "$_pkgname-$pkgver"
 
   # https://github.com/neutrinolabs/xrdp/issues/1029#issuecomment-724105386
-  patch --forward --strip=1 --input="${srcdir}/glamor.patch"
+  patch -p1 -i"${srcdir}/glamor.patch"
+}
+
+build () {
+  cd "$_pkgname-$pkgver"
+
   CFLAGS+=" $(pkgconf --cflags libdrm)" \
   LDFLAGS+=' -L/usr/lib/xorg/modules -lglamoregl -Wl,-rpath,/usr/lib/xorg/modules' \
   ./configure --prefix="/usr" --enable-glamor
   make
 }
 
-check() {
+check () {
   cd "$_pkgname-$pkgver"
 
   #make check
 }
 
-package() {
+package () {
   cd "$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
