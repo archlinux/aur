@@ -1,44 +1,31 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: Ilya Trukhanov <lahvuun@gmail.com>
-#
-# This package is based on discorddownloader by simonizor
-# http://www.simonizor.gq/discorddownloader.html
+# Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
+_tag=1.0.0-beta
 pkgname=betterdiscord
-_pkgname=BetterDiscordApp
-pkgver=0.3.0i.r0.g4114a6e
+pkgver=1.0.0.beta
 pkgrel=1
-pkgdesc='Discord extension that introduces new features like BTTV emotes and plugin support.'
-arch=('any')
-url='https://betterdiscord.net/home/'
+pkgdesc='Installer for BetterDiscord'
+arch=('x86_64')
+url='https://github.com/BetterDiscord/Installer'
 license=('MIT')
-depends=('discord')
-makedepends=('asar')
-install='BetterDiscord.install'
-source=('git+https://github.com/Jiiks/BetterDiscordApp.git#commit=4114a6ee266d7ec5c6d980b200e282b9d2c28b7e' LICENSE)
-sha512sums=('SKIP'
-            'e2bb20271117ebef69eab2d505204dcfb83334e596c5ce02e5f5e1950ba502b9485ebb2005f9df74ac692ba4a99cce869942611b07bba4d588247d53bd21efcc')
+makedepends=('nodejs' 'yarn')
+source=("$pkgname-$_tag.tar.gz::$url/archive/v${_tag}.tar.gz")
+sha256sums=('7af763dc0e73b84690a953bf412135a079d954010e845ad422283be185959bcc')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    printf '%s' "${_tag/-/.}"
+}
+
+build() {
+    cd Installer-$_tag
+    yarn && yarn dist:dir
 }
 
 package() {
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Get rid of git files.
-  mkdir -p "package"
-  cp -rf "./BetterDiscordApp/" "./package/"
-  cd "./package/BetterDiscordApp/"
-  rm -rf ".git"
-  rm "./.gitignore"
-
-  install -d "${pkgdir}/usr/lib/${pkgname}/"
-  cp -a "./." "${pkgdir}/usr/lib/${pkgname}"
-  mv "${pkgdir}/usr/lib/${pkgname}/lib/Utils.js" "${pkgdir}/usr/lib/${pkgname}/lib/utils.js"
-
-  # Patch BetterDiscord files.
-  sed -i "s/'\/var\/local'/process.env.HOME + '\/.config'/g" "${pkgdir}/usr/lib/${pkgname}/lib/BetterDiscord.js"
-  sed -i "s/bdstorage/bdStorage/g" "${pkgdir}/usr/lib/${pkgname}/lib/BetterDiscord.js"
+    cd Installer-$_tag
+    mkdir -p "$pkgdir"/usr/bin "$pkgdir"/opt
+    install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cp --preserve=mode -r dist/linux-unpacked "$pkgdir"/opt/BetterDiscord
+    ln -s /opt/BetterDiscord/betterdiscord "$pkgdir"/usr/bin/betterdiscord
 }
