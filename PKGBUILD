@@ -2,12 +2,12 @@
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
 pkgver=1.14.0.r36.gf3cbbc6
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0 1.0 Universal')
-depends=('electron')
+depends=('electron11')
 makedepends=('git' 'npm' 'nvm' 'python')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
@@ -19,7 +19,7 @@ source=('git+https://github.com/ytmdesktop/ytmdesktop.git#branch=development'
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d'
-            '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a')
+            'f2b4520a6cf549f19567ebfeb337a4cb2ff5479c1d73a684cdd3bda62f1dd641')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

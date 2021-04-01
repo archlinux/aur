@@ -1,7 +1,7 @@
 pkgbase = ytmdesktop-git
 	pkgdesc = A desktop app for YouTube Music
 	pkgver = 1.14.0.r36.gf3cbbc6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ytmdesktop.app
 	arch = x86_64
 	license = CC0 1.0 Universal
@@ -9,7 +9,7 @@ pkgbase = ytmdesktop-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = python
-	depends = electron
+	depends = electron11
 	optdepends = libnotify: for desktop notifications
 	optdepends = libappindicator-gtk3: for tray icon
 	optdepends = nss-mdns: for companion server
@@ -20,7 +20,7 @@ pkgbase = ytmdesktop-git
 	source = ytmdesktop.sh
 	sha256sums = SKIP
 	sha256sums = 3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d
-	sha256sums = 4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a
+	sha256sums = f2b4520a6cf549f19567ebfeb337a4cb2ff5479c1d73a684cdd3bda62f1dd641
 
 pkgname = ytmdesktop-git
 
