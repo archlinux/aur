@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=jackal
-pkgver=0.52.0
+pkgver=0.52.1
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ortuman/jackal/archive/
         jackal.sysusers
         jackal.tmpfiles
         config.yaml)
-sha256sums=('0dac7d62cb4edfca5608b3e1378f182f80d1e66637c0f386a44568ce89292bae'
+sha256sums=('39b29114b7dcda0f31ae82f32ddd8f10ccf4ac5794f6a23fc47eb8451335d578'
             '0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff'
             '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
             '20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045'
@@ -33,10 +33,6 @@ build() {
            -buildmode=pie \
            -ldflags  "-extldflags ${LDFLAGS}" \
            "github.com/ortuman/jackal/cmd/jackalctl"
-  # This is not safe.
-  # Remove it when https://github.com/ortuman/jackal/issues/132 is fixed.
-  rm go.sum
-  go mod tidy
   go build -tags netgo \
            -trimpath \
            -buildmode=pie \
