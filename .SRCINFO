@@ -1,0 +1,14 @@
+pkgbase = python-inotifyrecursive
+	pkgdesc = Simple recursive inotify watches for Python
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/letorbi/inotifyrecursive
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python-inotify-simple
+	source = python-inotifyrecursive-0.3.5.src.tar.gz::https://github.com/letorbi/inotifyrecursive/archive/0.3.5.tar.gz
+	sha512sums = 8432c817ace0c08481faba1cdec87e68b197a75312bbe9d4f6a0bfaf7ea058e6ee2686d01cdaeb75dfcf177cdace8a05df175e2d1afb0fe0899b603b6e1d8312
+
+pkgname = python-inotifyrecursive
+
