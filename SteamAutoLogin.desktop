@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.1.0
+Name=Steam (AutoLogin)
+Comment=Qt Steam account switcher for Linux
+Icon=steam
+Path=
+Exec=/usr/bin/steamautologin
+Terminal=false
+Categories=Application;
