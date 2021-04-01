@@ -1,6 +1,6 @@
 pkgbase = dosbox-ece
 	pkgdesc = DOS/x86 emulator focusing on ease of use. Based on DOSBox
-	pkgver = 4393
+	pkgver = 4444
 	pkgrel = 1
 	url = https://dosboxece.yesterplay.net/
 	arch = any
@@ -19,10 +19,10 @@ pkgbase = dosbox-ece
 	optdepends = ncurses
 	provides = dosbox
 	conflicts = dosbox
-	source = https://dosboxece.yesterplay.net/download/DOSBox ECE r4393 (source).7z
+	source = https://dosboxece.yesterplay.net/download/DOSBox ECE r4444 (source).7z
 	source = dosbox-ece.png
 	source = dosbox-ece.desktop
-	md5sums = 7d4d40bdbbdd95570000488eb07d029f
+	md5sums = 6db485fce72ed5fcb6ca4ca169545db1
 	md5sums = 19fbd9958c0a412000d5fe7362774df1
 	md5sums = 7ab512ca7e6bdb3616e197271ffae928
 

@@ -1,6 +1,6 @@
 
 pkgname=dosbox-ece
-_pkgver=4393
+_pkgver=4444
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
@@ -17,7 +17,7 @@ source=(
   "dosbox-ece.png"
   "dosbox-ece.desktop"
 )
-md5sums=('7d4d40bdbbdd95570000488eb07d029f'
+md5sums=('6db485fce72ed5fcb6ca4ca169545db1'
          '19fbd9958c0a412000d5fe7362774df1'
          '7ab512ca7e6bdb3616e197271ffae928')
 
