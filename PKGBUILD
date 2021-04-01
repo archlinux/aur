@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Rouleau <jonathan@rouleau.io>
 
 pkgname=bluetooth-autoconnect
-pkgver=1.2
-pkgrel=3
+pkgver=1.3
+pkgrel=1
 pkgdesc="A service to automatically connect to all paired and trusted bluetooth devices"
 arch=('any')
 url="https://github.com/jrouleau/bluetooth-autoconnect"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('bluez' 'python' 'python-prctl' 'python-dbus' 'python-gobject')
 optdepends=('pulseaudio: auto connect bluetooth headsets/speakers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jrouleau/bluetooth-autoconnect/archive/v${pkgver}.tar.gz")
-sha256sums=('71a42ef7b1e1d22dc93c5c9e77de6d6a6c3d3b134cac28305fb37aff999877d5')
+sha256sums=('f2a9cbcc3fee29d5f35549bdc3ee044acfcf5ba0d58345b89ae0bb2611580c5c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
