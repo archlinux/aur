@@ -71,6 +71,7 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh)
+        #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -95,6 +96,13 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 prepare() {
   cd linux-${_major}
+
+  # hacky work around for xz not getting extracted
+  # https://bbs.archlinux.org/viewtopic.php?id=265115
+  if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
+    unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
+    xz -dc "$startdir/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
+  fi
 
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
