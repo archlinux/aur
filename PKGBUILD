@@ -10,8 +10,8 @@
 pkgname=openmp-rc
 pkgdesc='LLVM OpenMP Runtime Library (rc release)'
 url='https://openmp.llvm.org/'
-pkgver=12.0.0rc3
-versiontag=12.0.0-rc3
+pkgver=12.0.0rc4
+versiontag=12.0.0-rc4
 pkgrel=1
 arch=('x86_64')
 license=('custom:Apache 2.0 with LLVM Exception')
