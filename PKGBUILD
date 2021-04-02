@@ -96,6 +96,13 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 prepare() {
   cd linux-${_major}
 
+  # hacky work around for xz not getting extracted
+  # https://bbs.archlinux.org/viewtopic.php?id=265115
+  if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule" ]]; then
+    unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
+    xz -dc "$startdir/patch-${pkgver}-xanmod${xanmod}-cacule.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}-cacule"
+  fi
+
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cacule
 
