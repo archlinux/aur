@@ -5,16 +5,8 @@ pkgrel=1
 pkgdesc="A silly & effective MD5 cracker using Google Search"
 arch=(any)
 url="https://github.com/juuso/BozoCrack"
-license=(GPL)
-groups=()
+license=(Public Domain)
 depends=("ruby")
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
 source=("git+https://github.com/juuso/BozoCrack.git")
 md5sums=("SKIP")
 
@@ -26,5 +18,3 @@ pkgver() {
 package() {
   install -D "$srcdir/$_pkgname/bozocrack.rb" "$pkgdir/usr/bin/bozocrack"
 }
-
-# vim:set ts=2 sw=2 et:
