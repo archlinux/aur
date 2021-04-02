@@ -3,7 +3,7 @@
 pkgname=mkinitcpio-encrypt-detached-header
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="cryptsetup's initcpio encrypt hook with support for detached header FS#45851"
+pkgdesc="cryptsetup's initcpio encrypt hook with support for detached header FS#42851"
 arch=('any')
 license=('GPL')
 makedepends=('cryptsetup')
@@ -17,7 +17,7 @@ build() {
 
 package() {
     install -Dm644 install-encrypt-dh "$pkgdir/usr/lib/initcpio/install/encrypt-dh"
-    install -Dm644 hooks-encrypt-dh   "$pkgdir/usr/lib/initcpio/hooks/encrypt-dh"
+    install -Dm644 hooks-encrypt-dh "$pkgdir/usr/lib/initcpio/hooks/encrypt-dh"
 }
 
 # vim:set ts=4 sw=4 et:

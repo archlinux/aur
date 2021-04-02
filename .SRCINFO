@@ -1,5 +1,5 @@
 pkgbase = mkinitcpio-encrypt-detached-header
-	pkgdesc = cryptsetup's initcpio encrypt hook with support for detached header FS#45851
+	pkgdesc = cryptsetup's initcpio encrypt hook with support for detached header FS#42851
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
