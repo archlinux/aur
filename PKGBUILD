@@ -1,16 +1,17 @@
-# Maintainer: Max Chesterfield <`echo Y2hlc3RtMDA3QGhvdG1haWwuY29tCg== | base64 -d`>
-
+# Maintainer: Eric Cheng <ericcheng@hey.com>
+# Maintainer: Filippo Roggi <zzkw35@gmail.com>
+# Contributor: Max Chesterfield <`echo Y2hlc3RtMDA3QGhvdG1haWwuY29tCg== | base64 -d`>
 
 pkgname=amdgpu-fan
-pkgdesc="Python daemon for controlling the fans on amdgpu cards"
-pkgver=0.0.6
+pkgdesc="Python daemon for controlling the fans on AMDGPU cards"
+pkgver=0.1.0
 pkgrel=1
 arch=('any')
 license=('GPL2')
 depends=('python' 'python-yaml' 'python-numpy')
 makedepends=('python-setuptools')
-url="https://github.com/chestm007/amdgpu-fan"
-source=("https://github.com/chestm007/amdgpu-fan/archive/${pkgver}.tar.gz")
+url="https://github.com/zzkW35/amdgpu-fan"
+source=("https://github.com/zzkW35/amdgpu-fan/archive/${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 build() {
