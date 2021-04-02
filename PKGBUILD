@@ -3,10 +3,10 @@ pkgdesc="ROS - RTAB-Maps standalone library."
 url='http://introlab.github.io/rtabmap'
 
 pkgname='ros-melodic-rtabmap'
-pkgver='0.20.7'
+pkgver='0.20.9'
 _pkgver_patch=1
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-octomap
@@ -44,8 +44,8 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rtabmap-${pkgver}/"
 #_dir="rtabmap-release-release-melodic-rtabmap"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/introlab/rtabmap/archive/${pkgver}.tar.gz")
-sha256sums=('c34f6c3d19f77f430708f5f9f841a8ca5f5f30b94275292936a09932f00c7767')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/introlab/rtabmap/archive/${pkgver}-melodic.tar.gz")
+sha256sums=('5719445a8d94ae3d378db6cb77081ca9e3a60fbda77a5092a7cb8bc09bf0e4a3')
 
 
 build() {
