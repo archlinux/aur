@@ -1,7 +1,7 @@
 # Maintainer: Nachoc <nachohc89 at gmail dot com>
 
 _pkgbase=8192eu
-pkgname=8192eu-dkms
+pkgname=8192eu-dkms-git
 pkgver=114.6d2705d
 pkgrel=1
 pkgdesc="Driver for the Realtek 8192eu chipset (DKMS)"
@@ -10,7 +10,8 @@ url="https://github.com/Mange/rtl8192eu-linux-driver"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
-provides=('rtl8192eu')
+provides=('rtl8192eu' '8192eu-dkms')
+conflicts=('8192eu-dkms')
 source=("$_pkgbase::git+https://github.com/Mange/rtl8192eu-linux-driver.git#branch=realtek-4.4.x")
 md5sums=('SKIP')
 
