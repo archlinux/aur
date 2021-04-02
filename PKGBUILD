@@ -2,30 +2,24 @@
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 
 pkgname=frobby
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Computations With Monomial Ideals"
 arch=('i686' 'x86_64')
-url="http://www.broune.com/frobby/"
+url="https://github.com/Macaulay2/frobby"
 license=('GPL')
 depends=('gmp')
-source=(http://www.broune.com/frobby/frobby_v$pkgver.tar.gz
-        missing-include.patch
-        update-gmp.patch)
-md5sums=('2204f340dad8fb7be156f9f7c403c4a0'
-         'e3f32bb4e9360fcb4f7eccad6275ffc0'
-         'c5e95fbbb7942aa00258f7070e98723c')
+source=(https://github.com/Macaulay2/frobby/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('4bd699ff009973bc2d209ec9abdee33ef09e11de83914046fcc4ce68e7cc25b5')
 
 build() {
-  cd "$srcdir/frobby_v$pkgver"
-  patch -Np1 -i "${srcdir}/missing-include.patch"
-  patch -Np1 -i "${srcdir}/update-gmp.patch"
+  cd "$srcdir/frobby-$pkgver"
   make CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS"
-  make CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" library
+  RANLIB=/usr/bin/ranlib make CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" library
 }
 
 package() {
-  cd "$srcdir/frobby_v$pkgver"
+  cd "$srcdir/frobby-$pkgver"
   install -D -m 755 bin/frobby $pkgdir/usr/bin/frobby 
   install -D -m 644 bin/libfrobby.a $pkgdir/usr/lib/libfrobby.a
   install -D -m 644 src/frobby.h $pkgdir/usr/include/frobby.h
