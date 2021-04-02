@@ -1,15 +1,15 @@
 pkgbase = sejda-desktop
 	pkgdesc = PDF editor
-	pkgver = 7.1.9
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = http://www.sejda.com/desktop
 	arch = x86_64
 	license = custom:EULA
 	depends = gconf
 	options = !strip
-	source = https://sejda-cdn.com/downloads/sejda-desktop_7.1.9_amd64.deb
-	md5sums = e509593d36ef8eb8ee0b19a907aaa817
-	sha512sums = 1d51fb34bcad3a08e7304fc4edf18e7dd377d50008668edf576c02b05d0b8150093865c67fc7fb278fe678ff59307b0ab6389b1820f94f974e7f63eb5fbc14d6
+	source = https://sejda-cdn.com/downloads/sejda-desktop_7.2.1_amd64.deb
+	md5sums = 7d0705209657685a9814965d6ffade4c
+	sha512sums = b7022583199a3f6b04d841d8a56c7497118ce3faebd011483057f1382eeaad8d3bd2254717d76f332d191bc7f43bab640e3fef6fc0dd666d402e1f33e9ecd69e
 
 pkgname = sejda-desktop
 
