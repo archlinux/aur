@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
-makedepends=('pygtk' 'python2-dbus' 'python2-xdg' 'python2' 'gnome-icon-theme')
+makedepends=('pygtk' 'dbus-python' 'python2-xdg' 'python2' 'gnome-icon-theme')
 source=('https://sourceforge.net/projects/catfish-python2/files/catfish-python2/catfish-python2.tar.xz')
 md5sums=('541032a1513a8b0ab8c21fcdf9feb3f2')
 
