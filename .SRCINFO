@@ -1,6 +1,6 @@
 pkgbase = postman-bin-zh
 	pkgdesc = Build, test, and document your APIs faster
-	pkgver = 8.0.9
+	pkgver = 8.0.10
 	pkgrel = 1
 	url = https://www.getpostman.com
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = postman-bin-zh
 	depends = nss
 	depends = gtk3
 	options = !strip
-	source = Postman-linux-x64-8.0.9.tar.gz::https://dl.pstmn.io/download/version/8.0.9/linux64
-	source = app.zip::https://github.com/hlmd/Postman-cn/releases/download/8.0.9/app.zip
+	source = Postman-linux-x64-8.0.10.tar.gz::https://dl.pstmn.io/download/version/8.0.10/linux64
+	source = app.zip::https://github.com/hlmd/Postman-cn/releases/download/8.0.10/app.zip
 	source = postman.desktop
-	sha256sums = e1f741f67eefec5568435431e1d9e8ae7b6300767bea7d130de1d8281906d490
-	sha256sums = 8d8eb493d4b3e9fc6540d7f5659cae03aa2a06db36560d8dc142033022fa1a73
+	sha256sums = e2b143550e02d90e4346b8b163e9f20cb00a5c057c1851657a0edcadaffb3767
+	sha256sums = 6f7277ecda7afef10b6060e886a00adc25ec2f6b39d29b5c684824ee3dd1f5c4
 	sha256sums = 74b2d8570658e207e31f729e7f4768952252383aee7c695218d077bd0ef13245
 
 pkgname = postman-bin-zh

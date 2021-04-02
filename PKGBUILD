@@ -1,6 +1,6 @@
 # Maintainer: Makima0 <kekelanact@gmail.com>
 pkgname=postman-bin-zh
-pkgver=8.0.9
+pkgver=8.0.10
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
@@ -9,12 +9,12 @@ options=(!strip)
 license=('custom')
 source=(
 	"Postman-linux-x64-${pkgver}.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux64"
-	"app.zip::https://github.com/hlmd/Postman-cn/releases/download/8.0.9/app.zip"
+	"app.zip::https://github.com/hlmd/Postman-cn/releases/download/${pkgver}/app.zip"
 	"postman.desktop"
 )
 depends=(libxss nss gtk3)
-sha256sums=('e1f741f67eefec5568435431e1d9e8ae7b6300767bea7d130de1d8281906d490'
-	    '8d8eb493d4b3e9fc6540d7f5659cae03aa2a06db36560d8dc142033022fa1a73'
+sha256sums=('e2b143550e02d90e4346b8b163e9f20cb00a5c057c1851657a0edcadaffb3767'
+	    '6f7277ecda7afef10b6060e886a00adc25ec2f6b39d29b5c684824ee3dd1f5c4'
             '74b2d8570658e207e31f729e7f4768952252383aee7c695218d077bd0ef13245')
 package() {
 	rm -rf Postman/app/resources/app/
