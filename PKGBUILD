@@ -61,7 +61,7 @@ _subarch=
 
 pkgbase=linux-ck
 pkgver=5.11.11
-pkgrel=2
+pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -97,6 +97,14 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
+  # hacky work around for ck1 not getting extracted
+  # https://bbs.archlinux.org/viewtopic.php?id=265115
+
+  if [[ ! -f "$srcdir/$_ckpatch" ]]; then
+    unlink "$srcdir/$_ckpatch.xz"
+    xz -dc "$startdir/$_ckpatch.xz" > "$_ckpatch"
+  fi
+
   cd linux-${pkgver}
 
   echo "Setting version..."
