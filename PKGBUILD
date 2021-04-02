@@ -23,7 +23,8 @@ source=("$_basename-$pkgver.tar.gz::https://github.com/$_basename/$_basename/arc
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo git)
-sha256sums=(SKIP)
+sha256sums=('998be8d0f4b94d7a4fa5e2e61d9ab55bee954508fed9138ca86dfa6981125c0e')
+
 
 build () {
   cd ${pkgbase}-$_realver

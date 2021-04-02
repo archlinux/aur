@@ -1,6 +1,6 @@
 pkgbase = kanidm
 	pkgdesc = A identity management service and clients.
-	pkgver = v1.1.0_alpha.4
+	pkgver = 1.1.0_alpha.4
 	pkgrel = 1
 	url = https://github.com/kanidm/kanidm
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kanidm
 	license = MPL-2.0
 	makedepends = cargo
 	makedepends = git
-	source = kanidm-v1.1.0_alpha.4.tar.gz::https://github.com/kanidm/kanidm/archive/refs/tags/v1.1.0-alpha.4.tar.gz
-	sha256sums = SKIP
+	source = kanidm-1.1.0_alpha.4.tar.gz::https://github.com/kanidm/kanidm/archive/refs/tags/v1.1.0-alpha.4.tar.gz
+	sha256sums = 998be8d0f4b94d7a4fa5e2e61d9ab55bee954508fed9138ca86dfa6981125c0e
 
 pkgname = kanidm-clients
 	pkgdesc = kanidm client to interact with kanidm identity management server.
