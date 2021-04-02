@@ -1,8 +1,8 @@
 # Maintainer: Darkpelz <lukeh@outlook.my>
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
 url="https://github.com/TheDarkBug/$pkgname"
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=("gcc")
 optdepends=("viu: Display distro logos as images")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheDarkBug/uwufetch/archive/$pkgver.tar.gz")
-sha256sums=("6d2f14c4f91392df0316681a787e4b126f04dd7a3a5c36390331c4c32ed4df70")
+sha256sums=("1882df1171fcfb98f115753557f6b4aec524c473433b09da0a71613fad60861a")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
