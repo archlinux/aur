@@ -8,10 +8,10 @@ arch=('x86_64')
 url="https://github.com/Brx86/yun"
 license=('GPL3')
 depends=('python' 'python-arrow' 'python-requests-html')
-source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/ez-daily.tar.xz')
-md5sums=('2c5aedb976a9bbf4dca2bf3565969951')
+source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/ez-daily-2.tar.xz')
+md5sums=('38ea7a8add550e03cb70bf52e11beb64')
 noextract=()
 
 package() {
-  install -Dm755 ez-daily "$pkgdir/usr/bin/ez-daily"
+  install -Dm755 ez-daily-2 "$pkgdir/usr/bin/ez-daily"
 }
