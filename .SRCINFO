@@ -1,15 +1,15 @@
 pkgbase = jellycli-bin
 	pkgdesc = Terminal music player for Jellyfin & Subsonic media servers
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/tryffel/jellycli
 	arch = x86_64
 	license = GPL-v3
 	depends = alsa-lib
-	provides = jellycli=0.9.0
+	provides = jellycli=0.9.1
 	conflicts = jellycli-git
-	source = jellycli-0.9.0-x86_64::https://github.com/tryffel/jellycli/releases/download/v0.9.0/jellycli_0.9.0_Linux_x86_64
-	sha256sums = 33bef6d9ab247d4ef1ae1ef78d835a439266b5f1a77104c0a4b41a0a1aa61a0b
+	source = jellycli-0.9.1-x86_64::https://github.com/tryffel/jellycli/releases/download/v0.9.1/jellycli_0.9.1_Linux_x86_64
+	sha256sums = 55bb10e7dee2d56ee642e0f1007a0d24ed49dc1f2e7650e60478b4c7f7f5c6a6
 
 pkgname = jellycli-bin
 

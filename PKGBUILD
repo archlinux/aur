@@ -3,7 +3,7 @@ _pkgname=jellycli
 
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal music player for Jellyfin & Subsonic media servers"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 arch=(x86_64)
 _repo=tryffel/jellycli
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-    33bef6d9ab247d4ef1ae1ef78d835a439266b5f1a77104c0a4b41a0a1aa61a0b
+    55bb10e7dee2d56ee642e0f1007a0d24ed49dc1f2e7650e60478b4c7f7f5c6a6
 )
 
 package() {
