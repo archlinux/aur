@@ -19,7 +19,7 @@ sha512sums=('1e6230e50ff8de269902825cb0fcb6f53590b50890144014c40b8f972a0f13455f3
 
 
 package() {
-	cd "$srcdir/"
-	install -Dm755 "bin/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/"
+  install -Dm755 "bin/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
