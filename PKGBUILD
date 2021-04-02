@@ -2,14 +2,14 @@
 
 pkgname=celestia-addon-xwing
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Celestia addon: Fictional: Star Wars: X-Wing"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=154'
-license=('unknown, free')
+url='https://www.celestiamotherlode.net/addon/addon_154.html'
+license=('unknown')
 depends=('celestia' 'celestia-addon-tatooine_endor_deathstar')
 makedepends=('unzip')
-source=('http://celestiamotherlode.net/creators/jestr/SW-X-wing.zip')
+source=('https://celestiamotherlode.net/creators/jestr/SW-X-wing.zip')
 
 package() {
 	mkdir --parents "$pkgdir/usr/share/celestia/extras"
