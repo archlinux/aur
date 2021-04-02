@@ -1,7 +1,7 @@
 # Maintainer: Marcel Walk (Nyasaki) <mwalk at nyasaki dot cloud>
 pkgname=paclog
-pkgver=1.1
-pkgrel=2
+pkgver=2.0
+pkgrel=3
 pkgdesc="A pacman log analyzer"
 arch=('any')
 url="https://github.com/xfgusta/paclog"

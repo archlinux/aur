@@ -1,14 +1,14 @@
 pkgbase = paclog
 	pkgdesc = A pacman log analyzer
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 3
 	url = https://github.com/xfgusta/paclog
 	arch = any
 	license = MIT
 	depends = python
 	conflicts = pacolog
 	conflicts = pacutils
-	source = https://github.com/xfgusta/paclog/archive/refs/tags/1.1.tar.gz
+	source = https://github.com/xfgusta/paclog/archive/refs/tags/2.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = paclog
