@@ -1,7 +1,7 @@
 pkgbase = python-flask-paginate
 	pkgdesc = A simple paginate extension for flask
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/flask-paginate
 	arch = any
 	license = BSD

@@ -1,10 +1,10 @@
-# Maintainer: Brad Erhart <brae.04+aur@gmail.com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgbase=python-flask-paginate
 pkgname=python-flask-paginate
 _name=${pkgname#python-}
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple paginate extension for flask"
 arch=('any')
 license=('BSD')
