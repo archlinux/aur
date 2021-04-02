@@ -43,9 +43,9 @@ index 283453e7..29db166d 100644
  #proxmox = { git = "git://git.proxmox.com/git/proxmox", version = "0.1.2", features = [ "sortable-macro", "api-macro" ] }
  #proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro", "websocket" ] }
 -proxmox-fuse = "0.1.1"
--pxar = { version = "0.10.0", features = [ "tokio-io" ] }
+-pxar = { version = "0.10.1", features = [ "tokio-io" ] }
 +proxmox-fuse = { version = "0.1.1", git = "git://git.proxmox.com/git/proxmox-fuse.git" }
-+pxar = { version = "0.10.0", features = [ "tokio-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "64f8857c700675a26cf7676bb5edce7e3be8a487"}
++pxar = { version = "0.10.1", features = [ "tokio-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "b203d38bcd399f852f898d24403f3d592e5f75f8"}
  #pxar = { path = "../pxar", features = [ "tokio-io" ] }
  regex = "1.2"
  rustyline = "7"

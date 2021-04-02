@@ -1,8 +1,8 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.13
+pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
 url="https://www.proxmox.com"
@@ -18,14 +18,12 @@ source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
     "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
     "0002-remove-apt-dependency.patch"
-    "0003-fix-map_err.patch"
     "elf-strip-unused-dependencies.sh"
 )
 sha512sums=(
     'SKIP'
-    '5ac6082b9d718931f6692f1f2821bb0c6b312b9a04aef10bc7400a4a051c6b1368de86d3438254e313434ef35229f56b17c65f72938320e12de7001136403ed9'
+    'ab3707ca4ded41860455ba16a5f06096538c0d47dc974fc9581d0287f2704211bc2cb9bdb153e12bb550ca67db50880f74d946847a38d62743cccab40ac7f818'
     '35e3aa7369c481dde640ba8a97f0d4e95a73907f2a985382a5ed230d762e5b645a81a72c9fdd19e2dead7de51c5f7d051379ad6340cbbc245890e71398e45381'
-    '0c45368c69b6ac6dbfd6e25b1698f5ac743ef86591fa8f9038fbe15bac7995c24bf5e81dc23431964546666d8107caea31b6977eadc271ae0e27c0e616b61944'
     '8ebadc9854ff8bcd4e1e2e849728ef5724164b834793d0dda989e72ff0180d44b1318fdd6a4c1bf29b6d93bb8241c8dc47839d7d6a4b9f59a8a03f7e208e9991'
 )
 
@@ -33,7 +31,6 @@ prepare() {
   cd "$pkgname-$pkgver"
   patch --forward --strip=1 --input="${srcdir}/0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
   patch --forward --strip=1 --input="${srcdir}/0002-remove-apt-dependency.patch"
-  patch --forward --strip=1 --input="${srcdir}/0003-fix-map_err.patch"
   rm src/api2/node/apt.rs src/tools/apt.rs src/bin/proxmox-daily-update.rs # belongs to patch 0002
 }
 
