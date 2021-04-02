@@ -8,7 +8,7 @@ pkgdesc="A free and open source manga reader that runs extensions built for Tach
 arch=("any")
 url="https://github.com/Suwayomi/Tachidesk"
 license=("MPL2")
-depends=("java-runtime")
+depends=("java-runtime" "hicolor-icon-theme")
 provides=("tachidesk")
 
 _semver=$(printf ${pkgver} | cut -d'.' -f4 --complement)
