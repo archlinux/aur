@@ -8,7 +8,8 @@ arch=('any')
 groups=('therepoclub')
 url="https://github.com/The-Repo-Club/i3-maim"
 license=('CC BY-NC-SA 4.0')
-depends=('libnotify' 'maim' 'xdg-user-dirs' 'xdotool' 'xclip')
+depends=('libnotify' 'maim' 'xdg-user-dirs' 'xdotool')
+optdepends=('xclip: Allow screenshots to be saved to clipboard')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
 sha256sums=('d6580e29f44c4e688e76de1ff573c97a75380cdcbe0656f22c292e428a8deb4a')
 
