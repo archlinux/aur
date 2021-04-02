@@ -3,7 +3,7 @@
 
 _pkgname="saturnon"
 pkgname="$_pkgname"-git
-pkgver=0.38.6
+pkgver=0.38.7
 pkgrel=1
 pkgdesc="Treeview based file browser"
 arch=('any')
@@ -20,6 +20,7 @@ package() {
 	cd "$_pkgname-$pkgver"
 	
 	install -Dm755 -t "$pkgdir/usr/bin"            "saturnon"
+	install -Dm644 -t "$pkgdir/usr/share/man/man1" "saturnon.1"
 	install -Dm644 -t "$pkgdir/etc/saturnon"       "conf/default.conf"
 	install -Dm644 -t "$pkgdir/etc/saturnon"       "conf/music.conf"
 }
