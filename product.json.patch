@@ -1,5 +1,5 @@
-*** product.json	2021-02-10 16:11:56.465383389 -0500
---- product.json.new	2021-02-10 16:13:28.739024129 -0500
+*** product.json	2021-04-02 12:42:35.526958216 -0400
+--- product.json.new	2021-04-02 12:47:28.453388741 -0400
 ***************
 *** 137,146 ****
     "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
@@ -10,8 +10,8 @@
     },
 -   "linkProtectionTrustedDomains": ["https://open-vsx.org"],
     "serverDataFolderName": ".vscode-server-oss",
-    "commit": "5d424b828ada08e1eb9f95d6cb41120234ef57c7",
-    "date": "2021-02-10T00:29:49.529Z",
+    "commit": "c185983a683d14c396952dd432459097bc7f757f",
+    "date": "2021-04-01T14:57:53.176Z",
 --- 137,146 ----
     "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
     "quality": "stable",
@@ -21,17 +21,17 @@
 !     "itemUrl": "https://marketplace.visualstudio.com/items"
     },
     "serverDataFolderName": ".vscode-server-oss",
-    "commit": "5d424b828ada08e1eb9f95d6cb41120234ef57c7",
-    "date": "2021-02-10T00:29:49.529Z",
+    "commit": "c185983a683d14c396952dd432459097bc7f757f",
+    "date": "2021-04-01T14:57:53.176Z",
 ***************
 *** 152,155 ****
       "vs/code/electron-browser/workbench/workbench.html": "FA7IN1fg7dReTGbMS997BQ",
-      "vs/code/electron-browser/workbench/workbench.js": "qUuJALAxPZquY/13/5wmYg"
+      "vs/code/electron-browser/workbench/workbench.js": "q5WdzhUw0x25m5yktuMvkw"
     }
 ! }
 \ No newline at end of file
 --- 152,155 ----
       "vs/code/electron-browser/workbench/workbench.html": "FA7IN1fg7dReTGbMS997BQ",
-      "vs/code/electron-browser/workbench/workbench.js": "qUuJALAxPZquY/13/5wmYg"
+      "vs/code/electron-browser/workbench/workbench.js": "q5WdzhUw0x25m5yktuMvkw"
     }
 ! }

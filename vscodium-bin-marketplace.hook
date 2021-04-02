@@ -6,5 +6,5 @@ Target = /usr/share/vscodium-bin/resources/app/product.json
 
 [Action]
 Description = Patching product.json...
-Exec = /usr/bin/bash -c "/usr/bin/patch /usr/share/vscodium-bin/resources/app/product.json < /usr/share/vscodium-bin/resources/app/product.json.patch"
+Exec = /usr/bin/bash -c "/usr/bin/patch -R /usr/share/vscodium-bin/resources/app/product.json < /usr/share/vscodium-bin/resources/app/product.json.patch"
 When = PostTransaction
