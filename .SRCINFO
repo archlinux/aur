@@ -1,18 +1,24 @@
 pkgbase = fluent-icon-theme-git
-	pkgdesc = A Fluent design icon theme
-	pkgver = r2.28a7d9a
+	pkgver = r10.9e5e833
 	pkgrel = 1
-	url = https://github.com/vinceliuice/Fluent-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = hicolor-icon-theme
-	depends = gtk-update-icon-cache
-	provides = fluent-icon-theme
-	conflicts = fluent-icon-theme
 	options = !strip
 	source = fluent-icon-theme::git+https://github.com/vinceliuice/Fluent-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = fluent-icon-theme-git
+	pkgdesc = A Fluent design icon theme
+	url = https://www.pling.com/p/1477945
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	provides = fluent-icon-theme
+	conflicts = fluent-icon-theme
+
+pkgname = fluent-cursor-theme-git
+	pkgdesc = An x-cursor theme inspired by Qogir theme and based on capitaine-cursors.
+	url = https://www.pling.com/p/1499852
+	provides = fluent-cursor-theme
+	conflicts = fluent-cursor-theme
 
