@@ -2,8 +2,8 @@
 
 # Maintainer: Alejandro Barocio A. <abarocio80@gmail.com>
 pkgname=pacslim-git
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=4
 epoch=
 pkgdesc="Put your system on package diet."
 arch=(any)
