@@ -1,0 +1,14 @@
+pkgbase = ez-daily
+	pkgdesc = A Tool to Download People's Daily Easily
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/Brx86/yun
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-requests-html
+	source = https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/ez-daily.tar.xz
+	md5sums = db42a21d26cd5bed0d053fc7a33c19a4
+
+pkgname = ez-daily
+
