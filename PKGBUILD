@@ -2,7 +2,7 @@
 
 pkgname=freezer-bin
 pkgver=1.1.18
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Free HQ music streaming app (Official)"
 arch=(x86_64)
@@ -48,7 +48,7 @@ package() {
 	install -Dm644 "$srcdir/freezer-bin.desktop" "$pkgdir/usr/share/applications/freezer.desktop"
 	install -dm755 "$pkgdir/$HOME/Desktop/"
 	cp -r "${srcdir}"/freezer-bin.desktop "${pkgdir}"$HOME/Desktop
-	sudo ln -sf /opt/Freezer/freezer /usr/local/bin/freezer
+	sudo -S ln -sf /opt/Freezer/freezer /usr/local/bin/freezer
 
 }
 md5sums=('SKIP'
