@@ -1,0 +1,17 @@
+[Unit]
+Description=Simple, database-free Bitcoin blockchain explorer, via RPC to Bitcoin Core
+Wants=network.target
+Documentation=https://github.com/janoside/btc-rpc-explorer
+
+[Service]
+Type=simple
+User=btc-rpc-explorer
+Group=btc-rpc-explorer
+WorkingDirectory=/var/lib/btc-rpc-explorer
+EnvironmentFile=/etc/default/btc-rpc-explorer
+ExecStart=btc-rpc-explorer
+KillSignal=SIGINT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
