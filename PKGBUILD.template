@@ -42,6 +42,8 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
+noextract=("${source[@]##*/}")
+
 sha256sums=('0358dc97518d1e1dcb8aae3b0a3c9d0e43dd69708cd92ecef22e6e9dd3f9d1c8'
             'b6f662509ddcaa185f8eef31157cbb1e576efa6453e1a86c440bd3a21e1bc591'
             '19802a951538749da4d5120ff89d1fc792e4bb8f465c1d3455d3803084e5f922')
