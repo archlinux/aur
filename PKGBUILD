@@ -5,8 +5,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xscreensaver-arch-logo
-pkgver=5.45
-pkgrel=2
+pkgver=6.00
+pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System with Arch Linux branding"
 url="https://www.jwz.org/${pkgname%%-*}/"
 arch=('x86_64')
@@ -31,8 +31,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.jwz.org/xscreensaver/${pkgname
         logo-180.xpm 
         logo-50.png 
         logo-180.png)
-sha256sums=('7016df6736ba0126a68c1f35abcf411a695fe93bc01a18ebd9df46c9a9f4d50d'
-            'c0247a0328f07656f6b7a5854f57fe735579f161b6f40df967cf9a5eab772d63'
+sha256sums=('585088974721b828ebd71fd3ebb019d1bf312133c956eac9672d61f6b49d7706'
+            '54ed1dbf2570317651113d8bbd399e60d177aee1a13aa0fdcb3632fe8c53c0d3'
             '82366926a2a81bd08459327936ba144e8b3ea5ee4a386c268bd898e1791ab1a0'
             '253f0d5bbdd841f21a7bbdbb0fd7ded21f711751d5cb1b7914952bdd6541b36d'
             '8027bdb2b4328d154a8e517bdb94f5ef4a9eb031e79a285dabedd62acfa77317'
@@ -71,6 +71,6 @@ package() {
   install -Dm0644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   # Remove sticky bit
-  chmod 0755 "${pkgdir}/usr/bin/xscreensaver"
+  chmod 0755 "${pkgdir}/usr/bin/xscreensaver" "${pkgdir}/usr/lib/xscreensaver/sonar"
   echo "NotShowIn=KDE;GNOME;" >> "${pkgdir}/usr/share/applications/xscreensaver-properties.desktop"
 }
