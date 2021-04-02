@@ -1,9 +1,9 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=terraformer-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to generate terraform files from existing infrastructure (reverse Terraform)'
 arch=('x86_64')
 _goos='linux'
