@@ -1,7 +1,7 @@
 # Maintainer: Clansty <i@gao4.pw>
 pkgname=electron-qq
 pkgver=1.4.3_rc
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform QQ made with Electron'
 license=('GPL')
 depends=('electron')
@@ -15,8 +15,8 @@ source=("app-${pkgver}.asar::https://files.catbox.moe/ru6knp.asar"
 package() {
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
   install -Dm644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/lib/${pkgname}.asar"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/local/sbin/${pkgname}"
+  install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/share/${pkgname}.asar"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 } 
 
 md5sums=('3a3e9ae94b518049d5f2cd3e26601c70'

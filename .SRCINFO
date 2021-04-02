@@ -1,7 +1,7 @@
 pkgbase = electron-qq
 	pkgdesc = A cross-platform QQ made with Electron
 	pkgver = 1.4.3_rc
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = electron
