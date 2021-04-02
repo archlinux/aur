@@ -7,6 +7,7 @@ pkgbase = autorecon-git
 	license = GPL
 	makedepends = python-poetry
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-colorama
 	depends = python-toml
 	depends = python-appdirs

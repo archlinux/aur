@@ -9,7 +9,7 @@ arch=(any)
 url='https://github.com/Tib3rius/AutoRecon'
 license=(GPL)
 depends=('python-colorama' 'python-toml' 'python-appdirs')
-makedepends=('python-poetry' 'python-setuptools')
+makedepends=('python-poetry' 'python-setuptools' 'git')
 optdepends=('seclists-git'
             'enum4linux'
             'gobuster'
@@ -39,7 +39,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-package() {
+build() {
   cd "${srcdir}/${_gitname}"
   
   python -m poetry build
