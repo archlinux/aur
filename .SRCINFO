@@ -9,6 +9,7 @@ pkgbase = dtkcommon-git
 	makedepends = git
 	makedepends = qt5-tools
 	makedepends = gtest
+	makedepends = gmock
 	conflicts = dtkcore-git<5.4.0
 	conflicts = dtkcore<5.4.0
 	conflicts = dtkgui-git<5.4.0
