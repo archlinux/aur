@@ -1,22 +1,49 @@
-# Maintainer: Frank Denis <github@pureftpd.org>
+# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=encrypted-dns
-pkgver=0.3.22
-pkgrel=1
-makedepends=('rust' 'cargo')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgver=0.3.23
+pkgrel=3
 pkgdesc="A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)"
 url="https://github.com/jedisct1/encrypted-dns-server"
-license=('MIT')
+license=(MIT)
+arch=(x86_64)
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jedisct1/encrypted-dns-server/archive/${pkgver}.tar.gz
+		encrypted-dns.service)
+backup=(etc/encrypted-dns/encrypted-dns.toml)
+makedepends=(rust cargo)
+sha256sums=('c40c32906ee07e9fce6c6f34a95862e363a45baaaf6fb84a5ffc71fcbc302a6d'
+            'bcd4ba7e55288ee2209ba358c3ede64044c1ee93b0f6223a10dc3ca4bba7aa5b')
+
+prepare() {
+	cd ${pkgname}-server-${pkgver}
+
+	sed -i 's|state_file = "encrypted-dns.state"|state_file = "/var/lib/encrypted-dns/encrypted-dns.state"|' example-encrypted-dns.toml
+	sed -i 's|# log_file = "/tmp/encrypted-dns.log"|log_file = "/var/log/encrypted-dns/encrypted-dns.log"|' example-encrypted-dns.toml
+	sed -i 's|# pid_file = "/tmp/encrypted-dns.pid"|pid_file = "/run/encrypted-dns/encrypted-dns.pid"|' example-encrypted-dns.toml
+	sed -i 's|# domain_blacklist = "/etc/domain_blacklist.txt"|# domain_blacklist = "/etc/encrypted-dns/domain_blacklist.txt"|' example-encrypted-dns.toml
+	sed -i 's|# undelegated_list = "/etc/undelegated.txt"|# undelegated_list = "/etc/encrypted-dns/undelegated.txt"|' example-encrypted-dns.toml
+	sed -i 's|blacklisted_ips = \[ "93.184.216.34" \]|blacklisted_ips = \[ \]|' example-encrypted-dns.toml
+}
 
 build() {
-    return 0
+	cd ${pkgname}-server-${pkgver}
+
+	cargo build --release
 }
 
 package() {
-    cd $srcdir
-    cargo install --root="$pkgdir" --git=https://github.com/jedisct1/encrypted-dns-server
-    rm $pkgdir/.crates.toml
-    rm $pkgdir/.crates2.json
+	cd ${pkgname}-server-${pkgver}
+
+	cargo install --root="${pkgdir}"/usr --path .
+	rm "${pkgdir}"/usr/.crates.toml
+	rm "${pkgdir}"/usr/.crates2.json
+
+	install -Dm0644 example-encrypted-dns.toml "${pkgdir}"/etc/encrypted-dns/encrypted-dns.toml
+	touch "${pkgdir}"/etc/encrypted-dns/domain_blacklist.txt
+	install -Dt "${pkgdir}"/etc/encrypted-dns -m0644 undelegated.txt
+	install -Dt "${pkgdir}"/usr/share/licenses/encrypted-dns -m0644 LICENSE
+	install -Dt "${pkgdir}"/usr/share/doc/encrypted-dns -m0644 README.md dashboard.png logo.png
+
+	install -Dm644 "../encrypted-dns.service" -t "${pkgdir}/usr/lib/systemd/system"
 }
 

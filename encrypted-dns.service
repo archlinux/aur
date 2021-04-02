@@ -1,0 +1,42 @@
+[Unit]
+Description=A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)
+Documentation=https://github.com/jedisct1/encrypted-dns-server
+Wants=network-online.target nss-lookup.target
+Before=nss-lookup.target
+
+[Service]
+User=encrypted-dns
+Group=encrypted-dns
+DynamicUser=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+PrivateDevices=true
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RemoveIPC=true
+ProtectHostname=true
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+UMask=066
+RuntimeDirectory=encrypted-dns
+StateDirectory=encrypted-dns
+LogsDirectory=encrypted-dns
+ExecStart=/usr/bin/encrypted-dns -c /etc/encrypted-dns/encrypted-dns.toml
+
+[Install]
+WantedBy=multi-user.target

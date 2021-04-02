@@ -1,16 +1,17 @@
 pkgbase = encrypted-dns
 	pkgdesc = A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)
-	pkgver = 0.3.22
-	pkgrel = 1
+	pkgver = 0.3.23
+	pkgrel = 3
 	url = https://github.com/jedisct1/encrypted-dns-server
-	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	backup = etc/encrypted-dns/encrypted-dns.toml
+	source = encrypted-dns-0.3.23.tar.gz::https://github.com/jedisct1/encrypted-dns-server/archive/0.3.23.tar.gz
+	source = encrypted-dns.service
+	sha256sums = c40c32906ee07e9fce6c6f34a95862e363a45baaaf6fb84a5ffc71fcbc302a6d
+	sha256sums = bcd4ba7e55288ee2209ba358c3ede64044c1ee93b0f6223a10dc3ca4bba7aa5b
 
 pkgname = encrypted-dns
 
