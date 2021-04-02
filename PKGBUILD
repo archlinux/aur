@@ -11,8 +11,8 @@
 pkgbase=llvm-rc
 pkgname=("$pkgbase" 'llvm-libs-rc' 'llvm-ocaml-rc')
 url='https://llvm.org/'
-pkgver=12.0.0rc3
-versiontag=12.0.0-rc3
+pkgver=12.0.0rc4
+versiontag=12.0.0-rc4
 pkgrel=1
 arch=('x86_64')
 license=('custom:Apache 2.0 with LLVM Exception')
