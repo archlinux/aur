@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = librewolf
+
+[Action]
+Description = Reverting comments to cfg and policy before librewolf upgrades... 
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/librewolf-cfg-uncomment-out-value.sh
+Depends = librewolf

@@ -1,0 +1,12 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = personal-privacy-and-security
+Target = librewolf
+
+[Action]
+Description = Commenting out values from librewolf.cfg and policy.json...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/librewolf-cfg-comment-out-values.sh
+Depends = librewolf
