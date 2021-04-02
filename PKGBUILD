@@ -1,7 +1,7 @@
 # Maintainer: Charlotte Lewer <dev@chlvr.net>
 
 pkgname=fortune-mod-anarchism
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Anarchist fortune quotes"
 arch=('any')
