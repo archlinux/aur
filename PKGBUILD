@@ -1,11 +1,12 @@
-# Maintainer: Cameron Katri <katri.cameron@gmail.com>
+# Maintainer: Carson Rueter <roachh at proton mail dot com>
+# Contributor: Cameron Katri <katri.cameron@gmail.com>
 # Contributor: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 # Contributor: me at oguzkaganeren dot com dot tr
 # Contributor: Rowisi < nomail <at> private <dot> com >
 
 pkgname=vscodium-bin
 _pkgname=VSCodium
-pkgver=1.54.3
+pkgver=1.55.0
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,9 +23,9 @@ optdepends=(
 provides=('codium')
 
 sha256sums=('65e6b053e6d8be61763801312ded64a82cf835d77a6eabe1b9d7eb9e87b2e49b')
-sha256sums_x86_64=('104130e3353d30c080af49d1c5530e373552a363b8c3118a544318546be7e794')
-sha256sums_aarch64=('60070460585fade23fdce6c03fef30b769ccc3b533d39238d6d914f2619df9a8')
-sha256sums_armv7h=('9932c84944e256e3191c62f368257ebd3024db0737817bb44b16b140729851e2')
+sha256sums_x86_64=('32205de5e3520c932df736d29951ba736c144ff02bdb5e7f84c1495aed5ced7f')
+sha256sums_aarch64=('e0daa70c3556d8496f6d563f23143225d596fbf80fe2e9595381fe67bc6af789')
+sha256sums_armv7h=('036cb7d32b5ea1b9def190f9ea5359d17bf0b992970408f7b6e0abc3db360851')
 source=('vscodium-bin.desktop')
 source_x86_64=("https://github.com/VSCodium/vscodium/releases/download/${pkgver}/${_pkgname}-linux-x64-${pkgver}.tar.gz")
 source_armv7h=("https://github.com/VSCodium/vscodium/releases/download/${pkgver}/${_pkgname}-linux-armhf-${pkgver}.tar.gz")
