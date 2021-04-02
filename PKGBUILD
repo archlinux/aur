@@ -2,20 +2,24 @@
 
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
-pkgver=2.72.2
+pkgver=3.104.0
+#3.120.0 pkgver=3.120.0
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
 license=('LGPL2.1')
 depends=(
-        "$_pkgbasename"
+        "$_pkgbasename=${pkgver}"
+#3.120.0        "$_pkgbasename"
         'lib32-vulkan-icd-loader'
         'lib32-glslang>=8.13.3559'
         'lib32-lcms2'
         'lib32-shaderc'
         'lib32-libepoxy'
         'lib32-libglvnd'
+        'lib32-glibc'
+        'lib32-gcc-libs'
         )
 makedepends=(
         'meson'
@@ -28,18 +32,24 @@ makedepends=(
 provides=('libplacebo.so')
 source=(
     "https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/${_pkgbasename}-v${pkgver}.tar.gz"
- #   "vulkan-get-rid-of-deprecated-enum-members.patch::https://code.videolan.org/videolan/libplacebo/-/commit/45e19e7bbbbfceb197d8826c775e16ef536a4565.patch"
+    "vulkan-blacklist-fuchsia-strings.patch::https://code.videolan.org/videolan/libplacebo/-/commit/ac44e8f14acbfd2810c46e07e38466673f0ad7e0.patch" #fixed under 3.120.0
   )
 sha512sums=(
-    '0cb100350dbc81566a8363b0265bf89de8569b0313d1f1aa8ba621e39d7ee43a47ec9ab7827d01fdd2133c357983002412e67c2b2ba3616bd570f16e8e3ba135'
-#    'SKIP'
+  '896ade7d87fe02924cbf5a0f2b39a2054c8b9eb7a5f0adf574d0ec3dc9239020f8c69450501775002f7697250da595bf24a7d2d7039eb396073411c6fce2edfb'
+  'SKIP'
+#3.120.0    '78d917c4d258db4597431cda315626f66dccb664cf6a88ec23d7e7dc22f7bd70f8d1bf61a706d7dfa61fb2766520c97703570ed1d75b3980014afdf8dbac9a4b'
+  )
+b2sums=(
+  'dfd743470eb679ddf14b517f856dec1a1df1df88788d8222aade4b31f8d625c66a6bfeb0ff95df2eec531fa6950d68b3ca578cb244104a2591090ad8dcbca6a8'
+  'SKIP'
+#3.120.0    '97549b721884b5c79fea30ad12e51968f66e4dcd399842d5445af1f90c7e3ae5530bae14c7ab63ae7c0d86aca2090e3c1fdd8baab59852c6ecbfdb6da02cdaa3'
   )
 
 prepare() {
   cd ${_pkgbasename}-v${pkgver}
 
   # Patching if needed
-#  patch -Np1 < ../vulkan-get-rid-of-deprecated-enum-members.patch # commit 45e19e7b
+  patch -Np1 < ../vulkan-blacklist-fuchsia-strings.patch # commit ac44e8f14acbfd2810c46e07e38466673f0ad7e0
 }
 
 build() {
@@ -54,6 +64,7 @@ build() {
     --prefix=/usr \
     --libdir=lib32 \
     -D tests=false \
+    -D demos=false \
     -D vulkan=enabled \
     -D glslang=enabled \
     -D shaderc=enabled \
