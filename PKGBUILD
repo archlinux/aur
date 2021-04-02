@@ -4,7 +4,7 @@
 _with_plasma=false
 
 pkgname=optimus-manager-qt
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(GPL3)
 depends=(qt5-base qt5-svg qt5-x11extras 'optimus-manager>=1.4')
 makedepends=(git qt5-tools libxrandr extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(13e627617087845b81ca4ecd19cbbda7393d5bd823a77b7115f34fa4282991a9)
+sha256sums=(4485b7522d36259b56290eb962e3e8f5e5653739bd19c93277ab25df04b4f3c9)
 
 if [ $_with_plasma == true ]
 then
