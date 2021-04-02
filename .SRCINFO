@@ -1,12 +1,12 @@
 pkgbase = corevantage-x200
 	pkgdesc = Graphical user interface to configure coreboot settings for: ThinkPad X200
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-quickcontrols
 	makedepends = cmake
-	depends = nvramtool-git
+	depends = nvramtool-corevantage-git
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	source = https://github.com/JaGoLi/corevantage/archive/1.0.tar.gz
