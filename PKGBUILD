@@ -1,5 +1,5 @@
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-rl
 pkgver=3.0
