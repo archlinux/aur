@@ -1,0 +1,7 @@
+# Tars
+columnize*.tar.gz
+*.pkg.tar.zst
+
+# makepkg
+src
+pkg
