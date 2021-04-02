@@ -2,18 +2,24 @@
 # Git: https://github.com/SpryServers/sprycloud-desktop
 # Uncomment, if you want the last release
 #_version=master
-_spryrel=3.0.3.spry.r1
+_spryrel=3.1.3.spry.r1
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=3.0.3.spry.r1.r0.ge5878aa6d
+pkgver=3.1.3.spry.r1.r0.gb222910e0
 pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
 license=('GPL2')
-depends=('qtkeychain' 'qt5-webkit' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils' 'openssl' 'qt5-svg' 'qtkeychain')
-optdepends=('nemo-python' 'python-nautilus' 'python-sphinx' 'doxygen')
-makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules' 'doxygen' 'python-sphinx')
+depends=('openssl' 'sqlite' 'qtkeychain' 'qt5-svg' 'qt5-webengine' 'xdg-utils' 'qt5-websockets' 'qt5-webkit' 'libcloudproviders' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'hicolor-icon-theme')
+optdepends=(
+    'kio: integration with Dolphin'
+    'nemo-python: integration with Nemo'
+    'python-nautilus: integration with Nautilus'
+    'python-caja: integration with Caja'
+    'doxygen: documentation generation'
+)
+makedepends=('doxygen' 'extra-cmake-modules' 'kio' 'python-sphinx' 'qt5-tools' 'git' 'cmocka')
 provides=('sprycloud-client' 'sprycloud-client-git')
 conflicts=('sprycloud-client')
 install=${_name}.install
@@ -48,11 +54,10 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
+        -DWITH_DOC=FALSE \
         -DNO_SHIBBOLETH=1 \
         -DMIRALL_VERSION_SUFFIX=-spry-r1 \
         -DMIRALL_VERSION_BUILD=${pkgrel} \
-        -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
-        -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
         ../${_name}
   make
 }
