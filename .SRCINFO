@@ -1,13 +1,13 @@
 pkgbase = polkit-explorer
 	pkgdesc = Present PolicyKit information in a human-readable form.
-	pkgver = 12.065314e
-	pkgrel = 2
-	url = https://github.com/scarygliders/polkit-explorer
+	pkgver = 14.6c912f1
+	pkgrel = 1
+	url = https://github.com/ScrelliCopter/polkit-explorer
 	arch = any
 	license = ISC
-	depends = python2-pyqt5
-	depends = python2-lxml
-	source = git://github.com/scarygliders/polkit-explorer.git
+	depends = python-pyqt5
+	depends = python-lxml
+	source = git://github.com/ScrelliCopter/polkit-explorer.git#branch=python3
 	sha256sums = SKIP
 
 pkgname = polkit-explorer

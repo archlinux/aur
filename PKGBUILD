@@ -1,15 +1,15 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=polkit-explorer
-pkgver=12.065314e
-pkgrel=2
+pkgver=14.6c912f1
+pkgrel=1
 pkgdesc='Present PolicyKit information in a human-readable form.'
 arch=('any')
-url="https://github.com/scarygliders/${pkgname}"
+url="https://github.com/ScrelliCopter/${pkgname}"
 license=('ISC')
-depends=('python2-pyqt5' 'python2-lxml')
-source=("git://github.com/scarygliders/${pkgname}.git")
+depends=('python-pyqt5' 'python-lxml')
+source=("git://github.com/ScrelliCopter/${pkgname}.git#branch=python3")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,14 +19,13 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	local pydir='usr/lib/python2.7/site-packages/polkitex'
 
-	install -d -m755 "${pkgdir}"/{usr/bin,$pydir}
-	install -m644 Ui_*.py "${pkgdir}/${pydir}/"
+	install -d -m755 "${pkgdir}"/{usr/bin,opt/$pkgname}
+	install -m644 Ui_*.py "${pkgdir}/opt/${pkgname}/"
 
-	install -m755 'polkitex.py' "${pkgdir}/${pydir}/"
-	ln -s "/${pydir}/polkitex.py" "${pkgdir}/usr/bin/polkitex"
-  
+	install -m755 'polkitex.py' "${pkgdir}/opt/${pkgname}/"
+	ln -s "/opt/${pkgname}/polkitex.py" "${pkgdir}/usr/bin/polkitex"
+
 	install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "polkitex.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
