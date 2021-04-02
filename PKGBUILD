@@ -4,9 +4,9 @@ pkgdesc="ROS - panda Resources used for MoveIt! testing."
 url='h'
 
 pkgname='ros-melodic-moveit-resources-panda-description'
-pkgver='0.7.0'
+pkgver='0.7.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -25,9 +25,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="moveit_resources-release-release-melodic-moveit_resources_panda_description"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_panda_description/${pkgver}.tar.gz")
-sha256sums=('302af814b6077db1cd63914e532410b9f0bf2dd717e0794a59abce80f6e436bd')
+_dir="moveit_resources-${pkgver}/panda_description"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_resources/archive/${pkgver}.tar.gz")
+sha256sums=('afd4e00a30db8896fff3399d7247ce074251c835c1034e2d0264c86c0967108e')
 
 
 build() {
