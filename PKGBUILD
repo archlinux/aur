@@ -2,7 +2,7 @@
 
 pkgname=libsimple
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A bunch of C functions that are useful when writing simple code"
 arch=(i686 x86_64)
 url="https://github.com/maandree/libsimple"
@@ -15,13 +15,13 @@ sha256sums=(f98143f218d98f2beb0bd110e1d0210d412db3b5ffe554a32fad4311d4776c58)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr
+  make CC=cc PREFIX=/usr
 }
 
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  make check
+  make CC=cc check
 }
 
 

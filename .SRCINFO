@@ -1,7 +1,7 @@
 pkgbase = libsimple
 	pkgdesc = A bunch of C functions that are useful when writing simple code
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maandree/libsimple
 	arch = i686
 	arch = x86_64
