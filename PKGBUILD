@@ -61,7 +61,7 @@ _subarch=
 
 pkgbase=linux-ck
 pkgver=5.11.11
-pkgrel=3
+pkgrel=4
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -102,7 +102,7 @@ prepare() {
 
   if [[ ! -f "$srcdir/$_ckpatch" ]]; then
     unlink "$srcdir/$_ckpatch.xz"
-    xz -dc "$startdir/$_ckpatch.xz" > "$_ckpatch"
+    xz -dc "$SRCDEST/$_ckpatch.xz" > "$_ckpatch"
   fi
 
   cd linux-${pkgver}
