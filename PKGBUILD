@@ -8,12 +8,12 @@ url="https://reclass.pantsfullofunix.net/"
 license=("PerlArtistic")
 depends=('python2')
 backup=('etc/reclass/reclass-config.yml')
-makedepends=()
+makedepends=('python2-setuptools')
 optdepends=()
 options=()
 conflicts=('reclass-git')
 provides=('reclass')
-source=("https://debian.c3sl.ufpr.br/debian/pool/main/r/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz" 'reclass-config.yml' '.AURINFO')
+source=("https://ftp.debian.org/debian/pool/main/r/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz" 'reclass-config.yml' '.AURINFO')
 md5sums=('bb8d46cd739ca76befb12ebc70e79b14' 'ad011bd9cf89152b9eaaeebc0862732f' 'SKIP')
 
 build() {
