@@ -1,13 +1,15 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=corevantage-x200
 _pkgname=corevantage
-pkgver=1.0
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Graphical user interface to configure coreboot settings for: ThinkPad X200"
 source=("https://github.com/JaGoLi/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('6189522bb43d22f701ceb1ff6b0e5293c0e9409c2705c6bc68d91e2745d5edf5')
+sha256sums=('d5497fd8c6e6cf9ddb518272b18e93a77b7bc272e9a8059f4f44325319e9cabe')
+provides=("corevantage")
+conflicts=("corevantage")
 makedepends=("qt5-quickcontrols"
 	     "cmake")
 depends=("nvramtool-corevantage-git"
