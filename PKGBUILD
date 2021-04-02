@@ -1,7 +1,7 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=libretro-beetle-pce-fast-git
-pkgver=1108.bb1f5ca
+pkgver=1116.ec4fe57
 pkgrel=1
 pkgdesc='Standalone port of Mednafen PCE Fast to libretro.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
