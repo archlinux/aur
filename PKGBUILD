@@ -8,7 +8,7 @@ pkgdesc="A framework for IOTA nodes, clients and applications in Rust"
 arch=('x86_64')
 url="https://github.com/iotaledger/bee"
 license=("Apache")
-depends=('rustup' 'npm' 'base-devel' 'clang' 'llvm' 'cmake' 'openssl' 'git')
+depends=('rustup' 'npm' 'clang' 'llvm' 'cmake' 'openssl' 'git')
 source=("git://github.com/iotaledger/$_pkgname.git#branch=$_branch"
 	"$_pkgname.service")
 sha256sums=('SKIP'
