@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=sdrplusplus-git
-pkgver=0.2.5.r88.gbcc1744
+pkgver=0.2.5.r96.gb16c6f5
 pkgrel=1
 pkgdesc="Cross-platform SDR software"
 arch=('x86_64')
@@ -29,10 +29,11 @@ build() {
   cmake \
     -B build \
     -S "$pkgname" \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -std=c++17" \
     -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS} -std=c++17" \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -std=c++17" \
     -DOPT_BUILD_RTL_TCP_SOURCE=OFF \
     -DOPT_BUILD_SPYSERVER_SOURCE=OFF \
     -DOPT_BUILD_SOAPY_SOURCE=OFF \
