@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='f948f652768a5279087e13961ebb87f345626e2e' # git rev-parse v${pkgver}
-pkgver=247.4
+_tag='e13126bd95857eb9344e030edbb4c603aab63884' # git rev-parse v${_tag_name}
+pkgver=248
 pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -21,24 +21,14 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'p11-kit' 'systemd' 'libselinux')
+             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'libselinux')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
-# Retrieve the splash-arch.bmp image from systemd package sources, as this
-# file is too big to fit in the AUR.
-#
-# systemd 238.0-2 removed the ".git" from the Github URLs
-# (cf. https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=fa248b709cd106bf65b42f3e93e68decc811e163
-# or https://github.com/archlinux/svntogit-packages/commit/fa248b709cd106bf65b42f3e93e68decc811e163 )
-# When updating, if makepkg reports "systemd-stable is not a clone of https://github.com/systemd/systemd-stable",
-# you need to update the remotes of the git repositories, for example with the following commands:
-#   git -C systemd-stable remote set-url origin https://github.com/systemd/systemd-stable
-#   git -C systemd remote set-url origin https://github.com/systemd/systemd
 source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         "git+https://github.com/systemd/systemd#tag=v${pkgver%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
-        '0002-PR-18987-boot-Move-console-declarations-to-missing_efi.h.patch'
+        '0002-Disable-SYSTEMD_URLIFY-by-default.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -58,10 +48,10 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         '30-systemd-update.hook')
 sha512sums=('SKIP'
             'SKIP'
-            'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
-            '235e7f48e7e76cfa87f5e31022df17a18600055ede0aa173e8274042ebac463e27a4693aba7aa0b48e774e01af34ad497cdbcfaed17e71c702e3ff41832ecabd'
+            '882e486b6d88c8bafc50088845e41a49686e98981967f72ca1fb4ef07a01767400632f4b648fd31857d2a2a24a8fd65bcc2a8983284dd4fff2380732741d4c41'
+            '313f3d6cc3d88f718509007e029213a82d84b196afdadc6ef560580acf70ab480aaecd7622f51726cc1af7d7841c6ec5390f72890b055a54fc74722341395651'            
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '8e76f8334b95ce7fee9190f4a1016b16109f3a75b68635fc227b2b4791cf8179ef09b532b66b4ed885ddf98ed76befed3106f3c3088f1819ed8cdf4c13e0805a'
+            '1c8bdc6ecc3b755b0258faf4cbfac1b5bc25dbcd88c68cbb2ef1c41842ed349cdce84ce3f6f537845e49fab02cb5282504e1f97aa73c163fbc78997f9f00fc61'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -82,8 +72,6 @@ _backports=(
 )
 
 _reverts=(
-  # resolved: gracefully handle with packets with too large RR count
-  'fdfffdaf20a18a50c9a6d858359cf4af6d2f4c8b'
 )
 
 prepare() {
@@ -105,9 +93,8 @@ prepare() {
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
 
-  # Fix build with gnu-efi 3.0.13
-  # https://github.com/systemd/systemd/pull/18987
-  patch -Np1 -i ../0002-PR-18987-boot-Move-console-declarations-to-missing_efi.h.patch
+  # https://github.com/gwsw/less/issues/140
+  patch -Np1 -i ../0002-Disable-SYSTEMD_URLIFY-by-default.patch
 }
 
 build() {
@@ -143,9 +130,10 @@ build() {
     
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-dnssec=no
-    -Ddefault-hierarchy=hybrid
+    -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
     -Ddefault-locale=C
+    -Dlocalegen-path=/usr/bin/locale-gen
     -Ddns-over-tls=openssl
     -Dfallback-hostname='archlinux'
     -Dnologin-path=/usr/bin/nologin
@@ -155,19 +143,6 @@ build() {
     -Dsysvinit-path=
     -Dsysvrcnd-path=
   )
-
-  # meson needs a UTF-8 locale. Otherwise it displays the following error message:
-  #   WARNING: You are using 'ANSI_X3.4-1968' which is not a a Unicode-compatible locale.
-  #   WARNING: You might see errors if you use UTF-8 strings as filenames, as strings, or as file contents.
-  #   WARNING: Please switch to a UTF-8 locale for your platform.
-  # c.f. https://github.com/mesonbuild/meson/blob/0.42.0/meson.py#L21
-  if ! (echo "$LANG" | grep -i '\.utf-\?8' > /dev/null) ; then
-    export LANG="$(locale -a | grep -i '\.utf-\?8' | head -n1)"
-    if [ -z "$LANG" ] ; then
-      echo >&2 "Unable to find a UTF-8 locale on the system"
-      return 1
-    fi
-  fi
 
   arch-meson "${pkgbase/-selinux}-stable" build "${_meson_options[@]}"
 
@@ -195,7 +170,9 @@ package_systemd-selinux() {
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
-              'curl: machinectl pull-tar and pull-raw')
+              'curl: machinectl pull-tar and pull-raw'
+              'libfido2: unlocking LUKS2 volumes'
+              'tpm2-tss: unlocking LUKS2 volumes')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/homed.conf
