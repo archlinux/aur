@@ -1,15 +1,18 @@
-# Maintainer: MarkZZ <mark.weiman at markzz dot com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: MarkZZ <mark.weiman at markzz dot com>
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=steam-session-git
-pkgver=61
+pkgver=85
 pkgrel=1
 pkgdesc="Launch Steam Big Picture from your login screen"
 arch=('any')
 url="https://github.com/thor27/steam-login/"
 license=('GPL2')
-depends=('xfwm4' 'wmctrl' 'steam' 'zenity')
+depends=('wmctrl' 'steam' 'zenity')
 makedepends=('git')
+optdepends=('xfwm4: xfwm4 support'
+            'openbox: openbox support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "steam-session-kdm" "steam-session-kdm-git")
 source=("${pkgname%-*}::git+https://github.com/thor27/steam-login.git")
