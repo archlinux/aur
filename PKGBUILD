@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.25.99.66517.g638b1a7c9b
+pkgver=1.25.99.66520.ga2680bb138
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
