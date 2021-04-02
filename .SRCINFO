@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-lightning
 	pkgdesc = The lightweight PyTorch wrapper for high-performance AI research
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/PyTorchLightning/pytorch-lightning
 	arch = any
 	license = Apache
@@ -12,6 +12,7 @@ pkgbase = python-pytorch-lightning
 	depends = python-numpy
 	depends = python-scikit-learn
 	depends = python-pytorch
+	depends = python-torchmetrics
 	depends = python-torchvision
 	depends = python-twine
 	depends = python-tqdm
