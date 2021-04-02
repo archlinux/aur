@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-resources-fanuc-moveit-config
 	pkgdesc = ROS - MoveIt Resources for testing: Fanuc M-10iA.
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = h
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = ros-melodic-moveit-resources-fanuc-moveit-config
 	depends = ros-melodic-moveit-resources-fanuc-description
 	depends = ros-melodic-joint-state-publisher
 	depends = ros-melodic-tf2-ros
-	source = ros-melodic-moveit-resources-fanuc-moveit-config-0.7.0.tar.gz::https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_fanuc_moveit_config/0.7.0.tar.gz
-	sha256sums = 372cf4cec9fd3a2b5cc6b6f597525aebe66b72b696d8868d257b81ea95b8e4d3
+	source = ros-melodic-moveit-resources-fanuc-moveit-config-0.7.2.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.7.2.tar.gz
+	sha256sums = afd4e00a30db8896fff3399d7247ce074251c835c1034e2d0264c86c0967108e
 
 pkgname = ros-melodic-moveit-resources-fanuc-moveit-config
 
