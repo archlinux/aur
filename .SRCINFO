@@ -1,5 +1,5 @@
 pkgbase = teaspeak-server
-	pkgdesc = Set up your own Teaspeak Server
+	pkgdesc = Set up your own Teaspeak Server for the Teaspeak Client.
 	pkgver = 1.4.22
 	pkgrel = 1
 	url = https://teaspeak.de/gb

@@ -3,7 +3,7 @@
 pkgname=teaspeak-server
 pkgver=1.4.22
 pkgrel=1
-pkgdesc="Set up your own Teaspeak Server"
+pkgdesc="Set up your own Teaspeak Server for the Teaspeak Client."
 arch=('x86_64')
 url='https://teaspeak.de/gb'
 license=("custom:${pkgname}")
@@ -18,9 +18,9 @@ package() {
   cp -r ${srcdir}/* ${pkgdir}/opt/${pkgname}
   echo ""
   warning "The TeaSpeak-server files will be installed in /opt/${pkgname}!"
-  warning "You can change the location of the files, if you want."
-  warning "But dont forget to edit the ´/usr/bin/teaspeak-server´script!"
   warning "You can easily run the server via the command ´teaspeak-server´."
+  warning "If you want to change the location of the server files,"
+  warning "dont forget to edit the ´/usr/bin/teaspeak-server´ script."
   echo ""
   warning "You can delete this server, by removing the server folder."
   warning "But dont forget to uninstall the package via pacman, too."
