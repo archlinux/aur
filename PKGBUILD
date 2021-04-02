@@ -1,7 +1,8 @@
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-rl
-pkgver=2.4
+pkgver=3.0
 pkgrel=1
 pkgdesc="Alternative Python bindings for GNU Readline"
 arch=('i686' 'x86_64')
@@ -11,12 +12,14 @@ url="https://github.com/stefanholek/rl"
 license=('GPL' 'PSFL')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/r/${pkgname#python-}/${pkgname#python-}-$pkgver.zip)
-md5sums=('206512834d837e9cdde81e6cf7e8fca4')
-sha256sums=('3acc0fd8cc5ba7ece7af5543035fb3c3f6f424db01c2d6cd420ef964a736b6f4')
+sha256sums=('0ac8dc082385109968af9e702c0906faf452743e7400749e1c50668ceeea287a')
+
+build() {
+  cd "$srcdir/${pkgname#python-}-$pkgver"
+  python setup.py build
+}
 
 package() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
