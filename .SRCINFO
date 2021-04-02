@@ -2,9 +2,9 @@ pkgbase = pyfetch-git
 	pkgdesc = A simple and fast alternative to neofetch.
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/cainy-a/osu-tunes
+	url = https://kreatea.ml/kreato/pyfetch
 	arch = x86_64
-	license = BSD
+	license = GPL v3
 	depends = wmctrl
 	depends = otf-font-awesome
 	depends = python
@@ -12,7 +12,7 @@ pkgbase = pyfetch-git
 	provides = pyfetch
 	conflicts = pyfetch
 	backup = usr/share/pyfetch/data
-	source = pyfetch-source::git+https://github.com/cainy-a/osu-tunes#commit=420615217bdc11849adce66a5931e6233e5f2fd1
+	source = pyfetch-source::git+https://kreatea.ml/kreato/pyfetch#commit=420615217bdc11849adce66a5931e6233e5f2fd1
 	md5sums = SKIP
 
 pkgname = pyfetch-git
