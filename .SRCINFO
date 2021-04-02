@@ -1,6 +1,6 @@
 pkgbase = xorgxrdp-devel-git
 	pkgdesc = Xorg drivers for xrdp
-	pkgver = 0.2.5.r1.g5efd502
+	pkgver = 0.2.15.r8.g9b7dd05
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/xorgxrdp
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = xorgxrdp-devel-git
 	provides = xorgxrdp
 	conflicts = xorgxrdp
 	options = staticlibs
-	source = git+https://github.com/neutrinolabs/xorgxrdp.git
+	source = git+https://github.com/neutrinolabs/xorgxrdp.git#branch=devel
 	sha256sums = SKIP
 
 pkgname = xorgxrdp-devel-git

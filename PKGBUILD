@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xorgxrdp-devel-git
-pkgver=0.2.5.r1.g5efd502
+pkgver=0.2.15.r8.g9b7dd05
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'nasm' 'xorg-server-devel')
 provides=('xorgxrdp')
 conflicts=('xorgxrdp')
 options=('staticlibs')
-source=("git+https://github.com/neutrinolabs/xorgxrdp.git")
+source=("git+https://github.com/neutrinolabs/xorgxrdp.git#branch=devel")
 sha256sums=('SKIP')
 
 
@@ -26,7 +26,8 @@ build() {
   cd "xorgxrdp"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -40,5 +41,5 @@ package() {
   cd "xorgxrdp"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/xorgxrdp/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/xorgxrdp"
 }
