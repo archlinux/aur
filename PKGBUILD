@@ -8,7 +8,7 @@ pkgdesc="Open KJ - Cross-platform open source karaoke hosting software"
 arch=('i686' 'x86_64')
 url="https://openkj.org/"
 license=('GPL3')
-depends=('qt5-multimedia' 'gst-plugins-good' 'gst-plugins-bad' 'taglib-extras')
+depends=('qt5-multimedia' 'gst-plugins-good' 'taglib-extras')
 makedepends=('qt5-tools' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=('openkj')
@@ -18,11 +18,11 @@ md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/OpenKJ"
-  qmake-qt5
+  cmake CMakeLists.txt
   make
 }
 
 package() {
   cd "${srcdir}/OpenKJ"
-  make INSTALL_ROOT="${pkgdir}/" install
+  make DESTDIR="$pkgdir" install
 }
