@@ -2,8 +2,8 @@
 
 _pkgbase=8192eu
 pkgname=8192eu-dkms-git
-pkgver=136.6a758d5
-pkgrel=2
+pkgver=r136.6a758d5
+pkgrel=1
 pkgdesc="Driver for the Realtek 8192eu chipset (DKMS)"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/Mange/rtl8192eu-linux-driver"
