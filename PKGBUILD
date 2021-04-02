@@ -6,14 +6,14 @@
 
 pkgname=dunst-git
 _pkgname=dunst
-pkgver=1.5.0.r11.gbc6ab69
+pkgver=1.6.1.r13.g3acffdb
 pkgrel=1
 pkgdesc="Lightweight and customizable notification daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://dunst-project.org/"
 license=('BSD')
 depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gdk-pixbuf2' 'libxdg-basedir' 'libxrandr')
-makedepends=('git' 'perl')
+makedepends=('git' 'perl' 'dbus' 'wayland-protocols' 'wayland')
 provides=('dunst' 'notification-daemon' 'dunstify')
 conflicts=('dunst' 'dunstify')
 source=('git+https://github.com/dunst-project/dunst')
