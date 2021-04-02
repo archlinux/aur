@@ -1,6 +1,6 @@
 pkgbase = dosbox-x
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 0.83.11
+	pkgver = 0.83.12
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = dosbox-x
 	depends = mesa
 	depends = ffmpeg
 	depends = physfs
-	optdepends = openglide-git: 3dfx Glide API support
+	optdepends = openglide-git: Third-party 3dfx Glide API support
 	conflicts = dosbox-x-git
-	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.11.tar.gz
-	sha256sums = d65c96349a921e9843914e5b852ef926e4fff3ae22d9ebd8490b534afec85717
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.12.tar.gz
+	sha256sums = 31e2e9943a0e4d888402ed6289c7b0d60df049bedf62e4518c9bc0ca903f8b19
 
 pkgname = dosbox-x
 
