@@ -1,4 +1,4 @@
-# Maintainer: Alexander Bjork <bjorkalx@protonmail.com>
+# Maintainer: Alexander Björk <bjorkalx@protonmail.com>
 
 pkgname="espi-appimage"
 pkgdesc="Software recreation of the SP-1200 drum machine"
