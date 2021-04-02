@@ -1,7 +1,7 @@
 pkgbase = goi18n-bin
 	pkgdesc = CLI tool that manages message files used by the i18n package
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicksnyder/go-i18n
 	arch = x86_64
 	license = MIT

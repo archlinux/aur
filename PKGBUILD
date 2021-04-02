@@ -1,9 +1,9 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=goi18n-bin
 _pkgname="${pkgname%-bin}"
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool that manages message files used by the i18n package'
 arch=('x86_64')
 _goos='linux'
