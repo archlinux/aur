@@ -5,11 +5,11 @@
 _pkgbin=chain-maind
 _pkgname=cro-chain-maind
 pkgname=cro-chain-maind-bin
-pkgdesc='Crypto.org Chain desktop wallet'
+pkgdesc='Crypto.org Chain CLI'
 license=('Apache')
 url='https://github.com/crypto-org-chain/chain-main'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 package="chain-main_${pkgver}_Linux_${arch}.tar.gz"
 source=(
