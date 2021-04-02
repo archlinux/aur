@@ -2,16 +2,16 @@
 
 pkgname=libzkgroup
 _pkgname=zkgroup
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Library for the Signal Private Group System."
 url="https://github.com/signalapp/${_pkgname}"
 makedepends=('cargo' 'gradle')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('6f9a0d46632c8a44f1d47cfd9c861f9a7673664360a82eee75edd582ab2f2bdb')
+sha256sums=('fdd03bbf584533963d1be40ab238d4e6199b379e8112f6aaf5cd9493b7f1fb47')
 
 prepare() {
   tar xf ${pkgname}-$pkgver.tar.gz
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}-$pkgver"
-  make libzkgroup
+  cargo build --release --locked
   gradle :ffi:java:assemble
 }
 
