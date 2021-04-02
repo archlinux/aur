@@ -27,11 +27,11 @@ md5sums=('d05260628ffebe1f92c497f14d16043f'
 package() {
     install -d "${pkgdir}/usr/share/java/${pkgname}"
     install -d "${pkgdir}/usr/share/applications"
-    install -d "${pkgdir}/usr/share/icons" 
+    install -d "${pkgdir}/usr/share/pixmaps" 
     install -d "${pkgdir}/usr/bin"
     
     desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
     install -Dm755 "${srcdir}/${_jar}"          "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-    install -Dm755 "${srcdir}/${pkgname}.png"   "${pkgdir}/usr/share/icons/${pkgname}.png"
+    install -Dm755 "${srcdir}/${pkgname}.png"   "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm755 "${srcdir}/${pkgname}.sh"    "${pkgdir}/usr/bin/${pkgname}"
 }
