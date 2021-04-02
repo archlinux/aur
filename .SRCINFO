@@ -1,6 +1,6 @@
 pkgbase = dtkcommon-git
 	pkgdesc = DTK common modules
-	pkgver = 5.5.2.r0.g3d8ba1c
+	pkgver = 5.5.2.r1.g5a27b3b
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkcommon
 	arch = x86_64
@@ -9,6 +9,10 @@ pkgbase = dtkcommon-git
 	makedepends = git
 	makedepends = qt5-tools
 	makedepends = gtest
+	conflicts = dtkcore-git<5.4.0
+	conflicts = dtkcore<5.4.0
+	conflicts = dtkgui-git<5.4.0
+	conflicts = dtkgui<5.4.0
 	source = dtkcommon-git::git://github.com/linuxdeepin/dtkcommon.git
 	sha512sums = SKIP
 
