@@ -4,7 +4,7 @@
 
 _pkgname=awesome
 pkgname=awesome-luajit-git
-pkgver=4.3.886.ged6cdf87b
+pkgver=4.3.966.g7a8fa9d27
 pkgrel=1
 pkgdesc="awesome window manager built with luajit"
 url='https://awesomewm.org/'
