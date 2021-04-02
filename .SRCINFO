@@ -6,7 +6,6 @@ pkgbase = python-mbed-os-tools
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = python-mbed-os-tools-0.0.15.tar.gz::https://github.com/ARMmbed/mbed-os-tools/archive/v0.0.15.tar.gz
 	sha256sums = 60e77755e43d9dc0612ecbbb02ff3321dd79993a664a22c3ad2405f6de61c7e2
 
@@ -40,35 +39,4 @@ pkgname = python-mbed-greentea
 	depends = python
 	depends = python-mbed-os-tools
 	conflicts = python2-mbed-greentea
-
-pkgname = python2-mbed-os-tools
-	depends = python2
-	depends = python2-pyserial
-	depends = python2-requests
-	depends = python2-intelhex
-	depends = python2-future
-	depends = python2-prettytable
-	depends = python2-fasteners
-	depends = python2-appdirs
-	depends = python2-junit-xml
-	depends = python2-lockfile
-	depends = python2-six
-	depends = python2-colorama
-	depends = python2-beautifulsoup4
-
-pkgname = python2-mbed-ls
-	depends = python
-	depends = python-prettytable
-	depends = python-mbed-os-tools
-	conflicts = python-mbed-ls
-
-pkgname = python2-mbed-host-tests
-	depends = python
-	depends = python-mbed-os-tools
-	conflicts = python-mbed-host-tests
-
-pkgname = python2-mbed-greentea
-	depends = python
-	depends = python-mbed-os-tools
-	conflicts = python-mbed-greentea
 
