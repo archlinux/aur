@@ -3,7 +3,7 @@
 # Maintainer of emacs-pgtk-native-comp: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 
 pkgname=emacs-gcc-wayland-devel-bin
-pkgver=28.0.50.147871
+pkgver=28.0.50.147874
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined, served as a binary."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
 
 source=("https://github.com/mpsq/emacs-gcc-wayland-devel-builder/releases/download/$pkgver/$pkgver.tar.gz")
-sha512sums=("2d54e00c3e1c88a31c3ea57cc5f5fa8733670a7794bcf76b8e9bcbc5bfb350ffaf6af5e4e0da20e4f1ff9251f1f7421ee84b80d2d8b3a00ca07f764e6776f1ed")
+sha512sums=("4777aea68109a94d18d55a1275e4140f6bb0823682e63f1d5c0e1482f77a05c78ea9810374c53c6e1ba70351eaceb867e65588de3dbda40ca2c0e75948cf5ad6")
 
 package() {
   cp -r usr/ $pkgdir/
