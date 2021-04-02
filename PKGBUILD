@@ -1,7 +1,8 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer:  Oliver Jaksch <arch-aur at com-in dot de>
+# Contributor: Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=libretro-beetle-vb-git
-pkgver=806.0de041a
+pkgver=812.0079285
 pkgrel=1
 pkgdesc="Virtual Boy emu - Standalone port of Beetle / Mednafen VB to libretro."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
