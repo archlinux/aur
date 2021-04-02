@@ -10,7 +10,7 @@ pkgname=('yaru-sound-theme'
          'yaru-icon-theme'
          'yaru-session')
 pkgver=21.04.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -20,11 +20,14 @@ makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
 _commit=b01004d7ca3eb86f2110c5aabecd9fed93ede70f
+_shorthash=${_commit:0:7}
 source=("https://github.com/ubuntu/yaru/archive/${_commit}.tar.gz")
 sha256sums=('e2a400527451e33abb44d96b6878514482d008355639add6ab30d6e9b2dd70f3')
 
 build() {
-  arch-meson $pkgbase-$_commit build
+  # Avoid very long filename that eCryptfs might choke on:
+  mv $pkgbase-$_commit $pkgbase-$_shorthash
+  arch-meson $pkgbase-$_shorthash build
   meson configure build -Dubuntu-unity=true
   ninja -C build
 }
