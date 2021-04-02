@@ -1,7 +1,7 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 
 pkgname=efistubmgr-git
-pkgver=1.0.0.r0.gb9c9e9b
+pkgver=1.0.0.r1.gcf8aa14
 pkgrel=1
 pkgdesc="Script for managing Linux EFISTUB boot entries"
 arch=('any')
@@ -10,6 +10,7 @@ makedepends=('git')
 _depends=('bash' 'efibootmgr')
 provides=("efistubmgr=$pkgver")
 license=('MPL2')
+backup=('etc/xdg/efistubmgr.conf')
 source=('git+https://github.com/openglfreak/efistubmgr.git')
 sha256sums=('SKIP')
 
