@@ -1,13 +1,13 @@
 _pkgbase=BeautifulDiscord
 pkgname=beautiful-discord-git
 pkgdesc="Adds custom CSS support to Discord"
-pkgver=43.ec03601
+pkgver=69.0d09097
 pkgrel=1
 license=('MIT')
 arch=('any')
 url="https://github.com/leovoel/BeautifulDiscord"
-depends=('python' 'python-psutil')
-makedepends=('python-setuptools')
+depends=('python' 'python-psutil' 'discord')
+makedepends=('python-setuptools' 'git')
 source=("git+https://github.com/leovoel/BeautifulDiscord.git")
 sha1sums=('SKIP')
 
