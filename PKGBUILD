@@ -10,8 +10,8 @@
 
 pkgname=('lib32-llvm-rc' 'lib32-llvm-libs-rc' 'lib32-clang-rc')
 url='https://llvm.org/'
-pkgver=12.0.0rc3
-versiontag=12.0.0-rc3
+pkgver=12.0.0rc4
+versiontag=12.0.0-rc4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
