@@ -4,12 +4,15 @@
 
 #################################################################################
 # Because the package needs to download 2 linux gits to accelerate the progress
-# do not let makepkg fetch them on its own. use (hint: uncomment the lines :) ):
-# git clone https://github.com/koverstreet/bcachefs.git \
-#   --reference PATHTOEXISTINGGIT linux-bcachefs # if you alread got a linux git
+# do not let makepkg fetch them on its own. ( hint: uncomment the lines :) )
+# git clone https://github.com/koverstreet/bcachefs \
+#  -b master --bare linux-bcachefs # use --reference if you already got a linux git in ../linux
 # and:
-# git clone https://github.com/zen-kernel/zen-kernel -b 5.10/master \
-#  --bare --reference linux-bcachefs zen-kernel
+# git clone https://github.com/zen-kernel/zen-kernel \
+#  -b 5.10/master --bare --reference linux-bcachefs linux-zen
+#
+# git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git \
+#  -b linux-5.10.y --bare --reference linux-zen linux-stable
 #################################################################################
 
 ### BUILD OPTIONS
@@ -17,47 +20,6 @@
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
-
-# Optionally select a sub architecture by number if building in a clean chroot
-# Leaving this entry blank will require user interaction during the build
-# which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 30.
-#
-# Note - the march=native option is unavailable by this method, use the nconfig
-# and manually select it.
-#
-#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  4. AMD Barcelona (MBARCELONA)
-#  5. AMD Bobcat (MBOBCAT)
-#  6. AMD Jaguar (MJAGUAR)
-#  7. AMD Bulldozer (MBULLDOZER)
-#  8. AMD Piledriver (MPILEDRIVER)
-#  9. AMD Steamroller (MSTEAMROLLER)
-#  10. AMD Excavator (MEXCAVATOR)
-#  11. AMD Zen (MZEN)
-#  12. AMD Zen 2 (MZEN2)
-#  13. Intel P4 / older Netburst based Xeon (MPSC)
-#  14. Intel Atom (MATOM)
-#  15. Intel Core 2 (MCORE2)
-#  16. Intel Nehalem (MNEHALEM)
-#  17. Intel Westmere (MWESTMERE)
-#  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Goldmont (MGOLDMONT)
-#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  21. Intel Sandy Bridge (MSANDYBRIDGE)
-#  22. Intel Ivy Bridge (MIVYBRIDGE)
-#  23. Intel Haswell (MHASWELL)
-#  24. Intel Broadwell (MBROADWELL)
-#  25. Intel Skylake (MSKYLAKE)
-#  26. Intel Skylake X (MSKYLAKEX)
-#  27. Intel Cannon Lake (MCANNONLAKE)
-#  28. Intel Ice Lake (MICELAKE)
-#  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Generic-x86-64 (GENERIC_CPU)
-#  31. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
@@ -67,10 +29,10 @@ _subarch=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=1
+_localmodcfg=
 
 pkgbase=linux-bcachefs-510-zen
-pkgver=v5.10.26.arch1.r971587.47ff0aad7ea6
+pkgver=v5.10.26.arch1.r971595.17f9d1e225b9
 _srcver_tag=v5.10.26.arch1
 pkgrel=1
 pkgdesc="Linux"
@@ -92,16 +54,13 @@ makedepends=(
 options=('!strip')
 
 _reponame="linux-bcachefs"
-_repo_url="https://github.com/koverstreet/bcachefs"
-
-_reponame_gcc_patch="kernel_gcc_patch"
-_repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "${_reponame}::git+${_repo_url}.git#branch=master"
-    'git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master'
+    "${_reponame}::git+https://github.com/koverstreet/bcachefs"
+    'linux-zen::git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master'
+    'linux-stable::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#branch=linux-5.10.y'
     config # kernel config file
 )
 validpgpkeys=(
@@ -110,7 +69,9 @@ validpgpkeys=(
 )
 md5sums=('SKIP'
          'SKIP'
-         '23089df30f5b19a8d1f0ebe506eb3c83')
+         'SKIP'
+         'SKIP'
+)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -119,32 +80,28 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
     cd "$srcdir/$_reponame"
 
-    git remote add zen ../zen-kernel || true
+    git remote add zen ../linux-zen || {
+      cd "$srcdir"
+      rm -rf linux-bcachefs
+      git clone ../linux-bcachefs linux-bcachefs
+      cd -
+      git remote add zen ../linux-zen
+    }
+
+    git remote add stable ../linux-stable
     EDITOR=true git pull zen makepkg
+    EDITOR=true git pull stable makepkg ||
+     git checkout --theirs Makefile
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    #msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    #git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    #git fetch arch_stable "${_srcver_tag_arch%.*}-${_srcver_tag_arch##*.}"
-    #git merge --no-edit --no-commit FETCH_HEAD
-
-#    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-#    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-#    git fetch upstream_stable ${_srcver_tag//.arch*/}
-#    git merge --no-edit --no-commit FETCH_HEAD
-
     msg2 "Setting config..."
     cp ../config .config
 
-    if [ -n "$_subarch" ]; then
-        yes "$_subarch" | make oldconfig
-    else
-        make prepare
-    fi
+    make prepare
 
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db

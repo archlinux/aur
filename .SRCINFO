@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-510-zen
 	pkgdesc = Linux
-	pkgver = v5.10.26.arch1.r969310.1110c37124f4
+	pkgver = v5.10.26.arch1.r971595.17f9d1e225b9
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -16,14 +16,16 @@ pkgbase = linux-bcachefs-510-zen
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git#branch=master
-	source = git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master
+	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git
+	source = linux-zen::git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master
+	source = linux-stable::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#branch=linux-5.10.y
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 23089df30f5b19a8d1f0ebe506eb3c83
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = linux-bcachefs-510-zen
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
