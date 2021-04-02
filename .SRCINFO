@@ -1,0 +1,13 @@
+pkgbase = easel-driver
+	pkgdesc = Driver used to communicate between Easel and X-Carve or Carvey
+	pkgver = 0.3.20
+	pkgrel = 1
+	url = https://easel.inventables.com/downloads
+	install = install.sh
+	arch = x86_64
+	license = unknown
+	source = https://s3.amazonaws.com/easel-prod/paperclip/sender_version_linux_installers/46/original/EaselDriver-0.3.20-x64.deb
+	md5sums = bb32b33b2c446efcc31cb50f75504e2c
+
+pkgname = easel-driver
+
