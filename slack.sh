@@ -1,3 +1,3 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-exec electron /usr/share/slack/app.asar "$@"
+exec electron /usr/lib/slack/app.asar "$@"
