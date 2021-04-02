@@ -24,7 +24,7 @@ pkgbase = vscode-transparent-insiders
 	optdepends = x11-ssh-askpass: SSH authentication
 	provides = code
 	conflicts = code
-	source = code::git+https://github.com/microsoft/vscode.git#commit=04770364fdc1bebeca9d1a257df2cacce06b35d6
+	source = code::git+https://github.com/microsoft/vscode.git#commit=550035808407c15252e581e8abe1b820b9d311ee
 	source = code.js
 	source = code.sh
 	source = transparency.diff
