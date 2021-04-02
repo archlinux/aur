@@ -1,7 +1,7 @@
 # Maintainer: Clansty <i@gao4.pw>
 pkgname=electron-qq
 pkgver=1.4.3_rc
-pkgrel=3
+pkgrel=4
 pkgdesc='A cross-platform QQ made with Electron'
 license=('GPL')
 depends=('electron')
