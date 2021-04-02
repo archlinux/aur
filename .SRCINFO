@@ -9,6 +9,8 @@ pkgbase = corevantage-x201
 	depends = nvramtool-corevantage-git
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	provides = corevantage
+	conflicts = corevantage
 	source = https://github.com/JaGoLi/corevantage/archive/1.2.tar.gz
 	sha256sums = d5497fd8c6e6cf9ddb518272b18e93a77b7bc272e9a8059f4f44325319e9cabe
 
