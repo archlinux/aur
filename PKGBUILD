@@ -3,13 +3,13 @@
 _pkgname=stack_data
 pkgname=python-stack-data
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library that extracts data from stack frames and tracebacks"
 arch=('any')
 url="https://github.com/alexmojaki/stack_data"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-setuptools' 'python-pip' 'git')
 source=("git+https://github.com/alexmojaki/stack_data.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
