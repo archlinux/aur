@@ -1,14 +1,16 @@
 pkgname=riseup-vpn
-pkgrel=2
+pkgrel=3
 pkgver=0.21.2
 _commit=7ed49b92ff19205af276dee371174579c8b4c811
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
-arch=('any')
+arch=('x86_64')
 license=('GPL3')
 depends=(
     'python'
     'openvpn'
+    'qt5-declarative'
+    'hicolor-icon-theme'
 )
 makedepends=(
     'go'
@@ -17,7 +19,11 @@ makedepends=(
     'qt5-tools'
     'git'
     'qt-installer-framework'
+    'pkgconf'
+    'cmake'
+    'fakeroot'
 )
+
 source=(
     "git+https://0xacab.org/leap/bitmask-vpn.git#commit=${_commit}"
     "riseup-vpn_launcher.desktop"
@@ -30,16 +36,30 @@ sha1sums=(
 )
 build() {
     cd "bitmask-vpn"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
+	make generate
+
+    go build -buildmode=c-archive -o lib/libgoshim.a gui/backend.go
+
     PROVIDER=riseup make build
 }
 
+check() {
+	cd "bitmask-vpn"
+
+	make test
+}
+
 package() {
+	install -Dm644 riseup-vpn_launcher.desktop "${pkgdir}/usr/share/applications/riseup-vpn_launcher.desktop"
+	install -Dm644 riseup-vpn.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/riseup-vpn.png"
+
     cd "bitmask-vpn"
     install -Dm755 helpers/bitmask-root "${pkgdir}/usr/bin/bitmask-root"
     install -Dm644 helpers/se.leap.bitmask.policy "${pkgdir}/usr/share/polkit-1/actions/se.leap.bitmask.policy"
     install -Dm755 build/qt/release/riseup-vpn "${pkgdir}/usr/bin/riseup-vpn"
-#   install -Dm755 build/bin/linux/bitmask-vpn "${pkgdir}/usr/bin/riseup-vpn"
-    cd ..
-    install -Dm644 riseup-vpn_launcher.desktop "${pkgdir}/usr/share/applications/riseup-vpn_launcher.desktop"
-    install -Dm644 riseup-vpn.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/riseup-vpn.png"
 }
