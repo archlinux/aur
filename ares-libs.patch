@@ -1,10 +1,14 @@
-diff --git a/ares_v119/ruby/GNUmakefile b/ares_v119/ruby/GNUmakefile
-@@ -8,7 +8,7 @@
+diff --git a/ares_v119r2/ruby/GNUmakefile b/ares_v119r2/ruby/GNUmakefile
+@@ -8,9 +8,9 @@
      ruby += audio.openal
      ruby += input.quartz #input.carbon
    else ifeq ($(platform),linux)
--    pkg_check = $(if $(shell test -e /usr/lib/$(shell uname -m)-linux-gnu/lib$1.so && echo 1),$2)
-+    pkg_check = $(if $(shell test -e /usr/lib/lib$1.so && echo 1),$2)
+-    pkg_check1 = $(if $(shell test -e /usr/lib/lib$1.so && echo 1),$2)
+-    pkg_check2 = $(if $(shell test -e /usr/lib/$(shell uname -m)-linux-gnu/lib$1.so && echo 1),$2)
+-    pkg_check = $(call pkg_check1,$1) $(call pkg_check2,$1)
++    pkg_check1 = $(shell test -e /usr/lib/lib$1.so && echo 1)
++    pkg_check2 = $(shell test -e /usr/lib/$(shell uname -m)-linux-gnu/lib$1.so && echo 1)
++    pkg_check = $(if $(filter 1,$(call pkg_check1,$1) $(call pkg_check2,$1)), $2)
      ruby += video.glx video.glx2 video.xshm
      ruby += $(call pkg_check,Xv,video.xvideo)
      ruby += audio.oss audio.alsa
