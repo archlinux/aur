@@ -11,8 +11,10 @@ pkgbase = espi-appimage
 	options = !strip
 	source = https://low-hiss.com/eSPi-1.0.0-RC3.AppImage
 	source = espi.sh
+	source = eSPi.desktop.patch
 	sha256sums = ed4c075c5787cab51eb7f4f0581f6e6fed05991739f6f647c750f043dd625c46
 	sha256sums = 8a93b9a1e8c115b342f346497e3b0b192dcb51262d63eeafbd6adcc51a1222ca
+	sha256sums = 26df8d45e662bde820c114a6e50c5ead169f65a6868ece246c13d36da519673d
 
 pkgname = espi-appimage
 
