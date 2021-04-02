@@ -1,7 +1,7 @@
 pkgbase = portwine-meta
 	pkgdesc = Meta package to install all deps needed for PortWINE project
 	pkgver = 0.0.1
-	pkgrel = 20210326
+	pkgrel = 20210402
 	url = https://portwine-linux.ru
 	arch = x86_64
 	license = MIT
@@ -58,7 +58,7 @@ pkgbase = portwine-meta
 	depends = python2
 	depends = wxgtk-common
 	depends = wxgtk3
-	depends = gnu-netcat
+	depends = netcat
 	depends = lib32-libudev0-shim
 	depends = python2-wxpython3
 	depends = vulkan-tools

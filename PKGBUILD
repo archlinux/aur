@@ -57,7 +57,7 @@ depends=(
     'python2'
     'wxgtk-common'
     'wxgtk3'
-    'gnu-netcat'
+    'netcat'
     'lib32-libudev0-shim'
     'python2-wxpython3'
     'vulkan-tools'
