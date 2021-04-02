@@ -3,7 +3,7 @@
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=openframeworks
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
@@ -18,7 +18,7 @@ source=(
   "https://openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux64gcc6_release.tar.gz"
 )
 sha256sums=('b4fc38288595df566f770018d871970fb13fb2ad4af7e9e5cddc60288f338806'
-            '4531c70bb96af6c1a32c512c1ba0b90bd84f16e670627ad36c9daf24976aa22c')
+            '9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c')
 
 _name="of_v${pkgver}_linux64gcc6_release"
 
