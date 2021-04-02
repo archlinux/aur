@@ -1,10 +1,10 @@
-# Maintainer: Brad Erhart <brae.04+aur@gmail.com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=musixmatch-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.10.4043
 _pkgver=master.20200211001
-pkgrel=3
+pkgrel=4
 pkgdesc='Lyrics for your music'
 arch=('x86_64')
 url='https://about.musixmatch.com/apps'

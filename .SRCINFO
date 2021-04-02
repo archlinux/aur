@@ -1,7 +1,7 @@
 pkgbase = musixmatch-bin
 	pkgdesc = Lyrics for your music
 	pkgver = 3.10.4043
-	pkgrel = 3
+	pkgrel = 4
 	url = https://about.musixmatch.com/apps
 	arch = x86_64
 	license = custom
