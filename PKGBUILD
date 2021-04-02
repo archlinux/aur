@@ -11,11 +11,11 @@ license=("MPL2")
 depends=("java-runtime" "hicolor-icon-theme")
 provides=("tachidesk")
 
-_semver=$(printf ${pkgver} | cut -d'.' -f4 --complement)
-_commits=$(printf ${pkgver} | cut -d'.' -f4)
-_fetch_url="${url}/releases/download/v${_semver}/Tachidesk-v${_semver}-${_commits}.jar"
+_semver=$(printf v${pkgver} | cut -d'.' -f4 --complement)
+_commit=$(printf ${pkgver} | cut -d'.' -f4)
+_jar=Tachidesk-${_semver}-${_commit}.jar
 
-source=("${pkgname}-${pkgver}.jar::${_fetch_url}" 
+source=("${url}/releases/download/${_jar}" 
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
@@ -31,7 +31,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     
     desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+    install -Dm755 "${srcdir}/${_jar}" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
     install -Dm755 "${srcdir}/${pkgname}.png"           "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
     install -Dm755 "${srcdir}/${pkgname}.sh"            "${pkgdir}/usr/bin/${pkgname}"
 }
