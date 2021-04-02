@@ -1,7 +1,7 @@
 pkgbase = vscode-transparent-insiders
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - based on insiders commit
-	pkgver = 1.55.0_insiders
-	pkgrel = 2
+	pkgver = 1.56.0_insiders
+	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-transparent.install
 	arch = i686
