@@ -2,11 +2,11 @@
 
 pkgname=gog-hacknet
 pkgver=5.069
-pkgrel=2
+pkgrel=3
 pkgdesc="Story driven Hacking Game (GOG version)"
 url="https://www.gog.com/game/hacknet"
 license=('custom')
-arch=('i686' 'x86_64')
+arch=('x86_64' 'x86')
 makedepends=('sed')
 provides=("hacknet=$pkgver")
 depends=('sdl2' 'sdl2_image' 'gconf')
@@ -31,19 +31,32 @@ package(){
 	# required to be writable for creating new accounts, if not it fails with a exeption
 	# doesnt seem to be actually written to.
 	chmod -R 666 "${pkgdir}/opt/$pkgname/Content/People"
-	
+
 	find ${pkgdir} -type d -exec chmod +x {} +
 	chmod 555 "${pkgdir}/opt/$pkgname/Hacknet.bin.x86_64"
 	chmod 555 "${pkgdir}/opt/$pkgname/Hacknet.bin.x86"
 
 
+	# remove mac files
+	rm -rf "${pkgdir}/opt/gog-hacknet/Hacknet.app/"
+	rm     "${pkgdir}/opt/gog-hacknet/OSX.README"
+
+
+	# remove the respective other libary folder depending on the architecture
+	[ $CARCH  == x86 ] && rm -rf "${pkgdir}/opt/gog-hacknet/lib64/"
+	[ $CARCH  == x86_64 ] && rm -rf "${pkgdir}/opt/gog-hacknet/lib/"
+
+	# remove the respective other executable depending on the architecture
+	[ $CARCH  == x86 ] && rm -rf "${pkgdir}/opt/gog-hacknet/Hacknet.bin.x86_64"
+	[ $CARCH  == x86_64 ] && rm -rf "${pkgdir}/opt/gog-hacknet/Hacknet.bin.x86"
+
 
 	# remove integrated libsdl2 and libsdl2-image because it doesnt launch for me using them.
 	# deleting them makes the dynamic linker use the system libs
-	rm "${pkgdir}/opt/gog-hacknet/lib64/libSDL2-2.0.so.0"
-	rm "${pkgdir}/opt/gog-hacknet/lib64/libSDL2_image-2.0.so.0"
-	rm "${pkgdir}/opt/gog-hacknet/lib/libSDL2-2.0.so.0"
-	rm "${pkgdir}/opt/gog-hacknet/lib/libSDL2_image-2.0.so.0"
+	[ $CARCH  == x86 ] 	  && rm "${pkgdir}/opt/gog-hacknet/lib/libSDL2-2.0.so.0"
+	[ $CARCH  == x86 ] 	  && rm "${pkgdir}/opt/gog-hacknet/lib/libSDL2_image-2.0.so.0"
+	[ $CARCH  == x86_64 ] && rm "${pkgdir}/opt/gog-hacknet/lib64/libSDL2-2.0.so.0"
+	[ $CARCH  == x86_64 ] && rm "${pkgdir}/opt/gog-hacknet/lib64/libSDL2_image-2.0.so.0"
 
 
 	# Desktop integration
