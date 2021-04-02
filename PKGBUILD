@@ -9,7 +9,7 @@ url="https://github.com/Brx86/yun"
 license=('GPL3')
 depends=('python' 'python-arrow' 'python-requests-html')
 source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/ez-daily.tar.xz')
-md5sums=('db42a21d26cd5bed0d053fc7a33c19a4')
+md5sums=('2c5aedb976a9bbf4dca2bf3565969951')
 noextract=()
 
 package() {
