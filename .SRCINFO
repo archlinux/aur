@@ -1,7 +1,7 @@
 pkgbase = vue-cli
 	pkgdesc = Standard tooling for Vue.js development
 	pkgver = 4.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cli.vuejs.org
 	arch = any
 	license = MIT
