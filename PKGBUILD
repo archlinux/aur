@@ -1,7 +1,7 @@
 # Maintainer: Daniel Duan <daniel@duan.ca>
 pkgname=tre-command
 pkgver=0.3.6
-pkgrel=1
+pkgrel=6
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Tree command, improved."
@@ -24,5 +24,7 @@ package() {
     cd "$srcdir/tre-$pkgver"
     install -Dm 755 target/release/tre "${pkgdir}/usr/bin/tre"
     mkdir -p "${pkgdir}/usr/share/man/man1"
-    install manual/tre.1 "${pkgdir}/usr/share/man/man1/tre.1"
+    install -Dm 644 manual/tre.1 "${pkgdir}/usr/share/man/man1/tre.1"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
 }
