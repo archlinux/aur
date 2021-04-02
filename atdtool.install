@@ -1,0 +1,11 @@
+post_install() {
+  echo -e "\e[31mWARNING:\e[0m service.afterthedeadline.com does not respond anymore."
+  echo -e "You may try \e[1mpylanguagetool-git\e[0m as an alternative.
+  "
+}
+
+post_upgrade() {
+  echo -e "\e[31mWARNING:\e[0m service.afterthedeadline.com does not respond anymore."
+  echo -e "You may try \e[1mpylanguagetool-git\e[0m as an alternative.
+  "
+}
