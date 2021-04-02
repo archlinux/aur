@@ -6,7 +6,7 @@
 pkgname=vscode-transparent-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - compiles from main'
 _pkgname=code
-_electron=electron
+_electron=electron11
 pkgver=1.53.0.r76027.gd045bc6ed1d
 pkgrel=2
 arch=('i686' 'x86_64' 'armv7h')
