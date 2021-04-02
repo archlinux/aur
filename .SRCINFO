@@ -1,0 +1,14 @@
+pkgbase = wordpress-plugin-disable-xml-rpc
+	pkgdesc = Disable XML-RPC API on a Wordpress site
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://wordpress.org/plugins/disable-xml-rpc/
+	arch = any
+	license = GPL2
+	depends = wordpress
+	options = !strip
+	source = wordpress-plugin-disable-xml-rpc-1.0.1.tar.gz::https://downloads.wordpress.org/plugin/disable-xml-rpc.1.0.1.zip
+	sha512sums = 0d5d3217409bc12a01aea434b0a1821e6ad75358783e67ac9f617517e1098a951601b72f4730e7db0027b05e4c8bc06298c0785ef3ad54f0328af3172015bdf1
+
+pkgname = wordpress-plugin-disable-xml-rpc
+
