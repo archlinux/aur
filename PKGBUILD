@@ -2,14 +2,14 @@
 
 pkgname=celestia-addon-sun
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Celestia addon: Sol: Texture Maps: Sun"
 arch=('any')
-url="http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=1014"
+url="https://www.celestiamotherlode.net/addon/addon_1014.html"
 license=('Free')
 depends=('celestia')
 makedepends=('unzip')
-source=("http://www.celestiamotherlode.net/creators/fsgregs/Sun-new-2010.zip")
+source=("https://www.celestiamotherlode.net/creators/fsgregs/Sun-new-2010.zip")
 install="${pkgname}.install"
 	
 package() {
