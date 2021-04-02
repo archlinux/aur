@@ -24,28 +24,28 @@ sha512sums=('f86d1ba409400fc6fbf5c3d6f12dee5078c9749b0da9269081a9b521051ffe3f51b
             '0e76943ab7d3849ee569a30a46dec494658b8de9937965a81d043ad957116bf9c8bdb9bb9aee20e2f00fb15b736df90bbe6144dc2088a968ced2cc7b8e2de07f')
 
 build() {
-	# Extract files
-	chmod +x "$srcdir/$package"
-	$srcdir/$package --appimage-extract
+  # Extract files
+  chmod +x "$srcdir/$package"
+  $srcdir/$package --appimage-extract
 
-	# Correct .desktop
-	sed -e "s/AppRun/${_pkgbin}/g" -i "$srcdir/squashfs-root/$_pkgbin.desktop"
+  # Correct .desktop
+  sed -e "s/AppRun/${_pkgbin}/g" -i "$srcdir/squashfs-root/$_pkgbin.desktop"
 }
 
 
 package() {
-	install -d "$pkgdir/opt/$_pkgbin"
-	cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$_pkgbin/"
-	chmod -R +rx "$pkgdir/opt/$_pkgbin"
+  install -d "$pkgdir/opt/$_pkgbin"
+  cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$_pkgbin/"
+  chmod -R +rx "$pkgdir/opt/$_pkgbin"
 
-	install -d "$pkgdir/usr/bin"
-	ln -s "/opt/$_pkgbin/$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/$_pkgbin/$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
 
-	install -d "$pkgdir/usr/share"
-	cp -r "$srcdir/squashfs-root/usr/share/." "${pkgdir}/usr/share/"
+  install -d "$pkgdir/usr/share"
+  cp -r "$srcdir/squashfs-root/usr/share/." "${pkgdir}/usr/share/"
 
-	find "$pkgdir" -type d -exec chmod 755 {} +
+  find "$pkgdir" -type d -exec chmod 755 {} +
 
-	install -Dm644 "$srcdir/squashfs-root/$_pkgbin.desktop" "$pkgdir/usr/share/applications/$_pkgbin.desktop"
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/squashfs-root/$_pkgbin.desktop" "$pkgdir/usr/share/applications/$_pkgbin.desktop"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
