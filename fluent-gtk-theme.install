@@ -5,7 +5,7 @@ post_install() {
 	echo ""
 	echo "Fix for Dash to panel:"
 	echo "cd /usr/share/doc/fluent-gtk-theme/gnome-shell/extensions/dash-to-panel"
-	echo "sudo./install.sh "
+	echo "sudo ./install.sh "
 	echo ""
 	echo "Restore original styesheet.css before updating Dash to panel:"
 	echo "cd /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com"
