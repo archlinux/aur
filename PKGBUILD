@@ -3,7 +3,7 @@
 pkgname=teaspeak-client
 pkgver=1.5.1
 pkgrel=2
-pkgdesc="A free to use client software for VoIP communication"
+pkgdesc="A free to use client software for voice and video communication"
 arch=('x86_64')
 url='https://teaspeak.de/gb'
 license=("custom:${pkgname}")

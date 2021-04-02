@@ -1,5 +1,5 @@
 pkgbase = teaspeak-client
-	pkgdesc = A free to use client software for VoIP communication
+	pkgdesc = A free to use client software for voice and video communication
 	pkgver = 1.5.1
 	pkgrel = 2
 	url = https://teaspeak.de/gb
@@ -8,7 +8,7 @@ pkgbase = teaspeak-client
 	depends = libxss
 	depends = nss
 	depends = gtk3
-	source = https://clientapi.teaspeak.de/files/release/1.5.1-2/TeaClient-linux_x64.deb
+	source = teaspeak-client-1.5.1-2.deb::https://clientapi.teaspeak.de/files/release/1.5.1-2/TeaClient-linux_x64.deb
 	source = LICENSE
 	sha256sums = 580dddb1a7a65540da696d886220b4f9818018e3b461bc465f79de1c39281710
 	sha256sums = SKIP
