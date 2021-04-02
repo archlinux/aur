@@ -1,10 +1,10 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=cloudmonkey-bin
 _pkgname="${pkgname%-bin}"
 _pkgtool=cmk
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool for Apache CloudStack'
 arch=('x86_64')
 _goos=linux

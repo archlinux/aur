@@ -1,7 +1,7 @@
 pkgbase = cloudmonkey-bin
 	pkgdesc = Command line tool for Apache CloudStack
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apache/cloudstack-cloudmonkey
 	arch = x86_64
 	license = Apache
