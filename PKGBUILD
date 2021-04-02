@@ -2,15 +2,15 @@
 
 pkgname=celestia-addon-tatooine_endor_deathstar
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Fictional: Star Wars: Tatooine, Endor and Death Star"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=1625'
+url='https://www.celestiamotherlode.net/addon/addon_1625.html'
 license=('Free for personal use')
 depends=('celestia')
 makedepends=('unzip')
 conflicts=('celestia-addon-tatooine-endor-deathstar')
-source=('http://www.celestiamotherlode.net/creators/jestr/StarWars_upd.zip')
+source=('https://www.celestiamotherlode.net/creators/jestr/StarWars_upd.zip')
 install=$pkgname.install
 	
 package() {
