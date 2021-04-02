@@ -1,8 +1,8 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=saml2aws-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.28.3
+pkgver=2.28.4
 pkgrel=1
 pkgdesc='CLI tool to login and retrieve AWS temporary credentials using a SAML IDP'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/versent/$_pkgname/releases/download/v$pkgver/saml2aws_${pkgver}_${_goos}_${_goarch}.tar.gz")
-sha256sums=(b7b16c94202a50c705278524681a1ef7ab4e44b4c772d0e5f16b1f45cca4db3c)
+sha256sums=(d29eff4f1a76f0ad2099910086babdd8ba01a756582407c61b6c62a00e368236)
 
 package() {
 	install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
