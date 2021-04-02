@@ -6,10 +6,14 @@ url='https://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')
 arch=('i686' 'x86_64')
 depends=('libgl' 'libxft' 'libxi')
-makedepends=('cmake' 'ninja' 'subversion')
+makedepends=('cmake' 'ninja')
 install="${pkgname}.install"
-source=('build.patch' "${pkgname}-${pkgver}::svn+svn://svn.code.sf.net/p/${pkgname}/code/${pkgname}/tags/rel-${pkgver//./-}#revision=r78207")
-sha256sums=('SKIP' 'SKIP')
+source=(
+    'build.patch'
+    "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/rel-${pkgver//./-}.tar.gz")
+sha256sums=(
+    'SKIP'
+    'd025b51bf85e944fc599bce6615b82b01b1f7932adbb6d139b4b2a0056922534')
 
 
 _build_config='Release'
@@ -17,7 +21,10 @@ _pkgprefix="/opt/${pkgname}"
 
 
 prepare() {
-    patch --quiet --strip=0 "--directory=${srcdir}/${pkgname}-${pkgver}" \
+    patch \
+        --quiet \
+        --strip=0 \
+        "--directory=${srcdir}/${pkgname}-rel-${pkgver//./-}" \
         "--input=${srcdir}/build.patch"
 }
 
@@ -25,7 +32,7 @@ prepare() {
 build() {
     cmake \
         -G Ninja \
-        -S "${srcdir}/${pkgname}-${pkgver}" \
+        -S "${srcdir}/${pkgname}-rel-${pkgver//./-}" \
         -B "${srcdir}/build" \
         -Wno-dev \
         "-DCMAKE_INSTALL_PREFIX=${_pkgprefix}" \
@@ -44,20 +51,27 @@ build() {
 
     cmake --build "${srcdir}/build" --config "${_build_config}"
 
-    echo "export PATH=\"\$PATH:${_pkgprefix}/bin\"" \
+    echo \
+        "export PATH=\"\$PATH:${_pkgprefix}/bin\"" \
         >"${srcdir}/build/${pkgname}.sh"
 }
 
 
 package() {
-    cmake --install "${srcdir}/build" --config "${_build_config}" \
+    cmake \
+        --install "${srcdir}/build" \
+        --config "${_build_config}" \
         --prefix "${pkgdir}${_pkgprefix}"
 
-    install -D --mode=u=rw,go=r \
+    install \
+        -D \
+        --mode=u=rw,go=r \
         "--target-directory=${pkgdir}/usr/share/licenses/${pkgname}" \
         "${srcdir}/build/share/doc/legal/"{bdl,bsd}.txt
 
-    install -D --mode=u=rw,go=r \
+    install \
+        -D \
+        --mode=u=rw,go=r \
         "--target-directory=${pkgdir}/etc/profile.d" \
         "${srcdir}/build/${pkgname}.sh"
 }

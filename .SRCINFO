@@ -11,14 +11,13 @@ pkgbase = brlcad
 	license = custom:BDL
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = subversion
 	depends = libgl
 	depends = libxft
 	depends = libxi
 	source = build.patch
-	source = brlcad-7.32.2::svn+svn://svn.code.sf.net/p/brlcad/code/brlcad/tags/rel-7-32-2#revision=r78207
+	source = https://github.com/BRL-CAD/brlcad/archive/refs/tags/rel-7-32-2.tar.gz
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = d025b51bf85e944fc599bce6615b82b01b1f7932adbb6d139b4b2a0056922534
 
 pkgname = brlcad
 
