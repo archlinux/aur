@@ -1,0 +1,7 @@
+# Tars
+mathicsscript*.tar.gz
+mathicsscript*.pkg.tar.zst
+
+# makepkg
+src
+pkg

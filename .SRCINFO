@@ -1,0 +1,22 @@
+pkgbase = mathicsscript
+	pkgdesc = A more advanced command-line interface to Mathics.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Mathics3/mathicsscript
+	arch = any
+	license = custom
+	checkdepends = python-pytest
+	depends = mathics>=2.0.0
+	depends = mathics<2.1.0
+	depends = python-click
+	depends = python-colorama
+	depends = python-pygments
+	depends = python-columnize
+	depends = python-networkx
+	depends = python-pygments
+	depends = python-term-background
+	source = mathicsscript-2.0.1.tar.gz::https://github.com/Mathics3/mathicsscript/archive/refs/tags/2.0.1.tar.gz
+	sha256sums = c9ac844240b652c431cd3e5111dd2093d09b5306bf1d20b929deb337f443f0b8
+
+pkgname = mathicsscript
+
