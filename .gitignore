@@ -1,0 +1,7 @@
+# Tars
+python-term-background*.tar.gz
+*.pkg.tar.zst
+
+# makepkg
+src
+pkg
