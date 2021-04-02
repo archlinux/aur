@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=0.44.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -17,8 +17,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'a7f948e5d76014ff8d93beee90ea764f49858ef636cdfb294dfd2839c17ba23e'
-  '8f99381f92c84832cab9c1552dbb2afce61833f21dbd829ec1d17e7ce937ecce'
+  '1c429ae5c5c672be1ff26569b2927a6c677481b20749c3f437aeb7c2e5106288'
+  'a2d24f622f17d1d89b9ec5b8dc42a9991bddebe7d4bc47b74de8d2d1b089eab6'
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
-  sed -i 's/ruamel.yaml==0.16.10/ruamel.yaml>=0.16.10/' setup.py
+  sed -i 's/ruamel.yaml==0.17.0/ruamel.yaml>=0.17.0/' setup.py
   python setup.py build
   chmod +x build/lib/semgrep/bin/{semgrep-core,spacegrep}
 }
