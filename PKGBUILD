@@ -1,8 +1,8 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=docker-machine-driver-kvm2
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minikube-maintained KVM driver for docker-machine'
 url='https://minikube.sigs.k8s.io'
 license=('Apache')

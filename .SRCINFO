@@ -1,7 +1,7 @@
 pkgbase = docker-machine-driver-kvm2
 	pkgdesc = Minikube-maintained KVM driver for docker-machine
 	pkgver = 1.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minikube.sigs.k8s.io
 	arch = x86_64
 	license = Apache
