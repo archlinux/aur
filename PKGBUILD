@@ -1,8 +1,8 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=gvisor-bin
 _pkgname=runsc
-pkgver=20201208.0
+pkgver=20210322.0
 pkgrel=1
 pkgdesc='OCI container sandbox runtime focused on security, efficiency, and ease of use'
 arch=('x86_64')
@@ -18,8 +18,8 @@ conflicts=(
 	"$_pkgname"
 )
 install="$pkgname.install"
-source=("$pkgname-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/$_pkgname")
-sha256sums=(de8eb1b6ad2bf24ef822689e877fab497d60c5f90da9afe89d34ccf3c9d8a590)
+source=("$pkgname-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/latest/$arch/$_pkgname")
+sha256sums=(697f019baf0cee0ce431eb1bcde87a1bfed5cac59d0590e4e63ce997c99e7fbb)
 
 package() {
 	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
