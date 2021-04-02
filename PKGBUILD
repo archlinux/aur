@@ -4,9 +4,9 @@ pkgdesc="ROS - PR2 Resources used for MoveIt! testing."
 url='h'
 
 pkgname='ros-melodic-moveit-resources-pr2-description'
-pkgver='0.7.0'
+pkgver='0.7.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -25,9 +25,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="moveit_resources-release-release-melodic-moveit_resources_pr2_description"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_pr2_description/${pkgver}.tar.gz")
-sha256sums=('0ccf03e91f75d1f48c1b50dfba09cde3f08a32a6cb348773cb904ee033a0c901')
+_dir="moveit_resources-${pkgver}/pr2_description"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_resources/archive/${pkgver}.tar.gz")
+sha256sums=('afd4e00a30db8896fff3399d7247ce074251c835c1034e2d0264c86c0967108e')
 
 
 build() {
