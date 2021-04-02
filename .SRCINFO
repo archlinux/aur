@@ -1,0 +1,16 @@
+pkgbase = wallstreet
+	pkgdesc = Stock quotes and charts for the terminal
+	pkgver = r41.8c966fa
+	pkgrel = 1
+	url = https://github.com/madnight/wallstreet
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = jq
+	depends = nodejs
+	source = git+https://github.com/madnight/wallstreet.git
+	sha256sums = SKIP
+
+pkgname = wallstreet
+
