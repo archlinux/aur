@@ -21,6 +21,10 @@ prepare(){
 			"${srcdir}/data/noarch/game/Hacknet"
 	sed -i 's/\.\/Hacknet\.bin\.x86 /\/opt\/gog-hacknet\/Hacknet.bin.x86 /gm' \
 			"${srcdir}/data/noarch/game/Hacknet"
+	sed -i 's/LD_PRELOAD="lib\/libcef.so/LD_PRELOAD="\/opt\/gog-hacknet\/lib\/libcef.so/gm' \
+			"${srcdir}/data/noarch/game/Hacknet"
+	sed -i 's/LD_PRELOAD="lib64\/libcef.so/LD_PRELOAD="\/opt\/gog-hacknet\/lib64\/libcef.so/gm' \
+			"${srcdir}/data/noarch/game/Hacknet"
 }
 
 package(){
