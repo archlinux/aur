@@ -1,5 +1,5 @@
 pkgbase = josm-javaws
-	pkgdesc = An editor for OpenStreetMap written in Java, Java Web Start version
+	pkgdesc = An editor for OpenStreetMap written in Java, Java Web Start version (auto updates on startup)
 	pkgver = tested
 	pkgrel = 1
 	url = http://josm.openstreetmap.de/

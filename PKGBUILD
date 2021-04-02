@@ -1,9 +1,10 @@
-# Maintainer: Brian "Beej Jorgensen" Hall <beej@beej.us>
+# Maintainer: Thibault Molleman <aur at thibaultmol d0t link>
+# Contributor: Brian "Beej Jorgensen" Hall <beej@beej.us>
 
 pkgname=josm-javaws
 pkgver='tested'
 pkgrel=1
-pkgdesc="An editor for OpenStreetMap written in Java, Java Web Start version"
+pkgdesc="An editor for OpenStreetMap written in Java, Java Web Start version (auto updates on startup)"
 arch=('any')
 url="http://josm.openstreetmap.de/"
 license=('GPL')
@@ -32,6 +33,3 @@ package() {
   install -D -m755 josm "${pkgdir}"/usr/bin/josm
   install -Dm644 "${srcdir}"/josm.conf.d "${pkgdir}"/etc/conf.d/josm
 }
-
-# vim:set ts=2 sw=2 et:
-
