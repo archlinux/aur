@@ -1,0 +1,18 @@
+pkgbase = espi-appimage
+	pkgdesc = Software recreation of the SP-1200 drum machine
+	pkgver = 1.0.0_RC3
+	pkgrel = 1
+	url = https://low-hiss.com/
+	arch = x86_64
+	license = custom
+	depends = fuse3
+	provides = espi
+	conflicts = espi
+	options = !strip
+	source = https://low-hiss.com/eSPi-1.0.0-RC3.AppImage
+	source = espi.sh
+	sha256sums = ed4c075c5787cab51eb7f4f0581f6e6fed05991739f6f647c750f043dd625c46
+	sha256sums = 8a93b9a1e8c115b342f346497e3b0b192dcb51262d63eeafbd6adcc51a1222ca
+
+pkgname = espi-appimage
+
