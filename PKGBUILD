@@ -3,7 +3,7 @@ pkgdesc="ROS - RTAB-Maps ros-pkg."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-rtabmap-ros'
-pkgver='0.20.7'
+pkgver='0.20.9'
 _pkgver_patch=1
 arch=('any')
 pkgrel=2
@@ -83,7 +83,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rtabmap_ros-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/introlab/rtabmap_ros/archive/${pkgver}.tar.gz")
-sha256sums=('fcac5e4f418f1e409de7df87c024bfd128620babb163ef5167b24820bf7c65e3')
+sha256sums=('e848336db0e5c98be4c0e903b72ea1b3aa797ee6b83db68f884a11ceb57151c2')
 
 build() {
   # Use ROS environment variables

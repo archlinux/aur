@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rtabmap-ros
 	pkgdesc = ROS - RTAB-Maps ros-pkg.
-	pkgver = 0.20.7
-	pkgrel = 2
+	pkgver = 0.20.9
+	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
@@ -67,8 +67,8 @@ pkgbase = ros-melodic-rtabmap-ros
 	depends = ros-melodic-rviz
 	depends = ros-melodic-tf-conversions
 	depends = ros-melodic-laser-geometry
-	source = ros-melodic-rtabmap-ros-0.20.7.tar.gz::https://github.com/introlab/rtabmap_ros/archive/0.20.7.tar.gz
-	sha256sums = fcac5e4f418f1e409de7df87c024bfd128620babb163ef5167b24820bf7c65e3
+	source = ros-melodic-rtabmap-ros-0.20.9.tar.gz::https://github.com/introlab/rtabmap_ros/archive/0.20.9.tar.gz
+	sha256sums = e848336db0e5c98be4c0e903b72ea1b3aa797ee6b83db68f884a11ceb57151c2
 
 pkgname = ros-melodic-rtabmap-ros
 
