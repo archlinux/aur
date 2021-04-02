@@ -1,15 +1,17 @@
 pkgbase = imgurbash2
-	pkgdesc = A small shell script that uploads/deletes images to/from imgur.com
-	pkgver = 3.1
-	pkgrel = 5
+	pkgdesc = A shell script that uploads/deletes images to/from IMGUR
+	pkgver = 3.2
+	pkgrel = 1
 	url = https://github.com/ram-on/imgurbash2
 	arch = any
 	license = MIT
+	depends = bash
 	depends = curl
-	optdepends = xsel: automatically putting the URL on the X selection for easy pasting
-	optdepends = xclip: an alternative to xsel
-	source = https://github.com/ram-on/imgurbash2/archive/3.1.tar.gz
-	sha256sums = e66e27b96d303a7896d2b4c8abc4dca4974193eebb3851e4ee0b88076b703809
+	optdepends = wl-clipboard: To be able to copy image URL to clipboard in Wayland
+	optdepends = xclip: To be able to copy image URL to clipboard in X
+	optdepends = xsel: To be able to copy image URL to clipboard in X
+	source = imgurbash2-3.2.tar.gz::https://github.com/ram-on/imgurbash2/archive/3.2.tar.gz
+	sha256sums = a17ef6c96399550293ee806bae4665e4353c3280df4d3ebe041cf589fe6bc259
 
 pkgname = imgurbash2
 

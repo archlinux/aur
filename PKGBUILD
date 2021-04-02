@@ -1,20 +1,26 @@
-# Maintainer:  Ramon <https://github.com/ram-on/imgurbash2>
+# Maintainer: Alec Mev <alec@mev.earth>
+# Contributor: NightSong <ramif.47@gmail.com>
 
 pkgname=imgurbash2
-pkgver=3.1
-pkgrel=5
-pkgdesc="A small shell script that uploads/deletes images to/from imgur.com"
+pkgver=3.2
+pkgrel=1
+pkgdesc='A shell script that uploads/deletes images to/from IMGUR'
 arch=('any')
-url="https://github.com/ram-on/imgurbash2"
+url='https://github.com/ram-on/imgurbash2'
 license=('MIT')
-depends=('curl')
-optdepends=('xsel: automatically putting the URL on the X selection for easy pasting'
-			'xclip: an alternative to xsel')
-source=("https://github.com/ram-on/imgurbash2/archive/${pkgver}.tar.gz")
-sha256sums=('e66e27b96d303a7896d2b4c8abc4dca4974193eebb3851e4ee0b88076b703809')
+depends=('bash' 'curl')
+optdepends=(
+	'wl-clipboard: To be able to copy image URL to clipboard in Wayland'
+	'xclip: To be able to copy image URL to clipboard in X'
+	'xsel: To be able to copy image URL to clipboard in X'
+)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ram-on/imgurbash2/archive/${pkgver}.tar.gz")
+sha256sums=('a17ef6c96399550293ee806bae4665e4353c3280df4d3ebe041cf589fe6bc259')
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -D -m 755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-	install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${pkgname}-${pkgver}"
+	install -Dm755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" examples.md
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
