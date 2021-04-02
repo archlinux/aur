@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.36.0.r58.gf5af059e
+pkgver=2.37.0.r34.g51ef7ef6
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
             '0064503a9124b764d01db862ba3c2ff97bc5961d41359970df2d6ce9842a5ab5'
             '452550678ea5702a6492eb58e8d0452b91dc5d0aaa112cf04542df74a3dc0dfc'
             'e98eaa783fcd8e1ab84980f68158e3bb9eb5ec101f26c748946a313152643f11'
-            '1d14bf9d56eac134e750ece336897aa45ce7f039f67f0bbdc89bddc6c777fa7d'
+            '2b84d85d4234eb3b640925d0dd244c8abe3b48bc69c8456629af923de17acf10'
             'cfcb6b07b67aff3e3af12767f4649d88b9320dc71907b6c01b465e5c138cdaa3'
             '88b2e709228049ba11f37863f87de75ab6cde295104852871384337cfdc906a3'
             'fe8cc2ec83cb5b5c2b2ec8cce9a989e0cb6fd347e00b84e03a17b12efd152fac')

@@ -15,7 +15,7 @@
 +MemoryDenyWriteExecute=true
 +LockPersonality=true
 +SystemCallFilter=@system-service
-+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
++RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
 +ProtectHostname=true
 +ProtectClock=true
 +ProtectKernelLogs=true
