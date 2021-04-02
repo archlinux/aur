@@ -1,13 +1,13 @@
 pkgbase = celestia-addon-voyagers
 	pkgdesc = Celestia addon: Spacecraft: Other: Voyagers 1 & 2
 	pkgver = 2
-	pkgrel = 1
-	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=355
+	pkgrel = 2
+	url = http://www.celestiamotherlode.net/addon/addon_355.html
 	arch = any
-	license = unknown, free
+	license = unknown
 	makedepends = unzip
 	depends = celestia
-	source = http://www.celestiamotherlode.net/creators/fsgregs/jackhiggins_spacecraft/voyager-full.zip
+	source = https://www.celestiamotherlode.net/creators/fsgregs/jackhiggins_spacecraft/voyager-full.zip
 	md5sums = db3d0b83647514ffba5ca89e9af53611
 
 pkgname = celestia-addon-voyagers
