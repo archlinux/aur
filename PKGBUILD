@@ -1,10 +1,11 @@
-# Maintainer: John Hamelink <me@johnhame.link>
+# Maintainer: Unknown Packager
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-tidalapi
-pkgver=0.6.6
+epoch=
+pkgver=0.6.7
 pkgrel=00
 pkgdesc='Unofficial API for TIDAL music streaming service.'
 arch=(any)
@@ -19,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/2a/5e/89c79f0a2afc449cb4248255c6451de71f14fb05f13967c645b6015db737/tidalapi-0.6.6-py3-none-any.whl)
-md5sums+=(a0a8d60ab70b2e90583a61292dc5aa72)
-noextract+=(tidalapi-0.6.6-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/95/d7/664c35cb34a1c0ec98f6f51da3614c5a54ea2dcb3d9cc93ef55aa62acd14/tidalapi-0.6.7-py3-none-any.whl)
+md5sums+=(d89747ae59b96a48d06e1de30443f887)
+noextract+=(tidalapi-0.6.7-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(e6a600fd5e1d9cbde2d983680233ad02)
 
