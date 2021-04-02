@@ -2,18 +2,18 @@
 # Contributor: Nils Czernia <nils@czserver.de>
 
 pkgname=prometheus-postgresql-exporter
-pkgver=0.8.0
-pkgrel=3
-pkgdesc="Prometheus exporter for PostrgreSQL"
+pkgver=0.9.0
+pkgrel=1
+pkgdesc="Prometheus exporter for PostgreSQL"
 arch=('x86_64')
-url="https://github.com/wrouesnel/postgres_exporter"
+url="https://github.com/prometheus-community/postgres_exporter"
 license=('Apache')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'make')
 backup=('etc/conf.d/prometheus-postgresql-exporter')
-source=("https://github.com/wrouesnel/postgres_exporter/archive/v${pkgver}.tar.gz"
+source=("https://github.com/prometheus-community/postgres_exporter/archive/v${pkgver}.tar.gz"
 	"prometheus-postgresql-exporter.service"
 	"prometheus-postgresql-exporter.conf")
-sha256sums=('27877c9b3aa751c7c1265f39986218f6a2c2b66a126cf348c6cc2f20f5201b02'
+sha256sums=('a92d30e9952dfb3387ef2a636d19891e226c396f769729431dac0bddc3f0b29e'
 	'0d86e650d88c8d4a8bc5b26faecb75023e069eaf29582135bcb0202e4a69a9b9'
 	'5436ad34fbcd6faab69da8675631f3eb5b89d964682eb23164bf4bb816ad1897')
 
@@ -21,20 +21,20 @@ prepare() {
 	cd "postgres_exporter-${pkgver}"
 
 	export GOPATH="${srcdir}/gopath"
-	mkdir -p "${GOPATH}/src/github.com/wrouesnel"
-	ln -snf "${srcdir}/postgres_exporter-${pkgver}" "${GOPATH}/src/github.com/wrouesnel/postgres_exporter"
+	mkdir -p "${GOPATH}/src/github.com/prometheus-community"
+	ln -snf "${srcdir}/postgres_exporter-${pkgver}" "${GOPATH}/src/github.com/prometheus-community/postgres_exporter"
 }
 
 build() {
 	export GOPATH="${srcdir}/gopath"
-	cd "${GOPATH}/src/github.com/wrouesnel/postgres_exporter"
-	go run mage.go binary
+	cd "${GOPATH}/src/github.com/prometheus-community/postgres_exporter"
+	make build
 }
 
 check() {
 	export GOPATH="${srcdir}/gopath"
-	cd "${GOPATH}/src/github.com/wrouesnel/postgres_exporter"
-	go run mage.go test
+	cd "${GOPATH}/src/github.com/prometheus-community/postgres_exporter"
+	make test
 }
 
 package() {
