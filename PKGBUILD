@@ -1,8 +1,8 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=ez-daily
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="A Tool to Download People's Daily Easily"
 arch=('x86_64')
 url="https://github.com/Brx86/yun"

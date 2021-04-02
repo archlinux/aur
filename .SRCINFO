@@ -1,7 +1,7 @@
 pkgbase = ez-daily
 	pkgdesc = A Tool to Download People's Daily Easily
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/Brx86/yun
 	arch = x86_64
 	license = GPL3
