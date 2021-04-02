@@ -1,0 +1,12 @@
+diff --unified --recursive --text squashfs-root/eSPi.desktop squashfs-root.new/eSPi.desktop
+--- squashfs-root/eSPi.desktop	2021-04-02 19:18:34.866059684 +0200
++++ squashfs-root/eSPi.desktop	2021-04-02 19:19:41.295066083 +0200
+@@ -4,7 +4,7 @@
+ 2=P
+ 3=i
+ Name=eSPi
+-Exec=AppRun %U
++Exec=/usr/bin/espi %F
+ Terminal=false
+ Type=Application
+ Icon=eSPi
