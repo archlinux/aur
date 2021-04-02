@@ -1,0 +1,16 @@
+pkgbase = ki-shell-bin
+	pkgdesc = Kotlin Language Interactive Shell
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Kotlin/kotlin-interactive-shell
+	arch = any
+	license = Apache
+	depends = bash
+	depends = java-runtime
+	provides = ki-shell
+	conflicts = ki-shell
+	source = https://repo1.maven.org/maven2/org/jetbrains/kotlinx/ki-shell/0.3.2/ki-shell-0.3.2-archive.zip
+	md5sums = af50d913bd362facf6b4244b1a682c0f
+
+pkgname = ki-shell-bin
+
