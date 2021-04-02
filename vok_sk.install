@@ -13,7 +13,6 @@ insert node
         <shortDescription>Vogo'\''s kbd</shortDescription>
         <description>Slovak keyboard by Vogo</description>
         <languageList><iso639Id>slo</iso639Id></languageList>
-        <countryList><iso3166Id>SK</iso3166Id></countryList>
       </configItem>
       <variantList>
         <variant>

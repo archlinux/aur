@@ -2,7 +2,7 @@
 
 pkgname=vok_sk
 pkgver=1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Vogo's Keyboard for Xorg 7 (Slovak)"
 arch=('i686' 'x86_64')
 url="http://www.abclinuxu.cz/blog/origami/2006/12/21/162644"
