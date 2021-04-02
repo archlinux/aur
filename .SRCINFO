@@ -1,14 +1,14 @@
 pkgbase = celestia-addon-deep_impact
 	pkgdesc = Celestia addon: Spacecraft: Other: Deep Impact
 	pkgver = 1
-	pkgrel = 1
-	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=639
+	pkgrel = 2
+	url = https://www.celestiamotherlode.net/addon/addon_639.html
 	arch = any
 	license = unknown, free
 	makedepends = unzip
 	depends = celestia
 	conflicts = celestia-addon-deep-impact
-	source = http://celestiamotherlode.net/creators/jestr/DeepImpact.zip
+	source = https://celestiamotherlode.net/creators/jestr/DeepImpact.zip
 	md5sums = 7225528f90a4879cf5abaf2911c8fecd
 
 pkgname = celestia-addon-deep_impact

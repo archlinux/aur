@@ -2,15 +2,15 @@
 
 pkgname=celestia-addon-deep_impact
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Spacecraft: Other: Deep Impact"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=639'
+url='https://www.celestiamotherlode.net/addon/addon_639.html'
 license=('unknown, free')
 depends=('celestia')
 makedepends=('unzip')
 conflicts=('celestia-addon-deep-impact')
-source=('http://celestiamotherlode.net/creators/jestr/DeepImpact.zip')
+source=('https://celestiamotherlode.net/creators/jestr/DeepImpact.zip')
 	
 package() {
 	mkdir --parents "$pkgdir/usr/share/celestia/extras"
