@@ -15,7 +15,7 @@ backup=() # Anything we need to backup?
 options=()
 install=
 changelog=
-source=("columnize-0.3.0.tar.gz::https://github.com/rocky/pycolumnize/archive/refs/tags/${pkgver}.tar.gz")
+source=("columnize-${pkgver}.tar.gz::https://github.com/rocky/pycolumnize/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=("c7947a57a126b6e5b4b585a19945909c3e64213979113948968304ebcf23daa4")
 
 prepare() {
