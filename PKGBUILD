@@ -1,7 +1,7 @@
 _pkgname=python-pynlpl
 pkgname=${_pkgname}-git
 pkgver=1324
-pkgrel=2
+pkgrel=3
 pkgdesc='Python Natural Language Processing Library (pronounce as: pineapple). Contains various modules useful for common, and less common, NLP tasks. Includes full FoLiA library.'
 arch=('i686' 'x86_64')
 url="https://github.com/proycon/pynlpl"
@@ -10,7 +10,7 @@ depends=('python' 'python-setuptools' 'python-lxml' 'python-httplib2' 'python-nu
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("python-pynlpl")
-source=("git://github.com/proycon/pynlpl.git")
+source=("git+https://github.com/proycon/pynlpl.git")
 _gitname=("pynlpl")
 md5sums=('SKIP')
 
