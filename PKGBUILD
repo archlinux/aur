@@ -2,7 +2,7 @@
 
 pkgname=steamautologin-bin
 _pkgname=steamautologin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Qt Steam account switcher for Linux"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
     'SteamAutoLogin.desktop'
 )
 sha256sums=(
-    '108743ef0f6dbed905ce4785a3a8e68bdf9953eff1f82edd7202dda3140c6112'
-    '2f6f39f0578c3b25038bd2e7f92149ccee0960b2d98780b461002c4e78a915d8'
+    'bc9764d9363e92601b8ae2515273e13c76ada1a21253a8e8bc5eff208dad34c4'
+    '78dcfa54918d122e779ee6cb843c87c2a272523e258ec22774d4826ec23def1d'
 )
 
 package() {
