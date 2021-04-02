@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc-git
 	pkgdesc = Litecoin thin client
-	pkgver = 4.0.9.1.git20210222.7da8df8
+	pkgver = 4.1.0.git20210401.d880731
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = electrum-ltc-git
 	depends = python-websocket-client
 	depends = python-aiohttp-socks
 	depends = python-certifi
-	depends = python-aiorpcx-git
+	depends = python-aiorpcx
 	depends = python-aiohttp
 	depends = python-scrypt
 	depends = qt5-base
