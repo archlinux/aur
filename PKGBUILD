@@ -83,7 +83,6 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
 done
 
-
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
             'ff8271ceb98130c4010573a90818347a5a5f379d101af692fe2c3fb15bbb5cec'
@@ -95,6 +94,13 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 prepare() {
   cd linux-${_major}
+
+  # hacky work around for xz not getting extracted
+  # https://bbs.archlinux.org/viewtopic.php?id=265115
+  if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
+    unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
+    xz -dc "$startdir/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
+  fi
 
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
