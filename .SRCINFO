@@ -1,6 +1,6 @@
 pkgbase = fern-wifi-cracker
 	pkgdesc = WEP, WPA wifi cracker for wireless penetration testing
-	pkgver = 3.1
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://github.com/savio-code/fern-wifi-cracker
 	install = fern-wifi-cracker.install
@@ -9,7 +9,6 @@ pkgbase = fern-wifi-cracker
 	groups = blackarch-cracker
 	groups = blackarch-wireless
 	license = GPL2
-	depends = gksu
 	depends = python
 	depends = python-pyqt5
 	depends = aircrack-ng
@@ -19,8 +18,8 @@ pkgbase = fern-wifi-cracker
 	depends = macchanger
 	conflicts = fern-wifi-cracker-git
 	replaces = fern-wifi-cracker-git
-	source = fern-wifi-cracker-3.1.tar.gz::https://github.com/savio-code/fern-wifi-cracker/archive/v3.1.tar.gz
-	sha256sums = 94d0180798f1cd48a3bb25d35f496438ce8bc8e8c75c180c942df9308a2a35a7
+	source = fern-wifi-cracker-3.3.tar.gz::https://github.com/savio-code/fern-wifi-cracker/archive/v3.3.tar.gz
+	sha256sums = 0d9d622139fc54ddd4010eba30b5d73c41382c7356a7e7a19730acd38652683c
 
 pkgname = fern-wifi-cracker
 
