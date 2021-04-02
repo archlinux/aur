@@ -2,6 +2,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Thibault Molleman <aur at thibaultmol d0t link>
 
 pkgname='sejda-desktop'
 pkgver='7.2.1'
