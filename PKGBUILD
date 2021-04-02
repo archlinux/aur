@@ -6,7 +6,7 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.4a51
-pkgrel=3
+pkgrel=4
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -22,21 +22,18 @@ conflicts=("$_pkgname" "$_pkgname-bin")
 # You have to download the package from the VMD url
 # and put it in the PKGBUILD folder.
 source=("local://$_pkgname-${pkgver}.src.tar.gz"
-        "configure.patch"
-        "mpi.patch")
+        "configure.patch")
 sha256sums=('b1c40b21111f5bab56d43d5e442c468d327159b07915af2ec175ba6b12842e5c'
-            'fe50ea892da8fa6bc919bca5c51a27db5c170faf683c884c536c97b8a9f8ed8e'
-            'e281a57831b8ff60c5a644219f0b6289d32bee239978af676474941c7d8548c0')
+            'fa4912916f0a9adfe985a456d4ad6a30b302eb31c7be26efabbfdd4466c43e05')
 
 prepare() {
   sed -i 's/ltcl8.5/ltcl/g' plugins/Make-arch
   cd $_pkgname-$pkgver
   mkdir plugins
   sed -i 's#:${LD_LIBRARY_PATH}/:${LD_LIBRARY_PATH}:#/opt/optix/lib64#g' bin/*
+  # Assuming openmpi; if it's not the case edit configure.patch
   patch -p0 < ../configure.patch
   
-  # Assuming openmpi; if not the case edit mpi.patch
-  patch -p0 < ../mpi.patch
   export TCLINC="-I/usr/include"
   export TCLLIB="-L/usr/lib"
   export PLUGINDIR=$srcdir/$_pkgname-$pkgver/plugins
@@ -55,7 +52,7 @@ build() {
   make -j1 LINUXAMD64
   make distrib
   cd ../$_pkgname-$pkgver
-  ./configure LINUXAMD64 OPENGL EGLPBUFFER FLTKOPENGL FLTK TK $ACC IMD OPENCL MPI XINERAMA XINPUT LIBOSPRAY LIBPNG ZLIB NETCDF COLVARS TCL PYTHON NUMPY PTHREADS GCC
+  ./configure LINUXAMD64 OPENGL EGLPBUFFER FLTKOPENGL FLTK TK $ACC IMD OPENCL MPI XINERAMA XINPUT LIBOSPRAY2 LIBPNG ZLIB NETCDF COLVARS TCL PYTHON NUMPY PTHREADS GCC
   cd src
   make veryclean
   make

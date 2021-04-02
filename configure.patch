@@ -1,5 +1,5 @@
---- configure	2021-01-03 17:31:19.000000000 +0300
-+++ configure	2021-01-03 17:38:02.570553452 +0300
+--- configure.orig	2020-12-21 20:56:04.000000000 +0300
++++ configure	2021-04-02 16:48:20.600655457 +0300
 @@ -497,19 +497,19 @@
  
  $arch_cc          = "cc";
@@ -67,6 +67,30 @@
  @cuda_cc          = ();
  @cuda_cu	  = ('msmpot_cuda.cu',
                       'msmpot_cuda_latcut.cu',
+@@ -1052,15 +1046,15 @@
+ #######################
+ $mpi_defines     = "-DVMDMPI ";
+ ## Argonne MPICH
+-$mpi_dir         = "/usr/lib64/mpich";
+-$mpi_include     = "-I/usr/include/mpich-x86_64";
+-$mpi_library     = "-L$mpi_dir/lib";
+-$mpi_libs        = "-lmpich";
++#$mpi_dir         = "/usr";
++#$mpi_include     = "-I/usr/include";
++#$mpi_library     = "-L$mpi_dir/lib";
++#$mpi_libs        = "-lmpicxx -lmpi";
+ ## OpenMPI
+-# $mpi_dir         = "/usr/lib64/openmpi";
+-# $mpi_include     = "-I/usr/include/openmpi-x86_64";
+-# $mpi_library     = "-L$mpi_dir/lib";
+-# $mpi_libs        = "-lmpi";
++$mpi_dir         = "/usr";
++$mpi_include     = "-I/usr/include";
++$mpi_library     = "-L$mpi_dir/lib/openmpi";
++$mpi_libs        = "-lmpi_cxx -lmpi";
+ ## OSU MVAPICH
+ # $mpi_dir         = "/usr/mpi/gcc/mvapich-1.0.0";
+ # $mpi_include     = "-I$mpi_dir/include";
 @@ -1201,7 +1195,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.1-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.1.0-linux64";
@@ -76,15 +100,15 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-7.0.0-linux64";
  
  # NCSA Blue Waters
-@@ -1267,7 +1261,7 @@
-   $libospray_dir         = "/usr/local/ospray-1.8.5.x86_64.linux";
-   $libospray_include     = "-I$libospray_dir/include -I$libospray_dir/ospray/include ";
-   $libospray_library     = "-L$libospray_dir/lib ";
--  $libospray_libs        = "-lospray -lospray_common -lembree -ltbb -ltbbmalloc ";
-+  $libospray_libs        = "-lospray -lospray_common -lembree3 -ltbb -ltbbmalloc ";
+@@ -1314,7 +1308,7 @@
+   $libospray2_dir         = "/usr/local/ospray-2.1.1.x86_64.linux";
+   $libospray2_include     = "-I$libospray2_dir/include -I$libospray2_dir/ospray/include ";
+   $libospray2_library     = "-L$libospray2_dir/lib ";
+-  $libospray2_libs        = "-lospray -lospcommon -lembree3 -ltbb -ltbbmalloc ";
++  $libospray2_libs        = "-lospray -lembree3 -ltbb -ltbbmalloc ";
  }
  
- 
+ # Both OptiX and OSPRay renderers use the Tachyon glwin code,
 @@ -1650,16 +1644,16 @@
    $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$conda_root/lib/python-3.7/site-packages/numpy/core/include";
    $python_libs        = "-fno-lto -lpython3.7m -lpthread";
