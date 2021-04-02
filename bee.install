@@ -1,0 +1,22 @@
+#!/bin/sh
+
+pre_install() {
+	if ! id -u bee > /dev/null 2>&1; then
+		useradd --no-create-home --system bee > /dev/null
+	fi
+	mkdir -p /var/lib/bee
+	mkdir -p /etc/bee
+}
+
+post_install() {
+	chown -R bee:bee /var/lib/bee
+}
+
+pre_remove() {
+	systemctl stop bee.service
+}
+
+post_remove() {
+	userdel bee > /dev/null
+}
+
