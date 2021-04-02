@@ -1,13 +1,14 @@
 # Maintainer <veryangry at snopyta dot org>
+_pkgname=webbrowser
 pkgname=webbrowser-git
-pkgver=29.1.1
+pkgver=v29.1.2.r5.gdad9160
 pkgrel=1
 pkgdesc="A Goanna/UXP based browser with no spyware."
 arch=('i686' 'x86_64')
 url="https://git.nuegia.net/webbrowser.git/"
 license=('MPL' 'GPL')
 depends=('gtk2' 'dbus-glib' 'libxt' 'alsa-lib')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'gcc9' 'gconf' 'libxt' 'libffi' 'dbus' 'dbus-glib' 'gtk2' 'alsa-lib' 'libvpx' 'fontconfig' 'jack2' 'libpng' 'freetype2')
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'gconf' 'libxt' 'libffi' 'dbus' 'dbus-glib' 'gtk2' 'alsa-lib' 'libvpx' 'fontconfig' 'jack2' 'libpng' 'freetype2')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
 provides=('palemoon')
@@ -15,6 +16,10 @@ source=(git+"https://git.nuegia.net/webbrowser.git"
 	git+"https://git.nuegia.net/UXP")
 md5sums=('SKIP'
 	'SKIP')
+pkgver() {
+	cd "$_pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 prepare() {
 	cd webbrowser
 	git submodule init
@@ -26,14 +31,12 @@ prepare() {
 }
 build() {
 	cd webbrowser
-	export CC=gcc-9
-	export CXX=g++-9
 	./mach build
 	./mach package
 }
 package() {
 	cd wbbuild/dist/
-	tar xvf webbrowser-29.1.0.linux-x86_64-gtk2.tar.xz
+	tar xvf webbrowser-29.2.0.linux-x86_64-gtk2.tar.xz
 	mkdir -p "${pkgdir}"/opt
 	mv -n webbrowser "${pkgdir}"/opt/webbrowser
 	cd "${pkgdir}"
