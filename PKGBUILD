@@ -3,14 +3,14 @@
 # Contributor: Alessandro "jakedust" Andrioni <jakedust@gmail.com>
 pkgname=mpir
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for multiple precision integers and rationals"
 arch=('i686' 'x86_64')
-url="http://www.mpir.org/"
+url="https://www.mpir.org/"
 license=('LGPL')
 depends=('gcc-libs')
 makedepends=('yasm')
-source=(http://www.mpir.org/mpir-$pkgver.tar.bz2)
+source=(https://www.mpir.org/mpir-$pkgver.tar.bz2)
 sha256sums=('52f63459cf3f9478859de29e00357f004050ead70b45913f2c2269d9708675bb')
 install=mpir.install
 
