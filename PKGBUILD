@@ -1,7 +1,7 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 
 pkgname=nvramtool-corevantage-git
-pkgver=latest
+pkgver=4.13.r927fa6d04c
 _gitrev=927fa6d04c
 pkgrel=1
 pkgdesc="Build of nvramtool ensured to be compatible with the Corevantage project"
@@ -13,11 +13,6 @@ conflicts=('nvramtool')
 provides=('nvramtool')
 source=("git+https://review.coreboot.org/coreboot#commit=${_gitrev}")
 sha256sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/coreboot"
-	echo "4.13.r$(git rev-parse --short HEAD)"
-}
 
 build() {
 	cd "$srcdir/coreboot/util/nvramtool"
