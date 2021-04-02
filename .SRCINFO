@@ -11,7 +11,7 @@ pkgbase = pyfetch-git
 	depends = python-pip
 	provides = pyfetch
 	backup = usr/share/pyfetch/data
-	source = https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch
+	source = https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch%22
 	md5sums = SKIP
 
 pkgname = pyfetch-git

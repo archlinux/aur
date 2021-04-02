@@ -14,17 +14,16 @@ makedepends=()
 provides=("${_pkgname}")
 conflicts=()
 backup=("usr/share/${_pkgname}/data")
-source=("https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch")
+source=("https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch%22")
 md5sums=('SKIP')
 
 prepare() {
-	chmod +x pyfetch
-	# install deps
-	pip install distro psutil colorama
+    chmod +x pyfetch
+    # install deps
+    pip install distro psutil colorama
 }
 
 package() {
-	# install built binary
-	install -Dm 755 "pyfetch" "${pkgdir}/usr/bin/${_pkgname}"
+    # install built binary
+    install -Dm 755 "pyfetch" "${pkgdir}/usr/bin/${_pkgname}"
 }
-
