@@ -3,7 +3,7 @@
 # Contributor: Stunts <f.pinamartins@gmail.com>
 
 pkgname=hangups
-pkgver=0.4.12
+pkgver=0.4.13
 pkgrel=1
 pkgdesc='The first third-party instant messaging client for Google Hangouts'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-aiohttp' 'python-appdirs' 'python-configargparse'
          'python-mechanicalsoup' 'python-protobuf' 'python-readlike'
          'python-reparser' 'python-requests' 'python-setuptools' 'python-urwid')
 source=("https://files.pythonhosted.org/packages/source/h/hangups/hangups-$pkgver.tar.gz")
-sha256sums=('1aa6edead2915fac9c2c6c3e5f4a6b8dd7d067880b43ce5f0e8b40d16bb1701b')
+sha256sums=('f6d9148a9651c618ea91620645eb441b32032b6b19209b1c2db367bbcb30af04')
 
 build() {
   cd hangups-$pkgver
