@@ -1,8 +1,8 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=flarectl
 _pkgname=cloudflare-go
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='CLI application for interacting with a Cloudflare account'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/cloudflare/cloudflare-go/tree/v${pkgver}/cmd/flarectl"
 license=('BSD')
 makedepends=('go')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/cloudflare/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=(c4a7b298d0e5519194278257131c3d51a19b2460e845fa1cfe20bb579b8af08a)
+sha256sums=(cec2ed713942208618b3b518509fc76f2416d0fd9afc87998f34028b10cb7de8)
 
 prepare() {
 	cd "$_pkgname-$pkgver"
