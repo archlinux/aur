@@ -1,9 +1,9 @@
-# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=replicated-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.33.8
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for interacting with the Replicated Vendor API'
 arch=('x86_64')
 _goos='linux'
