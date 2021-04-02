@@ -1,0 +1,14 @@
+pkgbase = gtk-menu-meta
+	pkgdesc = All the packages needed for gtk menus to work
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/gtk-menu-meta
+	arch = any
+	license = GPL
+	depends = appmenu-gtk-module
+	depends = libappindicator-gtk2
+	depends = lib32-libappindicator-gtk2
+	depends = libappindicator-gtk3
+	depends = lib32-libappindicator-gtk3
+
+pkgname = gtk-menu-meta
