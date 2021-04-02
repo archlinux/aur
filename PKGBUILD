@@ -1,16 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-pkgname=mame-git
-pkgver=0.223.r0.gc55a261d26d
-pkgrel=2
-pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)'
+pkgbase=mame-git
+pkgname=('mame-git' 'mame-tools-git')
+pkgver=0.230.r0.g943c06cba08
+pkgrel=1
+pkgdesc='Port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)'
 url='https://www.mamedev.org/'
 license=('GPL')
 arch=('x86_64')
-depends=('sdl2_ttf' 'qt5-base' 'lua53' 'libutf8proc' 'pugixml' 'portmidi' 'portaudio' 'flac')
-makedepends=('git' 'nasm' 'python' 'asio' 'rapidjson' 'glm' 'libxinerama')
-provides=('mame')
-conflicts=('mame')
+makedepends=('git' 'nasm' 'python' 'asio' 'rapidjson' 'glm' 'libxinerama' 'sdl2_ttf'
+             'qt5-base' 'lua53' 'libutf8proc' 'pugixml' 'portmidi' 'portaudio' 'flac')
 source=('git+https://github.com/mamedev/mame.git'
         'mame.sh'
         'mame.desktop'
@@ -27,8 +26,7 @@ prepare() {
 }
 
 pkgver() {
-    cd mame
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^\(mame\)\([0-9]\)/\2./'
+    git -C mame describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^\(mame\)\([0-9]\)/\2./'
 }
 
 build() {
@@ -36,7 +34,7 @@ build() {
     export CXXFLAGS+=' -I/usr/include/lua5.3'
     
     # hack to force linking to lua 5.3
-    mkdir lib
+    mkdir -p lib
     ln -s /usr/lib/liblua5.3.so lib/liblua.so
     export LDFLAGS+=" -L$(pwd)/lib"
     
@@ -47,35 +45,47 @@ build() {
         ARCHOPTS='-flifetime-dse=1'
 }
 
-package() {
-    cd mame
+package_mame-git() {
+    depends=('sdl2_ttf' 'qt5-base' 'lua53' 'libutf8proc' 'pugixml' 'portmidi' 'portaudio'
+             'flac' 'hicolor-icon-theme')
+    provides=('mame')
+    conflicts=('mame')
     
     # mame script
-    install -D -m755 "${srcdir}/mame.sh" "${pkgdir}/usr/bin/mame"
+    install -D -m755 mame.sh "${pkgdir}/usr/bin/mame"
     
-    # binaries
-    install -D -m755 mame64 "${pkgdir}/usr/lib/mame/mame"
-    local _bin
-    for _bin in castool chdman floptool imgtool jedutil ldresample ldverify nltool \
-                nlwav pngcmp regrep romcmp split srcclean testkeys unidasm
-    do
-        install -D -m755 "$_bin" -t   "${pkgdir}/usr/lib/mame"
-        ln -s "/usr/lib/mame/${_bin}" "${pkgdir}/usr/bin/mame-${_bin}"
-    done
+    # binary
+    install -D -m755 mame/mame -t "${pkgdir}/usr/lib/mame"
     
     # extra bits
-    install -D -m644 src/osd/modules/opengl/shader/glsl*.*h -t "${pkgdir}/usr/lib/mame/shader"
-    cp -a {artwork,bgfx,plugins,language,ctrlr,keymaps,hash}   "${pkgdir}/usr/lib/mame"
+    install -D -m644 mame/src/osd/modules/opengl/shader/glsl*.*h -t "${pkgdir}/usr/lib/mame/shader"
+    cp -dr --no-preserve='ownership' mame/{artwork,bgfx,plugins,language,ctrlr,keymaps,hash} "${pkgdir}/usr/lib/mame"
     
     # desktop file and icon
-    install -D -m644 "${srcdir}/mame.desktop" -t "${pkgdir}/usr/share/applications"
-    install -D -m644 "${srcdir}/mame.svg"     -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -D -m644 mame.desktop -t "${pkgdir}/usr/share/applications"
+    install -D -m644 mame.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     
     # documentation
-    install -d -m0755 "${pkgdir}/usr/share/doc"
-    cp -a docs "${pkgdir}/usr/share/doc/mame"
+    install -d -m755 "${pkgdir}/usr/share/doc"
+    install -D -m644 mame/docs/man/*.6* -t "${pkgdir}/usr/share/man/man6"
+    cp -dr --no-preserve='ownership' mame/docs "${pkgdir}/usr/share/doc/mame"
     rm -r "${pkgdir}/usr/share/doc/mame/man"
-    install -d "$pkgdir"/usr/share/man/man{1,6}
-    install -m644 docs/man/*.1* "${pkgdir}/usr/share/man/man1"
-    install -m644 docs/man/*.6* "${pkgdir}/usr/share/man/man6"
+}
+
+package_mame-tools-git() {
+    pkgdesc='Port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (tools, git version)'
+    depends=('sdl2' 'libutf8proc' 'flac')
+    provides=('mame-tools')
+    conflicts=('mame-tools')
+    
+    local _file
+    for _file in castool chdman floptool imgtool jedutil ldresample ldverify nltool nlwav pngcmp regrep romcmp \
+                 split srcclean testkeys unidasm
+    do
+        install -D -m755 "mame/${_file}" -t "${pkgdir}/usr/bin"
+    done
+    
+    mv "${pkgdir}/usr/bin"/{,mame-}split # fix conflicts
+    
+    install -D -m644 mame/docs/man/*.1* -t "${pkgdir}/usr/share/man/man1"
 }
