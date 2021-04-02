@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
 pkgname=mbed-os5
-pkgver=5.15.6
+pkgver=5.15.7
 pkgrel=1
 pkgdesc='Source code for Arm Mbed OS v5'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://os.mbed.com"
 license=('Apache')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-os/archive/mbed-os-${pkgver}.tar.gz"
         'mbed-os5.install')
-sha256sums=('e0cebcedefd81be7caecd89589fe22a1653cf169199752313b85810c3ea2f8fe'
+sha256sums=('d29b740822331d88f30710526ced33927afe309e04e17dfc28484e6a8d6c7b0b'
             '594ff118a4293e07691041bc367ea22c25e821a1b6a91aa0c264f35e9b17e9ed')
 provides=('mbed-os')
 install='mbed-os5.install'
