@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop (latest/beta release)
 	pkgver = 2021.2.stable
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = mullvad-vpn-beta
 	depends = libnotify
 	depends = libappindicator-gtk3
 	depends = nss
+	depends = networkmanager
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
 	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2021.2?signed
