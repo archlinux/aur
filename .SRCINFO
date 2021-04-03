@@ -1,21 +1,20 @@
 pkgbase = python-findatapy
 	pkgdesc = Python library to download market data via Bloomberg, Quandl, Yahoo etc.
-	pkgver = 0.1.18
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://github.com/cuemacro/findatapy
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
 	depends = python-pandas
-	depends = python-numpy
 	depends = python-keyring
 	depends = python-twython
 	depends = python-openpyxl
 	depends = python-numba
 	depends = python-alpha_vantage
 	optdepends = python-blpapi: Bloomberg Python Open API
-	source = python-findatapy-0.1.18.tar.gz::https://github.com/cuemacro/findatapy/archive/v0.1.18.tar.gz
-	sha256sums = 1121ae040c34279ae2318faad51be7b454fb7921d61d7d5b37b1cc911c732207
+	source = python-findatapy-0.1.20.tar.gz::https://github.com/cuemacro/findatapy/archive/v0.1.20.tar.gz
+	sha256sums = 7ce7aea5ee42349a727a85f5ba8ea64231d51c9068f1610525a17c12e3bbeda9
 
 pkgname = python-findatapy
 
