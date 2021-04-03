@@ -1,5 +1,5 @@
 pkgbase = i3-maim-clpimg
-	pkgdesc = Create a screenshot and then immediately copy it into the clipboard
+	pkgdesc = create a screenshot and then immediately copy it into the clipboard
 	pkgver = 1.0.0
 	pkgrel = 0
 	url = https://github.com/arpanetus/i3-maim-clpimg

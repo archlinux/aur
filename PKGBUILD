@@ -3,7 +3,7 @@
 pkgname="i3-maim-clpimg"
 pkgver=1.0.0
 pkgrel=0
-pkgdesc="Create a screenshot and then immediately copy it into the clipboard"
+pkgdesc="create a screenshot and then immediately copy it into the clipboard"
 arch=('any')
 license=('GPL')
 url="https://github.com/arpanetus/i3-maim-clpimg"
