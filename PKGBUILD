@@ -1,7 +1,7 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r113.e01d03f
+pkgver=r114.f25bca3
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c. Downside: only Linux"
 arch=("any")
