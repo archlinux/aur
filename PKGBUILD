@@ -2,14 +2,14 @@
 
 _pkgname=peasy
 pkgname="${_pkgname}-git"
-pkgver=0.9.r146.b3d43ff
-pkgrel=2
+pkgver=v0.9.r7.g1756415
+pkgrel=1
 pkgdesc="A plugin for Geany  which allows to load other plugins written in Python or Lua (Git version)"
 url="https://github.com/kugel-/peasy/"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('libpeas' 'geany')
-makedepends=('vala')
+makedepends=('gobject-introspection' 'intltool' 'vala')
 optdepends=('python: support plugins written in Python'
             'lua51: support plugins written in Lua')
 conflicts=("${_pkgname}")
@@ -21,8 +21,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  ver=$(git describe --tags | sed -e 's/^v//' -e 's/-/_/g')
-  echo $ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
