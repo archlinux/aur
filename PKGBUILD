@@ -4,9 +4,9 @@
 pkgname="zkl"
 pkgdesc='The zkl programming language'
 url='http://www.zenkinetic.com/zkl.html'
-license=('zlib/libpng')
+license=('custom')
 pkgver=1.14.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=('ncurses')
 makedepends=('clang')
@@ -21,4 +21,5 @@ build() {
 package() {
   cd "$srcdir"/ZKL
   install -Dm755 ./Bin/zkl "$pkgdir"/usr/bin/zkl
+  install -Dm644 ./VM/license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }

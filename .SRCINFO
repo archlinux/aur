@@ -1,10 +1,10 @@
 pkgbase = zkl
 	pkgdesc = The zkl programming language
 	pkgver = 1.14.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zenkinetic.com/zkl.html
 	arch = x86_64
-	license = zlib/libpng
+	license = custom
 	makedepends = clang
 	depends = ncurses
 	source = zkl_vm_src-1.14.7.zip::http://www.zenkinetic.com/Documents/zkl_vm_src.zip
