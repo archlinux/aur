@@ -1,6 +1,6 @@
 pkgbase = kodi-standalone-service
 	pkgdesc = Systemd services to run kodi in stand-alone mode without a DE
-	pkgver = 1.125
+	pkgver = 1.128
 	pkgrel = 1
 	url = https://github.com/graysky2/kodi-standalone-service
 	install = readme.install
@@ -14,8 +14,8 @@ pkgbase = kodi-standalone-service
 	replaces = kodi-standalone-x11-service
 	replaces = kodi-standalone-gbm-service
 	replaces = kodi-standalone-wayland-service
-	source = kodi-standalone-service-v1.125.tar.gz::https://github.com/graysky2/kodi-standalone-service/archive/v1.125.tar.gz
-	b2sums = 93a2c044895395698aca9e1fa9b491eb3a478c0d83f0f49a2a06e8baa7de33fb7e3f0d552938aa9f24ab57ec0d8ed1b2bc9e9a21b30f275aa76196cecc920327
+	source = kodi-standalone-service-v1.128.tar.gz::https://github.com/graysky2/kodi-standalone-service/archive/v1.128.tar.gz
+	b2sums = 5b8248ba1db65f43e2299f6c5924bb76fd45587783c12f056a65478b08da08a4b7e5e0cf7788a57d60f8ecafe3e3cf4ae9eac1ea1e298295be7a376e386e31ad
 
 pkgname = kodi-standalone-service
 
