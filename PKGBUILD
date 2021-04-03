@@ -2,17 +2,17 @@
 
 pkgname=celestia-addon-deep_impact_spacecraft
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Celestia addon: Spacecraft: Other: Deep Impact Spacecraft"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=22'
+url='http://www.celestiamotherlode.net/addon/addon_22.html'
 license=('unknown, free')
 depends=('celestia')
 makedepends=('unzip')
 conflicts=('celestia-addon-deep-impact-spacecraft')
-source=('http://celestiamotherlode.net/creators/jackhiggins/deepimpact_impactormodel.zip'
-	'http://celestiamotherlode.net/creators/jackhiggins/deepimpact_impactor.zip')
-	
+source=('https://celestiamotherlode.net/creators/jackhiggins/deepimpact_impactormodel.zip'
+        'https://celestiamotherlode.net/creators/jackhiggins/deepimpact_impactor.zip')
+
 package() {
 	cd "$scrdir"
 	install -D "$srcdir/JACKdeepimpact-xyz.ssc" "$pkgdir/usr/share/celestia/extras/JACKdeepimpact-xyz.ssc"
