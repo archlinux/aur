@@ -7,7 +7,16 @@ pkgdesc="Stream Labels is an application that runs on your computer that generat
 arch=('x86_64')
 url="https://patojad.com.ar/aplicaciones/2020/12/streamlabels-en-arch-linux/"
 license=('CCO')
-depends=('gconf')
+depends=('gconf'
+         'libnotify'
+         'xdg-utils'
+         'libxss'
+         'libxtst'
+         'gtk3'
+         'nss'
+         'libappindicator-gtk3'
+         'util-linux-libs'
+         'libsecret')
 source=("https://s3-us-west-2.amazonaws.com/streamlabs-electron/streamlabels_0.4.1_amd64.deb"
         "pjadalien.py")
 md5sums=('827d05481899022a832799e3c45bfbc6'
