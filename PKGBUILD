@@ -2,7 +2,7 @@
 
 pkgname=encrypted-dns
 pkgver=0.3.23
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)"
 url="https://github.com/jedisct1/encrypted-dns-server"
 license=(MIT)
@@ -34,10 +34,7 @@ build() {
 package() {
 	cd ${pkgname}-server-${pkgver}
 
-	cargo install --root="${pkgdir}"/usr --path .
-	rm "${pkgdir}"/usr/.crates.toml
-	rm "${pkgdir}"/usr/.crates2.json
-
+	install -Dt "${pkgdir}"/usr/bin -m0755 target/release/encrypted-dns
 	install -Dm0644 example-encrypted-dns.toml "${pkgdir}"/etc/encrypted-dns/encrypted-dns.toml
 	touch "${pkgdir}"/etc/encrypted-dns/domain_blacklist.txt
 	install -Dt "${pkgdir}"/etc/encrypted-dns -m0644 undelegated.txt
