@@ -1,0 +1,18 @@
+pkgbase = qt5-base-util
+	pkgdesc = A cross-platform application and UI framework
+	pkgver = 5.15.2
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-base
+	source = https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtbase-everywhere-src-5.15.2.tar.xz
+	sha256sums = 909fad2591ee367993a75d7e2ea50ad4db332f05e1c38dd7a5a274e156a4e0f8
+
+pkgname = qt5-base-util
+
