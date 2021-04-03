@@ -6,7 +6,7 @@ pkgname='ros-melodic-rtabmap'
 pkgver='0.20.9'
 _pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-octomap
@@ -42,7 +42,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rtabmap-${pkgver}/"
+_dir="rtabmap-${pkgver}-melodic/"
 #_dir="rtabmap-release-release-melodic-rtabmap"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/introlab/rtabmap/archive/${pkgver}-melodic.tar.gz")
 sha256sums=('5719445a8d94ae3d378db6cb77081ca9e3a60fbda77a5092a7cb8bc09bf0e4a3')

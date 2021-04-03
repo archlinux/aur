@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rtabmap
 	pkgdesc = ROS - RTAB-Maps standalone library.
 	pkgver = 0.20.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://introlab.github.io/rtabmap
 	arch = any
 	license = BSD
