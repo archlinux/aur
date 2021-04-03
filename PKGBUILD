@@ -2,8 +2,8 @@
 
 pkgname=fake86-git
 pkgver=2020.05.09.gd275349
-pkgrel=1
-pkgdesc="x86 emulator - git version"
+pkgrel=2
+pkgdesc="An 8086 PC emulator written in C - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/lgblgblgb/fake86.git"
 license=('GPL2')
