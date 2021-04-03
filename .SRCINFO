@@ -1,0 +1,14 @@
+pkgbase = ttf-roboto-flex
+	pkgdesc = Upgrades Roboto to become a more powerful Variable Font
+	pkgver = 20210330
+	pkgrel = 1
+	url = https://github.com/TypeNetwork/Roboto-Flex
+	arch = any
+	license = custom:OFL
+	source = https://github.com/TypeNetwork/Roboto-Flex/raw/bb80aa8c34c948975145e5f04c204c3508cf169b/fonts/RobotoFlex[slnt,wdth,wght,opsz].ttf
+	source = https://github.com/TypeNetwork/Roboto-Flex/raw/bb80aa8c34c948975145e5f04c204c3508cf169b/OFL.txt
+	sha256sums = c348c638a1c0370501735afa9cee6f1ac269c964fbbd7e3cf7f21f7a9574854d
+	sha256sums = b023c5d35f13b14327b1db316eb8660f9924edb1819906b97e2c7dfef1b683f0
+
+pkgname = ttf-roboto-flex
+
