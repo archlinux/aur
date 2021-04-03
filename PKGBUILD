@@ -3,7 +3,7 @@
 _basename=libpeas
 _repo='https://gitlab.gnome.org/GNOME/libpeas'
 pkgname="${_basename}-lua51"
-pkgver=1.24.1
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='A GObject plugin library (with Lua 5.1 support)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
     'python-gobject: Python loader'
 )
 source=(https://download.gnome.org/sources/$_basename/${pkgver:0:4}/$_basename-${pkgver}.tar.xz)
-sha256sums=('9c3acf7a567cbb4f8bf62b096e013f12c3911cc850c3fa9900cbd5aa4f6ec284')
+sha256sums=('0bf5562e9bfc0382a9dcb81f64340787542568762a3a367d9d90f6185898b9a3')
 
 
 prepare() {

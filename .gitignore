@@ -2,4 +2,5 @@ pkg/
 src/
 libpeas-*.tar.xz
 libpeas-lua51-*.pkg.tar.xz
+libpeas-lua51-*.pkg.tar.zst
 libpeas-lua51-*.src.tar.gz
