@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=perl-tap-formatter-camelcade
-pkgver=0.009
+pkgver=2021.1
 pkgrel=1
 pkgdesc='Converts test events from TAP::Harness to the TeamCity format'
 _dist=TAP-Formatter-Camelcade
@@ -30,4 +30,4 @@ package() {
   make install DESTDIR="$pkgdir"
 }
 
-sha256sums=('469c34d2c39e377e1d6626faf77feea674c728b6f39ff78e2f2c92827a8dbb98')
+sha256sums=('6b14237fd75c6070836f6cc4d6cc174fda5c1e36a22687d3f4ddee7053758673')
