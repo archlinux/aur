@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=stor-age
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="show aging of directories"
 arch=('x86_64' 'i686')
@@ -12,19 +12,19 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/idiv-biodiversity/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('ecf9f1d9eba32586cf4bf11c4c5675eb')
+md5sums=('b21fdbd397e84b678f5605cb4112d2f1')
 
 build() {
   # shellcheck disable=2154
   cd "$srcdir"/$pkgname-$pkgver || exit 1
 
-  cargo build --release
+  cargo build --release --locked --target-dir=target
 }
 
 check() {
   cd "$srcdir"/$pkgname-$pkgver || exit 1
 
-  cargo test --release
+  cargo test --release --locked --target-dir=target
 }
 
 package() {
