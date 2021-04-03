@@ -13,7 +13,7 @@ url='https://www.gimp.org/'
 arch=('x86_64')
 license=('LGPL')
 depends=('gimp' 'pygtk')
-makedepends=('gtk-doc' 'intltool' 'autoconf=2.69')
+makedepends=('gtk-doc' 'intltool' 'autoconf')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
 sha256sums=('bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e')
 

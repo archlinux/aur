@@ -7,7 +7,7 @@ pkgbase = python2-gimp
 	license = LGPL
 	makedepends = gtk-doc
 	makedepends = intltool
-	makedepends = autoconf=2.69
+	makedepends = autoconf
 	depends = gimp
 	depends = pygtk
 	source = https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.24.tar.bz2
