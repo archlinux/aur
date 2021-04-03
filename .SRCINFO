@@ -1,0 +1,13 @@
+pkgbase = girsh-bin
+	pkgdesc = Automatically spawn a reverse shell fully interactive for Linux or Windows victim
+	pkgver = 0.26.1
+	pkgrel = 1
+	url = https://github.com/nodauf/Girsh
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source_x86_64 = https://github.com/nodauf/Girsh/releases/download/v0.26.1/Girsh-v0.26.1-linux-amd64.tar.gz
+	md5sums_x86_64 = 73355fa71af9956edfe136196f017cb7
+
+pkgname = girsh-bin
+
