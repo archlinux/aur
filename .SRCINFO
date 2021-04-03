@@ -1,6 +1,6 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK
-	pkgver = 1.2.4
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://www.simpleitk.org/
 	arch = x86_64
@@ -16,25 +16,51 @@ pkgbase = simpleitk
 	makedepends = tcl
 	makedepends = tk
 	makedepends = java-environment
-	makedepends = lua51
+	makedepends = lua53
 	makedepends = mono
 	makedepends = r
 	makedepends = ruby
 	depends = gcc-libs
-	depends = insight-toolkit>=4.13
-	optdepends = java-runtime: Java bindings
-	optdepends = lua51: Lua bindings
-	optdepends = mono: C# bindings
-	optdepends = python: Python bindings
-	optdepends = python-numpy: Python bindings
-	optdepends = r: R bindings
-	optdepends = ruby: Ruby bindings
-	optdepends = tcl: Tcl/TK bindings
-	optdepends = tk: Tcl/TK bindings
-	provides = python-simpleitk
-	conflicts = python-simpleitk
-	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.2.4
-	md5sums = SKIP
+	depends = insight-toolkit>=5.1.2
+	source = https://github.com/SimpleITK/SimpleITK/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = e052c250bde5232d1eea62ac79c6b8cc667e7fecc7c96d0997320659cc519ecf
 
 pkgname = simpleitk
+
+pkgname = java-simpleitk
+	depends = gcc-libs
+	depends = insight-toolkit>=5.1.2
+	depends = java-runtime
+
+pkgname = lua-simpleitk
+	depends = gcc-libs
+	depends = insight-toolkit>=5.1.2
+	depends = lua53
+
+pkgname = mono-simpleitk
+	depends = gcc-libs
+	depends = insight-toolkit>=5.1.2
+	depends = mono
+
+pkgname = python-simpleitk
+	depends = gcc-libs
+	depends = insight-toolkit>=5.1.2
+	depends = python
+	depends = python-numpy
+
+pkgname = r-simpleitk
+	depends = gcc-libs
+	depends = insight-toolkit>=5.1.2
+	depends = r
+
+pkgname = ruby-simpleitk
+	depends = gcc-libs
+	depends = insight-toolkit>=5.1.2
+	depends = ruby
+
+pkgname = tcl-simpleitk
+	depends = gcc-libs
+	depends = insight-toolkit>=5.1.2
+	depends = tcl
+	depends = tk
 

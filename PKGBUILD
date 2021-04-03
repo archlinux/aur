@@ -1,111 +1,183 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
+# shellcheck disable=SC2010
 _pkgname=SimpleITK
-pkgname=simpleitk
-pkgver=1.2.4
+pkgbase=simpleitk
+pkgname=(
+    'simpleitk'
+    'java-simpleitk'
+    'lua-simpleitk'
+    'mono-simpleitk'
+    'python-simpleitk'
+    'r-simpleitk'
+    'ruby-simpleitk'
+    'tcl-simpleitk'
+)
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
-provides=('python-simpleitk')
-conflicts=('python-simpleitk')
-depends=('gcc-libs' 'insight-toolkit>=4.13')
+provides=()
+conflicts=()
+depends=('gcc-libs' 'insight-toolkit>=5.1.2')
 makedepends=(
-	'cmake'
-	'git'
-	'openjpeg2'
-	'python'
-	'python-numpy'
-	'python-pip'
-	'python-virtualenv'
-	'swig'
-	'tcl'
-	'tk'
-	'java-environment'
-	'lua51'
-	'mono'
-	'r'
-	'ruby'
+    'cmake'
+    'git'
+    'openjpeg2'
+    'python'
+    'python-numpy'
+    'python-pip'
+    'python-virtualenv'
+    'swig'
+    'tcl'
+    'tk'
+    'java-environment'
+    'lua53'
+    'mono'
+    'r'
+    'ruby'
 )
-optdepends=(
-	'java-runtime: Java bindings'
-	'lua51: Lua bindings'
-	'mono: C# bindings'
-	'python: Python bindings'
-	'python-numpy: Python bindings'
-	'r: R bindings'
-	'ruby: Ruby bindings'
-	'tcl: Tcl/TK bindings'
-	'tk: Tcl/TK bindings'
-)
-source=("git+https://github.com/$_pkgname/$_pkgname#tag=v$pkgver")
-md5sums=('SKIP')
+optdepends=()
+source=("https://github.com/SimpleITK/SimpleITK/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e052c250bde5232d1eea62ac79c6b8cc667e7fecc7c96d0997320659cc519ecf')
+_lua53_version=$(pacman -Qi lua53 | grep '^Version' | grep -Eo '[0-9]\.[0-9]\.[0-9]')
 
 prepare() {
-	cd "$_pkgname"
-	rm -rf build
-	mkdir -p build
-	cd build
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    rm -rf build
+    mkdir -p build
+    cd build
 
-	_java_home=$(find '/usr/lib/jvm/' -name "$(archlinux-java get)")
-	_lua51_version=$(pacman -Qi lua51 | grep '^Version' | grep -Eo '[0-9]\.[0-9]\.[0-9]')
+    # Check that the required ITK modules are present
+    local _itk
+    _itk=$(ls /usr/lib/cmake | grep -m1 ITK)
+    if [ "$(ls "/usr/include/$_itk" | grep 'SimpleITKFiltersExport.h')" == "" ];
+    then
+        error "ITK must be built with -DModule_SimpleITKFilters:BOOL=ON"
+        exit 1
+    fi
 
-	JAVA_HOME=$_java_home \
-		cmake \
-			-DCMAKE_INSTALL_PREFIX=/usr \
-			-DCMAKE_CXX_FLAGS:STRING="-std=c++14" \
-			-DLUA_VERSION_STRING:STRING="$_lua51_version" \
-			-DLUA_EXECUTABLE:FILEPATH="/usr/bin/lua5.1" \
-			-DLUA_INCLUDE_DIR:FILEPATH="/usr/include/lua5.1" \
-			-DCMAKE_SKIP_RPATH:BOOL=ON \
-			-DBUILD_SHARED_LIBS:BOOL=ON \
-			-DBUILD_TESTING:BOOL=OFF \
-			-DBUILD_EXAMPLES:BOOL=OFF \
-			-DBUILD_DOXYGEN:BOOL=OFF \
-			-DSimpleITK_PYTHON_WHEEL:BOOL=ON \
-			-DWRAP_DEFAULT:BOOL=ON \
-			-DWRAP_CSHARP:BOOL=ON \
-			-DWRAP_JAVA:BOOL=ON \
-			-DWRAP_LUA:BOOL=ON \
-			-DWRAP_PYTHON:BOOL=ON \
-			-DWRAP_R:BOOL=ON \
-			-DWRAP_RUBY:BOOL=ON \
-			-DWRAP_TCL:BOOL=ON \
-			..
+
+    _java_home=$(find '/usr/lib/jvm/' -name "$(archlinux-java get)")
+
+    JAVA_HOME=$_java_home \
+        cmake \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DCMAKE_CXX_FLAGS:STRING="-std=c++14" \
+            -DLUA_VERSION_STRING:STRING="$_lua53_version" \
+            -DLUA_EXECUTABLE:FILEPATH="/usr/bin/lua5.3" \
+            -DLUA_INCLUDE_DIR:FILEPATH="/usr/include/lua5.3" \
+            -DBUILD_SHARED_LIBS:BOOL=ON \
+            -DBUILD_TESTING:BOOL=OFF \
+            -DBUILD_EXAMPLES:BOOL=OFF \
+            -DBUILD_DOXYGEN:BOOL=OFF \
+            -DSimpleITK_PYTHON_WHEEL:BOOL=ON \
+            -DSimpleITK_PYTHON_USE_VIRTUALENV:BOOL=ON \
+            -DWRAP_DEFAULT:BOOL=ON \
+            -DWRAP_CSHARP:BOOL=ON \
+            -DWRAP_JAVA:BOOL=ON \
+            -DWRAP_LUA:BOOL=ON \
+            -DWRAP_PYTHON:BOOL=ON \
+            -DWRAP_R:BOOL=ON \
+            -DWRAP_RUBY:BOOL=ON \
+            -DWRAP_TCL:BOOL=ON \
+            ..
 }
 
 build() {
-	cd "$_pkgname/build"
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
-	make all PythonVirtualEnv dist
+    make all
+
+    LD_LIBRARY_PATH="${srcdir}/${_pkgname}-${pkgver}/build/lib" make PythonVirtualEnv dist
 }
 
-package() {
-	_builddir="$srcdir/$_pkgname/build"
+package_simpleitk() {
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
-	cd "$_builddir"
+    make DESTDIR="$pkgdir/" install
+}
 
-	make DESTDIR="$pkgdir/" install
+package_python-simpleitk() {
+    depends=('simpleitk' 'python' 'python-numpy')
 
-	PIP_CONFIG_FILE=/dev/null \
-		pip install \
-			--ignore-installed \
-			--isolated \
-			--no-deps \
-			--root="$pkgdir" \
-			"$_builddir/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
-	python -O -m compileall "${pkgdir}/usr/lib/python3.8/site-packages/SimpleITK"
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
-	install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
-	install -Dm755 "$_builddir/Wrapping/Lua/lib/$_pkgname.so" "$pkgdir/usr/lib/lua/5.1/$_pkgname.so"
-	install -Dm755 "$_builddir/Wrapping/Tcl/bin/SimpleITKTclsh" "$pkgdir/usr/bin/SimpleITKTclsh"
-	install -Dm755 "$_builddir/Wrapping/CSharp/CSharpBinaries/libSimpleITKCSharpNative.so" "$pkgdir/usr/lib/libSimpleITKCSharpNative.so"
-	install -Dm755 "$_builddir/Wrapping/CSharp/CSharpBinaries/SimpleITKCSharpManaged.dll" "$pkgdir/usr/lib/SimpleITKCSharpManaged.dll"
+    local _py_version
+    _py_version=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 
-	install -d -Dm755 "$pkgdir/usr/lib/R/library/"
-	cp -dr --no-preserve=ownership "$_builddir/Wrapping/R/Packaging/$_pkgname" "$pkgdir/usr/lib/R/library/"
+    PIP_CONFIG_FILE=/dev/null \
+        pip install \
+            --ignore-installed \
+            --isolated \
+            --no-deps \
+            --root="$pkgdir" \
+            "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
 
-	install -d -Dm755 "$pkgdir/usr/share/java/SimpleITK/"
-	cp -dr --no-preserve=ownership "$_builddir/Wrapping/Java/dist/SimpleITK-$pkgver"*/* "$pkgdir/usr/share/java/SimpleITK/"
+    python -O -m compileall "${pkgdir}/usr/lib/python${_py_version}/site-packages/SimpleITK"
+}
+
+package_lua-simpleitk() {
+    depends=('simpleitk' 'lua53')
+
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+
+    install -d -Dm755 "$pkgdir/usr/lib/lua/5.3/"
+    install -Dm755 \
+        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Lua/lib/$_pkgname.so" \
+        "$pkgdir/usr/lib/lua/5.3/$_pkgname.so"
+}
+
+package_tcl-simpleitk() {
+    depends=('simpleitk' 'tcl' 'tk')
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+
+    install -Dm755 \
+        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Tcl/bin/SimpleITKTclsh" \
+        "$pkgdir/usr/bin/SimpleITKTclsh"
+}
+
+package_mono-simpleitk() {
+    depends=('simpleitk' 'mono')
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+
+    install -Dm755 \
+        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/CSharp/CSharpBinaries/libSimpleITKCSharpNative.so" \
+        "$pkgdir/usr/lib/libSimpleITKCSharpNative.so"
+
+    install -Dm755 \
+        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/CSharp/CSharpBinaries/SimpleITKCSharpManaged.dll"\
+        "$pkgdir/usr/lib/SimpleITKCSharpManaged.dll"
+}
+
+package_r-simpleitk() {
+    depends=('simpleitk' 'r')
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+
+    install -d -Dm755 "$pkgdir/usr/lib/R/library/"
+
+    cp -dr --no-preserve=ownership \
+        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/R/Packaging/$_pkgname" \
+        "$pkgdir/usr/lib/R/library/"
+}
+
+package_java-simpleitk() {
+    depends=('simpleitk' 'java-runtime')
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+
+    install -d -Dm755 "$pkgdir/usr/share/java/SimpleITK/"
+
+    cp -dr --no-preserve=ownership \
+        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Java/dist/SimpleITK-$pkgver"*/* \
+        "$pkgdir/usr/share/java/SimpleITK/"
+}
+
+package_ruby-simpleitk() {
+    depends=('simpleitk' 'ruby')
+
+    install -Dm755 \
+        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Ruby/lib/simpleitk.so" \
+        "$pkgdir/usr/lib/ruby/gems/${_lua53_version}/gems/ruby-simpleitk-${pkgver}/lib/simpleitk.so"
 }
