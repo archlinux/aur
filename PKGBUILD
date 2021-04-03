@@ -2,28 +2,28 @@
 
 pkgname=celestia-addon-international_space_station
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Spacecraft: Earth Orbit: International Space Station"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=293'
-license=('free')
+url='https://www.celestiamotherlode.net/addon/addon_293.html'
+license=('unknown')
 depends=('celestia')
 makedepends=('unzip')
-source=('http://www.celestiamotherlode.net/creators/orion_nebula/isstextures.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss1.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss2.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss3.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss4.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss5.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss6.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss7.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss8.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss9.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss10.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss11.zip'
-	'http://www.celestiamotherlode.net/creators/orion_nebula/iss12.zip'
-        'http://www.celestiamotherlode.net/creators/orion_nebula/isscomplete.zip')
-	
+source=('https://www.celestiamotherlode.net/creators/orion_nebula/isstextures.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss1.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss2.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss3.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss4.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss5.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss6.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss7.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss8.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss9.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss10.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss11.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/iss12.zip'
+        'https://www.celestiamotherlode.net/creators/orion_nebula/isscomplete.zip')
+
 package() {
 	mkdir --parents "$pkgdir"/usr/share/celestia/{extras,models,textures/medres}
 	cd "$srcdir"
