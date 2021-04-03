@@ -1,6 +1,6 @@
 pkgbase = leftwm-theme-git
 	pkgdesc = Theme manager for LeftWM
-	pkgver = r32.fac15fb
+	pkgver = r38.93c5efb
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/leftwm/leftwm-theme
