@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
-pkgver=37.r36.gb1d6851
-pkgrel=2
+pkgver=37.r46.g1d2395c
+pkgrel=1
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
@@ -16,14 +16,8 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git")
 md5sums=('SKIP')
 
-prepare() {
-  cd "${srcdir}/${pkgname%-git}"
-  git checkout tags/v46
-}
-
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git checkout tags/v46
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
