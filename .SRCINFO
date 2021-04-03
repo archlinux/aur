@@ -1,0 +1,17 @@
+pkgbase = qt6-base-util
+	pkgdesc = A cross-platform application and UI framework
+	pkgver = 6.0.3
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt6-base
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.3/submodules/qtbase-everywhere-src-6.0.3.tar.xz
+	sha256sums = 1a45b61c2a349964625c50e3ea40cbb309e269762dd0786397e0e18e7e10d394
+
+pkgname = qt6-base-util
+
