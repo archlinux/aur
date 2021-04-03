@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-ompl
 	pkgdesc = ROS - OMPL is a free sampling-based motion planning library.
-	pkgver = 1.4.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://ompl.kavrakilab.org
 	arch = any
@@ -11,10 +11,8 @@ pkgbase = ros-noetic-ompl
 	makedepends = eigen
 	depends = boost
 	depends = eigen
-	source = ros-noetic-ompl-1.4.1.tar.gz::https://github.com/ompl/ompl/archive/1.4.1.tar.gz
-	source = boost-fix.patch
+	source = ros-noetic-ompl-1.5.2.tar.gz::https://github.com/ompl/ompl/archive/1.5.2.tar.gz
 	sha256sums = ad3e8e2201772de5e689ba1eee2d845bea1c7f3cdf08de6d282583fbe699856c
-	sha256sums = 41a66f47adc11165278f27c2c565e7e0b37d406c45794383ab8fe1ed6a13cadc
 
 pkgname = ros-noetic-ompl
 

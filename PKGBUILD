@@ -6,7 +6,7 @@ pkgdesc="ROS - OMPL is a free sampling-based motion planning library."
 url='https://ompl.kavrakilab.org'
 
 pkgname='ros-noetic-ompl'
-pkgver='1.4.1'
+pkgver='1.5.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -23,15 +23,8 @@ depends=(${ros_depends[@]}
   eigen)
 
 _dir="ompl-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ompl/ompl/archive/${pkgver}.tar.gz"
-	"boost-fix.patch")
-sha256sums=('ad3e8e2201772de5e689ba1eee2d845bea1c7f3cdf08de6d282583fbe699856c'
- 	    '41a66f47adc11165278f27c2c565e7e0b37d406c45794383ab8fe1ed6a13cadc')
-
-prepare() {
-  cd ${srcdir}/${_dir}
-  patch -uN demos/PlannerData.cpp ../../boost-fix.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ompl/ompl/archive/${pkgver}.tar.gz")
+sha256sums=('db1665dd2163697437ef155668fdde6101109e064a2d1a04148e45b3747d5f98')
 
 build() {
   # Use ROS environment variables
