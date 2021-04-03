@@ -1,6 +1,6 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=piavpn-bin
-pkgver=2.7.1_06182
+pkgver=2.8.1_06335
 _pkgver=${pkgver/_/-}
 _pkgver=${_pkgver/.0/}
 pkgrel=1
@@ -16,7 +16,7 @@ conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
 source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
 options=(!strip)
-sha256sums=('891233d9b84f149eff168f8f4f6e165c3c5dfd848c90352ff875258dad2c00aa')
+sha256sums=('d2a9b5f02a24dcc5f39579d1d1ee145b9d91422831cf80c6145bfde93637620a')
 
 prepare() {
 	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
@@ -35,6 +35,8 @@ package() {
 
 	mkdir -p $pkgdir/usr/share/pixmaps
 	cp installfiles/app.png $pkgdir/usr/share/pixmaps/pia.png
+	mkdir -p $pkgdir/usr/share/icons/hicolor/1024x1024/apps/
+	ln -s /usr/share/pixmaps/pia.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/pia.png
 	mkdir -p $pkgdir/usr/share/applications
 	cp installfiles/piavpn.desktop $pkgdir/usr/share/applications/piavpn.desktop
 	mkdir -p $pkgdir/etc/NetworkManager/conf.d
