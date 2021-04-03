@@ -1,0 +1,15 @@
+pkgbase = elasticmq
+	pkgdesc = Amazon SQS compatible in-memory message queue
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/softwaremill/elasticmq
+	arch = any
+	license = Apache
+	depends = java-runtime>=8
+	depends = sh
+	noextract = elasticmq-server-1.1.0.jar
+	source = https://s3-eu-west-1.amazonaws.com/softwaremill-public/elasticmq-server-1.1.0.jar
+	sha256sums = fd4fe4d587cd778ddb99a19ea1eb3836ccb9ca91d50fa1964c1e69ed7d28ac4a
+
+pkgname = elasticmq
+
