@@ -24,5 +24,6 @@ build() {
 }
 
 package() {
-  install -Dm644 tmd/tmd
+  cd tmd
+  install -m 644 -D tmd "${pkgdir}/usr/local/bin"
 }
