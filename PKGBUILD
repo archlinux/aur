@@ -1,5 +1,5 @@
 arch=(any)
-backup=("etc/shiromino.ini")
+backup=(etc/shiromino.ini)
 conflicts=(shiromino)
 depends=(
 	libvorbis
