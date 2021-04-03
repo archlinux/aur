@@ -5,7 +5,8 @@
 
 pkgname=displaylink
 pkgver=5.3.1.34
-pkgrel=4
+_pkgver=5.3.1
+pkgrel=5
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
@@ -15,8 +16,8 @@ depends=('evdi>=1.7.0' 'evdi<1.8.0'
 makedepends=('grep' 'gawk' 'wget')
 install=
 changelog='DisplayLink USB Graphics Software for Ubuntu 5.3.1-Release Notes.txt'
-source=(displaylink-driver-$pkgver.zip::https://www.displaylink.com/downloads/file?id=1576
-	udev.sh
+source=(displaylink-driver-$pkgver.zip::https://www.synaptics.com/sites/default/files/exe_files/2021-02/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu$_pkgver-EXE.zip
+        udev.sh
         99-displaylink.rules 
 	displaylink.service 
         displaylink-sleep.sh)
@@ -25,8 +26,6 @@ sha256sums=('1e1231aa141c2a00f7e639a1835bdb915013f9ce84506ff1382e9c759f5c33b0'
             'c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a'
             '342e83abfe2a38d5635ea928345e933d2ad127ebd3f7caca476663d4f583684b'
             '8be4ab7616e38f91746bdd3e7fafe9004322a8be8e6722389746df9868d576e0')
-
-DLAGENTS=('https::/usr/bin/wget -O %o --post-data=fileId=1576&accept_submit=Accept %u')
 
 # Update with > updpkgsums
 
