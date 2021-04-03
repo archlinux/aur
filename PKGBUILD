@@ -18,24 +18,18 @@ sha256sums=('ed4c075c5787cab51eb7f4f0581f6e6fed05991739f6f647c750f043dd625c46'
 	    '26df8d45e662bde820c114a6e50c5ead169f65a6868ece246c13d36da519673d')
 options=(!strip)
 
-_filename=./eSPi-${pkgver//_/-}.AppImage
-
 prepare() {
   cd "${srcdir}"
-  chmod +x ${_filename}
-  ${_filename} --appimage-extract
+  chmod +x eSPi-${pkgver//_/-}.AppImage
+  ./eSPi-${pkgver//_/-}.AppImage --appimage-extract
   cd "${srcdir}/squashfs-root/"
   patch --strip=1 < ../eSPi.desktop.patch
 }
 
-
-
 package() {
-  install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/eSPi-${pkgver//_/-}.AppImage"
+  install -Dm755 "${srcdir}/eSPi-${pkgver//_/-}.AppImage" "${pkgdir}/opt/appimages/eSPi-${pkgver//_/-}.AppImage"
   install -Dm755 "${srcdir}/espi.sh" "${pkgdir}/usr/bin/espi"
-
   install -dm755 "${pkgdir}/usr/share/"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-
   install -Dm644 "${srcdir}/squashfs-root/eSPi.desktop" "${pkgdir}/usr/share/applications/eSPi.desktop"
 }
