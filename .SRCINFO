@@ -1,13 +1,10 @@
 pkgbase = python-lookatme
 	pkgdesc = An interactive, extensible, terminal-based markdown presentation tool.
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/d0c-s4vage/lookatme
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
-	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
 	depends = python-pygments
 	depends = python-urwid
