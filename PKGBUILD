@@ -2,7 +2,7 @@
 
 pkgname=celestia-addon-2010_exoplanets
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Extrasolar: Stars: 2010 Exoplanets"
 arch=('any')
 url='https://www.celestiamotherlode.net/addon/addon_1450.html'
