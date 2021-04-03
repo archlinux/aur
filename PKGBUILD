@@ -2,15 +2,15 @@
 
 pkgname=celestia-addon-earth_without_water_2
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Earth: Surface Map Textures: Earth without water 2"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=1010'
+url='https://www.celestiamotherlode.net/addon/addon_1010.html'
 license=('Creative Commons')
 depends=('celestia')
 makedepends=('unzip')
 conflicts=('celestia-addon-earth-without-water-2')
-source=('http://www.celestiamotherlode.net/creators/adirondack/earthwowater2_dds_vers2.zip')
+source=('https://www.celestiamotherlode.net/creators/adirondack/earthwowater2_dds_vers2.zip')
 	
 package() {
 	mkdir --parents "$pkgdir/usr/share/celestia/"
