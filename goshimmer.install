@@ -10,6 +10,7 @@ pre_install() {
 
 post_install() {
 	chown -R goshimmer:goshimmer /var/lib/goshimmer
+	chown -R goshimmer:goshimmer /etc/goshimmer
 }
 
 pre_remove() {
