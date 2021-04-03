@@ -1,7 +1,7 @@
 # Author: Torkus
 # Maintainer: Torkus <48141663+ogri-la@users.noreply.github.com>
 pkgname=strongbox
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=2
 pkgdesc="World of Warcraft addon manager. F/OSS, ad-free and privacy respecting."
 arch=("x86_64")
@@ -15,7 +15,7 @@ replaces=("wowman")
 noextract=("$pkgname-$pkgver")
 # e.g.: "https://github.com/ogri-la/strongbox/releases/download/1.2.3/strongbox" => "strongbox-1.2.3"
 source=("$pkgname-$pkgver::https://github.com/ogri-la/strongbox/releases/download/$pkgver/$pkgname")
-sha256sums=("18d80cc7f6a63ef6a8b8df22f8b1494390e006fd4d8eda8514c14d6bb42a3b9d")
+sha256sums=("ec3f29bac060fffff71c05c79d9e2ac7b8c7825996d2a3d4f862104e9e6d8004")
 
 package() {
     install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
