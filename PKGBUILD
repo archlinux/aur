@@ -2,7 +2,7 @@
 
 pkgname=perl-snmp-info
 _cpanname=SNMP-Info
-pkgver=3.23
+pkgver=3.71
 pkgrel=1
 pkgdesc="Perl/CPAN Module SNMP::Info"
 arch=('any')
@@ -10,25 +10,38 @@ url="https://metacpan.org/release/$_cpanname"
 license=('BSD')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/O/OL/OLIVER/$_cpanname-$pkgver.tar.gz")
-depends=('perl' 'net-snmp')
-md5sums=('06fd59b728c6266e881a6ebeb13d228a')
+depends=('perl' 'net-snmp' 'perl-netaddr-ip')
+makedepends=('perl-test-harness' 'perl-module-build')
+md5sums=('42b4b498d7f4f64bd13a6195d8c24a13')
 
 build() {
-  cd "${srcdir}/${_cpanname}-${pkgver}"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-  # install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1 
-  make
+    cd "${srcdir}/${_cpanname}-${pkgver}"
+    /usr/bin/perl Build.PL
+    ./Build
+  )
 }
 check() {
   cd "${srcdir}/${_cpanname}-${pkgver}"
-  make test
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    ./Build test
+  )
 }
 package() {
   cd "${srcdir}/${_cpanname}-${pkgver}"
-  make install DESTDIR="${pkgdir}" || return 1
-  install -Dm0644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  ( export PERL_AUTOINSTALL=--skipdeps                       \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'"
+    ./Build install
+  )
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
   find "$pkgdir" -name '.packlist' -delete
   find "$pkgdir" -name '*.pod' -delete
+  rm -fr "$pkgdir/usr/lib"
 }
