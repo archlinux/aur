@@ -16,7 +16,6 @@ pkgbase = neovide-git
 	depends = freetype2
 	depends = libglvnd
 	depends = sndio
-	depends = noto-fonts
 	provides = neovide
 	conflicts = neovide
 	source = neovide-git::git+https://github.com/Kethku/neovide

@@ -1,6 +1,4 @@
-# Maintainer: j4qfrost <j4qfrost at gmail dot com>
-# Maintainer: ptolemy753 <dsconce at protonmail dot com>
-# Contributor: peeweep <peeweep at 0x0 dot ee>
+# Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=neovide-git
 pkgver=0.6.0.r15.gd406cf6
@@ -9,7 +7,7 @@ pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
 url='https://github.com/Kethku/neovide'
 license=('MIT')
-depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio' 'noto-fonts')
+depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio')
 makedepends=('git' 'rust' 'gtk3' 'cmake' 'sdl2' 'make')
 provides=("neovide")
 conflicts=("neovide")
@@ -30,7 +28,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}"
   export CARGO_HOME="${srcdir}/${pkgname}/CARGO"
-  export CFLAGS="-fcommon"
+  export CFLAGS="-fcommon -fPIE"
   cargo build --release
 }
 
