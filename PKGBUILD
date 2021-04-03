@@ -24,6 +24,5 @@ build() {
 }
 
 package() {
-  cd tmd
-	make install
+  install -Dm644 tmd/tmd
 }
