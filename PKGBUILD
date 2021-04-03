@@ -14,7 +14,7 @@ makedepends=()
 provides=("${_pkgname}")
 conflicts=()
 backup=("usr/share/${_pkgname}/data")
-source=("https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch%22")
+source=("https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch")
 md5sums=('SKIP')
 
 prepare() {
