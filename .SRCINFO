@@ -1,0 +1,17 @@
+pkgbase = blesh-git
+	pkgdesc = A replacement for bash's line editor with advanced features
+	pkgver = r1486.0506df2
+	pkgrel = 1
+	url = https://github.com/akinomyoga/ble.sh
+	install = blesh.install
+	arch = any
+	license = BSD
+	makedepends = bash
+	makedepends = awk
+	makedepends = make
+	depends = bash
+	source = git+https://github.com/akinomyoga/ble.sh.git
+	md5sums = SKIP
+
+pkgname = blesh-git
+

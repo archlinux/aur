@@ -1,0 +1,5 @@
+post_install() {
+	echo '==> Remember to enable ble.sh in your .bashrc'
+	echo '==> (add the following line):'
+	echo '[[ $- == *i* ]] && . /usr/share/blesh/ble.sh'
+}
