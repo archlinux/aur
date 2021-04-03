@@ -12,7 +12,7 @@ pkgbase = ros-noetic-ompl
 	depends = boost
 	depends = eigen
 	source = ros-noetic-ompl-1.5.2.tar.gz::https://github.com/ompl/ompl/archive/1.5.2.tar.gz
-	sha256sums = ad3e8e2201772de5e689ba1eee2d845bea1c7f3cdf08de6d282583fbe699856c
+	sha256sums = db1665dd2163697437ef155668fdde6101109e064a2d1a04148e45b3747d5f98
 
 pkgname = ros-noetic-ompl
 
