@@ -91,6 +91,7 @@ package() {
   # strip
   strip --strip-all "${pkgdir}/opt/${_pkgname}/bin/"{cargo,rustc,rustdoc}
   strip --strip-all "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"*
+  strip --strip-all "${pkgdir}/opt/${_pkgname}/libexec/"*
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/librustc"*.so
   strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
