@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd tmd
-  install tmd "${pkgdir}/usr/local/bin/tmd"
+  install -D tmd "${pkgdir}/usr/local/bin/tmd"
 }
