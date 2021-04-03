@@ -2,7 +2,7 @@
 
 pkgname=maliit-keyboard
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual keyboard based on Maliit framework"
 arch=(x86_64)
 url="https://maliit.github.io/"
@@ -16,7 +16,8 @@ sha256sums=('c5a52898f5c0e0dd286f88f772ac251873d190b35a22d9fd387e967fbe386444')
 build() {
   cmake -B build -S keyboard-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -Denable-tests=OFF
+    -Denable-tests=OFF \
+    -DHUNSPELL_DICT_PATH=/usr/share/myspell/dicts
   cmake --build build
 }
 
