@@ -3,16 +3,17 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=dcmtk
-pkgver=3.6.5
+pkgver=3.6.6
 pkgrel=1
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
 license=('other')
-depends=('zlib' 'libpng' 'libtiff' 'libxml2' 'openssl' 'libssh' 'libwrap')
+depends=('zlib' 'libpng' 'libtiff' 'libxml2' 'openssl' 'libwrap')
+optdepedns=('libiconv')
 makedepends=('cmake' 'make')
-source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk365/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('c0cf61b0095c5708709406bfef5e8bb82dd01dbf77df7f2af2118004920bda68218eb1e4174bf92941cdae0acdb275c886570dafd29476eee2eb815e9a82830a')
+source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk366/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('2bba96eac5908012eec7f510e05e7e426b3f1d2454fcdec056a3de9eb724b04d9d12f3cd0088b1f3be9c32430367600abdf30514d0f62c2f017f7740d1008b63')
 
 #Currently it's not building otherwise
 options=(!buildflags)
@@ -52,3 +53,4 @@ package() {
   # Remove empty files (0 length)
   find "${pkgdir}" -type f -empty -exec rm -v {} \;
 }
+
