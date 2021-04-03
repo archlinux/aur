@@ -19,11 +19,11 @@ pkgver() {
 }
 
 build() {
-  cd tmd
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd tmd
-  make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }
