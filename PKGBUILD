@@ -1,7 +1,7 @@
 # Maintainer: Hojjat Ali Mohammadi <safeith@gmail.com>
 pkgname=cyberghostvpn
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CyberGhost VPN"
 url="https://www.cyberghostvpn.com"
 arch=('any')
