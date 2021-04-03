@@ -2,8 +2,8 @@
 
 _pkgname="pyfetch"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0
-pkgrel=5
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A simple and fast alternative to neofetch."
 arch=('x86_64')
 url="https://kreatea.ml/kreato/pyfetch"
@@ -21,6 +21,11 @@ prepare() {
     chmod +x pyfetch
     # install deps
     pip install distro psutil colorama
+}
+
+pkgver() {
+	cd "${_pkgname}-source"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
