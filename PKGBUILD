@@ -1,7 +1,7 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=instamenu
-pkgver=2021.02.07
+pkgver=2021.04.03
 pkgrel=1
 pkgdesc="dmenu like menu with the Dracula theme"
 url="https://github.com/The-Repo-Club/$pkgname"
@@ -14,7 +14,7 @@ provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('45e7417b78ba0ad25de6e83346773ea38de13dce905034d7212cb5eb9b548411')
+sha256sums=('2b922f2ea79be447b696bb2cdfc74121a11c8b0b351f3e9aea40464ba341f7e5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
