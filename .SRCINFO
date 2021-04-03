@@ -1,7 +1,7 @@
 pkgbase = scrt
         pkgdesc = Vandyke SecureCRT SSH Client
         pkgver = 9.0.1
-        pkgrel = 1
+        pkgrel = 2
         url = http://www.vandyke.com/products/securecrt/
         arch = x86_64
         groups = 
