@@ -7,7 +7,7 @@ pkgdesc="Create a screenshot and then immediately copy it into the clipboard"
 arch=("x86_64")
 license=('GPL')
 source=("https://github.com/arpanetus/i3-maim-clpimg/archive/refs/tags/$pkgver.zip")
-depends=('clpimg' 'maim')
+depends=('clpimg' 'libnotify' 'maim' 'xdg-user-dirs' 'xdotool')
 
 package() {
         cd "$pkgname-${pkgver}"

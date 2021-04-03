@@ -5,7 +5,10 @@ pkgbase = i3-maim-clpimg
 	arch = x86_64
 	license = GPL
 	depends = clpimg
+	depends = libnotify
 	depends = maim
+	depends = xdg-user-dirs
+	depends = xdotool
 	source = https://github.com/arpanetus/i3-maim-clpimg/archive/refs/tags/1.0.0.zip
 	md5sums = d6ad879e168690721a4cb43370883947
 
