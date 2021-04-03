@@ -1,13 +1,18 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=nutstore-experimental
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc='Nutstore experimental version.'
 arch=(x86_64)
 url='https://www.jianguoyun.com/'
 license=(custom)
-depends=(libappindicator-gtk3 libnotify python-gobject)
+depends=(
+    libappindicator-gtk3
+    libnotify
+    python-gobject
+    webkit2gtk
+)
 optdepends=('nautilus-nutstore: Nautilus plugin')
 provides=(nutstore)
 conflicts=(nutstore)
@@ -15,7 +20,7 @@ source=(nutstore license)
 source_x86_64=("https://www.jianguoyun.com/static/exe/ex/$pkgver/nutstore_client-$pkgver-linux-x64-public.tar.gz")
 sha256sums=('a4aa358d45b306cbeac449f2256f00a5b81a95197394eba7efa96eaae820cf5b'
             'f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e')
-sha256sums_x86_64=('7ce51f7dc240de9a353a6e57a5dabdc9c985e0dab4cf6a0ebcad47e7a12ff3c6')
+sha256sums_x86_64=('1546c00b79fcbe9650c75894bff4855aa34e93636aa466f43baf7ccc29076b35')
 
 build() {
     cd $srcdir/gnome-config
