@@ -44,8 +44,8 @@ pkgbase = pingnoo
 	depends = libgpg-error
 	depends = bzip2
 	provides = pingnoo
-	source = pingnoo::git+https://github.com/nedrysoft/pingnoo.git
-	md5sums = SKIP
+	source = https://www.nedrysoft.com/downloads/pingnoo/source/pingnoo-2021.04.03.tar.gz
+	md5sums = 272329a113a749f6628fecb32b188e43
 
 pkgname = pingnoo
 
