@@ -1,15 +1,15 @@
 pkgbase = celestia-addon-millenium_falcon
 	pkgdesc = Celestia addon: Fictional: Star Wars: Millenium Falcon
 	pkgver = 1
-	pkgrel = 1
-	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=159
+	pkgrel = 2
+	url = https://www.celestiamotherlode.net/addon/addon_159.html
 	arch = any
-	license = unknown, free
+	license = unknown
 	makedepends = unzip
 	depends = celestia
 	depends = celestia-addon-tatooine_endor_deathstar
 	conflicts = celestia-addon-millenium-falcon
-	source = http://celestiamotherlode.net/creators/jestr/SW-Falcon.zip
+	source = https://celestiamotherlode.net/creators/jestr/SW-Falcon.zip
 	md5sums = 43d21711998265e8bff5704398625d0c
 
 pkgname = celestia-addon-millenium_falcon

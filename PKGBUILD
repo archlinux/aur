@@ -2,18 +2,18 @@
 
 pkgname=celestia-addon-millenium_falcon
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Fictional: Star Wars: Millenium Falcon"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=159'
-license=('unknown, free')
+url='https://www.celestiamotherlode.net/addon/addon_159.html'
+license=('unknown')
 depends=('celestia' 'celestia-addon-tatooine_endor_deathstar')
 makedepends=('unzip')
 conflicts=('celestia-addon-millenium-falcon')
-source=('http://celestiamotherlode.net/creators/jestr/SW-Falcon.zip')
+source=('https://celestiamotherlode.net/creators/jestr/SW-Falcon.zip')
 
 package() {
-	mkdir --parents "$pkgdir/usr/share/celestia/extras"
+	mkdir --parents "$pkgdir/usr/share/celestia/extras/SW-Falcon/"{models,textures/medres}
 	cp --recursive "$srcdir/SW-Falcon/" "$pkgdir/usr/share/celestia/extras/"
 }
 
