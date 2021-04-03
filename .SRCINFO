@@ -1,0 +1,22 @@
+pkgbase = web-ext-git
+	pkgdesc = A command line tool to help build, run, and test web extensions
+	pkgver = 6.0.0.r10.g8bd0d13f
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/Add-ons/WebExtensions
+	arch = any
+	license = MPL2
+	makedepends = npm
+	makedepends = node-gyp
+	makedepends = git
+	depends = nodejs>=12.0.0
+	provides = nodejs-web-ext
+	provides = web-ext=6.0.0.r10.g8bd0d13f
+	conflicts = nodejs-web-ext
+	conflicts = web-ext
+	replaces = nodejs-web-ext
+	options = !strip
+	source = web-ext-git::git+https://github.com/mozilla/web-ext.git
+	sha256sums = SKIP
+
+pkgname = web-ext-git
+
