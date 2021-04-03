@@ -1,7 +1,8 @@
-# Contributor: leuko <aur_et_aydos_de>
+# Maintainer: bug <bug2000@gmail.com>
+# Maintainer: leuko <aur_et_aydos_de>
 _pkgname=xpra
 pkgname=${_pkgname}-git
-pkgver=v4.0.6.r236.gd5cf1aa5e
+pkgver=v4.1.r259.g6f3afe3c4
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
@@ -90,12 +91,13 @@ optdepends=(
 	#TODO 'gst-python: Sound Forwarding'
 	'xpra-html5: HTML5 client. Can be used with Xpra proxy'
 )
-conflicts=('xpra')
+conflicts=('xpra' 'run_scaled-git')
 provides=('xpra')
 makedepends=(
 	'git'
 	'python-setuptools'
 	'cython'
+	'pandoc'
 #	'uglify-js'
 )
 backup=(
@@ -129,9 +131,6 @@ build() {
   python setup.py build
 }
 
-# package() is based on bug's git-svn package
-# https://aur.archlinux.org/packages/xpra-svn/
-# https://aur.archlinux.org/account/bug
 package() {
   cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
