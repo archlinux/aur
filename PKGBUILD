@@ -1,8 +1,8 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.24.3
+pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/libguestfs/nbdkit"
@@ -43,5 +43,5 @@ check() {
   make check
 }
 
-sha256sums=('908f78525b0f277595b3b65ce2a190810f7964d86efdabf742dbbe3c55c9eb49'
+sha256sums=('62ecc8daaf7aa189d211ea5b56c67b611a98285b71025583905fed6736b84207'
             'SKIP')
