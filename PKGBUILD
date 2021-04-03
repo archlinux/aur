@@ -5,11 +5,11 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Celestia addon: Extrasolar: Stars: 2010 Exoplanets"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=1450'
+url='https://www.celestiamotherlode.net/addon/addon_1450.html'
 license=('Public Domain')
 depends=('celestia')
 makedepends=('unzip')
-source=('http://www.celestiamotherlode.net/creators/Brad/2010_Exoplanets.zip')
+source=('https://www.celestiamotherlode.net/creators/Brad/2010_Exoplanets.zip')
 	
 package() {
 	mkdir --parents "$pkgdir/usr/share/celestia/extras"
