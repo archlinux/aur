@@ -4,11 +4,48 @@ Wants=network-online.target postgresql.service
 After=network-online.target postgresql.service
 
 [Service]
-Type=simple
+Type=notify
 EnvironmentFile=/etc/miniflux.conf
 User=miniflux
 ExecStart=/usr/bin/miniflux
 Restart=always
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#NoNewPrivileges=
+NoNewPrivileges=true
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#PrivateDevices=
+PrivateDevices=true
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#ProtectControlGroups=
+ProtectControlGroups=true
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#ProtectHome=
+ProtectHome=true
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#ProtectKernelModules=
+ProtectKernelModules=true
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#ProtectKernelTunables=
+ProtectKernelTunables=true
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#ProtectSystem=
+ProtectSystem=strict
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#RestrictRealtime=
+RestrictRealtime=true
+
+# Keep at least the /run folder writeable if Miniflux is configured to use a Unix socket.
+# For example, the socket could be LISTEN_ADDR=/run/miniflux/miniflux.sock
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#ReadWritePaths=
+ReadWritePaths=/run
+
+# Allow miniflux to bind to <1024 ports
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#AmbientCapabilities=
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+# Provide a private /tmp
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#PrivateTmp=
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
