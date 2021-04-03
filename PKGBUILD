@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-tree-simple'
-pkgver='1.33'
+pkgver='1.34'
 pkgrel='1'
 pkgdesc="A simple tree object"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl>=0')
 makedepends=()
 checkdepends=('perl-test-exception>=0.15')
 url='https://metacpan.org/release/Tree-Simple'
-source=('http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Tree-Simple-1.33.tgz')
-md5sums=('718506f895205613ce05c91d154b7d90')
-sha512sums=('bec140fa723a8fadc65d2d8dc88c73295b346bc1583bfb031f2851cf80cddaea9b3e5e38225bbd7ac2e3e29006efb5bbac95b678090ba62714dfd6a306000b25')
-_distdir="Tree-Simple-1.33"
+source=("http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Tree-Simple-${pkgver}.tgz")
+md5sums=('b425592c0ddb0fc1883c6b6b7338e623')
+sha512sums=('cd03bdfd283d55a097bceb0c9bf3b81bb4dd5ca9a60de59e3e70b7e88b672456fd18d370f2dee1077a2afeecc973d42e78cc31f8023344b1f7e211432ef4e3ed')
+_distdir="Tree-Simple-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,21 +24,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distdir"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
