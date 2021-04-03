@@ -1,21 +1,21 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 _pkgname=gepetto-viewer
-_pkgver=1.3.0
+_pkgver=4.11.0
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r221.90e1542
+pkgver=4.11.0.r599.5582d7a
 pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
-url="https://github.com/nim65s/$pkgname"
+url="https://github.com/gepetto/$pkgname"
 license=('BSD')
-depends=('boost' 'urdfdom' 'openscenegraph-qt4')
-makedepends=('cmake' 'git')
-optdepends=('doxygen')
+depends=('openscenegraph' 'urdfdom' 'osgqt' 'boost')
+makedepends=('cmake' 'boost' 'urdfdom' 'git')
+optdepends=('openscenegraph-dae: load DAE files')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$_pkgname"::"git://github.com/nim65s/$_pkgname.git")
-md5sums=('SKIP')
+source=("$_pkgname"::"git://github.com/gepetto/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -33,8 +33,13 @@ build() {
     make
 }
 
+check() {
+    cd "$_pkgname"
+    make test
+}
+
 package() {
     cd "$_pkgname"
     make DESTDIR="$pkgdir/" install
-    install -D -m755 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

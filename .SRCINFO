@@ -1,21 +1,24 @@
 pkgbase = gepetto-viewer-git
 	pkgdesc = Graphical Interface for Pinocchio and HPP.
-	pkgver = 1.3.0.r221.90e1542
+	pkgver = 4.11.0.r599.5582d7a
 	pkgrel = 1
-	url = https://github.com/nim65s/gepetto-viewer-git
+	url = https://github.com/gepetto/gepetto-viewer-git
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = boost
+	makedepends = urdfdom
 	makedepends = git
-	depends = boost
+	depends = openscenegraph
 	depends = urdfdom
-	depends = openscenegraph-qt4
-	optdepends = doxygen
+	depends = osgqt
+	depends = boost
+	optdepends = openscenegraph-dae: load DAE files
 	provides = gepetto-viewer
 	conflicts = gepetto-viewer
-	source = gepetto-viewer::git://github.com/nim65s/gepetto-viewer.git
-	md5sums = SKIP
+	source = gepetto-viewer::git://github.com/gepetto/gepetto-viewer.git
+	sha256sums = SKIP
 
 pkgname = gepetto-viewer-git
 
