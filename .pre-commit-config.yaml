@@ -1,0 +1,7 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/intra-sh/pre-commit-hooks
+    rev: fd43300a633b725310c764709521b307833a4361
+    hooks:
+    -   id: pkgbuild-create-and-add-srcinfo

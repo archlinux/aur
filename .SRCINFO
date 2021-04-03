@@ -6,6 +6,7 @@ pkgbase = sedutil-sleep-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	source = sedutil-sleep::git+https://github.com/fabiogermann/sedutil#branch=s3-sleep-support
 	sha256sums = SKIP
 
