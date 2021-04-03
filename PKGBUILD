@@ -2,15 +2,15 @@
 
 pkgname=celestia-addon-spaceman_spiff
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Fictional: Craft and Stations: Spaceman Spiff"
 arch=('any')
-url="http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=825"
-license=('Free')
+url="https://www.celestiamotherlode.net/addon/addon_825.html"
+license=('GPL')
 depends=('celestia')
 makedepends=('unzip')
 conflicts=('celestia-addon-spaceman-spiff')
-source=("http://www.celestiamotherlode.net/creators/lukr/Spiff.zip")
+source=("https://www.celestiamotherlode.net/creators/lukr/Spiff.zip")
 	
 package() {
 	install -Dm644 "$srcdir/Spiff/models/spiff.3ds" "$pkgdir/usr/share/celestia/models/spiff.3ds"
