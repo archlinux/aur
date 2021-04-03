@@ -1,8 +1,8 @@
 pkgname=briar-gtk-git
 _pkgname=briar-gtk
 conflicts=('briar-gtk')
-pkgver=0.1.0.beta2.r53.ga462450
-pkgrel=2
+pkgver=0.1.0.beta3.r0.gc351076
+pkgrel=1
 pkgdesc='Native GTK Briar client'
 url='https://code.briarproject.org/briar/briar-gtk'
 arch=('any')
