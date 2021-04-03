@@ -3,17 +3,17 @@
 
 pkgname=sl-git
 _gitname=sl
-pkgver=5.02.r0.g0fd8d6f
+pkgver=5.02.r14.g923e7d7
 pkgrel=1
 pkgdesc='Steam Locomotive runs across your terminal when you type "sl" as you meant to type "ls"'
 arch=('i686' 'x86_64' 'arm')
-url="http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html"
+url="https://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html"
 license=('free')
 depends=('ncurses')
 makedepends=('git')
 provides=('sl')
 conflicts=('sl')
-source=("git://github.com/mtoyoda/sl.git")
+source=("git+https://github.com/mtoyoda/sl.git")
 md5sums=('SKIP')
 
 pkgver() {
