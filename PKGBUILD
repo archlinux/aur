@@ -25,7 +25,7 @@ source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"{,.sig}
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha512sums=('1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1133bbf10bd41468d6a1f31142e6caa81d16ae68fa3e6e84075c253613a145'
             'SKIP'
-            '55b3ca14930e79c69aeeb18496ae307393f9cd013e8aebecaffc5532f444c1f62b727ab03f9e23d9cc324a0a16a673adf08ea81522984c46faf0fad2815bb7d9')
+            'e96121d3e5535f3c83abc001d8178fd4fd367b9309aed7be28ad4ba965e1fc02fa7f070338cd34b508fcfe99e78a53195e8f313500ba50c1ac7a825ba746c8d8')
 
 build() {
   # Build GNU coreutils without the stable uutils programs counterparts leaving out: stat, touch, realpath (genfstab broken), ln (no -s option)
