@@ -10,6 +10,7 @@ pre_install() {
 
 post_install() {
 	chown -R bee:bee /var/lib/bee
+	chown -R bee:bee /etc/bee
 }
 
 pre_remove() {
