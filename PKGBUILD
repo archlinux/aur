@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=persian-fonts
-pkgver=20190401
+pkgver=20210403
 pkgrel=1
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
@@ -21,7 +21,6 @@ depends=('borna-fonts'
          'samim-fonts'
          'shabnam-fonts'
          'shahab-fonts'
-         'sina-fonts'
          'tanha-fonts'
          'vazir-fonts'
          'vazir-code-fonts'
