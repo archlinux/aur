@@ -4,17 +4,19 @@ pre_install() {
 	if ! id -u goshimmer > /dev/null 2>&1; then
 		useradd --no-create-home --system goshimmer > /dev/null
 	fi
-	mkdir -p /var/lib/goshimmer
-	mkdir -p /etc/goshimmer
+	mkdir -p /var/lib/goshimmer /etc/goshimmer
 }
 
 post_install() {
-	chown -R goshimmer:goshimmer /var/lib/goshimmer
-	chown -R goshimmer:goshimmer /etc/goshimmer
+	chown -R goshimmer:goshimmer /var/lib/goshimmer /etc/goshimmer
 }
 
 pre_remove() {
 	systemctl stop goshimmer.service
+}
+
+post_upgrade() {
+	chown -R goshimmer:goshimmer /var/lib/goshimmer /etc/goshimmer
 }
 
 post_remove() {

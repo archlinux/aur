@@ -2,7 +2,7 @@
 pkgname="goshimmer-bin"
 _pkgname="goshimmer"
 pkgver="0.5.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="GoShimmer implementation of Coordicide (official precompiled binary)"
 arch=('x86_64')
 url="https://github.com/iotaledger/goshimmer"
