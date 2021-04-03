@@ -3,8 +3,8 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.8.8.beta4.r0.gbc210b0
-pkgrel=2
+pkgver=0.8.9.r0.gd668e00
+pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
@@ -21,6 +21,7 @@ prepare() {
   cd $pkgname
   _descr="$(git describe --long --tags)"
   sed -i "s/git_description = ''/git_description = '$_descr'/" pyradio/radio.py
+  sed -i 's/distro = None/distro = Arch Linux/' pyradio/config
 }
 
 pkgver() {
