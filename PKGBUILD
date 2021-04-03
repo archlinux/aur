@@ -2,6 +2,7 @@
 # Contributor: sng <sng at hellug dot gr>
 # Contributor: aksr <aksr at t-com dot me>
 
+pkgname=pyradio-git
 pkgver=0.8.9.r0.gd668e00
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
