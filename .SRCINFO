@@ -1,27 +1,23 @@
 pkgbase = shiromino-git
-	pkgdesc = Diverse and challenging puzzle/action game with stylistic roots in the arcade.
-	pkgver = r305.dc57453
+	pkgdesc = A fast-paced puzzle game with roots in the arcade
+	pkgver = v0.1.0+12+g3fdd58a
 	pkgrel = 1
-	url = https://github.com/FelicityVi/shiromino
-	arch = x86_64
-	arch = i686
-	arch = aarch64
+	url = https://github.com/shiromino/shiromino
+	arch = any
 	license = MIT
-	makedepends = pkgconf
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = libvorbis
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
-	depends = libvorbis
 	depends = sqlite
 	provides = shiromino
 	conflicts = shiromino
-	backup = usr/share/shiromino/shiromino.ini
+	backup = etc/shiromino.ini
 	source = git+https://github.com/shiromino/shiromino.git
-	source = shiromino.ini
-	sha512sums = SKIP
-	sha512sums = 780d5783d5efe832b06c544909b7478504beca74642694047a5ae5f505fe4a9f9f1b1f902eef6de5d857cfa564d03f8a68219cdeccda813ef9d2640f6219d50b
+	sha256sums = SKIP
 
 pkgname = shiromino-git
 

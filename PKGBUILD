@@ -1,44 +1,39 @@
-# Maintainer: Franc[e]sco <lolisamurai@tfwno.gf>
-
+arch=(any)
+backup=("etc/shiromino.ini")
+conflicts=(shiromino)
+depends=(
+	libvorbis
+	sdl2
+	sdl2_image
+	sdl2_mixer
+	sqlite
+)
+license=(MIT)
+makedepends=(
+	cmake
+	git
+	pkgconf
+)
+pkgdesc="A fast-paced puzzle game with roots in the arcade"
 pkgname=shiromino-git
-pkgver=r305.dc57453
 pkgrel=1
-pkgdesc="Diverse and challenging puzzle/action game with stylistic roots in the arcade."
-arch=('x86_64' 'i686' 'aarch64')
-url="https://github.com/FelicityVi/shiromino"
-makedepends=('pkgconf' 'git' 'cmake')
-depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'libvorbis' 'sqlite')
-license=('MIT')
-source=("git+https://github.com/shiromino/shiromino.git" shiromino.ini)
-sha512sums=('SKIP' '780d5783d5efe832b06c544909b7478504beca74642694047a5ae5f505fe4a9f9f1b1f902eef6de5d857cfa564d03f8a68219cdeccda813ef9d2640f6219d50b')
-conflicts=("shiromino")
-backup=('usr/share/shiromino/shiromino.ini')
-provides=("shiromino")
-
+pkgver=v0.1.0+12+g3fdd58a
+provides=(shiromino)
+sha256sums=(SKIP)
+source=(git+https://github.com/shiromino/shiromino.git)
+url=https://github.com/shiromino/shiromino
 pkgver() {
-  cd "$srcdir/shiromino"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$srcdir/shiromino" describe --tags | tr - +
 }
-
 build() {
-  cd "$srcdir/shiromino"
-  cmake -B build -S . && cmake --build build -j$(nproc)
+	cd "$srcdir/shiromino"
+	cmake\
+		-B build\
+		-DCMAKE_BUILD_TYPE=Release\
+		-DENABLE_OPENGL_INTERPOLATION=1\
+		-S .
+	cmake --build build
 }
-
 package() {
-  install -d "$pkgdir/usr/share/"{shiromino{,/assets},licenses/$pkgname}
-  cd "$srcdir/shiromino"
-  install -Dm755 "build/shiromino" "$pkgdir/usr/bin/shiromino-game"
-  cp "${startdir}/shiromino.ini" "$pkgdir/usr/share/shiromino/"
-  for f in assets/audio assets/font assets/image; do
-    cp -r "$f" "$pkgdir/usr/share/shiromino/assets/"
-  done
-  cat > shiromino << EOF
-#!/bin/sh
-shiromino-game --configuration-file /usr/share/shiromino/shiromino.ini
-EOF
-  install -Dm755 "shiromino" -t "$pkgdir/usr/bin/"
-  install -Dm644 LICENSE-src "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 LICENSE-assets "$pkgdir/usr/share/licenses/$pkgname/"
+	cmake --install "$srcdir/shiromino/build" --prefix "$pkgdir" --strip
 }
-
