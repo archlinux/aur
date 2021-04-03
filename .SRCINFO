@@ -1,6 +1,6 @@
 pkgbase = nautilus-copy-path
 	pkgdesc = Extension for Nautilus to copy files/dir path or name
-	pkgver = 1.4.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/chr314/nautilus-copy-path
 	install = nautilus-copy-path.install
@@ -8,8 +8,8 @@ pkgbase = nautilus-copy-path
 	license = MIT
 	depends = python-nautilus
 	depends = python-gobject
-	source = nautilus-copy-path-1.4.1.tar.gz::https://github.com/chr314/nautilus-copy-path/archive/1.4.1.tar.gz
-	md5sums = db3006c9fd52892a3ee7ef13e97c815a
+	source = nautilus-copy-path-1.5.2.tar.gz::https://github.com/chr314/nautilus-copy-path/archive/1.5.2.tar.gz
+	md5sums = ee324f0c59c751a52d48bd7217dab9f9
 
 pkgname = nautilus-copy-path
 
