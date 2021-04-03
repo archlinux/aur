@@ -1,9 +1,11 @@
 pkgbase = briar-headless-git
 	pkgdesc = Briar REST API
-	pkgver = 1.2.11.r0.g8cbb38ee6
+	pkgver = 1.2.20.r15.gbebf3bbc3
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
 	makedepends = git
 	makedepends = jdk11-openjdk
