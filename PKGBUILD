@@ -5,16 +5,16 @@
 
 _pkgname=xf86-input-evdev
 pkgname=${_pkgname}-trackpoint
-pkgver=2.10.5
+pkgver=2.10.6
 pkgrel=1
 _pkgname2=xf86-input-synaptics
-_pkgver2=1.9.0
+_pkgver2=1.9.1
 pkgdesc="X.org evdev input driver for trackpoint with clickpad"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
-depends=('glibc' 'systemd' 'mtdev' 'libevdev')
-makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=24.1' 'resourceproto' 'scrnsaverproto')
+depends=('systemd-libs' 'mtdev' 'libevdev')
+makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=24.1' 'xorgproto')
 conflicts=('xorg-server<1.19.0' 'X-ABI-XINPUT_VERSION<24.1' 'X-ABI-XINPUT_VERSION>=25' 'xf86-input-evdev')
 replaces=("${_pkgname}")
 provides=("${_pkgname}" 'xf86-input-driver')
@@ -26,8 +26,8 @@ source=(${url}/releases/individual/driver/${_pkgname}-${pkgver}.tar.bz2
 	0004-disable-clickpad_guess_clickfingers.patch
 	0006-add-synatics-files-into-Makefile.am.patch
 	90-evdev-trackpoint.conf)
-sha256sums=('9edaa6205baf6d2922cc4db3d8e54a7e7773b5f733b0ae90f6be7725f983b70d'
-            'afba3289d7a40217a19d90db98ce181772f9ca6d77e1898727b0afcf02073b5a'
+sha256sums=('8726073e81861bc7b2321e76272cbdbd33c7e1a121535a9827977265b9033ec0'
+            '7af83526eff1c76e8b9e1553b34245c203d029028d8044dd9dcf71eef1001576'
             '1df30c030522d48dd1a134f9cf3acb44876950836b80eb56436414d6fd062d34'
             '74c508e1173254af8e4a851bf05762a1cd7dc194079b875ea0226913297db362'
             '9fc80868f6fae1c41a4d31bd77daa5d4e8832628c7e4e13f9645647bdd01b0f8'
