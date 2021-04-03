@@ -17,11 +17,13 @@ makedepends=('grep' 'gawk' 'wget')
 install=
 changelog='DisplayLink USB Graphics Software for Ubuntu 5.3.1-Release Notes.txt'
 source=(displaylink-driver-$pkgver.zip::https://www.synaptics.com/sites/default/files/exe_files/2021-02/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu$_pkgver-EXE.zip
+        DISPLAYLINK-EULA
         udev.sh
         99-displaylink.rules 
 	displaylink.service 
         displaylink-sleep.sh)
 sha256sums=('1e1231aa141c2a00f7e639a1835bdb915013f9ce84506ff1382e9c759f5c33b0'
+            '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
             'dc41ae8a2c287fc50fdda65bad8b0ffd76726f7773c25e1b0c5b7de95cecbdb6'
             'c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a'
             '342e83abfe2a38d5635ea928345e933d2ad127ebd3f7caca476663d4f583684b'
@@ -43,10 +45,10 @@ package() {
   install -d -m755 "$pkgdir/var/log/displaylink"
 
   echo "Extracting DisplayLink Driver Package"
-  cd $srcdir
+  pushd $srcdir
   chmod +x displaylink-driver-$pkgver.run
   ./displaylink-driver-$pkgver.run --target $pkgname-$pkgver --noexec
-  cd "$pkgname-$pkgver"
+  pushd "$pkgname-$pkgver"
   
   if [ "$CARCH" == "i686" ]; then
     ARCH="x86"
@@ -64,4 +66,8 @@ package() {
 
   echo "Installing license file"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  popd
+  popd
+  install -D -m644 DISPLAYLINK-EULA "${pkgdir}/usr/share/licenses/${pkgname}/DISPLAYLINK-EULA"
+
 }
