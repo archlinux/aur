@@ -1,9 +1,9 @@
 pkgname=stm32pio
-pkgver=1.1.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="gui for automate managing STM32CubeMX and PlatformIO projects" 
+pkgdesc="Automate managing of STM32CubeMX + PlatformIO projects" 
 arch=('x86_64')
-url="https://github.com/kynguyen98/stm32pio"
+url="https://github.com/ussserrr/stm32pio"
 license=('MIT')
 depends=('python' 'pyside2')
 makedepends=('python3' 'python-setuptools')
