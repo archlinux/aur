@@ -1,7 +1,7 @@
 pkgbase = bee-git
 	pkgdesc = A framework for IOTA nodes, clients and applications in Rust
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/iotaledger/bee
 	install = bee.install
 	arch = x86_64
