@@ -8,7 +8,7 @@ pkgdesc="开源游戏平台，帮您在deepin系统中运行windows游戏"
 arch=('x86_64')
 url="https://winegame.net/"
 license=('GPL3')
-depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'python-pillow' 'python-requests' 'gnome-desktop' 'webkit2gtk' 'mesa-demos' 'python-dbus' 'python-distro')
+depends=('python-gobject' 'wget' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'python-pillow' 'python-requests' 'gnome-desktop' 'webkit2gtk' 'mesa-demos' 'python-dbus' 'python-distro')
 optdepends=('wine: Windows support'
             'vulkan-icd-loader: Vulkan support'
             'lib32-vulkan-icd-loader: Vulkan support'

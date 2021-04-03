@@ -6,6 +6,7 @@ pkgbase = winegame
 	arch = x86_64
 	license = GPL3
 	depends = python-gobject
+	depends = wget
 	depends = python-yaml
 	depends = python-evdev
 	depends = gtk3
