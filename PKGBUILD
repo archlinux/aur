@@ -1,21 +1,20 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 _pkgname=gepetto-viewer-corba
-_pkgver=1.3.0
+_pkgver=5.5.1
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r310.605a8c8
-pkgrel=2
-pkgdesc="CORBA server/client for SceneViewer."
+pkgver=5.5.1.r648.a4cc0c8
+pkgrel=1
+pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
-url="https://github.com/nim65s/$_pkgname"
+url="https://github.com/gepetto/$_pkgname"
 license=('BSD')
-depends=('gepetto-viewer-git' 'omniorb' 'qt4' 'omniorbpy')
-makedepends=('cmake' 'git')
-optdepends=('doxygen')
+depends=('gepetto-viewer-git' 'python-omniorbpy')
+makedepends=('cmake' 'boost' 'git')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$_pkgname"::"git://github.com/nim65s/$_pkgname.git")
-md5sums=('SKIP')
+source=("$_pkgname"::"git://github.com/gepetto/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -25,16 +24,22 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     git submodule update --init
+    mkdir build
 }
 
 build() {
-    cd "$_pkgname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+    cd "$_pkgname/build"
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
     make
 }
 
+check() {
+    cd "$_pkgname/build"
+    make test
+}
+
 package() {
-    cd "$_pkgname"
+    cd "$_pkgname/build"
     make DESTDIR="$pkgdir/" install
-    install -D -m755 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
