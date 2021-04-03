@@ -2,14 +2,15 @@ pkgbase = i3-maim-clpimg
 	pkgdesc = Create a screenshot and then immediately copy it into the clipboard
 	pkgver = 1.0.0
 	pkgrel = 0
-	arch = x86_64
+	url = https://github.com/arpanetus/i3-maim-clpimg
+	arch = any
 	license = GPL
 	depends = clpimg
 	depends = libnotify
 	depends = maim
 	depends = xdg-user-dirs
 	depends = xdotool
-	source = https://github.com/arpanetus/i3-maim-clpimg/archive/refs/tags/1.0.0.zip
+	source = i3-maim-clpimg-1.0.0.tar.gz::https://github.com/arpanetus/i3-maim-clpimg/archive/1.0.0.zip
 	md5sums = d6ad879e168690721a4cb43370883947
 
 pkgname = i3-maim-clpimg
