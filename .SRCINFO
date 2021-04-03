@@ -1,13 +1,14 @@
 pkgbase = nutstore
 	pkgdesc = a cloud service that lets you sync and share files anywhere.
 	pkgver = 5.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jianguoyun.com/
 	arch = x86_64
 	license = custom
 	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = python-gobject
+	depends = webkit2gtk
 	optdepends = nautilus-nutstore: Nautilus plugin
 	source = nutstore
 	source = license
