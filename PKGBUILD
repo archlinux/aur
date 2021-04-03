@@ -7,7 +7,7 @@ _pref_maximum_performance=
 
 pkgname=nvidia-dkms-performance
 pkgver=460.67
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA driver sources for linux with some optimizations'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -83,7 +83,7 @@ prepare() {
 }
 
 package() {
-    depends=('dkms' "nvidia-utils>=${pkgver}" 'libglvnd')
+    depends=('dkms' "nvidia-utils=${pkgver}" 'libglvnd')
 
     # Nvidia hook for update initramfs after an NVIDIA driver upgrade
     install -D -m644 "${srcdir}/nvidia.hook" -t "${pkgdir}/usr/share/libalpm/hooks"

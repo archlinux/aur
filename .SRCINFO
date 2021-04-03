@@ -1,7 +1,7 @@
 pkgbase = nvidia-dkms-performance
 	pkgdesc = NVIDIA driver sources for linux with some optimizations
 	pkgver = 460.67
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -28,6 +28,6 @@ pkgbase = nvidia-dkms-performance
 
 pkgname = nvidia-dkms-performance
 	depends = dkms
-	depends = nvidia-utils>=460.67
+	depends = nvidia-utils=460.67
 	depends = libglvnd
 
