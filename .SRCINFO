@@ -1,7 +1,7 @@
 pkgbase = goshimmer-bin
 	pkgdesc = GoShimmer implementation of Coordicide (official precompiled binary)
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iotaledger/goshimmer
 	install = goshimmer.install
 	arch = x86_64
