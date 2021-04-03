@@ -1,29 +1,29 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-# pkg: github iamkroot/trakt-scrobbler
+# pkg: pypi trakt-scrobbler
 pkgname=trakt-scrobbler
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
 url=https://github.com/iamkroot/trakt-scrobbler
 license=(GPL2)
 depends=(
+	"python-filelock<4.0.0" #auto-deps
+	"python-filelock>=3.0.12" #auto-deps
+	"python-jeepney<0.7" #auto-deps
+	"python-jeepney>=0.6" #auto-deps
+	"python-confuse<2.0.0" #auto-deps
+	"python-confuse>=1.3.0" #auto-deps
+	"python-cleo<0.8.0" #auto-deps
+	"python-cleo>=0.7.6" #auto-deps
+	"python-appdirs<2.0.0" #auto-deps
+	"python-appdirs>=1.4.3" #auto-deps
+	"python-guessit<4.0.0" #auto-deps
+	"python-guessit>=3.1.0" #auto-deps
+	"python-requests<3.0.0" #auto-deps
+	"python-requests>=2.22.0" #auto-deps
     "systemd"
-    "python-appdirs<2" #auto-deps
-    "python-appdirs>=1.4.3" #auto-deps
-    "python-cleo<1" #auto-deps
-    "python-cleo>=0.7.6" #auto-deps
-    "python-confuse<2" #auto-deps
-    "python-confuse>=1.3.0" #auto-deps
-    "python-guessit<4" #auto-deps
-    "python-guessit>=3.1.0" #auto-deps
-    "python-gobject<4" #auto-deps
-    "python-gobject>=3.34.0" #auto-deps
-    "python-pysocks<2" #auto-deps
-    "python-pysocks>=1.7.1" #auto-deps
-    "python-requests<3" #auto-deps
-    "python-requests>=2.22.0" #auto-deps
 )
 
 makedepends=(
@@ -33,7 +33,7 @@ makedepends=(
     gzip
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/iamkroot/$pkgname/archive/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
     "trakts-man.md"
     "trakts.zsh"
 )
