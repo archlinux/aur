@@ -8,6 +8,7 @@ note() {
 }
 
 post_install() {
+    ln -sf /usr/local/cyberghost/cyberghostvpn /usr/bin/cyberghostvpn
     note "Enable systemd-resolved: systemctl enable systemd-resolved.service"
     note "Setup your account: cyberghostvpn --setup"
 }
@@ -17,5 +18,6 @@ post_upgrade() {
 }
 
 post_remove() {
+    unlink /usr/bin/cyberghostvpn
     rm -rf /usr/local/cyberghost
 }
