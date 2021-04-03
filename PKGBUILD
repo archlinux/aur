@@ -1,26 +1,32 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 
 pkgname=backblaze-b2
-_pkgname=B2_Command_Line_Tool
-pkgver=2.1.0
+_pkgname=b2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
+         'python-arrow>=0.8.0'
          'python-b2sdk>=1.0.0'
+         'python-b2sdk<2.0.0'
          'python-tqdm>=4.5.0'
          'python-class-registry=3.0.5'
+         'python-rst2ansi=0.1.5'
         )
-optdepends=()
+
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html
 license=('MIT')
 arch=('any')
 
-source=("https://github.com/Backblaze/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('8dcf2f6bb244e67c0bd3c91b5984d62f37d553bb018a87c81baca49cb2ca0d7f743c64695189829216206976b1e7cb5deb9776c94c8bda2d3d9f8deccb33685a')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('9b3fa855e564815ddbb6e7815bd9b0b761a41f70d49e5c0d6785639f9217c122')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
+
+    # This requriement seems overly complex, losen
+    sed -i -e 's:\(arrow>=.*\),.*:\1:' requirements.txt
 
     python setup.py build
 }
