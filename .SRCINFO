@@ -1,14 +1,14 @@
 pkgbase = easyeda-bin
 	pkgdesc = easyeda.com desktop client
-	pkgver = 6.4.7
-	pkgrel = 2
+	pkgver = 6.4.19.3
+	pkgrel = 1
 	url = https://easyeda.com/
 	arch = x86_64
 	license = unknown
 	makedepends = unzip
-	source = https://image.easyeda.com/files/easyeda-linux-x64-6.4.7.zip
+	source = https://image.easyeda.com/files/easyeda-linux-x64-6.4.19.3.zip
 	source = custom-dest-dir.patch
-	md5sums = d636a526483939f011f6724520317554
+	md5sums = 3ec9da29c8f1e4f1f4f1c0817089ea5f
 	md5sums = bcf19d29779d81c21b57df4742e428df
 
 pkgname = easyeda-bin
