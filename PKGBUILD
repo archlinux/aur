@@ -3,7 +3,7 @@ pkgname=ms-edge
 pkgver=91.0.838.3
 pkgrel=1
 epoch=
-pkgdesc="Microsoft Edge for arch"
+pkgdesc="Microsoft Edge for arch. IMPORTANT: explanation for package duplicate here https://pastebin.com/ybVzVGTW"
 arch=('x86_64')
 url="https://www.microsoftedgeinsider.com/en-us/download/?platform=linux"
 license=('All rights reserved')

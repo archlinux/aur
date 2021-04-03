@@ -1,5 +1,5 @@
 pkgbase = ms-edge
-	pkgdesc = Microsoft Edge for arch
+	pkgdesc = Microsoft Edge for arch. IMPORTANT: explanation for package duplicate here https://pastebin.com/ybVzVGTW
 	pkgver = 91.0.838.3
 	pkgrel = 1
 	url = https://www.microsoftedgeinsider.com/en-us/download/?platform=linux
