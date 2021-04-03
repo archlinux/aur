@@ -1,16 +1,15 @@
 pkgbase = stm32pio
-	pkgdesc = gui for automate managing STM32CubeMX and PlatformIO projects
-	pkgver = 1.1.0
+	pkgdesc = Automate managing of STM32CubeMX + PlatformIO projects
+	pkgver = 2.1.0
 	pkgrel = 1
-	url = https://github.com/kynguyen98/stm32pio
+	url = https://github.com/ussserrr/stm32pio
 	arch = x86_64
 	license = MIT
 	makedepends = python3
 	makedepends = python-setuptools
 	depends = python
 	depends = pyside2
-	optdepends = code: for text editing
-	source = stm32pio-1.1.0.tar.gz::https://github.com/kynguyen98/stm32pio/archive/v1.1.0.tar.gz
+	source = stm32pio-2.1.0.tar.gz::https://github.com/ussserrr/stm32pio/archive/v2.1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = stm32pio
