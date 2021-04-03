@@ -8,4 +8,5 @@ Terminal=false
 Type=Application
 Icon=4kvideodownloader.png
 Categories=Network;Qt;
-
+StartupWMClass=4kvideodownloader-bin
+StartupNotify=true
