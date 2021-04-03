@@ -1,5 +1,5 @@
 pkgbase = sedutil-sleep-git
-	pkgdesc = TCG OPAL 2.00 SED Management Program - including S3 support
+	pkgdesc = TCG OPAL 2.00 SED Management Program - including S3 sleep support
 	pkgver = 1.15.1.r3.gecfd482
 	pkgrel = 1
 	url = https://github.com/fabiogermann/sedutil
