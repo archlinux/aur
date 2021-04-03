@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for name in /usr/share/java/shark-cli/*.jar ; do
+  CP=$CP:$name
+done
+
+exec java -cp $CP shark.MainKt "$@"
