@@ -7,7 +7,7 @@ pkgdesc="Kotlin Language Interactive Shell"
 arch=('any')
 url='https://github.com/Kotlin/kotlin-interactive-shell'
 license=('Apache')
-depends=(bash java-runtime)
+depends=('bash' 'java-runtime>=8')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://repo1.maven.org/maven2/org/jetbrains/kotlinx/$_pkgname/$pkgver/$_pkgname-$pkgver-archive.zip")
