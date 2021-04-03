@@ -1,7 +1,9 @@
+# Maintainer: j4qfrost <j4qfrost at gmail dot com>
+# Maintainer: ptolemy753 <dsconce at protonmail dot com>
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=neovide-git
-pkgver=0.6.0.r15.gd406cf6
+pkgver=0.7.0.r3.ge1d8d40
 pkgrel=1
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
