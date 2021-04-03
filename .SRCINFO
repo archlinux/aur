@@ -1,12 +1,24 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = arbie-git
+	pkgdesc = Automatic Robust Backup, an archiving and synchronization tool.
+	pkgver = 0.9
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/lbcnz/arbie
+	install = arbie.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = borg
+	depends = gocryptfs
+	depends = rclone
+	depends = rsync
+	depends = systemd
+	depends = git
+	optdepends = pass: standard password manager
+	optdepends = gopass: improved password manager
+	provides = arbie
+	conflicts = arbie
+	source = git://github.com/lbcnz/arbie#branch=main
+	sha512sums = SKIP
 
-pkgname = yarxi
+pkgname = arbie-git
 

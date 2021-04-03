@@ -1,0 +1,40 @@
+# based on https://github.com/archlinux/svntogit-community/tree/packages/profile-sync-daemon/trunk 
+users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/\n/ /g')
+
+pre_upgrade() {
+    # stop system service now since it will be removed upon updating
+    if systemctl is-active arbie.service &>/dev/null; then
+        systemctl stop arbie.service &>/dev/null
+    fi
+}
+
+post_upgrade() {
+    _daemon_refresh
+}
+
+pre_remove() {
+  for user in $users; do
+    if _daemon_user_check "$user"; then
+      _daemon_user_stop "$user"
+    fi
+  done
+}
+
+_daemon_refresh() {
+  for i in $users; do
+    su "$i" -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload'
+  done
+}
+
+_daemon_user_check() {
+  running="$(su "$1" -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user is-active arbie')"
+  if [[ "$running" = "active" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+_daemon_user_stop() {
+  su "$1" -s /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/$UID systemctl --user stop arbie.service'
+}
