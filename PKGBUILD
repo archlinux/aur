@@ -7,9 +7,9 @@
 pkgname=coreutils-hybrid
 _pkgname=coreutils
 __pkgname=uutils-coreutils
-pkgver=8.32_0.0.5
+pkgver=8.32_0.0.6
 _pkgver=8.32
-__pkgver=0.0.5
+__pkgver=0.0.6
 pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
@@ -28,13 +28,13 @@ sha512sums=('1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1
             '55b3ca14930e79c69aeeb18496ae307393f9cd013e8aebecaffc5532f444c1f62b727ab03f9e23d9cc324a0a16a673adf08ea81522984c46faf0fad2815bb7d9')
 
 build() {
-  # Build GNU coreutils without the stable uutils programs counterparts leaving out: stat, touch, tr (issue 1817), realpath (genfstab broken), echo (fim package failing to compaile), wc, ln (no -s option)
+  # Build GNU coreutils without the stable uutils programs counterparts leaving out: stat, touch, realpath (genfstab broken), ln (no -s option)
   cd $_pkgname-$_pkgver
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib \
       --with-openssl \
-      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,env,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,who,whoami,yes"
+      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,env,echo,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,who,wc,whoami,yes"
 }
 
 package() {
