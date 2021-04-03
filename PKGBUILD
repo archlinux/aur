@@ -311,6 +311,11 @@ package() {
   mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname-bin,librewolf-bin}
   rm "$pkgdir"/usr/lib/${pkgname}/pingsender
 
+
+  install -Dm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/etc/firejail/$pkgname.profile"
+  install -Dm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/etc/firejail/$pkgname-common.profile"
+  install -Dm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
+
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dm644 /dev/stdin "$_vendorjs" <<END

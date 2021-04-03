@@ -14,4 +14,5 @@ post_install() {
     msg "Included are profiles for Firejail and profile-sync-daemon."
     echo ""
     msg "To use psd add librewolf to ~/.config/psd/psd.conf"
+    echo ""
 }
