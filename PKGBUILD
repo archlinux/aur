@@ -2,8 +2,8 @@
 
 _pkgname="pyfetch"
 pkgname="${_pkgname}-git"
-pkgver=r5.9c18074
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="A simple and fast alternative to neofetch."
 arch=('x86_64')
 url="https://kreatea.ml/kreato/pyfetch"
