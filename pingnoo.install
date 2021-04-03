@@ -1,0 +1,8 @@
+post_install() {
+        setcap cap_net_raw+ep /usr/local/bin/pingnoo/Pingnoo
+        /usr/sbin/ldconfig
+}
+
+post_remove() {
+        /usr/sbin/ldconfig
+}
