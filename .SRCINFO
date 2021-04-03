@@ -1,0 +1,16 @@
+pkgbase = tmd-git
+	pkgdesc = A Tiny Markdown Parser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/WebReflection/tmd/#readme
+	arch = any
+	license = ISC
+	makedepends = gcc
+	makedepends = cmake
+	provides = tmd
+	conflicts = tmd
+	source = git+https://github.com/WebReflection/tmd.git
+	sha256sums = SKIP
+
+pkgname = tmd-git
+
