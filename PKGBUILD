@@ -19,24 +19,15 @@ backup=()
 options=()
 install="${pkgname}.install"
 changelog=
-source=("${pkgname}::git+https://github.com/nedrysoft/pingnoo.git")
+source=("https://www.nedrysoft.com/downloads/${pkgname}/source/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('272329a113a749f6628fecb32b188e43')
 validpgpkeys=()
-
-pkgver() {
-	cd ${pkgname}
-	git log -1 --format=%cd --date=short | sed 's/-/./g'
-}
-
-prepare() {
-	cd ${pkgname}
-	git submodule update --init --recursive
-}
+prepare=()
 
 build() {
 	cmake -B build -S ${pkgname} -DCMAKE_SKIP_RPATH=True
-	make -C build -j 4
+	make -C build
 }
 
 package() {
