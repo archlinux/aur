@@ -1,0 +1,84 @@
+# gitern(8) completion                                     -*- shell-script -*-
+
+_accounts()
+{
+    gitern pubkey list | grep ':$' | tr -d ':'
+}
+
+_gitern()
+{
+    local cur prev words cword
+    _init_completion || return
+
+    local subcword cmd subcmd=""
+    for ((subcword = 1; subcword < ${#words[@]} - 1; subcword++)); do
+        [[ ${words[subcword]} == -b?(atch) ]] && return
+        [[ -v cmd ]] && subcmd=${words[subcword]} && break
+        [[ ${words[subcword]} != -* && \
+        ${words[subcword - 1]} != -@(f?(amily)|rc?(vbuf)) ]] &&
+            cmd=${words[subcword]}
+    done
+
+    if [[ ! -v cmd ]]; then
+        COMPREPLY=($(compgen -W "create delete list account pubkey help" -- "$cur"))
+        return
+    fi
+
+    case $cmd in
+        account)
+            (( cword == subcword )) &&
+                COMPREPLY=($(compgen -W "$(_accounts)" -- "$cur"))
+            ;;
+        create | delete | list) ;;
+        help)
+            case $subcmd in
+                pubkey)
+                    (( cword == subcword+1 )) &&
+                        COMPREPLY=($(compgen -W "add list remove" -- "$cur"))
+                    ;;
+                *)
+                    ((cword == subcword)) &&
+                        COMPREPLY=($(compgen -W "create delete list account pubkey" -- "$cur"))
+                    ;;
+            esac
+            ;;
+        pubkey)
+            case $subcmd in
+                add)
+                    (( cword == subcword+1 )) &&
+                        COMPREPLY=($(compgen -W "$(_accounts)" -- "$cur"))
+                    ;;
+                list)
+                    case $cur in
+                        -*)
+                            COMPREPLY=($(compgen -W "--full" -- "$cur"))
+                            ;;
+                        *)
+                            if [[ $prev == "--full" && $words[cword-2] == "list" || $prev == "list" ]]; then
+                                COMPREPLY=($(compgen -W "$(_accounts)" -- "$cur"))
+                            fi
+                            ;;
+                    esac
+                    ;;
+                remove)
+                    case $((cword - subcword)) in
+                        1)
+                            COMPREPLY=($(compgen -W "$(_accounts)" -- "$cur"))
+                            ;;
+                        2)
+                            COMPREPLY=($(compgen -W "$(gitern pubkey list ${words[cword-1]}| grep 'SHA' | cut -d' ' -f1)" -- "$cur"))
+                            ;;
+                    esac
+                    ;;
+                *)
+                    ((cword == subcword)) &&
+                        COMPREPLY=($(compgen -W "add list remove" -- "$cur"))
+                    ;;
+            esac
+            ;;
+    esac
+
+} &&
+    complete -F _gitern gitern
+
+# ex: filetype=sh

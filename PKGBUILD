@@ -1,25 +1,18 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 pkgname="gitern"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="a git host for hackers"
-arch=('any')
+arch=("any")
 url="https://gitern.com"
-license=('MIT')
-depends=('npm')
-makedepends=('npm')
-source=("${pkgname}-${pkgver}.tgz::https://files.gitern.com/gitern-linux-x64.tar.gz")
-noextract=("${pkgname}-${pkgver}.tgz")
-sha512sums=('bdb87ef8542f120d0c2b75754b89029d01ed5e9397dcbfb36ee73cb16fafa7611914d4685e6ab0b7eabf75cd87ed289dcd2f49a2a12155375793d51763f772b6')
+license=("MIT")
+optdepends=("bash-completion: Bash completion")
+source=("https://files.gitern.com/${pkgname}"
+        "completion")
+sha512sums=("2280470d6c824d2cba8d2121f6c4119198f499e9d8d171e1066a9d784fc8886a9b3538f3349b301a3cd57b2550e26e419903ec03c8cc7695b9c7bf8f799fa488"
+            "7a2151606a8f7d7c9021d3c4c76748cad2a6c381a2de561a1db521a0275da53e0a7b45a18e3755bd25c0684a952a01dd064d83e2a60d090b81543010497b8f00")
 
 package() {
-    npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
-
-    # Non-deterministic race in npm gives 777 permissions to random directories.
-    # See https://github.com/npm/npm/issues/9359 for details.
-    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-
-    # npm gives ownership of ALL FILES to build user
-    # https://bugs.archlinux.org/task/63396
-    chown -R root:root "${pkgdir}"
+	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 "${srcdir}/completion" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }
