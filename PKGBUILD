@@ -3,7 +3,7 @@
 # Maintainer: Alejandro Barocio A. <abarocio80@gmail.com>
 pkgname=pacslim-git
 pkgver=0.1.1
-pkgrel=17
+pkgrel=18
 epoch=
 pkgdesc="Put your system on package diet."
 arch=(any)
@@ -25,11 +25,6 @@ source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
-
-# pkgver() {
-# 	cd "pacslim"
-# 	git describe --long 2>/dev/null | sed 's/-/_r/;s/-/_/g'
-# }
 
 build() {
 	cd "pacslim"
