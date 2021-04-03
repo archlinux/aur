@@ -4,7 +4,7 @@
 # Contributor: vEX <vex@niechift.com>
 
 pkgname=pcsx2-64bit-git
-pkgver=1.7.0.r685.678829a5b
+pkgver=1.7.0.r1167.048356a39
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator, 64bit git master'
 arch=(x86_64)
@@ -38,7 +38,6 @@ depends=(
   libx11
   libxcb
   libxml2
-  libyaml-cpp.so
   sdl2
   soundtouch
   wxgtk3
@@ -52,11 +51,27 @@ makedepends=(
   ninja
   png++
 )
-source=(git+https://github.com/PCSX2/pcsx2.git)
-b2sums=(SKIP)
-
 provides=(pxsx2)
 conflicts=(pcsx2)
+source=(
+  git+https://github.com/PCSX2/pcsx2.git
+  git+https://github.com/rtissera/libchdr.git
+  git+https://github.com/jbeder/yaml-cpp.git
+)
+b2sums=(
+  SKIP
+  SKIP
+  SKIP
+)
+
+prepare() {
+  cd pcsx2/3rdparty
+  for submodule in libchdr/libchdr yaml-cpp/yaml-cpp; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../../${submodule#*/}
+    git submodule update ${submodule}
+  done
+}
 
 pkgver() {
   cd pcsx2
@@ -68,9 +83,6 @@ build() {
   cmake -S pcsx2 -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DDOC_DIR=/usr/share/doc/pcsx2 \
-    -DGAMEINDEX_DIR=/usr/share/pcsx2 \
-    -DPLUGIN_DIR=/usr/lib/pcsx2 \
     -DDISABLE_ADVANCE_SIMD=ON \
     -DDISABLE_BUILD_DATE=ON \
     -DDISABLE_PCSX2_WRAPPER=ON \
@@ -80,9 +92,9 @@ build() {
     -DPACKAGE_MODE=ON \
     -DREBUILD_SHADER=ON \
     -DUSE_LTO=OFF \
+    -DUSE_SYSTEM_YAML=ON \
     -DUSE_VTUNE=OFF \
     -DXDG_STD=ON \
-    -DUSE_SYSTEM_YAML=ON \
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
     -Wno-dev
   ninja -C build

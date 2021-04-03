@@ -1,6 +1,6 @@
 pkgbase = pcsx2-64bit-git
 	pkgdesc = A Sony PlayStation 2 emulator, 64bit git master
-	pkgver = 1.7.0.r685.678829a5b
+	pkgver = 1.7.0.r1167.048356a39
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	arch = x86_64
@@ -33,7 +33,6 @@ pkgbase = pcsx2-64bit-git
 	depends = libx11
 	depends = libxcb
 	depends = libxml2
-	depends = libyaml-cpp.so
 	depends = sdl2
 	depends = soundtouch
 	depends = wxgtk3
@@ -43,6 +42,10 @@ pkgbase = pcsx2-64bit-git
 	provides = pxsx2
 	conflicts = pcsx2
 	source = git+https://github.com/PCSX2/pcsx2.git
+	source = git+https://github.com/rtissera/libchdr.git
+	source = git+https://github.com/jbeder/yaml-cpp.git
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = pcsx2-64bit-git
