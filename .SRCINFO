@@ -1,0 +1,20 @@
+pkgbase = universal-gcode-sender-bin
+	pkgdesc = Java based cross platform G-Code sender classic version
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/winder/Universal-G-Code-Sender/
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = sh
+	provides = universal-gcode-sender
+	conflicts = universal-gcode-sender
+	source = https://ugs.jfrog.io/ugs/UGS/v2.0.7/UniversalGcodeSender.zip
+	source = universal-gcode-sender
+	source = LICENSE.txt
+	sha256sums = 7c9b5c74500f5d6add3180ba426ce5f0c8788d23a917aa4f911412af1af4d01a
+	sha256sums = 5b21bde42ca987df4fd77f50aca8431245474d7e1f76874b3f482c3d1cf0ecbe
+	sha256sums = d25cec7f8ff64ffcc11ef8d85867b1ba76abcf77ddf92a9ed97ef95fa928a18b
+
+pkgname = universal-gcode-sender-bin
+
