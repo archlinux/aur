@@ -2,7 +2,7 @@
 # master branch PKGBUILD based on aur/deluge-git by Daniel Bermond
 
 pkgname=deluge2-stable-git
-pkgver=2.0.3
+pkgver=2.0.3.gb711cd258
 pkgrel=1
 epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'master' branch)"
@@ -23,7 +23,7 @@ optdepends=('geoip: for displaying peer locations'
             'python-pygame: for sound notifications plugin'
             'python-distro: for OS platform information'
             'libnotify: for dektop popup notifications plugin')
-makedepends=('git' 'intltool' 'librsvg' 'python-gobject' 'slimit')
+makedepends=('git' 'intltool' 'librsvg' 'python-gobject' 'python-pip' 'slimit')
 checkdepends=('python-pytest-twisted' 'python-pytest-cov' 'python-hypothesis'
               'python-mock' 'python-cairo' 'xorg-server-xvfb' 'gtk3')
 provides=('deluge')
