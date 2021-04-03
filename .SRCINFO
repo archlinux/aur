@@ -1,0 +1,25 @@
+pkgbase = thunar-archive-plugin-zstd
+	pkgdesc = Create and extract archives in Thunar - zstd support
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = https://docs.xfce.org/xfce/thunar/archive
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = xfce4-dev-tools
+	makedepends = zstd
+	depends = thunar
+	depends = hicolor-icon-theme
+	optdepends = file-roller
+	optdepends = engrampa
+	optdepends = ark
+	optdepends = xarchiver
+	provides = thunar-archive-plugin
+	conflicts = thunar-archive-plugin
+	source = https://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/0.4/thunar-archive-plugin-0.4.0.tar.bz2
+	source = zstd.patch
+	sha256sums = bf82fa86a388124eb3c4854249c30712b2922e61789607268ee14548549b3115
+	sha256sums = eb8a0e63170deecad0f0de834cf5c28ff7018d890530e0b0a8f3a66cb03441fc
+
+pkgname = thunar-archive-plugin-zstd
+

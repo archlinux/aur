@@ -1,0 +1,12 @@
+diff -ur old/thunar-archive-plugin-0.4.0/thunar-archive-plugin/tap-provider.c new/thunar-archive-plugin-0.4.0/thunar-archive-plugin/tap-provider.c
+--- old/thunar-archive-plugin-0.4.0/thunar-archive-plugin/tap-provider.c	2021-04-03 22:28:52.259252573 +0200
++++ new/thunar-archive-plugin-0.4.0/thunar-archive-plugin/tap-provider.c	2021-04-03 22:37:20.147764805 +0200
+@@ -124,6 +124,8 @@
+   "application/x-zoo",
+   "application/x-cd-image",
+   "application/x-7z-compressed",
++  "application/x-zstd-compressed-tar",
++  "application/zstd",
+ };
+ 
+ static GQuark tap_item_files_quark;
