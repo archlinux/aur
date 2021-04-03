@@ -2,7 +2,7 @@
 
 pkgname=maliit-framework
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Core libraries of Maliit and server"
 arch=(x86_64)
 url="https://maliit.github.io/"
@@ -17,7 +17,11 @@ build() {
   cmake -B build -S framework-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Denable-tests=OFF \
-    -Denable-docs=OFF
+    -Denable-docs=OFF \
+    -Denable-dbus-activation=ON \
+    -Denable-wayland-gtk=ON \
+    -DQT5_PLUGINS_INSTALL_DIR=lib/qt/plugins \
+    -DQT5_MKSPECS_INSTALL_DIR=lib/qt/mkspecs
   cmake --build build
 }
 
