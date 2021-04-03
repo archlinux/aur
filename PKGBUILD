@@ -3,7 +3,7 @@
 # Maintainer: Alejandro Barocio A. <abarocio80@gmail.com>
 pkgname=pacslim-git
 pkgver=0.1.1
-pkgrel=14
+pkgrel=15
 epoch=
 pkgdesc="Put your system on package diet."
 arch=(any)
@@ -33,10 +33,10 @@ validpgpkeys=()
 
 build() {
 	cd "pacslim"
-	make DESTDIR="$pkgdir/" PREFIX="/usr"
+	DESTDIR="$pkgdir/" PREFIX="/usr" make
 }
 
 package() {
 	cd "pacslim"
-	make DESTDIR="$pkgdir/" PREFIX="/usr" install
+	DESTDIR="$pkgdir/" PREFIX="/usr" make install
 }
