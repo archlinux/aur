@@ -1,6 +1,6 @@
 pkgbase = i3-maim
 	pkgdesc = simple screenshot script using maim
-	pkgver = 2021.04.02
+	pkgver = 2021.04.03
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/i3-maim
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = i3-maim
 	depends = xdg-user-dirs
 	depends = xdotool
 	optdepends = xclip: Allow screenshots to be saved to clipboard
-	source = i3-maim-2021.04.02.tar.gz::https://github.com/The-Repo-Club/i3-maim/archive/2021.04.02.tar.gz
-	sha256sums = d6580e29f44c4e688e76de1ff573c97a75380cdcbe0656f22c292e428a8deb4a
+	source = i3-maim-2021.04.03.tar.gz::https://github.com/The-Repo-Club/i3-maim/archive/2021.04.03.tar.gz
+	sha256sums = dbf5cb4908c17ecaf242e3646ebb20e1393666460e756fe19583d596c9b862ca
 
 pkgname = i3-maim
 
