@@ -7,3 +7,5 @@ Icon=kontena-lens
 Exec=kontena-lens %U
 Categories=System;
 StartupNotify=true
+StartupWMClass=Lens
+MimeType=x-scheme-handler/lens;
