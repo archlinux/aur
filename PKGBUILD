@@ -1,14 +1,15 @@
 # Maintainer: Arran <aur at arran dot nz>
 pkgname=rofmoji
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 url="https://codeberg.org/arran/rofmoji"
 pkgdesc="Quickly find Emoji for your clipboard"
 arch=('x86_64')
 license=('GPL3')
-depends=('rofi' 'libnotify' 'wl-clipboard')
+depends=('rofi' 'libnotify')
+optdepends=('wl-clipboard' 'xclip')
 source=("https://codeberg.org/arran/rofmoji/archive/$pkgver.tar.gz")
-sha256sums=('d910ae7d9b75539689987c02ee434c983e6763d5d7d3e814025d642069f8af11')
+sha256sums=('aa833ce40d49970125ae9be7a0910a5f7eadcb5c40a851b68cb4deb9b3f82a55')
 package() {
 	cd "rofmoji"
 	mkdir -p "$pkgdir/usr/bin"
