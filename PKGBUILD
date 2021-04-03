@@ -2,16 +2,16 @@
 
 pkgname=celestia-addon-spitzer_space_telescope
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Celestia addon: Spacecraft: Earth Orbit: Spitzer Space Telescope"
 arch=('any')
-url='http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=301'
-license=('unknown, free')
+url='https://www.celestiamotherlode.net/addon/addon_301.html'
+license=('unknown')
 depends=('celestia')
 makedepends=('unzip')
 conflicts=('celestia-addon-spitzer-space-telescope')
-source=('http://celestiamotherlode.net/creators/jackhiggins/spitzermodel.zip'
-	'http://celestiamotherlode.net/creators/jackhiggins/spitzer.zip')
+source=('https://celestiamotherlode.net/creators/jackhiggins/spitzermodel.zip'
+	'https://celestiamotherlode.net/creators/jackhiggins/spitzer.zip')
 install="${pkgname}.install"
 	
 package() {
