@@ -1,13 +1,13 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=13670.f55f10933
+pkgver=13764.7a6ee0a3d
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
 license=(GPL)
-depends=(fluidsynth libxkbfile libpng libxrandr mesa ffmpeg sdl2 sdl2_net physfs)
+depends=(fluidsynth libxkbfile libxrandr mesa ffmpeg sdl2_net physfs)
 makedepends=(git glu)
 optdepends=()
 conflicts=(dosbox-x-sdl2 dosbox-x-git)
