@@ -2,8 +2,8 @@
 
 pkgname=plover-git
 pkgdesc="Free and open source real-time stenography engine."
-pkgver=4.0.0.dev8
-pkgrel=3
+pkgver=4.0.0.dev8.340.g4556cf7
+pkgrel=1
 arch=('any')
 license=('GPL2')
 depends=(
@@ -48,7 +48,7 @@ package() {
   cd "$pkgname"
   python setup.py install --root="$pkgdir"
   install -vDm644 -t "${pkgdir}/usr/share/pixmaps" plover/assets/plover.png
-  install -vDm644 -t "${pkgdir}/usr/share/applications" application/plover.desktop
+  install -vDm644 -t "${pkgdir}/usr/share/applications" linux/plover.desktop
   chmod og+rX -R "$pkgdir"
 }
 
