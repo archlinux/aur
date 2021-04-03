@@ -2,7 +2,7 @@
 
 pkgname=nbdkit
 pkgver=1.24.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/libguestfs/nbdkit"
@@ -34,11 +34,6 @@ package() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # the provided 1.2.8 plugins link to libselinux which we do not have on Arch
-  rm tests/old-plugins/x86_64/Linux/v1.2.8/nbdkit-file-plugin.so
-  rm tests/old-plugins/i686/Linux/v1.2.8-2-gd2d934df/nbdkit-file-plugin.so
-  # sed -i '/test-old-plugins-.*-v1.2.8-.*\.sh/d' tests/Makefile.am
 
   make check
 }
