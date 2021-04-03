@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=webpack-cli
 pkgname=nodejs-webpack-cli
-pkgver=4.2.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="CLI for webpack & friends"
 arch=(any)
@@ -14,7 +14,7 @@ options=(!strip)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         https://raw.githubusercontent.com/webpack/$_npmname/webpack-cli@$pkgver/LICENSE)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('09ca2de6deee939a4a2f8edf206a776caafb6fe3590ed1a8310a3e3b69ad4a18'
+sha256sums=('b9c7ebd296afed47f839ec07eda69f3ecddeac03f921922f06a6bf8e6bdff8a0'
             '2af12ca8b612a22e6659ae68e0e59ee7ac792718c45524a989b512c49c5f5879')
 
 package() {

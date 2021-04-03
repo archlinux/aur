@@ -1,6 +1,6 @@
 pkgbase = nodejs-webpack-cli
 	pkgdesc = CLI for webpack & friends
-	pkgver = 4.2.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/webpack/webpack-cli#readme
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = nodejs-webpack-cli
 	makedepends = npm
 	depends = nodejs
 	optdepends = nodejs-webpack
-	noextract = webpack-cli-4.2.0.tgz
+	noextract = webpack-cli-4.6.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/webpack-cli/-/webpack-cli-4.2.0.tgz
-	source = https://raw.githubusercontent.com/webpack/webpack-cli/webpack-cli@4.2.0/LICENSE
-	sha256sums = 09ca2de6deee939a4a2f8edf206a776caafb6fe3590ed1a8310a3e3b69ad4a18
+	source = https://registry.npmjs.org/webpack-cli/-/webpack-cli-4.6.0.tgz
+	source = https://raw.githubusercontent.com/webpack/webpack-cli/webpack-cli@4.6.0/LICENSE
+	sha256sums = b9c7ebd296afed47f839ec07eda69f3ecddeac03f921922f06a6bf8e6bdff8a0
 	sha256sums = 2af12ca8b612a22e6659ae68e0e59ee7ac792718c45524a989b512c49c5f5879
 
 pkgname = nodejs-webpack-cli
