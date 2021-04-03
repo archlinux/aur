@@ -19,9 +19,11 @@ pkgver() {
 }
 
 build() {
+  cd tmd
   make
 }
 
 package() {
+  cd tmd
   make DESTDIR="$pkgdir/" install
 }
