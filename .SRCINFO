@@ -1,0 +1,18 @@
+pkgbase = python-simpleitk-bin
+	pkgdesc = A simplified layer built on top of ITK
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://simpleitk.org/
+	arch = x86_64
+	license = apache
+	makedepends = python-pip
+	depends = python
+	provides = python-simpleitk
+	conflicts = python-simpleitk
+	noextract = SimpleITK-2.0.2-cp39-cp39-manylinux1_x86_64.whl
+	options = !strip
+	source = https://files.pythonhosted.org/packages/cp39/S/SimpleITK/SimpleITK-2.0.2-cp39-cp39-manylinux1_x86_64.whl
+	sha256sums = 5ab5ab167d27bb24e958f02df26b467603197b71e91b13b1635763cf64d2431f
+
+pkgname = python-simpleitk-bin
+
