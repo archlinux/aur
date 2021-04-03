@@ -6,8 +6,8 @@
 
 _npmname=ws
 pkgname=nodejs-ws
-pkgver=7.4.3
-pkgrel=2
+pkgver=7.4.4
+pkgrel=1
 pkgdesc="Simple to use, blazing fast and thoroughly tested WebSocket client and server for Node.js"
 arch=(any)
 url="https://github.com/websockets/ws"
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('e28bcff988a71f41d20c46e89f0638ffb1292e8d1effeda87fd0165fa3134cca')
+sha256sums=('8e9e94a5f4f82b0b19cd5dba4baaeda6ae0d3a63b6ddc4c1ef8ab5602748293c')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
