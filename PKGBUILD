@@ -1,4 +1,5 @@
-# Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
+# Maintainer: randomnobody <nobody "at" 420blaze "dot" it>
+# Contributor: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 # To enable macOS guests support, uncomment the line below:
@@ -13,12 +14,12 @@
 #_remove_vmware_keymaps_dependency=y
 
 #PKGEXT=.pkg.tar
-pkgname=vmware-workstation
+pkgname=vmware-workstation-openrc
 pkgver=16.1.1
 _buildver=17801498
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
-pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
+pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
 license=(custom)
@@ -28,6 +29,7 @@ conflicts=(
   vmware-ovftool
   vmware-patch
   vmware-systemd-services
+  vmware-workstation
 )
 provides=(
   vmware-ovftool
@@ -63,9 +65,9 @@ source=(
   'configure-initscript.sh'
   'vmware-environment.sh'
 
-  'vmware-networks-configuration.service'
-  'vmware-networks.service'
-  'vmware-usbarbitrator.service'
+  'vmware-networks-configuration'
+  'vmware-networks'
+  'vmware-usbarbitrator'
 
   'dkms.conf.in'
   'Makefile'
@@ -75,15 +77,15 @@ source=(
 sha256sums=(
   '62e1b91bf580e05ddc14a1cc52589731291a4262fa1dca956d23e4c60ce013a5'
 
-  '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
+  '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  'bfd2aa7d85d9fd029b8bc59072d5102458a21a9b03b1c835ac4901e0787c09f5'
-  '48d203450db426e8780f3696a2cf85ee08db004e93f8aca50a9aa24129b1e839'
+  '83a9daa713e0a419367b9702f0be8bdeb79fd16214daf6e8f5954043e8720ab8'
+  'f2c9272dfa1e3de1de5f5545989e6e3d9f400084decaa5504559a20209648329'
   'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
 
-  '9b4fbe0ba83f761a2eb9ecd05d48428f8b0a5b3abd8404ccbd928408e682f02b'
-  'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
-  'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
+  '7e1109296ccd60dc25ddfb8e57edc2833296f7849a7f7ea9187cef06ad4ac0d8'
+  '1c418ebb87e8cc06ceea1f6ca366660ff3253f11fa2e1c13b2e9d696be63ef37'
+  '452c1bfebac52f4808ba5f4bf2fc3eae9858f8745d60c13d3c46e7550a3e1eb1'
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
@@ -281,13 +283,13 @@ fi
   echo -e "vmw_vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
 
   for service_file in \
-    vmware-networks-configuration.service \
-    vmware-networks.service \
-    vmware-usbarbitrator.service
+    vmware-networks-configuration \
+    vmware-networks \
+    vmware-usbarbitrator
   do
-    install -Dm 644 \
+    install -Dm 755 \
       "$srcdir/$service_file" \
-      "$pkgdir/usr/lib/systemd/system/$service_file"
+      "$pkgdir/etc/init.d/$service_file"
   done
 
 

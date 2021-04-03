@@ -13,15 +13,15 @@ stopLevel="$4"
 
 addService() {
    if [ "$serviceName" != "vmware" ]; then
-      systemctl start $serviceName.service
-      systemctl enable $serviceName.service
+      rc-service $serviceName start
+      rc-update add $serviceName default
    fi
 }
 
 removeService() {
    if [ "$serviceName" != "vmware" ]; then
-      systemctl stop $serviceName.service
-      systemctl disable $serviceName.service
+      rc-service $serviceName stop
+      rc-update delete $serviceName default
    fi
 }
 
@@ -30,7 +30,7 @@ checkService() {
    if [ "$serviceName" = "vmware" ]; then
       retval=0
    else
-      systemctl is-active $serviceName.service > /dev/null
+      rc-service $serviceName status > /dev/null
       retval=$?
    fi
 

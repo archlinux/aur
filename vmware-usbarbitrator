@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="VMware USB Arbitrator"
+supervisor="supervise-daemon"
+command="/usr/lib/vmware/bin/vmware-usbarbitrator"
+command_args="-f"
