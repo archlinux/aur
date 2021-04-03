@@ -1,7 +1,7 @@
 pkgname=briar-gtk
 conflicts=('briar-gtk-git')
-pkgver=0.1.0.beta2
-pkgrel=2
+pkgver=0.1.0.beta3
+pkgrel=1
 pkgdesc='Native GTK Briar client'
 url='https://code.briarproject.org/briar/briar-gtk'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('libhandy' 'python' 'gettext'
          'python-cairo')
 makedepends=('meson' 'gtk3' 'appstream-glib' 'git' 'ninja' 'java-environment=11')
 _briar_wrapper=b1bd45f151c0dc9655701e2a3ac27c7addd9c1d4
-source=("git+https://code.briarproject.org/briar/${pkgname}.git#tag=0.1.0-beta2"
+source=("git+https://code.briarproject.org/briar/${pkgname}.git#tag=0.1.0-beta3"
         "briar-wrapper::git+https://code.briarproject.org/briar/python-briar-wrapper.git#commit=${_briar_wrapper}")
 sha512sums=('SKIP'
             'SKIP')
