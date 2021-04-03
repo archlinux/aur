@@ -1,12 +1,13 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=tt-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal based typing test"
 arch=(x86_64)
 url="https://github.com/lemnos/tt"
 license=('MIT')
 provides=(${pkgname%-bin})
+conflicts=(${pkgname%-bin})
 source=(
 	"$pkgname-$pkgver::$url/releases/download/v$pkgver/tt-linux"
 	"$url/releases/download/v$pkgver/tt.1.gz"
@@ -24,9 +25,9 @@ b2sums=('9205bf271e5ef2e5d15a8d913f46aa6dd44707b67e073cafbedfe62a0dc88b0c4a77efc
         '2b50a39831de94802d4f09a3f5f28113a856642c10656dfa75f7fe397829051b0e1fa2ae6f499bb3352b9f49932cb016c750ef79acd3895afb6c4955564dd051')
 
 package() {
-  cd "$srcdir"
+	cd "$srcdir"
 
-  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/${pkgname%-bin}"
-  install -Dm644 "tt.1.gz" "$pkgdir/usr/share/man/man1/tt.1.gz"
-  install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+	install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/${pkgname%-bin}"
+	install -Dm644 "tt.1.gz" -t "$pkgdir/usr/share/man/man1"
+	install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }

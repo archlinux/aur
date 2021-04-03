@@ -1,11 +1,12 @@
 pkgbase = tt-bin
 	pkgdesc = Terminal based typing test
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lemnos/tt
 	arch = x86_64
 	license = MIT
 	provides = tt
+	conflicts = tt
 	noextract = tt-bin-0.4.0
 	noextract = tt.1.gz
 	noextract = tt-bin-0.4.0-LICENSE
