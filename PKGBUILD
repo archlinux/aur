@@ -4,10 +4,11 @@ pkgname="clpimg"
 pkgver=master
 pkgrel=1
 pkgdesc="copy images to clipboard on linux on qt backend"
-arch=("x86_64")
+arch=('any')
 license=('GPL')
-source=("https://github.com/MahouShoujoMivutilde/clpimg/archive/refs/heads/master.zip")
-depends=('python-pyqt5>=5.15')
+url="https://github.com/MahouShoujoMivutilde/clpimg/"
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.zip")
+depends=('python-pyqt5')
 
 package() {
         cd "$pkgname-${pkgver}"
