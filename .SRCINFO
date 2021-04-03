@@ -1,11 +1,11 @@
 pkgbase = syphon-bin
-	pkgdesc = Privacy-centric matrix client
+	pkgdesc = Privacy-centric Matrix client
 	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/syphon-org/syphon
 	arch = x86_64
 	license = AGPL
-	depends = sqlite3
+	depends = sqlite
 	provides = syphon
 	source = https://github.com/syphon-org/syphon/releases/download/0.1.5/syphon.linux.x86_64.tar.gz
 	md5sums = 35cb1e482a7c16677769ea14629ca6e2
