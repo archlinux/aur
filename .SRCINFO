@@ -1,0 +1,17 @@
+pkgbase = fake86-git
+	pkgdesc = x86 emulator - git version
+	pkgver = 2020.05.09.gd275349
+	pkgrel = 1
+	url = https://github.com/lgblgblgb/fake86.git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl2
+	provides = fake86
+	conflicts = fake86
+	source = fake86::git+https://github.com/lgblgblgb/fake86.git
+	sha256sums = SKIP
+
+pkgname = fake86-git
+
