@@ -9,7 +9,7 @@ url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
 install=${pkgname%-git}.install
 license=('GPL3')
 groups=('gnome-shell-extensions')
-depends=('gnome-shell>=3.28')
+depends=('gnome-shell>=40')
 makedepends=('git' 'glib2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
