@@ -2,7 +2,7 @@
 
 pkgname=php7-gmagick
 pkgver=2.0.6RC1 
-pkgrel=1 
+pkgrel=2 
 pkgdesc="PHP 7.4 extension for GMagick"
 license=('PHP')
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=(
 	'php7'
 	'graphicsmagick>=1.3.20'
 	)
+conflicts=('php7-imagick')
 backup=('etc/php7/conf.d/gmagick.ini')
 install=php7-gmagick.install
 source=("http://pecl.php.net/get/gmagick-$pkgver.tgz")
