@@ -26,10 +26,10 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-	cd "pacslim"
-	git describe --long 2>/dev/null | sed 's/-/_r/;s/-/_/g'
-}
+# pkgver() {
+# 	cd "pacslim"
+# 	git describe --long 2>/dev/null | sed 's/-/_r/;s/-/_/g'
+# }
 
 build() {
 	cd "pacslim"
