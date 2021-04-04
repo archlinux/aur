@@ -1,0 +1,17 @@
+pkgbase = python-itk-bin
+	pkgdesc = Open-source toolkit for multidimensional image analysis
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://itk.org/
+	arch = x86_64
+	license = Apache
+	makedepends = python-pip
+	depends = python-numpy
+	provides = python-itk
+	conflicts = python-itk
+	noextract = itk-5.2.0-cp39-cp39-manylinux2014_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp39/i/itk/itk-5.2.0-cp39-cp39-manylinux2014_x86_64.whl
+	sha256sums = 3f5c92ea9c11d138a203cdd2e113d638a673610e0b0f4e48a74439788b1eb268
+
+pkgname = python-itk-bin
+
