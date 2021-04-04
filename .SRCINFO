@@ -1,0 +1,56 @@
+pkgbase = jdk15-adoptopenjdk
+	pkgdesc = OpenJDK Java 15 development kit (AdoptOpenJDK build)
+	pkgver = 15.0.2.u7
+	pkgrel = 1
+	url = https://adoptopenjdk.net/
+	install = install_jdk15-adoptopenjdk.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and feel
+	provides = java-runtime-headless=15
+	provides = java-runtime-headless-openjdk=15
+	provides = jre15-openjdk-headless=15.0.2.u7
+	provides = jre-openjdk-headless=15.0.2.u7
+	provides = java-runtime=15
+	provides = java-runtime-openjdk=15
+	provides = jre15-openjdk=15.0.2.u7
+	provides = jre-openjdk=15.0.2.u7
+	provides = java-environment=15
+	provides = java-environment-openjdk=15
+	provides = jdk15-openjdk=15.0.2.u7
+	provides = jdk-openjdk=15.0.2.u7
+	provides = openjdk15-src=15.0.2.u7
+	provides = openjdk-src=15.0.2.u7
+	backup = etc/jdk15-adoptopenjdk/logging.properties
+	backup = etc/jdk15-adoptopenjdk/management/jmxremote.access
+	backup = etc/jdk15-adoptopenjdk/management/jmxremote.password.template
+	backup = etc/jdk15-adoptopenjdk/management/management.properties
+	backup = etc/jdk15-adoptopenjdk/net.properties
+	backup = etc/jdk15-adoptopenjdk/sdp/sdp.conf.template
+	backup = etc/jdk15-adoptopenjdk/security/java.policy
+	backup = etc/jdk15-adoptopenjdk/security/java.security
+	backup = etc/jdk15-adoptopenjdk/security/policy/limited/default_local.policy
+	backup = etc/jdk15-adoptopenjdk/security/policy/limited/default_US_export.policy
+	backup = etc/jdk15-adoptopenjdk/security/policy/limited/exempt_local.policy
+	backup = etc/jdk15-adoptopenjdk/security/policy/README.txt
+	backup = etc/jdk15-adoptopenjdk/security/policy/unlimited/default_local.policy
+	backup = etc/jdk15-adoptopenjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/jdk15-adoptopenjdk/sound.properties
+	source = https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.2%2B7/OpenJDK15U-jdk_x64_linux_hotspot_15.0.2_7.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = 94f20ca8ea97773571492e622563883b8869438a015d02df6028180dd9acc24d
+	sha256sums = b221b6b040fd73e081fe679c106726309cdab8977bb4be25986ddda7068ccb4f
+	sha256sums = dafd84555287f16a59d4c7603167efc2a64a632780b6d8de109e75d6aa29782e
+	sha256sums = 4f05bf04f6397e9586881951116b3a12ae8336142e8be0caf196eaee1444c03f
+
+pkgname = jdk15-adoptopenjdk
+
