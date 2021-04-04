@@ -1,13 +1,13 @@
 pkgbase = libsimple
 	pkgdesc = A bunch of C functions that are useful when writing simple code
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/maandree/libsimple
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = libsimple-1.2.tar.gz::https://github.com/maandree/libsimple/archive/1.2.tar.gz
-	sha256sums = f98143f218d98f2beb0bd110e1d0210d412db3b5ffe554a32fad4311d4776c58
+	source = libsimple-1.3.tar.gz::https://github.com/maandree/libsimple/archive/1.3.tar.gz
+	sha256sums = 88b20cb6afb111ebf0fa89364050b23e6994547df157c268076f1627fe76f9c8
 
 pkgname = libsimple
 
