@@ -1,7 +1,7 @@
 pkgbase = healthy-git
 	pkgdesc = A tiny Linux process monitor
-	pkgver = r30.8f71e7f
-	pkgrel = 2
+	pkgver = r31.933a80f
+	pkgrel = 1
 	url = https://github.com/heyLu/healthy
 	arch = any
 	license = GPL3
