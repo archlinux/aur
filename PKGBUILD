@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
 license=('MIT')
 provides=("${pkgname%-bin}" 'czkawka')
-depends=('gcc-libs' 'alsa-lib')
+depends=('gcc-libs')
 source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_czkawka_cli"
         "LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE")
 sha256sums=('1cfb21e9a0f85f109254fca024268535ddaf17a8891c64b08bebbf212c55f5bc'
