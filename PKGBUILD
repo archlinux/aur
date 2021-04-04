@@ -10,12 +10,12 @@ pkgname=${_target}-gcc-stage1
 pkgver=10.2.0
 _majorver=${pkgver%%.*}
 _islver=0.21
-pkgrel=1
+pkgrel=3
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.35.1-1" libmpc zlib)
+depends=("${_target}-binutils>=2.36.1-1" libmpc zlib)
 options=(!emptydirs !distcc !strip)
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
