@@ -1,9 +1,9 @@
 # Maintainer: Joseph Mellor <the.landfill.coding@gmail.com>
 pkgname=md++-git
-pkgver=0.9
+pkgver=0.9.1.r1
 pkgrel=1
 epoch=
-pkgdesc="A fast, extensible, and easy to use static site generator. Still in alpha."
+pkgdesc="A fast, extensible, and easy to use static site generator."
 arch=(any)
 url="https://github.com/TheLandfill/mdxx.git"
 license=('GPL3')
@@ -20,6 +20,11 @@ noextract=()
 source=("git+$url")
 md5sums=('SKIP')
 validpgpkeys=()
+
+pkgver() {
+	cd "mdxx/"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed -r 's/\.([0-9,a-g,A-G]{7}.*)//'
+}
 
 build() {
 	mkdir -p "mdxx/md++/build/"
