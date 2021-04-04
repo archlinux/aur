@@ -15,7 +15,7 @@ pkgbase = hmm
 	provides = hmmq
 	provides = hmmp
 	source = hmm-0.5.2.tar.gz::https://github.com/samwho/hmm/archive/v0.5.2.tar.gz
-	sha256sums = 93a460275e32df284708ded4534d2848ac0467d0cd8dfa2c568f0412ef969af0
+	sha256sums = 17da05c38a1a0fe083a86ba750a0d5b9ccd046e5baa75d98493143f978d97a29
 
 pkgname = hmm
 
