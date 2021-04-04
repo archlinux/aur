@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-pytest-xvfb
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Pytest plugin to run Xvfb for tests"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python2>=2.7' 'python2-pytest>=2.8.1' 'python2-pyvirtualdisplay>=0.2.1')
 makedepends=('python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/p/pytest-xvfb/pytest-xvfb-${pkgver}.tar.gz")
-md5sums=('0754da6fb2ed04cb1604eec8c0a3deea')
+md5sums=('a5e43fe3926c55b03fc12f4f149f059d')
 
 package() {
     cd ${srcdir}/pytest-xvfb-${pkgver}
