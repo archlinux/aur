@@ -318,7 +318,7 @@ package() {
   mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname-bin,librewolf-bin}
   rm "$pkgdir"/usr/lib/${pkgname}/pingsender
 
-  mv "$srcdir/librewolf-settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
+  install -Dm644 "$srcdir/librewolf-settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
 
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
