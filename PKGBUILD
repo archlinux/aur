@@ -2,12 +2,12 @@
 
 pkgname=healthy-git
 pkgver=r30.8f71e7f
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny Linux process monitor"
 arch=('any')
 url='https://github.com/heyLu/healthy'
 license=('GPL3')
-depends=('python' 'gobject-introspection-runtime')
+depends=('python-gobject' 'gtk3')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/heyLu/healthy")
 md5sums=('SKIP')
