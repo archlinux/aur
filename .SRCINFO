@@ -1,7 +1,7 @@
 pkgbase = fish-pure-prompt-git
 	pkgdesc = Pretty, minimal, and fast prompt for Fish
 	pkgver = 4.1.0.r4.g9d17b27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pure-fish/pure
 	arch = any
 	groups = fish-plugins
@@ -11,6 +11,7 @@ pkgbase = fish-pure-prompt-git
 	provides = fish-pure-prompt
 	provides = fish-prompt
 	conflicts = fish-pure-prompt
+	conflicts = fish-prompt
 	source = fish-pure-prompt-git::git+https://github.com/pure-fish/pure
 	md5sums = SKIP
 
