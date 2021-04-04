@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 # Latest stable Arch package versions
 _cinnamonver=4.8
-_gnomeshellver=40
+_gnomeshellver=3.38
 _gtk3ver=3.24
 
 pkgver() {
