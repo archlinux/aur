@@ -3,7 +3,7 @@
 # Contributor: Grogi <roman@algofacil.info>
 
 pkgname=netlogo
-pkgver=6.1.1
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ optdepends=('alsa-lib' 'libnet' 'gtk2' 'gcc-libs-multilib')
 install=$pkgname.install
 source=(http://ccl.northwestern.edu/netlogo/$pkgver/NetLogo-$pkgver-$_NARCH.tgz
         netlogo.png)
-[[ $_NARCH = 32 ]] && md5sums=('f6c35e3491f5274de030c58e153b77b0' 'SKIP')
-[[ $_NARCH = 64 ]] && md5sums=('2a332b216a7eac87b2a4c784972b094e' 'SKIP')
+[[ $_NARCH = 32 ]] && md5sums=('3da7dd8f1a25688a00e0aeaa738789e4' 'SKIP')
+[[ $_NARCH = 64 ]] && md5sums=('3a1d615b26b5d6d05efeddc05e602ea2' 'SKIP')
 
 prepare() {
-    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec='/opt/netlogo/NetLogo'
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec='/opt/netlogo/NetLogo'
 }
 
 package() {
@@ -32,7 +32,7 @@ package() {
     cd "$srcdir/NetLogo $pkgver" || exit
     cp -r ./* "$pkgdir/opt/$pkgname"
 
-    for file in {NetLogo,NetLogo3D,NetLogoLogging,HubNetClient}; do
+    for file in {NetLogo,NetLogo3D,HubNetClient,Behaviorsearch}; do
         chmod +x "$pkgdir/opt/$pkgname/$file"
         ln -s "/opt/$pkgname/$file" "$pkgdir/usr/bin/"
     done
