@@ -1,12 +1,15 @@
 pkgbase = katcr
 	pkgdesc = Search in multiple torrent sites from your CLI
 	pkgver = 3.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/XayOn/katcr
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-flake8
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-sugar
 	makedepends = python-setuptools
 	makedepends = python-dephell
 	depends = python
