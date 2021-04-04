@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=babashka-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A Clojure babashka for the grey areas of Bash.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.tar.gz")
 
-sha256sums_x86_64=('943249a485d42a88c6bc6f7c9cde780039af2dbda8630213451bb9a001562d12')
+sha256sums_x86_64=('9ac5e2851f791181f2036ae0ad4159094b5072a5cd762f4d1fa0a8faac142e6b')
 
 package() {
   install -Dm755 "${srcdir}/bb" "${pkgdir}/usr/bin/bb"
