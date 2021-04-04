@@ -26,19 +26,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/liberationfonts/liberation-fonts/files/6060976/liberation-fonts-ttf-2.1.3.tar.gz" "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_$pkgver-1_amd64.deb")
+source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_$pkgver-1_amd64.deb")
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-	mkdir $pkgdir/usr/
-	mkdir $pkgdir/usr/share/
-	mkdir $pkgdir/usr/share/fonts/
-	mkdir $pkgdir/usr/share/fonts/TTF/
-	mv $srcdir/libe*/*.ttf $pkgdir/usr/share/fonts/TTF/.
 	mkdir $srcdir/pac
 	cd $srcdir/pac
-	tar xpvf ../data.tar.*
-	cp -r * $pkgdir/
+	tar xpvf $srcdir/data.tar.*
+	cp -r * $pkgdir
 }
