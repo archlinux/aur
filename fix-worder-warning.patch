@@ -1,0 +1,37 @@
+From f936e9d93ea71c83fbba41b3612f3408ae22b21a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lubo=C5=A1=20Lu=C5=88=C3=A1k?= <l.lunak@centrum.cz>
+Date: Thu, 12 Sep 2019 16:44:18 +0200
+Subject: [PATCH] fix a -Wreorder warning
+
+---
+ CMakeLists.txt | 2 +-
+ src/monitor.cc | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ff033d8..10c2b82 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,7 +67,7 @@ endif()
+ if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+   check_cxx_compiler_flag(-Wunused-but-set-variable HAVE_GCC_UNUSED_BUT_SET)
+   check_cxx_compiler_flag(-Wlogical-op HAVE_GCC_LOGICAL_OP)
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated -Wextra -Woverloaded-virtual -Winit-self -Wmissing-include-dirs -Wunused -Wno-div-by-zero -Wundef -Wpointer-arith -Wcast-qual -Wcast-align -Wmissing-noreturn -Werror=return-type -pedantic")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated -Wall -Wextra -Woverloaded-virtual -Winit-self -Wmissing-include-dirs -Wunused -Wno-div-by-zero -Wundef -Wpointer-arith -Wcast-qual -Wcast-align -Wmissing-noreturn -Werror=return-type -pedantic")
+   if(HAVE_GCC_UNUSED_BUT_SET)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wunused-but-set-variable")
+   endif()
+diff --git a/src/monitor.cc b/src/monitor.cc
+index 8c0b371..8b78c0d 100644
+--- a/src/monitor.cc
++++ b/src/monitor.cc
+@@ -25,8 +25,8 @@
+ Monitor::Monitor(HostInfoManager *manager, QObject *parent)
+     : QObject(parent)
+     , m_hostInfoManager(manager)
+-    , m_schedulerState(Offline)
+     , m_currentSchedport(0)
++    , m_schedulerState(Offline)
+ {
+ }
+ 
