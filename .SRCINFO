@@ -1,0 +1,18 @@
+pkgbase = couch
+	pkgdesc = The Last Bastion of Co-operative Interactive Arts
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/dane-johnson/couch
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = glew
+	depends = lua
+	depends = glfw
+	depends = assimp
+	depends = bullet
+	source = couch-0.1.2.tar.gz::https://github.com/dane-johnson/couch/archive/0.1.2.tar.gz
+	md5sums = b3b8e3a2d33a245f144a2df720b821df
+
+pkgname = couch
+
