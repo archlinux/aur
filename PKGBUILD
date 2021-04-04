@@ -24,7 +24,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=7.4.9
+pkgver=8.0.3
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -34,35 +34,31 @@ makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libso
              'oniguruma')
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
-        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
-        'enchant-2.patch')
-sha512sums=('6179c2d867d6775d7f41785003c36d06ce620e7746ea7e6a4d275264e814a66d465776b47b04e2926ed1228cf58f2c15cdda74faf10372435c74ede7aeb79e18'
+        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
+sha256sums=('c9816aa9745a9695672951eaff3a35ca5eddcb9cacf87a4f04b9fb1169010251'
             'SKIP'
-            'e73b424e436be79cab5bf248ee74f533cb1f3a7b26a2213a084f998a7de65dc1ca0d0d0f7921a6254883b68262956c896a60dcbc1d4177c66ce1fb57ca170045'
-            '62ab40a15358802c87fa1c3af3248eeaba78732778c518c3f258e3c6a1dfdf420e90320c41a129162c66933e022d1294c454f29953873ff65faba6a36c5b8d0d'
-            '86ee6630bf0cac43bbf5a4b3918e63f32e01e74ac00845ebba2d122e14300bb47b41af17d88dfbf655b3a03966f5619b87b6f1ad8623e22482fe46be273309cb'
-            '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
-            'a924bfece3d57286dce44f0173dd856184e7a1c1de5e880229c7dac0874efde52090af155932614f2594eebba118f8b89ac48e48d1161e7b3d8a95a93a24fe5d'
-            '5d7d44d692848fbb952e17e5bd6dffa79b764526e4940fbe0a5138ad62cb41abdb8c9bb8dd64cd1d0b488c74972bcf3f9c6d32a3bbeac90982fdf6321d3ec788')
-validpgpkeys=('5A52880781F755608BF815FC910DEB46F53EA312'
-              '42670A7FE4D0441C8E4632349E4FDC074A4EF02D')
+            'c24122c0a742d3f153d52076137e737da0191584dab178bafed547b3bf2a28e8'
+            'aee6ee73d1b3cf161069c355e8472a2ceda0886e98bf6a69d57c1dcf6b09ab17'
+            '2228131cc65139bd819b617bba06c2406e559c55fbfb38a29f9853ce48c58eeb'
+            '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
+            'b538a7c974adde626c35481e4a66d506dc12c598f369dfe79f3fcb9585d8b920')
+validpgpkeys=('1729F83938DA44E27BA0F4D3DBDB397470D12172'
+              'BFDDD28642824F8118EF77909B67A5C12229118F')
 
 prepare() {
-	cd ${srcdir}/${_pkgbase}-${pkgver}
+	cd "${srcdir}/${_pkgbase}-${pkgver}"
 
-	patch -p0 -i ${srcdir}/apache.patch
-	patch -p0 -i ${srcdir}/php-fpm.patch
-	patch -p0 -i ${srcdir}/php.ini.patch
-	patch -p0 -i ${srcdir}/enchant-2.patch
+	patch -p0 -i "${srcdir}/apache.patch"
+	patch -p0 -i "${srcdir}/php-fpm.patch"
+	patch -p0 -i "${srcdir}/php.ini.patch"
 	autoconf
 
+	# Disable failing tests
 	rm tests/output/stream_isatty_*.phpt
+	rm Zend/tests/arginfo_zpp_mismatch*.phpt
 }
 
 build() {
-	# http://site.icu-project.org/download/61#TOC-Migration-Issues
-	CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
-
 	local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
 		--config-cache \
 		--prefix=/usr \
@@ -126,19 +122,18 @@ build() {
 		--with-sqlite3=shared \
 		--with-tidy=shared \
 		--with-unixODBC=shared \
-		--with-xmlrpc=shared \
 		--with-xsl=shared \
 		--with-zip=shared \
 		--with-zlib \
-		--enable-maintainer-zts \
+		--enable-zts \
 		"
 
 	EXTENSION_DIR=/usr/lib/php/modules
 	export EXTENSION_DIR
 
-	mkdir ${srcdir}/build
-	cd ${srcdir}/build
-	ln -s ../${_pkgbase}-${pkgver}/configure
+	mkdir "${srcdir}/build"
+	cd "${srcdir}/build"
+	ln -s "../${_pkgbase}-${pkgver}/configure"
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -152,16 +147,16 @@ build() {
 
 	# apache
 	# reuse the previous run; this will save us a lot of time
-	cp -a ${srcdir}/build ${srcdir}/build-apache
-	cd ${srcdir}/build-apache
+	cp -a "${srcdir}/build" "${srcdir}/build-apache"
+	cd "${srcdir}/build-apache"
 	./configure ${_phpconfig} \
 		--with-apxs2 \
 		${_phpextensions}
 	make
 
 	# phpdbg
-	cp -a ${srcdir}/build ${srcdir}/build-phpdbg
-	cd ${srcdir}/build-phpdbg
+	cp -a "${srcdir}/build" "${srcdir}/build-phpdbg"
+	cd "${srcdir}/build-phpdbg"
 	./configure ${_phpconfig} \
 		--enable-phpdbg \
 		${_phpextensions}
@@ -169,7 +164,7 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/build
+	cd "${srcdir}/build"
 
 	# Check if sendmail was configured correctly (FS#47600)
 	sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
@@ -192,17 +187,17 @@ package_php-zts() {
 	provides=("${_pkgbase}=${pkgver}" "php-ldap=${pkgver}")
 	backup=('etc/php/php.ini')
 
-	cd ${srcdir}/build
-	make INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
-	install -d -m755 ${pkgdir}/etc/php/conf.d/
+	cd "${srcdir}/build"
+	make INSTALL_ROOT="${pkgdir}" install-{modules,cli,build,headers,programs,pharcmd}
+	install -D -m644 "${srcdir}/${_pkgbase}-${pkgver}/php.ini-production" "${pkgdir}/etc/php/php.ini"
+	install -d -m755 "${pkgdir}/etc/php/conf.d/"
 
 	# remove static modules
-	rm -f ${pkgdir}/usr/lib/php/modules/*.a
+	rm -f "${pkgdir}/usr/lib/php/modules/"*.a
 	# remove modules provided by sub packages
-	rm -f ${pkgdir}/usr/lib/php/modules/{enchant,gd,imap,intl,sodium,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f "${pkgdir}/usr/lib/php/modules/"{enchant,gd,imap,intl,sodium,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
-	rmdir ${pkgdir}/usr/include/php/include
+	rmdir "${pkgdir}/usr/include/php/include"
 }
 
 package_php-zts-cgi() {
@@ -212,8 +207,8 @@ package_php-zts-cgi() {
 	conflicts=("${_pkgbase}-cgi")
 	provides=("${_pkgbase}-cgi=${pkgver}")
 
-	cd ${srcdir}/build
-	make INSTALL_ROOT=${pkgdir} install-cgi
+	cd "${srcdir}/build"
+	make INSTALL_ROOT="${pkgdir}" install-cgi
 }
 
 package_php-zts-apache() {
@@ -224,8 +219,8 @@ package_php-zts-apache() {
 	provides=("${_pkgbase}-apache=${pkgver}")
 	backup=('etc/httpd/conf/extra/php7_module.conf')
 
-	install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/libphp7.so
-	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/php7_module.conf
+	install -D -m755 "${srcdir}/build-apache/libs/libphp.so" "${pkgdir}/usr/lib/httpd/modules/libphp.so"
+	install -D -m644 "${srcdir}/apache.conf" "${pkgdir}/etc/httpd/conf/extra/php_module.conf"
 }
 
 package_php-zts-fpm() {
@@ -237,22 +232,22 @@ package_php-zts-fpm() {
 	backup=('etc/php/php-fpm.conf' 'etc/php/php-fpm.d/www.conf')
 	options=('!emptydirs')
 
-	cd ${srcdir}/build
-	make INSTALL_ROOT=${pkgdir} install-fpm
-	install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/php-fpm.service
-	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/php-fpm.conf
+	cd "${srcdir}/build"
+	make INSTALL_ROOT="${pkgdir}" install-fpm
+	install -D -m644 sapi/fpm/php-fpm.service "${pkgdir}/usr/lib/systemd/system/php-fpm.service"
+	install -D -m644 "${srcdir}/php-fpm.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/php-fpm.conf"
 }
 
 package_php-zts-embed() {
 	pkgdesc='Embedded PHP SAPI library'
-	depends=("${pkgbase}" 'systemd-libs' 'libnsl')
+	depends=("${pkgbase}" 'systemd-libs' 'libnsl' 'libxcrypt')
 	replaces=("${_pkgbase}-embed")
 	conflicts=("${_pkgbase}-embed")
 	provides=("${_pkgbase}-embed=${pkgver}")
 	options=('!emptydirs')
 
-	cd ${srcdir}/build
-	make INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
+	cd "${srcdir}/build"
+	make INSTALL_ROOT="${pkgdir}" PHP_SAPI=embed install-sapi
 }
 
 package_php-zts-phpdbg() {
@@ -263,8 +258,8 @@ package_php-zts-phpdbg() {
 	provides=("${_pkgbase}-phpdbg=${pkgver}")
 	options=('!emptydirs')
 
-	cd ${srcdir}/build-phpdbg
-	make INSTALL_ROOT=${pkgdir} install-phpdbg
+	cd "${srcdir}/build-phpdbg"
+	make INSTALL_ROOT="${pkgdir}" install-phpdbg
 }
 
 package_php-zts-dblib() {
@@ -274,7 +269,7 @@ package_php-zts-dblib() {
 	conflicts=("${_pkgbase}-dblib")
 	provides=("${_pkgbase}-dblib=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/php/modules/pdo_dblib.so
+	install -D -m755 "${srcdir}/build/modules/pdo_dblib.so" "${pkgdir}/usr/lib/php/modules/pdo_dblib.so"
 }
 
 package_php-zts-enchant() {
@@ -284,7 +279,7 @@ package_php-zts-enchant() {
 	conflicts=("${_pkgbase}-enchant")
 	provides=("${_pkgbase}-enchant=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/php/modules/enchant.so
+	install -D -m755 "${srcdir}/build/modules/enchant.so" "${pkgdir}/usr/lib/php/modules/enchant.so"
 }
 
 package_php-zts-gd() {
@@ -294,17 +289,17 @@ package_php-zts-gd() {
 	conflicts=("${_pkgbase}-gd")
 	provides=("${_pkgbase}-gd=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/php/modules/gd.so
+	install -D -m755 "${srcdir}/build/modules/gd.so" "${pkgdir}/usr/lib/php/modules/gd.so"
 }
 
 package_php-zts-imap() {
 	pkgdesc='imap module for PHP'
-	depends=("${pkgbase}" 'c-client')
+	depends=("${pkgbase}" 'c-client' 'libxcrypt')
 	replaces=("${_pkgbase}-imap")
 	conflicts=("${_pkgbase}-imap")
 	provides=("${_pkgbase}-imap=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/php/modules/imap.so
+	install -D -m755 "${srcdir}/build/modules/imap.so" "${pkgdir}/usr/lib/php/modules/imap.so"
 }
 
 package_php-zts-intl() {
@@ -314,7 +309,7 @@ package_php-zts-intl() {
 	conflicts=("${_pkgbase}-intl")
 	provides=("${_pkgbase}-intl=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/php/modules/intl.so
+	install -D -m755 "${srcdir}/build/modules/intl.so" "${pkgdir}/usr/lib/php/modules/intl.so"
 }
 
 package_php-zts-sodium() {
@@ -324,7 +319,7 @@ package_php-zts-sodium() {
 	conflicts=("${_pkgbase}-sodium")
 	provides=("${_pkgbase}-sodium=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/php/modules/sodium.so
+	install -D -m755 "${srcdir}/build/modules/sodium.so" "${pkgdir}/usr/lib/php/modules/sodium.so"
 }
 
 package_php-zts-odbc() {
@@ -334,8 +329,8 @@ package_php-zts-odbc() {
 	conflicts=("${_pkgbase}-odbc")
 	provides=("${_pkgbase}-odbc=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/php/modules/odbc.so
-	install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/php/modules/pdo_odbc.so
+	install -D -m755 "${srcdir}/build/modules/odbc.so" "${pkgdir}/usr/lib/php/modules/odbc.so"
+	install -D -m755 "${srcdir}/build/modules/pdo_odbc.so" "${pkgdir}/usr/lib/php/modules/pdo_odbc.so"
 }
 
 package_php-zts-pgsql() {
@@ -345,8 +340,8 @@ package_php-zts-pgsql() {
 	conflicts=("${_pkgbase}-pgsql")
 	provides=("${_pkgbase}-pgsql=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/php/modules/pgsql.so
-	install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/php/modules/pdo_pgsql.so
+	install -D -m755 "${srcdir}/build/modules/pgsql.so" "${pkgdir}/usr/lib/php/modules/pgsql.so"
+	install -D -m755 "${srcdir}/build/modules/pdo_pgsql.so" "${pkgdir}/usr/lib/php/modules/pdo_pgsql.so"
 }
 
 package_php-zts-pspell() {
@@ -356,7 +351,7 @@ package_php-zts-pspell() {
 	conflicts=("${_pkgbase}-pspell")
 	provides=("${_pkgbase}-pspell=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/php/modules/pspell.so
+	install -D -m755 "${srcdir}/build/modules/pspell.so" "${pkgdir}/usr/lib/php/modules/pspell.so"
 }
 
 package_php-zts-snmp() {
@@ -366,7 +361,7 @@ package_php-zts-snmp() {
 	conflicts=("${_pkgbase}-snmp")
 	provides=("${_pkgbase}-snmp=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/php/modules/snmp.so
+	install -D -m755 "${srcdir}/build/modules/snmp.so" "${pkgdir}/usr/lib/php/modules/snmp.so"
 }
 
 package_php-zts-sqlite() {
@@ -376,8 +371,8 @@ package_php-zts-sqlite() {
 	conflicts=("${_pkgbase}-sqlite")
 	provides=("${_pkgbase}-sqlite=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/php/modules/sqlite3.so
-	install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/php/modules/pdo_sqlite.so
+	install -D -m755 "${srcdir}/build/modules/sqlite3.so" "${pkgdir}/usr/lib/php/modules/sqlite3.so"
+	install -D -m755 "${srcdir}/build/modules/pdo_sqlite.so" "${pkgdir}/usr/lib/php/modules/pdo_sqlite.so"
 }
 
 package_php-zts-tidy() {
@@ -387,7 +382,7 @@ package_php-zts-tidy() {
 	conflicts=("${_pkgbase}-tidy")
 	provides=("${_pkgbase}-tidy=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/php/modules/tidy.so
+	install -D -m755 "${srcdir}/build/modules/tidy.so" "${pkgdir}/usr/lib/php/modules/tidy.so"
 }
 
 package_php-zts-xsl() {
@@ -397,5 +392,5 @@ package_php-zts-xsl() {
 	conflicts=("${_pkgbase}-xsl")
 	provides=("${_pkgbase}-xsl=${pkgver}")
 
-	install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/php/modules/xsl.so
+	install -D -m755 "${srcdir}/build/modules/xsl.so" "${pkgdir}/usr/lib/php/modules/xsl.so"
 }

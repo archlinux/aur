@@ -1,5 +1,5 @@
 pkgbase = php-zts
-	pkgver = 7.4.9
+	pkgver = 8.0.3
 	pkgrel = 1
 	url = https://www.php.net/
 	arch = x86_64
@@ -29,24 +29,22 @@ pkgbase = php-zts
 	makedepends = pcre2
 	makedepends = libnsl
 	makedepends = oniguruma
-	source = https://php.net/distributions/php-7.4.9.tar.xz
-	source = https://php.net/distributions/php-7.4.9.tar.xz.asc
+	source = https://php.net/distributions/php-8.0.3.tar.xz
+	source = https://php.net/distributions/php-8.0.3.tar.xz.asc
 	source = apache.patch
 	source = apache.conf
 	source = php-fpm.patch
 	source = php-fpm.tmpfiles
 	source = php.ini.patch
-	source = enchant-2.patch
-	validpgpkeys = 5A52880781F755608BF815FC910DEB46F53EA312
-	validpgpkeys = 42670A7FE4D0441C8E4632349E4FDC074A4EF02D
-	sha512sums = 6179c2d867d6775d7f41785003c36d06ce620e7746ea7e6a4d275264e814a66d465776b47b04e2926ed1228cf58f2c15cdda74faf10372435c74ede7aeb79e18
-	sha512sums = SKIP
-	sha512sums = e73b424e436be79cab5bf248ee74f533cb1f3a7b26a2213a084f998a7de65dc1ca0d0d0f7921a6254883b68262956c896a60dcbc1d4177c66ce1fb57ca170045
-	sha512sums = 62ab40a15358802c87fa1c3af3248eeaba78732778c518c3f258e3c6a1dfdf420e90320c41a129162c66933e022d1294c454f29953873ff65faba6a36c5b8d0d
-	sha512sums = 86ee6630bf0cac43bbf5a4b3918e63f32e01e74ac00845ebba2d122e14300bb47b41af17d88dfbf655b3a03966f5619b87b6f1ad8623e22482fe46be273309cb
-	sha512sums = 824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f
-	sha512sums = a924bfece3d57286dce44f0173dd856184e7a1c1de5e880229c7dac0874efde52090af155932614f2594eebba118f8b89ac48e48d1161e7b3d8a95a93a24fe5d
-	sha512sums = 5d7d44d692848fbb952e17e5bd6dffa79b764526e4940fbe0a5138ad62cb41abdb8c9bb8dd64cd1d0b488c74972bcf3f9c6d32a3bbeac90982fdf6321d3ec788
+	validpgpkeys = 1729F83938DA44E27BA0F4D3DBDB397470D12172
+	validpgpkeys = BFDDD28642824F8118EF77909B67A5C12229118F
+	sha256sums = c9816aa9745a9695672951eaff3a35ca5eddcb9cacf87a4f04b9fb1169010251
+	sha256sums = SKIP
+	sha256sums = c24122c0a742d3f153d52076137e737da0191584dab178bafed547b3bf2a28e8
+	sha256sums = aee6ee73d1b3cf161069c355e8472a2ceda0886e98bf6a69d57c1dcf6b09ab17
+	sha256sums = 2228131cc65139bd819b617bba06c2406e559c55fbfb38a29f9853ce48c58eeb
+	sha256sums = 640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5
+	sha256sums = b538a7c974adde626c35481e4a66d506dc12c598f369dfe79f3fcb9585d8b920
 
 pkgname = php-zts
 	pkgdesc = A general-purpose scripting language that is especially suited to web development(ZTS enabled)
@@ -56,8 +54,8 @@ pkgname = php-zts
 	depends = pcre2
 	depends = argon2
 	depends = oniguruma
-	provides = php=7.4.9
-	provides = php-ldap=7.4.9
+	provides = php=8.0.3
+	provides = php-ldap=8.0.3
 	conflicts = php
 	conflicts = php-ldap
 	replaces = php
@@ -67,7 +65,7 @@ pkgname = php-zts
 pkgname = php-zts-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
 	depends = php-zts
-	provides = php-cgi=7.4.9
+	provides = php-cgi=8.0.3
 	conflicts = php-cgi
 	replaces = php-cgi
 
@@ -76,7 +74,7 @@ pkgname = php-zts-apache
 	depends = php-zts
 	depends = apache
 	depends = libnsl
-	provides = php-apache=7.4.9
+	provides = php-apache=8.0.3
 	conflicts = php-apache
 	replaces = php-apache
 	backup = etc/httpd/conf/extra/php7_module.conf
@@ -85,7 +83,7 @@ pkgname = php-zts-fpm
 	pkgdesc = FastCGI Process Manager for PHP
 	depends = php-zts
 	depends = systemd
-	provides = php-fpm=7.4.9
+	provides = php-fpm=8.0.3
 	conflicts = php-fpm
 	replaces = php-fpm
 	options = !emptydirs
@@ -97,7 +95,8 @@ pkgname = php-zts-embed
 	depends = php-zts
 	depends = systemd-libs
 	depends = libnsl
-	provides = php-embed=7.4.9
+	depends = libxcrypt
+	provides = php-embed=8.0.3
 	conflicts = php-embed
 	replaces = php-embed
 	options = !emptydirs
@@ -105,7 +104,7 @@ pkgname = php-zts-embed
 pkgname = php-zts-phpdbg
 	pkgdesc = Interactive PHP debugger
 	depends = php-zts
-	provides = php-phpdbg=7.4.9
+	provides = php-phpdbg=8.0.3
 	conflicts = php-phpdbg
 	replaces = php-phpdbg
 	options = !emptydirs
@@ -114,7 +113,7 @@ pkgname = php-zts-dblib
 	pkgdesc = dblib module for PHP
 	depends = php-zts
 	depends = freetds
-	provides = php-dblib=7.4.9
+	provides = php-dblib=8.0.3
 	conflicts = php-dblib
 	replaces = php-dblib
 
@@ -122,7 +121,7 @@ pkgname = php-zts-enchant
 	pkgdesc = enchant module for PHP
 	depends = php-zts
 	depends = enchant
-	provides = php-enchant=7.4.9
+	provides = php-enchant=8.0.3
 	conflicts = php-enchant
 	replaces = php-enchant
 
@@ -130,7 +129,7 @@ pkgname = php-zts-gd
 	pkgdesc = gd module for PHP
 	depends = php-zts
 	depends = gd
-	provides = php-gd=7.4.9
+	provides = php-gd=8.0.3
 	conflicts = php-gd
 	replaces = php-gd
 
@@ -138,7 +137,8 @@ pkgname = php-zts-imap
 	pkgdesc = imap module for PHP
 	depends = php-zts
 	depends = c-client
-	provides = php-imap=7.4.9
+	depends = libxcrypt
+	provides = php-imap=8.0.3
 	conflicts = php-imap
 	replaces = php-imap
 
@@ -146,7 +146,7 @@ pkgname = php-zts-intl
 	pkgdesc = intl module for PHP
 	depends = php-zts
 	depends = icu
-	provides = php-intl=7.4.9
+	provides = php-intl=8.0.3
 	conflicts = php-intl
 	replaces = php-intl
 
@@ -154,7 +154,7 @@ pkgname = php-zts-sodium
 	pkgdesc = sodium module for PHP
 	depends = php-zts
 	depends = libsodium
-	provides = php-sodium=7.4.9
+	provides = php-sodium=8.0.3
 	conflicts = php-sodium
 	replaces = php-sodium
 
@@ -162,7 +162,7 @@ pkgname = php-zts-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php-zts
 	depends = unixodbc
-	provides = php-odbc=7.4.9
+	provides = php-odbc=8.0.3
 	conflicts = php-odbc
 	replaces = php-odbc
 
@@ -170,7 +170,7 @@ pkgname = php-zts-pgsql
 	pkgdesc = PostgreSQL modules for PHP
 	depends = php-zts
 	depends = postgresql-libs
-	provides = php-pgsql=7.4.9
+	provides = php-pgsql=8.0.3
 	conflicts = php-pgsql
 	replaces = php-pgsql
 
@@ -178,7 +178,7 @@ pkgname = php-zts-pspell
 	pkgdesc = pspell module for PHP
 	depends = php-zts
 	depends = aspell
-	provides = php-pspell=7.4.9
+	provides = php-pspell=8.0.3
 	conflicts = php-pspell
 	replaces = php-pspell
 
@@ -186,7 +186,7 @@ pkgname = php-zts-snmp
 	pkgdesc = snmp module for PHP
 	depends = php-zts
 	depends = net-snmp
-	provides = php-snmp=7.4.9
+	provides = php-snmp=8.0.3
 	conflicts = php-snmp
 	replaces = php-snmp
 
@@ -194,7 +194,7 @@ pkgname = php-zts-sqlite
 	pkgdesc = sqlite module for PHP
 	depends = php-zts
 	depends = sqlite
-	provides = php-sqlite=7.4.9
+	provides = php-sqlite=8.0.3
 	conflicts = php-sqlite
 	replaces = php-sqlite
 
@@ -202,7 +202,7 @@ pkgname = php-zts-tidy
 	pkgdesc = tidy module for PHP
 	depends = php-zts
 	depends = tidy
-	provides = php-tidy=7.4.9
+	provides = php-tidy=8.0.3
 	conflicts = php-tidy
 	replaces = php-tidy
 
@@ -210,7 +210,7 @@ pkgname = php-zts-xsl
 	pkgdesc = xsl module for PHP
 	depends = php-zts
 	depends = libxslt
-	provides = php-xsl=7.4.9
+	provides = php-xsl=8.0.3
 	conflicts = php-xsl
 	replaces = php-xsl
 
