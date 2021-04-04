@@ -1,4 +1,5 @@
 /pkg
 /shiromino
 /src
+*.xz
 *.zst

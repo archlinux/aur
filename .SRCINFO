@@ -1,6 +1,6 @@
 pkgbase = shiromino-git
 	pkgdesc = A fast-paced puzzle game with roots in the arcade
-	pkgver = v0.1.0+12+g3fdd58a
+	pkgver = 0.1.0+13+g045c591
 	pkgrel = 1
 	url = https://github.com/shiromino/shiromino
 	arch = any
