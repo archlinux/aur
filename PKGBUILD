@@ -2,12 +2,12 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='boop-gtk-bin'
-pkgver='1.6.0'
+pkgver='1.7.0'
 pkgrel='2'
 pkgdesc="A scriptable scratchpad for developers."
 arch=('x86_64')
 conflicts=('boop-gtk')
-provides=('boop-gtk=1.6.0')
+provides=('boop-gtk=1.7.0')
 url='https://github.com/zoeyfyi/Boop-GTK'
 license=('MIT')
 depends=(

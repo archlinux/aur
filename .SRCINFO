@@ -1,19 +1,19 @@
 pkgbase = boop-gtk-bin
 	pkgdesc = A scriptable scratchpad for developers.
-	pkgver = 1.6.0
-	pkgrel = 1
+	pkgver = 1.7.0
+	pkgrel = 2
 	url = https://github.com/zoeyfyi/Boop-GTK
 	arch = x86_64
 	license = MIT
 	depends = gtksourceview3
 	depends = gtk3
-	provides = boop-gtk
+	provides = boop-gtk=1.7.0
 	conflicts = boop-gtk
-	source = boop-gtk.1.6.0::https://github.com/zoeyfyi/Boop-GTK/releases/download/v1.6.0/boop-gtk.linux.amd64
-	source = boop-gtk.1.6.0.desktop::https://github.com/zoeyfyi/Boop-GTK/raw/v1.6.0/data/fyi.zoey.Boop-GTK.desktop
-	source = boop-gtk.1.6.0.svg::https://github.com/zoeyfyi/Boop-GTK/raw/v1.6.0/data/fyi.zoey.Boop-GTK.svg
-	source = README.1.6.0.md::https://github.com/zoeyfyi/Boop-GTK/raw/v1.6.0/README.md
-	source = LICENSE.1.6.0::https://github.com/zoeyfyi/Boop-GTK/raw/v1.6.0/LICENSE
+	source = boop-gtk.1.7.0::https://github.com/zoeyfyi/Boop-GTK/releases/download/v1.7.0/boop-gtk.linux.amd64
+	source = boop-gtk.1.7.0.desktop::https://github.com/zoeyfyi/Boop-GTK/raw/v1.7.0/data/fyi.zoey.Boop-GTK.desktop
+	source = boop-gtk.1.7.0.svg::https://github.com/zoeyfyi/Boop-GTK/raw/v1.7.0/data/fyi.zoey.Boop-GTK.svg
+	source = README.1.7.0.md::https://github.com/zoeyfyi/Boop-GTK/raw/v1.7.0/README.md
+	source = LICENSE.1.7.0::https://github.com/zoeyfyi/Boop-GTK/raw/v1.7.0/LICENSE
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
