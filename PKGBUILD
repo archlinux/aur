@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.9.0.r0.gf479047
+pkgver=1.9.1.r4.gb0b3d13
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -58,6 +58,8 @@ prepare() {
 
   # Fix build for kernel 5.4
   #sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i 'module/Makefile'
+
+  sed -e 's:-Werror::g' -i 'Makefile'
   set +u
 }
 
