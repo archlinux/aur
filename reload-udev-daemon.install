@@ -1,0 +1,7 @@
+post_install() {
+	echo "To apply the changes you either need to:"
+	echo "	1. restart your computer"
+	echo "OR"
+	echo "	2. run the following command and then replug in your controller:"
+	echo "	   sudo udevadm control --reload-rules"
+}
