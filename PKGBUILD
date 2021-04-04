@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=15
+pkgrel=16
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt) (opinionated build)'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -15,6 +15,7 @@ source=(
   "http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2"
   'intensity.patch'
   'background-img-use-color.patch'
+  'font-resize.patch'
   'font-width-fix.patch'
   'line-spacing-fix.patch'
   'sgr-mouse-mode.patch'
@@ -25,6 +26,7 @@ source=(
 md5sums=('93782dec27494eb079467dacf6e48185'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
          'd8377a6ec47a7913636fbc368aded94b'
+         '4f6c9f1b51f28645ef5f114c04da27e6'
          'fef588d6bfe52304bf80e8f1771577b6'
          '9f3248bc397ee76b008375f2ab0f201a'
          'f8325b0a33999db4d5d1eeac4f320156'
@@ -37,6 +39,7 @@ prepare() {
 
   patch -p0 -i ../intensity.patch
   patch -p0 -i ../background-img-use-color.patch
+  patch -p0 -i ../font-resize.patch
 
   # From https://aur.archlinux.org/packages/rxvt-unicode-patched/
   patch -p0 -i ../font-width-fix.patch
@@ -82,7 +85,7 @@ build() {
     --enable-wide-glyphs \
     --enable-wtmp \
     --enable-xft \
-    --disable-xim \
+    --enable-xim \
     --disable-xterm-scroll \
     --enable-pixbuf \
     --enable-frills
