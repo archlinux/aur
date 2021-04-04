@@ -1,0 +1,15 @@
+pkgbase = r-sha3sum
+	pkgdesc = sha3 cli (buid using Rust): Print or check SHA3 digests. Commands and options are similar to the GNU Linux command shaXXXsum.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://bitbucket.org/kurdy/sha3sum/src/master/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	provides = sha3sum
+	conflicts = sha3sum
+	source = r-sha3sum-v0.1.5.tar.gz::https://bitbucket.org/kurdy/sha3sum/get/AUR_v0.1.5.tar.gz
+	sha256sums = f416534dfd0add02c7f2be44e40e6da6bfd5ae9727db0a95b5172fe93fa26901
+
+pkgname = r-sha3sum
+
