@@ -1,6 +1,6 @@
 pkgname=fheroes2
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Free implementation of Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://ihhub.github.io/fheroes2/"
@@ -11,7 +11,7 @@ conflicts=('fheroes2-git' 'fheroes2-svn')
 source=($pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz
         fheroes2.desktop
         fheroes2.sh)
-md5sums=('e0903268ff9ae6c57d040a43c8f91c4b'
+md5sums=('18a7abe4bf3b965402d20c004d64c0c2'
          '8e8e2b9097d886d9115f4541e943fa9e'
          '92708ac955c11f95590f108157659f15')
 
