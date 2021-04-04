@@ -1,22 +1,22 @@
 # Maintainer: Filip Weiss <minepkg+me@fiws.net>
 
 pkgname=minepkg
-pkgver=0.0.3
+pkgver=0.0.59
 pkgrel=1
-pkgdesc="Installs and manages Minecraft mods with ease"
+pkgdesc="Manage Minecraft mods with ease."
 arch=('x86_64')
-url="https://github.com/fiws/minepkg"
+url="https://github.com/minepkg/minepkg"
 license=('MIT')
 groups=()
 depends=()
 makedepends=('go')
-optdepends=('docker')
+optdepends=()
 source=("https://github.com/fiws/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('45f8c7d4313b02b0b5fe477275d8d43524f2e31abf1dc3fccb99cf2ff46c802b')
+sha256sums=('399742cfd0ad2fabd579ff5404bdfb27e397b4d335e694ba1291620cb8b189b3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  go build -ldflags="-s -w" -o ./out/minepkg main.go
+  go build -ldflags="-s -w -X main.version=$pkgver -X main.disableSelfupdate=yes" -o ./out/minepkg main.go
 }
 
 package() {
