@@ -2,14 +2,13 @@
 
 pkgname=python-torrentmirror-git
 _pkgname=torrentmirror
-pkgver=r13.e60f677
-pkgrel=2
+pkgver=r16.cf92df1
+pkgrel=3
 pkgdesc="Torrentmirror python library and CLI access"
 arch=(any)
 url='https://github.com/XayOn/torrentmirror'
 license=('custom:none')
 depends=('python' 'python-robobrowser' 'python-cleo' 'python-werkzeug' 'python-docopt' 'python-tabulate' 'python-xdg' 'python-pygogo')
-checkdepends=('yapf')
 makedepends=('python-setuptools' 'git' 'python-dephell')
 provides=('torrentmirror')
 conflicts=('torrentmirror')
