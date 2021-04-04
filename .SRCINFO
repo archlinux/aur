@@ -1,5 +1,5 @@
 pkgbase = sworkstyle
-	pkgdesc = Swayest Workstyle - This tool will rename workspaces to the icons configured. Mainly meant for Swaywm
+	pkgdesc = Swayest Workstyle - This tool will rename workspaces to the icons configured. Mainly meant for Sway WM
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Lyr-7D1h/swayest_workstyle
