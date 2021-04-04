@@ -8,28 +8,28 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=5.10.9-2")
-makedepends=("${_target}-gcc-stage2>=10.2.0-1" python gperf)
+makedepends=("${_target}-gcc-stage2>=10.2.0-2" python gperf)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
 options=(!buildflags !strip staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         sdt.h sdt-config.h
-        bz26534.patch)
+        bz27343.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-md5sums=('720c7992861c57cf97d66a2f36d8d1fa'
+md5sums=('390bbd889c7e8e8a7041564cb6b27cca'
          'SKIP'
          '91fec3b7e75510ae2ac42533aa2e695e'
          '680df504c683640b02ed4a805797c0b2'
-         'fc57038c1297c7c11258e8dda1623ec2')
+         'cfe57018d06bf748b8ca1779980fef33')
 
 prepare() {
   mkdir -p glibc-build

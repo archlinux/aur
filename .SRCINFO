@@ -1,16 +1,16 @@
 pkgbase = arm-linux-gnueabihf-glibc
 	pkgdesc = GNU C Library (arm-linux-gnueabihf)
-	pkgver = 2.32
+	pkgver = 2.33
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-linux-gnueabihf-gcc-stage2>=10.2.0-1
+	makedepends = arm-linux-gnueabihf-gcc-stage2>=10.2.0-2
 	makedepends = python
 	makedepends = gperf
 	depends = arm-linux-gnueabihf-linux-api-headers>=5.10.9-2
-	provides = arm-linux-gnueabihf-glibc-headers=2.32
+	provides = arm-linux-gnueabihf-glibc-headers=2.33
 	provides = arm-linux-gnueabihf-eglibc
 	conflicts = arm-linux-gnueabihf-glibc-headers
 	conflicts = arm-linux-gnueabihf-eglibc
@@ -18,18 +18,18 @@ pkgbase = arm-linux-gnueabihf-glibc
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.32.tar.xz
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.32.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.33.tar.xz
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.33.tar.xz.sig
 	source = sdt.h
 	source = sdt-config.h
-	source = bz26534.patch
+	source = bz27343.patch
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	md5sums = 720c7992861c57cf97d66a2f36d8d1fa
+	md5sums = 390bbd889c7e8e8a7041564cb6b27cca
 	md5sums = SKIP
 	md5sums = 91fec3b7e75510ae2ac42533aa2e695e
 	md5sums = 680df504c683640b02ed4a805797c0b2
-	md5sums = fc57038c1297c7c11258e8dda1623ec2
+	md5sums = cfe57018d06bf748b8ca1779980fef33
 
 pkgname = arm-linux-gnueabihf-glibc
 
