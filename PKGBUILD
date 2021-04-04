@@ -214,7 +214,7 @@ fi
   sed "$_settings_services_sed" -i services/settings/Utils.jsm
   sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
 
-  rm -f ${srcdir}/common/source_files/mozconfig
+  rm -f ${srcdir}/librewolf-common/source_files/mozconfig
   cp -r ${srcdir}/librewolf-common/source_files/* ./
 }
 
@@ -311,9 +311,6 @@ package() {
   mv "$pkgdir"/usr/lib/${pkgname}/{$pkgname-bin,librewolf-bin}
   rm "$pkgdir"/usr/lib/${pkgname}/pingsender
 
-
-  mv "$srcdir/librewolf-settings/$pkgname.profile" "$pkgdir/etc/firejail/$pkgname.profile"
-  mv "$srcdir/librewolf-settings/$pkgname-common.profile" "$pkgdir/etc/firejail/$pkgname-common.profile"
   mv "$srcdir/librewolf-settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
 
   _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
@@ -360,12 +357,6 @@ END
   # Install .desktop files
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  # Install a wrapper to avoid confusion about binary path
-  #install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
-#!/bin/sh
-#exec /usr/lib/$pkgname/librewolf "\$@"
-#END
 
   ln -srf "$pkgdir"/usr/lib/${pkgname}/librewolf \
           "$pkgdir"/usr/bin/$pkgname
