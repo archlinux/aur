@@ -1,0 +1,7 @@
+post_install() {
+	/usr/share/libalpm/scripts/librewolf-cfg-comment-out-values.sh
+}
+
+#post_upgrade() {
+#	post_install
+#}

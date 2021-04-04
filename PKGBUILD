@@ -2,18 +2,17 @@
 
 pkgname=librewolf-comment-out-cfg-hook
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Comment out custom cfg values via pacman hook'
 arch=(x86_64 aarch64)
 url='https://git.sr.ht/~freed00m/librewolf-comment-out-cfg-hook'
 license=('MIT')
+install="${pkgname}.install"
 depends=(librewolf)
 
 package() {
   mkdir -p "$pkgdir/usr/share/libalpm/scripts/"
   mkdir -p "$pkgdir/usr/share/libalpm/hooks/"
-
-  cd "$srcdir"
 
   cp ../librewolf-cfg-comment-out-values.hook "$pkgdir/usr/share/libalpm/hooks/librewolf-cfg-comment-out-values.hook"
   cp ../librewolf-cfg-uncomment-out-values.hook "$pkgdir/usr/share/libalpm/hooks/librewolf-cfg-uncomment-out-values.hook"
