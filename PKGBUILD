@@ -3,7 +3,7 @@
 pkgname=backblaze-b2
 _pkgname=b2
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
@@ -14,7 +14,9 @@ depends=('python'
          'python-class-registry=3.0.5'
          'python-rst2ansi=0.1.5'
         )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools'
+             'python-setuptools-scm<6.0'
+            )
 
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html
 license=('MIT')
