@@ -14,7 +14,7 @@ url="https://${_pkggopath}"
 makedepends=('git' 'go' 'musl' 'kernel-headers-musl')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("git+${url}.git#branch=${BRANCH:-develop}"
+source=("git+${url}.git#branch=${BRANCH:-master}"
 "${_pkgname}-scripts.tar.gz"
 ) #"PKGBUILD.sig")
 sha256sums=('SKIP'

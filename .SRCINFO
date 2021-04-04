@@ -19,7 +19,7 @@ pkgbase = skycoin-latest
 	makedepends = kernel-headers-musl
 	provides = skycoin
 	conflicts = skycoin
-	source = git+https://github.com/skycoin/skycoin.git#branch=develop
+	source = git+https://github.com/skycoin/skycoin.git#branch=master
 	source = skycoin-scripts.tar.gz
 	sha256sums = SKIP
 	sha256sums = 5e147befaf68e30efa7a15e8b292e52cacb94846de4ac03158275a357c8b7dbc
