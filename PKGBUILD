@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=lms
-pkgver=3.22.0
+pkgver=3.24.0
 pkgrel=1
 pkgdesc='Lightweight Music Server. Access your self-hosted music using a web interface'
 arch=('x86_64')
@@ -15,10 +15,9 @@ depends=('ffmpeg'
 makedepends=('cmake' 
              'wt'
              'boost'
-             'pstreams'
              'graphicsmagick')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/epoupon/lms/archive/v${pkgver}.tar.gz")
-sha256sums=('a0fece258aec3f197d6e9f292f9c2496369c452b49df791e3f8ed25012314ac4')
+sha256sums=('e451173b41a80615f9d0afc9be3e6a144271853e22e44b5f1c661fa2d48efaf3')
 
 build() {
   cd "${pkgname}-${pkgver}"
