@@ -1,0 +1,15 @@
+pkgbase = b63-git
+	pkgdesc = Light-weight micro-benchmarking tool for C
+	pkgver = r33.26ce28b
+	pkgrel = 1
+	url = https://github.com/okuvshynov/b63
+	arch = any
+	license = Apache
+	makedepends = git
+	provides = b63
+	conflicts = b63
+	source = b63::git+https://github.com/okuvshynov/b63.git
+	md5sums = SKIP
+
+pkgname = b63-git
+
