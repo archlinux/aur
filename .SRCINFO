@@ -1,0 +1,14 @@
+pkgbase = serial2midi-git
+	pkgdesc = Convert a USB Serial device to a Midi device
+	pkgver = r1.f12db42
+	pkgrel = 1
+	url = https://github.com/jikstra/serial2midi
+	arch = any
+	license = GPL
+	depends = python-rtmidi
+	depends = python-pyserial
+	source = serial2midi-git::git://github.com/jikstra/serial2midi.git
+	sha256sums = SKIP
+
+pkgname = serial2midi-git
+
