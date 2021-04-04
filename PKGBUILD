@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r74742.e77b31b750
+pkgver=r75656.e324073287
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -14,8 +14,8 @@ source=("git+https://gitlab.kitware.com/paraview/paraview.git"
         "git+https://gitlab.kitware.com/vtk/vtk.git"
         "git+https://gitlab.kitware.com/paraview/visitbridge.git"
         "git+https://gitlab.kitware.com/paraview/icet.git"
-        "git+https://gitlab.kitware.com/paraview/qttesting.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "git+https://gitlab.kitware.com/paraview/qttesting.git" ioss.patch)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -33,7 +33,7 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   cd VTK
-  #curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1
+  patch -p1 -i "${srcdir}"/ioss.patch
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
   curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1
 }

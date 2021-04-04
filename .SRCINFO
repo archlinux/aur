@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-paraview-git
 	pkgdesc = Parallel Visualization Application using VTK (mingw-w64)
-	pkgver = r74742.e77b31b750
+	pkgver = r75656.e324073287
 	pkgrel = 1
 	url = https://www.paraview.org
 	arch = any
@@ -42,6 +42,8 @@ pkgbase = mingw-w64-paraview-git
 	source = git+https://gitlab.kitware.com/paraview/visitbridge.git
 	source = git+https://gitlab.kitware.com/paraview/icet.git
 	source = git+https://gitlab.kitware.com/paraview/qttesting.git
+	source = ioss.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
