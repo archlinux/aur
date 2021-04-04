@@ -1,10 +1,12 @@
 pkgbase = liveusb-builder-git
 	pkgdesc = A script suite to create multiboot USB stick for GNU/Linux distributions
-	pkgver = 2018.09.2.g4fad072
+	pkgver = 2021.04
 	pkgrel = 1
 	url = https://github.com/mytbk/liveusb-builder
 	arch = any
 	license = GPL3
+	depends = util-linux
+	depends = libarchive
 	depends = udevil
 	depends = wget
 	depends = syslinux

@@ -1,11 +1,11 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=liveusb-builder-git
-pkgver=2018.09.2.g4fad072
+pkgver=2021.04
 pkgrel=1
 pkgdesc='A script suite to create multiboot USB stick for GNU/Linux distributions'
 license=('GPL3')
-depends=('udevil' 'wget' 'syslinux' 'grub')
+depends=('util-linux' 'libarchive' 'udevil' 'wget' 'syslinux' 'grub')
 arch=('any')
 url='https://github.com/mytbk/liveusb-builder'
 source=('git+https://git.wehack.space/liveusb-builder'
