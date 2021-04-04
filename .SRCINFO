@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 12.0.0_r374137.2cfbdaf60104
+	pkgver = 13.0.0_r384581.98d5db3e3a3f
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -15,12 +15,15 @@ pkgbase = lib32-llvm-minimal-git
 	makedepends = llvm-minimal-git
 	options = staticlibs
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = local://llvm-shlib_Create_object_libraries_for_each_component_and_link_against_them.patch
 	md5sums = SKIP
+	md5sums = 5c9db72a8239005aaae0b2790c1df84f
 	sha512sums = SKIP
+	sha512sums = ffc3d1bc65c3b28ecf2b593ffbdb1bc426dd8291219b2d2e219ab458d704687293246f4a31459b1ddb50e18482884a36815a47234bb02f59fb4280cf2223d8b1
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=12.0.0_r374137.2cfbdaf60104-1
+	depends = lib32-llvm-libs-minimal-git=13.0.0_r384581.98d5db3e3a3f-1
 	depends = llvm-minimal-git
 	provides = lib32-llvm
 	conflicts = lib32-llvm

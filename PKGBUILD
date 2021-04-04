@@ -19,16 +19,19 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=12.0.0_r374137.2cfbdaf60104
+pkgver=13.0.0_r384581.98d5db3e3a3f
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
              'lib32-libxml2' 'llvm-minimal-git')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
-md5sums=('SKIP')
-sha512sums=('SKIP')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+                'local://llvm-shlib_Create_object_libraries_for_each_component_and_link_against_them.patch')
+md5sums=('SKIP'
+         '5c9db72a8239005aaae0b2790c1df84f')
+sha512sums=('SKIP'
+            'ffc3d1bc65c3b28ecf2b593ffbdb1bc426dd8291219b2d2e219ab458d704687293246f4a31459b1ddb50e18482884a36815a47234bb02f59fb4280cf2223d8b1')
 options=('staticlibs')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
@@ -46,6 +49,11 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
+}
+
+prepare() {
+    cd llvm-project
+    patch --reverse --strip=1 --input="${srcdir}/llvm-shlib_Create_object_libraries_for_each_component_and_link_against_them.patch"
 }
 
 build() {
@@ -83,7 +91,8 @@ build() {
         -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
         -D LLVM_VERSION_SUFFIX="" \
-        -D LLVM_ENABLE_BINDINGS=OFF
+        -D LLVM_ENABLE_BINDINGS=OFF \
+        -Wno-dev
         
         ninja -C _build $NINJAFLAGS
 }
