@@ -1,12 +1,22 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = fzfx-git
+	pkgdesc = A wrapper to fzf that does specialized fuzzy searches
+	pkgver = r10.97237d4
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/lbcnz/fzfx
+	arch = any
+	license = MIT
+	depends = fzf
+	depends = ripgrep
+	depends = bat
+	optdepends = evince: preview pdfs
+	optdepends = mpv: preview videos
+	optdepends = grc: colorize ps
+	optdepends = tree: previews dir as tree
+	optdepends = rga: fulltext search blobs
+	provides = fzfx
+	conflicts = fzfx
+	source = git://github.com/lbcnz/fzfx#branch=main
+	sha512sums = SKIP
 
-pkgname = yarxi
+pkgname = fzfx-git
 
