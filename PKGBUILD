@@ -1,6 +1,6 @@
 # Maintainer: Quinn Casey <quinn@quinncasey.com>
 pkgname=boop-gtk
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Port of @IvanMathy's Boop to GTK, a scriptable scratchpad for developers."
 arch=('any')
@@ -13,13 +13,17 @@ depends=(
   gtk3
 )
 makedepends=(
-  'rust>=1.46.0'
+  'cargo'
   git
 )
 
-build() {
+prepare() {
   cd Boop-GTK
   git submodule update --init --recursive
+}
+
+build() {
+  cd Boop-GTK
   cargo build --release --locked --all-features --target-dir=target
 }
 
