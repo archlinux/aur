@@ -33,7 +33,7 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   cd VTK
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1
+  #curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
   curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1
 }
