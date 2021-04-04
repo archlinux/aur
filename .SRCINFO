@@ -5,6 +5,7 @@ pkgbase = grit-task-manager
 	url = https://github.com/climech/grit
 	arch = any
 	license = MIT
+	makedepends = go
 	provides = grit
 	source = git+https://github.com/climech/grit.git#tag=v0.2.0
 	sha256sums = SKIP

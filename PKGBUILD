@@ -10,6 +10,7 @@ arch=('any')
 license=('MIT')
 url="https://github.com/climech/grit"
 source=("git+${url}.git#tag=v${pkgver}")
+makedepends=('go')
 
 sha256sums=('SKIP')
 
