@@ -3,7 +3,7 @@
 pkgname="sworkstyle"
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="Swayest Workstyle - This tool will rename workspaces to the icons configured. Mainly meant for Swaywm" 
+pkgdesc="Swayest Workstyle - This tool will rename workspaces to the icons configured. Mainly meant for Sway WM" 
 arch=("x86_64")
 url="https://github.com/Lyr-7D1h/swayest_workstyle"
 license=("MIT")
@@ -21,5 +21,5 @@ build() {
 package() {
     install -D -m755 "$srcdir/swayest_workstyle/target/release/$pkgname" "$pkgdir/usr/bin/sworkstyle"
     install -D -m644 "$srcdir/swayest_workstyle/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -D -m644 "$srcdir/$pkgname.man" "$pkgdir/usr/share/man/man1/$pkgname"
+    install -D -m644 "$srcdir/$pkgname.man" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
