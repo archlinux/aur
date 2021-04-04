@@ -1,14 +1,14 @@
 # Maintainer: Jolly Roberts jolly.development@gmail.com
 pkgname=icon-explorer
-pkgver=0.2
+pkgver=1.0
 pkgrel=1
 pkgdesc="A small utility to examine app icons for installed icon themes."
 arch=('x86_64')
 url="https://gitlab.com/JollyDevelopment/icon-explorer"
 license=('GPL')
 depends=('python>=3.0' 'gtk3')
-source=("https://gitlab.com/JollyDevelopment/icon-explorer/-/archive/0.2/icon-explorer-0.2.tar.gz")
-md5sums=('27810d5e0e169545dece399ef5d01931')
+source=("https://gitlab.com/JollyDevelopment/icon-explorer/-/archive/1.0/icon-explorer-1.0.tar.gz")
+md5sums=('b8235b121664d97587ab820a76f8a28c')
 package() {
         cd "$pkgname-$pkgver"
         cd app/
