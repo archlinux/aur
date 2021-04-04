@@ -1,7 +1,7 @@
 pkgbase = katcr
 	pkgdesc = Search in multiple torrent sites from your CLI
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XayOn/katcr
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = katcr
 	makedepends = python-setuptools
 	makedepends = python-dephell
 	depends = python
-	depends = python-xdg
+	depends = python-xdg>=5.0.1
 	depends = python-feedparser
 	depends = python-aiohttp
 	depends = python-cleo
