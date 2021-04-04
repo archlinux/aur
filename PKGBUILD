@@ -1,7 +1,6 @@
 # Maintainer: lmartinez
 pkgname=hydro-git
-_pkgname=${pkgname%-git}
-pkgver=r94.745837f
+pkgver=r95.d9b07be
 pkgrel=1
 pkgdesc="Ultra-pure, lag-free Fish shell prompt with async git status"
 arch=('any')
@@ -10,8 +9,8 @@ license=('MIT')
 groups=('fish-plugins')
 depends=('fish')
 makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=('hydro' 'fish-prompt')
+conflicts=('hydro' 'fish-prompt')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
