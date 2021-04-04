@@ -5,9 +5,8 @@ pkgver=1.6
 pkgrel=1
 pkgdesc='An experimental first-person adventure, strongly driven by a fractured narrative (game sold separately)'
 arch=('i686' 'x86_64')
-url='http://dear-esther.com/'
+url='https://www.thechineseroom.co.uk/games/dear-esther'
 license=('custom')
-makedepends=('unzip')
 if [ "$CARCH" = "x86_64" ]; then
     depends=('lib32-glu' 'lib32-libxi' 'lib32-gcc-libs')
 else
@@ -23,19 +22,23 @@ md5sums=('3596d66ededb400331f91e5855d79d29'
          '42ac76a31ac8782bda3e03bd8bec5bf4')
 noextract=("${_gamepkg}")
 # You can download the Humble Indie Bundle file manually, or you can configure
-# DLAGENTS in makepkg.conf to auto-download.
+# DLAGENTS in makepkg.conf or ~/.makepkg.conf to auto-download.
 #
-# For example, to use hib-dlagent to download files set something like this in
-# your makepkg.conf (change/add -k and add -u/-p to your needs):
-# DLAGENTS=('hib::/usr/bin/hib-dlagent -k 1a2b3c -o %o $(echo %u | cut -c 7-)')
+# For example, to auto-search through a directory containing Huble Bundle
+# downloads, set something like this in your makepkg.conf:
+# DLAGENTS=('hib::/usr/bin/bash -c /usr/bin/find\ /path/to/downloads\ -name\ $(echo\ %u\ |\ cut\ -c\ 7-)\ -exec\ ln\ -s\ \\{\\}\ %o\ \\\;\ -quit')
 #
-# To auto-search through a directory containing Humble Bundle downloads, you
-# could set:
-# DLAGENTS=('hib::/usr/bin/find /path/to/downloads -name $(echo %u | cut -c 7-) -exec ln -s \{\} %o \; -quit')
+# The escaping is a bit obnoxious for this use, so you probably want to make a
+# shell script for the command:
+# DLAGENTS=('hib::/home/youruser/hib-search.sh %u %o')
+#
+# /home/youruser/hib-search.sh:
+# #!/bin/bash
+# find /path/to/downloads -name ${1#hib://} -exec ln -s \{\} $2 \; -quit
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; echo "Read this PKGBUILD for more info."; exit 1')
 PKGEXT='.pkg.tar.gz'
 
-build(){
+prepare(){
     cd "${srcdir}"
 
     mkdir "${pkgname}-${pkgver}"
@@ -46,7 +49,7 @@ package(){
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     mkdir -p "${pkgdir}/opt/${pkgname}/"
-    cp -Rl bin etc lib share support "${pkgdir}/opt/${pkgname}"
+    cp -RlP bin etc lib share support "${pkgdir}/opt/${pkgname}"
 
     install -D -m644 "${srcdir}/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
