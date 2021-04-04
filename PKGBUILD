@@ -1,19 +1,18 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-perl-osnames
-pkgver=0.11
+pkgver=0.122
 pkgrel=1
 _author='P/PE/PERLANCAR'
 _perlmod='Perl-osnames'
 pkgdesc='Perl-osnames - List possible $^O () values, with description'
 arch=('any')
-url="http://search.cpan.org/dist/Perl-osnames/"
+url="https://metacpan.org/release/Perl-osnames/"
 license=('GPL' 'PerlArtistic')
 depends=(perl)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('fb22a1ed59dc2311f7f1ffca5685d90c0600020467f624f57b4dd3dba5bc659b')
+sha256sums=('7075939d747e375178d00348d00c52ff9db2cebb18bae7473dcb09df825118a0')
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
