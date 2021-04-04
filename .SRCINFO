@@ -1,6 +1,6 @@
 pkgbase = r-remotes
 	pkgdesc = R Package Installation from Remote Repositories, Including 'GitHub'
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=remotes
 	arch = any
@@ -13,15 +13,16 @@ pkgbase = r-remotes
 	optdepends = r-covr
 	optdepends = r-git2r
 	optdepends = r-knitr
-	optdepends = r0mockery
+	optdepends = r-mockery
 	optdepends = r-pkgbuild
 	optdepends = r-pingr
 	optdepends = r-rmarkdown
 	optdepends = r-rprojroot
 	optdepends = r-testthat
+	optdepends = r-webfakes
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/remotes_2.2.0.tar.gz
-	md5sums = e8d6cb2e704da598e03767352eb7e8c1
+	source = https://cran.r-project.org/src/contrib/remotes_2.3.0.tar.gz
+	sha256sums = 677d676b60288196c4329fcd00747041f0221d241920e918bd1bf6b610316538
 
 pkgname = r-remotes
 
