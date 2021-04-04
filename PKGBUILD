@@ -39,7 +39,8 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
                remove_addons.patch
                context-menu.patch
-               mozilla-vpn-ad.patch)
+               mozilla-vpn-ad.patch
+               0001-Use-remoting-name-for-GDK-application-names.patch)
 source_aarch64=("hg+$_repo#revision=autoland"
                 $pkgname.desktop
                 "git+https://gitlab.com/vnepogodin/librewolf-common.git"
@@ -48,7 +49,8 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 context-menu.patch
                 arm.patch
                 build-arm-libopus.patch
-                mozilla-vpn-ad.patch)
+                mozilla-vpn-ad.patch
+                0001-Use-remoting-name-for-GDK-application-names.patch)
 
 sha512sums_x86_64=('SKIP'
                    '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
@@ -56,7 +58,8 @@ sha512sums_x86_64=('SKIP'
                    'SKIP'
                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
                    'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
-                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
+                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
+                   'ac82700228aa8d7baf2cbff7e92332b96567139e3e5462b68c5e7c35773872acfbc25e2469213ccc4dfe71ac94c10777e8795cb359531baad44077fdf62bdd23')
 sha512sums_aarch64=('SKIP'
                     '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
                     'SKIP'
@@ -65,7 +68,8 @@ sha512sums_aarch64=('SKIP'
                     'bf0fb3102f24b534631e8b18d5df6687134276c90bb07d7eab9e032712a16382f8427768270e3b9205f42ea9ec22d9dc1e80664a77fbcbf62bb896e347e493d3'
                     '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
-                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
+                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
+                    'ac82700228aa8d7baf2cbff7e92332b96567139e3e5462b68c5e7c35773872acfbc25e2469213ccc4dfe71ac94c10777e8795cb359531baad44077fdf62bdd23')
 
 pkgver() {
   cd mozilla-unified
@@ -177,6 +181,9 @@ else
 ac_add_options --enable-optimize
 END
 fi
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
@@ -345,19 +352,19 @@ END
 
   for i in 16 32 48 64 128; do
     install -Dm644 browser/branding/librewolf/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/librewolf.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
   install -Dm644 browser/branding/librewolf/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/librewolf.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
   install -Dm644 browser/branding/librewolf/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.png"
 
   # Install .desktop files
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  ln -srf "$pkgdir"/usr/lib/${pkgname}/librewolf \
-          "$pkgdir"/usr/bin/$pkgname
+  ln -sf "$pkgdir"/usr/lib/${pkgname}/librewolf \
+         "$pkgdir"/usr/bin/$pkgname
 }
