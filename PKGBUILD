@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    tag=$(git tag|grep -v rc|sort -rh|head -n 1)
+    tag=$(git tag|grep -vE "rc|hotfix"|sort -rh|head -n 1)
     echo ${tag#v}
 }
 
