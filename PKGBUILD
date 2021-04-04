@@ -1,9 +1,9 @@
-# Maintainer: bbaovanc <bbaovanc@bbaovanc.com
+# Maintainer: personifieddevil <leonhard60-hfetch@yahoo.com>
 
 _pkgname=hentaifetch
 _branch=master
 pkgname=$_pkgname-git
-pkgver=1.0
+pkgver=r52.af6ffb6
 pkgrel=1
 pkgdesc="neofetch but with hentai"
 license=('GPL3')
@@ -21,7 +21,10 @@ _makeopts="--directory=$_pkgname"
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+       git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 package() {
