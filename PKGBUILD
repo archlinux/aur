@@ -1,7 +1,7 @@
 # Maintainer: lmartinez
 pkgname=hydro-git
 pkgver=r95.d9b07be
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra-pure, lag-free Fish shell prompt with async git status"
 arch=('any')
 url="https://github.com/jorgebucaran/hydro"

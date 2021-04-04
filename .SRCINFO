@@ -1,7 +1,7 @@
 pkgbase = hydro-git
 	pkgdesc = Ultra-pure, lag-free Fish shell prompt with async git status
 	pkgver = r95.d9b07be
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorgebucaran/hydro
 	arch = any
 	groups = fish-plugins
