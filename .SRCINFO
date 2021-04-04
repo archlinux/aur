@@ -1,9 +1,9 @@
 pkgbase = md++-git
-	pkgdesc = A fast, extensible, and easy to use static site generator. Still in the alpha phase.
-	pkgver = 0.9
+	pkgdesc = A fast, extensible, and easy to use static site generator.
+	pkgver = 0.9.1.r1
 	pkgrel = 1
 	url = https://github.com/TheLandfill/mdxx.git
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
