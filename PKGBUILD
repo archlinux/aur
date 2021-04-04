@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.19_pre.r4995.g1851ddd933
+pkgver=0.19.r407.ge66ed26769
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -70,6 +70,8 @@ build() {
   cmake -Wno-dev \
     -D BUILD_ENABLE_CXX_STD=C++14 \
     -D BUILD_QT5=ON \
+    -D BUILD_FEM=ON \
+    -D BUILD_MESH=ON \
     -D CMAKE_INSTALL_PREFIX="" \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
@@ -90,7 +92,10 @@ check() {
   DESTDIR=check cmake --build build_dir -- install
 
   cd build_dir/check
-  LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:lib bin/FreeCADCmd --console --run-test 0
+  export LD_LIBRARY_PATH=lib:${LD_LIBRARY_PATH}
+  #exit
+  export PYTHONPATH=lib
+  bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
