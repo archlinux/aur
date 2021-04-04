@@ -1,51 +1,37 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-catalyst-runtime'
-pkgver='5.90114'
-pkgrel='1'
-pkgdesc="The Catalyst Framework Runtime"
+pkgname=perl-catalyst-runtime
+pkgver=5.90128
+pkgrel=1
+pkgdesc='The Catalyst Framework Runtime'
+_dist=Catalyst-Runtime
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-cgi-simple' 'perl-cgi-struct' 'perl-class-c3-adopt-next>=0.07' 'perl-class-data-inheritable' 'perl-class-load>=0.12' 'perl-data-dump' 'perl-data-optlist' 'perl-html-parser' 'perl-http-body>=1.22' 'perl-http-message' 'perl-http-request-ascgi>=1.0' 'perl-hash-multivalue' 'perl-json-maybexs>=1.000000' 'perl-list-moreutils' 'perl-mro-compat' 'perl-module-pluggable' 'perl-moose>=1.03' 'perl-moosex-emulate-class-accessor-fast>=0.00903' 'perl-moosex-getopt>=0.48' 'perl-moosex-methodattributes' 'perl-moosex-role-withoverloading>=0.09' 'perl-path-class>=0.09' 'perl-plack>=0.9991' 'perl-plack-middleware-fixmissingbodyinredirect>=0.09' 'perl-plack-middleware-methodoverride>=0.12' 'perl-plack-middleware-removeredundantbody>=0.03' 'perl-plack-middleware-reverseproxy>=0.04' 'perl-plack-test-externalserver' 'perl-safe-isa' 'perl-stream-buffered' 'perl-string-rewriteprefix>=0.004' 'perl-sub-exporter' 'perl-task-weaken' 'perl-text-simpletable>=0.03' 'perl-tree-simple>=1.15' 'perl-tree-simple-visitorfactory' 'perl-try-tiny>=0.17' 'perl-uri>=1.65' 'perl-uri-ws>=0.03' 'perl-libwww' 'perl-namespace-autoclean>=0.28' 'perl-namespace-clean>=0.23' 'perl>=5.8.3')
+url="https://metacpan.org/release/$_dist"
+license=('GPL' 'PerlArtistic')
+depends=('perl-cgi-simple' 'perl-cgi-struct' 'perl-class-c3-adopt-next' 'perl-class-data-inheritable' 'perl-class-load' 'perl-data-dump' 'perl-data-optlist' 'perl-html-parser' 'perl-http-body' 'perl-http-message' 'perl-http-request-ascgi' 'perl-hash-multivalue' 'perl-json-maybexs' 'perl-list-moreutils' 'perl-mro-compat' 'perl-module-pluggable' 'perl-moose' 'perl-moosex-emulate-class-accessor-fast' 'perl-moosex-getopt' 'perl-moosex-methodattributes' 'perl-moosex-role-withoverloading' 'perl-path-class' 'perl-plack' 'perl-plack-middleware-fixmissingbodyinredirect' 'perl-plack-middleware-methodoverride' 'perl-plack-middleware-removeredundantbody' 'perl-plack-middleware-reverseproxy' 'perl-plack-test-externalserver' 'perl-safe-isa' 'perl-stream-buffered' 'perl-string-rewriteprefix' 'perl-sub-exporter' 'perl-task-weaken' 'perl-text-simpletable' 'perl-tree-simple' 'perl-tree-simple-visitorfactory' 'perl-try-tiny' 'perl-uri' 'perl-uri-ws' 'perl-libwww' 'perl-namespace-autoclean' 'perl-namespace-clean' 'perl')
 makedepends=('perl-io-stringy' 'perl-json-maybexs')
-checkdepends=('perl-test-fatal')
-url='https://metacpan.org/release/Catalyst-Runtime'
-source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-5.90114.tar.gz')
-md5sums=('07061e33a35a0c7c2c266688b4be723e')
-sha512sums=('f6b795709aa22f64bcb7f651ad83f84073793d9e699b115070a4cfa62f96e39181a90063bd5829ce8cbef30e7157908697588a5f04b2c7f843e91f26d8afe3b4')
-_distdir="Catalyst-Runtime-5.90114"
-
+checkdepends=('perl-test-fatal' 'perl-perlio-utf8-strict')
+options=('!emptydirs' purge)
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/$_dist-$pkgver.tar.gz")
+sha512sums=('73f1c16a5531e9d366bd27c10fa4be02303e516cde11117bc2e63a57f33048916b4f1cea272cee26fd97e83fdbbdc836337c02bfb4c0551e7e6b106c6d8717ee')
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
