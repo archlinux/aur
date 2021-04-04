@@ -2,7 +2,7 @@
 Type = Package
 Operation = Install
 Operation = Upgrade
-Target = personal-privacy-and-security
+Target = librewolf-comment-out-cfg-hook
 Target = librewolf
 
 [Action]

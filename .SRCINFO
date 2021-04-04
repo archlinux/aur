@@ -1,9 +1,8 @@
 pkgbase = librewolf-comment-out-cfg-hook
 	pkgdesc = Comment out custom cfg values via pacman hook
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~freed00m/librewolf-comment-out-cfg-hook
-	install = librewolf-comment-out-cfg-hook.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
