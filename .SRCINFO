@@ -12,7 +12,7 @@ pkgbase = fife-git
 	depends = boost
 	depends = fifechan>=0.1.4
 	depends = glew
-	depends = python
+	depends = python>=3.9
 	depends = python-future
 	depends = libgl
 	depends = libogg

@@ -11,7 +11,7 @@ pkgver=0.4.2.r29.g78c07b9a
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
-depends=('boost' 'fifechan>=0.1.4' 'glew' 'python' 'python-future'
+depends=('boost' 'fifechan>=0.1.4' 'glew' 'python>=3.9' 'python-future'
          'libgl' 'libogg' 'libpng' 'libvorbis'
          'sdl2' 'sdl2_ttf' 'sdl2_image' 'openal' 'tinyxml' 'zlib')
 # # # TO BUILD WITH swig<4 SIMPLY REMOVE THE PATCH FROM prepare() # # #
