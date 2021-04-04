@@ -100,8 +100,8 @@ prepare() {
   # hacky work around for xz not getting extracted
   # https://bbs.archlinux.org/viewtopic.php?id=265115
   if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
-    unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
-    xz -dc "$startdir/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
+    #unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
+    xz -dc "$SRCDEST/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
   fi
 
   # Apply Xanmod patch
@@ -156,7 +156,7 @@ prepare() {
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod-anbox/myconfig"
   # If we detect partial file with scripts/config commands, we execute as a script
   # If not, it's a full config, will be replaced
-  for _myconfig in "${startdir}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod-anbox/myconfig" ; do
+  for _myconfig in "${SRCDEST}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod-anbox/myconfig" ; do
     if [ -f "${_myconfig}" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then
         # myconfig is a partial file. Executing as a script
@@ -191,7 +191,7 @@ prepare() {
   [[ -z "$_makenconfig" ]] || make nconfig
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+  cat .config > "${SRCDEST}/config.last"
 }
 
 build() {
