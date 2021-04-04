@@ -1,16 +1,14 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 433
-	pkgrel = 3
+	pkgrel = 4
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
 	arch = any
 	license = WTFPL
 	makedepends = git
 	depends = python
-	depends = opencv
-	depends = glew
-	depends = vtk
+	depends = python-opencv
 	depends = python-beautifulsoup4
 	depends = python-yaml
 	depends = python-lz4>=0.10.1
@@ -22,7 +20,6 @@ pkgbase = hydrus
 	depends = python-send2trash
 	depends = python-html5lib
 	depends = python-requests
-	depends = hdf5
 	depends = python-qtpy
 	depends = emoji-font
 	depends = python-mpv
