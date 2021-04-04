@@ -3,7 +3,7 @@
 pkgname=elasticsearch-latest
 _pkgname=elasticsearch
 pkgver=7.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
@@ -92,6 +92,6 @@ package() {
 
   sed -i '2iJAVA_HOME=/usr/lib/jvm/default-runtime' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
   sed -i 's/ES_BUNDLED_JDK=true/ES_BUNDLED_JDK=false/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
-  sed -i 's/will be removed in a future release" >\&2/will be removed in a future release" \&>\/dev\/null/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
+  sed -i 's/will be removed in a future release" \>\&2/will be removed in a future release" \&\>\/dev\/null/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
 
 }
