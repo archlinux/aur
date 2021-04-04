@@ -2,7 +2,7 @@
 # Contributor: Sauliusl <luksaulius at gmail>
 
 _cranname=caTools
-_cranver=1.18.1
+_cranver=1.18.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL3)
 depends=('r>=3.6.0' r-bitops)
 optdepends=(r-rpart)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('ffeba4ffbeed5d491bf79b1fde3477f413341e412f77316af20439f54447c9f9')
+sha256sums=('75d61115afec754b053ed1732cc034f2aeb27b13e6e1932aa0f26bf590cf0293')
 
 build() {
   cd "${srcdir}"

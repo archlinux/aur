@@ -1,6 +1,6 @@
 pkgbase = r-catools
 	pkgdesc = Tools: Moving Window Statistics, GIF, Base64, ROC AUC, etc
-	pkgver = 1.18.1
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=caTools
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = r-catools
 	depends = r>=3.6.0
 	depends = r-bitops
 	optdepends = r-rpart
-	source = https://cran.r-project.org/src/contrib/caTools_1.18.1.tar.gz
-	sha256sums = ffeba4ffbeed5d491bf79b1fde3477f413341e412f77316af20439f54447c9f9
+	source = https://cran.r-project.org/src/contrib/caTools_1.18.2.tar.gz
+	sha256sums = 75d61115afec754b053ed1732cc034f2aeb27b13e6e1932aa0f26bf590cf0293
 
 pkgname = r-catools
 
