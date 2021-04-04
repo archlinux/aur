@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kyoutubetomp3
-pkgver=3.14.2.4070
+pkgver=4.0.0.4230
 pkgrel=1
 pkgdesc="Extract audio from YouTube, Vimeo, Facebook and other online video hosting services."
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${p
         "${pkgname}.desktop"
         "${pkgname}.png"
         "fix_symlink_path.patch")
-sha256sums=('422f47a7adeb886290d80b83c915bfba203769a6d26f4c6b011ec039460a0b3a'
-            '386dfa4085efcd9403c4387c7be4dd0f9762c726555b5ebd0126dcd225bcf828'
+sha256sums=('52e73c3da8526947c8ba37aa47a43e4f7088fa411f86cb11f0d56d806bec2c3a'
+            '817d14b4948567bc2825725426345efd68d77f25572a64617ec08aabb2e6a5c9'
             'b25f830bb1fe559ea9f0b35cc9eb8ab75e2e40d09b8755f937451f5ddeeec2fd'
             '1bc2c992e21bae6c51f3176f4c3e04577b3297ea98ffc45fb56ce802423cf6cb')
 
@@ -41,29 +41,15 @@ package() {
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/audio" audio/*
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/translation"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/translation" translation/*
-  # Temporarily ship bundled QT5 libraries as system libraries are unsupported
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "${pkgname}.sh"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Concurrent.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Core.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5DBus.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Gui.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Network.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Positioning.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5PrintSupport.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Qml.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5QmlModels.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Quick.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5QuickWidgets.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Widgets.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebChannel.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineCore.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineWidgets.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5XcbQpa.so.5"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Xml.so.5"
-  install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/platforms"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/platforms" platforms/*
-  install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/xcbglintegrations"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/xcbglintegrations" xcbglintegrations/*
+  # Temporarily ship bundled QT5 libraries as system libraries are unsupported
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "icudtl.dat"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" libQt5*
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "QtWebEngineProcess"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" qtwebengine_*.pak
+  cp -r imageformats platforms platforminputcontexts platformthemes \
+        Qt QtGraphicalEffects QtQml QtQuick QtQuick.2 QtWebEngine xcbglintegrations \
+    "${pkgdir}/usr/lib/${pkgname}"
   # Install launcher file
   install -m 755 -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
