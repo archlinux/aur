@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-gcc-stage2
 	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building (arm-linux-gnueabihf)
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = arm-linux-gnueabihf-gcc-stage2
 	license = LGPL
 	license = FDL
 	license = custom
-	depends = arm-linux-gnueabihf-binutils>=2.35.1-1
+	depends = arm-linux-gnueabihf-binutils>=2.36.1-1
 	depends = arm-linux-gnueabihf-glibc-headers>=2.32-1
 	depends = libmpc
 	depends = zlib
