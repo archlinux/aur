@@ -1,0 +1,18 @@
+pkgbase = surus-plus-folders-git
+	pkgdesc = Allows to change the color of folders (git version)
+	pkgver = .1.8.0.0.g419d45a
+	pkgrel = 1
+	url = https://github.com/gusbemacbe/suru-plus-folders
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = inetutils
+	provides = suru-plus-folders
+	options = !strip
+	source = surus-plus-folders-git::git+https://github.com/gusbemacbe/suru-plus-folders.git
+	source = suru-plus-folders.hook
+	sha256sums = SKIP
+	sha256sums = 32599e354ec625a9722b987c3938c8609f45c60d95e8b24b6130147a5cde56c2
+
+pkgname = surus-plus-folders-git
+

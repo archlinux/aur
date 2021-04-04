@@ -1,0 +1,11 @@
+[Action]
+Depends=suru-plus-folders
+Description=Restoring the last used color of the folders...
+Exec=/usr/bin/suru-plus-folders -R
+When=PostTransaction
+
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Target=suru-plus-icon-theme
+Type=Package
