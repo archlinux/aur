@@ -7,7 +7,7 @@ provides=("fife" "fife-svn")
 conflicts=("fife" "fife-svn")
 pkgdesc="The mission of the FIFE project is to create a cross platform game creation framework"
 url="http://www.fifengine.net/"
-pkgver=0.4.2.r25.gc29d418a
+pkgver=0.4.2.r29.g78c07b9a
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -19,9 +19,9 @@ makedepends=('cmake' 'git' 'swig>=4')
 source=(git+https://github.com/fifengine/fifengine.git
 	"swig4.patch")
 md5sums=('SKIP'
-         '05b0425ae3a94a36b9227f51c09c23aa')
+         '1e915710aea0a9c63a93f13c979e3a7a')
 sha1sums=('SKIP'
-          '0302be0b353e6aa69a81a8e8c872239ecbcab1d0')
+          'f010025945fb392e9d5b89ebd118c049a60eee30')
 
 
 pkgver() {
