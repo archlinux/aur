@@ -12,7 +12,7 @@ options=("!strip")
 provides=('cajviewer')
 conflicts=('cajviewer')
 source=("https://download.cnki.net/${_pkgname}")
-sha512sums=("94ff061b97302ae5cf389dc70b039aff5b2ea9e67f543aee3b24ec40f89e00cca5a218741086329c54f897791309fdacb46ef76020e509b3ac1fb9b2c106ae4e")
+sha512sums=("b503d0e39300978ecf6657097f8690321155b199b24393a75c1067e52f40ad8c67a374be61c02237989de44ebb6d04698815c40a6cb4a5ca3d8bb9ac11abaf13")
 
 _installdir=/opt/appimages
 _installname=cajviewer
