@@ -27,13 +27,13 @@ options=()
 install=
 changelog=
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_$pkgver-1_amd64.deb")
+sha256sums=('cce217648a377fa4cfec41a17c9c17f28da3decb89503202a7167623f789e648')
 noextract=()
-md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-	mkdir $srcdir/pac
-	cd $srcdir/pac
-	tar xpvf $srcdir/data.tar.*
-	cp -r * $pkgdir
+    mkdir $srcdir/pac
+    cd $srcdir/pac
+    tar xpvf ../data.tar.*
+    cp -r * $pkgdir/
 }
