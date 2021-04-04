@@ -4,7 +4,7 @@ _pkgname=xdebug
 pkgname=${_pkgname}-zts
 pkgver=3.0.2
 
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP debugging extension (for ZTS enabled PHP)"
 arch=('x86_64')
 url="https://www.xdebug.org"

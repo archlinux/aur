@@ -1,7 +1,7 @@
 pkgbase = xdebug-zts
 	pkgdesc = PHP debugging extension (for ZTS enabled PHP)
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xdebug.org
 	arch = x86_64
 	license = GPL
