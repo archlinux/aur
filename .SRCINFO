@@ -1,11 +1,12 @@
 pkgbase = fzfx-git
 	pkgdesc = A wrapper to fzf that does specialized fuzzy searches
 	pkgver = r12.e59b56c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lbcnz/fzfx
 	arch = any
 	license = MIT
 	depends = fzf
+	depends = fd
 	depends = ripgrep
 	depends = bat
 	optdepends = evince: preview pdfs

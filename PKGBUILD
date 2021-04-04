@@ -5,14 +5,14 @@ _gitbranch=main
 _gitauthor=lbcnz
 pkgname=${_gitname}-git
 pkgver=r12.e59b56c
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper to fzf that does specialized fuzzy searches"
 arch=('any')
 license=('MIT')
 url="https://github.com/${_gitauthor}/${_gitname}"
 source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
 sha512sums=('SKIP')
-depends=('fzf' 'ripgrep' 'bat')
+depends=('fzf' 'fd' 'ripgrep' 'bat')
 optdepends=('evince: preview pdfs' 'mpv: preview videos' 'grc: colorize ps' 'tree: previews dir as tree' 'rga: fulltext search blobs')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
