@@ -1,7 +1,7 @@
 # Contributor: ConnorBehan <connor.behan@gmail.com>
 pkgname=mebitag
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Apply your own tagging scheme to any media collection of your choice"
 arch=(i686 x86_64)
 url="http://mebitag.sourceforge.net/"
@@ -12,7 +12,7 @@ source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkg
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
-  sed -i -e 's/CFLAGS = -Wall -g/CFLAGS += -Wall -g/' Makefile
+  sed -i -e 's/CFLAGS = -Wall -g/CFLAGS += -Wall -g -fPIC/' Makefile
   make
 }
 

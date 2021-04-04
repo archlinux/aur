@@ -1,7 +1,7 @@
 pkgbase = mebitag
 	pkgdesc = Apply your own tagging scheme to any media collection of your choice
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mebitag.sourceforge.net/
 	arch = i686
 	arch = x86_64
