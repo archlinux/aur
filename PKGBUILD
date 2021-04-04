@@ -5,12 +5,12 @@ ENABLE_FLATPAK=0
 ENABLE_SNAPD=0
 
 pkgname=pamac-cli
-pkgver=10.0.5
-pkgrel=2
+pkgver=10.0.99
+pkgrel=1
 _pkgfixver=$pkgver
 
-_commit='ac6d9d2c7607e83ee41ae5ddb6c997cdf8d090b6'
-sha256sums=('31252800e90c0368b43fcae281ff4b3f6d29c0879ef3b167c88becdf657f2f68'
+_commit='611726156318c13e46ce932f7f7c962119b533e5'
+sha256sums=('04b2fe9979ab0ac5351d4d9f8e566953f0075f5eeff8ba2c7a7b1af9ad5c8204'
             '13159694127c05fdc41f1ad83aa20e6d1c7c44d73b15046c62613d7f8e522c22')
 
 pkgdesc="Pamac cli frontend for libalpm"
