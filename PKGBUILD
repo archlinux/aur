@@ -1,16 +1,17 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: lmartinez-mirror
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
-
-_pkgname=spectre-meltdown-checker
-pkgname=${_pkgname}-git
-pkgver=0.43.r17.g1f75f01
-pkgrel=2
+pkgname=spectre-meltdown-checker-git
+_pkgname=${pkgname%-git}
+pkgver=0.44.r7.g3a486e9
+pkgrel=1
 pkgdesc='Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad vulnerability/mitigation checker'
 arch=('any')
 url='https://github.com/speed47/spectre-meltdown-checker'
 license=('GPL3')
 makedepends=('git')
-provides=("${_pkgname}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
