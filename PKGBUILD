@@ -1,34 +1,25 @@
 # Maintainer: Molten <craxell.tv@gmail.com>
 
-_pkgname="pyfetch"
-pkgname="${_pkgname}-git"
-pkgver=1.1.0
+pkgname=pyfetch-git
+pkgver=r81.4206152
 pkgrel=1
-pkgdesc="A simple and fast alternative to neofetch."
+pkgdesc="Stylish and simple fetch for your terminal."
 arch=('x86_64')
 url="https://kreatea.ml/kreato/pyfetch"
-license=('GPL3')
-groups=()
-depends=('wmctrl' 'otf-font-awesome' 'python' 'python-pip')
-makedepends=()
-provides=("${_pkgname}")
-conflicts=()
-backup=("usr/share/${_pkgname}/data")
-source=("https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch")
-md5sums=('SKIP')
-
-prepare() {
-    chmod +x pyfetch
-    # install deps
-    pip install distro psutil colorama
-}
+license=('GPL')
+depends=('python-distro' 'python-psutil' 'python-colorama' 'otf-font-awesome' 'wmctrl')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://kreatea.ml/kreato/pyfetch.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}-source"
+	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    # install built binary
-    install -Dm 755 "pyfetch" "${pkgdir}/usr/bin/${_pkgname}"
+	cd "$srcdir/${pkgname%-git}"
+	make PREFIX="$pkgdir/usr" install
 }

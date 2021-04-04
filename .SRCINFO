@@ -1,18 +1,20 @@
 pkgbase = pyfetch-git
-	pkgdesc = A simple and fast alternative to neofetch.
-	pkgver = 1.1.0
+	pkgdesc = Stylish and simple fetch for your terminal.
+	pkgver = r81.4206152
 	pkgrel = 1
 	url = https://kreatea.ml/kreato/pyfetch
 	arch = x86_64
-	license = GPL3
-	depends = wmctrl
+	license = GPL
+	makedepends = git
+	depends = python-distro
+	depends = python-psutil
+	depends = python-colorama
 	depends = otf-font-awesome
-	depends = python
-	depends = python-pip
+	depends = wmctrl
 	provides = pyfetch
-	backup = usr/share/pyfetch/data
-	source = https://kreatea.ml/kreato/pyfetch/raw/branch/master/pyfetch
-	md5sums = SKIP
+	conflicts = pyfetch
+	source = git+https://kreatea.ml/kreato/pyfetch.git
+	sha256sums = SKIP
 
 pkgname = pyfetch-git
 
