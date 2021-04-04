@@ -8,16 +8,7 @@ url="https://github.com/pure-fish/pure"
 license=('MIT')
 groups=('fish-plugins')
 depends=('fish>=3')
-makedepends=()
-checkdepends=()
-optdepends=()
 provides=('fish-prompt')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('69e36ecb4a6f979eec9fe90b407849d9b70ad7a6f60c1522d333a4c46c7555eb')
 
