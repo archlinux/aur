@@ -19,15 +19,15 @@ For example, you might want
  * to enable WebGL
  * to disable titlebar paint for dark GTK themes
 
-This hook package will allow you to set your custom defaults are blocked
-by checking `librewolf.cfg` and `policies.json` post install.
+This hook package will allow you to unblock defaults that are blocked
+by `librewolf.cfg` and `policies.json` post install.
 
 If there is a entry blocking you in any way, 
 this package will allow you to undo the hardoced values. 
 
 ** But keep in mind ** 
 It's not for setting up your values. 
-You should do create a new files with your custom prefs your self.
+You should do create a new files with your custom prefs yourself.
 
 Put your created files here
 ```
@@ -42,20 +42,20 @@ Any values blocked by `librewolf.cfg` and `policies.json` can be *unblocked*
 by commenting out the said value.
 
 Many setting from `librewolf.cfg` and `policies.json` cannot bet set via `*.js` 
-file at $HOME or at `/usr/lib/librewolf`
+file at `$HOME/.librewolf` or at `/usr/lib/librewolf`
 
 Basically this package will put 2 pacman hooks into the ALPM directories.
 
-The first hook `/usr/share/libalpm/hooks/librewolf-apply-cfg-mod.hook` 
+The first hook `/usr/share/libalpm/hooks/librewolf-cfg-comment-out.hook` 
 will be applied post install of this package and post upgrade of Librewolf itself.
 
-The second hook `/usr/share/libalpm/hooks/librewolf-undo-cfg-mod.hook` will
+The second hook `/usr/share/libalpm/hooks/librewolf-cfg-uncomment-out.hook` will
 undo every modification from first hook prior the Librewolf update. 
 
 It's there to basically return the `librewolf.cfg` and `policies.json` 
 back to stock to prevent any `*.pacnew` files from being created by deault.
 
-Note - currently there is no backup() in the PKGBUILD of librewolf so undo-hook
+Note - currently there is no backup() in the PKGBUILD of librewolf so uncomment-hook
 is redundant, however that might change in future.
 
 ## Caveats and what to take pay more attention
