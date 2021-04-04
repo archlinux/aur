@@ -1,0 +1,19 @@
+pkgbase = enum4linux-git
+	pkgdesc = A Linux alternative to enum.exe for enumerating data from Windows and Samba hosts
+	pkgver = r25.1833f84
+	pkgrel = 1
+	url = https://labs.portcullis.co.uk/tools/enum4linux/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = smbclient
+	depends = polenum
+	depends = openldap
+	provides = enum4linux
+	conflicts = enum4linux
+	source = enum4linux-git::git+https://github.com/CiscoCXSecurity/enum4linux.git
+	md5sums = SKIP
+
+pkgname = enum4linux-git
+
