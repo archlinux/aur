@@ -3,7 +3,7 @@ pkgname="bee-git"
 _pkgname="bee"
 _branch="chrysalis-pt-2"
 pkgver="0.1.0"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="A framework for IOTA nodes, clients and applications in Rust"
 arch=('x86_64')
 url="https://github.com/iotaledger/bee"
@@ -16,39 +16,29 @@ sha256sums=('SKIP'
 backup=('etc/bee/config.toml')
 install=$_pkgname.install
 
-package() {
+build() {
 	cd ${srcdir}/bee/bee-node
-	
-	# Update rust
 
-	rustup update 
-	
-	# Build with Dashboard
-	
-	git submodule update --init
-	cd src/plugins/dashboard/frontend
-	npm install
-	npm run build-bee
-	cd ../../../../
-	cargo build --release --features dashboard
+        # Update rust
+        rustup update
 
-	# Move executable to /usr/bin
-	
-	mkdir -p ${pkgdir}/usr/bin/
+        # Build with Dashboard
+        git submodule update --init
+        cd src/plugins/dashboard/frontend
+        npm install
+        npm run build-bee
+        cd ../../../../
+        cargo build --release --features dashboard
+}
+
+package() {
+	# Make directorys	
+	mkdir -p ${pkgdir}/usr/bin/ ${pkgdir}/var/lib/bee/ ${pkgdir}/etc/bee/ ${pkgdir}/usr/lib/systemd/system/
+
+	# Move files	
 	mv ${srcdir}/bee/target/release/bee ${pkgdir}/usr/bin/
-	
-	# Move files to /var/lib/bee
-	#
-	mkdir -p ${pkgdir}/var/lib/bee/
-	# cp -R ${srcdir}/bee/target/release/* ${pkgdir}/var/lib/bee/
-	
-	# Move config to standard location
+	mv ${srcdir}/bee/bee-node/config.example.toml ${pkgdir}/etc/bee/config.toml
 
-	mkdir -p ${pkgdir}/etc/bee/
-	cp ${srcdir}/bee/bee-node/config.example.toml ${pkgdir}/etc/bee/config.toml
-	
 	# Install systemd service
-
-	mkdir -p ${pkgdir}/usr/lib/systemd/system/
-	cp ${srcdir}/bee.service ${pkgdir}/usr/lib/systemd/system/
+	mv ${srcdir}/bee.service ${pkgdir}/usr/lib/systemd/system/
 }
