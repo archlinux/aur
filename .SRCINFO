@@ -1,0 +1,23 @@
+pkgbase = katcr
+	pkgdesc = Search in multiple torrent sites from your CLI
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://github.com/XayOn/katcr
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python
+	depends = python-xdg
+	depends = python-feedparser
+	depends = python-aiohttp
+	depends = python-cleo
+	depends = python-aiogram
+	depends = python-torrentmirror-git
+	depends = python-cutie-git
+	source = katcr-3.0.6.tar.gz::https://github.com/XayOn/katcr/archive/refs/tags/3.0.6.tar.gz
+	sha512sums = 8026ee6aa1bb6bcd449ea18f25759ba12a233afb24e2c4ca17ceb1e591fb5c680a72aab2896f7d8bae5f6b008c7c6b219c545a23ccb8dbd32f14a2e8d0c312f9
+
+pkgname = katcr
