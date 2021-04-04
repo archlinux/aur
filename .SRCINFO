@@ -1,6 +1,6 @@
 pkgbase = fzfx-git
 	pkgdesc = A wrapper to fzf that does specialized fuzzy searches
-	pkgver = r10.97237d4
+	pkgver = r12.e59b56c
 	pkgrel = 1
 	url = https://github.com/lbcnz/fzfx
 	arch = any
