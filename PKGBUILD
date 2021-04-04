@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com
 
 pkgname=cajviewer-appimage
-pkgver=210224
+pkgver=210401
 pkgrel=1
 pkgdesc="CAJViewer for Linux"
 arch=("x86_64")

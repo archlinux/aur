@@ -1,14 +1,14 @@
 pkgbase = cajviewer-appimage
 	pkgdesc = CAJViewer for Linux
-	pkgver = 210224
+	pkgver = 210401
 	pkgrel = 1
 	url = http://cajviewer.cnki.net
 	arch = x86_64
 	provides = cajviewer
 	conflicts = cajviewer
-	noextract = CAJViewer-x86_64-buildubuntu1604-210224.AppImage
+	noextract = CAJViewer-x86_64-buildubuntu1604-210401.AppImage
 	options = !strip
-	source = https://download.cnki.net/CAJViewer-x86_64-buildubuntu1604-210224.AppImage
+	source = https://download.cnki.net/CAJViewer-x86_64-buildubuntu1604-210401.AppImage
 	sha512sums = 94ff061b97302ae5cf389dc70b039aff5b2ea9e67f543aee3b24ec40f89e00cca5a218741086329c54f897791309fdacb46ef76020e509b3ac1fb9b2c106ae4e
 
 pkgname = cajviewer-appimage
