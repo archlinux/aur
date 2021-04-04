@@ -1,8 +1,9 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
-pkgname='wowlet-git'
-pkgver=0.1.0.0.82ac1c2daf
+pkgname=wowlet-git
+_pkgname=wowlet
+pkgver=0.1.0.0.144c19fab1
 pkgrel=1
 pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
@@ -25,11 +26,13 @@ build() {
 
 package_wowlet-git() {
   install -Dm755 "${srcdir}/${pkgname}/build/bin/wowlet" "${pkgdir}/usr/bin/wowlet"
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm644 "${srcdir}/${pkgname}/SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY"
-  install -Dm644 "${srcdir}/${pkgname}/HACKING.md" "${pkgdir}/usr/share/doc/${pkgname}/HACKING"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -d "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm644 "${srcdir}/${pkgname}/SECURITY.md" "${pkgdir}/usr/share/doc/${_pkgname}/SECURITY"
+  install -Dm644 "${srcdir}/${pkgname}/HACKING.md" "${pkgdir}/usr/share/doc/${_pkgname}/HACKING"
   install -Dm644 "${srcdir}/${pkgname}/src/assets/org.wowlet.wowlet.desktop" "${pkgdir}/usr/share/applications/org.wowlet.wowlet.desktop"
+  install -d "${pkgdir}/usr/share/man/man1/"
   install -Dm644 "${srcdir}/${pkgname}/src/assets/wowlet.1.gz" "${pkgdir}/usr/share/man/man1/wowlet.1.gz"
   install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/wowlet.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wowlet.svg"
   install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/48x48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/wowlet.png"
