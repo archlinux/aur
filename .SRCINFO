@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-beta-bin
 	pkgdesc = The Mullvad VPN client app for desktop (latest/beta release)
 	pkgver = 2021.2.stable
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = mullvad-vpn-beta-bin
 	depends = libappindicator-gtk3
 	depends = nss
 	depends = resolvconf
+	optdepends = networkmanager: create Wireguard interface
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
 	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2021.2/MullvadVPN-2021.2_amd64.deb
