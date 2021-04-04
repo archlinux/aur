@@ -1,0 +1,17 @@
+pkgbase = texted-bin
+	pkgdesc = A simple ed-like CLI text editor
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/Leonia-Tech/TextEd
+	arch = x86_64
+	depends = make>4
+	depends = gcc>10
+	depends = python>=3.9.0
+	depends = ncurses
+	depends = readline
+	optdepends = mpv
+	source = https://github.com/Leonia-Tech/texted/archive/refs/tags/v1.5.1.tar.gz
+	md5sums = 2aca52bc4cf86eeef908ab87ca87387c
+
+pkgname = texted-bin
+
