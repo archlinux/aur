@@ -16,7 +16,6 @@ optdepends=(
     'fzf:   use fzf for results'
     'ueberzug: thumbnails image preview'
 )
-conflicts=("ytfzf")
 source=("https://github.com/pystardust/ytfzf/archive/v${pkgver}.tar.gz")
 sha256sums=('cdd17594c10408b67a37ecebaaa96ce3c24355847eab99d6a20348ad1f5151f7')
 
