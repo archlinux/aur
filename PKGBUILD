@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -25,11 +25,10 @@ build() {
   ninja
 }
 
-# FIXME disable for 2.2.4, ought be fixed by 2.2.5, bug filed upstream
-#check() {
-#  cd "${pkgname}-${pkgver}/build"
-#  ninja test
-#}
+check() {
+  cd "${pkgname}-${pkgver}/build"
+  ninja test
+}
 
 package() {
   cd "${pkgname}-${pkgver}/build"
@@ -38,4 +37,4 @@ package() {
   env CFLAGS="-I$pkgdir/usr/include -L../build" python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('f062b4a86ab61e800c8754cd36af557f41ac8a015e3fe3921dab1ed37c665394')
+sha256sums=('dd2079b49a476ae449b85544231ed9c3afeecc21a47834fc5911ac811b5f3b71')
