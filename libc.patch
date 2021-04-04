@@ -1,0 +1,20 @@
+diff --git a/build.zig b/build.zig
+index 33a7f8a..ef5bc86 100644
+--- a/build.zig
++++ b/build.zig
+@@ -89,6 +89,7 @@ pub fn build(b: *zbs.Builder) !void {
+         riverctl.step.dependOn(&scanner.step);
+         riverctl.addPackage(scanner.getPkg());
+         riverctl.linkLibC();
++        riverctl.setLibCFile("libc-paths");
+         riverctl.linkSystemLibrary("wayland-client");
+ 
+         scanner.addCSource(riverctl);
+@@ -172,6 +173,7 @@ fn addServerDeps(exe: *zbs.LibExeObjStep, scanner: *ScanProtocolsStep) void {
+     exe.step.dependOn(&scanner.step);
+ 
+     exe.linkLibC();
++    exe.setLibCFile("libc-paths");
+     exe.linkSystemLibrary("libevdev");
+ 
+     exe.addPackage(wayland);

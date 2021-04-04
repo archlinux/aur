@@ -1,6 +1,6 @@
 pkgbase = river-git
 	pkgdesc = A dynamic tiling wayland compositor.
-	pkgver = r522.c143864
+	pkgver = r577.3c1f1df
 	pkgrel = 1
 	url = https://github.com/ifreund/river
 	arch = x86_64
@@ -20,11 +20,13 @@ pkgbase = river-git
 	source = git+https://github.com/ifreund/zig-wayland.git
 	source = git+https://github.com/swaywm/zig-wlroots.git
 	source = git+https://github.com/ifreund/zig-xkbcommon.git
+	source = libc.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = d5dcd4e9e0afa149a36edc790ae5f4bd476202378d5ac7e78f954e3f9eb32938
 
 pkgname = river-git
 	backup = etc/river/init
