@@ -10,10 +10,6 @@ license=('MIT')
 depends=(librewolf)
 
 package() {
-  # -m  will set the mode
-  # -D  will just create the non-existing directories to the target.
-  #cd "$srcdir" && find usr/ -type f -exec install -Dm 644 "{}" "$pkgdir/{}" \;
-
   mkdir -p "$pkgdir/usr/share/libalpm/scripts/"
   mkdir -p "$pkgdir/usr/share/libalpm/hooks/"
 
