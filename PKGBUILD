@@ -3,7 +3,7 @@
 pkgname=guile-git
 epoch=1
 _majorver=3.0
-pkgver=3.0.5.r139.g498564e3e
+pkgver=3.0.5.r140.g01bfd18f3
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,11 +14,10 @@ depends=('gc' 'libxcrypt' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
 conflicts=('guile4emacs')
 options=('!strip' '!makeflags' 'libtool')
-source=("git+https://git.savannah.gnu.org/git/${pkgname%-git}.git" rename_infofile.diff rename_infofile2.diff)
+source=("git+https://git.savannah.gnu.org/git/${pkgname%-git}.git" rename_infofile.diff)
 url="http://www.gnu.org/software/guile/"
 sha256sums=('SKIP'
-            'abd56cf6686d0a2563ffdac23cf482623b2a075cfd37242dd57ec8b2f9ff7510'
-            '92a567547a21add555487f0979a618de2e6daf25bd0d483866d62ca18fe12140')
+            'b2674297c0b4ceba1f94616f04a1bf3ae5586cc27433978a5e7e35b71e2ad53f')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -28,17 +27,19 @@ pkgver() {
 prepare() {
   cd ${pkgname%-git}
   git apply "$srcdir"/rename_infofile.diff
-  git apply "$srcdir"/rename_infofile2.diff
   cd doc/ref
   mv guile.texi guile-3.0.texi 
 }
 
 build() {
   cd ${pkgname%-git}
-  ./autogen.sh
+  top_srcdir="$srcdir"/${pkgname%-git} top_builddir=$top_srcdir ./autogen.sh
   ./configure --prefix=/usr --program-suffix=${_majorver}
-#  echo "@set EFFECTIVE-VERSION ${_majorver}" > doc/ref/effective-version.texi
-  make LDFLAGS+=" -lpthread" -j1
+  make LDFLAGS+=" -lpthread" || true
+  cd doc/ref
+  echo "@set EFFECTIVE-VERSION ${_majorver}" > effective-version.texi
+  GUILE_AUTO_COMPILE=0 "$srcdir"/${pkgname%-git}/meta/build-env guild snarf-guile-m4-docs "$srcdir"/${pkgname%-git}/meta/guile.m4 >autoconf-macros.texi
+  make 
 }
 
 package() {

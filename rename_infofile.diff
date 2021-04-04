@@ -1,5 +1,18 @@
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index f1c694551..80298ef5d 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -21,7 +21,7 @@
+ 
+ AUTOMAKE_OPTIONS = gnu
+ 
+-SUBDIRS = ref r5rs
++SUBDIRS = ref
+ 
+ dist_man1_MANS = guile.1
+ 
 diff --git a/doc/ref/Makefile.am b/doc/ref/Makefile.am
-index 2f4b8ca88..939e1966c 100644
+index 2f4b8ca88..8f3805387 100644
 --- a/doc/ref/Makefile.am
 +++ b/doc/ref/Makefile.am
 @@ -22,7 +22,7 @@
@@ -11,16 +24,13 @@ index 2f4b8ca88..939e1966c 100644
  
  guile_TEXINFOS = preface.texi			\
                   intro.texi			\
-diff --git a/doc/ref/guile.texi b/doc/ref/guile.texi
-index 660b1ae90..c3c6b300c 100644
---- a/doc/ref/guile.texi
-+++ b/doc/ref/guile.texi
-@@ -1,7 +1,7 @@
- \input texinfo
- @c -*-texinfo-*-
- @c %**start of header
--@setfilename guile.info
-+@setfilename guile-3.0.info
- @documentencoding UTF-8
- @settitle Guile Reference Manual
- @set guile
+@@ -128,7 +128,7 @@ autoconf-macros.texi: $(top_srcdir)/meta/guile.m4
+ # triggering a rebuild of `guile.info'.  Note that `GUILE-VERSION' is
+ # among $(CONFIG_STATUS_DEPENDENCIES); thus, when it's updated, this
+ # Makefile is rebuilt, and $(GUILE_EFFECTIVE_VERSION) is up-to-date.
+-$(srcdir)/effective-version.texi: $(top_srcdir)/GUILE-VERSION
++effective-version.texi:
+ 	echo "@set EFFECTIVE-VERSION $(GUILE_EFFECTIVE_VERSION)" > $@
+ 
+ MAINTAINERCLEANFILES = autoconf-macros.texi
+
