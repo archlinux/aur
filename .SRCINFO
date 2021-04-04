@@ -1,12 +1,17 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = journal-git
+	pkgdesc = An agnostic approach to note management and personal organization.
+	pkgver = r52.4d9b0bb
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/lbcnz/journal
+	arch = any
+	license = GPL3
+	depends = ripgrep
+	depends = fzf
+	depends = bat
+	provides = journal
+	conflicts = journal
+	source = git://github.com/lbcnz/journal#branch=main
+	sha512sums = SKIP
 
-pkgname = yarxi
+pkgname = journal-git
 
