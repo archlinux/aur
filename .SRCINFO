@@ -1,0 +1,12 @@
+pkgbase = ttyper
+	pkgdesc = Terminal-based typing test.
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/max-niederman/ttyper
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = ttyper
+
+pkgname = ttyper
+
