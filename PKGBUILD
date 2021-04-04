@@ -2,16 +2,16 @@
 
 pkgname=mathics-scanner
 _pkgname=Mathics_Scanner
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Mathics' tokeniser or scanner portion for the Wolfram Language."
 arch=('any')
-url="https://mathics.github.io/"
+url="https://mathics.org/"
 license=('GPL3')
-depends=('python-chardet' 'python-ujson')
+depends=('python-chardet' 'python-ujson' 'python-click')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mathics3/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('330d9dc842fd3db2dc26dfb783fdec32952d9454da2a170e8402f055a562c936')
+sha256sums=('8c9a71d960b8b41d2d12dd8d236da48ab8a847b2a1169e75c86307564d172ba8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
