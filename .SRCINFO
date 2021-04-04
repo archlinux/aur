@@ -1,7 +1,7 @@
 pkgbase = cryptpad
 	pkgdesc = Realtime collaborative visual editor with zero knowlege server
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xwiki-labs/cryptpad
 	arch = any
 	license = AGPL3
@@ -9,6 +9,8 @@ pkgbase = cryptpad
 	makedepends = npm
 	makedepends = git
 	depends = nodejs
+	options = !strip
+	backup = etc/webapps/cryptpad/config.js
 	source = cryptpad-4.3.1.tar.gz::https://github.com/xwiki-labs/cryptpad/archive/4.3.1.tar.gz
 	source = cryptpad.service
 	source = cryptpad.sysusers
@@ -16,7 +18,7 @@ pkgbase = cryptpad
 	sha256sums = 7d4d3652e911b5f78439c7b2deea48ad0df179a633dc4e9d229aeb0714c1a3d2
 	sha256sums = 522851fbe4e0e41fd6ece8b2b0ed17bbae0233a58328b7994a5207aa341a635b
 	sha256sums = 999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6
-	sha256sums = 8e5a200747cb77142cf6d08d3490fefc0d3142f196da13c84d3e530b30f6f72b
+	sha256sums = 617ee2a7b3e81184dc82df8b800898092b1001fdbd57c3edc317512e3aee70a0
 
 pkgname = cryptpad
 

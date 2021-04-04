@@ -1,7 +1,2 @@
-d /var/lib/cryptpad
-d /var/lib/cryptpad/blob
-d /var/lib/cryptpad/block
-d /var/lib/cryptpad/data
-d /var/lib/cryptpad/datastore
-d /var/lib/cryptpad/logs
-Z /var/lib/cryptpad 0750 cryptpad cryptpad
+Z /etc/webapps/cryptpad - cryptpad cryptpad
+Z %S/cryptpad 0750 cryptpad cryptpad
