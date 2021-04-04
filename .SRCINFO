@@ -1,7 +1,7 @@
 pkgbase = greetd-qtgreet
 	pkgdesc = Qt based greeter for greetd, to be run under wayfire or similar wlr-based compositors.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/marcusbritanicus/QtGreet
 	install = greetd-qtgreet.install
 	arch = aarch64
@@ -12,7 +12,6 @@ pkgbase = greetd-qtgreet
 	makedepends = python
 	depends = qt5-base
 	depends = wlroots
-	depends = wayfire
 	depends = qt5-wayland
 	depends = greetd
 	optdepends = wayfire
