@@ -1,6 +1,6 @@
 # Maintainer: Joseph Mellor <the.landfill.coding@gmail.com>
 pkgname=md++-git
-pkgver=0.9.1.r1
+pkgver=0.9.1.r3.g6e72d5e
 pkgrel=1
 epoch=
 pkgdesc="A fast, extensible, and easy to use static site generator."
@@ -23,7 +23,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "mdxx/"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed -r 's/\.([0-9,a-g,A-G]{7}.*)//'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
