@@ -2,7 +2,7 @@
 
 _pkgname=xdebug
 pkgname=${_pkgname}-zts
-pkgver=2.9.6
+pkgver=3.0.2
 
 pkgrel=1
 pkgdesc="PHP debugging extension (for ZTS enabled PHP)"
@@ -13,25 +13,18 @@ depends=('php-zts')
 backup=('etc/php/conf.d/xdebug.ini')
 source=("https://xdebug.org/files/${_pkgname}-${pkgver/rc/RC}.tgz"
 	'xdebug.ini')
-sha256sums=('ab03b6014706491b393aa8d520b5bdaf6735a2f1bc12a7772b2916ef2646e454'
+sha256sums=('096d46dec061341868d3e3933b977013a592e2e88992b2c0aba7fa52f87c4e17'
             '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 
 build() {
-  cd "$srcdir"/${_pkgname}-${pkgver/rc/RC}
+  cd "$srcdir"/${_pkgname}-${pkgver}
   phpize
   ./configure --prefix=/usr --enable-xdebug
-  make
-
-  cd "$srcdir"/${_pkgname}-${pkgver/rc/RC}/debugclient
-  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir"/${_pkgname}-${pkgver/rc/RC}/debugclient
-  install -D -m 755 debugclient "$pkgdir"/usr/bin/debugclient
-
-  cd "$srcdir"/${_pkgname}-${pkgver/rc/RC}
+  cd "$srcdir"/${_pkgname}-${pkgver}
   make INSTALL_ROOT="$pkgdir" install
   install -D -m 644 "$srcdir"/xdebug.ini "$pkgdir"/etc/php/conf.d/xdebug.ini
 }
