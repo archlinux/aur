@@ -7,6 +7,8 @@ pkgbase = r-remotes
 	license = GPL2
 	license = GPL3
 	depends = r>=3.0.0
+	depends = subversion
+	depends = git
 	optdepends = r-brew
 	optdepends = r-callr
 	optdepends = r-curl

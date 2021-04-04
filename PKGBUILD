@@ -9,7 +9,7 @@ pkgdesc="R Package Installation from Remote Repositories, Including 'GitHub'"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=('r>=3.0.0')
+depends=('r>=3.0.0' subversion git)
 optdepends=(r-brew r-callr r-curl r-covr r-git2r r-knitr r-mockery r-pkgbuild r-pingr r-rmarkdown r-rprojroot r-testthat r-webfakes r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('677d676b60288196c4329fcd00747041f0221d241920e918bd1bf6b610316538')
