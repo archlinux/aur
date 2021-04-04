@@ -1,5 +1,5 @@
 # Maintainer: Emilio Reggi <nag@mailbox.org>
-pkgname=himalaya-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname=himalaya-git
 _pkgname=himalaya
 pkgver=r82.0d763a1
 pkgrel=1

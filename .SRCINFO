@@ -1,12 +1,14 @@
 pkgbase = himalaya-git
 	pkgdesc = Minimalist CLI email client, written in Rust.
-	pkgver = 0.2.2
+	pkgver = r82.0d763a1
 	pkgrel = 1
 	url = https://github.com/soywod/himalaya
 	arch = any
 	license = BSD
 	makedepends = cargo
 	makedepends = git
+	depends = gcc-libs
+	depends = openssl
 	provides = himalaya
 	conflicts = himalaya
 	source = himalaya::git+https://github.com/soywod/himalaya
