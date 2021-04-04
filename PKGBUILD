@@ -1,23 +1,25 @@
-# Maintainer: luckdragon <f41c0r [/at\] cyb3r DOT space>
+# Maintainer: luc4 <carlon.luca [/at\] gmail DOT com>
 
 pkgname=logcat-colorize
-pkgver=0.5
-pkgrel=1
+pkgver=0.10.0
+pkgrel=2
 pkgdesc="A simple program that colorizes Android Debug Bridge (adb)'s logcat output on a terminal window."
-url="https://bitbucket.org/brunobraga/logcat-colorize/overview"
+url="https://github.com/carlonluca/logcat-colorize"
 depends=(boost-libs gcc-libs)
-makedepends=('mercurial')
-arch=('x86_64' 'i686')
+makedepends=(git boost)
+arch=('any')
 license=('Apache')
-source=('hg+https://bitbucket.org/brunobraga/logcat-colorize.git')
+source=('git+https://github.com/carlonluca/logcat-colorize.git#tag=v0.10.0')
 md5sums=('SKIP')
 
-package() {
-  mkdir -p ${pkgdir}/usr/bin
+build() {
+  cd "$srcdir/$pkgname"
 
-  cd ${srcdir}/${pkgname}.git
-  make 
-  PREFIX=${pkgdir}/usr make install
+  make
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "$srcdir/$pkgname"
+
+  make DESTDIR="$pkgdir/" install
+}
