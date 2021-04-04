@@ -3,15 +3,15 @@
 pkgname=elasticsearch-latest
 _pkgname=elasticsearch
 pkgver=7.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:Elastic2')
 depends=('java-runtime-headless' 'systemd')
-makedepends=('jdk-openjdk' 'gradle')
+makedepends=('jdk15-adoptopenjdk')
 provides=('elasticsearch')
-conflicts=('elasticsearch')
+conflicts=('elasticsearch' 'elasticsearch-xpack')
 source=(
   $_pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service
@@ -54,7 +54,7 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  export PATH=/usr/lib/jvm/java-15-openjdk/bin:$PATH
+  export PATH=/usr/lib/jvm/java-15-adoptopenjdk/bin:$PATH
   export GRADLE_OPTS="-Dbuild.snapshot=false -Dlicense.key=x-pack/plugin/core/snapshot.key"
   ./gradlew wrapper --gradle-version=6.8.3
   ./gradlew :distribution:buildSystemdModule
@@ -95,7 +95,8 @@ package() {
   cp -r distribution/build/outputs/systemd/modules/systemd "$pkgdir"/usr/share/elasticsearch/modules/
 
   sed -i '2iJAVA_HOME=/usr/lib/jvm/default-runtime' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
+  sed -i '2iES_JAVA_HOME=/usr/lib/jvm/default-runtime' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
   sed -i 's/ES_BUNDLED_JDK=true/ES_BUNDLED_JDK=false/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
-  sed -i 's/will be removed in a future release" \>\&2/will be removed in a future release" \&\>\/dev\/null/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
+  sed -i 's/will be removed in a future release" >\&2/will be removed in a future release" \&>\/dev\/null/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
 
 }

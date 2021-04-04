@@ -1,4 +1,5 @@
 JAVA_HOME=/usr/lib/jvm/default-runtime
+ES_JAVA_HOME=/usr/lib/jvm/default-runtime
 
 # Heap Size (defaults to 256m min, 1g max)
 #ES_HEAP_SIZE=1g
