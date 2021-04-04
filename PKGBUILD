@@ -3,12 +3,13 @@
 pkgname=python-torrentmirror-git
 _pkgname=torrentmirror
 pkgver=r16.cf92df1
-pkgrel=3
+pkgrel=4
 pkgdesc="Torrentmirror python library and CLI access"
 arch=(any)
 url='https://github.com/XayOn/torrentmirror'
 license=('custom:none')
 depends=('python' 'python-robobrowser' 'python-cleo' 'python-werkzeug' 'python-docopt' 'python-tabulate' 'python-xdg' 'python-pygogo')
+# checkdepends=('yapf' 'python-pytest' 'python-pytest-cov' 'python-pylint' 'python-pytest-flake8' 'python-flake8-docstrings' 'tox')
 makedepends=('python-setuptools' 'git' 'python-dephell')
 provides=('torrentmirror')
 conflicts=('torrentmirror')
@@ -33,6 +34,12 @@ build(){
 
   python setup.py build
 }
+
+# check(){
+    # cd "${srcdir}/${_pkgname}"
+
+    # pytest
+# }
 
 package() {
   cd "${srcdir}/${_pkgname}"
