@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.11.8.zen1
+pkgver=5.11.11.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401I)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,11 +18,12 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=c2f27f65bb10f3b4e7048a3b2938687329ee9e62"
-  i8042.patch
+  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=e90f68035a7497185426ccffb0b1bbfc7c1bed0a"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.11.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
   "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch"
+  "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Add-support-for-2021-ASUS-N-Key-keyboard.patch"
+  "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,11 +31,12 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '1bcc8a0cf210b676e9861f309c0501df642474a7d727549c6144651e77276fc9'
-            '6c1ac099878622b258adee05e70be226f263b93a8a7ca9c021d2b3c8abab31ac'
+            'df59b8605e86ee358f905b19cc3db9eef06356e8170a1785a0a0b1e27d071004'
             '34f4ae617a2407fed2ba347b663d31f39c1ec9b390e1ea5ea636c91a4cc6f875'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
-            '9a8ff7948b16c1ad2ab23f390fd9a2cad4c765821bae7a2a1e4a61b79ffee522')
+            '9a8ff7948b16c1ad2ab23f390fd9a2cad4c765821bae7a2a1e4a61b79ffee522'
+            '2edfb8dbb0fe7202191c51a5f645559c5da9f800e8aad2f8a4fd2731092138ff'
+            'eec1d016c5f53f1d808701b6c038db2e73a61310713f859d99bf97b9c793cefe')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
