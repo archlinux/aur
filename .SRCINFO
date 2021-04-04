@@ -12,7 +12,7 @@ pkgbase = r-shinywidgets
 	depends = r-htmltools
 	depends = r-jsonlite
 	optdepends = r-shinydashboard
-	optdepends = r--testthat
+	optdepends = r-testthat
 	optdepends = r-covr
 	optdepends = r-shinydashboardplus
 	optdepends = r-bs4dash
@@ -23,6 +23,7 @@ pkgbase = r-shinywidgets
 	optdepends = r-dt
 	optdepends = r-scales
 	source = https://cran.r-project.org/src/contrib/shinyWidgets_0.6.0.tar.gz
+	md5sums = 0dcf1a79f67d25bb3a18c1ba0c303797
 
 pkgname = r-shinywidgets
 
