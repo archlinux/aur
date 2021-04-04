@@ -3,10 +3,10 @@
 _name=language_tool_python
 pkgname=python-languagetool-git
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free grammar checker for Python"
 url="https://pypi.org/project/language-tool-python"
-depends=('python')
+depends=('python' 'python-tqdm')
 makedepends=('git' 'python')
 optdepends=()
 license=('GPL3')

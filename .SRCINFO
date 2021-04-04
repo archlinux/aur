@@ -1,13 +1,14 @@
 pkgbase = python-languagetool-git
 	pkgdesc = A free grammar checker for Python
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/language-tool-python
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python
 	depends = python
+	depends = python-tqdm
 	provides = python-languagetool
 	source = git+https://github.com/jxmorris12/language_tool_python.git
 	sha256sums = SKIP
