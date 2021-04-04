@@ -2,7 +2,7 @@
 
 pkgname='hmm'
 pkgdesc='A small command-line note taking app written in Rust.'
-pkgver='0.5.0'
+pkgver='0.5.2'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/samwho/hmm'
@@ -13,7 +13,7 @@ makedepends=('rust' 'gcc' 'binutils')
 checkdepends=('rust' 'git')
 provides=(hmm hmmq hmmp)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samwho/hmm/archive/v${pkgver}.tar.gz")
-sha256sums=('93a460275e32df284708ded4534d2848ac0467d0cd8dfa2c568f0412ef969af0')
+sha256sums=('17da05c38a1a0fe083a86ba750a0d5b9ccd046e5baa75d98493143f978d97a29')
 
 build() {
     cd "$pkgname-$pkgver"
