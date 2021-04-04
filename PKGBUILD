@@ -3,15 +3,15 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=xpenguins
-pkgver=2.2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Ever wanted cute little penguins walking along the tops of your windows?"
-depends=('libxpm')
-source=(http://xpenguins.seul.org/$pkgname-$pkgver.tar.gz)
+depends=('libxpm' 'gtk3')
+source=(http://downloads.sf.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
 license=('GPL2')
 arch=('i686' 'x86_64')
-url="http://xpenguins.seul.org"
-md5sums=('2ccf555d55f9b0377017322b3b3d27a4')
+url="https://www.ratrabbit.nl/ratrabbit/software/xpenguins/index.html"
+sha256sums=('b5a961684c461409527fef2cf266d8ae3823bd7a9cf79e678fa205e1de611c0f')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
