@@ -9,7 +9,7 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.35.1
+pkgver=2.36.1
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
@@ -18,9 +18,9 @@ license=(GPL)
 depends=(glibc zlib elfutils)
 #makedepends=('elfutils')
 options=(staticlibs !distcc !ccache)
-#source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
-source=(https://ftpmirror.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
-sha256sums=('3ced91db9bf01182b7e420eab68039f2083aed0a214c0424e257eae3ddee8607'
+source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+#source=(https://ftpmirror.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+sha256sums=('e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
             'SKIP')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
@@ -54,7 +54,6 @@ build() {
       --enable-lto \
       --enable-plugins \
       --enable-relro \
-      --enable-shared \
       --enable-threads \
       --disable-gdb \
       --disable-werror \
