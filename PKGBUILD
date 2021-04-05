@@ -4,7 +4,7 @@ pkgname=loot
 # Remove spotify hax on next version bump!
 pkgver=0.16.0
 _pkglibver=0.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
@@ -40,7 +40,9 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	yarn install
 	# Spotify Hax because of domain change
-	sed -i s,opensource.spotify.com/cefbuilds,cef-builds.spotifycdn.com,g CMakeLists.txt
+	sed -i 's,opensource.spotify.com/cefbuilds,cef-builds.spotifycdn.com,g' CMakeLists.txt
+	# Cripple update check, always return no update available
+	echo 'export default async function updateExists(currentVersion: string, currentBuild: string){if(currentVersion === undefined || currentBuild === undefined || true) {return false;}}' > src/gui/html/js/updateExists.ts
 	mkdir -p build
 	cd build
 	cmake .. -DLIBLOOT_URL="$srcdir/lib$pkgname-$_pkglibver/build/lib$pkgname-$_pkglibver.tar.gz" \
