@@ -7,22 +7,22 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=1.40.1beta1
+pkgver=5.0.0beta1
 pkgrel=1
 pkgdesc="Signal Private Messenger for Linux"
 license=('GPL3')
-replaces=('signal-desktop-beta-bin')
+conflicts=('signal-desktop-beta-bin')
 arch=('x86_64')
 url="https://signal.org"
 depends=('libvips' 'libxss' 'hicolor-icon-theme')
-makedepends=('yarn' 'git' 'nodejs>=12.13.0' 'npm' 'python' 'git-lfs')
+makedepends=('yarn' 'git' 'nodejs' 'npm6' 'python' 'git-lfs')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${pkgname}.desktop"
   "openssl-linking.patch"
   "expire-from-source-date-epoch.patch"
 )
-sha512sums=('b686fbb2fcf100561818e6be789c50e135a1259eae9f78e9bed28312ca79c402c03e17b0756ea48013e688ffe2c06b98846e3286af10f53494b241d63f9c716b'
+sha512sums=('627fd34af01396d37ff558052277c7ad09b97dc4d8903ef4bbaca2311e2160b742687f89fe73917c37ebf8e48c9f2039f62d5dafc7aa2b7c0e78533e7457c39e'
             'b92c877f6673b3eaae94ca5623ab92f0e5676d439aaf7dc7424ce74f5a5786d30886e0b1013f0ef68a4ced53cdd16a2f78df8f1e41c039d61a980edf678f3e70'
             '6b846fdf70dae6c4657de523ec133d2f08325740863660b86e75d032bb07a4b97834ba0eeea4c77000c2c20b11739b8e8deaf06584f9279638e640c4b7633dd5'
             '6673066172d6c367961f3e2d762dd483e51a9f733d52e27d0569b333ad397375fd41d61b8a414b8c9e8dbba560a6c710678b3d105f8d285cb94d70561368d5a2')
@@ -31,9 +31,9 @@ prepare() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   git lfs install
+
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
-
   # Select node-gyp versions with python3 support
   sed 's#"node-gyp": "5.0.3"#"node-gyp": "6.1.0"#' -i package.json
   # https://github.com/sass/node-sass/pull/2841
