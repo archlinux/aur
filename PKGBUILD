@@ -2,7 +2,7 @@
 # Maintainer: Mado <madoushi@tutanota.com>
 
 pkgname=etterna
-pkgver=0.70.3
+pkgver=0.70.4
 pkgrel=1
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
