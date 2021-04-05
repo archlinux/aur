@@ -7,7 +7,7 @@ pkgbase = ospray-studio
 	license = Apache
 	makedepends = cmake
 	depends = glfw
-	depends = ospray-git>=2.5.0
+	depends = ospray
 	depends = openimagedenoise
 	depends = openimageio
 	depends = openexr
