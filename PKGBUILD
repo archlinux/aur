@@ -2,14 +2,14 @@
 
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=818.b2182ad
+pkgver=872.4df3d0d
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('any')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron9')
-makedepends=('git' 'npm' 'jq')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron')
+makedepends=('git' 'nvm' 'jq')
 source=("git+https://github.com/hovancik/stretchly.git")
 sha256sums=('SKIP')
 
@@ -21,7 +21,12 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    npm install electron@"$(cat /usr/lib/electron9/version)"
+    unset npm_config_prefix
+    . /usr/share/nvm/init-nvm.sh
+    _node_version=$(jq -r '.engines.node' package.json)
+    nvm ls "$_node_version" &>/dev/null || nvm install "$_node_version"
+    nvm exec "$_node_version" npm install \
+        electron@"$(cat /usr/lib/electron/version)"
 }
 
 build() {
@@ -33,9 +38,9 @@ build() {
     rm -Rf "${_unpackdir}"
     mkdir -p "${_unpackdir}"
     _outfile=dist/$(jq -r '"\(.name)-\(.version)"' package.json).pacman
-    npx electron-builder build --linux pacman \
-        -c.electronDist=/usr/lib/electron9 \
-        -c.electronVersion="$(cat /usr/lib/electron9/version)"
+    nvm exec "$_node_version" npx electron-builder build --linux pacman \
+        -c.electronDist=/usr/lib/electron \
+        -c.electronVersion="$(cat /usr/lib/electron/version)"
     tar -C "${_unpackdir}" -Jxf "${_outfile}"
 }
 
@@ -52,7 +57,7 @@ package() {
     install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
     cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
 #!/bin/sh
-exec electron9 /opt/$(printf '%q' "${_appname}")/resources/app.asar "\$@"
+exec electron /opt/$(printf '%q' "${_appname}")/resources/app.asar "\$@"
 EOF
     # Move everything into place
     mv "${_unpackdir}/"{usr,opt} "${pkgdir}"
