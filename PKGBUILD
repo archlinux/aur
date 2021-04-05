@@ -13,7 +13,7 @@ depends=('qt5-base' 'qt5-svg' 'qt5-webkit')
 makedepends=('git' 'gcc' 'make')
 provides=('cutycapt')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('fb2723487cc59632d201468e3a501b337259dd9e873f9e0f32f22682d56088c7')
+sha256sums=('c9a08c5a7b4bb3e9dba39e0eeb1d7611447c62346b4a3d66796988e4144fa894')
 
 build() {
     cd "$pkgname-$pkgver/src"
