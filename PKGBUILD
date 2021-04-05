@@ -3,7 +3,7 @@
 pkgname=arpfox-git
 _pkgname=${pkgname%-git}
 pkgdesc='An arpspoof alternative (written in Go) that injects spoofed ARP packets into a LAN.'
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64 i686 armv7h)
 url='https://github.com/malfunkt/arpfox'
 _branch='master'
 pkgver=v1.0.0.rc1.r4.gabfe404
