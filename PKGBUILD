@@ -1,7 +1,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=dnss-git
-pkgver=r126.c98400d
+pkgver=r129.da7faff
 pkgrel=1
 pkgdesc="DNSS is a daemon for using DNS over HTTPS"
 arch=(any)
