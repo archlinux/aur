@@ -2,13 +2,13 @@
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=phpctags
-pkgver=0.6.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="An enhanced PHP ctags index generator"
 arch=('any')
 license=('GPLv2')
 url='https://packagist.org/packages/techlivezheng/phpctags'
-depends=('php')
+depends=('php' 'composer')
 provides=('phpctags')
 conflicts=()
 optdepends=()
@@ -16,12 +16,15 @@ optdepends=()
 install='phpctags.install'
 
 source=("https://github.com/vim-php/phpctags/archive/$pkgver.zip")
-sha256sums=('0d995dc1c432b7b451b5e2cd03064047d5b30939f9b05b994a4630ea537a5afe')
+md5sums=('b2edf3a9384ac37cf301ad6deabf4ef1')
+
 
 package() {
   cd $pkgname-$pkgver
   ls -aslh
-  make
+  composer update --ignore-platform-req=php
+  php -dphar.readonly=0 buildPHAR.php
+  chmod +x build/phpctags.phar
   install -Dm755 build/phpctags.phar "$pkgdir/usr/bin/phpctags"
 }
 
