@@ -1,4 +1,5 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Contributor: yochanamarqos
 
 pkgname=python-torrentmirror
 _name=${pkgname#python-}
