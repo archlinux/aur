@@ -16,7 +16,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=13.0.0_r383813.61a55c8812e7
+pkgver=13.0.0_r384605.36d4f6d7f8ad
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -25,12 +25,15 @@ makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'py
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
                             'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-              'llvm-config.h')
+                'local://llvm-config.h'
+                'local://llvm-shlib_Create_object_libraries_for_each_component_and_link_against_them.patch')
 
 md5sums=('SKIP'
-         '295c343dcd457dc534662f011d7cff1a')
+         '295c343dcd457dc534662f011d7cff1a'
+         '5c9db72a8239005aaae0b2790c1df84f')
 sha512sums=('SKIP'
-            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
+            'ffc3d1bc65c3b28ecf2b593ffbdb1bc426dd8291219b2d2e219ab458d704687293246f4a31459b1ddb50e18482884a36815a47234bb02f59fb4280cf2223d8b1')
 options=('staticlibs')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
@@ -55,6 +58,11 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "$_pkgver"
+}
+
+prepare() {
+    cd llvm-project
+    patch --reverse --strip=1 --input="${srcdir}/llvm-shlib_Create_object_libraries_for_each_component_and_link_against_them.patch"
 }
 
 build() {
@@ -84,7 +92,8 @@ build() {
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D LLDB_USE_SYSTEM_SIX=1 \
-        -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
+        -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang" \
+        -Wno-dev
 
     ninja -C _build $NINJAFLAGS
     ninja -C _build $NINJAFLAGS ocaml_doc
