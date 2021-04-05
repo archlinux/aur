@@ -1,0 +1,14 @@
+pkgbase = bangin-server-node
+	pkgdesc = A basic web server around bangin written in Node.js.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/samhh/bangin-server-node
+	arch = any
+	license = MIT
+	depends = bangin
+	depends = nodejs
+	source = bangin-server-node-0.1.0.tar.gz::https://github.com/samhh/bangin-server-node/archive/0.1.0.tar.gz
+	sha256sums = 2518b4e1f635364cf129b0f2c278d1f4420c604350446f4c7cdbf2bce0087226
+
+pkgname = bangin-server-node
+
