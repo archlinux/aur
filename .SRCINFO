@@ -26,6 +26,7 @@ pkgbase = manimce
 	depends = python-manimpango
 	depends = python-mapbox-earcut
 	depends = python-moderngl-git
+	depends = python-moderngl-window
 	depends = python-glcontext
 	depends = python-pydub
 	optdepends = texlive-most: latex support

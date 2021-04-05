@@ -28,6 +28,7 @@ depends=(
 	'python-manimpango'
 	'python-mapbox-earcut'
 	'python-moderngl-git'
+	'python-moderngl-window'
 	'python-glcontext'
 	'python-pydub'
 )
