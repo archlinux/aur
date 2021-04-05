@@ -3,7 +3,7 @@
 pkgname=jellyfin-media-player-git
 pkgver=r1373.cbd48ec
 pkgrel=1
-pkgdesc='Next generation jellyfin Desktop Client'
+pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/iwalton3/jellyfin-media-player'
