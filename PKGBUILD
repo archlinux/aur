@@ -1,7 +1,7 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=madgraph
-pkgver=2.7.0
+pkgver=3.1.0
 _major=${pkgver%%.*}
 _minor=${pkgver#2.}
 _minor=${_minor%%.*}
@@ -27,18 +27,14 @@ optdepends=(
     'madgraph-pythia-pgs'
     'madgraph-pythia8-interface'
 )
-source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.${_minor}.x/+download/MG5_aMC_v${pkgver}.tar.gz"
-        "python2.patch"
-        "mg5_configuration.patch")
-sha256sums=('67001eecb5e8fc712eea5e1c1d016cd407db7d0c06f48c80610d4ae664341e4e'
-            '7f698c8c8ae934098fb3a736a93175d0428473090e01517a68e9e6231742d24d'
+source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.1.x/+download/MG5_aMC_v${pkgver}.tar.gz"
+"mg5_configuration.patch"
+        )
+sha256sums=('ea14cf6daa5b6c53dba1455c086e762cb8042d342451c9b88b2bde81098bf264'
             'a251d1bc6be29032c051cde8b0d050330b4777ff94fea6df5a495a9506c4eadc')
 options=("!strip")
 
 prepare() {
-    msg2 "Fixing python references for python2"
-    patch -p 1 -d $_dirname < python2.patch
-
     msg2 "Extracting documentation"
     cd "${srcdir}/${_dirname}"
     tar xf doc.tgz
@@ -54,7 +50,7 @@ prepare() {
 
 build() {
     msg2 "Compiling python source files"
-    python2 -O -m compileall -qf "${srcdir}/${_dirname}" 2>&1 1>/dev/null || true
+    python3 -O -m compileall -qf "${srcdir}/${_dirname}" 2>&1 1>/dev/null || true
 
     msg2 "Initialize MG5 first run"
     # MadGraph needs to generate `Template/LO/Source/make_opts` which is done
@@ -67,6 +63,7 @@ build() {
 
     msg2 "Updating configuration file"
     patch -p 1 -d $_dirname < mg5_configuration.patch
+
 }
 
 package() {

@@ -1,7 +1,6 @@
-diff --git a/input/mg5_configuration.txt b/input/mg5_configuration.txt
---- a/input/mg5_configuration.txt
-+++ b/input/mg5_configuration.txt
-@@ -45,11 +45,11 @@
+--- mg5_configuration.txt.orig	2021-03-30 05:50:51.000000000 +0800
++++ mg5_configuration.txt	2021-04-05 20:13:07.400120146 +0800
+@@ -46,11 +46,11 @@
  
  #! Prefered WebBrower
  #! If None: try to find one available on the system
@@ -15,7 +14,7 @@ diff --git a/input/mg5_configuration.txt b/input/mg5_configuration.txt
  
  #! Time allowed to answer question (if no answer takes default value)
  #!  0: No time limit
-@@ -59,14 +59,14 @@
+@@ -60,14 +60,14 @@
  #!  Defines the path to the pythia8 installation directory (i.e. the
  #!  on containing the lib, bin and include directories) .
  #!  If using a relative path, that starts from the mg5 directory
@@ -32,7 +31,7 @@ diff --git a/input/mg5_configuration.txt b/input/mg5_configuration.txt
  
  #! Herwig++/Herwig7 paths
  #!  specify here the paths also to HepMC ant ThePEG
-@@ -75,14 +75,14 @@
+@@ -76,14 +76,14 @@
  #!  WARNING: if Herwig7 has been installed with the bootstrap script,
  #!  then please set thepeg_path and hepmc_path to the same value as
  #!  hwpp_path
@@ -51,7 +50,7 @@ diff --git a/input/mg5_configuration.txt b/input/mg5_configuration.txt
  
  ################################################################################
  #  INFO FOR MADEVENT / aMC@NLO 
-@@ -136,19 +136,19 @@
+@@ -137,19 +137,19 @@
  
  #! Pythia-PGS Package
  #!  relative path start from main directory
@@ -75,17 +74,18 @@ diff --git a/input/mg5_configuration.txt b/input/mg5_configuration.txt
  
  #! ExRootAnalysis Package
  #!  relative path start from main directory
-@@ -157,15 +157,15 @@
+@@ -158,16 +158,16 @@
  #! TOPDRAWER PATH
  #!  Path to the directory containing td executables
  #!  relative path start from main directory
 -# td_path = ./td
 +td_path = td
  
- #! lhapdf-config
+ #! lhapdf-config --can be specify differently depending of your python version
  #!  If None: try to find one available on the system
--# lhapdf = lhapdf-config
-+lhapdf = lhapdf-config
+ # lhapdf_py2 = lhapdf-config
+-# lhapdf_py3 = lhapdf-config
++lhapdf_py3 = lhapdf-config
  
  #! fastjet-config
  #!  If None: try to find one available on the system
@@ -94,7 +94,7 @@ diff --git a/input/mg5_configuration.txt b/input/mg5_configuration.txt
  
  #! MCatNLO-utilities 
  #!  relative path starting from main directory
-@@ -185,7 +185,7 @@
+@@ -187,7 +187,7 @@
  #! if auto: try to find it automatically on the system (default)
  #! if '' or None: disabling Golem95
  #! if golem=/PATH/TO/golem/lib: use that speficif installation path for Golem95
