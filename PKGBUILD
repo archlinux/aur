@@ -5,7 +5,7 @@
 pkgname=midivisualizer-git
 _pkgname=midivisualizer
 pkgver=6.3.r2.gedb52a8
-pkgrel=2
+pkgrel=1
 pkgdesc='A small MIDI visualizer tool, using OpenGL'
 arch=('x86_64')
 url='https://github.com/kosua20/MIDIVisualizer'
@@ -30,11 +30,11 @@ build() {
 
 package() {
   install -Dm755 build/MIDIVisualizer "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$_pkgname"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+  cd "$_pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   for doc in README.md result{1,2,3}.png; do
-    install -Dm644 "$_pkgname/$doc" -t \
-                   "$pkgdir/usr/share/doc/$_pkgname"
+    install -Dm644 "$doc" -t "$pkgdir/usr/share/doc/$_pkgname"
   done
 }
 # vim:set ts=2 sw=2 et:

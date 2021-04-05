@@ -1,7 +1,7 @@
 pkgbase = midivisualizer-git
 	pkgdesc = A small MIDI visualizer tool, using OpenGL
 	pkgver = 6.3.r2.gedb52a8
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/kosua20/MIDIVisualizer
 	arch = x86_64
 	license = MIT
