@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: 0x9fff00 <0x9fff00+git@protonmail.ch>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: David McInnis <dave@dave3.xyz>
 # Contributor: jyantis <yantis@yantis.net>
