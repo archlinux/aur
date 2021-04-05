@@ -2,7 +2,7 @@
 
 pkgname=vscode-html-languageserver
 _parent=vscode
-pkgver=1.54.3
+pkgver=1.55.0
 pkgrel=1
 pkgdesc="HTML Language server from vscode"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(typescript npm)
 source=("$_parent-$pkgver.tar.gz::https://github.com/microsoft/vscode/archive/$pkgver.tar.gz"
 	"vscode-html-languageserver")
-sha256sums=('ea2cf3481b9a878aa5d4000289d238551d0ad4fe04ca2f3fea35bbe86026a369'
+sha256sums=('5a208d6cfaf35ea4d098c858faf2dff14092d74534c1b5966df87f1d5be24ef0'
             'SKIP')
 
 prepare() {
@@ -32,7 +32,7 @@ package() {
 	cd out
 	cp ../package.json .
 	npm pack
-	npm install -g --user root --prefix "${pkgdir}/usr" "$pkgname-$pkgver.tgz"
+	npm install -g --prefix "${pkgdir}/usr" "$pkgname-$pkgver.tgz"
 
 	# npm gives ownership of ALL FILES to build user
 	# https://bugs.archlinux.org/task/63396
