@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2021.04.01
+pkgver=2021.04.05
 pkgrel=1
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
@@ -38,7 +38,7 @@ build() {
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
-    --internal-urls '/^(https?:\/\/)?appleid\.apple\.com(\/.*)?$' \
+    --internal-urls '^(https?:\/\/)?(www\.notion\.so|appleid\.apple\.com)(\/.*)?$' \
     --maximize \
     --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/87.0" \
     --single-instance \
