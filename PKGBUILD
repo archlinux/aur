@@ -3,7 +3,7 @@
 pkgname=prometheus-ipmi-exporter
 _pkgname=ipmi_exporter
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter for IPMI metrics"
 arch=(x86_64)
 url="https://github.com/soundcloud/ipmi_exporter"
@@ -40,7 +40,7 @@ package() {
   # systemd files
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
+  install -Dm640 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
 
   cd "$_pkgname-$pkgver"
 

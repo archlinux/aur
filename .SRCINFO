@@ -1,7 +1,7 @@
 pkgbase = prometheus-ipmi-exporter
 	pkgdesc = Prometheus exporter for IPMI metrics
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soundcloud/ipmi_exporter
 	arch = x86_64
 	license = MIT
