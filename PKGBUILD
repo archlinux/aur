@@ -1,15 +1,15 @@
 # Maintainer: Omar Roth <omarroth@protonmail.com>
 
 pkgname=urbit
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="An operating function"
 arch=('x86_64')
 url="https://github.com/urbit/urbit"
 license=('MIT')
 conflicts=('urbit-git')
 source=($pkgname-$pkgver.tgz::https://bootstrap.urbit.org/$pkgname-v$pkgver-linux64.tgz)
-sha256sums=('abf73566281630b9f616c8fea13b228fdc392dfc8a6c5397727f660a0bd25412')
+sha256sums=('5c3242c183e61adbf3af7441071123bb87c78ffb106c31707127f5c8cb71c38b')
 
 package() {
   msg2 'Installing...'

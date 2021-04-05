@@ -1,13 +1,13 @@
 pkgbase = urbit
 	pkgdesc = An operating function
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/urbit/urbit
 	arch = x86_64
 	license = MIT
 	conflicts = urbit-git
-	source = urbit-1.2.tgz::https://bootstrap.urbit.org/urbit-v1.2-linux64.tgz
-	sha256sums = abf73566281630b9f616c8fea13b228fdc392dfc8a6c5397727f660a0bd25412
+	source = urbit-1.3.tgz::https://bootstrap.urbit.org/urbit-v1.3-linux64.tgz
+	sha256sums = 5c3242c183e61adbf3af7441071123bb87c78ffb106c31707127f5c8cb71c38b
 
 pkgname = urbit
 
