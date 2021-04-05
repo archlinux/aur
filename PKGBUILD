@@ -7,6 +7,7 @@ arch=('any')
 url="http://www.math.cmu.edu/~fho/jenn/"
 license=('GPL2')
 depends=('freeglut' 'glu' 'libpng')
+makedepends=('git')
 install="jenn3d.install"
 source=('git+https://github.com/fritzo/jenn3d'
 	'jenn.desktop' 'jenn3d.install')

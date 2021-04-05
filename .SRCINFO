@@ -6,6 +6,7 @@ pkgbase = jenn3d-git
 	install = jenn3d.install
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = freeglut
 	depends = glu
 	depends = libpng
