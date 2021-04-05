@@ -1,4 +1,5 @@
-# Maintainer: Tobias Müller <mintuser17 at gmail dot com>
+# Maintainer: Tobias Müller <mintuser17 at gmail dot com> (Package Maintainer)
+# Contributor: Markus Hadenfeldt <support at teaspeak dot de> (Program Maintainer)
 
 pkgname=teaspeak-client
 pkgver=1.5.1
