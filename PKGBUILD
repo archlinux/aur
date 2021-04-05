@@ -1,8 +1,8 @@
 # Maintainer: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-desktop-git
-pkgver=0.5
-pkgrel=5
+pkgver=0.7
+pkgrel=1
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -26,7 +26,7 @@ depends=(
         'slurp'
         'wdisplays'
         'kanshi'
-        'redshift-wayland-git'
+        'gammastep'
         'qt5-wayland'
         'qt5ct'
         'kvantum-qt5'
@@ -35,10 +35,11 @@ depends=(
         'brightnessctl'
         'pulseaudio-ctl'
         'playerctl'
-        'ydotool'
+        'wtype'
         'wlogout'
         'wofi'
         'nwg-launchers'
+        'nwg-panel'
         'bemenu-wlroots'
 		'perl-file-mimeinfo'
 		'xdg-user-dirs-gtk'
@@ -52,7 +53,7 @@ optdepends=(
         'grub-btrfs: grub menuentry for btrfs snapshots'
         'blueberry: for bluetooth'
         'connman-gtk: for connman gtk frontend'
-        'greetd-gtkgreet: recommonded display manager'
+        'greetd-qtgreet: recommonded display manager'
         'xorg-server-xwayland: xwayland support'
         'xorg-xhost: to run xwayland apps with elevated privilage'
         'mpv: recommended video player'
