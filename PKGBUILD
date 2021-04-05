@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Basic system information fetcher, written in Rust"
 
@@ -22,11 +22,6 @@ prepare() {
 build() {
 	cd "$pkgname"
 	cargo build --release
-}
-
-check() {
-	cd "$pkgname"
-	cargo test --release
 }
 
 package() {
