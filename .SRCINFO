@@ -1,0 +1,19 @@
+pkgbase = perl-mojolicious-plugin-bcryptsecure
+	pkgdesc = Securely bcrypt and validate your passwords
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mojolicious-Plugin-BcryptSecure
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-mojolicious
+	makedepends = perl-module-build-tiny
+	depends = perl-crypt-urandom
+	depends = perl-crypt-eksblowfish
+	depends = perl-mojolicious
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRCHULO/Mojolicious-Plugin-BcryptSecure-0.02.tar.gz
+	sha512sums = 5eba8e910cef82229747007891edeb2e5cc1c73a732ca7e0c45adeca951272cf4c0371df929c31caab27f954369cffd55e2f7c2583fa22075266a3c52e53ab37
+
+pkgname = perl-mojolicious-plugin-bcryptsecure
+
