@@ -24,9 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $_pkgname
-  mkdir build
-  go mod tidy
+  mkdir -p "${pkgname}/build"
 }
 
 build() {
