@@ -1,0 +1,19 @@
+pkgbase = python-cutie
+	pkgdesc = Command line User Tools for Input Easification
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Kamik423/cutie
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorama
+	depends = python-readchar
+	source = https://pypi.org/packages/source/c/cutie/cutie-0.2.2.tar.gz
+	source = https://raw.githubusercontent.com/Kamik423/cutie/master/license.md
+	source = https://raw.githubusercontent.com/Kamik423/cutie/master/readme.md
+	sha256sums = 5e38711dedc2efec4f62290f30bc9ad4b489de33fe2d84efafb3611971bc4a91
+	sha256sums = b9a6af81b2d9c1ee676c80ba084e15a8d4d81b108ec01e9464dd73aa5f6e55ae
+	sha256sums = 3252f16614750de229409cb373108d496f434287b85024eceb4948185e393b80
+
+pkgname = python-cutie
