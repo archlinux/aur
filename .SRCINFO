@@ -1,17 +1,17 @@
-pkgbase = zsa-wally-cli
+pkgbase = zsa-wally-cli-bin
 	pkgdesc = Wally: Flash your ZSA Keyboard the EZ way.
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zsa/wally-cli
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = libusb
 	provides = wally-cli
-	source = wally-cli-2.0.0-3::https://github.com/zsa/wally-cli/releases/download/2.0.0-linux/wally-cli
+	source = wally-cli-2.0.0-4::https://github.com/zsa/wally-cli/releases/download/2.0.0-linux/wally-cli
 	source = 50-wally-cli.rules
 	sha256sums = a38f731cc1a89d32a5cb9e377d2ec24280cb5d2fc0b34b1cb05464305fb38800
 	sha256sums = SKIP
 
-pkgname = zsa-wally-cli
+pkgname = zsa-wally-cli-bin
 

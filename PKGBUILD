@@ -1,8 +1,8 @@
 # Maintainer: Jiří Prokop <jprokop@synaptiko.cz>
 
-pkgname=zsa-wally-cli
+pkgname=zsa-wally-cli-bin
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally-cli"
