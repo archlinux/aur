@@ -2,7 +2,7 @@
 
 pkgname=python-pypykatz
 _pkgname=pypykatz
-pkgver=0.3.15
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Partial Mimikatz implementation in pure Python."
 url="https://pypi.org/project/pypykatz/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-minidump' 'python-minikerberos' 'python-winsspi' 'python-msldap' 'python-aiowinreg')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('718618aabf115d06136007fb4cd6bf3baf98ffc004c5bd90baf8d0cd9546d0e5')
+sha256sums=('77b06ab8c9f7682cd79ecc351e0b6201ff0d46595a42cc9ed1be4dfbbea5c2b6')
 
 package() {
   cd ${_pkgname}-${pkgver}
