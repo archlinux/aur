@@ -1,0 +1,24 @@
+pkgbase = npm6
+	pkgdesc = A package manager for javascript.
+	pkgver = 6.14.11
+	pkgrel = 1
+	url = https://www.npmjs.com/
+	arch = any
+	license = custom:Artistic
+	makedepends = libgl
+	makedepends = libxi
+	makedepends = marked
+	makedepends = marked-man
+	makedepends = procps-ng
+	makedepends = python
+	depends = nodejs
+	depends = node-gyp
+	depends = semver
+	provides = npm=6.14.11
+	conflicts = npm
+	options = !emptydirs
+	source = npm6-6.14.11.tar.gz::https://github.com/npm/cli/archive/v6.14.11.tar.gz
+	sha512sums = ad8e6c72c82f1b982fc5aaafcca96d40e26c1e8b6b09d41de68118574019bd6a9253acddf0c91384fa6c4c8d96a5ffac0a3c8e497f35b29e2e99f35c1bc21644
+
+pkgname = npm6
+
