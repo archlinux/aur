@@ -1,7 +1,7 @@
 # Maintainer: Wenxuan Zhang <wenxuangm@gmail.com>
 _pkgname=csview
 pkgname=csview
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A high performance csv viewer with cjk/emoji support"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ conflicts=("csview-git" "csview-bin")
 provides=()
 
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('0b7cfed3f8a7b59c316637dfd07b4038')
+md5sums=('d23c7a97873c05a72556862d32ba137f')
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}"
