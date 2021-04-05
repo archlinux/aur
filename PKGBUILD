@@ -13,7 +13,7 @@ makedepends=('rust' 'gcc')
 conflicts=(proton-caller-git)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
-sha256sums=('ca7fca6fea3afac55b2a69c83cb8f4c4057e4df0726380f0df3079f6e52cb4d1')
+sha256sums=('934cc0ba60e6963379329696e6f703809d627dce0097a4c10e0023cd09805191')
 
 build() {
   cd "$srcdir/$__pkgname-$pkgver"
