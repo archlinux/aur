@@ -2,7 +2,7 @@
 
 pkgname=carvel-tools
 pkgdesc="Set of Carvel (k14s) tools: ytt kbld kapp kwt imgpkg vendir"
-pkgver=20210330
+pkgver=20210405
 pkgrel=1
 url="https://carvel.dev"
 arch=(x86_64)
@@ -15,7 +15,7 @@ ytt-v0.31.0::https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.31.
 kbld-v0.29.0::https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.29.0/kbld-linux-amd64
 kapp-v0.36.0::https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.36.0/kapp-linux-amd64
 kwt-v0.0.6::https://github.com/vmware-tanzu/carvel-kwt/releases/download/v0.0.6/kwt-linux-amd64
-imgpkg-v0.5.0::https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.5.0/imgpkg-linux-amd64
+imgpkg-v0.6.0::https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.6.0/imgpkg-linux-amd64
 vendir-v0.18.0::https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.18.0/vendir-linux-amd64
 )
 sha256sums=(
@@ -23,7 +23,7 @@ sha256sums=(
 28492a398854e8fec7dd9537243b07af7f43e6598e1e4557312f5481f6840499
 22fe308f1d9ebbb829a6ea10ca80d9468ff4b9aa911b0c33788fe67d04ccb383
 92a1f18be6a8dca15b7537f4cc666713b556630c20c9246b335931a9379196a0
-90dff1d3d88d51a1f73687f9239265afd8bc5275c9f3bc51e4d8f2f381b01f41
+b0d29d28a28db5632ce48cd9ea414ae1d3c9da382c96c72abb9961587ffb657f
 d36b6ef34cb43966ebf7404edb83b30d9f819b62ea5bc08b1dadb805fd72ce1a
 )
 
@@ -32,6 +32,6 @@ install -Dm 755 "${srcdir}/ytt-v0.31.0" "${pkgdir}/usr/bin/ytt"
 install -Dm 755 "${srcdir}/kbld-v0.29.0" "${pkgdir}/usr/bin/kbld"
 install -Dm 755 "${srcdir}/kapp-v0.36.0" "${pkgdir}/usr/bin/kapp"
 install -Dm 755 "${srcdir}/kwt-v0.0.6" "${pkgdir}/usr/bin/kwt"
-install -Dm 755 "${srcdir}/imgpkg-v0.5.0" "${pkgdir}/usr/bin/imgpkg"
+install -Dm 755 "${srcdir}/imgpkg-v0.6.0" "${pkgdir}/usr/bin/imgpkg"
 install -Dm 755 "${srcdir}/vendir-v0.18.0" "${pkgdir}/usr/bin/vendir"
 }
