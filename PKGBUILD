@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-custom-hot-corners
 _pkgname=custom-hot-corners
-pkgver=0.8
+pkgver=0.10
 pkgrel=1
 pkgdesc="A GNOME Shell Extension for customizable hot corners"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/janxyz/custom-hot-corners"
 license=('GPL3')
 depends=('gnome-shell')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('53eff790dc5bc631714b018bd2a13cb83fa307a851dd6ea30df81c0e424cc9f1')
+sha256sums=('ef61fd2136d158781a8a055530a73268883caae3674aabba4aaf67766660f7f6')
 
 
 build() {
