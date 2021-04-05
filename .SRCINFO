@@ -1,13 +1,13 @@
 pkgbase = npm6
 	pkgdesc = A package manager for javascript.
 	pkgver = 6.14.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.npmjs.com/
 	arch = any
 	license = custom:Artistic
 	makedepends = libgl
 	makedepends = libxi
-	makedepends = marked
+	makedepends = marked0.8
 	makedepends = marked-man
 	makedepends = procps-ng
 	makedepends = python
