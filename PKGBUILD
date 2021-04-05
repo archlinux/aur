@@ -1,15 +1,15 @@
 # Maintainer: Bruce Zhang
 pkgname=fontbase
-pkgver=2.11.3
-pkgrel=2
+pkgver=2.14.0
+pkgrel=1
 pkgdesc="FontBase is the font manager of the new generation, built by designers, for designers."
 arch=('x86_64' 'i686')
 url="https://fontba.se/"
 license=('custom:FontBase')
-depends=('electron')
+depends=('electron11')
 makedepends=('p7zip')
 source=("$pkgname-$pkgver.AppImage::https://releases.fontba.se/linux/FontBase-$pkgver.AppImage")
-md5sums=('f4eea68f860f17f6e338c632299b38dc')
+md5sums=('b7ac76d50e37d28c539f61a1f9a8ed44')
 
 prepare() {
 	mkdir -p "$pkgname"
@@ -30,7 +30,7 @@ package() {
 
 	# Install start script
 	echo "#!/usr/bin/env sh
-exec electron /usr/share/fontbase/app.asar \$@
+exec electron11 /usr/share/fontbase/app.asar \$@
 " > "$srcdir/fontbase.sh"
 	install -Dm755 "$srcdir/fontbase.sh" "$pkgdir/usr/bin/fontbase"
 
