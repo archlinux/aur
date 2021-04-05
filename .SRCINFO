@@ -1,7 +1,7 @@
 pkgbase = prometheus-snmp-exporter
 	pkgdesc = Prometheus exporter for SNMP metrics
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prometheus/snmp_exporter
 	install = prometheus-snmp-exporter.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=prometheus-snmp-exporter
 _pkgname=snmp_exporter
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter for SNMP metrics"
 arch=(x86_64)
 url="https://github.com/prometheus/snmp_exporter"
@@ -47,7 +47,7 @@ package() {
   # systemd files
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
+  install -Dm640 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
 
   cd "$_pkgname-$pkgver"
 
