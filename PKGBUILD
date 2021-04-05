@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=26.1.2.r186.g01c00cf27
+pkgver=27.0.0.rc1.r9.g38d17acdb
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
          "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
              "vlc" "swig" "luajit" "python" "cef-minimal>=87.0.0" "wayland"
-             "qt5-wayland")
+             "qt5-wayland" "pipewire")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "libva-intel-driver: hardware encoding"
@@ -27,14 +27,10 @@ conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git"
+        "git+https://github.com/obsproject/obs-vst.git"
         "fix_python_binary_loading.patch")
-md5sums=("SKIP" "SKIP" "SKIP"
+md5sums=("SKIP" "SKIP" "SKIP" "SKIP"
          "051b90f05e26bff99236b8fb1ad377d1")
-
-prepare() {
-  cd $pkgname
-  patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
-}
 
 pkgver() {
   cd $pkgname
@@ -43,8 +39,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
+  git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git submodule update
 }
 
