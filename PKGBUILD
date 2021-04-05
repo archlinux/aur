@@ -5,8 +5,8 @@
 
 pkgname=notion-app
 pkgver=2.0.11
-pkgrel=3
-epoch=1
+pkgrel=1
+epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
