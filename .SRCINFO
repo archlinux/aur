@@ -1,0 +1,25 @@
+pkgbase = rare-dev
+	pkgdesc = Unstable version of Rare a GUI for legendary. An Epic Games Launcher open source alternative.
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/Dummerle/Rare
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = gendesk
+	depends = legendary
+	depends = python-pillow
+	depends = python-qtawesome
+	depends = python-requests
+	depends = python-setuptools
+	depends = python-wheel
+	provides = rare-git
+	provides = rare
+	conflicts = rare-git
+	conflicts = rare
+	source = rare-dev::git+https://github.com/Dummerle/Rare.git
+	sha256sums = SKIP
+
+pkgname = rare-dev
+
