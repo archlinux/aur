@@ -2,13 +2,13 @@
 
 pkgname=veloren-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
 license=('GPL3')
 options=('!strip')
-depends=('systemd-libs' 'alsa-lib' 'libxcb')
+depends=('systemd-libs' 'alsa-lib' 'libxcb' 'pulseaudio-alsa')
 makedepends=()
 provides=("$pkgname" 'veloren')
 conflicts=("$pkgname" 'veloren')
