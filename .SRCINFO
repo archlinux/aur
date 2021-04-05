@@ -6,7 +6,6 @@ pkgbase = moe
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = texinfo
 	depends = ncurses
 	backup = etc/moerc
 	source = http://ftpmirror.gnu.org/moe/moe-1.11.tar.lz

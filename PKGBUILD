@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/moe/moe.html'
 license=('GPL')
 depends=('ncurses')
-makedepends=('texinfo')
 backup=('etc/moerc')
 source=(http://ftpmirror.gnu.org/moe/$pkgname-$pkgver.tar.lz)
 md5sums=('ccd9326e87f28ad584d638910ab45a87')
