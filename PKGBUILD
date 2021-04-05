@@ -2,41 +2,26 @@
 
 # Maintainer: George Kranis https://github.com/gkranis/vdr4arch
 pkgname=vdr-eepg
-pkgver=0.0.5_242_g32b4e66
-_gitver=32b4e669bf8bc6e3336073616c121f10b8518fe8
+pkgver=0.0.6
 _vdrapi=2.4.6
-pkgrel=2
+pkgrel=1
 pkgdesc="Extended EPG (EEPG) plugin for VDR"
-url="http://projects.vdr-developer.org/projects/plg-eepg"
+url="https://github.com/vdr-projects/vdr-plugin-eepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git+https://projects.vdr-developer.org/git/vdr-plugin-eepg.git#commit=$_gitver"
-        "$pkgname-fix_sscanf.patch")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-eepg/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('SKIP'
-            'bb6213bbe4941b92ec2e6d9852d72d9a3186d99e9a0e65ee082f9cc971c10e51')
-
-pkgver() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  git describe --tags | sed 's/-/_/g;s/eepg_//g'
-}
-
-prepare() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-
-  patch -p1 -i "$srcdir/$pkgname-fix_sscanf.patch"
-}
+sha256sums=('c603c2c5683c002ad0f0e79c0e91247283b49dfc73211a4923df2ff209a0e771')
 
 build() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
   make
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
   make DESTDIR="${pkgdir}" install
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
