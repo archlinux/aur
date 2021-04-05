@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: 0x9fff00 <0x9fff00+git@protonmail.ch>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
