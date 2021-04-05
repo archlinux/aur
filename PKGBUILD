@@ -1,13 +1,13 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Andrew Gunnerson <accounts+arch@chiller3.com>
 
 pkgname=baad
 pkgver=01
 pkgrel=1
 pkgdesc="Extracts various sections from the Twilight Princess Z2Sound.baa file"
 arch=('i686' 'x86_64')
-url="http://hcs64.com/files/"
+url="https://hcs64.com/files/"
 license=('GPL')
-source=("http://hcs64.com/files/${pkgname}${pkgver}.zip")
+source=("https://hcs64.com/files/${pkgname}${pkgver}.zip")
 sha512sums=('a7dcb1d70460fee85955bd25df2839c0d1302dff8ca97d3d231445ebff81dfd8887595211e19d52df03cce984103501512884b1e5a56b794992e15e78e9a649a')
 
 build() {
