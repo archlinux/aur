@@ -4,7 +4,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
 pkgver=27.0.0.rc1.r9.g38d17acdb
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -13,7 +13,7 @@ depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
          "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
              "vlc" "swig" "luajit" "python" "cef-minimal>=87.0.0" "wayland"
-             "qt5-wayland" "pipewire")
+             "qt5-wayland" "pipewire" "xdg-desktop-portal")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "libva-intel-driver: hardware encoding"
@@ -21,7 +21,9 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "vlc: VLC Media Source"
             "luajit: Lua scripting"
             "python: Python scripting"
-            "v4l2loopback-dkms: Virtual webcam")
+            "v4l2loopback-dkms: Virtual webcam"
+            "pipewire: Pipewire capture"
+            "xdg-desktop-portal: Pipewire capture")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"

@@ -1,7 +1,7 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming.
 	pkgver = 27.0.0.rc1.r9.g38d17acdb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = obs-studio-git
 	makedepends = wayland
 	makedepends = qt5-wayland
 	makedepends = pipewire
+	makedepends = xdg-desktop-portal
 	depends = ffmpeg
 	depends = jansson
 	depends = libxinerama
@@ -37,6 +38,8 @@ pkgbase = obs-studio-git
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: Virtual webcam
+	optdepends = pipewire: Pipewire capture
+	optdepends = xdg-desktop-portal: Pipewire capture
 	provides = obs-studio=27.0.0.rc1.r9.g38d17acdb
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
