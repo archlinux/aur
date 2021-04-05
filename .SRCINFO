@@ -39,8 +39,8 @@ pkgname = linux-logo
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = virtualbox-guest-modules-arch
-	replaces = wireguard-arch
+	conflicts = virtualbox-guest-modules-arch
+	conflicts = wireguard-arch
 
 pkgname = linux-logo-headers
 	pkgdesc = Headers and scripts for building modules for the Linux with tux logo kernel
