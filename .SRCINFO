@@ -1,6 +1,6 @@
 pkgbase = lxc-git
 	pkgdesc = Linux Containers git version
-	pkgver = 4.0.0.r873.g07f89a4fa
+	pkgver = 4.0.0.r1482.gd75ddd9b1
 	pkgrel = 1
 	url = https://linuxcontainers.org
 	arch = x86_64

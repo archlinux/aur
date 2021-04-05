@@ -7,7 +7,7 @@
 
 pkgname=lxc-git
 _pkgname=lxc
-pkgver=4.0.0.r873.g07f89a4fa
+pkgver=4.0.0.r1482.gd75ddd9b1
 pkgrel=1
 pkgdesc="Linux Containers git version"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -24,8 +24,11 @@ backup=('etc/lxc/default.conf'
   'etc/default/lxc')
 provides=($_pkgname)
 conflicts=($_pkgname lxc-git)
+
 source=(
   git://github.com/lxc/lxc
+  # to build from the stable branch instead of master use
+  # git://github.com/lxc/lxc#branch=stable-4.0
   lxc.tmpfiles.d
   lxc.service
   lxc-auto.service)
