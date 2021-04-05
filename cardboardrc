@@ -33,5 +33,5 @@ done
 cutter bind $mod+shift+space toggle_floating
 
 # Autostart stuff
-cutter exec toolbox run swaybg -i ~/wallpapers/autobahn.png
-cutter exec toolbox run waybar
+cutter exec run swaybg -i ~/wallpapers/autobahn.png
+cutter exec run waybar

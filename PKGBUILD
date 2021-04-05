@@ -2,7 +2,7 @@
 pkgname=cardboard-git
 _pkgname=cardboard
 pkgver=r300.f2ef2ff
-pkgrel=2
+pkgrel=3
 license=("GPL3")
 pkgdesc="A unique, scrollable tiling Wayland compositor designed with laptops in mind."
 makedepends=(git meson ninja wayland-protocols)
@@ -22,7 +22,7 @@ url="https://gitlab.com/cardboardwm/cardboard"
 source=("git+https://gitlab.com/cardboardwm/cardboard.git"
 cardboardrc)
 sha512sums=('SKIP'
-'682d0ce694a89fd874c6e3c5d18dc863797de7ab99551b8bd1b87e238a41752a67b796649448bd1094375db0d993e33f0cba054741c43e037a7b239b3278ad5a')
+'0bfb9456b5ff88048c7fffe7b632c3fb7adda0891f7a6be7fdd0f256b289958cbdce723446b23d1e0eb5a1d73f8bace391671d3acd78772d9468e5db4802efa6')
 provides=("cardboard")
 conflicts=("cardboard")
 install=cardboard.install
