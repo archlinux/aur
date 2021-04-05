@@ -21,7 +21,7 @@ pkgbase = katcr
 	depends = python-torrentmirror-git
 	depends = python-cutie-git
 	optdepends = libtorrent: Streaming support
-	optdepends = python-torrentstream-git: Streaming support
+	optdepends = python-torrentstream: Streaming support
 	source = katcr-3.0.7.tar.gz::https://github.com/XayOn/katcr/archive/refs/tags/3.0.7.tar.gz
 	sha512sums = bda97dcdebb88d83c880a6ef97d1fd850ed088a160142bb5a501469279ce4706a13e8f376f087f0329553b107dccc981312e71221a40bb28bbd0b9bb5436efa8
 
