@@ -2,7 +2,7 @@
 
 pkgname=python-pyro-api
 _pypiname=${pkgname/python-/}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Generic API for dispatch to Pyro backends."
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python')
 optdepends=('flake8' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-pytest' 'ipython')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/ea/33/74c3b62306a0c496208038a7f573d4dbe12f74c1db91ca96b5a055020bb9/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('bf3942773a9982908e907d2bbc70a27bd3f5bc3eb7c7b6a8db5bb81bcc3d0d66')
+source=("https://files.pythonhosted.org/packages/25/d7/a0812f5c16b0d4464f80a64a44626c5fe200098070be0f32436dbb662775/${_pypiname}-${pkgver}.tar.gz")
+sha256sums=('a1b900d9580aa1c2fab3b123ab7ff33413744da7c5f440bd4aadc4d40d14d920')
 
 build() {
   cd $srcdir/${_pypiname}-${pkgver}
