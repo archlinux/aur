@@ -1,8 +1,8 @@
-# Maintainer: Anton Karmanov <bergentroll@insiberia.net>
+# Maintainer: Anton Karmanov <a.karmanov@inventati.org>
 
 pkgname=libgraph
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Lib Graphics — Turbo C's graphics.h on Linux"
 arch=('x86_64')
 url="https://savannah.nongnu.org/projects/libgraph"
@@ -13,7 +13,7 @@ md5sums=('6093bf0a9a65a5b873836276c9954194')
 
 build() {
     cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr
+    env CFLAGS="$CFLAGS -fcommon" ./configure --prefix=/usr
     make
 }
 
