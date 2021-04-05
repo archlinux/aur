@@ -1,15 +1,15 @@
 pkgbase = sendanywhere
 	pkgdesc = Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time.
-	pkgver = 21.3.26
+	pkgver = 21.4.2
 	pkgrel = 1
 	url = http://send-anywhere.com
 	arch = x86_64
 	license = custom
 	makedepends = asar
 	depends = electron8
-	source = sendanywhere-21.3.26.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb
+	source = sendanywhere-21.4.2.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb
 	source = LICENSE
-	sha512sums = bf958acbbaed096db7727c7c1e58ac6de114ce25cb139d9121323e9602ba5267cf43d83ada7d932e1a4a2838c7d9b2739de2437bca17501fd1825cff0d4a39f8
+	sha512sums = f24d7ca3cf872efae85a5381fe61d2611371e5fb2611ca584ca0aadfbd76398adf88923b06284b62256e2a831de24406bb8df79e418b7a5906c6b7e86465d208
 	sha512sums = aeb97a12f246d78cbf202354148b429a037997d68087bceed5d5ce5036443d779c2535138b54347579ddf05994a61b9333913f9261733f367d02e0e9cf7d0b5e
 
 pkgname = sendanywhere
