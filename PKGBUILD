@@ -13,7 +13,7 @@ md5sums=('04e5537975c03ed0025ffec8a93d5a08'
          'ea81d6c495cea2018d548ec571061150')
 provides=('denise')
 conflicts=('denise-bin' 'denise-git')
-depends=('sdl2' 'gtk3')
+depends=('sdl2' 'gtk3' 'openal' 'libpulse')
 arch=('i686' 'x86_64')
 
 prepare() {
