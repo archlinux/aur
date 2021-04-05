@@ -1,73 +1,38 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 91f8673..9d7b47a 100644
+index 99fd4be..a11aa79 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
-@@ -65,7 +65,7 @@ endif
- 
- CC32 := $(CC) -m32 -mstackrealign
- CXX32 := $(CXX) -m32 -mstackrealign
--PKG_CONFIG32 := i686-linux-gnu-pkg-config
-+PKG_CONFIG32 := i686-pc-linux-gnu-pkg-config
- 
- cc-option = $(shell if test -z "`echo 'void*p=1;' | \
-               $(1) $(2) -S -o /dev/null -xc - 2>&1 | grep -- $(2) -`"; \
-@@ -88,13 +88,13 @@ endif
- 
- ifneq ($(STEAMRT_IMAGE),)
- SUBMAKE_JOBS ?= 36
--MAKE := make -j$(SUBMAKE_JOBS)
- CONTAINER_SHELL := $(DOCKER_BASE) /bin/bash
- STEAM_RUNTIME_RUNSH := $(DOCKER_BASE)
+@@ -48,7 +48,6 @@ include $(SRC)/make/rules-cargo.mk
+ ifeq ($(ENABLE_CCACHE),1)
+ 	CCACHE_BIN := ccache
  else
- CONTAINER_SHELL := $(SHELL)
- STEAM_RUNTIME_RUNSH :=
- endif
-+MAKE := make -j$(SUBMAKE_JOBS)
- 
- .PHONY: test-container
- test-container:
-@@ -141,7 +141,8 @@ else
-     MESON_STRIP_ARG := --strip
+-	export CCACHE_DISABLE = 1
  endif
  
--OPTIMIZE_FLAGS := -O2 -march=nocona $(call cc-option,$(CC),-mtune=core-avx2,) -mfpmath=sse
-+CFLAGS ?= -O2 -march=nocona $(call cc-option,$(CC),-mtune=core-avx2,)
+ DOCKER_BASE = docker run --rm -e HOME -e USER -e USERID=$(shell id -u) -u $(shell id -u):$(shell id -g) \
+@@ -141,7 +140,8 @@ else
+ endif
+ 
+ CROSSLDFLAGS   += -Wl,--file-alignment,4096
+-OPTIMIZE_FLAGS := -O2 -march=nocona -mtune=core-avx2 -mfpmath=sse
++CFLAGS         ?= -O2 -march=nocona -mtune=core-avx2
 +OPTIMIZE_FLAGS := $(CFLAGS) -mfpmath=sse
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
- COMMON_FLAGS   := $(OPTIMIZE_FLAGS) $(SANITY_FLAGS)
- CARGO_BUILD_ARG := --release
-@@ -353,9 +354,17 @@ DIST_WINEOPENXR_JSON64 := $(DIST_PREFIX)/drive_c/openxr/wineopenxr64.json
- DIST_WINEOPENXR64 := $(DIST_PREFIX)/drive_c/windows/system32/wineopenxr.dll
- 
- DIST_TARGETS := $(DIST_COPY_TARGETS) $(DIST_OVR32) $(DIST_OVR64) \
--                $(DIST_GECKO32) $(DIST_GECKO64) $(DIST_WINEMONO) \
-                 $(DIST_COMPAT_MANIFEST) $(DIST_LICENSE) $(DIST_TOOLMANIFEST) $(DIST_OFL_LICENSE) $(DIST_FONTS)
- 
-+ifneq ($(SYSTEM_GECKO),1) # May be disabled by configure
-+	DIST_TARGETS += $(DIST_GECKO32)
-+	DIST_TARGETS += $(DIST_GECKO64)
-+endif # SYSTEM_GECKO
-+
-+ifneq ($(SYSTEM_MONO),1) # May be disabled by configure
-+	DIST_TARGETS += $(DIST_WINEMONO)
-+endif # SYSTEM_MONO
-+
- DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_TOOLMANIFEST) $(DIST_OFL_LICENSE)
- REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
- 
-@@ -443,8 +452,8 @@ ALL_TARGETS += dist
+ DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
+ COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
+@@ -320,8 +320,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
  dist_prefix: wine gst_good
--	find $(DST_DIR)/lib/wine -type f -execdir chmod a-w '{}' '+'
--	find $(DST_DIR)/lib64/wine -type f -execdir chmod a-w '{}' '+'
-+	find $(DST_DIR)/lib/wine -type f -execdir chmod go-w '{}' '+'
-+	find $(DST_DIR)/lib64/wine -type f -execdir chmod go-w '{}' '+'
+-	find $(DST_LIBDIR32)/wine -type f -execdir chmod a-w '{}' '+'
+-	find $(DST_LIBDIR64)/wine -type f -execdir chmod a-w '{}' '+'
++	find $(DST_LIBDIR32)/wine -type f -execdir chmod go-w '{}' '+'
++	find $(DST_LIBDIR64)/wine -type f -execdir chmod go-w '{}' '+'
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -486,6 +495,8 @@ module64:
- module: module32 module64
+@@ -369,6 +369,8 @@ endif # ifeq ($(CONTAINER),)
+ ##
  
  GST_COMMON_MESON_ARGS := \
 +	-Db_lto=true \
@@ -75,32 +40,15 @@ index 91f8673..9d7b47a 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -502,6 +513,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -381,6 +383,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
- 	$(GST_COMMON_MESON_ARGS) \
+ 	-Dorc-test=disabled \
 +	-Dpackage-name="GStreamer Orc (Proton)" \
- 	-Dorc-test=disabled
+ 	$(GST_COMMON_MESON_ARGS)
  
- 
-@@ -553,14 +565,14 @@ gst_orc64: SHELL = $(CONTAINER_SHELL)
- gst_orc64: $(GST_ORC_CONFIGURE_FILES64)
- 	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GST_ORC_OBJ64)" install
-+	ninja -v -C "$(GST_ORC_OBJ64)" install
- 	cp -a $(TOOLS_DIR64)/lib/liborc* $(DST_DIR)/lib64/
- 
- gst_orc32: SHELL = $(CONTAINER_SHELL)
- gst_orc32: $(GST_ORC_CONFIGURE_FILES32)
- 	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GST_ORC_OBJ32)" install
-+	ninja -v -C "$(GST_ORC_OBJ32)" install
- 	cp -a $(TOOLS_DIR32)/lib/liborc* $(DST_DIR)/lib/
- 
- ##
-@@ -572,6 +584,9 @@ GSTREAMER_MESON_ARGS := \
+ $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
+@@ -397,6 +400,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -109,160 +57,156 @@ index 91f8673..9d7b47a 100644
 +	-Dpackage-name="GStreamer (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
- GSTREAMER_CONFIGURE_FILES32 := $(GSTREAMER_OBJ32)/build.ninja
-@@ -622,7 +637,7 @@ gstreamer64: SHELL = $(CONTAINER_SHELL)
- gstreamer64: $(GSTREAMER_CONFIGURE_FILES64)
- 	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GSTREAMER_OBJ64)" install
-+	ninja -v -C "$(GSTREAMER_OBJ64)" install
- 	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
- 	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
- 
-@@ -630,7 +645,7 @@ gstreamer32: SHELL = $(CONTAINER_SHELL)
- gstreamer32: $(GSTREAMER_CONFIGURE_FILES32)
- 	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GSTREAMER_OBJ32)" install
-+	ninja -v -C "$(GSTREAMER_OBJ32)" install
- 	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
- 	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
- 
-@@ -664,6 +679,7 @@ GST_BASE_MESON_ARGS := \
+ GSTREAMER_DEPENDS = gst_orc
+@@ -435,6 +441,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
 +	-Dpackage-name="GStreamer Base Plugins (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
- GST_BASE_CONFIGURE_FILES32 := $(GST_BASE_OBJ32)/build.ninja
-@@ -714,7 +730,7 @@ gst_base64: SHELL = $(CONTAINER_SHELL)
- gst_base64: $(GST_BASE_CONFIGURE_FILES64)
- 	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GST_BASE_OBJ64)" install
-+	ninja -v -C "$(GST_BASE_OBJ64)" install
- 	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
- 	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
- 
-@@ -722,7 +738,7 @@ gst_base32: SHELL = $(CONTAINER_SHELL)
- gst_base32: $(GST_BASE_CONFIGURE_FILES32)
- 	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GST_BASE_OBJ32)" install
-+	ninja -v -C "$(GST_BASE_OBJ32)" install
- 	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
- 	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
- 
-@@ -780,6 +796,7 @@ GST_GOOD_MESON_ARGS := \
+ GST_BASE_DEPENDS = gst_orc gstreamer
+@@ -496,6 +503,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
 +	-Dpackage-name="GStreamer Good Plugins (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
- GST_GOOD_CONFIGURE_FILES32 := $(GST_GOOD_OBJ32)/build.ninja
-@@ -830,7 +847,7 @@ gst_good64: SHELL = $(CONTAINER_SHELL)
- gst_good64: $(GST_GOOD_CONFIGURE_FILES64)
- 	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GST_GOOD_OBJ64)" install
-+	ninja -v -C "$(GST_GOOD_OBJ64)" install
- 	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
- 	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
+ GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
+@@ -616,7 +624,13 @@ WINE_SOURCE_ARGS = \
+   --exclude include/config.h.in \
  
-@@ -838,7 +855,7 @@ gst_good32: SHELL = $(CONTAINER_SHELL)
- gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
- 	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
- 	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
--	ninja -C "$(GST_GOOD_OBJ32)" install
-+	ninja -v -C "$(GST_GOOD_OBJ32)" install
- 	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
- 	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
+ WINE_CONFIGURE_ARGS = \
++  --with-x \
++  --with-gstreamer \
++  --with-faudio \
+   --with-mingw \
++  --without-vkd3d \
++  --without-oss \
++  --disable-win16 \
+   --disable-tests
  
-@@ -868,6 +885,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
- 		CC="$(CC32)" \
- 		CXX="$(CXX32)" \
- 		PKG_CONFIG="$(PKG_CONFIG32)" \
-+		CFLAGS="$(OPTIMIZE_FLAGS)" \
- 		cmake $(abspath $(FAUDIO)) \
- 			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR32))" \
- 			$(FAUDIO_CMAKE_FLAGS)
-@@ -1227,7 +1245,14 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL)
- $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE_OBJ64)
- 	cd $(dir $@) && \
- 		../$(WINE)/configure \
-+			--with-x \
-+			--with-gstreamer \
-+			--with-faudio \
-+			--with-mingw \
- 			--without-curses \
-+			--without-vkd3d \
-+			--without-oss \
-+			--disable-win16 \
- 			--enable-win64 \
- 			--disable-tests \
- 			--prefix=$(abspath $(DST_DIR)) \
-@@ -1248,7 +1273,14 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL)
- $(WINE_CONFIGURE_FILES32): $(MAKEFILE_DEP) | faudio32 jxrlib32 gst_base32 $(WINE_OBJ32)
- 	cd $(dir $@) && \
- 		../$(WINE)/configure \
-+			--with-x \
-+			--with-gstreamer \
-+			--with-faudio \
-+			--with-mingw \
- 			--without-curses \
-+			--without-vkd3d \
-+			--without-oss \
-+			--disable-win16 \
- 			--disable-tests \
- 			--prefix=$(abspath $(WINE_DST32)) \
- 			LD_LIBRARY_PATH=$(abspath $(TOOLS_DIR32))/lib \
-@@ -1454,7 +1486,7 @@ dxvk: dxvk32 dxvk64
+ WINE_CONFIGURE_ARGS64 = --enable-win64
+@@ -709,7 +723,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+   --exclude vkd3d_build.h.in \
+   --exclude vkd3d_version.h.in \
  
- dxvk64: SHELL = $(CONTAINER_SHELL)
- dxvk64: $(DXVK_CONFIGURE_FILES64)
--	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -C "$(DXVK_OBJ64)" install
-+	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -v -C "$(DXVK_OBJ64)" install
- 	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
- 	cp -f "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk
- 	cp -f "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk
-@@ -1468,7 +1500,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+-VKD3D_PROTON_MESON_ARGS = -Denable_standalone_d3d12=true
++VKD3D_PROTON_MESON_ARGS = -Denable_d3d12=true
+ VKD3D_PROTON_MESON_ARGS32 = \
+     --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton \
+     --cross-file=$(VKD3D_PROTON_OBJ32)/build-win32.txt
+diff --git a/make/rules-autoconf.mk b/make/rules-autoconf.mk
+index c6dc2d8..5aa9bd4 100644
+--- a/make/rules-autoconf.mk
++++ b/make/rules-autoconf.mk
+@@ -27,9 +27,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
+ $$(OBJ)/.$(1)-build$(3):
+ 	@echo ":: building $(3)bit $(1)..." >&2
+ 	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
+-	$$(MAKE)
++	$$(MAKE) -j$$(SUBJOBS)
+ 	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
+-	$$(MAKE) install
++	$$(MAKE) -j$$(SUBJOBS) install
+ 	touch $$@
+ endif
+ endef
+diff --git a/make/rules-cmake.mk b/make/rules-cmake.mk
+index 4c61951..2c894e4 100644
+--- a/make/rules-cmake.mk
++++ b/make/rules-cmake.mk
+@@ -15,7 +15,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/CMakeLists.txt
+ 	cmake "$$($(2)_SRC)" \
+ 	    -DCMAKE_INSTALL_PREFIX="$$($(2)_DST$(3))" \
+ 	    -DCMAKE_INSTALL_LIBDIR="lib$(subst 32,,$(3))" \
+-	    -DCMAKE_BUILD_TYPE=plain \
++	    -DCMAKE_BUILD_TYPE=Release \
+ 	    $$($(2)_CMAKE_ARGS) \
+ 	    $$($(2)_CMAKE_ARGS$(3))
  
- dxvk32: SHELL = $(CONTAINER_SHELL)
- dxvk32: $(DXVK_CONFIGURE_FILES32)
--	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -C "$(DXVK_OBJ32)" install
-+	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -v -C "$(DXVK_OBJ32)" install
- 	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
- 	cp -f "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
- 	cp -f "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1491,12 +1523,12 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
- 			meson --prefix="$(abspath $(VKD3D_OBJ32))" \
- 				--cross-file "$(abspath $(VKD3D))/build-win32.txt" \
- 				$(MESON_STRIP_ARG) \
--				--buildtype=release -Denable_standalone_d3d12=true \
-+				--buildtype=release -Denable_d3d12=true \
- 				"$(abspath $(VKD3D))"
+@@ -24,9 +24,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/CMakeLists.txt
+ $$(OBJ)/.$(1)-build$(3):
+ 	@echo ":: building $(3)bit $(1)..." >&2
+ 	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
+-	$$(MAKE)
++	$$(MAKE) -j$$(SUBJOBS) VERBOSE=1
+ 	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
+-	$$(MAKE) install
++	$$(MAKE) -j$$(SUBJOBS) install VERBOSE=1
+ 	touch $$@
+ endif
+ endef
+diff --git a/make/rules-common.mk b/make/rules-common.mk
+index fda3e3d..d49c448 100644
+--- a/make/rules-common.mk
++++ b/make/rules-common.mk
+@@ -101,17 +101,18 @@ all: $(1)
  
- vkd3d32: SHELL = $(CONTAINER_SHELL)
- vkd3d32: $(VKD3D_CONFIGURE_FILES32)
--	ninja -C "$(VKD3D_OBJ32)" install
-+	ninja -v -C "$(VKD3D_OBJ32)" install
- 	mkdir -p "$(DST_DIR)"/lib/wine/vkd3d-proton
- 	cp -af "$(VKD3D_OBJ32)/bin/d3d12.dll" "$(DST_DIR)"/lib/wine/vkd3d-proton/
- 	rm -f "$(DST_DIR)"/lib/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib/wine/vkd3d-proton/version; fi
-@@ -1508,12 +1540,12 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
- 			meson --prefix="$(abspath $(VKD3D_OBJ64))" \
- 				--cross-file "$(abspath $(VKD3D))/build-win64.txt" \
- 				$(MESON_STRIP_ARG) \
--				--buildtype=release -Denable_standalone_d3d12=true \
-+				--buildtype=release -Denable_d3d12=true \
- 				"$(abspath $(VKD3D))"
+ $(2)_ENV$(3) = \
+     CARGO_HOME=$$(OBJ)/.cargo \
+-    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="$$(ARCH$(3))-linux-gnu-gcc" \
++    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="gcc" \
++    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_RUSTFLAGS="$$(RUSTFLAGS) -C -m$(3)" \
+     CCACHE_BASEDIR="$$(CCACHE_BASEDIR)" \
+     STRIP="$$(STRIP)" \
+-    CC="$$(CCACHE_BIN) $$(ARCH$(3))-linux-gnu-gcc" \
+-    CXX="$$(CCACHE_BIN) $$(ARCH$(3))-linux-gnu-g++" \
++    CC="$$(CCACHE_BIN) gcc -m$(3)" \
++    CXX="$$(CCACHE_BIN) g++ -m$(3)" \
+     LD="$$(ARCH$(3))-linux-gnu-ld" \
+-    PKG_CONFIG="$$(ARCH$(3))-linux-gnu-pkg-config" \
++    PKG_CONFIG="$$(ARCH$(3))-pc-linux-gnu-pkg-config" \
+     CROSSCC="$$(CCACHE_BIN) $$(ARCH$(3))-w64-mingw32-gcc" \
+     CROSSCXX="$$(CCACHE_BIN) $$(ARCH$(3))-w64-mingw32-g++" \
+     CROSSLD="$$(ARCH$(3))-w64-mingw32-ld" \
+-    CROSSPKG_CONFIG="$$(ARCH$(3))-linux-gnu-pkg-config" \
++    CROSSPKG_CONFIG="$$(ARCH$(3))-pc-linux-gnu-pkg-config" \
+     PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_BINDIR$(3))),,:):$$(SRC)/glslang/bin:$$$$PATH" \
+     LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
+     PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
+diff --git a/make/rules-meson.mk b/make/rules-meson.mk
+index 11d91ba..fb86161 100644
+--- a/make/rules-meson.mk
++++ b/make/rules-meson.mk
+@@ -14,14 +14,15 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
+ 	grep -s -v -e c_args -e cpp_args -e link_args "$$($(2)_SRC)/build-win$(3).txt" | \
+ 	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
+ 	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
+-	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
++	    -e "s:\[properties\]:[properties]\nc_link_args = [$$(call list-quote,$$(LDFLAGS) $$(CROSSLDFLAGS))]:" \
++	    -e "s:\[properties\]:[properties]\ncpp_link_args = [$$(call list-quote,$$(LDFLAGS) $$(CROSSLDFLAGS))]:" \
+ 	  > "$$($(2)_OBJ$(3))/build-win$(3).txt"
  
- vkd3d64: SHELL = $(CONTAINER_SHELL)
- vkd3d64: $(VKD3D_CONFIGURE_FILES64)
--	ninja -C "$(VKD3D_OBJ64)" install
-+	ninja -v -C "$(VKD3D_OBJ64)" install
- 	mkdir -p "$(DST_DIR)"/lib64/wine/vkd3d-proton
- 	cp -af "$(VKD3D_OBJ64)/bin/d3d12.dll" "$(DST_DIR)"/lib64/wine/vkd3d-proton/
- 	rm -f "$(DST_DIR)"/lib64/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib64/wine/vkd3d-proton/version; fi
+ 	env $$($(2)_ENV$(3)) \
+ 	meson "$$($(2)_OBJ$(3))" "$$($(2)_SRC)" \
+ 	      --prefix="$$($(2)_DST$(3))" \
+ 	      --libdir="lib$(subst 32,,$(3))" \
+-	      --buildtype=plain \
++	      --buildtype=release \
+ 	      $$($(2)_MESON_ARGS) \
+ 	      $$($(2)_MESON_ARGS$(3)) \
+ 	      $$(MESON_STRIP_ARG)
+@@ -31,7 +32,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
+ $$(OBJ)/.$(1)-build$(3):
+ 	@echo ":: building $(3)bit $(1)..." >&2
+ 	env $$($(2)_ENV$(3)) \
+-	ninja -C "$$($(2)_OBJ$(3))" install
++	ninja -v -C "$$($(2)_OBJ$(3))" install
+ 	touch $$@
+ endif
+ endef
+diff --git a/make/rules-winemaker.mk b/make/rules-winemaker.mk
+index 8a0f0ce..36a107c 100644
+--- a/make/rules-winemaker.mk
++++ b/make/rules-winemaker.mk
+@@ -29,7 +29,7 @@ $(OBJ)/.$(1)-build$(3):
+ 	@echo ":: building $(3)bit $(1)..." >&2
+ 	rsync -arx "$$($(2)_SRC)/" "$$($(2)_OBJ$(3))/"
+ 	env $$($(2)_ENV$(3)) \
+-	$$(MAKE) -C "$$($(2)_OBJ$(3))" LIBRARIES="$$($(2)_LDFLAGS)"
++	$$(MAKE) -j$$(SUBJOBS) -C "$$($(2)_OBJ$(3))" LIBRARIES="$$($(2)_LDFLAGS)"
+ 	cd "$$($(2)_OBJ$(3))" && touch "$(basename $(4)).spec" && env $$($(2)_ENV$(3)) \
+ 	winebuild --dll --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
+ 	mkdir -p $$($(2)_DST$(3))/lib$(subst 32,,$(3))/wine/fakedlls/
