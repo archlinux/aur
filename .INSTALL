@@ -3,5 +3,29 @@ post_install() {
 
 Quick start:
 
+    sudo gentor
+
+Options:
+
+    -h, --help            show this help message and exit
+    -p, --privoxy         Connecting to Tor with Privoxy - Enhance your privacy
+    -s, --start           Start connecting to Tor
+    -x, --stop            Stop connecting to Tor
+    -r, --renew           Renew the current Tor circuit
+    -id COUNTRY ISO CODE  Connect to Tor exit node of a specific country
+    -mac INTERFACE        Randomly change MAC address
+    -c, --checkip         Check your current IPv4 address
+    --dns                 Use this to fix DNS
+    --nodelay             Disable delay time
+    -e, --enable          Enable anonymization at boot time
+    -d, --disable         Disable anonymization at boot time
+    -u, --uninstall       Uninstall GenTor
+
+Licensing
+
+Gentor is a closed-source program. You can find the license for the main 
+Gentor program in this repo (we assume that if you are using the app you 
+agree to the terms laid out in the license file)
+
 EOF
 }

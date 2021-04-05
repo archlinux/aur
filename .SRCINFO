@@ -1,15 +1,17 @@
 pkgbase = gentor
 	pkgdesc = Utility to make your internet traffic anonymized through Tor network
-	pkgver = 1.0
+	pkgver = 0.1
 	pkgrel = 1
-	url = https://github.com/ChihebBayouli/GenTor
+	url = https://github.com/ChihebBayouli/genTor
 	install = .INSTALL
 	arch = any
 	license = custom
-	depends = linux
-	depends = gcc
-	source = https://github.com/ChihebBayouli
-	md5sums = d106e2ffd51f7f9c4c3bdebd04e
+	depends = wget
+	depends = curl
+	depends = systemd
+	depends = iptables
+	source = https://github.com/ChihebBayouli/gentor/releases/download/1.1/gentor-1.0.tar.gz
+	md5sums = d106e09f82affd51f7f9c4c3bdebd04e
 
 pkgname = gentor
 

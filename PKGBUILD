@@ -1,18 +1,20 @@
 # Maintainer: Chiheb Bayouli <chihebbayouli@gmail.com>
-pkgname=mourouj
-pkgver=1.0
+pkgname=gentor
+pkgver=0.1
 pkgrel=1
-pkgdesc="Nothing"
+pkgdesc="Utility to make your internet traffic anonymized through Tor network"
 arch=(any)
-url="https"
+url="https://github.com/ChihebBayouli/genTor"
 license=('custom')
-depends=(linux gcc)
-makedepends=()
-source=("https")
-md5sums=('d106e51f7f9c4c3bdebd04e')
+depends=(wget curl systemd iptables)
+source=("https://github.com/ChihebBayouli/gentor/releases/download/1.1/gentor-1.0.tar.gz")
+install=.INSTALL
+md5sums=('d106e09f82affd51f7f9c4c3bdebd04e')
 build() {
     cd "$srcdir/$pkgname"
+    sudo python install.py build
 }
 package() {
-    cd "$srcdir
+    cd "$srcdir/$pkgname"
+    sudo python install.py install
 }
