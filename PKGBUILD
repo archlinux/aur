@@ -1,51 +1,43 @@
-# Maintainer: Nate Levesque <public@thenaterhood.com>
+# Maintainer: Andrea Denisse Gómez-Martínez <aur at denisse dot dev>
+
 pkgname=teleirc
-pkgver=1.2.2
+pkgdesc='Go implementation of a Telegram <=> IRC bridge for use with any IRC channel and Telegram group.'
+arch=(x86_64 i686 armv7h)
+url='https://github.com/RITlug/teleirc'
+_branch='master'
+pkgver=2.1.0
 pkgrel=1
-epoch=
-pkgdesc="NodeJS Telegram to IRC bridge bot"
-arch=('any')
-url="https://github.com/ritlug/teleirc"
-license=('MIT')
-groups=()
-depends=("nodejs"
-         "npm"
-)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=("var/lib/teleirc/config.js")
-options=()
-install="teleirc.install"
-changelog=
-source=("https://github.com/ritlug/teleirc/archive/v$pkgver.tar.gz")
-noextract=()
-sha256sums=('9ef394510beab9836ef50cdcdfa4f3e75fe763fe9f7abc7bd51027a5cbc1b66d')
+license=('GPL-3.0')
+makedepends=(go)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('37a1a70e8d9dfcd296382647aac882ee24517f1d084b05877713cff226c0c299')
+sha512sums=('ef9877f39f9e5ec8acbdc37783d8e459b49f8c477606ef14d6ead27af321e7e8bb2dff5bf27b14312b1cb30ee8f77a5272026f301ea1c46519dca73d83950367')
+b2sums=('1f34d181f32eebecde22830e0c988b9777014ed53f2b84ef3604cf1a5be320df36ecb652d9f7f714926594a1e6fdfd3a4e2a201410052125c8294638067a0591')
+provides=($pkgname)
+conflicts=($pkgname)
 
 prepare() {
-        cd $srcdir/$pkgname-$pkgver
+  mkdir -p "${pkgname}-${pkgver}/build"
 }
 
 build() {
-        cd $srcdir/$pkgname-$pkgver
-        npm install
+  cd "${pkgname}-${pkgver}"
+
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  go build -o build/ cmd/$pkgname.go
 }
 
 check() {
-        echo "No check"
+  cd "${pkgname}-${pkgver}"
+  go test ./...
 }
 
 package() {
-        mkdir -p $pkgdir/var/lib/teleirc
-
-        cd $srcdir/$pkgname-$pkgver
-        cp -r node_modules $pkgdir/var/lib/teleirc/
-        cp teleirc.js $pkgdir/var/lib/teleirc/
-        cp env.example $pkgdir/var/lib/teleirc/.env
-
-        mkdir -p $pkgdir/usr/lib/systemd/system/
-        cp misc/teleirc.service $pkgdir/usr/lib/systemd/system/
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
 }
