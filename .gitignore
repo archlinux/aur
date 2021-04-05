@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!SHADERed.sh
+!org.shadered.SHADERed.desktop
