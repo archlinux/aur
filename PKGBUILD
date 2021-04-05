@@ -1,4 +1,4 @@
-# Maintainer: JP-Ellis <josh@jpellis.me>
+# Maintainer: ReneganRonin <renegan.ronin@gmail.co>
 
 pkgname=madgraph
 pkgver=3.1.0
@@ -31,7 +31,7 @@ source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.1.x/+download/MG5
 "mg5_configuration.patch"
         )
 sha256sums=('ea14cf6daa5b6c53dba1455c086e762cb8042d342451c9b88b2bde81098bf264'
-            '982d71218852d98a75098c411e39a3d37faee3a21e01163bb915d5f2e59eacf2')
+            '14d418c14b96492be021da194c2f211fcd91e82c4bb04f15c4d95b7dd65656bf')
 options=("!strip")
 
 prepare() {

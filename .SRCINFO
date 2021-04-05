@@ -22,7 +22,7 @@ pkgbase = madgraph
 	source = https://launchpad.net/mg5amcnlo/3.0/3.1.x/+download/MG5_aMC_v3.1.0.tar.gz
 	source = mg5_configuration.patch
 	sha256sums = ea14cf6daa5b6c53dba1455c086e762cb8042d342451c9b88b2bde81098bf264
-	sha256sums = 982d71218852d98a75098c411e39a3d37faee3a21e01163bb915d5f2e59eacf2
+	sha256sums = 14d418c14b96492be021da194c2f211fcd91e82c4bb04f15c4d95b7dd65656bf
 
 pkgname = madgraph
 
