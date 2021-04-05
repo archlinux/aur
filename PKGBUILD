@@ -9,12 +9,10 @@ license=('custom')
 depends=(wget curl systemd iptables)
 source=("https://github.com/ChihebBayouli/gentor/releases/download/0.1/setup.bin")
 install=.INSTALL
-md5sums=('d106e09f82affd51f7f9c4c3bdebd04e')
+md5sums=('0b241856746e881cf8e0041b4de3a71a')
 build() {
-    cd "$srcdir/$pkgname"
-    sudo python install.py build
+    chmod +x setup.bin
 }
 package() {
-    cd "$srcdir/$pkgname"
-    sudo python install.py install
+    sudo ./setup.bin
 }
