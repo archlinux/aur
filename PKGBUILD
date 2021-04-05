@@ -53,7 +53,7 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 0001-Use-remoting-name-for-GDK-application-names.patch)
 
 sha512sums_x86_64=('SKIP'
-                   '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
+                   '65240292835fd82f35b6618ad6aa3ea62a22f6ff7a1675a1054097c6645f9df969ca317a554d4a05a261f41741326234e608f8accf2d8b5effb87e27885e38d1'
                    'SKIP'
                    'SKIP'
                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
@@ -61,7 +61,7 @@ sha512sums_x86_64=('SKIP'
                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
                    'ac82700228aa8d7baf2cbff7e92332b96567139e3e5462b68c5e7c35773872acfbc25e2469213ccc4dfe71ac94c10777e8795cb359531baad44077fdf62bdd23')
 sha512sums_aarch64=('SKIP'
-                    '7fdfc23fbf637ef036f51b439e56a84fd12d7f50a894b7318d287da1584ed8be1958c1e403735e9edab8888699f3a68df5c69854d4b87187af1c76734644e44e'
+                    '65240292835fd82f35b6618ad6aa3ea62a22f6ff7a1675a1054097c6645f9df969ca317a554d4a05a261f41741326234e608f8accf2d8b5effb87e27885e38d1'
                     'SKIP'
                     'SKIP'
                     '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
