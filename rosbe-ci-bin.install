@@ -1,0 +1,7 @@
+post_install() {
+    echo "Run /opt/RosBE-CI/RosBE.sh to enter ReactOS Build Environment shell."
+}
+
+pre_upgrade() {
+    rm -r /opt/RosBE-CI
+}
