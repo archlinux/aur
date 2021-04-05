@@ -1,0 +1,17 @@
+pkgbase = python-torrentstream
+	pkgdesc = Python simple BitTorrent streaming library based on libtorrent
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/XayOn/torrentstream
+	arch = any
+	license = none
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python
+	depends = python-async-timeout
+	depends = python-rich
+	depends = libtorrent
+	source = https://pypi.org/packages/source/t/torrentstream/torrentstream-0.2.2.tar.gz
+	sha256sums = 374bfd2c3dcf5051d0464aeac13564cb17776f25bb7708d91167d4df74cc83da
+
+pkgname = python-torrentstream
