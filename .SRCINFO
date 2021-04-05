@@ -1,0 +1,16 @@
+pkgbase = sfm-git
+	pkgdesc = simple file manager
+	pkgver = r94.e8a78ff
+	pkgrel = 1
+	url = https://github.com/afify/sfm
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = glibc
+	provides = sfm
+	conflicts = sfm
+	source = sfm-git::git+https://github.com/afify/sfm
+	md5sums = SKIP
+
+pkgname = sfm-git
+
