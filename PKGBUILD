@@ -1,7 +1,7 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15stats-runit
-pkgver=20210212
-pkgrel=3
+pkgver=20210405
+pkgrel=1
 pkgdesc="g15stats init script for runit"
 arch=('any')
 url="https://gitlab.com/menelkir/g15stats"
