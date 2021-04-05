@@ -1,0 +1,13 @@
+pkgbase = dads-me
+	pkgdesc = A Classic Flash Game with Fantastic Combo System
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://www.newgrounds.com/portal/view/254456
+	arch = x86_64
+	license = custom
+	depends = flashplayer-standalone
+	source = https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/dads-me.tar.gz
+	md5sums = a419153f28e03dd1daf6b2fd019b4403
+
+pkgname = dads-me
+
