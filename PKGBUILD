@@ -27,8 +27,7 @@ package() {
   cd "$_upstreampkgname-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   for doc in README.md result{1,2,3}.png; do
-    install -Dm644 "$doc" -t \
-                   "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 "$doc" -t "$pkgdir/usr/share/doc/$pkgname"
   done
 }
 # vim:set ts=2 sw=2 et:
