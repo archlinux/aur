@@ -1,6 +1,6 @@
 pkgbase = guile-git
 	pkgdesc = A portable, embeddable Scheme implementation (Git snapshot)
-	pkgver = 3.0.5.r140.g01bfd18f3
+	pkgver = 3.0.5.r141.g88e703084
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gnu.org/software/guile/
@@ -22,9 +22,7 @@ pkgbase = guile-git
 	options = !makeflags
 	options = libtool
 	source = git+https://git.savannah.gnu.org/git/guile.git
-	source = rename_infofile.diff
 	sha256sums = SKIP
-	sha256sums = b2674297c0b4ceba1f94616f04a1bf3ae5586cc27433978a5e7e35b71e2ad53f
 
 pkgname = guile-git
 
