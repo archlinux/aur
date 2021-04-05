@@ -1,0 +1,18 @@
+pkgbase = snapperoo-git
+	pkgdesc = A small, bare essentials utility for taking Btrfs snapshots.
+	pkgver = r1.1b7b550
+	pkgrel = 1
+	url = https://github.com/DanNixon/snapperoo
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = btrfs-progs
+	depends = jq
+	provides = snapperoo
+	conflicts = snapperoo
+	source = snapperoo::git+https://github.com/DanNixon/snapperoo
+	md5sums = SKIP
+
+pkgname = snapperoo-git
+
