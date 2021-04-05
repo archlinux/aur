@@ -1,0 +1,3 @@
+10a11,12
+>   list(APPEND cmake_configure_args -DCMAKE_C_FLAGS="-O2")
+>   list(APPEND cmake_configure_args -DCMAKE_CXX_FLAGS="-O2")
