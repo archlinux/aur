@@ -1,0 +1,15 @@
+pkgbase = dict-freedict-eng-ita-bin
+	pkgdesc = English -> Italian dictionary for dictd.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://freedict.org
+	arch = any
+	license = GPL
+	optdepends = dictd: dict client and server
+	provides = dict-freedict-eng-ita
+	conflicts = dict-freedict-eng-ita
+	source = https://download.freedict.org/dictionaries/eng-ita/0.1.2/freedict-eng-ita-0.1.2.dictd.tar.xz
+	sha512sums = 69a5a77ab7031a4a3833b7106c12ad2dd348c0bd51bbc2ed9b8276e1215e7679dcc55c013a6fffa28332fb64514b0d54586c29aa686b8491965e3c0e0184b048
+
+pkgname = dict-freedict-eng-ita-bin
+
