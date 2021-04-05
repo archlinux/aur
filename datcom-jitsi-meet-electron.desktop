@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DatCom Jitsi Meet
+Comment=DatCom Jitsi Meet Desktop Application (Electron)
+Exec=datcom-jitsi-meet-electron
+Icon=datcom-jitsi-meet-electron
+Categories=VideoConference;AudioVideo;Audio;Video;Network;
+Terminal=false
+Type=Application
