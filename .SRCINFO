@@ -1,0 +1,16 @@
+pkgbase = polylith-bin
+	pkgdesc = an open source tool used to develop Polylith based architectures in Clojure
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://polylith.gitbook.io/polylith/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	source = https://github.com/polyfy/polylith/releases/download/v0.1.0-alpha9/poly-0.1.0-alpha9.tar.gz
+	source = poly.sh
+	md5sums = 7550db30cc8ffa5d04b9c5a4c9a6174c
+	md5sums = 9a6c0517154d001356eeb9e732edbe22
+
+pkgname = polylith-bin
+
