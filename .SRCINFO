@@ -1,9 +1,8 @@
 pkgbase = moe
 	pkgdesc = A powerful, 8-bit clean, text editor. Supports ISO-8859-15 and ASCII.
 	pkgver = 1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/moe/moe.html
-	install = moe.install
 	arch = i686
 	arch = x86_64
 	license = GPL
