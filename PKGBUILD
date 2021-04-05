@@ -4,7 +4,7 @@
 pkgname=tsduck
 _pkgver=3.25-2237
 pkgver=${_pkgver/-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible toolkit for MPEG/DVB transport streams"
 arch=('x86_64')
 url="https://tsduck.io/"
@@ -22,7 +22,7 @@ build() {
 package() {
     cd "$pkgname-${_pkgver}"
 
-    make SYSROOT="$pkgdir" install
+    make SYSROOT="$pkgdir" install NOTEST=true
     install -D -m644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # If pacman sees a /lib directory in a package, it will detect a conflict 
