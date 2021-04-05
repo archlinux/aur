@@ -1,5 +1,5 @@
 pkgbase = jellyfin-media-player
-	pkgdesc = Next generation jellyfin Desktop Client
+	pkgdesc = Jellyfin Desktop Client
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/iwalton3/jellyfin-media-player
