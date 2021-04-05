@@ -1,6 +1,6 @@
 pkgbase = aegisub-ttools-meson-git
 	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork)
-	pkgver = 3.2.2.r521.417ba4ff2
+	pkgver = 3.2.2.r644.696a73284
 	pkgrel = 1
 	url = http://www.aegisub.org
 	arch = x86_64

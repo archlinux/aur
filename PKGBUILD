@@ -2,7 +2,7 @@
 
 pkgname=aegisub-ttools-meson-git
 _srcname=aegisub-ttools
-pkgver=3.2.2.r521.417ba4ff2
+pkgver=3.2.2.r644.696a73284
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork)'
 arch=('x86_64')
@@ -32,11 +32,13 @@ pkgver() {
 }
 
 prepare() {
-
   cd "$_srcname"
 
-
-  arch-meson builddir -Dportaudio=disabled -Dopenal=disabled
+  arch-meson builddir \
+    -Dportaudio=disabled \
+    -Dopenal=disabled \
+    --wrap-mode=nofallback
+  # Must overwrite wrap-mode for luajit, which is 'nodownload' otherwise
 }
 
 build() {
