@@ -1,15 +1,17 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Hao Long <aur@esd.cc>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='nuclei'
-pkgver=2.2.0
+pkgname=nuclei
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use'
 arch=('x86_64' 'armv6h' 'aarch64')
 url='https://github.com/projectdiscovery/nuclei'
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c503b565230f5375339c72872d496137abf8be26c156e20447d1ae0752169e40')
+sha256sums=('58e68672602d06837d27b13ca0e3b682c3a8ffa136b3de7d68555c3629f858a8')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
