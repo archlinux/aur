@@ -2,7 +2,7 @@
 
 _name=gaphas
 pkgname=python-${_name}
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 makedepends=('python-pip')
 _wheelname="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_wheelname}")
-sha256sums=('3e3cc086c8856b25c1e1b188f8f21a3c1a42db077bd734ffb2b0df3ab313442c')
+sha256sums=('41eee9713c99bf1406b1866204e10849d25a580031bce188c6ad9d25a473eaa4')
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps "${_wheelname}"
