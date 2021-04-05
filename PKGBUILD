@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: 0x9fff00 <0x9fff00+git@protonmail.ch>
 # Contributor: Alexander F Rødseth <rodseth@gmail.com>
 
 # Based on python-clint in [community]
