@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-electron /usr/share/electron-qq/electron-qq.asar
+electron11 /usr/share/electron-qq/electron-qq.asar
