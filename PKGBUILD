@@ -1,8 +1,8 @@
 # Maintainer: Julian Hornich <vivaeltopo@googlemail.com>
 
 pkgname=gnome-shell-theme-viva-git
-_pkgver=3.38.0
-pkgver=3.38.0.160.204c49d
+_pkgver=40.0
+pkgver=40.0.163.94c9aa5
 pkgrel=1
 pkgdesc="A custom gnome-shell theme named viva (blue and orange version)"
 arch=('any')
