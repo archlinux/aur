@@ -1,9 +1,9 @@
 # Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 
 pkgname=zsh-gentoo-prompt
-pkgver=0.1
+pkgver=20150808
 pkgrel=1
-pkgdesc="Gentoo ZSH prompt theme"
+pkgdesc="Extremely simple zsh prompt from Gentoo"
 arch=('any')
 url="https://gitweb.gentoo.org/repo/gentoo.git/tree/app-shells/zsh"
 license=('GPL')

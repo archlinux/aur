@@ -1,6 +1,6 @@
 pkgbase = zsh-gentoo-prompt
-	pkgdesc = Gentoo ZSH prompt theme
-	pkgver = 0.1
+	pkgdesc = Extremely simple zsh prompt from Gentoo
+	pkgver = 20150808
 	pkgrel = 1
 	url = https://gitweb.gentoo.org/repo/gentoo.git/tree/app-shells/zsh
 	arch = any
