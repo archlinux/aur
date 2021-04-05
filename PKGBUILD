@@ -3,7 +3,7 @@
 
 _pkgname=shadered
 pkgname=$_pkgname-bin
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
@@ -16,7 +16,7 @@ conflicts=('shadered' 'shadered-git')
 source=("$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/Linux.zip"
         "org.shadered.SHADERed.desktop"
         "SHADERed.sh")
-sha256sums=('edefefc20bb9deeb1e5c32275c81a43b7a7b3b8ebf8e68ee6b9c28d79253096c'
+sha256sums=('6be42d243fd3ecaf03b8a2808b940ce1507289527f667bbdb018b2e4257e927e'
             'c3ecaa1f791aef4ba0a46236e9a133310a5bf981c8f1d98108c5a34b0b9edee6'
             '885a7c14a7e00477c9acce4c64145e075a044be7a9f774b272cd5af7bde31ee9')
 
