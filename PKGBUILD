@@ -1,6 +1,6 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=libdsp-git
-pkgver=r20.e6b0075
+pkgver=r24.783dc00
 pkgrel=1
 pkgdesc="DSP functions without GR overhead"
 arch=('x86_64')
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"/build
-	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr/local ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr/local ..
 }
 
 package() {
