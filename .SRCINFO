@@ -1,14 +1,16 @@
 pkgbase = vim-devicons
-	pkgdesc = Adds file type glyphs/icons to many popular Vim plugins such as: NERDTree, vim-airline, unite, vim-startify and many more
-	pkgver = 0.10.0
+	pkgdesc = Adds file type icons to Vim plugins
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/ryanoasis/vim-devicons
 	arch = any
 	groups = vim-plugins
 	license = MIT
-	depends = vim
-	source = vim-devicons-0.10.0.tar.gz::https://github.com/ryanoasis/vim-devicons/archive/v0.10.0.tar.gz
-	sha512sums = 5656cf871aa6c7e0c1d4277584ec53b752027d326a72a514c7993889817087ce25642c04817ff534f72cf9b292efe5bb6bcb40f59fc0bd8ff4b954bff8ba40d0
+	depends = vim-plugin-runtime
+	optdepends = nerd-fonts: fonts with glyphs built-in
+	optdepends = ttf-nerd-fonts-symbols: standalone glyphs and icons
+	source = vim-devicons-0.11.0.tar.gz::https://github.com/ryanoasis/vim-devicons/archive/v0.11.0.tar.gz
+	sha512sums = e6a2b7c291926177abee4f8429e742dc0b8f7090eff24fc283e6d46415d9fc4b8c095196cb80c6d583b087f7f93cff978967e6d3fb0aca74dc849aec7bdb7cde
 
 pkgname = vim-devicons
 
