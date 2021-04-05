@@ -1,7 +1,7 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=age-of-war-2
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A Strategy War Flash Game"
 arch=('x86_64')
