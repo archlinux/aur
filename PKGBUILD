@@ -2,7 +2,7 @@
 # Contributor: xarkes
 
 pkgname=unluac
-pkgver=2016_11_20
+pkgver=2021_03_19b
 pkgrel=1
 pkgdesc="a decompiler for Lua 5.1"
 arch=('any')
@@ -18,5 +18,5 @@ package() {
   install -Dm755 ${srcdir}/unluac.sh $pkgdir/usr/bin/unluac
 }
 
-md5sums=('3fcbd73cc6ca07189f105fcaf1898267'
+md5sums=('dc971152c3a6b19931037407fc10f38a'
          'f86eb01199590ec711691c2c0f5ac539')
