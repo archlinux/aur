@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Questrade IQ Edge
+Comment=Platform designed for active and pro traders
+Path=/opt/questrade-iq-edge
+Exec=/usr/bin/wine /opt/questrade-iq-edge/QuestradeIQEdge.exe
+Icon=questrade-iq-edge
+Terminal=false
+Categories=Office;Network;Finance;
+
