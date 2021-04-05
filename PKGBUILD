@@ -1,9 +1,10 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Contributor: yochanamarqos
 
 pkgname=python-pygogo
 _pkgname=pygogo
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A python logging library with superpowers"
 arch=(any)
 url='https://github.com/reubano/pygogo'
