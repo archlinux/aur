@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: 0x9fff00 <0x9fff00+git@protonmail.ch>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 # Based on python-responses in [community]
