@@ -4,8 +4,8 @@
 # code adapted from https://github.com/jaredallard/notion-app
 
 pkgname=notion-app
-pkgver=2.0.16
-pkgrel=1
+pkgver=2.0.11
+pkgrel=3
 epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
         "Notion-"${pkgver}".exe::https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe" 
         'notion-app'
         'notion-app.desktop')
-md5sums=('9f72284086cda3977f7f569dff3974d5'
+md5sums=('b3fb76f3cdc664e71e7438348c472a16'
          '89f5d6220dd0b8fb459ed59cff7dee3c'
          'dc75abd9b8f3f455a0b8fc0d8d8932b5')
 build() {
