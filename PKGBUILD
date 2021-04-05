@@ -9,7 +9,7 @@ url="https://github.com/Limgmk/leedns"
 license=('unknown')
 groups=()
 depends=()
-makedepends=('git' 'go' 'make')
+makedepends=('git' 'go')
 backup=('etc/leedns/config.yaml')
 options=()
 
