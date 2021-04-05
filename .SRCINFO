@@ -1,19 +1,21 @@
 pkgbase = rompr
 	pkgdesc = Web frontend to MPD
-	pkgver = 1.26
+	pkgver = 1.55
 	pkgrel = 1
 	url = https://github.com/fatg3erman/RompR/releases
 	arch = any
 	license = custom
-	depends = mpd
 	depends = imagemagick
 	depends = php
+	depends = php-sqlite
+	depends = php-gd
+	depends = php-intl
 	optdepends = apache
 	optdepends = lighttpd
 	optdepends = nginx
 	optdepends = php-jsonreader-git: Low Memory Mode
-	source = https://github.com/fatg3erman/RompR/releases/download/1.26/rompr-1.26.zip
-	md5sums = b07ba8ab20c0494c4cfe219139f54cf0
+	source = https://github.com/fatg3erman/RompR/releases/download/1.55/rompr-1.55.zip
+	md5sums = 23745cd02dc6e4264fe35220eec64754
 
 pkgname = rompr
 
