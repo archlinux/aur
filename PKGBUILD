@@ -1,5 +1,5 @@
 pkgname=privatebin
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="a minimalist, open source online pastebin where the server has zero knowledge of pasted data"
 url='https://privatebin.info'
@@ -9,7 +9,7 @@ depends=("php" "php-gd")
 options=("emptydirs")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/$pkgver.tar.gz"
         "config.patch")
-md5sums=('f97640101305bddeb07d68d7a5028c5c'
+md5sums=('902ed4a00cfbd2df549244499a91b161'
          '912b477a3d0c7505111bbe17c3901f4a')
 
 prepare(){
