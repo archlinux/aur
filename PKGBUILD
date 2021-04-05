@@ -31,7 +31,7 @@ source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.1.x/+download/MG5
 "mg5_configuration.patch"
         )
 sha256sums=('ea14cf6daa5b6c53dba1455c086e762cb8042d342451c9b88b2bde81098bf264'
-            'a251d1bc6be29032c051cde8b0d050330b4777ff94fea6df5a495a9506c4eadc')
+            '982d71218852d98a75098c411e39a3d37faee3a21e01163bb915d5f2e59eacf2')
 options=("!strip")
 
 prepare() {
