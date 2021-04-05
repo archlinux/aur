@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=jackal
-pkgver=0.52.2
+pkgver=0.52.3
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ortuman/jackal/archive/
         jackal.sysusers
         jackal.tmpfiles
         config.yaml)
-sha256sums=('47186e56e8a06759196194b9ad9ade7050717f2260753cf6cd761be41ded59de'
+sha256sums=('0ae650c32ef0b3bf7f49b12777dec447157eb73617c6c3320f7d2b81fe8e641d'
             '0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff'
             '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
             '20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045'
