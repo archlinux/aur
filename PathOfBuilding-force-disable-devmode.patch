@@ -1,7 +1,7 @@
-diff --git a/Launch.lua b/Launch.lua
+diff --git a/src/Launch.lua b/src/Launch.lua
 index 0673314..39800ae 100644
---- a/Launch.lua
-+++ b/Launch.lua
+--- a/src/Launch.lua
++++ b/src/Launch.lua
 @@ -51,7 +51,7 @@ function launch:OnInit()
  	if localManXML and not self.versionBranch and not self.versionPlatform then
  		-- Looks like a remote manifest, so we're probably running from a repository
@@ -28,10 +28,10 @@ index 0673314..39800ae 100644
  end
  
  function launch:ShowPrompt(r, g, b, str, func)
-diff --git a/Modules/Main.lua b/Modules/Main.lua
+diff --git a/src/Modules/Main.lua b/src/Modules/Main.lua
 index 1af88e0..683fc33 100644
---- a/Modules/Main.lua
-+++ b/Modules/Main.lua
+--- a/src/Modules/Main.lua
++++ b/src/Modules/Main.lua
 @@ -42,7 +42,7 @@ function main:Init()
  	self.modes["LIST"] = LoadModule("Modules/BuildList")
  	self.modes["BUILD"] = LoadModule("Modules/Build")

@@ -6,7 +6,7 @@ pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIden
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=1.4.170.27.r3794.54.514
+pkgver=2.0.1.r4141.59.514
 
 depends=('zlib' 'qt5-base' 'lua51' 'lua51-bitop' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
@@ -31,8 +31,8 @@ sha256sums=(
 	'6d21872a2b2bdbfaebb20de5cac28ac402316e5314c97a89049320ff13c2f622'
 	'db9eec714bf9d1c52b1ccd7adc9e720519585becf7f9a1f18cca1888d3e1cc11'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
-	'5774ca7bac28ac5e14fd502c3a80e65424f26a140dfe8f4546591fa7a93823a0'
-	'de8c586f5e69efefe7734f31de17137fc34a06da7428f8f57f640d490b94ea61'
+	'cd46475a1bc62240e03abb6b385b0c9b0b911ad828219fd31f98f7742807f935'
+	'ba8dc70a1d24c0d0b3bdc2454abd525c877154ec1c22e2f5927bc0a84f3920d8'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
 	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'
 	'079eff1a5e74cb6d776723f7c3d36349e426edaa332a8177ff8f5e78af56cf64'
@@ -51,8 +51,8 @@ prepare() {
 	(cd "${srcdir}/PathOfBuilding-runtime-src/LZip" && patch -p1 <"${srcdir}/lzip-linux.patch")
 	# disable devmode
 	(cd "${srcdir}/PathOfBuilding" \
-		&& patch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch" \
-		&& patch -p1 <"${srcdir}/PathOfBuilding-lua51.patch" \
+		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch" \
+		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-lua51.patch" \
 	)
 }
 
@@ -91,10 +91,10 @@ package() {
 	rsync -a '--exclude=.git*' "${srcdir}/PathOfBuilding/" "${dst_dir}"
 	cd "$dst_dir"
 	# extract skill tree assets
-	for f in tree*.zip; do
-		unzip -ou "$f"
-		rm "$f"
-	done
+	#for f in tree*.zip; do
+	#	unzip -ou "$f"
+	#	rm "$f"
+	#done
 	# extract lua libs
 	unzip runtime-win32.zip lua/xml.lua lua/base64.lua lua/sha1.lua
 	mv lua/*.lua .
