@@ -8,8 +8,9 @@ pkgbase = python-pygogo
 	makedepends = python-pygments
 	makedepends = python-setuptools
 	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-pkutils
 	depends = python
-	depends = python-pkutils
 	source = pygogo-0.13.2.tar.gz::https://github.com/reubano/pygogo/archive/v0.13.2.tar.gz
 	sha256sums = ea0cc82fd62329255ec5212495b65307b172ab5709906e15fcb3cc1ded952918
 

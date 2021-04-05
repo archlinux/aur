@@ -8,8 +8,8 @@ pkgdesc="A python logging library with superpowers"
 arch=(any)
 url='https://github.com/reubano/pygogo'
 license=(MIT)
-depends=('python' 'python-pkutils')
-makedepends=('python-pygments' 'python-setuptools' 'python-pip')
+depends=('python')
+makedepends=('python-pygments' 'python-setuptools' 'python-pip' 'python-wheel' 'python-pkutils')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/reubano/$_pkgname/archive/v$pkgver.tar.gz")
 sha256sums=("ea0cc82fd62329255ec5212495b65307b172ab5709906e15fcb3cc1ded952918")
 
