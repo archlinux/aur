@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IOTA Firefly Wallet
+Comment=Desktop wallet for IOTA
+Exec=/usr/bin/iota-firefly-wallet
+Icon=firefly-desktop
+Terminal=false
+Type=Application
+Categories=Office;Utility;Application;Finance;
+MimeType=x-scheme-handler/iota;
