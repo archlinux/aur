@@ -1,10 +1,16 @@
 [Unit]
 Description=CryptPad service
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/node /usr/share/webapps/cryptpad/server.js
 WorkingDirectory=/usr/share/webapps/cryptpad
 User=cryptpad
+Group=cryptpad
+ReadWritePaths=/var/lib/cryptpad
+ProtectHome=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
 
 [Install]
 WantedBy=multi-user.target
