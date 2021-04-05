@@ -1,7 +1,7 @@
 pkgbase = pyfetch-git
 	pkgdesc = Stylish and simple fetch for your terminal.
-	pkgver = r81.4206152
-	pkgrel = 1
+	pkgver = r97.83bd9e8
+	pkgrel = 2
 	url = https://kreatea.ml/kreato/pyfetch
 	arch = x86_64
 	license = GPL
