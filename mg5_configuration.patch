@@ -1,5 +1,6 @@
---- mg5_configuration.txt.orig	2021-03-30 05:50:51.000000000 +0800
-+++ mg5_configuration.txt	2021-04-05 20:13:07.400120146 +0800
+diff --git a/input/mg5_configuration.txt b/input/mg5_configuration.txt
+--- a/input/mg5_configuration.txt
++++ b/input/mg5_configuration.txt
 @@ -46,11 +46,11 @@
  
  #! Prefered WebBrower
