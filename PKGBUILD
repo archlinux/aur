@@ -1,4 +1,4 @@
-# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: 0x9fff00 <0x9fff00+git@protonmail.ch>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: John Jenkins twodopeshaggy@gmail.com
 # Contributor: Sean Anderson seanga2@gmail.com
