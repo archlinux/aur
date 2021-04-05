@@ -1,16 +1,19 @@
 pkgbase = vpncloud
 	pkgdesc = Peer-to-peer VPN
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vpncloud.ddswd.de/
 	arch = x86_64
 	license = GPL
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	depends = libsystemd
-	source = git+https://github.com/dswd/vpncloud.rs.git#tag=v2.1.0
-	sha256sums = SKIP
+	makedepends = asciidoctor
+	backup = etc/vpncloud/example.net.disabled
+	source = vpncloud-2.1.0.tar.gz::https://github.com/dswd/vpncloud/archive/refs/tags/v2.1.0.tar.gz
+	source = vpncloud@.service
+	sha256sums = ae10e15a1b257568117107392a204bd2e04f627a34b3936f28ce40e4b063e488
+	sha256sums = 5f6bc9bd69535ed4c7786cfc6b385ab1c01cffafa4f57d34619247b225c4f13f
 
 pkgname = vpncloud
 

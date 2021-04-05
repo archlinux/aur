@@ -1,46 +1,40 @@
-# Maintainer: Oscar Rainford <oscar@fourbytes.me>
+# Maintainer: Cleber Matheus <clebermatheus@outlook.com>
+
 pkgname=vpncloud
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
 url="https://vpncloud.ddswd.de/"
 license=('GPL')
 groups=()
-depends=('libsystemd')
-makedepends=('rust' 'cargo' 'git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/dswd/vpncloud.rs.git#tag=v${pkgver}")
+makedepends=('rust' 'cargo' 'git' 'asciidoctor')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/dswd/vpncloud/archive/refs/tags/v${pkgver}.tar.gz
+		vpncloud@.service)
+backup=(etc/vpncloud/example.net.disabled)
 noextract=()
-sha256sums=('SKIP')
-#validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
+sha256sums=('ae10e15a1b257568117107392a204bd2e04f627a34b3936f28ce40e4b063e488'
+            '5f6bc9bd69535ed4c7786cfc6b385ab1c01cffafa4f57d34619247b225c4f13f')
 
 prepare() {
-        cd vpncloud.rs
+        cd ${pkgname}-${pkgver}
 }
 
 build() {
-        cd vpncloud.rs
+        cd ${pkgname}-${pkgver}
 
-        # Build w/ release optimisations,
         cargo build --release
 }
 
 package() {
-        cd vpncloud.rs
-        
-        install -d $pkgdir/etc/vpncloud
-        install -m600 assets/example.net.disabled $pkgdir/etc/vpncloud/example.net.disabled
+        cd ${pkgname}-${pkgver}
 
-	install -D -m644 assets/vpncloud.1 $pkgdir/usr/share/man/man1/vpncloud.1
-        install -D -m644 assets/vpncloud@.service $pkgdir/usr/lib/systemd/system/vpncloud@.service
-        install -D -m755 target/release/vpncloud $pkgdir/usr/bin/vpncloud
+	install -Dt "${pkgdir}"/usr/bin -m0755 target/release/vpncloud
+
+	install -Dt "${pkgdir}"/etc/vpncloud -Dm0644 assets/example.net.disabled
+	install -Dt "${pkgdir}"/usr/share/man/man1 target/vpncloud.1.gz
+	install -Dt "${pkgdir}"/usr/share/licenses/vpncloud -m0644 LICENSE.md
+	install -Dt "${pkgdir}"/usr/share/doc/vpncloud -m0644 README.md assets/changelog.txt
+
+	install -Dm644 "../vpncloud@.service" -t "${pkgdir}/usr/lib/systemd/system"
 }

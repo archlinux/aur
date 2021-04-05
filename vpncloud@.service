@@ -1,0 +1,47 @@
+[Unit]
+Description=Peer-to-peer VPN
+Documentation=man:vpncloud(1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+User=vpncloud
+Group=vpncloud
+DynamicUser=true
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+DeviceAllow=/dev/net/tun rw
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RemoveIPC=true
+ProtectHostname=true
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+UMask=066
+WorkingDirectory=/var/lib/vpncloud
+ConfigurationDirectory=vpncloud
+RuntimeDirectory=vpncloud
+StateDirectory=vpncloud
+LogsDirectory=vpncloud
+ExecStartPre=+chown -R vpncloud: /etc/vpncloud
+ExecStart=/usr/bin/vpncloud --config /etc/vpncloud/%i.net --log-file /var/log/vpncloud/%i.log --stats-file /var/lib/vpncloud/%i.stats --daemon --pid-file /run/vpncloud/%i.pid
+ExecStopPost=+chown -R root: /etc/vpncloud
+
+[Install]
+WantedBy=multi-user.target
