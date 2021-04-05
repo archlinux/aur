@@ -1,0 +1,20 @@
+pkgbase = cutycapt
+	pkgdesc = A Qt and WebKit based command-line utility that captures WebKit's rendering of a web page.
+	pkgver = 2021.04.04
+	pkgrel = 1
+	url = https://github.com/The-Repo-Club/cutycapt
+	arch = any
+	groups = therepoclub
+	license = CC BY-NC-SA 4.0
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-webkit
+	provides = cutycapt
+	source = cutycapt-2021.04.04.tar.gz::https://github.com/The-Repo-Club/cutycapt/archive/2021.04.04.tar.gz
+	sha256sums = SKIP
+
+pkgname = cutycapt
+
