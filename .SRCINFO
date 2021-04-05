@@ -1,7 +1,7 @@
 pkgbase = zramd
 	pkgdesc = Automatically setup swap on zram ✨
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maximumadmin/zramd
 	arch = any
 	license = MIT
