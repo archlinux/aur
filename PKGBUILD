@@ -3,7 +3,7 @@
 _name=jfrog
 _upstream_name=jfrog-cli
 pkgname=jfrog-cli-go
-pkgver=1.45.2
+pkgver=1.46.1
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('glibc')
 makedepends=('git' 'go')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${_upstream_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('b6fdcc62d2bdd3deabf89f2bb898e03fa8eb11a51899f724eeebc21e06a4d7deae8de9cd83bba0788378699e7877f19f2d7045edaa7bf72c26b96dede810edbf')
-b2sums=('6a9c1869392c1a19ed0a2b56f064c57f0eee68e404bf8b87b8f6c8d0cf8f7a6cc41dadfff1d00944940805e4f2a5cb22231291211dc5e33fa8c9a02f5c83ecd8')
+sha512sums=('c79c10a578bcc4047fa5625d00dbec9b3fa9f4ce3a25f32b3c1015a7c354e4192d80870c5ef41f0ca324aacba2c8e11d8f843bd5e437701828aecb0f2e1895c9')
+b2sums=('ee92997cfc46da3af15633774bd52c590d858a4c696c98684970d7303c321ddd86074d144f23adbe3d7e20323ec3afb1bffeea72e9a49428ada373737d30d754')
 
 build() {
   cd "${_upstream_name}-${pkgver}"
