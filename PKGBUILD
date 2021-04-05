@@ -1,7 +1,7 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-ffmpegdirect
 pkgver=1.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Inputstream ffmpegdirect kodi plugin"
 _koditarget=Matrix
 _gitname=inputstream.ffmpegdirect
@@ -10,7 +10,7 @@ arch=('armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/xbmc/${_gitname}"
 license=('GPL')
 groups=('kodi')
-makedepends=('cmake' 'git' 'autoconf' 'automake' 'patch', 'nasm')
+makedepends=('cmake' 'git' 'autoconf' 'automake' 'patch' 'nasm')
 provides=('kodi-addon-inputstream-ffmpegdirect')
 depends=('kodi')
 source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
