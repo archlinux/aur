@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/soywod/himalaya"
 license=('BSD')
 depends=('gcc-libs' 'openssl')
-makedepends=('cargo' 'git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('cargo' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+${url}")
@@ -32,4 +32,6 @@ check() {
 package() {
    cd "$_pkgname"
    install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
+   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
