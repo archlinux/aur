@@ -1,10 +1,11 @@
 pkgbase = xpenguins
 	pkgdesc = Ever wanted cute little penguins walking along the tops of your windows?
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ratrabbit.nl/ratrabbit/software/xpenguins/index.html
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	depends = libxpm
 	depends = gtk3
