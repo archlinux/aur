@@ -1,7 +1,7 @@
 pkgbase = g15daemon-runit
 	pkgdesc = g15daemon init script for runit
-	pkgver = 20210212
-	pkgrel = 2
+	pkgver = 20210405
+	pkgrel = 1
 	url = https://gitlab.com/menelkir/g15daemon
 	arch = any
 	license = GPL2

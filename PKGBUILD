@@ -1,7 +1,7 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15daemon-runit
-pkgver=20210212
-pkgrel=2
+pkgver=20210405
+pkgrel=1
 pkgdesc="g15daemon init script for runit"
 arch=('any')
 url="https://gitlab.com/menelkir/g15daemon"
