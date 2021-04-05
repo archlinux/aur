@@ -1,7 +1,7 @@
 # Maintainer: NebulaNeko <chfsefefgesfen foxmail>
 
 pkgname=python-efb-qq-slave-git
-pkgver=r95.ae62beb
+pkgver=2.0.0b3.r35.g47418ed
 pkgrel=1
 pkgdesc='EFB QQ Slave, a channel for EH Forwarder Bot.'
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v\.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

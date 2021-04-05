@@ -1,6 +1,6 @@
 pkgbase = python-efb-qq-slave-git
 	pkgdesc = EFB QQ Slave, a channel for EH Forwarder Bot.
-	pkgver = r95.ae62beb
+	pkgver = 2.0.0b3.r35.g47418ed
 	pkgrel = 1
 	url = https://github.com/milkice233/efb-qq-slave
 	arch = any
