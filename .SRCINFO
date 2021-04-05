@@ -1,0 +1,24 @@
+pkgbase = frangipanni-bin
+	pkgdesc = Program to convert lines of text into a tree structure
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/birchb1024/frangipanni
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = frangipanni
+	conflicts = frangipanni
+	source = https://raw.githubusercontent.com/birchb1024/frangipanni/v0.4.1/LICENSE
+	source = https://raw.githubusercontent.com/birchb1024/frangipanni/v0.4.1/README.md
+	sha256sums = 3cef0d7345e2a2f9205ad48191decfb293d2f72fa3fdcd6794f32868f9863bf7
+	sha256sums = f9122312556da81bfd3cc0bff13d6a0093b02dbdbe563b8fc13e3a25b68a531c
+	source_x86_64 = frangipanni-bin-0.4.1-x86_64.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.1/frangipanni_linux_amd64.tgz
+	sha256sums_x86_64 = d5b2b27d2962c0feea83dc3b8f9cfef3d8bd73c7ea41b12f6d7b649e2bca5989
+	source_i686 = frangipanni-bin-0.4.1-i686.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.1/frangipanni_linux_386.tgz
+	sha256sums_i686 = 888f29cad305a453edcac6a906f228b80883b3110301a165227c3ffd8a266035
+	source_aarch64 = frangipanni-bin-0.4.1-aarch64.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.1/frangipanni_linux_arm64.tgz
+	sha256sums_aarch64 = 8b33ec6b54baef67aa88f7cacc7ee0c869cc74cbd1fb6c89cb12a8aefef8e5a0
+
+pkgname = frangipanni-bin
+
