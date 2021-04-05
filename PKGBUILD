@@ -2,7 +2,7 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-extrecmenung
-pkgver=2.0.10
+pkgver=2.0.11
 _vdrapi=2.4.6
 pkgrel=1
 pkgdesc="provides additional functions to VDR's recordings menu"
@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 source=("https://gitlab.com/kamel5/extrecmenung/-/archive/v$pkgver/extrecmenung-v$pkgver.tar.bz2")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 replaces=("vdr-extrecmenu")
-sha256sums=('6d8716a439ded3dd99645e3a41e041386155588fb9b564ce8a96d51b9b3bdfb5')
+sha256sums=('22b068ec1001c8689ac93dc73f54982dd7026c2e96f03903a3149cdbf9a2e055')
 
 build() {
   cd "${srcdir}/${_plugname}-v$pkgver"
