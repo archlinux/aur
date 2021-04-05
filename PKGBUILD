@@ -1,9 +1,10 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 # Co-Maintainer: Songtronix <contact@songtronix.com>
 
+export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=airshipper-git
 pkgver=0.4.2.r0.ff875aa
-pkgrel=2
+pkgrel=3
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url='https://www.songtronix.com/'
@@ -12,6 +13,7 @@ depends=('openssl' 'libxcb' 'bzip2')
 makedepends=('git' 'rustup' 'git-lfs')
 provides=('airshipper')
 conflicts=('airshipper')
+_repo='https://github.com/songtronix/airshipper.git'
 source=(
     "$pkgname"::'git+https://github.com/songtronix/airshipper.git'
     'airshipper.desktop'
@@ -25,6 +27,15 @@ sha512sums=('SKIP'
 pkgver() {
     cd "$srcdir/$pkgname"
     git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//'
+}
+
+prepare() {
+    unset GIT_LFS_SKIP_SMUDGE
+    cd "$srcdir/$pkgname"
+    git remote set-url origin "$_repo"
+    git lfs install
+    git lfs fetch
+    git lfs checkout
 }
 
 build() {
