@@ -1,12 +1,12 @@
 pkgbase = frb-american-cursive-font
 	pkgdesc = a cursive “textbook hand” font family with 50+ faces useful for education
-	pkgver = 1.002
+	pkgver = 1.002.1
 	pkgrel = 1
 	url = https://github.com/ctrlcctrlv/FRBAmericanCursive
 	arch = any
 	license = GPL3
-	source = otf-frb-american-cursive-1.002.zip::https://github.com/ctrlcctrlv/FRBAmericanCursive/releases/download/v1.2/FRBAmericanCursive.zip
-	sha256sums = 912e3ed812f5c285021a226b8c88b619ed09d7b1a903e3f762a711cf536272b3
+	source = otf-frb-american-cursive-1.002.1.zip::https://github.com/ctrlcctrlv/FRBAmericanCursive/releases/download/v1.2.1/FRBAmericanCursive.zip
+	sha256sums = 139b9797886112ea5e89171a9638787fde8833e85eddb9ae941b2fdad56b0e19
 
 pkgname = otf-frb-american-cursive
 	provides = frb-american-cursive-font
