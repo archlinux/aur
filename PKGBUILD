@@ -2,7 +2,7 @@
 
 pkgname=promscale
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source analytical platform for Prometheus metrics"
 arch=('x86_64')
 url="https://github.com/timescale/promscale"
@@ -44,7 +44,7 @@ package() {
   install -Dm644 "$srcdir/$pkgname.sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   # environment variable file
-  install -Dm644 "$srcdir/$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
+  install -Dm640 "$srcdir/$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
 
   # binary
   install -Dm755 -t "$pkgdir/usr/bin" "$pkgname-$pkgver/cmd/$pkgname/$pkgname"
