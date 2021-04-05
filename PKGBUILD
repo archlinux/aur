@@ -3,12 +3,13 @@
 pkgname=prometheus-apcupsd-exporter
 _pkgname=apcupsd_exporter
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Prometheus exporter for apcupsd metrics"
 arch=(x86_64)
 url="https://github.com/mdlayher/apcupsd_exporter"
 license=(MIT)
 makedepends=(go)
+optdepends=('apcupsd: for monitoring a local APC UPS')
 backup=("etc/conf.d/prometheus-apcupsd-exporter")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.conf"
@@ -54,7 +55,7 @@ package() {
   # systemd files
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
+  install -Dm640 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
 
   cd "$_pkgname-$pkgver"
 
