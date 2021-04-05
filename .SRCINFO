@@ -1,7 +1,7 @@
 pkgbase = veloren
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = veloren
 	depends = systemd-libs
 	depends = alsa-lib
 	depends = libxcb
+	depends = pulseaudio-alsa
 	provides = veloren
 	conflicts = veloren
 	options = !strip
