@@ -6,7 +6,7 @@ ENABLE_SNAPD=0
 
 pkgname=pamac-aur
 pkgver=10.0.99
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 _commit='611726156318c13e46ce932f7f7c962119b533e5'
@@ -20,7 +20,7 @@ url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
 depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22'
          'libnotify' 'desktop-file-utils' 'pacman>=5.2' 'gnutls>=3.4' 'git'
-         'appstream-glib' 'archlinux-appstream-data')
+         'appstream-glib>=0.7.18-1' 'archlinux-appstream-data' 'libhandy' 'git')
 
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.')
