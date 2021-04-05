@@ -5,7 +5,7 @@ _pkgname=${pkgname%-git}
 pkgver=r54.9ca09f3
 pkgrel=1
 pkgdesc='Gofetch is a pretty command-line "Go and System information" tool written in Go'
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64 i686 armv7h)
 url='https://github.com/Gyro7/gofetch'
 license=('MIT')
 makedepends=(git go)
@@ -20,11 +20,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd $_pkgname
-  go mod tidy
 }
 
 build() {
