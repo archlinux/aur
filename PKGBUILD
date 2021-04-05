@@ -1,33 +1,36 @@
-# Maintainer: gls < ghostlovescorebg at gmail dot com >
+# Maintainer: Mark Collins < tera_1225 hat hotmail dote com>
+# Contributor: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=rompr
-pkgver=1.26
+pkgver=1.55
 pkgrel=1
 pkgdesc="Web frontend to MPD"
 arch=('any')
 url="https://github.com/fatg3erman/RompR/releases"
 license=('custom')
-depends=('mpd' 'imagemagick' 'php')
+depends=('imagemagick'
+         'php'
+         'php-sqlite'
+         'php-gd'
+         # 'php-json' included in php
+         # 'php-curl' included in php
+         # 'php-xml' included in php
+         # 'php-mbstring' included in php
+         'php-intl')
 optdepends=('apache'
-'lighttpd'
-'nginx'
-'php-jsonreader-git: Low Memory Mode')
-source=(${url}/download/${pkgver}/${pkgname}-${pkgver}.zip)
-md5sums=('b07ba8ab20c0494c4cfe219139f54cf0')
+            'lighttpd'
+            'nginx'
+            'php-jsonreader-git: Low Memory Mode')
+source=("${url}/download/${pkgver}/${pkgname}-${pkgver}.zip")
+md5sums=('23745cd02dc6e4264fe35220eec64754')
 
 build () {
-
 	cd "${srcdir}/${pkgname}"
-	sed -i 's|PATH-TO-ROMPR|srv/http/rompr|' apache_conf.d/rompr.conf
-
 }
 
 package() {
-
 	cd "${srcdir}"
 	find -name '.svn' -delete
-	install -Dm 644 "${srcdir}/${pkgname}/apache_conf.d/rompr.conf" "${pkgdir}/etc/httpd/conf/extra/rompr.conf"
-	install -d "${pkgdir}/srv/http"
-	cp -ra rompr "${pkgdir}/srv/http"
-
+	install -d "${pkgdir}/usr/share/webapps"
+	cp -ra rompr "${pkgdir}/usr/share/webapps/"
 }
