@@ -8,7 +8,7 @@
 pkgname=npm6
 _pkgname=npm
 pkgver=6.14.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A package manager for javascript.'
 arch=('any')
 url='https://www.npmjs.com/'
@@ -17,7 +17,7 @@ depends=('nodejs' 'node-gyp' 'semver')
 # libgl: TODO
 # libvips: for sharp (doc build) (disabled as current version of gatsby imports a broken sharp)
 # libxi: for cwebp (doc build)
-makedepends=('libgl' 'libxi' 'marked' 'marked-man' 'procps-ng' 'python')
+makedepends=('libgl' 'libxi' 'marked0.8' 'marked-man' 'procps-ng' 'python')
 conflicts=('npm')
 provides=('npm=6.14.11')
 options=('!emptydirs')
