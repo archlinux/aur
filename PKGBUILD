@@ -3,13 +3,15 @@
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
 pkgver=872.4df3d0d
-pkgrel=1
+pkgrel=2
 pkgdesc="The break time reminder app"
 arch=('any')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron')
-makedepends=('git' 'nvm' 'jq')
+makedepends=('git' 'nvm' 'jq' 'python')
+provides=("$_pkgname")
+conflicts=("$_pkgname" "${_pkgname}-bin")
 source=("git+https://github.com/hovancik/stretchly.git")
 sha256sums=('SKIP')
 
