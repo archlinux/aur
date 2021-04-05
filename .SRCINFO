@@ -1,0 +1,20 @@
+pkgbase = dockerfile-run-git
+	pkgdesc = Execute dockerfiles as scripts (incl. via shebang)
+	pkgver = r1.038aaf3
+	pkgrel = 1
+	url = https://github.com/wknapik/dockerfile-run
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = docker
+	optdepends = ncurses: docker build progress indicator support
+	provides = dockerfile-run
+	conflicts = dockerfile-run
+	source = git+https://github.com/wknapik/dockerfile-run
+	md5sums = SKIP
+
+pkgname = dockerfile-run-git
+
