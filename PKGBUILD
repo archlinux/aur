@@ -13,6 +13,7 @@ makedepends=(cmake ispc)
 source=("https://github.com/ospray/OSPRay/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('074bfd83b5a554daf8da8d9b778b6ef1061e54a1688eac13e0bdccf95593883d')
 provides=('ospray=2.5.0')
+conflicts=(ospray)
 
 prepare() {
     mkdir -p build
