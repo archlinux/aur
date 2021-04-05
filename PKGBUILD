@@ -1,39 +1,40 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: kiasoc5 <kiasoc5 at tutanota dot com>
+
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=midivisualizer-git
-pkgver=4.1.r6.g5dc541a
-pkgrel=1
+_pkgname=midivisualizer
+pkgver=6.3.r2.gedb52a8
+pkgrel=2
 pkgdesc='A small MIDI visualizer tool, using OpenGL'
 arch=('x86_64')
 url='https://github.com/kosua20/MIDIVisualizer'
 license=('MIT')
 provides=("${pkgname%-git}")
-depends=('gtk3')
-makedepends=('cmake')
-source=("${pkgname%-git}::git+https://github.com/kosua20/MIDIVisualizer")
+conflicts=("${pkgname%-git}")
+depends=('gtk3' 'ffmpeg')
+makedepends=('cmake' 'git')
+source=("$_pkgname::git+https://github.com/kosua20/MIDIVisualizer")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  rm -rf build
-  mkdir build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-}
-
 build() {
-  cd "${pkgname%-git}/build"
-  make -j `nproc`
+  cmake -B build -S "$_pkgname" \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${pkgname%-git}/build"
-  install -Dm755 MIDIVisualizer "${pkgdir}/usr/bin/${pkgname%-git}"
-  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 build/MIDIVisualizer "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$_pkgname"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  for doc in README.md result{1,2,3}.png; do
+    install -Dm644 "$_pkgname/$doc" -t \
+                   "$pkgdir/usr/share/doc/$_pkgname"
+  done
 }
 # vim:set ts=2 sw=2 et:
