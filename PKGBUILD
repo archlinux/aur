@@ -1,9 +1,9 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Maintainer: Vignesh TS < vikits at gmail dot com>
 # Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: Dany Martineau <dany.luc.martineau gmail com>
 
 pkgname=chroma
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="Abstract puzzle game."
 arch=('i686' 'x86_64')
@@ -34,5 +34,5 @@ package() {
         ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
-md5sums=('d42c291ebccad5350896978d1cc2d28e'
+md5sums=('adff0bca563ebec02bbe2b08ed95058a'
          '90932d9a42f1545c3ba59ae38afb7732')
