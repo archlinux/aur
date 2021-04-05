@@ -1,46 +1,44 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-extra-cursor-theme
-pkgver=0.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Material Based Cursor Theme: More Bibata!"
 arch=('any')
 url="https://github.com/ful1e5/Bibata_Extra_Cursor"
 license=('GPL3')
-makedepends=('python-pillow' 'inkscape' 'xorg-xcursorgen')
-provides=('bibata-extra-cursor')
-conflicts=('bibata-extra-cursor')
+depends=('libxcursor' 'libpng')
+makedepends=('python-clickgen')
+provides=("${pkgname%-theme}")
+conflicts=("${pkgname%-theme}")
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cb43593b189b4dbfaa6e2a83c5c401fac8fc02b268f36a3873fa107b90087f93')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
+noextract=("$pkgname-bitmaps-$pkgver.zip")
+sha256sums=('d53c552faad30613f34147bf4ba2eb42ef8d093bf3740104cf1460668190af79'
+            '118a29e5edf8b514c8d9b3ed0d0856b52f84f0dff77bdc02486dd7c8c2988102')
 
 prepare() {
 	cd Bibata_Extra_Cursor-$pkgver
+	mkdir -p bitmaps
+	bsdtar -xf "$srcdir/$pkgname-bitmaps-$pkgver.zip" -C bitmaps
 
-	# Remove pre-compiled resources
-	rm -rf Bibata*/out/
+	rm -rf themes
 }
 
 build() {
-	cd Bibata_Extra_Cursor-$pkgver
+	cd Bibata_Extra_Cursor-$pkgver/builder
+	_themes='DarkRed DodgerBlue Pink Turquise'
+	_sizes='22 24 28 32 40 48 56 64 72 80 88 96'
 
-	_variants=(Bibata_Dark_Red Bibata_Dodger_Blue Bibata_Pink Bibata_Turquoise)
-
-	for variant in ${_variants[*]}; do
-		echo "Building $variant..."
-		python render-cursors.py ./src/$variant/source-cursors.svg -o -a --name $variant
-		./tweak.sh $variant
-		./x11-make.sh $variant
-		cp src/$variant/*.theme $variant/out/X11/$variant
+	set -- ${_sizes}
+	for t in ${_themes}; do
+		python build.py unix -p "../bitmaps/Bibata-Modern-$t" --xsizes ${_sizes[@]}
+		python build.py unix -p "../bitmaps/Bibata-Original-$t" --xsizes ${_sizes[@]}
 	done
 }
 
 package() {
 	cd Bibata_Extra_Cursor-$pkgver
-	install -d "$pkgdir/usr/share/icons"
-
-	_variants=(Bibata_Dark_Red Bibata_Dodger_Blue Bibata_Pink Bibata_Turquoise)
-
-	for variant in ${_variants[*]}; do
-		cp -a $variant/out/X11/$variant "$pkgdir/usr/share/icons"
-	done
+	install -d "$pkgdir"/usr/share/icons
+	cp -r themes/Bibata-* "$pkgdir"/usr/share/icons
 }
