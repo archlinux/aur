@@ -1,0 +1,22 @@
+diff --unified --recursive --text tgcalls/tgcalls/group/StreamingPart.cpp tgcalls.patched/tgcalls/group/StreamingPart.cpp
+--- tgcalls/tgcalls/group/StreamingPart.cpp	2021-03-18 02:01:52.440061600 +0800
++++ tgcalls.patched/tgcalls/group/StreamingPart.cpp	2021-03-29 14:47:27.879951836 +0800
+@@ -12,7 +12,6 @@
+ #include <string>
+ #include <set>
+ #include <map>
+-#include <stdint.h>
+ 
+ namespace tgcalls {
+ 
+diff --unified --recursive --text tgcalls/tgcalls/group/StreamingPart.h tgcalls.patched/tgcalls/group/StreamingPart.h
+--- tgcalls/tgcalls/group/StreamingPart.h	2021-03-13 21:44:07.165794600 +0800
++++ tgcalls.patched/tgcalls/group/StreamingPart.h	2021-03-29 14:47:43.456952571 +0800
+@@ -3,6 +3,7 @@
+ 
+ #include "absl/types/optional.h"
+ #include <vector>
++#include <stdint.h>
+ 
+ namespace tgcalls {
+ 
