@@ -7,7 +7,6 @@ pkgbase = leedns-git
 	license = unknown
 	makedepends = git
 	makedepends = go
-	makedepends = make
 	backup = etc/leedns/config.yaml
 	source = leedns-git::git+https://github.com/Limgmk/leedns.git
 	source = leedns.service::https://file.limgmk.com/leedns.service
