@@ -1,0 +1,13 @@
+diff --git a/makepad/app/src/makepadstorage.rs b/makepad/app/src/makepadstorage.rs
+index ce8be4b..e3ccacc 100644
+--- a/makepad/app/src/makepadstorage.rs
++++ b/makepad/app/src/makepadstorage.rs
+@@ -51,7 +51,7 @@ impl MakepadSettings {
+                     http_server: HttpServerConfig::Localhost(8000),
+                     workspaces: {
+                         let mut workspace = HashMap::new();
+-                        workspace.insert("makepad".to_string(), ".".to_string());
++                        workspace.insert("makepad".to_string(), "%%MAKEPAD_HOME%%".to_string());
+                         workspace
+                     }
+                 });

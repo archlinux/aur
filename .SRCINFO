@@ -1,6 +1,6 @@
 pkgbase = makepad-git
 	pkgdesc = VR, web and native collaborative shader programming environment
-	pkgver = 0.1.0.r827.8dfad9ff
+	pkgver = 0.1.0.r883.5c05e153
 	pkgrel = 1
 	url = https://github.com/makepad/makepad
 	arch = i686
@@ -14,9 +14,11 @@ pkgbase = makepad-git
 	provides = makepad
 	conflicts = makepad
 	source = makepad-git::git+https://github.com/makepad/makepad#branch=master
+	source = adjust-makepad-workspace.patch
 	source = adjust-resources-path.patch
 	sha256sums = SKIP
-	sha256sums = 8b638b723e1b3d6f1d71a6f67cde2de48973e737d2f22fbab39bc18d2b874933
+	sha256sums = 29a82f1366817901481757fb2c9cab1f72eae80758e179b0d0342992334da3b9
+	sha256sums = 83f66d95a06b46a975171eea9ba32f50c1b3529f68257f820a455c39d9bc5601
 
 pkgname = makepad-git
 

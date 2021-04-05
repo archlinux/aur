@@ -1,5 +1,18 @@
+diff --git a/render/src/drawtext.rs b/render/src/drawtext.rs
+index b10d855..33ff5b5 100644
+--- a/render/src/drawtext.rs
++++ b/render/src/drawtext.rs
+@@ -134,7 +134,7 @@ impl DrawText {
+         
+         live_body!(cx, r#"
+             self::text_style_unscaled: TextStyle {
+-                font: "resources/Ubuntu-R.ttf",
++                font: "%%MAKEPAD_HOME%%/resources/Ubuntu-R.ttf",
+                 font_size: 8.0,
+                 brightness: 1.0,
+                 curve: 0.6,
 diff --git a/widget/src/widgetstyle.rs b/widget/src/widgetstyle.rs
-index eb235fd..815845e 100644
+index eb235fd..4d607b0 100644
 --- a/widget/src/widgetstyle.rs
 +++ b/widget/src/widgetstyle.rs
 @@ -4,7 +4,7 @@ pub fn set_widget_style(cx: &mut Cx) {
@@ -7,7 +20,7 @@ index eb235fd..815845e 100644
      live_body!(cx, r#"
          self::text_style_unscaled: TextStyle{
 -            font: "resources/Ubuntu-R.ttf",
-+            font: "%%USR_SHARE_PKG%%/resources/Ubuntu-R.ttf",
++            font: "%%MAKEPAD_HOME%%/resources/Ubuntu-R.ttf",
              font_size: 8.0,
              brightness: 1.0,
              curve: 0.6,
@@ -16,7 +29,7 @@ index eb235fd..815845e 100644
          
          self::text_style_fixed: TextStyle{
 -            font: "resources/LiberationMono-Regular.ttf",
-+            font: "%%USR_SHARE_PKG%%/resources/LiberationMono-Regular.ttf",
++            font: "%%MAKEPAD_HOME%%/resources/LiberationMono-Regular.ttf",
              brightness: 1.1,
              font_size: 8.0, 
              line_spacing: 1.8,
