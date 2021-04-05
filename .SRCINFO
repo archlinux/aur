@@ -1,7 +1,7 @@
 pkgbase = openrc
-	pkgdesc = Dependency based init system that works with sysvinit and systemd.
+	pkgdesc = Dependency based init system that works with sysvinit and systemd or on its own.
 	pkgver = 0.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenRC/openrc/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = openrc
 	makedepends = pam
 	makedepends = git
 	depends = pam
-	optdepends = openrc-sysvinit
 	optdepends = openrc-arch-services-git: collection of services for Arch
 	optdepends = net-tools: for network service support
 	optdepends = opentmpfiles: adds support for systemd-style tmpfiles.d

@@ -5,14 +5,13 @@
 
 pkgname=openrc
 pkgver=0.43
-pkgrel=1
-pkgdesc='Dependency based init system that works with sysvinit and systemd.'
+pkgrel=2
+pkgdesc='Dependency based init system that works with sysvinit and systemd or on its own.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc/'
 license=('BSD')
 depends=('pam')
-optdepends=('openrc-sysvinit'
-            'openrc-arch-services-git: collection of services for Arch'
+optdepends=('openrc-arch-services-git: collection of services for Arch'
             'net-tools: for network service support'
             'opentmpfiles: adds support for systemd-style tmpfiles.d'
             'bash-completion: tab completion for openrc commands in bash shells')
