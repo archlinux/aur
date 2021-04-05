@@ -11,7 +11,7 @@ pkgbase = code-marketplace
 	source = code-marketplace.hook
 	source = patch.sh
 	md5sums = b7442876feb4ba8b1ffb193b01fd4ff8
-	md5sums = d9cd7ce72d6fd9699d1a19029f29084a
+	md5sums = e0c1391f5bceda0e23bf1219b8d4e6d3
 
 pkgname = code-marketplace
 
