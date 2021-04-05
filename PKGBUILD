@@ -1,4 +1,4 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Mateusz Gozdek <mgozdekof@gmail.com>
 # Contributor: Oden S. <aur@odensc.com>
 # Contributor: Gergan Penkov < gergan at gmail dot email >
 
