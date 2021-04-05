@@ -6,7 +6,7 @@
 # If you want to help improve or maintain this package please let me know!
 
 pkgname=shadered-git
-pkgver=1.5+2.g20fcea021b
+pkgver=1.5.6+2.g780e96791f
 pkgrel=1
 pkgdesc="Lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
