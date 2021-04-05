@@ -1,7 +1,6 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 pkgbase=manimce
-pkgname=manim-community
-_name=manim
+pkgname=manim
 pkgver=0.5.0
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
@@ -40,23 +39,23 @@ optdepends=(
 )
 conflicts=('python-manimlib')
 provides=()
-source=("https://github.com/ManimCommunity/$_name/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
+source=("https://github.com/ManimCommunity/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('d736156a7e359f65575d96ab389fda7d4a65ba19d9a28ddf827a9b2f2566e67fd52053de70f41357120b71225a266ef1352a39876b60fd897e10a155c0110469')
 
 prepare() {
-	cd "$srcdir/$_name-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 	sed -i 's/rich>=6.0,<7.0/rich/' setup.py
 }
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
-	install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$_name/LICENSE.community"
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$pkgname/LICENSE.community"
 }
 

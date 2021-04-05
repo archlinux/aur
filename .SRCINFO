@@ -33,5 +33,5 @@ pkgbase = manimce
 	source = https://github.com/ManimCommunity/manim/releases/download/v0.5.0/manim-0.5.0.tar.gz
 	sha512sums = d736156a7e359f65575d96ab389fda7d4a65ba19d9a28ddf827a9b2f2566e67fd52053de70f41357120b71225a266ef1352a39876b60fd897e10a155c0110469
 
-pkgname = manim-community
+pkgname = manim
 
