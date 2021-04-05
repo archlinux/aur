@@ -1,6 +1,6 @@
 pkgbase = python-tweakwcs
 	pkgdesc = A package for correcting alignment errors in WCS objects
-	pkgver = 0.6.4
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://tweakwcs.readthedocs.io
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = python-tweakwcs
 	checkdepends = python-stsci.stimage
 	checkdepends = python-pytest
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/t/tweakwcs/tweakwcs-0.6.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/t/tweakwcs/tweakwcs-0.7.1.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/tweakwcs/master/LICENSE.txt
-	md5sums = 36d52a57690db5b8272fa40344c203ab
+	md5sums = abe47382efd293e7e6a58ef50aed24a4
 	md5sums = SKIP
 
 pkgname = python-tweakwcs
