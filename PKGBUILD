@@ -1,13 +1,13 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=arcdps-log-manager
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Manager for Guild Wars 2 arcdps EVTC logs"
 arch=(x86_64)
 url="https://gw2scratch.com/tools/manager"
 license=(MIT)
-makedepends=(git mono-msbuild)
-depends=(dotnet-sdk gtk3)
+makedepends=(git mono-msbuild 'dotnet-sdk>=5' 'dotnet-sdk<6')
+depends=(dotnet-runtime-3.1 gtk3)
 source=("git+https://github.com/gw2scratch/evtc.git#tag=manager-v$pkgver"
         "$pkgname.desktop")
 sha256sums=(SKIP
@@ -15,6 +15,8 @@ sha256sums=(SKIP
 
 build () {
     cd "$srcdir/evtc"
+    # https://wiki.archlinux.org/index.php/.NET_Core#SDK_specified_could_not_be_found
+    export MSBuildSDKsPath=$(echo /usr/share/dotnet/sdk/5.*/Sdks)
     msbuild -target:Restore,Build ArcdpsLogManager.Gtk -p:Configuration=Release
 }
 
