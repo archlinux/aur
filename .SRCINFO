@@ -1,0 +1,12 @@
+pkgbase = cydownload
+	pkgdesc = Download deb packages from repo straight to your device
+	pkgver = 1.1.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = qt5-base
+	source = https://github.com/borishonman/cydownload/archive/v1.1.1.tar.gz
+	md5sums = 55f6465886880206978ac269c3d9bcb7
+
+pkgname = cydownload
+
