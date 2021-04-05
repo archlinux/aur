@@ -3,7 +3,7 @@
 
 pkgname=itch
 pkgver=1.24.0
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="The best way to play itch.io games."
 
@@ -29,9 +29,9 @@ sha256sums=('64152877a7a75485ff6ec904502fb8c9a57f655d2956d4a93131af2cf999a5d3'
 package() {
   install -Dm755 itch-setup "${pkgdir}/usr/bin/itch-setup"
 
-  cat << BE_KIND > itch
+  cat << 'BE_KIND' > itch
 #!/bin/sh
-itch-setup --prefer-launch -- "@$"
+itch-setup --prefer-launch -- "$@"
 BE_KIND
   install -Dm755 itch "${pkgdir}/usr/bin/itch"
 
