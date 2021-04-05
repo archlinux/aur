@@ -2,13 +2,15 @@
 
 pkgname=katcr
 pkgver=3.0.7
-pkgrel=3
+pkgrel=1
 pkgdesc='Search in multiple torrent sites from your CLI'
 url='https://github.com/XayOn/katcr'
-depends=('python' 'python-xdg>=5.0.1' 'python-feedparser' 'python-aiohttp' 'python-cleo' 'python-aiogram' 'python-torrentmirror-git' 'python-cutie-git')
+depends=('python' 'python-xdg>=5.0.1' 'python-feedparser' 'python-aiohttp' 'python-cleo' 'python-aiogram' 'python-torrentmirror' 'python-cutie')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-flake8' 'python-pytest-cov' 'python-pytest-sugar')
 makedepends=('python-setuptools' 'python-dephell')
-optdepends=('libtorrent: Streaming support' 'python-torrentstream: Streaming support')
+optdepends=('python-torrentstream: streaming support'
+            'jackett: Jackett engine support'
+            'xdg-utils: Use xdg-open to open magnet links')
 license=('GPL3')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XayOn/$pkgname/archive/refs/tags/$pkgver.tar.gz")
