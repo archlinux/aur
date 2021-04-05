@@ -1,7 +1,8 @@
+# Maintainer: Emilio Reggi <nag@mailbox.org>
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 pkgname=update-notifier
 pkgver=0.7.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple pacman update notifier"
 arch=(any)
 url="https://github.com/Chrysostomus/$pkgname"
@@ -12,17 +13,13 @@ depends=('awk'
         'fakeroot')
 optdepends=('yaourt: for AUR support'
         'gnome-terminal: for integration with gnome-update-notifications'
-        'pamac: for graphical update actions')
+        'pamac: for graphical update actions'
+        'yay: for AUR support'
+        'trizen: for AUR support'
+        'pacaur: for AUR support')
 makedepends=('git')
-source=("git://github.com/Chrysostomus/$pkgname"
-		'pamac-update.patch::https://github.com/Chrysostomus/update-notifier/pull/23/commits/2467f6f1c8e6e1e47db95ac24d1070cc8ebcd24f.patch')
-md5sums=('SKIP'
-         'b40a0af64008acba4efcdf00f8f2bac9')
-
-prepare() {
-	cd $pkgname
-	patch -p1 -i ../pamac-update.patch
-}
+source=("git://github.com/Chrysostomus/$pkgname")
+md5sums=('SKIP')
 
 package () {
 	cd "$srcdir"
