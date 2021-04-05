@@ -1,0 +1,18 @@
+pkgbase = perl-mojolicious-plugin-canonicalurl
+	pkgdesc = Ensures canonical URLs via redirection
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mojolicious-Plugin-CanonicalURL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-mojolicious
+	makedepends = perl-module-build-tiny
+	depends = perl-sub-quote
+	depends = perl-mojolicious
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRCHULO/Mojolicious-Plugin-CanonicalURL-0.06.tar.gz
+	sha512sums = e1473a7a94e1e63d594aaa59245f70787ab9998470211ad6017c9da9c3834ee0e68d8348d13691b44ec5fc448fc35f77aeeddddeb3d3c2cb08fc68ebb97d5cb3
+
+pkgname = perl-mojolicious-plugin-canonicalurl
+
