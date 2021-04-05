@@ -108,6 +108,7 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
+
   xz -d < patch-${pkgver}-xanmod${xanmod}-cacule.xz | patch -Np1
 
   msg2 "Setting version..."
