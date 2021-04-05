@@ -2,8 +2,8 @@
 _py=ipycanvas
 pkgname=python-$_py-git
 provides=("${pkgname%-git}")
-pkgver=r297.0cc98b4
-pkgrel=2
+pkgver=r329.30ccca2
+pkgrel=1
 pkgdesc="Interactive widgets library exposing the browser's Canvas API"
 arch=(any)
 url="https://github.com/martinRenou/ipycanvas"
@@ -11,12 +11,12 @@ license=(BSD)
 depends=(
 	python
 	python-setuptools
-	python-ipywidgets
 	python-pillow
 	python-numpy
 	python-orjson
 	jupyter
 	jupyterlab
+	jupyterlab-widgets
 )
 makedepends=(
 	git
@@ -35,7 +35,19 @@ build() {
 }
 package() {
 	cd $_py
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	#python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+	# install (and enable) extension according to
+	# https://jupyterlab.readthedocs.io/en/latest/extension/extension_dev.html#distributing-a-prebuilt-extension
+	prebuilt_extension_dir_lab="$pkgdir"/usr/share/jupyter/labextensions
+	mkdir -p $prebuilt_extension_dir_lab
+	ln -s "$pkgdir"/usr/lib/python*/site-packages/ipycanvas/labextension $prebuilt_extension_dir_lab/$_py
+
+	# for classic interface
+	prebuilt_extension_dir_classic="$pkgdir"/usr/share/jupyter/nbextensions
+	mkdir -p $prebuilt_extension_dir_classic
+	ln -s "$pkgdir"/usr/lib/python*/site-packages/ipycanvas/nbextension $prebuilt_extension_dir_classic/$_py
+	
 	install -Dm644 $(find LICENSE*|head -1) "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-install=${pkgname%-git}.install
