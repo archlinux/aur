@@ -14,7 +14,7 @@ pkgbase = cutycapt
 	depends = qt5-webkit
 	provides = cutycapt
 	source = cutycapt-2021.04.04.tar.gz::https://github.com/The-Repo-Club/cutycapt/archive/2021.04.04.tar.gz
-	sha256sums = c9a08c5a7b4bb3e9dba39e0eeb1d7611447c62346b4a3d66796988e4144fa894
+	sha256sums = fb2723487cc59632d201468e3a501b337259dd9e873f9e0f32f22682d56088c7
 
 pkgname = cutycapt
 
