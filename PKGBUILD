@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.3.1
-pkgrel=3
+pkgver=4.3.2
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -39,14 +39,15 @@ depends=(
   'mingw-w64-srt'
   'mingw-w64-x264'
   'mingw-w64-xvidcore'
+  'mingw-w64-zimg'
   'mingw-w64-zlib'
   'mingw-w64-x265'
 )
 # TODO: Add vmaf dependency
 #'mingw-w64-vmaf'
 options=(!strip !buildflags staticlibs)
-makedepends=('mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
+makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
+_tag=f719f869907764e6412a6af6e178c46e5f915d25
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         vmaf-model-path.patch
@@ -75,6 +76,9 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
 
+    # avoid multiple definitions error
+    export LDFLAGS="$LDFLAGS -Wl,--allow-multiple-definition"
+
     "${srcdir}"/ffmpeg/configure \
       --prefix="/usr/${_arch}" \
       --enable-cross-compile \
@@ -84,11 +88,13 @@ build() {
       --disable-debug \
       --enable-static \
       --disable-stripping \
+      --enable-amf \
       --enable-fontconfig \
       --enable-gmp \
       --enable-gnutls \
       --enable-gpl \
       --enable-avisynth \
+      --enable-lto \
       --enable-libaom \
       --enable-libass \
       --enable-libbluray \
@@ -116,6 +122,7 @@ build() {
       --enable-libx265 \
       --enable-libxml2 \
       --enable-libxvid \
+      --enable-libzimg \
       --enable-zlib \
       --enable-shared \
       --enable-version3 \

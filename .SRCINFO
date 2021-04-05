@@ -1,11 +1,12 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
-	pkgver = 4.3.1
-	pkgrel = 3
+	pkgver = 4.3.2
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = any
 	license = GPL3
+	makedepends = mingw-w64-amf-headers
 	makedepends = mingw-w64-avisynthplus
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
@@ -41,12 +42,13 @@ pkgbase = mingw-w64-ffmpeg
 	depends = mingw-w64-srt
 	depends = mingw-w64-x264
 	depends = mingw-w64-xvidcore
+	depends = mingw-w64-zimg
 	depends = mingw-w64-zlib
 	depends = mingw-w64-x265
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=f719f869907764e6412a6af6e178c46e5f915d25
 	source = vmaf-model-path.patch
 	source = configure.patch
 	sha256sums = SKIP
