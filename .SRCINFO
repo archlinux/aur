@@ -1,6 +1,6 @@
 pkgbase = katcr
 	pkgdesc = Search in multiple torrent sites from your CLI
-	pkgver = 3.0.6
+	pkgver = 3.0.7
 	pkgrel = 3
 	url = https://github.com/XayOn/katcr
 	arch = any
@@ -20,7 +20,9 @@ pkgbase = katcr
 	depends = python-aiogram
 	depends = python-torrentmirror-git
 	depends = python-cutie-git
-	source = katcr-3.0.6.tar.gz::https://github.com/XayOn/katcr/archive/refs/tags/3.0.6.tar.gz
-	sha512sums = 8026ee6aa1bb6bcd449ea18f25759ba12a233afb24e2c4ca17ceb1e591fb5c680a72aab2896f7d8bae5f6b008c7c6b219c545a23ccb8dbd32f14a2e8d0c312f9
+	optdepends = libtorrent: Streaming support
+	optdepends = python-torrentstream-git: Streaming support
+	source = katcr-3.0.7.tar.gz::https://github.com/XayOn/katcr/archive/refs/tags/3.0.7.tar.gz
+	sha512sums = bda97dcdebb88d83c880a6ef97d1fd850ed088a160142bb5a501469279ce4706a13e8f376f087f0329553b107dccc981312e71221a40bb28bbd0b9bb5436efa8
 
 pkgname = katcr
