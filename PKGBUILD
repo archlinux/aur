@@ -6,8 +6,8 @@
 
 _name=jsonpointer
 pkgname=python2-$_name
-pkgver=2.0
-pkgrel=5
+pkgver=2.1
+pkgrel=1
 pkgdesc='Identify specific nodes in a JSON document (RFC 6901)'
 arch=('any')
 url='https://github.com/stefankoegl/python-json-pointer'
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('e8e2b03c12c3fc5f65816fc71d1c07135ef74a0c912286f5b8bef2d9e21b8ae6e766d1aa2104b3eeb0e53928034321f25b203386ac3f5641b54b0641f6a08137')
+sha512sums=('4eed8c7fa908ce3ca79884e98b1b0e818d24515f6b7b2067daa49ab6dbd989be4bc43f387e980773c9fc17bca89d2039750cb0df76675259050e3f48c16da3b6')
 
 prepare(){
   find $_name-$pkgver -name \*.py -exec sed -i '1s/python$/&2/' {} +
