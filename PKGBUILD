@@ -13,7 +13,7 @@ depends=(gtk3 sdl2 sfml assimp glew-2.1 glm spirv-headers)
 provides=('shadered')
 conflicts=('shadered' 'shadered-git')
 
-source=("$url/releases/download/v$pkgver/Linux.zip"
+source=("$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/Linux.zip"
         "org.shadered.SHADERed.desktop"
         "SHADERed.sh")
 sha256sums=('edefefc20bb9deeb1e5c32275c81a43b7a7b3b8ebf8e68ee6b9c28d79253096c'
