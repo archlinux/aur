@@ -1,7 +1,7 @@
 pkgbase = npm6
 	pkgdesc = A package manager for javascript.
 	pkgver = 6.14.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.npmjs.com/
 	arch = any
 	license = custom:Artistic

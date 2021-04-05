@@ -8,7 +8,7 @@
 pkgname=npm6
 _pkgname=npm
 pkgver=6.14.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A package manager for javascript.'
 arch=('any')
 url='https://www.npmjs.com/'
@@ -40,7 +40,10 @@ prepare() {
 
 build() {
   cd cli-$pkgver
-  NODE_PATH=/usr/lib/node_modules make
+
+  # SHARP_IGNORE_GLOBAL_LIBVIPS=true to avoid https://github.com/gatsbyjs/gatsby/issues/20698
+  # when you have the libvips package installed
+  SHARP_IGNORE_GLOBAL_LIBVIPS=true NODE_PATH=/usr/lib/node_modules make
 }
 
 package() {
