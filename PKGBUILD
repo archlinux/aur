@@ -12,7 +12,7 @@ conflicts=(eam)
 provides=(eam)
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
 	"eam.desktop")
-sha256sums=('8dbea1b987584ef26184520c6b4e9db63981d90c5b64305cd4e7844be7638f2f'
+sha256sums=('1ed2d7e1ff6b8e1ddb7f163bd3eae089a668a3dbe4480bab04567ffa9114b44d'
             '29c00c0e03e20546d3115fbe9294492e5c8ff81af09565aebcb311ade5034dbf')
 
 prepare() {
