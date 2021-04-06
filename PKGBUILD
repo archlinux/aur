@@ -3,7 +3,7 @@
 # Community Package Contributor: Gordin <gordin@koeln.ccc.de>
 
 pkgname=wit-git
-pkgver=3.03a
+pkgver=3.03b.r8.7f41a7f
 pkgrel=1
 pkgdesc='Wiimms ISO Tools (git version)'
 arch=(x86_64)
@@ -47,6 +47,11 @@ prepare() {
   patch -Np1 -i ../wit-no-exec-stack.patch
   patch -Np1 -i ../wit-titles.patch
   patch -Np1 -i ../wit-makefile-version.patch
+}
+
+pkgver() {
+    cd wiimms-iso-tools/project
+    printf "%s.r%s.%s" "$(make version)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 _not() {
