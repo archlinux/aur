@@ -1,0 +1,18 @@
+pkgbase = hyperfox-git
+	pkgdesc = HTTP/HTTPS MITM proxy and recorder.
+	pkgver = v0.9.0.r76.g1a8c26f
+	pkgrel = 1
+	url = https://github.com/malfunkt/hyperfox
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = hyperfox
+	conflicts = hyperfox
+	source = hyperfox::git+https://github.com/malfunkt/hyperfox.git#branch=master
+	sha256sums = SKIP
+
+pkgname = hyperfox-git
+
