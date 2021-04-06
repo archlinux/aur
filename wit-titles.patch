@@ -1,0 +1,19 @@
+diff -rupN wit.orig/project/setup/load-titles.sh wit/project/setup/load-titles.sh
+--- wit.orig/project/setup/load-titles.sh	2014-08-19 17:54:05.351879800 +0200
++++ wit/project/setup/load-titles.sh	2014-08-19 18:04:14.235375300 +0200
+@@ -30,12 +30,11 @@
+ 
+ NEEDED="wit wget tr"
+ 
+-BASE_PATH="@@INSTALL-PATH@@"
+-SHARE_PATH="@@SHARE-PATH@@"
+-URI_TITLES=@@URI-TITLES@@
++SHARE_PATH="/usr/share/wit"
++URI_TITLES="@@URI-TITLES@@"
+ LANGUAGES="@@LANGUAGES@@"
+ 
+-SHARE_DIR=./share
++SHARE_DIR="/tmp"
+ 
+ #------------------------------------------------------------------------------
+ 

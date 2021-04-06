@@ -1,0 +1,10 @@
+post_install() {
+  echo 'WIT comes with a script to automatically update its titles lists. It is'
+  echo 'located in /usr/share/wit/load-titles.sh and needs to be run as root.'
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:
