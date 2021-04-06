@@ -1,12 +1,12 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
-
+# Maintainer: lmartinez-mirror
 pkgname=kilo-git
-pkgver=r5.62b099a
+pkgver=r19.69c3ce6
 pkgrel=1
-pkgdesc="A text editor in less than 1000 LOC with syntax highlight and search (git version)"
-arch=('i686' 'x86_64' 'armv7h')
+pkgdesc="A small text editor in less than 1K lines of code"
+arch=('x86_64')
 url="https://github.com/antirez/kilo"
 license=('BSD')
+depends=('glibc')
 makedepends=('git')
 provides=('kilo')
 conflicts=('kilo')
@@ -18,6 +18,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$pkgname"
+  sed -i "4s/$/ $CFLAGS $LDFLAGS/" Makefile
+}
+
 build() {
   cd "$pkgname"
   make
@@ -25,7 +30,7 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 kilo "$pkgdir/usr/bin/kilo"
+  install -Dm 755 kilo -t "$pkgdir/usr/bin/"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
-# vim:set ts=2 sw=2 et:
