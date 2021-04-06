@@ -18,10 +18,10 @@ provides=('ledger-live')
 conflicts=('ledger-live')
 source=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
-  "LICENSE"
+  "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live-desktop/v${pkgver}/LICENSE"
 )
 sha512sums=('f86d1ba409400fc6fbf5c3d6f12dee5078c9749b0da9269081a9b521051ffe3f51bae8897b8cd438e803bde4e7be1948458eec2765d9867b656e579522a41d8a'
-            '0e76943ab7d3849ee569a30a46dec494658b8de9937965a81d043ad957116bf9c8bdb9bb9aee20e2f00fb15b736df90bbe6144dc2088a968ced2cc7b8e2de07f')
+            '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 build() {
   # Extract files
