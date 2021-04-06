@@ -85,7 +85,8 @@ build() {
   make INSTALL_PATH="${pkgdir}/usr" CC=clang -C wiimms-iso-tools/project doc
 }
 
-package () {
+package() {
+  _clang_remove_incompatible_flags
   make INSTALL_PATH="${pkgdir}/usr" CC=clang -C wiimms-iso-tools/project install
   install -Dm 644 wiimms-iso-tools/project/doc/*.txt -t "${pkgdir}"/usr/share/doc/wit/
 }
