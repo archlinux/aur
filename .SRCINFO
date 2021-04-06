@@ -1,7 +1,7 @@
 pkgbase = emoji-keyboard
 	pkgdesc = Virtual keyboard-like emoji picker for linux
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 3
 	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = emoji-keyboard
 	depends = python-gobject
 	depends = libappindicator-gtk3
 	depends = python-evdev
-	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/archive/2.2.0.tar.gz
-	source = fix_svg_path.patch
-	sha256sums = 39e4e9edb1d3f75a73f4161289a4586d77a8b4c0c9743437e7239e5976ea157c
-	sha256sums = 2bb58538962ff65fa60152e45891faf5b7ccb531e87b05753162f365483b68a3
+	depends = fuse
+	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/releases/download/3.1.1/emoji-keyboard-3.1.1.AppImage
+	sha256sums = 4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa
 
 pkgname = emoji-keyboard
 

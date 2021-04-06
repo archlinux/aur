@@ -1,27 +1,18 @@
 # Maintainer: Fredrik Strandin <fredrik at strandin dot name>
 pkgname=emoji-keyboard
-pkgver=2.2.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=3
 pkgdesc="Virtual keyboard-like emoji picker for linux"
 arch=('i686' 'x86_64')
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 license=('GPL3')
-depends=('python' 'python-gobject' 'libappindicator-gtk3' 'python-evdev')
-source=("https://github.com/OzymandiasTheGreat/${pkgname}/archive/${pkgver}.tar.gz"
-        "fix_svg_path.patch")
-sha256sums=('39e4e9edb1d3f75a73f4161289a4586d77a8b4c0c9743437e7239e5976ea157c'
-            '2bb58538962ff65fa60152e45891faf5b7ccb531e87b05753162f365483b68a3')
+depends=('python' 'python-gobject' 'libappindicator-gtk3' 'python-evdev' 'fuse')
+source=("https://github.com/OzymandiasTheGreat/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.AppImage")
+sha256sums=('4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  patch -Np1 -i "${srcdir}/fix_svg_path.patch"
-}
-
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  python setup.py install --root="$pkgdir/" --optimize=1
+sudo chmod a+x ${pkgname}-${pkgver}.AppImage
+sudo cp ${pkgname}-${pkgver}.AppImage /usr/bin/emoji-keyboard
 }
 
 # vim:set ts=2 sw=2 et:
