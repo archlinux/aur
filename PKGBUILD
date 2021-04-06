@@ -1,7 +1,7 @@
 # Maintainer: Esteban López Rodríguez <gnu_stallman at protonmail dot ch>
 # Contributor: OctopusET
 pkgname=norminette
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Open source norminette"
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('python-norminette-git')
 depends=('python-argparse')
 makedepends=('git' 'python-setuptools')
 source=("$pkgver.tar.gz"::"https://github.com/42School/norminette/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('14dbc270c36830f29f71e53a6c74386b0074d72aa3f40b2de078b5e49f76602fcdd2ee2025df03ba5016f24f017168b206ac67ea1cb5638ba23870f66b26f07f')
+sha512sums=('75177fa1e46e61ba37c82b6d029bcbc0c137e675e6282edb07c79d4365570af311cbd0d6873ca6bf5888554ad9d88e71a2589d9cf7f9cfc2dffe45cda008818c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
