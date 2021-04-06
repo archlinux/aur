@@ -1,3 +1,4 @@
+# Maintainer: echnobas
 pkgname=archer
 pkgver=0.1
 pkgrel=1
