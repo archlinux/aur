@@ -17,12 +17,11 @@ package() {
   cd "$srcdir/moderntimeline"
   pdflatex moderntimeline.ins
 
-  install -d ${pkgdir}/usr/share/texmf/tex/latex/moderntimeline
-  install moderntimeline.sty ${pkgdir}/usr/share/texmf/tex/latex/moderntimeline
+  install -d "${pkgdir}/usr/share/texmf/tex/latex/moderntimeline"
+  install moderntimeline.sty "${pkgdir}/usr/share/texmf/tex/latex/moderntimeline"
 
-  install -d ${pkgdir}/usr/share/texmf/doc
-  install moderntimeline.pdf ${pkgdir}/usr/share/texmf/doc
+  install -d "${pkgdir}/usr/share/texmf/doc"
+  install moderntimeline.pdf "${pkgdir}/usr/share/texmf/doc"
 }
-
 
 # vim:set ts=2 sw=2 et:
