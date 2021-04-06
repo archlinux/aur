@@ -1,7 +1,7 @@
 # Maintainer: Dummerle
 
 pkgname=rare-dev
-pkgver=0.9.9.3
+pkgver=0.9.9.1
 pkgrel=1
 pkgdesc="Dev branch of github.com/Dummerle/Rare - The latest, but unstable features"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/Dummerle/Rare"
 license=('GPL3')
 groups=()
 depends=(
-	"legendary"
 	"python-pillow"
+	"python-pyqt5"
 	"python-qtawesome"
 	"python-requests"
 	"python-setuptools"
