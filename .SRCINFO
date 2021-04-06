@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.23.r62.g22f6e8e3
+	pkgver = 0.3.25.r0.gc3241072
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -44,10 +44,10 @@ pkgname = pipewire-full-git
 	depends = libopenaptx.so
 	depends = libfdk-aac.so
 	optdepends = pipewire-full-docs-git: Documentation
-	optdepends = pipewire-full-alsa-git: ALSA support
+	optdepends = pipewire-full-alsa-git: ALSA configuration
 	optdepends = pipewire-full-jack-git: JACK support
 	optdepends = pipewire-full-jack-client-git: JACK device/client
-	optdepends = pipewire-full-pulse-git: PulseAudio support
+	optdepends = pipewire-full-pulse-git: PulseAudio replacement
 	optdepends = gst-plugin-pipewire-full-git: GStreamer support
 	optdepends = ofono: ofono Bluetooth HFP support
 	optdepends = hsphfpd: hsphfpd Bluetooth HSP/HFP support
@@ -69,8 +69,10 @@ pkgname = pipewire-full-git
 
 pkgname = pipewire-full-docs-git
 	pkgdesc = Low-latency audio/video router and processor - documentation
+	arch = any
 	provides = pipewire-docs
 	conflicts = pipewire-docs
+	options = !strip
 
 pkgname = pipewire-full-alsa-git
 	pkgdesc = - ALSA configuration

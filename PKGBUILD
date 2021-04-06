@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.23.r62.g22f6e8e3
+pkgver=0.3.25.r0.gc3241072
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -65,10 +65,10 @@ package_pipewire-full-git() {
            libudev.so libasound.so libsystemd.so libbluetooth.so 
            libsbc.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-full-docs-git: Documentation'
-              'pipewire-full-alsa-git: ALSA support'
+              'pipewire-full-alsa-git: ALSA configuration'
               'pipewire-full-jack-git: JACK support'
               'pipewire-full-jack-client-git: JACK device/client'
-              'pipewire-full-pulse-git: PulseAudio support'
+              'pipewire-full-pulse-git: PulseAudio replacement'
               'gst-plugin-pipewire-full-git: GStreamer support'
               'ofono: ofono Bluetooth HFP support'
               'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
@@ -104,6 +104,8 @@ package_pipewire-full-git() {
 }
 
 package_pipewire-full-docs-git() {
+  arch=(any)
+  options=(!strip)
   provides=(pipewire-docs)
   conflicts=(pipewire-docs)
   pkgdesc+=" - documentation"
