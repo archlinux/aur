@@ -19,9 +19,9 @@ pkgbase = jellyfin-media-player-git
 	provides = jellyfin-media-player
 	conflicts = jellyfin-media-player
 	source = git+https://github.com/iwalton3/jellyfin-media-player.git
-	source = https://github.com/iwalton3/jellyfin-web-jmp/releases/download/v1.1.0/dist.zip
+	source = https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-1.7.0-2/dist.zip
 	sha256sums = SKIP
-	sha256sums = d2f5e7b3fbe44307dafd99b5212cf11e0c01f780e27211cdf3acb9753d03f0bf
+	sha256sums = d20c47c10247e2d91588b4bead4f7e9c29be1f76803de1924692edb10ee94dc4
 
 pkgname = jellyfin-media-player-git
 
