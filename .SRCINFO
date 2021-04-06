@@ -1,21 +1,20 @@
 pkgbase = xwingridselect
 	pkgdesc = X11 window switcher with fancy look
-	pkgver = 2020.6.27
+	pkgver = 2021.04.06
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/xwingridselect
+	url = https://github.com/The-Repo-Club/xwingridselect
 	arch = i686
 	arch = x86_64
 	license = GNU General Public License v3.0
 	makedepends = cmake
-	makedepends = git
 	makedepends = make
 	depends = gtk2
 	depends = gtk-engines
 	depends = gtk-engine-murrine
 	options = !libtool
 	options = strip
-	source = git+https://github.com/TheCynicalTeam/xwingridselect.git
-	md5sums = SKIP
+	source = xwingridselect-2021.04.06.tar.gz::https://github.com/The-Repo-Club/xwingridselect/archive/2021.04.06.tar.gz
+	sha256sums = SKIP
 
 pkgname = xwingridselect
 

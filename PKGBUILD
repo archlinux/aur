@@ -1,28 +1,27 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: TheCynicalTeam <TheCynicalTeam@gitlab.com>
+# Contributor: TheCynicalTeam <TheCynicalTeam@gitlab.com>
 
 pkgname=xwingridselect
-_gitname=xwingridselect
-pkgver=2020.6.27
+pkgver=2021.04.06
 pkgrel=1
 pkgdesc="X11 window switcher with fancy look"
-url="https://github.com/TheCynicalTeam/xwingridselect"
+url="https://github.com/The-Repo-Club/$pkgname"
 arch=('i686' 'x86_64')
 license=('GNU General Public License v3.0')
 depends=('gtk2' 'gtk-engines' 'gtk-engine-murrine')
-makedepends=('cmake' 'git' 'make')
+makedepends=('cmake' 'make')
 options=(!libtool strip)
 
-source=('git+https://github.com/TheCynicalTeam/xwingridselect.git')
-md5sums=('SKIP')
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd $_gitname
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_SCRIPTS=ON "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname-$pkgver"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_SCRIPTS=ON "$srcdir/$pkgname-$pkgver"
   make || return 1
 }
 
 package() {
-  cd $_gitname
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
