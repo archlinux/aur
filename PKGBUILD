@@ -4,7 +4,7 @@
 # Contributor: Chocobo1 <chocobo1@archlinux.net>
 
 pkgname=mingw-w64-rav1e
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='An AV1 encoder focused on speed and safety (mingw-w64)'
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
   mingw-w64-gcc
   mingw-w64-rust
 )
-_tag=6506f2b0fda23747a7e259cccc80e509d3c095d2
+_tag=29a9c604879bc27d319edc03e2c97ba9e9628c86
 source=(git+https://github.com/xiph/rav1e.git#tag=${_tag})
 sha256sums=(SKIP)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
