@@ -1,0 +1,36 @@
+--- a/CMakeLists.txt	2021-04-06 19:44:50.794609372 +0200
++++ b/CMakeLists.txt	2021-04-06 19:44:39.234528061 +0200
+@@ -1,4 +1,5 @@
+ cmake_minimum_required(VERSION 3.3)
++
+ project(main)
+
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++17 -D_REENTRANT -DLINUX")
+@@ -11,22 +12,19 @@
+     src/Renderer.cpp
+     src/AudioStreams/LinuxAudioStream.cpp
+     src/AudioStreams/WavAudioStream.cpp
++    libs/SimpleFileWatcher/source/FileWatcher.cpp
++    libs/SimpleFileWatcher/source/FileWatcherLinux.cpp
+ )
+
+ include_directories(
+     .
+     src
+-    libs/ffts/include/
+-    libs/rapidjson/include/
+-    libs/SimpleFileWatcher/include/
++    libs/SimpleFileWatcher/include
++    /usr/include/ffts
+ )
+
+-add_subdirectory(libs/ffts)
+ add_subdirectory(libs/SimpleFileWatcher)
+
+ add_executable(main ${SOURCE_FILES})
+-add_dependencies(main ffts)
+-add_dependencies(main SimpleFileWatcher)
+-
+-TARGET_LINK_LIBRARIES(main glfw GLEW GLU GL pulse-simple pulse pthread ${CMAKE_SOURCE_DIR}/build/libs/ffts/libffts.a ${CMAKE_SOURCE_DIR}/build/libs/SimpleFileWatcher/libSimpleFileWatcher.a stdc++fs)
+
++TARGET_LINK_LIBRARIES(main ffts glfw GLEW GLU GL pulse-simple pulse pthread stdc++fs)

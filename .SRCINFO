@@ -1,0 +1,19 @@
+pkgbase = music_visualizer
+	pkgdesc = Shader viewer and music visualizer
+	pkgver = 2019.12.18
+	pkgrel = 1
+	url = https://github.com/bradleybauer/music_visualizer
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = ffts
+	depends = rapidjson
+	source = cmake.patch
+	source = git+https://github.com/bradleybauer/music_visualizer#commit=f108544c3ff9ed3776922920383f0a01d6f685ce
+	b2sums = 944de83413f680c2f412afda07d4fce5d365dfcfa9c6077bed9093caab41404d97a48deb65ba249ee286e33b2e52163d72f03433cc12e1f9f643b5bb49592129
+	b2sums = SKIP
+
+pkgname = music_visualizer
+
