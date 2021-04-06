@@ -4,7 +4,7 @@
 
 pkgname=bootstrap-studio
 pkgver=5.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
@@ -25,7 +25,8 @@ package() {
 	cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt/bootstrap-studio"
 
 	mkdir -p "${pkgdir}/usr/bin"
-	cp -Lr "${pkgdir}/opt/bootstrap-studio/squashfs-root/AppRun" "${pkgdir}/usr/bin/bootstrap-studio"
+	echo '#!/usr/bin/env bash
+    	 gtk-launch bstudio.desktop' | tee "${pkgdir}/usr/bin/zoho-mail-desktop"
 
 	mkdir -p "${pkgdir}/usr/share/applications"
 	cp -Lr "${srcdir}/bstudio.desktop" "${pkgdir}/usr/share/applications/"
