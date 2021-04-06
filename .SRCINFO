@@ -3,12 +3,12 @@ pkgbase = complex_bessel
 	pkgver = 0.7.0_beta
 	pkgrel = 1
 	url = https://github.com/valandil/complex_bessel
-	arch = any
+	arch = x86_64
 	license = LGPL
 	makedepends = cmake
-	makedepends = gcc
 	makedepends = gcc-fortran
-	source = https://github.com/valandil/complex_bessel/archive/v0.7.0-beta.tar.gz
+	depends = gcc-libs
+	source = complex_bessel-0.7.0-beta.tar.gz::https://github.com/joeydumont/complex_bessel/archive/v0.7.0-beta.tar.gz
 	sha256sums = 9ae999d7c3c9da633c24f5eb8b593376a5e7d777e941b203309c0b0ab48509cd
 
 pkgname = complex_bessel
