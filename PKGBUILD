@@ -1,3 +1,4 @@
+# Maintainer: coxackie
 pkgname=code-icons
 pkgver=1.54.3
 pkgrel=1
