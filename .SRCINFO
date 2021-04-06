@@ -6,7 +6,7 @@ pkgbase = archer
 	license = GPL
 	makedepends = rust
 	makedepends = git
-	source = archer-0.1::git+https://github.com/echnobas/archer
+	source = archer-0.1::git+https://github.com/echnobas/archer#commit=a9eb268571a4d5cbeec444b9a6c5cf5ac44f6805
 	md5sums = SKIP
 
 pkgname = archer

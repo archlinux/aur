@@ -5,7 +5,7 @@ pkgdesc="fetch the archlinux news"
 arch=('any')
 license=('GPL')
 makedepends=(rust git)
-source=("$pkgname-$pkgver::git+https://github.com/echnobas/archer")
+source=("$pkgname-$pkgver::git+https://github.com/echnobas/archer#commit=a9eb268571a4d5cbeec444b9a6c5cf5ac44f6805")
 
 build() {
         cd $pkgname-$pkgver
