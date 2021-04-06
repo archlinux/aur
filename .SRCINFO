@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-newlib
 	pkgdesc = A C library intended for use on embedded systems (mips64-ultra-elf)
-	pkgver = 3.3.0_r134.54b8f95
+	pkgver = 4.1.0_r141.479e768
 	pkgrel = 1
 	url = http://sourceware.org/newlib/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mips64-ultra-elf-newlib
 	makedepends = git
 	options = !strip
 	options = !emptydirs
-	source = ftp://sourceware.org/pub/newlib/newlib-3.3.0.tar.gz
+	source = ftp://sourceware.org/pub/newlib/newlib-4.1.0.tar.gz
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
-	sha256sums = 58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66
+	sha256sums = f296e372f51324224d387cc116dc37a6bd397198756746f93a2b02e9a5d40154
 	sha256sums = SKIP
 
 pkgname = mips64-ultra-elf-newlib
