@@ -1,0 +1,7 @@
+[Unit]
+Description=Lambdatest Tunnel
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/LT -c /etc/lambda-tunnel.yaml
