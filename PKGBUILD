@@ -2,10 +2,10 @@
 
 pkgname=harmony-wad
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Harmony IWAD (game data)"
 arch=('any')
-url="http://rabotik.nl/harmony.htm"
+url="http://heroestospare.com/rabotik/harmony.php"
 license=('custom')
 source=(http://www.evil-soft.com/Heretic/harmonyv1.1.zip)
 sha256sums=('efe0f2914858abb3b8131b7479a5d0c3f97a7895c51be21859ed5f4eeaba0823')
