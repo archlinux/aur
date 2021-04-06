@@ -2,7 +2,7 @@
 
 pkgname=matrix-registration
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Webapp for token based matrix registration"
 url="https://github.com/ZerataX/matrix-registration"
@@ -31,6 +31,7 @@ prepare() {
         msg2 "Applying patch $src..."
         patch -Np1 < "../$src"
     done
+    sed -i -e 's/~=/>=/g' setup.py
 }
 
 build() {

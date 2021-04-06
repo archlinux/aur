@@ -1,7 +1,7 @@
 pkgbase = matrix-registration
 	pkgdesc = Webapp for token based matrix registration
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZerataX/matrix-registration
 	install = matrix-registration.install
 	arch = any
