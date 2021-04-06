@@ -1,0 +1,15 @@
+pkgbase = pacops
+	pkgdesc = A package maintainers Swiss Army knife
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ejiek/pacops/
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = openssl
+	depends = gcc-libs
+	source = pacops-0.0.1.tar.gz::https://github.com/ejiek/pacops/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = f0738b8de6a2aa7a5fcd987abb238e8f53cfcf2532f723d82698f29906b79380
+
+pkgname = pacops
+
