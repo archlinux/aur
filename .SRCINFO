@@ -1,6 +1,6 @@
 pkgbase = rare-dev
-	pkgdesc = Unstable version of Rare a GUI for legendary. An Epic Games Launcher open source alternative.
-	pkgver = 0.9.9
+	pkgdesc = Dev branch of github.com/Dummerle/Rare - The latest, but unstable features
+	pkgver = 0.8.9.3.r6.gf6e53a7
 	pkgrel = 1
 	url = https://github.com/Dummerle/Rare
 	arch = any

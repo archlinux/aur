@@ -3,7 +3,7 @@
 pkgname=rare-dev
 pkgver=0.8.9.3.r6.gf6e53a7
 pkgrel=1
-pkgdesc="Unstable version of Rare a GUI for legendary. An Epic Games Launcher open source alternative."
+pkgdesc="Dev branch of github.com/Dummerle/Rare - The latest, but unstable features"
 arch=('any')
 url="https://github.com/Dummerle/Rare"
 license=('GPL3')
