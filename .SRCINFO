@@ -1,12 +1,12 @@
 pkgbase = python-pynest2d-git
 	pkgdesc = Python bindings for libnest2d
-	pkgver = 4.8.0.r1.g1548790
-	pkgrel = 2
+	pkgver = 4.9.beta.r0.g1548790
+	pkgrel = 1
 	url = https://github.com/Ultimaker/pynest2d
 	arch = any
 	license = LGPL3
 	makedepends = git
-	makedepends = sip
+	makedepends = sip4
 	makedepends = cmake
 	depends = libnest2d
 	depends = python
