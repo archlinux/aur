@@ -15,7 +15,7 @@ url="http://gcc.gnu.org/java/"
 source=("http://mirrors.kernel.org/sources.redhat.com/java/ecj-${pkgver}.jar"
 	ecj1)
 sha512sums=('28f8c6fdbcb19e950b1d0bafb3bcc7a8cba87bc673aa6027cece116599cdee80f0cf5e95a1440544890239f5c754e8a93ab46d9daedd937faef445d7ea33b226'
-            'fec47ecfcfb5ce390f30d6b28a907a7af7d60a3d7572cfd3e53ee683b3767a5c4a7860bed037a1726f237c549b4e4479d905f145cf84ffa80fb42be60d36be7f')
+            'a1534b813c18a04eb3bf62f7f9fe99d14d1dd8792b0637fd0150c418a54f39e371380f63d45a1cb827245dbba6c5facbcbab73c75d28ba5ba05024f619c87db3')
 noextract=("ecj-${pkgver}.jar")
 
 package() {
