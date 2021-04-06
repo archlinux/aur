@@ -64,7 +64,7 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.8
+pkgver=5.11.11
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -73,7 +73,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="2c366888f8e94155dd1742796dc31cf2bb655fb0" # 5.11.8-1
+__commit="0b6bb610e35c89af8a20e9e267bc09c942827501" # 5.11.11-1
 
 license=(GPL2)
 makedepends=(
@@ -86,6 +86,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         "https://gitlab.manjaro.org/packages/core/linux511/-/archive/${__commit}/linux59-${__commit}.tar.gz")
+        #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 
 # Archlinux patches
 _commit="be7d4710850020de55bce930c83fa80347c02fc3"
@@ -96,9 +97,9 @@ done
         
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'fbf3d516a0df8944cdf8a340c5f365bfed7d63eedc76601a3ad84eb6c1a2ce33'  # xanmod
+            '1ae2241356332f3cea981eb1efa8205ac261f2b90f86f197442e8bcfe6de5aef'  # xanmod
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'  # choose-gcc-optimization.sh
-            'c8741423769787ada79425adc6f5186bbcc05e337f48c39b47b4fc60ad2126ba' # manjaro
+            '0f05f900a8a24f1cdae12c66e10513b4b39283efb683e9df682b0b50c8b509e6' # manjaro
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -111,6 +112,13 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 prepare() {
   cd linux-${_major}  
+  
+  # hacky work around for xz not getting extracted
+  # https://bbs.archlinux.org/viewtopic.php?id=265115
+  if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
+    #unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
+    xz -dc "$SRCDEST/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
+  fi
   
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
@@ -181,7 +189,7 @@ prepare() {
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
   # If we detect partial file with scripts/config commands, we execute as a script
   # If not, it's a full config, will be replaced
-  for _myconfig in "${startdir}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+  for _myconfig in "${SRCDEST}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
     if [ -f "${_myconfig}" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then
         # myconfig is a partial file. Executing as a script
@@ -216,7 +224,7 @@ prepare() {
   [[ -z "$_makenconfig" ]] || make nconfig
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+  cat .config > "${SRCDEST}/config.last"
 }
 
 build() {
