@@ -1,0 +1,19 @@
+pkgbase = ros-noetic-ddynamic-reconfigure
+	pkgdesc = ROS - The ddynamic_reconfigure package.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/pal-robotics/ddynamic_reconfigure
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-dynamic-reconfigure
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-roscpp
+	depends = ros-noetic-dynamic-reconfigure
+	depends = ros-noetic-roscpp
+	source = ros-noetic-ddynamic-reconfigure-0.4.1.tar.gz::https://github.com/pal-robotics/ddynamic_reconfigure/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = dd832cbadd4e45454aa3589daab2d2673b64ea376dcaeba9fe6eb4d5f6683317
+
+pkgname = ros-noetic-ddynamic-reconfigure
+
