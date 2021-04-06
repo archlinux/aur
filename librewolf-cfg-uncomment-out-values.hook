@@ -2,6 +2,7 @@
 Type = Package
 Operation = Upgrade
 Target = librewolf
+Target = librewolf-bin
 
 [Action]
 Description = Reverting comments to cfg and policy before librewolf upgrades... 

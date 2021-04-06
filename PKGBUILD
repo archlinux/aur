@@ -2,7 +2,7 @@
 
 pkgname=librewolf-comment-out-cfg-hook
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Comment out custom cfg values via pacman hook'
 arch=(x86_64 aarch64)
 url='https://git.sr.ht/~freed00m/librewolf-comment-out-cfg-hook'
