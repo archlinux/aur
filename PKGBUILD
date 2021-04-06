@@ -1,14 +1,14 @@
 pkgname=ttf-babelstone-han
-pkgver=13.0.5
+pkgver=13.0.13
 pkgrel=1
 pkgdesc="A Unicode Han font in Song/Ming style with glyphs used in Mainland China."
 arch=('any')
 url="http://www.babelstone.co.uk/Fonts/Han.html"
 license=('custom:"arphic"')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 source=('http://www.babelstone.co.uk/Fonts/Download/BabelStoneHan.zip'
         'http://ftp.gnu.org/non-gnu/chinese-fonts-truetype/LICENSE')
-sha256sums=('3fdac404bac9fc1254267fdd9c1e4a6291ac7c5fc5a2bad4d250971ccd0840f8'
+sha256sums=('e89b2269eac0c1bab746a703f5801440de8dfada9307df9358807b23e6d9687d'
             'ba74a961aaa5fa7e73dc67276df2781ba405da2cb30c52c9d9eee9c200d4d11e')
 
 package()
