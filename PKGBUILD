@@ -29,7 +29,7 @@ package() {
   
   # install binary symlink
   install -d "${pkgdir}/usr/bin/"
-  ln -sf /opt/fluent-reader/fluent-reader "${pkgdir}/usr/bin/soundux"
+  ln -sf /opt/fluent-reader/fluent-reader "${pkgdir}/usr/bin/fluent-reader"
   
   install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/$pkgname.desktop"
   
