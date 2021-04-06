@@ -1,28 +1,32 @@
-# Maintainer: Wesley Moore <wes@wezm.net>
-
+# Maintainer: lmartinez-mirror
+# Contributor: Wesley Moore <wes@wezm.net>
 pkgname=dutree
-pkgver=0.2.15
+pkgver=0.2.17
 pkgrel=1
 pkgdesc='A tool to analyze file system usage written in Rust'
 arch=('x86_64')
 url=https://github.com/nachoparker/dutree
 license=('GPL3')
 makedepends=('cargo')
-depends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8f5caa4f8e1d261ec3274218196e89319507bf866de6f658829f6a03be58ea83')
+sha256sums=('c88f2328c4e6cf96a0222efbe2a5c6d2de8cd0de0ebf01deb1f5fe81b5f8518e')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i "s/0.2.16/$pkgver/" Cargo.lock
+}
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   cargo build --release --locked
 }
 
 check() {
-  cd $pkgname-$pkgver
-  cargo test --locked
+  cd "$pkgname-$pkgver"
+  cargo test --release --locked
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   install -Dm755 target/release/$pkgname "$pkgdir"/usr/bin/$pkgname
 }
