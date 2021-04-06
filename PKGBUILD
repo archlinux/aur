@@ -9,8 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=("cmake"
          "root")
-source=("https://github.com/delphes/delphes/archive/master.zip"
-        "1716933.patch")
+source=("https://github.com/delphes/delphes/archive/master.zip")
 sha256sums=('aa4fd44924d8b66407da8e15268669de3b44e8fbd4345be17cde7c9ec8d0ed68')
 
 build() {

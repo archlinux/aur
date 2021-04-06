@@ -9,7 +9,6 @@ pkgbase = delphes
 	depends = cmake
 	depends = root
 	source = https://github.com/delphes/delphes/archive/master.zip
-	source = 1716933.patch
 	sha256sums = aa4fd44924d8b66407da8e15268669de3b44e8fbd4345be17cde7c9ec8d0ed68
 
 pkgname = delphes
