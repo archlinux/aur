@@ -1,7 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # TODO improve installation per https://wiki.archlinux.org/index.php/Java_package_guidelines – several of the dependencies have their own packages
 pkgname=apache-jena
-pkgver=3.17.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Java framework for building Semantic Web and Linked Data applications'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://jena.apache.org/'
 license=('Apache')
 depends=('java-runtime')
 source=("http://www-us.apache.org/dist/${pkgname/apache-/}/binaries/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('321c763fa3b3532fa06bb146363722e58e10289194f622f2e29117b610521e62e7ea51b9d06cd366570ed143f2ebbeded22e5302d2375b49da253b7ddef86d34')
+sha512sums=('20706c955faebd2f090ce741a3b836016b75f86135e658d5d8cceb00a36b800f4e6158238bbfb7751bf13c1167d60236c49fbc7e099cd2e4c357bf36fe3323ca')
 
 package() {
     cd "$pkgname-$pkgver"
