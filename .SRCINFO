@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-test-mavros
 	pkgdesc = ROS - Tests for MAVROS package.
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/mavlink/mavros
 	arch = i686
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgbase = ros-melodic-test-mavros
 	depends = ros-melodic-control-toolbox
 	depends = boost1.69
 	depends = eigen
-	source = ros-melodic-test-mavros-1.6.0.tar.gz::https://github.com/mavlink/mavros/archive/1.6.0.tar.gz
-	sha256sums = 8ab5b1cc851b27dbea9abbe67a7da9262afddf057d6316938745772666fa4d3d
+	source = ros-melodic-test-mavros-1.7.0.tar.gz::https://github.com/mavlink/mavros/archive/1.7.0.tar.gz
+	sha256sums = dff6d73e0c8f183e532837e6c8f502f40b9499d5df70717c088df9a239da7e77
 
 pkgname = ros-melodic-test-mavros
 
