@@ -1,46 +1,52 @@
-# Maintainer: JP-Ellis <josh@jpellis.me>
+# Maintainer: ReneganRonin <renegan.ronin@gmail.com>
 
 pkgname=madanalysis5
-pkgver=1.5_patch1
-pkgrel=2
-pkgdesc="MadAnalysis 5 is a framework for phenomenological investigations at particle colliders"
-url="https://launchpad.net/madanalysis5"
-arch=('i686' 'x86_64')
-license=('GPL3')
-depends=('python2'
-         'tcsh')
-optdepends=('delphes'
-            'fastjet'
-            'python2-matplotlib'
-            'root'
-            'root'
-            'zlib')
-makedepends=("expect")
-source=("https://launchpad.net/madanalysis5/trunk/v${pkgver%%_*}/+download/MA5_v${pkgver}.tgz"
-        "python2.patch"
+_majorversion=1
+_minorversion=8
+_maintenanceversion=59
+pkgver=${_majorversion}.${_minorversion}.${_maintenanceversion}
+_patch=1
+pkgrel=20201102
+arch=('x86_64')
+license=('MIT')
+depends=('tcsh' 'perl' 'python2')
+makedepends=('gcc' 'make')
+optdepends=('delphes' 'zlib' 'fastjet' 'texlive-most' 'texlive-core' 'texlive-bin')
+source=("https://launchpad.net/${pkgname}/trunk/v${_majorversion}.${_minorversion}/+download/MadAnalysis5_v${_majorversion}.${_minorversion}_patch${_patch}.tgz"
+"python2.patch"
         "no_check.patch"
         "mg5-ma5-fix.patch"
         "ma5.exp")
-sha256sums=('8db144d9d14ca8dfe549ad2419e45c9cf4dcf638a84f99d1dcda6cf57fa1c88d'
-            'bd2dec07df0a6fb21b7a420d0d769ebd397a2b2a286a44b4b92dac6700c5d8db'
-            '3676bb6ca83b98f00cc3d423690736c107f1c84bdced25420938e046ce0cbaac'
-            '2ade85747136f13b32b2ba09db90d6281c95b76d08e1189a8735b469dc5d6ac0'
-            '53e89bfc493faf732ab51d57d4d1268ddd65bcaec73fc71a08e8c42f11ef2571')
+
+
+md5sums=('19192c11544d3971bcf89c6f91e81538'
+         '1b22af322bf9a845ff4e3aef70eb01db'
+         '1769cc46742b2f91d35052f7f5ebb258'
+         'c6e82ddb7d1639ce57e0556790c5e294'
+         'a0b10f6f274b9e1d55b99cb63f265168')
+
+
 
 prepare() {
     warning "Optional dependencies should be installed first if they are to be recognized by MadAnalysis 5"
 
     msg2 "Fixing python references for python2"
     patch -p 1 < python2.patch
-
-    msg2 "Bringing forward fix for MadGraph-MadAnalysis interface bug"
-    patch -d ${pkgname} -p 0 < mg5-ma5-fix.patch
 }
 
 build() {
+    
+    msg2 "Installing delphes to tools"
+    cd ./madanalysis5/tools
+    git clone https://github.com/delphes/delphes.git
+    cd delphes
+    make
+    cd ../../../
+
     msg2 "Initializing MA5 first run"
     expect -f ma5.exp
     printf '\n'
+    
 
     # Fix paths in certain files
     files=(
@@ -63,13 +69,14 @@ build() {
 }
 
 package() {
-    # Copy everything of /opt/madanalysis5 since expects a particular directory
+    
+# Copy everything of /opt/madanalysis5 since expects a particular directory
     # structure.
-    mkdir -p "${pkgdir}/opt"
+    install -dm755 "${pkgdir}/opt"
     cp -a "${srcdir}/${pkgname}" "${pkgdir}/opt/"
 
     # Create symbolic links in /usr/bin to ma5
-    mkdir -p "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/bin/ma5" "${pkgdir}/usr/bin/"
 
     # Fix symbolic links within the package
@@ -84,7 +91,3 @@ package() {
         ln -fs "/opt/${pkgname}/tools/delphes/$l" "${pkgdir}/opt/madanalysis5/tools/SampleAnalyzer/ExternalSymLink/Lib/"
     done
 }
-
-# Local Variables:
-# mode: sh
-# End:
