@@ -19,7 +19,7 @@ makepkg --log --check --syncdeps --noconfirm --install --syncdeps
 # Try using the package
 mkdir -p build
 cd build
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 ./hello_world > actual_output.txt
 diff ../reference_output.txt actual_output.txt
