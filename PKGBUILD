@@ -6,7 +6,7 @@ pkgver=2.1
 pkgrel=1
 pkgdesc="Linux theme based on the apperance of Windows 7"
 arch=('any')
-url="https://github.com/B00merang-Project/Windows-Server-2003"
+url="https://github.com/B00merang-Project/Windows-7"
 license=('GPLv3')
 optdepends=('gnome-themes-extra: for the GTK3 theme?'
             'gtk-engine-murrine: for the GTK2 theme')
