@@ -1,6 +1,6 @@
 pkgbase = instamenu-schemas
 	pkgdesc = addons for instamenu
-	pkgver = 2021.03.21
+	pkgver = 2021.04.06
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/instamenu-schemas
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = instamenu-schemas
 	makedepends = meson
 	depends = glib2
 	depends = dconf
-	provides = instamenu-schemas=2021.03.21
-	source = instamenu-schemas-2021.03.21.tar.gz::https://github.com/The-Repo-Club/instamenu-schemas/archive/2021.03.21.tar.gz
-	sha256sums = 4c734cda091f91da939a6bf7cb4c536228db3e58d5e8757ca5cb8fe603434750
+	provides = instamenu-schemas=2021.04.06
+	source = instamenu-schemas-2021.04.06.tar.gz::https://github.com/The-Repo-Club/instamenu-schemas/archive/2021.04.06.tar.gz
+	sha256sums = 06db846c4285514f4e3a16d23792b6a69a5aac862581be1cd67095ead18dff15
 
 pkgname = instamenu-schemas
 
