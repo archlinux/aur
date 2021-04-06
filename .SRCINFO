@@ -1,0 +1,20 @@
+pkgbase = xmountains-git
+	pkgdesc = Fractal Generator for the xwindow system, intergrates with xscreensaver
+	pkgver = r187.d5301c8
+	pkgrel = 1
+	url = https://github.com/spbooth/xmountains
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imake
+	makedepends = xbitmaps
+	depends = libx11
+	provides = xmountains-git
+	conflicts = xmountains-git
+	source = xmountains::git+https://github.com/spbooth/xmountains.git#branch=master
+	sha256sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = xmountains-git
+
