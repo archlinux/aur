@@ -1,7 +1,7 @@
 pkgbase = code-icons
-	pkgdesc = Change Code OSS icons to VSCode ones
+	pkgdesc = Change Code - OSS icons to VS Code ones
 	pkgver = 1.54.3
-	pkgrel = 2
+	pkgrel = 3
 	install = code-icons.install
 	arch = any
 	license = unknown
@@ -9,20 +9,20 @@ pkgbase = code-icons
 	depends = patch
 	source = code-icons.hook
 	source = patch.sh
-	source = visual-studio-code.png
+	source = com.visualstudio.code.png
 	source = letterpress.svg
 	source = letterpress-dark.svg
 	source = letterpress-hc.svg
 	source = code-oss.desktop.diff
 	source = code-oss-url-handler.desktop.diff
 	md5sums = db22ba0eaa2e6388054bde382ac8a392
-	md5sums = d5e4161d61932d262c6327e30bf77527
+	md5sums = 3801be89f56574475535d300e3744576
 	md5sums = 04c4c453a76effa2d794fd6037fb1412
 	md5sums = fcae93243f3d0c408707711b833e408f
 	md5sums = 0c284b5816605c2c3fb9d24b88b759b9
 	md5sums = 0fb6c6b3251e012cee655ee300402029
-	md5sums = 4bd7610b6fd58a9e2b7d557889d69c0d
-	md5sums = b03d8553fc370566e860c9bf98a80dd6
+	md5sums = dc7dfd6638b1135d06b3cfbfcc8fc4b0
+	md5sums = d2e2ba227b8fede616452a43c7b60306
 
 pkgname = code-icons
 

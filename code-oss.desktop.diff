@@ -5,7 +5,7 @@
  GenericName=Text Editor
  Exec=/usr/bin/code-oss --no-sandbox --unity-launch %F
 -Icon=com.visualstudio.code.oss
-+Icon=visual-studio-code
++Icon=com.visualstudio.code
  Type=Application
  StartupNotify=false
  StartupWMClass=Code
@@ -14,4 +14,4 @@
  Name=New Empty Window
  Exec=/usr/bin/code-oss --no-sandbox --new-window %F
 -Icon=com.visualstudio.code.oss
-+Icon=visual-studio-code
++Icon=com.visualstudio.code

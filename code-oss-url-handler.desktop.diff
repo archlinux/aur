@@ -5,7 +5,7 @@
  GenericName=Text Editor
  Exec=/usr/bin/code-oss --no-sandbox --open-url %U
 -Icon=com.visualstudio.code.oss
-+Icon=visual-studio-code
++Icon=com.visualstudio.code
  Type=Application
  NoDisplay=true
  StartupNotify=true
