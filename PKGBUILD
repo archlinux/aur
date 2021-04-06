@@ -1,4 +1,5 @@
-# Maintainer: Brad Ackerman <brad@facefault.org>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Brad Ackerman <brad@facefault.org>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: EoleDev
 # Contributor: Jan Cholasta <grubber at grubber cz>
@@ -10,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.8.10
+pkgver=4.9.2
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -35,21 +36,26 @@ options=(emptydirs)
 validpgpkeys=('0E63D716D76AC080A4A33513F40800B6298EB963')
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         "https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz.asc"
-        0001-platform-add-Arch-Linux-platform.patch
+        platform.patch
         freeipa-client-update-sshd_config
-        freeipa-client-update-sshd_config.hook)
-sha256sums=('01e1d239e24c8841b1221c36d4fe50b7b4f165c022b888b8bdfb376fa55dc999'
-            'b3b9a8355c785ce7b9f24529aed3f39f297c0fb7bc8ed05b2d9bd3c6c9499a99'
-            '07571a3899e4403a404ffe2ad96816f9978dc4c8efc3204df9748784623f253b'
+        freeipa-client-update-sshd_config.hook
+        nis-domainname.service
+        ipaplatform.tar.gz)
+sha256sums=('66bc4f858d4b1b78ab1549c1188e8dbb4df53b86946ae531ca9feac35339092d'
+            '11888ad2301dbea9080f1039868262a7d8807ccac89fa4dd1f5238c818f57d58'
+            '4b3629f2733182f68b3d28c28f782773103b814c486cf4fdb15336163b08c82e'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
-            '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d')
+            '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
+            '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
+            '6362c8bae5b8c119d113e840914d284a706b33baa28741b61fef1048f3c37ed2')
 
 prepare() {
     cd freeipa-${pkgver}
 
     rm -rf ipaplatform/arch
 
-    patch -p1 -i"$srcdir"/0001-platform-add-Arch-Linux-platform.patch
+    patch -p1 -i "${srcdir}/platform.patch"
+    tar xf "${srcdir}/ipaplatform.tar.gz"
 
     # Workaround: We want to build Python things twice. To be sure we do not mess
     # up something, do two separate builds in separate directories.
@@ -88,7 +94,7 @@ build() {
     # (These are typically configuration files created by IPA installer.)
     # All other artifacts should be created by make install.
     #
-    # Exception to this rule are test programs which where want to install
+    # Exception to this rule are test programs which want to install
     # Python2/3 versions at the same time so we need to rename them. Yuck.
 
     # Python 3 installation needs to be done first. Subsequent Python 2 install
@@ -121,7 +127,6 @@ package_python-ipalib() {
              'python-gssapi>=1.2.0'
              'gnupg'
              'keyutils'
-             'python-nss>=0.16'
              'python-cryptography>=1.4'
              'python-netaddr>=0.7.16'
              'sssd'
@@ -217,13 +222,13 @@ package_freeipa-client-common() {
     for _file in ../install/etc/ipa/nssdb \
                  ../install/var/lib/ipa-client/pki \
                  ../install/var/lib/ipa-client/sysrestore \
+                 ../install/usr/share/ipa/client/* \
                  ../install/usr/share/man/man5/default.conf.5*
     do
         _file="${_file#../install/}"
         mkdir -p "$pkgdir"/"${_file%/*}"
         mv ../install/"$_file" "$pkgdir"/"$_file"
     done
-
 }
 
 package_freeipa-client() {
@@ -235,7 +240,7 @@ package_freeipa-client() {
              'cyrus-sasl-gssapi'
              'ntp'
              'krb5'
-             'authconfig'
+             'authselect'
              'curl>=7.21.7'
              'yp-tools'
              'xmlrpc-c>=1.27.4'
@@ -247,7 +252,8 @@ package_freeipa-client() {
              'python-gssapi>=1.2.0'
              'autofs'
              'nfsidmap'
-             'nfs-utils')
+             'nfs-utils'
+             'chrony')
     conflicts=('freeipa-admintools')
     replaces=('freeipa-admintools')
     install=freeipa-client.install
@@ -261,6 +267,9 @@ package_freeipa-client() {
 
     install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md \
                                                         Contributors.txt
+                                                        
+    install -Dm644 "$srcdir/nis-domainname.service" -t "$pkgdir/usr/lib/systemd/system"
+    install -dm755 "$pkgdir/etc/krb5.conf.d"
 
     local _file
     for _file in ../install/etc/bash_completion.d \
