@@ -1,5 +1,5 @@
 pkgname=rsyslog
-pkgver=8.2008.0
+pkgver=8.2102.0
 pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
@@ -15,12 +15,12 @@ optdepends=('postgresql-libs: PostgreSQL Database Support'
 backup=('etc/rsyslog.conf'
 	'etc/logrotate.d/rsyslog')
 options=('strip' 'zipman')
-source=("https://github.com/rsyslog/rsyslog/archive/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rsyslog/rsyslog/archive/v${pkgver}.tar.gz"
 	'rsyslog.logrotate'
 	'rsyslog.conf'
         'rsyslog.service')
 
-sha256sums=('bf000a5f6d95fec26b77a2133ac225da439b0cd7a64f190a569d5c42fdacf795'
+sha256sums=('558133ea7ca9c1d526220abb9153d04cac00f67888ca6967f5e5129d779ed5ca'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             'bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb'
             '81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2')
