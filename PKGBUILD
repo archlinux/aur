@@ -46,7 +46,41 @@ prepare() {
   patch -Np1 -i ../wit-titles.patch
 }
 
+_not() {
+  if "$@"; then
+    return 1
+  else
+    return 0
+  fi
+}
+
+_array_contains() {
+  local haystack="$1[@]"
+  local needle="$2"
+
+  for value in "${!haystack}"; do
+    if [[ "$value" == "$needle" ]]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+_incompatible_flags=( "-fvar-tracking-assignments" )
+_clang_remove_incompatible_flags() {
+  local newflags=
+  for flag in $CFLAGS; do
+    if _not _array_contains _incompatible_flags "$flag"; then
+      newflags="$newflags $flag"
+    fi
+  done
+
+  export CFLAGS="$newflags"
+}
+
 build() {
+  _clang_remove_incompatible_flags
   make INSTALL_PATH="${pkgdir}/usr" CC=clang -C wiimms-iso-tools/project tools
   make INSTALL_PATH="${pkgdir}/usr" CC=clang -C wiimms-iso-tools/project doc
 }
