@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('tcsh' 'perl' 'python2')
 makedepends=('gcc' 'make')
-optdepends=('delphes' 'zlib' 'fastjet' 'texlive-most' 'texlive-core' 'texlive-bin')
+optdepends=('delphes' 'zlib' 'fastjet' 'texlive-core' 'texlive-bin')
 source=("https://launchpad.net/${pkgname}/trunk/v${_majorversion}.${_minorversion}/+download/MadAnalysis5_v${_majorversion}.${_minorversion}_patch${_patch}.tgz"
 "python2.patch"
         "no_check.patch"

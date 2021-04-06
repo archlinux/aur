@@ -11,7 +11,6 @@ pkgbase = madanalysis5
 	optdepends = delphes
 	optdepends = zlib
 	optdepends = fastjet
-	optdepends = texlive-most
 	optdepends = texlive-core
 	optdepends = texlive-bin
 	source = https://launchpad.net/madanalysis5/trunk/v1.8/+download/MadAnalysis5_v1.8_patch1.tgz
