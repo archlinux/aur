@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-core-info
 pkgname=$_pkgname-git
-pkgver=1.9.0.r19.g6a5a169
+pkgver=1.9.1.r0.gbaf1c40
 pkgrel=1
 epoch=1
 pkgdesc="Libretro core info files"
@@ -20,11 +20,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd $_pkgname
-	make update
 }
 
 package() {
