@@ -1,0 +1,10 @@
+diff -rupN wiimms-iso-tools.orig/project/Makefile wiimms-iso-tools/project/Makefile
+--- wiimms-iso-tools.orig/project/Makefile   2021-04-06 15:02:45.248282583 +0200
++++ wiimms-iso-tools/project/Makefile      2021-04-06 15:02:55.818341676 +0200
+@@ -1031,3 +1031,6 @@ help:
+ -include makefiles-local/Makefile.local.$(SYSTEM)
+ -include Makefile.user
+ 
++.PHONY: version
++version:
++	@echo "$(VERSION)"
