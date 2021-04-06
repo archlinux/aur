@@ -15,11 +15,9 @@ install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.sh')
 md5sums=('6ff3e599956e45e9d1a78ac3c88c0454'
-         '5d5a45284faafa8ade8cbf6ae02054c8')
+         '63499f449f103a5cf206897ed581de2f')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
   install -Dm 755 "${srcdir}/patch.sh" "${pkgdir}/usr/share/${pkgname}/patch.sh"
 }
-md5sums=('6ff3e599956e45e9d1a78ac3c88c0454'
-         '63499f449f103a5cf206897ed581de2f')
