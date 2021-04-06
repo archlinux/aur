@@ -3,13 +3,13 @@
 
 pkgname=glbsp
 pkgver=2.24
-pkgrel=4
+pkgrel=5
 pkgdesc="A node builder for OpenGL-based Doom ports"
 arch=('i686' 'x86_64')
 url="http://glbsp.sourceforge.net/"
 license=('GPL')
 depends=('fltk>=1.1.7')
-source=(http://downloads.sourceforge.net/$pkgname/${pkgname}_src_224.tar.gz)
+source=(https://downloads.sourceforge.net/$pkgname/${pkgname}_src_224.tar.gz)
 sha256sums=('e3b7c4bce21c2f9b77732a9b5920b6877e884b31dd1ed9273776538dba48a75c')
 
 build() {
