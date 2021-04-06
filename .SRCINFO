@@ -1,8 +1,8 @@
 pkgbase = rompr
-	pkgdesc = Web frontend to MPD
+	pkgdesc = A php web frontend to MPD and Mopidy
 	pkgver = 1.55
-	pkgrel = 1
-	url = https://github.com/fatg3erman/RompR/releases
+	pkgrel = 2
+	install = rompr.install
 	arch = any
 	license = custom
 	depends = imagemagick
@@ -10,12 +10,11 @@ pkgbase = rompr
 	depends = php-sqlite
 	depends = php-gd
 	depends = php-intl
-	optdepends = apache
-	optdepends = lighttpd
-	optdepends = nginx
-	optdepends = php-jsonreader-git: Low Memory Mode
+	optdepends = apache: webserver to serve app
+	optdepends = nginx: webserver to serve app
+	optdepends = mysql: alternate database platform to sqlite
 	source = https://github.com/fatg3erman/RompR/releases/download/1.55/rompr-1.55.zip
-	md5sums = 23745cd02dc6e4264fe35220eec64754
+	sha256sums = 7d4ad650090e34aec9bf01f08a428768e70dacd39952bf1375295f68b320e9d3
 
 pkgname = rompr
 
