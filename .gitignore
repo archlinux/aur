@@ -1,8 +1,5 @@
 *
 !.SRCINFO
 !.gitignore
-!CMakeLists.txt.patch
 !PKGBUILD
 !VersionConfiguration.cmake.patch
-!main.cpp.patch
-!src_CMakeLists.txt.patch
