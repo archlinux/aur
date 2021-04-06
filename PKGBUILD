@@ -4,7 +4,7 @@
 
 pkgname=jade-application-kit
 pkgver=3.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit."
 arch=('any')
 url="https://github.com/codesardine/Jade-Application-Kit"
@@ -15,19 +15,18 @@ conflicts=('jade-application-kit-git')
 depends=('python' 'python-gobject' 'webkit2gtk' 'pyside2' 'python-pyqtwebengine')
 makedepends=('python-setuptools')
 source=("https://github.com/codesardine/Jade-Application-Kit/archive/v${pkgver}.tar.gz")
-sha512sums=('2e41c765f64f9add00a4c467a474f19397d27a19d1b02243167f53cfdefe9b3e34f0f1a3de0a9c61a40df1ec0fb6bcdde26731c0e9a3195a6348fc46ee8289c7')
+sha512sums=('5d1e65763371fe61e56eded78092f94737381a4707edac8b87003264c236b88ebc1db159c00e639ef8686e15489977b1fd3dfdbd00c53934aa1b4a38f9ad9454')
 
 prepare() {
-    cd "${srcdir}"/Jade-Application-Kit-${pkgver}
-	#patch --strip=1  < ../import_fix.patch
+    cd "${srcdir}"/jak-${pkgver}
 }
 
 build() {
-    cd "${srcdir}"/Jade-Application-Kit-${pkgver}
+    cd "${srcdir}"/jak-${pkgver}
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}"/Jade-Application-Kit-${pkgver}
+    cd "${srcdir}"/jak-${pkgver}
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
