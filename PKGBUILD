@@ -1,6 +1,6 @@
 # Maintainer: Ferdinand Bachmann <theferdi265@gmail.com>
-# Community Package Maintainer: Maxime Gauduin <alucryd@gmail.com>
-# Community Package Contributor: Gordin <gordin@koeln.ccc.de>
+# Contributor: Maxime Gauduin <alucryd@gmail.com>
+# Contributor: Gordin <gordin@koeln.ccc.de>
 
 pkgname=wit-git
 pkgver=3.03b.r8.7f41a7f
