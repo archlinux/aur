@@ -7,8 +7,8 @@
 
 pkgname=npm6
 _pkgname=npm
-pkgver=6.14.11
-pkgrel=3
+pkgver=6.14.12
+pkgrel=1
 pkgdesc='A package manager for javascript.'
 arch=('any')
 url='https://www.npmjs.com/'
@@ -22,7 +22,7 @@ conflicts=('npm')
 provides=('npm=6.14.11')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/npm/cli/archive/v$pkgver.tar.gz")
-sha512sums=('ad8e6c72c82f1b982fc5aaafcca96d40e26c1e8b6b09d41de68118574019bd6a9253acddf0c91384fa6c4c8d96a5ffac0a3c8e497f35b29e2e99f35c1bc21644')
+sha512sums=('56b931f069684a979bdbec3d4d49c78ccf3963b3b46d45b2c235118204d66b592fc3f5d43cb38d42c886104574ade68e187e6f46f535273034079f82a53470f6')
 
 prepare() {
   cd cli-$pkgver
