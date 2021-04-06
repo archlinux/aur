@@ -1,10 +1,11 @@
 pkgbase = heretic1-wad
 	pkgdesc = The Heretic shareware IWAD (game data)
 	pkgver = 1.2
-	pkgrel = 1
-	url = http://www.idsoftware.com/games/vintage/heretic
+	pkgrel = 2
+	url = https://web.archive.org/web/20160603151059/https://www.ravensoftware.com/games/heretic/view-game/
 	arch = any
 	license = custom
+	makedepends = unzip
 	source = ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/idstuff/heretic/htic_v12.zip
 	sha256sums = 5ffbb47e4a5750fef144c312973ee5782266b4a63474b77478103b6c1aaed39d
 
