@@ -1,6 +1,7 @@
 # Maintainer: robertfoster
 # Contributor: LIN Rs <LinRs[d]users.noreply.github.com>
 # Contributor: yochananmarqos <mark.wagie at tutanota dot com>
+
 _pkgname=devilutionX
 pkgname=devilutionx
 pkgver=1.2.0
@@ -13,7 +14,7 @@ depends=('graphite' 'libsodium' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('cmake' 'gcc-libs')
 install="${pkgname}".install
 options=('strip')
-source=("https://github.com/diasurgical/devilutionX/archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}.tar.gz")
 
 prepare() {
   cd "${srcdir}/${_pkgname}-$pkgver"
