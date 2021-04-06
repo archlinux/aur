@@ -1,10 +1,11 @@
-# Maintainer: Maxime Gauduin <alucryd@gmail.com>
-# Contributor: Gordin <gordin@koeln.ccc.de>
+# Maintainer: Ferdinand Bachmann <theferdi265@gmail.com>
+# Community Package Maintainer: Maxime Gauduin <alucryd@gmail.com>
+# Community Package Contributor: Gordin <gordin@koeln.ccc.de>
 
-pkgname=wit
+pkgname=wit-git
 pkgver=3.03a
 pkgrel=1
-pkgdesc='Wiimms ISO Tools'
+pkgdesc='Wiimms ISO Tools (git version)'
 arch=(x86_64)
 url=https://wit.wiimm.de
 license=(GPL2)
@@ -23,10 +24,11 @@ optdepends=(
   'bash: Update titles lists'
   'wget: Update titles lists'
 )
+conflicts=(wit)
+provides=(wit)
 install=wit.install
-_commit=fb217fb75b4f449dd00ecbeeae7a35082e87218c
 source=(
-  git+https://github.com/Wiimm/wiimms-iso-tools.git#commit=${_commit}
+  git+https://github.com/Wiimm/wiimms-iso-tools.git
   wit-makefile.patch
   wit-no-exec-stack.patch
   wit-titles.patch
