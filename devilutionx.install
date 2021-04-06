@@ -1,13 +1,12 @@
-post_install(){
+post_install() {
 
-cat << EOF
+  cat <<EOF
 
-Copy required files(e.g. diablodat.mpq) to your Diablo directory
-(default is ~/.local/share/diasurgical/devilution) or move the
-devilution executable in the same directory as "diablodat.mpq".
+Copy required files(e.g. diablodat.mpq,hellfire.mpq..) to your Diablo directory
+(default is ~/.local/share/diasurgical/devilution)
 EOF
 }
 
 post_upgrade() {
-post_install
+  post_install
 }
