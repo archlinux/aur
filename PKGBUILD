@@ -4,7 +4,7 @@
 
 pkgname=zoho-mail-desktop
 pkgver=1.2.0
-pkgrel=7
+pkgrel=9
 pkgdesc="The desktop version of your favorite mailsuite!"
 arch=('x86_64')
 license=('custom')
@@ -25,7 +25,8 @@ package() {
   cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt/zoho-mail-desktop"
 
   mkdir -p "${pkgdir}/usr/bin"
-  cp -Lr "${pkgdir}/opt/zoho-mail-desktop/squashfs-root/AppRun" "${pkgdir}/usr/bin/zoho-mail-desktop"
+  echo '#!/usr/bin/env bash
+       gtk-launch zoho-mail-desktop.desktop' | tee "${pkgdir}/usr/bin/zoho-mail-desktop"
 
   mkdir -p "${pkgdir}/usr/share/applications"
   cp -Lr "${srcdir}/zoho-mail-desktop.desktop" "${pkgdir}/usr/share/applications"
