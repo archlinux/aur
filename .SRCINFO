@@ -9,7 +9,7 @@ pkgbase = mx44
 	depends = jack
 	source = mx44::https://web.archive.org/web/20160730161851if_/http://web.comhem.se/luna/Mx44.2.tar.gz
 	source = mx44.patch
-	md5sums = 8e532c78d79e189fe5b6e2dd10acf0e2
+	md5sums = 4d0b67a6ee54cc017df2712eee7b899e
 	md5sums = d897856c49d9bc589b430b3fe3292c2a
 
 pkgname = mx44
