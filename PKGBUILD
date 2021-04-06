@@ -32,11 +32,13 @@ source=(
   wit-makefile.patch
   wit-no-exec-stack.patch
   wit-titles.patch
+  wit-makefile-version.patch
 )
 b2sums=('SKIP'
         '2440f01dc499477b9c237d2bc6d9a6a712ac22887df022b6a84c6ec6ac9b095aa5944db6c5af9773a2e2446df6cc7774783c8cfd59ed815d9cb413ae8e1c0efb'
         'a9e615aac8ebafcf98079160f3e2140e1389e42baf7896a2fd845133e47ebcea9199eef847b84732d4dc4fec6107f45e96fb4ab3d4acf5421c88e02f3564eb62'
-        '4e241a0c37fd2a082d4285d3685833e3805e35db829961183df02bb426d5679b62f8985f59604512b2615002faa28a9d8947ca9c6fc86a025bee5ab7bbf1bcf7')
+        '4e241a0c37fd2a082d4285d3685833e3805e35db829961183df02bb426d5679b62f8985f59604512b2615002faa28a9d8947ca9c6fc86a025bee5ab7bbf1bcf7'
+        'd412e4aaa485a0288f567aac67f4abf7ec4d9bcbe8f4d9b0f580e629727468b60dd98dbba13b1cb2492722cc6f1822751c82317de1fcf2fcbf5dd515ed888334')
 
 prepare() {
   cd wiimms-iso-tools
@@ -44,6 +46,7 @@ prepare() {
   patch -Np1 -i ../wit-makefile.patch
   patch -Np1 -i ../wit-no-exec-stack.patch
   patch -Np1 -i ../wit-titles.patch
+  patch -Np1 -i ../wit-makefile-version.patch
 }
 
 _not() {
