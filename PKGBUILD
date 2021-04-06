@@ -2,7 +2,7 @@
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
 pkgver=1.14.0.r36.gf3cbbc6
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
@@ -40,7 +40,7 @@ _ensure_local_nvm() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	export npm_config_cache="$srcdir/npm_cache"
-	local nodeversion='12.21.0'
+	local nodeversion='12.22.1'
 	local npm_prefix=$(npm config get prefix)
 	npm config delete prefix
 	_ensure_local_nvm
