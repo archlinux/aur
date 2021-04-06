@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-cookie-baker'
-pkgver='0.10'
-pkgrel='2'
+pkgver='0.11'
+pkgrel='1'
 pkgdesc="Cookie string generator / parser"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,8 +13,8 @@ makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-time')
 url='https://metacpan.org/release/Cookie-Baker'
 source=("http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Cookie-Baker-${pkgver}.tar.gz")
-md5sums=('20f6f16689df949db86645652c1ebe38')
-sha512sums=('e149885b3a561436daa8663f4ab55c5ebe41b6fce6ff3332ad58f840a9bb8098e36dbbb3dc15c4ce486245d3c5669a1cc450f112cb76346280a776179d54444f')
+md5sums=('bc8f95893d6ec3093a62d1957e1908f2')
+sha512sums=('0b75d9c74e1daa5d4dd63febd887e6c4825fd1df5f56335bf733b5bf2f24a56f6b76728259799aaf4dedf27efae90c238962585956608b1408a67164c3759ed2')
 _distdir="Cookie-Baker-${pkgver}"
 
 build() {
