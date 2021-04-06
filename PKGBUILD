@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=fluent-reader
 pkgver=1.0.0
-pkgrel=3
+pkgrel=5
 _pkgname="${pkgname}-${pkgver}"
 pkgdesc='Modern desktop RSS reader built with Electron, React, and Fluent UI'
 arch=('any')
@@ -29,7 +29,7 @@ package() {
   
   # install binary symlink
   install -d "${pkgdir}/usr/bin/"
-  ln -sf /opt/soundux/soundux "${pkgdir}/usr/bin/soundux"
+  ln -sf /opt/fluent-reader/fluent-reader "${pkgdir}/usr/bin/soundux"
   
   install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/$pkgname.desktop"
   
