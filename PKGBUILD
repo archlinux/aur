@@ -2,7 +2,7 @@
 
 _name=coverage-highlight.vim
 pkgname=vim-coverage-highlight
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Vim plugin to highlight Python source code lines that lack test coverage"
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('python-coverage' 'vim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mgedmin/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('42049beb26ff1bcc96713ab7e82d86ff25846e11f2b7632e5785e31e374199ed7b958119ba4cc93dc1b174b09ce190c6bb14e8afe1b5cfcf0c6b5413e1ed217d')
-b2sums=('160ec8d1a3e6bc857057b61c328c71c1b3c98d1ba673ebd7b1a7bc8a472656a2eff01a669c5cb48743184c0f93590addee8a2168798aa0bb89f3ffe941c6c31d')
+sha512sums=('a420f9b5ce226be680158f99d95e23fb49a217c142fa5826b86ce21db157bce18f7b169c20a91b0aa72be3658767ad40efce1381c3d1047b8e91a799c01f2ed1')
+b2sums=('334d811ab21fe0f32a60235eb8dede6e604cc997f75bcad0d2db3de5412565ae9120148f4eee3e9933df13738d81ec0775fb7a6acd2c0b8af0b04323034de5bd')
 
 prepare() {
   mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
