@@ -1,17 +1,21 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features
 pkgver=1.54.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Unblock some features in Code OSS'
 arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
 depends=('code' 'sed')
+optdepends=('org.freedesktop.secrets: for settings sync feature'
+            'libsecret: for settings sync feature')
+provides=('code-features')
+conflicts=('code-features')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.sh')
 md5sums=('5d5bd889095a60ffbf1918d5a2a08bdb'
-         'ce2b2c47777f18bb8842b7ff5dd530a2')
+         '5af300de3e3efbfd071425b832c83313')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"

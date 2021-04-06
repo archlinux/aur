@@ -1,17 +1,21 @@
 pkgbase = code-features
 	pkgdesc = Unblock some features in Code OSS
 	pkgver = 1.54.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vscode
 	install = code-features.install
 	arch = any
 	license = unknown
 	depends = code
 	depends = sed
+	optdepends = org.freedesktop.secrets: for settings sync feature
+	optdepends = libsecret: for settings sync feature
+	provides = code-features
+	conflicts = code-features
 	source = code-features.hook
 	source = patch.sh
 	md5sums = 5d5bd889095a60ffbf1918d5a2a08bdb
-	md5sums = ce2b2c47777f18bb8842b7ff5dd530a2
+	md5sums = 5af300de3e3efbfd071425b832c83313
 
 pkgname = code-features
 
