@@ -1,11 +1,8 @@
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: Brian Cooper <brian at brian-cooper dot com>
 # Contributor: Westofer Raymond <westoferraymond@gmail.com>
 pkgname=athens-git
 _pkgname=athens
-pkgver=v1.0.0.beta.61.r3.g32ae526
+pkgver=v1.0.0.beta.64.r3.g98a1fca
 pkgrel=1
 pkgdesc="Athens is an open-source and local-first alternative to Roam Research. Athens lets you take notes... Master branch "
 arch=('i686' 'x86_64')
@@ -16,18 +13,12 @@ depends=("electron")
 makedepends=("git" "nodejs" "leiningen" "yarn" "jq")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-#replaces=()
-#backup=()
-#options=()
 install=
 source=('athens::git+https://github.com/athensresearch/athens' 'athens.sh' 'athens.desktop')
 noextract=()
 md5sums=('SKIP'
          'a11ab00f8e3f2be1320a5e67dcded1d1'
          'dc18f4e2bdea985fff72911e868dfce9')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
     cd "$srcdir/${_pkgname}"
@@ -36,7 +27,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${_pkgname}"
-    # electron builder enforces email and homepage!
+    # electron builder enforces email and homepage
     jq '.author|={"name":"athensresearch" , "email":"athensresearch@gmail.com"}' package.json  > tmp.json && mv tmp.json package.json
     jq '.homepage="https://github.com/athensresearch/athens"' package.json > tmp.json && mv tmp.json package.json
     yarn upgrade electron@"$(</usr/lib/electron/version)"
@@ -55,20 +46,16 @@ build() {
         -c.electronVersion="$(</usr/lib/electron/version)"
 }
 
-#check() {
-#cd "$srcdir/${_pkgname}"
-#make -k check
-#}
 
 package() {
-    #desktop file
+    # desktop file
     cd "$srcdir"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${_pkgname}.desktop"
     install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-
 
     cd "$srcdir/${_pkgname}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
     install -Dm644 "build/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -Dm644 "dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}.asar"
 }
+
