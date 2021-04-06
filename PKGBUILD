@@ -21,7 +21,7 @@ package() {
     make install DESTDIR=${pkgdir}
 
     msg2 "Moving examples and cards"
-    mkdir -p "${pkgdir}/usr/share/Delphes"
+    install -dm755 "${pkgdir}/usr/share/Delphes"
     mv "${pkgdir}/usr/examples" "${pkgdir}/usr/cards" "${pkgdir}/usr/share/Delphes/"
 }
 
