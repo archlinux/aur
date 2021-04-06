@@ -3,7 +3,7 @@
 pkgname=textidote-bin
 _pkgname=textidote
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Spelling, grammar and style checking on LaTeX documents"
 arch=('any')
 url="https://github.com/sylvainhalle/textidote"
@@ -17,7 +17,7 @@ source=(
   "textidote-desktop"
   "textidote.desktop")
 sha256sums=('47b74937d338cfb93d16d1016d64da70d0f83294d12663804df9b4017683e37f'
-            'feb003c3f2c55096fef7577fc8da9b5f4c489697f4eda21a199d408126524bbb'
+            'fe73b75d1c718f18af697b4b2e5a638bd6d7fb2098d368bd79129d902ad715d8'
             '087ea7481edecff88c27af50766b3691dfbbdee33dc5a9a97fb767fde6711c6a')
 
 prepare() {
