@@ -26,7 +26,7 @@ validpgpkeys=()
 
 build() {
 	cd nextpad
-	make
+	sudo make
 }
 
 package() {
