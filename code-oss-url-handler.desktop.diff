@@ -1,0 +1,11 @@
+--- code-oss-url-handler.desktop.old   2021-04-01 21:39:16.000000000 +0800
++++ code-oss-url-handler.desktop.new   2021-04-06 19:42:21.257125168 +0800
+@@ -3,7 +3,7 @@
+ Comment=Code Editing. Redefined.
+ GenericName=Text Editor
+ Exec=/usr/bin/code-oss --no-sandbox --open-url %U
+-Icon=com.visualstudio.code.oss
++Icon=visual-studio-code
+ Type=Application
+ NoDisplay=true
+ StartupNotify=true
