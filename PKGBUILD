@@ -11,18 +11,18 @@ url='https://www.gnu.org/software/gdb/'
 makedepends=(git)
 options=(!emptydirs)
 depends=(zstd gdb-common mpfr guile libelf)
-source=(https://ftp.gnu.org/gnu/gdb/gdb-${_gdbver}.tar.xz
-    "git+https://github.com/glankk/n64.git#branch=n64-ultra")
+source=("https://ftp.gnu.org/gnu/gdb/gdb-${_gdbver}.tar.xz"
+        "git+https://github.com/glankk/n64.git#branch=n64-ultra")
 sha256sums=('f82f1eceeec14a3afa2de8d9b0d3c91d5a3820e23e0a01bbb70ef9f0276b62c0'
             'SKIP')
 
 pkgver() {
-  cd ${srcdir}/n64/
+  cd "${srcdir}/n64/"
   printf "%s_r%s.%s" "${_gdbver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd ${srcdir}/gdb-${_gdbver}
+  cd "${srcdir}/gdb-${_gdbver}"
   mkdir "${srcdir}"/build-gdb
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
