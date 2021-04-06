@@ -26,7 +26,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DHPX_WITH_EXAMPLES=OFF \
         -DHPX_WITH_TESTS=OFF
-    make -j1
+    make
 }
 
 package() {
