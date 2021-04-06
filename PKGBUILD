@@ -24,7 +24,6 @@ optdepends=(
   'bash: Update titles lists'
   'wget: Update titles lists'
 )
-conflicts=(wit)
 provides=(wit)
 install=wit.install
 source=(
