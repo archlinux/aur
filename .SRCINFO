@@ -1,7 +1,7 @@
 pkgbase = python-ipycanvas-git
 	pkgdesc = Interactive widgets library exposing the browser's Canvas API
 	pkgver = r329.30ccca2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martinRenou/ipycanvas
 	arch = any
 	license = BSD
