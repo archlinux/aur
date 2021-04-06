@@ -1,6 +1,6 @@
 pkgbase = python2-protobuf
 	pkgdesc = Python 2 bindings for Google Protocol Buffers
-	pkgver = 3.15.6
+	pkgver = 3.15.7
 	pkgrel = 1
 	url = https://developers.google.com/protocol-buffers/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = python2-protobuf
 	depends = glibc
 	depends = zlib
 	depends = python2-six
-	depends = protobuf=3.15.6
-	source = https://github.com/protocolbuffers/protobuf/releases/download/v3.15.6/protobuf-all-3.15.6.tar.gz
-	sha512sums = 1d3695cf2afa9181cec190d435615780353ecf7422046f517dfe1316ee92cca01676be0008481c80009912a3df0cd1aeaaea40ffcc3a569ccf0831d8b5e35ab0
+	depends = protobuf=3.15.7
+	source = https://github.com/protocolbuffers/protobuf/releases/download/v3.15.7/protobuf-all-3.15.7.tar.gz
+	sha512sums = b95e1e7d3c0807f87dd3d47090db87ab2a5a6cfc02bac7c78f7e50821d796b5a6e71bf7943128d368974c3a0414d259a3761e5cc241a43c53186618666bc831b
 
 pkgname = python2-protobuf
 
