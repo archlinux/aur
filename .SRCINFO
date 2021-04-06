@@ -1,0 +1,18 @@
+pkgbase = shhgit-git
+	pkgdesc = Reconnaissance tool for GitLab and GitHub organizations
+	pkgver = r65.65351a7
+	pkgrel = 1
+	url = https://github.com/eth0izzle/shhgit
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = shhgit
+	conflicts = shhgit
+	source = shhgit::git+https://github.com/eth0izzle/shhgit.git#branch=master
+	sha256sums = SKIP
+
+pkgname = shhgit-git
+
