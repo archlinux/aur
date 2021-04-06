@@ -1,4 +1,4 @@
-# Maintainer: vnepogodin
+# Maintainer: Vladislav Nepogodin (vnepogodin) <nepogodin.vlad@gmail.com>
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
@@ -102,7 +102,7 @@ export CXX='clang++'
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-app-basename=Librewolf
-ac_add_options --with-branding=browser/branding/librewolf
+ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
@@ -351,14 +351,14 @@ app.partner.archlinux=archlinux
 END
 
   for i in 16 32 48 64 128; do
-    install -Dm644 browser/branding/librewolf/default$i.png \
+    install -Dm644 browser/branding/${pkgname}/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dm644 browser/branding/librewolf/content/about-logo.png \
+  install -Dm644 browser/branding/${pkgname}/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dm644 browser/branding/librewolf/default16.png \
+  install -Dm644 browser/branding/${pkgname}/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.png"
 
   # Install .desktop files
