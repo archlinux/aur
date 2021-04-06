@@ -1,7 +1,7 @@
 # Maintainer: coxackie
 pkgname=code-icons
 pkgver=1.54.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Change Code - OSS icons to VS Code ones'
 arch=('any')
 license=('unknown')
@@ -16,7 +16,7 @@ source=("${pkgname}.hook"
         'code-oss.desktop.diff'
         'code-oss-url-handler.desktop.diff')
 md5sums=('db22ba0eaa2e6388054bde382ac8a392'
-         '3801be89f56574475535d300e3744576'
+         '965873f29e30e8182fa99b3799dd84d1'
          '04c4c453a76effa2d794fd6037fb1412'
          'fcae93243f3d0c408707711b833e408f'
          '0c284b5816605c2c3fb9d24b88b759b9'
