@@ -4,7 +4,7 @@
 
 pkgname=bootstrap-studio
 pkgver=5.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
@@ -26,7 +26,8 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/bin"
 	echo '#!/usr/bin/env bash
-    	 gtk-launch bstudio.desktop' | tee "${pkgdir}/usr/bin/zoho-mail-desktop"
+    	 gtk-launch bstudio.desktop' | tee "${pkgdir}/usr/bin/bootstrap-studio"
+        chmod +x "${pkgdir}/usr/bin/bootstrap-studio"
 
 	mkdir -p "${pkgdir}/usr/share/applications"
 	cp -Lr "${srcdir}/bstudio.desktop" "${pkgdir}/usr/share/applications/"
