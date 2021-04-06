@@ -22,8 +22,8 @@ package() {
 
     msg2 "Moving examples and cards"
     install -dm755 "${pkgdir}/usr/share/Delphes"
-    install -dm777 ${pkgdir}/usr/examples ${pkgdir}/usr/share/Delphes/examples
-    install -dm777 ${pkgdir}/usr/cards ${pkgdir}/usr/share/Delphes/cards
+    install -dm755 ${pkgdir}/usr/examples ${pkgdir}/usr/share/Delphes/examples
+    install -dm755 ${pkgdir}/usr/cards ${pkgdir}/usr/share/Delphes/cards
 }
 
 # Local Variables:
