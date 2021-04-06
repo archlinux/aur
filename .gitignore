@@ -1,0 +1,9 @@
+src
+pkg
+fonts-cjk
+*.zip
+*.gz
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.log
+*.png
