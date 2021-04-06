@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/code/product.json
+
+[Action]
+Description = [code-features] Patching product.json...
+Exec = /usr/share/code-features/patch.sh
+When = PostTransaction

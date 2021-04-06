@@ -1,0 +1,15 @@
+post_install() {
+  /usr/share/code-features/patch.sh
+}
+
+pre_upgrade() {
+  /usr/share/code-features/patch.sh -R
+}
+
+post_upgrade() {
+  /usr/share/code-features/patch.sh
+}
+
+pre_remove() {
+  /usr/share/code-features/patch.sh -R
+}
