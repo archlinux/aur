@@ -8,15 +8,15 @@
 _rubyver=2.5
 pkgbase=ruby2.5
 pkgname=(ruby2.5 ruby2.5-docs)
-pkgver=2.5.8
-pkgrel=2
+pkgver=2.5.9
+pkgrel=1
 arch=(x86_64)
 url='https://www.ruby-lang.org/en/'
 license=(BSD custom)
 makedepends=(gdbm openssl libffi doxygen graphviz libyaml ttf-dejavu tk)
 options=(!emptydirs)
 source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
-sha512sums=('2886be764a454425c5beef2777c64a70ee0d048b07896b327633d904f5077fea4299526689f9e2ac4dcd2fc4811cf9a6c8ce75367ed35d29dfe1a54222872e0d')
+sha512sums=('239f73eb4049ae2654b648ab927b1f74643d38a5f29572e4bd4e6aa3c53c1df29e0a995fd90d4ab9d4b2ff073fd809b12df820ccb1ddf395684bba6be1855b7a')
 
 prepare() {
   cd ruby-${pkgver}
