@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=EDDiscovery
+GenericName=Captains log and 3d star map for Elite Dangerous
+Icon=eddiscovery
+Exec=/usr/bin/eddiscovery %f
+Categories=Games
+Terminal=false

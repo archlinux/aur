@@ -1,0 +1,25 @@
+pkgbase = eddiscovery
+	pkgdesc = Captains log and 3d star map for Elite Dangerous
+	pkgver = 11.10.3
+	pkgrel = 1
+	url = https://github.com/EDDiscovery/EDDiscovery
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = msbuild
+	makedepends = nuget
+	makedepends = sed
+	makedepends = icoutils
+	depends = mono
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts
+	provides = eddiscovery
+	source = eddiscovery-11.10.3::git+https://github.com/EDDiscovery/EDDiscovery#tag=Release_11.10.3
+	source = eddiscovery
+	source = eddiscovery.desktop
+	md5sums = SKIP
+	md5sums = 764d0276476fb60618d87c918baca9e3
+	md5sums = a81a935726d655d8369897dae396ea53
+
+pkgname = eddiscovery
+
