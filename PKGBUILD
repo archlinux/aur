@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=0.8.5.r101.g7fc5b705
+pkgver=0.9.2.r8.g36e597a0
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -33,7 +33,6 @@ build() {
   cd "${pkgname%-git}/strawberry-build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_SYSTEM_TAGLIB=OFF \
     -DENABLE_SPARKLE=OFF \
     -DENABLE_VLC=OFF
   make
