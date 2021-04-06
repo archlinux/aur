@@ -4,7 +4,7 @@
 
 pkgname=zoho-mail-desktop
 pkgver=1.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The desktop version of your favorite mailsuite!"
 arch=('x86_64')
 license=('custom')
@@ -22,16 +22,16 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}/opt/zoho-mail-desktop"
-  cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/zoho-mail-desktop"
+  cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt/zoho-mail-desktop"
 
   mkdir -p "${pkgdir}/usr/bin"
-  cp -r "${pkgdir}/opt/zoho-mail-desktop/squashfs-root/AppRun" "${pkgdir}/usr/bin/zoho-mail-desktop"
+  cp -Lr "${pkgdir}/opt/zoho-mail-desktop/squashfs-root/AppRun" "${pkgdir}/usr/bin/zoho-mail-desktop"
 
   mkdir -p "${pkgdir}/usr/share/applications"
-  cp -r "${srcdir}/zoho-mail-desktop.desktop" "${pkgdir}/usr/share/applications"
+  cp -Lr "${srcdir}/zoho-mail-desktop.desktop" "${pkgdir}/usr/share/applications"
 
   for img in 1024x1024 128x128 16x16 24x24 256x256 32x32 48x48 512x512 64x64 96x96; do
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/${img}/apps"
-    cp -r "${srcdir}/squashfs-root/usr/share/icons/hicolor/${img}/apps/zoho-mail-desktop.png" "${pkgdir}/usr/share/icons/hicolor/${img}/apps/"
+    cp -Lr "${srcdir}/squashfs-root/usr/share/icons/hicolor/${img}/apps/zoho-mail-desktop.png" "${pkgdir}/usr/share/icons/hicolor/${img}/apps/"
   done
 }
