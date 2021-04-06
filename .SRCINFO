@@ -1,0 +1,18 @@
+pkgbase = gitrob-git
+	pkgdesc = Reconnaissance tool for GitLab and GitHub organizations
+	pkgver = v3.4.3.beta.r0.ga22d810
+	pkgrel = 1
+	url = https://github.com/codeEmitter/gitrob
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = gitrob
+	conflicts = gitrob
+	source = gitrob::git+https://github.com/codeEmitter/gitrob.git#branch=master
+	sha256sums = SKIP
+
+pkgname = gitrob-git
+
