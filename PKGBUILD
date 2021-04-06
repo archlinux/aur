@@ -2,11 +2,12 @@
 
 pkgname=hacx-wad
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hacx IWAD (game data)"
 arch=('any')
 url="http://www.drnostromo.com/hacx/"
 license=('custom')
+makedepends=('unzip')
 source=(http://www.drnostromo.com/hacx/files/hacx12.zip)
 sha256sums=('70d25e8f4b48906759db32213927859a99b3b045d3291d468357b225d64cbf8b')
 
