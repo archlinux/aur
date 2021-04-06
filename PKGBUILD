@@ -11,7 +11,7 @@ conflicts=('python-norminette-git')
 depends=('python-argparse')
 makedepends=('git' 'python-setuptools')
 source=("$pkgver.tar.gz"::"https://github.com/42School/norminette/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('75177fa1e46e61ba37c82b6d029bcbc0c137e675e6282edb07c79d4365570af311cbd0d6873ca6bf5888554ad9d88e71a2589d9cf7f9cfc2dffe45cda008818c')
+sha512sums=('932b92d53e24cc79615ba2211275009cb3ff0bd37e8143656e436aec4e7c05c2fbf8881df0990bcafc0c3b00863046c35322c407a172d8e09a147ddb863b17cd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
