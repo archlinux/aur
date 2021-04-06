@@ -4,7 +4,7 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=0.95
+pkgver=0.96
 pkgrel=1
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
 depends=('boost' 'akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
 optdepends=("python-weasyprint: alternative PDF generator")
-makedepends=('cmake' 'extra-cmake-modules')
+makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor')
 source=(
   "https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
 )
@@ -48,4 +48,4 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('45dcaa964ffb7ac826bfb130085fe20af6a8dff15d765f2e65bf6e24c14435dd')
+sha256sums=('2d24d9de37cba1de5ec58c1d724cb00d3a1b89becd7a1d5155a039e55e88131d')
