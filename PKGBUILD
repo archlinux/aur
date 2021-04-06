@@ -1,12 +1,12 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Sans serif font with rounded tips by Vernon Adams.'
 pkgname=ttf-nunito
-pkgver=3.6
+pkgver=3.601
 pkgrel=1
 arch=(any)
 license=(custom:OFL)
 url=https://github.com/googlefonts/nunito
-_commit=f4ef4a4db5ef1d68db51323bbcd9bbc41b7a9373
+_commit=ed889dda6d742a0495c1963898e1b3567ab61a15
 _dl_base_url="${url}/raw/${_commit}/fonts/TTF"
 source=("${_dl_base_url}/Nunito-Black.ttf"
         "${_dl_base_url}/Nunito-BlackItalic.ttf"
@@ -24,7 +24,7 @@ source=("${_dl_base_url}/Nunito-Black.ttf"
         "${_dl_base_url}/Nunito-SemiBoldItalic.ttf"
         "${_dl_base_url}/NunitoHeavy-Regular.ttf"
         "${_dl_base_url}/NunitoHeavy-Italic.ttf"
-        "${url}/raw/master/OFL.txt")
+        "${url}/raw/main/OFL.txt")
 sha512sums=('447d21234e7e5c60d6ead559def18530a4bb14d27949a2950dcf5ccfab0df7c041047b99c431656cdfb46db697de64abbc266339cc8f4ddc59c4ba08d824d68e'
             '850e57e49a0cff1f7bf2672801048f87e55d80ca4b3e5ebba1177408e371d1c76c4ceaa1e1661c413883e011e35380fac29e4e35d563512fbd6f6edf8aaf341e'
             '15e5514034a7ef6fc2b8d018fdb6fdb31e367522912fd65d9a0ee0bd513f104d93731d911e5a47b7f64ef3c4cab2dba53a86594debbe80e66acb9ee656db34a6'
