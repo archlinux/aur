@@ -7,6 +7,7 @@ pkgbase = questrade-iq-edge
 	license = unknown
 	makedepends = icoutils
 	depends = wine
+	optdepends = ttf-ms-win10: readable window titles
 	source = questrade-iq-edge-6.3.5.244.zip::https://media.questrade.com/iq_downloads/QuestradeIQEdge.zip
 	source = com.questrade.IQEdge.desktop
 	sha256sums = 7f4c4233005ca8588cc47cdb77f69d8b4554af3271666ac3dc2de578bfea1fa0
