@@ -1,7 +1,7 @@
 # Maintainer: Dummerle
 
 pkgname=rare-dev
-pkgver=0.9.9.r5.gf1349b6
+pkgver=0.9.9.1.r5.gf1349b6
 pkgrel=1
 pkgdesc="Dev branch of github.com/Dummerle/Rare - The latest, but unstable features"
 arch=('any')
