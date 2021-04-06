@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libtree
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="ldd as a tree with an option to bundle dependencies into a single folder "
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('binutils: For the --strip option'
 )
 checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b60d8adacb60a5d91fda5e05a87fca6030350753ef1974dc7813a25b0e996bc')
+sha256sums=('3273588747e75bbbc1416139471e49d149148de4bc1cd6c063b45fbfee45edf7')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
