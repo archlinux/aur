@@ -5,7 +5,7 @@ pkgname=java-openjfx-ea-bin
 _majorver=17
 _buildver=5
 pkgver=${_majorver}rc${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
 arch=('x86_64')
 url='https://openjfx.io/'
@@ -18,7 +18,7 @@ source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
 sha256sums=('6fdec3583b6b9ec42f591dd76238a1f8b7f825bbc299055bd30cdc0554d8336d'
             '9a78907c1b94dbcbf913495cdce9b8b2c2c152eeb8ffa122e77fc8b6af6a86e3'
-            '3cc5501d7056d667ce3e92ffe1fbae474802e6ea3431b18a7bf88af7b0457bd1')
+            '705ab43f98080da46148713a65ded73436ee76fc0fcbf9eaed76e16f1fc7f855')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
