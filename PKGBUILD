@@ -2,7 +2,7 @@
 
 pkgname=cf-tool
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line tool for Codeforces contests"
 arch=('x86_64')
 url="https://github.com/xalanq/cf-tool"
@@ -21,6 +21,7 @@ prepare() {
 
 build() {
   export GOPATH="$srcdir"/gopath
+  export GO111MODULE=auto
   cd gopath/src/github.com/xalanq/cf-tool
 
   go build -o cf -trimpath -ldflags "-s -w -extldflags $LDFLAGS" cf.go
