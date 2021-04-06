@@ -1,21 +1,21 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gtg
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5
+pkgrel=1
 pkgdesc='Personal GTD like organizer for the GNOME desktop environment'
 url=https://wiki.gnome.org/Apps/GTG
 arch=(any)
 license=(GPL)
 depends=(hicolor-icon-theme python-cairo python-dbus python-gobject
-         python-liblarch python-pyxdg python-lxml)
+         'python-liblarch>=3.1' python-pyxdg python-lxml)
 checkdepends=(python-mock python-nose)
 makedepends=(meson ninja)
 optdepends=('pdftk: for the export and print plugin'
             'python-cheetah3: for the export and print plugin'
 			'texlive-bin: for pdflatex, needed by the export and print plugin'
 			'texlive-core: for pdfjam, needed by the export and print plugin')
-source=("https://github.com/getting-things-gnome/gtg/releases/download/v${pkgver%.*}/gtg-${pkgver}.tar.xz")
-sha512sums=('f2677f6bbc0b6cb21b7882a2bd0342b4919581c12e4aa43c13b5dbc48740418c512a41619584d0d75bfa63ebc4a5460abfbc27360e1817c8832cbecf3c34a60e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getting-things-gnome/gtg/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('631f5343301d7d72211398152fa081c0fa15154babc7ec900f13a39a2677d0edaf4fea534a83284207e8019926c9108dc1d8f25bdbeae85ef0665dfe1c7b768a')
 
 build ()
 {
