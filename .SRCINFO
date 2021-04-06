@@ -1,0 +1,16 @@
+pkgbase = brother-ql1110nwb
+	pkgdesc = LPR and CUPS printer driver for the Brother QL-1110NWB
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-ql1110nwb.install
+	arch = i686
+	arch = x86_64
+	license = 2003-2017 Brother Industries, Ltd. All Rights Reserved
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlfp100575/ql1110nwbpdrv-2.1.4-0.i386.deb
+	sha256sums = 93670aa9b11a8a4090777ca61648d32d6bd6c087d2a1998a4b5ac93b0b6b4a0a
+
+pkgname = brother-ql1110nwb
+
