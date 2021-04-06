@@ -1,0 +1,21 @@
+pkgbase = koifarm-git
+	pkgdesc = Koi Farm, the koi breeding game
+	pkgver = r1027.acb16a5
+	pkgrel = 1
+	url = https://jobtalle.itch.io/koifarm
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = electron
+	makedepends = npm
+	makedepends = nodejs
+	conflicts = koifarm
+	source = koifarm::git+https://github.com/jobtalle/Koi.git
+	source = koifarm.desktop
+	source = koifarm.png
+	sha256sums = SKIP
+	sha256sums = 3afe3fb935cadce132df159d6e43f17447f41e305973a94f91ac8e027d98d063
+	sha256sums = c7bb9e77f83ac92f77611d4fc3310ab1a00e4bd2bb2e652881babe9977570ba2
+
+pkgname = koifarm-git
+

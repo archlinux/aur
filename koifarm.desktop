@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=KOIFARM
+Comment=Koi Farm, the koi breeding game
+Exec=koifarm
+Icon=koifarm
+Terminal=false
+StartupNotify=false
+Categories=Game;
