@@ -1,0 +1,9 @@
+post_install() {
+  cd /etc/ssl
+  patch --forward --strip=1 --input=0001-openssl_cnf.patch
+}
+
+pre_remove() {
+  cd /etc/ssl
+  patch --forward --reverse --strip=1 --input=0001-openssl_cnf.patch
+}

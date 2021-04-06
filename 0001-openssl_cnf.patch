@@ -1,0 +1,31 @@
+diff --git a/openssl.cnf b/openssl.cnf
+index 756f3b4..b44e9ea 100644
+--- a/openssl.cnf
++++ b/openssl.cnf
+@@ -3,6 +3,8 @@
+ # This is mostly being used for generation of certificate requests.
+ #
+ 
++openssl_conf=openssl_def # Adding GOST Engine
++
+ # Note that you can include other files from the main configuration
+ # file using the .include directive.
+ #.include filename
+@@ -348,3 +350,17 @@ ess_cert_id_chain	= no	# Must the ESS cert id chain be included?
+ 				# (optional, default: no)
+ ess_cert_id_alg		= sha1	# algorithm to compute certificate
+ 				# identifier (optional, default: sha1)
++
++# Adding GOST Engine
++[openssl_def]
++engines = engine_section
++
++[engine_section]
++gost = gost_section
++
++[gost_section]
++engine_id = gost
++dynamic_path = /usr/lib/engines-1.1/gost.so
++default_algorithms = ALL
++CRYPT_PARAMS = id-Gost28147-89-CryptoPro-A-ParamSet
++# End GOST Engine Block
