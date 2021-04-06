@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd 'q'
-  install -Dm755 q '$pkgdir'/usr/bin/q
+  install -Dm755 q '$pkgdir'/usr/bin/q-dns
 }
