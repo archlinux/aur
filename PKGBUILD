@@ -4,7 +4,7 @@ pkgname=q-dns-git
 pkgdesc='A tiny command line DNS client with support for UDP, DoT, DoH, and DoQ.'
 arch=(x86_64)
 url='https://github.com/natesales/q'
-pkgrel=3
+pkgrel=4
 license=('GPL-3.0')
 makedepends=('go' 'git')
 source=('git+https://github.com/natesales/q')
@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd 'q'
-  install -Dm755 q '$pkgdir'/usr/bin/q-dns
+  install -Dm755 q "$pkgdir/usr/bin/q"
 }
