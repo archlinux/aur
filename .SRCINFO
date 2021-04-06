@@ -1,0 +1,15 @@
+pkgbase = bootstrap5
+	pkgdesc = Front-end framework for web development
+	pkgver = 5.0.0b3
+	pkgrel = 1
+	url = https://getbootstrap.com/
+	install = bootstrap.install
+	arch = any
+	license = MIT
+	source = https://github.com/twbs/bootstrap/releases/download/v5.0.0-beta3/bootstrap-5.0.0-beta3-dist.zip
+	source = LICENSE
+	sha256sums = 1c1d512fb0d59997a7fb12a340f1bb63f2827dd490e742aeea138b4fcf16bb2b
+	sha256sums = 5b30317c9c35bb6f05101c501de866cc6852ab9b655dcf5941733f6644c3ebd0
+
+pkgname = bootstrap5
+

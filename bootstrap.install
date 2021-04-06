@@ -1,0 +1,5 @@
+post_install() {
+  echo
+  echo "See https://getbootstrap.com/docs for getting started with Bootstrap"
+  echo
+}
