@@ -1,0 +1,13 @@
+pkgbase = archer
+	pkgdesc = fetch the archlinux news
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = rust
+	makedepends = git
+	source = archer-0.1::git+https://github.com/echnobas/archer
+	md5sums = SKIP
+
+pkgname = archer
+
