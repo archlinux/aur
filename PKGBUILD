@@ -12,7 +12,7 @@ url="http://www.gnu.org/software/gcc/"
 depends=('libmpc' 'zstd')
 makedepends=('gmp' 'mpfr' 'git' "${_target}-binutils")
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
-options=('!emptydirs' '!strip' )
+options=('!emptydirs' '!strip')
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
     "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
     "git+https://github.com/glankk/n64.git#branch=n64-ultra")
@@ -21,17 +21,17 @@ sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
             'SKIP')
 
 pkgver() {
-  cd ${srcdir}/n64/
+  cd "${srcdir}/n64/"
   printf "%s_r%s.%s" "${_gccver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd gcc-${_gccver}
+  cd "gcc-${_gccver}"
 
   # link isl for in-tree builds
-  ln -s ../isl-$_islver isl
+  ln -s "../isl-$_islver" isl
 
-  echo ${_gccver} > gcc/BASE-VER
+  echo "${_gccver}" > gcc/BASE-VER
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
@@ -39,11 +39,11 @@ prepare() {
   mkdir "${srcdir}"/build-gcc
 
   # -- Copy the files from the source.
-  CP_DIR=${srcdir}/gcc-${_gccver}
+  CP_DIR="${srcdir}/gcc-${_gccver}"
 
-  cd ${srcdir}/n64
-  cp config/gcc/mips/* ${CP_DIR}/gcc/config/mips/
-  cat config/gcc/config.gcc.ultra >> ${CP_DIR}/gcc/config.gcc
+  cd "${srcdir}/n64"
+  cp config/gcc/mips/* "${CP_DIR}/gcc/config/mips/"
+  cat config/gcc/config.gcc.ultra >> "${CP_DIR}/gcc/config.gcc"
 }
 
 build() {
@@ -57,11 +57,11 @@ build() {
     --libdir=/usr/${_target}/lib \
     --libexecdir=/usr/${_target}/lib \
     --target=${_target} \
-    --host=$CHOST \
-    --build=$CHOST \
+    --host="$CHOST" \
+    --build="$CHOST" \
     --with-arch=vr4300 \
     --with-abi=32 \
-    --with-sysroot=/usr/${_target}/n64-sysroot/  \
+    --with-sysroot=/usr/${_target}/n64-sysroot/ \
     --enable-languages=c \
     --enable-sjlj-exceptions \
     --with-gnu-as \
