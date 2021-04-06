@@ -14,10 +14,10 @@ arch=('x86_64')
 package="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
 source=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
-  "LICENSE"
+  "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE"
 )
 sha512sums=('4146ab217968e40a2da859f3f83bfb2b7f680b465913af8d62165ee8e440c0e3a06086825e09e8024f8a8ad2804b6dd7b9a0153248aba61fdfe78d012cd53516'
-            'cd660ca9bc594ae6476c54e50d49c7e886c2f7dbaffb1876ef866c4a6dd219f734996f42361a4d958688b04e3b6188f0384bcf0690060a1e46306448bb70ca09')
+            '1a75d1990776c2c5cbc25b0d6381a67082c48ec3e7f18a4ad66caf55987548e5a622c1c8e330a1efaaf74e9c71aaad6d5a260062b50c5df9b26352c8efc6dd47')
 
 build() {
   # Extract files
