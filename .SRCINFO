@@ -1,6 +1,6 @@
 pkgbase = renode-bin
 	pkgdesc = The Renode Framework
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://www.renode.io
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = renode-bin
 	depends = python-pip
 	depends = zeromq
 	provides = renode
-	source = https://github.com/renode/renode/releases/download/v1.11.0/renode-1.11.0-1-x86_64.pkg.tar.xz
-	md5sums = 723dab329330ef99e5db25a43e1967c8
+	source = renode-bin-1.12.0-1.tar.gz::https://github.com/renode/renode/releases/download/v1.12.0/renode-1.12.0-1-x86_64.pkg.tar.xz
+	md5sums = 5f6c4da245dbe49a2e692b389a0906ab
 
 pkgname = renode-bin
 
