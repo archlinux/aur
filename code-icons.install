@@ -1,0 +1,15 @@
+post_install() {
+  /usr/share/code-icons/patch.sh
+}
+
+pre_upgrade() {
+  /usr/share/code-icons/patch.sh -u
+}
+
+post_upgrade() {
+  /usr/share/code-icons/patch.sh
+}
+
+pre_remove() {
+  /usr/share/code-icons/patch.sh -u
+}

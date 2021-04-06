@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/share/pixmaps/com.visualstudio.code.oss.png
+Target = usr/lib/code/resources/linux/code.png
+Target = usr/lib/code/out/vs/workbench/browser/parts/editor/media/letterpress.svg
+Target = usr/lib/code/out/vs/workbench/browser/parts/editor/media/letterpress-dark.svg
+Target = usr/lib/code/out/vs/workbench/browser/parts/editor/media/letterpress-hc.svg
+
+[Action]
+Description = [code-icons] Changing to VS Code icons...
+Exec = /usr/share/code-icons/patch.sh
+When = PostTransaction
