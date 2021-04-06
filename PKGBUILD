@@ -25,10 +25,6 @@ build() {
 }
 
 package() {
-  echo "HEEEERE"
-  pwd
-  ls "$pkgname-$pkgver"/$pkgname
-  echo $pkgdir
   install -D -m755 "$pkgname-$pkgver/$pkgname" "$pkgdir"/usr/bin/$pkgname
   install -D -m644 "$pkgname-$pkgver/$pkgname.man" \
     "$pkgdir"/usr/share/man/man1/$pkgname.1
