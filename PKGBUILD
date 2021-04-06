@@ -2,7 +2,7 @@
 
 pkgname=textidote-bin
 _pkgname=textidote
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Spelling, grammar and style checking on LaTeX documents"
 arch=('any')
@@ -10,13 +10,15 @@ url="https://github.com/sylvainhalle/textidote"
 license=('GPL')
 provides=('textidote')
 depends=('java-runtime-headless>=8')
+optdepends=('libnotify: Error messages for textidote-desktop')
+
 source=(
   "https://github.com/sylvainhalle/textidote/releases/download/v${pkgver}/textidote_${pkgver}_all.deb"
   "textidote-desktop"
   "textidote.desktop")
-sha256sums=('cc9574be321131949e44123a20a776de9e06eb3ac493ab573d4b381641ff0779'
-            '4eb546045d0aa6e81a0b5bf54c98b321b9495d6e27688a13e6f92059443abe03'
-            '0677dfb8fb17fcbb76a9dca354f8073cd5879e4e12c7f3f022fa758db9c1f961')
+sha256sums=('47b74937d338cfb93d16d1016d64da70d0f83294d12663804df9b4017683e37f'
+            'feb003c3f2c55096fef7577fc8da9b5f4c489697f4eda21a199d408126524bbb'
+            '087ea7481edecff88c27af50766b3691dfbbdee33dc5a9a97fb767fde6711c6a')
 
 prepare() {
  cd "$srcdir"
@@ -33,11 +35,12 @@ package() {
   install -Dm644 etc/bash.completion.d/$_pkgname "$pkgdir"/etc/bash.completion.d/
   install -Dm755 usr/local/bin/$_pkgname "$pkgdir"/usr/bin/
   install -D opt/$_pkgname/$_pkgname.{jar,zsh} "$pkgdir"/opt/$_pkgname/
+  install -D opt/$_pkgname/${_pkgname}-icon.svg "$pkgdir"/opt/$_pkgname/
   install -D usr/share/man/man1/$_pkgname.1 "$pkgdir"/usr/share/man/man1/
 
   # Extra command to launch in browser
   install -Dm755 $_pkgname-desktop "${pkgdir}"/usr/bin/
 
   # Add it to desktop
-  install -D $_pkgname.desktop "${pkgdir}"/usr/share/applications/
+  install -Dm755 $_pkgname.desktop "${pkgdir}"/usr/share/applications/
 }
