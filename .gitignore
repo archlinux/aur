@@ -7,3 +7,4 @@ fonts-cjk
 *.pkg.tar.zst
 *.log
 *.png
+*.bak

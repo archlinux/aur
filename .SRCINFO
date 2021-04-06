@@ -1,6 +1,6 @@
 pkgbase = fonts-cjk
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/atzlinux/fonts-zh-cn-business-free-atzlinux
 	arch = any
 	license = custom
