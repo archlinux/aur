@@ -25,11 +25,13 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
+	sudo chmod -R +x ~/nextpad-git
 	cd nextpad
 	sudo make
 }
 
 package() {
+	sudo chmod -R +x ~/nextpad-git
 	cd ~/nextpad-git/src/nextpad/
 	sudo install -Dm 0755 -t /usr/bin/ nextpad
 }
