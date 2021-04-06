@@ -1,0 +1,18 @@
+pkgbase = xplr-bin
+	pkgdesc = A hackable, minimal, fast TUI file explorer
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/sayanarijit/xplr
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = xplr
+	conflicts = xplr
+	source_x86_64 = xplr-bin-0.3.2.tar.gz::https://github.com/sayanarijit/xplr/releases/download/v0.3.2/xplr-linux.tar.gz
+	source_x86_64 = xplr-bin-0.3.2-LICENSE::https://github.com/sayanarijit/xplr/raw/v0.3.2/LICENSE
+	source_x86_64 = xplr-bin-0.3.2-README.md::https://github.com/sayanarijit/xplr/raw/v0.3.2/README.md
+	sha512sums_x86_64 = 59cdabe5abb55955762019fb3e8dddc130cc7cf314a593bba967ed1d342d6959c58013ec6db1d7561013e9cff495d0f66b2558ffd5361449b8d0e83a51a23410
+	sha512sums_x86_64 = 10d441de2060f413df1fd70ce44816a46eedaca9f3a672b38d2fabd99398158a115fafe137cbc5c1ba60791c89086946d978889f6d708f95aa5cb81f57d1143e
+	sha512sums_x86_64 = af4374ddfed1434b000062a4f86069ce2d5a48635ba8c60fe34120abfeb142c67d2aefbd0ff486e43e0dc2d53712bc134f8e4ea91b72075cbecc62e540c53b1d
+
+pkgname = xplr-bin
