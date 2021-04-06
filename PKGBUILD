@@ -21,8 +21,9 @@ package() {
     make install DESTDIR=${pkgdir}
 
     msg2 "Moving examples and cards"
-    install -dm755 "${pkgdir}/usr/share/Delphes"
+    install -dm766 "${pkgdir}/usr/share/Delphes"
     mv "${pkgdir}/usr/examples" "${pkgdir}/usr/cards" "${pkgdir}/usr/share/Delphes/"
+    chmod 766 -R ${pkgdir}/usr/share/Delphes/
 }
 
 # Local Variables:
