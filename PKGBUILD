@@ -5,19 +5,19 @@
 
 pkgname=stone-soup-tiles-git
 _pkgname=crawl
-pkgver=0.27.a0.r797.g27d10ad80f
+pkgver=0.27.a0.r906.g0a00ce863d
 pkgrel=1
 pkgdesc="Community maintained variant of Linley's Dungeon Crawl (tiles) - git version"
 arch=('i686' 'x86_64')
 url="http://crawl.develz.org"
-depends=(lua sdl2_image xdg-utils freetype2 glu sqlite)
-makedepends=(pngcrush git python-yaml)
-license=('GPL2')
+depends=(sdl2_image xdg-utils freetype2 glu sqlite)
+makedepends=(pngcrush git python-yaml lua)
+license=('custom')
 conflicts=('crawl' 'stone-soup-tiles')
 source=(git://github.com/crawl/crawl.git
 stone-soup-tiles-git.desktop)
-sha1sums=('SKIP'
-          'f598ea37ab97dd34f0d35f33b0b4b3bfc928067d')
+sha256sums=('SKIP'
+            'bc6985944bd5fc44d96fe705725430e97161b5e428ab17e6cf7a0d7976681119')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
@@ -29,20 +29,22 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd "${srcdir}/${_pkgname}/crawl-ref/source"
-  make prefix=/usr/bin \
-       DESTDIR="${pkgdir}" \
-       SAVEDIR="~/.crawl/" \
-       DATADIR="/usr/share/${pkgname}/data" \
-       TILES=y SAVEDIR='~/.crawl'
-
-}
-
 package() {
   cd "${srcdir}/${_pkgname}/crawl-ref/source"
-  make install prefix="${pkgdir}/usr/" DATADIR="${pkgdir}/usr/share/${pkgname}/data" TILES=y SAVEDIR='~/.crawl'
+  
+  make prefix=/usr DESTDIR="${pkgdir}" SAVEDIR="~/.stone-soup/" \
+         DATADIR="/usr/share/${_pkgname}/data" \
+         USE_UNICODE=y TILES=y install
+  
+  # Some dirty operations needed to get everything working.
+  
   mkdir -p $pkgdir/usr/share/{applications,pixmaps}
+  mkdir -p $pkgdir/usr/bin/
+  mv "${pkgdir}/usr/games/crawl" "${pkgdir}/usr/bin/crawl"
+  rm -rf $pkgdir/usr/games/
+  
+  install -D -m644 $srcdir/$_pkgname/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/license.txt"
+  
   cp ${srcdir}/${_pkgname}/crawl-ref/source/dat/tiles/stone_soup_icon-32x32.png $pkgdir/usr/share/pixmaps/$pkgname.png
   cp $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/
 }
