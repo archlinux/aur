@@ -1,5 +1,7 @@
-*.xz
-*.gz
-bcachefs
+bcachefs-kernel
+linux-kernel
+zen-kernel
 pkg
 src
+config.last
+*.pkg.tar.zst

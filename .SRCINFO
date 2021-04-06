@@ -1,45 +1,55 @@
 pkgbase = linux-zen-bcachefs-git
-	pkgver = 4.19.6.zen1
+	pkgdesc = Linux ZEN with bcachefs
+	pkgver = v5.10.27.zen1.r971607.53aec78c954b
 	pkgrel = 1
-	url = https://evilpiepirate.org/git/
+	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = git
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
 	options = !strip
-	source = bcachefs::git+https://evilpiepirate.org/git/bcachefs.git
+	source = linux-kernel::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#branch=linux-5.10.y
+	source = bcachefs-kernel::git+https://github.com/koverstreet/bcachefs.git#branch=master
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel.git#branch=5.10/master
+	source = choose-gcc-optimization.sh
 	source = config
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = SKIP
-	sha256sums = b4f4e4a6fb14bd365343949bb0268fb63a7b476f1276f1649d7b8aea47d580e1
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 95397a817c10437f5f1765a1a529744cce905e142d8a835769f9271d2736b5dc967900e068999540a9032ccb6b8db080d0e92a48fcdb1d948aa0e7d1f34d2984
+	sha512sums = 70d1b2da1642b9941230d03d62f061f47e94ea65882d014e311ce292fbceabd26e3362035a321971a7fdf3909ebd50fd3538b294c9d90ade61ec7a2ef0f8499f
 
 pkgname = linux-zen-bcachefs-git
-	pkgdesc = The Linux-zen-bcachefs-git kernel and modules
-	install = linux.install
+	pkgdesc = The Linux ZEN with bcachefs kernel and modules
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
-	depends = bcachefs-tools
+	depends = initramfs
+	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-zen-bcachefs-git.preset
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = VHBA-MODULE
+	replaces = 
 
 pkgname = linux-zen-bcachefs-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-zen-bcachefs-git kernel
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN with bcachefs kernel
+	depends = pahole
 
 pkgname = linux-zen-bcachefs-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-zen-bcachefs-git kernel
+	pkgdesc = Documentation for the Linux ZEN with bcachefs kernel
 
