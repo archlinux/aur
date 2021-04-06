@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop-bin
-pkgver=5.0.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$url/releases/download/v$pkgver/AndroidMessages-v$pkgver-linux-x64.pacm
         "$url/raw/v$pkgver/LICENSE"
         "${pkgname%-bin}"
         "${pkgname%-bin}.desktop")
-sha256sums=('250fc6f13decbaf0994e8de0d62445723a49f11d9895b412c67b9b85b149102f'
+sha256sums=('fd886ab86bbddcc30990967f08623f57254c9b52c4bec4f68221557af44fa94f'
             '3ad8e115711a8eca0050f768179efdca0f978b195a9c4f856a9d805628d3886c'
             '5d4a885c7a4cf6330df5b00b39f51da85af38c715ed72233286bd296f2bb2c57'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
