@@ -11,42 +11,44 @@ license=('GPL')
 makedepends=('git')
 depends=('libelf')
 source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
-        "git+https://github.com/glankk/n64.git#branch=n64-ultra")
+        "git+https://github.com/glankk/n64.git#branch=n64-ultra"
+)
 sha256sums=('e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
-            'SKIP')
+            'SKIP'
+)
 
 pkgver() {
-  cd ${srcdir}/n64/
+  cd "${srcdir}/n64/"
   printf "%s_r%s.%s" "${_binutilsver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd ${srcdir}/binutils-${_binutilsver}
+  cd "${srcdir}/binutils-${_binutilsver}"
 
   # Hack - see native package for details
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
   # -- Local variables.
-  CP_DIR=${srcdir}/binutils-${_binutilsver}
+  CP_DIR="${srcdir}/binutils-${_binutilsver}"
 
   # -- Copy files in binutils source.
-  cd ${srcdir}/n64/
-  patch -d ${CP_DIR}/ld -p 1 < "config/ld/ld.diff"
-  cp "config/ld/emulparams/"* ${CP_DIR}/ld/emulparams
-  cp "config/ld/emultempl/"* ${CP_DIR}/ld/emultempl
-  cat "config/ld/configure.tgt.ultra" >> ${CP_DIR}/ld/configure.tgt
-  cd ${CP_DIR}
+  cd "${srcdir}/n64/"
+  patch -d "${CP_DIR}/ld" -p 1 < "config/ld/ld.diff"
+  cp "config/ld/emulparams/"* "${CP_DIR}/ld/emulparams"
+  cp "config/ld/emultempl/"* "${CP_DIR}/ld/emultempl"
+  cat "config/ld/configure.tgt.ultra" >> "${CP_DIR}/ld/configure.tgt"
+  cd "${CP_DIR}"
 
   # -- Configure n64. Note that the sysroot dir is set to $(prefix)$/(target)
   # -- in the package itself.
-  cd $srcdir/n64
+  cd "$srcdir/n64"
   ./configure --prefix=/usr/
 
 }
 
 build() {
 
-  cd ${srcdir}/binutils-${_binutilsver}
+  cd "${srcdir}/binutils-${_binutilsver}"
 
   export CFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections"
   export CXXFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections"
@@ -68,7 +70,7 @@ build() {
 }
 
 check() {
-  cd binutils-${_binutilsver}
+  cd "binutils-${_binutilsver}"
 
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # do not abort on errors - manually check log files
@@ -76,7 +78,7 @@ check() {
 }
 
 package() {
-  cd binutils-${_binutilsver}
+  cd "binutils-${_binutilsver}"
 
   make DESTDIR="$pkgdir" install
 
@@ -88,6 +90,6 @@ package() {
   rm -rf "$pkgdir"/usr/lib/bfd-plugins/libdep*
 
   # Install the library files in the sysroot.
-  cd $srcdir/n64
+  cd "$srcdir/n64"
   make DESTDIR="${pkgdir}" install-sys
 }
