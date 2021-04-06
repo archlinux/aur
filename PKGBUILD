@@ -35,6 +35,8 @@ package() {
   ln -s "../../lib/python${py_ver}/site-packages/jupyterlab" "${pkgdir}/usr/share/jupyter/lab"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
+  rm -rf --one-file-system "${pkgdir}/usr/share/jupyter/lab"
+
   # install (and enable) extension according to
   # https://jupyterlab.readthedocs.io/en/latest/extension/extension_dev.html#distributing-a-prebuilt-extension
   prebuilt_extension_dir_lab="$pkgdir"/usr/share/jupyter/labextensions
