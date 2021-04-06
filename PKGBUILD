@@ -3,7 +3,7 @@
 # pkg: git
 
 pkgname=xfce4-hamster-plugin-git
-pkgver=1.13.r7.ga923422
+pkgver=1.14.r0.ga923422
 pkgrel=1
 pkgdesc="recreation of the gnome-shell hamster extension as a xfce4 panel plugin"
 url="https://github.com/projecthamster/${pkgname%-git}"
