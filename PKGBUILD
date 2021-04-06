@@ -4,25 +4,26 @@
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=5.3.1.34
-_pkgver=5.3.1
-pkgrel=5
+pkgver=5.4
+_releasedate=2021-04
+_pkgfullver=5.4.0-55.153
+pkgrel=1
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
-url="http://www.displaylink.com/downloads/ubuntu.php"
+url=""
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi>=1.7.0' 'evdi<1.8.0'
+depends=('evdi-git>=1.9.1.r4.gb0b3d13'
          'libusb>=1.0.0')
 makedepends=('grep' 'gawk' 'wget')
 install=
-changelog='DisplayLink USB Graphics Software for Ubuntu 5.3.1-Release Notes.txt'
-source=(displaylink-driver-$pkgver.zip::https://www.synaptics.com/sites/default/files/exe_files/2021-02/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu$_pkgver-EXE.zip
+changelog='DisplayLink USB Graphics Software for Ubuntu5.4-Release Notes.txt'
+source=(displaylink-driver-$pkgver.zip::https://www.synaptics.com/sites/default/files/exe_files/${_releasedate}/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu${pkgver}-EXE.zip
         DISPLAYLINK-EULA
         udev.sh
         99-displaylink.rules 
 	displaylink.service 
         displaylink-sleep.sh)
-sha256sums=('1e1231aa141c2a00f7e639a1835bdb915013f9ce84506ff1382e9c759f5c33b0'
+sha256sums=('88d6ce5a076d76746c41119ee8594d4ffba5af2d20c3793849d77147ed1a54d4'
             '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
             'dc41ae8a2c287fc50fdda65bad8b0ffd76726f7773c25e1b0c5b7de95cecbdb6'
             'c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a'
@@ -46,8 +47,8 @@ package() {
 
   echo "Extracting DisplayLink Driver Package"
   pushd $srcdir
-  chmod +x displaylink-driver-$pkgver.run
-  ./displaylink-driver-$pkgver.run --target $pkgname-$pkgver --noexec
+  chmod +x displaylink-driver-${_pkgfullver}.run
+  ./displaylink-driver-${_pkgfullver}.run --target $pkgname-$pkgver --noexec
   pushd "$pkgname-$pkgver"
   
   if [ "$CARCH" == "i686" ]; then

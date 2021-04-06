@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v5.3.1
-Build: posix/54-2620-g5f342b9920d (34)
+Version: v5.4.0
+Build: posix/55-8031-g4ea27e82367 (153)
 
-Date: 5th May 2020
+Date: 25th March 2021
 
-Extensible Virtual Display Interface version included: v1.7.0 (dc595db)
+Extensible Virtual Display Interface version included: v1.9.1 (0f1ad21)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.7.0 (dc595db)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v5.3.1 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux. This release adds support for Ubuntu 20.04.
+This is DisplayLink Driver Software v5.4.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
 
@@ -44,27 +44,18 @@ I.  Future development
 
 C.  Bugs fixed in this release
 ==============================
-
-Bugs fixed in release 5.3.1
------------------------------
-
-- Installer fails on system with language setting different than English (31722)
-
-Bugs fixed in release 5.3
------------------------------
-
-- DL-6xxx series: CPU usage reduced when mouse is moved (31342)
-- DisplayLink driver crashes after re-plug in Ubuntu 20.04 (31470)
-- Installer stuck when asking for temporary UEFI password if secure boot is enabled (30453)
-- Hub USB3.0 link power management control improvement to address connection stability (31500)
+- Added support for kernel 5.11 and 5.12.
+- Added nVidia g-sync monitors support.
+- Added 5K Ultrawide (5120x1440 @ 60 Hz) display support for DisplayLink DL-6000 series products.
+- Other reliability improvements.
 
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 20.04, 19.04 and 18.04. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
+This release has been prepared to be compatible with Ubuntu 20.04 LTS. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on Intel x86 platform (32 bit and 64 bit).
-Supported Linux Kernel version range is from 4.15 to 5.5.
+Supported Linux Kernel version range is from 4.15 to 5.12.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
@@ -81,12 +72,7 @@ sudo ./displaylink-driver-XXXX.run
 
 Where displaylink-driver-XXXX.run is the name of the extracted DisplayLink driver.
 
-The installer checks for dependencies automatically and executes the package manager when needed.
-
-The dkms and libdrm-dev packages are required for installation of DisplayLink.
-
-You can refuse to grant permissions to the installer to execute package manager commands and install them manually running  package manager commands.
-If you opt for manual installation, after installing package dependencies, please re-run the installer.
+The dkms framework is required for installation of DisplayLink. This can be installed with the command: sudo apt-get install dkms
 
 More detailed information on installation can be found at http://support.displaylink.com/knowledgebase/articles/615714#ubuntu
 
@@ -95,7 +81,7 @@ G. Supported features & hardware
 
 This driver will support up to 2 displays connected to DisplayLink devices. More than 2 DisplayLink displays may work, but not supported or tested by DisplayLink.
 
-Resolutions up to 4K are supported on the appropriate DisplayLink hardware.
+Resolutions up to 5K Ultrawide are supported on capable DisplayLink hardware.
 
 Device families supported:
 - DL-6xxx
