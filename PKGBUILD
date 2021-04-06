@@ -4,7 +4,7 @@
 pkgname=python-ipympl
 _pkgname="${pkgname#*-}"
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 depends=(
@@ -37,12 +37,12 @@ package() {
   # https://jupyterlab.readthedocs.io/en/latest/extension/extension_dev.html#distributing-a-prebuilt-extension
   prebuilt_extension_dir_lab="$pkgdir"/usr/share/jupyter/labextensions
   mkdir -p $prebuilt_extension_dir_lab
-  ln -s "$pkgdir"/usr/lib/python${py_ver}/site-packages/ipympl/labextension "${prebuilt_extension_dir_lab}/${_pkgname}"
+  ln -s /usr/lib/python${py_ver}/site-packages/ipympl/labextension "${prebuilt_extension_dir_lab}/${_pkgname}"
 
   # for classic interface
   prebuilt_extension_dir_classic="$pkgdir"/usr/share/jupyter/nbextensions
   mkdir -p $prebuilt_extension_dir_classic
-  ln -s "$pkgdir"/usr/lib/python${py_ver}/site-packages/ipympl/nbextension "${prebuilt_extension_dir_classic}/${_pkgname}"
+  ln -s /usr/lib/python${py_ver}/site-packages/ipympl/nbextension "${prebuilt_extension_dir_classic}/${_pkgname}"
 
   install -D "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
