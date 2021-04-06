@@ -1,7 +1,7 @@
 # Maintainer: Dummerle
 
 pkgname=rare-dev
-pkgver=0.8.9.3.r6.gf6e53a7
+pkgver=0.9.9.3
 pkgrel=1
 pkgdesc="Dev branch of github.com/Dummerle/Rare - The latest, but unstable features"
 arch=('any')
@@ -33,6 +33,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$pkgname"
+	git checkout dev
 	( set -o pipefail
 	git describe --tags --long 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

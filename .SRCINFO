@@ -1,6 +1,6 @@
 pkgbase = rare-dev
 	pkgdesc = Dev branch of github.com/Dummerle/Rare - The latest, but unstable features
-	pkgver = 0.8.9.3.r6.gf6e53a7
+	pkgver = 0.9.9.3
 	pkgrel = 1
 	url = https://github.com/Dummerle/Rare
 	arch = any
