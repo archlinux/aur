@@ -1,19 +1,19 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@protonmail.com>
 pkgname=nwscript-code
-pkgver=1.1.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Setup for a NWScript pseudo-IDE assembled from VSC and various development tools"
 arch=('any')
 url="https://gitlab.com/Taro94/nwscript-code/"
 license=('GPL')
-depends=('code' 'astyle' 'nwnsc-bin' 'neverwinter.nim' 'nasher' 'nssnippets-bin')
+depends=('code' 'astyle' 'nwnsc-bin' 'neverwinter.nim' 'nasher' 'nssnippets-bin' 'nssdefinitions-bin')
 optdepends=('wine')
-source=('https://gitlab.com/Taro94/nwscript-code/-/archive/1.1.6/nwscript-code-1.1.6.tar.gz')
-md5sums=('20a29e584dfe71b669e746d88018e749')
+source=('https://gitlab.com/Taro94/nwscript-code/-/archive/1.2.0/nwscript-code-1.2.0.tar.gz')
+md5sums=('723960c05464e75db980c82d3bd705e7')
 options=(!strip)
 
 package() {
-	cd nwscript-code-1.1.6
+	cd nwscript-code-1.2.0
     install -Dm 755 "nwscript-code" -t "$pkgdir/usr/bin"
     install -Dm 755 "default_config.ini" -t "$pkgdir/usr/share/nwscript-code"
     install -Dm 755 "tasks.json" -t "$pkgdir/usr/share/nwscript-code"
