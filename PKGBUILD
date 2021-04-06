@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=rnp
 pkgdesc='High performance C++ OpenPGP library derived from NetPGP'
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 url=https://github.com/rnpgp/rnp
 license=(custom:BSD)
 arch=(i686 x86_64)
-makedepends=(cmake pkgconf)
+makedepends=(cmake pkgconf asciidoctor)
 depends=(botan zlib bzip2 json-c)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2b2195fc688933c3cb7bafbc6e763f7c3bfcfedf42149e29563b8b5321e77ce72f59b175f79ffa5fcd5911d1def89d8ecbf2e50a53a30c5421a63bc35289f414')
+sha512sums=('54c4aa844344597419c2b7189a752690c5984887341639dd70e561e78147903ea216a6d2f131a3edcec48faef6a66769a5465302360bbaa461ef3206de36ddcb')
 
 build ()
 {
@@ -19,7 +19,10 @@ build ()
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DENABLE_SANITIZERS=OFF \
 		-DENABLE_COVERAGE=OFF \
+		-DENABLE_FUZZERS=OFF \
 		-DBUILD_TESTING=OFF \
+		-DDOWNLOAD_GTEST=OFF \
+		-DDOWNLOAD_RUBYRNP=OFF \
 		-DBUILD_SHARED_LIBS=ON
 	cmake --build build
 }
