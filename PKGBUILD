@@ -9,6 +9,7 @@ url="https://www.questrade.com/self-directed-investing/trading-platforms/iq-edge
 license=(unknown)
 depends=(wine)
 makedepends=(icoutils)
+optdepends=('ttf-ms-win10: readable window titles')
 source=($pkgname-$pkgver.zip::https://media.questrade.com/iq_downloads/QuestradeIQEdge.zip
         com.questrade.IQEdge.desktop)
 sha256sums=('7f4c4233005ca8588cc47cdb77f69d8b4554af3271666ac3dc2de578bfea1fa0'
