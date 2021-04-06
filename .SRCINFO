@@ -1,0 +1,13 @@
+pkgbase = commando2
+	pkgdesc = A Flash Game Similar to Metal Slug
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.miniclip.com/games/commando-2
+	arch = x86_64
+	license = custom
+	depends = flashplayer-standalone
+	source = https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/commando2.tar.gz
+	md5sums = cbfd21b5e7a1e452cdf05e6686840a46
+
+pkgname = commando2
+
