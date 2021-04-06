@@ -1,6 +1,6 @@
 pkgbase = code-icons
 	pkgdesc = Change Code OSS icons to VSCode ones
-	pkgver = 1.55.1
+	pkgver = 1.54.3
 	pkgrel = 1
 	install = code-icons.install
 	arch = any
