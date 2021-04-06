@@ -2,14 +2,14 @@
 
 pkgname=nbdkit
 pkgver=1.24.3
-pkgrel=2
+pkgrel=3
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/libguestfs/nbdkit"
 license=('custom: BSD')
 depends=()
-optdepends=('libvirt' 'lua' 'tcl' 'perl' 'rust' 'libnbd')
-checkdepends=('qemu')
+optdepends=('libvirt' 'lua' 'tcl' 'perl' 'rust' 'libnbd' 'go')
+checkdepends=('qemu-headless')
 validpgpkeys=('F7774FB1AD074A7E8C8767EA91738F73E1B768A0')
 _dldir="${pkgver%.*}"
 source=(
