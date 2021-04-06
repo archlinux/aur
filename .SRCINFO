@@ -1,5 +1,5 @@
 pkgbase = hyperfox-bin
-	pkgdesc = HTTP/HTTPS MITM proxy and recorder.
+	pkgdesc = HTTP/HTTPS MITM proxy and recorder
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/malfunkt/hyperfox
