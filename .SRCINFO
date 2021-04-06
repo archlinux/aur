@@ -1,20 +1,19 @@
 pkgbase = shhgit
-	pkgdesc = Find GitHub secrets in real time.
+	pkgdesc = Secrets detection for your GitHub, GitLab and Bitbucket repositories
 	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/eth0izzle/shhgit
 	arch = x86_64
 	arch = i686
-	arch = arm
-	arch = armv6h
 	arch = armv7h
-	arch = aarch64
 	license = MIT
-	makedepends = go-pie
+	makedepends = go
 	provides = shhgit
 	conflicts = shhgit
 	source = shhgit-0.2.tar.gz::https://github.com/eth0izzle/shhgit/archive/v0.2.tar.gz
 	sha256sums = 0cce46f6474f1885b3bce057b8370017248cf3d7a4e16ddb91a6d2c626163680
+	sha512sums = eb28f297e40c0dd437cad561bc3f877d9e9a7261553394c8b649ec2aa009574a2ec66d5ccefd82dfd461f92aec75324a723f6de332c9d23cb785d3cc0d959320
+	b2sums = 79ee37cea7ec7c5eb45847548135bf51e9c956803a03d5ee37af1c501aed88e55d1a0822d464b1a6f20040c113127ab01c909bdcafef205226fd0a87d12868aa
 
 pkgname = shhgit
 
