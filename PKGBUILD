@@ -2,7 +2,7 @@
 
 _pkgname="surface-dtx-daemon"
 pkgname="${_pkgname}-git"
-pkgver=0.2.0.1.r0.g488bd6d
+pkgver=0.3.0.1.r0.gb570ed2
 pkgrel=1
 pkgdesc="Surface Detachment System (DTX) Daemon"
 url="https://github.com/linux-surface/surface-dtx-daemon"
@@ -19,9 +19,7 @@ source=(
     "${_pkgname}::git+https://github.com/linux-surface/surface-dtx-daemon.git"
 )
 
-sha256sums=(
-    'SKIP'
-)
+sha256sums=('SKIP')
 
 backup=(
     'etc/surface-dtx/surface-dtx-daemon.conf'
