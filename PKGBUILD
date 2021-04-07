@@ -1,7 +1,7 @@
 # Maintainer: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=7.3.2
+pkgver=7.4.1
 pkgrel=1
 x64_rel=1
 i386_rel=1
@@ -14,13 +14,13 @@ conflicts=(nomachine nxmanager nxwebplayer nxserver nxnode nxclient)
 install=nm-ent-client.install
 
 if [ "${CARCH}" = "x86_64" ]; then
-  sha256sums=("db3874cced93caf94274f11c3fa3c1ebea23838530f4a82169726f63e8cc3521")
+  sha256sums=("ecfc67141c56cdaf8831583c1883254c925b6bdfdfee79065f4c4e6dc4d8254e")
   _carch=_x86_64
-  source=("http://download.nomachine.com/download/7.3/Linux/${pkgname}_${pkgver}_${x64_rel}${_carch}.tar.gz")
+  source=("http://download.nomachine.com/download/7.4/Linux/${pkgname}_${pkgver}_${x64_rel}${_carch}.tar.gz")
 elif [ "${CARCH}" = "i686" ]; then
-  sha256sums=("7374b4c9d8a3de5fa3cfd0da949b818ed28aeb7bb783ccc64de76af749f102b3")
+  sha256sums=("ca0ea984ff7c5f969c5a3d695105c1e492df5b10761bb70337f7773fb606b836")
   _carch=_i686
-  source=("http://download.nomachine.com/download/7.3/Linux/${pkgname}_${pkgver}_${i386_rel}${_carch}.tar.gz")
+  source=("http://download.nomachine.com/download/7.4/Linux/${pkgname}_${pkgver}_${i386_rel}${_carch}.tar.gz")
 fi
 
 package()
