@@ -1,4 +1,6 @@
 # Maintainer: Mohammad Mostafa Farzan <m2_farzan@yahoo.com>
+# Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
+# package, maintained by T. Borgert.
 
 pkgname=ros2-foxy
 pkgver=2020.12.11
