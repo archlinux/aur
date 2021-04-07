@@ -96,6 +96,30 @@ index 4ee1ad4..43930da 100644
     switch (ch) {
        case EVENT_SET_SELECTED:
           result = HANDLED;
+diff --git a/MainPanel.c b/MainPanel.c
+index 842e8e1..93a8895 100644
+--- a/MainPanel.c
++++ b/MainPanel.c
+@@ -49,7 +49,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
+    return Process_getCommand(p);
+ }
+ 
+-static HandlerResult MainPanel_eventHandler(Panel* super, int ch) {
++HandlerResult MainPanel_eventHandler(Panel* super, int ch) {
+    MainPanel* this = (MainPanel*) super;
+ 
+    HandlerResult result = IGNORED;
+diff --git a/MainPanel.h b/MainPanel.h
+index 2427ca3..6354744 100644
+--- a/MainPanel.h
++++ b/MainPanel.h
+@@ -48,4 +48,6 @@ void MainPanel_setState(MainPanel* this, State* state);
+ 
+ void MainPanel_delete(Object* object);
+ 
++HandlerResult MainPanel_eventHandler(Panel* super, int ch);
++
+ #endif
 diff --git a/Panel.c b/Panel.c
 index 986a989..e7cb440 100644
 --- a/Panel.c
@@ -221,25 +245,41 @@ index 880597d..0c44936 100644
  
  For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 64af535..5d7432d 100644
+index 64af535..dc8c6f8 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -215,10 +215,10 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -14,6 +14,7 @@ in the source distribution for its full text.
+ 
+ #include "CRT.h"
+ #include "FunctionBar.h"
++#include "MainPanel.h"
+ #include "Object.h"
+ #include "ProcessList.h"
+ #include "ProvideCurses.h"
+@@ -214,14 +215,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+          redraw = false;
           continue;
        }
-       switch (ch) {
+-      switch (ch) {
 -         case KEY_ALT('H'): ch = KEY_LEFT; break;
 -         case KEY_ALT('J'): ch = KEY_DOWN; break;
 -         case KEY_ALT('K'): ch = KEY_UP; break;
 -         case KEY_ALT('L'): ch = KEY_RIGHT; break;
-+         case 'h': case KEY_ALT('H'): ch = KEY_LEFT; break;
-+         case 'j': case KEY_ALT('J'): ch = KEY_DOWN; break;
-+         case 'k': case KEY_ALT('K'): ch = KEY_UP; break;
-+         case 'l': case KEY_ALT('L'): ch = KEY_RIGHT; break;
-       }
+-      }
        redraw = true;
        if (Panel_eventHandlerFn(panelFocus)) {
-@@ -251,7 +251,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
++         if (Panel_eventHandlerFn(panelFocus) != MainPanel_eventHandler) {
++            switch (ch) {
++               case 'h': case KEY_ALT('H'): ch = KEY_LEFT; break;
++               case 'j': case KEY_ALT('J'): ch = KEY_DOWN; break;
++               case 'k': case KEY_ALT('K'): ch = KEY_UP; break;
++               case 'l': case KEY_ALT('L'): ch = KEY_RIGHT; break;
++            }
++         }
+          result = Panel_eventHandler(panelFocus, ch);
+       }
+       if (result & SYNTH_KEY) {
+@@ -251,7 +254,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -248,7 +288,7 @@ index 64af535..5d7432d 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -272,7 +272,7 @@ tryLeft:
+@@ -272,7 +275,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
