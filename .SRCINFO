@@ -1,0 +1,13 @@
+pkgbase = mazda-aio-tweaks
+	pkgdesc = Mazda AIO Tweaks
+	pkgver = 2.8.6
+	pkgrel = 1
+	url = https://mazdatweaks.com/
+	arch = x86_64
+	arch = i686
+	license = GLP
+	makedepends = curl
+	source = pkg/mzd.deb::https://github.com/Trevelopment/MZD-AIO/releases/download/v$pkgver/MZD-AIO-TI-linux_$pkgver.deb
+
+pkgname = mazda-aio-tweaks
+
