@@ -1,13 +1,14 @@
 # Maintainer: lmartinez-mirror
 pkgname=fish-ayu-theme
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ayu color theme for Fish shell"
 arch=('any')
 url="https://github.com/edouard-lopez/ayu-theme.fish"
 license=('unknown')
 groups=('fish-plugins')
 depends=('fish')
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a1b65ee89ec513f4d062a643d9220fa3f9debc1b6ff5387252f4eeafd208ca71')
 

@@ -1,8 +1,9 @@
 pkgbase = fish-ayu-theme
 	pkgdesc = ayu color theme for Fish shell
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edouard-lopez/ayu-theme.fish
+	install = fish-ayu-theme.install
 	arch = any
 	groups = fish-plugins
 	license = unknown
