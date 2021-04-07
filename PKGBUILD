@@ -1,5 +1,5 @@
 pkgname="ddev-edge-bin"
-pkgver=v1.17.0_rc2
+pkgver=v1.17.0
 pkgrel=1
 pkgdesc='DDEV-Local: a local PHP development environment system  (edge channel)'
 arch=('x86_64')
@@ -9,8 +9,8 @@ provides=("ddev")
 conflicts=("ddev")
 depends=('docker' 'docker-compose')
 optdepends=('bash-completion: subcommand completion support')
-source=("https://github.com/drud/ddev/releases/download/v1.17.0-rc2/ddev_linux-amd64.v1.17.0-rc2.tar.gz")
-sha256sums=("e7d9e176c3d9cdc0bf72fddcd3eec9c44d73fae82f4870edae076082fb56e894")
+source=("https://github.com/drud/ddev/releases/download/v1.17.0/ddev_linux-amd64.v1.17.0.tar.gz")
+sha256sums=("1de37d8e19fca5ad7a3b549e346656f087826ea41469155d0b3d4bed066975cb")
 
 package() {
 	install -D -m 0755 ddev "$pkgdir/usr/bin/ddev"
