@@ -1,7 +1,7 @@
 # Maintainer: Philip May <eniak.info@gmail.com>
 pkgname=pycharm-community-jre
 _appname=pycharm-community
-pkgver=2020.3.5
+pkgver=2021.1
 pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-  '9ba38b5f1d60d2587bf59f15cf93607aed724b4b00625c3d7396d89f8aec616d'
+  '7060bfdc54397b6cc783ff0b1724b8027e2bc3ea9f7e68e43ca37ea10fa42fc6'
   'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
   'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc'
 )
@@ -33,7 +33,7 @@ package() {
   rm -rf bin/fsnotifier{,-arm}
 
   install -dm 755 "${pkgdir}"/usr/share/{licenses,pixmaps,pycharm}
-  cp -dr --no-preserve='ownership' bin index jbr lib plugins "${pkgdir}"/usr/share/pycharm/
+  cp -dr --no-preserve='ownership' bin jbr lib plugins "${pkgdir}"/usr/share/pycharm/
   cp -dr --no-preserve='ownership' license "${pkgdir}"/usr/share/licenses/pycharm/
   ln -s /usr/share/pycharm/bin/pycharm.png "${pkgdir}"/usr/share/pixmaps/
   install -Dm 644 ../pycharm.desktop -t "${pkgdir}"/usr/share/applications/
