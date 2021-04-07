@@ -2,7 +2,7 @@
 _pkgname=opencc-gui
 pkgname=$_pkgname-git
 pkgver=r38.47b0e26
-pkgrel=1
+pkgrel=2
 pkgdesc="Gui in Qt5 of Library for Open Chinese Convert"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/opencc/"
