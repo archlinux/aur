@@ -1,0 +1,18 @@
+pkgbase = fish-ssh-agent-git
+	pkgdesc = Fish plugin to automatically start ssh-agent
+	pkgver = r26.fd70a2a
+	pkgrel = 1
+	url = https://github.com/danhper/fish-ssh-agent
+	arch = any
+	groups = fish-plugins
+	license = unknown
+	makedepends = git
+	depends = fish
+	depends = openssh
+	provides = fish-ssh-agent
+	conflicts = fish-ssh-agent
+	source = fish-ssh-agent-git::git+https://github.com/danhper/fish-ssh-agent
+	md5sums = SKIP
+
+pkgname = fish-ssh-agent-git
+
