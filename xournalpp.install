@@ -1,0 +1,20 @@
+post_install() {
+	:
+}
+
+post_upgrade() {
+	configs=$(find /home/ /root/ -maxdepth 2 -name ".xournalpp" 2> /dev/null)
+	if ! [ -z "$configs" ]; then
+		cat << EOF
+
+WARNING: Default config folder moved from \$HOME/.xournalpp to \$HOME/\$XDG_CONFIG_HOME/xournalpp (default .config)
+Found following config paths:
+EOF
+		echo "$configs"
+		echo
+	fi
+}
+
+post_remove() {
+	:
+}

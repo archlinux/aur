@@ -1,0 +1,29 @@
+pkgbase = xournalpp-xdg-portal
+	pkgdesc = Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.
+	pkgver = 1.0.20.hotfix.r1.gaef5056c
+	pkgrel = 1
+	url = https://github.com/Microeinstein/xournalpp-xdg-portal
+	install = xournalpp.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = cppunit
+	depends = texlive-bin
+	depends = gtk3
+	depends = poppler-glib
+	depends = libxml2
+	depends = portaudio
+	depends = libsndfile
+	depends = lua
+	depends = libzip
+	optdepends = xdg-desktop-portal
+	optdepends = xdg-desktop-portal-kde
+	conflicts = xournalpp
+	source = xournalpp-xdg-portal::git+https://github.com/Microeinstein/xournalpp-xdg-portal.git
+	sha256sums = SKIP
+
+pkgname = xournalpp-xdg-portal
+
