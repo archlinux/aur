@@ -3,14 +3,14 @@
 pkgname=pvr-tex-tool-bin
 pkgver=2020.2
 _versionstr='2020_R2'
-pkgrel=6
+pkgrel=7
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
 url="https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/"
 
 arch=('x86_64')
 options=('!strip')
-license=('MIT')
+license=('custom')
 
 source=("install.run::https://cdn.imgtec.com/sdk/OFFLINE/PVRTexToolSetup-${_versionstr}.run-x64"
 "LICENSE"
