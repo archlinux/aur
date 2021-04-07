@@ -1,0 +1,21 @@
+diff --git a/src/frmmain.cpp b/src/frmmain.cpp
+index cab8602..61abee3 100644
+--- a/src/frmmain.cpp
++++ b/src/frmmain.cpp
+@@ -32,6 +32,7 @@
+ #include <QAction>
+ #include <QLayout>
+ #include <QMimeData>
++#include <QStandardPaths>
+ #include "frmmain.h"
+ #include "ui_frmmain.h"
+ 
+@@ -85,7 +86,7 @@ frmMain::frmMain(QWidget *parent) :
+                        << "black";
+ 
+     // Loading settings
+-    m_settingsFileName = qApp->applicationDirPath() + "/settings.ini";
++    m_settingsFileName = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) + "/settings.ini";
+     preloadSettings();
+ 
+     m_settings = new frmSettings(this);

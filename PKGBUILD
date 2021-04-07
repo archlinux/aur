@@ -1,7 +1,7 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 pkgname=candle-git
 pkgver=v1.1.r97.8fd07bf
-pkgrel=2
+pkgrel=3
 pkgdesc="GRBL controller application with G-Code visualizer written in Qt - development version"
 arch=(x86_64 aarch64)
 url="https://github.com/Denvi/Candle"
@@ -18,14 +18,21 @@ install=
 source=(
     "${pkgname%-git}"::'git+https://github.com/Denvi/Candle.git'
     "${pkgname%-git}.desktop"
+    "frmmain.cpp.patch"
 )
 noextract=()
 md5sums=('SKIP'
-         'af12719ddf48d7fbef120adb03ab3cdb')
+         'af12719ddf48d7fbef120adb03ab3cdb'
+         '54cf1510a9858074b6bf54c0c174dd00')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "%s" "$(git describe --tags --match 'v*' | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	git apply < "../frmmain.cpp.patch"
 }
 
 build() {
