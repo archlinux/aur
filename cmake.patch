@@ -1,11 +1,12 @@
 diff -ruN aom/build/cmake/aom_configure.cmake patched/build/cmake/aom_configure.cmake
---- aom/build/cmake/aom_configure.cmake	2020-05-25 10:32:02.443333045 +0200
-+++ patched/build/cmake/aom_configure.cmake	2020-05-25 10:37:34.206666378 +0200
-@@ -67,6 +67,7 @@
+--- aom/build/cmake/aom_configure.cmake	        2021-04-23 19:56:11.023333334 +0200
++++ patched/build/cmake/aom_configure.cmake	2021-04-23 19:59:04.576666669 +0200
+@@ -65,7 +65,7 @@
+                     "      CMAKE_SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}\n"
                      "      CMAKE_GENERATOR=${CMAKE_GENERATOR}\n")
      endif()
-   elseif("${cpu_lowercase}" STREQUAL "i386"
-+         OR "${cpu_lowercase}" STREQUAL "i686"
-          OR "${cpu_lowercase}" STREQUAL "x86")
+-  elseif(cpu_lowercase STREQUAL "i386" OR cpu_lowercase STREQUAL "x86")
++  elseif(cpu_lowercase STREQUAL "i386" OR cpu_lowercase STREQUAL "i686" OR cpu_lowercase STREQUAL "x86")
      set(AOM_TARGET_CPU "x86")
-   elseif("${cpu_lowercase}" MATCHES "^arm"
+   elseif(cpu_lowercase MATCHES "^arm" OR cpu_lowercase MATCHES "^mips")
+     set(AOM_TARGET_CPU "${cpu_lowercase}")

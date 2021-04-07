@@ -3,7 +3,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -12,16 +12,16 @@ license=(BSD custom:PATENTS)
 depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
 makedepends=(mingw-w64-gcc mingw-w64-cmake git ninja yasm)
-_commit=cb1d48da8da2061e72018761788a18b8fa8013bb  # tags/v2.0.2^0
+_commit=d853caa2ab62d161e5edf344ffee7b597449dc0d  # tags/v3.0.0^0
 source=("git+https://aomedia.googlesource.com/aom#commit=$_commit"
         "cmake.patch")
-sha256sums=('SKIP'
-            '0e32c089670732e8193050fd63b0677458cc86ed58ac42d5b73ea07f945632e0')
+b2sums=('SKIP'
+        '627c000cc5b152e78714898156ebebb2524749bd1d701bbbdca0b431301426c2f821403299a6fd4420be80133d4e7178dea8b2f4aae2ab34e9e81e584ebda345')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
   cd aom
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags | sed 's/^v//;s/-errata/.errata/;s/-/+/g'
 }
 
 prepare() {

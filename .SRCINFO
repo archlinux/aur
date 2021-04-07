@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-aom
 	pkgdesc = Alliance for Open Media video codec (mingw-w64)
-	pkgver = 2.0.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = mingw-w64-aom
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://aomedia.googlesource.com/aom#commit=cb1d48da8da2061e72018761788a18b8fa8013bb
+	source = git+https://aomedia.googlesource.com/aom#commit=d853caa2ab62d161e5edf344ffee7b597449dc0d
 	source = cmake.patch
-	sha256sums = SKIP
-	sha256sums = 0e32c089670732e8193050fd63b0677458cc86ed58ac42d5b73ea07f945632e0
+	b2sums = SKIP
+	b2sums = fe0f18fa9e1dd9aa920ac5f097961833a37bc8777c591378deb82ce94a83271afbbb386b9a2f1cb578b56405035abb81515143f88f55b7f6c95a4141ea9c1a9b
 
 pkgname = mingw-w64-aom
 
