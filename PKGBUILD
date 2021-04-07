@@ -60,8 +60,8 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.11
-pkgrel=4
+pkgver=5.11.12
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -71,7 +71,7 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.11-ck${_ckpatchversion}"
-_gcc_more_v=20210327
+_gcc_more_v=20210402
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -84,10 +84,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('e82eca6aee8e983304d363f6b427784df593f1fa8c2e7c54b0c6317e9a59497d4398dcec60a0e1ef7efd1f964e1c55a8ee2e3fb1fbf238a87917b30fc049f30b'
+b2sums=('1defa8e4ef10663e48f62f9c9f7d3a35dd52d6aeaa91fa08371ae96c73a3098196c0e0a17beb78b8a6e246cc51ff3e3e59ffb85abb94c2bd8c14b8282e1e82bc'
         'SKIP'
-        '4d1d62d801bcf929febd42798e7b0a0f30dd9baa73a2c1d3a453139c0daec104479868cae98d0fd408e28ab565fee386e5a6fcc198be5b220968a9d88ecfafad'
-        'f9a5de8af8ea693a21a824e3805c6d784d17ab72828000966a53ed46e66edce53a447271985634137e42901e41c4ac49d3f91e9262896668a335cea8ee896a7c'
+        '4f43af91d2b6a3ddca56c187595538b1920fbc5a9ec87cb7c714501f7a03ec8513c7ef09e76ac9350feb815e09c68b57fca6adb1d47c41d7583d7e1ff5a5de08'
+        'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         'c22463da6e78830e104f728c00cf43573a7e1a59c17234f49844b9295eab953f4e119d34a0621feb816b9f1f0469dd769884f9ed1740c73176625435ea0a8624'
         '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32')
@@ -101,7 +101,6 @@ prepare() {
   # https://bbs.archlinux.org/viewtopic.php?id=265115
 
   if [[ ! -f "$srcdir/$_ckpatch" ]]; then
-    unlink "$srcdir/$_ckpatch.xz"
     xz -dc "$SRCDEST/$_ckpatch.xz" > "$_ckpatch"
   fi
 
