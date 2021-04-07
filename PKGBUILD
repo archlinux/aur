@@ -7,7 +7,7 @@ pkgdesc="Highest resolution graphics set for Simutrans Extended"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('CC-BY-NC-SA 4.0')
-depends=('simutrans-extended')
+depends=('simutrans-extended-git')
 source=(https://github.com/Phystam/pak256-release/archive/$pkgver.zip)
 sha256sums=('3cfd8062f3be80fdeb6d3fd48171a2efe9b1eeaa35bec1aed64cc90e474d93ac')
 

@@ -5,7 +5,7 @@ pkgbase = simutrans-extended-pak256
 	url = https://www.simutrans.com/
 	arch = any
 	license = CC-BY-NC-SA 4.0
-	depends = simutrans-extended
+	depends = simutrans-extended-git
 	source = https://github.com/Phystam/pak256-release/archive/2.3.0.1.zip
 	sha256sums = 3cfd8062f3be80fdeb6d3fd48171a2efe9b1eeaa35bec1aed64cc90e474d93ac
 
