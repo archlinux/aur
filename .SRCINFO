@@ -1,0 +1,32 @@
+pkgbase = bapctools-git
+	pkgdesc = Tools for developing ICPC-style programming contest problems.
+	pkgver = r944.5832b17
+	pkgrel = 1
+	url = https://github.com/RagnarGrootKoerkamp/BAPCtools
+	install = bapctools.install
+	arch = any
+	license = GPL 3.0
+	makedepends = git
+	depends = python3
+	depends = python-yaml
+	depends = python-colorama
+	depends = python-argcomplete
+	depends = python-ruamel-yaml
+	optdepends = gcc: for compiling c++ sources,
+	optdepends = clang: for compiling c++ sources,
+	optdepends = pypy3: for running python submissions with pypy,
+	optdepends = python2: for running python2 submissions,
+	optdepends = pypy: for running python2 submissions with pypy,
+	optdepends = jdk11-openjdk: for running java submissions,
+	optdepends = kotlin: for running kotlin submissions,
+	optdepends = texlive: for building problem statements,
+	optdepends = texlive-latexextra: for building problem statements,
+	optdepends = texlive-pictures: for building problem statements,
+	optdepends = texlive-science: for building problem statements,
+	optdepends = ghostscript: for LaTeX figures,
+	optdepends = asymptote: for visualizations
+	source = bapctools::git+https://github.com/RagnarGrootKoerkamp/BAPCtools
+	md5sums = SKIP
+
+pkgname = bapctools-git
+
