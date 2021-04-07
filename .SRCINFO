@@ -1,6 +1,6 @@
 pkgbase = ltspice
 	pkgdesc = SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility.
-	pkgver = 17.20210112.3
+	pkgver = 17.20210406.3
 	pkgrel = 1
 	url = http://www.linear.com/designtools/software/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = ltspice
 	depends = wine
 	source = ltspice.sh
 	source = ltspice-help.sh
-	sha256sums = 3a9cead8237122e068b6475430f0ca5cfa9de66159dfb4b668a28c91b5e2ac60
-	sha256sums = fbdf8d774de0ac74b9298c99aa6e2a96b2a9a36d094fcbed885ab2c07a2bc1ca
+	sha256sums = 8e58856d3920504b16d70d6cdc11abd722a9fdcdc1e9041dd3bef6501063c2d3
+	sha256sums = ff14cff95172bbf685bc39801910edd70ee9499dee450270529c043946cc591c
 
 pkgname = ltspice
 

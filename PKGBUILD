@@ -5,7 +5,7 @@ _ltspice_ver_roman="XVII"
 _ltspice_ver="17"
 
 pkgname=ltspice
-pkgver=17.20210112.3
+pkgver=17.20210406.3
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
@@ -18,8 +18,8 @@ _update_url="https://ltspice.analog.com/fieldsync$_ltspice_ver_roman"
 
 source=("$pkgname.sh"
         "$pkgname-help.sh")
-sha256sums=('3a9cead8237122e068b6475430f0ca5cfa9de66159dfb4b668a28c91b5e2ac60'
-            'fbdf8d774de0ac74b9298c99aa6e2a96b2a9a36d094fcbed885ab2c07a2bc1ca')
+sha256sums=('8e58856d3920504b16d70d6cdc11abd722a9fdcdc1e9041dd3bef6501063c2d3'
+            'ff14cff95172bbf685bc39801910edd70ee9499dee450270529c043946cc591c')
 _curl_opts="--silent --connect-timeout 60 --retry 3 --retry-delay 1"
 
 _download_file() {
