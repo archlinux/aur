@@ -1,0 +1,25 @@
+pkgbase = youtube-dl-anime-git
+	pkgdesc = A small command-line program to download videos from YouTube.com and a few more sites (added nicovideo and bilibili danmaku support and other features, git version)
+	pkgver = 2020.08.24m.r341.gca59f1f96
+	pkgrel = 1
+	url = http://github.com/animelover1984/youtube-dl
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = pandoc
+	makedepends = python-setuptools
+	depends = python-mutagen
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-websockets
+	optdepends = ffmpeg: for video post-processing
+	optdepends = rtmpdump: for rtmp streams support
+	optdepends = atomicparsley: for embedding thumbnails into m4a files
+	optdepends = phantomjs: for some less common extractors to work
+	provides = youtube-dl
+	conflicts = youtube-dl
+	source = git+https://github.com/animelover1984/youtube-dl.git
+	md5sums = SKIP
+
+pkgname = youtube-dl-anime-git
+
