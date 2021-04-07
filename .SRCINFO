@@ -13,6 +13,7 @@ pkgbase = lesana-git
 	depends = python-xapian
 	depends = python-gitpython
 	provides = lesana
+	conflicts = lesana
 	source = git+https://git.sr.ht/~valhalla/lesana
 	md5sums = SKIP
 

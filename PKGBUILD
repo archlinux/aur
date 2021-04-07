@@ -10,6 +10,7 @@ license=(GPL3)
 depends=('python-dateutil' 'python-jinja' 'python-ruamel-yaml' 'python-xapian' 'python-gitpython')
 makedepends=('python-setuptools')
 provides=(lesana)
+conflicts=(lesana)
 source=("git+https://git.sr.ht/~valhalla/lesana")
 md5sums=(SKIP)
 
