@@ -1,7 +1,7 @@
 pkgbase = libsavitar-git
 	pkgdesc = c++ implementation of 3mf loading with SIP python bindings
 	pkgver = 4.9.beta.r0.gfe88675
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ultimaker/libSavitar
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = libsavitar-git
 	source = git+https://github.com/Ultimaker/libSavitar.git
 	source = 0001-Do-not-vendor-the-pugixml-library.patch
 	md5sums = SKIP
-	md5sums = 1d0e2c14874414202eba249d956ada56
+	md5sums = 6a59f74447a366e9b71d294b916e5cc6
 
 pkgname = libsavitar-git
 
