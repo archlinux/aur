@@ -1,0 +1,29 @@
+pkgbase = ros-noetic-mbf-costmap-core
+	pkgdesc = ROS - A Highly Flexible Navigation Framework.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://wiki.ros.org/move_base_flex/mbf_costmap_core
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-tf
+	makedepends = ros-noetic-nav-core
+	makedepends = ros-noetic-mbf-utility
+	makedepends = ros-noetic-mbf-abstract-core
+	makedepends = ros-noetic-costmap-2d
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-tf
+	depends = ros-noetic-nav-core
+	depends = ros-noetic-mbf-utility
+	depends = ros-noetic-mbf-abstract-core
+	depends = ros-noetic-costmap-2d
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-geometry-msgs
+	source = ros-noetic-mbf-costmap-core-0.3.4.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/noetic/mbf_costmap_core/0.3.4.tar.gz
+	sha256sums = 0c1f3874d19db615328306a36c4e2709514df4117b14782e88378618e590f35b
+
+pkgname = ros-noetic-mbf-costmap-core
+
