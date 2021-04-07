@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2020.3.5
+pkgver=2021.1
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -17,28 +17,21 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('d30b78b7deb680a1a9f6a36ca09ab1ed602eb8cb760f6f8083780ba3cd46b8e3'
+sha256sums=('bf86f3b316191e9d7e2e96d4fa055c095c59202f6af287103f54fde75b256bd8'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             'fdd92952973bf9c70dcb3a570b29fdc534ef87f524d06ca8f6c6422f3b954e14'
-            'e3b2e7996a7571d659b9477f950ea935e8088c302f6d1e1f6cb5d803f1d10113')
+            'dc8c77b4c75805fa51f28a7cf8ca394d5143cd939ac5e6f2288132b4a36c7159')
 makedepends=('python-setuptools' 'cython')
-optdepends=('python2: Python 2 support'
-            'ipython2: For enhanced interactive Python shell v2 inside Pycharm'
-            'ipython: For enhanced interactive Python shell v3 inside Pycharm'
+optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
-            'python2-setuptools: Packages manager for Python 2, for project interpreter'
-            'python-setuptools: Packages manager for Python 3, for project interpreter'
-            'python2-coverage: For support code coverage measurement for Python 2'
-            'python-coverage: For support code coverage measurement for Python 3'
-            'cython2: For performance debugger in Python 2'
-            'cython: For performance debugger in Python 3'
+            'python-setuptools: Packages manager for Python, for project interpreter'
+            'python-coverage: For support code coverage measurement'
+            'cython: For performance debugger'
             'docker-machine: For support docker inside Pycharm'
             'docker-compose: For support docker inside Pycharm'
             'vagrant: For support virtualized development environments'
-            'python2-pytest: For support testing inside Pycharm with Python 2'
-            'python-pytest: For support testing inside Pycharm with Python 3'
-            'python2-tox: Python environments for testing tool with Python 2'
-            'python-tox: Python environments for testing tool with Python 3'
+            'python-pytest: For support testing inside Pycharm'
+            'python-tox: Python environments for testing tool'
             'jupyter: For support Jupyter Notebook')
             
 build() {
