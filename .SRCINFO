@@ -10,7 +10,6 @@ pkgbase = hibiscus
 	makedepends = unzip
 	depends = java-runtime>=1.5
 	depends = jameica>=2.8
-	depends = libstdc++5
 	optdepends = pcsclite
 	options = !strip
 	source = https://www.willuhn.de/products/hibiscus/releases/2.10/hibiscus-2.10.2.zip

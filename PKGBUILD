@@ -7,7 +7,7 @@ pkgdesc="HBCI banking plugin for jameica."
 arch=('x86_64' 'i686')
 url="https://www.willuhn.de/projects/hibiscus/"
 license=("GPL2")
-depends=('java-runtime>=1.5' 'jameica>=2.8' 'libstdc++5')
+depends=('java-runtime>=1.5' 'jameica>=2.8')
 makedepends=('unzip')
 optdepends=('pcsclite')
 options=('!strip')
