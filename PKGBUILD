@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 pkgname=vim-ayu-git
 pkgver=r25.0745635
-pkgrel=1
+pkgrel=2
 pkgdesc="Ayu colorscheme for vim"
 arch=('any')
 url="https://github.com/ayu-theme/ayu-vim"
@@ -11,6 +11,7 @@ depends=('vim-plugin-runtime')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="$pkgname.install"
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 

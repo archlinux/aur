@@ -1,0 +1,13 @@
+post_install()  {
+  echo ":: Setting up ayu variables"
+  fish -Pc 'set -U ayu_path /etc/fish/'
+  echo ":: ayu_path has been set!"
+  echo ":: You must choose one of three options for your scheme: light, dark, or mirage"
+  echo ":: You can set the colorscheme with 'set -U ayu_variant {scheme}', then load it with 'load_ayu_theme'"
+}
+
+pre_remove()  {
+  echo ":: Removing ayu_path"
+  fish -Pc 'set -Ue ayu_path'
+  echo ":: Removed ayu_path!"
+}
