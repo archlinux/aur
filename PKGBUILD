@@ -3,7 +3,7 @@
 
 pkgname="simh-git"
 pkgver=4.0.Beta.1.2670.g3c1c92dc
-pkgrel=2
+pkgrel=3
 pkgdesc="The Computer History Simulation Project"
 arch=('i686' 'x86_64')
 url="http://simh.trailing-edge.com/"
