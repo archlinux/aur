@@ -9,7 +9,7 @@ pkgdesc="High resolution graphics set for Simutrans Extended, with a swedish the
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
-depends=('simutrans-extended')
+depends=('simutrans-extended-git')
 source=(http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.sweden-ex-nightly.tar.gz)
 sha256sums=('d8a5c8af425e7ac0e215c08ac0482408763ffa6786222388b8ca8349c9231542')
 
