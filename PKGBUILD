@@ -9,8 +9,8 @@ pkgbase=clion-eap
 pkgname=(clion-eap clion-eap-jre clion-eap-cmake clion-eap-gdb clion-eap-lldb)
 _pkgname=clion
 _dlname=CLion
-pkgver=211.6693.66
-_dlver=$pkgver
+pkgver=211.6693.114
+_dlver=2021.1
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ license=('custom')
 makedepends=('rsync')
 source=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz"
         "jetbrains-${pkgbase}.desktop")
-sha256sums=('87990fbfe9eb86dc3dd5374ccf9301bf0424bee039c41480a8f4d8b8001c0e62'
+sha256sums=('fd82ff4e335f5a69e0e8ac2d442bfb29f5bd11d814b21efc481e0b77499802e3'
             'e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0')
 noextract=("${_dlname}-${_dlver}.tar.gz")
 
