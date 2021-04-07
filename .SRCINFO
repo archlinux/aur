@@ -23,6 +23,7 @@ pkgbase = obs-recursion-effect
 	makedepends = curl
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
+	makedepends = git
 	depends = obs-studio
 	source = obs-recursion-effect-0.0.3::git+https://github.com/exeldro/obs-recursion-effect#commit=a4b92d836224a80eb7d61cc7f6b839290faf1864
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz

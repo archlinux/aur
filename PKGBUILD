@@ -12,7 +12,7 @@ depends=("obs-studio")
 makedepends=(
   'cmake' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python'
   'luajit' 'ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
-  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
+  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache' 'git'
 )
 source=(
   "$pkgname-$pkgver::git+https://github.com/exeldro/obs-recursion-effect#commit=a4b92d836224a80eb7d61cc7f6b839290faf1864"
