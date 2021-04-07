@@ -23,6 +23,7 @@ pkgbase = obs-source-switcher
 	makedepends = curl
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
+	makedepends = git
 	depends = obs-studio
 	source = obs-source-switcher-0.2.8::git+https://github.com/exeldro/obs-source-switcher#commit=8f3e3e0e5ddec052ebf2536507118b155e4987ad
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
