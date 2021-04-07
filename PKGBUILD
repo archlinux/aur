@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=hilbish
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A shell written in Go and extended with Lua"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go>=1.16')
 optdepends=('lua')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8f7d950af1710b1d71dfb87834f6afc0dd6351f9f269e381327247046b7d1ec2')
+sha256sums=('0cbd85966a97c65799f3ea9c1c558623c99eb1cd1d604a5518390e86e8f6e1ab')
 
 prepare() {
   mv "Hilbish-$pkgver" "$pkgname-$pkgver"
