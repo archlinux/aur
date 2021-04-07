@@ -1,21 +1,17 @@
-# Maintainer: Konstantinos Foutzopoulos <mail@konfou.xyz>
+# Maintainer: Roboron <robertoms258 at gmail dot com>
+# Previous Maintainer: Konstantinos Foutzopoulos <mail@konfou.xyz>
 
 pkgname=soundfont-realfont
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="GM soundbank by Michel Villeneuve."
 arch=('any')
-url="http://pages.videotron.com/mikev/realfont.htm"
+url="http://www.personalcopy.com/sfarkfonts1.htm"
 license=("unknown")
 groups=('soundfonts')
-makedepends=('sfarkxtc')
-source=("ftp://ftp.personalcopy.net/pub/RealFont_${pkgver/./_}.sfArk")
-md5sums=('844ac271176de9fbb2180240d94c2701')
-
-build() {
-  sfarkxtc "RealFont_${pkgver/./_}.sfArk" "RealFont.sf2"
-}
+source=("https://michan.noho.st/documents/RealFont_${pkgver/./_}.SF2")
+md5sums=('3e50819cc46497f0b5c9dc249b12294d')
 
 package() {
-  install -Dm644 "RealFont.sf2" "$pkgdir/usr/share/soundfonts/RealFont.sf2"
+  install -Dm644 "RealFont_${pkgver/./_}.SF2" "$pkgdir/usr/share/soundfonts/RealFont.sf2"
 }

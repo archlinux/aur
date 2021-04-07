@@ -1,14 +1,13 @@
 pkgbase = soundfont-realfont
 	pkgdesc = GM soundbank by Michel Villeneuve.
-	pkgver = 2.1
+	pkgver = 2.3
 	pkgrel = 1
-	url = http://pages.videotron.com/mikev/realfont.htm
+	url = http://www.personalcopy.com/sfarkfonts1.htm
 	arch = any
 	groups = soundfonts
 	license = unknown
-	makedepends = sfarkxtc
-	source = ftp://ftp.personalcopy.net/pub/RealFont_2_1.sfArk
-	md5sums = 844ac271176de9fbb2180240d94c2701
+	source = https://michan.noho.st/documents/RealFont_2_3.SF2
+	md5sums = 3e50819cc46497f0b5c9dc249b12294d
 
 pkgname = soundfont-realfont
 
