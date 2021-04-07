@@ -3,31 +3,27 @@
 
 pkgname=pcb2gcodegui
 _pkgname=pcb2gcodeGUI
-pkgver=1.3.2
-_pkgver='1.3.2-1'
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A GUI for pcb2gcode."
 url="https://github.com/pcb2gcode/pcb2gcodeGUI"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('qt5-svg' 'pcb2gcode')
-source=("${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('632ac6680ff9fde12f7005eeb7b2e250b520858f76c84d37dc7023f0158f1cb3')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('8a1bdd990906cd5df3277f584a932d22bcc7d096acb15276b533f1d500c53712')
 
 prepare() {
-  cd "${_pkgname}-${_pkgver}"
-  # --optimise doesnt work but it was already patched in master
-  curl https://github.com/pcb2gcode/pcb2gcodeGUI/compare/v1.3.2-1...430e99b.diff > patch
-  patch -Np1 < patch
+  cd "${_pkgname}-${pkgver}"
   qmake PREFIX="$pkgdir/usr"
 }
 
 build () {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
   make 
 }
 
 package() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install 
 }
