@@ -5,8 +5,8 @@
 
 # General package information
 pkgname=krack
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Krathalan's packaging softwares"
 url="https://github.com/krathalan/krack"
 license=("GPL3")
@@ -21,8 +21,10 @@ makedepends=("git" "scdoc")
 conflicts=("krack-git")
 
 # Download information
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz" "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.asc")
-sha256sums=("a547bb5c9f98f051adb4adcb784aefdda25c104604b55d928c881f41b482d8b0" "97f3f9c4c67b0872b7b8021f05025b3d1c6b6537856a3645206debb17ee29519")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
+sha256sums=("b14aec70159ae4b9df279d78d4f8a86a12fab99c762f0848d37cec2cd6913200"
+            "8a4a6df1c047d3083725167da34154048d94b3fd862a23f6b72a32d79eb1e4f0")
 
 build()
 {
@@ -53,6 +55,7 @@ package()
 
   # man
   install -D -m644 man/krack-build.1 "${pkgdir}/usr/share/man/man1/krack-build.1"
+  install -D -m644 man/krack-receive.1 "${pkgdir}/usr/share/man/man1/krack-receive.1"
   install -D -m644 man/krack.1 "${pkgdir}/usr/share/man/man1/krack.1"
   install -D -m644 man/krackctl.1 "${pkgdir}/usr/share/man/man1/krackctl.1"
 
