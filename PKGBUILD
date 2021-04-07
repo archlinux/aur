@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=88.0a1.r572254.f56d2bf535d6
-_pkgver=88.0a1
+pkgver=89.0a1.r574816.6f50eaaba7ee
+_pkgver=89.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(MPL GPL LGPL)
 _repo=https://hg.mozilla.org/mozilla-central
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg
-         ttf-font libpulse)
+         ttf-font libpulse nss-hg nspr-hg)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
             xorg-server-xvfb autoconf2.13 rust ccache mercurial icu clang llvm jack 
             python nodejs python2-psutil cbindgen nasm
@@ -31,9 +31,9 @@ options=(!emptydirs !makeflags !strip)
 source=("hg+$_repo"
         "firefox-nightly.desktop"
         "0001-Use-remoting-name-for-GDK-application-names.patch"
-	"D90627.diff")
+		"D90627.diff")
 sha512sums=('SKIP'
-            '8b4ac564aaa39d5a3ea7fda12eed047687916fd9c084407157dd380d4a3db7cf41aebc4b6ab9aa2a5a3e1cddd1f03440f9471a6c091e5d8339bde193436612d0'
+            '3ab341ad51c1fded9740c70c3eeb160750c24a333634837b646a86c4a431979d51ab4ccc9a3f87b899fdb960695dc710e78433b09dbf72e62eeda417761030f7'
             'afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea'
             '02480231cec469fba1e03f669f0a47954bf633f0487ed27d4e0f135d100d9ae023044ef659cc32915aa8acb8dbcbfa2a6a69c78a94700961f9fa80a18bd2f4eb')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -68,6 +68,7 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
  
   cat >.mozconfig <<END
+mk_add_options AUTOCLOBBER=1
 ac_add_options --enable-application=browser
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -97,6 +98,8 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
  
 # Features
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --disable-warnings-as-errors
@@ -118,7 +121,7 @@ build() {
 
     # LTO/PGO needs more open files
     ulimit -n 4096
-    ./mach bootstrap
+    ./mach create-mach-environment
     xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
     ./mach buildsymbols
 }
@@ -159,23 +162,34 @@ END
 
   local i theme=nightly
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 browser/branding/$theme/default$i.png \
+    install -Dm644 browser/branding/${theme}/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  install -Dvm644 browser/branding/$theme/content/about-logo.png \
+  install -Dm644 browser/branding/${theme}/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
-  install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
+  install -Dm644 browser/branding/${theme}/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
-  install -Dvm644 browser/branding/$theme/content/identity-icons-brand.svg \
+  install -Dm644 browser/branding/${theme}/content/identity-icons-brand.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
-  install -Dvm644 ../$_pkgname.desktop \
+
+  install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # Recreate the bindir symlink
-  rm -vf "$pkgdir/usr/bin/firefox"
-  ln -srfv "$pkgdir/usr/lib/$_pkgname/firefox" "$pkgdir/usr/bin/$_pkgname"
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 
-  # Replace duplicate binary with another symlink
+#!/bin/sh
+exec /usr/lib/$_pkgname/firefox "\$@"
+END
+
+  # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/lib/$_pkgname/firefox" "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+  ln -srf "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+  rm -f "$pkgdir/usr/bin/firefox"
+
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
+  if [[ -e $nssckbi ]]; then
+    ln -srf "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
 }
