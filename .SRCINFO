@@ -1,6 +1,6 @@
 pkgbase = libgpiod
 	pkgdesc = C library and tools for interacting with the linux GPIO character device
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = libgpiod
 	depends = linux-api-headers>=4.8
 	depends = python
 	conflicts = libgpiod-git
-	source = https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/snapshot/libgpiod-1.6.2.tar.gz
-	sha256sums = 0a1fa46d21c925ea245f101f60cc8253ff46a7ccadc1d7b952c99bb6ffec15cd
+	source = https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/snapshot/libgpiod-1.6.3.tar.gz
+	sha256sums = eb446070be1444fd7d32d32bbca53c2f3bbb0a21193db86198cf6050b7a28441
 
 pkgname = libgpiod
 
