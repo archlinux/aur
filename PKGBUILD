@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
-pkgver=3.38.5
+pkgver=40.0
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -23,17 +23,16 @@ optdepends=('system-config-printer: Printer settings'
             'openssh: remote login')
 provides=("$_pkgname" 'firmware-manager-virtual')
 conflicts=("$_pkgname")
-_commit=b6f94853bc99834d3b6091a4ae88c798e852789a  # tags/3.38.5^0
+_commit=49d71c07b5b3ce59e035b785310cba4fcf903868  # tags/40.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
         'git+https://gitlab.gnome.org/GNOME/libhandy.git'
-        '0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
+#        '0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
 #        'pop-hidpi.patch'
         'system76-firmware.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'a038b6d1c5c8dd5e80c1b6e24d650d616d1434486c5e86b270694b540449e3f3'
             '33fc2be90935fa9b913cccde12677d7234763821d47d71edf3586034d7eece2d')
 
 pkgver() {
@@ -48,7 +47,7 @@ prepare() {
   git config --local submodule.subprojects/libhandy.url "$srcdir/libhandy"
   git submodule update
 
-  patch -Np1 -i ../0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch
+#  patch -Np1 -i ../0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch
 #  patch -Np1 -i ../pop-hidpi.patch
   patch -Np1 -i ../system76-firmware.patch
 }
