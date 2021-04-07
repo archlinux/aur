@@ -2,14 +2,14 @@
 # Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=bitwarden-git
-pkgver=1.24.6.r153.gb5492e95
+pkgver=1.24.6.r169.g9ff6b424
 pkgrel=1
 _nodeversion='12.18.3'
 pkgdesc='Bitwarden Desktop Application (development version)'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
-depends=('electron' 'libnotify' 'libsecret' 'libxtst')
+depends=('electron11' 'libnotify' 'libsecret' 'libxtst')
 makedepends=('git' 'npm' 'python' 'nvm' 'jq')
 conflicts=('bitwarden')
 options=('!strip' '!emptydirs')
@@ -21,7 +21,7 @@ source=(${pkgname%-git}::'git+https://github.com/bitwarden/desktop.git'
 sha512sums=('SKIP'
             'SKIP'
             'c2558674711ce2e559e4c42f89600efd6205e0005763d0fa77d3f98f0f60dd87bf628f2e1111db506af574741cbd7c10615db7d7284f1352aef6c70ad1d03be4'
-            '934cd104f4fe20bb8695d5590e0c9532ab374045be6d5da46464889627594e2abe43d4c9f4a00e7a81492b4a3b0b1bd1cf3f05ff4fe51f42fe2e47dfa095a917'
+            'ac220119aa3590858a78f8159c9a055485b9a2b034c99555a2c1b9b140b5f6b9daa615db38dec4b72223dc37d92c3680aeb83d73d8b2a2f16bcd60bf8d833efa'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
 pkgver() {
@@ -45,7 +45,7 @@ prepare() {
 	cd "${srcdir}/${pkgname%-git}"
 	patch -p1 package.json "${srcdir}/package.json.patch"
 	# Patch build to make it work with system electron
-	SYSTEM_ELECTRON_VERSION=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
+	SYSTEM_ELECTRON_VERSION=$(pacman -Q electron11 | cut -d' ' -f2 | cut -d'-' -f1)
 	jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION \
 	   '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron"' \
 	   > package.json.patched
