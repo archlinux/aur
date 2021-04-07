@@ -1,7 +1,7 @@
 pkgbase = terminus-font-td1
 	pkgdesc = Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)
 	pkgver = 4.49.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://terminus-font.sourceforge.net/
 	arch = any
 	license = GPL2
@@ -10,10 +10,11 @@ pkgbase = terminus-font-td1
 	makedepends = python
 	provides = terminus-font
 	conflicts = terminus-font
+	conflicts = terminus-font-otb
+	replaces = terminus-font-td1-otb
 	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.49/terminus-font-4.49.1.tar.gz
 	source = fix-75-yes-terminus.patch
 	sha256sums = d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79
 	sha256sums = ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5
 
 pkgname = terminus-font-td1
-

@@ -9,7 +9,7 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1
 pkgver=4.49.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
@@ -18,46 +18,44 @@ license=('GPL2' 'custom:OFL')
 
 makedepends=('xorg-bdftopcf' 'python')
 
-conflicts=('terminus-font')
+conflicts=('terminus-font' 'terminus-font-otb')
 provides=('terminus-font')
+replaces=('terminus-font-td1-otb')
 
-source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver%.*}/${_pkgname}-${pkgver}.tar.gz"
+source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver%.1}/terminus-font-$pkgver.tar.gz"
         fix-75-yes-terminus.patch)
 sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
             'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  chmod +x configure
-  patch -p1 < "$srcdir"/fix-75-yes-terminus.patch
+  cd "terminus-font-$pkgver"
+  patch -p1 <"$srcdir"/fix-75-yes-terminus.patch
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "terminus-font-$pkgver"
 
   patch < alt/td1.diff
 
   ./configure \
     --prefix=/usr \
     --x11dir=/usr/share/fonts/misc \
+    --otbdir=/usr/share/fonts/misc \
     --psfdir=/usr/share/kbd/consolefonts
-  make
+  make all otb
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+  make -C "terminus-font-$pkgver" DESTDIR="$pkgdir" install install-otb
 
-  make DESTDIR="${pkgdir}" install
+  install -Dm644 "$srcdir/terminus-font-$pkgver/75-yes-terminus.conf" \
+    "$pkgdir/usr/share/fontconfig/conf.avail/75-yes-terminus.conf"
+  install -Dm644 "$srcdir/terminus-font-$pkgver/OFL.TXT" \
+    "$pkgdir/usr/share/licenses/terminus-font/LICENSE"
 
-  install -Dm644 "75-yes-terminus.conf" \
-    "${pkgdir}/etc/fonts/conf.avail/75-yes-terminus.conf"
-  install -Dm644 "OFL.TXT" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -d "${pkgdir}/etc/fonts/conf.d"
-
-  cd "${pkgdir}/etc/fonts/conf.d"
-  ln -s ../conf.avail/75-yes-terminus.conf
+  install -d "$pkgdir/usr/share/fontconfig/conf.default"
+  ln -sr "$pkgdir/usr/share/fontconfig/conf.avail/75-yes-terminus.conf" \
+    "$pkgdir/usr/share/fontconfig/conf.default/75-yes-terminus.conf"
 }
 
 # vim:set ts=2 sw=2 et:
