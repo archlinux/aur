@@ -1,0 +1,27 @@
+pkgbase = ros-noetic-mbf-utility
+	pkgdesc = ROS - The mbf_utility package.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://wiki.ros.org/move_base_flex/mbf_utility
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-tf
+	makedepends = ros-noetic-tf2-geometry-msgs
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-tf2-ros
+	makedepends = ros-noetic-tf2
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-tf
+	depends = ros-noetic-tf2-geometry-msgs
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-tf2-ros
+	depends = ros-noetic-tf2
+	depends = ros-noetic-geometry-msgs
+	source = ros-noetic-mbf-utility-0.3.4.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/noetic/mbf_utility/0.3.4.tar.gz
+	sha256sums = ba73e07835df8cbc310e41dd223e572c1babb1b18edbf923b508f8f795ceb79a
+
+pkgname = ros-noetic-mbf-utility
+
