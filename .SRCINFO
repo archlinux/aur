@@ -1,6 +1,6 @@
 pkgbase = vim-fish-git
 	pkgdesc = VIM runtime files for FISH stuff
-	pkgver = 20200322.8b20c17
+	pkgver = 20201118.ca0001d
 	pkgrel = 1
 	url = https://github.com/blankname/vim-fish
 	arch = any

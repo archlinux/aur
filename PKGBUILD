@@ -2,7 +2,7 @@
 
 _pkgname=vim-fish
 pkgname=${_pkgname}-git
-pkgver=20200322.8b20c17
+pkgver=20201118.ca0001d
 pkgrel=1
 pkgdesc='VIM runtime files for FISH stuff'
 url='https://github.com/blankname/vim-fish'
