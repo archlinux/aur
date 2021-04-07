@@ -1,8 +1,8 @@
 # Maintainer: Andres Rodriguez <andresx7@gmail.com>
 
 pkgname=gpu-trace
-pkgver=v2.2
-pkgrel=2
+pkgver=v2.3
+pkgrel=1
 pkgdesc="GPU Trace capture tool"
 arch=('x86_64')
 url="https://github.com/lostgoat/gpu-trace"
