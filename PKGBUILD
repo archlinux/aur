@@ -9,6 +9,7 @@ source=("mzd.deb::https://github.com/Trevelopment/MZD-AIO/releases/download/v$pk
 license=('GLP')
 url='https://mazdatweaks.com/'
 makedepends=('curl')
+md5sums=("SKIP")
 
 pkgver(){
     curl -sLI deb.mazdatweaks.win | grep -Po '(?<=linux_).+(?=\.deb)' | sed -n 1p
