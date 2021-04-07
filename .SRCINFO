@@ -1,0 +1,27 @@
+pkgbase = ros-noetic-mbf-msgs
+	pkgdesc = ROS - Provides action definition files for GetPath, ExePath, Recovery and MoveBase.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://wiki.ros.org/mbf_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-nav-msgs
+	makedepends = ros-noetic-message-runtime
+	makedepends = ros-noetic-genmsg
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-actionlib-msgs
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-actionlib-msgs
+	source = ros-noetic-mbf-msgs-0.3.4.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/noetic/mbf_msgs/0.3.4.tar.gz
+	sha256sums = a97ef5748d93f9916ec8aa5884123d3c3c51a4fcdf255ec1efb15eaa92c00558
+
+pkgname = ros-noetic-mbf-msgs
+
