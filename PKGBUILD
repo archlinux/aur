@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.19.r407.ge66ed26769
+pkgver=0.19.r421.gfafff351aa
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -61,6 +61,7 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
+  git revert --no-edit 663ac994a794606e56d086cac85598517bd323dc
   #git checkout 927fdc9edc
 }
 
