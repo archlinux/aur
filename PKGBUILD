@@ -5,8 +5,8 @@
 pkgname=openxray
 _tag=822
 pkgver=1.6.02_$_tag
-pkgrel=1 
-pkgdesc="Unofficial X-Ray Engine port for Linux from the OpenXRay team stable version (originally developed by GSC Game World)"                                          
+pkgrel=2 
+pkgdesc="Unofficial X-Ray Engine port for Linux from the OpenXRay team, stable version (originally developed by GSC Game World)"                                          
 arch=('x86_64') 
 url="https://github.com/OpenXRay/xray-16"
 license=('custom:Custom 3-сlause BSD')
@@ -31,13 +31,14 @@ build() {
    cmake .. -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
-#    DMEMORY_ALLOCATOR=standard
+#    -DMEMORY_ALLOCATOR=standard
    make
 }
 
 package() {
     cd "$srcdir/xray-16/bin"
     make DESTDIR="${pkgdir}/" install
+    rm -rf "${pkgdir}/usr/lib/mimalloc-1.6"
     mkdir -p "${pkgdir}/usr/share/licenses/$pkgname/"
     cp "$srcdir/xray-16/License.txt" "${pkgdir}/usr/share/licenses/$pkgname/"
 }
