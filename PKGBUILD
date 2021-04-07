@@ -2,7 +2,7 @@
 
 pkgname=minecraft-bedrock-server
 pkgver=1.16.220.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Bedrock Server for Windows 10 and Xbox One versions of Minecraft"
 arch=('x86_64')
 url="https://www.minecraft.net/en-us/download/server/bedrock"
@@ -28,6 +28,8 @@ build() {
 package() {
 	install -d "$pkgdir"/opt/minecraft-bedrock-server
 	cp -r -fHip "$srcdir"/tmp/* "$pkgdir"/opt/minecraft-bedrock-server
+	chmod 755 "$pkgdir"/opt/minecraft-bedrock-server/bedrock_server
+	chmod 755 "$pkgdir"/opt/minecraft-bedrock-server/libCrypto.so
 	install -Dm 644 minecraft-bedrock-server.service -t "$pkgdir"/usr/lib/systemd/system/
 	install -Dm 644 minecraft-bedrock-server.sysusers "$pkgdir"/usr/lib/sysusers.d/minecraft-bedrock-server.conf
 	install -Dm 644 minecraft-bedrock-server.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/minecraft-bedrock-server.conf
