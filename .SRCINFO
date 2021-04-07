@@ -23,6 +23,7 @@ pkgbase = obs-time-warp-scan
 	makedepends = curl
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
+	makedepends = git
 	depends = obs-studio
 	source = obs-time-warp-scan-0.1.5::git+https://github.com/exeldro/obs-time-warp-scan#commit=68e53869d26538c2a1ac3267dd96d2fea982a526
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
