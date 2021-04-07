@@ -1,8 +1,9 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
+_pkgname=python-btrfs
 pkgname=python-btrfs-git
-pkgver=11.r19.gbe20b2f
+pkgver=12.r3.ga4f7697
 pkgrel=1
 pkgdesc="Python Btrfs module"
 arch=('any')
@@ -28,4 +29,8 @@ build() {
 package() {
     cd python-btrfs
     python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+    install -Dm755 bin/btrfs-* -t "$pkgdir/usr/bin"
+    install -Dm644 man/*.1 -t "$pkgdir/usr/share/man/man1"
+    install -Dm644 examples/*.py -t "$pkgdir/usr/share/doc/$_pkgname/examples"
+    # docs?
 }

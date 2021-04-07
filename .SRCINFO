@@ -1,6 +1,6 @@
 pkgbase = python-btrfs-git
 	pkgdesc = Python Btrfs module
-	pkgver = 11.r19.gbe20b2f
+	pkgver = 12.r3.ga4f7697
 	pkgrel = 1
 	url = https://github.com/knorrie/python-btrfs
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = python-btrfs-git
 	sha256sums = SKIP
 
 pkgname = python-btrfs-git
-
