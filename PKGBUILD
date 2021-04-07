@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python310
-pkgver=3.10.0a5
+pkgver=3.10.0a7
 pkgrel=1
 _pyver=3.10.0
 _pybasever=3.10
@@ -16,7 +16,7 @@ makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('0418e57e7036e219f1e6b6303b21e711f64cfd0fddb0894d8f19f37afffc5d4d')
+sha256sums=('513199724498513e7098c46bf6442192f5ffef32478d92499704aeeff3516db2')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
