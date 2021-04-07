@@ -3,7 +3,7 @@
 pkgname=pvr-tex-tool-bin
 pkgver=2020.2
 _versionstr='2020_R2'
-pkgrel=4
+pkgrel=5
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
 url="https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/"
@@ -21,7 +21,7 @@ sha256sums=('5f6bea49943e52d2f59541efca0bce8c1f841f9a5baf1a193c94cd0e1fcb4a31'
             '993d3b02d822ad2b87feae194740d1eda4293375d8e82c9455cc5ec5dcdb1444')
 
 # discovered with namcap(1)
-depends=(qt5-base libxcursor dbus-x11 libxrandr freetype2 hicolor-icon-theme)
+depends=(qt5-base libxcursor dbus libxrandr freetype2 hicolor-icon-theme)
 
 package() {
 _srcname=PVRTexTool
