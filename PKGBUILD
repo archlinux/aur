@@ -1,3 +1,5 @@
+# vim: et ts=4 sw=4:
+
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
