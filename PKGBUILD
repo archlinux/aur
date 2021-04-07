@@ -2,8 +2,8 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname='spambayes'
-pkgver='1.1b3.20210130'
-_commit='987bb198bc3382da4e5fe0b4118fbba4558aea1d'
+pkgver='1.1b3.20210405'
+_commit='c125c99668999a47ae4720c990a5a4542d1f8fc9'
 pkgrel='1'
 pkgdesc='Bayesian anti-spam classifier written in Python'
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-paths_fix.patch::$_debianpatchprefix/f68f1f6df897af5d2f0ea36db34a0ff59f152f4f/debian/patches/paths_fix.patch"
 	"$pkgname-$pkgver-$pkgrel-fix-imports-from-sb_server.patch::$_debianpatchprefix/da6655f931a97ae7da0be27a2754501b18a18d54/debian/patches/fix-imports-from-sb_server.patch"
 )
-sha256sums=('1e943325ff501eb3ce69584378586b6f640e54e7377f2befcaa4239838450c3b'
+sha256sums=('84a6d6775ae8136b9c3294d3601625816efe9fa299076c82068b315b039b567d'
             '3c1d336c3ae4392efa5cfdf24a336e8f3d10d98b8aa543007cb71412fae8ae1a'
             '153f92409bc880fc6e7def4cf7ace494b871c06c08b6130f17de66d500736619'
             'f6754159cfd0c2e2807f8075334ee94069d937375a32ab1711de16efa0e8a37b'
