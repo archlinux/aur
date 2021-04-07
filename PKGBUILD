@@ -12,7 +12,7 @@ depends=("obs-studio")
 makedepends=(
   'cmake' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python'
   'luajit' 'ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
-  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
+  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache' 'git'
 )
 source=(
   "$pkgname-$pkgver::git+https://github.com/exeldro/obs-dynamic-delay#commit=891d415726aa3c332a69b310bc7f1abc626f651f"
