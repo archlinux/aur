@@ -71,7 +71,7 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-uksm
-pkgver=5.11.11
+pkgver=5.11.12
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -88,7 +88,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/Xanmod-UKSM/releases/download/Fix/patch-5.11.11-xanmod1"
+        "https://github.com/HougeLangley/Xanmod-UKSM/releases/download/Fix/patch-5.11.12-xanmod1"
         choose-gcc-optimization.sh
         'sphinx-workaround.patch'
         '0002-UKSM.patch')
