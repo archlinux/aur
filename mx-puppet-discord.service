@@ -1,6 +1,7 @@
 [Unit]
 Description=Matrix-Discord puppeting bridge
 After=network-online.target
+After=synapse.service
 
 [Service]
 ExecStart=node /usr/lib/node_modules/mx-puppet-discord/build/index.js -c /etc/mx-puppet-discord/config.yaml -f /etc/mx-puppet-discord/registration.yaml
@@ -14,7 +15,7 @@ PrivateTmp=true
 ProtectClock=yes
 ProtectControlGroups=yes
 ProtectHome=no
-ProtectHostname=no
+ProtectHostname=yes
 ProtectSystem=full
 ProtectKernelLogs=yes
 ProtectKernelModules=yes

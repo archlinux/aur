@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
 pkgver=r248.c17384a
-pkgrel=2
+pkgrel=3
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -11,9 +11,9 @@ license=('apache')
 depends=('nodejs' 'cairo' 'pango' 'libjpeg-turbo')
 source=("git+${url}" "${_basename}.tmpfiles" "${_basename}.sysusers" "${_basename}.service")
 sha256sums=('SKIP'
-            '6f66f51e85e9a222dc855a14fad8414e279f76cc7032b19f7821622bc72632cc'
+            '09818d8feac935e3e01ee362c3d9ec2560edf8a06bdf836eeac00271be520b6d'
             '34f11759a1202f9e4448dd493b2aad253bf2c7f233f70fcf95c33f5a2ab19984'
-            'a5e258d99a900361e442dc4cedba35b521cbb8dd22ecd1f491a3b853a002b8b4')
+            '81c81f60a3db42f840e70d1ca55a84e2655227a0b0f5ff99b6beff582a9e6964')
 backup=("etc/${_basename}/config.yaml")
 install="${_basename}.install"
 makedepends+=('git' 'npm')
