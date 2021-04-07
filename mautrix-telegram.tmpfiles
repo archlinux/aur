@@ -1,1 +1,2 @@
 z /etc/mautrix-telegram/* 640 mautrix-telegram mautrix-telegram
+d /var/lib/mautrix-telegram/ 600 mautrix-telegram mautrix-telegram
