@@ -2,7 +2,7 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.23
+pkgver=7.2.24
 pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
@@ -10,7 +10,7 @@ depends=('lua53' 'qt5-base' 'qt5-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon
 arch=('i686' 'x86_64')
 license=("GPL")
 conflicts=('ipe')
-source=("http://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgver-src.tar.gz"
+source=("https://github.com/otfried/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz"
         "ipe.bash-completion"
         "config.patch"
         "ipe.desktop"
@@ -64,7 +64,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
-md5sums=('e943aee5b751e96cf63be2eb5cdf754d'
+md5sums=('79a9e7d1fc0cca08e250c3043333fe18'
          '694f0d5402655901be385647e5d8d6e3'
          'd4e289bce01302a8b76a0df294c7de40'
          '19fd2cac2564125afa0149105d00d3dd')
