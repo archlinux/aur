@@ -1,0 +1,18 @@
+pkgbase = muviz
+	pkgdesc = Music visualizer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xyproto/muviz
+	arch = x86_64
+	license = MIT
+	license = GPL3
+	makedepends = cxx
+	makedepends = git
+	depends = ffts
+	depends = glfw
+	depends = rapidjson
+	source = git+https://github.com/xyproto/muviz#commit=1b1353eab495b4181505a3e773e5aa58998660ee
+	b2sums = SKIP
+
+pkgname = muviz
+
