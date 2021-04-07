@@ -1,4 +1,5 @@
 pkg/
 src/
+lesana/
 *.pkg.tar.*
 *.tar.gz
