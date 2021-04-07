@@ -1,7 +1,7 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 pkgname=candle-git
 pkgver=v1.1.r97.8fd07bf
-pkgrel=1
+pkgrel=2
 pkgdesc="GRBL controller application with G-Code visualizer written in Qt - development version"
 arch=(x86_64 aarch64)
 url="https://github.com/Denvi/Candle"
@@ -10,7 +10,7 @@ groups=()
 depends=('qt5-serialport' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "${pkgname}-bin")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 replaces=()
 backup=()
 options=()
