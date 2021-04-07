@@ -1,7 +1,7 @@
 pkgbase = icon-explorer
 	pkgdesc = A small utility to examine app icons for installed icon themes.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/JollyDevelopment/icon-explorer
 	arch = x86_64
 	license = GPL
