@@ -3,20 +3,20 @@
 
 pkgname=libsavitar-git
 _pkgname=libSavitar
-pkgver=3.4.1.r0.g62dd545
+pkgver=4.9.beta.r0.gfe88675
 pkgrel=1
 pkgdesc="c++ implementation of 3mf loading with SIP python bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/Ultimaker/$_pkgname"
 license=('LGPL')
 depends=('python' 'pugixml')
-makedepends=('cmake' 'python-sip' 'sip' 'git')
+makedepends=('cmake' 'python-sip4' 'sip4' 'git')
 provides=('libsavitar')
 conflicts=('libsavitar')
 source=("git+https://github.com/Ultimaker/$_pkgname.git"
-        "https://github.com/Ultimaker/libSavitar/pull/8/commits/91aa70c6320461ae65600dce954b5ffb905b7039.patch")
+        "0001-Do-not-vendor-the-pugixml-library.patch")
 md5sums=('SKIP'
-         '8cb2ef4a8ff551114ac8520c6be42ec6')
+         '1d0e2c14874414202eba249d956ada56')
 
 pkgver() {
   cd "${_pkgname}"
@@ -31,7 +31,7 @@ prepare() {
   # don't install a second system pugixml; WONTFIX upstream due to:
   # "It's been decided that an external dependency makes setting up your
   # development environment for Cura needlessly difficult."
-  patch -Np1 -i "$srcdir"/91aa70c6320461ae65600dce954b5ffb905b7039.patch
+  patch -Np1 -i "$srcdir"/0001-Do-not-vendor-the-pugixml-library.patch
 }
 
 build() {
