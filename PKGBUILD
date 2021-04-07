@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=211.6693.78
+pkgver=211.6693.118
 _pkgname=RubyMine
 _pkgver=2021.1
 pkgrel=1
@@ -12,13 +12,11 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk-update-icon-cache')
 optdepends=('ruby: Ruby run/debug support')
 install=rubymine.install
-source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
-        rubymine-eap.sh
+source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('e60389ebf26019dd6658f658284e654c929d3ad7d96565cfc98c4fa03c7f7ad4'
-            '58d6286630f34e28e9938bbbd7cc7e208e78ba5e368c0eba63a52e3a3e7d1ca7'
-            '188794662d469fc9704cd819803a21a8b10a8ad73341196880f5a67db011859a'
+sha256sums=('fbd45750ea3ebd2f28b9c00ee247691884a6d877d65d33485fbcf0d04359b38a'
+            '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
@@ -49,12 +47,11 @@ package() {
     # Pre-packaged program files
     cp --recursive "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/opt/${pkgname}"
 
-    # Install binary
-    install -Dm 755 "rubymine-eap.sh" "${pkgdir}/usr/bin/${pkgname}"
-
     # Desktop file
     install -Dm644 "${pkgdir}/opt/${pkgname}/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
+    install -d -m 755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     # License
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
