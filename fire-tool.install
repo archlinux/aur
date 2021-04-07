@@ -1,0 +1,8 @@
+post_install() {
+	sudo mv /opt/fireTools/fireTools.desktop /usr/share/applications
+	chmod +x /usr/share/applications/fireTools.desktop
+}
+
+post_upgrade() {
+	post_install
+}
