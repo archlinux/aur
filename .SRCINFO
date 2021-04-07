@@ -23,6 +23,7 @@ pkgbase = obs-transition-table
 	makedepends = curl
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
+	makedepends = git
 	depends = obs-studio
 	source = obs-transition-table-0.1.5::git+https://github.com/exeldro/obs-transition-table#commit=6c235f2d2ef46d54c1067492c2ec874ff2d5f54e
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
