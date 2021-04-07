@@ -7,7 +7,7 @@ pkgrel=1
 url="https://github.com/RITlug/teleirc"
 pkgdesc='Go implementation of a Telegram <=> IRC bridge for use with any IRC channel and Telegram group.'
 arch=(x86_64)
-license=("GPL-3")
+license=("GPL3")
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64")
