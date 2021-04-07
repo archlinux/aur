@@ -1,8 +1,7 @@
 # Maintainer: ghostbuster <aur@sieverdingbeck.com>
 _pkgname=Nagstamon
-_pkgver='3.5-20201222'
 pkgname=nagstamon-beta
-pkgver='3.5.0.20201222'
+pkgver='3.6.0'
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil')
@@ -12,17 +11,17 @@ license=('GPL')
 conflicts=('nagstamon')
 provides=('nagstamon')
 source=(
-        "https://nagstamon.ifw-dresden.de/files/testing/$_pkgname-$_pkgver.tar.gz"
+        "https://github.com/HenriWahl/Nagstamon/archive/refs/tags/latest.tar.gz"
 )
 md5sums=(
-        'f1120842a04a5b051eda135f54a2e898'
+        '0b2984f0fbe03e2ef8f5204e3add9a5d'
 )
 sha256sums=(
-        '825436bd063160784e9f59b113502816c1c6467f61231b0cf582ad930a52e59a'
+        'c64a7cff89fed67af3ca845c666b75ce191373da1644e40beb6e55924e645bb5'
 )
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-latest"
   # setup.py imports AppInfo from Nagstamon.Config which leads to a import of keyring
   # importing keyring fails in a fakeroot environment, which seems to be somehow related to a the keyring connection init triggered by the import
   # to avoid the issue setup.py is rewritten here to resolve the need for the AppInfo import
