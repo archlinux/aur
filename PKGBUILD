@@ -3,7 +3,7 @@
 pkgname=pvr-tex-tool-bin
 pkgver=2020.2
 _versionstr='2020_R2'
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
 url="https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/"
@@ -18,8 +18,8 @@ source=("install.run::https://cdn.imgtec.com/sdk/OFFLINE/PVRTexToolSetup-${_vers
 sha256sums=('5f6bea49943e52d2f59541efca0bce8c1f841f9a5baf1a193c94cd0e1fcb4a31'
 '251a7012447f80a9cc1459028e12fb09794a5d003482e0d7dd3580a52ab5c686')
 
-# TODO: Figure out dependencies...
-# depends=()
+# discovered with namcap(1)
+depends=(qt5-base libxcursor dbus-x11 libxrandr freetype2)
 
 package() {
 _srcname=PVRTexTool
@@ -33,7 +33,7 @@ install -Dm644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.htm
 
 # Install documentation
 mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-cp -r ${srcdir}/${_srcname}/* "${pkgdir}/usr/share/doc/${pkgname}"
+cp -r ${srcdir}/${_srcname}/Documentation/* "${pkgdir}/usr/share/doc/${pkgname}"
 
 # Install library
 mkdir -p "${pkgdir}/usr/include"
@@ -48,9 +48,9 @@ install -D "${srcdir}/${_srcname}/CLI/Linux_x86_64/PVRTexToolCLI" "${pkgdir}/usr
 # Install GUI application
 mkdir -p "${pkgdir}/usr/share/${pkgname}"
 cp -r ${srcdir}/${_srcname}/GUI/Linux_x86_64/* "${pkgdir}/usr/share/${pkgname}"
-ln -s "${pkgdir}/usr/share/${pkgname}/PVRTexToolGUI" "${pkgdir}/usr/bin/pvr-tex-tool-gui"
+ln -s "/usr/share/${pkgname}/PVRTexToolGUI" "${pkgdir}/usr/bin/pvr-tex-tool-gui"
 
 # Delete .run file (only pacman should be allowed to perform updates)
-rm "${srcdir}/${_srcname}/GUI/Linux_x86_64/autoupdate-linux-x64.run"
+rm "${pkgdir}/usr/share/${pkgname}/autoupdate-linux-x64.run"
 
 }

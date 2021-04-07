@@ -1,10 +1,15 @@
 pkgbase = pvr-tex-tool-bin
 	pkgdesc = A comprehensive texture processing and compression tool with support for PVR textures.
 	pkgver = 2020.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/
 	arch = x86_64
 	license = custom
+	depends = qt5-base
+	depends = libxcursor
+	depends = dbus-x11
+	depends = libxrandr
+	depends = freetype2
 	options = !strip
 	source = install.run::https://cdn.imgtec.com/sdk/OFFLINE/PVRTexToolSetup-2020_R2.run-x64
 	source = LICENSE.html::https://www.imaginationtech.com/developers/powervr-sdk-tools/powervr-sdk-software-eula/
