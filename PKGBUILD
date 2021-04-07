@@ -2,12 +2,12 @@
 
 pkgname=mctlauncher
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft TLauncher Client for the AUR <visit tlauncher.org>"
 arch=("any")
 url="https://www.tlauncher.org"
 license=("GPL")
-depends=("jdk-openjdk" "java-runtime>=8" "unzip")
+depends=("jdk-openjdk" "java-runtime>=8" "unzip" "java-openjfx") 
 makedepends=("imagemagick")
 
 # Change this if there's a 404 return

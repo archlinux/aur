@@ -1,7 +1,7 @@
 pkgbase = mctlauncher
 	pkgdesc = Minecraft TLauncher Client for the AUR <visit tlauncher.org>
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.tlauncher.org
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = mctlauncher
 	depends = jdk-openjdk
 	depends = java-runtime>=8
 	depends = unzip
+	depends = java-openjfx
 	noextract = jar
 	source = https://tlauncher.org/jar
 	source = mctlauncher.desktop
