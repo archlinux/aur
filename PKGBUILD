@@ -2,7 +2,7 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 
 pkgname=mame-tools-bin
-pkgver=0.228
+pkgver=0.230
 pkgrel=1
 pkgdesc="Tools for MAME / MESS: Castool, CHDman (Compressed Hunks of Data - CHD manager), floptool, jedutil, ldresample, romcmp ..."
 arch=('x86_64')
