@@ -1,8 +1,8 @@
 # Maintainer: Len Chan <lenchan139@tto.moe>
 pkgname=brother-color-label-printer
 pkgver=0.2
-pkgbuild=1
-pkgrel=1
+pkgbuild=2
+pkgrel=2
 pkgdesc="A Linux color labeling printing command tool for Brother VC-500W color label printer"
 arch=('any')
 url="https://m7i.org/projects/labelprinter-linux-python-for-vc-500w/"
