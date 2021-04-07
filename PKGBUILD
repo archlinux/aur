@@ -1,8 +1,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=intellij-idea-ce
 _pkgname=idea-IC
-_buildver=203.7717.56
-pkgver=2020.3.3
+_buildver=211.6693.111
+pkgver=2021.1
 pkgrel=1
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache2')
 depends=('giflib' 'libxtst')
 source=("https://download.jetbrains.com/idea/ideaIC-${pkgver}.tar.gz"
         "intellij-idea-ce.desktop")
-sha256sums=('60cabbab7e7f427c2b91e29f5c135ab99a043cc8e3dca835f1aa298031a24ed7'
+sha256sums=('7a6b58967f655473e815e54a4840bc6ed7a61d76f16650ba7702bef6731af5b4'
             'b38188c0533db6861cf5193deebd58731ad93647ae3c03b3fae6f7748b4ff849')
 
 package() {
