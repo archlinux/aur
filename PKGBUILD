@@ -1,7 +1,7 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=amgx
-pkgver=2.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Distributed multigrid linear solver library on GPU"
 arch=("x86_64")
 url="https://github.com/NVIDIA/AMGX"
@@ -11,19 +11,19 @@ makedepends=('cmake')
 provides=('amgx')
 conflicts=('amgx-git')
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/AMGX/tarball/be168bf"
+    "$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/AMGX/archive/refs/tags/v${pkgver}.tar.gz"
     "amgx.sh"
     "amgx.conf"
 )
 sha256sums=(
-    "SKIP"
+    "dac78516bb528135cad903399fe0093aa0904e304565ef2d3da4fae05eda7928"
     "0d8b9c1ecdf6d76f791dc5a1f2a9a2989ce26cc2c5f4232446d7f6f8e6e8bee9"
     "7a1ee0bf5d5610a8e643720e579d8659e362a77ac763a7570ee22a2e56c05cbd"
 )
 
 prepare() {
     # fix the folder name
-    mv "NVIDIA-AMGX-be168bf" "$pkgname-$pkgver"
+    mv "AMGX-${pkgver}" "$pkgname-$pkgver"
 }
 
 build() {
@@ -71,7 +71,7 @@ package() {
     # install amgx.conf to /etc/ld.so.conf.d/amgx.conf
     install -Dm644 "$srcdir/amgx.conf" "$pkgdir/etc/ld.so.conf.d/amgx.conf"
 
-    # not sure wheich path to install LICENSE, so use a simlink
+    # not sure which path to install LICENSE, so use a simlink
     install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/opt/$pkgname/LICENSE"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
