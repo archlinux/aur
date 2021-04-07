@@ -8,3 +8,5 @@ Terminal=false
 StartupNotify=true
 Type=Application
 Categories=Network;Chat;InstantMessaging;Application;
+StartupWMClass=facebookmessenger-nativefier-7ab88e
+

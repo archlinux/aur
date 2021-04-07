@@ -1,26 +1,26 @@
-# Maintainer: Antoine Viallon <antoine.viallon@gmail.com>
+# Maintainer: Antoine Viallon <antoine@lesviallon.fr>
 
 pkgname=messenger-nativefier
 pkgdesc="Facebook Messenger built into a desktop app using electron nativefier."
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'armv7h' 'pentium4')
 url="https://messenger.com/"
 license=('custom')
 depends=('gtk3' 'libxss' 'nss')
 makedepends=('imagemagick' 'nodejs-nativefier' 'unzip')
 source=("${pkgname}.desktop")
-md5sums=('a0b09923587aa0ea868d912fffe5698c')
+md5sums=('fdbed13b4e0a24f7a92834b6211d56e0')
 
 build() {
     cd $srcdir
-#    rm -Rf *
 
     nativefier \
         -p linux \
         --name "Facebook Messenger" \
         --verbose \
         --single-instance \
+		--internal-urls www.messenger.com \
         --tray \
         https://messenger.com/
 }

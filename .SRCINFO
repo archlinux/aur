@@ -1,7 +1,7 @@
 pkgbase = messenger-nativefier
 	pkgdesc = Facebook Messenger built into a desktop app using electron nativefier.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://messenger.com/
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = messenger-nativefier
 	depends = libxss
 	depends = nss
 	source = messenger-nativefier.desktop
-	md5sums = a0b09923587aa0ea868d912fffe5698c
+	md5sums = fdbed13b4e0a24f7a92834b6211d56e0
 
 pkgname = messenger-nativefier
 
