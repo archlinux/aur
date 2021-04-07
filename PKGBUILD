@@ -3,21 +3,21 @@
 pkgname=pvr-tex-tool-bin
 pkgver=2020.2
 _versionstr='2020_R2'
-pkgrel=5
+pkgrel=6
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
 url="https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/"
 
 arch=('x86_64')
 options=('!strip')
-license=('custom')
+license=('MIT')
 
 source=("install.run::https://cdn.imgtec.com/sdk/OFFLINE/PVRTexToolSetup-${_versionstr}.run-x64"
-"LICENSE.html::https://www.imaginationtech.com/developers/powervr-sdk-tools/powervr-sdk-software-eula/"
+"LICENSE"
 "PVRTexTool.desktop")
 
 sha256sums=('5f6bea49943e52d2f59541efca0bce8c1f841f9a5baf1a193c94cd0e1fcb4a31'
-            '251a7012447f80a9cc1459028e12fb09794a5d003482e0d7dd3580a52ab5c686'
+            '73479399ac54ac4675d6db8f1387bcc0092896d503803ec573cf0560280dc707'
             '993d3b02d822ad2b87feae194740d1eda4293375d8e82c9455cc5ec5dcdb1444')
 
 # discovered with namcap(1)
@@ -31,7 +31,7 @@ chmod +x "${srcdir}/install.run"
 "${srcdir}/install.run" --prefix "${srcdir}" --mode unattended
 
 # Install license
-install -Dm644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 # Install documentation
 mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
