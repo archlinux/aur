@@ -1,6 +1,0 @@
-post_install() {
-
-  echo "To play MIDI music, along with fluidsynth, you will need to install a soundfont and set SDL_SOUNDFONTS=/path/to/soundfont"
-  echo "For example, with soundfont-fluid: SDL_SOUNDFONTS=/usr/share/soundfonts/FluidR3_GM.sf2 simutrans"
-  echo "Check the wiki to get more info about fluidsynth https://wiki.archlinux.org/index.php/FluidSynth"
-}
