@@ -84,7 +84,7 @@ _makenconfig=y
 
 pkgbase=linux-manjaro-xanmod-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.11
+pkgver=5.11.12
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -93,7 +93,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="0b6bb610e35c89af8a20e9e267bc09c942827501" # 5.11.11-1
+__commit="f7cef34101b9878fbb2783a374d94e7351d95642" # 5.11.12-1
 
 license=(GPL2)
 makedepends=(
@@ -105,7 +105,7 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/Xanmod-UKSM/releases/download/Fix/patch-5.11.11-xanmod1"
+        "https://github.com/HougeLangley/Xanmod-UKSM/releases/download/Fix/patch-5.11.12-xanmod1"
         choose-gcc-optimization.sh
         "https://gitlab.manjaro.org/packages/core/linux511/-/archive/${__commit}/linux511-${__commit}.tar.gz"
         '0002-UKSM.patch')
