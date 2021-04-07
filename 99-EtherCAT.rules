@@ -1,0 +1,1 @@
+KERNEL=="EtherCAT[0-9]*", GROUP="ethercat", MODE="0660"

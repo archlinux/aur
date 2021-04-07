@@ -1,0 +1,21 @@
+pkgbase = etherlab-ethercat
+	pkgver = 1.5.r151
+	pkgrel = 1
+	url = https://etherlab.org/en/ethercat/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	source = https://gitlab.com/etherlab.org/ethercat/-/archive/f5d64bbab7548736de98b4865290c6f73b768527/ethercat-f5d64bbab7548736de98b4865290c6f73b768527.tar.bz2
+	source = 99-EtherCAT.rules
+	md5sums = 956d015930aaeff87bcfe80e934ad455
+	md5sums = bd1c6d039d8fd947a727c8db0548cee9
+
+pkgname = etherlab-ethercat
+	pkgdesc = Kernel modules for IgH EtherCAT(R) Master component
+	install = etherlab-ethercat.install
+	depends = etherlab-ethercat-tools
+
+pkgname = etherlab-ethercat-tools
+	pkgdesc = Tools for IgH EtherCAT(R) Master component
+
