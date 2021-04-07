@@ -1,4 +1,4 @@
-# Maintainer: JP-Ellis <josh@jpellis.me>
+# Maintainer: ReneganRonin <renegan.ronin@gmail.com>
 
 pkgname=madgraph-pythia8-interface
 pkgver=1.0
@@ -15,16 +15,16 @@ depends=(
 )
 source=(
     "http://madgraph.phys.ucl.ac.be/Downloads/MG5aMC_PY8_interface/MG5aMC_PY8_interface_V${pkgver}.tar.gz"
-    "python2.patch"
+    "compile.patch"
     "pythia.patch"
 )
-sha256sums=('dd1a96f598176c3eb5f91bc189eaac1405afebf23f7fcfd055135d788dc69e3d'
-            '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64'
-            'e506dad2224ed639a83537b21eadeda0ee244e9b5d5ee2770e536564f1e41491')
+sha256sums=('7c4aecc1e933d24629ec2723ca3d65a3619e12a9e1f9f9bc6cda6e462f4de478'
+            '03d4ee5104689c5ef4092bc07f834d6829b734e3d0ee1d613b1ad0048860534f'
+            '5ff65a3a48b403410b135f18a7edb9e48b352fd531f33bc5cf6b09522217e0b2')
 
 prepare() {
-    msg2 "Fixing python references for python2"
-    patch -p 1 < python2.patch
+    msg2 "Fixing compile.py"
+    patch -p 1 < compile.patch
 
     msg2 "Fixing Pythia location"
     patch -p 1 < pythia.patch
