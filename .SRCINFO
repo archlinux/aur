@@ -1,0 +1,12 @@
+pkgbase = ttf-mdi
+	pkgdesc = Material Design Icons Webfont
+	pkgver = r1.34bdb81
+	pkgrel = 1
+	url = https://materialdesignicons.com
+	arch = any
+	license = Apache
+	makedepends = git
+	options = !strip
+
+pkgname = ttf-mdi
+
