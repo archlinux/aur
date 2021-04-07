@@ -3,7 +3,7 @@
 
 _realname=lunela-master
 pkgname=lunela
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Print ephemeris of the moon in a terminal"
 arch=('any')

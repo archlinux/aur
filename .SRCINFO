@@ -1,13 +1,13 @@
 pkgbase = lunela
 	pkgdesc = Print ephemeris of the moon in a terminal
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://gitlab.com/brunoy/lunela.git
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python>=3.6
-	source = lunela-1.0.tar.gz::https://gitlab.com/brunoy/lunela/-/archive/master/lunela-master.tar.gz
+	source = lunela-1.1.tar.gz::https://gitlab.com/brunoy/lunela/-/archive/master/lunela-master.tar.gz
 	md5sums = SKIP
 
 pkgname = lunela
