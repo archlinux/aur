@@ -35,6 +35,6 @@ package() {
  echo -en '#!/bin/sh \n PYTHONPATH=/home/len/labelprinter/ python3 -m labelprinter "$@"' >  "${pkgdir}/opt/${pkgname}/labelprinter.sh"
  chmod a+rw "${pkgdir}/opt/${pkgname}/labelprinter.sh"
  chmod +x "${pkgdir}/opt/${pkgname}/labelprinter.sh"
-  ln -s "$/opt/${pkgname}/labelprinter.sh" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/labelprinter.sh" "${pkgdir}/usr/bin/${pkgname}"
   ln -s "/opt/${pkgname}/labelprinter.sh" "${pkgdir}/usr/bin/bclprinter"
 }
