@@ -1,17 +1,17 @@
-# Maintainer: Devin Christensen <quixoten at gmail dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Devin Christensen <quixoten at gmail dot com>
 pkgname=ttf-ubuntu-mono-derivative-powerline-git
-pkgver=r100.a44abd0
-pkgrel=2
+pkgver=r202.e80e3eb
+pkgrel=1
 pkgdesc="Ubuntu Mono derivative Powerline"
 arch=('any')
 url='https://github.com/powerline/fonts'
 license=('custom:Ubuntu Font License, Version 1.0')
-depends=(fontconfig xorg-font-utils )
+depends=(fontconfig)
 makedepends=('git')
 conflicts=(powerline-fonts powerline-fonts-git)
-install=$pkgname.install
 source=('git+https://github.com/powerline/fonts.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd fonts
