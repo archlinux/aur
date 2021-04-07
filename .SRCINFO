@@ -1,0 +1,34 @@
+pkgbase = slock-abh15h3k
+	pkgdesc = my build of suckless slock. with image patch
+	pkgver = 1.4.d3598d9
+	pkgrel = 1
+	url = https://github.com/Abh15h3k/slock
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = bzip2
+	depends = freetype2
+	depends = glib2
+	depends = glibc
+	depends = graphite
+	depends = harfbuzz
+	depends = imlib2
+	depends = libpng
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxcrypt
+	depends = libxdmcp
+	depends = libxext
+	depends = libxrandr
+	depends = libxrender
+	depends = pcre
+	depends = zlib
+	provides = slock
+	conflicts = slock
+	source = slock-abh15h3k::git+https://github.com/Abh15h3k/slock-abh15h3k
+	sha256sums = SKIP
+
+pkgname = slock-abh15h3k
+
