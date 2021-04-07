@@ -8,10 +8,9 @@
 _makenconfig=
 
 _enable_gcc_more_v="y"
-# Optionally select a sub architecture by number if building in a clean chroot
-# Leaving this entry blank will require user interaction during the build
-# which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 32.
+# Optionally select a sub architecture by number or leave blank which will
+# require user interaction during the build. Note that the generic (default)
+# option is 32.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -45,15 +44,16 @@ _enable_gcc_more_v="y"
 #  30. Intel Cooper Lake (MCOOPERLAKE)
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Native optimizations autodetected by GCC (MNATIVE)
+#  33. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
+#  34. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
 _subarch=33
 
-# Compile ONLY used modules to VASTLY reduce the number of modules built
-# and the build time.
+# Only compile active modules to VASTLY reduce the number of modules built and
+# the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
-# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD read the database kept if it exists
+# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD reads the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -73,14 +73,14 @@ _srcname=linux-${_major}
 _clr=${_major}.19-1032
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210309'
+_gcc_more_v='20210327'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -96,6 +96,12 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
+    # https://bbs.archlinux.org/viewtopic.php?id=265115
+
+    if [[ ! -f "$srcdir/patch-${pkgver}" ]]; then
+      xz -dc "$SRCDEST/patch-${pkgver}.xz" > "patch-${pkgver}"
+    fi
+
     cd ${_srcname}
 
     ### Add upstream patches
@@ -182,7 +188,7 @@ prepare() {
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         echo "Patching to enable GCC optimization for other uarchs..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-gcc-v10-and-kernel-5.8+.patch"
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
         fi
 
     ### Get kernel version
@@ -356,7 +362,7 @@ sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
             '9058a5ba820e8a6e76bf0f7e622484b919666447fc266e3ed9b2c3d0d747470e'
             'SKIP'
-            '8fa4ef2c3b392c410c3f74f9b4ab89683b7fca8cac70b96e2bf532a952e46d0b'
+            'ac0e44bd089eeb7f52d358e6899005599fff50972f090af9c8e6ee0097d01db6'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
             '261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865')
 
