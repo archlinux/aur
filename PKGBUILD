@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
@@ -27,7 +27,7 @@ source=("${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysu
 sha256sums=('e0fb30bf448f1bec6f27f73662c1dcddd36986367dcbe4f34509b23af67142a9'
             'a419168bff80e469f2f4e26279afae77d92e6ae86c2457696e1ca9fc6ba1cb12'
             'fce0a4f792e62d9440fe431fb6ab6c458139bcc801bc2b02bc1b3d8f2ff9fcbf'
-            'cb20a86b2605e84056228c571d6d6a0757877629dd2d25cf5da5bbdf736ce1ae')
+            '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
 backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/registration.yaml")
 install="${pkgname}.install"
 
