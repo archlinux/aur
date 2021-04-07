@@ -53,6 +53,6 @@ package() {
         cd "${srcdir}/${_pkgname}-${pkgver}/output/build-${_arch}"
         ${_arch}-strip --strip-unneeded src/*.dll
         ${_arch}-strip -g src/*.dll.a
-        make install DESTDIR=$pkgdir
+        make install DESTDIR="${pkgdir}"
     done
 }
