@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Candle
+GenericName=GRBL controller application with G-Code visualizer
+Icon=candle
+Exec=Candle
+Terminal=false
+Type=Application
+Categories=Graphics;Engineering;
+Keywords=3D;milling;routing;cnc;gcode;
+StartupNotify=false
