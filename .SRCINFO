@@ -1,16 +1,16 @@
 pkgbase = pyvnc
-	pkgdesc = a Python wrapper for VNC client operations.
+	pkgdesc = A Python wrapper for VNC client operations.
 	pkgver = 0.1
-	pkgrel = 1
-	url = http://d-austin.net/pyvnc/
+	pkgrel = 2
+	url = https://github.com/cair/pyVNC
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = python2
-	makedepends = python2-distribute
+	makedepends = python
+	makedepends = python-distribute
 	depends = libvncserver
-	source = http://d-austin.net/pyvnc/pyvnc-0.1.tar.gz
-	md5sums = 630884c678507bfa56808edccdfb2d27
+	source = https://github.com/cair/pyVNC/archive/04fb3c02dbfd0cd491f2e66a6527814b524831f0.tar.gz
+	sha256sums = a2c0366fd32b50a0d81205fce206d6b377d6e59765bb1ad3f8e66541d9f8f829
 
 pkgname = pyvnc
 
