@@ -2,8 +2,8 @@
 
 _pkgname=civetweb
 pkgname=mingw-w64-$_pkgname
-pkgver=1.12
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="Embedded C/C++ web server (mingw-w64)"
 arch=(any)
 url="https://github.com/civetweb/civetweb"
@@ -13,7 +13,7 @@ makedepends=(mingw-w64-cmake)
 optdepends=("mingw-w64-openssl: SSL support")
 options=(!strip staticlibs !buildflags)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/civetweb/civetweb/archive/v$pkgver.tar.gz")
-sha256sums=("8cab1e2ad8fb3e2e81fed0b2321a5afbd7269a644c44ed4c3607e0a212c6d9e1")
+sha256sums=('d02d7ab091c8b4edf21fc13a03c6db08a8a8b8605e35e0073251b9d88443c653')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
