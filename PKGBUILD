@@ -4,7 +4,7 @@
 pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
 pkgbase=autokey
 pkgver=0.95.10
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/autokey/autokey"
 license=('GPL3')
@@ -15,6 +15,13 @@ sha256sums=('e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d')
 build() {
 	cd "$pkgbase-$pkgver"
 	python setup.py build
+
+	# remove shebang from python libraries
+	for lib in $(find lib/autokey/ -name "*.py"); do
+		sed '/\/usr\/bin\/env/d' $lib > $lib.new &&
+		touch -r $lib $lib.new &&
+		mv $lib.new $lib
+	done
 }
 
 package_autokey-common() {

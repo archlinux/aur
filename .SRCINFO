@@ -1,6 +1,6 @@
 pkgbase = autokey
 	pkgver = 0.95.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/autokey/autokey
 	arch = i686
 	arch = x86_64
