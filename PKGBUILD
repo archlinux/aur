@@ -12,7 +12,7 @@ depends=("obs-studio")
 makedepends=(
   'cmake' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python'
   'luajit' 'ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
-  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
+  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache' 'git'
 )
 source=(
   "$pkgname-$pkgver::git+https://github.com/exeldro/obs-replay-source#commit=57f7acd94677803238bb43cf052257381dfa0b14"
