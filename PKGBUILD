@@ -2,8 +2,8 @@
 # Contributor: Daniel "dtubber" Wanner <daniel.wanner@tubber.xyz>
 
 pkgname="ryzenadj-git"
-pkgver=0.5.2.r2.g82afad3
-pkgrel=3
+pkgver=0.8.0.r0.g3347463
+pkgrel=1
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
 arch=("x86_64")
@@ -22,8 +22,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    mkdir build && cd build
-    cmake ..
+    mkdir build -p && cd build
+    cmake -DCMAKE_BUILD_TYPE=Release ..
     make
 }
 
