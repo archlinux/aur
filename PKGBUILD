@@ -3,11 +3,13 @@
 
 pkgname=fire-tool
 pkgver=1.0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Embedfire Tool support Serial communication, TCP/UDP communication, camera and PID debuggingVisit https://www.embedfire.com for more information."
 arch=('x86_64')
 url="https://www.embedfire.com"
 license=('MIT')
+depends=('qt5-serialport' 'qt5-networkauth' 'qt5-svg' 'qt5-xcb-private-headers')
+makedepends=()
 groups=('')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://cloud.embedfire.com/software/FireTools/fireTools.deb")
@@ -17,7 +19,24 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-    install -Dm644 "${pkgdir}/opt/fireTools/fireTools.desktop" "${pkgdir}/usr/share/applications/fireTools.desktop"
-	install -Dm755 "${pkgdir}/opt/fireTools/run.sh" "${pkgdir}/usr/bin/firetools"
+    install -dm755 "${pkgdir}/usr/share/applications/" \
+                   "${pkgdir}/usr/bin/"
+	install -Dm644 "${pkgdir}/opt/fireTools/icon/icon.png" "${pkgdir}/usr/share/pixmaps/firetools.png"
+	ln -sf "/opt/fireTools/bin/fireTools" "${pkgdir}/usr/bin/firetools"
+    cat > "${pkgdir}/usr/share/applications/firetools.desktop" << EOF
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/firetools
+Name=Multi-function debugging assistant
+Name[zh_CN]=多功能调试助手
+Icon=firetools.png
+Terminal=false
+Path=/opt/fireTools/bin
+StartupNotify=true
+EOF
+    rm -rf "${pkgdir}/opt/fireTools/lib"
+    rm -rf "${pkgdir}/opt/fireTools/icon"
+    rm -rf "${pkgdir}/opt/fireTools/fireTools.desktop"
+    rm -rf "${pkgdir}/opt/fireTools/run.sh"
 
 }

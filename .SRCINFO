@@ -1,11 +1,15 @@
 pkgbase = fire-tool
 	pkgdesc = Embedfire Tool support Serial communication, TCP/UDP communication, camera and PID debuggingVisit https://www.embedfire.com for more information.
 	pkgver = 1.0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.embedfire.com
 	arch = x86_64
 	groups = 
 	license = MIT
+	depends = qt5-serialport
+	depends = qt5-networkauth
+	depends = qt5-svg
+	depends = qt5-xcb-private-headers
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://cloud.embedfire.com/software/FireTools/fireTools.deb
