@@ -14,7 +14,7 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=211.6693.65
+_buildver=211.6693.111
 _veryear=2021
 _verrelease=1
 _verextra=
@@ -27,12 +27,12 @@ url="http://www.jetbrains.com/idea/nextversion"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-    source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}-${_JBR}.tar.gz"
+    source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}-${_JBR}.tar.gz"
             'idea-ce-eap.sh')
     sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
                 'e555e32b96cc0de501f77c17417e77fb9b98aab5887a204f95be5c993cb3694c')
 else
-    source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz"
+    source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}.tar.gz"
             'idea-ce-eap.sh')
     sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
                 'e555e32b96cc0de501f77c17417e77fb9b98aab5887a204f95be5c993cb3694c')
