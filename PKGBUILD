@@ -21,6 +21,7 @@ pkgver() {
 build() {
 	cd $srcdir/$_pkgname
 	sed -i "s/0.0.0//" src/charsetdetector.cpp
+	sed -i "s/1.0.0//" src/converter.cpp
 	./build.sh
 }
 
