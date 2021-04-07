@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=watsup
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=('libappindicator-gtk3' 'clutter-gtk')
@@ -9,7 +9,7 @@ license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.net/watsup/watsup.html"
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('879cc7b8fbe778ad49d0956e273c76fd84be86c3779bc2bbda2bba94edd9e097')
+sha256sums=('27e625255bb40d647198a61342679786b0e54edc7a9f64ba604ed6dd38227d31')
 options=('!emptydirs')
 
 build() {
