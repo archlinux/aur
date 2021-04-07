@@ -23,6 +23,7 @@ pkgbase = obs-gradient-source
 	makedepends = curl
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
+	makedepends = git
 	depends = obs-studio
 	source = obs-gradient-source-0.1.0::git+https://github.com/exeldro/obs-gradient-source#commit=f3d3a5b19183963bb051c223faacbd64161028c6
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
