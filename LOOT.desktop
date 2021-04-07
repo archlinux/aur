@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LOOT
+Comment=LOOT
+Exec=/opt/loot/LOOT
+Terminal=false
+Type=Application
+Icon=loot
+StartupWMClass=LOOT
+Categories=Game;Utility;

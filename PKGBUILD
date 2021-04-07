@@ -4,7 +4,7 @@ pkgname=loot
 # Remove spotify hax on next version bump!
 pkgver=0.16.0
 _pkglibver=0.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
@@ -13,9 +13,11 @@ depends=('boost-libs' 'http-parser' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'li
 makedepends=('git' 'cmake' 'rust' 'cbindgen' 'yarn' 'boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
+        'LOOT.desktop'
 )
 sha256sums=('b501d73e9bc00e86dc6d14b8c5f5b96effaa7c7dca654e1768c6eabdd36b887d'
             '13d815ab3aaf90c58135932d7fa5f40e44c190ab63e756f0a953ee44800ed197'
+            '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
 )
 
 #prepare() {
@@ -74,4 +76,9 @@ package() {
 
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/LOOT" "$pkgdir/usr/bin"
+
+	# Install the icon
+	install -Dm644 "${_builddir}/../resources/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/loot.svg"
+	# Install desktop entry
+	install -Dm644 ${srcdir}/../LOOT.desktop ${pkgdir}/usr/share/applications/LOOT.desktop
 }
