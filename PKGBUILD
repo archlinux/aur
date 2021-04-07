@@ -1,6 +1,6 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname="jfa-go"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -24,16 +24,16 @@ validpgpkeys=()
 prepare() {
     cd jfa-go
     go get github.com/swaggo/swag/cmd/swag
-    make configuration npm email GOESBUILD=on
+    make configuration npm email GOESBUILD=on INTERNAL=off
 }
 
 build() {
 	cd ${pkgname}
     export GOPATH="$(go env GOPATH)"
-	make typescript bundle-css GOESBUILD=on
+	make typescript bundle-css GOESBUILD=on INTERNAL=off
     "${GOPATH}"/bin/swag init -g main.go
-    make copy external-files 
-    make compile
+    make copy INTERNAL=off
+    make compile INTERNAL=off
 }
 
 package() {
