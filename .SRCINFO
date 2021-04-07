@@ -1,7 +1,7 @@
 pkgbase = python-biosig
 	pkgdesc = Python module for reading and writing routines for different biosignal data formats
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://biosig.sourceforge.net/
 	arch = i686
 	arch = x86_64
