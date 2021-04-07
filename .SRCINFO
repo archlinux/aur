@@ -1,6 +1,6 @@
 pkgbase = autokey
 	pkgver = 0.95.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/autokey/autokey
 	arch = i686
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = autokey
 	makedepends = python-setuptools
 	makedepends = python-pyqt5
 	source = autokey-0.95.10.tar.gz::https://github.com/autokey/autokey/archive/v0.95.10.tar.gz
+	source = autokey.patch
 	sha256sums = e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d
+	sha256sums = 9959643c90b51f4734da70afecb891ad4671ab9f277cc3abf9506421a98acb98
 
 pkgname = autokey-common
 	pkgdesc = A desktop automation utility for Linux and X11 - common data

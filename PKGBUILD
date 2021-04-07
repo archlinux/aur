@@ -4,13 +4,22 @@
 pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
 pkgbase=autokey
 pkgver=0.95.10
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/autokey/autokey"
 license=('GPL3')
 makedepends=('python-setuptools' 'python-pyqt5')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz")
-sha256sums=('e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz"
+        "$pkgbase.patch")
+sha256sums=('e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d'
+            '9959643c90b51f4734da70afecb891ad4671ab9f277cc3abf9506421a98acb98')
+
+prepare() {
+
+	# Phrases show up wrong on Firefox and Thunderbird
+	# https://code.google.com/archive/p/autokey/issues/278
+	patch -Np1 -i "$srcdir/$pkgbase.patch"
+}
 
 build() {
 	cd "$pkgbase-$pkgver"
