@@ -1,0 +1,16 @@
+pkgbase = gitflux-git
+	pkgdesc = Track your GitHub projects in InfluxDB and create beautiful graphs with Grafana
+	pkgver = r13.e7f31a6
+	pkgrel = 1
+	url = https://github.com/muesli/gitflux
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = gitflux
+	conflicts = gitflux
+	source = gitflux::git+https://github.com/muesli/gitflux.git#branch=main
+	sha256sums = SKIP
+
+pkgname = gitflux-git
+
