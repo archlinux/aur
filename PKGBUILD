@@ -2,15 +2,14 @@
 # Contributor: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=rememberthemilk
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
 url="https://www.rememberthemilk.com"
 license=('custom:none' 'MIT' 'Apache')
 source=("https://www.rememberthemilk.com/download/linux/debian/pool/main/r/rememberthemilk/rememberthemilk_${pkgver}_amd64.deb")
-sha256sums=('c96fbc1fa030cee28ecb1abe71f09fb49a61b63f71a353e51ca4bc0a50cd941d')
-depends=(gtk3 libnotify nss libxss libxtst xdg-utils at-spi2-atk libutil-linux libappindicator-gtk3 libsecret)
+sha256sums=('e3d6171466cb3297a011e551c1fb562ee2f3696e64e7df16bbac88fb18b264f8')
 
 prepare() {
   cd ${srcdir}
@@ -18,6 +17,7 @@ prepare() {
 }
 
 package() {
+  depends=(gtk3 libnotify nss libxss libxtst xdg-utils at-spi2-atk libutil-linux libappindicator-gtk3 libsecret)
   cp -r ${srcdir}/opt ${pkgdir}
   cp -r ${srcdir}/usr ${pkgdir}
 
