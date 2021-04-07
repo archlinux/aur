@@ -23,6 +23,7 @@ pkgbase = obs-move-transition
 	makedepends = curl
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
+	makedepends = git
 	depends = obs-studio
 	source = obs-move-transition-2.3.5::git+https://github.com/exeldro/obs-move-transition#commit=723646a2f766b0b7f766d81d90ef317f4c32d268
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
