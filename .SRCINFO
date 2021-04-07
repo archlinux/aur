@@ -1,12 +1,12 @@
 pkgbase = bangin
 	pkgdesc = A primitive, portable shell script which enables DuckDuckGo-like bangs
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/samhh/bangin/
 	arch = any
 	license = MIT
-	source = bangin-0.1.2.tar.gz::https://github.com/samhh/bangin/archive/0.1.2.tar.gz
-	sha256sums = 52855f85db1680e4c34a82bc18db1c64c7777e1f9cb6eafb9caabf4e6c700229
+	source = bangin-0.2.0.tar.gz::https://github.com/samhh/bangin/archive/0.2.0.tar.gz
+	sha256sums = 95263a2d8d34f6460e89de435f7ca22f65d07a661e631b4658b2c2778ec0b10c
 
 pkgname = bangin
 

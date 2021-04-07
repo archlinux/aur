@@ -1,14 +1,14 @@
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 
 pkgname=bangin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A primitive, portable shell script which enables DuckDuckGo-like bangs"
 url="https://github.com/samhh/bangin/"
 arch=('any')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samhh/bangin/archive/$pkgver.tar.gz")
-sha256sums=('52855f85db1680e4c34a82bc18db1c64c7777e1f9cb6eafb9caabf4e6c700229')
+sha256sums=('95263a2d8d34f6460e89de435f7ca22f65d07a661e631b4658b2c2778ec0b10c')
 
 package() {
 	cd "$pkgname-$pkgver"
