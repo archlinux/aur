@@ -1,0 +1,13 @@
+pkgbase = python-virtkey
+	pkgdesc = Extension for python and python3 to emulate keypresses and to get the layout information from the X server.
+	pkgver = 0.63.0
+	pkgrel = 1
+	url = https://launchpad.net/virtkey
+	arch = x86_64
+	license = GPLv3
+	depends = python
+	source = https://launchpad.net/virtkey/0.63/0.63.0/+download/virtkey-0.63.0.tar.gz
+	sha512sums = 14b57306dda164b200e68ab1435774346222236cb8b5c8ee4d46e4f92d048f30393e6a486549b4c31aa35f2c00c8b1c7774fd01958268db6b2f312a4caaf34f9
+
+pkgname = python-virtkey
+
