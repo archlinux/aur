@@ -2,27 +2,23 @@
 
 pkgname=roadrunner
 binname=${pkgname}-binary
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
 license=(MIT)
-depends=("php>=7.3")
+depends=()
 makedepends=("go>=1.16")
 source=(
 	"$binname-$pkgver.tar.gz::https://github.com/spiral/$binname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz::https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
-	"00-worker-log-level-info.patch"
-	"03-rr-binary-log-output.patch"
 )
 sha256sums=(
-	"aec72f655d477347e8ce6dd7fb1cd7ca4c581d1e9b4c3dc1e25bfa86af16d1ad"
-	"65604afd79cb8a27458d82f74c9340f03d905aca115bc18c6d208ad3cd88d4ff"
-	SKIP
-	SKIP
+	"2625a698a7a6f2ada05ca1333066923eca1cf1503ceb1e045138adb2d12561cf"
+	"14ab387b378fd7909f5dc6e8be22442ca14fb5353ae1ef55ab70dea0381a5fd3"
 	SKIP
 	SKIP
 )
@@ -31,12 +27,7 @@ options=("!buildflags")
 prepare() {
 	export GOPATH="$srcdir"/gopath
 
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -p1 < "$srcdir/00-worker-log-level-info.patch"
-#	patch -p1 < "$srcdir/03-rr-log-output.patch"
-
 	cd "$srcdir/$binname-$pkgver"
-	patch -p1 <"$srcdir/03-rr-binary-log-output.patch"
 	go mod edit -replace "github.com/spiral/roadrunner/v2=../roadrunner-$pkgver"
 	go mod download
 }
@@ -56,7 +47,13 @@ build() {
 		 -X github.com/spiral/roadrunner-binary/v2/cli.Version=${pkgver}\
 		 -X github.com/spiral/roadrunner-binary/v2/cli.BuildTime=$(date +%FT%T%z)" \
 		-o ./rr \
-		./main.go
+		./cmd/rr
+}
+
+check() {
+	cd "$srcdir/$binname-$pkgver"
+
+	go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
 }
 
 package() {
