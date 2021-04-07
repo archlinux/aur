@@ -1,7 +1,7 @@
 pkgbase = mx-puppet-discord-git
 	pkgdesc = This is a Matrix bridge for Discord
 	pkgver = r248.c17384a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/matrix-discord/mx-puppet-discord
 	install = mx-puppet-discord.install
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = mx-puppet-discord-git
 	source = mx-puppet-discord.sysusers
 	source = mx-puppet-discord.service
 	sha256sums = SKIP
-	sha256sums = 09818d8feac935e3e01ee362c3d9ec2560edf8a06bdf836eeac00271be520b6d
+	sha256sums = 52882939775b359aceb0b1f16f46d8c2063dab100d58bd2d3753bae66638490d
 	sha256sums = 34f11759a1202f9e4448dd493b2aad253bf2c7f233f70fcf95c33f5a2ab19984
-	sha256sums = a5e258d99a900361e442dc4cedba35b521cbb8dd22ecd1f491a3b853a002b8b4
+	sha256sums = 81c81f60a3db42f840e70d1ca55a84e2655227a0b0f5ff99b6beff582a9e6964
 
 pkgname = mx-puppet-discord-git
 
