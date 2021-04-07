@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=hddfancontrol
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='Regulate fan speed according to hard drive temperature'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('smartmontools: for alternative temperature probing using smartctl')
 replaces=('python-hddfancontrol')
 backup=('etc/conf.d/hddfancontrol')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('476321266ddd016af971f470fe94aa422bdaec41b0bcb9bcc85b6a8528b6dcda9a2081360fdf34e4428bb3924261d622dd705cefb5fd016c506d783cffdc3e0f')
+sha512sums=('ff58711e0abda55677525202734012e3662bcbef4037ea01dc29b4a55cd3b3b376c267a0341beb3f669a6a6a73ee369740be477adddef327a432d2e91d740a3f')
 
 check() {
     cd "${pkgname}-${pkgver}"
