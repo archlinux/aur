@@ -1,5 +1,5 @@
 pkgbase = bluez-hcitool
-	pkgdesc = deprecated rfcomm tool from bluez
+	pkgdesc = deprecated hcitool from bluez
 	pkgver = 5.58
 	pkgrel = 1
 	url = http://www.bluez.org/

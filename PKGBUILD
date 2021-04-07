@@ -4,7 +4,7 @@
 pkgname=bluez-hcitool
 pkgver=5.58
 pkgrel=1
-pkgdesc="deprecated rfcomm tool from bluez"
+pkgdesc="deprecated hcitool from bluez"
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
