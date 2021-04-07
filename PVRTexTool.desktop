@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PVRTexTool
+Exec=pvr-tex-tool-gui
+Comment=A comprehensive texture processing and compression tool with support for PVR textures.
+Terminal=false
+Icon=PVRTexTool
+Type=Application
