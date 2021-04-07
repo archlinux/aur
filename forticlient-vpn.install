@@ -1,0 +1,119 @@
+pre_install () {
+	BACKUP_DIR=/etc/forticlient/.old
+	FCT_CONFIG=/etc/forticlient/config.xml
+	EC_CONFIG=/opt/forticlient/XMLs/ecdata.xml
+
+	# Backup old XML configurations if they exist so they can
+	# be imported on start up if upgrading from an older FCT version
+	if [ -f $FCT_CONFIG ] || [ -f $EC_CONFIG ]; then
+	    mkdir $BACKUP_DIR && chmod 0600 $BACKUP_DIR
+	else
+	    exit 0
+	fi
+
+	if [ -d $BACKUP_DIR ] && [ $(stat -c "%a" $BACKUP_DIR) -eq 600 ] && [ -f $FCT_CONFIG ]; then
+	    cp $FCT_CONFIG $BACKUP_DIR
+	fi
+
+	if [ -d $BACKUP_DIR ] && [ $(stat -c "%a" $BACKUP_DIR) -eq 600 ] && [ -f $EC_CONFIG ]; then
+	    cp $EC_CONFIG $BACKUP_DIR
+	fi
+	exit 0
+}
+
+pre_upgrade () {
+# Remove old symlink when upgrading from older versions
+if [ -f /usr/bin/FortiClient ]; then
+    pkill -f /usr/bin/FortiClient
+    rm -rf /usr/bin/FortiClient
+fi
+}
+
+post_install() {
+	# Remove older version directories and files when upgrading
+	if [ -d /usr/bin/forticlient ]; then
+	    pkill -f /usr/bin/forticlient
+	    rm -rf /usr/bin/forticlient
+	fi
+
+	# Remove old configuration files when upgrading from older versions
+	if [ -f /etc/forticlient/config.xml ]; then
+	    rm -rf /etc/forticlient/config.xml
+	fi
+
+	if [ -f /etc/forticlient/config_backup.xml ]; then
+	    rm -rf /etc/forticlient/config_backup.xml
+	fi
+
+	# Remove old pid lock
+	if [ -f /tmp/.forticlient/fortivpn.pid ]; then
+	    rm -rf /tmp/.forticlient/fortivpn.pid
+	fi
+
+	if [ -f /etc/forticlient/servers.conf ]; then
+	    chmod 600 /etc/forticlient/servers.conf
+	fi
+
+	# Create GUI symlink to launch from terminal
+	if [ -f /opt/forticlient/gui/FortiClient-linux-x64/FortiClient ]; then
+	    ln -sf /opt/forticlient/gui/FortiClient-linux-x64/FortiClient /usr/bin/forticlient
+	fi
+
+	# Launch fortitray
+	if [ -f /opt/forticlient/fortitraylauncher ]; then
+	    if [ ! -z "$(logname 2>/dev/null)" ]; then
+		user="$(logname 2>/dev/null)"
+	    elif [ ! -z "$SUDO_USER" ]; then
+		user="$SUDO_USER"
+	    else
+		user=$(users 2>/dev/null | cut -d ' ' -f1)
+	    fi
+
+	    # Need to find the user DBUS address, otherwise Fortitray icon won't show
+	    DBUS_SESSION_BUS_ADDRESS=$(ps -u $(id -u $user) -o pid= | xargs -I{} cat /proc/{}/environ 2>/dev/null | tr '\0' '\n' 2>/dev/null | grep -m1 '^DBUS_SESSION_BUS_ADDRESS=')
+	    DBUS_SESSION_BUS_ADDRESS=${DBUS_SESSION_BUS_ADDRESS#*=}
+
+	    # XAUTHORITY and DISPLAY needed by Fortitray to run
+	    XAUTHORITY=$(ps -u $(id -u $user) -o pid= | xargs -I{} cat /proc/{}/environ 2>/dev/null | tr '\0' '\n' 2>/dev/null | grep -m1 '^XAUTHORITY=')
+	    XAUTHORITY=${XAUTHORITY#*=}
+
+	    DISPLAY=$(ps -u $(id -u $user) -o pid= | xargs -I{} cat /proc/{}/environ 2>/dev/null | tr '\0' '\n' 2>/dev/null | grep -m1 '^DISPLAY=')
+	    DISPLAY=${DISPLAY#*=}
+
+	    XDG_RUNTIME_DIR=$(ps -u $(id -u $user) -o pid= | xargs -I{} cat /proc/{}/environ 2>/dev/null | tr '\0' '\n' 2>/dev/null | grep -m1 '^XDG_RUNTIME_DIR=')
+	    XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR#*=}
+
+	    # Start fortitraylauncher while forwarding environment variables needed by Fortitray
+	    su ${user} -c "env XAUTHORITY=$XAUTHORITY \
+			       DISPLAY=$DISPLAY \
+			       DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+			       XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
+			       setsid /opt/forticlient/fortitraylauncher &>/dev/null &"
+	fi
+	       
+	# Update icons cache so icon will show correctly
+	if [ -f /usr/share/icons/hicolor/48x48/apps/forticlient.png ]; then
+	    gtk-update-icon-cache -f /usr/share/icons/hicolor || true
+	fi
+}
+
+pre_remove() {
+	# Check if forticlient is registered to EMS if it's an uninstall
+	if [ -f /opt/forticlient/.fct_ec_registered ] && [ "$action" != "upgrade" ]; then
+	    echo "Error: Unable to uninstall forticlient while connected to EMS"
+	    exit 1
+	fi
+
+	# Stop fortitray
+	if [ -f /tmp/.forticlient/fortitraylauncher ]; then
+	    echo "terminate" > /tmp/.forticlient/fortitraylauncher || true
+	fi
+
+	pkill -f /opt/forticlient
+	exit 0
+}
+
+post_remove() {
+	# Remove fortitraylauncher fifo
+	rm -rf /tmp/.forticlient/fortitraylauncher || true
+}

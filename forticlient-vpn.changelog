@@ -1,0 +1,8 @@
+## forticlient-vpn - 6.4.3.0959 - 2021-04-07
+
+* `release 1`
+  + add `depends`, `optdepends`, `install` and `changelog` to PKGBUILD
+  + included symbolyc launchers to /etc/xdg/autostart
+  + alter symbolyc binary to lowercase 
+  + add `forticlient-vpn.install` to tree
+  + add `forticlient-vpn.changelog` to tree

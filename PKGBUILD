@@ -1,14 +1,25 @@
 # Maintainer: Douglas Iuri Medeiros Cabral <diurimc at gmail dot com>
 pkgname=forticlient-vpn
-pkgver=6.4.0.0851
-pkgrel=8
+pkgver=6.4.3.0959
+pkgrel=1
 pkgdesc="Build through the official package of FortiClient VPN"
 arch=("x86_64")
 url="https://forticlient.com/"
 license=('custom:fortinet')
+depends=('nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets')
+optdepends=(
+	'libappindicator-gtk2: for show trayicon'
+	'mate-polkit: for polkit authentication'
+	'polkit-gnome: for polkit authentication'
+	'polkit-kde-agent: for polkit authentication'
+	'deepin-polkit-agent: for polkit authentication'
+	'patheon-polkit-agent: for polkit authentication'
+	'lxqt-policykit: for polkit authentication'
+)
 provides=('fortivpn' 'FortiClient')
+install='forticlient-vpn.install'
 source=("https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_${pkgver}.deb")
-sha256sums=('d229a2f3f13378244058b5b678d25976ba85e5d4c1b247ed2c3c242f6604ed2b')
+sha256sums=('728a416b93ff4944b9c1d5974ac29eefad2d5fca33efd48a2967db23fd7450ea')
 
 
 package() {
@@ -25,7 +36,11 @@ package() {
 	# Symbolic binaries which are located in /opt
 	mkdir -p ${pkgdir}/usr/bin
 	ln -sf '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
-	ln -sf '/opt/forticlient/gui/FortiClient-linux-x64/FortiClient' "${pkgdir}/usr/bin/FortiClient"
+	ln -sf '/opt/forticlient/gui/FortiClient-linux-x64/FortiClient' "${pkgdir}/usr/bin/forticlient"
+
+	# Symbolic launchers
+	ln -sf '/opt/forticlient/Fortitray.desktop' "${pkgdir}/etc/xdg/autostart/Fortitray.desktop"
+	ln -sf '/opt/forticlient/Fortivpn.desktop' "${pkgdir}/etc/xdg/autostart/Fortivpn.desktop"
 
 }
 
