@@ -1,9 +1,8 @@
 pkgbase = vim-ayu-git
 	pkgdesc = Ayu colorscheme for vim
 	pkgver = r25.0745635
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ayu-theme/ayu-vim
-	install = vim-ayu-git.install
 	arch = any
 	groups = vim-plugins
 	license = Apache
