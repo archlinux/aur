@@ -5,12 +5,12 @@
 
 pkgname=kraft
 pkgver=0.96
-pkgrel=1
+pkgrel=2
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
-depends=('boost' 'akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
+depends=('boost' 'akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2' 'po4a')
 optdepends=("python-weasyprint: alternative PDF generator")
 makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor')
 source=(
