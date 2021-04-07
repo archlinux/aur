@@ -4,8 +4,9 @@ pkgname=ros-noetic-costmap-converter
 pkgver=0.0.13
 _pkgver_patch=0
 pkgdesc="ROS : converts costmaps"
+url='http://wiki.ros.org/costmap_converter'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)

@@ -1,7 +1,8 @@
 pkgbase = ros-noetic-costmap-converter
 	pkgdesc = ROS : converts costmaps
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
+	url = http://wiki.ros.org/costmap_converter
 	arch = any
 	license = BSD
 	makedepends = cmake
