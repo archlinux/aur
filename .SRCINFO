@@ -1,0 +1,19 @@
+pkgbase = salad-git
+	pkgdesc = Salad allows gamers to mine crypto in their downtime. We turn your GPU power into credits you can spend on items like subscriptions, games, gift cards, and more from our curated storefront.
+	pkgver = 0.5.2
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	makedepends = wget
+	makedepends = sudo
+	makedepends = sed
+	depends = nodejs
+	depends = npm
+	provides = salad
+	conflicts = salad
+	source = https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/0.5.2.zip
+	md5sums = SKIP
+
+pkgname = salad-git
+
