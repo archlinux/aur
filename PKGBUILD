@@ -3,7 +3,7 @@
 pkgname=roadrunner
 binname=${pkgname}-binary
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -44,8 +44,8 @@ build() {
 	CGO_ENABLED=0 go build \
 		-trimpath \
 		-ldflags "-s\
-		 -X github.com/spiral/roadrunner-binary/v2/cli.Version=${pkgver}\
-		 -X github.com/spiral/roadrunner-binary/v2/cli.BuildTime=$(date +%FT%T%z)" \
+		 -X github.com/spiral/roadrunner-binary/v2/internal/meta.version=${pkgver}\
+		 -X github.com/spiral/roadrunner-binary/v2/internal/meta.buildTime=$(date +%FT%T%z)" \
 		-o ./rr \
 		./cmd/rr
 }
