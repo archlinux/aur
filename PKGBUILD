@@ -1,12 +1,12 @@
 # Maintainer: Yngve Levinsen <yngve.levinsen@ess.eu>
 
 pkgname=madx-git
-pkgver=5.06.01.r163.g132da7ea
+pkgver=5.06.01.r188.g71a1a5dc
 pkgrel=1
 pkgdesc="Accelerator Optics simulation code, git master version"
 url="http://cern.ch/mad"
 license=("custom")
-depends=('gcc-libs' 'libx11' 'lapack')
+depends=('libx11' 'lapack')
 conflicts=('madx-dev' 'nmap')
 provides=('madx')
 makedepends=('git' 'cmake')
@@ -30,6 +30,7 @@ build() {
 
     cmake -DCMAKE_C_COMPILER=gcc \
           -DCMAKE_Fortran_COMPILER=gfortran \
+          -DBLA_VENDOR=Generic \
           -DMADX_STATIC=OFF \
           -DMADX_ONLINE=OFF \
           -DBUILD_SHARED_LIBS=ON \
