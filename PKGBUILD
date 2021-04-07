@@ -1,9 +1,9 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg-i18n
-_version=88.0a1
+_version=89.0a1
 #_version="${pkgver%.*}"
-pkgver=88.0a1.20210320
+pkgver=89.0a1.20210320
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
@@ -106,7 +106,7 @@ build() {
 }
 
 package () {
-  _version="${pkgver%.*}"
+  _version="89.0a1"
   _ff_path=/usr/lib/firefox-nightly/
   cd ${srcdir}
   install -d ${pkgdir}/${_ff_path}/browser/extensions/
@@ -115,7 +115,7 @@ package () {
   for item in ${srcdir}/*.xpi; do
     iitem=$(basename $item)
     iitem=${iitem/.langpack.xpi/@firefox.mozilla.org.xpi}
-    iitem=${iitem/firefox-${_version}./langpack-}
+    iitem=${iitem/firefox-89.0a1./langpack-}
     install -Dm644 $item ${pkgdir}/${_ff_path}/browser/extensions/$iitem
   done
 }
