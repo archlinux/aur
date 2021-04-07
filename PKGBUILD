@@ -12,7 +12,7 @@ depends=("obs-studio")
 makedepends=(
   'cmake' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python'
   'luajit' 'ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
-  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
+  'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache' 'git'
 )
 source=(
   "$pkgname-$pkgver::git+https://github.com/exeldro/obs-media-controls#commit=8e12f52e70156ac4506cee782d48b13693e9828b"
