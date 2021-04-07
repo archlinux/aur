@@ -38,7 +38,7 @@ else
 fi
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=131
+pkgrel=144
 pkgdesc='Linux-tkg with bcachefs'
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
@@ -53,7 +53,7 @@ options=('!strip' 'docs')
 	opt_ver="5.8%2B"
     source=("$kernel_site"
         "$patch_site"
-        "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
+        "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/more-uarches-for-kernel-5.8%2B.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config.x86_64" # stock Arch config
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config_hardened.x86_64" # hardened Arch config
         90-cleanup.hook
@@ -78,16 +78,15 @@ options=('!strip' 'docs')
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-glitched-ondemand-bmq.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-glitched-bmq.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-prjc_v5.10-r2.patch"
-        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0011-ZFS-fix.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-linux-hardened.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/ryzen-desktop-profile.cfg"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/generic-desktop-profile.cfg"
     )
     sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            '97680df2a1333328bc13ef3a3a0b6bfe3edb479c68d4961f0739e85bd73779f6'
+            '9058a5ba820e8a6e76bf0f7e622484b919666447fc266e3ed9b2c3d0d747470e'
             'SKIP'
-            '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
+            '4720ffe4c063ec948918cadf7498e96be8a035717e587b4c949d3c2a4471d5d9'
             'eb1da1a028a1c967222b5bdac1db2b2c4d8285bafd714892f6fc821c10416341'
             '1e15fc2ef3fa770217ecc63a220e5df2ddbcf3295eb4a021171e7edd4c6cc898'
             '66a03c246037451a77b4d448565b1d7e9368270c7d02872fbd0b5d024ed0a997'
@@ -109,7 +108,6 @@ options=('!strip' 'docs')
             '9fad4a40449e09522899955762c8928ae17f4cdaa16e01239fd12592e9d58177'
             'a557b342111849a5f920bbe1c129f3ff1fc1eff62c6bd6685e0972fc88e39911'
             'e308292fc42840a2366280ea7cf26314e92b931bb11f04ad4830276fc0326ee1'
-            '49262ce4a8089fa70275aad742fc914baa28d9c384f710c9a62f64796d13e104'
             '105f51e904d80f63c1421203e093b612fc724edefd3e388b64f8d371c0b3a842'
             '7fb1104c167edb79ec8fbdcde97940ed0f806aa978bdd14d0c665a1d76d25c24'
             'SKIP'
@@ -174,7 +172,11 @@ hackbase() {
               'nvidia-tkg: NVIDIA drivers for all installed kernels - non-dkms version.'
               'nvidia-dkms-tkg: NVIDIA drivers for all installed kernels - dkms version.'
               'update-grub: Simple wrapper around grub-mkconfig.')
-  provides=("linux=${pkgver}" "${pkgbase}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  if [ -e "${srcdir}/winesync.rules" ]; then
+    provides=("linux=${pkgver}" "${pkgbase}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE WINESYNC-MODULE winesync-header)
+  else
+    provides=("linux=${pkgver}" "${pkgbase}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  fi
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd "${srcdir}/${_srcpath}"
@@ -204,6 +206,24 @@ hackbase() {
 
   # install customization file, for reference
   install -Dm644 "${srcdir}"/customization-full.cfg "${pkgdir}/usr/share/doc/${pkgbase}/customization.cfg"
+
+  # workaround for missing header with winesync
+  if [ -e ""${srcdir}/${_srcpath}"/include/uapi/linux/winesync.h" ]; then
+    msg2 "Workaround missing winesync header"
+    install -Dm644 "${srcdir}/${_srcpath}"/include/uapi/linux/winesync.h "${pkgdir}/usr/include/linux/winesync.h"
+  fi
+
+  # load winesync module at boot
+  if [ -e "${srcdir}/winesync.conf" ]; then
+    msg2 "Set the winesync module to be loaded at boot through /etc/modules-load.d"
+    install -Dm644 "${srcdir}"/winesync.conf "${pkgdir}/etc/modules-load.d/winesync.conf"
+  fi
+
+  # install udev rule for winesync
+  if [ -e "${srcdir}/winesync.rules" ]; then
+    msg2 "Installing udev rule for winesync"
+    install -Dm644 "${srcdir}"/winesync.rules "${pkgdir}/etc/udev/rules.d/winesync.rules"
+  fi
 }
 
 hackheaders() {

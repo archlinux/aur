@@ -1,12 +1,44 @@
 #!/bin/bash
 
-ver54=102
+ver54=109
 ver57=19
 ver58=18
 ver59=16
-ver510=20
-ver511=3
-ver512=rc1
+ver510=27
+ver511=11
+ver512=rc6
+
+_cpuschedselector() {
+  msg2 "Which CPU sched variant do you want to build/install? Select \"CFS\" (linux kernel's default) if unsure."
+  select CPUSCHED in "${_CPUSCHEDARRAY[@]}"
+  do
+    case $CPUSCHED in
+      "CFS")
+        echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
+        ;;
+      "PDS")
+        echo "_cpusched=\"pds\"" > "${_path}"/cpuschedset
+        ;;
+      "MuQSS")
+        echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
+        ;;
+      "BMQ")
+        echo "_cpusched=\"bmq\"" > "${_path}"/cpuschedset
+        ;;
+      "Project C / PDS")
+        echo "_cpusched=\"pds\"" > "${_path}"/cpuschedset
+        ;;
+      "Project C / BMQ")
+        echo "_cpusched=\"bmq\"" > "${_path}"/cpuschedset
+        ;;
+      "Undead PDS (TkG)")
+        echo "_cpusched=\"upds\"" > "${_path}"/cpuschedset
+        ;;
+      *)
+    esac
+    break
+  done
+}
 
 _tkg_initscript() {
 
@@ -70,45 +102,41 @@ _tkg_initscript() {
   fi
 
   # CPU SCHED selector
-  if [ -z "$_cpusched" ] && [ ! -e "${_path}"/cpuschedset ]; then
-    plain "What CPU sched variant do you want to build/install?"
-      prompt="`echo $'  > 1.CFS\n    2.Project C / PDS\n    3.Project C / BMQ\n    4.MuQSS\n    5.Undead PDS (TkG)\nchoice[1-5?]: '`"
-    read -rp "$prompt"  CONDITION;
-    if [ "$CONDITION" = "2" ];then
-        echo "_cpusched=\"pds\"" > "${_path}"/cpuschedset
-    elif [ "$CONDITION" = "3" ]; then
-        echo "_cpusched=\"bmq\"" > "${_path}"/cpuschedset
-    elif [ "$CONDITION" = "4" ]; then
-        echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
-    elif [ "$CONDITION" = "5" ]; then
-      echo "_cpusched=\"upds\"" > "${_path}"/cpuschedset
-    else
-        echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
-    fi
-    if [ -n "$_custom_pkgbase" ]; then
-      echo "_custom_pkgbase=\"${_custom_pkgbase}\"" >> "${_path}"/cpuschedset
-    fi
-  elif [ "$_cpusched" = "upds" ]; then
-    echo "_cpusched=\"upds\"" > "${_path}"/cpuschedset
-  elif [ "$_cpusched" = "pds" ]; then
-    echo "_cpusched=\"pds\"" > "${_path}"/cpuschedset
-  elif [ "$_cpusched" = "cfs" ]; then
-    echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
-  elif [ "$_cpusched" = "bmq" ]; then
-    echo "_cpusched=\"bmq\"" > "${_path}"/cpuschedset
-  elif [ "$_cpusched" = "muqss" ] || [ "$_cpusched" = "MuQSS" ]; then
-    echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
+  if [ "$_basever" = "54" ] || [ "$_basever" = "57" ]; then
+    _CPUSCHEDARRAY=("PDS" "MuQSS" "BMQ" "CFS")
+    _CPUSCHEDVARARRAY=("pds" "muqss" "MuQSS" "bmq" "cfs")
+  elif [ "$_basever" = "58" ]; then
+    _CPUSCHEDARRAY=("Undead PDS (TkG)" "Project C / PDS" "Project C / BMQ" "CFS")
+    _CPUSCHEDVARARRAY=("upds" "pds" "bmq" "cfs")
+  elif [ "$_basever" = "59" ] || [ "$_basever" = "510" ]; then
+    _CPUSCHEDARRAY=("Undead PDS (TkG)" "Project C / PDS" "Project C / BMQ" "MuQSS" "CFS")
+    _CPUSCHEDVARARRAY=("upds" "pds" "bmq" "muqss" "MuQSS" "cfs")
+  elif [ "$_basever" = "511" ]; then
+    _CPUSCHEDARRAY=("Undead PDS (TkG)" "Project C / PDS" "Project C / BMQ" "MuQSS" "CFS")
+    _CPUSCHEDVARARRAY=("upds" "pds" "bmq" "muqss" "MuQSS" "cfs")
   else
-    if [ "$_nofallback" != "true" ] && ! [[ ${_CPUSCHEDARRAY[*]} =~ "$_cpusched" ]]; then
-      warning "Your cpusched selection ( $_cpusched ) is not available for the selected kernel version."
-      msg2 "Do you want to fallback to CFS (default)?"
-      read -rp "`echo $'    > N/y : '`" _fallback;
-    fi
-    if [[ "$_fallback" =~ [yY] ]] || [ "$_nofallback" = "true" ]; then
-      echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
+    _CPUSCHEDARRAY=("CFS")
+    _CPUSCHEDVARARRAY=("cfs")
+  fi
+
+  if [ -z "$_cpusched" ] && [ ! -e "${_path}"/cpuschedset ]; then
+    _cpuschedselector
+  elif [[ ${_CPUSCHEDVARARRAY[*]} =~ "$_cpusched" ]]; then
+    if ( [ "$_cpusched" = "muqss" ] || [ "$_cpusched" = "MuQSS" ] ); then
+      echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
     else
-      error "Exiting..."
-      exit 1
+      echo "_cpusched=\"$_cpusched\"" > "${_path}"/cpuschedset
+    fi
+  else
+    if ! [[ ${_CPUSCHEDVARARRAY[*]} =~ "$_cpusched" ]]; then
+      warning "Your cpusched selection ( $_cpusched ) is not available for the selected kernel version."
+      if [ "$_nofallback" = "true" ]; then
+        warning "Since _nofallback is enabled, let's exit..."
+        exit 1
+      else
+        warning "Please select another:"
+        _cpuschedselector
+      fi
     fi
   fi
 
@@ -230,15 +258,21 @@ _tkg_patcher() {
 _tkg_srcprep() {
 
   if [ "${_distro}" = "Arch" ]; then
-    msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
+    
     echo "-$pkgrel-tkg-${_cpusched}${_compiler_name}" > localversion.10-pkgrel
     echo -e "Version tail set to \"-$pkgrel-tkg-${_cpusched}${_compiler_name}\"\n" > "$_where"/prepare.log
     echo "" > localversion.20-pkgname
 
     # add upstream patch
-    if [ "$_sub" != "0" ]; then
+    if [ "$_sub" != "0" ] && [[ "$_sub" != rc* ]]; then
       msg2 "Patching from $_basekernel to $pkgver"
+      if [ ! -e "$srcdir/patch-${pkgver}" ]; then
+        if [ -e "$srcdir/patch-${pkgver}.xz" ]; then
+          xz -dk "$(readlink -f "$srcdir/patch-${pkgver}.xz")" --stdout > "$srcdir/patch-${pkgver}"
+        else
+          ( cd "$_where" && xz -dk patch-${pkgver}.xz && mv "$_where"/patch-${pkgver} "$srcdir"/ )
+        fi
+      fi
       tkgpatch="$srcdir/patch-${pkgver}" && _tkg_patcher
     fi
 
@@ -255,13 +289,21 @@ _tkg_srcprep() {
   
   msg2 "Applying graysky's cpu opts patch"
   if [ "${_distro}" = "Arch" ]; then
+    tkgpatch="$srcdir/more-uarches-for-kernel-${opt_ver}.patch" && _tkg_patcher
+  elif [ "${_distro}" = "Void" ]; then
+    tkgpatch="${wrksrc}/more-uarches-for-kernel-${opt_ver}.patch" && _tkg_patcher
+  else
+    tkgpatch="$srcdir/more-uarches-for-kernel-${opt_ver}.patch" && _tkg_patcher
+  fi
+
+  msg2 "Applying graysky's cpu opts patch (legacy)"
+  if [ "${_distro}" = "Arch" ]; then
     tkgpatch="$srcdir/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v${opt_ver}.patch" && _tkg_patcher
   elif [ "${_distro}" = "Void" ]; then
     tkgpatch="${wrksrc}/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v${opt_ver}.patch" && _tkg_patcher
   else
     tkgpatch="$srcdir/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v${opt_ver}+.patch" && _tkg_patcher
   fi
-  
 
   # TkG
   msg2 "Applying clear linux patches"
@@ -355,11 +397,28 @@ _tkg_srcprep() {
     tkgpatch="$srcdir/0003-glitched-cfs.patch" && _tkg_patcher
   fi
 
-  if [ "${_distro}" = "Arch" ] || [ "$_distro" = "Void" ]; then
-    if [ -z "${_configfile}" ]; then
-      _configfile="config.x86_64"
-    fi
+  if [ "$_distro" = "Void" ] && [[ "$_sub" = rc* ]]; then
+    cd ${wrksrc}/linux-${_rc_kern_ver}
+  elif [ "$_distro" = "Void" ] && [[ "$_sub" != rc* ]]; then
+    cd ${wrksrc}/linux-${_kern_ver}
+  fi
 
+  
+  if [ -z "${_configfile}" ]; then    
+    if [ "${_distro}" = "Arch" ] || [ "$_distro" = "Void" ]; then
+      cat "${srcdir}"/config.x86_64 > ./.config
+    else
+      if [ -f /boot/config-`uname -r` ];then
+        msg2 "Using /boot/config-`uname -r` as config file"
+        cp /boot/config-`uname -r` .config
+      elif [ -f /proc/config.gz ];then
+        msg2 "Using /proc/config.gz as config file"
+        zcat --verbose /proc/config.gz > .config
+      else
+        msg2 "Current kernel config not found! Falling back to default..."
+      fi
+    fi
+  else
     cat "${srcdir}/${_configfile}" > ./.config
   fi
 
@@ -503,33 +562,55 @@ CONFIG_DEBUG_INFO_BTF_MODULES=y\n
 
   # cpu opt
 
-  if [ -n "$_processor_opt" ] && [ "$_processor_opt" != "native" ]; then
+  if [ -n "$_processor_opt" ] && [[ "$_processor_opt" != native* ]]; then
     echo "# CONFIG_MNATIVE is not set" >> ./.config
+    echo "# CONFIG_MNATIVE_AMD is not set" >> ./.config
+    echo "# CONFIG_MNATIVE_INTEL is not set" >> ./.config
   fi
 
-  if [ -n "$_processor_opt" ] && [ "$_processor_opt" != "generic" ]; then
+  if [ -n "$_processor_opt" ] && [[ "$_processor_opt" != generic* ]]; then
     sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
+    echo "# CONFIG_GENERIC_CPU2 is not set" >> ./.config
+    echo "# CONFIG_GENERIC_CPU3 is not set" >> ./.config
+    echo "# CONFIG_GENERIC_CPU4 is not set" >> ./.config
+  elif [ -n "$_processor_opt" ] && [ "$_processor_opt" = "genericv2" ]; then
+    sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
+    echo "CONFIG_GENERIC_CPU2=y" >> ./.config
+    echo "# CONFIG_GENERIC_CPU3 is not set" >> ./.config
+    echo "# CONFIG_GENERIC_CPU4 is not set" >> ./.config
+  elif [ -n "$_processor_opt" ] && [ "$_processor_opt" = "genericv3" ]; then
+    sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
+    echo "# CONFIG_GENERIC_CPU2 is not set" >> ./.config
+    echo "CONFIG_GENERIC_CPU3=y" >> ./.config
+    echo "# CONFIG_GENERIC_CPU4 is not set" >> ./.config
+  elif [ -n "$_processor_opt" ] && [ "$_processor_opt" = "genericv4" ]; then
+    sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
+    echo "# CONFIG_GENERIC_CPU2 is not set" >> ./.config
+    echo "# CONFIG_GENERIC_CPU3 is not set" >> ./.config
+    echo "CONFIG_GENERIC_CPU4=y" >> ./.config
+  else
+    echo "# CONFIG_GENERIC_CPU2 is not set" >> ./.config
+    echo "# CONFIG_GENERIC_CPU3 is not set" >> ./.config
+    echo "# CONFIG_GENERIC_CPU4 is not set" >> ./.config
   fi
-
-  if [ "$_processor_opt" = "native" ]; then
-    echo "CONFIG_MNATIVE=y" >> ./.config
-  fi  
 
   _cpu_marchs=("k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver")
-  _cpu_marchs+=("steamroller" "excavator" "zen" "zen2" "mpsc" "atom" "core2" "nehalem" "westmere")
+  _cpu_marchs+=("steamroller" "excavator" "zen" "zen2" "zen3" "mpsc" "atom" "core2" "nehalem" "westmere")
   _cpu_marchs+=("silvermont" "sandybridge" "ivybridge" "haswell" "broadwell" "skylake")
   _cpu_marchs+=("skylakex" "cannonlake" "icelake" "goldmont" "goldmontplus" "cascadelake")
-  _cpu_marchs+=("cooperlake" "tigerlake")
+  _cpu_marchs+=("cooperlake" "tigerlake" "native" "native_amd" "native_intel")
 
-  for _march in "${_cpu_marchs[@]}"
-  do
-    _march_upper=`echo ${_march} | tr '[:lower:]' '[:upper:]'`
-    if [ "$_processor_opt" = "$_march" ]; then
-      echo "CONFIG_M${_march_upper}=y/" >> ./.config
-    else
-      echo "# CONFIG_M${_march_upper} is not set" >> ./.config
-    fi
-  done  
+  if [ ! -z "$_processor_opt" ]; then # Don't populate when the config variable is empty
+    for _march in "${_cpu_marchs[@]}"
+    do
+      _march_upper=`echo ${_march} | tr '[:lower:]' '[:upper:]'`
+      if [ "$_processor_opt" = "$_march" ]; then
+        echo "CONFIG_M${_march_upper}=y/" >> ./.config
+      else
+        echo "# CONFIG_M${_march_upper} is not set" >> ./.config
+      fi
+    done
+  fi
 
   # Disable some debugging
   if [ "${_debugdisable}" = "true" ]; then
@@ -962,18 +1043,20 @@ CONFIG_DEBUG_INFO_BTF_MODULES=y\n
     echo "CONFIG_FUTEX2=y" >> ./.config
   fi
 
-  # ZFS fix
-  if [ "$_basever" = "54" ] || [ "$_basever" = "57" ] || [ "$_basever" = "58" ]; then
-    if [ -z "$_zfsfix" ]; then
-      plain ""
-      plain "Add back missing symbol for AES-NI/AVX support on ZFS"
-      plain "https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/kernel/export_kernel_fpu_functions_5_3.patch"
-      read -rp "`echo $'    > N/y : '`" CONDITION11;
-    fi
-    if [[ "$CONDITION11" =~ [yY] ]] || [ "$_zfsfix" = "true" ]; then
-      msg2 "Patching missing symbol for AES-NI/AVX support on ZFS"
-      tkgpatch="$srcdir/0011-ZFS-fix.patch" && _tkg_patcher
-    fi
+  # winesync support
+  if [ -z "$_winesync" ]; then
+    plain ""
+    plain "Enable support for winesync/fastsync, an experimental replacement for esync"
+    plain "https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync"
+    warning "Alternatively, on Arch you can use the DKMS module which allows for using the feature on multiple kernels side by side: https://aur.archlinux.org/packages/winesync-dkms/"
+    read -rp "`echo $'    > N/y : '`" CONDITION_winesync;
+  fi
+  if [[ "$CONDITION_winesync" =~ [yY] ]] || [ "$_winesync" = "true" ]; then
+    msg2 "Patching winesync/fastsync support"
+    tkgpatch="$srcdir/0007-v${_basekernel}-winesync.patch" && _tkg_patcher
+    echo "CONFIG_WINESYNC=m" >> ./.config
+    echo "KERNEL==\"winesync\", MODE=\"0644\"" > ../winesync.rules
+    echo "winesync" > ../winesync.conf
   fi
 
  # Anbox modules
@@ -987,12 +1070,17 @@ CONFIG_DEBUG_INFO_BTF_MODULES=y\n
     if [[ "$CONDITION12" =~ [yY] ]] || [ "$_anbox" = "true" ]; then
       echo "CONFIG_ASHMEM=y" >> ./.config
       echo "CONFIG_ION=y" >> ./.config
+      echo "CONFIG_ION_CMA_HEAP=y" >> ./.config
       echo "# CONFIG_ION_SYSTEM_HEAP is not set" >> ./.config
       echo "CONFIG_ANDROID=y" >> ./.config
       echo "CONFIG_ANDROID_BINDER_IPC=y" >> ./.config
       echo "CONFIG_ANDROID_BINDERFS=y" >>./.config
       echo 'CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"' >>./.config
       echo "# CONFIG_ANDROID_BINDER_IPC_SELFTEST is not set" >> ./.config
+      warning "Please make sure to read up on how to use this; https://github.com/Frogging-Family/linux-tkg#anbox-usage"
+      if [[ "$CONDITION12" =~ [yY] ]]; then
+        read -rp "Press enter to continue..."
+      fi
     fi
   fi
 
@@ -1038,7 +1126,14 @@ CONFIG_DEBUG_INFO_BTF_MODULES=y\n
     read -rp "`echo $'    > N/y : '`" CONDITIONMPDB;
   fi
   if [[ "$CONDITIONMPDB" =~ [yY] ]] || [ "$_modprobeddb" = "true" ]; then
-    yes "" | make LSMOD=${HOME}/.config/modprobed.db localmodconfig ${llvm_opt}
+    if [ -f "$where"/"$_modprobeddb_db_path" ];then
+      _modprobeddb_db_path="$where"/"$_modprobeddb_db_path"
+    fi
+    if [ ! -f $_modprobeddb_db_path ]; then
+      msg2 "modprobed-db database not found"
+      exit 1
+    fi
+    yes "" | make LSMOD=$_modprobeddb_db_path localmodconfig ${llvm_opt}
   fi
 
   if [ true = "$_config_fragments" ]; then
@@ -1129,6 +1224,9 @@ CONFIG_DEBUG_INFO_BTF_MODULES=y\n
     make -s kernelrelease > version
     msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
   fi
+
+  # copy new config file back to the user's git folder for an eventual future use
+  cp .config "${_where}"/kernelconfig.new
 }
 
 exit_cleanup() {
@@ -1149,6 +1247,7 @@ exit_cleanup() {
     rm -rf "$srcdir"/*.xz
     rm -rf "$srcdir"/*.patch
     rm -rf "$srcdir"/*-profile.cfg
+    rm -rf "$srcdir"/*.rules
     rm -f "$srcdir"/config.x86_64
     rm -f "$srcdir"/customization.cfg
 
