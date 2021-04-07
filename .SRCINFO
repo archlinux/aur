@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE
-	pkgver = 2021.02
+	pkgver = 2021.03
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = waterfox-classic-kpe
 	makedepends = clang
 	makedepends = llvm
 	makedepends = git
+	makedepends = nasm
 	depends = gtk3
 	depends = gtk2
 	depends = libxt
@@ -42,14 +43,14 @@ pkgbase = waterfox-classic-kpe
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-classic=2021.02
+	provides = waterfox-classic=2021.03
 	conflicts = waterfox-classic
 	conflicts = waterfox-kde
 	replaces = waterfox-kde
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=2021.02-classic
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=2021.03-classic
 	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/waterfox-classic.desktop
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8056d442bb78d009400bc0823cf39d8571e96df3/waterfox-classic-kpe/distribution.ini

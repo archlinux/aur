@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2021.02
+pkgver=2021.03
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://www.waterfox.net/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'nss>=3.44.4' 'sqlite>=3.33' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.21.1' 'hicolor-icon-theme' 'jemalloc' 'libevent')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'rust' 'clang' 'llvm' 'git')
+             'autoconf2.13' 'rust' 'clang' 'llvm' 'git' 'nasm')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
