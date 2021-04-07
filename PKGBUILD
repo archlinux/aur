@@ -39,6 +39,7 @@ package() {
 	ln -sf '/opt/forticlient/gui/FortiClient-linux-x64/FortiClient' "${pkgdir}/usr/bin/forticlient"
 
 	# Symbolic launchers
+	mkdir -p ${pkgdir}/etc/xdg/autostart
 	ln -sf '/opt/forticlient/Fortitray.desktop' "${pkgdir}/etc/xdg/autostart/Fortitray.desktop"
 	ln -sf '/opt/forticlient/Fortivpn.desktop' "${pkgdir}/etc/xdg/autostart/Fortivpn.desktop"
 
