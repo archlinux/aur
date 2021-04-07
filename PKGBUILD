@@ -1,7 +1,7 @@
 # Maintainer: Luna Stadler <lu@papill0n.org>
 
 pkgname=healthy-git
-pkgver=r32.7e8ca6f
+pkgver=r33.ac2a59d
 pkgrel=1
 pkgdesc="A tiny Linux process monitor"
 arch=('any')
