@@ -2,7 +2,7 @@
 # Signature: Christopher Jeffrey (https://keybase.io/chjj)
 # Upstream: https://github.com/handshake-org/hsd
 pkgname=hsd
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 arch=(any)
 license=('MIT')
@@ -28,7 +28,7 @@ source=(
 	"https://handshake.org/files/${pkgname}-${pkgver}.tar.gz.asc"
 )
 sha256sums=(
-	'7b1115251aaec64edc49d0d7a0a50640b4ffb664027f3ec148be62c0eeaf7fc6'
+	'3cc6d6c6687b4f4d7779f8ff0341b934479a8d007d8b7448dd63ffa8aef79884'
 	'SKIP'
 )
 validpgpkeys=('B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD')
