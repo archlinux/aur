@@ -5,6 +5,7 @@ pkgbase = fzfx-git
 	url = https://github.com/lbcnz/fzfx
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = fzf
 	depends = fd
 	depends = ripgrep
@@ -14,7 +15,7 @@ pkgbase = fzfx-git
 	optdepends = grc: colorize ps
 	optdepends = tree: previews dir as tree
 	optdepends = rga: fulltext search blobs
-	provides = fzfx
+	provides = fzfx-git
 	conflicts = fzfx
 	source = git://github.com/lbcnz/fzfx#branch=main
 	sha512sums = SKIP
