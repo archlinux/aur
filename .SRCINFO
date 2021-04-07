@@ -1,6 +1,6 @@
 pkgbase = cxx
-	pkgdesc = Configuration free build system for easy compilation of C++ executables
-	pkgver = 3.2.5
+	pkgdesc = Easily compile a main.cpp file written in C++20
+	pkgver = 3.2.6
 	pkgrel = 1
 	url = https://github.com/xyproto/cxx
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = cxx
 	optdepends = gprof2dot: For visualizing profiling information
 	optdepends = graphviz: For visualizing profiling information
 	optdepends = kcachegrind: For visualizing profiling information
-	source = git+https://github.com/xyproto/cxx#commit=d6a59e8fae77c1ca9aa80e36ff62f75f6cbb901b
+	source = git+https://github.com/xyproto/cxx#commit=415a6afa440b1cec6fb7f068a3369e6ae0a0e9de
 	sha256sums = SKIP
 
 pkgname = cxx
