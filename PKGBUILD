@@ -13,7 +13,7 @@ optdepends=(
 	'polkit-gnome: for polkit authentication'
 	'polkit-kde-agent: for polkit authentication'
 	'deepin-polkit-agent: for polkit authentication'
-	'patheon-polkit-agent: for polkit authentication'
+	'pantheon-polkit-agent: for polkit authentication'
 	'lxqt-policykit: for polkit authentication'
 )
 provides=('fortivpn' 'FortiClient')
