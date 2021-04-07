@@ -15,11 +15,11 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.11.2
+pkgver=5.11.11
 pkgrel=1
 pkgdesc='Linux-libre'
-rcnver=5.11
-rcnrel=armv7-x10
+rcnver=5.11.11
+rcnrel=armv7-x14
 url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
@@ -47,9 +47,7 @@ source=(
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
   # Arch Linux patches
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Revert-drm-amd-display-reuse-current-context-instead.patch
-  0003-drm-amdgpu-fix-shutdown-with-s0ix.patch
-  sphinx-workaround.patch  # Sphinx 3.5 broke the build again
+  0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
 )
 source_i686=(
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
@@ -77,7 +75,7 @@ validpgpkeys=(
 )
 sha512sums=('3a34006add9ea318b0c2863388925ba34d57d342535b00c9ebc61fbfc69ef206b64af21c35b101466508c4308b5da310743c8add74dd703e259612953104ae43'
             'SKIP'
-            '64c5a9076b502d3da538e781f3819af24ddb90316c2d181037c0f77e5204ec555aa0464d58fbd0025ee6c4f1b28db33d38ddc8de0bc2a83be9190c900fdf6a2c'
+            'b35fc1d243fa3fdfa2b50b8f01ccab297f958f497e58a104da18631fafe3923216f3f1e97b9c2bb9e719c8a7ae8cabe8198a1a82cb5e8e50488b64d7af4dc940'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -85,8 +83,8 @@ sha512sums=('3a34006add9ea318b0c2863388925ba34d57d342535b00c9ebc61fbfc69ef206b64
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            'cb15fa2a3fc6de36a58c4473fe886802849bb3bd5e6d93886b9687c79982a5ed857e18240b48c650cc5586581be2b90344d0bed5d9090ecfb9b36054c982ab51'
-            'c0b40adc343bf0c400075cfe593564575804723075b46628b0fe88857bad468e0a5c2d9b89a9186c49de6ca754155c66486811ebe338fa48de9231df61e0c19a'
+            '16e7316c6df96bf6d9d84b4d3bec84537255d64071347ae05b7805700b2d7a56de3c42043f7e23d27ae2dc13da79089cf255d4390d8e7aaf5c6766c70cef1213'
+            'f5b77d2f68336236588c38058c786cb45d9d255ac7808e48720efe896eb449384772f57175fa19ffc59eaa38b7706a3ff78e3cce72f52e6f0c2cf68bd469c8dc'
             '51e8b4da770067e8257d292622d865cb16ac57fdfd8967bdfb74efec197dae9eab958e5637a728640ae60885bdde41c06c8076227a4f83db0b752215f91f3a87'
             '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
@@ -95,11 +93,9 @@ sha512sums=('3a34006add9ea318b0c2863388925ba34d57d342535b00c9ebc61fbfc69ef206b64
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
             '748d98aef69e93959eab6a7f20a7972aff50c577a079bba807b10fe9b3b98799b47215d76797360d336ba4c3c656d7eafe3e81f2a59a2b6888d1884071db6e95'
-            '798b96e22ae79a62516e38194f4a377c8bed22c6fbf9f33fcdf205136bf1e5429c01a803c71f8eb412df2a5637eb6266fd4677618d64f64e9b53725371f574c6'
-            '6e0cdf8ae337245cb4df53496649905d4900dc0401b5fa7ebea70a46ed88f2f5759a1bfe571207975e1d92c734babdb8b3505cd432731d0713ce1339b6df71d4'
-            '93c03382b6678ce5e94a5d06e6737965629d7dc49d16e968d225e664d88f07a12abe0e04908f1cdaa75ff1cde88783cae9f0794d1075bc65bc7baeff392e0ae2')
+            'da919328f8f7efd2c177a68ff864fdf1a76d777c142af4c90d3efc4a8419599e3479f8e0de0e8282599b9030c33a9e3b46548005d36c058ab08b51c03732bb45')
 sha512sums_i686=('3a346ff5e0fdefafd28bc3dd0e4b6cd68e3f0014e59d1611d99f2edb8d074fd32649eeb0894a7e340e4f907b5cfc0e08e0753e0427a68dc113bb22835a892968')
-sha512sums_armv7h=('baf54a93781f5df415be494ebb10d2ef29da33807cf7bdf5ad84746c90b13f04c95a9d330faf1f11ef41b6fb1e09628455be686c3c9e6ea9ac028ee45f3b81bb'
+sha512sums_armv7h=('a4aa00ca3f03d524d3fb6379116c4e4e7908e7c30f6347f55be256c44d806d8db5f04c96369d5a725e45b7390e9fde842f388cdc5d5699d80ec5d1519f7367f4'
                    'SKIP'
                    'b832287560c841e292d71be01c65045ee2ee6ac41f05176ebe349d730b5b79887bb629d176d5fd16a3e7ebb5e51de30b6d6fad6fad53821063188248bd1415bb'
                    'f997a0afaaffb66533168f5d9cc341871eb54feb88d6ce578e816add82596bedf4dc242510e171e1e5b56464cf701384a32ed916176ea0c2db24209d754d3c58'
@@ -130,7 +126,7 @@ prepare() {
 
   if [ "${_srcname##*-}" != "$pkgver" ]; then
     echo "Applying upstream patch..."
-    patch -Np1 < "../patch-${_srcname##*-}-gnu-$pkgver-gnu"
+    patch -Np1 < <(xzcat -f "../patch-${_srcname##*-}-gnu-$pkgver-gnu.xz")
   fi
 
   echo "Adding freedo as boot logo..."
