@@ -1,0 +1,20 @@
+pkgbase = aptdec-git
+	pkgdesc = NOAA APT satellite imagery decoder
+	pkgver = r178.5f91799
+	pkgrel = 1
+	url = https://github.com/Xerbo/aptdec
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = libsndfile
+	depends = libpng
+	provides = aptdec
+	conflicts = aptdec
+	source = git+https://github.com/Xerbo/aptdec
+	md5sums = SKIP
+
+pkgname = aptdec-git
+
