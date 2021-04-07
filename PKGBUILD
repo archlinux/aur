@@ -5,21 +5,20 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh
-pkgver=1.20190619
-pkgrel=5
+pkgver=1.20190621
+pkgrel=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
-arch=('any')
+arch=(any)
 url="https://github.com/RichiH/$pkgname"
-license=('GPL')
-depends=('git')
-makedepends=('ruby-ronn')
-checkdepends=('perl' 'perl-shell-command' 'perl-test-most')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/RichiH/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9f9373bd96dfa1317ff119b2a3feaffc0e5331816e940267daf088637f995f5f')
+license=(GPL2)
+depends=(git)
+checkdepends=(perl perl-shell-command perl-test-most)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('e7c108f98da16e5ec5ae41692552aff31ee02d7d8849e6bf6efdfa68ed697204')
 
 build() {
     cd "$pkgname-$pkgver"
-    make manpages
+    make all=''
 }
 
 check() {
@@ -29,5 +28,5 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" ZSHDIR='$(PREFIX)/share/zsh/site-functions' all='manpages' install
+    make DESTDIR="$pkgdir/" ZSHDIR='$(PREFIX)/share/zsh/site-functions' all='' install
 }

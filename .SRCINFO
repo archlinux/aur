@@ -1,17 +1,16 @@
 pkgbase = vcsh
 	pkgdesc = Version Control System for $HOME that manages multiple Git repositories
-	pkgver = 1.20190619
-	pkgrel = 5
+	pkgver = 1.20190621
+	pkgrel = 1
 	url = https://github.com/RichiH/vcsh
 	arch = any
-	license = GPL
+	license = GPL2
 	checkdepends = perl
 	checkdepends = perl-shell-command
 	checkdepends = perl-test-most
-	makedepends = ruby-ronn
 	depends = git
-	source = vcsh-1.20190619.tar.gz::https://github.com/RichiH/vcsh/archive/v1.20190619.tar.gz
-	sha256sums = 9f9373bd96dfa1317ff119b2a3feaffc0e5331816e940267daf088637f995f5f
+	source = vcsh-1.20190621.tar.gz::https://github.com/RichiH/vcsh/archive/v1.20190621.tar.gz
+	sha256sums = e7c108f98da16e5ec5ae41692552aff31ee02d7d8849e6bf6efdfa68ed697204
 
 pkgname = vcsh
 
