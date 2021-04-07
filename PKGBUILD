@@ -3,7 +3,7 @@
 # Contributor: Simon Kronberg <Simon.Kronberg at gmail dot com>
 
 pkgname=waterfox-classic-bin
-pkgver=2021.02
+pkgver=2021.03
 pkgrel=1
 pkgdesc="Customizable privacy-conscious web browser with primary support for legacy extensions"
 arch=('x86_64')
@@ -71,4 +71,4 @@ END
 }
 
 sha256sums=('a8f45e828644088ef2e4369aea2d840afc48e6c363524b3fba83a9ae76298510'
-            '762a18ae76150aa41b9f5fdf091428950d18281f04d5a13d977faa19e69ef91e')
+            '3092f4f029c9ccf7f7f0dcbbeb7b9950c7dd502f41756234e19eef4a5a07120e')
