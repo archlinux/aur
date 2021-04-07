@@ -12,7 +12,7 @@ license=('GPL2')
 url="http://butt.sourceforge.net/"
 depends=('fltk' 'dbus' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
 source=(${pkgname}-${pkgver}.tar.gz::"http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('ef6bb4289e4c12c5f2a4e6ddeb92b482b8313fa0f53ec6254cb7ddd5283266e7b82ca6f35cc5485b20a5d3c13db0063ba82ec679da9585143cb6439885b21292')
+b2sums=('cc51ebdfc50a736547988cf0ae10dd6474b2e4ef388d2a1461fef586bc0e87f9e745913a129036da0c48b631696c0141d8a8a24f0c410094a0cebca41edda189')
 
 build() {
   cd "${pkgname}-${pkgver}"
