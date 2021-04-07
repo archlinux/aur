@@ -1,6 +1,6 @@
 pkgbase = konversation-git
 	pkgdesc = A user friendly IRC client for KDE. (GIT Version)
-	pkgver = 1.7.master.5112.r8573.20a411c9
+	pkgver = 1.8.210770.r8944.9288fab5
 	pkgrel = 1
 	url = https://kde.org/applications/en/internet/org.kde.konversation
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=konversation-git
-pkgver=1.7.master.5112.r8573.20a411c9
+pkgver=1.8.210770.r8944.9288fab5
 pkgrel=1
 pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
 arch=('x86_64')
@@ -27,8 +27,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd konversation
-  _ver="$(cat src/version.h | grep "#define KONVI_VERSION" | cut -d '"' -f2 | tr - .).$(cat src/commit.h | grep "#define COMMIT" | cut -d ' ' -f3)"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep "set(KONVERSATION_BASE_VERSION" | cut -d '"' -f2)"
+  _vermaj="$(cat CMakeLists.txt | grep "RELEASE_SERVICE_VERSION_MAJOR" -m1 | cut -d '"' -f2)"
+  _vermin="$(cat CMakeLists.txt | grep "RELEASE_SERVICE_VERSION_MINOR" -m1 | cut -d '"' -f2)"
+  _vermic="$(cat CMakeLists.txt | grep "RELEASE_SERVICE_VERSION_MICRO" -m1 | cut -d '"' -f2)"
+  echo "${_ver}.${_vermaj}${_vermin}${_vermic}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
