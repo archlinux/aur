@@ -2,14 +2,12 @@
 
 pkgname=ttf-maximilian
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Maximilian geschaffen 1914 von Rudolf Koch. Digitalisiert durch Dieter Steffmann, Kreuztal."
 arch=('any')
 url="http://www.steffmann.de/"
 license=('custom:FFC')
-depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
-source=(http://dl.1001fonts.com/maximilian.zip)
+source=(https://www.1001fonts.com/download/maximilian.zip)
 md5sums=('5c772d58c0259b5db29d63da46d54805')
 
 package() {
