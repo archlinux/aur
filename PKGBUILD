@@ -10,6 +10,7 @@ license=(GPL3)
 depends=('python' 'gtk3' 'libhandy' 'python-gobject' 'python-icalendar' 'libnotify')
 makedepends=('meson' 'ninja' 'gobject-introspection' 'git')
 provides=(confy)
+conflicts=(confy)
 source=("git+https://git.sr.ht/~fabrixxm/confy")
 sha256sums=(SKIP)
 

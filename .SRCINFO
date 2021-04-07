@@ -17,6 +17,7 @@ pkgbase = confy-git
 	depends = python-icalendar
 	depends = libnotify
 	provides = confy
+	conflicts = confy
 	source = git+https://git.sr.ht/~fabrixxm/confy
 	sha256sums = SKIP
 
