@@ -9,6 +9,7 @@ _branch='main'
 pkgver=r13.e7f31a6
 pkgrel=1
 license=('MIT')
+depends=(influxdb grafana)
 makedepends=(git go)
 source=("$_pkgname::git+$url.git#branch=$_branch")
 sha256sums=('SKIP')

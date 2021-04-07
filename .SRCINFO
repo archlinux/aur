@@ -7,6 +7,8 @@ pkgbase = gitflux-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = influxdb
+	depends = grafana
 	provides = gitflux
 	conflicts = gitflux
 	source = gitflux::git+https://github.com/muesli/gitflux.git#branch=main
