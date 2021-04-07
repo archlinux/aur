@@ -2,12 +2,12 @@
 
 pkgname=teleirc
 pkgdesc='Go implementation of a Telegram <=> IRC bridge for use with any IRC channel and Telegram group.'
-arch=(x86_64 i686 armv7h)
+arch=(any)
 url='https://github.com/RITlug/teleirc'
 _branch='master'
 pkgver=2.1.0
 pkgrel=1
-license=('GPL-3.0')
+license=('GPL3')
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('37a1a70e8d9dfcd296382647aac882ee24517f1d084b05877713cff226c0c299')
