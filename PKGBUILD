@@ -13,7 +13,7 @@ options=(!strip)
 provides=('defi-app')
 conflicts=('defi-app')
 source=("${_package}::${url}/releases/download/${pkgver}/${_package}")
-sha256sums=('6324b56a75540afe4c6065246e32bf38ff6367ca567183149020135d11d7065c')
+sha256sums=('5dd331758e9fc1e76bd132d08c0731d559d927bf09f936b7fd49ec29d492afb5')
 
 build() {
 	# Extract files
