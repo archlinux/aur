@@ -9,14 +9,13 @@ pkgbase = kraft
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = asciidoctor
-	depends = boost
+	makedepends = po4a
 	depends = akonadi-contacts
 	depends = ctemplate
 	depends = python-reportlab
 	depends = python-pypdf2
-	depends = po4a
 	optdepends = python-weasyprint: alternative PDF generator
-	source = https://github.com/dragotin/kraft/archive/v0.96.tar.gz
+	source = kraft-v0.96::https://github.com/dragotin/kraft/archive/v0.96.tar.gz
 	sha256sums = 2d24d9de37cba1de5ec58c1d724cb00d3a1b89becd7a1d5155a039e55e88131d
 
 pkgname = kraft

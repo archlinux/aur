@@ -10,11 +10,11 @@ pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
-depends=('boost' 'akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2' 'po4a')
+depends=('akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
 optdepends=("python-weasyprint: alternative PDF generator")
-makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor')
+makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
 source=(
-  "https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
+  "kraft-v${pkgver}::https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
 )
 
 
