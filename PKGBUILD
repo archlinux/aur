@@ -2,12 +2,12 @@
 
 pkgname=muwire
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc='An I2P file sharing program'
 arch=('any')
 url='https://muwire.com/'
 license=('GPL3')
-depends=('sh' 'java-runtime>=9' 'hicolor-icon-theme')
+depends=('sh' 'java-runtime>=9' 'java-runtime<=15' 'hicolor-icon-theme')
 makedepends=('git' 'gradle')
 source=("git+https://github.com/zlatinb/muwire.git#tag=muwire-${pkgver}?signed"
         'muwire.desktop'
