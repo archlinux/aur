@@ -11,9 +11,9 @@ depends=(
     wine
     winetricks
 )
-conflicts=(
-    wine-gui-git
-)
+#conflicts=(
+#    wine-gui-git
+#)
 source=("${pkgname}-${pkgver}.tar.xz::http://packages.linuxmint.com/pool/main/w/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('bef0ddc08fe5143eaca2093221e96af33fdd921d6766d34ee3972476a43f070e')
 

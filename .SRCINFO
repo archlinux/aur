@@ -7,7 +7,6 @@ pkgbase = wine-installer
 	license = GPL
 	depends = wine
 	depends = winetricks
-	conflicts = wine-gui-git
 	source = wine-installer-5.0.3.tar.xz::http://packages.linuxmint.com/pool/main/w/wine-installer/wine-installer_5.0.3.tar.xz
 	sha256sums = bef0ddc08fe5143eaca2093221e96af33fdd921d6766d34ee3972476a43f070e
 
