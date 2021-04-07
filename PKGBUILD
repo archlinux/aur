@@ -3,7 +3,7 @@
 _gitbranch=main
 _gitauthor=lbcnz
 pkgname=fzfx-git
-pkgver=r21.2eeaf41
+pkgver=v1.1.1.r0.g25e8a2e
 pkgrel=2
 pkgdesc="A wrapper to fzf that does specialized fuzzy searches"
 arch=('any')
