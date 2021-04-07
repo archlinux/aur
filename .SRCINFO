@@ -22,7 +22,7 @@ pkgbase = forticlient-vpn
 	optdepends = lxqt-policykit: for polkit authentication
 	provides = fortivpn
 	provides = FortiClient
-	source = https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_6.4.3.0959.deb
+	source = https://fortinetweb.s3.amazonaws.com/forticlient/downloads/FortiClientFullVPNInstaller_6.4.3.0959_amd64.deb
 	sha256sums = 728a416b93ff4944b9c1d5974ac29eefad2d5fca33efd48a2967db23fd7450ea
 
 pkgname = forticlient-vpn

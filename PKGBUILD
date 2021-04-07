@@ -18,7 +18,7 @@ optdepends=(
 )
 provides=('fortivpn' 'FortiClient')
 install='forticlient-vpn.install'
-source=("https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_${pkgver}.deb")
+source=("https://fortinetweb.s3.amazonaws.com/forticlient/downloads/FortiClientFullVPNInstaller_${pkgver}_amd64.deb")
 sha256sums=('728a416b93ff4944b9c1d5974ac29eefad2d5fca33efd48a2967db23fd7450ea')
 
 
