@@ -4,7 +4,7 @@ _gitname=fzfx
 _gitbranch=main
 _gitauthor=lbcnz
 pkgname=${_gitname}-git
-pkgver=r12.e59b56c
+pkgver=r21.2eeaf41
 pkgrel=2
 pkgdesc="A wrapper to fzf that does specialized fuzzy searches"
 arch=('any')
@@ -21,7 +21,7 @@ package() {
   cd "${_gitname}"
   
   install -Dm755 fzfx "${pkgdir}/usr/bin/fzfx"
+  install -vDm 644 ignore "${pkgdir}/usr/share/${_gitname}/ignore"
   install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_gitname}"
 }
-
