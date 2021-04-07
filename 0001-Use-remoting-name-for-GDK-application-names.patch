@@ -2,7 +2,7 @@ diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
 index da8289200e72..452195b146f3 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -3785,11 +3785,7 @@ int XREMain::XRE_mainStartup(bool* aExitFlag) {
+@@ -4358,11 +4358,7 @@ int XREMain::XRE_mainStartup(bool* aExitFlag) {
    // consistently.
  
    // Set program name to the one defined in application.ini.
@@ -27,7 +27,7 @@ index 163a93e2d1a4..4b6d45217671 100644
  #include "ScreenHelperGTK.h"
  #include "HeadlessScreenHelper.h"
  #include "mozilla/widget/ScreenManager.h"
-@@ -175,13 +176,9 @@ nsresult nsAppShell::Init() {
+@@ -153,13 +154,9 @@ nsresult nsAppShell::Init() {
        // See https://bugzilla.gnome.org/show_bug.cgi?id=747634
        //
        // Only bother doing this for the parent process, since it's the one
