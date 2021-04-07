@@ -1,0 +1,15 @@
+pkgbase = texlive-revtex
+	pkgdesc = REVTeX package used by the American Physical Society, American Institute of Physics, and Optical Society of America
+	pkgver = 4.2e
+	pkgrel = 1
+	url = https://journals.aps.org/revtex
+	arch = any
+	license = custom
+	depends = texlive-bin
+	source = http://mirrors.ctan.org/install/macros/latex/contrib/revtex.tds.zip
+	source = https://www.latex-project.org/lppl/lppl-1-3c.txt
+	md5sums = 0427e76dace754ed568968c5ff689909
+	md5sums = 9f4337828d782bdea41f03dd2ad1b808
+
+pkgname = texlive-revtex
+
