@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-tour-git
-pkgver=3.38.0.r28.g37497c0
+pkgver=40.0.r2.gf42d3f1
 pkgrel=1
 pkgdesc="A guided tour and greeter for GNOME"
 arch=(x86_64)
