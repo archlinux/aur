@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=python-onnxruntime
-pkgver=1.7.1
+pkgver=1.7.2
 pkgdesc='Cross-platform, high performance scoring engine for ML models'
 pkgrel=1
 arch=(x86_64)
