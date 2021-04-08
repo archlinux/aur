@@ -2,11 +2,12 @@
 
 set -x
 
-set -eou pipefail
+set -eo pipefail
 
+[[ ! -z "$GITHUB_TOKEN" ]] && GITHUB_AUTH="Authorization: ${GITHUB_TOKEN}" || GITHUB_AUTH=""
 
 http https://api.github.com/repos/gruntwork-io/cloud-nuke/releases/latest \
-	"Accept: application/vnd.github.v3+json" |
+	"Accept: application/vnd.github.v3+json" ${GITHUB_AUTH} |
 	jq -r '.assets[] | select(.name | test("^(SHA256SUMS|cloud-nuke.*_linux_(amd64|386))$")) | .browser_download_url' |
 	xargs -n 1 -P 3 wget
 

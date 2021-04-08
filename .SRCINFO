@@ -7,10 +7,10 @@ pkgbase = cloud-nuke-bin
 	arch = i386
 	license = MIT
 	provides = cloud-nuke
-	source_x86_64 = https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.1.25/cloud-nuke_linux_amd64
-	sha256sums_x86_64 = 7167f9993977f64d15eec0d695b3fcd5a523fe3033258bc04392bc0c0155e0c2
-	source_i386 = https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.1.25/cloud-nuke_linux_386
-	sha256sums_i386 = 8f10fcea12f4d2d03a94d8472e6ad1b11521a6ba0f0b71e0ac42f4b08d4ac2e7
+	source_x86_64 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.1.25/cloud-nuke_linux_amd64
+	sha256sums_x86_64 = 4847e823546b60a78410ce36c91cc9306d7c9f144e85135a81b61720b37df518
+	source_i386 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.1.25/cloud-nuke_linux_386
+	sha256sums_i386 = 80674763912d1b77e055d7151bfea241f01e4b87fdb6e4d232a60a541992ee13
 
 pkgname = cloud-nuke-bin
 
