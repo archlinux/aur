@@ -1,3 +1,4 @@
+# Maintainer: Cloudskiff <tech at cloudskiff dot com>
 # Maintainer: Elie <elie at cloudskiff dot com>
 pkgname=driftctl-bin
 pkgver=0.7.0
