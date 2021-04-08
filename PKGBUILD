@@ -7,7 +7,7 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 _pkgname=pamac
 pkgname=pamac-all-git
-pkgver=10.1.0beta.r0.g12e1bff
+pkgver=10.1.0beta2.r0.gee994af
 pkgrel=1
 _pkgfixver=$pkgver
 
