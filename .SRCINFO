@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-nothing-to-say-git
+	pkgdesc = keeps your microphone muted, unless you have something to say
+	pkgver = 10+4+g473782fbe67b
+	pkgrel = 1
+	url = https://github.com/wbolster/nothing-to-say
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = jq
+	depends = gnome-shell
+	source = gnome-shell-extension-nothing-to-say-git::git+https://github.com/wbolster/nothing-to-say.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-nothing-to-say-git
+
