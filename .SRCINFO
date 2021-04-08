@@ -1,7 +1,7 @@
 pkgbase = simh-git
 	pkgdesc = The Computer History Simulation Project
-	pkgver = 4.0.Beta.1.2670.g3c1c92dc
-	pkgrel = 3
+	pkgver = 4.0.Beta.1.2676.gfc5bda90
+	pkgrel = 1
 	url = http://simh.trailing-edge.com/
 	arch = i686
 	arch = x86_64

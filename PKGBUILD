@@ -2,8 +2,8 @@
 # Maintainer emeritus: R. van Elst <https://raymii.org>
 
 pkgname="simh-git"
-pkgver=4.0.Beta.1.2670.g3c1c92dc
-pkgrel=3
+pkgver=4.0.Beta.1.2676.gfc5bda90
+pkgrel=1
 pkgdesc="The Computer History Simulation Project"
 arch=('i686' 'x86_64')
 url="http://simh.trailing-edge.com/"
@@ -48,6 +48,7 @@ package() {
   echo "Entering directory $srcdir/simh/doc."
   cd "$srcdir/simh/doc"
   unoconv -d document --format=html *.doc
+  unoconv -d document --format=txt *.doc
   # install -D -t "$pkgdir/usr/share/doc/$pkgname" *.doc
   install -D -t "$pkgdir/usr/share/doc/$pkgname" *.html
   install -D -t "$pkgdir/usr/share/doc/$pkgname" *.pdf
