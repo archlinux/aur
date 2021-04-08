@@ -61,7 +61,7 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
-  git revert --no-edit 663ac994a794606e56d086cac85598517bd323dc
+  #git revert --no-commit 663ac994a794606e56d086cac85598517bd323dc
   #git checkout 927fdc9edc
 }
 
