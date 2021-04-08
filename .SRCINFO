@@ -1,6 +1,6 @@
 pkgbase = cinc
 	pkgdesc = The Cinc Client installation package includes everything you need to start converging your machines.
-	pkgver = 16.10.8
+	pkgver = 16.12.3
 	pkgrel = 1
 	url = https://cinc.sh/download/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cinc
 	conflicts = chef-client
 	conflicts = chef-solo
 	conflicts = chef-dk
-        source = http://downloads.cinc.sh/files/stable/cinc/16.10.8/ubuntu/20.04/cinc_16.10.8-1_amd64.deb
-        sha256sums = a16558d84e5538500ea135e62a5bb7bbfd95e04a369a41c2f0d1fe58b30d81e5
+        source = http://downloads.cinc.sh/files/stable/cinc/16.12.3/ubuntu/20.04/cinc_16.12.3-1_amd64.deb
+        sha256sums = 81ea1b23068fb1c7069d53b9a9e2eb2497088d156caedba9147f940b7d33cd94
 
 pkgname = cinc
