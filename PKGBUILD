@@ -5,11 +5,11 @@ pkgver=2.1.0
 pkgrel=1
 pkgdesc="Leela Chess Zero (Lc0) interface"
 arch=('i686' 'x86_64')
-url="https://github.com/fohristiwhirl/nibbler"
+url="https://github.com/rooklift/nibbler"
 license=('GPLv3')
 depends=('electron')
 makedepends=('git')
-source=("${_pkgname}::git+https://github.com/fohristiwhirl/nibbler.git")
+source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
