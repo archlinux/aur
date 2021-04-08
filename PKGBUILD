@@ -2,28 +2,34 @@
 # Co-Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=azure-vhd-utils-git
-pkgver=r7.d206e6d
+pkgver=r38.44cbada
 pkgrel=1
 pkgdesc="Azure VHD utilities for Go."
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/Microsoft/azure-vhd-utils"
 license=('MIT')
 makedepends=('go' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-options=('!strip' '!emptydirs')
+source=("git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/src/$_gourl/
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  export GOPATH="$srcdir"
-  go get -fix -v -x ${url#https://}
+build() {
+  cd ${pkgname%-git} 
+  go build \
+    -o=vhd \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    .
 }
 
 package() {
-  install -Dm755 $srcdir/bin/azure-vhd-utils "$pkgdir/usr/bin/vhd"
-  install -Dm644 $srcdir/src/${url#https://}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${pkgname%-git} 
+  install -Dm755 vhd -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
