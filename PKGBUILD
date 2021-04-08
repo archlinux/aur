@@ -1,7 +1,11 @@
-# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
+# Contributor:  Mike Polvere <mic.tjs@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Contributor: Tomasz Paś <kierek93@gmail.com>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=libretro-parallel-n64-git
-pkgver=5217.704b2cb4
+pkgver=5223.0a67445c
 pkgrel=1
 pkgdesc="libretro implementation to Nintendo 64 e 64DD"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
