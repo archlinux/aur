@@ -1,6 +1,6 @@
 # Maintainer: Adrian Carpenter <hello@nedrysoft.com>
 pkgname=pingnoo
-pkgver="2021.04.04"
+pkgver="2021.04.08"
 pkgrel=1
 epoch=
 pkgdesc="An open-source cross-platform tool for ping/traceroute analysis."
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.pingnoo.com"
 license=('GPL3')
 groups=()
-depends=('pcre2' 'libx11' 'libxcb' 'qt5-base' 'systemd-libs' 'libgpg-error' 'libpng' 'bzip2' 'libcap' 'freetype2' 'krb5' 'glib2' 'libxdmcp' 'qt5-declarative' 'gcc-libs' 'libgcrypt' 'md4c' 'double-conversion' 'graphite' 'zstd' 'pcre' 'icu' 'libglvnd' 'lz4' 'keyutils' 'harfbuzz' 'xz' 'openssl' 'libxau' 'glibc' 'zlib' 'e2fsprogs')
+depends=('keyutils' 'libxau' 'libxdmcp' 'libpng' 'bzip2' 'zstd' 'libcap' 'xz' 'pcre' 'openssl' 'qt5-base' 'qt5-declarative' 'libx11' 'graphite' 'harfbuzz' 'pcre2' 'double-conversion' 'e2fsprogs' 'libgcrypt' 'md4c' 'systemd-libs' 'icu' 'glibc' 'libglvnd' 'glib2' 'libgpg-error' 'libxcb' 'freetype2' 'lz4' 'krb5' 'zlib' 'gcc-libs')
 makedepends=('cmake' 'qt5-base' 'qt5-tools' 'qt5-quickcontrols' 'dbus')
 checkdepends=()
 optdepends=()
@@ -19,14 +19,14 @@ backup=()
 options=()
 install="${pkgname}.install"
 changelog=
-source=("https://www.nedrysoft.com/downloads/${pkgname}/source/${pkgname}-${pkgver}.tar.gz")
+source=('https://www.nedryspft.com/downloads/${pkgname}/source/${pkgname}-${pkgver}.tar.gz')
 noextract=()
-md5sums=('717347e1173fe92701b56dc3675a1d5e')
+md5sums=('0486739e5418aeebf035432d8fdf0955')
 validpgpkeys=()
 prepare=()
 
 build() {
-    cmake -B build -S ${pkgname} -DCMAKE_SKIP_RPATH=True -DPINGNOO_GIT_YEAR=2021 -DPINGNOO_GIT_MONTH=04 -DPINGNOO_GIT_DAY=04 -DPINGNOO_GIT_HASH=91703bf -DPINGNOO_GIT_BRANCH=develop -DPINGNOO_GIT_UNCOMMITTED=0
+    cmake -B build -S ${pkgname} -DCMAKE_SKIP_RPATH=True -DPINGNOO_GIT_YEAR=2021 -DPINGNOO_GIT_MONTH=04 -DPINGNOO_GIT_DAY=08 -DPINGNOO_GIT_HASH=276c8b9 -DPINGNOO_GIT_BRANCH=develop -DPINGNOO_GIT_UNCOMMITTED=0
     make -C build
 }
 
