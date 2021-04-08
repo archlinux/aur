@@ -11,7 +11,7 @@ depends=(
     'hepmc'
     'madgraph'
     'pythia8'
-    'python2'
+    'python'
 )
 source=(
     "http://madgraph.phys.ucl.ac.be/Downloads/MG5aMC_PY8_interface/MG5aMC_PY8_interface_V${pkgver}.tar.gz"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('f90cf4323f2c78bc84f70f5692cd4434452b100d0d1dd803a4989f25dcd74131'
             '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64'
-            'a2342b3d981e1c8d737244e3ec68f11b1e8c4f18502bce5dc7afcc1335910452'
+            'bcdad7590a16c89cc8deede534ba6ee98690e9adc67100ea88d22cd8eac18958'
             'aba91f30a37d67294a2b948870b2308f4dd2dbbba0cfa53f743b5d84e05cafbc')
 
 prepare() {
