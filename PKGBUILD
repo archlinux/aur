@@ -3,7 +3,7 @@ pkgname="bee-git"
 _pkgname="bee"
 _branch="chrysalis-pt-2"
 pkgver="0.1.0"
-pkgrel="6"
+pkgrel="7"
 pkgdesc="A framework for IOTA nodes, clients and applications in Rust"
 arch=('x86_64')
 url="https://github.com/iotaledger/bee"
@@ -19,9 +19,17 @@ install=$_pkgname.install
 build() {
 	cd ${srcdir}/bee/bee-node
 
-        # Update rust
-        rustup update
-
+	# Check/update rust toolchain
+	if ! rustup show | grep 'stable\|nightly' > /dev/null 2>&1; then
+		printf	"#########################################\
+			\n# NO RUST TOOLCHAIN FOUND. PLEASE RUN   #\
+			\n# rustup toolchain install stable FIRST #\
+			\n#########################################\n"
+		exit
+	else
+		rustup update
+	fi
+        
         # Build with Dashboard
         git submodule update --init
         cd src/plugins/dashboard/frontend
