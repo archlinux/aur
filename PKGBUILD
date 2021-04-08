@@ -13,7 +13,7 @@ pkgdesc="Librewolf fork build using custom branding & new features using stable 
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse whoogle-git
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse whoogle
         libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust ccache
