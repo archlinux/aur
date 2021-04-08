@@ -2,10 +2,10 @@
 
 pkgname=eyeocr
 pkgver=0.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Java-based text (ocr) recognizer"
 arch=('i686' 'x86_64')
-url="https://eyeocr.sourceforge.net/"
+url="https://sourceforge.net/projects/eyeocr/"
 license=('custom')
 depends=('java-runtime')
 source=(https://sourceforge.net/projects/eyeocr/files/eye-alpha-10.zip eyeocr.desktop eyeocr)

@@ -1,8 +1,8 @@
 pkgbase = eyeocr
 	pkgdesc = Java-based text (ocr) recognizer
 	pkgver = 0.0.10
-	pkgrel = 2
-	url = https://eyeocr.sourceforge.net/
+	pkgrel = 3
+	url = https://sourceforge.net/projects/eyeocr/
 	arch = i686
 	arch = x86_64
 	license = custom
