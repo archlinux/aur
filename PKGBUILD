@@ -39,7 +39,7 @@ sha256sums=('f39b78d4f7fed748c7f0a31d694112fb907c6d3c4e63db22eb858df07e962cd0'
             'f849718a2927276840106a1d3d1bb3ffd713b7ddbe009311935d9ee8134da887')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd gnome-screensaver-$pkgver
 
   # Upstream patch that moves gnome-screensaver desktop file out of autostart
   patch -Np1 -i ../move-desktop-file.patch
@@ -75,15 +75,15 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd gnome-screensaver-$pkgver
   CFLAGS+=" -Wno-error=return-type"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/gnome-screensaver \
               --with-mit-ext --without-console-kit --with-systemd
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd gnome-screensaver-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 ../gnome-screensaver.pam "$pkgdir/etc/pam.d/gnome-screensaver"
 }
