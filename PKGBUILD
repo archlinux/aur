@@ -1,5 +1,5 @@
 pkgname=lyriek
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://gitlab.com/bartwillems/lyriek"
@@ -8,7 +8,7 @@ depends=('dbus' 'gtk3')
 makedepends=('rust' 'cargo' 'git' 'desktop-file-utils')
 conflicts=('lyriek-git')
 source=("https://github.com/BartWillems/lyriek/archive/$pkgver.tar.gz")
-sha256sums=('7a08962a32ee59443069c4ae5d386cd82e2a7ea950789c8b0eb1c9df3a7b568c')
+sha256sums=('a5d048248a1575bf3d15e69f12128bf30b38b47deacea7d820504182c433a6a2')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
