@@ -25,7 +25,6 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	unzip 0.5.2
 	cd "salad-applications-0.5.2/packages/desktop-app"
 	sed -i 's/: "electron-builder/: "electron-builder -l pacman/g' package.json	
 }
@@ -33,12 +32,14 @@ prepare() {
 build() {
 	cd "salad-applications-0.5.2/packages/desktop-app"	
 	npm install --force
+	npm install cliui
 	npm run lint
 	npm run build-app
 	npm run build-installer
 }
 
 package() {
+#	cd "salad-applications-0.5.2/packages/desktop-app"
 	cd "salad-applications-0.5.2/packages/desktop-app/dist/app"
 	sudo pacman -U Salad-0.5.2.pacman
 }
