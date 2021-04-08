@@ -1,40 +1,32 @@
 # Maintainer: gbr <gbr@protonmail.com>
 pkgname=gnethogs
-pkgver=0.2
-pkgrel=2
+pkgver=0.2+6+gbb69c6f
+pkgrel=1
 pkgdesc='GTK front-end for nethogs'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/mbfoss/gnethogs'
+_commit=
 license=('GPL')
-depends=(
-    'nethogs'
-    'gtkmm3'
-)
-makedepends=(
-    'intltool'
-    'libxml2'
-)
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/mbfoss/gnethogs/archive/v${pkgver}.tar.gz"
-        "nethogsmonitor_init.patch"
-)
-sha1sums=('1a9f2eace9536745191836ad063cbd4bce12d117'
-          'SKIP'
-)
+depends=('gtkmm3' 'nethogs')
+makedepends=('intltool' 'libxml2')
+_commit=bb69c6f82e059a451174c24a6bb1a21b32173f6c
+source=("git+https://github.com/mbfoss/gnethogs.git#commit=$_commit")
+sha512sums=('SKIP')
 install=gnethogs.install
 
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/nethogsmonitor_init.patch"
+pkgver() {
+    cd "$pkgname"
+    git describe --tags | sed 's/^v//g; s/-/+/g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$pkgname"
     ./autogen.sh
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
 }

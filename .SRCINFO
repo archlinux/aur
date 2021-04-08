@@ -1,19 +1,17 @@
 pkgbase = gnethogs
 	pkgdesc = GTK front-end for nethogs
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.2+6+gbb69c6f
+	pkgrel = 1
 	url = https://github.com/mbfoss/gnethogs
 	install = gnethogs.install
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = intltool
 	makedepends = libxml2
-	depends = nethogs
 	depends = gtkmm3
-	source = gnethogs-v0.2.tar.gz::https://github.com/mbfoss/gnethogs/archive/v0.2.tar.gz
-	source = nethogsmonitor_init.patch
-	sha1sums = 1a9f2eace9536745191836ad063cbd4bce12d117
-	sha1sums = SKIP
+	depends = nethogs
+	source = git+https://github.com/mbfoss/gnethogs.git#commit=bb69c6f82e059a451174c24a6bb1a21b32173f6c
+	sha512sums = SKIP
 
 pkgname = gnethogs
 

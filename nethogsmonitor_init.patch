@@ -7,7 +7,7 @@ index eca2f41..82d5783 100644
  static void nethogsMonitorThreadProc()
  {
 -	const int status = nethogsmonitor_loop(&onNethogsUpdate);
-+	const int status = nethogsmonitor_loop(&onNethogsUpdate, NULL, 100);
++	const int status = nethogsmonitor_loop(&onNethogsUpdate, NULL, 1000);
  	PendingUpdates::setNetHogsMonitorStatus(status);
  }
  
