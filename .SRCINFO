@@ -1,7 +1,7 @@
 pkgbase = equalx
 	pkgdesc = Makes you easily write equations in LaTeX and preview them in real-time
 	pkgver = 0.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://equalx.sourceforge.net/
 	arch = x86_64
 	license = GPL3
