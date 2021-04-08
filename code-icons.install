@@ -1,15 +1,15 @@
 post_install() {
-  /usr/share/code-icons/patch.sh
+  /usr/share/code-icons/do.sh
 }
 
 pre_upgrade() {
-  /usr/share/code-icons/patch.sh -u
+  /usr/share/code-icons/undo.sh
 }
 
 post_upgrade() {
-  /usr/share/code-icons/patch.sh
+  /usr/share/code-icons/do.sh
 }
 
 pre_remove() {
-  /usr/share/code-icons/patch.sh -u
+  /usr/share/code-icons/undo.sh
 }

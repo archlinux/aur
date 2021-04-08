@@ -2,9 +2,9 @@
 Operation = Install
 Operation = Upgrade
 Type = Path
-Target = usr/lib/code/resources/linux/code.png
+Target = usr/share/applications/code-oss.desktop
 
 [Action]
 Description = [code-icons] Changing to VS Code icons...
-Exec = /usr/share/code-icons/patch.sh
+Exec = /usr/share/code-icons/do.sh
 When = PostTransaction
