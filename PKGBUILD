@@ -17,8 +17,7 @@ build() {
     cd "$srcdir"
 
     arch-meson osu-handler-wine build -D b_ndebug=true
-
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
