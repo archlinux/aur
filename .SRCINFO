@@ -1,6 +1,6 @@
 pkgbase = awx
 	pkgdesc = AWX provides a web-based user interface, REST API, and task engine built on top of Ansible.
-	pkgver = 18.0.0
+	pkgver = 19.0.0
 	pkgrel = 1
 	url = https://github.com/ansible/awx
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = awx
 	depends = python
 	depends = gettext
 	options = !emptydirs
-	source = awx-18.0.0-1.tar.gz::https://github.com/ansible/awx/archive/18.0.0.tar.gz
-	sha256sums = 7dc6d3569791746d291289770130c17b6536ef1444c92f35060c8e07c42ce7fc
+	source = awx-19.0.0-1.tar.gz::https://github.com/ansible/awx/archive/19.0.0.tar.gz
+	sha256sums = ef14bd31fbc1b783179babe588bc0e57eddf13f917c3a08014c29a9265196fcd
 
 pkgname = awx
 
