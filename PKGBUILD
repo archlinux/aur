@@ -3,7 +3,7 @@
 _gitbranch=main
 _gitauthor=lbcnz
 pkgname=fzfx-git
-pkgver=v1.1.1.r0.g25e8a2e
+pkgver=v1.1.2.r0.ged3d2f1
 pkgrel=2
 pkgdesc="A wrapper to fzf that does specialized fuzzy searches"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/${_gitauthor}/${pkgname%-git}"
 source=("git://github.com/${_gitauthor}/${pkgname%-git}#branch=${_gitbranch}")
 sha512sums=('SKIP')
 depends=('fzf' 'fd' 'ripgrep' 'bat')
-optdepends=('evince: preview pdfs' 'mpv: preview videos' 'grc: colorize ps' 'tree: previews dir as tree' 'rga: fulltext search blobs')
+optdepends=('bat: improved text preview' 'evince: preview pdfs' 'mpv: preview videos' 'feh: preview pictures' 'grc: colorize ps' 'tree: improved dir preview' 'ripgrep-all: fulltext search blobs')
 makedepends=(git)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname-git}")
