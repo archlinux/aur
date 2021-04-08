@@ -1,7 +1,7 @@
 pkgbase = elan-lean
 	pkgdesc = A Lean version manager
-	pkgver = 0.10.3
-	pkgrel = 3
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://github.com/Kha/elan
 	install = post.install
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = elan-lean
 	conflicts = lean-git
 	conflicts = lean4
 	conflicts = lean-community
-	source = elan-0.10.3.tar.gz::https://github.com/Kha/elan/archive/v0.10.3.tar.gz
-	sha512sums = 48ccfdaf88ec5abcc93f3e6fe32de3b9ba3ea0a4f2ecfcac71a11263db81d58291fc0a44b32e7c5e1685d2df7a10da61bb8e955623da937afbf1eb7bb2b6e12f
+	source = elan-0.11.0.tar.gz::https://github.com/Kha/elan/archive/v0.11.0.tar.gz
+	sha512sums = 258a53812dcab370eeea9e4a8deb9bab47a0f634c79510e324bda42e5a2e99fc9f6574cd467ef17c62ffc5db4f28cb11efce164adedd19e7b4930526d1bb60c6
 
 pkgname = elan-lean
 
