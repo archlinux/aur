@@ -1,0 +1,42 @@
+pkgbase = sysbox-ce
+	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nestybox/sysbox
+	install = install.sh
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = protobuf
+	makedepends = protobuf-go
+	depends = rsync
+	depends = fuse2
+	optdepends = shiftfs: Operation without userns-remap
+	source = https://github.com/nestybox/sysbox/releases/download/v0.3.0/sysbox-ce_0.3.0-0.debian-buster_amd64.deb
+	source = sysbox-ipc-fix-build-on-protobuf-1.5.0-plus.patch
+	source = git://github.com/nestybox/sysbox.git#tag=v0.3.0
+	source = git://github.com/nestybox/dockerfiles.git#commit=4bb4b114a7776cd687e2f873ae92c933f908988e
+	source = git://github.com/nestybox/sysbox-fs.git#commit=bb001b7fe2a0a234fe86ab20045677470239e248
+	source = git://github.com/nestybox/fuse.git#commit=76fedf6163b9a7411d029805a23729ffc07f7df1
+	source = git://github.com/nestybox/sysbox-ipc.git#commit=28165ef823eebcd85c7827dc32542294fbdca920
+	source = git://github.com/nestybox/sysbox-libs.git#commit=8eeb72b735540aaa166f99ddd57c8e42fc782048
+	source = git://github.com/nestybox/libseccomp.git#commit=bb94b24efc970fc91a239785900c89b3d28ea4b5
+	source = git://github.com/nestybox/libseccomp-golang.git#commit=bcff2d4628f0faab6798c1499f8a45da7aeb2150
+	source = git://github.com/nestybox/sysbox-mgr.git#commit=6ae5668e797ee1bb88fd5f5ae663873a87541ecb
+	source = git://github.com/nestybox/sysbox-runc.git#commit=df952e5276cb6e705e0be331e9a9fe88f372eab8
+	sha256sums = 02aa4b3ab3e823d91e01c742875a4ece9d6415c9915c5f08df918725361b928e
+	sha256sums = 6606edfb1e693d6f506bd914f6c4bbac26c8079466adfbb917fda9e4a79ba69d
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sysbox-ce
+

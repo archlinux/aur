@@ -1,0 +1,52 @@
+diff --git a/sysboxFsGrpc/sysboxFsProtobuf/Makefile b/sysboxFsGrpc/sysboxFsProtobuf/Makefile
+index 550b6ef..d0cd6e9 100644
+--- a/sysboxFsGrpc/sysboxFsProtobuf/Makefile
++++ b/sysboxFsGrpc/sysboxFsProtobuf/Makefile
+@@ -31,7 +31,7 @@ RUNC_FS_PB := sysboxFsProtobuf.pb.go
+ .DEFAULT: $(RUNC_FS_PB)
+ 
+ $(RUNC_FS_PB): $(RUNC_FS_SRC)
+-	protoc -I . -I /usr/local/include/ sysboxFsProtobuf.proto --go_out=plugins=grpc:.
++	protoc -I . -I /usr/local/include/ sysboxFsProtobuf.proto --go_out=plugins=grpc:. --go_opt=paths=source_relative
+ 
+ clean:
+ 	rm -f $(RUNC_FS_PB)
+diff --git a/sysboxFsGrpc/sysboxFsProtobuf/sysboxFsProtobuf.proto b/sysboxFsGrpc/sysboxFsProtobuf/sysboxFsProtobuf.proto
+index 8d296b7..a629ce3 100644
+--- a/sysboxFsGrpc/sysboxFsProtobuf/sysboxFsProtobuf.proto
++++ b/sysboxFsGrpc/sysboxFsProtobuf/sysboxFsProtobuf.proto
+@@ -4,7 +4,7 @@
+ 
+ syntax = "proto3";
+ 
+-option go_package = ".;sysboxFsProtobuf";
++option go_package = "github.com/nestybox/sysbox-ipc/sysboxFsGrpc/sysboxFsProtobuf;sysboxFsProtobuf";
+ 
+ import "google/protobuf/timestamp.proto";
+ 
+diff --git a/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile b/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
+index e6b1825..8486fda 100644
+--- a/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
++++ b/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
+@@ -31,7 +31,7 @@ RUNC_FS_PB := sysboxMgrProtobuf.pb.go
+ .DEFAULT: $(RUNC_FS_PB)
+ 
+ $(RUNC_FS_PB): $(RUNC_FS_SRC)
+-	protoc -I . -I /usr/local/include/ sysboxMgrProtobuf.proto --go_out=plugins=grpc:.
++	protoc -I . -I /usr/local/include/ sysboxMgrProtobuf.proto --go_out=plugins=grpc:. --go_opt=paths=source_relative
+ 
+ clean:
+ 	rm -f $(RUNC_FS_PB)
+diff --git a/sysboxMgrGrpc/sysboxMgrProtobuf/sysboxMgrProtobuf.proto b/sysboxMgrGrpc/sysboxMgrProtobuf/sysboxMgrProtobuf.proto
+index b2a2613..121950e 100644
+--- a/sysboxMgrGrpc/sysboxMgrProtobuf/sysboxMgrProtobuf.proto
++++ b/sysboxMgrGrpc/sysboxMgrProtobuf/sysboxMgrProtobuf.proto
+@@ -4,7 +4,7 @@
+ 
+ syntax = "proto3";
+ 
+-option go_package = ".;sysboxMgrProtobuf";
++option go_package = "github.com/nestybox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf;sysboxMgrProtobuf";
+ 
+ package protobuf;
+ 
