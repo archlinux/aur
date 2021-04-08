@@ -21,6 +21,8 @@ build() {
   cd "${srcdir}"
   bsdtar xf "${srcdir}/ivideon-video-server_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
   bsdtar xf "data.tar.xz"
+  cd "${srcdir}/opt/ivideon/ivideon-server"
+  ln -fs ../qtlibs54/platforms/ platforms
 
   mkdir "${srcdir}/libqt54-ivideon"
   cd "${srcdir}/libqt54-ivideon"
