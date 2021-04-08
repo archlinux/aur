@@ -1,0 +1,126 @@
+diff --git a/defrag b/defrag
+index 7210343..a7d91f6 100755
+--- a/defrag
++++ b/defrag
+@@ -27,9 +27,9 @@ fail()
+ declare -i filesize=0
+ declare -i numfiles=0
+ 
+-#The maximum size of a file we can easily cache in ram
+-declare -i maxsize=$((`awk '/MemTotal/ {print $2}' /proc/meminfo`*1024))
+-(( maxsize-= `awk '/Mapped/ {print $2}' /proc/meminfo` ))
++# The maximum size of a file we can easily cache in ram
++declare -i maxsize=$(($(awk '/MemTotal/ {print $2}' /proc/meminfo)*1024))
++(( maxsize-= $(awk '/^Mapped/ {print $2}' /proc/meminfo)))
+ (( maxsize/= 2))
+ 
+ if [[ -a tmpfile || -a dirlist  ]] ; then
+@@ -45,56 +45,56 @@ fi
+ 
+ echo "Creating list of files..."
+ 
+-#stupid script to find max directory depth
+-find -xdev -type d -printf "%d\n" | sort -n | uniq > dirlist
++# stupid script to find max directory depth
++find . -xdev -type d -printf "%d\n" | sort -n | uniq >dirlist
+ 
+-#sort directories in descending size order
+-cat dirlist | while read d;
++# sort directories in descending size order
++while read -r d;
+ do
+-	find -xdev -type d -mindepth $d -maxdepth $d -printf "\"%p\"\n" | \
+-		xargs du -bS --max-depth=0 | \
+-		sort -k 1,1nr -k 2 |\
+-		cut -f2 >> tmpfile
+-	if (( $? )) ; then
++	if ! find . -xdev -type d -mindepth "$d" -maxdepth "$d" -printf "\"%p\"\n" | \
++        xargs du -bS --max-depth=0 | \
++        sort -k 1,1nr -k 2 | \
++        cut -f 2 >>tmpfile
++    then
+ 		fail
+ 	fi
+ 
+-done
++done <dirlist
+ 
+ rm -f dirlist
+ 
+-#sort files in descending size order
+-cat tmpfile | while read d;
++# sort files in descending size order
++while read -r d;
+ do
+-	find "$d" -xdev -type f -maxdepth 1 -printf "%s\t%p\n" | \
+-		sort -k 1,1nr | \
+-		cut -f2 >> dirlist
+-	if (( $? )) ; then
++	if ! find "$d" -xdev -type f -maxdepth 1 -printf "%s\t%p\n" | \
++        sort -k 1,1nr | \
++        cut -f 2 >>dirlist
++    then
+ 		fail
+ 	fi
+-done
++done <tmpfile
+ 
+ rm -f tmpfile
+ 
+-numfiles=`wc -l dirlist | awk '{print $1}'`
++numfiles=$(wc -l dirlist | awk '{print $1}')
+ 
+ echo -e "$numfiles files will be reordered\n"
+ 
+-#copy to temp file, check the file hasn't changed and then overwrite original
+-cat dirlist | while read i;
++# copy to temp file, check the file hasn't changed and then overwrite original
++while read -r i;
+ do
+ 	(( --numfiles ))
+ 	if [[ ! -f $i ]]; then
+ 		continue
+ 	fi
+ 
+-	#We could be this paranoid but it would slow it down 1000 times
++	# We could be this paranoid but it would slow it down 1000 times
+ 	#if [[ `lsof -f -- "$i"` ]]; then
+ 	#	echo -e "\n File $i open! Skipping"
+ 	#	continue
+ 	#fi
+ 
+-	filesize=`find "$i" -printf "%s"`
++	filesize=$(find "$i" -printf "%s")
+ 	# read the file first to cache it in ram if possible
+ 	if (( filesize < maxsize ))
+ 	then
+@@ -104,22 +104,20 @@ do
+ 		echo -e "\r $numfiles files left - Reordering large file sized $filesize ...                \c"
+ 	fi
+ 
+-	datestamp=`find "$i" -printf "%s"`
+-	cp -a -f "$i" tmpfile
+-	if (( $? )) ; then
++	datestamp=$(find "$i" -printf "%s")
++	if ! cp -a -f "$i" tmpfile; then
+ 		fail
+ 	fi
+ 	# check the file hasn't been altered since we copied it
+-	if [[ `find "$i" -printf "%s"` != $datestamp ]] ; then
++	if [[ $(find "$i" -printf "%s") != "$datestamp" ]] ; then
+ 		continue
+ 	fi
+ 
+-	mv -f tmpfile "$i"
+-	if (( $? )) ; then
++	if ! mv -f tmpfile "$i"; then
+ 		fail
+ 	fi
+-done
+-
+-echo -e "\nSucceeded"
++done <dirlist
+ 
+ rm -f dirlist
++
++echo -e "\nSucceeded"
