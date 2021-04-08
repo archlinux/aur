@@ -1,4 +1,4 @@
-pkgbase = rustywind
+pkgbase = rustywind-bin
 	pkgdesc = CLI for organizing Tailwind CSS classes
 	pkgver = 0.8.1
 	pkgrel = 1
@@ -6,9 +6,11 @@ pkgbase = rustywind
 	arch = x86_64
 	license = Apache
 	provides = rustywind
+	provides = rustywind-bin
 	conflicts = rustywind
+	conflicts = rustywind-bin
 	source = https://github.com/avencera/rustywind/releases/download/v0.8.1/rustywind-v0.8.1-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = SKIP
 
-pkgname = rustywind
+pkgname = rustywind-bin
 
