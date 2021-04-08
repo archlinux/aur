@@ -1,37 +1,30 @@
 # Maintainer: LiveEmily <emily@liveemily.com>
 pkgname=nextpad-git
-pkgver=0.0.r8.5440ee1
+pkgver=r17.ece42fe
 pkgrel=1
-epoch=
 pkgdesc="Not so powerful text editor I'm working on, inspired by vim and nano."
 arch=(x86_64)
 url="https://github.com/LiveEmily/nextpad.git"
 license=('GPL')
-groups=()
-depends=()
-makedepends=(git gcc)
-checkdepends=()
-optdepends=()
+depends=(glibc)
+makedepends=(git)
 provides=(nextpad)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+conflicts=(nextpad)
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
+
+
+pkgver() {
+	cd nextpad
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	sudo chmod -R +x ~/nextpad-git
 	cd nextpad
-	sudo make
+	make
 }
 
 package() {
-	sudo chmod -R +x ~/nextpad-git
-	cd ~/nextpad-git/src/nextpad/
-	sudo install -Dm 0755 -t /usr/bin/ nextpad
+	cd nextpad/
+	install -Dm 0755 -t "${pkgdir}"/usr/bin/ nextpad
 }
