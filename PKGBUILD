@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://downloads.chef.io/chef-workstation/"
 license=('Apache')
 depends=()
-conflicts=(chef-dk chef chef-solo chef-client cinc)
+conflicts=(chef-dk chef chef-solo cinc)
 source=('https://packages.chef.io/files/stable/chef-workstation/21.2.278/ubuntu/18.04/chef-workstation_21.2.278-1_amd64.deb')
 sha256sums=('6457062a347fe002d3452eccf18064f1e39ab7373a5618c06ab8e32ac6f32841')
 
