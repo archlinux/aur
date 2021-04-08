@@ -1,8 +1,8 @@
 # Maintainer: Jake McGinty <jake@tonari.no>
 
 pkgname=innernet
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A tool to manage WireGuard network topologies."
 arch=('x86_64')
 url="https://github.com/tonarino/innernet"
