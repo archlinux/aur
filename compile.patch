@@ -1,41 +1,26 @@
---- a/compile.py	2021-04-07 08:29:14.860019874 +0800
-+++ b/compile.py	2021-04-07 08:36:43.660024924 +0800
-@@ -1,4 +1,4 @@
--#!/usr/bin/python2
-+#!/usr/bin/env python
- 
- import subprocess
- import sys
-@@ -103,19 +103,19 @@
+--- a/compile.py	2021-04-07 07:31:51.000000000 +0800
++++ b/compile.py	2021-04-08 13:02:51.590097363 +0800
+@@ -103,17 +103,17 @@
  
  # Now proceed with the installation
  
 -if not os.path.exists(pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc')):
--    print( "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
--                       pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc'))
--    sys.exit(error_exit_code)
--shutil.copy(pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc'),
--                                                 pjoin(local_path,'Makefile.inc'))
--if not os.path.exists(pjoin(pythia8_path,'share','Pythia8','examples','Makefile')):
--    print( "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
--                           pjoin(pythia8_path,'share','Pythia8','examples','Makefile'))
--    sys.exit(error_exit_code)
--shutil.copy(pjoin(pythia8_path,'share','Pythia8','examples','Makefile'),
--                                                     pjoin(local_path,'Makefile'))
--
 +if not os.path.exists(pjoin(pythia8_path,'share','pythia8','examples','Makefile.inc')):
-+     print "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
-+                       pjoin(pythia8_path,'share','pythia8','examples','Makefile.inc')
-+     sys.exit(error_exit_code)
+     print( "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
+-                       pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc'))
++                       pjoin(pythia8_path,'share','pythia8','examples','Makefile.inc'))
+     sys.exit(error_exit_code)
+-shutil.copy(pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc'),
 +shutil.copy(pjoin(pythia8_path,'share','pythia8','examples','Makefile.inc'),
-+                                                  pjoin(local_path,'Makefile.inc'))
+                                                  pjoin(local_path,'Makefile.inc'))
+-if not os.path.exists(pjoin(pythia8_path,'share','Pythia8','examples','Makefile')):
 +if not os.path.exists(pjoin(pythia8_path,'share','pythia8','examples','Makefile')):
-+     print "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
-+                           pjoin(pythia8_path,'share','pythia8','examples','Makefile')
-+     sys.exit(error_exit_code)
+     print( "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
+-                           pjoin(pythia8_path,'share','Pythia8','examples','Makefile'))
++                           pjoin(pythia8_path,'share','pythia8','examples','Makefile'))
+     sys.exit(error_exit_code)
+-shutil.copy(pjoin(pythia8_path,'share','Pythia8','examples','Makefile'),
 +shutil.copy(pjoin(pythia8_path,'share','pythia8','examples','Makefile'),
-+                                                      pjoin(local_path,'Makefile'))
-+ 
+                                                      pjoin(local_path,'Makefile'))
+ 
  if _use_original_PY8_makefile:
-     shutil.move(pjoin(local_path,'MG5aMC_PY8_interface.cc'),pjoin(local_path,'main89.cc'))
-     p = subprocess.Popen(['make','main89'], stdout=subprocess.PIPE, 
