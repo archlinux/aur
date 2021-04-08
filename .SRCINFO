@@ -8,7 +8,6 @@ pkgbase = umoci
 	license = Apache 2.0
 	makedepends = go
 	makedepends = go-md2man
-	makedepends = docker
 	source = https://github.com/opencontainers/umoci/releases/download/v0.4.7/umoci.tar.xz
 	sha256sums = 693a3780937c785de8f6dd233786c1ea870bbe8ccba2f6f1e20339329394743b
 
