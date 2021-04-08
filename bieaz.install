@@ -7,9 +7,11 @@ pre_upgrade() {
 	fi
 };
 post_upgrade() {
+	export ZPOOL_VDEV_NAME_PATH=YES
 	bieaz update-menu -g
 }
 
 post_install() {
+	export ZPOOL_VDEV_NAME_PATH=YES
 	bieaz update-menu -g
 }
