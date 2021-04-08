@@ -3,35 +3,35 @@
 #     Updated: Yuki Chiba <yuki.from.akita@gmail.com>
 
 pkgname=smlsharp
-pkgver=3.7.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A new programming language in the Standard ML family"
 arch=('x86_64')
-url="http://www.pllab.riec.tohoku.ac.jp/smlsharp/"
-license=('custom')
+url="https://smlsharp.github.io/"
+license=('MIT')
 depends=('gmp'
          'massivethreads=1.00'
          'llvm>=3.9.1')
 makedepends=('chrpath')
-source=("http://www.pllab.riec.tohoku.ac.jp/smlsharp/download/$pkgname-$pkgver.tar.gz"
+source=("https://github.com/smlsharp/smlsharp/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         remove-tz-test.patch)
-sha256sums=('6dbe0c6c11b6636f9cf5696961782fd43490ea63265d6e19bf387764931f4449'
+sha256sums=('0b44fb1f369f7cfced197c68f0d3102e940dbe5288adc3bdf618a5a3ec3165db'
             '9ad167dd7582349a84218c1d61347376e439d476cca1ffa26b6addeaf162dc6c')
 options=(libtool staticlibs)
 
 # Set this variable to anything non-empty to bootstrap the compiler
-stage=y
+_stage=
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --with-incompatible-llvm
+  ./configure --prefix=/usr
 }
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   make
 
-  if [ -n "$stage" ]; then
+  if [ -n "${_stage}" ]; then
     make stage
     make
   fi
