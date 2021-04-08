@@ -1,12 +1,12 @@
 pkgbase = zsh-prompt-gentoo
 	pkgdesc = zsh prompt from Gentoo Linux
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/zsh/files/prompt_gentoo_setup-1
 	arch = any
 	license = GPL
 	depends = zsh
-	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/zsh/files/prompt_gentoo_setup-1
+	source = prompt_gentoo_setup-1
 	sha256sums = 818aede5695c1406bd2e720ab114bef13d373e48ee5a1f2cda7d36a9c26e30e1
 
 pkgname = zsh-prompt-gentoo
