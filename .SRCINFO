@@ -1,0 +1,39 @@
+pkgbase = linux-xanmod-rt510
+	pkgdesc = Linux Xanmod real-time version
+	pkgver = 5.10.27
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = cpio
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
+	source = https://github.com/xanmod/linux/releases/download/5.10.27-rt36-xanmod1/patch-5.10.27-rt36-xanmod1.xz
+	source = choose-gcc-optimization.sh
+	source = sphinx-workaround.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sphinx-workaround.patch?h=packages/linux&id=be7d4710850020de55bce930c83fa80347c02fc3
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
+	sha256sums = SKIP
+	sha256sums = 80b75594f05cb6f318af15b02261255f9cf33da1cb3352b3fa444724cc774953
+	sha256sums = 03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134
+	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
+
+pkgname = linux-xanmod-rt510
+	pkgdesc = The Linux kernel and modules with Xanmod patches
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-xanmod-rt510-headers
+	pkgdesc = Headers and scripts for building modules for the Linux Xanmod real-time version kernel
+	depends = pahole
+
