@@ -1,7 +1,7 @@
 pkgbase = fzfx-git
 	pkgdesc = A wrapper to fzf that does specialized fuzzy searches
 	pkgver = v1.1.2.r0.ged3d2f1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/lbcnz/fzfx
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = fzfx-git
 	optdepends = grc: colorize ps
 	optdepends = tree: improved dir preview
 	optdepends = ripgrep-all: fulltext search blobs
-	provides = fzfx-git
+	provides = fzfx
 	conflicts = fzfx
 	source = git://github.com/lbcnz/fzfx#branch=main
 	sha512sums = SKIP

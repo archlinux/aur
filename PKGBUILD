@@ -4,7 +4,7 @@ _gitbranch=main
 _gitauthor=lbcnz
 pkgname=fzfx-git
 pkgver=v1.1.2.r0.ged3d2f1
-pkgrel=2
+pkgrel=1
 pkgdesc="A wrapper to fzf that does specialized fuzzy searches"
 arch=('any')
 license=('MIT')
@@ -15,7 +15,7 @@ depends=('fzf' 'fd' 'ripgrep' 'bat')
 optdepends=('bat: improved text preview' 'evince: preview pdfs' 'mpv: preview videos' 'feh: preview pictures' 'grc: colorize ps' 'tree: improved dir preview' 'ripgrep-all: fulltext search blobs')
 makedepends=(git)
 conflicts=("${pkgname%-git}")
-provides=("${pkgname-git}")
+provides=("${pkgname%-git}")
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
