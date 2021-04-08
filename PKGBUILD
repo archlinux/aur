@@ -1,34 +1,40 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=csfml-git
-pkgver=2.3.r2.gee9b927
+pkgver=2.5.r12.gea80483
 pkgrel=1
 pkgdesc='Official binding of SFML for C. Git repository.'
 arch=('i686' 'x86_64')
-url='http://www.sfml-dev.org/'
-license=('ZLIB')
+url='https://www.sfml-dev.org/'
+license=('custom:zlib')
 depends=('sfml-git')
-makedepends=('git' 'mesa' 'cmake' 'doxygen')
+makedepends=('git' 'cmake' 'doxygen' 'ninja')
 conflicts=('csfml')
 provides=('csfml')
 source=('csfml-git::git+https://github.com/SFML/CSFML.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr . -DBUILD_DOC=true
-	make
-	make doc
+  cmake . \
+      -Bbuild \
+      -GNinja \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCSFML_BUILD_DOC=true
+  ninja -C build
+  ninja -C build doc
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir/" install
-	install -Dm644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$pkgname"
+
+  DESTDIR="$pkgdir/" ninja -C build install
+
+  install -Dm644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
