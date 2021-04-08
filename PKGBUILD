@@ -2,8 +2,8 @@
 # Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
 
 pkgname=caja-deja-dup-bzr
-pkgver=0.0.6.r22
-pkgrel=2
+pkgver=0.0.9.r24
+pkgrel=1
 pkgdesc="Deja Dup extension for Caja File Browser"
 url="https://launchpad.net/deja-dup-caja"
 arch=('any')
