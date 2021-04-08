@@ -1,0 +1,14 @@
+--- /opt/ivideon/ivideon-server/Resources/camera_list.json	2018-04-18 00:15:29.000000000 +0700
++++ /opt/ivideon/ivideon-server/Resources/camera_list_new.json	2018-01-30 14:20:42.000000000 +0700
+@@ -1,4 +1,11 @@
+ {
++    "Infinity": {
++        "": {
++            "video": "rtsp://{|username|{:|password|}@}{|host|}{:|port|}/snl/live/1/1/",
++            "video_low": "rtsp://{|username|{:|password|}@}{|host|}{:|port|}/snl/live/1/2/",
++            "models": ["generic"]
++        }
++    },
+     "3S": {
+         "": {
+             "md": "3S",
