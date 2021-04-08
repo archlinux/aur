@@ -1,9 +1,4 @@
-*
-!.SRCINFO
-!PKGBUILD
-!.gitignore
-!jicofo.service
-!jicofo.conf
-!sip-communicator.properties
-!sysusers.conf
-!tmpfiles.conf
+jicofo/
+src/
+pkg/
+*.pkg.tar.*
