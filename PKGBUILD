@@ -1,8 +1,8 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
 
 pkgname=zsync2-git
-pkgver=2.0.0pre
-pkgrel=1
+pkgver=2.0.0r175.a8e2d68
+pkgrel=2
 pkgdesc="A file transfer program that's able to connect to rsync servers"
 arch=(x86_64)
 url="https://github.com/AppImage/zsync2"
@@ -14,11 +14,13 @@ makedepends=(cmake git gnutls openssl zlib)
 source=(git+$url.git
         git+https://github.com/Taywee/args.git
         git+https://github.com/AppImage/cpr.git
-        git+https://github.com/google/googletest.git)
+        git+https://github.com/google/googletest.git
+        size-t.patch)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
-        'SKIP')
+        'SKIP'
+        'c5db4f79767f554e2b90455edfa55aa0eefa11df4eabd333809903ccd76d882c73ff043add6da14dbd02672ac50fc6d634d384b99ace468bf8a9a53dc1870cbf')
 
 pkgver() {
   cd ${pkgname/-git/}
@@ -35,6 +37,8 @@ prepare() {
   git config submodule.lib/cpr.url    "$srcdir"/cpr
   git config submodule.lib/gtest.url  "$srcdir"/googletest
   git submodule update
+
+  git apply ../size-t.patch
 }
 
 build() {
