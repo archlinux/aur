@@ -20,7 +20,7 @@ provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-pri
 arch=(x86_64)
 license=(LGPL)
 makedepends=(
-	gobject-introspection libcanberra gtk-doc sassc libcups meson quilt
+	git gobject-introspection libcanberra gtk-doc sassc libcups meson quilt
 
 	atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 fribidi
 	libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon

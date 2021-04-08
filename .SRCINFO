@@ -6,6 +6,7 @@ pkgbase = gtk3-classic
 	install = gtk3.install
 	arch = x86_64
 	license = LGPL
+	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = libcanberra
 	makedepends = gtk-doc
