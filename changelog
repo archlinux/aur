@@ -1,3 +1,30 @@
+Proton-6.5-GE-2 Released
+
+General Proton fixes:
+-Added mouse stutter fix from proton experimental
+-Fullscreen hack is back! Works with MK11 finally!
+-DXVK updated
+-vkd3d updated
+-FAudio updated
+
+Game fixes:
+-Fixed RDR2 Online mode, works now
+-Fixed GTA V forcing players into solo online sessions and making them unable
+to join events
+-Fixed Sea of Thieves crash on loading after creating a new lobby
+-Fixed issue with games exiting and leaving steam in 'running' mode
+-Added launcher workaround for Evil Genius 2
+
+MFPlat fixes:
+-Fixed MK11 random mid-game/mid-cutscene mfplat crashes (hopefully)
+
+Known issues:
+-MK11 will crash in story mode on chapter select if you do not select a level
+before one of the video clip animations completes
+-Catherine Classic still doesn't work
+-Darksiders Warmastered Edition still doesn't work
+-Grandia/Grandia II HD Remaster still crash on opening.
+
 Proton-6.5-GE-1 Released
 
 @GloriousEggroll GloriousEggroll released this 9 hours ago
