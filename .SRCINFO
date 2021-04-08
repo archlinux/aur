@@ -1,6 +1,6 @@
 pkgbase = pcb2gcode
 	pkgdesc = Command-line tool for isolation, routing and drilling of PCBs.
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/pcb2gcode/pcb2gcode
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = pcb2gcode
 	depends = gtkmm
 	depends = glibmm
 	depends = gerbv
-	source = https://github.com/pcb2gcode/pcb2gcode/archive/refs/tags/v2.3.0.tar.gz
+	source = https://github.com/pcb2gcode/pcb2gcode/archive/refs/tags/v2.3.1.tar.gz
 	source = patch
-	sha256sums = 49cc566b4b4ec00a3c847e3d4dc75bc91584bec07bcc77dcfad1f6129c6f6a0d
+	sha256sums = cf599ea94bf985856707e2bad2b384f378b14a8e8b228474bc60609e30856435
 	sha256sums = 9adab6f0ccd3c9310954d2a49bca41b4733b827d3b53730b6f9a0405dab2071e
 
 pkgname = pcb2gcode
