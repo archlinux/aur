@@ -12,6 +12,7 @@ pkgbase = gnome-screensaver-no-watchdog
 	depends = gnome-desktop
 	optdepends = gnome-backgrounds: default background
 	provides = gnome-screensaver
+	conflicts = gnome-screensaver
 	backup = etc/pam.d/gnome-screensaver
 	source = https://download.gnome.org/sources/gnome-screensaver/3.6/gnome-screensaver-3.6.1.tar.xz
 	source = gnome-screensaver.pam
