@@ -5,8 +5,8 @@
 
 pkgname=gnome-screensaver-no-watchdog
 pkgver=3.6.1
-pkgrel=17
-pkgdesc="Legacy GNOME screensaver"
+pkgrel=1
+pkgdesc="Legacy GNOME screensaver with disabled watchdog that drops x11 settings (useful with xss-lock)"
 arch=('x86_64')
 license=('GPL')
 url="https://wiki.gnome.org/Projects/GnomeScreensaver"
