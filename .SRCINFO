@@ -35,7 +35,7 @@ pkgbase = gnome-screensaver-no-watchdog
 	sha256sums = 7161ff962801d9e34ea564c372de4b5f93b30180b83c13aadbc9a8a1cd73ff65
 	sha256sums = 6c428b9296376e4b5e2aaf503a754a1ba58333aab50c82279b7c5615d8dd9e69
 	sha256sums = 412acd14cf665c43a6e2831ed9941fc034174b8beb454210bca8b6068e1239c3
-	sha256sums = f849718a2927276840106a1d3d1bb3ffd713b7ddbe009311935d9ee8134da887
+	sha256sums = 2c74942aca7e026053c822dbdc84b580e29dc9bb4e60d0b377813acff5c1f9a7
 
 pkgname = gnome-screensaver-no-watchdog
 
