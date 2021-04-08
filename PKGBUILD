@@ -1,7 +1,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.184
+pkgver=${_basever}.185
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -24,11 +24,11 @@ source=(
 #)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '890ed38449583684e734a4ca6f4a693a'
+         'd3753762a6b189f59a591966697a938f'
          'c8b38b0e6142fc170cea5f89f86a0415'
          '8d3adddbed67c62b0910ec68c78ebbac')
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'd6f1e5e5770b1710ee7b5d51311b43e598aa450ae9b9c1b166f887fb4e65da29'
+            'a0e07abdfe0bfa77c33633405f8ee42f82e9698e402ab26f7c76b509ad5c758b'
             'b4b1eebb42b5e9eef63892536e7fa697673155a9e6dc3944c8105e733fc553b8'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
@@ -41,6 +41,7 @@ prepare() {
 
   # add upstream patch
   echo "Updating base kernel to ${pkgver}..."
+  test -s "${srcdir}/patch-${pkgver}" || (cd "${srcdir}"; xz -dkf "${srcdir}/patch-${pkgver}.xz") # temporary fix for file-5.40 https://bugs.archlinux.org/task/70261
   patch -Nup1 -i "${srcdir}/patch-${pkgver}"
 
   echo "Setting version..."
