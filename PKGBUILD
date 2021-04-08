@@ -2,8 +2,8 @@
 
 pkgname=rhack
 pkgver=0.1.0
-pkgrel=2
-pinref="30c6a8fac53c83db6a594a29d10dc0209e955a9a"
+pkgrel=3
+pinref="5381a730c58652642a0e8eaabca9abf21cbb542d"
 pkgdesc="rhack - easily hack on your Rust dependencies" 
 url="https://github.com/nakabonne/rhack"
 depends=("gcc-libs")
@@ -12,7 +12,7 @@ provides=("rhack")
 arch=("i686" "x86_64")
 license=("BSD")
 source=("https://github.com/nakabonne/rhack/archive/$pinref.zip")
-sha512sums=('867bf838d5b5ccc01b934dc9ecedc77a50b5902cb07b6e391a2cbca051c7824d8134a45246334d72e9662f11429556c52242c5dbb04b41400e96e3431400844d')
+sha512sums=('cd5e030803f44bdf5080d0d5b76c56cc85bb2d109155d2f17d17a986bf68b7a67e66188d03c3978119c34750b0c6c217b36d165088d6acd7fc987a30b9134a61')
 
 build() {
     cd rhack-$pinref
