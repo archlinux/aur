@@ -1,0 +1,53 @@
+diff -Naur gnome-screensaver-3.6.1.orig/src/gs-manager.c gnome-screensaver-3.6.1/src/gs-manager.c
+--- gnome-screensaver-3.6.1.orig/src/gs-manager.c	2012-08-20 19:12:39.000000000 +0200
++++ gnome-screensaver-3.6.1/src/gs-manager.c	2014-10-08 03:49:37.877178771 +0200
+@@ -555,40 +555,8 @@
+                                      gint       n_keys,
+                                      GSManager   *manager)
+ {
+-#if 0
+-        /* FIXME: since we bind user settings instead of system ones,
+-         *        watching for changes is no longer valid.
+-         */
+         gnome_bg_load_from_preferences (manager->priv->bg,
+                                         manager->priv->settings);
+-#endif
+-
+-        return FALSE;
+-}
+-
+-static GSettings *
+-get_system_settings (void)
+-{
+-        GSettings *settings;
+-        gchar **keys;
+-        gchar **k;
+-
+-        /* FIXME: we need to bind system settings instead of user but
+-         *        that's currently impossible, not implemented yet.
+-         *        Hence, reset to system default values.
+-         */
+-        /* TODO: Ideally we would like to bind some other key, screensaver-specific. */
+-        settings = g_settings_new ("org.gnome.desktop.background");
+-
+-        g_settings_delay (settings);
+-
+-        keys = g_settings_list_keys (settings);
+-        for (k = keys; *k; k++) {
+-                g_settings_reset (settings, *k);
+-        }
+-        g_strfreev (keys);
+-
+-        return settings;
+ }
+ 
+ static void
+@@ -599,7 +567,7 @@
+         manager->priv->fade = gs_fade_new ();
+         manager->priv->grab = gs_grab_new ();
+ 
+-        manager->priv->settings = get_system_settings ();
++        manager->priv->settings = g_settings_new ("org.gnome.desktop.screensaver");
+         manager->priv->bg = gnome_bg_new ();
+ 
+         g_signal_connect (manager->priv->bg,

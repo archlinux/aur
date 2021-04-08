@@ -1,0 +1,34 @@
+From 1940dc6bc8ad5ee2c029714efb1276c05ca80bd4 Mon Sep 17 00:00:00 2001
+From: Tim Lunn <tim@feathertop.org>
+Date: Thu, 18 Oct 2012 23:08:56 +0000
+Subject: move gnome-screensaver desktop file out of autostart
+
+https://bugzilla.gnome.org/show_bug.cgi?id=683060
+---
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 1dd5d46..97ffa07 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -47,7 +47,7 @@ noinst_PROGRAMS = 	\
+ 	test-window	\
+ 	$(NULL)
+ 
+-desktopdir = $(sysconfdir)/xdg/autostart
++desktopdir = $(datadir)/applications
+ desktop_in_files = gnome-screensaver.desktop.in
+ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+ @INTLTOOL_DESKTOP_RULE@
+diff --git a/src/gnome-screensaver.desktop.in.in b/src/gnome-screensaver.desktop.in.in
+index fae80c4..82d6d6f 100644
+--- a/src/gnome-screensaver.desktop.in.in
++++ b/src/gnome-screensaver.desktop.in.in
+@@ -5,7 +5,6 @@ _Comment=Launch screensaver and locker program
+ Icon=preferences-desktop-screensaver
+ Exec=gnome-screensaver
+ OnlyShowIn=GNOME;
+-AutostartCondition=GNOME3 if-session gnome-fallback
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Application
+ X-GNOME-Autostart-Notify=true
+--
+cgit v0.9.1

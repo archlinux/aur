@@ -1,0 +1,25 @@
+diff --git a/src/gs-watcher-x11.c b/src/gs-watcher-x11.c
+index f0b0d83..89cfc66 100644
+--- a/src/gs-watcher-x11.c
++++ b/src/gs-watcher-x11.c
+@@ -492,7 +492,7 @@ gs_watcher_init (GSWatcher *watcher)
+         /* time before idle signal to send notice signal */
+         watcher->priv->delta_notice_timeout = 10000;
+ 
+-        add_watchdog_timer (watcher, 600000);
++        // add_watchdog_timer (watcher, 600000);
+ }
+ 
+ static void
+@@ -606,7 +606,7 @@ static gboolean
+ watchdog_timer (GSWatcher *watcher)
+ {
+ 
+-        disable_builtin_screensaver (watcher, FALSE);
++        // disable_builtin_screensaver (watcher, FALSE);
+ 
+         return TRUE;
+ }
+-- 
+2.31.1
+
