@@ -1,6 +1,6 @@
 pkgbase = umoci
 	pkgdesc = Umoci Modifies Open Container Images
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://umo.ci/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = umoci
 	makedepends = go
 	makedepends = go-md2man
 	makedepends = docker
-	source = https://github.com/opencontainers/umoci/releases/download/v0.4.6/umoci.tar.xz
-	sha256sums = d0b495ee61781c23ad9f0e1f431646cfd74fa10ca35f0547004c7b6cb9eb071b
+	source = https://github.com/opencontainers/umoci/releases/download/v0.4.7/umoci.tar.xz
+	sha256sums = 693a3780937c785de8f6dd233786c1ea870bbe8ccba2f6f1e20339329394743b
 
 pkgname = umoci
 
