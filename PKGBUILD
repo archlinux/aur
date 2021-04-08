@@ -2,11 +2,12 @@
 # forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 
 _keyaccount=24441
-_productUrname='CEWE_Fotowelt'
+# what they call their package (e.g. MY CEWE TOO MANY CAPITALS: $APPLICATION_NAME in install.pl)
+_productUrname='CEWE Fotowelt'
+# what I want to call it (e.g. CEWE Sensible Name)
 _productRename='CEWE Fotowelt'
 _lang='de_DE'
 
-pkgname=cewe-fotowelt
 conflicts=(cewe-fotobuch cewe-fotoservice)
 provides=(cewe-fotoservice)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
@@ -14,12 +15,14 @@ md5sums=('28682470d9c463cea521c0f42dd22d20'
 # template start; name=cewe; version=7.1.3;
          '12ab17737db1c55035b6e7769132f791')
 
+pkgname=${_productRename,,}
+pkgname=${pkgname// /-}
 pkgver=7.1.3
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
-makedepends=('unzip')
+makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=("https://dls.photoprintit.com/download/Data/$_keyaccount-$_lang/hps/setup_${_productUrname// /_}.tgz"
 	'updater.pl')

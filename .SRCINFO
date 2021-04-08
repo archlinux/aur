@@ -1,13 +1,14 @@
 pkgbase = cewe-fotowelt
 	pkgdesc = an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners
 	pkgver = 7.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cewe.de/
 	install = cewe-fotowelt.install
 	arch = i686
 	arch = x86_64
 	license = custom:eula
 	makedepends = unzip
+	makedepends = xdg-utils
 	depends = libx11
 	depends = libjpeg
 	depends = curl
