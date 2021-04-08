@@ -17,6 +17,7 @@ pkgbase = ansible-lint-git
 	depends = python-packaging
 	depends = python-wcmatch
 	depends = python-enrich
+	depends = python-tenacity
 	optdepends = yamllint: check for yaml syntax mistakes
 	optdepends = ansible: check playbooks
 	provides = ansible-lint
