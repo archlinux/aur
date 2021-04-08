@@ -4,7 +4,7 @@ pkgname=grapejuice-git
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
 pkgver=2.2.9.cd8e5be
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
@@ -35,8 +35,15 @@ license=('GPL3')
 source=("${_pkgname}"::git+"${_repository}")
 sha256sums=('SKIP')
 
+_get_project_root() {
+    echo "$srcdir/grapejuice"
+}
+
 pkgver() {
   cd "$_pkgname"
+
+  _project_root=$(_get_project_root)
+  export PYTHONPATH="$_project_root/src"
   
   _commit_id=$(git rev-parse --short HEAD)
   _grapejuice_version=$(python3 -c 'from grapejuice import __version__; print(__version__)')
@@ -47,13 +54,13 @@ pkgver() {
 package() {
     _python_version=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
 
-    _project_root="$srcdir/grapejuice"
+    _project_root=$(_get_project_root)
     cd "${_project_root}" || exit 1
 
     export PYTHONPATH="$_project_root/src"
     python3 -m grapejuice_packaging linux_package
 
-    _built_package_root=${_project_root}/dist/linux_package
+    _built_package_root="${_project_root}/dist/linux_package"
     cd "${_built_package_root}" || exit 1
     tar -xf *.tar.gz -C "${pkgdir}"
 
