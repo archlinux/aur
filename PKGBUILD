@@ -1,13 +1,13 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=mlrpt-git
-pkgver=r2.3086594
+pkgver=r12.480c146
 pkgrel=1
 pkgdesc="Application for receiving, decoding and displaying LRPT images from the Russian Meteor-M type of weather satellites"
 arch=(i686 x86_64)
 license=('GPL3')
 url="https://github.com/dvdesolve/mlrpt"
-depends=(rtl-sdr airspy)
+depends=(rtl-sdr airspy libconfig)
 makedepends=(git cmake make gcc)
 provides=(mlrpt)
 conflicts=(mlrpt)
