@@ -1,10 +1,11 @@
 pkgbase = twittuh-git
 	pkgdesc = Small Go program to make RSS/ATOM/JSON feeds from Twitter timelines
-	pkgver = r89.ef45111
+	pkgver = r100.e1bd11b
 	pkgrel = 1
 	url = https://github.com/derat/twittuh
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	makedepends = go
 	depends = chromium
 	source = twittuh::git+https://github.com/derat/twittuh.git#branch=master
