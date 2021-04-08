@@ -10,6 +10,7 @@ pre_install() {
 post_install() {
 	chown -R bee:bee /var/lib/bee /etc/bee
 	(cd /etc/bee && sudo -u bee bash -c 'bee p2p-identity > id' && rm error.log)
+	chmod 0600 /etc/bee/*
 	printf	"######################################################################################\
 		\n# Don't forget to add your identity to /etc/bee/config.toml, if you don't have one   #\
 		\n# the installer generated an ID in /etc/bee/id, otherwise the systemd unit will fail #\
