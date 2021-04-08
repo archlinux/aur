@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-bluetooth-quick-connect-git
 	pkgdesc = Allow to connect bluetooth paired devices from gnome control panel
-	pkgver = 16.r2.gf20cc66
+	pkgver = 19.r0.gf3d8e31
 	pkgrel = 1
 	url = https://github.com/bjarosze/gnome-bluetooth-quick-connect
 	arch = any
