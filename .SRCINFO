@@ -1,0 +1,13 @@
+pkgbase = go-impl
+	pkgdesc = Generate method stubs for implementing an interface.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/josharian/impl
+	arch = any
+	license = BSD
+	makedepends = go
+	source = https://github.com/josharian/impl/archive/v1.0.0.tar.gz
+	sha512sums = e73499e30e98cb67f9195dbc6851751756d50e790017704f0ffd4ef0a2fc08ef6bea1423db77c95c26d211b58f88134fb72387ed3ae4116747378de92631fe3a
+
+pkgname = go-impl
+
