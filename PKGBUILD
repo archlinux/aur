@@ -1,35 +1,33 @@
-# Maintainer: fzerorubigd <fzero@rubi.gd>
+# Maintainer: Colin Arnott <colin@urandom.co.uk>
 
-pkgname=gomodifytags-git
-pkgver=40.20180122
+pkgname=gomodifytags
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Go tool to modify struct field tags"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/fatih/gomodifytags"
 license=('BSD')
-depends=('glibc')
-makedepends=('go' 'git')
-source=('git+https://github.com/fatih/gomodifytags')
-md5sums=('SKIP')
-
-pkgver() {
-    cd "${srcdir}/gomodifytags"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git log -1 --format=%cd --date=short | tr -d -)"
-}
+makedepends=('go')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('b47b05203f11731dac2dacdb0c725ff822915f1d4801cbc761ad34e3a2a70abc4feb22caefdc54c2c04b76754edf1d7eebc50b6224b51492db588668330217ed')
 
 prepare() {
-    mkdir -p "${srcdir}/src/github.com/fatih/"
-    ln -sf "${srcdir}/gomodifytags" "${srcdir}/src/github.com/fatih/"
+	mkdir -p bin
 }
 
 build() {
-    export GOPATH="${srcdir}"
-    cd "${srcdir}/src/github.com/fatih/gomodifytags"
-    go get -v
-    go build -o gomodifytags
+	cd "${pkgname}-${pkgver}"
+	go build \
+		-o="../bin" \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		./...
 }
 
 package() {
-    cd "${srcdir}/src/github.com/fatih/gomodifytags"
-    install -Dm755 gomodifytags "${pkgdir}/usr/bin/gomodifytags"
+	install -Dm755 bin/* -t "$pkgdir/usr/bin"
+	cd "${pkgname}-${pkgver}"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

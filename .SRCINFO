@@ -1,16 +1,13 @@
-pkgbase = gomodifytags-git
+pkgbase = gomodifytags
 	pkgdesc = Go tool to modify struct field tags
-	pkgver = 40.20180122
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/fatih/gomodifytags
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = go
-	makedepends = git
-	depends = glibc
-	source = git+https://github.com/fatih/gomodifytags
-	md5sums = SKIP
+	source = https://github.com/fatih/gomodifytags/archive/v1.13.0.tar.gz
+	sha512sums = b47b05203f11731dac2dacdb0c725ff822915f1d4801cbc761ad34e3a2a70abc4feb22caefdc54c2c04b76754edf1d7eebc50b6224b51492db588668330217ed
 
-pkgname = gomodifytags-git
+pkgname = gomodifytags
 
