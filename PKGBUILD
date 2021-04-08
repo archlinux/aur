@@ -1,10 +1,11 @@
-# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
-# Contributer: Alessandro Gario
+# Maintainer: Tobias Frisch <thejackimonster@gmail.com>
+# Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
+# Contributor: Alessandro Gario
 
 pkgname=manuskript-git
 _pkgname=manuskript
 pkgver=0.11.0.r0.g12defa8
-pkgrel=2
+pkgrel=3
 arch=('any')
 
 pkgdesc="Manuskript is an open-source tool for writers (git version)."
@@ -17,6 +18,7 @@ conflicts=('manuskript')
 makedepends=('git' 'gendesk')
 depends=('python-pyqt5' 'qt5-svg' 'python-lxml')
 optdepends=(
+	'python-languagetool: spell and grammar check support'
     'python-pyenchant: spell check support'
     'python-markdown: export as html'
     'pandoc: more export formats'
