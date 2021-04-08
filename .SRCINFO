@@ -1,0 +1,13 @@
+pkgbase = go-exp-git
+	pkgdesc = Experimental and unreliable for the Go programming language.
+	pkgver = r601.4513512a
+	pkgrel = 1
+	url = https://github.com/golang/exp
+	arch = any
+	license = BSD
+	makedepends = go
+	source = git+https://go.googlesource.com/exp
+	sha512sums = SKIP
+
+pkgname = go-exp-git
+
