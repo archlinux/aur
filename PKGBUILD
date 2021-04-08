@@ -2,16 +2,17 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 
 pkgname=glow-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64')
 url="https://github.com/charmbracelet/${pkgname%-bin}"
 license=('MIT')
+depends=('glibc')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('eeb580f286c0b1a2772763236b69a4771fa55d37e003e6b6c80af534743ead45')
+sha256sums_x86_64=('ab7b4cf9ae6e20d6c898688c5f33876297f9ef04616cbceff8e0379df9d06321')
 
 package() {
     install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
