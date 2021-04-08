@@ -1,4 +1,4 @@
-# Maintainer: RonaldMcDaddy <grimm72eaper at pm dot me>
+# Maintainer: BootyBlaster <grimm72eaper at pm dot me>
 pkgname=myxer-bin
 pkgver=1.3.3
 pkgrel=1
