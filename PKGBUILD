@@ -15,7 +15,7 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron
 pkgver=1.54.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
@@ -25,7 +25,7 @@ optdepends=('bash-completion: Bash completions'
             'x11-ssh-askpass: SSH authentication')
 makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
 conflicts=('code')
-provides=('vscode')
+provides=('code' 'vscode')
 install='code-transparent.install'
 source=("$_pkgname::git+$url.git#tag=$pkgver"
         'code.js'
