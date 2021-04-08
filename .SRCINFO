@@ -1,7 +1,7 @@
 pkgbase = hivemind-bin
 	pkgdesc = Hivemind is a process manager for Procfile-based applications
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DarthSim/hivemind
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=hivemind-bin
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Hivemind is a process manager for Procfile-based applications"
 arch=("x86_64")
 url="https://github.com/DarthSim/hivemind"
@@ -18,6 +18,6 @@ prepare() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname/hivemind"
-  install -d "$pkgdir/usr/bin" && ln -s "/opt/$pkgname/hivemind" "$_/hivemind"
+  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/hivemind/hivemind"
+  install -d "$pkgdir/usr/bin" && ln -s "/opt/hivemind/hivemind" "$_/hivemind"
 }
