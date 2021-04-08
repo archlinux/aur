@@ -15,5 +15,6 @@ sha256sums_x86_64=('e2a93713974c6877513e03a264ed0c0cbc7c200d9da2167e7f0ffb6c9980
 sha256sums_i686=('2c8f80f1d8546f398cf6f4865591d5ff77bce8457294bd1a297902b2cbacc791')
 
 package() {
+    # Test
 	install -Dm 0755 driftctl -t "${pkgdir}/usr/bin"
 }
