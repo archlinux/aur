@@ -1,3 +1,30 @@
+2021.4.8:
+- [video] Fix hls extractor, issue #233
+- [gui] bind some keyboard keys to downloads tab and popup window, e.g. Enter, Delete, and Escape keys.
+- [gui - Main tab] direct filename edit, instead of popup window, issue #229
+- [gui - Main tab] discard blank values for download folder in frequent used folders list.
+- [gui] enhancement for theme editor.
+- [gui - Main tab] right click menu for copy/paste/clear url entry, issue #235
+- [gui - downloads tab] add delete button back to download item, issue #235
+- [gui - downloads tab] no need to restart application to enable/disable autoscroll for downloads tab.
+- [gui - downloads tab] fix stat label size change when selecting an item.
+- [gui] Create new tab for application "update".
+- [appimage] fix update issue on appimage releases, since it can't be automatically updated, it will only open a latest release page.
+
+2021.4.3:
+- [downloads tab] Natural items select, click anywhere to select an item, issue #229, removed checkbox, use control, and shift for multiple selection
+- [ditem] fix extension letters doesn't fit in thumbnail if its more than letters, e.g. .AppImage
+- [downloads tab] Schedule multiple items at once.
+- [downloads tab] Add stat info for current items to show how many items are downloading, cancelled, pending, etc...
+- [Main tab] Add folder icon, issue #229
+
+2021.3.30:
+- Add pc-shutdown and on-completion command to global settings, issue #225
+- [download tab] fix tab resize when deleting multiple d_items.
+- [cmd line] add some cmd line options.
+- [gui] wider scrollbars, issue #229
+- [video] fix for crunchyroll.com, issue #230
+
 2021.3.23:
 - [New feature] add on completion pc shutdown option, issue #225.
 - [New feature] add on completion custom command option, issue #225

@@ -1,15 +1,15 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname=firedm
-pkgver=2021.3.23
-pkgrel=2
+pkgver=2021.4.8
+pkgrel=1
 pkgdesc="Python open source alternative to IDM (Internet Download Manager)"
 arch=('any')
 url='https://github.com/firedm/FireDM'
 license=('LGPL3')
 depends=('ffmpeg'
          'python>=3.6' 
-         'python-awesometkinter>=2021.3.19'
+         'python-awesometkinter>=2021.4.2'
          'python-certifi'
          'python-packaging'
          'python-pillow>=6.0.0'
@@ -22,7 +22,7 @@ makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 replaces=('pyidm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/firedm/FireDM/archive/$pkgver.tar.gz")
-b2sums=('af994d8d521b654eab78ec3b8c2c8479a4305aa7b3322201732903e50fe604fca7408ff8a362810586d2a9f20650fe51ac9a9ce40f6dc6db3d114fdf367224f9')
+b2sums=('91960718ece68811a0aa7c8713472eaa80f6520165a0ef5fe46ee04e655ba63748f298dead2afe4ac3e81307096f1b7e41c7a377a63c91b962123442a3be6ea1')
 
 build() {
   cd "$srcdir/FireDM-$pkgver"
@@ -31,6 +31,5 @@ build() {
 
 package() {
   cd "$srcdir/FireDM-$pkgver"
-
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
 }
