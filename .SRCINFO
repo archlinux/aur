@@ -1,7 +1,7 @@
 pkgbase = insight-toolkit
 	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
 	pkgver = 5.1.2
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.itk.org/
 	arch = i686
 	arch = x86_64

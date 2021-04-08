@@ -6,7 +6,7 @@
 
 pkgname=insight-toolkit
 pkgver=5.1.2
-pkgrel=13
+pkgrel=14
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
@@ -58,6 +58,7 @@ build() {
     -DITK_USE_SYSTEM_HDF5:BOOL=ON \
     -DModule_ITKIOMINC:BOOL=ON \
     -DModule_ITKIOTransformMINC:BOOL=ON \
+    -DModule_SimpleITKFilters:BOOL=ON \
     ../InsightToolkit-${pkgver}
 
   make
