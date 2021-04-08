@@ -5,8 +5,8 @@
 pkgbase=http-prompt
 pkgname=http-prompt
 _module='http-prompt'
-pkgver='1.0.0'
-pkgrel=3
+pkgver='2.1.0'
+pkgrel=1
 pkgdesc="An interactive HTTP command-line client"
 url="https://github.com/eliangcs/http-prompt"
 depends=('python'
@@ -22,7 +22,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/h/http-prompt/http-prompt-${pkgver}.tar.gz")
-md5sums=('aee6b913be3190f66f8765281ce3d8f0')
+md5sums=('e483bea0b0da9677c3bc6466fa9a2921')
 
 prepare() {
     cd "${srcdir}/${_module}-${pkgver}"
@@ -33,5 +33,5 @@ package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
     sed -e 's/prompt-toolkit/prompt-toolkit1/g' -i \
-        "${pkgdir}/usr/lib/python3.9/site-packages/http_prompt-1.0.0-py3.9.egg-info/requires.txt"
+        "${pkgdir}/usr/lib/python3.9/site-packages/http_prompt-${pkgver}-py3.9.egg-info/requires.txt"
 }

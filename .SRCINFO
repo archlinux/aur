@@ -1,7 +1,7 @@
 pkgbase = http-prompt
 	pkgdesc = An interactive HTTP command-line client
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/eliangcs/http-prompt
 	arch = any
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = http-prompt
 	depends = python-parsimonious
 	depends = python-pip
 	depends = python-pyaml
-	source = https://files.pythonhosted.org/packages/source/h/http-prompt/http-prompt-1.0.0.tar.gz
-	md5sums = aee6b913be3190f66f8765281ce3d8f0
+	source = https://files.pythonhosted.org/packages/source/h/http-prompt/http-prompt-2.1.0.tar.gz
+	md5sums = e483bea0b0da9677c3bc6466fa9a2921
 
 pkgname = http-prompt
 
