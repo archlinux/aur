@@ -3,13 +3,13 @@
 # Contributor: Mark Coolen <mark ddoott coolen aatt gmail ddoott ccoomm nniiccee!>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-pkgname="xournalpp-xdg-portal"
+pkgname="xournalpp-micro"
 
-pkgver=1.0.20.hotfix.r1.gaef5056c
-pkgrel=1
-pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
+pkgver=1.0.20_cust
+pkgrel=3
+pkgdesc='Handwriting notetaking software with PDF annotation support (custom patches)'
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/Microeinstein/xournalpp-xdg-portal"
+url="https://github.com/Microeinstein/xournalpp-custom"
 license=('GPL2')
 makedepends=('git' 'cmake' 'cppunit')
 depends=('texlive-bin' 'gtk3' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua' 'libzip')
