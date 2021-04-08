@@ -6,8 +6,8 @@
 
 pkgname=qgnomeplatform
 _pkgname=QGnomePlatform
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Qt Platform Theme aimed to accomodate as much of GNOME settings 
 as possible"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="https://github.com/FedoraQt/QGnomePlatform"
 license=('LGPL2.1')
 depends=('gtk3' 'qt5-wayland' 'adwaita-qt>=1.2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/$pkgver.tar.gz")
-sha256sums=('ba329f67bdc0a0d8fc13d61d7828ee7c3fcb8ec6caa71e0b38c66da7eca88fc7')
+sha256sums=('f479ea5ca28108bc6b66e6790c35831d0e359b709db93f49d1b7015d25335eb9')
 
 prepare() {
   cd $_pkgname-$pkgver
