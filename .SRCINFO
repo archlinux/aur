@@ -1,0 +1,17 @@
+pkgbase = storyboarder
+	pkgdesc = The best way to visualize your story. It makes it easy to visualize a story as fast you can draw stick figures.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://wonderunit.com/storyboarder/
+	arch = x86_64
+	makedepends = nvm
+	makedepends = nodejs
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = storyboarder
+	options = !strip
+	source = https://github.com/wonderunit/storyboarder/archive/refs/tags/v3.0.0.zip
+	md5sums = e4d21697c9f90adf7344a87917aa3a6f
+
+pkgname = storyboarder
+
