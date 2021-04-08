@@ -6,8 +6,8 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.70.git.11.g3cac2756
-pkgrel=2
+pkgver=2.71.git.3.gbbb1ed00
+pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
@@ -15,7 +15,8 @@ license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'gsl' 'fftw' 'libsigsegv')
 makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm' 'librsvg')
 optdepends=('python-pyqt5:      for the xasy GUI'
-            'tix:               for the xasy GUI')
+            'tix:               for the xasy GUI'
+	    'python-cson:       for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
 source=('git+https://github.com/vectorgraphics/asymptote.git' remove_include.patch)
@@ -58,5 +59,6 @@ package() {
 	  "$pkgdir"/usr/share/vim/vimfiles/syntax/asy.vim
   install -Dm644 "$pkgdir"/usr/share/asymptote/asy_filetype.vim \
 	  "$pkgdir"/usr/share/vim/vimfiles/ftdetect/asy.vim
-  rm "$pkgdir"/usr/share/asymptote/asy.vim "$pkgdir"/usr/share/asymptote/asy_filetype.vim
+  rm "$pkgdir"/usr/share/asymptote/asy.vim \
+     "$pkgdir"/usr/share/asymptote/asy_filetype.vim
 }
