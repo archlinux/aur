@@ -1,6 +1,6 @@
 pkgbase = firedragon
 	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled.
-	pkgver = 89.0a1.r641729+
+	pkgver = 89.0a1.r642117+
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
@@ -44,7 +44,7 @@ pkgbase = firedragon
 	depends = nss-hg
 	depends = ttf-font
 	depends = libpulse
-	depends = whoogle-git
+	depends = whoogle
 	depends = libvpx
 	depends = libjpeg
 	depends = zlib

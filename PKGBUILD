@@ -9,14 +9,14 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=89.0a1.r641729+
+pkgver=89.0a1.r642117+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse whoogle-git
+         ffmpeg nss-hg ttf-font libpulse whoogle
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust mozilla-common xorg-server-xwayland xorg-server-xvfb
