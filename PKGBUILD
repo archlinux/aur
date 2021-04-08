@@ -19,7 +19,7 @@ source=(
     "compile.patch"
     "pythia.patch"
 )
-sha256sums=('7c4aecc1e933d24629ec2723ca3d65a3619e12a9e1f9f9bc6cda6e462f4de478'
+sha256sums=('f90cf4323f2c78bc84f70f5692cd4434452b100d0d1dd803a4989f25dcd74131'
             '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64'
             'a2342b3d981e1c8d737244e3ec68f11b1e8c4f18502bce5dc7afcc1335910452'
             'aba91f30a37d67294a2b948870b2308f4dd2dbbba0cfa53f743b5d84e05cafbc')
