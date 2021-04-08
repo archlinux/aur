@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.35.1
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='Quick little editor limited by VT100'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=ca172718ee818ffc942b4c37286243f631320e56") # tag: 2.35.1
+source=("git+$url#commit=113fa49898e6e476ba12bb88840b02418447914f") # tag: 2.36.0
 optdepends=('cxx: for compiling C++'
             'brittany: for formatting Haskell'
             'clang: for formatting C++ code with clang-format'
@@ -30,8 +30,10 @@ optdepends=('cxx: for compiling C++'
             'fpc: for compiling Object Pascal'
             'lua-format: for formatting Lua'
             'lua: for compiling Lua'
-            'tidy: for formatting HTML')
-sha256sums=('SKIP')
+            'tidy: for formatting HTML'
+            'scala: for compiling Scala'
+            'fstabfmt: for formatting /etc/fstab')
+b2sums=('SKIP')
 
 build() {
   cd $pkgname
@@ -39,9 +41,10 @@ build() {
 }
 
 package() {
-  install -Dm755 $pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
-  ln -sf '/usr/bin/o' "$pkgdir/usr/bin/red"
-  ln -sf '/usr/bin/o' "$pkgdir/usr/bin/light"
-  install -Dm644 $pkgname/$pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
-  install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $pkgname
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/light"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/red"
+  install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

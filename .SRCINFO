@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Quick little editor limited by VT100
-	pkgver = 2.35.1
+	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -29,8 +29,10 @@ pkgbase = o
 	optdepends = lua-format: for formatting Lua
 	optdepends = lua: for compiling Lua
 	optdepends = tidy: for formatting HTML
-	source = git+https://github.com/xyproto/o#commit=ca172718ee818ffc942b4c37286243f631320e56
-	sha256sums = SKIP
+	optdepends = scala: for compiling Scala
+	optdepends = fstabfmt: for formatting /etc/fstab
+	source = git+https://github.com/xyproto/o#commit=113fa49898e6e476ba12bb88840b02418447914f
+	b2sums = SKIP
 
 pkgname = o
 
