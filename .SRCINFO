@@ -1,6 +1,6 @@
 pkgbase = bitwarden-cli-bin
 	pkgdesc = Natively packaged versions of the bitwarden cli
-	pkgver = 1.13.3
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://github.com/bitwarden/cli
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = bitwarden-cli-bin
 	provides = bitwarden-cli
 	conflicts = bitwarden-cli
 	options = !strip
-	source = https://github.com/bitwarden/cli/releases/download/v1.13.3/bw-linux-1.13.3.zip
-	sha512sums = 0c91958ddf0ffa0676182b6e7183822454314b84743103637a69b37a17b1b67430798500305c687e0f3df6647bed241a0e98baf5f1c47de08bce36c3d903d37e
+	source = https://github.com/bitwarden/cli/releases/download/v1.15.1/bw-linux-1.15.1.zip
+	sha512sums = ae122984d368f4fc5af9a709fd4d2201521b9fb30d241a22178e37a0e8e016b7ebf408a27492a982811405af2615e09e94de9eca82cdb0026cc43bc7167e1000
 
 pkgname = bitwarden-cli-bin
 

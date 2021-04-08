@@ -2,7 +2,7 @@
 
 pkgname=bitwarden-cli-bin
 _pkgname=bitwarden-cli
-pkgver=1.13.3
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Natively packaged versions of the bitwarden cli'
 arch=(x86_64)
@@ -21,7 +21,9 @@ conflicts=('bitwarden-cli')
 
 package() {
   install -Dm755 bw "$pkgdir/usr/bin/bw"
+  "$pkgdir/usr/bin/bw" completion --shell zsh > completion 2> /dev/null
+  install -Dm644 completion "$pkgdir/usr/share/zsh/vendor-completions/_bw"
 }
 
-sha512sums=('0c91958ddf0ffa0676182b6e7183822454314b84743103637a69b37a17b1b67430798500305c687e0f3df6647bed241a0e98baf5f1c47de08bce36c3d903d37e')
+sha512sums=('ae122984d368f4fc5af9a709fd4d2201521b9fb30d241a22178e37a0e8e016b7ebf408a27492a982811405af2615e09e94de9eca82cdb0026cc43bc7167e1000')
 # vim:set ts=2 sw=2 et:
