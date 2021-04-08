@@ -19,7 +19,7 @@ _veryear=2021
 _verrelease=1
 _verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
 arch=('any')
 options=(!strip)
@@ -27,15 +27,11 @@ url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-    source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-${_JBR}.tar.gz"
-            'idea-ue-eap.sh')
-    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
-                '2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd')
+    source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-${_JBR}.tar.gz")
+    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" "))
 else
-    source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.tar.gz"
-            'idea-ue-eap.sh')
-    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
-                '2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd')
+    source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.tar.gz")
+    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" "))
 fi
 
 prepare() {
@@ -82,7 +78,7 @@ EOF
     for i in $(ls $srcdir/${_pkgname}-$_buildver/license/ ); do
       ln -sf "${srcdir}/${_pkgname}-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
     done
-    install -Dm 755 "idea-ue-eap.sh" "${pkgdir}/usr/bin/idea-ue-eap"
+    ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ue-eap"
 }
 
 # vim:set ts=4 sw=4 et:
