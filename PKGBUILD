@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 
 pkgname=whoogle-git
-pkgver=0.3.1_r247.ge912b8f
+pkgver=0.4.0_r282.g0baba58
 pkgrel=1
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
@@ -9,6 +9,8 @@ url="https://github.com/benbusby/whoogle-search"
 license=(MIT)
 depends=(python)
 makedepends=(git)
+provides=(whoogle)
+conflicts=(whoogle)
 source=("git+$url.git"
         whoogle.service)
 sha256sums=('SKIP'
