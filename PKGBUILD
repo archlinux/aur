@@ -3,8 +3,8 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r7730
-pkgrel=2
+pkgver=r7832
+pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
 url="https://mixxx.org/"
@@ -66,7 +66,7 @@ prepare() {
     -DFAAD=ON \
     -DLILV=ON \
     -DFFMPEG=ON \
-    -DKEYFINDER=OFF \
+    -DKEYFINDER=ON \
     -DMAD=ON \
     -DMODPLUG=ON \
     -DOPUS=ON \
