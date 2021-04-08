@@ -1,7 +1,7 @@
 [Unit]
 Description=daemon for ALSA RAVENNA/AES67 Driver
-Requires=sound.target
-After=sound.target
+Requires=sound.target avahi-daemon.service
+After=sound.target avahi-daemon.service
 
 [Service]
 Type=simple
