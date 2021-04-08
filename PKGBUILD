@@ -2,7 +2,7 @@
 # Contributor: gost-engine
 
 pkgname=openssl-gost
-pkgver=r634.42a6213
+pkgver=r656.336c30e
 pkgrel=1
 pkgdesc='A reference implementation of the Russian GOST crypto algorithms for OpenSSL'
 url='https://github.com/gost-engine/engine/'
@@ -10,7 +10,7 @@ license=('Apache License 2.0')
 arch=('x86_64')
 depends=('openssl')
 makedepends=('cmake' 'git')
-_commit=42a6213fe3bab6003121069ef28a1419e2342b3c
+_commit=336c30e54ca42f54641ee06c9dce26ecd454b6ea
 source=("${pkgname}::git+https://github.com/gost-engine/engine.git#commit=${_commit}" "openssl-gost.cnf" "openssl-gost.install")
 install='openssl-gost.install'
 sha256sums=('SKIP'
@@ -38,6 +38,6 @@ package() {
   cd ${srcdir}/${pkgname}/build/bin
   install -Dm755 gost.so.1.1 "$pkgdir/usr/lib/engines-1.1/gost.so.1.1"
   install -Dm755 gostsum "$pkgdir/usr/bin/gostsum"
-  install -Dm755 gost12sum "$pkgdir/usr/local/bin/gost12sum"
+  install -Dm755 gost12sum "$pkgdir/usr/bin/gost12sum"
   ln -s /usr/lib/engines-1.1/gost.so.1.1 "$pkgdir/usr/lib/engines-1.1/gost.so"
 }
