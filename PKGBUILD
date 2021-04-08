@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=overmind-bin
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Overmind is a process manager for Procfile-based applications and tmux"
 arch=("x86_64")
 url="https://github.com/DarthSim/overmind"
@@ -19,6 +19,6 @@ prepare() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname/overmind"
-  install -d "$pkgdir/usr/bin" && ln -s "/opt/$pkgname/overmind" "$_/overmind"
+  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/overmind/overmind"
+  install -d "$pkgdir/usr/bin" && ln -s "/opt/overmind/overmind" "$_/overmind"
 }
