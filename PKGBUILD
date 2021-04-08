@@ -5,9 +5,9 @@
 
 pkgname="xournalpp-xdg-portal"
 
-pkgver=1.0.20.hotfix.r1.gaef5056c
-pkgrel=1
-pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
+pkgver=1.0.20
+pkgrel=3
+pkgdesc='Handwriting notetaking software with PDF annotation support (patched to support native file chooser)'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Microeinstein/xournalpp-xdg-portal"
 license=('GPL2')
