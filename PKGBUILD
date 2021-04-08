@@ -11,7 +11,7 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=14.0.r41.g6bf178d79
+pkgver=14.0.r271.g1a194c991
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
@@ -44,7 +44,8 @@ build() {
     arch-meson pulseaudio build \
     -D stream-restore-clear-old-devices=true \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
-    -D udevrulesdir=/usr/lib/udev/rules.d
+    -D udevrulesdir=/usr/lib/udev/rules.d \
+    -D elogind=disabled
   ninja -C build
 }
 

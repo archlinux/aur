@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-git
 	pkgdesc = A featureful, general-purpose sound server (development version)
-	pkgver = 14.0.r41.g6bf178d79
+	pkgver = 14.0.r271.g1a194c991
 	pkgrel = 1
 	url = http://pulseaudio.org/
 	install = pulseaudio.install
@@ -80,7 +80,8 @@ pkgbase = pulseaudio-git
 	backup = etc/pulse/system.pa
 	backup = etc/pulse/client.conf
 	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git
+	source = pulseaudio.install
 	sha256sums = SKIP
+	sha256sums = 1d4890b10fadb9208c3fefbbed4aca1f22e63a0f102f4c598dc573a55e724cb2
 
 pkgname = pulseaudio-git
-
