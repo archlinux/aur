@@ -1,5 +1,5 @@
 pkgbase = go-exp-git
-	pkgdesc = Experimental and unreliable for the Go programming language.
+	pkgdesc = Experimental and unreliable tools for the Go programming language.
 	pkgver = r601.4513512a
 	pkgrel = 1
 	url = https://github.com/golang/exp

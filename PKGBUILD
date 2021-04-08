@@ -3,7 +3,7 @@
 pkgname=go-exp-git
 pkgver=r601.4513512a
 pkgrel=1
-pkgdesc="Experimental and unreliable for the Go programming language."
+pkgdesc="Experimental and unreliable tools for the Go programming language."
 arch=('any')
 url="https://github.com/golang/exp"
 license=('BSD')
