@@ -1,14 +1,11 @@
 pkgname="figma-linux"
-pkgver="0.7.1"
-pkgrel="2"
+pkgver="0.7.2"
+pkgrel="1"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/Figma-Linux/figma-linux"
 license=('GPL2')
-conflicts=("figma-bin")
-replaces=("figma-bin")
-source=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}/figma-linux-${pkgver}.zip"
-        "figma-linux.desktop"
+source=("figma-linux.desktop"
         "24x24.png"
         "36x36.png"
         "48x48.png"
@@ -20,10 +17,10 @@ source=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}
         "256x256.png"
         "384x384.png"
         "512x512.png")
+source_x86_64=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}/figma-linux_${pkgver}_linux_amd64.zip")
+source_aarch64=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}/figma-linux_${pkgver}_linux_arm64.zip")
 makedepends=("unzip")
-noextract=("figma-linux-${pkgver}.zip")
-sha256sums=("75e8e1c2a4686dc429bdd82aac0a70cb1a63eb1b976cec213b4f306c086e611b"
-            "21def936e0a912743e4f6b5832b7c59ff5437538f93b372ff1f2949d35579dc4"
+sha256sums=("21def936e0a912743e4f6b5832b7c59ff5437538f93b372ff1f2949d35579dc4"
             "c94eaaf01a82688ab7951ea1d1085f50c3ebed588993d68c173139db848b21c6"
             "40b456b40c557395b1d9cedd035c7d14a169f8207d60441177e1f3c0582768da"
             "72d0c9df5b81a7666a05751a38fe096f629096be73792355f6069024cf7c0412"
@@ -35,6 +32,9 @@ sha256sums=("75e8e1c2a4686dc429bdd82aac0a70cb1a63eb1b976cec213b4f306c086e611b"
             "1db635df7d84f73694303eba423acd75da892e084cf35c4e260bd5c6b56fcc1e"
             "5dc381da3bb02e5bc9d60cdbae3e3c5c8f249a83b4ef606721bb87559d0a122b"
             "e77bf9e7c699a53e69ba4a025e31ccf2b0a3b4c86acc842f7d0ecf1f8fe71ac2")
+
+sha256sums_x86_64=('737949397550481ea9dccd68972799f006e13bdb3ccb5d674c684d93989a54c3')
+sha256sums_aarch64=('943de408eb87e7245b7a4a5e59ef5c5d80d61cfeda22e896e309389edc86f851')
 
 package() {
   cd "${srcdir}"
@@ -48,7 +48,7 @@ package() {
   done
 
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  unzip -q "figma-linux-${pkgver}.zip" -d "${pkgdir}/opt/${pkgname}"
+  cp -rf ./* "${pkgdir}/opt/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/figma-linux" "${pkgdir}/usr/bin/figma-linux"
