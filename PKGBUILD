@@ -3,29 +3,30 @@
 
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
-pkgver=5.45
+pkgver=6.00
 pkgrel=1
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
 license=('BSD')
 conflicts=('xscreensaver' 'xscreensaver-hacks' 'mate-screensaver-hacks')
-depends=('libxmu' 'glu')
-makedepends=('bc' 'intltool' 'libxslt')
+depends=('libxmu' 'glu' 'libxi')
+makedepends=('bc' 'intltool' 'libxslt' 'openmotif')
 source=(http://www.jwz.org/xscreensaver/${_srcname}-${pkgver}.tar.gz
 	LICENSE
 	migrate-xscreensaver-config.sh
 	xscreensaver-config.xsl)
-sha1sums=('933cd5451bdfc4a2bf15bc49f629a8c8665cae62'
+sha1sums=('13ac90c2b684626da363a899021ad3509434c3cb'
           '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
           '19195ef59f0dbc61c6ed599a968213a8f0a7a5d4'
           'e561e36c7bae61c3f5da65e4fb19a22e698f4584')
 
 build() {
   cd ${_srcname}-${pkgver}
+  # need either motif or gtk2 for settings, but we do not pack it
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib --with-x-app-defaults=/usr/share/X11/app-defaults \
-    --with-pam --with-gl \
+    --with-pam --with-gl --with-motif \
     --without-gle --with-pixbuf --with-jpeg
   make
 }
