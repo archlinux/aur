@@ -5,7 +5,7 @@
 pkgbase=lib32-pipewire
 _pkgbase=pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
-pkgver=0.3.24
+pkgver=0.3.25
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor (32-bit client libraries)"
 url="https://pipewire.org"
@@ -15,7 +15,7 @@ makedepends=(git meson valgrind lib32-jack2 libpulse lib32-libpulse
              alsa-lib lib32-alsa-lib gstreamer lib32-gstreamer
              gst-plugins-base lib32-gst-plugins-base rtkit 
              lib32-dbus libsndfile lib32-libsndfile)
-_commit=c81d44e8a9497899d01bcc3054b6aa845e7a066e  # tags/0.3.24
+_commit=c324107211718043553337cb10d022fe9d2d12d8  # tags/0.3.25
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
