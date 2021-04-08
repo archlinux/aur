@@ -1,6 +1,6 @@
 pkgbase = chef-client
 	pkgdesc = The Chef Infra Client installation package includes everything you need to start converging your machines.
-	pkgver = 16.10.8
+	pkgver = 16.12.3
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-client/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = chef-client
 	conflicts = cinc
 	conflicts = chef-solo
 	conflicts = chef-dk
-	source = https://packages.chef.io/files/stable/chef/16.10.8/ubuntu/20.04/chef_16.10.8-1_amd64.deb
-	sha256sums = ad6d3550baa83e4a494856582a3a352c9aa02905e8a31648306ec795ca707cf3
+	source = https://packages.chef.io/files/stable/chef/16.12.3/ubuntu/20.04/chef_16.12.3-1_amd64.deb
+	sha256sums = e2ef7f9bb58a466ab9cce93e4a593cb62eaa49c6e7719d6cff0cb1d92b279a7a
 
 pkgname = chef-client
