@@ -1,13 +1,13 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=glrpt-git
-pkgver=r7.f98a90f
+pkgver=r49.ac14a9b
 pkgrel=1
 pkgdesc="Interactive GUI application for receiving, decoding and displaying LRPT images from the Russian Meteor-M type of weather satellites"
 arch=(i686 x86_64)
 license=('GPL3')
 url="https://github.com/dvdesolve/glrpt"
-depends=('gtk3>=3.22.0' glibc glib2 soapysdr)
+depends=('gtk3>=3.22.0' glibc glib2 soapysdr libconfig)
 makedepends=(git cmake make gcc)
 optdepends=('soapyrtlsdr: RTL-SDR support'
             'soapyairspy: Airspy support')
