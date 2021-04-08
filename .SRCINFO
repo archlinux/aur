@@ -1,0 +1,13 @@
+pkgbase = go-honnef-tools
+	pkgdesc = State of the art linter tooling for the Go programming language.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://honnef.co/go/tools
+	arch = any
+	license = BSD
+	makedepends = go
+	source = https://github.com/dominikh/go-tools/archive/v0.1.3.tar.gz
+	sha512sums = 01148c5156bd7d008224d26b4577b42e3da3651ea353d69d2f3c733afd8616492238276b042aca98a9523b749dca71ecb0b154ca1d2dedc74baf43f3688670c4
+
+pkgname = go-honnef-tools
+
