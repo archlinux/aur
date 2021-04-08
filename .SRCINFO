@@ -1,6 +1,6 @@
 pkgbase = caja-deja-dup-bzr
 	pkgdesc = Deja Dup extension for Caja File Browser
-	pkgver = 0.0.9.r24
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://launchpad.net/deja-dup-caja
 	arch = any
