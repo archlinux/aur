@@ -6,7 +6,7 @@ pkgdesc="Hexo deployment tool with typography theme"
 arch=(x86_64)
 url="https://gitlab.com/Sakura1943/hexo-deployer-with-theme-typography"
 license=('GPL')
-depends=('vim' 'nano' 'git' 'wget' 'curl' 'tar' 'gzip' 'zip' 'nodejs-lts-erbium')
+depends=('vim' 'nano' 'git' 'wget' 'curl' 'tar' 'gzip' 'zip' 'nodejs-lts-erbium' 'dialog')
 provides=(hexo-deployer-with-theme-typography=$pkgver)
 replaces=()
 backup=()

@@ -14,6 +14,7 @@ pkgbase = hexo-deployer-with-theme-typography
 	depends = gzip
 	depends = zip
 	depends = nodejs-lts-erbium
+	depends = dialog
 	provides = hexo-deployer-with-theme-typography=1.1
 	source = https://mirrors.yaoyz.cn/hexo//hexo.sh
 	md5sums = SKIP
