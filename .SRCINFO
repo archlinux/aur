@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-gcc
 	pkgdesc = The GNU Compiler Collection (mips64-ultra-elf)
-	pkgver = 10.2.0_r134.54b8f95
+	pkgver = 10.3.0_r141.479e768
 	pkgrel = 1
 	url = http://www.gnu.org/software/gcc/
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = mips64-ultra-elf-gcc
 	replaces = mips64-ultra-elf-gcc-stage1
 	options = !emptydirs
 	options = !strip
-	source = http://gcc.gnu.org/pub/gcc/releases/gcc-10.2.0/gcc-10.2.0.tar.xz
+	source = http://gcc.gnu.org/pub/gcc/releases/gcc-10.3.0/gcc-10.3.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.22.tar.xz
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
-	sha256sums = b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c
+	sha256sums = 64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344
 	sha256sums = 6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa
 	sha256sums = SKIP
 

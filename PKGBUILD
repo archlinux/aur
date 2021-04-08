@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc
-_gccver=10.2.0
+_gccver=10.3.0
 _islver=0.22
-pkgver=10.2.0_r134.54b8f95
+pkgver=10.3.0_r141.479e768
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!emptydirs' '!strip')
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+sha256sums=('64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
             '6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa'
             'SKIP')
 
