@@ -2,13 +2,13 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
 license=('MIT')
 depends=('gcc-libs' 'libxcb' 'fontconfig')
-makedepends=('git' 'rust' 'libx11')
+makedepends=('git' 'rust' 'libx11' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.txt"
         "$pkgname.desktop")
