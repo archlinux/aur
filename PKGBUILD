@@ -17,11 +17,11 @@ md5sums=('0804db101af7fddd6b47392c4656f4c5'
 pkgname=${_productRename,,}
 pkgname=${pkgname// /-}
 pkgver=7.1.3
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
-makedepends=('unzip')
+makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=("https://dls.photoprintit.com/download/Data/$_keyaccount-$_lang/hps/setup_${_productUrname// /_}.tgz"
 	'updater.pl')
