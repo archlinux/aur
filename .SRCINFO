@@ -1,0 +1,19 @@
+pkgbase = rgb2cmyk
+	pkgdesc = GUI to facilitate conversion of an image from RGB to CMYK colorspace
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jgmdev/rgb2cmyk
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = ninja
+	makedepends = meson
+	depends = wxgtk3
+	depends = colord
+	depends = imagemagick
+	source = https://github.com/jgmdev/rgb2cmyk/archive/refs/tags/v1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = rgb2cmyk
+
