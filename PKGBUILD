@@ -148,7 +148,7 @@ prepare(){
 build(){
 	cd $_pyname-$pkgver
 	python setup.py build
-	#sphinx-build -b html doc/source doc/build/html
+	sphinx-build -b html doc/source doc/build/html
 }
 
 #check(){
@@ -183,11 +183,13 @@ _package_pkg(){
 }
 
 _package_doc(){
-	pkgdesc="OpenStack Image Service Documents"
+	pkgdesc="${pkgdesc} Documents"
 	depends=()
 	cd $_pyname-$pkgver
-	mkdir -p "${pkgdir}/usr/share/doc"
-	#cp -r doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
+	DOCDIR=$pkgdir/usr/share/doc
+	mkdir -p "$DOCDIR"
+	cp -r doc/build/html "$DOCDIR/$pkgbase"
+	rm -r "$DOCDIR/$pkgbase/.doctrees"
 }
 
 eval "package_${pkgbase}(){ _package_pkg; }"
