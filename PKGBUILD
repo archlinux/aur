@@ -15,7 +15,7 @@ depends=('dbus-glib' 'libgnomekbd' 'gnome-desktop')
 makedepends=('intltool' 'gnome-common')
 optdepends=('gnome-backgrounds: default background')
 provides=('gnome-screensaver')
-source=(https://download.gnome.org/sources/gnome-screensaver/${pkgver%.*}/$pkgname-$pkgver.tar.xz
+source=(https://download.gnome.org/sources/gnome-screensaver/${pkgver%.*}/gnome-screensaver-$pkgver.tar.xz
        gnome-screensaver.pam
        move-desktop-file.patch
        fix-autoconf.patch
