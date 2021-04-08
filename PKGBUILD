@@ -2,19 +2,22 @@
 # Updated by Manuel Conzelmann, changed to non-branded software
 
 _keyaccount=16523
+# what they call their package (e.g. MY CEWE TOO MANY CAPITALS: $APPLICATION_NAME in install.pl)
 _productUrname='Mein CEWE FOTOBUCH'
+# what I want to call it (e.g. CEWE Sensible Name)
 _productRename='CEWE Fotobuch'
 _lang='de_DE'
 
-pkgname=cewe-fotobuch
-conflicts=(cewe-fotoservice)
+conflicts=(cewe-fotowelt)
 pkgdesc='an offline client for creating photobooks, uploading and ordering them at cewe.de'
-md5sums=('af6fbc4b5c9867f1f22782863211b75f'
-# template start; name=cewe; version=7.1.2;
+md5sums=('0804db101af7fddd6b47392c4656f4c5'
+# template start; name=cewe; version=7.1.3;
          '12ab17737db1c55035b6e7769132f791')
 
-pkgver=7.1.2
-pkgrel=2
+pkgname=${_productRename,,}
+pkgname=${pkgname// /-}
+pkgver=7.1.3
+pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
