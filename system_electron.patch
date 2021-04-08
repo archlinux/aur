@@ -1,5 +1,5 @@
 diff --git a/deps.edn b/deps.edn
-index 686b080e..0d3a2155 100755
+index 177d2eb1..be06750a 100755
 --- a/deps.edn
 +++ b/deps.edn
 @@ -1,4 +1,5 @@
@@ -9,19 +9,19 @@ index 686b080e..0d3a2155 100755
   {org.clojure/clojure         {:mvn/version "1.10.0"}
    cheshire/cheshire {:mvn/version "5.10.0"}
 diff --git a/gulpfile.js b/gulpfile.js
-index 1cf6f943..45df9e6c 100644
+index fce8f5fa..66e8e5a1 100644
 --- a/gulpfile.js
 +++ b/gulpfile.js
-@@ -122,3 +122,4 @@ exports.electronMaker = async () => {
+@@ -95,3 +95,4 @@ exports.electronMaker = async () => {
  exports.clean = common.clean
- exports.watch = gulp.parallel(common.keepSyncResourceFile, css.watchCSS)
+ exports.watch = gulp.series(common.syncResourceFile, gulp.parallel(common.keepSyncResourceFile, css.watchCSS))
  exports.build = gulp.series(common.clean, common.syncResourceFile, css.buildCSS)
 +exports.syncResourceFile = common.syncResourceFile
 diff --git a/package.json b/package.json
-index 2f4d41f5..7f1adb49 100644
+index d06f2840..cf255394 100644
 --- a/package.json
 +++ b/package.json
-@@ -63,7 +63,6 @@
+@@ -65,7 +65,6 @@
          "codemirror": "^5.58.1",
          "diff": "5.0.0",
          "diff-match-patch": "^1.0.5",
@@ -57,10 +57,10 @@ index 5a2f780c..7d2b8698 100644
    ]
  }
 diff --git a/resources/package.json b/resources/package.json
-index b59df68c..4ad708dc 100644
+index 1651f712..caa7a9d9 100644
 --- a/resources/package.json
 +++ b/resources/package.json
-@@ -24,12 +24,10 @@
+@@ -29,13 +29,11 @@
    },
    "devDependencies": {
      "@electron-forge/cli": "^6.0.0-beta.54",
@@ -69,9 +69,11 @@ index b59df68c..4ad708dc 100644
 -    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
      "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
      "@electron-forge/maker-zip": "^6.0.0-beta.54",
--    "electron-forge-maker-appimage": "trusktr/electron-forge-maker-appimage#patch-1",
--    "electron": "11.2.0"
+-    "electron": "11.2.0",
+-    "electron-builder": "^22.10.5",
+-    "electron-forge-maker-appimage": "trusktr/electron-forge-maker-appimage#patch-1"
 +    "@electron-forge/plugin-local-electron": "^6.0.0-beta.54",
-+    "electron": "^11.2.0"
++    "electron": "^11.2.0",
++    "electron-builder": "^22.10.5"
    }
  }
