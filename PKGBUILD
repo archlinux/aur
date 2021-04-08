@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.5-GE-1
-_commit=1a44e25fcee3be97a72f644473babd3af04f8721
+_srctag=6.5-GE-2
+_commit=232f2253693e2c75d317049312ec10227c35a0c7
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
@@ -189,7 +189,7 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-    ./patches/protonprep-nofshack.sh
+    ./patches/protonprep.sh
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
