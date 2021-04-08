@@ -1,5 +1,5 @@
 pkgname=lyriek-git
-pkgver=0.2.0.35.g257475b
+pkgver=0.2.1.40.g7ae4c90
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/bartwillems/lyriek/"
