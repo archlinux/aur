@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
@@ -19,8 +19,8 @@ makedepends=(
   # 'liburing' 'libsodium'
 )
 source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}.tar.bz2")
-sha256sums=('38fd67d998e4bca9ff199c9056a57c9b67c405ec95d9f04175a26efe56fb4c72')
-b2sums=('f2d969ff814fed4d075a0debafb2300ad95b3fb781f057fe2fab73323e89827c9673103f1c5cf1e4fc43d91884114b24acaaf959f712d11061d62566b425c218')
+sha256sums=('14fbb0fe3f8133e0e919098405d5d0a316fd6494a7f9804cec674f719919d67c')
+b2sums=('b83b7df085afb39df3aa9b139ce7cfeee71287ad8ce83433a2c3cf17a096e479da95e76057379be81ec79a819dfe9754a8df44492044fc49fbd1e2d4371af878')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
