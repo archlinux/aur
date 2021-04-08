@@ -3,8 +3,8 @@
 _pyname=tempest
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
-pkgver=26.1.0
-pkgrel=2
+pkgver=27.0.0
+pkgrel=1
 pkgdesc="OpenStack Integration Testing"
 arch=(any)
 url="https://docs.openstack.org/tempest/latest/"
@@ -47,9 +47,9 @@ checkdepends=(
 	python-flake8-import-order
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('7d8f867ab17f4b7c2a7dfc8245f11c62')
-sha256sums=('860c7cd48e3810e34ffa21224186d72f893994ae27a66eb1c068b4e7dc0894be')
-sha512sums=('4420840f767efa401fd43601a115b56696018f3c719e276cd0b9ec316ef47849f890493fe831081e88388ce04daf509ddf853d3d1b5ba9e62f1b4f850c4cf688')
+md5sums=('1f1d4e5dcf1fc333c4f15bc44812ed73')
+sha256sums=('8dc8b629cc15a578f25b79a517fa9bfe1630f59a0f07268c911724722e0b0c80')
+sha512sums=('2a484be6b8715c981c59576dab2fca1720c995321ff1b6f9fbe710bbb66848d918bd99f10ee14d1ec1e1c54ea6ba871a165e3ecc13f093667f4503c5a318df9e')
 
 export PBR_VERSION=$pkgver
 
