@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-obfuscate-git
-pkgver=0.0.2.r18.g8976c22
+pkgver=0.0.2.r25.g31a44ff
 pkgrel=1
 pkgdesc="Censor private information"
 arch=('x86_64')
