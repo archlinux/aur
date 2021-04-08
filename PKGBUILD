@@ -32,7 +32,6 @@ prepare() {
 build() {
 	cd "salad-applications-0.5.2/packages/desktop-app"	
 	npm install --force
-	npm install cliui
 	npm run lint
 	npm run build-app
 	npm run build-installer
