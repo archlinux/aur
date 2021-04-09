@@ -1,0 +1,20 @@
+pkgbase = sad-git
+	pkgdesc = Space Age seD
+	pkgver = r726.369079d
+	pkgrel = 1
+	url = https://github.com/ms-jpq/sad
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	optdepends = fzf: for tui usage
+	optdepends = diff-so-fancy: diff colourizer
+	optdepends = git-delta-git: diff colourizer
+	provides = sad
+	conflicts = sad
+	source = git+https://github.com/ms-jpq/sad.git
+	md5sums = SKIP
+
+pkgname = sad-git
+
