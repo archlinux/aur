@@ -5,12 +5,13 @@
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=2.13
-pkgver=2.13.r8.g030ca91
+pkgver=2.13.r9.g87f16b9
 pkgrel=2
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
 license=('GPL')
 arch=('x86_64')
+depends=('lua53')
 optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter'
             'pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
             'texlive-core: for pdf output')
