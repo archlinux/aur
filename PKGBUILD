@@ -2,7 +2,7 @@
 # Contributor: Maxs <max dot van dot den dot branden @t gmail dot com>
 
 pkgname=solarus-quest-editor
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
 arch=("i686" "x86_64")
@@ -11,15 +11,12 @@ license=("GPL" "custom")
 depends=("solarus" "qt5-base" "qt5-tools" "glm")
 makedepends=("cmake" "zip")
 checkdepends=()
-source=("https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
-        "qpainter-include.patch")
-sha256sums=('741f44c4e04316b67c9ec3fba636526c1013d61b32a23343f8a655e8a50f9ac7'
-            '02eb7a944b2161d471a1f14230da9f292cd29a8ac6427d331011b749efe7de47')
+source=("https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('c2e292bf34696968dfb0fe56fb21af8566b7a4001b84535c39e30ae7a3d9bb6e')
 
 prepare() {
   cd "$srcdir/$pkgname-v$pkgver"
 
-  patch -p1 < "$srcdir/qpainter-include.patch"
 }
 
 build() {
