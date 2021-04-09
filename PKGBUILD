@@ -25,7 +25,7 @@ prepare(){
      echo "[Desktop Entry]
 Name=Storyboader
 Exec=/opt/storyboarder/storyboarder
-Icon=storyboarder.png
+Icon=storyboarder
 Type=Application
 Terminal=false
 StartupNotify=true
