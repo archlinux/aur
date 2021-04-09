@@ -1,13 +1,15 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 _name=Av1an
-pkgname=python-av1an
+pkgname=av1an
 pkgver=6.1.post2
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
 url='https://github.com/master-of-zen/Av1an'
 license=('GPL3')
+provides=('python-av1an')
+conflicts=('python-av1an')
 makedepends=('python-setuptools')
 depends=('python>=3.6.0' 'python-numpy' 'python-scenedetect' 'opencv'
          'python-tqdm' 'python-psutil' 'python-scipy' 'python-matplotlib'
