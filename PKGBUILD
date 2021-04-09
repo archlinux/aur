@@ -1,9 +1,9 @@
-# Maintainer: Francisco Soto <ebobby(at)ebobby(dot)org>
+# Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
 _pkgname=system76
 _pkgbase=system76-power
 pkgname=system76-power
-pkgver=135
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -17,23 +17,13 @@ depends=(
 )
 makedepends=('rust')
 source=(
-  'system76::git+https://github.com/pop-os/system76-power.git#commit=d861dfd6553e68d214d9cbade99b334e347d0d16'
-  'graphics.patch'
+  'system76::git+https://github.com/pop-os/system76-power.git#commit=de596615d3d1037f2377f3736a371b922e9bf0e7'
   )
 sha1sums=(
   'SKIP'
-  'e486644709099b6348dc96d5f468ae289840dade'
 )
 
-pkgver() {
-  cd ${srcdir}/${_pkgname}
-  git rev-list --count HEAD
-}
-
 build() {
-  cd ${startdir}
-  patch -p0 < ${startdir}/graphics.patch
-
   cd ${srcdir}/${_pkgname}
 
   # Build and install base package

@@ -1,4 +1,4 @@
-_services="system76-power.service nvidia-fallback.service"
+_services="system76-power.service"
 
 _stop_services() {
   for service in $_services; do
