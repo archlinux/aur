@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+_USER="${SUDO_USER:-$USER}"
+_UI_APP_USER_DIR="/home/${_USER}/.config/IVPN"
+_UI_APP_USER_DIR_OLD="/home/${_USER}/.config/ivpn-ui" #(old productName='ivpn-ui' for app ver < 3.3.x)
+_AUTOSTART_FILE="/home/${_USER}/.config/autostart/ivpn-ui.desktop"
+
 silent() {
   "$@" > /dev/null 2>&1
 }
@@ -7,6 +12,18 @@ silent() {
 prepare() {
   # some linux versions have problems running Electron without this
   sudo chmod 4755 /opt/ivpn/ui/bin/chrome-sandbox || echo "[!] Failed to 'chmod' for '/opt/ivpn/ui/bin/chrome-sandbox'"
+}
+
+copySettingsFromOldAppVer() {
+  if [ -d $_UI_APP_USER_DIR ] ; then
+    # if application cache data already exists - do nothing
+    echo "[ ] App cache data already exists"
+  else
+    if [ -d $_UI_APP_USER_DIR_OLD ] ; then
+      echo "[+] Upgrading old app version cache data ..."
+      mv $_UI_APP_USER_DIR_OLD $_UI_APP_USER_DIR || echo "[-] Failed"
+    fi
+  fi
 }
 
 killapp() {
@@ -30,13 +47,13 @@ killapp() {
 }
 
 erase_leftovers() {
-  local _USER="${SUDO_USER:-$USER}"
-  local _UI_APP_USER_DIR="/home/${_USER}/.config/ivpn-ui"
-  local _AUTOSTART_FILE="/home/${_USER}/.config/autostart/ivpn-ui.desktop"
-
   if [ -d $_UI_APP_USER_DIR ] ; then
     echo "[+] Removing application cache data: '$_UI_APP_USER_DIR' ..."
     rm -rf $_UI_APP_USER_DIR || echo "[-] Failed"
+  fi
+  if [ -d $_UI_APP_USER_DIR_OLD ] ; then
+    echo "[+] Removing application cache data (old app version): '$_UI_APP_USER_DIR_OLD' ..."
+    rm -rf $_UI_APP_USER_DIR_OLD || echo "[-] Failed"
   fi
 
   if [ -f $_AUTOSTART_FILE ]; then
@@ -64,6 +81,7 @@ post_install() {
 
 post_upgrade() {
 	prepare;
+  copySettingsFromOldAppVer;
 }
 
 post_remove() {
