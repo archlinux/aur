@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-warp-time-git
-pkgver=0.2.0.r10.gf80c61e
+pkgver=0.4.0.r5.gb618b72
 pkgrel=1
 pkgdesc='reset file timestamps to repo state'
 arch=(x86_64)
@@ -21,22 +21,25 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
+    sed Makefile.am -i \
+        -e "/^licensedir = /s#.(_gwt)\$#$pkgname#" \
+        -e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
+    ./bootstrap.sh
     cargo fetch --locked
 }
 
 build() {
 	cd "$pkgname"
-	cargo build --release --locked --all-features
+    ./configure --prefix "/usr"
+    make
 }
 
 check() {
 	cd "$pkgname"
-	cargo test
+    make check
 }
 
 package() {
 	cd "$pkgname"
-	install -Dm755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+    make DESTDIR="$pkgdir" install
 }
