@@ -30,7 +30,7 @@ noextract=()
 md5sums=('9346e79e8e1c98b5457a03e02febca9c'
          '811aa82780b7f9c986048325dab17372'
          '07d59ac194c4aa8ee0de284283796461'
-         'b2cee66ea77a0d76460131144d0a16b0')
+         '2b70f56ac58d8ba3e496bab23b8beb07')
 validpgpkeys=()
 
 prepare() {
