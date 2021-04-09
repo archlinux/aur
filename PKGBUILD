@@ -54,7 +54,6 @@ package()
     mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
     
     # Install the software.
-    install -d "${pkgdir}/usr/share/webapps" # todo
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
     chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js" # todo
