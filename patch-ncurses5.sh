@@ -38,5 +38,5 @@ ncurses_name_offset=$(hex $(("$section_dynstr_offset" + "0x$(xxd -s $(("$ncurses
 printf 'libtinfo.so.5\x00' | dd conv=notrunc of="$BINARY" bs=1 seek=$(("$ncurses_file_offset")) 2> /dev/null
 
 printf 'NCURSES_TINFO_5.0.19991023\x00\x00' | dd conv=notrunc of="$BINARY" bs=1 seek=$(("$ncurses_name_offset")) 2> /dev/null
-# ElfHash("NCURSES_TINFO_5.0.19991023") = 0x02a6c531
+# ElfHash("NCURSES_TINFO_5.0.19991023") = 0x02a6c513
 printf '\x13\xc5\xa6\x02' | dd conv=notrunc of="$BINARY" bs=1 seek=$(("$ncurses_verdaux_offset")) 2> /dev/null
