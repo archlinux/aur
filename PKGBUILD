@@ -61,11 +61,11 @@ dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/B
 
     # Create btcpayserver-start.sh.
     echo -e "#!/bin/bash
-    tmux new-session -s ${_pkgname} -d \"${_pkgname};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname}-start.sh
+tmux new-session -s ${_pkgname} -d \"${_pkgname};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname}-start.sh
 
     # Create btcpayserver-stop.sh.
     echo -e "#!/bin/bash
-    tmux kill-session -t ${_pkgname}" > ${srcdir}/${_pkgname}/${_pkgname}-stop.sh
+tmux kill-session -t ${_pkgname}" > ${srcdir}/${_pkgname}/${_pkgname}-stop.sh
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
