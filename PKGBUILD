@@ -15,7 +15,10 @@ depends=(
   'systemd'
   'system76-dkms'
 )
-makedepends=('rust')
+makedepends=(
+  'git'
+  'rust'
+)
 source=(
   'system76::git+https://github.com/pop-os/system76-power.git#commit=de596615d3d1037f2377f3736a371b922e9bf0e7'
   )
