@@ -3,7 +3,7 @@
 _pkgname=system76
 _pkgbase=system76-power
 pkgname=system76-power
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -20,9 +20,9 @@ source=(
 "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 'use-mkinitcpio.patch'
 )
-sha1sums=(
-'b2a3de65b4b25206cf77050d7ca70ca6ae680022'
-'39969f4afb7bc50c4545f44a79529a62ebb37ef2'
+sha256sums=(
+'bb7bedc4b614f079fae63a9a0d6b205074eacd749e6bddd9b8dd7a36d60e432c'
+'6d59cb091858b65a0ad6682dda29ec1d970066f67a7b50430960989f6c428891'
 )
 
 prepare() {
