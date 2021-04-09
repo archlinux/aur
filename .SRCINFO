@@ -1,0 +1,15 @@
+pkgbase = python-argparse-addons
+	pkgdesc = Additional Python argparse types and actions
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/eerimoq/argparse_addons
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-argparse-addons
+	source = python-argparse-addons-0.7.0.tar.gz::https://github.com/eerimoq/argparse_addons/archive/0.7.0.tar.gz
+	sha512sums = 4f01f56df852e7bc28bc8af905c88b7eaf50b3d6caa4f191f33163dd0bb69010b0e936f5515aca93bf68433194da0bf776f6ed976f4b3dc3ed1d465a21c500cb
+
+pkgname = python-argparse-addons
+
