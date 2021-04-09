@@ -1,17 +1,17 @@
 pkgbase = beanprice
 	pkgdesc = Price quotes fetcher for Beancount
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/beancount/beanprice
 	arch = any
 	license = GPL
-	depends = beancount>=2.3.1
+	depends = beancount>=2.3.4
 	depends = python-dateutil
 	depends = python-requests
 	provides = beanprice
 	conflicts = beanprice-git
-	source = beanprice-1.1.0.tar.gz::https://github.com/beancount/beanprice/archive/v1.1.0.tar.gz
-	sha256sums = 78349ec9a0895507dad9dd659cee6d40ef0f01b5e64661df49c037d727b5952e
+	source = beanprice-1.2.0.tar.gz::https://github.com/beancount/beanprice/archive/v1.2.0.tar.gz
+	sha256sums = 42e8b8cca9ebf554a748c2871ce8e4a02ae94a9b27441dc41b14926de7f33731
 
 pkgname = beanprice
 
