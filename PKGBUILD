@@ -1,5 +1,6 @@
-# Maintainer: Angel Velasquez <angvp@archlinux.org>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
