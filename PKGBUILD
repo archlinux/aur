@@ -2,12 +2,12 @@
 
 pkgname=bangin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A primitive, portable shell script which enables DuckDuckGo-like bangs"
-url="https://github.com/samhh/bangin/"
+url="https://git.sr.ht/~samhh/bangin"
 arch=('any')
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/samhh/bangin/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('95263a2d8d34f6460e89de435f7ca22f65d07a661e631b4658b2c2778ec0b10c')
 
 package() {
