@@ -8,7 +8,6 @@ pkgbase = matomo-git
 	makedepends = composer
 	makedepends = git
 	makedepends = gzip
-	makedepends = sudo
 	depends = php
 	depends = php-fpm
 	depends = php-gd
