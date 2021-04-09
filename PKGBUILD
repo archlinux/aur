@@ -1,6 +1,6 @@
 # Maintainer: helix <stargr@gmail.com>
 pkgname=debtap
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='A script to convert .deb packages to Arch Linux packages, focused on accuracy. Do not use it to convert packages that already exist on official repositories or can be built from AUR!'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/helixarch/debtap"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/helixarch/debtap/archive/$pkgver.tar.gz"
         "debtap.install")
 
-sha512sums=('404ede5248796ccb1555557f155a5a066044f8ad71c7cb6b8d2941f98a8d122b85d3935d359208e05fd86e9fa055ae9deaabfc05352b6d2719de1a8e3aeac8b5'
+sha512sums=('0bb475f9bb817585cf0c36b89ce89154a37d050a82279c5fd32a45b798bc7ce4aafe7d60e455b33c676c79774d344638ffd703f2f571475770186abd101bc0eb'
             '5317cf5da1142ed83b1b11c60ee4a70ad74d21f6f98c59b0ec45ad4026d4db4952fe061fb493e3a92675e6bb558ea059677db2bcf42b620cb71d5b772b288008')
 
 install=debtap.install
