@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=jCadencii
+GenericName=jCadencii
+X-GNOME-FullName=jCadencii
+Comment=jCadencii
+Keywords=jCadencii,Cadencii;
+Exec=jcadencii
+Terminal=false
+Type=Application
+Categories=Multimedia;Qt;
