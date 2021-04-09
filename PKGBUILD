@@ -4,7 +4,8 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.5.2.1.r0.g0d9ec6f
+_etover=2.5.10
+pkgver=v0.5.2.3.r87.g8ee3ccf
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -18,6 +19,8 @@ conflicts=("opentabletdriver")
 install="notes.install"
 source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
         'git+https://github.com/OpenTabletDriver/OpenTabletDriver-udev'
+        "Eto-$_etover.tar.gz::https://github.com/picoe/Eto/archive/refs/tags/$_etover.tar.gz"
+        "use-local-eto.patch"
         "$_spkgname"
         "$_spkgname-gui"
         "$_lpkgname.service"
@@ -26,6 +29,8 @@ source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
 
 sha256sums=('SKIP'
             'SKIP'
+            '8bdf2445538b955206abd8bb08f4286200e5571ef70964e287ca9f937af6ce9d'
+            '89907cac6db0c0516f49519c40b567089662ffa6c58957bc7d19070ee3b49025'
             '8a09d29e683aefcbf54e5fe891d5688f959d9399804f9c151f0e8f6e6a1ede1a'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
@@ -41,6 +46,13 @@ prepare() {
     cd "$srcdir/$_pkgname-udev/.modules"
     rmdir "$_pkgname"
     ln -s "$srcdir/$_pkgname" "$_pkgname"
+
+    cd "$srcdir"
+    mv "Eto-$_etover" "Eto"
+    sed -i 's/3.22.25.74/3.24.24.34/' "Eto/src/Eto.Gtk/Eto.Gtk.csproj"
+
+    cd "$srcdir/$_pkgname"
+    git apply "../use-local-eto.patch"
 }
 
 build() {

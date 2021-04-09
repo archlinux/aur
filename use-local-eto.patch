@@ -1,0 +1,17 @@
+diff --git a/OpenTabletDriver.UX.Gtk/OpenTabletDriver.UX.Gtk.csproj b/OpenTabletDriver.UX.Gtk/OpenTabletDriver.UX.Gtk.csproj
+index a25ae21..af4606b 100644
+--- a/OpenTabletDriver.UX.Gtk/OpenTabletDriver.UX.Gtk.csproj
++++ b/OpenTabletDriver.UX.Gtk/OpenTabletDriver.UX.Gtk.csproj
+@@ -7,11 +7,8 @@
+     <LangVersion>preview</LangVersion>
+   </PropertyGroup>
+ 
+-  <ItemGroup Label="NuGet Packages">
+-    <PackageReference Include="Eto.Platform.Gtk" Version="2.5.10" />
+-  </ItemGroup>
+-
+   <ItemGroup Label="Project References">
++    <ProjectReference Include="..\..\Eto\src\Eto.Gtk\Eto.Gtk.csproj" />
+     <ProjectReference Include="..\OpenTabletDriver.UX\OpenTabletDriver.UX.csproj" />
+   </ItemGroup>
+ 
