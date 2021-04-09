@@ -3,15 +3,15 @@
 # Contributor: wahnby <wahnby@yahoo.fr>
 
 pkgname=gnunet-gtk
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.13.1
+pkgrel=1
 pkgdesc='A frontend for GNUnet'
 arch=('x86_64')
 url='https://gnunet.org'
 license=('GPL')
 depends=('gnunet' 'glade')
 source=(https://ftp.gnu.org/gnu/gnunet/$pkgname-$pkgver.tar.gz)
-sha256sums=('cb99da11d68107f9709ee5be49cc574e9a03054767334767930ae6b0bd1a4421')
+sha256sums=('1268cd49c3f41d20d7dc98d98da3b9b69894a596988ec79737fc1c68027ebffd')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
