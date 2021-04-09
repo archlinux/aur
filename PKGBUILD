@@ -35,7 +35,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=vim-youcompleteme-git
-pkgver=r2789.ed423e8a
+pkgver=r2791.a3d02238
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=('x86_64')
@@ -122,7 +122,7 @@ package() {
   install -Ddm755 "${pkg_ycmd_dir}"
 
   cp -dr --no-preserve=ownership autoload doc plugin python "${pkgdir}/usr/share/vim/vimfiles"
-  cp -dr --no-preserve=ownership third_party/ycmd/{ycmd,ycm_core.so,CORE_VERSION} "${pkg_ycmd_dir}"
+  cp -dr --no-preserve=ownership third_party/ycmd/{ycmd,ycm_core.*.so,CORE_VERSION} "${pkg_ycmd_dir}"
 
   if [[ ${_use_system_clang} == "ON" ]]; then
     install -Ddm755 "${pkg_ycmd_dir}/third_party/clang/lib/"
