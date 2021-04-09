@@ -15,31 +15,39 @@ depends=(
   'systemd'
   'system76-dkms'
 )
-makedepends=(
-  'git'
-  'rust'
-)
+makedepends=('rust')
 source=(
-  'system76::git+https://github.com/pop-os/system76-power.git#commit=de596615d3d1037f2377f3736a371b922e9bf0e7'
-  )
+"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
+'use-mkinitcpio.patch'
+)
 sha1sums=(
-  'SKIP'
+'f2e361bf8c42d2453c3c61ddf3c6c7b929dbc4ea'
+'39969f4afb7bc50c4545f44a79529a62ebb37ef2'
 )
 
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+
+  # use mkinitcpio -P inplace of update-initramfs -u
+  patch --no-backup-if-mismatch -Np1 -i ${srcdir}/use-mkinitcpio.patch
+}
+
 build() {
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}
 
   # Build and install base package
   cargo build --release
 }
 
 package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+
   # Install daemons
-  install -Dm755 ${srcdir}/${_pkgname}/target/release/system76-power ${pkgdir}/usr/bin/system76-power
+  install -Dm755 target/release/system76-power ${pkgdir}/usr/bin/system76-power
 
   # Install systemd unit files
-  install -Dm644 ${srcdir}/${_pkgname}/debian/system76-power.service ${pkgdir}/usr/lib/systemd/system/system76-power.service
+  install -Dm644 debian/system76-power.service ${pkgdir}/usr/lib/systemd/system/system76-power.service
 
   # Install scripts and configuration
-  install -Dm755 ${srcdir}/${_pkgname}/data/system76-power.conf ${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf
+  install -Dm755 data/system76-power.conf ${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf
 }
