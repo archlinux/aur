@@ -6,6 +6,7 @@ pkgbase = pat-bin
 	arch = i686
 	arch = x86_64
 	arch = armhf
+	arch = armv6h
 	groups = 
 	license = MIT
 	optdepends = gpsd>=2.90
@@ -21,6 +22,8 @@ pkgbase = pat-bin
 	sha512sums_x86_64 = 0b66198edc1299bde446c7d1f2cdcdc1bce28f470e9b7a6caaa9bb28965a21bc198bfe8243cdbc69570aec852eac0d588e941165fedf45cf1cdc5272774866ac
 	source_armhf = https://github.com/la5nta/pat/releases/download/v0.10.0/pat_0.10.0_linux_armhf.deb
 	sha512sums_armhf = 4b2f37a9fc5ddcb0dc5bbfdf342da4d5a1e3e60b131813a5267d09d49f217b8c856df47c8a674f56cc8e3116f186fa61a3e5e1ea037f93998c27cd21615e0af8
+	source_armv6h = https://github.com/la5nta/pat/releases/download/v0.10.0/pat_0.10.0_linux_armhf.deb
+	sha512sums_armv6h = 4b2f37a9fc5ddcb0dc5bbfdf342da4d5a1e3e60b131813a5267d09d49f217b8c856df47c8a674f56cc8e3116f186fa61a3e5e1ea037f93998c27cd21615e0af8
 
 pkgname = pat-bin
 
