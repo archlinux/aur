@@ -15,10 +15,8 @@ source=(
     https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear-${pkgver}.deb
     nuclear.desktop
 )
-md5sums=(
-    'b22962c36f369db6b0489f33724c5a8f'
-    'SKIP'    
-)
+md5sums=('0b117e88727d516b1e1e765e2f00a60b'
+         'eb5a64f62697098c413c0fa1e1215819')
 
 package()   {
     tar xf data.tar.xz
