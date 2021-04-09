@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-logo
-pkgver=5.10.27
+pkgver=5.10.28
 pkgrel=1
 pkgdesc='LTS Linux with tux logo'
 url="https://www.kernel.org/"
@@ -25,11 +25,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('d99dc9662951299c53a0a8d8c8d0a72a16ff861d20e927c0f9b14f63282d69d9'
+sha256sums=('4dfc3aea719556e63e90b8692e9d4b779ad1cb2a9a4823bf721e30004e7ac354'
             'SKIP'
             'ed7dc54b4e06687716767f1ce03935e94ec8cbd107ce9febd65d1711f93dc06e'
             '6992aed5d5398f9442f0ce94d5d5b6503bf492df0ebe719ed6e0fc1dc2ee1929'
-            '24f28f5d369b0fe1d7f00629fea527e24f9270e2c933d1b262f08185fcbd4ceb')
+            'ad3ef5457ccbaadac1f555dc5c1673bf4825a25f9277bfdfaeeec76aff201570')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
