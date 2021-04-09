@@ -2,17 +2,17 @@
 
 _pkgname=Myxer
 pkgname=myxer
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='A modern Volume Mixer for PulseAudio.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Aurailus/Myxer'
-license=('GPL3')
+license=('GPL')
 depends=('gcc-libs' 'gtk3' 'libpulse')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'myxer.desktop')
-sha512sums=('b8e9b84378a833156f4e8f71e9c8d823332994447bfdf2033d4aae043af8b01c9d088f45b862b477c5c692325cfdaeb89d23d6b49bc5a1abc9d0a63f029992f7'
+sha512sums=('9b09abd597e8240ca263f26fbf2a71d449c017551047c8ad83f1a304934fc15fe66845248da6c09b763ec4c8dd7e5a59533e1728ca9490f8cd85d33d845e5900'
             '7cc782ba29dbe03dc242e65880184f047ae2ebf0dd2aaa3ab534df78e2a037f5a69fe332752fce87312a452dabf3da3b70a30d6baa8059ce0216acd1333b80be')
 
 build() {
