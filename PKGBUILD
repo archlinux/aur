@@ -54,7 +54,7 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     
     ## Download the GeoIP database.
-    cd ${pkgdir}/usr/share/webapps/misc/
+    cd ${pkgdir}/usr/share/webapps/matomo/misc/
     cur_year=$(date +"%Y")
     cur_month=$(date +"%m")
     
