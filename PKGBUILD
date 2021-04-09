@@ -20,11 +20,11 @@ build() {
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4
-  make
+  cmake --build .
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR=${pkgdir} install
+  DESTDIR="${pkgdir}" cmake --install .
 }
