@@ -1,7 +1,7 @@
 # Maintainer: Dan Nixon <dan@dan-nixon.com>
 pkgname=snapperoo-git
-pkgver=r1.1b7b550
-pkgrel=1
+pkgver=r4.a7fad31
+pkgrel=2
 pkgdesc="A small, bare essentials utility for taking Btrfs snapshots."
 arch=('any')
 url="https://github.com/DanNixon/snapperoo"
@@ -20,8 +20,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm 755 snapperoo "${pkgdir}/usr/bin/snapperoo"
-	install -Dm 644 snapperoo.json "${pkgdir}/etc/snapperoo.json"
-	install -Dm 644 systemd/snapperoo@.service "${pkgdir}/usr/lib/systemd/system/snapperoo@.service"
-	install -Dm 644 systemd/snapperoo@.timer "${pkgdir}/usr/lib/systemd/system/snapperoo@.timer"
+	make prefix="${pkgdir}/usr" etcdir="${pkgdir}/etc" install install-systemd
 }
