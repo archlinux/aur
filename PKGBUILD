@@ -13,7 +13,7 @@ url="http://mamedev.org"
 license=('custom:MAME')
 depends=('flac>=1.3.0' 'libutf8proc>=1.3' 'sdl2>=2.0.8' 'zlib>=1.1.4')
 conflicts=('mame')
-source=("http://security.ubuntu.com/ubuntu/pool/universe/m/mame/mame-tools_${pkgver}+dfsg.1-${pkgrel}_${_ARCH_}.deb")
+source=("http://deb.debian.org/debian/pool/main/m/mame/mame-tools_${pkgver}+dfsg.1-${pkgrel}_${_ARCH_}.deb")
 md5sums=('SKIP')
 
 
