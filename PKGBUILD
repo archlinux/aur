@@ -1,10 +1,10 @@
 pkgname=mqttui-bin
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/mqttui"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=()
 provides=('mqttui')
 conflicts=('mqttui')
