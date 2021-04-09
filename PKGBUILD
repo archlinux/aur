@@ -88,10 +88,10 @@ package()
     
     ## Configure php-fpm
     echo -e "[Service]
-    ReadWritePaths = /usr/share/webapps/matomo/config
-    ReadWritePaths = /usr/share/webapps/matomo/matomo.js
-    ReadWritePaths = /usr/share/webapps/matomo/misc/user/
-    ReadWritePaths = /usr/share/webapps/matomo/plugins/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
+ReadWritePaths = /usr/share/webapps/matomo/config
+ReadWritePaths = /usr/share/webapps/matomo/matomo.js
+ReadWritePaths = /usr/share/webapps/matomo/misc/user/
+ReadWritePaths = /usr/share/webapps/matomo/plugins/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
