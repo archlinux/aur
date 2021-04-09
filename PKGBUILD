@@ -1,4 +1,3 @@
-# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sharedaccess
@@ -17,10 +16,10 @@ source=("https://gitlab.com/patlefort/${_repo}/-/archive/v${pkgver}/${_repo}-v${
 
 build() {
 	cmake -S "${_repo}-v${pkgver}" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-	make -C build
+	cmake --build "build"
 }
 
 package() {
-	make DESTDIR="${pkgdir}" -C build install
+	DESTDIR="${pkgdir}" cmake --install "build"
 	install -Dm644 "${_repo}-v${pkgver}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
