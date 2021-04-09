@@ -1,4 +1,5 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: wahnby <wahnby@yahoo.fr>
 
 pkgname=gnunet-gtk
