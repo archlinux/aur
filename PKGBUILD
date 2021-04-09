@@ -1,13 +1,13 @@
 # Maintainer: Leon <aur@adigitoleo.dissimulo.com>
 pkgname=python-bytecode-git
 _shortname="${pkgname%-git}"
-pkgver=0.11.0.r22.g7aa2df5
-pkgrel=3
+pkgver=0.12.0.r26.g532b0ab
+pkgrel=1
 pkgdesc="Python module to modify bytecode"
 arch=(x86_64)
 url="https://github.com/vstinner/bytecode"
 license=('MIT')
-depends=('python-aenum')
+depends=()
 makedepends=('git')
 checkdepends=('python-pytest')
 provides=("$_shortname")

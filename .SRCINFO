@@ -1,13 +1,12 @@
 pkgbase = python-bytecode-git
 	pkgdesc = Python module to modify bytecode
-	pkgver = 0.11.0.r22.g7aa2df5
-	pkgrel = 3
+	pkgver = 0.12.0.r26.g532b0ab
+	pkgrel = 1
 	url = https://github.com/vstinner/bytecode
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = git
-	depends = python-aenum
 	provides = python-bytecode
 	conflicts = python-bytecode
 	source = python-bytecode::git+https://github.com/vstinner/bytecode
