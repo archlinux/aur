@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=pdftk-git
-pkgver=3.0.0.r65.c98f90e
+pkgver=3.0.0.r182.19b7ac4
 pkgrel=1
 pkgdesc='Command-line tool for working with PDFs'
 arch=('any')
@@ -15,7 +15,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git" 'pdftk.sh')
 sha512sums=('SKIP'
-            '439c397472012d71c8e782a75819a7a950474c387b7050bbd5aa2f849d1dbe29423accf3f8e17d18436ba32eb4f76072df5b4f85caebd853df1e75c131631988')
+            'e6e3ae576d80c9e03fc9b08d858d854db055cf74d8650b7b315e680a719fce5152ceb381e1315d526ba530d26a7427b256c311dbc0109dda777174d1abca74cd')
 
 pkgver() {
 	cd "${pkgname%-git}"
