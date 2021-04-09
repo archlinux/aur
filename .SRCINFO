@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-audio-play
 	pkgdesc = ROS - Outputs audio to a speaker from a source node.
-	pkgver = 0.3.10
-	pkgrel = 3
+	pkgver = 0.3.11
+	pkgrel = 1
 	url = https://wiki.ros.org/audio_play
 	arch = i686
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = ros-melodic-audio-play
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-ugly
-	source = ros-melodic-audio-play-0.3.10.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.10.tar.gz
-	sha256sums = 18fc68e3d2fa152bdba6c374845e8dbc366c9fcfe88b90b37c9c8dc9803185e7
+	source = ros-melodic-audio-play-0.3.11.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.11.tar.gz
+	sha256sums = 0c72196d0d551bb1b9a1c9c134bbfd1b3073529c93a495c4d829911c38db3b1d
 
 pkgname = ros-melodic-audio-play
 

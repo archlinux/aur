@@ -2,9 +2,9 @@ pkgdesc="ROS - Outputs audio to a speaker from a source node."
 url='https://wiki.ros.org/audio_play'
 
 pkgname='ros-melodic-audio-play'
-pkgver='0.3.10'
+pkgver='0.3.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
@@ -25,7 +25,7 @@ depends=(${ros_depends[@]}
 
 _dir="audio_common-${pkgver}/audio_play"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('18fc68e3d2fa152bdba6c374845e8dbc366c9fcfe88b90b37c9c8dc9803185e7')
+sha256sums=('0c72196d0d551bb1b9a1c9c134bbfd1b3073529c93a495c4d829911c38db3b1d')
 
 build() {
   # Use ROS environment variables
