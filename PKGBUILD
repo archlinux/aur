@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=1
+pkgrel=2
 _srcname=linux-5.11
 _major=5.11
 ### on initial release this is null otherwise it is the current stable subversion
@@ -43,7 +43,7 @@ b2sums=('eac29e11f7cc51f09f849f390d0884019033398a129b26486ac0829d57bd925cf10d962
         'SKIP'
         '1defa8e4ef10663e48f62f9c9f7d3a35dd52d6aeaa91fa08371ae96c73a3098196c0e0a17beb78b8a6e246cc51ff3e3e59ffb85abb94c2bd8c14b8282e1e82bc'
         'SKIP'
-        '4f43af91d2b6a3ddca56c187595538b1920fbc5a9ec87cb7c714501f7a03ec8513c7ef09e76ac9350feb815e09c68b57fca6adb1d47c41d7583d7e1ff5a5de08'
+        '317724c22d8b50fe8c86b8faf118f2c30e46f2667af904ada5204fa1876ad457f6e5dc127850f202646e52167896c029f444df2c7ece3a1a61d5307999142669'
         '2c197117aa915971edb97ec98233d4c394f6790829486403bc51732a18fe12338d82e680ccafd138153affe9830d815ee1b52c7d1f3ed7937bc7a0c1fac3a5ef'
         'b1cdc2e8d99ff59d57897fc99aa2a11b07f96f9461420d6d8d499fb4ff0740e317a8f9ede72b3041018ac89ab07a53c0014d19c06a9bb038055c4d5ed79f3b0d'
         'ce586c65af54313c93e4dc55d56cf46840ac1b6a4f2a83b115529f4d9ef402158d28fa042967f1b685a11955371360513662f4b2eb1c75b5bba2ecd7ec31d8a9'
