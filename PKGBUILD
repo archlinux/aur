@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sword-svn
-pkgver=r3851
+pkgver=1.9.0.svnversion.3852
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Libraries for Bible programs - svn-version"
 arch=('i686' 'x86_64')
 url="http://www.crosswire.org/sword/"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-svn}"
   local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  printf "%s.%s" $(awk '/AC_INIT/ {print $2}' configure.ac | tr -d ,) "${ver//[[:alpha:]]}"
 }
 
 build() {
