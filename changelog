@@ -1,5 +1,11 @@
 Proton-6.5-GE-2 Released
 
+HOTFIX:
+-Added wine-mirror/wine@fcb37c9 to resolve start.exe issue
+-Added sha512sum file to releases for external update tools
+
+Attached build has been updated.
+
 General Proton fixes:
 -Added mouse stutter fix from proton experimental
 -Fullscreen hack is back! Works with MK11 finally!
