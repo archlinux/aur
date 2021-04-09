@@ -7,12 +7,12 @@ _ver_ivpn_cli=3.3.7
 # PKGBUILD config
 pkgname="ivpn"
 pkgver=3.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
 url="https://ivpn.net"
 license=('GPL3')
-depends=('glibc' 'wireless_tools' 'openvpn' 'wireguard-tools')
+depends=('glibc' 'lsof' 'wireless_tools' 'openvpn' 'wireguard-tools')
 makedepends=('curl' 'go')
 install="ivpn.install"
 source=(
