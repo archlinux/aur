@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=mousai
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Simple application for identifying songs"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gstreamer' 'gtk3' 'libhandy' 'python-gobject' 'python-requests')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bda5bb1bbc10e5f5b19a841655d69ab57b0810486e3dc467ddb0d7d2f73f3bf1')
+sha256sums=('8b4c13f038175759e6ecaf5328f8686815c376af5a8e9021408d2452371b09c8')
 
 build() {
 	arch-meson Mousai-$pkgver build
