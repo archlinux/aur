@@ -58,6 +58,7 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
     
+    install -d "${pkgdir}/etc/webapps" # todo
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/config" "${pkgdir}/etc/webapps/${_pkgname}" # todo
     ln -s "../../../../etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/matomo/config" # todo
     
