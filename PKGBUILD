@@ -8,8 +8,8 @@
 _srcname=dash-to-dock
 pkgname=gnome-shell-extension-dash-to-dock-gnome40-git
 pkgver=56.r430.gb08a568
-pkgrel=1
-pkgdesc="move the dash out of the overview transforming it in a dock"
+pkgrel=2
+pkgdesc="move the dash out of the overview transforming it in a dock (with GNOME 40 patches)"
 arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
 _giturl="git+https://github.com/ewlsh/dash-to-dock/"
