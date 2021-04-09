@@ -1,5 +1,4 @@
-# Maintainer: zhullyb <zhullyb@outlook.com>
-# Contributor: Yeqin Su <hougelangley1987@gmail.com>
+# Maintainer: Yeqin Su <hougelangley1987@gmail.com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
@@ -17,6 +16,7 @@
 ## Valid numbers between: 0 to 42
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 42 => native
+## 我个人的恶趣味，就是选择 native，自动优化，当然各位根据自己的实际情况做出选择也是可以的
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -54,6 +54,7 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
+# 我觉得还是选上，这样给大家微调的空间
 #_makenconfig=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
@@ -76,11 +77,11 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
+        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.12-xanmod1-cacule"
         choose-gcc-optimization.sh
         'sphinx-workaround.patch'
         '0002-UKSM.patch'
-        "0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-${_major}.patch")
+        '0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-5.11.patch')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -108,8 +109,7 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
-
-  xz -d < patch-${pkgver}-xanmod${xanmod}-cacule.xz | patch -Np1
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cacule
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
