@@ -2,7 +2,7 @@
 pkgname=xwinmosaic-git
 _gitname=xwinmosaic
 pkgver=v0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="X11 window switcher with fancy look"
 url="http://github.com/soulthreads/xwinmosaic"
 arch=('i686' 'x86_64')
