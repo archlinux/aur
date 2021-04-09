@@ -1,0 +1,5 @@
+*.tar.xz
+*.tar.sign
+src/
+archlinux-linux/
+*.new
