@@ -3,7 +3,7 @@
 pkgname=termius-app
 _pkgname=${pkgname%-*}
 pkgver=7.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
@@ -21,10 +21,13 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 makedepends=('tar' 'sed')
 _mirror='https://deb.termius.com'
 # I got the URL to download the deb package using the server from ubuntu, path: /var/lib/apt/lists/deb.termius.com_dists_squeeze_main_binary-amd64_Packages
+# TERMS_OF_USE is a copy-paste of https://termius.com/terms-of-use from browser
 source=(
 	"$pkgname-$pkgver.deb::$_mirror/pool/main/t/$pkgname/${pkgname}_${pkgver}_amd64.deb"
+	"TERMS_OF_USE"
 )
-sha512sums=('0eadd8df40134c696927953a0f38f3294ae2da70bc6dc19d0e1d5036f3fb7893127310a6cef562567de0dfa956c16f9b390b876a0ebdf554aa7d64a7cabdebfe')
+sha512sums=('0eadd8df40134c696927953a0f38f3294ae2da70bc6dc19d0e1d5036f3fb7893127310a6cef562567de0dfa956c16f9b390b876a0ebdf554aa7d64a7cabdebfe'
+            'bf187f1ec9387d9c3ddbd0e401a235ec9bafab14698f49a182546ed4a057c398f3532f472b2a6be22b9a200b29d1ccb6e3c2fb69a92dfce2a4bf29264617565b')
 
 prepare() {
 	mkdir "$srcdir/work" || :
@@ -39,4 +42,5 @@ package() {
 	ln -s /opt/Termius/$pkgname "$pkgdir"/usr/bin/$pkgname
 	ln -s $pkgname "$pkgdir"/usr/bin/$_pkgname
 	sed 's/\/opt\/Termius\/termius-app/\/usr\/bin\/termius/g' -i "$pkgdir"/usr/share/applications/$pkgname.desktop
+	install -D -m 644 "$srcdir"/TERMS_OF_USE "$pkgdir"/usr/share/licenses/$_pkgname/TERMS_OF_USE
 }
