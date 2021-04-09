@@ -8,7 +8,7 @@
 _pkgname=libadwaita
 pkgname=$_pkgname-git
 pkgver=r1560.4f6e828
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Library full of GTK widgets for mobile phones"
 url="https://gitlab.gnome.org/GNOME/$_pkgname"
