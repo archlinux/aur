@@ -1,34 +1,36 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-warp-time
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='reset file timestamps to repo state'
 arch=(x86_64)
 url="https://github.com/alerque/$pkgname"
 license=(GPL3)
 makedepends=(rust)
-source=("$pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('64bd5c3f0ac061288be5959c0d19533b8f7cadc79e10e293f3e69e278d0389d8')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('e37ce27f424d6cd3e72ece13b81dd56251fa5cbcfd188f80f8be44cb45fd5c35')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-    cargo fetch --locked
+	sed Makefile.am -i \
+		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
+	autoreconf
+	cargo fetch --locked
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release --locked --all-features
+	./configure --prefix "/usr"
+	make
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	cargo test
+	make check
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+	make DESTDIR="$pkgdir" install
 }
