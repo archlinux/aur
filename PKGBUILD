@@ -56,8 +56,8 @@ package()
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
-    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js" # todo
-    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js" # todo
+#     chmod 644 "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js"
+#     chmod 644 "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js"
     
     install -d "${pkgdir}/etc/webapps" # todo
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/config" "${pkgdir}/etc/webapps/${_pkgname}" # todo
