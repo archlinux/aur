@@ -2,15 +2,15 @@ diff --git a/build.sbt b/build.sbt
 index cc51a04af..65920d0a4 100644
 --- a/build.sbt
 +++ b/build.sbt
-@@ -43,10 +43,7 @@ usefulTasks := Welcome.tasks
- 
+@@ -43,0 +43,0 @@ usefulTasks := Welcome.tasks
+
  inThisBuild(
    List(
 -    version ~= { dynVer =>
 -      if (isCI) dynVer
 -      else localSnapshotVersion // only for local publishing
 -    },
-+    version := "0.10.0",
++    version := "0.10.1",
      // note bucket created by @tgodzik
      munitBucketName := Some("scala-metals-test-reports"),
      scalaVersion := V.scala212,
