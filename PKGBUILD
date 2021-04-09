@@ -1,16 +1,18 @@
 # Maintainer: ReneganRonin <renegan.ronin@gmail.com> 
 
 pkgname=delphes
-pkgver=master
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="A framework for fast simulation of a generic collider experiment"
 url="http://cp3.irmp.ucl.ac.be/projects/delphes"
 arch=('i686' 'x86_64')
 license=('GPL3')
+provides=('delphes')
+conflicts=('delphes-git')
 depends=("cmake"
          "root")
-source=("https://github.com/delphes/delphes/archive/master.zip")
-sha256sums=('aa4fd44924d8b66407da8e15268669de3b44e8fbd4345be17cde7c9ec8d0ed68')
+source=("https://github.com/delphes/delphes/archive/${pkgver}.zip")
+sha256sums=('e41ceec08e7a9299e613bcd321f1cd369e902ce7f7da74bb824a0f5261f93c39')
 
 build() {
     cmake -DCMAKE_INSTALL_PREFIX="/usr/" delphes-${pkgver}
