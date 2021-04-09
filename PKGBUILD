@@ -69,12 +69,15 @@ package()
 
     install -d "${pkgdir}/etc/webapps/"
 
-    mv "${pkgdir}/usr/share/webapps/${_pkgname}/config/" "${pkgdir}/etc/webapps/${_pkgname}/"
-    ln -s "${pkgdir}/etc/webapps/${_pkgname}/" "${pkgdir}/usr/share/webapps/${_pkgname}/config/"
+    install -d "${pkgdir}/etc/webapps"
+    mv "${pkgdir}/usr/share/webapps/${pkgname}/config" "${pkgdir}/etc/webapps/${pkgname}"
+    ln -s "../../../../etc/webapps/${pkgname}" "${pkgdir}/usr/share/webapps/matomo/config"
 
-    rm -r "${pkgdir}/usr/share/webapps/${_pkgname}/tmp/"
-    install -dm700 "${pkgdir}/var/lib/webapps/${_pkgname}/tmp/"
-    ln -s "${pkgdir}/var/lib/webapps/${_pkgname}/tmp/" "${pkgdir}/usr/share/webapps/${_pkgname}/tmp/"
+    # matomo uses this tmp dir for writing its own data;
+    # but it belongs in /var rather than /usr.
+    rmdir "${pkgdir}/usr/share/webapps/matomo/tmp"
+    install -dm700 "${pkgdir}/var/lib/webapps/matomo/tmp"
+    ln -s "../../../../var/lib/webapps/matomo/tmp" "${pkgdir}/usr/share/webapps/matomo/tmp"
 
     ## Download the GeoIP database.
     cd ${pkgdir}/usr/share/webapps/matomo/misc/
