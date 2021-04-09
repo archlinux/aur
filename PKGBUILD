@@ -53,7 +53,7 @@ package()
     mkdir -p ${pkgdir}/usr/share/${_pkgname}/misc/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
-    
+
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
 
