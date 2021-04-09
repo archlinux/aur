@@ -2,7 +2,7 @@
 _name=knossos
 pkgname=fs2-knossos
 pkgver=0.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
 url="https://github.com/ngld/knossos"
@@ -19,12 +19,12 @@ source=(
     knossos
     knossos.desktop)
 
-md5sums=('e744e613c9925a5c3d774c1787c554fb'
+md5sums=('9ad4ab7ba23dc59bb032795130c50eb7'
          '541dfc75f3aecbe08b843eeec252e4b4'
          '2974a45a1f75051607d6d1402a8c429b')
 
 package() {
-    cd "$srcdir/${_name}-$pkgver"
+    cd "$srcdir/old-${_name}-$pkgver"
 
     yarn install
     python configure.py
