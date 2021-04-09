@@ -57,13 +57,13 @@ build() {
   #   which will run signifincantly slower but enables more runtime
   #   checks and generates better crash reports.
   
-  make
+  cmake --build .
 }
 
 package() {
   cd "$srcdir/ArxLibertatis"
   
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install .
   
   install -Dm644 README.md \
           "$pkgdir/usr/share/doc/$pkgname/README.md"
