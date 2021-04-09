@@ -1,6 +1,6 @@
 pkgbase = haskell-hsemail
 	pkgdesc = Internet Message Parsers
-	pkgver = 1.7.7
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/hsemail
 	install = haskell-hsemail.install
@@ -14,8 +14,8 @@ pkgbase = haskell-hsemail
 	depends = haskell-old-time
 	depends = haskell-parsec
 	options = strip
-	source = http://hackage.haskell.org/packages/archive/hsemail/1.7.7/hsemail-1.7.7.tar.gz
-	sha256sums = 25aac3890ff09812be47639ad52cd7be622dc9b193e5a0be115bda12ffcd989b
+	source = http://hackage.haskell.org/packages/archive/hsemail/2.2.1/hsemail-2.2.1.tar.gz
+	sha256sums = b5ea99b4d98c988f1ca248a5641e3ecbe22b200cfcecfd1011fdaa93af961d81
 
 pkgname = haskell-hsemail
 

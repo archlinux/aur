@@ -2,7 +2,7 @@
 
 _hkgname=hsemail
 pkgname=haskell-hsemail
-pkgver=1.7.7
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Internet Message Parsers"
 url="http://hackage.haskell.org/package/$_hkgname"
@@ -14,15 +14,14 @@ depends=("haskell-base" "sh" "haskell-mtl" "haskell-old-time" "haskell-parsec")
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=("25aac3890ff09812be47639ad52cd7be622dc9b193e5a0be115bda12ffcd989b")
+sha256sums=('b5ea99b4d98c988f1ca248a5641e3ecbe22b200cfcecfd1011fdaa93af961d81')
 
 # PKGBUILD functions
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
-    
-    runhaskell Setup configure -O -p --enable-split-objs --enable-shared \
-        --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
-        --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic \
+       --disable-library-vanilla --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
+       --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
     runhaskell Setup haddock
     runhaskell Setup register --gen-script
