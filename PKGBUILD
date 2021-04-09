@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 
 pkgbase=python-mccabe
