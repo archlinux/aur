@@ -12,7 +12,7 @@ url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
 groups=()
 depends=("php" "php-fpm" "php-gd")
-makedepends=("composer" "git")
+makedepends=("composer-git" "git")
 checkdepends=()
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
@@ -54,7 +54,7 @@ package()
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
-    chown -R root:http /usr/share/webapps/matomo/
+    chown -R http /usr/share/webapps/matomo/
 
     ## Download the GeoIP database.
     cd ${pkgdir}/usr/share/webapps/matomo/misc/
