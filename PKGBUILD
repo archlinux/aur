@@ -4,8 +4,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.68.0
-pkgrel=4
+pkgver=2.68.1
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -20,8 +20,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs')
 license=(LGPL)
-_commit=a58a47fd6d3da5ffb28809f212971748667dfb3c  # tags/2.68.0^0
-source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
+source=("git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
         noisy-glib-compile-schemas.diff
         glib-thumbnailer.patch
         glib-compile-schemas.hook
@@ -33,6 +32,7 @@ sha256sums=('SKIP'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
             '2a9f9b8235f48e3b7d0f6cfcbc76cd2116c45f28692cac4bd61074c495bd5eb7'
             '92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e')
+validpgpkeys=('923B7025EE03C1C59F42684CF0942E894B2EAFA0') # Philip Withnall (https://endlessos.org/) <pwithnall@endlessos.org>
 
 pkgver() {
   cd glib
@@ -41,10 +41,6 @@ pkgver() {
 
 prepare() {
   cd glib
-
-  # https://bugs.archlinux.org/task/70131
-  # https://gitlab.gnome.org/GNOME/glib/-/merge_requests/2010
-  git cherry-pick -n 07ab2e26c937 77649d3d3d94
 
   # Suppress noise from glib-compile-schemas.hook
   git apply -3 ../noisy-glib-compile-schemas.diff
