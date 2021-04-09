@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=devilutionx-hellfire-git
 _pkgname=devilutionX
-pkgver=1.1.0.r1366.g2362ff82f
+pkgver=1.2.0.r85.geeccf6b5d
 pkgrel=1
 pkgdesc="Diablo & Hellfire devolved. An open source replacment for the original executables."
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -43,7 +43,6 @@ package() {
     install -Dm644 "${srcdir}/$_pkgname/docs/CHANGELOG.md" "${pkgdir}/usr/share/doc/${_pkgname}/$_pkgname-changelog.md"
     install -Dm644 "${srcdir}/$_pkgname/docs/CONTRIBUTING.md" "${pkgdir}/usr/share/doc/${_pkgname}/$_pkgname-contributing.md"
     install -Dm644 "${srcdir}/$_pkgname/docs/debug.md" "${pkgdir}/usr/share/doc/${_pkgname}/$_pkgname-debug.md"
-    install -Dm644 "${srcdir}/$_pkgname/docs/mods.md" "${pkgdir}/usr/share/doc/${_pkgname}/$_pkgname-mods.md"
     install -Dm644 "${srcdir}/$_pkgname/docs/TODO.md" "${pkgdir}/usr/share/doc/${_pkgname}/$_pkgname-todo.md"
     # install devilutionX licenses
     install -Dm644 "${srcdir}/$_pkgname/LICENSE"  "${pkgdir}/usr/share/licenses/${_pkgname}/$_pkgname-license"
