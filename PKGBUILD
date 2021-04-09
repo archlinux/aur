@@ -9,7 +9,7 @@ _svt_vp9_ver='0.3.0'
 
 pkgname=ffmpeg-amd-full
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -207,7 +207,7 @@ build() {
         --disable-nvenc \
         --enable-omx \
         --disable-rkmpp \
-        --disable-v4l2-m2m \
+        --enable-v4l2-m2m \
         --enable-vaapi \
         --enable-vdpau
     make
