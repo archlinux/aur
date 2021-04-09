@@ -9,6 +9,7 @@ pkgbase = libdatachannel
 	makedepends = cmake
 	depends = openssl
 	depends = libsrtp
+	depends = plog
 	provides = libdatachannel
 	conflicts = libdatachannel
 	source = git+https://github.com/paullouisageneau/libdatachannel.git#tag=v0.12.1
