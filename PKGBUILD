@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
-pkgver=2021.04.08.r11.gc8cdf39
-pkgrel=1
+pkgver=2021.04.08.r32.g03a0074
+pkgrel=2
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
 license=('GPL')
-depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 makedepends=('dialog' 'git' 'imagemagick' 'libnotify' 'sassc')
-optdepends=('whitesur-icon-theme-git: matching icon theme'
+optdepends=('gtk-engine-murrine: GTK2 theme support'
+            'gtk-engines: GTK2 theme support'
+            'whitesur-icon-theme-git: matching icon theme'
             'whitesur-cursor-theme-git: matching cursor theme'
             'whitesur-kvantum-theme: matching Kvantum theme'
             'plank: for included plank theme')
