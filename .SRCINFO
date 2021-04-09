@@ -1,6 +1,6 @@
 pkgbase = gnunet-user
 	pkgdesc = A framework for secure peer-to-peer networking - single user config
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://gnunet.org
 	arch = any
@@ -26,9 +26,9 @@ pkgbase = gnunet-user
 	provides = gnunet
 	conflicts = gnunet
 	options = !makeflags
-	source = https://ftpmirror.gnu.org/gnu/gnunet/gnunet-0.13.1.tar.gz
+	source = https://ftpmirror.gnu.org/gnu/gnunet/gnunet-0.14.0.tar.gz
 	source = gnunet.service
-	sha256sums = 03d76a852e7fd2fc87b7145cb6abd900f73e4ea6097f3caac9e7d9fe8b625696
+	sha256sums = daef603bd32ed1d335ca2c5c6aa3a765c0df19ca7af5d739087e6d925eaf45ab
 	sha256sums = cc5ac23e64aa7c42efb86dfc8dd644f05b9b5d838e881642e8562374e7915825
 
 pkgname = gnunet-user
