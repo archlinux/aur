@@ -1,6 +1,6 @@
 pkgbase = r-processx
 	pkgdesc = Execute and Control System Processes
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=processx
 	arch = i686
@@ -10,15 +10,15 @@ pkgbase = r-processx
 	depends = r-ps>=1.2.0
 	depends = r-r6
 	optdepends = r-callr
+	optdepends = r-cli
 	optdepends = r-codetools
 	optdepends = r-covr
-	optdepends = r-crayon
 	optdepends = r-curl
 	optdepends = r-debugme
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/processx_3.5.0.tar.gz
-	sha256sums = eeb2a4ef60c8fe084c9b8d1e1fe96636fa8f9bee51e2615ae9e3cbc0b314e779
+	source = https://cran.r-project.org/src/contrib/processx_3.5.1.tar.gz
+	sha256sums = d35c13f131692573939949f21be03988c12bfc18d4b5093fa43d10f0ce53fffc
 
 pkgname = r-processx
 
