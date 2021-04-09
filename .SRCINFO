@@ -1,0 +1,18 @@
+pkgbase = vim_cubed-git
+	pkgdesc = Vim rendered on a cube for no reason
+	pkgver = 0
+	pkgrel = 0
+	url = https://github.com/oakes/vim_cubed
+	arch = i686
+	arch = x86_64
+	license = UNLICENSE
+	makedepends = nim
+	makedepends = nimble
+	makedepends = xorg-server-devel
+	depends = mesa
+	depends = ncurses
+	source = vim_cubed::git+https://github.com/oakes/vim_cubed#branch=master
+	sha256sums = SKIP
+
+pkgname = vim_cubed-git
+
