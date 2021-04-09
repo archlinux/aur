@@ -21,16 +21,6 @@ gd:
 ;extension=gd
 ```
 
-#### PHP-FPM
-1. Configure "php-fpm" so that Matomo has the required permissions for needed files. `sudo mkdir -p /etc/systemd/system/php-fpm.service.d/;sudo nano /etc/systemd/system/php-fpm.service.d/override_matomo.conf` and write this content.
-```
-[Service]
-ReadWritePaths = /usr/share/webapps/matomo/config
-ReadWritePaths = /usr/share/webapps/matomo/matomo.js
-ReadWritePaths = /usr/share/webapps/matomo/misc/user/
-ReadWritePaths = /usr/share/webapps/matomo/plugins/
-```
-
 ### nginx
 1. You can use any HTTP server. Instructions are given for nginx.
 2. `sudo nano /etc/nginx/nginx.conf` and configure your nginx server. You also need to create SSL keys.

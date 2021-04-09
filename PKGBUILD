@@ -48,6 +48,7 @@ build()
 package()
 {
     # Assure that the directories exist.
+    mkdir -p ${pkgdir}/etc/systemd/system/php-fpm.service.d/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/
@@ -56,10 +57,7 @@ package()
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
-#     chmod 644 "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js"
-#     chmod 644 "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js"
     
-    install -d "${pkgdir}/etc/webapps" # todo
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/config" "${pkgdir}/etc/webapps/${_pkgname}" # todo
     ln -s "../../../../etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/matomo/config" # todo
     
@@ -83,6 +81,13 @@ package()
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
     gzip -d DBIP-City-Lite.mmdb.gz
     install -Dm644 ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
+    
+    ## Configure php-fpm
+    echo -e "[Service]
+    ReadWritePaths = /usr/share/webapps/matomo/config
+    ReadWritePaths = /usr/share/webapps/matomo/matomo.js
+    ReadWritePaths = /usr/share/webapps/matomo/misc/user/
+    ReadWritePaths = /usr/share/webapps/matomo/plugins/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
