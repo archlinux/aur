@@ -52,15 +52,15 @@ package()
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-    dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- ${@}" > ${srcdir}/${_pkgname}/run.sh
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- ${@}" > ${srcdir}/${_pkgname}/run.sh
 
     # Create nbxplorer-start.sh.
     echo -e "#!/bin/bash
-    tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname_lc}-start.sh
+tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname_lc}-start.sh
 
     # Create nbxplorer-stop.sh.
     echo -e "#!/bin/bash
-    tmux kill-session -t ${_pkgname_lc}" > ${srcdir}/${_pkgname}/${_pkgname_lc}-stop.sh
+tmux kill-session -t ${_pkgname_lc}" > ${srcdir}/${_pkgname}/${_pkgname_lc}-stop.sh
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
