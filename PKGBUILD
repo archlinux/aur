@@ -1,7 +1,5 @@
 # Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
-_pkgname=system76
-_pkgbase=system76-power
 pkgname=system76-power
 pkgver=1.1.3
 pkgrel=1
