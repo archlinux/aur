@@ -1,6 +1,3 @@
-*.tar.zst
-*.tar.xz
-*.tar.gz
-/system76
+*.tar.*
 /pkg
 /src
