@@ -1,7 +1,7 @@
 pkgbase = i3-utils
 	pkgdesc = A bunch of scripts to make using i3 easier.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tasinet/i3-utils
 	arch = any
 	license = unknown
