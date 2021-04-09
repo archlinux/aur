@@ -5,6 +5,7 @@ pkgbase = matomo-git
 	url = https://github.com/matomo-org/matomo
 	arch = any
 	license = GPL3
+	makedepends = composer
 	makedepends = git
 	depends = php
 	depends = php-fpm

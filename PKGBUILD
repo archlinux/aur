@@ -12,7 +12,7 @@ url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
 groups=()
 depends=("php" "php-fpm" "php-gd")
-makedepends=("composer-git" "git")
+makedepends=("composer" "git")
 checkdepends=()
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
