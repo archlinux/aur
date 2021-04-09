@@ -1,5 +1,5 @@
 pkgname=mingw-w64-python39-bin
-pkgver=3.9.2
+pkgver=3.9.4
 _pybasever=39
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
@@ -16,9 +16,9 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         wine-python.sh)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('37c94d2d9443b95c82b3f56bd5b97ad3f21b0b6a1b50595dd19b83b2a6a8913e'
-            '90f12b2475290459e1800d5170bdb5ef444f3803fdf2994edd7cfcd2c92a88ab'
-            '7899e8a6f7946748830d66739f2d8f2b30214dad956e56b9ba216b3de5581519'
+sha256sums=('8867f98c6e19b1308df7ff14b9002569eaf06813a3e3d00254178bbb0b764805'
+            '0c3944cbfa4f44603a529d360aa1b146ddb4cf5a03abf95893d07919c66d331f'
+            '66c4de16daa74a825cf9da9ddae1fe020b72c3854b73b1762011cc33f9e4592f'
             '86e768f17994ce586d646b4ace95f819943dfe6a0fb1afa40de4188e975d5db8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
