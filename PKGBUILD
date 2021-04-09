@@ -2,7 +2,7 @@
 
 pkgbase='nps'
 pkgname=('nps' 'npc')
-pkgver=0.26.9
+pkgver=0.26.10
 pkgrel=1
 pkgdesc="a lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal. "
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'arm')
@@ -16,7 +16,7 @@ source=('nps.service'
         "${pkgname}-${pkgver}.tar.gz::https://github.com/ehang-io/nps/archive/v${pkgver}.tar.gz")
 md5sums=('a31b25cbee5112bb6518eb30ed99c9c8'
          '6935c6c06f971d8116282f799c4ac9f4'
-         'd9020b0843bedbb62f8bab494acf0c51')
+         'dfaf0dee8741a58e345e200c215938cb')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
