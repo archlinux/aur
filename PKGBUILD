@@ -9,10 +9,10 @@ pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target}
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 url="http://www.gnu.org/software/gcc/"
-depends=('libmpc' 'zstd')
-makedepends=('gmp' 'mpfr' 'git' "${_target}-binutils")
+depends=(libmpc zstd)
+makedepends=(gmp mpfr git "${_target}-binutils")
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
-options=('!emptydirs' '!strip')
+options=(!emptydirs)
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
     "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
     "git+https://github.com/glankk/n64.git#branch=n64-ultra")

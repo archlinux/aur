@@ -15,7 +15,6 @@ pkgbase = mips64-ultra-elf-gcc-stage1
 	depends = zstd
 	optdepends = mips64-ultra-elf-newlib: Standard C library optimized for embedded systems
 	options = !emptydirs
-	options = !strip
 	source = http://gcc.gnu.org/pub/gcc/releases/gcc-10.3.0/gcc-10.3.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.22.tar.xz
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
