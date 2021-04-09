@@ -1,6 +1,6 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
-	pkgver = 5.8.5
+	pkgver = 5.8.7
 	pkgrel = 2
 	url = https://github.com/continental/ecal
 	arch = x86_64

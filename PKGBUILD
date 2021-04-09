@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal
-pkgver=5.8.5
+pkgver=5.8.7
 pkgrel=2
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
