@@ -49,6 +49,7 @@ package()
 {
     # Assure that the directories exist.
     mkdir -p ${pkgdir}/etc/systemd/system/php-fpm.service.d/
+    mkdir -p ${pkgdir}/etc/webapps/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/
@@ -58,7 +59,6 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
     
-    install -d "${pkgdir}/etc/webapps" # todo
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/config" "${pkgdir}/etc/webapps/${_pkgname}" # todo
     ln -s "../../../../etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/matomo/config" # todo
     
