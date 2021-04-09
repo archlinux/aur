@@ -51,6 +51,12 @@ package()
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/
+    
+    # todo
+    mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/config/
+    mkdir -p ${pkgdir}/etc/webapps/${_pkgname}/
+    mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/tmp/
+    mkdir -p ${pkgdir}/var/lib/webapps/${_pkgname}/tmp/
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
@@ -64,11 +70,11 @@ package()
     install -d "${pkgdir}/etc/webapps/"
 
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/config/" "${pkgdir}/etc/webapps/${_pkgname}/"
-    ln -s "/etc/webapps/${_pkgname}/" "${pkgdir}/usr/share/webapps/${_pkgname}/config/"
+    ln -s "${pkgdir}/etc/webapps/${_pkgname}/" "${pkgdir}/usr/share/webapps/${_pkgname}/config/"
 
     rm -r "${pkgdir}/usr/share/webapps/${_pkgname}/tmp/"
     install -dm700 "${pkgdir}/var/lib/webapps/${_pkgname}/tmp/"
-    ln -s "/var/lib/webapps/${_pkgname}/tmp" "${pkgdir}/usr/share/webapps/${_pkgname}/tmp/"
+    ln -s "${pkgdir}/var/lib/webapps/${_pkgname}/tmp/" "${pkgdir}/usr/share/webapps/${_pkgname}/tmp/"
 
     ## Download the GeoIP database.
     cd ${pkgdir}/usr/share/webapps/matomo/misc/
