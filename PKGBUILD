@@ -7,7 +7,7 @@ _ver_ivpn_cli=3.3.7
 # PKGBUILD config
 pkgname="ivpn"
 pkgver=3.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
 url="https://ivpn.net"

@@ -1,7 +1,7 @@
 pkgbase = ivpn
 	pkgdesc = IVPN Command Line Interface
 	pkgver = 3.3.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://ivpn.net
 	install = ivpn.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ivpn
 	makedepends = curl
 	makedepends = go
 	depends = glibc
+	depends = lsof
 	depends = wireless_tools
 	depends = openvpn
 	depends = wireguard-tools
