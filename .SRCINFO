@@ -1,15 +1,18 @@
 pkgbase = dot-git
-	pkgdesc = Yet another management tool for dotfiles
-	pkgver = 0.1.4
-	pkgrel = 1
-	url = https://github.com/ubnt-intrepid/dot
+	pkgdesc = Dot Browser is a privacy-conscious web browser based on Firefox.
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/dothq/browser
 	arch = x86_64
-	license = MIT
+	license = MPL-2.0
+	makedepends = yarn
+	makedepends = nodejs
 	makedepends = git
-	makedepends = cargo
-	provides = dot
-	conflicts = dot
-	source = dot::git+https://github.com/ubnt-intrepid/dot
+	makedepends = sccache
+	makedepends = cbindgen
+	source = dot-git-0.1::git+https://github.com/dothq/browser-ff.git
+	source = firefox-source-87.0::https://archive.mozilla.org/pub/firefox/releases/87.0/source/firefox-87.0.source.tar.xz
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dot-git
