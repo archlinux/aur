@@ -1,0 +1,30 @@
+pkgbase = python2-pylint
+	pkgdesc = Analyzes Python code looking for bugs and signs of poor quality
+	pkgver = 1.9.5
+	pkgrel = 1
+	url = https://pylint.org
+	arch = any
+	license = GPL
+	checkdepends = python2-pytest-runner
+	checkdepends = mpdecimal
+	depends = python2-astroid
+	depends = python2-setuptools
+	depends = python2-mccabe
+	depends = python2-isort
+	depends = python2-backports.functools_lru_cache
+	depends = python2-configparser
+	depends = python2-singledispatch
+	optdepends = tk: Pylint GUI
+	optdepends = graphviz: To have other output formats than dot or vcg
+	source = python2-pylint-1.9.5.tar.gz::https://github.com/PyCQA/pylint/archive/pylint-1.9.5.tar.gz
+	sha512sums = 0ba1feabd21617de5dbfdd98a73fb285fb3e4c19afd77ecc21807a762335ebb4250edeea89d6ec14178ed9e154ca7471b0ab65f0bd3cbde2b318b1125441beb5
+
+pkgname = python2-pylint
+	depends = python2-astroid
+	depends = python2-setuptools
+	depends = python2-mccabe
+	depends = python2-isort
+	depends = python2-backports.functools_lru_cache
+	depends = python2-configparser
+	depends = python2-singledispatch
+
