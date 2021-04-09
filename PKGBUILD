@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=74.0.3911.218
+pkgver=75.0.3969.149
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -21,22 +21,21 @@ depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font
 optdepends=(
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
     'upower: opera battery save'
-    'chromium-widevine: support playback of drm content (AUR!)'
 )
 source=(
-    "https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
+    "https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.rpm"
     "opera"
     "default"
     'eula.html'
     'terms.html'
     'privacy.html'
 )
-sha512sums=('c05b32a4106d249a6faa4a620b46894900c6097451c12a9d0dd0198ea68bd9ab597566f599a5fa15a88f40f6f279cf3f5f78c7328a8581cbcfd22eccf2e19311'
+sha512sums=('480e5f8d4a96cf85847f97c7d940c01fa0494ea012e10b0dae21ba622b2cf989c0c466dd9321542c78e6ceeaf001069a0a9f2b36887230a0d847727f6484961b'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
-            'c359079544360c9c12acd222e3e31dbf4d42b7da4388393a16d7acafa4b99f66f52a3f632afaf5ac3cb5f60f78e1184e6f89a86e6f831ef9e19a65f5cab342a5'
-            '59ddb12dd7bf771f1065d5678b62a70d4f8562066fe863add00f96e5339308e6cb658a19de3475aa96cf9f9b52b73f2a7b3e2053de0aa03457b58ab1efc8cf69'
-            '329f2244fb290103b8548b76b4b6fd228b93252c3cedf6377089eecb6da998f679bbb5cbcae23a3f4cbdc8f68b18c060d90617ea7baa48af414edf7d0cfbadf3')
+            '56e0877b7827636871a3c3f0c582603049bcfe192938453a91737b15d2d7f61a3e811f76fe223851a953f64e602503ca860287dc4825b07bb2438acca39f2ffe'
+            '669318641ec68160535ba3f5fc9939b6daedbe6c26ede42e623ed88b34936bc6cd78b061ac971d2ac2232a23bb3af7d37ce1fd0b4d0091d91eae4cb5d59ac1d5'
+            '139527ac1af142da869ece3804015c2aa88f024bc33a35c2dd243e34c4eeaa823df08d42d8fe22c836af182af96134ee61c1c06414d7f08e0ab831f87a5a32fa')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -46,33 +45,24 @@ prepare() {
 }
 
 package() {
-    tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
-
-    # get rid of the extra subfolder {i386,x86_64}-linux-gnu
-    (
-        cd "$pkgdir/usr/lib/"*-linux-gnu/
-        mv "$pkgname" ../
-    )
-    rm -rf "$pkgdir/usr/lib/"*-linux-gnu
+    install -dm755 "$pkgdir/usr"
+    cp -a usr/share "$pkgdir/usr/"
+    cp -a usr/lib64 "$pkgdir/usr/lib"
 
     # suid opera_sandbox
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
-
-    # add extra WidevineCdm location
-    sed -e '/\[/a\ \ "/usr/lib/chromium/WidevineCdm",' \
-        -i "$pkgdir/usr/lib/opera/resources/widevine_config.json"
 
     # install default options
     install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
 
     # install opera wrapper
-    rm "$pkgdir/usr/bin/$pkgname"
+    #rm "$pkgdir/usr/bin/$pkgname"
     install -Dm755 "$srcdir/opera" "$pkgdir/usr/bin/$pkgname"
 
     # license
-    install -Dm644 \
-        "$pkgdir/usr/share/doc/${pkgname}-stable/copyright" \
-        "$pkgdir/usr/share/licenses/$pkgname/copyright"
+    #install -Dm644 \
+        #"$pkgdir/usr/share/doc/${pkgname}-stable/copyright" \
+        #"$pkgdir/usr/share/licenses/$pkgname/copyright"
 
     # eula
     install -Dm644 \
