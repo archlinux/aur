@@ -1,6 +1,6 @@
 pkgbase = simutrans-svn
 	pkgdesc = Transportation simulation game - Nightly build from SVN
-	pkgver = r9721
+	pkgver = r9724
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
@@ -17,7 +17,8 @@ pkgbase = simutrans-svn
 	depends = freetype2
 	depends = miniupnpc
 	depends = fluidsynth
-	optdepends = freepats-general-midi: recommended MIDI soundfont
+	optdepends = soundfont-fluid: Default MIDI soundfont for music
+	optdepends = soundfont-realfont: Alternative higher quality MIDI soundfont
 	optdepends = simutrans-pak32.comic: Lowest resolution graphics set for Simutrans
 	optdepends = simutrans-pak48.excentrique: Low resolution graphics set for Simutrans, with an eccentric theme
 	optdepends = simutrans-pak64: Low resolution graphics set for Simutrans

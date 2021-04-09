@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r9721
+pkgver=r9724
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
@@ -9,7 +9,8 @@ url="https://www.simutrans.com/"
 license=('custom:Artistic')
 depends=('gcc-libs' 'zstd' 'zlib' 'sdl2_mixer' 'hicolor-icon-theme' 'freetype2' 'miniupnpc' 'fluidsynth')
 makedepends=('subversion' 'pkgconf' 'autoconf' 'make')
-optdepends=('freepats-general-midi: recommended MIDI soundfont'
+optdepends=('soundfont-fluid: Default MIDI soundfont for music'
+			'soundfont-realfont: Alternative higher quality MIDI soundfont'
             'simutrans-pak32.comic: Lowest resolution graphics set for Simutrans'
             'simutrans-pak48.excentrique: Low resolution graphics set for Simutrans, with an eccentric theme'
             'simutrans-pak64: Low resolution graphics set for Simutrans'
