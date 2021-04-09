@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-ffmpegdirect
 	pkgdesc = Inputstream ffmpegdirect kodi plugin
-	pkgver = 1.19.5
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.ffmpegdirect
 	arch = armv6h
@@ -18,9 +18,9 @@ pkgbase = kodi-addon-inputstream-ffmpegdirect
 	makedepends = nasm
 	depends = kodi
 	provides = kodi-addon-inputstream-ffmpegdirect
-	source = https://github.com/xbmc/inputstream.ffmpegdirect/archive/1.19.5-Matrix.tar.gz
+	source = https://github.com/xbmc/inputstream.ffmpegdirect/archive/1.20.1-Matrix.tar.gz
 	source = https://github.com/xbmc/xbmc/archive/19.0-Matrix.tar.gz
-	sha256sums = d24dcfeba7c39d1ef6e11640c289e470ef27fa2a4a49063d4ef401aa8c549a2e
+	sha256sums = a8afc9c897c83b20548ef1f5ce9831eb5623674ead3305dafbef972dc721f082
 	sha256sums = f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2
 
 pkgname = kodi-addon-inputstream-ffmpegdirect
