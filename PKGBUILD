@@ -3,6 +3,7 @@
 # Contributor: Davide Depau <davide@depau.eu>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Marco Melorio <marco.melorio@protonmail.com>
+# Contributor: Bakasura <bakasura@protonmail.ch>
 
 _pkgname=libadwaita
 pkgname=$_pkgname-git
@@ -14,7 +15,7 @@ url="https://gitlab.gnome.org/GNOME/$_pkgname"
 license=(LGPL)
 arch=(i686 x86_64 armv7h aarch64)
 depends=(gtk4)
-makedepends=(git gobject-introspection meson vala wayland-protocols)
+makedepends=(git gobject-introspection meson sassc vala wayland-protocols)
 checkdepends=(xorg-server-xvfb)
 source=("git+$url")
 provides=($_pkgname)
