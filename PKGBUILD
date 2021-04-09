@@ -5,13 +5,14 @@
 pkgname=matcha-gtk-theme
 _pkgver=2021-04-09
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat design theme for GTK 3, GTK 2 and GNOME Shell"
 arch=('any')
 url="https://vinceliuice.github.io/theme-matcha.html"
 license=('GPL3')
-depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
-optdepends=('qogir-icon-theme: Recommended icon theme'
+optdepends=('gtk-engine-murrine: GTK2 theme support'
+            'gtk-engines: GTK2 theme support'
+            'qogir-icon-theme: Recommended icon theme'
             'kvantum-theme-matcha: Matching Kvantum theme')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/$_pkgver.tar.gz")
 options=('!strip')
