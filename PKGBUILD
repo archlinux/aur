@@ -59,16 +59,19 @@ package()
     mkdir -p ${pkgdir}/var/lib/webapps/${_pkgname}/tmp/
 
     # Install the software.
-    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
+#     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
 
     # todo
-    chown -R http:http ${pkgdir}/usr/share/webapps/matomo/
+    install -d "${pkgdir}/usr/share/webapps"
+    cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}"
+    # Some extensions want to append to piwik.js (matomo.js from 3.8.0 onwards),
+    # so we relectantly let them.
+    chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/piwik.js"
+    chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/matomo.js"
 
-    sudo chmod 744 ${pkgdir}/usr/share/webapps/matomo/matomo.js
-    sudo chmod 744 ${pkgdir}/usr/share/webapps/matomo/piwik.js
-
-    install -d "${pkgdir}/etc/webapps/"
-
+    # While installing matomo, it insists on being able to write to the config directory,
+    # because it creates config.ini.php. After it’s installed, you can make it read-only,
+    # e.g. by `chown -R root:http /etc/webapps/${pkgname}`
     install -d "${pkgdir}/etc/webapps"
     mv "${pkgdir}/usr/share/webapps/${pkgname}/config" "${pkgdir}/etc/webapps/${pkgname}"
     ln -s "../../../../etc/webapps/${pkgname}" "${pkgdir}/usr/share/webapps/matomo/config"
