@@ -30,6 +30,6 @@ package() {
   
   install -D -m755 "$srcdir/lockbook/clients/linux/target/release/lockbook-desktop" "$pkgdir/usr/bin/lockbook-desktop"
   install -D -m644 "$srcdir/lockbook/graphics/SVGs/dark-1.svg" "$pkgdir/usr/share/pixmaps/dark-1.svg"
-  install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook.desktop" "$pkgdir/usr/share/applications/lockbook.desktop"
+  install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
 }
 
