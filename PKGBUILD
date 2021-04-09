@@ -1,6 +1,6 @@
 # Maintainer: Techcable <Techcable at techcable dot net>
 pkgname=mathicsscript
-pkgver=2.0.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A more advanced command-line interface to Mathics."
 arch=("any")
@@ -9,7 +9,8 @@ url="https://github.com/Mathics3/mathicsscript"
 # GPLv3 we can assume it's implicitly GPL-compatible
 license=('custom')
 groups=()
-depends=("mathics>=2.0.0" "mathics<2.1.0"
+depends=("mathics>=2.1.0" "mathics<2.2.0"
+         "readline"
          "python-click" "python-colorama" "python-pygments"
          "python-columnize" "python-networkx"
          "python-pygments" "python-term-background")
@@ -18,7 +19,7 @@ backup=() # Do we have any config files?
 options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("c9ac844240b652c431cd3e5111dd2093d09b5306bf1d20b929deb337f443f0b8")
+sha256sums=('e5f3d2bde12c0843dede253f4e44e2844f6e48f44154912747cd27ca9215e319')
 validpgpkeys=()
 
 prepare() {
