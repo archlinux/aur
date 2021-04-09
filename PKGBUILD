@@ -56,7 +56,6 @@ package()
     
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
-    chown -R http:http ${pkgdir}/usr/share/${_pkgname}/
 
     ## GeoIP database
     cur_year=$(date +"%Y")
@@ -77,11 +76,14 @@ package()
 
     ## Configure php-fpm.
     echo -e "[Service]
-ReadWritePaths = /usr/share/${_pkgname}/config
+ReadWritePaths = /usr/share/${_pkgname}/config/
 ReadWritePaths = /usr/share/${_pkgname}/matomo.js
 ReadWritePaths = /usr/share/${_pkgname}/misc/user/
 ReadWritePaths = /usr/share/${_pkgname}/plugins/
 ReadWritePaths = /usr/share/${_pkgname}/tmp/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
+
+    ## Set the owner.
+    chown -R http:http ${pkgdir}/usr/share/${_pkgname}/
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
