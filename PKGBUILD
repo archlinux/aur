@@ -12,7 +12,7 @@ url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
 groups=()
 depends=("php" "php-fpm" "php-gd")
-makedepends=("git")
+makedepends=("git" "composer")
 checkdepends=()
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
@@ -41,6 +41,8 @@ build()
 {
     cd ${srcdir}/${_pkgname}/
     git checkout tags/$(git describe --tags --abbrev=0)
+    git submodule update --init --merge --recursive
+    composer install --no-dev
 }
 
 package()
@@ -52,12 +54,12 @@ package()
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
-    
+
     ## Download the GeoIP database.
     cd ${pkgdir}/usr/share/webapps/matomo/misc/
     cur_year=$(date +"%Y")
     cur_month=$(date +"%m")
-    
+
     while [ $(curl -s -o /dev/null/ -w "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz) != "200" ]; do
         if [ ${cur_month} -gt 1 ]; then
             cur_month-=1
@@ -66,7 +68,7 @@ package()
             cur_month=12
         fi
     done
-    
+
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb"
 
     # Install the documentation.
@@ -74,7 +76,7 @@ package()
 
     # Install the license.
     install -Dm644 ${srcdir}/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/
-    
+
     # Information
     echo -e "\033[0;32mConfiguration is needed after the installation. For assistance, read the included \"README.md\".\033[0m"
 }
