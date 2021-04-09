@@ -3,4 +3,5 @@
 !.SRCINFO
 !PKGBUILD
 !osu-file-extensions-handler.desktop
+!osu-url-handler.desktop
 !osu-handler.install
