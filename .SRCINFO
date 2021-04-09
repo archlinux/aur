@@ -1,6 +1,6 @@
 pkgbase = frangipanni-bin
 	pkgdesc = Program to convert lines of text into a tree structure
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/birchb1024/frangipanni
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = frangipanni-bin
 	license = MIT
 	provides = frangipanni
 	conflicts = frangipanni
-	source = https://raw.githubusercontent.com/birchb1024/frangipanni/v0.4.1/LICENSE
-	source = https://raw.githubusercontent.com/birchb1024/frangipanni/v0.4.1/README.md
+	source = https://raw.githubusercontent.com/birchb1024/frangipanni/v0.4.2/LICENSE
+	source = https://raw.githubusercontent.com/birchb1024/frangipanni/v0.4.2/README.md
 	sha256sums = 3cef0d7345e2a2f9205ad48191decfb293d2f72fa3fdcd6794f32868f9863bf7
-	sha256sums = f9122312556da81bfd3cc0bff13d6a0093b02dbdbe563b8fc13e3a25b68a531c
-	source_x86_64 = frangipanni-bin-0.4.1-x86_64.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.1/frangipanni_linux_amd64.tgz
-	sha256sums_x86_64 = d5b2b27d2962c0feea83dc3b8f9cfef3d8bd73c7ea41b12f6d7b649e2bca5989
-	source_i686 = frangipanni-bin-0.4.1-i686.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.1/frangipanni_linux_386.tgz
-	sha256sums_i686 = 888f29cad305a453edcac6a906f228b80883b3110301a165227c3ffd8a266035
-	source_aarch64 = frangipanni-bin-0.4.1-aarch64.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.1/frangipanni_linux_arm64.tgz
-	sha256sums_aarch64 = 8b33ec6b54baef67aa88f7cacc7ee0c869cc74cbd1fb6c89cb12a8aefef8e5a0
+	sha256sums = 996d1bfa83a9860508f410d11ad8288fc83c613a200e4bd8571394d69d2db70f
+	source_x86_64 = frangipanni-bin-0.4.2-x86_64.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.2/frangipanni_linux_amd64.tgz
+	sha256sums_x86_64 = be99d7656ff3c3e1fd97169ddf8e5903646ba380e5cbd51bc6c53e1ab0741d64
+	source_i686 = frangipanni-bin-0.4.2-i686.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.2/frangipanni_linux_386.tgz
+	sha256sums_i686 = a71962ec99ae670653d6dbdb03118675ee018477fd7f787b4c2ec69f0cd1a2eb
+	source_aarch64 = frangipanni-bin-0.4.2-aarch64.tar.gz::https://github.com/birchb1024/frangipanni/releases/download/v0.4.2/frangipanni_linux_arm64.tgz
+	sha256sums_aarch64 = 589f2e294c73f2fbda0764ae7104b31b0c92739f0345cb1daaed70cd08a5caa1
 
 pkgname = frangipanni-bin
 
