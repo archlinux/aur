@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
-pkgname=python-av1an-git
-pkgver=1.12.r427.g4bfdc8d
+pkgname=av1an-git
+pkgver=1.12.r680.gcacc017
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
@@ -23,8 +23,8 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
             'ffms2'
             'vapoursynth-plugin-lsmashsource'
             )
-provides=('python-av1an')
-conflicts=('python-av1an')
+provides=('python-av1an' 'python-av1an-git')
+conflicts=('python-av1an' 'python-av1an-git')
 source=("git+https://github.com/master-of-zen/Av1an.git")
 sha256sums=('SKIP')
 
