@@ -1,0 +1,34 @@
+pkgbase = gnunet-user
+	pkgdesc = A framework for secure peer-to-peer networking - single user config
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://gnunet.org
+	arch = any
+	license = AGPL
+	makedepends = libextractor
+	depends = gnutls
+	depends = gnurl
+	depends = libmicrohttpd
+	optdepends = bluez: for bluetooth support
+	optdepends = jansson
+	optdepends = opus: for conversation tool
+	optdepends = libpulse: for conversation tool
+	optdepends = libogg: for conversation tool
+	optdepends = nss: certutil binary, for gnunet-gns-proxy-setup-ca
+	optdepends = zbar: for gnunet-qr
+	optdepends = pbc: for Attribute-Based Encryption and Identity Provider functionality
+	optdepends = libgabe: for Attribute-Based Encryption and Identity Provider functionality
+	optdepends = miniupnpc: for traversing NAT boxes more reliably
+	optdepends = perl: for some utilities
+	optdepends = texlive-most: for gnunet-bcd
+	optdepends = python: for test-suite
+	provides = gnunet
+	conflicts = gnunet
+	options = !makeflags
+	source = https://ftpmirror.gnu.org/gnu/gnunet/gnunet-0.12.2.tar.gz
+	source = gnunet.service
+	sha256sums = ac288b047d1156fc5e739062b11242bad0487993631e79781aede620ddf18cd7
+	sha256sums = cc5ac23e64aa7c42efb86dfc8dd644f05b9b5d838e881642e8562374e7915825
+
+pkgname = gnunet-user
+
