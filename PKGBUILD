@@ -54,7 +54,21 @@ package()
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
-    chown -R http:http /usr/share/webapps/matomo/
+
+    # todo
+    chown -R http:http ${pkgdir}/usr/share/webapps/matomo/
+
+    sudo chmod 744 ${pkgdir}/usr/share/webapps/matomo/matomo.js
+    sudo chmod 744 ${pkgdir}/usr/share/webapps/matomo/piwik.js
+
+    install -d "${pkgdir}/etc/webapps/"
+
+    mv "${pkgdir}/usr/share/webapps/${_pkgname}/config/" "${pkgdir}/etc/webapps/${_pkgname}/"
+    ln -s "/etc/webapps/${_pkgname}/" "${pkgdir}/usr/share/webapps/${_pkgname}/config/"
+
+    rm -r "${pkgdir}/usr/share/webapps/${_pkgname}/tmp/"
+    install -dm700 "${pkgdir}/var/lib/webapps/${_pkgname}/tmp/"
+    ln -s "/var/lib/webapps/${_pkgname}/tmp" "${pkgdir}/usr/share/webapps/${_pkgname}/tmp/"
 
     ## Download the GeoIP database.
     cd ${pkgdir}/usr/share/webapps/matomo/misc/
