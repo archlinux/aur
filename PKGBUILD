@@ -15,7 +15,7 @@ depends=(
 makedepends=('python-setuptools' 'ninja' 'yarn')
 options=(!emptydirs)
 source=(
-    "https://github.com/ngld/knossos/archive/v${pkgver}.tar.gz"
+    "https://github.com/ngld/old-knossos/archive/v${pkgver}.tar.gz"
     knossos
     knossos.desktop)
 
