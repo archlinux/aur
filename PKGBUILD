@@ -4,10 +4,10 @@ pkgdesc="ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motio
 url='https://wiki.ros.org/rqt_moveit'
 
 pkgname='ros-melodic-rqt-moveit'
-pkgver='0.5.7'
+pkgver='0.5.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_moveit-${pkgver}"
+_dir="rqt_moveit-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_moveit/archive/${pkgver}.tar.gz")
-sha256sums=('80430ab344e096ae32caa505fb47f33ad52d77a83578ccb19950d097dee85e06')
+sha256sums=('8a18851215b6a13718b3d6d66a466282b5a85269156549aee95cf87c5f12b38f')
 
 build() {
 	# Use ROS environment variables.
