@@ -1,13 +1,13 @@
 pkgbase = k0s-bin
 	pkgdesc = k0s - Zero Friction Kubernetes
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/k0sproject/k0s
 	arch = x86_64
 	license = Apache
 	options = !strip
-	source = https://github.com/k0sproject/k0s/releases/download/v0.12.1/k0s-v0.12.1-amd64
-	sha256sums = 2018b7cfe564951bf42079cb402bd7d57c4cc9a9621e1ae3cdadc6f0e8ba1f93
+	source = https://github.com/k0sproject/k0s/releases/download/v0.13.0/k0s-v0.13.0-amd64
+	sha256sums = 53bf049bc61456ca332883a413d796547d219dfc5bdfde270ad2aaf3e983908d
 
 pkgname = k0s-bin
 
