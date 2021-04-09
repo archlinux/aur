@@ -1,7 +1,7 @@
 pkgbase = skywire-bin
 	pkgdesc = Skywire: Building a New Internet. Skycoin.com
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = skywire-bin
 	provides = skywire
 	conflicts = skywire
 	source = skywire-scripts.tar.gz
-	sha256sums = 9b6bcf86464eb2caf1ace255e4054dc325e5569e7241aa548483eeda58a53939
+	sha256sums = 2c828f10f19ab5cd21472257130735ed213da1bf8301c6778e9586615644780a
 	source_i686 = https://github.com/skycoin/skywire/releases/download/v0.4.1/skywire-v0.4.1-linux-386.tar.gz
 	sha256sums_i686 = 65c246b68011c498b0b14ab2b0ee4e0a50c372dc41c0593072d39409e95fc6b1
 	source_x86_64 = https://github.com/skycoin/skywire/releases/download/v0.4.1/skywire-v0.4.1-linux-amd64.tar.gz
