@@ -37,6 +37,7 @@ _scripts="skywire-deb-scripts"
 #source=("git+${url}.git" ##branch=${BRANCH:-develop}"
 _release_url=("${url}/releases/download/${_tag_ver}/${_pkgname}-${_tag_ver}-linux")
 source=(
+#"https://github.com/asxtree/skywire-mainnet/releases/download/0.4.1/skywire-v0.4.1-linux-arm.tar.gz"
 "${_release_url}-amd64.tar.gz"
 "${_release_url}-arm64.tar.gz"
 "${_release_url}-arm.tar.gz"
@@ -44,7 +45,8 @@ source=(
 )
 #'deb.PKGBUILD.sig'   #skip the pgp checks for now as makepkg and yay handle it differently
 #'deb.PKGBUILD')
-sha256sums=('4e3a5dbd663cb7d368a8ea6b10e7cae94544bdd7d7ab4e0fb40250293118f6e1'
+sha256sums=(#'3671bb1fe3cd382bcb25fd1944d73b10b20d934626840e7ca30cc82a9b2fe37d'
+            '4e3a5dbd663cb7d368a8ea6b10e7cae94544bdd7d7ab4e0fb40250293118f6e1'
             '2b1dcc1c78bfa4e2eb81681079c266851bd67da1ff293c6411c94f374664d442'
             '3671bb1fe3cd382bcb25fd1944d73b10b20d934626840e7ca30cc82a9b2fe37d'
             '916a7577afaadac0a8285920a75cfef136921d770ceca4e768580039842577ed')

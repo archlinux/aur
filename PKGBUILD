@@ -5,11 +5,11 @@ pkgname=${_pkgname}-bin
 _projectname=skycoin
 _githuborg=${_projectname}
 pkgdesc="Skywire: Building a New Internet. Skycoin.com"
-_pkgver='0.4.0'
+_pkgver='0.4.1'
 _tag_ver="v${_pkgver}"
 pkgver=${_pkgver//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=2
+pkgrel=1
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 makedepends=()
@@ -20,15 +20,15 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 # "PKGBUILD.sig")
-sha256sums=('2994b9816389300da84de6880aa531a5eedc4ad2d4da693ee371d0f61ff8a38b')
-sha256sums_i686=('3e48f0e13ace81d5652a76a9d7bcf82108535095a3e3e076843012462cc107d2')
-sha256sums_x86_64=('8d00dcce4d1ced77ba6f5f24f855e2640a528fa0ae4a34a433268ce34e3d13c1')
-sha256sums_aarch64=('23b76001bb8f8e2f3dadaaf71addaa69eb55a29aa69c0f426827d60ddc3738d6')
-sha256sums_armv8=('23b76001bb8f8e2f3dadaaf71addaa69eb55a29aa69c0f426827d60ddc3738d6')
-sha256sums_armv7=('1e30babe08399c4a8330102c20432465b8cdf4a83eb6c475c389f9fd4b3decbc')
-sha256sums_armv7l=('1e30babe08399c4a8330102c20432465b8cdf4a83eb6c475c389f9fd4b3decbc')
-sha256sums_armv7h=('1e30babe08399c4a8330102c20432465b8cdf4a83eb6c475c389f9fd4b3decbc')
-sha256sums_arm=('1e30babe08399c4a8330102c20432465b8cdf4a83eb6c475c389f9fd4b3decbc')
+sha256sums=('9b6bcf86464eb2caf1ace255e4054dc325e5569e7241aa548483eeda58a53939')
+sha256sums_i686=('65c246b68011c498b0b14ab2b0ee4e0a50c372dc41c0593072d39409e95fc6b1')
+sha256sums_x86_64=('4e3a5dbd663cb7d368a8ea6b10e7cae94544bdd7d7ab4e0fb40250293118f6e1')
+sha256sums_aarch64=('2b1dcc1c78bfa4e2eb81681079c266851bd67da1ff293c6411c94f374664d442')
+sha256sums_armv8=('2b1dcc1c78bfa4e2eb81681079c266851bd67da1ff293c6411c94f374664d442')
+sha256sums_armv7=('9b4e1be59aca8deb54660857712676ea47a98ca14aab499232a335f515f5e906')
+sha256sums_armv7l=('9b4e1be59aca8deb54660857712676ea47a98ca14aab499232a335f515f5e906')
+sha256sums_armv7h=('9b4e1be59aca8deb54660857712676ea47a98ca14aab499232a335f515f5e906')
+sha256sums_arm=('9b4e1be59aca8deb54660857712676ea47a98ca14aab499232a335f515f5e906')
 #            'SKIP')
 #https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v0.3.0/skywire-v0.3.0-linux-386.tar.gz
@@ -99,15 +99,6 @@ for i in ${_skywirescripts}; do
   _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
 done
 
-#install -Dm755  ${srcdir}/${_scripts}/skywire-save/${_pkgname}-save.PKGBUILD  ${pkgdir}/${_skydir}/${_pkgname}-save/PKGBUILD
-#install -Dm755 ${srcdir}/${_scripts}/skywire-save/${_pkgname}-save.install ${pkgdir}/${_skydir}/${_pkgname}-save/${_pkgname}-save.install
-#install -Dm644 ${srcdir}/${_scripts}/skywire-save/${_pkgname}-save.txt ${pkgdir}/${_skydir}/${_pkgname}-save/${_pkgname}-save.install
-
-#install the satellite PKGBUILD for distributing the hypervisor key and it's script
-#install -Dm755  ${srcdir}/${_scripts}/hypervisorkey/hypervisorkey.PKGBUILD  ${pkgdir}/${_skydir}/hypervisorkey/PKGBUILD
-#install -Dm755 ${srcdir}/${_scripts}/hypervisorkey/hypervisorkey.install ${pkgdir}/${_skydir}/hypervisorkey/hypervisorkey.install
-#install -Dm755 ${srcdir}/${_scripts}/hypervisorkey/hypervisorkey-autoconfig.sh ${pkgdir}/${_skydir}/hypervisorkey/hypervisorkey-autoconfig.sh
-
 #rename visor to skywire
 [[ -f ${pkgdir}/usr/bin/${_pkgname}-visor ]] && mv ${pkgdir}/usr/bin/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
 
@@ -118,9 +109,6 @@ done
 #install the patched system.d services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
-
-#install the skycache systemd service
-#install -Dm644 ${srcdir}/${_scripts}/skycache/skycache.service ${pkgdir}/${_systemddir}/skycache.service
 
 #tls key and certificate generation
 #install -Dm755 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/generate-1.sh ${pkgdir}/${_skydir}/ssl/generate.sh
