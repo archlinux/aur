@@ -1,17 +1,20 @@
-# Maintainer: Timo Kramer <fw minus aur at timokramer dot de>
+# Maintainer: John Andrews <theunderdog09 at gmail dot com>
+# Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 
 pkgname=mullvad-vpn-cli
-pkgver=2020.7
+pkgver=2021.2
 pkgrel=1
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('nss')
+depends=('nss' 'iputils' 'resolvconf')
 makedepends=('git' 'rust' 'go')
+optdepends=('networkmanager: create Wireguard interface')
 conflicts=('mullvad-vpn')
+provides=('mullvad-vpn')
 install="${pkgname}.install"
-_commit='b82a3e9a7717b8b15c339bc78d4a2f3c6d90ea50'
+_commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'override.conf'
@@ -32,32 +35,48 @@ prepare() {
     git config submodule.mullvadvpn-app-binaries.url "${srcdir}/mullvadvpn-app-binaries"
     git submodule update
 
+    echo "Removing old Rust build artifacts"
+    cargo clean
+
     export GOPATH="$srcdir/gopath"
     go clean -modcache
 }
 
 build() {
+    cd "$srcdir/mullvadvpn-app"
+    source env.sh
+
     echo "Building Mullvad VPN..."
     echo "Building wireguard-go..."
-    cd "$srcdir/mullvadvpn-app/wireguard/libwg"
+    pushd wireguard/libwg
     mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
+    export GOPATH="$srcdir/gopath"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a -buildmode c-archive
+    popd
 
     # Clean mod cache for makepkg -C
     go clean -modcache
 
-    cd "${srcdir}/mullvadvpn-app"
+    export MULLVAD_ADD_MANIFEST="1"
 
-    echo "Removing old Rust build artifacts"
-    cargo clean
+    echo "Building Rust code in release mode"
 
     # Build mullvad-daemon
     cargo build --release --locked
+
+    mkdir -p dist-assets/shell-completions
+    for sh in bash zsh fish; do
+        echo "Generating shell completion script for $sh..."
+        cargo run --bin mullvad --release --locked -- shell-completions "$sh" \
+            dist-assets/shell-completions/
+    done
+
+    echo "Copying binaries"
 
     # Copy binaries for packaging
     cp -v dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} dist-assets/
@@ -71,17 +90,12 @@ build() {
         cp target/release/${binary} dist-assets/${binary}
     done
 
+    echo "Updating relay list..."
     # Update relays.json
-    cargo run -p mullvad-rpc --bin relay_list > dist-assets/relays.json
+    cargo run --bin relay_list --release > dist-assets/relays.json
 
-    # Shell completions
-    cd mullvad-cli
-    mkdir -p ../dist-assets/shell-completions
-    for sh in bash zsh fish; do
-        echo "Generating shell completion script for $sh..."
-        cargo run --release --locked --features shell-completions -- \
-            shell-completions "$sh" ../dist-assets/shell-completions/
-    done
+    echo "Updating API address cache..."
+    cargo run --bin address_cache --release > dist-assets/api-ip-address.txt
 }
 
 package() {
