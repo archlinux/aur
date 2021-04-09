@@ -2,8 +2,8 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=0.28.1
-_flutterversion=2.0.3-stable
+pkgver=0.29.0
+_flutterversion=2.0.4-stable
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64')
@@ -19,22 +19,20 @@ makedepends=('clang'
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('95c5045d0739187d961d24b7315e562d6b998c6ef7665aab7f199d3b2f1b4691'
-            '25defcb4419db484b2230c9da852d0f0c72898b94d442b9ebe3595dc04920d7c')
+sha256sums=('e610f1c854e73645b343152de9df9fb8c9c067d6fad5d46c9c3d71b76ef77cf0'
+            '05c9310f528a14a308517a8100f2acf9da50380a60189d8d65a31bc246e0c622')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
   flutter config --no-analytics
   flutter config --enable-linux-desktop
-  #cd ${pkgname}-v$pkgver
-  #echo "dependency_overrides:\n  intl: 0.17.0-nullsafety.2" >> pubspec.yaml
 }
 
 build() {
   export PATH="${srcdir}/flutter/bin:$PATH"
   cd ${pkgname}-v$pkgver
   flutter clean
-  flutter pub get
+  #flutter pub get
   flutter build linux --release --verbose
 }
 
