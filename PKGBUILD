@@ -27,12 +27,12 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "robin-map-${pkgver}" -B "build-${_arch}"
-		make -C "build-${_arch}"
+		cmake --build "build-${_arch}"
 	done
 }
 
 package() {
 	for _arch in ${_architectures}; do
-		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 	done
 }
