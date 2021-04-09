@@ -1,12 +1,12 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 # dependencies versions
-_ver_ivpn_daemon=2.12.17
-_ver_ivpn_cli=2.12.16
+_ver_ivpn_daemon=3.3.7
+_ver_ivpn_cli=3.3.7
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=2.12.17
+pkgver=3.3.7
 pkgrel=1
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
@@ -20,18 +20,18 @@ source=(
 "ivpn-cli-src-v${_ver_ivpn_cli}.tar.gz::https://github.com/ivpn/desktop-app-cli/archive/v${_ver_ivpn_cli}.tar.gz"
 )
 sha256sums=(
-'1ed2007d1c6a93b8b3e0ef06f011ba71cba4ee4b5a16333db0af7738bb30b27b' # daemon sources
-'767ea00e9a69ba9ff5ffde2e96c9212d9f2f52ad4b0182bdf1acbc58b3a26f00' # CLI sources
+'f80cae692c6291a81e3709a234342620b94bd92b73e57637c8af6540e62a03f9' # daemon sources
+'67e8ecfc04b2a32e14e12ac9f8a9f7471f31786ea0f23c53c9cbec1eee9969cd' # CLI sources
 )
 
 build() {
-  # build daemon
+  echo "*** build daemon ***"
   cd "$srcdir/desktop-app-daemon-${_ver_ivpn_daemon}"
   ./References/Linux/scripts/build-all.sh -v $_ver_ivpn_daemon -c "${_ver_ivpn_daemon}_stamped"
 
-  # build CLI
+  echo "*** build CLI ***"
   cd "$srcdir/desktop-app-cli-${_ver_ivpn_cli}"
-  ./References/Linux/build.sh -v $_ver_ivpn_daemon -c "${_ver_ivpn_daemon}_stamped"
+  ./References/Linux/compile-cli.sh -v $_ver_ivpn_daemon -c "${_ver_ivpn_daemon}_stamped"
 
   # prepare '*.service' file for systemd
   cat > "$srcdir/ivpn-service.service" << EOF
@@ -70,7 +70,6 @@ package() {
   install -Dm700 -g root -o root References/Linux/etc/firewall.sh "$pkgdir/opt/ivpn/etc/firewall.sh"
   install -Dm600 -g root -o root References/Linux/etc/servers.json "$pkgdir/opt/ivpn/etc/servers.json"
   install -Dm400 -g root -o root References/Linux/etc/ca.crt "$pkgdir/opt/ivpn/etc/ca.crt"
-  install -Dm400 -g root -o root References/Linux/etc/signing.pub "$pkgdir/opt/ivpn/etc/signing.pub"
   install -Dm400 -g root -o root References/Linux/etc/ta.key "$pkgdir/opt/ivpn/etc/ta.key"
 
   cd "$srcdir/desktop-app-cli-${_ver_ivpn_cli}"
