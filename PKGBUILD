@@ -2,7 +2,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-logo
-pkgver=5.11.11.arch1
+pkgver=5.11.12.arch1
 pkgrel=1
 pkgdesc='Linux with tux logo'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -28,7 +28,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '170a5887be33c7caded85156a3bda8ef769d1a38fe33e4973eccc9f0bcc87728'
-            'fdad6aeebddb3e4eaa49b081fe23b26d20877d484318eced6661644770df5e74')
+            '0ef6ed88ebf2a1b3ddf161c26ab7abfcdcfc6ba811f1755ed3e369b96403b154')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
