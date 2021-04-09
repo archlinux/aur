@@ -1,7 +1,7 @@
 # Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
 pkgname=gnunet-user
-pkgver=0.12.2
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A framework for secure peer-to-peer networking - single user config"
 arch=('any')
@@ -9,10 +9,9 @@ url="https://gnunet.org"
 license=('AGPL')
 provides=('gnunet')
 conflicts=('gnunet')
-depends=('gnutls' 'gnurl' 'libmicrohttpd')
+depends=('gnutls' 'gnurl' 'libmicrohttpd' 'jansson' 'libsodium')
 makedepends=('libextractor')
 optdepends=('bluez: for bluetooth support'
-            'jansson'
             'opus: for conversation tool'
             'libpulse: for conversation tool'
             'libogg: for conversation tool'
@@ -27,7 +26,7 @@ optdepends=('bluez: for bluetooth support'
 options=('!makeflags')
 source=("https://ftpmirror.gnu.org/gnu/gnunet/gnunet-${pkgver}.tar.gz"
         "gnunet.service")
-sha256sums=('ac288b047d1156fc5e739062b11242bad0487993631e79781aede620ddf18cd7'
+sha256sums=('03d76a852e7fd2fc87b7145cb6abd900f73e4ea6097f3caac9e7d9fe8b625696'
             'cc5ac23e64aa7c42efb86dfc8dd644f05b9b5d838e881642e8562374e7915825')
 
 build() {
