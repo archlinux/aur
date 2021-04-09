@@ -19,6 +19,7 @@ pkgbase = ecwolf-git
 	depends = libjpeg
 	depends = sdl2
 	depends = sdl2_net
+	depends = sdl2_mixer
 	optdepends = wolf3d-shareware: Demo version of Wolfenstein 3D
 	provides = ecwolf
 	conflicts = ecwolf
