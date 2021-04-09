@@ -9,8 +9,8 @@ arch=("any")
 url="https://github.com/KDE/${pkgname}"
 license=("GPL3")
 groups=()
-depends=("frameworkintegration" "libsodium" "qt5-base")
-makedepends=("cmake" "extra-cmake-modules")
+depends=()
+makedepends=("cmake" "extra-cmake-modules" "frameworkintegration" "kirigami2" "libsodium" "qt5-base" "qt5-quickcontrols2" "sudo")
 checkdepends=()
 optdepends=()
 provides=()
@@ -41,7 +41,7 @@ package()
 
     # Install the software.
     cd ${srcdir}/${pkgname}-${pkgver}/build/
-    make install
+    sudo make install
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${pkgname}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
