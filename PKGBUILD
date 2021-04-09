@@ -1,9 +1,9 @@
 # Maintainer: Dr-Noob <peibolms at gmail dot com>
 _name=cpufetch
 pkgname="$_name-git"
-pkgver=v0.94.r12.g2f61ebd
+pkgver=v0.94.r43.g8f2f3d3
 pkgrel=1
-pkgdesc="Simplistic yet fancy CPU architecture fetching tool"
+pkgdesc="Simple yet fancy CPU architecture fetching tool"
 arch=('x86_64')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})

@@ -1,6 +1,6 @@
 pkgbase = cpufetch-git
-	pkgdesc = Simplistic yet fancy CPU architecture fetching tool
-	pkgver = v0.94.r12.g2f61ebd
+	pkgdesc = Simple yet fancy CPU architecture fetching tool
+	pkgver = v0.94.r43.g8f2f3d3
 	pkgrel = 1
 	url = https://github.com/Dr-Noob/cpufetch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cpufetch-git
 	makedepends = git
 	makedepends = make
 	depends = glibc
-	provides = cpufetch=v0.94.r12.g2f61ebd
+	provides = cpufetch=v0.94.r43.g8f2f3d3
 	conflicts = cpufetch
 	source = git+https://github.com/Dr-Noob/cpufetch
 	md5sums = SKIP
