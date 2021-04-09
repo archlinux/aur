@@ -8,7 +8,7 @@ _svt_vp9_ver='7951c3cf6773c5e0ede00e4ce3e3ad2f7e090cfb'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.4.r101748.g797c2ecc8f
+pkgver=4.5.r101901.gb593abda6c
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -210,7 +210,7 @@ build() {
         --disable-nvenc \
         --enable-omx \
         --disable-rkmpp \
-        --disable-v4l2-m2m \
+        --enable-v4l2-m2m \
         --enable-vaapi \
         --enable-vdpau
     make
