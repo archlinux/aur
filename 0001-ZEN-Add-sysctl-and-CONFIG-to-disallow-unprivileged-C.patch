@@ -1,7 +1,7 @@
-From 09c2db93ed0eb09d84273c16e830156e2307e345 Mon Sep 17 00:00:00 2001
+From f904ba21627dd22bd38c9696bd542fecc7abe429 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/5] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 1/6] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -36,7 +36,7 @@ index 64cf8ebdc4ec..bd29529ac188 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 29ad68325028..96b79cfb2845 100644
+index b7d3c6a12196..9e8a5351063e 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
 @@ -1172,6 +1172,22 @@ config USER_NS
@@ -63,7 +63,7 @@ index 29ad68325028..96b79cfb2845 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index d66cd1014211..231a94ffd302 100644
+index 808af2cc8ab6..09658cb5317e 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -97,6 +97,10 @@
@@ -77,7 +77,7 @@ index d66cd1014211..231a94ffd302 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -1864,6 +1868,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1872,6 +1876,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index d66cd1014211..231a94ffd302 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2933,6 +2941,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2941,6 +2949,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,7 +102,7 @@ index d66cd1014211..231a94ffd302 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index c9fbdd848138..1fbf5d551fa0 100644
+index 62fbd09b5dc1..01192edd25f3 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -103,6 +103,9 @@
@@ -150,5 +150,5 @@ index af612945a4d0..95c54dae4aa1 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.30.1
+2.31.1
 

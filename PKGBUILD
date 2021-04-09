@@ -7,7 +7,7 @@ _srcname=linux-5.11
 _major=5.11
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=10
+_minor=12
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,17 +30,25 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
+  0003-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch
+  0004-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch
+  0005-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('b836fbbf9d67d94d067ee79958bd83a189d5798321371b2f3dfa3cc4d0acd75006a117bdf16fef4fb312ed86ec2c4dcac466741c75429dc87c086d8439a32032'
+b2sums=('eac29e11f7cc51f09f849f390d0884019033398a129b26486ac0829d57bd925cf10d962725c7485700daf3aba6a098db34e914f62f675c19b3f5910a48817566'
         'SKIP'
-        '84b97aeb190d570144d0e315edf8c0b51fd92a70f94a30f08ef49a65eedd48ee135b2c2f3a1a2827ace96fef2d1963e83948790c7729f3d7c1f615f8d32c9656'
+        '1defa8e4ef10663e48f62f9c9f7d3a35dd52d6aeaa91fa08371ae96c73a3098196c0e0a17beb78b8a6e246cc51ff3e3e59ffb85abb94c2bd8c14b8282e1e82bc'
         'SKIP'
-        '8a0e1fb03037e57df8de81856a0bdb94e393d9336b587b1c907c6e4ed15abfa6c86634131ebbfab45eeb6b423bf467536ad0543efbef2586645ade016c32a013'
-        'eab8a07469cff83526e5fef59d72d9c2c539432c161298cb61a09c25d55528e495b4d9dd0ff527d3e5900b8adb3f973f6601ea35837f04bf0c2794eaf04bc6ad')
+        '4f43af91d2b6a3ddca56c187595538b1920fbc5a9ec87cb7c714501f7a03ec8513c7ef09e76ac9350feb815e09c68b57fca6adb1d47c41d7583d7e1ff5a5de08'
+        '2c197117aa915971edb97ec98233d4c394f6790829486403bc51732a18fe12338d82e680ccafd138153affe9830d815ee1b52c7d1f3ed7937bc7a0c1fac3a5ef'
+        'b1cdc2e8d99ff59d57897fc99aa2a11b07f96f9461420d6d8d499fb4ff0740e317a8f9ede72b3041018ac89ab07a53c0014d19c06a9bb038055c4d5ed79f3b0d'
+        'ce586c65af54313c93e4dc55d56cf46840ac1b6a4f2a83b115529f4d9ef402158d28fa042967f1b685a11955371360513662f4b2eb1c75b5bba2ecd7ec31d8a9'
+        '5a93bf75f5c9995270af06d8ded3e57f53f0a11fd5c2e24909c9af9140a5275555c0ae7d50b2a064d76517d6d3536beb7850930ab5aec829be81b59b5a6b55aa'
+        '782e1ddb0400a7155b92f71e86ab1e717d3dbd159b4f003d2d4bdcd0baa660466ecdbc899f3b5e371c7e7400a940d4de0a3e46ff7418a641cd614ed738b16c86')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -48,8 +56,13 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd linux-${_fullver}
+  # hacky work around for ck1 not getting extracted
+  # https://bbs.archlinux.org/viewtopic.php?id=265115
+  if [[ ! -f "$srcdir/$_rcpatch" ]]; then
+    xz -dc "$SRCDEST/$_rcpatch.xz" > "$_rcpatch"
+  fi
 
+  cd linux-${_fullver}
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
