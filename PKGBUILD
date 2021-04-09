@@ -1,4 +1,5 @@
-# Maintainer: Erhan SAHIN < erhan@ssahin.net >
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: Erhan SAHIN < erhan@ssahin.net >
 
 pkgname="python2-wrapt"
 pkgver=1.12.1
