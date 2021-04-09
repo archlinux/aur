@@ -1,6 +1,6 @@
 pkgbase = singularity-container
 	pkgdesc = Application containers for Linux
-	pkgver = 3.7.2
+	pkgver = 3.7.3
 	pkgrel = 1
 	url = https://www.sylabs.io/singularity/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = singularity-container
 	depends = cryptsetup
 	depends = libseccomp
 	depends = squashfs-tools
-	source = singularity-container-3.7.2.tar.gz::https://github.com/hpcng/singularity/releases/download/v3.7.2/singularity-3.7.2.tar.gz
-	sha256sums = 36916222e26fb934404f0766e0ff368edac36d7fc31ca571f5f609466609066b
+	source = singularity-container-3.7.3.tar.gz::https://github.com/hpcng/singularity/releases/download/v3.7.3/singularity-3.7.3.tar.gz
+	sha256sums = 6667eb8875d2b66d73504f40c956b42b1351744f488d164204376215d885da5c
 
 pkgname = singularity-container
 
