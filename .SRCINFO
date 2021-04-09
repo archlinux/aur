@@ -1,0 +1,22 @@
+pkgbase = matomo-git
+	pkgdesc = A powerful web analytics platform.
+	pkgver = latest_tag
+	pkgrel = 1
+	url = https://github.com/matomo-org/matomo
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = php
+	depends = php-fpm
+	depends = php-gd
+	optdepends = apache: HTTP server
+	optdepends = certbot: Creates SSL certificates.
+	optdepends = mariadb: Database
+	optdepends = nginx: HTTP server
+	provides = matomo
+	conflicts = matomo
+	source = git+https://github.com/matomo-org/matomo.git
+	md5sums = SKIP
+
+pkgname = matomo-git
+
