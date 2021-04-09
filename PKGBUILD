@@ -3,13 +3,13 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.4.7.r6.gef3ef1bf
+pkgver=1.4.13.r31.ge5f1626f
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
 url='http://www.remmina.org/'
 license=('GPL')
-depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'libunique' 'avahi' 'vte3'
+depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
 	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
 	'libsecret' 'webkit2gtk' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake'
