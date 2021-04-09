@@ -12,7 +12,7 @@ url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
 groups=()
 depends=("php" "php-fpm" "php-gd")
-makedepends=("composer" "git" "gzip")
+makedepends=("composer" "git" "gzip" "sudo")
 checkdepends=()
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
@@ -57,8 +57,6 @@ package()
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
-    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js" # todo
-    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js" # todo
     
     install -d "${pkgdir}/etc/webapps" # todo
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/config" "${pkgdir}/etc/webapps/${_pkgname}" # todo
@@ -88,7 +86,6 @@ ReadWritePaths = /usr/share/webapps/matomo/matomo.js
 ReadWritePaths = /usr/share/webapps/matomo/misc/user/
 ReadWritePaths = /usr/share/webapps/matomo/plugins/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
     sudo systemctl daemon-reload
-
 
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
     gzip -d DBIP-City-Lite.mmdb.gz
