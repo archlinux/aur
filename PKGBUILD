@@ -27,16 +27,16 @@ pkgver() {
 
 build() {
 	cmake -S "${_repo}" -B "build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TESTING=OFF
-	make -C "build"
+	cmake --build "build"
 }
 
 check() {
 	cmake -S "${_repo}" -B "build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TESTING=ON
-	make -C "build"
-	make -C "build" test
+	cmake --build "build"
+	cmake --build "build" --target test
 }
 
 package() {
-	make DESTDIR="${pkgdir}" -C "build" install
+	DESTDIR="${pkgdir}" cmake --install "build"
 	install -Dm644 "${_repo}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
