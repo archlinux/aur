@@ -29,21 +29,21 @@ prepare() {
 build() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "fmt-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DFMT_TEST=OFF
-		make -C "build-${_arch}"
+		cmake --build "build-${_arch}"
 	done
 }
 
 check() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "fmt-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DFMT_TEST=ON
-		make -C "build-${_arch}"
-		make -C "build-${_arch}" test
+		cmake --build "build-${_arch}"
+		cmake --build "build-${_arch}" --target test
 	done
 }
 
 package() {
 	for _arch in ${_architectures}; do
-		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 	done
 }
