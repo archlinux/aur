@@ -16,5 +16,8 @@ package() {
     install -d ${pkgdir}/opt/${_pkgname}
     install -d ${pkgdir}/usr/bin
     cp -r ${srcdir}/{data,lib,syphon} ${pkgdir}/opt/${_pkgname}
-    ln -s /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/syphon 
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+#!/bin/sh
+exec /opt/${_pkgname}/${_pkgname} "\$@"
+END
 }
