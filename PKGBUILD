@@ -84,7 +84,8 @@ package()
 ReadWritePaths = /usr/share/webapps/matomo/config
 ReadWritePaths = /usr/share/webapps/matomo/matomo.js
 ReadWritePaths = /usr/share/webapps/matomo/misc/user/
-ReadWritePaths = /usr/share/webapps/matomo/plugins/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
+ReadWritePaths = /usr/share/webapps/matomo/plugins/
+ReadWritePaths = /usr/share/webapps/matomo/tmp/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
     sudo systemctl daemon-reload
 
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
