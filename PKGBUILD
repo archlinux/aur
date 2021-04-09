@@ -56,8 +56,8 @@ package()
     # Install the software.
     install -d "${pkgdir}/usr/share/webapps" # todo
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
-    chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/piwik.js" # todo
-    chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/matomo.js" # todo
+    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js" # todo
+    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js" # todo
 
     ## GeoIP database
     cur_year=$(date +"%Y")
