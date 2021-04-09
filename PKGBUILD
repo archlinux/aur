@@ -1,8 +1,8 @@
-# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=lceda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.4.19.2
+pkgver=6.4.19.4
 pkgrel=1
 pkgdesc="免费、强大、易用的在线电路设计软件"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/${_pkgname}-linux-x64-${pkgver}.zip"
         "LICENSE")
-sha256sums=('a84094c58aab0aa7afba54997d34bc91708cd0d950fa6cb6639327ff24f7fa67'
+sha256sums=('8031c849285244c2ef6eeb254c73a750934d41f8ee35aaa66233589721bd0274'
             '686f681d913d7f943bb5aac66cc902f2eb251e7a20fda43412c048d6134b3592')
 
 package() {
