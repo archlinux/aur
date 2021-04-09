@@ -1,0 +1,13 @@
+pkgbase = htmlq
+	pkgdesc = Like jq, but for HTML.
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = git+https://github.com/mgdm/htmlq.git#commit=0cb3b72
+	md5sums = SKIP
+
+pkgname = htmlq
+
