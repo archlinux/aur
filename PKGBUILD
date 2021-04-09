@@ -32,13 +32,13 @@ build() {
 	
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "xalan-c-Xalan-C_${_filever}" -B "build-${_arch}" "${_flags[@]}"
-		make -C "build-${_arch}"
+		cmake --build "build-${_arch}"
 	done
 }
 
 package() {
 	for _arch in ${_architectures}; do
-		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 	done
 }
