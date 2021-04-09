@@ -1,6 +1,6 @@
 pkgbase = ktx_software-git
 	pkgdesc = KTX (Khronos Texture) Library and Tools
-	pkgver = v4.0.0.beta8.r0.g7ad9caf1
+	pkgver = v4.0.0.rc1.r1.g50000ca6
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/KTX-Software
 	arch = i686
