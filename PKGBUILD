@@ -1,7 +1,7 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=dwm-monosans-git
-pkgver=6.2.r1718.ca7019f
+pkgver=6.2.r1720.9b87439
 pkgrel=1
 pkgdesc='dwm with swallowing, systray, holdbar and other features'
 url=https://github.com/monosans/dwm
