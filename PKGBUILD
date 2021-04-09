@@ -9,12 +9,12 @@ pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 url="http://www.gnu.org/software/gcc/"
-depends=('libmpc' 'zstd')
-makedepends=('gmp' 'mpfr' 'git' "${_target}-binutils" "${_target}-newlib")
+depends=(libmpc zstd)
+makedepends=(gmp mpfr git "${_target}-binutils" "${_target}-newlib")
 conflicts=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
-options=('!emptydirs' '!strip')
+options=(!emptydirs)
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
