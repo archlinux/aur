@@ -1,16 +1,16 @@
 pkgbase = aarch64-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (aarch64-unknown-linux-gnu)
-	pkgver = 5.10.17
+	pkgver = 5.10.28
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = any
 	license = GPL2
 	makedepends = rsync
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.17.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.17.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.28.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.28.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = e84e623ce8bb2446ec026b62eafa3b18480aa6fb6ae9c86cd8f18651324d4814
+	sha256sums = 4dfc3aea719556e63e90b8692e9d4b779ad1cb2a9a4823bf721e30004e7ac354
 	sha256sums = SKIP
 
 pkgname = aarch64-linux-api-headers
