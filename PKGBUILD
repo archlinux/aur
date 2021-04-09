@@ -62,25 +62,25 @@ package()
 #     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
 
     # todo
-    install -d "${pkgdir}/usr/share/webapps"
-    cp -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}"
+    install -d "/usr/share/webapps"
+    cp -r "${srcdir}/${_pkgname}" "/usr/share/webapps/${_pkgname}"
     # Some extensions want to append to piwik.js (matomo.js from 3.8.0 onwards),
     # so we relectantly let them.
-    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js"
-    chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js"
+    chmod g+w "/usr/share/webapps/${_pkgname}/piwik.js"
+    chmod g+w "/usr/share/webapps/${_pkgname}/matomo.js"
 
     # While installing matomo, it insists on being able to write to the config directory,
     # because it creates config.ini.php. After it’s installed, you can make it read-only,
     # e.g. by `chown -R root:http /etc/webapps/${pkgname}`
-    install -d "${pkgdir}/etc/webapps"
-    mv "${pkgdir}/usr/share/webapps/${_pkgname}/config" "${pkgdir}/etc/webapps/${_pkgname}"
-    ln -s "../../../../etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/matomo/config"
+    install -d "/etc/webapps"
+    mv "/usr/share/webapps/${_pkgname}/config" "/etc/webapps/${_pkgname}"
+    ln -s "../../../../etc/webapps/${_pkgname}" "/usr/share/webapps/matomo/config"
 
     # matomo uses this tmp dir for writing its own data;
     # but it belongs in /var rather than /usr.
-    rmdir "${pkgdir}/usr/share/webapps/matomo/tmp"
-    install -dm700 "${pkgdir}/var/lib/webapps/matomo/tmp"
-    ln -s "../../../../var/lib/webapps/matomo/tmp" "${pkgdir}/usr/share/webapps/matomo/tmp"
+    rmdir "/usr/share/webapps/matomo/tmp"
+    install -dm700 "/var/lib/webapps/matomo/tmp"
+    ln -s "../../../../var/lib/webapps/matomo/tmp" "/usr/share/webapps/matomo/tmp"
 
     ## Download the GeoIP database.
     cd ${pkgdir}/usr/share/webapps/matomo/misc/
