@@ -11,8 +11,8 @@ source=("https://github.com/OzymandiasTheGreat/${pkgname}/releases/download/${pk
 sha256sums=('4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa')
 
 prepare() {
-sudo chmod a+x ${pkgname}-${pkgver}.AppImage
-sudo cp ${pkgname}-${pkgver}.AppImage /usr/bin/emoji-keyboard
+sudo -s chmod a+x ${pkgname}-${pkgver}.AppImage
+sudo -s cp ${pkgname}-${pkgver}.AppImage /usr/bin/emoji-keyboard
 }
 
 # vim:set ts=2 sw=2 et:
