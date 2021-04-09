@@ -1,7 +1,7 @@
 # Maintainer: Erhan SAHIN < erhan@ssahin.net >
 
 pkgname="python2-wrapt"
-pkgver=1.10.4
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="A Python module for decorators, wrappers and monkey patching."
 arch=("any")
@@ -9,7 +9,7 @@ url="https://pypi.python.org/pypi/wrapt"
 license=("BSD")
 makedepends=("python2-setuptools")
 source=("https://pypi.python.org/packages/source/w/wrapt/wrapt-${pkgver}.tar.gz")
-sha256sums=('a657129f910f9155ea0a567ef442016bff6a0b4ace8a4c5e7fbf91e0eb13d7de')
+sha256sums=('b62ffa81fb85f4332a4f609cab4ac40709470da05643a082ec1eb88e6d9b97d7')
 
 build() {
   cd "${srcdir}/wrapt-${pkgver}/"
