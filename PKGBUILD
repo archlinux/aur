@@ -46,13 +46,13 @@ package()
 {
     # Assure that the directories exist.
     mkdir -p ${pkgdir}/usr/bin/
-    mkdir -p ${pkgdir}/usr/lib/
+    mkdir -p ${pkgdir}/usr/share/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- ${@}" > ${srcdir}/${_pkgname}/run.sh
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- \${@}" > ${srcdir}/${_pkgname}/run.sh
 
     # Create nbxplorer-start.sh.
     echo -e "#!/bin/bash
@@ -63,14 +63,14 @@ tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc};bash -i\"" > ${srcdir}/${
 tmux kill-session -t ${_pkgname_lc}" > ${srcdir}/${_pkgname}/${_pkgname_lc}-stop.sh
 
     # Install the software.
-    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
+    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
 
     ## Symlinking the scripts.
-    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
+    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
-    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}-start.sh ${pkgdir}/usr/bin/${_pkgname_lc}-start
+    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/${_pkgname_lc}-start.sh ${pkgdir}/usr/bin/${_pkgname_lc}-start
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-start
-    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname_lc}-stop.sh ${pkgdir}/usr/bin/${_pkgname_lc}-stop
+    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/${_pkgname_lc}-stop.sh ${pkgdir}/usr/bin/${_pkgname_lc}-stop
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-stop
 
     # Install the documentation.
