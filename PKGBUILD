@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
 pkgname=stm32cubemonitor
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}-bin")
 options=('!strip')
 _pkg_file_name=en.STM32CubeMonitor_lin_v${pkgver//./-}.zip
 source=("local://${_pkg_file_name}")
-sha256sums=('22689b693e3e00f36c1e71e9f052fb926827c372ba9a9d78789ad563cdb10707')
+sha256sums=('89ca4051cea2e0dd115f9e5e1cb1344560fd408471d7a5caae1ca15cb736aa35')
 
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 if [ ! -f ${PWD}/${_pkg_file_name} ]; then
@@ -41,7 +41,7 @@ fi
 
 prepare() {
   install -dm755 build
-  bsdtar -xf STM32CubeMonitor_lin/${pkgname}_${pkgver}_amd64.deb -C build
+  bsdtar -xf ${pkgname}_${pkgver}_amd64.deb -C build
 }
 
 package() {
@@ -56,7 +56,7 @@ package() {
   ln -fs /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # license
-  for license in ${srcdir}/STM32CubeMonitor_lin/licenses/*
+  for license in ${srcdir}/licenses/*
   do
     install -Dm644 "${license}" -t ${pkgdir}/usr/share/licenses/${pkgname}/
   done 
