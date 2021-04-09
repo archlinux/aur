@@ -1,5 +1,5 @@
 pkgname=libsolv
-pkgver=0.7.18
+pkgver=0.7.19
 pkgrel=1
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('bd15f40dabc02727ea804a37a9cd56dc')
+md5sums=('05adaf6abe6b65a330272642baad82e1')
 
 build() {
 	cd "$pkgname-$pkgver"
