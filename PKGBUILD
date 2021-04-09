@@ -35,7 +35,7 @@ build()
 
 package()
 {
-    # Assure that the folders exist.
+    # Assure that the directories exist.
     mkdir -p ${pkgdir}/usr/share/doc/${pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
 
