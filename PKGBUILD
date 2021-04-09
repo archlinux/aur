@@ -1,4 +1,3 @@
-# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sharedaccess-git
@@ -27,10 +26,10 @@ pkgver() {
 
 build() {
 	cmake -S ${_repo} -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-	make -C build
+	cmake --build "build"
 }
 
 package() {
-	make DESTDIR="${pkgdir}" -C build install
+	DESTDIR="${pkgdir}" cmake --install "build"
 	install -Dm644 "${_repo}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
