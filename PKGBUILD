@@ -21,13 +21,13 @@ build() {
 	
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "openexr-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DOPENEXR_BUILD_BOTH_STATIC_SHARED=ON
-		make -C "build-${_arch}"
+		cmake --build "build-${_arch}"
 	done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    make DESTDIR="${pkgdir}" -C "build-${_arch}" install
+    DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
