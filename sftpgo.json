@@ -165,6 +165,7 @@
     "templates_path": "/usr/share/sftpgo/templates",
     "static_files_path": "/usr/share/sftpgo/static",
     "backups_path": "/srv/sftpgo/backups",
+    "web_admin_root": "",
     "certificate_file": "",
     "certificate_key_file": "",
     "ca_certificates": [],
