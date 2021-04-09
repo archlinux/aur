@@ -3,12 +3,13 @@
 _srcname=koka
 
 pkgname=koka-bin
-pkgver=2.0.16
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Koka: a function-oriented language with effect inference"
 arch=('x86_64')
 url="https://github.com/koka-lang/koka"
 license=('Apache')
+options=('!strip')
 depends=('cmake' 'gcc' 'make')
 optdepends=(
   'clang: for C backend compiler'
@@ -21,7 +22,7 @@ source=(
 )
 noextract=("koka-v${pkgver}-linux-amd64.tar.gz")
 sha256sums=(
-  'cfaa7d61358c4f29f704b8462041f1157482e65f81f971fce4406b936b9f81a3'
+  'a9b45b0adfaefa468d4d5ef584914db0313c01e98fc06a87991255f79ca9382f'
 )
 
 package() {
