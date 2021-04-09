@@ -1,10 +1,10 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc=''
 pkgbase=xcursor-cz-viator
-pkgname=(xcursor-cz-viator-{hourglass,ring,rotor,windmill}-{white,black})
-pkgver=20200713
-pkgrel=2
-_commit=fb8f37fa75fbae9df22a8976432214a46b77ce1e
+pkgname=(xcursor-cz-viator-{hourglass,ring,rotor,windmill}-{white,black} xcursor-cz-hickson)
+pkgver=20210407
+pkgrel=1
+_commit=4777dfc09de1720528170dcfbf217c28681df83b
 license=(GPL3)
 url=https://github.com/charakterziffer/cursor-toolbox
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(git inkscape xorg-xcursorgen python2 patch)
 depends=()
 source=("${pkgbase}-${pkgver}::git+${url}#commit=${_commit}" build.patch)
 sha512sums=('SKIP'
-            'f49a595211dd9207dfae371b2b24b55a3500c26e5e5c63c7f1f6efc286333bfd14bd4b6e03dfeb526af4584bdce5d574402fdd8c3ab50019256fa980761961b3')
+            'c2b8792e0a9afd639864608dc674acbc1a368d9a83cd46dd3422403961af2b001c3eb004269eb701fcd34f4cfceaca5912a751a6ecd68ad08901ec94e0afb972')
 
 prepare () {
 	cd "${pkgbase}-${pkgver}"
@@ -30,7 +30,7 @@ build () {
 			suffix='-black'
 		fi
 
-		msg2 "Rendering color: ${color}"
+		msg2 "Rendering color variant: ${color}"
 		python2 render-pngs.py "svgs/template${suffix}.svg"
 
 		for spinner in hourglass ring rotor windmill ; do
@@ -40,41 +40,53 @@ build () {
 			themetitle="cz-Viator-${spinner}-${color}" ./make.sh
 		done
 	done
+
+	msg2 "Rendering variant: Hickson"
+	python2 render-pngs.py "more-themes/cz-Hickson/cz-Hickson.svg"
+	themetitle="cz-Hickson" ./make.sh
 }
 
 _package () {
 	install -dm755 "${pkgdir}/usr/share/icons"
-	cp -a "${pkgbase}-${pkgver}/cz-Viator-$1-$2" "${pkgdir}/usr/share/icons/"
+	cp -a "${pkgbase}-${pkgver}/$1" "${pkgdir}/usr/share/icons/"
+}
+
+_package_viator_variant () {
+	_package "cz-Viator-$1-$2"
 }
 
 package_xcursor-cz-viator-hourglass-white () {
-	_package hourglass white
+	_package_viator_variant hourglass white
 }
 
 package_xcursor-cz-viator-hourglass-black () {
-	_package hourglass black
+	_package_viator_variant hourglass black
 }
 
 package_xcursor-cz-viator-ring-white () {
-	_package ring white
+	_package_viator_variant ring white
 }
 
 package_xcursor-cz-viator-ring-black () {
-	_package ring black
+	_package_viator_variant ring black
 }
 
 package_xcursor-cz-viator-rotor-white () {
-	_package rotor white
+	_package_viator_variant rotor white
 }
 
 package_xcursor-cz-viator-rotor-black () {
-	_package rotor black
+	_package_viator_variant rotor black
 }
 
 package_xcursor-cz-viator-windmill-white () {
-	_package windmill white
+	_package_viator_variant windmill white
 }
 
 package_xcursor-cz-viator-windmill-black () {
-	_package windmill black
+	_package_viator_variant windmill black
+}
+
+package_xcursor-cz-hickson () {
+	_package cz-Hickson
 }
