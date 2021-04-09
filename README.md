@@ -7,8 +7,8 @@
 1. `sudo nano /etc/php/php.ini` and comment out the following.
 MySQL support:
 ```
-;extension=pdo_mysql
 ;extension=mysqli
+;extension=pdo_mysql
 ```
 
 iconv:
