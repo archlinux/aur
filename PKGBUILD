@@ -2,7 +2,7 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=cinelerra-gg-git
-pkgver=5.1.2020.10.r4.g58a3fb9e
+pkgver=5.1.2021.03.r0.geabda9cf
 pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
 arch=(x86_64)
