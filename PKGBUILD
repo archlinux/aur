@@ -1,22 +1,39 @@
-# Maintainer: Jiří Prokop <jprokop@synaptiko.cz>
+# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=zsa-wally-cli
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally-cli"
-license=('MIT')
+# See https://github.com/zsa/wally-cli/issues/6
+#license=('MIT')
+license=('unknown')
 depends=('libusb')
+makedepends=('go')
 provides=('wally-cli')
-source=("wally-cli-$pkgver-$pkgrel::https://github.com/zsa/wally-cli/releases/download/2.0.0-linux/wally-cli"
-	'50-wally-cli.rules'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zsa/wally-cli/archive/refs/tags/$pkgver-linux.tar.gz"
+    '50-wally-cli.rules'
 )
-sha256sums=('a38f731cc1a89d32a5cb9e377d2ec24280cb5d2fc0b34b1cb05464305fb38800'
-	'SKIP'
-)
+sha256sums=('2641c7deededeeba1aecf6b3ae3e87050a0cfd81c8b41323b2304ebe21e61745'
+            'fb0486730617d8ef8524229fda63d256a61097ab2503e865edf5c7116d57df7d')
+
+build() {
+    cd "wally-cli-$pkgver-linux"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+
+    go build
+}
 
 package() {
-	install -Dm644 50-wally-cli.rules "$pkgdir"/usr/lib/udev/rules.d/50-wally-cli.rules
-	install -Dm755 wally-cli-$pkgver-$pkgrel "$pkgdir"/usr/bin/wally-cli
+    cd "wally-cli-$pkgver-linux"
+
+    install -Dm755 wally-cli "$pkgdir/usr/bin/wally-cli"
+    # Not present yet, see https://github.com/zsa/wally-cli/issues/6
+    #install -Dm644 license.md "$pkgdir/usr/share/licenses/$pkgname/license.md"
 }

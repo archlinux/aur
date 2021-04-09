@@ -1,2 +1,6 @@
-zsa-wally-cli-*.pkg.tar.zst
-wally-cli-*
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.patch
+!/*.rules
