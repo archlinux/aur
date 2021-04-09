@@ -58,6 +58,10 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js" # todo
     chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js" # todo
+    
+    install -d "${pkgdir}/etc/webapps" # todo
+    mv "${pkgdir}/usr/share/webapps/${_pkgname}/config" "${pkgdir}/etc/webapps/${_pkgname}" # todo
+    ln -s "../../../../etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/matomo/config" # todo
 
     ## GeoIP database
     cur_year=$(date +"%Y")
@@ -73,7 +77,7 @@ package()
     done
 
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb"
-    mv ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
+    install -Dm644 ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
