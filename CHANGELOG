@@ -1,1 +1,13 @@
-Updates dependencies to Java 15, as Java 14 is not supported anymore on Arch.
+### Usability Improvements
+
+The middle labels of edges in class diagrams are now centered properly (#409)
+Fixed a bug that made labels shift when changing the selection (#402)
+The intersection between edges and rounded rectangles (state diagrams) and ellipses (use case diagrams) are computed precisely (#401)
+The labels of actor nodes are now centered in use case diagrams (#419)
+The webpage for the user guide is static and loads faster (#398)
+
+### Code Improvements
+
+General cleanup of the geometry code (#396)
+The constraint checking code for edge creation has been improved for run-time performance (#416)
+The design of the code that renders strings in diagrams has been improved (#413, #422)
