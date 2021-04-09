@@ -2,7 +2,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-git
-pkgver=0.28.0.r0.g0b1cf62
+pkgver=0.29.0.r0.g05dc57a
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -18,10 +18,10 @@ provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
     "$_pkgname::git+https://gitlab.com/famedly/fluffychat.git"
-    "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.3-stable.tar.xz"
+    "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.4-stable.tar.xz"
 )
 sha256sums=('SKIP'
-            '95c5045d0739187d961d24b7315e562d6b998c6ef7665aab7f199d3b2f1b4691')
+            'e610f1c854e73645b343152de9df9fb8c9c067d6fad5d46c9c3d71b76ef77cf0')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
