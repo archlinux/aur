@@ -20,4 +20,5 @@ build() {
 package_python2-wrapt() {
   cd "${srcdir}/wrapt-${pkgver}/"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/LICENSE"
 }
