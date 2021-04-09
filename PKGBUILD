@@ -48,7 +48,7 @@ build()
 package()
 {
     # Assure that the directories exist.
-    mkdir -p ${pkgdir}/etc/systemd/system/php-fpm.service.d/
+    mkdir -p ${pkgdir}/etc/webapps/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/
