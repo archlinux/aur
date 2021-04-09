@@ -55,7 +55,6 @@ package()
     mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
     
     # Install the software.
-    install -d "${pkgdir}/usr/share/webapps" # todo
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
     chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
     chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js" # todo
@@ -88,6 +87,7 @@ ReadWritePaths = /usr/share/webapps/matomo/config
 ReadWritePaths = /usr/share/webapps/matomo/matomo.js
 ReadWritePaths = /usr/share/webapps/matomo/misc/user/
 ReadWritePaths = /usr/share/webapps/matomo/plugins/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
+    systemctl daemon-reload
 
 
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
