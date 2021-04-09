@@ -75,7 +75,7 @@ package()
     gzip -d ${srcdir}/DBIP-City-Lite.mmdb.gz
     install -Dm644 ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/${_pkgname}/misc/
 
-    ## Configure php-fpm
+    ## Configure php-fpm.
     echo -e "[Service]
 ReadWritePaths = /usr/share/${_pkgname}/config
 ReadWritePaths = /usr/share/${_pkgname}/matomo.js
