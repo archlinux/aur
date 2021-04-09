@@ -13,7 +13,7 @@ url="https://pylint.org"
 license=('GPL')
 depends=('python2-astroid' 'python2-setuptools' 'python2-mccabe' 'python2-isort'
          'python2-backports.functools_lru_cache' 'python2-configparser' 'python2-singledispatch')
-checkdepends=('python2-pytest-runner' 'mpdecimal')
+# checkdepends=('python2-pytest-runner' 'mpdecimal')
 optdepends=('tk: Pylint GUI'
             'graphviz: To have other output formats than dot or vcg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PyCQA/pylint/archive/pylint-$pkgver.tar.gz")
@@ -31,10 +31,10 @@ build() {
   python2 setup.py build
 }
 
-check() {
-  cd "$srcdir"/pylint-pylint-$pkgver
-  python2 setup.py pytest
-}
+# check() {
+#   cd "$srcdir"/pylint-pylint-$pkgver
+#   python2 setup.py pytest
+# }
 
 package() {
   depends=('python2-astroid' 'python2-setuptools' 'python2-mccabe' 'python2-isort'
