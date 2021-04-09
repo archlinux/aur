@@ -1,21 +1,21 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=tanglet
-pkgver=1.5.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A single player word finding game'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://gottcode.org/$pkgname/"
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('qt5-tools')
+depends=('qt6-base')
+makedepends=('qt6-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('5843e103956dbd3fd735a62d97f9160b464a24992c58b22be3cfcd6d7b01111e')
+sha256sums=('4ee148d8415fe620c5bf456c9db2b180680602fdd433edf2f343446d0dc10c16')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  qmake-qt5 PREFIX=/usr
+  qmake6 PREFIX=/usr
   make
 }
 
