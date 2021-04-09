@@ -6,9 +6,11 @@ pkgbase = hide-client
 	arch = any
 	license = GPL2
 	source = https://github.com/eventure/hide.client.linux/archive/0.9.1.zip
+	source = go.sum
 	source = config_sysdirs.patch
 	source = service_sysdirs.patch
 	md5sums = 9346e79e8e1c98b5457a03e02febca9c
+	md5sums = 811aa82780b7f9c986048325dab17372
 	md5sums = 07d59ac194c4aa8ee0de284283796461
 	md5sums = b2cee66ea77a0d76460131144d0a16b0
 
