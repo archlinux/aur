@@ -1,6 +1,6 @@
 pkgbase = r-broom
 	pkgdesc = Convert Statistical Analysis Objects into Tidy Tibbles
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=broom
 	arch = any
@@ -96,8 +96,8 @@ pkgbase = r-broom
 	optdepends = r-testthat
 	optdepends = r-tseries
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/broom_0.7.5.tar.gz
-	sha256sums = bc4ac242e6c21398b60ed6a0b58ff677d214d0883b7044ea547a011056a15ee2
+	source = https://cran.r-project.org/src/contrib/broom_0.7.6.tar.gz
+	sha256sums = 1649c09bbb22682e50e5c19b1e6a546cf5c5b14024abdff1e01d7b002ba24cd2
 
 pkgname = r-broom
 
