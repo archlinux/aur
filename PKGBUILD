@@ -48,6 +48,7 @@ build()
 package()
 {
     # Assure that the directories exist.
+    mkdir -p ${pkgdir}/etc/systemd/system/php-fpm.service.d/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/
@@ -80,6 +81,14 @@ package()
             cur_month=12
         fi
     done
+    
+    ## Configure php-fpm
+    echo -e "[Service]
+ReadWritePaths = /usr/share/webapps/matomo/config
+ReadWritePaths = /usr/share/webapps/matomo/matomo.js
+ReadWritePaths = /usr/share/webapps/matomo/misc/user/
+ReadWritePaths = /usr/share/webapps/matomo/plugins/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
+
 
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
     gzip -d DBIP-City-Lite.mmdb.gz
