@@ -2,7 +2,7 @@
 pkgname=hide-client
 _pkgname=hide.client.linux
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Hide.me CLI VPN client for Linux"
 arch=('any')

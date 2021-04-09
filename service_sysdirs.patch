@@ -9,9 +9,9 @@ index b32902f..641241d 100644
 -ExecStart=/opt/hide.me/hide.me connect %i
 -WorkingDirectory=/opt/hide.me
 -ReadWritePaths=/opt/hide.me /etc
-+ExecStart=/usr/bin/hide.me/hide.me connect %i
-+WorkingDirectory=/usr/bin/hide.me
-+ReadWritePaths=/usr/bin/hide.me /etc
++ExecStart=/usr/bin/hide.me connect %i
++WorkingDirectory=/usr/bin
++ReadWritePaths=/etc
  TimeoutStopSec=30
  Restart=always
  RestartSec=5s

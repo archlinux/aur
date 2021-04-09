@@ -1,7 +1,7 @@
 pkgbase = hide-client
 	pkgdesc = Hide.me CLI VPN client for Linux
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = hide.me
 	arch = any
 	license = GPL2
