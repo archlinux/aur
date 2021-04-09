@@ -1,6 +1,6 @@
 pkgbase = gsettings-desktop-schemas-git
 	pkgdesc = Shared GSettings schemas for the desktop
-	pkgver = 3.37.1.r2.g4acad3c
+	pkgver = 40.0.r5.gea80c11
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = any
@@ -10,9 +10,10 @@ pkgbase = gsettings-desktop-schemas-git
 	makedepends = meson
 	depends = glib2
 	depends = dconf
-	provides = gsettings-desktop-schemas=3.37.1.r2.g4acad3c
+	depends = cantarell-fonts
+	depends = adobe-source-code-pro-fonts
+	provides = gsettings-desktop-schemas=40.0.r5.gea80c11
 	conflicts = gsettings-desktop-schemas
-	replaces = gsettings-desktop-schemas
 	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git
 	sha256sums = SKIP
 

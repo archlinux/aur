@@ -6,17 +6,16 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=gsettings-desktop-schemas-git
-pkgver=3.37.1.r2.g4acad3c
+pkgver=40.0.r5.gea80c11
 pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
 arch=(any)
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 license=(GPL)
 provides=("gsettings-desktop-schemas=$pkgver")
-conflicts=('gsettings-desktop-schemas')
-replaces=('gsettings-desktop-schemas')
-depends=('glib2' 'dconf')
-makedepends=('gobject-introspection' 'git' 'meson')
+conflicts=(gsettings-desktop-schemas)
+depends=(glib2 dconf cantarell-fonts adobe-source-code-pro-fonts)
+makedepends=(gobject-introspection git meson)
 source=("git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git")
 sha256sums=('SKIP')
 
@@ -32,11 +31,11 @@ prepare() {
 
 build() {
   arch-meson ${pkgname:0:25} build
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
