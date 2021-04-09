@@ -1,8 +1,8 @@
 diff --git a/build.sbt b/build.sbt
-index cc51a04af..65920d0a4 100644
+index 390a37a7f..2b41d0dd9 100644
 --- a/build.sbt
 +++ b/build.sbt
-@@ -43,0 +43,0 @@ usefulTasks := Welcome.tasks
+@@ -43,10 +43,7 @@ usefulTasks := Welcome.tasks
 
  inThisBuild(
    List(
