@@ -1,12 +1,13 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-marketplace
 pkgver=1.54.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Enable vscode marketplace in Code OSS'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('unknown')
-depends=('code-features')
+depends=('code' 'sed')
+optdepends=('code-features: unblock some extensions specific to the official build')
 install="${pkgname}.install"
 source=('code-marketplace.hook'
         'patch.sh')
