@@ -3,7 +3,7 @@
 
 pkgname=q
 pkgver=2.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL-like queries on tabular text data, including joins and subqueries"
 url="https://github.com/harelba/q"
 license=('GPL3')
@@ -17,7 +17,7 @@ package() {
   install -D -m755 "${srcdir}/usr/share/q-text-as-data/q" "${pkgdir}/usr/bin/${pkgname}"
   for doc in "usr/share/doc/q-text-as-data-${pkgver}/"*; do
     if [[ "${doc##*/}" == "LICENSE" ]]; then
-      install -D -m644 "${doc}" "${pkgdir}/usr/share/license/q-text-as-data/${doc##*/}"
+      install -D -m644 "${doc}" "${pkgdir}/usr/share/licenses/q-text-as-data/${doc##*/}"
     else
       install -D -m644 "${doc}" "${pkgdir}/usr/share/doc/q-text-as-data/${doc##*/}"
     fi
