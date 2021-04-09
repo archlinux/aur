@@ -56,7 +56,7 @@ package()
     
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
-#     chown -R http:http ${pkgdir}/usr/share/${_pkgname}/ #todo
+    chown -R http:http ${pkgdir}/usr/share/${_pkgname}/
 
     ## GeoIP database
     cur_year=$(date +"%Y")
