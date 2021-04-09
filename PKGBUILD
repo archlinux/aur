@@ -51,13 +51,13 @@ package()
 {
     # Assure that the directories exist.
     mkdir -p ${pkgdir}/usr/bin/
-    mkdir -p ${pkgdir}/usr/lib/
+    mkdir -p ${pkgdir}/usr/share/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/lib/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- ${@}" > ${srcdir}/${_pkgname}/run.sh
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \${@}" > ${srcdir}/${_pkgname}/run.sh
 
     # Create btcpayserver-start.sh.
     echo -e "#!/bin/bash
@@ -68,14 +68,14 @@ tmux new-session -s ${_pkgname} -d \"${_pkgname};bash -i\"" > ${srcdir}/${_pkgna
 tmux kill-session -t ${_pkgname}" > ${srcdir}/${_pkgname}/${_pkgname}-stop.sh
 
     # Install the software.
-    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
+    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
 
     ## Symlinking the scripts.
-    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
+    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname}
-    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname}-start.sh ${pkgdir}/usr/bin/${_pkgname}-start
+    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/${_pkgname}-start.sh ${pkgdir}/usr/bin/${_pkgname}-start
     chmod 755 ${pkgdir}/usr/bin/${_pkgname}-start
-    ln -sfrT ${pkgdir}/usr/lib/${_pkgname}/${_pkgname}-stop.sh ${pkgdir}/usr/bin/${_pkgname}-stop
+    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/${_pkgname}-stop.sh ${pkgdir}/usr/bin/${_pkgname}-stop
     chmod 755 ${pkgdir}/usr/bin/${_pkgname}-stop
 
     # Install the documentation.
