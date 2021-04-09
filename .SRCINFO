@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
 	pkgver = 6.5.GE.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -185,7 +185,7 @@ pkgbase = proton-ge-custom
 	noextract = wine-gecko-2.47.1-x86.tar.bz2
 	noextract = wine-gecko-2.47.1-x86_64.tar.bz2
 	noextract = wine-mono-5.1.1-x86.tar.xz
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=232f2253693e2c75d317049312ec10227c35a0c7
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=127506bf93884da534aeac290f8fc0bd8e935f7f
 	source = wine::git://source.winehq.org/git/wine.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
 	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
