@@ -14,7 +14,7 @@ source=("https://downloads.exodus.com/releases/exodus-linux-x64-${pkgver}.zip"
 	"${pkgname}.svg"
 	"${pkgname}.desktop"
         "LICENSE")
-sha256sums=('b3d01cb4d493f50dc32abd0c724ff8096e29c18c1e649735f2db8805deb3d4b6'
+sha256sums=('af3c7b4ad120415d841ca0f2ceefd9bacd6dc0ccfe2313db25cb2966d69a3b46'
             'ffafdcd0869f1c9338ba25e447698c4cfa3c8714123459ae3e63686a5312ef2e'
             '04676d81272a35a91150a7eec4640e69ca50f2e479d29fad8be90160ee74122c'
             '582d6782c9412cd961c55d105f38ed5c911bf8509be040b8d23a836504a25d0b')
