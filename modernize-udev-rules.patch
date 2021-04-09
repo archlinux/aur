@@ -1,21 +1,16 @@
-diff --git c/dist/linux64/50-oryx.rules w/dist/linux64/50-oryx.rules
-index c0b37e6..d1f641e 100644
---- c/dist/linux64/50-oryx.rules
-+++ w/dist/linux64/50-oryx.rules
-@@ -1,6 +1,6 @@
- # Rule for the Moonlander
--SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", GROUP="plugdev"
-+SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", TAG+="uaccess"
- # Rule for the Ergodox EZ Original / Shine / Glow
--SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", GROUP="plugdev"
-+SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", TAG+="uaccess"
- # Rule for the Planck EZ Standard / Glow
--SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", GROUP="plugdev"
-+SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", TAG+="uaccess"
-diff --git c/dist/linux64/50-wally.rules w/dist/linux64/50-wally.rules
+From d9da6cd4a3f60dc4e6da20618019490632e15acb Mon Sep 17 00:00:00 2001
+From: Sebastian Wiesner <sebastian@swsnr.de>
+Date: Sun, 21 Mar 2021 11:46:55 +0100
+Subject: [PATCH 1/3] Use uaccess tag instead of world permissions
+
+---
+ dist/linux64/50-wally.rules | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/dist/linux64/50-wally.rules b/dist/linux64/50-wally.rules
 index bcbd6a2..1353099 100644
---- c/dist/linux64/50-wally.rules
-+++ w/dist/linux64/50-wally.rules
+--- a/dist/linux64/50-wally.rules
++++ b/dist/linux64/50-wally.rules
 @@ -1,10 +1,8 @@
  # Teensy rules for the Ergodox EZ Original / Shine / Glow
  ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
@@ -30,3 +25,65 @@ index bcbd6a2..1353099 100644
 -    MODE:="0666", \
 -    SYMLINK+="stm32_dfu"
 +SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", TAG+="uaccess", SYMLINK+="stm32_dfu"
+
+From 8937bcad9d778c07e7ff57cdf613182101017f54 Mon Sep 17 00:00:00 2001
+From: Sebastian Wiesner <sebastian@swsnr.de>
+Date: Sun, 21 Mar 2021 11:47:17 +0100
+Subject: [PATCH 2/3] Remove legacy udev-acl tag
+
+---
+ dist/linux64/50-oryx.rules | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dist/linux64/50-oryx.rules b/dist/linux64/50-oryx.rules
+index 36367d4..d1f641e 100644
+--- a/dist/linux64/50-oryx.rules
++++ b/dist/linux64/50-oryx.rules
+@@ -1,6 +1,6 @@
+ # Rule for the Moonlander
+-SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", TAG+="uaccess", TAG+="udev-acl"
++SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", TAG+="uaccess"
+ # Rule for the Ergodox EZ Original / Shine / Glow
+-SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", TAG+="uaccess", TAG+="udev-acl"
++SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", TAG+="uaccess"
+ # Rule for the Planck EZ Standard / Glow
+-SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", TAG+="uaccess", TAG+="udev-acl"
++SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", TAG+="uaccess"
+
+From f512ffc4374435ccbb12b53693083405784138b9 Mon Sep 17 00:00:00 2001
+From: Sebastian Wiesner <sebastian@swsnr.de>
+Date: Sun, 21 Mar 2021 12:01:04 +0100
+Subject: [PATCH 3/3] Update rules in install script
+
+---
+ install.linux.sh | 17 +++--------------
+ 1 file changed, 3 insertions(+), 14 deletions(-)
+
+diff --git a/install.linux.sh b/install.linux.sh
+index 5ae646f..c0984a9 100755
+--- a/install.linux.sh
++++ b/install.linux.sh
+@@ -35,20 +35,9 @@ for key in ${!packageAA[@]}; do
+     which $key && sudo $key install -y ${packageAA[$key]}
+ done
+ 
+-# WALLY UDEV RULE FOR DEVICE RELATED EVENT
+-cat <<EOF | sudo tee /etc/udev/rules.d/50-wally.rules
+-# Teensy rules for the Ergodox EZ
+-ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
+-ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+-KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+-# STM32 rules for the Moonlander and Planck EZ
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
+-EOF
+-
+-# ADD USER TO PLUGDEV GROUP
+-sudo groupadd plugdev
+-sudo usermod -aG plugdev $USER
++# UDEV RULES
++install -m644 -t /etc/udev/rules.d/ \
++    dist/linux64/50-oryx.rules dist/linux64/50-wally.rules
+ 
+ # HARDWARE PLATFORM DEPENDENT WALLY
+ if [[ "$(uname -i)" =~ 'x86' ]]; then
