@@ -25,6 +25,7 @@ CLANG=            # Use clang.
 GOLD=             # Use the gold linker.
 LTO="YES"         # Enable link-time optimization. Read emacs's INSTALL before
                   # attempting to use it with clang.
+JIT=              # Enable native just-in-time compilation
 CLI=              # CLI only binary.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
@@ -52,8 +53,8 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=28.0.50.145997
-pkgrel=2
+pkgver=28.0.50.146252
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -124,9 +125,9 @@ fi
 
 if [[ $MAGICK == "YES" ]]; then
   depends+=( 'imagemagick'  'libjpeg-turbo' 'giflib' );
-elif [[ ! $NOX == "YES" ]]; then
+elif [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
-else
+elif [[ $CLI == "YES" ]]; then
   depends+=();
 fi
 
@@ -201,19 +202,19 @@ build() {
 ################################################################################
 
 if [[ $CLANG == "YES" ]]; then
-  _conf+=(
-    '--enable-autodepend'
- );
+  _conf+=( '--enable-autodepend' );
 fi
 
 if [[ $LTO == "YES" ]]; then
-  _conf+=(
-    '--enable-link-time-optimization'
-  );
+  _conf+=( '--enable-link-time-optimization' );
+fi
+
+if [[ $JIT == "YES" ]]; then
+  _conf+=( '--with-native-compilation' );
 fi
 
 if [[ $CLI == "YES" ]]; then
-  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' );
+  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' '--without-jpeg' '--without-gif' '--without-tiff' '--without-png' );
 elif [[ $NOTKIT == "YES" ]]; then
   _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
