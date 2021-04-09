@@ -7,6 +7,7 @@ pkgbase = matomo-git
 	license = GPL3
 	makedepends = composer
 	makedepends = git
+	makedepends = gzip
 	depends = php
 	depends = php-fpm
 	depends = php-gd

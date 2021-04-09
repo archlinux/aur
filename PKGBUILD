@@ -12,7 +12,7 @@ url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
 groups=()
 depends=("php" "php-fpm" "php-gd")
-makedepends=("composer" "git")
+makedepends=("composer" "git" "gzip")
 checkdepends=()
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
@@ -56,6 +56,7 @@ package()
     # Install the software.
     install -d "${pkgdir}/usr/share/webapps" # todo
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
+    chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
     chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/piwik.js" # todo
     chmod g+w "${pkgdir}/usr/share/webapps/${_pkgname}/matomo.js" # todo
     
@@ -80,7 +81,8 @@ package()
         fi
     done
 
-    curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb"
+    curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
+    gzip -d DBIP-City-Lite.mmdb.gz
     install -Dm644 ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
 
     # Install the documentation.
