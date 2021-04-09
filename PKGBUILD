@@ -54,7 +54,7 @@ package()
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
-    chgrp -R http /usr/share/webapps/matomo/
+    chown -R http:http /usr/share/webapps/matomo/
 
     ## Download the GeoIP database.
     cd ${pkgdir}/usr/share/webapps/matomo/misc/
