@@ -57,7 +57,7 @@ package()
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
 #     chown -R http:http ${pkgdir}/usr/share/${_pkgname}/ #todo
-    
+
     ## GeoIP database
     cur_year=$(date +"%Y")
     cur_month=$(date +"%m")
@@ -74,7 +74,7 @@ package()
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
     gzip -d ${srcdir}/DBIP-City-Lite.mmdb.gz
     install -Dm644 ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/${_pkgname}/misc/
-    
+
     ## Configure php-fpm
     echo -e "[Service]
 ReadWritePaths = /usr/share/${_pkgname}/config
@@ -82,7 +82,6 @@ ReadWritePaths = /usr/share/${_pkgname}/matomo.js
 ReadWritePaths = /usr/share/${_pkgname}/misc/user/
 ReadWritePaths = /usr/share/${_pkgname}/plugins/
 ReadWritePaths = /usr/share/${_pkgname}/tmp/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
-    systemctl daemon-reload
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
