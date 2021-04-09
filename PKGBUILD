@@ -1,7 +1,7 @@
 # Contributor:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname=gnaural-presets
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Preset files for Gnaural"
 arch=('any')
@@ -51,6 +51,8 @@ source=(http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/Toa
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/DefaultMeditationSession.gnaural
         "http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Full Moon.gnaural"
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/8-voice.gnaural
+        http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Gnaural-Breath-Duration-Increase.gnaural
+        http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/ThetaGnauralPresetforSkilledRelaxation.zip
        )
 md5sums=('62443726c421d0355a6af4e6af6d0e78'
          'c15e5a3ce821946ee427d70c7f653caa'
@@ -94,7 +96,9 @@ md5sums=('62443726c421d0355a6af4e6af6d0e78'
          'f662da558b74bb43fae11c6874fab1a4'
          'e9ff458225bb1aacb6fdf47db82a494b'
          '7ab55dfca94f146a13c2d9e55098878f'
-         '59a438b3c1ea5394d2f310608971b7c4')
+         '59a438b3c1ea5394d2f310608971b7c4'
+         '0f93e2a5f320dbdecb26a329c6d782d1'
+         'e7f0266303be91e733612179e39d3831')
 
 package() {
   mkdir -p $pkgdir/usr/share/gnaural/presets
