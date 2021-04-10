@@ -1,0 +1,8 @@
+[Unit]
+Description=Wish FastCGI
+
+[Service]
+ExecStart=/usr/bin/spawn-fcgi -n -s /run/wish-fcgi.sock -u nobody -U http -- /usr/lib/wish/wish.fcgi
+
+[Install]
+WantedBy=multi-user.target
