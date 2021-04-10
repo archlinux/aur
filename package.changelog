@@ -1,4 +1,7 @@
 2021-04-10
+	remove leftover patch files
+
+2021-04-10
 	upstream upgrade: 3.38.3 -> 3.40.0
 	requires vte3 >= 0.64.0
 
