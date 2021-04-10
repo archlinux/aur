@@ -1,53 +1,75 @@
-pkgname=jitsi-meet
-# https://github.com/jitsi/jitsi-meet/releases/latest
-pkgver=1.0.4628
-_tag="jitsi-meet_5390"
-pkgrel=1
-pkgdesc="WebRTC JavaScript video conferences"
-arch=("x86_64")
-url="https://github.com/jitsi/jitsi-meet"
-license=("Apache")
-makedepends=("git" "npm")
-optdepends=("jicofo"
-            "jitsi-videobridge"
-            "nginx"
-            "prosody")
-backup=("opt/jitsi-meet/config.js"
-        "opt/jitsi-meet/interface_config.js"
-        "opt/jitsi-meet/logging_config.js")
-options=("!strip")
-source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jitsi-meet/archive/stable/$_tag.tar.gz)
-sha256sums=('6ea6bdbcb422ed484f8431208e999344e9cd61c35df972aaa35c567c8c5f82b5')
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
+
+_basename=jitsi
+_pkgname=meet
+_tag=4628
+_version=1.0.4628
+
+pkgname=${_basename}-${_pkgname}
+pkgver=${_version}
+pkgrel=2
+pkgdesc="Jitsi Meet Web"
+arch=('any')
+url="https://jitsi.org/jitsi-meet/"
+license=('Apache')
+depends=()
+optdepends=("nginx")
+makedepends=(
+        "python" "python2"
+        "nodejs" "npm"
+)
+options=('!strip')
+backup=(
+  "etc/webapps/${pkgname}/logging_config.js"
+  "etc/webapps/${pkgname}/config.js"
+  "etc/webapps/${pkgname}/interface_config.js"
+)
+source=(
+        "$pkgname::git+https://github.com/jitsi/jitsi-meet#tag=${_tag}"
+)
+install=install
 
 build() {
-    cd "${srcdir}/${pkgname}-stable-${_tag}"
-    # this seems to break the package, even though it is the documented way of packaging
-    #npm install -g --user root --prefix "$pkgdir/usr"
-    npm install
-    # fix as many vulns as possible, but seems to break the package as well
-    #npm audit fix
-    make
-    # Hack https://github.com/jitsi/jitsi-meet/pull/6925
-    for c in $(ls node_modules/i18n-iso-countries/langs); do
-      cp node_modules/i18n-iso-countries/langs/${c} lang/countries-${c}
-    done
-    # Build the final source
-    make source-package
-    tar xvfj $pkgname.tar.bz2
+        cd "$pkgname"
+        npm install
+        make
+        make source-package
 }
 
 package() {
-    install -d "${pkgdir}/opt"
-    cp -R "${srcdir}/${pkgname}-stable-${_tag}/${pkgname}" "${pkgdir}/opt/jitsi-meet"
+        cd "$srcdir/$pkgname"
 
-    # get rid of all local references
-    find "${pkgdir}" -type f -execdir sed -i "s#$srcdir##g" "{}" \;
+        DESTDIR="${pkgdir}/usr/share/webapps/${pkgname}"
+        CONFDIR="${pkgdir}/etc/webapps/${pkgname}"
 
-    # Non-deterministic race in npm gives 777 permissions to random directories.
-    # See https://github.com/npm/npm/issues/9359 for details.
-    find "${pkgdir}" -type d -exec chmod 755 {} +
+        install -d "$DESTDIR"
+        install -d "$CONFDIR"
 
-    # npm gives ownership of ALL FILES to build user
-    # https://bugs.archlinux.org/task/63396
-    chown -R root:root "${pkgdir}"
+        tar xjvf "jitsi-meet.tar.bz2" -C "$DESTDIR" --strip 1
+        install -Dm644 -t "$DESTDIR" manifest.json
+
+        for l in $(node -p "Object.keys(require('./lang/languages.json')).join(' ')")
+        do
+            c=${l:0:2}
+            if [ -f "node_modules/i18n-iso-countries/langs/${c}.json" ]
+            then
+                    install -m644 "node_modules/i18n-iso-countries/langs/${c}.json" "${DESTDIR}/lang/countries-${l}.json"
+            fi
+        done
+
+        find "$DESTDIR" -type f -execdir sed -i "s#${srcdir}##g" "{}" \;
+        find "$DESTDIR" -type d -exec chmod 755 {} \;
+
+        for i in interface_config.js logging_config.js config.js
+        do
+                install -Dm644 "$DESTDIR/${i}" "$CONFDIR/${i}"
+                ln -sf "/etc/webapps/${pkgname}/${i}" "$DESTDIR/${i}"
+        done
+
+        install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet/jitsi-meet.example doc/debian/jitsi-meet/jitsi-meet.example-apache config.js
+        sed -i 's@/usr/share/jitsi-meet@/usr/share/webapps/'$pkgname'@' "${pkgdir}/usr/share/doc/${pkgname}/"*
+        sed -i 's@/etc/jitsi/meet@/etc/webapps/'$pkgname'@' "${pkgdir}/usr/share/doc/${pkgname}/"*
+        
+        chown -R root:root "${pkgdir}"
 }
+sha256sums=('SKIP')

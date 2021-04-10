@@ -1,0 +1,11 @@
+post_upgrade() {
+cat << __EOF__
+
+*** Warning: ***
+
+In order to uniformize all jitsi-meet package, we have changes the directory from "/opt/jitsi-meet" to "/usr/share/webapps/jitsi-meet". The config files is located in "/etc/webapps/jitsi-meet".
+
+Please compare your old config with the new one and apply the changes. Do not blindy copy your old config!
+
+__EOF__
+}

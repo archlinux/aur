@@ -1,22 +1,22 @@
 pkgbase = jitsi-meet
-	pkgdesc = WebRTC JavaScript video conferences
+	pkgdesc = Jitsi Meet Web
 	pkgver = 1.0.4628
-	pkgrel = 1
-	url = https://github.com/jitsi/jitsi-meet
-	arch = x86_64
+	pkgrel = 2
+	url = https://jitsi.org/jitsi-meet/
+	install = install
+	arch = any
 	license = Apache
-	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = nodejs
 	makedepends = npm
-	optdepends = jicofo
-	optdepends = jitsi-videobridge
 	optdepends = nginx
-	optdepends = prosody
 	options = !strip
-	backup = opt/jitsi-meet/config.js
-	backup = opt/jitsi-meet/interface_config.js
-	backup = opt/jitsi-meet/logging_config.js
-	source = jitsi-meet-1.0.4628.tar.gz::https://github.com/jitsi/jitsi-meet/archive/stable/jitsi-meet_5390.tar.gz
-	sha256sums = 6ea6bdbcb422ed484f8431208e999344e9cd61c35df972aaa35c567c8c5f82b5
+	backup = etc/webapps/jitsi-meet/logging_config.js
+	backup = etc/webapps/jitsi-meet/config.js
+	backup = etc/webapps/jitsi-meet/interface_config.js
+	source = jitsi-meet::git+https://github.com/jitsi/jitsi-meet#tag=4628
+	sha256sums = SKIP
 
 pkgname = jitsi-meet
 

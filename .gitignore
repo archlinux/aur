@@ -1,4 +1,4 @@
-*
-!.SRCINFO
-!PKGBUILD
-!.gitignore
+jitsi-meet/
+src/
+pkg/
+*.pkg.tar.*
