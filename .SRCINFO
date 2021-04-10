@@ -1,4 +1,4 @@
-pkgbase = linux-raspberrypi4-cacule-lts
+pkgbase = linux-raspberrypi4-cacule-stable
 	pkgver = 5.11.11
 	pkgrel = 1
 	url = http://www.kernel.org/
@@ -37,7 +37,7 @@ pkgbase = linux-raspberrypi4-cacule-lts
 	md5sums_aarch64 = 7f8fa6b39f7efcaa55c873e4263eb55a
 	md5sums_aarch64 = 9669d916a5929a2eedbd64477f83d99e
 
-pkgname = linux-raspberrypi4-cacule-lts
+pkgname = linux-raspberrypi4-cacule-stable
 
-pkgname = linux-raspberrypi4-cacule-lts-headers
+pkgname = linux-raspberrypi4-cacule-stable-headers
 

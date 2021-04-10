@@ -6,7 +6,7 @@
 
 buildarch=12
 
-pkgbase=linux-raspberrypi4-cacule-lts
+pkgbase=linux-raspberrypi4-cacule-stable
 _commit=42498e202032b40765d184c1b9cb296dbe7fa614
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
