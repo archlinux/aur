@@ -11,3 +11,9 @@ post_install() {
   	note "Please enter hexo-deployer-bin to run the script"
     	note "================================================"
 }
+post_remove() {
+        note "====================================================================="
+        note "Please delete the /usr/bin/hexo-deployer-bin manually after uninstall"
+        note "Run: sudo rm -f /usr/bin/hexo-deployer-bin"
+        note "====================================================================="
+}
