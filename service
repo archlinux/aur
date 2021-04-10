@@ -1,0 +1,38 @@
+[Unit]
+Description=Jitsi-Meet Videobridge
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/jitsi-videobridge-git/config
+User=jvb
+ExecStart=/usr/lib/jitsi-videobridge-git/jvb.sh ${JVB_OPTS}
+WorkingDirectory=/var/lib/jitsi-videobridge-git
+StateDirectory=jitsi-videobridge-git
+StateDirectoryMode=0750
+LogsDirectory=jitsi-videobridge-git
+LogsDirectoryMode=0750
+ConfigurationDirectory=jitsi-videobridge-git
+ConfigurationDirectoryMode=0700
+
+Restart=on-failure
+RestartSec=2
+
+SuccessExitStatus=143
+
+# more threads for this process
+TasksMax=65000
+# allow more open files for this process
+LimitNPROC=65000
+LimitNOFILE=65000
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

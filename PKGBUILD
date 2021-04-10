@@ -1,45 +1,77 @@
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
+
 pkgname=jitsi-videobridge-git
-pkgver=r3249.0c2ac250e
+pkgver=2.1+478+gc6da57bdb
 pkgrel=1
-pkgdesc="Videobridge for Jitsi Meet"
-arch=("x86_64")
-url="https://github.com/jitsi/jitsi-videobridge"
-license=("Apache")
-depends=("jdk8-openjdk")
-makedepends=("unzip" "maven")
-provides=(jitsi-videobridge)
-conflicts=(jitsi-videobridge)
-backup=("etc/jitsi/videobridge/jitsi-videobridge.conf"
-        "etc/jitsi/videobridge/sip-communicator.properties")
-source=("jitsi-videobridge::git+https://github.com/jitsi/jitsi-videobridge.git"
-        jitsi-videobridge.conf
-        jitsi-videobridge.service
-        sip-communicator.properties
-        sysusers.conf
-        tmpfiles.conf)
-sha256sums=('SKIP'
-            'd2746be91f361557343398b9544233f1482d60c6117db4ecaa7c7851cd347b50'
-            '0b3a992ae295d1c691313a10731330cc38ae9e03989fe2afc1e12fcfc7dc4539'
-            '2b7679218752c0435a1496306b447d72aafaf5b671b6eef63e58c83a67638ced'
-            '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
-            '36548f4980dcdbb27e0738c3fd928005d49a7b5c2c65d7a583ebb445626074dd')
+pkgdesc="Jitsi Meet Videobridge git build"
+arch=('any')
+url="https://jitsi.org/jitsi-meet/"
+license=('Apache')
+depends=("java-runtime" "bash")
+optdepends=("prosody")
+makedepends=(
+        "java-environment"
+        "unzip" "maven"
+)
+options=('!strip')
+backup=(
+  "etc/${pkgname}/config"
+  "etc/${pkgname}/log4j2.xml"
+  "etc/${pkgname}/logging.properties"
+  "etc/${pkgname}/sip-communicator.properties"
+  "etc/${pkgname}/jvb.conf"
+)
+source=(
+        "$pkgname::git+https://github.com/jitsi/jitsi-videobridge"
+        "config"
+        "sip-communicator.properties"
+        "service"
+        "sysusers.conf"
+        "tmpfiles.conf"
+)
+install=install
+
 pkgver() {
-    cd "jitsi-videobridge"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    printf "%s" "$(git describe --exclude stable/jitsi-meet_\* --long | sed 's/^v//;s/-/+/g')"
 }
 
 build() {
-    cd "jitsi-videobridge"
-    mvn package -DskipTests -Dassembly.skipAssembly=false
-    unzip -o jvb/target/jitsi-videobridge-2.1-SNAPSHOT-archive.zip
+        cd "$pkgname"
+        mvn clean
+        mvn package -DskipTests -Dassembly.skipAssembly=true install
+        mvn dependency:copy-dependencies -DincludeScope=runtime
 }
 
 package() {
-    install -d "${pkgdir}/usr/share"
-    cp -R "${srcdir}/jitsi-videobridge/jitsi-videobridge-2.1-SNAPSHOT/" "${pkgdir}/usr/share/jitsi-videobridge"
-    install -Dm644 jitsi-videobridge.service "$pkgdir/usr/lib/systemd/system/jitsi-videobridge.service"
-    install -Dm644 jitsi-videobridge.conf "$pkgdir/etc/jitsi/videobridge/jitsi-videobridge.conf"
-    install -Dm644 sip-communicator.properties "${pkgdir}/etc/jitsi/videobridge/sip-communicator.properties"
-    install -Dm644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/jitsi-videobridge.conf"
-    install -Dm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/jitsi-videobridge.conf"
+        cd "$srcdir/$pkgname"
+
+        DESTDIR="${pkgdir}/usr/lib/${pkgname}"
+        CONFDIR="${pkgdir}/etc/${pkgname}"
+
+        install -Dm644 -C -t "${DESTDIR}/lib" \
+                jvb/target/dependency/* \
+                jvb/lib/videobridge.rc
+
+        install -Dm644 jvb/target/jitsi-videobridge-*.jar "${DESTDIR}/jitsi-videobridge.jar"
+        install -Dm755 -t "${DESTDIR}" "jvb/resources/jvb.sh"
+
+        install -dm700 "${CONFDIR}"
+        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties" "config/log4j2.xml" "config/callstats-java-sdk.properties"
+        install -Dm600 "jvb/src/main/resources/reference.conf" "${CONFDIR}/jvb.conf"
+        sed -i 's@logs@/var/log/'$pkgname'@' "${CONFDIR}/log4j2.xml"
+
+        install -Dm644 "config/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${pkgname}.conf"
+
+        cd "$srcdir"
+        install -Dm600 -t "${CONFDIR}" "config" "sip-communicator.properties"
+        install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+        install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+        install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
+sha256sums=('SKIP'
+            'e60e7002db2d73da87b0399eb39973a91ea43d99ce6d8c20b75e5ed1090f5a5f'
+            'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
+            'f9fcbe1e297afb4bad27e2a9dc0fff60d16dd1d232086d793246ee5c2d9fed68'
+            '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
+            '54318c8c90b4b519b05f80a3241f0bae3da8a4478f68e47ba268355ff6ddf383')

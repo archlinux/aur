@@ -1,10 +1,4 @@
-*
-!.SRCINFO
-!PKGBUILD
-!.gitignore
-!jitsi-videobridge.service
-!jitsi-videobridge.conf
-!sip-communicator.properties
-!sysusers.conf
-!tmpfiles.conf
-!sysctl
+jitsi-videobridge-git/
+src/
+pkg/
+*.pkg.tar.*
