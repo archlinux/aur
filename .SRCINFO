@@ -1,14 +1,14 @@
 pkgbase = mythplugins
-	pkgver = 31.0
+	pkgver = 31+fixes.20210401.563a05b7
 	pkgrel = 1
-	epoch = 1
+	epoch = 0
 	url = http://www.mythtv.org
 	arch = any
 	license = GPL
 	makedepends = dvdauthor
 	makedepends = dvd+rw-tools
 	makedepends = mesa-libgl
-	makedepends = mythtv=1:31.0
+	makedepends = mythtv>=31+fixes.20210401.563a05b7
 	makedepends = perl-datetime-format-iso8601
 	makedepends = perl-date-manip
 	makedepends = perl-image-size
@@ -29,11 +29,11 @@ pkgbase = mythplugins
 	makedepends = perl-xml-xpath
 	makedepends = python-urllib3
 	makedepends = libcdio-paranoia
-	source = mythtv-31.0.tar.gz::https://github.com/MythTV/mythtv/archive/v31.0.tar.gz
-	source = mythweb-31.0.tar.gz::https://github.com/MythTV/mythweb/archive/v31.0.tar.gz
+	source = git+https://github.com/MythTV/mythweb#branch=fixes/31
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/31
 	source = 001-mythnetvision-configure.patch
-	sha256sums = 907d1747950ec6ef1ec965069c75500b4538b781333f60e16d62d519b221a86d
-	sha256sums = 064a3417d2e04fc9d85355e8128ea93586fe63e17c26ba27ed758e056bd00afc
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 08c46792e5bae7060a9362b1952caf5dc783f2ad7c609bdd61abd974499329c7
 
 pkgname = mythplugins-mytharchive
@@ -83,7 +83,9 @@ pkgname = mythplugins-mythweb
 	depends = mythtv
 	depends = perl-cgi
 	optdepends = lighttpd
-	optdepends = php-apache
+	optdepends = php7-apache
+	optdepends = php7-fpm
+	optdepends = nginx
 
 pkgname = mythplugins-mythzoneminder
 	pkgdesc = View CCTV footage from zoneminder in MythTV
