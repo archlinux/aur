@@ -1,9 +1,122 @@
+# Author: Grigory Vasilyev <echo "h0tc0d3(-*A*-)g-m*a-i-l(-d#t-)c#m" | sed -e 's/-//ig;s/*//ig;s/(A)/@/i;s/#/o/ig;s/(dot)/./i'>
+# License: Apache 2.0
+
 post_install() {
-  cd /etc/ssl
-  patch --forward --strip=1 --input=0001-openssl_cnf.patch
+
+  # Set OpenSSL Configuration file
+  openssl_conf=/etc/ssl/openssl.cnf
+  if [ ! -f ${openssl_conf} ]; then
+    echo "OpenSSL Configuration file ${openssl_conf} not exist!"
+    echo -e "Please manually edit yours OpenSSL configuration file and add strings \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+      "to the beginning and to the end \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
+    echo "Sample configuration file gost.cnf you are can get from /etc/ssl folder!"
+    exit 0
+  fi
+
+  # Checking Active OpenSSL Configuration
+  if ! grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf} ||
+    ! grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
+
+    # Backup OpenSSL Configuration file
+    name=${openssl_conf}
+    if [[ -e $name.orig || -L $name.orig ]]; then
+      i=0
+      while [[ -e $name.$i.orig || -L $name.$i.orig ]]; do
+        ((i++))
+      done
+      name=$name.$i
+    fi
+    echo "Backup OpenSSL Configuration to ${name}.orig"
+    cp -f ${openssl_conf} ${name}.orig
+
+    # Add include GOST Configuration file /etc/ssl/gost.cnf to the end of OpenSSL Configuration file
+    if ! grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf}; then
+      # Write '.include $dir/gost.cnf # Include GOST Configuration file' string to the end of configuration file
+      sed -i "$ a\ \n.include \$dir/gost.cnf # Include GOST Configuration file" ${openssl_conf}
+    fi
+
+    # Set GOST Configuration in the OpenSSL Configuration file
+    if ! grep -iq "openssl_conf" ${openssl_conf}; then
+      # Write 'openssl_conf=openssl_gost # Set GOST Configuration' string before '# Note that you can' or in the top of configuration file
+      sed -i "/#\s*Note\s*that\s*you\s*can/I i openssl_conf=openssl_gost # Set GOST Configuration\n" ${openssl_conf}
+      # If not found GOST Configuration then write at first line 'openssl_conf=openssl_gost # Set GOST Configuration'
+      if ! grep -iq "openssl_conf" ${openssl_conf}; then
+        sed -i "1 i openssl_conf=openssl_gost # Set GOST Configuration\n" ${openssl_conf}
+      fi
+    else
+      if ! grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
+        echo -e "\E[1m\E[33mopenssl_conf\E[0m already defined in ${openssl_conf} file!"
+        echo -e "Please check ${openssl_conf} file and add string \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+          "to the beginning of the ${openssl_conf} file!"
+        exit 0
+      fi
+    fi
+  fi
+
+  if ! grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf} ||
+    ! grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
+    echo 'OpenSSL GOST Configuration failed!'
+    echo -e "Please check ${openssl_conf} file and add string \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+      "to the beginning and to the end \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
+    exit 0
+  fi
+
+  if openssl engine | grep -iq 'gost'; then
+    echo -e "\E[1m\E[33mGost Engine successfully installed and OpenSSL automatic configured! All works fine!\E[0m"
+  fi
+
 }
 
-pre_remove() {
-  cd /etc/ssl
-  patch --forward --reverse --strip=1 --input=0001-openssl_cnf.patch
+post_remove() {
+
+  # Set OpenSSL Configuration file
+  openssl_conf=/etc/ssl/openssl.cnf
+  if [ ! -f ${openssl_conf} ]; then
+    echo "OpenSSL Configuration file ${openssl_conf} not exist!"
+    echo -e "Please edit yours OpenSSL Configuration file and remove strings \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
+      "in the beginning and in the end \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
+    exit 1
+  fi
+
+  # Checking Active OpenSSL Configuration
+  if grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf} ||
+    grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
+
+    # Backup OpenSSL Configuration
+    name=${openssl_conf}
+    if [[ -e $name.gost || -L $name.gost ]]; then
+      i=0
+      while [[ -e $name.$i.gost || -L $name.$i.gost ]]; do
+        ((i++))
+      done
+      name=$name.$i
+    fi
+    echo "Backup OpenSSL Configuration to ${name}.gost"
+    cp -f ${openssl_conf} ${name}.gost
+
+    # Remove include GOST Configuration file gost.cnf from OpenSSL Configuration file
+    if grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf}; then
+      sed -i ":a;N;\$!ba;s/\n\?\(\#\s*Include\s*GOST\s*Configuration\s*file\s*\)\?\.include\s*\$dir\/gost\.cnf\s*\(\#\s*\(Include\)\?\s*GOST\s*\(Configuration\)\?\s*\(file\)\?\)\?//IM" ${openssl_conf}
+    fi
+    if ! grep -iq "\.include\s*\$dir/gost\.cnf" ${openssl_conf}; then
+      echo -e "Remove include GOST Configuration file gost.cnf from ${openssl_conf} file - \E[1m\E[32mSUCCESS\E[0m"
+    else
+      echo -e "Remove include GOST Configuration file gost.cnf from ${openssl_conf} file - \E[1m\E[31mFAILED\E[0m" \
+      "\nPlease manually remove string \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m from the OpenSSL Configuration file!"
+    fi
+
+    # Remove GOST Configuration from OpenSSL Configuration file
+    if grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
+      sed -i ":a;N;\$!ba;s/\(\#\s*Set\s*GOST\s*Configuration\s*\)\?openssl_conf\s*=\s*openssl_gost\s*\(\#\s*\(Set\)\?\s*GOST\s*\(Configuration\)\?\)\?\n\?//IM" ${openssl_conf}
+    fi
+
+    if ! grep -iq "openssl_conf=openssl_gost" ${openssl_conf}; then
+      echo -e "Remove GOST Configuration from OpenSSL Configuration ${openssl_conf} file - \E[1m\E[32mSUCCESS\E[0m"
+    else
+      echo -e "Remove GOST Configuration from ${openssl_conf} file - \E[1m\E[31mFAILED\E[0m" \
+      "\nPlease manually remove string \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m from the OpenSSL Configuration file!"
+    fi
+
+  fi
+
 }

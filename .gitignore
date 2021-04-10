@@ -1,6 +1,7 @@
-/pkg
-/src
-/gost-engine
+/pkg/*
+/src/*
+/gost-engine/*
+/.idea/*
 *.pkg.tar.xz
 *.pkg.tar.zst
 *.tar

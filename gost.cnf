@@ -1,0 +1,13 @@
+# GOST Engine Configuration
+[openssl_gost]
+engines = engine_section
+
+[engine_section]
+gost = gost_section
+
+[gost_section]
+engine_id = gost
+dynamic_path = /usr/lib/engines-1.1/gost.so
+default_algorithms = ALL
+CRYPT_PARAMS = id-Gost28147-89-CryptoPro-A-ParamSet
+# GOST Engine Configuration End
