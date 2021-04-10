@@ -14,7 +14,7 @@ _merge_requests_to_use=() # safe pick
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.38.3
+pkgver=40.0
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -23,15 +23,15 @@ license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server sysprof)
+         xorg-xwayland graphene libxkbfile)
+makedepends=(gobject-introspection git egl-wayland meson xorg-server)
 checkdepends=(xorg-server-xvfb)
-provides=(mutter mutter-781835-workaround libmutter-7.so)
+provides=(mutter mutter-781835-workaround libmutter-8.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=9f9c26be93ee73e7ce0434d251e4af31626342f9  # tags/3.38.3^0
+_commit=21a09fb7928c17519d67ffd8c1ae80071f92fdbf  # tags/40.0^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -149,14 +149,14 @@ prepare() {
 
 }
 
-
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
   arch-meson $pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
-    -D installed_tests=false
+    -D installed_tests=false \
+    -D profiler=false
   meson compile -C build
 }
 
