@@ -6,7 +6,7 @@ pkgname=go-bindata-hashicorp
 _pkgname=go-bindata
 _commit=bf7910af899725e4938903fb32048c7c0b15f12e
 pkgver=3.0.7+bf7910af
-pkgrel=3
+pkgrel=4
 pkgdesc="A small utility which generates Go code from any file (Hashicorp version)"
 arch=('x86_64')
 url='https://github.com/hashicorp/go-bindata'
@@ -24,6 +24,7 @@ prepare() {
 }
 
 build() {
+    export GO111MODULE=off
     cd "${srcdir}/src/github.com/hashicorp/go-bindata/go-bindata"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
