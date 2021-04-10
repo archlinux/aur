@@ -1,0 +1,21 @@
+pkgbase = xss-lock-locked-hint
+	pkgdesc = Forked version of xss lock that supports logind's SetLockedHint
+	pkgver = 0.3.0.r8.g7b0b4dc
+	pkgrel = 1
+	url = https://github.com/xdbob/xss-lock/tree/locked_hint
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = python-docutils
+	makedepends = git
+	depends = xcb-util
+	depends = systemd
+	optdepends = bash-completion: for bash completion
+	provides = xss-lock
+	conflicts = xss-lock
+	source = xss-lock-locked-hint::git+https://github.com/xdbob/xss-lock#branch=locked_hint
+	md5sums = SKIP
+
+pkgname = xss-lock-locked-hint
+
