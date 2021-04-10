@@ -3,14 +3,14 @@
 
 pkgname=debhelper-python
 pkgver=3.9.2
-pkgrel=1
+pkgrel=2
 
 _debpy_name=python3-defaults
 _debpy_ver=$pkgver
 _debpy_rel=2
 
 _py3def_name=dh-python
-_py3def_ver=4.20201102
+_py3def_ver=4.20201102+nmu1
 
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -24,7 +24,7 @@ source=(https://deb.debian.org/debian/pool/main/p/${_debpy_name}/${_debpy_name}_
         https://deb.debian.org/debian/pool/main/d/${_py3def_name}/${_py3def_name}_${_py3def_ver}.tar.xz
         py3versions.patch)
 sha512sums=('ff0cb3c8ad7d3c849fff1f41afa799bbdda146d885887de6103e362d07f6b06eba8a2ae23d932f248736a4f1af049e2672321d3d6a72d818780f23fac645a459'
-            'faccd8488de8ad17b48d33b1a338be7e34a7af1d3838a85d2b9df3b2c779ac06b45aad2529164b17861055b699761548ffafdcfe6dc14d438ad18971d754b043'
+            '695eb40a3993f0de7e50039283579e99829f713c13b8c9aaadccb71f04df4e6a1f0961494e234b41565ebab9818a5ea5c440ae8bd5af3713b9ef4bc59adbdc8a'
             '772332cecd85331b6deda25c0d48eed2490e7e7f26d90c7936f46188c706f590771af6edcbb4740a23bff0434ed061bc2b49f8183561cbf4bbb845ed3bebc42a')
 
 prepare() {
@@ -36,7 +36,7 @@ build() {
   cd "$srcdir/$_debpy_name-$pkgver"
   make
 
-  cd "$srcdir/$_py3def_name-$_py3def_ver"
+  cd "$srcdir/$_py3def_name"
   make
 }
 
@@ -64,7 +64,7 @@ package() {
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   install -D -m 644 debian/copyright $pkgdir/usr/share/licenses/$pkgname/
 
-  cd "$srcdir/$_py3def_name-$_py3def_ver"
+  cd "$srcdir/$_py3def_name"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   # create symlinks to executables in order to make this look like in
