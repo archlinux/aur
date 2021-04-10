@@ -40,7 +40,7 @@ pkgbase = flatcam-git
 	md5sums = SKIP
 	md5sums = 8a0be1fc39b87116cba4162dc1257e2e
 	md5sums = e4a7f457350aa2e1c62cbe43f3b23e90
-	md5sums = ff3e92a98fa93954cfaf6c5d62a05643
+	md5sums = d1abc7ac742630ef04071137b9dca85b
 
 pkgname = flatcam-git
 

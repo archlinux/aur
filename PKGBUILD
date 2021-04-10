@@ -44,7 +44,7 @@ source=("git+https://bitbucket.org/jpcgt/flatcam.git"
 md5sums=('SKIP'
          '8a0be1fc39b87116cba4162dc1257e2e'
          'e4a7f457350aa2e1c62cbe43f3b23e90'
-         'ff3e92a98fa93954cfaf6c5d62a05643')
+         'd1abc7ac742630ef04071137b9dca85b')
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
