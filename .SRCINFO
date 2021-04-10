@@ -7,6 +7,7 @@ pkgbase = oauth2-proxy-git
 	arch = armv6h
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	makedepends = sed
 	provides = oauth2-proxy
