@@ -1,0 +1,16 @@
+pkgbase = sway-marker-git
+	pkgdesc = Rofi frontend for Bitwarden
+	pkgver = r2.f2732f8
+	pkgrel = 1
+	url = https://github.com/fdw/rofi-rbw
+	arch = x86_64
+	arch = arch64
+	license = MIT
+	makedepends = rust
+	depends = gtk3
+	depends = gtk-layer-shell
+	source = git+https://github.com/ilyazzz/sway-marker.git
+	sha512sums = SKIP
+
+pkgname = sway-marker-git
+
