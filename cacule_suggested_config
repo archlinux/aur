@@ -1,0 +1,86 @@
+#!/usr/bin/bash
+
+configure() {
+msg2 "Enable CacULE CPU scheduler..."
+scripts/config --enable CONFIG_CACULE_SCHED
+
+msg2 "Disable CFS"
+scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+scripts/config --disable CONFIG_CFS_BANDWIDTH
+
+  msg2 "Apply suggested config"
+  msg2 "Security Cacule"
+  scripts/config --disable CONFIG_SECURITY
+  scripts/config --disable CONFIG_HARDENED_USERCOPY
+  msg2 "General Setup Cacule"
+  scripts/config --disable CONFIG_EXPERT
+  scripts/config --disable CONFIG_SCHED_AUTOGROUP
+  scripts/config --disable CONFIG_CGROUP_SCHED
+  scripts/config --disable CONFIG_BSD_PROCESS_ACCT
+  scripts/config --disable CONFIG_TASK_XACCT
+  scripts/config --disable CONFIG_PSI
+  scripts/config --disable CONFIG_AUDIT
+  scripts/config --disable CONFIG_VIRT_CPU_ACCOUNTING_GEN
+  scripts/config --enable CONFIG_TICK_CPU_ACCOUNTING
+  scripts/config --disable CONFIG_MEMCG
+  scripts/config --disable CONFIG_CGROUP_CPUACCT
+  scripts/config --disable CONFIG_CGROUP_DEBUG
+  scripts/config --disable CONFIG_CHECKPOINT_RESTORE
+  scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
+  scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
+  scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
+  scripts/config --disable CONFIG_PROFILING
+  msg2 "Processor type and features Cacule"
+  scripts/config --disable CONFIG_RETPOLINE
+  scripts/config --disable CONFIG_X86_5LEVEL
+  scripts/config --disable CONFIG_KEXEC
+  scripts/config --disable CONFIG_KEXEC_FILE
+  scripts/config --disable CONFIG_CRASH_DUMP
+  scripts/config --set-val CONFIG_NR_CPUS "4" #the number of your CPUs
+  msg2 "Power Cacule"
+  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+  scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+  msg2 "Kernel hacking Cacule"
+  scripts/config --disable CONFIG_FTRACE
+  scripts/config --disable CONFIG_DEBUG_KERNEL
+  scripts/config --disable CONFIG_PAGE_EXTENSION
+  scripts/config --disable CONFIG_PRINTK_TIME
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+  scripts/config --disable CONFIG_ENABLE_MUST_CHECK
+  scripts/config --disable CONFIG_STRIP_ASM_SYMS
+  scripts/config --disable CONFIG_UNUSED_SYMBOLS
+  scripts/config --disable CONFIG_DEBUG_FS
+  scripts/config --disable CONFIG_OPTIMIZE_INLINING
+  scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
+  scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
+  scripts/config --disable CONFIG_STACK_VALIDATION
+  scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
+  scripts/config --disable CONFIG_MAGIC_SYSRQ
+  scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
+  scripts/config --disable CONFIG_PAGE_EXTENSION
+  scripts/config --disable CONFIG_DEBUG_PAGEALLOC
+  scripts/config --disable CONFIG_PAGE_OWNER
+  scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
+  scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
+  scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
+  scripts/config --disable CONFIG_DETECT_HUNG_TASK
+  scripts/config --disable CONFIG_WQ_WATCHDOG
+  scripts/config --disable CONFIG_SCHED_DEBUG
+  scripts/config --disable CONFIG_SCHEDSTATS
+  scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
+  scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+  scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
+  scripts/config --disable CONFIG_RCU_TRACE
+  scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+  scripts/config --disable CONFIG_FAULT_INJECTION
+  scripts/config --disable CONFIG_LATENCYTOP
+  scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
+  scripts/config --disable RUNTIME_TESTING_MENU
+  scripts/config --disable CONFIG_MEMTEST
+  scripts/config --disable CONFIG_KGDB
+  scripts/config --disable CONFIG_EARLY_PRINTK
+  scripts/config --disable CONFIG_DOUBLEFAULT
+  
+  }
