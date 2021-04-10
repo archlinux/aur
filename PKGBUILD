@@ -2,7 +2,7 @@
 
 _pkgname=olive-editor
 pkgname=olive-appimage
-pkgver=f99600ed
+pkgver=b22c2f48
 pkgrel=1
 pkgdesc="Olive is a free non-linear video editor for Windows, macOS, and Linux."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="Olive-${pkgver}-Linux-x86_64.AppImage"
 source=(${url}/dl/${_appimage})
 noextract=("${_appimage}")
-md5sums=('0c40c78f815d281f32ab33c23a1145a4')
+md5sums=('ee6c2b43267445bc20954a5a3917640b')
 
 prepare() {
     chmod +x "${_appimage}"
