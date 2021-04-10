@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 pkgname=gtk3-typeahead
 pkgver=3.24.28
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget"
 arch=(x86_64)
 url="https://www.gtk.org/"
@@ -41,12 +41,16 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+  # https://gitlab.gnome.org/GNOME/gtk/-/commit/df4b564d69cc7d2e751537eff61259b36f37e9e5
+  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS -DG_DISABLE_ASSERT"
+
   arch-meson gtk build \
     -D broadway_backend=true \
     -D cloudproviders=true \
+    -D tracker3=false \
     -D colord=yes \
-    -D gtk_doc=true \
+    -D examples=false \
+    -D demos=false \
     -D man=true
   meson compile -C build
 }
@@ -65,4 +69,6 @@ END
 
   rm "$pkgdir/usr/bin/gtk-update-icon-cache"
   rm "$pkgdir/usr/share/man/man1/gtk-update-icon-cache.1"
+
+  rm "$pkgdir"/usr/share/man/man1/gtk3-{demo,demo-application,icon-browser,widget-factory}.1
 }
