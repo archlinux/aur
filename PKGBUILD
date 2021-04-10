@@ -1,7 +1,7 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=instamenu-extra
-pkgver=2021.04.06
+pkgver=2021.04.10
 pkgrel=1
 pkgdesc="addons for instamenu"
 url="https://github.com/The-Repo-Club/$pkgname"
@@ -12,7 +12,7 @@ depends=('bash' 'systemd' 'glib2' 'autorandr' 'instamenu' 'instamenu-schemas' 'p
 optdepends=('cutycapt: Taking screenshots with bm command.')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('9d30155d0da2834e2a08efa6e598a53c6143a9743a78af8ebb8d1e9fbd6680f4')
+sha256sums=('89c4b120fc9c25e5f649a82272cc5e9b914f1986779faba2ed972c631d90038c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
