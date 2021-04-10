@@ -2,7 +2,7 @@
 
 pkgname=gotags
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='ctags-compatible tag generator for Go'
 arch=('any')
 url='https://github.com/jstemmer/gotags'
@@ -14,6 +14,7 @@ sha256sums=('2df379527eaa7af568734bc4174febe7752eb5af1b6194da84cd098b7c873343')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export GOCACHE="${srcdir}/${pkgname}-${pkgver}/gocache"
+  go mod init ${url##https://}
   go build -o "${pkgname}"
 }
 
