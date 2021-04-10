@@ -1,0 +1,17 @@
+pkgbase = skylobby-git
+	pkgdesc = A Spring RTS lobby and replay viewer written in Clojure
+	pkgver = 0.2.9.r0.g0918557
+	pkgrel = 1
+	url = https://github.com/skynet-gh/skylobby
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = clojure
+	depends = java-runtime>=14
+	provides = skylobby=0.2.9.r0.g0918557
+	conflicts = skylobby
+	source = skylobby::git+https://github.com/skynet-gh/skylobby
+	md5sums = SKIP
+
+pkgname = skylobby-git
+
