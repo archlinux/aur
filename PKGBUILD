@@ -11,7 +11,7 @@ provides=(hexo-deployer-bin=$pkgver)
 replaces=()
 backup=()
 options=()
-install=
+install=Warning.install
 changelog=
 source=('hexo-deployer-bin.tar.gz' 'warning.sh')
 noextract=()
