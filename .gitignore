@@ -1,0 +1,4 @@
+jitsi-meet-prosody/
+src/
+pkg/
+*.pkg.tar.*
