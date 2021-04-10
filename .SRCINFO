@@ -1,7 +1,7 @@
 pkgbase = ravenna-alsa-daemon
 	pkgdesc = A daemon for ALSA RAVENNA/AES67 Driver
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bondagit/ravenna-alsa-lkm
 	arch = x86_64
 	license = custom
