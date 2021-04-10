@@ -12,7 +12,7 @@ provides=("instamenu-schemas=$pkgver")
 depends=('glib2' 'dconf')
 makedepends=('gobject-introspection' 'git' 'meson')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c8d5bf76c33e520c635daaffccdf587e37f227f70dfca1d5401e12619f723d48')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
