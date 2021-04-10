@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gtk3" "webkit2gtk" "libusb")
 makedepends=("go" "npm")
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/zsa/wally/archive/refs/tags/$pkgver-linux.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver-linux.tar.gz"
     "modernize-udev-rules.patch"
     "desktop-file.patch"
 )
