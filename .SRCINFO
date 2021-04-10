@@ -1,0 +1,16 @@
+pkgbase = yt
+	pkgdesc = Search and play YouTube videos via command line.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/H-M-H/yt
+	arch = any
+	license = custom:CC0
+	depends = jq
+	depends = fzf
+	depends = mpv
+	depends = youtube-dl
+	source = yt-1.0::https://raw.githubusercontent.com/H-M-H/yt/v1.0/yt
+	sha256sums = 3cd01007714ef8b0da95d69098542b37f951c7946a8ef86fd5e3c86de192d65a
+
+pkgname = yt
+
