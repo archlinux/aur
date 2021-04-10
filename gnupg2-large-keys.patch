@@ -1,12 +1,22 @@
 diff --git a/g10/keygen.c b/g10/keygen.c
-index 560480d..7a89c05 100644
+index a4117cdd0..638a19cb2 100644
 --- a/g10/keygen.c
 +++ b/g10/keygen.c
-@@ -1644,7 +1644,7 @@
+@@ -1819,7 +1819,7 @@ gen_rsa (int algo, unsigned int nbits, KBNODE pub_root,
    int err;
    char *keyparms;
    char nbitsstr[35];
 -  const unsigned maxsize = (opt.flags.large_rsa ? 8192 : 4096);
-+  const unsigned maxsize = (opt.flags.large_rsa ? 65535 : 4096);
-
++  const unsigned maxsize = (opt.flags.large_rsa ? 16384 : 4096);
+ 
    log_assert (is_RSA(algo));
+ 
+@@ -2473,7 +2473,7 @@ get_keysize_range (int algo, unsigned int *min, unsigned int *max)
+ 
+     default:
+       *min = opt.compliance == CO_DE_VS ? 2048: 1024;
+-      *max = 4096;
++      *max = 16384;
+       def = 3072;
+       break;
+     }
