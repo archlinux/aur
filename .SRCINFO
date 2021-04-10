@@ -1,7 +1,7 @@
 pkgbase = vim-suda-git
 	pkgdesc = Vim plugin for writing out files with sudo
 	pkgver = 0.3.0.r0.gfbb138f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lambdalisue/suda.vim
 	arch = any
 	groups = vim-plugins
@@ -11,6 +11,8 @@ pkgbase = vim-suda-git
 	depends = sudo
 	provides = vim-suda
 	conflicts = vim-suda
+	replaces = suda-vim-git
+	replaces = neovim-suda-opt-git
 	source = vim-suda-git::git+https://github.com/lambdalisue/suda.vim
 	md5sums = SKIP
 

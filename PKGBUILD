@@ -2,7 +2,7 @@
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=vim-suda-git
 pkgver=0.3.0.r0.gfbb138f
-pkgrel=1
+pkgrel=2
 pkgdesc='Vim plugin for writing out files with sudo'
 arch=('any')
 url="https://github.com/lambdalisue/suda.vim"
@@ -12,6 +12,7 @@ depends=('vim-plugin-runtime' 'sudo')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+replaces=('suda-vim-git' 'neovim-suda-opt-git')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
