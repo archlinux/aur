@@ -1,3 +1,7 @@
+2021-04-10
+	upstream upgrade: 3.38.3 -> 3.40.0
+	requires vte3 >= 0.64.0
+
 2021-02-14
 	upstream update: 3.38.2 -> 3.38.3
 
