@@ -2,12 +2,12 @@
 
 pkgname=retrotetris
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple tetris remake"
-arch=('i686')
+arch=('i686' 'x86_64')
 license=('GPL2')
-url="http://sourceforge.net/projects/retropong/"
-source=("http://downloads.sourceforge.net/project/retropong/${pkgname}.tar.gz" "${pkgname}.desktop")
+url="https://sourceforge.net/projects/retropong/"
+source=("https://downloads.sourceforge.net/project/retropong/${pkgname}.tar.gz" "${pkgname}.desktop")
 depends=('sdl_mixer' 'sdl_ttf' 'bash')
 md5sums=('1d85ef7972a731d9ccc0eee650682eb5'
          'fd30cf926d46327995848620398873fe')
