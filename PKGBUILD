@@ -1,7 +1,7 @@
 # Maintainer: Luca D'Amico <damico.luca91@live.it>
 
 pkgname=puzzle-bobble-grub2-theme
-pkgver=r5.1dc88c6
+pkgver=r6.1dc88c6
 pkgrel=1
 pkgdesc="Puzzle Bobble Grub2 Theme"
 arch=('any')
