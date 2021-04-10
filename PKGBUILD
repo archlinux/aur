@@ -2,9 +2,9 @@
 
 pkgname=bangin-server-node
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A basic web server around bangin written in Node.js."
-url="https://github.com/samhh/${pkgname}"
+url="https://git.sr.ht/~samhh/${pkgname}"
 license=("MIT")
 arch=("any")
 depends=("bangin" "nodejs")
