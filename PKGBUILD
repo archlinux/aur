@@ -3,7 +3,7 @@
 pkgname=textidote-bin
 _pkgname=textidote
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Spelling, grammar and style checking on LaTeX documents"
 arch=('any')
 url="https://github.com/sylvainhalle/textidote"
@@ -30,12 +30,13 @@ prepare() {
 
 package() {
   # Create directories
-  install -d "$pkgdir"/{etc/bash_completion.d,usr/bin,usr/share/{man/man1,applications},opt/$_pkgname}
+  install -d "$pkgdir"/{etc/bash_completion.d,usr/bin,usr/share/{man/man1,applications,zsh/site-functions},opt/$_pkgname}
 
   install -Dm644 etc/bash.completion.d/$_pkgname "$pkgdir"/etc/bash_completion.d/
   install -Dm755 usr/local/bin/$_pkgname "$pkgdir"/usr/bin/
-  install -D opt/$_pkgname/$_pkgname.{jar,zsh} "$pkgdir"/opt/$_pkgname/
-  install -D opt/$_pkgname/${_pkgname}-icon.svg "$pkgdir"/opt/$_pkgname/
+  install -D opt/$_pkgname/${_pkgname}.jar "$pkgdir"/opt/${_pkgname}/
+  install -D opt/$_pkgname/${_pkgname}-icon.svg "$pkgdir"/opt/${_pkgname}/
+  install -Dm644 opt/$_pkgname/${_pkgname}.zsh "$pkgdir"/usr/share/zsh/site-functions/_${_pkgname}
   install -D usr/share/man/man1/$_pkgname.1 "$pkgdir"/usr/share/man/man1/
 
   # Extra command to launch in browser
