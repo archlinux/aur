@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=2021.03.30.r1.g87525fc
-pkgrel=1
+pkgver=2021.04.06.r6.g75d66fa
+pkgrel=2
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
 url="https://github.com/eth-p/bat-extras"
 license=('MIT')
 depends=('bash' 'bat' 'coreutils' 'less')
 makedepends=('git')
-checkdepends=('ripgrep' 'fish')
+checkdepends=('ripgrep')
 optdepends=('git: required for batdiff script'
             'ripgrep: required for batgrep script'
             'man-db: required for batman script'
