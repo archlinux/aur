@@ -28,7 +28,7 @@ pkgbase = wlroots-hidpi-git
 	source = wlroots-hidpi-git::git+https://github.com/swaywm/wlroots
 	source = xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff
 	sha512sums = SKIP
-	sha512sums = 3f72a84ffdbdcafb40a28c563fabac9d231441cf17304121f2c083a35bdd477ea95a0baf26a08f77907d2d4e99f1c510d2d7f60b1896fb10fe1ce7164ae04c9e
+	sha512sums = a372b6c9293bb1feef0fd0d0c006857684b829f73624c431ef1deae55c7f557e7b5c7b0016a1cf2accd74f77d96c246fc588bb484a022baa9a8ac46bcacdeafe
 
 pkgname = wlroots-hidpi-git
 
