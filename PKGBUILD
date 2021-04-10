@@ -5,7 +5,7 @@
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
 pkgver=3.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
@@ -21,11 +21,14 @@ optdepends=('opencv-samples: samples'
 source=(
 "opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
 "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
+"opencv-lapack-3.9.1.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/opencv/trunk/opencv-lapack-3.9.1.patch"
 )
 sha256sums=('1d9ed46728ecfab579c540f9da4e0cc599a822b49ca406edeee7fefceea6be34'
-            'b207024589674dd2efc7c25740ef192ee4f3e0783e773e2d49a198c37e3e7570')
+            'b207024589674dd2efc7c25740ef192ee4f3e0783e773e2d49a198c37e3e7570'
+            '5233d9b4b8e3f4600e3f4ebef2b0ad5621faf25efbdfee96ee720a83cc81d0cc')
 
 prepare() {
+  patch -d opencv-$pkgver -p1 < opencv-lapack-3.9.1.patch # Fix build with LAPACK 3.9.1
   mkdir -p build
 }
 
