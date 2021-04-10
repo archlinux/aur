@@ -11,14 +11,13 @@ provides=(hexo-deployer-bin=$pkgver)
 replaces=()
 backup=()
 options=()
-install=Warning.install
+install=hexo-deployer-bin.install
 changelog=
-source=('hexo-deployer-bin.tar.gz' 'warning.sh')
+source=('hexo-deployer-bin.tar.gz')
 noextract=()
-md5sums=('70cf5773362f744873f62ebad4d201ff' '05ab9808876afc64a271d278d1084adb')
+md5sums=('70cf5773362f744873f62ebad4d201ff')
 validpgpkeys=()
 
 package() {
            install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-	   sh warning.sh
 }
