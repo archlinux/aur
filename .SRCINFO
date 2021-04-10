@@ -1,17 +1,18 @@
 pkgbase = thyme-bin
 	pkgdesc = Automatically track which applications you use and for how long.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sourcegraph/thyme
 	arch = x86_64
 	license = MIT
 	depends = wmctrl
 	depends = xdotool
 	depends = xorg-xwininfo
+	depends = xorg-xdpyinfo
 	provides = thyme
 	conflicts = thyme-git
-	source = thyme-bin-0.2.3-1-bin::https://github.com/sourcegraph/thyme/releases/download/0.2.3/thyme-linux-386
-	source = thyme-bin-0.2.3-1-LICENSE::https://raw.githubusercontent.com/sourcegraph/thyme/0.2.3/LICENSE
+	source = thyme-bin-0.2.3-2-bin::https://github.com/sourcegraph/thyme/releases/download/0.2.3/thyme-linux-386
+	source = thyme-bin-0.2.3-2-LICENSE::https://raw.githubusercontent.com/sourcegraph/thyme/0.2.3/LICENSE
 	sha256sums = cd45be4907826af1b3be4c38ef3c15e8ce62726a60d47b047d92636e75fb319a
 	sha256sums = ca6fb190e4483913af361ab0bd843c8be475add979a9c91c01e77d399bfd594f
 
