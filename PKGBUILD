@@ -1,6 +1,12 @@
+#!/bin/bash
+
+# Maintainer: Gustavo Ramos Rehermann <rehermann6046@gmail.com>
+# Contributor: Hao Zhang <hzhangxyz@outlook.com>
+
 pkgname=cling-bin
 _pkgname=cling
-pkgver=20200908
+pkgver='2020.11.05'
+file_name="cling_$(tr '.' '-'<<<$pkgver)_ROOT-ubuntu2004.tar.bz2"
 pkgrel=1
 pkgdesc="The cling C++ interpreter"
 arch=(x86_64)
@@ -8,17 +14,15 @@ url="https://root.cern.ch/cling"
 license=('Cling Release License')
 depends=('ncurses5-compat-libs')
 
-file_name='cling_2020-09-08_ROOT-ubuntu2004'
-
 source=(
-  "https://root.cern/download/cling/$file_name.tar.bz2"
+  "https://root.cern/download/cling/$file_name"
 )
 sha256sums=(
-  '2c75766f120c907fe96339cb0ce9f6ef6c60aa4d831d450de50d64c6384769a1'
+  '73eb884f866e3d1511c647bc07ba215ab2af5cf2e3a8c9c93e39be9c4bb2eb4e'
 )
 
 prepare() {
-   tar xvf $file_name.tar.bz2
+   tar xvf "$file_name"
 }
 
 package() {
