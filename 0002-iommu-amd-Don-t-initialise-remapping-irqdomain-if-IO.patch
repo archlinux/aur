@@ -1,7 +1,7 @@
-From fa6692f3c77252a239725dab4352cecf34e12098 Mon Sep 17 00:00:00 2001
+From 604d731ed0605ad0d7019b282d8774c220485677 Mon Sep 17 00:00:00 2001
 From: David Woodhouse <dwmw@amazon.co.uk>
 Date: Mon, 15 Mar 2021 11:15:02 +0000
-Subject: [PATCH 2/3] iommu/amd: Don't initialise remapping irqdomain if IOMMU
+Subject: [PATCH 2/6] iommu/amd: Don't initialise remapping irqdomain if IOMMU
  is disabled
 
 When the IOMMU is disabled, the driver still enumerates and initialises
@@ -53,10 +53,10 @@ Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/iommu/amd/init.c b/drivers/iommu/amd/init.c
-index 01da76dc1caa..3ea395ef4929 100644
+index 78339b0bb8e5..398909dab640 100644
 --- a/drivers/iommu/amd/init.c
 +++ b/drivers/iommu/amd/init.c
-@@ -2997,6 +2997,9 @@ int __init amd_iommu_prepare(void)
+@@ -2998,6 +2998,9 @@ int __init amd_iommu_prepare(void)
  {
  	int ret;
  
@@ -67,5 +67,5 @@ index 01da76dc1caa..3ea395ef4929 100644
  
  	ret = iommu_go_to_state(IOMMU_ACPI_FINISHED);
 -- 
-2.31.0
+2.31.1
 

@@ -60,7 +60,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.12
+pkgver=5.11.13
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -79,18 +79,24 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
+  0003-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch
+  0004-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch
+  0005-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1defa8e4ef10663e48f62f9c9f7d3a35dd52d6aeaa91fa08371ae96c73a3098196c0e0a17beb78b8a6e246cc51ff3e3e59ffb85abb94c2bd8c14b8282e1e82bc'
+b2sums=('fd9537a0eb265660ed25d12ff4098ca208035576c580f81cb6a1355eedde2748bdb65521641f68e626a1aee49e7494c79627015a376b7ee4a6373622605ac760'
         'SKIP'
         '4f43af91d2b6a3ddca56c187595538b1920fbc5a9ec87cb7c714501f7a03ec8513c7ef09e76ac9350feb815e09c68b57fca6adb1d47c41d7583d7e1ff5a5de08'
         'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
-        'c22463da6e78830e104f728c00cf43573a7e1a59c17234f49844b9295eab953f4e119d34a0621feb816b9f1f0469dd769884f9ed1740c73176625435ea0a8624'
-        '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32')
+        '2c197117aa915971edb97ec98233d4c394f6790829486403bc51732a18fe12338d82e680ccafd138153affe9830d815ee1b52c7d1f3ed7937bc7a0c1fac3a5ef'
+        'b1cdc2e8d99ff59d57897fc99aa2a11b07f96f9461420d6d8d499fb4ff0740e317a8f9ede72b3041018ac89ab07a53c0014d19c06a9bb038055c4d5ed79f3b0d'
+        'ce586c65af54313c93e4dc55d56cf46840ac1b6a4f2a83b115529f4d9ef402158d28fa042967f1b685a11955371360513662f4b2eb1c75b5bba2ecd7ec31d8a9'
+        '5a93bf75f5c9995270af06d8ded3e57f53f0a11fd5c2e24909c9af9140a5275555c0ae7d50b2a064d76517d6d3536beb7850930ab5aec829be81b59b5a6b55aa'
+        '782e1ddb0400a7155b92f71e86ab1e717d3dbd159b4f003d2d4bdcd0baa660466ecdbc899f3b5e371c7e7400a940d4de0a3e46ff7418a641cd614ed738b16c86')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
