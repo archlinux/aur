@@ -1,13 +1,15 @@
 pkgbase = gotags
 	pkgdesc = ctags-compatible tag generator for Go
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jstemmer/gotags
 	arch = any
 	license = MIT
 	makedepends = go-pie
 	source = https://github.com/jstemmer/gotags/archive/v1.4.1.tar.gz
+	source = https://github.com/jstemmer/gotags/pull/46.patch
 	sha256sums = 2df379527eaa7af568734bc4174febe7752eb5af1b6194da84cd098b7c873343
+	sha256sums = 246f3e75f000eb09e40ed2d8893834cd7015029607f2ef44f1d7062c5b22ef31
 
 pkgname = gotags
 
