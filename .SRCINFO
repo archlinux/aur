@@ -1,7 +1,7 @@
 pkgbase = goto-git
 	pkgdesc = Alias and navigate to directories with tab completion
 	pkgver = 2.0.0.r12.b7fda54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iridakos/goto
 	arch = any
 	license = MIT

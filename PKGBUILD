@@ -2,7 +2,7 @@
 
 pkgname=goto-git
 pkgver=2.0.0.r12.b7fda54
-pkgrel=1
+pkgrel=2
 pkgdesc="Alias and navigate to directories with tab completion"
 arch=('any')
 url="https://github.com/iridakos/goto"
@@ -20,6 +20,7 @@ pkgver() {
 
 package() {
 	cd goto
-    install -Dm644 -t "$pkgdir/usr/share/goto" "goto.sh" CHANGELOG.md README.md
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "goto.sh" "$pkgdir/usr/share/goto/goto.sh"
+    install -Dm644 -t "$pkgdir/usr/share/doc/goto" CHANGELOG.md README.md
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/goto/LICENSE"
 }
