@@ -50,8 +50,8 @@ pkgname = kata2-runtime
 	depends = qemu-headless
 	depends = kata2-linux-container
 	depends = kata2-containers-image
-	optdepends = firecracker<0.22.0
-	optdepends = cloud-hypervisor<0.11.0
+	optdepends = firecracker<0.23.0
+	optdepends = cloud-hypervisor<0.15.0
 
 pkgname = kata2-linux-container
 

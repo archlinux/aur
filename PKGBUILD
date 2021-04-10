@@ -202,8 +202,8 @@ package_kata2-linux-container(){
 package_kata2-runtime(){
   depends=('qemu-headless' "kata2-linux-container" "kata2-containers-image")
   optdepends=(
-    'firecracker<0.22.0'
-    'cloud-hypervisor<0.11.0'
+    'firecracker<0.23.0'
+    'cloud-hypervisor<0.15.0'
   )
   install=kata2-runtime.install
   cd "${srcdir}/${_pkgbase}-${_pkgver}/src/runtime"
