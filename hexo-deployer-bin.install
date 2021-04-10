@@ -7,9 +7,8 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 post_install() {
-  	# Echo
   	note "======"
   	note "Please enter hexo-deployer-bin to run the script"
-    echo ""
-    note "======"
+	echo ""
+    	note "======"
 }
