@@ -3,7 +3,7 @@
 
 _pkgname=zeromq
 pkgname=${_pkgname}-draft
-pkgver=4.3.3
+pkgver=4.3.4
 _cppver=4.7.1
 pkgrel=1
 pkgdesc="Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ. With draft APIs."
@@ -13,11 +13,12 @@ license=('LGPL')
 depends=('gcc-libs' 'util-linux' 'libsodium' 'libpgm')
 makedepends=('asciidoc' 'xmlto')
 conflicts=('zeromq')
+provides=('zeromq')
 options=('staticlibs')
 # "http://download.zeromq.org/$_pkgname-$pkgver.tar.gz"
 source=("https://github.com/${_pkgname}/libzmq/releases/download/v$pkgver/${_pkgname}-${pkgver}.tar.gz"
         "zmq.hpp.$pkgver.tgz::https://github.com/${_pkgname}/cppzmq/archive/v${_cppver}.tar.gz")
-sha256sums=('9d9285db37ae942ed0780c016da87060497877af45094ff9e1a1ca736e3875a2'
+sha256sums=('c593001a89f5a85dd2ddf564805deb860e02471171b3f204944857336295c3e5'
             '9853e0437d834cbed5d3c223bf1d755cadee70e7c964c6e42c4c6783dee5d02c')
 
 build() {
