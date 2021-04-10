@@ -6,6 +6,7 @@
 pkgname=cling-bin
 _pkgname=cling
 pkgver='2020.11.05'
+epoch=1
 file_name="cling_$(tr '.' '-'<<<$pkgver)_ROOT-ubuntu2004.tar.bz2"
 pkgrel=1
 pkgdesc="The cling C++ interpreter"
