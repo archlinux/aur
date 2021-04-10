@@ -1,0 +1,17 @@
+pkgbase = telegrand-git
+	pkgdesc = A GTK4 telegram client built to be well integrated with the GNOME desktop environment.
+	pkgver = r66.e7d1461
+	pkgrel = 1
+	url = https://github.com/melix99/telegrand
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = meson
+	makedepends = libadwaita
+	depends = gtk4
+	source = git+https://github.com/melix99/telegrand.git
+	sha512sums = SKIP
+
+pkgname = telegrand-git
