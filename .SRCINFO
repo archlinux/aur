@@ -1,0 +1,23 @@
+pkgbase = libadwaita
+	pkgdesc = Library to help with developing UI for mobile devices using GTK/GNOME
+	pkgver = 1.0r1596.65ac525
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libadwaita
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv8h
+	arch = aarch64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = sassc
+	makedepends = vala
+	makedepends = wayland-protocols
+	depends = gtk4
+	provides = libadwaita-1.so
+	source = https://gitlab.gnome.org/GNOME/libadwaita/-/archive/65ac5258cdcd1c1bfdf2d8f29c9518e16bcca445/libadwaita-65ac5258cdcd1c1bfdf2d8f29c9518e16bcca445.tar.gz
+	b2sums = 72770f2e35dc83198cddf97878dfebbd967ce204b33389078f09b95a33b27f6e37ed9d3b6a24cd9bf0eb03c1883180a130a010fa92ba56214b87683f8548ead6
+
+pkgname = libadwaita
+
