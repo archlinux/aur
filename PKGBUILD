@@ -1,18 +1,24 @@
-pkgname='statsdaemon'
+pkgname=statsdaemon
 pkgdesc='Port of StatsD to Go, with built-in Graphite support'
-license=('custom')
-pkgver='0.7.1'
-pkgrel='2'
-makedepends=('go')
-depends=('glibc')
-arch=('x86_64' 'arm' 'i686')
-url='https://github.com/bitly/statsdaemon'
+license=(custom)
+pkgver=0.7.3
+pkgrel=1
+makedepends=(go)
+depends=(glibc)
+arch=(x86_64 arm i686)
+url=https://github.com/bitly/statsdaemon
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('b7e3eb7832ae15026b812b46db82b29c9304a9a3e1a26f365268bc5f1c436704b3c11146c0110a7f2743679cc123d13d8b60d5c7535e4ee44cca03f93a4efa10')
+sha512sums=('09c3c68be74afe2d2a04b35b404c0cd3582d42e33e61a101891dc49cd71d08fbdd17829d7b25f30f8833fc0429929097f7dc1c936d242a93a8861352a1441844')
 
 build () {
 	cd "${pkgname}-${pkgver}"
-	go build -x -v -o statsdaemon
+	export GOPATH="${srcdir}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS//-flto/}"
+	export CGO_CXXFLAGS="${CXXFLAGS//-flto/}"
+	go build -v -modcacherw -trimpath -buildmode pie -mod vendor \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS//-flto/}\"" \
+		-o statsdaemon
 }
 
 package () {
