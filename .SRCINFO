@@ -9,7 +9,6 @@ pkgbase = buttersink-git
 	depends = btrfs-progs
 	depends = python2-boto
 	depends = python2-crcmod
-	depends = python2-flake8
 	depends = python2-psutil
 	provides = buttersink
 	conflicts = buttersink
