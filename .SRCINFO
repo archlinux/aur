@@ -1,7 +1,7 @@
 pkgbase = gnofract4d
 	pkgdesc = Create beautiful fractal images
 	pkgver = 4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fract4d/gnofract4d
 	arch = any
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = gnofract4d
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = ffmpeg: to create videos
-	source = https://github.com/edyoung/gnofract4d/archive/v4.3.tar.gz
+	source = gnofract4d-4.3.tar.gz::https://github.com/edyoung/gnofract4d/archive/v4.3.tar.gz
 	md5sums = d815353c682eab9787e2fdad26f625ba
 
 pkgname = gnofract4d
