@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=littleutils-full
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Utilities for compression, file manipulation, text cleanup, and images/PDF optimization (with all features and extras)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 provides=('littleutils')
 conflicts=('littleutils' 'file-rename-utils')
 source=("https://sourceforge.net/projects/littleutils/files/littleutils-source/${pkgver}/littleutils-${pkgver}.tar.xz")
-sha256sums=('fbed0d8a4894322ce590e10820ecb8b535867693c949c8bb3c0a3a68ccc52eee')
+sha256sums=('16d01eb51d47d0d89fd5b39190b73d879dbeb215211aea9480a5751538139276')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
