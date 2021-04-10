@@ -1,7 +1,7 @@
 pkgbase = frangipanni-git
 	pkgdesc = Program to convert lines of text into a tree structure
-	pkgver = 0.4.0.r4.gff97e40
-	pkgrel = 1
+	pkgver = 0.5.0.r0.gf7c9a3e
+	pkgrel = 2
 	url = https://github.com/birchb1024/frangipanni
 	arch = x86_64
 	license = MIT

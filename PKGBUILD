@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 pkgname=frangipanni-git
-pkgver=0.4.0.r4.gff97e40
-pkgrel=1
+pkgver=0.5.0.r0.gf7c9a3e
+pkgrel=2
 pkgdesc="Program to convert lines of text into a tree structure"
 arch=('x86_64')
 url="https://github.com/birchb1024/frangipanni"
@@ -18,6 +18,11 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
+prepare() {
+  cd "$pkgname"
+  sed -i "s/none/$pkgver/" frangipanni.go
+}
+
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -26,7 +31,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "$pkgname"
-  go build
+  go build -o frangipanni frangipanni.go
 }
 
 package() {
