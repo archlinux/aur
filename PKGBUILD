@@ -2,8 +2,8 @@
 
 pkgname=iscdcommons-git
 pkgver=20190315.r37
-pkgrel=1
-pkgdesc="Simple yet efficient finite element solver for linear elasticity problems in two and three dimensions."
+pkgrel=2
+pkgdesc="Common library for ISCD tools, e.g. elastic"
 arch=('x86_64')
 url="https://github.com/ISCDtoolbox/Commons"
 license=('GPL3')
