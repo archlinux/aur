@@ -1,6 +1,6 @@
 pkgbase = qlstatus
 	pkgdesc = Light and modular status bar for tiling window managers
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/qlem/qlstatus
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = qlstatus
 	depends = libpulse
 	depends = libnl
 	depends = libnotify
-	source = qlstatus-1.1.6.tar.gz::https://github.com/qlem/qlstatus/archive/v1.1.6.tar.gz
-	md5sums = 1625d397ba05dac91bc9b5ba7c795e02
+	source = qlstatus-1.1.7.tar.gz::https://github.com/qlem/qlstatus/archive/v1.1.7.tar.gz
+	md5sums = 90f78c9a643cd6e68ed8d5d75cd05503
 
 pkgname = qlstatus
 
