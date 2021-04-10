@@ -1,6 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at live dot de>
 pkgname=libigl
-pkgver=2.1.0
+pkgver=2.3.0
+_pkgtag=$pkgver
 pkgrel=1
 pkgdesc="Simple C++ geometry processing library."
 arch=('any')
@@ -9,14 +10,14 @@ depends=('eigen')
 makedepends=('cmake')
 license=('GPL3')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('3e25bb5d7d6ba037d2afbb9b7ca5072216b8c68a6181b05be9adb56038e3f4abb73e8755d57984a2bef64a1df833f49246ac643dc7c39ff301d5b719b2eff278')
+sha512sums=('41fbb3660e61457c3d6c52de4d17e0bfa56eb48eab82013c8095ce753c24ecff389365f91dbcf316cc422c09f713745251e32bddf4deff23fe5e428b9797da19')
 
 prepare() {
-	mkdir build
+	mkdir -p "$srcdir/build-$_pkgtag"
 }
 
 build() {
-	cd build
+	cd "$srcdir/build-$_pkgtag"
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBIGL_BUILD_PYTHON=OFF \
 		-DLIBIGL_BUILD_TESTS=OFF \
@@ -42,7 +43,7 @@ build() {
 }
 
 package() {
-	cd build
+	cd "$srcdir/build-$_pkgtag"
 	make DESTDIR="${pkgdir}" install
 	# Install won't install all headers.
 	cp -r ${srcdir}/${pkgname}-${pkgver}/include/igl ${pkgdir}/usr/include
