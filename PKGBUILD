@@ -64,7 +64,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.11.11.arch1
+pkgver=5.11.13.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -104,7 +104,7 @@ source=(
     config # kernel config file
     0005-v5.11_undead-pds099o.patch
     0005-undead-glitched-pds.patch
-    0009-prjc_v5.11-r2.patch
+    0009-prjc_v5.11-r3.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -114,10 +114,10 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '53b6dbe41bcf36bbed5997e7091a5637263cf6315335a1d3f2f12e36b17d87e9c5acd12ed7980bec6a16e93e0f49ae62b1f37d6c268e07b121915124ce3a2010'
+            '6d2ef3f6c92dbb5a64edee45b8a95e3ee7fe01735b5aa302be651f6359108a70a013b50f5618b3f2264abe53c104528a973f4d142fe19520fff2b9b6484a23bc'
             '9c08c605b86739ac1110f8e4eaecedc46e335bf708f8a1cda34b02735a4a7f9189a8a868efcb0f2bbcae4aab784c5b51cac95db83c6f61da42f5cf6fb6b16b60'
             '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd'
-            '3e75edcb8c82222a5ff64d751cff1c9102ea5eabadda3ba6ae1369b2a1478d5f001776f7ce1b13425f5c2f7acdb1a8a117864ccb9aca6755188efaa4110dcb43'
+            'e56e7bd631cd855e968c0ee7fd2a0410393b2275ccc569b0ad698e8a23f88bd94219400d624d024e0e2b94a3e393c7af5327cec91262c8af71691cbf93c419bc'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -142,7 +142,7 @@ prepare() {
         )
     elif [ "${_pds_choice}" = "prjc" ]; then
         PatchesArray+=(
-            0009-prjc_v5.11-r2.patch
+            0009-prjc_v5.11-r3.patch
             0005-glitched-pds.patch
         )
     fi
