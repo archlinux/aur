@@ -1,10 +1,10 @@
 # Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
 
 pkgname=gnome-shell-extension-improvedosk-git
-pkgver=5+1+gb5ee153
+pkgver=5+3+gd1f8e48
 pkgrel=1
 pkgdesc="Makes GNOME's onscreen keyboard more useable."
-url='https://github.com/SebastianLuebke/improved-osk-gnome-ext'
+url='https://github.com/dr-emacs/improved-osk-gnome-ext'
 license=('GPL3')
 arch=('any')
 conflicts=(${pkgname%-git})
