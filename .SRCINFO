@@ -1,6 +1,6 @@
 pkgbase = mpd-minimal
 	pkgdesc = Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user.
-	pkgver = 0.22.3
+	pkgver = 0.22.6
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	arch = i686
@@ -18,13 +18,15 @@ pkgbase = mpd-minimal
 	depends = liburing
 	depends = systemd-libs
 	depends = zlib
-	provides = mpd=0.22.3
+	provides = mpd=0.22.6
 	conflicts = mpd
-	source = https://www.musicpd.org//download/mpd/0.22/mpd-0.22.3.tar.xz
-	source = https://www.musicpd.org//download/mpd/0.22/mpd-0.22.3.tar.xz.sig
+	source = https://www.musicpd.org//download/mpd/0.22/mpd-0.22.6.tar.xz
+	source = https://www.musicpd.org//download/mpd/0.22/mpd-0.22.6.tar.xz.sig
 	validpgpkeys = 0392335A78083894A4301C43236E8A58C6DB4512
-	sha256sums = 338012037b5e67730529187c555a54cc567a85b15a7e8ddb3a807b1971566ccf
-	sha256sums = SKIP
+	sha512sums = 5e417204e24d11fa609740ae92bc1d796aad2d63537655f655074d829cd79cadaf1ca025171dcf5486c1e557cc946152c21e299286b1cb74cc342da2b1f41343
+	sha512sums = SKIP
+	b2sums = 675b876415a343ba387e26ad800b2e562b40a5e3aaacdff31e0ec9d6ad09f0117406f82e519a08ba3187020b482dcd0434267f9e84dd13e9e1bf8565d1967c2c
+	b2sums = SKIP
 
 pkgname = mpd-minimal
 
