@@ -1,0 +1,44 @@
+pkgbase = linux-raspberrypi4-cacule-lts
+	pkgdesc = Raspberry Pi 4 lts Kernel with the cacule scheduler, aarch64 and armv7
+	pkgver = 5.10.27
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	options = !strip
+	source = https://github.com/raspberrypi/linux/archive/b460129fcbebe39b8ce1a3dfc18129998d12c40b.tar.gz
+	source = cmdline.txt
+	source = linux.preset
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = 0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
+	source = cacule-5.10.patch
+	source = cacule-32bit-converter.patch
+	md5sums = 174660af256d3e36fbb9e705c5d94a6b
+	md5sums = 31c02f4518d46deb5f0c2ad1f8b083cd
+	md5sums = 86d4a35722b5410e3b29fc92dae15d4b
+	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
+	md5sums = 441ec084c47cddc53e592fb0cbce4edf
+	md5sums = f66a7ea3feb708d398ef57e4da4815e9
+	md5sums = c8f4368efa54973d516e3d1fc5a069c5
+	md5sums = 02808e3fb2f6b142e0cd9f1ae50a8d46
+	source_armv7h = config
+	source_armv7h = config.txt
+	md5sums_armv7h = 2626b4a01bdf92701728623c692cb3d3
+	md5sums_armv7h = 9669d916a5929a2eedbd64477f83d99e
+	source_aarch64 = config8
+	source_aarch64 = config8.txt
+	md5sums_aarch64 = 2d548ec6e83825dd28367fc7fe43ae3d
+	md5sums_aarch64 = 9669d916a5929a2eedbd64477f83d99e
+
+pkgname = linux-raspberrypi4-cacule-lts
+
+pkgname = linux-raspberrypi4-cacule-lts-headers
+
