@@ -13,17 +13,17 @@ license=('MIT')
 makedepends=(git go sed)
 source=("$_pkgname::git+$_url.git#branch=$_branch")
 source=("${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-amd64.tar.gz"
-        "LICENSE::https://raw.githubusercontent.com/malfunkt/arpfox/master/LICENSE"
+        "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/LICENSE"
         "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.service.example"
         "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
 source_aarch64=("${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-arm64.tar.gz"
-                "LICENSE::https://raw.githubusercontent.com/malfunkt/arpfox/master/LICENSE"
+                "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/LICENSE"
                 "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.service.example"
-        "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
+                "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
 source_armv6h=("${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.linux-armv6.tar.gz"
-               "LICENSE::https://raw.githubusercontent.com/malfunkt/arpfox/master/LICENSE"
+               "LICENSE::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/LICENSE"
                "oauth2-proxy.service::https://raw.githubusercontent.com/oauth2-proxy/oauth2-proxy/master/contrib/oauth2-proxy.service.example"
-        "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
+               "oauth2-proxy.cfg::https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/oauth2-proxy.cfg.example")
 provides=($_pkgname)
 conflicts=($_pkgname)
 
