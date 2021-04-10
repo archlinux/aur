@@ -1,11 +1,13 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Edoardo Brogiolo <edoardo at brogiolo dot eu>
+# COntributor: Previous maintainer Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: gspu <bssbk2455[at]gmail[dot]com>
 # Contributor: Previous maintainer Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
+
 pkgname=peazip-gtk2-bin
-pkgver=7.7.0
+pkgver=7.8.0
 pkgrel=1
 pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
 "
@@ -30,7 +32,7 @@ conflicts=('peazip'
            'peazip-qt'
            'peazip-qt-opensuse-latest')
 source=("${pkgname}-${pkgver}.rpm::https://sourceforge.net/projects/peazip/files/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.x86_64.rpm")
-sha256sums=('f26004b54431f58513360fbc9f470c419ebd844c97aa28d2420eaa16b85e021f')
+sha256sums=('2f469b7a216c42285425b7610c92aee492fe8d7babb0755a76d0a6c711efa7dc')
 
 package() {
   cp -aR usr/ "${pkgdir}/"
