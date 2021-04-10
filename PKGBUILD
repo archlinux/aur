@@ -10,7 +10,7 @@ _branch='master'
 pkgver=v0.1.r1467.g42475c28
 pkgrel=1
 license=('MIT')
-makedepends=(go sed)
+makedepends=(go sed git)
 source=("$_pkgname::git+$_url.git#branch=$_branch")
 sha256sums=('SKIP')
 provides=($_pkgname)
