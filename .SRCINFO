@@ -1,0 +1,18 @@
+pkgbase = oauth2-proxy-git
+	pkgdesc = A reverse proxy that provides authentication with Google, Github or other providers.
+	pkgver = v0.1.r1467.g42475c28
+	pkgrel = 1
+	url = https://oauth2-proxy.github.io/oauth2-proxy/
+	arch = aarch64
+	arch = armv6h
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = sed
+	provides = oauth2-proxy
+	conflicts = oauth2-proxy
+	source = oauth2-proxy::git+https://github.com/oauth2-proxy/oauth2-proxy.git#branch=master
+	sha256sums = SKIP
+
+pkgname = oauth2-proxy-git
+
