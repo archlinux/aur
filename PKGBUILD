@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.28
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -44,12 +44,15 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+  # https://gitlab.gnome.org/GNOME/gtk/-/commit/df4b564d69cc7d2e751537eff61259b36f37e9e5
+  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS -DG_DISABLE_ASSERT"
   arch-meson gtk build \
     -D broadway_backend=true \
     -D cloudproviders=true \
+    -D tracker3=false \
     -D colord=yes \
-    -D gtk_doc=true \
+    -D gtk_doc=false \
+    -D demos=false \
     -D man=true
   meson compile -C build
 }
@@ -66,7 +69,8 @@ END
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
 
-  rm "$pkgdir/usr/bin/gtk-update-icon-cache"
-  rm "$pkgdir/usr/share/man/man1/gtk-update-icon-cache.1"
+  rm $pkgdir/usr/bin/gtk-update-icon-cache
+  rm $pkgdir/usr/share/man/man1/gtk-update-icon-cache.1
+  rm $pkgdir/usr/share/man/man1/gtk3-{demo,demo-application,icon-browser,widget-factory}.1
 }
 
