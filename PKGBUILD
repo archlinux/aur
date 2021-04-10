@@ -1,10 +1,10 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
 pkgname=clifm
-pkgver=0.29.2
+pkgver=1.0
 pkgrel=1
 pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast"
-arch=(any)
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
 depends=('libcap' 'acl' 'readline' 'file')
@@ -18,7 +18,7 @@ optdepends=(
 	'cdrtools: ISO 9660 support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('49e84f88e2de435a7cef25daea684718a6ece1ed5c67fc10879212fc53270da8')
+sha256sums=('2583635081f56b70cadb3ba87d5a4ac2dac158afc6af1fa0cc0030cf5afe4bb7')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -29,7 +29,11 @@ package() {
   cd "$srcdir/${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -g 0 -o 0 -Dm644 manpage "$pkgdir/usr/share/man/man1/${pkgname}.1"
-  gzip "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-  install -g 0 -o 0 -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  gzip -9n "$pkgdir/usr/share/man/man1/$pkgname.1"
+  install -g 0 -o 0 -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -g 0 -o 0 -Dm644 completions.bash "$pkgdir/usr/share/bash-completion/completions/${pkgname}"
   install -g 0 -o 0 -Dm644 "translations/spanish/${pkgname}.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/${pkgname}.mo"
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  cp -r plugins "$pkgdir/usr/share/$pkgname"
+  cp -r functions "$pkgdir/usr/share/$pkgname"
 }
