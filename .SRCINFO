@@ -1,0 +1,16 @@
+pkgbase = ibus-table-hkim
+	pkgdesc = Taiwan Hakka input method for IBus Table / 教育部臺灣客家語拼音輸入法
+	pkgver = 1.1.88
+	pkgrel = 1
+	url = https://ws.moe.edu.tw/001/Upload/6/relfile/6507/7818/73d03702-3903-4123-9801-f8264d623443.pdf
+	arch = any
+	license = custom
+	makedepends = scim-tables
+	depends = ibus-table
+	source = https://language.moe.gov.tw/001/Upload/FileUpload/3677-15601/Documents/hkim_1188.tar.gz
+	source = hkim.sed
+	sha256sums = 011e5fad3c3cc22fb5392664f47ade558e6191a1f8357918c985d5d61eb9038b
+	sha256sums = c4b2d9678926b606426eecd1823cb46f9263068b13578168a7fb89a7205ab800
+
+pkgname = ibus-table-hkim
+
