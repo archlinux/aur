@@ -1,0 +1,18 @@
+pkgbase = lib32-nettle6
+	pkgdesc = A low-level cryptographic library (legacy version, 32-bit)
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://www.lysator.liu.se/~nisse/nettle/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	depends = lib32-gmp
+	depends = nettle
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.4.1.tar.gz
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.4.1.tar.gz.sig
+	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
+	sha256sums = f941cf1535cd5d1819be5ccae5babef01f6db611f9b5a777bae9c7604b8a92ad
+	sha256sums = SKIP
+
+pkgname = lib32-nettle6
+
