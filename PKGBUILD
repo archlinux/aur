@@ -1,8 +1,8 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=sway-marker-git
-pkgver=r2.f2732f8
+pkgver=r5.4cf6dbf
 pkgrel=1
-license=("MIT")
+license=("GPL")
 pkgdesc="Popup for using vim-like marks in sway"
 url="https://github.com/fdw/rofi-rbw"
 makedepends=("rust")
