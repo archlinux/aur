@@ -2,9 +2,9 @@
 _pkgname=Nagstamon
 pkgname=nagstamon
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios status monitor for the desktop"
-depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus')
+depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil')
 arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
 license=('GPL')
