@@ -12,5 +12,5 @@ post_install() {
     	note "================================================"
 }
 post_remove() {
-	rm -rf /usr/bin/hexo-deployer-bin
+	note "hexo-deployer-bin has been deleted"
 }
