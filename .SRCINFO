@@ -1,0 +1,17 @@
+pkgbase = stowtui-git
+	pkgdesc = stow tui is a Terminal User Interface Program for GNU STOW
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ypraw/stowtui/
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygments
+	depends = python-wcwidth
+	depends = python-npyscreen
+	source = stowtui-git::git+https://github.com/ypraw/stowtui.git
+	sha256sums = SKIP
+
+pkgname = stowtui-git
+
