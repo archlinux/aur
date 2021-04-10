@@ -1,6 +1,6 @@
 pkgbase = digilent.waveforms
 	pkgdesc = Digilent WaveForms Application, Runtime and SDK
-	pkgver = 3.14.3
+	pkgver = 3.16.3
 	pkgrel = 1
 	url = https://reference.digilentinc.com/waveforms3
 	install = digilent.waveforms.install
@@ -11,18 +11,19 @@ pkgbase = digilent.waveforms
 	license = custom
 	depends = desktop-file-utils
 	depends = digilent.adept.runtime
+	depends = qt5-multimedia
 	depends = qt5-script
 	depends = shared-mime-info
 	depends = xdg-utils
 	options = !strip
-	source_i686 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.14.3/digilent.waveforms_3.14.3_i386.deb
-	sha256sums_i686 = 01c6a0b834277529c2b81f20eae1f0b8fd1bbbcab215560e80da0c5cfe805ba9
-	source_x86_64 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.14.3/digilent.waveforms_3.14.3_amd64.deb
-	sha256sums_x86_64 = 1dcdd52c89ded2006bc0baa4efa94e4e1496946df3283ff56cf17d5118f3438d
-	source_armv6h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.14.3/digilent.waveforms_3.14.3_armhf.deb
-	sha256sums_armv6h = da85b421c5e5a962118cef14f067ea2a5dcdc1af64145342517a9ef1af6ffda2
-	source_armv7h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.14.3/digilent.waveforms_3.14.3_armhf.deb
-	sha256sums_armv7h = da85b421c5e5a962118cef14f067ea2a5dcdc1af64145342517a9ef1af6ffda2
+	source_i686 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.16.3/digilent.waveforms_3.16.3_i386.deb
+	sha256sums_i686 = eb5fcb725eb083ebbd2b0d244ae4a00518109502543941196b591e90821ec732
+	source_x86_64 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.16.3/digilent.waveforms_3.16.3_amd64.deb
+	sha256sums_x86_64 = ffc01f1364950cf6b01d45f943efe8cf361a592bcea1d87abc5a1062816cf6db
+	source_armv6h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.16.3/digilent.waveforms_3.16.3_armhf.deb
+	sha256sums_armv6h = 0ae5eae3b9f35eca1a1087667a1f97ffb5c5f701ce82b6423d371d4dda09a084
+	source_armv7h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.16.3/digilent.waveforms_3.16.3_armhf.deb
+	sha256sums_armv7h = 0ae5eae3b9f35eca1a1087667a1f97ffb5c5f701ce82b6423d371d4dda09a084
 
 pkgname = digilent.waveforms
 
