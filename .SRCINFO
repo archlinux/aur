@@ -1,20 +1,22 @@
 pkgbase = qt5-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 5.15.2
-	pkgrel = 2
+	pkgver = 5.15.2+kde+r171
+	pkgrel = 1
 	url = https://www.qt.io/
 	arch = x86_64
+	groups = qt
+	groups = qt5
 	license = GPL3
 	license = LGPL3
 	license = FDL
 	license = custom
 	makedepends = mariadb-libs
-	makedepends = sqlite
 	makedepends = unixodbc
 	makedepends = postgresql-libs
 	makedepends = dbus
 	makedepends = systemd
 	makedepends = md4c
+	makedepends = git
 	depends = sqlite
 	depends = libproxy
 	depends = double-conversion
@@ -26,10 +28,12 @@ pkgbase = qt5-base-headless
 	provides = qt5-base
 	conflicts = qtchooser
 	conflicts = qt5-base
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtbase-everywhere-src-5.15.2.tar.xz
+	source = git+https://invent.kde.org/qt/qt/qtbase#commit=cb2da673f53815a5cfe15f50df49b98032429f9e
 	source = qt5-base-cflags.patch
-	sha256sums = 909fad2591ee367993a75d7e2ea50ad4db332f05e1c38dd7a5a274e156a4e0f8
+	source = qt5-base-nostrip.patch
+	sha256sums = SKIP
 	sha256sums = cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c
+	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 
 pkgname = qt5-base-headless
 

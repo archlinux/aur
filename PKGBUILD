@@ -4,15 +4,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-_qtver=5.15.2
-pkgver=${_qtver/-/}
-pkgrel=2
+pkgver=5.15.2+kde+r171
+pkgrel=1
+_commit=cb2da673f53815a5cfe15f50df49b98032429f9e
 arch=('x86_64')
 url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework - headless build, no QtGui or QtWidgets'
+groups=('qt' 'qt5')
 depends=('sqlite' 'libproxy' 'double-conversion')
-makedepends=('mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'dbus' 'systemd' 'md4c')
+makedepends=('mariadb-libs' 'unixodbc' 'postgresql-libs' 'dbus' 'systemd' 'md4c' 'git')
 optdepends=('postgresql-libs: PostgreSQL driver'
             'mariadb-libs: MariaDB driver'
             'unixodbc: ODBC driver'
@@ -20,16 +21,25 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'shared-mime-info: Freedesktop.org Shared MIME Info')
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
-_pkgfqn="qtbase-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        qt5-base-cflags.patch)
-sha256sums=('909fad2591ee367993a75d7e2ea50ad4db332f05e1c38dd7a5a274e156a4e0f8'
-	    'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c')
+_pkgfqn=qtbase
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
+        qt5-base-cflags.patch
+        qt5-base-nostrip.patch)
+sha256sums=('SKIP'
+            'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
 
 prepare() {
   cd ${_pkgfqn}
 
-  patch -p1 -i ../qt5-base-cflags.patch # Use system CFLAGS
+  git revert -n 6344955d17e17e2398720fe60c34cfc2a4a95208 # Revert version bump
+  patch -p1 < ../qt5-base-cflags.patch # Use system CFLAGS in qmake
+  patch -p1 < ../qt5-base-nostrip.patch # Don't strip binaries with qmake
 }
 
 build() {
