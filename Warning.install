@@ -1,2 +1,5 @@
-#!/bin/bash
-echo  -e 'Please enter hexo-deployer-bin to run the script'
+post_install() {
+	echo -e '================================================'
+	echo -e 'Please enter hexo-deployer-bin to run the script'
+	echo -e '==============================================='
+}
