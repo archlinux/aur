@@ -2,7 +2,7 @@
 # Co-Maintainer: dccafe
 
 pkgname=ldap-account-manager
-pkgver=7.4
+pkgver=7.5
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
@@ -15,14 +15,12 @@ optdepends=('php-mcrypt: Store LDAP password encrypted in the session file'
             'php-apache: Run LDAP Account Manager on Apache'
             'php-fpm: Run LDAP Account Manager on other webservers')
 options=('!strip')
-source=("https://sourceforge.net/projects/lam/files/LAM/${pkgver}/ldap-account-manager-${pkgver}.tar.bz2/download"
+source=("${pkgname}-${pkgver}.tar.bz2::https://sourceforge.net/projects/lam/files/LAM/${pkgver}/${pkgname}-${pkgver}.tar.bz2/download"
 #        "dont-look-for-alternate-perl.patch"
 #        "fix-htmldir-and-docdir.patch"
         "apache.example.conf"
         "nginx.example.conf")
-sha256sums=('f45b0a9d0c523f436c6b853d4965001cc66da010a3c584014ae8f848ef5f60f5'
-#           '013dd520a357ce39e9eda5169d26c73b48d05c7e73c7ce4377f31ace8f4c88a1'
-#           'dc4afc691a53f5ff46eec4ef25cc3d593d7a5a2dcbcde070d54f6554027822b3'
+sha256sums=('c3d5544fa673fba6f36db44abe09a2bad6becc832b7c4a7dbc785cd564bb3995'
             '229b281a85770f82f449e1e77ebd26b7583b5bc1266b234c653f2778067b1f34'
             'c1a95b12bf047afa2c6d268b66e54a6572c5c3eef46f4726920e09789b672b3e')
 
