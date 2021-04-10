@@ -7,7 +7,7 @@ pkgver=0.7.5
 pkgrel=1
 pkgdesc="A tool for tagging your files and accessing them through a virtual filesystem."
 arch=('i686' 'x86_64')
-url="http://tmsu.org/"
+url="https://tmsu.org/"
 depends=('fuse' 'sqlite>=3')
 makedepends=('git' 'go')
 provides=('tmsu')
