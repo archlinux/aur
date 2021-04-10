@@ -1,15 +1,15 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=vx32-git
-pkgver=r367.f8e6c94
+pkgver=r371.c847824
 pkgrel=1
-pkgdesc="Portable, efficient, safe execution of untrusted x86 code."
+pkgdesc='Portable, efficient, safe execution of untrusted x86 code.'
 arch=('i686' 'x86_64')
-url="https://github.com/0intro/vx32"
-license=('LGPL' 'BSD' 'LPL')
+url='https://github.com/9fans/vx32'
+license=('MIT' 'LGPL')
 makedepends=('git')
-provides=('vx32')
-install=vx32-git.install
-source=("$pkgname::git+https://github.com/0intro/vx32")
+provides=("${pkgname%-*}")
+install="${pkgname}.install"
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
