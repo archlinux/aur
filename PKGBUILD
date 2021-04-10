@@ -3,7 +3,7 @@ pkgver=2.24.33
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (mingw-w64)"
 arch=('any')
-url="http://www.gtk.org"
+url="https://www.gtk.org"
 license=("LGPL")
 makedepends=(
   'mingw-w64-gcc'
