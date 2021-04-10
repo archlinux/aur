@@ -30,6 +30,7 @@ _tern="n"       # Tern seems abandoned - consider moving to TSserver above (see 
 _java="y"
 
 _use_system_clang="ON"
+_use_system_abseil="OFF"
 _neovim="$NEOVIM_YOUCOMPLETEME"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
@@ -43,7 +44,7 @@ url='https://ycm-core.github.io/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
 depends=('vim' 'python>=3.6' 'python-watchdog' 'python-requests' 'python-requests-futures'
-  'python-bottle' 'python-waitress' 'clang>=11.0')
+  'python-bottle' 'clang>=11.0')
 makedepends=('git' 'cmake' 'pybind11')
 optdepends=(
   'gopls: Go semantic completion'
@@ -55,7 +56,8 @@ optdepends=(
   'python-regex: Better Unicode support'
   'omnisharp-roslyn: C# semantic completion'
   'java-environment>=11: Java semantic completion'
-  'jdtls: Java semantic completion')
+  'jdtls: Java semantic completion'
+  'abseil-cpp: if setting _use_system_abseil ON')
 source=(git+https://github.com/ycm-core/YouCompleteMe.git)
 sha256sums=('SKIP')
 
@@ -110,6 +112,7 @@ build() {
   cmake \
     -DUSE_CLANG_COMPLETER=${_use_system_clang} \
     -DUSE_SYSTEM_LIBCLANG=${_use_system_clang} \
+    -DUSE_SYSTEM_ABSEIL=${_use_system_abseil} \
     ../YouCompleteMe/third_party/ycmd/cpp
 
   make ycm_core

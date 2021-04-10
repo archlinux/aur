@@ -15,7 +15,6 @@ pkgbase = vim-youcompleteme-git
 	depends = python-requests
 	depends = python-requests-futures
 	depends = python-bottle
-	depends = python-waitress
 	depends = clang>=11.0
 	optdepends = gopls: Go semantic completion
 	optdepends = nodejs-tern: JavaScript semantic completion
@@ -27,6 +26,7 @@ pkgbase = vim-youcompleteme-git
 	optdepends = omnisharp-roslyn: C# semantic completion
 	optdepends = java-environment>=11: Java semantic completion
 	optdepends = jdtls: Java semantic completion
+	optdepends = abseil-cpp: if setting _use_system_abseil ON
 	source = git+https://github.com/ycm-core/YouCompleteMe.git
 	sha256sums = SKIP
 
