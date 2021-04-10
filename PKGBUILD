@@ -1,10 +1,10 @@
 # Maintainer: Hydral <nathan.dacunha.nd@gmail.com>
 # Co-maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
-_jobId=1134933283
+_jobId=1164524974 
 pkgname=solarus-bin
 pkgver=1.7.0.dev.$_jobId
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 pkgdesc='A lightweight, free and open-source game engine for Action-RPGs'
 url='https://gitlab.com/solarus-games/solarus'
@@ -23,12 +23,11 @@ depends=('glm'
 source=("$pkgname-$pkgver.zip::https://gitlab.com/solarus-games/solarus/-/jobs/$_jobId/artifacts/download")
 provides=('solarus')
 conflicts=('solarus')
-b2sums=('a372ffdf323430b412f32340004fe36aae9ee70bd551f6dc384b1c08134d9700dba44441897c9c053ab9f509c6a7399185e941e72b50a2adcadec492e086e6e0')
+b2sums=('a0b4e196f6958c4e1a20058d3c4c4ff753678a4f2de1641edca55e1425e3f952a437dff77eaf842d1365de2368f9f90460a4a186640fd6049821acd5309a855d')
 
 package() {
   cd "$srcdir/staging"
   install -dm755 "$pkgdir/usr"
   mv * "$pkgdir/usr"
 }
-
 # vim:set sw=2 et:
