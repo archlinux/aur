@@ -5,8 +5,8 @@ pkgrel=1
 license=("MIT")
 pkgdesc="Rofi frontend for Bitwarden"
 url="https://github.com/fdw/rofi-rbw"
-makedepends=("python-pip" "python-configargparse")
-depends=("python" "rbw")
+makedepends=("python-pip")
+depends=("python" "rbw" "python-configargparse")
 optdepends=("xdotool: for autofill on X11"
 			"wtype: for autofill on Wayland")
 arch=('any')
