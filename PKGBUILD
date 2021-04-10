@@ -1,7 +1,7 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-tools-bin"
-pkgver="100.3.0"
+pkgver="100.3.1"
 basever="4.4"
 basedist="focal"
 pkgrel="1"
@@ -16,8 +16,8 @@ optdepends=("mongodb-compass: The MongoDB GUI")
 source_x86_64=(mongodb-org-tools_${pkgver}_x86_64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${basedist}/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-database-tools_${pkgver}_amd64.deb")
 source_aarch64=(mongodb-org-tools_${pkgver}_aarch64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${basedist}/mongodb-org/${basever}/multiverse/binary-arm64/mongodb-database-tools_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=("9ecd0662b6ca38ee5d16bdc99e7fb88e7a6a0e1141be749f46122006862febf5")
-sha256sums_aarch64=("ea7860b504335767571548dcdda21649587b049887a34dc1685e042da232dea8")
+sha256sums_x86_64=("21872a9ac42d7575d4ff5c764bccada525b8715cf2b159194cff3ccc45453728")
+sha256sums_aarch64=("595fbdb4e7049b1361e76594f74c83544e3afea21565ae40fb60858761210bcf")
 
 prepare() {
   cd "${srcdir}"
