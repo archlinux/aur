@@ -2,7 +2,7 @@
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 
 pkgname=zelda-xd2
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 epoch=
 pkgdesc='The Legend of Zelda XD2: Mercuris Chess - parodic fangame'

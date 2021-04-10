@@ -1,6 +1,6 @@
 pkgbase = zelda-xd2
 	pkgdesc = The Legend of Zelda XD2: Mercuris Chess - parodic fangame
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://www.solarus-games.org/
 	changelog = zelda-xd2.changelog
@@ -10,7 +10,7 @@ pkgbase = zelda-xd2
 	makedepends = cmake
 	makedepends = zip
 	depends = solarus>=1.6.0
-	source = https://gitlab.com/solarus-games/zelda-xd2-mercuris-chess/-/archive/v1.1.1/zelda-xd2-mercuris-chess-v1.1.1.tar.gz
+	source = https://gitlab.com/solarus-games/zelda-xd2-mercuris-chess/-/archive/v1.1.2/zelda-xd2-mercuris-chess-v1.1.2.tar.gz
 	source = zelda-xd2.desktop
 	source = zelda-xd2.png
 	b2sums = d7d84d9d5b5b5a77f539a9b09e84f307cedae85b7a8342806954eae99f32a414ab75beb1d3b7761f29641f6356fe4b83ca7d65554ce5f80fbf3702d8c9f1d6d6
