@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
-pkgver=0.82
+pkgver=0.85
 pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
@@ -41,4 +41,4 @@ package() {
     rm ${pkgdir}/usr/bin/fitscopy
     rm ${pkgdir}/usr/bin/imcopy
 }
-md5sums=('f5d5134a06cf201c757b07bf2910c8f7')
+md5sums=('a77c1d6de946815dc58bc65e516ea609')
