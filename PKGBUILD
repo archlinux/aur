@@ -3,7 +3,7 @@
 
 pkgname=nsfminer-git
 _pkgname=nsfminer
-pkgver=r14556.a1b3e8623
+pkgver=r14620.be4a89c34
 pkgrel=1
 pkgdesc="Ethereum miner with OpenCL and CUDA support derived from ethminer. RTX 30 series compatible."
 arch=('x86_64')
@@ -45,10 +45,14 @@ build () {
   cd "$_pkgname"
   git submodule update --init --recursive
 
-  mkdir -p build && cd build
-  
-  cmake ..
-  cmake --build .
+  #mkdir -p build && cd build
+  mkdir -p build  
+  #cmake ..
+  #cmake --build
+  cmake -B build -S . \
+      -DCMAKE_INSTALL_PREFIX='/usr' 
+#  cd build
+  cmake --build build
 }
 
 package() {
