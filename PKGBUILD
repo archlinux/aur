@@ -8,7 +8,7 @@
 
 ### MERGE REQUESTS SELECTION
 
-# Merge Requests List: ('579' '1309' '1050' '1441' '1241')
+# Merge Requests List: ('579' '1441' '1241')
 _merge_requests_to_use=() # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
@@ -118,19 +118,6 @@ prepare() {
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
 
-  # Title: clutter/text: Use new pango API to compare attribute lists
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1050
-  # Type: 1
-  # Status: 2
-  pick_mr '1050'
-
-  # Title: cogl-winsys-glx: Add a heuristically calculated presentation_time
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1309
-  # Type: 1
-  # Status: 3
-  # Comment: Fix high latency on nvidia driver
-  pick_mr '1309'
-
   # Title: WIP: clutter-frame-clock: Triple buffering support (v4)
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
   # Type: 1
@@ -144,7 +131,7 @@ prepare() {
   # Type: 1
   # Status: 3
   # Comment: Helps cursor movement under load on Wayland
-  pick_mr '1241' 1241.diff patch
+  pick_mr '1241'
 
 
 }
