@@ -12,7 +12,7 @@ url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
 groups=()
 depends=("php" "php-fpm" "php-gd")
-makedepends=("composer" "git" "gzip")
+makedepends=("composer" "curl" "git" "gzip")
 checkdepends=()
 optdepends=("apache: HTTP server"
 "certbot: Creates SSL certificates."
@@ -62,11 +62,22 @@ package()
     cur_month=$(date +"%m")
 
     while [ $(curl -s -o /dev/null/ -w "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz) != "200" ]; do
+        # Remove the preceding 0.
+        if [ ${cur_month::1} == "0" ]; then
+            cur_month=${cur_month:1}
+        fi
+
+        # Take the last month.
         if [ ${cur_month} -gt 1 ]; then
-            cur_month-=1
+            ((cur_month--))
         else
-            cur_year-=1
+            ((cur_year--))
             cur_month=12
+        fi
+
+        # Put a 0 at the beginning.
+        if [ $(echo ${cur_month} | wc -c) == 2 ]; then
+            cur_month="0${cur_month}"
         fi
     done
 
