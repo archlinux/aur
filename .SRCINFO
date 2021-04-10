@@ -1,0 +1,17 @@
+pkgbase = ibus-table-tlim2
+	pkgdesc = Taiwan Minnan input method for IBus Table / 教育部臺灣閩南語漢字輸入法
+	pkgver = 2.4.245
+	pkgrel = 1
+	url = https://language.moe.gov.tw/001/Upload/Files/site_content/download/mandr/blgsujip_1060706.pdf
+	arch = any
+	license = custom
+	makedepends = scim-tables
+	depends = ibus-table
+	noextract = tlim2.tar.gz
+	source = https://language.moe.gov.tw/sujip/tlim2.tar.gz
+	source = tlim2.sed
+	sha256sums = c11357d2cb118b05476587cfa1c98a4c2de3b250a022730438ef0f15f0565928
+	sha256sums = c0c19887524eea0f0c71bb64a4d3b1f6d6561d75d1b75c5a62323abdbe9c5e7f
+
+pkgname = ibus-table-tlim2
+
