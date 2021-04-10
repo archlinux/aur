@@ -2,13 +2,13 @@
 
 pkgname=ctranslate2-git
 pkgver=1209.3190be5
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast inference engine for OpenNMT models'
 arch=('x86_64' 'i686')
 url='https://github.com/OpenNMT/ctranslate2'
 license=('GPL3')
-depends=("genieutils-git>=709" 'sfml')
-makedepends=('git' 'cmake')
+depends=('python')
+makedepends=('git' 'cmake' 'pybind11')
 conflicts=(ctranslate2)
 provides=(ctranslate2)
 source=(
@@ -63,10 +63,16 @@ build() {
     #   WITH_CUDA
 
     make
+
+    cd "$srcdir"/ctranslate2/python
+    python setup.py build
 }
 
 
 package() {
     cd build
     make DESTDIR="$pkgdir" install
+
+    cd "$srcdir"/ctranslate2/python
+    python setup.py install --root="$pkgdir" --optimize=1
 }
