@@ -1,0 +1,13 @@
+pkgbase = mirai-console-loader
+	pkgdesc = 模块化、轻量级且支持完全自定义的 mirai 加载器。
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/iTXTech/mirai-console-loader
+	arch = any
+	makedepends = unzip
+	depends = jdk11-openjdk
+	source = https://github.com/iTXTech/mirai-console-loader/releases/download/v1.0.5/mcl-1.0.5.zip
+	md5sums = 927451fcd6553cc173170346bd99dca9
+
+pkgname = mirai-console-loader
+
