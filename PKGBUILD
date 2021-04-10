@@ -1,5 +1,5 @@
-# Maintainer: Yunindyo Prabowo <dyo.ndutz@gmail.com>
-# Contributor: Muhammad Nabil Adani <nblid48@gmail.com>
+# Maintainer: Yunindyo Prabowo <yunindyo.prabowo[at]gmail[dot]com>
+# Contributor: M Nabil Adani <nblid48[at]gmail[dot]com>
 
 pkgname=stowtui-git
 pkgver=1.0.0
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/ypraw/stowtui/"
 license=('GPLv3')
 makedepends=('python-setuptools')
-depends=('python' 'python-pygments' 'python-wcwidth' 'python-npyscreen')
+depends=('stow' 'python' 'python-pygments' 'python-wcwidth' 'python-npyscreen')
 source=("${pkgname}::git+https://github.com/ypraw/stowtui.git")
 sha256sums=('SKIP')
 

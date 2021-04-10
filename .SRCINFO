@@ -6,6 +6,7 @@ pkgbase = stowtui-git
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
+	depends = stow
 	depends = python
 	depends = python-pygments
 	depends = python-wcwidth
