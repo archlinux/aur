@@ -1,19 +1,20 @@
-# Maintainer: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
+# Maintainer: Bjoern Franke <bjo+aur at schafweide.org>
+# Contributor: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
-pkgver=2.6.80
-pkgrel=3
+pkgver=2.7.13
+pkgrel=1
 _pythonversion=3.9
 pkgdesc='Gajim plugin for OMEMO Multi-End Message and Object Encryption.'
 arch=(any)
 url='https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin'
 license=('GPL')
-depends=('gajim>=1.1.99' 'gajim<=1.2.90' 'python-qrcode' 'python-setuptools' 'python-cryptography' 'python-axolotl')
+depends=('gajim>=1.2.91' 'gajim<=1.3.90' 'python-qrcode' 'python-setuptools' 'python-cryptography' 'python-axolotl')
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
 source=("https://ftp.gajim.org/plugins_releases/${_pkgname}_${pkgver}.zip")
-sha512sums=('8d1ae1dfc02b04cd67bd695c41433d215cec17b09d29b21ff459d7ea73814783c4e78f6193683c2c12f456aaf408dfeb12a80348449dd24092224942f79d1589')
+sha512sums=('33f7d1132ed9e218e17c8288ad2586b1a9c6d547db93b5b9bb97abcb8df2541bba35d9cc3fcef74d13b35353636cb4ef652805d69eda878d361b029e62fd9ee2')
 
 package() {
   cd "${srcdir}/${_pkgname}"
