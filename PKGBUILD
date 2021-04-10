@@ -1,6 +1,6 @@
 # Maintainer: Sakura1943 <1436700265@qq.com>
 pkgname=hexo-deployer-with-theme-typography
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Hexo deployment tool with typography theme"
 arch=(x86_64)
@@ -13,12 +13,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://mirrors.yaoyz.cn/hexo//hexo.sh")
+source=("$pkgname.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
 package() {
-           chmod u+x ${srcdir}/hexo.sh
-           sudo sh ${srcdir}/hexo.sh
+           install -Dm755 usr/bin/$pkgname "$pkgdir/usr/bin/$pkgname"
+           echo -e 'Please enter hexo-deployer-with-theme-typography to run the script'
 }
