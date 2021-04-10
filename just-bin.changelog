@@ -1,6 +1,73 @@
 Changelog
 =========
 
+[v0.9.0] - 2020-3-28
+--------------------
+
+### Changed
+- Turn `=` deprecation warning into a hard error (#780)
+
+
+[v0.8.7] - 2020-3-28
+--------------------
+
+### Added
+- Add `dotenv-load` setting (#778)
+
+### Misc
+- Change publish recipe to use stable rust (#777)
+
+
+[v0.8.6] - 2020-3-28
+--------------------
+
+### Added
+- Add just_executable() function (#775)
+- Prefix parameters with `$` to export to environment (#773)
+- Add `set export` to export all variables as environment variables (#767)
+
+### Changed
+- Suppress all output to stderr when `--quiet` (#771)
+
+### Misc
+- Improve chooser invocation error message (#772)
+- De-emphasize cmd.exe in readme (#768)
+- Fix warnings (#770)
+
+
+[v0.8.5] - 2020-3-24
+--------------------
+
+### Added
+- Allow escaping double braces with `{{{{` (#765)
+
+### Misc
+- Reorganize readme to highlight editor support (#764)
+- Add categories and keywords to Cargo manifest (#763)
+- Fix command output in readme (#760)
+- Note Emacs package `just-mode` in readme (#759)
+- Note shebang line splitting inconsistency in readme (#757)
+
+
+[v0.8.4] - 2020-2-9
+-------------------
+
+### Added
+- Add options to control list formatting (#753)
+
+### Misc
+- Document how to change the working directory in a recipe (#752)
+- Implement `Default` for `Table` (#748)
+- Add Alpine Linux package to readme (#736)
+- Update to actions/cache@v2 (#742)
+- Add link in readme to GitHub Action (#729)
+- Add docs for justfile() and justfile_directory() (#726)
+- Fix CI (#727)
+- Improve readme (#725)
+- Replace saythanks.io link with malto: link (#723)
+- Update man page to v0.8.3 (#720)
+
+
 [v0.8.3] - 2020-10-27
 ---------------------
 
