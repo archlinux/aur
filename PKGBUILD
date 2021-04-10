@@ -8,8 +8,8 @@
 # Contributor: Pavlo <pavlofreemen(at)gmail(dot)com>
 
 pkgname=font-manager
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc='A simple font management application for GTK+ Desktop Environments'
 url='https://fontmanager.github.io'
 arch=('x86_64' 'i686')
@@ -30,7 +30,7 @@ makedepends=('gobject-introspection'
              'vala'
              'yelp-tools')
 source=("https://github.com/FontManager/master/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('80b9c8ec8cd9b859b8216be8d7ba988d27b0e155d9a4afc71fcd850eebc56701')
+sha256sums=('e690b8de44ac863a3d4ce3857fe40c035151c6f54b8ff9ec4ff2a3593eed0cf6')
 
 build() {
     arch-meson "$pkgname-$pkgver" build \
