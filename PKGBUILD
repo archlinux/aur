@@ -5,7 +5,7 @@ pkgver=3.38.0
 pkgrel=1
 pkgdesc="Adwaita icon theme (mingw-w64)"
 arch=('any')
-url="http://www.gnome.org"
+url="https://www.gnome.org"
 license=('LGPL3')
 makedepends=(
   'mingw-w64-configure'
