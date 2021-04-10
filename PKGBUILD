@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=frangipanni
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Program to convert lines of text into a tree structure"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go>=1.15.2')
 # checkdepends=('jp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('395c1d7b2b0d61bfd7558cc32b3ca11bcd49abf79f7a5fb2f53a3382bbb7afa7')
+sha256sums=('11a181c582f57c1a3d0f1cc934eacb6a7e18ca458c6575c84efcbb9b4bfcc0e2')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -20,7 +20,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "$pkgname-$pkgver"
-  GO111MODULE=on go build
+  go build frangipanni.go
 }
 
 # check() {
