@@ -3,3 +3,6 @@ src/
 torrserver
 TorrServer-linux-*
 torrserver-bin-*.pkg.tar.zst
+torrserver-bin-*.pkg.tar.xz
+torrserver.service
+
