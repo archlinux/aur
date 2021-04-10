@@ -2,7 +2,7 @@
 
 _pipname=cattrs
 pkgname=python-${_pipname,,}
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Complex custom class converters for attrs'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_pipname-$pkgver.tar.gz")
-sha256sums=('12688f56fbb7f54cf647d031669840e1ab0b9a198bf374a217fcb5be821855df')
+sha256sums=('3e95495dc7504108427f1b69d63360ef9d04b6e7d3305b351835549a8c05f4bc')
 
 build() {
     cd "$_pipname-$pkgver"
