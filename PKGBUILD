@@ -2,14 +2,14 @@
 
 pkgname=enroute-git
 _name=enroute
-pkgver=2.3.0.r0.ge6ae277
+pkgver=2.5.0.r60.g32a1060
 pkgrel=1
 pkgdesc="Enroute Flight Navigation"
 arch=('i686' 'x86_64')
 url="https://akaflieg-freiburg.github.io/enroute/"
 license=('GPL3')
 makedepends=('git' 'cmake' 'clang')
-depends=('qt5-location' 'qt5-translations' 'qt5-quickcontrols2' 'hicolor-icon-theme' 'geoclue')
+depends=('qt5-location' 'qt5-translations' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'geoclue')
 source=("enroute::git+https://github.com/Akaflieg-Freiburg/enroute.git#branch=master")
 md5sums=('SKIP')
 

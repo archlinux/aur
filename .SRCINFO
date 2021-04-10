@@ -1,6 +1,6 @@
 pkgbase = enroute-git
 	pkgdesc = Enroute Flight Navigation
-	pkgver = 2.3.0.r0.ge6ae277
+	pkgver = 2.5.0.r60.g32a1060
 	pkgrel = 1
 	url = https://akaflieg-freiburg.github.io/enroute/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = enroute-git
 	depends = qt5-location
 	depends = qt5-translations
 	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
 	depends = hicolor-icon-theme
 	depends = geoclue
 	source = enroute::git+https://github.com/Akaflieg-Freiburg/enroute.git#branch=master
