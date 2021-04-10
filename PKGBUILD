@@ -5,7 +5,7 @@
 
 pkgname=gdrivefs
 pkgver=0.14.13
-pkgrel=1
+pkgrel=2
 pkgdesc="An innovative FUSE wrapper for Google Drive"
 arch=('any')
 url="https://github.com/dsoprea/GDriveFS"
@@ -18,7 +18,7 @@ depends=('python-dateutil'
          'python-oauth2client'
          'python-six')
 makedepends=('python-distribute')
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('099a4d64eb7c223e04b0d88c0334331247f69cddb4de425f2b13c620e3778514')
 
 _gitname=GDriveFS
