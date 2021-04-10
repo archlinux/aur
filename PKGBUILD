@@ -2,13 +2,13 @@
 
 pkgname=clifm-git
 _pkgname=clifm
-pkgver=0.29.2.r0.gea9c4bb
+pkgver=1.0.2.g7443a21
 pkgrel=1
 pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast (development version)"
-arch=(any)
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
-depends=('libcap' 'readline' 'acl' 'file')
+depends=('libcap' 'readline' 'acl')
 makedepends=('git')
 optdepends=(
 	'sshfs: SFTP support'
@@ -18,9 +18,7 @@ optdepends=(
 	'atool: Archives/compression support'
 	'p7zip: ISO 9660 support'
 	'cdrtools: ISO 9660 support'
-)
-conflicts=('clifm')
-provides=('clifm')
+	)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -38,7 +36,11 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -g 0 -o 0 -Dm644 manpage "$pkgdir/usr/share/man/man1/${_pkgname}.1"
-  gzip "$pkgdir/usr/share/man/man1/${_pkgname}.1"
+  gzip -9n "$pkgdir/usr/share/man/man1/$_pkgname.1"
   install -g 0 -o 0 -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -g 0 -o 0 -Dm644 completions.bash "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
   install -g 0 -o 0 -Dm644 "translations/spanish/${_pkgname}.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/${_pkgname}.mo"
+  mkdir -p "$pkgdir/usr/share/$_pkgname"
+  cp -r plugins "$pkgdir/usr/share/$_pkgname"
+  cp -r functions "$pkgdir/usr/share/$_pkgname"
 }
