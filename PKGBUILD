@@ -1,7 +1,7 @@
 # Maintainer: Jack Wu <origincode@aosc.io>
 pkgname=ciel
 _pkgname=${pkgname}-rs
-_pkgver=3.0.0-rc7
+_pkgver=3.0.0-rc8
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc="A tool for controlling multi-layer file systems and containers."
