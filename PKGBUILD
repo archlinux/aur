@@ -1,13 +1,13 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.0.17.r22.d28b7282
+pkgver=0.0.18.r0.14c51461
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (system electron)"
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=("AGPL3")
 depends=("electron")
-makedepends=("git" "yarn" "clojure" "zip")
+makedepends=("git" "yarn" "clojure" "nodejs")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "logseq-desktop-bin")
 source=(
@@ -17,13 +17,13 @@ source=(
     "logseq-desktop-wayland.desktop")
 md5sums=(
     "SKIP"
-    "f4df1807cd940f0d4edc59d0f3f57a8c"
+    "206422746a6789e7a65ad5f0b4f0be77"
     "3a5ebb330fd33e59f1cc56690df1995d"
     "724d351804bbe2074334a8e529462d0a")
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -35,11 +35,13 @@ prepare() {
     # this patch make the build process use system's electron
     patch -p1 -i "${srcdir}/system_electron.patch"
 
+    # patch :parallel-build true in shadow-cljs.edn
+
     # download required js modules
     yarn
 
     # create and sync files to folder `static`
-    yarn gulp syncResourceFile
+    yarn gulp:build
 
     # go to folder `static` and download required js modules in static
     cd "${srcdir}/${pkgname}/static"
@@ -57,8 +59,11 @@ build() {
     export GITLIBS="${srcdir}/${pkgname}/.gitlib"
 
     # build
-    yarn run gulp:build
-    yarn run gulp electronMaker
+    clojure -M:cljs release app electron
+
+    # packaging javescript files to an executable
+    cd "${srcdir}/${pkgname}/static"
+    yarn electron-forge package
 }
 
 package() {

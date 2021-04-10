@@ -8,15 +8,6 @@ index 177d2eb1..be06750a 100755
   :deps
   {org.clojure/clojure         {:mvn/version "1.10.0"}
    cheshire/cheshire {:mvn/version "5.10.0"}
-diff --git a/gulpfile.js b/gulpfile.js
-index fce8f5fa..66e8e5a1 100644
---- a/gulpfile.js
-+++ b/gulpfile.js
-@@ -95,3 +95,4 @@ exports.electronMaker = async () => {
- exports.clean = common.clean
- exports.watch = gulp.series(common.syncResourceFile, gulp.parallel(common.keepSyncResourceFile, css.watchCSS))
- exports.build = gulp.series(common.clean, common.syncResourceFile, css.buildCSS)
-+exports.syncResourceFile = common.syncResourceFile
 diff --git a/package.json b/package.json
 index d06f2840..cf255394 100644
 --- a/package.json
@@ -30,21 +21,10 @@ index d06f2840..cf255394 100644
          "fs-extra": "^9.1.0",
          "fuse.js": "^6.4.6",
 diff --git a/resources/forge.config.js b/resources/forge.config.js
-index 5a2f780c..7d2b8698 100644
+index 5a2f780c..856097f4 100644
 --- a/resources/forge.config.js
 +++ b/resources/forge.config.js
-@@ -33,10 +33,6 @@ module.exports = {
-     },
-     {
-       name: '@electron-forge/maker-zip',
--      platforms: ['darwin', 'linux']
--    },
--    {
--      name: 'electron-forge-maker-appimage',
-       platforms: ['linux']
-     }
-   ],
-@@ -52,5 +48,11 @@ module.exports = {
+@@ -52,5 +52,11 @@ module.exports = {
          prerelease: true
        }
      }
@@ -57,17 +37,17 @@ index 5a2f780c..7d2b8698 100644
    ]
  }
 diff --git a/resources/package.json b/resources/package.json
-index 1651f712..caa7a9d9 100644
+index 1651f712..7a8c628d 100644
 --- a/resources/package.json
 +++ b/resources/package.json
-@@ -29,13 +29,11 @@
+@@ -29,13 +29,9 @@
    },
    "devDependencies": {
      "@electron-forge/cli": "^6.0.0-beta.54",
 -    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+-    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
 -    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
      "@electron-forge/maker-zip": "^6.0.0-beta.54",
 -    "electron": "11.2.0",
 -    "electron-builder": "^22.10.5",
@@ -77,3 +57,23 @@ index 1651f712..caa7a9d9 100644
 +    "electron-builder": "^22.10.5"
    }
  }
+diff --git a/shadow-cljs.edn b/shadow-cljs.edn
+index 88d3ee1c..8f90a25f 100644
+--- a/shadow-cljs.edn
++++ b/shadow-cljs.edn
+@@ -1,6 +1,7 @@
+ ;; shadow-cljs configuration
+ {:deps     true
+  :nrepl        {:port 8701}
++ :parallel-build true
+ 
+  :builds
+  {:app
+@@ -40,6 +41,7 @@
+     :preloads     [devtools.preload]}}
+ 
+   :electron {:target :node-script
++             :release {:compiler-options {:optimizations :simple}}
+              :output-to "static/electron.js"
+              :main electron.core/main
+              :devtools
