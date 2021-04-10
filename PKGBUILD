@@ -49,7 +49,7 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=88.0b8
+pkgver=88.0b9
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 _pkgver=88.0
@@ -73,7 +73,7 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
-sha256sums=('65c83953e0f4075396385ec1d719e0daf6eb5558d5b900903eecc4dafd7fba1f'
+sha256sums=('c1fe690c6c99a2dbfc1eb8c2cf521255101a01b07ae4351a05b7f175f760df56'
             'SKIP'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
