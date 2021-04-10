@@ -2,15 +2,18 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-# Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
-pkgver=1.55.1
+pkgver=1.55.0.r0.gd8a91cf
 pkgrel=1
-pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
+pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
 # The vscodium repo that will be checked out.
 url='https://github.com/VSCodium/vscodium.git'
+# The branch of vscodium that will be checked out
+branch="master"
 # The vscode repo that will also be checked out.
 microsofturl='https://github.com/microsoft/vscode.git'
+# The tag of Microsoft that will be checked out, will be determined automatically, just like VSCodium itself does, with the following url
+stableversionurl='https://update.code.visualstudio.com/api/update/darwin/stable/lol'
 license=('MIT')
 
 # Version of NodeJS that will be used to create the build. Check the Travis CI build to find the correct version.
@@ -49,8 +52,8 @@ makedepends=(
     'pkg-config'
 )
 source=(
-    "git+${url}#tag=${pkgver}"
-    "git+${microsofturl}#tag=${pkgver}"
+    "git+${url}#branch=${branch}"
+    "git+${microsofturl}#tag="$(curl ${stableversionurl} 2>/dev/null | jq -r '.name')
     'vscodium.desktop'
 )
 sha256sums=(
@@ -66,6 +69,7 @@ conflicts=(
     'visual-studio-code-insiders'
     'code-stable-git'
     'vscode'
+    'vscodium'
     'vscodium-bin'
 )
 
@@ -95,6 +99,11 @@ prepare() {
     # So we rely on the clone that happened earlier, and move the git directory to the expected place.
     rm -rf 'vscode'
     mv '../vscode' 'vscode'
+}
+
+pkgver() {
+    cd "vscodium"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

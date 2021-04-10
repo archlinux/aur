@@ -1,6 +1,6 @@
 pkgbase = vscodium-git
-	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing (git build).
-	pkgver = 1.55.1
+	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest commit).
+	pkgver = 1.55.0.r0.gd8a91cf
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
@@ -39,9 +39,10 @@ pkgbase = vscodium-git
 	conflicts = visual-studio-code-insiders
 	conflicts = code-stable-git
 	conflicts = vscode
+	conflicts = vscodium
 	conflicts = vscodium-bin
-	source = git+https://github.com/VSCodium/vscodium.git#tag=1.55.1
-	source = git+https://github.com/microsoft/vscode.git#tag=1.55.1
+	source = git+https://github.com/VSCodium/vscodium.git#branch=master
+	source = git+https://github.com/microsoft/vscode.git#branch=main
 	source = vscodium.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
