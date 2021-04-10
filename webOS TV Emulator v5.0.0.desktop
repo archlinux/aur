@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Terminal=false
+Terminal=true
 Comment=1.0
 Name=webOS TV Emulator v5.0.0
 Categories=Lotus;Development
