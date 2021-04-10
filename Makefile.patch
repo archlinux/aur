@@ -1,0 +1,13 @@
+diff --git i/Makefile w/Makefile
+index 9c9951f..e4d4996 100644
+--- i/Makefile
++++ w/Makefile
+@@ -1,6 +1,6 @@
+ INSTALL_PATH = ~/.local/share/gnome-shell/extensions
+ INSTALL_NAME = nasa_apod@elinvention.ovh
+-FILES = extension.js icons LICENSE metadata.json prefs.js README.md schemas prefs.ui utils.js theme.css notifications.js locale
++FILES = extension.js icons LICENSE metadata.json prefs.js README.md schemas prefs.ui utils.js prefs.css notifications.js locale
+ 
+ MSGSRC = $(wildcard po/*.po)
+ TOLOCALIZE = extension.js prefs.js
+

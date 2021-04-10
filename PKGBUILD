@@ -1,18 +1,29 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-shell-extension-nasa-apod
-pkgver=21
-pkgrel=2
+pkgver=22
+pkgrel=1
 pkgdesc="Change your wallpaper daily to the NASA astronomy picture of the dauy"
 arch=('any')
 url="https://github.com/Elinvention/${pkgname}"
-license=('GPL-3')
-depends=('gnome-shell>=3.34' 'gnome-shell<40.0')
+license=('GPL3')
+depends=('gnome-shell>=40.0')
 makedepends=('glib2' 'intltool')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-md5sums=('bbf03fa59a2871ee942facbbc44ea134')
-sha1sums=('98919c238bb8f1fc2c4b25e2892a1f468ad42c32')
-sha512sums=('e6aceacec57e35efbb0cf482a7792db9171b4c06ec9ce2a4ef236648a9f5f8db790a66bfb1ce66a66db9bc13c30a6ae773639316515a53d17911e29e6ae7396b')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz"
+	"Makefile.patch"
+)
+md5sums=('fd112058c0a8b9462c50489f583d45f0'
+         'fd0c8e90df92dbf3b65ea80d14afcb47')
+sha1sums=('2bbc8aad30a15ea371c46a514697ded96354546a'
+          '5548af7a915d0c28fc5271bd927614b5709fcc5c')
+sha512sums=('cc72f4df9fe700b183eadb7ac3a68fcb2a1298a6dd8d136bcaf9568f357d13709c5bcfd3fc18d3c366d863c181c3aa33777d0c7a294cff37db97914c4e5cdda0'
+            '19e8274af637bf10f91753ca2b78f684ad99e508a36792131414c4c62b9a9812451f4d2e226fc0d325929bcd462522ae473d5bd55873e2f698c376a4a144c6fd')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch --strip=1 --input="$srcdir/Makefile.patch"
+}
 
 package() {
 	cd "$pkgname-$pkgver"
