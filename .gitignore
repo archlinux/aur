@@ -1,0 +1,4 @@
+jitsi-meet-turnserver-git/
+src/
+pkg/
+*.pkg.tar.*
