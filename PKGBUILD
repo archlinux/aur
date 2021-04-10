@@ -2,10 +2,10 @@
 # Contributor: Franco Masotti <franco dot masotti at live dot com>
 pkgname=python-fpyutils
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of useful non-standard Python functions which aim to be simple to use"
 arch=('any')
-url="https://github.com/frnmst/fpyutils"
+url="https://blog.franco.net.eu.org/software/#fpyutils"
 license=('GPL3')
 depends=('python' 'python-atomicwrites=1.4.0' 'python-yaml=5.4.1.1' 'python-requests=2.25.1')
 makedepends=('python-setuptools')
