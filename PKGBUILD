@@ -2,7 +2,7 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-hidpi-git
 _pkgname=sway
-pkgver=r6607.28cadf55
+pkgver=r6660.1a0f86be
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager, with XWayland HiDPI (git version)"
@@ -45,7 +45,7 @@ source=("git+https://github.com/swaywm/sway"
         "xwayland_hidpi.diff::https://github.com/swaywm/sway/pull/5090.diff")
 sha512sums=('SKIP'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e'
-            '813863fe8d391761770eb264b1c0a2d9442efde3e79fae6b78386ed7c041906eef60bbf9d9bc7d118494de8aba2cd4c45a13dcd2ca09f3f1cd1157e74f122667')
+            '00baf52f67945175f6386847408f94d0db1f8c68afd5fb0ca359fc6aeeae85912d5fc44bc33857d0d13971a4bfa26ea71c8078c3672bc7d516bdbc04de480d97')
 provides=("sway" "sway-git")
 conflicts=("sway" "sway-git")
 options=(debug)
