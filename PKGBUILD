@@ -37,7 +37,6 @@ prepare() {
 
   cat "${srcdir}/config" > ./.config
 
-  configure
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
