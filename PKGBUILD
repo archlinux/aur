@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url='https://github.com/melix99/telegrand'
 depends=('gtk4')
 makedepends=('git' 'rust' 'meson' 'libadwaita')
-license=('MIT')
+license=('GPL3')
 source=('git+https://github.com/melix99/telegrand.git')
 sha512sums=('SKIP')
 
