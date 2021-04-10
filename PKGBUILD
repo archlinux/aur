@@ -1,7 +1,7 @@
 # Maintainer: Martin Thierer <thierer@web.de>
 
 pkgname=arrow-usb-blaster
-pkgver=2.4.1
+pkgver=2.5
 pkgrel=1
 pkgdesc='Intel Quartus Driver for Arrow USB JTAG Programmer'
 url='https://wiki.trenz-electronic.de/display/PD/Arrow+USB+Programmer'
@@ -9,12 +9,14 @@ license=('unknown')
 arch=('x86_64')
 backup=('etc/arrow_usb_blaster.conf')
 depends=('quartus-free-quartus')
+options=('!strip')
 # Even https://github.com/ArrowElectronics/AnalogMAX/wiki/Arrow-USB-Programmer
 # in what seems to be an official Arrow repository links to Trenz Electronic
 # so that's apparently the standard download location.
 _archive="Arrow_USB_Programmer_${pkgver}_linux64"
-source=("https://shop.trenz-electronic.de/trenzdownloads/Trenz_Electronic/Software/Drivers/Arrow_USB_Programmer/Arrow_USB_Programmer_2.4/${_archive}.zip")
-md5sums=('4292ece7d47fe99fd0e8d2286e8456c2')
+_majver=`echo ${pkgver} | cut -d '.' -f 1-2`
+source=("https://shop.trenz-electronic.de/trenzdownloads/Trenz_Electronic/Software/Drivers/Arrow_USB_Programmer/Arrow_USB_Programmer_${_majver}/${_archive}.zip")
+md5sums=('9eaa5adf445d19918d092bf2e4a7a22e')
 
 prepare() {
   cd "${srcdir}/${_archive}"
