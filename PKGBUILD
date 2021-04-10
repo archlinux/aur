@@ -13,9 +13,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname.tar.gz" "warning.sh")
+source=("$pkgname.tar.gz" 
+        "warning.sh")
 noextract=()
-md5sums=("SKIP" "SKIP")
+md5sums=("SKIP"
+         "SKIP")
 validpgpkeys=()
 
 package() {
