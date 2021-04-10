@@ -5,6 +5,8 @@ pkgbase = goto
 	url = https://github.com/iridakos/goto
 	arch = any
 	license = MIT
+	provides = goto
+	conflicts = goto-git
 	source = goto-2.0.0.tar.gz::https://github.com/iridakos/goto/archive/v2.0.0.tar.gz
 	sha256sums = 460fe3994455501b50b2f771f999ace77ade295122e90e959084047dbfb1f0dc
 
