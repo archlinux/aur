@@ -1,0 +1,30 @@
+[Unit]
+Description=Jitsi-Meet Conference Focus
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/jicofo-git/config
+User=jicofo
+ExecStart=/usr/lib/jicofo-git/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} ${JICOFO_OPTS}
+WorkingDirectory=/var/lib/jicofo-git
+StateDirectory=jicofo-git
+StateDirectoryMode=0750
+LogsDirectory=jicofo-git
+LogsDirectoryMode=0750
+ConfigurationDirectory=jicofo-git
+ConfigurationDirectoryMode=0700
+
+Restart=on-failure
+SuccessExitStatus=143
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
