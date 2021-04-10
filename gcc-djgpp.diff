@@ -265,7 +265,7 @@ index 260e787c329..d8a63d43bea 100644
  				     CPP_OPTION (pfile, input_charset),
  				     buf, size + 16, total,
 diff --git a/libcpp/lex.c b/libcpp/lex.c
-index 56ac3a1dd73..ba95b0c6dba 100644
+index 665297af776..90e58ff26de 100644
 --- a/libcpp/lex.c
 +++ b/libcpp/lex.c
 @@ -502,6 +502,13 @@ init_vectorized_lexer (void)
@@ -390,10 +390,10 @@ index 7377834be69..7480d3ce17e 100644
  	  file_mode |= S_ISVTX;
  	else if (!is_dir)
 diff --git a/libgfortran/intrinsics/execute_command_line.c b/libgfortran/intrinsics/execute_command_line.c
-index 71d61a766ad..03b92333b25 100644
+index 6d7b8fc658e..ac7e0054c2f 100644
 --- a/libgfortran/intrinsics/execute_command_line.c
 +++ b/libgfortran/intrinsics/execute_command_line.c
-@@ -93,7 +93,7 @@ execute_command_line (const char *command, bool wait, int *exitstat,
+@@ -98,7 +98,7 @@ execute_command_line (const char *command, bool wait, int *exitstat,
  
        set_cmdstat (cmdstat, EXEC_NOERROR);
  
@@ -497,7 +497,7 @@ index cb08c27af6f..d7701e4b38a 100644
        memoized_tmpdir = tmpdir;
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
 diff --git a/libiberty/simple-object-elf.c b/libiberty/simple-object-elf.c
-index c62d5bba551..9e1a2c68a3f 100644
+index 37e73348cb7..0d6f84c1ed3 100644
 --- a/libiberty/simple-object-elf.c
 +++ b/libiberty/simple-object-elf.c
 @@ -1293,7 +1293,9 @@ simple_object_elf_copy_lto_debug_sections (simple_object_read *sobj,
@@ -556,7 +556,7 @@ index 8562c8f52b0..775756ede3f 100644
    {
      memset(_M_widen, 0, sizeof(_M_widen));
 diff --git a/libstdc++-v3/config/os/djgpp/error_constants.h b/libstdc++-v3/config/os/djgpp/error_constants.h
-index e0a67bc8d6d..d6ccf4195d6 100644
+index 8f947e69e37..d80a5811ca7 100644
 --- a/libstdc++-v3/config/os/djgpp/error_constants.h
 +++ b/libstdc++-v3/config/os/djgpp/error_constants.h
 @@ -33,6 +33,15 @@
@@ -579,11 +579,11 @@ index e0a67bc8d6d..d6ccf4195d6 100644
  //    not_connected = 				ENOTCONN,
        not_enough_memory = 			ENOMEM,
  
--#ifdef _GLIBCXX_HAVE_ENOTSUP
+-#ifdef ENOTSUP
        not_supported = 				ENOTSUP,
 -#endif
  
- #ifdef _GLIBCXX_HAVE_ECANCELED
+ #ifdef ECANCELED
        operation_canceled = 			ECANCELED,
 @@ -128,7 +135,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
  
@@ -593,7 +593,7 @@ index e0a67bc8d6d..d6ccf4195d6 100644
 +      operation_not_supported = 		EOPNOTSUPP,
  //    operation_would_block = 			EWOULDBLOCK,
  
- #ifdef _GLIBCXX_HAVE_EOWNERDEAD
+ #ifdef EOWNERDEAD
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
 index 69b823a3466..2d005b875e4 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
