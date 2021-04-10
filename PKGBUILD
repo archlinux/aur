@@ -2,7 +2,7 @@
 
 pkgname=azdrawing
 pkgver=1.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Painting software for line art and comics."
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/"
@@ -20,5 +20,5 @@ build() {
 package() {
 	cd ${pkgname}-${pkgver}
 	make prefix=${pkgdir}/usr install
-        rm ${pkgdir}/usr/share/icons/hicolor/icon-theme.cache # HACK: For `exists in filesystem` error.
+	rm ${pkgdir}/usr/share/icons/hicolor/icon-theme.cache # HACK: For `exists in filesystem` error.
 }
