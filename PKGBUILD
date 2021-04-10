@@ -18,7 +18,7 @@ optdepends=(
 	'cdrtools: ISO 9660 support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('2583635081f56b70cadb3ba87d5a4ac2dac158afc6af1fa0cc0030cf5afe4bb7')
+sha256sums=('0fac66f50f34c1d7480fcc8f91b545fdddd069415d1ee9e80d7a1fbd12309f15')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
