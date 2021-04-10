@@ -3,7 +3,7 @@ pkgver=2.42.4
 pkgrel=1
 pkgdesc='An image loading library (mingw-w64)'
 arch=('any')
-url='http://www.gtk.org'
+url='https://www.gtk.org'
 license=('LGPL')
 makedepends=(
   'mingw-w64-gcc'
