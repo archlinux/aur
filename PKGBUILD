@@ -12,7 +12,7 @@ license=('unknown')
 depends=('libusb')
 makedepends=('go')
 conflicts=('zsa-wally-cli-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zsa/wally-cli/archive/refs/tags/$pkgver-linux.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver-linux.tar.gz"
     '50-wally-cli.rules'
 )
 sha256sums=('2641c7deededeeba1aecf6b3ae3e87050a0cfd81c8b41323b2304ebe21e61745'
