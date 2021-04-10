@@ -3,7 +3,7 @@
 pkgname=textidote-bin
 _pkgname=textidote
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Spelling, grammar and style checking on LaTeX documents"
 arch=('any')
 url="https://github.com/sylvainhalle/textidote"
@@ -30,9 +30,9 @@ prepare() {
 
 package() {
   # Create directories
-  install -d "$pkgdir"/{etc/bash.completion.d,usr/bin,usr/share/{man/man1,applications},opt/$_pkgname}
+  install -d "$pkgdir"/{etc/bash_completion.d,usr/bin,usr/share/{man/man1,applications},opt/$_pkgname}
 
-  install -Dm644 etc/bash.completion.d/$_pkgname "$pkgdir"/etc/bash.completion.d/
+  install -Dm644 etc/bash.completion.d/$_pkgname "$pkgdir"/etc/bash_completion.d/
   install -Dm755 usr/local/bin/$_pkgname "$pkgdir"/usr/bin/
   install -D opt/$_pkgname/$_pkgname.{jar,zsh} "$pkgdir"/opt/$_pkgname/
   install -D opt/$_pkgname/${_pkgname}-icon.svg "$pkgdir"/opt/$_pkgname/

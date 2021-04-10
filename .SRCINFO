@@ -1,7 +1,7 @@
 pkgbase = textidote-bin
 	pkgdesc = Spelling, grammar and style checking on LaTeX documents
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sylvainhalle/textidote
 	arch = any
 	license = GPL
