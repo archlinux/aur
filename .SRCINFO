@@ -1,6 +1,6 @@
 pkgbase = nodejs-flood
 	pkgdesc = A modern web UI for various torrent clients
-	pkgver = 4.5.2
+	pkgver = 4.5.3
 	pkgrel = 1
 	url = https://flood.js.org
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = nodejs-flood
 	makedepends = npm
 	depends = nodejs
 	optdepends = mediainfo
-	noextract = flood-4.5.2.tgz
-	source = https://registry.npmjs.org/flood/-/flood-4.5.2.tgz
-	sha1sums = 892d7c18cca25699b6985c4a13112fe189bdd798
+	noextract = flood-4.5.3.tgz
+	source = https://registry.npmjs.org/flood/-/flood-4.5.3.tgz
+	sha1sums = 5ffb529ac91c0cd0f45ac6db714a9bd39142ecdf
 
 pkgname = nodejs-flood
 
