@@ -2,7 +2,7 @@
 
 _pkgname=Jellyamp
 pkgname=jellyamp-appimage
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A stylish, cross-platform desktop client for listening to music from a Jellyfin server. Inspired by Plexamp."
 provides=('jellyamp')
@@ -53,5 +53,5 @@ package() {
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-md5sums=('3e125b2055e7435c76e48841cb799356'
+md5sums=('2a4d58dafa0d4282f5120b175be5cfec'
          'f320c21f36aa4854c516c2393ba9de69')
