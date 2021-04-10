@@ -4,26 +4,18 @@
 #
 _pkgname="Shortwave"
 pkgname="shortwave"
-pkgver="1.1.1"
-pkgrel="8"
+pkgver="2.0.0"
+pkgrel="1"
 epoch="1"
 pkgdesc="Find and listen to internet radio stations."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/${_pkgname}"
 license=('GPL3')
-depends=('gst-plugins-bad' 'libhandy0' 'libsoup' 'gtk3')
-makedepends=('cargo' 'git' 'gobject-introspection' 'gst-plugins-base-libs' 'libdazzle' 'meson' 'rust')
+depends=('gst-plugins-bad' 'libadwaita' 'libsoup')
+makedepends=('cmake' 'git' 'gst-plugins-base-libs' 'meson' 'rust')
 options=('!emptydirs')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        "handy.patch"
-)
-sha256sums=('b391b4d10658e9ba180442ca2d769173a278f19beb498c7251a6b4a62b7c678b'
-            '01bbac29d6aacf6bedbfc49632db24f05c7df9e52aecd2143a42e41df9f097d9')
-
-prepare() {
-    cd "${_pkgname}-${pkgver}"
-    patch -Np1 -i ../handy.patch
-}
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('0c8e197d05238606b8f26992cc7c6adb0f0600c7def10e9a42a1fbc5ecdaf75d')
 
 build() {
     cd "${_pkgname}-${pkgver}"
