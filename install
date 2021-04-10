@@ -1,0 +1,14 @@
+post_install() {
+	cat << __EOF__
+
+In order to align all jitsi package, we change the config and install path to match Arch paths.
+
+Update the config with your previous one carefully. Do not blindly copy !
+
+The configs are located here:
+  - /etc/webapps/jitsi-meet-git
+
+The website:
+  - /usr/share/webapps/jitsi-meet-git
+__EOF__
+}

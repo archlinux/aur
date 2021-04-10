@@ -1,53 +1,78 @@
-# Maintainer: Martin Rys <rys.pw/#contact_me>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
+
 pkgname=jitsi-meet-git
-pkgver=r7978.e0d41a30e
+pkgver=1.0.4899+0+gfd4819aec
 pkgrel=1
-epoch=
-pkgdesc="WebRTC JavaScript video conferences"
-arch=("x86_64")
-url="https://github.com/jitsi/jitsi-meet"
-license=("Apache")
-groups=()
+pkgdesc="Jitsi Meet Web git build"
+arch=('any')
+url="https://jitsi.org/jitsi-meet/"
+license=('Apache')
 depends=()
-makedepends=("npm"
-             "git")
-checkdepends=()
-optdepends=("jicofo"
-            "jitsi-videobridge"
-            "nginx"
-            "prosody")
-provides=("jitsi-meet")
-conflicts=("jitsi-meet")
-replaces=()
-backup=("opt/jitsi-meet/config.js"
-        "opt/jitsi-meet/interface_config.js"
-        "opt/jitsi-meet/logging_config.js")
-options=()
-install=
-changelog=
-source=($pkgname::git+https://github.com/jitsi/jitsi-meet)
-noextract=()
-sha256sums=("SKIP")
-validpgpkeys=()
+optdepends=("nginx")
+makedepends=(
+        "python" "python2"
+        "nodejs" "npm"
+)
+options=('!strip')
+backup=(
+  "etc/webapps/${pkgname}/logging_config.js"
+  "etc/webapps/${pkgname}/config.js"
+  "etc/webapps/${pkgname}/interface_config.js"
+)
+source=(
+        "$pkgname::git+https://github.com/jitsi/jitsi-meet"
+)
+install=install
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    printf "1.0.%s" "$(git describe --exclude jitsi-meet_\* --long | sed 's/-/+/g')"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  npm install
-  make
-  # Hack https://github.com/jitsi/jitsi-meet/pull/6925
-  for c in $(ls node_modules/i18n-iso-countries/langs); do
-    cp node_modules/i18n-iso-countries/langs/${c} lang/countries-${c}
-  done
-  make source-package
-  tar xvfj jitsi-meet.tar.bz2
+        cd "$pkgname"
+        npm install
+        make
+        make source-package
 }
 
 package() {
-  install -d "${pkgdir}/opt"
-  cp -R "${srcdir}/jitsi-meet-git/jitsi-meet/" "${pkgdir}/opt/jitsi-meet"
+        cd "$srcdir/$pkgname"
+
+        DESTDIR="${pkgdir}/usr/share/webapps/${pkgname}"
+        CONFDIR="${pkgdir}/etc/webapps/${pkgname}"
+
+        install -d "$DESTDIR"
+        install -d "$CONFDIR"
+
+        tar xjvf "jitsi-meet.tar.bz2" -C "$DESTDIR" --strip 1
+	install -Dm644 -t "$DESTDIR" manifest.json
+
+        install -d "$DESTDIR/load-test"
+        cp -r resources/load-test/{index.html,libs} "$DESTDIR/load-test"
+
+        for l in $(node -p "Object.keys(require('./lang/languages.json')).join(' ')")
+        do
+            c=${l:0:2}
+            if [ -f "node_modules/i18n-iso-countries/langs/${c}.json" ]
+            then
+                    install -m644 "node_modules/i18n-iso-countries/langs/${c}.json" "${DESTDIR}/lang/countries-${l}.json"
+            fi
+        done
+
+        find "$DESTDIR" -type f -execdir sed -i "s#${srcdir}##g" "{}" \;
+        find "$DESTDIR" -type d -exec chmod 755 {} \;
+
+        for i in interface_config.js logging_config.js config.js
+        do
+                install -Dm644 "$DESTDIR/${i}" "$CONFDIR/${i}"
+                ln -sf "/etc/webapps/${pkgname}/${i}" "$DESTDIR/${i}"
+        done
+
+        install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet/jitsi-meet.example doc/debian/jitsi-meet/jitsi-meet.example-apache config.js
+        sed -i 's@/usr/share/jitsi-meet@/usr/share/webapps/'$pkgname'@' "${pkgdir}/usr/share/doc/${pkgname}/"*
+        sed -i 's@/etc/jitsi/meet@/etc/webapps/'$pkgname'@' "${pkgdir}/usr/share/doc/${pkgname}/"*
+        
+        chown -R root:root "${pkgdir}"
 }
+sha256sums=('SKIP')
