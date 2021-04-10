@@ -22,6 +22,5 @@ validpgpkeys=()
 
 package() {
            install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-           echo  'Please enter hexo-deployer-with-theme-typography-bin to run the script'
 	   sh warning.sh
 }
