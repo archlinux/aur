@@ -1,7 +1,7 @@
 pkgbase = buttersink-git
 	pkgdesc = Buttersink is like rsync for btrfs snapshots
-	pkgver = 0.6.8.r0.gb0ca6ef
-	pkgrel = 2
+	pkgver = 0.6.9.r9.g5cc37e3
+	pkgrel = 1
 	url = https://github.com/AmesCornish/buttersink.git
 	arch = any
 	license = GPL3

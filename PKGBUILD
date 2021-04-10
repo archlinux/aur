@@ -3,8 +3,8 @@
 
 pkgname=buttersink-git
 _gitname=buttersink
-pkgver=0.6.8.r0.gb0ca6ef
-pkgrel=2
+pkgver=0.6.9.r9.g5cc37e3
+pkgrel=1
 pkgdesc="Buttersink is like rsync for btrfs snapshots"
 arch=('any')
 url="https://github.com/AmesCornish/buttersink.git"
