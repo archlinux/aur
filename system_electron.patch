@@ -9,7 +9,7 @@ index 177d2eb1..be06750a 100755
   {org.clojure/clojure         {:mvn/version "1.10.0"}
    cheshire/cheshire {:mvn/version "5.10.0"}
 diff --git a/package.json b/package.json
-index d06f2840..cf255394 100644
+index d2696922..3ea7f367 100644
 --- a/package.json
 +++ b/package.json
 @@ -65,7 +65,6 @@
@@ -58,7 +58,7 @@ index 1651f712..7a8c628d 100644
    }
  }
 diff --git a/shadow-cljs.edn b/shadow-cljs.edn
-index 88d3ee1c..8f90a25f 100644
+index a6ea075d..c41d5171 100644
 --- a/shadow-cljs.edn
 +++ b/shadow-cljs.edn
 @@ -1,6 +1,7 @@
@@ -69,11 +69,3 @@ index 88d3ee1c..8f90a25f 100644
  
   :builds
   {:app
-@@ -40,6 +41,7 @@
-     :preloads     [devtools.preload]}}
- 
-   :electron {:target :node-script
-+             :release {:compiler-options {:optimizations :simple}}
-              :output-to "static/electron.js"
-              :main electron.core/main
-              :devtools
