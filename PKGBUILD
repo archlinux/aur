@@ -2,8 +2,8 @@
 # Previous Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 pkgname=nextcloud20
 _pkgname=nextcloud
-pkgver=20.0.8
-pkgrel=2
+pkgver=20.0.9
+pkgrel=1
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
 url="https://nextcloud.com"
@@ -27,7 +27,7 @@ conflicts=('nextcloud')
 source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"
         'apache.example.conf'
         'nextcloud.hook')
-sha256sums=('85746a4bda87bf754be5834cdb6489c365dc847653bab8ff3afccdaac3b356b5'
+sha256sums=('c8fe4ae86bc51276be6d39cbaf3f45f3b29df901cd5a4163b8a6af0e09e9ff04'
             '30a8ad62b0dc9523ca7f0387b1f0483d196c1e011ec7e3a5b98e7d33c721d4bf'
             'b8794c6b357c762f6d4e6f099d8073bd465d6cd87d6d07341568d9509720e6e8')
 
