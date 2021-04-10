@@ -10,9 +10,9 @@ url="http://yaehmop.sourceforge.net/"
 license=('GPL')
 depends=('gcc-fortran' 'readline' 'libx11' 'blas' 'lapack')
 
-source=('http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/bind.3.1.0b2.tgz'
-		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/viewkel.3.1.0b.tgz'
-		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/dense_eval.3.1.0b.tgz'
+source=('https://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/bind.3.1.0b2.tgz'
+		'https://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/viewkel.3.1.0b.tgz'
+		'https://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/dense_eval.3.1.0b.tgz'
 		'yaehmop-fix-build.patch'
 		'yaehmop-fix-implicit-declarations.patch'
 		'yaehmop-fix-hard-coded-data-paths.patch')
