@@ -1,7 +1,7 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=flatcam-git
 _pkgname=FlatCAM
-pkgver=r3435.a8a2f6b0
+pkgver=r3472.a64d01b5
 pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
@@ -32,15 +32,18 @@ depends=('tk'
         'python-lxml'
         'python-cycler'
         'python-qrcode'
+        'hicolor-icon-theme'
 )
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://bitbucket.org/jpcgt/flatcam.git"
         "$pkgname.desktop"
+        "${pkgname%-git}.xml"
         "${pkgname%-git}.sh")
 md5sums=('SKIP'
-         '75964eb8fb5d9fbb3da848edbf52af7a'
+         '8a0be1fc39b87116cba4162dc1257e2e'
+         'e4a7f457350aa2e1c62cbe43f3b23e90'
          'ff3e92a98fa93954cfaf6c5d62a05643')
 
 prepare() {
@@ -60,15 +63,16 @@ build() {
 
 
 package() {
-        mkdir -p "$pkgdir/usr/bin/"
+	mkdir -p "$pkgdir/usr/bin/"
 	ln -s "/opt/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+	install -D -m644 "${pkgname%-git}.xml" -t "$pkgdir/usr/share/mime/packages/"
 	install -D -m755 "${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	cd "$srcdir/${pkgname%-git}"
-	install -D -m644 "assets/linux/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -D -m644 "assets/linux/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/${pkgname%-git}.png"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	
-	rm -r *.sh doc tests
+
+	rm -rf *.sh doc tests
 	mkdir -p "${pkgdir}/opt/${pkgname%-git}"
 	cp -r * "${pkgdir}/opt/${pkgname%-git}"
 }
