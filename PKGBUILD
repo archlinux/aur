@@ -13,6 +13,7 @@ _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4 with the cacule scheduler"
 pkgver=5.11.11
 pkgrel=1
+pkgdesc="Raspberry Pi 4 Kernel with the cacule schedeuler, aarch64 and armv7"
 arch=('armv7h' 'aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')

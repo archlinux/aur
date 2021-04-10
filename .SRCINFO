@@ -1,4 +1,5 @@
 pkgbase = linux-raspberrypi4-cacule-stable
+	pkgdesc = Raspberry Pi 4 Kernel with the cacule schedeuler, aarch64 and armv7
 	pkgver = 5.11.11
 	pkgrel = 1
 	url = http://www.kernel.org/
