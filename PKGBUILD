@@ -5,7 +5,7 @@
 # Maintainer: Ray Sherwin <slick517d@gmail.com>
 # Maintainer: ptr1337 <admin@ptr1337.dev>
 
-pkgbase=linux-manjaro-rpi4-mainline-cacule
+pkgbase=linux-manjaro-rpi4-cacule-mainline
 _commit=42498e202032b40765d184c1b9cb296dbe7fa614
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}

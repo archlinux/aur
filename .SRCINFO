@@ -1,4 +1,4 @@
-pkgbase = linux-manjaro-rpi4-mainline-cacule
+pkgbase = linux-manjaro-rpi4-cacule-mainline
 	pkgdesc = Raspberry Pi 4 Kernel with the cacule scheduler
 	pkgver = 5.11.11
 	pkgrel = 1
@@ -25,7 +25,7 @@ pkgbase = linux-manjaro-rpi4-mainline-cacule
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 441ec084c47cddc53e592fb0cbce4edf
 
-pkgname = linux-manjaro-rpi4-mainline-cacule
+pkgname = linux-manjaro-rpi4-cacule-mainline
 
-pkgname = linux-manjaro-rpi4-mainline-cacule-headers
+pkgname = linux-manjaro-rpi4-cacule-mainline-headers
 
