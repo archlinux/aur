@@ -1,41 +1,133 @@
-# Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
+# Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
+# Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium
-pkgver=1.33.0
+# Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
+pkgver=1.55.1
 pkgrel=1
-pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
-arch=('x86_64')
-url="https://github.com/VSCodium/vscodium"
+pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
+arch=('x86_64' 'aarch64' 'armv7h')
+# The vscodium repo that will be checked out.
+url='https://github.com/VSCodium/vscodium.git'
+# The vscode repo that will also be checked out.
+microsofturl='https://github.com/microsoft/vscode.git'
 license=('MIT')
+
+# Version of NodeJS that will be used to create the build. Check the Travis CI build to find the correct version.
+# See: https://travis-ci.com/github/VSCodium/vscodium
+_nodejs='12.14.1'
+
 depends=(
-        fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss gconf
-        'glibc>=2.28-4'
-        )
+    'fontconfig'
+    'libxtst'
+    'gtk3'
+    'cairo'
+    'alsa-lib'
+    'nss'
+    'gcc-libs'
+    'libnotify'
+    'libxss'
+    'glibc>=2.28-4'
+    'libxkbfile'
+)
 optdepends=(
-        'gvfs: For move to trash functionality'
-        'libdbusmenu-glib: For KDE global menu'
+    'gvfs: For move to trash functionality'
+    'libdbusmenu-glib: For KDE global menu'
+)
+makedepends=(
+    'nvm'
+    'gulp'
+    'yarn'
+    'jq'
+    'libxdmcp'
+    'bash'
+    'git'
+    'patch'
+    'python'
+    'make'
+    'gcc'
+    'pkg-config'
+)
+source=(
+    "git+${url}#tag=${pkgver}"
+    "git+${microsofturl}#tag=${pkgver}"
+    'vscodium.desktop'
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    '33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69'
 )
 provides=('code')
-conflicts=('visual-studio-code-bin')
-source=(
-        vscodium.desktop
-        ${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-x64-${pkgver}.tar.gz
-       )
-noextract=("${pkgname}-${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('e4f3503d6c6eb9d967f9d35e58f5f801da98c4ccf7bd31dc752d1cef05781717'
-            '388506a0bee87a72102bf20d32efaf18d6f5d29286bdda3684f63d87e63c646f')
+conflicts=(
+    'code' 
+    'visual-studio-code-bin'
+    'code-git'
+    'visual-studio-code-insiders'
+    'code-stable-git'
+    'vscode'
+    'vscodium-git'
+    'vscodium-bin'
+)
+
+###############################################################################
+
+# Even though we don't officially support other archs, let's allow the
+# user to use this PKGBUILD to compile the package for their architecture.
+case "$CARCH" in
+  x86_64)
+    _vscode_arch=x64
+    ;;
+  aarch64)
+    _vscode_arch=arm64
+    ;;
+  armv7h)
+    _vscode_arch=arm
+    ;;
+  *)
+    # Needed for mksrcinfo
+    _vscode_arch=DUMMY
+    ;;
+esac
 
 prepare() {
-    mkdir -p ${srcdir}/vscodium
-    tar -xf ${srcdir}/${pkgname}-${pkgver}-${pkgrel}.tar.gz -C ${srcdir}/vscodium
+    cd 'vscodium'
+    # Normally, we would execute get_repo.sh to clone the Microsoft repo here, but makepkg can't do this.
+    # So we rely on the clone that happened earlier, and move the git directory to the expected place.
+    rm -rf 'vscode'
+    mv '../vscode' 'vscode'
+}
+
+build() {
+    cd "vscodium"
+
+    # Export some environment variables that would normally be set by Travis CI.
+    export SHOULD_BUILD="yes"
+    export VSCODE_ARCH="${_vscode_arch}"
+    export OS_NAME="linux"
+    export LATEST_MS_COMMIT=$(git rev-list --tags --max-count=1)
+    export LATEST_MS_TAG=$(git describe --tags "${LATEST_MS_COMMIT}")
+
+    # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
+    export SKIP_LINUX_PACKAGES="True"
+
+    # Build just like Travis does: install NodeJS and run the build.sh script.
+    source /usr/share/nvm/init-nvm.sh
+    nvm install ${_nodejs}
+    ./build.sh
 }
 
 package() {
     install -d -m755 ${pkgdir}/usr/bin
-    install -d -m755 ${pkgdir}/usr/share/{vscodium,applications,pixmaps}
-    cp -r ${srcdir}/${pkgname} ${pkgdir}/usr/share
-    ln -s /usr/share/${pkgname}/bin/vscodium ${pkgdir}/usr/bin/${pkgname}
+    install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
+    install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
+    cp -r ${srcdir}/vscodium/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
+    cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
+    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/code
+    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscode
+    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
+    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
     install -D -m644 vscodium.desktop ${pkgdir}/usr/share/applications/vscodium.desktop
-    install -D -m644 ${srcdir}/${pkgname}/resources/app/resources/linux/code.png \
+    install -D -m644 ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png \
             ${pkgdir}/usr/share/pixmaps/vscodium.png
 }

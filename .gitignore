@@ -1,5 +1,7 @@
-*.xz
-pkg
-src
-*.zip
-*.tar.gz
+*
+!.gitignore
+!PKGBUILD
+!vscodium.desktop
+!build_sh.patch
+!.SRCINFO
+!BUILDING
