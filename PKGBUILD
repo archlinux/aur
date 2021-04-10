@@ -1,10 +1,11 @@
 # Maintainer: Dr-Noob <peibolms at gmail dot com>
+# Contributor: Dr-Noob <peibolms at gmail dot com>
 _name=cpufetch
 pkgname="$_name-git"
-pkgver=v0.94.r43.g8f2f3d3
+pkgver=v0.97.r0.g8f2f3d3
 pkgrel=1
 pkgdesc="Simple yet fancy CPU architecture fetching tool"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
 url="https://github.com/Dr-Noob/cpufetch"
@@ -26,7 +27,5 @@ build() {
 
 package() {
   cd "$srcdir/$_name"
-  install -Dm755 "cpufetch"   "$pkgdir/usr/bin/cpufetch"
-  install -Dm644 "LICENSE"    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "cpufetch.8" "$pkgdir/usr/share/man/man8/cpufetch.8.gz"
+  make PREFIX="$pkgdir/usr/" install
 }
