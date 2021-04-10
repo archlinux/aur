@@ -2,7 +2,7 @@
 
 pkgname=pokemon-revolution-online-bin
 __LIN_DESKTOP_ASSET_VER=0.4
-__PROCLIENT_VER=20210215
+__PROCLIENT_VER=20210410
 pkgver=${__PROCLIENT_VER}+${__LIN_DESKTOP_ASSET_VER}
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
@@ -17,8 +17,8 @@ install="archlinux.install"
 source=("git+https://gitlab.com/fabis_cafe/pro_assets_lin_desktop.git#tag=${__LIN_DESKTOP_ASSET_VER}"
     "PROClient_linux-${__PROCLIENT_VER}.zip::https://ddl.pokemonrevolution.net/PROClient_linux.zip"
 )
-sha256sums=('SKIP'
-            'eb68484c94b929beb438ea78feee83566d7c8c204d83eec83facef4a75cf66b5')
+sha512sums=('SKIP'
+            'ea82286a33f73b0ef352b5e481689d5d6b18b6e52ac7a70bf78c8f8ddda100b811c6e68a0dba964455f6a397bef0bf5a838e8a9a07b5086fd8704b70c33a2487')
 
 package() {
     #PROCLIENT PART
