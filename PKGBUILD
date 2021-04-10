@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 pkgname=frangipanni
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to convert lines of text into a tree structure"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/birchb1024/frangipanni"
@@ -32,5 +32,5 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 frangipanni -t "$pkgdir/usr/bin/"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
