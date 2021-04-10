@@ -1,6 +1,6 @@
 # Maintainer: Sakura1943 <1436700265@qq.com>
 pkgname=hexo-deployer-with-theme-typography
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Hexo deployment tool with typography theme"
 arch=(x86_64)

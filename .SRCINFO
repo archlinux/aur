@@ -1,6 +1,6 @@
 pkgbase = hexo-deployer-with-theme-typography
 	pkgdesc = Hexo deployment tool with typography theme
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/Sakura1943/hexo-deployer-with-theme-typography
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = hexo-deployer-with-theme-typography
 	depends = zip
 	depends = nodejs-lts-erbium
 	depends = dialog
-	provides = hexo-deployer-with-theme-typography=1.1
+	provides = hexo-deployer-with-theme-typography=1.2
 	source = https://mirrors.yaoyz.cn/hexo//hexo.sh
 	md5sums = SKIP
 
