@@ -20,18 +20,18 @@ md5sums=('SKIP')
 noextract=()
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/riscv-isa-sim"
   git submodule update --init --recursive
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/riscv-isa-sim"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/riscv-isa-sim"
   make DESTDIR="$pkgdir/" install
 }
