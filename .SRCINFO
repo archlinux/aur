@@ -17,6 +17,8 @@ pkgbase = hexo-deployer-with-theme-typography-bin
 	depends = dialog
 	provides = hexo-deployer-with-theme-typography-bin=1.3
 	source = hexo-deployer-with-theme-typography-bin.tar.gz
+	source = warning.sh
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = hexo-deployer-with-theme-typography-bin

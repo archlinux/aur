@@ -15,7 +15,7 @@ install=
 changelog=
 source=("$pkgname.tar.gz" "warning.sh")
 noextract=()
-md5sums=("SKIP")
+md5sums=("SKIP" "SKIP")
 validpgpkeys=()
 
 package() {
