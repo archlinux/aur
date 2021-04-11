@@ -1,0 +1,43 @@
+pkgbase = alterlinux-live-tools
+	pkgdesc = Scripts required for live environment
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/FascodeNet/alterlinux-live-tools
+	arch = any
+	license = SUSHI-WARE
+	depends = xdg-user-dirs
+	depends = bash
+	source = https://github.com/FascodeNet/alterlinux-live-tools/archive/v1.6.2.zip
+	md5sums = 2778b1b2d4ee7b165323d4288d54950f
+
+pkgname = alterlinux-live-tools
+	pkgdesc = Scripts required for live environment (meta package)
+	depends = xdg-user-dirs
+	depends = bash
+	depends = alterlinux-live-tools
+	depends = alterlinux-gtk-bookmarks
+	depends = alterlinux-welcome-page
+	depends = alterlinux-plasma-bookmarks
+	depends = alterlinux-desktop-file
+	depends = alterlinux-live-info
+	provides = alterlinux-live-tools
+	conflicts = alterlinux-live-tools
+
+pkgname = alterlinux-gtk-bookmarks
+	pkgdesc = Simple script to automatically generate GTK bookmarks
+
+pkgname = alterlinux-welcome-page
+	pkgdesc = A simple script to open the official AlterLinux website
+	optdepends = chromium: To open the page
+	optdepends = google-chrome: To open the page
+	optdepends = firefox: To open the page
+
+pkgname = alterlinux-plasma-bookmarks
+	pkgdesc = Simple script to automatically generate Plasma bookmarks
+
+pkgname = alterlinux-desktop-file
+	pkgdesc = Place the Calamares icon on your desktop
+
+pkgname = alterlinux-live-info
+	pkgdesc = Display version information of live environment
+
