@@ -1,7 +1,7 @@
 case "$CARCH" in
      armv?h) THIS_JDK='zulu-embedded-13' ;;
-    aarch64) THIS_JDK='zulu-embedded-15' ;;
-          *) THIS_JDK='zulu-embedded-15' ;;
+    aarch64) THIS_JDK='zulu-embedded-16' ;;
+          *) THIS_JDK='zulu-embedded-16' ;;
 esac
 
 fix_default() {
@@ -35,7 +35,7 @@ post_install() {
   /usr/bin/java -Xshare:dump
 }
 
-ppost_upgrade() {
+post_upgrade() {
   default=$(fix_default)
   if [ -z "${default}" ]; then
     /usr/bin/archlinux-java set ${THIS_JDK}
