@@ -1,0 +1,91 @@
+#!/bin/bash
+
+params=()
+case "$(basename "$0")" in
+	rs-classic)
+		params=(--subdivision 1 --newton 0 --truncate 0 --sqrfree 0 --intprog 0)
+		explanation="classic RS simulation:
+	- subdivision at interval midpoints
+	- bisection only, no Newton-like acceleration
+	- full Taylor shifts"
+		;;
+	rs-adsc)
+		params=(--newton 0 --truncate 0 --sqrfree 0 --intprog 0)
+		explanation="ADsc default configuration:
+	- subdivision at admissible points
+	- bisection only, no Newton-like acceleration
+	- full Taylor shifts"
+		;;
+	rs-anewdsc)
+		params=(--intprog 0) # WORKAROUND for broken functionality in v2016-02-05
+		explanation="ANewDsc default configuration:
+	- subdivision at admissible points
+	- Newton iteration-like acceleration
+	- partial Taylor shifts"
+		;;
+	rs-anewdsc-notrunc)
+		params=(--truncate 0 --intprog 0) # WORKAROUND for broken functionality in v2016-02-05
+		explanation="ANewDsc without truncation:
+	- subdivision at admissible points
+	- Newton iteration-like acceleration
+	- full Taylor shifts"
+		;;
+esac
+
+usage () {
+	echo "RS-ANewDsc <https://anewdsc.mpi-inf.mpg.de/>
+2016-02-05 by Kobel, Rouillier, Sagraloff
+
+${explanation}
+
+For custom options, see \`test_descartes_linux64 --help\`.
+
+USAGE:
+        $0 [OPTIONS] <filename>
+
+        -h
+                this information
+        -v N
+                    set verbosity level to N [default: 0]
+                           -2: completely quiet
+                           -1: only print the isolating intervals to stdout
+                            0: print warnings and few statistics
+                          > 0: various debug and progress messages in different levels
+
+INPUT FILE FORMAT:
+        The input file encodes a single dense univariate polynomial with integer coefficients.
+        The first line contains the degree of the polynomial,
+        the following lines contain one coefficient each, starting from the trailing coefficient.
+        E.g., the input
+                2
+                -3
+                0
+                1
+        encodes the polynomial x^2 - 3 of degree 2.
+        No comments and/or blank lines are allowed in the input."
+}
+
+verbosity=0
+
+while getopts ":hv:" opt; do
+	case "${opt}" in
+		h)
+			usage
+			exit 0
+			;;
+		v)
+			verbosity="${OPTARG}"
+			;;
+		\?)
+			usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND - 1))
+
+if ! [ -r "$1" -o "$1" = "-" ]; then
+	usage
+	exit 1
+fi
+/usr/bin/test_descartes_linux64 "${params[@]}" --verbose "$verbosity" "$1"
