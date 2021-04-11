@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended-git
 	pkgdesc = Transportation simulation game - Extended Version - Nightly build from git
-	pkgver = r18830.14e99df88
+	pkgver = r18833.9d6724e1b
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = simutrans-extended-git
 	depends = freetype2
 	depends = miniupnpc
 	depends = fluidsynth
+	optdepends = soundfont-fluid: Default MIDI soundfont for music
 	optdepends = soundfont-realfont: recommended MIDI soundfont
 	optdepends = simutrans-extended-pak128.britain: High resolution graphics set for Simutrans Extended, with a British theme
 	optdepends = simutrans-extended-pak128.cs: High resolution graphics set for Simutrans Extended, with a czech theme

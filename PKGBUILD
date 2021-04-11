@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-extended-git
-pkgver=r18830.14e99df88
+pkgver=r18833.9d6724e1b
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version - Nightly build from git"
 arch=('any')
@@ -9,7 +9,8 @@ url="https://www.simutrans.com/"
 license=('custom:Artistic')
 depends=('gcc-libs' 'zstd' 'zlib' 'sdl2_mixer' 'hicolor-icon-theme' 'freetype2' 'miniupnpc' 'fluidsynth')
 makedepends=('pkgconf' 'git' 'cmake')
-optdepends=('soundfont-realfont: recommended MIDI soundfont'
+optdepends=('soundfont-fluid: Default MIDI soundfont for music'
+			'soundfont-realfont: recommended MIDI soundfont'
             'simutrans-extended-pak128.britain: High resolution graphics set for Simutrans Extended, with a British theme'
             'simutrans-extended-pak128.cs: High resolution graphics set for Simutrans Extended, with a czech theme'
             'simutrans-extended-pak128.sweden: High resolution graphics set for Simutrans Extended, with a swedish theme'
