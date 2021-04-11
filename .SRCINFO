@@ -1,7 +1,7 @@
 pkgbase = firefox-nightly-zh-tw
 	pkgdesc = Standalone web browser from mozilla.org, nightly build (zh-TW)
 	pkgver = 89.0a1.20210411093417
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/
 	arch = x86_64
 	license = MPL
@@ -15,6 +15,7 @@ pkgbase = firefox-nightly-zh-tw
 	depends = gtk3
 	depends = sqlite
 	depends = dbus-glib
+	optdepends = gtk2
 	provides = firefox=89.0a1
 	provides = firefox-nightly
 	conflicts = firefox-nightly
