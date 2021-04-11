@@ -26,8 +26,8 @@ sha256sums=("SKIP")
 prepare() {
       cd "$srcdir/Rare-$pkgver"
       sed -i 's/mdi.view-grid-outline/mdi.view-grid/' $srcdir/Rare-$pkgver/rare/utils/extra_widgets.py
-      gendesk -n -f \
-        --pkgname "Rare" \
+      gendesk -f -n \
+        --pkgname "$pkgname" \
         --pkgdesc "$pkgdesc" \
         --icon "$srcdir/Rare-$pkgver/rare/styles/Logo.png" \
         --categories "Application;Game;Launcher" \
