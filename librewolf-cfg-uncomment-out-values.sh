@@ -8,7 +8,9 @@ CFG_MOD_FILE=/usr/lib/librewolf/librewolf.cfg-comment-out-list
 
 while IFS= read -r line
 do
-	sed -i "s/\/\/lockPref(\"$line\"/lockPref(\"$line\"/g" $CFG_FILE
+	sed -i -e "s/\/\/lockPref(\"$line\"/lockPref(\"$line\"/g" \ 
+				 -e "s/\/\/defaultPref(\"$line\"/defaultPref(\"$line\"/g" \
+				 $CFG_FILE
 done < $CFG_MOD_FILE
 
 while IFS= read -r line
