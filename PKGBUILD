@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
-_cranver=1.7-4
+_cranver=1.7-6
 pkgname=r-e1071
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
