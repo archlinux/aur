@@ -1,0 +1,4 @@
+*~
+*.log
+gns3-server
+gns3-server-git-*.pkg.tar.*
