@@ -12,7 +12,7 @@ source=("https://github.com/iotaledger/goshimmer/releases/download/v${pkgver}/${
 sha256sums=('e8a2556ae6e119567a0eb5d8bee4c26e9c8a8cbc576d9db64572d532db41b71d'
             '37e021ce73e05f1878896de42c76877a68fe6a678294bda0de3934b1f5a0d9c8')
 backup=('etc/goshimmer/config.json')
-install=goshimmer.install
+install=${_pkgname}.install
 
 package() {
 
