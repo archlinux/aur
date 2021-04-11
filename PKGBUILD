@@ -33,7 +33,6 @@ Categories=Graphics;" > "${srcdir}"/storyboarder-${pkgver}/storyboarder.desktop
 }
 
 package(){
-     echo "${pkgdir}"
      # opt dir
      mkdir -p "${pkgdir}"/opt/storyboarder/
      # linux unpacked
