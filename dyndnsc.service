@@ -1,6 +1,6 @@
 [Unit]
 Description=dyndnsc
-After=network.target
+After=network-online.target
 
 [Service]
 ExecStart=/usr/bin/dyndnsc --loop --config /etc/dyndnsc.conf
