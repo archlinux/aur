@@ -1,8 +1,8 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=asp
-pkgver=6
-pkgrel=2
+pkgver=7
+pkgrel=1
 pkgdesc="Arch Linux build source file management tool"
 arch=(any)
 url="https://github.com/falconindy/asp"
@@ -10,7 +10,8 @@ license=(MIT)
 depends=(awk bash jq git libarchive)
 makedepends=(asciidoc)
 source=("git+https://github.com/falconindy/asp.git#tag=v$pkgver?signed")
-validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53')  # Dave Reisner
+validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'  # Dave Reisner
+              'E499C79F53C96A54E572FEE1C06086337C50773E') # Jelle van der Waa
 md5sums=('SKIP')
 
 build() {
