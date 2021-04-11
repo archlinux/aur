@@ -1,0 +1,32 @@
+pkgbase = sniprun-legacy
+	pkgdesc = A neovim plugin to independently run snippets of code (for neovim < 0.5)
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://github.com/michaelb/sniprun
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = gcc-libs
+	source = sniprun-legacy-0.4.9.tar.gz::https://github.com/michaelb/sniprun/archive/refs/tags/v0.4.9.tar.gz
+	sha256sums = 48b5f59829edfcfb6cf81f15b44bbc9dd0cbe92aa76a5cbce93534623e26735c
+
+pkgname = sniprun-legacy
+	pkgdesc = Compiled binary core for neovim-sniprun-legacy
+	depends = gcc-libs
+	provides = sniprun=0.4.9
+	conflicts = sniprun
+
+pkgname = neovim-sniprun-legacy
+	install = neovim-sniprun-legacy.install
+	arch = any
+	depends = neovim<0.5
+	depends = sniprun=0.4.9
+	optdepends = bash: Bash snippet support
+	optdepends = gcc: C/C++ snippets support
+	optdepends = gcc-ada: Limited Ada snippet support
+	optdepends = ghc: Haskell snippets support
+	optdepends = python3: Python3 snippets support
+	optdepends = jupyter: Jupyter support
+	provides = neovim-sniprun=0.4.9
+	conflicts = neovim-sniprun
+
