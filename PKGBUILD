@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='pulse-autoconf'
-_pkgverUpstream="1.3.1"
+_pkgverUpstream="1.4.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="PulseAudio server dynamic configuration daemon"
@@ -10,7 +10,7 @@ url='https://eomanis.duckdns.org/permshare/pulse-autoconf/'
 license=('GPL3')
 depends=('bash' 'coreutils' 'findutils' 'grep' 'libpulse' 'sed' 'util-linux')
 source=("https://eomanis.duckdns.org/permshare/pulse-autoconf/pulse-autoconf-${_pkgverUpstream}.tar.gz")
-sha384sums=('e1b3a5f0ee1ca8e60a5dc89ebd81314102a33a904e5776a4fe58b05f2c397af33cb3d48b078dd92001f1f6ecb5825598')
+sha384sums=('ee7cb7b55a18b2c25e5250df0192d1c3f4490ed5b34640ffedea5cde57b65ba20a18d1ab791e18caef4571fc151a650a')
 
 package() {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
@@ -26,4 +26,10 @@ package() {
     cd "${pkgdir}/usr/share/applications"
     cp -t . "${srcRootDir}/pulse-autoconf.desktop"
     chmod u=rw,go=r "pulse-autoconf.desktop"
+
+    # Place the systemd unit file into /usr/lib/systemd/user
+    mkdir -p "${pkgdir}/usr/lib/systemd/user"
+    cd "${pkgdir}/usr/lib/systemd/user"
+    cp -t . "${srcRootDir}/systemd/pulse-autoconf.service"
+    chmod u=rw,go=r "pulse-autoconf.service"
 }
