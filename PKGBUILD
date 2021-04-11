@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_tag=739
-_version=1.0+739
+_tag=740
+_version=1.0+740
 
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
@@ -65,7 +65,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('1e32a45944908c5bd03cca7e158305108ae5fe5fff4e4b34245f7bf673914dcf'
+sha256sums=('43c8c60ec6dd5e96a4e25ff80a18af2d94dbdbbfe5d2bae63fc2f6438105a9dc'
             '63fa0d23ce6b2ef388832419a3eda0d172f5869e1845ad25d5874bf5607981b6'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
             '8de1e1ac3b20795a69e5932f52108e187769cc6e2c19833b4baf55518c3b9933'
