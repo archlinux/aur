@@ -2,7 +2,7 @@
 
 _pkgname=pylibjpeg-openjpeg
 pkgname=python-pylibjpeg-openjpeg
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A J2K and JP2 plugin for pylibjpeg'
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=(
   cmake
   cython
   git
+  python-setuptools
 )
 source=("${pkgname}::git+https://github.com/pydicom/pylibjpeg-openjpeg.git#tag=v1.0.1")
 sha512sums=('SKIP')
