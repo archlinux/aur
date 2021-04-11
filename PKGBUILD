@@ -3,7 +3,7 @@
 
 _pkgname=gns3-server
 pkgname=$_pkgname-git
-pkgver=v2.2.9.r0.gc0c81514
+pkgver=v2.2.20.r4.g4e61cc81
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
@@ -28,22 +28,20 @@ depends=(
     'python-py-cpuinfo'
     'python-sentry_sdk'
     'python-yarl'
-    'python-zipstream-gns3'
 )
 optdepends=(
-    'dynamips: Cisco router emulator.'
-    'gns3-gui-git: graphical user interface for GNS3 server.'
-    'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
-    'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
+    'dynamips: Cisco router emulator'
+    'gns3-gui-git: graphical user interface for GNS3 server'
+    'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS'
     'libvirt: needed for the NAT cloud'
-    'vpcs: Simple PC emulation for basic network operations.'
-    'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
+    'vpcs: Simple PC emulation for basic network operations'
+    'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces'
 )
 install="$_pkgname.install"
 source=("$_pkgname::git+git://github.com/GNS3/$_pkgname.git"
         "$_pkgname@.service")
 sha256sums=('SKIP'
-            'd145c7a4b7163aecd91b71a0769130d62beb5f4381fe5437774f6b4477a3fa48')
+            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 pkgver() {
     cd "$_pkgname"
@@ -52,9 +50,12 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
+    # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
-        -e 's|^aiofiles==0\.4\.0$|aiofiles>=0.4.0|' \
-        -e 's|^psutil==5\.6\.6$|psutil>=5.6.6|' \
+        -e 's|^aiohttp==3\.7\.4.*|aiohttp>=3.7.4|' \
+        -e 's|^aiofiles==0\.6\.0$|aiofiles>=0.6.0|' \
+        -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
+        -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
         requirements.txt
 }
 
