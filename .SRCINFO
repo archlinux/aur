@@ -1,7 +1,7 @@
 pkgbase = zramd
 	pkgdesc = Automatically setup swap on zram ✨
-	pkgver = 0.8.7
-	pkgrel = 2
+	pkgver = 0.8.8
+	pkgrel = 1
 	url = https://github.com/maximumadmin/zramd
 	arch = any
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = zramd
 	conflicts = zram-generator
 	conflicts = zram-generator-git
 	backup = etc/default/zramd
-	source = https://github.com/maximumadmin/zramd/archive/v0.8.7.tar.gz
-	sha256sums = ba60bb4af7d58b072ee903111d6e607975f023dfb53816bb585df34ab3b9c841
+	source = https://github.com/maximumadmin/zramd/archive/v0.8.8.tar.gz
+	sha256sums = b0464e4b33b0e9365c45d1f608d620f13879d464eac259a9e0e37eb1402f2654
 
 pkgname = zramd
 
