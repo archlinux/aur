@@ -2,8 +2,8 @@
 # Contributor: Oscar Morante <oscar@mooistudios.com>
 
 pkgname=unityhub
-pkgver=2.4.2
-pkgrel=3
+pkgver=2.4.3
+pkgrel=1
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 url="https://unity.com/"
 arch=('x86_64')
