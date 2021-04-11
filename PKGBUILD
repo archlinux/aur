@@ -15,7 +15,7 @@ makedepends=('python-pip' 'python-wheel')
 source=("https://github.com/infothrill/$_pkgname/archive/$pkgver.zip"
         'dyndnsc.service')
 sha256sums=('ff0fcd735e96a958fdce51910d962f064c0da6b4b9723e929c1a1e5de2570df0'
-            '06e5088696dd2cd6e9af9de51bf0c88e94adadd582cd66620bc260caaf56059c')
+            '7ac42ed7d22517d45cc44195d2abcb0c0ba67c257453cda8e83d896b7a95cd76')
 
 build() {
     cd "$_pkgname-$pkgver"
