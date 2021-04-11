@@ -1,0 +1,19 @@
+pkgbase = instawm-schemas
+	pkgdesc = addons for instamenu
+	pkgver = 2021.04.10
+	pkgrel = 1
+	url = https://github.com/The-Repo-Club/instawm-schemas
+	arch = any
+	groups = therepoclub
+	license = CC BY-NC-SA 4.0
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = dconf
+	provides = instamenu-schemas=2021.04.10
+	source = instawm-schemas-2021.04.10.tar.gz::https://github.com/The-Repo-Club/instawm-schemas/archive/2021.04.10.tar.gz
+	sha256sums = SKIP
+
+pkgname = instawm-schemas
+
