@@ -1,14 +1,14 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
-	pkgver = 0.4.1
-	pkgrel = 4
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	makedepends = git
-	makedepends = crystal<0.36.0
-	makedepends = shards>=0.11.0
+	makedepends = crystal>=1.0.0
+	makedepends = shards>=0.14.0
 	makedepends = libyaml
 	depends = gc
 	depends = libevent
@@ -16,15 +16,16 @@ pkgbase = tijolo
 	depends = gtksourceview4
 	depends = nerd-fonts-jetbrains-mono
 	depends = libgit2
-	depends = vte3
 	depends = editorconfig-core-c
+	depends = ttf-font-awesome>=5.15
+	depends = vte3
 	optdepends = ccls: C/C++ LSP support
 	optdepends = bash-language-server: Bash LSP support
 	optdepends = yaml-language-server-bin: YAML LSP support
 	optdepends = python-language-server: Python LSP support
 	conflicts = tijolo-git
-	source = tijolo-0.4.1.tar.gz::https://github.com/hugopl/tijolo/archive/v0.4.1.tar.gz
-	sha256sums = 38c7b520fbc12eeb132fd415f9fdeb3ca545349cba6bdbd261b352ac7e544598
+	source = tijolo-0.5.1.tar.gz::https://github.com/hugopl/tijolo/archive/v0.5.1.tar.gz
+	sha256sums = 162286dbafdeaf355a3cde6151eff0d5e69872456bcb30a889271aa502666db9
 
 pkgname = tijolo
 
