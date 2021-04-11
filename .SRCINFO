@@ -1,7 +1,7 @@
 pkgbase = bubblemail
 	pkgdesc = New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts
-	pkgver = 1.3
-	pkgrel = 1
+	pkgver = 1.4
+	pkgrel = 0
 	url = https://framagit.org/razer/bubblemail/
 	arch = any
 	license = GPL2
@@ -20,8 +20,8 @@ pkgbase = bubblemail
 	optdepends = gnome-shell
 	optdepends = gnome-shell-extension-bubblemail
 	optdepends = folks
-	source = https://framagit.org/razer/bubblemail/-/archive/v1.3/bubblemail-v1.3.tar.bz2
-	sha256sums = ab010bbdddbcec50dbdf366dab0f833b406619726d91f5b14947e1839de16dc4
+	source = https://framagit.org/razer/bubblemail/-/archive/v1.4/bubblemail-v1.4.tar.bz2
+	sha256sums = 20f3b1556c87e0241c3b760ea5e17ab35a1d078b1ba94e8e93d0e384e472f0a1
 
 pkgname = bubblemail
 
