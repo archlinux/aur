@@ -10,20 +10,20 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.10.0.r0.gbfc9a8d5c5
+pkgver=5.14.0.r108.g6e32092098
 pkgrel=1
 _dictionaries_commit="d6160c5e006089c711f3fec6eb4e2ade60a4150c"
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
-_py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython'
+_py_deps=('apsw' 'beautifulsoup4' 'cchardet' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython'
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'py7zr' 'pychm' 'pygments' 'pyqt5'
           'pyqtwebengine' 'regex' 'zeroconf')
 depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusb'
          'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
-         "${_py_deps[@]/#/python-}" 'qt5-svg' 'ttf-liberation' 'udisks2')
+         "${_py_deps[@]/#/python-}" 'qt5-imageformats' 'qt5-svg' 'ttf-liberation' 'udisks2')
 makedepends=('git' 'qt5-x11extras' 'sip' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
 checkdepends=('xorg-server-xvfb')
 optdepends=('poppler: required for converting pdf to html')
@@ -111,7 +111,8 @@ package() {
 
     LANG='en_US.UTF-8' python setup.py install \
         --staging-root="${pkgdir}/usr" \
-        --prefix=/usr
+        --prefix=/usr \
+        --system-plugins-location /usr/share/calibre/system-plugins
 
     cp -a man-pages/ "${pkgdir}/usr/share/man"
 
