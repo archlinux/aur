@@ -1,8 +1,8 @@
 # Maintainer: Julian Daube <joposter at gmail dot com>
 
 pkgname=mopidy-youtube
-pkgver=v3.2.0
-_pkgver=3.2
+pkgver=v3.3.0
+_pkgver=v3.3
 pkgrel=3
 pkgdesc="Mopidy extension for playing music from Youtube"
 
@@ -16,16 +16,16 @@ depends=(
   'python-requests'
   'python-cachetools'
   'python-beautifulsoup4'
-  'youtube-dl>=2020.12.22')
+  'youtube-dl>=2020.12.22'
+  'python-ytmusicapi')
 makedepends=('python' 'git')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-3.3"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('6dc86720870b696ae6ee2592cf59eadf')
-sha1sums=('6042a2a6262256eda33db89b891824a8c46569ae')
-
+md5sums=('363cc173cc318951d29b7c65c3ee0bea')
+sha1sums=('d130bba840951c350ec24bd0de0a1e9831137629')
