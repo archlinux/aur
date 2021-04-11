@@ -34,7 +34,9 @@ Categories=Graphics;" > "${srcdir}"/kumoworks-${pkgver}/kumoworks.desktop
 
 package(){
      mkdir -p "${pkgdir}"/usr/share/applications/
+     mkdir -p "${pkgdir}"/usr/share/pixmaps/
      mkdir -p "${pkgdir}"/opt/kumoworks/
+     curl https://download.tuxfamily.org/4232/icons/kumoworks.png > "${pkgdir}"/usr/share/pixmaps/kumoworks.png
      cp "${srcdir}"/kumoworks-${pkgver}/kumoworks.desktop "${pkgdir}"/usr/share/applications/kumoworks.desktop
      cp "${srcdir}"/kumoworks-${pkgver}/build/KumoWorks "${pkgdir}"/opt/kumoworks/kumoworks
 }
