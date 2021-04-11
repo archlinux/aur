@@ -1,0 +1,34 @@
+pkgbase = dnsmasq-regex
+	pkgdesc = Lightweight, easy to configure DNS forwarder and DHCP server, with regex support
+	pkgver = 2.85.b150a80
+	pkgrel = 1
+	url = https://github.com/lixingcong/dnsmasq-regex
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = gmp
+	depends = libidn2
+	depends = libidn2.so
+	depends = libdbus
+	depends = libdbus-1.so
+	depends = libnetfilter_conntrack
+	depends = nettle
+	depends = libnettle.so
+	depends = libhogweed.so
+	provides = dnsmasq
+	conflicts = dnsmasq
+	backup = etc/dnsmasq.conf
+	source = git+https://github.com/lixingcong/dnsmasq-regex.git
+	source = Makefile.patch
+	source = git://thekelleys.org.uk/dnsmasq.git
+	source = dnsmasq-sysusers.conf
+	source = dnsmasq.service
+	sha256sums = SKIP
+	sha256sums = 1166f61d5d9d004f8f9cc324349c6bad68774e5dd75cb10ba173b298780580f4
+	sha256sums = SKIP
+	sha256sums = 7f6ff6a709038ae580758f4b6a754451d7f7ce22957b88a36b97f7b643d3c2ab
+	sha256sums = 297dbae8cfa3d353284820dd87cc65c37d1ef289cac3a5c3ede079413d31eeec
+
+pkgname = dnsmasq-regex
+
