@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "bootsplash-theme-manjaro-space-green"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 } 
 
 build() {
