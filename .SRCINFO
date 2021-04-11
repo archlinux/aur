@@ -1,0 +1,16 @@
+pkgbase = ccluster
+	pkgdesc = local clustering of complex roots of a univariate polynomial with complex coefficients
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/rimbach/Ccluster
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = arb
+	depends = flint
+	depends = gmp
+	source = https://github.com/rimbach/Ccluster/archive/refs/tags/v1.1.5.tar.gz
+	sha256sums = 42aeaa9a5a9ffba183378eb1d1cd9ade070919a3dbb73c6e264b1b6bf2ae5d48
+
+pkgname = ccluster
+
