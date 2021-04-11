@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=himalaya
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Minimalist CLI email client, written in Rust"
 arch=('x86_64')
@@ -11,16 +11,16 @@ license=('BSD')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5978d649161559fa31f3f6f65e7631da880f8d2b9dcbf5406fb4ff2f089d9828a0946fcb8be4d80f61ced24391a209492102806669a68178f867fc1b5b7d0476')
+sha512sums=('db8036b29fd7b0f99981048635a12c1173084f252d8d263c8d1ba67afbe8cdb6e9560a50f2d6c1f7253eb1977e0e0e6c9b80164a30b1f76c99153bf83d5e7544')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release #--locked
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked
+  cargo test --release #--locked
 }
 
 package() {
