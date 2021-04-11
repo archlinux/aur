@@ -1,14 +1,14 @@
 pkgbase = vim-vimade-git
 	pkgdesc = An eye-catching plugin that fades inactive buffers
 	pkgver = r227.9b92543
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tadaa/vimade
 	arch = any
 	groups = vim-plugins
 	license = unknown
 	makedepends = git
 	depends = vim-plugin-runtime
-	optdepends = treesitter: experimental support for fading buffers
+	optdepends = tree-sitter: experimental support for fading buffers
 	provides = vim-vimade
 	conflicts = vim-vimade
 	source = vim-vimade-git::git+https://github.com/tadaa/vimade
