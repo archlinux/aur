@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=zur-git
-pkgver=0.5
+pkgver=0.5.0+3+g49035b5
 pkgrel=1
 pkgdesc="An AUR helper written in Zig"
 arch=("x86_64")
@@ -13,6 +13,11 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/hspak/zur")
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "$(echo $pkgname | cut -d'-' -f1)"
+  git describe --tags | sed 's/-/+/g'
+}
 
 build() {
   cd "$(echo $pkgname | cut -d'-' -f1)"
