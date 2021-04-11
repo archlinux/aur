@@ -1,6 +1,7 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
+# Contributor: DuckSoft <realducksoft at gmail>
 pkgname=proverif
-pkgver=2.01
+pkgver=2.02pl1
 pkgrel=1
 pkgdesc='Cryptographic protocol verifier in the formal model'
 arch=('i686' 'x86_64')
@@ -10,8 +11,8 @@ depends=('ocaml')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'lablgtk2')
 optdepends=('graphviz: for displaying graphs of found attacks')
 source=("http://prosecco.gforge.inria.fr/personal/bblanche/proverif/proverif$pkgver.tar.gz")
-sha1sums=('b55a942a25f462013e575924baa0706b6b9c69ad')
-sha256sums=('b1bf1496c5aebfa3c0f311317ca99626435faa5d08a6a49402ff1c1606299707')
+sha1sums=('d5421ac236a03a6c432417bf1b066d81cbc6b551')
+sha256sums=('5d4aa21eb05b9fe11d1fe448259b7dbda7adca1cd15c09f0acee3508fa75bfca')
 
 build() {
   cd "$srcdir/proverif$pkgver"
@@ -20,14 +21,29 @@ build() {
 
 check() {
   cd "$srcdir/proverif$pkgver"
-  ./test all
-  ./test-type all
+
+  msg2 "Running typed tests..."
+  ./test test typed
+
+  msg2 "Running untyped tests..."
+  ./test test untyped
 }
 
 package() {
   cd "$srcdir/proverif$pkgver"
 
-  install -Dm755 proverif "$pkgdir/usr/bin/proverif"
-  install -Dm755 proveriftotex "$pkgdir/usr/bin/proveriftotex"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/proverif/LICENSE"
+  msg2 "Copying binaries..."
+  install -Dm755 -vt "$pkgdir/usr/bin/" proverif{,totex,_interact}
+
+  msg2 "Copying documentation..."
+  install -Dm644 -vt "$pkgdir/usr/share/doc/proverif/" README CHANGES docs/*
+  install -Dm644 -vt "$pkgdir/usr/share/licenses/proverif/" LICENSE
+
+  msg2 "Copying examples..."
+  mkdir -p "$pkgdir/usr/share/proverif/examples/"
+  cp --preserve=m,t -Rvt "$pkgdir/usr/share/proverif/examples/" examples/*
+
+  msg2 "Copying Emacs mode..."
+  mkdir -p "$pkgdir/usr/share/emacs/site-lisp/"
+  install -Dm644 -v emacs/proverif.el "$pkgdir/usr/share/emacs/site-lisp/proverif.el"
 }
