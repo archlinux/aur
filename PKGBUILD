@@ -49,13 +49,13 @@ package()
 {
     # Assure that the directories exist.
     mkdir -p ${pkgdir}/etc/systemd/system/php-fpm.service.d/
-    mkdir -p ${pkgdir}/usr/share/${_pkgname}/
-    mkdir -p ${pkgdir}/usr/share/${_pkgname}/misc/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
+    mkdir -p ${pkgdir}/usr/share/webapps/
+    mkdir -p ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
 
     # Install the software.
-    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
+    cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
 
     ## GeoIP database
     cur_year=$(date +"%Y")
@@ -83,18 +83,18 @@ package()
 
     curl https://download.db-ip.com/free/dbip-city-lite-${cur_year}-${cur_month}.mmdb.gz -o "DBIP-City-Lite.mmdb.gz"
     gzip -d ${srcdir}/DBIP-City-Lite.mmdb.gz
-    install -Dm644 ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/${_pkgname}/misc/
+    install -Dm644 ${srcdir}/DBIP-City-Lite.mmdb ${pkgdir}/usr/share/webapps/${_pkgname}/misc/
 
     ## Configure php-fpm.
     echo -e "[Service]
-ReadWritePaths = /usr/share/${_pkgname}/config/
-ReadWritePaths = /usr/share/${_pkgname}/matomo.js
-ReadWritePaths = /usr/share/${_pkgname}/misc/user/
-ReadWritePaths = /usr/share/${_pkgname}/plugins/
-ReadWritePaths = /usr/share/${_pkgname}/tmp/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
+ReadWritePaths = /usr/share/webapps/${_pkgname}/config/
+ReadWritePaths = /usr/share/webapps/${_pkgname}/matomo.js
+ReadWritePaths = /usr/share/webapps/${_pkgname}/misc/user/
+ReadWritePaths = /usr/share/webapps/${_pkgname}/plugins/
+ReadWritePaths = /usr/share/webapps/${_pkgname}/tmp/" > ${pkgdir}/etc/systemd/system/php-fpm.service.d/override_matomo.conf
 
     ## Set the owner.
-    chown -R http:http ${pkgdir}/usr/share/${_pkgname}/
+    chown -R http:http ${pkgdir}/usr/share/webapps/${_pkgname}/
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/
