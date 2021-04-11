@@ -1,7 +1,7 @@
 # Maintainer: Andrey Alekseev <andrey.android7890@gmail.com>
 
 pkgname=('bootsplash-theme-manjaro-space-purple-git')
-pkgver=1.0.r14.gb02ee87
+pkgver=1.1.r0.g7f2390e
 pkgrel=2
 arch=('x86_64')
 pkgdesc="Beautiful Manjaro Bootsplash with space animation"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "bootsplash-theme-manjaro-space-purple"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 } 
 
 build() {
