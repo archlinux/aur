@@ -1,6 +1,6 @@
 post_install(){
  echo "
-To complete the installation process of Paperless-NG, edit /etc/paperless.conf
+To complete the installation process of Paperless-ng, edit /etc/paperless.conf
 as shown here https://paperless-ng.readthedocs.io/en/latest/configuration.html#configuration
 Then create the database with
 
@@ -18,7 +18,7 @@ Paperless services can be started together with
 
 post_upgrade(){
  echo "
-To complete the update process of Paperless-NG, you should run eventual new migrations with
+To complete the update process of Paperless-ng, you should run eventual new migrations with
 
     sudo -u paperless paperless-manage migrate
 "
