@@ -25,11 +25,11 @@ sha256sums=("SKIP")
 
 prepare() {
       cd "$srcdir/Rare-$pkgver"
+      cp $srcdir/Rare-$pkgver/rare/styles/Logo.png $srcdir/Rare-$pkgver/$pkgname.png
       sed -i 's/mdi.view-grid-outline/mdi.view-grid/' $srcdir/Rare-$pkgver/rare/utils/extra_widgets.py
       gendesk -f -n \
         --pkgname "$pkgname" \
         --pkgdesc "$pkgdesc" \
-        --icon "$srcdir/Rare-$pkgver/rare/styles/Logo.png" \
         --categories "Application;Game;Launcher" \
         --custom "Keywords=epic;games;launcher;legendary;"
 }
@@ -43,6 +43,7 @@ package() {
 	cd "$srcdir/Rare-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
 
