@@ -11,7 +11,7 @@ depends=('devtools>=20190821-1' 'rsync' 'libarchive>=3.3.3' 'pacman>=5.2')
 conflicts=('clean_chroot_manager')
 replaces=('clean_chroot_manager')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v$pkgver.tar.gz")
-b2sums=('5270a606da8e73df38b0d8177227d42d363d403f789b39e5dca4378ec20acb9f8585034407cd7ff0740d812b8100234a193bafadbf14b475c47c2da3f4437f00')
+b2sums=('bad4beeda3f667c65b4cbd907cb95a8d0b0992648cf5e48c17bf69fd4400afcc1725c47e817bdf2a1ceb3ae6a4a8b2818662c715f6c41fd45aa0cceee9ea52a8')
 install=ccm.install
 
 build() {
