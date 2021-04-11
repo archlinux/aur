@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Dot Browser
 GenericName=Web Browser
-Exec=/opt/dot/dot %u
+Exec=dot %u
 Icon=dot
 Terminal=false
 Type=Application
@@ -14,8 +14,8 @@ Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=/opt/dot/dot --new-window %u
+Exec=dot --new-window %u
 
 [Desktop Action new-private-window]
 Name=New Private Window
-Exec=/opt/dot/dot --private-window %u
+Exec=dot --private-window %u
