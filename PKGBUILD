@@ -1,4 +1,5 @@
-# Maintainer: Jake <ja.ke@posteo.de>
+# Maintainer: Jake <aur@ja-ke.tech>
+
 pkgname=flatcam-git
 _pkgname=FlatCAM
 pkgver=r3472.a64d01b5
