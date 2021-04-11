@@ -3,7 +3,7 @@
 
 _pkgname=gns3-gui
 pkgname="$_pkgname"-git
-pkgver=v2.2.9.r0.g2530bf97
+pkgver=v2.2.20.r0.gf90267b4
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -15,7 +15,6 @@ conflicts=('gns3-gui')
 makedepends=('git' 'python-setuptools')
 depends=(
     'desktop-file-utils'
-    'gns3-converter'
     'python-distro'
     'python-jsonschema'
     'python-psutil'
@@ -26,9 +25,9 @@ depends=(
     'qt5-websockets'
 )
 optdepends=(
-    'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM.'
-    'xterm: Default terminal emulator for CLI management of virtual instances.'
-    'wireshark-gtk: Live packet capture.')
+    'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM'
+    'xterm: Default terminal emulator for CLI management of virtual instances'
+    'wireshark-qt: Live packet capture')
 source=("$_pkgname::git+git://github.com/GNS3/$_pkgname.git"
         'gns3.desktop')
 sha256sums=('SKIP'
@@ -41,7 +40,11 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    sed -i -e 's|^psutil==5\.6\.6$|psutil>=5.6.6|' requirements.txt
+    # Arch usually has the latest versions. Patch requirements to allow them.
+    sed -i \
+        -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
+        -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
+        requirements.txt
 }
 
 build() {
