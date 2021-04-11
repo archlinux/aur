@@ -3,7 +3,7 @@
 
 pkgname=xplr
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A hackable, minimal, fast TUI file explorer"
 arch=('x86_64')
 url="https://github.com/sayanarijit/xplr"
@@ -28,5 +28,5 @@ package() {
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 src/config.yml -t "$pkgdir/usr/share/xplr/examples"
+  install -Dm 644 src/config.yml -t "$pkgdir/usr/share/$pkgname/examples"
 }
