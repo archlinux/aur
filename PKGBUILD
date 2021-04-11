@@ -5,7 +5,7 @@
 
 _pkgname=arx-libertatis
 pkgname=$_pkgname-git
-pkgver=1.21.r18900.ga2f01244a
+pkgver=1.21.r18907.g468c3951c
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only) (Git)'
 url='https://arx-libertatis.org/'
@@ -35,11 +35,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/ArxLibertatis"
-
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -S "ArxLibertatis" -B "build" \
+          -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
           -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
           -DICONDIR=/usr/share/icons/hicolor/128x128/apps \
           -DINSTALL_SCRIPTS=ON \
           -DSTRICT_USE=ON \
@@ -57,13 +57,13 @@ build() {
   #   which will run signifincantly slower but enables more runtime
   #   checks and generates better crash reports.
   
-  cmake --build .
+  cmake --build "build"
 }
 
 package() {
-  cd "$srcdir/ArxLibertatis"
+  DESTDIR="${pkgdir}" cmake --install "build"
   
-  DESTDIR="${pkgdir}" cmake --install .
+  cd "$srcdir/ArxLibertatis"
   
   install -Dm644 README.md \
           "$pkgdir/usr/share/doc/$pkgname/README.md"
