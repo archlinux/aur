@@ -1,7 +1,7 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=dads-me
-pkgver=1.0
+pkgver=1.1
 pkgrel=2
 pkgdesc="A Classic Flash Game with Fantastic Combo System"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.newgrounds.com/portal/view/254456"
 license=('custom')
 depends=('flashplayer-standalone')
 source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/dads-me.tar.gz')
-md5sums=('a419153f28e03dd1daf6b2fd019b4403')
+md5sums=('903b34f68f89d0c361302f501b2cca5e')
 noextract=()
 
 prepare() {
