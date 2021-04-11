@@ -16,6 +16,5 @@ package() {
   install -Dm755 usr/bin/pengupop "$pkgdir"/usr/bin/pengupop
   install -Dm755 usr/share/applications/pengupop.desktop "$pkgdir"/usr/share/applications/pengupop.desktop
   install -Dm755 usr/share/icons/hicolor/48x48/apps/pengupop.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/pengupop.png
-
 }
 
