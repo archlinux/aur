@@ -37,11 +37,11 @@ package() {
   install -m644 *.desktop "$pkgdir"/usr/share/applications/
 
   # Icons
-  #for i in 16x16 32x32 48x48 64x64 128x128; do
-  #  install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-  #  ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
-  #        "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
-  #done
+  for i in 16x16 32x32 48x48 64x64 128x128; do
+   install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
+   ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
+         "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
+  done
 
   # Use system-provided dictionaries
   #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
