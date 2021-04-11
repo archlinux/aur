@@ -1,6 +1,6 @@
 pkgbase = pslab-desktop
 	pkgdesc = PSLab Desktop App
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://pslab.io
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = pslab-desktop
 	depends = python-pslab
 	provides = pslab-desktop
 	conflicts = pslab-desktop-latest
-	source = https://github.com/fossasia/pslab-desktop/releases/download/v2.7.0/pslab-2.7.0.tar.xz
-	sha256sums = d820740c84a92587f0fc98be3ed7a30d9b2fab6989752a3193b6eba219e39351
+	source = https://github.com/fossasia/pslab-desktop/releases/download/v2.8.0/pslab-2.8.0.tar.xz
+	sha256sums = 744c72130389433c2dbbc07d60684324b62d4862dbecc8d3cf3e2176015d133f
 
 pkgname = pslab-desktop
 
