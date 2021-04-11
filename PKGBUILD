@@ -3,9 +3,9 @@
 
 pkgname=courier-unicode
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Courier Unicode Library"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "aarch64")
 url="http://www.courier-mta.org/unicode/"
 license=('GPL3')
 depends=('gcc-libs')
