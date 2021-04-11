@@ -1,10 +1,11 @@
 pkgbase = rs-anewdsc
 	pkgdesc = approximate arithmetic multi-precision real root isolator for univariate polynomials
 	pkgver = 20160205
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anewdsc.mpi-inf.mpg.de/
 	arch = x86_64
 	license = custom
+	depends = bash
 	source = https://anewdsc.mpi-inf.mpg.de//test_descartes_linux64
 	source = rs-anewdsc
 	sha256sums = b22b641ab8e8b99de66769c655afc9dad9919065001f285a46ff03e2a1c62cac

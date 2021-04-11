@@ -2,12 +2,12 @@
 
 pkgname=rs-anewdsc
 pkgver=20160205
-pkgrel=1
+pkgrel=2
 pkgdesc="approximate arithmetic multi-precision real root isolator for univariate polynomials"
 url="https://anewdsc.mpi-inf.mpg.de/"
 arch=('x86_64')
 license=('custom')
-depends=()
+depends=('bash')
 source=("${url}/test_descartes_linux64"
         'rs-anewdsc')
 sha256sums=('b22b641ab8e8b99de66769c655afc9dad9919065001f285a46ff03e2a1c62cac'
@@ -17,6 +17,6 @@ package () {
   cd "${srcdir}"
   install -Dt "${pkgdir}/usr/bin" -m755 test_descartes_linux64 rs-anewdsc
   for wrapper in rs-classic rs-adsc rs-anewdsc-notrunc; do
-    ln -s /usr/bin/anewdsc "${pkgdir}/usr/bin/${wrapper}"
+    ln -s /usr/bin/rs-anewdsc "${pkgdir}/usr/bin/${wrapper}"
   done
 }
