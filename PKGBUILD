@@ -1,8 +1,8 @@
 # Maintainer: sim
 pkgname=ttf-jasonhandwriting
-_commit='155f134e305245616c60df9637275d1324aeed52'
+_commit='c0cbb6758097bd806af046da4498aac07873b3bd'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source Traditional Chinese (Taiwan) fonts created by Jason(Yu Ching Sung)'
 arch=('any')
 url='https://github.com/jasonhandwriting/JasonHandwriting'
@@ -13,7 +13,7 @@ source=("JasonHandwriting1.ttf::https://github.com/jasonhandwriting/JasonHandwri
         "JasonHandwriting4.ttf::https://github.com/jasonhandwriting/JasonHandwriting/raw/${_commit}/JasonHandwriting4.ttf"
         "README.md::https://github.com/jasonhandwriting/JasonHandwriting/raw/${_commit}/README.md")
 sha256sums=('de76a15b1e2c1a7050d061485e28195f5b682d45e37499cf730c2b8554c44cf3'
-            '5340dedcd3ccbdbe49955dab9384b273fe12435ea521a96efd471857419c8e2c'
+            'b67dce349d32e92e4ee7befeb0339d04ca69551bb523e60cfb5ea8f5fbd5d669'
             '0ca9859d280fc911dca6f11964ac301bf665233249bec4d4d800878469d9102c'
             '1db91107a80c78e6d04b6d78f86a4b8946f083cb0b41ff5864009c4e1698ee4b'
             'cb20f35d0babdffc639b0f27d2fe1f0918158607688be92639fa7195b1a34782'
