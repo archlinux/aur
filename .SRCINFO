@@ -1,21 +1,21 @@
 pkgbase = alterlinux-live-tools
 	pkgdesc = Scripts required for live environment
-	pkgver = 1.6.2
-	pkgrel = 2
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://github.com/FascodeNet/fascode-live-tools
 	arch = any
 	license = SUSHI-WARE
 	depends = xdg-user-dirs
 	depends = bash
-	source = https://github.com/FascodeNet/fascode-live-tools/archive/v1.6.2.zip
-	md5sums = dd4df81c1c915049a9ba327a3c6a4281
+	source = https://github.com/FascodeNet/fascode-live-tools/archive/v1.7.zip
+	md5sums = 0469ff8bf02665457ab196d5533a444d
 
 pkgname = alterlinux-live-tools
 	pkgdesc = Scripts required for live environment (meta package)
 	depends = xdg-user-dirs
 	depends = bash
 	depends = alterlinux-live-tools
-	depends = alterlinux-gtk-bookmarks
+	depends = fascode-gtk-bookmarks
 	depends = alterlinux-welcome-page
 	depends = alterlinux-plasma-bookmarks
 	depends = alterlinux-desktop-file
@@ -23,7 +23,7 @@ pkgname = alterlinux-live-tools
 	provides = alterlinux-live-tools
 	conflicts = alterlinux-live-tools
 
-pkgname = alterlinux-gtk-bookmarks
+pkgname = fascode-gtk-bookmarks
 	pkgdesc = Simple script to automatically generate GTK bookmarks
 
 pkgname = alterlinux-welcome-page
