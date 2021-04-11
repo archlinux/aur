@@ -2,7 +2,7 @@
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 pkgbase=linux-zen-bcachefs-git
-pkgver=v5.10.27.zen1.r971607.53aec78c954b
+pkgver=v5.10.27.zen1.r971607.feeca9682c64
 _srcver_tag=v5.10.27.zen1
 pkgrel=1
 pkgdesc="Linux ZEN with bcachefs"
@@ -207,7 +207,7 @@ _package-headers() {
 _package-docs() {
     pkgdesc="Documentation for the $pkgdesc kernel"
 
-    cd "$_srcname"
+    cd "$srcdir/$_bchfsname"
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     msg2 "Installing documentation..."

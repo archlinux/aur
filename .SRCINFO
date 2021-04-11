@@ -1,6 +1,6 @@
 pkgbase = linux-zen-bcachefs-git
 	pkgdesc = Linux ZEN with bcachefs
-	pkgver = v5.10.27.zen1.r971607.53aec78c954b
+	pkgver = v5.10.27.zen1.r971607.feeca9682c64
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
