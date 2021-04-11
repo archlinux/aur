@@ -47,23 +47,6 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=n
 fi
 
-## Enable Cachy CPU scheduler by default https://github.com/xanmod/linux/blob/5.8/Documentation/scheduler/sched-Cachy.rst
-## Set variable "use_cachy" to: n to disable (stock Xanmod)
-##                              y to enable
-## Cachy 已经退出历史舞台，后来作者也将这个算法转移到 CaCule，个人也比较推荐这个，响应速度更快
-if [ -z ${use_cachy+x} ]; then
-  use_cachy=n
-fi
-
-## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
-## Set variable "use_ns" to: n to disable (stock Xanmod)
-##                           y to enable (stock Archlinux)
-## 这里我不知道为什么作者默认选择 disable，因为这个功能不选择不少私有软件的无法启动的，比方说 Skype 和统信的微信，推荐大家默认启用
-#if [ -z ${use_ns+x} ]; then
-#  use_ns=y
-#fi
-## 这个补丁已经没有用了
-
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -84,7 +67,7 @@ _makenconfig=y
 
 pkgbase=linux-manjaro-xanmod-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.12
+pkgver=5.11.13
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -93,7 +76,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="f7cef34101b9878fbb2783a374d94e7351d95642" # 5.11.12-1
+__commit="c7855cdcf1efebe4dcdceefeb0e42dbbc7d38196" # 5.11.13-1
 
 license=(GPL2)
 makedepends=(
@@ -105,7 +88,7 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/Xanmod-UKSM/releases/download/Fix/patch-5.11.12-xanmod1"
+        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.13-xanmod1"
         choose-gcc-optimization.sh
         "https://gitlab.manjaro.org/packages/core/linux511/-/archive/${__commit}/linux511-${__commit}.tar.gz"
         '0002-UKSM.patch')
@@ -127,13 +110,6 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-# If use_cachy=y then download cachy patch
-if [ "$use_cachy" = "y" ]; then
-   echo "Cachy branch is not ready yet..." && exit 1
-   source+=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cachy/patch-${pkgver}-xanmod${xanmod}-cachy.xz")
-   sha256sums+=('c35685c5d706a683fc0b02cf11fd40db52becae9205bf0d71f6a4a901d836d69')
-fi
-
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
@@ -142,12 +118,8 @@ prepare() {
   cd linux-${_major}  
   
   # Apply Xanmod patch
-  if [ "$use_cachy" = "y" ]; then
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cachy
-  else
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
-  fi
-
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
+  
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   #echo "-$pkgrel" > localversion.10-pkgrel
@@ -193,17 +165,7 @@ prepare() {
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
-
-  if [ "$use_cachy" = "y" ]; then
-    msg2 "Enabling Cachy CPU scheduler by default..."
-    scripts/config --enable CONFIG_CACHY_SCHED
-  fi
-
-  #if [ "$use_ns" = "n" ]; then
-  #  msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-  #  scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  #fi
-    
+  
   msg2 "add anbox support"
   scripts/config --enable CONFIG_ASHMEM
   # CONFIG_ION is not set
