@@ -1,6 +1,6 @@
 # Maintainer: StuckUpCreations <onelove.nyahbingi@gmail.com>
 pkgname=ctjs-bin
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow"
 arch=("x86_64")
@@ -16,7 +16,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/ct-js/ct-js/releases/download/v1.6.2/ct.js.v1.6.2.for.linux64.zip")
+source=("https://github.com/ct-js/ct-js/releases/download/v1.7.0/ct.js.v1.7.0.for.linux64.zip")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
