@@ -1,0 +1,15 @@
+pkgbase = ventoy-iso-bin
+	pkgdesc = A multiboot ISO image (Binary)
+	pkgver = 1.0.40
+	pkgrel = 1
+	url = https://github.com/ventoy/Ventoy
+	arch = any
+	license = GPL3
+	provides = ventoy-iso
+	conflicts = ventoy-iso
+	noextract = ventoy-1.0.40-livecd.iso
+	source = https://github.com/ventoy/Ventoy/releases/download/v1.0.40/ventoy-1.0.40-livecd.iso
+	b2sums = 6d448c373cfd5a72b03446cd7d139c2a4e1693430c76d4952ee3d6a711c68d897193a17f638479929b6d79599ca039386920ce9bd0055a37d48a38260ceddc2d
+
+pkgname = ventoy-iso-bin
+
