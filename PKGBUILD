@@ -2,7 +2,7 @@
 
 pkgname=python-symspellpy
 _pkgname=symspellpy
-pkgver=6.5.2
+pkgver=6.7.0
 pkgrel=1
 pkgdesc="Python SymSpell"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools')
 source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/mammothb/symspellpy/archive/v${pkgver}.tar.gz
 )
-sha256sums=('60c44186dd3a993f08887c09af14cb75635dff7570b5bf045f5d9360792e3fec')
+sha256sums=('809361d6910e0d41dc3bf700417ac35ac66947fcf0843de20f9e4b2876d4e1bb')
 
 build() {
     cd "${_pkgname}-${pkgver}"
