@@ -1,0 +1,14 @@
+pkgbase = python-tablign
+	pkgdesc = Aligns columns in your ASCII tables
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/nschloe/tablign
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/t/tablign/tablign-0.3.3.tar.gz
+	sha256sums = ec4d662d2a9dbbc0490947e23af637a45b2c0585283db3325e87b04ce8605b7e
+
+pkgname = python-tablign
+
