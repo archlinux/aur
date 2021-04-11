@@ -1,8 +1,8 @@
 pkgbase = linux-logo
 	pkgdesc = Linux with tux logo
-	pkgver = 5.11.12.arch1
+	pkgver = 5.11.13.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.11.12-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.11.13-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,15 +20,15 @@ pkgbase = linux-logo
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.12-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.13-arch1
 	source = config
 	source = config.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 170a5887be33c7caded85156a3bda8ef769d1a38fe33e4973eccc9f0bcc87728
-	sha256sums = 0ef6ed88ebf2a1b3ddf161c26ab7abfcdcfc6ba811f1755ed3e369b96403b154
+	sha256sums = 2622b27dc89e90688aa4b01bef7d9b4f93f3433085200fda08ae9f38a852b45d
+	sha256sums = 1f4c1e478aff83bbfefdee2c3713a1db6b4c01aa0765f5eb42fc01f591d88080
 
 pkgname = linux-logo
 	pkgdesc = The Linux with tux logo kernel and modules
