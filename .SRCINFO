@@ -1,13 +1,14 @@
 pkgbase = bg-plugins.lv2-git
 	pkgdesc = CV arpeggiator and MIDI-pattern plugin developed for the MOD platform by Bram Geisen
-	pkgver = r36.1eb55ff
+	pkgver = r101.5fefe42
 	pkgrel = 1
-	url = https://github.com/BramGiesen/arpeggiator_LV2
+	url = https://github.com/moddevices/mod-arpeggiator-lv2
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = xorg-server
 	depends = lv2
-	source = git+https://github.com/BramGiesen/arpeggiator_LV2
+	source = git+https://github.com/moddevices/mod-arpeggiator-lv2
 	md5sums = SKIP
 
 pkgname = bg-plugins.lv2-git
