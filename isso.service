@@ -1,10 +1,11 @@
 [Unit]
-Description=Isso Comment Server
+Description=Isso Commenting Server
 After=network.target network-online.target nss-lookup.target
 
 [Service]
-Environment="ISSO_SETTINGS=/etc/isso.conf"
-ExecStart=/usr/bin/isso run
+User=isso
+Group=isso
+ExecStart=/usr/bin/isso -c /etc/isso.conf run
 
 [Install]
 WantedBy=multi-user.target
