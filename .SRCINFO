@@ -1,0 +1,15 @@
+pkgbase = unrpyc-git
+	pkgdesc = A ren'py script decompiler
+	pkgver = 1.1.6+1+g8edfc27
+	pkgrel = 1
+	url = https://github.com/CensoredUsername/unrpyc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	source = git+https://github.com/CensoredUsername/unrpyc
+	md5sums = SKIP
+
+pkgname = unrpyc-git
+
