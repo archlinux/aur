@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 
 pkgname=pslab-desktop
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="PSLab Desktop App"
 arch=('x86_64')
@@ -15,7 +15,7 @@ install=
 source=(
   "https://github.com/fossasia/${pkgname}/releases/download/v${pkgver}/pslab-${pkgver}.tar.xz"
 )
-sha256sums=('744c72130389433c2dbbc07d60684324b62d4862dbecc8d3cf3e2176015d133f')
+sha256sums=('f8ed24e070a1bdbd01efbc7cb8027af793f840bbd83ac066bd591e26c606f7a6')
 
 package() {
   cd "$srcdir"
