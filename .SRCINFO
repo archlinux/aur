@@ -1,13 +1,13 @@
 pkgbase = xplr
 	pkgdesc = A hackable, minimal, fast TUI file explorer
-	pkgver = 0.3.13
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/sayanarijit/xplr
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = xplr-0.3.13.tar.gz::https://github.com/sayanarijit/xplr/archive/v0.3.13.tar.gz
-	sha512sums = cf78f7258726cbce8bbbb36504e7dc4eaeb36895de8a0cd9c655d4f8069e0364349d2afe41d856faed4523b1baca0f13615d66660cee197a355509977b3bbb04
+	source = xplr-0.4.1.tar.gz::https://github.com/sayanarijit/xplr/archive/v0.4.1.tar.gz
+	sha512sums = f09669c5a9e75ff82616d0ca81892cdc741c4de860fee10ec97981b2e98dbb0fb71dec3ddb2f068d3e3fbc271c94340c9804b266e7289cbc93eea7bf46ac2162
 
 pkgname = xplr
