@@ -16,7 +16,9 @@ pkgbase = wireplumber-git
 	makedepends = pipewire
 	depends = glib2
 	depends = lua53
+	provides = wireplumber
 	provides = libwireplumber-0.3.so
+	conflicts = wireplumber
 	source = git+https://gitlab.freedesktop.org/pipewire/wireplumber.git
 	sha512sums = SKIP
 
