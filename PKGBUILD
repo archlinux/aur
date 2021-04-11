@@ -1,12 +1,12 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-wandb-git
-pkgver=0.10.25.dev1.r3900
+pkgver=0.10.26.dev1.r3910
 pkgrel=1
 pkgdesc='Weights and Biases - organize and analyze machine learning experiments'
 arch=('any')
 url='https://github.com/wandb/client'
 license=('MIT')
-depends=('python>=3.7' 'python-gitpython' 'python-dateutil' 'python-requests' 'python-click' 'python-promise' 'python-shortuuid' 'python-six' 'python-watchdog' 'python-psutil' 'python-sentry_sdk' 'python-subprocess32' 'python-protobuf' 'python-pyaml')
+depends=('python>=3.7' 'python-gitpython' 'python-dateutil' 'python-requests' 'python-click' 'python-promise' 'python-shortuuid' 'python-six' 'python-watchdog' 'python-psutil' 'python-sentry_sdk' 'python-protobuf' 'python-pyaml')
 makedepends=('git' 'python-setuptools')
 provides=('python-wandb')
 conflicts=("python-wandb-git" "${pkgname}")
