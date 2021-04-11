@@ -1,7 +1,7 @@
 pkgname=songrec
 _pkgname=SongRec
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 provides=('songrec')
 conflicts=('songrec-git')
 pkgdesc='An open-source, unofficial Shazam client for Linux, written in Rust.'
@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "$_pkgname-$pkgver"
-  install -Dm755 "target/release/songrec" "$pkgdir/usr/bin/songrec"
+  install -Dm755 "${CARGO_TARGET_DIR:-target}/release/songrec" "$pkgdir/usr/bin/songrec"
   install -Dm755 "packaging/rootfs/usr/share/applications/com.github.marinm.songrec.desktop" "$pkgdir/usr/share/applications/com.github.marinm.songrec.desktop"
   install -Dm755 "packaging/rootfs/usr/share/icons/hicolor/scalable/apps/com.github.marinm.songrec.svg" \
                     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.marinm.songrec.svg"
