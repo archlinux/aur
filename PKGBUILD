@@ -31,7 +31,7 @@ sha512sums=('SKIP'
             '27eb58a42ba8d40f59123f6288ba54b8257ef17f65d851e8c07102ed04aeaffab0c27c1102872c1751f5ae9640055c787ae7739f68dcc057fb710d78a6672dad'
             'd4fb5f9637554b0883b911234696924ece563ed73e2e48e329e4b4173402d98036df38f36b7cfa238cfbf66826d2f547815cfc3483d18723778aeb1fff5aab38')
 
-install=$pkgname.install
+install=${pkgname}.install
 
 pkgver() {
 
