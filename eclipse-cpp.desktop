@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=4.17
+Name=Eclipse-CDT
+Comment=Open Development Platform
+Exec=eclipse-cpp
+Icon=eclipse-cpp
+Terminal=false
+Categories=GTK;Development;IDE;
+StartupNotify=true

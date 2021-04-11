@@ -1,0 +1,22 @@
+pkgbase = eclipse-cpp-bin
+	pkgdesc = Highly extensible IDE
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.eclipse.org
+	arch = x86_64
+	license = EPL
+	makedepends = tar
+	depends = java-environment>=11
+	depends = python
+	depends = libsecret
+	provides = eclipse-cpp
+	conflicts = eclipse-cpp
+	source = https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-cpp-2021-03-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse-cpp.desktop
+	source = eclipse-cpp.png
+	sha512sums = e6108c65e4720a068529008d5fcdf51d9748d7f332f3e8ae9f4bf058b99ecd14903b6579c8466f9b6b71543cf0ba2988724f5845998883e0a6cce80394560ae4
+	sha512sums = 52538ddb2b30d0e0cd0451cfae3f9ba454185ee4b3cca51d1b2452e8997789e032fea83d8b7327044bcf79aae7615757651f8bbac201da3a4d0083a4e09e2d69
+	sha512sums = 7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f
+
+pkgname = eclipse-cpp-bin
+
