@@ -15,7 +15,7 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 provides=("dot=$pkgver")
-conflicts=('dot')
+conflicts=('dot' 'dot-git')
 source=(https://download.dothq.co/dot/releases/linux/x86/raw
         $_pkgname.sh
         $_pkgname.desktop)
