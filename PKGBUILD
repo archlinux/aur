@@ -3,12 +3,12 @@
 pkgname=instamenu-schemas
 pkgver=2021.04.10
 pkgrel=1
-pkgdesc="addons for instawm"
+pkgdesc="addons for instamenu"
 url="https://github.com/The-Repo-Club/$pkgname"
 arch=('any')
 groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
-provides=("instawm-schemas=$pkgver")
+provides=("instamenu-schemas=$pkgver")
 depends=('glib2' 'dconf')
 makedepends=('gobject-introspection' 'git' 'meson')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
