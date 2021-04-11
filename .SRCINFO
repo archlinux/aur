@@ -1,6 +1,6 @@
 pkgbase = fselect
 	pkgdesc = Find files with SQL-like queries
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/jhspetersson/fselect
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = fselect
 	depends = gcc-libs
 	provides = fselect
 	conflicts = fselect-git
-	source = 0.7.3.tar.gz::https://github.com/jhspetersson/fselect/archive/0.7.3.tar.gz
-	md5sums = 1f022aec6e75e88403acd0d900ccf355
+	source = 0.7.4.tar.gz::https://github.com/jhspetersson/fselect/archive/0.7.4.tar.gz
+	md5sums = 7c1a336641a1f677a23a16bd74911cf6
 
 pkgname = fselect
 
