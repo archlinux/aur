@@ -3,7 +3,7 @@
 validpgpkeys=('33ED753E14757D79FA17E57DC4C1F715B2B66B95')
 
 pkgname=gost-engine
-pkgver=1.1.1_496.9b492b3
+pkgver=1.1.1r496.9b492b3
 pkgrel=1
 pkgdesc='Russian GOST R 34.10 and GOST R 34.11-2012 crypto algorithms for OpenSSL'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ pkgver() {
     exit 1
   )
 
-  echo "1.1.1_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "1.1.1r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 
 }
 
