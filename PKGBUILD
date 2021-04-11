@@ -1,15 +1,15 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=age-of-war-2
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A Strategy War Flash Game"
 arch=('x86_64')
 url="https://armorgames.com/user/Louissi"
 license=('custom')
 depends=('flashplayer-standalone')
-source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/age-of-war.tar.gz')
-md5sums=('6c7146b06c12bb128d974732fff05444')
+source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/age-of-war-2.tar.gz')
+md5sums=('862cc4c58d46f3a87a61fbca62869dcf')
 noextract=()
 
 prepare() {
