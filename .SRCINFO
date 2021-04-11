@@ -24,6 +24,7 @@ pkgbase = dot
 	source = dot.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dot
 
