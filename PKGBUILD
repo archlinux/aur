@@ -2,7 +2,7 @@
 
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_upstreamver='0.12'
+_upstreamver='0.13'
 _upstreamver_regex='^[0-9]+\.[0-9]+$'
 _source_type='github-tags'
 _repo='rr-/urwid_readline'
@@ -19,7 +19,7 @@ makedepends=('cython' 'python-setuptools')
 license=('mit')
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f9688392c0bdeb00732b6f3c01cfd269b6f8fcc2553bec92947aa71af5ebd864')
+sha256sums=('51516c635a376c93a67bc6d28a4639614e5af23dc44a540a266ac2a2053f470c')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/"
