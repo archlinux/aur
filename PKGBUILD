@@ -2,7 +2,7 @@
 
 _pyname=pslab-python
 pkgname=python-pslab
-pkgver=2.2.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Core library for PSlab desktop"
 arch=('any')
@@ -18,12 +18,12 @@ depends=(
 provides=("$_pyname")
 options=(!emptydirs)
 source=(https://github.com/fossasia/$_pyname/archive/v$pkgver.tar.gz)
-sha512sums=('d379c288cc65319675b2d36ef94e91b0186f88f80c4882af173a4df6f9c79343f437e00446f7c54cd49f8b7c66745d60d3969584269ff63d24fc7ea786b38dce')
+sha512sums=('108b83bd73726f492a1295a189c689a51ec875d10cb6f3e585bef5d8d12fc68308d119463028836f072a60b28dfe374369fe814ff99f8599a58a1083b17384a1')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm 644 99-pslab.rules "$pkgdir/usr/lib/udev/rules.d/99-pslab.rules"
+  install -Dm 644 pslab/99-pslab.rules "$pkgdir/usr/lib/udev/rules.d/99-pslab.rules"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,6 +1,6 @@
 pkgbase = python-pslab
 	pkgdesc = Core library for PSlab desktop
-	pkgver = 2.2.0
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://pslab.io
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-pslab
 	depends = python-scipy
 	provides = pslab-python
 	options = !emptydirs
-	source = https://github.com/fossasia/pslab-python/archive/v2.2.0.tar.gz
-	sha512sums = d379c288cc65319675b2d36ef94e91b0186f88f80c4882af173a4df6f9c79343f437e00446f7c54cd49f8b7c66745d60d3969584269ff63d24fc7ea786b38dce
+	source = https://github.com/fossasia/pslab-python/archive/v2.3.2.tar.gz
+	sha512sums = 108b83bd73726f492a1295a189c689a51ec875d10cb6f3e585bef5d8d12fc68308d119463028836f072a60b28dfe374369fe814ff99f8599a58a1083b17384a1
 
 pkgname = python-pslab
 
