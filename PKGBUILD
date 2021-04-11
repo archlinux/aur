@@ -57,7 +57,7 @@ package()
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \${@}" > ${srcdir}/${_pkgname}/run.sh
+dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/webapps/${_pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \${@}" > ${srcdir}/${_pkgname}/run.sh
 
     # Create btcpayserver-start.sh.
     echo -e "#!/bin/bash
