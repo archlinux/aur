@@ -1,6 +1,6 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="An advanced x86/x86_64 BIOS bootloader"
 arch=("x86_64")
