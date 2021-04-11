@@ -8,7 +8,7 @@
 _pkgbase=scons
 pkgname=python2-${_pkgbase}
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible Python-based build utility. Python2 version"
 arch=('any')
 url="https://scons.org"
@@ -72,7 +72,7 @@ build() {
       python bootstrap.py SConstruct doc
       cd src
       for _xml in {scons,sconsign,scons-time}; do
-        docbook2man "../build/doc/man/${_xml}_db.xml"
+        db2x_docbook2man "../build/doc/man/${_xml}_db.xml"
       done
     )
     (
