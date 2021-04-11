@@ -1,0 +1,8 @@
+#!/bin/sh
+
+MITK_DIR="/opt/mitk-2021.02/bin"
+
+export QT_PLUGIN_PATH="/usr/lib/qt/plugins"
+export LD_LIBRARY_PATH="$MITK_DIR:$MITK_DIR/plugins:$LD_LIBRARY_PATH"
+
+exec "$MITK_DIR/MitkWorkbench" $@
