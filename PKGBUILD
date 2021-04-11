@@ -3,30 +3,27 @@
 
 pkgname=rpg2003-rtp
 pkgver=2003
-pkgrel=1
+pkgrel=2
 pkgdesc="RPG Maker 2003 Runtime Package (Japanese)"
 arch=('any')
-url="https://tkool.jp/support/download/rpg2003/rtp"
+url="https://tkool.jp/products/rtp.html"
 license=('custom: commercial')
-makedepends=('unshield-git' 'convmv' 'glibc')
+makedepends=('unshield' 'unarchiver' 'glibc')
 optdepends=('easyrpg-player: game engine for using the RTP')
-source=("https://tkool.jp/assets/files/2003rtp.zip"
-        "$pkgname.sh")
-sha256sums=('d388b183cc3a8206db53f58db4ea88c6661c9cf289c03aea1bf9ccd425f49cd1'
-            'bbf30c73a2a9933c930dc306b01e4dc70790f450567d319e0e0f1602f2e863cd')
+source=("https://tkool.jp/products/rtp/2003rtp.zip")
+sha256sums=('d388b183cc3a8206db53f58db4ea88c6661c9cf289c03aea1bf9ccd425f49cd1')
 noextract=('2003rtp.zip')
 
 prepare() {
-  # extract
-  bsdtar --strip-components 1 --include='*.exe' -xf 2003rtp.zip
-  bsdtar --include='*.txt' -O -xf 2003rtp.zip > TOS-sjis.txt
-  bsdtar -xf RPG2003RTP.exe
-  unshield -R -d rtp x data1.cab
   # cleanup
-  rm -rf rtp/_*
-  convmv -f SHIFT-JIS -t UTF-8 -r --qfrom --notest rtp
-  iconv -f SHIFT-JIS -t UTF-8 TOS-sjis.txt > TOS.txt
+  rm -rf "2003RTPｾｯﾄｱｯﾌﾟ" RPG2003RTP rtp 2003
+  # extract
+  unar -e ms932 2003rtp.zip
+  unar "2003RTPｾｯﾄｱｯﾌﾟ"/RPG2003RTP.exe
+  unshield -e ms932 -d rtp x RPG2003RTP/data1.cab
   mv rtp/"RPGﾂｸｰﾙ2003_ﾗﾝﾀｲﾑﾊﾟｯｹｰｼﾞ" 2003
+  # convert text
+  iconv -f ms932 -t UTF-8 "2003RTPｾｯﾄｱｯﾌﾟ/使用規約.txt" > "使用規約.txt"
 }
 
 package() {
@@ -36,8 +33,6 @@ package() {
   # sane permissions
   find "$pkgdir"/usr/share/rtp -type d -exec chmod 0755 {} \;
   find "$pkgdir"/usr/share/rtp -type f -exec chmod 0644 {} \;
-  # export environment variables
-  install -Dm0755 $pkgname.sh "$pkgdir"/etc/profile.d/$pkgname.sh
   # license
-  install -Dm0644 TOS.txt "$pkgdir"/usr/share/licenses/$pkgname/TOS.txt
+  install -Dm0644 "使用規約.txt" -t "$pkgdir"/usr/share/licenses/$pkgname
 }
