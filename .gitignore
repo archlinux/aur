@@ -1,0 +1,4 @@
+*~
+*.log
+gns3-gui
+gns3-gui-git-*.pkg.tar.*
