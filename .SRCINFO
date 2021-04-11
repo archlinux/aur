@@ -1,7 +1,7 @@
 pkgbase = jellyfin-media-player
 	pkgdesc = Jellyfin Desktop Client
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iwalton3/jellyfin-media-player
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = jellyfin-media-player
 	depends = qt5-x11extras
 	depends = qt5-quickcontrols
 	source = https://github.com/iwalton3/jellyfin-media-player/archive/refs/tags/v1.2.1.tar.gz
-	source = https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-1.7.0-3/dist.zip
+	source = https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-1.7.1/dist.zip
 	sha256sums = 77f8dfe427992c6ee4df09e257798cd15734c4afcaad211959605f63edef8fb1
-	sha256sums = 4a79a6210fe0d3300da947086a6ec07f45993fffc771789c645bfac05f2cf08a
+	sha256sums = 53e3288df75d87210496ae179ba88f47b22d46f5f4ec0cc02138658acef8e781
 
 pkgname = jellyfin-media-player
 
