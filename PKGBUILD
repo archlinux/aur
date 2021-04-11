@@ -3,7 +3,7 @@
 
 pkgname="paperless-ng"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/jonaswinkler/paperless-ng"
 license=("GPL3")
@@ -21,9 +21,10 @@ depends=("file"
          "ttf-liberation"
          "uvicorn"
          "python-aiohttp" "python-arrow" "python-asgiref" "python-async-timeout" "python-attrs" "python-autobahn" "python-automat" "python-blessed" "python-certifi" "python-django-channels" "python-django-channels-redis" "python-chardet" "python-click" "python-concurrent-log-handler" "python-constantly" "python-cryptography" "python-daphne" "python-dateparser" "python-django" "python-django-cors-headers" "python-django-extensions" "python-django-filter" "python-django-picklefield" "python-django-q" "python-django-rest-framework" "python-filelock" "python-fuzzywuzzy" "python-h11" "python-hiredis" "python-httptools" "python-humanfriendly" "python-hyperlink" "python-idna" "python-imap-tools" "python-incremental" "python-inotify-simple" "python-inotifyrecursive" "python-joblib" "python-langdetect" "python-lxml" "python-msgpack" "python-numpy" "python-pathvalidate" "python-portalocker" "python-psycopg2" "python-pyasn1" "python-pyasn1-modules" "python-pycparser" "python-pyopenssl" "python-dateutil" "python-dotenv" "python-gnupg" "python-levenshtein" "python-magic-ahupp" "python-pytz" "python-yaml" "python-redis" "python-regex" "python-requests" "python-scikit-learn" "python-scipy" "python-service-identity" "python-six" "python-sortedcontainers" "python-sqlparse" "python-threadpoolctl" "python-tika" "python-twisted" "python-txaio" "python-tzlocal" "python-urllib3" "python-uvloop" "python-watchdog" "python-watchgod" "python-wcwidth" "python-websockets" "python-whitenoise" "python-whoosh" "python-zope-interface")
-optdepends=("jbig2enc: smalled PDF size"
+optdepends=("jbig2enc: smaller PDF size"
             "postgresql: postgres database")
 source=("$url/releases/download/ng-$pkgver/$pkgname-$pkgver.tar.xz"
+        "$pkgname.hook"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "paperless.target"
@@ -31,6 +32,7 @@ source=("$url/releases/download/ng-$pkgver/$pkgname-$pkgver.tar.xz"
         "paperless-scheduler.service"
         "paperless-webserver.service")
 sha256sums=('4739e453a788faa80ab64feedcae5792accba1fe0af6955967b8e6ce7ec05feb'
+            '5496fb7258fe070450586180437d62eac51189228ae7ac75411630a9253336c5'
             'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
             '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
             '091dc2406139bcc52ca1f9acdb4e20723f4511b8ce6849e37c5ab88784dbac12'
@@ -68,11 +70,11 @@ package(){
  ln -s "/usr/share/paperless/src/manage.py" "$pkgdir/usr/bin/paperless-manage"
  # config file
  install -D -m 640 "$pkgname/paperless.conf" "$pkgdir/etc/paperless.conf"
- rm "$pkgdir/usr/share/paperless/paperless.conf"
- ln -s "/etc/paperless.conf" "$pkgdir/usr/share/paperless/paperless.conf"
+ # optional pacman hook
+ install -D -m 644 "$pkgname.hook" "$pkgdir/usr/share/paperless/docs/$pkgname.hook"
  # user and files to create, ownership and permission to set
- install -D -m 644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
  install -D -m 644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+ install -D -m 644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
  # service files
  install -D -m 644 "paperless.target" "$pkgdir/usr/lib/systemd/system/paperless.target"
  install -D -m 644 "paperless-consumer.service" "$pkgdir/usr/lib/systemd/system/paperless-consumer.service"

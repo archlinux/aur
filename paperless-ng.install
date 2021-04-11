@@ -13,13 +13,23 @@ and create a super user with
 Paperless services can be started together with
 
     sudo systemctl start paperless.target
+
 "
 }
 
 post_upgrade(){
- echo "
+ # warn the user if the provided hook is not being used
+ if [ ! -e "/etc/pacman.d/hooks/paperless-ng.hook" ]; then
+  echo "
 To complete the update process of Paperless-ng, you should run eventual new migrations with
 
     sudo -u paperless paperless-manage migrate
+
+This process can be automated by running once
+
+    sudo mkdir -p /etc/pacman.d/hooks/
+    sudo ln -s /usr/share/paperless/docs/paperless-ng.hook /etc/pacman.d/hooks/
+
 "
+ fi
 }
