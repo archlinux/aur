@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=gitqlient
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A Git client originally forked from QGit that has continued its own path"
 arch=(x86_64)
