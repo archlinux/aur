@@ -25,14 +25,14 @@ package() {
 
   # Install the package files
   install -d "${pkgdir}"/{usr/bin,opt}
-  cp -r ${_name} "${pkgdir}"/${OPT_PATH}
-  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${pkgname}
+  cp -r dot "${pkgdir}"/${OPT_PATH}
+  ln -s "/${OPT_PATH}/dot" "${pkgdir}"/usr/bin/${pkgname}
 
   # Install .desktop files
   install -Dm644 "${srcdir}"/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
 
   # Install icons
-  SRC_LOC="${srcdir}"/${_name}/browser
+  SRC_LOC="${srcdir}"/dot/browser
   DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
   for i in 16 32 48 64 128
   do
