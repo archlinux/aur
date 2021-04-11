@@ -12,7 +12,7 @@ provides=("instawm-schemas=$pkgver")
 depends=('glib2' 'dconf')
 makedepends=('gobject-introspection' 'git' 'meson')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('f31a583dcf9e284a82ae053f2ca9606ec975ebb3eb67164702c7eff17413ceb9')
+sha256sums=('355b415195a647a6d667a6af9f9e641f4759d02ab4f314d2b06890d9feb9e1ab')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
