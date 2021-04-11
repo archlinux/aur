@@ -7,7 +7,7 @@ _uuid="${_extname}@csoriano"
 
 _pkgname="gnome-shell-extension-${_extname}"
 pkgname="${_pkgname}-git"
-pkgver='r542.f37700b'
+pkgver='r565.c92bec3'
 pkgrel=1
 pkgdesc='Add icons to the desktop'
 arch=('x86_64' 'i686')
