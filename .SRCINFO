@@ -8,6 +8,7 @@ pkgbase = unrpyc-git
 	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
+	provides = unrpyc
 	conflicts = unrpyc
 	source = git+https://github.com/CensoredUsername/unrpyc
 	md5sums = SKIP

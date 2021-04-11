@@ -10,6 +10,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('git' 'python2-setuptools')
 conflicts=('unrpyc')
+provides=('unrpyc')
 source=("git+$url")
 md5sums=('SKIP')
 
