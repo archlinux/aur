@@ -21,26 +21,29 @@ source=(https://download.dothq.co/dot/releases/linux/x86/raw
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-  OPT_PATH="/opt/${pkgname}"
+  # Create directories
+  mkdir -p "$pkgdir"/usr/bin
+  mkdir -p "$pkgdir"/usr/share/applications
+  mkdir -p "$pkgdir"/opt
 
-  # Install the package files
-  install -d "${pkgdir}"/{usr/bin,opt}
-  cp -r dot "${pkgdir}"/${OPT_PATH}
-  ln -s "/${OPT_PATH}/dot" "${pkgdir}"/usr/bin/${pkgname}
+  # Install
+  cp -r dot/ "$pkgdir"/opt/$pkgname
 
-  # Install .desktop files
-  install -Dm644 "${srcdir}"/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
+  # Launchers
+  install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
 
-  # Install icons
-  SRC_LOC="${srcdir}"/dot/browser
-  DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
-  for i in 16 32 48 64 128
-  do
-      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
-  done
+  # Desktops
+  install -m644 *.desktop "$pkgdir"/usr/share/applications/
+
+  # Icons
+  #for i in 16x16 32x32 48x48 64x64 128x128; do
+  #  install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
+  #  ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
+  #        "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
+  #done
 
   # Use system-provided dictionaries
-  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
-  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
+  #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$pkgname/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
 }
