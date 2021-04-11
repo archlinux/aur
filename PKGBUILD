@@ -9,7 +9,7 @@ _pkgver=89.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
 pkgver=89.0a1.20210411093417
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
 url='https://www.mozilla.org/en-US/firefox/'
 screenshot="http://people.mozilla.org/~shorlander/blog-images/australis-linux.png"
@@ -38,7 +38,7 @@ package() {
  
   install -d $pkgdir/{opt,usr/{bin,share/applications}}
   cp -r firefox $pkgdir/opt/firefox-nightly
-  install -Dm644 /dev/stdin "$pkgdir/usr/bin/${_pkgname}-${_channel}" << END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/${_pkgname}-${_channel}" << END
 #!/bin/sh
 export LD_LIBRARY_PATH=/opt/firefox-nightly/
 exec /opt/firefox-nightly/firefox --app /opt/firefox-nightly/application.ini --class \'Firefox Nightly\' \"@\"
