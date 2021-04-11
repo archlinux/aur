@@ -1,0 +1,15 @@
+pkgbase = program-shell-git
+	pkgver = r6.55cd858
+	pkgrel = 1
+	url = https://github.com/castillo055/program-shell/
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	provides = program-shell
+	conflicts = program-shell
+	source = git+https://github.com/castillo055/program-shell#branch=main
+	md5sums = SKIP
+
+pkgname = program-shell-git
+
