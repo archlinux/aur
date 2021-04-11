@@ -1,7 +1,7 @@
 pkgbase = ttyplot
 	pkgdesc = A realtime plotting utility for terminal with data input from stdin
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tenox7/ttyplot
 	arch = x86_64
 	license = custom:The Unlicense
@@ -11,7 +11,9 @@ pkgbase = ttyplot
 	provides = ttyplot
 	conflicts = ttyplot-git
 	source = ttyplot-1.4.tar.gz::https://github.com/tenox7/ttyplot/archive/1.4.tar.gz
+	source = https://github.com/tenox7/ttyplot/raw/95eb2641040568e86f83d4de0b97b3033a10a908/ttyplot.1
 	sha256sums = 11974754981406d19cfa16865b59770faaf3ade8d909d9a0134dc56e00d29bd4
+	sha256sums = 83df05ae00a05fb01d034e2493e99fa77b26a332aec5a31feeaa0ccdd5d97be9
 
 pkgname = ttyplot
 
