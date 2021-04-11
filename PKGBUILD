@@ -305,7 +305,7 @@ package() {
 
   install -Dvm644 "$srcdir/settings/$__pkgname.profile" "$pkgdir/etc/firejail/$__pkgname.profile"
   install -Dvm644 "$srcdir/settings/$__pkgname-common.profile" "$pkgdir/etc/firejail/$__pkgname-common.profile"
-  install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/$__pkgname.psd"
+  install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/$__pkgname"
   
   rm "$pkgdir"/usr/lib/${pkgname}/pingsender  
   
