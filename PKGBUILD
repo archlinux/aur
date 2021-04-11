@@ -3,15 +3,15 @@
 
 pkgname=neatimage
 pkgver=8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Best noise reduction fro digital cameras and scanners"
 arch=('x86_64')
 url="https://ni.neatvideo.com/"
 license=('custom')
 depends=(bzip2 expat fontconfig freetype2 gcc-libs glib2 glibc graphite harfbuzz libpng libutil-linux libx11 libxau libxcb libxdmcp libxext libxi pcre zlib)
 source=('https://ni.neatvideo.com/demo/ni8/sld/NeatImageSL.Demo.Intel64.tgz')
-sha512sums=('7aa8888407caad0613674cb2fe8370782e2aabb87b8eaba3c9a7631c959901cb03f0759d67d325236bbf5cf40a3b7c3d29152cf8e2ddcb69f7d7866ff912cf95')
-b2sums=('2304a58333b3213f5861680e0f77972c0d6c7964e144346375f1bed8c758a01ee3e5ae549cd7674d30808ee449d4f203b6961aca3d0abf828fa77cc2eab846a4')
+sha512sums=('e002e5f90d3b7d9fe6569ed143b93f0f9931090b8e85fc1d9a14d4d0da219f9ad29ce41c892a9c214237a1eb1de094b01439e87bc46a4ae5c229c667b470aac9')
+b2sums=('bcef671427333de0925e66ecc233e01ff57a219d8c0a85871cf2e9dc3f6df24618d2d90afcb6ae3e95bea27d8eba6d198db126b57eac0f7bdba6cc6b589358c1')
 
 package() {
 	echo | # “True” silent mode does not appear to do anything…
