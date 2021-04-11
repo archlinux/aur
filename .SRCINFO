@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-desktop-icons
 	pkgdesc = Add icons to the desktop
-	pkgver = 20.04.0
+	pkgver = 20.10.0
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/1465/desktop-icons/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = gnome-shell-extension-desktop-icons
 	depends = gnome-shell
 	conflicts = gnome-shell-extension-desktop-icons-git
 	options = !strip
-	source = https://gitlab.gnome.org/World/ShellExtensions/desktop-icons/-/archive/20.04.0/desktop-icons-20.04.0.tar.gz
-	sha256sums = 442db7399bbb952c861ac788f20d02545279be9af47f4ba756c2383a6ed21d93
+	source = https://gitlab.gnome.org/World/ShellExtensions/desktop-icons/-/archive/20.10.0/desktop-icons-20.10.0.tar.gz
+	sha256sums = 7b2886ce3a1376d54de870943ca283a60275004094a27f44b9ab5998cdc02780
 
 pkgname = gnome-shell-extension-desktop-icons
 
