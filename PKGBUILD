@@ -9,7 +9,7 @@ url="https://www.miniclip.com/games/commando-2"
 license=('custom')
 depends=('flashplayer-standalone')
 source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/commando2.tar.gz')
-md5sums=('cbfd21b5e7a1e452cdf05e6686840a46')
+md5sums=('f91396621ce6ed34e10965aabc8250da')
 noextract=()
 
 prepare() {
