@@ -1,0 +1,15 @@
+pkgbase = kumoworks
+	pkgdesc = KumoWorks is a cloud rendering tool for animation production.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/opentoonz/kumoworks
+	arch = x86_64
+	depends = qt5-tools
+	depends = cmake
+	provides = storyboarder
+	options = !strip
+	source = https://github.com/opentoonz/kumoworks/archive/refs/tags/v1.0.1.zip
+	md5sums = d23c02b5529fc3623f46f4d2605160f8
+
+pkgname = kumoworks
+
