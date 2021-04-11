@@ -1,28 +1,24 @@
 # Maintainer: liolok <aur@liolok.com>
 
-# https://extensions.gnome.org/extension-info/?pk=352&shell_version=3.38
-_gnome_site='https://extensions.gnome.org'
-_name='middleclickclose'
-_uuid='middleclickclose@paolo.tranquilli.gmail.com'
-_pk=352
-_gnome_shell_version=3.38
-_version=17
-_version_tag=19150
+_name="middleclickclose"
+_uuid="middleclickclose@paolo.tranquilli.gmail.com"
 
-pkgname="gnome-shell-extension-$_name"
-pkgver=$_version
-pkgrel=3
+pkgname="gnome-shell-extension-${_name}"
+pkgver=1.5
+pkgrel=1
+epoch=1
 pkgdesc='Gnome shell extension for closing apps in overview with a middle click'
 arch=('any')
-url="$_gnome_site/extension/$_pk/$_name/"
+url="https://github.com/p91paul/middleclickclose"
 license=('GPL2')
-depends=("gnome-shell>=$_gnome_shell_version")
-source=("$pkgname.zip::$_gnome_site/download-extension/$_uuid.shell-extension.zip?version_tag=$_version_tag")
-sha256sums=('75525c19b2d9a4f7259504f81009487733e4785e9e5146bd364affadb89aafba')
+depends=("gnome-shell")
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('f3f25c3b7bb02570f7ff270598cbfde3e01cc892af39f717a93853cc3fc54d97')
 
 package() {
-    local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-    install --directory "$_destdir"
-    chmod 644 ./metadata.json
-    cp --archive ./*[^*.zip] --target-directory="$_destdir"
+    local _source="${_name}-${pkgver}/${_uuid}"
+    local _target="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+    mkdir --parents ${_target}
+    cp --archive --recursive ${_source}/* --target-directory=${_target}
+    glib-compile-schemas ${_target}/schemas
 }
