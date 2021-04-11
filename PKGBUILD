@@ -307,8 +307,6 @@ package() {
   install -Dvm644 "$srcdir/settings/$__pkgname-common.profile" "$pkgdir/etc/firejail/$__pkgname-common.profile"
   install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/$__pkgname"
   
-  rm "$pkgdir"/usr/lib/${pkgname}/pingsender  
-  
   local vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
