@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r773.0bc4db9
+pkgver=r775.c844fc7
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ optdepends=(
   "sqlite: to use SQLite provider"
   "postgresql: to use PostgreSQL provider"
   "mariadb: to use MySQL provider"
+  "cockroachdb: to use CockroachDB provider"
 )
 conflicts=('sftpgo')
 provides=('sftpgo')
@@ -24,7 +25,7 @@ source=("git+https://github.com/drakkan/${_pkgname}.git"
   "sftpgo.json"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
-  '3268523a70e9dedf40b16a9e940e50d0f95a596e5022ef38f72aa7c8ad3b2642'
+  'ba53b494af1ed31f194856d7551f9b14b05cf17fe5a20c992911394c028af155'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
