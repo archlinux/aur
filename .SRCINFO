@@ -1,0 +1,11 @@
+pkgbase = dummy-bashrc
+	pkgdesc = A dummy bashrc file.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = 
+	depends = bash
+	provides = bashrc
+
+pkgname = dummy-bashrc
+
