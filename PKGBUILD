@@ -21,7 +21,7 @@ source=(https://download.dothq.co/dot/releases/linux/x86/raw
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-  OPT_PATH="opt/${pkgname}"
+  OPT_PATH="/opt/${pkgname}"
 
   # Install the package files
   install -d "${pkgdir}"/{usr/bin,opt}
