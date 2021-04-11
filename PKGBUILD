@@ -1,8 +1,8 @@
-# Contributor: gergan_penkov
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: BluePeril <blueperil@blueperil.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-term-size-perl'
-pkgver='0.029'
+pkgver='0.031'
 pkgrel='1'
 pkgdesc="Perl extension for retrieving terminal size (Perl version)"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
 url='https://metacpan.org/release/Term-Size-Perl'
-source=('http://search.cpan.org/CPAN/authors/id/F/FE/FERREIRA/Term-Size-Perl-0.029.tar.gz')
-md5sums=('e647aed35b0c4973e949c311a8222dbf')
-sha512sums=('0f1b3ad458adb46d1107b053e078d55d2e3ecf6d582b685e75ef792073d807ac79d71f91160a83c8d4fc53b01275656c571df61008f58252fb743f9220ec16a5')
-_distdir="Term-Size-Perl-0.029"
+source=("http://search.cpan.org/CPAN/authors/id/F/FE/FERREIRA/Term-Size-Perl-${pkgver}.tar.gz")
+md5sums=('50779c7af28dd5bfb02e541c6e0173ea')
+sha512sums=('7babfb7637e795f1826a964a64cdca48bc7d92dc2cdff0fbdf62f2462fcd2be81475703f577baa18ce3df24f6ae8c103ca19ea53aa3b78733391ed456fcb66bc')
+_distdir="Term-Size-Perl-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,23 +23,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distdir"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
