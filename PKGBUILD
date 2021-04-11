@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer
-_pkgver=6.21
-_pkgrel=5
+_pkgver=6.25
+_pkgrel=3
 pkgver=$_pkgver.$(printf "%03d" $_pkgrel)
 pkgrel=1
 pkgdesc="GreenPAK3-6 Designer"
@@ -17,9 +17,9 @@ options=('!strip')
 install=${pkgname}.install
 
 source_i686=("https://support.dialog-semiconductor.com/downloads/GP_Designer_v${pkgver}_Debian-testing_i386_Setup.deb")
-sha256sums_i686=('c88e786cc13f9948d85e85e4f0493ea57d22db49f6e011f351b211e8bb0c28c4')
+sha256sums_i686=('34bea41fdd706d4a7ed34ee18769ff0fa299c0950f2d477a11fa06109671f349')
 source_x86_64=("https://support.dialog-semiconductor.com/downloads/GP_Designer_v${pkgver}_Debian-testing_amd64_Setup.deb")
-sha256sums_x86_64=('d95c33db7bd777ef41654fc4ce122a316338a855e877fb1b2fd9974803208f52')
+sha256sums_x86_64=('93f6ba4899bf9efe7e3316eb497763a52db1cfa93ef2806c6d83536db9a39095')
 
 package() {
   # Extract the package data
