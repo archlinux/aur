@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
-_cranver=0.999-4
+_cranver=0.999-6
 pkgname=r-expm
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
