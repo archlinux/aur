@@ -75,7 +75,7 @@ post_remove() {
     echo "OpenSSL Configuration file ${openssl_conf} not exist!"
     echo -e "Please edit yours OpenSSL Configuration file and remove strings \E[1m\E[33mopenssl_conf=openssl_gost # Set GOST Configuration\E[0m" \
       "in the beginning and in the end \E[1m\E[33m.include \$dir/gost.cnf # Include GOST Configuration file\E[0m of the file!"
-    exit 1
+    exit 0
   fi
 
   # Checking Active OpenSSL Configuration
