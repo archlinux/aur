@@ -9,10 +9,11 @@ url='https://github.com/CensoredUsername/unrpyc'
 license=('MIT')
 depends=('python2')
 makedepends=('git' 'python2-setuptools')
+conflicts=('unrpyc')
 source=("git+$url")
 md5sums=('SKIP')
 
-repo=unrpyc
+repo=${url##*/}
 
 pkgver () {
     cd "$srcdir/$repo"
@@ -24,7 +25,7 @@ prepare () {
     sed -i "/scripts=/s/]/, 'deobfuscate.py']/" setup.py
 }
 
-package() {
+package () {
     cd "$srcdir/$repo"
     python2 setup.py install --root="$pkgdir"
 }
