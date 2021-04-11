@@ -39,8 +39,7 @@ source_x86_64=("hg+$_repo#revision=autoland"
                "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
                remove_addons.patch
                context-menu.patch
-               mozilla-vpn-ad.patch
-               0001-Use-remoting-name-for-GDK-application-names.patch)
+               mozilla-vpn-ad.patch)
 source_aarch64=("hg+$_repo#revision=autoland"
                 $pkgname.desktop
                 "git+https://gitlab.com/vnepogodin/librewolf-common.git"
@@ -49,8 +48,7 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 context-menu.patch
                 arm.patch
                 build-arm-libopus.patch
-                mozilla-vpn-ad.patch
-                0001-Use-remoting-name-for-GDK-application-names.patch)
+                mozilla-vpn-ad.patch)
 
 sha512sums_x86_64=('SKIP'
                    '65240292835fd82f35b6618ad6aa3ea62a22f6ff7a1675a1054097c6645f9df969ca317a554d4a05a261f41741326234e608f8accf2d8b5effb87e27885e38d1'
@@ -58,8 +56,7 @@ sha512sums_x86_64=('SKIP'
                    'SKIP'
                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
                    '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                   '515141576862877fdaa51f8a1a902e287ebb773c86c18cb9481e0e490cb59a06e0bdead6197d5de9f2a86232bb7832b1d47636289c0d88738ef4ed314901b51d')
+                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
 sha512sums_aarch64=('SKIP'
                     '65240292835fd82f35b6618ad6aa3ea62a22f6ff7a1675a1054097c6645f9df969ca317a554d4a05a261f41741326234e608f8accf2d8b5effb87e27885e38d1'
                     'SKIP'
@@ -68,8 +65,7 @@ sha512sums_aarch64=('SKIP'
                     '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
                     '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
-                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                    '515141576862877fdaa51f8a1a902e287ebb773c86c18cb9481e0e490cb59a06e0bdead6197d5de9f2a86232bb7832b1d47636289c0d88738ef4ed314901b51d')
+                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066')
 
 pkgver() {
   cd mozilla-unified
@@ -181,9 +177,6 @@ else
 ac_add_options --enable-optimize
 END
 fi
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
