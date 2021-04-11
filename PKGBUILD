@@ -1,7 +1,7 @@
 
 # Maintaner: Dummerle
 pkgname=rare
-pkgver=0.9.8.3
+pkgver=0.9.9.9
 pkgrel=1
 pkgdesc="A GUI for legendary, an open source replacement for Epic Games Launcher"
 arch=('any')
@@ -24,12 +24,12 @@ noextract=()
 sha256sums=("SKIP")
 
 prepare() {
-      cd "$srcdir/Rare-$pkgver"
-      sed -i 's/mdi.view-grid-outline/mdi.view-grid/' $srcdir/Rare-$pkgver/Rare/utils/QtExtensions.py
+      cd "$srcdir/rare-$pkgver"
+      sed -i 's/mdi.view-grid-outline/mdi.view-grid/' $srcdir/Rare-$pkgver/rare/utils/extra_widgets.py
       gendesk -n -f \
         --pkgname "Rare" \
         --pkgdesc "$pkgdesc" \
-        --icon "$srcdir/Rare-$pkgver/Rare/Styles/Logo.png" \
+        --icon "$srcdir/Rare-$pkgver/rare/styles/Logo.png" \
         --categories "Application;Game;Launcher" \
         --custom "Keywords=epic;games;launcher;legendary;"
 }
@@ -42,6 +42,7 @@ build() {
 package() {
 	cd "$srcdir/Rare-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
 
 
