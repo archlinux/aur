@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: BluePeril <blueperil@blueperil.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-string-camelcase'
-pkgver='0.02'
+pkgver='0.04'
 pkgrel='1'
 pkgdesc="camelcase, de-camelcase"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=0')
 makedepends=()
-url='http://search.mcpan.org/dist/String-CamelCase'
-source=('http://search.mcpan.org/CPAN/authors/id/H/HI/HIO/String-CamelCase-0.02.tar.gz')
-md5sums=('74885aa8756fda9ff039c350214a4c09')
-sha512sums=('51532369a5c8a0d231298a51ecf7a60d303dd896d2bd065f6fa984bd0fcbdfdc8220b205cc808a7e6e78195ab18d410a6ddca8e0f23f1eb23aff75acef089afd')
-_distdir="String-CamelCase-0.02"
+url='https://metacpan.org/release/String-CamelCase'
+source=("http://search.cpan.org/CPAN/authors/id/H/HI/HIO/String-CamelCase-${pkgver}.tar.gz")
+md5sums=('356ad81554d5214ee44101eda2fe719a')
+sha512sums=('b5a5c1b2f2b3a0be3c25891948ce456d8fccf6247a52efc4045c6607a45108caa92a7f12240ab57b618a27b8c42bf8855e9b1cd84a14bce0151e93954c93b256')
+_distdir="String-CamelCase-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,23 +23,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distdir"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
