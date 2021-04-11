@@ -17,6 +17,7 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
 provides=("dot=$pkgver")
 conflicts=('dot')
 source=(https://download.dothq.co/dot/releases/linux/x86/raw
+        $_pkgname.sh
         $_pkgname.desktop)
 sha256sums=('SKIP' 'SKIP')
 

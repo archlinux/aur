@@ -20,6 +20,7 @@ pkgbase = dot
 	provides = dot=0.1
 	conflicts = dot
 	source = https://download.dothq.co/dot/releases/linux/x86/raw
+	source = dot.sh
 	source = dot.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
