@@ -139,7 +139,7 @@ index 4c61951..2c894e4 100644
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index fda3e3d..d49c448 100644
+index fda3e3d..84626ec 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
 @@ -101,17 +101,18 @@ all: $(1)
@@ -148,7 +148,7 @@ index fda3e3d..d49c448 100644
      CARGO_HOME=$$(OBJ)/.cargo \
 -    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="$$(ARCH$(3))-linux-gnu-gcc" \
 +    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_LINKER="gcc" \
-+    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_RUSTFLAGS="$$(RUSTFLAGS) -C -m$(3)" \
++    CARGO_TARGET_$$(call toupper,$$(ARCH$(3))-unknown-linux-gnu)_RUSTFLAGS="$$(RUSTFLAGS)" \
      CCACHE_BASEDIR="$$(CCACHE_BASEDIR)" \
      STRIP="$$(STRIP)" \
 -    CC="$$(CCACHE_BIN) $$(ARCH$(3))-linux-gnu-gcc" \
