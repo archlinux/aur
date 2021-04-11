@@ -1,10 +1,14 @@
 pkgbase = displaylink
 	pkgdesc = Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00
 	pkgver = 5.4
-	pkgrel = 1
+	pkgrel = 2
 	changelog = DisplayLink USB Graphics Software for Ubuntu5.4-Release Notes.txt
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = custom
 	license = GPL2
 	license = LGPL2.1

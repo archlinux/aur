@@ -7,9 +7,9 @@ pkgname=displaylink
 pkgver=5.4
 _releasedate=2021-04
 _pkgfullver=5.4.0-55.153
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url=""
 license=('custom' 'GPL2' 'LGPL2.1')
 depends=('evdi-git>=1.9.1.r4.gb0b3d13'
@@ -48,16 +48,22 @@ package() {
   echo "Extracting DisplayLink Driver Package"
   pushd $srcdir
   chmod +x displaylink-driver-${_pkgfullver}.run
-  ./displaylink-driver-${_pkgfullver}.run --target $pkgname-$pkgver --noexec
-  pushd "$pkgname-$pkgver"
+  ./displaylink-driver-${_pkgfullver}.run \
+     --noexec \
+     --target $pkgname-$pkgver \
+     --nox11 \
+     --noprogress
+  test -d $pkgname-$pkgver || (echo "Extracting the driver with the .run installer failed"; exit 1)
+  pushd $pkgname-$pkgver
   
-  if [ "$CARCH" == "i686" ]; then
-    ARCH="x86"
-  elif [ "$CARCH" == "x86_64" ]; then
-    ARCH="x64"
-  fi
-
-  ARCH+="-ubuntu-1604"
+  case $CARCH in
+    i686)
+      ARCH="x86-ubuntu-1604" ;;
+    x86_64)
+      ARCH="x64-ubuntu-1604" ;;
+    arm|armv6h|armv7h|aarch64)
+      ARCH="arm-linux-gnueabihf" ;;
+  esac
   
   echo "Installing DisplayLink Manager $ARCH"
   install -D -m755 $ARCH/DisplayLinkManager $COREDIR/DisplayLinkManager
