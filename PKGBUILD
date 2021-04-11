@@ -1,4 +1,5 @@
 # Maintainer: lmartinez-mirror
+pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
 pkgver=0.5.2
 pkgrel=1
@@ -7,11 +8,11 @@ arch=('x86_64')
 url="https://github.com/michaelb/sniprun"
 license=('MIT')
 makedepends=('cargo' 'gcc-libs')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('97d952f54235cf5b52553cafbb9466b2f83dbc1c562279b9ce940dfc308a00c7')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   cargo build --release --all-features --target-dir=target
 }
 
@@ -24,7 +25,7 @@ package_sniprun() {
   pkgdesc='Compiled binary core for neovim-sniprun'
   depends=('gcc-libs')
 
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   install -Dm 755 target/release/sniprun -t "$pkgdir/usr/bin/"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
@@ -32,7 +33,7 @@ package_sniprun() {
 
 package_neovim-sniprun()  {
   arch=('any')
-  depends=('neovim-git' 'sniprun')
+  depends=('neovim-git' "sniprun=$pkgver")
   optdepends=('bash: Bash snippets support'
               'coffeescript: CoffeeScript snippets support'
               'gcc: C snippets support'
@@ -51,7 +52,7 @@ package_neovim-sniprun()  {
               'scala: Scala snippets support')
   install="$pkgname.install"
 
-  cd "sniprun-$pkgver"
+  cd "$pkgbase-$pkgver"
   find autoload doc plugin lua \
     -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
   install -d "$pkgdir/usr/share/nvim/runtime/target/release"
