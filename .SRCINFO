@@ -14,6 +14,7 @@ pkgbase = rare
 	depends = python-qtawesome
 	depends = python-requests
 	depends = python-pillow
+	depends = python-psutil
 	optdepends = wine-staging: Run windows games
 	source = rare-1.0.0.tar.gz::https://github.com/Dummerle/Rare/archive/1.0.0.tar.gz
 	sha256sums = SKIP
