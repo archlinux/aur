@@ -1,0 +1,17 @@
+pkgbase = vim-illuminate-git
+	pkgdesc = Vim plugin for automatically highlighting other uses of words under the cursor
+	pkgver = r108.fe49192
+	pkgrel = 1
+	url = https://github.com/rrethy/vim-illuminate
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-illuminate
+	conflicts = vim-illuminate
+	source = vim-illuminate-git::git+https://github.com/rrethy/vim-illuminate
+	md5sums = SKIP
+
+pkgname = vim-illuminate-git
+
