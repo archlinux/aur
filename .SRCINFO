@@ -1,7 +1,7 @@
 pkgbase = nx-firewall-git
 	pkgdesc = kcm module for firewall from nx desktop
 	pkgver = 0.1.r73.g1da8c2e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nx-desktop/nx-firewall
 	arch = i686
 	arch = x86_64
