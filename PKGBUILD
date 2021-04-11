@@ -2,7 +2,7 @@
 # Contributor: Stéphane Meyer <tigerlost at tigerfunk dot tk>
 
 pkgname=gmi
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Gemini capsule generator."
 arch=('any')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$url/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-sha256sums=(4cee2de651f31a970e3e222c531dd229cff8a68e76c8712a06e7f698b32a44e3)
+sha256sums=(331b5b84b9eef350b9bb9ea582e94b15b4be81228353303a2e2cd4731ef1f299)
 
 package() {
   cd "$pkgname-$pkgver"
