@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.28
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -44,16 +44,21 @@ prepare() {
 }
 
 build() {
-  # https://gitlab.gnome.org/GNOME/gtk/-/commit/df4b564d69cc7d2e751537eff61259b36f37e9e5
-  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS -DG_DISABLE_ASSERT"
-  arch-meson gtk build \
-    -D broadway_backend=true \
-    -D cloudproviders=true \
-    -D tracker3=false \
-    -D colord=yes \
-    -D gtk_doc=false \
-    -D demos=false \
+  local meson_options=(
+    # https://gitlab.gnome.org/GNOME/gtk/-/commit/df4b564d69cc7d2e751537eff61259b36f37e9e5
+    --buildtype release
+    -D c_args="-DG_ENABLE_DEBUG"
+
+    -D broadway_backend=true
+    -D cloudproviders=true
+    -D tracker3=false
+    -D colord=yes
+    -D gtk_doc=false
+    -D demos=false
     -D man=true
+  )
+
+  arch-meson gtk build "${meson_options[@]}"
   meson compile -C build
 }
 
