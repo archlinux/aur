@@ -18,6 +18,7 @@ pkgbase = wlroots-hidpi-git
 	depends = xcb-util-errors
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
+	depends = seatd
 	depends = systemd
 	provides = wlroots-hidpi=0.13.0
 	provides = wlroots=0.13.0

@@ -22,6 +22,7 @@ depends=(
 	xcb-util-errors
 	xcb-util-renderutil
 	xcb-util-wm
+	seatd
 	systemd)
 makedepends=(
 	git
@@ -52,7 +53,7 @@ prepare () {
 build () {
 	arch-meson \
 		-Dlogind-provider=systemd \
-		-Dlibseat=disabled \
+		-Dlibseat=enabled \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
