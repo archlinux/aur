@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: BluePeril <blueperil@blueperil.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-eol'
-pkgver='1.5'
+pkgver='2.02'
 pkgrel='1'
 pkgdesc="Check the correct line endings in your project"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/Test-EOL'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Test-EOL-1.5.tar.gz')
-md5sums=('d6ae3b338c034dc747458ed0a5fb6667')
-sha512sums=('bebed37b8b087ad7d989f85669043b8858e139ac87a8bd13f9e273cc13ca3248dc5ed1b62fb2f5d8854cccfacd227d07bf164e6557a811015fe7ac2d0495a16b')
-_distdir="Test-EOL-1.5"
+url='https://metacpan.org/release/Test-EOL'
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-EOL-${pkgver}.tar.gz")
+md5sums=('5d22a042cc7dc92711fd4af833893826')
+sha512sums=('03f3a60973fde1c0fb9532be957d981bad657fec4db1b77dca865011e1bf39dcbb91a8ee09cc692ab9b372a139371ba66b69c60ae582b687a6ec230fb58a9654')
+_distdir="Test-EOL-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,23 +23,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distdir"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
