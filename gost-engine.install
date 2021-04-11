@@ -61,7 +61,7 @@ post_install() {
     exit 0
   fi
 
-  if openssl engine | grep -iq 'gost'; then
+  if openssl engine | grep -iq "gost"; then
     echo -e "\E[1m\E[33mGost Engine successfully installed and OpenSSL automatic configured! All works fine!\E[0m"
   fi
 
