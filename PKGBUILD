@@ -19,7 +19,7 @@ conflicts=('dot')
 source=(https://download.dothq.co/dot/releases/linux/x86/raw
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Create directories
