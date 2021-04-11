@@ -1,0 +1,12 @@
+pkgbase = mandb-instant-update
+	pkgdesc = Updates mandb index database during package updates/installs
+	pkgver = 1.0
+	pkgrel = 0
+	arch = any
+	license = MIT
+	depends = man-db
+	source = mandb-instant-update.hook
+	sha256sums = ff8de48dfff94cc227ec9b970b2a568314e1d374e359f728d9af0fd63ffaa4a2
+
+pkgname = mandb-instant-update
+
