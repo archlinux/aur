@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=air
-pkgver=1.15.1
+pkgver=1.25
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://$_url"
 license=(GPL3)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b1590cb9c7d0d7f122ae634ab6dae5f2a231daa680f144558e3e8342792c023ec41b3481b12b53e16a4b257c1dc38b9d056aeb2d7f3c1343477b0f05ee9c7ea1')
+sha512sums=('a701995a05f9f7191915b94b05457e68e56ea4da3a5e36ec201efeee265970ad26f7806b3bfa507d9b2b665e034af7cc2bee00ce890280afa9bf05e2936a485d')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,6 +26,11 @@ build() {
     -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X "main.Version=${pkgver}" -X "main.BuildTimestamp="$(date --iso-8601=seconds --utc)""" \
     "$_url"
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  go test -v ./...
 }
 
 package() {
