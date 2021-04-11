@@ -1,8 +1,8 @@
-pkgbase = screen-desktop-bin
-	pkgdesc = Low latency videoconferencing & screen sharing with multiplayer drawing & control. Screen is a multiplayer screen sharing app that lets you work together like you’re in the same room.
-	pkgver = 4.0.16
+pkgbase = pop-bin
+	pkgdesc = Low latency videoconferencing & screen sharing with multiplayer drawing & control. Pop is a multiplayer screen sharing app that lets you work together like you’re in the same room.
+	pkgver = 5.0.0
 	pkgrel = 1
-	url = https://screen.so
+	url = https://pop.com
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
@@ -45,10 +45,12 @@ pkgbase = screen-desktop-bin
 	optdepends = trash-cli
 	optdepends = xdg-utils
 	optdepends = libappindicator-gtk3
+	conflicts = screen-desktop-bin
+	replaces = screen-desktop-bin
 	options = !strip
 	options = !emptydirs
-	source = https://download.screen.so/desktop-app/linux/4.0.16/screen-desktop_4.0.16_amd64.deb
-	sha512sums = 628f8f15b9ca7c4e540ab3410df84c1d414a48303280af6af003cf207d594ce349148c5a6105012663210ca6b4452dea3c6e2e749ab22997f70f071046cba192
+	source = https://download.pop.com/desktop-app/linux/5.0.0/pop_5.0.0_amd64.deb
+	sha512sums = 6fc57b811f3d562402513489cf5e4ced264fedfe338832a849a7d45867d0848802b48a21304c4cb17eb7b8a9677d7bda4711cd316a7f422f28e5063d67847726
 
-pkgname = screen-desktop-bin
+pkgname = pop-bin
 
