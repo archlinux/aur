@@ -51,9 +51,9 @@ package()
 {
     # Assure that the directories exist.
     mkdir -p ${pkgdir}/usr/bin/
-    mkdir -p ${pkgdir}/usr/share/webapps/
     mkdir -p ${pkgdir}/usr/share/doc/${_pkgname}/
     mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}/
+    mkdir -p ${pkgdir}/usr/share/webapps/
 
     # Modify run.sh to state the absolute path of the .csproj.
     echo -e "#!/bin/bash
