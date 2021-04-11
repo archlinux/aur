@@ -8,7 +8,7 @@
 
 pkgname=wxglade
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets / wxPython'
 arch=('any')
 license=('MIT')
@@ -21,8 +21,12 @@ sha256sums=('a92585df4254eae88db457b0505cd58374385898e94206bf190111a041a20cd4'
             'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
 
 prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "$pkgname %f" \
-    --name 'WxGlade' --mimetypes 'application/x-wxg' --categories "Development;GUIDesigner"
+  gendesk -f -n --pkgname "$pkgname" \
+  	--pkgdesc "$pkgdesc" \
+  	--exec "$pkgname %f" \
+    --name 'WxGlade' \
+    --mimetypes 'application/x-wxg' \
+    --categories "Development;GUIDesigner"
 
   rm -rf "$pkgname-$pkgver" && mv -Tfv {wxGlade,$pkgname}-$pkgver
 }
@@ -41,6 +45,7 @@ package() {
 
   datadir="$pkgdir/usr/share/"
 
+  # TODO: Replace with default wxglade-mime.xml in v1.1.0+
   install -Dm644 "$srcdir/application-x-wxg.xml" "$datadir/mime/packages/$pkgname.xml"
 
   find "$srcdir" -maxdepth 1 -name "$pkgname*128*.png" \
