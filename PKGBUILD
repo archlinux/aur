@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=blacktex
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A LaTex code prettifier and formatter"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python>=3.7')
 makedepends=('python-setuptools' 'python-dephell')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('34ac3723f69e3f9eb00ec89b77547560905a2af840e386373492d099dd930500')
+sha256sums=('d80959c4d366514b652782389f82f16097a5d600c2e17dd1b39c2e5cdde07d74')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build 
+  python setup.py build
 }
 
 package() {
