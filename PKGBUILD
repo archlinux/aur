@@ -1,6 +1,6 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 pkgname=pop-bin
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Low latency videoconferencing & screen sharing with multiplayer drawing & control. Pop is a multiplayer screen sharing app that lets you work together like you’re in the same room."
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!emptydirs')
 replaces=('screen-desktop-bin')
 conflicts=('screen-desktop-bin')
 source=("https://download.pop.com/desktop-app/linux/${pkgver}/pop_${pkgver}_amd64.deb")
-sha512sums=('6fc57b811f3d562402513489cf5e4ced264fedfe338832a849a7d45867d0848802b48a21304c4cb17eb7b8a9677d7bda4711cd316a7f422f28e5063d67847726')
+sha512sums=('88def49b58a56f30b6dc44570ff7dd52fbab6241e81e4e9ad9bd84ef0a31d937f790f35c8e7e3d44acadfb1ae57369b236a8453ba9e52be42707ec755e8a72db')
 
 package(){
     mkdir -p "${pkgdir}/opt/${pkgname}"

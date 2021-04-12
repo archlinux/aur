@@ -1,6 +1,6 @@
 pkgbase = pop-bin
 	pkgdesc = Low latency videoconferencing & screen sharing with multiplayer drawing & control. Pop is a multiplayer screen sharing app that lets you work together like you’re in the same room.
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://pop.com
 	arch = x86_64
@@ -49,8 +49,8 @@ pkgbase = pop-bin
 	replaces = screen-desktop-bin
 	options = !strip
 	options = !emptydirs
-	source = https://download.pop.com/desktop-app/linux/5.0.0/pop_5.0.0_amd64.deb
-	sha512sums = 6fc57b811f3d562402513489cf5e4ced264fedfe338832a849a7d45867d0848802b48a21304c4cb17eb7b8a9677d7bda4711cd316a7f422f28e5063d67847726
+	source = https://download.pop.com/desktop-app/linux/5.0.1/pop_5.0.1_amd64.deb
+	sha512sums = 88def49b58a56f30b6dc44570ff7dd52fbab6241e81e4e9ad9bd84ef0a31d937f790f35c8e7e3d44acadfb1ae57369b236a8453ba9e52be42707ec755e8a72db
 
 pkgname = pop-bin
 
