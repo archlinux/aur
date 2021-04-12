@@ -1,8 +1,8 @@
 # Maintainer: Ewen Le Bihan <hey@ewen.works>
 pkgname=wikitrad
 pkgver=0.2.0
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="A CLI to translate terms with wikipedia"
 arch=(any)
 url="https://github.com/ewen-lbh/wikitrad"
 license=("GPL")
