@@ -2,26 +2,23 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.4.109.55.arch1
+pkgver=5.10.27.36.arch1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
-makedepends=('bc' 'cpio' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'perl'
-'python-sphinx' 'python-sphinx_rtd_theme' 'tar' 'xmlto' 'xz')
+makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'pahole'
+'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v${pkgver}?signed"
   'config'
-  'sphinx-workaround.patch'
 )
 sha512sums=('SKIP'
-            '07fe9e29a5242214432f24a7d6fb8fab40363d5acad4ecc7755b30ffe976671eaa070a8cf20a5f5975d2318a0ffdde7f2e563109e91252ef11e828240b322846'
-            '8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58')
+            '5bc052617e1234101aee9f3b6d2401290e80ca616f1d7d68072121737c16be500fe29abf17e6bf7fd666829e9c41833af2e79fd6e8aba9f9e24b47bc5c7d1d19')
 b2sums=('SKIP'
-        'dbbb1cf6524cb823ce88fc535cd6949e13ca59ea62bca0e5cef585563ea6f99840a80c49a2fe4e7354e790b6408420e697a7e7cfda62775cbbb6304bb33d141e'
-        '657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c')
+        '4fcc11a9b47c2275c762468f0c706685eb603bf6eda30a682d6f8780224fc2108112eee9cbc43600c7df47c9b1de5bf033bfdb044116840c8dbb41a3a53d787d')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
@@ -68,9 +65,10 @@ build() {
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
+  depends=(coreutils initramfs kmod)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd "${pkgbase}"
   local kernver="$(<version)"
@@ -85,7 +83,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -160,6 +158,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
