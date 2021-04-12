@@ -1,9 +1,9 @@
 pkgbase = blanket
 	pkgdesc = Improve focus and increase your productivity by listening to different sounds.
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rafaelmardojai/blanket
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = meson
 	depends = gtk3

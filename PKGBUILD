@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=blanket
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Improve focus and increase your productivity by listening to different sounds."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/rafaelmardojai/blanket"
 license=('GPL3')
 depends=('gtk3' 'gst-python' 'python-gobject' 'libhandy')
