@@ -1,18 +1,20 @@
 pkgbase = coregarage
 	pkgdesc = A settings manager for the CoreApps family.
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/coregarage
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
 	depends = qt5-base
 	depends = libcprime>=2.7.1
 	depends = libcsys>=2.7.1
 	depends = libarchive-qt
-	source = https://gitlab.com/cubocore/coreapps/coregarage/-/archive/v4.1.0/coregarage-v4.1.0.tar.gz
-	md5sums = e6df6b43b4032717db6bc857675f610d
+	source = https://gitlab.com/cubocore/coreapps/coregarage/-/archive/v4.2.0/coregarage-v4.2.0.tar.gz
+	md5sums = f5d0894dd5988eabd3f361ecc91b849c
 
 pkgname = coregarage
 
