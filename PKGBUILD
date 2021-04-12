@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 source=(
     "$_pkgname-$pkgver.deb::https://gitlab.com/mattbas/${_pkgname}-artifacts/-/raw/master/${pkgver}/Deb/${_pkgname}.deb"
 )
-sha1sums=('869a1bcfe2995f3c044c6ce6a9c014572c09ecf3')
+sha1sums=('39b7a47fbbae3e3e4e6b2f0e21a2672af0829597')
 prepare() {
     cd $srcdir/
 }
