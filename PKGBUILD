@@ -4,7 +4,7 @@
 
 _pkgname=devilutionX
 pkgname=devilutionx
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
@@ -40,4 +40,4 @@ package() {
     cmake --install .
 }
 
-sha256sums=('63a06043b60a5866933eafcc078052e7f6a5878757c451fe74efb141b94386ac')
+sha256sums=('002dcbd4d4a5bdf8db1a3ec01139e5bfbed46d6a1caa32b17c9f2df161ad3521')
