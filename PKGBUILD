@@ -23,7 +23,7 @@ depends=(
     'opengl-driver'
     'pixman'
     'wayland'
-#   'xcb-util-errors'
+   'xcb-util-errors'
     'xcb-util-image'
     'xcb-util-wm'
     'xcb-util-renderutil'
@@ -52,9 +52,9 @@ _path=(
 )
 
 _flags=(
-    --buildtype=plain
+    --buildtype=debug
     -Dlibseat=disabled
-    -Dxcb-errors=disabled
+    -Dxcb-errors=enabled
     -Dxcb-icccm=enabled
     -Dxcb-xkb=enabled
     -Dxwayland=disabled

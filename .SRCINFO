@@ -15,6 +15,7 @@ pkgbase = wlroots-nosystemd-nox11-git
 	depends = opengl-driver
 	depends = pixman
 	depends = wayland
+	depends = xcb-util-errors
 	depends = xcb-util-image
 	depends = xcb-util-wm
 	depends = xcb-util-renderutil
