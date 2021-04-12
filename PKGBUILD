@@ -18,7 +18,9 @@ makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust ccache
              autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
-optdepends=('networkmanager: Location detection via available WiFi networks'
+optdepends=('whoogle: Searching the web using a locally running Whoogle instance'
+            'searx: Searching the web using a locally running searX instance'
+            'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
