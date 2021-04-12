@@ -1,0 +1,14 @@
+pkgbase = systemd_http_health_check
+	pkgdesc = A companion daemon to notify systemd about the health of a HTTP server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/jhass/systemd_http_health_check
+	arch = x86_64
+	license = BSD
+	makedepends = crystal
+	depends = systemd-libs
+	source = systemd_http_health_check-0.1.0.tar.gz::https://github.com/jhass/systemd_http_health_check/archive/refs/tags/v0.1.0.tar.gz
+	md5sums = 6d2126c3ece9bbbef313d7660fff2692
+
+pkgname = systemd_http_health_check
+
