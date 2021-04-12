@@ -10,14 +10,14 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 ```
 
 ### lnd
-1. Start lnd.
+1. Start lnd as a private key needs to be generated.
 2. `lncli create` and create your necessary wallet.
 
 ### nbxplorer
 1. `nano ~/.nbxplorer/Main/settings.config` and set "btc.rpc.auth=" according to the priorly set values in the bitcoin configuration file.
 
 ### btcpayserver
-1. `nano ~/.btcpayserver/Main/settings.config` and uncomment the SQLite database line. Alternatively, a different database can be used instead.
+1. `nano ~/.btcpayserver/Main/settings.config` and configure your database.
 2. `nano ~/.btcpayserver/Main/settings.config` and append the output of `openssl x509 -noout -fingerprint -sha256 -inform pem -in ~/.lnd/tls.cert` to the file line "BTC.lightning=type=lnd-rest;server=https://127.0.0.1:8080/;macaroonfilepath=/home/USERNAME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon;certthumbprint=".
 
 ### nginx

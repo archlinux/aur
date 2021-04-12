@@ -10,7 +10,6 @@ pkgbase = btcpayserver-git
 	depends = bitcoin-daemon
 	depends = dotnet-sdk-3.1
 	depends = nbxplorer-git
-	depends = tmux
 	optdepends = apache: HTTP server
 	optdepends = certbot: Creates SSL certificates.
 	optdepends = lnd: Lightning network support
