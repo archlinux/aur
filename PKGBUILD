@@ -75,6 +75,6 @@ package() {
 }
 
 post_upgrade() {
-  echo "Make sure to upgrade wlroots-git and sway-git together."
+  echo "Make sure to upgrade wlroots-nosystemd-git and sway-nosystemd-git together."
   echo "Upgrading one but not the other is unsupported."
 }
