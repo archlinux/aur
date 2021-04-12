@@ -2,29 +2,32 @@
 # Contributor: Shaber
 
 pkgname=corepins
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A bookmarking app from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1')
+makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('e71c12b4f576a2adb8e3b640987a47cc')
+md5sums=('8cdf674966cdfe2b11338e931e6f62ea')
 
 prepare() {
   mkdir -p build
 }
 
 build() {
-  cd ${pkgname}-v${pkgver}
-
-  qmake-qt5 ${pkgname}.pro
-  make
+  cd build
+  cmake ../${pkgname}-v${pkgver} \
+	-GNinja \
+	-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
+	-DCMAKE_INSTALL_LIBDIR=${pkgdir}/usr/lib
+  ninja
 }
 
 package() {
-  cd ${pkgname}-v${pkgver}
-  make INSTALL_ROOT=${pkgdir} install
+  cd build
+  ninja install
 } 
