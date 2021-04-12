@@ -1,7 +1,7 @@
 pkgbase = ldapadmin
-	pkgdesc = Linux port of free Windows LDAP Admin (http://ldapadmin.org), client and administration tool for LDAP directory management.
+	pkgdesc = Client and administration tool for LDAP directory management
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ibv/LDAP-Admin
 	arch = any
 	license = GPL
