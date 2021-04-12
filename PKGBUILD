@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 # official binary have kime-window
@@ -35,7 +35,7 @@ build() {
     cmake -DENABLE_GTK2=ON -DENABLE_GTK3=ON -DENABLE_GTK4=ON -DENABLE_QT5=ON -DENABLE_QT6=ON -DCMAKE_BUILD_TYPE=Release ../src
     make
     cp lib/* out
-    cp -R ../../libkime_engine.so ../../kime_engine* ../../kime-xim ../../kime-wayland ../../kime-indicator ../../kime-check ../../icons ../../*.desktop ../../default_config.yaml out
+    cp -R ../../libkime_engine.so ../../kime_engine* ../../kime-xim ../../kime-wayland ../../kime-indicator ../../kime-check ../../icons ../../*.desktop ../../default_config.yaml ../../default_daemon.yaml out
 }
  
 package() {
