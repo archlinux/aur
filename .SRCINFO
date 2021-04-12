@@ -1,12 +1,14 @@
 pkgbase = corestuff
 	pkgdesc = An activity viewer from the CoreApps family.
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corestuff
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = libxcomposite
@@ -14,8 +16,8 @@ pkgbase = corestuff
 	depends = libcsys>=2.7.1
 	depends = libcprime>=2.7.1
 	replaces = corebox
-	source = https://gitlab.com/cubocore/coreapps/corestuff/-/archive/v4.1.0/corestuff-v4.1.0.tar.gz
-	md5sums = 7dbf40c62e221a4c71c03e11b32ff031
+	source = https://gitlab.com/cubocore/coreapps/corestuff/-/archive/v4.2.0/corestuff-v4.2.0.tar.gz
+	md5sums = 728ee1f869955c3bd25811d89b2bfb12
 
 pkgname = corestuff
 
