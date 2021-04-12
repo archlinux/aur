@@ -1,18 +1,20 @@
 pkgbase = coreaction
 	pkgdesc = A side bar for showing widgets from the CoreApps family.
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/coreaction
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
 	depends = qt5-base
 	depends = qt5-svg
 	depends = libcprime>=2.7.1
 	depends = libcsys>=2.7.1
-	source = https://gitlab.com/cubocore/coreapps/coreaction/-/archive/v4.1.0/coreaction-v4.1.0.tar.gz
-	md5sums = 525cb89e08cca585572f94c8cba1d18d
+	source = https://gitlab.com/cubocore/coreapps/coreaction/-/archive/v4.2.0/coreaction-v4.2.0.tar.gz
+	md5sums = 4d83e8b0df45582a4d392ba57805078d
 
 pkgname = coreaction
 
