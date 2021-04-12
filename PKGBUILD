@@ -51,7 +51,7 @@ _major=5.11
 _minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -62,7 +62,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-nodocs-patches"
-_aufs_ver="20210308"
+_aufs_ver="20210412"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _gcc_path="cpu-patches-v5-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -309,7 +309,7 @@ done
 
 sha512sums=('6502370280f3bb9d6d91a7aab1249406fbb1f9897eb62baf8bd72bb5845b0ad95931f94aa72de275fb05a36ce1f0d7931fdf53de93a507043f260116185643af'
             'SKIP'
-            '4ff113ad8cc5208007031f90127672c38f6e6bd6305e3dbe6ca72a6df5824fe5be34d52a79aaa0254674900fe7b97c7879ddad5ef6c44ffd7965a290d5631063'
+            '067c631a708463acf2f54d3e1fcfd1ed2628848667a69db1c16d61cc3640fc736026cada3d23a67650e94bd056f16d6a36dcf1dca9a044df0fb0f1dd3663321f'
             'a7e40cb83439c3b1f62f7e8c8b31b921914d030291a3b70cc3d4093a80653040a977a4cb7c9c032d8207c2080bbb30d5ca4e38dec1d9fdf28596bfed555a0e2a'
             '14b28af9ba68e82aaba77a7a857f8ba5d71f862f6d008fcd416e455f0dcca61c51d3ad0ec4867c06e0bb273a6a28b50f07f20552acc1ed46aead8a1dc09bba22'
             '21075a69414df8969fe6b4440cb248c92e27b2dcf6b4ee519cbdd50db42bf5449a82ba2fe36e5f891618bac1ff51337091e54b33de5cab2bec72e00c1e58ebb1')
