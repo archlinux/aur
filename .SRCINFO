@@ -1,0 +1,14 @@
+pkgbase = wordpress-plugin-webp-converter-for-media
+	pkgdesc = Extends Gutenberg adding color syntax highlighting to the code block
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://wordpress.org/plugins/webp-converter-for-media
+	arch = any
+	license = GPL2
+	depends = wordpress
+	options = !strip
+	source = wordpress-plugin-webp-converter-for-media-2.4.0.tar.gz::https://downloads.wordpress.org/plugin/webp-converter-for-media.zip
+	sha512sums = b8e8526e54b19b30a059c6a771b91bf94f73715f8ec3897b3eb8abf4a22f3e87c259c4526d62c1bc5249b5a056adb68578ec87a35b1409c8449cd9dfc89a6de9
+
+pkgname = wordpress-plugin-webp-converter-for-media
+
