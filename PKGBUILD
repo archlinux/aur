@@ -12,7 +12,7 @@ arch=("any")
 url="https://github.com/dgarage/${_pkgname}"
 license=("MIT")
 groups=()
-depends=("aspnet-runtime-3.1" "bitcoin-daemon" "dotnet-sdk-3.1" "tmux")
+depends=("aspnet-runtime-3.1" "bitcoin-daemon" "dotnet-sdk-3.1")
 makedepends=("git")
 checkdepends=()
 optdepends=()
@@ -54,24 +54,12 @@ package()
     echo -e "#!/bin/bash
 dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- \${@}" > ${srcdir}/${_pkgname}/run.sh
 
-    # Create nbxplorer-start.sh.
-    echo -e "#!/bin/bash
-tmux new-session -s ${_pkgname_lc} -d \"${_pkgname_lc};bash -i\"" > ${srcdir}/${_pkgname}/${_pkgname_lc}-start.sh
-
-    # Create nbxplorer-stop.sh.
-    echo -e "#!/bin/bash
-tmux kill-session -t ${_pkgname_lc}" > ${srcdir}/${_pkgname}/${_pkgname_lc}-stop.sh
-
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/
 
     ## Symlinking the scripts.
     ln -sfrT ${pkgdir}/usr/share/${_pkgname}/run.sh ${pkgdir}/usr/bin/${_pkgname_lc}
     chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}
-    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/${_pkgname_lc}-start.sh ${pkgdir}/usr/bin/${_pkgname_lc}-start
-    chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-start
-    ln -sfrT ${pkgdir}/usr/share/${_pkgname}/${_pkgname_lc}-stop.sh ${pkgdir}/usr/bin/${_pkgname_lc}-stop
-    chmod 755 ${pkgdir}/usr/bin/${_pkgname_lc}-stop
 
     # Install the documentation.
     install -Dm644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/share/doc/${_pkgname}/

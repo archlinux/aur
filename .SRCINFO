@@ -9,7 +9,6 @@ pkgbase = nbxplorer-git
 	depends = aspnet-runtime-3.1
 	depends = bitcoin-daemon
 	depends = dotnet-sdk-3.1
-	depends = tmux
 	provides = nbxplorer
 	conflicts = nbxplorer
 	source = git+https://github.com/dgarage/NBXplorer.git
