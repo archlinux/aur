@@ -1,7 +1,7 @@
 # Maintainer: gbr <gbr@protonmail.com>
 pkgname=rsmixer
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='A PulseAudio volume mixer for the command line'
 arch=('x86_64')
 url='https://github.com/jantap/rsmixer'
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('pulseaudio')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('afedfbb00d4ba3feecdceb46634757345607210e2b6f41f122888981f590ab4ff884b26d1dc1318254f23b0d6a1271650cc65f4ee521abf844b195a5b4a8127c')
+sha512sums=('9a99bd585408119ebb2f14e9bffa78ffff81966849a2c9e4ecc4cf266ec51dc13f88aa4c22fb894b6d289e6136a74ce95bc9b8ed1c0de6feda03a1365697e7da')
 
 build() {
   cd "$pkgname-$pkgver"
