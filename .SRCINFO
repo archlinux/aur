@@ -14,6 +14,7 @@ pkgbase = bieaz
 	depends = sh
 	depends = grub
 	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.2.5/bieaz-0.2.5.tar.gz
+	md5sums = 34e112baf8bfea7361afbea0a5530476
 
 pkgname = bieaz
 
