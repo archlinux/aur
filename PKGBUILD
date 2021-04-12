@@ -20,7 +20,8 @@ pkgver(){
 
 package() {
    cd "$srcdir/$pkgname"
-   python setup.py install --root="$pkgdir/" --optimize=1
+   python setup.py install --root="$pkgdir/" --optimize=1 
+   install -Dvm755 "../../stowtui" "$pkgdir/usr/bin/stowtui"
 }
 
 
