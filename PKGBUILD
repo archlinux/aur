@@ -2,7 +2,7 @@
 
 pkgname=lavalauncher
 pkgver=2.1.0
-pkgrel=0
+pkgrel=2
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
 url='https://git.sr.ht/~leon_plickat/lavalauncher'
