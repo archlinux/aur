@@ -1,6 +1,6 @@
 pkgbase = kiauto-git
 	pkgdesc = KiCad automation scripts.
-	pkgver = 379.f984245
+	pkgver = 476.717b6cb
 	pkgrel = 1
 	url = https://github.com/INTI-CMNB/KiAuto
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = kiauto-git
 	depends = xdotool
 	depends = xclip
 	depends = libxslt
+	depends = python-xvfbwrapper
 	provides = kiauto
 	conflicts = kiauto
 	source = kiauto::git+https://github.com/INTI-CMNB/KiAuto
