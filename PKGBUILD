@@ -3,12 +3,12 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=libreoffice-online
-pkgver=6.4.4
-_rel=3
+pkgver=6.4.6
+_rel=8
 pkgrel=1
 epoch=1
 pkgdesc="HTML5-based/cloud-based version of the office suite"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://www.libreoffice.org/download/libreoffice-online/"
 license=("MPL")
 depends=("cpio" "fontconfig" "libcap" "libcap-ng" "libpng" "libreoffice-fresh" "openssl" "pam" "poco" "zlib")
@@ -86,7 +86,7 @@ package() {
   rm -rf "${pkgdir}/etc/apache2"
 }
 
-sha512sums=('0b940660d9fa10609f968bfaf8e888142a861dd8e608ce334bb924da399ffb8ae0e5c9d14dba30c869242bed026bc5478ee655200c25a8b3f0c24109ff6736d0'
+sha512sums=('dc4efffe7a7904fe15291d286218c411cb7694fc417d98cd96fae41f15763350a463a98480cc2518aa217a1ece4357b0c4b494d84c57937bb2c366fd2ee9ba94'
             'df03ce4ef23948e7fbb3cef7f6ea7c0b692cb0816370995051b7256a0b94ef288ca28157c3418ba235459902d2be2998e3742ef0e872a97952a9e380490d8d10'
             '61870a3fe597f37bbf0d8713f9a8c5af4ea9392a56afb065db6cda475755fca5c601922f03fe83443b49edf9d5eaebc7d7cf3bef499cda21e62dbbc5f6a768f7'
             '4292f1e750a0a1466a8b8cdd0ad03d0edc6c6c14e91c785880713b99d256ca779c4a63ad3c1a7439d21af3dae6fd79dc38e079316d3ba5caff454016b0aed759'
