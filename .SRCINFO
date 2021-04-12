@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.25.r0.gc3241072
+	pkgver = 0.3.25.r47.g99eeec58
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -75,7 +75,7 @@ pkgname = pipewire-full-docs-git
 	options = !strip
 
 pkgname = pipewire-full-alsa-git
-	pkgdesc = - ALSA configuration
+	pkgdesc = Low-latency audio/video router and processor - ALSA configuration
 	depends = pipewire-full-git
 	provides = pipewire-alsa
 	provides = pulseaudio-alsa

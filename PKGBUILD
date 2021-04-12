@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git)
-pkgver=0.3.25.r0.gc3241072
+pkgver=0.3.25.r47.g99eeec58
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -113,7 +113,7 @@ package_pipewire-full-docs-git() {
 }
 
 package_pipewire-full-alsa-git() {
-  pkgdesc=" - ALSA configuration"
+  pkgdesc+=" - ALSA configuration"
   depends=(pipewire-full-git)
   provides=(pipewire-alsa pulseaudio-alsa)
   conflicts=(pipewire-alsa)
