@@ -2,7 +2,7 @@
 pkgname="goshimmer-bin"
 _pkgname="goshimmer"
 pkgver="0.5.6"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="GoShimmer implementation of Coordicide (official precompiled binary)"
 arch=('x86_64')
 url="https://github.com/iotaledger/goshimmer"
@@ -16,16 +16,13 @@ install=${_pkgname}.install
 
 package() {
 
-	# Make directorys
-	mkdir -p ${pkgdir}/usr/bin/ ${pkgdir}/var/lib/goshimmer/ ${pkgdir}/etc/goshimmer/ ${pkgdir}/usr/lib/systemd/system/
-	
-	# Move files
-	mv ${srcdir}/goshimmer ${pkgdir}/usr/bin/	
-	mv ${srcdir}/config.json ${pkgdir}/etc/goshimmer/
-	mv ${srcdir}/snapshot.bin ${pkgdir}/var/lib/goshimmer/
-	mv ${srcdir}/README.md ${pkgdir}/var/lib/goshimmer/
-	mv ${srcdir}/LICENSE ${pkgdir}/var/lib/goshimmer/
+	# Install files
+	install -Dm600 ${srcdir}/config.json ${pkgdir}/etc/goshimmer/config.json
+	install -D ${srcdir}/goshimmer ${pkgdir}/usr/bin/goshimmer
+	install -D ${srcdir}/snapshot.bin ${pkgdir}/var/lib/goshimmer/snapshot.bin
+	install -D ${srcdir}/README.md ${pkgdir}/var/lib/goshimmer/README.md
+	install -D ${srcdir}/LICENSE ${pkgdir}/var/lib/goshimmer/LICENSE
 	
 	# Install systemd service
-	mv ${srcdir}/goshimmer.service ${pkgdir}/usr/lib/systemd/system/
+	install -D ${srcdir}/goshimmer.service ${pkgdir}/usr/lib/systemd/system/goshimmer.service
 }
