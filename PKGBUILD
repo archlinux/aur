@@ -39,6 +39,9 @@ pkgver()
 
 build()
 {
+    # Information
+    echo -e "\033[0;32mConfiguration is needed before the installation. For assistance, read the included \"README.md\".\033[0m"
+
     cd ${srcdir}/${_pkgname}/
     git checkout tags/$(git describe --tags --abbrev=0)
     git submodule update --init --merge --recursive
@@ -102,7 +105,4 @@ ReadWritePaths = /usr/share/webapps/${_pkgname}/tmp/" > ${pkgdir}/etc/systemd/sy
 
     # Install the license.
     install -Dm644 ${srcdir}/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/
-
-    # Information
-    echo -e "\033[0;32mConfiguration is needed after the installation. For assistance, read the included \"README.md\".\033[0m"
 }
