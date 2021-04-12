@@ -2,17 +2,16 @@
 pkgname=trex-bin
 provides=('trex')
 conflicts=('trex')
-_cudaver=11.1
-pkgver=0.19.14
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="T-Rex is a versatile cryptocurrency mining software for NVIDIA hardware. It supports a variety of algorithms and is trying to do its best to make it as fast and as convenient to use as possible."
+pkgdesc="Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms"
 arch=('x86_64')
 license=('custom')
 url="https://github.com/trexminer/T-Rex"
 options=('!strip')
 depends=('nvidia-utils')
-source=("t-rex_${pkgver}_${_cudaver}.tar.gz"::"https://github.com/trexminer/T-Rex/releases/download/0.19.14/t-rex-${pkgver}-linux-cuda${_cudaver}.tar.gz")
-sha512sums=('3b310637bc3799feaf42210e0133dde3f82398d614ce272a065b7f2784ca0ea7f83e35b422399079b43f3631e4cda981eaa2f15d934df3e7837e9c662571d75d')
+source=("t-rex_${pkgver}.tar.gz"::"https://github.com/trexminer/T-Rex/releases/download/${pkgver}/t-rex-${pkgver}-linux.tar.gz")
+sha512sums=('693813f27d1e6299a68610d0ac9a18c400a960ef0f0922f184ad8287f6967a0600558c9825864b66902c0ca181d81f66ed935e3f4f99f498247cc96562b6f16a')
 
 package() {
     cd "${srcdir}"
