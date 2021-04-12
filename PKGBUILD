@@ -1,6 +1,6 @@
 # Contributor: Flamelab <panosfilip@gmail.com>
 pkgname=libkdcraw-git
-pkgver=r1112.d21e34f
+pkgver=v21.03.90.r0.g91a7df0
 pkgrel=1
 pkgdesc='A C++ interface used to decode RAW picture'
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libkdcraw')
 provides=('libkdcraw')
 groups=('digikamsc-git')
-source=('libkdcraw::git+git://anongit.kde.org/libkdcraw')
+source=('libkdcraw::git+https://anongit.kde.org/libkdcraw')
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/libkdcraw"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = libkdcraw-git
 	pkgdesc = A C++ interface used to decode RAW picture
-	pkgver = r1112.d21e34f
+	pkgver = v21.03.90.r0.g91a7df0
 	pkgrel = 1
 	url = http://www.kde.org
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = libkdcraw-git
 	depends = libraw
 	provides = libkdcraw
 	conflicts = libkdcraw
-	source = libkdcraw::git+git://anongit.kde.org/libkdcraw
+	source = libkdcraw::git+https://anongit.kde.org/libkdcraw
 	md5sums = SKIP
 
 pkgname = libkdcraw-git
