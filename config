@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.11.12-arch1 Kernel Configuration
+# Linux/x86 5.11.13-arch1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
@@ -400,6 +400,7 @@ CONFIG_ACRN_GUEST=y
 # CONFIG_MCOOPERLAKE is not set
 # CONFIG_MTIGERLAKE is not set
 # CONFIG_MSAPPHIRERAPIDS is not set
+# CONFIG_MROCKETLAKE is not set
 # CONFIG_MALDERLAKE is not set
 CONFIG_GENERIC_CPU=y
 # CONFIG_GENERIC_CPU2 is not set
