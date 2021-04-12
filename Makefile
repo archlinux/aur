@@ -9,12 +9,15 @@ versions:
 	@echo "Latest version:"
 	@echo "  $(LATEST_VER)"
 
-test-upgrade:
+reset_pkgrel:
+	perl -pi -e 's/^pkgrel=.+/pkgver=1/' PKGBUILD
+
+upgrade-1:
 	perl -pi -e 's/^pkgver=.+/pkgver=$(LATEST_VER)/' PKGBUILD
 	bash -c 'perl -0777 -pi -e "s/sha256sums=.+?\)/$$(makepkg -g)/s" PKGBUILD'
 
 upgrade:
-	@make test-upgrade
+	@make upgrade-1
 	@make post
 	git add .SRCINFO PKGBUILD
 	git commit -m "Upgrade to $(LATEST_VER)" .SRCINFO PKGBUILD
@@ -30,5 +33,5 @@ auto-update:
 ifeq ($(CURRENT_VER),$(LATEST_VER))
 	@echo "No update available. Version: $(CURRENT_VER)"
 else
-	@make upgrade && git push
+	@make reset_pkgrel && make upgrade && git push
 endif
