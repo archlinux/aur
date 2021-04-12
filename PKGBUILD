@@ -6,7 +6,7 @@
 
 _pkgname=OpenSC
 pkgname=opensc-git
-pkgver=0.20.0+74+g71339611
+pkgver=0.21.0+196+g991bb8a14
 pkgrel=1
 pkgdesc='Tools and libraries for smart cards'
 arch=('x86_64')
