@@ -77,6 +77,6 @@ package() {
 }
 
 post_upgrade() {
-  echo "Make sure to upgrade wlroots-noystemd-strace-git and sway-nosystemd-strace-git together."
+  echo "Make sure to upgrade wlroots-noystemd-strace-git and sway-strace-git together."
   echo "Upgrading one but not the other is unsupported."
 }
