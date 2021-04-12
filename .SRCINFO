@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-simple-net-speed
 	pkgdesc = GNOME Shell extension to show network speed.
-	pkgver = 20
+	pkgver = 21
 	pkgrel = 1
 	url = https://github.com/biji/simplenetspeed
 	arch = any
 	license = GPL
 	depends = gnome-shell
-	source = gnome-shell-extension-simple-net-speed-20.tar.gz::https://github.com/biji/simplenetspeed/archive/v20.tar.gz
-	sha512sums = b73cf257a19dcd9c839ea2a824c8236eee2ea20744190e3cc75938c17e3c081a0e2d1cfa9ee62636d01693d5bfd50d5d9ca8d792090e0166fdc30a2ce942717c
+	source = gnome-shell-extension-simple-net-speed-21.tar.gz::https://github.com/biji/simplenetspeed/archive/v21.tar.gz
+	sha512sums = 0b708c55774e963093c10bcf6fc494f403150df30001b822df3827f48da5c6fc26786e6ead445e49256815d622df629d321b8366fe1f9787be01db07099e4b06
 
 pkgname = gnome-shell-extension-simple-net-speed
 
