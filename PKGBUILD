@@ -78,3 +78,8 @@ package() {
 		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
 	done
 }
+
+post_upgrade() {
+	echo "Make sure to upgrade wlroots-strace-git and sway-strace-git together."
+	echo "Upgrading one but not the other is unsupported."
+}
