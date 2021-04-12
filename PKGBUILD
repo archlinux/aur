@@ -2,7 +2,7 @@
 # Contributor: Dr-Noob <peibolms at gmail dot com>
 _name=cpufetch
 pkgname="$_name-git"
-pkgver=v0.97.r0.g8f2f3d3
+pkgver=v0.97.r3.g9fa7b4c
 pkgrel=1
 pkgdesc="Simple yet fancy CPU architecture fetching tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd "$srcdir/$_name"
-  make PREFIX="$pkgdir/usr/" install
+  make DESTDIR="$pkgdir/usr/" install
 }
