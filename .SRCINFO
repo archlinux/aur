@@ -1,0 +1,18 @@
+pkgbase = dmenu-bachoseven-git
+	pkgdesc = Custom build with center, fuzzy*, border, xresources and password patches. Mouse is also supported.
+	pkgver = af7171a
+	pkgrel = 1
+	url = https://github.com/BachoSeven/dmenu
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	provides = dmenu
+	conflicts = dmenu
+	source = dmenu::git+https://github.com/BachoSeven/dmenu
+	sha256sums = SKIP
+
+pkgname = dmenu-bachoseven-git
