@@ -1,0 +1,17 @@
+pkgbase = bnf-nativefier
+	pkgdesc = Electron wrapper for the British National Formulary built with Nativefier
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://bnf.nice.org.uk/
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = bnf-nativefier.png
+	source = bnf-nativefier.desktop
+	sha256sums = df3534feaba4712d39a4b7e2c3c49542d5e9f587a857ad3233ffd808a7ff79d1
+	sha256sums = e3b35b3c8ce7fe12eddef0cae641f3071cd7ae7c0fda7dd4bbd5de109a418948
+
+pkgname = bnf-nativefier
+

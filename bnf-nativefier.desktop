@@ -1,0 +1,15 @@
+[Desktop Entry]
+# Type
+Type=Application
+
+# Name
+Name=BNF
+
+# Description
+Comment=British National Formulary Website
+
+# Exec
+Exec=bnf
+
+# Term
+Terminal=false
