@@ -1,15 +1,19 @@
 pkgbase = vim-limelight-git
 	pkgdesc = Hyperfocus-writing in Vim.
 	pkgver = r32.4412a84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/junegunn/limelight.vim
 	arch = any
 	license = MIT
-	depends = vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = vim-goyo: Complementary Vim plugin for a zen mode-like experience
 	provides = vim-limelight
 	conflicts = vim-limelight
-	source = git+https://github.com/junegunn/limelight.vim.git
+	source = vim-limelight-git::git+https://github.com/junegunn/limelight.vim
+	source = LICENSE
 	sha256sums = SKIP
+	sha256sums = 595e5c7670f76137827109954edd66d57ff85ce6f79a7548ea5dd588a4e22f7f
 
 pkgname = vim-limelight-git
 

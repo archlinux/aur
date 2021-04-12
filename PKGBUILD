@@ -1,31 +1,31 @@
-# vim-limelight
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
-
+# Maintainer: lmartinez-mirror
+# Contributor: Andrea Feletto <andrea@andreafeletto.com>
 pkgname=vim-limelight-git
-_pkgname=limelight.vim
 pkgver=r32.4412a84
-pkgrel=1
+pkgrel=2
 pkgdesc='Hyperfocus-writing in Vim.'
 arch=('any')
 url='https://github.com/junegunn/limelight.vim'
 license=('MIT')
-depends=('vim')
-conflicts=('vim-limelight')
-provides=('vim-limelight')
-source=("git+https://github.com/junegunn/$_pkgname.git")
-sha256sums=('SKIP')
+depends=('vim-plugin-runtime')
+optdepends=('vim-goyo: Complementary Vim plugin for a zen mode-like experience')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url"
+        'LICENSE')
+sha256sums=('SKIP'
+            '595e5c7670f76137827109954edd66d57ff85ce6f79a7548ea5dd588a4e22f7f')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	vimfiles="$pkgdir/usr/share/vim/vimfiles"
-
-	cd "$srcdir/$_pkgname"
-	install -dv "$vimfiles"
-	cp -R autoload plugin test "$vimfiles/"
+  cd "$pkgname"
+  find autoload plugin \
+    -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
