@@ -2,7 +2,7 @@
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-pg8000
-pkgver=1.19.1
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp)
 source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc})
-sha256sums=('cb7ace8c582b7000a5ee428efa8ff6c82a7d710cc0f7d2d76258703a2aa7afe3'
+sha256sums=('44cbb4d3c912f2da167ca02bf98a0040f7e93260e4ef114c28d5d6152012ea07'
             'SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
@@ -65,7 +65,9 @@ host    pg8000_scram_sha_256 all        127.0.0.1/32            scram-sha-256
 host    all             all             127.0.0.1/32            trust
 EOF
   pg_ctl reload
-  PYTHONPATH="$PWD" pytest test
+  # Upstream tests require LANG=en_GB.UTF-8 or LANG=C.UTF-8 :/
+  # https://github.com/tlocke/pg8000/blob/1.19.2/test/native/test_typeconversion.py#L455-L458
+  PYTHONPATH="$PWD" LANG=C.UTF-8 pytest test
   pg_ctl stop
 }
 
