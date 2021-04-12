@@ -1,11 +1,11 @@
 # Maintainer: Marc Straube <m.straube@skunk-coding.de>
-# Maintainer: Kobokai <martinsteer AT maxi DOT net DOT au>
+# Contributor: Kobokai <martinsteer AT maxi DOT net DOT au>
 # Contributor: Daenyth <Daenyth+Arch AT gmail DOT com>
 # Contributor: Callan Barrett <wizzomafizzo@gmail.com>
 
 pkgname=hearse
 pkgver=1.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Nethack online bones file exchanger"
 arch=('i686' 'x86_64')
 url="http://hearse.krollmark.com/"

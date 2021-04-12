@@ -1,7 +1,7 @@
 pkgbase = hearse
 	pkgdesc = Nethack online bones file exchanger
 	pkgver = 1.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://hearse.krollmark.com/
 	install = hearse.install
 	arch = i686
