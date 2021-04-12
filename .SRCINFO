@@ -1,6 +1,6 @@
 pkgbase = rclone-browser-git
 	pkgdesc = Simple cross-platform GUI for rclone
-	pkgver = 1.8.0.r378
+	pkgver = 1.8.0.r381
 	pkgrel = 1
 	url = https://github.com/kapitainsky/RcloneBrowser/
 	arch = i686
@@ -10,10 +10,13 @@ pkgbase = rclone-browser-git
 	makedepends = git
 	depends = qt5-base
 	depends = rclone
+	depends = qt5-declarative
 	provides = rclone-browser
 	conflicts = rclone-browser
 	source = rclone-browser::git+https://github.com/kapitainsky/RcloneBrowser.git
+	source = no-Werror.patch
 	sha256sums = SKIP
+	sha256sums = d169637193239aab75e8c62f7049eda461a276dcfa1c6eb9ae6a282b986e9c88
 
 pkgname = rclone-browser-git
 
