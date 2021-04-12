@@ -1,0 +1,17 @@
+pkgbase = citymapper-nativefier
+	pkgdesc = Electron wrapper for Citymapper built with Nativefier
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://citymapper.com
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = citymapper-nativefier.png
+	source = citymapper-nativefier.desktop
+	sha256sums = 1159331fe36af966c4295e93f442b056e03b187727aedf510696019d50de4517
+	sha256sums = a604da790ad056d939606ee3a32cf46054b7455fd1701db11be9cc1c142fef63
+
+pkgname = citymapper-nativefier
+

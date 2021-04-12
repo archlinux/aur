@@ -1,0 +1,15 @@
+[Desktop Entry]
+# Type
+Type=Application
+
+# Name
+Name=Citymapper
+
+# Description
+Comment=Citymapper Journey Planner
+
+# Exec
+Exec=citymapper
+
+# Term
+Terminal=false
