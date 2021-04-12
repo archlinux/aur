@@ -1,0 +1,17 @@
+pkgbase = neovim-neoscroll-git
+	pkgdesc = Smooth scrolling neovim plugin written in Lua
+	pkgver = r54.da41993
+	pkgrel = 1
+	url = https://github.com/karb94/neoscroll.nvim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim-git
+	provides = neovim-neoscroll
+	conflicts = neovim-neoscroll
+	source = neovim-neoscroll-git::git+https://github.com/karb94/neoscroll.nvim
+	md5sums = SKIP
+
+pkgname = neovim-neoscroll-git
+
