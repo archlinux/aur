@@ -1,7 +1,7 @@
 # Maintainer: Jan Murawski <jm at rq-project dot net>
 
 pkgname='rust-dependency-refresh'
-pkgver="0.1.12"
+pkgver="0.2.0"
 pkgrel=1
 pkgdesc='rust dependency updater'
 url='https://github.com/RoffelKartoffel/dependency-refresh'
@@ -11,7 +11,7 @@ license=(
 source=(
  "https://github.com/RoffelKartoffel/dependency-refresh/archive/${pkgver}.tar.gz"
 )
-sha512sums=('ef72715185ce1f85588fb9b8793a6e4c9c71c8b3674e3c68f66f4a6d9fd6bb6330126494e9d7fad4e366e9afc1a000d25d91252ab36acd3d85f7edb35c4c3af9')
+sha512sums=('892fb64f31b3a7d787548aaaf893ee35989c9d9c22480bf6d1146aa1102ad1b6e39984f636187b457bccf0001e6f8a6c3d97f7230db8ce8b5ea31732e651f692')
 arch=(
  'x86_64'
  'i686'
