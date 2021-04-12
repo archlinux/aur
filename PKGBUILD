@@ -1,6 +1,6 @@
 # Maintainer: Carson Rueter <roachh at proton mail dot com>
 pkgname=vscodium-bin-marketplace
-pkgver=1.55.0
+pkgver=1.55.1
 pkgrel=2
 pkgdesc='Enable vscode marketplace in vscodium-bin'
 arch=('any')
