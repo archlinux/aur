@@ -1,8 +1,8 @@
 # Maintainer: Leon Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
 
 pkgname=lavalauncher
-pkgver=2.0.0
-pkgrel=4
+pkgver=2.1.0
+pkgrel=0
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
 url='https://git.sr.ht/~leon_plickat/lavalauncher'
@@ -13,10 +13,10 @@ optdepends=("librsvg: SVG image support.")
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('617598dad94d5b3aa5b47e0895a3306573df9af3806dfa73f8149dbf8d85243a')
+sha256sums=('4d51d857ddfc682cf7dbc4dcd60a776b6816610230afead4608fdd7693261274')
 
 pkgver() {
-	printf "2.0.0"
+	printf "2.1.0"
 }
 
 build()
