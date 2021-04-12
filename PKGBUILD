@@ -28,7 +28,7 @@ sha256sums=('f224f1da1e4fc1bd1096025dbb0eea9b4392422abb77810338ecb226b4497aa8'
 
 extract_filename() {
     if [ "$(head -c 2 "$1" | tr -d '\0')" == "MZ" ]; then
-        objdump -p "$f" 2>/dev/null | grep 'The Export Tables' -A 10 | awk '$1 == "Name" { print $3 }'
+        LC_ALL=C objdump -p "$f" 2>/dev/null | grep 'The Export Tables' -A 10 | awk '$1 == "Name" { print $3 }'
     fi
 }
 
