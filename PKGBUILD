@@ -3,7 +3,7 @@
 # Contributor: Pierre DOUCET <pierre at equinoxefr.org>
 
 pkgname=pcb2gcode
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Command-line tool for isolation, routing and drilling of PCBs."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'gtkmm' 'glibmm' 'gerbv')
 makedepends=('boost')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "patch")
-sha256sums=('cf599ea94bf985856707e2bad2b384f378b14a8e8b228474bc60609e30856435'
+sha256sums=('5d4f06f7041fe14a108780bdb953aa520f7e556773a7b9fb8435e9b92fef614d'
             '9adab6f0ccd3c9310954d2a49bca41b4733b827d3b53730b6f9a0405dab2071e')
 
 prepare() {
