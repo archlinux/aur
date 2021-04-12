@@ -3,17 +3,15 @@
 # Contributor: Lukas Becker <lukasbecker2 [at] [common mail ending from the company behind the most used search engine]>
 # Contributor: Benedikt Rips <benedikt.rips@gmail.com>
 
-pkgbase=zenkit
 pkgname=zenkit
 pkgver=20201217
-pkgrel=3
+pkgrel=4
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
 url='https://zenkit.com'
 license=('Commercial')
 depends=('alsa-lib' 'gtk3' 'nss')
-optdepends=('xdg-utils: for opening links (e.g. for logging in via 3rd party accounts)')
-provides=('zenki')
+optdepends=('xdg-utils: for opening links, e.g. for logging in via 3rd party accounts')
 options=('!strip')
 source=('https://static.zenkit.com/downloads/desktop-apps/base/zenkit-base-linux.tar.gz'
         'https://zenkit.com/favicon.ico'
@@ -24,9 +22,9 @@ sha512sums=('b34633e89c6778d5c2ca3f9928215ce356ff9d44303cdad6fe71731e57873500aab
 
 package() {
     install -dm755 "${pkgdir}/opt"
-    cp -a zenkit-base-linux "${pkgdir}/opt/${pkgbase}"
-    install -Dm644 favicon.ico "${pkgdir}/opt/${pkgbase}/${pkgbase}.ico"
-    install -Dm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+    cp -a zenkit-base-linux "${pkgdir}/opt/${pkgname}"
+    install -Dm644 favicon.ico "${pkgdir}/opt/${pkgname}/${pkgname}.ico"
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
+    ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
