@@ -13,7 +13,7 @@ makedepends=(nodejs nodejs-nativefier npm)
 sha256sums=('1159331fe36af966c4295e93f442b056e03b187727aedf510696019d50de4517'
             'a604da790ad056d939606ee3a32cf46054b7455fd1701db11be9cc1c142fef63')
 
-_instname=bnf
+_instname=citymapper
 
 build() {
     nativefier "https://citymapper.com" \
