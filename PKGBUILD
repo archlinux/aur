@@ -365,6 +365,6 @@ END
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  ln -sf "$pkgdir"/usr/lib/${pkgname}/librewolf \
-         "$pkgdir"/usr/bin/$pkgname
+  ln -srf "$pkgdir"/usr/lib/${pkgname}/librewolf \
+          "$pkgdir"/usr/bin/$pkgname
 }
