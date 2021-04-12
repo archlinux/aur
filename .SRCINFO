@@ -1,13 +1,12 @@
 pkgbase = rsmixer
-	pkgdesc = PulseAudio volume mixer for the terminal
+	pkgdesc = A PulseAudio volume mixer for the command line
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jantap/rsmixer
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = cargo
-	depends = gcc-libs
-	depends = libpulse
+	depends = pulseaudio
 	source = rsmixer-0.3.0.tar.gz::https://github.com/jantap/rsmixer/archive/v0.3.0.tar.gz
 	sha512sums = afedfbb00d4ba3feecdceb46634757345607210e2b6f41f122888981f590ab4ff884b26d1dc1318254f23b0d6a1271650cc65f4ee521abf844b195a5b4a8127c
 
