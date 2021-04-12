@@ -79,3 +79,8 @@ package() {
     install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
   done
 }
+
+post_upgrade() {
+  echo "Make sure to upgrade wlroots-hidpi-git and sway-hidpi-git together."
+  echo "Upgrading one but not the other is unsupported."
+}
