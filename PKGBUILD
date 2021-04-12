@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 # official binary have kime-window
@@ -22,8 +22,8 @@ source=(
     ${pkgname}-${pkgver}.tar.gz::"https://github.com/Riey/kime/archive/refs/tags/v${pkgver}.tar.gz"
     ${pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/kime-v${pkgver}.tar.zst"
 )
-md5sums=('241dcb72e4d76aa157a33f131a2a3763'
-         '9c8466deec31763ed51321dc631451d3')
+md5sums=('9beb180ef8b6e87b4517a7a09eff2528'
+         'd9179a514b2a70b624a585029433b9dd')
  
 build() {
     cd "kime-${pkgver}"
@@ -35,7 +35,7 @@ build() {
     cmake -DENABLE_GTK2=ON -DENABLE_GTK3=ON -DENABLE_GTK4=ON -DENABLE_QT5=ON -DENABLE_QT6=ON -DCMAKE_BUILD_TYPE=Release ../src
     make
     cp lib/* out
-    cp -R ../../libkime_engine.so ../../kime_engine* ../../kime-xim ../../kime-wayland ../../kime-indicator ../../kime-check ../../icons ../../*.desktop ../../default_config.yaml ../../default_daemon.yaml out
+    cp -R ../../libkime_engine.so ../../kime_engine* ../../kime-xim ../../kime-wayland ../../kime-indicator ../../kime ../../kime-check ../res/* ../README* ../NOTICE.md ../LICENSE ../docs/CHANGELOG.md out
 }
  
 package() {
