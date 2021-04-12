@@ -3,8 +3,8 @@
 
 pkgname=wordpress-plugin-webp-converter-for-media
 pkgver=2.4.0
-pkgrel=1
-pkgdesc="Extends Gutenberg adding color syntax highlighting to the code block"
+pkgrel=2
+pkgdesc="Speed up your website by serving WebP images instead of standard formats"
 arch=('any')
 url="https://wordpress.org/plugins/webp-converter-for-media"
 license=('GPL2')
