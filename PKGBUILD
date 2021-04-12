@@ -5,12 +5,12 @@
 
 pkgname=zenkit
 pkgver=20201217
-pkgrel=5
+pkgrel=6
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
 url='https://zenkit.com'
 license=('Commercial')
-depends=('alsa-lib' 'gtk3' 'nss')
+depends=('gtk3' 'nss')
 optdepends=('xdg-utils: for opening links, e.g. for logging in via 3rd party accounts')
 source=('https://static.zenkit.com/downloads/desktop-apps/base/zenkit-base-linux.tar.gz'
         'https://zenkit.com/favicon.ico'
