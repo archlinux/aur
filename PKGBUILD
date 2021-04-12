@@ -1,13 +1,13 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=systemd_http_health_check
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A companion daemon to notify systemd about the health of a HTTP server" 
 arch=('x86_64')
 url="http://github.com/jhass/systemd_http_health_check"
 license=('BSD')
 depends=('systemd-libs')
-makedepends=('crystal')
+makedepends=('crystal' 'shards')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jhass/systemd_http_health_check/archive/refs/tags/v$pkgver.tar.gz")
 
 prepare() {
