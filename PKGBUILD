@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Costa <gusbemacbe@gmail.com>
 
 pkgname=adwaita-plus-git
-pkgver=6.1.r4.g22a8a79f
+pkgver=6.1
 pkgrel=1
 pkgdesc="A third-party icons theme, based on new GNOME Project's Adwaita"
 arch=('any')
