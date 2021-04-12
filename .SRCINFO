@@ -1,12 +1,14 @@
 pkgbase = vim-asyncrun-git
-	pkgdesc = Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
+	pkgdesc = Vim plugin for executing shell commands asynchronously
 	pkgver = 2.8.6.r0.g168d6b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skywind3000/asyncrun.vim
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
+	provides = vim-asyncrun
+	conflicts = vim-asyncrun
 	source = vim-asyncrun-git::git+https://github.com/skywind3000/asyncrun.vim
 	md5sums = SKIP
 
