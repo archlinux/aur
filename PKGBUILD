@@ -2,15 +2,16 @@
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
 pkgname=vim-goyo-git
 pkgver=1.6.0.r37.ga865dec
-pkgrel=2
+pkgrel=3
 pkgdesc='Distraction-free writing in Vim'
 arch=('any')
 url='https://github.com/junegunn/goyo.vim'
 license=('MIT')
 depends=('vim-plugin-runtime')
+optdepends=('vim-limelight')
 makedepends=('git')
-conflicts=('vim-goyo')
-provides=('vim-goyo')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("$pkgname::git+$url"
         "LICENSE")
 sha256sums=('SKIP'
