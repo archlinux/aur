@@ -1,0 +1,17 @@
+pkgbase = neovim-registers-git
+	pkgdesc = Neovim plugin to preview the contents of the registers
+	pkgver = 0.2.4.r5.g29771d7
+	pkgrel = 1
+	url = https://github.com/tversteeg/registers.nvim
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	makedepends = git
+	depends = neovim-git
+	provides = neovim-registers
+	conflicts = neovim-registers
+	source = neovim-registers-git::git+https://github.com/tversteeg/registers.nvim
+	md5sums = SKIP
+
+pkgname = neovim-registers-git
+
