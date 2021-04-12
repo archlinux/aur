@@ -3,7 +3,7 @@
 pkgname=wikitrad-git
 _gitname=wikitrad
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI to translate terms with wikipedia"
 #epoch=0
 arch=('any')
