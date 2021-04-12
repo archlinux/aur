@@ -1,10 +1,8 @@
 pkgbase = evdi-git
-	pkgdesc = kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video git version.
+	pkgdesc = kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video
 	pkgver = 1.9.1.r4.gb0b3d13
 	pkgrel = 1
 	url = https://github.com/DisplayLink/evdi
-	install = evdi-git.install
-	changelog = evdi-git.Changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
