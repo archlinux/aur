@@ -1,6 +1,6 @@
 pkgbase = xcursor-we10xos
 	pkgdesc = Cursor theme inspired by Windows 10
-	pkgver = 20200614
+	pkgver = 20201103
 	pkgrel = 2
 	url = https://github.com/yeyushengfan258/We10XOS-cursors
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = xcursor-we10xos
 	makedepends = git
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
-	source = xcursor-we10xos::git+https://github.com/yeyushengfan258/We10XOS-cursors#commit=438dd5be70c3b467b04a8b00cf603f05364c2910
+	source = xcursor-we10xos::git+https://github.com/yeyushengfan258/We10XOS-cursors#commit=b971891cc016ba780af791ac9872a15406695ad8
 	sha512sums = SKIP
 
 pkgname = xcursor-we10xos

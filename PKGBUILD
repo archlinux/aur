@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=xcursor-we10xos
-pkgver=20200614
-_commit=438dd5be70c3b467b04a8b00cf603f05364c2910
+pkgver=20201103
+_commit=b971891cc016ba780af791ac9872a15406695ad8
 pkgrel=2
 pkgdesc='Cursor theme inspired by Windows 10'
 license=(GPL)
