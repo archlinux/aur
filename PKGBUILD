@@ -1,24 +1,22 @@
 # Maintainer: Ewen Le Bihan <hey@ewen.works>
 
 pkgname=wikitrad-git
-_gitname=wikitrad
-pkgver=0.2.0
-pkgrel=3
+pkgver=r7.4f9c279
+pkgrel=1
 pkgdesc="A CLI to translate terms with wikipedia"
-#epoch=0
 arch=('any')
 url="https://github.com/ewen-lbh/wikitrad"
 license=('GPL')
 depends=('python')
-makedepends=('git' "python-poetry")
-#changelog= TODO
+makedepends=('git' "python-pip")
 source=("git+https://github.com/ewen-lbh/wikitrad")
 md5sums=('SKIP')
 
+_gitname=wikitrad
 
 pkgver() {
   cd $_gitname
-  cat pyproject.toml | grep "version" | head -1 | cut -d '"' -f 2
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
