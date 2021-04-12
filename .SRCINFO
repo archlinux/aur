@@ -1,0 +1,16 @@
+pkgbase = touchegg-music-client
+	pkgdesc = Widget for music and volume control, connected to touchegg's daemon
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MarioJim/touchegg-music-client
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = touchegg
+	depends = libpulse
+	source = touchegg-music-client-1.0.0.tar.gz::https://github.com/MarioJim/touchegg-music-client/archive/v1.0.0.tar.gz
+	sha256sums = 8ecf6124188f6a158052c57ecf1426a80ce3424efa2cbc45b0fbbc89dde79534
+
+pkgname = touchegg-music-client
+
