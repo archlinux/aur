@@ -1,14 +1,14 @@
 pkgbase = virt-viewer-git
 	pkgdesc = A lightweight interface for interacting with the graphical display of virtualized guest OS
-	pkgver = 9.0.7.gc6afc28
-	pkgrel = 2
+	pkgver = 9.0.219.g15fbaa3
+	pkgrel = 1
 	url = https://virt-manager.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = intltool
-	makedepends = spice-protocol-git
+	makedepends = spice-protocol
 	depends = gtk-vnc
 	depends = libvirt-glib
 	depends = spice-gtk
@@ -18,6 +18,8 @@ pkgbase = virt-viewer-git
 	conflicts = virt-viewer
 	conflicts = virtviewer
 	source = git+https://gitlab.com/virt-viewer/virt-viewer.git
+	source = drop-header.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = virt-viewer-git
