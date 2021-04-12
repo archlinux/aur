@@ -1,8 +1,8 @@
-pkgbase = i3-maim
+pkgbase = wm-maim
 	pkgdesc = simple screenshot script using maim
-	pkgver = 2021.04.03
+	pkgver = 2021.04.12
 	pkgrel = 1
-	url = https://github.com/The-Repo-Club/i3-maim
+	url = https://github.com/The-Repo-Club/wm-maim
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
@@ -11,8 +11,8 @@ pkgbase = i3-maim
 	depends = xdg-user-dirs
 	depends = xdotool
 	optdepends = xclip: Allow screenshots to be saved to clipboard
-	source = i3-maim-2021.04.03.tar.gz::https://github.com/The-Repo-Club/i3-maim/archive/2021.04.03.tar.gz
-	sha256sums = dbf5cb4908c17ecaf242e3646ebb20e1393666460e756fe19583d596c9b862ca
+	source = wm-maim-2021.04.12.tar.gz::https://github.com/The-Repo-Club/wm-maim/archive/2021.04.12.tar.gz
+	sha256sums = cbd1f18975dd8ee065c1dd56ad6d681b051ed3e5704eef87a8d36a84328842b9
 
-pkgname = i3-maim
+pkgname = wm-maim
 
