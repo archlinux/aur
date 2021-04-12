@@ -24,3 +24,10 @@ echo -e "${PINK}➡${NC} ${SKYBLUE}@gusbemacbe${NC} has completed the full suppo
 echo -e "${PINK}➡${NC} Added new 23 places icons."
 echo -e "${PINK}➡${NC} A new colour of places icons, inspired by the latest Yaru’s places icons."
 echo -e " "
+
+echo -e "${BRIGHTORANGE}#${NC} ${BRIGHTPINK}6.0${NC} – ${BROWN}${BOLD}Bauhinia variegata${NC}"
+echo -e "${PINK}➡${NC} New Adwaita++ folders styles: Synthwave ‘84, TRON and Void Linux."
+echo -e "${PINK}➡${NC} Fuzziness of battery icons have been fixed ${YELLOW}(#34)${NC}."
+echo -e "${PINK}➡${NC} Added 43 apps icons, ugraded and updated 17 apps icons, updated 3 devices icons, 3 mimtypes icons and 2 trash icons."
+echo -e "${PINK}➡${NC} Under the user’s demand, Adwaita++ Dark Colorful has been added."
+echo -e " "
