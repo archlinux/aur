@@ -2,11 +2,12 @@
 # Contributor: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
 pkgname=vim-asyncrun-git
 pkgver=2.8.6.r0.g168d6b4
-pkgrel=2
+pkgrel=3
 pkgdesc='Vim plugin for executing shell commands asynchronously'
 arch=('any')
-license=('MIT')
 url='https://github.com/skywind3000/asyncrun.vim'
+license=('MIT')
+groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 makedepends=('git')
 provides=("${pkgname%-git}")
