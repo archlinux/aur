@@ -3,9 +3,10 @@
 
 pkgname=dirsearch
 
-_pkgver=0.4.1-alpha
-pkgver="${_pkgver/-/.}"
-pkgrel=2
+_ver=0.4.1-alpha2
+pkgver() { sed 's/\(alpha\)\([0-9]\+\)/\1_\2/' <<<"${_ver/-/.}"; }
+pkgver=0.4.1.alpha_2
+pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
 arch=('any')
@@ -16,17 +17,17 @@ depends=('python')
 
 changelog=CHANGELOG.md
 backup=("usr/lib/$pkgname/default.conf")
-source=("$pkgname-$_pkgver.tgz::$url/archive/v${_pkgver}.tar.gz")
-b2sums=('04aa83d8c1acf7d7f093820af944dd63e2508678ae2311bae8393e6b8dc4e3fa15b766dea9a2b320029d8c7143d9f7caf7bf02f1abf4bb248fb0428a4f730fab')
+source=("$pkgname-$_ver.tgz::$url/archive/v$_ver.tar.gz")
+b2sums=('6108556cf110073c30783d90b18f6dafb992042af70ec180b6b750057f538f2fc8a42543bcca4dd651196392057e9f9ca5319c6eb9bae0bb783b3a1c62ff1f69')
 
 
 prepare() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$_ver"
   sed -i 's/^\(save-logs-home\s*=\s*\)False/\1True/' default.conf
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$_ver"
   install -dm755 "$pkgdir/usr"/{bin,"lib/$pkgname"}
   cp -a --no-preserve=o db lib thirdparty default.conf dirsearch.py "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 *.md -t"$pkgdir/usr/share/doc/$pkgname/"
