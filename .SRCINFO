@@ -1,0 +1,16 @@
+pkgbase = nodejs-editly-git
+	pkgdesc = create video from a set of clips, images and titles, NLE, non-linear video editing
+	pkgver = 0.11.1_git
+	pkgrel = 0
+	url = https://github.com/mifi/editly
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = ffmpeg
+	depends = nodejs
+	provides = nodejs-editly
+	conflicts = nodejs-editly
+	options = !emptydirs
+
+pkgname = nodejs-editly-git
+
