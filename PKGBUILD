@@ -3,8 +3,8 @@
 
 pkgname=scry-git
 _gitname=scry
-pkgver=200.77eefc1
-pkgrel=3
+pkgver=203.8e8e822
+pkgrel=1
 pkgdesc="Scry is a language server for Crystal."
 arch=("x86_64")
 url="https://github.com/crystal-lang-tools/${_gitname}"
