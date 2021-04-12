@@ -2,7 +2,7 @@
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A neovim plugin to independently run snippets of code'
 arch=('x86_64')
 url="https://github.com/michaelb/sniprun"
@@ -36,11 +36,10 @@ package_neovim-sniprun()  {
   depends=('neovim-git' "sniprun=$pkgver")
   optdepends=('bash: Bash snippets support'
               'coffeescript: CoffeeScript snippets support'
-              'gcc: C snippets support'
+              'gcc: C/C++ snippets support'
               'gcc-ada: Limited Ada snippets support'
               'go: Go snippets support'
               'ghc: Haskell snippets support'
-              'g++: C++ snippets support'
               'python3: Python3 snippets support'
               'java-environment-openjdk: Java snippets support'
               'julia: Julia snippets support'

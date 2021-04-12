@@ -1,7 +1,7 @@
 pkgbase = sniprun
 	pkgdesc = A neovim plugin to independently run snippets of code
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/michaelb/sniprun
 	arch = x86_64
 	license = MIT
@@ -21,11 +21,10 @@ pkgname = neovim-sniprun
 	depends = sniprun=0.5.2
 	optdepends = bash: Bash snippets support
 	optdepends = coffeescript: CoffeeScript snippets support
-	optdepends = gcc: C snippets support
+	optdepends = gcc: C/C++ snippets support
 	optdepends = gcc-ada: Limited Ada snippets support
 	optdepends = go: Go snippets support
 	optdepends = ghc: Haskell snippets support
-	optdepends = g++: C++ snippets support
 	optdepends = python3: Python3 snippets support
 	optdepends = java-environment-openjdk: Java snippets support
 	optdepends = julia: Julia snippets support
