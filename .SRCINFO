@@ -1,0 +1,14 @@
+pkgbase = wordpress-plugin-async-javascript
+	pkgdesc = Increase the performance of your WordPress website
+	pkgver = 2.20.12.09
+	pkgrel = 1
+	url = https://autoptimize.com
+	arch = any
+	license = GPL2
+	depends = wordpress
+	options = !strip
+	source = wordpress-plugin-async-javascript-2.20.12.09.tar.gz::https://downloads.wordpress.org/plugin/async-javascript.2.20.12.09.zip
+	sha512sums = 288668f888cebb1425d828405a56f187138d095711a110bbfa1c4fb9cb7129621d5fd8da397d1f2f3de41476fb3dbef7daadae3c61bc1cb53d7bdd3f62c1a76a
+
+pkgname = wordpress-plugin-async-javascript
+
