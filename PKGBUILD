@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=crosvm-git
-pkgver=r1455.93dca2fd9
+pkgver=r2084.ac62778ab
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/chromiumos/platform/crosvm"
@@ -10,18 +10,21 @@ makedepends=('rustup')
 arch=('x86_64')
 license=('custom:chromiumos')
 source=("git+https://chromium.googlesource.com/chromiumos/platform/crosvm"
+        "git+https://chromium.googlesource.com/chromiumos/platform2"
         "git+https://chromium.googlesource.com/chromiumos/third_party/adhd"
+        "git+https://chromium.googlesource.com/chromiumos/third_party/rust-vmm/vhost"
         "git+https://android.googlesource.com/platform/external/minijail"
         )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   # crosvm build system expects a certain directory tree structure
   # see its Cargo.toml
   rm -rf platform third_party aosp
-  mkdir -p platform third_party aosp/external
+  mkdir -p platform aosp/external third_party/rust-vmm
   mv crosvm platform
   mv adhd third_party
+  mv vhost third_party/rust-vmm
   mv minijail aosp/external
 }
 
