@@ -27,6 +27,7 @@ node.updater.enabled=false
 node.updater.updateInstallers=false
 node.updater.updateSeednodes=true
 node.uploadAllowedDirs=all
+pluginmanager.enabled=true
 security-levels.networkThreatLevel=HIGH
 security-levels.physicalThreatLevel=NORMAL
 ssl.sslKeyStore=/opt/freenet/user/certs

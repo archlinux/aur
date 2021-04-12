@@ -7,7 +7,7 @@ _wot=next
 _plugins=('WebOfTrust')
 
 pkgname=freenet
-pkgver=0.7.5.1489
+pkgver=0.7.5.1490
 pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
@@ -27,15 +27,15 @@ source=("git+https://github.com/freenet/fred.git?signed#tag=$_fred"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         'run.sh' 'wrapper.config' freenet.{ini.dist,service,tmpfiles})
 
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'c56b3427ce3df2a9126acf737107738dffeab54d618887743c45a317d39a1b10'
-            '9c8a99f7644859f37242465c2646f819c9458c4c0fe8d930db32837ddb2c6daf'
-            '1171d0545882e45e03531e760fd28024700bf50400a3e3a13f31deeace8dbb03'
-            '10f97306ef75953f20978d3d2aa5d14daa8fa13e4db88e8270ea951239212c20'
-            '8f35e9d7d00e4caa26d0c1cbcbcedc9081ed0535d0c67e3f9d2d75c11ff9e847')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        '1eb5ed6d92a3ab8a825dd715fd2418c253ef5a431943dc6f0bdf6c70252a2f945ea89d6c0b412cdb7b7898262add0d1dd36050c1be2386a263153608ff7ff791'
+        '4a1f5d25e2ee0dd80cc3c86ecdbedeb738b63eda7495675bbba9beefa9b1176b51ac059c66050ae2c927a93cf169b5715b3e9f7c382c0e70b0a0dbb33494c8aa'
+        'eb37bafeca92f454a5e8940667927bdfd1ef880cf33175335054ae4fdb5b4a04d4e977f7d29425d24574e14a6c799c90bb27c8697797ef87a028d0a3a3b039ef'
+        '540c911bbccea18ed2b5ad22864040b83674833746536e869ec8491974f0265239c7b4c12fb1e43f27126320adc9206d81249c5e0c9e7ce6ef2aeb46b8f9cf5b'
+        '54828750ac0283e4328635bb61d0edd695391d433d85a6612b2288520a58b40b312d5759b38487e093e150aedee3659e6bed3827d936171d2d252aea2cbced1d')
 
 pkgver() {
     cd fred
@@ -47,7 +47,7 @@ prepare() {
     cd fred
 
     # Java 15 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-6.8-aur -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-7.0-aur -q
 
     rm -f seednodes.fref
     for node in "$srcdir"/seedrefs/0* ;do
@@ -102,7 +102,7 @@ package() {
     for plugin in "${_plugins[@]}"; do
     install -m640 "$srcdir"/plugin-$plugin/dist/$plugin.jar "$pkgdir"/opt/freenet/plugins
     done
-    echo "pluginmanager.loadplugin=$(IFS=\;;echo "${_plugins[*]}")" \
+    echo -e "pluginmanager.loadplugin=$(IFS=\;;echo "${_plugins[*]}")\nEND" \
         >>"$pkgdir"/opt/freenet/conf/freenet.ini.dist
 
     # delete bundled wrapper

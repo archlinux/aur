@@ -11,7 +11,7 @@ pkg/
 *.pkg.tar
 *.c
 *.h
-*.tar.gz
+*.tar.zst
 *.tar.bz2
 seednodes.fref
 IpToCountry.dat
