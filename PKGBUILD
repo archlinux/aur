@@ -1,14 +1,13 @@
 # Maintainer: gbr <gbr@protonmail.com>
-
 _pkgname=Myxer
 pkgname=myxer
 pkgver=1.2.0
-pkgrel=1
-pkgdesc='A modern Volume Mixer for PulseAudio.'
-arch=('x86_64' 'aarch64')
+pkgrel=2
+pkgdesc='A modern volume mixer for PulseAudio'
+arch=('any')
 url='https://github.com/Aurailus/Myxer'
-license=('GPL')
-depends=('gcc-libs' 'gtk3' 'libpulse')
+license=('GPL3')
+depends=('gtk3' 'pulseaudio')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'myxer.desktop')
@@ -28,7 +27,6 @@ check() {
 package() {
   cd "$_pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 'LICENSE.md' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
