@@ -23,16 +23,10 @@ sha512sums=('b34633e89c6778d5c2ca3f9928215ce356ff9d44303cdad6fe71731e57873500aab
             '5b824efd2de3d8b213d850b5b1b2920583c7b2b9c25e77667b041aa65f97b368c6da888cc4ae700d11fa336a9668ddfe2ad062caa4ce1af83dfbf50fa4c103fb')
 
 package() {
-    install -dm755 "${pkgdir}/opt/"
-    install -dm755 "${pkgdir}/usr/bin/"
-    install -dm755 "${pkgdir}/usr/share/applications/"
-
-    install -Dm644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
-
-    mkdir "${pkgdir}/opt/${pkgbase}"
-
-    cp -a "${srcdir}/zenkit-base-linux" "${pkgdir}/opt/${pkgbase}"
-    install "${srcdir}/favicon.ico" "${pkgdir}/opt/${pkgbase}/zenkit.ico"
-
+    install -dm755 "${pkgdir}/opt"
+    cp -a zenkit-base-linux "${pkgdir}/opt/${pkgbase}"
+    install -Dm644 favicon.ico "${pkgdir}/opt/${pkgbase}/${pkgbase}.ico"
+    install -Dm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+    install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
 }
