@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-keyboard
 	pkgdesc = Ayatana Indicator Keyboard Applet
-	pkgver = 0.7.900
+	pkgver = 0.7.901
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ayatana-indicator-keyboard
 	depends = glib2
 	depends = libxklavier
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/0.7.900.tar.gz
-	md5sums = 01c24fa95c25227cc03dd30ebc7f8968
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/0.7.901.tar.gz
+	md5sums = b9441813d05a07ea13115487b646a21e
 
 pkgname = ayatana-indicator-keyboard
 
