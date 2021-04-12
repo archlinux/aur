@@ -1,7 +1,7 @@
 # Maintainer: Nxxx <nx dot tardis at gmail dot com>
 
 pkgname=ignition-fuel_tools-4
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('ignition-cmake>=2')
 optdepends=('ruby')
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/ignition-fuel-tools4_${pkgver}.tar.gz")
-sha256sums=('447ee273d6c51577635ee9717d8e13d00273ee54d6d734d740510b129aa550df')
+sha256sums=('9f05c067a70059a22f46ccce37dcd02dd9fb7c9091608f61c8a0f4aee9b22a03')
 
 _dir="ign-fuel-tools-ignition-fuel-tools4_${pkgver}"
 
