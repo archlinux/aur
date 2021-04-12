@@ -1,7 +1,7 @@
 pkgbase = tla-tools
 	pkgdesc = Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)
 	pkgver = 1.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = tla-tools
 	source = tlc-dist-worker
 	source = tlc-dist-workerfp
 	source = tlc
-	sha256sums = 34ad47e58c85ec2b73f60ea4a8faaa7312003c921d69b7b67b9b34bbcbb09c6b
+	sha256sums = d532ba31aafe17afba1130f92410d9257454ff7393d1eb2fe032f0c07f352da5
 	sha256sums = 06a0cc6028cec61252896d0b1b88282efd972de1e37ea7980a5e607b55a0257e
 	sha256sums = c107b10578c71793043f707ffb8ec093e650ed99af757c4b54aa0c9dc14214d0
 	sha256sums = 1e30d6a6908e5c5f175538f673d4ac4ef495dcd88f89eb9cf93bdeefcdcd0f2b
