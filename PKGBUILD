@@ -1,9 +1,10 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
-pkgname=superslicer
+pkgname=superslicer-prerelease 
 pkgver=2.3.55.5
 _pkgtag=$pkgver
 pkgrel=3
+epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
@@ -11,6 +12,8 @@ license=('AGPL3')
 depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-opt' 'boost>=1.73.0' 'qhull>=2020.2-4')
 replaces=('slic3r++')
 makedepends=('cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2-dev-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+provides=("superslicer=$epoch:$pkgver")
+conflicts=('superslicer' 'superslicer-git')
 source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
         "start-superslicer.sh"
         "0001-wxgtk3-is-broken-on-wayland.patch")
