@@ -6,14 +6,14 @@
 _install_old_variants=0
 
 pkgname=moslight-themes-git
-pkgver=r253.94d5a9b
+pkgver=r409.0fcb3d0
 pkgrel=1
-pkgdesc="Slick GTK 2/3 and GNOME Shell themes resembling the elementary look"
-arch=('any')
-url='https://github.com/dasnoopy/moslight-themes'
-license=('GPL2')
-depends=('gtk-engine-murrine' 'gtk-engines' 'gnome-themes-standard')
-makedepends=('git')
+pkgdesc='Slick GTK 2/3 and GNOME Shell themes resembling the elementary look'
+arch=(any)
+url=https://github.com/dasnoopy/moslight-themes
+license=(GPL2)
+depends=(gtk-engine-murrine gtk-engines gnome-themes-standard)
+makedepends=(git)
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
@@ -25,11 +25,11 @@ pkgver() {
 package() {
 	cd "${pkgname}"
 	mkdir -p "${pkgdir}/usr/share/themes"
-	local -a variants=( Arc Arc-dark )
+	local -a variants=( MecOS MecOS-Dark )
 	if [[ -n ${_install_old_variants} && ${_install_old_variants} -ne 0 ]] ; then
-		variants+=( Light Emite Sky Cloud )
+		variants+=( MosLight MosEmite MosSky MosCloud MosArc MosArc-dark )
 	fi
 	for i in "${variants[@]}" ; do
-		cp -r "Mos${i}" "${pkgdir}/usr/share/themes/Mos${i}"
+		cp -r "${i}" "${pkgdir}/usr/share/themes/${i}"
 	done
 }

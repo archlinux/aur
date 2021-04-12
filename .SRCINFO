@@ -1,6 +1,6 @@
 pkgbase = moslight-themes-git
 	pkgdesc = Slick GTK 2/3 and GNOME Shell themes resembling the elementary look
-	pkgver = r253.94d5a9b
+	pkgver = r409.0fcb3d0
 	pkgrel = 1
 	url = https://github.com/dasnoopy/moslight-themes
 	arch = any
