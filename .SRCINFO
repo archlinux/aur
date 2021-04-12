@@ -1,6 +1,6 @@
 pkgbase = adwaita-plus-git
 	pkgdesc = A third-party icons theme, based on new GNOME Project's Adwaita
-	pkgver = 6.1
+	pkgver = 6.1.r4.g22a8a79f
 	pkgrel = 1
 	url = https://github.com/Bonandry/adwaita-plus
 	changelog = CHANGELOG.sh
