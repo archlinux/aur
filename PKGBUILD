@@ -51,7 +51,7 @@ _major=5.11
 _minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,11 +72,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0003-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0004-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0005-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch"
+        "${_lucjanpath}/arch-patches-v9/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -316,11 +312,7 @@ sha512sums=('6502370280f3bb9d6d91a7aab1249406fbb1f9897eb62baf8bd72bb5845b0ad9593
             'SKIP'
             '9d38c5672d6e6a08c02e6713b58e03898acdef3f75bb1a96ecd657606d29a69a8cf81bff18af0f56dd75311c5d61c330bbd89a3165bc0e5c6b48b37172716fc9'
             '08ba50a763f71267215ebf00f136edf68c63aa8afa362c30d6b06fbf38d5cd03c4300165eebb9db9571e7c47150eaa6efbbb7a7f53053b05570cb11f3b4a8303'
-            '0efb27e7f3849e2a4f0501ea2dad3bc56db4365a17ca09bf7f976aa4145deb182cb75eb261ce3bd231e4c196e8633708e3ba336806cdeb02cb2b0427a9dba8e7'
-            'a5456a89cd965050e45872d64ad7b14b236fc22869b980b3c172432d37485d0118f056193dd60051b120d0d0f5b3c6a87c0b90dbd6283f30465579e496416650'
-            'cf003e5c16662d20fcf18a87b4df7a2fbad489a1db559bab4bd47bedac5c6793c138f48994bf8d5fe7d4c58d3c8c98aa6f5ab08022ce7fa082c85e29c96aa78a'
-            '4c38622d2e6a5ca8aad508e0d203f255ae1fd0b209efa1a46ddb159c3b023ea5e72da702cbbed51377eb313f7f6912c5f0e654d489ef843925f7bafe93d1c357'
-            '4fd25872016fc0d9ef1c27c640146f4403a6f3500de325d33eb4b55285174355a83a4845b0bd971cb0ff149939b326880bfb211cd8395ac868749f7b5dbb2d0d'
+            '14b28af9ba68e82aaba77a7a857f8ba5d71f862f6d008fcd416e455f0dcca61c51d3ad0ec4867c06e0bb273a6a28b50f07f20552acc1ed46aead8a1dc09bba22'
             '0a283b911655f76ff935e7029dbab99b04ecc38d5fc57f624c375dec52fbabafaae10b909fc6b51f563ce245e487b8512a9a115eec5318e9333a5706fb9cb6bb')
 
 validpgpkeys=(
