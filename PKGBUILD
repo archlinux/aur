@@ -8,13 +8,13 @@ pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
 pkgver=1.8.0
 _pkgver="${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
 url="http://sumo.dlr.de"
 license=('GPL')
 depends=('openscenegraph' 'python' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps')
-makedepends=('cmake' 'help2man' 'swig' 'gtest')
+makedepends=('cmake' 'help2man' 'swig' 'gtest' 'gmock')
 source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
         "${pkgbase}.desktop")
 

@@ -1,7 +1,7 @@
 pkgbase = sumo
 	pkgdesc = Traffic simulation modelling road vehicles, public transport and pedestrians.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sumo.dlr.de
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = sumo
 	makedepends = help2man
 	makedepends = swig
 	makedepends = gtest
+	makedepends = gmock
 	depends = openscenegraph
 	depends = python
 	depends = proj
