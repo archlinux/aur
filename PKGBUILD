@@ -1,7 +1,7 @@
 # Maintainer: Nxxx <nx dot tardis at gmail dot com>
 
 pkgname=ignition-msgs-5
-pkgver=5.3.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('ignition-cmake>=2' 'ruby-ronn' 'doxygen' 'tinyxml2')
 optdepends=()
 conflicts=()
 source=("${pkgname}-${pkgver}::https://github.com/ignitionrobotics/ign-msgs/archive/ignition-msgs5_${pkgver}.tar.gz")
-sha256sums=('1e11986cdf9549f1b4e2a6da1b978525ff2f60539a451b24db5b81ca2c0893df')
+sha256sums=('1aafdf96e6eda9dd14ed302029aa1954f2e02356b00b0e9aef8831692ff62bef')
 
 _dir="ign-msgs-ignition-msgs5_${pkgver}"
 
