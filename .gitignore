@@ -1,0 +1,5 @@
+pkg/
+src/
+loopauditioneer/
+loopauditioneer-svn-*.pkg.tar.xz
+loopauditioneer-svn-*.pkg.tar.zst

@@ -1,0 +1,68 @@
+diff --git a/src/LoopAuditioneer.cpp b/src/LoopAuditioneer.cpp
+index ed2832a..ea1a855 100644
+--- a/src/LoopAuditioneer.cpp
++++ b/src/LoopAuditioneer.cpp
+@@ -41,13 +41,13 @@ bool LoopAuditioneerApp::OnInit() {
+   wxImage::AddHandler(new wxJPEGHandler);
+   wxFileSystem::AddHandler(new wxZipFSHandler);
+   m_helpController = new wxHtmlHelpController();
+-  m_helpController->Initialize(wxT("help/help.zip"));
++  m_helpController->Initialize(wxT(DATADIR "/help/help.zip"));
+ 
+   // load icons
+-  m_icons = wxIconBundle(wxIcon(wxT("icons/LoopyIcon-16.png"), wxBITMAP_TYPE_PNG));
+-  m_icons.AddIcon(wxIcon(wxT("icons/LoopyIcon-24.png"), wxBITMAP_TYPE_PNG));
+-  m_icons.AddIcon(wxIcon(wxT("icons/LoopyIcon-32.png"), wxBITMAP_TYPE_PNG));
+-  m_icons.AddIcon(wxIcon(wxT("icons/LoopyIcon-48.png"), wxBITMAP_TYPE_PNG));
++  m_icons = wxIconBundle(wxIcon(wxT(DATADIR "/icons/LoopyIcon-16.png"), wxBITMAP_TYPE_PNG));
++  m_icons.AddIcon(wxIcon(wxT(DATADIR "/icons/LoopyIcon-24.png"), wxBITMAP_TYPE_PNG));
++  m_icons.AddIcon(wxIcon(wxT(DATADIR "/icons/LoopyIcon-32.png"), wxBITMAP_TYPE_PNG));
++  m_icons.AddIcon(wxIcon(wxT(DATADIR "/icons/LoopyIcon-48.png"), wxBITMAP_TYPE_PNG));
+ 
+   frame->SetIcons(m_icons);
+ 
+diff --git a/src/MyFrame.cpp b/src/MyFrame.cpp
+index 5e2f8c0..902d308 100644
+--- a/src/MyFrame.cpp
++++ b/src/MyFrame.cpp
+@@ -680,23 +680,23 @@ MyFrame::MyFrame(const wxString& title) : wxFrame(NULL, wxID_ANY, title), m_time
+   toolBar = CreateToolBar(wxNO_BORDER | wxTB_HORIZONTAL | wxTB_FLAT);
+   toolBar->SetToolBitmapSize(wxSize(24, 24));
+   wxImage::AddHandler(new wxPNGHandler);
+-  wxBitmap selectFolder(wxT("../icons/24x24/Open_folder.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap openSelectedFile(wxT("../icons/24x24/Open_file.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap saveFile(wxT("../icons/24x24/Save.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap saveFileAs(wxT("../icons/24x24/Save_as.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap startPlayback(wxT("../icons/24x24/Right.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap stopPlayback(wxT("../icons/24x24/Stop.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap loopCreation(wxT("../icons/24x24/Refresh.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap autoLoop(wxT("../icons/24x24/Search.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap autoLoopSettings(wxT("../icons/24x24/Yin-Yang.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap batchProcess(wxT("../icons/24x24/Gear.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap pitchInfo(wxT("../icons/24x24/Bell.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap zoomInAmp(wxT("../icons/24x24/Zoom_in.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap zoomOutAmp(wxT("../icons/24x24/Zoom_out.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap crossfade(wxT("../icons/24x24/Wizard.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap cutfade(wxT("../icons/24x24/Software.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap viewloop(wxT("../icons/24x24/Diagram.png"), wxBITMAP_TYPE_PNG);
+-  wxBitmap listInfo(wxT("../icons/24x24/Text.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap selectFolder(wxT(DATADIR "/icons/24x24/Open_folder.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap openSelectedFile(wxT(DATADIR "/icons/24x24/Open_file.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap saveFile(wxT(DATADIR "/icons/24x24/Save.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap saveFileAs(wxT(DATADIR "/icons/24x24/Save_as.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap startPlayback(wxT(DATADIR "/icons/24x24/Right.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap stopPlayback(wxT(DATADIR "/icons/24x24/Stop.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap loopCreation(wxT(DATADIR "/icons/24x24/Refresh.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap autoLoop(wxT(DATADIR "/icons/24x24/Search.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap autoLoopSettings(wxT(DATADIR "/icons/24x24/Yin-Yang.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap batchProcess(wxT(DATADIR "/icons/24x24/Gear.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap pitchInfo(wxT(DATADIR "/icons/24x24/Bell.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap zoomInAmp(wxT(DATADIR "/icons/24x24/Zoom_in.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap zoomOutAmp(wxT(DATADIR "/icons/24x24/Zoom_out.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap crossfade(wxT(DATADIR "/icons/24x24/Wizard.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap cutfade(wxT(DATADIR "/icons/24x24/Software.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap viewloop(wxT(DATADIR "/icons/24x24/Diagram.png"), wxBITMAP_TYPE_PNG);
++  wxBitmap listInfo(wxT(DATADIR "/icons/24x24/Text.png"), wxBITMAP_TYPE_PNG);
+   toolBar->AddTool(FILE_SELECT, wxT("Select working folder"), selectFolder, wxT("Select working folder"));
+   toolBar->AddTool(OPEN_SELECTED, wxT("Open selected file"), openSelectedFile, wxT("Open selected file"));
+   toolBar->AddTool(wxID_SAVE, wxT("Save file"), saveFile, wxT("Save file"));

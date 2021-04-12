@@ -1,79 +1,109 @@
-# Maintainer: Joermungand <joermungand at gmail dot com>
+# Maintainer: redtide <redtid3 at gmail dot com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Joermungand <joermungand at gmail dot com>
 
 pkgname=loopauditioneer-svn
 pkgver=r54
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for loop and cue handling in .wav files"
 arch=('i686' 'x86_64')
 url="http://loopauditioneer.sourceforge.net/"
 license=('GPL3')
-depends=('wxgtk2' 'alsa-lib' 'gcc-libs-multilib')
+depends=('wxgtk3' 'webkit2gtk' 'rtaudio')
 makedepends=('svn')
 provides=('loopauditioneer')
 conflicts=('loopauditioneer')
 source=("${pkgname%-*}"::'svn://svn.code.sf.net/p/loopauditioneer/code/trunk'
-        "${pkgname%-*}.sh"
+        'loopauditioneer-datadir.diff'
         "${pkgname%-*}.desktop")
-md5sums=(SKIP
-         '1ea7cc51c813bfe8e37a7ebb15184948'
+md5sums=('SKIP'
+         '2aaf74119fab99191937d0f38f47b02e'
          '0e2286c155701065663461be6c1056ba')
 
-pkgver(){
-	cd "$srcdir/${pkgname%-*}"
-	local ver="$(svnversion)"
-	printf "r%s" "${ver//[[:alpha:]]}"
+_cpp_sources=(
+  AutoLoopDialog.cpp
+  AutoLooping.cpp
+  BatchProcessDialog.cpp
+  CrossfadeDialog.cpp
+  CueMarkers.cpp
+  CutNFadeDialog.cpp
+  FFT.cpp
+  FileHandling.cpp
+  ListInfoDialog.cpp
+  LoopAuditioneer.cpp
+  LoopMarkers.cpp
+  LoopOverlay.cpp
+  LoopParametersDialog.cpp
+  MyFrame.cpp
+  MyListCtrl.cpp
+  MyPanel.cpp
+  MySound.cpp
+  PitchDialog.cpp
+  StopHarmonicDialog.cpp
+  WaveformDrawer.cpp
+)
+
+pkgver() {
+  cd "$srcdir/${pkgname%-*}"
+  local ver="$(svnversion)"
+  printf "r%s" "${ver//[[:alpha:]]}"
 }
 
-build(){
-	cd "$srcdir/${pkgname%-*}/lib-src/libsndfile"
-	aclocal
-	automake
-	chmod +x configure
-	./configure --disable-external-libs
-	make
-	cd ..
-	ln -sf libsndfile/src/.libs/libsndfile.a .
-	cd rtaudio
-	./configure --with-alsa
-	make
-	cd ..
-	ln -sf rtaudio/.libs/librtaudio.a .
-	cd ../src
-	g++ -D__UNIX_JACK__ -D__LINUX_ALSA__ -o LoopAuditioneer LoopAuditioneer.cpp \
-	MyFrame.cpp MyPanel.cpp CueMarkers.cpp LoopMarkers.cpp FileHandling.cpp MySound.cpp \
-	WaveformDrawer.cpp LoopParametersDialog.cpp BatchProcessDialog.cpp AutoLoopDialog.cpp \
-	AutoLooping.cpp PitchDialog.cpp CrossfadeDialog.cpp LoopOverlay.cpp FFT.cpp \
-	StopHarmonicDialog.cpp CutNFadeDialog.cpp MyListCtrl.cpp ListInfoDialog.cpp \
-	-I../lib-src/libsndfile/src -I../lib-src/rtaudio ../lib-src/libsndfile.a \
-	../lib-src/librtaudio.a -ljack -lasound -lpthread -lm `wx-config --cxxflags --unicode=yes --libs`
-	strip --strip-all LoopAuditioneer
+prepare() {
+  cd "$srcdir/${pkgname%-*}"
 
+  patch -p1 -N -r - -i "$srcdir"/loopauditioneer-datadir.diff || true
+}
+
+build() {
+  cd "$srcdir/${pkgname%-*}"
+
+  echo "Building libsndfile..."
+  (
+    cd lib-src/libsndfile;
+    aclocal;
+    automake;
+    ./configure \
+      --disable-external-libs \
+      --enable-static;
+    make
+  )
+
+  ln -sf libsndfile/src/.libs/libsndfile.a lib-src
+
+  echo "Building LoopAuditioneer..."
+  (
+    cd src
+    g++ \
+      -DDATADIR=\"/usr/share/loopauditioneer\" \
+      -o LoopAuditioneer \
+      ${_cpp_sources[*]} \
+      -I../lib-src/libsndfile/src \
+      ../lib-src/libsndfile.a \
+      `pkg-config --cflags --libs rtaudio` \
+      -lm \
+      -lpthread \
+      `wx-config-gtk3 --cxxflags --unicode=yes --libs` \
+  )
 }
 
 package() {
-	cd "$srcdir"
-	install -Dm755 "${pkgname%-*}.sh" "$pkgdir/usr/bin/${pkgname%-*}"
-	install -Dm644 "${pkgname%-*}.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
-    cd "$srcdir/${pkgname%-*}"
-    install -Dm755 src/LoopAuditioneer "$pkgdir/opt/${pkgname%-*}/bin/LoopAuditioneer"
-    install -dm755 src/icons "$pkgdir/opt/${pkgname%-*}/bin/icons"
-    install -Dm755 src/icons/* "$pkgdir/opt/${pkgname%-*}/bin/icons/"
-    install -dm755 src/help "$pkgdir/opt/${pkgname%-*}/bin/help"
-    for i in $(ls src/help | grep -v images)
-    do
-        install -Dm755 src/help/$i "$pkgdir/opt/${pkgname%-*}/bin/help/$i"
-    done
-    install -dm755 src/help/images "$pkgdir/opt/${pkgname%-*}/bin/help/images"
-    install -Dm755 src/help/images/* "$pkgdir/opt/${pkgname%-*}/bin/help/images/"
-    install -dm755 icons "$pkgdir/opt/${pkgname%-*}/icons"
-    install -Dm755 icons/index.url "$pkgdir/opt/${pkgname%-*}/icons/index.url"
-    install -Dm755 icons/readme.txt "$pkgdir/opt/${pkgname%-*}/icons/index.readme"
-    install -dm755 icons/24x24 "$pkgdir/opt/${pkgname%-*}/icons/24x24"
-    install -Dm755 icons/24x24/* "$pkgdir/opt/${pkgname%-*}/icons/24x24/"
-    mkdir -p "$pkgdir/usr/share/pixmaps"
-    cd "$pkgdir/usr/share/pixmaps"
-    ln -s "../../../opt/${pkgname%-*}/bin/icons/LoopyIcon-48.png" "${pkgname%-*}.png"
-    cd "$srcdir/${pkgname%-*}"
-    install -Dm644 README.txt "$pkgdir/usr/share/doc/${pkgname%-*}/README"
+  cd "$srcdir/${pkgname%-*}"
+  # binary
+  install -Dm755 src/LoopAuditioneer "$pkgdir/usr/bin/${pkgname%-*}"
+  # desktop file
+  install -Dm644 "${srcdir}/${pkgname%-*}.desktop" -t "$pkgdir/usr/share/applications"
+  # icons
+  install -Dm644 src/icons/*.png icons/index.url -t "$pkgdir/usr/share/${pkgname%-*}/icons"
+  install -Dm755 icons/24x24/* -t "$pkgdir/usr/share/${pkgname%-*}/icons/24x24"
+  install -Dm644 src/help/help.zip -t "$pkgdir/usr/share/${pkgname%-*}/help"
+  #install -Dm644 src/help/images/* -t "$pkgdir/usr/share/${pkgname%-*}/help/images/"
+  # application icon
+  install -dm755 "$pkgdir/usr/share/pixmaps"
+  ln -sf "../../${pkgname%-*}/icons/LoopyIcon-48.png" "$pkgdir/usr/share/pixmaps/${pkgname%-*}.png"
+  # documentation
+  install -Dm644 README.txt -t "$pkgdir/usr/share/doc/${pkgname}"
+  # icons license
+  install -Dm755 icons/readme.txt "$pkgdir/share/licenses/${pkgname}/license-icons.txt"
 }
 
