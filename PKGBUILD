@@ -2,8 +2,8 @@
 
 pkgname=wikitrad-git
 pkgver=r7.4f9c279
-pkgrel=1
-pkgdesc="A CLI to translate terms with wikipedia"
+pkgrel=2
+pkgdesc="A CLI to translate terms with wikipedia (bleeding edge)"
 arch=('any')
 url="https://github.com/ewen-lbh/wikitrad"
 license=('GPL')
