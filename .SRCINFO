@@ -21,6 +21,7 @@ pkgbase = xournalpp-micro
 	depends = libzip
 	optdepends = xdg-desktop-portal
 	optdepends = xdg-desktop-portal-kde
+	provides = xournalpp
 	conflicts = xournalpp
 	source = xournalpp-micro::git+https://github.com/Microeinstein/xournalpp-custom.git
 	sha256sums = SKIP

@@ -14,15 +14,16 @@ license=('GPL2')
 makedepends=('git' 'cmake' 'cppunit')
 depends=('texlive-bin' 'gtk3' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua' 'libzip')
 optdepends=('xdg-desktop-portal' 'xdg-desktop-portal-kde')
+provides=('xournalpp')
 conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "${srcdir}/${pkgname}/"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+# 	cd "${srcdir}/${pkgname}/"
+# 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 prepare() {
 	mkdir -p "${srcdir}/${pkgname}/build"
