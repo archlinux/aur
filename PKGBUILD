@@ -3,7 +3,7 @@ pkgbase=fake-background-webcam-git
 _pkgname="${pkgbase%-git}"
         
 pkgname=('fake-background-webcam-git' 'fake-background-bodypix-git')           
-pkgver=r135.c55bb03
+pkgver=r136.1b2aad1
 pkgrel=1
 pkgdesc="Virtual background-replacing camera"
 #optdepends=('cuda: for GPU acceleration of the TensorFlow on NVidia cards')
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 package_fake-background-webcam-git() {
-  depends=('v4l2loopback-dkms' 'python' 'akvcam-dkms' 'opencv' 'python-numpy>=1.18.2' 'python-requests>=2.23.0' 'python-requests-unixsocket' 'python-aiohttp>=3.6.2' 'python-pyfakewebcam' 'fake-background-bodypix')
+  depends=('v4l2loopback-dkms' 'python' 'python-opencv' 'akvcam-dkms' 'opencv' 'python-numpy>=1.18.2' 'python-requests>=2.23.0' 'python-requests-unixsocket' 'python-aiohttp>=3.6.2' 'python-pyfakewebcam' 'fake-background-bodypix')
   provides=('fake-background-webcam')
   conflicts=('fake-background-webcam') 
   cd "$srcdir/${pkgbase}/fakecam"  
