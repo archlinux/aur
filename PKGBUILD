@@ -64,3 +64,8 @@ package () {
 	DESTDIR="${pkgdir}" meson install -C build
 	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+post_upgrade() {
+  echo "Make sure to upgrade wlroots-hidpi-git and sway-hidpi-git together."
+  echo "Upgrading one but not the other is unsupported."
+}
