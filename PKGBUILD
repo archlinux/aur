@@ -9,7 +9,7 @@
 pkgname=wxglade
 pkgver=1.0.1
 pkgrel=4
-pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets / wxPython'
+pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
 url='http://wxglade.sourceforge.net/'
