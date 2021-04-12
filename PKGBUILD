@@ -53,7 +53,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git"
 fi
-pkgver=28.0.50.146296
+pkgver=28.0.50.146315
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -107,10 +107,12 @@ else
   fi
 fi
 
-if [[ $CLI == "YES" ]]; then
-  depends_nox+=( 'libgccjit' );
-else
-  depends+=( 'libgccjit' );
+if [[ $JIT == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'libgccjit' );
+  else
+    depends+=( 'libgccjit' );
+  fi
 fi
 
 if [[ $CLI == "YES" ]]; then
