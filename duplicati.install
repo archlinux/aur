@@ -1,4 +1,5 @@
 post_install() {
+  mkdir -p /var/lib/duplicati
   chown -R duplicati:duplicati /var/lib/duplicati
 
   cat  <<EOF
@@ -10,6 +11,7 @@ EOF
 }
 
 post_upgrade() {
+  mkdir -p /var/lib/duplicati
   chown -R duplicati:duplicati /var/lib/duplicati
 
   if  [ $(vercmp $2 2.0.2.10-1) -lt 0 ]; then

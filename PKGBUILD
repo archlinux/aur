@@ -5,7 +5,7 @@
 # armv7h tester: kauron
 pkgname=duplicati-latest
 pkgver=2.0.5.114
-pkgrel=2
+pkgrel=3
 _date=2021-03-10
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
