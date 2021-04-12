@@ -1,0 +1,18 @@
+pkgbase = magiwallet-magid-ruckard-raspi4
+	pkgdesc = Updated magi wallet that builds on modern systems by ruckard. For raspi4.
+	pkgver = 1.4.7.2
+	pkgrel = 1
+	url = https://github.com/ruckard/magi/tree/1.4.7.2
+	arch = aarch64
+	license = MIT
+	depends = db
+	depends = boost
+	depends = openssl
+	depends = gmp
+	depends = miniupnpc
+	provides = magid
+	source = https://github.com/ruckard/magi/archive/refs/tags/v1.4.7.2.tar.gz
+	sha256sums = c2cd773340adec2e988de11606ff2118f7ee79109d33ad5bced5f98bbaba8424
+
+pkgname = magiwallet-magid-ruckard-raspi4
+
