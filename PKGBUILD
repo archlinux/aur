@@ -6,28 +6,28 @@
 
 pkgbase=awl
 pkgname=('awl' 'awl-docs')
-pkgver=0.61
+pkgver=0.62
 pkgrel=1
 pkgdesc="Andrew's Web Libraries"
 arch=('any')
-url="https://gitlab.com/davical-project/awl/"
+url="https://gitlab.com/davical-project/awl"
 license=('GPL2')
 depends=('php')
 makedepends=('doxygen' 'graphviz')
 options=('!strip')
 install=${pkgbase}.install
-source=("${pkgbase}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgbase}/repository/archive.tar.bz2?ref=r${pkgver}")
-sha512sums=('50c5bf5c757b154ea044dee34d2977a084f3524374867ed45366aeeda28a8dec053b0471ebd8e7231f352312c43f72eb8e9cd2e9521b0f44f25a4db87483779d')
+source=("${pkgbase}-${pkgver}.tar.gz::$url/-/archive/r$pkgver/$pkgbase-r$pkgver.tar.gz")
+b2sums=('b0e8ac8a2baaeb3ee6b47ce470f098fb64a9894c3da130a085e4f20d96092836910c368d776e489e3d050fa6a9edcf06c89b1cd8c22632638effb07c1ea440a9')
 
 package_awl() {
     pkgdesc="Andrew's Web Libraries - PHP Utility Libraries"
     depends=('php')
     optdepends=('awl-docs')
 
-    cd "${srcdir}/${pkgbase}-r${pkgver}-"*
+    cd "${srcdir}/${pkgbase}-r${pkgver}"
 
     # create directory
-    mkdir -p "${pkgdir}/usr/share/${pkgbase}"
+    mkdir -vp "${pkgdir}/usr/share/${pkgbase}"
 
     # update package version
     sed -s \
@@ -35,20 +35,20 @@ package_awl() {
       inc/AWLUtilities.php.in > inc/AWLUtilities.php
 
     # remove template
-    rm -f inc/AWLUtilities.php.in
+    rm -vf inc/AWLUtilities.php.in
 
     # install package
-    cp -ra dba inc "${pkgdir}/usr/share/${pkgbase}"
+    cp -vra dba inc "${pkgdir}/usr/share/${pkgbase}"
 }
 
 package_awl-docs() {
     pkgdesc="Andrew's Web Libraries - API documentation"
     depends=()
 
-    cd "${srcdir}/${pkgbase}-r${pkgver}-"*
+    cd "${srcdir}/${pkgbase}-r${pkgver}"
 
     # create directory
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgbase}"
+    mkdir -vp "${pkgdir}/usr/share/doc/${pkgbase}"
 
     # build documentation
     sed \
@@ -57,5 +57,5 @@ package_awl-docs() {
       docs/Doxyfile | doxygen -
 
     # install package documentation
-    cp -ra docs/api/* "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -vra docs/api/* "${pkgdir}/usr/share/doc/${pkgbase}"
 }
