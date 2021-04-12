@@ -1,7 +1,7 @@
-# Maintainer: David Birks <david@birks.dev>
+# Maintainer: Peter Smit <peter@smitmail.eu>
 
 pkgname=nova
-pkgver=1.0.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='A cli tool to find outdated Helm charts running in your Kubernetes cluster'
 arch=(x86_64)
@@ -9,10 +9,9 @@ url='https://github.com/FairwindsOps/nova'
 license=(Apache)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('46173b5257ab78b9a5a57e258638760b8f4dad52929d1ff61d9813e2b803c0ff')
 
 build() {
-  cd Nova-$pkgver
+  cd nova-$pkgver
 
   go build \
     -trimpath \
@@ -24,6 +23,7 @@ build() {
 }
 
 package() {
-  install -Dm 755 "$srcdir"/Nova-$pkgver/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm 755 "$srcdir"/Nova-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 755 "$srcdir"/nova-$pkgver/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm 755 "$srcdir"/nova-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+md5sums=('b8af2867a954d92dfcc89c6d662092c3')
