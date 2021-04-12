@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 pkgname=gtk3-typeahead
 pkgver=3.24.28
-pkgrel=2
+pkgrel=4
 pkgdesc="GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget"
 arch=(x86_64)
 url="https://www.gtk.org/"
@@ -41,17 +41,18 @@ prepare() {
 }
 
 build() {
-  # https://gitlab.gnome.org/GNOME/gtk/-/commit/df4b564d69cc7d2e751537eff61259b36f37e9e5
-  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS -DG_DISABLE_ASSERT"
-
-  arch-meson gtk build \
-    -D broadway_backend=true \
-    -D cloudproviders=true \
-    -D tracker3=false \
-    -D colord=yes \
+  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+  local meson_options=(
+    -D broadway_backend=true
+    -D cloudproviders=true
+    -D tracker3=false
+    -D colord=yes
     -D examples=false \
     -D demos=false \
     -D man=true
+  )
+
+  arch-meson gtk build "${meson_options[@]}"
   meson compile -C build
 }
 
