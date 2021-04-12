@@ -4,24 +4,24 @@
 
 pkgname=prs
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync"
-arch=('x86_64')
+arch=('any')
 url="https://gitlab.com/timvisee/prs"
 license=('GPL3')
-depends=('gpgme' 'dbus' 'gtk3')
+depends=('gpgme' 'dbus')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha512sums=('0464d2434f8a9e9e335338cd90fba41e0927280dec2bb3c9dddbac2d58de9394a37f1835785d4e34b0668e0574162014f768be070af16786ae0adab875b78d1d')
 
 build() {
   cd "$pkgname-v$pkgver"
-  cargo build --release --locked
+  cargo build --package prs-cli --release --locked
 }
 
 check() {
   cd "$pkgname-v$pkgver"
-  cargo test --release --locked
+  cargo test --package prs-cli --release --locked
 }
 
 package() {
