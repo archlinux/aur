@@ -1,7 +1,7 @@
 # Maintainer 5amu <v.casalino@protonmail.com>
 
 pkgname=5amu-scripts
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="Personal POSIX scripts"
 url="https://github.com/5amu/scripts/"
