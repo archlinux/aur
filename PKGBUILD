@@ -8,7 +8,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=3.0.2
+pkgver=3.1.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -16,6 +16,7 @@ url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
+              python-graphql-core python-unidiff
               openssh chromium)
 makedepends=(python-twisted python-jinja python-zope-interface
              python-sqlalchemy-migrate python-dateutil python-txaio
@@ -28,7 +29,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "subunit-tests.diff"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('1515c06fb3bc6fa7151093d80e3e44b689669545c3a84b4c4d2dd01c4bbe2ee3'
+sha256sums=('3def7d2a771bf958c55cb22ec0d1cc70952ff4918a9d978140b0e81636435c24'
             'SKIP'
             'SKIP'
             'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55'
@@ -149,6 +150,7 @@ package_buildbot() {
     'python-treq: for using HTTP requests as steps'
     'python-requests: for using HTTP requests as steps'
     'python-txrequests: for using HTTP requests as steps'
+    'python-unidiff: for GitDiffInfo'
     # workers
     'buildbot-worker: for local worker'
     'libvirt-python: for libvirt worker'
