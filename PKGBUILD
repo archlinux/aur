@@ -5,11 +5,11 @@
 _PkgName=SU2
 pkgname=su2
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://su2code.github.io"
 license=('LGPL2.1')
-depends=('openmpi' 'python')
+depends=('python-mpi4py')
 makedepends=('gcc-fortran' 'swig')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/su2code/SU2/archive/v$pkgver.tar.gz")
