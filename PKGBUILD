@@ -1,9 +1,9 @@
 # Maintainer: gbr <gbr@protonmail.com>
 pkgname=rsmixer
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A PulseAudio volume mixer for the command line'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/jantap/rsmixer'
 license=('MIT')
 depends=('pulseaudio')
