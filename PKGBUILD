@@ -4,12 +4,12 @@
 
 pkgname=prs-git
 pkgver=0.2.7.r1.g0b90393
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync (git)"
 arch=('any')
 url="https://gitlab.com/timvisee/prs"
 license=('GPL3')
-depends=('gpgme' 'dbus')
+depends=('gpgme' 'dbus' 'libxcb')
 makedepends=('rust' 'python' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
