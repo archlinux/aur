@@ -1,0 +1,25 @@
+pkgbase = ytmdesktop-bin
+	pkgdesc = A desktop app for YouTube Music bundled with AppImage
+	pkgver = 1.13.0
+	pkgrel = 4
+	url = https://ytmdesktop.app
+	arch = x86_64
+	license = CC0 1.0 Universal
+	makedepends = git
+	noextract = ${_pkgname}-${pkgver}.AppImage
+	options = !strip
+	source = https://github.com/ytmdesktop/ytmdesktop/releases/download/v1.13.0/YouTube-Music-Desktop-App-1.13.0.AppImage
+	source = https://raw.githubusercontent.com/ytmdesktop/ytmdesktop/master/LICENSE.md
+	source = https://raw.githubusercontent.com/ytmdesktop/ytmdesktop/master/src/assets/favicon.16x16.png
+	source = https://raw.githubusercontent.com/ytmdesktop/ytmdesktop/master/src/assets/favicon.256x256.png
+	source = https://raw.githubusercontent.com/ytmdesktop/ytmdesktop/master/src/assets/favicon.512x512.png
+	source = ytmdesktop-bin.desktop
+	sha512sums = 7a5f9f85764d9d40957ec843bb62ddff0bf06f267dc283d7d2023278b5cf922dc8bad69f6bac004ee7ce67e7b71ebcf6a919679f16f4217c5832f7fc45c93c4b
+	sha512sums = a80a34b7f491e8ff31005944b68a652ce867e8b4387b105d2cf2981a8c06461d89de74e9e221bfdda6a5e5d7a7f6bb211d3b9e376b166fc645baa477968e634f
+	sha512sums = 489c9f5eb5db2a63028c52d064a35ff4f5f1755ae5f42d8a065478c91fb38898645f19f6a3bfb932785f6dd663bdd3d17c76acced3825e2d62b85f4fba4919a7
+	sha512sums = dceb5cebcf44fa62adabbb878417acf4e59261acb35703ce8e64ef12bc2bfed56577f2334f8b3f9a7ed206ffe2187a153853f62f72d885d3f31deaf41cc1a5e4
+	sha512sums = 07945041e5a15a1279bebc592ede9291d4eb8b7652e9471ac5a509479eb6aeb1339f3876e5a6c02c78c694268ffa8f1649500491f67698582d2b316dccbee212
+	sha512sums = c8e47107e630307892ec33642e7332805bf2d49e2de6111e41e744792a9aa4b71ed17522fe5c0659add27f91fae8ed8a01b69d2f4b51185f9b35516f435e5db7
+
+pkgname = ytmdesktop-bin
+
