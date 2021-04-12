@@ -13,7 +13,7 @@ optdepends=('p7zip: for 7z/zip support')
 makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils')
 provides=('mupen64plus-gui' 'mupen64plus-video-gliden64')
 conflicts=('mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
-_tag="v$(printf '%s' "$pkgver" | sed -E 's/^([0-9]{4})([0-9])([0-9])/\1.\3./')"
+_tag="v$(sed -E 's/^([0-9]{4})([0-9])([0-9])/\1.\3./' <<< "$pkgver")"
 source=("git+https://github.com/loganmc10/m64p.git#tag=${_tag}"
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-enable-optimizations.patch'
