@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-clipboard-indicator
 pkgver=37
-pkgrel=2
+pkgrel=3
 pkgdesc="Adds a clipboard indicator to the top panel, and caches clipboard history"
 arch=("any")
 url="https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator"
@@ -13,6 +13,9 @@ md5sums=("83f865b3d71a333593c339c296e064b4")
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/$pkgname-$pkgver/." "$_/clipboard-indicator@tudmotu.com"
+  install -d "$pkgdir/usr/share/glib-2.0" && mv "$pkgdir/usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com/schemas" "$_"
+
+  rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
 
   # Remove this line whe gnome 40 compatible version is released
   sed -i 's/"3.38"/"3.38", "40"/g' "$pkgdir/usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com/metadata.json"
