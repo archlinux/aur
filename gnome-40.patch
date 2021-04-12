@@ -1,0 +1,11 @@
+diff --git a/system-monitor@paradoxxx.zero.gmail.com/metadata.json b/system-monitor@paradoxxx.zero.gmail.com/metadata.json
+index 87c7cb9..fa30bd2 100644
+--- a/system-monitor@paradoxxx.zero.gmail.com/metadata.json
++++ b/system-monitor@paradoxxx.zero.gmail.com/metadata.json
+@@ -1,5 +1,5 @@
+ {
+-    "shell-version": ["3.26", "3.28", "3.30", "3.32", "3.34", "3.36"],
++    "shell-version": ["3.26", "3.28", "3.30", "3.32", "3.34", "3.36", "40"],
+     "uuid": "system-monitor@paradoxxx.zero.gmail.com",
+     "name": "system-monitor",
+     "url": "https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet",
