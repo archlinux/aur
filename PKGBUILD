@@ -1,20 +1,19 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
-# Contributor:  lsf
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: torvic9 AT mailbox DOT org
+# Contributor: lsf
 
 pkgname=firedragon-stable
 _pkgname=FireDragon
 __pkgname=firedragon
 pkgver=87.0
-pkgrel=2
-pkgdesc="Librewolf fork build using custom branding & new features using stable as source."
+pkgrel=3
+pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse whoogle
-        libvpx libjpeg zlib icu libevent libpipewire02)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss nspr ttf-font libpulse
+        libwebp libvpx libjpeg zlib icu libevent libpipewire02 aom harfbuzz 
+        graphite dav1d kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust ccache
              autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
@@ -34,6 +33,10 @@ install=$__pkgname.install
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _linux_commit=7a39d563510701275472b1656b92eed590a040d5
 _settings_commit=241e6f4d73e6f2de37537cf4473612ae9f8ad81e
+_mbrev=2377
+_patchrevsuse=3fdf082cf93d94e4289e552cbd9988601044576a
+_pfdate=20210325
+_patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrevsuse
 source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                $__pkgname.desktop
                "git+https://gitlab.com/dr460nf1r3/common.git"
@@ -41,7 +44,17 @@ source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/f
                "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
                "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
-               "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch")
+               "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch"
+               0001-Use-remoting-name-for-GDK-application-names.patch
+               firefox-kde-$_patchrevsuse.patch::$_patchurl/firefox/firefox-kde.patch
+               mozilla-kde-$_patchrevsuse.patch::$_patchurl/mozilla-kde.patch
+               mozilla-nongnome-proxies-$_patchrevsuse.patch::$_patchurl/mozilla-nongnome-proxies.patch
+               0004-bmo-847568-Support-system-harfbuzz.patch
+               0005-bmo-847568-Support-system-graphite2.patch
+               0006-bmo-1559213-Support-system-av1.patch
+               0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+               0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+               reduce-rust-debuginfo.patch)
 source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                 $__pkgname.desktop
                 "git+https://gitlab.com/dr460nf1r3/common.git"
@@ -51,7 +64,17 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
                 "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch"
                 "arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
-                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
+                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+                0001-Use-remoting-name-for-GDK-application-names.patch
+                firefox-kde-$_patchrevsuse.patch::$_patchurl/firefox/firefox-kde.patch
+                mozilla-kde-$_patchrevsuse.patch::$_patchurl/mozilla-kde.patch
+                mozilla-nongnome-proxies-$_patchrevsuse.patch::$_patchurl/mozilla-nongnome-proxies.patch
+                0004-bmo-847568-Support-system-harfbuzz.patch
+                0005-bmo-847568-Support-system-graphite2.patch
+                0006-bmo-1559213-Support-system-av1.patch
+                0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+                0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+                reduce-rust-debuginfo.patch)
 
 sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
                    '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
@@ -60,7 +83,17 @@ sha256sums_x86_64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd
                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                    '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                    '85f037f794afee0c70840123960375a00f9cef08dd903ea038b6bb62e683b96f'
-                   'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9')
+                   'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9'
+                   '6ca7ff71cb4a7c72eca39769afe8e18ec81cba36d9b570df15fc243867049243'
+                   '0ae5bce3da13b7f58e37be6d7115bef323256d776195279592f4371179497f8a'
+                   '86f0c0cede1aacdd5c9628e58266ab431b8b9890bac0f96a710a20c73c7ef25a'
+                   'fbd95cbcbc32673ef549b43b0d2de3ef0ef4fa303b6336e64993f2c8a73264e4'
+                   'f954b7b5450cf7538f896cab53c09fe2fc1c079f7f87f99e4d3eda8dae08d14e'
+                   '22af1bdb2ca9b69ca3265aaa7b4b65db0aeb53c15a9db7e78b4bb3ba10d163b0'
+                   'f285331005a5778e3d30220c71e5823f6e7834c7f5f004020d542e2cf553b500'
+                   '82129e30512477232556e939ee8ed64b999b0e095001d043b121c5e5d334692c'
+                   '1034a3edda8ffa889fcb4dcf57cb93f8f296f7c37e5cfcf1e5c6071a6f8f4261'
+                   '923a9373afc019202c0c07a7cba47042e9ebc78cc2605baecd99602beeaf82ed')
 sha256sums_aarch64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7fd58ab'
                     '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
                     'SKIP'
@@ -70,13 +103,50 @@ sha256sums_aarch64=('ce98be0522f971b6950f22c738c4b2caf19cf7f48ab2ae2e6d46694af7f
                     '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
                     'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
+                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
+                    '6ca7ff71cb4a7c72eca39769afe8e18ec81cba36d9b570df15fc243867049243'
+                    '0ae5bce3da13b7f58e37be6d7115bef323256d776195279592f4371179497f8a'
+                    '86f0c0cede1aacdd5c9628e58266ab431b8b9890bac0f96a710a20c73c7ef25a'
+                    'fbd95cbcbc32673ef549b43b0d2de3ef0ef4fa303b6336e64993f2c8a73264e4'
+                    'f954b7b5450cf7538f896cab53c09fe2fc1c079f7f87f99e4d3eda8dae08d14e'
+                    '22af1bdb2ca9b69ca3265aaa7b4b65db0aeb53c15a9db7e78b4bb3ba10d163b0'
+                    'f285331005a5778e3d30220c71e5823f6e7834c7f5f004020d542e2cf553b500'
+                    '82129e30512477232556e939ee8ed64b999b0e095001d043b121c5e5d334692c'
+                    '1034a3edda8ffa889fcb4dcf57cb93f8f296f7c37e5cfcf1e5c6071a6f8f4261'
+                    '923a9373afc019202c0c07a7cba47042e9ebc78cc2605baecd99602beeaf82ed')
 
 prepare() {
   if [[ ! -d mozbuild ]];then
       mkdir mozbuild
   fi
   cd firefox-$pkgver
+
+  sed -i 's/\"BrowserApplication\"\, \"firefox\"/\"BrowserApplication\"\, \"firedragon\"/g' $srcdir/firefox-kde-$_patchrevsuse.patch
+  sed -i 's/kmozillahelper/kfiredragonhelper/g' $srcdir/mozilla-kde-$_patchrevsuse.patch
+  
+  # Arch patches
+  echo "---- Arch patches"
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # KDE patches (W. Rosenauer)
+  echo "---- Patching for KDE"
+  patch -Np1 -i ../mozilla-nongnome-proxies-$_patchrevsuse.patch
+  patch -Np1 -i ../mozilla-kde-$_patchrevsuse.patch
+  patch -Np1 -i ../firefox-kde-$_patchrevsuse.patch
+  
+  # Gentoo patches
+  echo "---- Gentoo patches"
+  patch -Np1 -i ../0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ../0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+
+  # Use more system libs
+  echo "---- Patching for system libs"
+  patch -Np1 -i ../0004-bmo-847568-Support-system-harfbuzz.patch
+  patch -Np1 -i ../0005-bmo-847568-Support-system-graphite2.patch
+  patch -Np1 -i ../0006-bmo-1559213-Support-system-av1.patch
+  
+  # Rust
+  patch -Np1 -i ../reduce-rust-debuginfo.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -88,8 +158,13 @@ ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-export CC='clang'
-export CXX='clang++'
+export CC='clang --target=x86_64-pc-linux-gnu'
+export CXX='clang++ --target=x86_64-pc-linux-gnu'
+export RANLIB=llvm-ranlib
+export STRIP=llvm-strip
+export AR=llvm-ar
+export NM=llvm-nm
+export OBJCOPY='/usr/bin/llvm-objcopy'
 
 # Branding
 ac_add_options --enable-update-channel=nightly
@@ -104,13 +179,20 @@ export MOZ_REQUIRE_SIGNING=0
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # System libraries
+ac_add_options --disable-libproxy
+ac_add_options --enable-system-pixman
+ac_add_options --with-system-av1
+ac_add_options --with-system-ffi
+ac_add_options --with-system-graphite2
+ac_add_options --with-system-harfbuzz
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-libevent
-ac_add_options --with-system-icu
+ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
 
 # Features
 ac_add_options --enable-pulseaudio
