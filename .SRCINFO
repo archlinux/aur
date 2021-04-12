@@ -1,9 +1,9 @@
 pkgbase = myxer
 	pkgdesc = A modern volume mixer for PulseAudio
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Aurailus/Myxer
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = gtk3
