@@ -11,7 +11,7 @@ versions:
 
 test-upgrade:
 	perl -pi -e 's/^pkgver=.+/pkgver=$(LATEST_VER)/' PKGBUILD
-	bash -c 'perl -pi -e "s/^sha256sums=[^)]+\)/$$(makepkg -g)/" PKGBUILD'
+	bash -c 'perl -0777 -pi -e "s/sha256sums=.+?\)/$$(makepkg -g)/s" PKGBUILD'
 
 upgrade:
 	@make test-upgrade
