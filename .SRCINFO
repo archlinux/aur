@@ -1,16 +1,18 @@
 pkgbase = libcsys
 	pkgdesc = Library for managing drive and getting system resource information in real time.
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/libcsys
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
 	depends = qt5-base
 	depends = udisks2
-	source = https://gitlab.com/cubocore/coreapps/libcsys/-/archive/v4.1.0/libcsys-v4.1.0.tar.gz
-	md5sums = dde1395d423806895ee5ea363ad31414
+	source = https://gitlab.com/cubocore/coreapps/libcsys/-/archive/v4.2.0/libcsys-v4.2.0.tar.gz
+	md5sums = 1c976da273964a295822025941fbeb8c
 
 pkgname = libcsys
 
