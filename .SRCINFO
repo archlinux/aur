@@ -1,0 +1,15 @@
+pkgbase = python-textparser
+	pkgdesc = A text parser written in the Python language.
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/eerimoq/textparser
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-textparser
+	source = python-textparser-0.23.0.tar.gz::https://github.com/eerimoq/textparser/archive/0.23.0.tar.gz
+	sha512sums = dbbe3181317a26ccf7623c8319b8063d189d8800e02ea3524d3d4ae04e28be4f9896361fc5fac56858fb95bf0674cafece3fb0b51748c3bbb67ec2f6d5f8c9fd
+
+pkgname = python-textparser
+
