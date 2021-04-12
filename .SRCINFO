@@ -1,6 +1,6 @@
 pkgbase = kpmenu
 	pkgdesc = Dmenu/rofi interface for KeePass databases
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/AlessioDP/kpmenu
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = kpmenu
 	makedepends = go
 	optdepends = dmenu: dmenu support
 	optdepends = rofi: rofi support
+	optdepends = wofi: wofi support
 	optdepends = xsel: xsel support
 	optdepends = wl-clipboard: wl-clipboard support
 	provides = kpmenu
-	source = kpmenu-1.2.1.tar.gz::https://github.com/AlessioDP/kpmenu/archive/v1.2.1.tar.gz
-	sha256sums = 8525d8adddf4ad1af37fb468c2d55b53cc06351012c76d89e56674e9e9d960c2
+	source = kpmenu-1.3.0.tar.gz::https://github.com/AlessioDP/kpmenu/archive/v1.3.0.tar.gz
+	sha256sums = 71f266e6984be20ea2b068a5469a663b7c6f70b818b73d20fb8bc94d0b84a2b0
 
 pkgname = kpmenu
 
