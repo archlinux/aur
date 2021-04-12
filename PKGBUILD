@@ -2,13 +2,14 @@
 # Contributor: Shaber
 
 pkgname=coretoppings
-pkgver=4.1.1
-pkgrel=1
+pkgver=4.2.0
+pkgrel=2
 pkgdesc="Additional features,plugins etc for CuboCore Application Suite."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'qt5-location' 'qt5-x11extras' 'qt5-connectivity' 'libpulse' 'libxcomposite' 'libcprime' 'libdbusmenu-qt5')
+makedepends=('cmake' 'ninja')
 optdepends=('ffmpeg: For media'
 			'v4l-utils: For media'
 			'grim: For screencapture on wayland'
@@ -26,21 +27,27 @@ optdepends=('ffmpeg: For media'
 			'libnotify: Qwikaccess - Notifications'
 			'xdg-utils: Lockscreen')
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('366d7e0169b651165016cf029e961636')
+source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
+		"fix.patch::https://gitlab.com/cubocore/coreapps/coretoppings/-/commit/ef7a66a384ae2393b5e9541ce2d45654f601f8bf.patch")
+md5sums=('afb9855f707dc66992d0a4588b349b21'
+         'a64e44926733f5721f3c70106e53a566')
 
 prepare() {
   mkdir -p build
+  cd ${pkgname}-v${pkgver}
+  patch -Np1 -i "${srcdir}/fix.patch"
 }
 
 build() {
-  cd ${pkgname}-v${pkgver}
-
-  qmake-qt5 ${pkgname}.pro
-  make
+  cd build
+  cmake ../${pkgname}-v${pkgver} \
+	-GNinja \
+	-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
+	-DCMAKE_INSTALL_LIBDIR=${pkgdir}/usr/lib
+  ninja
 }
 
 package() {
-  cd ${pkgname}-v${pkgver}
-  make INSTALL_ROOT=${pkgdir} install
+  cd build
+  ninja install
 }
