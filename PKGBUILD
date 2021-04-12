@@ -2,11 +2,13 @@
 
 pkgname=crosvm-git
 pkgver=r2084.ac62778ab
-pkgrel=1
+pkgrel=2
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/chromiumos/platform/crosvm"
 depends=('gcc-libs' 'libcap' 'dtc')
 makedepends=('rustup')
+conflicts=('crosvm')
+provides=('crosvm')
 arch=('x86_64')
 license=('custom:chromiumos')
 source=("git+https://chromium.googlesource.com/chromiumos/platform/crosvm"
