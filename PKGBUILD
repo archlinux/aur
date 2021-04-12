@@ -1,24 +1,26 @@
-# Maintainer: Jeremy Ruten <jeremy.ruten@gmail.com>
+# Maintainer: lmartinez-mirror
+# Contributor: Jeremy Ruten <jeremy.ruten@gmail.com>
 pkgname=vim-cpp-enhanced-highlight-git
-pkgver=r45.a8024aa
+pkgver=0.1.r93.g27e0ffc
 pkgrel=1
-pkgdesc="Additional Vim syntax highlighting for C++ (including C++11/14)"
+pkgdesc="Additional Vim syntax highlighting for C++"
 arch=('any')
-url="https://github.com/octol-lang/vim-cpp-enhanced-highlight"
-license=('None')
+url="https://github.com/octol/vim-cpp-enhanced-highlight"
+license=('unknown')
+depends=('vim-plugin-runtime')
 makedepends=('git')
-source=('git://github.com/octol/vim-cpp-enhanced-highlight.git')
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/vim-cpp-enhanced-highlight
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
-  cd $srcdir/vim-cpp-enhanced-highlight
-  local vimfiles="${pkgdir}/usr/share/vim/vimfiles"
-  install -D -m644 after/syntax/c.vim "${vimfiles}/after/syntax/c.vim"
-  install -D -m644 after/syntax/cpp.vim "${vimfiles}/after/syntax/cpp.vim"
+  cd "$pkgname"
+  find after \
+    -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
