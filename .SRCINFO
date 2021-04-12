@@ -1,16 +1,18 @@
 pkgbase = corepaint
 	pkgdesc = A paint app from the CoreApps family.
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corepaint
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
 	depends = qt5-base
 	depends = libcprime>=3.0.1
-	source = https://gitlab.com/cubocore/coreapps/corepaint/-/archive/v4.1.0/corepaint-v4.1.0.tar.gz
-	md5sums = 73cc782b2d1c0c989da9309f046621a2
+	source = https://gitlab.com/cubocore/coreapps/corepaint/-/archive/v4.2.0/corepaint-v4.2.0.tar.gz
+	md5sums = 288f4e5b336ea369efa31579d6838d39
 
 pkgname = corepaint
 
