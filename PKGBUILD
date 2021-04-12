@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/whatip
 
 pkgname=whatip-git
-pkgver=1.0.r4.g4fdfa66
+pkgver=1.0.r5.gb427ab6
 pkgrel=1
 pkgdesc='Info on your IP'
 arch=('any')
