@@ -1,8 +1,8 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 
 pkgname=telegrand-git
-pkgver=r66.e7d1461
-pkgrel=1
+pkgver=r67.f029e11
+pkgrel=2
 pkgdesc='A GTK4 telegram client built to be well integrated with the GNOME desktop environment.'
 arch=('x86_64' 'i686')
 url='https://github.com/melix99/telegrand'
@@ -20,6 +20,7 @@ pkgver() {
 build() {
     cd "$srcdir/telegrand"
     meson _build \
+        -Dprefix=/usr \
         -Dtg_api_id=611335 \
         -Dtg_api_hash=d524b414d21f4d37f08684c1df41ac9c
 
@@ -28,5 +29,5 @@ build() {
 
 package() {
     cd "$srcdir/telegrand"
-    ninja -C _build install
+    DESTDIR="${pkgdir}" ninja -C _build install
 }
