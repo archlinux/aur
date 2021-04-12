@@ -1,6 +1,6 @@
 pkgbase = linux-rt-lts
 	pkgdesc = Linux RT LTS
-	pkgver = 5.4.106.54.arch1
+	pkgver = 5.4.109.55.arch1
 	pkgrel = 1
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
@@ -19,17 +19,17 @@ pkgbase = linux-rt-lts
 	makedepends = xmlto
 	makedepends = xz
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.4.106.54.arch1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.4.109.55.arch1?signed
 	source = config
 	source = sphinx-workaround.patch
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
-	sha512sums = 2fb5049209e02489e565c57e07e5b036a6a8841093b1bf4fb2677564d687cc66984388d52aba72fc17ab2746fc7dd1df6dda29e40b31a8d9c8d0d546d246b36a
+	sha512sums = 07fe9e29a5242214432f24a7d6fb8fab40363d5acad4ecc7755b30ffe976671eaa070a8cf20a5f5975d2318a0ffdde7f2e563109e91252ef11e828240b322846
 	sha512sums = 8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58
 	b2sums = SKIP
-	b2sums = d3049b7cb713a8e92cdd7532275ba722c2d63933141f0667edadef9f3f7d7031a90f25c4a860870987dcbd365c3802bafe7570e580f6fc39d66425a5456fce87
+	b2sums = dbbb1cf6524cb823ce88fc535cd6949e13ca59ea62bca0e5cef585563ea6f99840a80c49a2fe4e7354e790b6408420e697a7e7cfda62775cbbb6304bb33d141e
 	b2sums = 657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c
 
 pkgname = linux-rt-lts
