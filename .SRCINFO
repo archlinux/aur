@@ -1,0 +1,18 @@
+pkgbase = wonderpen-bin
+	pkgdesc = A professional writing software with markdown support
+	pkgver = 1.8.5
+	pkgrel = 1
+	url = https://www.atominn.com/wonderpen
+	arch = x86_64
+	license = custom
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libxss
+	depends = nss
+	depends = xdg-utils
+	provides = wonderpen
+	source = https://file.atom.oldj.net/WonderPen/beta/WonderPen_linux_1.8.5(5546).deb
+	sha256sums = ef246056da5f9f71baedc6e99b9ac1303b29c7147a53ecbed8474094f3ecbfff
+
+pkgname = wonderpen-bin
+
