@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=fuzzel
-pkgver=1.5.1
-pkgrel=4
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="Application launcher for wlroots based Wayland compositors"
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/${pkgname}
@@ -10,7 +10,7 @@ makedepends=('meson' 'ninja' 'scdoc' 'tllist')
 depends=('libxkbcommon' 'wayland' 'pixman' 'cairo' 'librsvg' 'libpng' 'fcft')
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('8a7394a32664638c91e865d63cf5d5a34d8caf4594854ed4867afae1a6f38eb7')
+sha256sums=('87627e3837b9c6cd89a4c2665d2120bf66bd3b7eeb6ddbd20dd8383e65009cd8')
 
 build() {
   cd ${pkgname}

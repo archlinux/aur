@@ -1,9 +1,25 @@
 # Changelog
 
+* [1.5.2](#1-5-2)
 * [1.5.1](#1-5-1)
 * [1.5.0](#1-5-0)
 * [1.4.2](#1-4-2)
 * [1.4.1](#1-4-1)
+
+
+## 1.5.2
+
+### Changed
+
+* Maximum icon height reduced, from the `line height`, to the `line
+  height` minus the font's `descent`. This ensures a margin between
+  icons.
+
+
+### Fixed
+
+* Crash when compositor provided bad monitor geometry data
+  (https://codeberg.org/dnkl/fuzzel/issues/17).
 
 
 ## 1.5.1
