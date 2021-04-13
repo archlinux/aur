@@ -1,7 +1,7 @@
 pkgbase = ftl-sdk
 	pkgdesc = Software Development Kit for Mixer's FTL Protocol
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Scrumplex/ftl-sdk
 	arch = x86_64
 	license = custom:MIT
@@ -9,8 +9,17 @@ pkgbase = ftl-sdk
 	makedepends = make
 	depends = jansson
 	depends = curl
-	source = ftl-sdk-0.10.1.tar.gz::https://github.com/Scrumplex/ftl-sdk/archive/0.10.1.tar.gz
-	sha512sums = d423dec8cf2f5887989d5435410d9cfdee744b6cd6badcbb14b6013a205d9e8b2dbcda04e16cf11978dd5eb5193d99112109872a9462fc5b722c5f01fcd492bd
+	provides = libftl.so=0-64
+	source = ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git#commit=d0c8469f66806b5ea738d607f7d2b000af8b1129
+	source = 0001-cmake-Use-external-jansson-if-possible.patch
+	source = 0002-cmake-Install-into-standard-directories.patch
+	source = 0003-cmake-Install-a-pkgconfig-file.patch
+	source = 0004-refactor-remove-ftl_app-completely.patch
+	sha512sums = SKIP
+	sha512sums = a7b83b1f6e51040d84354b4c608fffb16be5cbb301d2dba87c13cd590440b322d240323f579999d368f6cedc28278af042baea055a90ca1e164907e67aa6d5c9
+	sha512sums = bcc093365424824118d7a26c428c13ce50775f85b739100bd5e84900d60364802d356292ebb2346f8a1e19ba1b0deeb54fb59e65ab5302963da33ee9b9cfd85a
+	sha512sums = 4369b9b08c31527f1eea480c279c141fa4b859aa49796e2c0e7d3b83d2e9a6c28d3b3b6b147f77962bb0fe598009599466aefcf4f17f24cf4b3c51019d692ed5
+	sha512sums = aec0e1bb0bc9368620d558c97294ab23564388cb09ce94e06f20a294060d1841948c073a2c90e7049d78a170e8917fcf84f4089513c46fc019ce2fdd40f516b4
 
 pkgname = ftl-sdk
 

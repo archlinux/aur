@@ -1,0 +1,3802 @@
+From d64828b1d04a5e48dfcae9dce5b301a3d6a17e42 Mon Sep 17 00:00:00 2001
+From: Sefa Eyeoglu <contact@scrumplex.net>
+Date: Tue, 5 Jan 2021 17:46:06 +0100
+Subject: [PATCH 4/6] refactor: remove ftl_app completely
+
+---
+ .gitignore                    |   3 +-
+ CMakeLists.txt                | 174 +++----
+ Dockerfile                    |  46 --
+ Jenkinsfile                   |  30 --
+ README.md                     |  13 -
+ build.bat                     |  13 -
+ ftl_app/bitstream.c           | 142 ------
+ ftl_app/bitstream.h           |  21 -
+ ftl_app/cavlc.c               |   0
+ ftl_app/cavlc.h               |   0
+ ftl_app/dec_obj.h             | 247 ----------
+ ftl_app/decode.c              |  98 ----
+ ftl_app/decode.h              |   4 -
+ ftl_app/file_parser.c         | 370 ---------------
+ ftl_app/file_parser.h         |  47 --
+ ftl_app/gettimeofday.c        |  94 ----
+ ftl_app/gettimeofday.h        |  10 -
+ ftl_app/main.c                | 460 ------------------
+ ftl_app/main.h                |  58 ---
+ ftl_app/nalu.c                | 849 ----------------------------------
+ ftl_app/nalu.h                |   9 -
+ ftl_app/posix/ctrlc_handler.c |  55 ---
+ ftl_app/utils.c               | 112 -----
+ ftl_app/utils.h               |   7 -
+ ftl_app/win32/ctrlc_handler.c |  73 ---
+ ftl_app/win32/xgetopt.c       | 213 ---------
+ ftl_app/win32/xgetopt.h       |  23 -
+ get-audio                     |  16 -
+ get-video                     |  15 -
+ make-deployment-yml           |  45 --
+ scripts/build                 |  14 -
+ scripts/docker-build          |  17 -
+ scripts/docker-test           |  16 -
+ scripts/lint                  |  30 --
+ scripts/prep-artifacts        |  19 -
+ scripts/test                  |  95 ----
+ start-stream                  |  16 -
+ 37 files changed, 73 insertions(+), 3381 deletions(-)
+ delete mode 100644 Dockerfile
+ delete mode 100644 Jenkinsfile
+ delete mode 100755 build.bat
+ delete mode 100644 ftl_app/bitstream.c
+ delete mode 100644 ftl_app/bitstream.h
+ delete mode 100644 ftl_app/cavlc.c
+ delete mode 100644 ftl_app/cavlc.h
+ delete mode 100644 ftl_app/dec_obj.h
+ delete mode 100644 ftl_app/decode.c
+ delete mode 100644 ftl_app/decode.h
+ delete mode 100644 ftl_app/file_parser.c
+ delete mode 100644 ftl_app/file_parser.h
+ delete mode 100644 ftl_app/gettimeofday.c
+ delete mode 100644 ftl_app/gettimeofday.h
+ delete mode 100644 ftl_app/main.c
+ delete mode 100644 ftl_app/main.h
+ delete mode 100644 ftl_app/nalu.c
+ delete mode 100644 ftl_app/nalu.h
+ delete mode 100644 ftl_app/posix/ctrlc_handler.c
+ delete mode 100644 ftl_app/utils.c
+ delete mode 100644 ftl_app/utils.h
+ delete mode 100644 ftl_app/win32/ctrlc_handler.c
+ delete mode 100644 ftl_app/win32/xgetopt.c
+ delete mode 100644 ftl_app/win32/xgetopt.h
+ delete mode 100755 get-audio
+ delete mode 100755 get-video
+ delete mode 100755 make-deployment-yml
+ delete mode 100755 scripts/build
+ delete mode 100755 scripts/docker-build
+ delete mode 100755 scripts/docker-test
+ delete mode 100755 scripts/lint
+ delete mode 100755 scripts/prep-artifacts
+ delete mode 100755 scripts/test
+ delete mode 100755 start-stream
+
+diff --git a/.gitignore b/.gitignore
+index 1652aa1c2d570d16..db7a6bd452461b11 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -3,4 +3,5 @@
+ *.orig
+ .vs/*
+ publish
+-build-output
++build
++cmake-build-debug
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f6cb6c28eba784e5..edb7b7b8c50364aa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,105 +1,98 @@
+-cmake_minimum_required (VERSION 2.8.0)
++cmake_minimum_required(VERSION 3.0)
+ enable_language(C)
+ project(libftl)
+ 
+-SET(FTL_VERSION "0.5.0")
++set(FTL_VERSION "0.10.1")
+ 
+ option(DISABLE_AUTO_INGEST "Set to TRUE to disable auto ingest feature which removes curl and jansson dependancies" FALSE)
+-MESSAGE(STATUS "FTL DISABLE_AUTO_INGEST: " ${DISABLE_AUTO_INGEST})
+-
+-option(DISABLE_FTL_APP "Set to TRUE to disable including the ftl app in the cmake output." FALSE)
+-MESSAGE(STATUS "FTL DISABLE_FTL_APP: " ${DISABLE_FTL_APP})
++message(STATUS "FTL DISABLE_AUTO_INGEST: " ${DISABLE_AUTO_INGEST})
+ 
+ option(FTL_STATIC_COMPILE "Set to TRUE if you want ftl to be compiled as a static lib. If TRUE, the program will want to statically link to the ftl cmake object." FALSE)
+-MESSAGE(STATUS "FTL FTL_STATIC_COMPILE: " ${FTL_STATIC_COMPILE})
++message(STATUS "FTL FTL_STATIC_COMPILE: " ${FTL_STATIC_COMPILE})
+ 
+ include(GNUInstallDirs)
+ find_package(Threads REQUIRED)
+ find_package(PkgConfig)
+ 
+-set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
++set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
++set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+ 
+ if (DISABLE_AUTO_INGEST)
+-  add_definitions(-DDISABLE_AUTO_INGEST)
+-endif()
++    add_definitions(-DDISABLE_AUTO_INGEST)
++endif ()
+ 
+ # We will only try to include curl if we have auto ingest enabled.
+ if (NOT DISABLE_AUTO_INGEST)
+-  FIND_PACKAGE(CURL)
+-endif()
++    find_package(CURL)
++endif ()
+ if (NOT CURL_FOUND AND NOT DISABLE_AUTO_INGEST)
+-  SET(CURL_DISABLE_NTLM ON CACHE BOOL "Disabling NTLM")
+-  SET(CURL_DISABLE_TELNET ON CACHE BOOL "Disabling Telnet")
+-  SET(CURL_DISABLE_LDAP ON CACHE BOOL "Disabling Ldap")
+-  SET(CURL_DISABLE_LDAPS ON CACHE BOOL "Disabling secure ldap")
+-  SET(BUILD_CURL_EXE OFF CACHE BOOL "Building libcurl")
+-  SET(HTTP_ONLY ON CACHE BOOL "using compiling HTTP")
+-  SET(BUILD_TESTING OFF CACHE BOOL "Not building Tests")
+-  add_subdirectory(libcurl)
+-  SET(CURL_INCLUDE_DIRS libcurl/include ${CMAKE_CURRENT_BINARY_DIR}/libcurl/include/curl)
+-  SET(CURL_LIBRARIES libcurl)
+-  include_directories(${CURL_INCLUDE_DIRS})
+-endif()
++    set(CURL_DISABLE_NTLM ON CACHE BOOL "Disabling NTLM")
++    set(CURL_DISABLE_TELNET ON CACHE BOOL "Disabling Telnet")
++    set(CURL_DISABLE_LDAP ON CACHE BOOL "Disabling Ldap")
++    set(CURL_DISABLE_LDAPS ON CACHE BOOL "Disabling secure ldap")
++    set(BUILD_CURL_EXE OFF CACHE BOOL "Building libcurl")
++    set(HTTP_ONLY ON CACHE BOOL "using compiling HTTP")
++    set(BUILD_TESTING OFF CACHE BOOL "Not building Tests")
++    add_subdirectory(libcurl)
++    set(CURL_INCLUDE_DIRS libcurl/include ${CMAKE_CURRENT_BINARY_DIR}/libcurl/include/curl)
++    set(CURL_LIBRARIES libcurl)
++    include_directories(${CURL_INCLUDE_DIRS})
++endif ()
+ 
+ # We will only try to include lib jansson if auto ingest is enabled.
+ if (PKG_CONFIG_FOUND AND NOT DISABLE_AUTO_INGEST)
+-  pkg_check_modules(JANSSON jansson)
+-endif()
++    pkg_check_modules(JANSSON jansson)
++endif ()
+ if (NOT JANSSON_FOUND AND NOT DISABLE_AUTO_INGEST)
+-  SET(JANSSON_BUILD_DOCS OFF CACHE BOOL "Jansson docs off")
+-  SET(JANSSON_WITHOUT_TESTS ON CACHE BOOL "Jansson build without tests")
+-  SET(JANSSON_EXAMPLES OFF CACHE BOOL "Jansson disable examples")
+-  SET(USE_WINDOWS_CRYPTOAPI off)
+-  add_subdirectory(libjansson)
+-  SET(JANSSON_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR}/libjansson/include)
+-  SET(JANSSON_LIBRARIES jansson)
+-  include_directories(${JANSSON_INCLUDE_DIRS})
+-endif()
++    set(JANSSON_BUILD_DOCS OFF CACHE BOOL "Jansson docs off")
++    set(JANSSON_WITHOUT_TESTS ON CACHE BOOL "Jansson build without tests")
++    set(JANSSON_EXAMPLES OFF CACHE BOOL "Jansson disable examples")
++    set(USE_WINDOWS_CRYPTOAPI off)
++    add_subdirectory(libjansson)
++    set(JANSSON_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR}/libjansson/include)
++    set(JANSSON_LIBRARIES jansson)
++    include_directories(${JANSSON_INCLUDE_DIRS})
++endif ()
+ 
+ if (WIN32)
+-  set(FTL_PLATFORM_FILES  ftl_app/win32/xgetopt.c
+-                          ftl_app/win32/xgetopt.h
+-                          ftl_app/win32/ctrlc_handler.c)
+-  #set(FTL_PLATFORM_LIBS kernel32 user32 gdi32 advapi32 )
+-  #set(FTL_PLATFORM_LIBS ws2_32 )
+-  set(FTLSDK_PLATFORM_FILES libftl/win32/socket.c
+-                            libftl/win32/socket.h
+-                            libftl/win32/threads.c
+-                            libftl/win32/threads.h)
+-  include_directories(libftl/win32)
+-else()
+-  set(FTL_PLATFORM_FILES ftl_app/posix/ctrlc_handler.c)
+-  set(FTLSDK_PLATFORM_FILES libftl/posix/socket.c
+-                            libftl/posix/socket.h
+-                            libftl/posix/threads.c
+-                            libftl/posix/threads.h)
+-  include_directories(libftl/posix)
+-endif()
++    #set(FTL_PLATFORM_LIBS kernel32 user32 gdi32 advapi32 )
++    #set(FTL_PLATFORM_LIBS ws2_32 )
++    set(FTLSDK_PLATFORM_FILES libftl/win32/socket.c
++            libftl/win32/socket.h
++            libftl/win32/threads.c
++            libftl/win32/threads.h)
++    include_directories(libftl/win32)
++else ()
++    set(FTLSDK_PLATFORM_FILES libftl/posix/socket.c
++            libftl/posix/socket.h
++            libftl/posix/threads.c
++            libftl/posix/threads.h)
++    include_directories(libftl/posix)
++endif ()
+ 
+ # Figure out what kind of lib we should be producing.
+-if(FTL_STATIC_COMPILE)
+-  set(FTL_LIB_TYPE STATIC)
+-  add_definitions(-DFTL_STATIC_COMPILE=1)
+-else(FTL_STATIC_COMPILE)
+-  set(FTL_LIB_TYPE SHARED)
+-endif(FTL_STATIC_COMPILE)
++if (FTL_STATIC_COMPILE)
++    set(FTL_LIB_TYPE STATIC)
++    add_definitions(-DFTL_STATIC_COMPILE=1)
++else ()
++    set(FTL_LIB_TYPE SHARED)
++endif ()
+ 
+ add_library(ftl ${FTL_LIB_TYPE} libftl/hmac/hmac.c
+-                       libftl/hmac/hmac.h
+-                       libftl/hmac/sha2.c
+-                       libftl/hmac/sha2.h
+-                       libftl/gettimeofday/gettimeofday.c
+-                       libftl/gettimeofday/gettimeofday.h
+-                       libftl/ftl-sdk.c
+-                       libftl/handshake.c
+-                       libftl/ingest.c
+-                       libftl/ftl_helpers.c
+-                       libftl/media.c
+-                       libftl/logging.c
+-                       libftl/ftl.h
+-                       libftl/ftl_private.h
+-                       ${FTLSDK_PLATFORM_FILES})
++        libftl/hmac/hmac.h
++        libftl/hmac/sha2.c
++        libftl/hmac/sha2.h
++        libftl/gettimeofday/gettimeofday.c
++        libftl/gettimeofday/gettimeofday.h
++        libftl/ftl-sdk.c
++        libftl/handshake.c
++        libftl/ingest.c
++        libftl/ftl_helpers.c
++        libftl/media.c
++        libftl/logging.c
++        libftl/ftl.h
++        libftl/ftl_private.h
++        ${FTLSDK_PLATFORM_FILES})
+ include_directories(libftl libftl/gettimeofday)
+ 
+ set_target_properties(ftl PROPERTIES VERSION ${FTL_VERSION})
+@@ -107,37 +100,12 @@ set_target_properties(ftl PROPERTIES SOVERSION 0)
+ 
+ target_link_libraries(ftl ${CURL_LIBRARIES} ${JANSSON_LIBRARIES})
+ 
+-if(WIN32)
+-  target_link_libraries(ftl ws2_32)
+-endif()
+-
+-if (NOT DISABLE_FTL_APP)
+-  add_executable(ftl_app
+-                ftl_app/main.c
+-                ftl_app/main.h
+-                ftl_app/file_parser.c
+-                ftl_app/file_parser.h
+-                ftl_app/gettimeofday.c
+-                ftl_app/gettimeofday.h
+-                ftl_app/bitstream.c
+-                ftl_app/bitstream.h
+-                ftl_app/cavlc.c
+-                ftl_app/cavlc.h
+-                ftl_app/decode.c
+-                ftl_app/decode.h
+-                ftl_app/nalu.c
+-                ftl_app/nalu.h
+-                ftl_app/utils.c
+-                ftl_app/utils.h
+-                ftl_app/dec_obj.h
+-                ${FTL_PLATFORM_FILES})
+-
+-  target_link_libraries(ftl_app ftl ${CURL_LIBRARIES} ${JANSSON_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${FTL_PLATFORM_LIBS})
+-  target_include_directories(ftl_app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/ftl_app)
+-endif()
++if (WIN32)
++    target_link_libraries(ftl ws2_32)
++endif ()
+ 
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libftl.pc.in
+-               ${CMAKE_CURRENT_BINARY_DIR}/libftl.pc @ONLY)
++        ${CMAKE_CURRENT_BINARY_DIR}/libftl.pc @ONLY)
+ 
+ # Install rules
+ install(TARGETS ftl DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/Dockerfile b/Dockerfile
+deleted file mode 100644
+index a1b78fbb48dfb0e9..0000000000000000
+--- a/Dockerfile
++++ /dev/null
+@@ -1,46 +0,0 @@
+-FROM debian:9
+-
+-RUN apt-get update -y
+-RUN apt-get install wget -y
+-RUN apt-get install -y cmake
+-RUN apt-get install git -y
+-RUN apt-get install build-essential -y
+-RUN apt-get install libssl-dev -y
+-RUN apt-get install libcurl4-openssl-dev -y
+-RUN apt-get upgrade ca-certificates -y
+-
+-RUN apt-get install -y jq curl
+-
+-RUN useradd ftl-user
+-
+-RUN mkdir -p /opt/ftl-sdk/vid
+-
+-RUN chown -R ftl-user:ftl-user /opt/ftl-sdk
+-
+-WORKDIR /opt/ftl-sdk/vid
+-
+-ARG VIDEO_URL=https://videotestmedia.blob.core.windows.net/ftl/sintel.h264
+-RUN wget ${VIDEO_URL}
+-ARG AUDIO_URL=https://videotestmedia.blob.core.windows.net/ftl/sintel.opus
+-RUN wget ${AUDIO_URL}
+-
+-COPY --chown=ftl-user:ftl-user ./CMakeLists.txt /opt/ftl-sdk/CMakeLists.txt
+-COPY --chown=ftl-user:ftl-user ./libcurl /opt/ftl-sdk/libcurl
+-COPY --chown=ftl-user:ftl-user ./libjansson /opt/ftl-sdk/libjansson
+-COPY --chown=ftl-user:ftl-user ./libftl /opt/ftl-sdk/libftl
+-COPY --chown=ftl-user:ftl-user ./Doxyfile /opt/ftl-sdk/Doxyfile
+-COPY --chown=ftl-user:ftl-user ./ftl_app /opt/ftl-sdk/ftl_app
+-COPY --chown=ftl-user:ftl-user ./get-video /opt/ftl-sdk/get-video
+-COPY --chown=ftl-user:ftl-user ./get-audio /opt/ftl-sdk/get-audio
+-COPY --chown=ftl-user:ftl-user ./scripts /opt/ftl-sdk/scripts
+-
+-USER ftl-user
+-
+-WORKDIR /opt/ftl-sdk
+-
+-RUN ./scripts/build
+-
+-COPY --chown=ftl-user:ftl-user ./start-stream /opt/ftl-sdk/start-stream
+-
+-ENTRYPOINT ["./start-stream"]
+-
+diff --git a/Jenkinsfile b/Jenkinsfile
+deleted file mode 100644
+index 8487efe2d682a12b..0000000000000000
+--- a/Jenkinsfile
++++ /dev/null
+@@ -1,30 +0,0 @@
+-properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactNumToKeepStr: '2', numToKeepStr: '2']]])
+-
+-node("master") {
+-    def projectName = "ftl-sdk"
+-    
+-    def projectDir = pwd()+ "/${projectName}"
+-    def artifactDir = "${projectDir}/build"
+-
+-    try {
+-        sh "mkdir -p '${projectDir}'"
+-        dir (projectDir) {
+-            stage("Checkout") {
+-                checkout scm
+-            }
+-            stage("submodules") {
+-                sh 'git submodule update --init'
+-            }
+-            stage("make all") {
+-                sh "mkdir -p build && cd build && cmake .. && make"
+-            }
+-            stage("deploy") {
+-                archiveArtifacts artifacts: "build/ftl_app,build/libftl.so*", fingerprint: false
+-            }
+-            currentBuild.result = "SUCCESS"
+-        }
+-    } catch(e) {
+-        currentBuild.result = "FAILURE"
+-        throw e
+-    }
+-}
+diff --git a/README.md b/README.md
+index 4c9359acf0daad0a..45a43d6073cb32b3 100644
+--- a/README.md
++++ b/README.md
+@@ -52,16 +52,3 @@ cmake -G "Visual Studio 14 2015 Win64" ..
+ msbuild /p:Configuration=Release ALL_BUILD.vcxproj OR open libftl.sln in Visual Studio
+ ```
+ *ftl_app.exe will be placed in build/release directory*
+-
+-### Running Test Application
+-
+-download the following test files:
+-
+- - sintel.h264: https://www.dropbox.com/s/ruijibs0lgjnq51/sintel.h264
+- - sintel.opus: https://www.dropbox.com/s/s2r6lggopt9ftw5/sintel.opus
+-
+-In the directory containing ftl_app
+-
+-```
+-ftl_app -i auto -s "<mixer stream key>" -v path\to\sintel.h264 -a path\to\sintel.opus -f 24
+-```
+diff --git a/build.bat b/build.bat
+deleted file mode 100755
+index d9ade4bbb2321aa7..0000000000000000
+--- a/build.bat
++++ /dev/null
+@@ -1,13 +0,0 @@
+-@echo off
+-
+-IF EXIST build (
+-  echo Build Folder Exists
+-) ELSE (
+-  mkdir build
+-)
+-
+-cd build
+-
+-echo Running cmake
+-
+-cmake -G "Visual Studio 14 2015 Win64" ..
+\ No newline at end of file
+diff --git a/ftl_app/bitstream.c b/ftl_app/bitstream.c
+deleted file mode 100644
+index a2d08d202e0614a3..0000000000000000
+--- a/ftl_app/bitstream.c
++++ /dev/null
+@@ -1,142 +0,0 @@
+-#include "utils.h"
+-#include "bitstream.h"
+-
+-
+-unsigned int _read_bits(struct bitstream_elmt_t *bs, int bits, int update);
+-
+-
+-int	bitstream_init(struct bitstream_elmt_t *bs, unsigned char *buf)
+-{
+-	bs->bit_idx = 8;
+-	bs->byte_idx = 0;
+-	bs->buf = buf;
+-
+-	return 0;
+-}
+-
+-
+-/*
+-	T-REC-H.264-200503-P!!MSW-E.doc
+-	Section 9.1
+-*/
+-unsigned int bitstream_ue(struct bitstream_elmt_t *bs)
+-{
+-	int leading_zeros = -1;
+-	int b;
+-	unsigned int code_num;
+-
+-	for(b = 0; !b; leading_zeros++)
+-	{
+-		b = _read_bits(bs, 1, 1);
+-	}
+-
+-	code_num = (1 << leading_zeros) - 1 + _read_bits(bs, leading_zeros, 1);
+-
+-	return code_num;
+-}
+-
+-/*
+-	T-REC-H.264-200503-P!!MSW-E.doc
+-	Section 9.1.1
+-*/
+-int bitstream_se(struct bitstream_elmt_t *bs)
+-{
+-	unsigned int code_num;
+-	int signed_code_num;
+-	int sign;
+-
+-	code_num = bitstream_ue(bs);
+-
+-	sign = ~code_num & 0x1;
+-
+-	signed_code_num = ((code_num + 1) >> 1) * -sign;
+-
+-	return signed_code_num;
+-}
+-
+-/*
+-	T-REC-H.264-200503-P!!MSW-E.doc
+-	Section 7.2
+-*/
+-unsigned int bitstream_u(struct bitstream_elmt_t *bs, int bits)
+-{
+-	unsigned int value;
+-
+-	value = _read_bits(bs, bits, 1);
+-
+-	return value;
+-}
+-
+-/*
+-	T-REC-H.264-200503-P!!MSW-E.doc
+-	Section 7.2
+-*/
+-int bitstream_i(struct bitstream_elmt_t *bs, int bits)
+-{
+-	unsigned int value;
+-
+-	value = _read_bits(bs, bits, 1);
+-
+-	return ~value + 1;
+-}
+-
+-unsigned int bitstream_peak(struct bitstream_elmt_t *bs, int bits)
+-{
+-	unsigned int value;
+-
+-	value = _read_bits(bs, bits, 0);
+-
+-	return value;	
+-}
+-
+-int bitstream_bytealigned(struct bitstream_elmt_t *bs)
+-{
+-	return (bs->bit_idx == 8);
+-}
+-
+-unsigned int _read_bits(struct bitstream_elmt_t *bs, int bits, int update)
+-{
+-	unsigned int val = 0;
+-	int byte_idx;
+-	int bit_idx;
+-	int b_cnt;
+-	int rshft, lshft;
+-
+-	if(bits == 0)
+-	{
+-		return 0;
+-	}
+-
+-	byte_idx = bs->byte_idx;
+-	bit_idx = bs->bit_idx;
+-
+-	do{
+-		b_cnt = MIN(bit_idx, bits);
+-
+-		val <<= b_cnt;
+-
+-		lshft = 8 - bit_idx; 
+-		rshft = bit_idx - b_cnt + lshft;
+-
+-		val |= ((bs->buf[byte_idx] << lshft) & 0xFF) >> rshft;
+-
+-		bits -= b_cnt;
+-
+-		bit_idx -= b_cnt;
+-
+-		if(bit_idx == 0)
+-		{
+-			bit_idx = 8;
+-			byte_idx++;
+-		}
+-
+-	}while(bits > 0);
+-
+-	if(update)
+-	{
+-		bs->byte_idx = byte_idx;
+-		bs->bit_idx = bit_idx;
+-	}
+-
+-	return val;
+-}
+\ No newline at end of file
+diff --git a/ftl_app/bitstream.h b/ftl_app/bitstream.h
+deleted file mode 100644
+index 7f4e8f10e5d4ce3f..0000000000000000
+--- a/ftl_app/bitstream.h
++++ /dev/null
+@@ -1,21 +0,0 @@
+-#ifndef _BITSTREAM_H_
+-#define _BITSTREAM_H_
+-
+-struct bitstream_elmt_t
+-{
+-	unsigned char *buf;
+-	int byte_idx;
+-	int bit_idx;
+-};
+-
+-int				bitstream_init(struct bitstream_elmt_t *bs, unsigned char *buf);
+-
+-
+-unsigned int	bitstream_ue(struct bitstream_elmt_t *bs);
+-int				bitstream_se(struct bitstream_elmt_t *bs);
+-unsigned int	bitstream_u(struct bitstream_elmt_t *bs, int bits);
+-int				bitstream_i(struct bitstream_elmt_t *bs, int bits);
+-unsigned int    bitstream_peak(struct bitstream_elmt_t *bs, int bits);
+-int				bitstream_bytealigned(struct bitstream_elmt_t *bs);
+-
+-#endif
+\ No newline at end of file
+diff --git a/ftl_app/cavlc.c b/ftl_app/cavlc.c
+deleted file mode 100644
+index e69de29bb2d1d643..0000000000000000
+diff --git a/ftl_app/cavlc.h b/ftl_app/cavlc.h
+deleted file mode 100644
+index e69de29bb2d1d643..0000000000000000
+diff --git a/ftl_app/dec_obj.h b/ftl_app/dec_obj.h
+deleted file mode 100644
+index 71c13a0d5528604e..0000000000000000
+--- a/ftl_app/dec_obj.h
++++ /dev/null
+@@ -1,247 +0,0 @@
+-#include "bitstream.h"
+-
+-enum nalu_type_codes
+-{
+-	NALU_TYPE_NON_IDR_SLICE = 1,
+-	NALU_TYPE_IDR_SLICE		= 5,
+-	NALU_TYPE_SPS			= 7,
+-	NALU_TYPE_PPS			= 8
+-};
+-
+-enum slice_types
+-{
+-	SLICE_TYPE_P = 0,
+-	SLICE_TYPE_B = 1,
+-	SLICE_TYPE_I = 2,
+-	SLICE_TYPE_SP = 3,
+-	SLICE_TYPE_SI = 4
+-};
+-
+-enum sample_aspect_ratio_indicator
+-{
+-	VUI_SAR_EXTENDED = 255
+-};
+-
+-struct nalu_t
+-{
+-	int forbidden_zero_bit;
+-	int nal_ref_idc;
+-	int nal_unit_type;
+-	int svc_extension_flag;
+-	int idr_flag;
+-	int priority_id;
+-	int no_inter_layer_pred_flag;
+-	int dependency_id;
+-	int quality_id;
+-	int temporal_id;
+-	int use_ref_base_pic_flag;
+-	int discardable_flag;
+-	int output_flag;
+-	int reserved_three_2bits;
+-};
+-
+-struct hrd_params_t
+-{
+-	int cpb_cnt_minus1;
+-	int bit_rate_scale;
+-	int cpb_size_scale;
+-	int *bit_rate_value_minus1;
+-	int *cpb_size_value_minus1;
+-	int *cbr_flag;
+-	int initial_cpb_removal_delay_length_minus1;
+-	int cpb_removal_delay_length_minus1;
+-	int dpb_output_delay_length_minus1;
+-	int time_offset_length;
+-};
+-
+-struct vui_params_t
+-{
+-	int aspect_ratio_info_present_flag;
+-	int aspect_ratio_idc;
+-	int sar_width;
+-	int sar_height;
+-	int overscan_info_present_flag;
+-	int overscan_appropriate_flag;
+-	int video_signal_type_present_flag;
+-	int video_format;
+-	int video_full_range_flag;
+-	int colour_description_present_flag;
+-	int colour_primaries;
+-	int transfer_characteristics;
+-	int matrix_coefficients;
+-	int chroma_loc_info_present_flag;
+-	int chroma_sample_loc_type_top_field;
+-	int chroma_sample_loc_type_bottom_field;
+-	int timing_info_present_flag;
+-	int num_units_in_tick;
+-	int time_scale;
+-	int fixed_frame_rate_flag;
+-	int nal_hrd_parameters_present_flag;
+-	struct hrd_params_t nal_hrd;
+-	int vcl_hrd_parameters_present_flag;
+-	struct hrd_params_t vlc_hrd;
+-	int low_delay_hrd_flag;
+-	int pic_struct_present_flag;
+-	int bitstream_restriction_flag;
+-	int motion_vectors_over_pic_boundaries_flag;
+-	int max_bytes_per_pic_denom;
+-	int	max_bits_per_mb_denom;
+-	int log2_max_mv_length_horizontal;
+-	int log2_max_mv_length_vertical;
+-	int num_reorder_frames;
+-	int max_dec_frame_buffering;
+-};
+-
+-struct sequence_params_set_t
+-{
+-	int profile_idc;
+-	int constraint_set0_flag;
+-	int constraint_set1_flag;
+-	int constraint_set2_flag;
+-	int constraint_set3_flag;
+-	int reserved_zero_4bits; /* equal to 0 */
+-	int level_idc;
+-	int seq_parameter_set_id;
+-	int log2_max_frame_num_minus4;
+-	int pic_order_cnt_type;
+-	int log2_max_pic_order_cnt_lsb_minus4;
+-	int delta_pic_order_always_zero_flag;
+-	int offset_for_non_ref_pic;
+-	int offset_for_top_to_bottom_field;
+-	int num_ref_frames_in_pic_order_cnt_cycle;
+-	int *offset_for_ref_frame;
+-	int num_ref_frames;
+-	int gaps_in_frame_num_value_allowed_flag;
+-	int pic_width_in_mbs_minus1;
+-	int pic_height_in_map_units_minus1;
+-	int frame_mbs_only_flag;
+-	int mb_adaptive_frame_field_flag;
+-	int direct_8x8_inference_flag;
+-	int frame_cropping_flag;
+-	int frame_crop_left_offset;
+-	int frame_crop_right_offset;
+-	int frame_crop_top_offset;
+-	int frame_crop_bottom_offset;
+-	int vui_parameters_present_flag;
+-	struct vui_params_t vui;
+-
+-	struct sequence_params_set_t *next;
+-};
+-
+-struct picture_params_set_t
+-{
+-	int pic_parameter_set_id;
+-	int seq_parameter_set_id;
+-	int entropy_coding_mode_flag;
+-	int pic_order_present_flag;
+-	int num_slice_groups_minus1;
+-	int slice_group_map_type;
+-	int *run_length_minus1;
+-	int *top_left;
+-	int *bottom_right;
+-	int slice_group_change_direction_flag;
+-	int slice_group_change_rate_minus1;
+-	int pic_size_in_map_units_minus1;
+-	int *slice_group_id;
+-	int num_ref_idx_l0_active_minus1;
+-	int num_ref_idx_l1_active_minus1;
+-	int weighted_pred_flag;
+-	int weighted_bipred_idc;
+-	int pic_init_qp_minus26;  /* relative to 26 */
+-	int pic_init_qs_minus26;  /* relative to 26 */
+-	int chroma_qp_index_offset;
+-	int deblocking_filter_control_present_flag;
+-	int constrained_intra_pred_flag;
+-	int redundant_pic_cnt_present_flag;
+-	int transform_8x8_mode_flag;
+-	int pic_scaling_matrix_present_flag;
+-	int *pic_scaling_list_present_flag;
+-	int second_chroma_qp_index_offset;
+-	
+-	struct picture_params_set_t *next;
+-};
+-
+-struct ref_pic_list_t
+-{
+-	int reordering_of_pic_nums_idc;
+-	int abs_diff_pic_num_minus1;
+-	int long_term_pic_num;
+-};
+-
+-struct ref_pic_reorder_t
+-{
+-	int ref_pic_list_reordering_flag_l0;
+-	struct ref_pic_list_t list0[4];
+-	int ref_pic_list_reordering_flag_l1;
+-	struct ref_pic_list_t list1[4];
+-};
+-
+-struct ref_pic_marking_t
+-{
+-	int no_output_of_prior_pics_flag;
+-	int long_term_reference_flag;
+-	int adaptive_ref_pic_marking_mode_flag;
+-	int memory_management_control_operation[4];
+-	int difference_of_pic_nums_minus1;
+-	int long_term_pic_num;
+-	int long_term_frame_idx;
+-	int max_long_term_frame_idx_plus1;
+-};
+-
+-struct ref_base_pic_marking_t
+-{
+-	int adaptive_ref_base_pic_marking_mode_flag;
+-	int memory_management_base_control_operation[4];
+-	int difference_of_base_pic_nums_minus1;
+-	int long_term_base_pic_num;
+-};
+-
+-struct slice_header_t
+-{
+-	int first_mb_in_slice;
+-	int slice_type;
+-	int pic_parameter_set_id;
+-	int frame_num;
+-	int field_pic_flag;
+-	int bottom_field_flag;
+-	int idr_pic_id;
+-	int pic_order_cnt_lsb;
+-	int delta_pic_order_cnt_bottom;
+-	int delta_pic_order_cnt[2];
+-	int redundant_pic_cnt;
+-	int direct_spatial_mv_pred_flag;
+-	int num_ref_idx_active_override_flag;
+-	int num_ref_idx_l0_active_minus1;
+-	int num_ref_idx_l1_active_minus1;
+-
+-	struct ref_pic_reorder_t ref_pic_reorder;
+-
+-	struct ref_pic_marking_t ref_pic_marking;
+-
+-	struct ref_base_pic_marking_t ref_base_pic_marking;
+-
+-	int cabac_init_idc;
+-	int slice_qp_delta;
+-	int sp_for_switch_flag;
+-	int slice_qs_delta;
+-	int disable_deblocking_filter_idc;
+-	int slice_alpha_c0_offset_div2;
+-	int slice_beta_offset_div2;
+-	int slice_group_change_cycle;
+-
+-	/*svc specific headers*/
+-	int store_ref_base_pic_flag;
+-	int slice_skip_flag;
+-	int scan_idx_start;
+-	int scan_idx_end;
+-};
+-
+-typedef struct _h264_dec_obj_t
+-{
+-	struct bitstream_elmt_t bs;
+-	unsigned char *nalu_buf;
+-	struct nalu_t nalu;	
+-	struct sequence_params_set_t *sps;
+-	struct picture_params_set_t *pps;
+-	struct slice_header_t slice;
+-}h264_dec_obj_t;
+\ No newline at end of file
+diff --git a/ftl_app/decode.c b/ftl_app/decode.c
+deleted file mode 100644
+index 5bfb6489b30ee46a..0000000000000000
+--- a/ftl_app/decode.c
++++ /dev/null
+@@ -1,98 +0,0 @@
+-#include <stdlib.h>
+-#include <string.h>
+-
+-#include "decode.h"
+-#include "nalu.h"
+-#include "utils.h"
+-
+-
+-h264_dec_obj_t * H264_Decode_Open()
+-{
+-	h264_dec_obj_t *obj;
+-
+-	if( (obj = malloc(sizeof(h264_dec_obj_t))) == NULL)
+-	{
+-		return NULL;
+-	}
+-
+-	memset(obj, 0, sizeof(h264_dec_obj_t));
+-
+-	
+-	if ((obj->nalu_buf = malloc(10000000)) == NULL)
+-	{
+-		return NULL;
+-	}
+-
+-	return obj;
+-}
+-
+-int H264_Decode_Nalu(h264_dec_obj_t* h264_dec_obj, unsigned char *nalu, int len)
+-{
+-	static int last_mba = -1, last_frame_num = -1;
+-
+-	bitstream_init(&h264_dec_obj->bs, nalu);
+-
+-	/*get the nalu type and remove picture start code emulation prevention bits*/
+-	len = nal_unit(h264_dec_obj, &h264_dec_obj->bs, &h264_dec_obj->nalu, len);
+-
+-	bitstream_init(&h264_dec_obj->bs, h264_dec_obj->nalu_buf);
+-
+-	switch(h264_dec_obj->nalu.nal_unit_type)
+-	{
+-	case NALU_TYPE_NON_IDR_SLICE:
+-	case NALU_TYPE_IDR_SLICE:
+-		nalu_parse_slice_header(&h264_dec_obj->bs, &h264_dec_obj->nalu,  &h264_dec_obj->slice);
+-		break;
+-	case NALU_TYPE_SPS:
+-		{
+-			struct sequence_params_set_t sps;
+-
+-			nalu_parse_sps(&h264_dec_obj->bs, &sps);
+-
+-			store_sps(&sps);
+-			break;
+-		}
+-	case NALU_TYPE_PPS:
+-		{
+-			struct picture_params_set_t pps;
+-
+-			nalu_parse_pps(&h264_dec_obj->bs, &pps);
+-
+-			store_pps(&pps);
+-			break;
+-		}
+-	default:
+-		printf("Unknown nal unit type: %d\n", h264_dec_obj->nalu.nal_unit_type);
+-	}
+-
+-	if(h264_dec_obj->nalu.nal_unit_type == NALU_TYPE_NON_IDR_SLICE || h264_dec_obj->nalu.nal_unit_type == NALU_TYPE_IDR_SLICE )
+-	{
+-		if(h264_dec_obj->slice.first_mb_in_slice == 0)
+-		{
+-			//printf("Frame %d\n",  h264_dec_obj->slice.frame_num);
+-		}
+-
+-		if(last_mba == -1)
+-		{
+-			last_mba = h264_dec_obj->slice.first_mb_in_slice;
+-			last_frame_num = h264_dec_obj->slice.frame_num;
+-		}
+-		else if(last_frame_num == h264_dec_obj->slice.frame_num)
+-		{
+-			if(last_mba >= h264_dec_obj->slice.first_mb_in_slice)
+-				printf("Error: frame %d: current mba is %d, last was %d\n", h264_dec_obj->slice.frame_num, h264_dec_obj->slice.first_mb_in_slice, last_mba);
+-		}
+-
+-		last_mba = h264_dec_obj->slice.first_mb_in_slice;
+-		last_frame_num = h264_dec_obj->slice.frame_num;
+-	}
+-
+-	
+-	return 0;
+-}
+-
+-int H264_Decode_Close()
+-{
+-
+-	return 0;
+-}
+\ No newline at end of file
+diff --git a/ftl_app/decode.h b/ftl_app/decode.h
+deleted file mode 100644
+index a6e85ffc339f616a..0000000000000000
+--- a/ftl_app/decode.h
++++ /dev/null
+@@ -1,4 +0,0 @@
+-#include "dec_obj.h"
+-
+-h264_dec_obj_t* H264_Decode_Open();
+-int H264_Decode_Nalu(h264_dec_obj_t* h264_dec_obj, unsigned char *nalu, int len);
+diff --git a/ftl_app/file_parser.c b/ftl_app/file_parser.c
+deleted file mode 100644
+index ec023d526a1a3071..0000000000000000
+--- a/ftl_app/file_parser.c
++++ /dev/null
+@@ -1,370 +0,0 @@
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#ifdef _WIN32
+-#include <Windows.h>
+-#endif
+-
+-
+-#include "ftl.h"
+-#include "file_parser.h"
+-
+-int _store_first_nalu(h264_obj_t *handle);
+-
+-int h264_get_nalu(FILE *fp, uint8_t *buf, uint32_t *length);
+-int get_ogg_page(opus_obj_t *handle);
+-
+-int init_video(h264_obj_t *handle, const char *video_file) {
+-
+-  if (video_file == NULL) {
+-    return 0;
+-  }
+-
+-  if ((handle->fp = fopen(video_file, "rb")) == NULL) {
+-    return 0;
+-  }
+-
+-  if ((handle->h264_handle = H264_Decode_Open()) < 0)
+-  {
+-	  return -1;
+-  }
+-
+-  nalu_item_t *nalu;
+-
+-  if ((nalu = malloc(sizeof(nalu_item_t))) == NULL)
+-  {
+-	  printf("Failed to allocate memory for bitstream\n");
+-	  return -1;
+-  }
+-
+-  if ((nalu->buf = malloc(10000000)) == NULL)
+-  {
+-	  printf("Failed to allocate memory for bitstream\n");
+-	  free(nalu);
+-	  return -1;
+-  }
+-
+-  handle->curr_nalu = nalu;
+-
+-  if ((nalu = malloc(sizeof(nalu_item_t))) == NULL)
+-  {
+-	  printf("Failed to allocate memory for bitstream\n");
+-	  return -1;
+-  }
+-
+-  if ((nalu->buf = malloc(10000000)) == NULL)
+-  {
+-	  printf("Failed to allocate memory for bitstream\n");
+-	  free(nalu);
+-	  return -1;
+-  }
+-
+-  handle->next_nalu = nalu;
+-
+-  _store_first_nalu(handle);
+-
+-  return 1;
+-}
+-
+-int reset_video(h264_obj_t *handle) {
+-	fseek(handle->fp, 0, SEEK_SET);
+-	_store_first_nalu(handle);
+-	return 1;
+-}
+-
+-int _store_first_nalu(h264_obj_t *handle) {
+-	h264_get_nalu(handle->fp, handle->curr_nalu->buf, &handle->curr_nalu->len);
+-	H264_Decode_Nalu(handle->h264_handle, handle->curr_nalu->buf, handle->curr_nalu->len);
+-	memcpy(&handle->curr_nalu->slice, &handle->h264_handle->slice, sizeof(struct slice_header_t));
+-	memcpy(&handle->curr_nalu->nalu, &handle->h264_handle->nalu, sizeof(struct nalu_t));
+-
+-	return 1;
+-}
+-
+-int get_video_frame(h264_obj_t *handle, uint8_t *buf, uint32_t *length, int *last_nalu_in_frame) {
+-	int got_sc = 0;
+-	uint32_t pos = 0;
+-	uint8_t nalu_type = 0;
+-	size_t file_pos;
+-	struct slice_header_t *curr_slice, *next_slice;;
+-	struct nalu_t *curr_nalu, *next_nalu;
+-
+-	*last_nalu_in_frame = 0;
+-	curr_nalu = &handle->curr_nalu->nalu;
+-	curr_slice = &handle->curr_nalu->slice;
+-
+-	/*read ahead to next packet*/
+-	if (h264_get_nalu(handle->fp, handle->next_nalu->buf, &handle->next_nalu->len)) {
+-		H264_Decode_Nalu(handle->h264_handle, handle->next_nalu->buf, handle->next_nalu->len);
+-		memcpy(&handle->next_nalu->slice, &handle->h264_handle->slice, sizeof(struct slice_header_t));
+-		memcpy(&handle->next_nalu->nalu, &handle->h264_handle->nalu, sizeof(struct nalu_t));
+-		next_nalu = &handle->next_nalu->nalu;
+-		next_slice = &handle->next_nalu->slice;
+-	}
+-
+-	if (curr_nalu->nal_unit_type == NALU_TYPE_NON_IDR_SLICE || curr_nalu->nal_unit_type == NALU_TYPE_IDR_SLICE) {
+-		//if the next packet is an sps/pps then the current packet is the end of the frame
+-		if (next_nalu->nal_unit_type != NALU_TYPE_NON_IDR_SLICE && next_nalu->nal_unit_type != NALU_TYPE_IDR_SLICE) {
+-			*last_nalu_in_frame = 1;
+-		}
+-		else if (curr_slice->frame_num != next_slice->frame_num) {
+-				*last_nalu_in_frame = 1;
+-		}
+-	}
+-
+-	memcpy(buf, handle->curr_nalu->buf, handle->curr_nalu->len);
+-	*length = handle->curr_nalu->len;
+-
+-	/*swap next with current*/
+-	nalu_item_t *tmp = handle->curr_nalu;
+-	handle->curr_nalu = handle->next_nalu;
+-	handle->next_nalu = tmp;
+-
+-	return 1;
+- }
+-
+- int init_audio(opus_obj_t *handle, const char *audio_file, int raw_opus) {
+-
+-
+-   if (audio_file == NULL) {
+-     return 0;
+-   }
+-
+-   if ((handle->fp = fopen(audio_file, "rb")) == NULL) {
+-     return 0;
+-   }
+-
+-   if ((handle->page_buf = malloc(MAX_OGG_PAGE_LEN)) == NULL) {
+-     return 0;
+-   }
+-
+-   handle->raw_opus = raw_opus;
+-
+-   handle->current_segment = 0;
+-   handle->consumed = 0;
+-   handle->page_len = 0;
+-
+-   return 1;
+- }
+-
+- void close_audio(opus_obj_t *handle) {
+-   if (handle->page_buf != NULL) {
+-     free(handle->page_buf);
+-   }
+- }
+-
+- int reset_audio(opus_obj_t *handle) {
+-   fseek(handle->fp, 0, SEEK_SET);
+-
+-   handle->consumed = 0;
+-   handle->page_len = 0;
+-
+-   return 1;
+- }
+- 
+- int get_audio_packet(opus_obj_t *handle, uint8_t *buf, uint32_t *length) {
+-
+-   *length = 0;
+-
+-   if (handle->raw_opus) {
+-     if (feof(handle->fp)) {
+-       return 0;
+-     }
+-
+-     fread(length, 1, 4, handle->fp);
+-     fread(buf, 1, *length, handle->fp);
+-   }
+-   else {
+-
+-     if (handle->consumed >= handle->page_len) {
+-       if (get_ogg_page(handle) != 1) {
+-         return 0;
+-       }
+-     }
+-
+-     int seg_len;
+-
+-     do {
+-       seg_len = handle->seg_len_table[handle->current_segment];
+-       memcpy(buf, handle->page_buf + handle->consumed, seg_len);
+-       buf += seg_len;
+-       *length += seg_len;
+-       handle->consumed += seg_len;
+-       handle->current_segment++;
+-     } while (seg_len == 255);
+-   }
+-
+-   return 1;
+- }
+-
+- int h264_get_nalu(FILE *fp, uint8_t *buf, uint32_t *length) {
+-   uint32_t sc = 0;
+-   uint8_t byte;
+-   uint32_t pos = 0;
+-   int got_sc = 0;
+-
+-   do {
+-	   while (!feof(fp)) {
+-		   fread(&byte, 1, 1, fp);
+-
+-		   if (buf != NULL) {
+-			   buf[pos] = byte;
+-		   }
+-
+-		   pos++;
+-
+-		   sc = (sc << 8) | byte;
+-
+-		   if (sc == 1 || ((sc & 0xFFFFFF) == 1)) {
+-
+-			   pos -= 3;
+-
+-			   if (sc == 1) {
+-				   pos -= 1;
+-			   }
+-
+-			   got_sc = 1;
+-			   break;
+-		   }
+-	   }
+-   } while (pos == 0);
+-
+-   *length = pos;
+-
+-   return got_sc;
+- }
+-
+- uint8_t get_8bits(uint8_t **buf, uint32_t *len) {
+-   uint8_t val = 0;
+-   uint32_t bytes = sizeof(uint8_t);
+-
+-   if (*len >= bytes) {
+-     *len -= bytes;
+-   }
+-
+-   val = (*buf)[0];
+-
+-   (*buf) += bytes;
+-
+-   return val;
+- }
+-
+- uint16_t get_16bits(uint8_t **buf, uint32_t *len) {
+-   uint16_t val;
+-   uint32_t bytes = sizeof(uint16_t);
+-
+-   if (*len >= bytes) {
+-     *len -= bytes;
+-   }
+-
+-   int i;
+-   for (i = sizeof(uint16_t) - 1; i >= 0; i--) {
+-     val = (val << 8) | (*buf)[i];
+-   }
+-
+-   (*buf) += bytes;
+-
+-   return val;
+- }
+-
+- uint32_t get_32bits(uint8_t **buf, uint32_t *len) {
+-   uint32_t val;
+-   uint32_t bytes = sizeof(uint32_t);
+-
+-   if (*len >= bytes) {
+-     *len -= bytes;
+-   }
+-         
+-         int i;
+-   for (i = bytes - 1; i >= 0; i--) {
+-     val = (val << 8) | (*buf)[i];
+-   }
+-
+-   (*buf) += bytes;
+-
+-   return val;
+- }
+-
+- uint64_t get_64bits(uint8_t **buf, uint32_t *len) {
+-   uint64_t val;
+-   uint32_t bytes = sizeof(uint64_t);
+-
+-   if (*len >= bytes) {
+-     *len -= bytes;
+-   }
+-
+-         int i;
+-   for (i = bytes - 1; i >= 0; i--) {
+-     val = (val << 8) | (*buf)[i];
+-   }
+-
+-   (*buf) += bytes;
+-
+-   return val;
+- }
+-
+- int get_ogg_page(opus_obj_t *handle) {
+-   uint32_t magic_num = 0;
+-   uint8_t byte;
+-   uint32_t pos = 0;
+-   int got_page = 0;
+-
+-   while (!feof(handle->fp)) {
+-     fread(&byte, 1, 1, handle->fp);
+-
+-     handle->page_buf[pos] = byte;
+-     pos++;
+-
+-     if (pos >= MAX_OGG_PAGE_LEN) {
+-       printf("Error page size exceeds max\n");
+-       exit(-1);
+-     }
+-
+-     magic_num = (magic_num << 8) | byte;
+-
+-     if (magic_num == 0x4F676753) {
+-
+-       pos -= 4;
+-
+-       if (pos == 0) {
+-         continue;
+-       }
+-
+-       uint8_t *p = handle->page_buf;
+-       uint32_t bytes_available = pos;
+-
+-       handle->packets_in_page = 0;
+-
+-       handle->version = get_8bits(&p, &bytes_available);
+-       handle->header_type = get_8bits(&p, &bytes_available);
+-       handle->granule_pos = get_64bits(&p, &bytes_available);
+-       handle->bs_serial = get_32bits(&p, &bytes_available);
+-       handle->page_sn = get_32bits(&p, &bytes_available);
+-       handle->checksum = get_32bits(&p, &bytes_available);
+-       handle->page_segs = get_8bits(&p, &bytes_available);
+-
+-                         int i;
+-       for (i = 0; i < handle->page_segs; i++) {
+-         handle->seg_len_table[i] = get_8bits(&p, &bytes_available);
+-         if (handle->seg_len_table[i] != 255) {
+-           handle->packets_in_page++;
+-         }
+-       }
+-
+-       //printf("Page %d, pos %ul, page segs %d, packets %d\n", handle->page_sn, handle->granule_pos, handle->page_segs, handle->packets_in_page);
+-
+-       handle->consumed = pos - bytes_available;
+-       handle->current_segment = 0;
+-
+-       got_page = 1;
+-       break;
+-     }
+-   }
+-
+-   handle->page_len = pos;
+-
+-   return got_page;
+- }
+-
+-
+-
+diff --git a/ftl_app/file_parser.h b/ftl_app/file_parser.h
+deleted file mode 100644
+index 672840196c624f4b..0000000000000000
+--- a/ftl_app/file_parser.h
++++ /dev/null
+@@ -1,47 +0,0 @@
+-#include "decode.h"
+-
+-#define MAX_OGG_PAGE_LEN 100000
+-
+-
+-typedef struct {
+-  FILE *fp;
+-  uint8_t *page_buf;
+-  int page_len;
+-  int consumed;
+-  int raw_opus;
+-  uint8_t version;
+-  uint8_t header_type;
+-  uint8_t seg_length;
+-  uint8_t page_segs;
+-  uint64_t granule_pos;
+-  uint32_t bs_serial;
+-  uint32_t page_sn;
+-  uint32_t checksum;
+-  uint8_t seg_len_table[255];
+-  uint8_t current_segment;
+-  uint8_t packets_in_page;
+-}opus_obj_t;
+-
+-typedef struct _nalu_item_t {
+-	uint8_t *buf;
+-	int len;
+-	struct slice_header_t slice;
+-	struct nalu_t nalu;
+-}nalu_item_t;
+-
+-typedef struct {
+-  FILE *fp;
+-  h264_dec_obj_t *h264_handle;
+-  nalu_item_t *curr_nalu;
+-  nalu_item_t *next_nalu;
+-}h264_obj_t;
+-
+-
+-int init_video(h264_obj_t *handle, const char *video_file);
+-int reset_video(h264_obj_t *handle);
+-int get_video_frame(h264_obj_t *handle, uint8_t *buf, uint32_t *length, int *end_of_frame);
+-int init_audio(opus_obj_t *handle, const char *audio_file, int raw_opus);
+-void close_audio(opus_obj_t *handle);
+-int reset_audio(opus_obj_t *handle);
+-int get_audio_packet(opus_obj_t *handle, uint8_t *buf, uint32_t *length);
+-
+diff --git a/ftl_app/gettimeofday.c b/ftl_app/gettimeofday.c
+deleted file mode 100644
+index b01166f2a6a71582..0000000000000000
+--- a/ftl_app/gettimeofday.c
++++ /dev/null
+@@ -1,94 +0,0 @@
+-/*
+-* gettimeofday.c
+-*    Win32 gettimeofday() replacement
+-*
+-* src/port/gettimeofday.c
+-*
+-* Copyright (c) 2003 SRA, Inc.
+-* Copyright (c) 2003 SKC, Inc.
+-*
+-* Permission to use, copy, modify, and distribute this software and
+-* its documentation for any purpose, without fee, and without a
+-* written agreement is hereby granted, provided that the above
+-* copyright notice and this paragraph and the following two
+-* paragraphs appear in all copies.
+-*
+-* IN NO EVENT SHALL THE AUTHOR BE LIABLE TO ANY PARTY FOR DIRECT,
+-* INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING
+-* LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS
+-* DOCUMENTATION, EVEN IF THE UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED
+-* OF THE POSSIBILITY OF SUCH DAMAGE.
+-*
+-* THE AUTHOR SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT
+-* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+-* A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS ON AN "AS
+-* IS" BASIS, AND THE AUTHOR HAS NO OBLIGATIONS TO PROVIDE MAINTENANCE,
+-* SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+-*/
+-#include "gettimeofday.h"
+-#ifdef _WIN32
+-#include <Windows.h>
+-
+-/* FILETIME of Jan 1 1970 00:00:00. */
+-static const unsigned __int64 epoch = ((unsigned __int64)116444736000000000ULL);
+-
+-/*
+-* timezone information is stored outside the kernel so tzp isn't used anymore.
+-*
+-* Note: this function is not for Win32 high precision timing purpose. See
+-* elapsed_time().
+-*/
+-int gettimeofday(struct timeval * tp, struct timezone * tzp)
+-{
+-  FILETIME    file_time;
+-  SYSTEMTIME  system_time;
+-  ULARGE_INTEGER ularge;
+-
+-  GetSystemTime(&system_time);
+-  SystemTimeToFileTime(&system_time, &file_time);
+-  ularge.LowPart = file_time.dwLowDateTime;
+-  ularge.HighPart = file_time.dwHighDateTime;
+-
+-  tp->tv_sec = (long)((ularge.QuadPart - epoch) / 10000000L);
+-  tp->tv_usec = (long)(system_time.wMilliseconds * 1000);
+-
+-  return 0;
+-}
+-#endif
+-
+-int timeval_subtract(struct timeval *result, struct timeval *x, struct timeval *y)
+-{
+-  /* Perform the carry for the later subtraction by updating y. */
+-  if (x->tv_usec < y->tv_usec) {
+-    int nsec = (y->tv_usec - x->tv_usec) / 1000000 + 1;
+-    y->tv_usec -= 1000000 * nsec;
+-    y->tv_sec += nsec;
+-  }
+-  if (x->tv_usec - y->tv_usec > 1000000) {
+-    int nsec = (x->tv_usec - y->tv_usec) / 1000000;
+-    y->tv_usec += 1000000 * nsec;
+-    y->tv_sec -= nsec;
+-  }
+-
+-  /* Compute the time remaining to wait.
+-  tv_usec is certainly positive. */
+-  result->tv_sec = x->tv_sec - y->tv_sec;
+-  result->tv_usec = x->tv_usec - y->tv_usec;
+-
+-  /* Return 1 if result is negative. */
+-  return x->tv_sec < y->tv_sec;
+-}
+-
+-float timeval_to_ms(struct timeval *tv) {
+-  double sec, usec;
+-
+-  sec = (float)tv->tv_sec;
+-  usec = (float)tv->tv_usec;
+-
+-  return (float)(sec * 1000 + usec / 1000);
+-}
+-
+-uint64_t timeval_to_us(struct timeval *tv)
+-{
+-  return tv->tv_sec * (uint64_t)1000000 + tv->tv_usec;
+-}
+diff --git a/ftl_app/gettimeofday.h b/ftl_app/gettimeofday.h
+deleted file mode 100644
+index 5421c8481921d7b6..0000000000000000
+--- a/ftl_app/gettimeofday.h
++++ /dev/null
+@@ -1,10 +0,0 @@
+-#include <stdint.h>
+-
+-#ifdef _WIN32
+-int gettimeofday(struct timeval * tp, struct timezone * tzp);
+-#else
+-#include <sys/time.h>
+-#endif
+-int timeval_subtract(struct timeval *result, struct timeval *x, struct timeval *y);
+-float timeval_to_ms(struct timeval *tv);
+-uint64_t timeval_to_us(struct timeval *tv);
+diff --git a/ftl_app/main.c b/ftl_app/main.c
+deleted file mode 100644
+index 7750e50f0cbffe61..0000000000000000
+--- a/ftl_app/main.c
++++ /dev/null
+@@ -1,460 +0,0 @@
+-/**
+- * main.c - Charon client for the FTL SDK
+- *
+- * Copyright (c) 2015 Michael Casadevall
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a copy
+- * of this software and associated documentation files (the "Software"), to deal
+- * in the Software without restriction, including without limitation the rights
+- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+- * copies of the Software, and to permit persons to whom the Software is
+- * furnished to do so, subject to the following conditions:
+- *
+- * The above copyright notice and this permission notice shall be included in
+- * all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+- * SOFTWARE.
+- **/
+-
+-#include "main.h"
+-#include "gettimeofday.h"
+-#ifdef _WIN32
+-#define _CRTDBG_MAP_ALLOC  
+-#include <stdlib.h>  
+-#include <crtdbg.h> 
+-#include <Windows.h>
+-#include <WinSock2.h>
+-#else
+-#include <pthread.h>
+-#include <sys/time.h>
+-#endif
+-#include "file_parser.h"
+-
+-void sleep_ms(int ms)
+-{
+-#ifdef _WIN32
+-  Sleep(ms);
+-#else
+-  usleep(ms * 1000);
+-#endif
+-}
+-
+-void log_test(ftl_log_severity_t log_level, const char *message)
+-{
+-  fprintf(stderr, "libftl message: %s\n", message);
+-  return;
+-}
+-
+-void usage()
+-{
+-  printf("Usage: ftl_app -i <ingest uri> -s <stream_key> - v <h264_annex_b_file> -a <opus in ogg container>\n");
+-  exit(0);
+-}
+-
+-#ifdef _WIN32
+-int WINAPI ftl_status_thread(LPVOID data);
+-#else
+-static void *ftl_status_thread(void *data);
+-#endif
+-
+-int speedtest_duration = 0;
+-
+-int main(int argc, char **argv)
+-{
+-  ftl_status_t status_code;
+-  
+-  char *ingest_location = NULL;
+-  char *video_input = NULL;
+-  char *audio_input = NULL;
+-  char *stream_key = NULL;
+-  int fps_num = 30;
+-  int fps_den = 1;
+-  int raw_opus = 0;
+-  int speedtest_kbps = 1000;
+-  int c;
+-  int audio_pps = 50;
+-  int target_bw_kbps = 0;
+-
+-  int success = 0;
+-  int verbose = 0;
+-
+-  opterr = 0;
+-  
+-  charon_install_ctrlc_handler();
+-  
+-  
+-  if (FTL_VERSION_MAINTENANCE != 0)
+-  {
+-    printf("FTLSDK - version %d.%d.%d\n", FTL_VERSION_MAJOR, FTL_VERSION_MINOR, FTL_VERSION_MAINTENANCE);
+-  }
+-  else
+-  {
+-    printf("FTLSDK - version %d.%d\n", FTL_VERSION_MAJOR, FTL_VERSION_MINOR);
+-  }
+-
+-  while ((c = getopt(argc, argv, "a:i:v:s:f:b:t:r:?")) != -1)
+-  {
+-    switch (c)
+-    {
+-    case 'i':
+-      ingest_location = optarg;
+-      break;
+-    case 'v':
+-      video_input = optarg;
+-      break;
+-    case 'a':
+-    audio_input = optarg;
+-      break;
+-  case 'r':
+-    if (strcmp(optarg, "a") == 0) {
+-      raw_opus = 1;
+-    }
+-    break;
+-    case 's':
+-      stream_key = optarg;
+-      break;
+-    case 'f':
+-      sscanf(optarg, "%d:%d", &fps_num, &fps_den);
+-      break;
+-    case 'b':
+-      sscanf(optarg, "%d", &target_bw_kbps);
+-      break;
+-    case 't':
+-      sscanf(optarg, "%d:%d", &speedtest_duration, &speedtest_kbps);
+-      break;
+-    case '?':
+-      usage();
+-      break;
+-    }
+-  }
+-
+-  /* Make sure we have all the required bits */
+-  if ((!stream_key || !ingest_location) || ((!video_input || !audio_input) && (!speedtest_duration)))
+-  {
+-    usage();
+-  }
+-
+-  FILE *video_fp = NULL;
+-  uint32_t len = 0;
+-  uint8_t *h264_frame = 0;
+-  uint8_t *audio_frame = 0;
+-  opus_obj_t opus_handle;
+-  h264_obj_t h264_handle;
+-  int retval = 0;
+-
+-  if (video_input != NULL)
+-  {
+-    if ((h264_frame = malloc(10000000)) == NULL)
+-    {
+-      printf("Failed to allocate memory for bitstream\n");
+-      return -1;
+-    }
+-
+-    if (!init_video(&h264_handle, video_input))
+-    {
+-      printf("Failed to open video file\n");
+-      return -1;
+-    }
+-  }
+-
+-  if (audio_input != NULL)
+-  {
+-    if ((audio_frame = malloc(1000)) == NULL)
+-    {
+-      printf("Failed to allocate memory for bitstream\n");
+-      return -1;
+-    }
+-
+-    if (!init_audio(&opus_handle, audio_input, raw_opus))
+-    {
+-      printf("Failed to open audio file\n");
+-      return -1;
+-    }
+-  }
+-
+-  ftl_init();
+-  ftl_handle_t handle;
+-  ftl_ingest_params_t params;
+-
+-  params.stream_key = stream_key;
+-  params.video_codec = FTL_VIDEO_H264;
+-  params.audio_codec = FTL_AUDIO_OPUS;
+-  params.ingest_hostname = ingest_location;
+-  params.fps_num = fps_num;
+-  params.fps_den = fps_den;
+-  params.peak_kbps = target_bw_kbps;
+-  params.vendor_name = "ftl_app";
+-  params.vendor_version = "0.0.1";
+-
+-  struct timeval proc_start_tv, proc_end_tv, proc_delta_tv;
+-  struct timeval profile_start, profile_stop, profile_delta;
+-#ifdef _WIN32
+-  HANDLE status_thread_handle;
+-  int status_thread_id;
+-#else
+-  pthread_t status_thread_handle;
+-#endif
+-
+-  if ((status_code = ftl_ingest_create(&handle, &params)) != FTL_SUCCESS)
+-  {
+-    printf("Failed to create ingest handle: %s\n", ftl_status_code_to_string(status_code));
+-    return -1;
+-  }
+-
+-  if ((status_code = ftl_ingest_connect(&handle)) != FTL_SUCCESS)
+-  {
+-    printf("Failed to connect to ingest: %s\n", ftl_status_code_to_string(status_code));
+-    return -1;
+-  }
+-#ifdef _WIN32
+-  if ((status_thread_handle = CreateThread(NULL, 0, ftl_status_thread, &handle, 0, &status_thread_id)) == NULL)
+-  {
+-#else
+-  if ((pthread_create(&status_thread_handle, NULL, ftl_status_thread, &handle)) != 0)
+-  {
+-#endif
+-    return FTL_MALLOC_FAILURE;
+-  }
+-
+-  if (speedtest_duration)
+-  {
+-    printf("Running Speed test: sending %d kbps for %d ms", speedtest_kbps, speedtest_duration);
+-    speed_test_t results;
+-    if ((status_code = ftl_ingest_speed_test_ex(&handle, speedtest_kbps, speedtest_duration, &results)) == FTL_SUCCESS) {
+-      printf("Speed test completed: Peak kbps %d, initial rtt %d, final rtt %d, %3.2f lost packets\n", 
+-      results.peak_kbps, results.starting_rtt, results.ending_rtt, (float)results.lost_pkts * 100.f / (float)results.pkts_sent);
+-    }
+-    else {
+-      printf("Speed test failed with: %s\n", ftl_status_code_to_string(status_code));
+-    }
+-
+-    goto cleanup;
+-  }
+-
+-  printf("Stream online!\n");
+-  printf("Press Ctrl-C to shutdown your stream in this window\n");
+-
+-  float video_send_delay = 0, actual_sleep, time_delta;
+-  float video_time_step = (float)(1000 * params.fps_den) / (float)params.fps_num;
+-
+-  float audio_send_accumulator = video_time_step;
+-  float audio_time_step = 1000.f / audio_pps;
+-  int audio_pkts_sent;
+-  int end_of_frame;
+-
+-  gettimeofday(&proc_start_tv, NULL);
+-  struct timeval frameTime;
+-  gettimeofday(&frameTime, NULL); // NOTE! In a real app these timestamps should come from the samples!
+-
+-  while (!ctrlc_pressed())
+-  {
+-    uint8_t nalu_type;
+-    int audio_read_len;
+-
+-  if (feof(h264_handle.fp) || feof(opus_handle.fp))
+-  {
+-    printf("Restarting Stream\n");
+-    reset_video(&h264_handle);
+-    reset_audio(&opus_handle);
+-    continue;
+-    }
+-
+-    if (get_video_frame(&h264_handle, h264_frame, &len, &end_of_frame) == 0)
+-    {
+-      continue;
+-    }
+-
+-    ftl_ingest_send_media_dts(&handle, FTL_VIDEO_DATA, timeval_to_us(&frameTime), h264_frame, len, end_of_frame);
+-
+-    audio_pkts_sent = 0;
+-    while (audio_send_accumulator > audio_time_step)
+-    {
+-      if (get_audio_packet(&opus_handle, audio_frame, &len) == 0)
+-      {
+-        break;
+-      }
+-
+-      ftl_ingest_send_media(&handle, FTL_AUDIO_DATA, audio_frame, len, 0);
+-      audio_send_accumulator -= audio_time_step;
+-      audio_pkts_sent++;
+-    }
+-
+-    nalu_type = h264_frame[0] & 0x1F;
+-
+-    if (end_of_frame)
+-    {
+-      gettimeofday(&frameTime, NULL); // NOTE! In a real app these timestamps should come from the samples!
+-      gettimeofday(&proc_end_tv, NULL);
+-      timeval_subtract(&proc_delta_tv, &proc_end_tv, &proc_start_tv);
+-
+-      video_send_delay += video_time_step;
+-      time_delta = (float)timeval_to_ms(&proc_delta_tv);
+-      video_send_delay -= time_delta;
+-
+-      if (video_send_delay > 0)
+-      {
+-        gettimeofday(&profile_start, NULL);
+-        sleep_ms((int)video_send_delay);
+-        gettimeofday(&profile_stop, NULL);
+-        timeval_subtract(&profile_delta, &profile_stop, &profile_start);
+-        actual_sleep = (float)timeval_to_ms(&profile_delta);
+-      }
+-      else
+-      {
+-        actual_sleep = 0;
+-      }
+-
+-      video_send_delay -= actual_sleep;
+-
+-      gettimeofday(&proc_start_tv, NULL);
+-
+-      audio_send_accumulator += video_time_step;
+-    }
+-  }
+-
+-cleanup:
+-
+-  if (h264_frame != NULL) {
+-    free(h264_frame);
+-  }
+-
+-  if (audio_frame != NULL) {
+-    free(audio_frame);
+-  }
+-
+-  close_audio(&opus_handle);
+-
+-  if ((status_code = ftl_ingest_disconnect(&handle)) != FTL_SUCCESS)
+-  {
+-    printf("Failed to disconnect from ingest: %s\n", ftl_status_code_to_string(status_code));
+-    retval = -1;
+-  }
+-
+-  if ((status_code = ftl_ingest_destroy(&handle)) != FTL_SUCCESS)
+-  {
+-    printf("Failed to disconnect from ingest: %s\n", ftl_status_code_to_string(status_code));
+-    retval = -1;
+-  }
+-
+-#ifdef _WIN32
+-  WaitForSingleObject(status_thread_handle, INFINITE);
+-  CloseHandle(status_thread_handle);
+-#else
+-  pthread_join(status_thread_handle, NULL);
+-#endif
+-
+-#ifdef _WIN32
+-  _CrtDumpMemoryLeaks();
+-#endif
+-
+-  return retval;
+-}
+-
+-#ifdef _WIN32
+-int WINAPI ftl_status_thread(LPVOID data)
+-#else
+-static void *ftl_status_thread(void *data)
+-#endif
+-{
+-  ftl_handle_t *handle = (ftl_handle_t *)data;
+-  ftl_status_msg_t status;
+-  ftl_status_t status_code;
+-  int retries = 10;
+-  int retry_sleep = 5000;
+-
+-  while (1)
+-  {
+-    if ((status_code = ftl_ingest_get_status(handle, &status, 1000)) == FTL_STATUS_TIMEOUT)
+-    {
+-      continue;
+-    }
+-
+-    if (status_code == FTL_NOT_INITIALIZED)
+-    {
+-      break;
+-    }
+-
+-  if (status.type == FTL_STATUS_EVENT && status.msg.event.type == FTL_STATUS_EVENT_TYPE_DESTROYED)
+-  {
+-    break;
+-  }
+-
+-    if (status.type == FTL_STATUS_EVENT && status.msg.event.type == FTL_STATUS_EVENT_TYPE_DISCONNECTED)
+-    {
+-      printf("Disconnected from ingest for reason: %s (%d)\n", ftl_status_code_to_string(status.msg.event.error_code), status.msg.event.reason);
+-
+-      if (status.msg.event.reason == FTL_STATUS_EVENT_REASON_API_REQUEST)
+-      {
+-        continue;
+-      }
+-
+-    /*dont reconnect for speed test*/
+-    if (speedtest_duration) {
+-      continue;
+-    }
+-
+-      //attempt reconnection
+-      while (retries-- > 0)
+-      {
+-        sleep_ms(retry_sleep);
+-        printf("Attempting to reconnect to ingest (retires left %d)\n", retries);
+-        if ((status_code = ftl_ingest_connect(handle)) == FTL_SUCCESS)
+-        {
+-          retries = 10;
+-          break;
+-        }
+-        printf("Failed to connect to ingest: %s (%d)\n", ftl_status_code_to_string(status_code), status_code);
+-        retry_sleep = retry_sleep * 3 / 2;
+-      }
+-      if (retries <= 0)
+-      {
+-        break;
+-      }
+-    }
+-    else if (status.type == FTL_STATUS_LOG)
+-    {
+-      printf("[%d] %s\n", status.msg.log.log_level, status.msg.log.string);
+-    }
+-    else if (status.type == FTL_STATUS_VIDEO_PACKETS)
+-    {
+-      ftl_packet_stats_msg_t *p = &status.msg.pkt_stats;
+-
+-      printf("Avg packet send per second %3.1f, total nack requests %d\n",
+-             (float)p->sent * 1000.f / p->period,
+-             p->nack_reqs);
+-    }
+-  else if (status.type == FTL_STATUS_VIDEO_PACKETS_INSTANT)
+-  {
+-    ftl_packet_stats_instant_msg_t *p = &status.msg.ipkt_stats;
+-
+-    printf("avg transmit delay %dms (min: %d, max: %d), avg rtt %dms (min: %d, max: %d)\n",
+-      p->avg_xmit_delay, p->min_xmit_delay, p->max_xmit_delay,
+-      p->avg_rtt, p->min_rtt, p->max_rtt);
+-  }
+-    else if (status.type == FTL_STATUS_VIDEO)
+-    {
+-      ftl_video_frame_stats_msg_t *v = &status.msg.video_stats;
+-
+-      printf("Queue an average of %3.2f fps (%3.1f kbps), sent an average of %3.2f fps (%3.1f kbps), queue fullness %d, max frame size %d\n",
+-             (float)v->frames_queued * 1000.f / v->period,
+-             (float)v->bytes_queued / v->period * 8,
+-             (float)v->frames_sent * 1000.f / v->period,
+-             (float)v->bytes_sent / v->period * 8,
+-             v->queue_fullness, v->max_frame_size);
+-    }
+-    else
+-    {
+-      printf("Status:  Got Status message of type %d\n", status.type);
+-    }
+-  }
+-
+-  printf("exited ftl_status_thread\n");
+-
+-  return 0;
+-}
+diff --git a/ftl_app/main.h b/ftl_app/main.h
+deleted file mode 100644
+index 0a9bae821d343682..0000000000000000
+--- a/ftl_app/main.h
++++ /dev/null
+@@ -1,58 +0,0 @@
+-/**
+- * charon.h - Global Header for the Charon client
+- *
+- * Copyright (c) 2015 Michael Casadevall
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a copy
+- * of this software and associated documentation files (the "Software"), to deal
+- * in the Software without restriction, including without limitation the rights
+- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+- * copies of the Software, and to permit persons to whom the Software is
+- * furnished to do so, subject to the following conditions:
+- *
+- * The above copyright notice and this permission notice shall be included in
+- * all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+- * SOFTWARE.
+- **/
+-
+-/* Include definitions */
+-#include "ftl.h"
+-
+-/* Windows specific includes */
+-#ifdef _WIN32
+-
+-/**
+- * We have to define LEAN_AND_MEAN because winsock will pull in duplicate
+- * header definitions without it as the winsock 1.1 API is in windows.h vs
+- * ws2_32.h.
+- *
+- * Yay for backwards source compatability
+- **/
+-
+-#define WIN32_LEAN_AND_MEAN 1
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <windows.h>
+-#include "win32/xgetopt.h"
+-#else
+-/* POSIX headers */
+-#include <unistd.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <signal.h>
+-#endif 
+-
+-/***
+- * Functions related to Ctrl-C handling
+- **/
+-
+-void charon_install_ctrlc_handler();
+-void charon_loop_until_ctrlc();
+-int ctrlc_pressed();
+diff --git a/ftl_app/nalu.c b/ftl_app/nalu.c
+deleted file mode 100644
+index da55b0d752c4184c..0000000000000000
+--- a/ftl_app/nalu.c
++++ /dev/null
+@@ -1,849 +0,0 @@
+-#include <stdlib.h>
+-#include <stdio.h>
+-#include <string.h>
+-
+-#include "bitstream.h"
+-#include "dec_obj.h"
+-#include "utils.h"
+-#include "nalu.h"
+-
+-int _rbsp_trailing_bits(struct bitstream_elmt_t *bs);
+-
+-/*
+-	T-REC-H.264-200503-P!!MSW-E.doc
+-	Section 7.3.1
+-*/
+-
+-int nal_unit(h264_dec_obj_t *obj, struct bitstream_elmt_t *bs, struct nalu_t *nalu, int len)
+-{
+-	int rbsp_len;
+-	int i;
+-	int val;
+-	unsigned char *rbsp;
+-
+-	rbsp = obj->nalu_buf;
+-	
+-	/*forbidden zero bit*/
+-	nalu->forbidden_zero_bit = bitstream_u(bs, 1);
+-
+-	/*nal ref idc*/
+-	nalu->nal_ref_idc = bitstream_u(bs, 2);
+-
+-    /*nal unit type*/
+-    nalu->nal_unit_type = bitstream_u(bs, 5);
+-
+-	if(nalu->nal_unit_type == 14 || nalu->nal_unit_type == 20)
+-	{
+-		nalu->svc_extension_flag = bitstream_u(bs, 1);
+-
+-		if(nalu->svc_extension_flag != 1)
+-		{
+-			printf("nal_unit_header_mvc_extension() parsing not supported\n");
+-			return -1;
+-		}
+-
+-		nalu->idr_flag = bitstream_u(bs, 1);
+-		
+-		nalu->priority_id = bitstream_u(bs, 6);
+-
+-		nalu->no_inter_layer_pred_flag = bitstream_u(bs, 1);
+-
+-		nalu->dependency_id = bitstream_u(bs, 3);
+-		
+-		nalu->quality_id = bitstream_u(bs, 4);
+-
+-		nalu->temporal_id = bitstream_u(bs, 3);
+-
+-		nalu->use_ref_base_pic_flag = bitstream_u(bs, 1);
+-		
+-		nalu->discardable_flag = bitstream_u(bs, 1);
+-
+-		nalu->output_flag = bitstream_u(bs, 1);
+-
+-		nalu->reserved_three_2bits = bitstream_u(bs, 2);
+-	}
+-
+-	rbsp_len = 0;
+-
+-	for(i=1; i < len; i++)
+-	{
+-		/*check for start code emulation prevention bits*/
+-		if(i + 2 < len && bitstream_peak(bs, 24) == 0x000003 )
+-		{
+-			rbsp[rbsp_len++] = bitstream_u(bs, 8);
+-			rbsp[rbsp_len++] = bitstream_u(bs, 8);
+-			i+=2;
+-
+-			/*read off start code emulation prevention bits*/
+-			bitstream_u(bs, 8);
+-		}
+-		else
+-		{
+-			rbsp[rbsp_len++] = bitstream_u(bs, 8);
+-		}
+-	}
+-
+-	return rbsp_len;
+-}
+-
+-void nalu_parse_slice_header(struct bitstream_elmt_t *bs, struct nalu_t* nalu, struct slice_header_t *slice)
+-{
+-	struct sequence_params_set_t *sps;
+-	struct picture_params_set_t *pps;
+-	int slice_skip_flag = 0;
+-	int i;
+-
+-	memset(slice, 0, sizeof(struct slice_header_t));
+-
+-	slice->first_mb_in_slice = bitstream_ue(bs);
+-	slice->slice_type = bitstream_ue(bs) % 5;
+-	slice->pic_parameter_set_id = bitstream_ue(bs);
+-
+-	pps = find_pps(slice->pic_parameter_set_id);
+-	sps = find_sps(nalu->nal_unit_type, pps->seq_parameter_set_id);
+-
+-	slice->frame_num = bitstream_u(bs, sps->log2_max_frame_num_minus4 + 4);
+-#if 0
+-	slice->field_pic_flag = 0;
+-
+-	if( !sps->frame_mbs_only_flag ) 
+-	{
+-		slice->field_pic_flag = bitstream_u(bs, 1);
+-
+-		if( slice->field_pic_flag )
+-		{
+-			slice->bottom_field_flag = bitstream_u(bs, 1);
+-		}
+-	}
+-
+-	if( nalu->nal_unit_type  ==  NALU_TYPE_IDR_SLICE || (nalu->nal_unit_type == 20 && nalu->idr_flag)) 
+-	{
+-		slice->idr_pic_id = bitstream_ue(bs);
+-	}
+-
+-	if( sps->pic_order_cnt_type  ==  0 ) 
+-	{
+-		slice->pic_order_cnt_lsb = bitstream_u(bs, sps->log2_max_pic_order_cnt_lsb_minus4 + 4);
+-
+-		if( pps->pic_order_present_flag &&  !slice->field_pic_flag )
+-		{
+-			slice->delta_pic_order_cnt_bottom = bitstream_se(bs);
+-		}
+-	}
+-
+-	if( sps->pic_order_cnt_type == 1 && !sps->delta_pic_order_always_zero_flag ) 
+-	{
+-		slice->delta_pic_order_cnt[0] = bitstream_se(bs);
+-
+-		if( pps->pic_order_present_flag  &&  !slice->field_pic_flag )
+-		{
+-			slice->delta_pic_order_cnt[1] = bitstream_se(bs);
+-		}
+-	}
+-
+-	if( pps->redundant_pic_cnt_present_flag )
+-	{
+-		slice->redundant_pic_cnt = bitstream_ue(bs);
+-	}
+-
+-	if( slice->slice_type  ==  SLICE_TYPE_B )
+-	{
+-		slice->direct_spatial_mv_pred_flag = bitstream_u(bs, 1);
+-	}
+-
+-	if( slice->slice_type == SLICE_TYPE_P || slice->slice_type == SLICE_TYPE_SP || slice->slice_type == SLICE_TYPE_B ) 
+-	{
+-		slice->num_ref_idx_active_override_flag = bitstream_u(bs, 1);
+-
+-		if( slice->num_ref_idx_active_override_flag ) 
+-		{
+-			slice->num_ref_idx_l0_active_minus1 = bitstream_ue(bs);
+-
+-			if( slice->slice_type  ==  SLICE_TYPE_B )
+-			{
+-				slice->num_ref_idx_l1_active_minus1 = bitstream_ue(bs);
+-			}
+-		}
+-	}
+-
+-	/*7.3.3.1 -- Reference picture list reordering */
+-	if( slice->slice_type != SLICE_TYPE_I  &&  slice->slice_type != SLICE_TYPE_SI ) 
+-	{ 
+-		slice->ref_pic_reorder.ref_pic_list_reordering_flag_l0 = bitstream_u(bs, 1);
+-
+-		if( slice->ref_pic_reorder.ref_pic_list_reordering_flag_l0 )
+-		{
+-			i = -1;
+-			
+-			do {
+-				i++;
+-
+-				slice->ref_pic_reorder.list0[i].reordering_of_pic_nums_idc = bitstream_ue(bs);
+-
+-				if(		slice->ref_pic_reorder.list0[i].reordering_of_pic_nums_idc == 0 
+-					||	slice->ref_pic_reorder.list0[i].reordering_of_pic_nums_idc == 1)
+-				{
+-					slice->ref_pic_reorder.list0[i].abs_diff_pic_num_minus1 = bitstream_ue(bs);
+-				}
+-				else if(slice->ref_pic_reorder.list0[i].reordering_of_pic_nums_idc == 2)
+-				{
+-					slice->ref_pic_reorder.list0[i].long_term_pic_num = bitstream_ue(bs);
+-				}
+-			} while( slice->ref_pic_reorder.list0[i].reordering_of_pic_nums_idc  !=  3 );
+-		}
+-	}
+-
+-	if( slice->slice_type == SLICE_TYPE_B ) 
+-	{
+-		slice->ref_pic_reorder.ref_pic_list_reordering_flag_l1 = bitstream_u(bs, 1);
+-
+-		if( slice->ref_pic_reorder.ref_pic_list_reordering_flag_l1 )
+-		{
+-			i = -1;
+-			
+-			do {
+-				i++;
+-
+-				slice->ref_pic_reorder.list1[i].reordering_of_pic_nums_idc = bitstream_ue(bs);
+-
+-				if(		slice->ref_pic_reorder.list1[i].reordering_of_pic_nums_idc == 0 
+-					||	slice->ref_pic_reorder.list1[i].reordering_of_pic_nums_idc == 1)
+-				{
+-					slice->ref_pic_reorder.list1[i].abs_diff_pic_num_minus1 = bitstream_ue(bs);
+-				}
+-				else if(slice->ref_pic_reorder.list1[i].reordering_of_pic_nums_idc == 2)
+-				{
+-					slice->ref_pic_reorder.list1[i].long_term_pic_num = bitstream_ue(bs);
+-				}
+-			} while( slice->ref_pic_reorder.list1[i].reordering_of_pic_nums_idc  !=  3 );
+-		}
+-	}
+-	
+-
+-	if(		( pps->weighted_pred_flag  &&  ( slice->slice_type == SLICE_TYPE_P  ||  slice->slice_type == SLICE_TYPE_SP ) )  
+-		||	( pps->weighted_bipred_idc  ==  1  &&  slice->slice_type  ==  SLICE_TYPE_B ) 
+-      )
+-	{
+-		//pred_weight_table( )
+-		//printf("Weighted Table not supported\n");
+-	}
+-
+-	if( nalu->nal_ref_idc != 0 )
+-	{
+-		/*7.3.3.3	Decoded reference picture marking*/
+-		if( nalu->nal_unit_type  ==  NALU_TYPE_IDR_SLICE || (nalu->nal_unit_type == 20 && nalu->idr_flag))  
+-		{
+-			slice->ref_pic_marking.no_output_of_prior_pics_flag = bitstream_u(bs, 1);
+-			slice->ref_pic_marking.long_term_reference_flag = bitstream_u(bs, 1);
+-		} 
+-		else 
+-		{
+-			slice->ref_pic_marking.adaptive_ref_pic_marking_mode_flag = bitstream_u(bs, 1);
+-
+-			if( slice->ref_pic_marking.adaptive_ref_pic_marking_mode_flag )
+-			{
+-				slice->ref_pic_marking.difference_of_pic_nums_minus1 = -1;
+-				slice->ref_pic_marking.long_term_pic_num = -1;
+-				slice->ref_pic_marking.long_term_frame_idx = -1;
+-				slice->ref_pic_marking.max_long_term_frame_idx_plus1 = -1;
+-
+-				i = -1;
+-
+-				memset(slice->ref_pic_marking.memory_management_control_operation, 0, sizeof(slice->ref_pic_marking.memory_management_control_operation));
+-
+-				do {
+-					i++;
+-
+-					slice->ref_pic_marking.memory_management_control_operation[i] = bitstream_ue(bs);
+-
+-					if(		slice->ref_pic_marking.memory_management_control_operation[i] == 1 
+-						||	slice->ref_pic_marking.memory_management_control_operation[i] == 3 )
+-					{
+-						slice->ref_pic_marking.difference_of_pic_nums_minus1 = bitstream_ue(bs);
+-					}
+-
+-					if(slice->ref_pic_marking.memory_management_control_operation[i] == 2 )
+-					{
+-						slice->ref_pic_marking.long_term_pic_num = bitstream_ue(bs);
+-					}
+-
+-			 		if( slice->ref_pic_marking.memory_management_control_operation[i] == 3 ||
+-						slice->ref_pic_marking.memory_management_control_operation[i] == 6)
+-					{
+-						slice->ref_pic_marking.long_term_frame_idx = bitstream_ue(bs);
+-					}
+-
+-					if( slice->ref_pic_marking.memory_management_control_operation[i] == 4)
+-					{
+-						slice->ref_pic_marking.max_long_term_frame_idx_plus1 = bitstream_ue(bs);
+-					}
+-
+-				} while( slice->ref_pic_marking.memory_management_control_operation[i] != 0 );
+-			}
+-		}
+-
+-#ifdef READ_SVC
+-		if( sps->profile_idc == 83 || sps->profile_idc == 86 )
+-		{
+-			if(!sps->sps_svc.slice_header_restriction_flag)
+-			{
+-				slice->store_ref_base_pic_flag = bitstream_u(bs, 1);		
+-
+-				if ( ( nalu->use_ref_base_pic_flag || slice->store_ref_base_pic_flag ) && !nalu->idr_flag )
+-				{
+-					int i = -1;
+-
+-					//dec_ref_base_pic_marking( )
+-					slice->ref_base_pic_marking.adaptive_ref_base_pic_marking_mode_flag = bitstream_u(bs, 1);
+-
+-					if( slice->ref_base_pic_marking.adaptive_ref_base_pic_marking_mode_flag )
+-					{
+-						do 
+-						{
+-							i++;
+-
+-							slice->ref_base_pic_marking.memory_management_base_control_operation[i] = bitstream_ue(bs);
+-
+-							if( slice->ref_base_pic_marking.memory_management_base_control_operation[i] == 1 )
+-							{
+-								slice->ref_base_pic_marking.difference_of_base_pic_nums_minus1 = bitstream_ue(bs);
+-							}
+-							
+-							if( slice->ref_base_pic_marking.memory_management_base_control_operation[i] == 2 )
+-							{
+-								slice->ref_base_pic_marking.long_term_base_pic_num = bitstream_ue(bs);
+-							}
+-						} while( slice->ref_base_pic_marking.memory_management_base_control_operation[i] != 0 );
+-					}
+-				}
+-			}
+-		}
+-#endif
+-	}
+-
+-	if( pps->entropy_coding_mode_flag  &&  slice->slice_type  !=  SLICE_TYPE_I  &&  slice->slice_type  !=  SLICE_TYPE_SI )
+-	{
+-		slice->cabac_init_idc = bitstream_ue(bs);
+-	}
+-
+-	slice->slice_qp_delta = bitstream_se(bs);
+-
+-	if( slice->slice_type  ==  SLICE_TYPE_SP  ||  slice->slice_type  ==  SLICE_TYPE_SI ) 
+-	{
+-		if( slice->slice_type  ==  SLICE_TYPE_SP )
+-		{
+-			slice->sp_for_switch_flag = bitstream_u(bs, 1);
+-		}
+-
+-		slice->slice_qs_delta = bitstream_se(bs);
+-	}
+-
+-	if( pps->deblocking_filter_control_present_flag ) 
+-	{
+-		slice->disable_deblocking_filter_idc = bitstream_ue(bs);
+-
+-		if( slice->disable_deblocking_filter_idc  !=  1 ) 
+-		{
+-			slice->slice_alpha_c0_offset_div2 = bitstream_se(bs);
+-			slice->slice_beta_offset_div2 = bitstream_se(bs);
+-		}
+-	}
+-
+-	if(		pps->num_slice_groups_minus1 > 0  
+-		&&	pps->slice_group_map_type >= 3  
+-		&&  pps->slice_group_map_type <= 5)
+-	{
+-
+-		int bits=0;
+-		int pic_size, change_rate;
+-		unsigned int value;
+-
+-		pic_size = pps->pic_size_in_map_units_minus1 + 1;
+-		change_rate = pps->slice_group_change_rate_minus1 + 1;
+-
+-		value = pic_size / change_rate + 1; 
+-
+-		while(value != 0)
+-		{
+-			bits++;
+-			value >>= 1;
+-		}
+-
+-		slice->slice_group_change_cycle = bitstream_u(bs, bits);
+-	}
+-
+-#ifdef READ_SVC
+- 	if( sps->profile_idc == 83 || sps->profile_idc == 86 )
+-	{
+-		if(!sps->sps_svc.slice_header_restriction_flag && !slice_skip_flag)
+-		{
+-			slice->scan_idx_start = read_u(bs, 4);
+-			slice->scan_idx_end = read_u(bs, 4);
+-		}
+-	}
+-#endif
+-#endif
+-}
+-
+-
+-int nalu_parse_sps(struct bitstream_elmt_t *bs, struct sequence_params_set_t *sps)
+-{
+-	int i;
+-
+-	sps->profile_idc = bitstream_u(bs, 8);
+-	sps->constraint_set0_flag = bitstream_u(bs, 1);
+-	sps->constraint_set1_flag = bitstream_u(bs, 1);
+-	sps->constraint_set2_flag = bitstream_u(bs, 1);
+-	sps->constraint_set3_flag = bitstream_u(bs, 1);
+-	sps->reserved_zero_4bits = bitstream_u(bs, 4); /* equal to 0 */
+-	sps->level_idc = bitstream_u(bs, 8);
+-	sps->seq_parameter_set_id = bitstream_ue(bs);
+-	sps->log2_max_frame_num_minus4 = bitstream_ue(bs);
+-	sps->pic_order_cnt_type = bitstream_ue(bs);
+-
+-	if(sps->pic_order_cnt_type == 0)
+-	{
+-		sps->log2_max_pic_order_cnt_lsb_minus4 = bitstream_ue(bs);
+-	}
+-	else if(sps->pic_order_cnt_type == 1)
+-	{
+-		sps->delta_pic_order_always_zero_flag = bitstream_u(bs, 1);
+-		sps->offset_for_non_ref_pic = bitstream_se(bs);
+-		sps->offset_for_top_to_bottom_field = bitstream_se(bs);
+-		sps->num_ref_frames_in_pic_order_cnt_cycle = bitstream_ue(bs);
+-
+-		sps->offset_for_ref_frame = malloc(sizeof(sps->offset_for_ref_frame[0]) * sps->num_ref_frames_in_pic_order_cnt_cycle);
+-
+-		for(i=0; i < sps->num_ref_frames_in_pic_order_cnt_cycle; i++)
+-		{
+-			sps->offset_for_ref_frame[i] = bitstream_se(bs);
+-		}
+-	}
+-
+-	sps->num_ref_frames = bitstream_ue(bs);
+-	sps->gaps_in_frame_num_value_allowed_flag = bitstream_u(bs, 1);
+-	sps->pic_width_in_mbs_minus1 = bitstream_ue(bs);
+-	sps->pic_height_in_map_units_minus1 = bitstream_ue(bs);
+-	sps->frame_mbs_only_flag = bitstream_u(bs, 1);
+-
+-	if(!sps->frame_mbs_only_flag)
+-	{
+-		sps->mb_adaptive_frame_field_flag = bitstream_u(bs, 1);
+-	}
+-
+-	sps->direct_8x8_inference_flag = bitstream_u(bs, 1);
+-	sps->frame_cropping_flag = bitstream_u(bs, 1);
+-
+-	if(sps->frame_cropping_flag)
+-	{
+-		sps->frame_crop_left_offset = bitstream_ue(bs);
+-		sps->frame_crop_right_offset = bitstream_ue(bs);
+-		sps->frame_crop_top_offset = bitstream_ue(bs);
+-		sps->frame_crop_bottom_offset = bitstream_ue(bs);
+-	}
+-
+-	sps->vui_parameters_present_flag = bitstream_u(bs, 1);
+-
+-	if(sps->vui_parameters_present_flag)
+-	{
+-		sps->vui.aspect_ratio_info_present_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.aspect_ratio_info_present_flag ) 
+-		{
+-			sps->vui.aspect_ratio_idc = bitstream_u(bs, 8);
+-
+-			if( sps->vui.aspect_ratio_idc == VUI_SAR_EXTENDED) 
+-			{
+-				sps->vui.sar_width = bitstream_u(bs, 16);
+-				sps->vui.sar_height = bitstream_u(bs, 16);
+-			}
+-		}
+-
+-		sps->vui.overscan_info_present_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.overscan_info_present_flag )
+-		{
+-			sps->vui.overscan_appropriate_flag = bitstream_u(bs, 1);
+-		}
+-
+-		sps->vui.video_signal_type_present_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.video_signal_type_present_flag ) 
+-		{
+-			sps->vui.video_format = bitstream_u(bs, 3);
+-			sps->vui.video_full_range_flag = bitstream_u(bs, 1);
+-			sps->vui.colour_description_present_flag = bitstream_u(bs, 1);
+-
+-			if( sps->vui.colour_description_present_flag ) 
+-			{
+-				sps->vui.colour_primaries = bitstream_u(bs, 8);
+-				sps->vui.transfer_characteristics = bitstream_u(bs, 8);
+-				sps->vui.matrix_coefficients = bitstream_u(bs, 8);
+-			}
+-		}
+-
+-		sps->vui.chroma_loc_info_present_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.chroma_loc_info_present_flag ) 
+-		{
+-			sps->vui.chroma_sample_loc_type_top_field = bitstream_ue(bs);
+-			sps->vui.chroma_sample_loc_type_bottom_field = bitstream_ue(bs);
+-		}
+-
+-		sps->vui.timing_info_present_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.timing_info_present_flag ) 
+-		{
+-			sps->vui.num_units_in_tick = bitstream_u(bs, 32);
+-			sps->vui.time_scale = bitstream_u(bs, 32);
+-			sps->vui.fixed_frame_rate_flag = bitstream_u(bs, 1);
+-		}
+-
+-		sps->vui.nal_hrd_parameters_present_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.nal_hrd_parameters_present_flag )
+-		{
+-			int SchedSelIdx;
+-
+-			sps->vui.nal_hrd.cpb_cnt_minus1 = bitstream_ue(bs);
+-			sps->vui.nal_hrd.bit_rate_scale = bitstream_u(bs, 4);
+-			sps->vui.nal_hrd.cpb_size_scale = bitstream_u(bs, 4);
+-
+-			sps->vui.nal_hrd.bit_rate_value_minus1	= malloc(sizeof(sps->vui.nal_hrd.bit_rate_value_minus1[0]) * (sps->vui.nal_hrd.cpb_cnt_minus1 + 1));
+-			sps->vui.nal_hrd.cpb_size_value_minus1	= malloc(sizeof(sps->vui.nal_hrd.cpb_size_value_minus1[0]) * (sps->vui.nal_hrd.cpb_cnt_minus1 + 1));
+-			sps->vui.nal_hrd.cbr_flag				= malloc(sizeof(sps->vui.nal_hrd.cbr_flag[0]) * (sps->vui.nal_hrd.cpb_cnt_minus1 + 1));
+-
+-			for( SchedSelIdx = 0; SchedSelIdx <= sps->vui.nal_hrd.cpb_cnt_minus1; SchedSelIdx++ ) 
+-			{
+-				sps->vui.nal_hrd.bit_rate_value_minus1[ SchedSelIdx ] = bitstream_ue(bs);
+-				sps->vui.nal_hrd.cpb_size_value_minus1[ SchedSelIdx ] = bitstream_ue(bs);
+-				sps->vui.nal_hrd.cbr_flag[ SchedSelIdx ] = bitstream_u(bs, 1);
+-			}
+-
+-			sps->vui.nal_hrd.initial_cpb_removal_delay_length_minus1 = bitstream_u(bs, 5);
+-			sps->vui.nal_hrd.cpb_removal_delay_length_minus1 = bitstream_u(bs, 5);
+-			sps->vui.nal_hrd.dpb_output_delay_length_minus1 = bitstream_u(bs, 5);
+-			sps->vui.nal_hrd.time_offset_length = bitstream_u(bs, 5);
+-		}
+-
+-		sps->vui.vcl_hrd_parameters_present_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.vcl_hrd_parameters_present_flag )
+-		{
+-			int SchedSelIdx;
+-
+-			sps->vui.vlc_hrd.cpb_cnt_minus1 = bitstream_ue(bs);
+-			sps->vui.vlc_hrd.bit_rate_scale = bitstream_u(bs, 4);
+-			sps->vui.vlc_hrd.cpb_size_scale = bitstream_u(bs, 4);
+-
+-			sps->vui.vlc_hrd.bit_rate_value_minus1	= malloc(sizeof(sps->vui.vlc_hrd.bit_rate_value_minus1[0]) * (sps->vui.vlc_hrd.cpb_cnt_minus1 + 1));
+-			sps->vui.vlc_hrd.cpb_size_value_minus1	= malloc(sizeof(sps->vui.vlc_hrd.cpb_size_value_minus1[0]) * (sps->vui.vlc_hrd.cpb_cnt_minus1 + 1));
+-			sps->vui.vlc_hrd.cbr_flag				= malloc(sizeof(sps->vui.vlc_hrd.cbr_flag[0]) * (sps->vui.vlc_hrd.cpb_cnt_minus1 + 1));
+-
+-			for( SchedSelIdx = 0; SchedSelIdx <= sps->vui.vlc_hrd.cpb_cnt_minus1; SchedSelIdx++ ) 
+-			{
+-				sps->vui.vlc_hrd.bit_rate_value_minus1[ SchedSelIdx ] = bitstream_ue(bs);
+-				sps->vui.vlc_hrd.cpb_size_value_minus1[ SchedSelIdx ] = bitstream_ue(bs);
+-				sps->vui.vlc_hrd.cbr_flag[ SchedSelIdx ] = bitstream_u(bs, 1);
+-			}
+-
+-			sps->vui.vlc_hrd.initial_cpb_removal_delay_length_minus1 = bitstream_u(bs, 5);
+-			sps->vui.vlc_hrd.cpb_removal_delay_length_minus1 = bitstream_u(bs, 5);
+-			sps->vui.vlc_hrd.dpb_output_delay_length_minus1 = bitstream_u(bs, 5);
+-			sps->vui.vlc_hrd.time_offset_length = bitstream_u(bs, 5);
+-		}
+-
+-		if( sps->vui.nal_hrd_parameters_present_flag  ||  sps->vui.vcl_hrd_parameters_present_flag )
+-		{
+-			sps->vui.low_delay_hrd_flag = bitstream_u(bs, 1);
+-		}
+-
+-		sps->vui.pic_struct_present_flag = bitstream_u(bs, 1); 
+-		sps->vui.bitstream_restriction_flag = bitstream_u(bs, 1);
+-
+-		if( sps->vui.bitstream_restriction_flag ) 
+-		{
+-			sps->vui.motion_vectors_over_pic_boundaries_flag = bitstream_u(bs, 1);
+-			sps->vui.max_bytes_per_pic_denom = bitstream_ue(bs);
+-			sps->vui.max_bits_per_mb_denom = bitstream_ue(bs);
+-			sps->vui.log2_max_mv_length_horizontal = bitstream_ue(bs);
+-			sps->vui.log2_max_mv_length_vertical = bitstream_ue(bs);
+-			sps->vui.num_reorder_frames = bitstream_ue(bs);
+-			sps->vui.max_dec_frame_buffering = bitstream_ue(bs);
+-		}
+-	}
+-
+-	_rbsp_trailing_bits(bs);
+-
+-	return 0;
+-}
+-
+-int nalu_parse_pps(struct bitstream_elmt_t *bs, struct picture_params_set_t *pps)
+-{
+-	pps->pic_parameter_set_id = bitstream_ue(bs);
+-	pps->seq_parameter_set_id = bitstream_ue(bs);
+-	pps->entropy_coding_mode_flag = bitstream_u(bs, 1);
+-	pps->pic_order_present_flag = bitstream_u(bs, 1);
+-	pps->num_slice_groups_minus1 = bitstream_ue(bs);
+-
+-	if( pps->num_slice_groups_minus1 > 0 ) 
+-	{
+-		pps->slice_group_map_type = bitstream_ue(bs);
+-
+-		if( pps->slice_group_map_type  ==  0 )
+-		{
+-			int iGroup;
+-
+-			pps->run_length_minus1 = malloc( (pps->num_slice_groups_minus1 + 1) * sizeof(pps->run_length_minus1[0]));
+-
+-			for( iGroup = 0; iGroup <= pps->num_slice_groups_minus1; iGroup++ )
+-			{
+-				pps->run_length_minus1[iGroup] = bitstream_ue(bs);
+-			}
+-		}
+-		else if( pps->slice_group_map_type  ==  2 )
+-		{
+-			int iGroup;
+-
+-			pps->top_left = malloc( (pps->num_slice_groups_minus1 + 1) * sizeof(pps->top_left[0]));
+-			pps->bottom_right = malloc( (pps->num_slice_groups_minus1 + 1) * sizeof(pps->bottom_right[0]));
+-
+-			for( iGroup = 0; iGroup < pps->num_slice_groups_minus1; iGroup++ ) 
+-			{
+-				pps->top_left[iGroup] = bitstream_ue(bs);
+-				pps->bottom_right[iGroup] = bitstream_ue(bs);
+-			}
+-		}
+-		else if(  pps->slice_group_map_type  ==  3  ||  
+-				  pps->slice_group_map_type  ==  4  ||  
+-				  pps->slice_group_map_type  ==  5 ) 
+-		{
+-			pps->slice_group_change_direction_flag = bitstream_u(bs, 1);
+-			pps->slice_group_change_rate_minus1 = bitstream_ue(bs);
+-		} 
+-		else if( pps->slice_group_map_type  ==  6 ) 
+-		{
+-			int i;
+-			int bits=0;
+-			int pic_size;
+-
+-
+-			pps->pic_size_in_map_units_minus1 = bitstream_ue(bs);
+-
+-			pps->slice_group_id = malloc( (pps->pic_size_in_map_units_minus1 + 1) * sizeof(pps->slice_group_id[0]));
+-
+-			pic_size = pps->pic_size_in_map_units_minus1 + 1;
+-
+-			while(pic_size != 0)
+-			{
+-				bits++;
+-				pic_size >>= 1;
+-			}
+-
+-
+-			for( i = 0; i <= pps->pic_size_in_map_units_minus1; i++ )
+-			{
+-				pps->slice_group_id[i] = bitstream_u(bs, bits);
+-			}
+-		}
+-	}
+-
+-	pps->num_ref_idx_l0_active_minus1 = bitstream_ue(bs);
+-	pps->num_ref_idx_l1_active_minus1 = bitstream_ue(bs);
+-	pps->weighted_pred_flag = bitstream_u(bs, 1);
+-	pps->weighted_bipred_idc = bitstream_u(bs, 2);
+-	pps->pic_init_qp_minus26 = bitstream_se(bs);  /* relative to 26 */
+-	pps->pic_init_qs_minus26 = bitstream_se(bs);  /* relative to 26 */
+-	pps->chroma_qp_index_offset = bitstream_se(bs);
+-	pps->deblocking_filter_control_present_flag = bitstream_u(bs, 1);
+-	pps->constrained_intra_pred_flag = bitstream_u(bs, 1);
+-	pps->redundant_pic_cnt_present_flag = bitstream_u(bs, 1);
+-
+-#if 0
+-	if( more_rbsp_data( ) ) 
+-	{
+-		pps->transform_8x8_mode_flag
+-		pps->pic_scaling_matrix_present_flag
+-		if( pps->pic_scaling_matrix_present_flag )
+-		{
+-			for( i = 0; i < 6 + 2 * pps->transform_8x8_mode_flag; i++ ) 
+-			{
+-				pps->pic_scaling_list_present_flag[i]
+-				if( pps->pic_scaling_list_present_flag[i] )
+-				{
+-					if( i < 6 ) 
+-					{
+-						scaling_list( ScalingList4x4[ i ], 16, 
+-										   UseDefaultScalingMatrix4x4Flag[ i ] )
+-					}
+-					else
+-					{
+-						scaling_list( ScalingList8x8[ i - 6 ], 64,
+-										   UseDefaultScalingMatrix8x8Flag[ i - 6 ] )
+-					}
+-				}
+-			}
+-		}
+-
+-		second_chroma_qp_index_offset
+-	}
+-#endif
+-
+-	_rbsp_trailing_bits(bs);
+-	
+-	return 0;
+-}
+-
+-
+-
+-int _rbsp_trailing_bits(struct bitstream_elmt_t *bs)
+-{
+-	int bit;
+-
+-	if( (bit = bitstream_u(bs, 1)) != 1)/*stop bit -- should be 1*/
+-	{
+-		return -1;
+-	}
+-
+-	while(!bitstream_bytealigned(bs))
+-	{
+-		if( (bit = bitstream_u(bs, 1)) != 0)/*alignment bit -- should be 0*/
+-		{
+-			return -1;
+-		}
+-	}
+-
+-	return 0;
+-}
+-
+-int nalu_read(FILE *fp, unsigned char *buf)
+-{
+-	/*buffer in 100 bytes then start parsing*/
+-	unsigned int psc = 0, byte = 0;
+-	int psc_found = 0;
+-	int i;
+-	int nalu_len;
+-	int bytes_in_buffer;
+-
+-	struct bitstream_elmt_t bs;
+-	int leading_zero_byte_cnt = 0;
+-
+-#if 1
+-	while( (fread(&byte, 1, 1, fp)) == 1)
+-	{
+-		if(byte == 1)
+-		{
+-			if(leading_zero_byte_cnt >= 2)
+-			{
+-				psc_found = 1;
+-				break;
+-			}
+-		}
+-		
+-		if(byte == 0)
+-			leading_zero_byte_cnt++;
+-		else
+-			leading_zero_byte_cnt = 0;
+-	}
+-
+-	if(!psc_found)
+-		return -1;
+-
+-	leading_zero_byte_cnt = 0;
+-	psc_found = 0;
+-	nalu_len = 0;
+-	bytes_in_buffer = 0;
+-	while( (fread(&byte, 1, 1, fp)) == 1)
+-	{
+-		if(byte == 1)
+-		{
+-			if(leading_zero_byte_cnt >= 2)
+-			{
+-				/*backup 3 bytes so next run sees the start code*/
+-				psc_found = 1;
+-				fseek(fp, -3, SEEK_CUR);
+-				bytes_in_buffer -= 3;
+-				break;
+-			}
+-		}
+-		
+-		if(byte == 0)
+-			leading_zero_byte_cnt++;
+-		else
+-			leading_zero_byte_cnt = 0;
+-
+-		buf[bytes_in_buffer] = byte;
+-		bytes_in_buffer++;
+-	}
+-
+-	if(leading_zero_byte_cnt > 3)
+-	{
+-		printf("Found packet with too many leading zero's in start code");
+-	}
+-
+-	if(!psc_found)
+-	{
+-		printf("End of stream\n");
+-	}
+-
+-	nalu_len = bytes_in_buffer;
+-#endif
+-
+-#if 0
+-
+-	fread(&psc, 1, 3, fp);
+-
+-	if(psc != 0x000001)
+-	{
+-		psc = psc << 8;
+-
+-		fread(&byte, 1, 1, fp);
+-
+-		psc = (psc & 0xFFFFFF00) | (byte & 0xFF);
+-
+-		if(psc != 0x00000001)
+-		{
+-			/*rewind stream*/
+-			fseek(fp, -4, SEEK_CUR);
+-			
+-			return -1;
+-		}
+-	}
+-
+-	bitstream_init(&bs, buf);
+-	nalu_len = 0;
+-	bytes_in_buffer = 0;
+-	do
+-	{
+-		bytes_in_buffer += fread(buf, 1, NALU_READ_PRELOAD, fp);
+-
+-		for(i=0; i < bytes_in_buffer-3; i++)
+-		{
+-			if(bitstream_peak(&bs, 24) == 1 || bitstream_peak(&bs, 32) == 1)
+-			{
+-				psc_found = 1;
+-				break;
+-			}
+-
+-			bitstream_u(&bs, 8);
+-			nalu_len++;
+-		}
+-
+-		bytes_in_buffer -= i;
+-		buf += NALU_READ_PRELOAD;
+-	}while(!psc_found);
+-
+-	fseek(fp, -bytes_in_buffer, SEEK_CUR);
+-#endif
+-
+-#if 0
+-
+-	fread(&psc, 1, 4, fp);
+-
+-	fread(buf, 1, 8, fp);
+-
+-	nalu_len = 8;
+-#endif
+-
+-	return nalu_len;
+-}
+diff --git a/ftl_app/nalu.h b/ftl_app/nalu.h
+deleted file mode 100644
+index 41f62e40fcb3bbbe..0000000000000000
+--- a/ftl_app/nalu.h
++++ /dev/null
+@@ -1,9 +0,0 @@
+-#include <stdio.h>
+-
+-#define NALU_READ_PRELOAD 100
+-
+-int nal_unit(h264_dec_obj_t *obj, struct bitstream_elmt_t *bs, struct nalu_t *nalu, int len);
+-int nalu_read(FILE *fp, unsigned char *buf);
+-int nalu_parse_sps(struct bitstream_elmt_t *bs, struct sequence_params_set_t *sps);
+-int nalu_parse_pps(struct bitstream_elmt_t *bs, struct picture_params_set_t *pps);
+-void nalu_parse_slice_header(struct bitstream_elmt_t *bs, struct nalu_t *nalu, struct slice_header_t *slice);
+\ No newline at end of file
+diff --git a/ftl_app/posix/ctrlc_handler.c b/ftl_app/posix/ctrlc_handler.c
+deleted file mode 100644
+index 359307921f4f66c9..0000000000000000
+--- a/ftl_app/posix/ctrlc_handler.c
++++ /dev/null
+@@ -1,55 +0,0 @@
+-/**
+-* ctrlc_handler.cpp - POSIX handler for Ctrl-C behavior
+-*
+-* Copyright (c) 2015 Michael Casadevall
+-*
+-* Permission is hereby granted, free of charge, to any person obtaining a copy
+-* of this software and associated documentation files (the "Software"), to deal
+-* in the Software without restriction, including without limitation the rights
+-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-* copies of the Software, and to permit persons to whom the Software is
+-* furnished to do so, subject to the following conditions:
+-*
+-* The above copyright notice and this permission notice shall be included in
+-* all copies or substantial portions of the Software.
+-*
+-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+-* SOFTWARE.
+-**/
+-
+-#include "main.h"
+-
+-/**
+- * On POSIX platforms, we need to catch SIGINT, and and change the state
+- * of the shutdown flag. When we're in a signal handler, we've very limited
+- * in the type of calls we can safely make due to the state of the stack
+- * and potentially being anywhere in the calling program's execution. 
+- *
+- * As such, the "safest" thing to do is simply set a global variable which
+- * breaks us out of the loop, and brings us to our shutdown code. 
+- */
+-
+-volatile sig_atomic_t shutdown_flag = 0;
+-
+-void charon_shutdown_stream(int sig) {
+-  shutdown_flag = 1;
+-}
+-
+-void charon_install_ctrlc_handler() {
+-  signal(SIGINT, charon_shutdown_stream);
+-}
+-
+-void charon_loop_until_ctrlc() {
+-  while (shutdown_flag != 1) {
+-    sleep(1);
+-  }
+-}
+-
+-int ctrlc_pressed() {
+-  return shutdown_flag;
+-}
+diff --git a/ftl_app/utils.c b/ftl_app/utils.c
+deleted file mode 100644
+index a88f0d98ed2f1e38..0000000000000000
+--- a/ftl_app/utils.c
++++ /dev/null
+@@ -1,112 +0,0 @@
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include "bitstream.h"
+-#include "dec_obj.h"
+-#include "utils.h"
+-
+-struct picture_params_set_t *pps_head = NULL;
+-struct sequence_params_set_t *sps_head = NULL;
+-
+-void store_sps(struct sequence_params_set_t *sps)
+-{
+-	struct sequence_params_set_t *sps_new, *tmp;
+-
+-	sps_new = (struct sequence_params_set_t *)malloc(sizeof(struct sequence_params_set_t));
+-	memcpy(sps_new, sps, sizeof(struct sequence_params_set_t));
+-	sps_new->next = NULL;
+-
+-	if(sps_head == NULL)
+-	{
+-		sps_head = sps_new;
+-	}
+-	else
+-	{
+-		/*find the tail*/
+-		tmp = sps_head;
+-
+-		while(tmp->next != NULL)
+-		{
+-			tmp = tmp->next;
+-		}
+-
+-		tmp->next = sps_new;
+-	}
+-}
+-
+-struct sequence_params_set_t * find_sps(int nal_unit_type, int seq_parameter_set_id)
+-{
+-	struct sequence_params_set_t *tmp;
+-
+-	tmp = sps_head;
+-
+-	while(tmp != NULL)
+-	{
+-		if(nal_unit_type == 20 || nal_unit_type == 14)
+-		{
+-			if( (tmp->profile_idc == 83 || tmp->profile_idc == 86) &&  tmp->seq_parameter_set_id == seq_parameter_set_id)
+-			{
+-				return tmp;
+-			}
+-		}
+-		else
+-		{
+-
+-			if(tmp->seq_parameter_set_id == seq_parameter_set_id)
+-			{
+-				return tmp;
+-			}
+-		}
+-
+-		tmp = tmp->next;
+-	}
+-
+-	return NULL;
+-}
+-
+-
+-
+-void store_pps(struct picture_params_set_t *pps)
+-{
+-	struct picture_params_set_t *pps_new, *tmp;
+-
+-	pps_new = (struct picture_params_set_t *)malloc(sizeof(struct picture_params_set_t));
+-	memcpy(pps_new, pps, sizeof(struct picture_params_set_t));
+-	pps_new->next = NULL;
+-
+-	if(pps_head == NULL)
+-	{
+-		pps_head = pps_new;
+-	}
+-	else
+-	{
+-		/*find the tail*/
+-		tmp = pps_head;
+-
+-		while(tmp->next != NULL)
+-		{
+-			tmp = tmp->next;
+-		}
+-
+-		tmp->next = pps_new;
+-	}
+-}
+-
+-struct picture_params_set_t * find_pps(int pic_parameter_set_id)
+-{
+-	struct picture_params_set_t *tmp;
+-
+-	tmp = pps_head;
+-
+-	while(tmp != NULL)
+-	{
+-		if(tmp->pic_parameter_set_id == pic_parameter_set_id)
+-		{
+-			return tmp;
+-		}
+-
+-		tmp = tmp->next;
+-	}
+-
+-	return NULL;
+-}
+diff --git a/ftl_app/utils.h b/ftl_app/utils.h
+deleted file mode 100644
+index 472c555014c46402..0000000000000000
+--- a/ftl_app/utils.h
++++ /dev/null
+@@ -1,7 +0,0 @@
+-#define MIN(x,y) ((x < y) ? x : y)
+-#define MAX(x,y) ((x > y) ? x : y)
+-
+-void store_sps(struct sequence_params_set_t *sps);
+-struct sequence_params_set_t * find_sps(int nal_unit_type, int seq_parameter_set_id);
+-void store_pps(struct picture_params_set_t *pps);
+-struct picture_params_set_t * find_pps(int pic_parameter_set_id);
+\ No newline at end of file
+diff --git a/ftl_app/win32/ctrlc_handler.c b/ftl_app/win32/ctrlc_handler.c
+deleted file mode 100644
+index 885f2ab6290d7a4f..0000000000000000
+--- a/ftl_app/win32/ctrlc_handler.c
++++ /dev/null
+@@ -1,73 +0,0 @@
+-/**
+-* ctrlc_handler.cpp - Win32 handler for Ctrl-C behavior
+-*
+-* Copyright (c) 2015 Michael Casadevall
+-*
+-* Permission is hereby granted, free of charge, to any person obtaining a copy
+-* of this software and associated documentation files (the "Software"), to deal
+-* in the Software without restriction, including without limitation the rights
+-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-* copies of the Software, and to permit persons to whom the Software is
+-* furnished to do so, subject to the following conditions:
+-*
+-* The above copyright notice and this permission notice shall be included in
+-* all copies or substantial portions of the Software.
+-*
+-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+-* SOFTWARE.
+-**/
+-
+-#include "main.h"
+-
+-/**
+-* On POSIX platforms, we need to catch SIGINT, and and change the state
+-* of the shutdown flag. When we're in a signal handler, we've very limited
+-* in the type of calls we can safely make due to the state of the stack
+-* and potentially being anywhere in the calling program's execution.
+-*
+-* As such, the "safest" thing to do is simply set a global variable which
+-* breaks us out of the loop, and brings us to our shutdown code.
+-*/
+-
+-volatile int shutdown_flag = 0;
+-
+-BOOL charon_shutdown_stream(DWORD fdwCtrlType) {
+-  // We always shutdown regardless of control message
+-  shutdown_flag = 1;
+-
+-  // Ugh, hacky hacky hacky. CtrlCHandler calls this
+-  // on its own thread, not on the main thread.
+-
+-  // Once this function returns, we get grim-reaped. On Win7
+-  // and later, we have 10 seconds before we get nuked from
+-  // orbit.
+-
+-  Sleep(3000);
+-  switch (fdwCtrlType) {
+-    case CTRL_C_EVENT:
+-    case CTRL_CLOSE_EVENT:
+-      return TRUE;
+-  }
+-
+-  // Some messages need to go the next handler
+-  return FALSE;
+-}
+-
+-void charon_install_ctrlc_handler() {
+-  SetConsoleCtrlHandler((PHANDLER_ROUTINE)charon_shutdown_stream, TRUE);
+-}
+-
+-BOOL ctrlc_pressed() {
+-  return shutdown_flag;
+-}
+-
+-void charon_loop_until_ctrlc() {
+-  while (shutdown_flag != 1) {
+-    Sleep(1000);
+-  }
+-}
+diff --git a/ftl_app/win32/xgetopt.c b/ftl_app/win32/xgetopt.c
+deleted file mode 100644
+index 9712c0c01b8ea5a1..0000000000000000
+--- a/ftl_app/win32/xgetopt.c
++++ /dev/null
+@@ -1,213 +0,0 @@
+-// XGetopt.cpp  Version 1.2
+-//
+-// Author:  Hans Dietrich
+-//          hdietrich2@hotmail.com
+-//
+-// Description:
+-//     XGetopt.cpp implements getopt(), a function to parse command lines.
+-//
+-// History
+-//     Version 1.2 - 2003 May 17
+-//     - Added Unicode support
+-//
+-//     Version 1.1 - 2002 March 10
+-//     - Added example to XGetopt.cpp module header 
+-//
+-// This software is released into the public domain.
+-// You are free to use it in any way you like.
+-//
+-// This software is provided "as is" with no expressed
+-// or implied warranty.  I accept no liability for any
+-// damage or loss of business that this software may cause.
+-//
+-///////////////////////////////////////////////////////////////////////////////
+-
+-
+-///////////////////////////////////////////////////////////////////////////////
+-// if you are not using precompiled headers then include these lines:
+-#include <windows.h>
+-#include <stdio.h>
+-#include <tchar.h>
+-///////////////////////////////////////////////////////////////////////////////
+-
+-
+-#include "XGetopt.h"
+-
+-
+-///////////////////////////////////////////////////////////////////////////////
+-//
+-//  X G e t o p t . c p p
+-//
+-//
+-//  NAME
+-//       getopt -- parse command line options
+-//
+-//  SYNOPSIS
+-//       int getopt(int argc, TCHAR *argv[], TCHAR *optstring)
+-//
+-//       extern TCHAR *optarg;
+-//       extern int optind;
+-//
+-//  DESCRIPTION
+-//       The getopt() function parses the command line arguments. Its
+-//       arguments argc and argv are the argument count and array as
+-//       passed into the application on program invocation.  In the case
+-//       of Visual C++ programs, argc and argv are available via the
+-//       variables __argc and __argv (double underscores), respectively.
+-//       getopt returns the next option letter in argv that matches a
+-//       letter in optstring.  (Note:  Unicode programs should use
+-//       __targv instead of __argv.  Also, all character and string
+-//       literals should be enclosed in _T( ) ).
+-//
+-//       optstring is a string of recognized option letters;  if a letter
+-//       is followed by a colon, the option is expected to have an argument
+-//       that may or may not be separated from it by white space.  optarg
+-//       is set to point to the start of the option argument on return from
+-//       getopt.
+-//
+-//       Option letters may be combined, e.g., "-ab" is equivalent to
+-//       "-a -b".  Option letters are case sensitive.
+-//
+-//       getopt places in the external variable optind the argv index
+-//       of the next argument to be processed.  optind is initialized
+-//       to 0 before the first call to getopt.
+-//
+-//       When all options have been processed (i.e., up to the first
+-//       non-option argument), getopt returns EOF, optarg will point
+-//       to the argument, and optind will be set to the argv index of
+-//       the argument.  If there are no non-option arguments, optarg
+-//       will be set to NULL.
+-//
+-//       The special option "--" may be used to delimit the end of the
+-//       options;  EOF will be returned, and "--" (and everything after it)
+-//       will be skipped.
+-//
+-//  RETURN VALUE
+-//       For option letters contained in the string optstring, getopt
+-//       will return the option letter.  getopt returns a question mark (?)
+-//       when it encounters an option letter not included in optstring.
+-//       EOF is returned when processing is finished.
+-//
+-//  BUGS
+-//       1)  Long options are not supported.
+-//       2)  The GNU double-colon extension is not supported.
+-//       3)  The environment variable POSIXLY_CORRECT is not supported.
+-//       4)  The + syntax is not supported.
+-//       5)  The automatic permutation of arguments is not supported.
+-//       6)  This implementation of getopt() returns EOF if an error is
+-//           encountered, instead of -1 as the latest standard requires.
+-//
+-//  EXAMPLE
+-//       BOOL CMyApp::ProcessCommandLine(int argc, TCHAR *argv[])
+-//       {
+-//           int c;
+-//
+-//           while ((c = getopt(argc, argv, _T("aBn:"))) != EOF)
+-//           {
+-//               switch (c)
+-//               {
+-//                   case _T('a'):
+-//                       TRACE(_T("option a\n"));
+-//                       //
+-//                       // set some flag here
+-//                       //
+-//                       break;
+-//
+-//                   case _T('B'):
+-//                       TRACE( _T("option B\n"));
+-//                       //
+-//                       // set some other flag here
+-//                       //
+-//                       break;
+-//
+-//                   case _T('n'):
+-//                       TRACE(_T("option n: value=%d\n"), atoi(optarg));
+-//                       //
+-//                       // do something with value here
+-//                       //
+-//                       break;
+-//
+-//                   case _T('?'):
+-//                       TRACE(_T("ERROR: illegal option %s\n"), argv[optind-1]);
+-//                       return FALSE;
+-//                       break;
+-//
+-//                   default:
+-//                       TRACE(_T("WARNING: no handler for option %c\n"), c);
+-//                       return FALSE;
+-//                       break;
+-//               }
+-//           }
+-//           //
+-//           // check for non-option args here
+-//           //
+-//           return TRUE;
+-//       }
+-//
+-///////////////////////////////////////////////////////////////////////////////
+-
+-TCHAR  *optarg;    // global argument pointer
+-int    optind = 0;   // global argv index
+-
+-int getopt(int argc, TCHAR *argv[], TCHAR *optstring)
+-{
+-  static TCHAR *next = NULL;
+-  if (optind == 0)
+-    next = NULL;
+-
+-  optarg = NULL;
+-
+-  if (next == NULL || *next == _T('\0'))
+-  {
+-    if (optind == 0)
+-      optind++;
+-
+-    if (optind >= argc || argv[optind][0] != _T('-') || argv[optind][1] == _T('\0'))
+-    {
+-      optarg = NULL;
+-      if (optind < argc)
+-        optarg = argv[optind];
+-      return EOF;
+-    }
+-
+-    if (_tcscmp(argv[optind], _T("--")) == 0)
+-    {
+-      optind++;
+-      optarg = NULL;
+-      if (optind < argc)
+-        optarg = argv[optind];
+-      return EOF;
+-    }
+-
+-    next = argv[optind];
+-    next++;    // skip past -
+-    optind++;
+-  }
+-
+-  TCHAR c = *next++;
+-  TCHAR *cp = _tcschr(optstring, c);
+-
+-  if (cp == NULL || c == _T(':'))
+-    return _T('?');
+-
+-  cp++;
+-  if (*cp == _T(':'))
+-  {
+-    if (*next != _T('\0'))
+-    {
+-      optarg = next;
+-      next = NULL;
+-    }
+-    else if (optind < argc)
+-    {
+-      optarg = argv[optind];
+-      optind++;
+-    }
+-    else
+-    {
+-      return _T('?');
+-    }
+-  }
+-
+-  return c;
+-}
+diff --git a/ftl_app/win32/xgetopt.h b/ftl_app/win32/xgetopt.h
+deleted file mode 100644
+index 55455d8ed130a724..0000000000000000
+--- a/ftl_app/win32/xgetopt.h
++++ /dev/null
+@@ -1,23 +0,0 @@
+-// XGetopt.h  Version 1.2
+-//
+-// Author:  Hans Dietrich
+-//          hdietrich2@hotmail.com
+-//
+-// This software is released into the public domain.
+-// You are free to use it in any way you like.
+-//
+-// This software is provided "as is" with no expressed
+-// or implied warranty.  I accept no liability for any
+-// damage or loss of business that this software may cause.
+-//
+-///////////////////////////////////////////////////////////////////////////////
+-
+-#ifndef XGETOPT_H
+-#define XGETOPT_H
+-
+-int optind, opterr;
+-extern TCHAR *optarg;
+-
+-int getopt(int argc, TCHAR *argv[], TCHAR *optstring);
+-
+-#endif //XGETOPT_H
+diff --git a/get-audio b/get-audio
+deleted file mode 100755
+index e1418688296a3219..0000000000000000
+--- a/get-audio
++++ /dev/null
+@@ -1,16 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-OUTPUT=$1
+-
+-curl 'https://www.dropbox.com/s/s2r6lggopt9ftw5/sintel.opus' \
+-     -H 'authority: www.dropbox.com' \
+-     -H 'cache-control: max-age=0' \
+-     -H 'upgrade-insecure-requests: 1' \
+-     -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' \
+-     -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' \
+-     -H 'accept-encoding: gzip, deflate, br' \
+-     -H 'accept-language: en-US,en;q=0.9' \
+-     -H 'cookie: __Host-ss=UsByWdIPus; locale=en; gvc=MjU4NzQxNzA3MDE4MjU3MDIzNDY0Nzc2NjAxNDg5MTU4MTg0MjYz; seen-sl-signup-modal=VHJ1ZQ%3D%3D; t=0-Hq7tZ1TDyj-aBNiWYv8YQl; __Host-js_csrf=0-Hq7tZ1TDyj-aBNiWYv8YQl; seen-sl-download-modal=VHJ1ZQ%3D%3D' \
+-     --compressed > $OUTPUT
+-
+diff --git a/get-video b/get-video
+deleted file mode 100755
+index f247f2847ab829e1..0000000000000000
+--- a/get-video
++++ /dev/null
+@@ -1,15 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-OUTPUT=$1
+-
+-curl 'https://www.dropbox.com/s/ruijibs0lgjnq51/sintel.h264' \
+-     -H 'authority: www.dropbox.com' \
+-     -H 'cache-control: max-age=0' \
+-     -H 'upgrade-insecure-requests: 1' \
+-     -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' \
+-     -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' \
+-     -H 'accept-encoding: gzip, deflate, br' \
+-     -H 'accept-language: en-US,en;q=0.9' \
+-     -H 'cookie: __Host-ss=UsByWdIPus; locale=en; gvc=MjU4NzQxNzA3MDE4MjU3MDIzNDY0Nzc2NjAxNDg5MTU4MTg0MjYz; seen-sl-signup-modal=VHJ1ZQ%3D%3D; t=0-Hq7tZ1TDyj-aBNiWYv8YQl; __Host-js_csrf=0-Hq7tZ1TDyj-aBNiWYv8YQl; seen-sl-download-modal=VHJ1ZQ%3D%3D' \
+-     --compressed > $OUTPUT
+diff --git a/make-deployment-yml b/make-deployment-yml
+deleted file mode 100755
+index dd571c2546e03c0e..0000000000000000
+--- a/make-deployment-yml
++++ /dev/null
+@@ -1,45 +0,0 @@
+-#!/bin/bash
+-set -eu
+-
+-TOTAL_CPU=150
+-TOTAL_MEM=50
+-
+-CPU_LIMIT=$((TOTAL_CPU))
+-MEM_LIMIT=$((TOTAL_MEM))
+-
+-cat <<EOF
+-apiVersion: apps/v1
+-kind: Deployment
+-metadata:
+-  name: ftl-sdk-deployment
+-  labels:
+-    app: ftl-sdk
+-spec:
+-  replicas: 1
+-  selector:
+-    matchLabels:
+-      app: ftl-sdk
+-
+-  template:
+-    metadata:
+-      labels:
+-        app: ftl-sdk
+-    spec:
+-      containers:
+-        - name: ftl-sdk
+-          image: $IMAGE
+-          resources:
+-            requests:
+-              memory: "${TOTAL_MEM}Mi"
+-              cpu: "${TOTAL_CPU}m"
+-            limits:
+-              memory: "${MEM_LIMIT}Mi"
+-              cpu: "${CPU_LIMIT}m"
+-          env:
+-          - name: MIXER_STREAMER_KEY
+-            value: "$MIXER_STREAMER_KEY"
+-          - name: FPS
+-            value: "24"
+-      imagePullSecrets:
+-        - name: docker-secret
+-EOF
+diff --git a/scripts/build b/scripts/build
+deleted file mode 100755
+index 99b8067bc3cb3b52..0000000000000000
+--- a/scripts/build
++++ /dev/null
+@@ -1,14 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-BUILD_DIR='build-output'
+-mkdir -p "$BUILD_DIR"
+-pushd "$BUILD_DIR"
+-cmake ..
+-make "-j$(nproc --all)"
+-
+-popd
+-mkdir -p publish
+-cp "${BUILD_DIR}/ftl_app" publish
+-cp "${BUILD_DIR}"/libftl.so* publish
+-
+diff --git a/scripts/docker-build b/scripts/docker-build
+deleted file mode 100755
+index 3eaa72e635e7d79d..0000000000000000
+--- a/scripts/docker-build
++++ /dev/null
+@@ -1,17 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-: "${DOCKER_TAG:=ftl-sdk}"
+-: "${VIDEO_URL:=https://videotestmedia.blob.core.windows.net/ftl/sintel.h264}"
+-: "${AUDIO_URL:=https://videotestmedia.blob.core.windows.net/ftl/sintel.opus}"
+-
+-git submodule init
+-git submodule update
+-
+-docker build \
+-  --build-arg VIDEO_URL="$VIDEO_URL" \
+-  --build-arg AUDIO_URL="$AUDIO_URL" \
+-  -t "$DOCKER_TAG" \
+-  .
+-
+-docker push "$DOCKER_TAG"
+diff --git a/scripts/docker-test b/scripts/docker-test
+deleted file mode 100755
+index 1043684934941544..0000000000000000
+--- a/scripts/docker-test
++++ /dev/null
+@@ -1,16 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-: "${DOCKER_TAG:=ftl-sdk}"
+-
+-main () {
+-  echo "running linter"
+-
+-  local lint_script;
+-  lint_script="$(dirname "$(realpath -s "$0")")/lint"
+-  "${lint_script}"
+-
+-}
+-
+-main
+-
+diff --git a/scripts/lint b/scripts/lint
+deleted file mode 100755
+index 6f4b9ceeab384a3a..0000000000000000
+--- a/scripts/lint
++++ /dev/null
+@@ -1,30 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-MOUNT_DIR='/build'
+-IMAGE='koalaman/shellcheck'
+-
+-scripts_to_lint () {
+-  grep -Erl '^#!/bin/(ba)?sh' "${base_dir}/scripts" \
+-    | grep -v '^.git'
+-}
+-
+-main () {
+-  local base_dir
+-  base_dir="$(dirname "$(dirname "$(realpath -s "$0")")")"
+-
+-  local scripts
+-  scripts="$(scripts_to_lint | sed "s|$base_dir|$MOUNT_DIR|")"
+-
+-  for script in $scripts; do
+-    echo "linting ${script}..."
+-    docker run \
+-      --rm \
+-      -w "$base_dir" \
+-      -v "${base_dir}:${MOUNT_DIR}" \
+-      "$IMAGE" \
+-      "${script}"
+-  done
+-}
+-
+-main
+diff --git a/scripts/prep-artifacts b/scripts/prep-artifacts
+deleted file mode 100755
+index 87669ed6abd4e3c7..0000000000000000
+--- a/scripts/prep-artifacts
++++ /dev/null
+@@ -1,19 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-: "${DOCKER_TAG:=ftl-sdk}"
+-
+-echo "> docker create $DOCKER_TAG"
+-CONTAINER_ID=$(docker create "$DOCKER_TAG")
+-
+-rm -rf publish
+-
+-echo "> docker cp ${CONTAINER_ID}:/opt/ftl-sdk/publish ."
+-docker cp "${CONTAINER_ID}:/opt/ftl-sdk/publish" .
+-
+-echo "> docker rm $CONTAINER_ID"
+-docker rm "$CONTAINER_ID"
+-
+-echo '> tar czvpf publish.tar.gz publish'
+-tar czvpf publish.tar.gz publish
+-
+diff --git a/scripts/test b/scripts/test
+deleted file mode 100755
+index c112faeb7ddf489f..0000000000000000
+--- a/scripts/test
++++ /dev/null
+@@ -1,95 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-fail () {
+-  local error_message="$1"
+-  local exit_code=$2
+-  echo "$error_message" >&2
+-  exit "$exit_code"
+-}
+-
+-check_dependency () {
+-  local cmd="$1"
+-  command -v "$cmd" > /dev/null || fail "please install $cmd" 2
+-}
+-
+-check_dependencies () {
+-  check_dependency 'curl' \
+-    && check_dependency 'jq'
+-}
+-
+-check_ingest () {
+-  local ingest="$1"
+-  [ "$ingest" = 'auto' ] \
+-    || ping -c 1 "$ingest" \
+-    || fail "failed to ping ingest '${ingest}'" 5
+-}
+-
+-channel_online_status () {
+-  local channel="$1"
+-  curl -sL "https://mixer.com/api/v1/channels/${channel}" \
+-    | jq .online \
+-    | grep -E '(true)|(false)'
+-}
+-
+-channel_online () {
+-  local channel="$1"
+-  channel_online_status "$channel" | grep -q 'true' && echo "${channel} online!"
+-}
+-
+-channel_offline () {
+-  local channel="$1"
+-  channel_online_status "$channel" | grep -q 'false' && echo "${channel} offline!"
+-}
+-
+-main () {
+-  check_dependencies
+-  check_ingest "$INGEST"
+-
+-  local max_wait=300
+-  local sleep_duration=5
+-  local i=0
+-  echo "wait for channel ${CHANNEL:?} to go offline"
+-  until channel_offline "$CHANNEL"; do
+-    echo .
+-    sleep $sleep_duration
+-    (( i += sleep_duration ))
+-    if [ "$i" -gt $max_wait ]; then
+-      echo "channel ${CHANNEL} still online after ${max_wait} sec."
+-      echo "exiting."
+-      exit 42
+-    fi
+-  done
+-
+-  echo "starting stream"
+-
+-  export MIXER_STREAMER_KEY
+-  export INGEST
+-  export FPS
+-
+-  ./start-stream &
+-  local pid="$!"
+-
+-  local j=0
+-  echo "wait for channel ${CHANNEL} to come online"
+-  until channel_online "$CHANNEL"; do
+-    echo .
+-    sleep $sleep_duration
+-    (( j += sleep_duration ))
+-    if [ "$j" -gt $max_wait ]; then
+-      echo "channel ${CHANNEL} still offline after ${max_wait} sec."
+-      echo "exiting."
+-      exit 43
+-    fi
+-
+-    ps -p "$pid" > /dev/null \
+-      || fail "ftl_app (pid ${pid}) exited unexpectedly. exiting" 44
+-  done
+-
+-  echo "channel ${CHANNEL} is online!"
+-
+-  kill -INT "$pid"
+-  wait "$pid"
+-}
+-
+-main
+diff --git a/start-stream b/start-stream
+deleted file mode 100755
+index baf4b60abe11f515..0000000000000000
+--- a/start-stream
++++ /dev/null
+@@ -1,16 +0,0 @@
+-#!/bin/bash
+-set -ue
+-
+-: "${INGEST:=auto}"
+-: "${FPS:=24000:1001}"
+-
+-echo "streaming to $INGEST"
+-echo "FPS = $FPS"
+-
+-exec ./publish/ftl_app \
+-  -i "$INGEST" \
+-  -s "$MIXER_STREAMER_KEY" \
+-  -v vid/sintel.h264 \
+-  -a vid/sintel.opus \
+-  -f "$FPS"
+-
+-- 
+2.31.1
+

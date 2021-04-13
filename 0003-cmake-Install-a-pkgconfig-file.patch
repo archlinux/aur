@@ -1,0 +1,65 @@
+From 2a951451afe9af57b7b1e48ce330e1b7035cf45a Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jsteffens@make.tv>
+Date: Fri, 29 Mar 2019 12:06:47 +0100
+Subject: [PATCH 3/6] cmake: Install a pkgconfig file
+
+---
+ CMakeLists.txt |  9 ++++++++-
+ libftl.pc.in   | 11 +++++++++++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+ create mode 100644 libftl.pc.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 66eb27a5059fd7f7..f6cb6c28eba784e5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 2.8.0)
+ enable_language(C)
+ project(libftl)
+ 
++SET(FTL_VERSION "0.5.0")
++
+ option(DISABLE_AUTO_INGEST "Set to TRUE to disable auto ingest feature which removes curl and jansson dependancies" FALSE)
+ MESSAGE(STATUS "FTL DISABLE_AUTO_INGEST: " ${DISABLE_AUTO_INGEST})
+ 
+@@ -100,7 +102,7 @@ add_library(ftl ${FTL_LIB_TYPE} libftl/hmac/hmac.c
+                        ${FTLSDK_PLATFORM_FILES})
+ include_directories(libftl libftl/gettimeofday)
+ 
+-set_target_properties(ftl PROPERTIES VERSION "0.5.0")
++set_target_properties(ftl PROPERTIES VERSION ${FTL_VERSION})
+ set_target_properties(ftl PROPERTIES SOVERSION 0)
+ 
+ target_link_libraries(ftl ${CURL_LIBRARIES} ${JANSSON_LIBRARIES})
+@@ -134,6 +136,11 @@ if (NOT DISABLE_FTL_APP)
+   target_include_directories(ftl_app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/ftl_app)
+ endif()
+ 
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libftl.pc.in
++               ${CMAKE_CURRENT_BINARY_DIR}/libftl.pc @ONLY)
++
+ # Install rules
+ install(TARGETS ftl DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install(FILES libftl/ftl.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libftl)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libftl.pc
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+diff --git a/libftl.pc.in b/libftl.pc.in
+new file mode 100644
+index 0000000000000000..106ffc8d4da4235e
+--- /dev/null
++++ b/libftl.pc.in
+@@ -0,0 +1,11 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/libftl
++
++Name: FTL
++Description: Library for Mixer's FTL Protocol
++Version: @FTL_VERSION@
++Requires.private: libcurl jansson
++Libs: -L${libdir} -lftl
++Cflags: -I${includedir}
+-- 
+2.31.1
+

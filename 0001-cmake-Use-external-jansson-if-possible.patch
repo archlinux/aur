@@ -1,0 +1,46 @@
+From d8b016be5c23a6679cd36f21b818dcbedc44bc2c Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jsteffens@make.tv>
+Date: Fri, 29 Mar 2019 12:05:35 +0100
+Subject: [PATCH 1/6] cmake: Use external jansson if possible
+
+---
+ CMakeLists.txt | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef616e99ebbbdd08..930f16bc64008fd6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,6 +12,7 @@ option(FTL_STATIC_COMPILE "Set to TRUE if you want ftl to be compiled as a stati
+ MESSAGE(STATUS "FTL FTL_STATIC_COMPILE: " ${FTL_STATIC_COMPILE})
+ 
+ find_package(Threads REQUIRED)
++find_package(PkgConfig)
+ 
+ set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+@@ -39,15 +40,18 @@ if (NOT CURL_FOUND AND NOT DISABLE_AUTO_INGEST)
+ endif()
+ 
+ # We will only try to include lib jansson if auto ingest is enabled.
+-SET(JANSSON_LIBRARIES "")
+-if (NOT DISABLE_AUTO_INGEST)
++if (PKG_CONFIG_FOUND AND NOT DISABLE_AUTO_INGEST)
++  pkg_check_modules(JANSSON jansson)
++endif()
++if (NOT JANSSON_FOUND AND NOT DISABLE_AUTO_INGEST)
+   SET(JANSSON_BUILD_DOCS OFF CACHE BOOL "Jansson docs off")
+   SET(JANSSON_WITHOUT_TESTS ON CACHE BOOL "Jansson build without tests")
+   SET(JANSSON_EXAMPLES OFF CACHE BOOL "Jansson disable examples")
+   SET(USE_WINDOWS_CRYPTOAPI off)
+   add_subdirectory(libjansson)
+-  include_directories(${CMAKE_CURRENT_BINARY_DIR}/libjansson/include)
++  SET(JANSSON_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR}/libjansson/include)
+   SET(JANSSON_LIBRARIES jansson)
++  include_directories(${JANSSON_INCLUDE_DIRS})
+ endif()
+ 
+ if (WIN32)
+-- 
+2.31.1
+

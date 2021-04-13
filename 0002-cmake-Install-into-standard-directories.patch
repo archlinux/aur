@@ -1,0 +1,32 @@
+From f39e3c1d55103dd61b426c377f281f48d04ccd96 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jsteffens@make.tv>
+Date: Fri, 29 Mar 2019 12:06:31 +0100
+Subject: [PATCH 2/6] cmake: Install into standard directories
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 930f16bc64008fd6..66eb27a5059fd7f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,7 @@ MESSAGE(STATUS "FTL DISABLE_FTL_APP: " ${DISABLE_FTL_APP})
+ option(FTL_STATIC_COMPILE "Set to TRUE if you want ftl to be compiled as a static lib. If TRUE, the program will want to statically link to the ftl cmake object." FALSE)
+ MESSAGE(STATUS "FTL FTL_STATIC_COMPILE: " ${FTL_STATIC_COMPILE})
+ 
++include(GNUInstallDirs)
+ find_package(Threads REQUIRED)
+ find_package(PkgConfig)
+ 
+@@ -134,4 +135,5 @@ if (NOT DISABLE_FTL_APP)
+ endif()
+ 
+ # Install rules
+-install(TARGETS ftl DESTINATION lib)
+\ No newline at end of file
++install(TARGETS ftl DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(FILES libftl/ftl.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libftl)
+-- 
+2.31.1
+
