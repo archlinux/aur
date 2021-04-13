@@ -1,4 +1,4 @@
-pkgbase = pplink
+pkgbase = pplink-bin
 	pkgdesc = 帮助电脑、手机、平板等设备建立点到点的安全直连
 	pkgver = 5.2.1
 	pkgrel = 1
@@ -7,7 +7,6 @@ pkgbase = pplink
 	license = custom
 	makedepends = tar
 	provides = pplink
-	conflicts = pplink
 	options = !strip
 	options = emptydirs
 	source = https://rl1.ppzhilian.com/download/PPZhilian_amd64.deb
@@ -15,5 +14,5 @@ pkgbase = pplink
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = pplink
+pkgname = pplink-bin
 
