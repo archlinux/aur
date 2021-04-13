@@ -1,0 +1,18 @@
+[Unit]
+Description=Qubes verification of /usr/lib/modules
+DefaultDependencies=no
+Documentation=
+ConditionPathExists=/dev/xvdd
+Before=systemd-modules-load.service
+Before=systemd-udevd.service
+Before=local-fs-pre.target
+After=systemd-remount-fs.service
+ConditionPathExists=!/usr/lib/modules/lost+found
+
+[Service]
+Type=oneshot
+ExecStart=/bin/mount /dev/xvdd /usr/lib/modules
+StandardOutput=syslog
+
+[Install]
+WantedBy=sysinit.target

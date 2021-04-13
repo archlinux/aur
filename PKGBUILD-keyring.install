@@ -1,0 +1,18 @@
+post_upgrade() {
+	if usr/bin/pacman-key -l >/dev/null 2>&1; then
+		usr/bin/pacman-key --populate qubesos-vm
+	fi
+	release=$(echo "$1" | cut -d '.' -f 1,2)
+
+	if ! [ -h /etc/pacman.d/99-qubes-repository-${release}.conf ] ; then
+            ln -s /etc/pacman.d/99-qubes-repository-${release}.conf.disabled /etc/pacman.d/99-qubes-repository-${release}.conf 
+        fi
+
+}
+
+post_install() {
+	if [ -x usr/bin/pacman-key ]; then
+		post_upgrade "$1"
+	fi
+}
+

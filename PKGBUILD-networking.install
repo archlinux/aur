@@ -1,0 +1,41 @@
+#!/bin/bash
+
+## arg 1:  the new package version
+post_install() {
+    # Create NetworkManager configuration if we do not have it
+    if ! [ -e /etc/NetworkManager/NetworkManager.conf ]; then
+    echo '[main]' > /etc/NetworkManager/NetworkManager.conf
+    echo 'plugins = keyfile' >> /etc/NetworkManager/NetworkManager.conf
+    echo '[keyfile]' >> /etc/NetworkManager/NetworkManager.conf
+    fi
+
+    # Remove ip_forward setting from sysctl, so NM will not reset it
+    # Archlinux now use sysctl.d/ instead of sysctl.conf
+    #sed 's/^net.ipv4.ip_forward.*/#\0/'  -i /etc/sysctl.conf
+
+    /usr/lib/qubes/qubes-fix-nm-conf.sh
+
+    # Yum proxy configuration is fedora specific
+    #if ! grep -q '/etc/yum\.conf\.d/qubes-proxy\.conf' /etc/yum.conf; then
+    #  echo >> /etc/yum.conf
+    #  echo '# Yum does not support inclusion of config dir...' >> /etc/yum.conf
+    #  echo 'include=file:///etc/yum.conf.d/qubes-proxy.conf' >> /etc/yum.conf
+    #fi
+
+    for srv in qubes-firewall.service qubes-iptables.service qubes-network.service qubes-updates-proxy.service ; do
+        systemctl enable $srv
+    done
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    post_install
+}
+
+## arg 1:  the old package version
+post_remove() {
+    for srv in qubes-firewall.service qubes-iptables.service qubes-network.service qubes-updates-proxy.service ; do
+        systemctl disable $srv
+    done
+}
