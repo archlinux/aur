@@ -15,13 +15,15 @@ depends=("ffmpeg" "jack" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-svg" "qt5-x11extras" "curl" "gtk-update-icon-cache")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
              "vlc" "swig" "luajit" "python" "cef-minimal>=87.0.0"
-             "wayland" "qt5-wayland")
+             "wayland" "qt5-wayland" "pipewire" "xdg-desktop-portal")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "libva-intel-driver: Hardware encoding"
             "libva-mesa-driver: Hardware encoding"
             "vlc: VLC Media Source"
             "luajit: Lua scripting"
+            "pipewire: Pipewire capture"
+            "xdg-desktop-portal: Pipewire capture"
             "python: Python scripting"
             "v4l2loopback-dkms: Virtual camera output")
 provides=("obs-studio=$pkgver")
