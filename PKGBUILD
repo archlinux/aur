@@ -1,7 +1,7 @@
 # Maintainer:  Jeffrey Zhang <zhang.lei.fly@gmail.com>
 
 _pkgname=virt-viewer
-pkgname=$_pkgname-git
+pkgname=$_pkgname-git-no-header
 pkgver=9.0.219.g15fbaa3
 pkgrel=1
 pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS. This package contains a patch stop the header bar.'

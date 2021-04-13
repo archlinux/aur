@@ -1,4 +1,4 @@
-pkgbase = virt-viewer-git
+pkgbase = virt-viewer-git-no-header
 	pkgdesc = A lightweight interface for interacting with the graphical display of virtualized guest OS. This package contains a patch stop the header bar.
 	pkgver = 9.0.219.g15fbaa3
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = virt-viewer-git
 	sha256sums = SKIP
 	sha256sums = 7e60094a44f5f33791f8147840afd6192d4f608606093ed8d745d799bf95bb25
 
-pkgname = virt-viewer-git
+pkgname = virt-viewer-git-no-header
 
