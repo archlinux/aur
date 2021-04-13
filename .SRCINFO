@@ -1,7 +1,7 @@
 pkgbase = alterlinux-live-tools
 	pkgdesc = Scripts required for live environment
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FascodeNet/fascode-live-tools
 	arch = any
 	license = SUSHI-WARE
@@ -20,11 +20,11 @@ pkgname = alterlinux-live-tools
 	depends = alterlinux-plasma-bookmarks
 	depends = alterlinux-desktop-file
 	depends = alterlinux-live-info
-	provides = alterlinux-live-tools
-	conflicts = alterlinux-live-tools
 
 pkgname = fascode-gtk-bookmarks
 	pkgdesc = Simple script to automatically generate GTK bookmarks
+	provides = alterlinux-gtk-bookmarks
+	replaces = alterlinux-gtk-bookmarks
 
 pkgname = alterlinux-welcome-page
 	pkgdesc = A simple script to open the official AlterLinux website

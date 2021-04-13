@@ -24,7 +24,7 @@ _pkgname=(
 pkgname=(${_pkgname[@]})
 _reponame="fascode-live-tools"
 pkgver="1.7"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Scripts required for live environment"
 arch=('any')
 url="https://github.com/FascodeNet/${_reponame}"
@@ -55,18 +55,15 @@ install_license() {
 # alterlinux-live-tools
 package_alterlinux-live-tools() {
     pkgdesc="Scripts required for live environment (meta package)"
-    conflicts=('alterlinux-live-tools')
-    provides=("alterlinux-live-tools")
-
     depends+=(${_pkgname[@]})
-
-
     install_license
 }
 
 # alterlinux-gtk-bookmarks
 package_fascode-gtk-bookmarks() {
     pkgdesc="Simple script to automatically generate GTK bookmarks"
+    replaces+=("alterlinux-gtk-bookmarks")
+    provides+=("alterlinux-gtk-bookmarks")
     install_files
     install_license
 }
