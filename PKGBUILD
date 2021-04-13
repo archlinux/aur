@@ -95,14 +95,6 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-
-    ### Fix broken file 5.40-1
-        if [[ ! -f "$srcdir/patch-${_pkgver}-${_rtpatchver}.patch" ]]; then
-            echo "Fix broken file 5.40-1"
-            unlink "$srcdir/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-            xz -dc "$SRCDEST/patch-${_pkgver}-${_rtpatchver}.patch.xz" > "patch-${_pkgver}-${_rtpatchver}.patch"
-        fi
-
     cd $_srcname
 
     ### Add rt patch
