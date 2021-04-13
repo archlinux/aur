@@ -1,3 +1,4 @@
+# Maintainer: Matei Cotocel <mcotocel at outlook dot com>
 pkgname=pactest-git
 pkgver=r1.03ad09f
 pkgdesc="Test AUR software in a chroot"
