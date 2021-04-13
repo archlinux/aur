@@ -1,10 +1,10 @@
-# Maintainer:  Peter Mattern <pmattern at arcor dot de>
+# Maintainer:  Jeffrey Zhang <zhang.lei.fly@gmail.com>
 
 _pkgname=virt-viewer
 pkgname=$_pkgname-git
 pkgver=9.0.219.g15fbaa3
 pkgrel=1
-pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS'
+pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS. This package contains a patch stop the header bar.'
 arch=('i686' 'x86_64')
 url='https://virt-manager.org'
 license=('GPL')
@@ -18,7 +18,7 @@ source=(
     )
 sha256sums=(
     "SKIP"
-    "SKIP")
+    "7e60094a44f5f33791f8147840afd6192d4f608606093ed8d745d799bf95bb25")
 
 pkgver() {
     cd $_pkgname
