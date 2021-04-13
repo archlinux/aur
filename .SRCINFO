@@ -1,6 +1,6 @@
 pkgbase = dnsmasq-regex
 	pkgdesc = Lightweight, easy to configure DNS forwarder and DHCP server, with regex support
-	pkgver = 2.85.b150a80
+	pkgver = 2.85.regex2
 	pkgrel = 1
 	url = https://github.com/lixingcong/dnsmasq-regex
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = dnsmasq-regex
 	provides = dnsmasq
 	conflicts = dnsmasq
 	backup = etc/dnsmasq.conf
-	source = git+https://github.com/lixingcong/dnsmasq-regex.git
+	source = git+https://github.com/lixingcong/dnsmasq-regex.git#commit=74aee42
 	source = Makefile.patch
-	source = git://thekelleys.org.uk/dnsmasq.git
+	source = git://thekelleys.org.uk/dnsmasq.git#tag=v2.85
 	source = dnsmasq-sysusers.conf
 	source = dnsmasq.service
 	sha256sums = SKIP
