@@ -2,7 +2,7 @@
 # Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=bitwarden-git
-pkgver=1.24.6.r169.g9ff6b424
+pkgver=1.24.6.r183.g62baff5d
 pkgrel=1
 _nodeversion='12.18.3'
 pkgdesc='Bitwarden Desktop Application (development version)'
@@ -47,7 +47,7 @@ prepare() {
 	# Patch build to make it work with system electron
 	SYSTEM_ELECTRON_VERSION=$(pacman -Q electron11 | cut -d' ' -f2 | cut -d'-' -f1)
 	jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION \
-	   '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron"' \
+	   '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron11"' \
 	   > package.json.patched
 	mv package.json.patched package.json
 	git submodule init
