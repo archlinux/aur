@@ -1,6 +1,6 @@
 pkgbase = konsave
 	pkgdesc = Save and apply your KDE Plasma customizations with just one command!
-	pkgver = 1.1.9
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Prayag2/konsave
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = konsave
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-pyaml
-	source = konsave-1.1.9.tar.gz::https://github.com/Prayag2/konsave/archive/v1.1.9.tar.gz
-	sha256sums = 527a7b7ed62097a5ce44c7f86ca6382ab2eda00263257b725d7872512db4d4a6
+	source = konsave-2.0.2.tar.gz::https://github.com/Prayag2/konsave/archive/v2.0.2.tar.gz
+	sha256sums = 9d1132e06b229debd0e2bef8b1088ad09dd945576c3333120228e04f26eb70cd
 
 pkgname = konsave
 

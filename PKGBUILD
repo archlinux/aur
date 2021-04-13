@@ -3,7 +3,7 @@
 # vim: ts=2 sw=2 et:
 
 pkgname=konsave
-pkgver=1.1.9
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Save and apply your KDE Plasma customizations with just one command!"
 url="https://github.com/Prayag2/${pkgname}"
@@ -12,13 +12,10 @@ makedepends=('python-setuptools-scm')
 license=('GPL3')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('527a7b7ed62097a5ce44c7f86ca6382ab2eda00263257b725d7872512db4d4a6')
-
-prepare() {
-  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
-}
+sha256sums=('9d1132e06b229debd0e2bef8b1088ad09dd945576c3333120228e04f26eb70cd')
 
 build() {
+  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 }
@@ -26,5 +23,9 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 konsave/conf.yaml "${pkgdir}/usr/lib/python3.9/site-packages/konsave/conf.yaml"
+
+  # Copying configuration files
+  _python_folder=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -Dm644 konsave/conf_kde.yaml "${pkgdir}/${_python_folder}/${pkgname}/conf_kde.yaml"
+  install -Dm644 konsave/conf_other.yaml "${pkgdir}/${_python_folder}/${pkgname}/conf_other.yaml"
 }
