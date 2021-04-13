@@ -1,6 +1,6 @@
 pkgbase = eam-git
 	pkgdesc = Epic Asset Manager used to manage assets from Epic Games Store
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 2
 	url = https://github.com/AchetaGames/Epic-Asset-Manager
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = eam-git
 	makedepends = webkit2gtk
 	provides = eam
 	conflicts = eam
-	source = https://github.com/AchetaGames/Epic-Asset-Manager/archive/refs/tags/1.0.6.tar.gz
+	source = https://github.com/AchetaGames/Epic-Asset-Manager/archive/refs/tags/v1.0.7.tar.gz
 	source = eam.desktop
-	sha256sums = 78080de276d0a62cb5dc9df2b4767e2f5c7354bf0b46afd5921bfbc565ea1411
+	sha256sums = c85ce01e9a5620ccc9c77cc5ff8c44dd54686e2ab6cda4e7df2bffc94640d2c9
 	sha256sums = 29c00c0e03e20546d3115fbe9294492e5c8ff81af09565aebcb311ade5034dbf
 
 pkgname = eam-git
