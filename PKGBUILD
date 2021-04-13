@@ -11,15 +11,16 @@ pkgdesc="Free and open source software for video recording and live streaming. B
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
-depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
+depends=("ffmpeg" "jack" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-svg" "qt5-x11extras" "curl" "gtk-update-icon-cache")
-makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
-             "vlc" "swig" "luajit" "python" "cef-minimal>=87.0.0")
+makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
+             "vlc" "swig" "luajit" "python" "cef-minimal>=87.0.0"
+             "wayland" "qt5-wayland")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
-            "jack: JACK Support"
+            "libva-intel-driver: Hardware encoding"
+            "libva-mesa-driver: Hardware encoding"
             "vlc: VLC Media Source"
-            "swig: Scripting"
             "luajit: Lua scripting"
             "python: Python scripting"
             "v4l2loopback-dkms: Virtual camera output")
@@ -45,11 +46,11 @@ build() {
     mkdir -p build; cd build
 
     cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_BROWSER=ON \
-    -DCEF_ROOT_DIR="/opt/cef" \
-    -DOBS_VERSION_OVERRIDE=$pkgver ..
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_BROWSER=ON \
+        -DCEF_ROOT_DIR="/opt/cef" \
+        -DOBS_VERSION_OVERRIDE=$pkgver ..
 
     make
 }
