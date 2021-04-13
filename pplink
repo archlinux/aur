@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-/opt/pplink/pplink
+electron11 /usr/share/pplink/pplink.asar
