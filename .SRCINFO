@@ -1,0 +1,31 @@
+pkgbase = vim-nightfly-git
+	pkgdesc = A dark GUI colorscheme inspired by Night Owl
+	pkgver = r118.8f96830
+	pkgrel = 1
+	url = https://github.com/bluz71/vim-nightfly-guicolors
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-nightfly
+	conflicts = vim-nightfly
+	source = vim-nightfly-git::git+https://github.com/bluz71/vim-nightfly-guicolors
+	md5sums = SKIP
+
+pkgname = vim-nightfly-git
+	optdepends = vim-airline-nightfly
+	optdepends = vim-lightline-nightfly
+
+pkgname = vim-airline-nightfly-git
+	depends = vim-airline
+	optdepends = vim-nightfly
+	provides = vim-airline-nightfly
+	conflicts = vim-airline-nightfly
+
+pkgname = vim-lightline-nightfly-git
+	depends = vim-lightline
+	optdepends = vim-nightfly
+	provides = vim-lightline-nightfly
+	conflicts = vim-lightline-nightfly
+
