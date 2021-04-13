@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=xtl
-pkgver=0.6.23
-pkgrel=3
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="The x template library"
 arch=('any')
 url="https://github.com/xtensor-stack/${pkgname}"
@@ -22,4 +22,4 @@ package() {
   cd ${pkgname}-${pkgver}
   make -C build DESTDIR="${pkgdir}" install
 }
-sha512sums=('6795acb381d13b64920e71e9f6f1f5bb796d1732c00ce3e0e3c191bd30ada21a4445ede157268b0f0d24893e7741e602d390a70775d1337eafb2accda72dd34a')
+sha512sums=('b7d694c719337fcf94219943348d2bc096e774b206760abce380a7723334c3a5cad2ff7060df4e184cb825ecac0c242d1467d6c63c2ecc6774fcaae4fc1be124')
