@@ -59,7 +59,6 @@ package()
 
     # Install the software.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/share/webapps/
-    touch ${pkgdir}/usr/share/webapps/${_pkgname}/config/config.ini.php
 
     ## GeoIP database
     cur_year=$(date +"%Y")
