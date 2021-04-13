@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r631.84984bd
+pkgver=r632.fc632e9
 pkgrel=1
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, spotify (podcasts), soundcloud, nyaa.si, 4chan, matrix and several manga sites.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('QuickMedia')
 conflicts=('QuickMedia')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz")
-sha512sums=('90fe9f688c793f4e0300105cb0e9c009b64f315152d1cb35aaac2ef95fc70ee476ee00189707fb7da8cf60cb093997a69528a0368b1e5c9f88f783890f5a1896')
+sha512sums=('c3592f423306b0e7017d41c6f0fd8588dd6ce79dc610a3956a9e1ea9dad1800019fdd8d86aa921cd5078c20813a863811464edd758f3d39eb3839090f64a5e8c')
 
 build() {
   cd "$srcdir"
