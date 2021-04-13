@@ -4,7 +4,7 @@
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
 pkgver=3.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
 url="https://www.ocenaudio.com/"
@@ -32,7 +32,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/licenses"
   install -Dm644 "${pkgdir}/opt/$_pkgname/bin/ocenaudio_license.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+    "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt"
 
   ln -sf "/opt/$_pkgname/bin/${_pkgname}" "${pkgdir}/usr/bin"
   sed -i 's|^Exec=/opt/ocenaudio/bin|Exec=/usr/bin|' "$pkgdir/usr/share/applications/ocenaudio.desktop"
