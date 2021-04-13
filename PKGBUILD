@@ -6,18 +6,19 @@
 _lang=deu-eng
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-bin
-pkgver=0.3.5
-pkgrel=3
+pkgver=1.8.1_fd0.2.1
+_pkgver=${pkgver//_/-}
+pkgrel=1
 pkgdesc="German -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="https://freedict.org/"
-license=('GPL')
+license=('GPL' 'AGPL3')
 optdepends=('dictd: dict client and server')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${pkgname}.install
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-sha512sums=('da34b6548b7149f0f9f896e02272d62750153c9d0d7f55068f1e72881e10233b161c4cf3caecfb5515a6875bda9891ee7e11fff314d3b9320c18c064641dcbd2')
+source=("https://download.freedict.org/dictionaries/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.dictd.tar.xz")
+sha512sums=('adc906f38b4eed8f0b998227b440eb74e757003273f9c37bf6df9fd5d559c6b26ebbd03eb46f5bf4b2bfcfc6325c085998833d6da513ef387f369fc015d3eccc')
 
 package()
 {
