@@ -1,7 +1,7 @@
 # Maintainer: Dobroslaw Kijowski <dobo90_at_gmail.com>
 
 pkgname=gede
-pkgver=2.16.2
+pkgver=2.17.1
 pkgrel=1
 pkgdesc='Graphical frontend (GUI) to GDB written in Qt.'
 arch=(i686 x86_64)
@@ -9,9 +9,9 @@ url='http://acidron.com/gede'
 license=(BSD)
 depends=(qt5-base gdb ctags)
 makedepends=(python)
-source=("http://gede.acidron.com/uploads/source/${pkgname}-${pkgver}.tar.xz"
+source=("http://gede.dexar.se/uploads/source/${pkgname}-${pkgver}.tar.xz"
         "do_not_build_on_install.patch")
-sha256sums=('32c390099d9755ec54836a04ef82ffcd315bd6912525714f626b3eb87db248a1'
+sha256sums=('a323c7a347328efb0ff46ebbfe9979c733eb5a7f83405b53eb88be5fbdf07a41'
             '65f0075eee147364cfcba6776de1389ceb4dbe066f6274da65470bf8bdd467b4')
 
 prepare()
