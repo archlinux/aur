@@ -1,8 +1,8 @@
 # Maintainer: gbr <gbr@protonmail.com>
 _pkgname=Myxer
 pkgname=myxer
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A modern volume mixer for PulseAudio'
 arch=('x86_64')
 url='https://github.com/Aurailus/Myxer'
@@ -11,7 +11,7 @@ depends=('gtk3' 'pulseaudio')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'myxer.desktop')
-sha512sums=('9b09abd597e8240ca263f26fbf2a71d449c017551047c8ad83f1a304934fc15fe66845248da6c09b763ec4c8dd7e5a59533e1728ca9490f8cd85d33d845e5900'
+sha512sums=('e7239a5e2c782bff4ce28d1bafbc2c48d723648150ddb4bfa77c9754a7cf1c0c7a6d47ead82787148087e13c06c339a2e4436eb968e63ea79261a3325b0d9f85'
             '7cc782ba29dbe03dc242e65880184f047ae2ebf0dd2aaa3ab534df78e2a037f5a69fe332752fce87312a452dabf3da3b70a30d6baa8059ce0216acd1333b80be')
 
 build() {
