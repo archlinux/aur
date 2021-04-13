@@ -53,7 +53,7 @@ source_aarch64=("hg+$_repo#revision=autoland"
                 builtin_js.patch)
 
 sha512sums_x86_64=('SKIP'
-                   '65240292835fd82f35b6618ad6aa3ea62a22f6ff7a1675a1054097c6645f9df969ca317a554d4a05a261f41741326234e608f8accf2d8b5effb87e27885e38d1'
+                   '0d1d64832ae34a0c7bbb9e37eac48b9b3830481a0e0aa4c20321a1408a4a20b2b2045d24d8ae0d002895291c6f7d988cce16b1607ee73778a62d7f7d9143a248'
                    'SKIP'
                    'SKIP'
                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
@@ -61,7 +61,7 @@ sha512sums_x86_64=('SKIP'
                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
                    '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
 sha512sums_aarch64=('SKIP'
-                    '65240292835fd82f35b6618ad6aa3ea62a22f6ff7a1675a1054097c6645f9df969ca317a554d4a05a261f41741326234e608f8accf2d8b5effb87e27885e38d1'
+                    '0d1d64832ae34a0c7bbb9e37eac48b9b3830481a0e0aa4c20321a1408a4a20b2b2045d24d8ae0d002895291c6f7d988cce16b1607ee73778a62d7f7d9143a248'
                     'SKIP'
                     'SKIP'
                     '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
