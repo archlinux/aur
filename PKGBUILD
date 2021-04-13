@@ -1,6 +1,6 @@
 # Maintainer: Dmitry darkbarker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingrunner
-pkgver=2007151522
+pkgver=2012080309
 pkgrel=1
 pkgdesc='Client runner for billing system BGBilling 8.0+'
 arch=('i686' 'x86_64')
@@ -39,29 +39,35 @@ package() {
 	msg2 "unzip distributive"
 	unzip -o ./${_achivename}_${pkgver}.zip
 
+	appdir=${pkgdir}/opt/${_dstdirname}
+
 	msg2 "create structure"
 	mkdir $pkgdir/opt
-	mv ${_achivename} $pkgdir/opt/${_dstdirname}
+	mv ${_achivename} ${appdir}
 
 	msg2 "remove win files"
-	rm -f $pkgdir/opt/${_dstdirname}/*.{bat,exe,ini}
+	rm -f ${appdir}/*.{bat,exe,ini}
 
 	msg2 "rename launch scripts (runner.sh -> bgbillingrunner.sh)"
-	rename runner.sh bgbillingrunner.sh $pkgdir/opt/${_dstdirname}/runner.sh
+	rename runner.sh bgbillingrunner.sh ${appdir}/runner.sh
 
 	msg2 "chmod package files"
-	chmod +x $pkgdir/opt/${_dstdirname}/*.sh
+	chmod +x ${appdir}/*.sh
 
 	msg2 "patch/remove JAVA_HOME in launch script"
-	sed -i "s|\${JAVA_HOME}\/bin\/java|java|" $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
-	sed -i '5d' $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
-	sed -i '5d' $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
-	sed -i '5d' $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
-	sed -i '5d' $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
-	sed -i '5d' $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
+	sed -i "s|\${JAVA_HOME}\/bin\/java|java|" ${appdir}/bgbillingrunner.sh
+	# if JAVA_HOME ... fi
+	sed -i '5d' ${appdir}/bgbillingrunner.sh
+	sed -i '5d' ${appdir}/bgbillingrunner.sh
+	sed -i '5d' ${appdir}/bgbillingrunner.sh
+	sed -i '5d' ${appdir}/bgbillingrunner.sh
+	sed -i '5d' ${appdir}/bgbillingrunner.sh
+	# newline + BGRUNNER_DIR=.
+	sed -i '5d' ${appdir}/bgbillingrunner.sh
+	sed -i '5d' ${appdir}/bgbillingrunner.sh
 
 	msg2 "patch log path in launch script"
-	sed -i "s/runner\.log/\$\{HOME\}\/\.bgbilling\/runner\.log/" $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
+	sed -i "s/runner\.log/\$\{HOME\}\/\.bgbilling\/runner\.log/" ${appdir}/bgbillingrunner.sh
 
 	msg2 "patch var in files"
 	_patch_var_file bgbillingrunner.desktop
