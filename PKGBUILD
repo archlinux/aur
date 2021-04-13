@@ -2,7 +2,7 @@
 # Contributor: M Nabil Adani <nblid48[at]gmail[dot]com>
 
 pkgname=stowtui-git
-pkgver=1.1.0
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='stow tui is a Terminal User Interface Program for GNU STOW'
 arch=('any')
@@ -21,7 +21,7 @@ pkgver(){
 package() {
    cd "$srcdir/$pkgname"
    python setup.py install --root="$pkgdir/" --optimize=1 
-   install -Dvm755 "../../stowtui" "$pkgdir/usr/bin/stowtui"
+   install -Dvm755 "./bin/stowtui" "$pkgdir/usr/bin/stowtui"
 }
 
 
