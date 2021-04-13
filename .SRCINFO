@@ -1,0 +1,22 @@
+pkgbase = ebtables
+	pkgdesc = Ethernet bridge filtering utilities
+	pkgver = 2.0.10_4
+	pkgrel = 8
+	url = http://ebtables.sourceforge.net/
+	install = ebtables.install
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	depends = bash
+	depends = iptables
+	options = !buildflags
+	backup = etc/ebtables.conf
+	source = https://downloads.sourceforge.net/ebtables/ebtables-v2.0.10-4.tar.gz
+	source = ebtables.systemd
+	source = ebtables.service
+	md5sums = 506742a3d44b9925955425a659c1a8d0
+	md5sums = b4c329060809e5b290ae49fbd0ad61f2
+	md5sums = 5fc546b232c8e4d66058031ddde71b2f
+
+pkgname = ebtables
+
