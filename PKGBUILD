@@ -2,7 +2,7 @@
 # Previously:: Dale Blount <dale@archlinux.org>
 
 pkgname=spamassassin-spamc
-pkgver=3.4.1
+pkgver=3.4.6
 pkgrel=1
 pkgdesc="Standalone C Client to spamassassin."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('openssl' 'zlib')
 makedepends=('perl-digest-sha1' 'perl-html-parser' 'perl-net-dns' 'perl-netaddr-ip') 
 license=('APACHE')
 source=(http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-${pkgver}.tar.gz)
-sha256sums=('9b7a95a594cdca4f265707364478b57813b82a0ec7e520d9bc818bfbcafdd726')
+sha256sums=('500c7e2a7cdf3aa4dd822d97aaff2ab22235a60cf17a68ab817861d215a4e568')
 
 build() {
   cd "${srcdir}/Mail-SpamAssassin-${pkgver}"

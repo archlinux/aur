@@ -1,6 +1,6 @@
 pkgbase = spamassassin-spamc
 	pkgdesc = Standalone C Client to spamassassin.
-	pkgver = 3.4.1
+	pkgver = 3.4.6
 	pkgrel = 1
 	url = http://spamassassin.apache.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = spamassassin-spamc
 	makedepends = perl-netaddr-ip
 	depends = openssl
 	depends = zlib
-	source = http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-3.4.1.tar.gz
-	sha256sums = 9b7a95a594cdca4f265707364478b57813b82a0ec7e520d9bc818bfbcafdd726
+	source = http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-3.4.6.tar.gz
+	sha256sums = 500c7e2a7cdf3aa4dd822d97aaff2ab22235a60cf17a68ab817861d215a4e568
 
 pkgname = spamassassin-spamc
 
