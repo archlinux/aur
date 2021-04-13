@@ -1,33 +1,46 @@
-# Maintainer: telans <telans@protonmail.org>
-# Contributor: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 
 pkgname=virglrenderer-git
-pkgver=0.8.2.r74.g71e0626
+pkgver=0.9.0_24_ge8045c1
 pkgrel=1
-pkgdesc='The virgil3d rendering library is a library used by qemu to implement 3D GPU support for the virtio GPU'
-arch=('i686' 'x86_64')
+pkgdesc="A virtual 3D GPU library, that allows the guest operating system to use the host GPU to accelerate 3D rendering, git version"
+arch=('x86_64')
+url="https://virgil3d.github.io/"
 license=('MIT')
-url='https://virgil3d.github.io/'
-depends=('libepoxy' 'mesa')
-makedepends=('python2' 'git')
+depends=(libepoxy mesa)
+makedepends=(python meson ninja)
+checkdepends=(check)
 provides=('virglrenderer')
 conflicts=('virglrenderer')
-source=('git://anongit.freedesktop.org/git/virglrenderer')
-sha256sums=('SKIP')
+source=('virglrenderer::git+https://gitlab.freedesktop.org/virgl/virglrenderer.git')
+md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd virglrenderer
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/irglrenderer.//g'
+  _ver=$(git describe --tags)
+  echo ${_ver//-/_}
 }
 
-build() {
-  cd virglrenderer
-  ./autogen.sh --prefix=/usr/ --enable-autotools
+#prepare() {
+#  if [  -d build ]; then
+#    rm -rf build
+#  fi
+#}
 
-  make
+build () {
+  cd virglrenderer
+  meson --prefix=/usr build -Dvenus-experimental=true # -Dtests=true
+  ninja -C build
+}
+
+check() {
+  cd virglrenderer
+  #ninja -C build test  TODO: figure out why tests fail in chroot environment
 }
 
 package() {
   cd virglrenderer
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
+  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
