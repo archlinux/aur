@@ -14,7 +14,7 @@ index b32902f..46b44ef 100644
  [Service]
  Type=notify
 -ExecStart=/opt/hide.me/hide.me connect %i
-+ExecStart=/opt/hide.me/hide.me connect $OPTIONS %i
++ExecStart=/opt/hide.me/hide.me $OPTIONS connect %i
  WorkingDirectory=/opt/hide.me
  ReadWritePaths=/opt/hide.me /etc
 +EnvironmentFile=/opt/hide.me/config

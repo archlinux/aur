@@ -2,7 +2,7 @@
 pkgname=hide-client
 _pkgname=hide.client.linux
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Hide.me CLI VPN client for Linux"
 arch=('any')
@@ -31,8 +31,8 @@ noextract=()
 md5sums=('9346e79e8e1c98b5457a03e02febca9c'
          '3cca85f964053529bc7d6581ceb3abd7'
          '07d59ac194c4aa8ee0de284283796461'
-         '58efe83f8a4d181a788da86c24338b42'
-         'c19e92d773d241330b01fd83297cc94e')
+         'cdd99adb78a8d0a5212e7f900fd53a6d'
+         'ea50b6e6df86da7031cf72d8eaaf46a4')
 validpgpkeys=()
 
 prepare() {
