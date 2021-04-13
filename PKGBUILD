@@ -60,11 +60,6 @@ prepare() {
 
   git checkout openssl_1_1_1
 
-  # Fix Error test_tls.c:94:3: error: implicit declaration of function 'err' [-Werror=implicit-function-declaration]
-  # err(1, "corruption from client");
-  sed -i "/\#define\s*KTRANSFER\s*(1\s*\*\s*1024\s*)/I a\ \nstatic void err(const int i, const char* msg){printf(msg);}" \
-    "${srcdir}/${pkgname}/test_tls.c"
-
   # Fix ==> WARNING: Package contains reference to $srcdir
   # gost.so.1.1 contain path to source files
   # strings gost.so.1.1 | grep "src\/gost-engine"
@@ -82,14 +77,12 @@ build() {
   )
 
   cmake \
-    -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DOPENSSL_ROOT_DIR=/usr \
-    -DOPENSSL_INCLUDE_DIR=/usr/include/openssl \
+    -DOPENSSL_INCLUDE_DIR=/usr/include \
     -DOPENSSL_LIBRARIES=/usr/lib \
     -DOPENSSL_ENGINES_DIR=/usr/lib/engines-1.1 \
-    -DOPENSSL_VERSION_MAJOR=1 \
-    -DOPENSSL_VERSION_MINOR=1 \
+    -B build \
     -DCMAKE_BUILD_TYPE=Release
 
   cmake --build build --config Release
@@ -105,11 +98,6 @@ package() {
 
   install -Dm644 "${srcdir}/gost.cnf" "${pkgdir}/etc/ssl/gost.cnf"
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/${pkgname}/gostsum.1" "${pkgdir}/usr/share/man/man1/gostsum.1"
-  install -Dm644 "${srcdir}/${pkgname}/gost12sum.1" "${pkgdir}/usr/share/man/man1/gost12sum.1"
-  install -Dm755 "${srcdir}/${pkgname}/build/bin/gost.so.1.1" "${pkgdir}/usr/lib/engines-1.1/gost.so.1.1"
-  install -Dm755 "${srcdir}/${pkgname}/build/bin/gostsum" "${pkgdir}/usr/bin/gostsum"
-  install -Dm755 "${srcdir}/${pkgname}/build/bin/gost12sum" "${pkgdir}/usr/bin/gost12sum"
-  ln -s /usr/lib/engines-1.1/gost.so.1.1 "${pkgdir}/usr/lib/engines-1.1/gost.so"
+  DESTDIR="${pkgdir}" cmake --install build --config Release
 
 }
