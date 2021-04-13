@@ -25,8 +25,6 @@ build() {
 }
 
 package() {
-	_uuid='hibernate-status@dromi'
-
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
 }
