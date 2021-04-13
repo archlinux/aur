@@ -1,25 +1,23 @@
 pkgbase = teamviewer13
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
-	pkgver = 13.1.3026
-	pkgrel = 3
+	pkgver = 13.2.153808
+	pkgrel = 1
 	url = http://www.teamviewer.com
 	install = teamviewer.install
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = custom
 	depends = hicolor-icon-theme
-	depends = qt5-base
-	depends = qt5-declarative
-	depends = qt5-quickcontrols
 	depends = qt5-webkit
 	depends = qt5-x11extras
-	provides = teamviewer
-	conflicts = teamviewer-beta
+	depends = qt5-quickcontrols
+	provides = teamviewer13
+	conflicts = teamviewer
 	options = !strip
-	source_x86_64 = https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.1.3026_amd64.deb
-	sha256sums_x86_64 = 33eacc8ebeaf34aea5fa932e3d80553f358629ad454740f05aafba267b50ea93
-	source_i686 = https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.1.3026_i386.deb
-	sha256sums_i686 = 46f1b697a113f304ff8e5792f9893319c0de6b802355e7e5fdf7dba6f4b415c8
+	source_i686 = https://dl.teamviewer.com/download/linux/version_13x/teamviewer_13.2.153808_i386.deb
+	sha512sums_i686 = b44a98eef4f58b82bfd0b96edec87223a7636b2bc7822151e9ad87bcde049460c5c2327866db4fb4a4b2596466af9caac8b2302f31e99efd07539e418831143e
+	source_x86_64 = https://dl.teamviewer.com/download/linux/version_13x/teamviewer_13.2.153808_amd64.deb
+	sha512sums_x86_64 = d5ec8b766e1c2eb944d2884ab4b16ae1b9358b30e8da8e0636292b74059d6feafe45a0f32c263f504b1c1c01bfdc9a840cd3a911e454473a2237b78fe6ebbd60
 
 pkgname = teamviewer13
 
