@@ -2,7 +2,7 @@
 pkgname=hide-client
 _pkgname=hide.client.linux
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Hide.me CLI VPN client for Linux"
 arch=('any')
@@ -25,16 +25,19 @@ changelog=
 source=("https://github.com/eventure/$_pkgname/archive/$pkgver.zip"
         "go-sum.patch"
         "config_sysdirs.patch"
+        "systemd-config.patch"
         "service_sysdirs.patch")
 noextract=()
 md5sums=('9346e79e8e1c98b5457a03e02febca9c'
          '3cca85f964053529bc7d6581ceb3abd7'
          '07d59ac194c4aa8ee0de284283796461'
-         '2b70f56ac58d8ba3e496bab23b8beb07')
+         '58efe83f8a4d181a788da86c24338b42'
+         'c19e92d773d241330b01fd83297cc94e')
 validpgpkeys=()
 
 prepare() {
 	cd "$_pkgname-$pkgver"
+	patch -p1 -i "$srcdir/systemd-config.patch"
 	patch -p1 -i "$srcdir/config_sysdirs.patch"
 	patch -p1 -i "$srcdir/service_sysdirs.patch"
 	patch -p1 -i "$srcdir/go-sum.patch"
@@ -63,5 +66,6 @@ package() {
 	install -Dm644 -t "$pkgdir"/usr/share/hide.me/ CA.pem
 	# For (system-wide) accessToken.txt
 	install -dm750 "$pkgdir"/etc/hide.me/
+	install -Dm644 -t "$pkgdir"/etc/hide.me config
 	install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ hide.me@.service
 }

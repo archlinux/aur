@@ -6,12 +6,14 @@ index b32902f..641241d 100644
  
  [Service]
  Type=notify
--ExecStart=/opt/hide.me/hide.me connect %i
+-ExecStart=/opt/hide.me/hide.me connect $OPTIONS %i
 -WorkingDirectory=/opt/hide.me
 -ReadWritePaths=/opt/hide.me /etc
-+ExecStart=/usr/bin/hide.me connect %i
+-EnvironmentFile=/opt/hide.me/config
++ExecStart=/usr/bin/hide.me connect $OPTIONS %i
 +WorkingDirectory=/usr/bin
 +ReadWritePaths=/etc
++EnvironmentFile=/etc/hide.me/config
  TimeoutStopSec=30
  Restart=always
  RestartSec=5s
