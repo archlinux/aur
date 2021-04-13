@@ -23,12 +23,12 @@ changelog=
 #XXX go.sum is created by `go mod tidy` as a workaround for repo not containing
 #    a go.sum file, which is required for go 1.16 compatibility.
 source=("https://github.com/eventure/$_pkgname/archive/$pkgver.zip"
-        "go.sum"
+        "go-sum.patch"
         "config_sysdirs.patch"
         "service_sysdirs.patch")
 noextract=()
 md5sums=('9346e79e8e1c98b5457a03e02febca9c'
-         '811aa82780b7f9c986048325dab17372'
+         '3cca85f964053529bc7d6581ceb3abd7'
          '07d59ac194c4aa8ee0de284283796461'
          '2b70f56ac58d8ba3e496bab23b8beb07')
 validpgpkeys=()
@@ -37,6 +37,7 @@ prepare() {
 	cd "$_pkgname-$pkgver"
 	patch -p1 -i "$srcdir/config_sysdirs.patch"
 	patch -p1 -i "$srcdir/service_sysdirs.patch"
+	patch -p1 -i "$srcdir/go-sum.patch"
 }
 
 build() {
