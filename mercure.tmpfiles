@@ -1,0 +1,2 @@
+d /run/mercure 0750 mercure mercure - -
+d /var/lib/mercure 0750 mercure mercure - -

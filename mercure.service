@@ -3,7 +3,10 @@ Description=Mercure - Server-sent live updates
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/mercure start
+Environment=XDG_DATA_HOME=/var/lib/mercure
+Environment=XDG_CONFIG_HOME=/var/lib/mercure
+ExecStart=/usr/bin/mercure run -config /etc/mercure/Caddyfile
+ExecReload=/usr/bin/mercure reload -config /etc/mercure/Caddyfile
 User=mercure
 Group=mercure
 RuntimeDirectory=mercure

@@ -1,0 +1,37 @@
+# Learn how to configure the Mercure.rocks Hub on https://mercure.rocks/docs/hub/config
+{
+    http_port 3000
+    https_port 3001
+
+    # HTTP/3 support
+    servers {
+        protocol {
+            experimental_http3
+        }
+    }
+}
+
+# Automatic HTTPS does not work with the systemd service unit.
+# Change port to your https_port and enable the tls setting, if you want to use HTTPS.
+:3000
+
+#tls /etc/ssl/certs/cert.pem /etc/ssl/private/key.pem
+
+log
+
+route {
+    encode zstd gzip
+
+    mercure {
+        # Transport to use (default to Bolt)
+        transport_url bolt:///run/mercure/mercure.db
+        # Publisher JWT key
+        publisher_jwt !ChangeMe!
+        # Subscriber JWT key
+        subscriber_jwt !ChangeMe!
+    }
+
+    respond /healthz 200
+
+    respond "Not Found" 404
+}
