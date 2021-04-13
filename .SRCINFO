@@ -11,8 +11,8 @@ pkgbase = joshuto
 	depends = xdg-utils
 	provides = joshuto
 	conflicts = joshuto
-	source = https://github.com/kamiyaa/joshuto/archive/0.8.5.tar.gz
-	md5sums = 451bce32cde13b959ae545635c8c8f88
+	source = https://github.com/kamiyaa/joshuto/archive/refs/tags/0.8.6.tar.gz 
+	md5sums = 312968c7d0f2f077e71431e1595d2871 
 
 pkgname = joshuto
 
