@@ -1,0 +1,7 @@
+post_install(){
+    /usr/share/libalpm/scripts/alterlinux-wallpapers-lxde blue alter
+    /usr/share/libalpm/scripts/alterlinux-wallpapers-xfce blue alter-jiju
+    /usr/share/libalpm/scripts/alterlinux-wallpapers-xfce stripes alter
+    /usr/share/libalpm/scripts/alterlinux-wallpapers-xfce teal alter-old
+    /usr/share/libalpm/scripts/alterlinux-wallpapers-xfce verticals alter
+}

@@ -3,14 +3,14 @@
 
 _pkgname="alterlinux-wallpapers"
 pkgname="${_pkgname}"
-pkgver="7.0"
+pkgver="7.1"
 pkgrel=1
 pkgdesc='AlterLinux wallpapers'
 arch=('any')
 url='https:/fascode.net'
-source=("https://github.com/FascodeNet/alterlinux-wallpapers/archive/refs/tags/v${pkgver}.zip")
-    
+source=("https://github.com/FascodeNet/alterlinux-wallpapers/archive/refs/tags/v${pkgver}.zip")    
 md5sums=("SKIP")
+install="${pkgname}.install"
 
 maindirname="${_pkgname}-${pkgver}"
 
