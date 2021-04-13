@@ -5,8 +5,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=26.1.1
-pkgrel=4
+pkgver=27.0.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -25,7 +25,7 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "v4l2loopback-dkms: Virtual camera output")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio" "obs-linuxbrowser")
-source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
+source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver-rc2"
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git"
         "git+https://github.com/obsproject/obs-vst.git")
