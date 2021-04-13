@@ -2,7 +2,7 @@
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch-git
 pkgver=1.2.r20.geb2471b
-pkgrel=1
+pkgrel=2
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
 url="https://github.com/TheDarkBug/${pkgname/-git/}"
@@ -26,8 +26,9 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -D "${pkgname/-git/}" "$pkgdir/usr/bin/${pkgname/-git/}"
-	install -d "$pkgdir/usr/lib/uwufetch"
-	install res/* "$pkgdir/usr/lib/uwufetch"
-	install -D "${pkgname/-git/}.1.gz" "$pkgdir/usr/share/man/man1/${pkgname/-git}.1.gz"
+	export DESTDIR="$pkgdir"
+	mkdir -p $pkgdir/usr/bin
+	mkdir -p $pkgdir/usr/lib
+	mkdir -p $pkgdir/usr/share/man/man1/
+	make install
 }
