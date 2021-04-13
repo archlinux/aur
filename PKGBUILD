@@ -1,13 +1,13 @@
 # Maintainer: Clansty <i@gao4.pw>
 pkgname=electron-qq
-pkgver=1.4.3_rc
-pkgrel=5
+pkgver=1.4.4
+pkgrel=1
 pkgdesc='A cross-platform QQ made with Electron'
 license=('GPL')
-depends=('electron11')
+depends=('electron12')
 optdepends=('mongodb-bin: provides faster storage')
 arch=('any')
-source=("app-${pkgver}.asar::https://files.catbox.moe/ru6knp.asar"
+source=("app-${pkgver}.asar::https://files.catbox.moe/oq5f7y.asar"
         512x512.png
         ${pkgname}.desktop
         ${pkgname})
@@ -19,7 +19,7 @@ package() {
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 } 
 
-md5sums=('3a3e9ae94b518049d5f2cd3e26601c70'
+md5sums=('baea94885e10ac6843132fd155d967a0'
          'f6edfa276c96b746048458413b8c26ce'
          '77bdf165bded76c2bac542402e8fe35c'
-         '7e7d23fb2905bc45943f5bcc67d1d1e2')
+         'fa0e38c1bf689edcc75a9a3335a6be18')

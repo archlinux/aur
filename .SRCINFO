@@ -1,19 +1,19 @@
 pkgbase = electron-qq
 	pkgdesc = A cross-platform QQ made with Electron
-	pkgver = 1.4.3_rc
-	pkgrel = 5
+	pkgver = 1.4.4
+	pkgrel = 1
 	arch = any
 	license = GPL
-	depends = electron11
+	depends = electron12
 	optdepends = mongodb-bin: provides faster storage
-	source = app-1.4.3_rc.asar::https://files.catbox.moe/ru6knp.asar
+	source = app-1.4.4.asar::https://files.catbox.moe/oq5f7y.asar
 	source = 512x512.png
 	source = electron-qq.desktop
 	source = electron-qq
-	md5sums = 3a3e9ae94b518049d5f2cd3e26601c70
+	md5sums = baea94885e10ac6843132fd155d967a0
 	md5sums = f6edfa276c96b746048458413b8c26ce
 	md5sums = 77bdf165bded76c2bac542402e8fe35c
-	md5sums = 7e7d23fb2905bc45943f5bcc67d1d1e2
+	md5sums = fa0e38c1bf689edcc75a9a3335a6be18
 
 pkgname = electron-qq
 
