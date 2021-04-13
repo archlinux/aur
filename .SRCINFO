@@ -1,7 +1,7 @@
 pkgbase = kermit
 	pkgdesc = A VTE-based, simple and froggy terminal emulator
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orhun/kermit
 	arch = x86_64
 	license = GPL3
