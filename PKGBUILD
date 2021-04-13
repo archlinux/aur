@@ -1,9 +1,9 @@
-# Maintainer: Audrey Baxter <baxtea [ at ] pm.me>
+# Maintainer: Wren Baxter <baxtea [ at ] pm.me>
 
 pkgname=raven-reader-bin
 _pkgname=raven-reader
 urlname=Raven-Reader
-pkgver=1.0.48
+pkgver=1.0.49
 pkgrel=1
 pkgdesc="Simple RSS Reader app made using electron and vue.js"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/hello-efficiency-inc/${_pkgname}/releases/download/v${pkgver}/${urlname}-${pkgver}.AppImage")
-md5sums=('6974059c5bffc6498c58d16d065a5574')
+md5sums=('8b8ab51e2dc28c860a329a9162f6242b')
 
 package() {
   # Extract AppImage
