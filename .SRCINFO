@@ -1,0 +1,20 @@
+pkgbase = benthos-git
+	pkgdesc = Declarative stream processing for mundane tasks and data engineering.
+	pkgver = r2530.cfec958f
+	pkgrel = 1
+	url = https://benthos.dev
+	arch = aarch64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = benthos
+	conflicts = benthos
+	source = benthos::git+https://github.com/Jeffail/benthos.git#branch=master
+	sha256sums = SKIP
+
+pkgname = benthos-git
+
