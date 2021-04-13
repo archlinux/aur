@@ -7,8 +7,8 @@ pre_install() {
 
 	pkill -x "mullvad-gui" || true
 
-	rm -f /var/cache/mullvad-vpn/relays.json || true
-	rm -f /var/cache/mullvad-vpn/api-ip-address.txt || true
+	rm -f /var/cache/mullvad-vpn/relays.json
+	rm -f /var/cache/mullvad-vpn/api-ip-address.txt
 }
 
 post_install() {

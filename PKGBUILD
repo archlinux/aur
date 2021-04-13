@@ -5,22 +5,21 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2021.2
-_channel=stable
-pkgver=${_pkgver}.${_channel}
-pkgrel=4
+_pkgver=2021.3
+_channel=beta
+pkgver=${_pkgver}.${_channel}1
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss' 'resolvconf')
-makedepends=('git' 'go' 'rust' 'npm' 'python')
-optdepends=('networkmanager: create Wireguard interface')
+depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
+makedepends=('git' 'go' 'rust' 'nodejs>=12' 'npm>=6.12' 'python')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
+_commit='2063422c167c874eceab10692d4385a0c40b3f47'
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -32,7 +31,6 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 prepare() {
-	# Point the submodule to our local copy
 	cd "$srcdir/mullvadvpn-app"
 	git submodule init dist-assets/binaries
 	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
@@ -58,7 +56,7 @@ build() {
 	echo "Building Mullvad VPN $PRODUCT_VERSION..."
 
 	echo "Updating version in metadata files..."
-	./version-metadata.sh inject $PRODUCT_VERSION
+	./version-metadata.sh inject $PRODUCT_VERSION --desktop
 
 	echo "Building wireguard-go..."
 	pushd wireguard/libwg
@@ -110,7 +108,7 @@ build() {
 	# Build Electron GUI app
 	pushd gui
 	echo "Installing JavaScript dependencies..."
-	npm ci --no-optional --cache "$srcdir/npm-cache"
+	npm ci --cache "$srcdir/npm-cache"
 	echo "Packing final release artifact..."
 	npm run pack:linux
 	popd
