@@ -3,16 +3,17 @@
 pkgname=python-auto-changelog
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Generates changelogs for git repositories using conventional style commit messages"
 arch=('any')
 url="https://github.com/Michael-F-Bryan/auto-changelog"
 license=('MIT')
 depends=('python-jinja' 'python-gitpython' 'python-docopt' 'python-click')
 makedepends=('python-dephell')
+checkdepends=('python-pytest' 'python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('ba8db56292d62cacc81e8559eb74900e0f3b3994a996c19517417a7f8cb477cb6510dc994d2ce24ea9de17fd1f3ab2221458ee14920ba42b313f96f8a0b549eb')
+b2sums=('ebac96acd5dc1abc318e6bdc492277b73aee8cbed750ecec002ad1777be5d9e013f52d8d42083691cad323e75486406ed9e895d283a688fa754f9362a42debbe')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -22,6 +23,11 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
   python setup.py build
+}
+
+check() {
+  cd "$_pkgname-$pkgver"
+  python setup.py pytest
 }
 
 package() {
