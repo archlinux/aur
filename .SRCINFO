@@ -1,18 +1,18 @@
 pkgbase = bee-git
 	pkgdesc = A framework for IOTA nodes, clients and applications in Rust
 	pkgver = 0.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/iotaledger/bee
 	install = bee.install
 	arch = x86_64
 	license = Apache
-	depends = rustup
-	depends = npm
-	depends = clang
-	depends = llvm
-	depends = cmake
+	makedepends = rustup
+	makedepends = npm
+	makedepends = clang
+	makedepends = llvm
+	makedepends = cmake
+	makedepends = git
 	depends = openssl
-	depends = git
 	backup = etc/bee/config.toml
 	source = git://github.com/iotaledger/bee.git#branch=chrysalis-pt-2
 	source = bee.service

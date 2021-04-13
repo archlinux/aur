@@ -3,12 +3,13 @@ pkgname="bee-git"
 _pkgname="bee"
 _branch="chrysalis-pt-2"
 pkgver="0.1.0"
-pkgrel="8"
+pkgrel="9"
 pkgdesc="A framework for IOTA nodes, clients and applications in Rust"
 arch=('x86_64')
 url="https://github.com/iotaledger/bee"
 license=("Apache")
-depends=('rustup' 'npm' 'clang' 'llvm' 'cmake' 'openssl' 'git')
+depends=('openssl')
+makedepends=('rustup' 'npm' 'clang' 'llvm' 'cmake' 'git')
 source=("git://github.com/iotaledger/$_pkgname.git#branch=$_branch"
 	"$_pkgname.service")
 sha256sums=('SKIP'
