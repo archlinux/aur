@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/opt/Lin-HaBu/Lin-HaBu
+Type=Application
+Terminal=false
+Icon=/opt/Lin-HaBu/Lin-HaBu Resources/appicon_128.png
+Categories=Office;Finance;
+Name=Lin-HaBu
+GenericName=Lin-HaBu
