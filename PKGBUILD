@@ -6,7 +6,7 @@ pkgbase=qubes-core-agent-linux
 pkgname=(qubes-vm-core qubes-vm-networking qubes-vm-keyring)
 _gitname=${pkgname%-git*}
 pkgver=4.0.61
-pkgrel=15
+pkgrel=16
 pkgdesc="The Qubes core files for installation inside a Qubes VM."
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-core-agent-linux"
@@ -55,6 +55,9 @@ build() {
     # Fix for archlinux sbindir
     sed 's:/usr/sbin/ntpdate:/usr/bin/ntpdate:g' -i qubes-rpc/sync-ntp-clock
     sed 's:/usr/sbin/qubes-firewall:/usr/bin/qubes-firewall:g' -i vm-systemd/qubes-firewall.service
+
+    # Remove SELinux specific options from sudoers file
+    sed 's:ROLE=unconfined_r TYPE=unconfined_t::g' -i misc/qubes.sudoers
 
     for dir in qubes-rpc qrexec misc; do
         make BACKEND_VMM="${qubes_backend_vmm}" -C "$dir"
