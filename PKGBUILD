@@ -5,8 +5,8 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.8.3.r51.g0299a5a0
-pkgrel=2
+pkgver=0.5.8.3.r100.g8251c4f6
+pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
@@ -31,7 +31,8 @@ optdepends=(
   'python-pypresence: Discord RPC and Rich Presence'
   'gamemode: Allows games to request a temporary set of optimisations'
   "mangohud: Display the games' FPS + other information"
-  "lib32-mangohud: Display the games' FPS + other information")
+  "lib32-mangohud: Display the games' FPS + other information"
+  'innoextract: Extract Inno Setup installers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')
