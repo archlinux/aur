@@ -1,4 +1,4 @@
-pkgbase = zookeeper
+pkgbase = zookeeper-stable
 	pkgdesc = Open-source server which enables highly reliable distributed coordination
 	pkgver = 3.6.2
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = zookeeper
 	backup = etc/zookeeper/configuration.xsl
 	backup = etc/zookeeper/log4j.properties
 	backup = etc/zookeeper/zoo.cfg
-	source = https://artfiles.org/apache.org///zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz
+	source = https://artfiles.org/apache.org///zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz
 	source = systemd_zookeeper.service
 	source = systemd_zookeeper@.service
 	source = systemd_sysusers.d_zookeeper.conf
@@ -21,5 +21,5 @@ pkgbase = zookeeper
 	sha256sums = e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa
 	sha256sums = 99fff5b04623889b0010c74c2dc3a4be29e7770fe2c7e15da51f7442a28c6580
 
-pkgname = zookeeper
+pkgname = zookeeper-stable
 
