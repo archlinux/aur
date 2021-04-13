@@ -1,0 +1,21 @@
+pkgbase = benthos
+	pkgdesc = Declarative stream processing for mundane tasks and data engineering.
+	pkgver = 3.44.0
+	pkgrel = 1
+	url = https://benthos.dev
+	arch = aarch64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = benthos
+	conflicts = benthos
+	source = benthos-3.44.0.tar.gz::https://github.com/Jeffail/benthos/archive/v3.44.0.tar.gz
+	sha256sums = c7cc44f2361fda9691c2efe74dbea54f577ce49798e4180ba9585173672e6634
+	sha512sums = 659014ff78f92b8858f0c25cb8809ede5b337a157300f4da1153f541f5e697abe1c98827ce1eddaf5565cff4e69173b5394972545bd65e4decbcbf5f55af07ff
+	b2sums = 3c1e1cb245f792e429465b530b1604d52cf2a2c2896fef337206db049b70fdda75bde23ec83faf7ec55757b38dfedec5615a499561138678f12cead35053a92c
+
+pkgname = benthos
+
