@@ -1,7 +1,7 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=cesium-editor
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A bare bones text editor"
 arch=('i686' 'x86_64')
