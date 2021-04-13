@@ -1,13 +1,13 @@
 # Maintainer: Darkpelz <lukeh@outlook.my>
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch-git
-pkgver=1.2.r0.g42e7123
+pkgver=1.2.r20.geb2471b
 pkgrel=1
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
 url="https://github.com/TheDarkBug/${pkgname/-git/}"
 license=('GPL3')
-makedepends=("gcc")
+makedepends=('gcc' 'pandoc')
 optdepends=("viu: Display distro logos as images"
 			"lshw: Better GPU detection")
 conflicts=('uwufetch')
@@ -26,7 +26,8 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -D "uwufetch" "$pkgdir/usr/bin/uwufetch"
+	install -D "${pkgname/-git/}" "$pkgdir/usr/bin/${pkgname/-git/}"
 	install -d "$pkgdir/usr/lib/uwufetch"
 	install res/* "$pkgdir/usr/lib/uwufetch"
+	install -D "${pkgname/-git/}.1.gz" "$pkgdir/usr/share/man/man1/${pkgname/-git}.1.gz"
 }
