@@ -1,6 +1,6 @@
 # Maintainer: amtoaer <amtoaer@gmail.com>
 pkgname=ipgw-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 # update from 1.3.0 to 0.1.1
 epoch=1
@@ -15,7 +15,7 @@ source=(
 )
 
 md5sums=(
-	'dd3b216d5ef567b9220ad0619e57dd52'
+	'37bc1b00b3b68706b0b15a8ecf31d9f1'
 	'82fc1432415e7f3a2581dff2acb762e5'
 )
 
