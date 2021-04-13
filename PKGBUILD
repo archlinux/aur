@@ -14,7 +14,7 @@ license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-svg" "qt5-x11extras" "curl" "gtk-update-icon-cache")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
-             "vlc" "swig" "luajit" "python" "cef-minimal-3770")
+             "vlc" "swig" "luajit" "python" "cef-minimal>=87.0.0")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "jack: JACK Support"
