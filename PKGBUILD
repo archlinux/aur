@@ -1,7 +1,7 @@
 # Maintainer: Max Struebing <mxstrbng@gmail.com>
 
 pkgname=dotenv-linter-git
-pkgver=1.1.0.r4.g61ff93d
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Linter for .env files. Written in Rust"
 arch=(any)
@@ -12,11 +12,6 @@ makedepends=('git' 'cargo')
 source=("git+$url")
 md5sums=('SKIP')
 provides=('dotenv-linter')
-
-pkgver() {
-    cd "$srcdir/dotenv-linter" || exit
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
-}
 
 build() {
     cd "$srcdir/dotenv-linter" || exit
