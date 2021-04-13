@@ -2,8 +2,8 @@
 
 _pkgname=awesome-freedesktop
 pkgname=$_pkgname-git
-pkgcom=109
-pkgsha=b77dee0
+pkgcom=110
+pkgsha=9829df1
 pkgver=$pkgcom.$pkgsha
 pkgrel=5
 pkgdesc="Freedesktop.org compliant desktop entries and menu for Awesome WM"
