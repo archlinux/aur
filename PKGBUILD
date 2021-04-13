@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-bin
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
@@ -24,16 +24,16 @@ source_aarch64=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_arm64.tar.gz"
 )
 sha256sums_x86_64=(
-  305886f1af82023b16aea091b3a7c2939a79b16d59edc8cea0d372aea41ee762
+  f77477ac5852868f238d95af7bf8ce582ef6e3257a0f9c46f4adcbeba7433e3c
 )
 sha256sums_armv6h=(
-  9768cc1a662931a758c64294b734cab0cebbc8d73a726e5855ccf4297f9e0a95
+  582c5ac49ae24266a90b2e279a3bfa91cea1c507aa9a8c44c891442e8f3475d9
 )
 sha256sums_armv7h=(
-  9768cc1a662931a758c64294b734cab0cebbc8d73a726e5855ccf4297f9e0a95
+  582c5ac49ae24266a90b2e279a3bfa91cea1c507aa9a8c44c891442e8f3475d9
 )
 sha256sums_aarch64=(
-  3c5717c75a858e69d3d31fefaaa917935b9dfb6616cc9a70873cf10d91be94ae
+  da032596fa2240aeed165c7d014e29a585105f0c3475ab177fb5aacc5022c699
 )
 _srcname=flux
 
