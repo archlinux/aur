@@ -9,6 +9,7 @@ url="https://www.natfrp.com/"
 license=('custom')
 provides=('sakura-frpc' 'natfrp')
 source=(LICENSE::'https://www.natfrp.com/policy/'
+        "frpc.ini"
         "${pkgname}c.service"
         "${pkgname}c@.service"
         "${pkgname}c-f@.service")
@@ -22,9 +23,10 @@ source_aarch64=(${pkgname}-${pkgver}-aarch64::"https://azure.globalslb.net/frp/$
 # => strip: error: the input file './usr/bin/sakura-frpc' has no sections
 options=('!strip')
 md5sums=('SKIP'
-         '4fb2a7fdc3abaa441385e7598d60362a'
-         'f0a1b91d07a50785b2500b16c730bf9a'
-         '37b14750055c7c04ce7c3e80fa3894d3')
+         '217dc59018558a2ae6fcb98da968b022'
+         '2a0bc53302d2ab06b2bcee826d10c727'
+         '136ace6ea106819f10ee785b56825e4e'
+         '69b510ef3fda703cd749473ffd506bfc')
 md5sums_x86_64=('ec03ac70fa11438151191b367f0ee7e1')
 md5sums_i686=('9020882124b07c7ab99222de7a4af772')
 md5sums_aarch64=('39f07e2d5ae0f3655673dccca9484a19')
@@ -35,8 +37,7 @@ package() {
   install -Dm755 ${pkgname}-${pkgver}-${CARCH} ${pkgdir}/usr/bin/${pkgname}c
 
   # frpc.ini
-  install -dm755 ${pkgdir}/etc/${pkgname}
-  touch ${pkgdir}/etc/${pkgname}/frpc.ini
+  install -Dm644 ${srcdir}/frpc.ini -t ${pkgdir}/etc/${pkgname}/
 
   # systemd service
   install -Dm644 ${pkgname}c.service -t ${pkgdir}/usr/lib/systemd/system/

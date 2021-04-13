@@ -8,7 +8,7 @@ After=network-online.target
 Type=simple
 DynamicUser=yes
 Restart=on-failure
-RestartSec=5s
+RestartSec=60s
 ExecStart=/usr/bin/sakura-frpc -c /etc/sakura-frp/frpc.ini
 ExecReload=/usr/bin/sakura-frpc reload -c /etc/sakura-frp/frpc.ini
 
