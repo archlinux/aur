@@ -1,16 +1,14 @@
 # Maintainer: Kazuki Yamaguchi <k@rhe.jp>
 
 pkgname=cproto
-pkgver=4.7o
+pkgver=4.7s
 pkgrel=1
-pkgdesc="Cproto is a program that generates function prototypes and variable declarations from C source code."
+pkgdesc="A program that generates function prototypes and variable declarations from C source code."
 arch=('i686' 'x86_64')
 url="http://invisible-island.net/cproto/cproto.html"
 license=('custom:public domain')
-depends=()
-makedepends=()
-source=("ftp://ftp.invisible-island.net/pub/cproto/cproto-4.7o.tgz")
-sha256sums=('c76b0b72064e59709459bb7d75d6ec929f77ce5ae7f2610d169ba0fa20ccb44f')
+source=("ftp://ftp.invisible-island.net/pub/cproto/cproto-${pkgver}.tgz")
+sha256sums=('842f28a811f58aa196b77763e08811c2af00472c0ea363d397a545046d623545')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -25,5 +23,5 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
