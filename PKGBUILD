@@ -5,13 +5,13 @@
 pkgbase=python-pyelftools-git
 pkgname=('python2-pyelftools-git' 'python-pyelftools-git')
 _pkgname=pyelftools
-pkgver=v0.24.r45.gc1f9021
+pkgver=v0.27.r7.g46187f4
 pkgrel=1
 pkgdesc='Python library for analyzing ELF files and DWARF debugging information'
 url='https://github.com/eliben/pyelftools'
 arch=('any')
 license=('custom:Public Domain')
-makedepends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
 options=('!strip')
 source=('git+https://github.com/eliben/pyelftools.git')
 sha512sums=('SKIP')
