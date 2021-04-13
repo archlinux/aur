@@ -3,7 +3,7 @@
 
 pkgname=kotatogram-desktop-bin
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
-pkgver=1.3.9
+pkgver=1.4
 pkgrel=1
 url="https://github.com/kotatogram/kotatogram-desktop"
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=('xdg-desktop-portal: for native file dialogs, do not forget to insta
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-dynamic-bin')
 provides=('kotatogram-desktop')
 
-source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver.tar.xz
+source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver-appimage.tar.xz
         https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
         icon16-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon16.png
         icon32-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon32.png
@@ -28,7 +28,7 @@ source=($pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver.tar.xz
         icon256-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon256.png
         icon512-$pkgver.png::$url/raw/k$pkgver/Telegram/Resources/art/icon512.png)
 
-sha512sums=('31c3d4a39bfe6ab2c465a81f831b35a344e93aafa300172a1a243fd3fd0bef29b07d6cd4fbf986bb422e4be40632579c876928c107d9cf66545244ae7ac19a0a'
+sha512sums=('febda3c775f5e0850e68b26af13c279592e35eaf2a3f09ff67bb71defd884f13cf6c1e21d794bd51415e5a7867fa372ad1fb1d0f5d0440cd809dfbb178c903e8'
             'e9f0d9174f43cf30b8dc982ce898f5330152cf4d8da03f6e99bd409f6caee7a93f05121d9acdac4ead0c0ef3dfc82ba597b670deac43fe17d08dc221e01e463a'
             '89bb399142ec968a1c9d96e7e3639036aa8d70968c89c6d2b77def5ea6cbb0d88de8b3c8bb10f457600cdd4c7926d7f8ff9907f511aaaac832b218c9353c4b50'
             'facff9860ebb15045e6c7fb6483317c2319bea8b256cbc0986a252863ccedd80e1cf1e4c81a259b303651b450371b1daaf9f61be26129296b71c58ed08644cf9'
@@ -44,17 +44,17 @@ package() {
   install -dm755 "$pkgdir/usr/share/pixmaps/"
   install -dm755 "$pkgdir/usr/share/applications/"
   install -dm755 "$pkgdir/etc/kotatogram-desktop"
-  
+
   # Disable build in updater
   echo "/usr/bin/kotatogram-desktop" > "$pkgdir/etc/kotatogram-desktop/externalupdater"
-  
+
   # Program
   install -Dm755 "$srcdir/Kotatogram/Kotatogram" "$pkgdir/usr/bin/kotatogram-desktop"
-  
+
   # Desktop launcher
   install -Dm644 "$srcdir/icon256-$pkgver.png" "$pkgdir/usr/share/pixmaps/kotatogram.png"
   install -Dm644 "$srcdir/kotatogramdesktop.desktop" "$pkgdir/usr/share/applications/kotatogramdesktop.desktop"
-  
+
   # Icons
   local icon_size icon_dir
   for icon_size in 16 32 48 64 128 256 512; do
