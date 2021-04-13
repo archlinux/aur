@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=xplr-git
-pkgver=0.4.2.r3.gea42b19
+pkgver=0.4.3.r0.gaf1cda5
 pkgrel=1
 pkgdesc="A hackable, minimal, fast TUI file explorer (git)"
 arch=('x86_64')
@@ -35,5 +35,6 @@ package() {
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 src/config.yml -t "$pkgdir/usr/share/$pkgname/examples"
+  install -Dm 644 src/config.yml -t "$pkgdir/usr/share/${pkgname%-git}/examples"
+  install -Dm 644 "${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
 }
