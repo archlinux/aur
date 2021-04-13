@@ -3,7 +3,7 @@
 
 pkgname=guacamole-server
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
@@ -21,9 +21,16 @@ optdepends=('libssh: for ssh protocol support'
 )
 install=$pkgname.install
 
-source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz")
+source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
+        "https://github.com/apache/guacamole-server/commit/b2ae2fdf003a6854ac42877ce0fce8e88ceb038a.patch")
  
-md5sums=('5203866c9de4e8c064b19a56a95599c6')
+md5sums=('5203866c9de4e8c064b19a56a95599c6'
+         '166e637d961e691f29b298c211ee2fd5')
+
+prepare() {
+    cd "$srcdir"/$pkgname-$pkgver
+    patch -Np1 -i ../b2ae2fdf003a6854ac42877ce0fce8e88ceb038a.patch
+}
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
