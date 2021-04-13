@@ -1,7 +1,7 @@
 # Maintainer: Carlos Galindo < arch -at - cgj.es >
 _appname=notify_push
 pkgname=nextcloud-app-notify_push
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Update notifications for nextcloud clients"
 arch=("x86_64")
@@ -46,3 +46,5 @@ package() {
     install -m 755 -Dt "$_appdir/bin/$CARCH/" target/release/notify_push
     install -m 644 -Dt "$pkgdir/usr/lib/systemd/system/" "$srcdir/$pkgname.service"
 }
+sha512sums=('f0aa285db50e054ebd76bd90d9dc0f3f1e8e4455e253c87e8698479dac9fd2b68751861da02eaa6ff207b89e5dfd3ecfa1b6d00fe8a8a2ad9445a4540a5a9ee7'
+            '1fe68df3a84770dfc708f1ad8fdf8077e45ea08e5312a5efbe5c4baa310bd4f926e793825c259a31398dc29dbf76ec47943d60aa386f9d64d880737be4004c16')
