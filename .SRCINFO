@@ -1,0 +1,16 @@
+pkgbase = gitswitch
+	pkgdesc = Simple rofi script to switch git users
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/clockworks2/gitswitch.git
+	arch = x86_64
+	license = None
+	depends = python3
+	depends = rofi
+	depends = git
+	depends = libnotify
+	source = git+https://gitlab.com/clockworks2/gitswitch
+	md5sums = SKIP
+
+pkgname = gitswitch
+
