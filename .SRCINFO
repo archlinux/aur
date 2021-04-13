@@ -1,7 +1,7 @@
 pkgbase = infinitywallet
 	pkgdesc = Digital asset wallet
-	pkgver = 1.0.67beta
-	pkgrel = 5
+	pkgver = 1.0.68beta
+	pkgrel = 6
 	url = https://infinitywallet.io
 	install = infinitywallet.install
 	arch = x86_64
@@ -44,8 +44,8 @@ pkgbase = infinitywallet
 	depends = zlib
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/InfinityWallet/Releases/releases/download/v1.0.67-beta/InfinityWallet_1.0.67-beta_amd64.deb
-	sha512sums_x86_64 = 49a67187138c64924af26adf6e36e862550c314c94d5564b0086be0b13255326e7ef2ec8242c8d1f47b58b9e8bdb7c620b57f42ad3bf226405603ed5be6c2357
+	source_x86_64 = https://github.com/InfinityWallet/Releases/releases/download/v1.0.68-beta/InfinityWallet_1.0.68-beta_amd64.deb
+	sha512sums_x86_64 = eadf47d855ae4f6715b2af02128454c927834582d2346003edf2a3679370fe9f847f945f6ca1e03f3457ea773487c31e4c1c427a810dd19dfce31506c81fb3a0
 
 pkgname = infinitywallet
 
