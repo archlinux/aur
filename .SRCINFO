@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-remove-dropdown-arrows
 	pkgdesc = Removes the dropdown arrows from the AppMenu and SystemMenu
 	pkgver = 13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows
 	install = gnome-shell-extension-remove-dropdown-arrows.install
 	arch = any

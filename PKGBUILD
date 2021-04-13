@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-remove-dropdown-arrows
 pkgver=13
-pkgrel=1
+pkgrel=2
 pkgdesc="Removes the dropdown arrows from the AppMenu and SystemMenu"
 arch=('any')
 url="https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows"
@@ -19,6 +19,9 @@ package() {
 
   install -Dm644 extension.js -t "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
   install -Dm644 metadata.json -t "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+  
+  # Remove this line whe gnome 40 compatible version is released (if ever)
+  sed -i 's/"3.34"/"3.34", "40"/g' "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
 }
 
 # vim:set ts=2 sw=2 et:
