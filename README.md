@@ -56,5 +56,5 @@ http
 ```
 
 ## Required services
-1. `sudo systemctl start mariadb.service;sudo systemctl enable mariadb.service`
-2. `sudo systemctl start php-fpm.service;sudo systemctl enable php-fpm.service`
+1. mariadb.service
+2. php-fpm.service
