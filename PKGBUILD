@@ -1,4 +1,5 @@
 # Maintainer: Chocopwowwa <chocopowwwa@gmail.com>
+# Contributor: Rafed Ramzi <rafedramzi@gmail.com>
 
 pkgname=sweet-theme-ambar
 _pkgname=Sweet-Ambar
