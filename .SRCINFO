@@ -1,12 +1,14 @@
 pkgbase = pactest-git
 	pkgdesc = Test AUR software in a chroot
-	pkgver = 0.1
+	pkgver = r1.03ad09f
 	pkgrel = 1
 	url = https://github.com/mcotocel/pactest
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = arch-install-scripts
-	source = git://github.com/mcotocel/pactest
+	depends = wget
+	source = git+https://github.com/mcotocel/pactest
 	sha1sums = SKIP
 
 pkgname = pactest-git
