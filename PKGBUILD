@@ -3,11 +3,11 @@
 _pkg='keyleds'
 
 pkgname="$_pkg-git"
-pkgver=r290.4917e04
+pkgver=r295.1713616
 pkgrel=1
-pkgdesc="Advanced RGB LED driver/controller for G410, G513, G610, G810, G910 and GPro"
+pkgdesc='Advanced RGB LED driver/controller for G410, G513, G610, G810, G910 and GPro'
 arch=('i686' 'x86_64')
-url="https://github.com/spectras/keyleds"
+url='https://github.com/spectras/keyleds'
 license=('GPL3')
 depends=(
   'libuv'
@@ -22,7 +22,8 @@ makedepends=(
   'cmake>=3.0'
 )
 backup=('etc/keyledsd.conf')
-conflicts=('keyleds')
+provides=("$_pkg")
+conflicts=("$_pkg")
 source=("git+https://github.com/spectras/$_pkg.git")
 sha256sums=('SKIP')
 
@@ -34,7 +35,7 @@ pkgver() {
 build() {
   cd "$_pkg/build"
   cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib ..
-  make 
+  make
   gzip -9 ../keyledsd/keyledsd.1 -c > keyledsd.1.gz
   gzip -9 ../keyledsctl/keyledsctl.1 -c > keyledsctl.1.gz
 }
