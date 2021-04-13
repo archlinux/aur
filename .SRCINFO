@@ -1,0 +1,30 @@
+pkgbase = ros-noetic-geodesy
+	pkgdesc = ROS - Python and C++ interfaces for manipulating geodetic coordinates.
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = http://wiki.ros.org/geodesy
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-uuid-msgs
+	makedepends = ros-noetic-tf
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-unique-id
+	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-geographic-msgs
+	makedepends = ros-noetic-angles
+	makedepends = ros-noetic-catkin
+	makedepends = python-catkin_pkg
+	depends = ros-noetic-uuid-msgs
+	depends = ros-noetic-tf
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-unique-id
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-geographic-msgs
+	depends = python-pyproj
+	source = ros-noetic-geodesy-0.5.5-0.tar.gz::https://github.com/ros-geographic-info/geographic_info-release/archive/release/noetic/geodesy/0.5.5-0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ros-noetic-geodesy
+
