@@ -12,7 +12,7 @@ pkgbase = cesium-editor
 	depends = gcc-libs
 	depends = glibc
 	conflicts = cesium-editor-git
-	source = https://gitlab.com/NoahJelen/cesium/-/archive/0.1.1/cesium-0.1.1.zip
+	source = https://gitlab.com/NoahJelen/cesium/-/archive/0.1.2/cesium-0.1.2.zip
 	md5sums = SKIP
 
 pkgname = cesium-editor
