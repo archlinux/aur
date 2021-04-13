@@ -1,7 +1,7 @@
 # Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
 pkgname=bootsplash-manager-bin
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Simple bootsplash manager"
 url="https://github.com/ANDRoid7890/bootsplash-manager"
@@ -10,12 +10,13 @@ license=(GPL3)
 depends=('qt5-base'
          'bootsplash-systemd'
          'polkit'
-         'pamac')
+         'pamac'
+         'sdl2')
 conflicts=('bootsplash-manager')
 
 source=("https://github.com/ANDRoid7890/bootsplash-manager/releases/download/$pkgver/bootsplash-manager.tar.gz")
 
-md5sums=('4a80fdae1c40665e342814f500cc91ee')
+md5sums=('33e4fccc6917c24b5682e406ac6caec8')
 
 package() {
     install -Dm755 bootsplash-manager "$pkgdir/usr/bin/bootsplash-manager"

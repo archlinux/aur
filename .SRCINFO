@@ -1,6 +1,6 @@
 pkgbase = bootsplash-manager-bin
 	pkgdesc = Simple bootsplash manager
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/ANDRoid7890/bootsplash-manager
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = bootsplash-manager-bin
 	depends = bootsplash-systemd
 	depends = polkit
 	depends = pamac
+	depends = sdl2
 	conflicts = bootsplash-manager
-	source = https://github.com/ANDRoid7890/bootsplash-manager/releases/download/1.5/bootsplash-manager.tar.gz
-	md5sums = 4a80fdae1c40665e342814f500cc91ee
+	source = https://github.com/ANDRoid7890/bootsplash-manager/releases/download/1.6/bootsplash-manager.tar.gz
+	md5sums = 33e4fccc6917c24b5682e406ac6caec8
 
 pkgname = bootsplash-manager-bin
 
