@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
@@ -17,7 +17,8 @@ depends=("python"
         "gtk3"
         "python-setuptools"
         "python-gobject")
-makedepends=("fakeroot")
+makedepends=("fakeroot"
+        "gettext")
 checkdepends=()
 optdepends=('slop: improved region and window selection'
             'xclip: command line clipboard support'
@@ -30,7 +31,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('d375ce73645e49f53de4b13554c1227734da7314b3c3161264d8c4772ccd9ff0')
+sha256sums=('d707d763236d397079a5c3063754fe2be0391513b1b448cb0b92c2a5aef8ba63')
 validpgpkeys=()
 
 prepare() {
