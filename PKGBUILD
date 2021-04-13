@@ -40,13 +40,11 @@ build() {
 }
 
 package() {
-	# Make directorys	
-	mkdir -p ${pkgdir}/usr/bin/ ${pkgdir}/var/lib/bee/ ${pkgdir}/etc/bee/ ${pkgdir}/usr/lib/systemd/system/
 
-	# Move files	
-	mv ${srcdir}/bee/target/release/bee ${pkgdir}/usr/bin/
-	mv ${srcdir}/bee/bee-node/config.example.toml ${pkgdir}/etc/bee/config.toml
-
+	# Install files
+	install -Dm600 ${srcdir}/bee/bee-node/config.example.toml ${pkgdir}/etc/bee/config.toml
+	install -D ${srcdir}/bee/target/release/bee ${pkgdir}/usr/bin/bee
+	
 	# Install systemd service
-	mv ${srcdir}/bee.service ${pkgdir}/usr/lib/systemd/system/
+	install -D ${srcdir}/bee.service ${pkgdir}/usr/lib/systemd/system/bee.service
 }
