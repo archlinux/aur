@@ -3,7 +3,7 @@
 pkgname=firedragon-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=89.0a1.r642117+
+pkgver=89.0a1.r643517+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled - binary version"
 arch=(x86_64 aarch64)
