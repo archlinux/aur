@@ -2,12 +2,12 @@
 
 pkgname=telegrand-git
 pkgver=r67.f029e11
-pkgrel=2
+pkgrel=3
 pkgdesc='A GTK4 telegram client built to be well integrated with the GNOME desktop environment.'
 arch=('x86_64' 'i686')
 url='https://github.com/melix99/telegrand'
-depends=('gtk4')
-makedepends=('git' 'rust' 'meson' 'libadwaita')
+depends=('gtk4' 'libadwaita')
+makedepends=('git' 'rust' 'meson')
 license=('GPL3')
 source=('git+https://github.com/melix99/telegrand.git')
 sha512sums=('SKIP')
