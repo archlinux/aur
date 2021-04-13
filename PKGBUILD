@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=cryptsetup-gui
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple GUI for unlocking LUKS encrypted devices"
 arch=('any')
@@ -26,6 +26,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 "README.md" "$pkgdir/usr/share/licenses/cryptsetup-gui/README.md"
 }
 
 # vim:set ts=2 sw=2 et:

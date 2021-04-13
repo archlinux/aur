@@ -1,7 +1,7 @@
 pkgbase = cryptsetup-gui
 	pkgdesc = Simple GUI for unlocking LUKS encrypted devices
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonhoo/cryptsetup-gui
 	install = cryptsetup-gui.install
 	arch = any
