@@ -1,8 +1,8 @@
 # Maintainer: Haonan Chen <g897331845@gmail.com>
 
 pkgname=dnsmasq-regex
-_commit='b150a80'
-pkgver=2.85.${_commit}
+_commit='74aee42'
+pkgver=2.85.regex2
 pkgrel=1
 pkgdesc='Lightweight, easy to configure DNS forwarder and DHCP server, with regex support'
 url='https://github.com/lixingcong/dnsmasq-regex'
@@ -14,9 +14,9 @@ makedepends=('git')
 depends=('glibc' 'gmp' 'libidn2' 'libidn2.so' 'libdbus' 'libdbus-1.so'
          'libnetfilter_conntrack' 'nettle' 'libnettle.so' 'libhogweed.so')
 backup=('etc/dnsmasq.conf')
-source=("git+https://github.com/lixingcong/dnsmasq-regex.git"
+source=("git+https://github.com/lixingcong/dnsmasq-regex.git#commit=$_commit"
         "Makefile.patch"
-        "git://thekelleys.org.uk/dnsmasq.git"
+        "git://thekelleys.org.uk/dnsmasq.git#tag=v2.85"
         'dnsmasq-sysusers.conf'
         'dnsmasq.service')
 sha256sums=('SKIP'
