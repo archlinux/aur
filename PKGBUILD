@@ -3,12 +3,12 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xkeyboard-config-bbkt-git
-pkgver=2.31.r41.gb4c07551
+pkgver=2.32.r5.gcadc98f5
 pkgrel=1
-pkgdesc="XKB configuration files with DreymaR's Big Bag patches applied (Colemak)"
+pkgdesc="Upstream XKB configuration files patched with DreymaR's Big Bag mods (Colemak)"
 arch=(any)
 license=('custom')
-url="https://forum.colemak.com/topic/1438-dreymars-big-bag-of-keyboard-tricks-linuxxkb-files-included"
+url="https://github.com/SeerLite/xkeyboard-config-bbkt"
 makedepends=('intltool' 'xorg-xkbcomp' 'libxslt' 'python' 'git' 'xorg-server-devel')
 provides=('xkbdata' 'xkeyboard-config')
 replaces=('xkbdata')
