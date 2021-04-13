@@ -1,9 +1,9 @@
 diff --git a/hack/build.sh b/hack/build.sh
-index b04378ad..d6f320d1 100755
+index d5492887..e78ac8d3 100755
 --- a/hack/build.sh
 +++ b/hack/build.sh
-@@ -51,22 +51,13 @@ if [[ -z "${GIT_TREE_STATE}" ]]; then
-     exit 1
+@@ -56,9 +56,9 @@ if [[ ${DEBUG:-} = "1" ]]; then
+     GCFLAGS="all=-N -l"
  fi
 
 -export CGO_ENABLED=0
@@ -14,17 +14,10 @@ index b04378ad..d6f320d1 100755
  LDFLAGS="${LDFLAGS} -X ${PKG}/pkg/buildinfo.GitSHA=${GIT_SHA}"
  LDFLAGS="${LDFLAGS} -X ${PKG}/pkg/buildinfo.GitTreeState=${GIT_TREE_STATE}"
 
--if [[ -z "${OUTPUT_DIR:-}" ]]; then
--  OUTPUT_DIR=.
--fi
--OUTPUT=${OUTPUT_DIR}/${BIN}
--if [[ "${GOOS}" = "windows" ]]; then
--  OUTPUT="${OUTPUT}.exe"
--fi
--
+@@ -73,6 +73,5 @@ fi
  go build \
--    -o ${OUTPUT} \
+     -o ${OUTPUT} \
+     -gcflags "${GCFLAGS}" \
 -    -installsuffix "static" \
-+    -o ${OUTPUT_DIR} \
      -ldflags "${LDFLAGS}" \
      ${PKG}/cmd/${BIN}
