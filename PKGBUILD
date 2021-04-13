@@ -2,7 +2,7 @@
 
 pkgname=bootsplash-manager-bin
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple bootsplash manager"
 url="https://github.com/ANDRoid7890/bootsplash-manager"
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=('bootsplash-manager')
 
 source=("https://github.com/ANDRoid7890/bootsplash-manager/releases/download/$pkgver/bootsplash-manager.tar.gz")
 
-md5sums=('33e4fccc6917c24b5682e406ac6caec8')
+md5sums=('74b9d5da766eca17ebb0a54b1f35eddd')
 
 package() {
     install -Dm755 bootsplash-manager "$pkgdir/usr/bin/bootsplash-manager"
