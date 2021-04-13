@@ -3,7 +3,7 @@
 pkgname=nodejs-sword-interface
 _npmname=${pkgname/js}
 pkgver=0.222.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Javascript (N-API) interface to SWORD library'
 arch=('x86_64')
 url="https://github.com/tobias-klein/$_npmname"
@@ -27,7 +27,12 @@ build() {
 package() {
     cd "$_npmname-$pkgver"
     export LINK_SYSTEM_SWORD=1
-    npm install --production -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" $_npmname-$pkgver.tgz
+    npm install \
+        --production \
+        --global \
+        --cache "$srcdir/npm-cache" \
+        --prefix "$pkgdir/usr" \
+        $_npmname-$pkgver.tgz
     rm -rf "$pkgdir/usr/lib/node_modules/$_npmname/"{node_modules,sword_build,*.tgz,build/{node_modules,sword_build}}
 
     # Use system provided deps
