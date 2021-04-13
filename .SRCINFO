@@ -1,6 +1,6 @@
 pkgbase = python-croniter
 	pkgdesc = A Python module to provide iteration for datetime object.
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://github.com/kiorky/croniter
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-croniter
 	makedepends = python-setuptools
 	depends = python-dateutil
 	depends = python-natsort
-	source = https://pypi.org/packages/source/c/croniter/croniter-1.0.11.tar.gz
-	sha256sums = cd89bcbed4d79f56bbf2c9415c2bbbfd09fadc8a59dbae3898fbca5bab34103d
+	source = https://pypi.org/packages/source/c/croniter/croniter-1.0.12.tar.gz
+	sha256sums = 3603ef0d60fc6df98ce356c01529de90b06a002379b9f5e9eae981fb9c1fd936
 
 pkgname = python-croniter
 
