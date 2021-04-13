@@ -1,8 +1,9 @@
 # Maintainer: Igor Saric <karabaja4 at gmail dot com>
+# shellcheck disable=SC2181,SC2148,SC2034,SC2164,SC2154
 
 _pkgname=mimejs
 pkgname=$_pkgname-git
-pkgver=0.1.2a3d118
+pkgver=0.1.66d4b61
 pkgrel=1
 pkgdesc='A replacement for xdg-open written in Node.js'
 arch=('i686' 'x86_64')
