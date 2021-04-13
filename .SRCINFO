@@ -1,7 +1,7 @@
 pkgbase = ivideon-server
 	pkgdesc = Ivideon Server (with QT5 GUI)
 	pkgver = 3.10.0
-	pkgrel = 6793
+	pkgrel = 6811
 	url = https://ivideon.com
 	arch = x86_64
 	license = freeware
@@ -13,10 +13,10 @@ pkgbase = ivideon-server
 	depends = libsm
 	conflicts = ivideon-video-server-nogui
 	conflicts = ivideon-video-server
-	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-video-server/ivideon-video-server_3.10.0-6793~e65e89d_amd64.deb
+	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-video-server/ivideon-video-server_3.10.0-6811~20adc5c_amd64.deb
 	source = https://packages.ivideon.com/ubuntu/pool/non-free/libq/libqt54-ivideon/libqt54-ivideon_5.4.2.0_amd64.deb
 	source = ivideon-server_infinity_camera_list.patch
-	sha256sums = 4a9fe1e93566e19c58539d2e535155e8066984c8318b1a7054fce735b0880333
+	sha256sums = b390289dbd9071167167ee9636547e97ac7464b2823845128300856acafbd19e
 	sha256sums = cbc6481b30a058a2bd8707bfaa06d600ce7be0304140a92ac56340ae13b1e062
 	sha256sums = a220cf727c7520d8c94fe11a28e7fb9a17614dff8f41343e35070c1ff59f754f
 
