@@ -1,6 +1,6 @@
 # Maintainer: André Missaglia <andre.missaglia@gmail.com>
 pkgname=kcompose
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Utility tool for managing kafka"
 arch=('any')
@@ -13,4 +13,4 @@ package() {
     cd "$pkgname-$pkgver"
     DESTDIR="$pkgdir/" ./install.sh
 }
-md5sums=('e923265bc98db7d663c488941d9ae831')
+md5sums=('208c7abc8dca209d377b0e10cbfeefc5')
