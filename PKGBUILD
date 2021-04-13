@@ -13,7 +13,7 @@ pkgname=(
   ppsspp-qt-git
   ppsspp-common-git
 )
-pkgver=1.11.2.r291.bd87a7606
+pkgver=1.11.2.r483.ba95125ae
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -46,10 +46,12 @@ source=(
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
+  git+https://github.com/facebook/zstd.git
   ppsspp.desktop
   ppsspp-qt.desktop
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -75,7 +77,7 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
-  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross}; do
+  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross,zstd}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git submodule update ${submodule}
