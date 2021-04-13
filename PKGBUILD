@@ -1,4 +1,6 @@
-# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+
+# Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Auteiy <dmitry@synh.me>
 
 pkgname=kotatogram-desktop-bin
@@ -63,3 +65,4 @@ package() {
     install -m644 "$srcdir/icon${icon_size}-$pkgver.png" "$icon_dir/kotatogram.png"
   done
 }
+# vim:set ts=2 sw=2 et:
