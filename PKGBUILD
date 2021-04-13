@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-btchip-git
-pkgver=0.1.31
-pkgrel=2
+pkgver=0.1.32
+pkgrel=1
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=('any')
 depends=('python-hidapi' 'libusb-compat' 'libusb' 'libsystemd')
@@ -19,12 +19,12 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/btchip-python/"
-    git tag -l | tail -n 1 | sed 's/v//g'
+    git tag -l | sed 's/v//g' | sort | tail -n 1
 }
 
 build() {
   cd "$srcdir/btchip-python/"
-  git checkout $(git tag -l | tail -n 1) > /dev/null 2>&1
+  git checkout $(git tag -l | sed 's/v//g' | sort | tail -n 1) > /dev/null 2>&1
   python setup.py build
 }
 
