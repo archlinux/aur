@@ -1,4 +1,5 @@
 # Maintainer: Chocopwowwa <chocopowwwa@gmail.com>
+# Contributor: Rafed Ramzi <rafedramzi@gmail.com>
 
 pkgname=sweet-theme-dark
 _pkgname=Sweet-Dark
