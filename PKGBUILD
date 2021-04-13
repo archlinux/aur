@@ -2,7 +2,7 @@
 
 _pkgname=python-sdf-timing
 pkgname="$_pkgname-git"
-pkgver=r104.5740ac4
+pkgver=r118.5b9dc79
 pkgrel=1
 pkgdesc="Python library for working Standard Delay Format (SDF) Timing Annotation files"
 arch=(any)
@@ -13,14 +13,23 @@ makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}")
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=(
+	"git+$url.git"
+	"0001-setup.py-don-t-use-dependencies-in-requirements.txt.patch"
+)
+sha256sums=('SKIP'
+            'e26af72e6dbe463dd435aa04513533410d6b67433d7be68a751cef6e21eefd04')
 
 pkgver() {
 	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$_pkgname"
+
+	patch -p1 < "$srcdir/0001-setup.py-don-t-use-dependencies-in-requirements.txt.patch"
+}
 
 build() {
 	cd "$_pkgname"

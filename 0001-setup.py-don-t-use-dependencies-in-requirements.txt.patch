@@ -1,0 +1,46 @@
+From 0767b9418c7fca64d06e46a11d3469abeaca221b Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Tue, 13 Apr 2021 19:14:30 +0200
+Subject: [PATCH] setup.py: don't use dependencies in requirements.txt
+
+These are development dependencies and are not required for packaging.
+---
+ setup.py | 15 +--------------
+ 1 file changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index d79a38e..800bb99 100644
+--- a/setup.py
++++ b/setup.py
+@@ -31,19 +31,6 @@ with open("README.md", "r") as fh:
+     long_description = fh.read()
+ 
+ 
+-# Read in the setup_requires from the requirements.txt file.
+-setup_requires = []
+-with open('requirements.txt') as fh:
+-    for r in fh:
+-        if '#' in r:
+-            r = r[:r.find('#')]
+-        r = r.strip()
+-        if not r:
+-            continue
+-        if r not in ('-e .',):
+-            setup_requires.append(r)
+-
+-
+ setuptools.setup(
+     # Package human readable information
+     name="sdf_timing",
+@@ -71,7 +58,7 @@ setuptools.setup(
+     },
+     # Requirements
+     python_requires=">=3.6",
+-    setup_requires=setup_requires,
++    setup_requires=[],
+     install_requires=[
+         'ply',
+         'pyjson',
+-- 
+2.31.1
+

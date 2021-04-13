@@ -1,6 +1,6 @@
 pkgbase = python-sdf-timing-git
 	pkgdesc = Python library for working Standard Delay Format (SDF) Timing Annotation files
-	pkgver = r104.5740ac4
+	pkgver = r118.5b9dc79
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/python-sdf-timing
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = python-sdf-timing-git
 	provides = python-sdf-timing
 	conflicts = python-sdf-timing
 	source = git+https://github.com/SymbiFlow/python-sdf-timing.git
+	source = 0001-setup.py-don-t-use-dependencies-in-requirements.txt.patch
 	sha256sums = SKIP
+	sha256sums = e26af72e6dbe463dd435aa04513533410d6b67433d7be68a751cef6e21eefd04
 
 pkgname = python-sdf-timing-git
 
