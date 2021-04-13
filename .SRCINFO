@@ -14,7 +14,7 @@ pkgbase = glaxnimate-bin
 	provides = glaxnimate
 	conflicts = glaxnimate
 	source = glaxnimate-0.3.2.deb::https://gitlab.com/mattbas/glaxnimate-artifacts/-/raw/master/0.3.2/Deb/glaxnimate.deb
-	sha1sums = 39b7a47fbbae3e3e4e6b2f0e21a2672af0829597
+	sha1sums = c7baab225eeea5e2619f2f8a23fec2d5dc9b92d8
 
 pkgname = glaxnimate-bin
 
