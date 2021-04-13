@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="A very simple and portable SNTP client/server"
 url="http://www.hpcf.cam.ac.uk/export"
 arch=('i686' 'x86_64')
-license="custom:msntp"
+license=( "custom:msntp" )
 depends=('sh')
-source=(http://archive.ubuntu.com/ubuntu/pool/universe/m/msntp/${pkgname}_${pkgver}.dfsg.orig.tar.gz)
+source=(http://old-releases.ubuntu.com/ubuntu/pool/universe/m/msntp/${pkgname}_${pkgver}.dfsg.orig.tar.gz)
 md5sums=('24f5e31775a56b140eec27617e25549c')
 
 
