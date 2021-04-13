@@ -1,7 +1,7 @@
 pkgbase = libpicoipp
 	pkgdesc = library for picotech oscilloscope software
 	pkgver = 1.3.0_4r78
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.picotech.com/linux.html
 	arch = x86_64
 	license = custom

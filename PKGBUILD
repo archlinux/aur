@@ -2,7 +2,7 @@
 # Thanks to aAXEe <axel at brasshack dot de> for earlier work.
 pkgname=libpicoipp
 pkgver=1.3.0_4r78
-pkgrel=1
+pkgrel=2
 pkgdesc="library for picotech oscilloscope software"
 arch=('x86_64')
 url="http://www.picotech.com/linux.html"
@@ -21,7 +21,7 @@ source=("http://labs.picotech.com/debian/pool/main/libp/libpicoipp/${pkgname}_${
 md5sums=('c0416c147651f269ca340791241a1a61')
 
 package() {
-  tar -xf data.tar.gz -C "${pkgdir}"
+  tar -xf data.tar.xz -C "${pkgdir}"
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 }
