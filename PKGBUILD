@@ -2,7 +2,7 @@
 
 pkgname=rootlesskit
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Native "fake root" for implementing rootless containers.'
 arch=('x86_64')
 url="https://github.com/rootless-containers/rootlesskit"
@@ -33,5 +33,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 build/rootlessctl "$pkgdir"/usr/bin/rootlessctl
+  install -Dm755 build/rootlesskit "$pkgdir"/usr/bin/rootlesskit
+  install -Dm755 build/rootlesskit-docker-proxy "$pkgdir"/usr/bin/rootlesskit-docker-proxy
 }
