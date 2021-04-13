@@ -1,0 +1,21 @@
+pkgbase = gkeybind
+	pkgdesc = Utility for rebinding G-keys on Logitech keyboards
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nickbclifford/gkeybind
+	arch = x86_64
+	license = GPL3
+	makedepends = crystal
+	makedepends = shards
+	depends = keyleds
+	depends = libevdev
+	depends = libxkbcommon
+	depends = libevent
+	depends = pcre
+	depends = gc
+	backup = etc/gkeybind.yml
+	source = gkeybind-0.1.0.tar.gz::https://github.com/nickbclifford/gkeybind/archive/0.1.0.tar.gz
+	md5sums = 754148359f2bf8b18280b1dc8aa08cd7
+
+pkgname = gkeybind
+
