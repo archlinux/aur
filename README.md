@@ -70,7 +70,7 @@ http
 ```
 
 ## Required services
-1. `sudo systemctl start bitcoind.service;sudo systemctl enable bitcoind.service`
+1. bitcoind.service
 
 ## Usage
 * Start: `tmux new-session -s lnd -d "lnd --externalip=EXTERNAL_IP_ADDRESS --bitcoin.active --bitcoin.mainnet --bitcoin.node=bitcoind --bitcoind.rpcuser=USERNAME --bitcoind.rpcpass=PASSWORD --bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332 --bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333";lncli unlock;nbxplorer-start;btcpayserver-start`
