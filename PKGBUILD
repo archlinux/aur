@@ -3,8 +3,8 @@
 
 _pkgname=exa
 pkgname=${_pkgname}-git
-pkgver=0.9.0.r184.g39c8c67
-pkgrel=2
+pkgver=0.10.1.r0.g293372a
+pkgrel=1
 pkgdesc='Replacement for ls written in Rust'
 arch=('i686' 'x86_64')
 url="https://github.com/ogham/exa"
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd $_pkgname
-    cargo build --locked --release
+    cargo build --release
     mkdir -p target/release/man
     pandoc --standalone -f markdown -t man man/exa.1.md        > "target/release/man/exa.1"
     pandoc --standalone -f markdown -t man man/exa_colors.5.md > "target/release/man/exa_colors.5"
