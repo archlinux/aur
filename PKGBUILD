@@ -9,7 +9,7 @@
 
 pkgname=bin32-firefox
 pkgver=87.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
 _arch=i686
