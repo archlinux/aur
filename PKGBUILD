@@ -2,8 +2,7 @@
 
 # Ref.: https://github.com/QubesOS/qubes-core-agent-linux/tree/master/archlinux
 
-#pkgname=(qubes-vm-core qubes-vm-networking qubes-vm-keyring)
-pkgname=(qubes-vm-core)
+pkgname=(qubes-vm-core qubes-vm-networking qubes-vm-keyring)
 _gitname=${pkgname%-git*}
 pkgver=4.0.61
 pkgrel=1
@@ -121,4 +120,40 @@ EOF
 
     # Archlinux packaging guidelines: /var/run is a symlink to a tmpfs. Don't create it
     rm -r "$pkgdir/var/run"
+}
+
+
+#This package provides:
+# * proxy service used by TemplateVMs to download updates
+# * qubes-firewall service (FirewallVM)
+#
+#Integration of NetworkManager for Qubes VM:
+# * make connections config persistent
+# * adjust DNS redirections when needed
+# * show/hide NetworkManager applet icon
+#
+package_qubes-vm-networking() {
+    pkgdesc="Qubes OS tools allowing to use a Qubes VM as a NetVM/ProxyVM"
+    depends=(qubes-vm-core qubes-vm-utils python ethtool net-tools
+             qubes-db-vm networkmanager iptables tinyproxy nftables
+             conntrack-tools
+             )
+    install=PKGBUILD-networking.install
+
+    cd "${srcdir}/${_gitname}/"
+
+    # shellcheck disable=SC2154
+    make install-netvm DESTDIR="$pkgdir" SBINDIR=/usr/bin LIBDIR=/usr/lib SYSLIBDIR=/usr/lib SYSTEM_DROPIN_DIR=/usr/lib/systemd/system USER_DROPIN_DIR=/usr/lib/systemd/user DIST=archlinux
+}
+
+
+package_qubes-vm-keyring() {
+    pkgdesc="Qubes OS Binary Repository Activation package and Keyring"
+    install=PKGBUILD-keyring.install
+
+    # Install keyring (will be activated through the .install file)
+    install -dm755 "${pkgdir}/usr/share/pacman/keyrings/"
+    install -m0644 PKGBUILD-keyring-keys "${pkgdir}/usr/share/pacman/keyrings/qubesos-vm.gpg"
+    install -m0644 PKGBUILD-keyring-trusted "${pkgdir}/usr/share/pacman/keyrings/qubesos-vm-trusted"
+    install -m0644 PKGBUILD-keyring-revoked "${pkgdir}/usr/share/pacman/keyrings/qubesos-vm-revoked"
 }

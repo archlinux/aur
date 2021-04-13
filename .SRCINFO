@@ -74,3 +74,22 @@ pkgname = qubes-vm-core
 	optdepends = qubes-vm-networking
 	optdepends = qubes-vm-keyring
 
+pkgname = qubes-vm-networking
+	pkgdesc = Qubes OS tools allowing to use a Qubes VM as a NetVM/ProxyVM
+	install = PKGBUILD-networking.install
+	depends = qubes-vm-core
+	depends = qubes-vm-utils
+	depends = python
+	depends = ethtool
+	depends = net-tools
+	depends = qubes-db-vm
+	depends = networkmanager
+	depends = iptables
+	depends = tinyproxy
+	depends = nftables
+	depends = conntrack-tools
+
+pkgname = qubes-vm-keyring
+	pkgdesc = Qubes OS Binary Repository Activation package and Keyring
+	install = PKGBUILD-keyring.install
+
