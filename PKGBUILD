@@ -1,8 +1,9 @@
 # Maintainer: Alice Gaudon <alice at gaudon dot pro>
-# Contributor: Benjamin Klettbach <b dot klettbach at gmail dot com >
+# Contributor: Benjamin Klettbach <b dot klettbach at gmail dot com>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
+
 pkgname=obs-studio-browser
 pkgver=26.1.1
 pkgrel=4
@@ -31,32 +32,30 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
 md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 prepare() {
-  cd $pkgname
-  git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
-  git config submodule.plugins/obs-browser.url $srcdir/obs-browser
-  git config submodule.plugins/obs-vst.url $srcdir/obs-vst
-  git submodule update
+    cd $pkgname
+    git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
+    git config submodule.plugins/obs-browser.url $srcdir/obs-browser
+    git config submodule.plugins/obs-vst.url $srcdir/obs-vst
+    git submodule update
 }
 
 build() {
-  cd $pkgname
+    cd $pkgname
 
-  mkdir -p build; cd build
+    mkdir -p build; cd build
 
-  cmake \
+    cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=ON \
     -DCEF_ROOT_DIR="/opt/cef" \
     -DOBS_VERSION_OVERRIDE=$pkgver ..
 
-  make
+    make
 }
 
 package() {
-  cd $pkgname/build
+    cd $pkgname/build
 
-  make install DESTDIR="$pkgdir"
+    make install DESTDIR="$pkgdir"
 }
-
-# vim: ts=2:sw=2:expandtab
