@@ -20,8 +20,8 @@
 #
 
 _pkgname=codelite
-_pkgver=15.0.1
-#_commit=d19d21e702fa0de1c6649c8a63096f30ee90cf9d
+_pkgver=15.0.2
+#_commit=60fa5c21871e46c1a7013c22a039eb7347173046
 
 pkg_ident="${pkgver//_/-}"
 pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
@@ -57,19 +57,15 @@ optdepends=('graphviz: callgraph visualization'
              'valgrind: debugger'
             )
 
-#source=(https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz
-#        http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
-#noextract=('wxgui.zip')
-
-
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('8083ffd34ab83fcfa74c3f442026c845'
+md5sums=('5cf921aa81526e65311dacbeb21451a4'
          '20f3428eb831c3ff2539a7228afaa3b4'
          )
+
 noextract=('wxgui.zip')
 
 #
