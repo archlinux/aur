@@ -28,5 +28,5 @@ build() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" cmake --install build
 }
