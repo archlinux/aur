@@ -1,7 +1,7 @@
 pkgbase = gkeybind
 	pkgdesc = Utility for rebinding G-keys on Logitech keyboards
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nickbclifford/gkeybind
 	arch = x86_64
 	license = GPL3
