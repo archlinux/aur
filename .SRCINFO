@@ -1,7 +1,7 @@
 pkgbase = brother-ql1100
 	pkgdesc = LPR and CUPS driver for Brother QL-1100 label printer
 	pkgver = 2.1.4r0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-ql1100.install
 	arch = i686
