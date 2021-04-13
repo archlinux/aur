@@ -1,12 +1,12 @@
 pkgbase = sweet-theme-mars
 	pkgdesc = Light and dark colorful Gtk3.20+ theme
-	pkgver = 1.10.5
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/EliverLara/Sweet
 	arch = any
 	license = GPL3
-	source = https://github.com/EliverLara/Sweet/releases/download/v1.10.5/Sweet-mars.zip
-	md5sums = 477182eb023a1854e6210e3829dbead7
+	source = https://github.com/EliverLara/Sweet/releases/download/2.0/Sweet-mars.tar.xz
+	md5sums = b0337c3d59b6bba19a840bf45810a14c
 
 pkgname = sweet-theme-mars
 
