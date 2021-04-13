@@ -8,8 +8,8 @@ _lang=zh-TW
 _pkgver=89.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
-pkgver=89.0a1.20210411093417
-pkgrel=4
+pkgver=89.0a1.20210412213434
+pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
 url='https://www.mozilla.org/en-US/firefox/'
 screenshot="http://people.mozilla.org/~shorlander/blog-images/australis-linux.png"
