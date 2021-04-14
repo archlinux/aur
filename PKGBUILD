@@ -30,21 +30,31 @@ pkgdesc="A cross-platform application and UI framework (Development Tools, QtHel
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-vulkan-headers')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
+_commit=33693a928986006d79c1ee743733cde5966ac402
+pkgver+=+kde+r17
+makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+_pkgfqn=${_qt_module}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Fix-linguist-macro.patch')
-sha256sums=('c189d0ce1ff7c739db9a3ace52ac3e24cb8fd6dbf234e49f075249b38f43c1cc'
-            'e2ce8a553c78fd0dc6934be7d58a9bb90fe465619ac20a567d579c4c90bc01ab')
+sha256sums=('SKIP'
+            'cf7fcd9b2cfa110e95bde957a00c600da17bc75fdf7be1f72204eb5364cbf397')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
+
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
+
+  git revert -n dbe0567470db2b369a9fdb28d9fbac38be3e2d60 # Revert version bump
 
   # apply patches; further descriptions can be found in patch files itself
   for patch in "$srcdir/"*.patch; do
