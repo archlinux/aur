@@ -4,8 +4,8 @@
 #
 pkgname=python-hyperspy-gui-ipywidgets
 pkginst=hyperspy_gui_ipywidgets
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="ipywidgets (jupyter) GUI elements for HyperSpy" 
 arch=('any')
 url="https://github.com/hyperspy/hyperspy_gui_ipywidgets"
@@ -24,9 +24,7 @@ conflicts=('hyperspy-gui-ipywidgets')
 provides=('hyperspy-gui-ipywidgets')
 
 source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.tar.gz)
-#source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/master.zip)
-sha256sums=('9db1ae7186db2da08ad9040fbf567cbd5d7e50179a39958456bcb081deede33e')
-#sha512sums=("SKIP")
+sha256sums=('d848142733f00c7e9b54c25ac1ea48da5ca509eae55ba019f6cff97c60140c29')
 
 #pkgver() {
 #  cd "${srcdir}/${pkginst}-master/"
@@ -40,3 +38,4 @@ package() {
 #  cd "$srcdir/${pkginst}-master"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+sha256sums=('d848142733f00c7e9b54c25ac1ea48da5ca509eae55ba019f6cff97c60140c29')
