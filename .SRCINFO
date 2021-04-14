@@ -1,6 +1,6 @@
 pkgbase = notion-app
 	pkgdesc = The all-in-one workspace for your notes and tasks
-	pkgver = 2.0.11
+	pkgver = 2.0.16
 	pkgrel = 1
 	epoch = 2
 	url = https://www.notion.so/desktop
@@ -9,18 +9,16 @@ pkgbase = notion-app
 	license = MIT
 	makedepends = imagemagick
 	makedepends = p7zip
-	makedepends = asar
+	makedepends = npm
 	depends = electron11
 	depends = re2
 	depends = gtk3
 	depends = xdg-utils
 	optdepends = notion-enhancer: enhancements and fixes
-	source = Notion-2.0.11.exe::https://desktop-release.notion-static.com/Notion%20Setup%202.0.11.exe
-	source = notion-app
+	source = Notion-2.0.16.exe::https://desktop-release.notion-static.com/Notion%20Setup%202.0.16.exe
 	source = notion-app.desktop
-	md5sums = b3fb76f3cdc664e71e7438348c472a16
-	md5sums = 89f5d6220dd0b8fb459ed59cff7dee3c
-	md5sums = dc75abd9b8f3f455a0b8fc0d8d8932b5
+	md5sums = 9f72284086cda3977f7f569dff3974d5
+	md5sums = 257f3106e5d9364ef2df557a656cd8e7
 
 pkgname = notion-app
 

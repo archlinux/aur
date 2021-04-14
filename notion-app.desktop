@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/opt/notion-app/notion-app %u
+Exec=/opt/notion-app/notion %u
 Icon=notion-app
 Terminal=false
 Type=Application
