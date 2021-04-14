@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
