@@ -1,7 +1,7 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 
 pkgname=bieaz
-pkgver="0.2.6"
+pkgver="0.2.7"
 pkgrel=1
 pkgdesc="boot environment manager for ZFS"
 arch=(any)
@@ -16,4 +16,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('b58945cb70cc517ff0f0e67a6be61c89')
+md5sums=('79968670f066e7de2bd2d59e315cb76c')
