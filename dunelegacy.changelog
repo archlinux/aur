@@ -1,3 +1,8 @@
+2021-04-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Add a patch to compile with latest version of SDL2_mixer
+
 2017-01-02 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
