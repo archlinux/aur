@@ -2,7 +2,7 @@
 
 pkgname=snow-theme-git
 _pkgname=snow
-pkgver=r41.836d87b
+pkgver=r60.960b2a8
 pkgrel=1
 pkgdesc="Light Gtk theme with some gradients"
 arch=("any")
