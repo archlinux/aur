@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-io-dkms-git
-pkgver=r26.ea5f61a
-pkgrel=2
+pkgver=r27.57c15ff
+pkgrel=1
 pkgdesc="This DKMS driver provides airplane mode, keyboard backlight, and fan support for System76 laptops"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
