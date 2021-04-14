@@ -1,37 +1,14 @@
-*** product.json	2021-04-02 12:42:35.526958216 -0400
---- product.json.new	2021-04-02 12:47:28.453388741 -0400
-***************
-*** 137,146 ****
-    "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
-    "quality": "stable",
-    "extensionsGallery": {
-!     "serviceUrl": "https://open-vsx.org/vscode/gallery",
-!     "itemUrl": "https://open-vsx.org/vscode/item"
-    },
--   "linkProtectionTrustedDomains": ["https://open-vsx.org"],
-    "serverDataFolderName": ".vscode-server-oss",
-    "commit": "c185983a683d14c396952dd432459097bc7f757f",
-    "date": "2021-04-01T14:57:53.176Z",
---- 137,146 ----
-    "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
-    "quality": "stable",
-    "extensionsGallery": {
-!     "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
-!     "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
-!     "itemUrl": "https://marketplace.visualstudio.com/items"
-    },
-    "serverDataFolderName": ".vscode-server-oss",
-    "commit": "c185983a683d14c396952dd432459097bc7f757f",
-    "date": "2021-04-01T14:57:53.176Z",
-***************
-*** 152,155 ****
-      "vs/code/electron-browser/workbench/workbench.html": "FA7IN1fg7dReTGbMS997BQ",
-      "vs/code/electron-browser/workbench/workbench.js": "q5WdzhUw0x25m5yktuMvkw"
-    }
-! }
+140,141c140,142
+<     "serviceUrl": "https://open-vsx.org/vscode/gallery",
+<     "itemUrl": "https://open-vsx.org/vscode/item"
+---
+>       "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+>       "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+>       "itemUrl": "https://marketplace.visualstudio.com/items"
+143d143
+<   "linkProtectionTrustedDomains": ["https://open-vsx.org"],
+155c155
+< }
 \ No newline at end of file
---- 152,155 ----
-      "vs/code/electron-browser/workbench/workbench.html": "FA7IN1fg7dReTGbMS997BQ",
-      "vs/code/electron-browser/workbench/workbench.js": "q5WdzhUw0x25m5yktuMvkw"
-    }
-! }
+---
+> }
