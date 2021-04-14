@@ -14,7 +14,8 @@ _ghc_version="8.10.4"       # 8.10.3 fails to compile
 makedepends=('git' 'cabal-install-bin' 'ghc>=8.10.4')
 depends=('libsodium')
 _config_build="5367762"
-backup=("var/lib/cardano-node/config/mainnet-config.json"
+backup=("etc/conf.d/cardano-node"
+        "var/lib/cardano-node/config/mainnet-config.json"
         "var/lib/cardano-node/config/mainnet-topology.json"
         "var/lib/cardano-node/config/testnet-config.json"
         "var/lib/cardano-node/config/testnet-topology.json")
@@ -30,6 +31,7 @@ source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "cardano-node.sysusers"
         "cardano-node.tmpfiles"
         "cardano-node.service"
+        "cardano-node.confd"
         "cardano-node-testnet.service")
 sha256sums=("e725f425cb7b7e581208a9b7b6989049fbaba8634475889910d92a09a14cac13"
         "9999052dc926506d350cfca2bcfd291e50b48cc7f5215a154c344ad7ad7d70eb"
@@ -43,6 +45,7 @@ sha256sums=("e725f425cb7b7e581208a9b7b6989049fbaba8634475889910d92a09a14cac13"
         "703f9b033c299b652b2d3228ee6ef4a9c09b7e846ff4b366a2aca68960370234"
         "3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542"
         "612025b4071734ab29e90f5cc71cff2868abe4f333d7f60c25d4b5c7f236f43c"
+        "5c2410eecf9f32be4b9ae712cbf7a42d00ba52d79b693585f5bad18cb4f9b54b"
         "a5582d3b712330d0f37fc1488c06f4e2cb75176ffe382c74db9e6c75c3f95f9d")
 
 prepare() {
@@ -63,6 +66,7 @@ package() {
   install -D -m0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -D -m0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -D -m0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -D -m0644 "${srcdir}/${pkgname}.confd" "${pkgdir}/etc/conf.d/${pkgname}"
 
   install -D -m0644 "mainnet-config.json" "${pkgdir}/var/lib/cardano-node/config/mainnet-config.json"
   install -D -m0644 "mainnet-byron-genesis.json" "${pkgdir}/var/lib/${pkgname}/config/mainnet-byron-genesis.json"
