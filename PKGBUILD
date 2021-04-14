@@ -5,23 +5,24 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.5.8
-pkgrel=3
+pkgver=1.9.5.9
+version=${pkgver}-1
+pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.eternal-lands.com/"
-depends=('sdl2_net' 'sdl2_image' 'openal' 'cal3d' 'libvorbis' 'glu')
-makedepends=('git' 'unzip' 'pkgconf')
+depends=('sdl2_net' 'sdl2_image' 'sdl2_ttf' 'openal' 'cal3d' 'libvorbis' 'glu')
+makedepends=('unzip' 'pkgconf')
 optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=("git://github.com/raduprv/Eternal-Lands.git#tag=${pkgver}" 'https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.7/el_195_p7_data_files.zip')
-md5sums=('SKIP' 'c58b6f374d0f9ce3f0aa0fe4eab348d5')
+source=("https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${version}.tar.gz" "https://github.com/raduprv/Eternal-Lands/releases/download/${version}/eternallands-data_${version}.zip")
+md5sums=('745a75f442d6afea31df5d388450082a' '82c0b5601faed923fb30d01906e25ca3')
 
 build()
 {
-  cd ${srcdir}/Eternal-Lands
+  cd ${srcdir}/Eternal-Lands-${version}
 
   sed -i "s|/usr/games/|/usr/bin/|" pkgfiles/eternallands
   sed -i "s|/usr/share/games/EternalLands/|/usr/share/eternallands/|" pkgfiles/eternallands
@@ -32,7 +33,7 @@ build()
 }
 
 package() {
-  cd ${srcdir}/Eternal-Lands
+  cd ${srcdir}/Eternal-Lands-${version}
 
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/man/man6"
@@ -44,7 +45,7 @@ package() {
   install -m755 el.x86.linux.bin "${pkgdir}/usr/bin/"
   install -m755 pkgfiles/eternallands "${pkgdir}/usr/bin/"
   install -m644 pkgfiles/eternallands.6 "${pkgdir}/usr/share/man/man6"
-  install -m644 pkgfiles/el.x86.linux.bin.6 "${pkgdir}/usr/share/man/man6"
+  install -m644 pkgfiles/el.linux.bin.6 "${pkgdir}/usr/share/man/man6"
   install -m644 pkgfiles/eternallands.png "${pkgdir}/usr/share/pixmaps/"
   install -m644 pkgfiles/eternallands.xpm "${pkgdir}/usr/share/pixmaps/"
   install -m644 pkgfiles/eternallands.desktop "${pkgdir}/usr/share/applications"
@@ -55,16 +56,13 @@ package() {
   # Compress textures and maps
   find \( -name *.bmp -or -name *.elm \) -exec gzip -f {} \;
 
-  for dir in 2dobjects 3dobjects actor_defs animations languages maps meshes particles shaders skeletons skybox textures; do
+  for dir in 2dobjects 3dobjects actor_defs animations fonts languages maps meshes particles shaders skeletons skybox textures; do
     cp -R ${dir} "${pkgdir}/usr/share/eternallands/"
   done
 
   sed -i "s|^#data_dir = \"c:\\\Program Files\\\Eternal Lands\\\\\"|#data_dir = /usr/share/eternallands|" el.ini
-  sed -i "s|^#use_new_selection.*$|#use_new_selection = 1|g" el.ini
 
-  for file in *.ini *.txt *.lst *.xml; do
+  for file in *.ini *.json *.lst *.menu *.txt *.xml; do
     install -m644 ${file} "${pkgdir}/usr/share/eternallands/"
   done
-
-  install -m644 ${srcdir}/Eternal-Lands/el.ini "${pkgdir}/usr/share/eternallands/"
 }

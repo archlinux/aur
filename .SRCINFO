@@ -1,17 +1,17 @@
 pkgbase = eternallands
 	pkgdesc = A free 3D MMORPG game with thousands of on-line players
-	pkgver = 1.9.5.8
-	pkgrel = 3
+	pkgver = 1.9.5.9
+	pkgrel = 1
 	url = http://www.eternal-lands.com/
 	changelog = eternallands.changelog
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = git
 	makedepends = unzip
 	makedepends = pkgconf
 	depends = sdl2_net
 	depends = sdl2_image
+	depends = sdl2_ttf
 	depends = openal
 	depends = cal3d
 	depends = libvorbis
@@ -19,10 +19,10 @@ pkgbase = eternallands
 	optdepends = zenity: to use the launch script
 	optdepends = kdialog: to use the launch script
 	options = !emptydirs
-	source = git://github.com/raduprv/Eternal-Lands.git#tag=1.9.5.8
-	source = https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.7/el_195_p7_data_files.zip
-	md5sums = SKIP
-	md5sums = c58b6f374d0f9ce3f0aa0fe4eab348d5
+	source = https://github.com/raduprv/Eternal-Lands/archive/refs/tags/1.9.5.9-1.tar.gz
+	source = https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.9-1/eternallands-data_1.9.5.9-1.zip
+	md5sums = 745a75f442d6afea31df5d388450082a
+	md5sums = 82c0b5601faed923fb30d01906e25ca3
 
 pkgname = eternallands
 

@@ -1,3 +1,12 @@
+2021-04-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Updated to client and data 1.9.5.9-1
+	Using GitHub release archive for sources
+	Added sdl2_ttf to the depends array
+	Removed git from the makedepends array
+	Updated the list of installed data files
+
 2020-09-19 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD:
