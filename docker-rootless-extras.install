@@ -1,23 +1,28 @@
-_pkgname=docker-rootless-extras
-
 post_install() {
-    echo -ne "\e[34;1m"
-	echo "=== post_install Setup for $_pkgname ==="
-	echo -ne "\e[39;1m"
-    echo "Setup on your userspace, i,e exec this command and following instruction."
-    echo "  $ dockerd-rootless-setuptool.sh check"
-    echo -ne "\e[34;1m"
-	echo "=== systemd Setup for $_pkgname ==="
-	echo -ne "\e[39;1m"
-    echo "Start rootless docker with systemd."
-    echo "  $ systemctl start --user dockerd-rootless.service"
-    echo "To launch the daemon on system startup."
-    echo "  $ systemctl enable --user dockerd-rootless.service"
-    echo -ne "\e[34;1m"
-	echo "=== Exec docker command on $_pkgname ==="
-	echo -ne "\e[39;1m"
-    echo "Following this commands."
-    echo "  $ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock"
-    echo "  $ docker info"
-	echo -ne "\e[0m"
+  sysctl --system
+	cat <<EOF
+
+=== Post installation message from docker-rootless ===
+This is based on https://docs.docker.com/engine/security/rootless/
+To Run the Docker daemon as a non-root user (Rootless mode) for ArchLinux, you need to do the following things:
+
+1. Configure subuid and subgid
+
+Create '/etc/subuid' and '/etc/subgid' with the following:
+
+    testuser:231072:65536
+    # replace 'testuser' with your username.
+
+2. Enable socket-activation for the user service:
+
+    systemctl --user enable --now docker.socket
+
+3. Finally set docker socket environment variable:
+
+    export DOCKER_HOST=unix://\$XDG_RUNTIME_DIR/docker.sock
+
+You can also add it to '~/.bashrc' or somewhere alike.
+
+=========
+EOF
 }
