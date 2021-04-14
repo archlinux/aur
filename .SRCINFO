@@ -21,6 +21,7 @@ pkgbase = blender-develop-git
 	depends = openjpeg2
 	depends = libharu
 	depends = potrace
+	depends = openxr
 	depends = ffmpeg
 	depends = fftw
 	depends = openal

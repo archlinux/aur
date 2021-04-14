@@ -33,7 +33,7 @@ pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace'
+depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-qfix' 'opencolorio-qfix'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
@@ -110,6 +110,7 @@ build() {
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_PYTHON_INSTALL=OFF \
+        -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
