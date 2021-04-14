@@ -8,6 +8,7 @@ pkgbase = r-rcppparallel
 	license = GPL2
 	makedepends = make
 	depends = r>=3.0.2
+	depends = tbb
 	optdepends = r-rcpp
 	optdepends = r-runit
 	optdepends = r-knitr

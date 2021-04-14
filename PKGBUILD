@@ -10,7 +10,7 @@ pkgdesc="Parallel Programming Tools for 'Rcpp'"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
-depends=('r>=3.0.2')
+depends=('r>=3.0.2' tbb)
 makedepends=(make)
 optdepends=(r-rcpp r-runit r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
