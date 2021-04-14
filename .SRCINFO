@@ -1,6 +1,6 @@
 pkgbase = python-nototools
 	pkgdesc = Noto fonts support tools and scripts plus web site generation
-	pkgver = 0.2.11
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/googlefonts/nototools
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-nototools
 	depends = python-pillow
 	depends = python-pyclipper
 	depends = scour
-	source = https://pypi.org/packages/source/n/notofonttools/notofonttools-0.2.11.tar.gz
-	sha256sums = d6cf474d6a2859353901a1600165ed59e188667d4178e746bf37107b138955ac
+	source = https://pypi.org/packages/source/n/notofonttools/notofonttools-0.2.13.tar.gz
+	sha256sums = 98dec3617329269e0da0aa37caac7b57d1fec33c7f8797d4ec0ad374831a9b05
 
 pkgname = python-nototools
 
