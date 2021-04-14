@@ -1,6 +1,6 @@
 pkgbase = iniget-git
 	pkgdesc = Extract information from INI files in CLI
-	pkgver = 1.0.r57.2e63251
+	pkgver = 1.0.r59.6a7386b
 	pkgrel = 1
 	url = https://github.com/randoragon/iniget
 	arch = x86_64
