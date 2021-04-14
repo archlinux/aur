@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=highway-git
-pkgver=0.11.0.r0.g18191fa
-pkgrel=2
+pkgver=0.11.1.r44.gae4ea25
+pkgrel=1
 pkgdesc='A C++ library for SIMD (Single Instruction, Multiple Data) (git version)'
 arch=('x86_64')
 url='https://github.com/google/highway/'
 license=('Apache')
-makedepends=('git' 'cmake' 'gtest')
+makedepends=('git' 'cmake' 'gtest' 'gmock')
 provides=('highway')
 conflicts=('highway')
 source=('git+https://github.com/google/highway.git')
