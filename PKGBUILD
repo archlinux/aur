@@ -2,35 +2,32 @@
 
 pkgname=kotatogram-desktop-dynamic-bin
 _pkgname=kotatogram-desktop
-pkgver=1.3.4
-pkgrel=4
-_pkgrel=4
+pkgver=1.4
+pkgrel=1
+_pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Precompiled package"
-arch=(x86_64)
+arch=('x86_64')
 url="https://kotatogram.github.io"
-license=(GPL3)
+license=('GPL3')
 depends=(
-	qt5-base
-	qt5-imageformats
-	ffmpeg
-	openal
-	xz
-	lz4
-	xxhash
-	zlib
-	minizip
-	openssl
-	libdbusmenu-qt5
-	hunspell
-	hicolor-icon-theme
-)
-optdepends=(
-	'ttf-opensans: default Open Sans font family'
+	'hunspell'
+	'ffmpeg'
+	'hicolor-icon-theme'
+	'lz4'
+	'minizip'
+	'openal'
+	'ttf-opensans'
+	'qt5-imageformats'
+	'xxhash'
+	'libdbusmenu-qt5'
+	'kwayland'
+	'gtk3'
+	'glibmm'
 )
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-bin')
 provides=('kotatogram-desktop')
 source=("https://github.com/ilya-fedin/kotatogramAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst")
-sha512sums=('42d21e75ebe6faf7719fcd7c0b23036cd8447914c369e561d85ea2c4954b1850272c5624993226ae8b4663ccd76b4c0daf676444d95eb5cf142b26d7ca1a84c8')
+sha512sums=('6bfd12b5226a816c0d68c7f7f4b0c7726396d1b2f0554bb818478e2e34b2c4dd2b04f272bd1b8223b3579919af9dda5e48f709f3899fb81c1de4d6038be81874')
 
 package() {
 	tar -xaf "$srcdir/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude=".*"
