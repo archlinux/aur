@@ -3,13 +3,13 @@
 # Contributors: koba1t <kobdotsh at gmail dot com>
 
 pkgname=docker-rootless-extras-bin
-pkgver=20.10.5
+pkgver=20.10.6
 pkgrel=1
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64')
 url="https://docs.docker.com/engine/security/rootless/"
 license=('Apache')
-depends=('docker<1:20.10.6')
+depends=('docker')
 optdepends=('fuse-overlayfs: overlayfs support'
             'slirp4netns: faster network stack')
 provides=('docker-rootless' 'docker-rootless-extras')
@@ -22,7 +22,7 @@ source=(
 	"99-docker-rootless.conf"
 )
 
-sha256sums=('c7265d1c376dcfc182714235fc3e8ea5e2f3f540af94450fa0469cac97b3dd55'
+sha256sums=('ac4d55e87efa1eec306a91f655d8ae00339be5f631b8b41c10d5c588a3cf0473'
             '7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5'
             'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
             'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
