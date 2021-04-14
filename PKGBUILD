@@ -15,7 +15,7 @@ makedepends=('git' 'wget')
 source=("${_pkgname}::git+https://github.com/kuba160/${_pkgname}"
         "${_pkgname}-makefile.patch")
 sha256sums=('SKIP'
-            '137e78e144b6f43bd3469758c5b0f6d82fe3fc08c2121903b98dd8e4e3a9498d')
+            '5f9f2a604c20f0ea877542c2dcc7cc3d5372b026f310bdfd65214664452683a9')
 
 pkgver() {
   cd "${_pkgname}"
