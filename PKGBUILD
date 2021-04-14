@@ -35,7 +35,7 @@ depends=('python'
        # 'python-tifffile'  # AUR (from scikit-image)        
        # 'python-numba'  # AUR (from python-sparse)
        # 'python-llvmlite' # AUR (from python-numba)
-         'python-llvmlite-bin' # AUR (from python-numba, but require bin package to avoid version mismatches)
+       # 'python-llvmlite-bin' # AUR (from python-numba, but require bin package to avoid version mismatches)
          )
 
 optdepends=('python-scikit-learn: machine learning features'
@@ -59,4 +59,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('9582a24d4c361ffcd87c995e4cb282733d39651e30d1e682999b3bdbccdce2db')
 sha256sums=('9582a24d4c361ffcd87c995e4cb282733d39651e30d1e682999b3bdbccdce2db')
