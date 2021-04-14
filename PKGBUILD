@@ -5,7 +5,7 @@
 
 pkgname=sage-notebook
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Browser-based notebook interface for SageMath'
 arch=(any)
 url='http://www.sagemath.org'
@@ -35,7 +35,7 @@ build() {
   python setup.py build
   
   cd doc
-  make SPHINXBUILD=sphinx-build2 html
+  make html
 }
 
 package() {
@@ -45,13 +45,13 @@ package() {
 
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/${pkgname}/COPYING
 
-  ln -s /usr/share/mathjax2 "$pkgdir"/usr/lib/python3.8/site-packages/sagenb/data/mathjax
+  ln -s /usr/share/mathjax2 "$pkgdir"/usr/lib/python3.9/site-packages/sagenb/data/mathjax
 
 # install a systemd user unit
   install -Dm644 "${srcdir}/sage.service" "$pkgdir/usr/lib/systemd/user/sage.service"
 # install *.desktop and icon files
   install -Dm644 "${srcdir}/sage-notebook.desktop" "$pkgdir/usr/share/applications/sage-notebook.desktop"
-  install -Dm644 "$pkgdir/usr/lib/python3.8/site-packages/sagenb/data/sage/images/icon48x48.png" \
+  install -Dm644 "$pkgdir/usr/lib/python3.9/site-packages/sagenb/data/sage/images/icon48x48.png" \
                  "$pkgdir/usr/share/pixmaps/sage-notebook.png"
 # remove sage3d
   rm -r "$pkgdir"/usr/bin

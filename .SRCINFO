@@ -1,7 +1,7 @@
 pkgbase = sage-notebook
 	pkgdesc = Browser-based notebook interface for SageMath
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sagemath.org
 	arch = any
 	license = GPL3
