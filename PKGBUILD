@@ -26,16 +26,7 @@ provides=('hyperspy-gui-ipywidgets')
 source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.tar.gz)
 sha256sums=('d848142733f00c7e9b54c25ac1ea48da5ca509eae55ba019f6cff97c60140c29')
 
-#pkgver() {
-#  cd "${srcdir}/${pkginst}-master/"
-#  rel_ver=$(grep -E "^__version__" ${pkginst}-master/version.py | awk '{print $3}' | tr -d \")
-#  commit=$(git rev-parse --short HEAD)
-#  echo "${rel_ver}.${commit}"
-#}
-
 package() {
   cd "$srcdir/$pkginst-$pkgver"
-#  cd "$srcdir/${pkginst}-master"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-sha256sums=('d848142733f00c7e9b54c25ac1ea48da5ca509eae55ba019f6cff97c60140c29')
