@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=iniget-git
-pkgver=1.0.r52.80bf1ad
+pkgver=1.0.r57.2e63251
 pkgrel=1
 epoch=
 pkgdesc="Extract information from INI files in CLI"
@@ -20,14 +20,13 @@ pkgver() {
 }
 
 build() {
-	cd iniget
-	make
+    cd iniget
+    make
 }
 
 package() {
-	cd iniget
-    mkdir -p "$pkgdir/usr/bin"
-	make DESTDIR="$pkgdir/" PREFIX=/usr/bin install
+    cd iniget
+    make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license.txt"
     install -Dm644 README.MD "$pkgdir/usr/share/doc/$pkgname/README.MD"
 }
