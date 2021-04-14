@@ -1,17 +1,17 @@
 # Maintainer: Michael Berlinger <michaelmberlinger@gmail.com>
 
 pkgname=gooseberry-bin
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Knowledge Base for the Lazy"
 url='https://github.com/out-of-cheese-error/gooseberry'
 arch=('i686' 'x86_64')
 license=('Apache')
 depends=()
-optdepends=('bat: colored pkgbuild printing')
+optdepends=('bat: display highlighted markdown in the terminal')
 provides=('gooseberry')
 source=("https://github.com/out-of-cheese-error/gooseberry/releases/download/$pkgver/gooseberry-linux.tar.gz")
-sha256sums=('a3d409ea4de1f69d65172d1d0d01edcd3afac373aec52e7675856f5bf961cfa8')
+sha256sums=('edd45a3dc000fbf25faf2693748c1567950177e0edff61ea0218ad011b78066d')
 
 package() {
   cd "$srcdir/"
