@@ -2,7 +2,7 @@
 
 pkgname=citramanik-qt-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Your next way to export your Inkscape work for all purpose quickly"
 arch=("x86_64")
 url="https://citramanik.dev-is.my.id"
@@ -26,7 +26,7 @@ package() {
 	install -d "${pkgdir}"/usr/share/{applications,icons}
 	install -Dm755 "${srcdir}"/output/usr/local/bin/citramanik-qt "${pkgdir}"/usr/bin/citramanik-qt
 	install -Dm644 "${srcdir}"/output/usr/share/applications/citramanik-qt.desktop "${pkgdir}"/usr/share/applications/citramanik-qt.desktop
-	cp -r "${srcdir}"/output/usr/share/icons "${pkgdir}"/usr/share/icons
+	cp -r "${srcdir}"/output/usr/share/icons "${pkgdir}"/usr/share/
 	sed -i "s#usr/local/bin#usr/bin#" "${pkgdir}"/usr/share/applications/citramanik-qt.desktop
 }
 
