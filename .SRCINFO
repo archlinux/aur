@@ -1,0 +1,17 @@
+pkgbase = maxx-desktop
+	pkgdesc = MaXX Interactive Desktop
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://docs.maxxinteractive.com/
+	install = maxx-desktop.install
+	arch = x86_64
+	license = custom
+	depends = libjpeg6
+	depends = ncurses5-compat-libs
+	noextract = MaXX-Desktop-v2.1.1-LINUX-x64-tar.xz
+	options = !strip
+	source = https://s3.ca-central-1.amazonaws.com/cdn.maxxinteractive.com/maxx-desktop-installer/MaXX-Desktop-v2.1.1-LINUX-x64-tar.xz
+	sha256sums = 3214e75cfde9c5408b57437c33b88469c0df387ab4f9b6bd99236c85ef02a9f9
+
+pkgname = maxx-desktop
+

@@ -1,0 +1,8 @@
+
+post_install() {
+  echo "==> Remember to install or upgrade your user configuration files!"
+}
+
+post_upgrade() {
+  post_install
+}
