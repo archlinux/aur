@@ -1,16 +1,18 @@
 #!/hint/bash
 # Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
+
+
 pkgname=openboard-develop
 pkgver=1.6.1
 _rc=0309
 _src_folder="OpenBoard-${pkgver}rc-${_rc}"
 pkgrel=1
-pkgdesc="Interactive whiteboard software for schools and universities"
+pkgdesc="Interactive whiteboard software for schools and universities (development version)"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
-provides=(${pkgname%-develop}=${pkgver})
-conflicts=(${pkgname%-develop})
+provides=("${pkgname%-develop}=${pkgver}")
+conflicts=("${pkgname%-develop}")
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
 depends+=(quazip)  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
@@ -27,8 +29,11 @@ sha256sums=('34e811bda1939371c3713d86baf2034398b3a193183edea7fc2c267d4a008fc5'
 
 prepare() {
   cd "$srcdir"/$_src_folder
+  msg2 "drop_ThirdParty_repo"
   patch -p1 < "$srcdir"/drop_ThirdParty_repo.patch
+  msg2 "qchar"
   patch -p1 < "$srcdir"/qchar.patch
+  msg2 "quazip"
   patch -p1 < "$srcdir"/quazip.patch
 }
 
