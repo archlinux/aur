@@ -18,7 +18,7 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=2.93.r103756.gc53022768b1
+pkgver=2.93.r105263.ga425b2b25c0
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
