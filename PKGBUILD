@@ -17,8 +17,9 @@
 
 _qt_module=qtbase
 pkgname=mingw-w64-qt5-base
-pkgver=5.15.2
+pkgver=5.15.2+kde+r172
 pkgrel=1
+_commit=cfa90a94f95510711e25920e7742b37faa2f4843
 pkgdesc='A cross-platform application and UI framework, native OpenGL backend (mingw-w64)'
 arch=('i686' 'x86_64')
 url='https://www.qt.io/'
@@ -30,11 +31,11 @@ optdepends=('mingw-w64-mesa: use LLVMpipe software rasterizer for Qt Quick'
             'mingw-w64-postgresql: PostgreSQL support'
             'mingw-w64-mariadb-connector-c: MySQL support')
 makedepends=('mingw-w64-gcc' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
-             'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'mingw-w64-environment')
+             'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'mingw-w64-environment' 'git')
 groups=('mingw-w64-qt5')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
-_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+_pkgfqn=${_qt_module}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Adjust-win32-g-profile-for-cross-compilation-with-mi.patch'
         '0002-Ensure-GLdouble-is-defined-when-using-dynamic-OpenGL.patch'
         '0003-Fix-too-many-sections-assemler-error-in-OpenGL-facto.patch'
@@ -66,52 +67,56 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0029-Hardcode-linker-flags-for-platform-plugins.patch'
         '0030-Fix-linking-against-static-plugins-with-qmake.patch'
         '0031-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch')
-sha256sums=('909fad2591ee367993a75d7e2ea50ad4db332f05e1c38dd7a5a274e156a4e0f8'
-            'b3b49e5580f296f993a0aba0b34bd5ae2399f8d1809456878c1881451b14c27e'
-            '833b8fc2dd8f0bb4a914fb7f5018b28954752b2d54cec2388332885c929a9266'
-            'e49f91d9f8f56afc856a9e143feb4ad9cf54c804f773374e5ccb6d1fc264a7bc'
-            '944288f57ac8cc9063a75a3a6b421c20a3e8b02a5fd5294f7da7df28c840302b'
-            'b421b77303f6f03682c04f1bd1c2c63e07b120dc724de93a9248330d0080ee26'
-            '595fe18bbefb6f7e271a9daeefbd008d6350ef44b16b4b72c4d3183ba14509ee'
-            '238900f33394be14378b58445abe28dcd66343ed4f0760c8f944508c02ae831b'
-            'bbde0b8ac3a9639a90e2937367deb769ea39ee55b036995a253ec8fdd1d2bd2c'
-            '859c065f54819266b33bab6b57f76f8c21065a48ff36104b191e218e31f20f9e'
-            '896c0b0d346f271f90609c6b49490ee86d3076ae620af1127503ee397a7664bb'
-            '15c69cd06b6e28100ad118ed045abef670acd41609351cd8e2652f1aeec9c8c4'
-            '499b3a1177e2340b5063553452b0a9a44f232e47839f03087939f52da38d0548'
-            'bbe45a397cbc4c0303125937710e305c6dbb0e4a8713b4a520ff820208295ea8'
-            '3fedd43cccc7000271766f7b4ff85efafc9c65ce3b9f40f4c443a0f352518631'
-            '2b4854083457f85a82e8f05c23d3983095ff8aa1d1e0ea5cfe1f7e9731b061f8'
-            '6d4dc98c2b9e0ed743332797e1511262bda3b240e4685c2150a40415650c78f0'
-            '27b0eb4795713e1c6804dbb446970684c19cc2797f9e371eb2605c852d404b05'
-            '0fa5c3b49425cfb357e9d04bf993e065174d8b44e450dd134aa24187ed66e0e1'
-            'd990f99f04dcf52cae5d7f6dd4394aae778683c2d9ebcb41b485129af8c2cf2f'
-            '7a395f7e9f26a650e09ad4b35563d5cb46c34dfae1c7de2f4dcf0e86f9dd1927'
-            'd38cbc2d4566a3915475fa29ae2982173cd1339abdbff292f5cd520c7c741039'
-            '2b90d5b001da77692805a8fc9f6ac77ed8d3bfce48f52c89be1b13e915b5ef7c'
-            '5b973e490c3bbbc3aba7bf2b4fa704c38f92601c7736b483334025e2fc913285'
-            '73683e5bc8672c09c7c4e86b4787bbb5792570a511768509db6c7a7f45a58109'
-            'cc8d458974c5168a7956d4682a63b0c15f9918256820ae908b88e5dd18d95811'
-            '3cb99ad9d910bad53ad8565d0be2fb6bb4a0d1075dbb73fd85cb2ffbe404d73e'
-            'ea31c31ccbd47f6d77a1cf00768a9c247b368d79e3ba19dca4854c29f1a69a69'
-            'e6ed01492dacf7367d8f444eb00e2bcdae1fc3b3f1648858e6e379b1565f8943'
-            'd4cd03c966a6a1c37ce21f9e6bbd9deaadbb62f31a1a652ac12cd48a651fc47d'
-            'd9f55e93cfde4bd6d46744697ae846490912342bdb84ad8c4ba0cf7689b472ab'
-            'd5478d6cbcb1067bf1b8e3e52210f1416d734303e387facb165b92f281789436')
+sha256sums=('SKIP'
+            '07ca76c848991c2e34e021626374812aad040e210413c84e1ab372f79bc5733b'
+            'f271f7509c97e9f3de2d11c887c03be7e58c39b9eafd83691400a87143a86324'
+            '3fedd054e1dd439664aec2225de903c2d235c62113be69d361908466838e8c55'
+            'a57715bf58b66ffdb2e67d9ba5ae437a6f627a144cd759cfaa9726d2151a6a61'
+            '934bd614407ff0e6c0366a765d93cd0854e23169cc2c6e69f789ef3d14095fea'
+            '60def68fdbba857ab22eafc05d0e97b6aa43a0b13903e852902958d2cb847010'
+            '3f8fcde556f9ed718e1c2fdc466ec787fc639f83afba4b71ba125dfc2b0e74d0'
+            'ec12dff066a5af6e034cae56984a275576790a6c52512e78d792b0d14503b319'
+            '26aaff027ba16ba61b7b4684a97f7595eef811c49e9263e5ba88ba6b51e4fcb9'
+            'bde7b7b5e8d32814b26e5a46750c8d5e0e83047d335c94cbbc0b485e9b96a188'
+            '00b5e1bce87c62bc61cac71654ee5dbe57ea005fc8e7ff7206c936699e199747'
+            '93b2db5134581d8312996ae1eadc834ddc5fc394aaf88532554eea8f0936506f'
+            '09bc39fa186fc4bed14cb3f589d8b77e10e3bf7a904dba43758805124e1d3787'
+            '5e6ddbcd6ab35fcf3e75bb353bc10fe258e8e1753456ba55d65f8ba5667d1c7f'
+            'd86b3cf81608819c7d371681f293f3168ce6198368441c916505f1efa1f6ad7d'
+            '5d7eaaeec84a23b9db12e2998c099ceddd853d2d819018bbad472e77ecd72429'
+            '8ec002dfe54c83be1fac8bf5a3badb611230fba8ce91eb33bd26cd06b6ecec63'
+            'c06f2a6a2bfffffea82fef8023039821fa2869a95af4a31bfd4224ee50cfa78c'
+            '6d3c73791781ba99f48658bf65f446e4e8b94b1327d901f3fa34e3cf9c07c176'
+            'b9ddaa27fa95aeb8dce1fb38950ae095e5c60a5c9bcef4f46138fc1fa1824807'
+            'bab619655a585095269a5250170900d0dbce7ac6b20586d3ca468e914c39a8d4'
+            '3ebe50b4d7e436e0bdf396bba04f6c7dc79ca7e62b392cc2f3cdc8b898218682'
+            '19e1b928c03fa58dca7b5e27d97b7829ee28af280cf857f520d1e6a04e528ad5'
+            '77e7cf6a9ab87b76fd0d0f0e1c2948ad49db1fb1972887ad46a8ae179c627354'
+            '232d3dcb1d13d4961ca6a35ff5897aa633bca12f4425a35eea990759124b238d'
+            '51fb2c38a41133fc816a16bd74cc2ba93b1b8ca4e456bba42b2ffe3e36aa8e80'
+            'f1148c997a0d727b7b640594543196d8226f2f8c7df5c849523c8bbe9c37ad45'
+            '5a74594feb11c0c078ad4bbcefe662e54fc2a451ae7972a20247597ed392c1de'
+            '70198d0a35338cb56c4aad5ad1789a915a5b628a3e3b780f2767fbd30ef7e31d'
+            '7413278602ea7f9fc80d749d5008d029e775b191994c71ff78f5de5f780e2e3b'
+            '1e2900354c1a6c38e87eff51a96099473827d6c70530dd63b036bdb7ba7ab2fa')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
+
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
+
+  git revert -n 6344955d17e17e2398720fe60c34cfc2a4a95208 # Revert version bump
 
   # apply patches; further descriptions can be found in patch files itself
   for patch in "$srcdir/"*.patch; do
     msg2 "Applying patch $patch"
     patch -p1 -i "$patch"
   done
-
-  # make sure the Qt 5 build system uses our external PCRE library and zlib
-  rm -rf src/3rdparty/{pcre,zlib}
 
   # clear buildflags ('!buildflags' only effects build() but not prepare())
   unset CPPFLAGS CFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_PATH

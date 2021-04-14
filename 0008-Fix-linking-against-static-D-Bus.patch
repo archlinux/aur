@@ -1,4 +1,4 @@
-From be0366f6b3d32f5c80038eca7d0c7ddd5375aa85 Mon Sep 17 00:00:00 2001
+From 81a8053aafc7f2111ecdc0a07d4f5e062fd19f70 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
 Subject: [PATCH 08/31] Fix linking against static D-Bus
@@ -9,7 +9,7 @@ Subject: [PATCH 08/31] Fix linking against static D-Bus
  2 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/configure.json b/configure.json
-index c273aeeef1..57c40030d8 100644
+index 4a7c50f684..fedc80fa18 100644
 --- a/configure.json
 +++ b/configure.json
 @@ -190,18 +190,23 @@
@@ -54,5 +54,5 @@ index accaa4f5ed..4b11c74caa 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.29.2
+2.31.1
 

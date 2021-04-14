@@ -1,13 +1,15 @@
-From d7d5e89ed1d5b7ea3962588eb719a85c85356f09 Mon Sep 17 00:00:00 2001
+From 1af55162492b245d789b9d76234eeef3d0fed5f6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
 Subject: [PATCH 29/31] Hardcode linker flags for platform plugins
 
 Otherwise incorrect order of libs leads to errors
 when building libqminimal.dll, libqoffscreen.dll,
-libqwindows.dll and libqdirect2d.dll
+libqwindows.dll and libqdirect2d.dll. Unfortunately
+this workaround leads to hardcoding include flags
+as well.
 
-Change-Id: Ibff901ecce864ae8d5ca2adbe37bcec28e5912f3
+Change-Id: I1863d184cff744d2c02e15875e1d108d32ea7861
 ---
  src/plugins/platforms/direct2d/direct2d.pro   | 39 +++++++++++++++---
  src/plugins/platforms/minimal/minimal.pro     | 17 +++++++-
@@ -16,7 +18,7 @@ Change-Id: Ibff901ecce864ae8d5ca2adbe37bcec28e5912f3
  4 files changed, 93 insertions(+), 19 deletions(-)
 
 diff --git a/src/plugins/platforms/direct2d/direct2d.pro b/src/plugins/platforms/direct2d/direct2d.pro
-index 6e73bd14f9..0829c75bd2 100644
+index 6e73bd14f9..8046e73d61 100644
 --- a/src/plugins/platforms/direct2d/direct2d.pro
 +++ b/src/plugins/platforms/direct2d/direct2d.pro
 @@ -1,12 +1,41 @@
@@ -39,35 +41,35 @@ index 6e73bd14f9..0829c75bd2 100644
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION} \
-+    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}/QtThemeSupport \
-+    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION} \
++    $$QT_BUILD_TREE/include/QtThemeSupport/$${QT_VERSION}/QtThemeSupport \
++    $$QT_BUILD_TREE/include/QtThemeSupport/$${QT_VERSION}
 +# Same for private support libs for accessibility and vulkan, if those are enabled
 +qtConfig(accessibility) {
 +    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5AccessibilitySupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += \
-+        $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}/Qt5AccessibilitySupport \
-+        $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
++        $$QT_BUILD_TREE/include/QtAccessibilitySupport/$${QT_VERSION}/Qt5AccessibilitySupport \
++        $$QT_BUILD_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
 +}
 +qtConfig(vulkan) {
 +    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5VulkanSupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += \
-+        $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}/Qt5VulkanSupport \
-+        $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}
++        $$QT_BUILD_TREE/include/QtVulkanSupport/$${QT_VERSION}/Qt5VulkanSupport \
++        $$QT_BUILD_TREE/include/QtVulkanSupport/$${QT_VERSION}
 +}
 +# Also add Qt5WindowsUIAutomationSupport - it seems to link against it
 +LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5WindowsUIAutomationSupport.$${QMAKE_EXTENSION_STATICLIB}
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}/Qt5WindowsUIAutomationSupport \
-+    $$QT_SOURCE_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}
++    $$QT_BUILD_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}/Qt5WindowsUIAutomationSupport \
++    $$QT_BUILD_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}
  
  LIBS += -ldwmapi -lversion
  QMAKE_USE_PRIVATE += gdi32 dwrite_1 d2d1_1 d3d11_1 dxgi1_2
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
-index a1a2da547b..74ced58662 100644
+index a1a2da547b..9fd5c4fca2 100644
 --- a/src/plugins/platforms/minimal/minimal.pro
 +++ b/src/plugins/platforms/minimal/minimal.pro
 @@ -1,8 +1,21 @@
@@ -86,16 +88,16 @@ index a1a2da547b..74ced58662 100644
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}
 +
  
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/offscreen/offscreen.pro b/src/plugins/platforms/offscreen/offscreen.pro
-index f226132592..cac8a007b8 100644
+index f226132592..592fa7406f 100644
 --- a/src/plugins/platforms/offscreen/offscreen.pro
 +++ b/src/plugins/platforms/offscreen/offscreen.pro
 @@ -1,8 +1,20 @@
@@ -114,15 +116,15 @@ index f226132592..cac8a007b8 100644
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}
  
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/windows/windows.pro b/src/plugins/platforms/windows/windows.pro
-index 50a3bb41a9..53c011642f 100644
+index 50a3bb41a9..02f74650a9 100644
 --- a/src/plugins/platforms/windows/windows.pro
 +++ b/src/plugins/platforms/windows/windows.pro
 @@ -1,15 +1,35 @@
@@ -149,28 +151,28 @@ index 50a3bb41a9..53c011642f 100644
 +    -lfreetype -lole32 -lgdi32 -ldwmapi
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION} \
-+    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}/QtThemeSupport \
-+    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION}/QtEventDispatcherSupport \
++    $$QT_BUILD_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}/QtFontDatabaseSupport \
++    $$QT_BUILD_TREE/include/QtFontDatabaseSupport/$${QT_VERSION} \
++    $$QT_BUILD_TREE/include/QtThemeSupport/$${QT_VERSION}/QtThemeSupport \
++    $$QT_BUILD_TREE/include/QtThemeSupport/$${QT_VERSION}
 +# Same for private support libs for accessibility and vulkan, if those are enabled
 +qtConfig(accessibility) {
 +    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5AccessibilitySupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += \
-+        $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}/Qt5AccessibilitySupport \
-+        $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
++        $$QT_BUILD_TREE/include/QtAccessibilitySupport/$${QT_VERSION}/Qt5AccessibilitySupport \
++        $$QT_BUILD_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
 +}
 +qtConfig(vulkan) {
 +    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5VulkanSupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += \
-+        $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}/Qt5VulkanSupport \
-+        $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}
++        $$QT_BUILD_TREE/include/QtVulkanSupport/$${QT_VERSION}/Qt5VulkanSupport \
++        $$QT_BUILD_TREE/include/QtVulkanSupport/$${QT_VERSION}
 +}
  
  include(windows.pri)
  
 -- 
-2.29.2
+2.31.1
 

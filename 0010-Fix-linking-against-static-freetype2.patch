@@ -1,4 +1,4 @@
-From 8a8da9fb5e44acf747985254b8e4a0e663397c15 Mon Sep 17 00:00:00 2001
+From 82af201a622c806d9a26e5f2710ad1391034a957 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
 Subject: [PATCH 10/31] Fix linking against static freetype2
@@ -8,7 +8,7 @@ Subject: [PATCH 10/31] Fix linking against static freetype2
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index be519a6d39..d74fd3bc24 100644
+index 7a5fc6ce7a..b117f6fff6 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -238,8 +238,11 @@
@@ -26,5 +26,5 @@ index be519a6d39..d74fd3bc24 100644
                  { "libs": "-lfreetype" }
              ],
 -- 
-2.29.2
+2.31.1
 
