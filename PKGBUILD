@@ -51,7 +51,7 @@ _major=5.11
 _minor=14
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,7 +72,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v9/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch"
          # the main kernel config files
         'config')
 
@@ -312,7 +316,11 @@ sha512sums=('8dfc7ff184e5cb33fff74686071f1605f3a834669e201d272f3047aa00657339ec1
             'SKIP'
             '9d38c5672d6e6a08c02e6713b58e03898acdef3f75bb1a96ecd657606d29a69a8cf81bff18af0f56dd75311c5d61c330bbd89a3165bc0e5c6b48b37172716fc9'
             'a7e40cb83439c3b1f62f7e8c8b31b921914d030291a3b70cc3d4093a80653040a977a4cb7c9c032d8207c2080bbb30d5ca4e38dec1d9fdf28596bfed555a0e2a'
-            '14b28af9ba68e82aaba77a7a857f8ba5d71f862f6d008fcd416e455f0dcca61c51d3ad0ec4867c06e0bb273a6a28b50f07f20552acc1ed46aead8a1dc09bba22'
+            '4d9f5419f41e0f5a937c077e3c0ee605c08f65b54e1e07affa84cb1d9d68cf59cbffdcac79b40a62fe14fbdea4b34521f9e43786f29b40044d156fa5375d3e8a'
+            'bdf872b8cc237730c2a174771d65e2d1c261cdb5c2359a8e0af88aeedc76dc510b86602941e0a7819d388163fb2ee2c0053ff79348b641c46d282c4dc11a42ca'
+            'fe0e8f597d20e44344787f267913544256ff4a9545f08dd5d7dc3eb15240c570a127b34328ab62e958dd47d85c82ff2b24e16f00e05175b6b6e88960c3f84de3'
+            'a6700231756b7fe28e78234a5b02bed96d53d198e5af67c411a2f6a2d32f79b5d1afea3931947d6f4b800976553db3d5b3d56467fa214a391a998a77abf88012'
+            '4ee0cf7e6eaba3ceb1887012a93a3e87f04b16e8a88c07de5d7242de872b03868a9780f283a93fea86c39c32b0da9108023b3e19fa056147922e0da1a9d0ccdb'
             '083e9ef7989ad69f27c62a9d3a5a20959baa262df58a790d66b9be03854134a02e624cfebf150ee96a96f47d8af5c5bc3c85380bef3f89a12919f21e1a2c40b9')
 
 validpgpkeys=(
