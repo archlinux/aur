@@ -75,7 +75,6 @@ plugin:
     type: forward
     args:
       upstream:
-        - addr: https://dns.google/dns-query
         - addr: https://1.0.0.1/dns-query
         - addr: https://1.1.1.1/dns-query
         - addr: https://2606:4700:4700::1111/dns-query
