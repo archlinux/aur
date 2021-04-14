@@ -3,8 +3,8 @@
 # Contributor: willemw
 
 pkgname=routeconverter
-pkgver=2.28
-pkgrel=2
+pkgver=2.29
+pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
 url="http://www.routeconverter.de/en"
@@ -47,5 +47,5 @@ package()
 md5sums=('e4cdc9db82a9f8c550afb44f851d897f'
          'a9e4b76c2aa26c6a0b7a9474964c9648'
          'fdf570309917df1c1536b7e3c7740b33'
-         'af080a31ea386f0a96cfc126460aefe6'
-         '3bf1e3a14257b97f4e767269b85bf9af')
+         '201fdb8a73571b331a486c582ba2ff4d'
+         '88c5cceb74c68771f1cf1b502d04495c')
