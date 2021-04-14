@@ -27,13 +27,13 @@ package() {
     cp -r "${srcdir}/unofficial-homestuck-collection-${pkgver}/" "${pkgdir}/opt/unofficial-homestuck-collection/"
 
     mkdir -p "${pkgdir}/usr/share/licenses/unofficial-homestuck-collection/"
-    ln -s "${srcdir}/unofficial-homestuck-collection-${pkgver}/LICENSES.chromium.html" \
+    ln -s "/opt/unofficial-homestuck-collection/LICENSES.chromium.html" \
         "${pkgdir}/usr/share/licenses/unofficial-homestuck-collection/LICENSES.chromium.html"
-    ln -s "${srcdir}/unofficial-homestuck-collection-${pkgver}/LICENSE.electron.txt" \
+    ln -s "/opt/unofficial-homestuck-collection/LICENSE.electron.txt" \
         "${pkgdir}/usr/share/licenses/unofficial-homestuck-collection/LICENSE.electron.txt"
 
     mkdir -p "${pkgdir}/usr/bin/"
-    ln -s "${pkgdir}/opt/unofficial-homestuck-collection/unofficial-homestuck-collection" \
+    ln -s "/opt/unofficial-homestuck-collection/unofficial-homestuck-collection" \
         "${pkgdir}/usr/bin/unofficial-homestuck-collection"
 
     mkdir -p "${pkgdir}/usr/share/applications/"
