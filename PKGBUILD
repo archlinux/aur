@@ -24,10 +24,9 @@ conflicts=('hyperspy-gui-traitsui')
 provides=('hyperspy-gui-traitsui')
 
 source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v$pkgver.tar.gz)
-sha256sums=('7f957cefc2b7f97043e4604ae3e1e54a50ba352fce0d40a44d97a4cc499e078e')
 
 package() {
   cd "$srcdir/$pkginst-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-sha256sums=('7f957cefc2b7f97043e4604ae3e1e54a50ba352fce0d40a44d97a4cc499e078e')
+md5sums=('64e4f4f710d5809274981bf3253dec39')
