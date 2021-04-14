@@ -2,7 +2,7 @@
 
 pkgname=rofimoji-git
 pkgver=5.1.0.r7.g064a596
-pkgrel=1
+pkgrel=2
 pkgdesc='Character picker for rofi'
 arch=('any')
 url=https://github.com/fdw/rofimoji
@@ -38,14 +38,18 @@ prepare() {
 build() {
   cd rofimoji
   export PIP_CONFIG_FILE=/dev/null
-  pip wheel --no-deps .
+  pip wheel --isolated --no-deps .
 }
 
 package() {
   cd rofimoji
   export PYTHONHASHSEED=0
   export PIP_CONFIG_FILE=/dev/null
-  pip install --root="$pkgdir" --no-warn-script-location *.whl
+  pip install --isolated \
+              --no-deps \
+              --root="$pkgdir" \
+              --ignore-installed \
+              --no-warn-script-location dist/*.whl
   install -Dm644 -t "$pkgdir"/usr/share/man/man1 src/picker/docs/rofimoji.1
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")

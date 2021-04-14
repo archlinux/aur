@@ -1,7 +1,7 @@
 pkgbase = rofimoji-git
 	pkgdesc = Character picker for rofi
 	pkgver = 5.1.0.r7.g064a596
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fdw/rofimoji
 	install = rofimoji-git.install
 	arch = any
