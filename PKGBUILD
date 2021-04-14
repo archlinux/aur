@@ -5,22 +5,23 @@ pkgname='passman++'
 pkgdesc='Incredibly simple and secure command-line password manager'
 url="https://github.com/binex-dsk/$_pkgname/"
 license=('GPL')
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 source=("https://github.com/binex-dsk/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('594a233a3219a6760e6e7614617d0fee')
+md5sums=('c4129adfd5a1414967df049eba82c47d')
 provides=('passman')
 conflicts=('passman-git' 'passman++-devel' 'passman++-lts')
 depends=('botan' 'qt6-base')
 arch=('x86_64')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    ./build.sh
+    cd $srcdir/$_pkgname-$pkgver
+    cmake -S . -B build -DCMAKE_INSTALL_BINDIR="/usr/bin/" -DCMAKE_INSTALL_DATAROOTDIR="/usr/share/"
+    cmake --build build
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    install -Dm755 passman $pkgdir/usr/bin/passman
+    cd $srcdir/$_pkgname-$pkgver
+    cmake --build build --target install -- DESTDIR="$pkgdir"
 }
 
