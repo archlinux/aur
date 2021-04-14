@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=python-rtoml
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A better TOML library for python implemented in rust."
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-setuptools-rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/samuelcolvin/rtoml/archive/v${pkgver}.tar.gz")
-sha256sums=('d97c373e00bc29919488dccecf67dec7535e0c68fb48d8eac92bd8338c567fb8')
-b2sums=('7541422317f8d2b55ed2fed01ad6a69cdcac04f80df76c7a1ad9929a56e89b2934032e61aba717745a7b7c40ed4ee9ea92f2a2ec8e65556a0f3a6229c4e5674e')
+sha256sums=('9370a210c88c7e985b4cc40b3ae2fb0837ea643447df2544b4bac7eecf614147')
+b2sums=('e9bf70e108d8d450d048dd049df956ba0668da6eda782b5a6a4e324a375a8ebe7ff6efb249b9a17c3c39bf7dce75a2181694b9031d68146be9d2a68713f9e6d5')
 
 check() {
   cd "rtoml-${pkgver}"
