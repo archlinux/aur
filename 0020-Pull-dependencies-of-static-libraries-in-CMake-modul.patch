@@ -1,4 +1,4 @@
-From 1b69d19dd9ef7d00a5eec9a22961c3232e19e5b1 Mon Sep 17 00:00:00 2001
+From 625df2d13ff194603a339e770c645489e2a52f9a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 20/31] Pull dependencies of static libraries in CMake modules
@@ -501,5 +501,5 @@ index b550a52c60..acbe1cc33b 100644
 +endif()
 \ No newline at end of file
 -- 
-2.29.2
+2.31.1
 

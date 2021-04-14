@@ -1,4 +1,4 @@
-From bd22c9c095f87d358ea2269bfdd19cc31078b0b1 Mon Sep 17 00:00:00 2001
+From f0d6651cfac8231a7f57a0f70300d439f56ed5fc Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/31] Merge shared and static library trees
@@ -139,10 +139,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 8e4d11484f..c73b19c144 100644
+index f45b6c9fd5..39221caf68 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3228,6 +3228,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3235,6 +3235,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -152,7 +152,7 @@ index 8e4d11484f..c73b19c144 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3404,11 +3407,11 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3411,11 +3414,11 @@ MakefileGenerator::writePkgConfigFile()
      t << Qt::endl;
  
      // requires
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.29.2
+2.31.1
 

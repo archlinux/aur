@@ -1,4 +1,4 @@
-From 0084c7966f46b5a64cac040a8c50c793ba680930 Mon Sep 17 00:00:00 2001
+From ee3bd9b4ff71e2f8f923245f61294284c7085d8a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:50:21 +0200
 Subject: [PATCH 23/31] Use correct pkg-config --static flag
@@ -22,5 +22,5 @@ index 53c67f885b..8934b72291 100644
      $$qtConfEvaluate("features.cross_compile") {
          # cross compiling, check that pkg-config is set up sanely
 -- 
-2.29.2
+2.31.1
 
