@@ -2,7 +2,7 @@
 
 pkgname=aminal-git
 pkgver=r423.8a56135
-pkgrel=2
+pkgrel=3
 pkgdesc="Golang terminal emulator from scratch"
 url="https://github.com/liamg/aminal"
 arch=('x86_64' 'i686')
@@ -26,16 +26,21 @@ prepare() {
 	cd "${srcdir}/go/src/github.com/liamg/aminal"
 
 	export GOPATH="${srcdir}/go"
+	export GO111MODULE=auto
+
 	go get -v ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/liamg/aminal"
 
+	export GOPATH="${srcdir}/go"
+	export GO111MODULE=auto
+
 	mkdir -p build
 
-	export GOPATH="${srcdir}/go"
-	go build -ldflags "-s -w" \
+	go build \
+		-ldflags="-s -w -X 'github.com/liamg/aminal/version.Version=${pkgver}'" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
 		-o build/aminal .
