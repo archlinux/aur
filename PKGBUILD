@@ -2,7 +2,7 @@
 
 _pkgname=srsly
 pkgname=python-${_pkgname}
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Modern high-performance serialization utilities for Python"
 arch=(i686 x86_64 armv7 aarch64)
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e29730be53015970e4a59050e8e9f9be44d762108a617df56c9dfc981b515ab7')
+sha256sums=('b0f2aec0a329e6e7e742a0a60e99a74968ca29be71f35c5c4de221e328176926')
 
 build() {
 	cd "srsly-${pkgver}"
