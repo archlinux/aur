@@ -1,9 +1,10 @@
 # Maintainer: Adria Arrufat <swiftscythe@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Kamil Cukrowski <kamilcukrowski@gmail.com>
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.12.1+48078+gfe0dcca7437
+pkgver=1.12.1+54837+g03796cf1dda
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -42,7 +43,9 @@ prepare() {
 
   [ -d ${srcdir}/tensorflow-cuda ] && rm -rf ${srcdir}/tensorflow-cuda
     cp -r ${srcdir}/tensorflow ${srcdir}/tensorflow-cuda
+}
 
+_set_build_env() {
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
   export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
@@ -96,6 +99,7 @@ prepare() {
 }
 
 build() {
+  _set_build_env
   cd ${srcdir}/tensorflow
   export CC_OPT_FLAGS="-march=native -O3"
   export TF_NEED_CUDA=0
