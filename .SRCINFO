@@ -1,6 +1,6 @@
 pkgbase = python-domain-connect-dyndns
 	pkgdesc = Python client library for Dynamic DNS using Domain Connect
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/Domain-Connect/DomainConnectDDNS-Python
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-domain-connect-dyndns
 	depends = python-requests
 	depends = python-dnspython
 	depends = python-domain-connect
-	source = python-domain-connect-dyndns-0.0.8.tar.gz::https://github.com/Domain-Connect/DomainConnectDDNS-Python/archive/v0.0.8.tar.gz
-	md5sums = 9ec626ce5189e4072d723f2e25a40ed1
+	source = python-domain-connect-dyndns-0.0.9.tar.gz::https://github.com/Domain-Connect/DomainConnectDDNS-Python/archive/v0.0.9.tar.gz
+	md5sums = 863043794bd076ec154d320ddb294025
 
 pkgname = python-domain-connect-dyndns
 

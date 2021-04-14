@@ -3,7 +3,7 @@
 _pkgname=domain-connect-dyndns
 _pkgname_gh=DomainConnectDDNS-Python
 pkgname=python-${_pkgname}
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Python client library for Dynamic DNS using Domain Connect'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-md5sums=('9ec626ce5189e4072d723f2e25a40ed1')
+md5sums=('863043794bd076ec154d320ddb294025')
 
 build() {
 
