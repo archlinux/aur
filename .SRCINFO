@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-amd-full
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features for AMD)
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ffmpeg.org/
 	arch = x86_64
 	license = custom: nonfree and unredistributable
@@ -107,6 +107,7 @@ pkgbase = ffmpeg-amd-full
 	depends = libopenmpt-svn
 	depends = librist
 	depends = shine
+	depends = uavs3d-git
 	depends = vo-amrwbenc
 	depends = xavs
 	depends = xavs2

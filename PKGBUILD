@@ -30,7 +30,7 @@ depends=(
         'libomxil-bellagio' 'libdrm' 'libva' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'librist' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 
+        'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' 
         'pocketsphinx' 'lensfun-git'
 )
 makedepends=(
