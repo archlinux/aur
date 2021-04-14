@@ -2,8 +2,8 @@
 
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
-pkgver=r10100.2eabfee52
-pkgrel=1
+pkgver=k1.4.0.g2eabfee52
+pkgrel=2
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Dev branch"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -80,7 +80,7 @@ sha512sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/-/./g'
 }
 
 prepare() {
