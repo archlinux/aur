@@ -1,12 +1,13 @@
 pkgbase = sponskrub
 	pkgdesc = Scrub sponsor messages from youtube videos.
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/faissaloo/SponSkrub
 	arch = any
 	license = GPL3
 	makedepends = dub
 	makedepends = d-compiler
+	depends = ffmpeg
 	source = https://github.com/faissaloo/SponSkrub/archive/refs/tags/3.7.0.tar.gz
 	sha256sums = 857916cad429cce52b370d062a068a34112b97b4eb54da0dda9dc77d18e6b206
 
