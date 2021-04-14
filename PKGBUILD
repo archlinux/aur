@@ -9,7 +9,7 @@
 pkgname='xampp'
 _srcver='8.0.3'
 _binver=0
-pkgrel=1
+pkgrel=2
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
 # makepkg-friendly format MAJOR.MINOR.REVISION[.BUILD]-RELEASE (where the only
@@ -92,7 +92,7 @@ package() {
 	cd "${srcdir}"
 
 	# Package tree
-	msg 'Recreating package tree...'
+	msg 'Creating package tree...'
 	install -dm755 "${pkgdir}${_xampp_root}"
 	rsync -azq --remove-source-files \
 		"${srcdir}/${_pkgstring}/xampp_core_files/xampp_core_folder"/. \
@@ -138,11 +138,11 @@ package() {
 
 	# Systemd files
 	install -dm755 \
-		"${pkgdir}/etc/systemd/system" \
+		"${pkgdir}/usr/lib/systemd/system" \
 		"${pkgdir}/usr/lib/sysusers.d" \
 		"${pkgdir}/usr/lib/tmpfiles.d"
 
-	sed "${_sed_subst}" "${srcdir}/xampp.service.in" > "${pkgdir}/etc/systemd/system/xampp.service"
+	sed "${_sed_subst}" "${srcdir}/xampp.service.in" > "${pkgdir}/usr/lib/systemd/system/xampp.service"
 	install -Dm644 "${srcdir}/xampp.sysusers" "${pkgdir}/usr/lib/sysusers.d/xampp.conf"
 	sed "${_sed_subst}" "${srcdir}/xampp.tmpfiles.in" > "${pkgdir}/usr/lib/tmpfiles.d/xampp.conf"
 
