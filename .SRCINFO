@@ -1,7 +1,7 @@
 pkgbase = qubes-core-agent-linux
 	pkgdesc = The Qubes core files for installation inside a Qubes VM.
 	pkgver = 4.0.61
-	pkgrel = 16
+	pkgrel = 17
 	url = https://github.com/QubesOS/qubes-core-agent-linux
 	arch = x86_64
 	license = GPL
@@ -17,9 +17,6 @@ pkgbase = qubes-core-agent-linux
 	makedepends = python-setuptools
 	makedepends = lsb-release
 	makedepends = pandoc
-	depends = sh
-	depends = qubes-vm-core
-	depends = usbutils
 	source = qubes-vm-core::git+https://github.com/QubesOS/qubes-core-agent-linux.git?signed#tag=v4.0.61
 	source = PKGBUILD.qubes-ensure-lib-modules.service
 	source = PKGBUILD.qubes-update-desktop-icons.hook
