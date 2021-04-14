@@ -3,7 +3,7 @@
 
 pkgname=tslint
 pkgver=6.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linter for the TypeScript language."
 arch=('any')
 url="http://palantir.github.io/tslint/"
@@ -14,7 +14,7 @@ source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
+  npm install -g --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.

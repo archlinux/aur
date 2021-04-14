@@ -1,7 +1,7 @@
 pkgbase = tslint
 	pkgdesc = A Linter for the TypeScript language.
 	pkgver = 6.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://palantir.github.io/tslint/
 	arch = any
 	license = Apache
