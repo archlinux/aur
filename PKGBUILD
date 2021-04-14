@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=zafiro-icon-theme-git
-pkgver=1.0.r20.gcbe5093
+pkgver=1.1.r26.gc6738ab
 pkgrel=1
 pkgdesc="Icon pack flat with light colors"
 arch=('any')
