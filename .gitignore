@@ -1,5 +1,5 @@
 src
 pkg
-tcl-nothreading
 *.gz
 *.pkg.tar.*
+tags
