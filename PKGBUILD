@@ -1,26 +1,26 @@
-# Maintainer : Immae <ismael.bouya@normalesup.org>
+# Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
+# Contributor: Immae <ismael.bouya@normalesup.org>
 # Contributor: Nayden Pendov <darkwolf1984@gmail.com>
 
 pkgname=eternallands-music
-pkgver=1.5.0
+pkgver=1.9.5.9
+version=${pkgver}-1
 pkgrel=1
 pkgdesc="Music files for Eternal Lands"
 url="http://www.eternal-lands.com/"
-depends=('eternallands>=1.5.0')
+depends=("eternallands>=${pkgver}")
 makedepends=('unzip')
 license=('custom:eternallands')
-arch=('i686' 'x86_64')
-source=('http://www.gm.fh-koeln.de/~linke/EL-Downloads/EL_music_full.zip')
-sha512sums=('dbd24cb20331d3640b3a5891faaf88aa0e71ba0564dfde347f2ea0fcb7e0f2700f1324ee8e988c551efb943183bbc823d4ee0373ed2b1f6d0300df76e25a524c')
+arch=('any')
+source=("https://github.com/raduprv/Eternal-Lands/releases/download/${version}/eternallands-music_${pkgver}.zip")
+md5sums=('95220e0df0be0eb4f2b9646cc5d6b7e5')
 
 package()
 {
   cd $srcdir
-  mkdir music
-  mv *.ogg music/
-  mv *.pll music/
+  mkdir -p music
+  mv *.ogg *.pll music/
 
-  #Install music files
   mkdir -p $pkgdir/usr/share/eternallands
   cp -R music $pkgdir/usr/share/eternallands/
 }
