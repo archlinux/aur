@@ -7,7 +7,6 @@ url='http://en.qi-hardware.com/wiki/Ben_WPAN'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('dkms')
-makedepends=('linux-headers')
 
 source=('Makefile'
 	'dkms.conf'

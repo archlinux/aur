@@ -7,7 +7,6 @@ pkgbase = dkms-atusb
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = linux-headers
 	depends = dkms
 	source = Makefile
 	source = dkms.conf
