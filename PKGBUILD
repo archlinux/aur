@@ -51,7 +51,6 @@ conflicts=('hyperspy')
 provides=('hyperspy')
 
 source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.tar.gz)
-sha256sums=('07dcee767d9c337cc78abbf4b7ffb7051402f0ef2a5296128aeef5774ab3b044')
 
 package() {
   cd "$srcdir/$pkgshort-$pkgver"
@@ -59,5 +58,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('9582a24d4c361ffcd87c995e4cb282733d39651e30d1e682999b3bdbccdce2db')
 sha256sums=('9582a24d4c361ffcd87c995e4cb282733d39651e30d1e682999b3bdbccdce2db')
