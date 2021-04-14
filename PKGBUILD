@@ -3,7 +3,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=sfsmisc
-_cranver=1.1-10
+_cranver=1.1-11
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.3.0')
 optdepends=(r-cluster r-lokern)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('4413a5e2ea728c86b402c7b1efea901e50f42fcb7f2b7d29d50d3f5930547dea')
+sha256sums=('c78aed92ce0239fd876b053291c77bb2ae979f01b4f30ec38e2f07a2c44ea3e2')
 
 build() {
   cd "${srcdir}"
