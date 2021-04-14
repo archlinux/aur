@@ -1,5 +1,5 @@
 src
 pkg
-cpupower
-*pkg.tar.xz
+gnome-shell-extension-cpupower-git
+*.pkg.tar.*
 tags

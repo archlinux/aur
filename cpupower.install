@@ -1,15 +1,13 @@
 post_install() {
-	/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
 	instructions_install
 }
 
 post_upgrade() {
-	/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
 	instructions_upgrade
 }
 
 post_remove() {
-	/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+	instructions_remove
 }
 
 instructions_install() {
@@ -25,6 +23,14 @@ instructions_upgrade() {
 	cat <<-EOT
 
 	Restart GNOME Shell ([Alt]+[F2], r) to load the upgraded extension.
+
+	EOT
+}
+
+instructions_remove() {
+	cat <<-EOT
+
+	Restart GNOME Shell ([Alt]+[F2], r) to unload the removed extension.
 
 	EOT
 }
