@@ -1,7 +1,7 @@
 pkgbase = fly-cli
 	pkgdesc = A command line interface for Concourse CI
-	pkgver = v7.1.0
-	pkgrel = 4
+	pkgver = v7.2.0
+	pkgrel = 5
 	url = https://github.com/concourse/concourse/tree/master/fly
 	arch = x86_64
 	license = Apache-2.0
@@ -9,8 +9,8 @@ pkgbase = fly-cli
 	conflicts = concourse-fly
 	conflicts = concourse-fly-bin
 	conflicts = concourse-fly-git
-	source = https://github.com/concourse/concourse/archive/v7.1.0.tar.gz
-	sha256sums = 4674205014f50d6469052830f01103ef861b8f79454a70c33da9b95bdaebea93
+	source = https://github.com/concourse/concourse/archive/v7.2.0.tar.gz
+	sha256sums = daf9201b04e8b3e9f48b7bd69e395405bf3eccddb80635514fb00762e6861f37
 
 pkgname = fly-cli
 
