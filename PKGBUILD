@@ -29,7 +29,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
             'optix=7.1.0: OptiX support in Cycles'
-            'usd=20.05: USD export Scene'
+            'usd=21.02: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 provides=('blender')
@@ -53,7 +53,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
+            '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
             '6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f')
 
 pkgver() {
@@ -99,7 +99,7 @@ build() {
   fi
 
   # check for universal scene descriptor
-  _USD_PKG=`pacman -Qq usd=20.05 2>/dev/null` || true
+  _USD_PKG=`pacman -Qq usd=21.02 2>/dev/null` || true
   if [ "$_USD_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_USD=ON
                     -DUSD_ROOT=/usr )
