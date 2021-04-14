@@ -15,7 +15,6 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 )
 
 #some extra, unofficially supported stuff goes here:
-_CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
