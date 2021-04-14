@@ -14,8 +14,8 @@ if [ ! -d "$WINEPREFIX" ] ; then
    wine wineboot
    #install dependency
    winetricks -q vcrun2015
-   # symlink needed elster files
+   # symlink needed meshmixer files
    ln -s "$INSTALL_DIRECTORY" "$WINEPREFIX"/drive_c/Program\ Files/meshmixer
 fi
-# run elster
-wine "$WINEPREFIX"/drive_c/Program\ Files/meshmixer/meshmixer.exe "$@"
+# run meshmixer
+wine64 "$INSTALL_DIRECTORY/meshmixer.exe" "$@"

@@ -3,7 +3,7 @@
 pkgname='meshmixer-wine'
 pkgver=3.5
 _pkgver=$(echo $pkgver | sed 's/\./p/g')
-pkgrel=1
+pkgrel=2
 pkgdesc="Meshmixer is state-of-the-art software for working with triangle meshes"
 arch=('x86_64')
 url="http://www.meshmixer.com"
@@ -14,7 +14,7 @@ makedepends=(p7zip imagemagick icoutils)
 source=(meshmixer
 	meshmixer.desktop
 	${url}/downloads/Autodesk_Meshmixer_v${_pkgver}_Win64.exe)
-sha256sums=('6acb3da26ad7b8c88b76220acff9741ec8c8737c0522ac1153aec63ccf725986'
+sha256sums=('07bb0d678fc153c60f51a30176ca557d4533f6163b29a320855eeaf8afc45e93'
             'd56b8bd84beb8544be85000da853f98d7159a83eb9fd6ef09aa6a1513a3c975c' 
             '5d08cb6254e4d4280137d6d37ec689fc3f0c61dad08bbc978a451ac16b7f271c')
 noextract=('Autodesk_Meshmixer_v${_pkgver}_Win64.exe')
