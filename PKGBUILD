@@ -13,4 +13,4 @@ sha512sums=('eb18597c5f3df243c816a9d945ae471258145b131710343f86647ef2c58d68ea05f
 
 package() {
   install -D -m755 -o0 -g0 "pwned.pl" "$pkgdir/usr/bin/pwned.pl"
-} 
+}
