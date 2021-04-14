@@ -1,14 +1,14 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=rofimoji-git
-pkgver=5.0.0.r0.gcf82f05
+pkgver=5.1.0.r7.g064a596
 pkgrel=1
 pkgdesc='Character picker for rofi'
 arch=('any')
 url=https://github.com/fdw/rofimoji
 license=('MIT')
 depends=('python-configargparse')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-pip' 'python-wheel')
 optdepends=('emoji-font: for the emojis character file'
             'nerd-fonts: for the nerd_font character file'
             'rofi: for the X.Org selector'
@@ -29,16 +29,29 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd rofimoji
+  # Avoid installing files directly under site-packages/
+  sed -i '/\[options.data_files\]/,/^$/d' setup.cfg
+}
+
 build() {
   cd rofimoji
-  python setup.py build
+  export PIP_CONFIG_FILE=/dev/null
+  pip wheel --no-deps .
 }
 
 package() {
   cd rofimoji
   export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+  export PIP_CONFIG_FILE=/dev/null
+  pip install --root="$pkgdir" --no-warn-script-location *.whl
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 src/picker/docs/rofimoji.1
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s $site_packages/rofimoji-${pkgver%%.r*}.dist-info/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
