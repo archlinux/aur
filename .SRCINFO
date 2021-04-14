@@ -1,6 +1,6 @@
 pkgbase = ttf-menksoft
 	pkgver = 20210413
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.menksoft.com/
 	arch = any
 	groups = menksoft-fonts
@@ -89,4 +89,19 @@ pkgname = ttf-menksoft-cirillic-2.01
 	pkgdesc = 蒙科立西里尔蒙古文字库 (v2.01, 2015.09)
 	provides = ttf-menksoft-cirillic-2.01
 	conflicts = ttf-menksoft-cirillic-2.01
+
+pkgname = ttf-menksoft-meta
+	pkgdesc = 蒙科立字体全家桶
+	depends = ttf-menksoft-small-2007
+	depends = ttf-menksoft-small-2012
+	depends = ttf-menksoft-1.02
+	depends = ttf-menksoft-khitan-1.02
+	depends = ttf-menksoft-jurchen-1.02
+	depends = ttf-menksoft-2.002
+	depends = ttf-menksoft-mong-2.01
+	depends = ttf-menksoft-manchu-2.01
+	depends = ttf-menksoft-todo-2.01
+	depends = ttf-menksoft-huihu-2.01
+	depends = ttf-menksoft-sibe-2.01
+	depends = ttf-menksoft-cirillic-2.01
 

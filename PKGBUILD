@@ -1,11 +1,15 @@
 # Maintainer: DuckSoft <realducksoft@gmail.com>
 pkgbase=ttf-menksoft
 pkgver=20210413
-pkgrel=2
-pkgname=(
+pkgrel=3
+_pkgname=(
     ttf-menksoft-small-{2007,2012}
     ttf-menksoft-{{,khitan-,jurchen-}1.02,2.002}
     ttf-menksoft-{mong,manchu,todo,huihu,sibe,cirillic}-2.01
+)
+pkgname=(
+    ${_pkgname[@]}
+    ttf-menksoft-meta
 )
 groups=(menksoft-fonts)
 arch=(any)
@@ -19,6 +23,11 @@ source=(
     http://www.menksoft.com/Portals/_MenkCms/Products/Fonts/Menksoft{Mirror,OpenType,Khitan}1.02.zip
     Menk_New_Fonts2.002.rar::http://www.menksoft.com/Portals/_MenkCms/Products/Fonts/Menk_New_Fonts--%E7%89%88%E6%9C%AC%E5%8F%B72.002.rar
 )
+
+package_ttf-menksoft-meta() {
+    pkgdesc="蒙科立字体全家桶"
+    depends=(${_pkgname[@]})
+}
 
 # (2007) Menksoft20071.02.zip/Menksoft2007
 package_ttf-menksoft-small-2007() {
