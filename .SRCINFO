@@ -1,7 +1,7 @@
 pkgbase = nodejs-nativefier
 	pkgdesc = Wrap web apps natively
 	pkgver = 43.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nativefier/nativefier#readme
 	arch = any
 	license = MIT

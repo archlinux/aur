@@ -2,7 +2,7 @@ _npmname=nativefier
 _npmver=43.0.1
 pkgname=nodejs-nativefier
 pkgver=$_npmver
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrap web apps natively"
 arch=(any)
 url="https://github.com/nativefier/nativefier#readme"
@@ -16,7 +16,7 @@ noextract=("$_npmname-$_npmver.tgz")
 
 package() {
     # Thanks jeremejevs and je-vv for the pointers on these!
-    npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+    npm install -g --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
     # Fix permissions
     find "$pkgdir"/usr -type d -exec chmod 755 {} +
