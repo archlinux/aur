@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=teehee
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A modal terminal hex editor'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.sig")
-sha256sums=('8b1a334731943f593b4073c37a03fc56e806621e3073996314bd8c85a07a34c8'
+sha256sums=('d25fcac4403926894fcb6b81c604f3c9a2d50630c94344ade907af32748f0ce7'
             'SKIP')
 validpgpkeys=('9330E5D6861507BEFBF1893347E208E66179DC94')
 
