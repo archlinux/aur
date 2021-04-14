@@ -2,16 +2,25 @@
 
 pkgname=grpcurl
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers"
 arch=(x86_64)
 url="https://github.com/fullstorydev/grpcurl"
 license=('MIT')
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v$pkgver.tar.gz")
-md5sums=('6b8efb66f4281e3a09221dfa5d9b2fc3')
+makedepends=('go' 'git')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v$pkgver.tar.gz"
+	file://0001-use-latest-version-of-protoreflect-212.patch
+)
+md5sums=('6b8efb66f4281e3a09221dfa5d9b2fc3'
+         '8b6c6b82b43bb22145ffc746e747e6b7')
 # really, `grpcurl-bin` should be conflicting with us instead of the oposite
 conflicts=('grpcurl-bin')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch -Np1 -i "../0001-use-latest-version-of-protoreflect-212.patch"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
