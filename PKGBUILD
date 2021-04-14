@@ -23,7 +23,7 @@ sha256sums=('b965fff994b6abe81a9e08fa1c2cacbb13cb344123733ce58d8dbfc697d42266'
             'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
 
 package() {
-  install -Dm644 "$srcdir/dockerd-rootless.sh" "$pkgdir/usr/lib/sysctl.d/dockerd-rootless.sh"
+  install -Dm644 "$srcdir/dockerd-rootless.sh" "$pkgdir/usr/bin/dockerd-rootless.sh"
   install -Dm644 "$srcdir/docker.service" "$pkgdir/usr/lib/systemd/user/docker.service"
   install -Dm644 "$srcdir/docker.socket" "$pkgdir/usr/lib/systemd/user/docker.socket"
   install -Dm644 "$srcdir/99-docker-rootless.conf" "$pkgdir/usr/lib/sysctl.d/99-docker-rootless.conf"
