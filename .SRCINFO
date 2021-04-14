@@ -1,7 +1,7 @@
 pkgbase = observatory-cli
 	pkgdesc = Score your site's HTTPS practices
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/observatory-cli
 	arch = any
 	license = custom:MPL2
