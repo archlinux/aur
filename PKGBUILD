@@ -1,22 +1,22 @@
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=python-keyring-minimal-git
-pkgver=r8.3cebb2a
-pkgrel=3
+pkgver=r12.5c266c5
+pkgrel=1
 pkgdesc="A minimal libsecret keyring in python that works with keepassxc."
-arch=('x86_64' 'i686')
+arch=(any)
 url="https://github.com/hrehfeld/python-keyring-minimal"
 depends=('python' 'libsecret')
-makedepends=('git')
+license=(AGPL-3.0)
+makedepends=("python" "python-pip" "git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
 install=
-source=("shebang.patch" "git+${url}.git")
+source=("git+${url}.git")
 noextract=()
-md5sums=('f99146004b79338c0aeaf02217a6e1d6'
-         'SKIP')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -28,12 +28,24 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	git checkout master
-	patch keyring-minimal ${srcdir}/shebang.patch
+	sed -i "s/^version=[.0-9]*$/version=$pkgver/" setup.cfg
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+	python -m build
+  pip install --no-deps --target="keyring-minimal" "dist/keyring-minimal-$pkgver.tar.gz"
 }
 
 package() {
-	for f in "keyring-minimal" "keyring-minimal-askpass"
+  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
+  mkdir -p $pkgdir/"$sitepackages"
+  cp -r $srcdir/${pkgname%-git}/keyring-minimal/* $pkgdir/"$sitepackages"
+	sh -c "rm $pkgdir/usr/lib/python3.9/site-packages/keyring_minimal-*.dist-info/direct_url.json"
+
+	for f in "keyring-minimal-askpass"
 	do
 		install -Dm755 "$srcdir/${pkgname%-git}/$f" "$pkgdir/usr/bin/$f"
 	done
+	ln -sf /usr/lib/python3.9/site-packages/bin/keyring-minimal "$pkgdir/usr/bin/"
 }
