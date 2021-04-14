@@ -5,8 +5,8 @@
 
 _pkgname=wireplumber
 pkgname="${_pkgname}-git"
-pkgver=0.3.0.r247.gab04334
-pkgrel=1
+pkgver=0
+pkgrel=22
 pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')
 url="https://gitlab.freedesktop.org/pipewire/wireplumber"
