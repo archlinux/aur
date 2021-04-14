@@ -1,12 +1,11 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-sound-output-device-chooser-git
-_gitname=gse-sound-output-device-chooser
-pkgver=r152.d80c34b
+pkgver=r217.34df1d2
 pkgrel=1
 pkgdesc="Enable selection of sound source and sink devices."
 arch=('any')
-url="https://github.com/kgshank/gse-sound-output-device-chooser"
+url="https://github.com/kgshank/gse-sound-output-device-chooser.git"
 install=device-chooser.install
 license=('GPL3')
 depends=('gnome-shell')
@@ -20,15 +19,17 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+	cd "${srcdir}/${pkgname}"
+
+	make build
+}
+
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	_extid="sound-output-device-chooser@kgshank.net"
+	INSTALL_DIR="${pkgdir}/usr/share/gnome-shell/extensions"
+	install -dm755 "${INSTALL_DIR}"
 
-	install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions"
-	cp -a "sound-output-device-chooser@kgshank.net" "${pkgdir}/usr/share/gnome-shell/extensions"
-
-	install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas"
-	cp -v "${_extid}/schemas/org.gnome.shell.extensions.sound-output-device-chooser.gschema.xml" \
-		"${pkgdir}/usr/share/glib-2.0/schemas"
+	make INSTALL_DIR="${INSTALL_DIR}" install
 }
