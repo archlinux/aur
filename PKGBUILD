@@ -3,7 +3,7 @@
 
 pkgname=lizzie
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Analysis interface for Leela Zero"
 arch=('x86_64')
 url="https://github.com/featurecat/lizzie"
@@ -18,7 +18,7 @@ noextract=('lznetwork.gz')
 sha256sums=('9c984ebe6c44f5b4798c3396dabd337f335a91c5eca890bd03f6abef974e4c91'
             '100e1c567f150ad64f0925c84ce773c2afe0b6fc780a39e31bdf77c19adc2bed'
             'cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0'
-            'a1cdb58a522d6a425445af071aae74df1073a67eecb8230a17eee47685d458ac')
+            '6937f00970b368c3a7f686f7152d3c0fc491a1ad580258c257de4d2bc58ac00d')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver

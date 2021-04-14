@@ -1,7 +1,7 @@
 pkgbase = lizzie
 	pkgdesc = Analysis interface for Leela Zero
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/featurecat/lizzie
 	arch = x86_64
 	license = GPLv3
@@ -19,7 +19,7 @@ pkgbase = lizzie
 	sha256sums = 9c984ebe6c44f5b4798c3396dabd337f335a91c5eca890bd03f6abef974e4c91
 	sha256sums = 100e1c567f150ad64f0925c84ce773c2afe0b6fc780a39e31bdf77c19adc2bed
 	sha256sums = cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0
-	sha256sums = a1cdb58a522d6a425445af071aae74df1073a67eecb8230a17eee47685d458ac
+	sha256sums = 6937f00970b368c3a7f686f7152d3c0fc491a1ad580258c257de4d2bc58ac00d
 
 pkgname = lizzie
 
