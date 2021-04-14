@@ -6,7 +6,7 @@
 # Contributor: Neil Romig <neilromig@gmail.com>
 
 pkgname=courier-authlib
-pkgver=0.71.2
+pkgver=0.71.3
 pkgrel=1
 pkgdesc="Authentication library for the Courier mailserver(s)"
 arch=(i686 x86_64)
@@ -27,7 +27,7 @@ source=(http://downloads.sourceforge.net/project/courier/authlib/${pkgver}/${pkg
         courier-authlib.tmpfiles
 	authdaemond.service
 	courier.conf)
-sha512sums=('b0bd2356013d48a998908d4825901e8e730ec276699005696948781e8af4014e25eded3116fa5a8a38b6236e9713f454170628b51aedab7b7d2ebec082643a47'
+sha512sums=('02c55ff1a91aac581942f8a4a01edd2bb8e2e1a07faf551d40a97583ce2f6eab12e850e3170df255c1e7680a34e418784ec14bb033825d6bac21192ae37ce55d'
             '5047fea9990cd2cd415e11c81fbd8ff83b70dadf0fc178b2398b2c9930843a4669abb3c6801f2953c1ebfdae73c1f82d0ee8c24e900f3876ee6b3aa689363b62'
             '64a33dff492448c5ccb470b6b34fd2fbe4d97c60a88216ddfa91db0f64f984593a15138d28d717c29e8dc81c889b6c32f3ea9a52773ac8a808c560bcaf1d1831'
             '997f755516a64f38abb626790e22e0ad6c3d9fbd7d3e76199cc335ce60f9d5e94dfa083deb637cc36fe039b5b1aa713224e2175b65b1980bf3b304499e3e96e6')
