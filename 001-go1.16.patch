@@ -1,0 +1,85 @@
+diff --git a/Makefile b/Makefile
+index 2b889a5..7049065 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,16 +32,16 @@ ifeq ($(ARCH), amd64)
+ endif
+ 
+ XE_DAEMON_SOURCES :=
+-XE_DAEMON_SOURCES += ./xe-daemon/xe-daemon.go
+-XE_DAEMON_SOURCES += ./syslog/syslog.go
+-XE_DAEMON_SOURCES += ./system/system.go
+-XE_DAEMON_SOURCES += ./guestmetric/guestmetric.go
+-XE_DAEMON_SOURCES += ./guestmetric/guestmetric_linux.go
+-XE_DAEMON_SOURCES += ./xenstoreclient/xenstore.go
++XE_DAEMON_SOURCES += xe-daemon/xe-daemon.go
++XE_DAEMON_SOURCES += syslog/syslog.go
++XE_DAEMON_SOURCES += system/system.go
++XE_DAEMON_SOURCES += guestmetric/guestmetric.go
++XE_DAEMON_SOURCES += guestmetric/guestmetric_linux.go
++XE_DAEMON_SOURCES += xenstoreclient/xenstore.go
+ 
+ XENSTORE_SOURCES :=
+-XENSTORE_SOURCES += ./xenstore/xenstore.go
+-XENSTORE_SOURCES += ./xenstoreclient/xenstore.go
++XENSTORE_SOURCES += xenstore/xenstore.go
++XENSTORE_SOURCES += xenstoreclient/xenstore.go
+ 
+ .PHONY: build
+ build: $(DISTDIR)/$(PACKAGE)_$(VERSION)-$(RELEASE)_$(ARCH).tgz
+diff --git a/go.mod b/go.mod
+new file mode 100644
+index 0000000..18f76f5
+--- /dev/null
++++ b/go.mod
+@@ -0,0 +1,5 @@
++module xe-guest-utilities
++
++go 1.16
++
++require golang.org/x/sys v0.0.0-20210414055047-fe65e336abe0
+diff --git a/guestmetric/guestmetric_linux.go b/guestmetric/guestmetric_linux.go
+index e61ccca..9aaeaff 100644
+--- a/guestmetric/guestmetric_linux.go
++++ b/guestmetric/guestmetric_linux.go
+@@ -1,7 +1,7 @@
+ package guestmetric
+ 
+ import (
+-	xenstoreclient "../xenstoreclient"
++	xenstoreclient "xe-guest-utilities/xenstoreclient"
+ 	"bufio"
+ 	"bytes"
+ 	"fmt"
+diff --git a/xe-daemon/xe-daemon.go b/xe-daemon/xe-daemon.go
+index 7e32efe..cefabe6 100644
+--- a/xe-daemon/xe-daemon.go
++++ b/xe-daemon/xe-daemon.go
+@@ -1,10 +1,10 @@
+ package main
+ 
+ import (
+-	guestmetric "../guestmetric"
+-	syslog "../syslog"
+-	system "../system"
+-	xenstoreclient "../xenstoreclient"
++	guestmetric "xe-guest-utilities/guestmetric"
++	syslog "xe-guest-utilities/syslog"
++	system "xe-guest-utilities/system"
++	xenstoreclient "xe-guest-utilities/xenstoreclient"
+ 	"flag"
+ 	"fmt"
+ 	"io"
+diff --git a/xenstore/xenstore.go b/xenstore/xenstore.go
+index 3c09537..bdb4318 100644
+--- a/xenstore/xenstore.go
++++ b/xenstore/xenstore.go
+@@ -1,7 +1,7 @@
+ package main
+ 
+ import (
+-	xenstoreclient "../xenstoreclient"
++	xenstoreclient "xe-guest-utilities/xenstoreclient"
+ 	"errors"
+ 	"fmt"
+ 	"golang.org/x/sys/unix"

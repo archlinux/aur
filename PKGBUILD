@@ -14,11 +14,20 @@ arch=('x86_64')
 depends=('lsb-release')
 makedepends=('go-pie')
 conflicts=('xe-guest-utilities')
-source=(https://github.com/xcp-ng/xe-guest-utilities/archive/v$_filenameversion.tar.gz 'xe-linux-distribution.service' )
-sha256sums=('5b38f0bd94b51d6312a306ce9cd4944c22ddbeebd11d5c057ae5d37a528a1b79' 'a5f725a26140fb4e2d3ec60c32be78ab224a6cc1f7f176fafa65529175b7d731')
+source=(https://github.com/xcp-ng/xe-guest-utilities/archive/v$_filenameversion.tar.gz 'xe-linux-distribution.service' '001-go1.16.patch')
+sha256sums=('5b38f0bd94b51d6312a306ce9cd4944c22ddbeebd11d5c057ae5d37a528a1b79'
+            'a5f725a26140fb4e2d3ec60c32be78ab224a6cc1f7f176fafa65529175b7d731'
+            'c4cba12a7bf65021625f2591ee3905e6e6c29428c8d28eae406d64e8551cd2ab')
+
+prepare(){
+  cd $srcdir/xe-guest-utilities-$_filenameversion
+  patch --forward --strip=1 --input="${srcdir}/001-go1.16.patch"
+}
+
 
 build() {
   cd $srcdir/xe-guest-utilities-$_filenameversion
+  go mod download
   make
 }
 

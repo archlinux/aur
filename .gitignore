@@ -4,3 +4,4 @@
 !xe-linux-distribution.service
 !.SRCINFO
 !.gitignore
+!*.patch
