@@ -1,0 +1,5 @@
+src
+pkg
+gnome-shell-extension-espresso-git
+*.pkg.tar.*
+tags
