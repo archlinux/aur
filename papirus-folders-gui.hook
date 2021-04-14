@@ -1,0 +1,11 @@
+[Action]
+Depends=papirus-folders
+Description=change the folders color of the Papirus icon theme
+Exec=/usr/bin/papirus-folders-gui -R
+When=PostTransaction
+
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Target=papirus-icon-theme
+Type=Package

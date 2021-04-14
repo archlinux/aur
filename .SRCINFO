@@ -1,0 +1,18 @@
+pkgbase = papirus-folders-gui
+	pkgdesc = change the folders color of the Papirus icon theme
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/ItzSelenux/papirus-folders-gui
+	arch = any
+	license = LGPL2
+	makedepends = git
+	depends = polkit-gnome
+	depends = papirus-folders
+	provides = papirus-folders-gui
+	source = papirus-folders-gui::git+https://github.com/ItzSelenux/papirus-folders-gui.git
+	source = papirus-folders-gui.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = papirus-folders-gui
+
