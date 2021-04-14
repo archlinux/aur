@@ -1,0 +1,12 @@
+pkgbase = stlink-server
+	pkgdesc = The ST-LINK server it is a debugging tool and a monitoring tool for st chips like stm32 family.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://www.st.com/en/development-tools/st-link-server.html
+	arch = x86_64
+	license = Custom
+	provides = stlink-server
+	validpgpkeys = 33ED753E14757D79FA17E57DC4C1F715B2B66B95
+
+pkgname = stlink-server
+
