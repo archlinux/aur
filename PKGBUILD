@@ -1,6 +1,6 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
-pkgname=docker-rootless-extras-bin
+pkgname=docker-rootless-extras
 pkgver=20.10.6
 pkgrel=1
 pkgdesc="Extras to run docker as non-root."
