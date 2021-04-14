@@ -22,7 +22,7 @@ prepare() {
     exit 1
   fi
 
-  unzip -f /tmp/en.st-link-server.zip -d ${srcdir}
+  unzip -o /tmp/en.st-link-server.zip -d ${srcdir}
 
 }
 
