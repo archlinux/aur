@@ -4,6 +4,7 @@
 
 pkgname=rdcli-git
 _name="${pkgname%-git}"
+
 pkgver() {
   cd "$_name"
   printf '%s.r%s.%s' \
@@ -11,7 +12,7 @@ pkgver() {
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=1.5.1.r121.d7b64c1
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Simple CLI tool to unrestrict links with real-debrid.com'
 arch=('any')
@@ -30,7 +31,7 @@ sha256sums=('SKIP')
 
 package() {
   cd "$_name"
-  npm install -g --user root --prefix "$pkgdir/usr" "$_name"
+  npm install -g --prefix "$pkgdir/usr" "$_name"
 
   # Npm gives ownership of ALL FILES to build user
   chown -R root:root "$pkgdir"
