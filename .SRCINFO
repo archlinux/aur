@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-miniview-git
 	pkgdesc = GNOME Shell plugin that shows a preview window overlay
-	pkgver = r60.5ba2bd3
+	pkgver = r65.ac04048
 	pkgrel = 1
 	url = https://github.com/iamlemec/miniview
 	arch = any
