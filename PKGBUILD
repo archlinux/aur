@@ -3,7 +3,7 @@
 
 pkgname=eslint-plugin-vue
 pkgver=7.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='ESLint Plugin for Vue.js'
 arch=('any')
 url='https://github.com/vuejs/eslint-plugin-vue'
@@ -22,8 +22,8 @@ package() {
 	find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 
 	# Remove files that conflict with `eslint`:
-	rm -rf "$pkgdir/usr/lib/node_modules/eslint/"
-	rm -rf "$pkgdir/usr/bin/eslint"
+	rm -rf "$pkgdir/usr/lib/node_modules/eslint"
+	rm -rf "$pkgdir/usr/bin"
 
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 	ln -s ../../../lib/node_modules/$pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
