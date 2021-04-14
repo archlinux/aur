@@ -6,13 +6,13 @@
 # Maintainer: zzy-ac <1304024859@qq.com>
 pkgname=com.pal.dosbox
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="仙剑奇侠传DOS经典版，原声音效，少年时的武侠回忆
  仙剑奇侠传DOS经典版，原声音效，少年时的武侠回忆"
 arch=(x86_64)
 url="https://github.com/zzy-ac/games"
 license=('GPL')
-depends=(dosbox)
+depends=('dosbox')
 provides=(com.pal.dosbox=$pkgver)
 replaces=()
 backup=()
