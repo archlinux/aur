@@ -17,17 +17,31 @@ pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
 depends=('mingw-w64-qt5-base-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
+_commit=95990cbeebc0ab9959e2a925a93ad4897416bbb7
+pkgver+=+kde+r5
+makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8bc3c2c1bc2671e9c67d4205589a8309b57903721ad14c60ea21a5d06acb585e')
+_pkgfqn=${_qt_module}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 depends+=(${pkgname%-static}) # the static version relies on the shared version for build tools and headers
 _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgfqn}"
+
+  git revert -n 9aac88424a1b76e0198b52437af58a6d94aff8e9 # Revert version bump
+}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
