@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=1.8.2.r10.g89c11e87
+pkgver=1.20.2.r26.g1c1b62b4
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -42,7 +42,7 @@ prepare() {
 build() {
   cd "${pkgname}"
 
-  ninja -C 3rd/luamake -f ninja/linux.ninja
+  ninja -C 3rd/luamake -f compile/ninja/linux.ninja
   ./3rd/luamake/luamake rebuild
 }
 
