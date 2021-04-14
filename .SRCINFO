@@ -1,17 +1,18 @@
 pkgbase = deadbeef-plugin-discord-git
 	pkgdesc = DeaDBeeF Discord rich presence plugin
-	pkgver = r26.g70c06e1
+	pkgver = r34.g0c2fa68
 	pkgrel = 1
 	url = https://github.com/kuba160/ddb_discord_presence
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = wget
 	depends = deadbeef
 	source = ddb_discord_presence::git+https://github.com/kuba160/ddb_discord_presence
 	source = ddb_discord_presence-makefile.patch
 	sha256sums = SKIP
-	sha256sums = 2c234522f8854be7ca7222b4929b88259dda8638a62efe377985889bce5d4e84
+	sha256sums = 137e78e144b6f43bd3469758c5b0f6d82fe3fc08c2121903b98dd8e4e3a9498d
 
 pkgname = deadbeef-plugin-discord-git
 
