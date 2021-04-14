@@ -1,6 +1,6 @@
 pkgbase = openboard-develop-git
-	pkgdesc = Interactive whiteboard software for schools and universities
-	pkgver = 1.6.0a3.r16.gab705d28
+	pkgdesc = Interactive whiteboard software for schools and universities (development version current master)
+	pkgver = 1.6.1rc.0309.r10.gf3f07f99
 	pkgrel = 1
 	url = http://openboard.ch/index.en.html
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = openboard-develop-git
 	depends = ffmpeg
 	depends = quazip
 	depends = poppler
-	provides = openboard=1.6.0
+	provides = openboard=1.6.1
 	conflicts = openboard
 	source = git://github.com/OpenBoard-org/OpenBoard.git#branch=dev-qt5.1x
 	source = openboard.desktop

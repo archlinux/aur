@@ -2,14 +2,14 @@
 # Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openboard-develop-git
 _fragment="#branch=dev-qt5.1x"
-pkgver=1.6.0a3.r16.gab705d28
+pkgver=1.6.1rc.0309.r10.gf3f07f99
 pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
-provides=(${pkgname%-develop-git}=${pkgver%%a*})
-conflicts=(${pkgname%-develop-git})
+provides=("${pkgname%-develop-git}=${pkgver%%rc*}")
+conflicts=("${pkgname%-develop-git}")
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
 depends+=(quazip)  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
