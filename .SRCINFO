@@ -1,0 +1,20 @@
+pkgbase = ros-noetic-nmea-msgs
+	pkgdesc = ROS - The nmea_msgs package contains messages related to data in the NMEA format.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://ros.org/wiki/nmea_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-message-runtime
+	source = nmea_msgs-1.1.0::https://github.com/ros-drivers/nmea_msgs/archive/refs/tags/1.1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = ros-noetic-nmea-msgs
+
