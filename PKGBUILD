@@ -14,7 +14,10 @@ _ghc_version="8.10.4"       # 8.10.3 fails to compile
 makedepends=('git' 'cabal-install-bin' 'ghc>=8.10.4')
 depends=('libsodium')
 _config_build="5367762"
-backup=("var/lib/cardano-node/config/{main,test}net-{config,topology}.json")
+backup=("var/lib/cardano-node/config/mainnet-config.json"
+        "var/lib/cardano-node/config/mainnet-topology.json"
+        "var/lib/cardano-node/config/testnet-config.json"
+        "var/lib/cardano-node/config/testnet-topology.json")
 source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "https://hydra.iohk.io/build/${_config_build}/download/1/mainnet-config.json"
         "https://hydra.iohk.io/build/${_config_build}/download/1/mainnet-byron-genesis.json"
