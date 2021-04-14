@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-system76-power-git
 pkgver=1.2.0.r17.gfd70291
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome shell extension for System76 power management"
 arch=('any')
 url="https://github.com/pop-os/gnome-shell-extension-system76-power"
@@ -19,8 +19,9 @@ pkgver() {
 }
 
 build(){
-    cd "${srcdir}/${pkgname}"
-    make
+	cd "${srcdir}/${pkgname}"
+
+	make DESTDIR="${pkgdir}"
 }
 
 
