@@ -8,14 +8,13 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2021.2
-pkgrel=4
+pkgrel=5
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss' 'resolvconf')
+depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
 makedepends=('git' 'go' 'rust' 'npm' 'python')
-optdepends=('networkmanager: create Wireguard interface')
 install="$pkgname.install"
 _commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
