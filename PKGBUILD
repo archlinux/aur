@@ -3,7 +3,7 @@
 
 pkgname=openboard-git
 _fragment="#branch=master"
-pkgver=v1.5.4.r0.g85eb094e
+pkgver=1.6.1rc.0309.r10.gf3f07f99
 pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/OpenBoard"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
