@@ -1,0 +1,5 @@
+pkg/**
+src/**
+qubes-vm-core*
+qubes-vm-keyring*
+qubes-vm-networking*
