@@ -1,0 +1,23 @@
+pkgbase = librespot-pulseaudio-git
+	pkgdesc = Open Source Spotify client library with pulseaudio backend
+	pkgver = 1242.4fc3acc
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/librespot-org/librespot
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = libvorbis
+	depends = alsa-lib
+	provides = librespot
+	conflicts = librespot
+	source = git+https://github.com/librespot-org/librespot
+	sha256sums = SKIP
+
+pkgname = librespot-pulseaudio-git
+
