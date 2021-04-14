@@ -1,0 +1,15 @@
+pkgbase = com.pal.dosbox
+	pkgdesc = 仙剑奇侠传DOS经典版，原声音效，少年时的武侠回忆 仙剑奇侠传DOS经典版，原声音效，少年时的武侠回忆
+	pkgver = 0.95
+	pkgrel = 1
+	url = https://github.com/zzy-ac/games
+	install = com.pal.dosbox.install
+	arch = x86_64
+	license = GPL
+	depends = dosbox
+	provides = com.pal.dosbox=0.95
+	source = https://github.com/zzy-ac/games/raw/main/com.pal.dosbox.tar.gz
+	md5sums = a1a01f1356ad2cad9595d48866a843fe
+
+pkgname = com.pal.dosbox
+

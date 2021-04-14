@@ -1,0 +1,11 @@
+post_install() {
+	sudo chmod 777 /opt/durapps/com.pal.dosbox/*
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	sudo rm -rf /opt/durapps/com.pal.dosbox
+}
