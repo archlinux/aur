@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=2.93.r103843.g450ea1b755c
+pkgver=2.93.r105258.gd63b72e9f93
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
