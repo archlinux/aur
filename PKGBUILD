@@ -24,9 +24,9 @@ conflicts=('hyperspy-gui-ipywidgets')
 provides=('hyperspy-gui-ipywidgets')
 
 source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.tar.gz)
-sha256sums=('d848142733f00c7e9b54c25ac1ea48da5ca509eae55ba019f6cff97c60140c29')
 
 package() {
   cd "$srcdir/$pkginst-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+md5sums=('9d0eae73deb5a0300482bb00ba5e63c7')
