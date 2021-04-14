@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.11
-_minor=13
+_minor=14
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -308,7 +308,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('6502370280f3bb9d6d91a7aab1249406fbb1f9897eb62baf8bd72bb5845b0ad95931f94aa72de275fb05a36ce1f0d7931fdf53de93a507043f260116185643af'
+sha512sums=('8dfc7ff184e5cb33fff74686071f1605f3a834669e201d272f3047aa00657339ec1a3cfd605d8761b8a0f335b8488c02c701e72ed30031856e9c154aa1ff2d88'
             'SKIP'
             '9d38c5672d6e6a08c02e6713b58e03898acdef3f75bb1a96ecd657606d29a69a8cf81bff18af0f56dd75311c5d61c330bbd89a3165bc0e5c6b48b37172716fc9'
             'a7e40cb83439c3b1f62f7e8c8b31b921914d030291a3b70cc3d4093a80653040a977a4cb7c9c032d8207c2080bbb30d5ca4e38dec1d9fdf28596bfed555a0e2a'
