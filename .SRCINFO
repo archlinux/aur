@@ -1,6 +1,6 @@
 pkgbase = bieaz
 	pkgdesc = boot environment manager for ZFS
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://gitlab.com/m_zhou/bieaz
 	install = bieaz.install
@@ -13,8 +13,8 @@ pkgbase = bieaz
 	depends = zfs-utils
 	depends = sh
 	depends = grub
-	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.2.7/bieaz-0.2.7.tar.gz
-	md5sums = 79968670f066e7de2bd2d59e315cb76c
+	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.2.8/bieaz-0.2.8.tar.gz
+	md5sums = 76f02b2f1aa2f6b7b69135b109deeeb0
 
 pkgname = bieaz
 
