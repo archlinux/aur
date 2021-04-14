@@ -1,11 +1,12 @@
-From e3a2cbc1f4681221591ac91414b4f2003048ba5f Mon Sep 17 00:00:00 2001
+From c492b914837cead3fc5f2530c560ad76b65f4113 Mon Sep 17 00:00:00 2001
 From: Ilya Fedin <fedin-ilja2010@ya.ru>
 Date: Sun, 14 Jun 2020 03:25:53 +0400
 Subject: [PATCH] Add an option to hide messages from blocked users in groups
 
 ---
  Telegram/Resources/langs/lang.strings         |  2 ++
- Telegram/Resources/langs/rewrites/ru.json     |  3 +-
+ Telegram/Resources/langs/rewrites/en.json     |  1 +
+ Telegram/Resources/langs/rewrites/ru.json     |  1 +
  .../history/history_item_components.cpp       |  7 +++--
  .../SourceFiles/history/history_widget.cpp    | 28 +++++++++++++++++++
  .../history/view/history_view_element.cpp     |  7 +++++
@@ -13,36 +14,50 @@ Subject: [PATCH] Add an option to hide messages from blocked users in groups
  Telegram/SourceFiles/kotato/settings.cpp      | 11 ++++++++
  Telegram/SourceFiles/kotato/settings.h        |  4 +++
  Telegram/SourceFiles/kotato/settings_menu.cpp |  1 +
- 9 files changed, 65 insertions(+), 3 deletions(-)
+ 10 files changed, 65 insertions(+), 2 deletions(-)
 
 diff --git a/Telegram/Resources/langs/lang.strings b/Telegram/Resources/langs/lang.strings
-index 62c9823f4..fd06553ad 100644
+index 2b8212d73..e1c7f2643 100644
 --- a/Telegram/Resources/langs/lang.strings
 +++ b/Telegram/Resources/langs/lang.strings
-@@ -2517,4 +2517,6 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
- 
- "ktg_message_id" = "Message ID: {id}";
+@@ -2897,6 +2897,8 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ "ktg_settings_forward_chat_on_click" = "Open chat on click";
+ "ktg_settings_forward_chat_on_click_description" = "You can hold Ctrl to select multiple chats regardless of this option.";
  
 +"ktg_settings_block_users_in_groups" = "Block users in groups";
 +
- // Keys finished
+ "ktg_forward_menu_quoted" = "Quoted";
+ "ktg_forward_menu_unquoted" = "Unquoted with captions";
+ "ktg_forward_menu_uncaptioned" = "Unquoted without captions";
+diff --git a/Telegram/Resources/langs/rewrites/en.json b/Telegram/Resources/langs/rewrites/en.json
+index 8c828daa4..2a1616ec9 100644
+--- a/Telegram/Resources/langs/rewrites/en.json
++++ b/Telegram/Resources/langs/rewrites/en.json
+@@ -181,6 +181,7 @@
+ 	"ktg_admin_log_banned_send_games": "Send games",
+ 	"ktg_admin_log_banned_use_inline": "Use inline bots",
+ 	"ktg_forward_go_to_chat": "Go to chat",
++	"ktg_settings_block_users_in_groups": "Block users in groups",
+ 	"ktg_settings_forward": "Forward",
+ 	"ktg_settings_forward_retain_selection": "Retain selection after forward",
+ 	"ktg_settings_forward_chat_on_click": "Open chat on click",
 diff --git a/Telegram/Resources/langs/rewrites/ru.json b/Telegram/Resources/langs/rewrites/ru.json
-index f0c78e924..5aa5988d2 100644
+index 96c961099..b2ff772bd 100644
 --- a/Telegram/Resources/langs/rewrites/ru.json
 +++ b/Telegram/Resources/langs/rewrites/ru.json
-@@ -122,5 +122,6 @@
- 	"ktg_settings_chat_id_disable": "Скрыть",
- 	"ktg_settings_chat_id_telegram": "Telegram API",
- 	"ktg_settings_chat_id_bot": "Bot API",
--	"ktg_message_id": "ID сообщения: {id}"
-+	"ktg_message_id": "ID сообщения: {id}",
-+	"ktg_settings_block_users_in_groups": "Блокировать пользователей в группах"
- }
+@@ -181,6 +181,7 @@
+ 	"ktg_admin_log_banned_send_games": "Отправка игр",
+ 	"ktg_admin_log_banned_use_inline": "Отправка через ботов",
+ 	"ktg_forward_go_to_chat": "Перейти в чат",
++	"ktg_settings_block_users_in_groups": "Блокировать пользователей в группах",
+ 	"ktg_settings_forward": "Пересылка",
+ 	"ktg_settings_forward_retain_selection": "Сохранять выделение после пересылки",
+ 	"ktg_settings_forward_chat_on_click": "Открывать чат по клику",
 diff --git a/Telegram/SourceFiles/history/history_item_components.cpp b/Telegram/SourceFiles/history/history_item_components.cpp
-index 52be9b67e..0910b5531 100644
+index 90ab65500..fa921b256 100644
 --- a/Telegram/SourceFiles/history/history_item_components.cpp
 +++ b/Telegram/SourceFiles/history/history_item_components.cpp
-@@ -329,7 +329,10 @@ void HistoryMessageReply::paint(
+@@ -349,7 +349,10 @@ void HistoryMessageReply::paint(
  	p.fillRect(rbar, bar);
  
  	if (w > st::msgReplyBarSkip) {
@@ -54,7 +69,7 @@ index 52be9b67e..0910b5531 100644
  			auto hasPreview = replyToMsg->media() ? replyToMsg->media()->hasReplyPreview() : false;
  			if (hasPreview && w < st::msgReplyBarSkip + st::msgReplyBarSize.height()) {
  				hasPreview = false;
-@@ -370,7 +373,7 @@ void HistoryMessageReply::paint(
+@@ -390,7 +393,7 @@ void HistoryMessageReply::paint(
  			p.setFont(st::msgDateFont);
  			auto &date = outbg ? (selected ? st::msgOutDateFgSelected : st::msgOutDateFg) : (selected ? st::msgInDateFgSelected : st::msgInDateFg);
  			p.setPen((flags & PaintFlag::InBubble) ? date : st::msgDateImgFg);
@@ -64,10 +79,10 @@ index 52be9b67e..0910b5531 100644
  	}
  }
 diff --git a/Telegram/SourceFiles/history/history_widget.cpp b/Telegram/SourceFiles/history/history_widget.cpp
-index b3360f631..99a0731d3 100644
+index 1ceb4badf..585416c57 100644
 --- a/Telegram/SourceFiles/history/history_widget.cpp
 +++ b/Telegram/SourceFiles/history/history_widget.cpp
-@@ -543,6 +543,34 @@ HistoryWidget::HistoryWidget(
+@@ -601,6 +601,34 @@ HistoryWidget::HistoryWidget(
  		});
  	}, lifetime());
  
@@ -85,7 +100,7 @@ index b3360f631..99a0731d3 100644
 +		});
 +	}, lifetime());
 +
-+	session().api().blockedUsersSlice(
++	session().api().blockedPeersSlice(
 +	) | rpl::start_with_next([=] {
 +		crl::on_main(this, [=] {
 +			if (_history) {
@@ -99,22 +114,22 @@ index b3360f631..99a0731d3 100644
 +		});
 +	}, lifetime());
 +
- 	session().data().animationPlayInlineRequest(
- 	) | rpl::start_with_next([=](not_null<HistoryItem*> item) {
- 		if (const auto view = item->mainView()) {
+ 	HoverEmojiPanelChanges(
+ 	) | rpl::start_with_next([=] {
+ 		crl::on_main(this, [=] {
 diff --git a/Telegram/SourceFiles/history/view/history_view_element.cpp b/Telegram/SourceFiles/history/view/history_view_element.cpp
-index 8d9df51f2..457f66c8c 100644
+index ede5b7b51..fb361696a 100644
 --- a/Telegram/SourceFiles/history/view/history_view_element.cpp
 +++ b/Telegram/SourceFiles/history/view/history_view_element.cpp
-@@ -19,6 +19,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
- #include "main/main_session.h"
- #include "chat_helpers/stickers_emoji_pack.h"
+@@ -25,6 +25,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #include "ui/toast/toast.h"
+ #include "ui/toasts/common_toasts.h"
  #include "data/data_session.h"
 +#include "data/data_user.h"
  #include "data/data_groups.h"
  #include "data/data_media_types.h"
  #include "lang/lang_keys.h"
-@@ -339,6 +340,12 @@ bool Element::isHiddenByGroup() const {
+@@ -433,6 +434,12 @@ bool Element::isHiddenByGroup() const {
  }
  
  bool Element::isHidden() const {
@@ -128,10 +143,10 @@ index 8d9df51f2..457f66c8c 100644
  }
  
 diff --git a/Telegram/SourceFiles/kotato/json_settings.cpp b/Telegram/SourceFiles/kotato/json_settings.cpp
-index 15734174a..c1783f91c 100644
+index 464264048..9a7b904e0 100644
 --- a/Telegram/SourceFiles/kotato/json_settings.cpp
 +++ b/Telegram/SourceFiles/kotato/json_settings.cpp
-@@ -179,6 +179,7 @@ QByteArray GenerateSettingsJson(bool areDefault = false) {
+@@ -359,6 +359,7 @@ QByteArray GenerateSettingsJson(bool areDefault = false) {
  	settings.insert(qsl("sticker_scale_both"), StickerScaleBoth());
  	settings.insert(qsl("adaptive_bubbles"), AdaptiveBubbles());
  	settings.insert(qsl("big_emoji_outline"), BigEmojiOutline());
@@ -139,7 +154,7 @@ index 15734174a..c1783f91c 100644
  	settings.insert(qsl("always_show_scheduled"), cAlwaysShowScheduled());
  	settings.insert(qsl("show_chat_id"), cShowChatId());
  	settings.insert(qsl("show_phone_in_drawer"), cShowPhoneInDrawer());
-@@ -315,6 +316,10 @@ bool Manager::readCustomFile() {
+@@ -509,6 +510,10 @@ bool Manager::readCustomFile() {
  		SetBigEmojiOutline(v);
  	});
  
@@ -151,11 +166,11 @@ index 15734174a..c1783f91c 100644
  		cSetAlwaysShowScheduled(v);
  	});
 diff --git a/Telegram/SourceFiles/kotato/settings.cpp b/Telegram/SourceFiles/kotato/settings.cpp
-index 7492240f7..1e36bd143 100644
+index 4614fc505..01bf7d71b 100644
 --- a/Telegram/SourceFiles/kotato/settings.cpp
 +++ b/Telegram/SourceFiles/kotato/settings.cpp
-@@ -64,6 +64,17 @@ rpl::producer<bool> AdaptiveBubblesChanges() {
- 	return gAdaptiveBubbles.changes();
+@@ -77,6 +77,17 @@ rpl::producer<bool> MonospaceLargeBubblesChanges() {
+ 	return gMonospaceLargeBubbles.changes();
  }
  
 +rpl::variable<bool> gBlockUsersInGroups = false;
@@ -170,15 +185,15 @@ index 7492240f7..1e36bd143 100644
 +}
 +
  bool gAlwaysShowScheduled = false;
- int gShowChatId = 0;
+ int gShowChatId = 2;
  
 diff --git a/Telegram/SourceFiles/kotato/settings.h b/Telegram/SourceFiles/kotato/settings.h
-index c76b8347b..06710c075 100644
+index 209c5133d..36f88b338 100644
 --- a/Telegram/SourceFiles/kotato/settings.h
 +++ b/Telegram/SourceFiles/kotato/settings.h
-@@ -47,6 +47,10 @@ void SetAdaptiveBubbles(bool enabled);
- [[nodiscard]] bool AdaptiveBubbles();
- [[nodiscard]] rpl::producer<bool> AdaptiveBubblesChanges();
+@@ -53,6 +53,10 @@ void SetMonospaceLargeBubbles(bool enabled);
+ [[nodiscard]] bool MonospaceLargeBubbles();
+ [[nodiscard]] rpl::producer<bool> MonospaceLargeBubblesChanges();
  
 +void SetBlockUsersInGroups(bool enabled);
 +[[nodiscard]] bool BlockUsersInGroups();
@@ -188,17 +203,17 @@ index c76b8347b..06710c075 100644
  DeclareSetting(int, ShowChatId);
  
 diff --git a/Telegram/SourceFiles/kotato/settings_menu.cpp b/Telegram/SourceFiles/kotato/settings_menu.cpp
-index 622252577..2ba2de934 100644
+index 2c836018c..13396a94e 100644
 --- a/Telegram/SourceFiles/kotato/settings_menu.cpp
 +++ b/Telegram/SourceFiles/kotato/settings_menu.cpp
-@@ -313,6 +313,7 @@ void SetupKotatoMessages(not_null<Ui::VerticalLayout*> container) {
+@@ -377,6 +377,7 @@ void SetupKotatoMessages(not_null<Ui::VerticalLayout*> container) {
+ 	}
  
- 	SettingsMenuSwitch(ktg_settings_adaptive_bubbles, AdaptiveBubbles);
  	SettingsMenuSwitch(ktg_settings_emoji_outline, BigEmojiOutline);
 +	SettingsMenuSwitch(ktg_settings_block_users_in_groups, BlockUsersInGroups);
  
  	AddSkip(container);
  }
 -- 
-2.28.0
+2.31.1
 

@@ -1,74 +1,97 @@
 # Maintainer: Ilya Fedin <fedin-ilja2010@ya.ru>
 # Contributor: Auteiy <dmitry@auteiy.me>
-
 pkgname=kotatogram-desktop
-pkgver=1.3.4
-pkgrel=5
-pkgdesc="Kotatogram – experimental Telegram Desktop fork"
-arch=(x86_64)
+pkgver=1.4
+pkgrel=1
+pkgdesc='Kotatogram – experimental Telegram Desktop fork'
+arch=('x86_64')
 url="https://kotatogram.github.io"
-license=(GPL3)
-depends=(
-	qt5-base
-	qt5-imageformats
-	ffmpeg
-	openal
-	xz
-	lz4
-	xxhash
-	zlib
-	minizip
-	openssl
-	libdbusmenu-qt5
-	hunspell
-	hicolor-icon-theme
-)
-makedepends=(
-	git
-	python
-	cmake
-	ninja
-	tl-expected
-	range-v3
-)
-optdepends=(
-	'ttf-opensans: default Open Sans font family'
-)
+license=('GPL3')
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin')
-source=(
-	"https://github.com/kotatogram/${pkgname}/releases/download/k${pkgver}/${pkgname}-${pkgver}-full.tar.gz"
-	"https://github.com/telegramdesktop/tdesktop/commit/6e9eddabfdb8b2d870f912875325ed452144b10e.patch"
-	"telegram-desktop-qt5.15.patch"
-	"0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
-)
-sha512sums=('f0255e1bcbf1703c684e3c71392156002456a988f4128107e0181b4f4b9956073c29c27ff19d8416b19b3d836da999b39a421bd9755683013eec71ff51104f38'
-            'fdc3a9f589af0e9bd33fd4f988ef4eddcdccfd6c5e1d1a30d0daa016f3f76e1848e32d62ad4591b8b647d37fd2af402f70322c5560ae8045a4ebf3e00f827042'
-            '6bbe0583103d575a1413141799985c7c7b590d8a9856c727320ce322679a3d38343a144c314eee54fa9776c8f3a084627a333e6860d1b8cb8f496b1702070ac0'
-            'add35207d3a2772b3886f63d81751551e7ad5b6dac8ca3be4dc7bec6f126f04deaa4013d01805b524fbcdcfe7cacd94fa92c4583a62e7bd78472801d9beeb591')
+source=("${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkgver}"
+        "${pkgname}-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
+        "${pkgname}-rlottie::git+https://github.com/desktop-app/rlottie.git"
+        "${pkgname}-lib_crl::git+https://github.com/desktop-app/lib_crl.git"
+        "${pkgname}-lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
+        "${pkgname}-lib_base::git+https://github.com/kotatogram/lib_base.git"
+        "${pkgname}-codegen::git+https://github.com/desktop-app/codegen.git"
+        "${pkgname}-lib_ui::git+https://github.com/kotatogram/lib_ui.git"
+        "${pkgname}-lib_rlottie::git+https://github.com/desktop-app/lib_rlottie.git"
+        "${pkgname}-lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
+        "${pkgname}-lib_tl::git+https://github.com/desktop-app/lib_tl.git"
+        "${pkgname}-lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck"
+        "${pkgname}-lib_storage::git+https://github.com/desktop-app/lib_storage.git"
+        "${pkgname}-cmake_helpers::git+https://github.com/kotatogram/cmake_helpers.git"
+        "${pkgname}-QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator"
+        "${pkgname}-lib_qr::git+https://github.com/desktop-app/lib_qr.git"
+        "${pkgname}-lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
+        "${pkgname}-tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
+        "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '13357d081fb658c735bb2575360f5d48214e1cf5002719ba410405a2fe05c7c3d2379588c2ca3c2ca6a5e6ff64e01e6d1ff3aecdaee8f3dd0519a64f6ee94182')
 
 prepare() {
-	cd ${pkgname}-$pkgver-full
-	patch -p1 < ${srcdir}/telegram-desktop-qt5.15.patch
-	patch -p1 < ${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
-	patch -p1 < ${srcdir}/6e9eddabfdb8b2d870f912875325ed452144b10e.patch
+    cd "${srcdir}/${pkgname}"
+    git submodule init
+    git config submodule.Telegram/ThirdParty/libtgvoip.url "${srcdir}/${pkgname}-libtgvoip"
+    git config submodule.Telegram/ThirdParty/rlottie.url "${srcdir}/${pkgname}-rlottie"
+    git config submodule.Telegram/lib_crl.url "${srcdir}/${pkgname}-lib_crl"
+    git config submodule.Telegram/lib_rpl.url "${srcdir}/${pkgname}-lib_rpl"
+    git config submodule.Telegram/lib_base.url "${srcdir}/${pkgname}-lib_base"
+    git config submodule.Telegram/codegen.url "${srcdir}/${pkgname}-codegen"
+    git config submodule.Telegram/lib_ui.url "${srcdir}/${pkgname}-lib_ui"
+    git config submodule.Telegram/lib_rlottie.url "${srcdir}/${pkgname}-lib_rlottie"
+    git config submodule.Telegram/lib_lottie.url "${srcdir}/${pkgname}-lib_lottie"
+    git config submodule.Telegram/lib_tl.url "${srcdir}/${pkgname}-lib_tl"
+    git config submodule.Telegram/lib_spellcheck.url "${srcdir}/${pkgname}-lib_spellcheck"
+    git config submodule.Telegram/lib_storage.url "${srcdir}/${pkgname}-lib_storage"
+    git config submodule.cmake.url "${srcdir}/${pkgname}-cmake_helpers"
+    git config submodule.Telegram/ThirdParty/QR.url "${srcdir}/${pkgname}-QR-Code-generator"
+    git config submodule.Telegram/lib_qr.url "${srcdir}/${pkgname}-lib_qr"
+    git config sumbodule.Telegram/lib_webrtc.url "${srcdir}/${pkgname}-lib_webrtc"
+    git config sumbodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${pkgname}-tgcalls"
+    git submodule update
+
+    pushd cmake
+    # force webrtc link to libjpeg
+    echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
+    popd
+
+    patch -p1 < ${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
 }
 
 build() {
-	cd ${pkgname}-${pkgver}-full
+    cd "${srcdir}/${pkgname}"
 
-	cmake -B build -G Ninja . \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DTDESKTOP_API_TEST=ON \
-		-DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
-		-DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
-		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
-		-DTDESKTOP_USE_PACKAGED_TGVOIP=OFF
+    cmake -B build -G Ninja . \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DTDESKTOP_API_TEST=ON
 
-	cmake --build build
+    cmake --build build
 }
 
 package() {
-	cd ${pkgname}-${pkgver}-full
-	DESTDIR="$pkgdir" cmake --install build
+    cd "${srcdir}/${pkgname}"
+    DESTDIR="$pkgdir" cmake --install build
 }
