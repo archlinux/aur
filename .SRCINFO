@@ -9,7 +9,10 @@ pkgbase = cardano-node
 	makedepends = cabal-install-bin
 	makedepends = ghc>=8.10.4
 	depends = libsodium
-	backup = var/lib/cardano-node/config/{main,test}net-{config,topology}.json
+	backup = var/lib/cardano-node/config/mainnet-config.json
+	backup = var/lib/cardano-node/config/mainnet-topology.json
+	backup = var/lib/cardano-node/config/testnet-config.json
+	backup = var/lib/cardano-node/config/testnet-topology.json
 	source = https://github.com/input-output-hk/cardano-node/archive/1.26.1.zip
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-config.json
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-byron-genesis.json
