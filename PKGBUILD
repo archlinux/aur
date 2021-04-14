@@ -3,13 +3,12 @@
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
 pkgver=2021.2
-pkgrel=4
+pkgrel=5
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss' 'resolvconf')
-optdepends=('networkmanager: create Wireguard interface')
+depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
