@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=89.0.4389.114
+pkgver=89.0.4389.128
 pkgrel=1
 _launcher_ver=7
 _gcc_patchset=7
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-glibc-2.33.patch
         chromium-fix-libva-redef.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('f2f0abe9697a220a8545df74d832c6c8d85a4fb11845e7e398752d746e72ed00'
+sha256sums=('1a75ea6aeb98f2d3b6feae1fbf5692679e93d5b7631bc7c762dd873499deda5b'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'f8b1558f6c87b33423da854d42f0f69d47885a96d6bf6ce7f26373e93d47442f'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
