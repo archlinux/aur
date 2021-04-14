@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=viridisLite
-_cranver=0.3.0
+_cranver=0.4.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('r>=2.10')
 optdepends=(r-hexbin r-ggplot2 r-testthat r-covr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('3a3fbfd0267589d9b5c12fd9d2eebfc2')
+md5sums=('4281c39f0fef8a75fdd61d6a98203957')
 
 build() {
   cd "${srcdir}"
