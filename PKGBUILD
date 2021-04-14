@@ -2,7 +2,7 @@
 # Contributor: Daniel "dtubber" Wanner <daniel.wanner@tubber.xyz>
 
 pkgname="ryzenadj-git"
-pkgver=0.8.0.r7.g1a3953a
+pkgver=0.8.0.r9.g4477c8b
 pkgrel=1
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
