@@ -2,9 +2,9 @@
 
 pkgname=sublime-url-handler
 pkgver=0.0.4
-pkgrel=1
-pkgdesc="Open subl:// and txmt:// URLs in Sublime Text. Based on http://blog.byscripts.info/2013/02/txmt-protocol-and-sublime-text-2-english.html"
-url='http://github.com/MrZYX/PKGBUILDs/tree/master/sublime-url-handler'
+pkgrel=2
+pkgdesc="Open subl:// and txmt:// URLs in Sublime Text."
+url='https://github.com/jhass/PKGBUILDs/tree/main/sublime-url-handler'
 arch=('any')
 license=('MIT')
 depends=('desktop-file-utils')
