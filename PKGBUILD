@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=vvdec-git
-pkgver=0.2.0.1.r0.gefa0db6
+pkgver=1.1.0.r1.g8372ca4
 pkgrel=1
 pkgdesc="Fraunhofer Versatile Video Decoder (VVdeC)"
 arch=('x86_64')
@@ -24,7 +24,6 @@ build() {
 	export CXXFLAGS+=" ${CPPFLAGS}"
 	cmake -B build -S "${srcdir}/vvdec" \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DVVDEC_ENABLE_BITSTREAM_DOWNLOAD:BOOL=ON \
 		-DVVDEC_ENABLE_INSTALL:BOOL=ON \
 		-DBUILD_SHARED_LIBS:BOOL=ON \
 		-Wno-dev
@@ -32,6 +31,14 @@ build() {
 }
 
 check() {
+	export CFLAGS+=" ${CPPFLAGS}"
+	export CXXFLAGS+=" ${CPPFLAGS}"
+	cmake -B build -S "${srcdir}/vvdec" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DVVDEC_ENABLE_INSTALL:BOOL=ON \
+		-DVVDEC_ENABLE_BITSTREAM_DOWNLOAD:BOOL=ON \
+		-DBUILD_SHARED_LIBS:BOOL=ON \
+		-Wno-dev
 	make -C build test
 }
 
