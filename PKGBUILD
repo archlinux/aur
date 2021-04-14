@@ -1,7 +1,7 @@
 # Maintainer: bin <bin at datacowboy dot cf>
 pkgname=vim_cubed-git
-pkgver=0
-pkgrel=0
+pkgver=r0.0
+pkgrel=1
 pkgdesc='Vim rendered on a cube for no reason'
 arch=('i686' 'x86_64')
 url="https://github.com/oakes/vim_cubed"

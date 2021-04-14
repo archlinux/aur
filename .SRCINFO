@@ -1,7 +1,7 @@
 pkgbase = vim_cubed-git
 	pkgdesc = Vim rendered on a cube for no reason
-	pkgver = 0
-	pkgrel = 0
+	pkgver = r0.0
+	pkgrel = 1
 	url = https://github.com/oakes/vim_cubed
 	arch = i686
 	arch = x86_64
