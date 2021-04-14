@@ -3,7 +3,7 @@
 _pkgname=domain-connect
 _pkgname_gh=domainconnect_python
 pkgname=python-${_pkgname}
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Python client library for Domain Connect protocol'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-md5sums=('cbc7b833f045dc5f28765ff9657d5322')
+md5sums=('8e0fd6ed45a1bbc66dc859366e68c3cf')
 
 build() {
 
