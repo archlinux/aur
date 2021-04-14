@@ -1,0 +1,46 @@
+echo "Enable CacULE CPU scheduler..."
+scripts/config --enable CONFIG_CACULE_SCHED
+echo "Disable CFS"
+scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+scripts/config --disable CONFIG_CFS_BANDWIDTH
+echo "Processor type and features Cacule"
+scripts/config --disable CONFIG_RETPOLINE
+scripts/config --disable CONFIG_X86_5LEVEL
+scripts/config --disable CONFIG_KEXEC
+scripts/config --disable CONFIG_KEXEC_FILE
+scripts/config --disable CONFIG_CRASH_DUMP
+scripts/config --disable CONFIG_EXPERT
+scripts/config --disable CONFIG_SCHED_AUTOGROUP
+scripts/config --disable CONFIG_CGROUP_SCHED
+echo "Enable PREEMPT"
+scripts/config --disable CONFIG_PREEMPT_NONE
+scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
+scripts/config --enable CONFIG_PREEMPT
+scripts/config --enable CONFIG_PREEMPT_COUNT
+scripts/config --enable CONFIG_PREEMPTION
+msg2 "Set CPU DEVFREQ GOV CONFIG_DEVFREQ_GOV for performance"
+scripts/config --disable CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND
+scripts/config --undefine CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND
+scripts/config --disable CONFIG_DEVFREQ_GOV_POWERSAVE
+scripts/config --disable CONFIG_DEVFREQ_GOV_USERSPACE
+scripts/config --disable CONFIG_DEVFREQ_GOV_PASSIVE
+scripts/config --enable CONFIG_DEVFREQ_GOV_PERFORMANCE
+echo "Set PCIEASPM DRIVER to performance"
+scripts/config --enable CONFIG_PCIEASPM
+scripts/config --enable CONFIG_PCIEASPM_PERFORMANCE
+echo "Set CONFIG_PCIE_BUS for performance"
+scripts/config --enable CONFIG_PCIE_BUS_PERFORMANCE
+echo "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3"
+scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
+scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+echo "Set module compression to ZSTD"
+scripts/config --enable CONFIG_MODULE_COMPRESS
+scripts/config --disable CONFIG_MODULE_COMPRESS_GZIP
+scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+echo "Enable CONFIG_STACK_VALIDATION"
+scripts/config --enable CONFIG_STACK_VALIDATION
+echo "Enable IKCONFIG"
+scripts/config --enable CONFIG_IKCONFIG
+scripts/config --enable CONFIG_IKCONFIG_PROC
