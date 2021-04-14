@@ -1,6 +1,6 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://hyperspy.org
 	arch = any
@@ -19,10 +19,9 @@ pkgbase = python-hyperspy
 	depends = python-dateutil
 	depends = python-dask
 	depends = python-pint
-	depends = python-statsmodels
 	depends = python-numexpr
 	depends = python-pyaml
-	depends = python-ptable
+	depends = python-prettytable
 	depends = python-dill
 	depends = python-ipyparallel
 	depends = python-scikit-image
@@ -36,8 +35,8 @@ pkgbase = python-hyperspy
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
-	source = https://github.com/hyperspy/hyperspy/archive/v1.6.1.tar.gz
-	sha256sums = 3cd7213abd439724266ad71aa542c9258830db6eac07f7dfaf30e243e1289790
+	source = https://github.com/hyperspy/hyperspy/archive/v1.6.2.tar.gz
+	sha256sums = 9582a24d4c361ffcd87c995e4cb282733d39651e30d1e682999b3bdbccdce2db
 
 pkgname = python-hyperspy
 
