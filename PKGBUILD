@@ -5,7 +5,7 @@ _ltspice_ver_roman="XVII"
 _ltspice_ver="17"
 
 pkgname=ltspice
-pkgver=17.20210406.3
+pkgver=17.20210407.3
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
@@ -90,14 +90,13 @@ run_with_lock(){
     )&
 }
 
+N=$(($(nproc) * 4))
+open_sem $N
+
 prepare() {
     mkdir -p $pkgname
 
     _download_file "Changelog.txt" ""
-}
-N=$(($(nproc) * 4))
-open_sem $N
-build() {
     release_logs="$_update_url/release.log.gz"
     
     curl $_curl_opts "$release_logs" | gunzip > ./release.log
@@ -126,6 +125,9 @@ build() {
 
     echo "Downloaded all files!"
 
+}
+
+build() {
     wrestool -x -t 14 "${srcdir}/${pkgname}/XVIIx64.exe" > ${srcdir}/$pkgname.ico
     convert ${srcdir}/ltspice.ico ${srcdir}/$pkgname.png
     rm ${srcdir}/$pkgname.ico

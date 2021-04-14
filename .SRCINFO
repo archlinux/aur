@@ -1,6 +1,6 @@
 pkgbase = ltspice
 	pkgdesc = SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility.
-	pkgver = 17.20210406.3
+	pkgver = 17.20210407.3
 	pkgrel = 1
 	url = http://www.linear.com/designtools/software/
 	arch = x86_64
