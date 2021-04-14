@@ -3,7 +3,7 @@
 
 pkgname=eslint-plugin-vue
 pkgver=7.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ESLint Plugin for Vue.js'
 arch=('any')
 url='https://github.com/vuejs/eslint-plugin-vue'
@@ -16,7 +16,7 @@ noextract=($pkgname-$pkgver.tgz)
 
 package() {
 	install -dm 755 "$pkgdir/usr/lib"
-	npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
+	npm install -g --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
 
 	# Fix permissions
 	find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
