@@ -1,0 +1,18 @@
+
+## arg 1:  the new package version
+post_install() {
+  ldconfig
+  /bin/systemctl enable qubes-meminfo-writer-dom0.service > /dev/null 2>&1
+  /bin/systemctl enable qubes-meminfo-writer.service > /dev/null 2>&1
+}
+
+post_upgrade() {
+  ldconfig
+}
+
+post_remove() {
+  ldconfig
+  /bin/systemctl disable qubes-meminfo-writer.service > /dev/null 2>&1
+  /bin/systemctl disable qubes-meminfo-writer.service > /dev/null 2>&1
+}
+

@@ -1,0 +1,34 @@
+pkgbase = qubes-linux-utils
+	pkgdesc = Common Linux files for Qubes VM.
+	pkgver = 4.0.32
+	pkgrel = 10
+	url = https://github.com/QubesOS/qubes-linux-utils
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconfig
+	makedepends = qubes-libvchan
+	makedepends = python-setuptools
+	options = staticlibs
+	source = qubes-vm-utils::git+https://github.com/QubesOS/qubes-linux-utils.git?signed#tag=v4.0.32
+	source = PKGBUILD-initcpio-hook.sh
+	source = PKGBUILD-initcpio-install.sh
+	sha512sums = SKIP
+	sha512sums = 5d67ae7d8c7bf166d647b7f39485a5399d17464c2f7df3d831d9e8107e83a00e8cd2214a00a9b21a76fc1edc39e79d3fa81a8d912022bb4a3ae409250e46c1cb
+	sha512sums = 392f562e0f1a1bbd94958c5fa3c9746529d78f1ccafc7ef85d5b0d9f06d7ec66a30467f1cd6b869a9492864586b316751e864643f1c5b82becc377bd34701246
+
+pkgname = qubes-vm-utils
+	install = PKGBUILD-qubes-vm-utils.install
+	depends = qubes-libvchan
+	depends = imagemagick
+	depends = python-pillow
+	depends = python-numpy
+
+pkgname = qubes-vm-kernel-support
+	install = PKGBUILD-qubes-vm-kernel-support.install
+	depends = qubes-libvchan
+	depends = mkinitcpio
+	depends = dkms
+	depends = grub
+
