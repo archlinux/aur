@@ -1,15 +1,15 @@
 pkgbase = eternallands-sound
 	pkgdesc = Sound effects files for Eternal Lands
-	pkgver = 1.9.1
+	pkgver = 1.9.5.9
 	pkgrel = 1
 	url = http://www.eternal-lands.com/
-	arch = i686
-	arch = x86_64
+	changelog = eternallands-sound.changelog
+	arch = any
 	license = custom:eternallands
 	makedepends = unzip
-	depends = eternallands>=1.9.1
-	source = http://www.eternal-lands.com/sound/EL_sound_191.zip
-	md5sums = 6547ad41d2e49f0217b0a28f0b3f6756
+	depends = eternallands>=1.9.5.9
+	source = https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.9-1/eternallands-sound_1.9.5.9.zip
+	md5sums = b441ce65da967c937ac030f219fdd9ae
 
 pkgname = eternallands-sound
 
