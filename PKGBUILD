@@ -61,7 +61,7 @@ _subarch=
 
 pkgbase=linux-ck
 pkgver=5.11.14
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -78,6 +78,10 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch
+  0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch
+  0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
+  0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -88,7 +92,11 @@ b2sums=('bc7a8872d38975e727f71e7b73bf6624c1e2b146997a5a84dcc0754fb66209f9e8e64fb
         '837aeac7d38490f5457f53d2fcb1e114624b0e0b4931b50f016c6b3c7f67d5638df946b960d50b1a14c945229827c936e3f112fddffb80103cd60873fcd15e7d'
         'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
-        '2c197117aa915971edb97ec98233d4c394f6790829486403bc51732a18fe12338d82e680ccafd138153affe9830d815ee1b52c7d1f3ed7937bc7a0c1fac3a5ef')
+        '15e0c083bfdbf3ea1be551c948a1afe0ef3fdca490d331922fa6c0f3d6b269245e05119ed181741fca79bf248c42148f9acd21553361161897c8d389486901e8'
+        'd6cd7b98d835599181c6a200ebecfd6d21a86ea0477fd4294289402ade6b79c75eee85066b87aebec1e372f634388ad209be48f260df622f6e7361c90afc2422'
+        '4970a378fa1d65015b1ee7c266248f8b79c5f91c1f66aae0e253747d296988f229ef0cff72482a68dff34606f2e08d21a565832b2833c17c4d80b8e4c6c72498'
+        'd98f4674ecf8b2107fa590e8be7484c08c7967679bd78f43a93fdb0a96766ca9a1d8eb24990c5510fb91f5a816e35ad2a8e4856395ee43654b2d0b1f793ec7c5'
+        '202aa8deca61f9b7e7098069624473ac6835735aaab27af501dd0ca72ca19c87958cfb9d71348b90e2965be9077cb1a9ce9991161fb0254c478f9316e5f5d878')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
