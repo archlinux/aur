@@ -29,6 +29,8 @@ prepare() {
 
   # Fix up typemaps to match our packages, where possible
   patch -Np1 -i ../arch-fonts.diff
+
+  # Don't run auto(re)conf; assumes use of git
 }
 
 build() {
