@@ -1,0 +1,67 @@
+From d3b9bc1d50ab485106850f672ae885c2a3d5c161 Mon Sep 17 00:00:00 2001
+From: Maxime Gauduin <alucryd@archlinux.org>
+Date: Wed, 14 Apr 2021 18:41:03 +0200
+Subject: [PATCH] bugfix: dhcp component
+
+---
+ homeassistant/components/dhcp/manifest.json | 2 +-
+ homeassistant/package_constraints.txt       | 2 +-
+ requirements_all.txt                        | 2 +-
+ requirements_test_all.txt                   | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/homeassistant/components/dhcp/manifest.json b/homeassistant/components/dhcp/manifest.json
+index 80cc6b116c..af072d276f 100644
+--- a/homeassistant/components/dhcp/manifest.json
++++ b/homeassistant/components/dhcp/manifest.json
+@@ -3,7 +3,7 @@
+   "name": "DHCP Discovery",
+   "documentation": "https://www.home-assistant.io/integrations/dhcp",
+   "requirements": [
+-    "scapy==2.4.4", "aiodiscover==1.3.3"
++    "scapy==2.4.5rc1", "aiodiscover==1.3.3"
+   ],
+   "codeowners": [
+     "@bdraco"
+diff --git a/homeassistant/package_constraints.txt b/homeassistant/package_constraints.txt
+index 449c0602df..5a0f07e64f 100644
+--- a/homeassistant/package_constraints.txt
++++ b/homeassistant/package_constraints.txt
+@@ -28,7 +28,7 @@ pytz>=2021.1
+ pyyaml==5.4.1
+ requests==2.25.1
+ ruamel.yaml==0.15.100
+-scapy==2.4.4
++scapy==2.4.5rc1
+ sqlalchemy==1.3.23
+ voluptuous-serialize==2.4.0
+ voluptuous==0.12.1
+diff --git a/requirements_all.txt b/requirements_all.txt
+index 4831b310f8..53e49c9bfc 100644
+--- a/requirements_all.txt
++++ b/requirements_all.txt
+@@ -2006,7 +2006,7 @@ samsungtvws==1.6.0
+ satel_integra==0.3.4
+ 
+ # homeassistant.components.dhcp
+-scapy==2.4.4
++scapy==2.4.5rc1
+ 
+ # homeassistant.components.deutsche_bahn
+ schiene==0.23
+diff --git a/requirements_test_all.txt b/requirements_test_all.txt
+index 33ef9a95aa..169d6d089b 100644
+--- a/requirements_test_all.txt
++++ b/requirements_test_all.txt
+@@ -1046,7 +1046,7 @@ samsungctl[websocket]==0.7.1
+ samsungtvws==1.6.0
+ 
+ # homeassistant.components.dhcp
+-scapy==2.4.4
++scapy==2.4.5rc1
+ 
+ # homeassistant.components.screenlogic
+ screenlogicpy==0.2.1
+-- 
+2.31.1
+

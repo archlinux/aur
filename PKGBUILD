@@ -6,8 +6,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2021.1.5
-pkgrel=2
+pkgver=2021.4.4
+pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -50,27 +50,27 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=6715eae3d7f7d20a37c2c2aa85be6566c4e43939
+_tag=b5548c57fbab553ca72c224391b473f6228e928a
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
   home-assistant-astral2.2.patch
+  home-assistant-dhcp-component.patch
 )
 b2sums=('SKIP'
         '0df7bbfdac09e37294ac27567e677855c72d13be3aefbd23e0a8f101cf2148302affbe9b6b586b893f77fc990f665d7b95f4916583680c06abd8f74b5cdf3da9'
-        'b21f1e662c242a10b0fdd8727dfb25a293e13ca3f431d49c2f7ef5b5427ad5b89ce6e7fe399a8bbad986c4e128c94be571227f67778764cf5441bf1f8dc00eaf')
+        '4458692cb10e0832c1b321b96d74d7dd7e5e0e9e9b23d420efec9e27e5b0f34ef33f64789b05fbc5ec49337002ad26b026079b939741bbf16869c52c9316ef34'
+        '17f86a3bf06e0aaafee8609fae5e5f8a4d54e75232fcc8af949f0d574be5d9f29b13040d5a3665d717380fd0d71125e1c9e0277ffaab142d9beaf122dd59df60')
 
 pkgver() {
   cd home-assistant
-
   git describe --tags
 }
 
 prepare() {
   cd home-assistant
-
   patch -Np1 -i ../home-assistant-astral2.2.patch
-
+  patch -Np1 -i ../home-assistant-dhcp-component.patch
   # lift hard dep constraints, we'll deal with breaking changes ourselves
   sed 's/==/>=/g' -i requirements.txt setup.py homeassistant/package_constraints.txt
   # allow pip >= 20.3 to be used
@@ -79,15 +79,12 @@ prepare() {
 
 build() {
   cd home-assistant
-
   python setup.py build
 }
 
 package() {
   cd home-assistant
-
   python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
-
   install -Dm 644 ../home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
