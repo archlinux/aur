@@ -2,7 +2,7 @@
 
 pkgname=juno-theme-git
 _pkgname=Juno
-pkgver=r52.eafebd3
+pkgver=r98.2506064
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 arch=("any")
@@ -49,12 +49,15 @@ build() {
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
 	while read $line; do echo -n "."; done < \
-		<(./render-assets.sh); echo
+		<(./render-assets.sh 2>/dev/null); echo
 	popd
 
 	pushd src
 	while read $line; do echo -n "."; done < \
-		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py); echo
+		<(./render-gtk3-assets.py 2>/dev/null; \
+		./render-gtk3-assets-hidpi.py 2>/dev/null; \
+		./render-wm-assets-hidpi.py 2>/dev/null; \
+		./render-wm-assets.py 2>/dev/null); echo
 	popd
 	msg2 "Done!"
 }
