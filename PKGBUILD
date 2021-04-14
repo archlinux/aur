@@ -2,7 +2,7 @@
 
 pkgname=macterial-theme-git
 _pkgname=macterial
-pkgver=r42.98222c8
+pkgver=r47.95c184c
 pkgrel=1
 pkgdesc="A mac inspired Gtk+ theme based on Material design"
 arch=("any")

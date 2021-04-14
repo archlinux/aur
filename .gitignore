@@ -2,5 +2,5 @@ src
 pkg
 tags
 macterial
-*pkg.tar.xz
+*.pkg.tar.*
 tags
