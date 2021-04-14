@@ -1,0 +1,20 @@
+pkgbase = fm-git
+	pkgdesc = A terminal based file manager
+	pkgver = r7.b5750bf
+	pkgrel = 1
+	url = https://github.com/knipferrc/fm
+	arch = aarch64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = fm
+	conflicts = fm
+	source = fm::git+https://github.com/knipferrc/fm.git#branch=main
+	sha256sums = SKIP
+
+pkgname = fm-git
+
