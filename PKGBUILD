@@ -3,8 +3,8 @@
 # Contributor: M Buschsieweke
 
 pkgname=tinyscheme
-pkgver=1.41
-pkgrel=2
+pkgver=1.42
+pkgrel=1
 pkgdesc="A lightweight Scheme interpreter that implements a large subset of R5RS."
 arch=('i686' 'x86_64')
 url="http://tinyscheme.sourceforge.net/"
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=()
 options=('staticlibs')
 source=("http://downloads.sourceforge.net/project/tinyscheme/tinyscheme/tinyscheme-$pkgver/tinyscheme-$pkgver.tar.gz")
-md5sums=('2006c867b7a50e73644fabbb3bb9a21a')
+md5sums=('273ac5ffe5305986b329e9045f2aea89')
 
 prepare() {
   cd "$srcdir/tinyscheme-$pkgver"
