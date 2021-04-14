@@ -1,10 +1,12 @@
 #!/hint/bash
 # Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
+
+
 pkgname=openboard-develop-git
 _fragment="#branch=dev-qt5.1x"
 pkgver=1.6.1rc.0309.r10.gf3f07f99
 pkgrel=1
-pkgdesc="Interactive whiteboard software for schools and universities"
+pkgdesc="Interactive whiteboard software for schools and universities (development version current master)"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
@@ -32,8 +34,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/OpenBoard
+  msg2 "drop_ThirdParty_repo"
   patch -p1 < "$srcdir"/drop_ThirdParty_repo.patch
+  msg2 "qchar"
   patch -p1 < "$srcdir"/qchar.patch
+  msg2 "quazip"
   patch -p1 < "$srcdir"/quazip.patch
 }
 
