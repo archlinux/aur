@@ -1,26 +1,25 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-mmod-panel-git
-_gitname=mmod-panel
-pkgver=r40.40a58cd
-pkgrel=2
+pkgver=v0.1.4.r28.g40a58cd
+pkgrel=1
 pkgdesc="Create a customizable panel for Gnome 3"
 arch=('any')
-url="https://github.com/RyanGipson/mmod-panel"
+url="https://github.com/RyanGipson/mmod-panel.git"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
-source=('git+https://github.com/RyanGipson/mmod-panel.git')
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_gitname
+	cd "${srcdir}/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd $_gitname
+	cd "${srcdir}/${pkgname}"
 
     _extid="mmod-panel@mmogp.com"
 	_extpath="${pkgdir}/usr/share/gnome-shell/extensions/${_extid}"
