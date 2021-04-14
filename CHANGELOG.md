@@ -1,6 +1,6 @@
 # Changelog
 
-* [Unreleased][#Unreleased]
+* [2.3.3](#2-3-3)
 * [2.3.2](#2-3-2)
 * [2.3.1](#2-3-1)
 * [2.3.0](#2-3-0)
@@ -20,13 +20,11 @@
 * [1.1.7](#1-1-7)
 
 
-## Unreleased
-### Added
-### Changed
-### Deprecated
-### Removed
+## 2.3.3
+
 ### Fixed
-### Security
+
+* Cloned fonts not being properly freed in library destructor.
 
 
 ## 2.3.2
