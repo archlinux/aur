@@ -5,8 +5,8 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=nnn-icons
-pkgver=3.6
-pkgrel=3
+pkgver=4.0
+pkgrel=1
 pkgdesc="The fastest terminal file manager ever written. (with icon support)"
 arch=('x86_64')
 depends=('bash' 'icons-in-terminal')
@@ -26,7 +26,7 @@ license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
 source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('875094caebcc22ecf53b3722d139b127d25e1d5563a954342f32ded8980978b5')
+sha256sums=('a219ec8fad3dd0512aadae5840176f3265188c4c22da3b17b133bac602b40754')
 
 prepare() {
     sed -i 's/install: all/install:/' "nnn-${pkgver}/Makefile"
