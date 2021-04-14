@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=speedtest-rs
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Speedtest.net testing utility and crate'
 arch=('x86_64')
@@ -9,19 +9,18 @@ url=https://github.com/nelsonjchen/speedtest-rs
 license=('Apache' 'MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('ae5cee36950ed2410b2c6e993e7b00f8abfe79552030e18efd2c19642ef15293f218928b5b2ff55e37a53aa1719d5fc56a633c87f0829c6539fe6c54b59ccea5')
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('943a86efdb5a0d0cd320aae655653b44aabf9ba280a108f5c35757ea6fde50aed3b00ea17da7b3496621003565d73d3b7ec21076b80b0e0e695e83e732af9814')
 
 build() {
   cd $pkgname-$pkgver
   cargo build --release --locked
 }
 
-# Test files not included in crate
-#check() {
-#  cd $pkgname-$pkgver
-#  cargo test --release --locked
-#}
+check() {
+  cd $pkgname-$pkgver
+  cargo test --release --locked
+}
 
 package() {
   cd $pkgname-$pkgver
