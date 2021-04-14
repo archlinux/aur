@@ -2,7 +2,7 @@
 
 pkgname=yank
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Copy terminal output to clipboard'
 arch=('i686' 'x86_64')
 url='https://github.com/mptre/yank'
@@ -21,6 +21,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm0755 yank "${pkgdir}"/usr/bin/yank
+  install -Dm0644 yank.1 "${pkgdir}"/usr/share/man/man1/yank.1
   install -Dm0644 README.md "${pkgdir}"/usr/share/doc/${pkgname%-*}/README.md
   install -Dm0644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname%-*}/LICENSE
 }
