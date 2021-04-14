@@ -1,0 +1,27 @@
+pkgbase = showmethekey
+	pkgdesc = A screenkey alternative that works under Wayland via libinput.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AlynxZhou/showmethekey
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache
+	makedepends = meson
+	makedepends = git
+	depends = libevdev
+	depends = udev
+	depends = libinput
+	depends = glib2
+	depends = gtk3
+	depends = json-glib
+	depends = cairo
+	depends = pango
+	depends = libxkbcommon
+	source = https://github.com/AlynxZhou/showmethekey/archive/v1.0.0.tar.gz
+	sha512sums = 2cd188357a69a5c3dd2390cf2eadb51675d9787e87f98a8073ebed8c5ca92f8207f9d66951c9db8f88a669da6d4f6c48eaa19d70517f3553c5cadac352a9de36
+
+pkgname = showmethekey
+
