@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.2.182
+pkgver=8.3.153
 pkgrel=1
 pkgdesc="A VLSI layout system"
 url="http://opencircuitdesign.com/magic/"
@@ -15,7 +15,7 @@ optdepends=('mesa: for better graphics'
             'blt: to create a tree diagram of the cell hierarchy in a design')
 changelog="$pkgname.changelog"
 source=("http://opencircuitdesign.com/magic/archive/$pkgname-$pkgver.tgz")
-md5sums=('412b1ed7c1cd042d526e9843f4896acb')
+md5sums=('dad308f2c350f29d5d7160b93d8f7a45')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver/"
