@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=13
+pkgrel=14
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -86,7 +86,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v9/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch"
          # the main kernel config files
         'config')
 
@@ -339,7 +343,11 @@ sha512sums=('69bf72b99b0ef55cb9cd8c37bc9670e0dc7d97ab1f5b9f7edd2c161e8489d3aac43
             'SKIP'
             '64a5b940cac72be8fc50c3feb93550e1da140df4708fe70da15a39c304021707d5638be6b75c7077a2ca56637025dfed50f00919972eafd270be59ba6c079312'
             '08ba50a763f71267215ebf00f136edf68c63aa8afa362c30d6b06fbf38d5cd03c4300165eebb9db9571e7c47150eaa6efbbb7a7f53053b05570cb11f3b4a8303'
-            '14b28af9ba68e82aaba77a7a857f8ba5d71f862f6d008fcd416e455f0dcca61c51d3ad0ec4867c06e0bb273a6a28b50f07f20552acc1ed46aead8a1dc09bba22'
+            '4d9f5419f41e0f5a937c077e3c0ee605c08f65b54e1e07affa84cb1d9d68cf59cbffdcac79b40a62fe14fbdea4b34521f9e43786f29b40044d156fa5375d3e8a'
+            'bdf872b8cc237730c2a174771d65e2d1c261cdb5c2359a8e0af88aeedc76dc510b86602941e0a7819d388163fb2ee2c0053ff79348b641c46d282c4dc11a42ca'
+            'fe0e8f597d20e44344787f267913544256ff4a9545f08dd5d7dc3eb15240c570a127b34328ab62e958dd47d85c82ff2b24e16f00e05175b6b6e88960c3f84de3'
+            'a6700231756b7fe28e78234a5b02bed96d53d198e5af67c411a2f6a2d32f79b5d1afea3931947d6f4b800976553db3d5b3d56467fa214a391a998a77abf88012'
+            '4ee0cf7e6eaba3ceb1887012a93a3e87f04b16e8a88c07de5d7242de872b03868a9780f283a93fea86c39c32b0da9108023b3e19fa056147922e0da1a9d0ccdb'
             '105c632754bf9a8cffd3c90680d5d1eac4e597746df442df65033d1598d57ec250ce95637908e1e7af9fe6a46d5c0515494893678808a8247b9320f3f9a4fe77')
 
 validpgpkeys=(
