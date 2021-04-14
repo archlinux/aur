@@ -1,5 +1,5 @@
 src
 pkg
-gnome-shell-extension-bumblebee-status
-*pkg.tar.xz
+gnome-shell-extension-bumblebee-status-git
+*.pkg.tar.*
 tags
