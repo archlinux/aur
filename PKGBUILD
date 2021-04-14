@@ -7,7 +7,7 @@ pkgdesc="Like cURL, but for gRPC: Command-line tool for interacting with gRPC se
 arch=(x86_64)
 url="https://github.com/fullstorydev/grpcurl"
 license=('MIT')
-makedepends=('go' 'git')
+makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v$pkgver.tar.gz"
 	file://0001-use-latest-version-of-protoreflect-212.patch
