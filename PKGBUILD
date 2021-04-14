@@ -2,7 +2,7 @@
 
 pkgname=citramanik-qt-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your next way to export your Inkscape work for all purpose quickly"
 arch=("x86_64")
 url="https://citramanik.dev-is.my.id"
@@ -10,7 +10,7 @@ license=("GPLv3")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=('inkscape' 'ghostscript')
-makedepends=('bzip2')
+makedepends=('tar')
 source=("https://getcitramanik.dev-is.my.id/releases/${pkgver}/linux/citramanik-qt-${pkgver}-0-${arch}-bullseye.deb")
 
 options=("!strip")
