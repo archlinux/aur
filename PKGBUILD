@@ -24,7 +24,7 @@ pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
+depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-qfix' 'opencolorio-qfix'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
@@ -112,6 +112,7 @@ build() {
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_PYTHON_INSTALL=OFF \
+        -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
   ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
