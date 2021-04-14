@@ -1,0 +1,12 @@
+pkgbase = asm2bf
+	pkgdesc = The only true brainfuck-targetting assembler
+	pkgver = v1.5.4
+	pkgrel = 1
+	url = https://github.com/kspalaiologos/asmbf
+	arch = x86_64
+	license = MIT
+	source = asm2bf-v1.5.4::https://github.com/kspalaiologos/asmbf/archive/refs/tags/v1.5.4.tar.gz
+	sha256sums = e0134790bbec33e72fee7a53d925b0e7f1dee373d1ed471ffc5f6231b1ebee87
+
+pkgname = asm2bf
+
