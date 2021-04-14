@@ -1,7 +1,7 @@
 pkgbase = eslint-plugin-vue
 	pkgdesc = ESLint Plugin for Vue.js
 	pkgver = 7.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vuejs/eslint-plugin-vue
 	arch = any
 	license = MIT
