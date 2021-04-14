@@ -4,7 +4,7 @@
 _commit=734ff631f254d8f17661d81e43927ba68e69f545
 pkgname=nginxbeautifier
 pkgver=1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="nginx config file formatter and beautifier"
 arch=(any)
 url="https://github.com/vasilevich/nginxbeautifier"
@@ -32,7 +32,7 @@ build() {
 package() {
     cd "${pkgname}"
 
-    npm install -g --user root --prefix "${pkgdir}/usr" "${pkgname}-${pkgver}.tgz"
+    npm install -g --prefix "${pkgdir}/usr" "${pkgname}-${pkgver}.tgz"
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
@@ -44,3 +44,4 @@ package() {
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
     ln -s "/usr/lib/node_modules/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
+

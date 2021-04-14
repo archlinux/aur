@@ -1,7 +1,7 @@
 pkgbase = nginxbeautifier
 	pkgdesc = nginx config file formatter and beautifier
 	pkgver = 1.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vasilevich/nginxbeautifier
 	arch = any
 	license = Apache
