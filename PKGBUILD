@@ -35,6 +35,8 @@ prepare() {
 
 build() {
   cd "$srcdir"/$_src_folder
+# convert translations to binary form
+  lrelease OpenBoard.pro
   qmake OpenBoard.pro -spec linux-g++
   make
 }
