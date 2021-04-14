@@ -7,8 +7,8 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 _pkgname=pamac
 pkgname=pamac-all-git
-pkgver=10.1.0beta2.r0.gee994af
-pkgrel=2
+pkgver=10.1.0rc.r0.g4ee40c4
+pkgrel=1
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
@@ -26,10 +26,8 @@ conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur
 provides=("pamac")
 options=(!emptydirs)
 install=pamac.install
-source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git
-	gnome-40.patch)
-sha256sums=('SKIP'
-            '7246c8a0424c08870acb448c57d0a90ca5f675dc8e15e118ee8c13930ba584e1')
+source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -69,7 +67,6 @@ prepare() {
   # adjust version string
   sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
   # patches here
-  patch -np1 -i ../gnome-40.patch
 }
 
 build() {
