@@ -3,9 +3,9 @@ license=('GPL' 'custom:Brother')
 arch=('i686' 'x86_64')
 pkgname=brscan4
 pkgver=0.4.10_1
-pkgrel=3
+pkgrel=4
 pkgdesc="SANE drivers from Brother for brscan4 compatible models"
-depends=('sane' 'libusb-compat' 'acl')
+depends=('sane' 'libusb-compat')
 url="http://support.brother.com"
 install=brscan4.install
 
@@ -14,24 +14,23 @@ install=brscan4.install
 
 source=("https://download.brother.com/welcome/$pkg"
 	"agree.html"
-	mk-udev-rules)
+	mk-udev-hwdb)
 md5sums=($pkg_md5sum
 	 'ccffb9a6f6d436b21be25b0241068981'
-	 '43c64803cb0fc37093146583719cb543')
+	 '4a69fac9c0053277a9be8e2dd382f168')
 
 build() {
   cd "$srcdir"
-  umask 022
-  mkdir -p etc/udev/rules.d
-  ./mk-udev-rules opt/brother/scanner/brscan4/{Brsane4.ini,models4/*.ini} > etc/udev/rules.d/40-$pkgname.rules
+  ./mk-udev-hwdb opt/brother/scanner/brscan4/{Brsane4.ini,models4/*.ini} > hwdb
 }
 
 package() {
   cp -r $srcdir/etc $pkgdir
   cp -r $srcdir/opt $pkgdir
   cp -r $srcdir/usr $pkgdir
-  install -D -m644 $srcdir/agree.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
   [ "$CARCH" = "x86_64" ] && mv $pkgdir/usr/lib64 $pkgdir/usr/lib
+  install -D -m644 $srcdir/agree.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
+  install -D -m644 $srcdir/hwdb $pkgdir/usr/lib/udev/hwdb.d/20-$pkgname.hwdb
   # move the links to the right direction
   cd $pkgdir/usr/lib/sane
   ln -sf libsane-brother4.so.1.0.7 $pkgdir/usr/lib/sane/libsane-brother4.so.1
