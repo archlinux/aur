@@ -3,17 +3,18 @@
 
 pkgname=gnome-shell-extension-disable-unredirect
 pkgver=3
-pkgrel=1
+pkgrel=2
+_commit='2a4c0e6a7a7a5f1aad9907ee2cf43d0725e10c19'
 pkgdesc="Disables unredirect fullscreen windows in gnome-shell"
 arch=('any')
 url="https://github.com/kazysmaster/gnome-shell-extension-disable-unredirect"
 license=('GPL3')
 depends=('gnome-shell')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kazysmaster/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('62a34ecb0fd8803b517d02b7ac7deff47d088c7e669b999398d10c3f167c93ef1f0c0438a9843bb88e8edfcb5a6fd2fa71d883976d5586ca0cb6fad520829601')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kazysmaster/${pkgname}/archive/${_commit}.tar.gz")
+sha512sums=('628cd8bcbb0cf246ac2bdcc473d0211a53102a39d3a9b59b7e5670435de4b6d27515e46ca4974500142f877c31adb5ba76cc4340afa01eefccdd7316fe41cc86')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/unredirect@vaina.lt"
+  cd "${srcdir}/${pkgname}-${_commit}/unredirect@vaina.lt"
 
   for i in $(find -type f); do
     install -Dm 644 "$i" "${pkgdir}/usr/share/gnome-shell/extensions/unredirect@vaina.lt/${i}"
