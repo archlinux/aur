@@ -1,5 +1,5 @@
 src
 pkg
-mmod-panel
+gnome-shell-extension-mmod-panel-git
 *.pkg.tar.*
 tags
