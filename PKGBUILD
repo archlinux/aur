@@ -3,10 +3,11 @@
 
 pkgname='librewolf-extension-cookie-autodelete'
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf extension that automatically deletes cookies."
 license=('MIT')
 arch=('any')
+groups=('librewolf-addons')
 makedepends=('npm')
 url="https://github.com/Cookie-AutoDelete/Cookie-AutoDelete"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v$pkgver.tar.gz")
@@ -37,5 +38,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cd builds
-    install -Dm644 "Cookie-AutoDelete_${pkgver}_Firefox.xpi" "$pkgdir/usr/lib/Librewolf/browser/extensions/CookieAutoDelete@kennydo.com.xpi"
+    install -Dm644 "Cookie-AutoDelete_${pkgver}_Firefox.xpi" "$pkgdir/usr/lib/librewolf/browser/extensions/CookieAutoDelete@kennydo.com.xpi"
 }

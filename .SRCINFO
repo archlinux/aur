@@ -1,9 +1,10 @@
 pkgbase = librewolf-extension-cookie-autodelete
 	pkgdesc = Librewolf extension that automatically deletes cookies.
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cookie-AutoDelete/Cookie-AutoDelete
 	arch = any
+	groups = librewolf-addons
 	license = MIT
 	makedepends = npm
 	source = librewolf-extension-cookie-autodelete-3.6.0.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v3.6.0.tar.gz
