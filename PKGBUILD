@@ -9,7 +9,8 @@ arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
 depends=('wine' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
-makedepends=('meson' 'ninja')
+# FIXME: Wine 6.6 broke wineg++, see https://bugs.winehq.org/show_bug.cgi?id=50996
+makedepends=('meson' 'ninja' 'wine<6.6')
 optdepends=('yabridgectl: utility for setting up and managing yabridge')
 provides=('yabridge')
 conflicts=('yabridge')
