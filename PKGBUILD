@@ -6,7 +6,7 @@ pkgname="wingide8"
 _pkg_pname=wingide
 
 pkgver=8.0.0.2
-pkgrel=0
+pkgrel=1
 
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers.\nWarning. This is a beta package"
 url="http://www.wingware.com"
@@ -17,11 +17,13 @@ arch=('x86_64')
 source=("https://wingware.com/pub/wingpro/$pkgver/wingpro-$pkgver-linux-x64.tar.bz2" )
 sha1sums=("d0c80aff0d6612d062c79ad994af9212577cbaab")
 
-depends=('xdg-utils' 'python'  'python2' 'qt5-svg' 'libxcb' 'perl' 'java-runtime')
+depends=('xdg-utils' 'python' 'qt5-svg' 'libxcb' 'perl' 'java-runtime')
 provides=(${_pkg_pname})
 conflicts=(${_pkg_pname})
 
 install=${_pkg_pname}.install
+
+options=("!strip")
 
 package() {
     cd "$srcdir/wingpro-$pkgver-linux-x64"
@@ -49,5 +51,5 @@ package() {
     chown -R root:root "${pkgdir}/opt/${_pkg_pname}"
     chmod +x ${pkgdir}/opt/${_pkg_pname}/resources/linux/desktop/install-linux-desktop.sh
     # Install the LICENSE
-    install -D -m 644 "${pkgdir}/opt/${_pkg_pname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkg_pname}/LICENSE"
+    install -D -m 644 "${pkgdir}/opt/${_pkg_pname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgpname}/LICENSE"
 }
