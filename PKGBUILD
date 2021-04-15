@@ -176,9 +176,6 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i ../../add-dependency-on-opus-in-webcodecs.patch
 
-  # https://github.com/kiss-community/repo-community/issues/246
-  patch -Np1 -i ../../chromium-fix-libva-redef.patch
-
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../../patches/chromium-89-quiche-dcheck.patch
   patch -Np1 -i ../../patches/chromium-89-AXTreeSerializer-include.patch
@@ -193,6 +190,9 @@ prepare() {
   if [ "$COMPONENT" = "4" ]; then
     sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
         tools/generate_shim_headers/generate_shim_headers.py
+
+    # https://github.com/kiss-community/repo-community/issues/246
+    patch -Np1 -i ../../chromium-fix-libva-redef.patch
 
     msg2 "Add patches for custom build"
     for _patch in "$srcdir/brave-patches-$brave_patchset_name"/*.patch; do
