@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=slit-git
-pkgver=1.2.0.r12.g0700c97
-pkgrel=2
+pkgver=1.3.0.r2.g15f86ae
+pkgrel=1
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
 url="https://github.com/tigrawap/slit"
