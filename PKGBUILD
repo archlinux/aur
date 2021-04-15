@@ -2,7 +2,7 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastyworks
-pkgver='1.13.0'
+pkgver='1.14.0'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:commercial')
 conflicts=('tastyworks-bin')
 
 source=(https://download.tastyworks.com/desktop-1.x.x/${pkgver}/tastyworks-${pkgver}-1_amd64.deb)
-sha256sums=('b3a490da6228f36b44fdf3a938021e7db59823655d12133adf85d62cd4432249')
+sha256sums=('9f886b7b2fbeca6d4977edb5d5ae8828c1ef28e76fd15bedf8232e5732d5d45b')
 
 build() {
 	tar xf data.tar.xz
@@ -49,4 +49,6 @@ package() {
 	install -Dm 644 "${srcdir}/opt/tastyworks/lib/tastyworks-tastyworks.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm 644 "${srcdir}/opt/tastyworks/share/doc/copyright"               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm 644 "${srcdir}/opt/tastyworks/lib/tastyworks.png"                "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+	echo "changelog: https://tastyworks.freshdesk.com/support/solutions/articles/43000435186-recent-release-notes?_sp=7c25726d-6774-4b70-bda4-a82570383c13.1600117130600"
 }
