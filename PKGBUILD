@@ -3,7 +3,7 @@
 _pkgname=vim-auto-pairs
 pkgname=$_pkgname-git
 pkgver=2.0.0.r3.g39f06b8
-pkgrel=1
+pkgrel=3
 pkgdesc='Vim plugin, insert or delete brackets, parens, quotes in pair'
 url=https://github.com/jiangmiao/auto-pairs
 license=(MIT)
@@ -22,6 +22,6 @@ pkgver() {
 
 package() {
 	cd $_pkgname
-	install -Dm644 doc/AutoPairs.txt "$pkgdir"/usr/share/vim/vimfiles/doc/AutoPairs.txt
-	install -Dm644 plugin/auto-pairs.vim "$pkgdir"/usr/share/vim/vimfiles/autoload/auto-pairs.vim
+	install -Dm644 doc/AutoPairs.txt "$pkgdir"/usr/share/vim/vimfiles/doc/auto-pairs.txt
+	install -Dm644 plugin/auto-pairs.vim "$pkgdir"/usr/share/vim/vimfiles/plugin/auto-pairs.vim
 }
