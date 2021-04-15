@@ -1,6 +1,6 @@
 # Maintainer: Joseph Mellor <the.landfill.coding@gmail.com>
 pkgname=md++-git
-pkgver=0.9.1.r9.gef23a13
+pkgver=0.9.2.1.r0.g1cb0215
 pkgrel=1
 epoch=
 pkgdesc="A fast, extensible, and easy to use static site generator."
