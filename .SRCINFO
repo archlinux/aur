@@ -1,9 +1,13 @@
 pkgbase = grok-exporter-bin
 	pkgdesc = Export Prometheus metrics from arbitrary unstructured log data (from binary release).
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fstab/grok_exporter
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = arm
 	license = Apache
 	provides = grok-exporter
 	conflicts = grok-exporter
@@ -14,6 +18,13 @@ pkgbase = grok-exporter-bin
 	md5sums = 39ae997b03a1a35490c74eb3fcd8c3a4
 	source_x86_64 = https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-amd64.zip
 	md5sums_x86_64 = dd66057b47cb31e84595d0b4895eec47
+	source_aarch64 = https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-arm64v8.zip
+	md5sums_aarch64 = 52891f38229514811dfdbd70800d57c6
+	source_armv7h = https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-arm32v6.zip
+	md5sums_armv7h = 45f1646dbe749ad8ad7470e3a568cc52
+	source_armv6h = https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-arm32v6.zip
+	md5sums_armv6h = 45f1646dbe749ad8ad7470e3a568cc52
+	source_arm = https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-arm32v6.zip
 
 pkgname = grok-exporter-bin
 
