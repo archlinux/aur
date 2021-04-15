@@ -3,7 +3,7 @@
 _pkgname=LightGBM
 pkgbase=lightgbm
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('boost-libs' 'ocl-icd' 'openmpi')
 makedepends=('boost' 'cmake' 'opencl-headers' 'python-setuptools' 'eigen' 'fmt')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('13cb5ba45f6bb26537090f40564d425a37d9b9ef7dd8b5e82d7976fe2434c771')
+sha256sums=('c5bb69bbc5e8b48ce9630717c1ee88e120606d2da0eed6b1186c70dc334ed2fe')
 
 prepare(){
     cd "${_pkgname}-${pkgver}"
