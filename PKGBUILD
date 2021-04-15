@@ -1,9 +1,13 @@
 # Maintainer: Samarth Ramesh <samarthr1@outlook.com>
 
 pkgname=wingide8
+
+# cannot call it wingide8 as some parts hardcode it as wingide
 pkg_pname=wingide
+
 pkgver=8.0.0.2
 pkgrel=0
+
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers.\nWarning. This is a beta package"
 url="http://www.wingware.com"
 
