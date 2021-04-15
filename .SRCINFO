@@ -1,6 +1,6 @@
 pkgbase = pam-pgsql-git
 	pkgdesc = PAM module to provide authentication against PostgreSQL tables
-	pkgver = 0.7.3.2.r10.efe2820
+	pkgver = 0.7.3.2
 	pkgrel = 1
 	url = https://github.com/pam-pgsql/pam-pgsql
 	arch = x86_64
