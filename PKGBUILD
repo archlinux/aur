@@ -3,7 +3,7 @@
 pkgname=('ccdoc')
 pkgdesc='create HTML, README.md, WIKI, MAN, from C comment'
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/vbextreme/ccdoc'
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vbextreme/ccdoc/archive/v${pkgver}.tar.gz")
@@ -14,7 +14,7 @@ makedepends=('meson')
 
 prepare() {
     cd "ccdoc-${pkgver}"
-    meson build
+    meson build --prefix=/usr
 }
 
 build() {

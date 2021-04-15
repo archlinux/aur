@@ -1,7 +1,7 @@
 pkgbase = ccdoc
 	pkgdesc = create HTML, README.md, WIKI, MAN, from C comment
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vbextreme/ccdoc
 	arch = x86_64
 	license = GPL3
