@@ -4,10 +4,10 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2021.109.0
+pkgver=2021.410.0
 pkgrel=1
 
-dotnet_version=3.1
+dotnet_version=5.0
 
 pkgdesc="The new open source version of osu!, the free-to-win rhythm game"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('MIT' 'custom:CC-BY-NC 4.0')
 url='https://osu.ppy.sh/'
 
 depends=(ffmpeg libgl sdl2 shared-mime-info "dotnet-runtime>=$dotnet_version.0")
-makedepends=(git "dotnet-sdk>=$dotnet_version.0")
+makedepends=(git "dotnet-sdk>=$dotnet_version.0.5.sdk202")
 
 source=(
     "osu-lazer::git+https://github.com/ppy/osu.git#tag=$pkgver"
@@ -39,7 +39,7 @@ build()
     output="./osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
 
     dotnet publish          osu.Desktop                 \
-        --framework         netcoreapp$dotnet_version   \
+        --framework         net$dotnet_version          \
         --configuration     Release                     \
         --runtime           linux-x64                   \
         --output            $output                     \
