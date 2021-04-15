@@ -1,12 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-plank-to-dock
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell extension to integrate Plank, the simplest dock on the planet."
 arch=("any")
 url="https://github.com/hardpixel/plank-to-dock"
 license=("GPL")
-depends=("gnome-shell")
+depends=("gnome-shell" "plank")
 provides=("gnome-shell-extension-plank-to-dock")
 conflicts=("gnome-shell-extension-plank-to-dock-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
