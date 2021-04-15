@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
 pkgver=1.26.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
 arch=('any')
@@ -32,21 +32,23 @@ source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "cardano-node.tmpfiles"
         "cardano-node.service"
         "cardano-node.confd"
-        "cardano-node-testnet.service")
+        "cardano-node-testnet.service"
+        "cardano-node-testnet.confd")
 sha256sums=("e725f425cb7b7e581208a9b7b6989049fbaba8634475889910d92a09a14cac13"
-        "9999052dc926506d350cfca2bcfd291e50b48cc7f5215a154c344ad7ad7d70eb"
-        "4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa"
-        "59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961"
-        "7ac2184ff55d1272e87d579550501b7e4fc61b9cf016179ca026516fff365730"
-        "9ed2437e3fe4d65cd865468089dac0460c3a6afd805d5176b2e70f47e4a7e057"
-        "dca3139e907bb943bfeff5f186f3fc71217ff12cabde93a926277c6ddd647d87"
-        "4e309ad1f7b19d5c442b9250326ef55a70581c5d1bc0f7a056d18ebff31bcfa6"
-        "cbcf919b1d2d656ea7512f8ecb12e3c3e3a8db137925abff52d647427f2b154f"
-        "703f9b033c299b652b2d3228ee6ef4a9c09b7e846ff4b366a2aca68960370234"
-        "3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542"
-        "612025b4071734ab29e90f5cc71cff2868abe4f333d7f60c25d4b5c7f236f43c"
-        "5c2410eecf9f32be4b9ae712cbf7a42d00ba52d79b693585f5bad18cb4f9b54b"
-        "a5582d3b712330d0f37fc1488c06f4e2cb75176ffe382c74db9e6c75c3f95f9d")
+            "9999052dc926506d350cfca2bcfd291e50b48cc7f5215a154c344ad7ad7d70eb"
+            "4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa"
+            "59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961"
+            "7ac2184ff55d1272e87d579550501b7e4fc61b9cf016179ca026516fff365730"
+            "9ed2437e3fe4d65cd865468089dac0460c3a6afd805d5176b2e70f47e4a7e057"
+            "dca3139e907bb943bfeff5f186f3fc71217ff12cabde93a926277c6ddd647d87"
+            "4e309ad1f7b19d5c442b9250326ef55a70581c5d1bc0f7a056d18ebff31bcfa6"
+            "cbcf919b1d2d656ea7512f8ecb12e3c3e3a8db137925abff52d647427f2b154f"
+            "703f9b033c299b652b2d3228ee6ef4a9c09b7e846ff4b366a2aca68960370234"
+            "3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542"
+            "67d504cac5bd66efb8a90a9fcd29985c59724af938dd144a2c330319e78de163"
+            "7e2e7a8422b8da7b82919752ca96904e84d130425495e647d648793218644f38"
+            "ec16edc07aa35dccd5fb6894b964ab304cd7a8c1cc65eed22aa569e9105c7982"
+            "07a3dde7fb51f3f84bb51e7c15993dfefa337571ed509cc3588e73c54f606282")
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -4,10 +4,12 @@ Requires=network.target
 
 [Service]
 Type=simple
+EnvironmentFile=/etc/conf.d/cardano-node
 ExecStart=cardano-node run \
     --database-path $DB_PATH \
     --socket-path $SOCKET_PATH \
-    --host-addr $BIND_HOST \
+    --host-addr $BIND_IPV4 \
+    --host-ipv6-addr $BIND_IPV6 \
     --port $BIND_PORT \
     --config $CONFIG_FILE  \
     --topology $TOPOLOGY_FILE
