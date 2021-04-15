@@ -1,6 +1,6 @@
 pkgbase = jellyfin
 	pkgdesc = The Free Software Media System
-	pkgver = 10.7.0
+	pkgver = 10.7.2
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
@@ -10,22 +10,22 @@ pkgbase = jellyfin
 	makedepends = dotnet-sdk>=5
 	makedepends = yarn
 	makedepends = git
-	source = jellyfin-10.7.0.tar.gz::https://github.com/jellyfin/jellyfin/archive/v10.7.0.tar.gz
-	source = jellyfin-web-10.7.0.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v10.7.0.tar.gz
+	source = jellyfin-10.7.2.tar.gz::https://github.com/jellyfin/jellyfin/archive/v10.7.2.tar.gz
+	source = jellyfin-web-10.7.2.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v10.7.2.tar.gz
 	source = jellyfin.conf
 	source = jellyfin.service
 	source = jellyfin.sysusers
 	source = jellyfin.tmpfiles
-	sha512sums = 14695eb6ea03d62620293d0cdd86035dfdf023afba14e0ef6c301e6985d9a8e021a250e0ee1f91517a29039279b61404331e7ed354674d6be52654debda01919
-	sha512sums = 44e3e3b6fe517edb77c10c4953671fdbe945d38d8f3937eacb293fd26e692082baf501697064ee8b2f7d3b01a51df8ccc2ece1d0c4657217c12855c2f0f21788
+	sha512sums = a0a710b77cccc27091574a95faa98385dcb70a48041919962a5da7670e92894dcf10bfd30ba220412d573ddcea5bd1b44ad5300371231f6357abbd1861dc4a79
+	sha512sums = 52eba19ed2e53e23e17160fa92a9e8a8ace5affdb5db53ae800b5deb31bd35469511003d3e780a92bb18ca5dc5373bfe305804f33a24157d943028fd9649d9e6
 	sha512sums = 2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0
 	sha512sums = 99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b
 	sha512sums = 6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a
 	sha512sums = 45a62b62d97b9a83289d4dfde684163b1bcf340c1921fb958e5a701812c61b392901841940c67e5fa5148783277d5b4dc65ba01d3a22e8f855ea62154ad9be33
 
 pkgname = jellyfin
-	depends = jellyfin-web=10.7.0
-	depends = jellyfin-server=10.7.0
+	depends = jellyfin-web=10.7.2
+	depends = jellyfin-server=10.7.2
 
 pkgname = jellyfin-web
 	pkgdesc = Jellyfin web client
