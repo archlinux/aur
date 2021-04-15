@@ -1,5 +1,5 @@
 post_install() {
-	/opt/wingide-personal/resources/linux/desktop/install-linux-desktop.sh --install
+	/opt/wing-personal/resources/linux/desktop/install-linux-desktop.sh --install
 }
 
 post_upgrade() {
@@ -7,5 +7,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-	/opt/wingide-personal/resources/linux/desktop/install-linux-desktop.sh --uninstall
+	/opt/wing-personal/resources/linux/desktop/install-linux-desktop.sh --uninstall
 }

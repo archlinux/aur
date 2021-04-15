@@ -1,17 +1,17 @@
 # Maintainer: Jonathon Korhonen <first initial last name [at] alumni [dot] nmu [dot] edu>
 
 pkgname=wingide-personal
-pkgver=7.0.1.2
-pkgrel=1
+pkgver=7.2.9.0
+pkgrel=0
 pkgdesc="A free Python IDE designed for students and hobbyists. It omits many features found in Wing Pro."
 arch=('x86_64')
 url="http://www.wingware.com/"
-license=('(L)GPL')
+license=('Custom')
 depends=('python2')
 options=(!strip !emptydirs)
 source=("https://wingware.com/pub/wing-personal/$pkgver/wing-personal-$pkgver-linux-x64.tar.bz2")
-md5sums=('747834a7128f8c116d946b1961aaaef7')
-install=wing-personal.install
+sha1sums=("521fb8264b082dec1f6d7173afb7ec16c7b2483c")
+install=wingide-personal.install
 
 prepare() {
 	cd "$srcdir/wing-personal-$pkgver-linux-x64"
