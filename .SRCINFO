@@ -1,7 +1,7 @@
 pkgbase = ytfzf
 	pkgdesc = A posix script to find and watch youtube videos from the terminal. (Without API)
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://github.com/pystardust/ytfzf
 	arch = any
 	license = GPL
@@ -13,8 +13,8 @@ pkgbase = ytfzf
 	optdepends = rofi: use rofi for search prompts and results
 	optdepends = fzf: use fzf for results
 	optdepends = ueberzug: thumbnails image preview
-	source = https://github.com/pystardust/ytfzf/archive/v1.1.2.tar.gz
-	sha256sums = cdd17594c10408b67a37ecebaaa96ce3c24355847eab99d6a20348ad1f5151f7
+	source = https://github.com/pystardust/ytfzf/archive/v1.1.3.tar.gz
+	sha256sums = 892897aecef5516ae586b980a670d22e08114737809519c86a3e0fe6e70e347a
 
 pkgname = ytfzf
 
