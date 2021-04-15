@@ -10,7 +10,7 @@ url="https://www.foobar2000.org/components/view/foo_ui_columns"
 license=('unknown')
 depends=('foobar2000>=1.0.0')
 source=("https://yuo.be/static/${_buildhash}/foo_ui_columns-${pkgver}.fb2k-component")
-md5sums=('9ea5bf12dff419ecb6e39f820c4eb97f')
+md5sums=("${_buildhash}")
 
 package() {
   install -Dm644 -t "$pkgdir/usr/share/foobar2000/components" "$srcdir/foo_ui_columns.dll"
