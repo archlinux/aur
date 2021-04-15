@@ -1,5 +1,5 @@
 pkgbase = shadowsocks-uri-generator-git
-	pkgver = 20210326.r95.b2ad505
+	pkgver = 20210413.r130.3ca93b1
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-uri-generator
 	arch = x86_64
@@ -19,4 +19,9 @@ pkgname = ss-uri-gen-chatbot-telegram-git
 	pkgdesc = Telegram bot allowing easy user interactions with Shadowsocks URI Generator
 	provides = ss-uri-gen-chatbot-telegram
 	conflicts = ss-uri-gen-chatbot-telegram
+
+pkgname = ss-uri-gen-rescue-git
+	pkgdesc = Rescue tool for restoring ss-uri-gen config from generated online config directory
+	provides = ss-uri-gen-rescue
+	conflicts = ss-uri-gen-rescue
 
