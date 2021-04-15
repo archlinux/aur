@@ -1,10 +1,15 @@
 pkgbase = python-pymssql
 	pkgdesc = A simple database interface for Python that builds on top of FreeTDS to provide a Python DB-API (PEP-249) interface to Microsoft SQL Server
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymssql/pymssql
 	arch = x86_64
 	license = LGPL2.1
+	checkdepends = python-gevent
+	checkdepends = python-psutil
+	checkdepends = python-pytest
+	checkdepends = python-pytest-timeout
+	checkdepends = python-sqlalchemy
 	makedepends = cython
 	makedepends = python-pip
 	makedepends = python-setuptools
