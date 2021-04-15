@@ -1,6 +1,6 @@
 # Maintainer: Samarth Ramesh <samarthr1@outlook.com>
 
-pkgname=wingide8
+pkgname="wingide8"
 
 # cannot call it wingide8 as some parts hardcode it as wingide
 _pkg_pname=wingide
