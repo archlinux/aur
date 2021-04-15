@@ -1,6 +1,6 @@
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 pkgname=v2rayxplus
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 epoch=0
 pkgdesc="v2rayXPlus"
@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://gitlab.com/xiayesuifeng/v2rayxplus"
 license=('GPL')
 groups=()
-depends=("qt5-base" "iptables" "v2ray")
+depends=("qt5-base" "iptables" "v2ray" "polkit")
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -28,16 +28,15 @@ noextract=()
 md5sums=('9dc2795fd51f2f0e3e1749b100e1ac2d'
          'e357d8f75b9d2577bacb8a7d2c5d184a'
          'dcda30000c17f717c6e1b9e4c82416a1'
-         '4e0427783058c56709b15a86f076d824')
+         '31506d8ea5aece20f5d528267ce35137')
 
 package() {
-    mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/share/applications"
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/96x96/apps"
-    mkdir -p "${pkgdir}/usr/lib/systemd/system"
-
-    install -m=755 "${srcdir}/build/v2rayxplus" "${pkgdir}/usr/bin"
-    install -m=644 "${srcdir}/v2rayxplus.desktop" "${pkgdir}/usr/share/applications"
-    install -m=644 "${srcdir}/v2rayxplus.service" "${pkgdir}/usr/lib/systemd/system"
-    install -m=644 "${srcdir}/v2rayxplus.svg" "${pkgdir}/usr/share/icons/hicolor/96x96/apps"
+    install -Dm=755 "${srcdir}/build/v2rayxplus" "${pkgdir}/usr/bin/v2rayxplus"
+    install -Dm=755 "${srcdir}/build/v2rayxplus-helper" "${pkgdir}/usr/bin/v2rayxplus-helper"
+    install -Dm=644 "${srcdir}/v2rayxplus.desktop" "${pkgdir}/usr/share/applications/v2rayxplus.desktop"
+    install -Dm=644 "${srcdir}/v2rayxplus.service" "${pkgdir}/usr/lib/systemd/system/v2rayxplus.service"
+    install -Dm=644 "${srcdir}/v2rayxplus.svg" "${pkgdir}/usr/share/icons/hicolor/96x96/apps/v2rayxplus.svg"
+    install -Dm=644 "${srcdir}/build/config/dbus-1/system.d/me.firerain.v2rayxplus.conf" "${pkgdir}/usr/share/dbus-1/system.d/me.firerain.v2rayxplus.conf"
+    install -Dm=644 "${srcdir}/build/config/dbus-1/system-services/me.firerain.v2rayxplus.service" "${pkgdir}/usr/share/dbus-1/system-services/me.firerain.v2rayxplus.service"
+    install -Dm=644 "${srcdir}/build/config/polkit-1/actions/me.firerain.v2rayxplus.policy" "${pkgdir}/usr/share/polkit-1/actions/me.firerain.v2rayxplus.policy"
 }
