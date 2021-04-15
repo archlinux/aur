@@ -1,7 +1,7 @@
 pkgbase = notion-app
 	pkgdesc = The all-in-one workspace for your notes and tasks
 	pkgver = 2.0.16
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://www.notion.so/desktop
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = notion-app
 	source = exit-after-windows-closed.patch
 	md5sums = 9f72284086cda3977f7f569dff3974d5
 	md5sums = 257f3106e5d9364ef2df557a656cd8e7
-	md5sums = bb102781b27f4871b24d533efb97debf
+	md5sums = aaa50ed0208c4d6d31f553fd3bd46b1c
 
 pkgname = notion-app
 

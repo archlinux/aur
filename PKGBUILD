@@ -1,7 +1,7 @@
 # Maintainer: Jaime Martínez Rincón <jaime@jamezrin.name>
 pkgname=notion-app
 pkgver=2.0.16
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("Notion-"${pkgver}".exe::https://desktop-release.notion-static.com/Notio
         'exit-after-windows-closed.patch')
 md5sums=('9f72284086cda3977f7f569dff3974d5'
          '257f3106e5d9364ef2df557a656cd8e7'
-         'bb102781b27f4871b24d533efb97debf')
+         'aaa50ed0208c4d6d31f553fd3bd46b1c')
 build() {
   msg "Extracting app from Windows build..."
   7z x -y "${srcdir}/Notion-"${pkgver}".exe" -o"${srcdir}/extracted-exe" >/dev/null
@@ -30,7 +30,7 @@ build() {
   cd "${srcdir}/package-rebuild"
   
   msg "Patching original sources for fixes..."
-  patch -p1 < "${srcdir}/exit-after-windows-closed.patch"
+  patch -p1 --binary --ignore-whitespace < "${srcdir}/exit-after-windows-closed.patch"
   
   msg "Recreating package node_modules..."
   rm -r node_modules
