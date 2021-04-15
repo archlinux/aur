@@ -55,19 +55,25 @@ echo "01" > "${_temp_dir}/crlnumber"
 }
 
 function trust_ca {
-  # Add in shared user database
+  # Add CA in shared user database
   certutil -d "${_nssdb}" -D -n "${_cert_cn}" > /dev/null 2>&1
   certutil -d "${_nssdb}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
-  # Add in default firefox profile (if exists)
+  # Add CA in all firefox profiles (if any)
   if [ -r "${_firefox_profiles_ini}" ]; then
-    _firefox_default_profile="$(grep Default ${_firefox_profiles_ini})"
-    _firefox_default_profile_dir="${HOME}/.mozilla/firefox/${_firefox_default_profile##*=}"
-    if [ -d "${_firefox_default_profile_dir}" ]; then
-      certutil -d "${_firefox_default_profile_dir}" -D -n "${_cert_cn}" > /dev/null 2>&1
-      certutil -d "${_firefox_default_profile_dir}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
-    fi
+    _firefox_profile_paths=($(grep Path ${_firefox_profiles_ini}))
+    for _firefox_profile_path in ${_firefox_profile_paths[@]}; do
+      _firefox_profile_path="${_firefox_profile_path##*=}"
+      # Check if profile path is absolute or relative
+      [ ! -d "${_firefox_profile_path}" ] && \
+        _firefox_profile_path="${HOME}/.mozilla/firefox/${_firefox_profile_path}"
+      # Add CA in current firefox profile
+      if [ -d "${_firefox_profile_path}" ]; then
+        certutil -d "${_firefox_profile_path}" -D -n "${_cert_cn}" > /dev/null 2>&1
+        certutil -d "${_firefox_profile_path}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
+      fi
+    done
   unset _autofirma_ca _autofirma_pfx _cert_cn _nssdb \
-    _firefox_profiles_ini _firefox_default_profile _firefox_default_profile_dir
+    _firefox_profiles_ini _firefox_profile_paths _firefox_profile_path
 fi
 }
 

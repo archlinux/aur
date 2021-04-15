@@ -2,7 +2,7 @@
 
 pkgname=autofirma-bin
 pkgver=1.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.zip::https://sede.xunta.gal/ficheiros/autofirma/Au
         "autofirma.js"
         "autofirma.svg")
 sha256sums=('28da745ea3084ba87b56eba31bc994e60872384c893c91f3e4aad3db4967d939'
-            '2a5798fa8d52203a4a6deb6aa50ac1a46974a8104c3c649f15d395e5fdd88cc6'
+            'ab40c32a083bf6429580b057b21ab8341f8d819cedd91cd52b92fe5ae40212c9'
             '062cf72219e592e06218e47ea2a212d6517be66f0d4c58dcd03ef18d5c39300b'
             '428c5b7300dde7158a1a0918c8d2e8188f042dbc143d991c03f51d1c8a40efa4'
             'f7e525586103db08a2a38ccefdef93cc02407728de8b214e53ae3dc0631bab75')
