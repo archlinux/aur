@@ -80,6 +80,7 @@ package() {
   install -D -m0644 "testnet-topology.json" "${pkgdir}/var/lib/${pkgname}/config/testnet-topology.json"
 
   install -D -m0644 "${srcdir}/${pkgname}-testnet.service" "${pkgdir}/usr/share/${pkgname}/${pkgname}-testnet-example.service"
+  install -D -m0644 "${srcdir}/${pkgname}-testnet.confd" "${pkgdir}/usr/share/${pkgname}/${pkgname}-testnet-example.confd"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -D -m0755 "dist-newstyle/build/x86_64-linux/ghc-${_ghc_version}/cardano-cli-${pkgver}/x/cardano-cli/build/cardano-cli/cardano-cli" "${pkgdir}/usr/bin/cardano-cli"
