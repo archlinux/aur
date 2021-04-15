@@ -60,7 +60,11 @@ test-clockify-desktop:
   image: ${CI_REGISTRY_IMAGE}/${BUILD_AND_TEST_IMAGE}:${CI_COMMIT_REF_NAME}
   needs: ["build-clockify-desktop"]
   script:
+    # Try to install the package
     - sudo pacman -U --noconfirm clockify-desktop*.pkg.tar.zst
+    # Recommended checks
+    - namcap -m PKGBUILD
+    - namcap -m clockify-desktop*.pkg.tar.zst
     # This is not a very sophisticated test but at least checks the binary is 
     # in place and there are all shared libs found in the system
     - ls /opt/Clockify/clockify
