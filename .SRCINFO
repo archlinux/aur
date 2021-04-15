@@ -1,19 +1,18 @@
 pkgbase = xsv-git
-	pkgdesc = A fast CSV toolkit written in Rust
-	pkgver = 0.13.0.r12.3de6c04
-	pkgrel = 1
+	pkgdesc = A fast CSV command line toolkit written in Rust
+	pkgver = 0.13.0.r12.g3de6c04
+	pkgrel = 2
 	url = https://github.com/BurntSushi/xsv
 	arch = i686
 	arch = x86_64
-	license = CUSTOM
+	license = custom
 	makedepends = git
 	makedepends = rust
-	makedepends = cargo
 	depends = gcc-libs
 	provides = xsv
 	conflicts = xsv
-	source = git://github.com/BurntSushi/xsv.git
-	md5sums = SKIP
+	source = git+https://github.com/BurntSushi/xsv.git
+	sha256sums = SKIP
 
 pkgname = xsv-git
 

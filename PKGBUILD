@@ -1,33 +1,42 @@
-# Maintainer: Aaron DeVore <aaron.devore@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Former maintainer: Aaron DeVore <aaron.devore@gmail.com>
+
 pkgname=xsv-git
-pkgver=0.13.0.r12.3de6c04
-pkgrel=1
-pkgdesc="A fast CSV toolkit written in Rust"
-arch=(i686 x86_64)
+pkgver=0.13.0.r12.g3de6c04
+pkgrel=2
+pkgdesc="A fast CSV command line toolkit written in Rust"
+arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/xsv"
-license=('CUSTOM')
-depends=(gcc-libs)
-makedepends=('git' 'rust' 'cargo')
-provides=(xsv)
-conflicts=(xsv)
-source=('git://github.com/BurntSushi/xsv.git')
-md5sums=('SKIP')
+license=('custom')
+depends=('gcc-libs')
+makedepends=('git' 'rust')
+provides=('xsv')
+conflicts=('xsv')
+source=("git+https://github.com/BurntSushi/xsv.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/xsv"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "xsv"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cd "$srcdir/xsv"
-	cargo build --release
+check() {
+  cd "xsv"
+
+  cargo test \
+    --locked \
+    --release
 }
 
 package() {
-	cd "$srcdir/xsv"
-	install -m755 -D target/release/xsv "$pkgdir/usr/bin/xsv"
-	install -D -m644 "UNLICENSE" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
-}
+  cd "xsv"
 
+  cargo install \
+    --no-track \
+    --locked \
+    --root "$pkgdir/usr" \
+    --path "$srcdir/xsv"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/xsv"
+}
