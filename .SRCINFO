@@ -1,0 +1,21 @@
+pkgbase = python-xsdata
+	pkgdesc = Naive XML bindings for python
+	pkgver = 21.4
+	pkgrel = 1
+	url = https://xsdata.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-click-default-group
+	checkdepends = python-docformatter
+	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
+	checkdepends = python-toposort
+	checkdepends = python-untokenize
+	makedepends = python-setuptools
+	optdepends = python-click
+	optdepends = python-toposort
+	source = https://files.pythonhosted.org/packages/source/x/xsdata/xsdata-21.4.tar.gz
+	sha256sums = 0b0338c1165857497fe862cad25be94c097ea73ec3cfd3f34c4c48b5ac1f1cee
+
+pkgname = python-xsdata
+
