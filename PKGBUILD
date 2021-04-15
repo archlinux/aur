@@ -3,14 +3,14 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-416-g2f43d1b4
 _version=2.1+416+g2f43d1b4
+_url=https://download.jitsi.org/stable/jitsi-videobridge2_2.1-416-g2f43d1b4-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=2
+pkgrel=3
 pkgdesc="Jitsi Meet Videobridge binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -27,7 +27,7 @@ backup=(
   "etc/${_pkgbase}/jvb.conf"
 )
 source=(
-        "https://download.jitsi.org/stable/${_debname}_${_tag}-1_all.deb"
+        "$_url"
         "config"
         "sip-communicator.properties"
         "service"
