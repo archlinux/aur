@@ -7,7 +7,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2021.4.4
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -18,6 +18,7 @@ depends=(
   python-astral
   python-async-timeout
   python-attrs
+  python-awesomeversion
   python-bcrypt
   python-certifi
   python-ciso8601
