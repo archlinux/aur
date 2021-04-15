@@ -1,2 +1,2 @@
 #!/bin/sh
-GEM_PATH=/opt/fastlane /opt/fastlane/bin/fastlane "$@"
+GEM_PATH=/opt/fastlane ruby-2.7 /opt/fastlane/bin/fastlane "$@"
