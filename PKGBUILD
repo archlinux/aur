@@ -3,7 +3,7 @@
 
 pkgname=oneshot
 
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 
 pkgdesc='First-come-first-serve single-fire HTTP/HTTPS server'
@@ -12,13 +12,12 @@ url="https://github.com/raphaelreyna/$pkgname"
 license=('MIT')
 
 makedepends=('go')
-depends=('man-db' 'hicolor-icon-theme')
+depends=('hicolor-icon-theme')
+
+source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
+b2sums=('8cd2933df1c8c001b5a577dba028e22563174e4cb758556355a96f8ce35c48d6738414b84d23e8faa4176fe5c8cd9ba648eb424408677e2ff6e53b084f63f669')
 
 options=('zipman')
-
-install="$pkgname.install"
-source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('df09d4675f5d54e9860c57b341e8360f950a2ea5df006b9721e9ad29e857df46b544c9473de21849994496a89e1c51057d056d188d95074bd705e358dbdec344')
 
 
 build() {
@@ -27,20 +26,18 @@ build() {
                      -X github.com/raphaelreyna/$pkgname/cmd.date=$(LC_TIME=C date +"%d-%B-%Y")
                      -s
                      -w"
-  cd doc/man &&
-  go run -ldflags "-X github.com/raphaelreyna/$pkgname/cmd.version=$pkgver
-                   -X github.com/raphaelreyna/$pkgname/cmd.date=$(LC_TIME=C date +"%d-%B-%Y")" \
-         ./main.go >"$pkgname.1"
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname"           -t"$pkgdir/usr/bin/"
-  install -Dm644 "doc/man/$pkgname.1" -t"$pkgdir/usr/share/man/man1/"
-  install -Dm644 "${pkgname}_banner.png" \
-                 {README,doc/md/*}.md -t"$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 icon/icon.svg        -t"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 LICENSE              -t"$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 "$pkgname"   -t"$pkgdir/usr/bin/"
+  install -Dm644 "$pkgname.1" -t"$pkgdir/usr/share/man/man1/"
+  install -Dm644 "integrations/emacs/$pkgname.el" \
+                              -t"$pkgdir/usr/share/emacs/site-lisp/"
+  install -Dm644 "${pkgname}_banner.png" {README,doc/md/*}.md \
+                              -t"$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 icon/icon.svg  "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+  install -Dm644 LICENSE      -t"$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 
