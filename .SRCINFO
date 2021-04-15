@@ -1,6 +1,6 @@
 pkgbase = python-gpflow
 	pkgdesc = Gaussian process methods in tensorflow
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/GPflow/GPflow
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-gpflow
 	depends = python-typing_extensions
 	depends = python-packaging
 	optdepends = python-matplotlib: Image to tensorboard extra utility
-	source = https://github.com/GPflow/GPflow/archive/v2.1.4.tar.gz
-	sha256sums = 682d1829e7a4b04e436bde34df5e7849ac1c2ec7bc39377f516a3ba8c38a62e4
+	source = https://github.com/GPflow/GPflow/archive/v2.1.5.tar.gz
+	sha256sums = 2553a75aa094e51f8642f08dc9519627cf54366f78c3841133fe433e1de4f82f
 
 pkgname = python-gpflow
 
