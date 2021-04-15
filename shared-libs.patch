@@ -1,0 +1,73 @@
+From 4904b000ad621c676adcca5f843c13c12b3bc986 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Boris=20Mom=C4=8Dilovi=C4=87?= <boris@firstbeatmedia.com>
+Date: Thu, 15 Apr 2021 20:53:49 +0200
+Subject: [PATCH] Fix
+
+---
+ deps/Makefile                                 |  4 +++-
+ .../syntax-error-cmake-3.20.patch             | 24 +++++++++++++++++++
+ 2 files changed, 27 insertions(+), 1 deletion(-)
+ create mode 100644 deps/mariadb-client-library/syntax-error-cmake-3.20.patch
+
+diff --git a/deps/Makefile b/deps/Makefile
+index 72635897..eca4d698 100644
+--- a/deps/Makefile
++++ b/deps/Makefile
+@@ -90,7 +90,7 @@ ifeq ($(UNAME_S),FreeBSD)
+ endif
+ 	cd libhttpserver/libhttpserver && ./bootstrap && mkdir build
+ 	cd libhttpserver/libhttpserver/build && LDFLAGS=-L$(shell pwd)/libmicrohttpd/libmicrohttpd/src/microhttpd/.libs/ CPPFLAGS=-I$(shell pwd)/libmicrohttpd/libmicrohttpd/src/include ../configure --disable-doxygen-doc --disable-doxygen-dot --disable-doxygen-man --disable-doxygen-html --enable-fastopen=false
+-	cd libhttpserver/libhttpserver/build && CC=${CC} CXX=${CXX} ${MAKE}
++	cd libhttpserver/libhttpserver/build && CC=${CC} CXX=${CXX} CXXFLAGS=-fPIC ${MAKE}
+ libhttpserver: libhttpserver/libhttpserver/build/src/.libs/libhttpserver.a
+ 
+ libev/libev/.libs/libev.a:
+@@ -169,6 +169,7 @@ mariadb-client-library/mariadb_client/libmariadb/libmariadbclient.a: libssl/open
+ 	cd mariadb-client-library && rm -rf mariadb-connector-c-3.1.9-src
+ 	cd mariadb-client-library && tar -zxf mariadb-connector-c-3.1.9-src.tar.gz
+ 	cd mariadb-client-library/mariadb_client && patch ./plugins/auth/CMakeLists.txt < ../plugin_auth_CMakeLists.txt.patch
++	cd mariadb-client-library/mariadb_client && patch -p1 < ../syntax-error-cmake-3.20.patch
+ 	cd mariadb-client-library/mariadb_client && cmake . -DOPENSSL_ROOT_DIR=$(shell pwd)/libssl/openssl/ -DOPENSSL_LIBRARIES=$(shell pwd)/libssl/openssl/ .
+ #	cd mariadb-client-library/mariadb_client && cmake . -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl # this is needed on MacOSX
+ 	cd mariadb-client-library/mariadb_client && patch libmariadb/mariadb_stmt.c < ../mariadb_stmt.c.patch
+@@ -230,6 +231,7 @@ re2/re2/obj/libre2.a:
+ #	cd re2/re2 && sed -i -e 's/-O3 -g /-O3 -fPIC /' Makefile
+ #	cd re2 && patch re2/util/mutex.h < mutex.h.patch
+ 	cd re2/re2 && sed -i -e 's/-O3 /-O3 -fPIC -DMEMORY_SANITIZER -DRE2_ON_VALGRIND /' Makefile
++	cd re2/re2 && sed -i -e 's/RE2_CXXFLAGS?=-std=c++11 /RE2_CXXFLAGS?=-std=c++11 -fPIC /' Makefile
+ 	cd re2/re2 && CC=${CC} CXX=${CXX} ${MAKE}
+ 
+ re2: re2/re2/obj/libre2.a
+diff --git a/deps/mariadb-client-library/syntax-error-cmake-3.20.patch b/deps/mariadb-client-library/syntax-error-cmake-3.20.patch
+new file mode 100644
+index 00000000..1fe0e066
+--- /dev/null
++++ b/deps/mariadb-client-library/syntax-error-cmake-3.20.patch
+@@ -0,0 +1,24 @@
++Upstream: Yes
++From 242cab8cbcd91af882233730a83627d3b12ced83 Mon Sep 17 00:00:00 2001
++From: Vladislav Vaintroub <wlad@mariadb.com>
++Date: Fri, 12 Mar 2021 00:01:11 +0100
++Subject: [PATCH] Fix syntax error in cmake 3.20
++
++---
++ cmake/ConnectorName.cmake | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/cmake/ConnectorName.cmake b/cmake/ConnectorName.cmake
++index b7bbbad8..357b8ac0 100644
++--- a/cmake/ConnectorName.cmake
+++++ b/cmake/ConnectorName.cmake
++@@ -22,7 +22,7 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Windows")
++     SET(MACHINE_NAME "x64")
++   ELSE()
++     SET(MACHINE_NAME "32")
++-  END()
+++  ENDIF()
++ ENDIF()
++ 
++ SET(product_name "mysql-connector-c-${CPACK_PACKAGE_VERSION}-${PLATFORM_NAME}${CONCAT_SIGN}${MACHINE_NAME}")
++
+-- 
+2.31.1
+
