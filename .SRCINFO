@@ -1,7 +1,7 @@
 pkgbase = plenti-bin
 	pkgdesc = Static Site Generator with Go backend and Svelte frontend
 	pkgver = 0.4.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plentico/plenti
 	arch = x86_64
 	license = APACHE

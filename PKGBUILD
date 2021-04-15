@@ -1,8 +1,8 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: A. Husen <hello@husen.id>
 pkgname=plenti-bin
 _pkgname=plenti
 pkgver=0.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Static Site Generator with Go backend and Svelte frontend"
 arch=('x86_64')
 url="https://github.com/plentico/plenti"
