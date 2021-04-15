@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-uie-console-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 _buildhash='f14920501244d33fe0bad1f747233c9d'
 _fooname='foo_uie_console'
 pkgdesc='A Columns UI console panel for foobar2000'
@@ -14,6 +14,6 @@ source=("https://yuo.be/static/${_buildhash}/${_fooname}-${pkgver}.fb2k-componen
 md5sums=("${_buildhash}")
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components" "$srcdir/${_fooname}.dll"
 }
 
