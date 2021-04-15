@@ -2,7 +2,7 @@
 
 _name=pyroaring
 pkgname=python-$_name
-pkgver=0.2.11
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Fast and lightweight set for unsigned 32 bits integers"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('da15c42c86cd4cee65840571c87b11cc10299a6d293133cda8054048f6698a82')
+sha256sums=('685b6beb5eecf25cc66bcfe45926cb38a18722a294079a4e90c62e2c80a10408')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
