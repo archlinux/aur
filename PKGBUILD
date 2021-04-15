@@ -14,7 +14,7 @@ url="https://www.google.com/chrome"
 license=('custom:chrome')
 depends=('alsa-lib' 'gtk3' 'libcups' 'libxss' 'libxtst' 'nss')
 optdepends=(
-	'libpipewire02: WebRTC desktop sharing under Wayland'
+	'pipewire: WebRTC desktop sharing under Wayland'
 	'kdialog: for file dialogs in KDE'
 	'gnome-keyring: for storing passwords in GNOME keyring'
 	'kwallet: for storing passwords in KWallet'
