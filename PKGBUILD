@@ -4,7 +4,7 @@ pkgname=foobar2000-component-scrobble-bin
 pkgver=1.5.0
 pkgrel=1
 _fooname='foo_scrobble'
-pkgdesc='A backup/restore component for foobar2000'
+pkgdesc='A last.fm scrobble component for foobar2000'
 arch=('any')
 url='https://hydrogenaud.io/index.php?topic=114979.0'
 license=('unknown')
