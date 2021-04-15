@@ -3,9 +3,9 @@
 pkgname=foobar2000-component-ui-columns-bin
 pkgver=1.6.0
 pkgrel=1
-_buildhash="9ea5bf12dff419ecb6e39f820c4eb97f"
-_fooname="foo_ui_columns"
-pkgdesc="An alternative user interface for foobar2000"
+_buildhash='9ea5bf12dff419ecb6e39f820c4eb97f'
+_fooname='foo_ui_columns'
+pkgdesc='An alternative user interface for foobar2000'
 arch=('any')
 url="https://www.foobar2000.org/components/view/${_fooname}"
 license=('unknown')
