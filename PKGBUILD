@@ -1,7 +1,7 @@
 # Maintainer : Ashwin Vishnu <y4d71nsar@relay.firefox.com>
 _name=micromamba
 pkgname=micromamba-bin
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Tiny version of mamba, the fast conda package installer."
 arch=("x86_64")
@@ -11,7 +11,7 @@ source=("${_name}-${pkgver}.tar.bz2::https://micromamba.snakepit.net/api/microma
 options=(strip)
 depends=("glibc")
 provides=("${_name}")
-sha256sums=('38a5528d86a1e25bb330b21c1ff9cf01843b3c63e7a2611116a0aaf3dddf6d7d')
+sha256sums=('8494f871a83ed3224aac36a243f0c1b3daf22fa6ca157dce5b586cec3a091d0a')
 
 check() {
 	export PREFIX="${srcdir}"
