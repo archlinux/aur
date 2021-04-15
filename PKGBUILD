@@ -7,13 +7,13 @@ pkgrel=1
 _pkgdesc="Customizable toolbar plugin for DeadBeeF music player."
 arch=('i686' 'x86_64')
 url="https://github.com/kravich/ddb_customizabletb"
-license=(GPL2)
+license=('GPL3')
 depends=('deadbeef>=0.6')
 makedepends=(git)
 source=('git+https://github.com/kravich/ddb_customizabletb'
         'build.patch')
-md5sums=('SKIP'
-        'SKIP')
+sha256sums=('SKIP'
+            '7454408e048eb457aae7650ed5d945713bb855daf515f058fd5367a9797f3d94')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
