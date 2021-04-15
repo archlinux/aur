@@ -1,7 +1,7 @@
 # Maintainer: vkill <vkill.net@gmail.com>
 
 pkgname=curl-quiche-http3
-pkgver=7.76.0
+pkgver=7.76.1
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - build with quiche version HTTP3"
 arch=('x86_64')
@@ -12,12 +12,12 @@ depends=('ca-certificates' 'krb5' 'libssh2' 'libssh2.so' 'openssl' 'zlib'
          'curl')
 makedepends=('git' 'rust' 'cmake')
 source=("https://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc})
-sha512sums=('f074e9315739bb05fc194ef66b154912620df3ddec11c01ded8f2ecde08875006418a716919dafe5001256f912c07e5576072e1df9a683f91cd3bc8143c6f054'
+sha512sums=('43edacadbb823eb43008dd7d3b3851097cc40bc06ed6c701d7af2605a461ec556a9a15d1d71a8703cb2e0180aa3183995a67a072f4043ecc3a3972f25619722b'
             'SKIP')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 
-# 2020-03-29
-_quiche_ref="ba90a8dba514c953d6102b812096f9238ec170bb"
+# 2020-04-15 0.8.1
+_quiche_ref="4236ad60162058b4f182dfadca047d8be0477377"
 
 build() {
   #
@@ -48,7 +48,7 @@ build() {
   ./buildconf
  
   ./configure \
-      LDFLAGS="-Wl,-rpath,$PWD/../quiche/target/release" --with-ssl=$PWD/../quiche/deps/boringssl/src --with-curl_quiche=$PWD/../quiche/target/release \
+      LDFLAGS="-Wl,-rpath,$PWD/../quiche/target/release" --with-openssl=$PWD/../quiche/deps/boringssl/src --with-curl_quiche=$PWD/../quiche/target/release \
       --disable-shared \
       --enable-alt-svc \
       --prefix=/usr \
