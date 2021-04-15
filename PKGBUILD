@@ -1,20 +1,16 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org
 
 pkgname=taskell
-pkgver=1.10.1
-pkgrel=171
+pkgver=1.11.0
+pkgrel=1
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
 url="https://hackage.haskell.org/package/$pkgname"
 depends=(ghc-libs haskell-aeson haskell-attoparsec haskell-brick haskell-config-ini haskell-file-embed haskell-fold-debounce haskell-http-client haskell-http-conduit haskell-http-types haskell-lens haskell-tz haskell-vty haskell-classy-prelude)
-makedepends=(ghc uusi haskell-classy-prelude haskell-raw-strings-qq haskell-tasty haskell-tasty-discover haskell-tasty-expected-failure haskell-tasty-hunit)
+makedepends=(ghc haskell-classy-prelude haskell-raw-strings-qq haskell-tasty haskell-tasty-discover haskell-tasty-expected-failure haskell-tasty-hunit)
 source=(https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('5ef1504f908876aa17dfd817115bc0d1f8056cba4b759ee70b3d869bd778db7ca0123585f107c906b898d5c614091cb05955cb387a03f2abfbe842622e2e4c8e')
-
-prepare() {
-  uusi $pkgname-$pkgver/$pkgname.cabal
-}
+sha512sums=('89eb3c87e8f74c9719e87fb2303fd66bd0133ba0414f109282b29511b8b5e7efc51f8a263be769892012ac46857a4945e73bb544f4e75c55ef0d72ed05845878')
 
 build() {
   cd $pkgname-$pkgver
