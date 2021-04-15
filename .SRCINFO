@@ -1,8 +1,8 @@
 pkgbase = macchina
-	pkgdesc = Basic system information fetcher, written in Rust
-	pkgver = 0.6.7
+	pkgdesc = A system information fetcher, with an emphasis on performance and minimalism.
+	pkgver = 0.6.9
 	pkgrel = 1
-	url = https://github.com/grtcdr/macchina
+	url = https://github.com/Macchina-CLI/macchina
 	arch = x86_64
 	license = MIT
 	makedepends = rust
@@ -11,8 +11,8 @@ pkgbase = macchina
 	depends = gcc-libs
 	depends = glibc
 	optdepends = wmctrl: window manager support
-	source = macchina::git+https://github.com/grtcdr/macchina.git
-	md5sums = SKIP
+	source = https://github.com/Macchina-CLI/macchina/archive/refs/tags/v0.6.9.tar.gz
+	sha256sums = 0923bdc46dc5491aa3693b69e3c0cb3d17be5201ae349c2bc8cde1814606a629
 
 pkgname = macchina
 
