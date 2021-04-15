@@ -1,0 +1,16 @@
+pkgbase = spicetify-custom-apps-and-extensions-git
+	pkgdesc = A community-driven collection of custom apps and extensions for spicetify
+	pkgver = r77.5471fd5
+	pkgrel = 1
+	url = https://github.com/3raxton/spicetify-custom-apps-and-extensions
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = spicetify-cli
+	provides = spicetify-custom-apps-and-extensions
+	conflicts = spicetify-custom-apps-and-extensions
+	source = spicetify-custom-apps-and-extensions-git::git+https://github.com/3raxton/spicetify-custom-apps-and-extensions
+	md5sums = SKIP
+
+pkgname = spicetify-custom-apps-and-extensions-git
+
