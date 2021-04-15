@@ -1,5 +1,5 @@
 pkgbase = foobar2000-component-np-simple-bin
-	pkgdesc = A backup/restore component for foobar2000
+	pkgdesc = Keeps a templated file with information about the current track
 	pkgver = 1.9
 	pkgrel = 1
 	url = https://skipyrich.com/wiki/Foobar2000:Now_Playing_Simple
