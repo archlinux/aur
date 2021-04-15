@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.10 Greg Kroah-Hartman & Sasha Levin 2020-12-13 Dec, 2022
 _LLL_VER=5.10
-_LLL_SUBVER=28
+_LLL_SUBVER=30
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -87,7 +87,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '7515a313ed0f48d75a2a6811577e14fa447917e0eaa2c0427f96d2e7109f3eb3'
+            'c56bc587a1d61145bf3e0b0163d390d08d490b38dbc304138a84fe1f6140aed6'
             '64909f07b404b138945d5d6fd19bf3c62d10adce9f592524d91a3359331a6ace'
             '24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183'
             '078837287607800f948e0e26e6a8ba874d856fd37e0063e8975bb562268546c4'
