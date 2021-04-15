@@ -1,6 +1,6 @@
 pkgbase = sfizz-git
 	pkgdesc = SFZ library and LV2 plugin
-	pkgver = r3128.e830ca13
+	pkgver = r3555.343350ad
 	pkgrel = 1
 	url = https://sfz.tools/sfizz
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = sfizz-git
 	depends = pango
 	depends = zenity
 	provides = sfizz
+	provides = libsfizz.so
 	conflicts = sfizz
 	source = sfizz-git::git+https://github.com/sfztools/sfizz#branch=develop
 	sha512sums = SKIP

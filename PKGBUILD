@@ -3,7 +3,7 @@
 
 _pkgname="sfizz"
 pkgname="${_pkgname}-git"
-pkgver=r3128.e830ca13
+pkgver=r3555.343350ad
 pkgrel=1
 pkgdesc="SFZ library and LV2 plugin"
 url="https://sfz.tools/sfizz"
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake')
 depends=('libsndfile' 'jack' 'libx11' 'libxcb' 'xcb-util' 'xcb-util-cursor'
         'xcb-util-keysyms' 'libxkbcommon' 'libxkbcommon-x11' 'fontconfig' 'cairo'
         'freetype2' 'pango' 'zenity')
-provides=("${_pkgname}")
+provides=("${_pkgname}" "lib${_pkgname}.so")
 conflicts=("${_pkgname}")
 source=("$pkgname"::"git+https://github.com/sfztools/sfizz#branch=develop")
 sha512sums=('SKIP')
