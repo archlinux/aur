@@ -3,7 +3,7 @@
 # Contributor: der_fenix <derfenix@gmail.com>
 
 pkgname=rhvoice-git
-pkgver=1.2.3.r60.d80d5d8
+pkgver=1.2.3.r67.af4a529
 pkgrel=1
 pkgdesc="Free and open source speech synthesizer for Russian and other languages. (development version)"
 arch=('x86_64')
@@ -19,8 +19,12 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/RHVoice/RHVoice.conf')
 source=(${pkgname%-git}::'git+https://github.com/RHVoice/RHVoice.git'
-          'git+https://github.com/RHVoice/victoria-ru.git')
+          'git+https://github.com/RHVoice/victoria-ru.git'
+          'git+https://github.com/RHVoice/evgeniy-eng.git'
+          'git+https://github.com/RHVoice/evgeniy-rus.git')
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -31,7 +35,9 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	git submodule init
-	git config submodule.data/voices/victoria.url $srcdir/victoria-ru
+	git config submodule.data/voices/victoria.url "$srcdir/victoria-ru"
+	git config submodule.data/voices/evgeniy-eng.url "$srcdir/evgeniy-eng"
+	git config submodule.data/voices/evgeniy-rus.url "$srcdir/evgeniy-rus"
 	git config submodule.src/third-party/cldr.active false
 	git config submodule.cmake/thirdparty/sanitizers.active false
 	git submodule update
