@@ -1,0 +1,12 @@
+pkgbase = libcontacts
+	pkgdesc = A library for handling a simple, flexible contact list
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maandree/libcontacts
+	arch = x86_64
+	license = custom:ISC
+	source = libcontacts-1.0.tar.gz::https://github.com/maandree/libcontacts/archive/1.0.tar.gz
+	sha256sums = 208696e963157ef48fe517a83904ff0e860d2a0c2be8455dd85be2b96bff71d0
+
+pkgname = libcontacts
+
