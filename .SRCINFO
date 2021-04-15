@@ -1,7 +1,7 @@
 pkgbase = vim-sleuth-git
 	pkgdesc = Heuristically set buffer options
-	pkgver = 1.1.r33.gea3f065
-	pkgrel = 1
+	pkgver = 1.2.r0.g38bd401
+	pkgrel = 2
 	url = https://github.com/tpope/vim-sleuth
 	arch = any
 	license = custom:vim

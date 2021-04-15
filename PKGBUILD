@@ -2,8 +2,8 @@
 
 _pkgname=vim-sleuth
 pkgname=$_pkgname-git
-pkgver=1.1.r33.gea3f065
-pkgrel=1
+pkgver=1.2.r0.g38bd401
+pkgrel=2
 pkgdesc='Heuristically set buffer options'
 url=https://github.com/tpope/vim-sleuth
 license=(custom:vim)
@@ -23,5 +23,5 @@ pkgver() {
 package() {
 	cd $_pkgname
 	install -Dm644 doc/sleuth.txt "$pkgdir"/usr/share/vim/vimfiles/doc/sleuth.txt
-	install -Dm644 plugin/sleuth.vim "$pkgdir"/usr/share/vim/vimfiles/autoload/sleuth.vim
+	install -Dm644 plugin/sleuth.vim "$pkgdir"/usr/share/vim/vimfiles/plugin/sleuth.vim
 }
