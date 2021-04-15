@@ -16,11 +16,11 @@ sha256sums=('SKIP' 'SKIP')
 
 prepare() {
     orange='[33m'
-	blue='[34m'
-	reset='[0m'
-	
-	echo -e "${orange}WARNING${reset} You are compiling Dot from source! This will take up to an hour depending on your hardware."
-	echo -e "${blue}INFO${reset} You should install \`dot-bin\` if you do not want to compile from source."
+    blue='[34m'
+    reset='[0m'
+
+    echo -e "${orange}WARNING${reset} You are compiling Dot from source! This will take up to an hour depending on your hardware."
+    echo -e "${blue}INFO${reset} You should install \`dot-bin\` if you do not want to compile from source."
 
     cd firefox-$firefox_version
     git init
