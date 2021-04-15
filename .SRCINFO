@@ -1,0 +1,18 @@
+pkgbase = perl-convert-zbase32
+	pkgdesc = Convert::zBase32 - Convert human-oriented base-32 encoded strings
+	pkgver = 0.0201
+	pkgrel = 1
+	url = https://metacpan.org/release/Convert-zBase32
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/G/GW/GWYN/Convert-zBase32-0.0201.tar.gz
+	sha256sums = d080d0060187381d6e6d4c74f862eebc9d36bfa80b94919c25afff75b40d808a
+
+pkgname = perl-convert-zbase32
+
