@@ -2,7 +2,7 @@
 pkgname=trex-bin
 provides=('trex')
 conflicts=('trex')
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/trexminer/T-Rex"
 options=('!strip')
 depends=('nvidia-utils')
 source=("t-rex_${pkgver}.tar.gz"::"https://github.com/trexminer/T-Rex/releases/download/${pkgver}/t-rex-${pkgver}-linux.tar.gz")
-sha512sums=('693813f27d1e6299a68610d0ac9a18c400a960ef0f0922f184ad8287f6967a0600558c9825864b66902c0ca181d81f66ed935e3f4f99f498247cc96562b6f16a')
+sha512sums=('3a21deaf117f15ec343dd56f739fbac441bebd3184aadb006739b8574708ed5f7135dc90c1e67200f763a9eeb05c47de9a9a71d38e1dae3cd74173ecaeb01b87')
 
 package() {
     cd "${srcdir}"
