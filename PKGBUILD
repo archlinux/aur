@@ -8,7 +8,7 @@ _fooname='foo_uie_lyrics3'
 pkgdesc='A lyrics UI component for foobar2000 (column & default UI)'
 arch=('any')
 url="https://www.foobar2000.org/components/view/${_fooname}"
-license=('unknown')
+license=('mit')
 depends=('foobar2000>=1.0.0')
 source=("https://foobar2000.org/getcomponent/${_buildhash}/${_fooname}-${pkgver}.fb2k-component")
 md5sums=('bcd6efb8fc7c75ea0e3017f51864dd01')
