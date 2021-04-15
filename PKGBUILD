@@ -6,7 +6,7 @@ pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIden
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.0.1.r4141.59.514
+pkgver=2.1.0.r4249.59.514
 
 depends=('zlib' 'qt5-base' 'lua51' 'lua51-bitop' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
@@ -32,7 +32,7 @@ sha256sums=(
 	'db9eec714bf9d1c52b1ccd7adc9e720519585becf7f9a1f18cca1888d3e1cc11'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'cd46475a1bc62240e03abb6b385b0c9b0b911ad828219fd31f98f7742807f935'
-	'ba8dc70a1d24c0d0b3bdc2454abd525c877154ec1c22e2f5927bc0a84f3920d8'
+	'd108da236c224524ed6941c091428bac0733cd36398bf89af6054f703d9b71ae'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
 	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'
 	'079eff1a5e74cb6d776723f7c3d36349e426edaa332a8177ff8f5e78af56cf64'

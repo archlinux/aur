@@ -12,8 +12,8 @@ diff -ru a/src/Modules/Common.lua b/src/Modules/Common.lua
  local ipairs = ipairs
  local type = type
 diff -ru a/src/Data/New.lua b/src/Data/New.lua
---- a/src/Data/New.lua	2021-02-06 15:09:21.709829157 +0100
-+++ b/src/Data/New.lua	2021-02-06 11:37:28.858609368 +0100
+--- a/src/Data/Uniques/Special/New.lua	2021-02-06 15:09:21.709829157 +0100
++++ b/src/Data/Uniques/Special/New.lua	2021-02-06 11:37:28.858609368 +0100
 @@ -1,3 +1,3 @@
 -﻿--
 +--
