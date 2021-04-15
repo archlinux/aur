@@ -1,5 +1,5 @@
 src
 pkg
 Ant
-*pkg.tar.xz
+*.pkg.tar.*
 tags
