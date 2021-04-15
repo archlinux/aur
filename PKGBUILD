@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='usbimager'
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives (GTK+ Frontend)'
 arch=('x86_64' 'armv7h' 'aarch64')
