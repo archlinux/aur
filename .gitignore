@@ -1,5 +1,5 @@
 src
 pkg
 netcap-git
-*pkg.tar.xz
+*.pkg.tar.*
 tags
