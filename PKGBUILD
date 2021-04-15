@@ -2,7 +2,7 @@
 pkgname='deepin-wine6-stable'
 pkgver=6.0.0.1
 pkgrel=1
-pkgdesc="Deepin Wine5 stable"
+pkgdesc="Deepin Wine6 stable"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
