@@ -1,7 +1,7 @@
 # Maintainer: Jaime Martínez Rincón <jaime@jamezrin.name>
 pkgname=notion-app
 pkgver=2.0.16
-pkgrel=4
+pkgrel=5
 epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -34,14 +34,14 @@ build() {
   
   msg "Recreating package node_modules..."
   rm -r node_modules
-  npm install
+  HOME="$srcdir/.electron-gyp" npm install --cache "${srcdir}/npm-cache"
   node_modules/.bin/patch-package
 
   msg "Converting app icon..."
   convert "icon.ico[0]" "icon.png" >/dev/null
 
   msg "Building electron package..."
-  npm install electron@11 electron-builder --save-dev
+  npm install electron@11 electron-builder --save-dev --cache "${srcdir}/npm-cache"
   node_modules/.bin/electron-builder --linux dir
 
   cd "${srcdir}"
