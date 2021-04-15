@@ -30,7 +30,7 @@ fi
 
 pkgname=mesa-stable
 pkgdesc='An open-source implementation of the OpenGL specification. (stable release)'
-pkgver=21.0.1
+pkgver=21.0.2
 pkgrel=1
 arch=('x86_64')
 url="https://mesa3d.org/"
