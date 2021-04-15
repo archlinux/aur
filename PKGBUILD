@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=paymo-widget
 pkgver=6.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An app that allows you to track work time via a stopwatch or manually add bulk time for paymo"
 arch=('x86_64')
 url="https://www.paymoapp.com/download/"
@@ -22,6 +22,7 @@ package() {
   cp -r usr/share "$pkgdir"/usr/share
   cp -r *.so AppRun paymo-widget paymo-widget-noloader resources locales *.dat *.bin *.pak "$pkgdir"/opt/$pkgname
   install -Dm644 paymo-widget.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  sed -i "s:Exec=AppRun:Exec=/usr/bin/$pkgname:" "$pkgdir"/usr/share/applications/$pkgname.desktop
   ln -s /opt/$pkgname/AppRun "$pkgdir"/usr/bin/$pkgname
 
   find "$pkgdir"/usr/share -type d -exec chmod 755 {} \;
