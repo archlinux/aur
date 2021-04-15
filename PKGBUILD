@@ -2,15 +2,16 @@
 # Credit: desbma
 pkgname=zoxide-git
 _pkgname=zoxide
-pkgver=0.5.0.r3.g21018d5
-pkgrel=1
+pkgver=0.6.0.r4.g1828414
+pkgrel=2
 pkgdesc='A fast cd command that learns your habits'
 arch=('x86_64')
-url="https://github.com/ajeetdsouza/${_pkgname}"
+url="https://github.com/ajeetdsouza/zoxide"
 license=('MIT')
-makedepends=('rust' 'git')
-provides=('zoxide')
-conflicts=('zoxide' 'zoxide-bin')
+depends=('gcc-libs')
+makedepends=('cargo' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
@@ -21,11 +22,13 @@ pkgver()  {
 
 build() {
     cd "${pkgname}"
-    cargo build --release --locked
+    cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
     cd "${pkgname}"
-    install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${_pkgname}
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/zoxide
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    find man -name '*.1' -type f \
+      -exec install -Dm 644 '{}' -t "${pkgdir}/usr/share/man/man1/" \;
 }

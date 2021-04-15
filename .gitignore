@@ -1,2 +1,4 @@
-/*.pkg.tar.*
-/zoxide*.tar.gz
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+*
