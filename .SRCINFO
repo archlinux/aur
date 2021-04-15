@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
 	pkgver = 1.22.72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = custom
@@ -40,9 +40,10 @@ pkgbase = brave
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-89-patchset-7/chromium-89-patchset-7.tar.xz
 	source = chromium-no-history.patch
 	source = chromium-no-history2.patch
-	source = add-dependency-on-opus-in-webcodecs.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-dependency-on-opus-in-webcodecs.patch?h=packages/chromium&id=c3700a0016c1268c0827f2f15c6715e0d0dd89b0
-	source = chromium-glibc-2.33.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-glibc-2.33.patch?h=packages/chromium&id=c3700a0016c1268c0827f2f15c6715e0d0dd89b0
-	source = use-oauth2-client-switches-as-default.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/use-oauth2-client-switches-as-default.patch?h=packages/chromium&id=c3700a0016c1268c0827f2f15c6715e0d0dd89b0
+	source = add-dependency-on-opus-in-webcodecs.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-dependency-on-opus-in-webcodecs.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
+	source = chromium-glibc-2.33.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-glibc-2.33.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
+	source = use-oauth2-client-switches-as-default.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/use-oauth2-client-switches-as-default.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
+	source = chromium-fix-libva-redef.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-fix-libva-redef.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -57,6 +58,7 @@ pkgbase = brave
 	sha256sums = b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
+	sha256sums = de9eb3612d44616a500c2eccdffac814eb90ad9a868cc1030d17fc6783d544e2
 
 pkgname = brave
 

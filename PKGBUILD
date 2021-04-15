@@ -28,7 +28,7 @@ fi
 
 pkgname=brave
 pkgver=1.22.72
-pkgrel=1
+pkgrel=2
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -54,11 +54,12 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch" "chromium-no-history2.patch")
-arch_revision=c3700a0016c1268c0827f2f15c6715e0d0dd89b0
+arch_revision=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
 Patches="
         add-dependency-on-opus-in-webcodecs.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch
+        chromium-fix-libva-redef.patch
         "
 for arch_patch in $Patches
 do
@@ -78,7 +79,8 @@ sha256sums=('SKIP'
             'd7775ffcfc25eace81b3e8db23d62562afb3dbb5904d3cbce2081f3fe1b3067d'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
+            'de9eb3612d44616a500c2eccdffac814eb90ad9a868cc1030d17fc6783d544e2')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -173,6 +175,9 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../../add-dependency-on-opus-in-webcodecs.patch
+
+  # https://github.com/kiss-community/repo-community/issues/246
+  patch -Np1 -i ../../chromium-fix-libva-redef.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../../patches/chromium-89-quiche-dcheck.patch
