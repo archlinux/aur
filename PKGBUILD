@@ -3,23 +3,23 @@
 _pkgname=PhiK
 pkgname=python-phik
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Phi_K correlation analyzer library'
 arch=('any')
 url='https://github.com/kaveio/phik'
 license=('Apache')
 depends=(
-  python-numpy
-  python-scipy
-  python-pandas
-  python-matplotlib
   python-joblib
+  python-matplotlib
+  python-numpy
+  python-pandas
+  python-scipy
 )
 checkdepends=(
-  python-pytest
-  python-pytest-pylint
   jupyter-nbconvert
   python-jupyter_client
+  python-pytest
+  python-pytest-pylint
 )
 makedepends=(
   python-setuptools
