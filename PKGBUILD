@@ -18,7 +18,7 @@ source=("https://github.com/sysown/${pkgname}/archive/v${pkgver}.tar.gz"
     "proxysql.tmpfiles")
 sha256sums=('182483b33c879572bbf78bda0efb1b890485c847fac11c2106f2b3357355001a'
             '8b074c0d72e4b66349a84a13fdb65918145fcaf6a8697ba99304bd603d097735'
-            'f8fa05ccbb75974c38d845ee70c3ec3e801c4cb4a7e04c05789ce25f4da9c0c8'
+            '74323f6b93cbfbd4d99d2f7aaf66f33a2bba8619aacf09f61ebe3b7fcb91bee3'
             '6f48bd54c6b8592cd84006e991d3cbd8b38a460c6e72091acdca05f6781ae380')
 
 prepare() {
