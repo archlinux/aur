@@ -3,14 +3,14 @@
 
 _basename=jitsi-meet
 _pkgname=turnserver
-_tag=1.0.4628
 _version=1.0.4628
+_url=https://download.jitsi.org/stable/jitsi-meet-turnserver_1.0.4628-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=3
 pkgdesc="Jitsi Meet Prosody Plugins binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -24,8 +24,8 @@ backup=(
 )
 makedepends=('tar')
 source=(
-        "https://download.jitsi.org/stable/${_debname}_${_tag}-1_all.deb"
-	"jitsi.install"
+        "$_url"
+        "jitsi.install"
 )
 
 provides=(${_pkgbase})
