@@ -2,8 +2,8 @@
 # Contributor: Michal Kowalski <kowalski TOD michal TA gmail TOD com>
 
 pkgname=achilles
-pkgver=2_8
-pkgrel=6
+pkgver=2.10
+pkgrel=1
 pkgdesc="An artificial life and evolution simulator that uses Hebbian neural networks and OpenGL/SDL to simulate life in a simplified environment. It is based on Larry Yaeger's PolyWorld idea"
 arch=('i686' 'x86_64')
 # originally there, still has 1st version's tarball, do not remove
@@ -20,31 +20,33 @@ install=
 changelog=
 # see url comment above...
 #source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/${pkgname}_${pkgver//_8/}.orig.tar.gz
-        http://ftp.debian.org/debian/pool/main/a/$pkgname/${pkgname}_${pkgver//_/-}.diff.gz)
-sha512sums=('3be21d55aea094fa32536348d29f5fe45f9681d1ee2627d146c8595303d70219a38946435b0f83446ff039d5133a5efc946749378c86c0cc93091c0ebaaa1185'
-            '17d6ba000f8f7034b2eb0adebd3fe013f2cbb74b2034e79be94adf463192d5b7a55f18b168858c2c3c559f7d7615097ee98baae1e8addb107bea892884487074')
+source=("http://ftp.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_2-10.debian.tar.xz"
+        "http://ftp.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_2.orig.tar.gz")
+sha512sums=('88762d7f3180fc1b6c02ea117783072796829f687600d10907c20a63ef4cc0efe4fc3338f0c7d394d343d5d35c22ef8df0e35951408eed9baac6a45d47091500'
+            '3be21d55aea094fa32536348d29f5fe45f9681d1ee2627d146c8595303d70219a38946435b0f83446ff039d5133a5efc946749378c86c0cc93091c0ebaaa1185')
 noextract=()
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver//_8/}"
+  cd "$srcdir/$pkgname-2"
 
-  gunzip -c ../${pkgname}_${pkgver//_/-}.diff.gz | patch -p1
+  patch -p1 -i "../debian/patches/010_previous.patch"
   ./configure --prefix=/usr
-  make CXXFLAGS='-I/usr/include/SDL'
+  make CXXFLAGS="${CXXFLAGS} -I/usr/include/SDL"
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver//_8/}"
-
-  make DESTDIR="$pkgdir/" install
-  for d in usr/share/{doc/$pkgname-${pkgver//_8/},pixmaps,applications,man/man1} ; do
-	install -m755 -d $pkgdir/$d ;
-  done
-  install -m644 debian/$pkgname.1 $pkgdir/usr/share/man/man1
-  install -m644 debian/$pkgname.desktop $pkgdir/usr/share/applications
-  install -m644 debian/$pkgname.svg $pkgdir/usr/share/pixmaps
-  install -m644 -t $pkgdir/usr/share/doc/$pkgname-${pkgver//_8/} README NEWS ChangeLog AUTHORS
+  pushd "$srcdir/$pkgname-2"
+    make DESTDIR="${pkgdir}/" install
+    for d in usr/share/{doc/$pkgname-2,pixmaps,applications,man/man1} ; do
+      install -dm755 "${pkgdir}/$d" ;
+    done
+    
+    install -m644 -t "${pkgdir}/usr/share/doc/$pkgname-2" README NEWS ChangeLog AUTHORS
+  popd
+  
+  install -m644 "debian/$pkgname.1" "${pkgdir}/usr/share/man/man1"
+  install -m644 "debian/$pkgname.desktop" "${pkgdir}/usr/share/applications"
+  install -m644 "debian/$pkgname.svg" "${pkgdir}/usr/share/pixmaps"
 }
 
 # vim:set ts=2 sw=2 et:
