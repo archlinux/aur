@@ -15,12 +15,12 @@ source=("$pkgname-$pkgver"::"git+https://github.com/dothq/browser-ff.git"
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-    ORANGE='\033[1;33m'
-    BLUE='\033[1;34m'
-    NC='\033[0m'
-
-    echo -e "${ORANGE}WARNING${NC} You are compiling Dot from source! This will take up to an hour depending on your hardware."
-    echo -e "${BLUE}INFO${NC} You should install \`dot-bin\` if you do not want to compile from source."
+    orange='[33m'
+	blue='[34m'
+	reset='[0m'
+	
+	echo -e "${orange}WARNING${reset} You are compiling Dot from source! This will take up to an hour depending on your hardware."
+	echo -e "${blue}INFO${reset} You should install \`dot-bin\` if you do not want to compile from source."
 
     cd firefox-$firefox_version
     git init
