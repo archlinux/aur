@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-datetime>=0.31' 'perl-params-validate>=0')
 makedepends=()
 url='https://metacpan.org/release/DateTime-Format-Epoch'
-source=('http://search.cpan.org/CPAN/authors/id/C/CH/CHORNY/DateTime-Format-Epoch-0.16.tar.gz')
+source=('https://search.cpan.org/CPAN/authors/id/C/CH/CHORNY/DateTime-Format-Epoch-0.16.tar.gz')
 md5sums=('856d6048f42724f49835fb96f66bab3d')
 sha512sums=('61667e07eb5ae0d93ac37a84816be3095ed880d8c4e28ba6cd5f700723de6750f70a8ed00027dfe7cb6a8b7798c8b381a0f1f3dee03cef343a010255aed0c345')
 _distdir="DateTime-Format-Epoch-0.16"
