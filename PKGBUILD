@@ -2,13 +2,14 @@
 
 _pkgname=timeline
 pkgname=${_pkgname}-git
-pkgver=r17.6b714e5
+pkgver=r61.fba3a1b
 pkgrel=1
 pkgdesc="A plain-text based distributed social network build on top of git configuration manager"
 arch=('any')
 url="https://ajdiaz.me/timeline/"
-license=('GPLv3')
+license=('GPL3')
 depends=('bash' 'git')
+makedepends=('pandoc')
 conflicts=('timeline')
 source=("${_pkgname}"::"git+https://github.com/ajdiaz/${_pkgname}.git"
         "${_pkgname}.service")
@@ -23,6 +24,8 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   make clean && make
+  cd doc
+  gzip -fk *.[0-9]
 }
 
 package() {
@@ -33,7 +36,14 @@ package() {
     "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
 
   # binary
-  install -D -m755 "tl" "${pkgdir}/usr/bin/tl"  
+  install -D -m755 "tl" "${pkgdir}/usr/bin/tl"
+
+  # man
+  for manpage in doc/*.[0-9]; do
+    section=${manpage##*.}
+    install -Dm644 ${manpage}.gz \
+      "${pkgdir}"/usr/share/man/man${section}/${manpage##*/}.gz
+  done
 
   # docs
   install -D -m644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
