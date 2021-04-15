@@ -1,14 +1,14 @@
 pkgbase = adafruit-ampy
 	pkgdesc = Utility to interact with a CircuitPython or MicroPython board over a serial connection.
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/scientifichackers/ampy
 	arch = any
 	license = MIT
+	makedepends = python-setuptools-scm
 	depends = python-click
 	depends = python-pyserial
 	depends = python-dotenv
-	depends = python-setuptools
 	provides = python-ampy
 	provides = ampy
 	source = https://files.pythonhosted.org/packages/source/a/adafruit-ampy/adafruit-ampy-1.0.7.tar.gz

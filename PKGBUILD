@@ -3,12 +3,13 @@
 
 pkgname='adafruit-ampy'
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to interact with a CircuitPython or MicroPython board over a serial connection."
 url="https://github.com/scientifichackers/ampy"
 arch=('any')
 license=('MIT')
-depends=('python-click' 'python-pyserial' 'python-dotenv' 'python-setuptools')
+depends=('python-click' 'python-pyserial' 'python-dotenv')
+makedepends=('python-setuptools-scm')
 provides=('python-ampy' 'ampy')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('097f67915636c5491be98572c42782e9e98a14c4e37a6041f199b310790383e48fb61cf3d98b2d2902f01e3bbdc1f345b8c70c17a2a0eb62894c3a05cf1aa67f')
