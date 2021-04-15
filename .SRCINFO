@@ -1,20 +1,22 @@
 pkgbase = glmark2
-	pkgdesc = OpenGL (ES) 2.0 benchmark
-	pkgver = 2020.04
+	pkgdesc = An OpenGL 2.0 and ES 2.0 benchmark
+	pkgver = 2021.02
 	pkgrel = 1
-	url = https://launchpad.net/glmark2
-	arch = i686
+	url = https://github.com/glmark2/glmark2
 	arch = x86_64
 	license = GPL
-	license = zlib
 	license = custom
+	makedepends = meson
+	makedepends = systemd
+	makedepends = wayland-protocols
+	depends = egl-wayland
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = libx11
-	depends = libxcb
-	depends = libgl
-	depends = python2
-	source = https://github.com/glmark2/glmark2/archive/2020.04.tar.gz
-	md5sums = a90713700a740180fef3576f7ee3c9db
+	depends = mesa
+	depends = systemd-libs
+	source = glmark2-2021.02.tar.gz::https://github.com/glmark2/glmark2/archive/2021.02.tar.gz
+	sha256sums = bebadb78c13aea5e88ed892e5563101ccb745b75f1dc86a8fc7229f00d78cbf1
 
 pkgname = glmark2
+
