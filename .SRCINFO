@@ -1,0 +1,13 @@
+pkgbase = foobar2000-component-runcmd-bin
+	pkgdesc = A component to find and execute menu items for foobar2000
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.foobar2000.org/components/view/foo_runcmd
+	arch = any
+	license = unknown
+	depends = foobar2000>=1.0.0
+	source = https://foobar2000.org/getcomponent/fe25440f759b899a918aeb8a531107da/foo_runcmd-1.1-20100107.zip
+	md5sums = a79f101e1a68c86bf9242d9362b893d5
+
+pkgname = foobar2000-component-runcmd-bin
+
