@@ -1,0 +1,17 @@
+pkgbase = python-csv-diff
+	pkgdesc = Tool for viewing the difference between two CSV, TSV or JSON files.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://pypi.org/project/csv-diff/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-dictdiffer
+	makedepends = python-click
+	depends = python
+	source = python-csv-diff-1.1.tar.gz::https://github.com/simonw/csv-diff/archive/refs/tags/1.1.tar.gz
+	sha256sums = 588a9b3203564e875030f7ef47b96ccb4ee134d70a09c0175c0881580a00a7bf
+
+pkgname = python-csv-diff
+
