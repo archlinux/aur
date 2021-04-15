@@ -1,0 +1,17 @@
+pkgbase = vim-substrata-git
+	pkgdesc = A cold, dark colorscheme for Vim
+	pkgver = r27.f7b71f3
+	pkgrel = 1
+	url = https://github.com/arzg/vim-substrata
+	arch = any
+	groups = vim-plugins
+	license = ISC
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-substrata
+	conflicts = vim-substrata
+	source = vim-substrata-git::git+https://github.com/arzg/vim-substrata
+	md5sums = SKIP
+
+pkgname = vim-substrata-git
+
