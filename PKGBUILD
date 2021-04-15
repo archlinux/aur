@@ -1,7 +1,7 @@
 # Maintainer: Nick Clifford <nick@nickclifford.me>
 
 pkgname=gkeybind
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Utility for rebinding G-keys on Logitech keyboards"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('keyleds' 'libevdev' 'libxkbcommon' 'libevent' 'pcre' 'gc')
 makedepends=('crystal' 'shards')
 backup=("etc/$pkgname.yml")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nickbclifford/gkeybind/archive/$pkgver.tar.gz")
-md5sums=('1e204771bc2cf89e7fd476eb0a04a7da')
+md5sums=('71c9752539f96bf6f1730fc382aa72e9')
 
 build() {
 	cd "$pkgname-$pkgver"
