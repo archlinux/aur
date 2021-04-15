@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+
+Name=Shiny Days
+Comment=Spin-off from the "Days" series and remake of Summer Days.
+GenericName=Visual Novell
+
+Name[ru]=Shiny Days
+Comment[ru]=Ответвление от серии "Days" и переиздание Summer Days.
+GenericName[ru]=Визуальная новелла
+
+Name[ja]=シャイニーデイズ
+Comment[ja]=サマーデイズのリメイク版
+GenericName[ja]=ビジュアルノベル
+
+Exec=/opt/ShinyDays/nice_boat %F
+Path=/opt/ShinyDays
+Icon=/opt/ShinyDays/shiny_days.png
+Terminal=false
+Categories=Game;

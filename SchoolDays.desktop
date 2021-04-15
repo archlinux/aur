@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+
+Name=School Days
+Comment=In the school the three people met. Their relation had been changed in the season, and turned into three love stories
+GenericName=Visual Novell
+
+Name[ru]=School Days
+Comment[ru]=Они повстречались в школе. Их отношения развивались и со временем превратились в любовный треугольник
+GenericName[ru]=Визуальная новелла
+
+Exec=/opt/SchoolDays/nice_boat %F
+Path=/opt/SchoolDays
+Icon=/opt/SchoolDays/school_days.png
+Terminal=false
+Categories=Game;
