@@ -6,7 +6,7 @@
 
 pkgname=xiphos
 pkgver=4.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Bible study tool for GTK3'
 arch=('x86_64' 'i686')
 url='http://xiphos.org'
@@ -16,7 +16,7 @@ depends=('biblesync'
          'gtkhtml4'
          'libbiblesync.so'
          'minizip'
-         'sword'
+         'sword>=1.9.0'
          'webkit2gtk')
 makedepends=('appstream-glib'
              'cmake'
@@ -33,8 +33,15 @@ makedepends=('appstream-glib'
 provides=('gnomesword')
 conflicts=("${provides[@]}")
 replaces=("${provides[@]}")
-source=("https://github.com/crosswire/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('d34353f62224302c924757fca55ff0fc19f96815f20b893279ceef3d7d054128')
+source=("https://github.com/crosswire/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
+        "$pkgname-glibc.patch")
+sha256sums=('d34353f62224302c924757fca55ff0fc19f96815f20b893279ceef3d7d054128'
+            'd1669dced24a5d6d9a76ab033fc89201855285b76a1e80ef3fe695242d1c401d')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch -p0 < "$srcdir/$pkgname-glibc.patch"
+}
 
 build() {
     cd "$pkgname-$pkgver"
