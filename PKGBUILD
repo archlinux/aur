@@ -77,7 +77,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.12-xanmod1-cacule"
+        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-${pkgver}-xanmod1-cacule"
         choose-gcc-optimization.sh
         'sphinx-workaround.patch'
         '0002-UKSM.patch'
