@@ -7,9 +7,9 @@ pre_upgrade() {
 	fi
 };
 post_upgrade() {
-	bieaz update-menu -g
+	bieaz menu -g
 }
 
 post_install() {
-	bieaz update-menu -g
+	bieaz menu -g
 }
