@@ -1,6 +1,6 @@
 pkgbase = google-chat-linux-bin
 	pkgdesc = Unofficial electron-based desktop client for Google Chat, electron included
-	pkgver = 5.12.10
+	pkgver = 5.12.11
 	pkgrel = 1
 	url = https://github.com/squalou/google-chat-linux.git
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = google-chat-linux-bin
 	makedepends = xz
 	makedepends = binutils
 	conflicts = google-chat-linux-electron7-git
-	source = https://github.com/squalou/google-chat-linux/releases/download/5.12.10-1/google-chat-linux_5.12.10-1_amd64.deb
-	sha512sums = 3e0f8a488aa2bd30278355355500a98a15d3f8c4fbd980d4efb4125079b3c53414f30e85caccd3bab3eea2336cc72957ea917eed149a7d3ea24fca25095e2a66
+	source = https://github.com/squalou/google-chat-linux/releases/download/5.12.11-1/google-chat-linux_5.12.11-1_amd64.deb
+	sha512sums = cfd5bf5a8835f15df07aab30a4e644eb7c07218449044b5da89e6e2f2a76cff0ae03f1bc207f8bc2a6268ed12950783be61c66095b26b007aa0e5fea3194f1f0
 
 pkgname = google-chat-linux-bin
 
