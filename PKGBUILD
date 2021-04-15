@@ -3,9 +3,9 @@
 pkgname=zoxide-git
 _pkgname=zoxide
 pkgver=0.6.0.r4.g1828414
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast cd command that learns your habits'
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ajeetdsouza/zoxide"
 license=('MIT')
 depends=('gcc-libs')
