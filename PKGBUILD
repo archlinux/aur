@@ -1,4 +1,5 @@
-# Maintainer: William Grieshaber <me@zee.li>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: William Grieshaber <me@zee.li>
 # Contributor: Michal Kowalski <kowalski TOD michal TA gmail TOD com>
 
 pkgname=achilles
