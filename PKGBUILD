@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://swarm.ethereum.org/'
 license=('GPLv3')
 depends=('bash')
-optdepends=('bee-clef: external signer for bee')
 makedepends=('go' 'git')
 options=('!strip' '!buildflags' '!makeflags')
 conflicts=('bee-clef-bin')
