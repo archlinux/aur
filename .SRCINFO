@@ -1,7 +1,7 @@
 pkgbase = jack2-git
 	pkgdesc = The JACK low-latency audio server
-	pkgver = 1.9.17.r1.ge984aeb2
-	pkgrel = 3
+	pkgver = 1.9.18.r0.g5041ab0f
+	pkgrel = 1
 	epoch = 1
 	url = http://jackaudio.org/
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = jack2-git
 	makedepends = readline
 	makedepends = systemd
 	makedepends = waf
+	makedepends = zita-alsa-pcmi
+	makedepends = zita-resampler
 	depends = db
 	depends = expat
 	depends = opus
@@ -41,13 +43,14 @@ pkgname = jack2-git
 	optdepends = libffado: for firewire support using FFADO
 	optdepends = jack2-dbus: for dbus integration
 	optdepends = realtime-privileges: for realtime privileges
-	optdepends = zita-ajbridge: for using multiple ALSA devices
+	optdepends = zita-alsa-pcmi: for using multiple ALSA devices
+	optdepends = zita-resampler: for using multiple ALSA devices
 	provides = jack
 	provides = jack2
 	provides = libjack.so
 	provides = libjacknet.so
 	provides = libjackserver.so
-	provides = jack2=1.9.17
+	provides = jack2=1.9.18
 	conflicts = jack
 	conflicts = jack2
 

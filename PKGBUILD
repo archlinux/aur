@@ -7,15 +7,15 @@ _name=jack2
 pkgbase=jack2-git
 pkgname=('jack2-git' 'jack2-dbus-git')
 pkgdesc="The JACK low-latency audio server"
-pkgver=1.9.17.r1.ge984aeb2
-pkgrel=3
+pkgver=1.9.18.r0.g5041ab0f
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url="http://jackaudio.org/"
 license=('GPL2' 'LGPL2.1')
 groups=('pro-audio')
 makedepends=('alsa-lib' 'celt' 'dbus' 'expat' 'git' 'libffado' 'libsamplerate'
-'libsndfile' 'readline' 'systemd' 'waf')
+'libsndfile' 'readline' 'systemd' 'waf' 'zita-alsa-pcmi' 'zita-resampler')
 depends=('db' 'expat' 'opus')
 source=("${pkgbase}::git+https://github.com/jackaudio/${_name}#branch=master")
 md5sums=('SKIP')
@@ -61,7 +61,8 @@ package_jack2-git() {
               'libffado: for firewire support using FFADO'
               'jack2-dbus: for dbus integration'
               'realtime-privileges: for realtime privileges'
-              'zita-ajbridge: for using multiple ALSA devices')
+              'zita-alsa-pcmi: for using multiple ALSA devices'
+              'zita-resampler: for using multiple ALSA devices')
   provides=('jack' "${_name}" 'libjack.so' 'libjacknet.so' 'libjackserver.so'
             "${_name}=${pkgver//.r*/}")
   conflicts=('jack' "${_name}")
