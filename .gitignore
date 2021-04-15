@@ -1,0 +1,7 @@
+dpf/
+drops/
+drops-*.pkg.tar.xz
+drops-*.pkg.tar.zst
+nanosvg/
+pkg/
+src/
