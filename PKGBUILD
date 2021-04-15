@@ -3,7 +3,7 @@
 pkgname=wingide8
 
 # cannot call it wingide8 as some parts hardcode it as wingide
-pkg_pname=wingide
+_pkg_pname=wingide
 
 pkgver=8.0.0.2
 pkgrel=0
@@ -18,36 +18,36 @@ source=("https://wingware.com/pub/wingpro/$pkgver/wingpro-$pkgver-linux-x64.tar.
 sha1sums=("d0c80aff0d6612d062c79ad994af9212577cbaab")
 
 depends=('xdg-utils' 'python'  'python2' 'qt5-svg' 'libxcb' 'perl' 'java-runtime')
-provides=(${pkg_pname})
-conflicts=(${pkg_pname})
+provides=(${_pkg_pname})
+conflicts=(${_pkg_pname})
 
-install=${pkg_pname}.install
+install=${_pkg_pname}.install
 
 package() {
     cd "$srcdir/wingpro-$pkgver-linux-x64"
     ./wing-install.py \
     --install-binary \
-    --winghome "${pkgdir}/opt/${pkg_pname}" \
+    --winghome "${pkgdir}/opt/${_pkg_pname}" \
     --bin-dir ${pkgdir}/usr/bin > /dev/null 2>&1
 
-    sed -i "s|${pkgdir}||" ${pkgdir}/opt/${pkg_pname}/wingdbstub.py
-    sed -i "s|${pkgdir}||" ${pkgdir}/opt/${pkg_pname}/wing
-    sed -i 's|ARCH=`arch`|ARCH=`uname -m`|' ${pkgdir}/opt/${pkg_pname}/bootstrap/run-wing.sh
+    sed -i "s|${pkgdir}||" ${pkgdir}/opt/${_pkg_pname}/wingdbstub.py
+    sed -i "s|${pkgdir}||" ${pkgdir}/opt/${_pkg_pname}/wing
+    sed -i 's|ARCH=`arch`|ARCH=`uname -m`|' ${pkgdir}/opt/${_pkg_pname}/bootstrap/run-wing.sh
     # Fix a bug in the script
     
-    sed -i "s|'`echo $arch`'\]|'`echo $arch`' \]|" ${pkgdir}/opt/${pkg_pname}/bootstrap/run-wing.sh
+    sed -i "s|'`echo $arch`'\]|'`echo $arch`' \]|" ${pkgdir}/opt/${_pkg_pname}/bootstrap/run-wing.sh
 
     # Copy over patch (if any)
     if [ -d ../patches ]; then
-        cp -r ../patches ${pkgdir}/opt/${pkg_pname}/.
+        cp -r ../patches ${pkgdir}/opt/${_pkg_pname}/.
     fi
 
     # remove refrence to ${pkgdir}
     sed -i "s,${pkgdir},,g" "${pkgdir}/opt/wingide/file-list.txt"
 
     # Correct the file permissions
-    chown -R root:root "${pkgdir}/opt/${pkg_pname}"
-    chmod +x ${pkgdir}/opt/${pkg_pname}/resources/linux/desktop/install-linux-desktop.sh
+    chown -R root:root "${pkgdir}/opt/${_pkg_pname}"
+    chmod +x ${pkgdir}/opt/${_pkg_pname}/resources/linux/desktop/install-linux-desktop.sh
     # Install the LICENSE
-    install -D -m 644 "${pkgdir}/opt/${pkg_pname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkg_pname}/LICENSE"
+    install -D -m 644 "${pkgdir}/opt/${_pkg_pname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkg_pname}/LICENSE"
 }
