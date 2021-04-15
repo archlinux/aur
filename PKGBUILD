@@ -2,7 +2,7 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-pkgver=3.13.13.REL
+pkgver=3.14.0.REL
 pkgrel=1
 pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
@@ -12,12 +12,12 @@ provides=('unciv')
 conflicts=('unciv')
 arch=('any')
 source=(
-  "https://github.com/yairm210/Unciv/releases/download/3.13.13/Unciv.jar"
-  "unciv.png::https://raw.githubusercontent.com/yairm210/Unciv/3.13.13/extraImages/Unciv%20icon%20v4.png"
+  "$_pkgname.jar::https://github.com/yairm210/Unciv/releases/download/3.14.0/Unciv.jar"
+  "unciv.png::https://raw.githubusercontent.com/yairm210/Unciv/3.14.0/extraImages/Unciv%20icon%20v4.png"
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
-md5sums=('5f8d4412c616c5fdfd03810aae814096'
+md5sums=('7bfc60a753a70919b4234a5949ce467a'
          '5aca7fc33f121fcf901fef14f784731a'
          'f8eab098f20681b8db232cc5709713d3'
          '42d5f7ea8ee48d2d643d070786f039ba')
