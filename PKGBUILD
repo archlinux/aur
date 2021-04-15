@@ -2,8 +2,8 @@
 
 pkgname=libterminput
 pkgver=1.0
-pkgrel=1
-pkgdesc="Keccak-family hashing library"
+pkgrel=2
+pkgdesc="Terminal input parsing library"
 arch=(x86_64)
 url="https://github.com/maandree/libterminput"
 license=('custom:ISC')
