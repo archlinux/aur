@@ -1,0 +1,16 @@
+pkgbase = httpit
+	pkgdesc = A rapid HTTP(S) benchmark tool
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/gonetx/httpit
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = httpit-0.3.2.tar.gz::https://github.com/gonetx/httpit/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 57c65fb6021c845f69ec653dac08648184a6ff4e344b738f85994c115074f491
+
+pkgname = httpit
+
