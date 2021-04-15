@@ -1,6 +1,6 @@
 pkgbase = numix-circle-icon-theme-git
 	pkgdesc = Circle icon theme from the Numix project
-	pkgver = 20.09.19.r0.g8b749c0
+	pkgver = 21.04.14.r0.gc142533
 	pkgrel = 1
 	url = https://github.com/numixproject/numix-icon-theme-circle/
 	arch = any
