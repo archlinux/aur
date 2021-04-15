@@ -1,6 +1,6 @@
 pkgbase = cpdup
 	pkgdesc = Tool to mirror filesystems retaining permissions, flags, ownership, and utimes
-	pkgver = 1.20
+	pkgver = 1.22
 	pkgrel = 1
 	url = https://github.com/DragonFlyBSD/cpdup
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cpdup
 	license = BSD
 	makedepends = pkg-config
 	depends = libbsd
-	source = https://github.com/DragonFlyBSD/cpdup/archive/v1.20.tar.gz
-	sha256sums = b8b3edb51c8f57e16f37bb6e4261214af2fdab4e7a13067dd5d47d46f55b1c93
+	source = https://github.com/DragonFlyBSD/cpdup/archive/v1.22.tar.gz
+	sha256sums = 2dbfa16a080f8dce1be64a511e785b8491e59be8a0f3d1cef035d08147cc4793
 
 pkgname = cpdup
 
