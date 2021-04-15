@@ -1,7 +1,7 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
 pkgname=powershell-preview-bin
-_pkgver=7.2.0-preview.4
+_pkgver=7.2.0-preview.5
 _version=7-preview
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,8 +12,8 @@ depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
 provides=('powershell')
 options=(staticlibs !strip)
 install=powershell-preview.install
-sha256sums=('2C9DF3113424E3DAD015F976F50CCD9C0B9A0884E02EC1DB3C2D7BCF4AB2B3A7')
-source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.debian.11_amd64.deb")
+sha256sums=('7BAA7D3E12053844FC4B069302B00346D11E83B7BB59A25702C58B555C643705')
+source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb")
 
 package() {
   bsdtar xf data.tar.gz
