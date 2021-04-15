@@ -3,7 +3,7 @@
 
 pkgname=python38
 pkgver=3.8.9
-pkgrel=1
+pkgrel=2
 _pybasever=3.8
 _pymajver=3
 pkgdesc="Major release 3.8 of the Python high-level programming language"
@@ -14,11 +14,19 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('5e391f3ec45da2954419cab0beaefd8be38895ea5ce33577c3ec14940c4b9572')
+source=(
+    https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
+    mpdecimal-2.5.1.patch
+)
+sha256sums=(
+    '5e391f3ec45da2954419cab0beaefd8be38895ea5ce33577c3ec14940c4b9572'
+    '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c'
+)
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
+
+  patch -p1 -i "${srcdir}/mpdecimal-2.5.1.patch"
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
