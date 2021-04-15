@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Megacubo
+Comment=An intuitive, free and open source IPTV player.
+Exec=/opt/megacubo/megacubo
+Terminal=false
+Type=Application
+Icon=mecacubo
+StartupWMClass=Megacubo
+X-AppImage-Version=16.1.3
+Categories=Internet;
