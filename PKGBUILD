@@ -1,6 +1,6 @@
 # Maintainer: Shaun Bouckaert <shaun@train-meditations.com>
 pkgname=pam-pgsql-git
-pkgver=0.7.3.2.r10.efe2820
+pkgver=0.7.3.2
 pkgrel=1
 pkgdesc="PAM module to provide authentication against PostgreSQL tables"
 arch=('x86_64')
