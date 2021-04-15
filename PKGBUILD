@@ -3,14 +3,15 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=1.0.4628
 _version=1.0.4628
+_url=https://download.jitsi.org/stable/jitsi-meet-web_1.0.4628-1_all.deb
+_url_config=https://download.jitsi.org/stable/jitsi-meet-web-config_1.0.4628-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}-web
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=3
 pkgdesc="Jitsi Meet Web binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -25,12 +26,12 @@ backup=(
   "etc/webapps/${_pkgbase}/interface_config.js"
 )
 source=(
-        "https://download.jitsi.org/stable/${_debname}_${_tag}-1_all.deb"
-        "https://download.jitsi.org/stable/${_debname}-config_${_tag}-1_all.deb"
-	"jitsi.install"
+        "$_url"
+        "config_${_version}.deb::$_url_config"
+        "jitsi.install"
 )
 noextract=(
-	"${_debname}-config_${_tag}-1_all.deb"
+    "config_${_version}.deb"
 )
 provides=(${_pkgbase})
 conflicts=(${_pkgbase})
@@ -40,8 +41,7 @@ build() {
         rm -rf ${_pkgbase}
         mkdir ${_pkgbase}
         tar xJf data.tar.xz -C ${_pkgbase}
-	ar p "${_debname}-config_${_tag}-1_all.deb" data.tar.xz | tar xJC ${_pkgbase}
-
+        ar p "config_${_version}.deb" data.tar.xz | tar xJC ${_pkgbase}
 }
 
 package() {
