@@ -4,7 +4,7 @@ _pkgname=prusa-slicer
 
 pkgname=${_pkgname}-git
 pkgver=2.3.0.r24.gd06aa6069
-pkgrel=1
+pkgrel=2
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
@@ -60,7 +60,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DSLIC3R_FHS=ON \
-        -DSLIC3R_PCH=ON \
+        -DSLIC3R_PCH=OFF \
         -DSLIC3R_WX_STABLE=ON \
         -DSLIC3R_GTK=3 \
         -DSLIC3R_STATIC=OFF \
