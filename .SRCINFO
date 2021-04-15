@@ -1,6 +1,6 @@
 pkgbase = jack_mixer-git
-	pkgdesc = A GTK based Jack audio mixer (git version)
-	pkgver = 15.1.r0.gcbedd2b
+	pkgdesc = A multi-channel audio mixer desktop application for JACK (git version)
+	pkgver = 16.r1.gfaf4648
 	pkgrel = 1
 	url = https://rdio.space/jackmixer/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = jack_mixer-git
 	makedepends = cython
 	makedepends = git
 	makedepends = glib2
-	makedepends = jack
+	makedepends = jack2
 	makedepends = meson
 	makedepends = ninja
 	makedepends = python-docutils
