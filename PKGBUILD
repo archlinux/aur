@@ -5,9 +5,9 @@ pkgver=0.4.1
 pkgrel=1
 _buildhash='81c3b100e662a761ed8e502ae221866f'
 _fooname='foo_uie_albumlist'
-pkgdesc="A Columns UI album list panel for foobar2000"
+pkgdesc='A Columns UI album list panel for foobar2000'
 arch=('any')
-url='https://www.foobar2000.org/components/view/foo_uie_albumlist'
+url="https://www.foobar2000.org/components/view/${_fooname}"
 license=('unknown')
 depends=('foobar2000>=1.0.0' 'foobar2000-component-ui-columns-bin>=1.0.0')
 source=("https://yuo.be/static/${_buildhash}/${_fooname}-${pkgver}.fb2k-component")
