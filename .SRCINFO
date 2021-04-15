@@ -1,14 +1,14 @@
 pkgbase = python2-isort
 	pkgdesc = A Python utility / library to sort Python imports.
 	pkgver = 4.3.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timothycrosley/isort
 	arch = any
 	license = MIT
 	depends = python2-futures
 	depends = python2-setuptools
-	source = python2-isort-4.3.21.tar.gz::https://github.com/timothycrosley/isort/archive/4.3.21.tar.gz
-	sha512sums = a393956a997687996b025c2a37c655efebdd988c52f6d6914db79613a5e0febbf92b0c6007c6db07af079db78e4c235cad0578089b565cb474cdfbbac9031e6d
+	source = python2-isort-4.3.21-2.tar.gz::https://github.com/timothycrosley/isort/archive/4.3.21-2.tar.gz
+	sha512sums = fc2aa00c87196864864d2516b8be7acdedcf40d71d1931510e4b878dbd2b6da0b579661b50221f03f4aa5560c8bf23d5e1e10a2694d2b741ca09a92e40a4c687
 
 pkgname = python2-isort
 
