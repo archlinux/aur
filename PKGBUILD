@@ -28,7 +28,7 @@ package_wowlet-git() {
   install -Dm755 "${srcdir}/${pkgname}/build/bin/wowlet" "${pkgdir}/usr/bin/wowlet"
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}/docs/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README"
   install -Dm644 "${srcdir}/${pkgname}/docs/SECURITY.md" "${pkgdir}/usr/share/doc/${_pkgname}/SECURITY"
   install -Dm644 "${srcdir}/${pkgname}/docs/HACKING.md" "${pkgdir}/usr/share/doc/${_pkgname}/HACKING"
   install -Dm644 "${srcdir}/${pkgname}/src/assets/org.wowlet.wowlet.desktop" "${pkgdir}/usr/share/applications/org.wowlet.wowlet.desktop"
