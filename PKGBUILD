@@ -1,6 +1,6 @@
 # Maintainer: BootyBlaster <grimm72eaper at pm dot me>
 pkgname=myxer-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A modern Volume Mixer for PulseAudio, built with you in mind.'
 url='https://github.com/Aurailus/Myxer'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('pulseaudio')
 optdepends=()
 provides=('myxer')
-sha256sums=('d12ec6f3924de1ff110dceece78804e1be34d8c87e7ababab5dd34e919a076b7')
+sha256sums=('a8bc3a67e15a8761de94013a35cf83601a6b507065be2d49594e1f9ca383f36a')
 
 package() {
   cd "$srcdir"
