@@ -1,15 +1,15 @@
 # Maintainer: Francesco Orofino <ivanhoe1024@gmail.com>
 pkgname=datawarrior
-pkgver=5.2.1
-_pkgver=521
+pkgver=5.5.0
+_pkgver=550
 pkgrel=1
 pkgdesc="Open-source data visualization and analysis program with embedded chemical intelligence"
 arch=('any')
 url="http://www.openmolecules.org/datawarrior/index.html"
 license=('GPL')
 depends=('java-runtime>=8' 'java-openjfx' 'hicolor-icon-theme')
-source=("https://www.dropbox.com/s/9j7yi0z3a9x4g68/$pkgname${_pkgver}_linux.tar.gz")
-md5sums=('51f23a28d36c6983a2b443c5dddb2900')
+source=("https://openmolecules.org/datawarrior/$pkgname${_pkgver}_linux.tar.gz")
+md5sums=('1feb7bff2ad7129ac677973186436ee8')
 
 package() {
 	cd "${pkgname}_linux"
@@ -19,7 +19,7 @@ package() {
 	
 	chmod 755 $pkgdir/opt/datawarrior
 	chmod 755 $pkgdir/opt/datawarrior/datawarrior
-
+	
 	install -dm755 "${pkgdir}/usr/share/applications"
 	install -Dm644 "resources/openmolecules-datawarrior.desktop" "$pkgdir/usr/share/applications/openmolecules-datawarrior.desktop"
 	
@@ -36,6 +36,7 @@ package() {
 		install -Dm644 "resources/${res}/application-vnd.openmolecules.sdf.png" "${pkgdir}/usr/share/icons/hicolor/${res}/mimetypes/application-vnd.openmolecules.sdf.png"	
   	done
 
+	#launch datawarrior from the terminal								
 	install -dm755 "${pkgdir}/usr/bin"
 	echo "/opt/datawarrior/datawarrior" > ${pkgdir}/usr/bin/datawarrior
 	chmod +x ${pkgdir}/usr/bin/datawarrior
