@@ -1,7 +1,7 @@
 pkgbase = google-chrome
 	pkgdesc = The popular and trusted web browser by Google (Stable Channel)
 	pkgver = 90.0.4430.72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/chrome
 	install = google-chrome.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = google-chrome
 	depends = libxss
 	depends = libxtst
 	depends = nss
-	optdepends = libpipewire02: WebRTC desktop sharing under Wayland
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
