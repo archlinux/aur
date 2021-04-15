@@ -6,7 +6,7 @@ pkgbase = adobe-source-han-sans-classic-fonts
 	arch = any
 	license = custom:OFL
 	source = https://github.com/redchenjs/source-han-sans-classic/releases/download/2.003/source-han-sans-classic-otf.zip
-	sha512sums = 6c9c99fe272092b3939bd11510be421401a8ea2a2657172bba0f254d7474271c21407e1b8313b88dd741667dbd68088dae694579003ff4184f0148209c2ea50f
+	sha512sums = 22857b8c440919f9b33d2083fc3071ba8a658d7350394a9604f1ad7dff7097a78c9ba3d062fa3942cf02ea90566c3dd831b94e4b71d0ed771a71d677ee33637f
 
 pkgname = adobe-source-han-sans-classic-fonts
 
