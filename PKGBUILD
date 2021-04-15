@@ -1,16 +1,17 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=jack-matchmaker
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A command line tool to auto-connect JACK ports matching given patterns."
 arch=('any')
 url="https://github.com/SpotlightKid/jack-matchmaker"
 license=('GPL2')
-depends=('python-setuptools' 'jack')
+depends=('jack')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/j/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 backup=('etc/conf.d/jack-matchmaker')
-sha256sums=('3705cd493fd442738fe5369eff49654022cec681e7fe17c0ece28e064e524368')
+sha256sums=('70b8f53b0c75e8351ccdad4bf37bee8b544643604e0db1938ed749a4c0fa6ba6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
