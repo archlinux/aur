@@ -3,7 +3,7 @@
 # Current Maintainer <erik.dubois@gmail.com>
 
 pkgname=numix-icon-theme-git
-pkgver=20.06.07.r8.g91e4a9747
+pkgver=21.04.14.r0.g97c01aee9
 pkgrel=1
 pkgdesc='Base icon theme from the Numix project'
 arch=('any')
