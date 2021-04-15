@@ -2,7 +2,7 @@
 
 pkgname=archtorify-git
 _pkgname=archtorify
-pkgver=v1.23.1
+pkgver=v1.24.0
 pkgrel=1
 pkgdesc="Transparent proxy through Tor for Arch Linux"
 arch=('any')
@@ -14,20 +14,20 @@ source=("git+https://github.com/brainfucksec/${_pkgname}/")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$_pkgname"
+    cd "$_pkgname"
 
-  install -Dm644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
-  install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
+    install -Dm644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
+    install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
 
-  mkdir -p $pkgdir/usr/share/$_pkgname/data
-  mkdir -p $pkgdir/usr/share/$_pkgname/backups
+    mkdir -p $pkgdir/usr/share/$_pkgname/data
+    mkdir -p $pkgdir/usr/share/$_pkgname/backups
 
-  install -Dm644 data/* $pkgdir/usr/share/$_pkgname/data
+    install -Dm644 data/* $pkgdir/usr/share/$_pkgname/data
 }
 
-# vim:set ts=2 sw=2
+# vim:set ts=4 sw=4
