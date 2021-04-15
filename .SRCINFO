@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-gnome-ui-tune-git
+	pkgdesc = Tunes the overview UI of GNOME 40
+	pkgver = 1.1.0.r1.g8b0b758
+	pkgrel = 1
+	url = https://github.com/axxapy/gnome-ui-tune
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-gnome-ui-tune
+	conflicts = gnome-shell-extension-gnome-ui-tune
+	source = git+https://github.com/axxapy/gnome-ui-tune.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-gnome-ui-tune-git
+
