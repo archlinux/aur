@@ -31,7 +31,7 @@ fi
 
 pkgname=lib32-mesa-stable
 pkgdesc='An open-source implementation of the OpenGL specification. (32-bit) (stable release)'
-pkgver=21.0.1
+pkgver=21.0.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://mesa3d.org/"
