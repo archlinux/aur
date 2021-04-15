@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=xplr
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A hackable, minimal, fast TUI file explorer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b5d50101af1692509bb36b265ea87b04d576951d47daf87f0521ae3ffdb8996fac3b4a5319cc61b9f2f90080f1fe1673a9003d583efbaaf15a84b7536090524f')
+sha512sums=('b7615ea4a6df5a9b7ad6381f8033ebdfda0e69910c7996bcb3ba0de9f9cd89e7d08f58bcb267e0e01eb67df9f2726271c5e7f9c276cc41a671b3349d401d21c8')
 
 build() {
   cd "$pkgname-$pkgver"
