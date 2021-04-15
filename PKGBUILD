@@ -6,7 +6,7 @@ url="https://github.com/guest-kernel/qemu"
 
 _srcmajor=5
 _srcminor=10
-_srcpatch=29
+_srcpatch=30
 _srcbase=$_srcmajor.$_srcminor
 _srcname=linux-$_srcbase
 
@@ -32,7 +32,7 @@ validpgpkeys=(
 )
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            'dbb5a4cdbec3b2cd1de01b2996f54931497ecc8afdf88283c6f1780f772a6f92'
+            'c56bc587a1d61145bf3e0b0163d390d08d490b38dbc304138a84fe1f6140aed6'
             'f5b6299f4ed2f1754ddfc850fbc54cb85eee19cbf093e7ec7fde2eeb473800f9')
 
 prepare() {
