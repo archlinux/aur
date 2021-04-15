@@ -1,0 +1,21 @@
+[Unit]
+Description=Hornet
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+LimitNOFILE=4096
+SyslogIdentifier=hornet
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+User=hornet
+WorkingDirectory=/var/lib/hornet
+TimeoutSec=1200
+Restart=always
+ExecStart=/usr/bin/hornet -d "/etc/hornet"
+
+[Install]
+WantedBy=multi-user.target
