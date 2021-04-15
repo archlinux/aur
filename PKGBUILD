@@ -1,7 +1,7 @@
 # Maintainer: Jaime Martínez Rincón <jaime@jamezrin.name>
 pkgname=notion-app
 pkgver=2.0.16
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -57,5 +57,5 @@ package() {
   cp "${srcdir}/package-rebuild/icon.png" "${pkgdir}/opt/${pkgname}/icon.png"
   install -Dm644 "${srcdir}/package-rebuild/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-  ln -s "/opt/${pkgname}/notion-app" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/notion" "${pkgdir}/usr/bin/${pkgname}"
 }
