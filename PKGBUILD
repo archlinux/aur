@@ -4,7 +4,7 @@
 
 pkgname=('python-pymupdf')
 _name='PyMuPDF'
-pkgver=1.18.11
+pkgver=1.18.12
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
