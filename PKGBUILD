@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.6.6
+pkgver=3.6.7
 pkgrel=1
 pkgdesc='Standard Notes'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('standardnotes-desktop')
 source=(
         "${_appimage}::https://github.com/standardnotes/desktop/releases/download/v$pkgver/$_shortname-$pkgver-linux-x86_64.AppImage"
 )
-sha256sums=('f8263504b1070635656191d72f4273360215899e63d66394aa24becd0f27f84d')
+sha256sums=('108189a08d0c11cece769c2cb90f46714f9a749bd7b11cd3f1dbd4c89fde9832')
 
 prepare() {
     chmod +x ${_appimage}
