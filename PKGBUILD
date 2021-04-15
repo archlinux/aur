@@ -2,13 +2,13 @@
 # Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_tag=1.0-690
-_version=1.0.690
+_version=1.0+692
+_url=https://download.jitsi.org/stable/jicofo_1.0-692-hf-1_all.deb
 
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=3
 pkgdesc="JItsi meet COnference FOcus binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -24,7 +24,7 @@ backup=(
   "etc/${_pkgbase}/jicofo.conf"
 )
 source=(
-        "https://download.jitsi.org/stable/${_basename}_${_tag}-1_all.deb"
+        "$_url"
         "config"
         "sip-communicator.properties"
         "service"
@@ -67,7 +67,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('5419d7539da4937a04e52c02064c2836a25826ed708fc414e0a7316daef8b6f0'
+sha256sums=('6b68471b82e8358561bc98aaf47202f502e72cf69473e7bd7404e936bcb00d90'
             'a74191bf1128b5258a3c764a9d7ddfd7c36213b8bec14e0eeb92ddcd887f9512'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
             'e594dc9e6292d8bd15b225113971b96d85f410c2f47dadc0bdcffa382669ded2'
