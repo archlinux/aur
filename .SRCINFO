@@ -1,0 +1,26 @@
+pkgbase = drops
+	pkgdesc = A sample player instrument LV2/VST2 plugin and stand-alone JACK program
+	pkgver = 1.0beta
+	pkgrel = 1
+	url = https://github.com/clearly-broken-software/drops
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = GPL3
+	makedepends = jack2
+	makedepends = libsndfile
+	makedepends = mesa
+	makedepends = sfizz
+	depends = gcc-libs
+	source = https://github.com/clearly-broken-software/drops/releases/download/v1.0-beta/drops_v1.0-beta.tar.gz
+	source = drops-system-sfizz.patch
+	md5sums = 65d6f03d60768858b52397d062526659
+	md5sums = b9be2ca33b9b7f322c34564659335fcd
+
+pkgname = drops
+	depends = gcc-libs
+	depends = libjack.so
+	depends = libsfizz.so
+	depends = libsndfile.so
+

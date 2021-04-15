@@ -1,0 +1,33 @@
+diff --git a/Makefile b/Makefile
+index 864c0d5..597f6b3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,8 +8,6 @@ include dpf/Makefile.base.mk
+ 
+ 
+ all: dgl plugins gen
+-plugins: sfizz-lib
+-include sfizz/dpf.mk
+ # --------------------------------------------------------------
+ 
+ dgl:
+diff --git a/plugins/drops/Makefile b/plugins/drops/Makefile
+index 651b4a0..0e930ec 100644
+--- a/plugins/drops/Makefile
++++ b/plugins/drops/Makefile
+@@ -57,13 +57,13 @@ FILES_UI  = \
+ # Do some magic
+ 
+ include ../../dpf/Makefile.plugins.mk
+-include ../../sfizz/dpf.mk
+ 
+ # --------------------------------------------------------------
+ # Extra flags
++SFIZZ_C_FLAGS = $(shell $(PKG_CONFIG) --cflags sfizz)
+ BUILD_C_FLAGS += $(SFIZZ_C_FLAGS)
+-BUILD_CXX_FLAGS += $(SFIZZ_CXX_FLAGS)
+-LINK_FLAGS += $(SFIZZ_LINK_FLAGS) $(shell $(PKG_CONFIG) --libs sndfile )
++BUILD_CXX_FLAGS += $(SFIZZ_C_FLAGS)
++LINK_FLAGS += $(shell $(PKG_CONFIG) --libs sfizz) $(shell $(PKG_CONFIG) --libs sndfile)
+ BASE_FLAGS += -I. -I./widgets -I./external/src
+ #LINK_FLAGS += $(shell pkg-config --libs sfizz)

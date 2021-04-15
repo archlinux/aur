@@ -1,0 +1,6 @@
+dpf/
+drops-*.pkg.tar.xz
+drops-*.pkg.tar.zst
+drops_v*.tar.gz
+pkg/
+src/
