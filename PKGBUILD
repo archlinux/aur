@@ -10,8 +10,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'perl-cache-fastmmap>=1.29' 'perl-catalyst-runtime>=5.8' 'perl-catalyst-plugin-session' 'perl-mro-compat' 'perl-moosex-emulate-class-accessor-fast' 'perl-path-class')
 makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-FastMmap"
-source=("http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
+url="https://metacpan.org/release/Catalyst-Plugin-Session-Store-FastMmap"
+source=("https://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('4e7f7b255c9aeceb627e45d2b8d814f9')
 sha512sums=('097bc6a233d66e2abef0d24c29f0ee91d0c5cdfbb8a31827aaec19708eb7f09675bc77616a6ac76e8ac0a87b549d93d78dbea6a593455af7a2f36c0cf62ae673')
 
