@@ -8,18 +8,19 @@ arch=(x86_64)
 url="https://gitlab.com/ShaharyarAhmed-bot/cell"
 license=('GPL')
 depends=()
-makedepends=(git gcc make)
+makedepends=(qt5-base git gcc make)
 source=("git+$url")
 md5sums=('SKIP')
 
 
 build() {
-	cd "cell"
+        cd "cell"
+        qmake -makefile
 	make
 }
 
 package() {
 	cd "cell"
-	install -Dm755 ./build/cell "$pkgdir/usr/bin/cell"
+        install -Dm755 ./bin/cell "$pkgdir/usr/bin/cell"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }

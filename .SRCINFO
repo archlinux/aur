@@ -5,6 +5,7 @@ pkgbase = cell
 	url = https://gitlab.com/ShaharyarAhmed-bot/cell
 	arch = x86_64
 	license = GPL
+	makedepends = qt5-base
 	makedepends = git
 	makedepends = gcc
 	makedepends = make
