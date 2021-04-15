@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
-pkgver=6.1.0
+pkgver=6.1.1
 _pkgver_i686="6.0.1"
 pkgrel=1
 pkgdesc="The Fast Remote Desktop Application"
@@ -20,7 +20,7 @@ source_i686=("https://download.anydesk.com/linux/anydesk-${_pkgver_i686}-i386.ta
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 
 sha256sums_i686=('cb22b026e2d81c0de220238fa3d4e13a6d0016787b8c680923794296bbd548e2')
-sha256sums_x86_64=('797808eb2cf39a5cb91a268a2597188e2f5232e2f47914f5bd4a5ae5413678e1')
+sha256sums_x86_64=('102e72c75502a4779083320322dd047e2b0c00a25ead7444a00aad1db54325aa')
 
 package() {
     if [ `uname -m` != "x86_64" ];
@@ -40,7 +40,7 @@ package() {
     sed -i -e "s:Exec=/usr/bin/anydesk:Exec=env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /usr/bin/anydesk:g" "${pkgdir}/usr/share/applications/anydesk.desktop"
 
     # install polkit action
-    install -Dm 644 "${srcdir}/anydesk-${pkgver}/polkit-1/com.philandro.anydesk.policy" "${pkgdir}/usr/share/polkit-1/actions/com.philandro.anydesk.policy"
+    install -Dm 644 "${srcdir}/anydesk-${pkgver}/polkit-1/com.anydesk.anydesk.policy" "${pkgdir}/usr/share/polkit-1/actions/com.anydesk.anydesk.policy"
     # install icon
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/icons/hicolor/scalable/apps/anydesk.svg" "${pkgdir}/usr/share/pixmaps/anydesk.svg"
     # install license
