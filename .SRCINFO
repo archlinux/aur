@@ -1,29 +1,45 @@
 pkgbase = lua-gd
 	pkgdesc = GD graphics library bindings for Lua
 	pkgver = 2_0_33r3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ittner/lua-gd
 	arch = x86_64
 	license = MIT
-	makedepends = lua
-	makedepends = lua51
-	makedepends = lua52
-	makedepends = lua53
 	makedepends = git
 	depends = gd
+	optdepends = lua
+	optdepends = lua51
+	optdepends = lua52
+	optdepends = lua53
 	source = git+https://github.com/ittner/lua-gd.git#commit=2ce8e478a8591afd71e607506bc8c64b161bbd30
 	sha512sums = SKIP
 
 pkgname = lua-gd
+	pkgdesc = GD graphics library bindings for Lua 5.4
+	depends = gd
+	depends = lua
+	optdepends = 
 
 pkgname = lua51-gd
+	pkgdesc = GD graphics library bindings for Lua 5.1
+	depends = gd
+	depends = lua51
+	optdepends = 
 
 pkgname = lua52-gd
+	pkgdesc = GD graphics library bindings for Lua 5.2
+	depends = gd
+	depends = lua52
+	optdepends = 
 
 pkgname = lua53-gd
+	pkgdesc = GD graphics library bindings for Lua 5.3
+	depends = gd
+	depends = lua53
+	optdepends = 
 
 pkgname = lua-gd-docs
-	pkgdesc = GD graphics library bindings for Lua documentation
+	pkgdesc = Documentation for the GD graphics library bindings for Lua
 	arch = any
 	depends = lua
 
