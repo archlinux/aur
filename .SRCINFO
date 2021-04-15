@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c. Downside: only Linux
-	pkgver = r126.0ed54ed
+	pkgver = r128.9bc1f2a
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = fastfetch-git
 	optdepends = libx11: Resolution output
 	optdepends = libxrandr: Refresh rate in Resolution output
 	optdepends = dconf: GTK ouput on DEs which dont use config files (like Gnome)
-	provides = flashfetch=r126.0ed54ed
+	provides = flashfetch=r128.9bc1f2a
 	source = git+https://github.com/LinusDierheimer/fastfetch.git
 	sha256sums = SKIP
 
