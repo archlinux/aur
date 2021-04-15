@@ -12,7 +12,7 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=21.1.0_devel.137111.3463b8bf416
+pkgver=21.2.0_devel.138224.f601fd635bb
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -30,14 +30,13 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE'
-                '0001-clover-llvm13-use-FixedVectorType.patch'
 )
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '5f0620ce35da2d1f80dc1b3c03eafc32')
+)
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'c3a567df69a263c6b87d9c7887464ed03b5a0bf008caf180c45cf50dca3f4710e0eda3e453a7a69b89720e333c33b9aa7da1b7f9c79d72bb76d847b567558d19')
+)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
@@ -56,8 +55,6 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    cd mesa
-    patch --forward --strip=1 --input="${srcdir}/0001-clover-llvm13-use-FixedVectorType.patch"
 }
 
 build () {
