@@ -1,10 +1,11 @@
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: Brett Cornwall <ainola@archlinux.org>
 # Contributor: Ner0
 # Contributor: quantax
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.5.0.27
+pkgver=3.5.0.31
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -14,27 +15,22 @@ license=('Artistic2.0')
 # https://github.com/adventuregamestudio/ags/issues/403
 # https://github.com/adventuregamestudio/ags/issues/762
 # https://github.com/adventuregamestudio/ags/issues/1051#issuecomment-602217650
-depends=('dumb-a4' 'libtheora' 'freetype2')
-makedepends=('cmake' 'wxgtk')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
-        'https://github.com/adventuregamestudio/ags/commit/fa1b9c7a442ac6966357d510fb7e6b78a214410d.patch')
-sha256sums=('f8940e390510ebddc872ae032bc65351581a67bf9bb64a0c5d8e996615baf819'
-            '5b6cf508340ae23aac6c4ed0805f64330333b9b6ba466e60f8d625aedaa07208')
-
-prepare () {
-    cd "ags-v.$pkgver"
-    # https://github.com/adventuregamestudio/ags/issues/1080
-    patch -p1 < ../fa1b9c7a442ac6966357d510fb7e6b78a214410d.patch
-}
+depends=('dumb-a4' 'libtheora' 'freetype2' 'sdl2' 'alsa-lib' 'jack' 'libx11' 'libxext' 'libxcursor' 'libxpm' 'libxxf86vm')
+makedepends=('cmake' 'wxgtk2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz")
+sha256sums=('a55c2995d0dc8fcc4c3159185a29bb027ce8fdb4f4ea87e4ccf10a3c76f326ac')
 
 build() {
-    cd "ags-v.$pkgver"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -S "ags-v.$pkgver" -B 'build' \
+          -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE='Release' \
-          -B build
-    make -C build
+          -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG -w' \
+          -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -w'
+    cmake --build 'build'
 }
 
 package() {
-    install -Dm755 "ags-v.$pkgver/build/ags" -t "$pkgdir/usr/bin/"
+    #cd "ags-v.$pkgver"
+    #DESTDIR="${pkgdir}" cmake --install "build"
+    install -Dm755 'build/ags' -t "$pkgdir/usr/bin/"
 }
