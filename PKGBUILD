@@ -1,14 +1,14 @@
 # Contributor: yochananmarqos <mark.wagie@tutanota.com>
-# Maintainer:  max.bra <max dot bra at alice dot it>
+# Maintainer:  max.bra <max dot bra dot gtalk at gmail dot com>
 
 pkgname=arronax
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A program to create and modify starters/launchers (technically: .desktop files) for applications and locations (URLs).'
 arch=('any')
 license=('GPL3')
 url="http://www.florian-diesch.de/software/arronax/"
-depends=('libwnck3' 'python-gobject' 'python-xdg')
+depends=('libwnck3' 'python-gobject' 'python-pyxdg')
 makedepends=('python-setuptools')
 optdepends=('python-nautilus: Arronax as Nautilus extension'
             'python-caja: Arronax as Caja extension'
