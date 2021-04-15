@@ -14,11 +14,19 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('9c73e63c99855709b9be0b3cc9e5b072cb60f37311e8c4e50f15576a0bf82854')
+source=(
+    https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
+    mpdecimal-2.5.1.patch
+)
+sha256sums=(
+    '9c73e63c99855709b9be0b3cc9e5b072cb60f37311e8c4e50f15576a0bf82854'
+    '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c'
+)
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
+
+  patch -p1 -i "${srcdir}/mpdecimal-2.5.1.patch"
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
