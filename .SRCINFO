@@ -1,4 +1,4 @@
-pkgbase = wingide
+pkgbase = wingide8
 	pkgdesc = Wing IDE Professional is the full-featured Python IDE for professional programmers.\nWarning. This is a beta package
 	pkgver = 8.0.0.2
 	pkgrel = 0
@@ -18,5 +18,5 @@ pkgbase = wingide
 	source = https://wingware.com/pub/wingpro/8.0.0.2/wingpro-8.0.0.2-linux-x64.tar.bz2
 	sha1sums = d0c80aff0d6612d062c79ad994af9212577cbaab
 
-pkgname = wingide
+pkgname = wingide8
 
