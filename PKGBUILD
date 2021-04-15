@@ -2,7 +2,7 @@
 
 pkgname=ant-bloody-theme-git
 _pkgname=Ant-Bloody
-pkgver=r81.6013fb2
+pkgver=v1.3.0.r60.gc4bf9e6
 pkgrel=1
 pkgdesc="Bloody variant of the Ant theme"
 arch=("any")
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -37,12 +37,15 @@ build() {
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
 	while read $line; do echo -n "."; done < \
-		<(./render-assets.sh; ); echo
+		<(./render-assets.sh 2>/dev/null); echo
 	popd
 
-	pushd gtk-3.20/assets
+	pushd src
 	while read $line; do echo -n "."; done < \
-		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py); echo
+		<(./render-gtk3-assets.py 2>/dev/null; \
+		./render-gtk3-assets-hidpi.py 2>/dev/null; \
+		./render-wm-assets-hidpi.py 2>/dev/null; \
+		./render-wm-assets.py 2>/dev/null); echo
 	popd
 	msg2 "Done!"
 
