@@ -1,6 +1,6 @@
 pkgbase = python-tempest
 	pkgdesc = OpenStack Integration Testing
-	pkgver = 26.1.0
+	pkgver = 27.0.0
 	pkgrel = 1
 	url = https://docs.openstack.org/tempest/
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = python-tempest
 	depends = python-os-testr
 	depends = python-urllib3
 	depends = python-debtcollector
-	source = https://github.com/openstack/tempest/archive/26.1.0.tar.gz
-	sha512sums = ffb640feb4ea747eeed2a8ca3c43f7084c586419c6b5c8ff7a16e59dffa77e885d52798fe8ce1a9a1012e6f3d871d9b1da2e775025055dbd94f12cd59f74408a
+	source = https://github.com/openstack/tempest/archive/27.0.0.tar.gz
+	sha512sums = 38680c87db623b9c6a6d04ed9948d3468c9c5e87b5bb05ba08797447c315861e960d7d6e47cf1c459e62f031206d3a0a97832ca66417367b11297a3f3ab32acc
 
 pkgname = python-tempest
