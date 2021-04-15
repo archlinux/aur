@@ -1,5 +1,5 @@
 pkgname=opencl-headers-git
-pkgver=2020.06.16.26.gc57ba81
+pkgver=2020.12.18.16.geea2ab6
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
