@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='7f222c5ab73542648b2932ea4248141b'
-_referid='568b91dde8e94375834d7fd65f4f8046'
+_downloadid='bf8c4f6eac894d4c84cfe9ba8518d388'
+_referid='697bfa693faa49fbb785b2aedb584a8b'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -62,8 +62,8 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=17.1
-pkgrel=3
+pkgver=17.1.1
+pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
@@ -78,13 +78,13 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('7d54018c41eaefc2058f4c7db7003bdb46c2412b5b20e0382dab04f94fe81fec')
+	sha256sums=('22a1b294565d60933577c241a6c89b9d2826c4aa3da9897ca16937ee96958a4e')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('40c58d58ab40c8a7a6c9b64aa95fd9259a8d8a19cf8000c517f5f5f3f0b2d13c')
+	sha256sums=('7c1ef07b669f8d785a41fb2cfb530b2f43749424cf35b21e6df229445b2dcd7c')
 	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
@@ -119,6 +119,7 @@ package()
 	msg "Please wait, this take a while..."
 	cd "${srcdir}" || exit
 	./${_installer_binary} --appimage-extract
+	rm -rf ${_installer_binary}
 	cd squashfs-root
 	./installer -i -y -n -a -C "${pkgdir}/opt/${_pkgname}" "$PWD"
 
@@ -133,7 +134,7 @@ package()
 	install -Dm666 share/log-conf.xml "${pkgdir}/opt/${_pkgname}/configs/log-conf.xml"
 	install -Dm666 share/default_cm_config.bin "${pkgdir}/opt/${_pkgname}/DolbyVision/config.bin"
 	install -Dm644 share/DaVinciResolve.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}.desktop"
-#	install -Dm644 share/DaVinciControlPanelSetup.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-Panels.desktop"
+	install -Dm644 share/DaVinciControlPanelsSetup.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-Panels-Setup.desktop"
 	install -Dm644 share/DaVinciResolveInstaller.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-Installer.desktop"
 	install -Dm644 share/DaVinciResolveCaptureLogs.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}-CaptureLogs.desktop"
 	install -Dm644 share/blackmagicraw-player.desktop "${pkgdir}/usr/share/applications/blackmagicraw-player.desktop"
