@@ -1,16 +1,17 @@
 # Maintainer: rawkode <rawkode@pm.me>
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Maintainer: Heiko Nickerl <mail@hnicke.de>
 
 _pkgname=pulumi
 pkgname=pulumi-bin
-pkgver=2.24.1
+pkgver=2.25.0
 pkgrel=1
 pkgdesc="Modern Infrastructure as Code"
 arch=('x86_64')
 license=('Apache-2.0')
 url="https://github.com/pulumi/pulumi"
 source=("https://get.pulumi.com/releases/sdk/${_pkgname}-v${pkgver}-linux-${CARCH/x86_64/x64}.tar.gz")
-sha256sums=('b50f995b433bbc8f00f2ca3c7741d30e9e953a902443b458a58042c657046ab0')
+sha256sums=('4ee69ddee886b27db19fc8e5b045d102aa7279c2c33b8e87e36d9225a0dbcaf4')
 package() {
   cd "${srcdir}/${_pkgname}"
 
