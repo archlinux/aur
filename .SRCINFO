@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.8.3.r100.g8251c4f6
+	pkgver = 0.5.8.3.r108.g5637f25c
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -35,7 +35,6 @@ pkgbase = lutris-git
 	optdepends = gvfs: GVFS backend
 	optdepends = lib32-glibc: for 32bit games support
 	optdepends = python-evdev: for controller detection
-	optdepends = python-pypresence: Discord RPC and Rich Presence
 	optdepends = gamemode: Allows games to request a temporary set of optimisations
 	optdepends = mangohud: Display the games' FPS + other information
 	optdepends = lib32-mangohud: Display the games' FPS + other information

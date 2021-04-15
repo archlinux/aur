@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.8.3.r100.g8251c4f6
+pkgver=0.5.8.3.r108.g5637f25c
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -28,7 +28,6 @@ optdepends=(
   'gvfs: GVFS backend'
   'lib32-glibc: for 32bit games support'
   'python-evdev: for controller detection'
-  'python-pypresence: Discord RPC and Rich Presence'
   'gamemode: Allows games to request a temporary set of optimisations'
   "mangohud: Display the games' FPS + other information"
   "lib32-mangohud: Display the games' FPS + other information"
