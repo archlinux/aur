@@ -1,14 +1,13 @@
 pkgbase = startech-usb-crash-cart-adapter
 	pkgdesc = StarTech usb crash cart adapter notecons software
-	pkgver = 20150921
+	pkgver = 20181017
 	pkgrel = 1
 	url = http://www.startech.com/Server-Management/KVM-Switches/USB-Crash-Cart-Adapter~NOTECONS02
 	arch = x86_64
 	license = unknown
 	makedepends = rpmextract
-	noextract = NOTECONS02%20Software%20Pack.zip
-	source = http://sgcdn.startech.com/005329/media/sets/NOTECONS02_Drivers/NOTECONS02%20Software%20Pack.zip
-	md5sums = 2b7597b5cd6cbf83f57b647d90696cae
+	source = notescon-20181017.zip::https://sgcdn.startech.com/005329/media/sets/notecons02_drivers/notecons02%20linux%20software%20pack.zip
+	sha256sums = 54cb0387e09b10300cb617e5ab54f0a20881ba672fe2e970c19be6924cf24608
 
 pkgname = startech-usb-crash-cart-adapter
 

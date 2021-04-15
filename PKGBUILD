@@ -12,7 +12,7 @@
 # Defines
 # ---------------------------------------------------
 pkgname=startech-usb-crash-cart-adapter
-pkgver=20150921
+pkgver=20181017
 pkgrel=1
 pkgdesc='StarTech usb crash cart adapter notecons software'
 arch=('x86_64')
@@ -22,17 +22,12 @@ license=('unknown')
 # makedepends -- this package requires rpmextract to create files necessary from the RPM included in download file
 makedepends=('rpmextract')
 
-# Source file, md5sum
-source=('http://sgcdn.startech.com/005329/media/sets/NOTECONS02_Drivers/NOTECONS02%20Software%20Pack.zip')
-md5sums=('2b7597b5cd6cbf83f57b647d90696cae')
-noextract=('NOTECONS02%20Software%20Pack.zip')
+source=("notescon-${pkgver}.zip::https://sgcdn.startech.com/005329/media/sets/notecons02_drivers/notecons02%20linux%20software%20pack.zip")
+sha256sums=('54cb0387e09b10300cb617e5ab54f0a20881ba672fe2e970c19be6924cf24608')
 
 prepare() {
-  # unzip the file we just downloaded
-  unzip ../'NOTECONS02%20Software%20Pack.zip'
-
   # rpmextract can't handle spaces so we move the file to something without spaces.
-  mv "Linux RPM/Linux Install 64bit.rpm" LinuxInstall64bit.rpm
+  mv "Linux RPM/Install-64bit.rpm" LinuxInstall64bit.rpm
 }
 
 package() {
@@ -57,9 +52,6 @@ package() {
 
   # This copies the wrapper program to be extracted to usr/bin/usb-crash-cart-adapter
   install -D opt/usb-crash-cart-adapter/${pkgver}/wrapper usr/bin/usb-crash-cart-adapter
-
-  # Remove .DS_Store file that some numb-numb put inside the RPM @ startech.com
-  rm .DS_Store
 }
 
 post_install() {
