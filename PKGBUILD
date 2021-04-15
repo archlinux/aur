@@ -5,7 +5,7 @@
 
 pkgname=osu-lazer
 pkgver=2021.410.0
-pkgrel=1
+pkgrel=2
 
 dotnet_version=5.0
 
