@@ -3,7 +3,7 @@ _autofirma_dir="${HOME}/.afirma/AutoFirma"
 _autofirma_ca="${_autofirma_dir}/AutoFirma_ROOT.cer"
 _autofirma_pfx="${_autofirma_dir}/autofirma.pfx"
 _cert_days="3650"
-_cert_cn="AutoFirma ROOT LOCAL"
+_cert_cn="AutoFirma ROOT"
 _firefox_profiles_ini="${HOME}/.mozilla/firefox/profiles.ini"
 _nssdb="sql:${HOME}/.pki/nssdb"
 
@@ -15,20 +15,16 @@ default_ca=CA_autofirma
 dir=${_temp_dir}
 new_certs_dir=\$dir
 database=\$dir/index.txt
-serial=\$dir/serial.txt
+serial=\$dir/serial
+crlnumber=\$dir/crlnumber
 default_days=${_cert_days}
 default_crl_days=30
 default_md=sha256
 preserve=no
-x509_extensions=ca_extensions
+x509_extensions=usr_cert
 email_in_dn=no
 copy_extensions=copy
-[ ca_extensions ]
-subjectKeyIdentifier=hash
-authorityKeyIdentifier=keyid:always, issuer
-basicConstraints=critical, CA:true
-keyUsage=keyCertSign, cRLSign
-[ signing_policy ]
+[ policy_ca ]
 countryName=optional
 stateOrProvinceName=optional
 localityName=optional
@@ -36,75 +32,89 @@ organizationName=optional
 organizationalUnitName=optional
 commonName=supplied
 emailAddress=optional
-[ signing_req ]
-subjectKeyIdentifier=hash
-authorityKeyIdentifier=keyid,issuer
+[ req ]
+default_bits=4096
+x509_extensions=v3_ca
+distinguished_name=req_distinguished_name
+[ req_distinguished_name ]
+commonName_default=${_cert_cn}
+[ usr_cert ]
 basicConstraints=CA:FALSE
-keyUsage=digitalSignature,keyEncipherment
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer:always
+subjectAltName=IP:127.0.0.1
+[ v3_ca ]
+basicConstraints=critical,CA:TRUE
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer:always
+keyUsage=cRLSign,digitalSignature,keyCertSign,keyEncipherment,dataEncipherment
+extendedKeyUsage=serverAuth,clientAuth,anyExtendedKeyUsage
 EOF
 touch "${_temp_dir}/index.txt"
-echo "01" > "${_temp_dir}/serial.txt"
+echo "01" > "${_temp_dir}/crlnumber"
 }
 
 function trust_ca {
   # Add in shared user database
-  certutil -d "${_nssdb}" -D -n "${_cert_cn}" && \
-    certutil -d "${_nssdb}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
+  certutil -d "${_nssdb}" -D -n "${_cert_cn}" > /dev/null 2>&1
+  certutil -d "${_nssdb}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
   # Add in default firefox profile (if exists)
   if [ -r "${_firefox_profiles_ini}" ]; then
     _firefox_default_profile="$(grep Default ${_firefox_profiles_ini})"
     _firefox_default_profile_dir="${HOME}/.mozilla/firefox/${_firefox_default_profile##*=}"
-  [ -d "${_firefox_default_profile_dir}" ] && \
-    certutil -d "${_firefox_default_profile_dir}" -D -n "${_cert_cn}" && \
-    certutil -d "${_firefox_default_profile_dir}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
+    if [ -d "${_firefox_default_profile_dir}" ]; then
+      certutil -d "${_firefox_default_profile_dir}" -D -n "${_cert_cn}" > /dev/null 2>&1
+      certutil -d "${_firefox_default_profile_dir}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
+    fi
   unset _autofirma_ca _autofirma_pfx _cert_cn _nssdb \
     _firefox_profiles_ini _firefox_default_profile _firefox_default_profile_dir
 fi
 }
 
 function do_init {
-  _temp_dir="$(mktemp -d)"
   mkdir -p "${_autofirma_dir}"
+  _temp_dir="$(mktemp -d)"
+  _ca="openssl ca -config ${_temp_dir}/openssl.cnf"
+  _req="openssl req -config ${_temp_dir}/openssl.cnf"
   rm -f "${_autofirma_ca}" "${_autofirma_pfx}"
+  _make_ca_config
   openssl rand -base64 48 > "${_temp_dir}/randomkey.txt"
   # Make local CA
-  openssl genrsa -aes128 -passout file:"${_temp_dir}/randomkey.txt" -out \
-    "${_temp_dir}/autofirma.key" 2777
-  openssl req -new -passin file:"${_temp_dir}/randomkey.txt" \
-    -key "${_temp_dir}/autofirma.key" \
-    -out "${_temp_dir}/autofirma.csr" \
-    -subj "/CN=${_cert_cn}"
-  openssl x509 -req -days ${_cert_days} \
-    -in "${_temp_dir}/autofirma.csr" \
-    -signkey "${_temp_dir}/autofirma.key" \
+  ${_req} -new -passout file:"${_temp_dir}/randomkey.txt" \
+    -keyout "${_temp_dir}/autofirma.key" \
+    -subj "/CN=${_cert_cn}" \
+    -out "${_temp_dir}/autofirma.csr"
+  ${_ca} -batch -create_serial -notext -selfsign \
+    -extensions v3_ca \
+    -policy policy_ca \
+    -out "${_autofirma_ca}" \
+    -days ${_cert_days} \
     -passin file:"${_temp_dir}/randomkey.txt" \
-    -out "${_autofirma_ca}"
+    -keyfile "${_temp_dir}/autofirma.key" \
+    -infiles "${_temp_dir}/autofirma.csr"
   # Make user certificate and key
-  openssl genrsa -aes128 -passout file:"${_temp_dir}/randomkey.txt" -out \
-    "${_temp_dir}/user.key" 2777
-  openssl req -new -passin file:"${_temp_dir}/randomkey.txt" \
-    -key "${_temp_dir}/user.key" \
-    -out "${_temp_dir}/user.csr" \
-    -subj "/CN=127.0.0.1"
-  _make_ca_config
-  openssl ca -batch -config "${_temp_dir}/openssl.cnf" \
-    -policy signing_policy \
-    -extensions signing_req \
+  ${_req} -new -passout file:"${_temp_dir}/randomkey.txt" \
+    -keyout "${_temp_dir}/user.key" \
+    -subj "/CN=127.0.0.1" \
+    -out "${_temp_dir}/user.csr"
+  ${_ca} -batch -notext \
+    -extensions usr_cert \
+    -policy policy_ca \
+    -out "${_temp_dir}/user.cer" \
     -cert "${_autofirma_ca}" \
     -keyfile "${_temp_dir}/autofirma.key" \
     -passin file:"${_temp_dir}/randomkey.txt" \
-    -in "${_temp_dir}/user.csr" \
-    -out "${_temp_dir}/user.cer"
+    -infiles "${_temp_dir}/user.csr"
   # Make user pfx from certificate and key
   openssl pkcs12 -export -passin file:"${_temp_dir}/randomkey.txt" \
+    -inkey "${_temp_dir}/user.key" \
     -certfile "${_autofirma_ca}" \
     -in "${_temp_dir}/user.cer" \
-    -inkey "${_temp_dir}/user.key" \
-    -name "socketautofirmalocal" \
+    -name "socketautofirma" \
     -passout pass:654321 \
     -out "${_autofirma_pfx}"
   rm -rf ${_temp_dir}
-  unset _temp_dir
+  unset _ca _req _temp_dir
 }
 
 # If any required cert or key is missing rebuild it
