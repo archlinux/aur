@@ -1,0 +1,15 @@
+pkgbase = com.sanguozhipk.spark
+	pkgdesc = 三国志威力加强版 SanGuoZhiPK on Wine (from Spark Store)
+	pkgver = 1.0
+	pkgrel = 1
+	install = sanguozhi.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = wine
+	source = http://dcstore.spark-app.store/store/games/com.sanguozhipk.spark/com.sanguozhipk.spark_1.0spark0_i386.deb
+	md5sums = 8a54c33c766a9208db7bfc470e4ece55
+
+pkgname = com.sanguozhipk.spark
+
