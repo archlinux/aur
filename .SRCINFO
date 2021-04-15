@@ -1,0 +1,21 @@
+pkgbase = gtksourceview5
+	pkgdesc = A text widget adding syntax highlighting and more to GNOME
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gtksourceview
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	source = git+https://gitlab.gnome.org/GNOME/gtksourceview.git#tag=5.0.0
+	sha256sums = SKIP
+
+pkgname = gtksourceview5
+
