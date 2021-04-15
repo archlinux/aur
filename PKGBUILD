@@ -2,7 +2,7 @@
 
 pkgname=tuf-manager
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to control ASUS TUF laptop keyboard lighting and fan modes"
 arch=("x86_64")
 url="https://git.cromer.cl/cromer/tuf-manager"
@@ -28,4 +28,5 @@ build() {
 package() {
 	cd "${srcdir}"/build
 	DESTDIR="${pkgdir}" ninja install
+	rm "${pkgdir}"/usr/share/glib-2.0/schemas/gschemas.compiled
 }
