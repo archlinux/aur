@@ -1,5 +1,5 @@
 pkgname=agrum
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="C++ Bayesian networks library"
 license=('LGPL')
@@ -8,7 +8,7 @@ url="http://agrum.gitlab.io/"
 depends=('python-pydotplus' 'python-matplotlib' 'python-six' 'ipython' 'python-ipykernel' 'unixodbc')
 makedepends=('cmake')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
-sha256sums=('e3dc6bb897c1d9d2b134c8e54150c220f154ca43de4743178999baeaacd2c476')
+sha256sums=('94fbb0529da9ec13ca46fab3ff0bda7837391b0e46e39b1d918812e230e03216')
 
 build() {
   cd "$srcdir/aGrUM-$pkgver"
