@@ -5,7 +5,7 @@
 
 # Maintainer: Thomas Hartmann <thomas@th-ht.de>
 pkgname=htcondor
-pkgver=8.8.13
+pkgver=9.0.0
 pkgrel=1
 epoch=
 pkgdesc="Distributed workload management system"
@@ -13,7 +13,7 @@ arch=("x86_64")
 url="https://research.cs.wisc.edu/htcondor/"
 license=('apache')
 groups=()
-depends=("boost" "munge" "libxss" "curl" "gawk" "java-runtime" "libcgroup" "pcre" "sqlite" "python")
+depends=("boost" "munge" "libxss" "curl" "gawk" "java-runtime" "libcgroup" "pcre" "sqlite" "python" "boost-python2")
 makedepends=("cmake")
 checkdepends=()
 optdepends=()
@@ -26,21 +26,27 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/htcondor/htcondor/archive/V${pkgver//./_}.tar.gz")
 noextract=()
-md5sums=('45c15fe5ad8eaf4f1b892fa30d28d7b9')
+md5sums=('a05e7841e2d10591c40e6ce015b6c691')
 validpgpkeys=()
 
 build() {
 	cd "htcondor-${pkgver//./_}"
 	mkdir -p build_folder
 	cd build_folder
-	cmake -DSYSTEM_NAME=arch -DWITH_VOMS=False -DWITH_GLOBUS=False -DWITH_PYTHON_BINDINGS=False -DCMAKE_INSTALL_PREFIX=/opt/htcondor ../
+	cmake -DSYSTEM_NAME=arch -DWITH_VOMS=False -DWITH_GLOBUS=False -DWITH_PYTHON_BINDINGS=True -DCMAKE_INSTALL_PREFIX=/opt/htcondor -DWITH_SCITOKENS=False ../
 	make
+}
+
+check() {
+	cd "htcondor-${pkgver//./_}/build_folder"
+	make tests
 }
 
 package() {
 	cd "htcondor-${pkgver//./_}/build_folder"
 	make DESTDIR="$pkgdir/" install
 
-	echo "export PATH=$PATH:/opt/htcondor/bin" > $srcdir/htcondor.sh
+	echo "export PATH=\$PATH:/opt/htcondor/bin" > $srcdir/htcondor.sh
+	echo "export PYTHONPATH=\$PYTHONPATH:/opt/htcondor/lib/python" >> $srcdir/htcondor.sh
 	install -Dm644 $srcdir/htcondor.sh $pkgdir/etc/profile.d/htcondor.sh
 }
