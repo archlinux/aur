@@ -15,7 +15,7 @@ license=('MIT' 'custom:CC-BY-NC 4.0')
 url='https://osu.ppy.sh/'
 
 depends=(ffmpeg libgl sdl2 shared-mime-info "dotnet-runtime>=$dotnet_version.0")
-makedepends=(git "dotnet-sdk>=$dotnet_version.0.5.sdk202")
+makedepends=(git "dotnet-sdk>=$dotnet_version.5.sdk202")
 
 source=(
     "osu-lazer::git+https://github.com/ppy/osu.git#tag=$pkgver"
