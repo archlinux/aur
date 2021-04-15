@@ -1,6 +1,6 @@
 pkgbase = python-panflute
 	pkgdesc = A Pythonic alternative to John MacFarlane’s pandocfilters
-	pkgver = 2.0.5
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/sergiocorreia/panflute
 	install = python-panflute.install
@@ -14,8 +14,8 @@ pkgbase = python-panflute
 	depends = python-click
 	depends = python-yaml
 	replaces = pandoc-panflute
-	source = python-panflute-2.0.5.tar.gz::https://github.com/sergiocorreia/panflute/archive/2.0.5.tar.gz
-	sha256sums = 2c2487bf90c4ef9bf5261a87a5336b58f357a152d6853b18167379568e310db5
+	source = python-panflute-2.1.0.tar.gz::https://github.com/sergiocorreia/panflute/archive/2.1.0.tar.gz
+	sha256sums = f9b57046354b3372fa97446d295f843ff51b59887f619163dc0cdf164e45a606
 
 pkgname = python-panflute
 
