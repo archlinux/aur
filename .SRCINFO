@@ -1,14 +1,14 @@
 pkgbase = xmonad-recompile-hook-git
-        pkgdesc = This hook recompiles xmonad when necessary, to prevent errors after restarting
-        pkgver = 1.0
-        pkgrel = 1
-        url = https://github.com/NathanKolpa/xmonad-recompile-hook.git
-        arch = any
-        license = GPL
-        makedepends = git
-        makedepends = make
-        depends = xmonad
-        source = git+https://github.com/NathanKolpa/xmonad-recompile-hook.git
-        md5sums = SKIP
+	pkgdesc = This hook recompiles xmonad when necessary, to prevent errors after restarting
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/NathanKolpa/xmonad-recompile-hook.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = xmonad
+	source = git+https://github.com/NathanKolpa/xmonad-recompile-hook.git
+	md5sums = SKIP
 
 pkgname = xmonad-recompile-hook-git
+
