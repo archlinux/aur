@@ -1,6 +1,6 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 _npmname=btc-rpc-explorer
-_npmver=2.2.0
+_npmver=3.1.0
 pkgname=${_npmname}
 pkgver=${_npmver}
 pkgrel=1
@@ -14,7 +14,7 @@ optdepends=()
 backup=("etc/default/${pkgname}")
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz" ${pkgname}.service ${pkgname}.default )
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('f2eabe5e21d9ab7ccef4c0b1a2894ef6c3bc0911a5f704320aff02809a9db7ab'
+sha256sums=('639f655f3f2e8dd230faa8807d4903c6f7d6c0425d1d9dbe8ae0559977dd95ea'
             'f19d942b6b6789c7deeb076e70eaf140e65a18d9cfe9ceab30cf2c33120e25f3'
 	    '98a6cdcf741807d2cc98825b074a882e520563b7b6528c24d2abd090bc007d0a')
 
