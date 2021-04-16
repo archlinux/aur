@@ -1,6 +1,6 @@
 pkgbase = python-frida-tools
 	pkgdesc = CLI tools for Frida. Python 3 version from PyPi.
-	pkgver = 9.2.1
+	pkgver = 9.2.4
 	pkgrel = 1
 	url = http://www.frida.re
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = python-frida-tools
 	depends = python-frida>=12.8.12
 	depends = python-prompt_toolkit>=3.0.3
 	conflicts = python2-frida-tools
-	source = https://files.pythonhosted.org/packages/source/f/frida-tools/frida-tools-9.2.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/frida-tools/frida-tools-9.2.4.tar.gz
 	source = COPYING
-	sha256sums = fb2031a3c993251f9d47f7044386ca753e4d4a0d54303f536af113a19081943f
+	sha256sums = 083106be6dfdc0460483b3617465f83d2097a2c3e3e5b107d16e96093b570a57
 	sha256sums = 5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2
 
 pkgname = python-frida-tools
