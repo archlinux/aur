@@ -7,12 +7,12 @@
 buildarch=12
 
 pkgbase=linux-raspberrypi4-cacule-stable
-_commit=42498e202032b40765d184c1b9cb296dbe7fa614
+_commit=05ad8a29d5dadb2db0b809e6cc1ee3d8d6380f61
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4 with the cacule scheduler"
 pkgver=5.11.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi 4 Kernel with the cacule schedeuler, aarch64 and armv7"
 arch=('armv7h' 'aarch64')
 url="http://www.kernel.org/"
@@ -26,21 +26,20 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         '90-linux.hook'
         '0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
         'cacule-5.11.patch'
-        'cacule-32bit-converter.patch' #only use if building for armv7
         )
-source_armv7h=('config' 'config.txt')
+source_armv7h=('config' 'config.txt' 'cacule-32bit-converter.patch')
 source_aarch64=('config8' 'config8.txt')
-md5sums=('f60679863eb897ade6d0b70115e2073d'
+md5sums=('7d2fa3944b651baa54cc79823b09a6b3'
          '31c02f4518d46deb5f0c2ad1f8b083cd'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '441ec084c47cddc53e592fb0cbce4edf'
          'f66a7ea3feb708d398ef57e4da4815e9'
-         'b85d9c75a137a4278537386ca274da9d'
-         '02808e3fb2f6b142e0cd9f1ae50a8d46')
-md5sums_armv7h=('bd3a20eadf06cd78d4180fe9547078dd'
-                '9669d916a5929a2eedbd64477f83d99e')
-md5sums_aarch64=('7f8fa6b39f7efcaa55c873e4263eb55a'
+         'b85d9c75a137a4278537386ca274da9d')
+md5sums_armv7h=('700675c55dc17c9b56413b8736a6cad9'
+                '9669d916a5929a2eedbd64477f83d99e'
+                '02808e3fb2f6b142e0cd9f1ae50a8d46')
+md5sums_aarch64=('5f5c0d40ad2f5010270905bb65e36886'
                  '9669d916a5929a2eedbd64477f83d99e')
 
 # setup vars
@@ -63,7 +62,9 @@ prepare() {
   patch -Np1 -i ../0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
   # cacule-scheduler
   patch -Np1 -i ../cacule-5.11.patch
+  if [[ $CARCH == "armv7h" ]]; then
   patch -Np1 -i ../cacule-32bit-converter.patch #only needed if building on armv6 or armv7
+  fi
 }
 
 build() {
