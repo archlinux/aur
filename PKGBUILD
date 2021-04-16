@@ -2,7 +2,7 @@
 # template start; name=git; version=1;
 # template start; name=git-source; version=1;
 pkgname=skylobby-git
-pkgver=0.2.9.r0.g0918557
+pkgver=0.3.2.r0.g8a42ba6
 pkgdesc="A Spring RTS lobby and replay viewer written in Clojure"
 pkgrel=1
 arch=('any')
