@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=groffhl-git
-pkgver=1.0.r1.fbfa09e
+pkgver=1.0.r4.1f52438
 pkgrel=1
 epoch=
 pkgdesc="groff syntax highlighting parser"
@@ -27,7 +27,7 @@ build() {
 package() {
 	cd groffhl
     mkdir -p "$pkgdir/usr/bin"
-	make DESTDIR="$pkgdir/" PREFIX=/usr/bin install
+	make DESTDIR="$pkgdir/" PREFIX=/usr install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license.txt"
     install -Dm644 README.MD "$pkgdir/usr/share/doc/$pkgname/README.MD"
 }

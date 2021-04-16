@@ -1,6 +1,6 @@
 pkgbase = groffhl-git
 	pkgdesc = groff syntax highlighting parser
-	pkgver = 1.0.r1.fbfa09e
+	pkgver = 1.0.r4.1f52438
 	pkgrel = 1
 	url = https://github.com/randoragon/groffhl
 	arch = x86_64
