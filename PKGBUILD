@@ -7,8 +7,7 @@ pkgdesc="Webster's Revised Unabridged Dictionary (1913) for StarDict"
 arch=('any')
 url="http://download.huzheng.org/dict.org/"
 license=('GPL')
-optdepends=('stardict: view the dictionary in a GUI'
-            'sdcv: view the dictionary in a terminal')
+optdepends=('stardict: view the dictionary')
 source=(http://download.huzheng.org/dict.org/stardict-dictd-web1913-$pkgver.tar.bz2)
 sha256sums=('68f79667136b4bb6f101409d4dc7e95ac430073f36d2f822d9b265b0b841d946')
 
