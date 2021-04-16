@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-upnp-bin
 pkgver=0.99.49
-pkgrel=3
+pkgrel=4
 _buildhash='a770ee30b100186fc8e2fe243a383808'
 _fooname='foo_upnp'
 pkgdesc='A UPNP/DLNA renderer, media server and control point for foobar2000'
@@ -14,6 +14,6 @@ source=("https://foobar2000.org/getcomponent/${_buildhash}/${_fooname}.fb2k-comp
 md5sums=('adfbc003d4433292f4c1a842f5fd3680')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 }
 

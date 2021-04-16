@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-upnp-bin
 	pkgdesc = A UPNP/DLNA renderer, media server and control point for foobar2000
 	pkgver = 0.99.49
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.foobar2000.org/components/view/foo_upnp
 	arch = any
 	license = unknown
