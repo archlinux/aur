@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-stop-on-error-bin
 	pkgdesc = Stops playback after tracks fail to play
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.foobar2000.org/components/view/foo_stop_on_error
 	arch = any
 	license = unknown
