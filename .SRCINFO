@@ -1,7 +1,7 @@
 pkgbase = linux-cacule
-	pkgdesc = Linux-cacule. Branch with Cacule scheduler by Hamad Marri
+	pkgdesc = Linux-CacULE Kernel by Hamad Marri and with some other patchsets
 	pkgver = 5.11.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -42,7 +42,7 @@ pkgbase = linux-cacule
 	sha256sums = 3fe144975c1b30b983fca9e34ba58e7b4704456a340130584a1aca0feabdc22e
 
 pkgname = linux-cacule
-	pkgdesc = The Linux kernel and modules with the Cacule-Scheduler and other patchsets.
+	pkgdesc = The Linux kernel and modules with the cacule scheduler and other patchsets
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -50,6 +50,6 @@ pkgname = linux-cacule
 	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-cacule-headers
-	pkgdesc = Headers and scripts for building modules for the Linux-cacule. Branch with Cacule scheduler by Hamad Marri kernel
+	pkgdesc = Headers and scripts for building modules for the Linux-CacULE Kernel by Hamad Marri and with some other patchsets kernel
 	depends = pahole
 

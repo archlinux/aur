@@ -1,9 +1,12 @@
-# Maintainer: Peter J <admin@ptr1337.dev>
+# Maintainer: ptr1337 <admin@ptr1337.dev>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+
+
+##You will be asked at the building process for your cpu architectures, if you dont know it, just take native!
 
 
 
@@ -22,15 +25,15 @@ if [ -z ${use_tracers+x} ]; then
 fi
 
 
-if [ -z ${_fsync+x} ]; then
-  _fsync=y
+if [ -z ${fsync+x} ]; then
+  fsync=y
 fi
 
-if [ -z ${_futex2+x} ]; then
-  _futex2=y
+if [ -z ${futex2+x} ]; then
+  futex2=y
 fi
-if [ -z ${_futex2+x} ]; then
-  _winesync=y
+if [ -z ${winesync+x} ]; then
+  winesync=y
 fi
 
 
@@ -38,17 +41,15 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-cacule
-_major=5.11
-pkgver=${_major}.15
-pkgrel=2
-_branch=5.x
-pkgdesc='Linux-cacule. Branch with Cacule scheduler by Hamad Marri'
+pkgver=5.11.15
+pkgrel=3
+pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
-)
+  )
 options=('!strip')
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11"
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
@@ -86,7 +87,13 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-  cd linux-$pkgver
+
+  cd linux-${pkgver}
+
+    echo "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # Apply any patch
   local src
@@ -100,8 +107,32 @@ prepare() {
 
     # Copy the config file first
     # Copy "${srcdir}"/config to linux-${pkgver}/.config
-    msg2 "Copy "${srcdir}"/config to linux-$pkgver/.config"
-    cp "${srcdir}"/config .config
+#    msg2 "Copy "${srcdir}"/config to linux-5.11.14/.config"
+#    cp "${srcdir}"/config-5.11 .config
+      echo "Setting config..."
+      cp ../config .config
+
+      # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
+      # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
+      # partition ... this was introduced by FS#66260, see:
+      # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
+      scripts/config --disable CONFIG_DEBUG_INFO
+      scripts/config --disable CONFIG_CGROUP_BPF
+      scripts/config --disable CONFIG_BPF_LSM
+      scripts/config --disable CONFIG_BPF_PRELOAD
+      scripts/config --disable CONFIG_BPF_LIRC_MODE2
+      scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
+
+      # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
+      scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
+
+      # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
+      scripts/config --disable CONFIG_LATENCYTOP
+      scripts/config --disable CONFIG_SCHED_DEBUG
+
+      # FS#66613
+      # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
+      scripts/config --disable CONFIG_KVM_WERROR
 
     # Customize the kernel
     source "${startdir}"/cacule_config
@@ -144,7 +175,7 @@ prepare() {
       scripts/config --enable CONFIG_FUTEX2
     fi
 
-    if [ "$futex2" = "y" ]; then
+    if [ "$winesync" = "y" ]; then
       echo "Enable winesync support"
       scripts/config --module CONFIG_WINESYNC
     fi
@@ -162,17 +193,17 @@ prepare() {
 }
 
 build() {
-  cd linux-$pkgver
+  cd linux-${pkgver}
   make -j$(nproc) all
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with the Cacule-Scheduler and other patchsets."
+  pkgdesc="The Linux kernel and modules with the cacule scheduler and other patchsets"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
-  cd linux-$pkgver
+  cd linux-${pkgver}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -195,7 +226,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  cd linux-$pkgver
+  cd linux-${pkgver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
@@ -276,5 +307,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
