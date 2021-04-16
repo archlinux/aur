@@ -46,7 +46,7 @@ check() {
 
 package() {
   cd "$pkgname"
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -vDm644 -t "${pkgdir}/usr/share/pixmaps" plover/assets/plover.png
   install -vDm644 -t "${pkgdir}/usr/share/applications" linux/plover.desktop
   chmod og+rX -R "$pkgdir"
