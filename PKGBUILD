@@ -19,13 +19,13 @@
 _pkgname='tor-browser'
 pkgname='tor-browser-behind-tor'
 pkgver='10.0.15'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('tor')
-depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('libxt' 'startup-notification' 'mime-types'
 	'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
@@ -33,7 +33,8 @@ optdepends=('zenity: simple dialog boxes'
 	'gst-plugins-good: H.264 video'
 	'gst-libav: H.264 video'
 	'libpulse: PulseAudio audio driver'
-	'libnotify: Gnome dialog boxes')
+	'libnotify: Gnome dialog boxes'
+	'mozilla-common: Common Initialization Profile for Mozilla.org products')
 install="tor-browser.install"
 
 _tag_i686='linux32'
