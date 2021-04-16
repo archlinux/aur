@@ -3,7 +3,7 @@
 
 _pkgbase=ryzen_smu
 pkgname=ryzen_smu-dkms-git
-pkgver=118.0cf3ee6
+pkgver=132.7d1cd71
 pkgrel=1
 pkgdesc="A Linux kernel driver that exposes access to the SMU (System Management Unit) for certain AMD Ryzen Processors"
 arch=('x86_64')
