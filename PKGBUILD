@@ -60,7 +60,7 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm
-pkgver=5.11.14
+pkgver=5.11.15
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -77,7 +77,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.14-xanmod1-cacule"
+        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.15-xanmod1-cacule"
         choose-gcc-optimization.sh
         'sphinx-workaround.patch'
         '0002-UKSM.patch')

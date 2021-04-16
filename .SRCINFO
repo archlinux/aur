@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-cacule-uksm
 	pkgdesc = Linux Xanmod. Branch with Cacule scheduler by Hamad Marri
-	pkgver = 5.11.14
+	pkgver = 5.11.15
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-xanmod-cacule-uksm
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.sign
-	source = https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.14-xanmod1-cacule
+	source = https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.15-xanmod1-cacule
 	source = choose-gcc-optimization.sh
 	source = sphinx-workaround.patch
 	source = 0002-UKSM.patch
