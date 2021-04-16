@@ -2,7 +2,7 @@
 
 _pkgname=lv2lint
 pkgname="${_pkgname}-git"
-pkgver=0.1.295.r148.c118181
+pkgver=0.13.1.r244.29dc320
 pkgrel=1
 pkgdesc="Check whether a given LV2 plugin is up to the specification"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  meson --prefix /usr -Donline-tests=true -Delf-tests=true build
+  meson --prefix /usr -Donline-tests=enabled -Delf-tests=enabled build
   ninja -v -C build reconfigure
   ninja -v -C build
 }
