@@ -3,7 +3,7 @@
 
 _pkgname=mod-cv-plugins
 pkgname="${_pkgname}-git"
-pkgver=r212.c2d547e
+pkgver=r214.0ac8ecd
 pkgrel=1
 pkgdesc="CV (audio-rate control) LV2 plugins from MOD Devices (git version)"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ prepare() {
   git submodule set-url source/mod-logic-operators/dpf "${srcdir}/dpf"
   git submodule update
 
-  patch -p1 -N -r - -i "${srcdir}"/logic-operators-no-programs.diff
+  patch -p1 -N -r - -i "${srcdir}"/logic-operators-no-programs.diff | :
 }
 
 build() {
