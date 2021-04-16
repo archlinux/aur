@@ -1,7 +1,7 @@
 pkgbase = bitwise
 	pkgdesc = Terminal based bitwise calculator in curses
-	pkgver = v0.42
-	pkgrel = 1
+	pkgver = 0.42
+	pkgrel = 2
 	url = https://github.com/mellowcandle/bitwise
 	arch = any
 	license = GPL3
