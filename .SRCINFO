@@ -1,0 +1,32 @@
+pkgbase = terrafs-git
+	pkgdesc = A fuse base file system for FlightGear scenery.
+	pkgver = r3.20180714.fd20891
+	pkgrel = 1
+	epoch = 0
+	url = https://sourceforge.net/p/flightgear/terrafs/ci/master/tree/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = curl
+	depends = fuse
+	optdepends = flightgear: To make use of the scenery in flight simulator.
+	provides = terrafs=r3.20180714.fd20891
+	provides = terrafs-fuse=r3.20180714.fd20891
+	provides = terrafs-fuse-git=r3.20180714.fd20891
+	provides = flightgear-terrafs=r3.20180714.fd20891
+	provides = flightgear-terrafs-fuse=r3.20180714.fd20891
+	provides = flightgear-terrafs-git=r3.20180714.fd20891
+	provides = flightgear-terrafs-fuse-git=r3.20180714.fd20891
+	conflicts = terrafs
+	conflicts = terrafs-fuse
+	conflicts = terrafs-fuse-git
+	conflicts = flightgear-terrafs
+	conflicts = flightgear-terrafs-fuse
+	conflicts = flightgear-terrafs-git
+	conflicts = flightgear-terrafs-fuse-git
+	source = flightgear-terrafs::git+https://git.code.sf.net/p/flightgear/terrafs
+	sha256sums = SKIP
+
+pkgname = terrafs-git
+
