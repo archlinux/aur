@@ -1,0 +1,15 @@
+pkgbase = gpbkdf2-bin
+	pkgdesc = PBKDF2 key encoder for use in shell. Single, tiny binary. Written in Go
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/riotkit-org/gpbkdf2
+	arch = x86_64
+	arch = armv7h
+	license = LGPL3
+	source_x86_64 = gpbkdf2::https://github.com/riotkit-org/gpbkdf2/releases/download/v1.0/gpbkdf2
+	sha256sums_x86_64 = 97f8acfbbf3ab465df4faf3c752602aa5e91f1ae0040032bf9ab106dbc88398d
+	source_armv7h = gpbkdf2_armv7::https://github.com/riotkit-org/gpbkdf2/releases/download/v1.0/gpbkdf2_armv7
+	sha256sums_armv7h = 81815cffc72e5c3756c1679d986aff5f2c4f1eea8170787b89759ed5b6e5e56e
+
+pkgname = gpbkdf2-bin
+
