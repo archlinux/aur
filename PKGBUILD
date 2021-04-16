@@ -13,14 +13,13 @@ makedepends=("tar")
 conflicts=("iicalc")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('0304d4015dfc0459a30341b90724aec6b737d4c6005802acaba91aa6b8462800b213e695a8be36a3c01f1205af8e6bceb812f6b71c023b702d225f72bd001995')
+source=("iicalc.tar.xz::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.tar.xz?job=buildpkg")
+sha512sums=('7a8de7c891a2f97ce555450c463da860239a32058115f9357367577b54892ea71fd5e8b0d0561e1e70eebbfc6ff19c2dc7f42382fa6ade86111a366b460f064c')
 
 package(){
 
 	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-	rm debian-binary control.tar.xz data.tar.xz
-	sed -i -E 's/debian/aur/' ${pkgdir}/usr/share/iicalc/config.ini
+	sed -i -E 's/debian/aur/' ${srcdir}/usr/share/iicalc/config.ini
 
+	cp -r "${srcdir}/usr" "${pkgdir}/usr"
 }
