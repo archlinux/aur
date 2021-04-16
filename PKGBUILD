@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=overseerr-git
-pkgver=r516.2bfe0f2
+pkgver=r1013.190cbd65
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
@@ -37,6 +37,10 @@ build()
     export COMMIT_TAG=${pkgver}
     echo "{\"commitTag\": \"${COMMIT_TAG}\"}" > committag.json
 
+    mkdir -p .next "${srcdir}/.overseer_git_cache"
+    rm -rf .next/cache # in case previous builds have it as real folder
+    ln -s "${srcdir}/.overseer_git_cache" .next/cache
+
     yarn --frozen-lockfile
     yarn build
     yarn install --production --ignore-scripts --prefer-offline
@@ -48,10 +52,11 @@ package()
     install -m0755 -d "${pkgdir}/usr/lib/overseerr"
     cp -dr --no-preserve='ownership' "${srcdir}/overseerr/." "${pkgdir}/usr/lib/overseerr"
 
-    find "${pkgdir}/usr/lib/overseerr/.next" -type f -print0 | xargs -0 sed -i "s^${srcdir}/overseerr/^/usr/lib/overseerr/^g"
+    find "${pkgdir}/usr/lib/overseerr/.next" -type f -print0 | xargs -0 sed -i "s^${srcdir}/overseerr/^/usr/lib/overseerr^g"
 
     rm -rf "${pkgdir}/usr/lib/overseerr/.git"
     rm -rf "${pkgdir}/usr/lib/overseerr/config"
+    rm -rf "${pkgdir}/usr/lib/overseerr/.next/cache"
     ln -s "/var/lib/overseerr" "${pkgdir}/usr/lib/overseerr/config"
 
     install -Dm0644 "${srcdir}/overseerr.conf.d"   "${pkgdir}/etc/conf.d/overseerr"
