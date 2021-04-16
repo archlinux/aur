@@ -1,7 +1,8 @@
 pkgbase = com.officebox.spark
 	pkgdesc = Officebox client on Deepin Wine5. 万彩办公大师，办公必备的小工具百宝箱
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = http://www.wofficebox.com/
 	install = com.officebox.spark.install
 	arch = i686
 	arch = x86_64
