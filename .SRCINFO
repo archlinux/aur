@@ -1,0 +1,26 @@
+pkgbase = uget-git
+	pkgdesc = Lightweight yet powerful download manager
+	pkgver = r627.g6ee0ed2
+	pkgrel = 1
+	url = https://ugetdm.com
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = bash
+	makedepends = intltool
+	depends = glibc
+	depends = curl
+	depends = gstreamer
+	depends = gtk3
+	depends = libnotify
+	optdepends = aria2: alternative backend
+	provides = uget
+	conflicts = uget
+	source = git+https://git.code.sf.net/p/urlget/uget2
+	source = uget-gtk.appdata.xml::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/uget/trunk/uget-gtk.appdata.xml
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = uget-git
+
