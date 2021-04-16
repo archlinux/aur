@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 pkgver=90.0.4430.72
-pkgrel=1
+pkgrel=2
 _pkgname=chromium
 _launcher_ver=7
 _gcc_patchset=6
