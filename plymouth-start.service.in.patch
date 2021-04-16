@@ -1,4 +1,4 @@
---- plymouth.src/systemd-units/Downloads/plymouth-start.service.in
+--- plymouth.src/systemd-units/plymouth-start.service.in
 +++ plymouth.patch/systemd-units/plymouth-start.service.in
 @@ -12,3 +12,6 @@
  RemainAfterExit=yes 
