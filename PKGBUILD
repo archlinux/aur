@@ -4,7 +4,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.10
-_minor=29
+_minor=30
 _clr=1032
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=34510
+_clear_version=34520
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=2875c63165841c8a3cc32a2fe55f9488a2a501399b6668988dba9c23fe48af72
-_config_hash_clear_version=34510
+_config_hash=112d74d9a2d34e0c732f2b5abdae808d72552e6c8d496cf639ec96085d880c10
+_config_hash_clear_version=34520
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('f10c6fe62385f47b748e3424fa5a792890535da531fadc0362fff695cf86b98db9d170e464ae3f8ff0c0504b784f9c77ef967ea5ca971172bcf0cb1cff6a51b4'
-        '02495553ccb7b8044408688fa0dd9cddb5823ccf4fba5122f88881b75f3fa8e680675d214b865a2dbc8c4e2f0d471ed1bb25cfcc35db419f87102ca2d87e7b26'
-        '849e7cfa79187de8ea40bd61a5096bbf6afe81fefd0b87f17cbf4cb95c6a2dc4e07c6f876b2f6e6c2feba7a7717fec9081076e166dd74bd78d2bebdbad91985c')
+b2sums=('a349baf75468d50ebcacb8c879d4c9404ade60fb62672bc4b97dc8eb5ccbc924c31e698b580d570a8cd81e300e2fdcc1e0c24ee52c37070f1b0e6dba9a61c7a6'
+        '4359d40877bf53473f44692557c4bfa21f66c236c43a29bff10286982675883a0d72be4c7e81cbb9d4312e282ad553ed558d0df1283ba7575bc82d1bcdde0e5f'
+        'a9d89f8228a4332bffe78c07301ab6464fbdb0fd79d1458188438964630ea49c733eb31d143b08f9fb8fefc53d46c0c1060de217e49429d43d4d478dd30272a9')
