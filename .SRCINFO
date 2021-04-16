@@ -1,14 +1,14 @@
 pkgbase = python-aioimaplib
 	pkgdesc = Python asyncio IMAP4rev1 client library
-	pkgver = 0.7.15
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/bamthomas/aioimaplib
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = aioimaplib-0.7.15.tar.gz::https://github.com/bamthomas/aioimaplib/archive/0.7.15.tar.gz
-	sha256sums = 1f7cf0af7884fe7168a7c6a690920eb3c155b473cc658468c7a79d3ca120b10f
+	source = aioimaplib-0.8.0.tar.gz::https://github.com/bamthomas/aioimaplib/archive/0.8.0.tar.gz
+	sha256sums = 350f53e0cb7fd2276cb0480cb8332ca19a3615c761c07a1395c7c0aa580bfe30
 
 pkgname = python-aioimaplib
 
