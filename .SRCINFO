@@ -1,6 +1,6 @@
 pkgbase = weylus
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/H-M-H/Weylus
 	arch = x86_64
@@ -22,9 +22,11 @@ pkgbase = weylus
 	depends = libdrm
 	depends = libva
 	depends = ffmpeg
+	depends = dbus
+	depends = gst-plugins-base-libs
 	conflicts = weylus-bin
-	source = weylus-0.10.0.zip::https://github.com/H-M-H/Weylus/archive/v0.10.0.zip
-	sha256sums = ee207946fb25df4317276c4b5e0da881142b082471afb67a255c64572c314ae9
+	source = weylus-0.11.0.zip::https://github.com/H-M-H/Weylus/archive/v0.11.0.zip
+	sha256sums = 8f015e86233549d735457b65c568a71194fecdef7348e916a7b37b5fa919ce17
 
 pkgname = weylus
 
