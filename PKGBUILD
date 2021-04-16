@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-vst-bin
 pkgver=0.9.0.3
-pkgrel=3
+pkgrel=4
 _fooname='foo_vst'
 pkgdesc='A VST component for foobar2000'
 arch=('any')
@@ -13,6 +13,6 @@ source=('https://hydrogenaud.io/index.php?action=dlattach;topic=84947.0;attach=6
 md5sums=('75adfc67b3c9d992fcf07916153e5b97')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 }
 

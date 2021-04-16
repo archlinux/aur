@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-vst-bin
 	pkgdesc = A VST component for foobar2000
 	pkgver = 0.9.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://hydrogenaud.io/index.php/topic,84947.0.html
 	arch = any
 	license = unknown
