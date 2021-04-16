@@ -2,7 +2,7 @@
 
 _lang=en
 pkgname=ting-${_lang}
-pkgver=9.3.2
+pkgver=9.3.6
 pkgrel=1
 _llang=English
 pkgdesc="Daily ${_llang} Listening software from eusoft"
@@ -11,7 +11,7 @@ url="https://www.eudic.net/v4/${_lang}/app/ting"
 license=('unknown')
 depends=('electron7')
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_${_lang}/ting_${_lang}.deb")
-sha512sums=('b620d47deffabd2c648d8b5730cc786efc20a95894138f2695c84c227e073ab9c6516bbf7a299558a32380d5097490c0260c77e94a154be4c36bdb84342b3a1e')
+sha512sums=('6fd96b1f1be84918db1db87d1e35ff3c4b74e9beba5b1273f45f1930000afc00b56d482ac2b94b48f8e224549d690ce0623be05d955d0da4ad6f83f811e32ee5')
 
 prepare() {
     cd $srcdir
