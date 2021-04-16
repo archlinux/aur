@@ -1,11 +1,12 @@
 pkgbase = anydesk-rpi
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support (for Raspberry Pi)
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://anydesk.de
 	arch = armv7h
 	license = custom:Freeware
 	depends = fakeroot
+	depends = minizip
 	depends = python-shiboken2
 	depends = gtkglext
 	depends = libglvnd
@@ -18,15 +19,18 @@ pkgbase = anydesk-rpi
 	depends = cairo
 	depends = pango
 	depends = libxi
+	depends = libxrender
 	depends = libxrandr
 	depends = libxtst
 	depends = libxext
 	depends = libxfixes
 	depends = libxdamage
 	depends = gcc-libs
-	optdepends = libpulse
-	source = https://download.anydesk.com/rpi/anydesk_6.1.0-1_armhf.deb
-	sha256sums = dc9a18416cab06aefdbc508544e97aad645d36117b786908f6af46e13a23de3f
+	depends = lsb-release
+	depends = gnome-themes-extra
+	optdepends = libpulse: audio support
+	source = https://download.anydesk.com/rpi/anydesk_6.1.1-1_armhf.deb
+	sha256sums = f3f1e4a537846a36e81b7982dd6e421e66d1fde22ca376ad068586ae8b59732d
 
 pkgname = anydesk-rpi
 
