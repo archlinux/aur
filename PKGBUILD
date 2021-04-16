@@ -11,7 +11,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('gtk2-perl' 'transcode' 'mjpegtools' 'cdrkit' 'dvd+rw-tools' 'dvdauthor')
 makedepends=('imagemagick')
-source=(http://downloads.sourceforge.net/sourceforge/dvdshrink/dvdshrink-2.6.1-10mdk.tar.gz $pkgname.desktop fixes.diff)
+source=(https://downloads.sourceforge.net/sourceforge/dvdshrink/dvdshrink-2.6.1-10mdk.tar.gz $pkgname.desktop fixes.diff)
 
 package() {
   # Fixes a few bugs
