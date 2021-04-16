@@ -1,0 +1,14 @@
+pkgbase = stardict-web1913
+	pkgdesc = Webster's Revised Unabridged Dictionary (1913)
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://download.huzheng.org/dict.org/
+	arch = any
+	license = GPL
+	optdepends = stardict: view the dictionary in a GUI
+	optdepends = sdcv: view the dictionary in a terminal
+	source = http://download.huzheng.org/dict.org/stardict-dictd-web1913-2.4.2.tar.bz2
+	sha256sums = 68f79667136b4bb6f101409d4dc7e95ac430073f36d2f822d9b265b0b841d946
+
+pkgname = stardict-web1913
+
