@@ -27,6 +27,8 @@ depends=(
     'xcb-util-image'
     'xcb-util-wm'
     'xcb-util-renderutil'
+    'seatd'
+    'systemd'
 #    'xorg-xwayland'
 )
 makedepends=(
