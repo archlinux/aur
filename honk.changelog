@@ -1,5 +1,21 @@
 changelog
 
+=== 0.9.6 Virile Vigorous and Potent
+
++ A bug, a fix, a bug fix, a fix bug.
+
++ Fix Update processing.
+
++ Better cookie rotation with weekly refresh.
+
++ A new follow button in a surprise location.
+
++ Fix mastodon import.
+
++ Filters work better with hashtags.
+
++ Fix hoot to work with Twitter's latest crap.
+
 === 0.9.5 Emergency Ejection
 
 + Fix honk init user creation.
