@@ -39,6 +39,7 @@ package() {
   install -Dm755 dman -t "${pkgdir}/usr/bin"
   install -Dm755 dmconf -t "${pkgdir}/usr/bin"
   install -Dm755 dmkill -t "${pkgdir}/usr/bin"
+  install -Dm755 dmlogout -t "${pkgdir}/usr/bin"
   install -Dm755 dmqute -t "${pkgdir}/usr/bin"
   install -Dm755 dmred -t "${pkgdir}/usr/bin"
   install -Dm755 dmscrot -t "${pkgdir}/usr/bin"
