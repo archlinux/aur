@@ -3,12 +3,13 @@
 _pkgname=requests-hawk
 pkgname=python-requests-hawk
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Hawk authentication strategy for the requests python library'
 arch=('any')
 url='https://github.com/mozilla-services/requests-hawk'
 license=('Apache')
 depends=('python-mohawk' 'python-requests')
+makedepends=('python-setuptools')
 source=("https://github.com/mozilla-services/$_pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('ed12a67ee0a6b1d8b6c878d99a8c5819f359acb3a69fd8b69dc95ea6106b935f')
 
