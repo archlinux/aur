@@ -1,7 +1,7 @@
 # Maintainer: lmartinez-mirror
 # Contributor: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
 pkgname=vim-fzf-git
-pkgver=r431.1ef72b1
+pkgver=r433.ee91c93
 pkgrel=2
 pkgdesc='Vim plugin that integrates fzf, the fuzzy file finder'
 arch=('any')
@@ -15,6 +15,8 @@ optdepends=('bat: syntax-highlighted preview support'
             'ripgrep: Rg command support'
             'the_silver_searcher: Ag command support')
 makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+$url" 'LICENSE')
 sha256sums=('SKIP'
             '595e5c7670f76137827109954edd66d57ff85ce6f79a7548ea5dd588a4e22f7f')
