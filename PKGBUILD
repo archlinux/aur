@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxp-git
-pkgver=v0.6.8.r0.gf0805e3
+pkgver=v0.6.9.r0.gba271df
 pkgrel=1
 pkgdesc="Generic C-API for common patterns"
 arch=('any')
