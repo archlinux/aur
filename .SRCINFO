@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-musical-spectrum-bin
 	pkgdesc = A spectrum analyser visulisation component for foobar2000
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.hydrogenaud.io/index.php?title=Foobar2000:Components/Musical_Spectrum_(foo_musical_spectrum)
 	arch = any
 	license = unknown
