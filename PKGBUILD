@@ -2,13 +2,13 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.7.1.r68.g21ab0dd37274f4e2
+pkgver=3.7.1.r76.gdb14ce1eeb362392
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
-depends=("libxcomposite" "libxtst" "libxres" "sdl2" "wlroots-git" "libliftoff-git")
+depends=("libxcomposite" "libxtst" "libxres" "sdl2" "wlroots=0.13.0" "libliftoff-git")
 makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
