@@ -2,7 +2,7 @@
 
 _lang=de
 pkgname=ting-${_lang}
-pkgver=9.3.2
+pkgver=9.3.6
 pkgrel=2
 _llang=German
 pkgdesc="Daily ${_llang} Listening software from eusoft"
@@ -11,7 +11,7 @@ url="https://www.eudic.net/v4/${_lang}/app/ting"
 license=('unknown')
 depends=('electron7')
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_${_lang}/ting_${_lang}.deb")
-sha512sums=('75d16d4dd70961fd1882885261aeaf82110cabe7e465e4d2eee8a03f1abf44840e818c974a7d435e396b020e6be8c63dfe24ed63648b3098b77f24700e8c3110')
+sha512sums=('f09674efa9f29c4f8c3cee6f1a43b3037809e53f93f11cb5ff37abb853f1812908d98118480902e1e2a103babf1199050975185e1058ba90b4090ed101831625')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
