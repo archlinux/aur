@@ -1,6 +1,6 @@
 pkgbase = plover-git
 	pkgdesc = Free and open source real-time stenography engine.
-	pkgver = 4.0.0.dev8.340.g4556cf7
+	pkgver = 4.0.0.dev8+434.g60779ea
 	pkgrel = 1
 	url = http://www.openstenoproject.org/plover/
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = plover-git
 	makedepends = git
 	makedepends = python-babel
 	makedepends = python-pytest
-	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-appdirs
 	depends = python-dbus
