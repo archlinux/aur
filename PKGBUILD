@@ -42,7 +42,7 @@ fi
 
 pkgbase=linux-cacule-rdb
 pkgver=5.11.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
