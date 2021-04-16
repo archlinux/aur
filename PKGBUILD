@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-jesus-bin
 pkgver=10
-pkgrel=3
+pkgrel=4
 _buildhash='7b548bfc4637d042f7ef591b393df0ec'
 _fooname='foo_jesus'
 pkgdesc='A backup/restore component for foobar2000'
@@ -14,6 +14,6 @@ source=("https://foobar2000.org/getcomponent/${_buildhash}/${_fooname}-v${pkgver
 md5sums=('a547dfc2dbe23c30d020f66d2b40b1e7')
 
 package() {
-	install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 }
 

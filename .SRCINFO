@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-jesus-bin
 	pkgdesc = A backup/restore component for foobar2000
 	pkgver = 10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.foobar2000.org/components/view/foo_jesus
 	arch = any
 	license = unknown
