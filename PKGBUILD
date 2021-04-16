@@ -1,11 +1,11 @@
 # Maintainer: 9r0k <tanyawei1991@gmail.com>
 pkgname=com.officebox.spark
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Officebox client on Deepin Wine5. 万彩办公大师，办公必备的小工具百宝箱"
 arch=('i686' 'x86_64')
-url=""
+url="http://www.wofficebox.com/"
 license=('unknown')
 groups=()
 depends=('deepin-wine5' 'deepin-wine5-i386' 'deepin-wine5')
