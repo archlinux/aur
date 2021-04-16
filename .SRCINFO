@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-dsp-effect-bin
 	pkgdesc = A DSP effect component for foobar2000
 	pkgver = 0.47
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.foobar2000.org/components/view/foo_dsp_effect
 	arch = any
 	license = unknown
