@@ -8,16 +8,11 @@ pkgdesc="A community-driven collection of custom apps and extensions for spiceti
 arch=('any')
 url="https://github.com/3raxton/spicetify-custom-apps-and-extensions"
 license=('MIT')
-groups=()
 depends=('spicetify-cli')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
 source=("$pkgname"::"git+https://github.com/3raxton/spicetify-custom-apps-and-extensions")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,9 +23,9 @@ pkgver() {
     )
 }
 
+# Contrary to the name of the repo (and hence this package),
+# It's just a collection of extensions, for now.
 package() {
-    mkdir -p "${pkgdir}"/usr/share/spicetify-cli/Extensions
-
-    cp -R "$srcdir/${pkgname}" "${pkgdir}"/usr/share/spicetify-cli/CustomApps
-    rm -r "${pkgdir}"/usr/share/spicetify-cli/CustomApps/{AUTHORS.md,README.md,CONTRIBUTING.md,LICENSE,CODE_OF_CONDUCT.md}
+    cd "$pkgname"
+    install -Dm 644 ./*/*.js -t "${pkgdir}/usr/share/spicetify-cli/Extensions"
 }
