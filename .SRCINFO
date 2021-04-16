@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-beefweb-bin
 	pkgdesc = A web interface/REST API component for foobar2000
 	pkgver = 0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.foobar2000.org/components/view/foo_beefweb
 	arch = any
 	license = unknown

@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-beefweb-bin
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 _buildhash='849ecad6f1cc40b981193b69fae1c6e4'
 _fooname='foo_beefweb'
 pkgdesc='A web interface/REST API component for foobar2000'
@@ -14,11 +14,11 @@ source=("https://foobar2000.org/getcomponent/${_buildhash}/${_fooname}-${pkgver}
 md5sums=('c72375b77f4dc44a6505eaf3386dc204')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/index.html"
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/bundle.js"
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/bundle.css"
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/sprite.svg"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/index.html"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/bundle.js"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/bundle.css"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}/beefweb.root" "$srcdir/beefweb.root/sprite.svg"
 }
 
