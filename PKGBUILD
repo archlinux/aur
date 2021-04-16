@@ -6,7 +6,7 @@ pkgdesc="A simple and lightweight COBOL IDE based on the GnuCOBOL compiler."
 arch=("any")
 url="https://github.com/OpenCobolIDE/OpenCobolIDE"
 license=("GPL")
-depends=("python" "python-pyqt5" "gnu-cobol")
+depends=("python" "python-pyqt5" "gnucobol")
 makedepends=("python-setuptools")
 source=("https://github.com/OpenCobolIDE/OpenCobolIDE/archive/${pkgver}.tar.gz"
 	"arch-compatibility.patch")
