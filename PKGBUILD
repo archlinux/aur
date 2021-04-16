@@ -2,7 +2,7 @@
 
 pkgname=eam-git
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Epic Asset Manager used to manage assets from Epic Games Store'
 url='https://github.com/AchetaGames/Epic-Asset-Manager'
 license=(MIT)
@@ -30,6 +30,7 @@ check() {
 }
 
 package() {
+    rm "../v${pkgver}.tar.gz"
     install -Dm644 "eam.desktop" "$pkgdir/usr/share/applications/eam.desktop"
     cd Epic-Asset-Manager-$pkgver
     install -TDm 755 target/release/epic_asset_manager "${pkgdir}/usr/bin/eam"
