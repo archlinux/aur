@@ -1,7 +1,7 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=r4737.842d4d9a2
+pkgver=r5113.85a6b9941
 pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
@@ -81,7 +81,7 @@ build() {
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
 	      -DBUILD_TESTING=Off \
 	      -DCMAKE_CXX_FLAGS="-Wno-error=stringop-overflow" \
-	      -RTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" \
+	      -DRTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" \
 	      -DRTTR_LIBDIR="lib/s25rttr" -DRTTR_EXTRA_BINDIR="bin" \
 	      -DRTTR_USE_SYSTEM_SAMPLERATE=On \
 	      -DLUA_INCLUDE_DIR=/usr/include/lua5.3/ ..

@@ -1,3 +1,7 @@
+2021-04-16 Pierre Choffet <peuc@wanadoo.fr>
+	*r5113.85a6b9941-1 :
+	Fix build error
+
 2020-12-02 Pierre Choffet <peuc@wanadoo.fr>
 	* r4737.842d4d9a2-1 :
 	Add missing dependency
