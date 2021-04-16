@@ -12,8 +12,7 @@ license=('BSD')
 depends=(ananicy openrc bash schedtool)
 makedepends=(git make)
 source=(ananicy.initd)
-b2sums=('SKIP'
-        'SKIP')
+b2sums=('SKIP')
 install=$pkgname.install
 
 package() {

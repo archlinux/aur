@@ -14,7 +14,6 @@ pkgbase = ananicy-openrc
 	depends = schedtool
 	source = ananicy.initd
 	b2sums = SKIP
-	b2sums = SKIP
 
 pkgname = ananicy-openrc
 	install = ananicy-openrc.install
