@@ -11,12 +11,12 @@ makedepends=(
 	"git"
 	"meson"
 	"ninja"
-#	"scdoc"
+	"scdoc"
 	"wayland-protocols"
 )
 depends=(
 	"cairo"
-#	"gdk-pixbuf2"
+	"gdk-pixbuf2"
 	"json-c"
 	"pango"
 	"pcre"
@@ -58,7 +58,7 @@ build() {
 		-Dwerror=false \
 		-Dtray=enable \
 		-Dgdk-pixbuf=enable \
-		-Dman-pages=disabled \
+		-Dman-pages=enable \
 		--prefix /usr \
 		"$srcdir/build"
 	ninja $NINJAFLAGS -C "$srcdir/build"
