@@ -1,15 +1,16 @@
 # Maintainer: Guillaume Dolle  <dev at gdolle.com>
 pkgname=micromamba
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ tiny version of mamba, the fast conda package installer"
 arch=('i686' 'x86_64')
 url="https://github.com/gulrak/filesystem"
 license=('MIT')
-depends=('libarchive' 'cmake' 'curl' 'libsolv' 'cli11' 'pybind11' 'nlohmann-json' 'python-pip' 'yaml-cpp' 'reproc' 'cpp-ghc-filesystem')
+depends=('libarchive' 'cmake' 'curl' 'libsolv' 'cli11' 'pybind11' 'nlohmann-json' 'python-pip' 'yaml-cpp' 'reproc' 'cpp-ghc-filesystem' 'gtest')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/${pkgver}.tar.gz)
 md5sums=('bef2441b78595abcbb296d6785e5ce01')
 _pkgname2=${pkgname/micro/}
+conflict=('micromamba-bin')
 
 prepare(){
   cd ${_pkgname2}-${pkgver}
