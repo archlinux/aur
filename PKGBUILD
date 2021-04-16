@@ -21,7 +21,6 @@ makedepends=(
   'git'
   'python-babel'
   'python-pytest'
-  'python-setuptools-scm'
 )
 provides=('plover')
 conflicts=('plover')
