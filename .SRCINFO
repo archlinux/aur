@@ -1,16 +1,16 @@
 pkgbase = gnome-search-providers-jetbrains
 	pkgdesc = Add Jetbrains IDE projects to Gnome Search
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/lunaryorn/gnome-search-providers-jetbrains
 	arch = x86_64
 	license = Apache
 	makedepends = rust
 	depends = gnome-shell
-	source = gnome-search-providers-jetbrains-1.1.0.tar.gz::https://github.com/lunaryorn/gnome-search-providers-jetbrains/archive/v1.1.0.tar.gz
-	md5sums = 8f62b523a35ac54eb5b7409d479f0cf5
-	sha1sums = bbad2bddc5d35d9d46ddac664a62a7f928a12258
-	sha512sums = 8c2a15ad2105bc13db3b31c8a1903707225b92eb8e69968d4ac53cddf1f510a2d8b4ad954e8c6ea9d8fab84c80016b2ea5aac0142f4324529a11c6192f9c1419
+	source = gnome-search-providers-jetbrains-1.2.0.tar.gz::https://github.com/lunaryorn/gnome-search-providers-jetbrains/archive/v1.2.0.tar.gz
+	md5sums = d13d76aacb3bf784372d4d6662111aff
+	sha1sums = 650268c21c3b5d6ad83c434f51c4fdf84fab5c64
+	sha512sums = df08cbe8fb72355e9f1108185684fbf85df68156801d7e25fdde83e288a14e8ddc9f2827e737468306569e263ccd47af084ed2c7780951b2c154bf671408b868
 
 pkgname = gnome-search-providers-jetbrains
 
