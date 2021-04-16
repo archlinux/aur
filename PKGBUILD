@@ -13,35 +13,21 @@
 # ---------------------------------------------------
 pkgname=startech-usb-crash-cart-adapter
 pkgver=20181017
-pkgrel=1
+pkgrel=2
 pkgdesc='StarTech usb crash cart adapter notecons software'
 arch=('x86_64')
 url='http://www.startech.com/Server-Management/KVM-Switches/USB-Crash-Cart-Adapter~NOTECONS02'
 license=('unknown')
 
-# makedepends -- this package requires rpmextract to create files necessary from the RPM included in download file
-makedepends=('rpmextract')
-
 source=("notescon-${pkgver}.zip::https://sgcdn.startech.com/005329/media/sets/notecons02_drivers/notecons02%20linux%20software%20pack.zip")
 sha256sums=('54cb0387e09b10300cb617e5ab54f0a20881ba672fe2e970c19be6924cf24608')
-
-prepare() {
-  # rpmextract can't handle spaces so we move the file to something without spaces.
-  mv "Linux RPM/Install-64bit.rpm" LinuxInstall64bit.rpm
-}
 
 package() {
   # Change directory into pkg where we'll do our business
   cd $pkgdir
 
   # Extract the files inside the rpm we moved into place during the prepare phase
-  rpmextract.sh "${srcdir}/LinuxInstall64bit.rpm"
-
-  # Copy /usr/lib/libz.so to opt/usb-crash-cart-adapter/${pkgver}/guts/libz.so.1.2.3.3
-  install /usr/lib/libz.so opt/usb-crash-cart-adapter/${pkgver}/guts/libz.so.1.2.3.3
-
-  # Copy /usr/lib/libz.so to opt/usb-crash-cart-adapter/${pkgver}/guts/libz.so.1
-  install /usr/lib/libz.so opt/usb-crash-cart-adapter/${pkgver}/guts/libz.so.1  
+  bsdtar -xf "${srcdir}/Linux RPM/Install-64bit.rpm"
 
   # Install files that match the following pattern into usr/lib/udev/rules.d
   install -D -t usr/lib/udev/rules.d opt/usb-crash-cart-adapter/${pkgver}/12-dcc*-install.rules
