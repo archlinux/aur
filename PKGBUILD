@@ -1,7 +1,7 @@
 # Maintainer: Mohd Lee <faulty.lee+aur@gmail.com>
 # Contributor: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Microsoft Azure Storage Explorer is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
@@ -10,9 +10,9 @@ license=('unknown')
 depends=('glibc' 'gnome-keyring' 'libgnome-keyring' 'dotnet-runtime-2.1')
 provides=('storageexplorer')
 changelog=
-source=("Linux.StorageExplorer-linux-x64-v$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v$pkgver/Linux_StorageExplorer-x64.tar.gz"
+source=("Linux.StorageExplorer-linux-x64-v$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v$pkgver/Linux_StorageExplorer-linux-x64.tar.gz"
         "storageexplorer.desktop")
-sha256sums=('a5da0affaa3ce1d214ee13d410bde1b8e63a81dd853f7e614f85a09abf138e83'
+sha256sums=('6350663a31b851e81f6ccef99860cd0e57db36e6b1330f370b5280bfe655b2a2'
             '0cc2d608894c17d8b3e76f7dd98d73314447d4435a7378d944d4c6ea948d0bf4')
 
 package() {
@@ -20,12 +20,12 @@ package() {
     install -m 644 "chrome_100_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "chrome_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 755 "chrome-sandbox" "${pkgdir}/opt/StorageExplorer/"
-    install -m 755 "crashpad_handler" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "icudtl.dat" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libEGL.so" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libffmpeg.so" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libGLESv2.so" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libvk_swiftshader.so" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "libvulkan.so" "${pkgdir}/opt/StorageExplorer/"
     cp -r "locales" "${pkgdir}/opt/StorageExplorer/"
     cp -r "resources" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "resources.pak" "${pkgdir}/opt/StorageExplorer/"
