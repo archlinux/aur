@@ -1,28 +1,38 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Pierre Carru <aur@carru.fr>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
-pkgname=libcgroup
-pkgver=0.41
-pkgrel=2
+pkgname=libcgroup-git
+_pkgname=libcgroup
+pkgver=0.42.2.r81.g11a38f7
+pkgrel=1
 pkgdesc='Library that abstracts the control group file system in Linux'
 arch=('i686' 'x86_64')
-url='http://libcg.sourceforge.net'
+url='https://github.com/libcgroup/libcgroup'
 license=(LGPL)
 backup=('etc/cgconfig.conf'
         'etc/cgrules.conf'
 	'etc/cgsnapshot_blacklist.conf')
 options=('!emptydirs' '!libtool')
 install=libcgroup.install
-source=("http://downloads.sourceforge.net/libcg/${pkgname}-${pkgver/rc/.rc}.tar.bz2"
+provides=('libcgroup')
+conflicts=('libcgroup')
+source=("$_pkgname"::'git+https://github.com/libcgroup/libcgroup#branch=main'
 	'cgconfig.service'
 	'cgrules.service')
-sha256sums=('e4e38bdc7ef70645ce33740ddcca051248d56b53283c0dc6d404e17706f6fb51'
+sha256sums=('SKIP'
             '808fc354abf36d7b6673dad790be275309ac57a2606d1be3732b9b3aeb5885eb'
             '6b1340ff6717f55e5e57dacc72accc0bfaed7e50ef31439271b6ddc893cbf671')
 
-build() {
-	cd "${srcdir}/${pkgname}-${pkgver/rc/.rc}"
+pkgver() {
+	cd "$_pkgname"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
+build() {
+	cd "$_pkgname"
+
+	./bootstrap.sh
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
@@ -34,7 +44,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver/rc/.rc}"
+	cd "$_pkgname"
 
 	make DESTDIR="${pkgdir}" pkgconfigdir="/usr/lib/pkgconfig" install
 
@@ -47,8 +57,6 @@ package() {
 
 	rm -f ${pkgdir}/usr/lib/security/pam_cgroup.{la,so,so.0}
 	mv ${pkgdir}/usr/lib/security/pam_cgroup.so.0.0.0 ${pkgdir}/usr/lib/security/pam_cgroup.so
-
-	rm -rf ${pkgdir}/etc/rc.d
 
 	# Make cgexec setgid cgred
 	chown root:160 ${pkgdir}/usr/bin/cgexec
