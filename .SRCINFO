@@ -1,6 +1,6 @@
 pkgbase = mavsdk
 	pkgdesc = API and library for MAVLink compatible systems written in C++11
-	pkgver = 0.38.2
+	pkgver = 0.39.0
 	pkgrel = 1
 	url = https://mavsdk.mavlink.io
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mavsdk
 	depends = jsoncpp
 	depends = tinyxml2
 	depends = zlib
-	source = git://github.com/mavlink/mavsdk.git#tag=v0.38.2
+	source = git://github.com/mavlink/mavsdk.git#tag=v0.39.0
 	source = git://github.com/mavlink/mavsdk-proto.git
 	source = git://github.com/google/googletest.git
 	source = git://github.com/mavlink/c_library_v2.git
