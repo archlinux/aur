@@ -25,15 +25,15 @@ if [ -z ${use_tracers+x} ]; then
 fi
 
 
-if [ -z ${_fsync+x} ]; then
-  _fsync=y
+if [ -z ${fsync+x} ]; then
+  fsync=y
 fi
 
-if [ -z ${_futex2+x} ]; then
-  _futex2=y
+if [ -z ${futex2+x} ]; then
+  futex2=y
 fi
-if [ -z ${_winesync+x} ]; then
-  _winesync=y
+if [ -z ${winesync+x} ]; then
+  winesync=y
 fi
 
 
@@ -42,7 +42,7 @@ fi
 
 pkgbase=linux-cacule-rdb
 pkgver=5.11.15
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
@@ -61,6 +61,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "${_patchsource}/misc/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
         "${_patchsource}/futex-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/wine-patches/0007-v5.11-winesync.patch"
+        "${_patchsource}/futex-patches/0007-v5.11-fsync.patch"
         "${_patchsource}/misc/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.11-introduce-BBRv2.patch"
         "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
@@ -68,7 +70,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "${_patchsource}/zstd-patches/0001-zstd-patches.patch")
 
 sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
-            '2622b27dc89e90688aa4b01bef7d9b4f93f3433085200fda08ae9f38a852b45d'
+            '2e3b1f1b6ceb958a3e4b2a4740c77953287a2cdb156234af8c9bf9ddad9268e3'
             'c539655de9eef5084b6349389b1a2fac3aaab274149c9b95667cca93570166ea'
             'cf00507d6881b737a9814d152e27b1db02f45a4d8a8ba3f4c9f542f0964ac697'
             'b74526f681f3eafa12f74764e79792949cb949fe1c8424118746c48fe16a09a8'
@@ -76,6 +78,8 @@ sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
             '39a36b356e2452aa244f80700524c73884f995bd29ccabd3bdb760480f37ce8e'
             '0d9179a3dac476d832c50027f62480cfa7d462bf35acc0fcf3b863e9fac01edf'
             '05cebcd1dbab8d5f8d26b5351ba0237d36b8e848c830dad7a4f7d1c58cc7824c'
+            'd220593436059b76c975ceee061fd124dec37fff774db45a4419c2ce1839c351'
+            'b302ba6c5bbe8ed19b20207505d513208fae1e678cf4d8e7ac0b154e5fe3f456'
             '15524321f6e532747be4145341dd6d426a4240bf190e85160bdf06ae6ea0ff20'
             '68dcadab17c405335633e0ded03d13a78ee524311bc927df2a0f0fc1a1463caf'
             '4e25daa2c11d9f24af8d34b7621689ab3beeb5af185b1178cdec7f610283b5be'
