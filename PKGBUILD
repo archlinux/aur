@@ -30,7 +30,8 @@ sha1sums=(SKIP)
 
 pkgver() {
   cd "$pkgname"
-  python setup.py patch_version | sed -n '/^patching version to /{s///;s/+/./;p;Q0};${Q1}'
+  python setup.py --quiet patch_version
+  python setup.py --version
 }
 
 build() {
