@@ -1,7 +1,7 @@
 pkgbase = notion-app
 	pkgdesc = The all-in-one workspace for your notes and tasks
 	pkgver = 2.0.16
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 2
 	url = https://www.notion.so/desktop
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = notion-app
 	makedepends = imagemagick
 	makedepends = p7zip
 	makedepends = npm
+	makedepends = nodejs>=14
+	makedepends = python2
 	depends = re2
 	depends = gtk3
 	depends = xdg-utils

@@ -1,14 +1,14 @@
 # Maintainer: Jaime Martínez Rincón <jaime@jamezrin.name>
 pkgname=notion-app
 pkgver=2.0.16
-pkgrel=5
+pkgrel=6
 epoch=2
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
 license=('MIT')
 depends=('re2' 'gtk3' 'xdg-utils')
-makedepends=('imagemagick' 'p7zip' 'npm')
+makedepends=('imagemagick' 'p7zip' 'npm' 'nodejs>=14' 'python2')
 optdepends=('notion-enhancer: enhancements and fixes')
 source=("Notion-"${pkgver}".exe::https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe" 
         'notion-app.desktop'
@@ -34,7 +34,7 @@ build() {
   
   msg "Recreating package node_modules..."
   rm -r node_modules
-  HOME="$srcdir/.electron-gyp" npm install --cache "${srcdir}/npm-cache"
+  npm install --cache "${srcdir}/npm-cache"
   node_modules/.bin/patch-package
 
   msg "Converting app icon..."
@@ -57,5 +57,8 @@ package() {
   cp "${srcdir}/package-rebuild/icon.png" "${pkgdir}/opt/${pkgname}/icon.png"
   install -Dm644 "${srcdir}/package-rebuild/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-  ln -s "/opt/${pkgname}/notion" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "${pkgdir}/opt/${pkgname}/notion" "${pkgdir}/usr/bin/${pkgname}"
+
+  # for compatibility with notion-enhancer
+  ln -s "${pkgdir}/opt/${pkgname}/resources/app.asar" "${pkgdir}/opt/${pkgname}/app.asar" 
 }
