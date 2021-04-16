@@ -1,0 +1,20 @@
+pkgbase = macchina-git
+	pkgdesc = Basic system information fetcher, written in Rust
+	pkgver = 0.7.0.f125764
+	pkgrel = 1
+	url = https://github.com/uttarayan21/macchina
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = wmctrl: window manager support
+	provides = macchina=0.7.0.f125764
+	conflicts = macchina
+	source = macchina-git::git+https://github.com/uttarayan21/macchina.git
+	md5sums = SKIP
+
+pkgname = macchina-git
+
