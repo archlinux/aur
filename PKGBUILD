@@ -27,10 +27,8 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
         'LICENSE'
-        'llvm32.native'
-        '0002-fix-ac_build_atomic_rmw-with-LLVM-13.patch')
+        'llvm32.native')
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
