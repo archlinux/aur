@@ -1,7 +1,7 @@
 # Maintainer: daltomi
 
 pkgname='deskshot.sh'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 _gitname=deskshot
 _gittag="v${pkgver}"
