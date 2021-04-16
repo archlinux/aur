@@ -2,11 +2,11 @@
 
 pkgname='deskshot.sh'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 _gitname=deskshot
 _gittag="v${pkgver}"
 
-pkgdesc="Screenshot of virtual desktops"
+pkgdesc="Take a screenshot of the selected desktops and merge them into a single image."
 
 arch=('x86_64')
 

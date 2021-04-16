@@ -1,7 +1,7 @@
 pkgbase = deskshot.sh
-	pkgdesc = Screenshot of virtual desktops
+	pkgdesc = Take a screenshot of the selected desktops and merge them into a single image.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daltomi/deskshot
 	arch = x86_64
 	license = GPL3
