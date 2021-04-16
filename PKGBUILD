@@ -3,13 +3,13 @@
 pkgname=rusnapshot-git
 _pkgname=rusnapshot
 pkgver=4.28a7545
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple and handy btrfs snapshoting tool. Supports scheduled snapshots
 and restoring. Backed with SQLite. (git version)'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/Edu4rdSHL/rusnapshot'
 license=('GPL3')
-depends=('sqlite')
+depends=('sqlite' 'btrfs-progs')
 makedepends=('rust' 'git')
 conflicts=("$_pkgname")
 provides=("$_pkgname")

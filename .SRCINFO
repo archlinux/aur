@@ -1,7 +1,7 @@
 pkgbase = rusnapshot-git
 	pkgdesc = Simple and handy btrfs snapshoting tool. Supports scheduled snapshots and restoring. Backed with SQLite. (git version)
 	pkgver = 4.28a7545
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Edu4rdSHL/rusnapshot
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = rusnapshot-git
 	makedepends = rust
 	makedepends = git
 	depends = sqlite
+	depends = btrfs-progs
 	provides = rusnapshot
 	conflicts = rusnapshot
 	source = git+https://github.com/Edu4rdSHL/rusnapshot.git
