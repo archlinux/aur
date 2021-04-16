@@ -1,7 +1,7 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = 87.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = librewolf-bin
 	license = GPL
 	license = LGPL
 	depends = gtk3
-	depends = mozilla-common
 	depends = libxt
 	depends = startup-notification
 	depends = mime-types
