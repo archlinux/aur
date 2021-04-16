@@ -3,7 +3,7 @@
 pkgname=siglo
 pkgver=0.6.0
 pkgrel=1
-pkgdesc="GTK app to sync InfiniTime watch with PinePhone"
+pkgdesc="GTK app to sync InfiniTime(PineTime) watch"
 arch=('any')
 url="https://github.com/alexr4535/siglo"
 license=('GPL')
