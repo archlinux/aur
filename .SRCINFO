@@ -1,16 +1,16 @@
 pkgbase = httplz-bin
 	pkgdesc = Host These Things Please - a basic http server for hosting a folder fast and simply
-	pkgver = 1.10.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://github.com/thecoshman/http
 	arch = x86_64
 	license = MIT
-	source = https://github.com/thecoshman/http/releases/download/v1.10.1/http-v1.10.1
-	source = https://github.com/thecoshman/http/releases/download/v1.10.1/http-man-v1.10.1.tbz2
-	source = https://github.com/thecoshman/http/raw/v1.10.1/LICENSE
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = https://github.com/thecoshman/http/releases/download/v1.11.2/http-v1.11.2
+	source = https://github.com/thecoshman/http/releases/download/v1.11.2/http-man-v1.11.2.tbz2
+	source = https://github.com/thecoshman/http/raw/v1.11.2/LICENSE
+	sha512sums = b3513212ac37e87a0a605773ec26943f8d245db0a56b0575d7b13f8210fb77b9ff0202170ee2a1231b9dd54ddb1a5bab4accdfd5da5f48be3445b03c98d4067b
+	sha512sums = cdf5de45fc6dfa76e08c79bab6290a4849d8544a00367affc2b00148973d6ffbb64698fb9b2b2df7fc4b2e960b12968f7f629854624ba584ffa0d1f4e881cbba
+	sha512sums = 7de80a15c7cb00d6980e0722256c84df6f11137f4b76840ddbb145c4cb2a717733b43098d97e728c78b9bfc1414a7255194cd7dd10c89fe138eb1ed90907614b
 
 pkgname = httplz-bin
 
