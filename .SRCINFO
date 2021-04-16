@@ -1,0 +1,17 @@
+pkgbase = gitlog-to-changelog-git
+	pkgdesc = Convert git log output to ChangeLog format.
+	pkgver = 20210224T2342
+	pkgrel = 1
+	epoch = 0
+	url = https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/gitlog-to-changelog
+	arch = any
+	license = GPL3
+	makedepends = curl
+	depends = perl
+	provides = gitlog-to-changelog=20210224T2342
+	conflicts = gitlog-to-changelog
+	source = gitlog-to-changelog::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/gitlog-to-changelog
+	sha256sums = SKIP
+
+pkgname = gitlog-to-changelog-git
+
