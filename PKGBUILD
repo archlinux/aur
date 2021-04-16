@@ -6,7 +6,7 @@
     pkgname='ros-melodic-teb-local-planner'
     pkgver='0.8.4'
     arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-    pkgrel=3
+    pkgrel=4
     license=('BSD')
 
     ros_makedepends=(ros-melodic-mbf-costmap-core
@@ -83,7 +83,9 @@
                 -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
                 -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
                 -DPYTHON_BASENAME=.cpython-37m \
-                -DSETUPTOOLS_DEB_LAYOUT=OFF
+                -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
     make
     }
 
