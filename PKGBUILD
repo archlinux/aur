@@ -41,8 +41,8 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-cacule-rdb
-pkgver=5.11.14
-pkgrel=2
+pkgver=5.11.15
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
@@ -67,14 +67,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "${_patchsource}/zswap-patches/0001-zswap-patches.patch"
         "${_patchsource}/zstd-patches/0001-zstd-patches.patch")
 
-sha256sums=('87623430ccb7d850313f304ebe2e8ca2e3ed1b93d63668f7ca7b5242e0e744c5'
+sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
             '2622b27dc89e90688aa4b01bef7d9b4f93f3433085200fda08ae9f38a852b45d'
             'c539655de9eef5084b6349389b1a2fac3aaab274149c9b95667cca93570166ea'
             'cf00507d6881b737a9814d152e27b1db02f45a4d8a8ba3f4c9f542f0964ac697'
-            '1834ab3a65026ff76fe62e55eb18e325e656fbdc36472d3946f4955802dc396d'
+            'b74526f681f3eafa12f74764e79792949cb949fe1c8424118746c48fe16a09a8'
             '1158623c992e0bcf87e0b765554f15f367c5ff19148a111f0bc88f06fa4743cc'
             '39a36b356e2452aa244f80700524c73884f995bd29ccabd3bdb760480f37ce8e'
-            'eb17b2036e94faf59cd57f61cf3504080bd1b6b66255ac857f298645043a0242'
+            '0d9179a3dac476d832c50027f62480cfa7d462bf35acc0fcf3b863e9fac01edf'
             '05cebcd1dbab8d5f8d26b5351ba0237d36b8e848c830dad7a4f7d1c58cc7824c'
             '15524321f6e532747be4145341dd6d426a4240bf190e85160bdf06ae6ea0ff20'
             '68dcadab17c405335633e0ded03d13a78ee524311bc927df2a0f0fc1a1463caf'
