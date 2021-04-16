@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-runcmd-bin
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 _buildhash='fe25440f759b899a918aeb8a531107da'
 _builddate='20100107'
 _fooname='foo_runcmd'
@@ -15,6 +15,6 @@ source=("https://foobar2000.org/getcomponent/${_buildhash}/${_fooname}-${pkgver}
 md5sums=('a79f101e1a68c86bf9242d9362b893d5')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/components/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/components/${_fooname}.dll"
 }
 
