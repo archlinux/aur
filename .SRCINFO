@@ -1,6 +1,6 @@
 pkgbase = python-aalib
 	pkgdesc = Python interface to the AAlib ASCII art library
-	pkgver = 0.3.2
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/python-aalib
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-aalib
 	depends = python
 	conflicts = python-aalib
 	conflicts = python-aalib-git
-	source = https://files.pythonhosted.org/packages/source/p/python-aalib/python-aalib-0.3.2.tar.gz
-	sha256sums = c39071629e7962dcd926faf0135dc73e2a8eb5db9a53bc2ebe5965f8c39165a2
+	source = https://files.pythonhosted.org/packages/source/p/python-aalib/python-aalib-0.4.tar.gz
+	sha256sums = 3fc183d60f7f51d11ef2ad9609655e5e3f4867b9af06dccab9b57de1040d8c15
 
 pkgname = python-aalib
 
