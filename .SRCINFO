@@ -1,0 +1,22 @@
+pkgbase = go1.15
+	pkgdesc = Core compiler tools for the Go programming language v1.15
+	pkgver = 1.15.8
+	pkgrel = 1
+	url = https://golang.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	makedepends = perl
+	options = !strip
+	options = staticlibs
+	source = https://storage.googleapis.com/golang/go1.15.8.src.tar.gz
+	source = https://storage.googleapis.com/golang/go1.15.8.src.tar.gz.asc
+	source = fix-color.patch::https://github.com/golang/go/commit/29634436fd741a7c685bf8f242b6fd62f093d1ad.patch
+	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
+	sha256sums = 540c0ab7781084d124991321ed1458e479982de94454a98afab6acadf38497c2
+	sha256sums = SKIP
+	sha256sums = 6005e40e447b402b07d52604cfa7d444f61152cecd9a19953edbcf88160fa46a
+
+pkgname = go1.15
+
