@@ -1,10 +1,10 @@
 pkgbase = qemu-guest-agent-bandwagonhost-kiwivm
 	pkgdesc = make BandwagonHost KiwiVM control panel full functional
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/unknowndev233/0852d2461b4ebbeebb58894830ff964e
 	arch = any
-	license = MIT
+	license = unknown
 	depends = qemu-guest-agent
 	source = qemu-guest-agent-bandwagonhost-kiwivm.bash
 	source = qemu-guest-agent-bandwagonhost-kiwivm.service

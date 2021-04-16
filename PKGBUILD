@@ -1,11 +1,11 @@
 # Maintainer: chn <g897331845@gmail.com>
 pkgname=qemu-guest-agent-bandwagonhost-kiwivm
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='make BandwagonHost KiwiVM control panel full functional'
 arch=('any')
 url='https://gist.github.com/unknowndev233/0852d2461b4ebbeebb58894830ff964e'
-license=('MIT')
+license=('unknown')
 depends=('qemu-guest-agent')
 source=("qemu-guest-agent-bandwagonhost-kiwivm.bash"
     "qemu-guest-agent-bandwagonhost-kiwivm.service")
