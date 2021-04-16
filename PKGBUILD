@@ -30,10 +30,8 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-laye
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-        'LICENSE'
-        '0001-clover-llvm13-use-FixedVectorType.patch')
+        'LICENSE')
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
