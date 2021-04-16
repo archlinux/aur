@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=naken_asm-git
-pkgver=r1568.ba741c3
+pkgver=r2137.65d74a37
 pkgrel=1
 epoch=
 _pkgname=naken_asm
@@ -45,8 +45,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_srcdirname}"
-  patch -p0 < ${startdir}/configure-include-path.patch
-  patch -p0 < ${startdir}/makefile_add_naken_prog.patch
+  #patch -p0 < ${startdir}/configure-include-path.patch
+  #patch -p0 < ${startdir}/makefile_add_naken_prog.patch
 }
 
 build() {
