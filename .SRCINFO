@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland-hg
 	pkgdesc = Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)
-	pkgver = r591370+.fdd919d10609+
+	pkgver = r635306.b898442a9527
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -31,7 +31,6 @@ pkgbase = firefox-wayland-hg
 	makedepends = libpipewire02
 	makedepends = lld
 	depends = gtk3
-	depends = mozilla-common
 	depends = libxt
 	depends = mime-types
 	depends = dbus-glib

@@ -14,7 +14,7 @@ pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release br
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-depends=(gtk3 mozilla-common libxt mime-types dbus-glib
+depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils python-setuptools yasm mesa imake inetutils
