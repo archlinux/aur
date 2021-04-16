@@ -3,7 +3,7 @@
 
 pkgname=bitwarden_rs-sqlite
 _pkgbase=bitwarden_rs
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('openssl')
 makedepends=('rust-nightly' 'cargo-nightly')
 optdepends=("bitwarden_rs-vault: Web Interface 'Vault'")
-conflicts=("${_pkgbase}" "${_pkgbase}-git" "${_pkgbase}-mysql" "${_pkgbase}-postgresql")
+conflicts=("${_pkgbase}" "${_pkgbase}-"{git,mysql,postgresql})
 backup=('etc/bitwarden_rs.env')
 install=bitwarden_rs.install
 source=("https://github.com/dani-garcia/bitwarden_rs/archive/$pkgver.tar.gz"
@@ -21,7 +21,7 @@ source=("https://github.com/dani-garcia/bitwarden_rs/archive/$pkgver.tar.gz"
 	"${_pkgbase}.sysusers.conf"
 	"${_pkgbase}.tmpfiles.conf"
 	"0001-Disable-Vault.patch")
-sha512sums=('5ba0200050e8ec02b0d6ef03cf1d350a45f74552636e0f77a925d09ae0c7cd76a13a65cbae634b7f6b38fbe59ad978ed859cada31610ea5e760a8eb8888ee178'
+sha512sums=('96fc0c3d55ed770af7209f881e107c33cf8ddf5179c504eacbc155dcb0f28641e5d28dd9cbd4f071540a7aac3d0e40b519de1fb85a523c6b74fb91a930d329a8'
             'ae1e05b613d3178bf3fa273ff6661c567140a43826e681b5164ef7d101c1243e5ff93e9caf7193984626d363b8b8b7c076e6646b865699d4cbe482a3dc4f91e7'
             '6f6b05881ee3344bdc553fae00a709404ddd086af347f909b3f3a620aabd2294b7dd2892472cd72515e9ceced2449eacbd9ef24626a1429776ea4599673a665b'
             '15b00b0dc9122f98ce8d7b55668fdfbb2e0387563e7d9ad6c0ebc73b75e46e1ccdb3a2186a453795a1b3e2d45358ff5a8076d5cf30319ab2c21539d20cff81c6'
