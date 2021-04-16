@@ -1,0 +1,21 @@
+pkgbase = ananicy-openrc
+	pkgdesc = Ananicy - is Another auto nice daemon, with community rules support
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/Nefelim4ag/Ananicy
+	install = ananicy-openrc.install
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = make
+	depends = ananicy
+	depends = openrc
+	depends = bash
+	depends = schedtool
+	source = ananicy.initd
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = ananicy-openrc
+	install = ananicy-openrc.install
+
