@@ -1,0 +1,19 @@
+pkgbase = deskshot.sh
+	pkgdesc = Screenshot of virtual desktops
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/daltomi/deskshot
+	arch = x86_64
+	license = GPL3
+	depends = xdotool
+	depends = sed
+	depends = scrot
+	depends = imagemagick
+	depends = bash
+	depends = coreutils
+	source = git+https://github.com/daltomi/deskshot.git?signed#tag=v1.0
+	validpgpkeys = 95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1
+	sha256sums = SKIP
+
+pkgname = deskshot.sh
+
