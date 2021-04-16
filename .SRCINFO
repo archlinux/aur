@@ -1,9 +1,8 @@
 pkgbase = clessc-git
 	pkgdesc = A C++ implementation of the LESS CSS Compiler
-	pkgver = r425.9798e3e
-	pkgrel = 2
+	pkgver = r637.4176967
+	pkgrel = 1
 	url = https://github.com/BramvdKroef/clessc
-	arch = i386
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
