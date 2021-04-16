@@ -1,8 +1,8 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=nginx-mainline-mod-nchan
-pkgver=1.2.7
-pkgrel=10
+pkgver=1.2.8
+pkgrel=1
 
 _nginxver=1.19.10
 
@@ -15,12 +15,10 @@ license=('MIT')
 source=(
     https://github.com/slact/nchan/archive/v${pkgver}.tar.gz
     http://nginx.org/download/nginx-$_nginxver.tar.gz
-    f484c603a81c3bddd3f0160cfdbe231b8a453cde.diff
 )
 
 build() {
     _module_dir="$srcdir"/nchan-$pkgver
-    patch -p1 -d $_module_dir < f484c603a81c3bddd3f0160cfdbe231b8a453cde.diff
 
     cd "$srcdir"/nginx-$_nginxver
     ./configure --with-compat --add-dynamic-module=${_module_dir}
@@ -34,6 +32,5 @@ package() {
     done
 }
 
-sha256sums=('8bb5d1749af759bb5e9cc5476a9c4b44d51bee6096bb89ab5ff53e85367b490b'
-            'e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88'
-            '9f73929de9741a3571de712f6767069ea0a3e16282ac7b3e3d33df77113d04ed')
+sha256sums=('de42e8d4fef6aef9e4c7303a7480adfe9545992470a7f6be008de7a4bb64cc98'
+            'e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88')
