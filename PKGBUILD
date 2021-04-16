@@ -23,8 +23,8 @@ pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (internati
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-	'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+depends=('libxt' 'startup-notification' 'mime-types' 'dbus-glib' 
+	'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
 	'kdialog: KDE dialog boxes'
