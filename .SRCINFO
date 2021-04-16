@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libgeoip
 	pkgdesc = Non-DNS IP-to-country resolver C library (mingw-w64)
-	pkgver = 1.6.5
+	pkgver = 1.6.12
 	pkgrel = 1
 	url = http://www.maxmind.com/app/c
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-libgeoip
 	options = !libtool
 	options = !strip
 	options = !buildflags
-	source = https://github.com/maxmind/geoip-api-c/releases/download/v1.6.5/GeoIP-1.6.5.tar.gz
-	sha256sums = 0ae1c95e69ad627d3a45cb897f79ce0c30f13fcd4b4a0dda073be0c9552521b3
+	source = https://github.com/maxmind/geoip-api-c/releases/download/v1.6.12/GeoIP-1.6.12.tar.gz
+	sha256sums = 1dfb748003c5e4b7fd56ba8c4cd786633d5d6f409547584f6910398389636f80
 
 pkgname = mingw-w64-libgeoip
 

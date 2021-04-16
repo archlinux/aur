@@ -1,7 +1,7 @@
-# Maintainer: Thomas Poechtrager <tpoechtrager at g m a i l>
+# Contributor: Thomas Poechtrager <tpoechtrager at g m a i l>
 
 pkgname=mingw-w64-libgeoip
-pkgver=1.6.5
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Non-DNS IP-to-country resolver C library (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(mingw-w64-configure mingw-w64-gcc)
 depends=(mingw-w64-crt)
 options=(!libtool !strip !buildflags)
 source=(https://github.com/maxmind/geoip-api-c/releases/download/v${pkgver}/GeoIP-${pkgver}.tar.gz)
-sha256sums=('0ae1c95e69ad627d3a45cb897f79ce0c30f13fcd4b4a0dda073be0c9552521b3')
+sha256sums=('1dfb748003c5e4b7fd56ba8c4cd786633d5d6f409547584f6910398389636f80')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
