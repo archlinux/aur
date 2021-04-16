@@ -1,12 +1,11 @@
 # Maintainer: Eric Cheng <ericcheng@hey.com>
 
 pkgname=kopia-bin
-_pkgname=kopia
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
 pkgver=0.8.1
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/kopia/kopia/'
 license=('APACHE')
@@ -21,6 +20,6 @@ sha256sums_armv7h=('9006c5b48beb3ef935f79186ee6190905a1986838948f28fac0f1aed9c22
 
 package() {
     tar -xf data.tar.gz -C "$pkgdir"
-    "$pkgdir/usr/bin/${_pkgname}" --completion-script-bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/${pkgname%-bin}"
-    "$pkgdir/usr/bin/${_pkgname}" --completion-script-zsh | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-bin}"
+    "$pkgdir/usr/bin/${pkgname%-bin}" --completion-script-bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/${pkgname%-bin}"
+    "$pkgdir/usr/bin/${pkgname%-bin}" --completion-script-zsh | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-bin}"
 }
