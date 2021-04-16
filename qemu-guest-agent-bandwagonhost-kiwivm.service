@@ -1,0 +1,12 @@
+[Unit]
+Description=qemu-guest-agent-bandwagonhost-kiwivm
+After=qemu-guest-agent.service
+
+[Service]
+User=root
+ExecStart=/usr/bin/qemu-guest-agent-bandwagonhost-kiwivm.bash
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
