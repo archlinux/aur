@@ -3,18 +3,23 @@
 pkgname=('espeak-ng' 'espeak-ng-espeak')
 pkgbase=espeak-ng
 pkgver=1.50
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
 arch=('x86_64')
 license=('GPL3')
-makedepends=('pcaudiolib' 'ruby-ronn')
-source=("$url/archive/$pkgver/espeak-ng-$pkgver.tar.gz")
-sha512sums=('297dd80a6cdae3e2b8acf6823475220ce89d6a5fb68ea303156ad52cb3e7388049b6921759d4ed4e3d2e2ebd19bf931259e454f74a2ac0b7ecf4ce56c1d60c0c')
+makedepends=('pcaudiolib' 'ruby-ronn-ng')
+source=("$url/archive/$pkgver/espeak-ng-$pkgver.tar.gz"
+        'espeak-ng-fix-699.patch::https://github.com/espeak-ng/espeak-ng/commit/e11cd42b03d1628f7a0cf45c9406123282e25c63.patch')
+b2sums=('c64c2a474374d4b6fe13bf3a99f5dfb661923c13ebd6c0bc323e7f26d9d90945c7075cc5c8f4b51e5db3303632c8c9daca7a65a1883e09d7c3faf63dd725ea3f'
+        'c90b6c1a08fed25183ae1601f1935e7742878a6242b5cd2bb87d19fa9b3e89d62f5c4432d388e9dcb6a0921ba188aeffe4d63143142b4070ad49dce4c758f45c')
 
 prepare() {
   cd espeak-ng-$pkgver
   ./autogen.sh
+
+  # https://github.com/espeak-ng/espeak-ng/issues/699
+  patch --forward --strip=1 --input=../espeak-ng-fix-699.patch
 }
 
 build() {
@@ -35,14 +40,15 @@ package_espeak-ng() {
 
 package_espeak-ng-espeak() {
   pkgdesc+=' (*speak symlinks)'
+  arch=('any')
   depends=('espeak-ng')
   conflicts=('espeak')
   install -d "$pkgdir"/usr/{bin,include/espeak,share/man/man1}
-  ln -s /usr/bin/espeak-ng "$pkgdir"/usr/bin/espeak
-  ln -s /usr/bin/speak-ng "$pkgdir"/usr/bin/speak
-  ln -s /usr/include/espeak-ng/speak_lib.h "$pkgdir"/usr/include/espeak/speak_lib.h
-  ln -s /usr/share/man/man1/espeak-ng.1.gz "$pkgdir"/usr/share/man/man1/espeak.1.gz
-  ln -s /usr/share/man/man1/speak-ng.1.gz "$pkgdir"/usr/share/man/man1/speak.1.gz
+  ln -s espeak-ng "$pkgdir"/usr/bin/espeak
+  ln -s speak-ng "$pkgdir"/usr/bin/speak
+  ln -s ../espeak-ng/speak_lib.h "$pkgdir"/usr/include/espeak/speak_lib.h
+  ln -s espeak-ng.1.gz "$pkgdir"/usr/share/man/man1/espeak.1.gz
+  ln -s speak-ng.1.gz "$pkgdir"/usr/share/man/man1/speak.1.gz
 }
 
 # vim:set ts=2 sw=2 et:
