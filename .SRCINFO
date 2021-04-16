@@ -12,6 +12,7 @@ pkgbase = ananicy-nosystemd-git
 	depends = python
 	optdepends = ananicy-s6: s6 support
 	optdepends = ananicy-runit: runit support
+	optdepends = ananicy-openrc: openrc support
 	provides = ananicy
 	conflicts = ananicy
 	backup = etc/ananicy.d/ananicy.conf

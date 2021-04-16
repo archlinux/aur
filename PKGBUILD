@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('bash' 'schedtool' 'python')
 makedepends=('git' 'make')
 optdepends=('ananicy-s6: s6 support'
-            'ananicy-runit: runit support')
+            'ananicy-runit: runit support'
+            'ananicy-openrc: openrc support')
 provides=(ananicy)
 conflicts=(ananicy)
 source=(git+https://github.com/Nefelim4ag/Ananicy.git#branch=master)
