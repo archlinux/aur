@@ -1,11 +1,12 @@
 pkgbase = sonobus
 	pkgdesc = An easy to use application for streaming high-quality, low-latency peer-to-peer audio
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sonobus.net
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	depends = opus
 	depends = curl
 	depends = freetype2
