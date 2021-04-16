@@ -1,0 +1,10 @@
+--- setup-a.py	2021-04-16 05:06:54.000000000 -0600
++++ setup-b.py	2021-04-16 08:55:54.331523766 -0600
+@@ -43,6 +43,3 @@
+             'sysmontask.set_dark=sysmontask.theme_setter:set_theme_dark']
+     )
+ )
+-
+-os.system("sudo glib-compile-schemas /usr/share/glib-2.0/schemas")
+-print("gschema Compiled")
+\ No newline at end of file
