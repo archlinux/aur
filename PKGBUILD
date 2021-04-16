@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=20.10.5
+pkgver=20.10.6
 
 # must use commit sha as currently not tagged with 20.10+ versions
 _packaging_version=1c1cb918d8cf84f321bab7cb9739c221fe4f3ed7
@@ -23,15 +23,15 @@ source=(
   "https://download.docker.com/linux/static/stable/x86_64/docker-${pkgver}.tgz"
   "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-${pkgver}.tgz"
   "https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/docker-ce-cli_${pkgver}~3-0~debian-buster_amd64.deb"
-  "https://raw.githubusercontent.com//docker/docker-ce-packaging/${_packaging_version}/systemd/docker.socket"
-  "https://raw.githubusercontent.com//docker/docker-ce-packaging/${_packaging_version}/systemd/docker.service"
+  "https://raw.githubusercontent.com/docker/docker-ce-packaging/${_packaging_version}/systemd/docker.socket"
+  "https://raw.githubusercontent.com/docker/docker-ce-packaging/${_packaging_version}/systemd/docker.service"
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/syntax/nano/Dockerfile.nanorc"
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/udev/80-docker.rules"
   "docker.sysusers"
 )
-sha256sums=('3f18edc66e1faae607d428349e77f9800bdea554528521f0f6c49fc3f1de6abf'
-            'c7265d1c376dcfc182714235fc3e8ea5e2f3f540af94450fa0469cac97b3dd55'
-            'f0f2eb6286a7c8b2b276366d987ea13a3d6d7f7fc2c96f8a620a89469f2486db'
+sha256sums=('e3b6c3b11518281a51fb0eee73138482b83041e908f01adf8abd3a24b34ea21e'
+            'ac4d55e87efa1eec306a91f655d8ae00339be5f631b8b41c10d5c588a3cf0473'
+            'db84c161d363286a0b5c2bb1b743b9def0cf6f9249f1d4293d5fbd8b5795a69a'
             'caf98bf39fb8621fb955476567a38b8a6b35bab2dccd8a29a16da23d4bb99450'
             'ed2ebb93d4bb3a30b5ad214d2ea5d467e714928d4fbf077e2a77dce758c0fa60'
             '3b1bd816a4a029ac048be7703a72a69ff44c531ead443d573e04f29d812594f1'
