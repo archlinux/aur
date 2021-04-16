@@ -1,13 +1,14 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anydesk.com
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
 	depends = fakeroot
+	depends = minizip
 	depends = python-shiboken2
 	depends = gtkglext
 	depends = libglvnd
