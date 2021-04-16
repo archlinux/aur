@@ -1,0 +1,13 @@
+pkgbase = stardict-acadfr1935
+	pkgdesc = 8th edition of the Académie Française dictionary (1935) for StarDict
+	pkgver = 20080601
+	pkgrel = 1
+	url = https://polyglotte.tuxfamily.org/doku.php?id=donnees:dicos_bilingues
+	arch = any
+	license = custom:public domain
+	optdepends = stardict: view the dictionary
+	source = https://download.tuxfamily.org/polyglotte/dicos/dict/francais%2Fstardict-academie-francaise-1935_38.xdxf-2.4.2.zip
+	sha256sums = 6196587e54a19f8a2145584d020278326eb73cb6f3e8728f7dbbc365a76c5994
+
+pkgname = stardict-acadfr1935
+
