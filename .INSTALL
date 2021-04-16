@@ -5,20 +5,20 @@ post_install() {
 
     sudo gentor
 
-# Options:
-
+# OPTIONS:
     -h, --help            show this help message and exit
     -p, --privoxy         Connecting to Tor with Privoxy - Enhance your privacy
     -s, --start           Start connecting to Tor
     -x, --stop            Stop connecting to Tor
     -r, --renew           Renew the current Tor circuit
-    -id COUNTRY ISO CODE  Connect to Tor exit node of a specific country
+    --period              Renew the current Tor circuit every prompted period
     -mac INTERFACE        Randomly change MAC address
     -c, --checkip         Check your current IPv4 address
     --dns                 Use this to fix DNS
     --nodelay             Disable delay time
     -e, --enable          Enable anonymization at boot time
     -d, --disable         Disable anonymization at boot time
+    -l, --fix              Fix connecting problem
     -u, --uninstall       Uninstall GenTor
 
 # Licensing
