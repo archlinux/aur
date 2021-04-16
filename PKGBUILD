@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-ui-columns-bin
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 _buildhash='9ea5bf12dff419ecb6e39f820c4eb97f'
 _fooname='foo_ui_columns'
 pkgdesc='An alternative user interface for foobar2000'
@@ -14,6 +14,6 @@ source=("https://yuo.be/static/${_buildhash}/${_fooname}-${pkgver}.fb2k-componen
 md5sums=("${_buildhash}")
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 }
 

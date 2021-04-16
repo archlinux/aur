@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-ui-columns-bin
 	pkgdesc = An alternative user interface for foobar2000
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.foobar2000.org/components/view/foo_ui_columns
 	arch = any
 	license = unknown
