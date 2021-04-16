@@ -1,0 +1,18 @@
+pkgbase = tgr
+	pkgdesc = Refresh gpg keys periodically and privately over tor circuits.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/aeryxium/tgr
+	arch = any
+	license = MIT
+	depends = tor
+	depends = torsocks
+	source = tgr
+	source = tgr.service
+	source = LICENSE
+	md5sums = ddf08c1bbee5581b5372403515fbf397
+	md5sums = f7e2c455294e5bccfb9ee7f60afa848c
+	md5sums = 2d49e1137e0abcc0c0071cd88ba0835c
+
+pkgname = tgr
+

@@ -1,0 +1,8 @@
+[Unit]
+Description=Refresh public keys from keyserver over random tor circuits.
+
+[Service]
+ExecStart=/usr/bin/tgr
+
+[Install]
+WantedBy=default.target
