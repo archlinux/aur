@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2019
 	pkgdesc = Clear Linux lts2019
-	pkgver = 5.4.112
+	pkgver = 5.4.113
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2019
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = linux-clear-lts2019
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.112.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.113.xz
 	source = clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=5.4.101-103
 	source = enable_additional_cpu_optimizations-20210327.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210327.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
 	sha256sums = SKIP
-	sha256sums = 7ea835e629b01c1a01d77310023e8b552ee7962b515d376d6c0c6f9e7fab2700
+	sha256sums = aceed2c4f5d4e28e0e4f6bd17066c84038e2b2d9122e086b3711a2c14b71647e
 	sha256sums = SKIP
 	sha256sums = ac0e44bd089eeb7f52d358e6899005599fff50972f090af9c8e6ee0097d01db6
 
