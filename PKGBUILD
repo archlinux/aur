@@ -3,7 +3,7 @@
 
 pkgbase='wownero-git'
 pkgname='wownero-git'
-pkgver=v0.9.2.2.0e65b21328
+pkgver=v0.9.3.3.e2d2b9a447
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('custom:Cryptonote')
