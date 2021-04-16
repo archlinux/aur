@@ -1,8 +1,5 @@
 echo "Enable CacULE CPU scheduler..."
 scripts/config --enable CONFIG_CACULE_SCHED
-echo "Disable CFS"
-scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-scripts/config --disable CONFIG_CFS_BANDWIDTH
 echo "Processor type and features Cacule"
 scripts/config --disable CONFIG_RETPOLINE
 scripts/config --disable CONFIG_X86_5LEVEL
@@ -10,8 +7,6 @@ scripts/config --disable CONFIG_KEXEC
 scripts/config --disable CONFIG_KEXEC_FILE
 scripts/config --disable CONFIG_CRASH_DUMP
 scripts/config --disable CONFIG_EXPERT
-scripts/config --disable CONFIG_SCHED_AUTOGROUP
-scripts/config --disable CONFIG_CGROUP_SCHED
 echo "Enable PREEMPT"
 scripts/config --disable CONFIG_PREEMPT_NONE
 scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
