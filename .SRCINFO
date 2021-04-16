@@ -1,0 +1,21 @@
+pkgbase = ffgo
+	pkgdesc = A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)
+	pkgver = 1.12.7
+	pkgrel = 1
+	url = http://frougon.net/projects/FFGo/
+	arch = any
+	license = custom
+	depends = python>=3.4
+	depends = python-condconfigparser
+	depends = tk>=8.5
+	optdepends = geographiclib
+	optdepends = python-geographiclib
+	optdepends = python-pillow
+	source = FFGo-1.12.7.tar.gz::http://frougon.net/projects/FFGo/dist/1.12.7/python3-FFGo-1.12.7.tar.gz
+	source = FFGo-1.12.7.tar.gz.sig::http://frougon.net/projects/FFGo/dist/1.12.7/python3-FFGo-1.12.7.tar.gz.asc
+	validpgpkeys = 125B5A0FDB788FDD0EF41A9DC785B90B5053A3A2
+	sha256sums = 313c657e56e2cb7c291aa56a0c11f98682eae7bdddd787075b872c1eda4792a4
+	sha256sums = 57e4829a5c92e0563161cd9b70825f1104f5667b1e675c8381d56d03edf4d969
+
+pkgname = ffgo
+
