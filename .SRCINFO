@@ -1,0 +1,20 @@
+pkgbase = vim-cmake4vim-git
+	pkgdesc = Vim plugin for CMake projects
+	pkgver = r109.b48f1b4
+	pkgrel = 1
+	url = https://github.com/ilyachur/cmake4vim
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	makedepends = git
+	depends = cmake
+	optdepends = vim-dispatch
+	optdepends = vim-fzf
+	optdepends = vim-ctrlp
+	provides = vim-cmake4vim
+	conflicts = vim-cmake4vim
+	source = vim-cmake4vim-git::git+https://github.com/ilyachur/cmake4vim
+	md5sums = SKIP
+
+pkgname = vim-cmake4vim-git
+
