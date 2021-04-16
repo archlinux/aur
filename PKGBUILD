@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-warp-time
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='reset file timestamps to repo state'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/alerque/$pkgname"
 license=(GPL3)
 makedepends=(rust)
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('172c8c34450f4fad39a178e88903245bb60a0e34259db702fbfcd514be4a252a')
+sha256sums=('5e7824c40241463503beb2236755bf84d97a0af0ad2358fa49ea6d3f3a8ce63a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
