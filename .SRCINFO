@@ -1,6 +1,6 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
-	pkgver = 7.5.0
+	pkgver = 7.5.1
 	pkgrel = 1
 	url = https://github.com/coreemu/core/
 	arch = i686
@@ -29,9 +29,9 @@ pkgbase = core
 	optdepends = openvswitch: Open vSwitch SDN support
 	optdepends = tkimg: Thumbnail support in Tcl/Tk GUI
 	backup = etc/core/core.conf
-	source = https://github.com/coreemu/core/archive/release-7.5.0.tar.gz
+	source = https://github.com/coreemu/core/archive/release-7.5.1.tar.gz
 	source = core-daemon.service
-	md5sums = b119b48872439ad1d63bcc1edab4f25e
+	md5sums = 8a55856c35e10539ec5fb594b64b2cc9
 	md5sums = 91be51f861a0e166c643a885d1bf1eba
 
 pkgname = core
