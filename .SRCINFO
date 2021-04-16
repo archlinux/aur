@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-lts
 	pkgdesc = Linux Xanmod LTS
-	pkgver = 5.10.30
+	pkgver = 5.10.31
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = linux-xanmod-lts
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.10.30-xanmod1/patch-5.10.30-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/5.10.31-xanmod1/patch-5.10.31-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
 	sha256sums = SKIP
-	sha256sums = 1febdf544ed73e094408c91e7235115f26fb6f2bfd2fcbfba264124590b8f8fe
+	sha256sums = c0eabbcc77e47666a151f549e4b9a1bf3ce35caaf12ebf77a9bb9b335c2513fd
 	sha256sums = 03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134
 
 pkgname = linux-xanmod-lts
