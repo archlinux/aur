@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-uie-ptb-bin
 	pkgdesc = A toolbar indicating playback status for foobar2000
 	pkgver = 3.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://skipyrich.com/wiki/Foobar2000:Playback_Toolbars
 	arch = any
 	license = unknown
