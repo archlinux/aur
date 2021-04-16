@@ -37,6 +37,11 @@ scripts/config --enable CONFIG_MODULE_COMPRESS
 scripts/config --disable CONFIG_MODULE_COMPRESS_GZIP
 scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
 scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+echo "Enable CONFIG_STACK_VALIDATION"
+scripts/config --enable CONFIG_STACK_VALIDATION
+echo "Enable IKCONFIG"
+scripts/config --enable CONFIG_IKCONFIG
+scripts/config --enable CONFIG_IKCONFIG_PROC
 }
 cpu_arch(){
   plain ""
