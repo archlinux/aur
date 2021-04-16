@@ -1,15 +1,14 @@
 pkgbase = python-cloudant
 	pkgdesc = Cloudant / CouchDB Client Library
-	pkgver = 2.12.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://github.com/cloudant/python-cloudant
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cloudant/cloudant-2.12.0.tar.gz
-	sha256sums = 641b7fa47d0055fafcb712ba4435ae4bd8b60e88e52ac3328411817524f50c24
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/c/cloudant/cloudant-2.14.0.tar.gz
+	sha256sums = afb00331a6c8593ba849294e907ebf188ee90548b1b96d0ee98669ffeb5df320
 
 pkgname = python-cloudant
-	depends = python
 
