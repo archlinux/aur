@@ -1,7 +1,7 @@
 # Maintainer: Manish Jain <bourne.identity@hotmail.com>
 
 pkgname=switchbashzsh
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Portably switch between Bash and Zsh across BSD/Linux/Cygwin"
 arch=(any)
@@ -16,4 +16,4 @@ package() {
 	install -Dm644 switchBashZsh.1 "${pkgdir}"/usr/share/man/man1/switchBashZsh.1
 }
 
-sha256sums=('f8b6fed89627eec3a214b88c5cbd0a5befbf413c186341488995756706dc5f81')
+sha256sums=('17717be680e81ab7058e7bdbd05e43ce2bb164425f046fec59202074c55d74a7')
