@@ -1,15 +1,16 @@
 pkgname=qamqp-git
-pkgver=r273.73d80de
+pkgver=v0.5.0.r29.gb5c660a
 pkgver() {
   cd "$srcdir/qamqp"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgrel=1
 pkgdesc="Qt4/Qt5 implementation of AMQP 0.9.1"
 arch=('i686' 'x86_64')
 url="https://github.com/mbroadst/qamqp"
-license=('MIT')
+license=('GPL2')
 depends=('qt5-base')
+makedepends=('git')
 source=("git+https://github.com/mbroadst/qamqp.git")
 md5sums=('SKIP')
 
