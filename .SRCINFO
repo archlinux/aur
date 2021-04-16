@@ -1,15 +1,14 @@
 pkgbase = python2-unidecode
 	pkgdesc = ASCII transliterations of Unicode text
-	pkgver = 1.1.1
-	pkgrel = 5
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/avian2/unidecode
 	arch = any
 	license = GPL
-	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
-	source = git+https://github.com/avian2/unidecode.git#tag=unidecode-1.1.1
-	sha256sums = SKIP
+	source = https://github.com/avian2/unidecode/archive/refs/tags/unidecode-1.2.0.zip
+	sha256sums = aef39ed7054376e416e7b81baf4816eaa8c0abc5724c45e3d3575a6f54a42831
 
 pkgname = python2-unidecode
 
