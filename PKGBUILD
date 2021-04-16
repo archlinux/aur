@@ -2,7 +2,7 @@
 
 _pipname=babelfont
 pkgname=python-$_pipname-git
-pkgver=0.0.2.r0.g7ae5cc4
+pkgver=2.0.2.r5.ge30aba5
 pkgrel=1
 pkgdesc='Interrogate and manipulate UFO, TTF and OTF fonts with a common interface'
 arch=('any')
@@ -13,7 +13,7 @@ _py_deps=('defcon'
           'fonttools')
 depends=('python'
          "${_py_deps[@]/#/python-}")
-makedepends=('python-setuptools')
+makedepends=('python-setuptools-scm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")

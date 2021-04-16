@@ -1,11 +1,11 @@
 pkgbase = python-babelfont-git
 	pkgdesc = Interrogate and manipulate UFO, TTF and OTF fonts with a common interface
-	pkgver = 0.0.2.r0.g7ae5cc4
+	pkgver = 2.0.2.r5.ge30aba5
 	pkgrel = 1
 	url = https://github.com/simoncozens/babelfont
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-defcon
 	depends = python-fontparts
