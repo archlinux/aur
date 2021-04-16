@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-scrobble-bin
 	pkgdesc = A last.fm scrobble component for foobar2000
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://hydrogenaud.io/index.php?topic=114979.0
 	arch = any
 	license = unknown

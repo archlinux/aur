@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-scrobble-bin
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 _fooname='foo_scrobble'
 pkgdesc='A last.fm scrobble component for foobar2000'
 arch=('any')
@@ -13,6 +13,6 @@ source=("https://github.com/gix/foo_scrobble/releases/download/v${pkgver}/foo_sc
 md5sums=('30bcd99f659315a9a5e4d7dd7ad1a221')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 }
 
