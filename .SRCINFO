@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-np-simple-bin
 	pkgdesc = Keeps a templated file with information about the current track
 	pkgver = 1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://skipyrich.com/wiki/Foobar2000:Now_Playing_Simple
 	arch = any
 	license = unknown
