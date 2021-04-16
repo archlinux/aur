@@ -1,4 +1,4 @@
-#!/usr/bin/electron
+#!/usr/bin/electron11
 
 const name = 'code-oss';
 
