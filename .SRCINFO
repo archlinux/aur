@@ -1,6 +1,6 @@
 pkgbase = xkeycheck-git
 	pkgdesc = Small X utility for checking if a key is pressed
-	pkgver = 1.0.r9.ae26397
+	pkgver = 1.0.r10.450b796
 	pkgrel = 1
 	url = https://github.com/randoragon/xkeycheck
 	arch = x86_64
