@@ -1,20 +1,20 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kops
-pkgver=1.19.1
-pkgrel=1
+pkgver=1.20.0
+pkgrel=0
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
 license=('Apache')
-makedepends=('go>=1.15'
-             'git')
+makedepends=('go1.15' 'git')
 
 build() {
   mkdir -p $pkgname-$pkgver
   cd $pkgname-$pkgver
   export GOPATH=`pwd`
   export GOFLAGS="-modcacherw"
+  export PATH="`go1.15 env GOROOT`/bin:${PATH}"
   go get -d k8s.io/kops
   cd ${GOPATH}/src/k8s.io/kops/
   git checkout tags/v$pkgver
