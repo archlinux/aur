@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=xkeycheck-git
-pkgver=1.0.r10.450b796
+pkgver=1.0.r11.971c504
 pkgrel=1
 epoch=
 pkgdesc="Small X utility for checking if a key is pressed"
