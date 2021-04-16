@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-uie-typefind-bin
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 _buildhash='b15abfd90d711bd0b81e90083b16fa39'
 _fooname='foo_uie_typefind'
 pkgdesc='A Columns UI search bar for foobar2000'
@@ -14,6 +14,6 @@ source=("https://yuo.be/static/${_buildhash}/${_fooname}-${pkgver}.fb2k-componen
 md5sums=("${_buildhash}")
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 }
 
