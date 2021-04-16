@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Remove
+Target = usr/lib/binfmt.d/appimage.conf
+
+[Action]
+Description = Unregistering appimage binary format...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/systemd-hook binfmt
+NeedsTargets

@@ -4,7 +4,7 @@
 
 pkgname=appimagelauncher
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
 url="https://github.com/TheAssassin/AppImageLauncher"
@@ -19,7 +19,8 @@ source=("$pkgname::git+$url.git#tag=v$pkgver"
         'git+https://github.com/arsenm/sanitizers-cmake'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/AppImage/cpr'
-        'git+https://github.com/Taywee/args')
+        'git+https://github.com/Taywee/args'
+        'appimage-binfmt-remove.hook')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -27,7 +28,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -84,4 +86,5 @@ package() {
 	make DESTDIR="$pkgdir" install
 
 	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "$srcdir"/*.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
