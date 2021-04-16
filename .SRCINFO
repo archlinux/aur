@@ -1,0 +1,14 @@
+pkgbase = python-pytlv
+	pkgdesc = TLV(tag length value) data parser, especially useful for EMV tags parsing
+	pkgver = 0.71
+	pkgrel = 1
+	url = https://github.com/timgabets/pytlv
+	arch = any
+	license = LGPL2.1
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/bf/fb/05cb227d725bae7fce250c5b4706442d74e94e3f5faa655efd4621ed559c/pytlv-0.71.tar.gz
+	md5sums = a5524ed1c8e7ca26f4408a15d6570b7f
+
+pkgname = python-pytlv
+
