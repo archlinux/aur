@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
-Encoding=UTF-8
-Name=osu!
-Comment=Freeware rhythm video game
-GenericName=Freeware rhythm video game
-Exec=/opt/osu/osulauncher %F
-Icon=/opt/osu/osu.png
-Terminal=true
+Version=1.5
+Name=osu!stable
+GenericName=Rhythm game
+Comment=A free-to-win rhythm game
+Icon=osu-stable
+Exec=osu-stable %F
+Terminal=false
+MimeType=application/x-osu-storyboard;application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap;x-osu-beatmap-archive;
 Categories=Game;
-MimeType=application/x-wine-extension-osz;application/x-wine-extension-osk;application/x-wine-extension-osr;application/x-wine-extension-osz2;x-scheme-handler/osu;

@@ -1,45 +1,39 @@
-# Maintainer: emersion <contact@emersion.fr>
+# Maintainer: Nguyễn Chính Hữu <huupoke12@gmail.com>
+# Contributor: emersion <contact@emersion.fr>
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
-pkgname=osu
-pkgver=20180917
+pkgname='osu'
+pkgver='20210316'
 pkgrel=1
+pkgdesc='A free-to-win rhythm game'
+arch=('i686' 'x86_64')
+url='https://osu.ppy.sh'
+license=('custom')
+depends=('wine' 'winetricks' 'lib32-gnutls' 'lib32-libxcomposite')
+makedepends=('icoutils')
+optdepends=('pipewire-pulse: low-latency audio backend')
+source=("${pkgname}-installer.exe::https://m1.ppy.sh/r/osu!install.exe"
+        "${pkgname}-terms.md::https://raw.githubusercontent.com/ppy/osu-wiki/master/wiki/Legal/Terms/en.md"
+        "${pkgname}.sh"
+        "${pkgname}.desktop"
+        "${pkgname}.xml")
+sha256sums=('4ed5eec1c47ab86c69a3f3478127922227d6a0af2aff9a6461c02c19240883fd'
+            'b79b6325c85092506dadaec05ba1aed91ae63ee6693d0ae588638ba343789076'
+            'f46d063e16da50175154bfd9c09c1c461bb41d17bc2b6544842cbbd247b517e7'
+            '0a2bb920ba3e8ddc9aa6e1bb2321c748b6efb06189294ccdb59fb1977d7a39b5'
+            '85a5f5468a22dad75b8e8cfad8bd0754ed5e4ece693a398de0b90ba1934ac4fe')
 
-source=("http://m1.ppy.sh/r/osu!install.exe"
-	"directsound-latency.reg"
-	"osu.desktop"
-	"osulauncher"
-	"osu.png")
-
-md5sums=('SKIP'
-         '1d285eb3a5bdb6a70da89116dec18441'
-         '45db3339a3f2203418aa6c4f8b5ec838'
-         '60ee5829b38c43bc30eba7805764f71f'
-         'a0289f4f499640bfb3b39bf393140b03')
-
-pkgdesc="Freeware rhythm video game"
-url="http://osu.ppy.sh"
-arch=(i686 x86_64)
-license=(custom)
-install=osu.install
-
-depends=(wine winetricks)
-depends_x86_64=(lib32-alsa-lib lib32-gnutls)
+build() {
+	wrestool -x -t 3 -n 4 -R -o 'osu-stable.png' "${pkgname}-installer.exe"
+	wrestool -x -t 3 -n 15 -R -o 'osu-stable-beatmap.png' "${pkgname}-installer.exe"
+}
 
 package() {
-    cd "$srcdir"
-
-    install -Dm644 osu.desktop "$pkgdir/usr/share/applications/osu.desktop"
-    install -Dm644 osu.png "$pkgdir/opt/osu/osu.png"
-    install -Dm644 directsound-latency.reg "$pkgdir/opt/osu/directsound-latency.reg"
-    install -Dm755 osulauncher "$pkgdir/opt/osu/"
-    mkdir -p "$pkgdir/usr/bin"
-    ln -s /opt/osu/osulauncher "$pkgdir/usr/bin/osu"
-    install -Dm775 osu\!install.exe "$pkgdir/opt/osu/game/osu!install.exe"
-    #mkdir "$pkgdir/opt/osu/game/"
-    #cd "$pkgdir/opt/osu/game/"
-    #tar xjpf "$srcdir/osu.tar.bz2"
-    chown -R root:games "$pkgdir/opt/osu/game/"
-    chmod g+s "$pkgdir/opt/osu/game/"
-    chmod g+w "$pkgdir/opt/osu/game/"
+	install -D -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/osu-stable"
+	install -D -m 644 "${pkgname}-installer.exe" "${pkgdir}/usr/share/${pkgname}/osu-stable-installer.exe"
+	install -D -m 644 "${pkgname}-terms.md" "${pkgdir}/usr/share/licenses/${pkgname}/osu-terms.md"
+	install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/osu-stable.xml"
+	install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/applications/sh.ppy.osu.stable.desktop"
+	install -D -m 644 'osu-stable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/apps/osu-stable.png"
+	install -D -m 644 'osu-stable-beatmap.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/osu-stable-beatmap.png"
 }
