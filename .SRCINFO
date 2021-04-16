@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.22.72
-	pkgrel = 2
+	pkgver = 1.23.71
+	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = custom
@@ -29,21 +29,19 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.22.72
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.23.71
 	source = chromium::git+https://github.com/chromium/chromium.git
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	source = git+https://github.com/brave/brave-core.git#tag=v1.22.72
+	source = git+https://github.com/brave/brave-core.git#tag=v1.23.71
 	source = git+https://github.com/brave/adblock-rust.git
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = chromium-launcher-7.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v7.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-89-patchset-7/chromium-89-patchset-7.tar.xz
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-90-patchset-6/chromium-90-patchset-6.tar.xz
 	source = chromium-no-history.patch
-	source = chromium-no-history2.patch
-	source = add-dependency-on-opus-in-webcodecs.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-dependency-on-opus-in-webcodecs.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
-	source = chromium-glibc-2.33.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-glibc-2.33.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
-	source = use-oauth2-client-switches-as-default.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/use-oauth2-client-switches-as-default.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
-	source = chromium-fix-libva-redef.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-fix-libva-redef.patch?h=packages/chromium&id=199ffbc9f0bd6d902fd2e077b20ff9fa50ae9307
+	source = add-clang-nomerge-attribute-to-CheckError.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-clang-nomerge-attribute-to-CheckError.patch?h=packages/chromium&id=8d3870e027300e243471b1e508f31d16ce45553a
+	source = chromium-glibc-2.33.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-glibc-2.33.patch?h=packages/chromium&id=8d3870e027300e243471b1e508f31d16ce45553a
+	source = use-oauth2-client-switches-as-default.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/use-oauth2-client-switches-as-default.patch?h=packages/chromium&id=8d3870e027300e243471b1e508f31d16ce45553a
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -52,13 +50,11 @@ pkgbase = brave
 	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
-	sha256sums = f8b1558f6c87b33423da854d42f0f69d47885a96d6bf6ce7f26373e93d47442f
+	sha256sums = 3eb9580ea35a96789e02815270498226fa33726f4210a5ee36f3868af2ffae1f
 	sha256sums = ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e
-	sha256sums = d7775ffcfc25eace81b3e8db23d62562afb3dbb5904d3cbce2081f3fe1b3067d
-	sha256sums = b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121
+	sha256sums = 5e22afcb91b5402bc09e80630c5323d61013c3fccb0bbd9b23d1e79a400b00d0
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
-	sha256sums = de9eb3612d44616a500c2eccdffac814eb90ad9a868cc1030d17fc6783d544e2
 
 pkgname = brave
 
