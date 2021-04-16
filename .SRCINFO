@@ -1,0 +1,17 @@
+pkgbase = vim-moonfly-git
+	pkgdesc = A dark color scheme for Vim
+	pkgver = r323.2118df6
+	pkgrel = 1
+	url = https://github.com/bluz71/vim-moonfly-colors
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-moonfly
+	conflicts = vim-moonfly
+	source = vim-moonfly-git::git+https://github.com/bluz71/vim-moonfly-colors
+	md5sums = SKIP
+
+pkgname = vim-moonfly-git
+
