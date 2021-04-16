@@ -1,9 +1,9 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r129.f27f08a
+pkgver=r130.a145700
 pkgrel=1
-pkgdesc="Like neofetch, but much faster because written in c. Downside: only Linux"
+pkgdesc="Like neofetch, but much faster because written in c. Only Linux."
 arch=("any")
 url="https://github.com/LinusDierheimer/fastfetch"
 license=("MIT")
@@ -12,13 +12,15 @@ makedepends=(
   "cmake"
   "pciutils"
   "libxrandr" # Depends on libX11, which headers are also needed
-  "dconf"     # Depends on glib2, which header are also needed
+  "dconf"     # Depends on glib2, which headers are also needed
+  "wayland"
 )
 optdepends=(
   "pciutils: GPU output"
   "libx11: Resolution output"
   "libxrandr: Refresh rate in Resolution output"
   "dconf: GTK ouput on DEs which dont use config files (like Gnome)"
+  "wayland: Better resolution performance + support for monitors with different refresh rates in wayland sessions"
 )
 provides=("flashfetch=${pkgver}")
 source=("git+https://github.com/LinusDierheimer/fastfetch.git")
