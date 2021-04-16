@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=mousemode-git
-pkgver=1.0.r20.f69113c
+pkgver=1.0.r23.aa3aed0
 pkgrel=1
 epoch=
 pkgdesc="An intuitive, home-row mouse replacement"
@@ -27,7 +27,7 @@ build() {
 package() {
 	cd mousemode
     mkdir -p "$pkgdir/usr/bin"
-	make DESTDIR="$pkgdir/" PREFIX=/usr/bin install
+	make DESTDIR="$pkgdir/" PREFIX=/usr install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license.txt"
     install -Dm644 README.MD "$pkgdir/usr/share/doc/$pkgname/README.MD"
 }
