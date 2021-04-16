@@ -56,9 +56,9 @@ build() {
 	cd "$_pkgname"
 	meson \
 		-Dwerror=false \
-		-Dtray=enable \
-		-Dgdk-pixbuf=enable \
-		-Dman-pages=enable \
+		-Dtray=enabled \
+		-Dgdk-pixbuf=enabled \
+		-Dman-pages=enabled \
 		--prefix /usr \
 		"$srcdir/build"
 	ninja $NINJAFLAGS -C "$srcdir/build"
