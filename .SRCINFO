@@ -2,13 +2,14 @@ pkgbase = quake3-osp
 	pkgdesc = Orange Smoothie Productions (OSP) is a modification for Quake 3 that adds many client and server features while still being compatable with the stock game.
 	pkgver = 1.03a
 	pkgrel = 3
-	url = http://www.orangesmoothie.org/
+	url = https://www.orangesmoothie.org/
 	arch = any
 	license = custom
+	makedepends = unzip
 	depends = quake3
 	noextract = osp-Quake3-1.03a_full.zip
-	source = http://osp.dget.cc/orangesmoothie/downloads/osp-Quake3-1.03a_full.zip
-	md5sums = 8b2b4925cce1895067bc617b86c62ea5
+	source = https://osp.dget.cc/orangesmoothie/downloads/osp-Quake3-1.03a_full.zip
+	sha512sums = 9a9bc76ca2e582432e0f8ff6a3fe0bd2e0b0767a1f52bdea8debc7bc9053dc78951335da085b88e0f3690f1f7fda25a628cff9bace7f683f543c5eff90307e19
 
 pkgname = quake3-osp
 
