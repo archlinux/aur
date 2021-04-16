@@ -3,7 +3,7 @@ _npmname=btc-rpc-explorer
 _npmver=3.1.0
 pkgname=${_npmname}
 pkgver=${_npmver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, database-free Bitcoin blockchain explorer, via RPC to Bitcoin Core"
 arch=(any)
 url="https://github.com/janoside/btc-rpc-explorer"
@@ -19,9 +19,15 @@ sha256sums=('639f655f3f2e8dd230faa8807d4903c6f7d6c0425d1d9dbe8ae0559977dd95ea'
 	    '98a6cdcf741807d2cc98825b074a882e520563b7b6528c24d2abd090bc007d0a')
 
 package() {
-  chown -R root:root "${pkgdir}"
   npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/$_npmname-$_npmver.tgz"
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/cli/issues/1103 for details.
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
+  
   install -Dm640 ${pkgname}.default "${pkgdir}/etc/default/${pkgname}"
   install -Dm644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   echo "u ${pkgname} - - /var/lib/${pkgname}" | install -Dm644 /dev/stdin "${pkgdir}"/usr/lib/sysusers.d/"${pkgname}".conf
