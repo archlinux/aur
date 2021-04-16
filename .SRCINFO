@@ -1,6 +1,6 @@
 pkgbase = waterfox-g3-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = waterfox-g3-kpe
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G3.2.0
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G3.2.1
 	source = waterfox-g3.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/waterfox-g3.desktop
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/distribution.ini
 	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/vendor.js
@@ -76,5 +76,5 @@ pkgname = waterfox-g3-kpe
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-g3=2.0
+	provides = waterfox-g3=2.1
 
