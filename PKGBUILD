@@ -39,6 +39,6 @@ package() {
   cd SDL_ttf
 
   make DESTDIR="${pkgdir}/" install
-  install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#  install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
