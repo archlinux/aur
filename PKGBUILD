@@ -3,7 +3,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-openrc
-pkgver=2.2.1
+pkgver=1
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
@@ -15,11 +15,6 @@ source=(ananicy.initd)
 b2sums=('SKIP'
         'SKIP')
 install=$pkgname.install
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 package() {
   mkdir -p $pkgdir/etc/init.d/
