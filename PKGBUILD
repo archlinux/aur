@@ -1,4 +1,4 @@
-# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Maintainer: Peter J <admin@ptr1337.dev>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
@@ -40,7 +40,7 @@ fi
 pkgbase=linux-cacule
 _major=5.11
 pkgver=${_major}.15
-pkgrel=1
+pkgrel=2
 _branch=5.x
 pkgdesc='Linux-cacule. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.kernel.org/"
@@ -86,7 +86,7 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-  cd linux-${_major}
+  cd linux-$pkgver
 
   # Apply any patch
   local src
@@ -101,12 +101,12 @@ prepare() {
     # Copy the config file first
     # Copy "${srcdir}"/config to linux-${pkgver}/.config
     msg2 "Copy "${srcdir}"/config to linux-$pkgver/.config"
-    cp "${srcdir}"/config-$major .config
+    cp "${srcdir}"/config .config
 
     # Customize the kernel
     source "${startdir}"/cacule_config
 
-    cacule_config
+    configure
 
     cpu_arch
 
@@ -162,7 +162,7 @@ prepare() {
 }
 
 build() {
-  cd linux-${_major}
+  cd linux-$pkgver
   make -j$(nproc) all
 }
 
@@ -172,7 +172,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
-  cd linux-${_major}
+  cd linux-$pkgver
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -195,7 +195,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  cd linux-${_major}
+  cd linux-$pkgver
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."

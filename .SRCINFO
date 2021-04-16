@@ -1,7 +1,7 @@
 pkgbase = linux-cacule
 	pkgdesc = Linux-cacule. Branch with Cacule scheduler by Hamad Marri
 	pkgver = 5.11.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
