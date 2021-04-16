@@ -3,7 +3,7 @@
 pkgname=('espeak-ng' 'espeak-ng-espeak')
 pkgbase=espeak-ng
 pkgver=1.50
-pkgrel=3
+pkgrel=4
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
 arch=('x86_64')
@@ -40,7 +40,6 @@ package_espeak-ng() {
 
 package_espeak-ng-espeak() {
   pkgdesc+=' (*speak symlinks)'
-  arch=('any')
   depends=('espeak-ng')
   conflicts=('espeak')
   install -d "$pkgdir"/usr/{bin,include/espeak,share/man/man1}
