@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-uie-vis-peakmeter-spectrum-bin
 pkgver=0.2.0.0
-pkgrel=3
+pkgrel=4
 _fooname='foo_uie_vis_peakmeter_spectrum'
 pkgdesc='A combined peakmeter/spectrum analyser component for foobar2000'
 arch=('any')
@@ -13,6 +13,6 @@ source=('https://hydrogenaud.io/index.php?action=dlattach;topic=117098.0;attach=
 md5sums=('9379abb1bfca344bc4a88527aa3bb3d8')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/foobar2000/user-components/${_fooname}" "$srcdir/${_fooname}.dll"
+  install -Dm644 -t "$pkgdir/usr/share/foobar2000/components/${_fooname}" "$srcdir/${_fooname}.dll"
 }
 

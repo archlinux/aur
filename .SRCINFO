@@ -1,7 +1,7 @@
 pkgbase = foobar2000-component-uie-vis-peakmeter-spectrum-bin
 	pkgdesc = A combined peakmeter/spectrum analyser component for foobar2000
 	pkgver = 0.2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://hydrogenaud.io/index.php?topic=117098.0
 	arch = any
 	license = unknown
