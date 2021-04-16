@@ -1,6 +1,6 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
