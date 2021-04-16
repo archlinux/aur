@@ -30,12 +30,12 @@ pkgbase = linux-raspberrypi4-cacule-lts
 	source_armv7h = config
 	source_armv7h = config.txt
 	source_armv7h = cacule-32bit-converter.patch
-	md5sums_armv7h = 2626b4a01bdf92701728623c692cb3d3
+	md5sums_armv7h = 75f58dcb130220fd3398d13686be9376
 	md5sums_armv7h = 9669d916a5929a2eedbd64477f83d99e
 	md5sums_armv7h = 02808e3fb2f6b142e0cd9f1ae50a8d46
 	source_aarch64 = config8
 	source_aarch64 = config8.txt
-	md5sums_aarch64 = 2d548ec6e83825dd28367fc7fe43ae3d
+	md5sums_aarch64 = 86c79821d456642aaca5285866fb7065
 	md5sums_aarch64 = 9669d916a5929a2eedbd64477f83d99e
 
 pkgname = linux-raspberrypi4-cacule-lts

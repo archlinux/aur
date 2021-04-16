@@ -36,10 +36,10 @@ md5sums=('809847e9aecd8e8f9d57e9f5cc0fd9cc'
          '441ec084c47cddc53e592fb0cbce4edf'
          'f66a7ea3feb708d398ef57e4da4815e9'
          'c8f4368efa54973d516e3d1fc5a069c5')
-md5sums_armv7h=('2626b4a01bdf92701728623c692cb3d3'
+md5sums_armv7h=('75f58dcb130220fd3398d13686be9376'
                 '9669d916a5929a2eedbd64477f83d99e'
                 '02808e3fb2f6b142e0cd9f1ae50a8d46')
-md5sums_aarch64=('2d548ec6e83825dd28367fc7fe43ae3d'
+md5sums_aarch64=('86c79821d456642aaca5285866fb7065'
                  '9669d916a5929a2eedbd64477f83d99e')
 
 # setup vars
