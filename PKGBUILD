@@ -34,6 +34,12 @@ pkgver() {
   python setup.py --version
 }
 
+prepare() {
+  cd "$pkgname"
+  # Use the distributions' main entry point, so plugins are isolated.
+  sed -i 's/^\(\s*plover = plover.\)main:main$/\1dist_main:main/' setup.cfg
+}
+
 build() {
   cd "$pkgname"
   python setup.py build
