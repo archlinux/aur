@@ -1,0 +1,25 @@
+pkgbase = dmscripts-git
+	pkgdesc = A collection of dmenu scripts
+	pkgver = 1.0.r87.e78608e
+	pkgrel = 1
+	url = https://gitlab.com/dwt1/dmscripts.git
+	arch = any
+	license = GPL3
+	depends = dmenu
+	depends = xclip
+	depends = findutils
+	depends = zenity
+	depends = xdotool
+	depends = xorg-xrandr
+	optdepends = emacs: editor for dmconf
+	optdepends = slock: used by dmlogout
+	optdepends = libnotify: used by dmlogout
+	optdepends = qutebrowser: used by dmqute
+	optdepends = reddio: used by dmred
+	provides = dmscripts
+	conflicts = dmscripts
+	source = git+https://gitlab.com/dwt1/dmscripts.git
+	md5sums = SKIP
+
+pkgname = dmscripts-git
+
