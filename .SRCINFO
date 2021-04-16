@@ -1,6 +1,6 @@
 pkgbase = firefox-tridactyl-git
 	pkgdesc = Replace Firefox's control mechanism with one modelled on Vim
-	pkgver = 1.17.0.r12.gcfc9b24a
+	pkgver = 1.21.1.r143.g5a11a97f
 	pkgrel = 1
 	url = https://github.com/tridactyl/tridactyl
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = firefox-tridactyl-git
 	makedepends = git
 	makedepends = node-gyp
 	makedepends = python
+	makedepends = strip-nondeterminism
 	makedepends = yarn
 	source = git+https://github.com/tridactyl/tridactyl.git
 	sha512sums = SKIP
