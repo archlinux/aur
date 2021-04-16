@@ -1,14 +1,14 @@
 pkgbase = obs-rtspserver-bin
 	pkgdesc = RTSP server plugin for obs-studio
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/iamscottxu/obs-rtspserver
 	arch = x86_64
 	license = GPL
 	depends = obs-studio
-	source = https://github.com/iamscottxu/obs-rtspserver/releases/download/v2.0.1/obs-rtspserver-v2.0.1-linux.tar.gz
+	source = https://github.com/iamscottxu/obs-rtspserver/releases/download/v2.0.2/obs-rtspserver-v2.0.2-linux.tar.gz
 	source = https://raw.githubusercontent.com/iamscottxu/obs-rtspserver/master/LICENSE
-	md5sums = 8a60f17c45ba712e7cdf281bebab1a34
+	md5sums = e48978a61eb47e51fa17533c89309712
 	md5sums = SKIP
 
 pkgname = obs-rtspserver-bin
