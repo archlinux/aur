@@ -1,6 +1,6 @@
 post_install() {
   instruct
-  echo "and enable the extension with gnome-tweak-tool."
+  echo "and enable the extension with gnome-tweaks."
 }
 
 post_upgrade() {
