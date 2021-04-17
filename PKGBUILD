@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jicofo-git
-pkgver=1.0.740+0+g02244472
+pkgver=1.0.741+0+gadaedbfd
 pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus git build"
 arch=('any')
