@@ -1,17 +1,17 @@
 pkgbase = apg-go
-        pkgdesc = A "Automated Password Generator"-clone
-        pkgver = 0.3.0
-        pkgrel = 1
-        url = https://github.com/wneessen/apg-go
-        arch = i686
-        arch = x86_64
-        arch = armv6h
-        arch = armv7h
-        arch = aarch64
-        license = MIT
-        makedepends = go
-        source = https://github.com/wneessen/apg-go/archive/refs/tags/v0.3.0.tar.gz
-        sha256sums = acb750ac03de7d467ef3b5f576a7b7eea47d0a4f521c2647d80f0ebe641d3c56
+	pkgdesc = A "Automated Password Generator"-clone
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/wneessen/apg-go
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = https://github.com/wneessen/apg-go/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 1a798bd729c2985a11001118ad7d222e75c4f01e642184c37dec409a899a565b
 
 pkgname = apg-go
 
