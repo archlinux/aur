@@ -1,13 +1,14 @@
 pkgbase = vtfedit
 	pkgdesc = A .NET graphical frontend for VTFLib
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nemstools.github.io/pages/VTFLib-Download.html
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
 	depends = wine
 	depends = winetricks
+	depends = zenity
 	source = http://nemstools.github.io/files/vtfedit133.zip
 	source = vtfedit.sh
 	source = vtfedit.png

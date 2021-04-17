@@ -2,12 +2,12 @@
 
 pkgname=vtfedit
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A .NET graphical frontend for VTFLib'
 arch=('x86_64')
 url='https://nemstools.github.io/pages/VTFLib-Download.html'
 license=('GPL2' 'LGPL2.1')
-depends=('wine' 'winetricks')
+depends=('wine' 'winetricks' 'zenity')
 source=('http://nemstools.github.io/files/vtfedit133.zip'
         "${pkgname}.sh"
 	"${pkgname}.png"
