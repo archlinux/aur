@@ -1,0 +1,14 @@
+[Unit]
+Description=netbox request queue worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=netbox
+WorkingDirectory=/var/lib/netbox
+ExecStart=/usr/bin/python /var/lib/netbox/manage.py rqworker
+#PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

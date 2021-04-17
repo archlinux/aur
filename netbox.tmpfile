@@ -1,1 +1,2 @@
-d /run/netbox 0775 netbox netbox
+d /var/lib/netbox 0700 netbox netbox -
+d /run/netbox 0775 netbox netbox -

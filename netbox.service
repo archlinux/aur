@@ -1,0 +1,12 @@
+[Unit]
+Description=Netbox Daemon
+After=network.target
+
+[Service]
+User=netbox
+Type=simple
+WorkingDirectory=/var/lib/netbox
+ExecStart=/usr/bin/gunicorn -w 2 -b unix:/run/netbox/netbox.sock --pythonpath /var/lib/netbox netbox.wsgi
+
+[Install]
+WantedBy=multi-user.target

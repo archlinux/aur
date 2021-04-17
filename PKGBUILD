@@ -1,70 +1,69 @@
-# Maintainer: Anthony Ruhier <anthony.ruhier@gmail.com>
+# Maintainer: Roshless <pkgs@roshless.com>
 
-_name=netbox
-pkgname=${_name}
-pkgver=2.3.1
-_realver="${pkgver}"
-pkgrel=2
-pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
+pkgname='netbox'
+pkgver=2.11.0
+pkgrel=1
+pkgdesc='IP address management (IPAM) and data center infrastructure management (DCIM) tool.'
 arch=('any')
-url="https://github.com/digitalocean/${_name}"
+url='https://github.com/digitalocean/netbox'
 license=('Apache-2.0')
-depends=('python'
-         'gunicorn'
-         'libffi'
-	 'libpgf'
-	 'openssl'
-	 'python-coreapi'
-	 'python-pycryptodomex'
-	 'python-django'
-	 'python-django-cors-headers'
-	 'python-django-debug-toolbar'
-	 'python-django-filter'
-	 'python-django-mptt'
-	 'python-django-rest-framework'
-	 'python-django-rest-swagger'
-	 'python-django-tables2'
-	 'python-graphviz'
-	 'python-lxml'
-	 'python-markdown'
-	 'python-natsort'
-	 'python-ncclient'
-	 'python-netaddr'
-	 'python-openapi-codec'
-	 'python-paramiko'
-	 'python-pillow'
-	 'python-py-gfm'
-	 'python-pytz'
-	 'python-psycopg2'
-	 'python-simplejson'
-	 'python-xmltodict'
-	 'python-yaml')
+depends=(
+  'python'
+  'gunicorn'
+  'python-django'
+	'python-django-cacheops'
+	'python-django-cors-headers'
+	'python-django-debug-toolbar'
+	'python-django-filter'
+	'python-django-mptt'
+	'python-django-pglocks'
+	'python-django-prometheus'
+	'python-django-rq'
+	'python-django-tables2'
+	'python-django-taggit'
+	'python-django-timezone-field'
+	'python-django-rest-framework'
+	'python-drf-yasg'
+	'python-jinja'
+	'python-markdown'
+	'python-netaddr'
+	'python-pillow'
+	'python-psycopg2-binary'
+	'python-pycryptodome'
+	'python-pyaml'
+	'python-redis'
+	'python-svgwrite'
+)
 
-conflicts=("${_name}-git")
-replaces=("${_name}-git")
-install="${_name}.install"
-source=("${url}/archive/v${_realver}.tar.gz"
-        "${_name}-system.service"
-        "${_name}.tmpfile"
-	"gunicorn_config.py")
-sha256sums=('284c830fcacf99febd1f650fb323cc9ce1c4c31044e4ee70eb791c53f3f10ddb'
-            'dc83de37ff9151de3d309fd43c6eff3b30886882012b81fd3ff2f3a5a706bea6'
-            '1028bac96ddcd18c10646dff26027b4891fcab4381436e2b6ea3302887a5586f'
-            '7a5ae05cad7ec14193a43ef080776b5525c80b6258762a6cb6a108db83861ff9')
-backup=('etc/netbox/gunicorn_config.py' 'etc/netbox/configuration.py')
+conflicts=("$pkgname-git")
+replaces=("$pkgname-git")
+source=("https://github.com/digitalocean/netbox/archive/v$pkgver.tar.gz"
+        "$pkgname.service"
+        "$pkgname-rq.service"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfile"
+        "upgrade.sh")
+backup=('etc/netbox/configuration.py')
 
 package() {
-	install -d -m775 "$pkgdir/etc/${_name}"
-	install -d "$pkgdir/opt/"${_name}
-	cp -r ${_name}-${_realver}/${_name}/. "$pkgdir/opt/${_name}"
+	#install -dm775 "$pkgdir/etc/$pkgname"
+	install -d "$pkgdir/var/lib/"$pkgname
+	cp -r $pkgname-$pkgver/$pkgname/. "$pkgdir/var/lib/$pkgname"
 
-	install -D -m644 ${_name}-system.service "$pkgdir/usr/lib/systemd/system/${_name}.service"
-	install -D -m644 ${_name}.tmpfile "$pkgdir/usr/lib/tmpfiles.d/${_name}.conf"
+	install -Dm644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dm644 $pkgname-rq.service "$pkgdir/usr/lib/systemd/system/$pkgname-rq.service"
+	install -Dm644 $pkgname.tmpfile "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-	install -d "$pkgdir/etc/${_name}"
-	install -D -m644 gunicorn_config.py "$pkgdir/etc/netbox/gunicorn_config.py"
-	install -D -m644 ${_name}-${_realver}/${_name}/${_name}/configuration.example.py "$pkgdir/etc/netbox/configuration.py"
-	ln -s /etc/netbox/configuration.py "$pkgdir/opt/netbox/netbox/configuration.py"
+	install -d "$pkgdir/etc/$pkgname"
+	install -D -m644 $pkgname-$pkgver/$pkgname/$pkgname/configuration.example.py "$pkgdir/etc/netbox/configuration.py"
+	install -D -m755 upgrade.sh "$pkgdir/etc/netbox/upgrade.sh"
+	ln -s "/etc/netbox/configuration.py" "$pkgdir/var/lib/netbox/netbox/configuration.py"
 }
 
-# vim: set ts=2 sw=2 ft=sh noet:
+md5sums=('ef794d344ab5a3b2d9c854867580d0cf'
+         '55dcba60ed4cb66b350d3d8f2946aef9'
+         'ad07c0c741a231b8d8012221bee2c167'
+         'b653f7da646e78ad5c69d3960bbafd9c'
+         '17532f81746d5378abbf9721c526247b'
+         '97c618de19719135aa84458789b025b1')

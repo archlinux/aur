@@ -1,40 +1,10 @@
-_NAME=netbox
-
-_create_user() {
-	getent passwd ${_NAME} > /dev/null || useradd -d /opt/${_NAME} -s /bin/false -r ${_NAME} > /dev/null
-}
-
 post_install() {
-    _create_user
-
-	# Create a directory in /run if it does not exist
-	if [ ! -d /run/${_NAME} ]; then
-		mkdir /run/${_NAME}
-		chown ${_NAME}. /run/${_NAME}
-		chmod 775 /run/${_NAME}
-	fi
-
-    echo ""
-    echo -e "Follow the instructions on http://netbox.readthedocs.io/en/latest/installation/netbox/"
-    echo -e "to finish the configuration, and enable and start the systemd "
-    echo -e "service: "
-    echo "    systemctl enable --now netbox.service"
-    echo ""
-    echo -e "Tweak the netbox and gunicorn configuration in "
-    echo "/etc/netbox/configuration.py and /etc/netbox/gunicorn_config.py"
-    echo ""
+    chown -R netbox:netbox /var/lib/netbox
+    echo "Configure netbox in /etc/netbox/configuration.py"
+    echo "After configuring run /etc/netbox/upgrade.sh as root"
 }
 
 post_upgrade() {
-    _create_user
-
-    echo ""
-    echo "To end the migration, use the following commands:"
-    echo "    /opt/netbox/manage.py migrate"
-    echo "    /opt/netbox/manage.py collectstatic --noinput"
-    echo ""
-}
-
-post_remove() {
-	userdel -f ${_NAME}
+    chown -R netbox:netbox /var/lib/netbox
+    sh /etc/netbox/upgrade.sh
 }
