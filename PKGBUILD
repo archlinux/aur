@@ -3,14 +3,14 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_version=1.0.4628
-_url=https://download.jitsi.org/stable/jitsi-meet-prosody_1.0.4628-1_all.deb
+_version=1.0.4900
+_url=https://download.jitsi.org/stable/jitsi-meet-prosody_1.0.4900-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=3
+pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -23,7 +23,6 @@ backup=(
 )
 source=(
         "$_url"
-        "jitsi.install"
 )
 provides=(${_pkgbase})
 conflicts=(${_pkgbase})
@@ -51,5 +50,4 @@ package() {
 	
 
 }
-sha256sums=('2532cb6899f01a2013b7d22b0906f3ceb3e8747d92b43e5c8852347e30da02b8'
-            'f1be0156fa053042b6f0306a8966a4b5b65c5fd3b53ac2268d275fb9daa986bf')
+sha256sums=('58ccdc7878d254c4232ee29bc8def5a0c7a399dd6dd3f70083c2ab69a2f23533')

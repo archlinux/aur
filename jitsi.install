@@ -7,3 +7,15 @@ The webapps is here:
   - /usr/lib/jitsi-meet-prosody/
 __EOF__
 }
+post_upgrade() {
+    cat <<__EOF__
+
+The turnserver configuration has changed.
+Please check the wiki: https://wiki.archlinux.org/index.php/Jitsi-meet
+And check the example provided in:
+/usr/share/doc/jitsi-meet-prosody/prosody.cfg.lua-jvb.example
+
+You need to replace the turncredentials with external_services.
+
+__EOF__
+}
