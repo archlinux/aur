@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-screenshotlocations-git
-	pkgdesc = A GNOME extension for changing the screenshot output directory
-	pkgver = 31.dfdcf12
+	pkgdesc = Gnome-shell extension disabling hotcorners
+	pkgver = 25.2948bc8
 	pkgrel = 1
-	url = https://codeberg.org/kiyui/gnome-shell-screenshotlocations-extension
+	url = https://github.com/TimurKiyivinski/gnome-shell-screenshotlocations-extension
 	arch = any
 	license = GPLv2
 	makedepends = git
 	depends = gnome-shell
-	source = git://codeberg.org/kiyui/gnome-shell-screenshotlocations-extension.git
+	source = git://github.com/TimurKiyivinski/gnome-shell-screenshotlocations-extension
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-screenshotlocations-git
