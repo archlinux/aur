@@ -3,8 +3,8 @@
 _pyname=glance
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
-pkgver=21.0.0
-pkgrel=2
+pkgver=22.0.0
+pkgrel=1
 pkgdesc="OpenStack Image Service"
 arch=(any)
 url="https://docs.openstack.org/glance/latest/"
@@ -92,17 +92,17 @@ source=(
 	tmpfiles.conf
 	sudoers.conf
 )
-md5sums=('95ced978f71751da21fdc83f21978e3b'
+md5sums=('baab79bde4c5ce421aea2ed310a4efab'
          '40fe040b0cda8bdd0343bd1bcceded7f'
          '745f0b78baf56f15f4291458428f9c5b'
          'b6124b27e12d81c9d310570b16ec99cb'
          '6dbfee57bf274e2b155989939b902200')
-sha256sums=('567e26e3a92898025f6fc4764c2c5bdb5c78980ead42771b5c75b4a7aed93b22'
+sha256sums=('fe4c48facebdce46275a403dfbf0cd93b13416cdc2dcd3a7067a97c66efcf541'
             '1e791e7de9c673604bff92faec87abf98d1df985e59b057434b2b9be384a2216'
             '1ec680f4917b757f7378c037e770d9ba8ef9b25f32677045d6f3fd68aca0bfef'
             '2d3acd49ac7be8dffc95053704e5c0e13abbbfabcd0afde01cf2ba1b33753749'
             '8eaa11829714ec6b341955468da053d9b67e1b0b3d86a65295224fc3f69165c1')
-sha512sums=('83d49f96a82de0093fe3991f5138febc403964f5af1012de6e63395b82a368e08b2b7d142a889244c4261d1d019336e69050e9149d40b88e1c175f7a561e4f5d'
+sha512sums=('5dc4ad3bf127b52853c336b2551e02896203d6037408716590545e3b8d34f34bd5ec5aa15842cc76edb9c34851a980e39ed6c92426cf2915bd5aeac7b11c82b9'
             '5af1000483b1784c163b38f7cc888318c41d60b37640008ac42b19477ac6de68dc2caa2149886d16e82429f5e85939f4aca58baf9b3b4175451c49733d8c547c'
             '49fdfe6cb42277f8f74e165a4fc70d15cae5a4442c8bae7fbbd69f27e61ee7f88d12d184816926be85de98fac88257bc975137c1fa7a3562dbf8abdd26d03b25'
             '32b080e9a93d6fbf431bf88e767f76d4004cd995d516ecb0d124d1c51de63fdf6c027c47157123c5660b6fed916164a640438285417e77c52c9b46a93c3cfab9'
