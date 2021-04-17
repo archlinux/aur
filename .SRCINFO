@@ -1,7 +1,8 @@
 pkgbase = tr-unicode
 	pkgdesc = Unix tr command reimplemented in perl with unicode support
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/dlazesz/tr-unicode
 	arch = any
 	depends = perl
 	source = tr-unicode.pl
