@@ -1,12 +1,12 @@
 pkgbase = libterminput
 	pkgdesc = Terminal input parsing library
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/maandree/libterminput
 	arch = x86_64
 	license = custom:ISC
-	source = libterminput-1.0.tar.gz::https://github.com/maandree/libterminput/archive/1.0.tar.gz
-	sha256sums = ec0d858d12e2e297f22710d2dba0a2459b2025da54f69c22c2366d52998776f0
+	source = libterminput-1.0.1.tar.gz::https://github.com/maandree/libterminput/archive/1.0.1.tar.gz
+	sha256sums = c0dc304e379e43c3893ee189c67c60e19b53b0d3c8edba6719fcf4186d7388a4
 
 pkgname = libterminput
 
