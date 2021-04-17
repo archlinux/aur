@@ -1,46 +1,32 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Andrew O'Neill <andrew at meanjollies dot com>
 # Contributor: poisonby <poisonby@tutanota.com>
 # Contributor: Jason Scurtu (scujas) <jscurtu@gmail.com>
 # Contributor: Marcin Tydelski <marcin.tydelski@gmail.com>
 # Contributor: Jan Lukas Gernert (JeanLuc) <https://launchpad.net/~eviltwin1>
 
 pkgname=feedreader
-pkgver=2.0.2
-pkgrel=3
-pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
-arch=('i686' 'x86_64')
-url="https://github.com/jangernert/FeedReader"
+_pkgname=FeedReader
+pkgver=2.11.0
+pkgrel=1
+pkgdesc='Modern desktop application designed to complement existing web-based RSS accounts'
+arch=('x86_64')
+url='https://jangernert.github.io/FeedReader/'
 license=('GPL3')
-conflicts=("$pkgname-git")
-depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'libpeas' 'gnome-online-accounts' 'curl')
-makedepends=('vala' 'gobject-introspection' 'cmake')
-source=("$url/archive/v$pkgver.tar.gz"
-        "$pkgname.patch")
-sha256sums=('949262912bc07f8d1ec72dfa1bbeafb0ed1cea992589e1ee5901e0630c714261'
-            '6a13326630678db6f9de94adcd3e289dc7dba2e656c75967868c0a23ba6e653e')
-
-prepare() {
-  cd FeedReader-$pkgver
-
-  patch -p1 -i ../$pkgname.patch
-}
+depends=('curl' 'org.freedesktop.secrets' 'gnome-online-accounts' 'gumbo-parser' 'libgee' 'libpeas')
+makedepends=('gobject-introspection' 'meson' 'vala')
+source=("https://github.com/jangernert/FeedReader/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('9f679cc08e5673e9e90541b0a0c4066990deacddfe2692f6611799d99bdf5b3e')
 
 build() {
-  cd FeedReader-$pkgver
+  arch-meson $_pkgname-$pkgver build
+  meson compile -C build
+}
 
-  mkdir build
-  cd build
-
-  cmake \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DGSETTINGS_COMPILE=OFF \
-	  -DCMAKE_INSTALL_LIBDIR=lib \
-	  ..
-  make
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd FeedReader-$pkgver/build
-
-  make DESTDIR=$pkgdir install
+  DESTDIR="$pkgdir" meson install -C build
 }
