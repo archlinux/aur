@@ -2,15 +2,14 @@
 
 pkgname='deskshot.sh'
 pkgver=1.2
-pkgrel=1
-_gitname=deskshot
+pkgrel=2
 _gittag="v${pkgver}"
 
 pkgdesc="Take a screenshot of the selected desktops and merge them into a single image."
 
 arch=('x86_64')
 
-url="https://github.com/daltomi/${_gitname}"
+url="https://github.com/daltomi/${pkgname}"
 
 license=('GPL3')
 
@@ -23,5 +22,5 @@ sha256sums=('SKIP')
 validpgpkeys=('95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1')
 
 package() {
-  install -Dm755 "$_gitname/deskshot.sh" "$pkgdir/usr/bin/deskshot.sh"
+  install -Dm755 "$pkgname/deskshot.sh" "$pkgdir/usr/bin/deskshot.sh"
 }

@@ -1,8 +1,8 @@
 pkgbase = deskshot.sh
 	pkgdesc = Take a screenshot of the selected desktops and merge them into a single image.
 	pkgver = 1.2
-	pkgrel = 1
-	url = https://github.com/daltomi/deskshot
+	pkgrel = 2
+	url = https://github.com/daltomi/deskshot.sh
 	arch = x86_64
 	license = GPL3
 	depends = xdotool
@@ -11,7 +11,7 @@ pkgbase = deskshot.sh
 	depends = imagemagick
 	depends = bash
 	depends = coreutils
-	source = git+https://github.com/daltomi/deskshot.git?signed#tag=v1.2
+	source = git+https://github.com/daltomi/deskshot.sh.git?signed#tag=v1.2
 	validpgpkeys = 95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1
 	sha256sums = SKIP
 
