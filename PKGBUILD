@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=turnserver
-_tag=4899
-_version=1.0.4899
+_version=1.0.4917
+_url=https://download.jitsi.org/unstable/jitsi-meet-turnserver_1.0.4917-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}
@@ -23,7 +23,7 @@ backup=(
 )
 makedepends=('tar')
 source=(
-        "https://download.jitsi.org/unstable/${_debname}_1.0.${_tag}-1_all.deb"
+        "$_url"
 )
 
 provides=(${_pkgbase})
@@ -43,4 +43,4 @@ package() {
 	# install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-turn/turnserver.conf doc/debian/jitsi-meet/jitsi-meet.conf doc/debian/jitsi-meet-turn/coturn-certbot-deploy.sh
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('950040082434d16286ac455fa74ffdde1cf4809cfcd2fe4d21b7852ff0b924ab')
+sha256sums=('cbd6ee6a740fb8eec66669eac9546013d0d955eed0fc93e0748da325e0dbfd02')
