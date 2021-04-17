@@ -16,14 +16,13 @@ md5sums=('a8b9a48651a82e89a859ff388aafc93f')
 
 package() {
 	# Shared library
-	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$_suffix/embedded/linvst3x.so" "$pkgdir/usr/share/LinVst/linvst3x.so"
+	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/linvst3x.so" "$pkgdir/usr/share/LinVst/linvst3x.so"
 
 	# Embedded
-	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$_suffix/embedded/lin-vst3-server-x.exe" "$pkgdir/usr/bin/lin-vst3-server-x.exe"
-	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$_suffix/embedded/lin-vst3-server-x.exe.so" "$pkgdir/usr/bin/lin-vst3-server-x.exe.so"
+	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/lin-vst3-server-x.exe" "$pkgdir/usr/bin/lin-vst3-server-x.exe"
+	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/lin-vst3-server-x.exe.so" "$pkgdir/usr/bin/lin-vst3-server-x.exe.so"
 
 	# Converter
-	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$_suffix/convert/linvst3xconvert" "$pkgdir/usr/bin/linvst3xconvert"
-	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$_suffix/convert/linvst3xconverttree" "$pkgdir/usr/bin/linvst3xconverttree"
+	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/linvst3xconvert" "$pkgdir/usr/bin/linvst3xconvert"
 }
 
