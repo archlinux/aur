@@ -31,11 +31,11 @@ package() {
   
   make  -C build DESTDIR="${pkgdir}/" install
 
-  mv -v ${pkgdir}"/usr/bin/apitrace" ${pkgdir}"/usr/bin/apitrace32"
-  rm -r ${pkgdir}/usr/share/doc
-  rm ${pkgdir}/usr/bin/*retrace
+  mv -v "${pkgdir}/usr/bin/apitrace" "${pkgdir}/usr/bin/apitrace32"
+  rm -r "${pkgdir}"/usr/share/doc
+  rm "${pkgdir}"/usr/bin/*retrace
   
-  install -m755 -d ${pkgdir}"/usr/share/licenses/apitrace"
+  install -m755 -d "${pkgdir}/usr/share/licenses/apitrace"
   ln -s apitrace "$pkgdir/usr/share/licenses/apitrace/"${pkgname}
 }
 
