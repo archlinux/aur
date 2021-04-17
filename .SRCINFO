@@ -1,0 +1,16 @@
+pkgbase = rofi-cuff-git
+	pkgdesc = Rofi wrapper for cuff, Use the Jackett search API to find torrents.
+	pkgver = r19.80a0d84
+	pkgrel = 1
+	url = https://github.com/loiccoyle/rofi-cuff
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = cuff
+	optdepends = jackett: Use many torrent trackers with software that supports torznab/potato feeds.
+	source = rofi-cuff::git+https://github.com/loiccoyle/rofi-cuff.git
+	md5sums = SKIP
+
+pkgname = rofi-cuff-git
+
