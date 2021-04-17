@@ -26,7 +26,7 @@ package() {
 
     # place configuration
     for file in etc/airvpn/*; do
-        install -Dm644 "$file" "$pkgdir"
+        install -Dm644 "$file" "$pkgdir/etc/airvpn/"
     done
 
     # place D-Bus config
