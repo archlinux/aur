@@ -15,16 +15,16 @@ sha512sums=('48591850f28f1a8f4b4986df14090ef7bd57cbfbad739cb0013db021f6f5bcb3c59
             '66db53f7499425eb1ff572df4a674f378ed681edeb48ea5926b21d39c8a399c36740e03de101e23a47e043fcce29f66a03c64dc813dc5beda1043d0057711fa5')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   # gcc44 build patch
-  patch -Np0 -i ${srcdir}/aiksaurus-gcc44.patch
+  patch -Np0 -i "${srcdir}"/aiksaurus-gcc44.patch
 
   ./configure --prefix=/usr --with-gtk
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
