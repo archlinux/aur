@@ -13,7 +13,7 @@ pkgbase = instamenu-schemas
 	depends = dconf
 	provides = instamenu-schemas=2021.04.17
 	source = instamenu-schemas-2021.04.17.tar.gz::https://github.com/The-Repo-Club/instamenu-schemas/archive/2021.04.17.tar.gz
-	sha256sums = SKIP
+	sha256sums = 90528b50d91e9f9535e6769d2aeb56e80d0aaa0fe727b9d5485c42efd8c37940
 
 pkgname = instamenu-schemas
 
