@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-prosody-git
-pkgver=1.0.4899+0+gfd4819aec
+pkgver=1.0.4917+0+g67ac48cac
 pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins git build"
 arch=('any')
