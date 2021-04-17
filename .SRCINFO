@@ -1,10 +1,9 @@
 pkgbase = comfetch
 	pkgdesc = System information fetching script
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	arch = any
 	license = unknown
-	depends = zsh
 	depends = awk
 	depends = grep
 	source = comfetch
