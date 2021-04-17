@@ -1,0 +1,37 @@
+pkgbase = adb-arm-bin
+	pkgdesc = Android debug bridge (adb) binary (from debian package)
+	pkgver = 1.0.41
+	pkgrel = 1
+	url = https://packages.debian.org/sid/adb
+	arch = armv7h
+	license = GPL
+	makedepends = binutils
+	depends = android-udev
+	provides = adb
+	noextract = adb_10.0.0+r36-7_armhf.deb
+	noextract = android-libadb_10.0.0+r36-7_armhf.deb
+	noextract = android-libbase_10.0.0+r36-7_armhf.deb
+	noextract = android-libboringssl_10.0.0+r36-1_armhf.deb
+	noextract = android-libcrypto-utils_10.0.0+r36-7_armhf.deb
+	noextract = android-libcutils_10.0.0+r36-7_armhf.deb
+	noextract = android-liblog_10.0.0+r36-7_armhf.deb
+	noextract = android-sdk-platform-tools-common_28.0.2+3_all.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-platform-external-boringssl/android-libboringssl_10.0.0+r36-1_armhf.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-platform-system-core/adb_10.0.0+r36-7_armhf.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-platform-system-core/android-libadb_10.0.0+r36-7_armhf.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-platform-system-core/android-libbase_10.0.0+r36-7_armhf.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-platform-system-core/android-libcrypto-utils_10.0.0+r36-7_armhf.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-platform-system-core/android-libcutils_10.0.0+r36-7_armhf.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-platform-system-core/android-liblog_10.0.0+r36-7_armhf.deb
+	source = http://ftp.de.debian.org/debian/pool/main/a/android-sdk-meta/android-sdk-platform-tools-common_28.0.2+3_all.deb
+	md5sums = 853680b70dca8fb274832ffc27b2b757
+	md5sums = 37c938a48e1aba223c01cb8db0a66da2
+	md5sums = 752ac11d4ccbd3e68dc8a4d09e788c1e
+	md5sums = 47a62ffe8a818a2f0bf16ec86924ebed
+	md5sums = b82dd6a3f10e93b5daf508fcf2413ddb
+	md5sums = 953c51e0fac01958676909f5a9929de8
+	md5sums = 7fdbe4830a1c8b15373103170810077f
+	md5sums = 4361d3e9704510b3e9b4345517f232a8
+
+pkgname = adb-arm-bin
+
