@@ -13,5 +13,5 @@ pkgbase = ansible-lint-junit
 	source = https://github.com/wasilak/ansible-lint-junit/archive/0.16.tar.gz
 	sha256sums = c717fdeaac2efc7bcf5d9f80015e1cd7b2856d0fa7b5ca4f636d43b4d0c2315a
 
-pkgname = python-
+pkgname = python-ansible-lint-junit
 

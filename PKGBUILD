@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgbase='ansible-lint-junit'
-pkgname="python-${pkgname}"
+pkgname="python-${pkgbase}"
 pkgver='0.16'
 pkgrel='1'
 pkgdesc='ansible-lint to JUnit converter'
