@@ -1,6 +1,6 @@
 pkgbase = thunderbird-appmenu-bin
 	pkgdesc = Thunderbird-appmenu, binary version
-	pkgver = 78.9.0
+	pkgver = 78.9.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/thunderbird-appmenu/
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = thunderbird-appmenu-bin
 	depends = ttf-font
 	depends = icu
 	optdepends = libcanberra: sound support
-	provides = thunderbird=78.9.0
+	provides = thunderbird=78.9.1
 	conflicts = thunderbird
-	noextract = thunderbird-appmenu-78.9.0-1-x86_64.pkg.tar.zst
+	noextract = thunderbird-appmenu-78.9.1-1-x86_64.pkg.tar.zst
 	options = !emptydirs
 	options = !makeflags
-	source = https://download.opensuse.org/repositories/home:/nicman23/Arch/x86_64/thunderbird-appmenu-78.9.0-1-x86_64.pkg.tar.zst
-	source = https://download.opensuse.org/repositories/home:/nicman23/Arch/x86_64/thunderbird-appmenu-78.9.0-1-x86_64.pkg.tar.zst.sig
+	source = https://download.opensuse.org/repositories/home:/nicman23/Arch/x86_64/thunderbird-appmenu-78.9.1-1-x86_64.pkg.tar.zst
+	source = https://download.opensuse.org/repositories/home:/nicman23/Arch/x86_64/thunderbird-appmenu-78.9.1-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = F4E1120072D04191A13F2B32F268E71029DBD9A7
 	sha256sums = SKIP
 	sha256sums = SKIP
