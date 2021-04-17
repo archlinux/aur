@@ -1,6 +1,6 @@
 pkgbase = pantheon-applications-menu-git
 	pkgdesc = The Pantheon Application Menu
-	pkgver = 2.7.1.r32.1c142f0b
+	pkgver = 2.7.1.r110.e980206a
 	pkgrel = 1
 	url = https://github.com/elementary/applications-menu
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = pantheon-applications-menu-git
 	depends = gtk3
 	depends = json-glib
 	depends = libgee
-	depends = libgranite.so
 	depends = libsoup
 	depends = libhandy
+	depends = libgranite.so=6-64
 	depends = libswitchboard-2.0.so
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel-3.0.so
 	depends = zeitgeist
 	provides = pantheon-applications-menu
 	conflicts = pantheon-applications-menu
