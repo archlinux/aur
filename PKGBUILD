@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-videobridge-git
-pkgver=2.1+478+gc6da57bdb
+pkgver=2.1+481+g114f91856
 pkgrel=1
 pkgdesc="Jitsi Meet Videobridge git build"
 arch=('any')
