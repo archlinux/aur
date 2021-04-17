@@ -2,7 +2,7 @@
 
 pkgname=pyfetch-git
 pkgver=r97.83bd9e8
-pkgrel=2
+pkgrel=3
 pkgdesc="Stylish and simple fetch for your terminal."
 arch=('x86_64')
 url="https://kreatea.ml/kreato/pyfetch"
