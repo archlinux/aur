@@ -25,10 +25,10 @@ md5sums=('SKIP')
 build(){
 	cd "$srcdir/$pkgname-$pkgver"
     	python setup.py build
+    	python setup.py install --root="$pkgdir" --optimize=1 
 }
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-    	python setup.py install --root="$pkgdir" --optimize=1 
 	# license
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
