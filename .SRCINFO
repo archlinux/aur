@@ -1,6 +1,6 @@
 pkgbase = themix-icons-numix-git
 	pkgdesc = Numix icons plugin for Themix GUI designer
-	pkgver = 20.06.07.r8.g91e4a9747
+	pkgver = 21.04.14.r0.g97c01aee9
 	pkgrel = 1
 	url = https://github.com/numixproject/numix-icon-theme
 	arch = x86_64
