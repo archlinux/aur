@@ -1,14 +1,14 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=mongoclock
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='Just a humongous clock for the terminal'
 arch=(any)
 url='https://github.com/maandree/mongoclock'
 license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(749309e4503790e2e2a18b282debb6f44a8f0f2e81b66bf2467fde234ee25393)
+sha256sums=(5f8d080d8ec07bacf34eff618a63a4cc01ee828675c94031350128bd1e292c10)
 
 build() {
     cd "$srcdir/mongoclock-$pkgver"
