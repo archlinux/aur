@@ -2,7 +2,7 @@
 
 pkgname=python-coincurve
 _pkgname=coincurve
-pkgver=13.0.0
+pkgver=15.0.0
 pkgrel=1
 pkgdesc='Cross-platform Python CFFI bindings for libsecp256k1'
 arch=('any')
@@ -23,4 +23,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('9985627dc0c81fe98c3d2e97412801e9726d6110249317a2775cf365f0ba0df5')
+sha256sums=('06524b11edb9427dc34cfdb5cd4bb707bf2c874b8bb901ce8c3aad48163e5a65')
