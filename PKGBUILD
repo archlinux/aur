@@ -5,7 +5,7 @@
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
 pkgver=1.12.7+r593.20200602.ee50e77
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
@@ -16,7 +16,13 @@ depends=(
   'python-condconfigparser'
   'tk>=8.5'
 )
-makedepends=()
+makedepends=(
+  "gettext"
+  "imagemagick"
+  "librsvg"
+  "python-setuptools"
+  "python-sphinx"
+)
 optdepends=(
   "geographiclib"
   "python-geographiclib"
@@ -54,6 +60,7 @@ build() {
   cd "${srcdir}/${_pkgname}"
   printf '%s\n' "${url}" > "upstream.url"
 
+  make icons update-po update-mo update-pot doc
   python setup.py build
 }
 
@@ -65,6 +72,8 @@ package() {
   for _docfile in upstream.url ChangeLog ChangeLog.FGo README.rst; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+
+  cp -rv docs "${pkgdir}/usr/share/doc/${_pkgname}/docs"
 
   install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
