@@ -2,13 +2,13 @@
 
 pkgname=color-picker
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A color picker for elementary OS."
 arch=('x86_64')
 depends=('granite')
 makedepends=('meson' 'vala')
 conflicts=("color-picker-git")
-provides=("color-picker")
+provides=("colorpicker")
 url="https://github.com/RonnyDo/ColorPicker"
 license=("GPL3")
 source=("https://raw.githubusercontent.com/RonnyDo/ColorPicker/master/LICENSE")
@@ -31,5 +31,5 @@ package() {
 
     DESTDIR="$pkgdir/" ninja install
 
-    ln -s "/usr/bin/com.github.ronnydo.colorpicker" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/bin/com.github.ronnydo.colorpicker" "${pkgdir}/usr/bin/colorpicker"
 }
