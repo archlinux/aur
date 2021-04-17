@@ -2,14 +2,14 @@
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _commit="fee05fd016b22d222ec85846786c1d627b03b40e"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
-provides=('hummingbird-bin')
-conflicts=('hummingbird-bin')
+provides=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin')
+conflicts=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin')
 depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4')
 makedepends=('gcc' 'make' 'cmake' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
 source=("git+$url.git#commit=$_commit")
@@ -47,6 +47,9 @@ package() {
     install -Dm755 bluetit "$pkgdir/usr/bin/bluetit"
     install -Dm755 goldcrest "$pkgdir/usr/bin/goldcrest"
     install -Dm755 hummingbird "$pkgdir/usr/bin/hummingbird"
+
+    # place documentation
+    install -Dm755 README.md "$pkgdir/usr/share/doc/airvpn-suite/README.md"
 
     # place configuration
     cd $_pkgname/etc
