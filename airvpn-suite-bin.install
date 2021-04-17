@@ -1,0 +1,39 @@
+post_install() {
+	getent passwd airvpn >/dev/null
+    if [ $? -eq '2' ]; then
+        useradd -Um airvpn
+    fi
+    chown -R airvpn:airvpn /etc/airvpn
+    
+    echo "#########################################################"
+    echo "If you want to be able to execute goldcrest as your user,"
+    echo "add yourself to the airvpn group, like this:"
+    echo "sudo usermod -aG airvpn <username>"
+    echo "#########################################################"
+    
+    # workaround for ExecStart path hardcoded in unit file
+    # ln -s /usr/bin/bluetit /sbin/bluetit
+    
+    systemctl daemon-reload
+    systemctl enable bluetit.service
+    systemctl start bluetit.service
+}
+
+pre_upgrade() {
+    systemctl stop bluetit.service
+}
+
+post_upgrade() {
+    systemctl start bluetit.service
+}
+
+pre_remove() {
+    systemctl stop bluetit.service
+    systemctl disable bluetit.service
+}
+
+post_remove() {
+    userdel -r airvpn 2>/dev/null
+    getent group airvpn >/dev/null && gpasswd airvpn -M "" && groupdel airvpn
+    # rm /sbin/bluetit
+}

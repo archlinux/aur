@@ -1,0 +1,24 @@
+pkgbase = airvpn-suite-bin
+	pkgdesc = AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/AirVPN/AirVPN-Suite
+	install = airvpn-suite-bin.install
+	arch = x86_64
+	arch = i686
+	arch = armv7l
+	arch = aarch64
+	license = GPL3
+	makedepends = curl
+	depends = dbus
+	depends = openssl
+	depends = libxml2
+	depends = xz
+	depends = lz4
+	provides = hummingbird-bin
+	conflicts = hummingbird-bin
+	source = https://eddie.website/repository/AirVPN-Suite/1.0/AirVPN-Suite-x86_64-1.0.0.tar.gz
+	sha512sums = 6286fa0a5c13b356f2cd4202a42dd70d217d724491ae0b2e7183931f9d5196d53b9729be62d94a220193ccb2075aee74ac79e4e86413492c4dbdf3e5e82e8a0d
+
+pkgname = airvpn-suite-bin
+
