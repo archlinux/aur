@@ -2,8 +2,9 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=4899
-_version=1.0.4899
+_version=1.0.4917
+_url=https://download.jitsi.org/unstable/jitsi-meet-web_1.0.4917-1_all.deb
+_url_config=https://download.jitsi.org/unstable/jitsi-meet-web-config_1.0.4917-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}-web
@@ -24,11 +25,11 @@ backup=(
   "etc/webapps/${_pkgbase}/interface_config.js"
 )
 source=(
-        "https://download.jitsi.org/unstable/${_debname}_1.0.${_tag}-1_all.deb"
-        "https://download.jitsi.org/unstable/${_debname}-config_1.0.${_tag}-1_all.deb"
+        "$_url"
+        "config_${_version}.deb::$_url_config"
 )
 noextract=(
-	"${_debname}-config_1.0.${_tag}-1_all.deb"
+    "config_${_version}.deb"
 )
 provides=(${_pkgbase})
 conflicts=(${_pkgbase})
@@ -37,8 +38,7 @@ build() {
         rm -rf ${_pkgbase}
         mkdir ${_pkgbase}
         tar xJf data.tar.xz -C ${_pkgbase}
-	ar p "${_debname}-config_1.0.${_tag}-1_all.deb" data.tar.xz | tar xJC ${_pkgbase}
-
+        ar p "config_${_version}.deb" data.tar.xz | tar xJC ${_pkgbase}
 }
 
 package() {
@@ -50,9 +50,9 @@ package() {
 
         install -d "$DESTDIR"
         install -d "$CONFDIR"
-	install -d "$DOCDIR"
+        install -d "$DOCDIR"
 
-	cp -R usr/share/jitsi-meet/* "${DESTDIR}"
+        cp -R usr/share/jitsi-meet/* "${DESTDIR}"
         cp usr/share/jitsi-meet-web-config/config.js "${DESTDIR}"
         cp -R usr/share/jitsi-meet-web-config/* "${DOCDIR}"
 
@@ -67,5 +67,5 @@ package() {
 
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('31f68ccaec4cb5209888329a2d2eecec4b6210a96d60fba85db8e65042c6c677'
-            '3e6b45a7ecbf16e070ed6f176d999bc63b7528db54c364ef6ac39cecd5cbeea8')
+sha256sums=('b3107c4bb0cc407b6f593774b9f8192f9cfca10fd3b145ff8c9460ec18b1d0aa'
+            '63a1d6cfb406c927f5d195c33c8042fa458313e361bdc25fc271bee89f1c6203')
