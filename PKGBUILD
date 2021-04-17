@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r1177.edeb0d7bd
+pkgver=1.7.0.r1192.3db5e42b9
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -44,6 +44,8 @@ pkgver() {
 
   git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
+
+
 
 build() {
   mkdir -p build
