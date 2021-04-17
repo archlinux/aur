@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201601w
 	pkgdesc = Epson printer driver (L380/L382)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64

@@ -4,7 +4,7 @@ pkgname=epson-inkjet-printer-201601w
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Epson printer driver (L380/L382)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -22,6 +22,7 @@ build() {
   cd "${FILTER_FILE%.tar.gz}"
   aclocal
   libtoolize
+  automake -a
   chmod +x configure
   # if you have runtime problems: add "--enable-debug" and look into /tmp/epson-inkjet-printer-filter.txt
   ./configure LDFLAGS="$LDFLAGS -Wl,--no-as-needed" --prefix=/opt/$pkgname
