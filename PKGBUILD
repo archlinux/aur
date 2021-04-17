@@ -2,7 +2,7 @@
 
 pkgname=sfd2ufo
 _pkgname=sfdLib
-pkgver=1.0.7
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='An SFD to UFO converter providing sdflib'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 provides=('python-sfdlib')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('16d3c02d70c11a4a6760586c8c6a483f13ef8238404091c3a31b03b6ebfe06b7')
+sha256sums=('b4500e61f3714c762cb03f164823b5ea921b8e462a2a480a98f7a1cfb9a06ef4')
 
 build() {
 	cd "$_pkgname-$pkgver"
