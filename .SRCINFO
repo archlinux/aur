@@ -1,33 +1,33 @@
 pkgbase = nvidia-dkms-performance
 	pkgdesc = NVIDIA driver sources for linux with some optimizations
-	pkgver = 460.67
-	pkgrel = 2
+	pkgver = 465.24.02
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	provides = nvidia=460.67
-	provides = nvidia-dkms=460.67
-	provides = nvidia-dkms-performance=460.67
+	provides = nvidia=465.24.02
+	provides = nvidia-dkms=465.24.02
+	provides = nvidia-dkms-performance=465.24.02
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	conflicts = nvidia-dkms
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/460.67/NVIDIA-Linux-x86_64-460.67-no-compat32.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/465.24.02/NVIDIA-Linux-x86_64-465.24.02-no-compat32.run
 	source = nvidia.hook
 	source = 0001-nvidia-dkms-conf.patch
 	source = 0002-linux-rt.patch
 	source = 0003-nvidia-drm-modeset.patch
 	source = 0004-NVreg.patch
 	source = 0005-Powermizer-max-performance.patch
-	sha256sums = a19253cf805f913a3b53098587d557fb21c9b57b1568cb630e128ebb3276c10e
+	sha256sums = a1f6c50de475a5b9dda10285d9ff1eaafe921c640038e47249ac7839ee94ad6d
 	sha256sums = 717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293
-	sha256sums = 354a76e1bb670ad06865d4928b6428c8ac69570d1f7eb7108769cb9c2c1746fb
+	sha256sums = 94066f2ed8c8ba9cfc74e8f12a167a84d641f10e01c0d63106f4fa97f7b17c37
 	sha256sums = 18b7e1cf21834a646d5b6a7cf49daae5d55bc7e1f23fd5a96e05a8aa4a74de57
 	sha256sums = a9465149c336c8f0bded15a4d473f16156d6da3a9fe4965ebe8a9afba5519c9f
-	sha256sums = d24e341f9a0e38f03f4e425e5f59e407604463fc3daee36009ecbd0fefa8b801
-	sha256sums = 9140aa5ea1b7c0704a2606b27a61af42b0309eceebac496704a9e8db18815aa4
+	sha256sums = b33bae527d7e8e1056151ddf0afb6c0c934092b2faad0fe053e363cb349c2a9e
+	sha256sums = 16e4d4349f2cb2684900bdf7ddcbbc543be2760c0e42efab92d429b2204def6c
 
 pkgname = nvidia-dkms-performance
 	depends = dkms
-	depends = nvidia-utils=460.67
+	depends = nvidia-utils=465.24.02
 	depends = libglvnd
 

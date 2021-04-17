@@ -1,17 +1,15 @@
-From 9a444cf83fe301b5e25817004764c170f05de431 Mon Sep 17 00:00:00 2001
-From: Cabopust <cabopust@yandex.ru>
-Date: Tue, 26 Jan 2021 20:34:37 +0300
-Subject: [PATCH] NVIDIA PowerMizer Max Performance
+From f482b19b44a708541c3300a30f8ebd58b9a0aa55 Mon Sep 17 00:00:00 2001
+From: Vasiliy Stelmachenok <cabopust@yandex.ru>
+Date: Sat, 17 Apr 2021 13:36:55 +0300
+Subject: [PATCH] Nvidia Max Performance Powermizer without xorg.conf
 
----
- kernel/nvidia/nv-reg.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Signed-off-by: Vasiliy Stelmachenok <cabopust@yandex.ru>
 
 diff --git a/kernel/nvidia/nv-reg.h b/kernel/nvidia/nv-reg.h
-index 156ce69..b46bb1d 100644
+index 7ea5acf..a3246e5 100644
 --- a/kernel/nvidia/nv-reg.h
 +++ b/kernel/nvidia/nv-reg.h
-@@ -749,7 +749,7 @@ NV_DEFINE_REG_ENTRY_GLOBAL(__NV_ENABLE_PCIE_RELAXED_ORDERING_MODE, 0);
+@@ -804,7 +804,7 @@ NV_DEFINE_REG_ENTRY_GLOBAL(__NV_ENABLE_PCIE_RELAXED_ORDERING_MODE, 0);
  NV_DEFINE_REG_ENTRY_GLOBAL(__NV_REGISTER_PCI_DRIVER, 1);
  
  
@@ -20,6 +18,6 @@ index 156ce69..b46bb1d 100644
  NV_DEFINE_REG_STRING_ENTRY(__NV_REGISTRY_DWORDS_PER_DEVICE, NULL);
  NV_DEFINE_REG_STRING_ENTRY(__NV_RM_MSG, NULL);
  NV_DEFINE_REG_STRING_ENTRY(__NV_GPU_BLACKLIST, NULL);
---
-2.30.0
+-- 
+2.31.0
 
