@@ -1,6 +1,6 @@
 pkgbase = python-pyiot-git
 	pkgdesc = Python library for IOT devices
-	pkgver = v0.1.r107.ged0c49d
+	pkgver = v0.1.r109.g02280ab
 	pkgrel = 1
 	url = https://github.com/angrysoft/pycouchdb
 	arch = any
