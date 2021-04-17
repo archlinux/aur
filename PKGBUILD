@@ -1,7 +1,7 @@
 # Maintainer: Milan Šťastný <milan@statnej.ch>
 
 pkgname=eam-git
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=2
 pkgdesc='Epic Asset Manager used to manage assets from Epic Games Store'
 url='https://github.com/AchetaGames/Epic-Asset-Manager'
@@ -12,7 +12,7 @@ conflicts=(eam)
 provides=(eam)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"eam.desktop")
-sha256sums=('456d93d8c46328b7fd1678b3dc29039e9abb75fe9c40bb28ab4de3adde268a49'
+sha256sums=('f12eb177eb95cf48d2d46e26090fa8750bba1852ca85d739a8053ef466298e91'
             '29c00c0e03e20546d3115fbe9294492e5c8ff81af09565aebcb311ade5034dbf')
 
 prepare() {
