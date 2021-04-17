@@ -1,11 +1,12 @@
 pkgbase = ruby-fusuma
 	pkgdesc = Fusuma is multitouch gesture recognizer.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iberianpig/fusuma
 	arch = any
 	license = MIT
 	depends = ruby
+	depends = ruby-posix-spawn
 	optdepends = xdotool: Used to send shortcuts on Xorg
 	optdepends = ruby-fusuma-plugin-sendkey: Fusuma plugin that sending virtual keyboard events
 	optdepends = ruby-fusuma-plugin-keypress: Keypress combination plugin for Fusuma
