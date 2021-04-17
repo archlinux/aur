@@ -1,13 +1,15 @@
 pkgbase = patchup-bin
 	pkgdesc = A tool to compute and apply binary patches for files and directories
-	pkgver = 0.4.0
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/dezyh/patchup/cli
+	url = https://github.com/dezyh/patchup
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	provides = patchup
-	source = https://github.com/dezyh/patchup/cli/releases/download/v0.4.0/patchup-0.4.0-x86_64.tar.gz
-	sha256sums = 193357a14205e8d74df5d691d6f8566e5a0eb70dd1d55d5dab26c70a5405c62a
+	conflicts = patchup
+	source = patchup-0.1.0::https://github.com/dezyh/patchup/releases/download/0.1.0/patchup-cli-bin.tar.gz
+	sha256sums = 34880cc6ed038b52a30992d5878a025cbd4434047ac06ab6b4b5d3eae48235c5
 
 pkgname = patchup-bin
 
