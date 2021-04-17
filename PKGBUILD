@@ -1,7 +1,7 @@
 # Maintainer: Ramon Fried <rfried.dev@gmail.com>
 pkgname="bitwise"
 pkgver="0.42"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Terminal based bitwise calculator in curses"
 arch=("any")
 license=("GPL3")
