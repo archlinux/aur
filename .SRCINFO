@@ -10,8 +10,8 @@ pkgbase = gentor
 	depends = curl
 	depends = systemd
 	depends = iptables
-	source = https://github.com/ChihebBayouli/gentor/releases/download/v0.2/setup.bin
-	md5sums = 1a3e3ea7ce4c827483adfa31030ab041
+	source = https://github.com/ChihebBayouli/gentor/releases/download/v0.2/setup.sh
+	md5sums = b0cb18aac523c689a12a223abf95be81
 
 pkgname = gentor
 

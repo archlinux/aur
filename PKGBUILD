@@ -7,12 +7,12 @@ arch=(any)
 url="https://github.com/ChihebBayouli/gentor"
 license=('custom')
 depends=(wget curl systemd iptables)
-source=("https://github.com/ChihebBayouli/gentor/releases/download/v0.2/setup.bin")
+source=("https://github.com/ChihebBayouli/gentor/releases/download/v0.2/setup.sh")
 install=.INSTALL
-md5sums=('1a3e3ea7ce4c827483adfa31030ab041')
+md5sums=('b0cb18aac523c689a12a223abf95be81')
 build() {
-    chmod +x setup.bin
+    chmod +x setup.sh
 }
 package() {
-    sudo ./setup.bin
+    sudo ./setup.sh
 }
