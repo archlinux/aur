@@ -1,0 +1,18 @@
+pkgbase = thoptv
+	pkgdesc = Thoptv is the best source to enjoy Ultimate Movies, sports Matches, IPL and Latest Shows, radio and many much more thing’s.it’s totally free of cost you don’t need to pay any single to use this application it has a premium plan.
+	pkgver = 46.1.0
+	pkgrel = 1
+	url = https://github.com/kkdops/thoptv/
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = thoptv-46.1.0.AppImage
+	options = !strip
+	source_x86_64 = thoptv-46.1.0.AppImage::https://github.com/kkdops/thoptv/releases/download/46.1.0/thoptv.46.1.0.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/kkdops/thoptv/46.1.0/LICENSE
+	sha256sums_x86_64 = 268af89aa50b96622da295e40b4ff278d89b5d6448cdbd6e5b87343df0165690
+	sha256sums_x86_64 = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
+
+pkgname = thoptv
+
