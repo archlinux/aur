@@ -13,13 +13,13 @@ source=("https://github.com/mellowcandle/bitwise/releases/download/v0.42/bitwise
 md5sums=('9acbcdd65cc830ac6ac3f7c80837ae06')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-v${pkgver}"
 	./configure --prefix=/usr
     make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-v$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
 
