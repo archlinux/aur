@@ -1,4 +1,4 @@
-# Maintainer: Douglas Iuri Medeiros Cabral <diurimc at gmail dot com>
+# Maintainer: Douglas Iuri Medeiros Cabral <douglasimc at outlook dot com>
 pkgname=forticlient-vpn
 pkgver=6.4.3.0959
 pkgrel=1
