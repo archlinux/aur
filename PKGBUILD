@@ -2,7 +2,7 @@
 
 pkgname=python-dash-html-components
 _pkgname=dash_html_components
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Dash UI HTML components suite"
 arch=('any')
@@ -12,7 +12,7 @@ depends=()
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('83eaa39667b7c3e6cbefa360743e6e536d913269ea15db14308ad022c78bc301')
+sha256sums=('88adb77a674d5d7d0835d71c469f6e7b4aa692f9673808a474d244b71863c58a')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
