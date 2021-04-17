@@ -2,13 +2,14 @@
 
 pkgname=gossa
 pkgdesc="a fast and simple multimedia fileserver"
-pkgver=0.1.7.1
+pkgver=0.1.8.0
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 url='https://github.com/pldubouilh/gossa'
 provides=('gossa')
 conflicts=('gossa-bin')
+depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}::git+https://github.com/pldubouilh/gossa#tag=v${pkgver}")
 sha256sums=('SKIP')
