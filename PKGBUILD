@@ -1,10 +1,10 @@
 # Maintainer: ComfyDev comfydev@protonmail.com
 pkgname="comfetch"
-pkgver="0.2"
+pkgver="0.3"
 pkgrel=1
 pkgdesc="System information fetching script"
 arch=('any')
-depends=('zsh' 'awk' 'grep')
+depends=('bash' 'awk' 'grep')
 url=""
 license=('unknown')
 source=('comfetch')

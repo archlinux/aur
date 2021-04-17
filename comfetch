@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 os=$(/bin/cat /etc/os-release | grep "PRETTY_NAME" | awk -F '=' '{print $2}' | awk -F '"' '{print $2}')
 user=$(whoami)
 hostname=$(uname -n)
@@ -9,23 +9,23 @@ ansicolor=" \u001b[$(/bin/cat /etc/os-release | grep "ANSI_COLOR" | awk -F '=' '
 reset="\u001b[0m"
 
 function fetch(){
-echo "$ansicolor""    .--.     ""USER$reset | $user"
-echo "$ansicolor""   |o_o |    ""HOST$reset | $hostname"
-echo "$ansicolor""   |:_/ |    ""OS  $reset | $os"
-echo "$ansicolor""  //   \ \\   ""KERN$reset | $kernel"
-echo "$ansicolor"" (|     | )  ""RAM $reset | $usedmem""MiB/""$totalmem""MiB"
-echo "$ansicolor""/'|_   _/'\\ $reset"
-echo "$ansicolor""\\___)=(___/ $reset"
+echo -e "$ansicolor""    .--.     ""USER$reset | $user"
+echo -e "$ansicolor""   |o_o |    ""HOST$reset | $hostname"
+echo -e "$ansicolor""   |:_/ |    ""OS  $reset | $os"
+echo -e "$ansicolor""  //   \ \\   ""KERN$reset | $kernel"
+echo -e "$ansicolor"" (|     | )  ""RAM $reset | $usedmem""MiB/""$totalmem""MiB"
+echo -e "$ansicolor""/'|_   _/'\\ $reset"
+echo -e "$ansicolor""\\___)=(___/ $reset"
 }
 
 for arg in $@; do
-	if [ $arg = "-h" ] || [ $arg = "--help" ]; then;
+	if [ $arg = "-h" ] || [ $arg = "--help" ]; then
 		function fetch(){
 		echo "Usage: comfetch [switches]"
 		echo "  -h or --help     | Show this message"
 		echo "  -nc or --nocolor | Don't use colors"
 		}
-	elif [ $arg = "-nc" ] || [ $arg = "--nocolor" ]; then;
+	elif [ $arg = "-nc" ] || [ $arg = "--nocolor" ]; then
 		ansicolor=" "
 		reset=""
 	fi
