@@ -1,8 +1,8 @@
 # Maintainer: Daniel Massey <masseyd1396@gmail.com>
 
 pkgname=mcpelauncher-thesonicmaster
-pkgver=20210415
-pkgrel=2
+pkgver=20210417
+pkgrel=1
 pkgdesc="Minecraft Bedrock Edition Linux launcher with license error fixed."
 arch=("i686" "x86_64")
 url="https://www.thesonicmaster.net/software/mcpelauncher-thesonicmaster"
@@ -11,7 +11,7 @@ depends=("curl" "libegl" "libevdev" "libpng" "libx11" "libxi" "libzip" "openssl"
 makedepends=("clang" "cmake" "ninja")
 conflicts=("mcpelauncher-msa-git" "mcpelauncher-msa-ui-qt-git" "mcpelauncher-linux-git" "mcpelauncher-ui-git")
 source=("https://www.thesonicmaster.net/software/mcpelauncher-thesonicmaster/source/$pkgname-$pkgver.tar.xz")
-sha256sums=("a92c6cc4060d2777d860204cd53b8e75bb948b6ad2c0beb5f821c02ba64514df")
+sha256sums=("c25c047514f8bbeddda5aed51e13aa97a00e76b7a525604d1cdd28a4add61d68")
 
 build() {
 	cd $pkgname-$pkgver/msa
