@@ -1,0 +1,19 @@
+pkgbase = pineapple-calendar-git
+	pkgdesc = Plasmoid applet as a DigitalClock replacement with ability to display Chinese Lunar Calendar
+	pkgver = r24.0c660e2
+	pkgrel = 1
+	url = https://github.com/BLumia/pineapple-calendar/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt5-declarative
+	depends = icu
+	depends = plasma-workspace
+	source = git+https://github.com/BLumia/pineapple-calendar.git
+	md5sums = SKIP
+
+pkgname = pineapple-calendar-git
+
