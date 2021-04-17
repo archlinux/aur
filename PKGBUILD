@@ -32,7 +32,6 @@ depends=(
 )
 makedepends=(
  'binutils'
- 'gcc-ada'
  'libmpc>=0.8.1'
  'gmp>=4.3.2'
  'mpfr>=2.4.2'

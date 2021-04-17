@@ -8,7 +8,6 @@ pkgbase = libgccjit
 	license = GPL3
 	checkdepends = dejagnu
 	makedepends = binutils
-	makedepends = gcc-ada
 	makedepends = libmpc>=0.8.1
 	makedepends = gmp>=4.3.2
 	makedepends = mpfr>=2.4.2
