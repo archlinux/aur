@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=VTFEdit
+Comment=VTF file viewer/editor
+Type=Application
+Version=1.3.3
+Exec=vtfedit %f
+Terminal=false
+Icon=vtfedit.png
+MimeType=image/vnd.valve.source.texture
+Encoding=UTF-8
