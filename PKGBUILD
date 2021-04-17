@@ -25,9 +25,9 @@ md5sums=('e5808ad997ba32c498803822078748c3'
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 -i ${srcdir}/10_utf16.diff
-  patch -p1 -i ${srcdir}/11_unknown_encoding.diff
-  patch -Np0 -i ${srcdir}/CVE-2008-2109.patch
+  patch -p1 -i "${srcdir}"/10_utf16.diff
+  patch -p1 -i "${srcdir}"/11_unknown_encoding.diff
+  patch -Np0 -i "${srcdir}"/CVE-2008-2109.patch
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
