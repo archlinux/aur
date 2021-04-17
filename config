@@ -5,12 +5,6 @@ JICOFO_HOST=localhost
 # sets the XMPP domain (default: none)
 JICOFO_HOSTNAME=jitsi-meet.example.org
 
-# sets the secret used to authenticate as an XMPP component
-JICOFO_SECRET=__PASSWORD_FOR_COMPONENT_focus.jitsi-meet.example.org__
-
-# sets the port to use for the XMPP component connection
-JICOFO_PORT=5347
-
 # sets the XMPP domain name to use for XMPP user logins
 JICOFO_AUTH_DOMAIN=auth.jitsi-meet.example.org
 
