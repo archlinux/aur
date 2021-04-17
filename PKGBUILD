@@ -2,7 +2,7 @@
 
 _projectname=Mamba
 pkgname="${_projectname,,}"
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK"
 arch=('i686' 'x86_64')
@@ -12,16 +12,9 @@ depends=('cairo')
 makedepends=('alsa-lib' 'fluidsynth' 'jack' 'liblo' 'libsigc++' 'libsmf')
 optdepends=('new-session-manager: for NSM support')
 groups=('pro-audio')
-source=(
-    "https://github.com/brummer10/${_projectname}/releases/download/v${pkgver}/${_projectname}_${pkgver}.tar.gz"
-)
-sha256sums=('e3614400e84af9fea190bc74eaf0d985e5420ee42bf32a35fe85cff6ee7ea214')
+source=("https://github.com/brummer10/Mamba/files/6329780/${_projectname}_${pkgver}.tar.gz")
+sha256sums=('974403e08ab5d0bc92dcfad7cfdc4c95df87c5d8ca586794923bdb2254569838')
 
-
-prepare() {
-  cd "${srcdir}/${_projectname}_${pkgver}"
-  sed -i '/update-desktop-database/d' src/Makefile
-}
 
 build() {
   cd "${srcdir}/${_projectname}_${pkgver}"
