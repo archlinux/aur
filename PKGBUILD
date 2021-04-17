@@ -1,21 +1,21 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Maintainer: Reik Keutterling <spielkind at gmail dot com>
 
-_gemname_='iniparse'
-pkgname="ruby-${_gemname_}"
-pkgver='1.4.2'
+_gemname=iniparse
+pkgname=ruby-$_gemname
+pkgver=1.5.0
 pkgrel=1
-pkgdesc='A pure Ruby library for parsing INI documents'
-arch=('any')
-url='http://github.com/antw/iniparse'
-license=('MIT')
-depends=('ruby')
+pkgdesc="IniParse is a pure Ruby library for parsing INI configuration and data files."
+arch=(any)
+url="https://github.com/antw/iniparse"
+license=(MIT)
+depends=(ruby ruby-bundler)
 options=(!emptydirs)
-source=("https://rubygems.org/downloads/${_gemname_}-${pkgver}.gem")
-noextract=("${_gemname_}-${pkgver}.gem")
-sha256sums=('1920345bccaab2e6ffb573add6399273c2a0b9ec463f1dff9126736d86c944de')
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('739875d41f5d002f41eba8d38eacda4460da8159')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname_}-${pkgver}.gem"
-  rm "${pkgdir}/${_gemdir}/cache/${_gemname_}-${pkgver}.gem"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
