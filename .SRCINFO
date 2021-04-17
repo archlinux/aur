@@ -10,7 +10,7 @@ pkgbase = linvst3-x-bin
 	depends = gtk3
 	optdepends = jack
 	conflicts = linvst3x
-	source = https://github.com/osxmidi/LinVst3-X/releases/download/4.2/LinVst3-X-4.2-Debian-Stretch.zip
+	source = https://github.com/osxmidi/LinVst3-X/releases/download/4.2/LinVst3-X-4.2-.zip
 	md5sums = cbe75292d36afca9a06813d3919d58d3
 
 pkgname = linvst3-x-bin
