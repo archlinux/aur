@@ -11,6 +11,7 @@ source=("https://github.com/ChihebBayouli/gentor/releases/download/v0.2/setup.sh
 install=.INSTALL
 md5sums=('b0cb18aac523c689a12a223abf95be81')
 build() {
+    cd "$srcdir"
     chmod +x setup.sh
 }
 package() {
