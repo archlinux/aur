@@ -6,7 +6,7 @@ pkgname=(
   tlp-git
   tlp-rdw-git
 )
-pkgver=1.3.0b1.r1.e2fbc0c
+pkgver=1.3.1.r184.dc41e02
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
@@ -35,7 +35,6 @@ package_tlp-git() {
     'acpi_call: ThinkPad battery functions, Sandy Bridge and newer'
     'bash-completion: Bash completion'
     'ethtool: Disable Wake On Lan'
-    'lsb-release: Display LSB release version in tlp-stat'
     'smartmontools: Display S.M.A.R.T. data in tlp-stat'
     'tp_smapi: ThinkPad battery functions'
     'x86_energy_perf_policy: Set energy versus performance policy on x86 processors'
