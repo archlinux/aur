@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-velodyne-simulator
 	pkgdesc = ROS - Metapackage allowing easy installation of Velodyne simulation components.
-	pkgver = 1.0.10
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = http://wiki.ros.org/velodyne_simulator
 	arch = i686
