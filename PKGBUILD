@@ -26,8 +26,8 @@ package() {
 	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/linvst3xconvert" "$pkgdir/usr/bin/linvst3xconvert"
 	
 	#test
-	install -Dm755 "$srcdir/LinVst3-$pkgver-$suffix/TestVst3/testvst3.exe" "$pkgdir/usr/bin/testvst3x.exe"
-	install -Dm755 "$srcdir/LinVst3-$pkgver-$suffix/TestVst3/testvst3.exe.so" "$pkgdir/usr/bin/testvst3x.exe.so"
+	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/TestVst3/testvst3.exe" "$pkgdir/usr/bin/testvst3x.exe"
+	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/TestVst3/testvst3.exe.so" "$pkgdir/usr/bin/testvst3x.exe.so"
 
 }
 
