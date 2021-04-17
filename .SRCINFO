@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-velodyne-gazebo-plugins
 	pkgdesc = Gazebo plugin to provide simulated data from Velodyne laser scanners.
-	pkgver = 1.0.10
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = http://wiki.ros.org/velodyne_gazebo_plugins
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = ros-melodic-velodyne-gazebo-plugins
 	depends = ros-melodic-tf
 	depends = ros-melodic-gazebo-ros
 	depends = python-rospkg
-	source = ros-melodic-velodyne-gazebo-plugins::git+https://bitbucket.org/DataspeedInc/velodyne_simulator.git#tag=1.0.10
+	source = ros-melodic-velodyne-gazebo-plugins::git+https://bitbucket.org/DataspeedInc/velodyne_simulator.git#tag=1.0.12
 	sha256sums = SKIP
 
 pkgname = ros-melodic-velodyne-gazebo-plugins

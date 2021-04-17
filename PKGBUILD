@@ -4,7 +4,7 @@ pkgdesc="Gazebo plugin to provide simulated data from Velodyne laser scanners."
 url='http://wiki.ros.org/velodyne_gazebo_plugins'
 
 pkgname='ros-melodic-velodyne-gazebo-plugins'
-pkgver='1.0.10'
+pkgver='1.0.12'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
