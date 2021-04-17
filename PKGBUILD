@@ -1,7 +1,7 @@
-# Maintainer: Tomáš Mládek <tmladek{at}inventati{dot}org>
+# Maintainer: Tomáš Mládek <t@mldk.cz>
 pkgname=fortune-mod-hyakunin-isshu
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fortune cookies: Ogura Hyakunin Isshu poems"
 url="http://jti.lib.virginia.edu/japanese/hyakunin/index.html"
 arch=('any')
