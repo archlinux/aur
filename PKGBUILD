@@ -1,9 +1,8 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-binname=${pkgname}-binary
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -11,7 +10,7 @@ license=(MIT)
 depends=()
 makedepends=("go>=1.16")
 source=(
-	"$binname-$pkgver.tar.gz::https://github.com/spiral/$binname/archive/v$pkgver.tar.gz"
+	"$pkgname-binary-$pkgver.tar.gz::https://github.com/spiral/$binname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz::https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
@@ -27,7 +26,7 @@ options=("!buildflags")
 prepare() {
 	export GOPATH="$srcdir"/gopath
 
-	cd "$srcdir/$binname-$pkgver"
+	cd "$srcdir/$pkgname-binary-$pkgver"
 	go mod edit -replace "github.com/spiral/roadrunner/v2=../roadrunner-$pkgver"
 	go mod download
 }
@@ -39,7 +38,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 
-	cd "$srcdir/$binname-$pkgver"
+	cd "$srcdir/$pkgname-binary-$pkgver"
 
 	CGO_ENABLED=0 go build \
 		-trimpath \
@@ -51,13 +50,13 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$binname-$pkgver"
+	cd "$srcdir/$pkgname-binary-$pkgver"
 
 	go test -race -covermode=atomic -coverprofile ./coverage.txt ./...
 }
 
 package() {
-	install -Dt "$pkgdir/usr/bin/" -m755 "$srcdir/$binname-$pkgver/rr"
+	install -Dt "$pkgdir/usr/bin/" -m755 "$srcdir/$pkgname-binary-$pkgver/rr"
 	install -Dt "$pkgdir/usr/share/$pkgname/" -m644 "$srcdir/.rr.yaml.sample-full"
 	install -Dt "$pkgdir/usr/share/$pkgname/" -m644 "$srcdir/.rr.yaml.sample-minimal"
 }
