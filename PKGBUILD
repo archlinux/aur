@@ -28,7 +28,7 @@ source=("http://litemanager.com/soft/LiteManager_linux.zip"
 litemanager.png)
 
 noextract=()
-md5sums=('86a62c72f7b4e7adf6a008a0eddf4995'
+md5sums=('d5b1d3ce0ee4d62a5e8647be581c06d0'
          'ce19ee278e856d0e17610979ede081b4')
 
 validpgpkeys=()
