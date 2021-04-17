@@ -1,19 +1,22 @@
-# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
+# Contributor: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=spadfs-utils
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="SPAD filesystem userspace utilities"
 arch=(x86_64)
 url="https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/"
 license=(unknown)
+optdepends=('spadfs-dkms: DKMS kernel module')
 source=(https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/download/spadfs-${pkgver}.tar.gz)
-sha256sums=('e48260effd75d8773eca2e1732412dbadf6861963782a0d1fa542e4464387565')
+sha256sums=('b12a84820f22f14ddc05e19aa8e1a48d1dd6f5bc2fb9b5fbcc122257cb1c1fbb')
 
 package() {
 	cd spadfs-${pkgver}
 
 	make mkspadfs spadfsck
+	#make SPADFS_CC="custom compiler" SPADFS_CFLAGS="custom CFGLAGS" mkspadfs spadfsck
 
 	install -Dm0755 mkspadfs -t "${pkgdir}"/usr/bin
 	install -Dm0755 spadfsck -t "${pkgdir}"/usr/bin
