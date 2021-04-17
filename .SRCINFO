@@ -1,7 +1,7 @@
 pkgbase = editorconfig-core-lua
 	pkgdesc = EditorConfig Core bindings for Lua
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/editorconfig/editorconfig-core-lua
 	arch = any
 	license = custom:BSD

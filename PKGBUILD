@@ -2,7 +2,7 @@
 pkgname=editorconfig-core-lua
 conflicts=('editorconfig-core-lua-git')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EditorConfig Core bindings for Lua"
 arch=('any')
 url="https://github.com/editorconfig/editorconfig-core-lua"
@@ -20,7 +20,7 @@ build() {
 
 package() {
     install -Dm 755 "$srcdir/$pkgname-$pkgver/editorconfig.so" \
-                    "$pkgdir/usr/lib/lua/5.3/editorconfig.so"
+                    "$pkgdir/usr/lib/lua/5.4/editorconfig.so"
     install -Dm 644 "$srcdir/$pkgname-$pkgver/LICENSE" \
                     "$pkgdir/usr/share/licenses/editorconfig-core-lua/LICENSE"
 }
