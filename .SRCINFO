@@ -1,6 +1,6 @@
 pkgbase = screego-server-bin
 	pkgdesc = screen sharing for developers
-	pkgver = 1.1.2
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/screego/server
 	arch = x86_64
@@ -16,10 +16,9 @@ pkgbase = screego-server-bin
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 	sha256sums = 1d4494d5328700b304b0837dafc7a5772b8abe3435a0a24337a89f25ad5acd1b
 	sha256sums = 5804e54e4af5704fd5066c45313d7635798bd4389cd8312ee965c911d9d75e85
-	source_x86_64 = screego-server-bin-1.1.2_amd64.tar.gz::https://github.com/screego/server/releases/download/v1.1.2/screego_1.1.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 18096a1039583596647c975628c1d39c69e5f4471378840467b04beacbfe4914
-	source_arm64 = screego-server-bin-1.1.2_arm64.tar.gz::https://github.com/screego/server/releases/download/v1.1.2/screego_1.1.2_linux_arm64.tar.gz
-	sha256sums_arm64 = 508c1dac336bf065bc58f8095666577bc168ce8b3b2cd84ceb622732ed916aa4
+	source_x86_64 = screego-server-bin-1.2.2_amd64.tar.gz::https://github.com/screego/server/releases/download/v1.2.2/screego_1.2.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 93cd31fb005a7bde9fbb1998d639e014487c813fb7a7d0616d7919b69cd06baf
+	source_arm64 = screego-server-bin-1.2.2_arm64.tar.gz::https://github.com/screego/server/releases/download/v1.2.2/screego_1.2.2_linux_arm64.tar.gz
+	sha256sums_arm64 = 06a200d2a0cba3129f48fbca944f3e0e464d3a3aeedb644415be6c5e0ed574bc
 
 pkgname = screego-server-bin
-
