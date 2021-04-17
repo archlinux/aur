@@ -2,7 +2,7 @@
 
 pkgname=python-dash-renderer
 _pkgname=dash_renderer
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Dash front-end"
 arch=('any')
@@ -12,7 +12,7 @@ depends=()
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('3c5519a781beb2261ee73b2d193bef6f212697636f204acd7d58cd986ba88e30')
+sha256sums=('73a69e3d145880e68e42723ad10182251d92b44f3efe92b8763145cfd2158e7e')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
