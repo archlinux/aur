@@ -1,0 +1,19 @@
+pkgbase = font-downloader-git
+	pkgdesc = A simple GTK font downloader
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/GustavoPeredo/font-downloader
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = libhandy
+	depends = python3
+	source = git+https://github.com/GustavoPeredo/font-downloader.git/#commit=a680009a3b22c68d34e464c77fd5f417fd04bcd7
+	b2sums = SKIP
+
+pkgname = font-downloader-git
+
