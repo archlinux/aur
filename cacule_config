@@ -347,52 +347,6 @@ sleep 2
 
   plain ""
   plain "#########################################"
-  plain "Enable CONFIG_ZENIFY a selection of patches from Zen/Liquorix kernel"
-  plain "and additional tweaks for a better gaming experience (ZENIFY)"
-  plain ""
-  plain "Tunes the kernel for responsiveness at the cost of throughput and power usage."
-  #plain ""
-  #plain "	  --- Virtual Memory Subsystem ---------------------------"
-  #plain ""
-  #plain "	    Mem dirty before bg writeback..:  10 %  ->  20 %"
-  #plain "	    Mem dirty before sync writeback:  20 %  ->  50 %"
-  #plain ""
-  #plain "	  --- Block Layer ----------------------------------------"
-  #plain ""
-  #plain "	    Queue depth...............:      128    -> 512"
-  #plain "	    Default MQ scheduler......: mq-deadline -> bfq"
-  #plain ""
-  #plain "	  --- CFS CPU Scheduler ----------------------------------"
-  #plain ""
-  #plain "	    Scheduling latency.............:   6    ->   3    ms"
-  #plain "	    Minimal granularity............:   0.75 ->   0.3  ms"
-  #plain "	    Wakeup granularity.............:   1    ->   0.5  ms"
-  #plain "	    CPU migration cost.............:   0.5  ->   0.25 ms"
-  #plain "	    Bandwidth slice size...........:   5    ->   3    ms"
-  #plain "	    Ondemand fine upscaling limit..:  95 %  ->  85 %"
-  #plain ""
-  #plain "	  --- MuQSS CPU Scheduler --------------------------------"
-  #plain ""
-  #plain "     Scheduling interval............:   6    ->   3    ms"
-  #plain "	    ISO task max realtime use......:  70 %  ->  25 %"
-  #plain "	    Ondemand coarse upscaling limit:  80 %  ->  45 %"
-  #plain "	    Ondemand fine upscaling limit..:  95 %  ->  45 %"
-  #plain ""
-  read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _zenify
-  if [[ "$_zenify" = "1" ]]; then
-    msg2 "Enable CONFIG_ZENIFY"
-    scripts/config --enable CONFIG_ZENIFY
-  elif [[ "$_zenify" = "2" ]]; then
-    msg2 "Disable CONFIG_ZENIFY"
-    scripts/config --disable CONFIG_ZENIFY
-  else
-    msg2 "Enable CONFIG_ZENIFY"
-    scripts/config --enable CONFIG_ZENIFY
-  fi
-
-  sleep 2s
-  plain ""
-  plain "#########################################"
   plain "Apply suggested config by Hamad Al Marri"
   read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (No)\nchoice[1-2]: '`" _suggest_cacule
   if [[ $_suggest_cacule = "1" ]]; then
