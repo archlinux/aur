@@ -1,6 +1,6 @@
 pkgbase = reggie-git
 	pkgdesc = A new regex replace CLI tool, as an alternative to sed.
-	pkgver = 1.0.0
+	pkgver = r8.324e7ce
 	pkgrel = 1
 	url = https://github.com/cainy-a/reggie
 	arch = x86_64

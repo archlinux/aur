@@ -2,7 +2,7 @@
 
 _pkgname="reggie"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0
+pkgver=r8.324e7ce
 pkgrel=1
 pkgdesc="A new regex replace CLI tool, as an alternative to sed."
 arch=('x86_64')
@@ -27,16 +27,9 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "${_pkgname}-source"
-
-	# make a launch script
-	tee 'launch.sh' << END
-#!/bin/sh
-cd /usr/lib/${_pkgname}
-exec ./Reggie
-END
-}
+#prepare() {
+#
+#}
 
 build() {
 	cd "${_pkgname}-source"
@@ -57,6 +50,7 @@ package() {
 	# copy build folder
 	mkdir -p "${pkgdir}/usr/lib/${_pkgname}/"
 	cp -r --preserve=mode "Reggie/bin/Debug/net5.0/"* "${pkgdir}/usr/lib/${_pkgname}/"
-	# install launch script
-	install -Dm 755 "launch.sh" "${pkgdir}/usr/bin/${_pkgname}"
+	# add to bin
+	mkdir -p "${pkgdir}/usr/bin/"
+	ln -s "${pkgdir}/usr/lib/${_pkgname}/Reggie" "${pkgdir}/usr/bin/${_pkgname}"
 }
