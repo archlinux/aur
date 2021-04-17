@@ -10,7 +10,7 @@ groups=('pro-audio')
 depends=('wine' 'gtk3')
 conflicts=('linvst3x')
 optdepends=('jack')
-suffix=Manjaro
+suffix="Manjaro"
 source=("$url/releases/download/$pkgver/LinVst3-X-$pkgver-$_suffix.zip")
 md5sums=('cbe75292d36afca9a06813d3919d58d3')
 
