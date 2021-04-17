@@ -42,7 +42,7 @@ fi
 
 pkgbase=linux-cacule
 pkgver=5.11.15
-pkgrel=5
+pkgrel=6
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
@@ -57,34 +57,36 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "${_patchsource}/cacule-patches/cacule-5.11.patch"
         "${_patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
         "${_patchsource}/cpu-patches/0001-cpu-5.11-merge-graysky-s-patchset.patch"
-        "${_patchsource}/zen-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch"
         "${_patchsource}/misc/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
-        "${_patchsource}/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
         "${_patchsource}/futex-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "${_patchsource}/wine-patches/0007-v5.11-winesync.patch"
         "${_patchsource}/futex-patches/0007-v5.11-fsync.patch"
         "${_patchsource}/misc/0002-init-Kconfig-enable-O3-for-all-arches.patch"
+        "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.11-introduce-BBRv2.patch"
-        "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
-        "${_patchsource}/zswap-patches/0001-zswap-patches.patch"
-        "${_patchsource}/zstd-patches/0001-zstd-patches.patch")
+        "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
+        "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
+        "${_patchsource}/mm-patches/0001-mm-patches.patch"
+        "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
+        "${_patchsource}/zstd-patches/0001-zstd-dev-patches.patch")
 
 sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
             '2e3b1f1b6ceb958a3e4b2a4740c77953287a2cdb156234af8c9bf9ddad9268e3'
             'c539655de9eef5084b6349389b1a2fac3aaab274149c9b95667cca93570166ea'
             'cf00507d6881b737a9814d152e27b1db02f45a4d8a8ba3f4c9f542f0964ac697'
             'b74526f681f3eafa12f74764e79792949cb949fe1c8424118746c48fe16a09a8'
-            '1158623c992e0bcf87e0b765554f15f367c5ff19148a111f0bc88f06fa4743cc'
             '39a36b356e2452aa244f80700524c73884f995bd29ccabd3bdb760480f37ce8e'
-            '0d9179a3dac476d832c50027f62480cfa7d462bf35acc0fcf3b863e9fac01edf'
             '05cebcd1dbab8d5f8d26b5351ba0237d36b8e848c830dad7a4f7d1c58cc7824c'
             'd220593436059b76c975ceee061fd124dec37fff774db45a4419c2ce1839c351'
             'b302ba6c5bbe8ed19b20207505d513208fae1e678cf4d8e7ac0b154e5fe3f456'
             '15524321f6e532747be4145341dd6d426a4240bf190e85160bdf06ae6ea0ff20'
+            'bc35b9f8f695d3f0ef88ba1a5abad8c881c8ad1eda681dd139d887df6f7a9849'
             '68dcadab17c405335633e0ded03d13a78ee524311bc927df2a0f0fc1a1463caf'
-            '4e25daa2c11d9f24af8d34b7621689ab3beeb5af185b1178cdec7f610283b5be'
-            '251327be9627d8039e8c344d1beca19982676ba1eadc1b97251531fbd7611108'
-            '3fe144975c1b30b983fca9e34ba58e7b4704456a340130584a1aca0feabdc22e')
+            'b268f8f50734239fee6910d8d7cfa5742e9f17cbd9e90f258139a5df44fed407'
+            'a571b8db83f36d36222b3b11ed607fc93728a351782edbe1129b623c236f050e'
+            'f797fb4fd2ac4c1116e988e9ccf8bf1b4d9ba53511c388b958f17888d33cf994'
+            '3fe144975c1b30b983fca9e34ba58e7b4704456a340130584a1aca0feabdc22e'
+            'a8eed585260d153c3ead50fc2ec61f20d4ed7c892d4204c97391983e98ccea0e')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
