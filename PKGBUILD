@@ -3,14 +3,14 @@
 
 _basename=jitsi-meet
 _pkgname=turnserver
-_version=1.0.4628
-_url=https://download.jitsi.org/stable/jitsi-meet-turnserver_1.0.4628-1_all.deb
+_version=1.0.4900
+_url=https://download.jitsi.org/stable/jitsi-meet-turnserver_1.0.4900-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=3
+pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -25,7 +25,6 @@ backup=(
 makedepends=('tar')
 source=(
         "$_url"
-        "jitsi.install"
 )
 
 provides=(${_pkgbase})
@@ -46,5 +45,4 @@ package() {
 	# install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-turn/turnserver.conf doc/debian/jitsi-meet/jitsi-meet.conf doc/debian/jitsi-meet-turn/coturn-certbot-deploy.sh
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('66f0cfe4b99fa36883ff54fddd83e26376cc14334240d3c270d9d23793977c73'
-            '81c41a7ff0339922b6dc1544a3091f15b0cc71b4ad9806a20aea1a0eb3300bad')
+sha256sums=('a23e16083b0e830657c8e3610bbde7cba9baa9428972fafe992633317ae03223')
