@@ -3,7 +3,7 @@
 _gemname=revdev
 pkgname=ruby-$_gemname
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="revdev is a ruby binding to handling event devices."
 arch=(any)
 url="https://github.com/kui/revdev"
