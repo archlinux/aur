@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r118.e97dfe3
+pkgver=r173.6acafc7
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
@@ -36,7 +36,7 @@ pkgver() {
 build () {
     cd ${srcdir}/pineapple-pictures
     cmake -DCMAKE_INSTALL_PREFIX=/usr .
-    make
+    cmake --build . -j`nproc`
 }
 
 package() {

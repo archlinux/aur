@@ -1,6 +1,6 @@
 pkgbase = pineapple-pictures-git
 	pkgdesc = Yet another lightweight image viewer
-	pkgver = r118.e97dfe3
+	pkgver = r173.6acafc7
 	pkgrel = 1
 	url = https://github.com/BLumia/pineapple-pictures/
 	arch = x86_64
