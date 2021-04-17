@@ -2,7 +2,7 @@
 
 _pkgname=yosys-symbiflow-plugins
 pkgname="$_pkgname-git"
-pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r299.gc724acb
+pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r305.g9e969e2
 pkgrel=1
 pkgdesc="Plugins for Yosys developed as part of the SymbiFlow project."
 arch=(x86_64)
@@ -33,7 +33,7 @@ prepare() {
 	patch -p1 < "$srcdir/0002-Makefile-prepend-to-build-flags.patch"
 
 	# conflicts with quicklogic synth flow in upstream yosys
-	sed -i 's/ql-qlf-k4n8//' Makefile
+	sed -i 's/ql-qlf//' Makefile
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = yosys-symbiflow-plugins-git
 	pkgdesc = Plugins for Yosys developed as part of the SymbiFlow project.
-	pkgver = 1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r299.gc724acb
+	pkgver = 1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r305.g9e969e2
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/yosys-symbiflow-plugins
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = yosys-symbiflow-plugins-git
 	depends = yosys>0.9
 	depends = gcc-libs
 	depends = tcl
-	provides = yosys-symbiflow-plugins=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r299.gc724acb
+	provides = yosys-symbiflow-plugins=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r305.g9e969e2
 	conflicts = yosys-symbiflow-plugins
 	source = git+https://github.com/SymbiFlow/yosys-symbiflow-plugins.git
 	source = 0001-Makefile-respect-DESTDIR.patch
