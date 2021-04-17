@@ -9,10 +9,9 @@ arch=("x86_64")
 makedepends=("cargo")
 provides=("patchup")
 conflicts=("patchup")
-source=("patchup-0.1.0::https://github.com/dezyh/patchup/releases/download/0.1.0/patchup-cli-bin.tar.gz")
-sha256sums=("34880cc6ed038b52a30992d5878a025cbd4434047ac06ab6b4b5d3eae48235c5")
+source=("https://github.com/dezyh/patchup/releases/download/0.1.0/patchup-cli-bin.tar.gz")
+sha256sums=("cb14148f6606c9dc490fe6d635ac8cf7c6d483f849ad9680f2cc5130a3b07bc8")
 
 package() {
-    cd "patchup-0.1.0"
     install -Dm755 "patchup" "$pkgdir/usr/bin/patchup"    
 }
