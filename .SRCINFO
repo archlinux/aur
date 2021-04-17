@@ -1,22 +1,23 @@
 pkgbase = wingpanel-indicator-bluetooth-git
 	pkgdesc = Bluetooth indicator for Wingpanel
-	pkgver = 2.1.6.r22.gf1d517f
+	pkgver = 2.1.6.r58.gb9b4ad0
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-bluetooth
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite-git
+	makedepends = granite
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
-	makedepends = wingpanel-git
+	makedepends = wingpanel
 	depends = bluez
 	depends = glib2
 	depends = glibc
 	depends = gtk3
 	depends = libgee
+	depends = libnotify
 	depends = libwingpanel.so
 	provides = wingpanel-indicator-bluetooth
 	conflicts = wingpanel-indicator-bluetooth
@@ -24,3 +25,4 @@ pkgbase = wingpanel-indicator-bluetooth-git
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-bluetooth-git
+
