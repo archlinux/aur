@@ -3,7 +3,7 @@
 pkgname=python-django-pglocks
 _name=${pkgname#python-}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='django-pglocks provides a useful context manager to manage PostgreSQL advisory locks'
 url='https://github.com/Xof/django-pglocks'
 arch=('any')
@@ -20,6 +20,8 @@ build() {
 package() {
   cd $_name-$pkgver
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  # Not even full license just some one line shit :/
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 md5sums=('4907244be5a47d0bc618ae31ab68a9f9')

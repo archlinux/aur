@@ -1,7 +1,7 @@
 pkgbase = python-django-pglocks
 	pkgdesc = django-pglocks provides a useful context manager to manage PostgreSQL advisory locks
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xof/django-pglocks
 	arch = any
 	license = MIT
