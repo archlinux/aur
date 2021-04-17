@@ -1,7 +1,7 @@
 pkgbase = php-event
 	pkgdesc = PHP PECL extension providing interface to libevent library
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/event
 	arch = x86_64
 	license = PHP
