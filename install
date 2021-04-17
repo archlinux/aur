@@ -7,5 +7,14 @@ In order to uniformize all jitsi-meet package, we have changes the config direct
 
 Please compare your old config with the new one and apply the changes. Do not blindy copy your old config!
 
+Jicofo don't need secret anymore.
+Please check the wiki: https://wiki.archlinux.org/index.php/Jitsi-meet
+
+You have to:
+ - update jicofo config
+ - update jicofo jicofo.conf with focus proxy
+ - update prosody config for jicofo
+ - run prosodyctl roster
+
 __EOF__
 }
