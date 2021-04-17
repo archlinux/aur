@@ -1,25 +1,25 @@
 #!/bin/bash
 
-name='vtfedit'
-path='/usr/share/vtfedit'
-bin='x86/VTFEdit.exe'
+PKGNAME='vtfedit'
+PKGPATH='/usr/share/vtfedit'
+PKGBIN='x86/VTFEdit.exe'
 
 C_YELLOW='\e[33m'
 C_CLEAR='\e[0m'
 
-export WINEPREFIX="$HOME/.local/share/wineprefixes/$name"
+export WINEPREFIX="$HOME/.local/share/wineprefixes/$PKGNAME"
 export WINEARCH='win32'
 export WINEDEBUG=-all
 
 if [[ ! -d $WINEPREFIX ]]; then
   PROGRESS=$(mktemp)
-  echo -e 'Preparing your wineprefix, this may take a while..\n'
+  MSG='Initialising your wineprefix, this may take a few minutes..'
+  echo -e "$C_YELLOW==>$C_CLEAR $MSG\n"
 
   (winetricks -q winxp 2>&1 | tee -a $PROGRESS ) &
   PID_XP="$!"
   (winetricks -q dlls vcrun2005 dotnet35 2>&1 | tee -a $PROGRESS ) &
   PID_DLL="$!"
-  echo $PIDS
 
   exec 3>&1
 
@@ -34,10 +34,21 @@ if [[ ! -d $WINEPREFIX ]]; then
       LINES=$(cat $PROGRESS | wc -l)
       PCT="$(($(echo $LINES) * 100 / $MAX_LINES))"
       echo $PCT
+
       if [[ $TICK == 10 ]]; then
         TICK=0
         echo -e "$C_YELLOW==>$C_CLEAR $PCT% complete ($LINES/$MAX_LINES)" >&3
-	echo -e "    XP: $DONE_XP DLLs: $DONE_DLL" >&3
+	echo -ne '    XP: ' >&3
+	if [[ $DONE_XP -eq 0 ]]; then
+	  echo -n 'installing DLLs: ' >&3
+	else
+	  echo -n 'done DLLs: ' >&3
+	fi
+	if [[ $DONE_DLL -eq 0 ]]; then
+	  echo 'installing' >&3
+	else
+	  echo 'done' >&3
+	fi
       fi
       sleep 1
 
@@ -63,7 +74,7 @@ if [[ ! -d $WINEPREFIX ]]; then
 
       TICK=$(($TICK + 1))
     done
-  ) | zenity --progress --title='VTFEdit' --text='Preparing wineprefix, this will take a while..' --time-remaining --auto-close --no-cancel
+  ) | zenity --progress --title='VTFEdit' --text="$MSG" --time-remaining --auto-close --no-cancel
 fi
 
 declare -a args
@@ -76,8 +87,7 @@ for arg; do
   fi
 done
 
-wine $path/$bin "${args[@]}"
-
+wine $PKGPATH/$PKGBIN "${args[@]}"
 EXIT=$?
 
 if [[ $EXIT -ne 0 ]]; then
@@ -86,3 +96,4 @@ if [[ $EXIT -ne 0 ]]; then
   echo "  rm -rf $WINEPREFIX"
   exit $EXIT
 fi
+
