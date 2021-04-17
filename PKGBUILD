@@ -3,8 +3,8 @@
 _pyname=cinder
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
-pkgver=17.1.0
-pkgrel=3
+pkgver=18.0.0
+pkgrel=1
 pkgdesc="OpenStack Block Storage"
 arch=(any)
 url="https://docs.openstack.org/cinder/latest/"
@@ -115,7 +115,7 @@ source=(
 	openstack-cinder-volume.service
 	0000-fix-tests-assertItemsEqual.patch
 )
-md5sums=('440dca6f28dcd7d2d27f1c2c5edf696a'
+md5sums=('1c9edfa61b7eef91a8163dbf124673c8'
          '081d18c05b770876e42a7d2c5d7c6369'
          'fac52361ddb959f0000f94f27cfa9a52'
          '619a108ed34a4007dcceb5736b9f9333'
@@ -125,7 +125,7 @@ md5sums=('440dca6f28dcd7d2d27f1c2c5edf696a'
          'bdd1383229c0f41fcbe82314a54a0087'
          '0f920ebfb231a55becbae65a4cfac61f'
          '9c5f1cd2f3f859ba26f65c469c99e413')
-sha256sums=('dfed9106ca20cba536c4b405b1aa094d74627733a767888ec7b3599239692187'
+sha256sums=('ebb6f9da205f11c27ae434d73f4ad7ccc3c8ba120de1f74e43d958a896579850'
             '2c25a5fd7f6b442d23516d63d99dfbe506f8b55d6161a31d6611511345040f5c'
             'dbd32daa64f08bb97a86ad42ea41e05bc2ca36b1c599b60bed80c3def9f79486'
             '494978135a165a725de2c55e84a5dbdbf4487348acdcbb8b94edf067cf8e403d'
@@ -135,7 +135,7 @@ sha256sums=('dfed9106ca20cba536c4b405b1aa094d74627733a767888ec7b3599239692187'
             '16ddcefde9a537a4d138252d467df733b70b19d7b063a3d3db2bd6c0b5cffd13'
             'fd340cb5a437567c66293d486511e9a56fa3a33f8dd39788256923c7d36dc206'
             '630dadfa9063ed95440ee218ee8794dcd5db17ec4f8ea8bbae404d2dd88e4d24')
-sha512sums=('f3e91945e81e5bb7edefba62050d3750ae5ab870903e55f46e8f0a5d3c140eada1df466d5fcc6623df8ad9688cad3c6519c712494cd20b8cfeb4b992e8f516cc'
+sha512sums=('acc1c93ab5b41747d6d4162612f8f8339d33f39a2bc49a51d3475813c7b38476232f5481ed481a3d05c872d8930f9dec490e84b905e3d493143cab9de365c536'
             'b41cb64358fca6f5c27a17052233d41a3ab42beb74bb25a614b75645feb59e70d0adddf4eeeb5e6479cc61b6e18550452237899bed2d3892d5065e424d0cd5c0'
             '73ef8c60fe8152614f20033102b1ac7cd88afafdca5104178f208647041730079d51402ea6f97893b6e0012d11354d78d5c521d81a72d6cc8295ef595b15a710'
             '7fdb14679166b82058c11452c1b1c2c8ed198ae116e6fae18d1a78be2b27ba7a6beb091d77ebfcf2f2db1934185b027fc14219dcd2261a29d8d522e10f109218'
