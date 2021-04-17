@@ -2,8 +2,8 @@
 
 pkgname=phan
 pkgver=4.0.4
-pkgrel=1
-pkgdesc="Phan is a static analyzer for PHP that prefers to minimize false-positives."
+pkgrel=2
+pkgdesc="Static analyzer for PHP that prefers to minimize false-positives."
 url="https://github.com/phan/phan/wiki"
 arch=("any")
 license=("MIT")
