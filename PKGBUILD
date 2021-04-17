@@ -2,7 +2,7 @@
 _npmname=node-pre-gyp
 pkgname=nodejs-node-pre-gyp
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node.js tool for easy binary deployment of C++ addons "
 arch=('any')
 url="https://github.com/mapbox/node-pre-gyp"
@@ -14,7 +14,7 @@ noextract=("$_npmname-$pkgver.tgz")
 sha1sums=('5af3f7b4c3848b5ed00edc3d298ff836daae5f1d')
 
 package() {
-	npm install -g --user root --prefix "$pkgdir/usr" "$_npmname-$pkgver.tgz"
+	npm install -g --prefix "$pkgdir/usr" "$_npmname-$pkgver.tgz"
 
 	# Remove references to $pkgdir
 	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"

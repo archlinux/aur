@@ -1,7 +1,7 @@
 pkgbase = nodejs-node-pre-gyp
 	pkgdesc = Node.js tool for easy binary deployment of C++ addons
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mapbox/node-pre-gyp
 	arch = any
 	license = BSD
