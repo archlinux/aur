@@ -2,7 +2,7 @@
 pkgbase=python-mkdocs-git-revision-date-localized-plugin
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="MkDocs plugin to add a last updated date to your site pages "
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ checkdepends=('mkdocs>=1.0' 'python-gitpython' 'python-babel>=2.7.0')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/timvink/mkdocs-git-revision-date-localized-plugin/master/LICENSE"
         'fix_setupy_deps.patch')
-md5sums=('d9cf835aad137f2a41a9533ff6bcfa36'
-         'SKIP'
+md5sums=('035623e753727038722972f4f881b7e0'
+         'a4104c36644b683e910d1560dca5b99f'
          '71b47e261d985860be764b5110d5c7a3')
 
 prepare() {
@@ -36,7 +36,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.5' 'mkdocs>=1.0' 'python-gitpython' 'python-babel>=2.7.0')
+    depends=('python>=3.6' 'mkdocs>=1.0' 'python-gitpython' 'python-babel>=2.7.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
