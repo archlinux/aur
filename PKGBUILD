@@ -2,7 +2,7 @@
 # Contributor: Vbextreme <@>
 pkgname=('ccdoc')
 pkgdesc='create HTML, README.md, WIKI, MAN, from C comment'
-pkgver='1.1.0'
+pkgver='1.1.2'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/vbextreme/ccdoc'
