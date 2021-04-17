@@ -8,8 +8,8 @@ pkgbase = patchup
 	makedepends = cargo
 	provides = patchup
 	conflicts = patchup-bin
-	source = patchup-0.1.0::https://github.com/dezyh/patchup/releases/download/0.1.0/patchup-cli.tar.gz
-	sha256sums = 38f9080173e56982c822be56fe1dfe0db4b8862b30c2ec3fbf63e63e0e0644d6
+	source = https://github.com/dezyh/patchup/releases/download/0.1.0/patchup-cli.tar.gz
+	sha256sums = 8d92beb46b16974a7c3fed6acad0a6eb49bc179c5af285bc99fd3e9071f1354d
 
 pkgname = patchup
 
