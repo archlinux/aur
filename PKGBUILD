@@ -4,7 +4,7 @@ pkgdesc="ROS - Asynchronous Web/WebSocket Server in C++."
 url='http://ros.org/wiki/async_web_server_cpp'
 
 pkgname='ros-melodic-async-web-server-cpp'
-pkgver='0.0.3'
+pkgver='1.0.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,9 +22,9 @@ depends=(${ros_depends[@]}
   boost
   openssl)
 
-_tag=release/melodic/async_web_server_cpp/${pkgver}-${_pkgver_patch}
+#_tag=ros1-releases/${pkgver}
 _dir=async_web_server_cpp
-source=("${_dir}"::"git+https://github.com/wpi-rail-release/async_web_server_cpp-release.git"#tag=${_tag})
+source=("${_dir}"::"git+https://github.com/fkie/async_web_server_cpp.git"#tag=${pkgver})
 md5sums=('SKIP')
 
 build() {
