@@ -1,6 +1,6 @@
 # Maintainer: Adrian Carpenter <hello@nedrysoft.com>
 pkgname=pingnoo
-pkgver="2021.04.08"
+pkgver=2021.04.08
 pkgrel=1
 epoch=
 pkgdesc="An open-source cross-platform tool for ping/traceroute analysis."
@@ -19,7 +19,7 @@ backup=()
 options=()
 install="${pkgname}.install"
 changelog=
-source=('https://www.nedrysoft.com/downloads/${pkgname}/source/${pkgname}-${pkgver}.tar.gz')
+source=("https://www.nedrysoft.com/downloads/${pkgname}/source/${pkgname}-${pkgver}.tar.gz")
 noextract=()
 md5sums=('0486739e5418aeebf035432d8fdf0955')
 validpgpkeys=()
