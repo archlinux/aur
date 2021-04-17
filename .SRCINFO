@@ -1,6 +1,6 @@
 pkgbase = moarvm-git
 	pkgdesc = 6model-based VM for NQP and Rakudo Perl6
-	pkgver = 20200119
+	pkgver = 20210415
 	pkgrel = 1
 	url = https://github.com/MoarVM/MoarVM
 	arch = aarch64
