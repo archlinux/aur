@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-speechbrain-git
-pkgver=0.5.5.r4408
+pkgver=0.5.5.r4420
 pkgrel=1
 pkgdesc='All-in-one speech toolkit in pure Python and Pytorch'
 arch=('any')
