@@ -2,12 +2,12 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=4628
-_version=1.0.4628
+_tag=4900
+_version=1.0.4900
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -22,6 +22,7 @@ backup=(
 source=(
         "$pkgname::git+https://github.com/jitsi/jitsi-meet#tag=${_tag}"
 )
+install=install
 
 package() {
         cd "$srcdir/$pkgname"
