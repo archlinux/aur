@@ -1,9 +1,9 @@
 pkgbase = sway9
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (personal build)
-	pkgver = 1.5.1
-	pkgrel = 3
+	pkgver = 1.6
+	pkgrel = 1
 	epoch = 1
-	url = https://github.com/Streetwalrus/sway9
+	url = https://github.com/9ary/sway9
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -31,11 +31,11 @@ pkgbase = sway9
 	optdepends = swaylock: Screen locker
 	optdepends = wallutils: Timed wallpapers
 	optdepends = waybar: Highly customizable bar
-	optdepends = xorg-server-xwayland: X11 support
+	optdepends = xorg-xwayland: X11 support
 	provides = sway
 	conflicts = sway
 	backup = etc/sway/config
-	source = git+https://github.com/Streetwalrus/sway9.git#commit=c00a05ba48a9d99cf7c1e92d4cc3ccbf57af2313
+	source = git+https://github.com/9ary/sway9.git#commit=6c2f00d6be62c6215baac0c70779fb2ad0307dc4
 	source = 50-systemd-user.conf
 	sha512sums = SKIP
 	sha512sums = 57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e
