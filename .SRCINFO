@@ -14,8 +14,8 @@ pkgbase = iicalc-beta
 	conflicts = iicalc
 	options = !strip
 	options = !emptydirs
-	source = iicalc.tar.xz::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.tar.xz?job=buildpkg
-	sha512sums = d65f31fe953bb0029061645db4731de6efe014cb577f9a3f18a0549b4d438b31a411229117da44f557df64191e635b951cfefbe41de0809ccd1f54bf65f0db1a
+	source = iicalc-2.8.28.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager
+	sha512sums = 8da82394c1b4f779ab98b2d74b32b28f705ff51a4009cd7487289d69c4e3c024c30436a6afe5004699840880a2f5d4db9931bdbdb34b46a4a3381bb8a0a53c4d
 
 pkgname = iicalc-beta
 
