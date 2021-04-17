@@ -1,6 +1,6 @@
 pkgbase = ruby-pry
 	pkgdesc = An IRB alternative and runtime developer console
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/pry/pry
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ruby-pry
 	depends = ruby-coderay
 	depends = ruby-method_source
 	options = !emptydirs
-	source = git+https://github.com/pry/pry.git?tag=v0.14.0
+	source = git+https://github.com/pry/pry.git?tag=v0.14.1
 	sha256sums = SKIP
 
 pkgname = ruby-pry
