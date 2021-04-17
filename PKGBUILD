@@ -3,7 +3,7 @@
 _name=airnef
 pkgname="python-${_name}"
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Wireless download from your Nikon/Sony/Canon camera"
 arch=('any')
 url="https://testcams.com/airnef/"
@@ -12,7 +12,7 @@ depends=('python' 'tk')
 source=("https://testcams.com/airnef/Version_1.1/airnef_v1.1_Source.zip"
         "airnef-linux.patch")
 sha512sums=('b45b0591e42179d1e5b5eea9ede6762d311cd0642585c54568c90111424e2ca316aa444d772b4855afe42f25b6cc4b3e1b78bb5a0c2a4cb52440535894a5cba6'
-            'c0337540e1e65cee3d6f4bc3610b6d2d2a72b7f97a0197f5dd27768a5f42f1e4e5e936ce059ff4daf9aa95faa5613228306d6d3f4f2f7ed42c5566521138c24d')
+            '2ebf9eda9c354f73a1a3084eca706c1d30d67737101d5bfb69474984f636ce5dc52092cec3de2d04e8ac61afa26ffe78e41dbf1a2fee5955af2ceed75620f154')
 DLAGENTS=('https::/usr/bin/curl --insecure -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
 

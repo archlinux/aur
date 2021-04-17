@@ -1,6 +1,6 @@
 diff -uNrb airnef/airnefcmd.py airnef.new/airnefcmd.py
 --- airnef/airnefcmd.py	2015-10-07 13:49:44.000000000 +0200
-+++ airnef.new/airnefcmd.py	2019-01-28 22:43:14.207678865 +0100
++++ airnef.new/airnefcmd.py	2021-04-17 18:38:09.950093592 +0200
 @@ -134,6 +134,7 @@
  	
  		self.isWin32 = None								# True if we're running on a Windows platform
@@ -30,8 +30,31 @@ diff -uNrb airnef/airnefcmd.py airnef.new/airnefcmd.py
  		g.appDataDir = os.path.join(g.appDir, "appdata")
 diff -uNrb airnef/airnef.pyw airnef.new/airnef.pyw
 --- airnef/airnef.pyw	2015-10-08 09:57:00.000000000 +0200
-+++ airnef.new/airnef.pyw	2019-01-28 22:43:14.211012198 +0100
-@@ -104,6 +104,7 @@
++++ airnef.new/airnef.pyw	2021-04-17 18:41:38.719793894 +0200
+@@ -45,15 +45,17 @@
+ 	from six.moves import tkinter_ttk as ttk
+ 	from six.moves import tkinter_tkfiledialog as tkFileDialog
+ 	from six.moves import tkinter_messagebox as tkMessageBox
+-import time
+-import subprocess
+-import os
++
++import datetime
+ import errno
+-import platform
+ import json
+-import datetime
++import os
++import platform
++import re
+ import signal
++import subprocess
+ import sys
++import time
+ 
+ #
+ # constants
+@@ -104,6 +106,7 @@
  	def __init__(self):
  		self.isWin32 = None			# True if we're running on a Windows platform
  		self.isOSX = None			# True if we're runnong on an OSX platform
@@ -39,7 +62,7 @@ diff -uNrb airnef/airnef.pyw airnef.new/airnef.pyw
  		self.isFrozen = None		# True if we're running in a pyintaller frozen environment (ie, built as an executable)
  		self.appDir = None			# directory where script is located. this path is used to store all metadata files, in case script is run in different working directory
  		self.appDataDir = None		# directory where we keep app metadata
-@@ -1202,6 +1203,7 @@
+@@ -1202,6 +1205,7 @@
  
  	g.isWin32 = (platform.system() == 'Windows')
  	g.isOSX = (platform.system() == 'Darwin')
@@ -47,7 +70,7 @@ diff -uNrb airnef/airnef.pyw airnef.new/airnef.pyw
  	g.isFrozen = (getattr(sys, 'frozen', False))
  
  	#
-@@ -1226,6 +1228,10 @@
+@@ -1226,6 +1230,10 @@
  			applicationSupportDir = os.path.join(userHomeDir, 'Library/Application Support')
  			if os.path.exists(applicationSupportDir): # probably not necessary to check existence since every system should have this directory
  				g.appDataDir = os.path.join(applicationSupportDir, 'airnef/appdata')
