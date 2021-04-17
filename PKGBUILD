@@ -4,12 +4,12 @@
 pkgname=tsduck
 _pkgver=3.25-2237
 pkgver=${_pkgver/-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="An extensible toolkit for MPEG/DVB transport streams"
 arch=('x86_64')
 url="https://tsduck.io/"
 license=('BSD')
-depends=(pcsclite curl srt jq) 
+depends=(make gcc dos2unix which inetutils net-tools curl tar zip doxygen graphviz pcsclite srt python jdk11-openjdk)
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/tsduck/tsduck/archive/v${_pkgver}.tar.gz")
 md5sums=('711f9695e46592ed9ef4879a8ad2a4fc')
 
