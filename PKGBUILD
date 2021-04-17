@@ -3,19 +3,19 @@
 # Contributor: ValHue <vhuelamo@gmail.com>
 #
 pkgname="wp-desktop"
-pkgver="6.6.0"
+pkgver="6.13.0"
 pkgrel="1"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
 _url="https://github.com/Automattic/wp-calypso"
 arch=('x86_64')
 license=('GPL2')
-depends=('alsa-lib' 'gcc-libs' 'gtk3' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss')
+depends=('alsa-lib' 'gcc-libs' 'gtk3' 'libgpg-error' 'libsecret' 'libxss' 'libxkbfile' 'libxtst' 'nss')
 
 _pkgsource="wordpress.com-linux-x64-${pkgver}.tar.gz"
 source=("${_pkgsource}::${_url}/releases/download/v${pkgver}/${_pkgsource}")
 
-sha256sums=('ad4f03cb32929312b51add75eacc2c2ae46c91f907341e95ab04519bd9a75622')
+sha256sums=('0743f7fa3e659fd94b24af721589fbbe57a4a8782728b586f2f46e72f9ff81e0')
 
 _wpcom_desktop="[Desktop Entry]
 Version=1.0

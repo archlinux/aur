@@ -1,6 +1,6 @@
 pkgbase = wp-desktop
 	pkgdesc = WordPress.com Desktop client
-	pkgver = 6.6.0
+	pkgver = 6.13.0
 	pkgrel = 1
 	url = https://desktop.wordpress.com/
 	arch = x86_64
@@ -9,12 +9,13 @@ pkgbase = wp-desktop
 	depends = gcc-libs
 	depends = gtk3
 	depends = libgpg-error
+	depends = libsecret
 	depends = libxss
 	depends = libxkbfile
 	depends = libxtst
 	depends = nss
-	source = wordpress.com-linux-x64-6.6.0.tar.gz::https://github.com/Automattic/wp-calypso/releases/download/v6.6.0/wordpress.com-linux-x64-6.6.0.tar.gz
-	sha256sums = ad4f03cb32929312b51add75eacc2c2ae46c91f907341e95ab04519bd9a75622
+	source = wordpress.com-linux-x64-6.13.0.tar.gz::https://github.com/Automattic/wp-calypso/releases/download/v6.13.0/wordpress.com-linux-x64-6.13.0.tar.gz
+	sha256sums = 0743f7fa3e659fd94b24af721589fbbe57a4a8782728b586f2f46e72f9ff81e0
 
 pkgname = wp-desktop
 
