@@ -355,6 +355,7 @@ index c3708dd..4357d4e 100644
      libwingpanel_dep,
      granite_dep,
 +    libwnck_dep,
+     gdk_x11_dep
  ]
  
  executable(meson.project_name(),

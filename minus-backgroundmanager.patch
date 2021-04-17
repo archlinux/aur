@@ -145,7 +145,7 @@
      'PanelWindow.vala',
      'SessionManager.vala',
      'Application.vala',
+     'Utils.vala',
 -    'Services/BackgroundManager.vala',
      'Services/IndicatorSorter.vala',
      'Services/PopoverManager.vala',
-     'Widgets/IndicatorEntry.vala',
