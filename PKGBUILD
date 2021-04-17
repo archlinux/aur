@@ -2,7 +2,7 @@
 
 _pkgname=timeline
 pkgname=${_pkgname}-git
-pkgver=r61.fba3a1b
+pkgver=r62.10bb4af
 pkgrel=1
 pkgdesc="A plain-text based distributed social network build on top of git configuration manager"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   make clean && make
-  cd doc
+  cd man
   gzip -fk *.[0-9]
 }
 
@@ -39,7 +39,7 @@ package() {
   install -D -m755 "tl" "${pkgdir}/usr/bin/tl"
 
   # man
-  for manpage in doc/*.[0-9]; do
+  for manpage in man/*.[0-9]; do
     section=${manpage##*.}
     install -Dm644 ${manpage}.gz \
       "${pkgdir}"/usr/share/man/man${section}/${manpage##*/}.gz
