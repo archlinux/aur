@@ -1,13 +1,13 @@
 # Maintainer: daltomi
 
 pkgname='deskshot.sh'
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 _gittag="v${pkgver}"
 
 pkgdesc="Take a screenshot of the selected desktops and merge them into a single image."
 
-arch=('x86_64')
+arch=('any')
 
 url="https://github.com/daltomi/${pkgname}"
 
