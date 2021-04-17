@@ -1,7 +1,7 @@
 pkgbase = g2o
 	pkgdesc = A General Framework for Graph Optimization
 	pkgver = 20201223_git
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RainerKuemmerle/g2o
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = g2o
 	makedepends = cmake
 	depends = suitesparse
 	depends = qt5-base
-	depends = eigen3
+	depends = eigen
 	depends = glu
 	optdepends = libqglviewer: for building the g2o_viewer app
 	provides = g2o

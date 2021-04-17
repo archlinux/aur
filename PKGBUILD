@@ -1,13 +1,13 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=g2o
 pkgver=20201223_git
-pkgrel=1
+pkgrel=2
 pkgdesc="A General Framework for Graph Optimization"
 arch=('i686' 'x86_64' 'armv7')
 url="https://github.com/RainerKuemmerle/g2o"
 license=('BSD')
 groups=()
-depends=('suitesparse' 'qt5-base' 'eigen3' 'glu')
+depends=('suitesparse' 'qt5-base' 'eigen' 'glu')
 optdepends=('libqglviewer: for building the g2o_viewer app')
 makedepends=('git' 'cmake')
 provides=('g2o')
