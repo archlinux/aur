@@ -3,8 +3,8 @@
 
 _pkgname=clipman
 pkgname=clipman-git
-pkgver=v1.4.0.r22.g505d7e4
-pkgrel=1
+pkgver=1.4.0.r22.g505d7e4
+pkgrel=2
 pkgdesc="A simple clipboard manager for Wayland"
 url="https://github.com/yory8/clipman"
 depends=("wl-clipboard>=2.0")
