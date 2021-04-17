@@ -7,6 +7,7 @@ pkgbase = instamenu
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = sh
+	depends = perl
 	depends = libxinerama
 	depends = libxft
 	depends = noto-fonts-emoji
