@@ -1,29 +1,35 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
-_bcname=BiocManager
-_bcver=1.30.10
-pkgname=r-${_bcname,,}
-pkgver=${_bcver//[:-]/.}
+_cranname=BiocManager
+_cranver=1.30.12
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="BiocManager: Access the Bioconductor Project Package Repository"
+pkgdesc="A convenient tool to install and update Bioconductor packages."
 arch=(x86_64)
-url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=(Artistic-2.0)
-depends=(r r-knitr r-curl r-withr r-testthat r-remotes)
-optdepends=(r-biocstyle r-biocversion)
-source=("https://cran.r-project.org/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('f3b7a412b42be0ab8df5fcd9bf981876ba9e5c55bc5faaca7af7ede3b6d0c90e')
+url="https://CRAN.R-project.org/package=BiocManager=${_cranname}"
+license=('Artistic2.0')
+depends=(
+r
+r-remotes
+r-testthat
+r-withr
+r-curl
+)
+optdepends=(
+r-biocversion
+r-rmarkdown
+r-knitr
+)
+source=("${pkgname}-${pkgver}.tar.gz::https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('c36108c1d1f3bee1c7ac513714f0c5a75c8417f39b0d69553583dd00d4b74a30')
+noextract=(${pkgname}-${pkgver}.tar.gz)
 
-build(){
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+build() {
+  R CMD INSTALL ${pkgname}-${pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
-
