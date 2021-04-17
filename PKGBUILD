@@ -2,7 +2,7 @@
 
 pkgname=python-bencode.py
 _pkgname=bencode.py
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Simple bencode parser (for Python 2, Python 3 and PyPy)'
 arch=('any')
@@ -23,4 +23,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('3caad17ed5712a84ac90e86919b61c936d18a0d2123d6bab33330a694b645f51')
+sha256sums=('2a24ccda1725a51a650893d0b63260138359eaa299bb6e7a09961350a2a6e05c')
