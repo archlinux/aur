@@ -1,0 +1,19 @@
+# Copy this file to /etc/udev/rules.d/
+# If rules fail to reload automatically, you can refresh udev rules
+# with the command "udevadm control --reload"
+
+# This rules are based on the udev rules from the OpenOCD project, with unsupported probes removed.
+# See http://openocd.org/ for more details.
+#
+# This file is available under the GNU General Public License v2.0
+
+ACTION!="add|change", GOTO="cmsis_dap_rules_end"
+
+SUBSYSTEM=="gpio", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+
+SUBSYSTEM!="usb|tty|hidraw", GOTO="cmsis_dap_rules_end"
+
+# CMSIS-DAP compatible adapters
+ATTRS{product}=="*CMSIS-DAP*", MODE="666", GROUP="plugdev", TAG+="uaccess"
+
+LABEL="cmsis_dap_rules_end"

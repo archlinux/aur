@@ -3,18 +3,18 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=7.00a
-pkgrel=0
+pkgrel=1
 epoch=36
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
-license=('custom')
+license=('custom' 'GPLv2')
 groups=('jlink')
 depends=('glibc' 'libudev0-shim' 'patch')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
 source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
 source_aarch64=("JLink_Linux_${pkgver/./}_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm64.tgz")
-source=("99-jlink.rules.patch" "JLink.svg")
+source=("99-jlink.rules.patch" "99-cmsis-dap.rules" "JLink.svg")
 desktops=(
         "JFlashExe.desktop"
         "JFlashLiteExe.desktop"
@@ -42,6 +42,7 @@ md5sums_armv7h=('0067d444170013e90b25216d8e4d55dd')
 md5sums_aarch64=('74a70590df463a53e4af44939da72c43')
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
+         "1d90c97860d0da65525f77e80b821613"
          "83a136d31b296dd8f0e23bc21f9d8e19"
          "02e067cd1c420f2085216d76e4866cd4"
          "50bced5895a0ec59db0146153a077515"
