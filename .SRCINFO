@@ -1,6 +1,6 @@
 pkgbase = libgav1-git
 	pkgdesc = A main profile (0) and high profile (1) compliant AV1 decoder (git version)
-	pkgver = 0.16.0.r217.g2af099d
+	pkgver = 0.16.3.r0.gac9e35a
 	pkgrel = 1
 	url = https://chromium.googlesource.com/codecs/libgav1/
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = libgav1-git
 	conflicts = libgav1
 	source = git+https://chromium.googlesource.com/codecs/libgav1
 	source = git+https://github.com/abseil/abseil-cpp.git
+	source = git+https://github.com/google/googletest.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
