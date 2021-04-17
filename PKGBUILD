@@ -29,10 +29,10 @@ build() {
 
 package() {
   cd ${_pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
   install -Dm644 COPYING \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
   cd "$pkgdir/usr"
   rm -rf {bin,include,share/man}/
