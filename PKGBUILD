@@ -2,15 +2,15 @@
 # Contributor: <shlomochoina@gmail.com> 
 
 pkgname=pantheon-dock-instctl-git
-pkgver=r1972.456795d
+pkgver=r2143.a74ee61
 pkgrel=1
 pkgdesc='The Pantheon Dock (with instance controls)'
 arch=('i686' 'x86_64')
 url='https://www.reddit.com/r/elementaryos/comments/irt66g/instance_controls_close_switch_to_or_minimize/'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('bamf' 'gnome-menus' lib{gee,granite.so} 'python')
-makedepends=('git' gnome-{common,menus} lib{dbusmenu-gtk3,granite.so} 'meson' 'vala')
+depends=('bamf' 'gnome-menus' 'libgee' libgranite.so=6-64 'python')
+makedepends=('git' gnome-{common,menus} 'libdbusmenu-gtk3' 'granite' 'meson' 'vala')
 conflicts=('plank')
 provides=('plank')
 source=('pantheon-dock::git+https://github.com/elementary/dock'

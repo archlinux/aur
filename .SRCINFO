@@ -1,6 +1,6 @@
 pkgbase = pantheon-dock-instctl-git
 	pkgdesc = The Pantheon Dock (with instance controls)
-	pkgver = r1972.456795d
+	pkgver = r2143.a74ee61
 	pkgrel = 1
 	url = https://www.reddit.com/r/elementaryos/comments/irt66g/instance_controls_close_switch_to_or_minimize/
 	arch = i686
@@ -11,13 +11,13 @@ pkgbase = pantheon-dock-instctl-git
 	makedepends = gnome-common
 	makedepends = gnome-menus
 	makedepends = libdbusmenu-gtk3
-	makedepends = libgranite.so
+	makedepends = granite
 	makedepends = meson
 	makedepends = vala
 	depends = bamf
 	depends = gnome-menus
 	depends = libgee
-	depends = libgranite.so
+	depends = libgranite.so=6-64
 	depends = python
 	provides = plank
 	conflicts = plank
