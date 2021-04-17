@@ -1,7 +1,7 @@
 # Maintainer: "Winni Neessen (https://pebcak.de)
 
 pkgname=apg-go
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A "Automated Password Generator"-clone'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url='https://github.com/wneessen/apg-go'
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/wneessen/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('acb750ac03de7d467ef3b5f576a7b7eea47d0a4f521c2647d80f0ebe641d3c56')
+sha256sums=('1a798bd729c2985a11001118ad7d222e75c4f01e642184c37dec409a899a565b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
