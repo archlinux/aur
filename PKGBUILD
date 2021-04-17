@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=gog-stellaris-horizon-signal
-pkgver=2.8.1.2
+pkgver=3.0.1.2
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="The free Horizon Signal DLC for the Stellaris game"
@@ -12,7 +12,7 @@ groups=('gog-stellaris-dlcs' 'gog' 'games')
 depends=("gog-stellaris>=$pkgver")
 makedepends=('unzip' 'findutils' 'lgogdownloader')
 source=("stellaris_horizon_signal_${pkgver//./_}.sh::gogdownloader://1490429179/en3installer0")
-sha512sums=('1c6beeca759d3c0408c5bfdc382ad0204e4131435d87ae9bd9f61c3dd1b74bf088500bf65b57bf64b45e1dc51a17d226e34c6e09e90a9250275a19e282adb4b0')
+sha512sums=('3a4d064a9940958e62f275c78152723d6c7387136e71d4810560544b228d9f25fb9bcfbd64c8526a042dc47fc425f118589a4a13a068c9878237a86f05f879a2')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
