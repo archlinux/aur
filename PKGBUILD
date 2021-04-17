@@ -1,8 +1,8 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=eigenpy
-pkgver=2.6.2
-pkgrel=2
+pkgver=2.6.3
+pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/$pkgname"
@@ -10,16 +10,9 @@ license=('BSD')
 depends=('boost-libs')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost' 'python-numpy')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig} "$url"/pull/22{3,6}.patch)
-sha256sums=('SKIP' 'SKIP' 'd4cb091e2b71dfd1afe3d204e1ddbf3d642ff9802e5a6e93b0a1965a57791de1'
-    '9005d65766d59ef39979f9426d2eadb5ad0a79b9c4d429f4f2cffde641ea1c18')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
+sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
-
-prepare() {
-    cd "$pkgbase-$pkgver"
-    patch -p1 -i "$srcdir/223.patch"
-    patch -p1 -i "$srcdir/226.patch"
-}
 
 build() {
     cd "$pkgname-$pkgver"
