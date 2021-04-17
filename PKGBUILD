@@ -21,9 +21,12 @@ fi
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
 if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
+  use_tracers=n
 fi
 
+if [ -z ${_localmodcfg} ]; then
+  _localmodcfg=n
+fi
 
 if [ -z ${fsync+x} ]; then
   fsync=y
@@ -42,7 +45,7 @@ fi
 
 pkgbase=linux-cacule-rdb
 pkgver=5.11.15
-pkgrel=6
+pkgrel=7
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
@@ -68,7 +71,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
         "${_patchsource}/mm-patches/0001-mm-patches.patch"
         "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
-        "${_patchsource}/zstd-patches/0001-zstd-dev-patches.patch")
+        "${_patchsource}/zstd-patches/0001-zstd-dev-patches.patch"
+        "${_patchsource}/zswap-patches/0001-zswap-patches.patch"
+        "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch")
 
 sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
             '2e3b1f1b6ceb958a3e4b2a4740c77953287a2cdb156234af8c9bf9ddad9268e3'
@@ -86,7 +91,9 @@ sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
             'a571b8db83f36d36222b3b11ed607fc93728a351782edbe1129b623c236f050e'
             'f797fb4fd2ac4c1116e988e9ccf8bf1b4d9ba53511c388b958f17888d33cf994'
             '3fe144975c1b30b983fca9e34ba58e7b4704456a340130584a1aca0feabdc22e'
-            'a8eed585260d153c3ead50fc2ec61f20d4ed7c892d4204c97391983e98ccea0e')
+            'ba228b7688cb3c8be9312edadf1f9067e91ce8f303941b3b921a748e3cf974d2'
+            '251327be9627d8039e8c344d1beca19982676ba1eadc1b97251531fbd7611108'
+            '3547dd94fceb67dbf7d013310ce2732944a2d02d82759c8b3c23f37b1bd5252b')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -194,8 +201,26 @@ prepare() {
     echo "-${pkgbase}" > localversion
 
     make olddefconfig
+
+
+    ### Optionally load needed modules for the make localmodconfig
+    # See https://aur.archlinux.org/packages/modprobed-db
+    if [ "$_localmodcfg" = "y" ]; then
+      if [ -f $HOME/.config/modprobed.db ]; then
+        msg2 "Running Steven Rostedt's make localmodconfig now"
+        make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      else
+        msg2 "No modprobed.db data found"
+        exit
+      fi
+    fi
+
+
     make -s kernelrelease > version
     msg2 "Prepared $pkgbase version $(<version)"
+
+    # save configuration for later reuse
+    cat .config > "${startdir}/config.last"
 }
 
 build() {
