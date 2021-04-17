@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=g2o
-pkgver=20170730_git
+pkgver=20201223_git
 pkgrel=1
 pkgdesc="A General Framework for Graph Optimization"
 arch=('i686' 'x86_64' 'armv7')
@@ -14,8 +14,8 @@ provides=('g2o')
 conflicts=('g2o-svn' 'g2o-git')
 options=()
 
-source=($pkgname::https://github.com/RainerKuemmerle/g2o/archive/20170730_git.tar.gz)
-sha256sums=(799a7a943de423f7514c6cfdc7ed1c7393a15a73ff88aa07ad3fdd571d777d22)
+source=($pkgname.tar.gz::https://github.com/RainerKuemmerle/g2o/archive/${pkgver}.tar.gz)
+sha256sums=(20af80edf8fd237e29bd21859b8fc734e615680e8838824e8b3f120c5f4c1672)
 
 #pkgver() {
 #  cd "$pkgname"
