@@ -1,34 +1,33 @@
 pkgbase = python-pgpy
 	pkgdesc = Pretty Good Privacy for Python - a pure Python OpenPGP implementation.
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/SecurityInnovation/PGPy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-cryptography
-	makedepends = python-six
-	makedepends = python-pyasn1
+	makedepends = python-wheel
 	makedepends = python2-setuptools
-	makedepends = python2-cryptography
-	makedepends = python2-enum34
-	makedepends = python2-singledispatch
-	makedepends = python2-six
-	makedepends = python2-pyasn1
-	source = https://github.com/SecurityInnovation/PGPy/releases/download/v0.5.3/PGPy-0.5.3.tar.gz
-	sha256sums = a49c269cedcaf82ac6999bcae5fd3f543ecb1c759f9d48a15ad8d8fa4ac03987
-	sha384sums = 6e60f5f8e6125299c84e0e0ec70642f65b21eb43818b251314f824bb18f522ce05b94525af9a2b366c5832b0580ca7ea
-	sha512sums = 5f27292af764164dc15cd491a297c4a41b3ce9c56e50cd8c71da05b4a886d402d530674592db8e8ea02f323d760342d9d69bfeb88e6109c4345bd701ee285587
+	makedepends = python2-wheel
+	source = https://github.com/SecurityInnovation/PGPy/releases/download/v0.5.4/PGPy-0.5.4.tar.gz
+	source = https://github.com/SecurityInnovation/PGPy/releases/download/v0.5.4/PGPy-0.5.4.tar.gz.asc
+	validpgpkeys = D47C3D408FA78DC056409824F9676A5FF8CC4F96
+	sha256sums = bdd3da1e006fc8e81cc02232969924d6e8c98a4af1621a925d99bba09164183b
+	sha256sums = SKIP
+	sha384sums = cecb31ab93e396ecb1daa63f0554d301042172f7ee827970bd732174433e46377e9628b0a7c4dd843378966cee0e660d
+	sha384sums = SKIP
+	sha512sums = bf19a72d5113cb88e6538d515a06a115a7f329ee1331553100140848226773db0a539a0cbe480f04b0f26cd587fc0c3c8e5fe392e2421d6e6210e86bd0ab70c1
+	sha512sums = SKIP
 
 pkgname = python-pgpy
-	depends = python-cryptography>=1.1.0
+	depends = python-cryptography>=2.6.0
 	depends = python-six>=1.9.0
 	depends = python-pyasn1
 
 pkgname = python2-pgpy
-	depends = python2-cryptography>=1.1.0
+	depends = python2-cryptography>=2.6.0
 	depends = python2-six>=1.9.0
+	depends = python2-pyasn1
 	depends = python2-enum34
 	depends = python2-singledispatch
-	depends = python2-pyasn1
 
