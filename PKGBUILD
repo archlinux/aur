@@ -5,16 +5,19 @@
 _gemname=parser
 pkgname=ruby-${_gemname}
 pkgver=3.0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Ruby parser written in pure Ruby"
 arch=(any)
 depends=(ruby ruby-ast)
 makedepends=(rubygems ruby-rdoc ragel ruby-racc ruby-cliver ruby-rake ruby-bundler)
 url=https://github.com/whitequark/parser
 license=(MIT)
-source=(https://github.com/whitequark/parser/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+source=(https://github.com/whitequark/parser/archive/v$pkgver/$_gemname-$pkgver.tar.gz
+        https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 options=(!emptydirs)
-sha256sums=('65833965407df4ba8e81b83e2707be1cafd1a7f2a4e88db659ac883d89a3aaed')
+sha256sums=('65833965407df4ba8e81b83e2707be1cafd1a7f2a4e88db659ac883d89a3aaed'
+            'c85b1a45f0ca95dec189e29515b1d829dd234fccef523697367dad1c13223113')
+noextract=($_gemname-$pkgver.gem)
 
 prepare() {
   cd $_gemname-$pkgver
@@ -23,8 +26,10 @@ prepare() {
 
 build() {
   cd $_gemname-$pkgver
-  rake generate
-  gem build ${_gemname}.gemspec
+  # racc appears to be broken with ruby3 for now and i don't currently have
+  # time to investigate so we'll just use the upstream prebuilt gem for now
+  # rake generate
+  # gem build ${_gemname}.gemspec
 }
 
 package() {
@@ -36,7 +41,7 @@ package() {
     --no-user-install \
     -i "$pkgdir/$_gemdir" \
     -n "$pkgdir/usr/bin" \
-    $_gemname-$pkgver.gem
+    "$srcdir/$_gemname-$pkgver.gem"
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
