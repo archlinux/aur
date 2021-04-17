@@ -1,6 +1,6 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
-	pkgver = 3.3.2.r96.g9dedf56
+	pkgver = 3.3.2.r236.g9f6b6a3
 	pkgrel = 1
 	url = https://github.com/quequotion/pantheon-qq
 	install = gala.install
@@ -16,7 +16,7 @@ pkgbase = pantheon-workarounds
 	depends = xdg-user-dirs-gtk
 	depends = pantheon-applications-menu
 	depends = plank
-	depends = libwingpanel-2.0.so=0-64
+	depends = libwingpanel-3.0.so
 	optdepends = contractor: A desktop-wide extension service
 	optdepends = dconf-editor: GUI gsettings editor
 	optdepends = elementary-blue-icon-theme-git: Restore blue folder icons to elementary theme

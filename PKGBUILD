@@ -3,7 +3,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-workarounds
-pkgver=3.3.2.r96.g9dedf56
+pkgver=3.3.2.r236.g9f6b6a3
 pkgrel=1
 pkgdesc='Workarounds for Pantheon derivatives'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 groups=('pantheon-qq')
 depends=("cinnamon-settings-daemon"
          "dconf" gnome-{keyring,session} "xdg-user-dirs-gtk"
-         "pantheon-applications-menu" "plank" "libwingpanel-2.0.so=0-64")
+         "pantheon-applications-menu" "plank" "libwingpanel-3.0.so")
 optdepends=("contractor: A desktop-wide extension service"
             "dconf-editor: GUI gsettings editor"
             "elementary-blue-icon-theme-git: Restore blue folder icons to elementary theme"
