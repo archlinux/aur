@@ -7,8 +7,8 @@ url="http://jti.lib.virginia.edu/japanese/hyakunin/index.html"
 arch=('any')
 license=('public-domain')
 depends=('fortune-mod')
-source=("http://jti.lib.virginia.edu/japanese/hyakunin/frames/index/hyaku1eng.html")
-md5sums=('a3f5bfe7c1867f094485b2908a8a1e1c')
+source=("https://web.archive.org/web/20210315005425/http://jti.lib.virginia.edu/japanese/hyakunin/frames/index/hyaku1eng.html")
+sha256sums=('109c3ee53819ed14141ca765e90d128ac5d68d19a04a4fe7f4d52c44fdb98d48')
 
 build() {
   grep '^<br>' hyaku1eng.html|\
