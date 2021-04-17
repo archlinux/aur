@@ -1,13 +1,13 @@
 # Maintainer: Tobias Gerold <tobias at g3ro dot eu>
 pkgname=shiftfs
-pkgver=20210301
+pkgver=20210417
 pkgrel=1
 pkgdesc="kernel module that provides a kernel filesystem for uid/gid shifting; version for default Arch kernel"
 arch=('x86_64')
 url="https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/tree/fs/shiftfs.c?h=master-next"
 license=('GPL2')
 makedepends=('linux-headers')
-source=("shiftfs.c::https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/plain/fs/shiftfs.c?h=master-next"
+source=("shiftfs.c::https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/plain/fs/shiftfs.c?h=master-next&id=e11c90784cc33940ee3143d55706cea203080dc5"
 dkms.conf
 Makefile)
 sha512sums=('SKIP'
