@@ -1,0 +1,5 @@
+die-plugins.lv2/
+pkg/
+src/
+die-plugins.lv2-git-*.pkg.tar.xz
+die-plugins.lv2-git-*.pkg.tar.zst

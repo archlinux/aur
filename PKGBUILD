@@ -1,44 +1,39 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
-maintaner="Milkii Brewster <milkii on Freenode IRC>"
-_pkgname=die-plugins.lv2
-pkgname=$_pkgname-git
-pkgdesc="DISTRHO Imported Effect Plugins, Ardour's plugins outwith Ardour"
-pkgver=r17.cdb2065
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+_name=DIE-Plugins
+_pkgname="${_name,,}.lv2"
+pkgname="${_pkgname}-git"
+pkgdesc="DISTRHO Imported Effect Plugins, Ardour's plugins without Ardour (git version)"
+pkgver=1.1.r4.gf8a31d5
 pkgrel=1
-epoch=
 arch=(x86_64)
-url="https://github.com/DISTRHO/DIE-Plugins"
-license=(GPL2)
-groups=()
-depends=('lv2' 'glib2' 'libsndfile')
-makedepends=(git)
-checkdepends=()
-optdepends=()
-provides=(die-plugins)
-conflicts=(die-plugins)
-source=($pkgname::git+https://github.com/DISTRHO/DIE-Plugins)
-noextract=()
+url="https://github.com/DISTRHO/${_name}"
+license=('GPL2')
+groups=('lv2-plugins')
+depends=('glibc' 'glib2')
+makedepends=('git' 'libsndfile' 'lv2')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/DISTRHO/${_name}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-prepare() {
-	cd "$pkgname"
-}
-
 build() {
-	cd "$pkgname"
-	# ./configure --prefix=/usr
-	make
+  cd "${srcdir}/${_pkgname}"
+  make
 }
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir/" PREFIX="/usr" install
+  depends+=('libsndfile.so')
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  chmod +x "${pkgdir}"/usr/lib/lv2/*.lv2/*.so
 }
