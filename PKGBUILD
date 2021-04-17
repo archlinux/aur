@@ -3,7 +3,7 @@
 _pkgname="reggie"
 pkgname="${_pkgname}-git"
 pkgver=r8.324e7ce
-pkgrel=1
+pkgrel=2
 pkgdesc="A new regex replace CLI tool, as an alternative to sed."
 arch=('x86_64')
 url="https://github.com/cainy-a/reggie"
