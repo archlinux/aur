@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-variant-msgs
 	pkgdesc = ROS - Variant messages are designed to accommodate the information content of any invariant message.
-	pkgver = 0.1.5
-	pkgrel = 3
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = http://github.com/ethz-asl/ros-topic-variant
 	arch = any
 	license = GNU Lesser General Public License (LGPL)
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-variant-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-variant-msgs-0.1.5-0.tar.gz::https://github.com/anybotics/variant-release/archive/release/melodic/variant_msgs/0.1.5-0.tar.gz
-	sha256sums = bc5b26692c4b9223aa4bd83c00fe4b2710a4f5acfe1b9c49cbba0e6f1ad3a16f
+	source = ros-melodic-variant-msgs-0.1.6-1.tar.gz::https://github.com/anybotics/variant-release/archive/release/melodic/variant_msgs/0.1.6-1.tar.gz
+	sha256sums = ae614a42d4d601049053d44911ab4ed4d97deaa47e2ea608f05b7826a450b5ac
 
 pkgname = ros-melodic-variant-msgs
 

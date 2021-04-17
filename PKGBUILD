@@ -4,10 +4,10 @@ pkgdesc="ROS - Variant messages are designed to accommodate the information cont
 url='http://github.com/ethz-asl/ros-topic-variant'
 
 pkgname='ros-melodic-variant-msgs'
-pkgver='0.1.5'
-_pkgver_patch=0
+pkgver='0.1.6'
+_pkgver_patch=1
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('GNU Lesser General Public License (LGPL)')
 
 ros_makedepends=(ros-melodic-message-generation
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="variant-release-release-melodic-variant_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/anybotics/variant-release/archive/release/melodic/variant_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bc5b26692c4b9223aa4bd83c00fe4b2710a4f5acfe1b9c49cbba0e6f1ad3a16f')
+sha256sums=('ae614a42d4d601049053d44911ab4ed4d97deaa47e2ea608f05b7826a450b5ac')
 
 build() {
   # Use ROS environment variables
