@@ -44,7 +44,7 @@ pkgbase = pingnoo
 	depends = zlib
 	depends = gcc-libs
 	provides = pingnoo
-	source = https://www.nedrysoft.com/downloads/${pkgname}/source/${pkgname}-${pkgver}.tar.gz
+	source = https://www.nedrysoft.com/downloads/pingnoo/source/pingnoo-2021.04.08.tar.gz
 	md5sums = 0486739e5418aeebf035432d8fdf0955
 
 pkgname = pingnoo
