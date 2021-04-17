@@ -1,7 +1,7 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = An advanced digital photo management application
-	pkgver = 7.1.0
-	pkgrel = 2
+	pkgver = 7.2.0
+	pkgrel = 1
 	url = https://www.digikam.org/
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	makedepends = eigen
 	makedepends = boost
 	makedepends = kdoctools
-	makedepends = jasper
 	depends = lensfun
 	depends = opencv
 	depends = knotifyconfig
@@ -31,13 +30,13 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	provides = digikam
 	conflicts = digikam
 	conflicts = digikam-git
-	source = https://download.kde.org/stable/digikam/7.1.0/digikam-7.1.0.tar.xz
-	source = https://download.kde.org/stable/digikam/7.1.0/digikam-7.1.0.tar.xz.sig
-	source = showfoto-configure-crash.patch::https://invent.kde.org/graphics/digikam/-/commit/c79a1c6b.patch
+	source = https://download.kde.org/stable/digikam/7.2.0/digikam-7.2.0.tar.xz
+	source = https://download.kde.org/stable/digikam/7.2.0/digikam-7.2.0.tar.xz.sig
+	source = digikam-fix-build.patch::https://invent.kde.org/graphics/digikam/-/commit/b428a1fa.patch
 	validpgpkeys = D1CF2444A7858C5F2FB095B74A77747BC2386E50
-	sha256sums = b103c8463adf04939583199e13f8e83015d8a4a9ad79ebfd502d2a50b5a5abbe
+	sha256sums = cd87ece143aefa02e692a4af5c3c3cc107b9a4d61804d79fa77dd2e344798a17
 	sha256sums = SKIP
-	sha256sums = 86f775473462087f24fcf72257ba6f0b6001dca729fb7225ac38e88cd7a5f338
+	sha256sums = f2e951275896c9cb3195e5557482b675bdb5538a12caa6fdf57e309aa77596c1
 
 pkgname = digikam-without-akonadi-mediawiki-vkontakte
 
