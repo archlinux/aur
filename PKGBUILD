@@ -14,7 +14,7 @@ provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('41464d8afc447991229b420a9e8384810f7679162bbdf55518923a8bfd02c8d8')
+sha256sums=('e0279923acba5ad7ba251e12b1150352d36753952084e66ece5afbefbedd7a59')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
