@@ -1,9 +1,9 @@
 pkgbase = freshfetch-bin
 	pkgdesc = A fresh take on Neofetch
-	pkgver = 0.1.2
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = https://github.com/K4rakara/freshfetch
-	arch = any
+	arch = x86_64
 	license = MIT
 	optdepends = xorg-xrandr
 	optdepends = xorg-xwininfo
@@ -11,9 +11,9 @@ pkgbase = freshfetch-bin
 	conflicts = freshfetch-git
 	conflicts = freshfetch
 	noextract = freshfetch.tar.gz
-	source = https://github.com/K4rakara/freshfetch/releases/download/v0.1.2/freshfetch.tar.gz
+	source = https://github.com/K4rakara/freshfetch/releases/download/v0.2.0/freshfetch.tar.gz
 	source = https://raw.githubusercontent.com/K4rakara/freshfetch/master/LICENSE.md
-	md5sums = 6c7c4073911fbf9e1d83539ec072f51a
+	md5sums = b54ca36f991955c9a97e825bbcb7090a
 	md5sums = a4c191c500e67564935777e1abaebbab
 
 pkgname = freshfetch-bin
