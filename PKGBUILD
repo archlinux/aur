@@ -10,9 +10,9 @@ groups=('pro-audio')
 depends=('wine' 'gtk3')
 conflicts=('linvst3')
 optdepends=('jack')
-suffix="Debian-Stretch"
+suffix="Manjaro"
 source=("$url/releases/download/$pkgver/LinVst3-$pkgver-$suffix.zip")
-md5sums=('dac2d1f3f6c36a4a242a0d9d734337ee')
+md5sums=('1ca552736f43c73232d736a8e63a4214')
 
 package() {
 
