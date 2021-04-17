@@ -21,18 +21,17 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd ${srcdir}/libXvMC-${pkgver}
+  cd libXvMC-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc --disable-static --libdir=/usr/lib32
   make
 }
 
 package() {
-  cd ${srcdir}/libXvMC-${pkgver}
+  cd libXvMC-${pkgver}
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
   mkdir -p "$pkgdir/usr/share/licenses"
   ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
-
 }
