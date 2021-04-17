@@ -1,8 +1,8 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=fpaste
-pkgver=0.4.0.1
-pkgrel=2
+pkgver=0.4.1.1
+pkgrel=1
 pkgdesc='A cli frontend for the fpaste.org pastebin'
 arch=('any')
 url='https://pagure.io/fpaste'
@@ -16,4 +16,4 @@ package() {
 	install -D -m644 'docs/man/en/fpaste.1' "$pkgdir/usr/share/man/man1/fpaste.1"
 }
 
-sha256sums=('a3de49a1a872d83ebc35e0f78e22693694da86fb4d1aad6811f3260693b5f7e6')
+sha256sums=('ceae29cda16425d6f7eef0ae1301cb323425d7dc654b0c1b90c71d295c901266')
