@@ -10,8 +10,8 @@ pkgbase = linvst3-x-bin
 	depends = gtk3
 	optdepends = jack
 	conflicts = linvst3x
-	source = https://github.com/osxmidi/LinVst3-X/releases/download/4.2/LinVst3-X-4.2-.zip
-	md5sums = cbe75292d36afca9a06813d3919d58d3
+	source = https://github.com/osxmidi/LinVst3-X/releases/download/4.2/LinVst3-X-4.2-Manjaro.zip
+	md5sums = a8b9a48651a82e89a859ff388aafc93f
 
 pkgname = linvst3-x-bin
 
