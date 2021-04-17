@@ -4,7 +4,7 @@ pkgdesc="ROS - URDF and meshes describing Velodyne laser scanners."
 url='http://wiki.ros.org/velodyne_description'
 
 pkgname='ros-melodic-velodyne-description'
-pkgver='1.0.10'
+pkgver='1.0.12'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')

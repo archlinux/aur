@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-velodyne-description
 	pkgdesc = ROS - URDF and meshes describing Velodyne laser scanners.
-	pkgver = 1.0.10
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = http://wiki.ros.org/velodyne_description
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = ros-melodic-velodyne-description
 	depends = ros-melodic-urdf
 	depends = ros-melodic-xacro
 	depends = python-rospkg
-	source = ros-melodic-velodyne-description::git+https://bitbucket.org/DataspeedInc/velodyne_simulator.git#tag=1.0.10
+	source = ros-melodic-velodyne-description::git+https://bitbucket.org/DataspeedInc/velodyne_simulator.git#tag=1.0.12
 	sha256sums = SKIP
 
 pkgname = ros-melodic-velodyne-description
