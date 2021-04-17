@@ -1,7 +1,7 @@
 # Maintainer: Kyle Bronsdon <kyle at silksow dot com>
 # Contributor: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst-bin
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc="Linux Windows vst wrapper/bridge"
 arch=('x86_64')
@@ -11,9 +11,9 @@ groups=('pro-audio')
 depends=('wine' 'gtk3')
 conflicts=('linvst')
 optdepends=('jack')
-suffix="Debian-Stretch"
+suffix="Manjaro"
 source=( "$url/releases/download/$pkgver/LinVst-$pkgver-$suffix.zip") 
-md5sums=('1c729ebf209bee5e6a18322d9f4bfe9b')
+md5sums=('22e132e1c3529979a5a5ca0a77cc2e50')
 
 package() {
 	# Shared library
@@ -27,6 +27,6 @@ package() {
 	install -Dm755 "$srcdir/LinVst-$pkgver-$suffix/lin-vst-servertrack32.exe" "$pkgdir/usr/bin/lin-vst-servertrack32.exe"
 
 	# Converter
-	install -Dm755 "$srcdir/LinVst-$pkgver-$suffix/convert/linvstconvert"   "$pkgdir/usr/bin/linvstconvert"
+	install -Dm755 "$srcdir/LinVst-$pkgver-$suffix/linvstconvert"   "$pkgdir/usr/bin/linvstconvert"
 	#install -Dm755 "$srcdir/LinVst-$pkgver-$suffix/convert/linvstconverttree" "$pkgdir/usr/bin/linvstconverttree"
 }
