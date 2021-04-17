@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1.19
+Name=freezer
+Comment=freezer
+TryExec=/opt/Freezer/freezer
+Exec=/opt/Freezer/freezer
+Icon=freezer
+Terminal=false
+Type=Application
+Categories=audio;music;
+Keywords=music;audio;spotify;deezer;
