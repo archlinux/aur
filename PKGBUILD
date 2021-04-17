@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=7.00a
-pkgrel=1
+pkgrel=2
 epoch=36
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -14,7 +14,7 @@ source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/down
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
 source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
 source_aarch64=("JLink_Linux_${pkgver/./}_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm64.tgz")
-source=("99-jlink.rules.patch" "99-cmsis-dap.rules" "JLink.svg")
+source=("99-jlink.rules.patch" "99-jlink-cmsis-dap.rules" "JLink.svg")
 desktops=(
         "JFlashExe.desktop"
         "JFlashLiteExe.desktop"
@@ -125,7 +125,8 @@ package(){
     ln -s /opt/SEGGER/JLink/Doc/LicenseIncGUI.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
     sed -i 's/0x//g' 99-jlink.rules
     patch -i "${srcdir}/99-jlink.rules.patch" 99-jlink.rules
-    install -Dm644 99-jlink.rules "${pkgdir}/usr/lib/udev/rules.d/"
+    install -Dm644 99-jlink.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
+    install -Dm644 "${srcdir}/99-jlink-cmsis-dap.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
     rm -f "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
 
     for f in J*; do
