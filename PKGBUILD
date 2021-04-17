@@ -3,15 +3,15 @@
 
 _basename=jitsi
 _pkgname=meet
-_version=1.0.4628
-_url=https://download.jitsi.org/stable/jitsi-meet-web_1.0.4628-1_all.deb
-_url_config=https://download.jitsi.org/stable/jitsi-meet-web-config_1.0.4628-1_all.deb
+_version=1.0.4900
+_url=https://download.jitsi.org/stable/jitsi-meet-web_1.0.4900-1_all.deb
+_url_config=https://download.jitsi.org/stable/jitsi-meet-web-config_1.0.4900-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}-web
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=3
+pkgrel=1
 pkgdesc="Jitsi Meet Web binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -28,7 +28,6 @@ backup=(
 source=(
         "$_url"
         "config_${_version}.deb::$_url_config"
-        "jitsi.install"
 )
 noextract=(
     "config_${_version}.deb"
@@ -53,9 +52,9 @@ package() {
 
         install -d "$DESTDIR"
         install -d "$CONFDIR"
-	install -d "$DOCDIR"
+        install -d "$DOCDIR"
 
-	cp -R usr/share/jitsi-meet/* "${DESTDIR}"
+        cp -R usr/share/jitsi-meet/* "${DESTDIR}"
         cp usr/share/jitsi-meet-web-config/config.js "${DESTDIR}"
         cp -R usr/share/jitsi-meet-web-config/* "${DOCDIR}"
 
@@ -70,6 +69,5 @@ package() {
         
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('0d1b18285b8ce7a849d67ee2b00a372034dcbd8f3b652479acba96ea2191a079'
-            'a455c7f72a221253d8a72185baed755499b964241f0e58a3991f4a27e1b0238e'
-            'a6c7bd3a8c46f4192e6de555ee0c72cd87849a74159148f67ef3d3873796147a')
+sha256sums=('d39a4ec96be78f31230ee0806db3c3f5c05126384e4b4c1953ba95e905ddec38'
+            '527e9343f18540dcfeda67365023724f565d109241240f5d74c3e68aa61f3382')
