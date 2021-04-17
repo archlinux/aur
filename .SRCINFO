@@ -1,7 +1,7 @@
 pkgbase = dovecot-fts-xapian
 	pkgdesc = Dovecot FTS plugin based on Xapian
 	pkgver = 1.4.8
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/grosjo/fts-xapian
 	arch = x86_64
