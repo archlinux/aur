@@ -1,0 +1,25 @@
+pkgbase = oxyromon-git
+	pkgdesc = Rusty ROM OrgaNizer
+	pkgver = 0.7.0.r7.3a885be
+	pkgrel = 1
+	url = https://github.com/alucryd/oxyromon
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = mame-tools
+	makedepends = maxcso
+	makedepends = p7zip
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	optdepends = mame-tools: CHD support
+	optdepends = maxcso: CSO support
+	optdepends = p7zip: 7Z and ZIP support
+	provides = oxyromon
+	conflicts = oxyromon
+	source = git+https://github.com/alucryd/oxyromon.git
+	validpgpkeys = 9437DD3815A7A9169E3D3946AFF5D95098BC6FF5
+	b2sums = SKIP
+
+pkgname = oxyromon-git
+
