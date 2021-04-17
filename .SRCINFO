@@ -1,6 +1,6 @@
 pkgbase = ruby-fusuma
 	pkgdesc = Fusuma is multitouch gesture recognizer.
-	pkgver = 1.11.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/iberianpig/fusuma
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = ruby-fusuma
 	optdepends = ruby-fusuma-plugin-keypress: Keypress combination plugin for Fusuma
 	optdepends = ruby-fusuma-plugin-tap: Window Manager plugin for Fusuma
 	optdepends = ruby-fusuma-plugin-wmctrl: Tap and Hold gestures plugin for Fusuma
-	noextract = fusuma-1.11.1.gem
+	noextract = fusuma-2.0.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fusuma-1.11.1.gem
-	sha1sums = 6f839f073d64af2573e9264c561fd1ae675b9f8f
+	source = https://rubygems.org/downloads/fusuma-2.0.2.gem
+	sha1sums = 3f8cbd380fe9c5bf315697fc5a61155240f92637
 
 pkgname = ruby-fusuma
 
