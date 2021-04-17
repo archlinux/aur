@@ -1,6 +1,6 @@
 pkgbase = instawm-schemas
 	pkgdesc = addons for instawm
-	pkgver = 2021.04.10
+	pkgver = 2021.04.17
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/instawm-schemas
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = instawm-schemas
 	makedepends = meson
 	depends = glib2
 	depends = dconf
-	provides = instawm-schemas=2021.04.10
-	source = instawm-schemas-2021.04.10.tar.gz::https://github.com/The-Repo-Club/instawm-schemas/archive/2021.04.10.tar.gz
-	sha256sums = 355b415195a647a6d667a6af9f9e641f4759d02ab4f314d2b06890d9feb9e1ab
+	provides = instawm-schemas=2021.04.17
+	source = instawm-schemas-2021.04.17.tar.gz::https://github.com/The-Repo-Club/instawm-schemas/archive/2021.04.17.tar.gz
+	sha256sums = db7295fb59468433d7cac445a678fdc1759baf67c92557fe8be2fa908bfd9f37
 
 pkgname = instawm-schemas
 
