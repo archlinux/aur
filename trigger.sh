@@ -11,7 +11,7 @@ return
    > home:nicman23/thunderbird-appmenu-bin/_service
   [ -e 'home:nicman23/thunderbird-appmenu-bin/' ] || osc co home:nicman23 thunderbird-appmenu-bin
   cd home:nicman23/thunderbird-appmenu-bin/
-#  osc ci -m $ver_msg
+  osc ci -m $ver_msg
 )
 
 [ -e thunderbird-appmenu-bin ] || git clone ssh://aur@aur.archlinux.org/thunderbird-appmenu-bin.git
