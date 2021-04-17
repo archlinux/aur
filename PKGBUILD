@@ -28,11 +28,11 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  make
+  make -j1
 }
 
 package() {
   # executable
   cd $_pkgname
-  make DESTDIR="$pkgdir"  NOSCHEMAS=1 install
+  make -j1 DESTDIR="$pkgdir"  NOSCHEMAS=1 install
 }
