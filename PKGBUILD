@@ -9,7 +9,7 @@ pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=7
+pkgrel=8
 license=('unknown: proprietary')
 options+=('emptydirs')
 
@@ -55,7 +55,6 @@ package_siedler2-data() {
 package_siedler2-doc() {
   pkgdesc="Manual for Blue Byte's 'Siedler II'/'Settlers II'."
   url='http://archive.org/details/The_Settlers_II_Manual/'
-  pkgver='venividivici'
 
   install -v -D -m644 "${srcdir}/The_Settlers_II_Manual.pdf" "${pkgdir}/usr/share/doc/siedler2/The_Settlers_II_Manual.pdf"
 
