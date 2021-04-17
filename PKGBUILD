@@ -14,7 +14,7 @@ makedepends=('git' 'dotnet-sdk>=5.0.0' 'dotnet-targeting-pack>=5.0.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("usr/share/${_pkgname}/data")
-source=("${_pkgname}-source::git+${url}#commit=324e7ce3b0be69b8e9a3992fb3b7214d2e79eaf4")
+source=("${_pkgname}-source::git+${url}#branch=master")
 md5sums=('SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for

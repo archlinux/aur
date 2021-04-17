@@ -13,7 +13,7 @@ pkgbase = reggie-git
 	provides = reggie
 	conflicts = reggie
 	backup = usr/share/reggie/data
-	source = reggie-source::git+https://github.com/cainy-a/reggie#commit=324e7ce3b0be69b8e9a3992fb3b7214d2e79eaf4
+	source = reggie-source::git+https://github.com/cainy-a/reggie#branch=master
 	md5sums = SKIP
 
 pkgname = reggie-git
