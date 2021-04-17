@@ -6,9 +6,9 @@ pkgdesc="ROS - Cartographer is a system that provides real-time simultaneous loc
 url='https://github.com/googlecartographer/cartographer'
 
 pkgname='ros-noetic-cartographer'
-pkgver='1.0.0'
+pkgver='2.0.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=1
 license=('Apache 2.0')
 
 ros_makedepends=(ros-noetic-catkin)
