@@ -1,20 +1,17 @@
 pkgbase = ansible-lint-junit
 	pkgdesc = ansible-lint to JUnit converter
-	pkgver = 0.14
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://github.com/wasilak/ansible-lint-junit
 	arch = any
 	license = BSD
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	source = https://github.com/wasilak/ansible-lint-junit/archive/0.14.tar.gz
-	sha256sums = da4ced9c35f57436baa420ae6d0e8aabc0f08e6ed3c614135b956ea1bb0acde8
-
-pkgname = python-ansible-lint-junit
+	makedepends = python-lxml
 	depends = ansible-lint
+	depends = python-lxml
+	source = https://github.com/wasilak/ansible-lint-junit/archive/0.16.tar.gz
+	sha256sums = c717fdeaac2efc7bcf5d9f80015e1cd7b2856d0fa7b5ca4f636d43b4d0c2315a
 
-pkgname = python2-ansible-lint-junit
-	depends = ansible-lint
+pkgname = python-
 
