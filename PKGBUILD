@@ -5,13 +5,14 @@
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
 pkgver=1.12.7+r593.20200602.ee50e77
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
 # Git repository: https://github.com/frougon/FFGo
 license=('custom')
 depends=(
+  'flightgear'
   'python>=3.4'
   'python-condconfigparser'
   'tk>=8.5'
