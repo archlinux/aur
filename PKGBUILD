@@ -18,18 +18,18 @@ depends=('python' 'pyside2' \
 	'qt5-webchannel' 'qt5-webengine' 'qt5-webglplugin' \
 	'qt5-websockets' 'qt5-webview' 'qt5-x11extras' 'qt5-xmlpatterns'
 	)
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel')
 #optdepends=('code: for text editing')
 source=($pkgname-$pkgver.tar.gz::$url"/archive/v${pkgver}.tar.gz")
 md5sums=('SKIP')
 build(){
 	cd "$srcdir/$pkgname-$pkgver"
     	python setup.py build
-    	python setup.py install --root="$pkgdir" --optimize=1 
 }
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	# license
+    	python setup.py install --root="$pkgdir" --optimize=1 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

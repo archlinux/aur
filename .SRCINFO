@@ -6,6 +6,7 @@ pkgbase = stm32pio
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = pyside2
 	depends = qt5-3d
