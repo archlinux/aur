@@ -10,7 +10,7 @@ makedepends=("cargo")
 provides=("patchup")
 conflicts=("patchup-bin")
 source=("https://github.com/dezyh/patchup/releases/download/0.1.0/patchup-cli.tar.gz")
-sha256sums=("8d92beb46b16974a7c3fed6acad0a6eb49bc179c5af285bc99fd3e9071f1354d")
+sha256sums=("323bbb2631e9d04dd8c2231c34849f8a72d623d4a2ab8386c61b465105608732")
 
 build() {
     cargo build --release --locked --target-dir=target
