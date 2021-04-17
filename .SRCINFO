@@ -1,7 +1,7 @@
 pkgbase = clipman-git
 	pkgdesc = A simple clipboard manager for Wayland
-	pkgver = v1.4.0.r22.g505d7e4
-	pkgrel = 1
+	pkgver = 1.4.0.r22.g505d7e4
+	pkgrel = 2
 	url = https://github.com/yory8/clipman
 	arch = x86_64
 	arch = i686
