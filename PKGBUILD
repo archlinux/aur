@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 pkgver=2.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=()
 makedepends=("go>=1.16")
 source=(
-	"$pkgname-binary-$pkgver.tar.gz::https://github.com/spiral/$binname/archive/v$pkgver.tar.gz"
+	"$pkgname-binary-$pkgver.tar.gz::https://github.com/spiral/$pkgname-binary/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz::https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
