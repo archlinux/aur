@@ -12,8 +12,8 @@ install=.INSTALL
 md5sums=('60189d1d1f03718790946759755adad0')
 build() {
     cd "$srcdir"
-    chmod +x setup.sh
+    chmod +x setup
 }
 package() {
-    sudo ./setup.sh
+    sudo ./setup
 }
