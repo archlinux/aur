@@ -1,6 +1,6 @@
 pkgbase = gedit-menubar
 	pkgdesc = GNOME Text Editor (Patched to show menubar)
-	pkgver = 40.0
+	pkgver = 40.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Gedit
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = gedit-menubar
 	provides = gedit
 	conflicts = gedit-code-assistance<=3.16.0+4+gd19b879-1
 	conflicts = gedit
-	source = git+https://gitlab.gnome.org/GNOME/gedit.git#tag=40.0
+	source = git+https://gitlab.gnome.org/GNOME/gedit.git#tag=40.1
 	source = git+https://gitlab.gnome.org/GNOME/libgd.git
 	source = menubar.patch
 	sha256sums = SKIP
