@@ -2,7 +2,7 @@
 
 pkgname=vte3-nohang
 pkgver=0.64.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual Terminal Emulator widget (plus no-hang patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64)
