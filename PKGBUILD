@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>, Mingde (Matthew) Zeng <matthewzmd@posteo.net>
 
 pkgname=emacs-application-framework-git
-pkgver=r1836.0314c06
+pkgver=r1908.b21efed
 pkgrel=1
 pkgdesc="EAF extends GNU Emacs to an entire universe of powerful GUI applications."
 arch=('any')
 url="https://github.com/manateelazycat/emacs-application-framework"
 license=('GPL3')
-depends=('emacs' 'python-epc' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'wmctrl' 'xdotool' 'nodejs')
+depends=('emacs' 'python-epc' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'wmctrl' 'nodejs')
 optdepends=('python-pymupdf: EAF PDF Viewer support'
 	        'python-qrcode: EAF File Sender/File Receiver/Airshare support'
 	        'libreoffice: EAF Doc Viewer support'

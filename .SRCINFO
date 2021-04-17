@@ -1,6 +1,6 @@
 pkgbase = emacs-application-framework-git
 	pkgdesc = EAF extends GNU Emacs to an entire universe of powerful GUI applications.
-	pkgver = r1836.0314c06
+	pkgver = r1908.b21efed
 	pkgrel = 1
 	url = https://github.com/manateelazycat/emacs-application-framework
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = emacs-application-framework-git
 	depends = python-pyqt5-sip
 	depends = python-pyqtwebengine
 	depends = wmctrl
-	depends = xdotool
 	depends = nodejs
 	optdepends = python-pymupdf: EAF PDF Viewer support
 	optdepends = python-qrcode: EAF File Sender/File Receiver/Airshare support
