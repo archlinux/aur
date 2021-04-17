@@ -7,9 +7,9 @@ arch=(any)
 url="https://github.com/ChihebBayouli/gentor"
 license=('custom')
 depends=(wget curl systemd iptables)
-source=("https://github.com/ChihebBayouli/gentor/releases/download/v0.2/setup.sh")
+source=("https://github.com/ChihebBayouli/gentor/releases/download/v0.2/setup")
 install=.INSTALL
-md5sums=('b0cb18aac523c689a12a223abf95be81')
+md5sums=('60189d1d1f03718790946759755adad0')
 build() {
     cd "$srcdir"
     chmod +x setup.sh
