@@ -1,15 +1,15 @@
 pkgbase = ruby-fusuma-plugin-keypress
 	pkgdesc = Keypress combination plugin for Fusuma
-	pkgver = 0.2.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/iberianpig/fusuma-plugin-keypress
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-fusuma
-	noextract = fusuma-plugin-keypress-0.2.1.gem
+	noextract = fusuma-plugin-keypress-0.4.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fusuma-plugin-keypress-0.2.1.gem
+	source = https://rubygems.org/downloads/fusuma-plugin-keypress-0.4.1.gem
 	sha1sums = dd7cd529499b5e0e34b7a8f6bab2a38668d676f7
 
 pkgname = ruby-fusuma-plugin-keypress
