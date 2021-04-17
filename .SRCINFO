@@ -1,6 +1,6 @@
 pkgbase = sfizz-git
 	pkgdesc = SFZ library and LV2 plugin
-	pkgver = r3555.343350ad
+	pkgver = r3599.5da137a8
 	pkgrel = 1
 	url = https://sfz.tools/sfizz
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = sfizz-git
 	license = custom:ISC
 	makedepends = git
 	makedepends = cmake
-	depends = libsndfile
 	depends = jack
 	depends = libx11
 	depends = libxcb
