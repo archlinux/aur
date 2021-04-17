@@ -1,6 +1,6 @@
 pkgbase = wxgtk-dev-opt
 	pkgver = 3.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
