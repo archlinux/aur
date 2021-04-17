@@ -2,7 +2,7 @@
 # Contributor: redfish <redfish at galactica.pw>
 
 pkgname=bitcoin-unlimited
-pkgver=1.9.0.1
+pkgver=1.9.1.1
 _pkgbase=BitcoinUnlimited-BCHunlimited${pkgver}
 pkgrel=1
 pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
@@ -45,4 +45,4 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-sha256sums=('bce8d965af68985e5f5db8d6e0915dc8986eb939bd37bf4e064185255216458c')
+sha256sums=('18e38a77715baa32dda9049971def39f91b029a3b8308ccc3c7d90ef453fad03')
