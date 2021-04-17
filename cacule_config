@@ -3,6 +3,7 @@
 configure() {
 echo "Enable CacULE CPU scheduler..."
 scripts/config --enable CONFIG_CACULE_SCHED
+#scripts/config --set-val CONFIG_NR_CPUS "12"
 echo "Processor type and features Cacule"
 scripts/config --disable CONFIG_RETPOLINE
 scripts/config --disable CONFIG_X86_5LEVEL
