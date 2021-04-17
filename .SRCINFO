@@ -1,0 +1,11 @@
+pkgbase = tr-unicode
+	pkgdesc = Unix tr command reimplemented in perl with unicode support
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = perl
+	source = tr-unicode.pl
+	md5sums = ebad335d1225fa3a203bc3d21e45aaea
+
+pkgname = tr-unicode
+
