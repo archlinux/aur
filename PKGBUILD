@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-cid
 _name=pytest_cid
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A wrapper around py-cid for writing tests involving CIDs in datastructures."
 arch=('any')
@@ -25,4 +25,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('61a1c282220ad1ad419cbfce7c33b3a84781be7a9edae9145da924ab2aaccfe8')
+sha256sums=('1cb9cfbbe6e810ef2b3a504bb2d582eecbba54b3b0066773e3824b751bade30f')
