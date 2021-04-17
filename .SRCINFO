@@ -1,6 +1,6 @@
 pkgbase = shiftfs-dkms
 	pkgdesc = kernel module that provides a kernel filesystem for uid/gid shifting; dkms version for custom kernels
-	pkgver = 20210301
+	pkgver = 20210417
 	pkgrel = 1
 	url = https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/hirsute/tree/fs/shiftfs.c?h=master-next
 	arch = x86_64
