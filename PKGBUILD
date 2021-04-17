@@ -2,7 +2,7 @@
 
 pkgname=randomx
 _name=RandomX
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="RandomX: The proof of work algorithm based on random code execution"
 arch=('x86_64')
@@ -33,4 +33,4 @@ package() {
 	install -Dm755 "randomx-codegen" "${pkgdir}/usr/bin/randomx-codegen"
 }
 
-sha256sums=('31741ede58267c84c1223370a4d18e32fad26a9652371d36da7e45c0c584ae1a')
+sha256sums=('f982a12d18b1d260bef2a1d3c46ae4902975fbf63abb38ca6413c96d1778db3a')
