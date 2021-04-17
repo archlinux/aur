@@ -27,7 +27,6 @@ pkgbase = linux-cacule
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11/bbr2-patches/0001-bbr2-5.11-introduce-BBRv2.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11/btrfs-patches/0001-btrfs-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11/zswap-patches/0001-zswap-patches.patch
-	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11/arch-patches/0001-archpatches.patch
 	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11/zstd-patches/0001-zstd-patches.patch
 	sha256sums = d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a
 	sha256sums = 2e3b1f1b6ceb958a3e4b2a4740c77953287a2cdb156234af8c9bf9ddad9268e3
@@ -44,7 +43,6 @@ pkgbase = linux-cacule
 	sha256sums = 68dcadab17c405335633e0ded03d13a78ee524311bc927df2a0f0fc1a1463caf
 	sha256sums = 4e25daa2c11d9f24af8d34b7621689ab3beeb5af185b1178cdec7f610283b5be
 	sha256sums = 251327be9627d8039e8c344d1beca19982676ba1eadc1b97251531fbd7611108
-	sha256sums = 28e96fb81c5fec320f82eaf25301e51c61b15b4d2185e0514f2462255457d8e9
 	sha256sums = 3fe144975c1b30b983fca9e34ba58e7b4704456a340130584a1aca0feabdc22e
 
 pkgname = linux-cacule
