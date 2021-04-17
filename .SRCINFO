@@ -1,6 +1,6 @@
 pkgbase = python-espnet-model-zoo-git
 	pkgdesc = Manage pretrained models created by ESPnet toolkit
-	pkgver = 0.0.0a28.r169
+	pkgver = 0.0.0a29.r170
 	pkgrel = 1
 	url = https://github.com/espnet/espnet_model_zoo
 	arch = any
