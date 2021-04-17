@@ -42,7 +42,7 @@ fi
 
 pkgbase=linux-cacule-rdb
 pkgver=5.11.15
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
@@ -67,6 +67,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.11-introduce-BBRv2.patch"
         "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
         "${_patchsource}/zswap-patches/0001-zswap-patches.patch"
+        "${_patchsource}/arch-patches/0001-archpatches.patch"
         "${_patchsource}/zstd-patches/0001-zstd-patches.patch")
 
 sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
@@ -84,6 +85,7 @@ sha256sums=('d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a'
             '68dcadab17c405335633e0ded03d13a78ee524311bc927df2a0f0fc1a1463caf'
             '4e25daa2c11d9f24af8d34b7621689ab3beeb5af185b1178cdec7f610283b5be'
             '251327be9627d8039e8c344d1beca19982676ba1eadc1b97251531fbd7611108'
+            '28e96fb81c5fec320f82eaf25301e51c61b15b4d2185e0514f2462255457d8e9'
             '3fe144975c1b30b983fca9e34ba58e7b4704456a340130584a1aca0feabdc22e')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
