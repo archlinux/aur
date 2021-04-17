@@ -1,7 +1,7 @@
 # Maintainer: Isaac Mills <rooster0055@protonmail.com>
 
 pkgname=dogehouse
-pkgver=1.0.57
+pkgver=1.0.58
 pkgrel=1
 pkgdesc="Taking voice conversations to the moon"
 url="https://dogehouse.tv"
