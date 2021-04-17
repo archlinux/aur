@@ -2,7 +2,7 @@
 
 pkgbase=shodo
 pkgname=${pkgbase}
-pkgver=1.0.15
+pkgver=1.1.1
 pkgrel=1
 arch=('any')
 pkgdesc="Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe"
@@ -13,10 +13,10 @@ install=${pkgname}.install
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
-source=("${pkgname}-${pkgver}.jar::https://pje.tst.jus.br/shodo/assinadorjt-latest.jar"
-            "${pkgbase}"-{48,64,128}.png
-            "${pkgbase}")
-sha256sums=('0ae81042f0ab5e08ae09cef01256f15eabaecd1bbfc0a9ae92b19fd4bda33800'
+source=("${pkgname}-${pkgver}.jar::https://pje.trt5.jus.br/shodo/shodo.jar"
+        "${pkgbase}"-{48,64,128}.png
+        "${pkgbase}")
+sha256sums=('8a6ae3ad16bb592b73a6ea65f4db3ef4ece774c5ada367ba0ecc75577e2b5cff'
             '17ea4384cbc047448a6698994ae109884f7ef299b972452b6060587b0e300375'
             '11b54f2210ef5ba2fe1f0e3b388bdac2d3e67b66f549c85b2efe77e4f573a3a3'
             '68c1fa6b45b21fd1a8df30338a957b4657257ab9c8bc456a5873f8a589de9f41'
