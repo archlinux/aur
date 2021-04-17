@@ -1,6 +1,6 @@
 pkgbase = labwc-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version)
-	pkgver = 0.2.0.r2.gb997d8e
+	pkgver = 0.2.1.r5.g9769fad
 	pkgrel = 1
 	url = https://github.com/johanmalm/labwc
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = labwc-git
 	makedepends = meson
 	makedepends = scdoc
 	depends = pango
-	depends = wlroots
+	depends = wlroots-git
 	depends = wayland
 	depends = wayland-protocols
 	depends = xorg-xwayland
