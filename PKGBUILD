@@ -2,19 +2,22 @@
 
 pkgname=reboot-guard
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Block systemd-initiated poweroff/reboot/halt until configurable condition checks pass"
 arch=('any')
 url="https://github.com/ryran/reboot-guard"
 license=('GPL')
 depends=('python' 'systemd')
 provides=('rguard')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ryran/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('75e2fcf51057b043163efcc0e35cbfbd')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ryran/$pkgname/archive/v$pkgver.tar.gz"
+    "reboot-guard-python3.patch")
+md5sums=('75e2fcf51057b043163efcc0e35cbfbd'
+         'abdfb0be41bd2fad42bc4fc3040c573a')
 
 prepare() {
   cd "$pkgname-$pkgver"
   sed -ie 's#/usr/sbin/#/usr/bin/#' rguard.service
+  patch -i "reboot-guard-python3.patch"
 }
 
 package() {

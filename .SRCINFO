@@ -1,7 +1,7 @@
 pkgbase = reboot-guard
 	pkgdesc = Block systemd-initiated poweroff/reboot/halt until configurable condition checks pass
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryran/reboot-guard
 	arch = any
 	license = GPL
@@ -9,7 +9,9 @@ pkgbase = reboot-guard
 	depends = systemd
 	provides = rguard
 	source = reboot-guard-1.0.1.tar.gz::https://github.com/ryran/reboot-guard/archive/v1.0.1.tar.gz
+	source = reboot-guard-python3.patch
 	md5sums = 75e2fcf51057b043163efcc0e35cbfbd
+	md5sums = abdfb0be41bd2fad42bc4fc3040c573a
 
 pkgname = reboot-guard
 
