@@ -3,7 +3,7 @@
 
 pkgname=wingpanel-standalone-git
 pkgver=r620.6437f0d
-pkgrel=1
+pkgrel=2
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -17,9 +17,9 @@ optdepends=("pantheon-applications-menu-git: Application launcher"
             "indicator-powersave: On the fly power savings and performance toggles"
             "glippy-indicator: Excellent clipboard manager applet"
             "ubuntu-indicator-weather: Simple weather applet")
-provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-3.0.so')
+provides=(wingpanel{,{,-standalone}-bzr,-git} libwingpanel{,-3.0}.so)
 #provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
-conflicts=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-3.0.so')
+conflicts=(wingpanel{,{,-standalone}-bzr,-git} libwingpanel{,-3.0}.so)
 #conflicts=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
 replaces=('wingpanel-standalone-bzr')
 source=('git+https://github.com/elementary/wingpanel.git'
