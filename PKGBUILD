@@ -23,3 +23,4 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	make PREFIX="$pkgdir/usr" install
 }
+
