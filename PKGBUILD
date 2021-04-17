@@ -3,7 +3,7 @@
 _pkgname="reggie"
 pkgname="${_pkgname}-git"
 pkgver=r8.324e7ce
-pkgrel=2
+pkgrel=3
 pkgdesc="A new regex replace CLI tool, as an alternative to sed."
 arch=('x86_64')
 url="https://github.com/cainy-a/reggie"
@@ -52,5 +52,5 @@ package() {
 	cp -r --preserve=mode "Reggie/bin/Debug/net5.0/"* "${pkgdir}/usr/lib/${_pkgname}/"
 	# add to bin
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "${pkgdir}/usr/lib/${_pkgname}/Reggie" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/usr/lib/${_pkgname}/Reggie" "${pkgdir}/usr/bin/${_pkgname}"
 }
