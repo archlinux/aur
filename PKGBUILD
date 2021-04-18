@@ -3,7 +3,7 @@
 pkgname=python-ipfshttpclient-git
 _reponame=py-ipfs-http-client
 _name=ipfshttpclient
-pkgver=0.4.13.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python IPFS API client library"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = python-ipfshttpclient-git
 	pkgdesc = Python IPFS API client library
-	pkgver = 0.4.13.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/ipfshttpclient
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-ipfshttpclient-git
 	depends = python-setuptools
 	depends = python-six
 	optdepends = go-ipfs: IPFS daemon
-	provides = python-ipfshttpclient=0.4.13.2
+	provides = python-ipfshttpclient=0.7.0
 	conflicts = python-ipfshttpclient
 	conflicts = python-ipfsapi
 	source = git+https://github.com/ipfs/py-ipfs-http-client
