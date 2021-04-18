@@ -7,11 +7,13 @@ pkgdesc="Allusion is a tool built for artists, aimed to help you organize your V
 arch=('x86_64')
 url='https://allusion-app.github.io'
 license=('GNU')
+makedepends=('curl' 'sed')
 depends=('glibc' 'zlib')
 options=(!strip)
-gitver="${pkgver}-rc2"
-source_x86_64=("Allusion-${gitver}.AppImage::https://github.com/allusion-app/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage")
-noextract=("Allusion-${gitver}.AppImage")
+gittag=$(curl https://github.com/allusion-app/Allusion/releases | sed -n -e "s/^.*allusion-app\/Allusion\/releases\/tag\/v${pkgver}-\(.*\)\".*/\1/p" | head -n1)
+gitver="${pkgver}-${gittag}"
+source_x86_64=("Allusion-${pkgver}.AppImage::https://github.com/allusion-app/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage")
+noextract=("Allusion-${pkgver}.AppImage")
 sha256sums_x86_64=('6d4e79d5c56f20fd326b9001737c79ee5f9fea2fc94864e1ed84a087572f22d3')
 
 package() {
