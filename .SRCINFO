@@ -1,12 +1,17 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = sleek
+	pkgdesc = Todo app based on the todo.txt format for Linux, free and open-source
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	epoch = 1
+	url = https://github.com/ransome1/sleek/
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = MIT
+	makedepends = npm
+	depends = electron
+	provides = sleek
+	options = !strip
+	source = https://github.com/ransome1/sleek/archive/refs/tags/v1.0.0.zip
+	sha512sums = SKIP
 
-pkgname = yarxi
+pkgname = sleek
 
