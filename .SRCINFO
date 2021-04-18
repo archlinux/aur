@@ -1,5 +1,5 @@
 pkgbase = dot-git
-	pkgdesc = Dot Browser is a privacy-conscious web browser based on Firefox.
+	pkgdesc = Dot Browser is a privacy-conscious web browser based on Firefox. (Built from source)
 	pkgver = 0.1
 	pkgrel = 0
 	url = https://github.com/dothq/browser
@@ -10,6 +10,7 @@ pkgbase = dot-git
 	makedepends = git
 	makedepends = sccache
 	makedepends = cbindgen
+	provides = dot
 	source = dot-git-0.1::git+https://github.com/dothq/browser-ff.git
 	source = firefox-source-87.0::https://archive.mozilla.org/pub/firefox/releases/87.0/source/firefox-87.0.source.tar.xz
 	sha256sums = SKIP
