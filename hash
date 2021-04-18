@@ -1,0 +1,4 @@
+for ARCH in x86_64-unknown-linux-gnu
+do
+  curl -sSL https://github.com/denoland/deno/releases/download/v${PKGVER}/deno-${ARCH}.zip | sha256sum | awk '{print $1}'
+done
