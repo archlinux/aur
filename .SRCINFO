@@ -1,6 +1,6 @@
 pkgbase = php-smbclient
 	pkgdesc = PHP bindings for libsmbclient.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/eduardok/libsmbclient-php
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = php-smbclient
 	depends = php
 	depends = smbclient
 	backup = etc/php/conf.d/smbclient.ini
-	source = https://github.com/eduardok/libsmbclient-php/archive/1.0.5.tar.gz
-	md5sums = 10a0614a393650cac41724cda327d460
+	source = https://github.com/eduardok/libsmbclient-php/archive/1.0.6.tar.gz
+	md5sums = dd00ec1431149a7e627b62d659fc4ad8
 
 pkgname = php-smbclient
 
