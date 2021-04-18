@@ -1,0 +1,19 @@
+pkgbase = termbox2-git
+	pkgdesc = Termbox fork that aims to handle input and keybindings correctly
+	pkgver = 1.1.0.r140.g208429c
+	pkgrel = 1
+	url = https://github.com/tomas/termbox
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake>=2.8
+	depends = glibc
+	provides = termbox2
+	provides = libtermbox.so
+	conflicts = termbox2
+	conflicts = termbox
+	source = termbox2-git::git+https://github.com/tomas/termbox
+	md5sums = SKIP
+
+pkgname = termbox2-git
+
