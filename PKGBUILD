@@ -1,8 +1,8 @@
 # Maintainer: aljazari
-# Maintainer: Fabio Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=green-recorder
-pkgver=3.2.8
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="Simple screen recorder for Linux desktop, supports Wayland & Xorg"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('gnome-shell: Gnome on Wayland desktop recording')
 makedepends=(python-setuptools)
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dvershinin/green-recorder/archive/${pkgver}.tar.gz")
-sha256sums=('5f37eb5182eab631de212a639118635fe14bba1de5c1d8ec7e02c46d01ffee2c')
+sha256sums=('9e88a000d88e484c0e2bddd41cd319faba8fe636f67f23906c0cd1d471f922fb')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
