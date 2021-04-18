@@ -78,8 +78,8 @@ PROFILING=        # Enable gprof profiling support.
 
 ################################################################################
 pkgname="emacs-native-comp-git-enhanced"
-pkgver=28.0.50.147297
-pkgrel=2
+pkgver=28.0.50.148118
+pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
@@ -268,7 +268,7 @@ fi
 
 ################################################################################
 
-  ./configure CC='clang' "${_conf[@]}"
+  ./configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
   # compiling. Less time recompiling. Yay! But you may
