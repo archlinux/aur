@@ -2,7 +2,7 @@
 pkgname=rbw-bin
 _name=${pkgname%-*}
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 depends=('pinentry' 'openssl')
 conflicts=('rbw-git' 'rbw')
 provides=('rbw')
@@ -17,15 +17,10 @@ package() {
     rm -rf tmp
     mkdir tmp
     tar xf data.tar.xz -C tmp
-
-    tmp/usr/bin/rbw gen-completions bash >bash-completions
-    tmp/usr/bin/rbw gen-completions zsh >zsh-completions
-    tmp/usr/bin/rbw gen-completions fish >fish-completions
-
     install -Dm 755 tmp/usr/bin/rbw -t "${pkgdir}/usr/bin"
     install -Dm 755 tmp/usr/bin/rbw-agent -t "${pkgdir}/usr/bin"
     install -Dm 644 tmp/usr/share/doc/rbw/copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 bash-completions "${pkgdir}/usr/share/bash-completion/completions/rbw"
-    install -Dm 644 zsh-completions "${pkgdir}/usr/share/zsh/site-functions/_rbw"
-    install -Dm 644 fish-completions "${pkgdir}/usr/share/fish/vendor_completions.d/rbw.fish"
+    install -Dm 644 tmp/usr/share/bash-completion/completions/rbw "${pkgdir}/usr/share/bash-completion/completions/rbw"
+    install -Dm 644 tmp/usr/share/zsh/vendor-completions/_rbw "${pkgdir}/usr/share/zsh/site-functions/_rbw"
+    install -Dm 644 tmp/usr/share/fish/completions/rbw.fish "${pkgdir}/usr/share/fish/vendor_completions.d/rbw.fish"
 }
