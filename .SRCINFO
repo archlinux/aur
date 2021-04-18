@@ -1,0 +1,13 @@
+pkgbase = pingme
+	pkgdesc = PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pingme.lmno.pk
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = pingme-0.1.2.tar.gz::https://github.com/kha7iq/pingme/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 57eea904eebaeac355ee7a6324d977678325945730269b4689eac992fb52699e
+
+pkgname = pingme
+
