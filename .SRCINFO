@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.11.12
+	pkgver = 5.11.15
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -17,28 +17,28 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.12.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.12.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/98847efa9ee83e69e113491de7fd94107bbcbff3/trunk/config
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.15.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.15.tar.sign
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/2589c535a4fe201bb4d0fa783c31f3d737804306/trunk/config
 	source = prjc_v5.11-r3.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.11/prjc_v5.11-r3.patch
 	source = more-uarches-20210327.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20210327.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f904ba21627dd22bd38c9696bd542fecc7abe429
-	source = 0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch::https://git.archlinux.org/linux.git/patch/?id=604d731ed0605ad0d7019b282d8774c220485677
-	source = 0003-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch::https://git.archlinux.org/linux.git/patch/?id=1b5f96a934af463ddb037b78871afe8a3524e665
-	source = 0004-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch::https://git.archlinux.org/linux.git/patch/?id=a14c9499777b921bbbd3c912daf87e103c5b4fcb
-	source = 0005-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch::https://git.archlinux.org/linux.git/patch/?id=bc74b7fc2c75cf5f1844bb24a2caea4140937ac6
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=e7a83abfb8ae81ef0229c2d9d09a71542b112e82
+	source = 0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch::https://git.archlinux.org/linux.git/patch/?id=a22ae5ff440687a71705d635a26ef71307101b5a
+	source = 0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch::https://git.archlinux.org/linux.git/patch/?id=57004553b9b0b1ede73b168a13c70c912762fdae
+	source = 0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch::https://git.archlinux.org/linux.git/patch/?id=187ddd7f8554d039f07bc318a3b0d390ebb5e125
+	source = 0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch::https://git.archlinux.org/linux.git/patch/?id=90eb576bf7f571172903d6b1076147b7249df139
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	b2sums = 1defa8e4ef10663e48f62f9c9f7d3a35dd52d6aeaa91fa08371ae96c73a3098196c0e0a17beb78b8a6e246cc51ff3e3e59ffb85abb94c2bd8c14b8282e1e82bc
+	b2sums = 8512b09eff18b221a5282bfa0acc92a0afdcbccd458aaeddaaf0c97e698462547ea1d729aeb1ec92d2f0ce66a36b32d5635eb93e895a29a2971fc47402887c97
 	b2sums = SKIP
-	b2sums = d5aeee96c62a6cb09d7ae86b0fe96d3958faebc59abe16e057a04f8cc6a3eec32e4d91932c1f56f867b69eb5545316ff101ad118987243768971a041f1761b95
+	b2sums = 987eabe77d3530dc4be582540d100605a1ed170da515beb736a27f8bd5956acbf9e3ad72220f451b42747e75a3adc58cc63721345313b5cdf82e6e1f523cc31a
 	b2sums = 13efa1d20f89452d036f300c311e0a4b5920fad3d27e4c8ddc9bf97d0c5105b599113c21c48e636c8a84bd38f8590d7f6ad8d9ce6306097fcca2c9ecd300344d
 	b2sums = f9a5de8af8ea693a21a824e3805c6d784d17ab72828000966a53ed46e66edce53a447271985634137e42901e41c4ac49d3f91e9262896668a335cea8ee896a7c
-	b2sums = 68cd5357dbef6bffa52c942bcda43263cc149d4db4a061e0072cce9e033594bff7f4e15f12f3e57752c30531b6e2440ffad5290cc43e90ea71333fc06e3eb389
-	b2sums = 222ecadec9cea010ddbef9d0eb79fedb128cc859483276f6a99d295e7c7c9b7726cb6a45c197605d0a4c643c9adcd238725b55f160454a23e7ce4c6b1895b9ac
-	b2sums = 52f27ddfc7fd4b5ce1a2e141fb79d84a2b60f758ef96a896a32fb034ded84a5296253c90ee4db91474ad247edbd3488f9043161a921113acb397fccc1bd76b6f
-	b2sums = 53b7f4663c1d2ed6116628598182f7c7c23823f7c16f2d4fee0fb3e9097688f123feffb35c3febb8f83b88cb8e49132d35851bbcff94372aa25da4022e8fdeae
-	b2sums = 5a7979f2d335697ec84bbdb5880fc11ba48d09c091df06e72f12365f4056ec901acee82030d9b633e92f073c83115fe4c5cdf17ac975a45c17a2825c492cc9e2
+	b2sums = bb910341ff9f2f5f7e572e9ad55f5c9a1513996c90ec0e117cd52c8041df8294a53517be79d8404716590087f907502ccc55f244fd2903333f460304d8020ddc
+	b2sums = 13d6e146a479af6e2bc2c2fc7449a0dcc8fc62f0833d458b5754aceb32f7baa3f6471d09173a7108ef19257092af86ef6ade18c2839a3e47a58d310099bb359a
+	b2sums = 7d2339486d20280f27b3eaa9b53bd70f1b726c243986924bbebba132163929a2cb12c75362e82e2a4a453747382a665941d1be16e2986fcef869e7177ac357ba
+	b2sums = 4a80f5e30b27cf33326ef47b7117a147e0bade7ee52b68233945650b22ea663c9cb38783141c87280aadaaab3cf03fa8f07c6767955dc5f6f3f74f10c771e418
+	b2sums = 5250c71fa4e4f612418eb98a022480b27e453267d0dfdd865184dc30178fac4a7b6dc41c8094eed220bc084cba04a43f18c34752d7ad31fc2e9dfd274519fca5
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the Project C scheduler
