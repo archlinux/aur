@@ -1,0 +1,4 @@
+post_install() {
+    echo "==> Configuration file for this service is /etc/conf.d/autobright
+==> Before starting service check it out and configure your video device and backlight type"
+}
