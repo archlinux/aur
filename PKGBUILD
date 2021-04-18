@@ -2,7 +2,7 @@
 
 pkgname='netbox'
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='IP address management (IPAM) and data center infrastructure management (DCIM) tool.'
 arch=('any')
 url='https://github.com/digitalocean/netbox'
@@ -34,7 +34,7 @@ depends=(
 	'python-redis'
 	'python-svgwrite'
 )
-
+install="$pkgname.install"
 conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 source=("https://github.com/digitalocean/netbox/archive/v$pkgver.tar.gz"
