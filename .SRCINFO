@@ -1,6 +1,6 @@
 pkgbase = display-switch-git
 	pkgdesc = Switching monitor inputs via DDC/CI based on USB device connect/disconnect events.
-	pkgver = 0.3.0.r8.6453919
+	pkgver = 0.3.0.r28.5f5ee6e
 	pkgrel = 1
 	url = https://github.com/haimgel/display-switch
 	arch = i686
@@ -12,8 +12,17 @@ pkgbase = display-switch-git
 	depends = systemd-libs
 	provides = display-switch
 	conflicts = display-switch
+	backup = etc/conf.d/display-switch/display-switch.ini
 	source = display-switch::git+https://github.com/haimgel/display-switch
-	sha512sums = SKIP
+	source = display-switch.ini
+	source = display_switch.service
+	source = sysusers.conf
+	source = udev.rules
+	sha256sums = SKIP
+	sha256sums = c05761988d4e2184f3c5c93e1a3ac581c82e718f8ccbc4c29d3a4ac0035b4cdb
+	sha256sums = a6ef0a5215ad64db15bc1ec111d9b615a8634546c0f4df4289e25206d1e37c05
+	sha256sums = d74e3706c7fc751c4e231589b75097412b82de4d8701c096ca22503a5599569a
+	sha256sums = eba76d15a3295c60d020e9beb56f3c852665a2c23d1760cad04293413a359b61
 
 pkgname = display-switch-git
 
