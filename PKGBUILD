@@ -3,7 +3,7 @@
 
 pkgname=sameboy
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
@@ -13,7 +13,7 @@ conflicts=(sameboy-git)
 # Upstream suggests using clang, but gcc is supported on Linux: https://github.com/LIJI32/SameBoy/issues/164#issuecomment-486464194
 makedepends=(rgbds make git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LIJI32/SameBoy/archive/v${pkgver}.tar.gz")
-md5sums=('503b33778935748fea7d484fd2bca220')
+md5sums=('6fd5f2ad7725cc7b254538fc943730c4')
 
 build(){
 	cd "${srcdir}/SameBoy-${pkgver}"
@@ -24,12 +24,7 @@ package(){
 	cd "${srcdir}/SameBoy-${pkgver}"
 
 	make install CONF=release PREFIX=/usr/ DATA_DIR=/usr/share/games/sameboy/ DESTDIR="${pkgdir}" FREEDESKTOP=true
-	install -D "${pkgdir}/usr/share/sameboy/LICENSE" "${pkgdir}/usr/share/licenses/sameboy/LICENSE"
-	rm "${pkgdir}/usr/share/sameboy/LICENSE"
-
-	# move data files to the correct location
-	mkdir -p ${pkgdir}/usr/share/games
-	mv ${pkgdir}/usr/share/{sameboy,games}
+	install -D "${pkgdir}/usr/share/games/sameboy/LICENSE" "${pkgdir}/usr/share/licenses/sameboy/LICENSE"
 
 	# mimetype icons don't belong here
 	# that could lead to file conflicts
