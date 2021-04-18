@@ -4,7 +4,7 @@
 
 pkgname=vcvrack-git
 pkgver=1.1.6.r18.ga5fc5891
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source virtual Eurorack DAW"
 url="https://github.com/VCVRack/Rack"
 license=(BSD)
@@ -86,6 +86,8 @@ package() {
     install -D -m644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE*
     install -D -m755 -t "$pkgdir/opt/${pkgname%-git}" Rack
     install -d "$pkgdir/opt/${pkgname%-git}/plugins"
+
+    install -D -m644 -t "$pkgdir/opt/${pkgname%-git}" Core.json template.vcv
 
     # headers (required for plugins)
     for _path in {app,dsp,engine,plugin,simd,ui,widget}; do
