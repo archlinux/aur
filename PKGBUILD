@@ -38,8 +38,8 @@
 #
 ################################################################################
 CHECK=            # Run tests. May fail, this is developement after all.
-CLANG="YES"            # Use clang.
-LTO="YES"              # Enable link-time optimization. Not that experimental anymore.
+CLANG=            # Use clang.
+LTO="YES"         # Enable link-time optimization. Not that experimental anymore.
                   # Seems fixed in GCC, so I've reenabled binutils support, please
 		  # report any bug, to make it use clang by default again.
 CLI=              # CLI only binary.
