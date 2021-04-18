@@ -1,13 +1,14 @@
 pkgbase = wbg
 	pkgdesc = Wallpaper application for wlroots based Wayland compositors
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/dnkl/wbg
 	arch = x86_64
 	arch = aarch64
 	license = mit
 	makedepends = meson
 	makedepends = ninja
+	makedepends = wayland-protocols
 	makedepends = tllist
 	depends = wayland
 	depends = pixman
