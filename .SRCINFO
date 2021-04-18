@@ -1,0 +1,13 @@
+pkgbase = ideaseed
+	pkgdesc = Note down your ideas and get them to the right place, without switching away from your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ewen-lbh/ideaseed
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+	conflicts = ideaseed-git
+
+pkgname = ideaseed
+
