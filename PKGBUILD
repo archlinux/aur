@@ -3,8 +3,8 @@
 _pkgname='thes'
 pkgname=${_pkgname}-bin
 pkgver=0.1.2
-pkgrel=1
-pkgdesc="A CLI tool that finds the location of IP addresses."
+pkgrel=2
+pkgdesc="A Completely Offline Thesaurus CLI Tool (Written in Rust)"
 arch=('x86_64')
 url="https://github.com/DefunctLizard/thes"
 license=('APACHE-2.0')
