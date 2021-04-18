@@ -1,7 +1,7 @@
 pkgbase = osu
 	pkgdesc = A free-to-win rhythm game
 	pkgver = 20210316
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh
 	arch = i686
 	arch = x86_64

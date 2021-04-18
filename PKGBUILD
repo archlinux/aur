@@ -4,7 +4,7 @@
 
 pkgname='osu'
 pkgver='20210316'
-pkgrel=1
+pkgrel=2
 pkgdesc='A free-to-win rhythm game'
 arch=('i686' 'x86_64')
 url='https://osu.ppy.sh'
@@ -33,7 +33,7 @@ package() {
 	install -D -m 644 "${pkgname}-installer.exe" "${pkgdir}/usr/share/${pkgname}/osu-stable-installer.exe"
 	install -D -m 644 "${pkgname}-terms.md" "${pkgdir}/usr/share/licenses/${pkgname}/osu-terms.md"
 	install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/osu-stable.xml"
-	install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/applications/sh.ppy.osu.stable.desktop"
+	install -D -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/sh.ppy.osu.stable.desktop"
 	install -D -m 644 'osu-stable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/apps/osu-stable.png"
 	install -D -m 644 'osu-stable-beatmap.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/osu-stable-beatmap.png"
 }
