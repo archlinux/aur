@@ -3,7 +3,7 @@
 
 _name=cutter
 pkgname=rz-${_name}-git
-pkgver=1.10.3.pre.r228.gde30f685
+pkgver=2.0.1.r1.g1f129618
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
 url="https://cutter.re/"
@@ -29,7 +29,7 @@ prepare() {
 
 pkgver() {
   # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
-  git -C ${_name} describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C ${_name} describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
