@@ -1,45 +1,34 @@
 pkgname=hotshots-git
-pkgver=e3b04ef
+pkgver=r19.e3712ae1
 pkgrel=1
-pkgdesc="Screenshot tool with some editing features."
-url="http://thehive.xbee.net"
-arch=('x86_64' 'i686')
+pkgdesc="Screenshot and annotation software"
+arch=('x86_64')
+url="https://github.com/obiwankennedy/HotShots"
 license=('GPL2')
-depends=('qt5-base' 'qt5-x11extras' 'shared-mime-info')
-makedepends=('cmake')
-source=('git://github.com/obiwankennedy/HotShots.git'
-        'qt511.patch')
-sha256sums=('SKIP'
-            'f25246aa323ed5a190f99d23eb934fcd9ba9e11e5513fd4a5c9f507d6bd6e011')
+depends=('qt5-x11extras' 'qt5-multimedia' 'shared-mime-info')
+makedepends=('git' 'qt5-tools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/obiwankennedy/HotShots.git")
+sha256sums=('SKIP')
 
-prepare() {
-    cd "${srcdir}/HotShots"
-    patch -p1 -i ../qt511.patch
+pkgver() {
+    cd "${srcdir}/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/HotShots/"
-    qmake
+    cd "${srcdir}/${pkgname%-git}"
+    qmake -recursive  HotShots.pro \
+        INSTALL_PREFIX=/usr \
+        INSTALL_LIBDIR=INSTALL_PREFIX/lib
     make
-    sed -i "s/\/usr\/local/\/usr/g" hotshots.desktop
 }
 
 package() {
-    install -Dm755 "${srcdir}/HotShots/release/hotshots" "${pkgdir}/usr/bin/hotshots"
-    install -Dm755 "${srcdir}/HotShots/hotshots.desktop" "${pkgdir}/usr/share/applications/hotshots.desktop"
+    cd "${srcdir}/${pkgname%-git}"
+    make INSTALL_ROOT="$pkgdir" install
 
-    for file in `ls "${srcdir}/HotShots/lang/"`; do
-	install -Dm644 "${srcdir}/HotShots/lang/$file" "${pkgdir}/usr/share/hotshots/locale/$file"
-    done
-
-    install -Dm644 "${srcdir}/HotShots/AUTHORS.txt" "${pkgdir}/usr/share/hotshots/AUTHORS.txt"
-    install -Dm644 "${srcdir}/HotShots/Changelog.txt" "${pkgdir}/usr/share/hotshots/Changelog.txt"
-    install -Dm644 "${srcdir}/HotShots/CREDITS.txt" "${pkgdir}/usr/share/hotshots/CREDITS.txt"
-    install -Dm644 "${srcdir}/HotShots/README.txt" "${pkgdir}/usr/share/hotshots/README.txt"
-    install -Dm644 "${srcdir}/HotShots/res/hotshots.png" "${pkgdir}/usr/share/pixmaps/hotshots.png"
-    install -Dm644 "${srcdir}/HotShots/hotshots.1.gz" "${pkgdir}/usr/share/man/man1/hotshots.1.gz"
-}
-
-post_install() {
-    update-desktop-database -q
+    install -Dm644 packaging/flatpak/HotShots.metainfo.xml \
+        "$pkgdir/usr/share/mime/packages/${pkgname%-git}.xml"
 }
