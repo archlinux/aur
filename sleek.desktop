@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=sleek
-Exec=/usr/bin/sleek
+Exec=/usr/bin/sleek.sh
 Terminal=false
 Type=Application
 Icon=sleek
