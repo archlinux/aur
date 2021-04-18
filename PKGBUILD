@@ -9,7 +9,6 @@
 ##You will be asked at the building process for your cpu architectures, if you dont know it, just take native!
 
 
-
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
 ##                             y to enable  (stock default)
 if [ -z ${use_numa+x} ]; then
@@ -23,18 +22,27 @@ fi
 if [ -z ${use_tracers+x} ]; then
   use_tracers=n
 fi
-
+#
+# If you want to use modeprobed-db sothat only the active modules will be compiled
+#
 if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
 fi
-
+#
+# fsync
+#
 if [ -z ${fsync+x} ]; then
   fsync=y
 fi
-
+#
+# Futex2
+#
 if [ -z ${futex2+x} ]; then
   futex2=y
 fi
+#
+# Winesync
+#
 if [ -z ${winesync+x} ]; then
   winesync=y
 fi
@@ -45,7 +53,7 @@ fi
 
 pkgbase=linux-cacule-rdb
 pkgver=5.11.15
-pkgrel=7
+pkgrel=8
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
