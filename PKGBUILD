@@ -2,7 +2,7 @@
 
 pkgname=python-pysim-git
 _pyname=pysim
-pkgver=1.0.r125.g9d16fbc
+pkgver=1.0.r126.gbba2bd4
 pkgrel=1
 pkgdesc='A python tool to program SIMs / USIMs / ISIMs'
 arch=('any')
@@ -16,6 +16,7 @@ depends=('python'
          'python-jsonpath-ng'
          'python-construct')
 makedepends=('python-setuptools' 'git')
+provides=('python-pysim')
 source=('git+https://git.osmocom.org/pysim')
 sha256sums=('SKIP')
 
