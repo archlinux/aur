@@ -4,7 +4,7 @@
 pkgname=font-downloader-git
 _pkgname=font-downloader
 pkgver=r256.a680009
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple GTK font downloader"
 arch=('any')
 url="https://github.com/GustavoPeredo/font-downloader"

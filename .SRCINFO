@@ -1,7 +1,7 @@
 pkgbase = font-downloader-git
 	pkgdesc = A simple GTK font downloader
 	pkgver = r256.a680009
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/GustavoPeredo/font-downloader
 	arch = any
 	license = GPL3
