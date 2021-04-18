@@ -9,8 +9,8 @@ license=("MIT")
 options=(!strip)
 makedepends=("npm")
 depends=("electron")
-source=("${url}archive/refs/tags/v${pkgver}.zip")
-sha512sums=("SKIP")
+source=("${url}archive/refs/tags/v${pkgver}.zip" "${$pkgname}.desktop" "${$pkgname}.sh")
+sha512sums=("5640346112e259d48df4c2f3e60fdf070a262438612fddcf35bc36dea47710a987def1e816ca839cf5cc195599ce0526d322d371b43339e14ba2aadf43d2a86c")
 
 build() {
   unzip -o "v${pkgver}.zip"
