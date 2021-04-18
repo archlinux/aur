@@ -1,7 +1,7 @@
 pkgbase = jeveassets
 	pkgdesc = Out-of-game asset manager for Eve-Online, written in Java
 	pkgver = 6.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eve.nikr.net/jeveasset
 	install = jeveassets.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = jeveassets
 	source = jeveassets_64x64.png
 	source = jeveassets.sh
 	sha256sums = 68afbccb33eb21925f432caf337fadf96f6b8c5392c1171ed7ef31eba8dd9c6b
-	sha256sums = 5be4bf636016fc855eeb89db5d6ed523a782768a1f1922f7c3e4eff4b0448ba1
+	sha256sums = 478ae4d0ca1e6801c6c6283a07f14d9357fbc01212580e6529d64b7cf24cdb1d
 	sha256sums = 0203673802ba5102e8acae19c463ab1cd79663653cce38431362367d220f951e
 	sha256sums = 99dd564f33ea7e7a71980b829125207a53a18c2c31f5907d1e8842b64217d69b
 	sha256sums = 23ff2740653dddaafc0a40dcdadfa667a55d28389088dda8bc6eca1c66298150
