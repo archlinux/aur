@@ -1,11 +1,12 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Popolon <popolon@popolon.org>
+# Contributor: Miroslav Koškár <http://mkoskar.com/>
 
 _basename='vcvrack'
 _plugname='AudibleInstruments'
 
 pkgname='vcvrack-audible-instruments-git'
-pkgver=0.4.0.r27.g66936b0
-pkgrel=1
+pkgver=1.4.0.r6.g8c7fd24
+pkgrel=2
 pkgdesc="Mutable Instruments' VCV modules"
 url='https://github.com/VCVRack/AudibleInstruments'
 license=(BSD)
@@ -78,8 +79,16 @@ prepare() {
 }
 
 build() {
-    cd "$_basename/plugins/$_plugname"
-    make
+  # define RACK_DIR, so Makefile snippets can be found
+  export RACK_DIR="/usr/share/vcvrack"
+  # define FLAGS, so headers can be included
+  export FLAGS="-I/usr/include/vcvrack -I/usr/include/vcvrack/dep"
+  # exporting LDFLAGS for libsamplerate, as the Delay module requires it
+  export LDFLAGS="$(pkg-config --libs samplerate) ${LDFLAGS}"
+  cd "$_basename/plugins/$_plugname"
+
+  USE_SYSTEM_LIBS=true make
+  USE_SYSTEM_LIBS=true make dist
 }
 
 package() {
@@ -87,5 +96,5 @@ package() {
     install -D -m644 -t "$pkgdir/usr/share/licenses/$_basename/$_plugname" LICENSE*
     install -d "$pkgdir/opt/$_basename/plugins/$_plugname"
     cp -dr --preserve=mode -t "$pkgdir/opt/$_basename/plugins/$_plugname" \
-        res plugin.so
+        res plugin.so plugin.json
 }

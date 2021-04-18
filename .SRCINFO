@@ -1,7 +1,7 @@
 pkgbase = vcvrack-audible-instruments-git
 	pkgdesc = Mutable Instruments' VCV modules
-	pkgver = 0.4.0.r27.g66936b0
-	pkgrel = 1
+	pkgver = 1.4.0.r6.g8c7fd24
+	pkgrel = 2
 	url = https://github.com/VCVRack/AudibleInstruments
 	arch = i686
 	arch = x86_64
