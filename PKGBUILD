@@ -2,7 +2,7 @@
 
 pkgname=nnrss
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Web/API RSS aggregator'
 url='https://git.roshless.me/~roshless/nnrss'
 arch=('any')
@@ -14,11 +14,12 @@ optdepends=('gunicorn: recommended WSGI server'
 	    'python-psycopg2: connect to PostgreSQL database'
 	    'sqlite: local file database')
 makedepends=('python-setuptools')
+install="$pkgname.install"
 backup=("var/lib/$pkgname/config.ini")
 source=("https://git.roshless.me/~roshless/$pkgname/archive/${pkgver}.tar.gz"
-        "nnrss.service"
-        "nnrss.sysusers"
-        "nnrss.tmpfiles")
+        "$pkgname.service"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles")
 
 build() {
   cd $pkgname-$pkgver

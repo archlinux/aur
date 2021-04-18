@@ -1,8 +1,9 @@
 pkgbase = nnrss
 	pkgdesc = Web/API RSS aggregator
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.roshless.me/~roshless/nnrss
+	install = nnrss.install
 	arch = any
 	license = AGPL
 	makedepends = python-setuptools
