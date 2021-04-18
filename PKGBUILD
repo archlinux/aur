@@ -3,14 +3,14 @@
 
 pkgname=claymore-miner-bin
 pkgver=15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Claymore's dual Ethereum GPU miner"
 url="https://github.com/Claymore-Dual/Claymore-Dual-Miner/"
 arch=("i686" "x86_64")
 license=("unknown")
 depends=("glibc")
 source=("${pkgname}-${pkgver}.zip::https://github.com/Claymore-Dual/Claymore-Dual-Miner/releases/download/${pkgver}/Claymore.s.Dual.Ethereum.AMD+NVIDIA.GPU.Miner.v${pkgver}.-.LINUX.zip")
-sha256sums=('61649f7342cfd551ead9b3256e991bc162d563cdc78e1ade220a8ae1a57e2ce7')
+sha256sums=('de1bc82c4594284db54c4cbd8fb76efe270fc9de7e6e9a0b1b688776876716ce')
 
 package() {
    mkdir -p $pkgdir/usr/share

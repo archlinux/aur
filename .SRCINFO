@@ -1,14 +1,14 @@
 pkgbase = claymore-miner-bin
 	pkgdesc = Claymore's dual Ethereum GPU miner
 	pkgver = 15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Claymore-Dual/Claymore-Dual-Miner/
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = glibc
 	source = claymore-miner-bin-15.0.zip::https://github.com/Claymore-Dual/Claymore-Dual-Miner/releases/download/15.0/Claymore.s.Dual.Ethereum.AMD+NVIDIA.GPU.Miner.v15.0.-.LINUX.zip
-	sha256sums = 61649f7342cfd551ead9b3256e991bc162d563cdc78e1ade220a8ae1a57e2ce7
+	sha256sums = de1bc82c4594284db54c4cbd8fb76efe270fc9de7e6e9a0b1b688776876716ce
 
 pkgname = claymore-miner-bin
 
