@@ -4,14 +4,14 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=moneymanagerex-git
-pkgver=1.3.6
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
 depends=('wxgtk3' 'webkit2gtk')
-makedepends=('cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
+makedepends=('awk' 'curl' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
@@ -19,14 +19,16 @@ conflicts=('moneymanagerex')
 source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
 sha256sums=('SKIP')
 
+get_latest_tag="curl --silent https://api.github.com/repos/${pkgname::14}/${pkgname::14}/releases/latest | grep '"tag_name":' | awk -F[\"] '{print $4}'"
+
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --tags --abbrev=0 | cut -c2- | sed -E 's/-/\./g'
+  eval "${get_latest_tag}"
 }
 
 prepare() {
   cd "${pkgname%-git}"
-  git checkout tags/$(git describe --tags --abbrev=0)
+  git checkout tags/$(eval "${get_latest_tag}")
   git submodule update --init
   mkdir -p build
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
