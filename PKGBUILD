@@ -1,6 +1,6 @@
 # Maintainer: Charlie Stanton <charlie@shtanton.com>
 pkgname=gmi2html
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Translate text/gemini to HTML"
 arch=("x86_64")
@@ -10,7 +10,7 @@ groups=()
 depends=()
 makedepends=("zig>=0.7.0", "zig<=0.7.1", "scdoc")
 source=("https://github.com/shtanton/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=("bb931790753ae754720fcbdff259f301")
+md5sums=("26ec406f992473c04ec398511aaf8339")
 
 package() {
     cd "$pkgname-$pkgver"
