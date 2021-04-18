@@ -1,0 +1,14 @@
+pkgbase = minetest-mod-worldedit
+	pkgdesc = The ultimate in-game world editing tool for Minetest!
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://content.minetest.net/packages/sfan5/worldedit/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	options = !strip
+	source = worldedit-1.3.zip::https://github.com/Uberi/Minetest-WorldEdit/archive/refs/tags/1.3.zip
+	sha256sums = 534565ac33b79278960430ace4650b82b248aa8116ab046e4305398d81654bf2
+
+pkgname = minetest-mod-worldedit
+
