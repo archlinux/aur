@@ -1,10 +1,10 @@
-# Maintainer: Guba Zoltán <zoltan.guba@gubamm.hu>
+# Maintainer: Zoltán Guba <zoltan.guba@gubamm.hu>
 # Contributor: Gregory25 <hegedusgergomka@gmail.com>
 # Contributor: János Illés <ijanos@gmail.com>
 
 pkgname=hdsentinel_gui
 pkgver=2.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A freeware, closed source, SMART analysis tool with GUI"
 arch=('i686' 'x86_64')
 url="http://www.hdsentinel.com/hard_disk_sentinel_linux_gui.php"
@@ -18,6 +18,7 @@ md5sums_x86_64=('898d05f8bb9a010d64dcb5b1f907b7ff')
 package() {
   cd $srcdir/HDSentinel_GUI
   unzip "HDSentinel_GUI.zip"
+  sed -i 's/\/usr\/share\/bin/\/usr\/bin/' Hard_Disk_Sentinel_GUI.desktop
   install -m755 -D "HDSentinel_GUI/HDSentinel_GUI" $pkgdir/usr/bin/HDSentinel_GUI || return 1
   install -m755 -D "HDSentinel_GUI/HDSentinel" $pkgdir/usr/bin/HDSentinel || return 1
   install -m755 -D "HDSentinel_GUI/HDSentinel_GUI.ico" $pkgdir/usr/share/icons/HDSentinel_GUI.ico || return 1
