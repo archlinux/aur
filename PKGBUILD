@@ -1,67 +1,79 @@
 # Maintainer: ptr1337 <admin@ptr1337.dev>
-# Contributor: Torge Matthies <openglfreak at googlemail dot com>
+# Contributor: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Yoshi2889 <rick.2889 at gmail dot com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
 
-##You will be asked at the building process for your cpu architectures, if you dont know it, just take native!
+# NUMA is optimized for multi-socket motherboards.
+# A single multi-core CPU actually runs slower with NUMA enabled.
+# See, https://bugs.archlinux.org/task/31187
+_NUMAdisable=y
 
+_fsync=y
 
-## Set variable "use_numa" to: n to disable (possibly increase performance)
-##                             y to enable  (stock default)
-if [ -z ${use_numa+x} ]; then
-  use_numa=n
-fi
+_futex2=y
 
-## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled.
-## Set variable "use_tracers" to: n to disable (possibly increase performance)
-##                                y to enable  (stock default)
-if [ -z ${use_tracers+x} ]; then
-  use_tracers=n
-fi
+_winesync=y
+### Enable protect file mappings under memory pressure
+_mm_protect=y
+### Set performance governor as default
+_per_gov=y
+### Disable Deadline I/O scheduler
+_deadline_disable=y
+### Disable Kyber I/O scheduler
+_kyber_disable=y
+### Running with a 1000 HZ, 750HZ or 500HZ tick rate
+_1k_HZ_ticks=y
+_750_HZ_ticks=
+_500_HZ_ticks=
+### Tweak kernel options prior to a build via nconfig
+_makenconfig=
+### Tweak kernel options prior to a build via menuconfig
+_makemenuconfig=
+### Tweak kernel options prior to a build via xconfig
+_makexconfig=
+### Tweak kernel options prior to a build via gconfig
+_makegconfig=
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
 #
-# If you want to use modeprobed-db sothat only the active modules will be compiled
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
 #
-if [ -z ${_localmodcfg} ]; then
-  _localmodcfg=n
-fi
-#
-# fsync
-#
-if [ -z ${fsync+x} ]; then
-  fsync=y
-fi
-#
-# Futex2
-#
-if [ -z ${futex2+x} ]; then
-  futex2=y
-fi
-#
-# Winesync
-#
-if [ -z ${winesync+x} ]; then
-  winesync=y
-fi
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
 
-
+# Use the current kernel's .config file
+# Enabling this option will use the .config of the RUNNING kernel rather than
+# the ARCH defaults. Useful when the package gets updated and you already went
+# through the trouble of customizing your config options.  NOT recommended when
+# a new kernel is released, but again, convenient for package bumps.
+_use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-cacule-rdb
-pkgver=5.11.15
-pkgrel=8
+# pkgname=('linux-cacule' linux-cacule-headers)
+_major=5.11
+_minor=15
+#_minorc=$((_minor+1))
+#_rcver=rc7
+pkgver=${_major}.${_minor}
+_stable=${_major}.${_minor}
+#_stablerc=${_major}-${_rcver}
+_srcname=linux-${_stable}
+pkgrel=9
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
-url="http://www.kernel.org/"
-arch=(x86_64)
-license=(GPL2)
-makedepends=(
-  xmlto kmod inetutils bc libelf cpio
-  )
+arch=('x86_64')
+url="https://github.com/hamadmarri/cacule-cpu-scheduler"
+license=('GPL2')
 options=('!strip')
+makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.11"
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "config"
@@ -108,145 +120,182 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
+    cd $_srcname
 
-  cd linux-${pkgver}
+    ### Setting version
+        echo "Setting version..."
+        sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
+        scripts/setlocalversion --save-scmversion
+        echo "-$pkgrel" > localversion.10-pkgrel
+        echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    echo "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "${pkgbase#linux}" > localversion.20-pkgname
+    ### Patching sources
+        local src
+        for src in "${source[@]}"; do
+            src="${src%%::*}"
+            src="${src##*/}"
+            [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        patch -Np1 < "../$src"
+        done
 
-  # Apply any patch
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
+    ### Setting config
+        echo "Setting config..."
+        cp ../config .config
+        make olddefconfig
 
-    # Copy the config file first
-    # Copy "${srcdir}"/config to linux-${pkgver}/.config
-#    msg2 "Copy "${srcdir}"/config to linux-5.11.14/.config"
-#    cp "${srcdir}"/config-5.11 .config
-      echo "Setting config..."
-      cp ../config .config
+    ### Prepared version
+        make -s kernelrelease > version
+        echo "Prepared $pkgbase version $(<version)"
 
-      # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
-      # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
-      # partition ... this was introduced by FS#66260, see:
-      # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-      scripts/config --disable CONFIG_DEBUG_INFO
-      scripts/config --disable CONFIG_CGROUP_BPF
-      scripts/config --disable CONFIG_BPF_LSM
-      scripts/config --disable CONFIG_BPF_PRELOAD
-      scripts/config --disable CONFIG_BPF_LIRC_MODE2
-      scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
+    ### Optionally use running kernel's config
+	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+	if [ -n "$_use_current" ]; then
+		if [[ -s /proc/config.gz ]]; then
+			echo "Extracting config from /proc/config.gz..."
+			# modprobe configs
+			zcat /proc/config.gz > ./.config
+		else
+			warning "Your kernel was not compiled with IKCONFIG_PROC!"
+			warning "You cannot read the current config!"
+			warning "Aborting!"
+			exit
+		fi
+	fi
 
-      # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
-      scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
+  source "${startdir}"/cacule_config
 
-      # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-      scripts/config --disable CONFIG_LATENCYTOP
-      scripts/config --disable CONFIG_SCHED_DEBUG
+  configure
 
-      # FS#66613
-      # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
-      scripts/config --disable CONFIG_KVM_WERROR
+  cpu_arch
 
-    # Customize the kernel
-    source "${startdir}"/cacule_config
+    ### Optionally set tickrate to 1000
+	if [ -n "$_1k_HZ_ticks" ]; then
+		echo "Setting tick rate to 1k..."
+                scripts/config --disable CONFIG_HZ_300
+                scripts/config --enable CONFIG_HZ_1000
+                scripts/config --set-val CONFIG_HZ 1000
+	fi
 
-    configure
+  ### Optionally set tickrate to 750HZ
+  if [ -n "$_750_HZ_ticks" ]; then
+    echo "Setting tick rate to 1k..."
+                scripts/config --disable CONFIG_HZ_300
+                scripts/config --enable CONFIG_HZ_750
+                scripts/config --set-val CONFIG_HZ 750
+  fi
 
-    cpu_arch
+  ### Optionally set tickrate to 500HZ
+  if [ -n "$_500_HZ_ticks" ]; then
+    echo "Setting tick rate to 1k..."
+                scripts/config --disable CONFIG_HZ_300
+                scripts/config --enable CONFIG_HZ_500
+                scripts/config --set-val CONFIG_HZ 500
+  fi
 
-    # User set. See at the top of this file
-    if [ "$use_tracers" = "n" ]; then
-      msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
-      scripts/config --disable CONFIG_FUNCTION_TRACER \
-                     --disable CONFIG_STACK_TRACER
-    fi
+    ### Optionally disable NUMA for 64-bit kernels only
+        # (x86 kernels do not support NUMA)
+        if [ -n "$_NUMAdisable" ]; then
+            echo "Disabling NUMA from kernel config..."
+            scripts/config --disable CONFIG_NUMA
+        fi
 
-    if [ "$use_numa" = "n" ]; then
-      echo "Disable NUMA"
-      scripts/config --disable CONFIG_NUMA
-      scripts/config --disable CONFIG_AMD_NUMA
-      scripts/config --disable CONFIG_X86_64_ACPI_NUMA
-      scripts/config --disable CONFIG_NODES_SPAN_OTHER_NODES
-      scripts/config --disable CONFIG_NUMA_EMU
-      scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
-      scripts/config --disable CONFIG_USE_PERCPU_NUMA_NODE_ID
-      scripts/config --disable CONFIG_ACPI_NUMA
-      scripts/config --disable CONFIG_ARCH_SUPPORTS_NUMA_BALANCING
-      scripts/config --disable CONFIG_NODES_SHIFT
-      scripts/config --undefine CONFIG_NODES_SHIFT
-      scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
-    fi
+        if [ -n "$_fsync" ]; then
+          echo "Enable Fsync support"
+          scripts/config --enable CONFIG_FUTEX
+          scripts/config --enable CONFIG_FUTEX_PI
+        fi
 
-    if [ "$fsync" = "y" ]; then
-      echo "Enable Fsync support"
-      scripts/config --enable CONFIG_FUTEX
-      scripts/config --enable CONFIG_FUTEX_PI
-    fi
+        if [ -n "$_futex2" ]; then
+          echo "Enable Futex2 support"
+          scripts/config --enable CONFIG_FUTEX2
+        fi
 
-    if [ "$futex2" = "y" ]; then
-      echo "Enable Futex2 support"
-      scripts/config --enable CONFIG_FUTEX2
-    fi
+        if [ -n "$_winesync" ]; then
+          echo "Enable winesync support"
+          scripts/config --module CONFIG_WINESYNC
+        fi
 
-    if [ "$winesync" = "y" ]; then
-      echo "Enable winesync support"
-      scripts/config --module CONFIG_WINESYNC
-    fi
+        ### Enable protect file mappings under memory pressure
+    	if [ -n "$_mm_protect" ]; then
+    		echo "Enabling protect file mappings under memory pressure..."
+    		scripts/config --enable CONFIG_UNEVICTABLE_FILE
+    		scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+    		scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+    	fi
 
+      ### Set performance governor
+          if [ -n "$_per_gov" ]; then
+  		echo "Setting performance governor..."
+  		scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  		scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  		echo "Disabling uneeded governors..."
+  		scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+  		scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+  		scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+  		scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+          fi
 
+      ### Disable Deadline I/O scheduler
+  	if [ -n "$_deadline_disable" ]; then
+  		echo "Disabling Deadline I/O scheduler..."
+  		scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
+  	fi
 
-    # Setting localversion
-    msg2 "Setting localversion..."
-    scripts/setlocalversion --save-scmversion
-    echo "-${pkgbase}" > localversion
-
-    make olddefconfig
+      ### Disable Kyber I/O scheduler
+  	if [ -n "$_kyber_disable" ]; then
+  		echo "Disabling Kyber I/O scheduler..."
+  		scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
+  	fi
 
 
     ### Optionally load needed modules for the make localmodconfig
-    # See https://aur.archlinux.org/packages/modprobed-db
-    if [ "$_localmodcfg" = "y" ]; then
-      if [ -f $HOME/.config/modprobed.db ]; then
-        msg2 "Running Steven Rostedt's make localmodconfig now"
-        make LSMOD=$HOME/.config/modprobed.db localmodconfig
-      else
-        msg2 "No modprobed.db data found"
-        exit
-      fi
-    fi
+        # See https://aur.archlinux.org/packages/modprobed-db
+        if [ -n "$_localmodcfg" ]; then
+            if [ -f $HOME/.config/modprobed.db ]; then
+            echo "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            echo "No modprobed.db data found"
+            exit
+            fi
+        fi
 
+    ### Running make nconfig
+	[[ -z "$_makenconfig" ]] ||  make nconfig
 
-    make -s kernelrelease > version
-    msg2 "Prepared $pkgbase version $(<version)"
+    ### Running make menuconfig
+	[[ -z "$_makemenuconfig" ]] || make menuconfig
 
-    # save configuration for later reuse
-    cat .config > "${startdir}/config.last"
+    ### Running make xconfig
+	[[ -z "$_makexconfig" ]] || make xconfig
+
+    ### Running make gconfig
+	[[ -z "$_makegconfig" ]] || make gconfig
+
+    ### Save configuration for later reuse
+	cat .config > "${startdir}/config.last"
 }
 
 build() {
-  cd linux-${pkgver}
-  make -j$(nproc) all
+  cd $_srcname
+
+  make all
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with the cacule scheduler and other patchsets"
-  depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+    pkgdesc="The $pkgdesc kernel and modules"
+    depends=('coreutils' 'kmod' 'initramfs')
+    optdepends=('crda: to set the correct wireless channels of your country'
+                'linux-firmware: firmware images needed for some devices'
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 
-  cd linux-${pkgver}
+
+  cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -254,7 +303,7 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
@@ -262,13 +311,13 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  depends=(pahole)
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+    depends=('linux-cacule-rdb' 'pahole')
 
-  cd linux-${pkgver}
+  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -281,7 +330,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -297,10 +346,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -308,16 +357,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -332,14 +381,15 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Stripping vmlinux..."
+  echo "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
-  msg2 "Adding symlink..."
+
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
