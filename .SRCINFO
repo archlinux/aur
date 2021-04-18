@@ -1,6 +1,6 @@
 pkgbase = vcvrack-eseries
 	pkgdesc = E-Series VCV modules
-	pkgver = 0.6.0
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/VCVRack/ESeries
 	install = vcvrack-eseries.install
@@ -9,19 +9,13 @@ pkgbase = vcvrack-eseries
 	license = BSD
 	makedepends = git
 	makedepends = zip
-	depends = vcvrack>=0.6
-	source = vcvrack-ESeries::git+https://github.com/VCVRack/ESeries.git#tag=v0.6.0
-	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.6.0
-	source = git+https://github.com/AndrewBelt/osdialog.git
-	source = git+https://github.com/AndrewBelt/oui-blendish.git
-	source = git+https://github.com/memononen/nanosvg.git
-	source = git+https://github.com/memononen/nanovg.git
+	depends = vcvrack
+	depends = libsamplerate
+	conflicts = vcvrack-eseries-git
+	source = vcvrack-ESeries::git+https://github.com/vcvrack/ESeries.git#branch=v1
+	source = vcvrack-eseries.install
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b93fd2a12cdf82d3844c4cfcafcc15a1c923715b1f7a174d4aaec6ddb9f74d4d
 
 pkgname = vcvrack-eseries
 
