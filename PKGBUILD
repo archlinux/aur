@@ -3,25 +3,35 @@
 # Contributor: Leonard König <leonard.r.koenig at googlemail dot com>
 
 pkgname=endless-sky
-pkgver=0.9.12
-pkgrel=3
-arch=('i686' 'x86_64')
+pkgver=0.9.13
+pkgrel=1
+arch=('x86_64' 'i686')
 url="https://endless-sky.github.io/"
-depends=(openal libpng glew hicolor-icon-theme libjpeg-turbo sdl2 libmad)
+depends=(
+  gcc-libs
+  openal
+  libpng
+  glew
+  hicolor-icon-theme
+  libjpeg-turbo
+  sdl2
+  libmad
+)
 makedepends=(scons)
-optdepends=('endless-sky-high-dpi: high resolution graphics assets'
-            'endless-sky-editor: map editor')
+optdepends=(
+  'endless-sky-high-dpi: high resolution graphics assets'
+  'endless-sky-editor: map editor'
+)
 license=('GPL3' 'CCPL' 'custom:public domain')
 pkgdesc="A sandbox-style space exploration and combat game"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/endless-sky/endless-sky/archive/v${pkgver}.tar.gz"
-        "0001-fix-Add-missing-string-include.patch")
-sha512sums=('694d3c6f50f80e8b4ff79580fa9510fde26a846dd227736af96a3eda7810d68b2ae051a72c0e02fe88eae9d839e48933614aa172a9bed6653e03ad30feaddc05'
-            '8fb0d5b63ef2034de30fd91b25da5ac63e908db4160b79c6ee5c2384b89b2ffb052779c02227590218a014e5da62d749b4372d26d75919848c499d8ed358dc2c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/endless-sky/endless-sky/archive/v$pkgver.tar.gz")
+b2sums=('6d4c7f37ce4dfff2bae3eb6cee4948e6e27df086c2017f56bddf2d212011bfff135931915ab3f34c5e2f432acbf38126f7a774835d427652c8870d98e66c5f06')
 
-# remove this in the next version, as the patch is backported from upstream
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -sp1 < "$srcdir/0001-fix-Add-missing-string-include.patch"
+
+  # binary is installed to /usr/games instead of /usr/bin
+  sed -i 's:games", sky:bin", sky:' SConstruct
 }
 
 build() {
@@ -29,33 +39,12 @@ build() {
   scons -j "$(nproc)"
 }
 
-
 package() {
   cd "$pkgname-$pkgver"
+  scons DESTDIR="$pkgdir" PREFIX=/usr install
 
-  # binary
-  install -Dm755 -t "${pkgdir}/usr/bin" endless-sky
-
-  # resources
-  install -Dm644 credits.txt "${pkgdir}/usr/share/games/${pkgname}/credits.txt"
-  install -Dm644 keys.txt "${pkgdir}/usr/share/games/${pkgname}/keys.txt"
-  cp -rf data images sounds "${pkgdir}/usr/share/games/${pkgname}/"
-
-  # .desktop
-  install -Dm644 -t "${pkgdir}/usr/share/applications" endless-sky.desktop
-
-  # icons
-  for res in 16 22 24 32 48 128 256 512; do
-    install -Dm644 \
-      "icons/icon_${res}x${res}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
-  done
-
-  # manpage
-  install -Dm644 -t "${pkgdir}/usr/share/man/man6" endless-sky.6
-
-  # copyright
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" copyright
+  # license
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" copyright
 }
 
 # vim:set ts=2 sw=2 et:
