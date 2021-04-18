@@ -24,6 +24,6 @@ package() {
   install -Dm644 "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
   install -d -Dm644 "${pkgdir}/usr/share"
   cp -r "dist/linux-unpacked/${pkgname}" "${pkgdir}/usr/share"
-  install -Dm755 "${pkgname}.sh" -t "$pkgdir/usr/bin/${pkgname}"
-  install -Dm644 "${pkgname}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm755 "aur/${pkgname}.sh" -t "$pkgdir/usr/bin/${pkgname}"
+  install -Dm644 "aur/${pkgname}.desktop" -t "$pkgdir/usr/share/applications/"
 }
