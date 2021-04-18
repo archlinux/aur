@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=89.0.4381.6
+pkgver=91.0.4472.10
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -61,6 +61,7 @@ makedepends=(
              'git'
              'hwids'
              'nodejs'
+             'java-environment'
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
@@ -78,11 +79,15 @@ source=(
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-89-EnumTable-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-91-system-icu.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-91-ThemeService-crash.patch'
         # Misc Patches.
-        'fix_hevc_in_non_cromeos.patch'
-
+        'fix_hevc_in_non_cromeos_r1.patch'
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
+        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/chromium/trunk/chromium-glibc-2.33.patch'
+        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/chromium/trunk/use-oauth2-client-switches-as-default.patch'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -90,10 +95,15 @@ sha256sums=(
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
-
+            '61066e638ee795e888d12cc2c4af42c8cf3fe9f473b1dc0b78c9e87faf5eacda'
+            'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
+            '1276018471004688356ef70be708ce96a816ffca6625ed7cc99cb985b6e15559'
+            '26cc77232d06e55b50a253617fb87218b0058ba2b0271fef5845bcc474f6a117'
             # Misc Patches
-            '814246e08b63884dae096fe317f837259294118b5336e8da081b19eeb7991977'
+            '70f7a1736aabd63bbdf5060c015b220ede7d5d19837408eb4a5172099aecd862'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
+            '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             )
 install=chromium-dev.install
 
@@ -106,8 +116,8 @@ install=chromium-dev.install
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
 # more information.
 _google_api_key="AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM"
-_google_default_client_id="413772536636.apps.googleusercontent.com"
-_google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
+#_google_default_client_id="413772536636.apps.googleusercontent.com"
+#_google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
 # List of third-party components needed for build chromium. The rest is remove by remove_bundled_libraries srcipt in prepare().
 _keeplibs=(
@@ -192,15 +202,21 @@ _keeplibs=(
            'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
            'third_party/devtools-frontend/src/third_party'
            'third_party/dom_distiller_js'
+           'third_party/eigen3'
            'third_party/emoji-segmenter'
+           'third_party/farmhash'
+           'third_party/fdlibm'
+           'third_party/fft2d'
            'third_party/ffmpeg'
            'third_party/flatbuffers'
            'third_party/fusejs'
+           'third_party/gemmlowp'
            'third_party/google_input_tools'
            'third_party/google_input_tools/third_party/closure_library'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/googletest'
            'third_party/harfbuzz-ng/utils'
+           'third_party/highway'
            'third_party/hunspell'
            'third_party/iccjpeg'
            'third_party/inspector_protocol'
@@ -212,11 +228,14 @@ _keeplibs=(
            'third_party/libXNVCtrl'
            'third_party/libaddressinput'
            'third_party/libaom'
+           'third_party/libaom/source/libaom/third_party/fastfeat'
            'third_party/libaom/source/libaom/third_party/vector'
            'third_party/libaom/source/libaom/third_party/x86inc'
            'third_party/libavif'
+           'third_party/libgav1'
            'third_party/libgifcodec'
            'third_party/libjingle'
+           'third_party/libjxl'
            'third_party/libphonenumber'
            'third_party/libsecret'
            'third_party/libsrtp'
@@ -231,6 +250,7 @@ _keeplibs=(
            'third_party/libxcb-keysyms'
            'third_party/libxml/chromium'
            'third_party/libyuv'
+           'third_party/libzip'
            'third_party/llvm'
            'third_party/lottie'
            'third_party/lss'
@@ -239,9 +259,11 @@ _keeplibs=(
            'third_party/markupsafe'
            'third_party/mesa'
            'third_party/metrics_proto'
+           'third_party/minigbm'
            'third_party/modp_b64'
            'third_party/nasm'
            'third_party/nearby'
+           'third_party/neon_2_sse'
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/one_euro_filter'
@@ -261,6 +283,7 @@ _keeplibs=(
            'third_party/pdfium/third_party/libtiff'
            'third_party/pdfium/third_party/skia_shared'
            'third_party/perfetto'
+           'third_party/perfetto/protos/third_party/chromium'
            'third_party/pffft'
            'third_party/ply'
            'third_party/polymer'
@@ -273,9 +296,7 @@ _keeplibs=(
            'third_party/re2'
            'third_party/rnnoise'
            'third_party/s2cellid'
-           'third_party/schema_org'
            'third_party/securemessage'
-           'third_party/shaka-player'
            'third_party/shell-encryption'
            'third_party/simplejson'
            'third_party/skia'
@@ -289,16 +310,23 @@ _keeplibs=(
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
+           'third_party/tensorflow-text'
+           'third_party/tflite'
+           'third_party/tflite/src/third_party/eigen3'
+           'third_party/tflite/src/third_party/fft2d'
+           'third_party/tflite-support'
            'third_party/tcmalloc'
            'third_party/tint'
+           'third_party/ruy'
            'third_party/ukey2'
            'third_party/unrar'
            'third_party/usrsctp'
-           'third_party/vulkan-deps'
-           'third_party/vulkan_memory_allocator'
+           'third_party/utf'
+           'third_party/vulkan'
            'third_party/wayland'
            'third_party/web-animations-js'
            'third_party/webdriver'
+           'third_party/webgpu-cts'
            'third_party/webrtc'
            'third_party/webrtc/common_audio/third_party/ooura'
            'third_party/webrtc/common_audio/third_party/spl_sqrt_floor'
@@ -324,7 +352,6 @@ _keeplibs=(
 
            # gyp -> gn leftovers.
            'base/third_party/libevent'
-           'third_party/adobe'
            'third_party/speech-dispatcher'
            'third_party/usb_ids'
            'third_party/xdg-utils'
@@ -334,18 +361,13 @@ _keeplibs+=(
             'third_party/icu' # https://crbug.com/678661.
             )
 
-if [ "${_use_wayland}" = "1" ]; then
-  _keeplibs+=(
-              'third_party/minigbm'
-             )
-fi
-
 # Set build flags.
 _flags=(
         "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
         "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
         'is_debug=false'
         'is_official_build=false'
+        'chrome_pgo_phase=0' # unsupported instrumentation profile format version
         'is_component_build=true'
         'enable_widevine=true'
         'enable_hangout_services_extension=true'
@@ -374,18 +396,23 @@ _flags=(
         'clang_use_chrome_plugins=true'
         'use_gold=false'
         'use_dbus=true'
+        'use_ozone=true'
+        'ozone_auto_platforms=false'
+        'ozone_platform_headless=true'
+        'use_thin_lto=false'
         )
 
 if [ "${_use_wayland}" = "1" ]; then
   _flags+=(
-           'use_ozone=true'
-           'use_xkbcommon=true'
+           'ozone_platform_wayland=true'
            'use_system_libdrm=true'
+           'use_system_minigbm=true'
            'use_system_libwayland=true'
            'use_v4l2_codec=true'
-           "ozone_platform=\"x11\""
+           'use_xkbcommon=true'
+           "ozone_platform=\"wayland"\"
            'rtc_use_pipewire=true'
-           'rtc_link_pipewire=true'
+           'rtc_pipewire_version="0.3"' # will be the default in Chromium 90
            )
 fi
 
@@ -444,7 +471,6 @@ export AR="${_clang_path}llvm-ar"
 export NM=nm
 export RANLIB=/usr/bin/true
 _lld="ld.lld"
-
 
 ################################################
 
@@ -523,13 +549,29 @@ prepare() {
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/libxml_utils.cc
 
+  ln -s /usr/bin/java third_party/jdk/current/bin/java
+
   # Fix build if enable HEVC in non-chromeOS system
-  patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos.patch"
+  patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos_r1.patch"
 
   # # Patch from Gentoo
-
+  patch -p1 -i "${srcdir}/chromium-89-EnumTable-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
+  patch -p1 -i "${srcdir}/chromium-91-ThemeService-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-91-system-icu.patch"
 
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
+
+  # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
+  # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
+  # runtime -- this allows signing into Chromium without baked-in values
+  patch -p1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
+
+  # https://crbug.com/1164975
+  patch -p1 -i "${srcdir}/chromium-glibc-2.33.patch"
+  sed '34i#define AT_EMPTY_PATH 0x1000' -i sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.cc
+
+  # Upstream fixes
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -555,7 +597,7 @@ prepare() {
 }
 
 build() {
-  # set python 2 for buiuld pnacl.
+  # set python 2 for build pnacl.
   export PNACLPYTHON=/usr/bin/python2
 
   msg2 "Build the Launcher"
@@ -584,6 +626,10 @@ build() {
   chromium/scripts/copy_config.sh
   chromium/scripts/generate_gn.py
   popd &> /dev/null
+
+  # new chromium seems not like this flag. see base/allocator/allocator_shim.cc:408
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   msg2 "Starting building Chromium..."
   LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python

@@ -8,8 +8,11 @@ _instructions() {
   printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
 ${green}==>${all_off} ${bold}This Chromium package no longer supports custom flags passed via the
    '/etc/chromium-dev/default' file (or any other files under '/etc/chromium-dev/').
-  ${blue}->${all_off} The new '${bold}/usr/bin/chromium-dev${all_off}' launcher script will automatically detect
-     Pepper Flash (if installed) and pass the correct flags to Chromium.'
+  ${blue}->${all_off} Use the ${bold}--oauth2-client-id=${all_off} and ${bold}--oauth2-client-secret=${all_off} switches for
+     setting ${bold}GOOGLE_DEFAULT_CLIENT_ID${all_off} and ${bold}GOOGLE_DEFAULT_CLIENT_SECRET${all_off} at
+     runtime into '${bold}chromium-dev-flags.conf${all_off}' file
+     under '${bold}\x24HOME/.config/${all_off}' (or ${bold}\x24XDG_CONFIG_HOME${all_off}).
+     This allows signing into Chromium without baked-in values
   ${blue}->${all_off} If you need to pass extra command-line arguments to Chromium, you
      can put them in the '${bold}chromium-dev-flags.conf${all_off}' file under '${bold}\x24HOME/.config/'${all_off}
      (or ${bold}\x24XDG_CONFIG_HOME${all_off}). Arguments are split on whitespace and shell

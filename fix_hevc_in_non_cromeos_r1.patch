@@ -1,17 +1,18 @@
 diff --git a/chrome/renderer/media/chrome_key_systems.cc.orig b/chrome/renderer/media/chrome_key_systems.cc
-index 2160697..c9de40c 100644
+index 11ab5f8..a3a9eef 100644
 --- a/chrome/renderer/media/chrome_key_systems.cc.orig
 +++ b/chrome/renderer/media/chrome_key_systems.cc
-@@ -182,8 +182,12 @@ static SupportedCodecs GetSupportedCodecs(
- #endif  // BUILDFLAG(USE_PROPRIETARY_CODECS)
- #if BUILDFLAG(ENABLE_PLATFORM_HEVC)
-       case media::VideoCodec::kCodecHEVC:
-+#if BUILDFLAG(IS_CHROMEOS_ASH)
+@@ -184,10 +184,12 @@ static SupportedCodecs GetSupportedCodecs(
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
          if (is_secure && base::FeatureList::IsEnabled(
                               chromeos::features::kCdmFactoryDaemon)) {
-+#else
++#else   // BUILDFLAG(IS_CHROMEOS_ASH)
 +        if (is_secure) {
 +#endif
            supported_codecs |= media::EME_CODEC_HEVC_PROFILE_MAIN;
            supported_codecs |= media::EME_CODEC_HEVC_PROFILE_MAIN10;
          }
+-#endif  // BUILDFLAG(IS_CHROMEOS_ASH)
+         break;
+ #endif  // BUILDFLAG(ENABLE_PLATFORM_HEVC)
+       default:
