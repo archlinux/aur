@@ -1,12 +1,13 @@
 pkgbase = hdsentinel_gui
 	pkgdesc = A freeware, closed source, SMART analysis tool with GUI
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.hdsentinel.com/hard_disk_sentinel_linux_gui.php
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = gtk2
+	depends = hdsentinel
 	source_i686 = hdsentinel_gui32bit.tar.gz::https://www.hdsentinel.com/hdslin/hdsentinel_gui32bit.tar.gz
 	md5sums_i686 = 9be70938647a465296be0b8b9c2d2349
 	source_x86_64 = hdsentinel_gui64bit.tar.gz::https://www.hdsentinel.com/hdslin/hdsentinel_gui64bit.tar.gz
