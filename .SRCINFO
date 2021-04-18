@@ -1,7 +1,7 @@
 pkgbase = skydroid-cli-bin
 	pkgdesc = Command-line tool for SkyDroid app distribution.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redsolver/skydroid-cli
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = skydroid-cli-bin
 	provides = skydroid-cli
 	conflicts = skydroid-cli
 	replaces = skydroid-cli
+	options = !strip
 	source = skydroid-cli-bin-0.1.3::https://github.com/redsolver/skydroid-cli/releases/download/v0.1.3/skydroid-linux
 	source = LICENSE::https://raw.githubusercontent.com/redsolver/skydroid-cli/v0.1.3/LICENSE
 	md5sums = 8c67b6400661f68f6a4c59e07274d38a

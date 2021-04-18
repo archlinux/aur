@@ -2,7 +2,7 @@
 _pkgname=skydroid-cli
 pkgname=$_pkgname-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for SkyDroid app distribution."
 arch=('x86_64')
 url="https://github.com/redsolver/skydroid-cli"
@@ -11,6 +11,7 @@ depends=('glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
+options=('!strip')
 source=("$pkgname-$pkgver::https://github.com/redsolver/skydroid-cli/releases/download/v$pkgver/skydroid-linux"
         "LICENSE::https://raw.githubusercontent.com/redsolver/skydroid-cli/v$pkgver/LICENSE")
 
