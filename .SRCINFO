@@ -1,0 +1,17 @@
+pkgbase = plasma5-runners-poki-launcher-bin
+	pkgdesc = An application launcher that shows recently used apps first
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://sr.ht/~zethra/poki-launcher/
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = krunner
+	source = poki-launcher-src-0.7.0.tar.gz::https://git.sr.ht/~zethra/poki-launcher/archive/0.7.0.tar.gz
+	source = poki-krunner-bin-0.7.0.gz::https://git.sr.ht/~zethra/poki-launcher/refs/download/0.7.0/poki-launcher-0.7.0-x86_64-unknown-linux-gnu.gz
+	sha256sums = e0578de1a3916efdd962f24bc8c8fa3a26916e97e56627ffeeb84493f8b206e6
+	sha256sums = 8262f6e67aaac98e549afc36bacfe64aa87453933a9971974ff7167d2fb03c9e
+
+pkgname = plasma5-runners-poki-launcher-bin
+
