@@ -1,0 +1,13 @@
+diff --color -Naur tracer-tracer-0.7.6-1.orig/data/applications.xml tracer-tracer-0.7.6-1/data/applications.xml
+--- tracer-tracer-0.7.6-1.orig/data/applications.xml	2021-04-16 02:00:38.000000000 +0200
++++ tracer-tracer-0.7.6-1/data/applications.xml	2021-04-18 16:21:28.234297856 +0200
+@@ -176,4 +176,9 @@
+ 		<app name="lxpolkit" />
+ 	</group>
+ 
++	<!--
++	   Comparing kernel package versions is not implemented for Arch Linux (pyalpm)
++	  -->
++	<app name="kernel" ignore="ignore" />
++
+ </applications>
