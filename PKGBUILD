@@ -4,7 +4,7 @@ pkgdesc="OpenMP boosted NDT and GICP algorithms"
 url='https://github.com/koide3/ndt_omp'
 
 pkgname='ros-noetic-ndt-omp-git'
-pkgver=r22.c421372
+pkgver=r24.6887cf4
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -21,6 +21,10 @@ makedepends=(
   ${ros_makedepends[@]}
 )
 
+optdepends=(
+  openomp
+)
+
 ros_depends=()
 depends=(
   ${ros_depends[@]}
@@ -30,22 +34,15 @@ depends=(
 
 source=(
   $pkgname::git://github.com/koide3/ndt_omp.git
-  shared_ptr.patch::https://github.com/koide3/ndt_omp/pull/26.patch
 )
 
 sha256sums=(
   'SKIP'
-  'e0c0bc7c3a15b1431e674f75fa607f1592457a6093370abdc307ac834ceed4db'
 )
  
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    patch --forward --strip=1 --input="${srcdir}/shared_ptr.patch" 
 }
 
 build() {
@@ -64,11 +61,8 @@ build() {
             -DCATKIN_BUILD_BINARY_PACKAGE=ON \
             -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
             -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-            -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
-            -DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
-            -DPYTHON_BASENAME=-python3.9 \
             -DSETUPTOOLS_DEB_LAYOUT=OFF \
-            -DCMAKE_CXX_STANDARD=17
+            -DCMAKE_CXX_STANDARD=14
 }
 
 package() {
