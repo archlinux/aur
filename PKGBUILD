@@ -1,20 +1,18 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=gracegtk
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A port of the Grace plotting tool to gtk2"
 arch=(i686 x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
 depends=('libjpeg' 'fftw' 't1lib' 'netcdf' 'pdflib-lite' 'gtk2')
 makedepends=('linuxdoc-tools' 'gcc9' 'gcc9-fortran')
 license=('GPL')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
-  grep -rl "'H', TRUE" src | xargs sed -i -e "s/'H', TRUE/'H', FALSE/g"
-  grep -rl "'H' ,TRUE" src | xargs sed -i -e "s/'H' ,TRUE/'H', FALSE/g"
   sed -i -e "s/.*right_justified.*//g" src/gg.c
   sed -i -e "s/.*right_justified.*//g" src/gg_gtkutils.c
   patch -p0 <../window_close.patch
@@ -52,7 +50,7 @@ package() {
   install -D -m644 "$srcdir/$pkgname-mimetypes" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
-md5sums=('b6aaa73f958953f5c6e497958b61fb4b'
+md5sums=('751e8cbf92d8e3688e61dc544e5ea7bb'
          '05b430f86615ab1aea79cee6ca204792'
          'ef085e503d30207035f5dfbef648ed36'
          '8427067a73698b5425901866ca3195d0'
