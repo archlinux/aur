@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
 arch=('x86_64' 'i386' 'armv7l')
@@ -36,6 +36,7 @@ prepare() {
 build() {
 	cd "craftos2-$pkgver-luajit"
 	./configure --prefix=/usr
+    make -C craftos2-luajit
 	make
 }
 
