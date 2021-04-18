@@ -23,7 +23,6 @@ StateDirectory=display-switch
 
 # sandboxing
 CapabilityBoundingSet=
-PrivateNetwork=true
 PrivateTmp=true
 PrivateUsers=true
 ProcSubset=pid
