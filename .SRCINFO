@@ -1,6 +1,6 @@
 pkgbase = python-degiro-connector-git
 	pkgdesc = Yet another library to access Degiro's API
-	pkgver = 0.0.8.r0.g6957de4
+	pkgver = 0.0.9.r2.g75db936
 	pkgrel = 1
 	url = https://github.com/Chavithra/degiro-connector
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = python-degiro-connector-git
 	makedepends = python-wheel
 	depends = python-grpcio
 	depends = python-onetimepass
-	depends = python-orjson
 	depends = python-pandas
 	depends = python-protobuf
 	depends = python-requests
