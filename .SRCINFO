@@ -1,15 +1,15 @@
 pkgbase = pidgin-broadcast
 	pkgdesc = The Pidgin plugin allowing massive spamming
-	pkgver = 2.2.0
-	pkgrel = 4
-	url = http://plugins.guifications.org/trac/wiki/PluginPack
+	pkgver = 586.190c64ca83ba
+	pkgrel = 1
+	url = https://keep.imfreedom.org/pidgin/purple-plugin-pack/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = perl-xml-parser
 	depends = pidgin
-	source = https://bitbucket.org/rekkanoryo/purple-plugin-pack/get/pp_2_2_0.tar.bz2
-	md5sums = 340713d1532ac17f4ccd9d89ad67529b
+	source = hg+https://keep.imfreedom.org/pidgin/purple-plugin-pack/
+	md5sums = SKIP
 
 pkgname = pidgin-broadcast
 
