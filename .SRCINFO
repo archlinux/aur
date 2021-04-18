@@ -1,0 +1,15 @@
+pkgbase = thes-git
+	pkgdesc = A CLI tool that finds the location of IP addresses.
+	pkgver = 0.1.2.r0.g2c88e93
+	pkgrel = 1
+	url = https://github.com/DefunctLizard/thes
+	arch = x86_64
+	license = APACHE-2.0
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	source = thes::git+https://github.com/DefunctLizard/thes.git
+	md5sums = SKIP
+
+pkgname = thes-git
+
