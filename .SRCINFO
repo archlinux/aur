@@ -1,6 +1,6 @@
 pkgbase = fluffychat-web-bin
 	pkgdesc = Chat with your friends
-	pkgver = 0.29.0
+	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = fluffychat-web-bin
 	provides = fluffychat-web
 	conflicts = fluffychat-web
 	backup = etc/webapps/fluffychat/config.json
-	source = artifact-0.29.0.zip::https://gitlab.com/famedly/fluffychat/-/jobs/artifacts/v0.29.0/download?job=build_web
-	source = config.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v0.29.0/config.sample.json
-	sha256sums = 228cb4f4a01677ccf28cf554d28d272ba01f8182d6b2384e178f2613394e7f2e
+	source = artifact-0.29.1.zip::https://gitlab.com/famedly/fluffychat/-/jobs/artifacts/v0.29.1/download?job=build_web
+	source = config.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v0.29.1/config.sample.json
+	sha256sums = 038ca91b4985621659c412b5a96bad596ac1ed123e7c059a46025dd73dac39ce
 	sha256sums = 8540064556b3a952c898023e48afb29e3c560964d66e51bbc422a0061318bd5e
 
 pkgname = fluffychat-web-bin
