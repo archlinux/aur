@@ -1,13 +1,13 @@
 # Maintainer: tcg <aur-tcg@emailaddress.biz>
 
 pkgname=tcg-git
-pkgver=0.2.66
+pkgver=0.2.67
 pkgrel=1
 pkgdesc="cgroups for terminals"
 arch=('x86_64')
 url="https://github.com/zasdfgbnm/tcg"
 license=('MIT')
-depends=('boost-libs' 'fmt' 'spdlog')
+depends=('boost-libs' 'fmt' 'spdlog' 'libseccomp')
 makedepends=('git' 'cmake' 'boost')
 source=("git+$url")
 sha256sums=('SKIP')
