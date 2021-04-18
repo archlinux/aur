@@ -1,14 +1,14 @@
 pkgbase = boostchanger-py
 	pkgdesc = Tray application to controlling CPU Turbo boost
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nbebaw/boostchanger-py
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = git
 	makedepends = tar
-	source = https://github.com/nbebaw/boostchanger-py/releases/download/v0.1.2/boost_changer-0.1.2.tar.gz
+	source = https://github.com/nbebaw/boostchanger-py/releases/download/v0.1.3/boost_changer-0.1.3.tar.gz
 	md5sums = SKIP
 
 pkgname = boostchanger-py
