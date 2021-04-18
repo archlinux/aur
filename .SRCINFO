@@ -1,6 +1,6 @@
 pkgbase = diaspora-postgresql-git
 	pkgdesc = A distributed privacy aware social network (development head) (PostgreSQL)
-	pkgver = 0.7.14.0.r421.g44bbb44c8
+	pkgver = 0.7.15.0.r487.g85bb022b2
 	pkgrel = 1
 	url = https://diasporafoundation.org
 	install = diaspora.install
@@ -25,6 +25,7 @@ pkgbase = diaspora-postgresql-git
 	conflicts = diaspora-mysql-git
 	options = !strip
 	backup = etc/webapps/diaspora/diaspora.yml
+	backup = etc/webapps/diaspora/diaspora.toml
 	backup = etc/webapps/diaspora/database.yml
 	backup = etc/webapps/diaspora/secret_token.rb
 	source = git+https://github.com/diaspora/diaspora.git#branch=develop

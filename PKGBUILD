@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.7.14.0.r421.g44bbb44c8
+pkgver=0.7.15.0.r487.g85bb022b2
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ makedepends=('nodejs' 'git')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-mysql-git')
 options=(!strip)
 backup=("etc/webapps/diaspora/diaspora.yml"
+        "etc/webapps/diaspora/diaspora.toml"
         "etc/webapps/diaspora/database.yml"
         "etc/webapps/diaspora/secret_token.rb")
 install="diaspora.install"
@@ -77,15 +78,15 @@ build() {
   HOME=$_builddir C_INCLUDE_PATH=/usr/include:/usr/include/tirpc $_bundle install
 
   msg "Patch configuration examples"
-  sed -i -e "s|#certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|" \
-         -e "s|#rails_environment: 'production'|rails_environment: 'production'|" \
-         -e "s|#listen: 'unix:tmp/diaspora.sock'|listen: '/run/diaspora/diaspora.sock'|" \
-      $_builddir/config/diaspora.yml.example
+  sed -i -e 's|#certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|' \
+         -e 's|#rails_environment = "production"|rails_environment = "production"|' \
+         -e 's|#listen = "unix:tmp/diaspora.sock"|listen = "/run/diaspora/diaspora.sock"|' \
+      $_builddir/config/diaspora.toml.example
   sed -i -e "s|<<: \*postgresql|<<: *postgresql|" \
          -e "s|#<<: \*mysql||" \
       $_builddir/config/database.yml.example
 
-  cp $_builddir/config/diaspora.yml{.example,}
+  cp $_builddir/config/diaspora.toml{.example,}
   cp $_builddir/config/database.yml{.example,}
 
   msg "Create secret token"
@@ -94,7 +95,7 @@ build() {
   msg "Precompile assets"
   HOME=$_builddir RAILS_ENV=production $_bundle exec $_rake assets:precompile
 
-  rm $_builddir/config/{diaspora,database}.yml
+  rm $_builddir/config/{diaspora.toml,database.yml}
 }
 
 package() {
@@ -124,7 +125,7 @@ package() {
 
   msg "Prepare configuration files"
   install -dm750 $pkgdir/etc/webapps/diaspora
-  install -Dm640 $_builddir/config/diaspora.yml.example $pkgdir/etc/webapps/diaspora/diaspora.yml
+  install -Dm640 $_builddir/config/diaspora.toml.example $pkgdir/etc/webapps/diaspora/diaspora.toml
   install -Dm640 $_builddir/config/database.yml.example $pkgdir/etc/webapps/diaspora/database.yml
 
   msg "Create symlinks"
@@ -133,7 +134,7 @@ package() {
   rm -Rf $pkgdir/usr/share/webapps/diaspora/log \
          $pkgdir/usr/share/webapps/diaspora/tmp \
          $pkgdir/usr/share/webapps/diaspora/public/uploads
-  ln -s  /etc/webapps/diaspora/diaspora.yml    $pkgdir/usr/share/webapps/diaspora/config/diaspora.yml
+  ln -s  /etc/webapps/diaspora/diaspora.toml   $pkgdir/usr/share/webapps/diaspora/config/diaspora.toml
   ln -s  /etc/webapps/diaspora/database.yml    $pkgdir/usr/share/webapps/diaspora/config/database.yml
   ln -sf /etc/webapps/diaspora/secret_token.rb $pkgdir/usr/share/webapps/diaspora/config/initializers/secret_token.rb
   ln -sf /var/lib/diaspora/uploads             $pkgdir/usr/share/webapps/diaspora/public/uploads
