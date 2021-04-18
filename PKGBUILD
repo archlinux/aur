@@ -1,7 +1,7 @@
 # Maintainer:  Christopher Reimer <mail at c-reimer dot de>
 
 pkgname=opengothic
-pkgver=0.35
+pkgver=0.36
 pkgrel=1
 pkgdesc="Open source remake of Gothic 2: Night of the raven"
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'libx11' 'vulkan-icd-loader')
 makedepends=('cmake' 'git' 'glslang' 'libglvnd' 'vulkan-headers')
 conflicts=('bullet')
-source=("git+https://github.com/Try/OpenGothic#commit=a144bbd3917fa51d067586fcde5a27daa8fe7bad" #tag=v0.35
-        "git+https://github.com/Try/Tempest.git#commit=af9f1b4c6decdd8511d1bb302ceadc2540892580"
+source=("git+https://github.com/Try/OpenGothic#commit=f1f450d1db11d718104c2cc921e5361f393c6242" #tag=v0.36
+        "git+https://github.com/Try/Tempest.git#commit=6507d44eebc1b2b0cdee99e155e2c447102d5eed"
         "git+https://github.com/schellingb/TinySoundFont.git#commit=d4ffcdc8a34d3f61f22e4b283b4c100f5adf4b82"
-        "git+https://github.com/Try/ZenLib.git#commit=133dab93cc8dd7c9f069fca37b2dae1409c34f30"
+        "git+https://github.com/Try/ZenLib.git#commit=60f536273d58412caaa393d3325945c81111724a"
         "git+https://github.com/bulletphysics/bullet3.git#commit=e7e46154bb2f4be77ad79657bcdc2675305b69a4"
         "git+https://github.com/tito/libsquish.git#commit=f5e44a360fd8b456b1291a2eaba61871c64d6288"
         "git+https://github.com/physfs-mirror/PhysicsFS.git#commit=a25c37f5f1552e30094234bac46a21e3e57cf9f7"
