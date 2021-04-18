@@ -1,19 +1,19 @@
 pkgbase = hotshots-git
-	pkgdesc = Screenshot tool with some editing features.
-	pkgver = e3b04ef
+	pkgdesc = Screenshot and annotation software
+	pkgver = r19.e3712ae1
 	pkgrel = 1
-	url = http://thehive.xbee.net
+	url = https://github.com/obiwankennedy/HotShots
 	arch = x86_64
-	arch = i686
 	license = GPL2
-	makedepends = cmake
-	depends = qt5-base
+	makedepends = git
+	makedepends = qt5-tools
 	depends = qt5-x11extras
+	depends = qt5-multimedia
 	depends = shared-mime-info
-	source = git://github.com/obiwankennedy/HotShots.git
-	source = qt511.patch
+	provides = hotshots
+	conflicts = hotshots
+	source = hotshots::git+https://github.com/obiwankennedy/HotShots.git
 	sha256sums = SKIP
-	sha256sums = f25246aa323ed5a190f99d23eb934fcd9ba9e11e5513fd4a5c9f507d6bd6e011
 
 pkgname = hotshots-git
 
