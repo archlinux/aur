@@ -1,0 +1,2 @@
+# udev rule for allowing display_switch to access display data channels
+ACTION=="add", SUBSYSTEM=="i2c-dev", KERNEL=="i2c-[0-9]*", RUN+="/usr/bin/setfacl -m g:display_switch:rw $env{DEVNAME}"

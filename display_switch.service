@@ -1,0 +1,44 @@
+[Unit]
+Description=Monitor Input Switch
+
+Wants=modprobe@i2c_dev.service
+Requires=modprobe@i2c_dev.service
+
+[Service]
+Type=simple
+
+User=display_switch
+Group=display_switch
+
+DeviceAllow=char-i2c rw
+
+Environment="XDG_CONFIG_HOME=/etc/conf.d"
+Environment="XDG_DATA_HOME=/var/log/display-switch"
+
+ExecStart=/usr/bin/display_switch
+
+StandardOutput=journal
+LogsDirectory=display-switch
+StateDirectory=display-switch
+
+# sandboxing
+CapabilityBoundingSet=
+PrivateNetwork=true
+PrivateTmp=true
+PrivateUsers=true
+ProcSubset=pid
+ProtectClock=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+NoNewPrivileges=true
+RemoveIPC=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=
+
+[Install]
+WantedBy=multi-user.target
