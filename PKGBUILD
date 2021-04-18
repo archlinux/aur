@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql'
-pkgver=0.7.14.0
+pkgver=0.7.15.0
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (PostgreSQL)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ makedepends=('nodejs' )
 conflicts=('diaspora-mysql' 'diaspora-mysql-git' 'diaspora-postgresql-git')
 options=(!strip)
 backup=("etc/webapps/diaspora/diaspora.yml"
+        "etc/webapps/diaspora/diaspora.toml"
         "etc/webapps/diaspora/database.yml"
         "etc/webapps/diaspora/secret_token.rb")
 install="diaspora.install"
@@ -56,7 +57,7 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.7.14.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp -Rf $srcdir/diaspora-0.7.15.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
 
   cd $_builddir
 
@@ -72,15 +73,15 @@ build() {
   HOME=$_builddir C_INCLUDE_PATH=/usr/include:/usr/include/tirpc $_bundle install
 
   msg "Patch configuration examples"
-  sed -i -e "s|#certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|" \
-         -e "s|#rails_environment: 'production'|rails_environment: 'production'|" \
-         -e "s|#listen: 'unix:tmp/diaspora.sock'|listen: '/run/diaspora/diaspora.sock'|" \
-      $_builddir/config/diaspora.yml.example
+  sed -i -e 's|#certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|certificate_authorities = "/etc/ssl/certs/ca-certificates.crt"|' \
+         -e 's|#rails_environment = "production"|rails_environment = "production"|' \
+         -e 's|#listen = "unix:tmp/diaspora.sock"|listen = "/run/diaspora/diaspora.sock"|' \
+      $_builddir/config/diaspora.toml.example
   sed -i -e "s|<<: \*postgresql|<<: *postgresql|" \
          -e "s|#<<: \*mysql||" \
       $_builddir/config/database.yml.example
 
-  cp $_builddir/config/diaspora.yml{.example,}
+  cp $_builddir/config/diaspora.toml{.example,}
   cp $_builddir/config/database.yml{.example,}
 
   msg "Create secret token"
@@ -89,7 +90,7 @@ build() {
   msg "Precompile assets"
   HOME=$_builddir RAILS_ENV=production $_bundle exec $_rake assets:precompile
 
-  rm $_builddir/config/{diaspora,database}.yml
+  rm $_builddir/config/{diaspora.toml,database.yml}
 }
 
 package() {
@@ -119,7 +120,7 @@ package() {
 
   msg "Prepare configuration files"
   install -dm750 $pkgdir/etc/webapps/diaspora
-  install -Dm640 $_builddir/config/diaspora.yml.example $pkgdir/etc/webapps/diaspora/diaspora.yml
+  install -Dm640 $_builddir/config/diaspora.toml.example $pkgdir/etc/webapps/diaspora/diaspora.toml
   install -Dm640 $_builddir/config/database.yml.example $pkgdir/etc/webapps/diaspora/database.yml
 
   msg "Create symlinks"
@@ -128,7 +129,7 @@ package() {
   rm -Rf $pkgdir/usr/share/webapps/diaspora/log \
          $pkgdir/usr/share/webapps/diaspora/tmp \
          $pkgdir/usr/share/webapps/diaspora/public/uploads
-  ln -s  /etc/webapps/diaspora/diaspora.yml    $pkgdir/usr/share/webapps/diaspora/config/diaspora.yml
+  ln -s  /etc/webapps/diaspora/diaspora.toml   $pkgdir/usr/share/webapps/diaspora/config/diaspora.toml
   ln -s  /etc/webapps/diaspora/database.yml    $pkgdir/usr/share/webapps/diaspora/config/database.yml
   ln -sf /etc/webapps/diaspora/secret_token.rb $pkgdir/usr/share/webapps/diaspora/config/initializers/secret_token.rb
   ln -sf /var/lib/diaspora/uploads             $pkgdir/usr/share/webapps/diaspora/public/uploads
@@ -136,7 +137,7 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('747ba7a7e57bdbfee574ebce6622d0f94a068a387943be8fdf33b5d2e960c2db'
+sha256sums=('2f3a1c2e8ebcceced0bfdbdb03a05557d7c37cdceb844327f968c5afc11c756a'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             'd10f10439e56c38a9960e7cd481c7b44a68bc0ecf7c88b91d9cafb454aa6ffd0'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
