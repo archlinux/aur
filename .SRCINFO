@@ -1,7 +1,7 @@
 pkgbase = rapidsvn
 	pkgdesc = A cross-platform GUI front-end for the Subversion revision system written in C++ using the wxWidgets framework.
 	pkgver = 0.12.1
-	pkgrel = 15
+	pkgrel = 16
 	url = https://rapidsvn.org/
 	arch = x86_64
 	license = GPL

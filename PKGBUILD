@@ -6,7 +6,7 @@
 
 pkgname=rapidsvn
 pkgver=0.12.1
-pkgrel=15
+pkgrel=16
 pkgdesc="A cross-platform GUI front-end for the Subversion revision system written in C++ using the wxWidgets framework."
 url='https://rapidsvn.org/'
 arch=('x86_64')
@@ -52,7 +52,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir"/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver
 
 	autoreconf -vi
 
@@ -72,12 +72,12 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver
 
-	make DESTDIR="$pkgdir" install
+	make DESTDIR=$pkgdir install
 
 	install -Dm644 src/res/bitmaps/rapidsvn_32x32.xpm \
-		"$pkgdir"/usr/share/pixmaps/rapidsvn_32x32.xpm
+		"$pkgdir/usr/share/pixmaps/rapidsvn_32x32.xpm"
 	install -Dm644 ../$pkgname.desktop \
-		"$pkgdir"/usr/share/applications/$pkgname.desktop
+		"$pkgdir/usr/share/applications/$pkgname.desktop"
 }
