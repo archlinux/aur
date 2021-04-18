@@ -1,10 +1,11 @@
 pkgbase = arvan
 	pkgdesc = cli tool for managing ArvanCloud services
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arvancloud/cli
 	arch = x86_64
 	license = unknown
+	options = !strip
 	source = https://github.com/arvancloud/cli/releases/download/v1.0.1/arvan_1.0.1_linux_amd64.tar.gz
 	sha256sums = eb53c93fd9fa77c13b527251100039a0daa66b6eaa865f67ba2f1a1cac073db9
 
