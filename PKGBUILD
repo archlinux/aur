@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Christoph Mohr <christoph.mohr@gmail.com>
 # Contributor: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
@@ -7,13 +7,13 @@ pkgname='ferdi'
 pkgver='5.5.0'
 _recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
 _internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='8'
+pkgrel='9'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
 depends=('electron8-bin' 'libxkbfile')
-makedepends=('git' 'npm' 'python' 'python2')
+makedepends=('git' 'npm6' 'python' 'python2')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
@@ -46,7 +46,7 @@ esac
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Provide git submodules
+	#  Provide git submodules
 	rm -rf 'recipes/' 'src/internal-server/'
 	mv "../recipes-$_recipescommit/" 'recipes/'
 	mv "../internal-server-$_internalservercommit/" 'src/internal-server/'
