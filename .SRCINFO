@@ -1,6 +1,6 @@
 pkgbase = lf-git
 	pkgdesc = lf is a terminal file manager written in Go
-	pkgver = r519.8327505
+	pkgver = r22.r2.g8739087
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
 	arch = i686

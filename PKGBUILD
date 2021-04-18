@@ -4,7 +4,7 @@
 
 pkgname=lf-git
 _pkgname=lf
-pkgver=r519.8327505
+pkgver=r22.r2.g8739087
 pkgrel=1
 license=('MIT')
 pkgdesc='lf is a terminal file manager written in Go'
@@ -18,9 +18,10 @@ sha256sums=('SKIP')
 provides=("lf")
 conflicts=("lf")
 
+# https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver()_function
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
