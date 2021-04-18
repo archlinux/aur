@@ -1,27 +1,29 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sqlite-fossil
-pkgver=r19569.1e30f47
+pkgver=r24926.354a4db
 pkgrel=1
 pkgdesc="Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine"
 arch=('i686' 'x86_64')
 url="https://www.sqlite.org/"
 license=('custom:Public Domain')
-depends=('glibc')
-makedepends=('fossil' 'tcl' 'readline')
+depends=('glibc' 'readline' 'zlib')
+makedepends=('fossil' 'tcl')
 provides=('sqlite')
 conflicts=('sqlite')
 options=('staticlibs')
-source=("license::https://git.archlinux.org/svntogit/packages.git/plain/trunk/license.txt?h=packages/sqlite")
-sha256sums=('SKIP')
 
 
 prepare() {
-  mkdir -p "sqlite"
-  cd "sqlite"
+  cd "$srcdir"
 
-  fossil clone https://www.sqlite.org/src sqlite.fossil
-  fossil open sqlite.fossil
+  if [ -d "sqlite" ]; then
+    cd "sqlite"
+    fossil update
+  else
+    rm -f "sqlite.fossil"
+    fossil clone --workdir "sqlite" "https://www.sqlite.org/src" "sqlite.fossil"
+  fi
 }
 
 pkgver() {
@@ -35,18 +37,31 @@ pkgver() {
 build() {
   cd "sqlite"
 
-  export CPPFLAGS="$CPPFLAGS -DSQLITE_ENABLE_COLUMN_METADATA=1 \
-                             -DSQLITE_ENABLE_UNLOCK_NOTIFY \
-                             -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
-                             -DSQLITE_ENABLE_FTS3_TOKENIZER=1 \
-                             -DSQLITE_SECURE_DELETE \
-                             -DSQLITE_MAX_VARIABLE_NUMBER=250000 \
-                             -DSQLITE_MAX_EXPR_DEPTH=10000"
-  ./configure --prefix="/usr" \
+  export CPPFLAGS="$CPPFLAGS \
+    -DSQLITE_ENABLE_COLUMN_METADATA=1 \
+    -DSQLITE_ENABLE_UNLOCK_NOTIFY \
+    -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
+    -DSQLITE_ENABLE_FTS3_TOKENIZER=1 \
+    -DSQLITE_SECURE_DELETE \
+    -DSQLITE_MAX_VARIABLE_NUMBER=250000 \
+    -DSQLITE_MAX_EXPR_DEPTH=10000"
+
+  ./configure \
+    --prefix="/usr" \
     --disable-amalgamation \
-    --enable-fts3 --enable-fts4 --enable-fts5 --enable-rtree --enable-json1
+    --enable-fts3 \
+    --enable-fts4 \
+    --enable-fts5 \
+    --enable-rtree \
+    --enable-json1
   make
-  make showdb showjournal showstat4 showwal sqldiff sqlite3_analyzer
+  make \
+    showdb \
+    showjournal \
+    showstat4 \
+    showwal \
+    sqldiff \
+    sqlite3_analyzer
 }
 
 check() {
@@ -59,12 +74,10 @@ package() {
   cd "sqlite"
 
   make DESTDIR="$pkgdir" install
-  install -m755 showdb showjournal showstat4 showwal sqldiff "$pkgdir/usr/bin/"
 
-  install -Dm644 "$srcdir/license" "$pkgdir/usr/share/licenses/sqlite/license"
-
-  install -m755 -d "$pkgdir/usr/share/man/man1"
-  install -m644 sqlite*.1 "$pkgdir/usr/share/man/man1/"
+  install -Dm755 {showdb,showjournal,showstat4,showwal,sqldiff} -t "$pkgdir/usr/bin"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/sqlite"
+  install -Dm644 sqlite*.1 -t "$pkgdir/usr/share/man/man1"
 
   # remove tcl extension
   rm -r "$pkgdir/usr/lib"/tcl*

@@ -1,6 +1,6 @@
 pkgbase = sqlite-fossil
 	pkgdesc = Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine
-	pkgver = r19569.1e30f47
+	pkgver = r24926.354a4db
 	pkgrel = 1
 	url = https://www.sqlite.org/
 	arch = i686
@@ -8,13 +8,12 @@ pkgbase = sqlite-fossil
 	license = custom:Public Domain
 	makedepends = fossil
 	makedepends = tcl
-	makedepends = readline
 	depends = glibc
+	depends = readline
+	depends = zlib
 	provides = sqlite
 	conflicts = sqlite
 	options = staticlibs
-	source = license::https://git.archlinux.org/svntogit/packages.git/plain/trunk/license.txt?h=packages/sqlite
-	sha256sums = SKIP
 
 pkgname = sqlite-fossil
 
