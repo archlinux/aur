@@ -1,6 +1,6 @@
 # Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
 pkgname=irony-mod-manager-bin
-pkgver=1.15.16
+pkgver=1.15.18
 pkgrel=1
 pkgdesc="A mod manager and launcher for paradox interactive games"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/bcssov/IronyModManager/release
 		"$pkgname.sh"
 		"$pkgname.README.md"
 		"fixed-jsons.diff")
-md5sums=('aaf03a6f094ae1c0d629e7da98404f6b'
+md5sums=('675ba8be78b9692f990063ebf6b2d3ee'
          '190d6d8e852bbe000af5dac87a5b921c'
          '4d10c1d451ed731909fc1f749c9482d1'
          '020c05854432b6e877de520a967fccee'
