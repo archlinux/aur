@@ -1,7 +1,7 @@
 pkgbase = linux-cacule
 	pkgdesc = Linux-CacULE Kernel by Hamad Marri and with some other patchsets
 	pkgver = 5.11.15
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -62,4 +62,3 @@ pkgname = linux-cacule
 pkgname = linux-cacule-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-CacULE Kernel by Hamad Marri and with some other patchsets kernel
 	depends = pahole
-

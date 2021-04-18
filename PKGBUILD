@@ -23,19 +23,27 @@ fi
 if [ -z ${use_tracers+x} ]; then
   use_tracers=n
 fi
-
+#
+# If you want to use modeprobed-db sothat only the active modules will be compiled
+#
 if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
 fi
-
-
+#
+# fsync
+#
 if [ -z ${fsync+x} ]; then
   fsync=y
 fi
-
+#
+# Futex2
+#
 if [ -z ${futex2+x} ]; then
   futex2=y
 fi
+#
+# Winesync
+#
 if [ -z ${winesync+x} ]; then
   winesync=y
 fi
@@ -46,7 +54,7 @@ fi
 
 pkgbase=linux-cacule
 pkgver=5.11.15
-pkgrel=7
+pkgrel=8
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 url="http://www.kernel.org/"
 arch=(x86_64)
@@ -123,81 +131,81 @@ prepare() {
     # Copy "${srcdir}"/config to linux-${pkgver}/.config
 #    msg2 "Copy "${srcdir}"/config to linux-5.11.14/.config"
 #    cp "${srcdir}"/config-5.11 .config
-      echo "Setting config..."
-      cp ../config .config
+  echo "Setting config..."
+  cp ../config .config
 
       # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
       # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
       # partition ... this was introduced by FS#66260, see:
       # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-      scripts/config --disable CONFIG_DEBUG_INFO
-      scripts/config --disable CONFIG_CGROUP_BPF
-      scripts/config --disable CONFIG_BPF_LSM
-      scripts/config --disable CONFIG_BPF_PRELOAD
-      scripts/config --disable CONFIG_BPF_LIRC_MODE2
-      scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --disable CONFIG_CGROUP_BPF
+  scripts/config --disable CONFIG_BPF_LSM
+  scripts/config --disable CONFIG_BPF_PRELOAD
+  scripts/config --disable CONFIG_BPF_LIRC_MODE2
+  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
       # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
-      scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
+  scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
 
       # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-      scripts/config --disable CONFIG_LATENCYTOP
-      scripts/config --disable CONFIG_SCHED_DEBUG
+  scripts/config --disable CONFIG_LATENCYTOP
+  scripts/config --disable CONFIG_SCHED_DEBUG
 
       # FS#66613
       # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
-      scripts/config --disable CONFIG_KVM_WERROR
+  scripts/config --disable CONFIG_KVM_WERROR
 
     # Customize the kernel
-    source "${startdir}"/cacule_config
+  source "${startdir}"/cacule_config
 
-    configure
+  configure
 
-    cpu_arch
+  cpu_arch
 
     # User set. See at the top of this file
-    if [ "$use_tracers" = "n" ]; then
-      msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
-      scripts/config --disable CONFIG_FUNCTION_TRACER \
-                     --disable CONFIG_STACK_TRACER
+  if [ "$use_tracers" = "n" ]; then
+    echo "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
+    scripts/config --disable CONFIG_FUNCTION_TRACER \
+                   --disable CONFIG_STACK_TRACER
     fi
 
-    if [ "$use_numa" = "n" ]; then
-      echo "Disable NUMA"
-      scripts/config --disable CONFIG_NUMA
-      scripts/config --disable CONFIG_AMD_NUMA
-      scripts/config --disable CONFIG_X86_64_ACPI_NUMA
-      scripts/config --disable CONFIG_NODES_SPAN_OTHER_NODES
-      scripts/config --disable CONFIG_NUMA_EMU
-      scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
-      scripts/config --disable CONFIG_USE_PERCPU_NUMA_NODE_ID
-      scripts/config --disable CONFIG_ACPI_NUMA
-      scripts/config --disable CONFIG_ARCH_SUPPORTS_NUMA_BALANCING
-      scripts/config --disable CONFIG_NODES_SHIFT
-      scripts/config --undefine CONFIG_NODES_SHIFT
-      scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
-    fi
+  if [ "$use_numa" = "n" ]; then
+    echo "Disable NUMA"
+    scripts/config --disable CONFIG_NUMA
+    scripts/config --disable CONFIG_AMD_NUMA
+    scripts/config --disable CONFIG_X86_64_ACPI_NUMA
+    scripts/config --disable CONFIG_NODES_SPAN_OTHER_NODES
+    scripts/config --disable CONFIG_NUMA_EMU
+    scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
+    scripts/config --disable CONFIG_USE_PERCPU_NUMA_NODE_ID
+    scripts/config --disable CONFIG_ACPI_NUMA
+    scripts/config --disable CONFIG_ARCH_SUPPORTS_NUMA_BALANCING
+    scripts/config --disable CONFIG_NODES_SHIFT
+    scripts/config --undefine CONFIG_NODES_SHIFT
+    scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
+  fi
 
-    if [ "$fsync" = "y" ]; then
-      echo "Enable Fsync support"
-      scripts/config --enable CONFIG_FUTEX
-      scripts/config --enable CONFIG_FUTEX_PI
-    fi
+  if [ "$fsync" = "y" ]; then
+    echo "Enable Fsync support"
+    scripts/config --enable CONFIG_FUTEX
+    scripts/config --enable CONFIG_FUTEX_PI
+  fi
 
-    if [ "$futex2" = "y" ]; then
-      echo "Enable Futex2 support"
-      scripts/config --enable CONFIG_FUTEX2
-    fi
+  if [ "$futex2" = "y" ]; then
+    echo "Enable Futex2 support"
+    scripts/config --enable CONFIG_FUTEX2
+  fi
 
-    if [ "$winesync" = "y" ]; then
-      echo "Enable winesync support"
-      scripts/config --module CONFIG_WINESYNC
-    fi
+  if [ "$winesync" = "y" ]; then
+    echo "Enable winesync support"
+    scripts/config --module CONFIG_WINESYNC
+  fi
 
     # Setting localversion
-      msg2 "Setting localversion..."
-      scripts/setlocalversion --save-scmversion
-      echo "-${pkgbase}" > localversion
+  echo "Setting localversion..."
+  scripts/setlocalversion --save-scmversion
+  echo "-${pkgbase}" > localversion
 
       make olddefconfig
 
