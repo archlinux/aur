@@ -1,8 +1,8 @@
 # Maintainer: Len Chan <lenchan139@tto.moe>
 pkgname=brother-color-label-printer
 pkgver=0.2
-pkgbuild=2
-pkgrel=2
+pkgbuild=3
+pkgrel=3
 pkgdesc="A Linux color labeling printing command tool for Brother VC-500W color label printer"
 arch=('any')
 url="https://m7i.org/projects/labelprinter-linux-python-for-vc-500w/"
@@ -32,7 +32,7 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   cp -ra "${srcdir}/${provides}" "${pkgdir}/opt/${pkgname}"
   touch  "${pkgdir}/opt/${pkgname}/labelprinter.sh"
- echo -en '#!/bin/sh \n PYTHONPATH=/home/len/labelprinter/ python3 -m labelprinter "$@"' >  "${pkgdir}/opt/${pkgname}/labelprinter.sh"
+ echo -en '#!/bin/sh \n PYTHONPATH=/opt/brother-color-label-printer/labelprinter python3 -m labelprinter "$@"' >  "${pkgdir}/opt/${pkgname}/labelprinter.sh"
  chmod a+rw "${pkgdir}/opt/${pkgname}/labelprinter.sh"
  chmod +x "${pkgdir}/opt/${pkgname}/labelprinter.sh"
   ln -s "/opt/${pkgname}/labelprinter.sh" "${pkgdir}/usr/bin/${pkgname}"
