@@ -1,19 +1,17 @@
 pkgbase = poki-launcher
 	pkgdesc = An application launcher that shows recently used apps first
-	pkgver = 0.6.0
-	pkgrel = 3
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://sr.ht/~zethra/poki-launcher/
 	arch = x86_64
 	arch = i686
-	arch = arm
-	arch = armv7h
 	arch = aarch64
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
 	depends = qt5-declarative
-	source = poki-launcher-0.6.0.tar.gz::https://git.sr.ht/~zethra/poki-launcher/archive/0.6.0.tar.gz
-	sha256sums = 5697de9abbf58634586c35baf212b1a71f7a3f8b63263ffa388aca91a2a90e9e
+	source = poki-launcher-0.7.0.tar.gz::https://git.sr.ht/~zethra/poki-launcher/archive/0.7.0.tar.gz
+	sha256sums = e0578de1a3916efdd962f24bc8c8fa3a26916e97e56627ffeeb84493f8b206e6
 
 pkgname = poki-launcher
 
