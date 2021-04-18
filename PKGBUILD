@@ -1,5 +1,5 @@
 pkgname=hotshots-git
-pkgver=r19.e3712ae1
+pkgver=r19.e3712ae
 pkgrel=1
 pkgdesc="Screenshot and annotation software"
 arch=('x86_64')
