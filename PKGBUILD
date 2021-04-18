@@ -12,9 +12,9 @@ conflicts=('jellyfin-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/iwalton3/jellyfin-media-player.git'
-        'jwc-10.7.2.tar.gz::https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-10.7.2/dist.zip')
+        'jwc-10.7.2-1.tar.gz::https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-10.7.2-1/dist.zip')
 sha256sums=('SKIP'
-            'ad689fba79e7aa3fb0b39e20ecc7f75776d0872fd39c4e4506f0ef12b6f90210')
+            '8954fce772d3a0b1ab247a4a7cf8f2217b6818e5f20f304e9379fae2b98bdf71')
 
 pkgver() {
   cd jellyfin-media-player
