@@ -18,7 +18,7 @@ depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss ttf-font libpulse
          libvpx libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust mozilla-common xorg-server-xwayland xorg-server-xvfb
+             rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
