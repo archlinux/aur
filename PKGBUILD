@@ -10,7 +10,7 @@ options=(!strip)
 makedepends=("npm")
 depends=("electron")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek.sh")
-sha512sums=('10b441ea2de5a13b9fc7c11f2982a767bbe235891b71fbea876ee3a069a5828d57b6cea0a1f9f28d36e55ce0246a08bdc03c67362108bfd43b87b66c3de611ae'
+sha512sums=('6639a0a7dfd238a695b268efa72b82c546f54196a8f895ebd2e1f26f16d602b3c2e10be1c732d9beac342e8a2f940295e02d5122c2bf2eb83dfb0f1773fb6a04'
             '60777dbda8202e5a265a274d126d30269fb8fba67641d22a83be19b353b4805cbed2a3c80bbc0e6ed7c0fe7ae21c3cde59b784d42d3ba941bb0fdf022c1375e8'
             '13d651476d302af9d013c04c396c9b8f53114cf05adaf9cd80c0f452a6da8da45751e971cc2a6d2621d1480d04d6ba717aadf52982922ef9bfde867221b51845')
 
