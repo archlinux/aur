@@ -18,7 +18,6 @@ pkgbase = firedragon-hg
 	makedepends = inetutils
 	makedepends = ccache
 	makedepends = rust
-	makedepends = mozilla-common
 	makedepends = xorg-server-xwayland
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
