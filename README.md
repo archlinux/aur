@@ -21,7 +21,7 @@ gd:
 ;extension=gd
 ```
 
-### nginx
+### Nginx
 1. You can use any HTTP server. Instructions are given for nginx.
 2. `sudo nano /etc/nginx/nginx.conf` and configure your nginx server. You also need to create SSL keys.
 ```
