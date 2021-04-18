@@ -3,7 +3,7 @@
 
 _gemname=pg_query
 pkgname=ruby-pg-query
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Ruby extension to parse, deparse and normalize SQL queries using the PostgreSQL query parser"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('ruby')
 optdepends=()
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=("c8080144e3fde39ce12029a1a11a289beffa7fc87f4650ee0beee4f996564805")
+sha256sums=("4f6566d174b477b25736f89d6e5455668df44962a4582c68fcc2dffbe63031d6")
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
