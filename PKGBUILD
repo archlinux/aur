@@ -3,7 +3,7 @@
 pkgname=webwormhole-git
 _pkgname=${pkgname%-git}
 pkgver=r195.1c8919c
-pkgrel=1
+pkgrel=2
 pkgdesc='WebWormhole creates ephemeral pipes between computers to send files or other data.'
 arch=('x86_64')
 url="https://github.com/saljam/${_pkgname}"
@@ -31,6 +31,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
     GOOS=js GOARCH=wasm go build -o ./web/webwormhole.wasm ./web
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     GO111MODULE=on go build ./cmd/ww
@@ -38,6 +39,8 @@ build() {
 
 package() {
     install -D -m755 "${srcdir}/${_pkgname}/ww" "$pkgdir"/usr/bin/ww
-    install -d -m755 "$pkgdir"/usr/share/webwormhole
+    install -d -m755 "${pkgdir}"/usr/share/webwormhole
     cp -r "${srcdir}/${_pkgname}/web" "$pkgdir"/usr/share/webwormhole/web
+    install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -m644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
