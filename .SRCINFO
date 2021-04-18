@@ -1,0 +1,14 @@
+pkgbase = minetest-mod-awards
+	pkgdesc = Adds awards to Minetest, and an API to register new ones.
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://content.minetest.net/packages/rubenwardy/awards/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	options = !strip
+	source = awards-3.4.0.zip::https://gitlab.com/rubenwardy/awards/-/archive/v3.4.0/awards-v3.4.0.zip
+	sha256sums = 6ef26c8465715e2ca42b49debe5deda1adb50d8648b997226e114e04145f8776
+
+pkgname = minetest-mod-awards
+
