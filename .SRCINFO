@@ -1,13 +1,13 @@
 pkgbase = instamenu
 	pkgdesc = dmenu like menu with the Dracula theme
-	pkgver = 2021.04.17
+	pkgver = 2021.04.18
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/instamenu
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = sh
-	depends = perl
+	depends = python>=3.4
 	depends = libxinerama
 	depends = libxft
 	depends = noto-fonts-emoji
@@ -21,8 +21,8 @@ pkgbase = instamenu
 	provides = dmenu
 	conflicts = dmenu
 	replaces = dmenu
-	source = instamenu-2021.04.17.tar.gz::https://github.com/The-Repo-Club/instamenu/archive/2021.04.17.tar.gz
-	sha256sums = e0279923acba5ad7ba251e12b1150352d36753952084e66ece5afbefbedd7a59
+	source = instamenu-2021.04.18.tar.gz::https://github.com/The-Repo-Club/instamenu/archive/2021.04.18.tar.gz
+	sha256sums = c284689218948ed6c3d5526cd56b01b5afe21fbee1818da77f27f1db17875509
 
 pkgname = instamenu
 
