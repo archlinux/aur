@@ -6,7 +6,7 @@
 pkgbase=python-django-mptt
 _pkgbase="${pkgbase#python-}"
 pkgname=python-django-mptt
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Utilities for implementing a modified pre-order traversal tree in django."
 arch=(any)
@@ -15,11 +15,12 @@ license=(BSD)
 makedepends=(
   'python-django>=3.0'
   python-setuptools
+  python-django-js-asset-git
 )
-depends=('python-django>=3.0')
+depends=('python-django>=3.0' 'python-django-js-asset-git')
 options=(!emptydirs)
 source=("https://github.com/django-mptt/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('acbecfc6d56c53f894a2e28d15aef9d922f21c0a4976a5a2e48855f420ee976e')
+sha256sums=('143cbedc5f32158a4a60f03561d1ee0d205e16813309ea8d5bebb2d3de82f38f')
 
 package_python-django-mptt() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
