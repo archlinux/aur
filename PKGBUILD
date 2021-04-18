@@ -3,7 +3,7 @@
 # Contributor: big_gie nbigaouette . at . gmail.com
 
 pkgname=gri-git
-pkgver=2.12.26
+pkgver=2.12.23.r20.gd9969d1
 pkgrel=1
 pkgdesc="A script-based language for scientific graphics programming"
 arch=('i686' 'x86_64')
@@ -13,16 +13,14 @@ depends=('perl')
 conflicts=('gri')
 provides=('gri')
 makedepends=('git' 'ghostscript' 'imagemagick' 'texlive-core' 'perl-perl4-corelibs')
-source=("git+https://github.com/dankelley/gri.git" inputencoding.patch)
-sha256sums=('SKIP'
-            'b16d82db8958336fe0839c2aef30fd6fb8c75ea217c30e9ce64e06697b867abd')
-options=('!makeflags')
+source=("git+https://github.com/dankelley/gri.git")
+sha256sums=('SKIP')
 
-prepare() {
+pkgver() {
   cd ${pkgname%-git}
-  git apply "$srcdir"/inputencoding.patch
+  git describe --tags | sed 's+-+.r+' | tr - . | cut -c2-
 }
- 
+
 build() {
   cd ${pkgname%-git}
   aclocal

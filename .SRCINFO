@@ -1,6 +1,6 @@
 pkgbase = gri-git
 	pkgdesc = A script-based language for scientific graphics programming
-	pkgver = 2.12.26
+	pkgver = 2.12.23.r20.gd9969d1
 	pkgrel = 1
 	url = http://gri.sourceforge.net/
 	arch = i686
@@ -14,11 +14,8 @@ pkgbase = gri-git
 	depends = perl
 	provides = gri
 	conflicts = gri
-	options = !makeflags
 	source = git+https://github.com/dankelley/gri.git
-	source = inputencoding.patch
 	sha256sums = SKIP
-	sha256sums = b16d82db8958336fe0839c2aef30fd6fb8c75ea217c30e9ce64e06697b867abd
 
 pkgname = gri-git
 
