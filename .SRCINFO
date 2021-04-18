@@ -1,0 +1,23 @@
+pkgbase = ferm
+	pkgdesc = Tool to maintain complex firewalls
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://ferm.foo-projects.org/
+	arch = any
+	license = GPL2
+	depends = iptables
+	depends = perl
+	optdepends = ebtables
+	optdepends = arptables
+	optdepends = ipset
+	backup = etc/ferm.conf
+	source = http://ferm.foo-projects.org/download/2.5/ferm-2.5.1.tar.xz
+	source = http://ferm.foo-projects.org/download/2.5/ferm-2.5.1.tar.xz.sig
+	source = ferm.service
+	validpgpkeys = 0392335A78083894A4301C43236E8A58C6DB4512
+	md5sums = 6d14d9e5e672885bc6f2fceafbf2942f
+	md5sums = SKIP
+	md5sums = 9c5ece2628fd86a73b70f9c39df63e9f
+
+pkgname = ferm
+

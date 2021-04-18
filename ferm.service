@@ -1,0 +1,15 @@
+[Unit]
+Description=for Easy Rule Making
+After=ipset.service
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/ferm /etc/ferm.conf
+ExecReload=/usr/bin/ferm /etc/ferm.conf
+ExecStop=/usr/bin/ferm -F /etc/ferm.conf
+
+[Install]
+WantedBy=multi-user.target
