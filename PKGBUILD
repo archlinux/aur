@@ -2,7 +2,7 @@
 
 pkgname=brother-dcpl2520dw
 pkgver=3.2.0_1
-pkgrel=3
+pkgrel=4
 pkgdesc="Brother DCP-L2520DW lpr driver and CUPS wrapper."
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2520dw_us_eu&os=127&dlid=dlf101757_000&flang=4&type3=558"
@@ -12,7 +12,7 @@ optdepends=('brscan4: scanner support.')
 source=(
   "http://download.brother.com/welcome/dlf101757/dcpl2520dwlpr-${pkgver/_/-}.i386.rpm"
   "http://download.brother.com/welcome/dlf101758/dcpl2520dwcupswrapper-${pkgver/_/-}.i386.rpm"
-  '99-brprint.rules'
+  '99-brprint-dcpl2520dw.rules'
 )
 md5sums=(
   'de61fcda5985944d6dd1e5735cf7897b'
@@ -41,6 +41,5 @@ package() {
   cp -r ${srcdir}/var ${pkgdir}/
   cp -r ${srcdir}/etc ${pkgdir}/
 
-  install -m 644 -D 99-brprint.rules $pkgdir/etc/udev/rules.d/99-brprint.rules
+  install -m 644 -D 99-brprint-dcpl2520dw.rules $pkgdir/usr/lib/udev/rules.d/99-brprint-dcpl2520dw.rules
 }
-
