@@ -8,6 +8,5 @@ post_install() {
 post_upgrade() {
   if [[ $(vercmp "$2" "0.62") -ne 1 && $(vercmp "0.63" "$1") -ne 1 ]]; then
     echo "Note: The executable name has been changed from 'CorsixTH' to 'corsix-th'."
-    echo "      Compatibility symlink will be removed with next package release."
   fi
 }

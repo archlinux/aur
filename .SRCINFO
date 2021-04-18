@@ -1,6 +1,6 @@
 pkgbase = corsix-th
 	pkgdesc = Reimplementation of the game engine of Theme Hospital
-	pkgver = 0.63
+	pkgver = 0.64
 	pkgrel = 1
 	url = https://github.com/CorsixTH/CorsixTH
 	install = corsix-th.install
@@ -9,15 +9,16 @@ pkgbase = corsix-th
 	arch = armv7h
 	license = MIT
 	makedepends = cmake
-	depends = lua
-	depends = lua-lpeg
-	depends = lua-filesystem
+	makedepends = ninja
+	depends = lua53
+	depends = lua53-lpeg
+	depends = lua53-filesystem
 	depends = sdl2_mixer
 	depends = ffmpeg
 	optdepends = freepats-legacy: Soundfont for Midi playback
 	optdepends = soundfont-fluid: Alternative soundfont for Midi playback
-	source = corsix-th-0.63.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/v0.63.tar.gz
-	sha256sums = 9016ce0a22e0e800937970a91b48aaf536fc901c98d3edd1e11bf97590523d81
+	source = corsix-th-0.64.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/v0.64.tar.gz
+	sha256sums = 12389a95de0031baec1a3fc77208d44228177f49564f1c79ae763ab4aeeafa98
 
 pkgname = corsix-th
 
