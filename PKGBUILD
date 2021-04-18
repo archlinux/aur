@@ -2,7 +2,7 @@
 # Ex-Maintainer: 	Jeroen Bollen <jbinero at gmail dot comau>
 
 pkgname=ckbcomp
-pkgver=1.199
+pkgver=1.202
 pkgrel=1
 pkgdesc="Compile a XKB keyboard description to a keymap suitable for loadkeys or kbdcontrol"
 arch=(any)
@@ -10,10 +10,26 @@ url="http://anonscm.debian.org/cgit/d-i/console-setup.git/"
 license=('GPL2')
 depends=('perl')
 source=("http://ftp.de.debian.org/debian/pool/main/c/console-setup/console-setup_${pkgver}.tar.xz")
-sha512sums=('8d969de9e6c300c799fb8c58c5300112c1576768c41cd29a9185ecbf0d5c5205356439b54141f00ef4e76ceaf3dc2106cb5fd3e9ec430a205183c07bea341d96')
+sha512sums=('caa7dcf667d44edab97811d8f95a3532af6d340e217e4a2acfa02f8812625522823e8d90bd35f701f3fc0b6c6e3b867a0a58c5c2323c64022f2c5ca3527e7d33')
 
 package() {
-    cd console-setup
+    if [[ -d "${srcdir}/console-setup" ]]
+    then
+        cd console-setup
+    elif [[ -d "${srcdir}/console-setup-${pkgver}" ]]
+    then 
+        cd console-setup-${pkgver} 
+    else
+	echo "Source directory not found.".
+	exit 1
+    fi
+
+
+    if [[ ${?} != 0 ]]
+    then
+        cd console-setup-${pkgver}
+    fi
+
     install -d ${pkgdir}/usr/bin/
     install -m755 Keyboard/ckbcomp ${pkgdir}/usr/bin/
 }
