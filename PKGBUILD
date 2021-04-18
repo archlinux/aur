@@ -1,11 +1,10 @@
-# Maintainer: chendaniely <chendaniely@gmail.com>
-# Contributor: Conor Anderson <conor@conr.ca>
+# Maintainer: Doccrazy <mpiepk@gmail.com>
 
 pkgname=stash-electron-git
 _pkgname=${pkgname%-git}
 _appname=Stash
 pkgver=1.2.3pre
-pkgrel=9
+pkgrel=10
 pkgdesc="Stash Team Secret Manager"
 url='https://github.com/Doccrazy/stash-electron'
 arch=('x86_64')
@@ -13,7 +12,7 @@ license=('GPL-3.0')
 depends=('alsa-lib' 'gconf' 'gtk3' 'libxss' 'libxtst' 'nss' 'libsecret' 'libcurl-gnutls')
 conflicts=('stash-electron')
 
-source=("${pkgname}_${pkgver}-${pkgrel}_amd64.deb::https://bintray.com/doccrazy/deb/download_file?file_path=${pkgname}_${pkgver}-${pkgrel}_amd64.deb"
+source=("${pkgname}_${pkgver}-${pkgrel}_amd64.deb::https://github.com/Doccrazy/stash-electron-snapshots/releases/download/v${pkgver}-snapshot.${pkgrel}/${pkgname}_${pkgver}-${pkgrel}_amd64.deb"
         "LICENSE")
 sha256sums=('5a898a73e1f23281108f2d6b4ef8b63f9874df314a1057531d4d4504b34ff543'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
