@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.7.2](#1-7-2)
 * [1.7.1](#1-7-1)
 * [1.7.0](#1-7-0)
 * [1.6.4](#1-6-4)
@@ -22,6 +23,53 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.7.2
+
+### Added
+
+* URxvt OSC-11 extension to set background alpha
+  (https://codeberg.org/dnkl/foot/issues/436).
+* OSC 17/117/19/119 - change/reset selection background/foreground
+  color.
+* `box-drawings-uses-font-glyphs=yes|no` option to `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/430).
+
+
+### Changed
+
+* Underline cursor is now rendered below text underline
+  (https://codeberg.org/dnkl/foot/issues/415).
+* Foot now tries much harder to keep URL jump labels inside the window
+  geometry (https://codeberg.org/dnkl/foot/issues/443).
+* `bold-text-in-bright` may now be set to `palette-based`, in which
+  case it will use the corresponding bright palette color when the
+  color to brighten matches one of the base 8 colors, instead of
+  increasing the luminance
+  (https://codeberg.org/dnkl/foot/issues/449).
+
+
+### Fixed
+
+* Reverted _"Consumed modifiers are no longer sent to the client
+  application"_ (https://codeberg.org/dnkl/foot/issues/425).
+* Crash caused by a double free originating in `XTSMGRAPHICS` - set
+  number of color registers
+  (https://codeberg.org/dnkl/foot/issues/427).
+* Wrong action referenced in error message for key binding collisions
+  (https://codeberg.org/dnkl/foot/issues/432).
+* OSC 4/104 out-of-bounds accesses to the color table. This was the
+  reason pywal turned foot windows transparent
+  (https://codeberg.org/dnkl/foot/issues/434).
+* PTY not being drained when the client application terminates.
+* `auto_left_margin` not being limited to `cub1`
+  (https://codeberg.org/dnkl/foot/issues/441).
+
+
+### Contributors
+
+* [cglogic](https://codeberg.org/cglogic)
 
 
 ## 1.7.1
