@@ -67,8 +67,8 @@ DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
 MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
                   # ImageMagick, like flash, is a bug ridden pest that 
-		  # won't die;  yet it is useful if you know what you 
-		  #are doing.
+		              # won't die;  yet it is useful if you know what you 
+		              #are doing.
                   # -->>If you just *believe* you need it, you don't.<<--
 NOGZ="YES"        # Don't compress .el files.
 FAST_BOOT=        # Only native-compile the bare minimum. Intended for use with
@@ -277,8 +277,8 @@ fi
   #
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
-  #
-  # use 12 threads to compile
+
+  # Use all the thread in your CPU for compilation
   if [[ $FAST_BOOT == "YES" ]]; then
     make -j$(nproc) NATIVE_FAST_BOOT=1
   else
