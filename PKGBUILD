@@ -5,14 +5,14 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r13.g17d14c88'
+pkgver='5.6.0.beta.5.r124.ge3898e2f'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
 depends=('electron10' 'libxkbfile')
-makedepends=('git' 'npm' 'python' 'python2')
+makedepends=('git' 'npm6' 'python' 'python2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -62,14 +62,15 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
+	# patch --forward -p1 < '../react-version.diff'
 
 	# Build recipe archives
 	cd "$srcdir/$_sourcedirectory/recipes/"
 	HOME="$srcdir/$_homedirectory" npm install
 	HOME="$srcdir/$_homedirectory" npm run package
-	cd "$srcdir/$_sourcedirectory/"
 
 	# Prepare dependencies
+	cd "$srcdir/$_sourcedirectory/"
 	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
 
 	# Build node-sass manually for platforms where pre-compiled binaries are not available
