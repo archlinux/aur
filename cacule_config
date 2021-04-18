@@ -3,7 +3,9 @@
 configure() {
 echo "Enable CacULE CPU scheduler..."
 scripts/config --enable CONFIG_CACULE_SCHED
-scripts/config --set-val CONFIG_NR_CPUS "12"
+scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+scripts/config --disable CONFIG_SCHED_AUTOGROUP
+#scripts/config --set-val CONFIG_NR_CPUS "12"
 echo "General Setup"
 scripts/config --disable CONFIG_SECURITY
 scripts/config --disable CONFIG_HARDENED_USERCOPY
@@ -34,19 +36,12 @@ scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
 scripts/config --enable CONFIG_PREEMPT
 scripts/config --enable CONFIG_PREEMPT_COUNT
 scripts/config --enable CONFIG_PREEMPTION
-echo "Set CPU DEVFREQ GOV CONFIG_DEVFREQ_GOV for performance"
-scripts/config --disable CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND
-scripts/config --undefine CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND
-scripts/config --disable CONFIG_DEVFREQ_GOV_POWERSAVE
-scripts/config --disable CONFIG_DEVFREQ_GOV_USERSPACE
-scripts/config --disable CONFIG_DEVFREQ_GOV_PASSIVE
-scripts/config --enable CONFIG_DEVFREQ_GOV_PERFORMANCE
 echo "General architecture-dependent options Cacule"
 scripts/config --disable CONFIG_KPROBES
 scripts/config --disable CONFIG_STACKPROTECTOR
 scripts/config --disable CONFIG_VMAP_STACK
 echo "Kernel hacking Cacule"
-    scripts/config --disable CONFIG_FTRACE
+scripts/config --disable CONFIG_FTRACE
 scripts/config --disable CONFIG_DEBUG_KERNEL
 scripts/config --disable CONFIG_PAGE_EXTENSION
 scripts/config --disable CONFIG_PRINTK_TIME
@@ -97,14 +92,9 @@ scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
 scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
 echo "Set module compression to ZSTD"
 scripts/config --enable CONFIG_MODULE_COMPRESS
-scripts/config --disable CONFIG_MODULE_COMPRESS_GZIP
 scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
 scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-echo "Enable CONFIG_STACK_VALIDATION"
-scripts/config --enable CONFIG_STACK_VALIDATION
-echo "Enable IKCONFIG"
-scripts/config --enable CONFIG_IKCONFIG
-scripts/config --enable CONFIG_IKCONFIG_PROC
+scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
 plain ""
  plain "#########################################"
  plain "Disable debug options?"
@@ -309,57 +299,6 @@ plain ""
    scripts/config --disable CONFIG_BCMA_DEBUG
  fi
  sleep 2s
- plain ""
-plain "#########################################"
-plain "Set timer frequency"
-plain ""
-plain "100 HZ : 100 Hz is a typical choice for servers, SMP and NUMA systems"
-plain "with lots of processors that may show reduced performance if"
-plain "too many timer interrupts are occurring."
-plain ""
-plain "250 HZ : 250 Hz is a good compromise choice allowing server performance"
-plain "while also showing good interactive responsiveness even"
-plain "on SMP and NUMA systems. If you are going to be using NTSC video"
-plain "or multimedia, selected 300Hz instead."
-plain ""
-plain "300 HZ : 300 Hz is a good compromise choice allowing server performance"
-plain "while also showing good interactive responsiveness even"
-plain "on SMP and NUMA systems and exactly dividing by both PAL and"
-plain "NTSC frame rates for video and multimedia work."
-plain ""
-plain "750 HZ : 750 Hz is a balanced timer frequency. Provides fast interactivity"
-plain "on desktops with good smoothness without increasing CPU power"
-plain "consumption and sacrificing the battery life on laptops."
-plain ""
-plain "1000 HZ : 1000 Hz is the preferred choice for desktop systems and other"
-plain "systems requiring fast interactive responses to events."
-plain ""
-read -rp "`echo $' > 1.100\n > 2.250\n > 3.300\n > 4.750\n > 5.1000\n > Default (1000)\nchoice[1-6]: '`" _timer_freq
-if [[ "$_timer_freq" = "1" ]]; then
-  msg2 "Set timer frequency to 100HZ"
-  scripts/config --enable CONFIG_HZ_100
-  scripts/config --set-val CONFIG_HZ 100
-elif [[ "$_timer_freq" = "2" ]]; then
-  msg2 "Set timer frequency to 250HZ"
-  scripts/config --enable CONFIG_HZ_250
-  scripts/config --set-val CONFIG_HZ 250
-elif [[ "$_timer_freq" = "3" ]]; then
-  msg2 "Set timer frequency to 300HZ"
-  scripts/config --enable CONFIG_HZ_300
-  scripts/config --set-val CONFIG_HZ 300
-elif [[ "$_timer_freq" = "4" ]]; then
-  msg2 "Set timer frequency to 750HZ"
-  scripts/config --enable CONFIG_HZ_750
-  scripts/config --set-val CONFIG_HZ 750
-elif [[ "$_timer_freq" = "5" ]]; then
-  msg2 "Set timer frequency to 1000HZ"
-  scripts/config --enable CONFIG_HZ_1000
-  scripts/config --set-val CONFIG_HZ 1000
-else
-  msg2 "Set timer frequency to 1000HZ"
-  scripts/config --enable CONFIG_HZ_1000
-  scripts/config --set-val CONFIG_HZ 1000
-fi
 
 sleep 2
  plain ""
