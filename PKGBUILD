@@ -4,12 +4,12 @@
 
 pkgname='osu'
 pkgver='20210316'
-pkgrel=2
+pkgrel=3
 pkgdesc='A free-to-win rhythm game'
 arch=('i686' 'x86_64')
 url='https://osu.ppy.sh'
 license=('custom')
-depends=('wine' 'winetricks' 'lib32-gnutls' 'lib32-libxcomposite')
+depends=('wine' 'winetricks' 'lib32-gnutls' 'lib32-libxcomposite' 'lib32-gst-plugins-base-libs')
 makedepends=('icoutils')
 optdepends=('pipewire-pulse: low-latency audio backend')
 source=("${pkgname}-installer.exe::https://m1.ppy.sh/r/osu!install.exe"

@@ -1,7 +1,7 @@
 pkgbase = osu
 	pkgdesc = A free-to-win rhythm game
 	pkgver = 20210316
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osu.ppy.sh
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = osu
 	depends = winetricks
 	depends = lib32-gnutls
 	depends = lib32-libxcomposite
+	depends = lib32-gst-plugins-base-libs
 	optdepends = pipewire-pulse: low-latency audio backend
 	source = osu-installer.exe::https://m1.ppy.sh/r/osu!install.exe
 	source = osu-terms.md::https://raw.githubusercontent.com/ppy/osu-wiki/master/wiki/Legal/Terms/en.md
