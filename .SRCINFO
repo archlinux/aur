@@ -1,4 +1,4 @@
-pkgbase = dot
+pkgbase = dot-bin
 	pkgdesc = Dot Browser is a privacy-conscious web browser based on Firefox. (Binary)
 	pkgver = 0.1
 	pkgrel = 0
@@ -17,15 +17,14 @@ pkgbase = dot
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = dot=0.1
 	conflicts = dot
 	conflicts = dot-git
-	source = https://download.dothq.co/dot/releases/linux/x86/raw
-	source = dot.sh
+	source = dot-0.1.tar.bz2::https://download.dothq.co/dot/releases/linux/x86/raw
 	source = dot.desktop
+	source = dot.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = dot
+pkgname = dot-bin
 

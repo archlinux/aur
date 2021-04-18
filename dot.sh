@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/dot/dot --class "Dot" --name "Dot" "$@"
+exec /opt/dot-bin/dot --class "Dot" --name "Dot" "$@"

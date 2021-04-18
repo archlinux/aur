@@ -1,5 +1,5 @@
 # Maintainer: Kieran <kieran at dothq dot co>
-pkgname=dot
+pkgname=dot-bin
 _pkgname=dot
 pkgver=0.1
 pkgrel=0
@@ -14,11 +14,10 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-provides=("dot=$pkgver")
 conflicts=('dot' 'dot-git')
-source=(https://download.dothq.co/dot/releases/linux/x86/raw
-        $_pkgname.sh
-        $_pkgname.desktop)
+source=("$_pkgname-$pkgver.tar.bz2::https://download.dothq.co/dot/releases/linux/x86/raw"
+        "$_pkgname.desktop"
+        "$_pkgname.sh")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
