@@ -1,0 +1,14 @@
+diff --git a/synology-cloud-station-drive b/synology-cloud-station-drive
+index cdf04b7..9c291d3 100755
+--- a/usr/bin/synology-cloud-station-drive
++++ b/usr/bin/synology-cloud-station-drive
+@@ -59,7 +59,7 @@ gracefull_stop_service()
+ 
+ start()
+ {
+-	env "LD_LIBRARY_PATH=$LIB_PATH" "$BIN_PATH" &
++	env QT_QPA_PLATFORM=xcb "LD_LIBRARY_PATH=$LIB_PATH" "$BIN_PATH" &
+ }
+ 
+ stop()
+
