@@ -1,11 +1,10 @@
 pkgbase = dnf-plugins-core
 	pkgdesc = Core DNF Plugins
-	pkgver = 4.0.19
+	pkgver = 4.0.21
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-core
 	arch = any
 	license = GPL2
-	checkdepends = python-nose
 	makedepends = cmake>=3.13
 	makedepends = python-sphinx
 	depends = dnf>=4.2.22
@@ -20,8 +19,8 @@ pkgbase = dnf-plugins-core
 	backup = etc/dnf/plugins/post-transaction-actions.conf
 	backup = etc/dnf/plugins/versionlock.conf
 	backup = etc/dnf/plugins/versionlock.list
-	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/4.0.19/dnf-plugins-core-4.0.19.tar.gz
-	md5sums = ab4a9b6919a70943d45404943ae49a21
+	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/4.0.21/dnf-plugins-core-4.0.21.tar.gz
+	md5sums = f8ffafb4a572e8e598ad7cb1cbbc969a
 
 pkgname = dnf-plugins-core
 
