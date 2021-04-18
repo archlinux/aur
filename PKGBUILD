@@ -29,5 +29,5 @@ package() {
   cd "$srcdir/"
 
   install -Dm 644 grimshot.1 "$pkgdir/usr/share/man/man1/grimshot.1"
-  install -Dm 755 grimshot "$pkgname-$pkgver/usr/bin/grimshot"
+  install -Dm 755 $pkgname-$pkgver "$pkgdir/usr/bin/grimshot"
 }
