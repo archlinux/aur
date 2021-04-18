@@ -2,7 +2,7 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 _pkgname=pixel-saver
 pkgname=gnome-shell-extension-$_pkgname-git
-pkgver=1.24.r7.g2c63d8c
+pkgver=1.24.r14.g1d78880
 pkgrel=1
 pkgdesc="Saves pixels by fusing activity bar and title bar in a natural way"
 arch=('any')
