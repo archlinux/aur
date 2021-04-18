@@ -1,0 +1,20 @@
+<schemalist>
+  <enum id="org.gnome.settings-daemon.GsdFontAntialiasingMode">
+    <value nick="none" value="0"/>
+    <value nick="grayscale" value="1"/>
+    <value nick="rgba" value="2"/>
+  </enum>
+  <enum id="org.gnome.settings-daemon.GsdFontHinting">
+    <value nick="none" value="0"/>
+    <value nick="slight" value="1"/>
+    <value nick="medium" value="2"/>
+    <value nick="full" value="3"/>
+  </enum>
+  <enum id="org.gnome.settings-daemon.GsdFontRgbaOrder">
+    <value nick="rgba" value="0"/>
+    <value nick="rgb" value="1"/>
+    <value nick="bgr" value="2"/>
+    <value nick="vrgb" value="3"/>
+    <value nick="vbgr" value="4"/>
+  </enum>
+</schemalist>

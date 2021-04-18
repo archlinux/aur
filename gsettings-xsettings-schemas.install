@@ -1,16 +1,23 @@
-post_upgrade() {
-  echo
-  echo "========================================================"
-  echo "/                                                      /"
-  echo "/  gsettings-xsettings-schemas is not needed anymore!  /"
-  echo "/                                                      /"
-  echo "/  Update gsetttings-desktop-schemas to v40.0          /"
-  echo "/  and remove gsettings-xsettings-schemas.             /"
-  echo "/                                                      /"
-  echo "========================================================"
-  echo
-}
-
 post_install() {
-  post_upgrade
+  echo
+  echo "======================================================================"
+  echo "/                                                                    /"
+  echo "/  gsettings-xsettings-schemas is not needed anymore!                /"
+  echo "/                                                                    /"
+  echo "/  Since v40.0, gsetttings-desktop-schemas supplies these schemas,   /"
+  echo "/  gtk 3.24.28 and newer can pick up the updated schemas.            /"
+  echo "/                                                                    /"
+  echo "/  You only need this package if you're running an app that brings   /"
+  echo "/  its own outdated libgtk3, and that you can't override or replace  /"
+  echo "/  it with the system's libgtk3.                                     /"
+  echo "/                                                                    /"
+  echo "/  Installing this package might have an undesired effect on the     /"
+  echo "/  xdg-desktop-portal service, and if it breaks then gtk3 apps won't /"
+  echo "/  be able to start or will be slow to start.                        /"
+  echo "/  So quickly remove this package if you're using a display manager  /"
+  echo "/  (e.g. gdm), and don't know what to do when you see the virtual    /"
+  echo "/  console's login prompt (getty).                                   /"
+  echo "/                                                                    /"
+  echo "======================================================================"
+  echo
 }
