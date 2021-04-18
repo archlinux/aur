@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish@galactica.pw>
 
 pkgname=lbrycrd
-pkgver=0.17.3.2
+pkgver=0.19.1.3
 pkgrel=1
 pkgdesc='Blockchain daemon that provides the digital content namespace for the LBRY protocol'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,15 +12,9 @@ optdepends=('miniupnpc' 'qt5-base' 'protobuf' 'qrencode')
 makedepends=('boost')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lbryio/lbrycrd/archive/v${pkgver}.tar.gz"
 	${pkgname}.service
-	${pkgname}.conf
-	include.patch)
+	${pkgname}.conf)
 install=$pkgname.install
 backup=("etc/${pkgname}.conf")
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < $srcdir/include.patch
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -50,7 +44,6 @@ check() {
   src/test/test_lbrycrd
 }
 
-sha256sums=('1ac547aed45272ad4f5ff557407b804b37fc54b5e0b0bc0addedd2c9cb00a970'
+sha256sums=('4812afef81a2f817509eb196b8ecc5d59333100785506cecf63779750bea330a'
             'd6424f9341ed1b21774fb9341721044cc737e7d633641cb92781773c2b2f77a8'
-            'b97c87108220abf125421eef77f12718ffcff75c22765a0933858dcaf547f32c'
-            'a29e666e626cf20df809a689fcb76e0950b7c2fbd6fb41eaccb71de1fbef3c51')
+	    'b97c87108220abf125421eef77f12718ffcff75c22765a0933858dcaf547f32c')
