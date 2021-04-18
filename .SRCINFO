@@ -1,0 +1,38 @@
+pkgbase = linux-zen-lts510
+	pkgdesc = Linux ZEN
+	pkgver = 5.10.18
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/zen-kernel/zen-kernel#branch=5.10/master
+	source = config
+	source = choose-gcc-optimization.sh
+	sha256sums = SKIP
+	sha256sums = 72bf2d041f672dbcaa7951df7e3241bcbb4e1db3fb7c3d36a24f62c2085cd775
+	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
+
+pkgname = linux-zen-lts510
+	pkgdesc = The Linux ZEN kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = 
+
+pkgname = linux-zen-lts510-headers
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel
+
