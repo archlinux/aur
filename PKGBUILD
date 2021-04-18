@@ -4,7 +4,7 @@
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
 pkgver=3.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 makedepends=('python2' 'python' 'python-pbr' 'python2-pbr')
@@ -24,6 +24,7 @@ prepare() {
 }
 
 build() {
+  export PYTHONHASHSEED=0
   cd "$srcdir/mock-$pkgver"
   python3 setup.py build
 
