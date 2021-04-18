@@ -1,0 +1,3 @@
+post_install() {
+	echo "The chia source code is installed in /opt/chia-blockchain."
+}
