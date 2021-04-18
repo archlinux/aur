@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=parsergen
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
 epoch=
 pkgdesc='Self-hosted LR parser generator in C++20'
