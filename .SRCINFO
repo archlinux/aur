@@ -1,0 +1,14 @@
+pkgbase = minetest-nodecore
+	pkgdesc = Original, immersive puzzle/adventure game with NO popup GUIs, minimal HUDs.
+	pkgver = 7333
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Warr1024/nodecore/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	options = !strip
+	source = nodecore-7333.zip::https://content.minetest.net/packages/Warr1024/nodecore/releases/7333/download/
+	sha256sums = 9cf9023fddc3d1e89c4fc8dc85e98cd028a6648058ecc8d9cd21bff8a4edf5ed
+
+pkgname = minetest-nodecore
+
