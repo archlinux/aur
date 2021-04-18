@@ -1,12 +1,16 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = docker-color-output-git
+	pkgdesc = Colors for Docker CLI
+	pkgver = v2.0.0.r4.g9b9d14a
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/devemio/docker-color-output
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = unknown
+	makedepends = git
+	depends = go
+	provides = docker-color-output
+	conflicts = docker-color-output
+	source = git://github.com/devemio/docker-color-output#branch=master
+	sha512sums = SKIP
 
-pkgname = yarxi
+pkgname = docker-color-output-git
 
