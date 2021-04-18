@@ -1,0 +1,15 @@
+pkgbase = ideaseed-git
+	pkgdesc = Note down your ideas and get them to the right place, without switching away from your terminal (bleeding edge)
+	pkgver = r7.4f9c279
+	pkgrel = 1
+	url = https://github.com/ewen-lbh/ideaseed
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	source = git+https://github.com/ewen-lbh/ideaseed
+	md5sums = SKIP
+
+pkgname = ideaseed-git
+
