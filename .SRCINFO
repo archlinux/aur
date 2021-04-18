@@ -1,0 +1,18 @@
+pkgbase = gtkhash-nautilus-git
+	pkgdesc = A Nautilus filemanager plugin for computing message digests or checksums (development version).
+	pkgver = v1.4.r64.g3afea16
+	pkgrel = 1
+	url = https://github.com/tristanheaven/gtkhash
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtkhash-git
+	depends = libnautilus-extension
+	provides = gtkhash-nautilus
+	conflicts = gtkhash-nautilus
+	source = gtkhash::git+https://github.com/tristanheaven/gtkhash.git
+	md5sums = SKIP
+
+pkgname = gtkhash-nautilus-git
+
