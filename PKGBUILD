@@ -24,7 +24,6 @@ pkgver() {
 build() {
     cd "${srcdir}/coc.nvim"
     yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
-    yarn run build
 }
 
 package() {
