@@ -2,7 +2,7 @@
 
 pkgname=quickhash-gui-bin
 _pkgname=quickhash
-_pkgver=3-1-0
+_pkgver=3-2-0
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="QuickHash is an open-source Linux GUI that enables hashing of files, text, entire folder trees of files, and physical disks"
@@ -12,8 +12,8 @@ license=(GPL2)
 depends=(gtk2)
 provides=(quickhash-gui)
 conflicts=(quickhash-gui)
-source=("quickhash-gui-${pkgver}.zip::https://quickhash-gui.org/download/quickhash-v${_pkgver}-debian-packages-for-linux/?wpdmdl=1953")
-sha256sums=('f47a85f3af58b5e053af8998a041353ebd87cbaf06a3fb42d83f7899e4ff1fd7')
+source=("quickhash-gui-${pkgver}.zip::https://quickhash-gui.org/download/quickhash-v${_pkgver}-debian-packages-for-linux/?wpdmdl=2025")
+sha256sums=('bf1c6e4d8e273a81381bfadf96d0746d7e65f5cc77757df92e88533eaa6d72c6')
 
 package() {
 if [[ "${CARCH}" = 'i686' ]]; then
