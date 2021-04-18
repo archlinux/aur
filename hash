@@ -1,0 +1,4 @@
+for ARCH in linux_amd64 linux_armv5 linux_armv6 linux_armv7 linux_arm64
+do
+  curl -sSL https://github.com/caddyserver/caddy/releases/download/v${PKGVER}/caddy_${PKGVER}_${ARCH}.tar.gz | sha256sum | awk '{print $1}'
+done

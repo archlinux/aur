@@ -19,5 +19,5 @@ sha256sums_aarch64=('95176dd77355c3d36d64303d40947d164b130ecacc6d8a8ad65ff18b527
 url='https://caddyserver.com'
 
 package() {
-  install -D -m755 caddy "$pkgdir/usr/bin/caddy"
+  install -D -m 755 caddy "$pkgdir/usr/bin/caddy"
 }
