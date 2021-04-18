@@ -1,7 +1,7 @@
 pkgbase = pyalpm-next-git
 	pkgdesc = Python 3 bindings for libalpm (Git version, compatible with pacman-git)
 	pkgver = 0.9.2.r6.g325bbe9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.archlinux.org/archlinux/pyalpm
 	arch = x86_64
 	license = GPL

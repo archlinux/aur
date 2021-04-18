@@ -6,7 +6,7 @@
 
 pkgname=pyalpm-next-git
 pkgver=0.9.2.r6.g325bbe9
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3 bindings for libalpm (Git version, compatible with pacman-git)'
 arch=(x86_64)
 url=https://gitlab.archlinux.org/archlinux/pyalpm
@@ -34,5 +34,5 @@ check() {
 
 package() {
     cd ${pkgname%-next-git}
-    python setup.py install --root=${pkgdir}
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
