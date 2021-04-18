@@ -13,9 +13,6 @@ provides=(${pkgname::-9})
 makedepends=(
   cmake
   ros-build-tools
-  pcl
-  cuda
-  eigen
 )
 
 optdepends=(
@@ -37,7 +34,7 @@ source=(
 sha256sums=(
   'SKIP'
   'd8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb'
-  'SKIP'
+  'b4855b9c32f82c0c4fece080b87efae9569d9fd919925c652cfb937826f58911'
 )
  
 pkgver() {

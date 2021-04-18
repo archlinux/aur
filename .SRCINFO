@@ -11,9 +11,6 @@ pkgbase = ros-noetic-fast-gicp-cuda-git
 	license = BSD-3-Clause License
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = pcl
-	makedepends = cuda
-	makedepends = eigen
 	depends = pcl
 	depends = cuda
 	depends = eigen
@@ -24,7 +21,7 @@ pkgbase = ros-noetic-fast-gicp-cuda-git
 	source = CMakeLists.patch
 	sha256sums = SKIP
 	sha256sums = d8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb
-	sha256sums = SKIP
+	sha256sums = b4855b9c32f82c0c4fece080b87efae9569d9fd919925c652cfb937826f58911
 
 pkgname = ros-noetic-fast-gicp-cuda-git
 
