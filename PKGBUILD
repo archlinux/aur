@@ -55,10 +55,10 @@ package() {
     #ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux64.so natives/linux
     #ln -sf /usr/share/lwjgl2/native/linux/liblwjgl.so natives/linux
     #ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux.so natives/linux
-
+    
+    chmod a+w "$srcdir" # Terrible permissions hack to get the game to start
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
-    # install -Dm 755 "${srcdir}" "$pkgdir/usr/share/${pkgname}"
-
+    
     # Copy this file (not entirely sure about this, but doesn't start without it)
     #install -Dm 644 "${srcdir}/rendering.cfg" "${pkgdir}/usr/share/${pkgname}/configs/engine/rendering.cfg"
     #rm "${pkgdir}/usr/share/${pkgname}/rendering.cfg"
