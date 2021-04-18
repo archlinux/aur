@@ -35,7 +35,7 @@ pkgver() {
     local _ver=$(sed -n 's/__version__ = "\([^"]\+\)"/\1/p'  $_name/version.py)
     if git rev-parse $_ver 2>/dev/null 1>/dev/null
     then
-	local _num=$(git describe --tags --long | sed -n 's/^[^-]\+-\([0-9]+\)-[^-]\+/\1/p')
+	local _num=$(git describe --tags --long | sed -n 's/^[^-]\+-\([0-9]\+\)-[^-]\+/\1/p')
     else
 	local _num=0  # relese not tagged, so don't know cmmmit height from last tag
     fi
