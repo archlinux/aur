@@ -1,16 +1,16 @@
 # Maintainer: Ben Aaron Goldberg <ben@benaaron.dev>
 
 pkgname=plasma5-runners-poki-launcher
-pkgver=0.6.0
-pkgrel=4
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="An application launcher that shows recently used apps first"
-arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://sr.ht/~zethra/poki-launcher/"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~zethra/poki-launcher/archive/$pkgver.tar.gz")
 depends=('krunner')
 makedepends=('rust' 'cargo')
-sha256sums=("5697de9abbf58634586c35baf212b1a71f7a3f8b63263ffa388aca91a2a90e9e")
+sha256sums=("e0578de1a3916efdd962f24bc8c8fa3a26916e97e56627ffeeb84493f8b206e6")
 
 build() {
     cd "poki-launcher-$pkgver"
@@ -32,6 +32,6 @@ package() {
         "$pkgdir/usr/share/dbus-1/services/dev.benaaron.poki-krunner.service"
     install -Dm644 "poki-krunner/plasma-runner-poki-launcher.desktop" \
         "$pkgdir/usr/share/krunner/dbusplugins/plasma-runner-poki-launcher.desktop"
-	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 "poki-launcher.hjson" "$pkgdir/usr/share/doc/$pkgname/examples/poki-launcher.hjson"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "poki-launcher.hjson" "$pkgdir/usr/share/doc/$pkgname/examples/poki-launcher.hjson"
 }
