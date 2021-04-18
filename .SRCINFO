@@ -1,6 +1,6 @@
 pkgbase = opencoarrays
 	pkgdesc = A transport layer for coarray Fortran compilers.
-	pkgver = 2.9.0
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = http://www.opencoarrays.org/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = opencoarrays
 	makedepends = cmake
 	depends = mpich
 	depends = gcc-fortran
-	source = https://github.com/sourceryinstitute/opencoarrays/releases/download/2.9.0/opencoarrays-2.9.0.tar.gz
-	source = https://github.com/sourceryinstitute/opencoarrays/releases/download/2.9.0/opencoarrays-2.9.0.tar.gz.asc
+	source = https://github.com/sourceryinstitute/opencoarrays/releases/download/2.9.2/opencoarrays-2.9.2.tar.gz
+	source = https://github.com/sourceryinstitute/opencoarrays/releases/download/2.9.2/opencoarrays-2.9.2.tar.gz.asc
 	validpgpkeys = 1DB1B5EDE32122B28E56810DCB21118C92A64702
 	validpgpkeys = 9DB31CF0FF5209BF742555701C3986CA8C98C2DE
-	sha256sums = 0efaf5946955e449c4ee84036c950841dbc5f2546e0e20e7422fd70605720333
+	sha256sums = 6c200ca49808c75b0a2dfa984304643613b6bc77cc0044bee093f9afe03698f7
 	sha256sums = SKIP
 
 pkgname = opencoarrays
