@@ -2,29 +2,27 @@
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
-_vers=v1.7.24
-pkgver=1.7.24.r0.gac15f2755
+pkgver=1.7.25.r21.ge4c9444fe
 pkgrel=1
-pkgname=('element-web-git' 'element-desktop-git')
-pkgdesc="A glossy Matrix collaboration client for the desktop."
-arch=('x86_64')
+pkgname=("element-web-git" "element-desktop-git")
+pkgdesc="A glossy Matrix collaboration client for desktop."
+arch=("x86_64")
 url="https://element.io"
-license=('Apache')
-depends=('electron')
-makedepends=('git' 'nodejs' 'jq' 'yarn' 'npm' 'python' 'rust' 'sqlcipher' 'electron')
-provides=('element-desktop')
+license=("Apache")
+depends=("electron")
+makedepends=("git" "nodejs" "jq" "yarn" "npm" "python" "rust" "sqlcipher" "electron")
+provides=("${pkgbase%-git}")
+conflicts=("${pkgbase%-git}")
 backup=("etc/element/config.json")
-_giturl='git://github.com/vector-im'
-source=("element-web::${_giturl}/element-web#tag=${_vers}"
-        "element-desktop::${_giturl}/element-desktop.git#tag=${_vers}"
+_giturl="git+https://github.com/vector-im"
+source=("element-web::${_giturl}/element-web.git"
+        "element-desktop::${_giturl}/element-desktop.git"
         "element-desktop.desktop"
-        "element-desktop.sh"
-	"element-web-reskindex.patch")
-sha256sums=('SKIP'
-            'SKIP'
-            '81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d'
-            'e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f'
-            'f4497e40fecb224ca8f1af5187250f77000e5ff9f811d24390b18d37851b4460')
+        "element-desktop.sh")
+sha256sums=("SKIP"
+            "SKIP"
+            "81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d"
+            "e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f")
 
 
 pkgver() {
@@ -48,10 +46,13 @@ prepare() {
   # Disable auto updating
   sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/app/config.json
 
-  #Patch for reskindex: https://github.com/vector-im/element-web/issues/15751#issuecomment-731247116
-  patch --forward --strip=1 --input="${srcdir}/element-web-reskindex.patch"
-
   yarn install
+
+  # Workaround for resolve './component-index' in matrix-react-sdk\src error:
+  # https://github.com/vector-im/element-web/issues/16555#issuecomment-805456702
+  yarn upgrade matrix-react-sdk
+  cd node_modules/matrix-react-sdk
+  yarn reskindex
 }
 
 build() {
@@ -83,7 +84,7 @@ package_element-desktop-git() {
   depends=("element-web-git=${pkgver}" electron sqlcipher)
   provides=(element-desktop)
   conflicts=(element-desktop)
-  backup=('etc/element/config.json')
+  backup=("etc/element/config.json")
 
   cd element-desktop
 
