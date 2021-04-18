@@ -1,7 +1,7 @@
 pkgbase = fuzzel
 	pkgdesc = Application launcher for wlroots based Wayland compositors
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/fuzzel
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = fuzzel
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
+	makedepends = wayland-protocols
 	makedepends = tllist
 	depends = libxkbcommon
 	depends = wayland
