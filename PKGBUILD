@@ -54,7 +54,7 @@ package() {
 
     local _ver=$(echo $pkgver | sed -n 's/^\(.*\)\.r[0-9]\+\.g[0-9a-f]\+$/\1/p')
 
-    flit build
+    python -m flit build
     cd dist/
     tar xf ${_name}-${_ver}.tar.gz
     cd  ${_name}-${_ver}
