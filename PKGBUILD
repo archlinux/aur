@@ -5,7 +5,7 @@
 
 pkgname=moneymanagerex-git
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -19,16 +19,14 @@ conflicts=('moneymanagerex')
 source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
 sha256sums=('SKIP')
 
-get_latest_tag="curl --silent https://api.github.com/repos/${pkgname::14}/${pkgname::14}/releases/latest | grep '"tag_name":' | awk -F[\"] '{print $4}'"
-
 pkgver() {
   cd "${pkgname%-git}"
-  eval "${get_latest_tag}"
+  curl --silent https://api.github.com/repos/${pkgname::14}/${pkgname::14}/releases/latest | grep '"tag_name":' | awk -F[\"] '{print $4}'
 }
 
 prepare() {
   cd "${pkgname%-git}"
-  git checkout tags/$(eval "${get_latest_tag}")
+  git checkout tags/$(curl --silent https://api.github.com/repos/${pkgname::14}/${pkgname::14}/releases/latest | grep '"tag_name":' | awk -F[\"] '{print $4}')
   git submodule update --init
   mkdir -p build
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
