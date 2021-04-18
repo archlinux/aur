@@ -5,14 +5,14 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='6.1.3'
+pkgver='6.1.7'
 pkgrel=1
 arch=('x86_64')
 depends=(
-	'libutempter' 'libunwind' 'openssl'
+	'libutempter' 'libunwind' 'openssl' 'libsodium' 'protobuf' 'curl'
 )
 makedepends=(
-	'ninja' 'cmake' 'tar' 'curl' 'zip' 'unzip'
+	'cmake'
 )
 url='https://mistertea.github.io/EternalTerminal/'
 license=('Apache')
@@ -21,7 +21,7 @@ source=(
 		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
 sha256sums=(
-		'5eb76a6667b7c8ba13b5cb089221e5fe237e5dde164956af8720ed11a9a38dcd'
+		'ef70076a40a4b14153a3cfdf4539325207330379200a321ceff8d7ac84d30f8d'
 )
 
 prepare() {
@@ -35,7 +35,7 @@ build() {
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build"
 
 	msg2 'Running cmake'
-	cmake ../
+	cmake ../ -DDISABLE_VCPKG=ON
 
 	msg2 "Building ${_ghname}"
 	make
