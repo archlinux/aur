@@ -22,7 +22,7 @@ makedepends=(
 )
 
 optdepends=(
-  openomp
+  openmp
 )
 
 ros_depends=()
