@@ -2,7 +2,7 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 _name=cutter
-pkgname=${_name}-git
+pkgname=rz-${_name}-git
 pkgver=1.10.3.pre.r228.gde30f685
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
@@ -13,7 +13,7 @@ depends=('python' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'pyside2' 'graphviz
 makedepends=('git' 'cmake' 'shiboken2' 'meson' 'ninja')
 depends+=('rizin')
 optdepends=()
-provides=('cutter')
+provides=('rz-cutter')
 backup=()
 source=("${_name}::git://github.com/rizinorg/cutter.git"
         "git://github.com/rizinorg/cutter-translations.git")

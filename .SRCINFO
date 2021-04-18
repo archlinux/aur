@@ -1,4 +1,4 @@
-pkgbase = cutter-git
+pkgbase = rz-cutter-git
 	pkgdesc = A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)
 	pkgver = 1.10.3.pre.r228.gde30f685
 	pkgrel = 1
@@ -29,5 +29,5 @@ pkgbase = cutter-git
 	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = cutter-git
+pkgname = rz-cutter-git
 
