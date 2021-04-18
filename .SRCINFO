@@ -1,13 +1,12 @@
 pkgbase = ulauncher
 	pkgdesc = Application launcher for Linux
-	pkgver = 5.10.0
+	pkgver = 5.11.0
 	pkgrel = 1
 	url = https://ulauncher.io
 	arch = any
 	license = GPL3
 	makedepends = python-distutils-extra
 	depends = gobject-introspection-runtime
-	depends = libappindicator-gtk3
 	depends = libkeybinder3
 	depends = webkit2gtk
 	depends = python-dbus
@@ -19,7 +18,7 @@ pkgbase = ulauncher
 	depends = python-websocket-client
 	provides = ulauncher
 	conflicts = ulauncher
-	source = https://github.com/Ulauncher/Ulauncher/releases/download/5.10.0/ulauncher_5.10.0.tar.gz
+	source = https://github.com/Ulauncher/Ulauncher/releases/download/5.11.0/ulauncher_5.11.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ulauncher
