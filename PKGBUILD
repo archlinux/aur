@@ -3,7 +3,7 @@
 pkgname=webwormhole-git
 _pkgname=${pkgname%-git}
 pkgver=r195.1c8919c
-pkgrel=3
+pkgrel=4
 pkgdesc='WebWormhole creates ephemeral pipes between computers to send files or other data.'
 arch=('x86_64')
 url="https://github.com/saljam/${_pkgname}"
@@ -35,7 +35,7 @@ build() {
     GOOS=js GOARCH=wasm go build -o ./web/webwormhole.wasm ./web
     cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" ./web/wasm_exec.js
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    GO111MODULE=on go build ./cmd/ww
+    go build ./cmd/ww
 }
 
 package() {
