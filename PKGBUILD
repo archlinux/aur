@@ -10,7 +10,7 @@ options=(!strip)
 makedepends=("npm")
 depends=("electron")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "${$pkgname}.desktop" "${$pkgname}.sh")
-sha512sums=("5640346112e259d48df4c2f3e60fdf070a262438612fddcf35bc36dea47710a987def1e816ca839cf5cc195599ce0526d322d371b43339e14ba2aadf43d2a86c")
+sha512sums=("5640346112e259d48df4c2f3e60fdf070a262438612fddcf35bc36dea47710a987def1e816ca839cf5cc195599ce0526d322d371b43339e14ba2aadf43d2a86c" "605f49606eb0656846ac5dc3b97eca0acb3a781b07c71aff1e027935d5e8ea569d290c95d67bd7347ddd133c1643e6f3c6fe36bd1b52f49e528b34a458afe316" "13d651476d302af9d013c04c396c9b8f53114cf05adaf9cd80c0f452a6da8da45751e971cc2a6d2621d1480d04d6ba717aadf52982922ef9bfde867221b51845")
 
 build() {
   unzip -o "v${pkgver}.zip"
