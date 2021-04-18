@@ -17,6 +17,7 @@ pkgbase = dot-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
+	provides = dot
 	conflicts = dot
 	conflicts = dot-git
 	source = dot-0.1.tar.bz2::https://download.dothq.co/dot/releases/linux/x86/raw
