@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=dungeon-revealer-bin
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Web app for tabletop gaming to allow the DM to reveal areas of the game map to players"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "dungeon-revealer.sh"
   "LICENSE"
 )
-md5sums=('99b9484ef48062b5763f19fb35830ce4'
+md5sums=('e4cae3296087df2721c402eeaeb08ebe'
          '045eb0e5977dfea7ccf12097b712ba0f'
          '6c22ecd94b9533c537b70ec0982c5975')
 
