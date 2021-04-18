@@ -1,6 +1,6 @@
 pkgbase = vhba-module-dkms-git
 	pkgdesc = Kernel module that emulates SCSI devices (DKMS, git master)
-	pkgver = 20200106.r41.g655b43d7
+	pkgver = 20210418.r0.gfe75e5f2
 	pkgrel = 1
 	url = http://cdemu.sourceforge.net/
 	install = vhba-module-dkms-git.install
@@ -11,7 +11,7 @@ pkgbase = vhba-module-dkms-git
 	makedepends = linux-headers
 	makedepends = linux
 	depends = dkms
-	provides = VHBA-MODULE=20200106.r41.g655b43d7-1
+	provides = VHBA-MODULE=20210418.r0.gfe75e5f2-1
 	conflicts = VHBA-MODULE
 	source = cdemu::git+https://git.code.sf.net/p/cdemu/code
 	source = 60-vhba.rules
