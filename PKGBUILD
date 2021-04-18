@@ -1,5 +1,6 @@
-# Maintainer: jaltek <post@ezod.de>
-# Owner: Daniel Mason (idanoo) <daniel@m2.nz>
+# Maintainer: teutat3s <teutates@mailbox.org>
+# Contributor: jaltek <post@ezod.de>
+# Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
 _vers=v1.7.24
 pkgver=1.7.24.r0.gac15f2755
