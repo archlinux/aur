@@ -1,0 +1,22 @@
+pkgbase = chia-gui
+	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Also installs GUI, using system electron
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.chia.net/
+	arch = any
+	license = Apache
+	depends = electron11
+	provides = chia
+	provides = chia-gui
+	conflicts = chia
+	conflicts = chia-gui
+	options = !strip
+	source = https://github.com/Chia-Network/chia-blockchain/releases/download/1.0.5/chia-blockchain_1.0.5_amd64.deb
+	source = chia-blockchain.png
+	source = chia-blockchain
+	md5sums = bdc6439e529ae5ace22d7f045836f72c
+	md5sums = 05797ff1f5ef580c7243e0182c822701
+	md5sums = 8853d24b7c76a33a74b235999e270ef8
+
+pkgname = chia-gui
+

@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+electron11 /usr/share/chia-blockchain/app.asar

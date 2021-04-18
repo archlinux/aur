@@ -1,0 +1,6 @@
+src
+pkg
+*.zst
+*.asar
+*.deb
+.directory
