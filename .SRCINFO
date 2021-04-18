@@ -1,6 +1,6 @@
 pkgbase = rbw-git
 	pkgdesc = unofficial bitwarden cli
-	pkgver = 0.3.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://git.tozt.net/rbw
 	arch = i686
