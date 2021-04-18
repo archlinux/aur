@@ -9,7 +9,7 @@ pkgbase = patchup-bin
 	provides = patchup
 	conflicts = patchup
 	source = https://github.com/dezyh/patchup/releases/download/0.1.0/patchup-cli-bin.tar.gz
-	sha256sums = a79dc14273d2ce10d8e3257f45688fed5828cfd30deea0143f170838676cd8a9
+	sha256sums = 2aa6aa6cf8d125a31672765fbfeff079bf41ae39af6ae23477de617449aea3f9
 
 pkgname = patchup-bin
 
