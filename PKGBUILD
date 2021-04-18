@@ -22,7 +22,6 @@ build() {
     cd "${srcdir}/coc.nvim-${_hash}"
     sed -i "3s/=.*/= '${_hash}'/" webpack.config.js
     yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
-    yarn run build
 }
 
 package() {
