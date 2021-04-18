@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r1232.g1808273e1
+pkgver=1.4.0.development.snapshot.004.r45.gbaeddddec
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -15,7 +15,8 @@ arch=('i686' 'x86_64')
 url='https://www.mumble.info'
 license=('BSD')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11' 'libxi'
-         'lsb-release' 'openssl' 'opus' 'qt5-base' 'qt5-svg' 'speex' 'xdg-utils')
+         'lsb-release' 'openssl' 'opus' 'poco' 'qt5-base' 'qt5-svg' 'speex'
+         'xdg-utils')
 makedepends=('alsa-lib' 'avahi' 'boost' 'jack' 'libpulse' 'libsndfile' 'mesa'
              'protobuf' 'python' 'qt5-tools' 'speech-dispatcher' 'cmake' 'git')
 optdepends=('speech-dispatcher: Text-to-Speech support'
