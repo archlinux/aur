@@ -1,0 +1,15 @@
+pkgbase = python-pyjacklib
+	pkgdesc = Python bindings for libjack using ctypes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jackaudio/pyjacklib
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = jack
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyjacklib/pyjacklib-0.1.0.tar.gz
+	sha256sums = 250c6d3881d0932e445648201e90560ebca7668494721d246311155ef0734d24
+
+pkgname = python-pyjacklib
+

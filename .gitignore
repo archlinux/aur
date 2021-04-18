@@ -1,0 +1,6 @@
+pkg/
+src/
+pyjacklib-*.tar.gz
+python-pyjacklib-*.pkg.tar.xz
+python-pyjacklib-*.pkg.tar.zst
+python-pyjacklib-*.src.tar.gz
