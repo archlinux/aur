@@ -1,0 +1,5 @@
+# PackageVersion is added by PKGBUILD
+PackageAuthor=[lidarr](https://aur.archlinux.org/packages/lidarr/)
+UpdateMethod=External
+UpdateMethodMessage=flag [lidarr](https://aur.archlinux.org/packages/lidarr/) [out-of-date](https://aur.archlinux.org/pkgbase/lidarr/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
+Branch=master

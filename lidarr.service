@@ -5,14 +5,8 @@ After=syslog.target network.target
 [Service]
 User=lidarr
 Group=lidarr
-ExecStart=/usr/bin/mono --debug /usr/lib/lidarr/Lidarr.exe -nobrowser -data=/var/lib/lidarr
+ExecStart=/usr/lib/lidarr/bin/Lidarr -nobrowser -data=/var/lib/lidarr
 Type=simple
-TimeoutStopSec=20
-SyslogIdentifier=lidarr
-
-# Lets built in updater work well.
-Restart=on-failure
-KillMode=process
 
 [Install]
 WantedBy=multi-user.target
