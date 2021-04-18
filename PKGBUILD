@@ -8,7 +8,8 @@ arch=(i686 x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
 depends=('glibc')
 license=('GPL')
-source=(ftp://plasma-gate.weizmann.ac.il/pub/grace/src/devel/$pkgname/$pkgname-$pkgver.tar.gz)
+#source=(ftp://plasma-gate.weizmann.ac.il/pub/grace/src/devel/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://www.smallperturbation.com/sites/default/files/$pkgname-$pkgver.tar.gz)
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver

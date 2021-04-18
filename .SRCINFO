@@ -7,7 +7,7 @@ pkgbase = libundo
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = ftp://plasma-gate.weizmann.ac.il/pub/grace/src/devel/libundo/libundo-0.8.2.tar.gz
+	source = http://www.smallperturbation.com/sites/default/files/libundo-0.8.2.tar.gz
 	md5sums = 8d26e45e66d31ec5593f28a6a11e05a2
 
 pkgname = libundo
