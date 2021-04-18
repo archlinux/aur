@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-runcat
+	pkgdesc = The cat tells you the CPU usage by running speed
+	pkgver = 11
+	pkgrel = 1
+	url = https://github.com/win0err/gnome-runcat
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = zip
+	depends = gnome-shell
+	source = gnome-shell-extension-runcat-11.tar.gz::https://github.com/win0err/gnome-runcat/archive/v11.tar.gz
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-runcat
+
