@@ -1,0 +1,38 @@
+diff --git a/electron-builder.yml b/electron-builder.yml
+index 7091dfb7..7400d348 100644
+--- a/electron-builder.yml
++++ b/electron-builder.yml
+@@ -61,5 +61,4 @@ protocols:
+ 
+ asarUnpack:
+   - ./recipes
+-  - ./node_modules/mac-screen-capture-permissions
+   - ./assets/images/taskbar
+\ No newline at end of file
+diff --git a/package.json b/package.json
+index 63dabe5b..4c80e823 100644
+--- a/package.json
++++ b/package.json
+@@ -90,7 +90,6 @@
+     "hex-to-rgba": "1.0.2",
+     "jsonwebtoken": "8.5.1",
+     "lodash": "^4.17.4",
+-    "mac-screen-capture-permissions": "1.1.0",
+     "macos-version": "5.2.0",
+     "marked": "0.7.0",
+     "mdi": "^1.9.33",
+diff --git a/src/electron/macOSPermissions.js b/src/electron/macOSPermissions.js
+index 4ba6a761..922ced38 100644
+--- a/src/electron/macOSPermissions.js
++++ b/src/electron/macOSPermissions.js
+@@ -1,8 +1,6 @@
+ import { systemPreferences } from 'electron';
+-import {
+-  hasScreenCapturePermission,
+-  hasPromptedForPermission,
+-} from 'mac-screen-capture-permissions';
++const hasScreenCapturePermission = () => true;
++const hasPromptedForPermission = () => true;
+ 
+ export default function () {
+   systemPreferences.askForMediaAccess('camera');
