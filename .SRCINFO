@@ -21,8 +21,10 @@ pkgbase = ros-noetic-fast-gicp-cuda-git
 	provides = ros-noetic-fast-gicp
 	source = ros-noetic-fast-gicp-cuda-git::git://github.com/SMRT-AIST/fast_gicp
 	source = nvbio::https://github.com/NVlabs/nvbio/archive/9bb7e6363c65f65e46f21df09bef98e404250f10.tar.gz
+	source = CMakeLists.patch
 	sha256sums = SKIP
 	sha256sums = d8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb
+	sha256sums = SKIP
 
 pkgname = ros-noetic-fast-gicp-cuda-git
 

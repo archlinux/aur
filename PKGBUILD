@@ -31,11 +31,13 @@ depends=(
 source=(
   $pkgname::git://github.com/SMRT-AIST/fast_gicp
   nvbio::https://github.com/NVlabs/nvbio/archive/9bb7e6363c65f65e46f21df09bef98e404250f10.tar.gz
+  CMakeLists.patch
 )
 
 sha256sums=(
   'SKIP'
   'd8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb'
+  'SKIP'
 )
  
 pkgver() {
@@ -46,6 +48,8 @@ pkgver() {
 prepare(){
   cd $srcdir
   mv -n nvbio-9bb7e6363c65f65e46f21df09bef98e404250f10/* $pkgname/thirdparty/nvbio
+  cd $pkgname
+  patch --forward --strip=1 --input="${srcdir}/CMakeLists.patch"
 }
 build() {
     # Use ROS environment variables

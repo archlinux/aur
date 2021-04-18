@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9ed2c9f..c098bbf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,4 +121,7 @@ if(BUILD_test)
+   add_dependencies(gicp_test fast_gicp)
+   target_link_libraries(gicp_test ${GTEST_LIBRARIES} ${PCL_LIBRARIES} fast_gicp)
+   gtest_add_tests(TARGET gicp_test WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} EXTRA_ARGS "${CMAKE_SOURCE_DIR}/data")
+-endif()
+\ No newline at end of file
++endif()
++
++install(TARGETS ${PROJECT_NAME}
++  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
+\ No newline at end of file
