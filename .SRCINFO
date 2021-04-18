@@ -1,0 +1,15 @@
+pkgbase = aria2-config-script
+	pkgdesc = 一个自动配置Aria2的脚本，自动创建、启动服务，可直接搭配浏览器插件使用。
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = aria2
+	depends = sudo
+	source = https://pan.xmengnet.cn/Aliyun/aur/aria2-config-script/0.1/aria2-install.sh
+	source = https://pan.xmengnet.cn/Aliyun/aur/aria2-config-script/0.1/aria2c.service
+	md5sums = 0f49112b1bb2821895166012486b91d9
+	md5sums = 3e72d1034ab27b3452f551dbd0f46da0
+
+pkgname = aria2-config-script
+

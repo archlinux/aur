@@ -1,0 +1,16 @@
+[Unit]
+Description=Aria2c Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aria2c --conf-path=/etc/aria2/aria2.conf 
+ExecStop=/bin/killall aria2c
+Restart=always
+StandOutput=syslog
+
+StandError=inherit
+
+[Install]
+WantedBy=multi-user.target 
