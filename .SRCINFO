@@ -1,7 +1,7 @@
 pkgbase = snoopy
 	pkgdesc = software tool to design and animate hierarchical graphs, among others Petri nets
 	pkgver = 2019.12.20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Snoopy
 	arch = x86_64
 	license = custom: non-professional use only
@@ -16,7 +16,7 @@ pkgbase = snoopy
 	source = snoopy.desktop
 	source = snoopy.png
 	md5sums = a01423e1791727465d0fd268deae298b
-	md5sums = a3c96a349faacd74786db673f2992951
+	md5sums = 79bb5f35fc34fe7259b0369d8cf9f7ee
 	md5sums = d9e788feb4c1424972a666f58d426f8e
 	md5sums = 29de8205156262088c576496dd2a44ff
 
