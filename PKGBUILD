@@ -5,7 +5,7 @@ pkgver=0.1
 pkgrel=0
 pkgdesc="This package has moved to dot-bin."
 arch=("x86_64")
-url="https://github.com/dothq/browser"
+url="https://aur.archlinux.org/packages/dot-bin"
 license=('MPL-2.0')
 
 package() {
