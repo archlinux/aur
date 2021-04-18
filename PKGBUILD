@@ -19,12 +19,11 @@ sha256sums=('0923bdc46dc5491aa3693b69e3c0cb3d17be5201ae349c2bc8cde1814606a629')
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release
+	cargo build --release --locked --target-dir=target
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	targetdir=${CARGO_TARGET_DIR:-target}
-	install -Dm755 "$targetdir/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
