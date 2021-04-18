@@ -1,20 +1,20 @@
 pkgname=libdnf
-pkgver=0.60.0
+pkgver=0.60.1
 pkgrel=1
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
-depends=('glib2' 'gpgme' 'json-c' 'libmodulemd>=2.11.2' 'librepo>=1.13.0' 'libsolv>=0.7.17'
+depends=('glib2' 'gpgme' 'json-c' 'libmodulemd>=2.11.2' 'librepo>=1.13.1' 'libsolv>=0.7.17'
          'libutil-linux' 'openssl' 'rpm-tools>=4.11.0' 'sqlite' 'zlib')
 makedepends=('cmake>=3.13' 'gtk-doc' 'python' 'python-sphinx' 'swig' 'zchunk>=0.9.11')
-checkdepends=('check' 'cppunit' 'python-nose')
+checkdepends=('check' 'cppunit')
 optdepends=('python: for python bindings')
 provides=( 'hawkey')
 conflicts=('hawkey')
 replaces=( 'hawkey')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('1b43ad8d22b40c95441c0a6370141599')
+md5sums=('cc4750cca518bfdfaa8686bc15315a80')
 
 prepare() {
 	cd "$pkgname-$pkgver"
