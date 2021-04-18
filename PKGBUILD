@@ -3,8 +3,8 @@
 # Contributor: Miroslav Koškár
 
 pkgname=vcvrack-git
-pkgver=1.1.6.r17.ge334902e
-pkgrel=2
+pkgver=1.1.6.r18.ga5fc5891
+pkgrel=3
 pkgdesc="Open-source virtual Eurorack DAW"
 url="https://github.com/VCVRack/Rack"
 license=(BSD)
@@ -86,6 +86,17 @@ package() {
     install -D -m644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE*
     install -D -m755 -t "$pkgdir/opt/${pkgname%-git}" Rack
     install -d "$pkgdir/opt/${pkgname%-git}/plugins"
+
+    # headers (required for plugins)
+    for _path in {app,dsp,engine,plugin,simd,ui,widget}; do
+        install -vDm 644 "include/$_path/"* \
+          -t "$pkgdir/usr/include/${pkgname%-git}/$_path/"
+    done
+    install -vDm 644 include/*.{h,hpp} -t "$pkgdir/usr/include/${pkgname%-git}/"
+    install -vDm 644 dep/include/*.h -t "$pkgdir/usr/include/${pkgname%-git}/dep"
+    # Makefile snippets required for plugins
+    install -vDm 644 {arch,compile,dep,plugin}.mk -t "$pkgdir/usr/share/${pkgname%-git}"
+
     install -vD -m644 "$srcdir/vcvrack.desktop" -t "$pkgdir/usr/share/applications/"
     cp -dr --preserve=mode -t "$pkgdir/opt/${pkgname%-git}" res
 }
