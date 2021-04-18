@@ -1,4 +1,6 @@
-# Maintainer: Ian Beringer <ian@ianberinger.com>
+# Maintainers:
+# - 2016-2021	Ian Beringer <ian@ianberinger.com>
+# - 2021	Sebastian Karlsen <sebastian@karlsen.fr>
 
 pkgname=lf-git
 _pkgname=lf
