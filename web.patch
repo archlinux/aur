@@ -1,0 +1,13 @@
+diff --git a/cmd/ww/server.go b/cmd/ww/server.go
+index 11725b1..febcfed 100644
+--- a/cmd/ww/server.go
++++ b/cmd/ww/server.go
+@@ -285,7 +285,7 @@ func server(args ...string) {
+ 	secretpath := set.String("secrets", os.Getenv("HOME")+"/keys", "path to put let's encrypt cache")
+ 	cert := set.String("cert", "", "https certificate (leave empty to use letsencrypt)")
+ 	key := set.String("key", "", "https certificate key")
+-	html := set.String("ui", "./web", "path to the web interface files")
++	html := set.String("ui", "/usr/share/webwormhole/web", "path to the web interface files")
+ 	stunservers := set.String("stun", "stun:relay.webwormhole.io", "list of STUN server addresses to tell clients to use")
+ 	set.StringVar(&turnServer, "turn", "", "TURN server to use for relaying")
+ 	set.StringVar(&turnSecret, "turn-secret", "", "secret for HMAC-based authentication in TURN server")

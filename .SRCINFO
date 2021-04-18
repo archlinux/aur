@@ -1,0 +1,18 @@
+pkgbase = webwormhole-git
+	pkgdesc = WebWormhole creates ephemeral pipes between computers to send files or other data.
+	pkgver = r195.1c8919c
+	pkgrel = 1
+	url = https://github.com/saljam/webwormhole
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = webwormhole
+	source = webwormhole::git+https://github.com/saljam/webwormhole.git
+	source = web.patch
+	sha256sums = SKIP
+	sha256sums = 4f87d9e62c2629066f3eaf260a44d6e6a348d27ea6f6a58b3edb4a0c7327ec42
+
+pkgname = webwormhole-git
+
