@@ -46,7 +46,7 @@ esac
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	#  Provide git submodules
+	# Provide git submodules
 	rm -rf 'recipes/' 'src/internal-server/'
 	mv "../recipes-$_recipescommit/" 'recipes/'
 	mv "../internal-server-$_internalservercommit/" 'src/internal-server/'
