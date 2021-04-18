@@ -1,7 +1,7 @@
 # Maintainer: Taha Farahani <iotahacodes@gmail.com>
 pkgname=arvan
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="cli tool for managing ArvanCloud services"
 arch=('x86_64')
 url="https://github.com/arvancloud/cli"
@@ -12,7 +12,6 @@ sha256sums=('eb53c93fd9fa77c13b527251100039a0daa66b6eaa865f67ba2f1a1cac073db9')
 
 prepare() {
 	mkdir -p $HOME/.arvan
-	cp config $HOME/.arvan/config
 	tar -xf "${srcdir}/${pkgname}_${pkgver}_linux_amd64.tar.gz" -C "${srcdir}"
 }
 

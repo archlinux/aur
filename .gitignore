@@ -1,5 +1,4 @@
 src/*
-!src/config
 pkg/*
 *.gz
 *.zst
