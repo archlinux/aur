@@ -29,7 +29,7 @@ md5sums=('8de3ca6da3ef6a27d59f959d1bbcd96b'
          '5ed33e98f5c87e92362a24acb8d20671')
 
 prepare() {
-	cd $pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver
 
 	# Fix assertion at startup
 	sed -e '/SetMaxLength(0)/d' -i src/rapidsvn_frame.cpp \
