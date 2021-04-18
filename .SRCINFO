@@ -1,0 +1,28 @@
+pkgbase = ros-noetic-fast-gicp-git
+	pkgdesc = OpenMP boosted NDT and GICP algorithms
+	pkgver = r115.7798ac5
+	pkgrel = 1
+	url = https://github.com/SMRT-AIST/fast_gicp
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD-3-Clause License
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = pcl
+	makedepends = cuda
+	depends = pcl
+	depends = cuda
+	optdepends = openmp
+	provides = ros-noetic-fast-gicp
+	source = ros-noetic-fast-gicp-git::git://github.com/SMRT-AIST/fast_gicp
+	source = eigen::https://github.com/eigenteam/eigen-git-mirror/archive/36b95962756c1fce8e29b1f8bc45967f30773c00.tar.gz
+	source = nvbio::https://github.com/NVlabs/nvbio/archive/9bb7e6363c65f65e46f21df09bef98e404250f10.tar.gz
+	sha256sums = SKIP
+	sha256sums = dfa74c7c6fcb4a454d3fb78782268a3e3729ed041771862d68a033862a98dd31
+	sha256sums = d8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb
+
+pkgname = ros-noetic-fast-gicp-git
+
