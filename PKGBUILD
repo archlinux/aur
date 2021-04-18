@@ -2,7 +2,7 @@
 pkgbase=vim-embark-git
 pkgname=('vim-embark-git' 'vim-airline-embark-git' 'vim-lightline-embark-git')
 pkgver=r58.fda8867
-pkgrel=1
+pkgrel=2
 pkgdesc="A deep inky purple theme leveraging bright colors"
 arch=('any')
 url="https://github.com/embark-theme/vim"
@@ -43,7 +43,7 @@ package_vim-airline-embark-git() {
 }
 
 package_vim-lightline-embark-git() {
-  depends=('vim-lightline')
+  depends=('vim-lightline-git')
   optdepends=('vim-embark: Base vim colorscheme')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
