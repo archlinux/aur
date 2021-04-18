@@ -1,7 +1,7 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=cesium-editor
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A bare bones text editor"
 arch=('i686' 'x86_64')
@@ -9,18 +9,18 @@ url="https://gitlab.com/NoahJelen/cesium"
 license=('GPL')
 depends=('ncurses' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'gzip')
-source=("https://gitlab.com/NoahJelen/cesium/-/archive/0.1.2/cesium-0.1.2.zip")
+source=("https://gitlab.com/NoahJelen/cesium/-/archive/0.2.0/cesium-0.2.0.zip")
 conflicts=('cesium-editor-git')
 md5sums=('SKIP')
 
 build() {
-    cd "cesium-0.1.2"
+    cd "cesium-0.2.0"
     cargo build --release
 }
 
 package() {
     #the package contents
-    cd "cesium-0.1.2"
+    cd "cesium-0.2.0"
     mkdir -p "$pkgdir/usr/lib/cesium"
     mkdir -p "$pkgdir/usr/share/man/man1/"
     install -Dt "$pkgdir/usr/bin" -m755 target/release/cesium
