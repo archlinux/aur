@@ -24,9 +24,16 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+# Based on a suggestion from leandro.vital
 build() {
+	export GOPATH="${srcdir}/go"
+
 	cd "${srcdir}/${_pkgname}"
-	GOPATH="${srcdir}/go" ./gen/build.sh
+	go mod vendor
+	version="${pkgver}" ./gen/build.sh -mod=vendor -trimpath
+
+	# clean now to ensure makepkg --clean works
+	go clean -modcache
 }
 
 package() {
