@@ -1,0 +1,14 @@
+pkgbase = minetest-mod-basic-materials
+	pkgdesc = Provides a small selection of "basic" materials and items that other mods should use when possible.
+	pkgver = 2021.01.30
+	pkgrel = 1
+	url = https://content.minetest.net/packages/VanessaE/basic_materials/
+	arch = any
+	license = LGPLv3
+	depends = minetest-common
+	options = !strip
+	source = basic_materials-2021-01-30.zip::https://gitlab.com/VanessaE/basic_materials/-/archive/2021-01-30/basic_materials-2021-01-30.zip
+	sha256sums = 9fec9690f69f9b6936b78bed242fbf518332ed75741a864d9c297e0ce71a36e8
+
+pkgname = minetest-mod-basic-materials
+
