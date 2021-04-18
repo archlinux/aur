@@ -9,7 +9,7 @@ url="https://github.com/simonwahll/elementary-wallpapers-gnome-integration"
 license=('GPL3')
 groups=()
 depends=(elementary-wallpapers)
-makedepends=()
+makedepends=(sudo)
 checkdepends=()
 optdepends=()
 provides=()
@@ -38,5 +38,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	su -c ./install.sh
+	sudo ./install.sh
 }
