@@ -3,8 +3,8 @@
 pkgname=webwormhole-git
 _pkgname=${pkgname%-git}
 pkgver=r195.1c8919c
-pkgrel=4
-pkgdesc='WebWormhole creates ephemeral pipes between computers to send files or other data.'
+pkgrel=5
+pkgdesc='Send data between computers using WebRTC.'
 arch=('x86_64')
 url="https://github.com/saljam/${_pkgname}"
 license=('BSD')
