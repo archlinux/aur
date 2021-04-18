@@ -1,6 +1,6 @@
 pkgbase = tcg-git
 	pkgdesc = cgroups for terminals
-	pkgver = 0.2.67
+	pkgver = 0.2.68
 	pkgrel = 1
 	url = https://github.com/zasdfgbnm/tcg
 	arch = x86_64
