@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.16.5
+	pkgver = 3.16.6
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
@@ -39,10 +39,10 @@ pkgbase = qgis-ltr
 	optdepends = fcgi: Map server
 	optdepends = opencl-driver: packaged OpenCL driver
 	optdepends = gpsbabel: GPS Tools plugin
-	provides = qgis=3.16.5
+	provides = qgis=3.16.6
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-3.16.5.tar.bz2
-	sha256sums = 525f469ad6e40dd7a8f09ebab5eb6a2dffc45939b99b7d937750cc04ed78d61c
+	source = https://qgis.org/downloads/qgis-3.16.6.tar.bz2
+	sha256sums = 496388cfcdb8096d2f43bec1f5a2cca6c8c9152a4854fe2da2f685b9a3a698f3
 
 pkgname = qgis-ltr
 
