@@ -1,0 +1,81 @@
+diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+index c99fc326ec24..71c27133c53c 100644
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -26,6 +26,8 @@
+  */
+ #include "sched.h"
+ 
++#include <linux/math64.h>
++
+ /*
+  * Targeted preemption latency for CPU-bound tasks:
+  *
+@@ -127,7 +129,7 @@ int __weak arch_asym_cpu_priority(int cpu)
+ 
+ #endif
+ #ifdef CONFIG_CACULE_SCHED
+-int cacule_max_lifetime					= 30000; // in ms
++int cacule_max_lifetime					= 4000; // in ms
+ int cacule_harsh_mode					= 0;
+ int interactivity_factor				= 32768;
+ #endif
+@@ -602,6 +604,7 @@ calc_interactivity(u64 now, struct cacule_node *se)
+ {
+ 	u64 l_se, vr_se, sleep_se = 1ULL, u64_factor;
+ 	unsigned int score_se;
++	u32 r_se_rem;
+ 
+ 	/*
+ 	 * in case of vruntime==0, logical OR with 1 would
+@@ -616,9 +619,19 @@ calc_interactivity(u64 now, struct cacule_node *se)
+ 		sleep_se = (l_se - vr_se) | 1;
+ 
+ 	if (sleep_se >= vr_se)
+-		score_se = u64_factor / (sleep_se / vr_se);
++		score_se = div_u64_rem
++			(
++				u64_factor, div_u64_rem
++				(
++					sleep_se, vr_se
++				, &r_se_rem)
++			, &r_se_rem);
+ 	else
+-		score_se = (u64_factor << 1) - (u64_factor / (vr_se / sleep_se));
++		score_se = (u64_factor << 1) - (
++			div_u64_rem(u64_factor, (
++					div_u64_rem(vr_se, sleep_se, &r_se_rem)
++				), &r_se_rem)
++			);
+ 
+ 	return score_se;
+ }
+@@ -1041,6 +1054,7 @@ static void reset_lifetime(u64 now, struct sched_entity *se)
+ 	struct cacule_node *cn;
+ 	u64 max_life_ns, life_time;
+ 	s64 diff;
++	u32 rem;
+ 
+ 	/*
+ 	 * left shift 20 bits is approximately = * 1000000
+@@ -1054,9 +1068,9 @@ static void reset_lifetime(u64 now, struct sched_entity *se)
+ 		life_time	= now - cn->cacule_start_time;
+ 		diff		= life_time - max_life_ns;
+ 
+-		if (unlikely(diff > 0)) {
++		if (diff > 0) {
+ 			// multiply life_time by 8 for more precision
+-			u64 old_hrrn_x8	= life_time / ((cn->vruntime >> 3) | 1);
++			u64 old_hrrn_x8	= div_u64_rem(life_time, ((cn->vruntime >> 3) | 1), &rem);
+ 
+ 			// reset life to half max_life (i.e ~15s)
+ 			cn->cacule_start_time = now - (max_life_ns >> 1);
+@@ -1065,7 +1079,7 @@ static void reset_lifetime(u64 now, struct sched_entity *se)
+ 			if (old_hrrn_x8 == 0) old_hrrn_x8 = 1;
+ 
+ 			// reset vruntime based on old hrrn ratio
+-			cn->vruntime = (max_life_ns << 2) / old_hrrn_x8;
++			cn->vruntime = div_u64_rem((max_life_ns << 2), old_hrrn_x8, &rem);
+ 		}
+ 	}
+ }
