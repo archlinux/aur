@@ -23,6 +23,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -D "uwufetch" "$pkgdir/usr/bin/uwufetch"
+	install -D "uwufetch.1.gz" "$pkgdir/usr/share/man/man1/uwufetch.1"
 	install -d "$pkgdir/usr/lib/uwufetch"
 	install res/* "$pkgdir/usr/lib/uwufetch"
 }
