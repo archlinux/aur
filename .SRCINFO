@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn
 	pkgdesc = The Mullvad VPN client app for desktop
 	pkgver = 2021.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = mullvad-vpn
 	makedepends = git
 	makedepends = go
 	makedepends = rust
-	makedepends = npm
+	makedepends = nodejs>=12
+	makedepends = npm>=6.12
 	makedepends = python
 	depends = iputils
 	depends = libnotify
