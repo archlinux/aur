@@ -2,7 +2,7 @@
 _pkgname=python-jiramenu
 _gitname=jiramenu
 pkgname=$_pkgname-git
-pkgver=r1.0.9
+pkgver=r1.0.10
 pkgrel=1
 pkgdesc="Dmenu/Rofi frontend for jira"
 
@@ -10,7 +10,7 @@ arch=('any')
 url="https://gitlab.com/ljurk/jiramenu"
 license=('GPLv3')
 depends=('python'
-         'python-rofi'
+         'python-rofi-git'
          'python-jira'
          'python-requests'
          'python-click'
