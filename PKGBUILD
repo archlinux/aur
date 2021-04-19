@@ -1,8 +1,8 @@
 # Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
 
 pkgname=kicad-nightly
-pkgver=5.99.0_10357_gba3f0d5d07
-pkgrel=2
+pkgver=5.99.0_10361_geac2700af6
+pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad-pcb.org/'
@@ -15,7 +15,7 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=ba3f0d5d07
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=eac2700af6
 	'kicad-nightly.env'
 )
 sha256sums=(
@@ -56,7 +56,7 @@ package()
 	DESTDIR="$pkgdir" ninja install
 
 	mkdir -p "$pkgdir/usr/share/applications"
-	programs=$(ls "$pkgdir/usr/share/kicad-nightly/applications" | sed -s 's/.desktop//g')
+	programs=$(ls "$pkgdir/usr/share/kicad-nightly/applications" | sed -s 's/\.desktop//g')
 	for prog in $programs; do
 		sed -i \
 			-e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1-nightly\2/g' \
