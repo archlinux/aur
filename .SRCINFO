@@ -1,6 +1,6 @@
 pkgbase = telegram-tg-git
 	pkgdesc = terminal telegram client that really works
-	pkgver = 0.7.0.r7.1cd023a
+	pkgver = 0.7.0.r8.c7b08b3
 	pkgrel = 1
 	url = https://github.com/paul-nameless/tg
 	arch = any
@@ -16,10 +16,8 @@ pkgbase = telegram-tg-git
 	conflicts = telegram-tg
 	source = telegram-tg::git+https://github.com/paul-nameless/tg.git
 	source = 0001-Change-setup.py-to-accept-new-python-telegram-ver.patch
-	source = 0002-Fix-compatibility-with-new-libtd-version.patch
 	md5sums = SKIP
 	md5sums = 7b9a556ce7d2203fbee32442a96d73bc
-	md5sums = 13f56d00337b141c270906f0df49e872
 
 pkgname = telegram-tg-git
 

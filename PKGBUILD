@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
-pkgver=0.7.0.r7.1cd023a
+pkgver=0.7.0.r8.c7b08b3
 pkgrel=1
 pkgdesc="terminal telegram client that really works"
 arch=(any)
@@ -17,11 +17,9 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/paul-nameless/tg.git"
-	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch"
-	"0002-Fix-compatibility-with-new-libtd-version.patch")
+	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch")
 md5sums=('SKIP'
-         '7b9a556ce7d2203fbee32442a96d73bc'
-         '13f56d00337b141c270906f0df49e872')
+         '7b9a556ce7d2203fbee32442a96d73bc')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -33,7 +31,6 @@ prepare() {
 	cd "${srcdir}/${_pkgname}"
 	
 	patch -p1 -i ${srcdir}/0001-Change-setup.py-to-accept-new-python-telegram-ver.patch
-	patch -p1 -i ${srcdir}/0002-Fix-compatibility-with-new-libtd-version.patch
 }
 
 build() {
