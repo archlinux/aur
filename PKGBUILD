@@ -1,7 +1,8 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Aditya Naik <nikeadilfc at gmail dot com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=0.4.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
@@ -10,7 +11,7 @@ makedepends=('texlive-core')
 arch=('x86_64')
 license=('LGPL')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
-sha1sums=('56ca69e21989eb3deb492bee38189eedcaa411fc')
+sha1sums=('dab7737eccbc92901cd7b70f6ac86551a0cd8259')
 options=('!strip')
 
 build() {
