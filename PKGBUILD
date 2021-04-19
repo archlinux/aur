@@ -27,13 +27,11 @@ prepare() {
 
 build() {
   cd "$srcdir/${_name^^}"
-  # python setup.py build
   python setup.py build_ext --inplace
   python setup.py build
 }
 
 package() {
-  # cd "$srcdir/$_name-$pkgver"
   cd "$srcdir/${_name^^}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
