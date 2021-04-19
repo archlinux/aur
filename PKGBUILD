@@ -8,6 +8,7 @@ pkgver=0.42.2.r81.g11a38f7
 pkgrel=1
 pkgdesc='Library that abstracts the control group file system in Linux'
 arch=('i686' 'x86_64')
+makedepends=('cmake')
 url='https://github.com/libcgroup/libcgroup'
 license=(LGPL)
 backup=('etc/cgconfig.conf'
