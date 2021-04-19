@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=pulumi
-pkgver=2.25.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('43a3e586d0075e4911b2d88bf7da66480be24eb7a576f8dc7626b1ba4fe0974b')
+sha256sums=('bca79ee7683b089311db1547ea86570826d7b95492d89a89fec08e98e0c175b1')
 
 _plugins=(
   "nodejs/cmd/pulumi-language-nodejs"
@@ -31,7 +31,7 @@ build() {
   # Build the `pulumi` executable
   cd "${srcdir}/${pkgname}-${pkgver}/pkg"
   go build \
-    -ldflags "-X github.com/pulumi/pulumi/pkg/v2/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
+    -ldflags "-X github.com/pulumi/pulumi/pkg/v${pkgver%%.*}/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
     -o "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" \
     "./cmd/${pkgname}" \
 
@@ -40,7 +40,7 @@ build() {
   for plugin in "${_plugins[@]}"; do
     plugin_name=${plugin##*/}
     go build \
-      -ldflags "-X github.com/pulumi/pulumi/pkg/v2/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
+      -ldflags "-X github.com/pulumi/pulumi/pkg/v${pkgver%%.*}/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
       -o "${srcdir}/${pkgname}-${pkgver}/bin/${plugin_name}" \
       "./${plugin}"
 
