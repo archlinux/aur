@@ -4,12 +4,13 @@
 _name=jfrog
 pkgname=jfrog-cli
 pkgver=1.46.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
 url="https://github.com/jfrog/jfrog-cli"
 license=('Apache')
 depends=('glibc')
+conflicts=('jfrog-cli-go')
 replaces=('jfrog-cli-go')
 makedepends=('git' 'go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/v${pkgver}.tar.gz")
