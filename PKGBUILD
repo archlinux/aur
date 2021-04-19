@@ -1,7 +1,7 @@
 # Maintainer: Pedro Mendes <pedro.mendes.26@gmail.com>
 
 pkgname=web-xdg-open-git
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="A smart browser that tries to open content in the appropriate xdg app before resorting to the browser"
 arch=('any')
