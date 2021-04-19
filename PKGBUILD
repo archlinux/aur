@@ -1,6 +1,6 @@
 pkgname=livetikz
 _pkgname=LiveTikZ
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A live preview for TikZ drawings"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('poppler' 'poppler-qt5' 'kcoreaddons' 'kxmlgui' 'ki18n' 'ktexteditor'
 'kparts')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("https://github.com/misc0110/LiveTikZ/archive/release-${pkgver}.tar.gz")
-md5sums=('8f5e50c63d5c00bc557f3bd861bd0b15')
+md5sums=('45401b590772be51efac8075bfc7373d')
 
 build() {
 	mkdir -p "$srcdir/$_pkgname-release-$pkgver/build"
