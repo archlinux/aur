@@ -18,7 +18,7 @@ sha256sums_x86_64=('6d4e79d5c56f20fd326b9001737c79ee5f9fea2fc94864e1ed84a087572f
 
 package() {
     # Install AppImage
-    install -Dm755 "${srcdir}/Allusion-${gitver}.AppImage" "${pkgdir}/opt/${pkgname}/Allusion.AppImage"
+    install -Dm755 "${srcdir}/Allusion-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/Allusion.AppImage"
 
     # Symlink executable
     mkdir -p "${pkgdir}/usr/bin"
