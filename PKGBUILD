@@ -122,7 +122,7 @@ _pkgvermajmin="6.1"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix="beta3"
-pkgrel=3
+pkgrel=4
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
 _pkgver=${pkgver}
