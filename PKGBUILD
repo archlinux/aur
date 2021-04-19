@@ -2,7 +2,7 @@
 
 pkgname=kicad-nightly
 pkgver=5.99.0_10357_gba3f0d5d07
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad-pcb.org/'
@@ -56,7 +56,7 @@ package()
 	DESTDIR="$pkgdir" ninja install
 
 	mkdir -p "$pkgdir/usr/share/applications"
-	programs=$(ls "$pkgdir/usr/share/kicad-nightly/applications")
+	programs=$(ls "$pkgdir/usr/share/kicad-nightly/applications" | sed -s 's/.desktop//g')
 	for prog in $programs; do
 		sed -i \
 			-e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1-nightly\2/g' \
