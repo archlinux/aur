@@ -1,14 +1,14 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees-git
-pkgver=v0.6.r75.g7117cb4
+pkgver=v0.6.r130.g177f393
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('any')
 url="https://github.com/Zygo/bees"
 license=('GPL3')
 depends=()
-makedepends=('git' 'make' 'gcc' 'markdown' 'btrfs-progs')
+makedepends=('git' 'make' 'gcc' 'markdown' 'btrfs-progs' 'systemd')
 source=("$pkgname"::'git://github.com/zygo/bees.git#branch=master')
 md5sums=('SKIP')
 
