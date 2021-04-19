@@ -3,7 +3,7 @@
 _gemname=acme_nsupdate
 pkgname=ruby-$_gemname
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='ACME (Let'\''s Encrypt) client with nsupdate (DDNS) integration.'
 arch=(any)
 url='https://github.com/jhass/acme_nsupdate'

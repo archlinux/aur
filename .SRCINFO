@@ -1,7 +1,7 @@
 pkgbase = ruby-acme_nsupdate
 	pkgdesc = ACME (Let's Encrypt) client with nsupdate (DDNS) integration.
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jhass/acme_nsupdate
 	arch = any
 	license = MIT
