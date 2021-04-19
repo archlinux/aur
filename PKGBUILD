@@ -1,21 +1,35 @@
 # Maintainer: lain <aur@hacktheinter.net>
 pkgname=ffts-git
 pkgver=r799.fe86885
-pkgrel=2
+pkgrel=3
 pkgdesc="The Fastest Fourier Transform in the South"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-arch=('i686' 'x86_64' 'arm')
+arch=('any')
 url='https://github.com/anthonix/ffts'
-md5sums=('SKIP')
 license=('BSD')
 depends=()
-makedepends=('git')
-source=('git+https://github.com/anthonix/ffts.git')
+makedepends=('git' 'cmake')
+source=(
+  'git+https://github.com/anthonix/ffts.git'
+  'fix-non-sse2.patch'
+)
+md5sums=(
+  'SKIP'
+  'e7711b3c9f73a2f36fbf405663c05c9d'
+)
 
 pkgver() {
   cd ffts
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ffts
+  # Patch to fix compilation on non-SSE2 machines
+  # Source: https://github.com/anthonix/ffts/pull/78
+  # (has no effect on SSE2 machines, so we can just always apply the patch)
+  git apply $srcdir/fix-non-sse2.patch
 }
 
 build() {

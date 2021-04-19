@@ -1,0 +1,29 @@
+From e0fe4b14a5cf6d6389df40d92c8505d68ffa042e Mon Sep 17 00:00:00 2001
+From: Nishidha Panpaliya <nishidha@us.ibm.com>
+Date: Wed, 8 Jan 2020 10:22:37 +0000
+Subject: [PATCH] Fixed compilation error on Linux ppc64le
+
+---
+ src/ffts_trig.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ffts_trig.c b/src/ffts_trig.c
+index 1094be4..cd59d9f 100644
+--- a/src/ffts_trig.c
++++ b/src/ffts_trig.c
+@@ -881,7 +881,7 @@ int
+ ffts_generate_cosine_sine_pow2_32f(ffts_cpx_32f *const table, int table_size)
+ {
+     const ffts_cpx_64f *FFTS_RESTRICT ct;
+-    const double_t *FFTS_RESTRICT hs;
++    const ffts_double_t *FFTS_RESTRICT hs;
+     ffts_cpx_64f FFTS_ALIGN(16) w[32];
+     int i, log_2, offset;
+ 
+@@ -1136,4 +1136,4 @@ ffts_generate_table_1d_real_32f(struct _ffts_plan_t *const p,
+     }
+ 
+     return 0;
+-}
+\ No newline at end of file
++}

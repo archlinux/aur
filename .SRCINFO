@@ -1,17 +1,18 @@
 pkgbase = ffts-git
 	pkgdesc = The Fastest Fourier Transform in the South
 	pkgver = r799.fe86885
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anthonix/ffts
-	arch = i686
-	arch = x86_64
-	arch = arm
+	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = cmake
 	provides = ffts
 	conflicts = ffts
 	source = git+https://github.com/anthonix/ffts.git
+	source = fix-non-sse2.patch
 	md5sums = SKIP
+	md5sums = e7711b3c9f73a2f36fbf405663c05c9d
 
 pkgname = ffts-git
 
