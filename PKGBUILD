@@ -3,7 +3,7 @@
 
 _pkgname=mimejs
 pkgname=$_pkgname-git
-pkgver=0.1.66d4b61
+pkgver=0.1.aa2c834
 pkgrel=1
 pkgdesc='A replacement for xdg-open written in Node.js'
 arch=('i686' 'x86_64')
