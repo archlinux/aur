@@ -1,15 +1,17 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=zoom
-pkgver=5.6.1
-_build=13632.0328
+pkgver=5.6.3
+_build=16775.0418
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('x86_64')
 license=('custom')
 url="https://zoom.us/"
-depends=('fontconfig' 'glib2' 'libpulse' 'libsm' 'ttf-font' 'libx11' 'libxcb' 'libxcomposite' 'libxfixes' 'libxi' 'libxcursor'
-	'libxkbcommon-x11' 'libxrandr' 'libxrender' 'libxshmfence' 'libxslt' 'mesa' 'nss' 'xcb-util-image' 'xcb-util-keysyms')
+depends=('fontconfig' 'glib2' 'libpulse' 'libsm' 'ttf-font' 'libx11' 'libxtst' 'libxcb'
+	'libxcomposite' 'libxfixes' 'libxi' 'libxcursor' 'libxkbcommon-x11' 'libxrandr'
+	'libxrender' 'libxshmfence' 'libxslt' 'mesa' 'nss' 'xcb-util-image'
+	'xcb-util-keysyms' 'dbus' 'ibus')
 optdepends=('pulseaudio-alsa: audio via PulseAudio'
 	'qt5-webengine: SSO login support'
 	'picom: extra compositor needed by some window managers for screen sharing'
