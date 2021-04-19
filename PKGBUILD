@@ -3,7 +3,7 @@
 
 pkgname=gnome-connections
 _pkgname=connections
-pkgver=40.0
+pkgver=40.0.1
 pkgrel=1
 pkgdesc="Remote desktop client for the GNOME desktop environment"
 arch=('x86_64')
@@ -11,7 +11,8 @@ url="https://gitlab.gnome.org/GNOME/connections"
 license=('GPL3')
 depends=('gtk-frdp' 'gtk-vnc')
 makedepends=('itstool' 'git' 'meson' 'vala')
-_commit=5fd4f1bcf39e8747553571e54897549f8e51beb4  # tags/v40.0
+checkdepends=('appstream-glib')
+_commit=d433d4561aca00bd9ebf1cde4b31967d35eca4c4  # tags/v40.0.1
 source=("git+https://gitlab.gnome.org/GNOME/connections.git#commit=$_commit")
 sha256sums=('SKIP')
 
