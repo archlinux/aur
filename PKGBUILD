@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gogololcat-git
 pkgver=r3.236b66e
-pkgrel=2
+pkgrel=3
 pkgdesc="golang implementation of lolcat"
 url="https://github.com/vbatts/gogololcat/"
 arch=('x86_64' 'i686')
@@ -28,6 +28,8 @@ prepare() {
 	cd "${srcdir}/go/src/github.com/vbatts/gogololcat"
 
 	export GOPATH="${srcdir}/go"
+	export GO111MODULE="auto"
+
 	go get -v ./...
 }
 

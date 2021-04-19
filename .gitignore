@@ -1,5 +1,5 @@
 src
 pkg
 gogololcat-git
-*pkg.tar.xz
+*.pkg.tar.*
 tags

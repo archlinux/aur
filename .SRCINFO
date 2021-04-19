@@ -1,7 +1,7 @@
 pkgbase = gogololcat-git
 	pkgdesc = golang implementation of lolcat
 	pkgver = r3.236b66e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vbatts/gogololcat/
 	arch = x86_64
 	arch = i686
