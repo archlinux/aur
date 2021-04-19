@@ -1,7 +1,7 @@
 pkgbase = gnome-gmail
 	pkgdesc = It allows desktop mail actions, such as 'Send File as Email' or web 'mailto' links, to be handled by the Gmail web client.
-	pkgver = 2.7
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://davesteele.github.io/gnome-gmail/index.html
 	install = gnome-gmail.install
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = gnome-gmail
 	depends = python-six
 	depends = libwnck3
 	optdepends = nautilus-sendto: automatically upload an email with a file attachment from nautilus
-	source = https://github.com/davesteele/gnome-gmail/archive/master/2.7.tar.gz
-	md5sums = 934e610ecb01b9e3bad8524e01f88ba5
+	source = https://github.com/davesteele/viagee/archive/master/3.0.tar.gz
+	md5sums = 5a687eca75dea304f83636bc00531cad
 
 pkgname = gnome-gmail
 
