@@ -8,9 +8,7 @@ pkgbase = python-fontpens
 	checkdepends = python-fontmath
 	checkdepends = python-fontparts
 	checkdepends = python-pytest
-	checkdepends = python>=3.8
 	makedepends = python-setuptools
-	depends = python
 	depends = python-fonttools
 	source = https://pypi.org/packages/source/f/fontPens/fontPens-0.2.4.zip
 	sha256sums = a6d9a14573b3450f3313d69523f9006028c21fc7aef5d35333b87aab7f2b41fd
