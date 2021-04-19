@@ -121,7 +121,7 @@ _local_qt5_repo="${local_qt5_repo}"
 _pkgvermajmin="6.1"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="alpha"
+_dev_suffix="beta3"
 pkgrel=3
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -252,14 +252,12 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="e5d17a723bf75d8d6803047a0f42be33bc4c3f64dd5572c4deb8858928d81f1e"
-
 source=("git://github.com/sirspudd/mkspecs.git")
 sha256sums=("SKIP")
 
 if ! $_build_from_local_src_tree; then
   source+=("${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
-  sha256sums+=("$_tar_xz_sha256")
+  sha256sums+=("SKIP")
   #if $_building; then echo ${source[@]}; fi
 fi
 

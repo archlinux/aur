@@ -18,9 +18,9 @@ pkgbase = qt-sdk
 	provides = qt-sdk
 	options = !strip
 	source = git://github.com/sirspudd/mkspecs.git
-	source = https://download.qt.io/development_releases/qt/6.1/6.1.0-alpha/single/qt-everywhere-src-6.1.0-alpha.tar.xz
+	source = https://download.qt.io/development_releases/qt/6.1/6.1.0-beta3/single/qt-everywhere-src-6.1.0-beta3.tar.xz
 	sha256sums = SKIP
-	sha256sums = e5d17a723bf75d8d6803047a0f42be33bc4c3f64dd5572c4deb8858928d81f1e
+	sha256sums = SKIP
 
 pkgname = qt-sdk
 
