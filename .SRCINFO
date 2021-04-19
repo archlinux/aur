@@ -1,0 +1,14 @@
+pkgbase = docui-git
+	pkgdesc = TUI Client for Docker
+	pkgver = 2.0.4.r13.g5e66d09
+	pkgrel = 1
+	url = https://github.com/skanehira/docui
+	arch = any
+	license = MIT
+	depends = go
+	conflicts = docui-bin
+	source = docui-git::git+https://github.com/skanehira/docui.git
+	sha256sums = SKIP
+
+pkgname = docui-git
+
