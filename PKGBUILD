@@ -1,33 +1,30 @@
-# Maintainer: 4679kun <4679kun@outlook.com>
+# Maintainer: ananaso <adavidson+aur@protonmail.ch>
+# Contributor: 4679kun <4679kun@outlook.com>
 
-pkgname=gnome-shell-extension-screenshotlocations-git
-_gitname=gnome-shell-screenshotlocations-extension
-pkgver=25.2948bc8
+pkgname=gnome-shell-screenshotlocations-extension-git
+pkgver=r31.dfdcf12
 pkgrel=1
-pkgdesc="Gnome-shell extension disabling hotcorners"
+pkgdesc="A GNOME extension for changing the screenshot output directory"
 arch=('any')
-url="https://github.com/TimurKiyivinski/gnome-shell-screenshotlocations-extension"
-license=('GPLv2')
+url="https://codeberg.org/kiyui/gnome-shell-screenshotlocations-extension"
+license=('GPL2')
 depends=('gnome-shell')
-makedepends=('git')
-source=('git://github.com/TimurKiyivinski/gnome-shell-screenshotlocations-extension')
+makedepends=('git' 'meson' 'eslint')
+source=('git+'${url}'.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "${srcdir}/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    arch-meson --buildtype=plain build
+    ninja -C build
 }
 
 package() {
-  _uuid='screenshotlocations.timur@linux.com'
-  
-  cd "$_gitname/$_uuid"
-  install -Dm644 "metadata.json" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
-  install -m644 "extension.js" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/extension.js"
-  install -Dm644 "keybinder.js" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/keybinder.js"
-  install -m644 "prefs.js" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/prefs.js"
+    cd "$srcdir/${pkgname%-git}"
+    DESTDIR="$pkgdir" ninja -C build install
 }
