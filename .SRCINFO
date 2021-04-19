@@ -1,7 +1,7 @@
 pkgbase = netbox
 	pkgdesc = IP address management (IPAM) and data center infrastructure management (DCIM) tool.
 	pkgver = 2.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/digitalocean/netbox
 	install = netbox.install
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = netbox
 	md5sums = 55dcba60ed4cb66b350d3d8f2946aef9
 	md5sums = ad07c0c741a231b8d8012221bee2c167
 	md5sums = b653f7da646e78ad5c69d3960bbafd9c
-	md5sums = 17532f81746d5378abbf9721c526247b
+	md5sums = 451d167d2f3ae189f62b44ad1feb6da1
 	md5sums = 97c618de19719135aa84458789b025b1
 
 pkgname = netbox

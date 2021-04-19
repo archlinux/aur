@@ -2,7 +2,7 @@
 
 pkgname='netbox'
 pkgver=2.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='IP address management (IPAM) and data center infrastructure management (DCIM) tool.'
 arch=('any')
 url='https://github.com/digitalocean/netbox'
@@ -65,5 +65,5 @@ md5sums=('ef794d344ab5a3b2d9c854867580d0cf'
          '55dcba60ed4cb66b350d3d8f2946aef9'
          'ad07c0c741a231b8d8012221bee2c167'
          'b653f7da646e78ad5c69d3960bbafd9c'
-         '17532f81746d5378abbf9721c526247b'
+         '451d167d2f3ae189f62b44ad1feb6da1'
          '97c618de19719135aa84458789b025b1')
