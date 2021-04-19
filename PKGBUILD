@@ -13,22 +13,22 @@ pkgname=(
   dotnet-targeting-pack-preview
   aspnet-targeting-pack-preview
 )
-pkgver=6.0.0.sdk100+preview.2.21155.3
-_hostver=6.0.0-preview.2.21154.6
-_dotnetruntimever=6.0.0-preview.2.21154.6
-_aspnetruntimever=6.0.0-preview.2.21154.6
-_sdkver=6.0.100-preview.2.21155.3
+pkgver=6.0.0.sdk100+preview.3.21202.5
+_hostver=6.0.0-preview.3.21201.4
+_dotnetruntimever=6.0.0-preview.2.21201.4
+_aspnetruntimever=6.0.0-preview.2.21201.13
+_sdkver=6.0.100-preview.3.21202.5
 pkgrel=1
 arch=(x86_64 armv7h aarch64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
 options=(staticlibs)
-source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/25c7e38e-0a6a-4d66-ac4e-b550a44b8a98/49128be84b903799259e7bebe8e9d969/dotnet-sdk-6.0.100-preview.2.21155.3-linux-x64.tar.gz)
-source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/8c9dc65d-e004-4fe3-8327-4ba4c235095c/d16e99faf79b817b846f5734e94830de/dotnet-sdk-6.0.100-preview.2.21155.3-linux-arm.tar.gz)
-source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/1d639275-6a89-45e9-a337-725c3ce49439/aa35a5e06539c6ffe1f81e74e45784e9/dotnet-sdk-6.0.100-preview.2.21155.3-linux-arm64.tar.gz)
-sha512sums_x86_64=('90d9b6070f7732dcf75f5a09a4f10f9b23c835a3bb144e0c3f1fa451cadd3d49c9781973b180f70a4d2798358a7c00f3c0b9b3bf35326fe4c94e470e84ac8c35')
-sha512sums_armv7h=('82adee2db3b57388bd0d48e5eaab64e5e6bece462d49cc0161c8b3b7559ecbc764d48ad112c7893f86858610e21342c7ca50ee1e090a4ddfd09483c24f6e5c63')
-sha512sums_aarch64=('91796b6d611b3a8c1e85d8f2fd07f8889d15f4bcab7307cd1ca24c51cc1f352e3bb77f0e6219ddf92b210030feeffe18ebd1ab97b4256202e287e7e7a5236df0')
+source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/cd855e4d-b02a-4327-b218-7ab500ecff83/c7649b00ee20e30244b8b84ff9139c71/dotnet-sdk-6.0.100-preview.3.21202.5-linux-x64.tar.gz)
+source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/bd2c0cea-b1b5-4de8-941b-2b53f94df021/51bdc3008f95104c1e5bf1cd7f34cf78/dotnet-sdk-6.0.100-preview.3.21202.5-linux-arm.tar.gz)
+source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/90d8a5e0-ed8f-430c-a66c-d17a096024a9/95d17428d5b0da3552c502eede9f7f05/dotnet-sdk-6.0.100-preview.3.21202.5-linux-arm64.tar.gz)
+sha512sums_x86_64=('f776177c1ca2b672cf05f9ec32f20ef35a039dd8d31beaa139d1e47d71cca4ccf0f2a61bbf006a781e693977ee91cc9e08e12134ffb4c7a03a8e56c163b8661d')
+sha512sums_armv7h=('feff4ca8600c48482a4a4cf2863d16e36c4a33e46b1b56567e8acf7599d7ea71feb2bb1715a43e989c26148ea2c5024353114e687c290632fa12f18d184a5ca9')
+sha512sums_aarch64=('ee658e35f7917c5681d1f71ad3f82f4f2975d66a9b747ec5b5d58629b75c22fb6f31532b5423ad75b2e92ef333179948b52dd5507eadd9f3431e5638d98268d9')
 
 package_dotnet-host-preview() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
