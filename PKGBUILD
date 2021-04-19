@@ -14,10 +14,12 @@ provides=('arc_unpacker-git' 'arc_unpacker')
 conflicts=('arc_unpacker')
 source=("$pkgname::git+https://github.com/vn-tools/arc_unpacker.git"
         'catch.hpp::https://raw.githubusercontent.com/catchorg/Catch2/v2.13.4/single_include/catch2/catch.hpp'
-        'lcg.patch')
+        'lcg.patch'
+        'etc.patch')
 sha256sums=('SKIP'
             '6e0fa3dd160891a01c1f3b34e8bcd6e0140abe08eca022e390027f27dec2050b'
-            '37f3c1f1969ec9ed537a5cff79e3eb712fb2f317fcf99508eaa8bb250104a003')
+            '37f3c1f1969ec9ed537a5cff79e3eb712fb2f317fcf99508eaa8bb250104a003'
+            'e8c02f338aca81df79f6d5c0e302322abd776b2aeb36eb0a57ee93335c0da216')
 
 pkgver() {
   cd "$pkgname"
@@ -26,13 +28,13 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  # FIX sources path
+  # fix sources path
   sed -i "s|\/\.\.\/|\/|g" CMakeLists.txt
-  # FIX etc/ path
-  sed -i "s|program\_path\.parent()|io\:\:path(\"/usr/share/${_pkgname}\")|g" src/io/program_path.cc
-  # FIX logic_error
+  # fix etc/ path
+  git apply "$srcdir/etc.patch"
+  # fix logic_error
   git apply "$srcdir/lcg.patch"
-  # FIX tests
+  # fix tests
   cp "$srcdir/catch.hpp" tests/test_support/catch.h
 }
 
@@ -44,7 +46,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  ./run_tests
+  env _ARC_UNPACKER_TESTS=1 ./run_tests
 }
 
 package() {

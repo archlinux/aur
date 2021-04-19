@@ -18,9 +18,11 @@ pkgbase = arc_unpacker-git
 	source = arc_unpacker-git::git+https://github.com/vn-tools/arc_unpacker.git
 	source = catch.hpp::https://raw.githubusercontent.com/catchorg/Catch2/v2.13.4/single_include/catch2/catch.hpp
 	source = lcg.patch
+	source = etc.patch
 	sha256sums = SKIP
 	sha256sums = 6e0fa3dd160891a01c1f3b34e8bcd6e0140abe08eca022e390027f27dec2050b
 	sha256sums = 37f3c1f1969ec9ed537a5cff79e3eb712fb2f317fcf99508eaa8bb250104a003
+	sha256sums = e8c02f338aca81df79f6d5c0e302322abd776b2aeb36eb0a57ee93335c0da216
 
 pkgname = arc_unpacker-git
 
