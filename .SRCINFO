@@ -1,0 +1,14 @@
+pkgbase = docui-bin
+	pkgdesc = TUI Client for Docker
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/skanehira/docui
+	arch = x86_64
+	license = MIT
+	depends = go
+	conflicts = docui-git
+	source = docui-bin-2.0.4.tar.gz::https://github.com/skanehira/docui/releases/download/2.0.4/docui_2.0.4_Linux_x86_64.tar.gz
+	sha256sums = 8f87769b99e63f58fb77561fa9eb0f1913214aef3f1f9955e57df43bbfc3bbfa
+
+pkgname = docui-bin
+
