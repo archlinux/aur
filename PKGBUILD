@@ -61,7 +61,7 @@ makedepends=(
              'git'
              'hwids'
              'nodejs'
-             'java-environment'
+             'java-runtime-headless'
              'spirv-headers'
              )
 optdepends=(
@@ -311,7 +311,6 @@ _keeplibs=(
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
-           'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
            'third_party/tensorflow-text'
            'third_party/tflite'
            'third_party/tflite/src/third_party/eigen3'
