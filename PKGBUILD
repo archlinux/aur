@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd "${pkgbase}-${_commit}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CFLAGS="${CFLAGS} -Wno-return-local-addr"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -X main.commit=${_commit} -extldflags ${LDFLAGS}"
