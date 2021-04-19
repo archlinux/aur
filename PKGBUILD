@@ -2,7 +2,7 @@
 
 pkgname=dendrite
 pkgver=0.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64')
 url='https://github.com/matrix-org/dendrite'
@@ -29,6 +29,7 @@ build() {
   go build ./cmd/dendrite-monolith-server
   go build ./cmd/generate-config
   go build ./cmd/generate-keys
+  go build ./cmd/create-account
 }
 
 check() {
@@ -46,6 +47,7 @@ package() {
   install -Dm755 ./dendrite-monolith-server           "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 ./generate-config                    "${pkgdir}/usr/bin/${pkgname}-generate-config"
   install -Dm755 ./generate-keys                      "${pkgdir}/usr/bin/${pkgname}-generate-keys"
+  install -Dm755 ./create-account                      "${pkgdir}/usr/bin/${pkgname}-create-account"
   install -Dm644 "${srcdir}/config-sample.yaml"       "${pkgdir}/etc/dendrite/config-sample.yaml"
   install -Dm644 "${srcdir}/dendrite.service"         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}.sysusers"      "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
