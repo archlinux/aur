@@ -1,7 +1,7 @@
 # Maintainer:  Christopher Reimer <mail at c-reimer dot de>
 
 pkgname=opengothic
-pkgver=0.36
+pkgver=0.37
 pkgrel=1
 pkgdesc="Open source remake of Gothic 2: Night of the raven"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'libx11' 'vulkan-icd-loader')
 makedepends=('cmake' 'git' 'glslang' 'libglvnd' 'vulkan-headers')
 conflicts=('bullet')
-source=("git+https://github.com/Try/OpenGothic#commit=f1f450d1db11d718104c2cc921e5361f393c6242" #tag=v0.36
+source=("git+https://github.com/Try/OpenGothic#commit=9c67441213d716416d9d8041e98d1fcf5277b40f" #tag=v0.37
         "git+https://github.com/Try/Tempest.git#commit=6507d44eebc1b2b0cdee99e155e2c447102d5eed"
         "git+https://github.com/schellingb/TinySoundFont.git#commit=d4ffcdc8a34d3f61f22e4b283b4c100f5adf4b82"
         "git+https://github.com/Try/ZenLib.git#commit=60f536273d58412caaa393d3325945c81111724a"
