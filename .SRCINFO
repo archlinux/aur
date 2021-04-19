@@ -1,7 +1,7 @@
 pkgbase = msp430-elf-newlib
 	pkgdesc = C library for bare metal systems for the msp430-elf target.
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceware.org/newlib/
 	arch = any
 	groups = devel
