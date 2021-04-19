@@ -1,7 +1,7 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=cesium-editor-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A bare bones text editor"
 arch=('i686' 'x86_64')
