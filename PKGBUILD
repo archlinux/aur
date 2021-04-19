@@ -4,7 +4,7 @@ pkgname=perl-math-currency
 _lastauthor=M/MS/MSCHOUT
 _pkgname=Math-Currency
 pkgver=0.52
-pkgrel=2
+pkgrel=3
 pkgdesc="Exact Currency Math with Formatting and Rounding"
 arch=('any')
 license=('GPL' 'PerlArtistic')
@@ -19,27 +19,28 @@ sha512sums=('f440826f7fa7480f43576c1d7f5f6e5b868e961af918047f592b299b64244429ec1
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 
-	# create currency module for your local monetary system
-	# note: generate only for uncommented in /etc/locale.gen
-	locale -a|grep -- '^.._..$'|xargs -n1 scripts/new_currency||true
+	msg2 "Creating extra currency modules from your /etc/locale.gen"
+	for i in $(locale -a|grep -- '^.._..$'); do
+		scripts/new_currency $i || true
+	done
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
+		PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+		PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+		MODULEBUILDRC=/dev/null
 
-  perl Makefile.PL
-  make
+	perl Makefile.PL
+	make
 }
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make test
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	make test
 }
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	make install
 }
