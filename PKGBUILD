@@ -46,7 +46,6 @@ prepare() {
 	gendesk -n -f \
 		--pkgname "${pkgname%-git}" \
 		--pkgdesc "$pkgdesc" \
-		--icon games \
 		--categories "Application;Game;Launcher" \
 		--custom "Keywords=epic;games;launcher;legendary;"
 }
@@ -60,7 +59,12 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 
+	local py_version=$(python --version | cut -d" " -f2 | cut -d. -f1-2)
+
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+
+	mkdir -p "$pkgdir/usr/share/pixmaps"
+	ln -s "/usr/lib/python$py_version/site-packages/${pkgname%-git}/styles/Logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }
