@@ -1,8 +1,8 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 
 pkgname=townsemu-git
-pkgver=1304.4d4be73
-pkgrel=1
+pkgver=1631.88718b8
+pkgrel=2
 pkgdesc="An emulator of legendary Fujitsu FM TOWNS computer"
 arch=('i686' 'x86_64')
 url="https://github.com/captainys/TOWNSEMU"
@@ -21,14 +21,26 @@ pkgver() {
 
 prepare() {
   cd TOWNSEMU
-
   mkdir -p build
+  mkdir -p build_gui
+  cd gui/src
+  git clone https://github.com/captainys/public.git
+  cd ..
+  cd ..
+  sed -i '1i #include <cstdio>' src/cmdutil/wav2snd.cpp
+  sed -i '1i #include <cstdlib>' src/cmdutil/wav2snd.cpp
+  sed -i '1i #include <cstdio>' gui/src/public/src/yssimplesound/sample_fssimplewindow/main.cpp
+  sed -i '1i #include <cstdlib>' gui/src/public/src/yssimplesound/sample_fssimplewindow/main.cpp
+  sed -i '1i #include <cstdio>' gui/src/public/src/yssimplesound/sample/main.cpp
+  sed -i '1i #include <cstdlib>' gui/src/public/src/yssimplesound/sample/main.cpp
 }
 
 build() {
   cd TOWNSEMU/build
-
-  cmake ../src -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../src -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  make
+  cd ../build_gui
+  cmake ../gui/src -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
@@ -36,9 +48,8 @@ package() {
   cd TOWNSEMU/build
 
   install -m 755 -d "${pkgdir}/usr/bin"
-  install -m 755 main_cui/Tsugaru_CUI ${pkgdir}/usr/bin/Tsugaru_CUI
-  install -m 755 discimg/bincue2wav ${pkgdir}/usr/bin/bincue2wav
-  install -m 755 discimg/testcue ${pkgdir}/usr/bin/testcue
-  install -m 755 discimg/testiso ${pkgdir}/usr/bin/testiso
-  install -m 755 discimg/testmsf ${pkgdir}/usr/bin/testmsf
+  install -m 755 ./main_cui/Tsugaru_CUI ${pkgdir}/usr/bin/Tsugaru_CUI
+
+  cd ../../TOWNSEMU/build_gui
+  install -m 755 ./main_gui/Tsugaru_GUI ${pkgdir}/usr/bin/Tsugaru_GUI
 }

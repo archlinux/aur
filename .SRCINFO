@@ -1,7 +1,7 @@
 pkgbase = townsemu-git
 	pkgdesc = An emulator of legendary Fujitsu FM TOWNS computer
-	pkgver = 1304.4d4be73
-	pkgrel = 1
+	pkgver = 1631.88718b8
+	pkgrel = 2
 	url = https://github.com/captainys/TOWNSEMU
 	arch = i686
 	arch = x86_64
