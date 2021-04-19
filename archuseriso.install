@@ -1,0 +1,13 @@
+post_install() {
+  echo
+  echo '==='
+  echo 'Archuseriso new features:'
+  echo '- no refind option'
+  echo '- btrfs support'
+  echo '==='
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
