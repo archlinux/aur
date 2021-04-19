@@ -1,0 +1,13 @@
+pkgbase = python-isbg
+	pkgdesc = isbg is a script and a python 3 module that makes it easy to scan an IMAP inbox for spam using SpamAssassin and get your spam moved to another folder.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://isbg.gitlab.io/isbg/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/i/isbg/isbg-2.3.1.tar.gz
+	md5sums = a64acd81a04fb866fd7ae4ae566979d6
+
+pkgname = python-isbg
+
