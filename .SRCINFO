@@ -1,8 +1,8 @@
 pkgbase = python2-ftdi
 	pkgdesc = Python bindings to libftdi
 	pkgver = 0.20
-	pkgrel = 4
-	url = http://www.intra2net.com/en/developer/libftdi/download.php
+	pkgrel = 5
+	url = https://www.intra2net.com/en/developer/libftdi/download.php
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,8 @@ pkgbase = python2-ftdi
 	depends = libftdi-compat
 	depends = python2
 	options = !libtool
-	source = http://www.intra2net.com/en/developer/libftdi/download/libftdi-0.20.tar.gz
-	source = http://www.intra2net.com/en/developer/libftdi/download/libftdi-0.20.tar.gz.sig
+	source = https://www.intra2net.com/en/developer/libftdi/download/libftdi-0.20.tar.gz
+	source = https://www.intra2net.com/en/developer/libftdi/download/libftdi-0.20.tar.gz.sig
 	sha1sums = 4bc6ce70c98a170ada303fbd00b8428d8a2c1aa2
 	sha1sums = 807d145147c9bee08b4cea4d7ca82ccaf1330f02
 

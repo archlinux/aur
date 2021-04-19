@@ -3,15 +3,15 @@
 
 pkgname=python2-ftdi
 pkgver=0.20
-pkgrel=4
+pkgrel=5
 pkgdesc="Python bindings to libftdi"
 arch=("i686" "x86_64")
-url="http://www.intra2net.com/en/developer/libftdi/download.php"
+url="https://www.intra2net.com/en/developer/libftdi/download.php"
 license=("GPL2" "LGPL2.1")
 depends=("libftdi-compat" "python2")
 makedepends=('boost' 'swig')
 options=('!libtool')
-source=(http://www.intra2net.com/en/developer/libftdi/download/libftdi-${pkgver}.tar.gz{,.sig})
+source=(https://www.intra2net.com/en/developer/libftdi/download/libftdi-${pkgver}.tar.gz{,.sig})
 sha1sums=('4bc6ce70c98a170ada303fbd00b8428d8a2c1aa2'
           '807d145147c9bee08b4cea4d7ca82ccaf1330f02')
 
