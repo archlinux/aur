@@ -10,7 +10,7 @@ depends=(tclkit)
 arch=(any)
 license=("MIT")
 options=(!strip)
-source=(https://chiselapp.com/user/aspect/repository/sdx/raw/sdx-20110317.kit?name=1a77b0b5bc8cfcf2df2ef051a511e9187103ce0c)
+source=(http://chiselapp.com/user/aspect/repository/sdx/raw/sdx-20110317.kit?name=1a77b0b5bc8cfcf2df2ef051a511e9187103ce0c)
 md5sums=('f27d8f331899d97202fde25e7c39f55e')                                                                                
 
 package() {
