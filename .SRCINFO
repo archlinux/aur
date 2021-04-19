@@ -23,7 +23,7 @@ pkgbase = ros-noetic-fast-gicp-cuda-git
 	sha256sums = SKIP
 	sha256sums = d8208f7044ab26f8b9dc87898a0265c57346d171375e9e4d8669807cada955cb
 	sha256sums = f8f05e0f64b6d5e987f4f21ab780e46338ff858e561cb4db0a93046620fcecc9
-	sha256sums = SKIP
+	sha256sums = 3aef017d7eb854d9de55a3c15579ff05af2a8ff232fbe3b62f255e6f3f40554e
 
 pkgname = ros-noetic-fast-gicp-cuda-git
 
