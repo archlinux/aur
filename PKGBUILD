@@ -2,8 +2,8 @@
 # Contributor: Clément DÉMOULINS <clement AT archivel DOT fr>
 
 pkgname=gnome-ssh-askpass3
-_pkgname=openssh
-pkgver=8.4p1
+_pkgbase=openssh
+pkgver=8.6p1
 pkgrel=1
 pkgdesc='A GTK3 passphrase requester for ssh-add.'
 arch=('x86_64')
@@ -13,19 +13,19 @@ depends=('gtk3')
 provides=('x11-ssh-askpass')
 conflicts=('x11-ssh-askpass' 'ssh-askpass-fullscreen' 'gnome-ssh-askpass' 'gnome-ssh-askpass2')
 
-source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz
+source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgbase}-${pkgver}.tar.gz
         ${pkgname}.sh)
-sha256sums=('5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24'
+sha256sums=('c3e6e4da1621762c850d03b47eed1e48dff4cc9608ddeb547202a234df8ed7ae'
             '8a18ef3a2c6e61f117db49aabef4e191fea47df43907872113fd64536d2f4c11')
 
 build() {
-  cd "${_pkgname}-${pkgver}/contrib"
+  cd "${_pkgbase}-${pkgver}/contrib"
 
   make ${pkgname}
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}/contrib"
+  cd "${_pkgbase}-${pkgver}/contrib"
 
   install -D -m 755 ${pkgname} "${pkgdir}/usr/lib/ssh/${pkgname}"
   install -D -m 755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
