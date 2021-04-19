@@ -4,7 +4,7 @@
 
 _name=kustomize
 pkgname=kustomize-bin
-pkgver=4.0.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Customization of Kubernetes YAML configurations"
 arch=('x86_64')
@@ -12,7 +12,9 @@ url="https://github.com/kubernetes-sigs/kustomize"
 license=('Apache')
 provides=('kustomize')
 source=("https://github.com/kubernetes-sigs/${_name}/releases/download/${_name}%2Fv${pkgver}/${_name}_v${pkgver}_linux_amd64.tar.gz")
-sha256sums=('914c006a4c00e92e09c050e5be594ef1270d47ea41b84dd7bdcab6b3b05b9297')
+sha256sums=(
+    '4efb7d0dadba7fab5191c680fcb342c2b6f252f230019cf9cffd5e4b0cad1d12'
+)
 
 package() {
   cd "${srcdir}"
