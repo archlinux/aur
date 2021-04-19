@@ -1,5 +1,5 @@
 src
 pkg
 system76-power-git
-*pkg.tar.xz
+*.pkg.tar.*
 tags
