@@ -1,0 +1,25 @@
+From e75a07ed0b70aa83617fd399820b4d615dde6639 Mon Sep 17 00:00:00 2001
+From: noodlefighter <noodlefighter@gmail.com>
+Date: Mon, 19 Apr 2021 16:56:41 +0800
+Subject: [PATCH] fix opencc 1.1.0 failed
+
+---
+ src/rime/gear/simplifier.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rime/gear/simplifier.cc b/src/rime/gear/simplifier.cc
+index 98a1c5a..171c415 100644
+--- a/src/rime/gear/simplifier.cc
++++ b/src/rime/gear/simplifier.cc
+@@ -54,7 +54,7 @@ class Opencc {
+       return false;
+     } else {
+       const opencc::DictEntry* entry = item.Get();
+-      for (const char* value : entry->Values()) {
++      for (auto value : entry->Values()) {
+         forms->push_back(value);
+       }
+       return forms->size() > 0;
+-- 
+2.31.0
+
