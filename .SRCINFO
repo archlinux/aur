@@ -1,16 +1,15 @@
 pkgbase = pros-cli
 	pkgdesc = Command Line Interface for managing PROS projects. Works with V5 and the Cortex
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/purduesigbots/pros-cli
 	arch = x86_64
 	license = MPL
-	makedepends = python-pip
-	depends = python
+	depends = python-pip
 	depends = arm-none-eabi-newlib
 	depends = arm-none-eabi-gcc
-	source = https://github.com/purduesigbots/pros-cli/releases/download/3.2.0/pros_cli-3.2.0-py3-none-any.whl
-	md5sums = 1641612ffb2d7f4b695dca851ab7ad63
+	source = https://github.com/purduesigbots/pros-cli/releases/download/3.2.1/pros_cli-3.2.1-lin-64bit.zip
+	md5sums = b161f079c691cb38e068ea19c897ccda
 
 pkgname = pros-cli
 
