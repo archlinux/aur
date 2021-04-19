@@ -61,12 +61,12 @@ pkgbase=linux-cacule-rc
 _major=5.12
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc8
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
 _srcname=linux-${_stablerc}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -76,7 +76,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.12-rc"
 source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz"
-        "https://git.kernel.org/torvalds/t/linux-5.12-rc7.tar.gz"
+        "https://git.kernel.org/torvalds/t/linux-5.12-rc8.tar.gz"
         "config"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
@@ -97,7 +97,7 @@ source=(#"https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_stablerc}.tar.xz
         "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch")
 
-sha512sums=('09ad82c9490e67e6b52c17690d3308047594cbf592885c76be19b45524695901f107988b6f0e30f0af07a7f437bc34f1cdedd95371da62fe718d70ebe83cd5da'
+sha512sums=('a9d1da6a1bb5a2ef4c8dbd58089b8f6f3e8de61cf725434785f35821bd3f433c29019b9e0245a990c8ea035c0e8b60645b42bdf2f3b2eed3974284c8daee4d1e'
             'ab1954ccaab6d77d34b6e1b2ba9ce5dfb2ab4eae5777e071dddbd41dacdbb67e786fd210a96089f6166cae373cabaf22be89c40fea70b3b1cee4960bd5ba1ad1'
             '01a59958b88f4f0fae72943883937bccb5be2a1ceeac9ba8a689c4b47125edcd3360aa6a94a535b6dae24ea8b1ac52002431ad72b2a623373c905901af2b3609'
             'bafda1ec6114a360bed8a9f8ae6b1e8dc5c22adf15f7545c3455a090f14b491639707f6624d7a891ec66b459842e61df9d62274b070b7a611f0bdbd367219ae5'
