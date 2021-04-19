@@ -8,7 +8,7 @@ url="https://github.com/ransome1/sleek/"
 license=("MIT")
 options=(!strip)
 makedepends=("npm")
-depends=("electron" "base-devel")
+depends=("electron")
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek.sh")
 sha512sums=('7c567e489333f683b4d90064b12faa6281a6997794c27d999bd93aa8a45f9bca1419fa425e6cd90eb0e459a7efb03a126111692ecbe847fcc7478255c461c02f'
             '60777dbda8202e5a265a274d126d30269fb8fba67641d22a83be19b353b4805cbed2a3c80bbc0e6ed7c0fe7ae21c3cde59b784d42d3ba941bb0fdf022c1375e8'
