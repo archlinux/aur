@@ -4,14 +4,14 @@
 # Contributor: Christian Berendt <christian at suppentopf dot net>
 
 pkgname=boxes
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Text mode box and comment drawing filter"
 url="http://boxes.thomasjensen.com/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 source=("https://github.com/ascii-boxes/boxes/archive/v$pkgver.zip")
-md5sums=('2b50f17d11f8b8d6b50007108ffbac23')
+md5sums=('efe27a03c73cbfbd22d823c4787bbf2b')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
