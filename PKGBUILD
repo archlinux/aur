@@ -2,8 +2,8 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc-stage1
-pkgver=10.2.0
-_islver=0.22.1
+pkgver=10.3.0
+_islver=0.23
 pkgrel=1
 pkgdesc="The GNU Compiler Collection bootstrap for the ${_target} target."
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ depends=("${_target}-binutils>=2.25" 'libmpc' 'elfutils' 'zlib')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('28658ce0f0bdb95b51fd2eb15df24211c53284f6ca2ac5e897acc3169e55b60f'
-            'b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c')
+sha256sums=('5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2'
+            '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344')
 
 prepare() {
   # add isl into tree
