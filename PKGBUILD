@@ -3,7 +3,7 @@
 # Contributor: ormris ormris@ormris.com
 
 pkgname="wyrd-git"
-pkgver=20200730.a33bf8f
+pkgver=20210419.5872ee0
 pkgrel=1
 pkgdesc="A text-based front-end to Remind."
 arch=('i686' 'x86_64')
@@ -12,7 +12,8 @@ license=('GPL2')
 provides=('wyrd')
 conflicts=('wyrd')
 depends=('remind' 'ncurses' 'less')
-makedepends=('git' 'ocaml' 'camlp4' 'texlive-core' 'texlive-latexextra' 'python' 'hevea' 'autoconf')
+makedepends=('git' 'ocaml' 'camlp4' 'python'  'autoconf')
+# doc: 'hevea' 'texlive-core' 'texlive-latexextra'
 source=("git+https://github.com/Perdu/wyrd.git")
 md5sums=('SKIP')
 
@@ -24,8 +25,9 @@ pkgver() {
 build() {
         cd "$srcdir/${pkgname%-git}"
         autoconf
-        cd "$srcdir/${pkgname%-git}/doc/"
-	make all
+        # compile documentation (removed)
+        # cd "$srcdir/${pkgname%-git}/doc/"
+	# make all
         cd "$srcdir/${pkgname%-git}"
 	./configure --exec-prefix=/usr --prefix=/usr --sysconfdir=/etc --enable-utf8
 	make
