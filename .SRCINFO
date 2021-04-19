@@ -1,0 +1,15 @@
+pkgbase = vscode-tailwindcss-language-server-bin
+	pkgdesc = Tailwind CSS language server component from tailwindcss-intellisense vscode extension
+	pkgver = 0.5.10
+	pkgrel = 1
+	url = https://github.com/tailwindlabs/tailwindcss-intellisense
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	depends = typescript
+	source = https://github.com/tailwindlabs/tailwindcss-intellisense/releases/download/v0.5.10/vscode-tailwindcss-0.5.10.vsix
+	sha256sums = SKIP
+
+pkgname = vscode-tailwindcss-language-server-bin
+
