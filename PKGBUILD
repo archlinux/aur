@@ -1,7 +1,7 @@
 # Maintainer: Janis Jansons <aur@janhouse.lv>
 pkgname=cecdaemon-git
-pkgver=1.0.0.r4.g0de2f51
-pkgrel=1
+pkgver=1.0.0.r7.ge87b85f
+pkgrel=2
 pkgdesc="CEC Daemon for linux media centers"
 arch=('any')
 url="https://github.com/simons-public/cecdaemon"
@@ -29,11 +29,11 @@ package() {
     python setup.py install --root="$pkgdir"
 
     mkdir -p "$pkgdir/etc/modules-load.d"
-    cp "$srcdir/../uinput.conf" "$pkgdir/etc/modules-load.d/"
+    echo "uinput" > "$pkgdir/etc/modules-load.d/uinput.conf"
 
     cp "examples/cecdaemon.conf-example" "$pkgdir/etc/cecdaemon.conf"
 
-    mkdir -p "$pkgdir/etc/systemd/system/multi-user.target.wants/"
-    cp "examples/cecdaemon.service-example" "$pkgdir/etc/systemd/system/multi-user.target.wants/cecdaemon.service"
-    sed -i 's/cec.conf/cecdaemon.conf/' "$pkgdir/etc/systemd/system/multi-user.target.wants/cecdaemon.service"
+    mkdir -p "$pkgdir/usr/lib/systemd/system"
+    cp "examples/cecdaemon.service-example" "$pkgdir/usr/lib/systemd/system/cecdaemon.service"
+    sed -i 's/cec.conf/cecdaemon.conf/' "$pkgdir/usr/lib/systemd/system/cecdaemon.service"
 }
