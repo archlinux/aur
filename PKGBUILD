@@ -2,7 +2,7 @@
 
 pkgname=cudapm1
 pkgver=0.22
-pkgrel=3
+pkgrel=4
 pkgdesc="Program that implements the P-1 algorithm for factoring Mersenne numbers."
 arch=('x86_64')
 url=https://mersenneforum.org/showthread.php?t=17835
