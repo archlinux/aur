@@ -1,0 +1,33 @@
+pkgbase = eruption
+	pkgdesc = Linux user-mode input and LED driver for keyboards, mice and other devices
+	pkgver = 0.1.21
+	pkgrel = 0
+	url = https://github.com/X3n0m0rph59/eruption
+	install = eruption.install
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = git
+	makedepends = rust
+	makedepends = xorg-server-devel
+	makedepends = libxrandr
+	depends = libevdev
+	depends = hidapi
+	depends = systemd-libs
+	depends = dbus
+	depends = libpulse
+	depends = luajit
+	depends = lua51-socket
+	provides = eruption
+	conflicts = eruption-roccat-vulcan
+	conflicts = eruption-roccat-vulcan-git
+	replaces = eruption-git
+	replaces = eruption-roccat-vulcan-git
+	backup = etc/eruption/eruption.conf
+	backup = usr/share/eruption/scripts/lib/themes/*
+	backup = usr/share/eruption/scripts/lib/macros/*
+	source = eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=cf73faf0b7eccc25487ab8fead97cb4de5b31e89
+	sha512sums = SKIP
+
+pkgname = eruption
+

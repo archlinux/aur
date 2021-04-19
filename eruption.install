@@ -1,0 +1,38 @@
+post_install() {
+    setcap cap_net_admin+ep /usr/bin/eruption-process-monitor
+
+    systemctl daemon-reload
+    # systemctl --global daemon-reload
+
+    systemctl reload dbus.service
+    udevadm control --reload-rules
+
+    systemctl preset eruption
+    systemctl preset eruption-process-monitor
+
+    systemctl enable --now eruption.service
+    # systemctl --global enable --now eruption-process-monitor.service
+}
+
+post_upgrade() {
+    setcap cap_net_admin+ep /usr/bin/eruption-process-monitor
+
+    systemctl daemon-reload
+    # systemctl --global daemon-reload
+
+    systemctl reload dbus.service
+    udevadm control --reload-rules
+
+    systemctl try-restart eruption.service
+    # systemctl --global try-restart eruption-process-monitor.service
+}
+
+pre_remove() {
+    # systemctl --global stop eruption-process-monitor.service
+    systemctl stop eruption.service
+}
+
+post_remove() {
+    udevadm control --reload-rules
+    systemctl daemon-reload
+}
