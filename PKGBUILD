@@ -62,6 +62,7 @@ makedepends=(
              'hwids'
              'nodejs'
              'java-environment'
+             'spirv-headers'
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
