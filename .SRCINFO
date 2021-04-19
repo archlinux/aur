@@ -1,0 +1,17 @@
+pkgbase = vim-git-messenger-git
+	pkgdesc = Vim plugin that reveals commit messages under the cursor
+	pkgver = r304.866b3ed
+	pkgrel = 1
+	url = https://github.com/rhysd/git-messenger.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-git-messenger
+	conflicts = vim-git-messenger
+	source = vim-git-messenger-git::git+https://github.com/rhysd/git-messenger.vim
+	md5sums = SKIP
+
+pkgname = vim-git-messenger-git
+
