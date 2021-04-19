@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=cdk8s
-pkgver=1.0.0beta10
+pkgver=1.0.0beta11
 _pkgver=${pkgver/beta/-beta.}
 pkgrel=1
 pkgdesc="Define Kubernetes native apps and abstractions using object-oriented programming"
@@ -12,7 +12,7 @@ makedepends=('npm')
 depends=('nodejs')
 optdepends=('python: python language support')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz)
-sha1sums=('4907263bcf4fbbdc81e3a70f12a620597d4e971f')
+sha1sums=('987dbba569f98f63944c515c94f092f3518a8081')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
