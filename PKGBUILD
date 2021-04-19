@@ -1,7 +1,7 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
 pkgname=('python-rosdep')
-pkgver='0.20.0'
+pkgver='0.20.1'
 pkgrel=1
 pkgdesc='rosdep package manager abstraction tool for ROS'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 
 conflicts=('python2-rosdep')
 source=("https://github.com/ros-infrastructure/rosdep/archive/${pkgver}.tar.gz")
-sha256sums=('ea46ec9019ed9f9dc78849f0896b8cbacedaee545e4dd092b2794b4fb4e15bc3')
+sha256sums=('135334cd4719c77cd268904dce012ae8a75c238c5f3d4eb945e7ae2310d54cca')
 
 _module='rosdep'
 
