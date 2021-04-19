@@ -1,7 +1,8 @@
-# Maintainer: boosterdev@linuxmail.org
+# Maintainer: Jonne Haß <me@jhass.eu>
+# Contributor: boosterdev@linuxmail.org
 
 pkgname="ruby-slop"
-pkgver="4.5.0"
+pkgver="4.8.2"
 pkgrel=1
 arch=("any")
 pkgdesc="Simple Lightweight Option Parsing"
@@ -10,7 +11,7 @@ license=("MIT")
 makedepends=("ruby")
 optdepends=("ruby-minitest" "ruby-rake")
 source=("https://rubygems.org/gems/slop-${pkgver}.gem")
-sha256sums=('17542a5c73cbf6a76f8638939781e4431d07dc64b359b958b23383574641d52d')
+sha256sums=('a3d5be3ad304b9dbd00b7c18a0a067b09ff6fd28485d4c6b05adb294d1eea115')
 noextract=("slop-${pkgver}.gem")
 
 
