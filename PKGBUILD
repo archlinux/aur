@@ -9,7 +9,7 @@ license=('MIT')
 groups=()
 depends=('autobright')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AquaUseful/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/AquaUseful/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('27c77367bee59f6c35bfca498fbbe7ac7bebac5f2c7524fb52eded26def525d0')
 
 package() {
