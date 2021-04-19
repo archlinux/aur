@@ -9,7 +9,7 @@ url="https://gitlab.com/NoahJelen/cesium"
 license=('GPL')
 depends=('ncurses' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'gzip')
-source=("https://gitlab.com/NoahJelen/cesium/-/archive/0.2.0/cesium-0.2.0.zip")
+source=("https://gitlab.com/NoahJelen/cesium/-/archive/0.2.1/cesium-0.2.1.zip")
 conflicts=('cesium-editor-git')
 md5sums=('SKIP')
 
