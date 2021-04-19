@@ -1,12 +1,12 @@
 pkgbase = swagger-ui
 	pkgdesc = Collection of web assets that dynamically generate beautiful documentation from a Swagger-compliant API.
-	pkgver = 3.46.0
+	pkgver = 3.47.1
 	pkgrel = 1
 	url = https://swagger.io/swagger-ui/
 	arch = any
 	license = Apache
-	source = https://github.com/swagger-api/swagger-ui/archive/v3.46.0.tar.gz
-	sha256sums = 238c8f0f34f51324cae0fd91d80f228bee19b38ff9d8768fd87a32dd12d2d0a0
+	source = https://github.com/swagger-api/swagger-ui/archive/v3.47.1.tar.gz
+	sha256sums = ae1b8858bddfb00f600916d48a6690c4a46fddf2768cfe2d1b1dd28f75ddc6b7
 
 pkgname = swagger-ui
 
