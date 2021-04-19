@@ -1,7 +1,7 @@
 pkgbase = python-getdist
 	pkgdesc = MCMC sample analysis, kernel densities, plotting, and GUI
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/cmbant/getdist
 	arch = any
 	makedepends = python-setuptools
@@ -12,8 +12,8 @@ pkgbase = python-getdist
 	depends = python-pyside2
 	depends = python-pandas
 	options = !emptydirs
-	source = https://github.com/cmbant/getdist/archive/1.1.2.tar.gz
-	sha256sums = 80feaa964fdfa777e68efcc6a96b9a99ad3e663504ba91e97fff9843b2308b62
+	source = https://github.com/cmbant/getdist/archive/1.2.0.tar.gz
+	sha256sums = d74f31552f0a8ce00ecb418ed7b6719d9e131aaf56f3b54cfdbe031c0c3c11db
 
 pkgname = python-getdist
 

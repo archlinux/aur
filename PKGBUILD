@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=getdist
 pkgname=python-$_modulename
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="MCMC sample analysis, kernel densities, plotting, and GUI"
 arch=(any)
 url="https://github.com/cmbant/getdist"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('80feaa964fdfa777e68efcc6a96b9a99ad3e663504ba91e97fff9843b2308b62')
+sha256sums=('d74f31552f0a8ce00ecb418ed7b6719d9e131aaf56f3b54cfdbe031c0c3c11db')
 
 package() {
   cd "$srcdir/$_modulename-${pkgver}"
