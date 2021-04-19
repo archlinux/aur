@@ -1,0 +1,28 @@
+pkgbase = jfrog-cli-bin
+	pkgdesc = Simple interface to Artifactory, Bintray and Mission Control
+	pkgver = 1.46.4
+	pkgrel = 1
+	url = https://github.com/jfrog/jfrog-cli
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	depends = glibc
+	provides = jfrog-cli
+	conflicts = jfrog-cli
+	conflicts = jfrog-cli-go
+	noextract = jfrog-cli-bin-1.46.4-1.LICENSE
+	noextract = jfrog-cli-bin-1.46.4-1.jfrog
+	source = jfrog-cli-bin-1.46.4-1.LICENSE::https://raw.githubusercontent.com/jfrog/jfrog-cli/v1.46.4/LICENSE
+	sha512sums = 71d2b28a4d77cabaeb07b0d8622404aa5738f1e22fe48f6d4ad1c5d1f191dc3c7efc0d471a1ae3618d75862379162157cabf3abf8c21c4d3b7154a1dfa99cfa8
+	source_x86_64 = jfrog-cli-bin-1.46.4-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.46.4/jfrog-cli-linux-amd64/jfrog
+	sha512sums_x86_64 = fac30b6aa560db02ad5db97f0f6f3cbefdcb9072d089537da67c0b8829b90f3ef2430d651613e7079151c1607529128f7cc827cee84dac39d4731a49d4d98dff
+	source_i686 = jfrog-cli-bin-1.46.4-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.46.4/jfrog-cli-linux-386/jfrog
+	source_armv7h = jfrog-cli-bin-1.46.4-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.46.4/jfrog-cli-linux-arm/jfrog
+	sha512sums_armv7h = 3ea34e380ea0842d4948b5c6e853f6430b792575fb31435d08660df7d32ece3ec736b09560c1526ee58b3a58e37acd78bfc668f5abe09a86a4be2f8a0502d9d8
+	source_aarch64 = jfrog-cli-bin-1.46.4-1.jfrog::https://releases.jfrog.io/artifactory/jfrog-cli/v1/1.46.4/jfrog-cli-linux-arm64/jfrog
+	sha512sums_aarch64 = b94236c27279c57fecf334fe9ebefac7cef3f8204f4836473796726061158aa385e1dd8c5843383524ae7c6d5aa4c5ed658d8258257b8e89df43555a1cdded6b
+
+pkgname = jfrog-cli-bin
+
