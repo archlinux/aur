@@ -2,7 +2,7 @@
 
 pkgname=firejail-handler-extra
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BitTorrent/Youtube URL handlers for Firejail"
 arch=(x86_64)
 license=(GPL2)
