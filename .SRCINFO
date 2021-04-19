@@ -1,6 +1,6 @@
 pkgbase = fightcade2
 	pkgdesc = The best way to play your favorite retro games with or against any other player in the world.
-	pkgver = 2.0.98
+	pkgver = 2.0.99
 	pkgrel = 1
 	url = https://www.fightcade.com/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fightcade2
 	depends = rsync
 	depends = wine
 	depends = lib32-mpg123
-	source = fightcade2-2.0.98.tar.gz::https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
+	source = fightcade2-2.0.99.tar.gz::https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
 	md5sums = SKIP
 
 pkgname = fightcade2
