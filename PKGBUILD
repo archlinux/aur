@@ -11,7 +11,7 @@ depends=()
 optdepends=('texlive-bin: TeX engine (generate PDFs) '
             'tectonic: Alternative TeX engine (generate PDFs) ')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vojtechkral/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('282b1ed1ba66e04e30b6c7153ffd2cfce3bc25445d9c247216cfdc4bb22f7f02')
+sha256sums=('c55cb0e263e721c7faddb670493b3ad29a1e040e973e1be58fefef510b0a9e8c')
 
 build() {
   cd "$pkgname-$pkgver"
