@@ -1,14 +1,14 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-torchaudio-git
 _pkgname=audio
-pkgver=r762.7b85f1c3
+pkgver=r824.5cca0008
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('x86_64')
 url="https://github.com/pytorch/audio"
 license=('BSD')
 depends=('python' 'sox' 'python-pytorch')
-optdepends=('python-kaldi-io')
+optdepends=('python-kaldi-io' 'python-soundfile')
 makedepends=('git' 'python-setuptools' 'cmake' 'ninja')
 provides=('python-torchaudio')
 conflicts=('python-torchaudio')
@@ -35,6 +35,8 @@ prepare() {
 build() {
   msg "Building Python 3"
   cd "${srcdir}/${_pkgname}"
+  CUDA_HOME=/opt/cuda \
+  BUILD_SOX=1 \
   python setup.py build
 }
 
