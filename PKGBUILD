@@ -4,10 +4,10 @@ _gitbranch=master
 _gitauthor=devemio
 pkgname=docker-color-output-git
 pkgver=v2.0.0.r4.g9b9d14a
-pkgrel=1
+pkgrel=2
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
-license=('unknown')
+license=('MIT')
 url="https://github.com/${_gitauthor}/${pkgname%-git}"
 source=("git://github.com/${_gitauthor}/${pkgname%-git}#branch=${_gitbranch}")
 sha512sums=('SKIP')
