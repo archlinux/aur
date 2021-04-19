@@ -6,6 +6,8 @@ pkgbase = python-isbg
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
+	depends = python-chardet
+	depends = python-docopt
 	source = https://files.pythonhosted.org/packages/source/i/isbg/isbg-2.3.1.tar.gz
 	md5sums = a64acd81a04fb866fd7ae4ae566979d6
 
