@@ -1,15 +1,15 @@
 # Maintainer: Aeryxium <aeryxium+aur@gmail.com>
 pkgname='tgr'
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Refresh gpg keys periodically and privately over tor circuits.'
 arch=('any')
 url='https://github.com/aeryxium/tgr'
 license=('MIT')
 source=("tgr" "tgr.service" "LICENSE" )
-md5sums=('ddf08c1bbee5581b5372403515fbf397'
-         'f7e2c455294e5bccfb9ee7f60afa848c'
-         '2d49e1137e0abcc0c0071cd88ba0835c')
+sha256sums=('9cb464745642b9285ea0e83b77d210fa9755c0edbe6f64f94f83107413332811'
+            'd1b8c8762a0d6ed2d4e5061749e0ede488460bb4123d1f1be5da3840ee8f1866'
+            '80665554a4613fa092262f935404215f29816b5d42ea0dc75d12c9d6d1d03659')
 depends=( 'tor' 'torsocks' )
 package() {
 	install -Dm0755 "$srcdir/tgr" "$pkgdir/usr/bin/tgr"
