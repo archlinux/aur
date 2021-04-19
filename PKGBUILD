@@ -2,7 +2,7 @@
 _gemname=pony
 pkgname=ruby-$_gemname
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Send email in one command: Pony.mail(:to => 'someone@example.com', :body => 'hello')"
 arch=(any)
 url='http://github.com/benprew/pony'

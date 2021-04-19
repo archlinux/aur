@@ -1,7 +1,7 @@
 pkgbase = ruby-pony
 	pkgdesc = Send email in one command: Pony.mail(:to => 'someone@example.com', :body => 'hello')
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/benprew/pony
 	arch = any
 	license = MIT
