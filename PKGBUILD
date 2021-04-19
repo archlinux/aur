@@ -9,16 +9,16 @@
 
 pkgbase=lib32-glfw
 pkgname=('lib32-glfw-x11' 'lib32-glfw-wayland')
-pkgver=3.3.2
+pkgver=3.3.4
 pkgrel=1
 arch=('x86_64')
-url="http://www.glfw.org/"
+url="https://www.glfw.org/"
 license=('custom:ZLIB')
 makedepends=('lib32-mesa' 'cmake' 'vulkan-headers' 'lib32-vulkan-icd-loader'
              'extra-cmake-modules' 'wayland-protocols' 'lib32-libxi' 'lib32-libxrandr'
              'lib32-libxcursor' 'lib32-libxkbcommon' 'lib32-libxinerama')
 source=("glfw-${pkgver}.tar.gz"::"https://github.com/glfw/glfw/archive/${pkgver}.tar.gz")
-sha512sums=('f5af749d33b5b900ccf07988ad0bf51bd766a18e4cf2bc2a76020c88e98a2528ff1b965224184fe0d290cfe34b1af1e6f633600660d81194fe354078e2f35c56')
+sha512sums=('2b45ab72da7a2c007c0f42ccd56205f9684cfb980e2b1df127850cd057bb2b02ce02c7c64acd54cd433778e7017148f214afedf09badff9d2edf5f9b8d9d2701')
 
 prepare() {
   cd "$srcdir/glfw-$pkgver"
@@ -57,7 +57,7 @@ package_lib32-glfw-x11() {
   depends=('lib32-libxi' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-libxcursor' 'lib32-libgl')
   replaces=('lib32-glfw')
   conflicts=('lib32-glfw')
-  provides=('lib32-glfw')
+  provides=("lib32-glfw=$pkgver")
 
   cd "$srcdir/glfw-$pkgver"/build-x11
 
@@ -74,7 +74,7 @@ package_lib32-glfw-wayland() {
   pkgdesc="A free, open source, portable framework for graphical application development (wayland) (32-bit)"
   depends=('lib32-wayland' 'lib32-libxkbcommon' 'lib32-libgl')
   conflicts=('lib32-glfw')
-  provides=('lib32-glfw')
+  provides=("lib32-glfw=$pkgver")
 
   cd "$srcdir/glfw-$pkgver"/build-wayland
 

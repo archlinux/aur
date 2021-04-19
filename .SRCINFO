@@ -1,7 +1,7 @@
 pkgbase = lib32-glfw
-	pkgver = 3.3.2
+	pkgver = 3.3.4
 	pkgrel = 1
-	url = http://www.glfw.org/
+	url = https://www.glfw.org/
 	arch = x86_64
 	license = custom:ZLIB
 	makedepends = lib32-mesa
@@ -15,8 +15,8 @@ pkgbase = lib32-glfw
 	makedepends = lib32-libxcursor
 	makedepends = lib32-libxkbcommon
 	makedepends = lib32-libxinerama
-	source = glfw-3.3.2.tar.gz::https://github.com/glfw/glfw/archive/3.3.2.tar.gz
-	sha512sums = f5af749d33b5b900ccf07988ad0bf51bd766a18e4cf2bc2a76020c88e98a2528ff1b965224184fe0d290cfe34b1af1e6f633600660d81194fe354078e2f35c56
+	source = glfw-3.3.4.tar.gz::https://github.com/glfw/glfw/archive/3.3.4.tar.gz
+	sha512sums = 2b45ab72da7a2c007c0f42ccd56205f9684cfb980e2b1df127850cd057bb2b02ce02c7c64acd54cd433778e7017148f214afedf09badff9d2edf5f9b8d9d2701
 
 pkgname = lib32-glfw-x11
 	pkgdesc = A free, open source, portable framework for graphical application development (x11) (32-bit)
@@ -25,7 +25,7 @@ pkgname = lib32-glfw-x11
 	depends = lib32-libxinerama
 	depends = lib32-libxcursor
 	depends = lib32-libgl
-	provides = lib32-glfw
+	provides = lib32-glfw=3.3.4
 	conflicts = lib32-glfw
 	replaces = lib32-glfw
 
@@ -34,6 +34,6 @@ pkgname = lib32-glfw-wayland
 	depends = lib32-wayland
 	depends = lib32-libxkbcommon
 	depends = lib32-libgl
-	provides = lib32-glfw
+	provides = lib32-glfw=3.3.4
 	conflicts = lib32-glfw
 
