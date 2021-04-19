@@ -1,6 +1,6 @@
 pkgbase = thunderbird-dkimverifier
 	pkgdesc = This is an add-on for Mozilla Thunderbird that verifies DKIM signatures according to the RFC 6376
-	pkgver = 3.1.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/lieser/dkim_verifier
 	arch = any
