@@ -28,7 +28,7 @@ pkgbase = luxcorerender-git
 	provides = luxcorerender=2:2.5.rc1
 	conflicts = luxcorerender
 	options = !buildflags
-	source = luxcorerender::git+https://github.com/LuxCoreRender/LuxCore.git
+	source = luxcorerender::git+https://github.com/LuxCoreRender/LuxCore.git#branch=master
 	source = python.patch
 	source = glfw.patch
 	source = boost107400.patch::https://github.com/LuxCoreRender/LuxCore/pull/483.patch

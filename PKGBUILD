@@ -2,6 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 # Configuration
+_fragment=${FRAGMENT:-#branch=master}
 # shellcheck disable=SC2015
 ((DISABLE_OPENCL)) && {
   CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_OPENCL=ON")
