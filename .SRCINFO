@@ -34,7 +34,6 @@ pkgbase = icecat
 	makedepends = lld
 	makedepends = perl-file-rename
 	depends = gtk3
-	depends = mozilla-common
 	depends = libxt
 	depends = mime-types
 	depends = dbus-glib
