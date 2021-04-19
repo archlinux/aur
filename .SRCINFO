@@ -12,7 +12,6 @@ pkgbase = abrowser-bin
 	depends = gtk3
 	depends = gcc-libs
 	depends = libidl2
-	depends = mozilla-common
 	depends = nss>=3.12.10
 	depends = libxt
 	depends = libxrender
