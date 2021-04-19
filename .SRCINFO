@@ -7,6 +7,7 @@ pkgbase = libcgroup-git
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	makedepends = cmake
 	provides = libcgroup
 	conflicts = libcgroup
 	options = !emptydirs
