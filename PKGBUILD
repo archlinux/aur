@@ -4,7 +4,7 @@ pkgname='eruption'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
 pkgver='0.1.21'
-pkgrel='0'
+pkgrel='1'
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
@@ -25,15 +25,10 @@ source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=cf73fa
 noextract=()
 sha512sums=('SKIP')
 
-pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
     cd "$_pkgname"
 
-    CARGO_INCREMENTAL=0 cargo build --all --release
+    CARGO_INCREMENTAL=0 cargo build --release
 }
 
 package() {
