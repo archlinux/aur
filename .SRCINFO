@@ -1,7 +1,7 @@
 pkgbase = passman++-lts
 	pkgdesc = Incredibly simple and secure command-line password manager. - LTS releases
 	pkgver = 1.4.0p
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/binex-dsk/passmanpp/
 	arch = x86_64
 	license = BSD
