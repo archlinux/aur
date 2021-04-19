@@ -1,7 +1,7 @@
 # Maintainer: Dummerle
 
 pkgname=rare-dev
-pkgver=0.9.9.1.r5.gf1349b6
+pkgver=1.3.0b
 pkgrel=1
 pkgdesc="Dev branch of github.com/Dummerle/Rare - The latest, but unstable features"
 arch=('any')
@@ -41,7 +41,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	git checkout dev
+	git checkout offline
 
 	gendesk -n -f \
 		--pkgname "${pkgname%-git}" \
