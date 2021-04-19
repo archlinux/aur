@@ -9,7 +9,6 @@ pkgver="87.0.909.4"
 _pkgver="87.0-909.4"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
-epoch=2  # Because of update 76.0.1-833.1
 arch=(x86_64)
 license=("MPL" "GPL" "LGPL")
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
@@ -21,25 +20,23 @@ conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
 source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
 sha512sums_x86_64=('c28eb7032fe0fb90e5aa4f410c51e7dc9ac1489082f793960b73222c325143ab01798fd72328fe14aeb16d1b66c40a0f0cc5662d688449881873bb9334b8792c')
 
-
 prepare() {
     cd "usr"
-
-    # Cleanup openSUSE Branding
-    # We keep the "mozilla" directories as there might be other things in there in the future.
+    
+    # Cleanup openSUSE Branding. We keep the "mozilla" directories as there might be other things in there in the future.
     rm -rf "share/mozilla/extensions"
     rm -rf "lib64/mozilla/extensions"
 
     # unzip man pages, let makepkg handle them
     gunzip -f "share/man/man1/firefox.1.gz"
-
+    
     sed -i "s|/usr/lib64/firefox|/usr/lib/firefox|g" "lib64/firefox/firefox.sh"
     sed -i "s|/usr/lib64/firefox|/usr/lib/firefox|g" "share/man/man1/firefox.1"
 }
 
 package() {
     cd "usr"
-
+    
     install -d "${pkgdir}/usr"
 
     cp -r "." "${pkgdir}/usr/"
