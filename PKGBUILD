@@ -2,9 +2,9 @@
 # Contributor: Sosthène Guédon <sosthene.gued@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=freefem
-pkgver=4.8.0
-_pkgver=4.8
-pkgrel=2
+pkgver=4.9.0
+_pkgver=4.9
+pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
@@ -16,7 +16,7 @@ optdepends=( 'cblas' 'fftw' 'nlopt' 'coin-or-ipopt' 'scotch' 'mumps' 'scalapack'
 conflicts=('freefem-ext-dl' 'freefem-git')
 provides=('freefem')
 source=($pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz)
-sha256sums=('499b1ca24d45088226a238412ea1492d9cc3eb6088866904145511469780180d')
+sha256sums=('299ba2b73dfff578b7890f693c1e835680bf55eba87263cabd60d81909e1e0e4')
 
 prepare() {
   cd FreeFem-sources-${_pkgver}
@@ -37,7 +37,8 @@ prepare() {
 
 build() {
   cd FreeFem-sources-${_pkgver}
-  make -j4
+  # Set MAKEFLAGS in /etc/makepkg.conf for parallel builds.
+  make
 }
 
 check() {
