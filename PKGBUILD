@@ -2,7 +2,7 @@
 
 pkgname=toosheh
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial and open-source toosheh client for Linux written in C++. Please USE A VPN or any anti-sensorship tool before installing this program."
 url="https://www.toosheh.org/"
 arch=(x86_64 aarch64)
