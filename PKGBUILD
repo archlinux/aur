@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.6.0.r7.8fb69de
+pkgver=1.6.0.r26.8f3e779
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -18,7 +18,7 @@ checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-	"$pkgname::git+https://github.com/liquidctl/liquidctl.git#branch=master"
+	"$pkgname::git+https://github.com/liquidctl/liquidctl.git#branch=main"
 )
 sha256sums=(
 	'SKIP'
