@@ -1,6 +1,6 @@
 pkgbase = mimejs-git
 	pkgdesc = A replacement for xdg-open written in Node.js
-	pkgver = 0.1.aa2c834
+	pkgver = 0.1.dd506ba
 	pkgrel = 1
 	url = https://github.com/karabaja4/mimejs
 	arch = i686
