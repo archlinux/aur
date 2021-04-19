@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
-pkgver=r15.ebd9a10
-pkgrel=2
+pkgver=r16.0b7d3db
+pkgrel=1
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
 url="https://github.com/hermes83/compiz-windows-effect"
