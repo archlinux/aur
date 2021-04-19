@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: David Arroyo <droyo@aqwari.us>
 pkgname=s6-portable-utils
-pkgver=2.2.3.1
+pkgver=2.2.3.2
 pkgrel=1
 pkgdesc="Tiny portable generic utilities"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=('skalibs')
 makedepends=(glibc)
 source=(${url}/${pkgname}-$pkgver.tar.gz)
-sha256sums=('43e68a9abec873b337baeee92075a1c2e22cdfffd595cb91475fdcb10b6441cf')
+sha256sums=('6627a2d3ea263539e83512a36f10a587fa0dd5e899bc3612187e9e3b9faf769c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
