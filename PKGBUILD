@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=git-completion
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Git completions for Zsh and Bash'
 url="https://github.com/felipec/$pkgname"
