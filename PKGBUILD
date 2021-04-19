@@ -1,7 +1,7 @@
 # Maintainer: Daniel Scheiermann  <daniel.scheiermann@stud.uni-hannover.de>
 _name=supersolids
 pkgname=python-${_name}
-pkgver=0.1.30
+pkgver=0.1.31
 pkgrel=1
 pkgdesc="Simulate and animate supersolids by solving the Schrödinger equation"
 url="https://github.com/Scheiermann/${_name}"
