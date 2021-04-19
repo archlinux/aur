@@ -1,6 +1,6 @@
 pkgbase = tunnelto-bin
 	pkgdesc = Expose your local web server to the internet with a public URL.
-	pkgver = 0.1.12
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://tunnelto.dev/
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = tunnelto-bin
 	makedepends = cargo
 	provides = tunnelto
 	conflicts = tunnelto
-	source = https://github.com/agrinman/tunnelto/releases/download/0.1.12/tunnelto-linux.tar.gz
-	sha256sums = 21169fe2bacf3e60db4a8ac95b96491df8e1ff9608ab1154d6178fa1774df0f7
+	source = https://github.com/agrinman/tunnelto/releases/download/0.1.14/tunnelto-linux.tar.gz
+	sha256sums = edeb7ede6b6823b65aac742844de01090515e42268f544aa8b69b9ea1ad591b4
 
 pkgname = tunnelto-bin
+

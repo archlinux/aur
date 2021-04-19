@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=tunnelto-bin
 _gitname=${pkgname%-bin}
-pkgver=0.1.12
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Expose your local web server to the internet with a public URL."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 conflicts=('tunnelto')
 provides=('tunnelto')
 source=("https://github.com/agrinman/$_gitname/releases/download/$pkgver/tunnelto-linux.tar.gz")
-sha256sums=('21169fe2bacf3e60db4a8ac95b96491df8e1ff9608ab1154d6178fa1774df0f7')
+sha256sums=('edeb7ede6b6823b65aac742844de01090515e42268f544aa8b69b9ea1ad591b4')
 
 package() {
   # install binary
