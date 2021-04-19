@@ -1,7 +1,7 @@
 pkgbase = tunnelto
 	pkgdesc = Expose your local web server to the internet with a public URL.
 	pkgver = 0.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tunnelto.dev/
 	arch = any
 	license = MIT
