@@ -1,0 +1,17 @@
+pkgbase = calibre-plugin-dedrm
+	pkgdesc = DeDRM tools for ebooks - Calibre plugin
+	pkgver = 7.2.1
+	pkgrel = 1
+	url = https://github.com/apprenticeharper/DeDRM_tools/
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	makedepends = zip
+	depends = calibre>=5.15
+	optdepends = openssl: for crytographic primitives
+	optdepends = python-pycryptodome: for crytographic primitives
+	source = DeDRM_tools-7.2.1.tar.gz::https://github.com/apprenticeharper/DeDRM_tools/archive/refs/tags/v7.2.1.tar.gz
+	sha256sums = cb13e7ecbc4d2a757b65a232db2c5ae5ef9ae13fe6a3d028c031735f0b8368cb
+
+pkgname = calibre-plugin-dedrm
+
