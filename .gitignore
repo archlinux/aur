@@ -1,0 +1,7 @@
+act/
+
+pkg/
+src/
+
+*.gz
+*.zst
