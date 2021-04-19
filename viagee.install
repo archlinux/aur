@@ -1,0 +1,7 @@
+post_install() {
+  cat <<- EOF
+    ==> Restart Gnome session.
+    ==> Available config at ~/.config/viagee/viagee.conf.
+EOF
+}
+

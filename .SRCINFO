@@ -1,0 +1,25 @@
+pkgbase = viagee
+	pkgdesc = Formarly gnome-gmail. It allows desktop mail actions, such as 'Send File as Email' or web 'mailto' links, to be handled by the Gmail web client.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://davesteele.github.io/viagee/
+	install = viagee.install
+	arch = any
+	license = GPL2
+	makedepends = intltool
+	depends = python-gobject
+	depends = python-keyring
+	depends = desktop-file-utils
+	depends = python-setuptools
+	depends = python-xdg
+	depends = xdg-utils
+	depends = python-six
+	depends = libwnck3
+	optdepends = nautilus-sendto: automatically upload an email with a file attachment from nautilus
+	provides = gnome-gmail
+	conflicts = gnome-gmail
+	source = https://github.com/davesteele/viagee/archive/master/3.0.tar.gz
+	md5sums = 5a687eca75dea304f83636bc00531cad
+
+pkgname = viagee
+
