@@ -1,0 +1,16 @@
+pkgbase = perl-date-easter
+	pkgdesc = Calculates Easter for any given year
+	pkgver = 1.22
+	pkgrel = 1
+	url = https://metacpan.org/pod/Date::Easter
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RB/RBOW/Date-Easter-1.22.tar.gz
+	md5sums = 05030e2943f4daf99d7715e80b9e3cfc
+	sha512sums = 60a4f43c94ed250ce4d21f397566aacd46e6a4bfbfad47e1587bdd3924f59c436e3d1a6248ac246d909df1854d27a0198d08fa96562f8d790baea8a9ffc20e18
+
+pkgname = perl-date-easter
+
