@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Follow_123
+Comment=Follow_123 (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/follow_123.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/follow_123_icon.png
+Type=Application

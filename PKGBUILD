@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_tetrofit pzl_wordwheel pzl_wordladder)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_marupeke pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordwheel pzl_wordladder)
 pkgbase="pzl_games"
-pkgver=23.0
-_pkgver=23_0
+pkgver=26.0
+_pkgver=26_0
 pkgrel=1
 pkgdesc="Collection of puzzle games."
 arch=('any')
@@ -18,6 +18,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_bridges.desktop"
         "pzl_codeword.desktop"
         "pzl_fillomino.desktop"
+        "pzl_follow_123.desktop"
         "pzl_futoshiki.desktop"
         "pzl_gol.desktop"
         "pzl_hidato.desktop"
@@ -25,6 +26,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_jigsaw.desktop"
         "pzl_jigsawsudoku.desktop"
         "pzl_kakuro.desktop"
+        "pzl_marupeke.desktop"
         "pzl_masyu.desktop"
         "pzl_minesweeper.desktop"
         "pzl_numberlink.desktop"
@@ -37,11 +39,12 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_sudoku.desktop"
         "pzl_suguru.desktop"
         "pzl_sumpuzzle.desktop"
+        "pzl_targets.desktop"
         "pzl_tetrofit.desktop"
         "pzl_wordwheel.desktop"
         "pzl_wordladder.desktop")
 
-md5sums=('7021d5709ffffe43e55011c148343bdb'
+md5sums=('3b6367171785549aab90cb78c401184d'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -50,6 +53,7 @@ md5sums=('7021d5709ffffe43e55011c148343bdb'
          'b62c538e5baba89f6fe1e195af8e39af'
          '02df03e4c57e8b77062df51971f7c582'
          '493fa819c6a145a873ec81bab55bf96a'
+         '51133afd3dcae236d0276221434400c5'
          '744840240079721ae72b14b49589ef4b'
          '512c219ec03d89e100e0aca6ff5b3f42'
          'a07ce126d031c9fbed8c1cbe2c6af1a1'
@@ -57,6 +61,7 @@ md5sums=('7021d5709ffffe43e55011c148343bdb'
          '00333ad5a67aa529189cb8d5efce7ec2'
          'fa5438c87ada71ae5bdf2edd84df4290'
          '27c7b30bf6c9365397b35d4cca7044f8'
+         'cf9a1d524f7e5563c37413f0227fe1a1'
          '0ff3ac0767cd8fc94388ef3b301c8adc'
          '3938559de7b10ca25f86ccb59676547e'
          'ab1d907a83c8b7e359eff308ee89d9d9'
@@ -69,6 +74,7 @@ md5sums=('7021d5709ffffe43e55011c148343bdb'
          '068873d936f6592065010b056da87cc7'
          '0c1b99051ab88c9aacf108a4d7d577e2'
          '652ec7a6aa6a225f62579a315bd98421'
+         '1c6a099a8b6fff65b9856eb8baab784f'
          'adf64f6092e1d05aafb1bc0c093d56b2'
          'b7b52cd6e554eb01aa0537bb5526e297'
          'b0afcb5b6a3f2f05b8fd8e6d59d8e6ca')
@@ -165,6 +171,17 @@ package_pzl_fillomino() {
 	install -m644 pzl_fillomino.desktop "$pkgdir/usr/share/applications"
 }
 
+package_pzl_follow_123() {
+	pkgdesc="Puzzle game in which the player tries to find a path through a grid."
+	url="http://pzl.org.uk/follow_123.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/follow_123.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/follow_123_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/follow_123_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_follow_123.desktop "$pkgdir/usr/share/applications"
+}
+
 package_pzl_futoshiki() {
 	pkgdesc="Logic game in which players solve a Latin square."
 	url="http://pzl.org.uk/futoshiki.html"
@@ -237,6 +254,17 @@ package_pzl_kakuro() {
 	install -m644 pzl_kakuro.desktop "$pkgdir/usr/share/applications"
 }
 
+package_pzl_marupeke() {
+	pkgdesc="Puzzle where there is a potential for three symbols to be adjacent. And block them."
+	url="http://pzl.org.uk/marupeke.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/marupeke.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/marupeke_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/marupeke_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_marupeke.desktop "$pkgdir/usr/share/applications"
+}
+
 package_pzl_masyu() {
 	pkgdesc="A game played on a rectangular grid in which some of the vertices contain black or white circles."
 	url="http://pzl.org.uk/masyu.html"
@@ -298,6 +326,17 @@ package_pzl_sumpuzzle() {
 	install -m644 pzl3_download/sumpuzzle.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/sumpuzzle_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_sumpuzzle.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_targets() {
+	pkgdesc="Each row, column and shape must contain a single Target. They cannot touch."
+	url="http://pzl.org.uk/targets.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/targets.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/targets_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/targets_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_targets.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_othello() {

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Marupeke
+Comment=Marupeke (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/marupeke.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/marupeke_icon.png
+Type=Application
