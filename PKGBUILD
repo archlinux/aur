@@ -2,7 +2,7 @@
 pkgname=logseq-desktop-git
 pkgver=0.0.20.r0.f7c8d901
 pkgrel=1
-pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (system electron)"
+pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (supports Wayland)"
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=("AGPL3")
