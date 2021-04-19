@@ -5,7 +5,7 @@ _pkgname=todoist
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The to-do list to organize work & life."
 arch=('x86_64')
 url="https://todoist.com/"
@@ -42,7 +42,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
     mkdir -p "${pkgdir}/usr/share/pixmaps/"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/todoist.png" "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/todoist.png" "${pkgdir}/usr/share/pixmaps"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"

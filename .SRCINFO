@@ -1,7 +1,7 @@
 pkgbase = todoist-appimage
 	pkgdesc = The to-do list to organize work & life.
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://todoist.com/
 	arch = x86_64
 	license = custom:Commercial
