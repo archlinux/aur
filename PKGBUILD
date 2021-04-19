@@ -11,8 +11,9 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 _tag='e13126bd95857eb9344e030edbb4c603aab63884' # git rev-parse v${_tag_name}
-pkgver=248
-pkgrel=2
+_tag_name=248
+pkgver="${_tag_name/-/}"
+pkgrel=5
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -21,14 +22,15 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'libselinux')
+             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync' 'libselinux')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
 source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
-        "git+https://github.com/systemd/systemd#tag=v${pkgver%.*}?signed"
+        "git+https://github.com/systemd/systemd#tag=v${_tag_name%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
         '0002-Disable-SYSTEMD_URLIFY-by-default.patch'
+        '0003-PARTIAL-REVERT-commit-tree-wide-replace-strverscmp-and-str_verscmp-with-strverscmp_improved.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -49,9 +51,10 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
 sha512sums=('SKIP'
             'SKIP'
             '882e486b6d88c8bafc50088845e41a49686e98981967f72ca1fb4ef07a01767400632f4b648fd31857d2a2a24a8fd65bcc2a8983284dd4fff2380732741d4c41'
-            '313f3d6cc3d88f718509007e029213a82d84b196afdadc6ef560580acf70ab480aaecd7622f51726cc1af7d7841c6ec5390f72890b055a54fc74722341395651'            
+            '313f3d6cc3d88f718509007e029213a82d84b196afdadc6ef560580acf70ab480aaecd7622f51726cc1af7d7841c6ec5390f72890b055a54fc74722341395651'
+            '34541f1967536524329867f9f341f8d9250d9d771c60dc3e6a22ccb82fc01f103cfd3f9903329777591ccbecd2446622a5d6b3804fa0411482b85c70593ee8ad'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '1c8bdc6ecc3b755b0258faf4cbfac1b5bc25dbcd88c68cbb2ef1c41842ed349cdce84ce3f6f537845e49fab02cb5282504e1f97aa73c163fbc78997f9f00fc61'
+            'f599e1a35cba2c4e83e37c2299fac23ae128d8f68081283e71e1729384975dee1c4b677787f31a17890aeb98c8d2fc90405a202644290708ef9c027315022b17'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -95,6 +98,10 @@ prepare() {
 
   # https://github.com/gwsw/less/issues/140
   patch -Np1 -i ../0002-Disable-SYSTEMD_URLIFY-by-default.patch
+
+  # https://bugs.archlinux.org/task/70264
+  # https://github.com/systemd/systemd/issues/19191
+  patch -Np1 -i ../0003-PARTIAL-REVERT-commit-tree-wide-replace-strverscmp-and-str_verscmp-with-strverscmp_improved.patch
 }
 
 build() {
@@ -171,8 +178,8 @@ package_systemd-selinux() {
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
               'curl: machinectl pull-tar and pull-raw'
-              'libfido2: unlocking LUKS2 volumes'
-              'tpm2-tss: unlocking LUKS2 volumes')
+              'libfido2: unlocking LUKS2 volumes with FIDO2 token'
+              'tpm2-tss: unlocking LUKS2 volumes with TPM2')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/homed.conf
@@ -181,6 +188,7 @@ package_systemd-selinux() {
           etc/systemd/journal-upload.conf
           etc/systemd/logind.conf
           etc/systemd/networkd.conf
+          etc/systemd/oomd.conf
           etc/systemd/pstore.conf
           etc/systemd/resolved.conf
           etc/systemd/sleep.conf
@@ -247,7 +255,7 @@ package_systemd-selinux() {
 
 package_systemd-libs-selinux() {
   pkgdesc='systemd client libraries with SELinux support'
-  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd' 'libselinux')
+  depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd' 'libselinux')
   license=('LGPL2.1')
   provides=('libsystemd' 'libsystemd.so' 'libudev.so'
             'libsystemd-selinux'
