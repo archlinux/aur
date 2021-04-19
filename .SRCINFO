@@ -9,6 +9,6 @@ pkgbase = python-vimgolf
 	source = vimgolf-0.4.0::https://github.com/dstein64/vimgolf/archive/v0.4.0.tar.gz
 	md5sums = 17092bef8e1b729b19b0fdc4143c7a43
 
-pkgname = pyton-vimgolf
+pkgname = python-vimgolf
 	depends = python
 

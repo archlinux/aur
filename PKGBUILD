@@ -1,7 +1,7 @@
 # Maintainer: steffen
 
 _pkgname=vimgolf
-pkgname="pyton-${_pkgname}"
+pkgname="python-${_pkgname}"
 pkgbase=python-vimgolf
 pkgver=0.4.0
 pkgrel=1
