@@ -1,23 +1,23 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.0.18.r6.3828f7d9
+pkgver=0.0.20.r0.f7c8d901
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management. (system electron)"
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=("AGPL3")
-depends=("electron")
-makedepends=("git" "yarn" "clojure" "nodejs")
+depends=()
+makedepends=("git" "yarn" "npm" "clojure")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "logseq-desktop-bin")
 source=(
     "${pkgname}::git+https://github.com/logseq/logseq"
-    "system_electron.patch"
+    "build.patch"
     "logseq-desktop.desktop"
     "logseq-desktop-wayland.desktop")
 md5sums=(
     "SKIP"
-    "efad057e28f0dd60bcf56807c847875e"
+    "c3f3473bab5436a42352845e28c030c4"
     "3a5ebb330fd33e59f1cc56690df1995d"
     "724d351804bbe2074334a8e529462d0a")
 
@@ -33,7 +33,7 @@ prepare() {
     export GITLIBS="${srcdir}/${pkgname}/.gitlib"
 
     # this patch make the build process use system's electron
-    patch -p1 -i "${srcdir}/system_electron.patch"
+    patch -p1 -i "${srcdir}/build.patch"
 
     # patch :parallel-build true in shadow-cljs.edn
 

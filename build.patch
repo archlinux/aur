@@ -9,54 +9,31 @@ index 177d2eb1..be06750a 100755
   {org.clojure/clojure         {:mvn/version "1.10.0"}
    cheshire/cheshire {:mvn/version "5.10.0"}
 diff --git a/package.json b/package.json
-index d2696922..3ea7f367 100644
+index d2b45006..3310c242 100644
 --- a/package.json
 +++ b/package.json
-@@ -65,7 +65,6 @@
+@@ -65,7 +65,7 @@
          "codemirror": "^5.58.1",
          "diff": "5.0.0",
          "diff-match-patch": "^1.0.5",
 -        "electron": "^11.2.0",
++        "electron": "^12.0.4",
          "fs": "^0.0.1-security",
          "fs-extra": "^9.1.0",
          "fuse.js": "^6.4.6",
-diff --git a/resources/forge.config.js b/resources/forge.config.js
-index 5a2f780c..856097f4 100644
---- a/resources/forge.config.js
-+++ b/resources/forge.config.js
-@@ -52,5 +52,11 @@ module.exports = {
-         prerelease: true
-       }
-     }
-+  ],
-+
-+  plugins: [
-+    ['@electron-forge/plugin-local-electron', {
-+      electronPath: '/usr/lib/electron'
-+    }]
-   ]
- }
 diff --git a/resources/package.json b/resources/package.json
-index 1651f712..7a8c628d 100644
+index 1651f712..bf6b7c56 100644
 --- a/resources/package.json
 +++ b/resources/package.json
-@@ -29,13 +29,9 @@
-   },
-   "devDependencies": {
-     "@electron-forge/cli": "^6.0.0-beta.54",
--    "@electron-forge/maker-deb": "^6.0.0-beta.54",
--    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
--    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
--    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+@@ -34,7 +34,7 @@
+     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
      "@electron-forge/maker-zip": "^6.0.0-beta.54",
 -    "electron": "11.2.0",
--    "electron-builder": "^22.10.5",
--    "electron-forge-maker-appimage": "trusktr/electron-forge-maker-appimage#patch-1"
-+    "@electron-forge/plugin-local-electron": "^6.0.0-beta.54",
-+    "electron": "^11.2.0",
-+    "electron-builder": "^22.10.5"
++    "electron": "^12.0.4",
+     "electron-builder": "^22.10.5",
+     "electron-forge-maker-appimage": "trusktr/electron-forge-maker-appimage#patch-1"
    }
- }
 diff --git a/shadow-cljs.edn b/shadow-cljs.edn
 index a6ea075d..c41d5171 100644
 --- a/shadow-cljs.edn
