@@ -1,7 +1,7 @@
 # Maintainer: yaa110 <yaa110@gmail.com>
 
 pkgname=nomino
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yaa110/nomino"
@@ -10,7 +10,7 @@ license=("MIT")
 pkgdesc='Batch rename utility for developers'
 
 source=("$pkgver.tar.gz::https://github.com/yaa110/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('407a76544413e016c2e05903899fe5392f9c8685f3bdd06c1368781698e6d81bc3c789bdf7375c4883b7e2b5507ce035cd4403b2c4e80ea91c84f06552cf345b')
+sha512sums=('c11a9fed73798f253686ce3f4d2a5b9b367f4e615f1d968fd88e35359c45915a727c8fe2b26f166dabf1ab71b750268b6a2b2141150fde05ae251aa6697faf67')
 makedepends=('rust' 'python3')
 depends=('gcc-libs')
 conflicts=('nomino-bin')
