@@ -1,0 +1,26 @@
+From 116ab7eeb7dff736c83389746f22700d9f6a7dd8 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Mon, 29 Mar 2021 15:34:46 +0200
+Subject: [PATCH 1/1] crontab: use bold colors
+
+Dark colors (especially blue) on dark background are hard to read.
+Let's make these bold.
+---
+ src/crontab.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/crontab.c b/src/crontab.c
+index af3db23..240c112 100644
+--- a/src/crontab.c
++++ b/src/crontab.c
+@@ -66,8 +66,8 @@
+ 
+ #define NHEADER_LINES 0
+ 
+-#define COMMENT_COLOR "\x1B[34m"
+-#define ERROR_COLOR "\x1B[31m"
++#define COMMENT_COLOR "\x1B[34;1m"
++#define ERROR_COLOR "\x1B[31;1m"
+ #define RESET_COLOR "\x1B[0m"
+ 
+ enum opt_t {

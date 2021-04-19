@@ -8,7 +8,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname='cronie-selinux'
-pkgver=1.5.5
+pkgver=1.5.7
 pkgrel=2
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://github.com/cronie-crond/cronie/'
@@ -22,11 +22,13 @@ provides=('cron' "${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 source=("https://github.com/cronie-crond/cronie/releases/download/${pkgname/-selinux}-${pkgver}/${pkgname/-selinux}-${pkgver}.tar.gz"
+        '0001-crontab-use-bold-colors.patch'
         '80-cronie.hook'
         'service'
         'pam.d'
         'deny')
-sha256sums=('be34c79505e5544323281854744b9955ff16b160ee569f9df7c0dddae5720eac'
+sha256sums=('538bcfaf2e986e5ae1edf6d1472a77ea8271d6a9005aee2497a9ed6e13320eb3'
+            '2c9a2f386f23779907c468023538b195cd3e3c61fa16e19f036ee13a031f1c3a'
             'f85e9a68bf3bf446f8a6167f068371c06afffe11ca71935d8ee5487b38b2c9db'
             'ac3ff3c8a5ce1b6367b06877b4b12ff74e7f18a3c510fb9f80d6ea6b6321e3b1'
             '00864268b491bab8c66400a4a4b4bf85f168a6e44e85676105e084940924090c'
@@ -38,6 +40,9 @@ backup=('etc/cron.deny'
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+
+	patch -Np1 < ../0001-crontab-use-bold-colors.patch
+
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
