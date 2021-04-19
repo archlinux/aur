@@ -1,15 +1,15 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=solanum
-pkgver=v1.1.0.r0.g9804c7b
+pkgver=v2.1.0.r0.g3e69272
 pkgrel=1
 pkgdesc="A pomodoro timer for the GNOME desktop"
 arch=(x86_64)
 url="https://gitlab.gnome.org/World/solanum"
 license=('GPL3')
-depends=('gst-plugins-bad-libs' 'libhandy')
+depends=('libadwaita' 'gst-plugins-bad-libs')
 makedepends=('rust' 'meson' 'git')
 checkdepends=('appstream-glib')
-_commit=9804c7bab1de46fb14bdd24784cecfa09c0fff5b
+_commit=3e69272fb31bf18a7aa74ece9d904d445c458274  # tags/v2.1.0
 source=("git+$url#commit=$_commit")
 md5sums=('SKIP')
 
