@@ -5,7 +5,7 @@
 
 pkgname=moneymanagerex-git
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  curl --silent https://api.github.com/repos/${pkgname::14}/${pkgname::14}/releases/latest | grep '"tag_name":' | awk -F[\"] '{print $4}'
+  curl --silent https://api.github.com/repos/${pkgname%-git}/${pkgname%-git}/releases/latest | grep '"tag_name":' | awk -F[\"v] '{print $5}'
 }
 
 prepare() {
