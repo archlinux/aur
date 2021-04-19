@@ -1,15 +1,17 @@
 pkgbase = platypus
 	pkgdesc = A modern multiple reverse shell sessions manager written in go
-	pkgver = 1.2.9
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/WangYihang/Platypus
 	arch = x86_64
 	arch = i686
 	license = LGPL3
 	makedepends = go
+	makedepends = yarn
+	makedepends = go-bindata
 	depends = glibc
-	source = platypus-1.2.9.tar.gz::https://github.com/WangYihang/Platypus/archive/v1.2.9.tar.gz
-	sha256sums = 5f96fe81df0a03852986bfa3275b4229e38a5090b6f29e43f1bd3702fd3d9837
+	source = platypus-1.3.4.tar.gz::https://github.com/WangYihang/Platypus/archive/v1.3.4.tar.gz
+	sha256sums = f0669fe0adca0010115ecd9c21222be7dd72c85d000dd7bd19467b5d338d352b
 
 pkgname = platypus
 
