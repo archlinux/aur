@@ -1,21 +1,14 @@
 # Maintainer: gbr <gbr@protonmail.com>
 pkgname=sfz
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='A simple static file server'
 arch=('x86_64')
 url='https://github.com/weihanglo/sfz'
 license=('MIT' 'APACHE')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'remove-unnecessary-hidden-file-test.patch')
-sha512sums=('f6f95470ee2d839c0086aa6f5397a5b6937692907e688800f2af610b7fb8e69ea23cef4daa8696fce93fd388774a6206b8b8a9f355e19cb8bf7112b11828bfd7'
-            '4426f58075e8ccad96c14266e08547f30c8040f45702c40fca184cb7a2f8cab1fd22b82a1153c485e25812e67c253a1e36ec0a39d6bc8b0d4beb4548a2a6ccd9')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np1 < "$srcdir/remove-unnecessary-hidden-file-test.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('3f84cea23f3a44ec4002b11fa104e77ffbd48b91e98b0a9ed4d4923b4d35ecc95c17fa3873ff59606d682e63f5b76b26608f7a78e487144dddc661a7e8a4784c')
 
 build() {
   cd "$pkgname-$pkgver"
