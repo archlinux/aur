@@ -10,7 +10,7 @@
 pkgname=firedragon-hg
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=89.0a1.r642117+
+pkgver=90.0a1.r642117+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
@@ -79,7 +79,7 @@ sha512sums_aarch64=('SKIP'
 
 pkgver() {
   cd mozilla-unified
-  printf "89.0a1.r%s" "$(hg identify -n)"
+  printf "90.0a1.r%s" "$(hg identify -n)"
 }
 
 prepare() {
