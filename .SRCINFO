@@ -1,0 +1,18 @@
+pkgbase = xs-update-manjaro
+	pkgdesc = Automatic update of Manjaro System
+	pkgver = 3.5.5
+	pkgrel = 1
+	url = https://github.com/lectrode/xs-update-manjaro.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = curl
+	optdepends = wget
+	optdepends = notify-desktop
+	optdepends = flatpak
+	source = git+https://github.com/lectrode/xs-update-manjaro.git#tag=v3.5.5
+	md5sums = SKIP
+
+pkgname = xs-update-manjaro
+
