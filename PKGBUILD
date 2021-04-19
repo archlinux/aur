@@ -39,7 +39,7 @@ source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}
         "boost107400.patch"
         "cpplib.patch"
         "clang.patch"
-        "fix_isnan_isinf.patch::https://github.com/LuxCoreRender/LuxCore/pull/508.patch"
+        "fix_isnan_isinf.patch"
         )
 sha256sums=('f0d7000ee155eb30f0008ddf3a4e5eaf71b37e5aed94922a5d8131873778eb77'
             'f639fb7e31056b6c7214e303c90fe06665572ffafc11e545f7c05128a8d85dc4'
