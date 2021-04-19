@@ -1,7 +1,7 @@
 pkgbase = soju-git
 	pkgdesc = A user-friendly IRC bouncer
-	pkgver = r323.d0cf1d2
-	pkgrel = 2
+	pkgver = r503.c994ce7
+	pkgrel = 1
 	url = https://soju.im/
 	install = soju.install
 	arch = x86_64
