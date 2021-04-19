@@ -1,0 +1,22 @@
+pkgbase = matrix-commander-git
+	pkgdesc = Simple but convenient CLI-based Matrix client app for sending and receiving
+	pkgver = r64.3e89a5f
+	pkgrel = 1
+	url = https://github.com/8go/matrix-commander
+	arch = any
+	license = GPL
+	depends = python-aiohttp
+	depends = python-aiofiles
+	depends = python-argparse
+	depends = python-markdown
+	depends = python-matrix-nio
+	depends = python-notify2
+	depends = python-pillow
+	depends = python-magic-git
+	provides = matrix-commander
+	conflicts = matrix-commander
+	source = matrix-commander::git+https://github.com/8go/matrix-commander.git
+	md5sums = SKIP
+
+pkgname = matrix-commander-git
+
