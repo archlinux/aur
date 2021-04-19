@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-screenshotlocations-extension-git
+pkgbase = gnome-shell-extension-screenshotlocations-git
 	pkgdesc = A GNOME extension for changing the screenshot output directory
 	pkgver = r31.dfdcf12
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = gnome-shell-screenshotlocations-extension-git
 	source = git+https://codeberg.org/kiyui/gnome-shell-screenshotlocations-extension.git
 	sha256sums = SKIP
 
-pkgname = gnome-shell-screenshotlocations-extension-git
+pkgname = gnome-shell-extension-screenshotlocations-git
 
