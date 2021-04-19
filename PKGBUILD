@@ -3,21 +3,24 @@
 
 set -u
 pkgname='pev'
-pkgver='0.80'
+pkgver='0.81'
 pkgrel='1'
 pkgdesc='Command line based tool for Windows portable executable PE32+ file analysis'
 arch=('i686' 'x86_64')
 url='http://pev.sourceforge.net/'
 license=('GPL')
-depends=('glibc' 'openssl-1.0' 'pcre')
+depends=('glibc' 'pcre')
+#depends+=('openssl-1.0')
 _verwatch=('https://sourceforge.net/projects/pev/rss' ".*<title>.*/${pkgname}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
 #source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+_srcdir="${pkgname}-${pkgver}"
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f68c8596f16d221d9a742812f6f728bcc739be90957bc1b00fbaa5943ffc5cfa')
+md5sums=('9800200f26adadf4812919ae02971476')
+sha256sums=('4192691c57eec760e752d3d9eca2a1322bfe8003cfc210e5a6b52fca94d5172b')
 
 prepare() {
   set -u
-  cd "${pkgname}"
+  cd "${_srcdir}"
   # Changes to correct hard coded destdir in Makefiles (bad practice from upstream)
   #sed -i "s|\$(DESTDIR)/\$(PREFIX)/bin|\$(DESTDIR)\$(PREFIX)/bin|" src/Makefile
   #sed -i "s|/usr/share/pev|${pkgdir}/usr/share/pev|" src/Makefile
@@ -32,16 +35,16 @@ prepare() {
 
 build() {
   set -u
-  cd "${pkgname}"
+  cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  CFLAGS="${CFLAGS} -isystem /usr/include/openssl-1.0/ -L /usr/lib/openssl-1.0/" \
+  #CFLAGS="${CFLAGS} -isystem /usr/include/openssl-1.0/ -L /usr/lib/openssl-1.0/" \ 
   nice make -j "${_nproc}" prefix='/usr' # not sure if prefix is needed
   set +u
 }
 
 package() {
   set -u
-  cd "${pkgname}"
+  cd "${_srcdir}"
   #make datarootdir="${pkgdir}/usr/share" datadir="${pkgdir}/usr/share" DESTDIR="${pkgdir}" install
   make prefix='/usr' DESTDIR="${pkgdir}" install
   set +u
