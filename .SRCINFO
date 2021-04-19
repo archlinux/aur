@@ -25,7 +25,7 @@ pkgbase = luxcorerender-git
 	optdepends = opencl-driver: for gpu acceleration
 	optdepends = pyside2: for pyluxcoretools gui
 	provides = luxrays
-	provides = luxcorerender=2:2.5.rc1
+	provides = luxcorerender=2.5
 	conflicts = luxcorerender
 	options = !buildflags
 	source = luxcorerender::git+https://github.com/LuxCoreRender/LuxCore.git#branch=master

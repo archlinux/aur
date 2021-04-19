@@ -31,7 +31,7 @@ depends+=(blosc boost-libs embree glfw gtk3 openimagedenoise openimageio)
 optdepends+=("pyside2: for pyluxcoretools gui")
 makedepends+=(boost cmake doxygen git ninja pyside2-tools)
 conflicts=(luxcorerender)
-provides=(luxrays "luxcorerender=${epoch}:${pkgver%.r*}")
+provides=(luxrays "luxcorerender=${pkgver%.r*}")
 options=('!buildflags')
 source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "python.patch"
