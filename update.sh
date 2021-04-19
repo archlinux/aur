@@ -19,7 +19,7 @@ if [[ $# == 2 ]]; then
 fi
 
 printf '' > PKGBUILD
-echo "# Maintainer: Sumner Evans <me [at] sumnerevans [dot] com>
+echo "# Maintainer: Sitansh Rajput <thelostpolaris [at] gmail [dot] com>
 
 pkgbase='${AUR_NAME}'
 pkgname=(${AUR_NAME})
