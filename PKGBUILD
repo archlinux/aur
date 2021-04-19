@@ -79,7 +79,7 @@ PROFILING=        # Enable gprof profiling support.
 ################################################################################
 pkgname="emacs-native-comp-git-enhanced"
 pkgver=28.0.50.148118
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
@@ -286,9 +286,9 @@ fi
   fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
-  #cd "$srcdir/emacs-git/lisp"
-  #make autoloads
-  #cd ../
+  cd "$srcdir/emacs-git/lisp"
+  make autoloads
+  cd ../
 
   # Optional documentation formats.
   if [[ $DOCS_HTML == "YES" ]]; then
