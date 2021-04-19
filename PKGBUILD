@@ -2,7 +2,7 @@
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 
 pkgname=obsidian
-pkgver=0.11.9
+pkgver=0.11.13
 pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     'd6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7'
     '345946f1883d547410e34b85b7daa9d38fb5d1869212653530e87676149fe921'
-    '5f298cdea99af07d9d9b6b6af1983ea0ac4ecdbe3c6b3aa5aa7ef4d6937981d2'
+    'd102f5acfdfba6674874633d7876bb3df5b5195aef9f67d7e1b40fa90f053a92'
 )
 
 prepare() {
