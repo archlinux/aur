@@ -1,0 +1,12 @@
+pkgbase = cgltf
+	pkgdesc = Single-file/stb-style C glTF loader and writer
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://github.com/jkuhlmann/cgltf
+	arch = any
+	license = MIT
+	source = cgltf-1.10.tar.gz::https://github.com/jkuhlmann/cgltf/archive/refs/tags/v1.10.tar.gz
+	md5sums = 608a43ffdb67ddee9d371d4c12238ecf
+
+pkgname = cgltf
+
