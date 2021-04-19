@@ -2,7 +2,7 @@
 
 pkgname=mfaktc
 pkgver=0.21
-pkgrel=3
+pkgrel=4
 pkgdesc="A CUDA program for Mersenne prefactoring."
 arch=('x86_64')
 url="https://mersenneforum.org/showthread.php?t=12827"
