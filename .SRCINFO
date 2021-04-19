@@ -1,6 +1,6 @@
 pkgbase = linvst-x-bin
 	pkgdesc = Linux Windows vst wrapper/bridge
-	pkgver = 4.1
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst-X
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = linvst-x-bin
 	depends = gtk3
 	optdepends = jack
 	conflicts = linvstx
-	source = https://github.com/osxmidi/LinVst-X/releases/download/4.1/LinVst-X-4.1-Debian-Stretch.zip
-	md5sums = 8f64f46dc0b276d9b3ed4973ad17ddf1
+	source = https://github.com/osxmidi/LinVst-X/releases/download/4.2/LinVst-X-4.2-Manjaro.zip
+	md5sums = 99f3e4f222b3cbf503c440d8b642a1f8
 
 pkgname = linvst-x-bin
 
