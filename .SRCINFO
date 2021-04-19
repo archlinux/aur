@@ -1,0 +1,19 @@
+pkgbase = namespaced-wireguard-vpn-git
+	pkgdesc = Systemd configuration for a network namespace containing a WireGuard VPN connection
+	pkgver = r30.0ac54bb
+	pkgrel = 1
+	url = https://github.com/chrisbouchard/namespaced-wireguard-vpn
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = findutils
+	depends = wireguard-tools
+	depends = bash
+	provides = namespaced-wireguard-vpn
+	conflicts = namespaced-wireguard-vpn
+	backup = etc/namespaced-wireguard-vpn/namespaced-wireguard-vpn.conf
+	source = namespaced-wireguard-vpn-git::git+https://github.com/chrisbouchard/namespaced-wireguard-vpn
+	sha256sums = SKIP
+
+pkgname = namespaced-wireguard-vpn-git
+
