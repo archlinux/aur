@@ -1,13 +1,14 @@
 pkgbase = autobright-openrc
 	pkgdesc = Openrc script for autobright
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/AquaUseful/autobright-openrc
+	install = autobright-openrc.install
 	arch = any
 	license = MIT
 	depends = autobright
-	source = autobright-openrc-1.0.0.tar.gz::https://github.com/AquaUseful/autobright-openrc/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = dc616378cca48bb8072b6ba5f6a7af8ea71afb136fa3038dae522a07d10f1cf3
+	source = autobright-openrc-1.0.1.tar.gz::https://github.com/AquaUseful/autobright-openrc/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 27c77367bee59f6c35bfca498fbbe7ac7bebac5f2c7524fb52eded26def525d0
 
 pkgname = autobright-openrc
 

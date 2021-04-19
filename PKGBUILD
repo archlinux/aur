@@ -1,7 +1,7 @@
 # Maintainer: AquaUseful
 pkgname=autobright-openrc
 pkgdesc='Openrc script for autobright'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('any')
 url='https://github.com/AquaUseful/autobright-openrc'
@@ -10,7 +10,7 @@ groups=()
 depends=('autobright')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AquaUseful/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dc616378cca48bb8072b6ba5f6a7af8ea71afb136fa3038dae522a07d10f1cf3')
+sha256sums=('27c77367bee59f6c35bfca498fbbe7ac7bebac5f2c7524fb52eded26def525d0')
 
 package() {
     install -m 755 -D "${srcdir}/${pkgname}-${pkgver}/autobright.initd" "$pkgdir/etc/init.d/autobright"
