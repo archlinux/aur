@@ -1,7 +1,7 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=cesium-editor
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A bare bones text editor"
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ conflicts=('cesium-editor-git')
 md5sums=('SKIP')
 
 build() {
-    cd "cesium-0.2.0"
+    cd "cesium-0.2.1"
     cargo build --release
 }
 
 package() {
     #the package contents
-    cd "cesium-0.2.0"
+    cd "cesium-0.2.1"
     mkdir -p "$pkgdir/usr/lib/cesium"
     mkdir -p "$pkgdir/usr/share/man/man1/"
     install -Dt "$pkgdir/usr/bin" -m755 target/release/cesium
