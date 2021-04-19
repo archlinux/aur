@@ -9,7 +9,7 @@ pkgver=9.2.0
 pkgrel=5
 pkgdesc="Boot multiple live Linux distros from a usb flash drive."
 arch=('any')
-url="http://multibootusb.org"
+url="https://sourceforge.net/projects/multibootusb/"
 license=('GPL')
 depends=('python-pyqt5' 'python-dbus' 'mtools' 'parted' 'p7zip' 'python-pyudev')
 
