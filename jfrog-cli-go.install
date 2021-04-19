@@ -1,6 +1,0 @@
-post_upgrade() {
-  if [ $(vercmp $2 1.41.0) == -1 ]; then
-    printf 'NOTE: The binary has been renamed from `jfrog-cli` to `jfrog`.'
-  fi
-}
-
