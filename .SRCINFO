@@ -1,5 +1,5 @@
 pkgbase = viagee
-	pkgdesc = Formarly gnome-gmail. It allows desktop mail actions, such as 'Send File as Email' or web 'mailto' links, to be handled by the Gmail web client.
+	pkgdesc = Formerly gnome-gmail. It allows desktop mail actions, such as 'Send File as Email' or web 'mailto' links, to be handled by the Gmail web client.
 	pkgver = 3.0
 	pkgrel = 1
 	url = https://davesteele.github.io/viagee/
