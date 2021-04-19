@@ -1,0 +1,17 @@
+diff --color --unified --recursive --text --color dsnet-git.orig/etc/dsnet.service dsnet-git.new/etc/dsnet.service
+--- dsnet-git.orig/etc/dsnet.service	2021-04-19 12:08:34.731745824 +0200
++++ dsnet-git.new/etc/dsnet.service	2021-04-19 12:09:11.430329187 +0200
+@@ -7,10 +7,10 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/local/bin/dsnet up
+-ExecStop=/usr/local/bin/dsnet down
++ExecStart=/usr/bin/dsnet up
++ExecStop=/usr/bin/dsnet down
+ RemainAfterExit=yes
+-ExecReload=/usr/local/bin/dsnet sync
++ExecReload=/usr/bin/dsnet sync
+ 
+ [Install]
+ WantedBy=default.target
