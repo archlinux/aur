@@ -1,0 +1,14 @@
+pkgbase = deepin-wallpapers-gnome-integration
+	pkgdesc = Make deepin-wallpapers show up in GNOME Settings
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/simonwahll/deepin-wallpapers-gnome-integration
+	arch = x86_64
+	license = GPL3
+	makedepends = sudo
+	depends = deepin-wallpapers
+	source = deepin-wallpapers-gnome-integration-0.0.1.tar.gz
+	md5sums = b55dcf172066c6fbf909d0669534330f
+
+pkgname = deepin-wallpapers-gnome-integration
+
