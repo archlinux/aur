@@ -2,7 +2,7 @@
 
 pkgname=lemonade-git
 pkgver=v1.1.1.r14.gddbd6c1
-pkgrel=5
+pkgrel=6
 pkgdesc='A remote utility tool (copy, paste and open browser) over TCP.'
 url="https://github.com/lemonade-command/lemonade"
 arch=('x86_64' 'i686')
@@ -25,7 +25,9 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/lemonade-command/lemonade"
 
+	export GO111MODULE="auto"
 	export GOPATH="${srcdir}/go"
+
 	go get -v ./...
 }
 
@@ -34,7 +36,9 @@ build() {
 
 	mkdir -p build
 
+	export GO111MODULE="auto"
 	export GOPATH="${srcdir}/go"
+
 	go build \
 		-ldflags "-s -w -X github.com/lemonade-command/lemonade/lemon.Version=${pkgver}" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
