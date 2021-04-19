@@ -15,6 +15,7 @@ depends=(
 	"python-requests"
 	"python-setuptools"
 	"python-wheel"
+	"python-psutil"
 )
 makedepends=("git" "python-setuptools" "gendesk")
 checkdepends=()

@@ -1,6 +1,6 @@
 pkgbase = rare-dev
 	pkgdesc = Dev branch of github.com/Dummerle/Rare - The latest, but unstable features
-	pkgver = 0.9.9.1.r5.gf1349b6
+	pkgver = 1.3.0b
 	pkgrel = 1
 	url = https://github.com/Dummerle/Rare
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = rare-dev
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-wheel
+	depends = python-psutil
 	provides = rare-git
 	provides = rare
 	conflicts = rare-git
