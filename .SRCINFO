@@ -1,0 +1,14 @@
+pkgbase = ttf-nexon-lv1-gothic
+	pkgdesc = NEXON Lv.1 GOTHIC TrueType Fonts
+	pkgver = 1
+	pkgrel = 1
+	url = http://levelup.nexon.com/
+	arch = any
+	license = custom:NEXON
+	source = http://s.nx.com/s2/levelup/fontSite/files/Lv1Gothic/A_NEXON_Lv1_Gothic_OTF_TTF.zip
+	source = LICENSE
+	sha256sums = 4a21a1fb4ad8f9c8d06c1f6c79e5fc3c4a6e3247356121dd67adc713ba3c2406
+	sha256sums = 81d0fc81e9a2a8b327d1749bace49c122b728c6000e46c72b4807895328d8585
+
+pkgname = ttf-nexon-lv1-gothic
+
