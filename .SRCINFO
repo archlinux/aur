@@ -1,0 +1,42 @@
+pkgbase = linux-xanmod-cacule-rt-stable
+	pkgdesc = Linux XanMod CacULE RT stable Version
+	pkgver = 5.10.27
+	pkgrel = 1
+	url = https://github.com/hamadmarri/cacule-cpu-scheduler
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = bc
+	makedepends = libelf
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = https://github.com/xanmod/linux/releases/download/5.10.27-rt36-xanmod1/patch-5.10.27-rt36-xanmod1.xz
+	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.10/cacule/cacule5.10-rt.patch
+	source = https://raw.githubusercontent.com/ptr1337/kernel-patches/main/5.10/cacule/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch
+	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
+	sha256sums = 80b75594f05cb6f318af15b02261255f9cf33da1cb3352b3fa444724cc774953
+	sha256sums = bdf093d5ed34b9c6907253fbc0b564363a18fe64fa78cbd106f1b49d6906404a
+	sha256sums = cf00507d6881b737a9814d152e27b1db02f45a4d8a8ba3f4c9f542f0964ac697
+
+pkgname = linux-xanmod-cacule-rt-stable
+	pkgdesc = The Linux XanMod CacULE RT stable Version kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+
+pkgname = linux-xanmod-cacule-rt-stable-headers
+	pkgdesc = Headers and scripts for building modules for the Linux XanMod CacULE RT stable Version kernel
+	depends = pahole
+
