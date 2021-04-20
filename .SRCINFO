@@ -1,0 +1,14 @@
+pkgbase = g15daemon-systemd
+	pkgdesc = g15daemon init script for systemd
+	pkgver = 20210420
+	pkgrel = 1
+	url = https://gitlab.com/menelkir/g15daemon
+	arch = any
+	license = GPL2
+	depends = g15daemon
+	depends = systemd
+	source = https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/init/g15daemon.service
+	sha256sums = 116bf25638f14b46e380cda0ecc0a85c3403f6d3d5640e4aaf980ea1ddf24ad0
+
+pkgname = g15daemon-systemd
+
