@@ -1,6 +1,6 @@
 pkgbase = graviton
 	pkgdesc = A modern Code Editor
-	pkgver = 2.2.9
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://graviton.netlify.app/
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = graviton
 	depends = xdg-utils
 	provides = graviton
 	conflicts = graviton-bin
-	source = https://github.com/Graviton-Code-Editor/Graviton-App/archive/v2.2.9.tar.gz
+	source = https://github.com/Graviton-Code-Editor/Graviton-App/archive/v2.3.0.tar.gz
 	source = graviton.desktop
 	source = build.patch
-	sha256sums = 2f1402efcc48c772b7ce29d89c21976c8df37a26d5fcd3a9c7f72e25d441d356
+	sha256sums = d87901c863dbe75ab662dbc3b6de7ca106a7e6b44d23385462d929d631442d6a
 	sha256sums = 274abb2bef19694a483dc0f9d1bad14ad397b68e9e07f13580eac4cecc5163dd
 	sha256sums = 021eac4c4cb19d3e425d716c15d4577b3ed9cdcb5b0a35fcb9115ac3efd823fc
 
