@@ -29,10 +29,10 @@ build() {
 
 package() {
     install -Dm755 -t "${pkgdir}/usr/bin" build/${pkgname}
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname}/LICENSE
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname}-${pkgver}/LICENSE
 	
-    cd "${srcdir}/${pkgname}/models/"
+    cd "${srcdir}/${pkgname}-${pkgver}/models/"
     for f in cain/*; do
-        install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname}/cain/"$f"
+        install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname}/"$f"
     done
 }
