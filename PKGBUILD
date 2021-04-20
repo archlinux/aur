@@ -14,16 +14,19 @@ source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchma
 sha256sums=('048dc4136bddc8251b802287018e9f83b6e783d43770a851bb2ad63527f67fa7')
 
 prepare() {
-  python <watchman-v$pkgver-linux/bin/watchman >watchman.hex \
-    -c 'import codecs; open(1, "wb").write(codecs.encode(open(0, "rb").read(), "hex"))'
+  python <<END
+from pathlib import Path
 
-  # /usr/local/var/run/watchman -> /run/watchman
-  local  badpath=2f7573722f6c6f63616c2f7661722f72756e2f77617463686d616e00
-  local goodpath=2f72756e2f77617463686d616e000000000000000000000000000000
-  sed -i "s/$badpath/$goodpath/g" watchman.hex
+data = Path("watchman-v$pkgver-linux/bin/watchman").read_bytes()
 
-  python <watchman.hex >watchman \
-    -c 'import codecs; open(1, "wb").write(codecs.decode(open(0, "rb").read(), "hex"))'
+badpath  = b"/usr/local/var/run/watchman\\x00"
+goodpath = b"/run/watchman\\x00"
+
+goodpath = goodpath.ljust(len(badpath), b"\\x00")
+data = data.replace(badpath, goodpath)
+
+Path("watchman").write_bytes(data)
+END
 
   patchelf \
     --replace-needed /usr/local/lib/libgflags.so.2.2 libgflags.so.2.2 \
