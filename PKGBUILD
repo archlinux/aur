@@ -1,7 +1,7 @@
 # Maintainer: Leia <waste at mrtino dot eu>
 
 pkgname=badwolf
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A minimalist and privacy-oriented WebKit browser."
 url="https://hacktivis.me/projects/badwolf"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('webkit2gtk')
 source=("https://hacktivis.me/releases/$pkgname-$pkgver.tar.gz"
 	"LICENSE")
-sha512sums=('8b20560fe48feaeee444208fb315ca8eb8f3d847769a6a5cafd276abb38172f7c67c8ec8496bb1172a9837dce6831cd4fba6518aff50fcdf204e2737b205c31b'
+sha512sums=('dcde764c71519700e225c9a5488bcc092a9008c365b892a60e02bd53031801090d4ec73d0da38078a1c0061cd6be4cc41250f0cdbaf991250557c784f6aac961'
             '9a3b68429fc2267d596e08671330cc81f6d00ac7217a7a3991ebb583823a13e323108b514f5ec672c0982844ec581d9fed28dfede8fd92976b41d46b2924e140')
 install=badwolf.install
 
