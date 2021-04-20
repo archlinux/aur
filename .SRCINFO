@@ -1,0 +1,19 @@
+pkgbase = vim-obsession-git
+	pkgdesc = Vim plugin for continuously updated session files
+	pkgver = r37.82c9ac5
+	pkgrel = 1
+	url = https://github.com/tpope/vim-obsession
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-obsession
+	conflicts = vim-obsession
+	source = vim-obsession-git::git+https://github.com/tpope/vim-obsession
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 2ccc3eb5343d26e2d73f5601a59c5c29e8c48a5e75a6bfd5cbc7e74257bb3f97
+
+pkgname = vim-obsession-git
+
