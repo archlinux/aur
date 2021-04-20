@@ -1,25 +1,26 @@
 # Maintainer: ItzSelenux <zariepcommunication@gmail.com>
-
+# Maintainer: yochananmarqos
 pkgname=papirus-folders-gui
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="change the folders color of the Papirus icon theme"
+pkgdesc="A graphical user interface for papirus-folders"
 url="https://github.com/ItzSelenux/papirus-folders-gui"
 arch=('any')
-license=('LGPL2')
+license=('unknown')
 depends=('polkit-gnome' 'papirus-folders')
-makedepends=('git')
-provides=("papirus-folders-gui")
-source=("$pkgname::git+https://github.com/ItzSelenux/papirus-folders-gui.git"
-        "papirus-folders-gui.hook")
-sha256sums=('SKIP'
-            'SKIP')
-
-package() {
-  cd $pkgname
-  cd papirus-folders-gui
+makedepends=('qt5-base')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('e5fd6bd064559c5c585effb5d7df2fb723e3f389d82d57a6e7477ecd682830a7') 
+build() {
+  cd "$pkgname-$pkgver/$pkgname"
+  qmake
   make
-  mv papirus-folders-GUI papirus-folders-gui
-  sudo cp papirus-folders-gui /usr/bin/
-  sudo cp papirus.desktop /usr/share/applications/
+}
+ 
+package() {
+  cd "$pkgname-$pkgver/$pkgname"
+  make INSTALL_ROOT="$pkgdir" install
+  install install -m 755 -d "${pkgdir}/usr/share/applications/"
+  install -Dm644 "papirus.desktop" \
+        "${pkgdir}/usr/share/applications/"
 }
