@@ -1,0 +1,18 @@
+pkgbase = layer-shell-qt-git
+	pkgdesc = Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
+	pkgver = 5.21.80_r10.g82fec33
+	pkgrel = 1
+	url = https://invent.kde.org/vladz/layer-shell-qt
+	arch = x86_64
+	groups = plasma-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = qt5-wayland
+	provides = layer-shell-qt
+	conflicts = layer-shell-qt
+	source = git+https://invent.kde.org/vladz/layer-shell-qt.git
+	sha256sums = SKIP
+
+pkgname = layer-shell-qt-git
+
