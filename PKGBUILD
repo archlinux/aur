@@ -31,7 +31,7 @@ _gitroot=GITURL
 _gitname=MODENAME
 
 build() {
-  cd ~/sids-dwm-git/
+  cd "$pkgname"
   make
 }
 
