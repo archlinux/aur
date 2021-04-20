@@ -1,0 +1,115 @@
+Changelog 1.1.1 - 7 January 2021
+
+- [ProMIND] Updated to OpenVPN3-AirVPN 3.6.6
+- [ProMIND] Hummingbird now uses OpenSSL by default
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.1.0 - 23 June 2020
+
+- [ProMIND] Production release
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.1.0 beta 1 - 12 June 2020
+
+- [ProMIND] Added support for System V-style init
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0.3 - 3 June 2020
+
+- [ProMIND] Removed --google-dns (enable Google DNS fallback) option
+- [ProMIND] Improved flushing logics for pf
+- [ProMIND] Updated to OpenVPN3-airvpn 3.6.4
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0.2 - 4 February 2020
+
+- [ProMIND] Updated to OpenVPN3-AirVPN 3.6.3
+- [ProMIND] Added --tcp-queue-limit option
+- [ProMIND] --network-lock option now accepts firewall type and forces hummingbird to use a specific firewall infrastructure
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0.1 - 24 January 2020
+
+- [ProMIND] Updated to OpenVPN3-AirVPN 3.6.2
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0 - 27 December 2019
+
+- [ProMIND] Production release
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0 RC2 - 19 December 2019
+
+- [ProMIND] Better management of Linux NetworkManager and systemd-resolved in case they are both running
+- [ProMIND] Log a warning in case Linux NetworkManager and/or systemd-resolved are running
+
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0 RC1 - 10 December 2019
+
+- [ProMIND] Updated asio dependency
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0 beta 2 - 6 December 2019
+
+- [ProMIND] Updated to OpenVPN 3.6.1 AirVPN
+- [ProMIND] macOS now uses OpenVPN's Tunnel Builder
+- [ProMIND] Added --ignore-dns-push option for macOS
+- [ProMIND] Added --recover-network option for macOS
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0 beta 1 - 28 November 2019
+
+- [ProMIND] Added a better description for ipv6 option in help page
+- [ProMIND] --recover-network option now warns the user in case the program has properly exited in its last run
+- [ProMIND] NetFilter class is now aware of both iptables and iptables-legacy and gives priority to the latter
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0 alpha 2 - 7 November 2019
+ 
+- [ProMIND] DNS resolver has now a better management of IPv6 domains
+- [ProMIND] DNS resolver has now a better management of multi IP domains
+- [ProMIND] Minor bug fixes
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog 1.0 alpha 1 - 1 November 2019
+
+- [ProMIND] Initial public release
+
+

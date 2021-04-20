@@ -1,13 +1,13 @@
 pkgbase = hummingbird
 	pkgdesc = FLOSS OpenVPN3 client using AirVPN's OpenVPN3 library fork
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/AirVPN/hummingbird
+	changelog = Changelog.txt
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	makedepends = make
-	makedepends = cmake
 	makedepends = pkgconf
 	makedepends = autoconf
 	makedepends = automake

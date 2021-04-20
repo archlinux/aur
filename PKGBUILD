@@ -1,7 +1,7 @@
 # Maintainer: OpenSourcerer <alex at opensourcery dot eu>
 pkgname=hummingbird
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 _commit="d55d88c96c0e77c7d39886ec52937678dbf98c7b"
 pkgdesc="FLOSS OpenVPN3 client using AirVPN's OpenVPN3 library fork"
 arch=('x86_64')
@@ -10,9 +10,10 @@ license=('GPL3')
 provides=('hummingbird-bin')
 conflicts=('hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
 depends=('openssl' 'xz' 'lz4')
-makedepends=('gcc' 'make' 'cmake' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
+makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
+changelog="Changelog.txt"
 
 build() {
     # set vars needed by original OpenVPN3 build scripts
