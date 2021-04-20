@@ -1,0 +1,15 @@
+pkgbase = plank-docklet-picky
+	pkgdesc = Color Picker docklet for Plank (elementary os dock).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hannenz/picky
+	arch = x86_64
+	license = Unknown
+	makedepends = cmake
+	makedepends = vala
+	depends = plank
+	source = plank-docklet-picky-1.0.0.zip::https://github.com/hannenz/picky/archive/refs/heads/master.zip
+	md5sums = SKIP
+
+pkgname = plank-docklet-picky
+
