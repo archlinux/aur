@@ -1,15 +1,15 @@
 [Unit]
-    Description=RoonServer
-    After=network-online.target sound.target
-    Wants=network-online.target
+Description=RoonServer
+After=network-online.target sound.target
+Wants=network-online.target
 
-    [Service]
-    Type=simple
-    User=root
-    Environment=ROON_DATAROOT=/var/roon
-    Environment=ROON_ID_DIR=/var/roon
-    ExecStart=/opt/RoonServer/start.sh
-    Restart=on-abort
+[Service]
+Type=simple
+User=roon
+Environment=ROON_DATAROOT=/var/roon
+Environment=ROON_ID_DIR=/var/roon
+ExecStart=/opt/RoonServer/start.sh
+Restart=on-abort
 
-    [Install]
-    WantedBy=multi-user.target
+[Install]
+WantedBy=multi-user.target

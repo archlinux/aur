@@ -1,0 +1,11 @@
+post_install () {
+if [[ $(ls -l /var/roon | grep root) ]]; then
+chown -R roon:roon /var/roon
+fi
+}
+
+post_upgrade() {
+if [[ $(ls -l /var/roon | grep root) ]]; then
+chown -R roon:roon /var/roon
+fi
+}

@@ -1,8 +1,9 @@
 pkgbase = roonserver
 	pkgdesc = The music player for music lovers
-	pkgver = 1.8
+	pkgver = 1.8.790
 	pkgrel = 1
 	url = https://roonlabs.com/
+	install = roonserver.install
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
@@ -10,10 +11,14 @@ pkgbase = roonserver
 	depends = ffmpeg
 	depends = cifs-utils
 	source = http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2
+	source = sysusers.d
+	source = tmpfiles.d
 	source = roonserver.service
 	source = copyright
 	sha256sums = SKIP
-	sha256sums = 37e646b7dfe98d6838ad765757ab0978a5d6c1caf97e9f8f508fbcd7e08f39d4
+	sha256sums = 7cf041520e73ac4b5d4529658350b5a530415c3fc070080f6ea260871f2af38a
+	sha256sums = f2f568abf30931649642686bf8d7b66c19731e1121cf542d125475bd93a87dea
+	sha256sums = 49c565f79a86c86e242849ab70fbb4d1f88a451984d8df53f179e7bb6e1ac681
 	sha256sums = 31b6cac147644ad4d0908906b91e631752111939be88031e03da72182de5be93
 
 pkgname = roonserver
