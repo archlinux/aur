@@ -1,7 +1,7 @@
 pkgbase = opencl-amd
 	pkgdesc = OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack.
-	pkgver = 20.50.1234664
-	pkgrel = 5
+	pkgver = 21.10.1247438
+	pkgrel = 1
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom:AMD
@@ -13,8 +13,8 @@ pkgbase = opencl-amd
 	optdepends = clinfo
 	provides = opencl-driver
 	conflicts = rocm-opencl-runtime
-	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-20.50-1234664-ubuntu-20.04.tar.xz
-	sha256sums = 0ffbd907c3243e85b1c9696fe9a7ebb448da8f0f1c54a666489e7da54b1179e7
+	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-21.10-1247438-ubuntu-20.04.tar.xz
+	sha256sums = 2d63e6709909559b35f0d37504bd194b8a5cba8069b80aa849ec085d05bba1e2
 
 pkgname = opencl-amd
 
