@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
 url=http://repository.veeam.com/backup/linux/agent
+install=${pkgname}.install
 license=('custom')
 depends=('ncurses' 'lvm2' 'fuse' 'mlocate')
 source=( "$url/rpm/el/8/x86_64/veeam-$pkgver-1.el8.x86_64.rpm" )
