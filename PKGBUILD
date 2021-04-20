@@ -37,6 +37,6 @@ package() {
 	
     cd "${srcdir}/${pkgname%-git}/models/"
     for f in best/*; do
-        install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname%-git}/best/"$f"
+        install -Dm 644 "$f" ${pkgdir}/usr/share/${pkgname%-git}/"$f"
     done
 }
