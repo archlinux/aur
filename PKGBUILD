@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
 url="https://www.uninformativ.de/git/lariza"
-license=('custom:PIZZA-WARE')
+license=('custom:MIT')
 depends=('webkit2gtk')
 optdepends=('tabbed')
-source=("https://www.uninformativ.de/git/$pkgname/archives/$pkgname-v$pkgver.tar.gz")
-sha512sums=('0f7d3a0ed35fe2bdbdc54eaccc8e5bb2aa944ea52bd49110c6a7f1ab8131c9c93836d7c820f7568b6991a24e3a63ae76e6b9683bfed214ed9ee22bdabe814d52')
+source=("$url/archives/$pkgname-v$pkgver.tar.gz")
+sha256sums=('0e98b5b381bd0af6a259b641e832bf13d1d0aecf987a588ff3618380a1390e99')
 
 build() {
   cd $pkgname-v$pkgver
@@ -21,5 +21,5 @@ build() {
 package() {
   cd $pkgname-v$pkgver
   make DESTDIR="$pkgdir" prefix="/usr" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

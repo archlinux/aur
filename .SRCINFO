@@ -5,11 +5,11 @@ pkgbase = lariza
 	url = https://www.uninformativ.de/git/lariza
 	arch = i686
 	arch = x86_64
-	license = custom:PIZZA-WARE
+	license = custom:MIT
 	depends = webkit2gtk
 	optdepends = tabbed
 	source = https://www.uninformativ.de/git/lariza/archives/lariza-v21.01.tar.gz
-	sha512sums = 0f7d3a0ed35fe2bdbdc54eaccc8e5bb2aa944ea52bd49110c6a7f1ab8131c9c93836d7c820f7568b6991a24e3a63ae76e6b9683bfed214ed9ee22bdabe814d52
+	sha256sums = 0e98b5b381bd0af6a259b641e832bf13d1d0aecf987a588ff3618380a1390e99
 
 pkgname = lariza
 
