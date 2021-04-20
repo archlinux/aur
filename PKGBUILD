@@ -3,7 +3,7 @@
 _gemname=css_parser
 pkgname=ruby-$_gemname
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Ruby CSS parser.'
 arch=(any)
 url='https://github.com/premailer/css_parser'

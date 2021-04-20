@@ -1,7 +1,7 @@
 pkgbase = ruby-css_parser
 	pkgdesc = Ruby CSS parser.
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/premailer/css_parser
 	arch = any
 	license = MIT
