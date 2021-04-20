@@ -1,0 +1,34 @@
+diff -aur src.orig/jdatestamp-1.2-src/jdatestamp.c src/jdatestamp-1.2-src/jdatestamp.c
+--- src.orig/jdatestamp-1.2-src/jdatestamp.c	2021-04-20 10:19:32.588069127 +0200
++++ src/jdatestamp-1.2-src/jdatestamp.c	2021-04-20 10:19:50.501395534 +0200
+@@ -891,7 +891,7 @@
+             cutoutInfo.width, cutoutInfo.height, x, y);
+ 
+     /* Crop out required section using jpegtran */
+-    sprintf(g_TStr, "jpegtran -crop %dx%d+%d+%d -outfile \"%s\" \"%s\"",
++    sprintf(g_TStr, "jpegtran9 -crop %dx%d+%d+%d -outfile \"%s\" \"%s\"",
+             cutoutInfo.width, cutoutInfo.height, x, y, g_cropFile,
+             inpFile);
+ 
+@@ -945,10 +945,10 @@
+         copyOption = "";
+ 
+     if(opFile != NULL)
+-        sprintf(g_TStr, "jpegtran -drop +%d+%d \"%s\" %s-outfile \"%s\" \"%s\"",
++        sprintf(g_TStr, "jpegtran9 -drop +%d+%d \"%s\" %s-outfile \"%s\" \"%s\"",
+             cutoutInfo.x, cutoutInfo.y, g_cropFile, copyOption, opFile, inpFile);
+     else
+-        sprintf(g_TStr, "jpegtran -drop +%d+%d \"%s\" %s\"%s\"",
++        sprintf(g_TStr, "jpegtran9 -drop +%d+%d \"%s\" %s\"%s\"",
+             cutoutInfo.x, cutoutInfo.y, g_cropFile, copyOption, inpFile);
+ 
+     JDSTMP_DEBUG("Dropping cropped section with command '%s'\n", g_TStr);
+diff -aur src.orig/jdatestamp-1.2-src/jpegtran src/jdatestamp-1.2-src/jpegtran
+--- src.orig/jdatestamp-1.2-src/jpegtran	2021-04-20 10:19:32.588069127 +0200
++++ src/jdatestamp-1.2-src/jpegtran	2021-04-20 10:19:53.338061056 +0200
+@@ -2,4 +2,4 @@
+ 
+ rootDir=`dirname $0`
+ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$rootDir/lib
+-$rootDir/bin/jpegtran $*
++$rootDir/bin/jpegtran9 $*
