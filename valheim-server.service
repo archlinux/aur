@@ -7,7 +7,8 @@ Type=simple
 User=valheim
 Group=valheim
 Environment="LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH"
-ExecStart=/opt/valheim-server/valheim_server.x86_64 -name "Valheim" -password "secret" -port 2456 -world "world0" -public 1
+EnvironmentFile=/etc/valheim/server.conf
+ExecStart=/opt/valheim-server/valheim_server.x86_64 -name ${NAME} -password ${PASSWORD} -port ${PORT} -world ${WORLD} -public ${PUBLIC}
 WorkingDirectory=/opt/valheim-server
 KillSignal=SIGINT
 NoNewPrivileges=true
