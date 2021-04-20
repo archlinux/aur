@@ -1,0 +1,18 @@
+pkgbase = lxqt-appswitcher
+	pkgdesc = Alternate, featureful application/window switcher for LXQT.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zjes/lxqt-appswitcher
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = lxqt-build-tools
+	depends = kwindowsystem
+	depends = liblxqt
+	depends = lxqt-globalkeys
+	source = https://github.com/zjes/lxqt-appswitcher/archive/v1.0.tar.gz
+	sha512sums = d48b95a022c8b9350d1af396593fa91892060d89a374857f2d7a94b8556efe58ac48cac8c2796e030ba4b08944c1f19358648a7a7d4de96ea2b676ca4bf62256
+	b2sums = eebf5d4b789776e249156bed724104c4872b95c053d4abda4254aeaa1c13b60bb048231d615a5928fe0e0c2614ec4faddbcaad4b8bd16351aae1385ac3e6d95d
+
+pkgname = lxqt-appswitcher
+
