@@ -3,31 +3,25 @@
 pkgname=kgx
 pkgver=0.2.1
 pkgrel=1
-pkgdesc="A minimal terminal for GNOME"
-url="https://gitlab.gnome.org/ZanderBrown/kgx"
-license=("GPL3")
-arch=(i686 x86_64 armv6h armv7h aarch64)
-depends=(vte3
-         gtk3
-         glib2
-         libgtop)
-makedepends=(
-             meson
-             )
-conflicts=(kgx)
-source=("https://gitlab.gnome.org/ZanderBrown/kgx/-/archive/${pkgver}/kgx-${pkgver}.tar.gz")
+pkgdesc='Simple user-friendly terminal emulator for the GNOME desktop'
+url='https://gitlab.gnome.org/ZanderBrown/kgx'
+license=('GPL3')
+arch=('x86_64')
+depends=('libgtop' 'libhandy0' 'vte3')
+makedepends=('appstream-glib' 'meson')
+source=("https://gitlab.gnome.org/ZanderBrown/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('70a814b0baf70049d5a20791d58a32e92661428d2deeeb56d91b81cc4dc5e81a')
 
+
 build() {
-    rm -rf build
-    arch-meson kgx-${pkgver} build
-    ninja -C build
+  arch-meson $pkgname-$pkgver build
+  meson compile -C build
 }
 
 check() {
-    ninja -C build test
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
