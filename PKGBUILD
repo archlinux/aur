@@ -13,6 +13,8 @@ checkdepends=('boost-libs')
 conflicts=('trng4')
 provides=('trng4')
 source=('git+https://github.com/rabauke/trng4')
+# Upstream handles static and dynamic as different CMake targets instead of treating them as the same target with different properties.
+options=(staticlibs)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -26,7 +28,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None'   \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -Wno-dev
-  make -C "trng4/build" trng4_shared test_all
+  make -C "trng4/build" trng4_shared trng4_static test_all
 }
 
 check() {
