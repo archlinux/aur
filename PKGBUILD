@@ -4,7 +4,7 @@
 _gemname=ipaddress
 pkgname=ruby-$_gemname
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="IPv4/IPv6 addresses manipulation library"
 arch=(any)
 url="http://github.com/bluemonk/ipaddress"
