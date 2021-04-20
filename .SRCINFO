@@ -1,0 +1,13 @@
+pkgbase = quiet-gtk-git
+	pkgdesc = Quiet theme for GTK
+	pkgver = r5.28017af
+	pkgrel = 1
+	url = https://github.com/quiettheme/gtk
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/quiettheme/gtk
+	md5sums = SKIP
+
+pkgname = quiet-gtk-git
+
