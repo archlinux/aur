@@ -1,8 +1,8 @@
 pkgbase = wdisplays-git
 	pkgdesc = GUI display configurator for wlroots compositors
-	pkgver = r46.dd7e1e2
-	pkgrel = 2
-	url = https://github.com/cyclopsian/wdisplays
+	pkgver = 1.1.r0.ga9aa747
+	pkgrel = 1
+	url = https://github.com/artizirk/wdisplays
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -12,10 +12,8 @@ pkgbase = wdisplays-git
 	makedepends = meson
 	depends = gtk3
 	provides = wdisplays
-	source = wdisplays::git+https://github.com/cyclopsian/wdisplays
-	source = use-correct-versions.patch
+	source = wdisplays::git+https://github.com/artizirk/wdisplays
 	sha256sums = SKIP
-	sha256sums = e7cc9418945f12632fd17b408fdd8f1c0287f31e4bc3d2afab7683a84e8f2fd2
 
 pkgname = wdisplays-git
 
