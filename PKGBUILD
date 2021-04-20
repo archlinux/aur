@@ -4,7 +4,7 @@
 _gemname=asciidoctor-pdf
 pkgname=asciidoctor-pdf
 pkgver=1.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc='translate asciidoctor directly to pdf'
 arch=(any)
 url='https://asciidoctor.org/'
@@ -13,6 +13,7 @@ depends=(asciidoctor
          ruby-concurrent
          ruby-prawn
          'ruby-ttfunk>=1.7.0'
+         ruby-rexml
          'ruby-prawn-icon<3'
          ruby-prawn-svg
          ruby-prawn-table

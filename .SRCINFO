@@ -1,7 +1,7 @@
 pkgbase = asciidoctor-pdf
 	pkgdesc = translate asciidoctor directly to pdf
 	pkgver = 1.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://asciidoctor.org/
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = asciidoctor-pdf
 	depends = ruby-concurrent
 	depends = ruby-prawn
 	depends = ruby-ttfunk>=1.7.0
+	depends = ruby-rexml
 	depends = ruby-prawn-icon<3
 	depends = ruby-prawn-svg
 	depends = ruby-prawn-table
