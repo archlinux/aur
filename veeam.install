@@ -1,0 +1,26 @@
+post_install() {
+    echo "post install"
+    systemctl enable veeamservice.service
+    systemctl start veeamservice.service    
+    echo "."
+}
+
+pre_upgrade() {
+    echo "pre update"
+    echo "."
+}
+
+post_upgrade() {
+    echo "post upgrade"
+    systemctl restart veeamservice.service
+    echo "."
+}
+
+pre_remove() {
+    echo "pre remove"
+    systemctl stop veeamservice.service
+    systemctl disable veeamservice.service
+    rm -rf /var/lib/veeam
+    rm -rf /var/log/veeam
+    echo "."
+}
