@@ -2,19 +2,18 @@
 
 _name=langcodes
 pkgname=python-langcodes
-pkgver=2.1.0
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="A toolkit for working with and comparing the standardized codes for languages"
 arch=('any')
 url="https://github.com/LuminosoInsight/langcodes"
 license=('Apache')
 makedepends=('python'
 	'python-setuptools')
-depends=("python-marisa-trie")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 	"https://raw.githubusercontent.com/LuminosoInsight/langcodes/master/LICENSE.txt")
-sha256sums=('75bcaca8825e1a321965b136815dee53083c63314975e024ad0ccff8545e681f'
-	'326f0f4093cf7bc8d89e3711d96cb73cfa7ce7c0381a83760c6e821f96badf7f')
+sha256sums=('1ccd37e3a68760d29ec3b17f5962cd1d8f242f4d9705ad1601c5cb7fab48199c'
+            '84b11b945d88ab72e3790c5c2a0f8d0480f77d803bd810b5b149023bfce265af')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
