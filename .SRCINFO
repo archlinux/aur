@@ -1,0 +1,22 @@
+pkgbase = python-tsnet
+	pkgdesc = transient simulation in water networks using Method of Characteristics
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/glorialulu/TSNet
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-networkx
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-plotly
+	depends = python-wntr
+	source = https://files.pythonhosted.org/packages/source/t/tsnet/tsnet-0.2.2.tar.gz
+	sha256sums = 363fc2cd3ac2529d0fedf24b272b394fb2292116984b3b27c9deb1dbe1d16670
+
+pkgname = python-tsnet
+
