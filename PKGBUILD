@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=terraformer
-pkgver=0.8.12
-pkgrel=2
+pkgver=0.8.13
+pkgrel=1
 pkgdesc="CLI tool to generate terraform files from existing infrastructure (reverse Terraform)"
 license=('Apache')
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/GoogleCloudPlatform/terraformer'
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('2bbbae2ee9b03315bfb86df64f1deec0cf436a16896a57bb8589f080716f6aca')
+sha256sums=('5e7519aecb2cb6a9f1644e1c4ad977299f5878521f46074c77191cb59241696c')
 
 prepare(){
 	cd "terraformer-${pkgver}"
