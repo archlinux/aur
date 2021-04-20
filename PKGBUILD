@@ -1,11 +1,11 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=lgeneral
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A turn-based strategy engine heavily inspired by Panzer General (pg-data and kukgen-data included)."
 arch=('x86_64')
-url="http://lgames.sourceforge.net/LGeneral/"
+url="https://lgames.sourceforge.net/LGeneral/"
 license=('GPL2' 'custom' 'CCPL') # pg-data is abandonware, hence custom
 depends=('sdl_mixer' 'hicolor-icon-theme')
 install="${pkgname}.install"
@@ -16,7 +16,7 @@ source=(
  "http://downloads.sourceforge.net/${pkgname}/pg-data.tar.gz"
  "http://downloads.sourceforge.net/${pkgname}/kukgen-data-1.1.tar.gz")
 md5sums=(
- '23fd43d850424c646b7573244e555274'
+ '87a56162e77cf20418137e156026d044'
  '40c4be23f60d1dc732aabe13b58fc5e3'
  '5a9755bdb2ae0a94910c093c5feafd61')
 
