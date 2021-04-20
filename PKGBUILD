@@ -1,7 +1,7 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libbaseencode
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Library written in C for encoding and decoding data using base32 or base64 (RFC-4648) (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/paolostivanin/libbaseencode/archive/v${pkgver}.tar.gz"
         "fix-dll-install.patch")
-sha256sums=('a183d7cf30d931b2a078d6f0ef64616b71ab26f9258e5f4e191778c7ace7175d'
+sha256sums=('645329236992ee85f05569475da2af0f0d81aaccd4aebc8d0b8603e54a320935'
             '8249f3fc0c7d66469b84339590eb68ed882a8ed1dc75cbaa62ef1b9e4a6b16aa')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
