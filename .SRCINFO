@@ -1,0 +1,14 @@
+pkgbase = tt
+	pkgdesc = Terminal based typing test
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lemnos/tt
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = tt-0.4.0::git+https://github.com/lemnos/tt/#commit=57357e2674e30912c6ebae7c0b5009d770ff50e0
+	b2sums = SKIP
+
+pkgname = tt
+
