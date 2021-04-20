@@ -1,7 +1,7 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=paperde
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="An awesome Desktop Environment built on top of Qt/Wayland and Wayfire."
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('xdg-desktop-portal-gtk: GTK based XDG desktop portal implementation
 			'playerctl: for keyboard media controls'
 			'clipman: a clipboard manager for wayland')
 source=("$url/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-md5sums=('e0aa427e237944b97dac982350601b56')
+md5sums=('7852d57c9d102cf95733146192da338c')
 
 prepare() {
   mkdir -p build
