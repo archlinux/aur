@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20210412.1
+pkgver=20210419
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
