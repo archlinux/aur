@@ -1,0 +1,16 @@
+pkgbase = graalwasm-jdk16-bin
+	pkgdesc = GraalVM-based, high-performance WebAssembly platform, Java 16 version
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = jdk16-graalvm-bin
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/wasm-installable-svm-java16-linux-amd64-21.1.0.jar
+	sha256sums_x86_64 = 52e15850cd1627efba16338d5ff48af3930ba6e81f79c13b191dba30af3069f7
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/wasm-installable-svm-java16-linux-aarch64-21.1.0.jar
+	sha256sums_aarch64 = 92d3affdd7a853e92b25b07e46b7fbe978c4acc5500b44011b92aa2635c55903
+
+pkgname = graalwasm-jdk16-bin
+
