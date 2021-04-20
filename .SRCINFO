@@ -1,0 +1,13 @@
+pkgbase = python-file-tree
+	pkgdesc = Framework to represent structured directories in python as FileTree objects. It can also be used to visualise the data in structured directories using fsleyes.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://pypi.org/project/file-tree/
+	arch = any
+	license = MIT
+	depends = python
+	source = python-file-tree-0.3.5.tar.gz::https://files.pythonhosted.org/packages/source/f/file-tree/file-tree-0.3.5.tar.gz
+	sha256sums = 2d51b2933b4ce5d27f686d4d661ea290f4f8032c5abc6c18fd4df3669ed21969
+
+pkgname = python-file-tree
+
