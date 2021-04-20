@@ -1,11 +1,12 @@
 pkgbase = daily-wallpaper-git
-	pkgdesc = Change wallpaper automatically with the Photo of The Day of your loved source
-	pkgver = r86.e2e3a12
+	pkgdesc = Change wallpaper automatically with the Photo of The Day of your favorite source
+	pkgver = r100.42041bf
 	pkgrel = 1
 	url = https://github.com/atareao/daily-wallpaper
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = dbus-python
 	depends = python-gobject
 	depends = python-lxml
 	depends = python-cssselect
