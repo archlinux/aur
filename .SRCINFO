@@ -1,7 +1,7 @@
 pkgbase = mercury-parser
 	pkgdesc = Extract meaningful content from the chaos of a web page (@postlight version)
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mercury.postlight.com/web-parser/
 	arch = any
 	license = Apache
