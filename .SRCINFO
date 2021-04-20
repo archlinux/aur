@@ -1,7 +1,7 @@
 pkgbase = postgresql-12
 	pkgdesc = Sophisticated object-relational DBMS
 	pkgver = 12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
