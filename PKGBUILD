@@ -1,13 +1,13 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Maintainer: Andrew Bueide <abueide@protonmail.com>
-# Maintainer: rouhannb <rouhannb@gmail.com>
+# Maintainer: rouhannb <rouhannb@protonmail.com>
 # Contributor: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 # Contributor: Benoit Favre <benoit.favre@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.25
+pkgver=1.2.27
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="http://www.aseprite.org/"
 license=('custom')
 depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2' 'fontconfig' 'libxcursor'
          'hicolor-icon-theme')
-makedepends=('cmake' 'ninja' 'git' 'python2' 'freeglut' 'xorgproto' 'libxi' 'harfbuzz-icu'
+makedepends=('cmake' 'ninja' 'git' 'python2' 'python' 'freeglut' 'xorgproto' 'libxi' 'harfbuzz-icu'
              'nettle')
 conflicts=("aseprite-git" "aseprite-gpl" "skia-git")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname^}-\
@@ -85,7 +85,7 @@ ea3ba903faac98b64b2bf8de5e98cd97b335a474.tar.gz"
 )
 _gitsrc=("${source[@]:4:29}")
 noextract=("${_gitsrc[@]%%::*}")
-sha256sums=('c5496ad159454b44e9b6c0f872553a192a7d20feeb6337a799c3f7009cdda558'
+sha256sums=('541a5c561fe7481cfb6aec80ecc9a8435d8387325ba30c9e3116c3c76ef539d7'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'SKIP'
             'SKIP'
