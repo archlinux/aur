@@ -1,0 +1,37 @@
+pkgbase = vim-falcon-git
+	pkgdesc = A colorscheme for terminals, Vim and friends
+	pkgver = 2.1.1.r29.g376aacc
+	pkgrel = 1
+	url = https://github.com/fenetikm/falcon
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	source = vim-falcon-git::git+https://github.com/fenetikm/falcon
+	md5sums = SKIP
+
+pkgname = vim-falcon-git
+	depends = vim-plugin-runtime
+	optdepends = vim-airline-falcon: Airline colorscheme
+	optdepends = vim-lightline-falcon: Lightline colorscheme
+	provides = vim-falcon
+	conflicts = vim-falcon
+
+pkgname = vim-airline-falcon-git
+	depends = vim-plugin-runtime
+	depends = vim-airline
+	optdepends = vim-falcon: Base vim colorscheme
+	provides = vim-airline-falcon
+	conflicts = vim-airline-falcon
+
+pkgname = vim-lightline-falcon-git
+	depends = vim-plugin-runtime
+	depends = vim-lightline-git
+	optdepends = vim-falcon: Base vim colorscheme
+	provides = vim-lightline-falcon
+	conflicts = vim-lightline-falcon
+
+pkgname = vim-falcon-wallpapers-git
+	provides = vim-falcon-wallpapers
+	conflicts = vim-falcon-wallpapers
+
