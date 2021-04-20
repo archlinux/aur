@@ -1,0 +1,18 @@
+pkgbase = fish-opendoas-git
+	pkgdesc = Fish shell completions for opendoas
+	pkgver = r6.ae532b7
+	pkgrel = 1
+	url = https://git.sr.ht/~lmartinez/fish-opendoas
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	makedepends = git
+	depends = fish
+	depends = opendoas
+	provides = fish-opendoas
+	conflicts = fish-opendoas
+	source = fish-opendoas-git::git+https://git.sr.ht/~lmartinez/fish-opendoas
+	md5sums = SKIP
+
+pkgname = fish-opendoas-git
+
