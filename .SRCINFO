@@ -1,7 +1,7 @@
 pkgbase = bin32-firefox
 	pkgdesc = Standalone web browser from mozilla.org - 32bit version for 64bit systems
-	pkgver = 87.0
-	pkgrel = 2
+	pkgver = 88.0
+	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/
 	arch = x86_64
 	license = MPL
@@ -15,10 +15,10 @@ pkgbase = bin32-firefox
 	optdepends = lib32-librsvg: svg_loader.so library
 	optdepends = lib32-gtk-engines: libclearlooks.so library
 	optdepends = lib32-ffmpeg: extra codec support (x264)
-	source = https://download-installer.cdn.mozilla.net/pub/firefox/releases/87.0/linux-i686/en-US/firefox-87.0.tar.bz2
+	source = https://download-installer.cdn.mozilla.net/pub/firefox/releases/88.0/linux-i686/en-US/firefox-88.0.tar.bz2
 	source = firefox32.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 9127aee106dd9f09fac0c3cb89c5d75553384da4ec9be5943b60a5f55f31fccc
+	sha256sums = a6f45b2aac37f917c0e3b8450cce94646f8734215d8f04a896f21cdbca7ba77b
 	sha256sums = 8477bb0a22be7fc39fcad1daad444862fac359b74662b447954811fdae1a5bf2
 
 pkgname = bin32-firefox
