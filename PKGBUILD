@@ -4,7 +4,7 @@
 _gemname=prawn-templates
 pkgname=ruby-$_gemname
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Allows using PDFs as templates in Prawn.'
 arch=(any)
 url='https://github.com/prawnpdf/prawn-templates'
