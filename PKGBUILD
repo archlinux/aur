@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-blur-my-shell-git
 _pkgname=blur-my-shell
-pkgver=r39.764e5b1
+pkgver=r40.042fc5e
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
@@ -32,6 +32,6 @@ package() {
 	cp -r build "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 
 	install -d "$pkgdir/usr/share/glib-2.0/schemas"
-	ln -s "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/org.gnome.shell.extensions.$_uuid.gschema.xml" \
+	ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/org.gnome.shell.extensions.$_pkgname.gschema.xml" \
 		"$pkgdir/usr/share/glib-2.0/schemas"
 }
