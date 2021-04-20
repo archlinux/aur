@@ -12,7 +12,7 @@ pkgbase = teg
 	makedepends = libxml2
 	makedepends = xmlto
 	depends = goocanvas>=2.0.4
-	depends = goocanvas<3.0.0
+	depends = goocanvas<2.1.0
 	source = teg-0.12.0.tar.gz::https://github.com/wfx/teg/archive/0.12.0.tar.gz
 	sha256sums = 51270b333265f396cfbbec33ed79ec9672acc62a7307a7625f6c7875c3100c13
 

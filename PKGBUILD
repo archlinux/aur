@@ -7,7 +7,7 @@ pkgdesc="Tenes Empanadas Graciela (TEG) is a clone of a 'Plan Tactico y Estrateg
 arch=('x86_64')
 url="https://github.com/wfx/teg"
 license=('GPL2')
-depends=('goocanvas>=2.0.4' 'goocanvas<3.0.0')
+depends=('goocanvas>=2.0.4' 'goocanvas<2.1.0')
 makedepends=('docbook-xsl' 'gettext' 'libedit' 'libtool' 'libxml2' 'xmlto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wfx/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('51270b333265f396cfbbec33ed79ec9672acc62a7307a7625f6c7875c3100c13')
