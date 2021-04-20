@@ -3,8 +3,8 @@
 
 realname=fftw
 pkgname=${realname}-mpi
-pkgver=3.3.8
-pkgrel=2
+pkgver=3.3.9
+pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT), compiled with MPI and OpenMP support: header files, static and shared libraries"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -17,7 +17,7 @@ provides=("$realname" # 'libfftw3q_threads.so' 'libfftw3q_omp.so' 'libfftw3q.so'
 'libfftw3f_threads.so' 'libfftw3f_omp.so' 'libfftw3f_mpi.so' 'libfftw3f.so'
 'libfftw3_threads.so' 'libfftw3_omp.so' 'libfftw3_mpi.so' 'libfftw3.so')
 source=("http://www.fftw.org/fftw-${pkgver}.tar.gz")
-sha512sums=('ab918b742a7c7dcb56390a0a0014f517a6dff9a2e4b4591060deeb2c652bf3c6868aa74559a422a276b853289b4b701bdcbd3d4d8c08943acf29167a7be81a38')
+sha512sums=('52ebc2a33063a41fd478f6ea2acbf3b511867f736591d273dd57f9dfca5d3e0b0c73157921b3a36f1a7cfd741a8a6bde0fd80de578040ae730ea168b5ba466cf')
 options=('staticlibs')
 install=fftw.install
 
@@ -36,11 +36,14 @@ prepare() {
 #    cd "$realname-$pkgver"
 #    cp -v NEWS ChangeLog
 #    autoreconf -vfi
-#  )
-  cp -av "${realname}-${pkgver}" "${realname}-${pkgver}-double"
-  cp -av "${realname}-${pkgver}" "${realname}-${pkgver}-long-double"
-  cp -av "${realname}-${pkgver}" "${realname}-${pkgver}-quad"
+  #  )
+  printf "INFO: copying ${realname}-${pkgver} into -dobule -long and -single directories ..."
+  cp -a "${realname}-${pkgver}" "${realname}-${pkgver}-double"
+  cp -a "${realname}-${pkgver}" "${realname}-${pkgver}-long-double"
+  # Quad and MPI don't play along
+  # cp -a "${realname}-${pkgver}" "${realname}-${pkgver}-quad"
   mv fftw-${pkgver} fftw-${pkgver}-single
+  printf " done\n"
 }
 
 
