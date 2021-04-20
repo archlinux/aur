@@ -1,11 +1,17 @@
 pkgbase = trng4-git
-	pkgdesc = State of the art C++ pseudo-random number generator library for sequential and parallel Monte Carlo simulations
-	pkgver = r24.5e130e9
+	pkgdesc = A modern C++ pseudo random number generator library
+	pkgver = 4.24.r3.g589bdf2
 	pkgrel = 1
-	url = https://www.numbercrunch.de/trng/
-	arch = x86_64
-	source = git+https://github.com/rabauke/trng4.git
-	md5sums = SKIP
+	url = https://github.com/rabauke/trng4
+	arch = any
+	license = BSD
+	checkdepends = boost-libs
+	makedepends = git
+	makedepends = cmake>=3.10.0
+	provides = trng4
+	conflicts = trng4
+	source = git+https://github.com/rabauke/trng4
+	sha512sums = SKIP
 
 pkgname = trng4-git
 
