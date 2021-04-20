@@ -323,7 +323,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   install -Dvm644 "$srcdir/settings/$__pkgname.profile" "$pkgdir/etc/firejail/$__pkgname.profile"
-  install -Dvm644 "$srcdir/settings/$__pkgname-addons-common.profile" "$pkgdir/etc/firejail/$__pkgname-addons-common.profile"  
+  install -Dvm644 "$srcdir/settings/$__pkgname-common-addons.profile" "$pkgdir/etc/firejail/$__pkgname-common-addons.profile"  
   install -Dvm644 "$srcdir/settings/$__pkgname-common.profile" "$pkgdir/etc/firejail/$__pkgname-common.profile"
   install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
   
