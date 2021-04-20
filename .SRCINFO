@@ -1,0 +1,13 @@
+pkgbase = fastr-jdk16-bin
+	pkgdesc = GraalVM-based, high-performance implementation of the R language (Java 16 version)
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://github.com/oracle/fastr
+	arch = x86_64
+	license = GPL3
+	depends = jdk16-graalvm-bin
+	source = https://github.com/oracle/fastr/releases/download/vm-21.1.0/r-installable-java16-linux-amd64-21.1.0.jar
+	sha256sums = 8b67329d060c94481a4c14d545052fa5008546bc01362aa017ceef9ea761cece
+
+pkgname = fastr-jdk16-bin
+
