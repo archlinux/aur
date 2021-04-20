@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=mysql-shell
-pkgver=8.0.23
+pkgver=8.0.24
 pkgrel=1
 pkgdesc='An interface supporting development and administration for the MySQL Server'
 arch=('x86_64' 'i686')
@@ -14,9 +14,9 @@ source=(
   "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-$pkgver.tar.gz"
   "mysql-boost-$pkgver.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-$pkgver.tar.gz&p=23"
 )
-md5sums=('e81f34af007178f0737339cd1d38c4d5'
+md5sums=('b9772d6367825048e609201606cd71de'
          'SKIP'
-         '27cfcf24fc754b592acd69fd32a3940a'
+         'e8cb8eafe07e22d5da123ffc5ca79e56'
          'SKIP')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 depends=('python' 'openssl' 'curl')
