@@ -4,7 +4,7 @@
 _gemname=asciidoctor-diagram-ditaamini
 pkgname=ruby-$_gemname
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Ditaa JAR files wrapped in a Ruby gem'
 arch=(any)
 url='https://github.com/asciidoctor/asciidoctor-diagram'
