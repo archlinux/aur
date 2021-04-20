@@ -1,7 +1,7 @@
 pkgbase = teg
 	pkgdesc = Tenes Empanadas Graciela (TEG) is a clone of a 'Plan Tactico y Estrategico de la Guerra' board game, a pseudo-clone of Risk, a multiplayer turn-based strategy game.
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wfx/teg
 	arch = x86_64
 	license = GPL2
@@ -11,7 +11,8 @@ pkgbase = teg
 	makedepends = libtool
 	makedepends = libxml2
 	makedepends = xmlto
-	depends = goocanvas
+	depends = goocanvas>=2.0.4
+	depends = goocanvas<3.0.0
 	source = teg-0.12.0.tar.gz::https://github.com/wfx/teg/archive/0.12.0.tar.gz
 	sha256sums = 51270b333265f396cfbbec33ed79ec9672acc62a7307a7625f6c7875c3100c13
 
