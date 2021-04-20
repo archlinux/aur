@@ -1,0 +1,16 @@
+pkgbase = goocanvas2
+	pkgdesc = A cairo canvas widget for GTK+, legacy version
+	pkgver = 2.0.4
+	pkgrel = 8
+	url = https://wiki.gnome.org/Projects/GooCanvas
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = python-gobject
+	depends = gtk3
+	provides = goocanvas=2.0.4
+	source = https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
+	sha256sums = c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
+
+pkgname = goocanvas2
+
