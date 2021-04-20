@@ -1,0 +1,17 @@
+pkgbase = gomarkpdf-edersonferreira-git
+	pkgdesc = A Markdown to PDF transformer
+	pkgver = 1.1.r.
+	pkgrel = 1
+	url = https://github.com/edersonferreira/gomarkpdf
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = gomarkpdf
+	conflicts = gomarkpdf
+	source = git+https://github.com/edersonferreira/gomarkpdf
+	md5sums = SKIP
+
+pkgname = gomarkpdf-edersonferreira-git
+
