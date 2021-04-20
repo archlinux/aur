@@ -1,6 +1,6 @@
 pkgbase = howdoi
 	pkgdesc = Instant coding answers via the command line
-	pkgver = 2.0.14
+	pkgver = 2.0.15
 	pkgrel = 1
 	url = https://github.com/gleitz/howdoi
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = howdoi
 	depends = python-pyquery
 	depends = python-requests
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/h/howdoi/howdoi-2.0.14.tar.gz
-	sha256sums = 9416be3c8a319fc0764a743a2ad05fa374876dab71dbe15ce86c3a05ece44a0a
+	source = https://files.pythonhosted.org/packages/source/h/howdoi/howdoi-2.0.15.tar.gz
+	sha256sums = 01181f9af1032f6d77e8574f231d4b0e3090d6f794c62f0f1eca900cacea89ce
 
 pkgname = howdoi
 
