@@ -1,7 +1,7 @@
 pkgbase = goocanvas2
 	pkgdesc = A cairo canvas widget for GTK+, legacy version
 	pkgver = 2.0.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://wiki.gnome.org/Projects/GooCanvas
 	arch = x86_64
 	license = LGPL
