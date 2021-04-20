@@ -1,9 +1,9 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
-# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
-# Contributor: Vincent Bernardoff <vb@luminar.eu.org>
+# Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
+# Contributor: Vincent Bernardoff <vb at luminar dot eu dot org>
 
 pkgname=clingo
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('i686' 'x86_64' 'pentium4')
