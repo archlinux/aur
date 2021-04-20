@@ -3,18 +3,19 @@
 
 pkgname=victoriametrics
 _capname=VictoriaMetrics
-pkgver=1.55.1
-pkgrel=2
+pkgver=1.58.0
+pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64')
 url="https://victoriametrics.github.io"
 license=('Apache')
+depends=('glibc')
 makedepends=('go')
 backup=('etc/default/victoriametrics')
 source=("https://github.com/VictoriaMetrics/VictoriaMetrics/archive/v$pkgver.tar.gz"
         "victoriametrics.service"
         "victoriametrics.default")
-sha256sums=('083f38a4f03a5096dfef59c4d56fd50d0435054e0b9e175239d99062394e4fe0'
+sha256sums=('21ea23788ac7b683d9d1f2788de7001699fcf440b0c3d0e877596f5d09143c5f'
             '8b264a0843ef9ed06b144220b5607027014c7af459293eadd0a3ffcbc05251d2'
             '0fc91310e2c3140bd90b2fad62f497d8e7432cf3a2a8ab3a034b45958e01012a')
 
