@@ -1,0 +1,18 @@
+pkgbase = lib32-intel-gmmlib
+	pkgdesc = Intel Graphics Memory Management Library
+	pkgver = 21.1.1
+	pkgrel = 1
+	url = https://github.com/intel/gmmlib/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = lib32-gcc-libs
+	provides = lib32-intel-gmmlib
+	conflicts = lib32-intel-gmmlib
+	replaces = lib32-intel-gmmlib
+	options = !emptydirs
+	source = https://github.com/intel/gmmlib/archive/intel-gmmlib-21.1.1.tar.gz
+	sha256sums = b996f09264e05ebca0dc275ea32791ba22769fe04147592371b4a61cdf508763
+
+pkgname = lib32-intel-gmmlib
+
