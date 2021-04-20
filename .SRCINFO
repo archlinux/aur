@@ -6,6 +6,7 @@ pkgbase = shell-color-scripts
 	arch = i686
 	arch = x86_64
 	license = MIT
+	depends = binutils
 	optdepends = bash
 	optdepends = zsh
 	provides = shell-color-scripts
