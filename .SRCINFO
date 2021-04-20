@@ -1,6 +1,6 @@
 pkgbase = gollum
 	pkgdesc = A simple, Git-powered wiki.
-	pkgver = 5.2.2
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = http://github.com/gollum/gollum
 	arch = any
@@ -23,10 +23,10 @@ pkgbase = gollum
 	depends = ruby-uglifier>=4.2
 	depends = ruby-useragent
 	depends = ruby-webrick>=1.7.0
-	noextract = gollum-5.2.2.gem
+	noextract = gollum-5.2.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gollum-5.2.2.gem
-	sha1sums = 0d2202258a840eeed0d761fc2f8416a2c752929c
+	source = https://rubygems.org/downloads/gollum-5.2.3.gem
+	sha1sums = 921b3055fad9d5041b9b481e5cca26f7e5b9f188
 
 pkgname = gollum
 
