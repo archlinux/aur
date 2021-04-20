@@ -2,14 +2,14 @@
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 _commit="fee05fd016b22d222ec85846786c1d627b03b40e"
-pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird"
+pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
-provides=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin')
-conflicts=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin')
+provides=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
+conflicts=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4')
 makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
 source=("git+$url.git#commit=$_commit")
@@ -49,7 +49,10 @@ package() {
     install -Dm755 hummingbird "$pkgdir/usr/bin/hummingbird"
 
     # place documentation
-    install -Dm755 README.md "$pkgdir/usr/share/doc/airvpn-suite/README.md"
+    install -Dm755 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    
+    # place license
+    install -Dm755 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
     # place configuration
     cd $_pkgname/etc
