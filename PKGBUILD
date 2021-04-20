@@ -1,13 +1,15 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=archlinux-repro-git
-pkgver=r116.a1dc7bd
+pkgver=r247.691d869
 pkgrel=1
 pkgdesc='Tools to reproduce arch linux packages'
 arch=('any')
 license=('MIT')
 makedepends=('git' 'asciidoc')
-depends=('diffoscope' 'curl' 'gnupg' 'git')
+depends=('diffoscope' 'curl' 'gnupg' 'git' 'diffutils' 'zstd')
+provides=('archlinux-repro')
+replaces=('archlinux-repro')
 url="http://github.com/archlinux/archlinux-repro"
 source=("git+https://github.com/archlinux/archlinux-repro.git")
 sha256sums=('SKIP')

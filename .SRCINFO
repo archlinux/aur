@@ -1,6 +1,6 @@
 pkgbase = archlinux-repro-git
 	pkgdesc = Tools to reproduce arch linux packages
-	pkgver = r116.a1dc7bd
+	pkgver = r247.691d869
 	pkgrel = 1
 	url = http://github.com/archlinux/archlinux-repro
 	arch = any
@@ -11,6 +11,10 @@ pkgbase = archlinux-repro-git
 	depends = curl
 	depends = gnupg
 	depends = git
+	depends = diffutils
+	depends = zstd
+	provides = archlinux-repro
+	replaces = archlinux-repro
 	source = git+https://github.com/archlinux/archlinux-repro.git
 	sha256sums = SKIP
 
