@@ -1,15 +1,15 @@
 # Contributor: Carlos Franke <carlos_Franke at lemtank dot de>
 _pkgname=azulejo
 pkgname=$_pkgname-git
-pkgver=r68.4c6c8e8
+pkgver=r72.df4264a
 pkgrel=1
 pkgdesc="Window resizing and tiling utility"
 arch=('any')
 url=""
 license=('custom')
 groups=()
-depends=('python2' 'gtk3' 'libkeybinder3' 'python2-xlib' 'python2-notify2' 'python2-gobject')
-makedepends=('git' 'python2-setuptools')
+depends=('python3' 'gtk3' 'libkeybinder3' 'python-xlib' 'python-notify2' 'python-gobject')
+makedepends=('git' 'python-setuptools')
 provides=('azulejo')
 conflicts=('azulejo')
 options=(!emptydirs)
@@ -24,7 +24,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	python2 setup.py install --root="$pkgdir/" --optimize=1
+	python setup.py install --root="$pkgdir/" --optimize=1
   mkdir -p $pkgdir/usr/share/licenses/azulejo/
   cp LICENSE $pkgdir/usr/share/licenses/azulejo/
 }
