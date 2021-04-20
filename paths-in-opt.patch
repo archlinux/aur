@@ -1,8 +1,8 @@
 diff --git a/hydrus/client/gui/ClientGUI.py b/hydrus/client/gui/ClientGUI.py
-index c73d9a8..717afce 100644
+index 418c93e..91e2683 100644
 --- a/hydrus/client/gui/ClientGUI.py
 +++ b/hydrus/client/gui/ClientGUI.py
-@@ -3903,7 +3903,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
+@@ -4133,7 +4133,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -12,7 +12,7 @@ index c73d9a8..717afce 100644
                          cmd = [ python_executable, server_script_path, db_param ]
                          
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
-index a9eef8d..ca32f46 100644
+index db6a88b..49e5fdb 100644
 --- a/hydrus/core/HydrusConstants.py
 +++ b/hydrus/core/HydrusConstants.py
 @@ -5,33 +5,9 @@ import typing
@@ -50,9 +50,9 @@ index a9eef8d..ca32f46 100644
 +HYDRUS_MODULE_DIR = '/opt/hydrus/hydrus'
 +BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
  
- PLATFORM_WINDOWS = sys.platform == 'win32'
- PLATFORM_MACOS  = sys.platform == 'darwin'
-@@ -41,32 +17,16 @@ PLATFORM_HAIKU = sys.platform == 'haiku1'
+ muh_platform = sys.platform.lower()
+ 
+@@ -43,32 +19,16 @@ PLATFORM_HAIKU = muh_platform == 'haiku1'
  RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
  RUNNING_FROM_MACOS_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
  
