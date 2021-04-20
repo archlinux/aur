@@ -1,6 +1,6 @@
 pkgbase = hashlink-git
 	pkgdesc = A virtual machine for Haxe
-	pkgver = r1022.2ba8897
+	pkgver = r1367.4c4de37
 	pkgrel = 1
 	url = https://hashlink.haxe.org/
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = hashlink-git
 	depends = sdl2
 	depends = mbedtls
 	depends = libuv
+	depends = glu
 	provides = hashlink-git
 	conflicts = hashlink-git
 	source = hashlink-git::git+https://github.com/HaxeFoundation/hashlink.git
