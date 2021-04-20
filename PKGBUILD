@@ -1,7 +1,7 @@
 # Maintainer: Frank Tang <roadtang@gmail.com>
 
 pkgname=nginx-mod-vod
-pkgver=1.24
+pkgver=1.27
 pkgrel=1
 
 _modname="nginx-vod-module"
@@ -20,7 +20,8 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            'b3cad8e3047556955fa028bcc68e7af46d19343942cb7984ad25e6f44d614ddf')
+            'b7f0e2eecbcdb8ed1f8c90eb86c756f563fc5d21768a351abe4de63f3ddf01d6'            
+            )
 validpgpkeys=("B0F4253373F8F6F510D42178520A9993A1C052F8")
 
 build() {
