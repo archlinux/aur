@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-djvulibre
 _pkgname=djvulibre
-pkgver=3.5.27
+pkgver=3.5.28
 pkgrel=1
 pkgdesc="Suite to create, manipulate and view DjVu ('déjà vu') documents (mingw-w64)"
 arch=('any')
@@ -11,17 +11,13 @@ license=('GPL2')
 makedepends=('mingw-w64-configure' 'mingw-w64-librsvg')
 depends=('mingw-w64-libtiff' 'mingw-w64-hicolor-icon-theme')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://downloads.sourceforge.net/project/djvu/DjVuLibre/${pkgver}/djvulibre-${pkgver}.tar.gz"
-        "djvulibre-3.5.27-win32.patch")
-sha256sums=('e69668252565603875fb88500cde02bf93d12d48a3884e472696c896e81f505f'
-            '21f74b031fde9d61fbf6873aeb78876a4c4c515bb1982b86d6a8f553f08df579')
+source=("https://downloads.sourceforge.net/project/djvu/DjVuLibre/${pkgver}/djvulibre-${pkgver}.tar.gz")
+sha256sums=('fcd009ea7654fde5a83600eb80757bd3a76998e47d13c66b54c8db849f8f2edc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 -i ${srcdir}/djvulibre-3.5.27-win32.patch
-
   autoreconf -fiv
 }
 
