@@ -2,7 +2,7 @@
 
 pkgname=taskell
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  runhaskell Setup test
+  runhaskell Setup test --show-details=direct
 }
 
 package() {
