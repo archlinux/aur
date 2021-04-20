@@ -2,13 +2,13 @@
 
 pkgname=layer-shell-qt-git
 pkgver=5.21.80_r10.g82fec33
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
 arch=($CARCH)
 url='https://invent.kde.org/vladz/layer-shell-qt'
 license=(LGPL)
 depends=(qt5-wayland)
-makedepends=(git extra-cmake-modules-git)
+makedepends=(git extra-cmake-modules-git wayland-protocols)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
@@ -23,8 +23,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 
