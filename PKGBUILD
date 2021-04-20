@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.6.9
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A system information fetcher, with an emphasis on performance and minimalism."
 
@@ -15,8 +15,7 @@ makedepends=('rust' 'cargo' 'git')
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('0923bdc46dc5491aa3693b69e3c0cb3d17be5201ae349c2bc8cde1814606a629')
-
+sha256sums=('6ff1497864a400f5eade2b46984cbe1259a0f7a75bf7191a2a75e111a8ffe119')
 build() {
 	cd "$pkgname-$pkgver"
 	cargo build --release --locked --target-dir=target
@@ -24,6 +23,12 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-  install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+  outdir=$(find "${CARGO_TARGET_DIR:-target}" -name macchina-stamp -print0 \
+        | xargs -0 ls -t \
+        | head -n1 \
+        | xargs dirname)
+  install -Dm644 "$outdir/macchina.fish" "$pkgdir/usr/share/fish/vendor_completions.d/macchina.fish"
+  install -Dm644 "$outdir/macchina.bash" "$pkgdir/usr/share/bash-completion/completions/macchina"
+  install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
