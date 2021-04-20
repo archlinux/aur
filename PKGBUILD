@@ -2,7 +2,7 @@
 
 _name=cain-ncnn-vulkan
 pkgname=cain-ncnn-vulkan-git
-pkgver=r24.9d234b9
+pkgver=20210210.r0.g9d234b9
 pkgrel=1
 pkgdesc="CAIN, Channel Attention Is All You Need for Video Frame Interpolation implemented with ncnn library"
 arch=('x86_64' 'i686')
@@ -16,32 +16,28 @@ source=('git+https://github.com/nihui/cain-ncnn-vulkan.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/cain-ncnn-vulkan"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C ${pkgname%-git} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
  prepare() {
-	cd "${srcdir}/cain-ncnn-vulkan"
- 	sed -i 's|cainnet.load_param("cain.param");|cainnet.load_param("/usr/share/cain-ncnn-vulkan/cain/cain.param");|' src/cain.cpp
- 	sed -i 's|cainnet.load_model("cain.bin");|cainnet.load_model("/usr/share/cain-ncnn-vulkan/cain/cain.bin");|' src/cain.cpp
+ 	sed -i 's|path_t model = PATHSTR("cain")|path_t model = PATHSTR("/usr/share/cain-ncnn-vulkan/cain/")|' "${pkgname%-git}"/src/main.cpp
  }
 
 build() {
-	cd "${srcdir}/cain-ncnn-vulkan"
-	mkdir -p build
-	cd build
-	cmake -DUSE_SYSTEM_NCNN=ON -DUSE_SYSTEM_WEBP=ON -DGLSLANG_TARGET_DIR="/usr/lib/cmake/" ../src
-    make
+    cmake -B build -S "${pkgname%-git}"/src \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
+        -DUSE_SYSTEM_NCNN=on \
+        -DUSE_SYSTEM_WEBP=on
+    cmake --build build
 }
 
 package() {
-	cd "${srcdir}/cain-ncnn-vulkan"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	
-	install -Dm755 "${srcdir}/cain-ncnn-vulkan/build/cain-ncnn-vulkan" "${pkgdir}/usr/bin/cain-ncnn-vulkan"
+    install -Dm755 -t "${pkgdir}/usr/bin" build/${pkgname%-git}
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname%-git}/LICENSE
 	
     cd "${srcdir}/cain-ncnn-vulkan/models/"
     for f in cain/*; do
-        install -Dm 644 "$f" ${pkgdir}/usr/share/cain-ncnn-vulkan/"$f"
+        install -Dm 644 "$f" ${pkgdir}/usr/share/cain-ncnn-vulkan/cain/"$f"
     done
 }
