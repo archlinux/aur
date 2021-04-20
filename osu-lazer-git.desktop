@@ -7,6 +7,5 @@ Comment=An open source, free-to-win rhythm game
 Icon=osu-lazer
 Exec=osu-lazer %F
 Terminal=false
-MimeType=application/x-osu-beatmap;application/x-osu-skin;application/x-osu-replay;
-Categories=Game
-
+MimeType=application/x-osu-storyboard;application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap;x-osu-beatmap-archive;
+Categories=Game;

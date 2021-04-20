@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="application/x-osu-beatmap">
-    <comment>osu! Beatmap</comment>
-    <icon name="application-x-osu-lazer"/>
-    <glob pattern="*.osz"/>
-  </mime-type>
+	<mime-type type="application/x-osu-storyboard">
+		<comment>osu! storyboard</comment>
+		<icon name="application-x-osu-lazer"/>
+		<glob pattern="*.osb"/>
+	</mime-type>
 
-  <mime-type type="application/x-osu-skin">
-    <comment>osu! Skin</comment>
-    <icon name="application-x-osu-lazer"/>
-    <glob pattern="*.osk"/>
-  </mime-type>
+	<mime-type type="application/x-osu-skin-archive">
+		<comment>osu! skin archive</comment>
+		<icon name="application-x-osu-lazer"/>
+		<glob pattern="*.osk"/>
+	</mime-type>
 
-  <mime-type type="application/x-osu-replay">
-    <comment>osu! Replay</comment>
-    <icon name="application-x-osu-lazer"/>
-    <glob pattern="*.osr"/>
-  </mime-type>
+	<mime-type type="application/x-osu-replay">
+		<comment>osu! replay</comment>
+		<icon name="application-x-osu-lazer"/>
+		<glob pattern="*.osr"/>
+	</mime-type>
+
+	<mime-type type="application/x-osu-beatmap">
+		<comment>osu! beatmap</comment>
+		<icon name="application-x-osu-lazer"/>
+		<glob pattern="*.osu"/>
+	</mime-type>
+
+	<mime-type type="application/x-osu-beatmap-archive">
+		<comment>osu! beatmap archive</comment>
+		<icon name="application-x-osu-lazer"/>
+		<glob pattern="*.osz"/>
+	</mime-type>
 </mime-info>
-
