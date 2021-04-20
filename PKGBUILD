@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=abseil-cpp
-pkgver=20210324.0
+pkgver=20210324.1
 pkgrel=1
 pkgdesc="Abseil Common Libraries (C++)"
 # check occasionally arch support status
@@ -12,7 +12,7 @@ _url="https://github.com/abseil/abseil-cpp"
 license=('Apache')
 makedepends=('cmake')
 source=("$_url/archive/$pkgver.tar.gz")
-sha256sums=('dd7db6815204c2a62a2160e32c55e97113b0a0178b2f090d6bab5ce36111db4b')
+sha256sums=('441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6')
 
 prepare() {
     cd "$pkgname-$pkgver"

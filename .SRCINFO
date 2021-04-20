@@ -1,6 +1,6 @@
 pkgbase = abseil-cpp
 	pkgdesc = Abseil Common Libraries (C++)
-	pkgver = 20210324.0
+	pkgver = 20210324.1
 	pkgrel = 1
 	url = https://abseil.io/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = abseil-cpp
 	arch = ppc
 	license = Apache
 	makedepends = cmake
-	source = https://github.com/abseil/abseil-cpp/archive/20210324.0.tar.gz
-	sha256sums = dd7db6815204c2a62a2160e32c55e97113b0a0178b2f090d6bab5ce36111db4b
+	source = https://github.com/abseil/abseil-cpp/archive/20210324.1.tar.gz
+	sha256sums = 441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6
 
 pkgname = abseil-cpp
 
