@@ -1,7 +1,7 @@
 # Maintainer: mnabila nblid48[at]gmail[dot]com
 
 pkgname=stylua-git
-pkgver=0.7.0.r0.g3258d68
+pkgver=0.7.1.r1.gce8e990
 pkgrel=1
 pkgdesc='An opinionated code formatter for Lua 5.1 and Luau, built using full-moon.'
 url='https://github.com/morganamilo/paru'
@@ -10,7 +10,7 @@ arch=('any')
 license=('MPL-2.0')
 conflicts=('stylua-bin')
 sha256sums=('SKIP')
-depends=('git' 'rust')
+depends=('rust')
 
 pkgver() {
   cd "${pkgname}"
