@@ -2,14 +2,14 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.7.1.r76.gdb14ce1eeb362392
-pkgrel=1
+pkgver=3.7.1.r76.gdb14ce1
+pkgrel=2
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
 depends=("libxcomposite" "libxtst" "libxres" "sdl2" "wlroots=0.13.0" "libliftoff-git")
-makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
+makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-protocols")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git")
@@ -56,3 +56,4 @@ package() {
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
+
