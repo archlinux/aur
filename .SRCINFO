@@ -7,8 +7,6 @@ pkgbase = tunnelto
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	provides = tunnelto
-	conflicts = tunnelto
 	source = git+https://github.com/agrinman/tunnelto#tag=0.1.14
 	sha256sums = SKIP
 

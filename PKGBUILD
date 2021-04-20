@@ -7,8 +7,6 @@ arch=('any')
 url="https://tunnelto.dev/"
 license=('MIT')
 makedepends=('cargo' 'git')
-conflicts=('tunnelto')
-provides=('tunnelto')
 source=("git+https://github.com/agrinman/$pkgname#tag=$pkgver")
 sha256sums=('SKIP')
 
