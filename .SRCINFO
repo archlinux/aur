@@ -1,7 +1,7 @@
 pkgbase = nali-cli
 	pkgdesc = Parse geoinfo of IP Address without leaving your terminal
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nali.skk.moe/
 	arch = any
 	license = GPL
