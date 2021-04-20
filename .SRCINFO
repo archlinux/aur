@@ -1,0 +1,17 @@
+pkgbase = vim-context-git
+	pkgdesc = Vim plugin that shows the context of the currently visible buffer contents
+	pkgver = r320.e38496f
+	pkgrel = 1
+	url = https://github.com/wellle/context.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-context
+	conflicts = vim-context
+	source = vim-context-git::git+https://github.com/wellle/context.vim
+	md5sums = SKIP
+
+pkgname = vim-context-git
+
