@@ -1,5 +1,6 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
-# Maintainer: Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Vytautas Mickus <vmickus@gmx.com>
+# Contributor: Bruno Pagani <archange@archlinux.org>
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lib32-intel-gmmlib
 tarname=${pkgname/lib32-/}
