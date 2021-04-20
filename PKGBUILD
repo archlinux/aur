@@ -1,10 +1,11 @@
-# Maintainer: Genki Sky <alt+archlinux.org@genki.is>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Genki Sky <alt+archlinux.org@genki.is>
 
 pkgname=lingot-git
-pkgver=1
+pkgver=20201229.a7d2b6c
 pkgrel=1
-pkgdesc='LINGOT is a musical instrument tuner'
-arch=('i686' 'x86_64')
+pkgdesc='musical instrument tuner (git)'
+arch=(i686 x86_64)
 url='http://nongnu.org/lingot/'
 license=('GPL2')
 depends=('gtk3')

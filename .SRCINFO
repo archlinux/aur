@@ -1,6 +1,6 @@
 pkgbase = lingot-git
-	pkgdesc = LINGOT is a musical instrument tuner
-	pkgver = 1
+	pkgdesc = musical instrument tuner (git)
+	pkgver = 20201229.a7d2b6c
 	pkgrel = 1
 	url = http://nongnu.org/lingot/
 	arch = i686
