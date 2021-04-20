@@ -1,15 +1,17 @@
 [Unit]
 Description=HQPlayer Embedded daemon
-Requires=sound.target
-After=sound.target
+# if your distro uses systemd-networkd you may want to add
+# systemd-networkd-wait-online.service
+Requires=network-online.target sound.target systemd-udev-settle.service
+After=network-online.target sound.target systemd-udev-settle.service local-fs.target remote-fs.target
 
 [Service]
 Type=simple
-# add the line below (with 30 or more) if hqplayerd cannot find remote NAA in time
-# ExecStartPre=/bin/sleep 30
 ExecStart=/usr/bin/hqplayerd
 Restart=always
 RestartSec=2
+EnvironmentFile=-/etc/default/hqplayerd
+User=hqplayer
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

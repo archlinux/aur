@@ -1,0 +1,25 @@
+post_install () {
+chown -R hqplayer:hqplayer /var/hqplayer
+chown -R hqplayer:hqplayer /etc/hqplayer
+cd /usr/lib
+ln libgupnp-1.2.so.0 libgupnp-1.0.so.4
+ln libomp.so libomp.so.5
+}
+
+post_upgrade() {
+chown -R hqplayer:hqplayer /var/hqplayer
+chown -R hqplayer:hqplayer /etc/hqplayer
+cd /usr/lib
+if [ ! -f "/usr/lib/libgupnp-1.0.so.4" ]; then
+ln libgupnp-1.2.so.0 libgupnp-1.0.so.4
+fi
+if [ ! -f "/usr/lib/libomp.so.5" ]; then
+ln libomp.so libomp.so.5
+fi
+}
+
+post_remove() {
+cd /usr/lib
+rm libgupnp-1.0.so.4
+rm libomp.so.5
+}

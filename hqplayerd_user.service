@@ -1,0 +1,15 @@
+[Unit]
+Description=HQPlayer Embedded daemon
+Requires=sound.target
+After=sound.target
+
+[Service]
+Type=simple
+# add the line below (with 30 or more) if hqplayerd cannot find remote NAA in time
+# ExecStartPre=/bin/sleep 30
+ExecStart=/usr/bin/hqplayerd
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
