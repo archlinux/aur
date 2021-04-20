@@ -1,0 +1,24 @@
+pkgbase = vim-colors-pencil-git
+	pkgdesc = Light & dark colorscheme inspired by iA Writer
+	pkgver = 1.0.r13.gfcbdca1
+	pkgrel = 1
+	url = https://github.com/preservim/vim-colors-pencil
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	source = vim-colors-pencil-git::git+https://github.com/preservim/vim-colors-pencil
+	md5sums = SKIP
+
+pkgname = vim-colors-pencil-git
+	depends = vim-plugin-runtime
+	provides = vim-colors-pencil
+	conflicts = vim-colors-pencil
+
+pkgname = vim-airline-pencil-git
+	depends = vim-airline
+	depends = vim-plugin-runtime
+	optdepends = vim-colors-pencil: Base vim colorscheme
+	provides = vim-airline-pencil
+	conflicts = vim-airline-pencil
+
