@@ -8,6 +8,7 @@ pkgbase = jdk8-graalvm-bin
 	license = custom
 	depends = java-runtime-common
 	depends = java-environment-common
+	optdepends = graal-nodejs-jdk8-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)
 	provides = java-runtime=8
 	provides = java-environment=8
 	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/graalvm-ce-java8-linux-amd64-21.1.0.tar.gz

@@ -11,6 +11,7 @@ license=('custom')
 depends=('java-runtime-common'
          'java-environment-common')
 makedepends=()
+optdepends=('graal-nodejs-jdk8-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)')
 provides=("java-runtime=${java_}"
           "java-environment=${java_}")
 install="$pkgname.install"
