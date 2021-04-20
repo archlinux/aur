@@ -1,16 +1,16 @@
 pkgbase = thermorawfileparser-bin
 	pkgdesc = Thermo RAW file parser that runs on Linux with mono
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/compomics/ThermoRawFileParser
 	arch = any
 	license = Apache
 	depends = mono
-	noextract = ThermoRawFileParser-1.3.3-1.zip
+	noextract = ThermoRawFileParser-1.3.4-1.zip
 	options = !strip
-	source = ThermoRawFileParser-1.3.3-1.zip::https://github.com/compomics/ThermoRawFileParser/releases/download/v1.3.3/ThermoRawFileParser.zip
+	source = ThermoRawFileParser-1.3.4-1.zip::https://github.com/compomics/ThermoRawFileParser/releases/download/v1.3.4/ThermoRawFileParser.zip
 	source = ThermoRawFileParser
-	md5sums = 564fac7c0f8c50600bf1ed1f05695286
+	md5sums = d2bcd70f4eba24acf21048559d26d93b
 	md5sums = 2d0b284fb357649ccc85e2774f48408e
 
 pkgname = thermorawfileparser-bin
