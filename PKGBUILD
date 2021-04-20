@@ -4,12 +4,12 @@
 _gemname=prawn-svg
 pkgname=ruby-$_gemname
 pkgver=0.31.0
-pkgrel=4
+pkgrel=5
 pkgdesc='SVG renderer for Prawn PDF library'
 arch=(any)
 url='http://github.com/mogest/prawn-svg'
 license=(MIT)
-depends=(ruby ruby-prawn 'ruby-css_parser')
+depends=(ruby ruby-prawn ruby-css_parser)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
