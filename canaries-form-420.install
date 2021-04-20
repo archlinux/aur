@@ -1,0 +1,13 @@
+post_install() {
+  cat <<EOF
+
+Nothing happens? Try running with _JAVA_AWT_WM_NONREPARENTING=1, should help
+with tiling window managers [1]. Ugly fonts? Run with
+_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' [2]. I have both in my
+~/.pam_environment, personally.
+
+[1] https://github.com/swaywm/sway/issues/595
+[2] https://wiki.archlinux.org/index.php/Java_Runtime_Environment_fonts
+
+EOF
+}
