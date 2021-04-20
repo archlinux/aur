@@ -1,6 +1,6 @@
 pkgbase = showmethekey
 	pkgdesc = A screenkey alternative that works under Wayland via libinput.
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://showmethekey.alynx.one/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = showmethekey
 	depends = cairo
 	depends = pango
 	depends = libxkbcommon
-	source = https://github.com/AlynxZhou/showmethekey/archive/v1.3.2.tar.gz
-	sha512sums = 0c7f20bc4b2455fe32c618034b1aa591de05f5381398b61c27998b81834de03bb57caf3073b69494c5acbd2b7a64c9ac77c04a6197e95f74107d60f00c6bc00c
+	source = https://github.com/AlynxZhou/showmethekey/archive/v1.3.3.tar.gz
+	sha512sums = a8df31e0cfeffcf09d53889421b0135cffdc591e88e3180de73b4f4b910ca81ef79ba594dc8f01de78d8b2083659e136598007ea7df46cfe4e67e293869cb1d6
 
 pkgname = showmethekey
 
