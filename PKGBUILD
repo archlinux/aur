@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.6.4
+pkgver=0.6.4.1
 pkgrel=1
 pkgdesc="Build iso images, create live usb drives, install on usb drives."
 arch=('any')
@@ -18,9 +18,9 @@ conflicts=('archuseriso')
 install=archuseriso.install
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('6882cb71e954a54ddcf0514dafb0f0b05663aaa995cd341c95fbbbf99e27168f'
+sha256sums=('06311f158be235852a90031d7f63b88cd8fc2ae378725236c986807d77f98a54'
             'SKIP')
-b2sums=('2faf3bd8f5f6fed9ee6f5a302d38e76eae91eccb438482e6ed65d09df5856242e55808319e63d0cebd95030d61a707f5b3efa41aa98df5139a13dd90d494e6a1'
+b2sums=('87534cfc8dd68ce0e7b33d4b9740a336f5e0a739125c72575d90012c184c459329b54a8f54b58d1dbc8800185c01e5baddd11472b783b52ddc0b0363ef66faa6'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
