@@ -1,6 +1,6 @@
 pkgbase = veeamsnap
 	pkgdesc = Veeam Agent for Linux kernel modules (DKMS)
-	pkgver = 4.0.1.2365
+	pkgver = 5.0.0.4318
 	pkgrel = 1
 	url = http://repository.veeam.com/backup/linux/agent
 	install = veeamsnap.install
@@ -10,9 +10,9 @@ pkgbase = veeamsnap
 	depends = dkms
 	depends = rpmextract
 	conflicts = veeamsnap
-	source = http://repository.veeam.com/backup/linux/agent/rpm/el/7/x86_64/veeamsnap-4.0.1.2365-1.noarch.rpm
+	source = http://repository.veeam.com/backup/linux/agent/rpm/el/8/x86_64/veeamsnap-5.0.0.4318-1.noarch.rpm
 	source = dkms.conf
-	sha256sums = 439fa156a9166125b43d4a4395ae720571a43d95ea6987dc96f8b70f618ad1c5
+	sha256sums = c334a52e256366a1a28bee481e1af131e8ba45ad9a72f796296b26b4bb9b4254
 	sha256sums = 7d2a83f28b7c41797fadf06f29ab124ae63d662f2dba4e81e1eb4d1ef15bee7c
 
 pkgname = veeamsnap
