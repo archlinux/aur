@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-system76
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with System76 patches)
 	pkgver = 40.0
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL2
@@ -45,6 +45,7 @@ pkgbase = gnome-control-center-system76
 	optdepends = gnome-remote-desktop: screen sharing
 	optdepends = rygel: media sharing
 	optdepends = openssh: remote login
+	optdepends = power-profiles-daemon: power profiles support
 	provides = gnome-control-center
 	provides = firmware-manager-virtual
 	conflicts = gnome-control-center

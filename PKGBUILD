@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=40.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -20,7 +20,8 @@ optdepends=('system-config-printer: Printer settings'
             'gnome-user-share: WebDAV file sharing'
             'gnome-remote-desktop: screen sharing'
             'rygel: media sharing'
-            'openssh: remote login')
+            'openssh: remote login'
+            'power-profiles-daemon: power profiles support')
 provides=("$_pkgname" 'firmware-manager-virtual')
 conflicts=("$_pkgname")
 _commit=49d71c07b5b3ce59e035b785310cba4fcf903868  # tags/40.0^0
