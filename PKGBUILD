@@ -2,7 +2,7 @@
 
 pkgname=cain-ncnn-vulkan
 pkgver=20210210
-pkgrel=1
+pkgrel=2
 pkgdesc="CAIN, Channel Attention Is All You Need for Video Frame Interpolation implemented with ncnn library"
 arch=('x86_64')
 url="https://github.com/nihui/cain-ncnn-vulkan"
