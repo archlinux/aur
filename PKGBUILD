@@ -4,7 +4,7 @@
 _gemname=asciidoctor-diagram-plantuml
 pkgname=ruby-$_gemname
 pkgver=1.2021.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PlantUML JAR files wrapped in a Ruby gem'
 arch=(any)
 url='https://github.com/asciidoctor/asciidoctor-diagram'

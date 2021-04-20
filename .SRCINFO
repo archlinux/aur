@@ -1,7 +1,7 @@
 pkgbase = ruby-asciidoctor-diagram-plantuml
 	pkgdesc = PlantUML JAR files wrapped in a Ruby gem
 	pkgver = 1.2021.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asciidoctor/asciidoctor-diagram
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = ruby-asciidoctor-diagram-plantuml
 	noextract = asciidoctor-diagram-plantuml-1.2021.2.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/asciidoctor-diagram-plantuml-1.2021.2.gem
-	sha1sums = 592e4157b7bc26050f9f68ba5f2dfd49cdf87a4b
+	sha1sums = f1dcee45b2831fb86fac83fb6db11ccb75668210
 
 pkgname = ruby-asciidoctor-diagram-plantuml
 
