@@ -1,5 +1,5 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
-pkgname=g15stats-runit
+pkgname=g15stats-systemd
 pkgver=20210420
 pkgrel=1
 pkgdesc="g15stats init script for systemd"
