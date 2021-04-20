@@ -1,8 +1,8 @@
-# Maintainer: OpenSourcerer <alex at opensourcery dot eu>
+# Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 _commit="fee05fd016b22d222ec85846786c1d627b03b40e"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin')
 conflicts=('hummingbird-bin' 'hummingbird' 'airvpn-suite-bin')
 depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4')
-makedepends=('gcc' 'make' 'cmake' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
+makedepends=('gcc' 'make' 'pkgconf' 'autoconf' 'automake' 'git' 'crypto++')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 install="$pkgname.install"
