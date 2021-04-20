@@ -3,13 +3,12 @@
 
 pkgname=lariza
 pkgver=21.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
 url="https://www.uninformativ.de/git/lariza"
 license=('custom:MIT')
 depends=('webkit2gtk')
-optdepends=('tabbed')
 source=("$url/archives/$pkgname-v$pkgver.tar.gz")
 sha256sums=('0e98b5b381bd0af6a259b641e832bf13d1d0aecf987a588ff3618380a1390e99')
 

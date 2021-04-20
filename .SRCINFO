@@ -1,13 +1,12 @@
 pkgbase = lariza
 	pkgdesc = Simple WebKit2GTK+ Browser
 	pkgver = 21.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.uninformativ.de/git/lariza
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
 	depends = webkit2gtk
-	optdepends = tabbed
 	source = https://www.uninformativ.de/git/lariza/archives/lariza-v21.01.tar.gz
 	sha256sums = 0e98b5b381bd0af6a259b641e832bf13d1d0aecf987a588ff3618380a1390e99
 
