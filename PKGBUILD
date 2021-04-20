@@ -6,7 +6,7 @@
 
 pkgname=xiphos
 pkgver=4.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A Bible study tool for GTK3'
 arch=('x86_64' 'i686')
 url='http://xiphos.org'
@@ -14,7 +14,9 @@ license=('GPL2')
 depends=('biblesync'
          'dbus-glib'
          'gtkhtml4'
+         'icu'
          'libbiblesync.so'
+         'libicui18n.so'
          'minizip'
          'sword>=1.9.0'
          'webkit2gtk')

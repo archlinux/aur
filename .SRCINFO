@@ -1,7 +1,7 @@
 pkgbase = xiphos
 	pkgdesc = A Bible study tool for GTK3
 	pkgver = 4.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://xiphos.org
 	arch = x86_64
 	arch = i686
@@ -21,7 +21,9 @@ pkgbase = xiphos
 	depends = biblesync
 	depends = dbus-glib
 	depends = gtkhtml4
+	depends = icu
 	depends = libbiblesync.so
+	depends = libicui18n.so
 	depends = minizip
 	depends = sword>=1.9.0
 	depends = webkit2gtk
