@@ -1,9 +1,8 @@
 [Desktop Entry]
 
 Type=Application
-Version=3.8.0
 Name=Timeular
 Exec=timeular
-Icon=/usr/share/pixmaps/timeular.png
+Icon=timeular
 Terminal=false
 

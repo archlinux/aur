@@ -1,15 +1,18 @@
 pkgbase = timeular
 	pkgdesc = A proprietary time tracking service
 	pkgver = 3.8.0
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://timeular.com
 	arch = x86_64
-	license = unknown
+	license = custom
+	depends = zlib
+	options = !strip
 	source = https://s3.amazonaws.com/timeular-desktop-packages/linux/production/Timeular.AppImage
+	source = LICENSE
 	source = timeular.png
 	source = timeular.desktop
 	sha512sums = 2de29f4b585ad993d076d514195fb6b76341e850dde27ac26eaa14eb7223aede756a2c010ee3dde63f4de6782933835a6c6f671bcccc6d54fc81750f536ca438
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
