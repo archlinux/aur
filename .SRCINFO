@@ -1,0 +1,52 @@
+pkgbase = linux-hardened-cacule
+	pkgdesc = Security-Hardened Linux with the cacule scheduler
+	pkgver = 5.11.15.hardened1
+	pkgrel = 1
+	url = https://github.com/anthraxx/linux-hardened
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.15.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.15.tar.sign
+	source = https://github.com/anthraxx/linux-hardened/releases/download/5.11.15-hardened1/linux-hardened-5.11.15-hardened1.patch
+	source = cacule-5.11.patch
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
+	sha256sums = d6a7845357cf56b695e50b4c60e09a8832b651ac701062a76145550a8e77c44a
+	sha256sums = SKIP
+	sha256sums = e8b1a5b7973b5b216c0dadc630e77363ad31d00bca5edc540e692b5f5b78c7b3
+	sha256sums = c539655de9eef5084b6349389b1a2fac3aaab274149c9b95667cca93570166ea
+	sha256sums = c2472d2c332cd32c3d62f5012365b80db0713872187462bf71c0c5c84736a6a9
+
+pkgname = linux-hardened-cacule
+	pkgdesc = The Security-Hardened Linux with the cacule scheduler kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = usbctl: deny_new_usb control
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+
+pkgname = linux-hardened-cacule-headers
+	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux with the cacule scheduler kernel
+
+pkgname = linux-hardened-cacule-docs
+	pkgdesc = Documentation for the Security-Hardened Linux with the cacule scheduler kernel
+
