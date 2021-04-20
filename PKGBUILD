@@ -3,17 +3,17 @@
 
 _gemname=prawn
 pkgname=ruby-$_gemname
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='A fast and nimble PDF generator for Ruby'
 arch=(any)
 url='http://prawnpdf.org'
 license=('custom:PRAWN' 'GPL2' 'GPL3')
-depends=('ruby' 'ruby-ttfunk<1.6' 'ruby-pdf-core<0.8')
+depends=(ruby ruby-ttfunk ruby-pdf-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0f714088c390b029e09460b0f3c480e43ddc3772')
+sha1sums=('6d554f7e719e4587cca9e90ce64b9f3b264d5f22')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
