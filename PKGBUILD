@@ -4,8 +4,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
-pkgver=89.0a1.20210325
-_version=89.0a1
+pkgver=90.0a1.20210420
+_version=90.0a1
 pkgrel=1
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
@@ -33,7 +33,7 @@ package_thunderbird-nightly-bin() {
   pkgdesc='Standalone Mail/News reader - Nightly build'
   depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
          'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
-         'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
+         'libmng' 'libpng' 'libvpx' 'libxt' 'nspr' 'nss'
          'shared-mime-info' 'sqlite' 'startup-notification')
   optdepends=('libcanberra: for sound support')
   provides=("thunderbird=${_version}" 'thunderbird-nightly')
