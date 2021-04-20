@@ -2,15 +2,15 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=transcribe
-pkgver=8.80
+pkgver=9.00
 pkgrel=1
 pkgdesc="music transcription aid"
 arch=('i686' 'x86_64')
 url="http://www.seventhstring.com/xscribe/overview.html"
 license=('unknown')
 depends=('libsm' 'gtk3' 'gst-plugins-base-libs')
-source_x86_64=('https://www.seventhstring.com/xscribe/xsc64setup.tar.gz')
-md5sums_x86_64=('8ee6c689516c858816b146de2713633f')
+source_x86_64=('https://www.seventhstring.com/xscribe/xscsetup.tar.gz')
+md5sums_x86_64=('7d6b92414bfa3324dfa062887328175b')
 
 package() {
 	cd "$srcdir/$pkgname"
