@@ -7,11 +7,12 @@ pkgbase = wdisplays-git
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = meson
 	depends = gtk3
 	provides = wdisplays
+	conflicts = wdisplays
 	source = wdisplays::git+https://github.com/artizirk/wdisplays
 	sha256sums = SKIP
 
