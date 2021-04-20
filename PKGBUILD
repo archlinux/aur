@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=90.0.4430.72
-pkgrel=2
+pkgver=90.0.4430.85
+pkgrel=1
 _launcher_ver=7
 _gcc_patchset=6
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -27,7 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         add-clang-nomerge-attribute-to-CheckError.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('a5cc88ca8fffac21ec4d1646980f698dfb6f388a225dd7a2c5a3d252a4098943'
+sha256sums=('01c5594d4b7eaa67e00b4fa16ae0c9d35ec5917467abd387ba1b5cc332d44922'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '3eb9580ea35a96789e02815270498226fa33726f4210a5ee36f3868af2ffae1f'
             '5e22afcb91b5402bc09e80630c5323d61013c3fccb0bbd9b23d1e79a400b00d0'
