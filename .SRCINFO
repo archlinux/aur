@@ -1,6 +1,6 @@
 pkgbase = senile
 	pkgdesc = collecting ToDo statements from files/directories as JSON format
-	pkgver = 0.1.15
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/replicadse/senile
 	arch = x86_64

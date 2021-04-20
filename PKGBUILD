@@ -1,6 +1,6 @@
 # Maintainer: replicadse <haw@voidpointergroup.com>
 pkgname=senile
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 epoch=
 pkgdesc='collecting ToDo statements from files/directories as JSON format'
@@ -15,6 +15,6 @@ makedepends=(
 provides=('senile')
 
 package() {
-  cargo +nightly install $pkgname --version=$pkgver --root="$pkgdir/usr" --no-track --all-features
+  cargo +stable install $pkgname --version=$pkgver --root="$pkgdir/usr" --no-track --all-features
 }
 
