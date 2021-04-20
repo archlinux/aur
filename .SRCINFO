@@ -15,7 +15,7 @@ pkgbase = fbc
 	conflicts = freebasic
 	conflicts = fbc-git
 	options = staticlibs
-	source = https://downloads.sourceforge.net/fbc/Source%20Code/FreeBASIC-1.07.2-source.tar.gz
+	source = https://downloads.sourceforge.net/fbc/Source%20Code/FreeBASIC-1.07.3-source.tar.gz
 	sha256sums = SKIP
 
 pkgname = fbc

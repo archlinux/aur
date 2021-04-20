@@ -3,7 +3,7 @@
 pkgname=fbc
 pkgver=1.07
 pkgrel=3
-_bootver=1.07.2
+_bootver=1.07.3
 pkgdesc="FreeBASIC Compiler (Release version)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.freebasic.net"
