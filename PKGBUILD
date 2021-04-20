@@ -1,6 +1,6 @@
 # Maintainer: Frank Tang <roadtang@gmail.com>
 pkgname=hashlink-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r1022.2ba8897
+pkgver=r1367.4c4de37
 pkgrel=1
 pkgdesc="A virtual machine for Haxe"
 arch=(any)
@@ -58,5 +58,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-VCS}"
-	make INSTALL_DIR="$pkgdir/usr/" install
+	make PREFIX="$pkgdir/usr/" install
 }
