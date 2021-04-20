@@ -1,6 +1,6 @@
 pkgbase = joplin
 	pkgver = 1.7.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://joplinapp.org/
 	install = joplin.install
 	arch = x86_64

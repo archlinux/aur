@@ -9,7 +9,7 @@ pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
 pkgver=1.7.11
 groups=('joplin')
-pkgrel=2
+pkgrel=3
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
          'nss' 'orc' 'rsync' )
@@ -152,8 +152,10 @@ package_joplin-desktop() {
   electron_dir="/usr/lib/electron"
   electron_version=$(cat /usr/lib/electron/version)
   msg2 "Using Electron Version ${electron_version}"
+  # Current version of electron does not work
   USE_HARD_LINKS=false npm run dist -- --publish=never  --linux  --x64 \
-    --dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
+    --dir="dist/"
+    #--dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
 
   # TODO: Cleanup app.asar file
   cd dist/linux-unpacked/
