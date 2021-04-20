@@ -1,13 +1,15 @@
 pkgbase = hunspell-ru
 	pkgdesc = Russian hunspell dictionary
-	pkgver = 20131101
-	pkgrel = 4
-	url = https://code.google.com/p/hunspell-ru/
+	pkgver = 20200604
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/libreoffice/dictionaries/tree/ru_RU
 	arch = any
 	license = LGPL3
 	depends = hunspell
-	source = hunspell-ru-20131101.zip::https://bitbucket.org/Shaman_Alex/russian-dictionary-hunspell/downloads/ru_RU_UTF-8_20131101.zip
-	sha256sums = c9c30ca305705691fea4810137763f3b790676aa534a5cd6dfc9b45659aa9408
+	source = hunspell-ru.aff::https://cgit.freedesktop.org/libreoffice/dictionaries/plain/ru_RU/ru_RU.aff?id=12e591abdbc5565e5018ed9b8fbe6d635ade87d7
+	source = hunspell-ru.dic::https://cgit.freedesktop.org/libreoffice/dictionaries/plain/ru_RU/ru_RU.dic?id=12e591abdbc5565e5018ed9b8fbe6d635ade87d7
+	sha256sums = 38ce7d4af78e211e9bafe4bf7e3d6a2c420591136cb738ec6648f8fdf6524cd7
+	sha256sums = 3280afe7829128ff589b2c5d8f46810ed9b0eddcc85e9b1cc3d12dc08d4c1a0b
 
 pkgname = hunspell-ru
 
