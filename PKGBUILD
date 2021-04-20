@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libsigsegv
 _pkgname=libsigsegv
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 arch=('any')
 pkgdesc="Page fault detection library (mingw-w64)"
@@ -13,7 +13,7 @@ depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "0001-libsigsegv-2.11-fix-assembly.patch")
-sha1sums=('df167811328b050d2b746bec3d88423edc5a8cbf'
+sha1sums=('c371743afe08c2ec817bd6d37f32d40cb28ea5a9'
           '945d032622103b260b0397b07da8c0f5fdd78d42')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
