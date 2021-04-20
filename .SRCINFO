@@ -47,6 +47,3 @@ pkgname = linux-hardened-cacule
 pkgname = linux-hardened-cacule-headers
 	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux with the cacule scheduler kernel
 
-pkgname = linux-hardened-cacule-docs
-	pkgdesc = Documentation for the Security-Hardened Linux with the cacule scheduler kernel
-
