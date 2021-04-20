@@ -1,6 +1,6 @@
 pkgbase = trng4-git
 	pkgdesc = A modern C++ pseudo random number generator library
-	pkgver = 4.24.r3.g589bdf2
+	pkgver = v4.24.r3.g589bdf2
 	pkgrel = 1
 	url = https://github.com/rabauke/trng4
 	arch = any
