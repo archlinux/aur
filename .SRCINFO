@@ -1,10 +1,9 @@
 pkgbase = dain-ncnn-vulkan-git
 	pkgdesc = DAIN, Depth-Aware Video Frame Interpolation implemented with ncnn library
-	pkgver = r29.91b689f
+	pkgver = 20210210.r0.gf29cb02
 	pkgrel = 1
 	url = https://github.com/nihui/dain-ncnn-vulkan
 	arch = x86_64
-	arch = i686
 	license = MIT
 	makedepends = git
 	makedepends = cmake
@@ -17,6 +16,7 @@ pkgbase = dain-ncnn-vulkan-git
 	depends = libwebp
 	provides = dain-ncnn-vulkan
 	conflicts = dain-ncnn-vulkan
+	conflicts = dain-ncnn-vulkan-bin
 	source = git+https://github.com/nihui/dain-ncnn-vulkan.git
 	md5sums = SKIP
 
