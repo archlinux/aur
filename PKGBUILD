@@ -2,11 +2,11 @@
 
 pkgname=gnome-search-providers-vscode
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Add VSCode workspaces to Gnome search"
 arch=('x86_64')
 url="https://github.com/lunaryorn/gnome-search-providers-vscode"
-license=('Apache')
+license=('MPL2')
 depends=('gnome-shell')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
