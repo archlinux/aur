@@ -1,20 +1,25 @@
 pkgbase = screenshot-bash
 	pkgdesc = Screenshot script, that uploads screenshot to a predefined server.
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = https://gitlab.com/Scrumplex/ScreenshotBASH
+	url = https://gitlab.com/Scrumplex/screenshot-bash
 	arch = any
 	license = GPL3
 	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = file
+	depends = gzip
 	depends = kdialog
 	depends = sox
+	depends = xdg-utils
 	optdepends = spectacle: use default screenshot program
 	optdepends = flameshot: use alternative screenshot program
-	provides = screenshot-bash
+	optdepends = wl-clipboard: use default clipboard tool
+	optdepends = xsel: use alternative clipboard tool
 	provides = upload-bash
-	conflicts = screenshot-bash-git
-	source = https://gitlab.com/Scrumplex/ScreenshotBASH/-/archive/3.0.0/ScreenshotBASH-3.0.0.tar.gz
-	sha512sums = 5b247b60742ac8add8ff37ae5d721ed19d2cf668a7ef718caf3308089982027c549d28e26108ae05c24f18e677869536ca2ca7e40b7e2863aaa806ca1d68a5c0
+	source = https://gitlab.com/Scrumplex/screenshot-bash/-/archive/4.0.0/screenshot-bash-4.0.0.tar.gz
+	sha512sums = e9a5579b189b44e1b61a4c5025db26f909507aea8a15c7e3291e613ac2c6818fc7ca29e1c5f0738c8d80a7d7ee73a463d457f60afbe8829addc868e7db1276b9
 
 pkgname = screenshot-bash
 
