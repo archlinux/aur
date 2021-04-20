@@ -1,6 +1,6 @@
 pkgname=watchman-bin
 pkgver=2021.04.19.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
@@ -36,6 +36,7 @@ package() {
   install -Dm644 /dev/stdin "$pkgdir"/usr/lib/tmpfiles.d/watchman.conf <<END
 d /run/watchman 1777 root root
 END
+  echo '{}' | install -Dm644 /dev/stdin "$pkgdir"/etc/watchman.json.default
 }
 
 # vim:set sw=2 et:
