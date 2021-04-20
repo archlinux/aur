@@ -1,0 +1,16 @@
+pkgbase = native-image-jdk16-bin
+	pkgdesc = Plugin to turn GraalVM-based applications into native binary images (Java 16 version)
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = jdk16-graalvm-bin
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/native-image-installable-svm-java16-linux-amd64-21.1.0.jar
+	sha256sums_x86_64 = 1d3acdd2e8c17e582673a53812e1996d5e47af66236510ae51b09582dc9fdc72
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/native-image-installable-svm-java16-linux-aarch64-21.1.0.jar
+	sha256sums_aarch64 = b0f1d85b4351f7abaa951307bdb2986dbb7e0cfea2557d6cd0a2ff7c4116c198
+
+pkgname = native-image-jdk16-bin
+
