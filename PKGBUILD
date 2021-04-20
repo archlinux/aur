@@ -3,7 +3,7 @@
 pkgname=readability-extractor-git
 _pkgname=readability-extractor
 pkgver=r7.0098f14
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper around mozilla/readability to keep archivebox free from nodejs"
 arch=('any')
 url="https://github.com/pirate/readability-extractor"
@@ -25,13 +25,13 @@ prepare() {
 }
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr $_pkgname.tar.gz
+  npm install -g --prefix "${pkgdir}/usr" $_pkgname.tar.gz
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/npm/issues/9359 for details.
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  # See https://github.com/npm/cli/issues/1103 for details.
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
-  # npm installs package.json owned by build user
+  # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
-  chown -R root:root "$pkgdir"
+  chown -R root:root "${pkgdir}"
 }
