@@ -1,14 +1,14 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname=doxypress-bin
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Doxygen, with improved output and support for clang parsing"
 arch=('x86_64')
 url="https://www.copperspice.com/documentation-doxypress.html"
 license=('GPL')
 depends=('clang' 'libxi' 'fontconfig' 'xcb-util-renderutil' 'xcb-util-wm' 'libxkbcommon-x11'
          'libglvnd' 'libxrandr' 'libxcursor' 'xcb-util-keysyms' 'libxinerama' 'libsm'
-         'xcb-util-image')
+         'xcb-util-image' 'libjpeg-turbo')
 provides=('doxypress')
 conflicts=('doxypress')
 replaces=('doxypress')

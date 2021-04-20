@@ -1,7 +1,7 @@
 pkgbase = doxypress-bin
 	pkgdesc = A fork of Doxygen, with improved output and support for clang parsing
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.copperspice.com/documentation-doxypress.html
 	arch = x86_64
 	license = GPL
@@ -18,6 +18,7 @@ pkgbase = doxypress-bin
 	depends = libxinerama
 	depends = libsm
 	depends = xcb-util-image
+	depends = libjpeg-turbo
 	provides = doxypress
 	conflicts = doxypress
 	replaces = doxypress
