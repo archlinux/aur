@@ -2,18 +2,18 @@
 
 _name=cain-ncnn-vulkan
 pkgname=cain-ncnn-vulkan-bin
-pkgver=20201220
+pkgver=20210210
 pkgrel=1
 pkgdesc="CAIN, Channel Attention Is All You Need for Video Frame Interpolation implemented with ncnn library"
 arch=('x86_64' 'i686')
 url="https://github.com/nihui/cain-ncnn-vulkan"
 license=('MIT')
-depends=('vulkan-icd-loader')
+depends=('vulkan-icd-loader' 'vulkan-headers')
 makedepends=()
 provides=("cain-ncnn-vulkan")
 conflicts=("cain-ncnn-vulkan" "cain-ncnn-vulkan-git")
 source=("https://github.com/nihui/$_name/releases/download/$pkgver/$_name-$pkgver-ubuntu.zip")
-sha256sums=('02fa384ffcbec213854444b048f0f0bd7a150b75a90b5c5b1faec8dd0cbf1fd3')
+sha256sums=('25b5a02a876e1a9a78d9a049298989e4ac6c8eb50b60c464ff0052a340f095d2')
 
 package() {
 	cd "${srcdir}/$_name-$pkgver-ubuntu"
