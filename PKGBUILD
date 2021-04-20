@@ -1,11 +1,13 @@
 pkgname=libcamera-git
-pkgver=r2416.1a26f79f
+_pkgname=libcamera
+pkgver=r2509.d4043011
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
 arch=('x86_64' 'i686')
 url='http://libcamera.org/'
 makedepends=(
     "gcc"
+    "git"
     "gnutls"
     "openssl"
     "meson"
@@ -26,18 +28,18 @@ optdepends=(
     "qt5-tools"
     "libtiff"
 )
-license=('LGPL')
+license=('LGPL2.1')
 options=('!buildflags')
 source=('git://linuxtv.org/libcamera.git/')
 md5sums=('SKIP')
 
 pkgver() {
-    cd libcamera
+    cd "$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/libcamera"
+    cd "$srcdir/$_pkgname"
     arch-meson build \
         -D werror=false \
         -D documentation=disabled \
@@ -46,7 +48,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/libcamera"
-    DESTDIR="${pkgdir}" ninja -C build install
-    rm -rf "$pkgdir/usr/share/doc/libcamera-0.0.0/html/.doctrees/"
+    cd "$srcdir/$_pkgname"
+    DESTDIR="$pkgdir" ninja -C build install
+    rm -rf "$pkgdir"/usr/share/doc/libcamera-0.0.0/html/.doctrees/
 }
