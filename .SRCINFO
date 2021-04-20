@@ -1,0 +1,21 @@
+pkgbase = jdk16-graalvm-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 16 version
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk16-graalvm-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=16
+	provides = java-environment=16
+	options = staticlibs
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/graalvm-ce-java16-linux-amd64-21.1.0.tar.gz
+	sha256sums_x86_64 = 819deecf5b46acc6c30ff5b7af392c66aca05572838eff8f8c4c57cbd8e34db9
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/graalvm-ce-java16-linux-aarch64-21.1.0.tar.gz
+	sha256sums_aarch64 = 407a228a9fa67132143a9890dfc1c64184b9bd211b35095d3489d6089a36ba2c
+
+pkgname = jdk16-graalvm-bin
+
