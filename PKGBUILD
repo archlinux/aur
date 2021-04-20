@@ -1,9 +1,10 @@
 # Maintainer: Marc Plano-Lesay <kernald@enoent.fr>
 # Based on android-sdk-build-tools by xgdgsc and mynacol
 
-pkgname=android-sdk-build-tools-30.0.1
-pkgver=r30.0.1
-pkgrel=2
+_ver=30.0.1
+pkgname=android-sdk-build-tools-$_ver
+pkgver=r$_ver
+pkgrel=3
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('i686' 'x86_64')
 url="https://developer.android.com/studio/releases/build-tools"

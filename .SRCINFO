@@ -1,7 +1,7 @@
 pkgbase = android-sdk-build-tools-30.0.1
 	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
 	pkgver = r30.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.android.com/studio/releases/build-tools
 	arch = i686
 	arch = x86_64
