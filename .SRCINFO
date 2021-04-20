@@ -1,13 +1,13 @@
 pkgbase = rebar3-zsh
 	pkgdesc = ZSH completion for rebar3.
 	pkgver = 3.14.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/erlang/rebar3
 	arch = any
 	license = APACHE
 	depends = zsh
 	depends = rebar3
-	source = https://raw.githubusercontent.com/erlang/rebar3/3.14.4/priv/shell-completion/zsh/_rebar3
+	source = _rebar3_3.14.4::https://raw.githubusercontent.com/erlang/rebar3/3.14.4/priv/shell-completion/zsh/_rebar3
 	md5sums = 0ea7182cab18aa959376a0a9993f6f13
 
 pkgname = rebar3-zsh
