@@ -1,6 +1,6 @@
 pkgbase = cain-ncnn-vulkan-git
 	pkgdesc = CAIN, Channel Attention Is All You Need for Video Frame Interpolation implemented with ncnn library
-	pkgver = r22.8ac9753
+	pkgver = r24.9d234b9
 	pkgrel = 1
 	url = https://github.com/nihui/cain-ncnn-vulkan
 	arch = x86_64
@@ -10,13 +10,12 @@ pkgbase = cain-ncnn-vulkan-git
 	makedepends = cmake
 	makedepends = glslang
 	makedepends = vulkan-headers
-	makedepends = vulkan-icd-loader
-	makedepends = ncnn-git
-	makedepends = libwebp
+	makedepends = ncnn
 	depends = vulkan-icd-loader
 	depends = libwebp
 	provides = cain-ncnn-vulkan
 	conflicts = cain-ncnn-vulkan
+	conflicts = cain-ncnn-vulkan-bin
 	source = git+https://github.com/nihui/cain-ncnn-vulkan.git
 	md5sums = SKIP
 
