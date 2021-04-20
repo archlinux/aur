@@ -1,15 +1,15 @@
 pkgbase = uwufetch
 	pkgdesc = A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheDarkBug/uwufetch
 	arch = any
 	license = GPL3
 	makedepends = gcc
+	makedepends = pandoc
 	optdepends = viu: Display distro logos as images
 	optdepends = lshw: Better GPU detection
-	depends = pandoc: Build man page
-	depends = json-c: Parse config.json
+	optdepends = json-c: Parsing config.json
 	source = uwufetch-1.3.tar.gz::https://github.com/TheDarkBug/uwufetch/archive/1.3.tar.gz
 	sha256sums = 34e9742e9c845dd4948c48115be4eee7ce427a29ac80ec72a7f3d62d25dcd760
 
