@@ -21,7 +21,7 @@
 
 _basename=clapper
 pkgname="${_basename}"
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
 arch=(any)
