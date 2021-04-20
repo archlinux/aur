@@ -4,18 +4,35 @@
 
 pkgname=televize
 pkgver=31
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI aplication to watch mainly Czech television streams"
 arch=('any')
 url="http://xpisar.wz.cz"
 license=('GPL')
-depends=('bash' 'wget' 'grep' 'sed' 'ctstream' 'perl-lwp-protocol-https')
-optdepends=('mplayer: for MPlayer backend' 'mpv: for MPV backend')
-source=(http://xpisar.wz.cz/${pkgname}/${pkgname}-${pkgver})
-sha256sums=('89602b9391241cbc9795c95d012f34f594b67703baf68e3fc82e5477941ec1ca')
+depends=('bash' 'wget' 'grep' 'sed' 'ctstream')
+makedepends=('gendesk')
+optdepends=('mplayer: for MPlayer backend'
+            'mpv: for MPV backend'
+            'rofi: for channel selection using rofi'
+            'fzf: for channel selection in console using fzf')
+install=${pkgname}.install
+source=(http://xpisar.wz.cz/${pkgname}/${pkgname}-${pkgver}
+        televize-menu)
+sha256sums=('89602b9391241cbc9795c95d012f34f594b67703baf68e3fc82e5477941ec1ca'
+            '8646f87775d5ce2fdb9a17f66ccce954ba5daed2229df5553d21d81a7572d72b')
+
+prepare() {
+  cd "${srcdir}"
+  gendesk -f --icon video-television \
+             --pkgname "${pkgname}" \
+             --exec "televize-menu" \
+             --pkgdesc "$pkgdesc" \
+             --categories 'AudioVideo;TV'
+}
 
 package() {
   cd "${srcdir}"
-  install -m755 -d "${pkgdir}/usr/bin"
-  install -m755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "televize-menu" "${pkgdir}/usr/bin/televize-menu"
+  install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

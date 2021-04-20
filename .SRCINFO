@@ -1,20 +1,25 @@
 pkgbase = televize
 	pkgdesc = CLI aplication to watch mainly Czech television streams
 	pkgver = 31
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xpisar.wz.cz
+	install = televize.install
 	arch = any
 	license = GPL
+	makedepends = gendesk
 	depends = bash
 	depends = wget
 	depends = grep
 	depends = sed
 	depends = ctstream
-	depends = perl-lwp-protocol-https
 	optdepends = mplayer: for MPlayer backend
 	optdepends = mpv: for MPV backend
+	optdepends = rofi: for channel selection using rofi
+	optdepends = fzf: for channel selection in console using fzf
 	source = http://xpisar.wz.cz/televize/televize-31
+	source = televize-menu
 	sha256sums = 89602b9391241cbc9795c95d012f34f594b67703baf68e3fc82e5477941ec1ca
+	sha256sums = 8646f87775d5ce2fdb9a17f66ccce954ba5daed2229df5553d21d81a7572d72b
 
 pkgname = televize
 

@@ -1,0 +1,69 @@
+#!/bin/bash
+# televize-menu
+# select a channel from televize with the highest quality and play it
+#
+# the preference of channel selectors is based on typing efficiency
+# and is hardcoded as follows:
+#   - rofi (dmenu mode, only with X11)
+#   - fzf
+#   - whiptail
+#
+# the original idea: https://www.abclinuxu.cz/blog/pb/2011/7/televize-10/diskuse#7
+#
+# suggestions: jose1711 @ gmail dot com
+#
+menu_items=()
+n=0
+while read -r item
+do
+  translit=$(echo "${item}" | iconv -f utf8 -t ascii//translit)
+  if [ "${item}" != "${translit}" ] && ! echo "${translit}" | grep -q '??'
+  then
+    item="${item} (${translit})"
+  fi
+  menu_items[$n]="${item}" 
+  ((n++))
+done < <(televize -l | cut -d' ' -f 2- | perl -pe 's/ [0-9,.]+ *([kM]|[kM]b\/s) *$//' | sort -u)
+
+item_lines=$(for item in "${menu_items[@]}"; do echo "${item}"; done)
+
+if [ -n "${DISPLAY}" ] && which rofi 2>/dev/null
+then
+  selection=$(echo "${item_lines}" | rofi -i -dmenu)
+  if [ -z "${selection}" ]
+  then
+    exit 0
+  fi
+fi
+
+if [ -z "${selection}" ]
+then
+  if which fzf 2>/dev/null
+  then
+    selection=$(echo "${item_lines}" | fzf)
+  elif which whiptail 2>/dev/null
+  then
+    n=0
+    for item in "${menu_items[@]}"
+    do
+      args[$n]="${item}"
+      ((n++))
+      args[$n]=""
+      ((n++))
+    done
+    selection=$(whiptail --title "televize" --menu "" 20 72 13 "${args[@]}" 3>&1 1>&2 2>&3)
+  fi
+fi
+
+selection=$(echo "${selection}" | sed 's/ ([^)]*)//')
+
+if [ -z "${selection}" ]
+then
+  exit 0
+fi
+
+echo "Your selection: ${selection}"
+
+best_channel=$(televize -l | grep -E "${selection}($| [0-9])" | awk '{chan=$1} END {print chan}')
+echo "Best match: ${best_channel}"
+televize "${best_channel}"
