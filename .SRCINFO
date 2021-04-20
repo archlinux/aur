@@ -1,7 +1,7 @@
 pkgbase = ruby-prawn-table
 	pkgdesc = Provides tables for PrawnPDF
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/prawnpdf/prawn-table
 	arch = any
 	license = RUBY

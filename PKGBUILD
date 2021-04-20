@@ -4,7 +4,7 @@
 _gemname=prawn-table
 pkgname=ruby-$_gemname
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Provides tables for PrawnPDF'
 arch=(any)
 url='https://github.com/prawnpdf/prawn-table'
