@@ -1,9 +1,9 @@
-# Maintainer: OpenSourcerer <alex at opensourcery dot eu>
+# Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite-bin
 _pkgname=AirVPN-Suite
 pkgver=1.0.0
 _pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt"
 arch=('x86_64' 'i686' 'armv7l' 'aarch64')
 url="https://gitlab.com/AirVPN/$_pkgname"
