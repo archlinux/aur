@@ -1,0 +1,23 @@
+post_install() {
+	getent passwd airvpn >/dev/null
+    if [ $? -eq '2' ]; then
+        useradd -Um airvpn
+    fi
+    chown -R airvpn:airvpn /etc/airvpn
+    systemctl daemon-reload
+}
+
+pre_upgrade() {
+    systemctl stop bluetit.service
+}
+
+pre_remove() {
+    systemctl stop bluetit.service
+    systemctl disable bluetit.service
+}
+
+post_remove() {
+    userdel -r airvpn 2>/dev/null
+    getent group airvpn >/dev/null && gpasswd airvpn -M "" && groupdel airvpn
+    systemctl daemon-reload
+}

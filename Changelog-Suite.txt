@@ -1,0 +1,63 @@
+Changelog for AirVPN Suite
+
+Version 1.1.0 RC 3 - 16 April 2021
+
+- [ProMIND] Updated to OpenVPN 3.7 AirVPN
+- [ProMIND] vpnclient.hpp: avoid netFilter setup in case NetFilter object is not private
+- [ProMIND] dbusconnector.cpp: fine tuned D-Bus wait cycle in R/W dispatch. Implemented a thread
+            safe wait in order to avoid D-Bus timeout policy
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.0 RC 2 - 14 April 2021
+
+- [ProMIND] Updated to OpenVPN 3.6.7 AirVPN
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.0 RC 1 - 7 April 2021
+
+- [ProMIND] Release Candidate 1
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.0 Beta 2 - 2 April 2021
+
+- [ProMIND] localnetwork.cpp: added getDefaultGatewayInterface() method
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.0 Beta 1 - 11 March 2021
+
+- [ProMIND] rcparser.cpp: removed formal list control for STRING type
+- [ProMIND] netfilter.hpp, netfilter.cpp: added functions to set the availability of specific iptables tables
+            in order to properly use available tables only
+- [ProMIND] vpnclient.hpp: onResolveEvent() sets iptables tables according to the loaded modules
+- [ProMIND] vpnclient.hpp: Changed constructor in order to use both private and external NetFilter object
+- [ProMIND] localnetwork.cpp: added getLoopbackInterface(), getLocalIPaddresses() and getLocalInterfaces() methods
+- [ProMIND] airvpntools.cpp: added detectLocation() method to retrieve location data from ipleak.net
+- [ProMIND] airvpnuser.cpp: detectUserLocation() now uses AirVPNTools::detectLocation()
+- [ProMIND] airvpnuser.cpp: loadUserProfile() now correctly sets userProfileErrorDescription in case of network failure
+- [ProMIND] airvpnserverprovider.cpp: added "DEFAULT" rule to getUserConnectionPriority() in case user's country or
+            continent is undefined
+- [ProMIND] airvpnmanifest.cpp: loadManifest() now correctly sets the status STORED in case of network failure
+- [ProMIND] Added Semaphore class
+- [ProMIND] dnsmanager.hpp: method revertAllResolved() renamed to restoreResolved(). Besides reverting all interfaces
+            it now restarts systemd-resolved service as well.
+- [ProMIND] install.sh: improved update/upgrade process
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.0.0 - 7 January 2021
+
+- [ProMIND] Production release
