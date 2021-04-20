@@ -1,12 +1,12 @@
 pkgbase = ccdoc
 	pkgdesc = create HTML, README.md, WIKI, MAN, from C comment
-	pkgver = 1.1.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/vbextreme/ccdoc
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
-	source = ccdoc-1.1.2.tar.gz::https://github.com/vbextreme/ccdoc/archive/v1.1.2.tar.gz
+	source = ccdoc-1.3.0.tar.gz::https://github.com/vbextreme/ccdoc/archive/v1.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ccdoc
