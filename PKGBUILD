@@ -19,7 +19,7 @@ install=${pkgname}.install
 source=(http://xpisar.wz.cz/${pkgname}/${pkgname}-${pkgver}
         televize-menu)
 sha256sums=('89602b9391241cbc9795c95d012f34f594b67703baf68e3fc82e5477941ec1ca'
-            '8646f87775d5ce2fdb9a17f66ccce954ba5daed2229df5553d21d81a7572d72b')
+            'f5366f74ee174cf6fd049ab5e43c70f14d93cad41ef66847059105c568973003')
 
 prepare() {
   cd "${srcdir}"
