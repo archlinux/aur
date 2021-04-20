@@ -1,7 +1,7 @@
 # Maintainer: David Husička <contact@bydave.net>
 
 pkgname=uwuify
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="fastest text uwuifier in the west"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniel-Liu-c0deb0t/uwu/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("40089a349c3485e7dedfb00bfd0b1f128b0a7bc709121cc3a001e6c56df9163b")
+sha256sums=("714a0f2744aed57c495efd3e62b9c4f48ec56a0f5902847099332e608f197a92")
 
 build() {
   cd "uwu-$pkgver"
