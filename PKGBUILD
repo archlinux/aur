@@ -1,8 +1,9 @@
-# Maintainer: dekart811
+# Maintainer: theokonos
+# Contirbutors: dekart811
 
 _pkgbase=veeamsnap
 pkgname=veeamsnap
-pkgver=4.0.1.2365
+pkgver=5.0.0.4318
 pkgrel=1
 pkgdesc="Veeam Agent for Linux kernel modules (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,9 +12,9 @@ license=('GPLv2')
 depends=('dkms' 'rpmextract')
 conflicts=("${_pkgbase}")
 install=${pkgname}.install
-source=("${url}/rpm/el/7/x86_64/veeamsnap-${pkgver}-1.noarch.rpm"
+source=("${url}/rpm/el/8/x86_64/veeamsnap-${pkgver}-1.noarch.rpm"
         'dkms.conf')
-sha256sums=('439fa156a9166125b43d4a4395ae720571a43d95ea6987dc96f8b70f618ad1c5'
+sha256sums=('c334a52e256366a1a28bee481e1af131e8ba45ad9a72f796296b26b4bb9b4254'
             '7d2a83f28b7c41797fadf06f29ab124ae63d662f2dba4e81e1eb4d1ef15bee7c')
 
 build() {
