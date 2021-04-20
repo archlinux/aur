@@ -22,5 +22,5 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   install -D -m 644 doc/boxes.1 $pkgdir/usr/share/man/man1/boxes.1
   install -D -m 644 boxes-config $pkgdir/etc/boxes-config
-  install -D -m 755 src/boxes $pkgdir/usr/bin/boxes
+  install -D -m 755 out/boxes $pkgdir/usr/bin/boxes
 }
