@@ -2,7 +2,7 @@
 
 pkgbase='navidrome-git'
 pkgname=(navidrome-git)
-pkgver=v0.14.5.r1.gd09a218
+pkgver=v0.41.0.r89.gda30923a
 pkgrel=1
 pkgdesc='Music Server and Streamer compatible with Subsonic/Airsonic'
 url='https://www.navidrome.org/'
@@ -10,7 +10,7 @@ license=('GPL3')
 arch=(x86_64 armv6h armv7h aarch64)
 provides=('navidrome')
 conflicts=('navidrome')
-makedepends=('go' 'git' 'npm')
+makedepends=('go' 'git' 'npm' 'taglib' 'nodejs-lts-fermium')
 depends=('ffmpeg')
 source=('navidrome-git::git+https://github.com/deluan/navidrome.git')
 sha256sums=('SKIP')

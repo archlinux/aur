@@ -13,7 +13,7 @@ if [[ $# == 1 ]]; then
 fi
 
 printf '' > PKGBUILD
-echo "# Maintainer: Sumner Evans <me [at] sumnerevans [dot] com>
+echo "# Maintainer: thelostpolaris <thelostpolaris [at] gmail [dot] com>
 
 pkgbase='${AUR_NAME}'
 pkgname=(${AUR_NAME})
@@ -25,7 +25,7 @@ license=('${LICENSE}')
 arch=(x86_64 armv6h armv7h aarch64)
 provides=('${EXECUTABLE_NAME}')
 conflicts=('${EXECUTABLE_NAME}')
-makedepends=('go' 'git' 'npm')
+makedepends=('go' 'git' 'npm' 'taglib' 'nodejs-lts-fermium')
 depends=('ffmpeg')
 source=('${AUR_NAME}::git+https://github.com/deluan/navidrome.git')
 sha256sums=('SKIP')
