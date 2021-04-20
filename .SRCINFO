@@ -1,0 +1,15 @@
+pkgbase = graal-nodejs-jdk8-bin
+	pkgdesc = GraalVM-based, ployglot-enabled implementation of Node.js, Java 8 version
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://github.com/oracle/graaljs
+	arch = x86_64
+	license = custom
+	depends = jdk8-graalvm-bin
+	source = https://github.com/oracle/graaljs/releases/download/vm-21.1.0/nodejs-installable-java8-linux-amd64-21.1.0.jar
+	source = https://github.com/oracle/graaljs/raw/vm-21.1.0/LICENSE
+	sha256sums = 514c4cdf958abe26c19c50cf2a75adc876169d241b69e2cd2794d0513d17df7f
+	sha256sums = 2c0950e91e3b7cf3671ca3c5d68b21ce72960b81f9ba09659f61cc2ebed67ecd
+
+pkgname = graal-nodejs-jdk8-bin
+
