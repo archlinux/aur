@@ -4,7 +4,7 @@
 _gemname=prawn-icon
 pkgname=ruby-$_gemname
 pkgver=2.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Provides icon fonts for PrawnPDF'
 arch=(any)
 url='https://github.com/jessedoyle/prawn-icon/'
