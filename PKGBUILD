@@ -2,7 +2,7 @@
 pkgname=gtknodes-git
 _pkgname=gtknodes
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="A GTK-based library to create functional flow graphs with the ability to pass arbitrary data between connected elements."
 arch=('x86_64')
