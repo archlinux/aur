@@ -1,6 +1,6 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 5.11.2.arch1
+	pkgver = 5.11.15.arch1
 	pkgrel = 1
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
@@ -12,21 +12,21 @@ pkgbase = linux-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.2-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.11.15-arch1
 	source = config
-	source = sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch
 	source = sys-kernel_arch-sources-g14_files_6007-HID-asus-Add-support-for-2021-ASUS-N-Key-keyboard.patch
 	source = sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
-	source = sys-kernel_arch-sources-g14_files_6009-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch
+	source = sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch
+	source = git+https://gitlab.com/asus-linux/fedora-kernel#commit=3e893afb4b3fcc73192caa1d5a645abae87d2112
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
 	sha256sums = cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c
-	sha256sums = e924edb045476201968eb76157a72ddae7dac18932e54f0e3d32eeed98d2b2c6
 	sha256sums = 2edfb8dbb0fe7202191c51a5f645559c5da9f800e8aad2f8a4fd2731092138ff
 	sha256sums = d9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac
-	sha256sums = eec1d016c5f53f1d808701b6c038db2e73a61310713f859d99bf97b9c793cefe
+	sha256sums = c384049787c8f0008accf9c4d053eb407b76242fe522e1aed1fe8a9c59f9d996
+	sha256sums = SKIP
 
 pkgname = linux-g14
 	pkgdesc = The Linux kernel and modules

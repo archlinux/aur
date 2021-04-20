@@ -1,0 +1,87 @@
+From 4b9ee772eaa82188b0eb8e05bdd1707c2a992004 Mon Sep 17 00:00:00 2001
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+Date: Thu, 18 Mar 2021 19:25:12 +0100
+Subject: ACPI: scan: Turn off unused power resources during initialization
+
+It is reported that on certain platforms there are power resources
+that are not associated with any devices physically present in the
+platform.  Those power resources are expected to be turned off by
+the OS in accordance with the ACPI specification (section 7.3 of
+ACPI 6.4) which currently is not done by Linux and that may lead
+to obscure issues.
+
+For instance, leaving those power resources in the "on" state may
+prevent the platform from reaching the lowest power state in
+suspend-to-idle which leads to excessive power draw.
+
+For this reason, turn all of the unused ACPI power resources off
+at the end of the initial namespace scan for devices in analogy with
+resume from suspend-to-RAM.
+
+Link: https://uefi.org/specs/ACPI/6.4/07_Power_and_Performance_Mgmt/device-power-management-objects.html
+Reported-by: David Box <david.e.box@linux.intel.com>
+Tested-by: Wendy Wang <wendy.wang@intel.com>
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+ drivers/acpi/internal.h | 1 +
+ drivers/acpi/power.c    | 2 +-
+ drivers/acpi/scan.c     | 2 ++
+ drivers/acpi/sleep.h    | 1 -
+ 4 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/acpi/internal.h b/drivers/acpi/internal.h
+index e6a5d997241c4..9fcefcdc1dbe0 100644
+--- a/drivers/acpi/internal.h
++++ b/drivers/acpi/internal.h
+@@ -139,6 +139,7 @@ int acpi_device_sleep_wake(struct acpi_device *dev,
+ int acpi_power_get_inferred_state(struct acpi_device *device, int *state);
+ int acpi_power_on_resources(struct acpi_device *device, int state);
+ int acpi_power_transition(struct acpi_device *device, int state);
++void acpi_turn_off_unused_power_resources(void);
+ 
+ /* --------------------------------------------------------------------------
+                               Device Power Management
+diff --git a/drivers/acpi/power.c b/drivers/acpi/power.c
+index 9b608b55d2b29..46c38627adddb 100644
+--- a/drivers/acpi/power.c
++++ b/drivers/acpi/power.c
+@@ -996,6 +996,7 @@ void acpi_resume_power_resources(void)
+ 
+ 	mutex_unlock(&power_resource_list_lock);
+ }
++#endif
+ 
+ void acpi_turn_off_unused_power_resources(void)
+ {
+@@ -1025,4 +1026,3 @@ void acpi_turn_off_unused_power_resources(void)
+ 
+ 	mutex_unlock(&power_resource_list_lock);
+ }
+-#endif
+diff --git a/drivers/acpi/scan.c b/drivers/acpi/scan.c
+index a184529d8fa40..1584c9e463bdf 100644
+--- a/drivers/acpi/scan.c
++++ b/drivers/acpi/scan.c
+@@ -2360,6 +2360,8 @@ int __init acpi_scan_init(void)
+ 		}
+ 	}
+ 
++	acpi_turn_off_unused_power_resources();
++
+ 	acpi_scan_initialized = true;
+ 
+  out:
+diff --git a/drivers/acpi/sleep.h b/drivers/acpi/sleep.h
+index 1856f76ac83f7..7fe41ee489d61 100644
+--- a/drivers/acpi/sleep.h
++++ b/drivers/acpi/sleep.h
+@@ -8,7 +8,6 @@ extern struct list_head acpi_wakeup_device_list;
+ extern struct mutex acpi_device_lock;
+ 
+ extern void acpi_resume_power_resources(void);
+-extern void acpi_turn_off_unused_power_resources(void);
+ 
+ static inline acpi_status acpi_set_waking_vector(u32 wakeup_address)
+ {
+-- 
+cgit 1.2.3-1.el7
