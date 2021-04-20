@@ -1,25 +1,30 @@
 pkgbase = datadog-agent
 	pkgdesc = Datadog Agent: collect metrics and events from your systems and apps
-	pkgver = 7.26.0
+	pkgver = 7.27.0
 	pkgrel = 1
 	url = https://datadoghq.com
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	depends = sysstat
 	options = !strip
-	source = datadog-agent-7.26.0-1-Release::https://apt.datadoghq.com/dists/stable/Release
-	source = datadog-agent-7.26.0-1-Release.sig::https://apt.datadoghq.com/dists/stable/Release.gpg
-	source = datadog-agent-7.26.0-1-Packages::https://apt.datadoghq.com/dists/stable/7/binary-amd64/Packages
-	source = https://apt.datadoghq.com/pool/d/da/datadog-agent_7.26.0-1_amd64.deb
+	source = datadog-agent-7.27.0-1-Release::https://apt.datadoghq.com/dists/stable/Release
+	source = datadog-agent-7.27.0-1-Release.sig::https://apt.datadoghq.com/dists/stable/Release.gpg
 	source = datadog-agent.sysusers
 	source = datadog-agent.tmpfiles
 	validpgpkeys = A2923DFF56EDA6E76E55E492D3A80E30382E94DE
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = 03d4f327e21f65fbd2bfda22664a05ecc91dd2d42d5d27ad08ba728f72cba9b74c4b96b79b582de62b8e8faf02394f4c5885417bfc4f9f223f01e1fa65a0ed4e
 	sha512sums = 20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f
 	sha512sums = 2a3e873d88b8f3a5d90591f955894273eb28d0f9b352e54be4f1125d4229a8f1d7eece8bf6ad41b85ee194390821e9c851393fb36ac249069cfdf7470925ce21
+	source_x86_64 = datadog-agent-7.27.0-1-amd64-Packages::https://apt.datadoghq.com/dists/stable/7/binary-amd64/Packages
+	source_x86_64 = https://apt.datadoghq.com/pool/d/da/datadog-agent_7.27.0-1_amd64.deb
+	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = e0634d345c868866cf03643bd06841373dad7233d048c6ef0092553842888ace3d3fbf443388f53d639c7e988a3600661a6a1d62f9162ae3286452c7d4c3dc52
+	source_aarch64 = datadog-agent-7.27.0-1-arm64-Packages::https://apt.datadoghq.com/dists/stable/7/binary-arm64/Packages
+	source_aarch64 = https://apt.datadoghq.com/pool/d/da/datadog-agent_7.27.0-1_arm64.deb
+	sha512sums_aarch64 = SKIP
+	sha512sums_aarch64 = 52293f53fcea34d830277c3586443384d201808d8a259bb28a81aefdade9ae350bf42bb93fa00f5ce336f6edaf237f84213ce06bc7d36ff73868fc5bc55f8782
 
 pkgname = datadog-agent
 
