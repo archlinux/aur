@@ -7,12 +7,12 @@
 buildarch=12
 
 pkgbase=linux-raspberrypi4-cacule-stable
-_commit=05ad8a29d5dadb2db0b809e6cc1ee3d8d6380f61
+_commit=4c6a570ea7d7586ff17a0166a222de88d0ea7050
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4 with the cacule scheduler"
-pkgver=5.11.11
-pkgrel=2
+pkgver=5.11.15
+pkgrel=1
 pkgdesc="Raspberry Pi 4 Kernel with the cacule schedeuler, aarch64 and armv7"
 arch=('armv7h' 'aarch64')
 url="http://www.kernel.org/"
@@ -29,17 +29,17 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         )
 source_armv7h=('config' 'config.txt' 'cacule-32bit-converter.patch')
 source_aarch64=('config8' 'config8.txt')
-md5sums=('7d2fa3944b651baa54cc79823b09a6b3'
+md5sums=('4dbbc81c46a9f467dcba755575eac72b'
          '31c02f4518d46deb5f0c2ad1f8b083cd'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '441ec084c47cddc53e592fb0cbce4edf'
          'f66a7ea3feb708d398ef57e4da4815e9'
          'b85d9c75a137a4278537386ca274da9d')
-md5sums_armv7h=('700675c55dc17c9b56413b8736a6cad9'
+md5sums_armv7h=('0ce3d9c05a72b33a1b98ecbc64870eb1'
                 '9669d916a5929a2eedbd64477f83d99e'
                 '02808e3fb2f6b142e0cd9f1ae50a8d46')
-md5sums_aarch64=('5f5c0d40ad2f5010270905bb65e36886'
+md5sums_aarch64=('4ac3dea5e9b48c55a48e881dc5151423'
                  '9669d916a5929a2eedbd64477f83d99e')
 
 # setup vars
