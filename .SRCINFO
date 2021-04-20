@@ -1,0 +1,15 @@
+pkgbase = plank-docklet-tea
+	pkgdesc = A tea timer docklet for plank / docky.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hannenz/tea
+	arch = x86_64
+	license = Unknown
+	makedepends = cmake
+	makedepends = vala
+	depends = plank
+	source = plank-docklet-tea-1.0.0.zip::https://github.com/hannenz/tea/archive/refs/heads/master.zip
+	md5sums = SKIP
+
+pkgname = plank-docklet-tea
+
