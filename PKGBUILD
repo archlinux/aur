@@ -3,7 +3,7 @@
 java_=8
 pkgname_=native-image
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=21.0.0.2
+pkgver=21.1.0
 pkgrel=1
 pkgdesc="Plugin to turn GraalVM-based applications into native binary images (Java ${java_} version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/oracle/graal'
 license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/${pkgname_}-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('e2a182c1f79d8a97b537b843eb65e15ef5ebdd088ad01acd606bf26b1846612e')
+sha256sums=('4ed1f20edb3ebd0c3203008799b8f20a3e646318c64c20412b08baf9fa0d40f2')
 
 package() {
     local file eq permissions mode name target
