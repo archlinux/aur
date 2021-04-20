@@ -4,7 +4,7 @@
 _gemname=asciidoctor-pdf
 pkgname=asciidoctor-pdf
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='translate asciidoctor directly to pdf'
 arch=(any)
 url='https://asciidoctor.org/'
@@ -12,14 +12,14 @@ license=(MIT)
 depends=(asciidoctor
          ruby-concurrent
          ruby-prawn
+         'ruby-ttfunk>=1.7.0'
          'ruby-prawn-icon<3'
          ruby-prawn-svg
          ruby-prawn-table
          ruby-prawn-templates
          ruby-safe_yaml
          ruby-thread_safe
-         ruby-treetop
-         'ruby-ttfunk<1.6')
+         ruby-treetop)
 optdepends=('ruby-rouge: syntax highlight'
             'ruby-coderay: syntax highlight')
 options=(!emptydirs)
@@ -31,6 +31,12 @@ package() {
     gem install --ignore-dependencies --no-user-install --verbose \
         -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" \
         "$pkgname-$pkgver.gem"
+
+    # Force the package depends on prawn>=2.2.0 instead of prawn~>2.2.0
+    sed "/<prawn>/s/~>/>=/" -i $pkgdir/$_gemdir/specifications/$_gemname-$pkgver.gemspec
+
+    # Force the package depends on ttfunk>=1.5.1 instead of prawn~>1.5.0
+    sed "/<ttfunk>/s/~>/>=/" -i $pkgdir/$_gemdir/specifications/$_gemname-$pkgver.gemspec
 
     rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
 }

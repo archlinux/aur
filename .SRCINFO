@@ -1,13 +1,14 @@
 pkgbase = asciidoctor-pdf
 	pkgdesc = translate asciidoctor directly to pdf
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asciidoctor.org/
 	arch = any
 	license = MIT
 	depends = asciidoctor
 	depends = ruby-concurrent
 	depends = ruby-prawn
+	depends = ruby-ttfunk>=1.7.0
 	depends = ruby-prawn-icon<3
 	depends = ruby-prawn-svg
 	depends = ruby-prawn-table
@@ -15,7 +16,6 @@ pkgbase = asciidoctor-pdf
 	depends = ruby-safe_yaml
 	depends = ruby-thread_safe
 	depends = ruby-treetop
-	depends = ruby-ttfunk<1.6
 	optdepends = ruby-rouge: syntax highlight
 	optdepends = ruby-coderay: syntax highlight
 	noextract = asciidoctor-pdf-1.5.4.gem
