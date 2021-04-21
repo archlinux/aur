@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Stürz <benni@stuerz.xyz>
 pkgname=fuse-tar-mounter
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple tar-archive FUSE mounter"
 arch=(any)
 url="https://github.com/Benni3D/fuse-tar"
