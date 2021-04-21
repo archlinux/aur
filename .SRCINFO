@@ -1,7 +1,7 @@
 pkgbase = veeam
 	pkgdesc = Veeam Agent for Linux
 	pkgver = 5.0.0.4318
-	pkgrel = 1
+	pkgrel = 8
 	url = http://repository.veeam.com/backup/linux/agent
 	install = veeam.install
 	arch = x86_64
