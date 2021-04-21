@@ -1,6 +1,6 @@
 pkgbase = chicago95-git
 	pkgdesc = Windows 95 inspired theme
-	pkgver = 2.0.1.r44.g6a2f040
+	pkgver = 2.0.1.r65.g410d59f
 	pkgrel = 1
 	url = https://github.com/grassmunk/Chicago95
 	arch = any
