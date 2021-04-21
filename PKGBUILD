@@ -60,8 +60,8 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.15
-pkgrel=2
+pkgver=5.11.16
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -87,9 +87,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('8512b09eff18b221a5282bfa0acc92a0afdcbccd458aaeddaaf0c97e698462547ea1d729aeb1ec92d2f0ce66a36b32d5635eb93e895a29a2971fc47402887c97'
+b2sums=('fe7a296697d21ac4572b6714da898bc9303cf04f988297329e10d660a957ea6142a182fe583e7a98bf2f767f61989288454ecf640844346af079d90b4fdd21b1'
         'SKIP'
-        '987eabe77d3530dc4be582540d100605a1ed170da515beb736a27f8bd5956acbf9e3ad72220f451b42747e75a3adc58cc63721345313b5cdf82e6e1f523cc31a'
+        'bd8c382158f579c173ac68a7f27d3abfe52b1bd60413dea593534fa6c126d6a804e6dd98c2d9b1f402cd22c9bbd8f39bacaba7d96b13320bd529badba0ec3e0c'
         'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         '15e0c083bfdbf3ea1be551c948a1afe0ef3fdca490d331922fa6c0f3d6b269245e05119ed181741fca79bf248c42148f9acd21553361161897c8d389486901e8'
