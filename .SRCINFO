@@ -1,7 +1,7 @@
 pkgbase = coreaction
-	pkgdesc = A side bar for showing widgets from the CoreApps family.
+	pkgdesc = A side bar for showing widgets from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/coreaction
 	arch = x86_64
 	arch = aarch64
