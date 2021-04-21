@@ -1,7 +1,7 @@
 pkgbase = coreinfo
-	pkgdesc = A file information tool from the CoreApps family.
+	pkgdesc = A file information tool from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/coreinfo
 	arch = x86_64
 	arch = aarch64
