@@ -1,5 +1,14 @@
+From f72878cd2e9cf0ab0ed5307151bd6db7ec8c1d64 Mon Sep 17 00:00:00 2001
+From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+Date: Wed, 21 Apr 2021 22:27:14 +1000
+Subject: [PATCH] patch product.json to enable all extensions
+
+---
+ product.json | 30 +++++++++++++++++++++++-------
+ 1 file changed, 23 insertions(+), 7 deletions(-)
+
 diff --git a/product.json b/product.json
-index 207bcf8f512..3eb22d78dcb 100644
+index f3f0ba076f6..c4d9731fb88 100644
 --- a/product.json
 +++ b/product.json
 @@ -1,8 +1,21 @@
@@ -27,8 +36,8 @@ index 207bcf8f512..3eb22d78dcb 100644
 +	"dataFolderName": ".vscode-wayland",
  	"win32MutexName": "vscodeoss",
  	"licenseName": "MIT",
- 	"licenseUrl": "https://github.com/microsoft/vscode/blob/master/LICENSE.txt",
-@@ -18,15 +31,18 @@
+ 	"licenseUrl": "https://github.com/microsoft/vscode/blob/main/LICENSE.txt",
+@@ -18,17 +31,20 @@
  	"win32AppUserModelId": "Microsoft.CodeOSS",
  	"win32ShellNameShort": "C&ode - OSS",
  	"darwinBundleIdentifier": "com.visualstudio.code.oss",
@@ -42,11 +51,16 @@ index 207bcf8f512..3eb22d78dcb 100644
  		"ms-vscode.vscode-js-profile-flame",
  		"ms-vscode.vscode-js-profile-table",
  		"ms-vscode.github-browser",
--		"ms-vscode.github-richnav"
-+		"ms-vscode.github-richnav",
+ 		"ms-vscode.github-richnav",
+ 		"ms-vscode.remotehub",
+-		"ms-vscode.remotehub-insiders"
++		"ms-vscode.remotehub-insiders",
 +		"ms-vsliveshare.vsliveshare",
 +		"ms-vscode.node-debug",
 +		"ms-vscode.node-debug2"
  	],
  	"builtInExtensions": [
  		{
+-- 
+2.31.1
+

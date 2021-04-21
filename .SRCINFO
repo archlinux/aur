@@ -1,6 +1,6 @@
 pkgbase = code-wayland
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor, with ozone enabled for wayland support
-	pkgver = 1.52.1
+	pkgver = 1.55.2
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = code-wayland
 	makedepends = python2
 	makedepends = yarn
 	makedepends = nodejs-lts-erbium
-	depends = electron-ozone
+	depends = electron
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
@@ -21,16 +21,20 @@ pkgbase = code-wayland
 	optdepends = x11-ssh-askpass: SSH authentication
 	provides = vscode
 	conflicts = code
-	source = code-wayland::git+https://github.com/microsoft/vscode.git#tag=1.52.1
+	source = code-wayland::git+https://github.com/microsoft/vscode.git#tag=1.55.2
 	source = code.js
 	source = code.sh
-	source = product_json.diff
-	source = 0001-chore-bump-electron-11.0.3-111931.patch
+	source = 0001-patch-product.json-to-enable-all-extensions.patch
+	source = 0001-chore-bump-electron-12.0.2.patch
+	source = 0002-chore-bump-electron-12.0.3.patch
+	source = 0003-chore-bump-electron-12.0.4.patch
 	sha512sums = SKIP
 	sha512sums = 814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f
 	sha512sums = aec825628bf1911731fbe79cf8cc4c1b61cbb956567e1d6616ff187668ad986324551d29a7ff7462b9d5a1f91d236dd0fea2c39ca36aeae88917c07303aaf2d2
-	sha512sums = 1a89170ac5ee6b0b19d4b981e6037c86cfcaf30ceb2910550d42ba8cf442d3f735438205fd6f54558ea1223714c719ced676193e6b625762af0c4bcfaddd9461
-	sha512sums = cd64cc93dafc537034bd9a69b9d77ab8e0350b7a05b464ee9efd91c55248f5888c89b968d7293d9a61c4963b6748980b717eb5ad3c55de261c5f767893924a38
+	sha512sums = e97fb3793db67ee82d497a09b78d77107b5035676559973927c6011bd8fdf5c59557f69b32d621b1a8bd2887ca03b635fe82e6ec37e8d687c2802621aed8fc1e
+	sha512sums = 94f983b065339544a8ea7c07da29923b3d060f57a0bc8b14116c914060fc7722b9fdbe80e063e92261442cff44e37523908087d9f02abfca00da4b61b6952844
+	sha512sums = 8fff0a9488aae5962e035846e40d407bbddfbfed52008f8ac06327a01ddf34dd6c8539ceabf9d1843d6bc30f90e39be19105e5de763e12876956cd977deee00d
+	sha512sums = 99757b81ac590397904d45c7fb5de605c2101e6e4d8a42e6d5fcc974917c50bd9e3d26f6241b65d032e08ff840a7ec3b61fb505ac71d6d9a1d8eb738864c6917
 
 pkgname = code-wayland
 

@@ -12,13 +12,13 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone
 #   - ?: 11 (not in repos)
 #   - erbium: 12
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron # 11
-pkgver=1.52.1
+_electron=electron # 12
+pkgver=1.55.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=('electron-ozone' 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
@@ -28,13 +28,17 @@ conflicts=('code')
 source=("$pkgname::git+$url.git#tag=$pkgver"
         'code.js'
         'code.sh'
-        'product_json.diff'
-        '0001-chore-bump-electron-11.0.3-111931.patch')
+        '0001-patch-product.json-to-enable-all-extensions.patch'
+	'0001-chore-bump-electron-12.0.2.patch'
+	'0002-chore-bump-electron-12.0.3.patch'
+	'0003-chore-bump-electron-12.0.4.patch')
 sha512sums=('SKIP'
             '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
             'aec825628bf1911731fbe79cf8cc4c1b61cbb956567e1d6616ff187668ad986324551d29a7ff7462b9d5a1f91d236dd0fea2c39ca36aeae88917c07303aaf2d2'
-            '1a89170ac5ee6b0b19d4b981e6037c86cfcaf30ceb2910550d42ba8cf442d3f735438205fd6f54558ea1223714c719ced676193e6b625762af0c4bcfaddd9461'
-            'cd64cc93dafc537034bd9a69b9d77ab8e0350b7a05b464ee9efd91c55248f5888c89b968d7293d9a61c4963b6748980b717eb5ad3c55de261c5f767893924a38')
+            'e97fb3793db67ee82d497a09b78d77107b5035676559973927c6011bd8fdf5c59557f69b32d621b1a8bd2887ca03b635fe82e6ec37e8d687c2802621aed8fc1e'
+            '94f983b065339544a8ea7c07da29923b3d060f57a0bc8b14116c914060fc7722b9fdbe80e063e92261442cff44e37523908087d9f02abfca00da4b61b6952844'
+            '8fff0a9488aae5962e035846e40d407bbddfbfed52008f8ac06327a01ddf34dd6c8539ceabf9d1843d6bc30f90e39be19105e5de763e12876956cd977deee00d'
+            '99757b81ac590397904d45c7fb5de605c2101e6e4d8a42e6d5fcc974917c50bd9e3d26f6241b65d032e08ff840a7ec3b61fb505ac71d6d9a1d8eb738864c6917')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -62,10 +66,11 @@ prepare() {
   sed -i "s|exec electron |exec $_electron |" ../code.sh
 
   # Make extensions and live share work
-  patch -Np1 -i ../product_json.diff
+  patch -Np1 -i ../0001-patch-product.json-to-enable-all-extensions.patch
 
-  # Backport the update from electron 9->11, for better wayland support.
-  patch -Np1 -i ../0001-chore-bump-electron-11.0.3-111931.patch
+  patch -Np1 -i ../0001-chore-bump-electron-12.0.2.patch
+  patch -Np1 -i ../0002-chore-bump-electron-12.0.3.patch
+  patch -Np1 -i ../0003-chore-bump-electron-12.0.4.patch
 
   # Set the commit and build date
   local _commit=$(git rev-parse HEAD)
