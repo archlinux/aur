@@ -1,6 +1,6 @@
 pkgbase = wayfire
 	pkgdesc = 3D wayland compositor
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = wayfire
 	depends = libjpeg
 	depends = libinput
 	depends = wlroots>=0.12
-	depends = wlroots<0.13
+	depends = wlroots<0.14
 	conflicts = wayfire-git
-	source = https://github.com/WayfireWM/wayfire/releases/download/v0.7.0/wayfire-0.7.0.tar.xz
-	sha256sums = 0d8ec311510bf10647d857c2db6e3dbbccfe3ac9064463661c8062c8cbb469a6
+	source = https://github.com/WayfireWM/wayfire/releases/download/v0.7.1/wayfire-0.7.1.tar.xz
+	sha256sums = 587988f9292b41fc4a91b73ea4fde9841bba5fb3325129729bef58d8eae2fb71
 
 pkgname = wayfire
 
