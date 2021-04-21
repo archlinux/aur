@@ -1,0 +1,33 @@
+pkgbase = vim-tender-git
+	pkgdesc = A 24-bit colorscheme for vim, airline, and lightline
+	pkgver = r131.25924cb
+	pkgrel = 1
+	url = https://github.com/jacoborus/tender.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	source = vim-tender-git::git+https://github.com/jacoborus/tender.vim
+	md5sums = SKIP
+
+pkgname = vim-tender-git
+	depends = vim-plugin-runtime
+	optdepends = vim-airline-tender
+	optdepends = vim-lightline-tender
+	provides = vim-tender
+	conflicts = vim-tender
+
+pkgname = vim-airline-tender-git
+	depends = vim-plugin-runtime
+	depends = vim-airline
+	optdepends = vim-tender
+	provides = vim-airline-tender
+	conflicts = vim-airline-tender
+
+pkgname = vim-lightline-tender-git
+	depends = vim-plugin-runtime
+	depends = vim-lightline-git
+	optdepends = vim-tender
+	provides = vim-lightline-tender
+	conflicts = vim-lightline-tender
+
