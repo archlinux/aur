@@ -1,0 +1,16 @@
+pkgbase = nym
+	pkgdesc = The next generation of privacy infrastructure (Nym mixnet)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://nymtech.net/
+	arch = x86_64
+	license = Apache
+	license = MIT
+	license = CC0
+	makedepends = cargo
+	depends = openssl
+	source = https://github.com/nymtech/nym/archive/refs/tags/v0.10.0.tar.gz
+	sha512sums = fd8ffc5cda70a0768ff2f73bf4bbc2827282b0d111f5365bf699e5d5e5252adbe76dad6f31d866e6d9b3377d4ab7c1c2bc363671fec693629b56da0c1cdc76b8
+
+pkgname = nym
+
