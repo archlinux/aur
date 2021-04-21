@@ -1,0 +1,17 @@
+pkgbase = fish-embark-theme-git
+	pkgdesc = A port of the Embark colorscheme for Fish shell
+	pkgver = r4.e7a332f
+	pkgrel = 1
+	url = https://git.sr.ht/~lmartinez/fish-embark-theme
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	makedepends = git
+	depends = fish
+	provides = fish-embark-theme
+	conflicts = fish-embark-theme
+	source = fish-embark-theme-git::git+https://git.sr.ht/~lmartinez/fish-embark-theme
+	md5sums = SKIP
+
+pkgname = fish-embark-theme-git
+
