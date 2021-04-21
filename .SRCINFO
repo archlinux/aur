@@ -1,6 +1,6 @@
 pkgbase = coopnet-multimedia-conference
 	pkgdesc = Multimedia conferencing system by Orange Business Services
-	pkgver = 6.0.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://coopnet.multimedia-conference.orange-business.com
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = coopnet-multimedia-conference
 	depends = libappindicator-gtk3
 	depends = libsecret
 	depends = libxss
-	source = https://coopnet.multimedia-conference.orange-business.com/Setup/EData/EWCE/6.0.0/MultimediaConference_6.0.0_amd64.deb
-	sha256sums = 0e4dadb7948565ea57b14e45511673e931bc1126cfd561c6946dde3ebd442aab
+	source = https://coopnet.multimedia-conference.orange-business.com/Setup/EData/EWCE/6.1.0/MultimediaConference_6.1.0_amd64.deb
+	sha256sums = a49ab961ada732796560b6e0271e7e6b474471353e3d845b93e516c49422456f
 
 pkgname = coopnet-multimedia-conference
 
