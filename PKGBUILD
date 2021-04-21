@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 _pkgname=libnumbertext
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Number to number name and money text conversion library (mingw-w64)"
 arch=('any')
@@ -11,9 +11,9 @@ license=('LGPL3' 'custom')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://github.com/Numbertext/libnumbertext/archive/${pkgver}.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/Numbertext/libnumbertext/archive/${pkgver}.tar.gz"
         "libnumbertext-updateautotools.patch")
-sha256sums=('508f259325efc25705e27ca1bafe487aa0b8b0f5cc3bf77cb2d53ce7f119c380'
+sha256sums=('5ea8359532d7b8d7a1b63ccc7825fb3b4f8c6dcdee75cb80206d9647c50d4a03'
             '4c1be70cbb6c7b5e2f9d3842ad83ea95971d99663768e5df2ac74956fc4555bd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
