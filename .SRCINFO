@@ -1,7 +1,7 @@
 pkgbase = linux-bfq-dev
 	pkgdesc = Linux BFQ-dev
 	pkgver = 5.11.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -39,7 +39,7 @@ pkgbase = linux-bfq-dev
 	sha512sums = fe0e8f597d20e44344787f267913544256ff4a9545f08dd5d7dc3eb15240c570a127b34328ab62e958dd47d85c82ff2b24e16f00e05175b6b6e88960c3f84de3
 	sha512sums = a6700231756b7fe28e78234a5b02bed96d53d198e5af67c411a2f6a2d32f79b5d1afea3931947d6f4b800976553db3d5b3d56467fa214a391a998a77abf88012
 	sha512sums = 4ee0cf7e6eaba3ceb1887012a93a3e87f04b16e8a88c07de5d7242de872b03868a9780f283a93fea86c39c32b0da9108023b3e19fa056147922e0da1a9d0ccdb
-	sha512sums = 3fd4c58fcead7cc5d84da7111160f16a3bc782560f00abea7d1ccd1cd39a4e481e773eeb669025bea0767c73c8877435171a9c8c6785687575bee52bea3eaaf8
+	sha512sums = 75db8de787160be56ec5a82e54204efcfd11b4a56ae3ffac0c4fd00bb6b985831838d78967f90745a0a326db02631eee333bea731217cc07cf116bd06bfe11b5
 
 pkgname = linux-bfq-dev
 	pkgdesc = The Linux BFQ-dev kernel and modules
