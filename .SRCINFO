@@ -1,0 +1,13 @@
+pkgbase = fuse-tar
+	pkgdesc = A simple tar-archive FUSE mounter
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Benni3D/fuse-tar
+	arch = any
+	license = MIT
+	depends = zenity
+	source = https://github.com/Benni3D/fuse-tar/archive/v1.0.tar.gz
+	md5sums = 768ae8c93fe8b0a2bdcc6c8d02b35529
+
+pkgname = fuse-tar
+
