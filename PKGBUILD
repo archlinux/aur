@@ -2,7 +2,7 @@
 
 pkgname=firejail-handler-http
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="HTTP(S) URL handler for Firejail"
 arch=(x86_64)
 license=(GPL2)
@@ -22,7 +22,7 @@ package() {
         install -Dm755 "$_script" "$pkgdir"/usr/bin/${_script}
     done
     # common script settings
-    install -Dm644 firejail-handler-settings-http.inc "$pkgdir"/usr/bin/firejail-handler-settings-http.inc
+    install -Dm644 firejail-handler-settings-http.inc "$pkgdir"/etc/firejail/firejail-handler-settings-http.inc
     # xdg-open wrapper
     install -Dm755 firejail-xdg-open "$pkgdir"/usr/local/bin/xdg-open
     # XDG autostart file
