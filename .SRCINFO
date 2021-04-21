@@ -36,6 +36,3 @@ pkgname = linux-nitrous-fire
 pkgname = linux-nitrous-fire-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (tagged git version)
 
-pkgname = linux-nitrous-fire-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (tagged git version)
-
