@@ -1,6 +1,7 @@
 post_install() {
     echo "post install"
     groupadd veeam
+    systemctl daemon-reload
     systemctl enable veeamservice.service
     systemctl restart veeamservice.service    
     echo "."
@@ -13,6 +14,7 @@ pre_upgrade() {
 
 post_upgrade() {
     echo "post upgrade"
+    systemctl daemon-reload
     systemctl restart veeamservice.service
     echo "."
 }
