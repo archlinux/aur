@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+(cd /opt/phoenixminer && ./start_miner.sh)
