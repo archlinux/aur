@@ -1,6 +1,6 @@
 pkgbase = camelot-git
         pkgdesc = Cross-platform file manager written in C#
-        pkgver = 0.2.4.863
+        pkgver = 0.2.5.948
         pkgrel = 1
         url = https://github.com/IngvarX/Camelot
         arch = any
