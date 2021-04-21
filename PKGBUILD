@@ -5,7 +5,7 @@
 
 pkgname=godot-headless
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced, feature packed, multi-platform 2D and 3D game engine'
 url='http://www.godotengine.org'
 license=('MIT')
@@ -23,7 +23,7 @@ fi
 source=(
   "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
 )
-sha256sums=('4c2a8e7da1ad05c6223b0ff6cf2be124dad6708b56a8ec9910dc2aaf82a553ae')
+sha256sums=('595ff16eaef3d0b6c030575f4b7fcae8b805e407b90a2f71af3e4142362c1794')
 
 build() {
   cd "${srcdir}"/godot-${pkgver}-stable
