@@ -13,7 +13,7 @@
 
 pkgname=libreoffice-fresh-rpm
 pkgver=7.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('x86_64')
 url='https://www.libreoffice.org'
@@ -30,8 +30,11 @@ source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rp
 prepare() { ## prepare function
 
 ## install optional language & help packs (queries user)
+msg "Debug: 1";
 curl "http://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/" -o index.html;  ## get index.html
+msg "Debug: 2";
 declare -ar opt_pak=('langpack' 'helppack');  ## declare optional extensions
+msg "Debug: 3";
 for a in ${opt_pak[@]}; do  ## loop for all optional extensions
   read -p "Do you want to install additional ${a} (Y/y/N/n)?" opt_ans;
   case $opt_ans in  ## evaluate the answer
