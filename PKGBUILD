@@ -2,7 +2,7 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
-pkgver=0.33.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="Free, open source, and cross-platform media player – with selection of features."
 arch=(i686 x86_64)
