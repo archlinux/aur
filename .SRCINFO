@@ -1,7 +1,7 @@
 pkgbase = easyeda2kicad
 	pkgdesc = Convert EasyEDA designs to KiCad EDA
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wokwi/easyeda2kicad
 	arch = any
 	license = MIT
