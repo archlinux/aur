@@ -1,0 +1,15 @@
+pkgbase = discord_db
+	pkgdesc = Helpful db writen on sqlite3, already has channel vars, global user vars, server user vars and server vars
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/discord-db
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/fd/e3/67d0b18a06fa55d7bb2d2ee4345638e5450eab43a67bedf732a3a4bc3b87/discord_db-0.1.0.tar.gz
+	md5sums = 3e514dfe16f92016e9bf0b1f606beeee
+
+pkgname = discord_db
+
