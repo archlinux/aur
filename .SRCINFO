@@ -1,0 +1,13 @@
+pkgbase = easel-driver-docker-git
+	pkgdesc = Driver used to communicate between Easel and X-Carve or Carvey, run in Docker when device is connected
+	pkgver = 1.0.r0.g2da5444
+	pkgrel = 1
+	url = https://gitlab.com/scallopedllama/easel-driver-docker
+	arch = any
+	license = GPL2
+	depends = docker>=1:20.10.6-1
+	source = easel-driver-docker::git+https://gitlab.com/scallopedllama/easel-driver-docker.git#branch=main
+	md5sums = SKIP
+
+pkgname = easel-driver-docker-git
+
