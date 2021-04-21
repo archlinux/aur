@@ -1,6 +1,6 @@
 pkgbase = bupstash
 	pkgdesc = a tool for encrypted backups
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/andrewchambers/bupstash
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = bupstash
 	makedepends = ruby-ronn-ng
 	depends = libsodium
 	depends = gcc-libs
-	source = bupstash-0.8.0.tar.gz::https://github.com/andrewchambers/bupstash/archive/v0.8.0.tar.gz
-	b2sums = 289af01eef818023ceb56d587e6539f3e6fcf908c5d351211d2271ef1cc031d9f9e6bb2980c409ddb2757fdb95b2e9ddca4739cec738ce8abdcc9308b804f231
+	source = bupstash-0.9.0.tar.gz::https://github.com/andrewchambers/bupstash/archive/v0.9.0.tar.gz
+	b2sums = e72931e6d88686755a56f37167ab8be46fa8baae95374aaaafbbf630415d6c9a1f87d1ceea123398ce0e0de4babcb327b6ce399e64ff0c2c45aa02abd88978c1
 
 pkgname = bupstash
 

@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=bupstash
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="a tool for encrypted backups"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libsodium' 'gcc-libs')
 makedepends=('cargo' 'ruby-ronn-ng')
 checkdepends=('bash-bats') # if you hate yourself, add procps-ng + bubblewrap
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('289af01eef818023ceb56d587e6539f3e6fcf908c5d351211d2271ef1cc031d9f9e6bb2980c409ddb2757fdb95b2e9ddca4739cec738ce8abdcc9308b804f231')
+b2sums=('e72931e6d88686755a56f37167ab8be46fa8baae95374aaaafbbf630415d6c9a1f87d1ceea123398ce0e0de4babcb327b6ce399e64ff0c2c45aa02abd88978c1')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -37,7 +37,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   # binary
-  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
 
   # license
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
