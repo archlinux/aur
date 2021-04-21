@@ -1,7 +1,7 @@
 # Maintainer: Charles Delfly <charles@delfly.fr>
 pkgname=xs-update-manjaro
 pkgver=3.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic update of Archlinux/Manjaro System"
 arch=('any')
 url="https://github.com/lectrode/xs-update-manjaro"
@@ -11,7 +11,7 @@ depends=('coreutils' 'curl' 'grep' 'pacman' 'iputils')
 optdepends=('flatpak: flatpak package updates'
     'glib2: notifications with gdbus (Xfce, Gnome)'
     'libnotify: notifications with notify-send (partial Xfce and KDE)'
-    'notify-desktop: notifications (Xfce, KDE, and Gnome)'
+    'notify-desktop-git: notifications (Xfce, KDE, and Gnome)'
     'pacman-mirrors: update mirrors list (for Manjaro)'
     'pikaur: update AUR packages'
     'wget: replace curl for self update')

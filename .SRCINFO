@@ -1,7 +1,7 @@
 pkgbase = xs-update-manjaro
 	pkgdesc = Automatic update of Archlinux/Manjaro System
 	pkgver = 3.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lectrode/xs-update-manjaro
 	arch = any
 	license = Unlicense
@@ -14,7 +14,7 @@ pkgbase = xs-update-manjaro
 	optdepends = flatpak: flatpak package updates
 	optdepends = glib2: notifications with gdbus (Xfce, Gnome)
 	optdepends = libnotify: notifications with notify-send (partial Xfce and KDE)
-	optdepends = notify-desktop: notifications (Xfce, KDE, and Gnome)
+	optdepends = notify-desktop-git: notifications (Xfce, KDE, and Gnome)
 	optdepends = pacman-mirrors: update mirrors list (for Manjaro)
 	optdepends = pikaur: update AUR packages
 	optdepends = wget: replace curl for self update
