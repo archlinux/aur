@@ -1,6 +1,6 @@
 pkgbase = ruby-solargraph
 	pkgdesc = A Ruby language server
-	pkgver = 0.40.2
+	pkgver = 0.40.4
 	pkgrel = 1
 	url = http://solargraph.org/
 	arch = any
@@ -19,10 +19,10 @@ pkgbase = ruby-solargraph
 	depends = ruby-thor
 	depends = ruby-tilt
 	depends = ruby-yard
-	noextract = solargraph-0.40.2.gem
+	noextract = solargraph-0.40.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/solargraph-0.40.2.gem
-	sha256sums = fcbb013419313b30501bf3f520947e3a337316020b7a377ff14c3d5c50efbb4c
+	source = https://rubygems.org/downloads/solargraph-0.40.4.gem
+	sha256sums = 94bdc4ac0a20effb6d564783cf7bf37c7733f3c5c6141757ab76385ed5692a77
 
 pkgname = ruby-solargraph
 
