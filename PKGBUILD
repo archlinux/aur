@@ -1,7 +1,7 @@
 # Maintainer : Daniel Chesters <daniel.chesters@gmail.com>
 
 pkgname=i3wsr-git
-pkgver=1.1.1.r1.ge8cc002
+pkgver=2.0.0.r2.ge28739c
 pkgrel=1
 pkgdesc="A small program to change the name of an i3 workspace based on its contents."
 url="https://github.com/roosta/i3wsr"
