@@ -1,15 +1,15 @@
 # Maintainer: Darvin Delgado <dnmodder@gmail.com>
 pkgname=oversteer
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Graphical application to configure Logitech Wheels."
 arch=("any")
 url="https://github.com/berarma/oversteer"
 license=('GPL3')
-depends=("python" "python-gobject" "python-matplotlib" "python-pyudev" "python-evdev" "python-xdg" "gettext"  "appstream-glib" "desktop-file-utils")
+depends=("python" "python-gobject" "python-matplotlib" "python-pyudev" "python-evdev" "python-xdg" "gettext"  "appstream-glib" "desktop-file-utils" "python-scipy")
 makedepends=("meson")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berarma/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("b522125a12ee6f6f9a4ba15e10ee1f47cca75c644f39f6dd45fdbf83f3e4b3e3")
+sha256sums=('3b68bef81ed5d3a52c2b9147eb5c05e81f021739e38383b50c96fd31379f32cd')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -21,3 +21,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir/" ninja -C build install
 }
+
