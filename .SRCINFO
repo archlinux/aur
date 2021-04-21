@@ -1,7 +1,7 @@
 pkgbase = python-pyomo
 	pkgdesc = Pyomo: Python Optimization Modeling Objects
 	pkgver = 5.7.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Pyomo/pyomo
 	arch = any
 	license = BSD
@@ -14,12 +14,17 @@ pkgbase = python-pyomo
 	depends = python-networkx
 	depends = python-openpyxl
 	depends = python-pyodbc
+	depends = python-pyutilib
 	depends = python-xlrd
 	depends = python-pandas
 	depends = python-matplotlib
 	depends = python-pymysql
 	depends = python-pyro
 	depends = python-pint
+	optdepends = cplex: IBM ILOG CPLEX Optimization Studio
+	optdepends = glpk: GNU Linear Programming Kit support
+	optdepends = gurobi: Gurobi solver support
+	optdepends = mosek: MOSEK solver support
 	source = https://files.pythonhosted.org/packages/source/P/Pyomo/Pyomo-5.7.3.tar.gz
 	sha256sums = 2c4697107477a1b9cc9dad534d8f9c2dc6ee397c47ad44113e257732b83cfc8f
 
