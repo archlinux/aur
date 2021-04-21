@@ -1,7 +1,7 @@
 pkgbase = telegram-tg
 	pkgdesc = terminal telegram client that really works
-	pkgver = 0.7.0
-	pkgrel = 4
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/paul-nameless/tg
 	arch = any
 	license = Unlicense
@@ -12,12 +12,10 @@ pkgbase = telegram-tg
 	optdepends = ffmpeg: to record voice msgs and upload videos correctly
 	optdepends = urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin
 	conflicts = telegram-tg-git
-	source = telegram-tg-0.7.0.tar.gz::https://github.com/paul-nameless/tg/archive/v0.7.0.tar.gz
+	source = telegram-tg-0.8.0.tar.gz::https://github.com/paul-nameless/tg/archive/v0.8.0.tar.gz
 	source = 0001-Change-setup.py-to-accept-new-python-telegram-ver.patch
-	source = 0002-Fix-compatibility-with-new-libtd-version.patch
-	md5sums = 2326260f8db97f4254657c64b6542e55
+	md5sums = 4456e09339b7070c9f03e6944b400db7
 	md5sums = 7b9a556ce7d2203fbee32442a96d73bc
-	md5sums = 13f56d00337b141c270906f0df49e872
 
 pkgname = telegram-tg
 
