@@ -17,7 +17,7 @@ source=("https://download.brother.com/welcome/$pkg"
 	mk-udev-hwdb)
 md5sums=($pkg_md5sum
 	 'ccffb9a6f6d436b21be25b0241068981'
-	 '4a69fac9c0053277a9be8e2dd382f168')
+	 '8966d38375d535028a63a6ef5f6104eb')
 
 build() {
   cd "$srcdir"
