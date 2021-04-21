@@ -2,7 +2,7 @@
 
 pkgname=vimiv-qt-git
 pkgrel=1
-pkgver=r2066.41d9382d
+pkgver=r2155.f8fb0017
 pkgdesc='An image viewer with vim-like keybindings'
 arch=('any')
 url='https://github.com/karlch/vimiv-qt'
@@ -15,8 +15,8 @@ optdepends=(
     'python-exiv2: for exif support'
     'python-piexif: alternative for exif support'
 )
-conflicts=('vimiv' 'vimiv-git' 'vimiv-qt')
 provides=('vimiv')
+conflicts=('vimiv')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
 

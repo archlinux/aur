@@ -1,6 +1,6 @@
 pkgbase = vimiv-qt-git
 	pkgdesc = An image viewer with vim-like keybindings
-	pkgver = r2066.41d9382d
+	pkgver = r2155.f8fb0017
 	pkgrel = 1
 	url = https://github.com/karlch/vimiv-qt
 	arch = any
@@ -14,8 +14,6 @@ pkgbase = vimiv-qt-git
 	optdepends = python-piexif: alternative for exif support
 	provides = vimiv
 	conflicts = vimiv
-	conflicts = vimiv-git
-	conflicts = vimiv-qt
 	source = vimiv-qt-git::git+https://github.com/karlch/vimiv-qt.git
 	md5sums = SKIP
 
