@@ -2,10 +2,11 @@
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: foutrelis
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Chiwan Park <chiwanpark@hotmail.com>
 
 pkgname=webkitgtk2
 pkgver=2.4.11
-pkgrel=22
+pkgrel=23
 epoch=3
 pkgdesc="Legacy Web content engine for GTK+ 2"
 arch=("armv7h" "i686" "x86_64")
@@ -32,6 +33,7 @@ source=(
   "icu68.patch"
   "gtk-doc.patch"
   "grammar.patch"
+  "glib-2.68.0.patch"
 )
 sha256sums=(
   "588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7"
@@ -42,6 +44,7 @@ sha256sums=(
   "d1a9ccc1ae5cb042bc47ae846ff84513ca7b9c7bc999c546ffba48572f0373a0"
   "7341eb4c229656046be6ac526f94b9f4a742a66178412caf22a988677f5bf9d9"
   "5a62fbd0df69c6951562e72cd7b3c58cae7f2807338ced7b4a1973440b3dd193"
+  "453e826ad09cdceb12cad750e16cf6b9d43d8810eb1ea14bd291e5556a14d9df"
 )
 
 prepare() {
@@ -82,6 +85,11 @@ build() (
     --with-gtk=2.0 \
     --disable-webkit2 \
     --disable-gtk-doc
+
+  # patch for glib>=2.68.0
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np0 -i "${srcdir}/glib-2.68.0.patch"
+  cd "${srcdir}/build-gtk"
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i "s/ -shared / -Wl,-O1,--as-needed\0/g" "${srcdir}/build-gtk2/libtool"
