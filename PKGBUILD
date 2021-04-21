@@ -9,7 +9,7 @@ pkgdesc='GD graphics library bindings for Lua'
 url='https://github.com/ittner/lua-gd'
 arch=('x86_64')
 license=('MIT')
-depends=('gd')
+depends=('gd>=2.0.33')
 makedepends=('git')
 optdepends=('lua' 'lua51' 'lua52' 'lua53') # 'lua54'
 #makedepends=('lua' 'lua51' 'lua52' 'lua53' 'git') # 'lua54'
@@ -134,7 +134,9 @@ package_lua51-gd() {
 package_lua-gd-docs() {
   NOARCHIVE=${_noarchive}
   pkgdesc="Documentation for the ${pkgdesc}"
-  depends=('lua')
+  depends=()
+  # Earlier versions of lua do not provide package `lua` of specific version
+  optdepends=('lua>=5.1' 'lua-gd')
   arch=('any')
 
   cd "${srcdir}/${pkgbase}"

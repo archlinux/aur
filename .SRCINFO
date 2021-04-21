@@ -6,7 +6,7 @@ pkgbase = lua-gd
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = gd
+	depends = gd>=2.0.33
 	optdepends = lua
 	optdepends = lua51
 	optdepends = lua52
@@ -16,30 +16,32 @@ pkgbase = lua-gd
 
 pkgname = lua-gd
 	pkgdesc = GD graphics library bindings for Lua 5.4
-	depends = gd
+	depends = gd>=2.0.33
 	depends = lua
 	optdepends = 
 
 pkgname = lua51-gd
 	pkgdesc = GD graphics library bindings for Lua 5.1
-	depends = gd
+	depends = gd>=2.0.33
 	depends = lua51
 	optdepends = 
 
 pkgname = lua52-gd
 	pkgdesc = GD graphics library bindings for Lua 5.2
-	depends = gd
+	depends = gd>=2.0.33
 	depends = lua52
 	optdepends = 
 
 pkgname = lua53-gd
 	pkgdesc = GD graphics library bindings for Lua 5.3
-	depends = gd
+	depends = gd>=2.0.33
 	depends = lua53
 	optdepends = 
 
 pkgname = lua-gd-docs
 	pkgdesc = Documentation for the GD graphics library bindings for Lua
 	arch = any
-	depends = lua
+	depends = 
+	optdepends = lua>=5.1
+	optdepends = lua-gd
 
