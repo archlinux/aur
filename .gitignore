@@ -1,0 +1,7 @@
+pkg
+pkg/**
+src
+src/**
+/*.pkg.tar.xz
+/fail2ban-endlessh
+/fail2ban-endlessh/**

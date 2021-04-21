@@ -1,0 +1,16 @@
+pkgbase = fail2ban-endlessh-git
+	pkgdesc = Combining the powers of endlessh and fail2ban.
+	pkgver = 0.r.8.8fc4661
+	pkgrel = 1
+	url = https://github.com/itskenny0/fail2ban-endlessh
+	arch = any
+	license = UNLICENSE
+	depends = fail2ban
+	depends = endlessh-git
+	provides = fail2ban-endlessh
+	conflicts = fail2ban-endlessh
+	source = fail2ban-endlessh::git+https://github.com/itskenny0/fail2ban-endlessh
+	sha512sums = SKIP
+
+pkgname = fail2ban-endlessh-git
+
