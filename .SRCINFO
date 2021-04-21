@@ -1,7 +1,7 @@
 pkgbase = corearchiver
-	pkgdesc = Archiver from the CoreApps family to create and extract archives.
+	pkgdesc = Archiver from the C Suite to create and extract archives
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corearchiver
 	arch = x86_64
 	arch = aarch64
