@@ -11,7 +11,7 @@ depends=('polkit-gnome' 'papirus-folders' 'qt5-base')
 provides=('papirus-folders-gui')
 conflicts=('papirus-folders-gui')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e5fd6bd064559c5c585effb5d7df2fb723e3f389d82d57a6e7477ecd682830a7') 
+sha256sums=('d88379941911e8a34ac90ac722d8ffb59cd03e2c8e675f4aa7779a5a7d1e4876') 
 package() {
   ls
   cd "papirus-folders-gui-1.3/premaked-build"
