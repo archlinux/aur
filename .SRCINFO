@@ -1,0 +1,15 @@
+pkgbase = xp-pen
+	pkgdesc = Software for XP-PEN graphics tablets
+	pkgver = 3.1.0.210331
+	pkgrel = 1
+	url = https://www.xp-pen.com/download/index.html
+	arch = x86_64
+	license = unknown
+	provides = xp-pen
+	conflicts = xp-pen
+	conflicts = xp-pen-tablet
+	source = xp-pen-3.1.0.210331.tar.gz::https://download01.xp-pen.com/file/2021/04/xp-pen-pentablet_3.1.0.210331-1.x86_64.tar.gz
+	sha256sums = 9e50510d0f6afaad349e6182d6a275ad1527cc02ed90251620c38a37b0486d12
+
+pkgname = xp-pen
+
