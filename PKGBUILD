@@ -15,9 +15,7 @@ depends=('sdl2_mixer' 'portmidi' 'wxgtk2' 'miniupnpc')
 makedepends=('cmake')
 optdepends=('timidity++: Required for music')
 source=("http://downloads.sourceforge.net/odamex/odamex-src-${pkgver}.tar.bz2")
-sha256sums=('c18733312a81224ffe238d6e8f80291ec0f5cc8c967cef0ef1908df551dfd979'
-            'c4ce4072515c7dbfe65d1829a317d21b5f1091e04997761cdfee345a60141638'
-            '0541328408d71dfcd7cdf866497f9cc2c7f10780986d2fea5743f5df584d923a')
+sha256sums=('c18733312a81224ffe238d6e8f80291ec0f5cc8c967cef0ef1908df551dfd979')
 
 prepare() {
   cd $pkgname-src-$pkgver
