@@ -5,7 +5,7 @@ pkgname=onivim2
 pkgver=0.5.4
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/onivim/oni2'
 license=('custom:OutrunLabsEULA')
 makedepends=('esy' 'ragel' 'nodejs' 'wget' 'bzip2' 'fontconfig' 'fuse2' 'glu' 'gtk3' 'harfbuzz'
@@ -42,9 +42,9 @@ check() {
 package() {
   install -dm755 "${pkgdir}"/opt/onivim2
   install -dm755 "${pkgdir}"/usr/bin/
-  install -Dm644 oni2-${pkgver}/Outrun-Labs-EULA-v1.1.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 
   cd oni2-${pkgver}/_release/
+  install -Dm644 Onivim2.AppDir/EULA.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
   install -Dm644 Onivim2.AppDir/Onivim2.desktop "${pkgdir}"/usr/share/applications/Onivim2.desktop
   install -Dm644 Onivim2.AppDir/Onivim2.png "${pkgdir}"/usr/share/pixmaps/Onivim2.png
   cp -Lr Onivim2.AppDir/{AppRun,usr} "${pkgdir}"/opt/onivim2
@@ -53,6 +53,6 @@ package() {
   # fix permissions
   find "${pkgdir}" -type f -exec chmod 644 {} \;
   chmod 755 "${pkgdir}"/opt/onivim2/AppRun \
-    "${pkgdir}"/opt/onivim2/usr/bin/{Oni2*,node,rg,rls} \
+    "${pkgdir}"/opt/onivim2/usr/bin/{Oni2*,node,rg} \
     "${pkgdir}"/opt/onivim2/usr/lib/*
 }
