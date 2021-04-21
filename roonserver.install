@@ -1,11 +1,9 @@
 post_install () {
-if [[ $(ls -l /var/roon | grep root) ]]; then
 chown -R roon:roon /var/roon
-fi
+chown -R roon:roon /opt/RoonServer
 }
 
 post_upgrade() {
-if [[ $(ls -l /var/roon | grep root) ]]; then
 chown -R roon:roon /var/roon
-fi
+chown -R roon:roon /opt/RoonServer
 }

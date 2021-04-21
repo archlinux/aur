@@ -3,7 +3,7 @@
 pkgname=roonserver
 _pkgname=RoonServer
 pkgver=1.8.790
-pkgrel=1
+pkgrel=2
 pkgdesc="The music player for music lovers"
 arch=('x86_64')
 url="https://roonlabs.com/"
@@ -29,7 +29,6 @@ package() {
    cd "$srcdir"
    mkdir -p ${pkgdir}/opt/
    bsdtar xf RoonServer_linuxx64.tar.bz2 -C "$pkgdir/opt"
-   chown -R root:root "$pkgdir/opt/RoonServer"
 
   install -Dm644 tmpfiles.d             "${pkgdir}"/usr/lib/tmpfiles.d/roon.conf
   install -Dm644 sysusers.d             "${pkgdir}"/usr/lib/sysusers.d/roon.conf
