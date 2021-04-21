@@ -16,8 +16,8 @@ pkgbase = raytracinginvulkan-git
 	depends = tinyobjloader
 	depends = vulkan-icd-loader
 	depends = glslang
-	provides = raytracinginvulkan
-	conflicts = raytracinginvulkan=6.r15.ga0d6f87
+	provides = raytracinginvulkan=6.r15.ga0d6f87
+	conflicts = raytracinginvulkan
 	source = raytracinginvulkan::git+https://github.com/GPSnoopy/RayTracingInVulkan.git
 	sha256sums = SKIP
 

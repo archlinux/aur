@@ -9,8 +9,8 @@ arch=('x86_64')
 url='https://github.com/GPSnoopy/RayTracingInVulkan'
 license=('BSD')
 
-provides=("$_pkgname")
-conflicts=("$_pkgname=$pkgver")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 
 source=("${_pkgname}::git+${url}.git")
 depends=('boost-libs' 'glfw-x11' 'glm' 'imgui' 'tinyobjloader' 'vulkan-icd-loader' 'glslang')
