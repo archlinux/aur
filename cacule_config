@@ -3,9 +3,14 @@
 configure() {
 echo "Enable CacULE CPU scheduler..."
 scripts/config --enable CONFIG_CACULE_SCHED
-scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-scripts/config --disable CONFIG_SCHED_AUTOGROUP
+#scripts/config --enable CONFIG_FAIR_GROUP_SCHED
+#scripts/config --disable CONFIG_SCHED_AUTOGROUP
 #scripts/config --set-val CONFIG_NR_CPUS "12"
+scripts/config --disable CONFIG_SCHED_DEBUG
+scripts/config --disable CONFIG_SCHED_INFO
+scripts/config --disable CONFIG_SCHEDSTATS
+scripts/config --disable CONFIG_DEBUG_KERNEL
+scripts/config --disable CONFIG_EXPERT
 echo "General Setup"
 scripts/config --disable CONFIG_SECURITY
 scripts/config --disable CONFIG_HARDENED_USERCOPY
@@ -95,12 +100,7 @@ scripts/config --enable CONFIG_MODULE_COMPRESS
 scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
 scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
 scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-plain ""
- plain "#########################################"
- plain "Disable debug options?"
- read -rp "`echo $' > 1.Disable\n > 2.Keep\n > Default (Disable)\nchoice[1-2]: '`" _debug
- if [[ "$_debug" = "1" ]]; then
-   msg2 "Disable debug options"
+echo "Disable debug options"
    scripts/config --disable CONFIG_SLUB_DEBUG
    scripts/config --disable CONFIG_PM_DEBUG
    scripts/config --disable CONFIG_PM_ADVANCED_DEBUG
@@ -197,110 +197,9 @@ plain ""
    scripts/config --disable CONFIG_ATM_IA_DEBUG
    scripts/config --disable CONFIG_ATM_FORE200E_DEBUG
    scripts/config --disable CONFIG_BCMA_DEBUG
- elif [[ "$_debug" = "2" ]]; then
-   msg2 "Keep debug options"
- else
-   msg2 "Disable debug options"
-   scripts/config --disable CONFIG_SLUB_DEBUG
-   scripts/config --disable CONFIG_PM_DEBUG
-   scripts/config --disable CONFIG_PM_ADVANCED_DEBUG
-   scripts/config --disable CONFIG_PM_SLEEP_DEBUG
-   scripts/config --disable CONFIG_ACPI_DEBUG
-   scripts/config --disable CONFIG_SCHED_DEBUG
-   scripts/config --disable CONFIG_LATENCYTOP
-   scripts/config --disable CONFIG_DEBUG_PREEMPT
-   scripts/config --disable CONFIG_DEBUG_INFO
-   scripts/config --disable CONFIG_CGROUP_BPF
-   scripts/config --disable CONFIG_BPF_LSM
-   scripts/config --disable CONFIG_BPF_PRELOAD
-   scripts/config --disable CONFIG_BPF_LIRC_MODE2
-   scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
-   scripts/config --disable CONFIG_DEBUG_INFO_REDUCED
-   scripts/config --disable CONFIG_DEBUG_INFO_COMPRESSED
-   scripts/config --disable CONFIG_DEBUG_INFO_SPLI
-   scripts/config --disable CONFIG_GDB_SCRIPTS
-   scripts/config --disable CONFIG_DEBUG_INFO_DWARF4
-   scripts/config --disable CONFIG_DEBUG_INFO_BTF
-   scripts/config --disable CONFIG_BPF_PRELOAD
-   scripts/config --disable CONFIG_BPF_PRELOAD_UMD
-   scripts/config --disable CONFIG_BPF_STREAM_PARSER
-   scripts/config --disable CONFIG_DMA_API_DEBUG
-   scripts/config --disable CONFIG_DMA_API_DEBUG_SG
-   scripts/config --disable CONFIG_DMA_MAP_BENCHMARK
-   scripts/config --disable CONFIG_DEBUG_FS
-   scripts/config --disable CONFIG_GCOV_KERNEL
-   scripts/config --disable CONFIG_GCOV_PROFILE_ALL
-   scripts/config --disable CONFIG_DEBUG_FS
-   scripts/config --disable CONFIG_GENERIC_IRQ_DEBUGFS
-   scripts/config --disable CONFIG_ACPI_DEBUGGER
-   scripts/config --disable CONFIG_ACPI_DEBUGGER_USER
-   scripts/config --disable CONFIG_ACPI_EC_DEBUGFS
-   scripts/config --disable CONFIG_ACPI_APEI_ERST_DEBUG
-   scripts/config --disable CONFIG_NFIT_SECURITY_DEBUG
-   scripts/config --disable CONFIG_DMADEVICES_DEBUG
-   scripts/config --disable CONFIG_DMADEVICES_VDEBUG
-   scripts/config --disable CONFIG_DMATEST
-   scripts/config --disable CONFIG_BTRFS_DEBUG
-   scripts/config --disable CONFIG_BTRFS_FS_REF_VERIFY
-   scripts/config --disable CONFIG_BTRFS_ASSERT
-   scripts/config --disable CONFIG_BTRFS_FS_RUN_SANITY_TESTS
-   scripts/config --disable CONFIG_BTRFS_FS_CHECK_INTEGRITY
-   scripts/config --disable CONFIG_EXT4_DEBUG
-   scripts/config --disable CONFIG_EXT4_KUNIT_TESTS
-   scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG
-   scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG_ASSERTS
-   scripts/config --disable CONFIG_SECURITY_APPARMOR_DEBUG_MESSAGES
-   scripts/config --disable CONFIG_SECURITY_APPARMOR_KUNIT_TEST
-   scripts/config --disable CONFIG_POWER_SUPPLY_DEBUG
-   scripts/config --disable CONFIG_NTFS_DEBUG
-   scripts/config --disable CONFIG_GENERIC_IRQ_DEBUGFS
-   scripts/config --disable CONFIG_CIFS_STATS2
-   scripts/config --disable CONFIG_CIFS_DEBUG
-   scripts/config --disable CONFIG_CIFS_DEBUG2
-   scripts/config --disable CONFIG_CIFS_DEBUG_DUMP_KEYS
-   scripts/config --disable CONFIG_JBD2_DEBUG
-   scripts/config --disable CONFIG_CONFIG_NFS_DEBUG
-   scripts/config --disable CONFIG_TRACE_IRQFLAGS_SUPPORT
-   scripts/config --disable CONFIG_TRACE_IRQFLAGS_NMI_SUPPORT
-   scripts/config --disable CONFIG_EARLY_PRINTK_USB
-   scripts/config --disable CONFIG_X86_VERBOSE_BOOTUP
-   scripts/config --disable CONFIG_EARLY_PRINTK
-   scripts/config --disable CONFIG_EARLY_PRINTK_DBGP
-   scripts/config --disable CONFIG_EARLY_PRINTK_USB_XDBC
-   scripts/config --disable CONFIG_EFI_PGT_DUMP
-   scripts/config --disable CONFIG_DEBUG_TLBFLUSH
-   scripts/config --disable CONFIG_IOMMU_DEBUG
-   scripts/config --disable CONFIG_IOMMU_LEAK
-   scripts/config --disable CONFIG_HAVE_MMIOTRACE_SUPPORT
-   scripts/config --disable CONFIG_X86_DECODER_SELFTEST
-   scripts/config --disable CONFIG_IO_DELAY_0X80
-   scripts/config --disable CONFIG_IO_DELAY_0XED
-   scripts/config --disable CONFIG_IO_DELAY_UDELAY
-   scripts/config --disable CONFIG_IO_DELAY_NONE
-   scripts/config --disable CONFIG_DEBUG_BOOT_PARAMS
-   scripts/config --disable CONFIG_CPA_DEBUG
-   scripts/config --disable CONFIG_DEBUG_ENTRY
-   scripts/config --disable CONFIG_DEBUG_NMI_SELFTEST
-   scripts/config --disable CONFIG_DEBUG_IMR_SELFTEST
-   scripts/config --disable CONFIG_X86_DEBUG_FPU
-   scripts/config --disable CONFIG_PUNIT_ATOM_DEBUG
-   scripts/config --disable CONFIG_UNWINDER_ORC
-   scripts/config --disable CONFIG_UNWINDER_FRAME_POINTER
-   scripts/config --disable CONFIG_UNWINDER_GUESS
-   scripts/config --disable CONFIG_FRAME_POINTER
-   scripts/config --disable CONFIG_THINKPAD_ACPI_DEBUGFACILITIES
-   scripts/config --disable CONFIG_THINKPAD_ACPI_DEBUG
-   scripts/config --disable CONFIG_THINKPAD_ACPI_UNSAFE_LEDS
-   scripts/config --disable CONFIG_CMA_DEBUG
-   scripts/config --disable CONFIG_CMA_DEBUGFS
-   scripts/config --disable CONFIG_EDAC_DEBUG
-   scripts/config --disable CONFIG_ATM_IA_DEBUG
-   scripts/config --disable CONFIG_ATM_FORE200E_DEBUG
-   scripts/config --disable CONFIG_BCMA_DEBUG
- fi
- sleep 2s
 
 sleep 2
+
  plain ""
  plain "#########################################"
  plain "Use CattaRappa mode (Tickless/Dynticks) ?"
@@ -324,8 +223,8 @@ sleep 2
    scripts/config --enable CONFIG_NO_HZ_FULL
    scripts/config --enable CONFIG_NO_HZ
    scripts/config --enable CONFIG_NO_HZ_COMMON
-   #scripts/config --enable CONFIG_CONTEXT_TRACKING
-   #scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
+   scripts/config --enable CONFIG_CONTEXT_TRACKING
+   scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
  elif [[ "$_tick" = "3" ]]; then
    msg2 "Set to tickless idle"
    scripts/config --disable CONFIG_HZ_PERIODIC
@@ -340,8 +239,8 @@ sleep 2
    scripts/config --enable CONFIG_NO_HZ_FULL
    scripts/config --enable CONFIG_NO_HZ
    scripts/config --enable CONFIG_NO_HZ_COMMON
-   #scripts/config --enable CONFIG_CONTEXT_TRACKING
-   #scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
+   scripts/config --enable CONFIG_CONTEXT_TRACKING
+   scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
  fi
 
 }
