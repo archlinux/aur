@@ -1,0 +1,25 @@
+pkgbase = raytracinginvulkan-git
+	pkgdesc = Implementation of Peter Shirley's Ray Tracing In One Weekend book
+	pkgver = 6.r15.ga0d6f87
+	pkgrel = 1
+	url = https://github.com/GPSnoopy/RayTracingInVulkan
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = boost
+	makedepends = vulkan-headers
+	makedepends = stb
+	depends = boost-libs
+	depends = glfw-x11
+	depends = glm
+	depends = imgui
+	depends = tinyobjloader
+	depends = vulkan-icd-loader
+	depends = glslang
+	provides = raytracinginvulkan
+	conflicts = raytracinginvulkan=6.r15.ga0d6f87
+	source = raytracinginvulkan::git+https://github.com/GPSnoopy/RayTracingInVulkan.git
+	sha256sums = SKIP
+
+pkgname = raytracinginvulkan-git
+
