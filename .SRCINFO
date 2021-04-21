@@ -1,6 +1,6 @@
 pkgbase = mpdevil
 	pkgdesc = A simple music browser for MPD
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/mpdevil
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mpdevil
 	depends = python-gobject
 	depends = python-requests
 	depends = python-beautifulsoup4
-	source = mpdevil-1.1.1.tar.gz::https://github.com/SoongNoonien/mpdevil/archive/v1.1.1.tar.gz
-	sha256sums = cbf64f2bd6c87632b98611f25230c06ae9d7737da0c53e6c80b1dfe090236e07
+	source = mpdevil-1.2.0.tar.gz::https://github.com/SoongNoonien/mpdevil/archive/v1.2.0.tar.gz
+	sha256sums = a0a6528fd832894c24fa75e4f20c61823d98120321a71e6ec9e14793ee2e5ae2
 
 pkgname = mpdevil
 
