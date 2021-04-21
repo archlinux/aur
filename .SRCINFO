@@ -2,10 +2,10 @@ pkgbase = terraform-docs-bin
 	pkgdesc = Generate docs from terraform modules
 	pkgver = 0.12.1
 	pkgrel = 1
-	url = https://github.com/segmentio/terraform-docs
+	url = https://github.com/terraform-docs/terraform-docs
 	arch = x86_64
 	license = MIT
-	source = https://github.com/segmentio/terraform-docs/releases/download/v0.12.1/terraform-docs-v0.12.1-linux-amd64
+	source = https://github.com/terraform-docs/terraform-docs/releases/download/v0.12.1/terraform-docs-v0.12.1-linux-amd64
 	sha256sums = 32c0611a33a9c83857240ce2095287a5329564f26acd04818da5156192ecf401
 
 pkgname = terraform-docs-bin
