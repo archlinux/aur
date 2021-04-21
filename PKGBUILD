@@ -51,7 +51,7 @@ build(){
 package_llvm-rc(){
   pkgdesc='Collection of modular and reusable compiler and toolchain technologies (rc release)'
   depends=('llvm-libs' 'perl')
-  conflicts=('llvm' 'llvm-git')
+  conflicts=('llvm' 'llvm-git' 'llvm-stable')
   provides=('llvm')
 
   cd llvm-project-$pkgver.src/llvm/build
@@ -91,7 +91,7 @@ package_llvm-rc(){
 package_llvm-libs-rc(){
   pkgdesc='LLVM runtime libraries (rc release)'
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-  conflicts=('llvm-libs' 'llvm-libs-git')
+  conflicts=('llvm-libs' 'llvm-libs-git' 'llvm-libs-stable')
   provides=('llvm-libs')
 
   install -d "$pkgdir/usr/lib"
@@ -111,7 +111,7 @@ package_llvm-libs-rc(){
 package_llvm-ocaml-rc(){
   pkgdesc='OCaml bindings for LLVM (rc release)'
   depends=('llvm' "ocaml" 'ocaml-ctypes')
-  conflicts=('llvm-ocaml' 'llvm-ocaml-git')
+  conflicts=('llvm-ocaml' 'llvm-ocaml-git' 'llvm-ocaml-stable')
   provides=('llvm-ocaml')
 
   #install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}

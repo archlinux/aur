@@ -30,6 +30,7 @@ pkgname = llvm-rc
 	provides = llvm
 	conflicts = llvm
 	conflicts = llvm-git
+	conflicts = llvm-stable
 
 pkgname = llvm-libs-rc
 	pkgdesc = LLVM runtime libraries (rc release)
@@ -42,6 +43,7 @@ pkgname = llvm-libs-rc
 	provides = llvm-libs
 	conflicts = llvm-libs
 	conflicts = llvm-libs-git
+	conflicts = llvm-libs-stable
 
 pkgname = llvm-ocaml-rc
 	pkgdesc = OCaml bindings for LLVM (rc release)
@@ -51,4 +53,5 @@ pkgname = llvm-ocaml-rc
 	provides = llvm-ocaml
 	conflicts = llvm-ocaml
 	conflicts = llvm-ocaml-git
+	conflicts = llvm-ocaml-stable
 
