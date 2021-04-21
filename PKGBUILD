@@ -2,7 +2,7 @@
 
 pkgname=firejail-handler-extra
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="BitTorrent/Youtube URL handlers for Firejail"
 arch=(x86_64)
 license=(GPL2)
@@ -23,7 +23,7 @@ package() {
     done
 
     # common script settings
-    install -Dm644 firejail-handler-settings-extra.inc "$pkgdir"/usr/bin/firejail-handler-settings-extra.inc
+    install -Dm644 firejail-handler-settings-extra.inc "$pkgdir"/etc/firejail/firejail-handler-settings-extra.inc
 
     # example user.js script for Youtube URL rewriting
     install -Dm644 fjyt.user.js "$pkgdir"/usr/share/doc/${pkgname}/fjyt.user.js
