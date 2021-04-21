@@ -1,6 +1,6 @@
 pkgbase = surge-synthesizer-bin
 	pkgdesc = Surge Synthesizer plugin (VST3, original binary release)
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = surge-synthesizer-bin
 	options = !strip
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/surge-synthesizer/releases/releases/download/1.8.1/Surge-linux-x64-1.8.1.deb
-	md5sums = da7b9eee47e79d4ed9d6bf1738ec67f8
+	source = https://github.com/surge-synthesizer/releases/releases/download/1.9.0/Surge-linux-x64-1.9.0.deb
+	md5sums = 47295ad8f4f7577c07349bda48cec067
 
 pkgname = surge-synthesizer-bin
 
