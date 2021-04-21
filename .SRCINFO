@@ -1,0 +1,27 @@
+pkgbase = python-pyomo
+	pkgdesc = Pyomo: Python Optimization Modeling Objects
+	pkgver = 5.7.3
+	pkgrel = 1
+	url = https://github.com/Pyomo/pyomo
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-sympy
+	depends = python-networkx
+	depends = python-openpyxl
+	depends = python-pyodbc
+	depends = python-xlrd
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-pymysql
+	depends = python-pyro
+	depends = python-pint
+	source = https://files.pythonhosted.org/packages/source/P/Pyomo/Pyomo-5.7.3.tar.gz
+	sha256sums = 2c4697107477a1b9cc9dad534d8f9c2dc6ee397c47ad44113e257732b83cfc8f
+
+pkgname = python-pyomo
+
