@@ -1,6 +1,6 @@
 pkgbase = kfiredragonhelper
 	pkgdesc = FireDragon Integration (kmozillahelper from openSUSE).
-	pkgver = 5.0.5
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://github.com/openSUSE/kmozillahelper
 	arch = i686
