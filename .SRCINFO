@@ -1,6 +1,6 @@
 pkgbase = python-python-sat
 	pkgdesc = A Python library for prototyping with SAT oracles
-	pkgver = 0.1.6.dev12
+	pkgver = 0.1.7.dev2
 	pkgrel = 1
 	url = https://github.com/pysathq/pysat
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-python-sat
 	depends = python-six
 	provides = python-python-sat
 	conflicts = python-python-sat
-	source = https://files.pythonhosted.org/packages/e6/c7/5afc9b9abc4bee884df2e9b591b52b9d21f4ed836683f1f1a256150e11ad/python-sat-0.1.6.dev12.tar.gz
-	sha512sums = 1560e7d9d1d75e32a4a717a98b37a5f35440fc7dd5c9b67bf76c647bfdc10d3186909fe38ad0f9810b265ec8790b15168708d89d5f4d1ddf5adf8487253ca90f
+	source = https://files.pythonhosted.org/packages/36/43/e646158ec760f4ba28641fd9ca4827aa4b8ee128564b6eebb5deb7e92188/python-sat-0.1.7.dev2.tar.gz
+	sha512sums = 88e883dfcacbf2ab65ed438a984f1f9f16c4a2d41a15c047544155d2c9d9f79e7536d020eebc1741cc42d25b3f635e72a4cd4082a01709411613a1fa655b2926
 
 pkgname = python-python-sat
 
