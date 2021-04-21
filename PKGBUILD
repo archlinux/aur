@@ -9,7 +9,7 @@
 ### MERGE REQUESTS SELECTION
 
 # Merge Requests List: ('579' '1441' '1241')
-_merge_requests_to_use=() # safe pick
+_merge_requests_to_use=()
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -25,13 +25,13 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server)
-checkdepends=(xorg-server-xvfb)
+checkdepends=(xorg-server-xvfb pipewire-media-session)
 provides=(mutter mutter-781835-workaround libmutter-8.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=21a09fb7928c17519d67ffd8c1ae80071f92fdbf  # tags/40.0^0
+_commit=99abb086fbc912bcf140ccd575c39313e2196052  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -39,6 +39,7 @@ pkgver() {
   cd $pkgname
   git describe --tags | sed 's/-/+/g'
 }
+
 pick_mr() {
   for mr in "${_merge_requests_to_use[@]}"; do
     if [ "$1" = "$mr" ]; then
@@ -147,16 +148,27 @@ build() {
   meson compile -C build
 }
 
-check() (
+_check() (
   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
   export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
 
-  # Stacking test flaky
+  pipewire &
+  _p1=$!
+
+  pipewire-media-session &
+  _p2=$!
+
+  trap "kill $_p1 $_p2; wait" EXIT
+
+  meson test -C build --print-errorlogs
+)
+
+check() {
   dbus-run-session xvfb-run \
     -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
-    meson test -C build --print-errorlogs || :
-)
+    bash -c "$(declare -f _check); _check"
+}
 
 package() {
   DESTDIR="$pkgdir" meson install -C build

@@ -8,6 +8,7 @@ pkgbase = mutter-performance
 	groups = gnome
 	license = GPL
 	checkdepends = xorg-server-xvfb
+	checkdepends = pipewire-media-session
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = egl-wayland
@@ -35,7 +36,7 @@ pkgbase = mutter-performance
 	provides = libmutter-8.so
 	conflicts = mutter
 	replaces = mutter-781835-workaround
-	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=21a09fb7928c17519d67ffd8c1ae80071f92fdbf
+	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=99abb086fbc912bcf140ccd575c39313e2196052
 	sha256sums = SKIP
 
 pkgname = mutter-performance
