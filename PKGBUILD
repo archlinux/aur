@@ -56,7 +56,10 @@ package() {
 		-e "s/x-scheme-handler\/ftp;\?//g" \
 		"$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
-	msg2 "Removing Debian Cron job and duplicate product logos..."
-	rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome-$_channel/cron/
-	rm "$pkgdir"/opt/google/chrome-$_channel/product_logo_*.png
+	echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
+	rm -r \
+		"$pkgdir"/etc/cron.daily/ \
+		"$pkgdir"/opt/google/chrome-$_channel/cron/ \
+		"$pkgdir"/opt/google/chrome-$_channel/product_logo_*.{png,xpm} \
+		"$pkgdir"/usr/share/menu/
 }
