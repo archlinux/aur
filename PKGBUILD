@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=7.2.8.0
+_wingver=7.2.9.0
 _wing_patch_lvl=0 #bump this when adding a patch
 pkgver=$_wingver.$_wing_patch_lvl
 pkgrel=1
@@ -13,9 +13,9 @@ _wingpatch=("")
 _patch_url_prefix=https://wingware.com/pub/wingpro/$_wingver/patches/
 #_wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("https://wingware.com/pub/wingpro/$_wingver/wingpro-$_wingver-linux-x64.tar.bz2" ${_wingpatch[*]})
-depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
+depends=('hicolor-icon-theme' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-sha1sums=('058d2f35f9856bd8f908b73ae36688f25c09421f')
+sha1sums=('d36a8083ff291a8fe52940d3d12efa06d94788fc')
 
 install=${pkgname}.install
 
