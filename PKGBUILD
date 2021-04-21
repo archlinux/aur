@@ -1,14 +1,16 @@
+# Maintainer: Jerry Y. Chen <jynych3n@gmail.com>
 # Maintainer Christian Rebischke <chris.rebischke@archlinux.org>
 # Maintainer: Fredy García <frealgagu at gmail dot com>
-# Maintainer: Maxim Baz <${pkgname} at maximbaz dot com>
+# Maintainer: Maxim Baz <${reponame} at maximbaz dot com>
 # Contributor: Stefan Cocora <stefan dot cocora at gmail dot com>
 
-pkgname=skaffold
-pkgver=1.20.0
+pkgname=skaffold-git
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
-url="https://github.com/GoogleContainerTools/${pkgname}"
+reponame=skaffold
+url="https://github.com/GoogleContainerTools/${reponame}"
 license=("Apache")
 depends=("docker")
 makedepends=("go")
@@ -18,25 +20,25 @@ optdepends=(
   "bash-completion: Tab autocompletion"
 )
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${pkgname}/archive/v${pkgver}.tar.gz"
+  "${reponame}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${reponame}/archive/v${pkgver}.tar.gz"
   "build_info.patch"
 )
-sha256sums=('d47ee974acf1c4432dab3ecdffeadbe271d2ff8098b811da2e73a04f9d9af957'
-            'e90797011d2f79c79a6b184a5e9c35c4e5c582622d075b0022675b96fccefc46')
+sha256sums=('d9cee2e079b32b289d0e8c2c64fe2b403822aa9a4127482339b88f3160805639'
+            'c382f4c48e81d0a66cd679bc9d7e76942d1f07718f9ecf134a107bb355cdf193')
 _commit="c48e97690d8daffd68141c2a68fcbe3df6f6936a"
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${reponame}-${pkgver}"
   patch -Np1 -i "${srcdir}/build_info.patch"
 
   rm -rf "${srcdir}/gopath"
   mkdir -p "${srcdir}/gopath/bin"
   mkdir -p "${srcdir}/gopath/src/github.com/GoogleContainerTools"
-  ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/GoogleContainerTools/${pkgname}"
+  ln -rTsf "${srcdir}/${reponame}-${pkgver}" "${srcdir}/gopath/src/github.com/GoogleContainerTools/${reponame}"
 }
 
 build() {
-  cd "${srcdir}/gopath/src/github.com/GoogleContainerTools/${pkgname}"
+  cd "${srcdir}/gopath/src/github.com/GoogleContainerTools/${reponame}"
   export GOPATH="${srcdir}/gopath"
   export PATH="${PATH}:${GOPATH}/bin"
   export VERSION="v${pkgver}"
@@ -53,12 +55,12 @@ build() {
   go clean --modcache
 
   # Create completion files
-  "${srcdir}/gopath/bin/${pkgname}" completion bash > "${srcdir}/${pkgname}-completion.bash"
-  "${srcdir}/gopath/bin/${pkgname}" completion zsh > "${srcdir}/${pkgname}-completion.zsh"
+  "${srcdir}/gopath/bin/${reponame}" completion bash > "${srcdir}/${reponame}-completion.bash"
+  "${srcdir}/gopath/bin/${reponame}" completion zsh > "${srcdir}/${reponame}-completion.zsh"
 }
 
 package() {
-  install -Dm755 "${srcdir}/gopath/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}-completion.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}-completion.zsh" "${pkgdir}/usr/share/zsh/site-functions/_skaffold"
+  install -Dm755 "${srcdir}/gopath/bin/${reponame}" "${pkgdir}/usr/bin/${reponame}"
+  install -Dm644 "${srcdir}/${reponame}-completion.bash" "${pkgdir}/usr/share/bash-completion/completions/${reponame}"
+  install -Dm644 "${srcdir}/${reponame}-completion.zsh" "${pkgdir}/usr/share/zsh/site-functions/_skaffold"
 }

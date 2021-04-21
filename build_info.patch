@@ -1,9 +1,9 @@
 diff --git a/Makefile b/Makefile
-index dd22ea0..aa47490 100644
+index b5c88bd6e..a5c95d273 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -35,7 +35,8 @@ SKAFFOLD_TEST_PACKAGES = ./pkg/skaffold/... ./cmd/... ./hack/... ./pkg/webhook/.
- GO_FILES = $(shell find . -type f -name '*.go' -not -path "./vendor/*" -not -path "./pkg/diag/*")
+@@ -36,7 +36,8 @@ SKAFFOLD_TEST_PACKAGES = ./pkg/skaffold/... ./cmd/... ./hack/... ./pkg/webhook/.
+ GO_FILES = $(shell find . -type f -name '*.go' -not -path "./pkg/diag/*")
  
  VERSION_PACKAGE = $(REPOPATH)/pkg/skaffold/version
 -COMMIT = $(shell git rev-parse HEAD)
@@ -11,13 +11,12 @@ index dd22ea0..aa47490 100644
 +TREE_STATE ?= $(if $(shell git status --porcelain),dirty,clean)
  
  ifeq "$(strip $(VERSION))" ""
-  override VERSION = $(shell git describe --always --tags --dirty)
-@@ -52,7 +53,7 @@ GO_BUILD_TAGS_windows = "release"
+ 	override VERSION = $(shell git describe --always --tags --dirty)
+@@ -45,6 +46,7 @@ endif
  GO_LDFLAGS = -X $(VERSION_PACKAGE).version=$(VERSION)
  GO_LDFLAGS += -X $(VERSION_PACKAGE).buildDate=$(shell date +'%Y-%m-%dT%H:%M:%SZ')
  GO_LDFLAGS += -X $(VERSION_PACKAGE).gitCommit=$(COMMIT)
--GO_LDFLAGS += -X $(VERSION_PACKAGE).gitTreeState=$(if $(shell git status --porcelain),dirty,clean)
 +GO_LDFLAGS += -X $(VERSION_PACKAGE).gitTreeState=$(TREE_STATE)
  GO_LDFLAGS += -s -w
  
- GO_LDFLAGS_windows =" $(GO_LDFLAGS)  -extldflags \"$(LDFLAGS_windows)\""
+ GO_BUILD_TAGS_linux = osusergo netgo static_build release
