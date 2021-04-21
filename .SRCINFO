@@ -20,6 +20,7 @@ pkgname = libc++-rc
 	provides = libc++
 	conflicts = libc++
 	conflicts = libc++-git
+	conflicts = libc++-stable
 	options = staticlibs
 
 pkgname = libc++abi-rc
@@ -27,6 +28,7 @@ pkgname = libc++abi-rc
 	provides = libc++abi
 	conflicts = libc++abi
 	conflicts = libc++abi-git
+	conflicts = libc++abi-stable
 	options = staticlibs
 
 pkgname = libc++experimental-rc
@@ -35,4 +37,5 @@ pkgname = libc++experimental-rc
 	provides = libc++experimental
 	conflicts = libc++experimental
 	conflicts = libc++experimental-git
+	conflicts = libc++experimental-stable
 

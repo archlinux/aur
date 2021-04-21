@@ -53,7 +53,7 @@ package_libc++-rc(){
   pkgdesc='LLVM C++ standard library (rc release)'
   depends=("libc++abi")
   options=('staticlibs')
-  conflicts=('libc++' 'libc++-git')
+  conflicts=('libc++' 'libc++-git' 'libc++-stable')
   provides=('libc++')
 
   DESTDIR="$pkgdir" ninja -C llvm-project-$pkgver.src/build-libc++/ install
@@ -65,7 +65,7 @@ package_libc++-rc(){
 package_libc++abi-rc(){
   pkgdesc='Low level support for the LLVM C++ standard library (rc release)'
   options=('staticlibs')
-  conflicts=('libc++abi' 'libc++abi-git')
+  conflicts=('libc++abi' 'libc++abi-git' 'libc++abi-stable')
   provides=('libc++abi')
 
   DESTDIR="$pkgdir" ninja -C llvm-project-$pkgver.src/build-libc++abi/ install
@@ -77,7 +77,7 @@ package_libc++abi-rc(){
 package_libc++experimental-rc(){
   pkgdesc='LLVM C++ experimental library (rc release)'
   depends=("libc++")
-  conflicts=('libc++experimental' 'libc++experimental-git')
+  conflicts=('libc++experimental' 'libc++experimental-git' 'libc++experimental-stable')
   provides=('libc++experimental')
 
   install -Dm0644 -t "$pkgdir"/usr/lib/ llvm-project-$pkgver.src/build-libc++/lib/libc++experimental.a
