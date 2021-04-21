@@ -1,7 +1,7 @@
 # Maintainer: Art Dev <artdevjs at gmail dot com>
 pkgname=lsd-bin
 _pkgname="lsd"
-pkgver=0.19.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="The next gen ls command"
 arch=("x86_64")
@@ -20,4 +20,4 @@ package(){
   install -Dm644 ${srcdir}/${_pkgname}-${pkgver}-${CARCH}-unknown-linux-musl/autocomplete/_${_pkgname} "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
 
-sha256sums=('3b04e109956aa98893473b194ae6235cdeeabf45f3ba9e0dda3feb48717e308b')
+sha256sums=('8ac55367fe25f54dde9d37111abac4c98ef7668b56a36e6c464d5d52ea22c346')
