@@ -1,0 +1,27 @@
+pkgbase = spirv-llvm-translator-stable
+	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR
+	pkgver = 12.0.0
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = llvm
+	makedepends = spirv-tools
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = clang
+	makedepends = make
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = gcc-libs
+	depends = llvm-libs
+	provides = spirv-llvm-translator
+	conflicts = spirv-llvm-translator
+	conflicts = spirv-llvm-translator-git
+	conflicts = spirv-llvm-translator-rc
+	source = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/llvm_release_120.zip
+	md5sums = SKIP
+
+pkgname = spirv-llvm-translator-stable
+
