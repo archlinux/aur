@@ -1,7 +1,7 @@
 pkgbase = qjackcapture
-	pkgdesc = A systray app to set the JACK configuration from QjackCtl presets via DBus.
+	pkgdesc = A GUI for easy recording of JACK audio sources using jack_capture
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpotlightKid/qjackcapture
 	arch = any
 	license = GPL

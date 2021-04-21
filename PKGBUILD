@@ -3,8 +3,8 @@
 _project=QJackCapture
 pkgname="${_project,,}"
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="A systray app to set the JACK configuration from QjackCtl presets via DBus."
+pkgrel=2
+pkgdesc="A GUI for easy recording of JACK audio sources using jack_capture"
 arch=('any')
 url="https://github.com/SpotlightKid/qjackcapture"
 license=('GPL')
