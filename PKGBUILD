@@ -13,8 +13,8 @@
 pkgbase=libc++-rc
 pkgname=('libc++-rc' 'libc++abi-rc' 'libc++experimental-rc')
 url='https://libcxx.llvm.org/'
-pkgver=12.0.0rc4
-versiontag=12.0.0-rc4
+pkgver=12.0.0rc5
+versiontag=12.0.0-rc5
 pkgrel=1
 license=('custom:Apache 2.0 with LLVM Exception')
 arch=('x86_64')
