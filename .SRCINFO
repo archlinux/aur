@@ -1,0 +1,17 @@
+pkgbase = neovim-colorbuddy-git
+	pkgdesc = A colorscheme helper for Neovim
+	pkgver = r55.87c80e3
+	pkgrel = 1
+	url = https://github.com/tjdevries/colorbuddy.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-colorbuddy
+	conflicts = neovim-colorbuddy
+	source = neovim-colorbuddy-git::git+https://github.com/tjdevries/colorbuddy.nvim
+	md5sums = SKIP
+
+pkgname = neovim-colorbuddy-git
+
