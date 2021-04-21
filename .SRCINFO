@@ -1,0 +1,22 @@
+pkgbase = feedreader-decsync-git
+	pkgdesc = This is a fork of the archived jangernert/FeedReader, a modern desktop application designed to complement existing web-based RSS accounts, but with an updated DecSync plugin.
+	pkgver = 2.11.0.20200923.6b91326
+	pkgrel = 1
+	url = https://github.com/39aldo39/FeedReader
+	arch = any
+	license = MIT
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = curl
+	depends = org.freedesktop.secrets
+	depends = gnome-online-accounts
+	depends = gumbo-parser
+	depends = libgee
+	depends = libpeas
+	depends = libdecsync
+	source = git+https://github.com/39aldo39/FeedReader.git
+	sha256sums = SKIP
+
+pkgname = feedreader-decsync-git
+
