@@ -1,0 +1,19 @@
+pkgbase = ksmbd-dkms
+	pkgdesc = In-kernel CIFS/SMB3 server (aka cifsd), with the primary goal of improved I/O performance.
+	pkgver = 3.3.9
+	pkgrel = 1
+	url = https://github.com/cifsd-team/cifsd
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL2
+	depends = dkms
+	options = !strip
+	source = ksmbd-3.3.9.tar.gz::https://github.com/cifsd-team/cifsd/archive/3.3.9.tar.gz
+	source = dkms.conf
+	sha256sums = c196d1773b9f89221133780fd189b550acbc56ac93c2e79260a70eab9853b3e1
+	sha256sums = 1d844a3ced7c4b2227a71df1fcb48ffcb64c083a257715dd4afc193cf3f26240
+
+pkgname = ksmbd-dkms
