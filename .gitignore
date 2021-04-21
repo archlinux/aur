@@ -1,0 +1,6 @@
+pkg/
+src/
+QJackCapture-*.tar.gz
+qjackcapture-*.pkg.tar.xz
+qjackcapture-*.pkg.tar.zst
+qjackcapture-*.src.tar.gz
