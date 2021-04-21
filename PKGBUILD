@@ -3,7 +3,7 @@
 pkgname=wedder
 pkgdesc="Current weather info for status bars like polybar"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 
 depends=("openssl-1.0")
 arch=("x86_64")
