@@ -22,16 +22,20 @@ package() {
     desktopfile="${pkgdir}/opt/pseint/pseint.desktop"
     touch $desktopfile
     echo "[Desktop Entry]" >> $desktopfile
-    echo "Type=Application" >> $desktopfile
-    echo "Name=PSeInt" >> $desktopfile
-    echo "GenericName=PSeInt en GNU/Linux" >> $desktopfile
+    echo "Name=PSeInt en GNU/Linux" >> $desktopfile
+    echo "GenericName=PSeInt" >> $desktopfile
 	echo "Comment=Una herramienta para aprender las bases de la programación mediante pseudocodigo en español" >> $desktopfile
+    echo "Type=Application" >> $desktopfile
     echo "Exec=pseint" >> $desktopfile
     echo "Icon=/opt/pseint/imgs/icon.icns" >> $desktopfile
     echo "Terminal=false" >> $desktopfile
-    echo "Categories=Development;IDE;" >> $desktopfile
+    echo "Categories=Development" >> $desktopfile
+
     mkdir -p "${pkgdir}/usr/share/applications/"
     cp $desktopfile "${pkgdir}/usr/share/applications/"
+
+    cp $desktopfile ~/.local/share/applications
+
     mkdir -p "${pkgdir}/usr/bin/"
     touch "${pkgdir}/usr/bin/pseint"
     echo "#!/usr/bin/env sh" >> "${pkgdir}/usr/bin/pseint"
