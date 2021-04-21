@@ -1,7 +1,7 @@
 # Maintainer: dllud <dllud riseup net>
 
 pkgname=ckb-cli
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="Nervos CKB (Common Knowledge Base) command line tool"
 arch=('i686' 'x86_64')
