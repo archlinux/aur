@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.11.2.arch1
+pkgver=5.11.15.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -19,10 +19,12 @@ source=(
 	"$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
 	config         # the main kernel config file
 	#sphinx-workaround.patch
-	"sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch"
+	#"sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch"
 	"sys-kernel_arch-sources-g14_files_6007-HID-asus-Add-support-for-2021-ASUS-N-Key-keyboard.patch"
 	"sys-kernel_arch-sources-g14_files_6008-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
-	"sys-kernel_arch-sources-g14_files_6009-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch"
+	#"sys-kernel_arch-sources-g14_files_6009-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch"
+	"sys-kernel_arch-sources-g14_files-6010-acpi_unused.patch"
+	"git+https://gitlab.com/asus-linux/fedora-kernel#commit=3e893afb4b3fcc73192caa1d5a645abae87d2112"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -32,10 +34,10 @@ validpgpkeys=(
 
 sha256sums=('SKIP'
             'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
-            'e924edb045476201968eb76157a72ddae7dac18932e54f0e3d32eeed98d2b2c6'
             '2edfb8dbb0fe7202191c51a5f645559c5da9f800e8aad2f8a4fd2731092138ff'
             'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac'
-            'eec1d016c5f53f1d808701b6c038db2e73a61310713f859d99bf97b9c793cefe')
+            'c384049787c8f0008accf9c4d053eb407b76242fe522e1aed1fe8a9c59f9d996'
+            'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -56,6 +58,14 @@ prepare() {
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
+  done
+
+  for src in ../fedora-kernel/*.patch; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    OUT="$(patch --forward -Np1 < "../fedora-kernel/$src")"  || echo "${OUT}" | grep "Skipping patch" -q || (echo "$OUT" && false);
   done
 
   echo "Setting config..."
