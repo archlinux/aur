@@ -1,0 +1,15 @@
+pkgbase = st-hackme
+	pkgdesc = This is my build of ST
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HackMEAny/simple_terminal.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	provides = st
+	source = git+https://github.com/HackMEAny/simple_terminal.git
+	md5sums = SKIP
+
+pkgname = st-hackme
+
