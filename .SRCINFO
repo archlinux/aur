@@ -1,0 +1,18 @@
+pkgbase = python-chama
+	pkgdesc = sensor placement optimization
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/sandialabs/chama
+	arch = any
+	license = Revised BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyomo
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/c/chama/chama-0.1.3.tar.gz
+	sha256sums = 2733b26b042cd1f82a31983bf9f000ee756be5807b527944fb41462c712d6fda
+
+pkgname = python-chama
+
