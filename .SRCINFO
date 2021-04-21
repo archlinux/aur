@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-lan-ip-address-git
+	pkgdesc = Simple extension to show your LAN IP address on the GNOME panel
+	pkgver = r15.391f4eb
+	pkgrel = 1
+	url = https://github.com/Josholith/gnome-extension-lan-ip-address
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell
+	source = lan-ip-address::git+https://github.com/Josholith/gnome-extension-lan-ip-address.git
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-lan-ip-address-git
+
