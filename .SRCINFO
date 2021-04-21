@@ -1,7 +1,7 @@
 pkgbase = corehunt
-	pkgdesc = A file finder utility from the CoreApps family.
+	pkgdesc = A file finder utility from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corehunt
 	arch = x86_64
 	arch = aarch64
