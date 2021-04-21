@@ -1,7 +1,7 @@
 pkgbase = fuse-tar
 	pkgdesc = A simple tar-archive FUSE mounter
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Benni3D/fuse-tar
 	arch = any
 	license = MIT

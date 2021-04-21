@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Stürz <benni@stuerz.xyz>
 pkgname=fuse-tar-mounter
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple tar-archive FUSE mounter"
 arch=(any)
 url="https://github.com/Benni3D/fuse-tar"
@@ -21,6 +21,6 @@ package() {
    install -Dm755 "src/tar-mounter.sh" "${pkgdir}/usr/bin/tar-mounter"
    install -Dm644 "src/tar-mounter.desktop" "${pkgdir}/usr/share/applications/tar-mounter.desktop"
    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.MD"
+   install -Dm644 "README.MD" "${pkgdir}/usr/share/doc/${pkgname}/README.MD"
 }
 
