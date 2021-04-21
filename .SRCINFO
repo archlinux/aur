@@ -22,6 +22,7 @@ pkgname = lib32-llvm-rc
 	provides = lib32-llvm
 	conflicts = lib32-llvm
 	conflicts = lib32-llvm-git
+	conflicts = lib32-llvm-stable
 
 pkgname = lib32-llvm-libs-rc
 	pkgdesc = Low Level Virtual Machine (runtime library) (32-bit) (rc release)
@@ -33,6 +34,7 @@ pkgname = lib32-llvm-libs-rc
 	provides = lib32-llvm-libs
 	conflicts = lib32-llvm-libs
 	conflicts = lib32-llvm-libs-git
+	conflicts = lib32-llvm-libs-stable
 
 pkgname = lib32-clang-rc
 	pkgdesc = C language family frontend for LLVM (32-bit) (rc release)
@@ -41,4 +43,5 @@ pkgname = lib32-clang-rc
 	provides = lib32-clang
 	conflicts = lib32-clang
 	conflicts = lib32-clang-git
+	conflicts = lib32-clang-stable
 

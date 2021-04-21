@@ -53,7 +53,7 @@ export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 package_lib32-llvm-rc(){
   pkgdesc='Collection of modular and reusable compiler and toolchain technologies (32-bit) (rc release)'
   depends=('lib32-llvm-libs' 'llvm')
-  conflicts=('lib32-llvm' 'lib32-llvm-git')
+  conflicts=('lib32-llvm' 'lib32-llvm-git' 'lib32-llvm-stable')
   provides=('lib32-llvm')
 
   cd llvm-project-$pkgver.src/llvm/build
@@ -104,7 +104,7 @@ package_lib32-llvm-rc(){
 package_lib32-llvm-libs-rc(){
   pkgdesc='Low Level Virtual Machine (runtime library) (32-bit) (rc release)'
   depends=('lib32-libffi' 'lib32-zlib' 'lib32-ncurses' 'lib32-libxml2' 'lib32-gcc-libs')
-  conflicts=('lib32-llvm-libs' 'lib32-llvm-libs-git')
+  conflicts=('lib32-llvm-libs' 'lib32-llvm-libs-git' 'lib32-llvm-libs-stable')
   provides=('lib32-llvm-libs')
 
   install -d "$pkgdir/usr/lib32"
@@ -125,7 +125,7 @@ package_lib32-llvm-libs-rc(){
 package_lib32-clang-rc(){
   pkgdesc='C language family frontend for LLVM (32-bit) (rc release)'
   depends=('lib32-llvm-libs' 'gcc-multilib')
-  conflicts=('lib32-clang' 'lib32-clang-git')
+  conflicts=('lib32-clang' 'lib32-clang-git' 'lib32-clang-stable')
   provides=('lib32-clang')
 
   install -d "$pkgdir"/usr/lib32
