@@ -24,8 +24,8 @@ package() {
     echo "[Desktop Entry]" >> $desktopfile
     echo "Type=Application" >> $desktopfile
     echo "Name=PSeInt" >> $desktopfile
-    echo "Comment=${pkgdesc}" >> $desktopfile
-    echo "Comment[es]=Una herramienta para aprender las bases de la programación mediante pseudocodigo en español" >> $desktopfile
+    echo "GenericName=PSeInt en GNU/Linux" >> $desktopfile
+	echo "Comment=Una herramienta para aprender las bases de la programación mediante pseudocodigo en español" >> $desktopfile
     echo "Exec=pseint" >> $desktopfile
     echo "Icon=/opt/pseint/imgs/icon.icns" >> $desktopfile
     echo "Terminal=false" >> $desktopfile
