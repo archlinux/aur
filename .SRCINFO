@@ -1,0 +1,47 @@
+pkgbase = lib32-llvm-stable
+	pkgver = 12.0.0
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = lib32-libffi
+	makedepends = lib32-zlib
+	makedepends = python
+	makedepends = gcc-multilib
+	makedepends = lib32-libxml2
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/llvm-project-12.0.0.src.tar.xz
+	md5sums = SKIP
+
+pkgname = lib32-llvm-stable
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
+	depends = lib32-llvm-libs
+	depends = llvm
+	provides = lib32-llvm
+	conflicts = lib32-llvm
+	conflicts = lib32-llvm-git
+	conflicts = lib32-llvm-rc
+
+pkgname = lib32-llvm-libs-stable
+	pkgdesc = Low Level Virtual Machine (runtime library) (32-bit)
+	depends = lib32-libffi
+	depends = lib32-zlib
+	depends = lib32-ncurses
+	depends = lib32-libxml2
+	depends = lib32-gcc-libs
+	provides = lib32-llvm-libs
+	conflicts = lib32-llvm-libs
+	conflicts = lib32-llvm-libs-git
+	conflicts = lib32-llvm-libs-rc
+
+pkgname = lib32-clang-stable
+	pkgdesc = C language family frontend for LLVM (32-bit)
+	depends = lib32-llvm-libs
+	depends = gcc-multilib
+	provides = lib32-clang
+	conflicts = lib32-clang
+	conflicts = lib32-clang-git
+	conflicts = lib32-clang-rc
+
