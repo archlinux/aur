@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
-pkgver=1.1.2.r7.g0331df4
+pkgver=1.1.2.r9.g6b25c68
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('x86_64')
