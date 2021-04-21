@@ -2,7 +2,7 @@
 
 pkgname='sheldon-bin'
 _pkgname='sheldon'
-pkgver=0.6.0
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='A fast, configurable, shell plugin manager '
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('sheldon')
 source=(
   "${_pkgname}-v${pkgver}.tar.gz::$url/releases/download/${pkgver}/${_pkgname}-${pkgver}-${CARCH}-unknown-linux-musl.tar.gz"
 )
-sha256sums=('2d9c55670c381daca92a3f5091864a827c34f62819965a0f1e9d9336f52b24c7')
+sha256sums=('37409330e000a962b663034e9adee1dd71738ebffe2af374259668629879faa8')
 
 package() {
   install -Dm755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
