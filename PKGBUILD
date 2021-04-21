@@ -3,7 +3,7 @@ pkgver() {
    cd "bitmask-vpn"
    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgrel=1
+pkgrel=2
 pkgver=0.21.2
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
