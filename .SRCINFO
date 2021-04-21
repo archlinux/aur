@@ -1,0 +1,20 @@
+pkgbase = vim-prosession-git
+	pkgdesc = Handle vim sessions like a pro
+	pkgver = 0.6.2.r1.g976f3e6
+	pkgrel = 1
+	url = https://github.com/dhruvasagar/vim-prosession
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	depends = vim-obsession
+	provides = vim-prosession
+	conflicts = vim-prosession
+	source = vim-prosession-git::git+https://github.com/dhruvasagar/vim-prosession
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 9f0c174a1ebb45f10904046523392104aee46841a90f1508578da86011a6a1ba
+
+pkgname = vim-prosession-git
+
