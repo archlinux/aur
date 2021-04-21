@@ -1,6 +1,6 @@
 pkgbase = wf-config
 	pkgdesc = A library for managing configuration files, written for wayfire
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = wf-config
 	depends = libevdev
 	depends = libxml2
 	conflicts = wf-config-git
-	source = https://github.com/WayfireWM/wf-config/releases/download/v0.7.0/wf-config-0.7.0.tar.xz
-	sha256sums = c7fb0b388afdd46add4b209ff7262bd3a30f9948a9a4d6e7ec1239bbf42b5aad
+	source = https://github.com/WayfireWM/wf-config/releases/download/v0.7.1/wf-config-0.7.1.tar.xz
+	sha256sums = 7d2285adeaca0ff6e36e6ef450564ab02c8e26ba5da3b169257c5bf061f7e5f0
 
 pkgname = wf-config
 
