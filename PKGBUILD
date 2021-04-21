@@ -40,7 +40,7 @@ prepare() {
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 
 	echo "Removing old Rust build artifacts"
-	cargo clean
+	cargo clean --target-dir=target
 
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
@@ -77,12 +77,12 @@ build() {
 
 	echo "Building Rust code in release mode using $RUSTC_VERSION..."
 
-	cargo build --release --locked
+	cargo build --release --locked --target-dir=target
 
 	mkdir -p dist-assets/shell-completions
 	for sh in bash zsh fish; do
 		echo "Generating shell completion script for $sh..."
-		cargo run --bin mullvad --release --locked -- shell-completions "$sh" \
+		cargo run --bin mullvad --release --locked --target-dir=target -- shell-completions "$sh" \
 			dist-assets/shell-completions/
 	done
 
@@ -100,10 +100,10 @@ build() {
 	done
 
 	echo "Updating relay list..."
-	cargo run --bin relay_list --release > dist-assets/relays.json
+	cargo run --bin relay_list --release --target-dir=target > dist-assets/relays.json
 
 	echo "Updating API address cache..."
-	cargo run --bin address_cache --release > dist-assets/api-ip-address.txt
+	cargo run --bin address_cache --release --target-dir=target > dist-assets/api-ip-address.txt
 
 	# Build Electron GUI app
 	pushd gui
@@ -116,7 +116,7 @@ build() {
 
 #check() {
 #	cd "$srcdir/mullvadvpn-app"
-#	cargo test --release --locked
+#	cargo test --release --locked --target-dir=target
 #
 #	cd gui
 #	npm test
