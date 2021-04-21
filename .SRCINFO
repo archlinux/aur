@@ -1,7 +1,7 @@
 pkgbase = corestats
-	pkgdesc = A system resource viewer from the CoreApps family.
+	pkgdesc = A system resource viewer from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corestats
 	arch = x86_64
 	arch = aarch64
