@@ -13,6 +13,8 @@ depends=(
     'python'
     'openvpn'
     'qt5-declarative'
+    'qt5-quickcontrols'
+    'qt5-quickcontrols2'
     'hicolor-icon-theme'
 )
 makedepends=(
