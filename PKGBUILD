@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=113
+_minor=114
 _srcname=linux-${_major}
-_clr=${_major}.101-103
+_clr=${_major}.113-105
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -73,13 +73,13 @@ url="https://github.com/clearlinux-pkgs/linux-lts2019"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210327'
+_gcc_more_v='20210402'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=${_clr}"
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -87,12 +87,6 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    # https://bbs.archlinux.org/viewtopic.php?id=265115
-
-    if [[ ! -f "$srcdir/patch-${pkgver}" ]]; then
-      xz -dc "$SRCDEST/patch-${pkgver}.xz" > "patch-${pkgver}"
-    fi
-
     cd ${_srcname}
 
     ### Add upstream patches
@@ -328,9 +322,9 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'aceed2c4f5d4e28e0e4f6bd17066c84038e2b2d9122e086b3711a2c14b71647e'
+            '624a67b32e80f4ee607b9955faba52fb729935efad61dc72c49997e71578d5d2'
             'SKIP'
-            'ac0e44bd089eeb7f52d358e6899005599fff50972f090af9c8e6ee0097d01db6')
+            '8aea0d8a9999b0510fa128d79af8a8dc94d25f0a193fd698ebfdf09808472d2e')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
