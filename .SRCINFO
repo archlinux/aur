@@ -1,0 +1,19 @@
+pkgbase = python-eduvpn-client
+	pkgdesc = Linux client and Python client API for eduVPN
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/eduvpn/python-eduvpn-client
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-requests-oauthlib
+	depends = python-pynacl
+	depends = mypy
+	depends = dbus-python
+	depends = python-gobject
+	depends = hicolor-icon-theme
+	source = https://github.com/eduvpn/python-eduvpn-client/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = 4cef709f90eb574de6488cebc7a5b116634dc68bdd4e1145918b711c84a1433e
+
+pkgname = python-eduvpn-client
+
