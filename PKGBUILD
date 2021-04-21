@@ -5,7 +5,7 @@
 
 pkgname=plymouth-git
 pkgver=0.9.5.r84.ge554475
-pkgrel=2
+pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('i686' 'x86_64')
@@ -110,13 +110,13 @@ package() {
 	install -Dm644 "$srcdir/plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/plymouth"
 	install -Dm644 "$srcdir/sd-plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/sd-plymouth"
 
-	for i in {sddm,lxdm,slim,lightdm}-plymouth.service; do
+	for i in {sddm,lxdm,lightdm}-plymouth.service; do
 		install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
 	done
 	
 	ln -s "/usr/lib/systemd/system/gdm.service" "$pkgdir/usr/lib/systemd/system/gdm-plymouth.service"
 
-#	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
+	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
 #	install -Dm644 "$srcdir/plymouth-start.path" 	"$pkgdir/usr/lib/systemd/system/plymouth-start.path"
 	install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
 }
