@@ -1,6 +1,6 @@
 pkgbase = lib32-spirv-tools-git
 	pkgdesc = API and commands for processing SPIR-V modules. (32-bit) (git version)
-	pkgver = 2020.7.2021_03_02.2969.0bd920eb9
+	pkgver = 2020.7.2021_04_20.3019.dc72924cb
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/SPIRV-Tools.git
 	arch = i686
