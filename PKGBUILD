@@ -1,4 +1,5 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Kasei Wang <kasei@kasei.im>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sébastien Luttringer
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
@@ -8,13 +9,13 @@ _pkgbase=nginx
 pkgbase=${_pkgbase}-quiche
 pkgname=${pkgbase}
 pkgver=1.18.0
-pkgrel=1
-_quichever=0.7.0
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche for http3'
+pkgrel=2
+_quichever=0.8.1
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche and boringssl for http3 support'
 arch=(x86_64)
 url='https://nginx.org'
 license=(custom)
-depends=(pcre zlib openssl geoip mailcap)
+depends=(pcre zlib geoip mailcap)
 makedepends=(git mercurial cmake rust)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg inetutils) 
@@ -31,14 +32,14 @@ install=nginx.install
 source=(https://nginx.org/download/nginx-$pkgver.tar.gz{,.asc}
         hg+http://hg.nginx.org/nginx-tests#revision=c1d167a13c24
 	https://github.com/cloudflare/quiche/archive/$_quichever.tar.gz
-        git+https://boringssl.googlesource.com/boringssl#commit=597b810379e126ae05d32c1d94b1a9464385acd0
+        git+https://boringssl.googlesource.com/boringssl#commit=067cfd92f4d7da0edfa073b096d090b98a83b860
         service
         logrotate)
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('b2d33d24d89b8b1f87ff5d251aa27eb8'
          'SKIP'
          'SKIP'
-         'c308dfc84e69c14206c3cdfde92a259d'
+         'b9efece5ea0cf0b868e0da8c2962220a'
          'SKIP'
          'ba2e3b08ce0f0fff7cced624d0ecf7cc'
          '6a01fb17af86f03707c8ae60f98a2dc2')

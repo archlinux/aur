@@ -1,7 +1,7 @@
 pkgbase = nginx-quiche
-	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche for http3
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche and boringssl for http3 support
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nginx.org
 	install = nginx.install
 	arch = x86_64
@@ -20,7 +20,6 @@ pkgbase = nginx-quiche
 	makedepends = rust
 	depends = pcre
 	depends = zlib
-	depends = openssl
 	depends = geoip
 	depends = mailcap
 	backup = etc/nginx/fastcgi.conf
@@ -35,15 +34,15 @@ pkgbase = nginx-quiche
 	source = https://nginx.org/download/nginx-1.18.0.tar.gz
 	source = https://nginx.org/download/nginx-1.18.0.tar.gz.asc
 	source = hg+http://hg.nginx.org/nginx-tests#revision=c1d167a13c24
-	source = https://github.com/cloudflare/quiche/archive/0.7.0.tar.gz
-	source = git+https://boringssl.googlesource.com/boringssl#commit=597b810379e126ae05d32c1d94b1a9464385acd0
+	source = https://github.com/cloudflare/quiche/archive/0.8.1.tar.gz
+	source = git+https://boringssl.googlesource.com/boringssl#commit=067cfd92f4d7da0edfa073b096d090b98a83b860
 	source = service
 	source = logrotate
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	md5sums = b2d33d24d89b8b1f87ff5d251aa27eb8
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = c308dfc84e69c14206c3cdfde92a259d
+	md5sums = b9efece5ea0cf0b868e0da8c2962220a
 	md5sums = SKIP
 	md5sums = ba2e3b08ce0f0fff7cced624d0ecf7cc
 	md5sums = 6a01fb17af86f03707c8ae60f98a2dc2
