@@ -3,7 +3,7 @@
 pkgname=roonbridge
 _pkgname=RoonBridge
 pkgver=1.7.571
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -36,8 +36,7 @@ package() {
    cd "$srcdir"
    mkdir -p ${pkgdir}/opt/
    bsdtar xf RoonBridge_*.tar.bz2 -C "$pkgdir/opt"
-   chown -R root:root "$pkgdir/opt/RoonBridge"
-
+   
   install -Dm644 tmpfiles.d             "${pkgdir}"/usr/lib/tmpfiles.d/roonbridge.conf
   install -Dm644 sysusers.d             "${pkgdir}"/usr/lib/sysusers.d/roonbridge.conf
   install -Dm644 "roonbridge.service"  "$pkgdir/usr/lib/systemd/system/roonbridge.service"
