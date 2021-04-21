@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=soju
 Restart=always
-ExecStart=/usr/bin/soju --config /var/lib/soju/soju.config
+ExecStart=/usr/bin/soju --config /etc/soju/config
 
 [Install]
 WantedBy=multi-user.target

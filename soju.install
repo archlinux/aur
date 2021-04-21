@@ -1,5 +1,13 @@
 #/bin/bash
 
 post_install() {
-    echo '==> Create /var/lib/soju/soju.config ('man soju')'
+    echo '==> Modify /etc/soju/config (man soju)'
+}
+
+post_upgrade() {
+    if [ $(vercmp $2 v0.1.0.r0.g706b6e3-1) -lt 0 ]; then
+        mv /var/lib/soju/soju.config /etc/soju/config
+        echo '==> The config location moved to /etc/soju/config and the settings chaged.'
+        echo '==> Please review your config (man soju)'
+    fi
 }

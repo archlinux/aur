@@ -1,1 +1,2 @@
 d /var/lib/soju 0750 soju soju -
+d /var/lib/soju/logs 0750 soju soju -
