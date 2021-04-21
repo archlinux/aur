@@ -1,7 +1,7 @@
 pkgbase = brscan4
 	pkgdesc = SANE drivers from Brother for brscan4 compatible models
 	pkgver = 0.4.10_1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://support.brother.com
 	install = brscan4.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = brscan4
 	source = mk-udev-hwdb
 	md5sums = f4c4d1f214d4c42a6d40f5451fc40312
 	md5sums = ccffb9a6f6d436b21be25b0241068981
-	md5sums = 4a69fac9c0053277a9be8e2dd382f168
+	md5sums = 8966d38375d535028a63a6ef5f6104eb
 
 pkgname = brscan4
 
