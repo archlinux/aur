@@ -1,6 +1,6 @@
 pkgbase = surge-complete
 	pkgdesc = Surge Synthesizer for all possible plugin types (LV2/VST2/VST3)
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io/
 	arch = x86_64
@@ -37,9 +37,9 @@ pkgbase = surge-complete
 	provides = surge
 	conflicts = surge-synthesizer
 	conflicts = surge
-	source = surge-1.8.1.tgz::https://github.com/surge-synthesizer/releases/releases/download/1.8.1/SurgeSrc_1.8.1.tgz
-	sha512sums = bdef088dc95e4253b03bfbd855c9d6d042130d6c387b2a30c0cb7795b1ac9878531e2ccd238fe9a219be259e6e3e1d533e5d885ec6e6d6def85c0defa0774c9e
-	b2sums = de7a21174da3742dc323936917351ae0e2913e8d98ed5d96d1ae45007bf1576496ac009f8a75bf00f1cc576aecb928b5d2c128fa212ca1728fc4be47dba9bae3
+	source = surge-1.9.0.tgz::https://github.com/surge-synthesizer/releases/releases/download/1.9.0/SurgeSrc_1.9.0.tgz
+	sha512sums = f06caae297026e9bbccdb097a47341dc1abd17dc7988d8d46368bec202fe701b1b7c9614b441f8d00a5a3a4f386d870a2da86c422ddd7324db216de7baa00836
+	b2sums = b6574a48feefe6173afb2185be64423bb70d51d7376e9b5c44c4882d8e3e078c6b0430cb33aa23f9858a21db0be7b0dddfeebb57625149d79f066bb23639882e
 
 pkgname = surge-complete
 
