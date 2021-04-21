@@ -8,14 +8,14 @@
 
 
 ## Helpful internal stuff
-_commit=2d434cb612b680cdc1bdaf4b036be606ef3856f0
-_mozcver=2.26.4325.102
-_utdicver=20210329
+_commit=b03ab3ff544130d6220a587a781c5ef7d5e07380
+_mozcver=2.26.4346.102
+_utdicver=20210421
 _utdicrel=1
-_utuserlink=28
-_utdiclink=28065
-_kenver=202102
-_jugyosyover=202102
+_utuserlink=30
+_utdiclink=30220
+_kenver=202103
+_jugyosyover=202103
 _buildtype=Release
 
 pkgname='mozc-ut-common'
@@ -34,9 +34,9 @@ source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kenver}.zip"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyover}.zip")
 sha256sums=('SKIP'
-            '057c5d1a5c66e7eed20979b7268d651da1999a52469abe2a9eab843d6b1e631f'
-            '4529d801c19890f21fb4c2581bafdcb546c3aabd5984715b8e1773692f0293e7'
-            '0f832e4a420fb43bc71da881c1e5ea822713d380b2e9d37709b3025198cfbd83')
+            '690237f82e6eda05c9dd8cf303dfe6cd94358b2518e92f36a029afd524efe9b1'
+            '39d7079e539a665e9ec89fad0592dc994c187d4dbfb261eca8b722aebb41f047'
+            '820e312700c796e413d1b90b3d5d9f1eeb309a3cb911bc2bd9c5714f6fadfdd0')
 
 prepare() {
     cd ${pkgname}-git
