@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://sdformat.org/"
 license=('Apache')
 depends=('boost' 'tinyxml' 'ignition-math>=6' 'python-psutil' 'urdfdom')
-makedepends=('cmake' 'doxygen' 'ignition-cmake' 'ignition-tools' 'ruby')
+makedepends=('cmake' 'doxygen' 'ignition-cmake' 'ignition-tools' 'ruby' 'ruby-rexml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osrf/sdformat/archive/sdformat9_${pkgver}.tar.gz")
 sha256sums=('53791427b25c2485a2f74aab90e07ff8e7470f86532ecd30b9510bbec4122c97')
 

@@ -11,6 +11,7 @@ pkgbase = sdformat-9
 	makedepends = ignition-cmake
 	makedepends = ignition-tools
 	makedepends = ruby
+	makedepends = ruby-rexml
 	depends = boost
 	depends = tinyxml
 	depends = ignition-math>=6
