@@ -1,6 +1,6 @@
 pkgbase = st-pajas
 	pkgdesc = Pajas version of suckless with scrollback, alpha, nordtheme and Vertcenter
-	pkgver = 0.8.4
+	pkgver = 0.8.41
 	pkgrel = 1
 	url = https://github.com/quoteme/st
 	arch = i686
