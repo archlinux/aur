@@ -17,6 +17,8 @@ pkgbase = riseup-vpn
 	depends = python
 	depends = openvpn
 	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
 	depends = hicolor-icon-theme
 	source = git+https://0xacab.org/leap/bitmask-vpn.git#commit=7ed49b92ff19205af276dee371174579c8b4c811
 	source = riseup-vpn_launcher.desktop
@@ -26,4 +28,3 @@ pkgbase = riseup-vpn
 	sha1sums = 7cb4d92288febba7de7da27c5ee8f7d867a0b221
 
 pkgname = riseup-vpn
-
