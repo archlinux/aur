@@ -67,7 +67,7 @@ _makenconfig=y
 
 pkgbase=linux-manjaro-xanmod-cacule-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.11.15
+pkgver=5.11.16
 _major=5.11
 _branch=5.x
 xanmod=1
@@ -76,7 +76,7 @@ pkgdesc='Linux Xanmod Cacule UKSM'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="32a92e224750858e414016656a0e1c1e3e86b63c" # 5.11.15-1
+__commit="25f30b3e10d905e9e26108f571c6e0bb971ec180" # 5.11.16-1
 
 license=(GPL2)
 makedepends=(
@@ -88,7 +88,7 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.15-xanmod1-cacule"
+        "https://github.com/HougeLangley/customkernel/releases/download/Kernel-v5.11.x/patch-5.11.16-xanmod1-cacule"
         choose-gcc-optimization.sh
         "https://gitlab.manjaro.org/packages/core/linux511/-/archive/${__commit}/linux511-${__commit}.tar.gz"
         '0002-UKSM.patch')
