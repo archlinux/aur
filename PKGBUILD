@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -52,6 +52,10 @@ build() {
     find -name "*.gcda" -delete
     meson configure -Db_pgo=generate build
     ninja -C build
+
+    # Need to run tests here, to ensure *all* generated binaries have
+    # profiling data (including e.g. unit tests from fcft/tllist).
+    ninja -C build test
 
     local script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline --sixel"
 
