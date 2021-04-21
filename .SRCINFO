@@ -1,0 +1,18 @@
+pkgbase = neovim-nonicons-git
+	pkgdesc = Icon set for neovim plugins and settings
+	pkgver = r16.f136ab9
+	pkgrel = 1
+	url = https://github.com/yamatsum/nvim-nonicons
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim
+	depends = nonicons-font
+	provides = neovim-nonicons
+	conflicts = neovim-nonicons
+	source = neovim-nonicons-git::git+https://github.com/yamatsum/nvim-nonicons
+	md5sums = SKIP
+
+pkgname = neovim-nonicons-git
+
