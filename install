@@ -1,0 +1,15 @@
+post_install() {
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+    ECHO='echo'
+  fi
+  
+  $ECHO "\033[36mPlease add 'transflag' hook to /etc/mkinitcpio.conf and remake initcpio\033[0m"
+}
+
+post_upgrade() {
+  post_install
+} 

@@ -1,0 +1,15 @@
+pkgbase = mkinitcpio-transflag
+	pkgdesc = Display a transflag while booting!
+	pkgver = 1.0
+	pkgrel = 1
+	install = install
+	arch = any
+	license = MIT
+	depends = mkinitcpio>=0.9.0
+	source = transflag_hook
+	source = transflag_install
+	md5sums = 9921e9057c72f858ca4480f738aa2026
+	md5sums = 0745d47e90f1bc6fe391a56e5bcb2529
+
+pkgname = mkinitcpio-transflag
+
