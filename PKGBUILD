@@ -7,13 +7,23 @@
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
 pkgver=0.62.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=('LGPL')
-depends=('gtk3' 'pcre2' 'gnutls')
-makedepends=('git' 'intltool' 'gobject-introspection' 'gtk-doc' 'meson' 'pango' 'vala' 'gperf' 'glade')
+depends=('fribidi'
+         'gnutls'
+         'gtk3'
+         'intltool'
+         'pcre2'
+         'systemd-libs')
+makedepends=('git'
+             'gobject-introspection'
+             'gtk-doc'
+             'meson'
+             'vala'
+             'gperf')
 options=('!emptydirs')
 
 # Fedora patches: https://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
@@ -28,10 +38,10 @@ _fcommit='03ce959c3bbba97cd9a0c50fa0d6037d695eaf74'
 _vtetag=${pkgver}
 
 source=(
-	"git+https://git.gnome.org/browse/vte#tag=$_vtetag"
-	"${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
-	"${_fpatchfile101}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile101}"
-	"${_fpatchfile000}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile000}"
+    "git+https://git.gnome.org/browse/vte#tag=$_vtetag"
+    "${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
+    "${_fpatchfile101}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile101}"
+    "${_fpatchfile000}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile000}"
 )
 sha256sums=('SKIP'
             '46cdbbf67dcd41c1a4d3c93c50c08ce2f0f58d0fa10d3247bc18a1015c21c1ea'
@@ -39,38 +49,47 @@ sha256sums=('SKIP'
             '25dee260b62c310ca00f8ac94b27c86c3d1bcf9dc697ec47e2515079e7ee1310')
 
 prepare () {
-	cd "vte"
+    cd "vte"
 
-	patch -p1 -i "../${_fpatchfile000}-${_fcommit}"
-	patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
-	patch -p1 -i "../${_fpatchfile101}-${_fcommit}"
+    patch -p1 -i "../${_fpatchfile000}-${_fcommit}"
+    patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
+    patch -p1 -i "../${_fpatchfile101}-${_fcommit}"
 }
 
 build() {
-	arch-meson vte build -Db_lto=false -D docs=true
-	ninja -C build
+    arch-meson vte build \
+        -D b_lto=false \
+        -D docs=true
+    meson compile -C build
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
 
 package_vte3-notification(){
-	depends+=('vte-notification-common')
-	provides=("vte3=${pkgver}")
-	conflicts=('vte3')
+    depends+=('vte-notification-common')
+    provides=("vte3=${pkgver}")
+    conflicts=('vte3')
 
-	DESTDIR="${pkgdir}" meson install -C build
+    DESTDIR="${pkgdir}" meson install -C build
 
-	mv "$pkgdir/etc/profile.d/vte.sh" "$srcdir"
-	mv "$pkgdir/etc/profile.d/vte.csh" "$srcdir"
-	mv "$pkgdir/usr/lib/vte-urlencode-cwd" "$srcdir"
+    _pick vte-common "$pkgdir"/etc/profile.d
+    _pick vte-common "$pkgdir"/usr/lib/{systemd,vte-urlencode-cwd}
 }
 
 package_vte-notification-common() {
-	depends=('sh')
-	pkgdesc='Common files used by vte and vte3'
-	arch=('any')
-	provides=("vte-common=${pkgver}")
-	conflicts=('vte-common')
+    depends=('sh')
+    pkgdesc='Common files used by vte and vte3'
+    arch=('any')
+    provides=("vte-common=${pkgver}")
+    conflicts=('vte-common')
 
-	install -Dt "$pkgdir/etc/profile.d" -m644 vte.sh
-	install -Dt "$pkgdir/etc/profile.d" -m644 vte.csh
-	install -Dt "$pkgdir/usr/lib" -m755 vte-urlencode-cwd
+    mv vte-common/* "$pkgdir"
 }

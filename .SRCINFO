@@ -1,45 +1,44 @@
 pkgbase = vte3-notification
-	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora patches
-	pkgver = 0.62.3
-	pkgrel = 1
-	url = https://wiki.gnome.org/Apps/Terminal/VTE
-	arch = i686
-	arch = x86_64
-	license = LGPL
-	makedepends = git
-	makedepends = intltool
-	makedepends = gobject-introspection
-	makedepends = gtk-doc
-	makedepends = meson
-	makedepends = pango
-	makedepends = vala
-	makedepends = gperf
-	makedepends = glade
-	depends = gtk3
-	depends = pcre2
-	depends = gnutls
-	options = !emptydirs
-	source = git+https://git.gnome.org/browse/vte#tag=0.62.3
-	source = vte291-cntnr-precmd-preexec-scroll.patch-03ce959c3bbba97cd9a0c50fa0d6037d695eaf74::https://src.fedoraproject.org/rpms/vte291/raw/03ce959c3bbba97cd9a0c50fa0d6037d695eaf74/f/vte291-cntnr-precmd-preexec-scroll.patch
-	source = vte291-gcc11.patch-03ce959c3bbba97cd9a0c50fa0d6037d695eaf74::https://src.fedoraproject.org/rpms/vte291/raw/03ce959c3bbba97cd9a0c50fa0d6037d695eaf74/f/vte291-gcc11.patch
-	source = 0001-Revert-widget-Limit-select-all-to-the-writable-regio.patch-03ce959c3bbba97cd9a0c50fa0d6037d695eaf74::https://src.fedoraproject.org/rpms/vte291/raw/03ce959c3bbba97cd9a0c50fa0d6037d695eaf74/f/0001-Revert-widget-Limit-select-all-to-the-writable-regio.patch
-	sha256sums = SKIP
-	sha256sums = 46cdbbf67dcd41c1a4d3c93c50c08ce2f0f58d0fa10d3247bc18a1015c21c1ea
-	sha256sums = 7615f23c0fdf723c3ad5545b11c4e532d392c8ff1034468e33e85dd66a1d9fd3
-	sha256sums = 25dee260b62c310ca00f8ac94b27c86c3d1bcf9dc697ec47e2515079e7ee1310
+	  pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora patches
+	  pkgver = 0.62.3
+	  pkgrel = 2
+	  url = https://wiki.gnome.org/Apps/Terminal/VTE
+	  arch = i686
+	  arch = x86_64
+	  license = LGPL
+	  depends = fribidi
+	  depends = gnutls
+	  depends = gtk3
+	  depends = pcre2
+	  depends = systemd-libs
+	  makedepends = git
+	  makedepends = gobject-introspection
+	  makedepends = gperf
+	  makedepends = gtk-doc
+	  makedepends = intltool
+	  makedepends = meson
+	  makedepends = vala
+	  options = !emptydirs
+	  source = git+https://git.gnome.org/browse/vte#tag=0.62.3
+	  source = vte291-cntnr-precmd-preexec-scroll.patch-03ce959c3bbba97cd9a0c50fa0d6037d695eaf74::https://src.fedoraproject.org/rpms/vte291/raw/03ce959c3bbba97cd9a0c50fa0d6037d695eaf74/f/vte291-cntnr-precmd-preexec-scroll.patch
+	  source = vte291-gcc11.patch-03ce959c3bbba97cd9a0c50fa0d6037d695eaf74::https://src.fedoraproject.org/rpms/vte291/raw/03ce959c3bbba97cd9a0c50fa0d6037d695eaf74/f/vte291-gcc11.patch
+	  source = 0001-Revert-widget-Limit-select-all-to-the-writable-regio.patch-03ce959c3bbba97cd9a0c50fa0d6037d695eaf74::https://src.fedoraproject.org/rpms/vte291/raw/03ce959c3bbba97cd9a0c50fa0d6037d695eaf74/f/0001-Revert-widget-Limit-select-all-to-the-writable-regio.patch
+	  sha256sums = SKIP
+	  sha256sums = 46cdbbf67dcd41c1a4d3c93c50c08ce2f0f58d0fa10d3247bc18a1015c21c1ea
+	  sha256sums = 7615f23c0fdf723c3ad5545b11c4e532d392c8ff1034468e33e85dd66a1d9fd3
+	  sha256sums = 25dee260b62c310ca00f8ac94b27c86c3d1bcf9dc697ec47e2515079e7ee1310
 
 pkgname = vte3-notification
-	depends = gtk3
-	depends = pcre2
-	depends = gnutls
-	depends = vte-notification-common
-	provides = vte3=0.62.3
-	conflicts = vte3
+	  depends = gtk3
+	  depends = pcre2
+	  depends = gnutls
+	  depends = vte-notification-common
+	  provides = vte3=0.62.3
+	  conflicts = vte3
 
 pkgname = vte-notification-common
-	pkgdesc = Common files used by vte and vte3
-	arch = any
-	depends = sh
-	provides = vte-common=0.62.3
-	conflicts = vte-common
-
+	  pkgdesc = Common files used by vte and vte3
+	  arch = any
+	  depends = sh
+	  provides = vte-common=0.62.3
+	  conflicts = vte-common
