@@ -5,7 +5,7 @@
 
 # Maintainer: HackMe <hackme.any@protonmail.com>
 pkgname=st-hackme
-pkgver=1.0.r1.891b769
+pkgver=1.0.r2.63f29cf
 pkgrel=1
 pkgdesc="This is my build of ST"
 arch=(x86_64)

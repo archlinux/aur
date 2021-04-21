@@ -1,6 +1,6 @@
 pkgbase = st-hackme
 	pkgdesc = This is my build of ST
-	pkgver = 1.0.r1.891b769
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/HackMEAny/simple_terminal.git
 	arch = x86_64
