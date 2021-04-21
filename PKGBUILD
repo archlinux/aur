@@ -1,6 +1,7 @@
 # Maintainer: Art Dev <artdevjs at gmail dot com>
 pkgname=gitui-bin
-pkgver=0.11.0
+_pkgname=gitui
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Blazing fast terminal-ui for git written in Rust'
 arch=('i686' 'x86_64')
@@ -10,11 +11,11 @@ depends=('libgit2')
 provides=("gitui")
 conflicts=('gitui' 'gitui-git')
 source=(
-  https://github.com/dotiful/AUR/raw/master/gitui-bin/gitui-${pkgver}-${pkgrel}-x86_64.pkg.tar
+  # https://github.com/dotiful/AUR/raw/master/gitui-bin/gitui-${pkgver}-${pkgrel}-x86_64.pkg.tar
+  https://github.com/extrawurst/gitui/releases/download/v${pkgver}/${_pkgname}-linux-musl.tar.gz
 )
-noextract=(gitui-${pkgver}-${pkgrel}-x86_64.pkg.tar)
-package() {
-  tar -xvf $srcdir/gitui-${pkgver}-${pkgrel}-x86_64.pkg.tar -C $pkgdir --exclude=".*"
+package(){
+  install -Dm755 ${srcdir}/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 }
 
-sha256sums=('35ef25b2cb6332d67ee758cbfcb3755bb81893ebeac7acdb9c62dd89a0e545c3')
+sha256sums=('73a6a8e8944b129c35b0bffdad90a60b06b4709aa0a694db1b577ca5cb200918')
