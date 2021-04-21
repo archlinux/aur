@@ -1,7 +1,7 @@
 pkgbase = corekeyboard
-	pkgdesc = A virtual keyboard for X11 from the CoreApps family.
+	pkgdesc = A virtual keyboard for X11 from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corekeyboard
 	arch = x86_64
 	arch = aarch64
