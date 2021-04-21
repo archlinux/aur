@@ -1,0 +1,18 @@
+pkgbase = vim-lightline-bufferline-git
+	pkgdesc = A lightweight bufferline plugin for vim-lightline
+	pkgver = r89.570e732
+	pkgrel = 1
+	url = https://github.com/mengelbrecht/lightline-bufferline
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	depends = vim-lightline-git
+	provides = vim-lightline-bufferline
+	conflicts = vim-lightline-bufferline
+	source = vim-lightline-bufferline-git::git+https://github.com/mengelbrecht/lightline-bufferline
+	md5sums = SKIP
+
+pkgname = vim-lightline-bufferline-git
+
