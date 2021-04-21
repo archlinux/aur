@@ -33,10 +33,10 @@ sha512sums=('7a1453161acaeb67bc8ce2df15fd2870b903968581567761ef939ea91665fd36f71
             '43519ec81d008c9f949ef52b98a718473913e888d99ff6598083e30cd1f07376b5e58a7639fd309ee19056c18eac58cbf6a31bec6bfd2509ebce9fa9d6919743')
 
 package() {
-	msg2 "Extracting the data.tar.xz..."
+	echo "  -> Extracting the data.tar.xz..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-	msg2 "Moving stuff in place..."
+	echo "  -> Moving stuff in place..."
 	# Launcher
 	install -m755 google-chrome-$_channel.sh "$pkgdir"/usr/bin/google-chrome-$_channel
 
@@ -49,7 +49,7 @@ package() {
 	# License
 	install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome/eula_text.html
 
-	msg2 "Fixing Chrome icon resolution..."
+	echo "  -> Fixing Chrome desktop entry..."
 	sed -i \
 		-e "/Exec=/i\StartupWMClass=Google-chrome" \
 		-e "s/x-scheme-handler\/ftp;\?//g" \
