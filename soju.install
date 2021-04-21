@@ -1,0 +1,5 @@
+#/bin/bash
+
+post_install() {
+    echo '==> Modify /etc/soju/config (man soju)'
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=soju IRC bouncer service
+After=network.target
+
+[Service]
+Type=simple
+User=soju
+Restart=always
+ExecStart=/usr/bin/soju --config /etc/soju/config
+
+[Install]
+WantedBy=multi-user.target

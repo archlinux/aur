@@ -1,0 +1,26 @@
+pkgbase = soju
+	pkgdesc = A user-friendly IRC bouncer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://soju.im/
+	install = soju.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = go
+	makedepends = scdoc
+	depends = sqlite
+	backup = etc/soju/config
+	source = https://git.sr.ht/~emersion/soju/refs/download/v0.1.0/soju-0.1.0.tar.gz
+	source = https://git.sr.ht/~emersion/soju/refs/download/v0.1.0/soju-0.1.0.tar.gz.sig
+	source = soju.sysusers
+	source = soju.service
+	source = soju.tmpfiles
+	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
+	sha256sums = 9bca345e5fda38ecf647aad5c2fba000cc9b6e076f381d41dd74293f685f1f49
+	sha256sums = SKIP
+	sha256sums = c050d3f376f43e1cc22e75f445027862df8d09230e18cbb0913ab58ddced78aa
+	sha256sums = d90c047f5f27a06d45840698a0caa9940fc02c75187c04348882f20359655c2b
+	sha256sums = 7d9e772f42765a82be0459bcbded2074f68d450ab09c3627ca3b59978188b61b
+
+pkgname = soju
+
