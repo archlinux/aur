@@ -3,7 +3,7 @@
 
 pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
-_pkgver=2021-02-09
+_pkgver=2021-04-20
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Qogir is a flat Design theme for GTK"

@@ -1,6 +1,6 @@
 pkgbase = qogir-gtk-theme
 	pkgdesc = Qogir is a flat Design theme for GTK
-	pkgver = 2021.02.09
+	pkgver = 2021.04.20
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Qogir-theme
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = qogir-gtk-theme
 	optdepends = tela-icon-theme: Recommended icon theme
 	conflicts = qogir-gtk-themes-git
 	options = !strip
-	source = qogir-gtk-theme-2021.02.09.tar.gz::https://github.com/vinceliuice/Qogir-theme/archive/2021-02-09.tar.gz
+	source = qogir-gtk-theme-2021.04.20.tar.gz::https://github.com/vinceliuice/Qogir-theme/archive/2021-04-20.tar.gz
 	sha256sums = SKIP
 
 pkgname = qogir-gtk-theme
