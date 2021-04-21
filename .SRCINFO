@@ -1,14 +1,14 @@
 pkgbase = phpstan
 	pkgdesc = PHP Static Analysis Tool
-	pkgver = 0.12.83
+	pkgver = 0.12.84
 	pkgrel = 1
 	url = https://phpstan.org/
 	arch = any
 	license = MIT
 	depends = php>=7.1.0
-	source = phpstan-0.12.83.phar::https://github.com/phpstan/phpstan/releases/download/0.12.83/phpstan.phar
-	source = phpstan-0.12.83.phar.asc::https://github.com/phpstan/phpstan/releases/download/0.12.83/phpstan.phar.asc
-	source = https://raw.githubusercontent.com/phpstan/phpstan/0.12.83/LICENSE
+	source = phpstan-0.12.84.phar::https://github.com/phpstan/phpstan/releases/download/0.12.84/phpstan.phar
+	source = phpstan-0.12.84.phar.asc::https://github.com/phpstan/phpstan/releases/download/0.12.84/phpstan.phar.asc
+	source = https://raw.githubusercontent.com/phpstan/phpstan/0.12.84/LICENSE
 	validpgpkeys = D32680D5957DC7116BE29C14CF1A108D0E7AE720
 	md5sums = SKIP
 	md5sums = SKIP
