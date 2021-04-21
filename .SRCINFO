@@ -14,8 +14,6 @@ pkgbase = vimiv-qt
 	optdepends = python-piexif: alternative for exif support
 	provides = vimiv
 	conflicts = vimiv
-	conflicts = vimiv-git
-	conflicts = vimiv-qt-git
 	source = https://github.com/karlch/vimiv-qt/archive/v0.8.0.tar.gz
 	sha256sums = 82a268c9a7c254eb1a94f796c1536a74a9fe505da34859803825f22d31c136b6
 
