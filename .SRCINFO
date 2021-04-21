@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-rc
-	pkgver = 12.0.0rc4
+	pkgver = 12.0.0rc5
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = lib32-llvm-rc
 	makedepends = gcc-multilib
 	makedepends = lib32-libxml2
 	options = staticlibs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc4/llvm-project-12.0.0rc4.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc5/llvm-project-12.0.0rc5.src.tar.xz
 	md5sums = SKIP
 
 pkgname = lib32-llvm-rc
