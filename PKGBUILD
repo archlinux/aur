@@ -4,7 +4,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot-headless
-pkgver=3.2.3
+pkgver=3.3
 pkgrel=1
 pkgdesc='An advanced, feature packed, multi-platform 2D and 3D game engine'
 url='http://www.godotengine.org'
