@@ -7,7 +7,7 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('536' '786' '923' '1440')
-_merge_requests_to_use=('536' '1440') # safe pick
+_merge_requests_to_use=()
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
