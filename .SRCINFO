@@ -1,0 +1,16 @@
+pkgbase = python-pyutilib
+	pkgdesc = collection of Python utilities for Pyomo
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/PyUtilib/pyutilib
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-nose
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/P/PyUtilib/PyUtilib-6.0.0.tar.gz
+	sha256sums = d3c14f8ed9028a831b2bf51b8ab7776eba87e66cfc58a06b99c359aaa640f040
+
+pkgname = python-pyutilib
+
