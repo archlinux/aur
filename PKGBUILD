@@ -6,15 +6,15 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cget
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="A Curl and Python Based simple download command"
+pkgdesc="A Curl and Python Based simple download command (SYNTAX: cget url file)"
 arch=(x86_64)
 url="https://pypi.org/project/notificationcenter"
 license=('GPL')
 groups=()
-depends=(python)
-makedepends=(python python-setuptools)
+depends=(curl)
+makedepends=(pyinstaller)
 checkdepends=()
 optdepends=()
 provides=()
