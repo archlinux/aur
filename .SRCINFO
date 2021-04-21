@@ -13,6 +13,7 @@ pkgbase = openmp-rc
 	provides = openmp
 	conflicts = openmp
 	conflicts = openmp-git
+	conflicts = openmp-stable
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc5/llvm-project-12.0.0rc5.src.tar.xz
 	md5sums = SKIP
 
