@@ -13,6 +13,9 @@ optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
 	'ffmpeg: to record voice msgs and upload videos correctly'
 	'urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin'
+	'ranger: can be used to choose file when sending, customizable with FILE_PICKER_CMD'
+	'nnn: can be used to choose file when sending, customizable with FILE_PICKER_CMD'
+	'fzf: to create groups and secret chats, used for single and multiple user selection'
 )
 conflicts=('telegram-tg-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
