@@ -1,7 +1,7 @@
 pkgbase = fish-embark-theme-git
 	pkgdesc = A port of the Embark colorscheme for Fish shell
 	pkgver = r4.e7a332f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~lmartinez/fish-embark-theme
 	arch = any
 	groups = fish-plugins

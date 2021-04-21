@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 pkgname=fish-embark-theme-git
 pkgver=r4.e7a332f
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the Embark colorscheme for Fish shell"
 arch=('any')
 url="https://git.sr.ht/~lmartinez/fish-embark-theme"
@@ -24,4 +24,5 @@ package() {
   find conf.d \
     -type f -exec install -Dvm 644 '{}' "$pkgdir/etc/fish/{}" \;
   install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
