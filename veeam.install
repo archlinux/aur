@@ -1,7 +1,8 @@
 post_install() {
     echo "post install"
+    groupadd veeam
     systemctl enable veeamservice.service
-    systemctl start veeamservice.service    
+    systemctl restart veeamservice.service    
     echo "."
 }
 
