@@ -2,23 +2,21 @@
 
 _pkgname=UbuntuIndicatorWeather
 pkgname=simple-weather-indicator
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 pkgdesc='A simple weather indicator'
-arch=('i686' 'x86_64')
-url='https://github.com/kasramp/UbuntuIndicatorWeather'
+arch=('any')
+url='https://github.com/Phoenix09/UbuntuIndicatorWeather'
 license=('GPL3')
-depends=('libappindicator-gtk3' 'libnotify' 'python2-retrying' 'python2-gobject')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kasramp/UbuntuIndicatorWeather/archive/v${pkgver}.tar.gz")
-sha256sums=('751155f3fb8037c31e6ffee51d1411a50bef0901c3ed43fb001589f1efb29f44')
+depends=('libappindicator-gtk3' 'libnotify' 'python-retrying' 'python-gobject')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Phoenix09/UbuntuIndicatorWeather/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c264f4cf0727e81619e98e4534720e5698c32a928143b5b235ba15a0b0ea7853')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   # Don't install to ubuntu- directory
   find . -type f -exec sed -i 's:ubuntu-indicator-weather:simple-weather-indicator:g' '{}' \;
-  # python2 fix
-  sed -i 's:exec python:&2:' indicator-weather
 }
 
 package() {
