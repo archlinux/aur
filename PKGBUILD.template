@@ -1,0 +1,101 @@
+# Maintainer: Chris Billington <chrisjbillington@gmail.com>
+_pkgname=linux-zen
+_pkgver=%PKGVER
+_kernver=%KERNVER
+_zenver=%ZENVER
+_pkgrel=%PKGREL
+pkgbase="${_pkgname}-versioned-bin"
+KERNNAME="${_kernver}-${_zenver}-${_pkgrel}-zen"
+_versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
+pkgname=("${_pkgname}-versioned-bin"
+         "${_pkgname}-versioned-headers-bin"
+         "${_pkgname}-versioned-docs-bin"
+         "${_versioned_pkgname}-bin"
+         "${_versioned_pkgname}-headers-bin"
+         "${_versioned_pkgname}-docs-bin")
+pkgver=${_pkgver}
+pkgrel=${_pkgrel}
+pkgdesc="%KERN_PKGDESC | repackaged with a unique package name for each version"
+url="%URL"
+arch=(x86_64)
+license=(GPL2)
+options=('!strip')
+
+_kernpkg=${_pkgname}-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+_headerspkg=${_pkgname}-headers-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+_docspkg=${_pkgname}-docs-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+
+# See if the sources are available from our own mirror:
+_kernsrc=$(pacman -Spdd "${_pkgname}" 2> /dev/null)
+_headerssrc=$(pacman -Spdd "${_pkgname}-headers" 2> /dev/null)
+_docssrc=$(pacman -Spdd "${_pkgname}-docs" 2> /dev/null)
+
+# If not, then use the Arch Linux archive:
+if [ "$(basename "${_kernsrc}" 2> /dev/null)" != "${_kernpkg}" ]; then
+  _arch_archive=https://archive.archlinux.org/packages/.all
+  _kernsrc=${_arch_archive}/${_kernpkg}
+  _headerssrc=${_arch_archive}/${_headerspkg}
+  _docssrc=${_arch_archive}/${_docspkg}
+fi
+
+source=("${_kernsrc}"
+        "${_headerssrc}"
+        "${_docssrc}")
+
+noextract=("${source[@]##*/}")
+
+sha256sums=('0358dc97518d1e1dcb8aae3b0a3c9d0e43dd69708cd92ecef22e6e9dd3f9d1c8'
+            'b6f662509ddcaa185f8eef31157cbb1e576efa6453e1a86c440bd3a21e1bc591'
+            '19802a951538749da4d5120ff89d1fc792e4bb8f465c1d3455d3803084e5f922')
+
+package_linux-zen-versioned-bin() {
+  pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
+  depends=("${_versioned_pkgname}-bin")
+  optdepends=('grub-hook: to run grub-mkconfig when kernels are added/removed')
+}
+
+package_linux-zen-versioned-headers-bin() {
+  pkgdesc="Dummy package depending on ${_versioned_pkgname}-headers-bin"  
+  depends=("${_versioned_pkgname}-headers-bin")
+}
+
+package_linux-zen-versioned-docs-bin() {
+  pkgdesc="Dummy package depending on ${_versioned_pkgname}-docs-bin"  
+  depends=("${_versioned_pkgname}-docs-bin")
+}
+
+package_linux%PKGVER-%PKGREL-zen-bin() {
+  pkgdesc="%KERN_PKGDESC, version ${KERNNAME}"
+  %KERN_DEPENDS
+  %KERN_CONFLICTS
+  %KERN_OPTDEPENDS
+  %KERN_PROVIDES
+  %KERN_REPLACES
+  tar -xf "${_kernpkg}" -C "${pkgdir}"
+  rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
+  sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+}
+
+package_linux%PKGVER-%PKGREL-zen-headers-bin() {
+  pkgdesc="%HEADERS_PKGDESC ${KERNNAME}"
+  %HEADERS_DEPENDS
+  %HEADERS_CONFLICTS
+  %HEADERS_OPTDEPENDS
+  %HEADERS_PROVIDES
+  %HEADERS_REPLACES
+  tar -xf "${_headerspkg}" -C "${pkgdir}"
+  rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
+  mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
+}
+
+package_linux%PKGVER-%PKGREL-zen-docs-bin() {
+  pkgdesc="%DOCS_PKGDESC ${KERNNAME}"
+  %DOCS_DEPENDS
+  %DOCS_CONFLICTS
+  %DOCS_OPTDEPENDS
+  %DOCS_PROVIDES
+  %DOCS_REPLACES
+  tar -xf "${_docspkg}" -C "${pkgdir}"
+  rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
+  mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
+}
