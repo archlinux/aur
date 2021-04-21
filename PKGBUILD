@@ -4,8 +4,8 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.5.r84.ge5544750
-pkgrel=1
+pkgver=0.9.5.r84.ge554475
+pkgrel=2
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('i686' 'x86_64')
@@ -28,9 +28,8 @@ source=("git+https://gitlab.freedesktop.org/plymouth/plymouth.git"
        'plymouth.encrypt_install'
        'lxdm-plymouth.service'
        'lightdm-plymouth.service'
-       'slim-plymouth.service'
        'sddm-plymouth.service'
-#       'plymouth-deactivate.service'
+       'plymouth-deactivate.service' # needed for sddm
 #       'plymouth-start.service.in.patch'
 #       'plymouth-start.path'
        'plymouth.initcpio_hook'
@@ -47,8 +46,8 @@ sha256sums=('SKIP'
             '373ec20fe4c47e693a0c45cc06dd906e35dd1d70a85546bd1d571391de11763a'
             '06b31999cf60f49e536c7a12bc1c4f75f2671feb848bf5ccb91a963147e2680d'
             '86d0230d9393c9d83eb7bb430e6b0fb5e3f32e78fcd30f3ecd4e6f3c30b18f71'
-            '9b5534921c5bf92a9285ba53b323209e812145c204ac5fed6899b7aad78300ef'
             'c39f526f7e99173bc8f012900f53257537a25e2d8c19e23df630f1fe9a7627ba'
+            '3b17ed58b59a4b60d904c60bba52bae7ad685aa8273f6ceaae08a15870c0a9eb'
             '2a80e2cad8de428358647677afa166219589d3338c5f94838146c804a29e2769'
             '2dd996a86beb1dc1fa5e45a14e98daa8fc505c5d1dff94bc5fdb3246a113d5ca'
             '4c3e59af4cda996f7615f80a94bbd6339621d998888bcf912a13e8534605608a'
