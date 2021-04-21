@@ -1,0 +1,15 @@
+pkgbase = torrent7z
+	pkgdesc = A fork of torrent7z, viz a derivative of 7zip that produces invariant .7z archives for torrenting
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/BubblesInTheTub/torrent7z
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	source = torrent7z-1.3.tar.gz::https://github.com/BubblesInTheTub/torrent7z/archive/refs/tags/1.3.tar.gz
+	source = fix-gcc-error.patch
+	md5sums = 2465a59918a47d010c07794e70e06194
+	md5sums = 508ab9a64875758be785d0665a5263bd
+
+pkgname = torrent7z
+

@@ -1,0 +1,22 @@
+From 5958f42a364c430b3ed4ac68911bbbea1f967fc4 Mon Sep 17 00:00:00 2001
+From: paulyc <paulyc@quetzalcoatl.us>
+Date: Fri, 29 Jan 2021 08:09:01 -0500
+Subject: [PATCH] GCC 10.2 is picky about the signdedness of switch cases
+
+---
+ linux_src/p7zip_4.65/CPP/Windows/Error.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/linux_src/p7zip_4.65/CPP/Windows/Error.cpp b/linux_src/p7zip_4.65/CPP/Windows/Error.cpp
+index 88008d7..e3ad9a4 100644
+--- a/linux_src/p7zip_4.65/CPP/Windows/Error.cpp
++++ b/linux_src/p7zip_4.65/CPP/Windows/Error.cpp
+@@ -13,7 +13,7 @@ bool MyFormatMessage(DWORD messageID, CSysString &message)
+   const char * txt = 0;
+   AString msg;
+ 
+-  switch(messageID) {
++  switch((HRESULT)messageID) {
+     case ERROR_NO_MORE_FILES   : txt = "No more files"; break ;
+     case E_NOTIMPL             : txt = "E_NOTIMPL"; break ;
+     case E_NOINTERFACE         : txt = "E_NOINTERFACE"; break ;
