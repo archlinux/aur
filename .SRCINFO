@@ -1,7 +1,7 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
 	pkgver = 2.3.3op2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/OpenPrinting/cups
 	install = cups-nosystemd.install
@@ -53,12 +53,14 @@ pkgbase = cups-nosystemd
 	source = cups.pam
 	source = cups-no-export-ssllibs.patch
 	source = cups-1.6.2-statedir.patch
+	source = increase_timeout.patch
 	sha256sums = deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df
 	sha256sums = 87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b
 	sha256sums = d87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832
 	sha256sums = 23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af
+	sha256sums = 72a04cb74c4b6240affbc32cf759562cca94efccc213210780b1e7b98f00dfd5
 
 pkgname = cups-nosystemd
 
