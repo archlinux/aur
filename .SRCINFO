@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
 	pkgver = 78.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = x86_64
 	license = GPL
@@ -32,7 +32,7 @@ pkgbase = icecat
 	makedepends = mercurial
 	makedepends = git
 	makedepends = lld
-	makedepends = perl-file-rename
+	makedepends = perl-rename
 	depends = gtk3
 	depends = libxt
 	depends = mime-types
