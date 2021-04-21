@@ -1,7 +1,7 @@
 pkgbase = coretoppings
 	pkgdesc = Additional features,plugins etc for CuboCore Application Suite.
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/cubocore/coreapps/coretoppings
 	arch = x86_64
 	arch = aarch64
