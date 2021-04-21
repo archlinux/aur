@@ -1,0 +1,2 @@
+d /var/lib/pyroscope 0750 pyroscope pyroscope
+d /var/log/pyroscope 0750 pyroscope pyroscope
