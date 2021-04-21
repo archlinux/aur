@@ -1,0 +1,17 @@
+pkgbase = broguelite
+	pkgdesc = Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor.
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://github.com/HomebrewHomunculus/BrogueLite
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = sdl2_image
+	depends = sdl2
+	source = broguelite-1.9.3.tar.gz::https://github.com/HomebrewHomunculus/BrogueLite/archive/v1.9.3.tar.gz
+	source = brogue.sh
+	sha256sums = bc95355cdb089c608594b539f2af8a8f94d1ff68f9b745ddcf7c6e3f845fbe23
+	sha256sums = 296083114076a47fea7aa3e287e4c4b889f697dbb0e30e09230963d7ae840173
+
+pkgname = broguelite
+
