@@ -1,4 +1,4 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 
 pkgname=aesfix
@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://citp.princeton.edu/research/memory/'
 license=('BSD')
 depends=('gcc-libs')
-source=("http://citpsite.s3-website-us-east-1.amazonaws.com/oldsite-htdocs/memory-content/src/${pkgname}-${pkgver}.tar.gz")
+source=("https://citpsite.s3.amazonaws.com/memory-content/src/aesfix-${pkgver}.tar.gz")
 sha256sums=('7b177e876caee6aae48f0123102f11df6594a738483f9a47f2c76fe81cc045d4')
 
 build() {
