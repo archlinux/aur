@@ -14,6 +14,8 @@ pkgver=90.0a1.r642117+
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
 arch=(x86_64 aarch64)
+backup=('usr/lib/firedragon/firedragon.cfg'
+        'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 provides=(firedragon)
 url="https://gitlab.com/dr460nf1r3/settings/"
