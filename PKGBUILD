@@ -1,7 +1,7 @@
 # Maintainer: Charles Delfly <charles@delfly.fr>
 pkgname=xs-update-manjaro
 pkgver=3.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic update of Archlinux/Manjaro System"
 arch=('any')
 url="https://github.com/lectrode/xs-update-manjaro"
@@ -38,6 +38,9 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
+    if ! pacman -Q manjaro-system > /dev/null 2>&1; then
+        sed -i 's/manjaro-keyring manjaro-system//g' auto-update.sh
+    fi
 }
 
 check() {
