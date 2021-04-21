@@ -2,14 +2,13 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=8.7.1.r412.g0724e8e3
+pkgver=8.7.1.r483.g8bc5dc89
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
-depends=('qt5-quickcontrols'
-         'qt5-quickcontrols2'
+depends=('qt5-quickcontrols2'
          'qt5-svg')
 optdepends=('v4l-utils: Extra formats support for webcams'
             'akvcam-dkms-git: Virtual camera support (Recommended)'
@@ -28,16 +27,16 @@ optdepends=('v4l-utils: Extra formats support for webcams'
             'gksu: Root privileges for virtual camera module'
             'gtksu-git: Root privileges for virtual camera module'
             'kdesudo: Root privileges for virtual camera module')
-makedepends=('git'
-             'v4l-utils'
-             'qt5-tools'
-             'qt5-multimedia'
+makedepends=('alsa-lib'
+             'cmake'
              'ffmpeg'
+             'git'
              'gst-plugins-base-libs'
-             'libpulse'
-             'alsa-lib'
              'jack'
-             'libuvc')
+             'libpulse'
+             'libuvc'
+             'qt5-tools'
+             'v4l-utils')
 provides=('webcamoid')
 conflicts=('webcamoid')
 install="${pkgrealname}.install"
@@ -55,11 +54,15 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgrealname}"
-    qmake-qt5 Webcamoid.pro CONFIG+=silent DAILY_BUILD=1
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DDAILY_BUILD=1 \
+        .
     make $MAKEFLAGS
 }
 
 package() {
     cd "$srcdir/${pkgrealname}"
-    make INSTALL_ROOT="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 }
