@@ -23,6 +23,7 @@ pkgbase = clang-rc
 	conflicts = clang-tools-extra
 	conflicts = clang
 	conflicts = clang-git
+	conflicts = clang-stable
 	replaces = clang-analyzer
 	replaces = clang-tools-extra
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0-rc5/llvm-project-12.0.0rc5.src.tar.xz

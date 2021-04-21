@@ -21,7 +21,7 @@ makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx' 'python2')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'python: for scan-view and git-clang-format'
             'llvm: referenced by some clang headers')
-conflicts=('clang-analyzer' 'clang-tools-extra' 'clang' 'clang-git')
+conflicts=('clang-analyzer' 'clang-tools-extra' 'clang' 'clang-git' 'clang-stable')
 replaces=('clang-analyzer' 'clang-tools-extra')
 provides=('clang-analyzer' 'clang-tools-extra' 'clang')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$versiontag/llvm-project-$pkgver.src.tar.xz")
