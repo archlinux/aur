@@ -1,0 +1,33 @@
+pkgbase = clang-stable
+	pkgdesc = C language family frontend for LLVM
+	pkgver = 12.0.0
+	pkgrel = 1
+	url = https://clang.llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = llvm
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-sphinx
+	makedepends = python2
+	depends = llvm-libs
+	depends = gcc
+	depends = compiler-rt
+	optdepends = openmp: OpenMP support in clang with -fopenmp
+	optdepends = python: for scan-view and git-clang-format
+	optdepends = llvm: referenced by some clang headers
+	provides = clang-analyzer
+	provides = clang-tools-extra
+	provides = clang
+	conflicts = clang-analyzer
+	conflicts = clang-tools-extra
+	conflicts = clang
+	conflicts = clang-git
+	conflicts = clang-rc
+	replaces = clang-analyzer
+	replaces = clang-tools-extra
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/llvm-project-12.0.0.src.tar.xz
+	md5sums = SKIP
+
+pkgname = clang-stable
+
