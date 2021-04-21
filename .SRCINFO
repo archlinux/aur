@@ -1,0 +1,20 @@
+pkgbase = v3d-flow-builder-git
+	pkgdesc = The V3D Flow Builder is a GPU based tool that calculates the optical flow between two input images.
+	pkgver = rev.116
+	pkgrel = 1
+	url = https://github.com/slowmoVideo/v3d-flow-builder
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = glew
+	provides = v3d-flow-builder
+	conflicts = v3d-flow-builder
+	source = git+https://github.com/slowmoVideo/v3d-flow-builder.git
+	md5sums = SKIP
+
+pkgname = v3d-flow-builder-git
+
