@@ -42,43 +42,27 @@ options=(!emptydirs !makeflags !strip)
 _linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _repo=https://hg.mozilla.org/mozilla-unified
 install=firedragon.install
-source_x86_64=("hg+$_repo#revision=autoland"
-               $__pkgname.desktop
-               "git+https://gitlab.com/dr460nf1r3/common.git"
-               "git+https://gitlab.com/dr460nf1r3/settings.git"
-               remove_addons.patch
-               context-menu.patch
-               mozilla-vpn-ad.patch
-               builtin_js.patch)
-source_aarch64=("hg+$_repo#revision=autoland"
-                $__pkgname.desktop
-                "git+https://gitlab.com/dr460nf1r3/common.git"
-                "git+https://gitlab.com/dr460nf1r3/settings.git"
-                remove_addons.patch
-                context-menu.patch
-                arm.patch
-                build-arm-libopus.patch
-                mozilla-vpn-ad.patch
-                builtin_js.patch)
+source=("hg+$_repo#revision=autoland"
+        $__pkgname.desktop
+        "git+https://gitlab.com/dr460nf1r3/common.git"
+        "git+https://gitlab.com/dr460nf1r3/settings.git"
+        remove_addons.patch
+        context-menu.patch
+        mozilla-vpn-ad.patch
+        builtin_js.patch)
+source_aarch64=(arm.patch
+                build-arm-libopus.patch)
 
-sha512sums_x86_64=('SKIP'
-                   '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
-                   'SKIP'
-                   'SKIP'
-                   '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                   '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                   '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
-sha512sums_aarch64=('SKIP'
-                    '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
-                    'SKIP'
-                    'SKIP'
-                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                    '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-                    '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
-                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
-                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                    '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
+sha512sums=('SKIP'
+            '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
+            'SKIP'
+            'SKIP'
+            '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
+            '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
+            '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
+            '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
+sha512sums_aarch64=('7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
+                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35')
 
 pkgver() {
   cd mozilla-unified
