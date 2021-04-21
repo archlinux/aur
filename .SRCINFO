@@ -1,6 +1,6 @@
 pkgbase = zsh-syntax-highlighting-git
 	pkgdesc = Fish shell like syntax highlighting for Zsh (from git)
-	pkgver = 0.8.0.alpha1.pre.redrawhook.r46.g5eb4948
+	pkgver = 0.8.0.alpha1.pre.redrawhook.r50.gebef4e5
 	pkgrel = 1
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
 	install = zsh-syntax-highlighting.install

@@ -1,10 +1,11 @@
-# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
+# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
+# Contributor: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 # Contributor: mjheagle <mjheagle8@gmail.com>
 
 _pkgname=zsh-syntax-highlighting
 pkgname="${_pkgname}-git"
-pkgver=0.8.0.alpha1.pre.redrawhook.r46.g5eb4948
+pkgver=0.8.0.alpha1.pre.redrawhook.r50.gebef4e5
 pkgrel=1
 pkgdesc="Fish shell like syntax highlighting for Zsh (from git)"
 arch=('any')
