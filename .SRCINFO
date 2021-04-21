@@ -1,0 +1,16 @@
+pkgbase = ksmbd-tools
+	pkgdesc = Userspace tools for the cifsd/ksmbd kernel server
+	pkgver = 3.3.9
+	pkgrel = 1
+	url = https://github.com/cifsd-team/ksmbd-tools
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL2
+	depends = ksmbd-dkms
+	source = ksmbd-tools-3.3.9.tar.gz::https://github.com/cifsd-team/ksmbd-tools/archive/3.3.9.tar.gz
+	sha256sums = 7c2c86130912d780df69f26d797d4bd88cf31876a86fdad17032ab684bfe7d8a
+
+pkgname = ksmbd-tools
