@@ -1,0 +1,20 @@
+pkgbase = dewobble-git
+	pkgdesc = Video stabilisation library with awareness of lens projections
+	pkgver = 0.0.1.r36.gf440216
+	pkgrel = 1
+	url = https://git.sr.ht/~hedgepigdaniel/dewobble
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = opencl-clhpp
+	depends = opencl-driver
+	depends = opencv
+	depends = gram-savitzky-golay
+	provides = dewobble
+	conflicts = dewobble
+	source = git+https://git.sr.ht/~hedgepigdaniel/dewobble
+	md5sums = SKIP
+
+pkgname = dewobble-git
+
