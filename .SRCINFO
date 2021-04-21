@@ -1,7 +1,7 @@
 pkgbase = corerenamer
-	pkgdesc = A batch file renamer from the CoreApps family.
+	pkgdesc = A batch file renamer from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corerenamer
 	arch = x86_64
 	arch = aarch64
