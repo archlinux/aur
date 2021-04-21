@@ -1,7 +1,7 @@
 pkgbase = fluida.lv2
 	pkgdesc = An LV2 plugin which wraps the fluidsynth SF2 soundfont player
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brummer10/Fluida.lv2
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = fluida.lv2
 	license = GPL2
 	makedepends = fluidsynth
 	makedepends = lv2
+	makedepends = xxd
 	depends = cairo
 	source = https://github.com/brummer10/Fluida.lv2/files/6329806/Fluida_0.7.tar.gz
 	sha256sums = 9334e7cf2019f79711fd00037953eeed6b1272e826497c2db014dc66a50315a8
