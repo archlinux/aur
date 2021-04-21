@@ -1,6 +1,5 @@
 # Maintainer: theokonos
 # Contributors: dekart811
-# Contributors: loqs
 
 pkgname=veeam
 pkgver=5.0.0.4318
