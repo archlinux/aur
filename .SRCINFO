@@ -1,0 +1,17 @@
+pkgbase = vim-oceanic-material-git
+	pkgdesc = Oceanic Material colorscheme for Vim
+	pkgver = r104.900f487
+	pkgrel = 1
+	url = https://github.com/glepnir/oceanic-material
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-oceanic-material
+	conflicts = vim-oceanic-material
+	source = vim-oceanic-material-git::git+https://github.com/glepnir/oceanic-material
+	md5sums = SKIP
+
+pkgname = vim-oceanic-material-git
+
