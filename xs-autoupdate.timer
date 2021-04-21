@@ -1,0 +1,11 @@
+[Unit]
+Description=Automatically Update computer Timer
+
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=60min
+RandomizedDelaySec=10min
+Unit=xs-autoupdate.service
+
+[Install]
+WantedBy=multi-user.target
