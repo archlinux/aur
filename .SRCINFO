@@ -7,7 +7,8 @@ pkgbase = gnome-shell-performance
 	install = gnome-shell-performance.install
 	arch = x86_64
 	groups = gnome
-	license = GPL2
+	license = GPL
+	checkdepends = xorg-server-xvfb
 	makedepends = gtk-doc
 	makedepends = gnome-control-center
 	makedepends = evolution-data-server
@@ -23,6 +24,7 @@ pkgbase = gnome-shell-performance
 	depends = gnome-bluetooth
 	depends = upower
 	depends = gnome-session
+	depends = gtk4
 	depends = gnome-settings-daemon
 	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas
@@ -36,13 +38,14 @@ pkgbase = gnome-shell-performance
 	depends = libibus
 	depends = gnome-autoar
 	depends = gnome-disk-utility
+	depends = gst-plugin-pipewire
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
 	provides = gnome-shell=3.38.3
 	provides = gnome-shell=1:3.38.3
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=0eb273d3a675d40bc1822817f24aa139bfe5e4a9
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=d9e953e93ca3df38600f0286bf58a8d0e6812e7d
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -54,6 +57,7 @@ pkgname = gnome-shell-performance
 	depends = gnome-bluetooth
 	depends = upower
 	depends = gnome-session
+	depends = gtk4
 	depends = gnome-settings-daemon
 	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas
@@ -67,5 +71,6 @@ pkgname = gnome-shell-performance
 	depends = libibus
 	depends = gnome-autoar
 	depends = gnome-disk-utility
-	depends = libmutter-7.so
+	depends = gst-plugin-pipewire
+	depends = libmutter-8.so
 
