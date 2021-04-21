@@ -3,7 +3,7 @@
 
 pkgname=limesurvey
 pkgver=4.5.1+210420
-pkgrel=1
+pkgrel=2
 pkgdesc="The most popular FOSS online survey tool on the web."
 depends=('php7')
 license=('GPL2')
@@ -19,7 +19,10 @@ optdepends=('apache: a supported application server'
 	    'mariadb: MariaDB database support'
 	    'mysql: MySQL database support'
 	    'postgresql: PostgreSQL database support'
-            'php7-imap: email bounce tracking system')
+            'php7-imap: email bounce tracking system'
+            'php7-iconv: for some encodings when handling excel files'
+            'php7-gd: for CAPTCHAs and graphs'
+            'php7-sodium: for data encryption')
 #            'php7-ldap: import survey participants using ldap')
 
 backup=('etc/webapps/limesurvey/config.php')
