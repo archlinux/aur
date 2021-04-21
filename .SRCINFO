@@ -1,24 +1,23 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
 	pkgver = 3.38.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
 	arch = x86_64
 	groups = gnome
 	license = GPL
-	makedepends = intltool
-	makedepends = itstool
-	makedepends = docbook-xsl
-	makedepends = libnautilus-extension
-	makedepends = appdata-tools
-	makedepends = gnome-shell
-	makedepends = gconf
-	makedepends = vala
-	makedepends = yelp-tools
 	depends = vte3-notification>=0.62.3
 	depends = gsettings-desktop-schemas
-	depends = dconf
+	makedepends = git
+	makedepends = appstream-glib
+	makedepends = docbook-xsl
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = libnautilus-extension
+	makedepends = gnome-shell
+	makedepends = vala
+	makedepends = yelp-tools
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
 	provides = gnome-terminal=3.38.1
