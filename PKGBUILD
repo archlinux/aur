@@ -3,8 +3,8 @@
 
 pkgname=libcsys
 pkgver=4.2.0
-pkgrel=1
-pkgdesc="Library for managing drive and getting system resource information in real time."
+pkgrel=2
+pkgdesc="Library for managing drive and getting system resource information in real time"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
@@ -22,12 +22,12 @@ build() {
   cd build
   cmake ../${pkgname}-v${pkgver} \
 	-GNinja \
-	-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-	-DCMAKE_INSTALL_LIBDIR=${pkgdir}/usr/lib
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=lib
   ninja
 }
 
 package() {
   cd build
-  ninja install
+  DESTDIR="${pkgdir}" ninja install
 }

@@ -1,7 +1,7 @@
 pkgbase = libcsys
-	pkgdesc = Library for managing drive and getting system resource information in real time.
+	pkgdesc = Library for managing drive and getting system resource information in real time
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/libcsys
 	arch = x86_64
 	arch = aarch64
