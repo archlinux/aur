@@ -6,6 +6,7 @@ pkgbase = gamja-git
 	arch = any
 	license = AGPL3
 	makedepends = npm
+	makedepends = git
 	provides = gamja
 	conflicts = gamja
 	source = gamja::git+https://git.sr.ht/~emersion/gamja
