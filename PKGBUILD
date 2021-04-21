@@ -5,7 +5,7 @@
 
 pkgname=boxes
 pkgver=2.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Text mode box and comment drawing filter"
 url="http://boxes.thomasjensen.com/"
 arch=('i686' 'x86_64')
