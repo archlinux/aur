@@ -2,7 +2,6 @@
 pkgname=pyroscope-bin
 pkgver=0.0.29
 pkgrel=1
-epoch=
 pkgdesc="Continuous profiling platform"
 arch=(x86_64)
 url="https://pyroscope.io/"
