@@ -5,7 +5,7 @@
 
 # Maintainer: HackMe <hackme.any@protonmail.com>
 pkgname=st-hackme
-pkgver=r1131.4fad954
+pkgver=1.0.r1.891b769
 pkgrel=1
 pkgdesc="This is my build of ST"
 arch=(x86_64)
@@ -26,7 +26,7 @@ prepare() {
 
 pkgver() {
   cd "simple_terminal"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
