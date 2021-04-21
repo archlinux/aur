@@ -1,7 +1,7 @@
 pkgbase = plymouth-theme-arch-logo-new
 	pkgdesc = Replace the logo from package plymouth-theme-arch-logo
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/menelkir/plymouth-arch-logo-new
 	arch = any
 	license = GPL
