@@ -1,7 +1,7 @@
 # Maintainer : Daniel Chesters <daniel.chesters@gmail.com>
 
 pkgname=i3wsr
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A small program to change the name of an i3 workspace based on its contents."
 url="https://github.com/roosta/i3wsr"
@@ -23,4 +23,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-b2sums=('38f8e212ab21bf1e6cce8b4bf317ee3334b33bf0002628413619f3d938aa52fc9787d7747904158fd9aeb63094a8ff2f4997a8d274a7a847c7ca57ba90f05c41')
+b2sums=('41b674f13ecd51c629f36954461698828880084c596e7220d334d8c92aaf0e2be749bbd3280f3b336e17d4b7609ee6408fde46991092334da00386e28c212da8')
