@@ -9,13 +9,14 @@
 
 
 pkgname=slowmovideo-git
-pkgver=0.6.r7.g2a74306
+pkgver=0.6.r8.g279026a
 pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
 url="http://slowmovideo.granjow.net/index.html"
 license=('GPL')
-depends=('glew' 'opencv' 'qt5-script' 'xdg-utils' 'desktop-file-utils')
+depends=('opencv' 'qt5-script')
+optdepends=('v3d-flow-builder')
 makedepends=('cmake' 'git')
 provides=('slowmovideo')
 conflicts=('slowmovideo')
@@ -25,12 +26,14 @@ source=('git+https://github.com/slowmoVideo/slowmoVideo.git'
 md5sums=('SKIP'
          'SKIP'
          'bb8ca1d30cdeb5922c783d27c057ae1b')
-install=$pkgname.install
+#install=$pkgname.install
 
 prepare(){
   git -C slowmoVideo config submodule.src/lib/libsvflow.url "${srcdir}"/libsvflow
   git -C slowmoVideo submodule update --init --recursive --remote
-  git -C slowmoVideo apply "${srcdir}"/OpenCV4_compile.patch
+#  git -C slowmoVideo apply "${srcdir}"/OpenCV4_compile.patch
+  cd "${srcdir}"
+  mkdir -p build
 }
 
 pkgver() {
@@ -38,10 +41,10 @@ pkgver() {
 }
 
 build() {
-#export PKG_CONFIG_PATH=/usr/lib/opencv2/pkgconfig"
+  cd "${srcdir}"/build
   export LDFLAGS="-lX11 ${LDFLAGS}"
-  cmake -S slowmoVideo -B build -DUSE_QTKIT=FALSE -DENABLE_TESTS=FALSE -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
-  make -C build
+  cmake ../slowmoVideo -DUSE_QTKIT=FALSE -DENABLE_TESTS=FALSE -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
+  make 
 }
 
 package() {
