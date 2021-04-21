@@ -17,7 +17,7 @@ optdepends=('pulseaudio-alsa: audio via PulseAudio'
 	'picom: extra compositor needed by some window managers for screen sharing'
 	'xcompmgr: extra compositor needed by some window managers for screen sharing')
 options=(!strip)
-source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver:0:-1}${_build}/zoom_x86_64.pkg.tar.xz")
+source=("${pkgname}-${pkgver}_orig2_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver:0:-1}${_build}/zoom_x86_64.pkg.tar.xz")
 sha512sums=('68168b5841dc1700695be5628fcfc042836809f7a4ddc9d2746b081d6256e8285f12e6830b1b39f849c1848c92d893b7041bcb9e8c24e9f5a3db6991c3768d6c')
 
 prepare() {
