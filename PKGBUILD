@@ -5,7 +5,7 @@
 
 _gemname=actionmailer
 pkgname=ruby-$_gemname
-pkgver=6.0.0
+pkgver=6.1.3
 pkgrel=1
 pkgdesc='Email composition, delivery, and receiving framework (part of Rails).'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby ruby-actionpack ruby-actionview ruby-mail ruby-rails-dom-testing)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('afcb97d0b77f84b01c0596a05835c059a68e823bc0c6ab44577c96d78b825ded')
+sha256sums=('49ad423587cde9032ae01ca209ea52cda6b689a192e27663ba23626e58252c52')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
