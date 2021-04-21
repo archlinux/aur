@@ -1,3 +1,5 @@
+# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
+
 pkgname="plymouth-theme-arch-logo-new"
 pkgver=0.2
 pkgrel=2
