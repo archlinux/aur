@@ -49,7 +49,7 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=89.0b1
+pkgver=89.0b2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 _pkgver=89.0
@@ -70,12 +70,12 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("firefox=$pkgver")
 conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
-source=(https://ftp.mozilla.org/pub/firefox/candidates/89.0b1-candidates/build1/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
+source=(https://ftp.mozilla.org/pub/firefox/candidates/${pkgver}-candidates/build1/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
-sha256sums=('f259a3cf334dfcdeb603dc8d1a448197ba357b3182a6789e1ba81ac758266bf9'
+sha256sums=('a94da49d047267493714544dadfcc274a8fed389b1cceb4d67f7449dd5b402a3'
             'SKIP'
-            '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
+            '1b6814e85f13dcf069482ad1acfc1a099661922c85e3344aa4ee059288506ccc'
             '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
