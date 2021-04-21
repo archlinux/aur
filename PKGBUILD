@@ -5,7 +5,7 @@ pkgbase=hepmc
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 _pkgname=HepMC3
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="http://hepmc.web.cern.ch/"
@@ -30,8 +30,7 @@ build() {
       -DHEPMC3_BUILD_EXAMPLES=ON \
       -DHEPMC3_INSTALL_INTERFACES=ON \
       -DUSE_INTERFACE_FROM_PYTHIA8=ON \
-      -DPYTHIA8_XMLDOC_DIR=/usr/share/pythia8/xmldoc \
-      -Dmomentum=GEV -Dlength=MM
+      -DPYTHIA8_XMLDOC_DIR=/usr/share/pythia8/xmldoc
     make
 }
 
