@@ -4,8 +4,8 @@
 
 pkgname=libarchive-qt
 pkgver=2.0.4
-pkgrel=1
-pkgdesc="A Qt based archiving solution with libarchive backend."
+pkgrel=2
+pkgdesc="A Qt based archiving solution with libarchive backend"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/marcusbritanicus/$pkgname"
 license=('LGPL-3.0')
@@ -22,12 +22,12 @@ build() {
   cd build
   cmake ../${pkgname}-v${pkgver} \
 	-GNinja \
-	-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-	-DCMAKE_INSTALL_LIBDIR=${pkgdir}/usr/lib
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=lib
   ninja
 }
 
 package() {
   cd build
-  ninja install
+  DESTDIR="${pkgdir}" ninja install
 } 
