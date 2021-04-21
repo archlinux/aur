@@ -54,5 +54,5 @@ package() {
   
   cp -dr --no-preserve=ownership \
     -t "$pkgdir/opt/${_pkgname}/assets/" \
-    assets/{fonts,models,textures}
+    assets/{fonts,models,textures,shaders}
 }
