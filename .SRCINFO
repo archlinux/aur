@@ -1,17 +1,15 @@
 pkgbase = libgmpris
 	pkgdesc = GMPRIS GDBus bindings GDBus bindings generated from the GMPRIS XML spec files.
 	pkgver = 2.2.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.sonarnerd.net
 	arch = x86_64
+	arch = armv7h
 	arch = aarch64
-	license = LGPL
-	depends = glibc
+	license = LGPL2.1
 	depends = glib2
-	source_x86_64 = http://www.sonarnerd.net/src/buster/libgmpris_2.2.1-7_amd64.deb
-	sha256sums_x86_64 = c26fdaba58de16b1997c5cc198ef644c1cd8014bdf61afae3cebf6020e63c921
-	source_aarch64 = http://www.sonarnerd.net/src/buster/libgmpris_2.2.1-7_arm64.deb
-	sha256sums_aarch64 = bf46ff40aec2cd00fcdfc74363c19f30e497405099764ddd867b50f499e7ceb6
+	source = https://www.sonarnerd.net/src/focal/src/libgmpris_2.2.1-8.tar.gz
+	sha256sums = 8b228d9a0eac7fe9b1958ff8bede6529daca7c9ce4a02614da3d4ef2ec24f0ae
 
 pkgname = libgmpris
 
