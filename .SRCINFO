@@ -1,7 +1,7 @@
 pkgbase = libcprime
-	pkgdesc = A library for bookmarking, saving recent activites, managing settings of CoreApps.
+	pkgdesc = A library for bookmarking, saving recent activites, managing settings of C-Suite
 	pkgver = 4.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/libcprime
 	arch = x86_64
 	arch = aarch64
