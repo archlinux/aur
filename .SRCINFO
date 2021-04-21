@@ -8,6 +8,8 @@ pkgbase = papirus-folders-gui
 	depends = polkit-gnome
 	depends = papirus-folders
 	depends = qt5-base
+	provides = papirus-folders-gui
+	conflicts = papirus-folders-gui-bin
 	source = papirus-folders-gui-1.3.tar.gz::https://github.com/ItzSelenux/papirus-folders-gui/archive/refs/tags/1.3.tar.gz
 	sha256sums = e5fd6bd064559c5c585effb5d7df2fb723e3f389d82d57a6e7477ecd682830a7
 

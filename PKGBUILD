@@ -8,6 +8,8 @@ url="https://github.com/ItzSelenux/papirus-folders-gui"
 arch=('x86_64')
 license=('unknown')
 depends=('polkit-gnome' 'papirus-folders' 'qt5-base')
+provides=('papirus-folders-gui')
+conflicts=('papirus-folders-gui-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('e5fd6bd064559c5c585effb5d7df2fb723e3f389d82d57a6e7477ecd682830a7')
  
