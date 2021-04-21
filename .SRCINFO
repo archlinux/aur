@@ -1,7 +1,7 @@
 pkgbase = corefm
-	pkgdesc = A lightwight filemanager from the CoreApps family.
+	pkgdesc = A lightwight filemanager from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corefm
 	arch = x86_64
 	arch = aarch64
