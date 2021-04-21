@@ -1,0 +1,57 @@
+pkgbase = llvm-stable
+	pkgver = 12.0.0
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = ocaml
+	makedepends = ocaml-ctypes
+	makedepends = ocaml-findlib
+	makedepends = python-setuptools
+	makedepends = python-psutil
+	makedepends = python-sphinx
+	makedepends = python-recommonmark
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/llvm-project-12.0.0.src.tar.xz
+	source = llvm-config.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = llvm-stable
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
+	depends = llvm-libs
+	depends = perl
+	provides = llvm
+	conflicts = llvm
+	conflicts = llvm-git
+	conflicts = llvm-rc
+
+pkgname = llvm-libs-stable
+	pkgdesc = LLVM runtime libraries
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+	depends = libxml2
+	provides = llvm-libs
+	conflicts = llvm-libs
+	conflicts = llvm-libs-git
+	conflicts = llvm-libs-rc
+
+pkgname = llvm-ocaml-stable
+	pkgdesc = OCaml bindings for LLVM
+	depends = llvm
+	depends = ocaml
+	depends = ocaml-ctypes
+	provides = llvm-ocaml
+	conflicts = llvm-ocaml
+	conflicts = llvm-ocaml-git
+	conflicts = llvm-ocaml-rc
+
