@@ -2276,7 +2276,7 @@ CONFIG_MTD_MAP_BANK_WIDTH_2=y
 CONFIG_MTD_MAP_BANK_WIDTH_4=y
 CONFIG_MTD_CFI_I1=y
 CONFIG_MTD_CFI_I2=y
-# CONFIG_MTD_RAM is not set
+CONFIG_MTD_RAM=m
 # CONFIG_MTD_ROM is not set
 # CONFIG_MTD_ABSENT is not set
 # end of RAM/ROM/Flash chip drivers
@@ -2285,8 +2285,9 @@ CONFIG_MTD_CFI_I2=y
 # Mapping drivers for chip access
 #
 # CONFIG_MTD_COMPLEX_MAPPINGS is not set
+# CONFIG_MTD_PHYSMAP is not set
 # CONFIG_MTD_INTEL_VR_NOR is not set
-# CONFIG_MTD_PLATRAM is not set
+CONFIG_MTD_PLATRAM=m
 # end of Mapping drivers for chip access
 
 #
