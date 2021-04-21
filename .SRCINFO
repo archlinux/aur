@@ -5,6 +5,7 @@ pkgbase = wedder
 	url = https://github.com/awersching/wedder
 	arch = x86_64
 	license = MIT
+	depends = openssl-1.0
 	conflicts = wedder-git
 	source = https://github.com/awersching/wedder/releases/download/1.2.0/wedder-1.2.0-x86_64-unknown-linux-gnu
 	source = https://raw.githubusercontent.com/awersching/wedder/1.2.0/examples/wedder.toml
