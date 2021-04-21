@@ -7,11 +7,11 @@ arch=('i686' 'x86_64')
 pkgdesc="RTAudio git version without JACK support(fix for pipewire)"
 license=('GPL')
 depends=('alsa-lib' 'gcc-libs' 'glibc' 'libpulse')
-makedepends=('make' 'git' 'cmake' 'doxygen')
+makedepends=('make' 'git' 'cmake' 'doxygen' 'patch')
 provides=('rtaudio' 'librtaudio.so')
 conflicts=('rtaudio')
-source=("git://github.com/thestk/rtaudio")
-md5sums=('SKIP')
+source=("git://github.com/thestk/rtaudio" "alsa_pcm.patch")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/rtaudio"
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/rtaudio"
+    patch < "$srcdir/alsa_pcm.patch"
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX:PATH="/usr" -DRTAUDIO_API_JACK=OFF ..

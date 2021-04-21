@@ -9,6 +9,7 @@ pkgbase = rtaudio-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = patch
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
@@ -17,6 +18,8 @@ pkgbase = rtaudio-git
 	provides = librtaudio.so
 	conflicts = rtaudio
 	source = git://github.com/thestk/rtaudio
+	source = alsa_pcm.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = rtaudio-git
