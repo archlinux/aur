@@ -1,11 +1,10 @@
 pkgbase = corestuff
-	pkgdesc = An activity viewer from the CoreApps family.
+	pkgdesc = An activity viewer from the C Suite
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corestuff
 	arch = x86_64
 	arch = aarch64
-	groups = coreapps
 	license = GPL3
 	makedepends = cmake
 	makedepends = ninja
