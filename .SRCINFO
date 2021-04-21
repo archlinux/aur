@@ -1,0 +1,17 @@
+pkgbase = pma-git
+	pkgdesc = Plugin MAnager for Vizality/Powercord.
+	pkgver = r93.18fb4bd
+	pkgrel = 1
+	url = https://kreatea.ml/pluginmanager/pma
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-requests
+	provides = pma
+	conflicts = pma
+	backup = usr/share/pma/data
+	source = pma-source::git+https://kreatea.ml/pluginmanager/pma#branch=main
+	md5sums = SKIP
+
+pkgname = pma-git
+
