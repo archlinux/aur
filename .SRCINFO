@@ -1,7 +1,7 @@
 pkgbase = broguelite
-	pkgdesc = Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor.
+	pkgdesc = No item-ID fork of Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor.
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HomebrewHomunculus/BrogueLite
 	arch = i686
 	arch = x86_64
