@@ -5,7 +5,7 @@
 
 # Maintainer: HackMe <hackme.any@protonmail.com>
 pkgname=st-hackme
-pkgver=1.0.0
+pkgver=r1131.4fad954
 pkgrel=1
 pkgdesc="This is my build of ST"
 arch=(x86_64)
@@ -19,7 +19,28 @@ provides=(st)
 source=("git+$url")
 md5sums=('SKIP')
 
+prepare() {
+  cd "simple_terminal"
+  cp config.def.h config.h
+}
+
+pkgver() {
+  cd "simple_terminal"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "simple_terminal"
+  make
+}
+
 package() {
-	cd "simple_terminal"
-	make DESTDIR="$pkgdir/" install
+  cd "simple_terminal"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -m644 -D README  "$pkgdir/usr/share/doc/$_pkgname/README"
+  # Source codes
+  install -m644 -D -t "$pkgdir/usr/src/st" \
+    arg.h config.def.h config.mk FAQ LEGACY LICENSE \
+    Makefile README st.1 st.c st.h st.info TODO win.h x.c
 }
