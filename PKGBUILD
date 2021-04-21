@@ -14,7 +14,7 @@ _merge_requests_to_use=()
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.38.3
+pkgver=40.0+39+gd9e953e93
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
