@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('gstreamer0.10-ffmpeg' 'libmad' 'swfdec')
 makedepends=('intltool' 'gconf')
 # AUR doesn't like ${pkgver%.*} or other bashish things in the $source, just hardcode 2.30
-source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2 accept_8_or_9.patch)
+source=(https://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2 accept_8_or_9.patch)
 options=('!libtool' '!emptydirs')
 
 build() {
