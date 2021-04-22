@@ -1,6 +1,6 @@
 pkgbase = the-rock-git
 	pkgdesc = A command line King James bible viewer
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://gitlab.com/NoahJelen/the-rock
 	arch = i686
