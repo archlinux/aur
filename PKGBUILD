@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
 
 pkgname=blender-${_blenver}-git
-pkgver=2.83.r95764.g02ff143f609
+pkgver=2.83.r95795.gd35974cd870
 pkgrel=1
 pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog
