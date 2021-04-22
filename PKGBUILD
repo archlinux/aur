@@ -9,8 +9,8 @@ pkgdesc="Un-official electron desktop app for https://repl.it"
 url="https://github.com/replit-discord/replit-desktop/"
 license=('Apache')
 depends=('gtk3' 'nss')
-source=("https://github.com/replit-discord/${pkgname}/releases/download/${pkgver}-beta.${_pkgver}/${pkgname}-${pkgver}-beta${_pkgver}.tar.gz")
-sha512sums=('38d597322142f8a76b7c52499b2dc3038ba8dd0f5ef820ea93377be6c9852a8b3bcf89a25504331b1e36c45e7f8097ebac61fffd02d14c04412a844e125392a4')
+source=("https://github.com/replit-discord/${pkgname}/releases/download/${pkgver}-beta.${_pkgver}/${pkgname}-${pkgver}-beta${_pkgver}-linux.tar.gz")
+sha512sums=('7ed6f4d1fe837c7fb535314373f3245fc05d3bbee16c1f28977c7589823a0c69691ebe8fbb15a026bbed84f9be5fcdfc03e1f84888f191e7d64e57e3595f464c')
 
 package() {
     cd "${srcdir}"
