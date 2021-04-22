@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
 
 pkgname=blender-${_blenver}-git
-pkgver=2.83.r95795.gd35974cd870
+pkgver=2.83.13.r2.gd35974cd870
 pkgrel=1
 pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog
@@ -78,12 +78,7 @@ b2sums=('SKIP'
         '4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44')
 
 pkgver() {
-  blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
-  printf "%d.%d.r%s.g%s" \
-    $((blender_version/100)) \
-    $((blender_version%100)) \
-    "$(git -C "$srcdir/blender" rev-list --count HEAD)" \
-    "$(git -C "$srcdir/blender" rev-parse --short HEAD)"
+  git -C "$srcdir"/blender describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
