@@ -6,7 +6,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.1.56
+pkgver=3.1.110
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -17,7 +17,7 @@ license=('MIT')
 
 depends=('python'
          # documented in requirements.in
-         'python-feedparser>=5.2.1'
+         'python-feedparser-dev>=6.0.2'
          'python-sqlalchemy>=1.3.10'
          'python-yaml>=4.2b1'
          'python-beautifulsoup4>=4.5'
@@ -29,7 +29,7 @@ depends=('python'
          'python-requests>=2.20.0'
          'python-dateutil>=2.5.3'
          'python-jsonschema>=2.0'
-         'python-guessit>=3.1.0'
+         'python-guessit>=3.2.0'
          'python-rebulk>=2.0.0'
          'python-apscheduler>=3.2.0'
          'python-terminaltables>=3.1.0'
@@ -37,14 +37,14 @@ depends=('python'
          'python-cherrypy>=18.0.0'
          'python-flask>=0.7'
          'python-flask-restful>=0.3.3'
-         'python-flask-restplus>=0.10.1'
+         'python-flask-restx>=0.2.0'
          'python-flask-compress>=1.2.1'
          'python-flask-login>=0.4.0'
          'python-flask-cors>=2.1.2'
-         'python-pyparsing>=2.0.3'
+         'python-pyparsing>=2.4.7'
          'python-zxcvbn'
          'python-progressbar>=2.5'
-         'python-loguru>=0.4'
+         'python-loguru>=0.4.1'
          )
 optdepends=('python-guppy: for memusage plugin' #AUR#
             'python-transmissionrpc: Transmission support' #AUR#
@@ -101,7 +101,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('0140852877836b1d4540610f2d3d409876eef1ee4fecd398780ace26ef9615b8'
+sha256sums=('7d1542a61a895d2fa9b54bdc76315c97d736d5926a872b88b782156e5ed0eff0'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
