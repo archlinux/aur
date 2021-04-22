@@ -1,7 +1,7 @@
 # Maintainer: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=the-rock-git
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A command line King James bible viewer"
 arch=('i686' 'x86_64')
