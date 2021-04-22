@@ -9,7 +9,8 @@ arch=(i686 x86_64)
 url="https://diagnostico.gasantifraud.com"
 license=('custom')
 depends=('dbus' 'procps-ng' 'python' 'zenity')
-optdepends=('python-gpgme')
+optdepends=('gtk2: required on first bank setup'
+            'python-gpgme')
 backup=('etc/init.d/warsaw' 'etc/init/warsaw.conf')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install

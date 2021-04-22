@@ -1,43 +1,43 @@
 post_install() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
-	echo -e "\e[34;1m==>\e[39;1m To use Warsaw, start its service using: \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl start warsaw \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m To start Warsaw at system startup, use the command: \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl enable warsaw \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m Complete your bank setup on the website below: \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m https://diagnostico.gasantifraud.com \e[0m"
-
-	update-desktop-database -q
+    if [ -e "/usr/share/hunspell/pt_BR.dic" ]
+    then
+        echo -e "\e[34;1m==>\e[39;1m Para usar o Warsaw, inicie seu serviço com: \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl start warsaw \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Para iniciar o Warsaw na inicialização do sistema, utilize o comando: \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl enable warsaw \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Conclua a configuração do seu banco no site abaixo: \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m https://diagnostico.gasantifraud.com \e[0m"
+    else
+        echo -e "\e[34;1m==>\e[39;1m To use Warsaw, start its service using: \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl start warsaw \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m To start Warsaw at system startup, use the command: \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl enable warsaw \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Complete your bank setup on the website below: \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m https://diagnostico.gasantifraud.com \e[0m"
+    fi
 }
 
 pre_remove() {
+    if command -v systemctl > /dev/null 2>&1; then
+      systemctl stop warsaw.service
+    fi
 
-	    if command -v systemctl > /dev/null 2>&1; then
-	      systemctl stop warsaw.service
-	    fi
+    if command -v warsaw > /dev/null 2>&1; then
+      warsaw stop
+    fi
 
-	    if command -v warsaw > /dev/null 2>&1; then
-	      warsaw stop
-	    fi
-
-	    if command -v systemctl > /dev/null 2>&1; then
-	      systemctl disable warsaw.service
-	      systemctl daemon-reload
-	    fi
-
+    if command -v systemctl > /dev/null 2>&1; then
+      systemctl disable warsaw.service
+      systemctl daemon-reload
+    fi
 }
 
 post_remove() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    if command -v rm > /dev/null 2>&1; then
+      rm -rf /usr/local/etc/warsaw
+    fi
 
-	    if command -v rm > /dev/null 2>&1; then
-	      rm -rf /usr/local/etc/warsaw
-	    fi
-
-	    if command -v pkill > /dev/null 2>&1; then
-	      pkill wsatspi
-	    fi
-
-	update-desktop-database -q
+    if command -v pkill > /dev/null 2>&1; then
+      pkill wsatspi
+    fi
 }

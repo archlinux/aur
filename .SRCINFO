@@ -11,6 +11,7 @@ pkgbase = warsaw-bin
 	depends = procps-ng
 	depends = python
 	depends = zenity
+	optdepends = gtk2: required on first bank setup
 	optdepends = python-gpgme
 	provides = warsaw
 	conflicts = warsaw
