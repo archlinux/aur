@@ -1,6 +1,6 @@
 pkgname=arduino-ide
 pkgver=2.0.0
-pkgrel=1
+pkgrel=5
 _betaver=beta.5
 pkgdesc="Arduino IDE 2.0"
 arch=('x86_64')
