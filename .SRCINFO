@@ -1,14 +1,15 @@
 pkgbase = firefox-etag-stoppa
 	pkgdesc = Prevents Firefox from storing entity tags by removing ETag response headers unconditionally and without exceptions
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/claustromaniac/etag-stoppa
 	arch = any
 	groups = firefox-addons
 	license = MIT
 	makedepends = git
+	makedepends = strip-nondeterminism
 	makedepends = zip
-	source = git+https://git.synz.io/Synzvato/decentraleyes.git#commit=7ab7da5597f177ee08132fd777e3873acca97074
+	source = git+https://github.com/claustromaniac/etag-stoppa.git#commit=7ab7da5597f177ee08132fd777e3873acca97074
 	b2sums = SKIP
 
 pkgname = firefox-etag-stoppa
