@@ -8,7 +8,7 @@ pkgdesc="The Hexen 1 Demo IWAD (game data)"
 arch=('any')
 url="http://hhexen.sourceforge.net/"
 license=('unknown')
-source=(http://downloads.sourceforge.net/hhexen/hexen_demo_wad_$pkgver.tgz)
+source=(https://downloads.sourceforge.net/hhexen/hexen_demo_wad_$pkgver.tgz)
 sha256sums=('08e9b57ce9111be04f8b7fa7fc98bd8ecb2af58914497d9a726f610377c406fc')
 
 package() {
