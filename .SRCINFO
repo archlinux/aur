@@ -9,7 +9,7 @@ pkgbase = jdk11-graalvm-bin
 	license = custom
 	depends = java-runtime-common
 	depends = java-environment-common
-	optdepends = graal-nodejs-jdk8-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)
+	optdepends = graal-nodejs-jdk11-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)
 	provides = java-runtime=11
 	provides = java-environment=11
 	options = staticlibs
