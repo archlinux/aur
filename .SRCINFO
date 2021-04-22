@@ -1,0 +1,16 @@
+pkgbase = groom-git
+	pkgdesc = groom is a self-hosted HTTPS reverse-proxy written in Go. Its an alternative to ngrok.
+	pkgver = r1.365ba93
+	pkgrel = 2
+	url = https://github.com/pyke369/groom
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = groom
+	source = groom::git+https://github.com/pyke369/groom.git
+	sha256sums = SKIP
+
+pkgname = groom-git
+
