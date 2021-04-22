@@ -1,0 +1,207 @@
+From e1584f433b876c7d8fe7375ab7a7ea2af76d07bb Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Mon, 6 Apr 2020 19:34:44 +0200
+Subject: [PATCH 05/34] bmo#847568: Support system graphite2
+
+Allow building against system-wide graphite2.
+
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=847568
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ config/system-headers.mozbuild     |  6 ++++++
+ gfx/graphite2/geckoextra/moz.build | 21 +++++++++++++++++++++
+ gfx/graphite2/moz-gr-update.sh     |  7 ++++++-
+ gfx/moz.build                      |  6 +++++-
+ gfx/thebes/moz.build               |  5 ++++-
+ old-configure.in                   | 21 +++++++++++++++++++++
+ toolkit/library/moz.build          |  3 +++
+ toolkit/moz.configure              | 13 +++++++++++++
+ 8 files changed, 79 insertions(+), 3 deletions(-)
+ create mode 100644 gfx/graphite2/geckoextra/moz.build
+
+diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
+index 449328ffaa..27b5171d0a 100644
+--- a/config/system-headers.mozbuild
++++ b/config/system-headers.mozbuild
+@@ -1243,6 +1243,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
+ 	'harfbuzz/hb.h',
+     ]
+ 
++if CONFIG['MOZ_SYSTEM_GRAPHITE2']:
++    system_headers += [
++	'graphite2/Font.h',
++	'graphite2/Segment.h',
++    ]
++
+ if CONFIG['MOZ_JACK']:
+     system_headers += [
+         'jack/jack.h',
+diff --git a/gfx/graphite2/geckoextra/moz.build b/gfx/graphite2/geckoextra/moz.build
+new file mode 100644
+index 0000000000..24e8d7a032
+--- /dev/null
++++ b/gfx/graphite2/geckoextra/moz.build
+@@ -0,0 +1,21 @@
++# -*- Mode: python; indent-tabs-mode: nil; tab-width: 40 -*-
++# vim: set filetype=python:
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++
++EXPORTS.graphite2 += [
++    'include/GraphiteExtra.h',
++    'include/GraphiteStructsForRLBox.h',
++]
++
++UNIFIED_SOURCES += [
++    '../geckoextra/src/GraphiteExtra.cpp',
++]
++
++CXXFLAGS += CONFIG['MOZ_GRAPHITE2_CFLAGS']
++
++# Match bundled graphite2 configuration
++AllowCompilerWarnings()
++
++FINAL_LIBRARY = 'gkmedias'
+diff --git a/gfx/graphite2/moz-gr-update.sh b/gfx/graphite2/moz-gr-update.sh
+index b91d9c161c..a97e6eb203 100755
+--- a/gfx/graphite2/moz-gr-update.sh
++++ b/gfx/graphite2/moz-gr-update.sh
+@@ -1,6 +1,7 @@
+ #!/bin/bash
+ 
+ # Script used to update the Graphite2 library in the mozilla source tree
++# and bump version for --with-system-graphite2
+ 
+ # This script lives in gfx/graphite2, along with the library source,
+ # but must be run from the top level of the mozilla-central tree.
+@@ -37,12 +38,16 @@ echo "See" $0 "for update procedure." >> gfx/graphite2/README.mozilla
+ #find gfx/graphite2/ -name "*.cpp" -exec perl -p -i -e "s/<cstdio>/<stdio.h>/;s/Windows.h/windows.h/;" {} \;
+ #find gfx/graphite2/ -name "*.h" -exec perl -p -i -e "s/<cstdio>/<stdio.h>/;s/Windows.h/windows.h/;" {} \;
+ 
++# chase version for --with-system-graphite2
++perl -p -i -e "s/[0-9]+\,[0-9]+\,[0-9]+/$RELEASE/ and tr/./,/ \
++  if /GR2_VERSION_REQUIRE/" old-configure.in
++
+ # summarize what's been touched
+ echo Updated to $RELEASE.
+ echo Here is what changed in the gfx/graphite2 directory:
+ echo
+ 
+-hg stat gfx/graphite2
++hg stat old-configure.in gfx/graphite2
+ 
+ echo
+ echo If gfx/graphite2/src/files.mk has changed, please make corresponding
+diff --git a/gfx/moz.build b/gfx/moz.build
+index c9cb3d592a..2e822f0134 100644
+--- a/gfx/moz.build
++++ b/gfx/moz.build
+@@ -13,6 +13,11 @@ with Files("wr/**"):
+ if CONFIG["MOZ_TREE_CAIRO"]:
+     DIRS += ["cairo"]
+ 
++if CONFIG["MOZ_SYSTEM_GRAPHITE2"]:
++    DIRS += ["graphite2/geckoextra"]
++else:
++    DIRS += ["graphite2/src"]
++
+ if not CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+     DIRS += ["harfbuzz/src"]
+ 
+@@ -24,7 +29,6 @@ DIRS += [
+     "qcms",
+     "gl",
+     "layers",
+-    "graphite2/src",
+     "ots/src",
+     "thebes",
+     "ipc",
+diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
+index fb2ad5bf34..c6ce6f8417 100644
+--- a/gfx/thebes/moz.build
++++ b/gfx/thebes/moz.build
+@@ -288,7 +288,10 @@ if CONFIG["MOZ_WAYLAND"]:
+ 
+ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
+ 
+-DEFINES["GRAPHITE2_STATIC"] = True
++if CONFIG["MOZ_SYSTEM_GRAPHITE2"]:
++    CXXFLAGS += CONFIG["MOZ_GRAPHITE2_CFLAGS"]
++else:
++    DEFINES["GRAPHITE2_STATIC"] = True
+ 
+ if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+     CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
+diff --git a/old-configure.in b/old-configure.in
+index 4ddc3f5b45..de727a48bd 100644
+--- a/old-configure.in
++++ b/old-configure.in
+@@ -2283,6 +2283,27 @@ if test "$USE_FC_FREETYPE"; then
+     fi
+ fi
+ 
++dnl ========================================================
++dnl Check for graphite2
++dnl ========================================================
++if test -n "$MOZ_SYSTEM_GRAPHITE2"; then
++    dnl graphite2.pc has bogus version, check manually
++    _SAVE_CFLAGS=$CFLAGS
++    CFLAGS="$CFLAGS $MOZ_GRAPHITE2_CFLAGS"
++    AC_TRY_COMPILE([ #include <graphite2/Font.h>
++                     #define GR2_VERSION_REQUIRE(major,minor,bugfix)  \
++                             ( GR2_VERSION_MAJOR * 10000 + GR2_VERSION_MINOR \
++                               * 100 + GR2_VERSION_BUGFIX >= \
++                               (major) * 10000 + (minor) * 100 + (bugfix) )
++                   ], [
++                     #if !GR2_VERSION_REQUIRE(1,3,8)
++                     #error "Insufficient graphite2 version."
++                     #endif
++                   ], [],
++                   [AC_MSG_ERROR([--with-system-graphite2 requested but no working libgraphite2 found])])
++    CFLAGS=$_SAVE_CFLAGS
++fi
++
+ dnl ========================================================
+ dnl Check if we need the 32-bit Linux SSE2 error dialog
+ dnl ========================================================
+diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
+index 3f393f3316..df178bc6cf 100644
+--- a/toolkit/library/moz.build
++++ b/toolkit/library/moz.build
+@@ -241,6 +241,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+ OS_LIBS += CONFIG["MOZ_CAIRO_OSLIBS"]
+ OS_LIBS += CONFIG["MOZ_WEBRTC_X11_LIBS"]
+ 
++if CONFIG["MOZ_SYSTEM_GRAPHITE2"]:
++    OS_LIBS += CONFIG["MOZ_GRAPHITE2_LIBS"]
++
+ if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+     OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
+ 
+diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index 169c3d7c79..31ab9c7add 100644
+--- a/toolkit/moz.configure
++++ b/toolkit/moz.configure
+@@ -475,6 +475,19 @@ add_old_configure_assignment(
+     "_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True)
+ )
+ 
++# Graphite2
++# ==============================================================
++option('--with-system-graphite2', help="Use system graphite2 (located with pkgconfig)")
++
++@depends('--with-system-graphite2')
++def check_for_graphite2(value):
++    return bool(value)
++
++system_graphite2 = pkg_check_modules('MOZ_GRAPHITE2', 'graphite2',
++                                     when=check_for_graphite2)
++
++set_config('MOZ_SYSTEM_GRAPHITE2', depends_if(system_graphite2)(lambda _: True))
++
+ # HarfBuzz
+ # ==============================================================
+ option('--with-system-harfbuzz', help="Use system harfbuzz (located with pkgconfig)")
+-- 
+2.31.1

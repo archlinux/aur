@@ -1,28 +1,28 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
-# Maintainer: vnepogodin
-# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
-# Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: torvic9 AT mailbox DOT org
+# Contributor: lsf
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=89.0a1.r642117+
-pkgrel=1
-pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
+pkgver=88.0
+pkgrel=2
+pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
+backup=('usr/lib/firedragon/firedragon.cfg'
+        'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse whoogle
-         libvpx libjpeg zlib icu libevent libpipewire02)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust mozilla-common xorg-server-xwayland xorg-server-xvfb
-             autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss nspr ttf-font libpulse
+        libwebp libvpx libjpeg zlib icu libevent libpipewire02 aom harfbuzz 
+        graphite dav1d kfiredragonhelper)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
+             rust ccache autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
-optdepends=('networkmanager: Location detection via available WiFi networks'
+optdepends=('firejail: Sandboxing the browser using the included profiles'
+            'profile-sync-daemon: Load the browser profile into RAM'
+            'whoogle: Searching the web using a locally running Whoogle instance'
+            'searx: Searching the web using a locally running searX instance'
+            'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
@@ -31,63 +31,90 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
-replaces=('dragonwolf')
-_linux_commit=e123b80f7df1ad9043435f345c426717ca323579
-_repo=https://hg.mozilla.org/mozilla-unified
-install=firedragon.install
-source_x86_64=("hg+$_repo#revision=autoland"
-               $pkgname.desktop
-               "git+https://gitlab.com/dr460nf1r3/common.git"
-               "git+https://gitlab.com/dr460nf1r3/settings.git"
-               remove_addons.patch
-               context-menu.patch
-               mozilla-vpn-ad.patch
-               builtin_js.patch)
-source_aarch64=("hg+$_repo#revision=autoland"
-                $pkgname.desktop
-                "git+https://gitlab.com/dr460nf1r3/common.git"
-                "git+https://gitlab.com/dr460nf1r3/settings.git"
-                remove_addons.patch
-                context-menu.patch
-                arm.patch
-                build-arm-libopus.patch
-                mozilla-vpn-ad.patch
-                builtin_js.patch)
+replaces=('firedragon-stable')
+conflicts=('firedragon-hg')
+install=$pkgname.install
+_arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
+_linux_commit=9e90fb3a9bc38aad9921530ee69ecabf6ac8c7bf
+_settings_commit=1b9cc88ccf64993951fe28cf426cf883e37e1b4d
+_mbrev=2377
+_patchrevsuse=3fdf082cf93d94e4289e552cbd9988601044576a
+_pfdate=20210419
+_patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrevsuse
+source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+        $pkgname.desktop
+        "git+https://gitlab.com/dr460nf1r3/common.git"
+        "git+https://gitlab.com/dr460nf1r3/settings.git"
+        "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
+        "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
+        "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
+        "mozilla-vpn-ad.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/mozilla-vpn-ad.patch"
+        0001-Use-remoting-name-for-GDK-application-names.patch
+        firefox-kde-$_patchrevsuse.patch::$_patchurl/firefox/firefox-kde.patch
+        mozilla-kde-plasmafox88.patch
+        mozilla-nongnome-proxies-$_patchrevsuse.patch::$_patchurl/mozilla-nongnome-proxies.patch
+        0004-bmo-847568-Support-system-harfbuzz.patch
+        0005-bmo-847568-Support-system-graphite2.patch
+        0006-bmo-1559213-Support-system-av1.patch
+        0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+        0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+        reduce-rust-debuginfo.patch)
+source_aarch64=("arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
+                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha512sums_x86_64=('SKIP'
-                   '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
-                   'SKIP'
-                   'SKIP'
-                   '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                   '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                   '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
-sha512sums_aarch64=('SKIP'
-                    '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
-                    'SKIP'
-                    'SKIP'
-                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                    '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-                    '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
-                    '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
-                    '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                    '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
-
-pkgver() {
-  cd mozilla-unified
-  printf "89.0a1.r%s" "$(hg identify -n)"
-}
+sha256sums=('6b50dbfb393f843e4401e23965a1d8f7fd44b5a7628d95138294094094eee297'
+            '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
+            'SKIP'
+            'SKIP'
+            'af9d9341917cf3c5844fc46597ad2d842642c937c9be574bfacfe5c242b1114c'
+            '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
+            '85f037f794afee0c70840123960375a00f9cef08dd903ea038b6bb62e683b96f'
+            'f3fd29e24207d5cc83f9df6c9ffa960aabdab598ea59a61fec57e9947b1d8bc9'
+            '6ca7ff71cb4a7c72eca39769afe8e18ec81cba36d9b570df15fc243867049243'
+            '0ae5bce3da13b7f58e37be6d7115bef323256d776195279592f4371179497f8a'
+            '1bc7bd9c5af98071b89917a1421535c0313f07c1db72f6a9bd5f600d5b370b4d'
+            'fbd95cbcbc32673ef549b43b0d2de3ef0ef4fa303b6336e64993f2c8a73264e4'
+            'e17f631bc9b1873419ff10fef5fad6061e8695b961b6bb90616ec04444834608'
+            '00d3524f5361614fee7eb448a528a0b53833f0a328055e17e07ea38038e5aa70'
+            'be41698666dbd321884c35b661c3ac457ecc5bf699fe2374ad6ad9273c6489e4'
+            '82129e30512477232556e939ee8ed64b999b0e095001d043b121c5e5d334692c'
+            '1034a3edda8ffa889fcb4dcf57cb93f8f296f7c37e5cfcf1e5c6071a6f8f4261'
+            '923a9373afc019202c0c07a7cba47042e9ebc78cc2605baecd99602beeaf82ed')
+sha256sums_aarch64=('6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
+                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
   if [[ ! -d mozbuild ]];then
       mkdir mozbuild
   fi
-  cd mozilla-unified
+  cd firefox-$pkgver
 
-  #
-  # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
-  # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
-  #
+  sed -i 's/\"BrowserApplication\"\, \"firefox\"/\"BrowserApplication\"\, \"firedragon\"/g' $srcdir/firefox-kde-$_patchrevsuse.patch
+  sed -i 's/kmozillahelper/kfiredragonhelper/g' $srcdir/mozilla-kde-plasmafox88.patch
+  
+  # Arch patches
+  echo "---- Arch patches"
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # KDE patches (W. Rosenauer)
+  echo "---- Patching for KDE"
+  patch -Np1 -i ../mozilla-nongnome-proxies-$_patchrevsuse.patch
+  patch -Np1 -i ../mozilla-kde-plasmafox88.patch
+  patch -Np1 -i ../firefox-kde-$_patchrevsuse.patch
+  
+  # Gentoo patches
+  echo "---- Gentoo patches"
+  patch -Np1 -i ../0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ../0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+
+  # Use more system libs
+  echo "---- Patching for system libs"
+  patch -Np1 -i ../0004-bmo-847568-Support-system-harfbuzz.patch
+  patch -Np1 -i ../0005-bmo-847568-Support-system-graphite2.patch
+  patch -Np1 -i ../0006-bmo-1559213-Support-system-av1.patch
+  
+  # Rust
+  patch -Np1 -i ../reduce-rust-debuginfo.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -99,8 +126,13 @@ ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-export CC='clang'
-export CXX='clang++'
+export CC='clang --target=x86_64-pc-linux-gnu'
+export CXX='clang++ --target=x86_64-pc-linux-gnu'
+export RANLIB=llvm-ranlib
+export STRIP=llvm-strip
+export AR=llvm-ar
+export NM=llvm-nm
+export OBJCOPY='/usr/bin/llvm-objcopy'
 
 # Branding
 ac_add_options --enable-update-channel=nightly
@@ -110,19 +142,25 @@ ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=1
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export MOZ_REQUIRE_SIGNING=0
 
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # System libraries
+ac_add_options --disable-libproxy
+ac_add_options --enable-system-pixman
+ac_add_options --with-system-av1
+ac_add_options --with-system-ffi
+ac_add_options --with-system-graphite2
+ac_add_options --with-system-harfbuzz
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-libevent
-ac_add_options --with-system-icu
+ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
 
 # Features
 ac_add_options --enable-pulseaudio
@@ -185,23 +223,19 @@ ac_add_options --enable-optimize
 END
 fi
 
-  # Fix build-time error
-  patch -p1 -i ../builtin_js.patch
-
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
-  # Remove mozilla vpn ads
-  patch -p1 -i ../mozilla-vpn-ad.patch
-  
-  # To enable global menubar
-  # Set these to true
-  # browser.proton.appmenu.enabled
+  # Debian patch to enable global menubar
+  patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
-  sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
+  sed -i 's/"pocket"/# "pocket"/g' browser/components/moz.build
 
   patch -p1 -i ../context-menu.patch
+
+  # remove mozilla vpn ads
+  patch -p1 -i ../mozilla-vpn-ad.patch
 
   # this one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
@@ -228,15 +262,15 @@ fi
   cp -r ${srcdir}/common/source_files/* ./
 }
 
-build() {
-  cd mozilla-unified
 
-  export MOZ_SOURCE_REPO="$_repo"
+build() {
+  cd firefox-$pkgver
+
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MACH_USE_SYSTEM_PYTHON=1
 
-  # LTO/PGO needs more open files
+  # LTO needs more open files
   ulimit -n 4096
 
   # -fno-plt with cross-LTO causes obscure LLVM errors
@@ -315,36 +349,32 @@ fi
 }
 
 package() {
-  cd mozilla-unified
+  cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
   install -Dvm644 "$srcdir/settings/$pkgname.profile" "$pkgdir/etc/firejail/$pkgname.profile"
+  install -Dvm644 "$srcdir/settings/$pkgname-common-addons.profile" "$pkgdir/etc/firejail/$pkgname-common-addons.profile"
   install -Dvm644 "$srcdir/settings/$pkgname-common.profile" "$pkgdir/etc/firejail/$pkgname-common.profile"
-  install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/firedragon"
+  install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
   
-  rm "$pkgdir"/usr/lib/${pkgname}/pingsender
-  
-  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
-// Use LANG environment variable to choose locale
-pref("intl.locale.requested", "");
-
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Don't disable extensions in the application directory
-// done in dragonwolf.cfg
+// done in librewolf.cfg
 // pref("extensions.autoDisableScopes", 11);
 END
 
   # cd ${srcdir}/settings
   # git checkout ${_settings_commit}
-  cd ${srcdir}/mozilla-unified
+  cd ${srcdir}/firefox-$pkgver
   cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
 
-  _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
+  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
 id=garudalinux
 version=1.0
@@ -357,27 +387,31 @@ app.partner.garudalinux=garudalinux
 END
 
   for i in 16 32 48 64 128; do
-    install -Dm644 browser/branding/${pkgname}/default$i.png \
+    install -Dvm644 browser/branding/${pkgname}/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dm644 browser/branding/official/content/about-logo.png \
+  install -Dvm644 browser/branding/${pkgname}/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dm644 browser/branding/${pkgname}/default16.png \
+  install -Dvm644 browser/branding/${pkgname}/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.png"
 
-  install -Dm644 ../$pkgname.desktop \
+  install -Dvm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$pkgname/$pkgname "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$pkgname" \
-    "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
+  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+  if [[ -e $nssckbi ]]; then
+    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
 }
