@@ -1,5 +1,5 @@
 pkgname=ananicy-cpp
-pkgver=0.2.0.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 source=(
