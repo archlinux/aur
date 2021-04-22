@@ -1,6 +1,6 @@
 pkgbase = ethr-git
 	pkgdesc = Ethr is a Network Performance Measurement Tool for TCP, UDP & HTTP
-	pkgver = v1.0.0
+	pkgver = v1.0.0.r0.gaa63660
 	pkgrel = 1
 	url = https://github.com/Microsoft/ethr
 	arch = i686

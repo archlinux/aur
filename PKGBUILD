@@ -22,6 +22,16 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  # Download dependencies
+  go get -u
+  go mod tidy
+
   # Build
   go build
 }
