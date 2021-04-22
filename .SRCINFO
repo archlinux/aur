@@ -1,0 +1,15 @@
+pkgbase = commit-email-git
+	pkgdesc = A tool that reminds you to commit with the correct email address
+	pkgver = v0.1.0.r.0.2da9ad6
+	pkgrel = 1
+	url = https://github.com/mkqavi/commit-email
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = commit-email
+	source = commit-email-git::git+https://github.com/mkqavi/commit-email
+	sha1sums = SKIP
+
+pkgname = commit-email-git
+
