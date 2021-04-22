@@ -1,12 +1,12 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com0
 pkgname=wayfire-git
-pkgver=0.4.0.r168.g25d568f
+pkgver=0.6.0.r173.gf9683574
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
 url="https://github.com/ammen99/wayfire"
 license=('MIT')
-depends=('wlroots-git' 'cairo' 'glm' 'libjpeg' 'wf-config-git')
+depends=('wlroots-git' 'cairo' 'glm' 'libjpeg' 'wf-config-git' 'seatd')
 makedepends=('git' 'meson' 'ninja' 'wayland-protocols')
 optdepends=('wf-shell-git: GTK3-based panel for the Wayfire compositor'
             'wf-sound-control-git: Small utility for the Wayfire compositor to control sound volume')
@@ -14,12 +14,15 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 options=()
-source=('git+https://github.com/ammen99/wayfire')
-sha256sums=('SKIP')
+source=('git+https://github.com/WayfireWM/wayfire'
+        'update_build.patch')
+sha256sums=('SKIP'
+            '1f584f9094005da424d761129aa68a98b3daaa4fa2ff4d68edaa2f051bf8e1c7')
 
 prepare() {
-  cd "$srcdir/wayfire"
-  git submodule update --init --recursive
+ cd "$srcdir/wayfire"
+ patch -Np1 -i ../1152.patch
+
 }
 pkgver() {
 	cd "$srcdir/wayfire"
@@ -31,7 +34,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/wayfire/"
-  arch-meson build
+  arch-meson \
+    -Duse_system_wlroots=enabled \
+    -Duse_system_wfconfig=enabled \
+    build
   ninja -C build
 }
 
