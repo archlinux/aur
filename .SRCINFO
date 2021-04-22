@@ -1,16 +1,21 @@
 pkgbase = prjoxide-git
 	pkgdesc = Project Oxide LatticeSemi 28nm Nexus FPGA Bitstream Database
-	pkgver = r265.450bf02
+	pkgver = r348.b5d88c3
 	pkgrel = 1
 	url = https://github.com/daveshah1/prjoxide
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = ISC
 	makedepends = cargo
+	makedepends = git
+	makedepends = capnproto
+	makedepends = capnproto-java
 	provides = prjoxide
 	conflicts = prjoxide
-	source = database::git+https://github.com/daveshah1/prjoxide-db.git
-	source = oxide::git+https://github.com/daveshah1/prjoxide.git
+	source = database::git+https://github.com/gatecat/prjoxide-db.git
+	source = oxide::git+https://github.com/gatecat/prjoxide.git
+	source = fpga-interchange-schema::git+https://github.com/SymbiFlow/fpga-interchange-schema.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
