@@ -87,9 +87,9 @@ build() (
     --disable-gtk-doc
 
   # patch for glib>=2.68.0
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname%2}-${pkgver}"
   patch -Np0 -i "${srcdir}/glib-2.68.0.patch"
-  cd "${srcdir}/build-gtk"
+  cd "${srcdir}/build-gtk2"
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i "s/ -shared / -Wl,-O1,--as-needed\0/g" "${srcdir}/build-gtk2/libtool"
