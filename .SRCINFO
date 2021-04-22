@@ -1,0 +1,15 @@
+pkgbase = boa-git
+	pkgdesc = Boa is an embeddable and experimental Javascript engine written in Rust. Currently, it has support for some of the language.
+	pkgver = v0.11.r103.gbd199677a
+	pkgrel = 1
+	url = https://github.com/boa-dev/boa
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	source = git+https://github.com/boa-dev/boa.git
+	sha256sums = SKIP
+
+pkgname = boa-git
+
