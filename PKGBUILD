@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 prepare() {
  cd "$srcdir/wayfire"
- patch -Np1 -i ../1152.patch
+ patch -Np1 -i ../update_build.patch
 
 }
 pkgver() {
