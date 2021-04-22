@@ -1,4 +1,7 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
+
+# PRs are welcome at: https://github.com/captn3m0/aur-pop-bin
+
 pkgname=pop-bin
 pkgver=5.0.9
 pkgrel=1
