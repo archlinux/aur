@@ -1,0 +1,12 @@
+pkgbase = haskell-keycloak
+	pkgdesc = Command-line interface and library to configure Keycloak
+	pkgver = 0.0.0.1
+	pkgrel = 1
+	url = https://github.com/ibizaman/haskell-keycloak
+	arch = any
+	license = GPL3
+	source = https://github.com/ibizaman/haskell-keycloak/releases/download/0.0.0.1/keycloak.zip
+	sha512sums = a4ae9b090742b21005dd794d813842c7ccd65e7d0f0d4e3326c1b536c3bbe559d16731129fb80bd970735e1bb10f5f41f2ef98b57acbde6810e4a744bb82700c
+
+pkgname = haskell-keycloak
+
