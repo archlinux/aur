@@ -2,14 +2,14 @@
 #Contributor: Martin Friedrich <npanic@acid.wtf>
 pkgname=mandelbulber2-opencl-git
 _pkgname=mandelbulber2
-pkgver=20190622
+pkgver=20210422
 pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version."
-arch=('any')
+arch=('i686 x86_64')
 url="https://github.com/buddhi1980/mandelbulber2"
 license=('GPL3')
-depends=('lzo' 'qt5-tools' 'libjpeg-turbo' 'libpng12' 'gsl' 'openmpi' 'qt5-multimedia' 'opencl-headers' 'opencl-mesa' 'opencl-nvidia' 'ocl-icd')
-makedepends=('git')
+depends=('lzo' 'qt5-tools' 'libjpeg-turbo' 'libpng12' 'gsl' 'openmpi' 'qt5-multimedia' 'opencl-headers' 'opencl-mesa' 'ocl-icd' 'opencl-clhpp')
+makedepends=('git' 'qmake')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${_pkgname}::git+https://github.com/buddhi1980/mandelbulber2")
