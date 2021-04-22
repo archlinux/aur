@@ -1,6 +1,6 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=ctc
-pkgver=1.0.0.A3
+pkgver=1.0.0.A4
 
 _cyanversion=1.0.0.A11 # Needed to find the right version ZIP
 
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip")
 noextract=()
-md5sums=("076b98dc4af03eb958fb89fb501ce0d5")
+md5sums=( "e8affc3eea165dc31da6d251f775fbf6" )
 
 build() {
     cd CyanComponents
