@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.7.2  # Don’t forget to update CHANGELOG.md
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -41,7 +41,7 @@ build() {
       ;;
   esac
 
-  meson --prefix=/usr --buildtype=release -Db_lto=true . build
+  meson --prefix=/usr --buildtype=release --wrap-mode=nodownload -Db_lto=true . build
 
   if [[ ${do_pgo} == yes ]]; then
     find -name "*.gcda" -delete
@@ -53,11 +53,13 @@ build() {
     local tmp_file=$(mktemp)
 
     if [[ -v WAYLAND_DISPLAY ]]; then
+      # TODO: remove the sleep in the next release (with SIGWINCH
+      # fixes in generate-alt-random-writes.py)
       build/footclient --version
       build/foot \
         --config /dev/null \
         --term=xterm \
-        sh -c "./scripts/generate-alt-random-writes.py ${script_options} ${tmp_file} && cat ${tmp_file}"
+        sh -c "sleep 2 && ./scripts/generate-alt-random-writes.py ${script_options} ${tmp_file} && cat ${tmp_file}"
     else
       build/footclient --version
       build/foot --version
