@@ -4,13 +4,12 @@ pkgname=libspng
 pkgver=0.6.2
 pkgrel=1
 pkgdesc="C library for reading and writing PNG format files with a focus on security and ease of use"
-arch=(i686 x86_64 armv7 aarch64)
+arch=(x86_64 aarch64)
 url="https://libspng.org/"
 license=('BSD')
 depends=(zlib)
 makedepends=(meson)
 checkdepends=(libpng)
-conflicts=(libspng-git)
 source=("libspng-${pkgver}.tar.gz::https://github.com/randy408/libspng/archive/v${pkgver}.tar.gz")
 sha256sums=('eb7faa3871e7a8e4c1350ab298b513b859fcb4778d15aa780a79ff140bcdfaf3')
 
@@ -24,6 +23,6 @@ check() {
 }
 
 package() {
-	DESTDIR="${pkgdir}" meson install -C build
+	DESTDIR="$pkgdir" meson install -C build
 	install -D "libspng-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/libspng/LICENSE"
 }

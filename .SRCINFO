@@ -3,15 +3,12 @@ pkgbase = libspng
 	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://libspng.org/
-	arch = i686
 	arch = x86_64
-	arch = armv7
 	arch = aarch64
 	license = BSD
 	checkdepends = libpng
 	makedepends = meson
 	depends = zlib
-	conflicts = libspng-git
 	source = libspng-0.6.2.tar.gz::https://github.com/randy408/libspng/archive/v0.6.2.tar.gz
 	sha256sums = eb7faa3871e7a8e4c1350ab298b513b859fcb4778d15aa780a79ff140bcdfaf3
 
