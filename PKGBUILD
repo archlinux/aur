@@ -2,7 +2,7 @@
 
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
@@ -12,8 +12,9 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2'
          'yubikey-manager')
 makedepends=('git' 'python')
 source=("git+$url.git#tag=$pkgname-$pkgver?signed")
-validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3'        # Dag Heyman <dag@yubico.com>
-              '57A9DEED4C6D962A923BB691816F3ED99921835E')       # Emil Lundberg <emil@yubico.com>
+validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3'  # Dag Heyman <dag@yubico.com>
+              '57A9DEED4C6D962A923BB691816F3ED99921835E'  # Emil Lundberg <emil@yubico.com>
+              '9E885C0302F9BB9167529C2D5CBA11E6ADC7BCD1') # Dennis Fokin <dennis.fokin@yubico.com>
 sha512sums=('SKIP')
 
 build() {
