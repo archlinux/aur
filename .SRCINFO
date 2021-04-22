@@ -1,6 +1,6 @@
 pkgbase = wxwidgets-dev-light
 	pkgdesc = wxWidgets suite for Base and GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = http://wxwidgets.org
 	arch = x86_64
@@ -11,42 +11,43 @@ pkgbase = wxwidgets-dev-light
 	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = libsm
-	makedepends = libgl
 	makedepends = libnotify
-	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.4
+	makedepends = curl
+	makedepends = libsecret
+	makedepends = libxtst
+	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.5
 	source = make-abicheck-non-fatal.patch
 	source = git+https://github.com/wxWidgets/Catch.git
 	source = wxGTK-collision.patch
 	sha256sums = SKIP
+	sha256sums = 214c2d9211e3505e94008747352f5fa07203d4d9087535985a1b6084d4e40ac7
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 7b41947bc72bf8d6edae67837d854390555cc5afc48dda618efd3021b5f6d7a8
 
 pkgname = wxbase-dev-light
 	pkgdesc = wxWidgets Base. Development branch (GNOME/GStreamer free!)
-	depends = wxcommon-light
-	depends = bash
 	depends = expat
-	depends = zlib
+	depends = curl
+	depends = libsecret
 	provides = wxbase-dev
 	conflicts = wxbase-dev
 	options = !emptydirs
 
 pkgname = wxgtk2-dev-light
 	pkgdesc = wxWidgets GTK2 Toolkit. Development branch (GNOME/GStreamer free!)
-	depends = wxcommon-light
-	depends = libgl
+	depends = wxcommon-dev-light
 	depends = gtk2
 	depends = libsm
 	depends = sdl2
 	depends = libnotify
+	depends = libxtst
 	provides = wxgtk2-dev
 	conflicts = wxgtk2-dev
 	options = !emptydirs
 
 pkgname = wxgtk3-dev-light
 	pkgdesc = wxWidgets GTK3 Toolkit. Development branch (GNOME/GStreamer free!)
-	depends = wxcommon-light
+	depends = wxcommon-dev-light
 	depends = gtk3
 	depends = libsm
 	depends = sdl2
@@ -57,7 +58,7 @@ pkgname = wxgtk3-dev-light
 
 pkgname = wxcommon-dev-light
 	pkgdesc = wxWidgets common. Development branch (GNOME/GStreamer free!)
-	depends = wxbase-light
+	depends = wxbase-dev-light
 	provides = wxgtk-common-dev
 	conflicts = wxgtk-common-dev
 	options = !emptydirs
