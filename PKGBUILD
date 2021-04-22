@@ -2,7 +2,7 @@
 
 pkgname=python-pysim-git
 _pyname=pysim
-pkgver=1.0.r126.gbba2bd4
+pkgver=1.0.r130.gfe1fb03
 pkgrel=1
 pkgdesc='A python tool to program SIMs / USIMs / ISIMs'
 arch=('any')
@@ -26,6 +26,7 @@ pkgver() {
 }
 
 package() {
+  install=$pkgname.install
   cd "${srcdir}/${_pyname}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }

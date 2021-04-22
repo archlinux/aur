@@ -1,0 +1,5 @@
+post_install() {
+  echo "
+Note: Please ensure pcscd.socket is active.
+"
+}
