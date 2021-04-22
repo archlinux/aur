@@ -1,14 +1,14 @@
 pkgbase = replicated-bin
 	pkgdesc = CLI for interacting with the Replicated Vendor API
-	pkgver = 0.33.8
-	pkgrel = 2
+	pkgver = 0.36.1
+	pkgrel = 1
 	url = https://github.com/replicatedhq/replicated
 	arch = x86_64
 	license = MIT
 	provides = replicated
 	conflicts = replicated
-	source = https://github.com/replicatedhq/replicated/releases/download/v0.33.8/replicated_0.33.8_linux_amd64.tar.gz
-	sha256sums = 6b02f428adee73b47bf7d8991d62591202b00ce53696f7609c71ab3b73a5e260
+	source = https://github.com/replicatedhq/replicated/releases/download/v0.36.1/replicated_0.36.1_linux_amd64.tar.gz
+	sha256sums = 88113bff314f0a1f23dfafcf7ab8c375e616e6e9b24d2423e1058a9131d0ffd1
 
 pkgname = replicated-bin
 
