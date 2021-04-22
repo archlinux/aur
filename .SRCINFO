@@ -1,0 +1,17 @@
+pkgbase = autotiling-columns-git
+	pkgdesc = Script for sway and i3 to set the maximum amount of columns
+	pkgver = r89.49724a9
+	pkgrel = 1
+	url = https://github.com/monosans/autotiling-columns
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-i3ipc
+	provides = autotiling-columns
+	conflicts = autotiling-columns
+	source = git://github.com/monosans/autotiling-columns.git
+	sha256sums = SKIP
+
+pkgname = autotiling-columns-git
+
