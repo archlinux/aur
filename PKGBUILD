@@ -1,4 +1,5 @@
-# Maintainer: Braden Pellett (daBrado) <aurcontact@dabrado.net>
+# Maintainer: novenary <streetwalkermc@gmail.com>
+# Contributor: Braden Pellett (daBrado) <aurcontact@dabrado.net>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
@@ -8,7 +9,7 @@
 
 pkgname=terminus-font-ll2-td1
 pkgver=4.49.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
@@ -16,8 +17,8 @@ arch=('any')
 license=('GPL2' 'custom:OFL')
 makedepends=('xorg-bdftopcf' 'python')
 provides=('terminus-font')
-conflicts=('terminus-font-otb')
-replaces=('terminus-font-otb')
+conflicts=('terminus-font' 'terminus-font-otb')
+replaces=('terminus-font-ll2-td1-otb')
 source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver%.1}/terminus-font-$pkgver.tar.gz"
         fix-75-yes-terminus.patch)
 sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
@@ -47,7 +48,7 @@ package() {
   install -Dm644 "$srcdir/terminus-font-$pkgver/75-yes-terminus.conf" \
     "$pkgdir/usr/share/fontconfig/conf.avail/75-yes-terminus.conf"
   install -Dm644 "$srcdir/terminus-font-$pkgver/OFL.TXT" \
-    "$pkgdir/usr/share/licenses/terminus-font/LICENSE"
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -d "$pkgdir/usr/share/fontconfig/conf.default"
   ln -sr "$pkgdir/usr/share/fontconfig/conf.avail/75-yes-terminus.conf" \
