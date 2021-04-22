@@ -1,14 +1,13 @@
 pkgbase = cget
 	pkgdesc = A Curl and Python Based simple download command (SYNTAX: cget url file)
-	pkgver = 1.0
-	pkgrel = 2
-	url = https://pypi.org/project/notificationcenter
+	pkgver = 1.1
+	pkgrel = 1
 	arch = x86_64
 	license = GPL
 	makedepends = pyinstaller
 	depends = curl
-	source = cget-1.0.tar.gz
-	md5sums = 643a231681539c73f8b27f7020802e26
+	source = cget-1.1.tar.gz
+	md5sums = ece7ffefa8ad86fcf005e03be4166c76
 
 pkgname = cget
 
