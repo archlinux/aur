@@ -1,7 +1,7 @@
 # Maintainer: Ace Breakpoint <chemistudio@gmail.com>
 
 pkgname=gnome-shell-extension-ibus-tweaker
-pkgver=31
+pkgver=32
 pkgrel=1
 pkgdesc="Tweaker of IBus for orientation, theme, font and ascii mode auto-switch"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnome-shell>=40.0')
 makedepends=('unzip')
 source=("${pkgname}-${pkgver}.zip::https://extensions.gnome.org/extension-data/ibus-tweakertuberry.github.com.v${pkgver}.shell-extension.zip")
-sha256sums=('3e7ca471c4dc921e742b3bfbf2579889314ab81c18ed25a3634b665994d569e4')
+sha256sums=('b7f82dcbbb99d92c5f63651e0c23426dc0d0ea2d91dd233d8498d47984c1a90a')
 
 package() {
   chmod 644 "${srcdir}/metadata.json"
