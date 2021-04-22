@@ -1,0 +1,26 @@
+pkgbase = swt
+	pkgdesc = An open source widget toolkit for Java
+	pkgver = 4.6.3
+	pkgrel = 2
+	url = https://www.eclipse.org/swt/
+	arch = x86_64
+	license = EPL
+	makedepends = jdk8-openjdk
+	makedepends = glu
+	makedepends = unzip
+	makedepends = pkgconfig
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = ant
+	depends = java-runtime>=7
+	depends = libxtst
+	optdepends = glu
+	optdepends = gtk2
+	optdepends = gtk3
+	source = https://archive.eclipse.org/eclipse/downloads/drops4/R-4.6.3-201703010400/swt-4.6.3-gtk-linux-x86_64.zip
+	source = build-swt.xml
+	sha256sums = 005dd6bfb20919f9fe7c681864d3f30a5b3eae112da8bdab2bf418978bbbd7aa
+	sha256sums = 3d30fbde25a6a6d260d04cb1782b7618c2a0a926440935a9eea516146eb0e1e1
+
+pkgname = swt
+
