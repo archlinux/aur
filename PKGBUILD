@@ -1,8 +1,8 @@
-# Maintainer: Adam Scott (scottmada) <ascott.ca at gmail dot com>
+# Maintainer: (Joe084) <develon69 at gmail dot com>
 
 # Common metadata
 pkgname='pico-8'
-pkgver='0.1.12c'
+pkgver='0.2.2c'
 pkgrel=1
 pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -26,9 +26,9 @@ _file_zip_arm="pico-8_${pkgver}_${_arch_arm}.zip"
 # Source files hashes (SHA-512)
 _file_desktop_hash="f63b8f4d32b7183c9785a418c7e8d2ea98343edd90c8553397c7d1776b888eb2b49f0308ec7918bde6c41c9a53b6a00318a533d264fa20e0bbd3d8a9f88c2244"
 _file_mime_hash="0497c602acbffdbec285ffcdb43ebe55adc793c051ce792933ba2d8d431229f2a938434cd760fbf92133ad6b9604c996b563276166fa883a619cd7313acd4f92"
-_file_zip_i686_hash="2a6b22a9df66a1e587e8d426cdc0997ea0c95b88eead830c1f4ea1017efdc2bc2b5331cccf5c8cb72eee0862306d086aebf962001e66c3a877a50e69b5c64e05"
-_file_zip_x86_64_hash="46c17dc321f8e41ad83884e957ed165919a5144562adf16e03757f5c5dbd0d4be6f46d3fb39ff65e7720866e0d2c77ec89fad79bf45713fde1224c4f1bc52179"
-_file_zip_arm_hash="a7bc53b3c1a417d7480e03e1bb8b8cfcfa41281096f1904a9837b3bb6404f09cfea6bae96ff29cafc2f8cacb81454b4692f9d73527050bf02c366fcb4c5766cd"
+_file_zip_i686_hash="f02e45c367ef3c6aa3b5d746b2ce839d8cac6808560d0e5893a41aac9546ba7e5b77158687daa45a1d6dab971d38ed096e1f96167d80dad13577931072e0a27a"
+_file_zip_x86_64_hash="322b05f8d7c2134906d1546f1771a711534030d8699472cfa242dd96ec5be6f63f0371c14a93965f10b3b8636a9d4064ab4273b48c4aa790a6cda6c7ef6dd27d"
+_file_zip_arm_hash="03b5301932bd347cdf4ed3e324da6c4d1ecff46f845edb1cdf8a56e2950b84f838b955e634909a8219aec8c8bfee647602eadd66dc8d166b218c477d0d6229d4"
 
 # Source declaration
 source=("${_file_desktop}" "${_file_mime}")
