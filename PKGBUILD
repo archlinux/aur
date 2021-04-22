@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=hush3
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
@@ -11,7 +11,7 @@ depends=('libsodium' 'lib32-zlib')
 makedepends=('unzip' 'wget' 'git' 'python' 'rust' 'curl' 'autoconf=2.69')
 conflicts=('hush3-bin')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('08c949a9b80418da8c1817b47ecd0ad773da852fa4c8012140e7f22740566bcb')
+sha256sums=('878da198f978c4bfa6e4c6953dda8389ebe1281372f722669e5d89656661d48c')
 
 build() {
   tar xzvf v$pkgver.tar.gz
