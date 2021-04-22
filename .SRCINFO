@@ -1,0 +1,15 @@
+pkgbase = mozilla-common
+	pkgdesc = Helper for forks of the Mozilla codebase which still support NPAPI
+	pkgver = 1.4
+	pkgrel = 6
+	url = https://www.mozilla.org/
+	install = mozilla-common.install
+	arch = any
+	license = GPL
+	source = mozilla-common.sh
+	source = mozilla-common.csh
+	md5sums = 39451f6fe87d3cb224e140322c55eb27
+	md5sums = 924887e41bd96db37029f479befe40cf
+
+pkgname = mozilla-common
+
