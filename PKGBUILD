@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=dehinter
-pkgver=2.0.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='A tool for the removal of TrueType instruction sets (hints) in fonts'
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-fonttools')
 makedepends=('python-setuptools-scm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('24bbe9362f35dd6b7e7c476945d1c00628459c4348ff50cbfa78f90f8ec6fb2b')
+sha256sums=('f1437fbffbd61d49a3ac26a0474e973861e76a577be1041d48c1d4723b824ddb')
 
 build() {
 	cd "$pkgname-$pkgver"
