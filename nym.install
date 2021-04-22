@@ -1,0 +1,15 @@
+post_install() {
+    echo '
+To initialize a mixnode run:
+
+    sudo -u nym nym-mixnode init --id <node_id> --host <host_ip>
+
+To run a mixnode:
+
+    systemctl start nym-mixnode@<node_id>
+
+To see the log:
+
+    journalctl -n 100 -fu nym-mixnode@<node_id>
+'
+}

@@ -1,0 +1,17 @@
+[Unit]
+Description=Nym Mixnode for %I
+After=network-online.target nss-lookup.target
+Wants=network-online.target nss-lookup.target
+Documentation=https://nymtech.net/docs/run-nym-nodes/mixnodes/
+
+[Service]
+User=nym
+ExecStart=/usr/bin/nym-mixnode run --id %i
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=30
+StartLimitInterval=350
+StartLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target
