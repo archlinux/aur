@@ -1,6 +1,6 @@
 pkgbase = liberica-jdk-full-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
-	pkgver = 16.0.0+36
+	pkgver = 16.0.1+9
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jdk-full.install
@@ -24,10 +24,10 @@ pkgbase = liberica-jdk-full-bin
 	provides = java-runtime-headless-openjdk=16
 	provides = java-runtime=16
 	provides = java-runtime-openjdk=16
-	provides = liberica-jdk-bin=16.0.0+36
-	provides = liberica-jdk-lite-bin=16.0.0+36
-	provides = liberica-jre-bin=16.0.0+36
-	provides = liberica-jre-full-bin=16.0.0+36
+	provides = liberica-jdk-bin=16.0.1+9
+	provides = liberica-jdk-lite-bin=16.0.1+9
+	provides = liberica-jre-bin=16.0.1+9
+	provides = liberica-jre-full-bin=16.0.1+9
 	backup = etc/liberica-jdk-full/logging.properties
 	backup = etc/liberica-jdk-full/management/jmxremote.access
 	backup = etc/liberica-jdk-full/management/jmxremote.password.template
@@ -56,14 +56,14 @@ pkgbase = liberica-jdk-full-bin
 	sha1sums = b8233f9ff931ce97a265827fac18ed90f4e248c6
 	sha1sums = a0da2952bc87a425182c3ac88e88649fbaa7cb65
 	sha1sums = eb36aa73a9be98164447774217865b91e79d503c
-	source_aarch64 = https://download.bell-sw.com/java/16+36/bellsoft-jdk16+36-linux-aarch64-full.tar.gz
-	sha1sums_aarch64 = d0d567f6f25775ae222ebb71e198d6ea36fbd99c
-	source_armv7h = https://download.bell-sw.com/java/16+36/bellsoft-jdk16+36-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv7h = b8104ab8e96f414472e32c50666989d0b1f9cb70
-	source_armv8h = https://download.bell-sw.com/java/16+36/bellsoft-jdk16+36-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv8h = b8104ab8e96f414472e32c50666989d0b1f9cb70
-	source_x86_64 = https://download.bell-sw.com/java/16+36/bellsoft-jdk16+36-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = 758ba613d60fab9c62d267b9df11b4ab28457e86
+	source_aarch64 = https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-aarch64-full.tar.gz
+	sha1sums_aarch64 = 64bd9b8fef1c7e77d62b086a4e84718511d2555d
+	source_armv7h = https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv7h = fb6e80ecb061a83be66187198860cfb8669dc432
+	source_armv8h = https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv8h = fb6e80ecb061a83be66187198860cfb8669dc432
+	source_x86_64 = https://download.bell-sw.com/java/16.0.1+9/bellsoft-jdk16.0.1+9-linux-amd64-full.tar.gz
+	sha1sums_x86_64 = faab4e5fc32f79ad3ab7961a23a49e74b30e9f1e
 
 pkgname = liberica-jdk-full-bin
 
