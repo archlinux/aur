@@ -1,11 +1,13 @@
 pkgbase = tad
 	pkgdesc = Library and tools to handle data arrays in C++
-	pkgver = 1.3
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://marlam.de/tad/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = doxygen
+	makedepends = pandoc
 	depends = exiv2
 	depends = ffmpeg
 	depends = gdal
@@ -15,8 +17,8 @@ pkgbase = tad
 	depends = libpng
 	depends = libtiff
 	depends = openexr
-	source = https://marlam.de/tad/releases/tad-1.3.tar.gz
-	sha256sums = eaf2052289de9eeaa60efcd6123523bd1bd40faa3651c1bb35c351d6d5b7aa80
+	source = https://marlam.de/tad/releases/tad-2.1.tar.gz
+	sha256sums = 58e1107027166d43aa62a6a3159e1174b929d13d23f59318e59a2c81ad7ce0a9
 
 pkgname = tad
 
