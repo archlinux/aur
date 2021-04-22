@@ -1,9 +1,9 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
-# Contributor: Contributor ("wookietreiber") <christian.krause@mailbox.org>
+# Contributor: Contributor ("wookietreiber") <christian dot krause at mailbox dot org>
 
 _gemname=bindata
 pkgname=ruby-$_gemname
-pkgver=2.4.8
+pkgver=2.4.9
 pkgrel=1
 pkgdesc="Declarative way to read and write structured binary data"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc' 'ruby-rake')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('2c16c5148d1b6cac59a4fb33ccfbfff8aed8bd6903a4262a373e075896c4b4ae')
+sha256sums=('cfe6227a5e9e6f3d9cbc3d54f0756fd53a6fb666415a290ac93540721403e39b')
 
 package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
