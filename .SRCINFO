@@ -13,6 +13,7 @@ pkgbase = nextpnr-git
 	makedepends = icestorm
 	makedepends = prjtrellis
 	makedepends = prjtrellis-db
+	makedepends = prjoxide
 	depends = boost-libs
 	depends = python
 	depends = qt5-base

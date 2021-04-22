@@ -8,7 +8,7 @@ url='https://github.com/YosysHQ/nextpnr'
 license=('custom:ISC')
 depends=('boost-libs' 'python' 'qt5-base')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'icestorm' 'prjtrellis'
-             'prjtrellis-db')
+             'prjtrellis-db' 'prjoxide')
 provides=('nextpnr')
 conflicts=('nextpnr')
 source=('nextpnr::git+https://github.com/YosysHQ/nextpnr.git')
@@ -26,9 +26,10 @@ build() {
   cd build
 
   cmake \
-    -DARCH=generic\;ice40\;ecp5 \
+    -DARCH=generic\;ice40\;ecp5\;nexus \
     -DICESTORM_INSTALL_PREFIX=/usr \
     -DTRELLIS_INSTALL_PREFIX=/usr \
+    -DOXIDE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
