@@ -1,6 +1,6 @@
 pkgbase = video-downloader
 	pkgdesc = GTK application to download videos from websites like YouTube and many others (based on youtube-dl)
-	pkgver = 0.7.4
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Unrud/video-downloader
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = video-downloader
 	depends = gtk3
 	depends = python-gobject
 	depends = youtube-dl
-	source = git+https://github.com/Unrud/video-downloader.git/#commit=e6812900dfd7da514117136ce691ba08849784cf
+	source = git+https://github.com/Unrud/video-downloader.git/#commit=8df9d33b40fbfce7c608e34f2580364a2b66eff6
 	b2sums = SKIP
 
 pkgname = video-downloader
