@@ -1,0 +1,13 @@
+pkgbase = ctc
+	pkgdesc = CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers
+	pkgver = 1.0.0.A3
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = gradle>=6.7
+	depends = jdk-openjdk
+	source = https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/1.0.0.A11/CyanLoader-Sources-1.0.0.A11-full.zip
+	md5sums = 076b98dc4af03eb958fb89fb501ce0d5
+
+pkgname = ctc
+
