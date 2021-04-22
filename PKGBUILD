@@ -3,12 +3,14 @@
 _pkgbase=unofficial-homestuck-collection
 pkgname="${_pkgbase}-bin"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
 license=('custom:chrome' 'custom:electron')
 makedepends=('gendesk')
+provides=("${_pkgbase}")
+conflicts=("${_pkgbase}")
 options=('!strip')
 source=("https://github.com/Bambosh/unofficial-homestuck-collection/releases/download/V${pkgver}/unofficial-homestuck-collection-${pkgver}.tar.gz")
 sha512sums=('46d1e6ffb3eb02f1b2b9181b105d145007439b78faf7a5849b55b80128c0635752a867f61087600d72a912134a420f164925858dcf85089c4e3b4b857ce6df2e')
