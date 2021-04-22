@@ -1,7 +1,7 @@
 pkgbase = wine-valve
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
-	pkgver = 5.13
-	pkgrel = 4
+	pkgver = 6.3.20210422b
+	pkgrel = 1
 	url = https://github.com/ValveSoftware/wine.git
 	install = wine-valve.install
 	arch = i686
@@ -90,6 +90,7 @@ pkgbase = wine-valve
 	makedepends = faudio
 	makedepends = lib32-faudio
 	makedepends = vkd3d
+	makedepends = lib32-vkd3d
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -129,10 +130,10 @@ pkgbase = wine-valve
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=5.13
-	provides = bin32-wine=5.13
-	provides = wine-wow64=5.13
-	provides = wine-valve=5.13
+	provides = wine=6.3.20210422b
+	provides = bin32-wine=6.3.20210422b
+	provides = wine-wow64=6.3.20210422b
+	provides = wine-valve=6.3.20210422b
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -140,10 +141,10 @@ pkgbase = wine-valve
 	conflicts = wine-wow64
 	replaces = bin32-wine
 	options = staticlibs
-	source = https://github.com/ValveSoftware/wine/archive/experimental-wine-5.13-shmem-20201214.tar.gz
+	source = https://github.com/ValveSoftware/wine/archive/experimental-wine-6.3-20210422b.tar.gz
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	sha256sums = 42e060294458780ac84becbd9b6e85084afcee3abe22aa2296486ebc612be865
+	sha256sums = ae7129cdafb1311d438a48206d444dd13eab82e40c6dd114be06091274a8db44
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 
@@ -181,4 +182,5 @@ pkgname = wine-valve
 	depends = faudio
 	depends = lib32-faudio
 	depends = vkd3d
+	depends = lib32-vkd3d
 
