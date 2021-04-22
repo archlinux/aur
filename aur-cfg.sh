@@ -7,3 +7,7 @@ function get_latest_version {
 }
 
 version_suffix_separator=-
+
+function clean_downloads {
+  rm -vf atomicwallet-*.rpm
+}
