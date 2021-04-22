@@ -3,7 +3,7 @@
 pkgname=python-pixcat
 _name=${pkgname#python-}
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI and Python 3.6+ API to display images on a kitty terminal with optional resizing."
 arch=('any')
 url='https://github.com/mirukana/pixcat'
@@ -24,7 +24,6 @@ build(){
 package() {
   cd "$_name-$pkgver"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 # vim:set ts=2 sw=2 et:
