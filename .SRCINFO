@@ -1,6 +1,6 @@
 pkgbase = cis-latex
 	pkgdesc = A LaTeX2e package with commands and tools for use in university
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 0
 	url = https://traumweh.tk/
 	install = texlive.install
@@ -11,7 +11,7 @@ pkgbase = cis-latex
 	depends = texlive-fontsextra
 	depends = texlive-science
 	depends = texlive-pictures
-	source = https://cis-exzellenz.de/files/cis-latex-3.0/tex/cis.dtx
+	source = https://cis-exzellenz.de/files/cis-latex-3.1/tex/cis.dtx
 	sha256sums = SKIP
 
 pkgname = cis-latex

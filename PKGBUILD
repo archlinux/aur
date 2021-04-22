@@ -1,6 +1,6 @@
 ## Maintainer: traumweh <contact@traumweh.tk>
 
-_revision=0
+_revision=1
 pkgname=cis-latex
 pkgver=3.${_revision}
 pkgrel=0
@@ -8,7 +8,7 @@ pkgdesc="A LaTeX2e package with commands and tools for use in university"
 arch=("any")
 url="https://traumweh.tk/"
 license=('LPPL')
-source=("https://cis-exzellenz.de/files/cis-latex-3.0/tex/cis.dtx")
+source=("https://cis-exzellenz.de/files/cis-latex-3.1/tex/cis.dtx")
 depends=('texlive-core' 'texlive-latexextra' 'texlive-fontsextra' 'texlive-science' 'texlive-pictures')
 install=texlive.install
 
