@@ -2,8 +2,8 @@
 
 pkgname=openvpn-password-save
 _pkgname=openvpn
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.2
+pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
