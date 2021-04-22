@@ -1,7 +1,7 @@
 pkgbase = python-pixcat
 	pkgdesc = CLI and Python 3.6+ API to display images on a kitty terminal with optional resizing.
 	pkgver = 0.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mirukana/pixcat
 	arch = any
 	license = LGPL3
