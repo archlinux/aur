@@ -34,6 +34,9 @@ Categories=Graphics;" > "${srcdir}"/storyboarder-${pkgver}/storyboarder.desktop
 
 package(){
      # opt dir
+     mkdir -p "${pkgdir}"/usr/bin/
+     echo -e '#!/bin/sh\n/opt/storyboarder/storyboarder' > "${pkgdir}"/usr/bin/storyboarder
+     chmod 755 "${pkgdir}"/usr/bin/storyboarder
      mkdir -p "${pkgdir}"/opt/storyboarder/
      # linux unpacked
      cp -ar  "${srcdir}"/storyboarder-${pkgver}/dist/linux-unpacked/* "${pkgdir}"/opt/storyboarder/
