@@ -2,7 +2,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=logseq-desktop
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
@@ -16,9 +16,10 @@ md5sums=('259cc5b3d618d52eebdfa3e1429d004e'
 
 package() {
     cd "$srcdir/Logseq-linux-x64"
-    #desktop file
+    # desktop file
     install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/logseq.desktop
-    install -Dm644 "$srcdir/Logseq-linux-x64/resources/app/icons/logseq.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    # icons
+    install -Dm644 "$srcdir/Logseq-linux-x64/resources/app/icons/logseq.png" "$pkgdir/usr/share/pixmaps/logseq.png"
     install -d ${pkgdir}/opt/${pkgname}
     cp -r $srcdir/Logseq-linux-x64/* ${pkgdir}/opt/${pkgname}/
     install -d ${pkgdir}/usr/bin
