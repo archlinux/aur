@@ -1,0 +1,16 @@
+pkgbase = python-asciitree-git
+	pkgdesc = draws tree structures using characters.
+	pkgver = r48.29712fb
+	pkgrel = 1
+	url = https://github.com/mbr/asciitree
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = python-asciitree
+	conflicts = python-asciitree
+	source = python-asciitree-git::git+https://github.com/mbr/asciitree.git
+	md5sums = SKIP
+
+pkgname = python-asciitree-git
+
