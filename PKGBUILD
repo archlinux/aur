@@ -5,7 +5,7 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=27.1
+pkgver=27.2
 _pkgver_major=${pkgver/.*}
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
@@ -16,12 +16,12 @@ depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'gnut
 optdepends=('desktop-file-utils')
 conflicts=('emacs')
 provides=("emacs=$_pkgver_major")
-validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910'
-              'D405AA2C862C54F17EEE6BE0E8BCD7866AFCF978')
+validpgpkeys=('E6C9029C363AD41D787A8EBB91C1262F01EB8D39'
+              '28D3BED851FDF3AB57FEF93C233587A47C207910')
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-md5sums=('f1f25356b68ec69caccd41d95988d23d'
+md5sums=('4c3d9ff35b2ab2fe518dc7eb3951e128'
          'SKIP')
 
 build() {
