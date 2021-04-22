@@ -1,6 +1,6 @@
 
 pkgname=pinegrow
-pkgver=5.981
+pkgver=5.992
 pkgrel=1
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=(gendesk unzip)
 source=("http://download.pinegrow.com/PinegrowLinux64.${pkgver}.zip"
 	"${pkgname}.png"
   "LICENSE")
-sha512sums=('2022dca9226dfba68eff66678519c604dc4c6d5bf25ac519cb82fb8b544db97c18fe3a340120801c19dc9f269ed12a8ad5ecf792ae12efcdcbca5853b732cf45'
+sha512sums=('7385565e7b2d86f00c13c5837a3824c4c24efcbc90060aa2a189d7594e0e22ccad2b90431fe5050b52f5f3a80fa250e3f2021375bb01d2d4cb5a3aa56addf5cd'
             'e71d7bfa237604fdf183cf1dc61e674c3f0ee9a33609f5c2aa6adf3b0359acd12f6ff2c1deeec52128461327c0fde013f4e1cc6fc5170e21f09b7fb01a4f334e'
             '1f2dd46c34bac1d218176f977eec05811982f1f74ead24deadb64717bb64059122e056ee1c95de34e207dd9e90107ce2f7187a4d6781f024257a7c2d7d605967')
 
