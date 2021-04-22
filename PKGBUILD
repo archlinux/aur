@@ -1,4 +1,4 @@
-# Maintainer: Emanuele 'Lele aka eldios' Calo' <emanuele.lele.calo@gmail.com>
+# Maintainer: Cole Gerdemann <aur@corvettecole.com>
 
 pkgname=p3x-onenote
 pkgver=2021.4.173
