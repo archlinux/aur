@@ -32,10 +32,10 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl-development.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-# Skip SHA256 of licenses, it fails always for some reason.
+# Skip BLAKE2 of licenses, it fails always for some reason.
 b2sums=('037c9e47763565d30548c2e5dadb2d20f3d68eea1287e5ffc803ed299002516dd7a9a8bc5822c772824ae5d3727e778bc62b657d838b3facade69259a193ad7d'
-        '6d10467d8ee30d0b9de15a0511e8af5ef15513c1f688c4a1f413bc607bb6cb10a616d6189b7bf7bbef45bd2672f3c4c5fb0dd8db9f4a10e329c12da1573ec74e'
-        'd1f54cb3f9f6f4169f5debb5399764271a20ce631c8639cfe2c37ddbf0da7bf26364b509c149ab9df75a86c8ba6fdc400d8cac86ddcc86ab35d6dedab34f30c1')
+        'SKIP'
+        'SKIP')
 
 # The tar extracts to a folder called DiscordCanary.
 _tarname=DiscordDevelopment
