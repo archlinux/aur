@@ -1,0 +1,18 @@
+pkgbase = hacktv-git
+	pkgdesc = Analogue TV transmitter for the HackRF
+	pkgver = 779a072
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = git
+	depends = hackrf
+	depends = ffmpeg
+	provides = hacktv
+	conflicts = hacktv
+	source = git://github.com/fsphil/hacktv
+	md5sums = SKIP
+
+pkgname = hacktv-git
+
