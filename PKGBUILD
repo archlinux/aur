@@ -1,7 +1,7 @@
-# Maintainer: monosans <hsyqixco at protonmail dot com>
+# Maintainer: monosans
 pkgname=autotiling-columns-git
 _pkgname=autotiling-columns
-pkgver=r89.49724a9
+pkgver=r92.2be8fe8
 pkgrel=1
 pkgdesc="Script for sway and i3 to set the maximum amount of columns"
 arch=(x86_64)
