@@ -1,0 +1,7 @@
+/pkg/
+/src/
+*.pkg.tar.*
+*.tar.bz2
+*.tar.bz2.asc
+*.tar.bz2.sha512
+*.tar.bz2.sha512.asc
