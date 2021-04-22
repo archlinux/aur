@@ -12,7 +12,7 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.11.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "nextdns.tmpfiles"
     "01-socket.patch"
 )
-sha256sums=('d76c125d5e843d7623e0d1e4e78b29ff6d65046ccf933709ce162ca24e6999b2'
+sha256sums=('09dd768095bd5dd739ec32df5efacca97d2cf15996419deb7190fe2d68c56976'
             'd5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2'
