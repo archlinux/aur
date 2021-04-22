@@ -8,19 +8,19 @@ url="http://cairographics.org/"
 license=('custom')
 depends=('libsvg-cairo')
 arch=('i686' 'x86_64')
-source=("http://cairographics.org/snapshots/$pkgname-$pkgver.tar.gz")
-md5sums=('ba266c00486ffd93b8a46d59028aaef9')
+source=("https://cairographics.org/snapshots/$pkgname-$pkgver.tar.gz")
+sha256sums=('e658fde141eb7ce981ad63d319339be5fa6d15e495d1315ee310079cbacae52b')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   unset LDFLAGS
   ./configure --prefix=/usr --mandir=/usr/share/man
   sed -i "s/-Wl,--as-needed//g" src/Makefile 
   make 
 }
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make prefix=$pkgdir/usr mandir=$pkgdir/usr/share/man install
+  cd $pkgname-$pkgver
+  make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man install
   install -Dm644 COPYING \
-    $pkgdir/usr/share/licenses/$pkgname/COPYING
+    "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
