@@ -6,6 +6,8 @@ pkgbase = firefox9
 	license = GPL
 	makedepends = python2
 	depends = python2
+	depends = yasm
+	conflicts = firefox
 	source = https://archive.mozilla.org/pub/firefox/releases/9.0.1/source/firefox-9.0.1.source.tar.bz2
 	md5sums = 7cf2bd379792a9b232267c6a79680566
 
