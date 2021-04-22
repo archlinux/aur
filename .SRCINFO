@@ -1,0 +1,12 @@
+pkgbase = graphql-lsp
+	pkgdesc = graphql language server cli
+	pkgver = 3.1.3
+	pkgrel = 1
+	url = https://github.com/graphql/graphiql
+	arch = x86_64
+	makedepends = npm
+	source = https://github.com/graphql/graphiql/archive/refs/tags/graphql-language-service@3.1.3.tar.gz
+	sha256sums = 0cdf7da4e2c161bb5a249748d4e60482453abff4d12f164d1fa3e1b6ab1172a4
+
+pkgname = graphql-lsp
+
