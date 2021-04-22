@@ -1,0 +1,11 @@
+pkgbase = firefox9
+	pkgdesc = the firefox 9.0.1 OLD browser, please don't download this package if you don't know what are you doing
+	pkgver = 9.0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	source = https://archive.mozilla.org/pub/firefox/releases/9.0.1/source/firefox-9.0.1.source.tar.bz2
+	md5sums = 7cf2bd379792a9b232267c6a79680566
+
+pkgname = firefox9
+
