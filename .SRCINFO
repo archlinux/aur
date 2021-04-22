@@ -2,13 +2,13 @@ pkgbase = ice-store
 	pkgdesc = A place for discovering SSBs
 	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/borderOS/ice-store
+	url = https://github.com/risiOS/ice-store
 	arch = any
 	license = GPL
 	depends = ice
 	depends = git
 	depends = python
-	source = ice-store-1.0.1.tar.gz::https://github.com/borderOS/ice-store/archive/1.0.1.tar.gz
+	source = ice-store-1.0.1.tar.gz::https://github.com/risiOS/ice-store/archive/1.0.1.tar.gz
 	sha256sums = fa214c3b7e2ea9f211de801c625daa91f9fad7e53b949c1cb75f8cfdd628205d
 
 pkgname = ice-store
