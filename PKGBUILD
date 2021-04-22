@@ -3,10 +3,10 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Daniel <danilacasito8@gmail.com>
 pkgname=cget
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 epoch=
 pkgdesc="A Curl and Python Based simple download command (SYNTAX: cget url file)"
 arch=(x86_64)
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=(643a231681539c73f8b27f7020802e26)
+md5sums=(ece7ffefa8ad86fcf005e03be4166c76)
 validpgpkeys=()
 
 prepare() {
