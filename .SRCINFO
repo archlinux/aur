@@ -1,0 +1,15 @@
+pkgbase = cq
+	pkgdesc = CQ -- CCFG Command Line Inteface (Cyan Configurations)
+	pkgver = 1.0.0.A15
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = gradle>=6.7
+	depends = jdk-openjdk
+	source = https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/1.0.0.A11/CyanLoader-Sources-1.0.0.A11-full.zip
+	source = https://aerialworks.ddns.net/maven/org/asf/aos/util/service/aosutil-service-SLIB-UTIL/0.0.0.13/aosutil-service-SLIB-UTIL-0.0.0.13.jar
+	md5sums = 076b98dc4af03eb958fb89fb501ce0d5
+	md5sums = c725e9bee57d6a63ce27b829cfa1a03e
+
+pkgname = cq
+
