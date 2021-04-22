@@ -46,6 +46,8 @@ depends=('python'
          'python-zxcvbn'
          'python-progressbar>=2.5'
          'python-loguru>=0.4.1'
+         # Arch Bug FS#68391: remove this transitive dep when bug fixed
+         'python-brotli'
          )
 optdepends=('python-guppy: for memusage plugin' #AUR#
             'python-transmissionrpc: Transmission support' #AUR#

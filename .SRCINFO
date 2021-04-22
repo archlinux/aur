@@ -36,6 +36,7 @@ pkgbase = flexget-git
 	depends = python-zxcvbn
 	depends = python-progressbar>=2.5
 	depends = python-loguru>=0.4.1
+	depends = python-brotli
 	optdepends = python-guppy: for memusage plugin
 	optdepends = python-transmissionrpc: Transmission support
 	optdepends = python-rarfile: decompress plugin
