@@ -2,7 +2,7 @@
 # Contributor: david0
 
 pkgname=reaper-bin
-pkgver=6.27
+pkgver=6.28
 pkgrel=1
 pkgdesc="A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'desktop-file-utils' 'xdg-utils' 'aribb24')
 optdepends=('jack' 'pulseaudio')
 provides=("reaper=${pkgver}")
 source=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_x86_64.tar.xz")
-sha256sums=('eb31d92b5658552b82c191568813495a1964ed26aefe96b0f853006a25491db8')
+sha256sums=('dfc1d28d1fab4163f330e8ead5a6cb9ff30fdc30b3e58cc1834bf6901b10991e')
 
 package() {
   XDG_DATA_HOME="${srcdir}/desktop" sh "${srcdir}/reaper_linux_x86_64/install-reaper.sh" --install "${pkgdir}/opt" --integrate-user-desktop
