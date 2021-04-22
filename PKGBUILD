@@ -1,5 +1,5 @@
 pkgname=ananicy-cpp
-pkgver=0.1.1.1
+pkgver=0.2.0.1
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 source=(
@@ -18,7 +18,8 @@ prepare() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_EXTERNAL_SPDLOG=ON \
-		-DUSE_EXTERNAL_JSON=ON
+		-DUSE_EXTERNAL_JSON=ON \
+		-DUSE_EXTERNAL_FMTLIB=ON
 }
 
 build() {
