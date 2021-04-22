@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-rtmp-lhaus-git
 	pkgdesc = Module for nginx that adds RTMP, HLS, and MPEG-DASH support. lhaus fork.
 	pkgver = 1207.8aa8f06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lhaus/nginx-rtmp-module
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = nginx-mod-rtmp-lhaus-git
 	depends = nginx
 	depends = openssl
 	provides = nginx-rtmp-module
-	source = http://nginx.org/download/nginx-11.tar.gz
-	source = http://nginx.org/download/nginx-11.tar.gz.asc
+	source = http://nginx.org/download/nginx-1.20.0.tar.gz
+	source = http://nginx.org/download/nginx-1.20.0.tar.gz.asc
 	source = nginx-rtmp-module::git+https://github.com/lhaus/nginx-rtmp-module.git#branch=dev
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha256sums = SKIP

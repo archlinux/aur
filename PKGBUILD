@@ -5,7 +5,7 @@
 
 pkgname=nginx-mod-rtmp-lhaus-git
 pkgver=1207.8aa8f06
-pkgrel=1
+pkgrel=2
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
