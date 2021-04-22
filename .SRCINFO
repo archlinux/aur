@@ -1,6 +1,6 @@
 pkgbase = openssh-selinux
 	pkgdesc = Premier connectivity tool for remote login with the SSH protocol, with SELinux support
-	pkgver = 8.5p1
+	pkgver = 8.6p1
 	pkgrel = 1
 	url = https://www.openssh.com/portable.html
 	install = install
@@ -23,22 +23,22 @@ pkgbase = openssh-selinux
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
 	optdepends = libfido2: FIDO/U2F support
-	provides = openssh=8.5p1-1
-	provides = selinux-openssh=8.5p1-1
+	provides = openssh=8.6p1-1
+	provides = selinux-openssh=8.6p1-1
 	conflicts = openssh
 	conflicts = selinux-openssh
 	backup = etc/ssh/ssh_config
 	backup = etc/ssh/sshd_config
 	backup = etc/pam.d/sshd
-	source = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.5p1.tar.gz
-	source = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.5p1.tar.gz.asc
+	source = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.6p1.tar.gz
+	source = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.6p1.tar.gz.asc
 	source = sshdgenkeys.service
 	source = sshd.service
 	source = sshd.conf
 	source = sshd.pam
 	source = glibc-2.31.patch
 	validpgpkeys = 7168B983815A5EEF59A4ADFD2A3F414E736060BA
-	sha256sums = f52f3f41d429aa9918e38cf200af225ccdd8e66f052da572870c89737646ec25
+	sha256sums = c3e6e4da1621762c850d03b47eed1e48dff4cc9608ddeb547202a234df8ed7ae
 	sha256sums = SKIP
 	sha256sums = 4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7
 	sha256sums = e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7
