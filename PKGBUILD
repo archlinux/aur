@@ -1,6 +1,6 @@
 # Maintainer: Arthur HUGEAT <hugeat dot arthur at gmail dot com>
 pkgname=gf-git
-pkgver=0.18.1.r2.g9de9dd7
+pkgver=0.20.0.r1483.6032fc5
 pkgrel=1
 pkgdesc="Gamedev Framework (gf) is a framework to build 2D games in C++14. It is based on SDL and OpenGL ES 2.0, and presents an API that is very similar to the graphics module of SFML with additional features (development version)."
 arch=('x86_64' 'i686')
@@ -15,8 +15,8 @@ source=("git+https://github.com/GamedevFramework/gf")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/gf"
-  git describe --long --tags | sed -r 's/^v(.*)/\1/;s/([^-]*-g)/r\1/;s/-/./g'
+  VERSION=$(grep " VERSION" gf/CMakeLists.txt | tr -s " " | cut -f 3 -d " ")
+  echo "${VERSION}.r$(git -C gf rev-list --count HEAD).$(git -C gf rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -32,6 +32,8 @@ build() {
         -DGF_BUILD_EXAMPLES=OFF \
         -DGF_BUILD_DOCUMENTATION=OFF \
         -DGF_SINGLE_COMPILTATION_UNIT=OFF \
+        -DGF_DEBUG=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         .
   make
