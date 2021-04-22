@@ -7,10 +7,9 @@ pkgname=code-wayland
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone enabled for wayland support'
 # Important: Remember to check https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites for target node version
 # NodeJS versioning cheatsheet:
-#   - carbon: 8
 #   - dubnium: 10
-#   - ?: 11 (not in repos)
 #   - erbium: 12
+#   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron # 12
 pkgver=1.55.2
@@ -22,7 +21,7 @@ depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
+makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-fermium')
 provides=('vscode')
 conflicts=('code')
 source=("$pkgname::git+$url.git#tag=$pkgver"
