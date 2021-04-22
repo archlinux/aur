@@ -1,7 +1,7 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=qv
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Quick Viewer for 2D data (images, renderings, sensor data, ...)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('tad' 'qt5-base')
 makedepends=('cmake')
 source=("https://marlam.de/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('a673c2119a55a8202add54b87b680ebdea9270f255f55589a7c69bc598d784ce')
+sha256sums=('e3f8c8e04e9a52a33b7190c59687f7a2bb2d40a0a8b325d44e3bb673b0eca850')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
