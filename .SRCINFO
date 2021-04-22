@@ -1,15 +1,16 @@
 pkgbase = nncp
 	pkgdesc = Node-to-Node Copy Protocol utilities for secure store-and-forward
-	pkgver = 6.2.1
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = http://www.nncpgo.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = http://www.nncpgo.org/download/nncp-6.2.1.tar.xz
-	source = http://www.nncpgo.org/download/nncp-6.2.1.tar.xz.sig
+	source = http://www.nncpgo.org/download/nncp-6.4.0.tar.xz
+	source = http://www.nncpgo.org/download/nncp-6.4.0.tar.xz.sig
 	validpgpkeys = 92C2F0AEFE73208E46BFF3DE2B25868E75A1A953
-	sha256sums = d9682d954d68025af5b07516258d9ffcda29a4d7e7e1635be0c219a1c5ddb067
+	sha256sums = 3d0d1156d69af698d402663cf84e51cc3d40a50d300e34d1105a6f7532e4b99b
 	sha256sums = SKIP
 
 pkgname = nncp
+
