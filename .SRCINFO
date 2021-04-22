@@ -1,6 +1,6 @@
 pkgbase = liberica-jre-11-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
-	pkgver = 11.0.10+9
+	pkgver = 11.0.11+9
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jre-11.install
@@ -38,15 +38,15 @@ pkgbase = liberica-jre-11-bin
 	backup = etc/liberica-jre-11/security/policy/unlimited/default_US_export.policy
 	backup = etc/liberica-jre-11/security/policy/unlimited/default_local.policy
 	backup = etc/liberica-jre-11/sound.properties
-	source_aarch64 = https://download.bell-sw.com/java/11.0.10+9/bellsoft-jre11.0.10+9-linux-aarch64.tar.gz
-	sha1sums_aarch64 = 2782586470a8c5f0c9d03de1c470960627f848aa
-	source_armv7h = https://download.bell-sw.com/java/11.0.10+9/bellsoft-jre11.0.10+9-linux-arm32-vfp-hflt.tar.gz
-	sha1sums_armv7h = e9320de8a4ac98765ff2268524fddc0e0457cb2a
-	sha1sums_armv8h = e9320de8a4ac98765ff2268524fddc0e0457cb2a
-	source_i686 = https://download.bell-sw.com/java/11.0.10+9/bellsoft-jre11.0.10+9-linux-i586.tar.gz
-	sha1sums_i686 = b8f8f138fac641ec3a56b7376857d39542335f00
-	source_x86_64 = https://download.bell-sw.com/java/11.0.10+9/bellsoft-jre11.0.10+9-linux-amd64.tar.gz
-	sha1sums_x86_64 = f749dfac258a9ed62c68075a7c2dde135fba1565
+	source_aarch64 = https://download.bell-sw.com/java/11.0.11+9/bellsoft-jre11.0.11+9-linux-aarch64.tar.gz
+	sha1sums_aarch64 = 5ff9b336cb7de800415ea738db45a1be527af4ca
+	source_armv7h = https://download.bell-sw.com/java/11.0.11+9/bellsoft-jre11.0.11+9-linux-arm32-vfp-hflt.tar.gz
+	sha1sums_armv7h = 27256f4e24a1498c2fc4df3884eb18a670d41f84
+	sha1sums_armv8h = 27256f4e24a1498c2fc4df3884eb18a670d41f84
+	source_i686 = https://download.bell-sw.com/java/11.0.11+9/bellsoft-jre11.0.11+9-linux-i586.tar.gz
+	sha1sums_i686 = 9bf7062bc63bf0ae77981879cb2738288437f647
+	source_x86_64 = https://download.bell-sw.com/java/11.0.11+9/bellsoft-jre11.0.11+9-linux-amd64.tar.gz
+	sha1sums_x86_64 = 99cc0215773dbe758fb79abd3bf6307ab558937a
 
 pkgname = liberica-jre-11-bin
 
