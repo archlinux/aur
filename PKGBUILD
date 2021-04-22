@@ -1,7 +1,7 @@
 # Maintainer Henry Smith <henrysmith6003@protonmail.com>
 
 pkgname=golaunch
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc='a simple .desktop launcher written in go.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/hen6003/golaunch"
 license=('MIT')
 makedepends=('go' 'git')
 source=("https://github.com/hen6003/golaunch/archive/$pkgver.tar.gz")
-sha256sums=('fde982f86a52569507ad1b9436a6554f3cdc73ae91a1d4548939a69bf821533e')
+sha256sums=('7c9de9c52dd08b04aab0fa2b5738ba28d452a7bb42d777636132c19a1199c84c')
 
 prepare() {
   go get -u \
