@@ -1,6 +1,6 @@
 # Maintainer: gbr <gbr@protonmail.com>
 pkgname=rsmixer
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='A PulseAudio volume mixer for the command line'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('pulseaudio')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9a99bd585408119ebb2f14e9bffa78ffff81966849a2c9e4ecc4cf266ec51dc13f88aa4c22fb894b6d289e6136a74ce95bc9b8ed1c0de6feda03a1365697e7da')
+sha512sums=('6387406aa247e3270e3365aef56fb6c82f7b3582d98af7bf81e4762f7d17f8f4e581235da65356f4856eef85150b6ce9f82f2b97012ded6aee3bedad3aeaae29')
 
 build() {
   cd "$pkgname-$pkgver"
