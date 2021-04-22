@@ -1,11 +1,14 @@
 pkgbase = texttest
 	pkgdesc = A tool for text-based functional testing
 	pkgver = 4.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/texttest/texttest
 	arch = any
 	license = LGPL
 	depends = python
+	depends = python-psutil
+	depends = python-gobject
+	depends = gtk3
 	source = texttest-4.0.7.tar.gz::https://github.com/texttest/texttest/archive/refs/tags/4.0.7.tar.gz
 	sha512sums = 30bcde058d12f16458bb8c615e445a5fd11bc0645d072913d7aed094e9f11833ff04b5e8daceb6dde2515c0df8adba47fe2588105fde650a7d178dfabb9bc0af
 

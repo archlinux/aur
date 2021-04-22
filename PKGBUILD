@@ -2,12 +2,12 @@
 
 pkgname=texttest
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for text-based functional testing"
 arch=('any')
 url="https://github.com/texttest/texttest"
 license=('LGPL')
-depends=('python')
+depends=('python' 'python-psutil' 'python-gobject' 'gtk3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('30bcde058d12f16458bb8c615e445a5fd11bc0645d072913d7aed094e9f11833ff04b5e8daceb6dde2515c0df8adba47fe2588105fde650a7d178dfabb9bc0af')
 
