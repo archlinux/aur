@@ -5,7 +5,7 @@
 _pkgname=youtube-dlp
 pkgname=${_pkgname}-bin
 _gitname=yt-dlp
-pkgver=2021.04.11
+pkgver=2021.04.22
 _gitpkgver=$pkgver
 pkgrel=1
 pkgdesc="Fork of youtube-dlc - download videos from youtube.com or other video platforms"
@@ -20,7 +20,7 @@ optdepends=('ffmpeg: for video post-processing'
             'python-pycryptodome: for hlsnative downloader')
 source=("yt-dlp-${_gitpkgver}::${url}/releases/download/${_gitpkgver}/yt-dlp")
 provides=('yt-dlp')
-sha256sums=('1fb9f0889544fc1ca5b9c41d09aceebf0c81dc2279d766a6f32b76913f5efc6f')
+sha256sums=('e00f7acdbb94b82e2c2cc78dfa7dfff7c783c23693d304a68db79672b0b8ea0e')
 
 package() {
   install -Dm755 "yt-dlp-${_gitpkgver}" "${pkgdir}/usr/bin/yt-dlp"
