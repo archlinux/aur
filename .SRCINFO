@@ -3,8 +3,8 @@ pkgbase = feedreader-decsync-git
 	pkgver = 2.11.0.20200923.6b91326
 	pkgrel = 1
 	url = https://github.com/39aldo39/FeedReader
-	arch = any
-	license = MIT
+	arch = x86_64
+	license = GPL3
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
@@ -15,6 +15,8 @@ pkgbase = feedreader-decsync-git
 	depends = libgee
 	depends = libpeas
 	depends = libdecsync
+	provides = feedreader=2.11.0
+	conflicts = feedreader
 	source = git+https://github.com/39aldo39/FeedReader.git
 	sha256sums = SKIP
 
