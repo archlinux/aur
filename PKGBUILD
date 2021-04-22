@@ -12,7 +12,6 @@ pkgver=1.2.1
 pkgrel=1
 arch=('x86_64')
 package="chain-main_${pkgver}_Linux_${arch}.tar.gz"
-optdepends=('gtk-theme-murrine-collection')
 source=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
 )

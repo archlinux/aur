@@ -5,7 +5,6 @@ pkgbase = cro-chain-maind-bin
 	url = https://github.com/crypto-org-chain/chain-main
 	arch = x86_64
 	license = Apache
-	optdepends = gtk-theme-murrine-collection
 	source = chain-main_1.2.1_Linux_x86_64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v1.2.1/chain-main_1.2.1_Linux_x86_64.tar.gz
 	sha512sums = f2f99be906cf11e106ee43a66485d94206b2211bfd4af17d7396207cf40175f0963f2a53a69b9d64f0ed08ef0b92a180862c75bca39782e00b48475fc8ea2ab6
 
