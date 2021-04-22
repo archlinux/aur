@@ -1,0 +1,4 @@
+pkg
+src
+python-playwright-git
+*.pkg.tar.*
