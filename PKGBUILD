@@ -19,7 +19,7 @@ fi
 
 pkgname=usd19
 pkgver=${_ver#v}
-pkgrel=2
+pkgrel=3
 pkgdesc="3D VFX pipeline interchange file format."
 arch=('x86_64')
 url="https://www.openusd.org"
@@ -29,13 +29,15 @@ makedepends+=('boost' 'cmake' 'git' 'intel-tbb' 'ninja')
 provides=("usd=${pkgver}")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
-        "blender.patch")
+        "blender.patch"
+        "gcc10.patch")
 sha256sums=('SKIP'
             'dec16bd0270c9d682f34c555e38812ea010bee88907a02d6ce60f3f319b21425'
-            'a4b92e59eb6330109f65d1b168ad0c4b1292c5317f579dcbf0594df22ffbc587')
+            'a4b92e59eb6330109f65d1b168ad0c4b1292c5317f579dcbf0594df22ffbc587'
+            'c45a4503be17764a39f0be8e9524804c64c038b11fe2bf9c5627c88b5d523837')
 
 prepare() {
-  git -C USD apply -v "${srcdir}"/{boost_python2,blender}.patch
+  git -C USD apply -v "${srcdir}"/{boost_python2,blender,gcc10}.patch
 }
 
 #pkgver() {
