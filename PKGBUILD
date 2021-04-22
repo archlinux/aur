@@ -3,8 +3,8 @@
 pkgname=groom-git
 _pkgname=${pkgname%-git}
 pkgver=r1.365ba93
-pkgrel=2
-pkgdesc='groom is a self-hosted HTTPS reverse-proxy written in Go. Its an alternative to ngrok.'
+pkgrel=3
+pkgdesc='Self-hosted HTTPS reverse-proxy, used to expose local private services to the public internet over secure websocket tunnels. Alternative to ngrok.'
 arch=('x86_64')
 url="https://github.com/pyke369/${_pkgname}"
 license=('MIT')
