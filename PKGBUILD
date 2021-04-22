@@ -29,44 +29,30 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
+backup=('usr/lib/librewolf-nightly/librewolf.cfg'
+        'usr/lib/librewolf-nightly/distribution/policies.json')
 options=(!emptydirs !makeflags !strip)
-_linux_commit=e123b80f7df1ad9043435f345c426717ca323579
 _repo=https://hg.mozilla.org/mozilla-unified
 install=librewolf-nightly.install
-source_x86_64=("hg+$_repo#revision=autoland"
-               $pkgname.desktop
-               "git+https://gitlab.com/vnepogodin/librewolf-common.git"
-               "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
-               remove_addons.patch
-               context-menu.patch
-               mozilla-vpn-ad.patch
-               builtin_js.patch)
-source_aarch64=("hg+$_repo#revision=autoland"
-                $pkgname.desktop
-                "git+https://gitlab.com/vnepogodin/librewolf-common.git"
-                "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
-                remove_addons.patch
-                context-menu.patch
-                arm.patch
-                build-arm-libopus.patch
-                mozilla-vpn-ad.patch
-                builtin_js.patch)
-
-sha512sums_x86_64=('SKIP'
-                   '0d1d64832ae34a0c7bbb9e37eac48b9b3830481a0e0aa4c20321a1408a4a20b2b2045d24d8ae0d002895291c6f7d988cce16b1607ee73778a62d7f7d9143a248'
-                   'SKIP'
-                   'SKIP'
-                   '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                   '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-                   '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
-                   '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
-sha512sums_aarch64=('SKIP'
-                    '0d1d64832ae34a0c7bbb9e37eac48b9b3830481a0e0aa4c20321a1408a4a20b2b2045d24d8ae0d002895291c6f7d988cce16b1607ee73778a62d7f7d9143a248'
-                    'SKIP'
-                    'SKIP'
-                    '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
-                    '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
-                    '7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
+source=("hg+$_repo#revision=autoland"
+        $pkgname.desktop
+        "git+https://gitlab.com/vnepogodin/librewolf-common.git"
+        "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
+        remove_addons.patch
+        context-menu.patch
+        mozilla-vpn-ad.patch
+        builtin_js.patch)
+source_aarch64=(arm.patch
+                build-arm-libopus.patch)
+sha512sums=('SKIP'
+            '0d1d64832ae34a0c7bbb9e37eac48b9b3830481a0e0aa4c20321a1408a4a20b2b2045d24d8ae0d002895291c6f7d988cce16b1607ee73778a62d7f7d9143a248'
+            'SKIP'
+            'SKIP'
+            '861e692daf2be7239eb6b61435688a7abed2bef198067f5b3a9c1a44d8316d1e547c06e1bfb45be402c4c38b1bf13018ba594d433c1b70da6296bd5b90b0fbe3'
+            '5f7da8d54065c009f94c60eb9aa99d4d44d75b27800bcad5e9f2a365e0c853cb234c871c54855522598b1fe26669bd42a302705ac385d536c90f4ec199cf1df6'
+            '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
+            '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
+sha512sums_aarch64=('7c2f0c792eb5744eaf0f2ee7c0887a74118796d691029e824451b063d5ba9e65626617ad343f69837297b2002446e02ac1d5ab3bc470419ae092424abf08293f'
                     '6d464cce32cb2e440fb137666aeefec1240bcbdfdef0e8633e0fbe22e2214446b2c992ee2c8716c682a42fcd1d66d9fdf1d6d5b40f8ec3b0eeec5ca9e3f1aa35'
                     '43d008c63a6b90a3710c4e1bf6ccebcb0987316213fa993fd1bd4b47d9a5d553f51471467c9d9ab454911b9d6fb575e3035cd7a3f9e61dbb72fe3b0a3b20a066'
                     '25c9fa51d0ebfeea9ad88c83325dae1d0643499253946278ffeaf04b7d1aad61a76e24a5b0e1689877fa6fd5ca67135006dd8edecb54418012c826f94ca22555')
@@ -79,11 +65,6 @@ pkgver() {
 prepare() {
   mkdir -p mozbuild
   cd mozilla-unified
-
-  #
-  # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
-  # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
-  #
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -193,7 +174,7 @@ fi
   # browser.proton.appmenu.enabled
 
   # Disabling Pocket
-  sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
+  sed -i 's/"pocket"/# "pocket"/g' browser/components/moz.build
 
   patch -p1 -i ../context-menu.patch
 
