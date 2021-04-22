@@ -18,7 +18,6 @@ pkgbase = chromium-dev
 	makedepends = hwids
 	makedepends = nodejs
 	makedepends = java-runtime-headless
-	makedepends = spirv-headers
 	depends = libxslt
 	depends = libxss
 	depends = nss

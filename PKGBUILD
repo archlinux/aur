@@ -62,7 +62,6 @@ makedepends=(
              'hwids'
              'nodejs'
              'java-runtime-headless'
-             'spirv-headers'
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
@@ -311,6 +310,7 @@ _keeplibs=(
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
+           'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
            'third_party/tensorflow-text'
            'third_party/tflite'
            'third_party/tflite/src/third_party/eigen3'
