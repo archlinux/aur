@@ -16,7 +16,7 @@ build() {
     mkdir -p build
     cmake -B build/ .
     cmake --build build/
-    manual.sh > qlstatus.1
+    ./manual.sh > qlstatus.1
 }
 
 package() {
