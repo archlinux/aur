@@ -1,6 +1,6 @@
 pkgbase = librewolf-ublock-origin
 	pkgdesc = Efficient blocker add-on for various browsers. Fast, potent, and lean
-	pkgver = 1.34
+	pkgver = 1.35
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
