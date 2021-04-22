@@ -1,0 +1,14 @@
+pkgbase = sanic-jwt
+	pkgdesc = Authentication, JWT, and permission scoping for Sanic
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/ahopkins/sanic-jwt
+	arch = x86_64
+	license = Apache
+	depends = python-pyjwt
+	depends = twine
+	source = sanic-jwt-1.6.0.tar.gz::https://github.com/ahopkins/sanic-jwt/archive/v1.6.0.tar.gz
+	sha256sums = a27477dc6681cf5cde4d5ae75d9fd5dccfb556a48823b27fa110cd94230cb212
+
+pkgname = sanic-jwt
+
