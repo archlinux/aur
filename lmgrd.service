@@ -1,9 +1,20 @@
 [Unit]
-Description=FLEXnet License Manager Daemon (from Autodesk)
+Description=FLEXnet License Manager Daemon (lmgrd)
+After=network.target
 
 [Service]
+User=lmgrd
+DynamicUser=true
+Environment="LMGRD_ARGS="
+Environment="LMGRD_RESTRICT_ARGS=-local -2 -p -x lmdown -x lmremove"
+EnvironmentFile=-/etc/sysconfig/lmgrd
 Type=forking
-ExecStart=/usr/lib/flexnetserver/lmgrd
+ExecStart=/usr/lib/flexnetserver/lmgrd $LMGRD_ARGS $LMGRD_RESTRICT_ARGS
+
+# -local        Restrict lmdown/reread to local only
+# -2 -p         Restrict lmdown/reread/remove/switch[r]/newlog to root-only
+# -x lmfoo      Disable remote usage of lm<foo> command
+# -z            Run in foreground
 
 [Install]
 WantedBy=multi-user.target
