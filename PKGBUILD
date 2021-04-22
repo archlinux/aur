@@ -2,7 +2,7 @@
 
 _pkgname=tunefish4
 pkgname="${_pkgname}-git"
-pkgver=4.2.0.r90.a199cb0
+pkgver=4.3.0.r106.07774d9
 pkgrel=1
 pkgdesc="An additive wavetable-based synthesizer VST plugin (git version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="http://www.tunefish-synth.com/"
 license=("GPL3")
 groups=('vst-plugins')
 depends=('webkit2gtk')
-makedepends=('git')
+makedepends=('git' 'steinberg-vst36')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-vst-bin")
 source=("${_pkgname}::git://github.com/paynebc/tunefish.git"
@@ -33,12 +33,13 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   msg2 "Patching JUCE graphics..."
-  patch -p1 -N -i "${srcdir}/juce-pixel.patch"
+  patch -p1 -N -r - -i "${srcdir}/juce-pixel.patch" | :
 }
 
 build() {
   cd "${srcdir}/${_pkgname}/src/tunefish4/Builds/LinuxMakefile/"
 
+  export CPPFLAGS="$CPPFLAGS -I/usr/include/vst36"
   make
 }
 
