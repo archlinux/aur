@@ -2,7 +2,7 @@
 
 _npmname=yaml-language-server
 pkgname=yaml-language-server-bin
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=4
 pkgdesc="Language server implementation for YAML files and optional schema support"
 arch=('any')
@@ -14,7 +14,7 @@ replaces=('yaml-language-server')
 provides=('yaml-language-server')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha1sums=('e1b37e51e5e51d94519afe1bf775ba38d12f6db9')
+sha1sums=('c2a57a8ab9a1002c8022fcbfe64582a56d0599ca')
 
 package() {
     cd "${srcdir}"

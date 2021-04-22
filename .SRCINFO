@@ -1,6 +1,6 @@
 pkgbase = yaml-language-server-bin
 	pkgdesc = Language server implementation for YAML files and optional schema support
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 4
 	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = yaml-language-server-bin
 	depends = nodejs
 	provides = yaml-language-server
 	replaces = yaml-language-server
-	noextract = yaml-language-server-0.17.0.tgz
-	source = https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-0.17.0.tgz
-	sha1sums = e1b37e51e5e51d94519afe1bf775ba38d12f6db9
+	noextract = yaml-language-server-0.18.0.tgz
+	source = https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-0.18.0.tgz
+	sha1sums = c2a57a8ab9a1002c8022fcbfe64582a56d0599ca
 
 pkgname = yaml-language-server-bin
 
