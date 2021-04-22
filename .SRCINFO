@@ -5,11 +5,13 @@ pkgbase = power-profiles-daemon
 	url = https://gitlab.freedesktop.org/hadess/power-profiles-daemon
 	arch = x86_64
 	license = GPL3
+	checkdepends = python-dbusmock
+	checkdepends = python-pylint
 	checkdepends = umockdev
 	makedepends = git
 	makedepends = meson
-	depends = libgudev
 	depends = systemd
+	depends = upower
 	source = git+https://gitlab.freedesktop.org/hadess/power-profiles-daemon.git#commit=c4837945927c10ea82ec1c76bead6e5601a8e64d
 	b2sums = SKIP
 
