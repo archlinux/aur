@@ -1,0 +1,21 @@
+pkgbase = dieharder-bin
+	pkgdesc = A Random Number Test Suite (Binary version)
+	pkgver = 3.31.1
+	pkgrel = 1
+	url = http://www.phy.duke.edu/~rgb/General/dieharder.php
+	arch = x86_64
+	license = GPL
+	depends = gsl
+	provides = dieharder=3.31.1
+	provides = libdieharder=3.31.1
+	conflicts = dieharder
+	conflicts = libdieharder
+	noextract = dieharder-3.31.1-1.x86_64.rpm
+	noextract = libdieharder-3.31.1-1.x86_64.rpm
+	source = http://webhome.phy.duke.edu/~rgb/General/dieharder/dieharder-3.31.1-1.x86_64.rpm
+	source = http://webhome.phy.duke.edu/~rgb/General/dieharder/libdieharder-3.31.1-1.x86_64.rpm
+	b2sums = 06f124b4bdaea0e21ad43bd414c0d6f851ce78a63581f0a7cfdd6bffd0cd510be8fe9d670584fa0753feab5eefa9691dedc39de6bd865e8456eb65bb85999502
+	b2sums = 31f4a252382b273e2d506e21c8f29cd495751e079615f3ce66daf55848db6bd1f6f34768b6ed27ca916a637b0135e4a60296e9963a73ddff8f81ee572b4e3687
+
+pkgname = dieharder-bin
+
