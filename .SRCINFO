@@ -1,12 +1,12 @@
 pkgbase = telegram-tg
 	pkgdesc = terminal telegram client that really works
-	pkgver = 0.8.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/paul-nameless/tg
 	arch = any
 	license = Unlicense
 	makedepends = python-setuptools
-	depends = python-telegram
+	depends = python-telegram=0.14.0
 	depends = python3
 	optdepends = libnotify: for notifications, you could also use other programs: see config
 	optdepends = ffmpeg: to record voice msgs and upload videos correctly
@@ -15,10 +15,8 @@ pkgbase = telegram-tg
 	optdepends = nnn: can be used to choose file when sending, customizable with FILE_PICKER_CMD
 	optdepends = fzf: to create groups and secret chats, used for single and multiple user selection
 	conflicts = telegram-tg-git
-	source = telegram-tg-0.8.0.tar.gz::https://github.com/paul-nameless/tg/archive/v0.8.0.tar.gz
-	source = 0001-Change-setup.py-to-accept-new-python-telegram-ver.patch
-	md5sums = 4456e09339b7070c9f03e6944b400db7
-	md5sums = 7b9a556ce7d2203fbee32442a96d73bc
+	source = telegram-tg-0.11.0.tar.gz::https://github.com/paul-nameless/tg/archive/v0.11.0.tar.gz
+	md5sums = f4a5ee804d02f4ef035fcb138c905aed
 
 pkgname = telegram-tg
 
