@@ -7,7 +7,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=3.1.31
+pkgver=3.1.111
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -18,7 +18,7 @@ license=('MIT')
 
 depends=('python'
          # documented in requirements.in
-         'python-feedparser>=5.2.1'
+         'python-feedparser-dev>=6.0.2-3'
          'python-sqlalchemy>=1.3.10'
          'python-yaml>=4.2b1'
          'python-beautifulsoup4>=4.5'
@@ -30,7 +30,7 @@ depends=('python'
          'python-requests>=2.20.0'
          'python-dateutil>=2.5.3'
          'python-jsonschema>=2.0'
-         'python-guessit>=3.1.0'
+         'python-guessit>=3.2.0'
          'python-rebulk>=2.0.0'
          'python-apscheduler>=3.2.0'
          'python-terminaltables>=3.1.0'
@@ -38,14 +38,14 @@ depends=('python'
          'python-cherrypy>=18.0.0'
          'python-flask>=0.7'
          'python-flask-restful>=0.3.3'
-         'python-flask-restplus>=0.10.1'
+         'python-flask-restx>=0.2.0'
          'python-flask-compress>=1.2.1'
          'python-flask-login>=0.4.0'
          'python-flask-cors>=2.1.2'
-         'python-pyparsing>=2.0.3'
+         'python-pyparsing>=2.4.7'
          'python-zxcvbn'
          'python-progressbar>=2.5'
-         'python-loguru>=0.4'
+         'python-loguru>=0.4.1'
          )
 optdepends=('python-guppy: for memusage plugin' #AUR#
             'python-transmissionrpc: Transmission support' #AUR#
@@ -99,6 +99,11 @@ prepare() {
 
   # Python distribution of progressbar v3.x.x is named progressbar2
   sed -i 's/progressbar/progressbar2/' requirements.txt
+}
+
+build() {
+  cd "${_pkgname}"
+  python dev_tools.py bundle-webui
 }
 
 # currently broken somewhere in the bower task
