@@ -3,9 +3,9 @@
 pkgname=sanic-jwt
 pkgdesc='Authentication, JWT, and permission scoping for Sanic'
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-license=('Apache')
+license=('MIT')
 url='https://github.com/ahopkins/sanic-jwt'
 depends=('python-pyjwt' 'twine')
 # makedepends=('go')
