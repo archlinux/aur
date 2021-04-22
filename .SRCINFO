@@ -1,6 +1,6 @@
 pkgbase = godot-mono-bin
 	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel.
-	pkgver = 3.2.3
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://www.godotengine.org
 	arch = i686
@@ -9,16 +9,17 @@ pkgbase = godot-mono-bin
 	depends = mono>=5.18.0
 	depends = dotnet-sdk
 	depends = msbuild
+	optdepends = dotnet-core
 	provides = godot-mono-bin
 	conflicts = godot-mono
 	source = godot-mono.desktop
 	source = icons.tar.gz
 	md5sums = c8ba9f7656b2c2db9a3ec385b3848bf5
 	md5sums = 281c83d55c6a4d39fb9710e6f143bc5a
-	source_i686 = godot-mono-bin-3.2.3-i686.zip::https://downloads.tuxfamily.org/godotengine/3.2.3/mono/Godot_v3.2.3-stable_mono_x11_32.zip
-	md5sums_i686 = d7dab3ee992755f6f99e2b1eca38a12a
-	source_x86_64 = godot-mono-bin-3.2.3-x86_64.zip::https://downloads.tuxfamily.org/godotengine/3.2.3/mono/Godot_v3.2.3-stable_mono_x11_64.zip
-	md5sums_x86_64 = b89c53188fee1de19be104d78f1369f2
+	source_i686 = godot-mono-bin-3.3-i686.zip::https://downloads.tuxfamily.org/godotengine/3.3/mono/Godot_v3.3-stable_mono_x11_32.zip
+	md5sums_i686 = 92fbf02fa07e2b5f41c07f5272b4412f
+	source_x86_64 = godot-mono-bin-3.3-x86_64.zip::https://downloads.tuxfamily.org/godotengine/3.3/mono/Godot_v3.3-stable_mono_x11_64.zip
+	md5sums_x86_64 = 6ab27117043744d5995301083b43e5bd
 
 pkgname = godot-mono-bin
 

@@ -1,6 +1,6 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono-bin
-pkgver=3.2.3
+pkgver=3.3
 pkgrel=1
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel."
 arch=("i686" "x86_64")
@@ -9,6 +9,7 @@ license=('MIT')
 provides=("godot-mono-bin")
 conflicts=("godot-mono")
 depends=("mono>=5.18.0" "dotnet-sdk" "msbuild")
+optdepends=("dotnet-core")
 source=("godot-mono.desktop" "icons.tar.gz")
 source_i686=("$pkgname-$pkgver-i686.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_x11_32.zip")
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_x11_64.zip")
@@ -44,5 +45,5 @@ package() {
 }
 md5sums=('c8ba9f7656b2c2db9a3ec385b3848bf5'
          '281c83d55c6a4d39fb9710e6f143bc5a')
-md5sums_i686=('d7dab3ee992755f6f99e2b1eca38a12a')
-md5sums_x86_64=('b89c53188fee1de19be104d78f1369f2')
+md5sums_i686=('92fbf02fa07e2b5f41c07f5272b4412f')
+md5sums_x86_64=('6ab27117043744d5995301083b43e5bd')
