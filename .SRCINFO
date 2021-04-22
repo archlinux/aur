@@ -1,7 +1,7 @@
 pkgbase = wezterm-nightly-bin
 	pkgdesc = Bleeding edge builds of a GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust
 	pkgver = 20200517.122836.92c201c6.105.g5d508350
-	pkgrel = 7
+	pkgrel = 8
 	url = https://wezfurlong.org/wezterm
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = wezterm-nightly-bin
 	depends = libx11
 	depends = libxkbcommon-x11
 	depends = wayland
+	depends = xcb-util-image
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	provides = wezterm

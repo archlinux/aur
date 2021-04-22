@@ -2,7 +2,7 @@
 
 pkgname=wezterm-nightly-bin
 pkgver=20200517.122836.92c201c6.105.g5d508350
-pkgrel=7
+pkgrel=8
 pkgdesc='Bleeding edge builds of a GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
@@ -20,6 +20,7 @@ depends=(
   'libx11'
   'libxkbcommon-x11'
   'wayland'
+  'xcb-util-image'
   'xcb-util-keysyms'
   'xcb-util-wm'
 )
