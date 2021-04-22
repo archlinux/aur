@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=nextpnr-git
-pkgver=r2866.9b962804
+pkgver=r3404.3fd1ee77
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ build() {
 
   cmake \
     -DARCH=generic\;ice40\;ecp5 \
-    -DICEBOX_ROOT=/usr/share/icebox \
+    -DICESTORM_INSTALL_PREFIX=/usr \
     -DTRELLIS_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
