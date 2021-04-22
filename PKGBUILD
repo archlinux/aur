@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip" "https://aerialworks.ddns.net/maven/org/asf/aos/util/service/aosutil-service-SLIB-UTIL/$_aosutilverion/aosutil-service-SLIB-UTIL-$_aosutilverion.jar")
 noextract=()
-md5sums=("$(curl "https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip.md5" -Ls)" "$(curl "https://aerialworks.ddns.net/maven/org/asf/aos/util/service/aosutil-service-SLIB-UTIL/$_aosutilverion/aosutil-service-SLIB-UTIL-$_aosutilverion.jar.md5" -Ls)")
+md5sums=("076b98dc4af03eb958fb89fb501ce0d5" "c725e9bee57d6a63ce27b829cfa1a03e")
 
 build() {
     cd CCFG
