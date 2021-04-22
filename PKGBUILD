@@ -72,7 +72,6 @@ build() {
 
 package() {
   cd "$_pkgname"
-  base="$(pwd)"
 
   echo -e "${_prefix}Creating the package base"
   install -d "$pkgdir"/{opt,usr/bin}
@@ -80,7 +79,7 @@ package() {
   echo -e "${_prefix}Extracting the zip archive"
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  (cd "$pkgdir"/opt && jar xf "$base"/build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux64.zip)
+  (cd "$pkgdir"/opt && jar xf "$srcdir/$_pkgname"/build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux64.zip)
 
   echo -e "${_prefix}Setting up a versionless directory name"
   mv "$pkgdir"/opt/ghidra{_"${_appver}_${_relname}",}
@@ -93,5 +92,5 @@ package() {
   install -Dm 644 ../ghidra.desktop -t "$pkgdir"/usr/share/applications
 
   echo -e "${_prefix}Setting up desktop icon"
-  install -Dm 644 Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon64.png "$pkgdir"/usr/share/pixmaps/ghidra.png
+  install -Dm 644 Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon256.png "$pkgdir"/usr/share/pixmaps/ghidra.png
 }
