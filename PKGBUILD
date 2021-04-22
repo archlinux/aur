@@ -4,7 +4,7 @@
 # Contributor: Guillaume Raffin ("theelectronwill") <theelectronwill@gmail.com>
 
 pkgname=mill
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
@@ -13,12 +13,12 @@ license=('MIT')
 depends=('bash' 'java-environment')
 makedepends=('mill')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lihaoyi/mill/archive/$pkgver.tar.gz")
-sha512sums=('4289e8508b74071bef5263168f9f49755bae9b593598fea2baea47252eb4fe05414c71c361a912c90afdf143e2c42d448e6751e23220334479a91f789e9fc7a3')
+sha512sums=('0622a704fcaf42827faf26cc2185f575497dfceee1d1051fa73ebc6f393bc568778d3eb8fd4ba97b8063fbff1ab85d5a4b050dfe9034df86aa642a06ebcab7d5')
 
 prepare() {
   cd mill-$pkgver
   # workaround non-git build
-  sed -e "s/'git/'true/" -e "s/^.*--exact-match.*$/\"$pkgver\"/" -i build.sc
+  sed -e "s/VcsVersion.vcsState().format()/\"$pkgver\"/;s/VcsVersion.vcsState().lastTag.get/\"$pkgver\"/" -i build.sc
 }
 
 build() {
