@@ -1,5 +1,5 @@
 pkgname=python-asciitree-git
-pkgver=r48.29712fb
+pkgver=r51.66a66b2
 pkgrel=1
 pkgdesc="draws tree structures using characters."
 arch=('any')

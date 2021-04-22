@@ -1,6 +1,6 @@
 pkgbase = python-asciitree-git
 	pkgdesc = draws tree structures using characters.
-	pkgver = r48.29712fb
+	pkgver = r51.66a66b2
 	pkgrel = 1
 	url = https://github.com/mbr/asciitree
 	arch = any
