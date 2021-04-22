@@ -3,7 +3,7 @@
 pkgname=('wezterm-git')
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
 pkgver=20200517.122836.92c201c6.105.g5d508350
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'i686')
 url="https://github.com/wez/wezterm"
 license=('MIT')
@@ -14,6 +14,7 @@ depends=(
   'libx11'
   'libxkbcommon-x11'
   'wayland'
+  'xcb-util-image'
   'xcb-util-keysyms'
   'xcb-util-wm'
 )
