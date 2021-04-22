@@ -1,10 +1,12 @@
 pkgbase = mediawriter
 	pkgdesc = Fedora Media Writer - Write Fedora Images to Portable Media
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/FedoraQt/MediaWriter
-	arch = any
+	arch = x86_64
 	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
 	depends = xz
 	depends = qt5-base
 	depends = qt5-imageformats
@@ -12,12 +14,13 @@ pkgbase = mediawriter
 	depends = qt5-declarative
 	depends = qt5-graphicaleffects
 	depends = qt5-svg
+	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-x11extras
 	depends = adwaita-qt
 	optdepends = udisks2: Disk Management Service for disk installation
-	source = https://github.com/FedoraQt/MediaWriter/archive/4.2.0.tar.gz
-	sha256sums = af1749bed4bd335573928630ad6e78e54a2cb6bbfcb9011cc2ebf98942a34f28
+	source = https://github.com/FedoraQt/MediaWriter/archive/4.2.1.tar.gz
+	sha256sums = a637c43a8d72d8058fad14ce1b7ffad544c5611d644b6203f916fc41de731f0c
 
 pkgname = mediawriter
 
