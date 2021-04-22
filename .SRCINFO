@@ -1,6 +1,6 @@
-pkgbase = asus-nb-ctrl-git
+pkgbase = asusctl-git
 	pkgdesc = Asus laptop control utilities
-	pkgver = 3.1.6.r0.g8a63dce
+	pkgver = 3.4.1.r11.gab80b07
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asus-nb-ctrl
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = asus-nb-ctrl-git
 	depends = udev
 	depends = systemd
 	optdepends = acpi_call: fan control
-	provides = asus-nb-ctrl
-	source = git+https://gitlab.com/asus-linux/asus-nb-ctrl.git
+	provides = asusctl
+	conflicts = asus-nb-ctrl-git
+	source = git+https://gitlab.com/asus-linux/asusctl.git
 	md5sums = SKIP
 
-pkgname = asus-nb-ctrl-git
+pkgname = asusctl-git
 
