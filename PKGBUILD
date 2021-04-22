@@ -1,9 +1,10 @@
-# Maintainer: Paul <paul@mrarm.io>
+# Maintainer: Sambhav <samb at disroot dot org>
+# Contributer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui-git
-pkgver=v0.1.beta.1.r1.gb3f9c5a
+pkgver=v0.1.beta.1.r54.gc899c58
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL3', 'MIT')
 makedepends=('git' 'cmake')
@@ -11,19 +12,17 @@ depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-q
 provides=('mcpelauncher-ui')
 conflicts=('mcpelauncher-ui')
 source=(
-  'git://github.com/minecraft-linux/mcpelauncher-ui-manifest.git'
-  'git://github.com/minecraft-linux/file-util.git'
-  'git://github.com/MCMrARM/axml-parser.git'
-  'git://github.com/minecraft-linux/mcpelauncher-apkinfo.git'
-  'git://github.com/minecraft-linux/mcpelauncher-extract.git'
-  'google-play-api::git://github.com/MCMrARM/Google-Play-API.git'
-  'git://github.com/minecraft-linux/playdl-signin-ui-qt.git'
-  'git://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
-  'git://github.com/minecraft-linux/mcpelauncher-proprietary.git'
-  'nlohmann_json_license.txt::https://raw.githubusercontent.com/nlohmann/json/develop/LICENSE.MIT'
+  'git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#branch=ng'
+  'git+https://github.com/MCMrARM/axml-parser.git'
+  'git+https://github.com/minecraft-linux/file-util.git'
+  'google-play-api::git+https://github.com/MCMrARM/Google-Play-API.git'
+  'git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git'
+  'git+https://github.com/minecraft-linux/mcpelauncher-extract.git'
+  'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
+  'git+https://github.com/minecraft-linux/mcpelauncher-proprietary.git'
+  'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
 md5sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -65,6 +64,6 @@ build() {
 package() {
   cd mcpelauncher-ui-manifest/build
   make DESTDIR="$pkgdir" install
+  sed -i 's/ -name mcpelauncher//g' "$pkgdir/usr/share/applications/mcpelauncher-ui-qt.desktop" # The desktop file is broken
   install -Dm644 ../mcpelauncher-ui-qt/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 ../../nlohmann_json_license.txt "$pkgdir/usr/share/licenses/$pkgname/nlohmann_json_license.txt"
 }
