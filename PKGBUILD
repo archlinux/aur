@@ -1,7 +1,7 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=soju
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A user-friendly IRC bouncer'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "soju.service"
     "soju.tmpfiles"
 )
-sha256sums=('9bca345e5fda38ecf647aad5c2fba000cc9b6e076f381d41dd74293f685f1f49'
+sha256sums=('0bfc766b54d67bdfa29a7ce5f99503a5c5d539e8a1e59b36ed5568728bcd1ab5'
             'SKIP'
             'c050d3f376f43e1cc22e75f445027862df8d09230e18cbb0913ab58ddced78aa'
             'd90c047f5f27a06d45840698a0caa9940fc02c75187c04348882f20359655c2b'
@@ -44,5 +44,4 @@ package() {
     install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
     install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-    install -Dm644 "config.in" "$pkgdir/etc/soju/config"
 }
