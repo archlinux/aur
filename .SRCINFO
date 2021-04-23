@@ -1,7 +1,7 @@
 pkgbase = blender-2.90-git
 	pkgdesc = Aplha version of Blender v2.90 branch
 	pkgver = 2.90.r98526.g3e85bb34d0d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blender.org/
 	changelog = blender.changelog
 	arch = i686
@@ -50,7 +50,7 @@ pkgbase = blender-2.90-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
-	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
+	sha256sums = 333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703
 	sha256sums = 43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea
 
 pkgname = blender-2.90-git
