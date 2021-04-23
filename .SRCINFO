@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk16
-	pkgver = 16b36_openj9_0.25.0
+	pkgver = 16.0.1b9_openj9_0.26.0
 	pkgrel = 1
 	url = https://adoptopenjdk.net/index.html?variant=openjdk16&jvmVariant=openj9
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = jdk-openj9-bin
 	conflicts = jdk16-openj9-bin
 	conflicts = jdk16-openj9
 	options = !strip
-	source = https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16%2B36_openj9-0.25.0/OpenJDK16-jdk_x64_linux_openj9_16_36_openj9-0.25.0.tar.gz
-	sha256sums = 9f9b327d08cbc71b32f28004ae9d9c2c84ff9bc335cac3068c5a5737bfa4606f
+	source = https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16.0.1%2B9_openj9-0.26.0/OpenJDK16U-jdk_x64_linux_openj9_16.0.1_9_openj9-0.26.0.tar.gz
+	sha256sums = 7395aaa479a7410bbe5bd5efc43d2669718c61ba146b06657315dbd467b98bf1
 
 pkgname = jdk-openj9-bin
 
