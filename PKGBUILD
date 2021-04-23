@@ -1,28 +1,18 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 
-_pkgname=pytest-csv
-pkgbase="python-${_pkgname}"
-pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=2.0.2
+_pkgname='pytest-csv'
+pkgname=("python-${_pkgname}")
+pkgver=3.0.0
 pkgrel=1
-arch=(x86_64)
+arch=('any')
 license=('GPL')
-pkgdesc="CSV output for pytest."
-url="https://github.com/nicoulaj/pytest-csv"
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+pkgdesc='CSV output for pytest.'
+url='https://github.com/nicoulaj/pytest-csv'
+makedepends=('python' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('5157c7a6b7cb22ff781002f0e1065222fbd4345d3f6fe24abea5059059d3559e3488e023047538d4cc49dbe3a7bf2f2fc543d4626e927bbcb35d841dac04abbe')
+sha512sums=('d7aaeaf25bbdeaa204d67f735556b99283d033d0ac2c4283d1a63df518b2db2a359178a3d0f5a9926431a776ffe0848bee42fbb7318f18170bf042abe3d64af3')
 
-prepare() {
-  cp -a ${_pkgname}-${pkgver}{,-py2}
-}
-
-package_python-pytest-csv() {
-  cd ${_pkgname}-$pkgver
+package() {
+  cd ${_pkgname}-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
-}
-
-package_python2-pytest-csv() {
-  cd ${_pkgname}-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
 }
