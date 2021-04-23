@@ -17,7 +17,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 }
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
-((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
+((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.1'); }
 
 pkgname=blender-${_ver}-git
 pkgver=2.92.r102890.gf24992d2ec7
