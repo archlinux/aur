@@ -68,7 +68,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.11
-_minor=15
+_minor=16
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -80,9 +80,9 @@ url="https://www.kernel.org/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git
+  'bc' 'kmod' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz'
+  'xmlto' 'python-sphinx' 'python-sphinx_rtd_theme' 'graphviz' 'imagemagick'
+  'git'
 )
 options=('!strip')
 _gcc_more_v='20210327'
@@ -101,9 +101,9 @@ validpgpkeys=(
 sha256sums=(
   '04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
   'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
-  'c6e3d81d5c3e70a2fcc2dd2e622761d3b12b36fdc7d168d47831ac215eed142b'
+  '5c3f42864b2c28393289560376c686a2d75bc8bdac6a9d7f2d00c7bd1441264e'
   'ac0e44bd089eeb7f52d358e6899005599fff50972f090af9c8e6ee0097d01db6'
-  '2e3b1f1b6ceb958a3e4b2a4740c77953287a2cdb156234af8c9bf9ddad9268e3')
+  'bba324c92b62966492f27a02969910be2937668d0b39c7db2bb444e753b642af')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -259,9 +259,10 @@ build() {
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
+  depends=('coreutils' 'kmod' 'initramfs')
   optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+              'linux-firmware: firmware images needed for some devices'
+              'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
