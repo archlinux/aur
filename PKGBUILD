@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=lxc-service-snapshots
-pkgver=2.17
+pkgver=2.18
 pkgrel=1
 pkgdesc='Run disposable (read-only then delete) Linux containers (LXC) to serve up OpenVPN, Pi-Hole, or WireGuard.'
 arch=(any)
@@ -14,7 +14,7 @@ backup=(
    etc/conf.d/pihole-lss.conf
    etc/conf.d/wireguard-lss.conf
 )
-sha256sums=('8dc9aeb9f86b9cb490d04b0ae8e349a4108d2a3a7ebe8d032a677f9dd234da59')
+sha256sums=('a24032354a710e3586d70b743e990873c487b2f6ceec050a74f832e1f4f261ad')
 
 build() {
   cd "$pkgname-$pkgver"

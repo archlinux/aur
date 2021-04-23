@@ -1,6 +1,6 @@
 pkgbase = lxc-service-snapshots
 	pkgdesc = Run disposable (read-only then delete) Linux containers (LXC) to serve up OpenVPN, Pi-Hole, or WireGuard.
-	pkgver = 2.17
+	pkgver = 2.18
 	pkgrel = 1
 	url = https://github.com/graysky2/lxc-service-snapshots
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = lxc-service-snapshots
 	backup = etc/conf.d/openvpn-lss.conf
 	backup = etc/conf.d/pihole-lss.conf
 	backup = etc/conf.d/wireguard-lss.conf
-	source = lxc-service-snapshots-2.17.tar.gz::https://github.com/graysky2/lxc-service-snapshots/archive/v2.17.tar.gz
-	sha256sums = 8dc9aeb9f86b9cb490d04b0ae8e349a4108d2a3a7ebe8d032a677f9dd234da59
+	source = lxc-service-snapshots-2.18.tar.gz::https://github.com/graysky2/lxc-service-snapshots/archive/v2.18.tar.gz
+	sha256sums = a24032354a710e3586d70b743e990873c487b2f6ceec050a74f832e1f4f261ad
 
 pkgname = lxc-service-snapshots
 
