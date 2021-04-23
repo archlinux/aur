@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.3.2
+pkgver=4.4
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -33,6 +33,7 @@ depends=(
   'mingw-w64-openjpeg2'
   'mingw-w64-opus'
   'mingw-w64-rav1e'
+  'mingw-w64-librsvg'
   'mingw-w64-libssh'
   'mingw-w64-sdl2'
   'mingw-w64-speex'
@@ -45,16 +46,19 @@ depends=(
 )
 # TODO: Add vmaf dependency
 #'mingw-w64-vmaf'
+#'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=f719f869907764e6412a6af6e178c46e5f915d25
+_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         vmaf-model-path.patch
-        configure.patch)
+        configure.patch
+        windres.patch)
 sha256sums=('SKIP'
             '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
-            '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed')
+            '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed'
+            'c78ae2245fd1863ea495c115b24214d5692b86ff51b8899a23bc43a48c3385c0')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -66,7 +70,9 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  patch -Np1 -i ../configure.patch
+  patch -Np1 -i "${srcdir}/configure.patch"
+
+  patch -Np1 -i "${srcdir}/windres.patch"
 
 # TODO: Add vmaf dependency
 #  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
@@ -109,6 +115,7 @@ build() {
       --enable-libopenjpeg \
       --enable-libopus \
       --enable-librav1e \
+      --enable-librsvg \
       --enable-libsoxr \
       --enable-libspeex \
       --enable-libsrt \
@@ -131,6 +138,8 @@ build() {
 
 # TODO: Add vmaf dependency
 #      --enable-libvmaf \
+# (only  64 bit support)
+#      --enable-libsvtav1 \
 
     make
   done
