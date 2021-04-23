@@ -8,7 +8,7 @@ url="https://github.com/KaiserBarbarossa/MyBrowse"
 license=('GPL3')
 depends=('webkit2gtk' 'python' 'python-gobject')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KaiserBarbarossa/mybrowse/archive/v$pkgver.tar.gz")
-sha256sums=('2c192f4326299ad433ac50cd53fabe5a8603858e83d99c3603ef792aac97143b')
+sha256sums=('7eb8fef53359d2243400257ca542fa174e69df6543c2342e3aba3bfe49a7eda1')
 
 
 package() {
