@@ -4,7 +4,7 @@
 
 _pkgname=protonmail-import-export-app
 pkgname=$_pkgname-bin
-pkgver=1.2.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The Import-Export app helps you to migrate your emails from local files or remote IMAP servers to ProtonMail or simply export emails to local folder."
 arch=("x86_64")
@@ -15,7 +15,7 @@ optdepends=( 'pass: pass support' 'gnome-keyring: gnome-keyring support')
 conflicts=("$_pkgname" "$_pkgname-beta-bin")
 provides=("$_pkgname")
 source=("https://protonmail.com/download/ie/protonmail-import-export-app_${pkgver}-1_amd64.deb")
-sha256sums=("b109d277dae19d42ba05ab6e8612a613ecfdf677ee381d5c379e5180f149cd66")
+sha256sums=("a72df3151e024b4b2374b84657308486a1965bb9431c2bc145f98ce55dea310c")
 
 package() {
   tar -xzC "$pkgdir" -f data.tar.gz
