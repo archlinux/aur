@@ -20,7 +20,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.1'); }
 
 pkgname=blender-${_ver}-git
-pkgver=2.92.r102890.gf24992d2ec7
+pkgver=2.92.r103107.g2015e398425
 pkgrel=1
 pkgdesc="Maintenance version of Blender v${_ver} branch"
 changelog=blender.changelog
@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
-            '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
+            '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
             '6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f')
 
 pkgver() {
