@@ -1,4 +1,4 @@
-# Maintainer: monosans <hsyqixco at protonmail dot com>
+# Maintainer: monosans
 
 pkgname=python-minifier
 _pkgname=python_minifier
