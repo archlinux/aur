@@ -1,6 +1,6 @@
 pkgbase = fw-bin
 	pkgdesc = Workspace productivity booster
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/brocode/fw
 	arch = x86_64
@@ -8,12 +8,11 @@ pkgbase = fw-bin
 	depends = fzf
 	provides = fw
 	conflicts = fw
-	source_x86_64 = fw-bin-2.7.0::https://github.com/brocode/fw/releases/download/v2.7.0/fw
-	source_x86_64 = fw-bin-2.7.0-LICENSE::https://github.com/brocode/fw/raw/v2.7.0/LICENSE
-	source_x86_64 = fw-bin-2.7.0-README.org::https://github.com/brocode/fw/raw/v2.7.0/README.org
-	sha512sums_x86_64 = 6386b8203eaafc86679b2ba68cee65afafc2db747ef24a68e258c0b2a0364fa1d98426b013578848b9e2bceb5235362d1b67c39db766cf8c816fda34ada640cc
+	source_x86_64 = fw-bin-2.8.0::https://github.com/brocode/fw/releases/download/v2.8.0/fw
+	source_x86_64 = fw-bin-2.8.0-LICENSE::https://github.com/brocode/fw/raw/v2.8.0/LICENSE
+	source_x86_64 = fw-bin-2.8.0-README.org::https://github.com/brocode/fw/raw/v2.8.0/README.org
+	sha512sums_x86_64 = 8bff58da29a0280df143a5bcd657a82221aa150c18ecaafe57a78455008f5805a90de3264a0046500bcb40e157c259fbfd5a1cd43d45f3ad4a55733362938e79
 	sha512sums_x86_64 = 1b4064171fa88f41d05e3d1d1c14ceb8a5cb4cca9e6f08f7e267d7740b7d65e4765cb56f0ccf3765ee9c85654559d2d7726d71516b890b0174b68e6cc62ef421
 	sha512sums_x86_64 = 76b26aa870c139d701f2de5b81e3c0616b9924caae2f34b7801fa59e8d5155c3b8b3f1045eb7164c53e769e8d15c480bc3b020f27eedf2b590549c814e0c0383
 
 pkgname = fw-bin
-
