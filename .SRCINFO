@@ -1,7 +1,7 @@
 pkgbase = pacslim-git
 	pkgdesc = Put your system on package diet.
 	pkgver = 0.1.1
-	pkgrel = 23
+	pkgrel = 26
 	url = https://gitlab.com/abarocio80/pacslim
 	arch = any
 	license = GPL3
