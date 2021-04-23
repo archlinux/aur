@@ -1,7 +1,7 @@
 pkgbase = linux-mini
 	pkgdesc = Linux kernel and modules with minimal configuration
 	pkgver = 5.11.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -50,7 +50,4 @@ pkgname = linux-mini
 pkgname = linux-mini-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel and modules with minimal configuration kernel
 	depends = pahole
-
-pkgname = linux-mini-docs
-	pkgdesc = Documentation for the Linux kernel and modules with minimal configuration kernel
 

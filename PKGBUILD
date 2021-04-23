@@ -73,7 +73,7 @@ _srcname=linux-${_major}
 
 pkgbase=linux-mini
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel and modules with minimal configuration'
 
 url="https://www.kernel.org/"
@@ -190,14 +190,14 @@ prepare() {
 
         make olddefconfig
 
-    ### Patch source to unlock additional gcc CPU optimizations
+    	### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         echo "Patching to enable GCC optimization for other uarchs..."
         patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
         fi
 
-            ### Get kernel version
+		### Get kernel version
         if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
         yes "$_subarch" | make oldconfig
         else
@@ -205,9 +205,9 @@ prepare() {
         fi
 
 
-
-  make -s kernelrelease > version
-  echo "Prepared $pkgbase version $(<version)"
+        ### Prepared version
+		make -s kernelrelease > version
+		echo "Prepared $pkgbase version $(<version)"
 
 
 ### Optionally use running kernel's config
@@ -253,7 +253,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
+  make -j$(nproc) all
   make htmldocs
 }
 
@@ -287,7 +287,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  depends=(pahole)
+  depends=('pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -364,26 +364,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
-
-  cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  echo "Installing documentation..."
-  local src dst
-  while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-  echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-}
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
