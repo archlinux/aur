@@ -25,7 +25,7 @@ post_upgrade() {
   chown pihole:pihole /etc/pihole
 
   # query logging disabling needs this
-  grep -qxF 'QUERY_LOGGING=' /etc/pihole/setupVars.conf || echo 'QUERY_LOGGING=true' >> /etc/pihole/setupVars.conf
+  grep -qF 'QUERY_LOGGING=' /etc/pihole/setupVars.conf || echo 'QUERY_LOGGING=true' >> /etc/pihole/setupVars.conf
 
   # warning
 
