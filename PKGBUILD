@@ -20,15 +20,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
 md5sums=("bb63b3c244d5a6ca5686f0af423866e8")
 validpgpkeys=()
 
 build()
 {
-    mkdir -p ${srcdir}/${pkgname}-${pkgver}/build/
-    cd ${srcdir}/${pkgname}-${pkgver}/build/
+    mkdir -p ${srcdir}/${pkgname}-v${pkgver}/build/
+    cd ${srcdir}/${pkgname}-v${pkgver}/build/
     cmake ..
     make
 }
@@ -40,12 +40,12 @@ package()
     mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
 
     # Install the software.
-    cd ${srcdir}/${pkgname}-${pkgver}/build/
+    cd ${srcdir}/${pkgname}-v${pkgver}/build/
     sudo make install
 
     # Install the documentation.
-    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
+    install -Dm644 ${srcdir}/${pkgname}-v${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/
 
     # Install the license.
-    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSES/GPL-3.0-or-later.txt ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -Dm644 ${srcdir}/${pkgname}-v${pkgver}/LICENSES/GPL-3.0-or-later.txt ${pkgdir}/usr/share/licenses/${pkgname}/
 }
