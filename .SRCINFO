@@ -1,0 +1,15 @@
+pkgbase = vim-ember-hbs-git
+	pkgdesc = Ember Handlebars/HTMLBars plugin for Vim with indentation support
+	pkgver = r26.05adc50
+	pkgrel = 1
+	url = https://github.com/joukevandermaas/vim-ember-hbs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-ember-hbs
+	source = git+https://github.com/joukevandermaas/vim-ember-hbs.git
+	md5sums = SKIP
+
+pkgname = vim-ember-hbs-git
+
