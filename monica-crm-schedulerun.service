@@ -1,0 +1,36 @@
+[Unit]
+Description=Monica CRM schedule:run
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/php artisan schedule:run
+User=http
+Group=http
+WorkingDirectory=/usr/share/webapps/monica-crm
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+
+NoNewPrivileges=true
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+
+ReadWritePaths=/var /run /var/run /var/cache/monica-crm /var/lib/monica-crm /usr/share/webapps/monica-crm/storage /usr/share/webapps/monica-crm/bootstrap/cache
+
+LimitNPROC=64
+
+# You can turn on this setting if you've set pcre.jit=0 in your PHP config
+#MemoryDenyWriteExecute=true

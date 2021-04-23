@@ -1,0 +1,14 @@
+[Unit]
+Description=Monica CRM schedule:run Timer
+
+[Timer]
+# The Monica CRM installation instructions state that this should run every single minute.
+# However, the most frequently scheduled tasks still only run once every hour.
+# Running this every ten minutes is deemed to be a suitable compromise.
+# Reference: app/Console/Kernel.php
+
+OnCalendar=10 minutes
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target
