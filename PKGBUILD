@@ -10,6 +10,7 @@ depends=('libarchive' 'cmake' 'curl' 'libsolv' 'cli11' 'pybind11' 'nlohmann-json
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/${pkgver}.tar.gz)
 md5sums=('9c3d172b9b82b47111630632d19c0712')
 _pkgname2=${pkgname/micro/}
+conflict=('micromamba-bin')
 
 prepare(){
   cd ${_pkgname2}-${pkgver}
@@ -37,5 +38,3 @@ package() {
   cd ${_pkgname2}-${pkgver}
   cmake --install build
 }
-
-
