@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "build/$_upstreampkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$_upstreampkgname-$pkgver/build/$_upstreampkgname" "$pkgdir/usr/bin/$pkgname"
 
   cd "$_upstreampkgname-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
