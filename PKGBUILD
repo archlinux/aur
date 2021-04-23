@@ -1,7 +1,7 @@
 # Maintainer 5amu <v.casalino@protonmail.com>
 
 pkgname=wessus
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
 pkgdesc="Wessus identifies vulnerabilities in websites identifying technologies and checking related CVE for the specific version."
 url="https://gitlab.com/brn1337/wessus"
