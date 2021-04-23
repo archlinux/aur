@@ -1,4 +1,4 @@
-# Maintainer: monosans <hsyqixco at protonmail dot com>
+# Maintainer: monosans
 
 pkgname=st-monosans-git
 pkgver=0.8.4.r1147.a4b8166
