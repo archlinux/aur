@@ -7,6 +7,8 @@ pkgdesc="An open framework for storing and sharing scene data"
 arch=('x86_64')
 url="http://www.alembic.io/"
 license=('BSD')
+conflicts=('alembic')
+provides=("alembic=${pkgver}")
 depends=('openexr' 'boost-libs' 'hdf5')
 makedepends=('cmake' 'boost' 'ninja')
 source=(${pkgname%-qfix}-$pkgver.tar.gz::https://github.com/alembic/alembic/archive/${pkgver}.tar.gz)

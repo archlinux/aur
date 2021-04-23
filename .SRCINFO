@@ -11,6 +11,8 @@ pkgbase = alembic-qfix
 	depends = openexr
 	depends = boost-libs
 	depends = hdf5
+	provides = alembic=1.8.0
+	conflicts = alembic
 	source = alembic-1.8.0.tar.gz::https://github.com/alembic/alembic/archive/1.8.0.tar.gz
 	sha512sums = 23fc881863741f7fd081342f5c53c1ec3d00ab300ba8cd10e4a659ee820a9ed1244cf7cf2fd40482f6be32b9d7df44128363246e942bd03c802f3a2a81533b57
 
