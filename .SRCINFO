@@ -1,0 +1,21 @@
+pkgbase = paperlike-go-git
+	pkgdesc = CLI tool to control a Dasung Paperlike HD* (2019) screen.
+	pkgver = r11.20210421.ad107f1
+	pkgrel = 1
+	url = https://github.com/leoluk/paperlike-go
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	makedepends = git
+	makedepends = go
+	provides = paperlike-go=r11.20210421.ad107f1
+	provides = paperlike-cli=r11.20210421.ad107f1
+	provides = paperlike-cli-git=r11.20210421.ad107f1
+	conflicts = paperlike-go
+	conflicts = paperlike-cli
+	conflicts = paperlike-git
+	source = paperlike-go::git+git://github.com/leoluk/paperlike-go.git
+	sha256sums = SKIP
+
+pkgname = paperlike-go-git
+
