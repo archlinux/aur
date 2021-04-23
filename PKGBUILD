@@ -1,7 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=zellij
-pkgver=0.5.0.beta
-_pkgver=0.5.0-beta
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A terminal multiplexer."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,22 +10,22 @@ depends=('gcc-libs')
 makedepends=('cargo' 'binaryen')
 provides=('zellij')
 conflicts=('zellij-git')
-source=("https://github.com/zellij-org/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha512sums=('335b78dd9f78bbf657bdb833f6ad9fa53e266758cd65239b03eedb29cb1f2be77fbf5b6c27c847551ce099703c187d73fe23892d29ec618c7585ee3864d5ab3f')
+source=("https://github.com/zellij-org/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('05ddb52ca72d38db239e89d5b6e9aef6bc8f9dda28ffb115448f26c216690d619cda7f7a9bab05ac6c8a66663c153525fa239950609313f9cb747bc4b241d29a')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cargo install --force cargo-make
   cargo make install ./zellij
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cargo make test
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "${pkgdir}/usr/share/doc/zellij"
   install -Dm755 ./zellij "${pkgdir}/usr/bin/zellij"
   install -Dm644 GOVERNANCE.md "${pkgdir}/usr/share/doc/zellij/GOVERNANCE.md"
