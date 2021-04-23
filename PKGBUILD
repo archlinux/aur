@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-taskwhisperer
 _pkgname=taskwhisperer
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc="Gnome Shell TaskWarrior integration"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/cinatic/taskwhisperer"
 license=('GPL3')
 depends=('gnome-shell')
 source=("https://github.com/cinatic/taskwhisperer/archive/v${pkgver}.tar.gz")
-sha256sums=('e076d2fc8e311f26937338ed161b57678167b5940ae53215c8fa7c3bc1b7e3fe')
+sha256sums=('663d3d4d6997e517ab24b29ca75584d9ead69d36799e7c8aa91a95925bd4905e')
 
 package() {
   _extid='taskwhisperer-extension@infinicode.de'
