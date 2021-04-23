@@ -1,6 +1,6 @@
 pkgbase = fsleyes-props
 	pkgdesc = The fsleyes-props project is an event programming framework, which includes the ability for automatic CLI generation and, optionally, automatic GUI generation (if wxPython is present). It is used by FSLeyes.
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = fsleyes-props
 	makedepends = fslpy>=3.1.0
 	makedepends = fsleyes-widgets>=0.7.3
 	depends = python
-	source = fsleyes-props-1.7.2.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/props/repository/archive.tar.gz?ref=1.7.2
-	sha256sums = a446e6c27a22131fda128eb261fd01516bb20d48f96463468d75bd2c28a00d17
+	source = fsleyes-props-1.7.3.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/props/repository/archive.tar.gz?ref=1.7.3
+	sha256sums = 368f243b6c1ae9fa513cf9e5d59e97256e940666754aeb733fd61329def78d5b
 
 pkgname = fsleyes-props
 
