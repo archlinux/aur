@@ -27,12 +27,12 @@ md5sums=('26d04522e165f1626285efbd3463c97d')
 validpgpkeys=()
 
 build() {
-    cd "${pkgname}"
+	cd "$pkgname-$pkgver"
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
-    cd "${pkgname}"
+	cd "$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="${pkgdir}" install install-scripts
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/moonwm/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/moonwm/README.md"
