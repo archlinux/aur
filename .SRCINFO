@@ -11,6 +11,7 @@ pkgbase = meshroom-git
 	makedepends = cmake
 	makedepends = python-setuptools
 	makedepends = python-cx_freeze
+	makedepends = patchelf
 	depends = alice-vision
 	depends = alembic
 	depends = openimageio
