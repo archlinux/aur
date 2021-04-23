@@ -32,7 +32,7 @@ package() {
   DESTDIR="${pkgdir}/" ninja -C build install
 
 # quick fix for missing `imath` package ( internal of openexr )
-  sed '/check_required_components("Alembic")/d' -i /usr/lib/cmake/Alembic/AlembicConfig.cmake
+  sed '/find_dependency(IMath)/d' -i "${pkgdir}"/usr/lib/cmake/Alembic/AlembicConfig.cmake
 }
 
 # vim:set ts=2 sw=2 et:
