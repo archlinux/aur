@@ -1,6 +1,6 @@
 pkgbase = usbimager-x11
 	pkgdesc = Minimal GUI application to write compressed disk images to USB drives (X11 Frontend)
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://gitlab.com/bztsrc/usbimager
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = usbimager-x11
 	depends = libx11
 	provides = usbimager
 	conflicts = usbimager
-	source = https://gitlab.com/bztsrc/usbimager/-/archive/1.0.6/usbimager-1.0.6.tar.gz
+	source = https://gitlab.com/bztsrc/usbimager/-/archive/1.0.7/usbimager-1.0.7.tar.gz
 	source = makefile.patch
 	sha256sums = 1d436524c46d756bd4ab598929b41e6d8dc6d23e11c8576667cb44999e6e87b8
 	sha256sums = a8622b5584d5458b608096f24ab2e52e40f1970baaf4e4cd1ffd69b64d149828
