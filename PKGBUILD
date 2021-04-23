@@ -1,7 +1,7 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=librespeed-cli
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Command line client for LibreSpeed"
 arch=('i686' 'x86_64')
