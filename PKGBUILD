@@ -7,7 +7,7 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
 pkgver=390.143
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -16,11 +16,13 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-390xx-utils.sysusers'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-        kernel-4.16.patch)
+        kernel-4.16.patch
+        kernel-5.12.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
         'd1871a27b1df73b4daea26f45c5cc33fa7582dea538ac2acfbb5ed23c0254fe5261d6be60cdb7ce8643ee77b0259195acb2ba2a3784b74c404e79d960005b83d'
-        '16480a3df51248b5adf3a3349f602f96cd830b5364c0a1c142a53099ed1e881f727026fe36b837b76f20aef7e7bf606f52c1af28f1eec7cc8bf39a571243a4ba')
+        'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05'
+        '42cd51e57e563e3e7fe7edd25ca2af55da77d56b05d80f5040b526ed943773d4ec780fed538bc88bbbeb9bba76d98acac37b895baa9a8b4ebb123e1c323cfe05')
 
 create_links() {
     # create soname links
@@ -42,6 +44,10 @@ prepare() {
     # Restore phys_to_dma support (still needed for 390.138)
     # From loqs via https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
+
+    # From Larry Finger
+    # https://build.opensuse.org/package/view_file/X11:Drivers:Video/nvidia-gfxG04/kernel-5.12.patch?expand=1
+    patch -Np1 -i ../kernel-5.12.patch
 
     cd kernel
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
