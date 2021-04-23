@@ -1,31 +1,33 @@
-# Maintainer: Braden Pellett (daBrado) <aurcontact@dabrado.net>
+# Maintainer: novenary <streetwalkermc@gmail.com>
+# Contributor: Braden Pellett (daBrado) <aurcontact@dabrado.net>
 # Contributor: S7X Deckard Case <cyber.stx@protonmail.com>
+# Contributor: Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Kristoffer Fossgård <kfs1@online.no>
+# Contributor: clonejo <clonejo@shakik.de>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
 
-_pkgname=terminus-font
-pkgname=${_pkgname}-ll2-td1-dv1-ij1
-pkgver=4.48
+pkgname=terminus-font-ll2-td1-dv1-ij1
+pkgver=4.49.1
 pkgrel=2
+
 pkgdesc='Monospace bitmap font (for X11 and console) with ll2 (pass the il1I test), td1 (centered ascii tilde), dv1 and ij1 (cyrillic de & ve & i) patches'
-arch=(any)
-url=https://sourceforge.net/projects/terminus-font/
-license=(GPL2 custom:OFL)
-makedepends=(xorg-bdftopcf python)
-conflicts=(terminus-font)
-provides=(terminus-font)
-source=(
-  https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz
-  fix-75-yes-terminus.patch
-)
-sha256sums=(
-  34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af
-  67ef6187106912f81208de39d791bf0ef45f7623c2dced36c99164f58654242b
-)
+url='http://terminus-font.sourceforge.net/'
+arch=('any')
+license=('GPL2' 'custom:OFL')
+makedepends=('xorg-bdftopcf' 'python')
+provides=('terminus-font')
+conflicts=('terminus-font' 'terminus-font-otb')
+replaces=('terminus-font-ll2-td1-otb')
+source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver%.1}/terminus-font-$pkgver.tar.gz"
+        fix-75-yes-terminus.patch)
+sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
+            'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch < ../fix-75-yes-terminus.patch
+  cd "terminus-font-$pkgver"
+  patch -p1 <"$srcdir"/fix-75-yes-terminus.patch
   patch < alt/ll2.diff
   patch < alt/td1.diff
   patch < alt/dv1.diff
@@ -33,16 +35,27 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ./configure --prefix=/usr --x11dir=/usr/share/fonts/misc --psfdir=/usr/share/kbd/consolefonts
-  make
+  cd "terminus-font-$pkgver"
+
+  ./configure \
+    --prefix=/usr \
+    --x11dir=/usr/share/fonts/misc \
+    --otbdir=/usr/share/fonts/misc \
+    --psfdir=/usr/share/kbd/consolefonts
+  make all otb
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 75-yes-terminus.conf "${pkgdir}/etc/fonts/conf.avail/75-yes-terminus.conf"
-  install -Dm644 OFL.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -dm755 "${pkgdir}/etc/fonts/conf.d"
-  ln -sf -t "${pkgdir}/etc/fonts/conf.d" ../conf.avail/75-yes-terminus.conf
+  make -C "terminus-font-$pkgver" DESTDIR="$pkgdir" install install-otb
+
+  install -Dm644 "$srcdir/terminus-font-$pkgver/75-yes-terminus.conf" \
+    "$pkgdir/usr/share/fontconfig/conf.avail/75-yes-terminus.conf"
+  install -Dm644 "$srcdir/terminus-font-$pkgver/OFL.TXT" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -d "$pkgdir/usr/share/fontconfig/conf.default"
+  ln -sr "$pkgdir/usr/share/fontconfig/conf.avail/75-yes-terminus.conf" \
+    "$pkgdir/usr/share/fontconfig/conf.default/75-yes-terminus.conf"
 }
+
+# vim:set ts=2 sw=2 et:
