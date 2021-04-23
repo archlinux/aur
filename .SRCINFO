@@ -1,6 +1,6 @@
 pkgbase = evcxr_repl
 	pkgdesc = A Rust REPL based on evcxr
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/google/evcxr
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = evcxr_repl
 	makedepends = git
 	depends = gcc-libs
 	provides = evcxr_repl
-	source = https://github.com/google/evcxr/archive/v0.8.1.tar.gz
+	source = https://github.com/google/evcxr/archive/v0.9.0.tar.gz
 	sha256sums = 73cc849a602c3b05a2042b2eb95ed8d4a1afe115e25a81ee8bf216d9367d063f
 
 pkgname = evcxr_repl
