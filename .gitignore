@@ -1,0 +1,4 @@
+*.pkg.tar.*
+vim-ember-hbs/
+pkg/
+src/
