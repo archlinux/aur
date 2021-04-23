@@ -1,22 +1,13 @@
 pkgbase = tangram
-	pkgdesc = Run web apps on your desktop
-	pkgver = 1.2.0
+	pkgdesc = Tangram is an all-in-one machine learning toolkit designed for programmers.
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/sonnyp/Tangram
-	arch = any
-	license = GPL3
-	makedepends = meson
-	makedepends = ninja
-	depends = gjs
-	depends = webkit2gtk
-	depends = gtk3
-	depends = libsoup
-	depends = glib2
-	provides = gigagram-git
-	conflicts = gigagram-git
-	replaces = gigagram-git
-	source = https://github.com/sonnyp/Tangram/archive/v1.2.0.tar.gz
-	sha256sums = e3f7baae512ab355c817c9638e5b114306f635dd4cfc736f0fb0cfdb2012c7ee
+	url = https://www.tangram.xyz
+	arch = x86_64
+	license = MIT
+	provides = tangram
+	source_x86_64 = https://github.com/tangramxyz/tangram/releases/download/v0.3.0/tangram_cli_-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 030a0ad71ce5ce3d84a71a83ebddefe06469de055eec9e43ccdba901fcffd51f
 
 pkgname = tangram
 
