@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
 arch=('x86_64')
@@ -32,8 +32,8 @@ build() {
 
 package() {
   echo "#!/bin/sh" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
-  echo "cd /usr/share/shadow-of-the-wyrm" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
-  echo "./ShadowOfTheWyrm" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
+  echo "cd /usr/share/shadow-of-the-wyrm" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
+  echo "./ShadowOfTheWyrm" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
   echo "[Desktop Entry]
 	Version=1.3.0
 	Name=Shadow Of The Wyrm
